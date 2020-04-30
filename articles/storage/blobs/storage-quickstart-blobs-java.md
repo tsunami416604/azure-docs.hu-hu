@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Az Azure Blob storage-tár v12 – Java'
-description: Ebben a rövid útmutatóban megtudhatja, hogyan használhatja az Azure Blob storage-beli ügyfélkód12-es Java-verziót egy tároló és egy blob blob (objektum) tárolóban. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
+title: 'Gyors útmutató: Azure Blob Storage Library V12 – Java'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja az Azure Blob Storage ügyféloldali kódtárat a javára tárolók és Blobok (Object) tárolók létrehozásához. Ezután megtudhatja, hogyan töltheti le a blobot a helyi számítógépére, és hogyan listázhatja ki a tárolóban található összes blobot.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 01/27/2020
@@ -8,39 +8,39 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 15e0eaaeb407ad22220faa7d085eea805fe62679
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731341"
 ---
-# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Gyorsútmutató: Blobok kezelése Java v12 SDK-val
+# <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Gyors útmutató: Blobok kezelése a Java V12 SDK-val
 
-Ebben a rövid útmutatóban megtudhatja, hogy a Java használatával kezelheti a blobokat. A blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatot képesek tárolni, beleértve a képeket, dokumentumokat, adatfolyam-továbbítási és archiválási adatokat. Blobokat fog feltölteni, letölteni és listázni, és tárolókat hozhat létre és törölhet.
+Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a Java használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Feltöltheti, letöltheti és listázhatja a blobokat, és létrehozhatja és törölheti a tárolókat.
 
-[API-referenciadokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [könyvtár forráskódjának](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [mintái](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+[API-referenciák dokumentációs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob) | [-csomagja (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob?repo=jcenter) | [mintái](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Egy Azure Storage-fiók. [Hozzon létre egy tárfiókot.](../common/storage-account-create.md)
-- [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 8-as vagy újabb verzió.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure Storage-fiók. [Hozzon létre egy Storage-fiókot](../common/storage-account-create.md).
+- A [Java Development Kit (JDK)](/java/azure/jdk/?view=azure-java-stable) 8-as vagy újabb verziója.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 
 > [!NOTE]
-> Az előző SDK-verzió ismerkedéséhez olvassa el a [Gyorsútmutató: Blobok kezelése Java v8 SDK-val](storage-quickstart-blobs-java-legacy.md)című témakört.
+> A korábbi SDK-verzió használatának megkezdéséhez lásd [: gyors útmutató: Blobok kezelése a Java V8 SDK-val](storage-quickstart-blobs-java-legacy.md).
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
-Ez a szakasz végigvezeti a projekt előkészítése az Azure Blob storage-ügyfélkódtár v12 Java-hoz való használata.
+Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure Blob Storage-ügyfélhez készült, a Javával való együttműködéshez.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-*Blob-quickstart-v12 nevű Java-alkalmazás*létrehozása.
+Hozzon létre egy *blob-Gyorsindítás-V12*nevű Java-alkalmazást.
 
-1. Egy konzolablakban (például a cmd, a PowerShell vagy a Bash) a Maven használatával hozzon létre egy új konzolalkalmazást *blob-quickstart-v12*névvel. "Hello world!" parancs létrehozásához írja be a következő **mvn** parancsot. Java projekt.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) a Maven használatával hozzon létre egy új, *blob-Gyorsindítás-V12*nevű Console-alkalmazást. A "Hello World!" létrehozásához írja be a következő **MVN** -parancsot: Java-projekt.
 
    ```console
    mvn archetype:generate -DgroupId=com.blobs.quickstart \
@@ -50,7 +50,7 @@ Ez a szakasz végigvezeti a projekt előkészítése az Azure Blob storage-ügyf
                           -DinteractiveMode=false
    ```
 
-1. A projekt generálásának kimenete valahogy így fog kinézni:
+1. A projekt létrehozásának eredményét a következőhöz hasonló módon kell kinéznie:
 
     ```console
     [INFO] Scanning for projects...
@@ -93,7 +93,7 @@ Ez a szakasz végigvezeti a projekt előkészítése az Azure Blob storage-ügyf
    cd blob-quickstart-v12
    ```
 
-1. A blob-quickstart-v12 könyvtár oldalán hozzon létre egy másik *könyvtárat,* az úgynevezett data .In side the *blob-quickstart-v12* directory, create another directory called data . Ez az, ahol a blob adatfájlok jönnek létre és tárolják.
+1. A *blob-Gyorsindítás-V12* könyvtárban hozzon létre egy másik könyvtárat, amely az *adat*nevű. A blob-adatfájlokat a rendszer létrehozza és tárolja.
 
     ```console
     mkdir data
@@ -101,7 +101,7 @@ Ez a szakasz végigvezeti a projekt előkészítése az Azure Blob storage-ügyf
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá a következő függőségi elemet a függőségek csoportjához.
+Nyissa meg a *Pom. XML* fájlt a szövegszerkesztőben. Adja hozzá a függőségek csoportjához a következő függőségi elemet.
 
 ```xml
 <dependency>
@@ -111,16 +111,16 @@ Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá a következő
 </dependency>
 ```
 
-### <a name="set-up-the-app-framework"></a>Az alkalmazáskeretrendszer beállítása
+### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
 A projekt könyvtárából:
 
-1. Keresse meg a */src/main/java/com/blobs/quickstart* könyvtárat
-1. Az *App.java* fájl megnyitása a szerkesztőben
+1. Navigáljon a */src/Main/Java/com/Blobs/Quickstart* könyvtárához
+1. Nyissa meg az *app. Java* fájlt a szerkesztőben
 1. Az `System.out.println("Hello world!");` utasítás törlése
-1. Direktívák hozzáadása `import`
+1. Irányelvek `import` hozzáadása
 
-Itt a kód:
+A kód a következő:
 
 ```java
 package com.blobs.quickstart;
@@ -144,27 +144,27 @@ public class App
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Blob storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem követnek egy adott adatmodellt vagy definíciót, például szöveges vagy bináris adatok. A Blob storage háromféle erőforrást kínál:
+Az Azure Blob Storage nagy mennyiségű strukturálatlan adat tárolására van optimalizálva. A strukturálatlan adatok olyan adatok, amelyek nem követnek egy adott adatmodellt vagy definíciót, például szöveges vagy bináris adatok. A blob Storage háromféle típusú erőforrást kínál:
 
-* A tárfiók
-* Tároló a tárfiókban
-* Blob a tárolóban
+* A Storage-fiók
+* Egy tároló a Storage-fiókban
+* A tárolóban lévő blob
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
-![Blob-tárolási architektúra diagramja](./media/storage-blobs-introduction/blob1.png)
+![BLOB Storage-architektúra ábrája](./media/storage-blobs-introduction/blob1.png)
 
-Az alábbi Java-osztályok segítségével kezelheti ezeket az erőforrásokat:
+A következő Java-osztályok használhatók az alábbi erőforrásokkal való kommunikációhoz:
 
-* [BlobServiceClient:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html) `BlobServiceClient` Az osztály lehetővé teszi az Azure Storage-erőforrások és blobtárolók kezelésére. A tárfiók biztosítja a Blob szolgáltatás legfelső szintű névterét.
-* [BlobServiceClientBuilder:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html) `BlobServiceClientBuilder` Az osztály egy folyékony építő API-t biztosít `BlobServiceClient` az objektumok konfigurálásának és példányosításának elősegítésére.
-* [BlobContainerClient:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) `BlobContainerClient` Az osztály lehetővé teszi az Azure Storage-tárolók és azok blobjainak kezelésére.
-* [BlobClient:](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) `BlobClient` Az osztály lehetővé teszi az Azure Storage-blobok kezelésére.
-* [BlobItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): `BlobItem` Az osztály a hívásból visszaadott egyes blobokat `listBlobsFlat`jelöli.
+* [BlobServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClient.html): a `BlobServiceClient` osztály lehetővé teszi az Azure Storage-erőforrások és a blob-tárolók kezelését. A Storage-fiók a legfelső szintű névteret biztosítja a Blob service számára.
+* [BlobServiceClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobServiceClientBuilder.html): az `BlobServiceClientBuilder` osztály egy Fluent Builder API-t biztosít az `BlobServiceClient` objektumok konfigurációjának és példányának támogatásához.
+* [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html): a `BlobContainerClient` osztály lehetővé teszi az Azure Storage-tárolók és a Blobok kezelését.
+* [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html): a `BlobClient` osztály lehetővé teszi az Azure Storage-Blobok kezelését.
+* [Blobelemet](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/models/BlobItem.html): az `BlobItem` osztály a hívása által `listBlobsFlat`visszaadott blobokat jelöli.
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a példakódrészletek bemutatják, hogyan hajthatja végre a következőket az Azure Blob storage-ügyfélrendszertár Java-hoz:
+Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőket az Azure Blob Storage ügyféloldali kódtára Javához:
 
 * [A kapcsolati sztring lekérése](#get-the-connection-string)
 * [Tároló létrehozása](#create-a-container)
@@ -175,9 +175,9 @@ Ezek a példakódrészletek bemutatják, hogyan hajthatja végre a következőke
 
 ### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
-Az alábbi kód lekéri a tárfiók kapcsolati karakterláncát a [tárolási kapcsolat karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóból.
+Az alábbi kód a Storage- [kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóból kéri le a Storage-fiókhoz tartozó kapcsolatok karakterláncát.
 
-Adja hozzá ezt `Main` a kódot a metódushoz:
+Adja hozzá ezt a kódot `Main` a metódushoz:
 
 ```java
 System.out.println("Azure Blob storage v12 - Java quickstart sample\n");
@@ -193,14 +193,14 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
-Döntse el az új tároló nevét. Az alábbi kód hozzáfűz egy UUID értéket a tároló nevéhez annak érdekében, hogy az egyedi legyen.
+Döntse el az új tároló nevét. Az alábbi kód egy UUID értéket fűz hozzá a tároló nevéhez, hogy az egyedi legyen.
 
 > [!IMPORTANT]
 > A tárolók nevei csak kisbetűket tartalmazhatnak. A tárolók és blobok elnevezésével kapcsolatos további információkért lásd a [tárolók, blobok és metaadatok elnevezését és hivatkozását](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata).
 
-Ezután hozzon létre egy példányt a [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) osztály, majd hívja meg a [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) metódust, hogy ténylegesen hozza létre a tárolót a tárfiókban.
+Ezután hozza létre a [BlobContainerClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html) osztály egy példányát, majd hívja meg a [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#create--) metódust, hogy ténylegesen létrehozza a tárolót a Storage-fiókban.
 
-Adja hozzá ezt a `Main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
 ```java
 // Create a BlobServiceClient object which will be used to create a container client
@@ -217,11 +217,11 @@ BlobContainerClient containerClient = blobServiceClient.createBlobContainer(cont
 
 A következő kódrészlet:
 
-1. Szövegfájlt hoz létre *data* a helyi adatkönyvtárban.
-1. Egy [BlobClient-objektumra](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) mutató hivatkozást kér le a [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) metódus hívásával a tárolón a [Tároló létrehozása](#create-a-container) szakaszból.
-1. Feltölti a helyi szöveges fájlt a blobba az [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) metódus hívásával. Ez a módszer létrehozza a blobot, ha még nem létezik, de nem írja felül, ha igen.
+1. Létrehoz egy szövegfájlt *a helyi* adatkönyvtárban.
+1. Beolvas egy [BlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html) objektumra mutató hivatkozást úgy, hogy meghívja a [getBlobClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#getBlobClient-java.lang.String-) metódust a tárolóban a [tároló létrehozása](#create-a-container) szakaszban.
+1. A [uploadFromFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobClient.html#uploadFromFile-java.lang.String-) metódus meghívásával feltölti a helyi szövegfájlt a blobba. Ez a metódus létrehozza a blobot, ha még nem létezik, de nem írja felül, ha igen.
 
-Adja hozzá ezt a `Main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
 ```java
 // Create a local file in the ./data/ directory for uploading and downloading
@@ -245,9 +245,9 @@ blobClient.uploadFromFile(localPath + fileName);
 
 ### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
 
-Sorolja fel a blobok a tárolóban hívja meg a [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) metódus. Ebben az esetben csak egy blob lett hozzáadva a tárolóhoz, így a listaelem-művelet csak azt az egy blobot adja vissza.
+A tárolóban lévő Blobok listázása a [listBlobs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#listBlobs--) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
 
-Adja hozzá ezt a `Main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
 ```java
 System.out.println("\nListing blobs...");
@@ -260,9 +260,9 @@ for (BlobItem blobItem : containerClient.listBlobs()) {
 
 ### <a name="download-blobs"></a>Blobok letöltése
 
-Töltse le a korábban létrehozott blobot a [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) metódus hívásával. A példakód hozzáadja a "DOWNLOAD" utótagot a fájlnévhez, így mindkét fájlt láthatja a helyi fájlrendszerben.
+Töltse le a korábban létrehozott blobot a [downloadToFile](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/specialized/BlobClientBase.html#downloadToFile-java.lang.String-) metódus meghívásával. A példában szereplő kód a "Letöltés" utótagot adja hozzá a fájl nevéhez, hogy mindkét fájl látható legyen a helyi fájlrendszerben.
 
-Adja hozzá ezt a `Main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
 ```java
 // Download the blob to a local file
@@ -277,11 +277,11 @@ blobClient.downloadToFile(localPath + downloadFileName);
 
 ### <a name="delete-a-container"></a>Tároló törlése
 
-A következő kód törli az erőforrásokat az alkalmazás által létrehozott eltávolításával a teljes tároló [ti a törlési](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) módszerrel. Törli az alkalmazás által létrehozott helyi fájlokat is.
+A következő kód törli az alkalmazás által létrehozott erőforrásokat, ha eltávolítja a teljes tárolót a [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/com/azure/storage/blob/BlobContainerClient.html#delete--) metódus használatával. Emellett törli az alkalmazás által létrehozott helyi fájlokat is.
 
-Az alkalmazás szünetela felhasználói `System.console().readLine()` bevitel a hívás, mielőtt törli a blob, tároló és a helyi fájlokat. Ez jó alkalom annak ellenőrzésére, hogy az erőforrások megfelelően jöttek-e létre, mielőtt törölné őket.
+Az alkalmazás a felhasználói bevitel szüneteltetését hívja `System.console().readLine()` meg, mielőtt törli a blobot, a tárolót és a helyi fájlokat. Ez jó eséllyel ellenőrizhető, hogy az erőforrások megfelelően lettek-e létrehozva, mielőtt törölné őket.
 
-Adja hozzá ezt a `Main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `Main` metódus végéhez:
 
 ```java
 // Clean up
@@ -300,27 +300,27 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Ez az alkalmazás létrehoz egy tesztfájlt a helyi mappában, és feltölti azt a Blob storage-ba. A példa ezután felsorolja a blobok a tárolóban, és letölti a fájlt egy új nevet, így össze lehet hasonlítani a régi és az új fájlokat.
+Ez az alkalmazás létrehoz egy tesztoldalt a helyi mappában, és feltölti azt a blob Storage-ba. A példa ezután felsorolja a tárolóban lévő blobokat, és letölti a fájlt egy új névvel, hogy össze lehessen hasonlítani a régi és az új fájlokat.
 
-Nyissa meg a *pom.xml* fájlt tartalmazó könyvtárat, és `mvn` fordítsa le a projektet a következő paranccsal.
+Navigáljon a *Pom. XML* fájlt tartalmazó könyvtárra, és fordítsa le a projektet a következő `mvn` parancs használatával.
 
 ```console
 mvn compile
 ```
 
-Ezután készítse el a csomagot.
+Ezután hozza létre a csomagot.
 
 ```console
 mvn package
 ```
 
-Az alkalmazás `mvn` végrehajtásához futtassa a következő parancsot.
+Futtassa az alábbi `mvn` parancsot az alkalmazás végrehajtásához.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.blobs.quickstart.App" -Dexec.cleanupDaemonThreads=false
 ```
 
-Az alkalmazás kimenete hasonló a következő példához:
+Az alkalmazás kimenete az alábbi példához hasonló:
 
 ```output
 Azure Blob storage v12 - Java quickstart sample
@@ -341,18 +341,18 @@ Deleting the local source and downloaded files...
 Done
 ```
 
-A tisztítási folyamat megkezdése előtt ellenőrizze, hogy az *adatmappában* van-e a két fájl. Ha megnyitja őket, láthatja, hogy megegyeznek.
+A tisztítási folyamat megkezdése előtt tekintse *meg a két fájl adatmappáját* . Ha megnyitja őket, láthatja, hogy megegyeznek.
 
-Miután ellenőrizte a fájlokat, nyomja le az **Enter** billentyűt a tesztfájlok törléséhez és a bemutató befejezéséhez.
+A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhatja a blobokat Java használatával.
+Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat a Java használatával.
 
-A Blob storage mintaalkalmazásának megtekintéséhez folytassa a következőket:
+A blob Storage-beli minták alkalmazásainak megtekintéséhez folytassa a következőket:
 
 > [!div class="nextstepaction"]
-> [Az Azure Blob storage SDK v12 Java-mintái](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
+> [Azure Blob Storage SDK V12 Java-minták](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-blob/src/samples/java/com/azure/storage/blob)
 
-* További információ: [Az Azure SDK Java-hoz](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)című témakörben olvashat.
-* Oktatóanyagok, minták, rövid útmutatók és egyéb dokumentációk, látogasson el [az Azure for Java felhőfejlesztők.](/azure/developer/java/)
+* További információért lásd a [Javához készült Azure SDK](https://github.com/Azure/azure-sdk-for-java/blob/master/README.md)-t.
+* Az oktatóanyagok, minták, rövid útmutatók és egyéb dokumentációk az Azure-ban [a Java Cloud Developers szolgáltatásban](/azure/developer/java/)találhatók meg.

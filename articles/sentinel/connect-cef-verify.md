@@ -1,6 +1,6 @@
 ---
-title: Az Azure Sentinel hez való kapcsolódás ellenőrzése | Microsoft dokumentumok
-description: Ellenőrizze a biztonsági megoldás kapcsolatát, és győződjön meg arról, hogy a CEF-üzenetek továbbítása folyamatban van az Azure Sentinel számára.
+title: Az Azure Sentinel kapcsolatának ellenőrzése | Microsoft Docs
+description: Ellenőrizze a biztonsági megoldás kapcsolatát, és győződjön meg arról, hogy a CEF üzeneteket továbbítják az Azure Sentinelnek.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,34 +15,34 @@ ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 6b91e36ee09aa855c119add2c0eb268cf8b97393
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731817"
 ---
-# <a name="step-3-validate-connectivity"></a>3. LÉPÉS: A kapcsolat ellenőrzése
+# <a name="step-3-validate-connectivity"></a>3. lépés: a kapcsolat ellenőrzése
 
-Miután üzembe helyezte a naplótovábbító (az 1. lépésben), és konfigurálta a biztonsági megoldás, hogy küldje el cef üzeneteket (a 2. lépésben), kövesse az alábbi utasításokat a biztonsági megoldás és az Azure Sentinel közötti kapcsolat ellenőrzéséhez. 
+Miután telepítette a napló-továbbítót (az 1. lépésben), és úgy konfigurálta a biztonsági megoldást, hogy CEF üzeneteket küldjön (a 2. lépésben), kövesse ezeket az utasításokat a biztonsági megoldás és az Azure Sentinel közötti kapcsolat ellenőrzéséhez. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Emelt szintű engedélyekkel (sudo) kell rendelkeznie a naplótovábbító gépen.
+- Emelt szintű engedélyekkel (sudo) kell rendelkeznie a log továbbító számítógépén.
 
-- A Pythonnak telepítve kell lennie a naplótovábbító-gépen.<br>
-A `python –version` parancs segítségével ellenőrizze.
+- Telepítenie kell a Pythont a naplózási továbbító számítógépén.<br>
+A parancs `python –version` használatával keresse meg a következőt:.
 
-## <a name="how-to-validate-connectivity"></a>A kapcsolat ellenőrzése
+## <a name="how-to-validate-connectivity"></a>A kapcsolat érvényesítése
 
-1. Az Azure Sentinel navigációs menüjében nyissa **meg a Naplók ablakot.** Futtasson egy lekérdezést a **CommonSecurityLog** séma használatával, és nézze meg, hogy kap-e naplókat a biztonsági megoldásból.<br>
-Ne feledje, hogy körülbelül 20 percet vesz igénybe, amíg a naplók kezdenek megjelenni a **Log Analytics.** 
+1. Az Azure Sentinel navigációs menüjében nyissa meg a **naplók**elemet. Futtasson egy lekérdezést a **CommonSecurityLog** sémával, és ellenőrizze, hogy a biztonsági megoldásból kapott-e naplókat.<br>
+Vegye figyelembe, hogy körülbelül 20 percet vesz igénybe, amíg a naplók meg nem jelennek a **log Analyticsban**. 
 
-1. Ha nem lát eredményt a lekérdezésből, ellenőrizze, hogy a biztonsági megoldásból események jönnek-e létre, vagy próbáljon meg generálni néhányat, és ellenőrizze, hogy azok továbbítása a kijelölt Syslog szállítmányozó gépre van-e. 
+1. Ha nem látja az eredményeket a lekérdezésből, ellenőrizze, hogy az események a biztonsági megoldásból származnak-e, vagy próbáljon meg generálni, és ellenőrizze, hogy továbbítva vannak-e a kijelölt syslog-továbbító gépnek. 
 
-1. Futtassa a következő parancsfájlt a naplótovábbítón a biztonsági megoldás, a naplótovábbító és az Azure Sentinel közötti kapcsolat ellenőrzéséhez. Ez a parancsfájl ellenőrzi, hogy a démon figyeli-e a megfelelő portokat, hogy a továbbítás megfelelően van-e konfigurálva, és hogy semmi sem blokkolja a démon és a Log Analytics-ügynök közötti kommunikációt. Azt is küld álüzeneteket "TestCommonEventFormat", hogy ellenőrizze a végpontok közötti kapcsolat. <br>
+1. Futtassa a következő szkriptet a naplózási továbbítón a biztonsági megoldás, a naplózási továbbító és az Azure Sentinel közötti kapcsolat vizsgálatához. Ez a szkript ellenőrzi, hogy a démon figyeli-e a megfelelő portokat, hogy a továbbítás megfelelően van-e konfigurálva, és hogy semmi sem blokkolja a démon és a Log Analytics ügynök közötti kommunikációt. Emellett a "TestCommonEventFormat" nevű ál-üzeneteket is elküldi a végpontok közötti kapcsolat vizsgálatához. <br>
  `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_troubleshoot.py&&sudo python cef_troubleshoot.py [WorkspaceID]`
 
-## <a name="validation-script-explained"></a>Az érvényesítési parancsfájl magyarázata
+## <a name="validation-script-explained"></a>Érvényesítési parancsfájl magyarázata
 
 Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
 
@@ -50,9 +50,9 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
 
 1. Ellenőrzi, hogy a fájl<br>
     `/etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf`<br>
-    létezik, és érvényes.
+    létezik és érvényes.
 
-1. Ellenőrzi, hogy a fájl a következő szöveget tartalmazza-e:
+1. Ellenőrzi, hogy a fájl tartalmazza-e a következő szöveget:
 
         <source>
             type syslog
@@ -70,20 +70,20 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
             type filter_syslog_security
         </filter>
 
-1. Ellenőrzi, hogy vannak-e olyan biztonsági fejlesztések a számítógépen, amelyek blokkolhatják a hálózati forgalmat (például a gazdatűzfalat).
+1. Ellenőrzi, hogy vannak-e olyan biztonsági fejlesztések a gépen, amelyek blokkolják a hálózati forgalmat (például a gazda tűzfalat).
 
-1. Ellenőrzi, hogy a syslog démon (rsyslog) megfelelően van-e konfigurálva, hogy cef-ként (regex használatával) azonosító üzeneteket küldjön a 25226-os TCP-porton lévő Log Analytics-ügynöknek:
+1. Ellenőrzi, hogy a syslog démon (rsyslog) megfelelően van-e konfigurálva ahhoz, hogy üzeneteket küldjön a CEF (regex használatával) a 25226-es TCP-porton lévő Log Analytics ügynöknek:
 
     - Konfigurációs fájl:`/etc/rsyslog.d/security-config-omsagent.conf`
 
             :rawmsg, regex, "CEF\|ASA" ~
             *.* @@127.0.0.1:25226
 
-1. Ellenőrzi, hogy a syslog démon adatokat fogad-e az 514-es porton
+1. Ellenőrzi, hogy a syslog démon a 514-es porton fogad-e adatgyűjtést.
 
-1. A szükséges kapcsolatok létrehozásának ellenőrzése: tcp 514 az adatok fogadásához, tcp 25226 a syslog démon és a Log Analytics-ügynök közötti belső kommunikációhoz
+1. Ellenőrzi, hogy a szükséges kapcsolatok létrejöttek-e: TCP 514 az adatfogadáshoz, TCP 25226 a syslog démon és a Log Analytics ügynök közötti belső kommunikációhoz
 
-1. MOCK adatokat küld a localhost 514-es portjára. Ezeknek az adatoknak megfigyelhetőnek kell lenniük az Azure Sentinel-munkaterületen a következő lekérdezés futtatásával:
+1. A rendszer a (z) 514-as porton küldi el a modell adatokat Az alábbi lekérdezés futtatásával meg kell jelennie az Azure Sentinel munkaterületen:
 
         CommonSecurityLog
         | where DeviceProduct == "MOCK"
@@ -92,9 +92,9 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
 
 1. Ellenőrzi, hogy a fájl<br>
     `/etc/opt/microsoft/omsagent/[WorkspaceID]/conf/omsagent.d/security_events.conf`<br>
-    létezik, és érvényes.
+    létezik és érvényes.
 
-1. Ellenőrzi, hogy a fájl a következő szöveget tartalmazza-e:
+1. Ellenőrzi, hogy a fájl tartalmazza-e a következő szöveget:
 
         <source>
             type syslog
@@ -112,9 +112,9 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
             type filter_syslog_security
         </filter>
 
-1. Ellenőrzi, hogy vannak-e olyan biztonsági fejlesztések a számítógépen, amelyek blokkolhatják a hálózati forgalmat (például a gazdatűzfalat).
+1. Ellenőrzi, hogy vannak-e olyan biztonsági fejlesztések a gépen, amelyek blokkolják a hálózati forgalmat (például a gazda tűzfalat).
 
-1. Ellenőrzi, hogy a syslog démon (syslog-ng) megfelelően van-e konfigurálva, hogy cef-ként (regex használatával) azonosító üzeneteket küldjön a 25226-os TCP-porton lévő Log Analytics-ügynöknek:
+1. Ellenőrzi, hogy a syslog démon (syslog-ng) megfelelően van-e konfigurálva ahhoz, hogy üzeneteket küldjön a CEF (regex használatával) az Log Analytics ügynöknek a 25226-es TCP-porton:
 
     - Konfigurációs fájl:`/etc/syslog-ng/conf.d/security-config-omsagent.conf`
 
@@ -122,11 +122,11 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
             destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
             log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
 
-1. Ellenőrzi, hogy a syslog démon adatokat fogad-e az 514-es porton
+1. Ellenőrzi, hogy a syslog démon a 514-es porton fogad-e adatgyűjtést.
 
-1. A szükséges kapcsolatok létrehozásának ellenőrzése: tcp 514 az adatok fogadásához, tcp 25226 a syslog démon és a Log Analytics-ügynök közötti belső kommunikációhoz
+1. Ellenőrzi, hogy a szükséges kapcsolatok létrejöttek-e: TCP 514 az adatfogadáshoz, TCP 25226 a syslog démon és a Log Analytics ügynök közötti belső kommunikációhoz
 
-1. MOCK adatokat küld a localhost 514-es portjára. Ezeknek az adatoknak megfigyelhetőnek kell lenniük az Azure Sentinel-munkaterületen a következő lekérdezés futtatásával:
+1. A rendszer a (z) 514-as porton küldi el a modell adatokat Az alábbi lekérdezés futtatásával meg kell jelennie az Azure Sentinel munkaterületen:
 
         CommonSecurityLog
         | where DeviceProduct == "MOCK"
@@ -134,8 +134,8 @@ Az érvényesítési parancsfájl a következő ellenőrzéseket hajtja végre:
 ---
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan csatlakoztathatja a CEF-készülékeket az Azure Sentinelhez. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats.md)
-- Az adatok figyeléséhez [használjon munkafüzeteket.](tutorial-monitor-your-data.md)
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztathatók a CEF-készülékek az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
+- Az adatait a [munkafüzetek használatával](tutorial-monitor-your-data.md) figyelheti.
 

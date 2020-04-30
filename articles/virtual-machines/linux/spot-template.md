@@ -1,6 +1,6 @@
 ---
-title: Sablon használata az Azure Spot virtuális gépek üzembe helyezéséhez
-description: Ismerje meg, hogyan használhat sablont a direkt virtuális gépek üzembe helyezéséhez a költségek csökkentése érdekében.
+title: Azure spot virtuális gépek üzembe helyezése sablon használatával
+description: Megtudhatja, hogyan helyezhet üzembe helyszíni virtuális gépeket sablon használatával a költségek megtakarítása érdekében.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -9,24 +9,24 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 2d546e9154352ec90aa1b1a457eb5320979239d2
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758347"
 ---
-# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Azonnali virtuális gépek telepítése Erőforrás-kezelő sablon használatával
+# <a name="deploy-spot-vms-using-a-resource-manager-template"></a>Helyszíni virtuális gépek üzembe helyezése Resource Manager-sablonnal
 
-A [spot virtuális gépek](spot-vms.md) használatával jelentős költségmegtakarítást eredményezhet a kihasználatlan kapacitás kihasználása. Bármikor, amikor az Azure-nak szüksége van a kapacitás vissza, az Azure-infrastruktúra kilakoltatja spot virtuális gépek. Ezért a direkt virtuális gépek kiválóan szolgálnak olyan számítási feladatokhoz, amelyek kezelni tudják a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási számítási feladatokat és egyebeket.
+A [helyszíni virtuális gépek](spot-vms.md) használata lehetővé teszi, hogy a kihasználatlan kapacitást jelentős költségmegtakarítással használja. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
-A direkt virtuális gépek díjszabása változó, a régió és a termékváltozat alapján. További információ: VM-díjszabás [Linuxra](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windowsra.](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)
+A helyszíni virtuális gépek díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/).
 
-Lehetősége van arra, hogy állítsa be a maximális árat, amelyet hajlandó fizetni, óránként, a virtuális gép. A direktvirtuális gép maximális ára usa dollárban (USD) állítható be, legfeljebb 5 tizedesjegy használatával. Az érték `0.98765`például óránként $0,98765 USD max ár. Ha a maximális árat `-1`állítja be, a virtuális gép nem lesz kizárva az ár alapján. A virtuális gép ára a Direktség aktuális ára vagy egy szabványos virtuális gép ára lesz, amely valaha is kevesebb, mindaddig, amíg van kapacitás és kvóta. A maximális ár beállításáról további információt a Azonnali virtuális gépek – árképzés című témakörben [talál.](spot-vms.md#pricing)
+Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő maximális árat adja meg. A helyszíni virtuális gépek maximális díja az USA dollárban (USD) állítható be, akár 5 tizedesjegyet is igénybe vehet. Az érték `0.98765`például a maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1`, a virtuális gép ára nem kerül kizárásra. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta. A maximális ár beállításával kapcsolatos további információkért lásd: [virtuális gépek – díjszabás](spot-vms.md#pricing).
 
 
 ## <a name="use-a-template"></a>Sablon használata
 
-Direktszínsablon-telepítések esetén használja`"apiVersion": "2019-03-01"` vagy később. Adja `priority`hozzá `evictionPolicy` `billingProfile` a és a tulajdonságokat a sablonban:
+A helyszíni sablonok üzembe helyezéséhez használja`"apiVersion": "2019-03-01"` a vagy a újabb verziót. Adja hozzá `priority`a `evictionPolicy` és `billingProfile` a tulajdonságokat a sablonhoz:
 
 ```json
 "priority": "Spot",
@@ -36,7 +36,7 @@ Direktszínsablon-telepítések esetén használja`"apiVersion": "2019-03-01"` v
 }
 ```
 
-Az alábbiakban egy mintasablon a hozzáadott tulajdonságok egy direkt virtuális gép. Cserélje le az erőforrás `<password>` neveket a saját és egy jelszót a helyi rendszergazdai fiók a virtuális gép.
+Itt látható egy példa a helyszíni virtuális gép hozzáadott tulajdonságait tartalmazó sablonra. Cserélje le az erőforrás nevét a saját és `<password>` a virtuális gépen a helyi rendszergazdai fiók jelszavára.
 
 ```json
 {
@@ -175,6 +175,6 @@ Az alábbiakban egy mintasablon a hozzáadott tulajdonságok egy direkt virtuál
 
 ## <a name="next-steps"></a>További lépések
 
-Direkt virtuális gép az [Azure PowerShell](../windows/spot-powershell.md) vagy az [Azure CLI](spot-cli.md)használatával is létrehozhat.
+[Azure PowerShell](../windows/spot-powershell.md) vagy az [Azure CLI](spot-cli.md)használatával is létrehozhat egy direkt virtuális gépet.
 
-Ha hibát észlel, olvassa el a [Hibakódok című témakört.](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Ha hibát tapasztal, tekintse meg a [hibakódokat](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

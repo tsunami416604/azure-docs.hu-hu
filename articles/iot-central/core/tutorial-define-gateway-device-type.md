@@ -1,6 +1,6 @@
 ---
-title: Új átjáróeszköztípus definiálása az Azure IoT Centralban | Microsoft dokumentumok
-description: Ez az oktatóanyag bemutatja, mint egy építő, hogyan definiálhat egy új IoT-átjáró eszköztípus az Azure IoT Central-alkalmazásban.
+title: Új átjáró típusú eszköz definiálása az Azure IoT Centralban | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan definiálhat egy új IoT-átjárót az Azure IoT Central-alkalmazásban.
 author: rangv
 ms.author: rangv
 ms.date: 10/22/2019
@@ -10,206 +10,206 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 2411eab50cc921a09ba55780b3c6620744a78f3f
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81758124"
 ---
-# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Új IoT-átjáróeszköztípus definiálása az Azure IoT Central alkalmazásban
+# <a name="define-a-new-iot-gateway-device-type-in-your-azure-iot-central-application"></a>Új IoT-átjáró típusú eszköz definiálása az Azure IoT Central-alkalmazásban
 
-*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
+*Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
-Ez az oktatóanyag bemutatja, mint a megoldás készítője, hogyan használhat egy átjáróeszköz-sablont egy átjáróeszköz definiálásához az IoT Central alkalmazásban. Ezután konfigurálja az IoT Central-alkalmazáshoz az átjáróeszközön keresztül csatlakozó alsóbb rétegbeli eszközöket. 
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a megoldás-előkészítőt az átjáró-eszközök a IoT Central alkalmazásban való definiálásához. Ezután konfigurálhat több alsóbb rétegbeli eszközt, amely az átjáró-eszközön keresztül csatlakozik a IoT Central-alkalmazáshoz. 
 
-Ebben az oktatóanyagban egy **Smart Building** átjáróeszköz-sablont hoz létre. A **Smart Building** átjáróeszköz kapcsolatban áll más alsóbb rétegbeli eszközökkel.
+Ebben az oktatóanyagban létrehoz egy **intelligens felépítési** átjáró-eszköz sablonját. Az **intelligens felépítési** átjáró eszközei más alsóbb rétegbeli eszközökkel való kapcsolattal rendelkeznek.
 
-![Az átjáróeszköz és az alsóbb rétegbeli eszközök közötti kapcsolat diagramja](./media/tutorial-define-gateway-device-type/gatewaypattern.png)
+![Az átjáró-eszköz és az alsóbb rétegbeli eszközök közötti kapcsolat diagramja](./media/tutorial-define-gateway-device-type/gatewaypattern.png)
 
-Az átjáróeszközök az IoT Central alkalmazással való kommunikáció lehetővé tétele mellett a következőket is megtehetik:
+A IoT Central alkalmazással folytatott kommunikációt lehetővé tevő alsóbb szintű eszközök esetében az átjáró eszköz is a következőket teheti:
 
-* Küldje el a saját telemetriai adatokat, például a hőmérsékletet.
-* Válaszoljon az operátor által készített írható tulajdonságfrissítésekre. Például egy operátor módosíthatja a telemetriai küldési időközt.
+* Küldje el saját telemetria, például a hőmérsékletet.
+* Válaszoljon az operátor által készített írható tulajdonságokra. Egy operátor például módosíthatja a telemetria küldési intervallumát.
 * Válaszoljon a parancsokra, például az eszköz újraindítására.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez létre kell [hoznia egy Azure IoT Central alkalmazást.](./quick-deploy-iot-central.md)
+Az oktatóanyag elvégzéséhez [létre kell hoznia egy Azure IoT Central alkalmazást](./quick-deploy-iot-central.md).
 
-## <a name="create-downstream-device-templates"></a>Alsóbb rétegbeli eszközsablonok létrehozása
+## <a name="create-downstream-device-templates"></a>Alsóbb rétegbeli eszközök sablonjainak létrehozása
 
-Ez az oktatóanyag eszközsablonokat használ egy **S1 érzékelő** eszközhöz és egy **RS40-es kihasználtsági érzékelő** eszközt szimulált alsóbb rétegbeli eszközök létrehozásához.
+Ez az oktatóanyag egy **S1 szenzoros** eszközhöz és egy **RS40-befoglalási érzékelő** eszközhöz készült eszközök sablonjait használja a szimulált alsóbb szintű eszközök létrehozásához.
 
-Eszközsablon létrehozása **S1 érzékelőeszközhöz:**
+Eszköz sablonjának létrehozása **S1 szenzoros** eszközhöz:
 
-1. A bal oldali ablaktáblában válassza az **Eszközsablonok lehetőséget.** Ezután **+** válassza a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza **+** a lehetőséget a sablon hozzáadásának megkezdéséhez.
 
-1. Görgessen lefelé, amíg meg nem jelenik az S1 érzékelő eszköz **csempéje.** Jelölje ki a csempét, majd a **Tovább: Testreszabás**lehetőséget.
+1. Görgessen lefelé, amíg meg nem jelenik az **S1 érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
-1. A **Véleményezés** lapon válassza a **Létrehozás** lehetőséget, ha hozzá szeretné adni az eszközsablont az alkalmazáshoz. 
+1. A **felülvizsgálat** lapon válassza a **Létrehozás** lehetőséget az eszköz sablonjának az alkalmazáshoz való hozzáadásához. 
 
-Eszközsablon létrehozása ***RS40-es kihasználtságérzékelő eszközhöz:**
+Eszköz sablonjának létrehozása ***RS40 foglaltság érzékelő** eszközhöz:
 
-1. A bal oldali ablaktáblában válassza az **Eszközsablonok lehetőséget.** Ezután **+** válassza a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza **+** a lehetőséget a sablon hozzáadásának megkezdéséhez.
 
-1. Görgessen lefelé, amíg meg nem jelenik a ***RS40 kihasználtságérzékelő eszköz csempéje.** Jelölje ki a csempét, majd a **Tovább: Testreszabás**lehetőséget.
+1. Görgessen lefelé, amíg meg nem jelenik a ***RS40 foglaltság érzékelő** eszköz csempéje. Válassza ki a csempét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
-1. A **Véleményezés** lapon válassza a **Létrehozás** lehetőséget, ha hozzá szeretné adni az eszközsablont az alkalmazáshoz. 
+1. A **felülvizsgálat** lapon válassza a **Létrehozás** lehetőséget az eszköz sablonjának az alkalmazáshoz való hozzáadásához. 
 
-Most már rendelkezik eszközsablonokkal a két alsóbb rétegbeli eszköztípushoz:
+Most már rendelkezik a két alsóbb rétegbeli eszközhöz tartozó eszközök sablonjaival:
 
-![Eszközsablonok alsóbb rétegbeli eszközökhöz](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
+![Eszköz sablonjai az alárendelt eszközökhöz](./media/tutorial-define-gateway-device-type/downstream-device-types.png)
 
 
 ## <a name="create-a-gateway-device-template"></a>Átjáró-eszközsablon létrehozása
 
-Ebben az oktatóanyagban egy teljesen új átjáróeszköz eszközsablont hoz létre. Ezt a sablont később egy szimulált átjáróeszköz létrehozásához az alkalmazásban.
+Ebben az oktatóanyagban egy eszköz sablonját hozza létre az átjáró-eszköz számára. Ezt a sablont később egy szimulált átjáró-eszköz létrehozásához használhatja az alkalmazásban.
 
-Új átjáróeszköz-sablon hozzáadása az alkalmazáshoz:
+Új Gateway-eszköz sablonjának hozzáadása az alkalmazáshoz:
 
-1. A bal oldali ablaktáblában válassza az **Eszközsablonok lehetőséget.** Ezután **+** válassza a sablon hozzáadásának megkezdéséhez.
+1. A bal oldali panelen válassza az **eszközök sablonjai**elemet. Ezután válassza **+** a lehetőséget a sablon hozzáadásának megkezdéséhez.
 
-1. A **Sablontípus kiválasztása** lapon jelölje ki az **IoT-eszköz csempét,** majd kattintson a **Tovább gombra: Testreszabás**.
+1. A **sablon típusának kiválasztása** lapon válassza ki a **IoT-eszköz** csempéjét, majd válassza a **Tovább: testreszabás**lehetőséget.
 
-1. Az **Eszköz testreszabása** lapon jelölje be az **Átjáróeszköz** jelölőnégyzetet.
+1. Az **eszköz testreszabása** lapon jelölje be az **átjáró eszköz** jelölőnégyzetet.
 
-1. A **Véleményezés** lapon válassza a **Létrehozás gombot.** 
+1. Az **Áttekintés** lapon válassza a **Létrehozás**lehetőséget. 
 
-1. Adja meg a **Smart Building átjáróeszköz** sablonnevét.
+1. Adja meg az **intelligens Building Gateway eszközt** a sablon neveként.
 
-1. A **Képességmodell létrehozása** lapon válassza az **Egyéni** csempe lehetőséget.
+1. A **képesség modell létrehozása** lapon válassza az **Egyéni** csempét.
 
-1. Válassza **+** a felület hozzáadásához.  Válassza az **Eszközinformáció** szabványos felületet.
+1. Válassza **+** a lehetőséget egy felület hozzáadásához.  Válassza ki az **eszköz adatai** standard felületet.
 
 ### <a name="add-relationships"></a>Kapcsolatok hozzáadása
 
-Ezután kapcsolatokat ad hozzá az alsóbb rétegbeli eszközsablonok sablonjaihoz:
+Következő lépésként vegyen fel kapcsolatokat az alsóbb rétegbeli eszközök sablonjaihoz:
 
-1. A **Smart Building átjáróeszközsablonban** válassza a **Kapcsolatok lehetőséget.**
+1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **kapcsolatok**lehetőséget.
 
-1. Válassza **a + Kapcsolat hozzáadása**lehetőséget. Adja meg **a Környezeti érzékelő** nevet a megjelenítendő névként, és válassza az **S1 érzékelő t** a célként.
+1. Válassza a **+ kapcsolat hozzáadása**elemet. Adja meg a **környezeti érzékelőt** a megjelenítendő név mezőben, majd válassza az **S1 szenzor** lehetőséget célként.
 
-1. Ismét válassza **a + Kapcsolat hozzáadása lehetőséget.** A Megjelenítendő névként adja meg a **Kihasználtságérzékelő** t, és válassza az **RS40-es kihasználtsági érzékelőt** a célpontként.
+1. Válassza a **+ kapcsolat hozzáadása** elemet. Adja meg a **kihasználtsági érzékelőt** a megjelenítendő név mezőben, és válassza ki a **RS40-kihasználtsági érzékelőt** célként.
 
 1. Kattintson a **Mentés** gombra.
 
-![Smart Building átjáróeszköz-sablon, amely megmutatja a kapcsolatokat](./media/tutorial-define-gateway-device-type/relationships.png)
+![Smart Building Gateway-eszköz sablon, kapcsolatok megjelenítése](./media/tutorial-define-gateway-device-type/relationships.png)
 
-### <a name="add-cloud-properties"></a>Felhőtulajdonságok hozzáadása
+### <a name="add-cloud-properties"></a>Felhő tulajdonságainak hozzáadása
 
-Az átjáróeszköz-sablon felhőalapú tulajdonságokat is tartalmazhat. A felhőtulajdonságok csak az IoT Central alkalmazásban léteznek, és soha nem küldik el vagy fogadják az eszközről.
+Az átjáró-eszköz sablonja tartalmazhat Felhőbeli tulajdonságokat. A felhő tulajdonságai csak a IoT Central alkalmazásban érhetők el, és a rendszer soha nem továbbítja, vagy nem fogadja az eszközt.
 
-Felhőtulajdonságok hozzáadása a **Smart Building átjáróeszköz-sablonhoz.**
+Felhő tulajdonságainak hozzáadása az **intelligens felépítési átjáró eszköz** sablonhoz.
 
-1. A **Smart Building átjáróeszköz** sablonjában válassza a **Felhőtulajdonságok lehetőséget.**
+1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **felhő tulajdonságai**elemet.
 
-1.  Az alábbi táblázatban található információk segítségével két felhőtulajdonságot adhat hozzá az átjáróeszköz-sablonhoz.
+1.  A következő táblázatban található információk segítségével két Felhőbeli tulajdonságot adhat hozzá az átjáró-eszköz sablonhoz.
 
     | Megjelenített név      | Szemantikai típus | Séma |
     | ----------------- | ------------- | ------ |
     | Utolsó szervizelés dátuma | None          | Dátum   |
-    | Vevő neve     | None          | Sztring |
+    | Ügyfél neve     | None          | Sztring |
 
 2. Kattintson a **Mentés** gombra.
 
 ### <a name="create-views"></a>Nézetek létrehozása
 
-Építőként testreszabhatja az alkalmazást, hogy a környezeti érzékelő eszközével kapcsolatos releváns információkat megjelenítse az üzemeltető számára. A testreszabások lehetővé teszik az üzemeltető számára az alkalmazáshoz csatlakoztatott környezetérzékelő eszközök kezelését. Kétféle nézetet hozhat létre az operátorok számára az eszközökkel való kommunikációhoz:
+Építőként testreszabhatja az alkalmazást, hogy a megfelelő információkat jelenítse meg a környezeti érzékelő eszközéről egy operátorra. A testreszabások lehetővé teszik, hogy az operátor felügyelje az alkalmazáshoz kapcsolódó környezeti érzékelők eszközeit. Kétféle nézetet hozhat létre az operátorok számára az eszközök használatához:
 
-* Űrlapok az eszköz- és felhőtulajdonságok megtekintéséhez és szerkesztéséhez.
+* Az eszközök és a felhő tulajdonságainak megtekintésére és szerkesztésére szolgáló űrlapok.
 * Irányítópultok az eszközök megjelenítéséhez.
 
-A **Smart Building átjáróeszközsablon** alapértelmezett nézeteinek létrehozása:
+Az **intelligens építési átjáró eszköz** sablonjának alapértelmezett nézeteinek előállítása:
 
-1. A **Smart Building átjáróeszközsablonban** válassza a **Nézetek**lehetőséget.
+1. Az **intelligens építési átjáró eszköz** sablonjában válassza a **nézetek**elemet.
 
-1. Válassza az Alapértelmezett nézetek létrehozása csempe **lehetőséget,** és győződjön meg arról, hogy az összes beállítás ki van jelölve.
+1. Válassza az **alapértelmezett nézetek előállítása** csempét, és győződjön meg arról, hogy az összes beállítás ki van választva.
 
-1. Válassza **az Alapértelmezett irányítópult-nézet(ek) létrehozása lehetőséget.**
+1. Válassza az **alapértelmezett irányítópult-nézet (ek) előállítása**lehetőséget.
 
-## <a name="publish-the-device-template"></a>Az eszközsablon közzététele
+## <a name="publish-the-device-template"></a>Az eszköz közzétételének közzététele
 
-Mielőtt létrehozhatna egy szimulált átjáróeszközt, vagy csatlakoztathatna egy valódi átjáróeszközt, közzé kell tennie az eszközsablont.
+Szimulált átjáró létrehozása előtt vagy valódi átjáró-eszköz csatlakoztatása előtt közzé kell tennie az eszköz sablonját.
 
-Az átjáróeszköz-sablon közzététele:
+Az átjáró-eszköz sablonjának közzététele:
 
-1. Válassza ki a **Smart Building átjáró eszközsablont** az **Eszközsablonok** lapon.
+1. Válassza ki az **intelligens felépítési átjáró eszköz** sablonját az **eszközök sablonjai** lapon.
 
 2. Kattintson a **Publish** (Közzététel) elemre.
 
-3. Az **Eszközsablon közzététele** párbeszédpanelen válassza a **Közzététel**lehetőséget.
+3. Az **eszköz sablonjának közzététele** párbeszédpanelen válassza a **Közzététel**lehetőséget.
 
-Az eszközsablon közzététele után az **eszközök** lapon és az operátor számára is látható. Egy közzétett eszközsablonban nem szerkesztheti az eszközképességi modellt új verzió létrehozása nélkül. A felhőtulajdonságokat, a testreszabásokat és a nézeteket azonban egy közzétett eszközsablonban is módosíthatja. Ezek a frissítések nem eredményeznek új verziót. A módosítások elvégzése után válassza **a Közzététel** lehetőséget, ha a módosításokat ki szeretné adni a szolgáltatónak.
+Egy sablon közzététele után az eszköz megjelenik az **eszközök** lapon és a kezelőben. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszköz sablonjában azonban frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. Ezek a frissítések nem okozzák új verzió létrehozását. A módosítások elvégzése után válassza a **Közzététel** lehetőséget a módosítások elküldéséhez az operátornak.
 
-## <a name="create-the-simulated-devices"></a>A szimulált eszközök létrehozása
+## <a name="create-the-simulated-devices"></a>Szimulált eszközök létrehozása
 
-Ez az oktatóanyag szimulált alsóbb rétegbeli eszközöket és szimulált átjáróeszközt használ.
+Ez az oktatóanyag szimulált alsóbb rétegbeli eszközöket és szimulált átjárót használó eszközt használ.
 
-Szimulált átjáróeszköz létrehozása:
+Szimulált átjáró eszköz létrehozása:
 
-1. Az **Eszközök** lapon válassza a **Smart Building átjáróeszköz** lehetőséget az eszközsablonok listájában.
+1. Az **eszközök** lapon válassza az **intelligens felépítési átjáró eszköz** elemet az eszközök listájában.
 
-1. Új **+** eszköz hozzáadásának megkezdéséhez válassza ezt a lehetőséget.
+1. Új **+** eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
-1. Tartsa meg a létrehozott **eszközazonosítót** és **az eszköz nevét.** Győződjön meg arról, hogy a **Szimulált** kapcsoló be van **kapcsolva.** Kattintson a **Létrehozás** gombra.
+1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
 
-Szimulált alsóbb rétegbeli eszközök létrehozása:
+Szimulált alsóbb szintű eszközök létrehozása:
 
-1. Az **Eszközök** lapon válassza az **RS40-es kihasználtsági érzékelő lehetőséget** az eszközsablonok listájában.
+1. Az **eszközök** lapon válassza a **RS40-kihasználtsági érzékelő** elemet az eszközök listájában.
 
-1. Új **+** eszköz hozzáadásának megkezdéséhez válassza ezt a lehetőséget.
+1. Új **+** eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
-1. Tartsa meg a létrehozott **eszközazonosítót** és **az eszköz nevét.** Győződjön meg arról, hogy a **Szimulált** kapcsoló be van **kapcsolva.** Kattintson a **Létrehozás** gombra.
+1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
 
-1. Az **Eszközök** lapon válassza az **S1-érzékelő** lehetőséget az eszközsablonok listájában.
+1. Az **eszközök** lapon válassza az **S1 Sensor** elemet az eszközök listájában.
 
-1. Új **+** eszköz hozzáadásának megkezdéséhez válassza ezt a lehetőséget.
+1. Új **+** eszköz hozzáadásának megkezdéséhez válassza a lehetőséget.
 
-1. Tartsa meg a létrehozott **eszközazonosítót** és **az eszköz nevét.** Győződjön meg arról, hogy a **Szimulált** kapcsoló be van **kapcsolva.** Kattintson a **Létrehozás** gombra.
+1. Tartsa meg a generált **eszköz azonosítóját** és az **eszköz nevét**. Győződjön meg arról, hogy a **szimulált** kapcsoló **be van kapcsolva**. Kattintson a **Létrehozás** gombra.
 
 ![Szimulált eszközök az alkalmazásban](./media/tutorial-define-gateway-device-type/simulated-devices.png)
 
-### <a name="add-downstream-device-relationships-to-a-gateway-device"></a>Alsóbb rétegbeli eszközkapcsolatok hozzáadása átjáróeszközhöz
+### <a name="add-downstream-device-relationships-to-a-gateway-device"></a>Alsóbb rétegbeli eszköz kapcsolatainak hozzáadása egy átjáró-eszközhöz
 
-Most, hogy már a szimulált eszközök az alkalmazásban, létrehozhatja a kapcsolatot az alsóbb rétegbeli eszközök és az átjáró eszköz:
+Most, hogy már rendelkezik a szimulált eszközökkel az alkalmazásban, létrehozhatók az alsóbb rétegbeli eszközök és az átjáró eszköz közötti kapcsolatok:
 
-1. Az **Eszközök** lapon válassza az **S1-érzékelő** lehetőséget az eszközsablonok listájában, majd válassza ki a szimulált **S1 érzékelő** eszközt.
+1. Az **eszközök** lapon válassza az **S1 Sensor** elemet az eszközök listájában, majd válassza ki a szimulált **S1 érzékelő** eszközt.
 
-1. Válassza **a Csatlakozás átjáróhoz**lehetőséget.
+1. Válassza **a kapcsolódás átjáróhoz**lehetőséget.
 
-1. A **Csatlakozás átjáróhoz** párbeszédpanelen jelölje ki a **Smart Building átjáróeszköz-sablont,** majd válassza ki a korábban létrehozott szimulált példányt.
+1. A **Kapcsolódás átjáróhoz** párbeszédpanelen válassza ki az **intelligens felépítési átjáró eszköz** sablonját, majd válassza ki a korábban létrehozott szimulált példányt.
 
-1. Válassza **a Csatlakozás**lehetőséget.
+1. Válassza a **Csatlakozás**lehetőséget.
 
-1. Az **Eszközök** lapon válassza az **RS40-es kihasználtsági érzékelő lehetőséget** az eszközsablonok listájában, majd válassza ki a szimulált **RS40-es kihasználtságérzékelő** eszközt.
+1. Az **eszközök** lapon válassza a **RS40-kihasználtsági érzékelő** elemet az eszközbeállítások listájában, majd válassza ki a szimulált **RS40 foglalási érzékelő** eszközt.
 
-1. Válassza **a Csatlakozás átjáróhoz**lehetőséget.
+1. Válassza **a kapcsolódás átjáróhoz**lehetőséget.
 
-1. A **Csatlakozás átjáróhoz** párbeszédpanelen jelölje ki a **Smart Building átjáróeszköz-sablont,** majd válassza ki a korábban létrehozott szimulált példányt.
+1. A **Kapcsolódás átjáróhoz** párbeszédpanelen válassza ki az **intelligens felépítési átjáró eszköz** sablonját, majd válassza ki a korábban létrehozott szimulált példányt.
 
-1. Válassza **a Csatlakozás**lehetőséget.
+1. Válassza a **Csatlakozás**lehetőséget.
 
-Mindkét szimulált alsóbb rétegbeli eszköz most csatlakozik a szimulált átjáróeszközhöz. Ha az átjáróeszköz **alsóbb rétegbeli eszközök** nézetére lép, láthatja a kapcsolódó alsóbb rétegbeli eszközöket:
+A szimulált alsóbb szintű eszközök most már csatlakozva vannak a szimulált átjáró-eszközhöz. Ha az átjáró-eszközhöz tartozó **alsóbb rétegbeli eszközök** nézetre navigál, láthatja a kapcsolódó alsóbb rétegbeli eszközöket:
 
-![Alsóbb rétegbeli eszközök nézete](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
+![Alsóbb rétegbeli eszközök nézet](./media/tutorial-define-gateway-device-type/downstream-device-view.png)
 
-Jelöljön ki egy átjáróeszköz-sablont és átjáróeszköz-példányt, és válassza a **Csatlakozás**lehetőséget.
+Válassza ki az átjáró-eszköz sablonját és az átjáró eszköz példányát, és válassza a **Csatlakozás**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
-* Hozzon létre egy új IoT-átjárót eszközsablonként.
-* Hozzon létre felhőtulajdonságokat.
+* Hozzon létre egy új IoT-átjárót eszköz sablonként.
+* Felhő tulajdonságainak létrehozása
 * Testreszabások létrehozása.
-* Vizualizációdefiniálása az eszköz telemetriai adataihoz.
+* Adjon meg egy vizualizációt az eszköz telemetria.
 * Kapcsolatok hozzáadása.
-* Tegye közzé az eszközsablont.
+* Tegye közzé az eszköz sablonját.
 
 > [!NOTE]
-> A VS code alapú kódgenerálás jelenleg nem támogatott az IoT Centralban modellezett átjáróeszközök esetében.
+> A VS Code-alapú programkódok létrehozása jelenleg nem támogatott a IoT Centralban modellezett átjáró eszközök esetében.
 
-Ezután eszközfejlesztőként megtudhatja, hogyan teheti meg:
+A következő lépésként az eszköz fejlesztője a következőket ismerteti:
 
 > [!div class="nextstepaction"]
-> [Azure IoT Edge-eszköz hozzáadása az Azure IoT Central alkalmazáshoz](tutorial-add-edge-as-leaf-device.md)
+> [Azure IoT Edge-eszköz hozzáadása az Azure IoT Central-alkalmazáshoz](tutorial-add-edge-as-leaf-device.md)

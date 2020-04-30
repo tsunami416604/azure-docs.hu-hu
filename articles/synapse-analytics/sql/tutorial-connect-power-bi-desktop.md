@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az SQL igény szerinti csatlakoztatása (előzetes verzió) csatlakoztatása a Power BI Desktop & jelentés létrehozásához'
-description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathat az SQL-t igény szerinti (előzetes verzió) az Azure Synapse Analytics szolgáltatásban a Power BI asztali verziójához, és hogyan hozhat létre bemutatójelentést egy nézet alapján.
+title: 'Oktatóanyag: az SQL on-demand (előzetes verzió) összekapcsolása Power BI Desktop & jelentés létrehozása'
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban Power BI Desktophoz, és hogyan hozhat létre bemutató jelentést egy nézet alapján.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -10,44 +10,44 @@ ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
 ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81769484"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Oktatóanyag: Az SQL igény szerinti csatlakoztatása (előzetes verzió) csatlakoztatása a Power BI Desktop & jelentés létrehozásához
+# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Oktatóanyag: az SQL on-demand (előzetes verzió) összekapcsolása Power BI Desktop & jelentés létrehozása
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
-> - Demó-adatbázis létrehozása
+> - Bemutató adatbázis létrehozása
 > - Jelentéshez használt nézet létrehozása
 > - Csatlakozás a Power BI Desktophoz
 > - Jelentés létrehozása nézet alapján
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez a következő szoftverekre van szükség:
+Az oktatóanyag elvégzéséhez a következő szoftverek szükségesek:
 
-- SQL-lekérdezési eszköz, például [az Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)vagy az SQL Server Management Studio [(SSMS).](/sql/ssms/download-sql-server-management-studio-ssms)
-- [Power BI Desktop](https://powerbi.microsoft.com/downloads/).
+- Egy SQL-lekérdezési eszköz, például [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio)vagy [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms).
+- [Power bi Desktop](https://powerbi.microsoft.com/downloads/).
 
 A következő paraméterek értékei:
 
 | Paraméter                                 | Leírás                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| SQL igény szerinti szolgáltatás végpontcíme    | Kiszolgálónévként használva                                   |
-| SQL igény szerinti szolgáltatásvégpont-régió     | A mintákban használt tároló meghatározásához |
-| Felhasználónév és jelszó a végpontokhoz való hozzáféréshez | Végpont eléréséhez használva                               |
-| Nézetek létrehozásához használt adatbázis     | A minták kiindulási pontjaként használt adatbázis       |
+| Igény szerinti SQL-szolgáltatás végpontjának címe    | Kiszolgáló neveként használatos                                   |
+| Igény szerinti SQL-szolgáltatás végpontjának régiója     | A mintákban használt tárterület meghatározására szolgál |
+| A végpontok hozzáférésének felhasználóneve és jelszava | Végponthoz való hozzáféréshez használatos                               |
+| A nézetek létrehozásához használni kívánt adatbázis     | A mintákban kiindulási pontként használt adatbázis       |
 
-## <a name="1---create-database"></a>1 - Adatbázis létrehozása
+## <a name="1---create-database"></a>1 – adatbázis létrehozása
 
-A demo környezetben, hozzon létre saját demo adatbázis. Az adatbázis segítségével metaadatokat tekinthet meg, nem pedig tényleges adatokat.
+A bemutató környezethez hozzon létre egy saját bemutató-adatbázist. Ezzel az adatbázissal megtekintheti a metaadatokat, és nem tárolhatja a tényleges adatokat.
 
-Hozza létre a demó adatbázist (és szükség esetén eldobjon egy meglévő adatbázist) a következő Transact-SQL (T-SQL) parancsfájl futtatásával:
+A következő Transact-SQL (T-SQL) parancsfájl futtatásával hozza létre a bemutató adatbázist (és szükség esetén dobja el a meglévő adatbázist):
 
 ```sql
 -- Drop database if it exists
@@ -62,9 +62,9 @@ CREATE DATABASE [Demo];
 GO
 ```
 
-## <a name="2---create-credential"></a>2 - Hitelesítő adatok létrehozása
+## <a name="2---create-credential"></a>2 – hitelesítő adat létrehozása
 
-A hitelesítő adatok szükségesek az SQL igény szerinti szolgáltatás a tárolóban lévő fájlok eléréséhez. Hozza létre a hitelesítő adatokat egy tárfiók, amely ugyanabban a régióban található, mint a végpont. Bár az SQL igény szerinti hozzáférés különböző régiókból származó tárfiókok, a tárolás és a végpont ugyanabban a régióban jobb teljesítményt nyújt.
+Hitelesítő adatok szükségesek ahhoz, hogy az SQL igény szerinti szolgáltatás hozzáférjen a fájlokhoz a tárolóban. Hozzon létre egy olyan Storage-fiók hitelesítő adatait, amely ugyanabban a régióban található, mint a végpont. Bár az SQL igény szerint hozzáférhet a különböző régiókban található Storage-fiókokhoz, és az azonos régióban található tároló és végpont jobb teljesítményt biztosít.
 
 Hozza létre a hitelesítő adatokat a következő Transact-SQL (T-SQL) parancsfájl futtatásával:
 
@@ -81,11 +81,11 @@ SECRET = '';
 GO
 ```
 
-## <a name="3---prepare-view"></a>3 - Előkészítés nézet
+## <a name="3---prepare-view"></a>3 – nézet előkészítése
 
-Hozza létre a nézetet a Power BI által felhasználható külső bemutatóadatok alapján a következő Transact-SQL (T-SQL) parancsfájl futtatásával:
+A következő Transact-SQL-(T-SQL-) parancsfájl futtatásával hozza létre a nézetet a Power BI külső bemutatójának alapján:
 
-Hozza létre `usPopulationView` az `Demo` adatbázison belüli nézetet a következő lekérdezéssel:
+Hozza létre a `usPopulationView` nézetet az adatbázison `Demo` belül a következő lekérdezéssel:
 
 ```sql
 DROP VIEW IF EXISTS usPopulationView;
@@ -101,66 +101,66 @@ FROM
     ) AS uspv;
 ```
 
-A bemutató adatok a következő adatkészleteket tartalmazzák:
+A bemutatóban szereplő adat a következő adatkészleteket tartalmazza:
 
-Amerikai lakosság nemek és a faj minden amerikai megyében származó 2000-ben és 2010-ben tízévenkénti népszámlálás parketta formátumban.
+Az USA népessége nemek és faji hovatartozás szerint, a 2000-es és a 2010-es Decennial-népszámlálás a parketta formátumában.
 
 | Mappa elérési útja                                                  | Leírás                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| /release/                                                    | Szülőmappa a bemutatótárfiókban lévő adatokhoz               |
-| /release/us_population_county/                               | Us population data files in Parquet format, partitioned by year using Hive/Hadoop partitioning scheme. |
+| /Release parancsot                                                    | A demo Storage-fiókban lévő adatszülő mappa               |
+| /Release/us_population_county/                               | Az USA-beli populációs adatfájlok parkettás formátumban, évről évre particionálva a kaptár/Hadoop particionálási sémával. |
 
-## <a name="4---create-power-bi-report"></a>4 – Power BI-jelentés létrehozása
+## <a name="4---create-power-bi-report"></a>4 – Power BI jelentés létrehozása
 
-Hozza létre a jelentést a Power BI Desktophoz az alábbi lépésekkel:
+Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtásával:
 
-1. Nyissa meg a Power BI Desktop alkalmazást, és válassza **az Adatok beszedése**lehetőséget.
+1. Nyissa meg a Power BI Desktop alkalmazást, és válassza az **adatlekérdezés**lehetőséget.
 
-   ![Nyissa meg az asztali Power BI alkalmazást, és válassza az Adatok bekéselése lehetőséget.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
+   ![Nyissa meg Power BI asztali alkalmazást, és válassza az adatlekérdezés lehetőséget.](./media/tutorial-connect-power-bi-desktop/step-0-open-powerbi.png)
 
-2. Válassza az **Azure** > **Azure SQL Database lehetőséget.** 
+2. Válassza az **Azure** > **Azure SQL Database**lehetőséget. 
 
-   ![Jelölje ki az adatforrást.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
+   ![Válassza ki az adatforrást.](./media/tutorial-connect-power-bi-desktop/step-1-select-data-source.png)
 
-3. Írja be annak a kiszolgálónak a **Server** nevét, amelynek `Demo` helye az adatbázis a Kiszolgáló mezőben, majd írja be az adatbázis nevét. Jelölje be az **Importálás** jelölőnégyzetet, majd az **OK gombot.** 
+3. Írja be annak a kiszolgálónak a nevét, ahol az adatbázis található a **kiszolgáló** mezőben, majd írja be `Demo` az adatbázis nevét. Válassza az **Importálás** lehetőséget, majd kattintson **az OK gombra**. 
 
    ![Válassza ki az adatbázist a végponton.](./media/tutorial-connect-power-bi-desktop/step-2-db.png)
 
 4. Válassza ki az előnyben részesített hitelesítési módszert:
 
-    - Példa az AAD-re 
+    - Példa HRE 
   
     ![Kattintson a Bejelentkezés elemre.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
-    - Példa az SQL Login - Írja be a felhasználónevét és jelszavát.
+    - Példa az SQL-bejelentkezéshez – írja be a felhasználónevét és a jelszavát.
 
-    ![Sql login használata.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
+    ![SQL-bejelentkezés használata.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
-5. Jelölje ki `usPopulationView`a nézetet, majd válassza **a Betöltés**lehetőséget. 
+5. Válassza ki a `usPopulationView`nézetet, majd válassza a **Betöltés**lehetőséget. 
 
-   ![Jelöljön ki egy nézetet a kijelölt adatbázisban.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
+   ![Válasszon ki egy nézetet a kiválasztott adatbázison.](./media/tutorial-connect-power-bi-desktop/step-3-select-view.png)
 
-6. Várja meg, amíg a művelet befejeződik, `There are pending changes in your queries that haven't been applied`majd egy előugró ablak jelenik meg, amely tartalmazza a . Válassza **a Módosítások alkalmazása**lehetőséget. 
+6. Várjon, amíg a művelet befejeződik, majd megjelenik egy előugró üzenet `There are pending changes in your queries that haven't been applied`. Válassza a **módosítások alkalmazása**lehetőséget. 
 
-   ![Kattintson a Módosítások alkalmazása gombra.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
+   ![Kattintson a módosítások alkalmazása lehetőségre.](./media/tutorial-connect-power-bi-desktop/step-4-apply-changes.png)
 
-7. Várja meg, amíg a **Lekérdezésmódosítások alkalmazása** párbeszédpanel eltűnik, ami eltarthat néhány percig. 
+7. Várjon, amíg a **lekérdezési módosítások alkalmazása** párbeszédpanel eltűnik, ami eltarthat néhány percig. 
 
-   ![Várja meg, amíg a lekérdezés befejeződik.](./media/tutorial-connect-power-bi-desktop/step-5-wait-for-query-to-finish.png)
+   ![Várjon, amíg a lekérdezés befejeződik.](./media/tutorial-connect-power-bi-desktop/step-5-wait-for-query-to-finish.png)
 
-8. A terhelés befejezése után válassza ki a következő oszlopokat a jelentés létrehozásához:
-   - megyeNév
-   - Lakosság
-   - stateName (államnév)
+8. A betöltés befejeződése után válassza ki a következő oszlopokat ebben a sorrendben a jelentés létrehozásához:
+   - countyName
+   - feltöltése
+   - stateName
 
-   ![Térképjelentés létrehozásához válassza ki az érdeklődésre számot tartó oszlopokat.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
+   ![Válassza ki a kívánt oszlopokat a térképes jelentés létrehozásához.](./media/tutorial-connect-power-bi-desktop/step-6-select-columns-of-interest.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Miután befejezte a jelentés használatát, törölje az erőforrásokat a következő lépésekkel:
+Ha elkészült a jelentéssel, törölje az erőforrásokat a következő lépésekkel:
 
-1. A tárfiók hitelesítő adatainak törlése
+1. A Storage-fiók hitelesítő adatainak törlése
 
    ```sql
    DROP CREDENTIAL [https://azureopendatastorage.blob.core.windows.net/censusdatacontainer];
@@ -180,4 +180,4 @@ Miután befejezte a jelentés használatát, törölje az erőforrásokat a köv
 
 ## <a name="next-steps"></a>További lépések
 
-A [Query tárolófájljaival](develop-storage-files-overview.md) megtudhatja, hogyan kérdezheti le a tárolófájlokat a Synapse SQL használatával.
+Folytassa a [lekérdezési tároló fájljaival](develop-storage-files-overview.md) , hogy megtudja, hogyan kérdezheti le a tárolási fájlokat a szinapszis SQL használatával.

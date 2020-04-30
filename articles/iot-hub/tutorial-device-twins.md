@@ -1,6 +1,6 @@
 ---
 title: Eszközállapot szinkronizálása az Azure IoT Hub szolgáltatásból | Microsoft Docs
-description: Ismerje meg, hogyan konfigurálhatja az eszközöket a felhőből, hogyan konfigurálhatja az eszközöket a felhőből, és hogyan fogadhat állapot- és megfelelőségi adatokat az eszközökről.
+description: Megtudhatja, hogyan konfigurálhatja az eszközöket a felhőből, és hogyan fogadhatja el az eszköz állapotát és megfelelőségi adatait az eszközökről.
 services: iot-hub
 author: wesmc7777
 ms.author: wesmc
@@ -12,10 +12,10 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: a7e68999bf516bffa08fb97eb8c88f2f8abb428d
-ms.sourcegitcommit: d57d2be09e67d7afed4b7565f9e3effdcc4a55bf
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81767821"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
@@ -37,11 +37,11 @@ Az oktatóanyagban az alábbi feladatokat fogja végrehajtani:
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. Szüksége van node.js v10.x.x vagy újabb a fejlesztői gépen.
+A rövid útmutatóban futtatott két mintaalkalmazás a Node.js használatával készült. A fejlesztői gépen a Node. js v10. x. x vagy újabb verziója szükséges.
 
 A Node.js-t a [nodejs.org](https://nodejs.org) oldalról töltheti le többféle platformra.
 
@@ -53,13 +53,13 @@ node --version
 
 Töltse le a Node.js-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-node/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
 
-Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. Az oktatóanyagban szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
+Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. Az oktatóanyagban szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="set-up-azure-resources"></a>Az Azure-erőforrások beállítása
 
 Az oktatóanyag teljesítéséhez az Azure-előfizetésnek rendelkeznie kell egy olyan IoT-központtal, amelyhez tartoznia kell egy, az eszköz identitásjegyzékéhez hozzáadott eszköznek. Az eszköz identitásjegyzékében található bejegyzés teszi lehetővé az oktatóanyagban futtatott szimulált eszköz csatlakozását a központhoz.
 
-Ha még nem rendelkezik az előfizetésben beállított IoT-központtal, a következő CLI-parancsfájllal is beállíthat egyet. Ez a szkript a **tutorial-iot-hub** nevet használja az IoT-központhoz, de futtatáskor a nevet le kell cserélni az Ön által megadott egyedi névre. A szkript az erőforráscsoportot és a központot az **USA középső régiójában** hozza létre, de ez módosítható egy Önhöz közelebb eső régióra. A szkript lekéri az IoT Hub szolgáltatás kapcsolati sztringjét, amellyel a mintául szolgáló háttérrendszerben csatlakozhat az IoT-központhoz:
+Ha még nem rendelkezik az előfizetésben beállított IoT hub-vel, akkor a következő CLI-szkripttel állíthat be egyet. Ez a szkript a **tutorial-iot-hub** nevet használja az IoT-központhoz, de futtatáskor a nevet le kell cserélni az Ön által megadott egyedi névre. A szkript az erőforráscsoportot és a központot az **USA középső régiójában** hozza létre, de ez módosítható egy Önhöz közelebb eső régióra. A szkript lekéri az IoT Hub szolgáltatás kapcsolati sztringjét, amellyel a mintául szolgáló háttérrendszerben csatlakozhat az IoT-központhoz:
 
 ```azurecli-interactive
 hubname=tutorial-iot-hub
@@ -240,7 +240,7 @@ A következő képernyőkép bemutatja a szimulált eszközalkalmazás kimeneté
 
 ![Szimulált eszköz](./media/tutorial-device-twins/SimulatedDevice2.png)
 
-A következő képernyőkép a háttéralkalmazás kimenetét mutatja be, és kiemeli, hogyan fogadja és dolgozza fel a jelentett tulajdonságfrissítést egy eszközről:
+Az alábbi képernyőfelvételen a háttérbeli alkalmazás kimenete látható, és kiemeli, hogyan fogadja és dolgozza fel egy jelentett tulajdonság frissítését egy eszközről:
 
 ![Háttéralkalmazás](./media/tutorial-device-twins/BackEnd2.png)
 

@@ -1,33 +1,33 @@
 ---
-title: host.json hivatkozás az Azure Functions 1.x-hez
-description: Az Azure Functions host.json fájl referenciadokumentációja a v1-es futásidejű.
+title: a Azure Functions 1. x gazdagép. JSON-referenciája
+description: A Azure Functions Host. JSON fájl dokumentációja a v1 futtatókörnyezettel.
 ms.topic: conceptual
 ms.date: 10/19/2018
 ms.openlocfilehash: 36d028d09c94ae28e77404297bd576f5e20404c6
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757514"
 ---
-# <a name="hostjson-reference-for-azure-functions-1x"></a>host.json hivatkozás az Azure Functions 1.x-hez
+# <a name="hostjson-reference-for-azure-functions-1x"></a>a Azure Functions 1. x gazdagép. JSON-referenciája
 
-> [!div class="op_single_selector" title1="Válassza ki a használt Azure Functions futásidejű verzióját: "]
+> [!div class="op_single_selector" title1="Válassza ki az Ön által használt Azure Functions futtatókörnyezet verzióját: "]
 > * [1-es verzió](functions-host-json-v1.md)
 > * [2-es verzió](functions-host-json.md)
 
-A *host.json* metaadatfájl olyan globális konfigurációs beállításokat tartalmaz, amelyek hatással vannak egy függvényalkalmazás összes függvényére. Ez a cikk a v1-es futásidejű beállításokat sorolja fel. A JSON-séma http://json.schemastore.org/hosta helyen található.
+A *Host. JSON* metaadat-fájl olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function app összes funkcióját érintik. Ez a cikk a v1 futtatókörnyezethez elérhető beállításokat sorolja fel. A JSON-séma a http://json.schemastore.org/hostkövetkező helyen található:.
 
 > [!NOTE]
-> Ez a cikk az Azure Functions 1.x.  A host.json a Functions 2.x és újabb függvényekben az [Azure Functions 2.x host.json-referencia című témakörében](functions-host-json.md)található.
+> Ez a cikk az 1. x Azure Functions.  A Host. JSON fájl hivatkozása a 2. x és újabb függvények esetében: [Host. JSON-hivatkozás Azure functions 2. x](functions-host-json.md).
 
-A függvényalkalmazás egyéb konfigurációs beállításait az [alkalmazás beállításai](functions-app-settings.md)kezelik.
+Az [alkalmazás beállításaiban](functions-app-settings.md)az egyéb Function app konfigurációs beállításai is kezelhetők.
 
-Egyes host.json-beállítások csak akkor használatosak, ha a [local.settings.json](functions-run-local.md#local-settings-file) fájlban helyileg futnak.
+Néhány gazdagép. JSON-beállítás csak akkor használatos, ha helyileg fut a [Local. Settings. JSON](functions-run-local.md#local-settings-file) fájlban.
 
-## <a name="sample-hostjson-file"></a>Minta állomás.json fájl
+## <a name="sample-hostjson-file"></a>Példa Host. JSON fájlra
 
-A következő minta *host.json* fájlok minden lehetséges beállítással rendelkeznek.
+A következő minta *Host. JSON* fájlokhoz minden lehetséges beállítás van megadva.
 
 
 ```json
@@ -110,9 +110,9 @@ A következő minta *host.json* fájlok minden lehetséges beállítással rende
 }
 ```
 
-A cikk következő szakaszai ismertetik az egyes legfelső szintű ingatlanokat. Eltérő rendelkezés hiányában minden választható.
+A cikk következő fejezetei ismertetik az egyes legfelső szintű tulajdonságokat. Ha másként nincs megadva, az összes megadása nem kötelező.
 
-## <a name="aggregator"></a>Aggregátor
+## <a name="aggregator"></a>aggregátor
 
 [!INCLUDE [aggregator](../../includes/functions-host-json-aggregator.md)]
 
@@ -122,7 +122,7 @@ A cikk következő szakaszai ismertetik az egyes legfelső szintű ingatlanokat.
 
 ## <a name="documentdb"></a>DocumentDB
 
-Az Azure [Cosmos DB eseményindító és kötések konfigurációs](functions-bindings-cosmosdb.md)beállításai.
+A [Azure Cosmos db trigger és kötések](functions-bindings-cosmosdb.md)konfigurációs beállításai.
 
 ```json
 {
@@ -138,21 +138,21 @@ Az Azure [Cosmos DB eseményindító és kötések konfigurációs](functions-bi
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|GatewayMode (Átjáró mód)|Átjáró|A függvény által az Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt csatlakozási mód. A `Direct` lehetőségek a következők: és`Gateway`|
-|Protocol (Protokoll)|Https (https)|A függvény által használt kapcsolati protokoll, amikor az Azure Cosmos DB szolgáltatáshoz való csatlakozáskor.  Olvassa el [itt a magyarázata mindkét mód](../cosmos-db/performance-tips.md#networking)|
-|leasePrefix|n/a|Az alkalmazás összes függvényében használható bérletelőtag.|
+|GatewayMode|Átjáró|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek `Direct` a következők,`Gateway`|
+|Protocol (Protokoll)|Https|A függvény által a Azure Cosmos DB szolgáltatáshoz való kapcsolódáskor használt kapcsolati protokoll.  A [két mód magyarázata itt](../cosmos-db/performance-tips.md#networking) olvasható|
+|leasePrefix|n/a|Az alkalmazás összes függvényében használandó bérlet-előtag.|
 
-## <a name="durabletask"></a>durableTask (tartósfeladat)
+## <a name="durabletask"></a>durableTask
 
 [!INCLUDE [durabletask](../../includes/functions-host-json-durabletask.md)]
 
 ## <a name="eventhub"></a>eventHub
 
-Az [Event Hub eseményindítóinak és kötéseinek konfigurációs](functions-bindings-event-hubs-trigger.md#functions-1x)beállításai.
+Az [Event hub-eseményindítók és-kötések](functions-bindings-event-hubs-trigger.md#functions-1x)konfigurációs beállításai.
 
-## <a name="functions"></a>Funkciók
+## <a name="functions"></a>funkciók
 
-A feladatgazda által futtatott függvények listája. Az üres tömb az összes függvény futtatását jelenti. Csak [helyi futtatás](functions-run-local.md)esetén használható. Az Azure-beli függvényalkalmazásokban ehelyett kövesse a Funkciók letiltása az Azure Functionsben a [funkciók letiltása](disable-function.md) a beállítás helyett.
+A gazdagép által futtatott függvények listája. Az üres tömb az összes függvény futtatását jelenti. Csak [helyileg futtatott](functions-run-local.md)használatra készült. Az Azure-ban a Function apps szolgáltatásban a [függvények letiltása a Azure Functionsben](disable-function.md) című cikkben ismertetett lépéseket követve letilthatja az egyes függvényeket, és nem használhatja ezt a beállítást.
 
 ```json
 {
@@ -162,7 +162,7 @@ A feladatgazda által futtatott függvények listája. Az üres tömb az összes
 
 ## <a name="functiontimeout"></a>functionTimeout
 
-Az összes funkció időkimenő időtartamát jelzi. Kiszolgáló nélküli felhasználási tervben az érvényes tartomány 1 másodperctől 10 percig terjed, az alapértelmezett érték pedig 5 perc. Az App Service-csomagban nincs általános korlát, és az alapértelmezett _null ,_ ami azt jelzi, nincs időtúllépés.
+Az összes függvény időtúllépési időtartamát jelzi. A kiszolgáló nélküli fogyasztási csomag esetében az érvényes tartomány 1 másodperc és 10 perc között van, az alapértelmezett érték pedig 5 perc. Egy App Service tervben nincs általános korlát, és az alapértelmezett érték _Null_, amely nincs időkorlát.
 
 ```json
 {
@@ -172,7 +172,7 @@ Az összes funkció időkimenő időtartamát jelzi. Kiszolgáló nélküli felh
 
 ## <a name="healthmonitor"></a>healthMonitor
 
-A [Gazdaállapot-figyelő](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor)konfigurációs beállításai .
+A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor)vonatkozó konfigurációs beállítások.
 
 ```
 {
@@ -188,15 +188,15 @@ A [Gazdaállapot-figyelő](https://github.com/Azure/azure-webjobs-sdk-script/wik
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|engedélyezve|igaz|Itt adható meg, hogy a szolgáltatás engedélyezve van-e. | 
-|állapotellenőrző intervallum|10 másodperc|Az időszakos háttérállapot-ellenőrzések közötti időintervallum. | 
-|healthCheckWindow|2 perc|A `healthCheckThreshold` beállítással együtt használt csúszó időablak.| 
-|healthCheckThreshold|6|Az állapot-ellenőrzés sikertelensítésének maximális száma a gazdagép újrahasznosításának megkezdése előtt.| 
-|counterThreshold|0,80|Az a küszöbérték, amelynél a teljesítményszámláló nem megfelelő állapotúnak minősül.| 
+|engedélyezve|igaz|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
+|healthCheckInterval|10 másodperc|Az időszakos háttér állapotának ellenőrzése közötti időtartam. | 
+|healthCheckWindow|2 perc|A `healthCheckThreshold` beállítással együtt használt csúszó Time-ablak.| 
+|healthCheckThreshold|6|Az állapot-ellenőrzések maximális száma a gazdagép újraindítása előtt.| 
+|counterThreshold|0,80|Az a küszöbérték, amelynél a teljesítményszámláló a nem megfelelő állapotot veszi figyelembe.| 
 
 ## <a name="http"></a>http
 
-A [http-eseményindítók és -kötések konfigurációs](functions-bindings-http-webhook.md)beállításai.
+[Http-eseményindítók és-kötések](functions-bindings-http-webhook.md)konfigurációs beállításai.
 
 ```json
 {
@@ -211,16 +211,16 @@ A [http-eseményindítók és -kötések konfigurációs](functions-bindings-htt
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|dynamicThrottlesEnabled|hamis|Ha engedélyezve van, ez a beállítás hatására a kérelemfeldolgozó folyamat rendszeresen ellenőrzi a rendszer teljesítményszámlálóit, például a kapcsolatokat/szálakat/folyamatokat/memóriát/cpu/etc.- t, és ha ezek közül a számlálók bármelyike magasabb, mint egy beépített magas küszöbérték (80%), a kérelmeket 429 "Túl elfoglalt" válaszsal utasítja el, amíg a számláló(k) vissza nem térnek a normál szintre.|
-|maxConcurrentRequests|határtalan (`-1`)|A párhuzamosan végrehajtandó HTTP-függvények maximális száma. Ez lehetővé teszi az egyidejűség szabályozását, amely segíthet az erőforrás-kihasználtság kezelésében. Előfordulhat például, hogy van egy HTTP-függvény, amely sok rendszererőforrást (memória/cpu/socket) használ, így problémákat okoz, ha az egyidejűség túl magas. Vagy előfordulhat, hogy rendelkezik egy funkcióval, amely kimenő kérelmeket küld egy harmadik fél szolgáltatásnak, és ezeket a hívásokat korlátozott mértékben kell végrehajtani. Ezekben az esetekben a fojtószelep alkalmazása itt segíthet.|
-|maxOutstandingRequests|határtalan (`-1`)|Az adott időpontban lefolytatott kérelmek maximális száma. Ez a korlát tartalmazza a várólistára helyezett, de még nem elkezdett végrehajtást, valamint a folyamatban lévő végrehajtások. Az ezen a korláton felülérkező bejövő kérelmeket a rendszer 429 "Túl elfoglalt" választ küld. Ez lehetővé teszi a hívók számára, hogy időalapú újrapróbálkozási stratégiákat alkalmazzanak, és segít a maximális kérelem-késések szabályozásához. Ez csak a parancsfájlgazda végrehajtási útvonalán belül előforduló sorban állásokat szabályozza. Más várólisták, például a ASP.NET kérési várólista továbbra is érvényben maradnak, és ez a beállítás nem érinti őket.|
-|routePrefix|api-t|Az összes útvonalra vonatkozó útvonalelőtag. Az alapértelmezett előtag eltávolításához használjon üres karakterláncot. |
+|dynamicThrottlesEnabled|hamis|Ha engedélyezve van, ez a beállítás hatására a kérelmek feldolgozási folyamata rendszeres időközönként ellenőrzi a rendszerteljesítmény-számlálókat, például a kapcsolatok/szálak/folyamatok/memória/CPU/etc értéket. ha ezek a számlálók egy beépített magas küszöbértéken (80%) vannak, a rendszer a kérelmeket a 429 "túl elfoglalt" válaszként utasítja el, amíg a számláló (k) be nem fejeződik a|
+|maxConcurrentRequests|nem kötött (`-1`)|A párhuzamosan végrehajtandó HTTP-függvények maximális száma. Ez lehetővé teszi a párhuzamosság szabályozását, ami segíthet az erőforrások kihasználtságának kezelésében. Előfordulhat például, hogy olyan HTTP-függvénnyel rendelkezik, amely sok rendszererőforrást (memóriát/processzort/szoftvercsatornát) használ, így problémát okoz, ha a párhuzamosság túl magas. Vagy lehet, hogy olyan függvényt használ, amely a kimenő kéréseket egy harmadik féltől származó szolgáltatásnak teszi elérhetővé, és a hívásoknak korlátozott arányban kell lenniük. Ezekben az esetekben a szabályozás alkalmazása segíthet.|
+|maxOutstandingRequests|nem kötött (`-1`)|A függőben lévő kérések maximális száma, amelyek egy adott időpontban vannak tárolva. Ez a korlát olyan kérelmeket tartalmaz, amelyek várólistára kerülnek, de nem indult el, valamint folyamatban van a végrehajtás. Az ezen a korláton túli bejövő kérelmek elutasítása egy 429 "túl elfoglalt" választ tartalmaz. Ez lehetővé teszi, hogy a hívók időalapú újrapróbálkozási stratégiákat alkalmazzanak, és segítséget nyújt a kérelmek maximális késésének szabályozásához is. Ez csak a parancsfájl-gazdagép végrehajtási útvonalán belüli üzenetsor-kezelőt vezérli. Más várólisták, például a ASP.NET kérelmek várólistája továbbra is érvényben marad, és ezt a beállítást nem érinti.|
+|routePrefix|api-t|Az útvonal előtagja, amely az összes útvonalra vonatkozik. Az alapértelmezett előtag eltávolításához használjon üres karakterláncot. |
 
 ## <a name="id"></a>id
 
-A feladatgazda egyedi azonosítója. Lehet kisbetűs GUID a kötőjelek eltávolítása. Helyi futtatáskor szükséges. Az Azure-ban való futtatáskor azt javasoljuk, hogy ne állítson be azonosítóértéket. Egy azonosító automatikusan jön létre `id` az Azure-ban, ha nincs megadva. 
+A feladatok gazdagépének egyedi azonosítója. A kötőjelekkel ellátott kisbetűs GUID lehet. Helyi futtatáskor szükséges. Ha az Azure-ban fut, javasoljuk, hogy ne állítson be azonosító értéket. Az Azure-ban automatikusan létrejön egy azonosító `id` , ha a szolgáltatás nincs megadva. 
 
-Ha több függvényalkalmazáson keresztül oszt meg egy storage-fiókot, győződjön meg arról, hogy minden függvényalkalmazás más. `id` Kihagyhatja a `id` tulajdonságot, vagy manuálisan `id` beállíthatja az egyes függvényalkalmazásokat egy másik értékre. Az időzítő eseményindító egy tárolózárat használ annak biztosítására, hogy csak egy időzítőpéldány legyen, amikor egy függvényalkalmazás több példányra skálázódik. Ha két függvényalkalmazás `id` azonos, és mindegyik időzítő-eseményindítót használ, csak egy időzítő fog futni.
+Ha több Function-alkalmazás között oszt meg egy Storage-fiókot, győződjön meg arról, hogy az egyes `id`functions-alkalmazások eltérőek. Kihagyhatja a `id` tulajdonságot, vagy manuálisan is beállíthatja `id` az egyes függvények alkalmazásait egy másik értékre. Az időzítő-trigger egy tárolási zárolást használ annak biztosítására, hogy csak egy időzítő példány legyen, ha egy függvény alkalmazás több példányra is méretezhető. Ha két Function-alkalmazás azonos `id` , és mindegyik időzítő-triggert használ, csak egy időzítő fog futni.
 
 ```json
 {
@@ -230,7 +230,7 @@ Ha több függvényalkalmazáson keresztül oszt meg egy storage-fiókot, győz�
 
 ## <a name="logger"></a>Tuskózó
 
-Szabályozza az [ILogger-objektum](functions-monitoring.md#write-logs-in-c-functions) vagy a [context.log](functions-monitoring.md#write-logs-in-javascript-functions)által írt naplók szűrését.
+A [ILogger objektum](functions-monitoring.md#write-logs-in-c-functions) vagy a [Context. log](functions-monitoring.md#write-logs-in-javascript-functions)által írt naplók szűrését vezérli.
 
 ```json
 {
@@ -249,13 +249,13 @@ Szabályozza az [ILogger-objektum](functions-monitoring.md#write-logs-in-c-funct
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|categoryFilter|n/a|Kategória szerinti szűrést ad meg| 
-|defaultLevel|Információ|A `categoryLevels` tömbben nem megadott kategóriák esetén küldjön naplókat ezen a szinten és felette az Application Insightsnak.| 
-|categorySzintek|n/a|Kategóriák tömbje, amely meghatározza az egyes kategóriákhoz az Application Insightsnak küldő minimális naplószintet. Az itt megadott kategória az összes olyan kategóriát szabályozza, amely ugyanazzal az értékkel kezdődik, és a hosszabb értékek élveznek elsőbbséget. Az előző *gazdagép.json* mintafájlban az összes olyan kategória, amely `Information` a "Host.Aggregator" naplóval kezdődik. Az összes többi kategória, amely "Host" kezdetű, például `Error` a "Host.Executor", jelentkezzen be a szinten.| 
+|categoryFilter|n/a|Meghatározza a kategória szerinti szűrést| 
+|defaultLevel|Információ|A `categoryLevels` tömbben nem megadott kategóriákhoz küldje el a naplókat ezen a szinten és Application Insights.| 
+|categoryLevels|n/a|Kategóriákból álló tömb, amely meghatározza, hogy az egyes kategóriákhoz Application Insights milyen minimális naplózási szint legyen elküldve. Az itt megadott kategória az összes olyan kategóriát szabályozza, amely ugyanazzal az értékkel kezdődik, és a hosszabb értékek elsőbbséget élveznek. Az előző minta *gazdagép. JSON* fájljában minden olyan kategória, amely a "host. aggregator" `Information` kifejezéssel kezdődik. Az összes többi olyan kategória, amely a "gazdagép" kifejezéssel kezdődik, például "host. végrehajtó" `Error` , jelentkezzen be szinten.| 
 
-## <a name="queues"></a>Várólisták
+## <a name="queues"></a>üzenetsorok
 
-A [tárolási várólista-eseményindítók és -kötések konfigurációs](functions-bindings-storage-queue.md)beállításai.
+A [tárolási várólista-eseményindítók és-kötések](functions-bindings-storage-queue.md)konfigurációs beállításai.
 
 ```json
 {
@@ -271,15 +271,15 @@ A [tárolási várólista-eseményindítók és -kötések konfigurációs](func
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|maxPollingInterval érték|60000|A várólista-szavazások közötti maximális időköz ezredmásodpercben.| 
-|láthatóságTimeout|0|Az újrapróbálkozások közötti időintervallum, amikor az üzenet feldolgozása sikertelen.| 
-|batchSize|16|A Functions futásidejű várólistán lévő üzenetek száma, amelyeket a Függvények futásidejű lehív és párhuzamosan dolgoz fel. Amikor a feldolgozott szám lesz `newBatchThreshold`a, a futásidejű kap egy másik köteget, és megkezdi az üzenetek feldolgozását. Így a függvényenként feldolgozott egyidejű üzenetek maximális `batchSize` `newBatchThreshold`száma plusz . Ez a korlát külön-külön vonatkozik az egyes várólista által aktivált függvények. <br><br>Ha el szeretné kerülni az egy várólistán fogadott `batchSize` üzenetek párhuzamos végrehajtását, állítsa be az 1-et. Ez a beállítás azonban csak addig szünteti meg az egyidejűséget, amíg a függvényalkalmazás egyetlen virtuális gépen (VM) fut. Ha a függvényalkalmazás több virtuális gépre skálázódik, minden virtuális gép minden egyes várólista által aktivált függvény egy példányát futtathatja.<br><br>A `batchSize` maximális érték 32. | 
-|maxDequeueCount (maxDequeueCount)|5|Az üzenetek feldolgozása a méregvárólistába való áthelyezés e sorokba való áthelyezése előtt többször is.| 
-|újBatchThreshold|batchSize/2|Amikor a feldolgozás alatt álló üzenetek száma egyidejűleg lesz le erre a számra, a futásidejű lekéri egy másik köteget.| 
+|maxPollingInterval|60000|A várólista-lekérdezések közötti maximális időköz ezredmásodpercben.| 
+|visibilityTimeout|0|Az újrapróbálkozások között eltelt idő az üzenet feldolgozásakor.| 
+|batchSize|16|Azoknak a üzenetsor-üzeneteknek a száma, amelyeket a függvények futtatókörnyezete egyszerre kér le, és párhuzamosan dolgozza fel a folyamatokat. A feldolgozás alatt álló szám lekérése után `newBatchThreshold`a futtatókörnyezet egy másik köteget kap, és elindítja az üzenetek feldolgozását. Így a függvények által feldolgozott egyidejű üzenetek maximális száma `batchSize` plusz. `newBatchThreshold` Ez a korlát külön vonatkozik az egyes üzenetsor-vezérelt függvényekre. <br><br>Ha el szeretné kerülni az egy várólistán fogadott üzenetek párhuzamos végrehajtását, beállíthatja az 1 `batchSize` értékre. Ez a beállítás azonban csak akkor teszi feleslegessé a párhuzamosságot, ha a Function alkalmazás egyetlen virtuális gépen fut (VM). Ha a Function alkalmazás több virtuális gépre is kiterjed, minden egyes virtuális gép futtathatja az egyes üzenetsor által aktivált függvények egy példányát.<br><br>A maximális `batchSize` érték 32. | 
+|maxDequeueCount|5|Azon alkalmak száma, amelyekkel az üzenetek feldolgozására kerül sor, mielőtt a rendszer áthelyezi azt a Megmérgező várólistára.| 
+|newBatchThreshold|batchSize/2|Ha az egyidejűleg feldolgozható üzenetek száma leállítja ezt a számot, a futtatókörnyezet egy másik köteget kérdez le.| 
 
 ## <a name="sendgrid"></a>SendGrid
 
-A [SendGrind kimenetkötés](functions-bindings-sendgrid.md) konfigurációs beállítása
+A [SendGrind kimeneti kötésének](functions-bindings-sendgrid.md) konfigurációs beállítása
 
 ```json
 {
@@ -290,11 +290,11 @@ A [SendGrind kimenetkötés](functions-bindings-sendgrid.md) konfigurációs be�
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|honnan|n/a|A feladó e-mail címe az összes funkcióban.| 
+|a|n/a|A küldő e-mail-címe az összes függvényen belül.| 
 
 ## <a name="servicebus"></a>serviceBus
 
-A [Service Bus eseményindítóinak és kötéseinek konfigurációs](functions-bindings-service-bus.md)beállítása.
+[Service Bus eseményindítók és kötések](functions-bindings-service-bus.md)konfigurációs beállítása.
 
 ```json
 {
@@ -308,13 +308,13 @@ A [Service Bus eseményindítóinak és kötéseinek konfigurációs](functions-
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|maxConcurrentKéri|16|Az üzenetszivattyú által kezdeményezett visszahívásegyidejű hívásainak maximális száma. Alapértelmezés szerint a Függvények futásidejű folyamatok több üzenetet dolgoznak fel egyidejűleg. Ha azt szeretné, hogy a futásidejű egyszerre csak egy `maxConcurrentCalls` várólista- vagy témakörüzenet feldolgozására szolgáljon, állítsa 1-re. | 
-|prefetchCount (előre fetchCount)|n/a|Az alapul szolgáló MessageReceiver által használt alapértelmezett PrefetchCount.| 
-|automatikus Megújítottidő-ki|00:05:00|Az a maximális időtartam, amelyen belül az üzenetzárolás automatikusan megújul.| 
+|maxConcurrentCalls|16|Az üzenet-szivattyú által kezdeményezett visszahívás egyidejű hívásának maximális száma. Alapértelmezés szerint a függvények futtatókörnyezete egyszerre több üzenetet dolgoz fel. Ha úgy szeretné irányítani a futtatókörnyezetet, hogy egyszerre csak egyetlen üzenetsor vagy témakörbeli üzenetet `maxConcurrentCalls` dolgozza fel, állítsa az 1 értékre. | 
+|prefetchCount|n/a|Az alapul szolgáló MessageReceiver által használt alapértelmezett PrefetchCount.| 
+|autoRenewTimeout|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.| 
 
 ## <a name="singleton"></a>Singleton
 
-A Singleton zárolási viselkedés konfigurációs beállításai. További információ: [GitHub-probléma a singleton támogatással kapcsolatban.](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)
+Az egyszeri zárolási viselkedés konfigurációs beállításai. További információért lásd az egyszeri [támogatással kapcsolatos GitHub-problémát](https://github.com/Azure/azure-webjobs-sdk-script/issues/912).
 
 ```json
 {
@@ -330,17 +330,17 @@ A Singleton zárolási viselkedés konfigurációs beállításai. További info
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|lockPeriod (zárolásidőszak)|00:00:15|Az az időszak, amelyalatt a függvényszintű zárolások elkészültek. A zárak automatikusan megújulnak.| 
-|listenerLockPeriod|00:01:00|Az az időszak, amely et a figyelő zárak venni.| 
-|listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolási helyreállításhoz használt időintervallum, ha a figyelőzárolás indításkor nem szerezhető be.| 
-|lockAcquisitionTimeout|00:01:00|A futásidejű maximális időtartam, amíg a futásidejű megpróbálja megszerezni a zárolást.| 
-|lockAcquisitionPollingInterval|n/a|A zárolási kísérletek közötti időköz.| 
+|lockPeriod|00:00:15|Az az időszak, ameddig a rendszer a működési szintet zárolja. A zárolások automatikus megújítása.| 
+|listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
+|listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolásának helyreállításához használt időintervallum, ha a figyelő zárolása nem szerezhető be indításkor.| 
+|lockAcquisitionTimeout|00:01:00|Az a maximális időtartam, ameddig a futtatókörnyezet megpróbál zárolást benyerni.| 
+|lockAcquisitionPollingInterval|n/a|A zárolási beszerzési kísérletek közötti időköz.| 
 
-## <a name="tracing"></a>Nyomkövetés
+## <a name="tracing"></a>nyomkövetés
 
-*1.x verzió*
+*1. x verzió*
 
-Az `TraceWriter` objektum használatával létrehozott naplók konfigurációs beállításai. Lásd: [C# Naplózás](functions-reference-csharp.md#logging) és [Node.js naplózás](functions-reference-node.md#writing-trace-output-to-the-console).
+Egy `TraceWriter` objektum használatával létrehozott naplók konfigurációs beállításai. Lásd: [C#-naplózás](functions-reference-csharp.md#logging) és [Node. js-naplózás](functions-reference-node.md#writing-trace-output-to-the-console).
 
 ```json
 {
@@ -353,12 +353,12 @@ Az `TraceWriter` objektum használatával létrehozott naplók konfigurációs b
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|consoleLevel|Info|A konzolnaplózás nyomkövetési szintje. A lehetőségek `off` `error`a `warning` `info`következők: `verbose`, , , , és .|
-|fileLoggingMode|debugOnly|A fájlnaplózás nyomkövetési szintje. A `never`lehetőségek `always` `debugOnly`a , , .| 
+|consoleLevel|információ|A konzol naplózásának nyomkövetési szintje. A lehetőségek a `off`következők `error`: `warning`, `info`,, `verbose`és.|
+|fileLoggingMode|debugOnly|A fájlok naplózásának nyomkövetési szintje. A lehetőségek `never`a `always`következők `debugOnly`:,.| 
 
 ## <a name="watchdirectories"></a>watchDirectories
 
-[Megosztott kódkönyvtárak](functions-reference-csharp.md#watched-directories) készlete, amelyeket figyelni kell a változásokmiatt.  Biztosítja, hogy amikor a könyvtárakban lévő kódot módosítják, a módosításokat a függvények is felvegyék.
+A módosításokat figyelő [megosztott kód-címtárak](functions-reference-csharp.md#watched-directories) készlete.  Gondoskodik arról, hogy a könyvtárakban lévő kódok változásakor a függvények a módosításokat is felveszik.
 
 ```json
 {
@@ -369,7 +369,7 @@ Az `TraceWriter` objektum használatával létrehozott naplók konfigurációs b
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [További információ a host.json fájl frissítéséhez](functions-reference.md#fileupdate)
+> [Útmutató a Host. JSON fájl frissítéséhez](functions-reference.md#fileupdate)
 
 > [!div class="nextstepaction"]
-> [Globális beállítások megtekintése a környezeti változókban](functions-app-settings.md)
+> [Lásd: globális beállítások a környezeti változókban](functions-app-settings.md)

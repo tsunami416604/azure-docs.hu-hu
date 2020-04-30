@@ -1,6 +1,6 @@
 ---
-title: 'Rövid útmutató: Az Azure Queue storage tára v12 – Java'
-description: Ismerje meg, hogyan használhatja az Azure Queue Java v12-kódtár segítségével egy várólista létrehozásához és üzenetek hozzáadásához a várólistához. Ezután megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet idát várólistát.
+title: 'Gyors útmutató: Azure üzenetsor Storage Library V12 – Java'
+description: Megtudhatja, hogyan hozhat létre üzenetsor létrehozásához és üzeneteket a várólistához az Azure-üzenetsor Java V12-es kódtár használatával. Ezután megtudhatja, hogyan olvashatja és törölheti az üzeneteket a várólistából. Azt is megtudhatja, hogyan törölhet egy várólistát.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/4/2019
@@ -8,43 +8,43 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
 ms.openlocfilehash: 013281db2821c99f6942edd1322f4978e100c144
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81729848"
 ---
-# <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Rövid útmutató: Azure Queue storage ügyfélkódtár v12 Java-hoz
+# <a name="quickstart-azure-queue-storage-client-library-v12-for-java"></a>Gyors útmutató: Azure üzenetsor Storage ügyféloldali kódtára a Javához
 
-Ismerkedés az Azure Queue storage ügyfélkódtár 12-es Java-verziójával. Az Azure Queue storage egy olyan szolgáltatás, amely nagy számú üzenetet tárol későbbi lekéréshez és feldolgozáshoz. Az alábbi lépésekkel telepítheti a csomagot, és kipróbálhatja az alapvető feladatok példakódját.
+Ismerkedjen meg az Azure üzenetsor Storage ügyféloldali kódtár 12-es verziójával a Javához. Az Azure üzenetsor-tároló egy olyan szolgáltatás, amely nagy mennyiségű üzenetet tárol a későbbi lekérésekhez és feldolgozáshoz. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja a programkódot az alapszintű feladatokhoz.
 
-Használja az Azure Queue storage ügyfélkódtár v12 Java a következőkhöz:
+Használja az Azure üzenetsor Storage ügyféloldali kódtárat a Javához a következőhöz:
 
 * Üzenetsor létrehozása
-* Üzenetek hozzáadása várólistához
-* Betekintés a várólistában lévő üzenetekbe
-* Üzenet frissítése a várólistában
-* Üzenetek fogadása és törlése várólistából
+* Üzenetek hozzáadása egy várólistához
+* Üzenetek betekintése egy várólistába
+* Üzenetsor frissítése
+* Üzenetek fogadása és törlése egy várólistából
 * Üzenetsor törlése
 
-[API-referenciadokumentáció](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [könyvtár forráskódjának](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [csomag (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [mintái](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
+[API-referenciák dokumentációs](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/index.html) | [könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue) | [-csomagja (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-queue) | [mintái](https://docs.microsoft.com/azure/storage/common/storage-samples-java?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 8-as vagy újabb verzió
+* A [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable) 8-as vagy újabb verziója
 * [Apache Maven](https://maven.apache.org/download.cgi)
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
-* Azure storage-fiók – [tárfiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
+* Azure Storage-fiók – [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
 
-## <a name="setting-up"></a>Beállítása
+## <a name="setting-up"></a>Beállítás
 
-Ez a szakasz végigvezeti a projekt előkészítése az Azure Queue storage ügyfélkódtár v12 Java-hoz való használatra.
+Ebből a szakaszból megtudhatja, hogyan készít elő egy projektet az Azure üzenetsor-tárolóval való együttműködéshez a Javához.
 
 ### <a name="create-the-project"></a>A projekt létrehozása
 
-Hozzon létre egy Java alkalmazás nevű *várólisták-quickstart-v12*.
+Hozzon létre egy *Queues-Gyorsindítás-V12*nevű Java-alkalmazást.
 
-1. Egy konzolablakban (például cmd, PowerShell vagy Bash) a Maven használatával hozzon létre egy új konzolalkalmazást a *gyorsindítás-v12*névvel. "Hello world!" parancs létrehozásához írja be a következő **mvn** parancsot. Java projekt.
+1. A konzol ablakban (például a cmd, a PowerShell vagy a bash) a Maven használatával hozzon létre egy új Console-alkalmazást a *Queues-Gyorsindítás-V12*néven. A "Hello World!" létrehozásához írja be a következő **MVN** -parancsot: Java-projekt.
 
    ```console
    mvn archetype:generate -DgroupId=com.queues.quickstart \
@@ -54,7 +54,7 @@ Hozzon létre egy Java alkalmazás nevű *várólisták-quickstart-v12*.
                           -DinteractiveMode=false
    ```
 
-1. A projekt generálásának kimenete valahogy így fog kinézni:
+1. A projekt létrehozásának eredményét a következőhöz hasonló módon kell kinéznie:
 
     ```console
     [INFO] Scanning for projects...
@@ -91,7 +91,7 @@ Hozzon létre egy Java alkalmazás nevű *várólisták-quickstart-v12*.
     [INFO] ------------------------------------------------------------------------
     ```
 
-1. Váltson át az újonnan létrehozott *várólisták-quickstart-v12* könyvtárra.
+1. Váltson az újonnan létrehozott *várólistákra – rövid útmutató – V12* könyvtár.
 
    ```console
    cd queues-quickstart-v12
@@ -99,7 +99,7 @@ Hozzon létre egy Java alkalmazás nevű *várólisták-quickstart-v12*.
 
 ### <a name="install-the-package"></a>A csomag telepítése
 
-Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá a következő függőségi elemet a függőségek csoportjához.
+Nyissa meg a *Pom. XML* fájlt a szövegszerkesztőben. Adja hozzá a függőségek csoportjához a következő függőségi elemet.
 
 ```xml
 <dependency>
@@ -109,16 +109,16 @@ Nyissa meg a *pom.xml* fájlt a szövegszerkesztőben. Adja hozzá a következő
 </dependency>
 ```
 
-### <a name="set-up-the-app-framework"></a>Az alkalmazáskeretrendszer beállítása
+### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása
 
 A projekt könyvtárából:
 
-1. Keresse meg a */src/main/java/com/queues/quickstart* könyvtárat
-1. Az *App.java* fájl megnyitása a szerkesztőben
+1. Navigáljon a */src/Main/Java/com/Queues/Quickstart* könyvtárához
+1. Nyissa meg az *app. Java* fájlt a szerkesztőben
 1. Az `System.out.println("Hello world!");` utasítás törlése
-1. Direktívák hozzáadása `import`
+1. Irányelvek `import` hozzáadása
 
-Itt a kód:
+A kód a következő:
 
 ```java
 package com.queues.quickstart;
@@ -143,40 +143,40 @@ public class App
 
 ## <a name="object-model"></a>Objektummodell
 
-Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. A várólista-üzenet mérete legfeljebb 64 KB lehet. Egy várólista több millió üzenetet tartalmazhat, a tárfiók teljes kapacitáskorlátjáig. A várólistákat gyakran használják az aszinkron feldolgozáshoz használt munka hátralékának létrehozására. A várólista-tárolás háromféle erőforrást kínál:
+Az Azure Queue Storage szolgáltatás nagy számú üzenet tárolására szolgál. Egy üzenetsor-üzenet akár 64 KB méretű is lehet. Egy üzenetsor akár több millió üzenetet is tartalmazhat, akár egy Storage-fiók teljes kapacitási korlátját. A várólistákat általában arra használják, hogy egy várakozó munkafolyamatot hozzon létre aszinkron feldolgozásra. A várólista-tárolás háromféle típusú erőforrást kínál:
 
-* A tárfiók
-* Várólista a tárfiókban
+* A Storage-fiók
+* A Storage-fiókban lévő üzenetsor
 * Üzenetek a várólistán belül
 
 Az alábbi ábra az ezen erőforrások közötti kapcsolatot mutatja be.
 
-![Várólista tárolási architektúrájának diagramja](./media/storage-queues-introduction/queue1.png)
+![Üzenetsor-tárolási architektúra ábrája](./media/storage-queues-introduction/queue1.png)
 
-Az alábbi Java-osztályok segítségével kezelheti ezeket az erőforrásokat:
+A következő Java-osztályok használhatók az alábbi erőforrásokkal való kommunikációhoz:
 
-* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): `QueueClientBuilder` Az osztály konfigurálja és `QueueClient` példányosodik egy objektumot.
-* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): `QueueServiceClient` A lehetővé teszi a tárfiók összes várólistájának kezelését.
-* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): `QueueClient` Az osztály lehetővé teszi egy adott várólista és üzenetének kezelését és kezelését.
-* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): `QueueMessageItem` Az osztály a [várólistán lévő receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) hívásakor visszaadott egyes objektumokat jelöli.
+* [QueueClientBuilder](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClientBuilder.html): a `QueueClientBuilder` osztály egy `QueueClient` objektumot konfigurál és hoz létre.
+* [QueueServiceClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueServiceClient.html): a `QueueServiceClient` lehetővé teszi a Storage-fiók összes várólistájának kezelését.
+* [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html): a `QueueClient` osztály segítségével kezelheti és kezelheti az egyes várólistákat és azok üzeneteit.
+* [QueueMessageItem](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/QueueMessageItem.html): az `QueueMessageItem` osztály a [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-) egy várólistán való meghívásakor visszaadott egyedi objektumokat jelöli.
 
 ## <a name="code-examples"></a>Kódpéldák
 
-Ezek a példakódrészletek bemutatják, hogyan teheti meg a következő műveleteket az Azure Queue storage java-beli ügyfélkódtárjával:
+Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő műveleteket az Azure üzenetsor-tárolás ügyféloldali kódtára Javával:
 
 * [A kapcsolati sztring lekérése](#get-the-connection-string)
 * [Üzenetsor létrehozása](#create-a-queue)
-* [Üzenetek hozzáadása várólistához](#add-messages-to-a-queue)
-* [Betekintés a várólistában lévő üzenetekbe](#peek-at-messages -in-a-queue)
-* [Üzenet frissítése a várólistában](#update-a-message-in-a-queue)
-* [Üzenetek fogadása és törlése várólistából](#receive-and-delete-messages-from-a-queue)
+* [Üzenetek hozzáadása egy várólistához](#add-messages-to-a-queue)
+* [Üzenetek betekintése egy várólistába](#peek-at-messages -in-a-queue)
+* [Üzenetsor frissítése](#update-a-message-in-a-queue)
+* [Üzenetek fogadása és törlése egy várólistából](#receive-and-delete-messages-from-a-queue)
 * [Üzenetsor törlése](#delete-a-queue)
 
 ### <a name="get-the-connection-string"></a>A kapcsolati sztring lekérése
 
-Az alábbi kód lekéri a tárfiók kapcsolati karakterláncát. A kapcsolati karakterlánc a [tárolási kapcsolati karakterlánc konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változót tárolja.
+Az alábbi kód a Storage-fiókhoz tartozó kapcsolatok karakterláncot kérdezi le. A rendszer tárolja a hálózati karakterláncot a [tárolási kapcsolatok karakterláncának konfigurálása](#configure-your-storage-connection-string) szakaszban létrehozott környezeti változóban.
 
-Adja hozzá ezt `main` a kódot a metódushoz:
+Adja hozzá ezt a kódot `main` a metódushoz:
 
 ```java
 System.out.println("Azure Queues storage v12 - Java quickstart sample\n");
@@ -192,15 +192,15 @@ String connectStr = System.getenv("AZURE_STORAGE_CONNECTION_STRING");
 
 ### <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Döntse el az új várólista nevét. Az alábbi kód hozzáfűz egy GUID értéket a várólista nevéhez, hogy megbizonyosodjon arról, hogy az egyedi.
+Döntse el az új üzenetsor nevét. Az alábbi kód egy GUID értéket fűz hozzá a várólista neveként, hogy az egyedi legyen.
 
 > [!IMPORTANT]
-> A várólistanevek csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődniük. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 és 63 karakter közötti nek is kell lennie. A várólisták elnevezéséről további információt az [Elnevezési várólisták és a metaadatok](/rest/api/storageservices/naming-queues-and-metadata)című témakörben talál.
+> A várólisták nevei csak kisbetűket, számokat és kötőjeleket tartalmazhatnak, és betűvel vagy számmal kell kezdődnie. A kötőjelek előtt és után csak nem kötőjel karakter állhat. A névnek 3 – 63 karakter hosszúnak kell lennie. További információ a várólisták elnevezéséről: [várólisták és metaadatok elnevezése](/rest/api/storageservices/naming-queues-and-metadata).
 
 
-Hozzon létre egy példányt a [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) osztályból. Ezután hívja meg a [létrehozási](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) módszert a várólista létrehozásához a tárfiókban.
+Hozza létre a [QueueClient](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html) osztály egy példányát. Ezután hívja meg a [create](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#create--) metódust az üzenetsor létrehozásához a Storage-fiókban.
 
-Adja hozzá ezt a `main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `main` metódus végéhez:
 
 ```java
 // Create a unique name for the queue
@@ -219,11 +219,11 @@ QueueClient queueClient = new QueueClientBuilder()
 queueClient.create();
 ```
 
-### <a name="add-messages-to-a-queue"></a>Üzenetek hozzáadása várólistához
+### <a name="add-messages-to-a-queue"></a>Üzenetek hozzáadása egy várólistához
 
-A következő kódrészlet a [sendMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) metódus hívásával üzeneteket ad a várólistához. Egy `sendMessage` hívásból visszaadott [SendMessageResult-et](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) is ment. Az eredmény az üzenet későbbi frissítésére szolgál a program későbbi részében.
+A következő kódrészlet üzeneteket hoz létre a várólistához a [üzenetküldés](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#sendMessage-java.lang.String-) metódus meghívásával. Egy `sendMessage` hívásból visszaadott [SendMessageResult](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/models/SendMessageResult.html) is ment. Az eredmény az üzenet későbbi, a programban való frissítésére szolgál.
 
-Adja hozzá ezt a `main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `main` metódus végéhez:
 
 ```java
 System.out.println("\nAdding messages to the queue...");
@@ -236,11 +236,11 @@ queueClient.sendMessage("Second message");
 SendMessageResult result = queueClient.sendMessage("Third message");
 ```
 
-### <a name="peek-at-messages-in-a-queue"></a>Betekintés a várólistában lévő üzenetekbe
+### <a name="peek-at-messages-in-a-queue"></a>Üzenetek betekintése egy várólistába
 
-A [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) metódus meghívásával tekintsünk be a várólistában lévő üzenetekbe. A `peelkMessages` metódus egy vagy több üzenetet olvas le a várólista elejéről, de nem változtatja meg az üzenet láthatóságát.
+A [peekMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#peekMessages-java.lang.Integer-java.time.Duration-com.azure.core.util.Context-) metódus meghívásával megtekintheti az üzenetsor üzeneteit. A `peelkMessages` metódus egy vagy több üzenetet kérdez le a várólista elejéről, de nem módosítja az üzenet láthatóságát.
 
-Adja hozzá ezt a `main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `main` metódus végéhez:
 
 ```java
 System.out.println("\nPeek at the messages in the queue...");
@@ -250,9 +250,9 @@ queueClient.peekMessages(10, null, null).forEach(
     peekedMessage -> System.out.println("Message: " + peekedMessage.getMessageText()));
 ```
 
-### <a name="update-a-message-in-a-queue"></a>Üzenet frissítése a várólistában
+### <a name="update-a-message-in-a-queue"></a>Üzenetsor frissítése
 
-Az [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) metódus felhívásával frissítheti az üzenet tartalmát. A `updateMessage` módszer módosíthatja az üzenetek láthatósági időtúlságát és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely legfeljebb 64 KB méretű. Az üzenet új tartalmával együtt adja át az üzenetazonosítót `SendMessageResult` és a popnyugta-fogadást a kód korábbi menteni kívánt használatával. Az üzenetazonosító és az előugró nyugta azonosítja a frissítandó üzenetet.
+Egy üzenet tartalmának frissítéséhez hívja meg a [updateMessage](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#updateMessage-java.lang.String-java.lang.String-java.lang.String-java.time.Duration-) metódust. A `updateMessage` metódus módosíthatja az üzenet láthatósági időtúllépését és tartalmát. Az üzenet tartalmának UTF-8 kódolású karakterláncnak kell lennie, amely akár 64 KB méretű is lehet. Az üzenethez tartozó új tartalom mellett adja át az üzenet AZONOSÍTÓját és a pop-nyugtát `SendMessageResult` a kódban korábban mentett fájl használatával. Az üzenet azonosítója és a pop-visszaigazolás azonosítja a frissítendő üzenetet.
 
 ```java
 System.out.println("\nUpdating the third message in the queue...");
@@ -265,13 +265,13 @@ queueClient.updateMessage(result.getMessageId(),
                           Duration.ofSeconds(1));
 ```
 
-### <a name="receive-and-delete-messages-from-a-queue"></a>Üzenetek fogadása és törlése várólistából
+### <a name="receive-and-delete-messages-from-a-queue"></a>Üzenetek fogadása és törlése egy várólistából
 
-Töltse le a korábban hozzáadott üzeneteket a [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) metódus felhívásával. A példakód a fogadás és feldolgozás után is törli az üzeneteket a várólistából. Ebben az esetben a feldolgozás csak az üzenet megjelenítése a konzolon.
+A korábban hozzáadott üzenetek letöltése a [receiveMessages](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#receiveMessages-java.lang.Integer-java.time.Duration-java.time.Duration-com.azure.core.util.Context-) metódus meghívásával. A példában a kód a fogadás és a feldolgozás után is törli az üzeneteket a várólistából. Ebben az esetben a feldolgozás csak az üzenet megjelenítését jeleníti meg a konzolon.
 
-Az alkalmazás szünetel a `System.console().readLine();` felhasználói bevitel hez, ha felhívja, mielőtt fogadja és törli az üzeneteket. Ellenőrizze az [Azure Portalon,](https://portal.azure.com) hogy az erőforrások megfelelően jöttek-e létre, mielőtt törölné őket. A kifejezetten nem törölt üzenetek végül ismét láthatóvá válnak a várólistában, hogy újabb esélyt kaphassanak azok feldolgozására.
+Az alkalmazás a felhasználói bevitel szüneteltetését hívja `System.console().readLine();` meg az üzenetek fogadása és törlése előtt. A törlés előtt ellenőrizze, hogy az erőforrások megfelelően lettek-e létrehozva a [Azure Portal](https://portal.azure.com) . A nem explicit módon törölt üzenetek később ismét láthatóvá válnak a várólistában, hogy egy másik lehetőség is feldolgozza őket.
 
-Adja hozzá ezt a `main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `main` metódus végéhez:
 
 ```java
 System.out.println("\nPress Enter key to receive messages and delete them from the queue...");
@@ -292,9 +292,9 @@ queueClient.receiveMessages(10).forEach(
 
 ### <a name="delete-a-queue"></a>Üzenetsor törlése
 
-A következő kód törli az okat az erőforrásokat, amelyeket az alkalmazás a várólista [törlési](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) módszerrel történő törlésével hozott létre.
+A következő kód megtisztítja az alkalmazás által létrehozott erőforrásokat az üzenetsor törlésével a [delete](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-queue/12.0.0/com/azure/storage/queue/QueueClient.html#delete--) metódus használatával.
 
-Adja hozzá ezt a `main` kódot a módszer végéhez:
+Adja hozzá ezt a kódot a `main` metódus végéhez:
 
 ```java
 System.out.println("\nPress Enter key to delete the queue...");
@@ -309,27 +309,27 @@ System.out.println("Done");
 
 ## <a name="run-the-code"></a>A kód futtatása
 
-Ez az alkalmazás három üzenetet hoz létre, és három üzenetet ad hozzá egy Azure-várólistához. A kód felsorolja az üzeneteket a várólistában, majd beolvassa és törli őket, mielőtt véglegesen törli a várólistát.
+Ez az alkalmazás három üzenetet hoz létre és tesz hozzá egy Azure-várólistához. A kód felsorolja a várólistán lévő üzeneteket, majd lekéri és törli őket, mielőtt véglegesen törölné a várólistát.
 
-A konzolablakban keresse meg az alkalmazáskönyvtárat, majd építse fel és futtassa az alkalmazást.
+A konzol ablakban navigáljon az alkalmazás könyvtárába, majd hozza létre és futtassa az alkalmazást.
 
 ```console
 mvn compile
 ```
 
-Ezután készítse el a csomagot.
+Ezután hozza létre a csomagot.
 
 ```console
 mvn package
 ```
 
-Az alkalmazás `mvn` végrehajtásához futtassa a következő parancsot.
+Futtassa az alábbi `mvn` parancsot az alkalmazás végrehajtásához.
 
 ```console
 mvn exec:java -Dexec.mainClass="com.queues.quickstart.App" -Dexec.cleanupDaemonThreads=false
 ```
 
-Az alkalmazás kimenete hasonló a következő példához:
+Az alkalmazás kimenete az alábbi példához hasonló:
 
 ```output
 Azure Queues storage v12 - Java quickstart sample
@@ -355,17 +355,17 @@ Deleting queue: quickstartqueues-fbf58f33-4d5a-41ac-ac0e-1a05d01c7003
 Done
 ```
 
-Amikor az alkalmazás szünetel az üzenetek fogadása előtt, ellenőrizze a tárfiókot az [Azure Portalon.](https://portal.azure.com) Ellenőrizze, hogy az üzenetek a várólistában vannak-e.
+Ha az alkalmazás szünetelteti az üzenetek fogadását, akkor a [Azure Portalban](https://portal.azure.com)keresse meg a Storage-fiókját. Ellenőrizze, hogy az üzenetek szerepelnek-e a várólistán.
 
-Az **Üzenetek billentyűlenyomásaz** üzenetek fogadásához és törléséhez. Amikor a rendszer kéri, nyomja le ismét az **Enter** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
+Nyomja le az **ENTER** billentyűt az üzenetek fogadásához és törléséhez. Ha a rendszer kéri, nyomja meg ismét az **ENTER** billentyűt a várólista törléséhez és a bemutató befejezéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket Java-kód használatával. Ezután megtanulta betekinteni, beolvasni és törölni az üzeneteket. Végül megtanulta, hogyan kell törölni egy üzenetvárólistát.
+Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre várólistát, és hogyan adhat hozzá üzeneteket a Java-kóddal. Ezután megtanulta az üzenetek betekintését, beolvasását és törlését. Végezetül megtanulta, hogyan törölhet egy üzenetsor-várólistát.
 
-Oktatóanyagok, minták, gyorsindítások és egyéb dokumentációk esetén látogasson el a következő oldalra:
+Oktatóanyagok, minták, gyors indítás és egyéb dokumentáció:
 
 > [!div class="nextstepaction"]
 > [Azure Java-felhőfejlesztőknek](https://docs.microsoft.com/azure/developer/java/)
 
-* További Azure Queue storage mintaalkalmazások megtekintéséhez folytassa az [Azure Queue storage SDK v12 Java-ügyfélkönyvtármintáival.](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue)
+* További Azure üzenetsor-tárolási minta alkalmazások megjelenítéséhez folytassa az [Azure üzenetsor Storage SDK V12 Java ügyféloldali függvénytár-mintákkal](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-queue/src/samples/java/com/azure/storage/queue).

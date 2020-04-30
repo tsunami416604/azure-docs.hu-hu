@@ -1,102 +1,102 @@
 ---
-title: Oktatóanyag – Az Azure Spring Cloud-alkalmazások üzembe helyezéséhez használja az IntelliJ-t
-description: Az IntelliJ használatával alkalmazásokat telepíthet az Azure Spring Cloud szolgáltatásba.
+title: Oktatóanyag – Azure Spring Cloud-alkalmazások üzembe helyezése a IntelliJ használatával
+description: Alkalmazások üzembe helyezése az Azure Spring Cloud IntelliJ használatával.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 03/26/2020
 ms.openlocfilehash: 8e473a5692c3fa2be3b0f2d823d2a36ba768d661
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81731358"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
-Az Azure Spring Cloud IntelliJ beépülő modulja támogatja az alkalmazások telepítését az IntelliJ IDEA-ból.  
+Az Azure Spring Cloud IntelliJ beépülő modulja támogatja az alkalmazások telepítését a IntelliJ ÖTLETből.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 * [JDK 8 Azul Zulu](https://docs.microsoft.com/java/azure/jdk/java-jdk-install?view=azure-java-stable)
-* [Maven 3.5.0+](https://maven.apache.org/download.cgi)
-* [IntelliJ IDEA, Közösségi/Ultimate Edition, 2020.1/2019.3 verzió](https://www.jetbrains.com/idea/download/#section=windows)
+* [Maven 3.5.0 +](https://maven.apache.org/download.cgi)
+* [IntelliJ IDEA, Community/Ultimate Edition, verzió 2020.1/2019.3](https://www.jetbrains.com/idea/download/#section=windows)
 
-## <a name="install-the-plug-in"></a>A beépülő modul beszerelése
-Az IntelliJ IDEA 3.35.0 Azure Toolkit szolgáltatását hozzáadhatja az IntelliJ **Plugins** felhasználói felületéről.
+## <a name="install-the-plug-in"></a>A beépülő modul telepítése
+Az Azure Toolkit for IntelliJ IDEA 3.35.0 az IntelliJ **plugins** felhasználói felületéről adhatja hozzá.
 
-1. Indítsa el az IntelliJ-t.  Ha korábban már nyitott meg egy projektet, zárja be a projektet az üdvözlő párbeszédpanel megjelenítéséhez. Válassza a Jobb alsó hivatkozás **konfigurálása** lehetőséget, majd a **Beépülő modulok gombra** kattintva nyissa meg a beépülő modul konfigurációs párbeszédpanelét, és válassza a **Bővítmények telepítése lemezről**lehetőséget .
+1. Indítsa el a IntelliJ.  Ha korábban már megnyitott egy projektet, a projekt bezárásával jelenítheti meg az üdvözlő párbeszédpanelt. Válassza a **Konfigurálás** a jobb alsó sarokban lehetőséget, majd kattintson a **plugins** gombra a beépülő modul konfigurálása párbeszédpanel megnyitásához, majd válassza a **plugins telepítése lemezről**lehetőséget.
 
     ![Konfigurálás kiválasztása](media/spring-cloud-intellij-howto/configure-plugin-1.png)
 
-1. Keresse meg az Azure Toolkit for IntelliJ.Search for Azure Toolkit for IntelliJ.  Kattintson a **Telepítés gombra.**
+1. Azure Toolkit for IntelliJ keresése.  Kattintson a **telepítés**gombra.
 
-    ![Bővítmény telepítése](media/spring-cloud-intellij-howto/install-plugin.png)
+    ![Beépülő modul telepítése](media/spring-cloud-intellij-howto/install-plugin.png)
 
-1. Kattintson **az Újraindítás AZ IDE gombra.**
+1. Kattintson az **ide újraindítása**elemre.
 
-## <a name="tutorial-procedures"></a>Bemutató eljárások
-A következő eljárások egy Hello World alkalmazást telepítenek az IntelliJ IDEA használatával.
+## <a name="tutorial-procedures"></a>Oktatóanyag-eljárások
+Az alábbi eljárások a IntelliJ IDEA használatával telepítenek egy "Helló világ!" alkalmazás alkalmazást.
 
-* Nyitott gs-tavaszi-boot projekt
-* Üzembe helyezés az Azure Spring Cloud szolgáltatásban
-* Adatfolyam-naplók megjelenítése
+* A GS-Spring-boot projekt megnyitása
+* Üzembe helyezés az Azure Spring Cloud-on
+* Folyamatos átviteli naplók megjelenítése
 
-## <a name="open-gs-spring-boot-project"></a>Nyitott gs-tavaszi-boot projekt
+## <a name="open-gs-spring-boot-project"></a>A GS-Spring-boot projekt megnyitása
 
-1. Töltse le és csomagolja ki a forrás tárház a bemutató, vagy klón segítségével Git: git klónhttps://github.com/spring-guides/gs-spring-boot.git 
-1. cd-t gs-spring-boot\complete.cd into gs-spring-boot\complete.
-1. Nyissa meg az **Welcome** IntelliJ üdvözlőpárbeszédpanelt, és válassza a **Projekt importálása** lehetőséget az importálási varázsló megnyitásához.
-1. Mappa `gs-spring-boot\complete` kijelölése.
+1. Töltse le és csomagolja ki az oktatóanyag forrás-tárházát, vagy klónozott a git használatával: git Clonehttps://github.com/spring-guides/gs-spring-boot.git 
+1. CD into GS-Spring-boot\complete.
+1. Nyissa meg az IntelliJ **üdvözlő** párbeszédpanelt, és válassza a **Projekt importálása** elemet az Importálás varázsló megnyitásához.
+1. Válassza `gs-spring-boot\complete` a mappa lehetőséget.
 
     ![Projekt importálása](media/spring-cloud-intellij-howto/import-project-1.png)
 
-## <a name="deploy-to-azure-spring-cloud"></a>Üzembe helyezés az Azure Spring Cloud szolgáltatásban
-Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával, és ki kell választania az előfizetést.  A bejelentkezésrészleteia Telepítés és bejelentkezés című [témakörben](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in)található.
+## <a name="deploy-to-azure-spring-cloud"></a>Üzembe helyezés az Azure Spring Cloud-on
+Az Azure-ba való üzembe helyezéshez be kell jelentkeznie az Azure-fiókjával, és ki kell választania az előfizetését.  A bejelentkezés részleteiért lásd: [telepítés és bejelentkezés](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/create-hello-world-web-app#installation-and-sign-in).
 
-1. Kattintson a jobb gombbal a projektre az IntelliJ projektkezelőben, és válassza az **Azure** -> **Deploy to Azure Spring Cloud parancsot.**
+1. Kattintson a jobb gombbal a projektre a IntelliJ Project Explorerben, és válassza az **Azure** -> -**üzembe helyezés az Azure Spring Cloud**-ban lehetőséget.
 
     ![Üzembe helyezés az Azure 1-ben](media/spring-cloud-intellij-howto/deploy-to-azure-1.png)
 
-1. Fogadja el az alkalmazás nevét a **Név** mezőben. **A név** a konfigurációra vonatkozik, nem az alkalmazás nevére. A felhasználóknak általában nem kell módosítaniuk.
-1. Fogadja el az azonosítót a **műtermék projektjéből.**
-1. Válassza **az Alkalmazás lehetőséget,** majd kattintson **az Alkalmazás létrehozása...** gombra.
+1. Fogadja el az alkalmazás nevét a **név** mezőben. A **név** a konfigurációra hivatkozik, nem az alkalmazás nevére. A felhasználóknak általában nem kell módosítaniuk.
+1. Fogadja el az azonosítót a projektből **az összetevőhöz.**
+1. Válassza az **alkalmazás elemet:** kattintson az **alkalmazás létrehozása...** elemre.
 
-    ![Üzembe helyezés az Azure 2-ben](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
+    ![Üzembe helyezés az Azure 2-ban](media/spring-cloud-intellij-howto/deploy-to-azure-2.png)
 
-1. Írja be **az alkalmazás nevét,** majd kattintson **az OK gombra.**
+1. Adja meg az **alkalmazás nevét**, majd kattintson **az OK**gombra.
 
-    ![Üzembe helyezés az Azure-ban – RENDBEN](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
+    ![Üzembe helyezés az Azure-ban OK](media/spring-cloud-intellij-howto/deploy-to-azure-2a.png)
 
-1. Indítsa el a telepítést a **Futtatás** gombra kattintva. 
+1. A telepítés indításához kattintson a **Futtatás** gombra. 
 
     ![Üzembe helyezés az Azure 3-ban](media/spring-cloud-intellij-howto/deploy-to-azure-3.png)
 
-1. A beépülő modul `mvn package` futtatja a parancsot a projekten, majd létrehozza `package` az új alkalmazást, és telepíti a parancs által létrehozott jart.
+1. A beépülő modul futtatja a parancsot `mvn package` a projekten, majd létrehozza az új alkalmazást, és telepíti a `package` parancs által generált jar-t.
 
-1. Ha az alkalmazás URL-címe nem jelenik meg a kimeneti ablakban, az Azure Portalon. Navigáljon az erőforráscsoportból az Azure Spring Cloud példányába.  Ezután kattintson **az Alkalmazások**gombra.  A futó alkalmazás megjelenik a listában.
+1. Ha az alkalmazás URL-címe nem jelenik meg a kimeneti ablakban, szerezze be a Azure Portal. Navigáljon az erőforráscsoporthoz az Azure Spring Cloud-példányra.  Ezután kattintson az **alkalmazások**elemre.  A futó alkalmazás fel lesz sorolva.
 
-    ![Teszt URL-címének beszereznie](media/spring-cloud-intellij-howto/get-test-url.png)
+    ![Teszt URL-címének beolvasása](media/spring-cloud-intellij-howto/get-test-url.png)
 
-1. Keresse meg az URL-címet a böngészőben.
+1. Nyissa meg az URL-címet a böngészőben.
 
-    ![Navigálás a böngészőben 2](media/spring-cloud-intellij-howto/navigate-in-browser-2.png)
+    ![Navigáljon a 2. böngészőben](media/spring-cloud-intellij-howto/navigate-in-browser-2.png)
 
-## <a name="show-streaming-logs"></a>Adatfolyam-naplók megjelenítése
-Ahhoz, hogy a naplók:
-1. Válassza az **Azure Explorer**, majd a **Spring Cloud**lehetőséget.
+## <a name="show-streaming-logs"></a>Folyamatos átviteli naplók megjelenítése
+A naplók beszerzése:
+1. Válassza az **Azure Explorer**, majd a **Spring Cloud**elemet.
 1. Kattintson a jobb gombbal a futó alkalmazásra.
-1. Válassza a Legördülő listából válassza a **Streamelési naplók** lehetőséget.
+1. Válassza a **folyamatos átviteli naplók** lehetőséget a legördülő listából.
 
-    ![Streamelési naplók kiválasztása](media/spring-cloud-intellij-howto/streaming-logs.png)
+    ![Adatfolyam-naplók kiválasztása](media/spring-cloud-intellij-howto/streaming-logs.png)
 
-1. Jelölje ki a példányt.
+1. Válassza a példány lehetőséget.
 
-    ![Példány kijelölése](media/spring-cloud-intellij-howto/select-instance.png)
+    ![Példány kiválasztása](media/spring-cloud-intellij-howto/select-instance.png)
 
-1. A streamelési napló látható lesz a kimeneti ablakban.
+1. A folyamatos átviteli napló a kimeneti ablakban jelenik meg.
 
-    ![Streamelési napló kimenete](media/spring-cloud-intellij-howto/streaming-log-output.png)
+    ![Adatfolyam-napló kimenete](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
 ## <a name="next-steps"></a>További lépések
-* [Tavaszi alkalmazás előkészítése az Azure Spring Cloud szolgáltatáshoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
-* [További információ az Azure Toolkit for IntelliJ-ről](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)
+* [Spring-alkalmazás előkészítése az Azure Spring Cloud-hoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
+* [További információ a Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

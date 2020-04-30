@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge és Azure IoT Central | Microsoft dokumentumok
-description: Ismerje meg, hogyan használhatja az Azure IoT Edge-et egy IoT Central alkalmazással.
+title: Azure IoT Edge és az Azure IoT Central | Microsoft Docs
+description: Ismerje meg, hogyan használhatja a Azure IoT Edget egy IoT Central alkalmazással.
 author: dominicbetts
 ms.author: dobett
 ms.date: 12/12/2019
@@ -8,70 +8,70 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 89d068fbd835a5b4f8886a2ed77691f94a701bb0
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759103"
 ---
-# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge-eszközök csatlakoztatása egy Azure IoT Central alkalmazáshoz
+# <a name="connect-azure-iot-edge-devices-to-an-azure-iot-central-application"></a>Azure IoT Edge eszközök csatlakoztatása Azure IoT Central-alkalmazáshoz
 
-*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
+*Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
-Az IoT Edge három összetevőből áll:
+A IoT Edge három összetevőből áll:
 
-* **Az IoT Edge-modulok olyan tárolók,** amelyek Azure-szolgáltatásokat, partnerszolgáltatásokat vagy saját kódot futtatnak. A modulok az IoT Edge-eszközökre vannak telepítve, és azokon az eszközökön helyileg futnak.
-* Az **IoT Edge-futásidejű fut** minden IoT Edge-eszközön, és kezeli az egyes eszközökre telepített modulokat.
-* A felhőalapú felület lehetővé teszi az IoT **Edge-eszközök** távoli figyelése és kezelése. Az IoT Central a felhőfelület.
+* **IoT Edge modulok** az Azure-szolgáltatásokat, a partneri szolgáltatásokat vagy a saját kódokat futtató tárolók. A modulok IoT Edge eszközökön vannak telepítve, és helyileg futnak ezeken az eszközökön.
+* A **IoT Edge futtatókörnyezet** minden IoT Edge eszközön fut, és felügyeli az egyes eszközökön üzembe helyezett modulokat.
+* A **felhőalapú felület** lehetővé teszi IoT Edge-eszközök távoli figyelését és kezelését. IoT Central a felhő felülete.
 
-Az **Azure IoT Edge-eszköz** lehet egy átjáró eszköz, az IoT Edge-eszközhöz csatlakozó alsóbb rétegbeli eszközökkel. Ez a cikk további információkat oszt meg az alsóbb rétegbeli eszközkapcsolati mintákról.
+Egy **Azure IoT Edge** eszköz lehet átjáró-eszköz, amely a IoT Edge eszközhöz csatlakozó alsóbb rétegbeli eszközökkel rendelkezik. Ez a cikk további információkat oszt meg az alsóbb rétegbeli eszközök kapcsolódási szokásairól.
 
-Az **eszközsablon** az eszköz és az IoT Edge-modulok képességeit határozza meg. A képességek közé tartozik a modul által küldött telemetriai adatok, a modul tulajdonságai és a parancsok, amelyekre a modul válaszol.
+Az **eszköz-sablonok** határozzák meg az eszköz képességeit és IoT Edge modulokat. A képességek közé tartozik a modul által küldött telemetria, a modul tulajdonságai, valamint az a parancs, amelyet a modul válaszol.
 
-## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Alsóbb rétegbeli eszközkapcsolatok átjáróval és modulokkal
+## <a name="downstream-device-relationships-with-a-gateway-and-modules"></a>Alsóbb rétegbeli eszközök kapcsolatai átjáróval és modulokkal
 
-Az alsóbb rétegbeli eszközök a modulon keresztül csatlakozhatnak egy `$edgeHub` IoT Edge-átjáróeszközhöz. Ez az IoT Edge-eszköz lesz egy átlátszó átjáró ebben a forgatókönyvben.
+Az alsóbb rétegbeli eszközök a `$edgeHub` modulon keresztül kapcsolódhatnak egy IoT Edge átjáró eszközhöz. Ez az IoT Edge-eszköz egy transzparens átjáró lesz ebben a forgatókönyvben.
 
-![Átlátszó átjáró diagramja](./media/concepts-iot-edge/gateway-transparent.png)
+![Transzparens átjáró diagramja](./media/concepts-iot-edge/gateway-transparent.png)
 
-Az alsóbb rétegbeli eszközök egy Egyéni modulon keresztül is csatlakozhatnak egy IoT Edge-átjáróeszközhöz. A következő esetben az alsóbb rétegbeli eszközök egy Modbus egyéni modulon keresztül csatlakoznak.
+Az alárendelt eszközök egy egyéni modulon keresztül is csatlakozhatnak egy IoT Edge átjáró eszközéhez. A következő forgatókönyvben az alsóbb rétegbeli eszközök egy Modbus egyéni modulon keresztül csatlakoznak.
 
-![Egyéni modulkapcsolat diagramja](./media/concepts-iot-edge/gateway-module.png)
+![Egyéni modul-kapcsolatok diagramja](./media/concepts-iot-edge/gateway-module.png)
 
-Az alábbi ábrán az IoT Edge átjáróeszközhöz való csatlakozás `$edgeHub`látható mindkét típusú modulon (egyéni és ) keresztül.  
+Az alábbi ábrán egy IoT Edge átjáró-eszközhöz való kapcsolódás látható mindkét típusú modulban ( `$edgeHub`egyéni és).  
 
-![A két csatlakozómodulon keresztüli csatlakozás diagramja](./media/concepts-iot-edge/gateway-module-transparent.png)
+![A csatlakozás diagramja mindkét kapcsolati modulon keresztül](./media/concepts-iot-edge/gateway-module-transparent.png)
 
-Végül az alsóbb rétegbeli eszközök több egyéni modulon keresztül csatlakozhatnak egy IoT Edge-átjáróeszközhöz. Az alábbi ábrán egy Modbus egyéni modulon, egy BLE-es egyéni modulon és a `$edgeHub` modulon keresztül csatlakozó alsóbb rétegbeli eszközök láthatók. 
+Végül az alsóbb rétegbeli eszközök több egyéni modulon keresztül csatlakozhatnak egy IoT Edge átjáróhoz. Az alábbi ábrán egy Modbus egyéni modul, egy egyedi modul és a `$edgeHub` modul segítségével csatlakozó alsóbb rétegbeli eszközök láthatók. 
 
 ![Több egyéni modulon keresztüli csatlakozás diagramja](./media/concepts-iot-edge/gateway-module2-transparent.png)
 
-## <a name="deployment-manifests-and-device-templates"></a>Telepítési jegyzékek és eszközsablonok
+## <a name="deployment-manifests-and-device-templates"></a>Üzembe helyezési jegyzékek és eszközök sablonjai
 
-Az IoT Edge-ben üzembe helyezheti és kezelheti az üzleti logikát modulok formájában. Az IoT Edge-modulok az IoT Edge által kezelt legkisebb számítási egység, és tartalmazhatnak Azure-szolgáltatásokat (például az Azure Stream Analytics) vagy a saját megoldásspecifikus kódot. A modulok fejlesztésének, üzembe helyezésének és karbantartásának megértéséhez lásd: [IoT Edge-modulok.](../../iot-edge/iot-edge-modules.md)
+IoT Edge az üzleti logikát modulok formájában helyezheti üzembe és kezelheti. A IoT Edge modulok a IoT Edge által kezelt számítási egységek legkisebb egységei, és tartalmazhatnak Azure-szolgáltatásokat (például Azure Stream Analytics) vagy a saját megoldásra vonatkozó kódokat. A modulok fejlesztésének, üzembe helyezésének és karbantartásának megismeréséhez tekintse meg [IoT Edge modulokat](../../iot-edge/iot-edge-modules.md).
 
-Magas szinten a központi telepítési jegyzékfájl a modul ikreik listáját, amelyek a kívánt tulajdonságokkal vannak konfigurálva. A központi telepítési jegyzékfájl lemondja az IoT Edge-eszköz (vagy eszközök egy csoportja), amely modulok telepítése, és hogyan konfigurálja őket. A központi telepítési jegyzékek tartalmazzák az egyes ikermodulok kívánt tulajdonságait. Az IoT Edge-eszközök jelentés vissza az egyes modulok jelentett tulajdonságait.
+Az üzembe helyezési jegyzék magas szinten az olyan modulok listája, amelyek a kívánt tulajdonságokkal vannak konfigurálva. Az üzembe helyezési jegyzék egy IoT Edge eszközt (vagy az eszközök egy csoportját) adja meg, mely modulokat kell telepíteni és konfigurálni. Az üzembe helyezési jegyzékek tartalmazzák a különálló modulok kívánt tulajdonságait. IoT Edge az eszközök jelentést készítenek az egyes modulok jelentett tulajdonságairól.
 
-A Visual Studio-kód használatával hozzon létre egy központi telepítési jegyzékfájlt. További információ: [Azure IoT Edge for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge).
+A Visual Studio Code használatával hozzon létre egy üzembe helyezési jegyzéket. További információk: [Azure IoT Edge a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)-hoz.
 
-Az Azure IoT Central ban importálhat egy központi telepítési jegyzékfájlt egy eszközsablon létrehozásához. Az alábbi folyamatábra egy telepítési jegyzékfájl életciklusát mutatja az IoT Centralban.
+Az Azure IoT Central-ban importálhat egy üzembe helyezési jegyzéket egy eszköz sablon létrehozásához. A következő folyamatábra egy üzembe helyezési jegyzékfájl életciklusát mutatja IoT Centralban.
 
-![A telepítési jegyzék életciklusának folyamatábrája](./media/concepts-iot-edge/dmflow.png)
+![Üzembe helyezési jegyzékfájl életciklusának folyamatábrája](./media/concepts-iot-edge/dmflow.png)
 
-Az IoT Plug and Play (előzetes verzió) az alábbiak szerint modellezi az IoT Edge-eszközt:
+A IoT Plug and Play (előzetes verzió) a következőképpen modellezi a IoT Edge eszközt:
 
-* Minden IoT Edge-eszközsablon rendelkezik egy eszközképességi modellel.
-* A központi telepítési jegyzékben felsorolt minden egyéni modulhoz létrejön egy modulképességi modell.
-* Az egyes modulképességi modellek és az eszközképességi modell között kapcsolat jön létre.
-* A modulképességi modell modulinterfészeket valósít meg.
-* Minden modulfelület telemetriai adatokat, tulajdonságokat és parancsokat tartalmaz.
+* Minden IoT Edge eszköz-sablonhoz tartozik egy eszköz-képesség modell.
+* Az üzembe helyezési jegyzékben felsorolt összes egyéni modulhoz létrejön egy modul-képesség modell.
+* Létrejön egy kapcsolat az egyes modulok képességeinek modellje és az eszköz képességeinek modellje között.
+* A modul-képesség modell modul-illesztőfelületeket valósít meg.
+* Mindegyik modul felülete telemetria, tulajdonságokat és parancsokat tartalmaz.
 
 ![IoT Edge modellezés diagramja](./media/concepts-iot-edge/edgemodelling.png)
 
-## <a name="iot-edge-gateway-devices"></a>IoT Edge átjáróeszközök
+## <a name="iot-edge-gateway-devices"></a>Átjáró-eszközök IoT Edge
 
-Ha egy IoT Edge-eszközt választott átjáróeszköznek, hozzáadhat alsóbb rétegbeli kapcsolatokat az átjáróeszközhöz csatlakoztatni kívánt eszközök eszközképesség-modelljeihez.
+Ha IoT Edge eszközt jelölt ki egy átjáró eszközként, az eszközhöz csatlakozni kívánó eszközökhöz hozzáadhat alsóbb rétegbeli kapcsolatokat az eszköz képességeinek modelljeihez.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha Ön eszközfejlesztő, a javasolt következő lépés az [IoT Central átjáróeszköz-típusainak](./tutorial-define-gateway-device-type.md)megismerése.
+Ha Ön egy eszköz fejlesztője, a következő lépés a [IoT Central átjáró eszközök típusának](./tutorial-define-gateway-device-type.md)megismerése.

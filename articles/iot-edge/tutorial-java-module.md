@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Egyéni Java-modul oktatóanyag az Azure IoT Edge használatával
+title: Oktatóanyag – egyéni Java-modulok oktatóanyaga Azure IoT Edge használatával
 description: Az oktatóanyag bemutatja, hogyan hozhat létre IoT Edge-modult Java-kóddal, és hogyan helyezheti üzembe azt peremhálózati eszközökön.
 services: iot-edge
 author: kgremban
@@ -12,15 +12,15 @@ ms.custom:
 - mvc
 - mqtt
 ms.openlocfilehash: d8ea58dca8235b6dfc49c14c519dd44dabdf0592
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81733083"
 ---
-# <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Java IoT Edge-modul fejlesztése Linux-eszközökhöz
+# <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Java-IoT Edge modul létrehozása Linux-eszközökhöz
 
-Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Az Azure IoT Edge üzembe helyezéséhez létrehozott szimulált IoT Edge-eszközt fogja használni egy szimulált eszközön [linuxos](quickstart-linux.md) gyorsindításban. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti az érzékelőktől kapott adatokat szűrő IoT Edge-modul létrehozásának és üzembe helyezésének lépésein. Azt a szimulált IoT Edge eszközt fogja használni, amelyet a Azure IoT Edge üzembe helyezése szimulált eszközön a [Linux](quickstart-linux.md) rendszerű Gyorsindítás szolgáltatásban hozott létre. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -35,61 +35,61 @@ Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze álta
 
 ## <a name="solution-scope"></a>Megoldás hatóköre
 
-Ez az oktatóanyag bemutatja, hogyan fejleszthet ki egy modult **Java** nyelven a **Visual Studio Code használatával,** és hogyan telepítheti **linuxos eszközre.** Az IoT Edge nem támogatja a Java modulokat Windows-eszközökhöz.
+Ez az oktatóanyag bemutatja, hogyan fejleszthet **Java** -modult a **Visual Studio Code**használatával, és hogyan telepítheti azt egy **Linux-eszközre**. A IoT Edge nem támogatja a Windows-eszközökhöz készült Java-modulokat.
 
-Az alábbi táblázat segítségével megismerheti a Java-modulok fejlesztésének és üzembe helyezésének lehetőségeit:
+A következő táblázat segítségével megismerheti a Java-modulok fejlesztésének és üzembe helyezésének lehetőségeit:
 
 | Java | Visual Studio Code | Visual Studio 2017/2019 |
 | - | ------------------ | ------------------ |
-| **Linux AMD64** | ![Vs Code for Java modulok használata Linux AMD64 rendszeren](./media/tutorial-c-module/green-check.png) |  |
-| **Linux ARM32** | ![Vs Code for Java modulok használata Linux ARM32 rendszeren](./media/tutorial-c-module/green-check.png) |  |
+| **Linux AMD64** | ![A VS Code használata Java-modulokhoz a Linux AMD64-ben](./media/tutorial-c-module/green-check.png) |  |
+| **Linux ARM32** | ![A VS Code használata Java-modulokhoz Linux ARM32](./media/tutorial-c-module/green-check.png) |  |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag megkezdése előtt át kellett volna mennie az előző oktatóanyagon, hogy beállítsa a linuxos tárolók fejlesztéséhez a fejlesztői környezetet: [IoT Edge-modulok fejlesztése Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyagok kitöltésével a következő előfeltételeket kell megtöltenie:
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot a fejlesztői környezet létrehozásához a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Ezeknek az oktatóanyagoknak a végrehajtásával a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* [Azure IoT Edge-et futtató Linux-eszköz](quickstart-linux.md)
-* A tároló beállításjegyzék, mint [az Azure Container Registry.](https://docs.microsoft.com/azure/container-registry/)
-* Az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)konfigurált [Visual Studio-kód.](https://code.visualstudio.com/)
-* [A Docker CE](https://docs.docker.com/install/) linuxos tárolók futtatására van konfigurálva.
+* [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
+* Egy tároló-beállításjegyzék, például [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
+* A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
+* A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
 
-IoT Edge-modul java-beli fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre: 
+IoT Edge modul javában történő fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre: 
 
 * A Visual Studio Code-hoz készült [Java-bővítménycsomag](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack).
 * A [Java SE Development Kit 10](https://aka.ms/azure-jdks), valamint úgy [állítsa be a `JAVA_HOME` környezeti változót](https://docs.oracle.com/cd/E19182-01/820-7851/inst_cli_jdk_javahome_t/), hogy a JDK-telepítésre mutasson.
 * [Maven](https://maven.apache.org/)
 
-## <a name="create-a-module-project"></a>Modulprojekt létrehozása
+## <a name="create-a-module-project"></a>Modul-projekt létrehozása
 
-A következő lépések hozzon létre egy IoT Edge-modul projekt, amely az Azure IoT Edge maven sabloncsomag és az Azure IoT Java-eszköz SDK alapul. A projektet a Visual Studio Code és az Azure IoT Tools használatával hozhatja létre.
+Az alábbi lépések egy IoT Edge modul-projektet hoznak létre, amely a Azure IoT Edge Maven-sablon csomagján és az Azure IoT Java-eszköz SDK-on alapul. A projektet a Visual Studio Code és az Azure IoT Tools használatával hozza létre.
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása
 
 Létrehozhat egy Java-megoldást, amelyet a saját kódjával testreszabhat.
 
-1. A Visual Studio-kód ban válassza a**Parancspaletta** **megtekintése** > lehetőséget a VS Code parancspaletta megnyitásához.
+1. A Visual Studio Code-ban kattintson a**parancs paletta** **megtekintése** > elemre a vs Code parancs paletta megnyitásához.
 
 2. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** parancsot. Kövesse a parancskatalógusban található utasításokat a megoldás létrehozásához.
 
    | Mező | Érték |
    | ----- | ----- |
    | Select folder (Mappa kiválasztása) | Válassza ki azt a helyet a fejlesztői gépen, ahol a VS Code létre fogja hozni a megoldásfájlokat. |
-   | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldásnak, vagy fogadja el az alapértelmezett **EdgeSolution nevet.** |
-   | Select module template (Modulsablon kiválasztása) | Válassza a **Java modul lehetőséget.** |
-   | Érték megadásáa a groupId-hoz | Adjon meg egy csoportazonosító értéket, vagy fogadja el az alapértelmezett **com.edgemodule modult.** |
+   | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
+   | Select module template (Modulsablon kiválasztása) | Válasszon **Java-modult**. |
+   | Adja meg a groupId értékét | Adja meg a csoport AZONOSÍTÓjának értékét, vagy fogadja el az alapértelmezett **com. edgemodule**. |
    | Provide a module name (Modulnév megadása) | Nevezze el a modul **JavaModule**. |
-   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre ki van töltve az utolsó lépésben megadott névből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A végső képtár \<úgy\>néz ki, mint a rendszerleíró adatbázis neve .azurecr.io/javamodule. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tároló képe előre fel van töltve az utolsó lépésben megadott névvel. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A rendszerkép utolsó tárháza a \<következőhöz\>hasonló: beállításjegyzék neve. azurecr.IO/javamodule. |
 
    ![Docker-rendszerkép adattárának megadása](./media/tutorial-java-module/repository.png)
 
-Ha ez az első alkalom, hogy java modult hoz létre, több percig is eltarthat a maven csomagok letöltése. Amikor a megoldás készen áll, a VS-kód ablak betölti az IoT Edge-megoldás munkaterületét. A megoldásmunkaterület öt legfelső szintű összetevőt tartalmaz:
+Ha első alkalommal hoz létre Java-modult, a Maven-csomagok letöltése több percet is igénybe vehet. Ha a megoldás elkészült, a VS Code ablak betölti a IoT Edge megoldás munkaterületét. A megoldás munkaterület öt legfelső szintű összetevőt tartalmaz:
 
-* A **modulok mappája** tartalmazza a modul Java-kódját és a Docker-fájlokat a modul tárolórendszerképként való létrehozásához.
-* Az ** \.env** fájl tárolja a tároló rendszerleíró hitelesítő adatait.
+* A **modulok** mappa tartalmazza a modulhoz tartozó Java-kódot és a Docker-fájlokat, hogy a modult tároló képként lehessen felépíteni.
+* Az ** \.env** -fájl tárolja a tároló beállításjegyzékbeli hitelesítő adatait.
 * A **deployment.template.json** fájl az IoT Edge-futtatókörnyezet által a modulok eszközön való üzembe helyezéséhez használt információkat tartalmazza.
-* A **deployment.debug.template.json** fájl a modulok hibakeresési verzióját tárolja.
-* Ebben az oktatóanyagban nem fogja szerkeszteni a ** \.vscode** mappát vagy ** \.a gitignore** fájlt.
+* A **Deployment. debug. template. JSON** fájl a modulok hibakeresési verzióját tárolók.
+* Ebben az oktatóanyagban nem módosítja a ** \.** ** \.vscode** mappát vagy a gitignore-fájlt.
 
 Ha nem adott meg tárolóregisztrációs adatbázist a megoldás létrehozásakor, de elfogadta az alapértelmezett localhost:5000 értéket, akkor nem lesz \.env fájlja.
 
@@ -101,17 +101,17 @@ A környezeti fájl tárolja a tárolóregisztrációs adatbázis hitelesítő a
 2. Adja meg az Azure Container Registryből kimásolt **felhasználónevet** és **jelszót** a megfelelő mezőkben.
 3. Mentse el ezt a fájlt.
 
-### <a name="select-your-target-architecture"></a>Válassza ki a célarchitektúrát
+### <a name="select-your-target-architecture"></a>Válassza ki a cél architektúrát
 
-Jelenleg a Visual Studio Code java modulokat fejleszthet Linux AMD64 és Linux ARM32v7 eszközökhöz. Ki kell választania, hogy az egyes megoldásokkal melyik architektúrát célozza meg, mert a tároló az egyes architektúratípusokhoz másképp en fut. Az alapértelmezett érték a Linux AMD64.
+A Visual Studio Code jelenleg a Linux AMD64 és Linux ARM32v7-eszközökhöz használható Java-modulokat fejleszt. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64.
 
-1. Nyissa meg a parancspalettát, és keressen az **Azure IoT Edge: Set Default Target Platform for Edge Solution (Alapértelmezett célplatform az edge-megoldáshoz) kifejezésre,** vagy válassza ki az ablak alján lévő oldalsávon található parancsikont.
+1. Nyissa meg a parancssort, és keressen rá **Azure IoT Edge: állítsa be az alapértelmezett cél platformot az Edge megoldáshoz**, vagy válassza a parancsikon ikont az ablak alján található oldalsó sávban.
 
-2. A parancspalettán válassza ki a célarchitektúrát a lehetőségek listájából. Ebben az oktatóanyagban egy Ubuntu virtuális gépet használunk IoT Edge eszközként, így megtartja az alapértelmezett **amd64-et.**
+2. A parancs palettáján válassza ki a cél architektúrát a lehetőségek listájából. Ebben az oktatóanyagban egy Ubuntu rendszerű virtuális gépet használunk IoT Edge eszközként, így megtarthatja az alapértelmezett **amd64**-t.
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-1. A VS Code explorer, nyitott **modulok** > **JavaModule** > **src** > **fő** > **java** > **com** > **edgemodule** > **App.java**.
+1. A vs Code Explorerben nyissa meg a **modulok** > **JavaModule** > **src** > **Main** > **Java** > **com** > **edgemodule** > **app. Java**.
 
 2. Adja hozzá az alábbi kódot a fájl elejéhez új hivatkozott osztályok importálásához.
 
@@ -130,7 +130,7 @@ Jelenleg a Visual Studio Code java modulokat fejleszthet Linux AMD64 és Linux A
     import com.microsoft.azure.sdk.iot.device.DeviceTwin.TwinPropertyCallBack;
     ```
 
-3. Vegye fel a következő definíciót az **App** osztályba. Ez a változó hőmérsékleti küszöbértéket állít be. A mért gép hőmérséklete nem lesz jelentve az IoT Hub, amíg nem megy át ezt az értéket.
+3. Vegye fel a következő definíciót az **App** osztályba. Ez a változó hőmérsékleti küszöbértéket állít be. A mért gépi hőmérséklet nem lesz jelenteni IoT Hubnak, amíg az érték át nem kerül.
 
     ```java
     private static final String TEMP_THRESHOLD = "TemperatureThreshold";
@@ -171,7 +171,7 @@ Jelenleg a Visual Studio Code java modulokat fejleszthet Linux AMD64 és Linux A
     }
     ```
 
-5. Adja hozzá az alábbi két statikus belső osztályt az **App** osztályhoz. Ezek az osztályok frissítik a tempThreshold változót, amikor az ikermodul kívánt tulajdonsága megváltozik. Minden modul rendelkezik saját ikerdokumentummal, amelyekkel közvetlenül a felhőből konfigurálhatja a modulban futó kódot.
+5. Adja hozzá az alábbi két statikus belső osztályt az **App** osztályhoz. Ezek az osztályok frissítik a tempThreshold változót, ha a modul a kívánt tulajdonságot módosítja. Minden modul rendelkezik saját ikerdokumentummal, amelyekkel közvetlenül a felhőből konfigurálhatja a modulban futó kódot.
 
     ```java
     protected static class DeviceTwinStatusCallBack implements IotHubEventCallback {
@@ -212,9 +212,9 @@ Jelenleg a Visual Studio Code java modulokat fejleszthet Linux AMD64 és Linux A
     client.getTwin();
     ```
 
-7. Mentse az App.java fájlt.
+7. Mentse az app. Java fájlt.
 
-8. A VS Code explorer, nyissa meg a **deployment.template.json** fájlt az IoT Edge-megoldás munkaterületén.
+8. A VS Code Explorerben nyissa meg az **üzembe helyezés. template. JSON** fájlt a IoT Edge megoldás munkaterületen.
 
 9. Adja hozzá a **JavaModule** modul ikerdokumentumát az üzembehelyezési jegyzékhez. Szúrja be a következő JSON-tartalmat a **moduleContent** szakasz alján, az **$edgeHub** modul ikerdokumentuma után:
 
@@ -226,41 +226,41 @@ Jelenleg a Visual Studio Code java modulokat fejleszthet Linux AMD64 és Linux A
      }
    ```
 
-   ![Ikermodul hozzáadása a telepítési sablonhoz](./media/tutorial-java-module/module-twin.png)
+   ![Modul Twin hozzáadása a központi telepítési sablonhoz](./media/tutorial-java-module/module-twin.png)
 
 10. Mentse a deployment.template.json fájlt.
 
-## <a name="build-and-push-your-module"></a>Építsd meg és nyomd meg a modult
+## <a name="build-and-push-your-module"></a>Modul létrehozása és leküldése
 
-Az előző szakaszban létrehozott egy IoT Edge-megoldást, és kódot adott hozzá a **JavaModule-hoz** az üzenetek kiszűréséhez, ahol a jelentett géphőmérséklet az elfogadható határérték alatt van. Most készítse el a megoldást tárolórendszerképként, és nyomja le a tároló rendszerleíró adatbázisába.
+Az előző szakaszban létrehozott egy IoT Edge megoldást, és hozzáadta a kódot a **JavaModule** , hogy kiszűrje azokat az üzeneteket, amelyekben a jelentett gép hőmérséklete az elfogadható határérték alá esik. Most hozza létre a megoldást tároló képként, és küldje el a tároló-beállításjegyzékbe.
 
-1. Nyissa meg a VS Code integrált terminált a **Terminál megtekintése** > **Terminal**lehetőséget választva.
+1. Nyissa meg a vs Code integrált terminált a**terminál** **megtekintése** > lehetőség kiválasztásával.
 
-1. Jelentkezzen be a Dockerbe a következő parancs megadásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure-tároló beállításjegyzékéből. Ezeket az értékeket az Azure Portalon a beállításjegyzék **Access-kulcsok** szakaszából kérheti le.
+1. Jelentkezzen be a Docker-be a következő parancs beírásával a terminálon. Jelentkezzen be a felhasználónévvel, a jelszóval és a bejelentkezési kiszolgálóval az Azure Container registryből. Ezeket az értékeket a beállításjegyzék **hozzáférési kulcsok** részéből kérheti le a Azure Portal.
 
    ```bash
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   A használatát a használatát `--password-stdin`javasolja. Bár ez az ajánlott eljárás éles forgatókönyvekhez ajánlott, ez kívül esik az oktatóanyag hatókörén. További információkért tekintse meg a [docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referencia.
+   Biztonsági figyelmeztetés jelenhet meg, `--password-stdin`amely a használatát javasolja. Habár az ajánlott eljárás az éles környezetekben javasolt, az oktatóanyag hatókörén kívül esik. További információkért lásd a [Docker bejelentkezési](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) referenciáját.
 
 1. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget.
 
-   A build- és leküldéses parancs három műveletet indít el. Először létrehoz egy új mappát a megoldás nevű **config,** amely tartalmazza a teljes központi telepítési jegyzékfájl, amely a telepítési sablonban és más megoldásfájlokban lévő információkból épül fel. Másodszor, fut `docker build` a tárolórendszerkép létrehozása a célarchitektúrának megfelelő dockerfile alapján. Ezután fut `docker push` a rendszerkép-tárház a tároló rendszerleíró adatbázisba.
+   A build és a push parancs három műveletet indít el. Először létrehoz egy új mappát a **konfigurációban** , amely tartalmazza a teljes telepítési jegyzékfájlt, amely a központi telepítési sablonban és más megoldási fájlokban található információkból épül fel. Másodszor, futtatja `docker build` a tároló rendszerképét a célként megadott architektúra megfelelő Docker alapján. Ezután futtatja `docker push` , hogy leküldi a rendszerkép-tárházat a tároló-beállításjegyzékbe.
 
-## <a name="deploy-modules-to-device"></a>Modulok telepítése az eszközre
+## <a name="deploy-modules-to-device"></a>Modulok üzembe helyezése az eszközön
 
-A Visual Studio Code Explorer és az Azure IoT Tools bővítmény segítségével telepítse a modulprojektet az IoT Edge-eszközre. Már rendelkezik egy központi telepítési jegyzékfájllal a forgatókönyvhöz, a **deployment.json** fájlhoz a konfigurációs mappában. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
+A Visual Studio Code Explorer és az Azure IoT Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már van előkészítve egy üzembe helyezési jegyzékfájl a forgatókönyvhöz, a **telepítési. JSON** fájl a konfigurációs mappában. Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
-Győződjön meg arról, hogy az IoT Edge-eszköz működik.
+Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
-1. A Visual Studio Kódkezelőben bontsa ki az **Azure IoT Hub-eszközök** szakaszt az IoT-eszközök listájának megtekintéséhez.
+1. A Visual Studio Code Explorerben bontsa ki az **Azure IoT hub-eszközök** szakaszt a IoT-eszközök listájának megtekintéséhez.
 
 2. Kattintson a jobb gombbal az IoT Edge-eszköz nevére, majd válassza a **Create Deployment for Single Device** (Üzembe helyezés létrehozása egyetlen eszközhöz) parancsot.
 
 3. Válassza ki a **deployment.json** fájlt a **config** mappában, majd kattintson a **Select Edge Deployment Manifest** (Edge üzembehelyezési jegyzék kiválasztása) elemre. Ne használja a deployment.template.json fájlt.
 
-4. Kattintson a frissítés gombra. Meg kell jelennie az új **JavaModule** futó együtt **SimulatedTemperatureSensor** modul és a **$edgeAgent** és **$edgeHub**.  
+4. Kattintson a frissítés gombra. Meg kell jelennie az új **JavaModule** , amelyen a **SimulatedTemperatureSensor** modul, valamint a **$edgeAgent** és a **$edgeHub**fut.  
 
 ## <a name="view-the-generated-data"></a>A létrejött adatok megtekintése
 
@@ -268,25 +268,25 @@ Miután alkalmazta az üzembehelyezési jegyzéket az IoT Edge-eszközén, az es
 
 Az IoT Edge-eszköz állapotát a Visual Studio Code Explorer **Azure IoT Hub-eszközök** szakaszában tekintheti meg. Bontsa ki az eszköz részleteit, és megjelenik a telepített és a futó modulok listája.
 
-1. A Visual Studio Kódkezelőjében kattintson a jobb gombbal az IoT Edge-eszköz nevére, és válassza **a Beépített eseményvégpont indítása parancsot.**
+1. A Visual Studio Code Explorerben kattintson a jobb gombbal a IoT Edge eszköz nevére, és válassza a **figyelés beépített esemény végpontjának indítása**lehetőséget.
 
-2. Tekintse meg az IoT Hubhoz érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek. Az IoT Edge-eszköz nek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután a JavaModule kód módosításai megvárják, amíg a gép hőmérséklete eléri a 25 fokot, mielőtt üzeneteket küldene. Emellett hozzáadja a **Riasztás üzenettípust** minden olyan üzenethez, amely eléri az adott hőmérsékleti küszöbértéket.
+2. Megtekintheti a IoT Hub érkező üzeneteket. Eltarthat egy ideig, amíg az üzenetek megérkeznek. A IoT Edge eszköznek meg kell kapnia az új központi telepítést, és el kell indítania az összes modult. Ezután megvárja a JavaModule-kód módosításait, amíg a gép hőmérséklete 25 fokkal nem éri el az üzenetek küldését. Az üzenet típusú **riasztást** is hozzáadja az adott hőmérsékleti küszöbértéket elérő üzenetekhez.
 
-## <a name="edit-the-module-twin"></a>A modul szerkesztése iker
+## <a name="edit-the-module-twin"></a>A modul két különálló szerkesztése
 
-A Telepítési jegyzékben a JavaModule modul ikermodulját használtuk a hőmérsékleti küszöbérték 25 fokos beállításához. Az ikermodul segítségével a modulkód frissítése nélkül módosíthatja a funkciót.
+A JavaModule modult az üzembe helyezési jegyzékben használta, hogy 25 fokos hőmérsékleti küszöbértéket állítson be. A Twin modul használatával módosíthatja a funkciót anélkül, hogy frissítenie kellene a modul kódját.
 
-1. A Visual Studio-kódban bontsa ki a részleteket az IoT Edge-eszköz alatt a futó modulok megtekintéséhez.
+1. A Visual Studio Code-ban bontsa ki a IoT Edge eszköz alatti részleteket a futó modulok megtekintéséhez.
 
-2. Kattintson a jobb gombbal a **JavaModule elemre,** és válassza **az Ikermodul szerkesztése parancsot.**
+2. Kattintson a jobb gombbal a **JavaModule** elemre, és válassza a **modul Twin szerkesztése**lehetőséget.
 
-3. Keresse **meg a TemperatureThreshold** tulajdonságot a kívánt tulajdonságokban. Változtassa meg az értékét egy új hőmérséklet 5 fokkal 10 fokkal magasabb, mint a legutóbbi jelentett hőmérséklet.
+3. A kívánt tulajdonságok között keresse meg a **TemperatureThreshold** . Módosítsa az értékét egy új 5 fokos hőmérsékletre, a legutóbbi jelentett hőmérsékletnél pedig 10 fokkal magasabbra.
 
-4. Mentse a modul ikerfájlját.
+4. Mentse a modul különálló fájlját.
 
-5. Kattintson a jobb gombbal a modul ikerszerkesztő ablaktáblájának tetszőleges pontjára, és válassza **az Ikermodul frissítése parancsot**.
+5. Kattintson a jobb gombbal a modul dupla szerkesztési paneljén bárhová, és válassza a **modul Twin frissítése**elemet.
 
-6. Figyelje a bejövő eszközről a felhőbe irányuló üzeneteket. Az új hőmérsékleti küszöbérték eléréséig meg kell jelennie az üzeneteknek.
+6. A bejövő eszközről a felhőbe irányuló üzenetek figyelése. Ekkor az új hőmérsékleti küszöb eléréséig az üzenetek leállnak.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -298,12 +298,12 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy IoT Edge-modult, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll saját modulok készítésére, többet is megtudhat az [IoT Edge-modulok fejlesztéséről,](module-development.md) illetve [arról, hogyan fejleszthet modulokat a Visual Studio-kóddal.](how-to-vs-code-develop-module.md) Tekintse meg az [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules) kódpéldák, beleértve a szimulált hőmérséklet modul.
+Ebben az oktatóanyagban létrehozott egy IoT Edge modult, amely a IoT Edge-eszköz által generált nyers adatait szűri. Ha készen áll a saját moduljainak létrehozására, többet is megtudhat a [IoT Edge modulok fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). Tekintse meg az [IoT Edge modul mintáit](https://github.com/Azure/iotedge/tree/master/edge-modules) a példákhoz, beleértve a szimulált hőmérséklet modult is.
 
-Folytassa a következő oktatóanyaggal, és ismerje meg, hogy az Azure IoT Edge hogyan segíti az Azure felhőszolgáltatásainak üzembe helyezését a peremhálózaton lévő adatok feldolgozásához és elemzéséhez.
+Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan helyezheti üzembe az Azure Cloud Servicest az Azure IoT Edge a peremhálózat adatfeldolgozásához és elemzéséhez.
 
 > [!div class="nextstepaction"]
-> [Functions](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)
-> [Machine Learning](tutorial-deploy-machine-learning.md)
-> [Egyéni vision szolgáltatás](tutorial-deploy-custom-vision.md)
+> [Függvények](tutorial-deploy-function.md)
+> [Stream Analytics](tutorial-deploy-stream-analytics.md)stream Analytics
+> [Machine Learning](tutorial-deploy-machine-learning.md)Machine learning
+> [Custom Vision Service](tutorial-deploy-custom-vision.md)

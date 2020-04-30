@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag – Általános Node.js ügyfélalkalmazás csatlakoztatása az Azure IoT Centralhoz | Microsoft dokumentumok
-description: Ez az oktatóanyag bemutatja, hogyan, eszközfejlesztőként egy Node.js ügyfélalkalmazást futtató eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz. Eszközsablont úgy hoz létre, hogy importál egy eszközképességi modellt, és olyan nézeteket ad hozzá, amelyek lehetővé teszik a csatlakoztatott eszközzel való interakciót
+title: Oktatóanyag – általános Node. js-ügyfélalkalmazás összekötése az Azure IoT Central-vel | Microsoft Docs
+description: Ebből az oktatóanyagból megtudhatja, hogyan, mint az eszköz fejlesztője, hogyan csatlakoztatható egy Node. js-ügyfélprogramot futtató eszköz az Azure IoT Central-alkalmazáshoz. Eszköz-sablon létrehozása eszköz-képességi modell importálásával és olyan nézetek hozzáadásával, amelyek lehetővé teszik a csatlakoztatott eszköz használatát
 author: dominicbetts
 ms.author: dobett
 ms.date: 03/24/2020
@@ -9,56 +9,56 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mqtt
 ms.openlocfilehash: a8c5d9479585c0a519d0ad05a4d73f3f15b21287
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81758200"
 ---
-# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: Ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central alkalmazáshoz (Node.js)
+# <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central-alkalmazással (node. js)
 
 [!INCLUDE [iot-central-selector-tutorial-connect](../../../includes/iot-central-selector-tutorial-connect.md)]
 
-*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
+*Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
-Ez az oktatóanyag bemutatja, hogyan, eszközfejlesztőként egy Node.js ügyfélalkalmazás csatlakoztatása az Azure IoT Central alkalmazáshoz. A Node.js alkalmazás egy környezeti érzékelő eszköz viselkedését szimulálja. Egy _mintaeszköz képességmodell_ segítségével hozzon létre egy _eszközsablont_ az IoT Centralban. Az eszközsablonhoz nézeteket adhat, hogy az operátor kapcsolatba léphesse az eszközzel.
+Ez az oktatóanyag bemutatja, hogyan csatlakozhat egy Node. js-ügyfélalkalmazás Azure IoT Central-alkalmazásához az eszköz fejlesztőinek. A Node. js-alkalmazás szimulálja egy környezeti érzékelő eszköz viselkedését. A minta- _eszköz képesség modell_ használatával IoT Centralban hozhat létre egy _eszközt_ . A nézetek hozzáadásával lehetővé teheti, hogy az operátor kommunikáljon az eszközzel.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Eszközképességi modell importálása eszközsablon létrehozásához.
-> * Alapértelmezett és egyéni nézetek hozzáadása eszközsablonhoz.
-> * Közzétehet egy eszközsablont, és hozzáadhat egy valódi eszközt az IoT Central-alkalmazáshoz.
-> * Hozza létre és futtassa a Node.js eszközkódját, és tekintse meg, hogy csatlakozzon az IoT Central alkalmazáshoz.
-> * Tekintse meg az eszközről küldött szimulált telemetriai adatokat.
-> * Az eszköz tulajdonságainak kezeléséhez használjon nézetet.
-> * Az eszköz vezérléséhez hívja meg a szinkron és aszinkron parancsokat.
+> * Eszköz-képesség modell importálása eszköz sablonjának létrehozásához.
+> * Adja hozzá az alapértelmezett és az egyéni nézeteket egy eszköz sablonhoz.
+> * Tegye közzé az eszközt, és adjon hozzá egy valós eszközt a IoT Central alkalmazáshoz.
+> * Hozza létre és futtassa a Node. js-eszköz kódját, és tekintse meg az IoT Central alkalmazáshoz való kapcsolódást.
+> * Az eszközről eljuttatott szimulált telemetria megtekintése.
+> * Az eszköz tulajdonságainak kezeléséhez használja a nézetet.
+> * A szinkron és aszinkron parancsok meghívásával vezérelheti az eszközt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikkben leírt lépések elvégzéséhez a következőkre lesz szüksége:
 
-* Az **Egyéni alkalmazássablon** használatával létrehozott Azure IoT Central alkalmazás. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
-* Fejlesztői gép, amelyen telepítve van a [Node.js](https://nodejs.org/) 10.0.0-s vagy újabb verziója. Futtathatja `node --version` a parancssorban, hogy ellenőrizze a verziót. Az oktatóanyag utasításai feltételezik, hogy a **csomópontparancsot** a Windows parancssorában futtatja. A Node.js azonban számos más operációs rendszeren is használható.
+* Egy Azure IoT Central-alkalmazás, amely az **egyéni alkalmazás** sablonnal lett létrehozva. További információért lásd az [alkalmazás létrehozását bemutató rövid útmutatót](quick-deploy-iot-central.md).
+* A [Node. js](https://nodejs.org/) 10.0.0 vagy újabb verzióját futtató fejlesztői gép. A parancssorban `node --version` futtatva ellenőrizhető a verzió. Az oktatóanyagban szereplő utasítások feltételezik, hogy a Windows-parancssorban futtatja a **Node** parancsot. A Node. js-t azonban számos más operációs rendszeren is használhatja.
 
 [!INCLUDE [iot-central-add-environmental-sensor](../../../includes/iot-central-add-environmental-sensor.md)]
 
 ### <a name="create-a-nodejs-application"></a>Node.js alkalmazás létrehozása
 
-A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélalkalmazást, amely az alkalmazáshoz hozzáadott valódi eszközhöz csatlakozik. Ez a Node.js alkalmazás egy valódi eszköz viselkedését szimulálja.
+A következő lépések bemutatják, hogyan hozhat létre egy Node. js-ügyfélalkalmazás, amely az alkalmazáshoz hozzáadott valódi eszközhöz csatlakozik. Ez a Node. js-alkalmazás szimulálja egy valós eszköz viselkedését.
 
-1. A parancssori környezetben keresse `environmental-sensor` meg a korábban létrehozott mappát.
+1. A parancssori környezetben navigáljon a `environmental-sensor` korábban létrehozott mappára.
 
-1. A Node.js projekt inicializálásához és a szükséges függőségek telepítéséhez futtassa a következő parancsokat – a futtatáskor `npm init`fogadja el az összes alapértelmezett beállítást:
+1. A Node. js-projekt inicializálásához és a szükséges függőségek telepítéséhez futtassa a következő parancsokat – a futtatásakor `npm init`fogadja el az összes alapértelmezett beállítást:
 
     ```cmd/sh
     npm init
     npm install azure-iot-device azure-iot-device-mqtt azure-iot-provisioning-device-mqtt azure-iot-security-symmetric-key --save
     ```
 
-1. Hozzon létre egy **environmentalSensor.js** nevű fájlt a `environmental-sensor` mappában.
+1. Hozzon létre egy **environmentalSensor. js** nevű fájlt `environmental-sensor` a mappában.
 
-1. Adja hozzá `require` a következő állításokat az **environmentalSensor.js** fájl elején:
+1. Adja hozzá a `require` következő utasításokat a **environmentalSensor. js** fájl elejéhez:
 
     ```javascript
     "use strict";
@@ -87,9 +87,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélal
     var ledOn = true;
     ```
 
-    Frissítse a `{your Scope ID}` `{your Device ID}`helyőrzőket `{your Primary Key}` és a korábban feljegyzett értékekkel. Ebben a példában, `targetTemperature` inicializálja a nulla, használhatja az aktuális olvasás az eszközről, vagy egy értéket az eszköz iker.
+    Frissítse a helyőrzőket `{your Scope ID}` `{your Device ID}`, és `{your Primary Key}` a korábban megjegyzett értékekkel. Ebben a példában nulla értékre állítja `targetTemperature` az inicializálást, az eszközről származó aktuális olvasást vagy a Twin eszköz értékét használhatja.
 
-1. Ha szimulált telemetriát szeretne küldeni az Azure IoT Central alkalmazásnak, adja hozzá a következő függvényt a fájlhoz:
+1. Szimulált telemetria az Azure IoT Central-alkalmazásba való küldéséhez adja hozzá a következő függvényt a fájlhoz:
 
     ```javascript
     // Send simulated device telemetry.
@@ -107,9 +107,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélal
     }
     ```
 
-    A telemetriai elemek`temp` ( `humid`és ) nevének meg kell egyeznie az eszközsablonban használt nevekkel.
+    A telemetria elemek nevének (`temp` és `humid`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
-1. Ha ikereszköz-tulajdonságokat szeretne küldeni az Azure IoT Central alkalmazásnak, adja hozzá a következő függvényt a fájlhoz:
+1. Ha az eszköz két tulajdonságát szeretné elküldeni az Azure IoT Central-alkalmazásba, adja hozzá a következő függvényt a fájlhoz:
 
     ```javascript
     // Send device twin reported properties.
@@ -119,9 +119,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélal
     }
     ```
 
-    Az IoT Central az eszköztwins eszköztwins segítségével szinkronizálja a tulajdonságértékeket az eszköz és az IoT Central alkalmazás között. Az eszköztulajdonság-értékek az ikereszköz által jelentett tulajdonságokat használják. Az írható tulajdonságok az ikereszköz által jelentett és a kívánt tulajdonságokat egyaránt használják.
+    A IoT Central az eszközön lévő Twins használatával szinkronizálja az eszköz és a IoT Central alkalmazás közötti tulajdonságértékeket. Az eszköz tulajdonságainak értékei az eszköz Twin jelentett tulajdonságait használják. Az írható tulajdonságok mind a két eszköz, mind a kívánt tulajdonságokat használják.
 
-1. Az eszköz által válaszolandó írható tulajdonságok meghatározásához és kezeléséhez adja hozzá a következő kódot:
+1. Az eszköz által válaszolt írható tulajdonságok definiálásához és kezeléséhez adja hozzá a következő kódot:
 
     ```javascript
     // Add any writeable properties your device supports,
@@ -162,11 +162,11 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélal
     }
     ```
 
-    Amikor az operátor beállít egy írható tulajdonságot az IoT Central alkalmazásban, az alkalmazás egy ikereszköz kívánt tulajdonságot használ az érték elküldéséhez az eszköznek. Az eszköz ezután válaszol egy eszköz iker jelentett tulajdonság használatával. Amikor az IoT Central megkapja a jelentett tulajdonság értéket, **szinkronizálva**frissíti a tulajdonságnézetet.
+    Ha a kezelő egy írható tulajdonságot állít be a IoT Central alkalmazásban, az alkalmazás egy, a kívánt eszközhöz tartozó, a kívánt tulajdonságot használva küldi el az értéket az eszköznek. Az eszköz ezután válaszol a Device Twin jelentett tulajdonság használatával. Ha a IoT Central megkapja a jelentett tulajdonság értékét, akkor a rendszer **szinkronizált**állapottal frissíti a tulajdonság nézetét.
 
-    A tulajdonságok (`name` és `brightness`) nevének meg kell egyeznie az eszközsablonban használt nevekkel.
+    A tulajdonságok nevének (`name` és `brightness`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
-1. Adja hozzá a következő kódot az IoT Central alkalmazásból küldött parancsok kezeléséhez:
+1. Adja hozzá a következő kódot a IoT Central alkalmazásból eljuttatott parancsok kezeléséhez:
 
     ```javascript
     // Setup command handlers
@@ -246,9 +246,9 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélal
     }
     ```
 
-    A parancsok`blink`( , `turnon` `turnoff`, `rundiagnostics`, és ) nevének meg kell egyeznie az eszközsablonban használt nevekkel.
+    A parancsok nevének`blink`(, `turnon` `turnoff`,, és `rundiagnostics`) meg kell egyeznie az eszköz sablonjában használt nevekkel.
 
-    Jelenleg az IoT Central nem használja az eszközképességi modellben definiált válaszsémát. Szinkron parancs esetén a válasz hasznos adata bármely érvényes JSON lehet. Aszinkron parancs esetén az eszköznek azonnal 202-es választ kell adnia, amelyet a munka befejezésekor jelentett tulajdonságfrissítés követ. A jelentett tulajdonságfrissítés formátuma:
+    A IoT Central jelenleg nem használja az eszköz-képesség modellben definiált válasz sémát. A szinkron parancsok esetében a válasz hasznos JSON lehet. Egy aszinkron parancs esetében az eszköznek azonnal egy 202-es választ kell visszaadnia, amelyet a rendszer a munka befejeződése után jelentett a tulajdonságok frissítése után. A jelentett tulajdonság frissítésének formátuma:
 
     ```json
     {
@@ -258,7 +258,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélal
     }
     ```
 
-    Az operátor megtekintheti a válasz hasznos adatát a parancselőzményekben.
+    Az operátor megtekintheti a válasz adattartalmát a parancs előzményeiben.
 
 1. Adja hozzá a következő kódot az Azure IoT Central-alkalmazáshoz való csatlakozás befejezéséhez és az ügyfélkódban lévő függvények csatlakoztatásához:
 
@@ -310,30 +310,30 @@ A következő lépések bemutatják, hogyan hozhat létre egy Node.js ügyfélal
 
 ## <a name="run-your-nodejs-application"></a>A Node.js-alkalmazás futtatása
 
-Az eszközügyfél-alkalmazás elindításához futtassa a következő parancsot a parancssori környezetben:
+Az eszköz ügyfélalkalmazás elindításához futtassa a következő parancsot a parancssori környezetben:
 
 ```cmd/sh
 node environmentalSensor.js
 ```
 
-Láthatja, hogy az eszköz csatlakozik az Azure IoT Central alkalmazáshoz, és elkezdi a telemetriai adatok küldését:
+Láthatja, hogy az eszköz csatlakozik az Azure IoT Central-alkalmazáshoz, és elkezdi elküldeni a telemetria:
 
 ![Az ügyfélalkalmazás futtatása](media/tutorial-connect-device-nodejs/run-application.png)
 
 [!INCLUDE [iot-central-monitor-environmental-sensor](../../../includes/iot-central-monitor-environmental-sensor.md)]
 
-Láthatja, hogy az eszköz hogyan reagál a parancsokra és a tulajdonságfrissítésekre:
+Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra:
 
-![Figyelje meg az ügyfélalkalmazást](media/tutorial-connect-device-nodejs/run-application-2.png)
+![Az ügyfélalkalmazás megfigyelése](media/tutorial-connect-device-nodejs/run-application-2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Eszközfejlesztőként, most, hogy megtanulta az eszköz létrehozásának alapjait a Node.js használatával, néhány javasolt következő lépés a következő:
+Most, hogy megismerte, hogyan hozhat létre egy eszközt a Node. js használatával, néhány javasolt lépés a következő lépésekből áll:
 
-- Megtudhatja, hogyan csatlakoztathat valódi eszközt az IoT Centralhoz az [MXChip IoT DevKit-eszköz csatlakoztatása az Azure IoT Central alkalmazás útmutatócikkéhez.](./howto-connect-devkit.md)
-- Olvassa [el az Azure IoT Centralhoz való csatlakozást,](./concepts-get-connected.md) és tudjon meg többet arról, hogyan regisztrálhat eszközöket az IoT Centralszolgáltatásban, és hogyan biztosítja az IoT Central az eszközkapcsolatokat.
+- Ismerje meg, hogyan csatlakoztatható valódi eszköz a IoT Centralhoz a [MXChip IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz](./howto-connect-devkit.md) útmutató című cikkben.
+- Olvassa el az [Azure IoT Centralhoz való csatlakozást](./concepts-get-connected.md) ismertető témakört, amelyből megtudhatja, hogyan regisztrálhat eszközöket a IoT Central, és hogyan IoT Central biztonságossá teszi az eszközök kapcsolatait.
 
-Ha szeretné folytatni az IoT Central oktatóanyag-készletét, és többet szeretne megtudni az IoT Central megoldás létrehozásáról, olvassa el a következő témaköröket:
+Ha továbbra is szeretne IoT Central oktatóanyagokat használni, és többet szeretne megtudni egy IoT Central megoldás létrehozásáról, tekintse meg a következő témakört:
 
 > [!div class="nextstepaction"]
 > [Átjáró-eszközsablon létrehozása](./tutorial-define-gateway-device-type.md)

@@ -1,23 +1,23 @@
 ---
-title: Függvény közzététele az Azure-ban java és gradle használatával
-description: Hozzon létre és tegyen közzé egy HTTP-aktivált függvényt az Azure-ban a Java és a Gradle segítségével.
+title: Függvények közzététele az Azure-ban a Java és a Gradle használatával
+description: HTTP által aktivált függvény létrehozása és közzététele az Azure-ban Java és Gradle használatával.
 author: KarlErickson
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
 ms.openlocfilehash: 34aab24bf39e387715cfa5783b801d45ed488750
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732731"
 ---
-# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvény létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
+# <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Függvények létrehozása és közzététele az Azure-ban a Java és a Gradle használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé java függvényprojektet az Azure Functions számára a Gradle parancssori eszközzel. Ha elkészült, a függvénykód az Azure-ban fut egy [kiszolgáló nélküli üzemeltetési csomagban,](functions-scale.md#consumption-plan) és egy HTTP-kérelem váltja ki. 
+Ebből a cikkből megtudhatja, hogyan hozhat létre és tehet közzé Java-függvények projektjét, hogy Azure Functions a Gradle parancssori eszközzel. Ha elkészült, a függvény kódja egy [kiszolgáló nélküli üzemeltetési](functions-scale.md#consumption-plan) csomagban fut az Azure-ban, és egy HTTP-kérelem indítja el. 
 
 > [!NOTE]
-> Ha Gradle nem a preferált fejlesztési eszköz, nézd meg a hasonló útmutatók Java fejlesztők segítségével [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és [VS Kód](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java).
+> Ha a Gradle nem az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a Java-fejlesztőknek készült hasonló oktatóanyagokat a [Maven](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-java), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [vs Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,24 +25,24 @@ Ha függvényeket szeretne fejleszteni a Java használatával, akkor a számít�
 
 - A [Java Developer Kit](https://aka.ms/azure-jdks) 8-as verziója
 - [Azure CLI]
-- [Az Azure Functions Core Tools](./functions-run-local.md#v2) 2.6.666-os vagy újabb verziója
-- [Gradle](https://gradle.org/), 4.10-es és újabb verzió
+- [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
+- [Gradle](https://gradle.org/), 4,10-es vagy újabb verzió
 
 Aktív Azure-előfizetésre is szüksége van. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 > [!IMPORTANT]
 > A rövid útmutató befejezéséhez a JAVA_HOME környezeti változót a JDK telepítési helyére kell beállítani.
 
-## <a name="prepare-a-functions-project"></a>Functions projekt előkészítése
+## <a name="prepare-a-functions-project"></a>Functions-projekt előkészítése
 
-A mintaprojekt klónozásához használja a következő parancsot:
+A minta projekt klónozásához használja az alábbi parancsot:
 
 ```bash
 git clone https://github.com/Azure-Samples/azure-functions-samples-java.git
 cd azure-functions-samples-java/
 ```
 
-Nyissa `build.gradle` meg `appName` és módosítsa a következő szakaszban egy egyedi nevet, hogy elkerülje a tartománynév-ütközést az Azure-ba való üzembe helyezéskor. 
+Nyisson `build.gradle` meg egy egyedi `appName` nevet a következő szakaszban, és módosítsa a tartománynevet az Azure-ba való üzembe helyezéskor. 
 
 ```gradle
 azurefunctions {
@@ -57,20 +57,20 @@ azurefunctions {
 }
 ```
 
-Nyissa meg az új Function.java fájlt az *src/main/java* elérési útról egy szövegszerkesztőben, és tekintse át a generált kódot. Ez a kód egy [HTTP-aktivált](functions-bindings-http-webhook.md) függvény, amely a kérelem törzsét visszhangozza. 
+Nyissa meg az új function. Java fájlt egy szövegszerkesztőben a *src/Main/Java* elérési útról, és tekintse át a generált kódot. Ez a kód egy [http által aktivált](functions-bindings-http-webhook.md) függvény, amely megismétli a kérelem törzsét. 
 
 > [!div class="nextstepaction"]
-> [Belefutottam egy problémába.](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=generate-project)
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
-A következő parancs futtatásával, majd a függvényprojekt futtatásával:
+A következő parancs futtatásával hozza létre a Function projektet:
 
 ```bash
 gradle jar --info
 gradle azureFunctionsRun
 ```
-A projekt helyi futtatásakor az Azure Functions Core Tools a következőhöz hasonló kimenetet lát:
+A következőhöz hasonló kimenet jelenik meg Azure Functions Core Tools a projekt helyi futtatásakor:
 
 <pre>
 ...
@@ -84,7 +84,7 @@ Http Functions:
 ...
 </pre>
 
-Indítsa el a függvényt a parancssorból a következő cURL paranccsal egy új terminálablakban:
+Aktiválja a függvényt a parancssorból a következő cURL paranccsal egy új Terminálablak használatával:
 
 ```bash
 curl -w "\n" http://localhost:7071/api/HttpExample --data AzureFunctions
@@ -96,80 +96,80 @@ A várt kimenet a következő:
 Hello AzureFunctions!
 </pre>
 
-A [függvénykulcs](functions-bindings-http-webhook-trigger.md#authorization-keys) nem szükséges helyi futtatásesetén.  
+Helyileg történő futtatás esetén a [funkcióbillentyű](functions-bindings-http-webhook-trigger.md#authorization-keys) nem szükséges.  
 A `Ctrl+C` billentyűparanccsal állítsa le a függvénykódot a terminálablakban.
 
 > [!div class="nextstepaction"]
-> [Belefutottam egy problémába.](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=local-run)
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 
-Egy függvényalkalmazás és a kapcsolódó erőforrások jönnek létre az Azure-ban, amikor először telepíti a függvényalkalmazást. Üzembe helyezés előtt az [Azure](/cli/azure/authenticate-azure-cli) CLI-vel jelentkezzen be az Azure-előfizetésbe. 
+A Function alkalmazást és a kapcsolódó erőforrásokat az Azure-ban hozza létre a rendszer az első üzembe helyezéskor. Az üzembe helyezés előtt az az [login](/cli/azure/authenticate-azure-cli) Azure CLI-paranccsal jelentkezzen be az Azure-előfizetésbe. 
 
 ```azurecli
 az login
 ```
 
 > [!TIP]
-> Ha a fiókja több előfizetéshez is hozzáférhet, az [az-fiók beállításával](/cli/azure/account#az-account-set) állítsa be az alapértelmezett előfizetést ehhez a munkamenethez. 
+> Ha a fiókja több előfizetéshez is hozzáfér, az [az Account set](/cli/azure/account#az-account-set) paranccsal állíthatja be az alapértelmezett előfizetést ehhez a munkamenethez. 
 
-A következő paranccsal telepítheti a projektet egy új függvényalkalmazásba. 
+A következő parancs használatával telepítheti a projektet egy új Function alkalmazásba. 
 
 ```bash
 gradle azureFunctionsDeploy
 ```
 
-Ez a build.gradle fájl értékei alapján hozza létre a következő erőforrásokat az Azure-ban:
+Ez létrehozza a következő erőforrásokat az Azure-ban a Build. gradle fájl értékei alapján:
 
-+ Erőforráscsoport. A megadott _erőforráscsoporttal_ kapta a nevét.
-+ Tárfiók. A függvények által megkövetelve. A név véletlenszerűen jön létre a tárfiók névkövetelményei alapján.
-+ App Service-csomag. Kiszolgáló nélküli fogyasztási csomag üzemeltetése a függvényalkalmazáshoz a megadott _appRégióban._ A név véletlenszerűen jön létre.
-+ Függvény alkalmazás. A függvényalkalmazás a függvények üzembe helyezésének és végrehajtási egységének a feladatai. A név az ön _appName ,_ hozzáfűzve egy véletlenszerűen generált számot. 
++ Erőforráscsoport. Elnevezve a megadott _resourceGroup_ .
++ Storage-fiók. A függvények igénylik. A név véletlenszerűen jön létre a Storage-fióknév követelményei alapján.
++ App Service terv. Kiszolgáló nélküli használati terv a megadott _appRegion_a Function alkalmazás üzemeltetéséhez. A név véletlenszerűen jön létre.
++ Function alkalmazás. A functions alkalmazás a függvények üzembe helyezési és végrehajtási egysége. A név a _appName_, amely véletlenszerűen generált számmal van hozzáfűzve. 
 
-A központi telepítés is csomagolja a projektfájlokat, és telepíti őket az új függvényalkalmazásba [a zip központi telepítés](functions-deployment-technologies.md#zip-deploy)használatával, a csomagról való futtatás izolátus isztikáns módban.
+Az üzemelő példány a Project fájljait is becsomagolja, és az új Function alkalmazásba telepíti a [zip-telepítést](functions-deployment-technologies.md#zip-deploy), és engedélyezve van a csomagon belüli mód.
 
-Mivel az általunk `authLevel = AuthorizationLevel.FUNCTION`közzétett HTTP-eseményindító használ, be kell szereznie a függvénykulcsot a függvényvégpont HTTP-n keresztüli hívásához. A funkciókulcs bekésezésének legegyszerűbb módja az [Azure Portal.]
+Mivel a közzétett HTTP-trigger használatban `authLevel = AuthorizationLevel.FUNCTION`van, a Function (függvény) végpontot a HTTP protokollon keresztül hívhatja. A funkcióbillentyű beszerzésének legegyszerűbb módja a [Azure Portal].
 
 > [!div class="nextstepaction"]
-> [Belefutottam egy problémába.](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=deploy)
 
-## <a name="get-the-http-trigger-url"></a>A HTTP-eseményindító URL-címének beszereznie
+## <a name="get-the-http-trigger-url"></a>HTTP-trigger URL-címének beolvasása
 
-A függvény aktiválásához szükséges URL-címet a függvényksegítségével az Azure Portalon keresztül kaphatja le. 
+A függvény elindításához szükséges URL-címet a Azure Portalból kérheti le. 
 
-1. Tallózzon az [Azure Portalon,]jelentkezzen be, írja be a függvényalkalmazás _alkalmazásnevét_ a lap tetején található **Keresés** mezőbe, és nyomja le az Enter billentyűt.
+1. Keresse meg a [Azure Portalt], jelentkezzen be, írja be a _appName_ az oldal tetején található **Keresés** mezőbe, majd nyomja le az ENTER billentyűt.
  
-1. A függvényalkalmazásban bontsa ki a **Functions (Írásvédett)** elemet, válassza ki a függvényt, majd válassza **a</> A függvény URL-címének beolvasása** lehetőséget a jobb felső sarokban. 
+1. A Function alkalmazásban bontsa ki a **függvények elemet (csak olvasható)**, válassza ki a függvényt, majd válassza a **</> a függvény URL-címének beolvasása** lehetőséget a jobb felső sarokban. 
 
     ![A függvény URL-címének másolása az Azure portálról](./media/functions-create-java-maven/get-function-url-portal.png)
 
-1. Válassza **az alapértelmezett (Funkcióbillentyű)** lehetőséget, majd a **Másolás parancsot.** 
+1. Válassza az **alapértelmezett (funkcióbillentyű)** lehetőséget, majd válassza a **Másolás**lehetőséget. 
 
-Most már használhatja a másolt URL-t a funkció eléréséhez.
+Mostantól a másolt URL-cím használatával is elérheti a függvényt.
 
-## <a name="verify-the-function-in-azure"></a>A funkció ellenőrzése az Azure-ban
+## <a name="verify-the-function-in-azure"></a>A függvény ellenőrzése az Azure-ban
 
-Az Azure-on futó függvényalkalmazás ellenőrzéséhez `cURL`cserélje le az alábbi minta URL-címét a portálról másolt URL-címre.
+Az Azure `cURL`-on futó Function alkalmazás ellenőrzéséhez cserélje le az alábbi minta URL-címét a portálról másolt URL-címre.
 
 ```console
 curl -w "\n" https://fabrikam-functions-20190929094703749.azurewebsites.net/api/HttpExample?code=zYRohsTwBlZ68YF.... --data AzureFunctions
 ```
 
-Ez postakérést küld a `AzureFunctions` függvény végpontjának a kérelem törzsében. A következő válasz jelenik meg.
+Ez POST `AzureFunctions` -kérést küld a függvény végpontjának a kérelem törzsében. A következő válasz jelenik meg.
 
 <pre>
 Hello AzureFunctions!
 </pre>
 
 > [!div class="nextstepaction"]
-> [Belefutottam egy problémába.](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
+> [Egy hibába ütközött](https://www.research.net/r/javae2e?tutorial=functions-maven-quickstart&step=verify-deployment)
 
 ## <a name="next-steps"></a>További lépések
 
-Létrehozott egy Java függvényprojektet egy HTTP-aktivált funkcióval, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most pedig nyújtsa ki a funkcióját...
+Létrehozott egy Java functions-projektet egy HTTP által aktivált függvénnyel, futtatta azt a helyi gépen, és üzembe helyezte az Azure-ban. Most terjessze ki a függvényt...
 
 > [!div class="nextstepaction"]
-> [Azure Storage-várólista kimeneti kötésének hozzáadása](functions-add-output-binding-storage-queue-java.md)
+> [Azure Storage-üzenetsor kimeneti kötésének hozzáadása](functions-add-output-binding-storage-queue-java.md)
 
 
 [Azure CLI]: /cli/azure

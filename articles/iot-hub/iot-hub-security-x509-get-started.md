@@ -1,6 +1,6 @@
 ---
-title: Oktatóanyag az X.509 biztonságához az Azure IoT Hubban | Microsoft dokumentumok
-description: Az X.509 alapú biztonság az Azure IoT hub egy szimulált környezetben.
+title: Oktatóanyag X. 509 biztonsághoz az Azure IoT Hubban | Microsoft Docs
+description: Az Azure IoT hub X. 509 alapú biztonságának első lépései szimulált környezetben.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -10,96 +10,96 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.custom: amqp
 ms.openlocfilehash: ac45cf42ed174d3e9423b4ea39cadf16b84897ef
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759648"
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Az Azure IoT Hub X.509-es védelmének beállítása
 
-Ez az oktatóanyag az Azure IoT-központ *x.509-es tanúsítványhitelesítés*használatával történő védelméhez szükséges lépéseket mutatja be. Szemléltetéscéljából az OpenSSL nyílt forráskódú eszközét használjuk tanúsítványok helyi létrehozására a Windows-számítógépen. Azt javasoljuk, hogy ezt az oktatóanyagot csak tesztelési célokra használja. Éles környezetben a tanúsítványokat egy *legfelső szintű hitelesítésszolgáltatótól kell megvásárolnia.*
+Ez az oktatóanyag azokat a lépéseket mutatja be, amelyekkel biztonságossá teheti az Azure IoT hub-t az *X. 509 Tanúsítványos hitelesítés*használatával. Az illusztrációk alapján a nyílt forráskódú eszköz OpenSSL segítségével helyileg hozhat létre tanúsítványokat a Windows rendszerű gépen. Javasoljuk, hogy ezt az oktatóanyagot csak tesztelési célokra használja. Éles környezetben a tanúsítványokat a *legfelső szintű hitelesítésszolgáltatóktól (CA)* kell megvásárolnia.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag megköveteli, hogy a következő erőforrások készen álljanak:
+Ehhez az oktatóanyaghoz a következő erőforrások szükségesek:
 
-* Létrehozott egy IoT-központot az Azure-előfizetésével. Részletes lépésekért [tekintse meg az IoT-központ létrehozása a portálon keresztül](iot-hub-create-through-portal.md) című témakört.
+* Létrehozott egy IoT hubot az Azure-előfizetésével. A részletes lépésekért lásd: [IoT hub létrehozása a portálon](iot-hub-create-through-portal.md) .
 
-* A [Visual Studio 2017 vagy a Visual Studio 2019](https://www.visualstudio.com/vs/) telepítve van.
+* A [Visual studio 2017 vagy a Visual studio 2019](https://www.visualstudio.com/vs/) telepítve van.
 
-## <a name="get-x509-ca-certificates"></a>X.509 hitelesítésszolgáltatói tanúsítványok beszerezése
+## <a name="get-x509-ca-certificates"></a>X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok beolvasása
 
-Az IoT Hub X.509 tanúsítványalapú biztonsága megköveteli, hogy egy [X.509 tanúsítványlánccal](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification)kezdje, amely tartalmazza a főtanúsítványt, valamint a köztes tanúsítványokat a levéltanúsítványig.
+A IoT Hub X. 509 tanúsítványalapú biztonsága megköveteli, hogy egy [x. 509 tanúsítványláncot](https://en.wikipedia.org/wiki/X.509#Certificate_chains_and_cross-certification)kell kezdenie, amely magában foglalja a főtanúsítványt, valamint a leküldéses tanúsítványig a közbenső tanúsítványokat.
 
-A tanúsítványok bekéselésének az alábbi módokközül választhat:
+A tanúsítványok beszerzéséhez a következő lehetőségek közül választhat:
 
-* X.509-es tanúsítványok vásárlása *legfelső szintű hitelesítésszolgáltatótól*. Ez a módszer éles környezetekben ajánlott.
+* X. 509 tanúsítványok vásárlása a *legfelső szintű hitelesítésszolgáltatótól (CA)*. Ez a módszer éles környezetekben ajánlott.
 
-* Hozzon létre saját X.509-es tanúsítványait egy külső gyártótól származó eszközzel, például [az OpenSSL-rel.](https://www.openssl.org/) Ez a technika rendben van a vizsgálati és fejlesztési célokra. A teszthitelesítési tanúsítványok PowerShell vagy Bash használatával történő létrehozásáról a [hitelesítésszolgáltatói tanúsítványok](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) teszteléséről a minták és oktatóanyagok kezelése című témakörben található. Az oktatóanyag többi része a teszthitelesítési tanúsítványokat használja, amelyeket a [teszthitelesítési tanúsítványok kezelése a mintákhoz és az oktatóanyagokhoz tartozó teszthitelesítési tanúsítványok kezelése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)című útmutató utasításai nak megfelelően hoz létre.
+* Hozzon létre saját X. 509 tanúsítványokat egy külső gyártótól származó eszközzel, például az [OpenSSL](https://www.openssl.org/)használatával. Ez a technika tesztelési és fejlesztési célokra is kiváló. A HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok a PowerShell vagy a bash használatával történő létrehozásával kapcsolatos információkért tekintse meg a [teszt hitelesítésszolgáltatói tanúsítványok kezelése mintákhoz és oktatóanyagokhoz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) című témakört. Ennek az oktatóanyagnak a többi része a teszt hitelesítésszolgáltatói tanúsítványok [tesztelése a mintákhoz és az oktatóanyagokhoz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)című témakör útmutatását követve létrehozott hitelesítésszolgáltatói tanúsítványokat használ.
 
-* Hozzon létre egy [X.509 köztes hitelesítésszolgáltatói tanúsítványt,](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) amelyet egy meglévő legfelső szintű hitelesítésszolgáltatói tanúsítvány írt alá, és töltse fel a hubra. A köztes tanúsítvány feltöltése és ellenőrzése után az alábbiakban megadottak szerint használható az alább említett legfelső szintű hitelesítésszolgáltatói tanúsítvány helyén. Az olyan eszközök, mint az OpenSSL ([openssl req](https://www.openssl.org/docs/man1.1.0/man1/req.html) és [openssl ca](https://www.openssl.org/docs/man1.1.0/man1/ca.html)) köztes hitelesítésszolgáltatói tanúsítvány létrehozására és aláírására használhatók.
+* Létrehoz egy meglévő legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány által aláírt [X. 509 köztes hitelesítésszolgáltatói tanúsítványt](iot-hub-x509ca-overview.md#sign-devices-into-the-certificate-chain-of-trust) , és feltölti azt az elosztóba. A köztes tanúsítvány feltöltése és ellenőrzése után az alább leírtaknak megfelelően a rendszer az alább említett legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány helyén is használható. A köztes HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány létrehozásához és aláírásához az OpenSSL ([OpenSSL REQ](https://www.openssl.org/docs/man1.1.0/man1/req.html) és [OpenSSL CA](https://www.openssl.org/docs/man1.1.0/man1/ca.html)) eszközök is használhatók.
 
 > [!NOTE]
-> Ne töltse fel a külső gyökér, ha nem egyedi az Ön számára, mert ez lehetővé tenné, hogy a harmadik fél más ügyfelei is csatlakoztassák eszközeiket az IoT Hubhoz.
+> Ne töltse fel a harmadik fél gyökerét, ha az nem egyedi az Ön számára, mivel ez a harmadik fél más ügyfelei számára is lehetővé tenné az eszközök csatlakoztatását a IoT Hubhoz.
 
-## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X.509 hitelesítésszolgáltatói tanúsítványok regisztrálása az IoT-központba
+## <a name="register-x509-ca-certificates-to-your-iot-hub"></a>X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok regisztrálása az IoT hub-ban
 
-Ezek a lépések bemutatják, hogyan adhat hozzá egy új hitelesítésszolgáltatót az IoT hubhoz a portálon keresztül.
+Ezek a lépések bemutatják, hogyan adhat hozzá új hitelesítésszolgáltatót az IoT hub-hoz a portálon keresztül.
 
-1. Az Azure Portalon keresse meg az IoT-központot, és válassza a **beállítások** > **tanúsítványok** a hub.
+1. A Azure Portal navigáljon az IoT hubhoz, és válassza a központ **Beállítások** > **tanúsítványok** elemét.
 
 1. Új tanúsítvány hozzáadásához válassza a **Hozzáadás** lehetőséget.
 
-1. A **Tanúsítvány neve**mezőbe írjon be egy rövid megjelenítendő nevet, és jelölje ki a számítógépről az előző szakaszban létrehozott tanúsítványfájlt.
+1. A **tanúsítvány neve**mezőben adjon meg egy felhasználóbarát megjelenítendő nevet, majd válassza ki az előző szakaszban létrehozott tanúsítványfájl a számítógépről.
 
-1. Miután értesítést kap a tanúsítvány sikeres feltöltésről, válassza a **Mentés**lehetőséget.
+1. Ha értesítést kap arról, hogy a tanúsítvány feltöltése sikeresen megtörtént, válassza a **Mentés**lehetőséget.
 
     ![Tanúsítvány feltöltése](./media/iot-hub-security-x509-get-started/iot-hub-add-cert.png)  
 
-   A tanúsítvány nem ellenőrzött állapotú tanúsítványok listájában jelenik **meg.**
+   A tanúsítvány nem **ellenőrzött**állapotú tanúsítványok listájában jelenik meg.
 
-1. Jelölje ki az imént hozzáadott tanúsítványt a **Tanúsítvány részleteinek**megjelenítéséhez, majd válassza **az Ellenőrző kód létrehozása lehetőséget.**
+1. Válassza ki az imént hozzáadott tanúsítványt a **tanúsítvány részleteinek**megjelenítéséhez, majd válassza az **ellenőrző kód előállítása**lehetőséget.
 
    ![Tanúsítvány ellenőrzése](./media/iot-hub-security-x509-get-started/copy-verification-code.png)  
 
-1. Másolja az **ellenőrző kódot** a vágólapra. A tanúsítvány tulajdonjogának ellenőrzésére használhatja.
+1. Másolja az **ellenőrző kódot** a vágólapra. Ezzel ellenőrzi a tanúsítvány tulajdonjogát.
 
-1. Kövesse a [3.](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)  Ez a folyamat aláírja az ellenőrző kódot az X.509 hitelesítésszolgáltatói tanúsítványhoz tartozó személyes kulccsal, amely aláírást hoz létre. Az aláírási folyamat végrehajtásához rendelkezésre állnak eszközök, például openSSL. Ez a folyamat az úgynevezett [bizonyíték a birtoklás](https://tools.ietf.org/html/rfc5280#section-3.1).
+1. A [minták és oktatóanyagok tesztelésére szolgáló hitelesítésszolgáltatói tanúsítványok kezeléséhez](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)kövesse a 3. lépést.  Ez a folyamat aláírja az ellenőrző kódot az X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítványhoz társított titkos kulccsal, amely aláírást generál. Az aláírási folyamat elvégzéséhez rendelkezésre állnak eszközök, például az OpenSSL. Ez a folyamat a [birtoklás igazolása](https://tools.ietf.org/html/rfc5280#section-3.1).
 
-1. A **Tanúsítvány részletei**csoportban a **.pem vagy .cer tanúsítvány fájlban**keresse meg és nyissa meg az aláírásfájlt. Ezután válassza **az Ellenőrzés lehetőséget.**
+1. A **tanúsítvány részletei**területen az **ellenőrzés tanúsítvány. PEM vagy. cer fájlban**keresse meg és nyissa meg az aláírási fájlt. Ezután válassza az **ellenőrzés**lehetőséget.
 
-   A tanúsítvány állapota **Ellenőrzött**állapotúra változik. Válassza a **Frissítés** lehetőséget, ha a tanúsítvány nem frissül automatikusan.
+   A tanúsítvány állapota **ellenőrizve**állapotra módosult. Válassza a **frissítés** lehetőséget, ha a tanúsítvány nem frissül automatikusan.
 
-## <a name="create-an-x509-device-for-your-iot-hub"></a>X.509-es eszköz létrehozása az IoT hubhoz
+## <a name="create-an-x509-device-for-your-iot-hub"></a>X. 509 eszköz létrehozása az IoT hub számára
 
-1. Az Azure Portalon keresse meg az IoT-központot, és válassza az **Explorers** > **IoT-eszközök**lehetőséget.
+1. A Azure Portal navigáljon az IoT hubhoz, majd válassza a **felfedezők** > **IoT-eszközök**elemet.
 
-1. Új eszköz hozzáadásához válassza az **Új** lehetőséget.
+1. Új eszköz hozzáadásához válassza az **új** lehetőséget.
 
-1. Az **Eszközazonosító**mezőbe írjon be egy rövid megjelenítendő nevet. A **Hitelesítés típusa mezőben**válassza az **X.509 hitelesítésszolgáltató aláírása**lehetőséget, majd kattintson a Mentés **gombra.**
+1. Az **eszköz azonosítója**mezőben adjon meg egy felhasználóbarát megjelenítendő nevet. A **Hitelesítés típusa**mezőben válassza az **X. 509 hitelesítésszolgáltató aláírva**lehetőséget, majd kattintson a **Mentés**gombra.
 
-   ![X.509-es eszköz létrehozása a portálon](./media/iot-hub-security-x509-get-started/new-x509-device.png)
+   ![X. 509 eszköz létrehozása a portálon](./media/iot-hub-security-x509-get-started/new-x509-device.png)
 
-## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>Az X.509-es eszköz hitelesítése az X.509-es tanúsítványokkal
+## <a name="authenticate-your-x509-device-with-the-x509-certificates"></a>Hitelesítse X. 509 eszközét az X. 509 tanúsítvánnyal
 
-Az X.509-es eszköz hitelesítéséhez először alá kell írnia az eszközt a hitelesítésszolgáltatói tanúsítvánnyal. A levéleszközök aláírása általában a gyártóüzemben történik, ahol a gyártási eszközöket ennek megfelelően engedélyezték. Ahogy az eszköz egyik gyártóról a másikra kerül, minden gyártó aláírási művelete köztes tanúsítványként rögzítésre kerül a láncon belül. Az eredmény egy tanúsítványlánc a hitelesítésszolgáltatói tanúsítványtól az eszköz levéltanúsítványához. A [minták és oktatóanyagok hitelesítésszolgáltatói tanúsítványainak kezelése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) 4.
+Az X. 509 eszköz hitelesítéséhez először alá kell írnia az eszközt a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvánnyal. A levelek eszközeinek aláírása általában a gyártási üzemben történik, ahol ennek megfelelően engedélyezték a gyártási eszközöket. Ahogy az eszköz az egyik gyártóról a másikra mutat, a rendszer minden gyártó aláírási műveletét közbenső tanúsítványként rögzíti a láncon belül. Ennek eredményeképpen a HITELESÍTÉSSZOLGÁLTATÓI tanúsítványból az eszközön lévő levél tanúsítványára vonatkozó tanúsítványlánc szerepel. A [tesztelési hitelesítésszolgáltatói tanúsítványok a mintákhoz és oktatóanyagokhoz való kezelésének](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md) 4. lépése egy eszköz tanúsítványát hozza létre.
 
-Ezután bemutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hubhoz regisztrált X.509-es eszköz szimulálására. A szimulált eszközről hőmérséklet- és páratartalom-értékeket küldünk az ön központjába. Ebben az oktatóanyagban csak az eszközalkalmazást hozzuk létre. Az olvasók nak edzésként marad az IoT Hub szolgáltatásalkalmazás létrehozása, amely választ küld a szimulált eszköz által küldött eseményekre. A C# alkalmazás feltételezi, hogy a [minták és oktatóanyagok teszthitelesítési tanúsítványainak kezelése](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)című lépést követte.
+Ezután megmutatjuk, hogyan hozhat létre C#-alkalmazást az IoT hub-hoz regisztrált X. 509 eszköz szimulálásához. A szimulált eszköz hőmérséklet-és páratartalom-értékét a hubhoz küldi a rendszer. Ebben az oktatóanyagban csak az eszköz alkalmazást fogjuk létrehozni. Az olvasók feladata, hogy létrehozza a IoT Hub szolgáltatásalkalmazás létrehozását, amely választ küld a szimulált eszköz által küldött eseményekre. A C#-alkalmazás feltételezi, hogy követte a [teszt hitelesítésszolgáltatói tanúsítványok kezelése a mintákhoz és az oktatóanyagokhoz](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)című témakör lépéseit.
 
-1. Nyissa meg a Visual Studio alkalmazást, válassza **az Új projekt létrehozása**lehetőséget, majd válassza a Console App **(.NET Framework)** projektsablont. Kattintson a **Tovább** gombra.
+1. Nyissa meg a Visual studiót, válassza az **új projekt létrehozása**lehetőséget, majd válassza a **Console app (.NET-keretrendszer)** projekt sablonját. Kattintson a **Tovább** gombra.
 
-1. Az **Új projekt konfigurálása**területen nevezze el a *SimulateX509Device nevű projektet,* majd válassza a Create **(Létrehozás) lehetőséget.**
+1. Az **új projekt konfigurálása**lapon nevezze el a projekt *SimulateX509Device*, majd válassza a **Létrehozás**lehetőséget.
 
-   ![X.509-es eszközprojekt létrehozása a Visual Studióban](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
+   ![X. 509 eszköz projekt létrehozása a Visual Studióban](./media/iot-hub-security-x509-get-started/create-device-project-vs2019.png)
 
-1. A Megoldáskezelőben kattintson a jobb gombbal a **SimulateX509Device** projektre, majd válassza **a NuGet csomagok kezelése parancsot.**
+1. Megoldáskezelő kattintson a jobb gombbal a **SimulateX509Device** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. A **NuGet csomagkezelőben**válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft.Azure.Devices.Client**elemet. Válassza az **Install** (Telepítés) lehetőséget.
+1. A **NuGet csomagkezelő eszközben**válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza az **Install** (Telepítés) lehetőséget.
 
-   ![Eszköz SDK NuGet csomag hozzáadása a Visual Studióban](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
+   ![Device SDK NuGet-csomag hozzáadása a Visual Studióban](./media/iot-hub-security-x509-get-started/device-sdk-nuget.png)
 
-    Ez a lépés letölti, telepíti, és hozzáadja a hivatkozást az Azure IoT-eszköz SDK NuGet csomag és a függőségek.
+    Ez a lépés letölti, telepíti és hozzáadja az Azure IoT Device SDK NuGet csomagra és annak függőségeire mutató hivatkozást.
 
 1. Adja hozzá a következő `using`utasításokat a **Program.cs** fájl elejéhez:
 
@@ -109,7 +109,7 @@ Ezután bemutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hubhoz regis
         using System.Security.Cryptography.X509Certificates;
     ```
 
-1. Adja hozzá a következő mezőket a **Program** osztályhoz:
+1. Adja hozzá a következő mezőket a **program** osztályhoz:
 
     ```csharp
         private static int MESSAGE_COUNT = 5;
@@ -120,9 +120,9 @@ Ezután bemutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hubhoz regis
         private static Random rnd = new Random();
     ```
 
-    Használja az előző szakaszban használt rövid eszköznevet _<your_device_id>_ helyett.
+    A _<your_device_id>_ helyett használja az előző szakaszban használt felhasználóbarát eszköznév nevét.
 
-1. Adja hozzá a következő függvényt a hőmérséklet és a páratartalom véletlenszerű számának létrehozásához, és küldje el ezeket az értékeket a hubnak:
+1. Adja hozzá a következő függvényt a hőmérséklet és a páratartalom véletlenszerű számának létrehozásához, majd küldje el ezeket az értékeket a hubhoz:
 
     ```csharp
     static async Task SendEvent(DeviceClient deviceClient)
@@ -144,7 +144,7 @@ Ezután bemutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hubhoz regis
     }
     ```
 
-1. Végül adja hozzá a következő kódsorokat a **Fő** függvényhez, a helyőrzők _eszközazonosítója_, _a hub-neve_és az _abszolút-path-to-your-device-pfx-file_ helyett, ahogy azt a beállítás megköveteli.
+1. Végül adja hozzá a következő sornyi kódot a **fő** függvényhez, és cserélje le a helyőrzőket az _eszköz-azonosító_, _a-IOT-hub-Name_és az _abszolút elérésű útvonal-az-Ön-eszköz-pfx-fájlra_ a telepítéshez szükséges módon.
 
     ```csharp
     try
@@ -171,32 +171,32 @@ Ezután bemutatjuk, hogyan hozhat létre egy C# alkalmazást az IoT hubhoz regis
     }
     ```
 
-   Ez a kód az IoT hubhoz csatlakozik az X.509-es eszköz kapcsolati karakterláncának létrehozásával. Miután sikeresen csatlakozott, ezután elküldi a hőmérséklet és a páratartalom eseményeket a hub, és várja a választ.
+   Ez a kód az X. 509 eszköz kapcsolati karakterláncának létrehozásával csatlakozik az IoT hubhoz. A sikeres csatlakozás után a rendszer hőmérséklet-és páratartalom-eseményeket küld a hubhoz, és megvárja a válaszát.
 
-1. Futtassa az alkalmazást. Mivel ez az alkalmazás hozzáfér egy *.pfx* fájlhoz, előfordulhat, hogy rendszergazdaként kell futtatnia ezt az alkalmazást.
+1. Futtassa az alkalmazást. Mivel ez az alkalmazás egy *. pfx* -fájlhoz fér hozzá, lehetséges, hogy rendszergazdaként kell futtatnia ezt az alkalmazást.
 
-   1. Készítse el a Visual Studio-megoldást.
+   1. Hozza létre a Visual Studio-megoldást.
 
-   1. Nyisson meg egy új parancssorablakot a **Futtatás rendszergazdaként paranccsal.**  
+   1. Nyisson meg egy új parancssori ablakot a **Futtatás rendszergazdaként**parancs használatával.  
 
-   1. Nyissa meg a megoldást tartalmazó mappát, majd keresse meg a megoldásmappában található *bin/Debug* elérési utat.
+   1. Keresse meg a megoldást tartalmazó mappát, majd navigáljon a megoldás mappájában található *bin/debug* elérési útra.
 
-   1. Futtassa az alkalmazást **SimulateX509Device.exe** a parancssorból.
+   1. Futtassa az alkalmazást a **SimulateX509Device. exe** fájlból a parancssorból.
 
-   Látnia kell, hogy az eszköz sikeresen csatlakozik a hubhoz, és elküldi az eseményeket.
+   Az eszköznek sikeresen csatlakoznia kell a hubhoz, és el kell küldenie az eseményeket.
 
-   ![Eszközalkalmazás futtatása](./media/iot-hub-security-x509-get-started/device-app-success.png)
+   ![Eszköz alkalmazásának futtatása](./media/iot-hub-security-x509-get-started/device-app-success.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Az IoT-megoldás biztonságossá tétele további információ:
+Ha többet szeretne megtudni a IoT-megoldás biztonságossá tételéről, olvassa el a következő témakört:
 
-* [Az IoT biztonságának gyakorlati tanácsai](../iot-fundamentals/iot-security-best-practices.md)
+* [Ajánlott IoT biztonsági eljárások](../iot-fundamentals/iot-security-best-practices.md)
 
 * [IoT biztonsági architektúra](../iot-fundamentals/iot-security-architecture.md)
 
 * [Az IoT üzemelő példányának védelme](../iot-fundamentals/iot-security-deployment.md)
 
-Az IoT Hub képességeinek további megismeréséhez lásd:
+A IoT Hub képességeinek további megismeréséhez lásd:
 
 * [Mesterséges intelligencia telepítése peremeszközökön az Azure IoT Edge szolgáltatással](../iot-edge/tutorial-simulate-device-linux.md)

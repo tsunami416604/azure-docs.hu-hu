@@ -1,6 +1,6 @@
 ---
-title: Sorátalakítás módosítása az adatfolyam leképezésében
-description: Az adatbázis-cél frissítése az alteregósor-átalakítással az adatfolyam leképezésében
+title: A sorok átalakításának módosítása a leképezési adatfolyamban
+description: Az adatbázis céljának frissítése az Alter Row Transformation használatával a leképezési adatforgalomban
 author: kromerm
 ms.author: makromer
 ms.reviewer: daperlov
@@ -9,51 +9,51 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/20/2020
 ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729139"
 ---
-# <a name="alter-row-transformation-in-mapping-data-flow"></a>Sorátalakítás módosítása az adatfolyam leképezésében
+# <a name="alter-row-transformation-in-mapping-data-flow"></a>A sorok átalakításának módosítása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A sorok beszúrási, törlési, frissítési és upsert házirendjeinek beállításához használja a Sor módosítása átalakítót. Kifejezésként egy-a-többhöz feltételeket adhat hozzá. Ezeket a feltételeket prioritási sorrendben kell megadni, mivel minden sor az első egyezési kifejezésnek megfelelő házirenddel lesz megjelölve. Ezen feltételek mindegyike egy sor (vagy sor) beszúrását, frissítését, törlését vagy upserted beszúrását eredményezheti. Az Alter Sor ddl-& DML-műveleteket is képes létrehozni az adatbázison.
+Az Alter sort Transformation paranccsal szúrhatja be a sorokba az INSERT, DELETE, Update és upsert szabályzatokat. Egy-a-többhöz feltételeket adhat hozzá kifejezésként. Ezeket a feltételeket prioritási sorrendben kell megadni, mivel minden egyes sor az első megfeleltetési kifejezésnek megfelelő szabályzattal lesz megjelölve. Ezek a feltételek egy sor (vagy sor) beszúrását, frissítését, törlését vagy upserted eredményezik. Az Alter Row a DDL-& a DML-műveleteket is előkészítheti az adatbázison.
 
-![Sorbeállítások módosítása](media/data-flow/alter-row1.png "Sorbeállítások módosítása")
+![Módosítási sor beállításai](media/data-flow/alter-row1.png "Módosítási sor beállításai")
 
-Alter Sor átalakítások csak akkor működik, az adatbázis vagy cosmosDB elsüllyeszti az adatfolyamban. A sorokhoz rendelt műveletek (beszúrás, frissítés, törlés, upsert) nem történnek a hibakeresési munkamenetek során. Futtasson egy adatfolyam-tevékenységet egy folyamatban az adatbázistáblák altersorházirendjeinek életbe léptetéséhez.
+Az Alter sor átalakítások csak adatbázis-vagy CosmosDB-tárolókban működnek az adatfolyamban. A sorokhoz rendelt műveletek (INSERT, Update, DELETE, upsert) nem lépnek fel a hibakeresési munkamenetek során. Futtasson egy végrehajtási adatfolyamati tevékenységet egy folyamaton belül, hogy meghozza a módosítási sor szabályzatait az adatbázis tábláiban.
 
-## <a name="specify-a-default-row-policy"></a>Alapértelmezett sorházirend megadása
+## <a name="specify-a-default-row-policy"></a>Alapértelmezett sor szabályzatának meghatározása
 
-Hozzon létre egy Alter Row átalakítást, `true()`és adjon meg egy sorházirendet a feltételével. Minden olyan sor, amely nem felel meg a korábban definiált kifejezések egyikének sem, meg lesz jelölve a megadott sorházirendhez. Alapértelmezés szerint minden olyan sor, amely nem felel `Insert`meg egyetlen feltételes kifejezésnek sem, meg lesz jelölve a számára.
+Hozzon létre egy Alter sort átalakítást, és határozzon meg egy feltételt tartalmazó sort `true()`. Minden olyan sor meg lesz jelölve, amely nem felel meg a korábban definiált kifejezéseknek. Alapértelmezés szerint minden olyan sor meg lesz jelölve, amely nem felel meg a `Insert`feltételes kifejezéseknek.
 
-![Sorházirend módosítása](media/data-flow/alter-row4.png "Sorházirend módosítása")
-
-> [!NOTE]
-> Ha az összes sort egy házirenddel szeretné megjelölni, létrehozhat `true()`egy feltételt a házirendhez, és megadhatja a feltételt .
-
-## <a name="view-policies-in-data-preview"></a>Házirendek megtekintése az adatelőnézetben
-
-A [hibakeresési mód segítségével](concepts-data-flow-debug-mode.md) megtekintheti az alteregósor-házirendek eredményeit az adatok betekintő ablaktáblájában. Egy alteregósor-átalakítás adatelőnézete nem eredményez DDL- vagy DML-műveleteket a célhoz képest.
-
-![Sorházirendek módosítása](media/data-flow/alter-row3.png "Sorházirendek módosítása")
-
-Minden alter sorházirendet egy ikon jelöl, amely jelzi, hogy beszúrási, frissítési, upsert vagy törölt művelet történik-e. A felső fejléc azt mutatja, hogy az előnézetben hány sort érint az egyes házirendek.
-
-## <a name="allow-alter-row-policies-in-sink"></a>Sorházirendek módosításának engedélyezése a fogadóban
-
-A változássor-házirendek működéséhez az adatfolyamnak egy adatbázisba vagy a Cosmos-fogadóba kell írnia. A **fogadó Beállítások** lapján engedélyezze, hogy az adott fogadóhoz mely sorházirendek módosíthatók.
-
-![Sorelesső módosítása](media/data-flow/alter-row2.png "Sormosogató módosítása")
-
-Az alapértelmezett viselkedés az, hogy csak a beszúrások engedélyezése. A frissítések, upserts vagy törlések engedélyezéséhez jelölje be az adott feltételnek megfelelő fogadóban lévő jelölőnégyzetet. Ha a frissítések, a upserts vagy a deleteek engedélyezve vannak, meg kell adnia, hogy a fogadóban mely kulcsoszlopoknak kell megfelelnie.
+![Módosítási sor házirendje](media/data-flow/alter-row4.png "Módosítási sor házirendje")
 
 > [!NOTE]
-> Ha a beszúrások, frissítések vagy upserts módosítja a sémát a céltábla a fogadóban, az adatfolyam sikertelen lesz. Az adatbázis célsémájának módosításához válassza a **Tábla újbóli létrehozása** táblaműveletként lehetőséget. Ezzel eldobja és újra létrehozza a táblát az új sémadefinícióval.
+> Az összes sor egyetlen házirenddel való megjelöléséhez létrehozhat egy feltételt az adott szabályzathoz, és a `true()`feltételt is megadhatja.
 
-A fogadó átalakítása egyetlen kulcsot vagy kulcsok sorozatát igényli a céladatbázis egyedi sorazonosításához. SQL-fogadók esetén állítsa be a kulcsokat a fogadó beállítások lapján. A CosmosDB esetében állítsa be a partíciókulcsot a beállításokban, és állítsa be a CosmosDB rendszermező "id" mezőjét a mosogató-leképezésben. A CosmosDB esetében kötelező az "id" rendszeroszlop hozzáadása a frissítésekhez, upserts-hez és törléshez.
+## <a name="view-policies-in-data-preview"></a>Szabályzatok megtekintése az adatelőnézetben
+
+[Hibakeresési mód](concepts-data-flow-debug-mode.md) használatával megtekintheti az Alter Row-szabályzatok eredményeit az adatelőnézet ablaktáblán. Az Alter Row Transformation adatelőnézete nem hoz létre DDL-vagy DML-műveleteket a célhelyen.
+
+![Módosítási sor házirendjei](media/data-flow/alter-row3.png "Módosítási sor házirendjei")
+
+Minden módosítási sor házirendjét egy ikon jelöli, amely jelzi, hogy bekövetkezik-e az INSERT, a Update, a upsert vagy a Deleted művelet. A felső fejléc azt mutatja, hogy az egyes szabályzatok hány sort érintenek az előzetes verzióban.
+
+## <a name="allow-alter-row-policies-in-sink"></a>Módosítási sor szabályzatának engedélyezése a fogadóban
+
+Ahhoz, hogy az Alter Row-szabályzatok működjenek, az adatfolyamnak egy adatbázisba vagy egy Cosmos-fogadóba kell írnia. A fogadó **Beállítások** lapján engedélyezze, hogy az adott fogadó számára engedélyezett legyen a módosítási sor szabályzata.
+
+![Módosítási sor fogadója](media/data-flow/alter-row2.png "Módosítási sor fogadója")
+
+Az alapértelmezett viselkedés csak beszúrások engedélyezése. Ha engedélyezni szeretné a frissítéseket, a upsert vagy a törlést, jelölje be az adott feltételnek megfelelő fogadó jelölőnégyzetét. Ha a frissítések, a upsert vagy a törlések engedélyezve vannak, meg kell adnia, hogy a fogadó mely kulcs oszlopait kell megegyeznie.
+
+> [!NOTE]
+> Ha a lapkák, a frissítések vagy a upsert módosítja a céltábla sémáját a fogadóban, az adatfolyam sikertelen lesz. Ha módosítani szeretné a célként megadott sémát az adatbázisban, válassza a tábla **újbóli létrehozása** lehetőséget a tábla műveletként. Ezzel eldobásra kerül, és újból létrehozza a táblát az új séma-definícióval.
+
+A fogadó átalakításhoz egy vagy több kulcsra van szükség a céladatbázis egyedi sorainak azonosításához. SQL-elsüllyedés esetén állítsa be a kulcsokat a fogadó beállításai lapon. A CosmosDB állítsa be a partíció kulcsát a beállítások között, és állítsa be az "id" CosmosDB rendszer mezőt a fogadó leképezésében. A CosmosDB esetében kötelező megadni a (z) "id" rendszeroszlopot a frissítésekhez, a upsert és a törlésekhez.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 
@@ -71,13 +71,13 @@ A fogadó átalakítása egyetlen kulcsot vagy kulcsok sorozatát igényli a cé
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy módosított `CleanData` sorátalakítás, amely `SpecifyUpsertConditions` egy bejövő adatfolyamot vesz fel, és három altersorfeltételt hoz létre. Az előző átalakítássorán a `alterRowCondition` program kiszámítja az elnevezett oszlopot, amely meghatározza, hogy egy sor beszúrva, frissítve vagy törölve van-e az adatbázisban. Ha az oszlop értéke olyan karakterlánc-értékkel rendelkezik, amely megegyezik a módosító sorszabályával, akkor az adott házirendhöz van rendelve.
+Az alábbi példa egy nevű `CleanData` módosítási sor átalakítása, amely egy bejövő adatfolyamot `SpecifyUpsertConditions` vesz igénybe, és három módosítási sor feltételt hoz létre. Az előző átalakítás során a rendszer kiszámítja a nevű `alterRowCondition` oszlopot, amely meghatározza, hogy a rendszer beszúrja, frissíti vagy törli-e a sort az adatbázisban. Ha az oszlop értéke olyan karakterlánc-értékkel rendelkezik, amely megfelel az Alter Row szabálynak, akkor azt a rendszer hozzárendeli a szabályzathoz.
 
-A Data Factory UX-ben ez az átalakítás az alábbi képre hasonlít:
+Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
-![Például sor módosítása](media/data-flow/alter-row4.png "Például sor módosítása")
+![Módosítható sor – példa](media/data-flow/alter-row4.png "Módosítható sor – példa")
 
-Az átalakítás adatfolyam-parancsfájlja az alábbi kódrészletben található:
+Az átalakításhoz tartozó adatfolyam-szkript az alábbi kódrészletben található:
 
 ```
 SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
@@ -87,4 +87,4 @@ SpecifyUpsertConditions alterRow(insertIf(alterRowCondition == 'insert'),
 
 ## <a name="next-steps"></a>További lépések
 
-Az Alter Sor átalakítás után érdemes lehet [az adatokat a céladattárba süllyeszteni.](data-flow-sink.md)
+A módosítási sor átalakítását követően érdemes lehet [az adatait egy célhely adattárba menteni](data-flow-sink.md).

@@ -12,10 +12,10 @@ ms.custom:
 ms.service: iot-hub
 services: iot-hub
 ms.openlocfilehash: 06c0ff7060f4a9d71af11ae75d52ad7f4bf14c6b
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81730852"
 ---
 # <a name="what-is-azure-iot-hub"></a>Mi az Azure IoT Hub?
@@ -28,7 +28,7 @@ Az IoT Hub képességei segítenek a skálázható, teljes körű IoT-megoldáso
 
 ## <a name="scale-your-solution"></a>A megoldás méretezése
 
-Az IoT Hub több millió egyszerre csatlakoztatott eszközre és másodpercenként több millió eseményre skálázható az IoT számítási feladatok támogatása érdekében. Az IoT Hub méretezéséről az [IoT Hub méretezése](iot-hub-scaling.md?branch=release-iotbasic)című témakörben talál további információt. Ha többet szeretne megtudni az IoT Hub által kínált több szolgáltatási szintről és arról, hogy miként felel meg a méretezhetőségi igényeinek, tekintse meg a [díjszabási oldalt.](https://azure.microsoft.com/pricing/details/iot-hub/)
+Az IoT Hub több millió egyszerre csatlakoztatott eszközre és másodpercenként több millió eseményre skálázható az IoT számítási feladatok támogatása érdekében. További információ a IoT Hub skálázásáról: [IoT hub skálázás](iot-hub-scaling.md?branch=release-iotbasic). Ha többet szeretne megtudni a IoT Hub által kínált több rétegről, valamint arról, hogy miként lehet a legjobban megfelelni a méretezhetőségi igényeknek, tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/iot-hub/).
 
 ## <a name="secure-your-communications"></a>Biztonságos kommunikáció
 
@@ -52,7 +52,7 @@ Az IoT Hub biztonságos kommunikációs csatornát nyújt az eszközöknek az ad
 
 A beépített üzenet-útválasztási funkció rugalmasságot biztosít az automatikus, szabályalapú üzenetelosztás beállításához:
 
-* Az [üzenet-útválasztás](iot-hub-devguide-messages-d2c.md) segítségével szabályozhatja, hogy a hub hová küldi az eszköz telemetriáját.
+* Az [üzenet-útválasztás](iot-hub-devguide-messages-d2c.md) használatával szabályozhatja, hogy a hub hová küldi az eszköz telemetria.
 
 * Az üzenetek több végpontra való irányítása nem jár többletköltségekkel.
 
@@ -112,9 +112,9 @@ Ha a megoldás nem tudja használni egyik támogatott protokollt sem, kibővíth
 
 ## <a name="quotas-and-limits"></a>Kvóták és korlátok
 
-Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, amelyek meggátolják a szolgáltatással való visszaélést, és ezek a korlátozások hatással lehetnek az IoT-megoldás hatókörére. Az előfizetésenkénti jelenlegi korlát előfizetésenként 50 IoT-központ. A támogatási részlegtől kérheti a kvóta növelését. További információ: [IoT Hub kvóták és szabályozás.](iot-hub-devguide-quotas-throttling.md) A kvótakorlátokkal kapcsolatos további részleteket az alábbi cikkek ben találja:
+Minden Azure-előfizetésre alapértelmezett kvótakorlátozások vonatkoznak, amelyek meggátolják a szolgáltatással való visszaélést, és ezek a korlátozások hatással lehetnek az IoT-megoldás hatókörére. Az előfizetések jelenlegi korlátja a 50 IoT hub/előfizetés. A támogatási részlegtől kérheti a kvóta növelését. További információ: [IoT hub kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md). A kvóta korlátaival kapcsolatos további részletekért tekintse meg a következő cikkek egyikét:
 
-* [Az Azure előfizetéses szolgáltatáskorlátai](../azure-resource-manager/management/azure-subscription-service-limits.md)
+* [Azure-előfizetési szolgáltatás korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md)
 
 * [Az IoT Hub szabályozása és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
@@ -124,6 +124,6 @@ A végpontok közötti IoT-megoldás kipróbálásához tekintse meg az IoT Hub 
 
 * [Rövid útmutató: Telemetria küldése egy eszközről IoT Hubra](quickstart-send-telemetry-node.md)
 
-Ha többet szeretne megtudni arról, hogyan hozhat létre és helyezhet üzembe IoT-megoldásokat az Azure IoT-vel, látogasson el a következő oldalra:
+Ha többet szeretne megtudni arról, hogyan hozhat létre és helyezhet üzembe IoT-megoldásokat az Azure IoT, látogasson el ide:
 
-* [Alapvető tudnivalók: Azure IoT-technológiák és -megoldások.](../iot-fundamentals/iot-services-and-technologies.md)
+* [Alapismeretek: az Azure IoT-technológiák és-megoldások](../iot-fundamentals/iot-services-and-technologies.md).

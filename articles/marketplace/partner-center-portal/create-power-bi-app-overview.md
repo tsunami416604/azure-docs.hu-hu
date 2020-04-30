@@ -1,6 +1,6 @@
 ---
-title: A Power BI-alkalmazások létrehozása – Azure Piactér
-description: Ez a cikk a Power BI-alkalmazások Microsoft AppSource-ban való közzétételének magas szintű lépéseit ismerteti. A Power BI-alkalmazás nak is meg kell felelnie ahhoz, hogy közzétehesd a kereskedelmi piacon.
+title: Power BI alkalmazás-létrehozás áttekintése – Azure Marketplace
+description: Ez a cikk a Power BI-alkalmazások Microsoft AppSource való közzétételének magas szintű lépéseit ismerteti. A Power BI alkalmazásnak meg kell felelnie a kereskedelmi piactéren közzétett technikai és üzleti követelményeknek is.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,77 +8,77 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/02/2020
 ms.openlocfilehash: 8f050a43cbdf4ab29df55cd5526eb231c301b271
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732677"
 ---
-# <a name="power-bi-app-creation-overview"></a>A Power BI-alkalmazások létrehozása – áttekintés
+# <a name="power-bi-app-creation-overview"></a>Power BI alkalmazás-létrehozás áttekintése
 
 > [!IMPORTANT]
-> Power BI-alkalmazásajánlatainak kezelését áthelyezzük a Cloud Partner Portalról a Partnerközpontba. Az ajánlatok áttelepítéséig kövesse a [Power BI alkalmazásajánlata](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) a Cloud Partner Portal szolgáltatásra vonatkozó utasításait az ajánlatok kezeléséhez.
+> Áthelyezjük Power BI alkalmazásának Cloud Partner Portalról a partner központba való felügyeletét. Amíg az ajánlatokat át nem telepíti, kövesse az [Power BI Cloud Partner Portal alkalmazás ajánlatának](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/power-bi/cpp-power-bi-offer) utasításait az ajánlatok kezeléséhez.
 
-Ebből a cikkből megtudhatja, hogy miként tehet közzé Power BI-alkalmazásokat a Microsoft [AppSource alkalmazásban.](https://appsource.microsoft.com/) A Power BI-alkalmazások testre szabható tartalmakat csomagolnak, beleértve az adatkészleteket, jelentéseket és irányítópultokat. Ezután az AppSource segítségével használhatja az alkalmazást más Power BI-platformokkal, elvégezheti a fejlesztő által engedélyezett módosításokat és testreszabásokat, és csatlakoztathatja a saját adataihoz.
+Ez a cikk azt ismerteti, hogyan tehet közzé egy Power BI alkalmazást a Microsoft [AppSource](https://appsource.microsoft.com/). A Power BI alkalmazáscsomag testreszabható tartalmat, beleértve az adatkészleteket, a jelentéseket és az irányítópultokat. Ezután az AppSource használatával más Power BI platformokkal is használhatja az alkalmazást, végrehajthatja a fejlesztő által engedélyezett módosításokat és testreszabásokat, és összekapcsolhatók a saját adataival.
 
 ## <a name="publishing-benefits"></a>Közzétételi előnyök
 
-A kereskedelmi piacon való közzététel előnyei:
+A kereskedelmi piactéren való közzététel előnyei:
 
-- Népszerűsítse vállalatát a Microsoft márkanév használatával.
-- Potenciálisan több mint 100 millió Office 365- és Dynamics 365-felhasználót érhet el az AppSource-on, és több mint 200 000 szervezetet az Azure Marketplace-en keresztül.
-- Szerezzen kiváló minőségű érdeklődőket ezekről a piacterekről.
-- A Microsoft helyszíni és teleértékesítési csapatai népszerűsíthetik a szolgáltatásokat.
+- Népszerűsítse vállalatát a Microsoft Brand használatával.
+- Az Azure Marketplace-en több mint 100 000 000 Office 365-és Dynamics 365-felhasználó érhető el AppSource és több mint 200 000 szervezeten keresztül.
+- Kiváló minőségű érdeklődőket fogadhat ezekből a Piactérről.
+- A szolgáltatásait a Microsoft és a kereskedelmi csoportok támogatják.
 
 ## <a name="overview"></a>Áttekintés
 
-:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="A Power BI-alkalmazások közzétételének lépései" border="false":::
+:::image type="content" source="media/power-bi-app-publishing-steps.png" alt-text="Power BI alkalmazás közzétételének lépései – áttekintés" border="false":::
 
 Ezek a legfontosabb közzétételi lépések:
 
-1. Hozza létre az alkalmazást a Power BI-ban. Kap egy csomagtelepítési linket, amely az ajánlat fő technikai eszköze. Küldje el a tesztcsomagot az előtérbe, mielőtt létrehozna egy ajánlatot a Partnerközpontban. További információt a [Mik azok a Power BI-alkalmazások?](https://docs.microsoft.com/power-bi/service-template-apps-overview)
-2. Adja hozzá a marketinganyagokat, például a hivatalos nevet, a leírást és az emblémákat.
-3. Adja meg az ajánlat jogi és támogatási dokumentumait, például a használati feltételeket, az adatvédelmi szabályzatot, a támogatási irányelveket és a felhasználói segítséget.
-4. Az ajánlat létrehozása: A Partnerközpont segítségével szerkesztheti a részleteket, beleértve az ajánlat leírását, a marketinganyagokat, a jogi információkat, a támogatási információkat és az eszközspecifikációkat.
+1. Hozza létre az alkalmazást Power BIban. A csomag telepítési hivatkozását fogja kapni, amely az ajánlat fő technikai eszköze. Az ajánlat a partner Centerben való létrehozása előtt küldje el a tesztelési csomagot előzetes gyártásra. Részletekért lásd: [Mik a Power bi alkalmazások?](https://docs.microsoft.com/power-bi/service-template-apps-overview).
+2. Adja hozzá a marketing-anyagokat, például a hivatalos nevet, a leírást és az emblémákat.
+3. Adja meg az ajánlat jogi és támogatási dokumentumait, például a használati feltételeket, az adatvédelmi szabályzatot, a támogatási szabályzatot és a felhasználói súgót.
+4. Ajánlat létrehozása: a partner Center használatával szerkessze a részleteket, beleértve az ajánlat leírását, a marketing-anyagokat, a jogi információkat, a támogatási információkat és az eszközök specifikációit.
 5. Küldje el közzétételre.
-6. Figyelje a folyamatot a Partnerközpontban, ahol az AppSource bevezetési csapata teszteli, ellenőrzi és hitelesíti az alkalmazást.
-7. A minősítés t követően tekintse át az alkalmazást a tesztkörnyezetben, és engedje fel. Ez felsorolja azt AppSource (ez "megy él").
-8. A Power BI-ban küldje el a csomagot éles környezetbe. További információt [a Power BI alkalmazáskiadás ának kezelése](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)című témakörben talál.
+6. Figyelje a folyamatot a partner Centerben, ahol a AppSource bevezetési csapata teszteli, ellenőrzi és tanúsítja az alkalmazást.
+7. A minősítés után tekintse át az alkalmazást a tesztelési környezetben, és szabadítsa fel. Ez a lista a AppSource ("élő") jelenik meg.
+8. A Power BIban küldje el a csomagot éles környezetben. Részletekért lásd: [a Power bi alkalmazás kiadásának kezelése](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release).
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Tekintse át az alábbi hivatkozásokat, amelyek sablonokat, tippeket és mintákat tartalmaznak.
+Tekintse át az alábbi hivatkozásokat, amelyek sablonokat, tippeket és mintákat biztosítanak.
 
 - [Power BI-alkalmazás létrehozása](https://docs.microsoft.com/power-bi/service-template-apps-create)
-- [Tippek a Power BI-alkalmazások használatához](https://docs.microsoft.com/power-bi/service-template-apps-tips)
+- [Tippek Power BI-alkalmazások készítéséhez](https://docs.microsoft.com/power-bi/service-template-apps-tips)
 - [Példák](https://docs.microsoft.com/power-bi/service-template-apps-samples)
 
 ## <a name="requirements"></a>Követelmények
 
-A kereskedelmi piacon való közzétételhez a Power BI-alkalmazásajánlatnak meg kell felelnie az alábbi műszaki és üzleti követelményeknek.
+Ahhoz, hogy közzé lehessen tenni a kereskedelmi piactéren, a Power BI alkalmazás ajánlatának meg kell felelnie a következő technikai és üzleti követelményeknek.
 
 ### <a name="technical-requirements"></a>Technikai követelmények
 
-A legfontosabb technikai eszköz, amire szüksége lesz, egy [Power BI-alkalmazás.](https://go.microsoft.com/fwlink/?linkid=2028636) Ez elsődleges adatkészletek, jelentések vagy irányítópultok gyűjteménye. Opcionális csatlakoztatott szolgáltatásokat és beágyazott adatkészleteket is tartalmaz, amelyeket korábban [tartalomcsomagnak](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction)neveztek. Az ilyen típusú alkalmazások fejlesztéséről a Mik azok a [Power BI-alkalmazások?](https://go.microsoft.com/fwlink/?linkid=2028636)
+A legfontosabb technikai eszköznek egy [Power bi alkalmazásnak](https://go.microsoft.com/fwlink/?linkid=2028636)kell lennie. Ez az elsődleges adatkészletek, jelentések vagy irányítópultok gyűjteménye. Emellett az opcionálisan csatlakoztatott szolgáltatásokat és beágyazott adatkészleteket is tartalmazza, korábbi nevén a [Content Pack](https://docs.microsoft.com/power-bi/service-organizational-content-pack-introduction). Az ilyen típusú alkalmazások fejlesztésével kapcsolatos további információkért lásd: [Mi a Power bi alkalmazás?](https://go.microsoft.com/fwlink/?linkid=2028636).
 
-#### <a name="get-an-installation-web-address"></a>Telepítési webcím beszerezni
+#### <a name="get-an-installation-web-address"></a>Telepítési webcímek beszerzése
 
-Power BI-alkalmazást csak a [Power](https://powerbi.microsoft.com/) BI-környezetben hozhat létre.
+[Power bi](https://powerbi.microsoft.com/) -környezetben csak Power bi alkalmazást hozhat létre.
 
-1. Jelentkezzen be [Power BI Pro-licenccel.](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro)
-2. Az alkalmazás létrehozása és tesztelése a Power BI-ban.
-3. Amikor megkapja az alkalmazástelepítési webcímet, adja hozzá a **Partnerközpont Műszaki konfiguráció** lapjához.
+1. Jelentkezzen be [Power bi Pro licenccel](https://docs.microsoft.com/power-bi/service-admin-purchasing-power-bi-pro).
+2. Az alkalmazás létrehozása és tesztelése Power BIban.
+3. Amikor megkapja az alkalmazás-telepítési webcímet, adja hozzá a partner Center **technikai konfigurációs** lapjához.
 
-Miután létrehozta és tesztelte az alkalmazást a Power BI-ban, mentse az alkalmazás telepítési webcímét, mivel szüksége lesz rá [a Power BI-alkalmazásajánlat létrehozásához.](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+Miután létrehozta és tesztelte az alkalmazást Power BIban, mentse az alkalmazás-telepítési webcímet, mivel szüksége lesz rá [egy Power bi app-ajánlat létrehozásához](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer).
 
 ### <a name="business-requirements"></a>Üzleti követelmények
 
-Az üzleti követelmények magukban foglalják az eljárási, szerződéses és jogi kötelezettségeket. A következőket kell tennie:
+Az üzleti követelmények közé tartoznak az eljárási, szerződéses és jogi kötelezettségek. A következőket kell tennie:
 
-- Legyen bejegyzett kereskedelmi piackiadó. Ha még nem regisztrált, kövesse a [Legyen kereskedelmi piactér kiadója](https://docs.microsoft.com/azure/marketplace/become-publisher)című részt.
-- Olyan tartalom biztosítása, amely megfelel az ajánlat appsource-on való felsorolásának feltételeinek. További információ: [Van egy alkalmazás, amely nek van listázva az AppSource-on? Itt van, hogyan](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
-- Fogadja el és kövesse a [Microsoft adatvédelmi nyilatkozatát.](https://privacy.microsoft.com/privacystatement)
+- Regisztrált kereskedelmi Piactéri közzétevő. Ha nincs regisztrálva, kövesse a [kereskedelmi Piactéri közzétevővé válás](https://docs.microsoft.com/azure/marketplace/become-publisher)lépéseit.
+- Olyan tartalmat adjon meg, amely megfelel az ajánlat AppSource-on való listázásának feltételeinek. További információkért lásd: [alkalmazás listázása a AppSource-on? A következőképpen](https://appsource.microsoft.com/blogs/have-an-app-to-list-on-appsource-here-s-how).
+- Fogadja el a következőt: és kövesse a [Microsoft adatvédelmi nyilatkozatát](https://privacy.microsoft.com/privacystatement).
 
 ## <a name="next-steps"></a>További lépések
 
-- [Power BI-alkalmazásajánlat létrehozása a Partnerközpontban](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)
+- [Power BI app-ajánlat létrehozása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-power-bi-app-offer)

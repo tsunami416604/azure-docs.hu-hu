@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub eszközről felhőbe – beállításai | Microsoft dokumentumok
-description: Fejlesztői útmutató – útmutatás arról, hogy mikor kell használni az eszközről a felhőbe irányuló üzeneteket, a jelentett tulajdonságokat vagy a fájlok feltöltését a felhőből az eszközre irányuló kommunikációhoz.
+title: Az Azure IoT Hub eszközről a felhőbe irányuló lehetőségek | Microsoft Docs
+description: Fejlesztői útmutató – útmutató arról, hogy mikor kell használni az eszközről a felhőbe irányuló üzeneteket, a jelentett tulajdonságokat vagy a fájlfeltöltés a felhőből az eszközre történő kommunikációhoz.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -12,37 +12,37 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: b984ee7ed662bf089e7bcb6fc7e948fb61ed1209
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733216"
 ---
-# <a name="device-to-cloud-communications-guidance"></a>Az eszközök közötti kommunikációról szóló útmutatás
+# <a name="device-to-cloud-communications-guidance"></a>Az eszközről a felhőbe irányuló kommunikációs útmutató
 
-Amikor adatokat küld az eszközalkalmazásból a megoldás háttérvégére, az IoT Hub három lehetőséget kínál:
+Amikor adatokat küld az eszköz alkalmazásból a megoldás háttérbe, IoT Hub három lehetőséget tesz elérhetővé:
 
-* [Eszközről a felhőbe irányuló üzenetek](iot-hub-devguide-messages-d2c.md) idősorozat-telemetriai adatokhoz és riasztásokhoz.
+* Az idősorozat-telemetria és-riasztások [eszközről a felhőbe](iot-hub-devguide-messages-d2c.md) irányuló üzenetei.
 
-* [Az ikereszköz jelentett tulajdonságai](iot-hub-devguide-device-twins.md) az eszköz állapotadatainak jelentéséhez, például a rendelkezésre álló képességek, feltételek vagy a hosszú ideig futó munkafolyamatok állapota. Például konfigurációs és szoftverfrissítések.
+* A [Device Twin által jelentett tulajdonságok jelentik](iot-hub-devguide-device-twins.md) az eszköz állapotával kapcsolatos információkat, például az elérhető képességeket, a feltételeket vagy a hosszan futó munkafolyamatok állapotát. Ilyenek például a konfiguráció és a szoftverfrissítések.
 
-* [Fájlfeltöltések](iot-hub-devguide-file-upload.md) médiafájlokhoz és nagy telemetriai kötegekhez, amelyeket időnként csatlakoztatott eszközök feltölteni vagy tömörítettek a sávszélesség megtakarítása érdekében.
+* A fájlok feltöltése a médiafájlok és a nagyméretű telemetria-kötegek számára, amelyeket időnként csatlakoztatott eszközök vagy tömörítettek a sávszélesség megtakarítása érdekében töltöttek [fel](iot-hub-devguide-file-upload.md) .
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Itt van egy részletes összehasonlítása a különböző eszköz-felhő kommunikációs lehetőségeket.
+Itt látható az eszközről a felhőbe irányuló különböző kommunikációs lehetőségek részletes összevetése.
 
-|  | Az eszközről a felhőbe irányuló üzenetek | Az ikereszköz jelentett tulajdonságai | Fájlfeltöltések |
+|  | Az eszközről a felhőbe irányuló üzenetek | A Device Twin szolgáltatás jelentett tulajdonságai | Fájlfeltöltés |
 | ---- | ------- | ---------- | ---- |
-| Forgatókönyv | Telemetriai idősorozatok és riasztások. Például 256 KB-os érzékelő adatkötegek küldött 5 percenként. | Elérhető képességek és feltételek. Például az aktuális eszköz kapcsolati mód, például a mobil- vagy Wi-Fi. Hosszú ideig futó munkafolyamatok, például konfigurációés szoftverfrissítések szinkronizálása. | Médiafájlok. Nagy (általában tömörített) telemetriai kötegek. |
-| Tárolás és visszakeresés | Az IoT Hub ideiglenesen legfeljebb 7 napig tárolja. Csak szekvenciális leolvasás. | Az IoT Hub tárolja az ikereszközben. Az [IoT Hub lekérdezési nyelvével](iot-hub-devguide-query-language.md)visszakereshető. | A felhasználó által biztosított Azure Storage-fiókban tárolva. |
+| Forgatókönyv | Telemetria idősorozat és riasztások. Például 256 – KB-os érzékelő adatkötegek 5 percenként elküldve. | Elérhető képességek és kikötések. Például az eszköz aktuális kapcsolati módja, például a mobil vagy a WiFi. Hosszan futó munkafolyamatok, például a konfiguráció és a szoftverfrissítések szinkronizálása. | Médiafájlok. Nagyméretű (általában tömörített) telemetria kötegek. |
+| Tárolás és lekérés | Ideiglenesen tárolta IoT Hub, legfeljebb 7 nap. Csak szekvenciális olvasás. | Az eszköz Twin IoT Hub tárolja. Beolvasható a [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md)használatával. | A felhasználó által megadott Azure Storage-fiókban tárolva. |
 | Méret | Akár 256 KB-os üzenet. | A jelentett tulajdonságok maximális mérete 32 KB. | Az Azure Blob Storage által támogatott maximális fájlméret. |
-| Frequency | Magas. További információ: [IoT Hub-korlátozások.](iot-hub-devguide-quotas-throttling.md) | Közepes. További információ: [IoT Hub-korlátozások.](iot-hub-devguide-quotas-throttling.md) | Alacsony. További információ: [IoT Hub-korlátozások.](iot-hub-devguide-quotas-throttling.md) |
-| Protocol (Protokoll) | Minden protokollon elérhető. | MQTT vagy AMQP használatával érhető el. | Bármely protokoll használata esetén elérhető, de HTTPS szükséges az eszközön. |
+| Frequency | Magas. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Közepes. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). | Alacsony. További információ: [IoT hub korlátok](iot-hub-devguide-quotas-throttling.md). |
+| Protocol (Protokoll) | Minden protokollon elérhető. | A MQTT vagy a AMQP használatával érhető el. | Bármely protokoll használata esetén elérhető, de HTTPS-t igényel az eszközön. |
 
-Előfordulhat, hogy egy alkalmazásnak telemetriai idősorozatként vagy riasztásként kell információkat küldenie, és elérhetővé kell tennie az ikereszközben. Ebben az esetben az alábbi lehetőségek közül választhat:
+Előfordulhat, hogy egy alkalmazásnak telemetria idősorozatként vagy riasztásként is el kell küldenie az adatokat, és elérhetővé kell tennie azt az eszköz Twin szolgáltatásában. Ebben az esetben az alábbi lehetőségek közül választhat:
 
-* Az eszközalkalmazás eszközről felhőbe irányuló üzenetet küld, és tulajdonságváltozást jelent.
-* A megoldás háttérrendszertárolja az információkat az eszköz iker címkéket, amikor megkapja az üzenetet.
+* Az eszköz az eszközről a felhőbe irányuló üzenetet küld, és jelentést készít a tulajdonságok változásáról.
+* A megoldás háttérbe állítása az eszköz Twin címkéi között tárolja az üzenetet, amikor megkapja az üzenetet.
 
-Mivel az eszközről a felhőbe irányuló üzenetek sokkal nagyobb átviteli sebességű, mint az eszköz ikerfrissítések, néha kívánatos elkerülni az eszköz iker készülék frissítése minden eszköz ről felhőre üzenet.
+Mivel az eszközről a felhőbe irányuló üzenetek sokkal nagyobb teljesítményt tesznek lehetővé, mint az eszközök kettős frissítései, időnként érdemes elkerülni, hogy az eszközről a felhőbe irányuló összes üzenethez ne kelljen a Twin-et frissíteni.

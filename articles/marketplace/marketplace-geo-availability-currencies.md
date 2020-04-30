@@ -1,6 +1,6 @@
 ---
-title: Földrajzi elérhetőség és valutatámogatás a kereskedelmi piacon | Azure Piactér
-description: Földrajzi elérhetőség a kereskedelmi piacon
+title: Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren | Azure piactér
+description: Földrajzi elérhetőség a kereskedelmi piactéren
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 01/29/2020
 ms.author: dsindona
 ms.openlocfilehash: 83906e6270ed41c2ea8f489c5a5312d32a565a29
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687588"
 ---
-# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi elérhetőség és pénznemtámogatás a kereskedelmi piactér számára
+# <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
-A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók meg az ügyfél számlázási címe szerint, és a tranzakciók 17 pénznemben hajthatók végre. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 kétjegyű alfa-kódját](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
+A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által meghatározott 141 földrajzi helyen vásárolhatók meg, a tranzakciók pedig 17 pénznemben végezhetők el. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
 |   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
 |-------------------------------------|-----------|--------------|
@@ -36,7 +36,7 @@ A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók me
 | Belarusz                             | BY        | USD          |
 | Belgium                             | BE        | EUR          |
 | Belize                              | BZ        | USD          |
-| Bermuda                             | Bm        | USD          |
+| Bermuda                             | BM        | USD          |
 | Bolívia                             | BO        | USD          |
 | Bosznia-Hercegovina              | BA        | USD          |
 | Botswana                            | BW        | USD          |
@@ -53,7 +53,7 @@ A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók me
 | Costa Rica                          | CR        | USD          |
 | Côte d'Ivoire                       | CI        | USD          |
 | Horvátország                             | HR        | EUR          |
-| Curaçao                             | Cw        | USD          |
+| Curaçao                             | CW        | USD          |
 | Ciprus                              | CY        | EUR          |
 | Cseh Köztársaság                      | CZ        | EUR          |
 | Dánia                             | DK        | DKK          |
@@ -63,7 +63,7 @@ A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók me
 | Salvador                         | SV        | USD          |
 | Észtország                             | EE        | EUR          |
 | Etiópia                            | ET        | USD          |
-| Feröer szigetek                       | FO (FO)        | DKK          |
+| Feröer szigetek                       | UTCÁN        | DKK          |
 | Fidzsi                                | FJ        | AUD          |
 | Finnország                             | FI        | EUR          |
 | Franciaország                              | JK        | EUR          |
@@ -87,7 +87,7 @@ A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók me
 | Jordánia                              | JO        | USD          |
 | Kazahsztán                          | KZ        | USD          |
 | Kenya                               | KE        | USD          |
-| Korea (dél)                       | KR        | KRW          |
+| Dél-Korea                       | KR        | KRW          |
 | Kuvait                              | KW        | USD          |
 | Kirgizisztán                          | KG        | USD          |
 | Lettország                              | LV        | EUR          |
@@ -100,7 +100,7 @@ A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók me
 | Észak-Macedónia                     | MK        | USD          |
 | Malajzia                            | MY        | USD          |
 | Málta                               | MT        | EUR          |
-| Mauritius                           | Mu        | USD          |
+| Mauritius                           | MU        | USD          |
 | Mexikó                              | MX        | USD          |
 | Moldova                             | MD        | USD          |
 | Monaco                              | MC        | EUR          |
@@ -141,15 +141,15 @@ A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók me
 | Svédország                              | SE        | SEK          |
 | Svájc                         | CH        | CHF          |
 | Tajvan                              | TW        | TWD          |
-| Tádzsikisztán                          | Tj        | USD          |
+| Tádzsikisztán                          | TJ        | USD          |
 | Tanzánia                            | TZ        | USD          |
 | Thaiföld                            | TH        | USD          |
 | Trinidad és Tobago                 | TT        | USD          |
 | Tunézia                             | TN        | USD          |
 | Törökország                              | TR        | USD          |
 | Türkmenisztán                        | TM        | USD          |
-| Vatikán (Szentszék)             | VA        | EUR          |
-| Az Egyesült Államok Virgin-szigetei | VI        | USD          |
+| Vatikáni Városállam (Szentszék)             | VA        | EUR          |
+| A Egyesült Államok Virgin-szigetek | VI        | USD          |
 | Uganda                              | UG        | USD          |
 | Ukrajna                             | UA        | USD          |
 | Egyesült Arab Emírségek                | AE        | USD          |
@@ -159,11 +159,11 @@ A kereskedelmi piactéri ajánlatok 141 földrajzi területen vásárolhatók me
 | Üzbegisztán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
 | Vietnam                             | VN        | USD          |
-| Jemen                               | Ti        | USD          |
+| Jemen                               | TI        | USD          |
 | Zambia                              | ZM        | USD          |
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\*A brazíliai ügyfelek számára a Piactér a felhőalapú megoldásszolgáltatókon (CSP) keresztül USD-t használ.
+\*Brazíliában a felhőalapú megoldások szolgáltatói (CSP) használatával a piactér USD-t használ.
 
-\** Ingyenes és BYOL VM képek csak.
+\** Csak az ingyenes és a BYOL VM-lemezképek.

@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Hub kommunikációs protokolljai és portjai | Microsoft dokumentumok
-description: Fejlesztői útmutató – ismerteti az eszközről a felhőbe és a felhőbe irányuló kommunikáció támogatott kommunikációs protokolljait, valamint a megnyitott portszámokat.
+title: Azure IoT Hub kommunikációs protokollok és portok | Microsoft Docs
+description: Fejlesztői útmutató – az eszközről a felhőbe és a felhőből az eszközre irányuló kommunikációhoz támogatott kommunikációs protokollok, valamint a nyitva lévő portszámok ismertetése.
 author: robinsh
 manager: philmea
 ms.author: robinsh
@@ -12,13 +12,13 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 3e7f31371a0582a6f4941efbfa0087119278d2d1
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729118"
 ---
-# <a name="reference---choose-a-communication-protocol"></a>Hivatkozás - kommunikációs protokoll kiválasztása
+# <a name="reference---choose-a-communication-protocol"></a>Hivatkozás – kommunikációs protokoll kiválasztása
 
 Az IoT Hub az alábbi protokollok használatát teszi lehetővé az eszközoldali kommunikációhoz:
 
@@ -28,34 +28,34 @@ Az IoT Hub az alábbi protokollok használatát teszi lehetővé az eszközoldal
 * AMQP WebSocketen keresztül
 * HTTPS
 
-Arról, hogy ezek a protokollok hogyan támogatják az IoT Hub adott funkcióit, az [Eszközről a felhőbe irányuló kommunikációról](iot-hub-devguide-d2c-guidance.md) szóló útmutatásban és [a felhőből az eszközre irányuló kommunikációra vonatkozó útmutatásban](iot-hub-devguide-c2d-guidance.md)talál tájékoztatást.
+További információ arról, hogy ezek a protokollok hogyan támogatják az adott IoT Hub funkciókat: az [eszközről a felhőbe irányuló kommunikációs útmutató](iot-hub-devguide-d2c-guidance.md) és [a felhőből az eszközre irányuló kommunikációs útmutató](iot-hub-devguide-c2d-guidance.md).
 
-Az alábbi táblázat a választott protokollra vonatkozó magas szintű javaslatokat tartalmazza:
+A következő táblázat a választott protokollhoz nyújt magas szintű javaslatokat:
 
-| Protocol (Protokoll) | Mikor kell kiválasztania ezt a protokollt |
+| Protocol (Protokoll) | Ha ezt a protokollt választja |
 | --- | --- |
-| MQTT <br> MQTT a WebSocket felett |Minden olyan eszközön használható, amelynem igényel több eszközt (mindegyik saját eszközönkénti hitelesítő adatokkal) ugyanazon a TLS-kapcsolaton keresztül. |
-| AMQP <br> AMQP a WebSocket felett |Helyszíni és felhőalapú átjárókon is használhatja a különböző eszközök közötti kapcsolatmultiplexing előnyeit. |
-| HTTPS |Olyan eszközökhöz használható, amelyek más protokollokat nem támogatnak. |
+| MQTT <br> MQTT WebSocket-en keresztül |Minden olyan eszközön használható, amely nem igényli több eszköz csatlakoztatását (mindegyiket a saját eszközönkénti hitelesítő adataival) ugyanazon a TLS-kapcsolaton keresztül. |
+| AMQP <br> AMQP WebSocket-en keresztül |A helyszíni és a Felhőbeli átjárók használatával kihasználhatja a kapcsolatok többszörösét az eszközök között. |
+| HTTPS |Olyan eszközökhöz használható, amelyek nem támogatják más protokollok használatát. |
 
-Ha az eszközoldali kommunikációprotokollt választja, vegye figyelembe a következő pontokat:
+A következő szempontokat kell figyelembe vennie, amikor kijelöli a protokollt az eszközök közötti kommunikációhoz:
 
-* **Felhőből az eszközre minta.** A HTTPS nem rendelkezik hatékony módszerrel a kiszolgálóleküldéses megvalósításához. Mint ilyen, ha HTTPS-t használ, az eszközök lekérik az IoT Hubot az eszközről az eszközre irányuló üzenetekhez. Ez a megközelítés nem hatékony mind az eszköz, mind az IoT Hub számára. A jelenlegi HTTPS-irányelvek szerint minden eszköznek 25 percenként vagy annál több percenként kell lekérnie az üzeneteket. Az MQTT és az AMQP támogatási kiszolgáló leküldéses felhőből az eszközre irányuló üzenetek fogadásakor. Lehetővé teszik az Üzenetek azonnali leküldéseit az IoT Hubról az eszközre. Ha a kézbesítési késés aggodalomra ad okot, mqtt vagy AMQP a legjobb protokollok használata. A ritkán csatlakoztatott eszközök esetében a HTTPS is működik.
+* **Felhő – eszköz minta**. A HTTPS nem rendelkezik hatékony módszerrel a kiszolgáló leküldésének megvalósításához. Így ha a HTTPS protokollt használja, az eszközök lekérdezése IoT Hub a felhőből az eszközre irányuló üzenetekhez. Ez a megközelítés nem hatékony az eszköz és a IoT Hub esetében is. A jelenlegi HTTPS-irányelvek alatt minden eszköznek 25 percenként kell lekérdezni az üzeneteket. A MQTT és a AMQP támogatja a kiszolgáló leküldését a felhőből az eszközre irányuló üzenetek fogadásakor. Lehetővé teszik az üzenetek azonnali leküldését IoT Hubról az eszközre. Ha a kézbesítés késése aggodalomra ad okot, a MQTT vagy a AMQP a legjobb használatú protokollok. A ritkán csatlakoztatott eszközök esetében a HTTPS is működik.
 
-* **Helyszíni átjárók**. Az MQTT és a HTTPS tls-kapcsolatonként csak egyetlen eszközidentitást (eszközazonosítót és hitelesítő adatokat) támogat. Emiatt ezek a protokollok nem támogatottak [a Field gateway forgatókönyvek,](iot-hub-devguide-endpoints.md#field-gateways) amelyek több eszközidentitást használó multiplexüzeneteket igényelnek az IoT Hub hoz egy vagy egy upstream kapcsolatkészleten keresztül. Az ilyen átjárók olyan protokollt használhatnak, amely kapcsolatonként több eszközidentitást támogat, például az AMQP-t a felsőbb réteghez vezető forgalomhoz.
+* **Mező-átjárók**. A MQTT és a HTTPS a TLS-kapcsolaton keresztül csak egyetlen eszköz identitását (az eszköz AZONOSÍTÓját és a hitelesítő adatokat) támogatják. Ezért ezek a protokollok nem támogatottak olyan, a [mezőkhöz tartozó átjárók](iot-hub-devguide-endpoints.md#field-gateways) esetében, amelyek több eszköz identitását igénylik a több eszközt használó, vagy a felsőbb rétegbeli kapcsolatoknak a IoT hub. Az ilyen átjárók olyan protokollt használhatnak, amely egy kapcsolaton (például AMQP) több eszköz-identitást is támogat a felsőbb réteg forgalmához.
 
-* **Alacsony erőforrás-erőforrásokkal rendelkeznek**. Az MQTT- és HTTPS-kódtárak alapigénye kisebb, mint az AMQP-kódtáraké. Így, ha az eszköz korlátozott erőforrásokkal rendelkezik (például kevesebb, mint 1 MB RAM), ezek a protokollok lehetnek az egyetlen rendelkezésre álló protokollimplementációk.
+* **Alacsony erőforrás-eszközök**. A MQTT és a HTTPS-kódtárak kisebb helyigénysel rendelkeznek, mint a AMQP-kódtárak. Ennek megfelelően, ha az eszköz korlátozott erőforrásokkal rendelkezik (például kevesebb, mint 1 MB RAM), akkor ezek a protokollok az egyetlen elérhető protokoll-implementáció.
 
-* **Hálózati bejárás**. A szabványos AMQP protokoll az 5671-es portot használja, az MQTT pedig a 8883-as porton figyel. Ezeknek a portoknak az USe-je problémákat okozhat a nem HTTPS protokollok számára bezárt hálózatokban. Ebben az esetben használja az MQTT-t a WebSockets, az AMQP websocketeken vagy https protokollon keresztül.
+* **Hálózati bejárás**. A standard AMQP protokoll a 5671-es portot használja, és a MQTT a 8883-es porton figyeli. Ezeknek a portoknak a használata problémákat okozhat a nem HTTPS protokollokhoz lezárt hálózatokban. A MQTT-t websocketeken keresztül, a AMQP-en keresztül, vagy a HTTPS-t használhatja ebben a forgatókönyvben.
 
-* **Hasznos teher mérete**. Az MQTT és az AMQP bináris protokollok, amelyek a HTTPS-nél kompaktabb hasznos terhet eredményeznek.
+* **Hasznos adatok mérete**. A MQTT és a AMQP bináris protokollok, ami a HTTPS-nél nagyobb méretű adattartalomot eredményez.
 
 > [!WARNING]
-> HTTPS használata esetén minden eszköznek legfeljebb 25 percenként kell lekérnie a felhőből az eszközre irányuló üzeneteket. A fejlesztés során minden eszköz lekérdezési gyakrabban, ha szükséges.
+> A HTTPS használatakor minden eszköznek 25 percenként legfeljebb egyszer kell lekérdezni a felhőből az eszközre irányuló üzeneteket. A fejlesztés során minden eszköz gyakrabban tud lekérdezni, ha szükséges.
 
 ## <a name="port-numbers"></a>Portszámok
 
-Az eszközök különböző protokollok használatával kommunikálhatnak az Azure-beli IoT Hubbal. A protokoll kiválasztását általában a megoldás speciális követelményei határozzák meg. Az alábbi táblázat azokat a kimenő portokat sorolja fel, amelyeknek meg kell nyitva lenniük ahhoz, hogy egy eszköz egy adott protokollt használhasson:
+Az eszközök különböző protokollok használatával kommunikálhatnak az Azure IoT Hubával. A protokoll választását jellemzően a megoldás konkrét követelményei vezérlik. A következő táblázat felsorolja azokat a kimenő portokat, amelyeknek az eszköz számára nyitva kell lennie egy adott protokoll használatához:
 
 | Protocol (Protokoll) | Port |
 | --- | --- |
@@ -65,8 +65,8 @@ Az eszközök különböző protokollok használatával kommunikálhatnak az Azu
 | AMQP WebSocketen keresztül |443 |
 | HTTPS |443 |
 
-Miután létrehozott egy IoT-központot egy Azure-régióban, az IoT hub megtartja ugyanazt az IP-címet az IoT hub élettartama alatt. Ha azonban a Microsoft áthelyezi az IoT-központot egy másik méretezési egységre a szolgáltatás minőségének fenntartása érdekében, akkor új IP-címet kap.
+Miután létrehozott egy IoT hubot egy Azure-régióban, az IoT hub megtartja ugyanazt az IP-címet az IoT hub élettartama szempontjából. Ha azonban a Microsoft az IoT hub-t egy másik méretezési egységbe helyezi a szolgáltatás minőségének fenntartása érdekében, akkor az új IP-címet kap.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha többet szeretne tudni arról, hogy az IoT Hub hogyan valósítja meg az MQTT protokollt, olvassa el [az IoT hub kommunikációja az MQTT protokoll használatával című témakört.](iot-hub-mqtt-support.md)
+Ha többet szeretne megtudni arról, hogy IoT Hub hogyan valósítja meg a MQTT protokollt, tekintse meg [a kommunikáció az IoT hub használatával című témakört a MQTT protokoll segítségével](iot-hub-mqtt-support.md).

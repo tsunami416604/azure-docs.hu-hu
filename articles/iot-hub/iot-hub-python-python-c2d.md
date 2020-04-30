@@ -1,6 +1,6 @@
 ---
-title: Felhőből eszközre irányuló üzenetek az Azure IoT Hub (Python) használatával | Microsoft dokumentumok
-description: Felhőből az eszközre irányuló üzenetek küldése egy eszközre egy Azure IoT hubból az Azure IoT SDK-k pythonhoz használatával. Egy szimulált eszközalkalmazást módosítasz a felhőből az eszközre irányuló üzenetek fogadásához, és módosíthat egy háttéralkalmazást a felhőből az eszközre irányuló üzenetek küldéséhez.
+title: Felhőből az eszközre irányuló üzenetek az Azure IoT Hub (Python) használatával | Microsoft Docs
+description: A felhőből az eszközre irányuló üzenetek küldése egy Azure IoT hub-eszközről a Pythonhoz készült Azure IoT SDK-k használatával. Módosít egy szimulált eszközt a felhőből az eszközre irányuló üzenetek fogadására és a felhőből az eszközre irányuló üzenetek küldésére szolgáló háttérbeli alkalmazás módosítására.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
@@ -10,33 +10,33 @@ ms.date: 04/09/2020
 ms.author: robinsh
 ms.custom: mqtt
 ms.openlocfilehash: f0760f6e61904295771ba349f8101e2d6dc6afe3
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759740"
 ---
-# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Felhőből eszközre irányuló üzenetek küldése az IoT Hubbal (Python)
+# <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Python)
 
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
-Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a megbízható és biztonságos kétirányú kommunikációt több millió eszköz és egy megoldás háttérkiszolgáló között. A [Telemetriaküldése egy eszközről egy IoT hub](quickstart-send-telemetry-python.md) rövid útmutató bemutatja, hogyan hozhat létre egy IoT hub, egy eszköz identitását, és a kód egy szimulált eszköz alkalmazás, amely elküldi az eszköz-felhő üzeneteket.
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a megbízható és biztonságos kétirányú kommunikációt több millió eszköz és egy megoldás hátterében. A [telemetria küldése az eszközről egy IoT hub](quickstart-send-telemetry-python.md) -gyors üzembe helyezési útmutató bemutatja, hogyan hozhat létre egy IoT hubot, kiépítheti a benne lévő eszköz identitását, valamint kódot készíthet egy szimulált eszközről, amely az eszközről a felhőbe irányuló üzeneteket küld.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Ez az oktatóanyag a [telemetriai adatok küldése eszközről egy IoT hubra](quickstart-send-telemetry-python.md)épül. Ez megmutatja, hogyan:
+Ez az oktatóanyag a [telemetria küldött eszközről egy IoT hubhoz](quickstart-send-telemetry-python.md)épít. A következőket mutatja be:
 
-* A megoldás háttér-tartalék, felhőből az eszközre üzeneteket küldhet egyetlen eszközre az IoT Hubon keresztül.
+* A megoldás hátterében a felhőből az eszközre irányuló üzeneteket a IoT Hub használatával egyetlen eszközre küldheti.
 
-* Felhőből az eszközre irányuló üzenetek fogadása az eszközön.
+* A felhőből az eszközre irányuló üzenetek fogadása az eszközön.
 
-A felhőből az eszközre irányuló üzenetekről az [IoT Hub fejlesztői útmutatójában](iot-hub-devguide-messaging.md)talál további információt.
+A felhőből az eszközre irányuló üzenetekről a [IoT hub fejlesztői útmutatójában](iot-hub-devguide-messaging.md)talál további információt.
 
-Az oktatóanyag végén két Python konzolalkalmazást futtat:
+Az oktatóanyag végén két Python-konzolos alkalmazást fog futtatni:
 
-* **SimulatedDevice.py**, az alkalmazás módosított verziója a [telemetriai adatok küldése az eszközről egy IoT hub,](quickstart-send-telemetry-python.md)amely csatlakozik az IoT hubhoz, és fogadja a felhőből az eszközre üzeneteket.
+* A **SimulatedDevice.py**az alkalmazás egy olyan módosított verziója, amely a [telemetria küldése az eszközről egy IoT hubhoz](quickstart-send-telemetry-python.md), amely csatlakozik a IoT hubhoz, és fogadja a felhőből az eszközre irányuló üzeneteket.
 
-* **SendCloudToDeviceMessage.py**, amely felhőből az eszközre irányuló üzeneteket küld a szimulált eszközalkalmazásnak az IoT Hubon keresztül.
+* **SendCloudToDeviceMessage.py**, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszköz alkalmazásnak a IoT hubon keresztül.
 
 [!INCLUDE [iot-hub-include-python-sdk-note](../../includes/iot-hub-include-python-sdk-note.md)]
 
@@ -44,21 +44,21 @@ Az oktatóanyag végén két Python konzolalkalmazást futtat:
 
 [!INCLUDE [iot-hub-include-python-v2-installation-notes](../../includes/iot-hub-include-python-v2-installation-notes.md)]
 
-* Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. A cikkben szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="receive-messages-in-the-simulated-device-app"></a>Üzenetek fogadása a szimulált eszközalkalmazásban
+## <a name="receive-messages-in-the-simulated-device-app"></a>Üzenetek fogadása a szimulált eszköz alkalmazásban
 
-Ebben a szakaszban hozzon létre egy Python konzolalkalmazást az eszköz szimulálására és az IoT hubról felhőből az eszközre irányuló üzenetek fogadására.
+Ebben a szakaszban egy Python-konzol alkalmazást hoz létre, amely szimulálja az eszközt, és fogadja a felhőből az eszközre irányuló üzeneteket az IoT hub-ból.
 
-1. A munkakönyvtár parancssorából telepítse az **Azure IoT Hub Device SDK for Python alkalmazást:**
+1. A munkakönyvtárban található parancssorból telepítse a **Pythonhoz készült Azure IoT hub Device SDK**-t:
 
     ```cmd/sh
     pip install azure-iot-device
     ```
 
-1. Szövegszerkesztő használatával hozzon létre egy **SimulatedDevice.py**nevű fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy **SimulatedDevice.py**nevű fájlt.
 
-1. A `import` **SimulatedDevice.py** fájl elején adja hozzá a következő állításokat és változókat:
+1. Adja hozzá a `import` következő utasításokat és változókat a **SimulatedDevice.py** fájl elejéhez:
 
     ```python
     import threading
@@ -68,13 +68,13 @@ Ebben a szakaszban hozzon létre egy Python konzolalkalmazást az eszköz szimul
     RECEIVED_MESSAGES = 0
     ```
 
-1. Adja hozzá a következő kódot **SimulatedDevice.py** fájlhoz. Cserélje `{deviceConnectionString}` le a helyőrző értéket az eszköz kapcsolati karakterláncára a [telemetriai adatok küldése eszközről egy IoT hub rövid útmutatóba:](quickstart-send-telemetry-python.md)
+1. Adja hozzá a következő kódot a **SimulatedDevice.py** fájlhoz. A `{deviceConnectionString}` helyőrző értékét cserélje le a telemetria eszközről [egy IoT hub-re való küldéséhez](quickstart-send-telemetry-python.md) létrehozott eszközhöz tartozó eszköz-kapcsolódási karakterláncra:
 
     ```python
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-1. Adja hozzá a következő függvényt a fogadott üzenetek konzolra történő nyomtatásához:
+1. Adja hozzá a következő függvényt a fogadott üzenetek a konzolra való nyomtatásához:
 
     ```python
     def message_listener(client):
@@ -92,7 +92,7 @@ Ebben a szakaszban hozzon létre egy Python konzolalkalmazást az eszköz szimul
             print()
     ```
 
-1. Adja hozzá a következő kódot az ügyfél inicializálásához, és várja meg a felhőből az eszközre irányuló üzenetet:
+1. Adja hozzá a következő kódot az ügyfél inicializálásához, és várja meg a felhőből az eszközre irányuló üzenet fogadását:
 
     ```python
     def iothub_client_sample_run():
@@ -110,7 +110,7 @@ Ebben a szakaszban hozzon létre egy Python konzolalkalmazást az eszköz szimul
             print ( "IoT Hub C2D Messaging device sample stopped" )
     ```
 
-1. Adja hozzá a következő fő funkciót:
+1. Adja hozzá a következő fő függvényt:
 
     ```python
     if __name__ == '__main__':
@@ -122,25 +122,25 @@ Ebben a szakaszban hozzon létre egy Python konzolalkalmazást az eszköz szimul
 
 1. Mentse és zárja be a **SimulatedDevice.py** fájlt.
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
-Ebben a cikkben egy háttérszolgáltatás létrehozása felhőből az eszközre üzenetek küldéséhez az IoT hub on létrehozott [Telemetriai adatok küldése egy eszközről egy IoT hub.](quickstart-send-telemetry-python.md) Felhőből az eszközre irányuló üzenetek küldéséhez a szolgáltatásnak szüksége van a **szolgáltatás csatlakozási engedélyére.** Alapértelmezés szerint minden IoT Hub jön létre egy megosztott hozzáférési szabályzat nevű **szolgáltatás,** amely megadja ezt az engedélyt.
+Ebben a cikkben egy háttér-szolgáltatást hoz létre a felhőből az eszközre irányuló üzenetek küldéséhez a IoT hub használatával, amelyet a [telemetria küldése eszközről egy IoT hubhoz](quickstart-send-telemetry-python.md)hozott létre. A felhőből az eszközre irányuló üzenetek küldéséhez a szolgáltatásnak szüksége van a **szolgáltatás kapcsolódási** engedélyére. Alapértelmezés szerint minden IoT Hub a **szolgáltatás** nevű közös hozzáférési házirenddel jön létre, amely megadja ezt az engedélyt.
 
 [!INCLUDE [iot-hub-include-find-service-connection-string](../../includes/iot-hub-include-find-service-connection-string.md)]
 
-## <a name="send-a-cloud-to-device-message"></a>Felhőből eszközre irányuló üzenet küldése
+## <a name="send-a-cloud-to-device-message"></a>Felhőből az eszközre irányuló üzenet küldése
 
-Ebben a szakaszban hozzon létre egy Python-konzolalkalmazást, amely felhőből az eszközre irányuló üzeneteket küld a szimulált eszközalkalmazásnak. Szüksége van az eszköz azonosítóját az eszköz hozzáadott az [eszköz küldése telemetriai adatok](quickstart-send-telemetry-python.md) at egy eszköz egy IoT hub rövid útmutató. Szüksége van az IoT hub kapcsolati karakterláncra is, amelyet korábban másolt [az IoT hub kapcsolati karakterláncának beszerzése című részben.](#get-the-iot-hub-connection-string)
+Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felhőből az eszközre irányuló üzeneteket küld a szimulált eszköz alkalmazásnak. Szüksége lesz annak az eszköznek az eszköz-AZONOSÍTÓJÁRA, amelyet a [telemetria küldése az eszközről az IoT hub](quickstart-send-telemetry-python.md) -gyors üzembe helyezéshez adott meg. Szüksége lesz a korábban átmásolt IoT hub-kapcsolatok karakterláncára is a [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)című részében.
 
-1. A munkakönyvtárban nyisson meg egy parancssort, és telepítse az **Azure IoT Hub Service SDK pythonhoz című témakört.**
+1. Nyisson meg egy parancssort a munkakönyvtárában, és telepítse a **Pythonhoz készült Azure IoT hub Service SDK**-t.
 
    ```cmd/sh
    pip install azure-iot-hub
    ```
 
-1. Szövegszerkesztő használatával hozzon létre egy **SendCloudToDeviceMessage.py**nevű fájlt.
+1. Egy szövegszerkesztővel hozzon létre egy **SendCloudToDeviceMessage.py**nevű fájlt.
 
-1. A `import` **SendCloudToDeviceMessage.py** fájl elején adja hozzá a következő állításokat és változókat:
+1. Adja hozzá a `import` következő utasításokat és változókat a **SendCloudToDeviceMessage.py** fájl elejéhez:
 
     ```python
     import random
@@ -152,14 +152,14 @@ Ebben a szakaszban hozzon létre egy Python-konzolalkalmazást, amely felhőből
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-1. Adja hozzá a következő kódot **SendCloudToDeviceMessage.py** fájlhoz. Cserélje `{iot hub connection string}` le `{device id}` a és a helyőrző értékeket a korábban említett IoT hub kapcsolati karakterláncra és eszközazonosítóra:
+1. Adja hozzá a következő kódot a **SendCloudToDeviceMessage.py** fájlhoz. Cserélje le `{iot hub connection string}` a `{device id}` és a helyőrző értékeket az IoT hub-beli kapcsolatok karakterláncára és a korábban FELjegyzett eszköz azonosítóra:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"
     DEVICE_ID = "{deviceId}"
     ```
 
-1. Adja hozzá a következő kódot az üzenetek eszközre küldéséhez:
+1. Adja hozzá a következő kódot, amely üzeneteket küld az eszköznek:
 
     ```python
     def iothub_messaging_sample_run():
@@ -198,7 +198,7 @@ Ebben a szakaszban hozzon létre egy Python-konzolalkalmazást, amely felhőből
             print ( "IoT Hub C2D Messaging service sample stopped" )
     ```
 
-1. Adja hozzá a következő fő funkciót:
+1. Adja hozzá a következő fő függvényt:
 
     ```python
     if __name__ == '__main__':
@@ -207,36 +207,36 @@ Ebben a szakaszban hozzon létre egy Python-konzolalkalmazást, amely felhőből
         iothub_messaging_sample_run()
     ```
 
-1. Mentse és zárja be **SendCloudToDeviceMessage.py** fájlt.
+1. Mentse és zárjuk be a **SendCloudToDeviceMessage.py** fájlt.
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A munkakönyvtár parancssorában futtassa a következő parancsot a felhőből az eszközre irányuló üzenetek figyeléséhez:
+1. A munkakönyvtárában a parancssorban futtassa a következő parancsot a felhőből az eszközre irányuló üzenetek figyeléséhez:
 
     ```shell
     python SimulatedDevice.py
     ```
 
-    ![A szimulált eszközalkalmazás futtatása](./media/iot-hub-python-python-c2d/device-1.png)
+    ![A szimulált eszköz alkalmazásának futtatása](./media/iot-hub-python-python-c2d/device-1.png)
 
-1. Nyisson meg egy új parancssort a munkakönyvtárban, és futtassa a következő parancsot a felhőből az eszközre irányuló üzenetek küldéséhez:
+1. Nyisson meg egy új parancssort a munkakönyvtárában, és futtassa a következő parancsot a felhőből az eszközre irányuló üzenetek küldéséhez:
 
     ```shell
     python SendCloudToDeviceMessage.py
     ```
 
-    ![Az alkalmazás futtatása a felhőből az eszközre parancs elküldéséhez](./media/iot-hub-python-python-c2d/service.png)
+    ![Futtassa az alkalmazást a felhőből az eszközre irányuló parancs küldéséhez.](./media/iot-hub-python-python-c2d/service.png)
 
 1. Jegyezze fel az eszköz által fogadott üzeneteket.
 
-    ![Fogadott üzenet](./media/iot-hub-python-python-c2d/device-2.png)
+    ![Üzenet érkezett](./media/iot-hub-python-python-c2d/device-2.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan küldhet és fogadhat felhőből az eszközre irányuló üzeneteket.
+Ebben az oktatóanyagban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 
-Az IoT Hubot használó teljes körű megoldások példáinak megtekintéséhez tekintse meg az [Azure IoT Remote Monitoring megoldásgyorsító című témakört.](https://azure.microsoft.com/documentation/suites/iot-suite/)
+Ha szeretné megtekinteni a IoT Hubt használó teljes körű megoldásokat, tekintse meg az [Azure IoT távoli monitorozási megoldásának gyorsítása](https://azure.microsoft.com/documentation/suites/iot-suite/)című témakört.
 
-Ha többet szeretne megtudni a megoldások IoT Hubkal való fejlesztéséről, tekintse meg az [IoT Hub fejlesztői útmutatóját.](iot-hub-devguide.md)
+Ha többet szeretne megtudni a IoT Hub-megoldások fejlesztéséről, tekintse meg a [IoT hub fejlesztői útmutatót](iot-hub-devguide.md).

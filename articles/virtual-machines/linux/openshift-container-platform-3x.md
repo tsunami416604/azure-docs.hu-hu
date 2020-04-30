@@ -1,6 +1,6 @@
 ---
-title: OpenShift Container Platform 3.11 üzembe helyezése az Azure-ban
-description: OpenShift Container Platform 3.11 üzembe helyezése az Azure-ban.
+title: A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban
+description: A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -10,53 +10,53 @@ ms.workload: infrastructure
 ms.date: 04/05/2020
 ms.author: haroldw
 ms.openlocfilehash: 7d6cd4c6ce7991ae83f6f4a1dd6d8b86fe7eedbc
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81757898"
 ---
-# <a name="deploy-openshift-container-platform-311-in-azure"></a>OpenShift Container Platform 3.11 üzembe helyezése az Azure-ban
+# <a name="deploy-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 üzembe helyezése az Azure-ban
 
-Az OpenShift Container Platform 3.11 azure-beli üzembe helyezéséhez számos módszer közül választhat:
+A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének számos módszerét használhatja:
 
-- Manuálisan telepítheti a szükséges Azure-infrastruktúra-összetevőket, majd követheti az [OpenShift Container Platform dokumentációját.](https://docs.openshift.com/container-platform)
-- Egy meglévő [Erőforrás-kezelő sablont](https://github.com/Microsoft/openshift-container-platform/) is használhat, amely leegyszerűsíti az OpenShift container platformfürt telepítését.
+- Manuálisan is telepítheti a szükséges Azure-infrastruktúra-összetevőket, majd követheti a [OpenShift-tároló platformjának dokumentációját](https://docs.openshift.com/container-platform).
+- Használhat egy meglévő [Resource Manager-sablont](https://github.com/Microsoft/openshift-container-platform/) is, amely leegyszerűsíti a OpenShift-tároló platform fürt üzembe helyezését.
 - Egy másik lehetőség az [Azure Marketplace-ajánlat](https://azuremarketplace.microsoft.com/marketplace/apps/osatesting.open-shift-azure-proxy)használata.
 
-Minden lehetőséghez Red Hat előfizetés szükséges. A központi telepítés során a Red Hat Enterprise Linux-példány regisztrálva van a Red Hat-előfizetéshez, és az OpenShift container platform jogosultságait tartalmazó készletazonosítóhoz van csatolva.
-Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager (RHSM) felhasználónévvel, jelszóval és készletazonosítóval. Használhat aktiválókulcsot, orgia-azonosítót és készletazonosítót. Ezeket az adatokat a https://access.redhat.comrendszerbe bejelentkezve ellenőrizheti.
+Az összes beállításhoz szükség van egy Red Hat-előfizetésre. Az üzembe helyezés során a Red Hat Enterprise Linux példány regisztrálva van a Red Hat-előfizetésben, és ahhoz a készlet-AZONOSÍTÓhoz van csatolva, amely tartalmazza a jogosultságokat a OpenShift-tároló platformhoz.
+Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját. Ezen információk ellenőrzéséhez jelentkezzen be a alkalmazásba https://access.redhat.com.
 
 
-## <a name="deploy-using-the-openshift-container-platform-resource-manager-311-template"></a>Telepítés az OpenShift container platform erőforrás-kezelő 3.11-es sablonjával
+## <a name="deploy-using-the-openshift-container-platform-resource-manager-311-template"></a>Üzembe helyezés a OpenShift Container platform Resource Manager 3,11 sablon használatával
 
 ### <a name="private-clusters"></a>Privát fürtök
 
-A privát OpenShift-fürtök üzembe helyezése többre van szükség, mint hogy a fő terheléselosztóhoz (webkonzolhoz) vagy az infravörös terheléselosztóhoz (útválasztóhoz) nem tartozik nyilvános IP-cím.  A privát fürt általában egyéni DNS-kiszolgálót (nem az alapértelmezett Azure DNS-t), egyéni tartománynevet (például contoso.com) és előre definiált virtuális hálózatot használ.  A magánfürtök esetében előre konfigurálnia kell a virtuális hálózatot az összes megfelelő alhálózattal és DNS-kiszolgáló-beállítással.  Ezután a **meglévőMasterSubnetReference**, **existingInfraSubnetReference**, **existingCnsSubnetReference**és **existingNodeSubnetReference használatával** adja meg a meglévő alhálózatot a fürt számára.
+A privát OpenShift-fürtök üzembe helyezéséhez többre van szükség, mint a Master Load Balancerhez (webkonzol) vagy az infra Load Balancerhez (útválasztó) tartozó nyilvános IP-címekhez való hozzáférés.  A privát fürtök általában egy egyéni DNS-kiszolgálót (nem az alapértelmezett Azure DNS), egy egyéni tartománynevet (például contoso.com) és előre definiált virtuális hálózatot (k) használnak.  A privát fürtök esetében előre be kell állítania a virtuális hálózatot az összes megfelelő alhálózattal és a DNS-kiszolgáló beállításaival.  Ezután a **existingMasterSubnetReference**, a **existingInfraSubnetReference**, a **existingCnsSubnetReference**és a **existingNodeSubnetReference** használatával adja meg a fürt által használt meglévő alhálózatot.
 
-Ha a saját főkiszolgáló van kiválasztva **(masterClusterType**=private), statikus privát IP-címet kell megadni a **masterPrivateClusterIp**számára.  Ez az IP lesz rendelve a fő terheléselosztó előtétjéhez.  Az IP-címnek a fő alhálózat CIDR-én belül kell lennie, és nem használatban kell lennie.  **a masterClusterDnsType típust** "egyéni"-re kell állítani, és meg kell adni a **masterClusterDns fő**DNS-nevét.  A DNS-névnek le kell képeznie a statikus privát IP-címet, és a fő csomópontokon lévő konzol eléréséhez kell használni.
+Ha a titkos főkiszolgáló van kiválasztva (**masterClusterType**= Private), a **masterPrivateClusterIp**statikus magánhálózati IP-címet kell megadni.  Ezt az IP-címet a Master Load Balancer elülső végéhez rendeli a rendszer.  Az IP-nek a fő alhálózat CIDR belül kell lennie, és nincs használatban.  a **masterClusterDnsType** "Custom" értékre kell beállítani, és a **masterClusterDns**számára meg kell adni a fő DNS-nevet.  A DNS-névnek a statikus magánhálózati IP-címhez kell tartoznia, és a konzol a főcsomópontokon való elérésére lesz használva.
 
-Ha a privát útválasztó van kiválasztva **(routerClusterType**=private), statikus privát IP-címet kell megadni a **routerPrivateClusterIp**számára.  Ez az IP lesz rendelve az infra terheléselosztó elülső végén.  Az IP-címnek az infravörös alhálózat CIDR-én belül kell lennie, és nem használhatónak kell lennie.  **az routingSubDomainType** típust "custom" -re kell állítani, és az útválasztáshoz helyettesítő DNS-nevet kell megadni **az routingSubDomain**művelethez.  
+Ha privát útválasztó van kiválasztva (**routerClusterType**= Private), meg kell adni egy statikus magánhálózati IP-címet a **routerPrivateClusterIp**számára.  Ezt az IP-címet az infra Load Balancer elülső végéhez rendeli hozzá a rendszer.  Az IP-nek az infra-alhálózat CIDR belül kell lennie, és nincs használatban.  a **routingSubDomainType** az "egyéni" értékre kell beállítani, és az Útválasztás helyettesítő karakteres DNS-nevét meg kell adni a **routingSubDomain**számára.  
 
-Ha a privát mesterek és a privát útválasztó van kiválasztva, az egyéni tartománynevet is meg kell adni a **domainName**
+Ha a Private Masters és a Private router van kiválasztva, akkor az egyéni tartománynevet is meg kell adni a **tartománynévhez** .
 
-A sikeres üzembe helyezés után a bástyacsomópont az egyetlen olyan csomópont, amelynek nyilvános IP-címe van, amelybe ssh-t használhat.  Még akkor is, ha a fő csomópontok nyilvános hozzáférésre vannak konfigurálva, nem érhetők el az ssh hozzáféréshez.
+A sikeres üzembe helyezést követően a megerősített csomópont az egyetlen olyan nyilvános IP-címmel rendelkező csomópont, amelybe SSH-t használhat.  Még akkor is, ha a főcsomópontok nyilvános hozzáférésre vannak konfigurálva, nem teszik elérhetővé SSH-hozzáférést.
 
-Az Erőforrás-kezelő sablonnal történő telepítéshez egy paraméterfájlt kell használnia a bemeneti paraméterek biztosításához. A központi telepítés további testreszabásához elágazás a GitHub-tármű, és módosítsa a megfelelő elemeket.
+A Resource Manager-sablonnal történő üzembe helyezéshez egy Parameters-fájl segítségével adja meg a bemeneti paramétereket. Az üzembe helyezés további testreszabásához a GitHub-tárházat kell megváltoztatnia, és módosítani a megfelelő elemeket.
 
 Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következőkre:
 
-- Bástya virtuális gép mérete (változó azuredeploy.json)
-- Elnevezési konvenciók (változók az azuredeploy.jsonban)
-- OpenShift fürtspecifikus, gazdagépfájlon keresztül módosítva (deployOpenShift.sh)
+- Megerősített VM-méret (változó a azuredeploy. JSON fájlban)
+- Elnevezési konvenciók (változók a azuredeploy. JSON fájlban)
+- OpenShift-fürtök, a Hosts fájlon keresztül módosítva (deployOpenShift.sh)
 
-### <a name="configure-the-parameters-file"></a>A paraméterfájl konfigurálása
+### <a name="configure-the-parameters-file"></a>A Parameters fájl konfigurálása
 
-Az [OpenShift Container Platform sablon](https://github.com/Microsoft/openshift-container-platform) több ágat is elérhető az OpenShift container platform különböző verzióihoz.  Az igényeinek megfelelően közvetlenül a tárcsóból telepítheti, vagy elágazhatja a tárta, és egyéni módosításokat hajthat végre a sablonokon vagy parancsfájlokon a telepítés előtt.
+A [OpenShift Container platform sablon](https://github.com/Microsoft/openshift-container-platform) több ág elérhető a OpenShift Container platform különböző verzióihoz.  Igény szerint közvetlenül a tárházból is üzembe helyezhető, vagy a tárházat leválaszthatja, és egyéni módosításokat végezhet a sablonokon vagy parancsfájlokon a telepítés előtt.
 
-Használja `appId` a `aadClientId` paraméterhez korábban létrehozott egyszerű szolgáltatás értékét.
+Használja a `appId` `aadClientId` paraméterhez korábban létrehozott szolgáltatásnév értékét.
 
-A következő példa az azuredeploy.parameters.json nevű paramétereket mutatja be az összes szükséges bemenettel.
+A következő példa egy azuredeploy. Parameters. JSON nevű paramétert mutat be az összes szükséges bemenettel.
 
 ```json
 {
@@ -239,77 +239,77 @@ A következő példa az azuredeploy.parameters.json nevű paramétereket mutatja
 
 Cserélje le a paramétereket a megadott adatokra.
 
-A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért ellenőrizze a használt ághoz szükséges paramétereket.
+A különböző kiadások különböző paraméterekkel rendelkezhetnek, ezért ellenőrizhetik a használt ág szükséges paramétereit.
 
-### <a name="azuredeployparametersjson-file-explained"></a>Azuredeploy. Parameters.json fájl magyarázata
+### <a name="azuredeployparametersjson-file-explained"></a>azuredeploy. A Parameters. JSON fájl magyarázata
 
 | Tulajdonság | Leírás | Érvényes beállítások | Alapértelmezett érték |
 |----------|-------------|---------------|---------------|
-| `_artifactsLocation`  | Az összetevők URL-címe (json, parancsfájlok stb.) |  |  https:\//raw.githubusercontent.com/Microsoft/openshift-container-platform/master  |
-| `location` | Az Azure-régió az erőforrások üzembe helyezéséhez |  |  |
-| `masterVmSize` | A fő virtuális gép mérete. Válasszon az azuredeploy.json fájlban felsorolt engedélyezett virtuálisgép-méretek közül |  | Standard_E2s_v3 |
-| `infraVmSize` | Az Infra VM mérete. Válasszon az azuredeploy.json fájlban felsorolt engedélyezett virtuálisgép-méretek közül |  | Standard_D4s_v3 |
-| `nodeVmSize` | Az alkalmazáscsomópont virtuális gépének mérete. Válasszon az azuredeploy.json fájlban felsorolt engedélyezett virtuálisgép-méretek közül |  | Standard_D4s_v3 |
-| `cnsVmSize` | A tároló natív tároló (CNS) csomópont virtuális gép mérete. Válasszon az azuredeploy.json fájlban felsorolt engedélyezett virtuálisgép-méretek közül |  | Standard_E4s_v3 |
-| `osImageType` | A használandó RHEL-kép. defaultgallery: On-Demand; piactér: harmadik fél től származó kép | alapértelmezett galéria <br> piactér | alapértelmezett galéria |
-| `marketplaceOsImage` | Ha `osImageType` piactér, akkor adja meg a megfelelő értékeket a "kiadó", "ajánlat", "sku", "verzió" a piactéri ajánlat. Ez a paraméter egy objektumtípus |  |  |
-| `storageKind` | A használandó tároló típusa  | Kezelt<br> Menedzselt | Kezelt |
-| `openshiftClusterPrefix` | Az állomásnevek konfigurálásához használt fürtelőtag az összes csomóponthoz.  1 és 20 karakter között |  | énfürt |
-| `minoVersion` | Az OpenShift Container Platform 3.11 telepítésének alverziója |  | 69 |
-| `masterInstanceCount` | Telepítandó mestercsomópontok száma | 1, 3, 5 | 3 |
-| `infraInstanceCount` | Telepítandó infravörös csomópontok száma | 1, 2, 3 | 3 |
-| `nodeInstanceCount` | Telepítandó csomópontok száma | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 | 2 |
-| `cnsInstanceCount` | Az üzembe helyezandó központi létszámcsomópontok száma | 3, 4 | 3 |
-| `osDiskSize` | A virtuális gép operációsrendszer-lemezének mérete (GB-ban) | 64, 128, 256, 512, 1024, 2048 | 64 |
-| `dataDiskSize` | A Docker-kötet csomópontjaihoz csatolandó adatlemez mérete (GB-ban) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
-| `cnsGlusterDiskSize` | A cns-csomópontokhoz csatolandó adatlemez mérete a gluszterfek számára (GB-ban | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
-| `adminUsername` | Rendszergazdai felhasználónév mind az operációs rendszer (VM) bejelentkezéséhez, mind a kezdeti OpenShift-felhasználóhoz |  | ocpadmin |
-| `enableMetrics` | Metrikák engedélyezése. A metrikák több erőforrást igényelnek, ezért válassza ki a megfelelő méretet az Infra VM-hez | igaz <br> hamis | hamis |
-| `enableLogging` | Naplózás engedélyezése. elasticsearch pod igényel 8 GB RAM így válassza ki a megfelelő méretű Infra VM | igaz <br> hamis | hamis |
+| `_artifactsLocation`  | Összetevők URL-címe (JSON, szkriptek stb.) |  |  https:\//RAW.githubusercontent.com/Microsoft/openshift-Container-platform/Master  |
+| `location` | Azure-régió az erőforrások üzembe helyezéséhez |  |  |
+| `masterVmSize` | A fő virtuális gép mérete. Válasszon az azuredeploy. JSON fájlban felsorolt engedélyezett virtuálisgép-méretek közül. |  | Standard_E2s_v3 |
+| `infraVmSize` | Az infra virtuális gép mérete. Válasszon az azuredeploy. JSON fájlban felsorolt engedélyezett virtuálisgép-méretek közül. |  | Standard_D4s_v3 |
+| `nodeVmSize` | Az alkalmazás-csomópont virtuális gép mérete. Válasszon az azuredeploy. JSON fájlban felsorolt engedélyezett virtuálisgép-méretek közül. |  | Standard_D4s_v3 |
+| `cnsVmSize` | A tároló natív tárolási (CNS) csomópontjának mérete (VM). Válasszon az azuredeploy. JSON fájlban felsorolt engedélyezett virtuálisgép-méretek közül. |  | Standard_E4s_v3 |
+| `osImageType` | A használni kívánt RHEL-rendszerkép. defaultgallery: igény szerint; piactér: harmadik féltől származó rendszerkép | defaultgallery <br> piactér | defaultgallery |
+| `marketplaceOsImage` | Ha `osImageType` a a piactér, adja meg a Piactéri ajánlat "kiadó", "ajánlat", "SKU", "version" megfelelő értékeit. Ez a paraméter egy objektumtípus |  |  |
+| `storageKind` | A használandó tároló típusa  | felügyelt<br> felügyelt | felügyelt |
+| `openshiftClusterPrefix` | Az összes csomóponthoz tartozó állomásnevek konfigurálásához használt fürt-előtag.  1 és 20 karakter között |  | mycluster |
+| `minoVersion` | A OpenShift Container platform 3,11-es verziójának másodlagos verziója üzembe helyezéshez |  | 69 |
+| `masterInstanceCount` | Telepítendő Masters csomópontok száma | 1, 3, 5 | 3 |
+| `infraInstanceCount` | Telepítendő infra-csomópontok száma | 1, 2, 3 | 3 |
+| `nodeInstanceCount` | Telepítendő csomópontok száma | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 | 2 |
+| `cnsInstanceCount` | Telepítendő CNS-csomópontok száma | 3, 4 | 3 |
+| `osDiskSize` | A virtuális gép operációsrendszer-lemezének mérete (GB) | 64, 128, 256, 512, 1024, 2048 | 64 |
+| `dataDiskSize` | A Docker-kötet csomópontjaihoz csatolni kívánt adatlemez mérete (GB) | 32, 64, 128, 256, 512, 1024, 2048 | 64 |
+| `cnsGlusterDiskSize` | A glusterfs által használt CNS-csomópontokhoz csatolni kívánt adatlemez mérete (GB-ban) | 32, 64, 128, 256, 512, 1024, 2048 | 128 |
+| `adminUsername` | Rendszergazdai Felhasználónév az operációs rendszer (VM) és a kezdeti OpenShift-felhasználó számára |  | ocpadmin |
+| `enableMetrics` | Metrikák engedélyezése A metrikák több erőforrást igényelnek, ezért az infra VM megfelelő méretének kiválasztása | igaz <br> hamis | hamis |
+| `enableLogging` | Naplózás engedélyezése. a elasticsearch Pod 8 GB RAM memóriát igényel, ezért az infra VM megfelelő méretének kiválasztása | igaz <br> hamis | hamis |
 | `enableCNS` | Tároló natív tárolójának engedélyezése | igaz <br> hamis | hamis |
-| `rhsmUsernameOrOrgId` | Red Hat Előfizetés-kezelő felhasználóneve vagy szervezeti azonosítója |  |  |
-| `rhsmPoolId` | A Red Hat Előfizetéskezelő készletazonosítója, amely a számítási csomópontok OpenShift-jogosultságait tartalmazza |  |  |
-| `rhsmBrokerPoolId` | A Red Hat Előfizetéskezelő készletazonosítója, amely a mesterekre és az infracsomópontokra vonatkozó OpenShift-jogosultságokat tartalmazza. Ha nem rendelkezik különböző készletazonosítókkal, adja meg ugyanazt a készletazonosítót, mint az "rhsmPoolId" |  |
-| `sshPublicKey` | Másolja az SSH nyilvános kulcsot ide |  |  |
-| `keyVaultSubscriptionId` | A Key Vaultot tartalmazó előfizetés előfizetés-azonosítója |  |  |
-| `keyVaultResourceGroup` | A Key Vaultot tartalmazó erőforráscsoport neve |  |  |
+| `rhsmUsernameOrOrgId` | Red Hat előfizetés-kezelő Felhasználónév vagy szervezet azonosítója |  |  |
+| `rhsmPoolId` | A Red Hat előfizetés-kezelői készlet azonosítója, amely tartalmazza a számítási csomópontok OpenShift jogosultságait |  |  |
+| `rhsmBrokerPoolId` | A Red Hat előfizetés-kezelői készlet azonosítója, amely tartalmazza a OpenShift jogosultságokat a főkiszolgálók és az infra-csomópontok számára. Ha nem rendelkezik különböző készlet-azonosítókkal, adja meg a készlet AZONOSÍTÓját "rhsmPoolId"-ként. |  |
+| `sshPublicKey` | Másolja ide a nyilvános SSH-kulcsot |  |  |
+| `keyVaultSubscriptionId` | A Key Vault tartalmazó előfizetés előfizetés-azonosítója |  |  |
+| `keyVaultResourceGroup` | Az Key Vault tartalmazó erőforráscsoport neve |  |  |
 | `keyVaultName` | A létrehozott Key Vault neve |  |  |
-| `enableAzure` | Az Azure Cloud-szolgáltató engedélyezése | igaz <br> hamis | igaz |
-| `aadClientId` | Az Azure Active Directory ügyfélazonosítója , más néven egyszerű szolgáltatás alkalmazásazonosítója |  |  |
-| `domainName` | A használandó egyéni tartománynév neve (ha van ilyen). "Nincs" beállítás, ha nem telepíti a teljesen privát fürtöt |  | Nincs |
-| `masterClusterDnsType` | Az OpenShift webkonzol tartománytípusa. "default" fogja használni dns címke fő infra nyilvános IP. "egyéni" lehetővé teszi, hogy meghatározza a saját nevét | alapértelmezett <br> Egyéni | alapértelmezett |
-| `masterClusterDns` | Az OpenShift webkonzol eléréséhez használt egyéni DNS-név, ha az "egyéni" lehetőséget választotta a`masterClusterDnsType` |  | console.contoso.com |
-| `routingSubDomainType` | Ha a beállítás "nipio", `routingSubDomain` fogja használni nip.io.  Használja az "egyéni" lehetőséget, ha saját tartományt szeretne használni az útválasztáshoz. | nipio között <br> Egyéni | nipio között |
-| `routingSubDomain` | Az útválasztáshoz használni kívánt helyettesítő karakter DNS-neve, ha az "egyéni" lehetőséget választotta a`routingSubDomainType` |  | apps.contoso.com |
-| `virtualNetworkNewOrExisting` | Válassza ki, hogy meglévő virtuális hálózatot szeretne-e használni, vagy új virtuális hálózatot szeretne létrehozni | Meglévő <br> Új | Új |
-| `virtualNetworkResourceGroupName` | Az új virtuális hálózat erőforráscsoportjának neve, ha az "új" lehetőséget választotta a`virtualNetworkNewOrExisting` |  | resourceGroup(.name |
-| `virtualNetworkName` | A létrehozandó új virtuális hálózat neve, ha az "új" lehetőséget választotta a`virtualNetworkNewOrExisting` |  | nyíltshiftvnet |
-| `addressPrefixes` | Az új virtuális hálózat címelőtagja |  | 10.0.0.0/14 |
-| `masterSubnetName` | A főalhálózat neve |  | főalalhálózat |
-| `masterSubnetPrefix` | A fő alhálózathoz használt CIDR -, a címelőfix egy részhalmazának kell lennie |  | 10.1.0.0/16 |
-| `infraSubnetName` | Az infravörös alhálózat neve |  | infraaljtahálózat |
-| `infraSubnetPrefix` | AZ infraalhálózathoz használt CIDR -, a címelőfix egy részhalmazának kell lennie |  | 10.2.0.0/16 |
+| `enableAzure` | Az Azure Cloud Provider engedélyezése | igaz <br> hamis | igaz |
+| `aadClientId` | Azure Active Directory ügyfél-azonosító más néven az egyszerű szolgáltatásnév alkalmazás-azonosítója |  |  |
+| `domainName` | A használni kívánt egyéni tartománynév neve (ha van ilyen). A "None" értékre van állítva, ha nincs teljesen privát fürt üzembe helyezése |  | Nincs |
+| `masterClusterDnsType` | A OpenShift webkonzol tartományának típusa. az "default" a Master infra nyilvános IP-cím DNS-címkéjét fogja használni. az "egyéni" beállítással saját nevet adhat meg | alapértelmezett <br> Egyéni | alapértelmezett |
+| `masterClusterDns` | A OpenShift webkonzolhoz való hozzáféréshez használt egyéni DNS-név, ha az "egyéni" lehetőséget választotta a következőhöz:`masterClusterDnsType` |  | console.contoso.com |
+| `routingSubDomainType` | Ha a "nipio" értékre `routingSubDomain` van állítva, a NIP.IO-t fogja használni.  Ha az útválasztáshoz használni kívánt saját tartományt használ, használja az "egyéni" lehetőséget. | nipio <br> Egyéni | nipio |
+| `routingSubDomain` | Az útválasztáshoz használni kívánt helyettesítő DNS-név, ha az "egyéni" lehetőséget választotta a következőhöz:`routingSubDomainType` |  | apps.contoso.com |
+| `virtualNetworkNewOrExisting` | Válassza ki, hogy meglévő Virtual Network szeretne-e használni, vagy új Virtual Network szeretne létrehozni | meglévő <br> Új | Új |
+| `virtualNetworkResourceGroupName` | Az új Virtual Network erőforráscsoport neve, ha az "új" lehetőséget választotta a következőhöz:`virtualNetworkNewOrExisting` |  | resourceGroup (). név |
+| `virtualNetworkName` | A létrehozandó új Virtual Network neve, ha az "új" lehetőséget választotta a következőhöz:`virtualNetworkNewOrExisting` |  | openshiftvnet |
+| `addressPrefixes` | Az új virtuális hálózat címzési előtagja |  | 10.0.0.0/14 |
+| `masterSubnetName` | A fő alhálózat neve |  | mastersubnet |
+| `masterSubnetPrefix` | A fő alhálózathoz használt CIDR – a addressPrefix részhalmazának kell lennie. |  | 10.1.0.0/16 |
+| `infraSubnetName` | Az infra alhálózat neve |  | infrasubnet |
+| `infraSubnetPrefix` | Az infra alhálózathoz használt CIDR-nak a addressPrefix részhalmazának kell lennie. |  | 10.2.0.0/16 |
 | `nodeSubnetName` | A csomópont alhálózatának neve |  | nodesubnet |
-| `nodeSubnetPrefix` | A csomópont alhálózatához használt CIDR -, a címelőfix egy részhalmazának kell lennie |  | 10.3.0.0/16 |
-| `existingMasterSubnetReference` | Teljes hivatkozás a főcsomópontok meglévő alhálózatára. Nem szükséges, ha új virtuális hálózat / alhálózat létrehozása |  |  |
-| `existingInfraSubnetReference` | Teljes hivatkozás az infracsomópontok meglévő alhálózatára. Nem szükséges, ha új virtuális hálózat / alhálózat létrehozása |  |  |
-| `existingCnsSubnetReference` | Teljes hivatkozás a cns-csomópontok meglévő alhálózatára. Nem szükséges, ha új virtuális hálózat / alhálózat létrehozása |  |  |
-| `existingNodeSubnetReference` | Teljes hivatkozás a számítási csomópontok meglévő alhálózatára. Nem szükséges, ha új virtuális hálózat / alhálózat létrehozása |  |  |
-| `masterClusterType` | Adja meg, hogy a fürt magán- vagy nyilvános főcsomópontokat használ-e. Ha a magánterület van kiválasztva, a fő csomópontok nem lesznek kitéve az internetnek nyilvános IP-cím révén. Ehelyett a`masterPrivateClusterIp` | Nyilvános <br> Privát | Nyilvános |
-| `masterPrivateClusterIp` | Ha a saját főcsomópontok vannak kiválasztva, akkor meg kell adni egy privát IP-címet a fő csomópontok belső terheléselosztójának használatához. Ennek a statikus IP-címnek a fő alhálózat CIDR-blokkján belül kell lennie, és még nem használatban kell lennie. Ha nyilvános főcsomópontok vannak kiválasztva, akkor ez az érték nem lesz használva, de meg kell adni. |  | 10.1.0.200 |
-| `routerClusterType` | Adja meg, hogy a fürt magán- vagy nyilvános infracsomópontokat használ-e. Ha privát ot választ, az infracsomópontok nem lesznek kitéve az internetnek nyilvános IP-n keresztül. Ehelyett a`routerPrivateClusterIp` | Nyilvános <br> Privát | Nyilvános |
-| `routerPrivateClusterIp` | Ha a privát infracsomópontok vannak kiválasztva, akkor meg kell adni egy privát IP-címet az infracsomópontok belső terheléselosztójának használatához. Ennek a statikus IP-címnek az infravörös alhálózat CIDR-blokkján belül kell lennie, és még nem használhatónak kell lennie. Ha nyilvános infracsomópontok vannak kiválasztva, akkor ez az érték nem lesz használva, de meg kell adni. |  | 10.2.0.200 |
-| `routingCertType` | Egyéni tanúsítvány használata a tartomány útválasztásához vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az Egyéni tanúsítványok szakasz **utasításait** | saját maga által aláírt <br> Egyéni | saját maga által aláírt |
-| `masterCertType` | Egyéni tanúsítvány használata a főtartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az Egyéni tanúsítványok szakasz **utasításait** | saját maga által aláírt <br> Egyéni | saját maga által aláírt |
+| `nodeSubnetPrefix` | A csomópont alhálózatához használt CIDR – a addressPrefix részhalmazának kell lennie. |  | 10.3.0.0/16 |
+| `existingMasterSubnetReference` | Teljes hivatkozás a főcsomópontok meglévő alhálózatára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
+| `existingInfraSubnetReference` | Teljes hivatkozás az infra-csomópontok meglévő alhálózatára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
+| `existingCnsSubnetReference` | Teljes hivatkozás a meglévő alhálózatra a CNS-csomópontok számára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
+| `existingNodeSubnetReference` | Teljes hivatkozás a meglévő alhálózatra a számítási csomópontok számára. Új vNet/alhálózat létrehozásakor nem szükséges |  |  |
+| `masterClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános főkiszolgálói csomópontokat használ-e. Ha a Private lehetőséget választotta, a fő csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a`masterPrivateClusterIp` | nyilvános <br> titkos | nyilvános |
+| `masterPrivateClusterIp` | Ha a titkos főcsomópontok ki vannak választva, akkor meg kell adni egy magánhálózati IP-címet a főcsomópontok belső terheléselosztó általi használatra. Ennek a statikus IP-nek a főalhálózat CIDR-blokkjában kell lennie, és még nincs használatban. Ha a nyilvános főkiszolgálói csomópontok ki vannak választva, ez az érték nem lesz használatban, de még meg kell adni. |  | 10.1.0.200 |
+| `routerClusterType` | Annak megadása, hogy a fürt magán-vagy nyilvános infra-csomópontokat használ-e. Ha a Private lehetőséget választotta, az infra-csomópontok nem lesznek elérhetők az interneten nyilvános IP-címen keresztül. Ehelyett a saját IP-címet fogja használni a`routerPrivateClusterIp` | nyilvános <br> titkos | nyilvános |
+| `routerPrivateClusterIp` | Ha privát infra-csomópontok vannak kiválasztva, akkor meg kell adni egy magánhálózati IP-címet, amelyet az infra-csomópontok belső terheléselosztó használ. Ennek a statikus IP-nek az infra-alhálózat CIDR-blokkjában kell lennie, és még nincs használatban. Ha a nyilvános infra-csomópontok ki vannak választva, ez az érték nem lesz használatban, de továbbra is meg kell adni. |  | 10.2.0.200 |
+| `routingCertType` | Egyéni tanúsítvány használata az útválasztási tartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az **Egyéni tanúsítványok** szakasz utasításait. | selfsigned <br> Egyéni | selfsigned |
+| `masterCertType` | Egyéni tanúsítvány használata a főtartományhoz vagy az alapértelmezett önaláírt tanúsítványhoz – kövesse az **Egyéni tanúsítványok** szakasz utasításait. | selfsigned <br> Egyéni | selfsigned |
 
 <br>
 
 ### <a name="deploy-using-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
 > [!NOTE] 
-> A következő parancs hoz azure CLI 2.0.8 vagy újabb. A CLI-verziót a `az --version` paranccsal ellenőrizheti. A CLI-verzió frissítéséhez olvassa [el az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti)című témakört.
+> A következő parancshoz Azure CLI-2.0.8 vagy újabb verzió szükséges. A CLI-verziót a `az --version` paranccsal ellenőrizheti. A CLI verziójának frissítéséhez lásd: az [Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latesti).
 
-A következő példa az OpenShift-fürtöt és az összes kapcsolódó erőforrást egy openshiftrg nevű erőforráscsoportba helyezi, a myOpenShiftCluster központi telepítési nevével. A sablon közvetlenül a GitHub-tárból hivatkozik, és egy azuredeploy.parameters.json nevű helyi paraméterfájl használatos.
+A következő példa a OpenShift-fürtöt és az összes kapcsolódó erőforrást egy openshiftrg nevű erőforráscsoporthoz helyezi üzembe a myOpenShiftCluster központi telepítési nevével. A sablon közvetlenül a GitHub-tárházból van hivatkozva, és a azuredeploy. Parameters. JSON fájl nevű helyi paramétereket tartalmazó fájl van használatban.
 
 ```azurecli 
 az group deployment create -g openshiftrg --name myOpenShiftCluster \
@@ -317,7 +317,7 @@ az group deployment create -g openshiftrg --name myOpenShiftCluster \
       --parameters @./azuredeploy.parameters.json
 ```
 
-A központi telepítés legalább 60 percet vesz igénybe, a telepített csomópontok és a konfigurált lehetőségek teljes száma alapján. A Bastion DNS Teljes tartományontartományés AZ OpenShift konzol URL-címe a központi telepítés befejezésekor a terminálra nyomtatódik.
+Az üzembe helyezés legalább 60 percet vesz igénybe a telepített csomópontok száma és a konfigurált beállítások alapján. A megerősített DNS teljes tartományneve és a OpenShift-konzol URL-címe kinyomtatja a terminált a telepítés befejeződése után.
 
 ```json
 {
@@ -326,11 +326,11 @@ A központi telepítés legalább 60 percet vesz igénybe, a telepített csomóp
 }
 ```
 
-Ha nem szeretné lekötni a parancssort, amíg a `--no-wait` központi telepítés befejeződik, adja hozzá a csoport központi telepítésének egyik beállítását. A központi telepítés kimenete lehívható az Azure Portalon az erőforráscsoport üzembe helyezési szakaszában.
+Ha nem szeretné összekapcsolni a parancssort, amíg a telepítés befejeződik, adja hozzá `--no-wait` a csoport központi telepítésének egyik beállítását. A központi telepítés kimenete az erőforráscsoport telepítési szakaszában található Azure Portalból kérhető le.
 
-## <a name="connect-to-the-openshift-cluster"></a>Csatlakozás az OpenShift fürthöz
+## <a name="connect-to-the-openshift-cluster"></a>Kapcsolódás a OpenShift-fürthöz
 
-Amikor a központi telepítés befejeződik, olvassa be a kapcsolatot a központi telepítés kimeneti szakaszából. Csatlakozzon az OpenShift konzolhoz a böngészővel az **OpenShift konzol URL-címének**használatával. Azt is SSH a Bástya állomás. Az alábbiakban egy példa látható, amikor a rendszergazdai felhasználónév clusteradmin, és a megerősített nyilvános IP DNS-fqdn bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
+Az üzembe helyezés befejezésekor a rendszer lekéri a kapcsolódást a központi telepítés kimenet szakaszából. Kapcsolódjon a OpenShift-konzolhoz a böngészőben a **OpenShift-konzol URL-címének**használatával. Azt is megteheti, hogy SSH-t használ a megerősített gazdagépen. Az alábbi példa egy olyan példát mutat be, ahol a rendszergazdai Felhasználónév clusteradmin, a megerősített nyilvános IP-cím DNS teljes tartományneve pedig bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com:
 
 ```bash
 $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
@@ -338,7 +338,7 @@ $ ssh clusteradmin@bastiondns4hawllzaavu6g.eastus.cloudapp.azure.com
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az [az csoport törlése](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, az OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
+Az az [Group delete](/cli/azure/group) paranccsal távolítsa el az erőforráscsoportot, a OpenShift-fürtöt és az összes kapcsolódó erőforrást, ha már nincs rájuk szükség.
 
 ```azurecli 
 az group delete --name openshiftrg
@@ -346,6 +346,6 @@ az group delete --name openshiftrg
 
 ## <a name="next-steps"></a>További lépések
 
-- [Telepítés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
-- [Az OpenShift azure-beli telepítésének hibái](./openshift-container-platform-3x-troubleshooting.md)
-- [Az OpenShift container platform első lépései](https://docs.openshift.com)
+- [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
+- [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)
+- [OpenShift-tároló platform – első lépések](https://docs.openshift.com)

@@ -1,6 +1,6 @@
 ---
-title: Az Apache Kafka fejlesztői útmutatója az Event Hubs-hoz
-description: Ez a cikk a Kafka-alkalmazások Azure Event Hubs-szal való integrálását leíró cikkekre mutató hivatkozásokat tartalmaz.
+title: Apache Kafka fejlesztői útmutató Event Hubs
+description: Ez a cikk a Kafka-alkalmazások Azure-Event Hubs való integrálását ismertető cikkekre mutató hivatkozásokat tartalmaz.
 services: event-hubs
 author: spelluru
 manager: ''
@@ -9,82 +9,82 @@ ms.date: 03/31/2020
 ms.topic: article
 ms.service: event-hubs
 ms.openlocfilehash: b4d9dc51451a06b2c87ddce78547655b51c6fabd
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729629"
 ---
-# <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Az Apache Kafka fejlesztői útmutatója az Azure Event Hubs-hoz
-Ez a cikk az Apache Kafka-alkalmazások Azure Event Hubs-szal való integrálását leíró cikkekre mutató hivatkozásokat tartalmaz. 
+# <a name="apache-kafka-developer-guide-for-azure-event-hubs"></a>Apache Kafka fejlesztői útmutató az Azure-hoz Event Hubs
+Ez a cikk a Apache Kafka-alkalmazások Azure-Event Hubs való integrálását ismertető cikkekre mutató hivatkozásokat tartalmaz. 
 
 ## <a name="overview"></a>Áttekintés
-Az Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Kafka alapú alkalmazások a saját Kafka-fürt futtatása alternatívájaként használhatnak. Az Event Hubs támogatja az Apache Kafka 1.0-s és újabb protokollját, és együttműködik a meglévő Kafka alkalmazásokkal, beleértve a MirrorMakert is. További információ: [Event Hubs for Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
+A Event Hubs egy Kafka-végpontot biztosít, amelyet a meglévő Kafka-alapú alkalmazásai használhatnak a saját Kafka-fürt futtatására. Event Hubs támogatja a 1,0-es és újabb verziójú Apache Kafka protokollt, és együttműködik a meglévő Kafka-alkalmazásokkal, beleértve a MirrorMaker is. További információ: [Event Hubs Apache Kafka](event-hubs-for-kafka-ecosystem-overview.md)
 
 ## <a name="quickstarts"></a>Rövid útmutatók
-A GitHubon és ebben a tartalomkészletben rövid útmutatókat találhat, amelyek segítségével gyorsan felturbózhatja a Kafka eseményközpontjait.
+Itt megtalálhatja a GitHubon található gyors útmutatókat, és ebben a tartalmi készletben gyorsan felhasználhatja a Kafka-Event Hubs.
 
 ### <a name="quickstarts-in-github"></a>Rövid útmutatók a GitHubon
-Tekintse meg az alábbi rövid **útmutatókat az azure-event-hubs-for-kafka** tárházban: 
+Tekintse meg az alábbi rövid útmutatókat az **Azure-Event-hubok-for-Kafka** tárházban: 
 
 | Ügyfél nyelve/keretrendszere | Leírás | 
 | ------------------------- | ----------- | 
-| [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy c# nyelven írt példatermelő és fogyasztó használatával a .NET Core 2.0 használatával.</p><p>Ez a minta a [Confluent Apache Kafka .NET kliensén](https://github.com/confluentinc/confluent-kafka-dotnet)alapul, amelyet a Kafka eseményelosztóival való használatra módosítottak.</p> | 
-| [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy Java-ban írt példagyártó és -fogyasztó használatával. |
-| [Node.js](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/node) | <p>Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy példa gyártó és fogyasztó node-ban írt használatával.</p><p>Ez a minta a [csomópont-rdkafka](https://github.com/Blizzard/node-rdkafka) könyvtárat használja. </p>| 
-| [Python](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/python) | <p>Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy példatermelő és python-ban írt fogyasztó használatával.</p><p>Ez a minta a [Confluent Apache Kafka Python-ügyfél,](https://github.com/confluentinc/confluent-kafka-python)kafka eseményközpontokkal való használatra módosított.</p>|
-| [Ugrás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/go) | <p>Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy példagyártó és egy felhasználó go írásában írt használatával.</p><p>Ez a minta a [Confluent Apache Kafka Golang kliensén](https://github.com/confluentinc/confluent-kafka-go)alapul, amelyet a Kafka eseményelosztóival való használatra módosítottak.</p>| 
-| [Sarama kafka Menj](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/go-sarama-client) | Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy példaproducer és fogyasztó használatával, amelyet a [Sarama Kafka ügyfélkódtár](https://github.com/Shopify/sarama) használatával írt a Go alkalmazásban. |
-| [Kafka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafka-cli) | Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz az Apache Kafka disztribúcióhoz mellékelt CLI használatával.| 
-| [Kafkacat között](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafkacat) | Kafkacat egy nem JVM parancssori fogyasztó és termelő alapuló librdkafka, népszerű miatt a sebesség és a kis helyigény. Ez a rövid útmutató mintakonfigurációt és számos egyszerű minta kafkacat parancsot tartalmaz. | 
+| [.NET](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/dotnet) | <p>Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy, a .NET Core 2,0-t használó, C# nyelven írt gyártóval és fogyasztóval.</p><p>Ez a minta a [Apache Kafka .net-ügyfélen](https://github.com/confluentinc/confluent-kafka-dotnet)alapul, amelyet a rendszer a Kafka-Event Hubs való használatra módosít.</p> | 
+| [Java](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/java) | Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy, a Java-ban írt példát gyártó és fogyasztó használatával. |
+| [Node.js](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/node) | <p>Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy, a csomópontban írt gyártó és fogyasztó használatával.</p><p>Ez a példa a [Node-rdkafka](https://github.com/Blizzard/node-rdkafka) könyvtárat használja. </p>| 
+| [Python](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/python) | <p>Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy, a Pythonban írt példát használó gyártóval és fogyasztóval.</p><p>Ez a minta a [Apache Kafka Python-ügyfélen](https://github.com/confluentinc/confluent-kafka-python)alapul, amely a Kafka-Event Hubs való használatra lett módosítva.</p>|
+| [Ugrás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/go) | <p>Ez a rövid útmutató bemutatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy példaként írt gyártó és fogyasztó használatával.</p><p>Ez a minta a [Apache Kafka Golang-ügyfélen](https://github.com/confluentinc/confluent-kafka-go)alapul, amely a Kafka-Event Hubs való használatra lett módosítva.</p>| 
+| [Sarama Kafka – ugrás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/go-sarama-client) | Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy, a [Sarama Kafka ügyféloldali](https://github.com/Shopify/sarama) kódtár használatával a go-val írt gyártóval és fogyasztóval. |
+| [Kafka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafka-cli) | Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz a Apache Kafka-eloszlással csomagban lévő CLI használatával.| 
+| [Kafkacat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/quickstart/kafkacat) | a kafkacat egy nem JVM parancssori fogyasztó és gyártó, amely a librdkafka és a kis helyigény miatt népszerű. Ez a rövid útmutató egy minta konfigurációt és számos egyszerű minta kafkacat-parancsot tartalmaz. | 
  
 ### <a name="quickstarts-in-docs"></a>Rövid útmutatók a DOCS-ban
-Tekintse meg a rövid útmutató: [Adatfolyam-továbbítás az Event Hubs használatával a Kafka protokoll](event-hubs-quickstart-kafka-enabled-event-hubs.md) ebben a tartalomkészletben, amely lépésről lépésre bemutatja, hogyan streamelheti az Event Hubs. Megtudhatja, hogyan használhatja a gyártók és a fogyasztók beszélni Event Hubs csak egy konfigurációs változás az alkalmazásokban. 
+Tekintse meg a gyors üzembe helyezési útmutatót: a [Event Hubs a Kafka protokoll használatával](event-hubs-quickstart-kafka-enabled-event-hubs.md) történő adatfolyam-továbbítást ebben a tartalomtípusban, amely részletes útmutatást nyújt a Event Hubs való továbbításhoz. Megtudhatja, hogyan használhatja a termelőket és a fogyasztókat, hogy az alkalmazásokban csak egy konfigurációs módosítással beszéljen Event Hubs. 
 
 
 ## <a name="tutorials"></a>Oktatóanyagok 
 
-### <a name="tutorials-in-github"></a>Oktatóanyagok a GitHubon
-Tekintse meg az alábbi útmutatókat a GitHubon:
+### <a name="tutorials-in-github"></a>Oktatóanyagok a GitHubban
+Tekintse meg az alábbi oktatóanyagokat a GitHubon:
 
 | Oktatóanyag | Leírás | 
 | ------------------------- | ----------- | 
-| [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja az Akka-streameket a Kafka-kompatibilis eseményközpontokhoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. Két külön oktató anyagok **Java** és **Scala** programozási nyelvek. | 
-| [Kapcsolódás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Ez a dokumentum végigvezeti a Kafka Connect és az Azure Event Hubs integrálásán, valamint az alapvető FileStreamSource és FileStreamSink-összekötők üzembe helyezésén. Bár ezek az összekötők nem éles használatra szántak, bemutatják a végpontok között kafka connect forgatókönyvet, ahol az Azure Event Hubs kafka-brókernek álcázza magát.| 
-| [Filebeat között](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | Ez a dokumentum végigvezeti a Filebeat és az Event Hubs integrálásán a Filebeat Kafka kimenetén keresztül. | 
-| [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | Ez az oktatóanyag bemutatja, hogyan csatlakozhat az Apache Flink-hez a Kafka-kompatibilis Event Hubs-hoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. | 
-| [Fluentd](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | Ez a dokumentum végigvezeti önt a Fluentd `out_kafka` és az Event Hubs integrálásán a Fluentd kimeneti beépülő moduljával. |
-| [Együttműködési](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/interop) | Ez az oktatóanyag bemutatja, hogyan cserélheti ki az eseményeket a fogyasztók és a különböző protokollok használatával a gyártók között. |
-| [LogStash](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/logstash) | Ez az oktatóanyag végigvezeti a Logstash és a Kafka-kompatibilis eseményközpontok integrálásán a Logstash Kafka bemeneti/kimeneti bővítmények használatával. | 
-| [MirrorMaker (Tükörkészítő)](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) | Ez az oktatóanyag bemutatja, hogy egy eseményközpont és a Kafka MirrorMaker hogyan integrálhat egy meglévő Kafka-folyamatot az Azure-ba a Kafka bemeneti adatfolyam tükrözésével az Event Hubs szolgáltatásban. |
-| [NiFi között](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/nifi) | Ez az oktatóanyag bemutatja, hogyan lehet csatlakoztatni az Apache NiFi-t egy Eseményközpont-névtérhez. | 
-| [Oauth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth) | A rövid útmutatók bemutatják, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy go- és Java-programozási nyelveken írt példagyártó és -fogyasztó használatával. |
-| [Confluent séma-nyilvántartója](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/schema-registry) | Ez az oktatóanyag végigvezeti a Kafka séma-rendszerleíró adatbázisának és eseményközpontjainak integrálásán. | 
-| [Spark](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark) | Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja a Spark-alkalmazást egy eseményközponthoz a protokollügyfelek módosítása vagy a saját Kafka-fürtök futtatása nélkül. | 
+| [Akka](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/akka/java) | Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatók a-beli és a Kafka-kompatibilis Event Hubs a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. A **Java** és a **Scala** programozási nyelve két külön oktatóanyagot használ. | 
+| [Kapcsolódás](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/connect) | Ez a dokumentum végigvezeti Önt a Kafka-csatlakozás Azure-Event Hubs való integrálásán, valamint az alapszintű FileStreamSource-és FileStreamSink-összekötők üzembe helyezésén. Habár ezek az összekötők nem éles használatra készültek, egy teljes körű Kafka-kapcsolódási forgatókönyvet mutatnak be, amelyben az Azure Event Hubs egy Kafka-közvetítőként álarcos.| 
+| [Filebeat](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/filebeat) | Ez a dokumentum végigvezeti Önt a Filebeat és Event Hubs integrálásán a Filebeat Kafka-kimenetén keresztül. | 
+| [Flink](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/flink) | Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztatható az Apache flink a Kafka-kompatibilis Event Hubshoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. | 
+| [FluentD](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/fluentd) | Ez a dokumentum bemutatja, hogyan integrálhatja a folyékonyan és Event Hubst `out_kafka` a kimeneti beépülő modullal. |
+| [Interop](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/interop) | Ebből az oktatóanyagból megtudhatja, hogyan cserélhet be különböző protokollokat használó ügyfelek és gyártók közötti eseményeket. |
+| [LogStash](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/logstash) | Ez az oktatóanyag végigvezeti a Logstash és a Kafka-kompatibilis Event Hubs a Logstash Kafka bemeneti/kimeneti beépülő modullal történő integrálásán. | 
+| [MirrorMaker](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/mirror-maker) | Ez az oktatóanyag azt mutatja be, hogy az Event hub és a Kafka MirrorMaker hogyan integrálhat egy meglévő Kafka-folyamatot az Azure-ba a Event Hubs szolgáltatásban található Kafka bemeneti stream tükrözésével. |
+| [NiFi](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/nifi) | Ez az oktatóanyag bemutatja, hogyan csatlakoztatható az Apache NiFi egy Event Hubs névtérhez. | 
+| [OAuth](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/oauth) | A gyors útmutatók bemutatják, hogyan hozhat létre és csatlakozhat egy Event Hubs Kafka-végponthoz egy go-és Java-programozási nyelveken írt példát előállító és fogyasztó használatával. |
+| [Fluent séma beállításjegyzéke](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/schema-registry) | Ez az oktatóanyag végigvezeti a séma beállításjegyzékének és a Kafka-Event Hubs integrálásának lépésein. | 
+| [Spark](https://github.com/Azure/azure-event-hubs-for-kafka/tree/master/tutorials/spark) | Ez az oktatóanyag bemutatja, hogyan csatlakoztathatja a Spark-alkalmazást egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját Kafka-fürtök futtatása nélkül. | 
 
 ### <a name="tutorials-in-docs"></a>Oktatóanyagok a DOCS-ban
-Tekintse meg az oktatóanyagot is: [Az Apache Kafka az Event Hubs-események feldolgozását](event-hubs-kafka-stream-analytics.md) a tartalomkészlet Stream analytics használatával, amely bemutatja, hogyan továbbítsa az adatokat az Event Hubs-ba, és hogyan dolgozza fel azokat az Azure Stream Analytics szolgáltatással.
+Tekintse meg a következő oktatóanyagot: [Apache Kafka feldolgozása Event Hubs eseményekhez a stream Analytics használatával](event-hubs-kafka-stream-analytics.md) ebben a tartalomtípusban, amely bemutatja, hogyan továbbíthatja az adatokat a Event Hubsba, és feldolgozhatja azokat Azure stream Analyticsekkel.
 
 ## <a name="how-to-guides"></a>Útmutatók
-Dokumentációnkban az alábbi útmutatók ban olvashat:
+A dokumentációban a következő útmutatók olvashatók:
 
 | Cikk | Leírás | 
 | ------- | ----------- | 
-| [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md) | Bemutatja, hogyan tükrözegy Kafka bróker egy eseményközpontban a Kafka MirrorMaker használatával. |
-| [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md) | Végigvezeti a Spark-alkalmazás az Event Hubs valós idejű streameléshez való csatlakoztatásán. |
-| [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md) | Bemutatja, hogyan csatlakoztathatja az Apache Flinket egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
-| [Az Apache Kafka Connect integrálása eseményközponttal (előzetes verzió)](event-hubs-kafka-connect-tutorial.md) | Végigvezeti a Kafka Connect egy eseményközponttal való integrálásán, valamint az alapvető FileStreamSource és FileStreamSink-összekötők üzembe helyezésén. |
-| [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md) | Bemutatja, hogyan csatlakoztathatja az Akka Streameket egy eseményközponthoz a protokollügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
-| [Az Apache Kafka tavaszi rendszerindítási kezdőcsapatának használata az Azure Event Hubs szolgáltatással](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Bemutatja, hogyan konfigurálhat egy Java-alapú tavaszi felhőalapú streamiratgyűjtőt, amelyet a tavaszi rendszerindítási inicionátorsal hoztak létre az Apache Kafka azure-beli Event Hubs használatával. |
+| [Kafka-közvetítő tükrözése egy eseményközpontba](event-hubs-kafka-mirror-maker-tutorial.md) | Bemutatja, hogyan tükrözött egy Kafka-közvetítő egy Event hub-ban a Kafka MirrorMaker használatával. |
+| [Apache Spark csatlakoztatása egy eseményközponthoz](event-hubs-kafka-spark-tutorial.md) | Végigvezeti a Spark-alkalmazás a valós idejű folyamatos átvitelhez való csatlakoztatásának Event Hubsán. |
+| [Apache Flink csatlakoztatása egy eseményközponthoz](event-hubs-kafka-flink-tutorial.md) | Bemutatja, hogyan csatlakoztathatja az Apache flink egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
+| [Apache Kafka-kapcsolat integrálása az Event hub-nal (előzetes verzió)](event-hubs-kafka-connect-tutorial.md) | Végigvezeti a Kafka-csatlakozás esemény-hubhoz való integrálásán és az alapszintű FileStreamSource és FileStreamSink-összekötők üzembe helyezésén. |
+| [Az Akka Streams csatlakoztatása eseményközponthoz](event-hubs-kafka-akka-streams-tutorial.md) | Azt mutatja be, hogyan csatlakoztathat a kisegítő adatfolyamokat egy Event hubhoz a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. |
+| [A Spring boot Starter for Apache Kafka használata az Azure-ban Event Hubs](/azure/developer/java/spring-framework/configure-spring-cloud-stream-binder-java-app-kafka-azure-event-hub) | Bemutatja, hogyan konfigurálhat egy, a Spring boot Inicializálással létrehozott Java-alapú Spring Cloud stream-kötést Apache Kafka Azure Event Hubs használatával. |
 
 ## <a name="next-steps"></a>További lépések
-Tekintse át a mintákat a GitHub-tárházban [az azure-event-hubs-for-kafka](https://github.com/Azure/azure-event-hubs-for-kafka) rövid útmutató és oktatóanyagok mappák alatt.
+Tekintse át a GitHub [-adattár Azure-Event-hubok-for-Kafka](https://github.com/Azure/azure-event-hubs-for-kafka) -mintáit a gyors útmutató és oktatóanyagok mappákban.
 
-Lásd még a következő cikkeket:
+Továbbá tekintse meg a következő cikkeket:
 
-- [Az Apache Kafka hibaelhárítási útmutatója az Event Hubs-hoz](apache-kafka-troubleshooting-guide.md)
-- [Gyakori kérdések – Az Apache Kafka eseményközpontjai](apache-kafka-frequently-asked-questions.md)
-- [Apache Kafka áttelepítési útmutató az Eseményközpontokhoz](apache-kafka-migration-guide.md)
+- [Event Hubs Apache Kafka hibaelhárítási útmutatója](apache-kafka-troubleshooting-guide.md)
+- [Gyakori kérdések – Event Hubs Apache Kafka](apache-kafka-frequently-asked-questions.md)
+- [A Event Hubs Apache Kafka áttelepítési útmutatója](apache-kafka-migration-guide.md)
 
 
 

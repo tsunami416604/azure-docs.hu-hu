@@ -1,6 +1,6 @@
 ---
-title: Az IoT Edge-modul technikai eszközeinek előkészítése - Azure Marketplace
-description: Ismerje meg a technikai és konfigurációs követelményeket a dolgok internete (IoT) Edge modul technikai eszközök meg kell felelnie, mielőtt közzéteheti őket az Azure Marketplace-en.
+title: A IoT Edge modul technikai eszközeinek előkészítése – Azure Marketplace
+description: Ismerje meg az eszközök internetes hálózata (IoT) Edge-modul technikai eszközeinek technikai és konfigurációs követelményeit, mielőtt közzéteszi őket az Azure Marketplace-en.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
@@ -8,79 +8,79 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730699"
 ---
-# <a name="prepare-your-iot-edge-module-technical-assets"></a>Készítse elő az IoT Edge modul technikai eszközeit
+# <a name="prepare-your-iot-edge-module-technical-assets"></a>A IoT Edge modul technikai eszközeinek előkészítése
 
 > [!IMPORTANT]
-> Az IoT Edge modulajánlatok kezelését áthelyezzük a Cloud Partner Portalról a Partner centerbe. Amíg az ajánlatok áttelepítése, kövesse az utasításokat [az IoT Edge modul technikai eszközök cloud](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) partner portál az ajánlatok kezeléséhez.
+> Áthelyezjük IoT Edge-moduljának felügyeletét Cloud Partner Portalról a partneri központba. Az ajánlatok migrálása előtt kövesse az [IoT Edge modul technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) a Cloud Partner Portal az ajánlatok kezeléséhez című témakör útmutatását.
 
-Ez a cikk ismerteti azokat a követelményeket, amelyeket az eszközök internetes hálózatának (IoT) Edge-modul technikai eszközeinek meg kell felelniük az Azure Marketplace-en való közzététel előtt.
+Ez a cikk azokat a követelményeket ismerteti, amelyekkel az Azure Marketplace-en való közzététel előtt meg kell felelniük az eszközök internetes hálózata (IoT) Edge-modul technikai eszközeinek.
 
 ## <a name="get-started"></a>Bevezetés
 
-Az IoT Edge-modul egy Docker-kompatibilis tároló, amely egy IoT Edge-eszközön fut.
+Az IoT Edge modul egy IoT Edge eszközön futó Docker-kompatibilis tároló.
 
-- Ha többet szeretne megtudni az IoT Edge-modulokról, [olvassa el az Azure IoT Edge-modulok megismerése.](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)
-- Az IoT Edge-modul fejlesztésének megkezdéséhez olvassa [el a Saját IoT Edge-modulok fejlesztése.](https://docs.microsoft.com/azure/iot-edge/module-development)
+- IoT Edge modulokról további információt a [Azure IoT Edge modulok ismertetése](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)című témakörben talál.
+- A IoT Edge modul fejlesztésének megkezdéséhez tekintse [meg a saját IoT Edge modulok fejlesztése](https://docs.microsoft.com/azure/iot-edge/module-development)című témakört.
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
-Az IoT Edge-modulnak meg kell felelnie az alábbi műszaki követelményeknek az Azure Marketplace-en való minősítéshez és közzétételéhez.
+A IoT Edge modulnak meg kell felelnie az alábbi műszaki követelményeknek, hogy az Azure Marketplace-en kell hitelesíteni és közzétenni.
 
 ### <a name="platform-support"></a>Platformtámogatás
 
-Az IoT Edge-modulnak az alábbi platformbeállítások egyikét kell támogatnia:
+A IoT Edge-modulnak támogatnia kell a következő platform-lehetőségek egyikét:
 
-#### <a name="tier-1-platforms-supported-by-iot-edge"></a>Az IoT Edge által támogatott 1.
+#### <a name="tier-1-platforms-supported-by-iot-edge"></a>A IoT Edge által támogatott 1. szintű platformok
 
-A modulnak támogatnia kell az IoT Edge által támogatott összes Tier 1 platformot (az [Azure IoT Edge-támogatásban rögzítettek szerint).](https://docs.microsoft.com/azure/iot-edge/support) Ezt a lehetőséget azért javasoljuk, mert jobb felhasználói élményt nyújt. Az e kritériumoknak megfelelő modulokbemutatásra kerülnek. A platformopciót használó modulnak:
+A modulnak támogatnia kell az IoT Edge által támogatott összes 1. szintű platformot ( [Azure IoT Edge-támogatásban](https://docs.microsoft.com/azure/iot-edge/support)rögzített módon). Ezt a lehetőséget javasoljuk, mert jobb felhasználói élményt nyújt. A feltételnek megfelelő modulok bemutatásra kerülnek. A platformot használó modulnak a következőket kell tennie:
 
-- Adjon meg egy legújabb címkét és egy verziócímkét (például 1.0.1), amelyek a [GitHub Manifest-eszközzel](https://github.com/estesp/manifest-tool)készített jegyzékcímkék.
+- Adjon meg egy legújabb címkét és egy Version címkét (például: 1.0.1), amelyek a [GitHub manifest-Tool eszközzel](https://github.com/estesp/manifest-tool)létrehozott manifest-címkék.
 
-- A [PartnerCenter](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatlista lapján hivatkozást adhat hozzá az [Azure IoT Edge Certified eszközkatalógus](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/) **hasznos hivatkozások** szakaszában.
+- A [partner központ](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatok listája lapján a **hasznos hivatkozások** szakaszban található hivatkozásokat adhat hozzá a [Azure IoT Edge minősített eszköz katalógusához](https://catalog.azureiotsolutions.com/alldevices?filters={%2218%22:[%221%22]}/).
 
-#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Az IoT Edge által támogatott Tier 1 platformok egy részhalmaza
+#### <a name="a-subset-of-tier-1-platforms-supported-by-iot-edge"></a>Az 1. szintű platform egy részhalmaza, amelyet a IoT Edge támogat
 
-A modulnak támogatnia kell az IoT Edge által támogatott Tier 1 platformok egy részét (legalább egyet) (az [Azure IoT Edge-támogatásban](https://docs.microsoft.com/azure/iot-edge/support)rögzítettek szerint). A platformopciót használó modulnak:
+A modulnak támogatnia kell a IoT Edge által támogatott 1. rétegbeli platformokat ( [Azure IoT Edge-támogatásban](https://docs.microsoft.com/azure/iot-edge/support)rögzített módon). A platformot használó modulnak a következőket kell tennie:
 
-- Adjon meg egy legújabb címkét és egy verziócímkét (például 1.0.1), amelyek a GitHub [jegyzékfájl-eszközzel](https://github.com/estesp/manifest-tool) készített jegyzékcímkék, ha egynél több platform támogatott. A jegyzékcímkék csak akkor választhatók, ha egy platform támogatott.
-- A [PartnerCenter](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatlista lapján az [Azure IoT Edge-tanúsítvánnyal rendelkező eszközkatalóguslegalább](https://catalog.azureiotsolutions.com/)egy IoT Edge-eszközhöz mutató hivatkozást adhat hozzá a **Hasznos hivatkozások** szakaszban.
+- Adjon meg egy legújabb címkét és egy Version (például 1.0.1) címkét, amely a GitHub [manifest-Tool eszközzel](https://github.com/estesp/manifest-tool) létrehozott manifest-címkék, ha több platform is támogatott. A jegyzékfájl címkéi csak akkor választhatók, ha egy platform támogatott.
+- A [partner központ](https://partner.microsoft.com/dashboard/commercial-marketplace) ajánlatok listája lapján adhat hozzá egy hivatkozást a **hasznos hivatkozások** szakasz alatt legalább egy IoT Edge eszközre a [Azure IoT Edge minősített eszköz katalógusában](https://catalog.azureiotsolutions.com/).
 
-:::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Ez a partnerközpont ajánlatlistázási szakaszának képe":::
+:::image type="content" source="media/iot-edge-module-technical-assets-offer-listing.png" alt-text="Ez a partner Center ajánlati lista szakaszának képe":::
 
-### <a name="device-dimensions"></a>Eszközméretek
+### <a name="device-dimensions"></a>Eszköz méretei
 
-Az IoT Edge-modul méretei (például a CPU, a RAM, a tárolás és a GPU) a célzott IoT Edge-eszközökön az alábbi követelményeknek kell megfelelniük:
+IoT Edge a modul méretei (például a processzor, a RAM, a tárolás és a GPU) a célként megadott IoT Edge-eszközökön a következő követelményeknek kell megfelelniük:
 
-- A modulnak legalább egy IoT Edge-eszközzel együtt kell működnie az [Azure IoT Edge certified eszközkatalógusból.](https://catalog.azureiotsolutions.com/)
+- A modulnak működnie kell legalább egy IoT Edge eszközzel a [Azure IoT Edge minősített eszköz katalógusában](https://catalog.azureiotsolutions.com/).
 
-- A minimális hardverkövetelményeket az ajánlat leírásának utolsó bekezdéseként kell dokumentálni (a [Partnerközpont](https://partner.microsoft.com/dashboard/commercial-marketplace)ajánlatlista lapján). Szükség esetén az ajánlott hardverkövetelményeket is felsorolhatja, ha azok jelentősen eltérnek egymástól. Adja meg például a következő szakaszt az ajánlat leírásának végén:
+- A minimális hardverkövetelmények dokumentációját az ajánlat leírásában szereplő utolsó bekezdésnek kell megadnia (a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace)ajánlati lista lapján). Igény szerint a javasolt hardverkövetelmények is kiválaszthatók, ha azok jelentősen eltérnek. Adja meg például a következő szakaszt az ajánlat leírásának végén:
 
-Másolja a HTML-szöveget, vagy használja a megfelelő rich text függvényeket a szerkesztőablakban.
+Másolja ezt a HTML-szöveget, vagy használja a szerkesztési ablakban a megfelelő Rich Text függvényeket.
 
 ```html
 <p><u>Minimum hardware requirements:</u> Linux x64 and arm32 OS, 1GB of RAM, 500 Mb of storage</p>
 ```
 
-### <a name="configuration"></a>Konfiguráció
+### <a name="configuration"></a>Configuration
 
-A modulnak tartalmaznia kell az alapértelmezett konfigurációs beállításokat, hogy az IoT Edge-eszköz üzembe helyezése a lehető legegyszerűbb legyen. Ez az információ a partnerközpontban található terv **műszaki konfigurációja** [lapján](https://partner.microsoft.com/dashboard/commercial-marketplace)található. A tároló is tartalmazhat az IoT Edge module SDK a peremhálózati hub és az IoT Hub közötti kommunikáció engedélyezéséhez.
+A modulnak tartalmaznia kell az alapértelmezett konfigurációs beállításokat, hogy az üzembe helyezés egy IoT Edge eszközön legyen a lehető legegyértelműbb módon. Ezek az információk a csomag **technikai konfiguráció** lapján, a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace)találhatók. A tároló a IoT Edge modul SDK-val is rendelkezhet, amely lehetővé teszi a kommunikációt a peremhálózat és a IoT Hub között.
 
 #### <a name="default-configuration"></a>Alapértelmezett konfiguráció
 
-Az IoT Edge-moduloknak a partnerközpontban a terv **műszaki konfigurációs** lapján megadott alapértelmezett beállításokkal kell kezdődniük. [Partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) A következő alapértelmezett beállítások érhetők el:
+IoT Edge moduloknak képesnek kell lenniük a csomag **technikai konfiguráció** lapján megadott alapértelmezett beállításokkal való indulásra [.](https://partner.microsoft.com/dashboard/commercial-marketplace) A következő alapértelmezett beállítások érhetők el:
 
 - Alapértelmezett **útvonalak**
-- Alapértelmezett **modul iker kívánt tulajdonságai**
+- Alapértelmezett **modul – Twin kívánt tulajdonságok**
 - Alapértelmezett **környezeti változók**
-- Alapértelmezett **tárolólétrehozási beállítások**
+- Alapértelmezett **tároló létrehozási beállításai**
 
-Olyan esetben, amikor az alapértelmezett értékhez szükséges paraméternek nincs értelme (például az ügyfél kiszolgálójának IP-címe), adjon hozzá egy paramétert alapértelmezett értékként. Ez az érték nagybetűs, és zárójelek közé van tava. Ebben a példában a következő alapértelmezett környezeti változót állította be:
+Olyan esetben, amikor egy alapértelmezett értékhez szükséges paraméter nem értelmezhető (például az ügyfél kiszolgálójának IP-címe), adjon hozzá egy paramétert alapértelmezett értékként. Ez az érték nagybetűs, szögletes zárójelek közé. Ebben a példában a következő alapértelmezett környezeti változót kell beállítania:
 
 ```
 ServerIPAddress = <MY_SERVER_IP_ADDRESS>
@@ -88,61 +88,61 @@ ServerIPAddress = <MY_SERVER_IP_ADDRESS>
 
 #### <a name="configuration-documentation"></a>Konfigurációs dokumentáció
 
-Az IoT Edge-modul összes konfigurációs beállítását egyértelműen dokumentálni kell. Például dokumentálnia kell, hogyan kell használni az útvonalakat, az iker kívánt tulajdonságokat, a környezeti változókat, a createOptions-t és így tovább. Meg kell adnia egy hivatkozást a dokumentációhoz, vagy az ajánlat vagy a terv leírásának részét kell tennie. Ezt az információt a Partnerközpont **Ajánlatlista** és **Megtervezés oldalán** adhatod [meg.](https://partner.microsoft.com/dashboard/commercial-marketplace)
+Egy IoT Edge modul összes konfigurációs beállítását egyértelműen dokumentálni kell. Tegyük fel például, hogyan kell használni az útvonalakat, a dupla kívánt tulajdonságokat, a környezeti változókat, a createOptions stb. Meg kell adnia egy hivatkozást a dokumentációhoz, vagy az ajánlat vagy a csomag leírását kell használnia. Ezeket az információkat a [partner Center](https://partner.microsoft.com/dashboard/commercial-marketplace) **ajánlati lista** és **terv Listázás** lapján adhatja meg.
 
 #### <a name="tags-and-versioning"></a>Címkék és verziószámozás
 
-Az ügyfeleknek képesnek kell lenniük arra, hogy könnyen üzembe helyezzenek egy modult, és automatikusan frissítéseket kapjanak a piactérről (fejlesztői forgatókönyv esetén). Emellett képesnek kell lenniük az általuk tesztelt pontos verzió használatára és fagyasztására (éles környezetben).
+Az ügyfeleknek egyszerűen üzembe kell helyezniük egy modult, és automatikusan le kell kérniük a frissítéseket a piactérről (fejlesztői forgatókönyv esetén). Emellett képesnek kell lenniük arra, hogy a tesztelt pontos verziót is használják (éles környezetben).
 
-Az ügyfelek elvárásainak való megfelelés és a piactéren való közzététel érdekében az IoT Edge-moduloknak meg kell felelniük az alábbi követelményeknek:
+Az ügyfelek elvárásainak kielégítéséhez és a piactéren való közzétételéhez IoT Edge moduloknak meg kell felelniük az alábbi követelményeknek
 
-- Adjon meg egy olyan legújabb jegyzéklistát, amely az összes támogatott platformon a legújabb verzióra mutat.
-- A verziócímkéket X.Y.Z formátumban készítse el, ahol X, Y és Z egész számok.
-- Adjon meg egy "verzió" címkét, például az 1.0.1-et, amely az összes támogatott platformon egy adott verzióra mutat.
-- Ne frissítse a "verzió" címkéket, például az 1.0.1-et, mert azokat nem szabad módosítani.
+- Vegyen fel egy manifest legújabb címkét, amely a legújabb verzióra mutat az összes támogatott platformon.
+- A verziók címkéi az X. Y. Z formátumban legyenek, ahol az X, az Y és a Z egész számok.
+- Adjon meg egy "version" címkét, például a 1.0.1-et, amely az összes támogatott platformon egy adott verzióra mutat.
+- Ne frissítse a "version" címkéit, például a 1.0.1-et, mert nem kell módosítani.
 
 > [!NOTE]
-> A verziószámozás tartalmazhat "gördülő verzió" címkéket, például 2.0-s és 1.0-s címkéket. Ez több főverzió párhuzamos karbantartását támogatja.
+> Igény szerint a verziószámozás tartalmazhat "Rolling version" címkéket, például 2,0 és 1,0. Ez támogatja több főverzió párhuzamos fenntartását.
 
 ### <a name="telemetry"></a>Telemetria
 
-Az IoT-modul SDK-t használó moduloknak telemetriai célokra be kell állítaniuk az egyedi modulazonosítót PublisherId.OfferId.SkuId-ra. Az egyedi azonosító segítségével az Azure Marketplace-en azonosíthatja a futó modulpéldányok számát.
+A IoT modul SDK-t használó moduloknak az egyedi modul azonosítóját kell beállítania a PublisherId. OfferId. SkuId telemetria célokra. Egy egyedi azonosító segíti az Azure Marketplace-t a futtatott modulok számának azonosításában.
 
-Az IoT-modul SDK-inak alábbi módszereinek egyikével állítsa be a ProductInfo azonosítót erre az azonosítóra:
+A IoT modul SDK-k használatával az alábbi módszerek egyikével állíthatja be a productinfo olvasása erre az azonosítóra:
 
-- [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
-- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [C #](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [C#](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 
-Az IoT-modul SDK-t nem használó modulok esetében a Partnerközponton keresztül kevésbé pontos elemzések érhetők el, például a letöltések száma.
+A IoT modul SDK-t nem használó modulok esetében a kevésbé pontos adatellenőrzések a partner centeren keresztül érhetők el, például a letöltések száma.
 
 ### <a name="security"></a>Biztonság
 
-Az IoT Edge-moduloknak kerülniük kell [a kiemelt modulokat.](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) Ehelyett kérje a lehető legkevésbé kiváltságos hozzáférést a gazdagéphez.
+IoT Edge moduloknak el kell kerülniük a [Kiemelt modulokat](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities). Ehelyett a lehető legkevesebb jogosultsággal rendelkező hozzáférést kérje a gazdagéphez.
 
-### <a name="module-iot-sdk"></a>IoT SDK modul
+### <a name="module-iot-sdk"></a>Modul IoT SDK
 
-Az IoT-modul SDK-jának belefoglalása nem előfeltétele a minősítésnek. Azonban az IoT-modul SDK-val együtt jobb felhasználói élményt nyújthat. Például az útválasztás támogatása vagy üzenetek küldése a felhőbe.
+A IoT modul SDK-val együtt nem előfeltétel a minősítés. A IoT modul SDK-val együtt azonban jobb felhasználói élményt biztosíthat. Például az Útválasztás és az üzenetek felhőbe való küldésének támogatásához.
 
-Az IoT-modul SDK-ra van szükség a futó modulpéldányok számának telemetriai adatainak leéséhez.
+A IoT modul SDK-nak szüksége van a rendszerű telemetria adatainak lekérésére.
 
-## <a name="recertification-process"></a>Újraengedélyezési folyamat
+## <a name="recertification-process"></a>Újraminősítési folyamat
 
-A partnerek értesítést kapnak, ha a modulokat érintő törésváltozás történik, például:
+A partnerek értesítést kapnak, ha a modulokat érintő megszakítási változás történik, például:
 
-- Tier 1 OS/arch támogatási mátrix által támogatott IoT Edge
-- IoT-modul SDK
+- A IoT Edge által támogatott 1. szintű operációs rendszer/Arch támogatás mátrixa
+- IoT modul SDK
 - IoT Edge-futtatókörnyezet
-- Az IoT Edge modul tanúsítványának irányelvei
+- IoT Edge modul minősítési irányelvei
 
-A partnereknek frissíteniük kell és újra jóvá kell hagyniuk ajánlataikat, ha újra közzéteszik őket a [Partnerközpontban.](https://partner.microsoft.com/dashboard/commercial-marketplace)
+A partnereknek frissíteniük és hitelesíteniük kell az ajánlatokat, ha újra közzéteszik őket a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace).
 
-Az ajánlat is újra certified, ha frissíti, például új képcímkék hozzáadása.
+Az ajánlat a frissítése után is újra lesz hitelesítve, például új képcímkék hozzáadásával.
 
-## <a name="host-module-in-azure-container-registry"></a>Gazdamodul az Azure Container Registry szolgáltatásban
+## <a name="host-module-in-azure-container-registry"></a>Gazdagép modulja Azure Container Registry
 
-Az IoT Edge-modul feltöltéséhez az Azure Marketplace-en először egy Azure Container Registry (ACR) üzemeltetéséhez kell [üzemeltetni.](https://azure.microsoft.com/services/container-registry/) A modulnak tartalmaznia kell a közzétenni kívánt összes címkét, beleértve a jegyzékcímkét hivatkozott képcímkéket is. További információ: Az [Azure-tároló beállításjegyzékének létrehozása és leküldéses tárolórendszerkép.](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr)
+IoT Edge moduljának Azure Marketplace-re való feltöltéséhez először egy [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) (ACR-ben) kell üzemeltetni. A modulnak tartalmaznia kell az összes közzétenni kívánt címkét, beleértve a jegyzékfájl által hivatkozott képcímkéket is. További információkért tekintse meg az [Azure Container Registry létrehozása és a tároló rendszerképének leküldése](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-acr)című oktatóanyagot.
 
 ## <a name="next-steps"></a>További lépések
 

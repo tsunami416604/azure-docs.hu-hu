@@ -1,6 +1,6 @@
 ---
-title: OpenShift üzembe helyezése az Azure Stackben
-description: OpenShift üzembe helyezése az Azure Stackben.
+title: OpenShift üzembe helyezése Azure Stack
+description: OpenShift üzembe helyezése Azure Stackban.
 author: haroldwongms
 manager: joraio
 ms.service: virtual-machines-linux
@@ -10,25 +10,25 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 51abfd1cbb438d0987554040867625f7fb71630b
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758237"
 ---
-# <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>OpenShift container platform vagy OKD üzembe helyezése az Azure Stackben
+# <a name="deploy-openshift-container-platform-or-okd-in-azure-stack"></a>OpenShift-tároló platform vagy OKD üzembe helyezése Azure Stack
 
-OpenShift az Azure Stackben telepíthető. Van néhány kulcsfontosságú különbség az Azure és az Azure Stack között, így a központi telepítés némileg eltér, és a képességek is kissé eltérnek.
+A OpenShift Azure Stack-ben is üzembe helyezhetők. Az Azure és a Azure Stack között fontos különbségek vannak, így a központi telepítés némileg eltérő lesz, és a képességek is némileg eltérőek.
 
-Jelenleg az Azure Cloud-szolgáltató nem működik az Azure Stackben. Emiatt nem fogja tudni használni a lemezcsatolást az Azure Stack ben az állandó tároláshoz. Ehelyett más tárolási lehetőségeket is konfigurálhat, például nfs-t, iSCSI-t, GlusterFS-t stb. Alternatív megoldásként engedélyezheti a cns-t, és használhatja a GlusterFS-t az állandó tároláshoz. Ha a CNS engedélyezve van, három további csomópont lesz telepítve további tárhellyel a GlusterFS használatához.
+Az Azure Cloud Provider jelenleg nem működik Azure Stackban. Ezért nem fogja tudni használni a lemez csatlakoztatását a Azure Stack állandó tárolásához. Ehelyett más tárolási beállításokat is konfigurálhat, például NFS-t, iSCSI-t, GlusterFS stb. Alternatív megoldásként engedélyezheti a CNS használatát, és használhatja a GlusterFS-t az állandó tároláshoz. Ha a CNS engedélyezve van, három további csomópont lesz telepítve a GlusterFS-használat további tárhelyével.
 
-Az OpenShift Container Platform vagy az OKD üzembe helyezéséhez számos módszer közül választhat az Azure Stackben:
+A OpenShift-tároló platformjának vagy OKD a következő számos módszer egyikével telepítheti Azure Stackban:
 
-- Manuálisan telepítheti a szükséges Azure-infrastruktúra-összetevőket, majd követheti az [OpenShift Container Platform dokumentációját](https://docs.openshift.com/container-platform) vagy az [OKD dokumentációját.](https://docs.okd.io)
-- Egy meglévő [Erőforrás-kezelő sablont](https://github.com/Microsoft/openshift-container-platform/) is használhat, amely leegyszerűsíti az OpenShift container platformfürt telepítését.
-- Egy meglévő [Erőforrás-kezelő sablont](https://github.com/Microsoft/openshift-origin) is használhat, amely leegyszerűsíti az OKD-fürt telepítését.
+- Manuálisan telepítheti a szükséges Azure-infrastruktúra-összetevőket, majd követheti a [OpenShift-tároló platformjának dokumentációját](https://docs.openshift.com/container-platform) vagy a [OKD dokumentációját](https://docs.okd.io).
+- Használhat egy meglévő [Resource Manager-sablont](https://github.com/Microsoft/openshift-container-platform/) is, amely leegyszerűsíti a OpenShift-tároló platform fürt üzembe helyezését.
+- Használhat egy meglévő [Resource Manager-sablont](https://github.com/Microsoft/openshift-origin) is, amely leegyszerűsíti a OKD-fürt üzembe helyezését.
 
-Ha a Resource Manager sablont használja, válassza ki a megfelelő ágat (azurestack-release-3.x). Az Azure-sablonok nem fognak működni, mivel az API-verziók különböznek az Azure és az Azure Stack között. Az RHEL-lemezkép hivatkozás jelenleg az azuredeploy.json fájl változóként kódolt, és módosítani kell, hogy megfeleljen a rendszerkép.
+Ha a Resource Manager-sablont használja, válassza ki a megfelelő ágat (azurestack-Release-3. x). Az Azure-sablonok nem működnek, mivel az API-verziók eltérnek az Azure és a Azure Stack között. A RHEL-rendszerkép hivatkozása jelenleg változóként van kódolva a azuredeploy. JSON fájlban, és módosítania kell, hogy megfeleljen a rendszerképnek.
 
 ```json
 "imageReference": {
@@ -39,31 +39,31 @@ Ha a Resource Manager sablont használja, válassza ki a megfelelő ágat (azure
 }
 ```
 
-Minden lehetőséghez Red Hat előfizetés szükséges. A központi telepítés során a Red Hat Enterprise Linux-példány regisztrálva van a Red Hat-előfizetéshez, és az OpenShift container platform jogosultságait tartalmazó készletazonosítóhoz van csatolva.
-Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager (RHSM) felhasználónévvel, jelszóval és készletazonosítóval. Másik lehetőségként használhat aktiválókulcsot, orgona-azonosítót és készletazonosítót is.  Ezeket az adatokat a https://access.redhat.comrendszerbe bejelentkezve ellenőrizheti.
+Az összes beállításhoz szükség van egy Red Hat-előfizetésre. Az üzembe helyezés során a Red Hat Enterprise Linux példány regisztrálva van a Red Hat-előfizetésben, és ahhoz a készlet-AZONOSÍTÓhoz van csatolva, amely tartalmazza a jogosultságokat a OpenShift-tároló platformhoz.
+Győződjön meg arról, hogy rendelkezik érvényes Red Hat Subscription Manager-(RHSM-) felhasználónévvel, jelszóval és készlet-AZONOSÍTÓval. Alternatív megoldásként használhatja az aktiválási kulcsot, a szervezeti azonosítót és a készlet AZONOSÍTÓját is.  Ezen információk ellenőrzéséhez jelentkezzen be a alkalmazásba https://access.redhat.com.
 
-## <a name="azure-stack-prerequisites"></a>Az Azure Stack előfeltételei
+## <a name="azure-stack-prerequisites"></a>Előfeltételek Azure Stack
 
-Egy RHEL-lemezképet (OpenShift container platform) vagy CentOS-lemezképet (OKD) kell hozzáadni az Azure Stack-környezethez egy OpenShift-fürt üzembe helyezéséhez. Lépjen kapcsolatba az Azure Stack rendszergazdájával a lemezképek hozzáadásához. Az utasítások itt találhatók:
+Egy OpenShift-fürt üzembe helyezéséhez fel kell venni egy RHEL-lemezképet (OpenShift-tároló platform) vagy CentOS-lemezképet (OKD) a Azure Stack-környezetbe. A rendszerképek hozzáadásához forduljon a Azure Stack rendszergazdájához. Az utasítások itt találhatók:
 
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-add-vm-image
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-marketplace-azure-items
 - https://docs.microsoft.com/azure/azure-stack/azure-stack-redhat-create-upload-vhd
 
-## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>Telepítés az OpenShift tárolóplatform vagy az OKD Erőforrás-kezelő sablon használatával
+## <a name="deploy-by-using-the-openshift-container-platform-or-okd-resource-manager-template"></a>Üzembe helyezés a OpenShift Container platform vagy a OKD Resource Manager-sablon használatával
 
-Az Erőforrás-kezelő sablon használatával történő telepítéshez egy paraméterfájlt kell használnia a bemeneti paraméterek biztosításához. A központi telepítés további testreszabásához elágazás a GitHub-tármű, és módosítsa a megfelelő elemeket.
+A Resource Manager-sablonnal történő üzembe helyezéshez egy Parameters-fájl segítségével adja meg a bemeneti paramétereket. Az üzembe helyezés további testreszabásához a GitHub-tárházat kell megváltoztatnia, és módosítani a megfelelő elemeket.
 
 Néhány gyakori testreszabási lehetőség, de nem korlátozódik a következőkre:
 
-- Bástya virtuális gép mérete (változó azuredeploy.json)
-- Elnevezési konvenciók (változók az azuredeploy.jsonban)
-- OpenShift fürtspecifikus, gazdagépfájlon keresztül módosítva (deployOpenShift.sh)
-- RHEL-lemezkép-referencia (változó az azuredeploy.json ban)
+- Megerősített VM-méret (változó a azuredeploy. JSON fájlban)
+- Elnevezési konvenciók (változók a azuredeploy. JSON fájlban)
+- OpenShift-fürtök, a Hosts fájlon keresztül módosítva (deployOpenShift.sh)
+- RHEL-rendszerkép referenciája (változó a azuredeploy. JSON fájlban)
 
-Az Azure CLI használatával történő üzembe helyezés lépéseit kövesse a megfelelő szakaszt az [OpenShift container platform](./openshift-container-platform-3x.md) szakaszban vagy az [OKD](./openshift-okd.md) szakaszban.
+Az Azure CLI használatával történő üzembe helyezés lépéseinek végrehajtásához kövesse a [OpenShift Container platform](./openshift-container-platform-3x.md) szakasz vagy a [OKD](./openshift-okd.md) szakasz megfelelő szakaszát.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Telepítés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
-- [Az OpenShift azure-beli telepítésének hibái](./openshift-container-platform-3x-troubleshooting.md)
+- [Üzembe helyezés utáni feladatok](./openshift-container-platform-3x-post-deployment.md)
+- [A OpenShift üzembe helyezésének hibája az Azure-ban](./openshift-container-platform-3x-troubleshooting.md)

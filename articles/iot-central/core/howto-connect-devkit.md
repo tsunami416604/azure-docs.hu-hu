@@ -1,6 +1,6 @@
 ---
-title: Fejlesztői eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz | Microsoft dokumentumok
-description: Eszközfejlesztőként megtudhatja, hogyan csatlakoztathat egy MXChip IoT DevKit-eszközt az Azure IoT Central alkalmazáshoz az IoT Plug and Play (előzetes verzió) használatával.
+title: Fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz | Microsoft Docs
+description: Az eszköz fejlesztőinek megtudhatja, hogyan csatlakoztatható egy MXChip IoT fejlesztői készlet-eszköz az Azure IoT Central-alkalmazáshoz a IoT Plug and Play (előzetes verzió) használatával.
 author: liydu
 ms.author: liydu
 ms.date: 12/03/2019
@@ -9,104 +9,104 @@ ms.service: iot-central
 services: iot-central
 manager: jeffya
 ms.openlocfilehash: bcf1dd2f89cf049d7da5b56170b2c13874c83ba4
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81756809"
 ---
-# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip IoT DevKit-eszköz csatlakoztatása az Azure IoT Central alkalmazáshoz
+# <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>MXChip-IoT fejlesztői készlet-eszköz csatlakoztatása az Azure IoT Central-alkalmazáshoz
 
-*Ez a cikk az eszközfejlesztőkre vonatkozik.*
+*Ez a cikk az eszközök fejlesztőire vonatkozik.*
 
-Ez a cikk bemutatja, hogyan csatlakoztathat egy MXChip IoT DevKit (DevKit) eszközt egy Azure IoT Central alkalmazáshoz. Az eszköz a hitelesített IoT Plug and Play (előzetes verzió) modellt használja a DevKit-eszközhöz az IoT Centralhoz való csatlakozás konfigurálásához.
+Ez a cikk bemutatja, hogyan csatlakoztatható egy MXChip IoT fejlesztői készlet (fejlesztői készlet) eszköz egy Azure IoT Central-alkalmazáshoz. Az eszköz a fejlesztői készlet-eszköz Certified IoT Plug and Play (előzetes verzió) modelljét használja a IoT Centralhoz való kapcsolódás konfigurálásához.
 
-Ebben az útmutató cikkben:
+Ebben a útmutatóban a következőket kell tennie:
 
-- A kapcsolat részleteit az IoT Central alkalmazás.
-- Készítse elő az eszközt, és csatlakoztassa az IoT Central alkalmazáshoz.
-- Tekintse meg a telemetriai adatokat és tulajdonságokat az eszközről az IoT Central ban.
+- A IoT Central alkalmazás kapcsolati adatainak beolvasása.
+- Készítse elő az eszközt, és kapcsolódjon a IoT Central alkalmazáshoz.
+- Az eszköz telemetria és tulajdonságainak megtekintése IoT Centralban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az cikkben ismertetett lépések elvégzéséhez az alábbi erőforrásokra lesz szüksége:
 
-- Egy [DevKit eszköz.](https://aka.ms/iot-devkit-purchase)
-- Egy IoT-központi alkalmazás. Az IoT Central alkalmazás létrehozása című részben ismertetett lépéseket [követheti.](./quick-deploy-iot-central.md)
+- Egy [fejlesztői készlet-eszköz](https://aka.ms/iot-devkit-purchase).
+- Egy IoT Central alkalmazás. Követheti a [IoT Central alkalmazás létrehozása](./quick-deploy-iot-central.md)című témakör lépéseit.
 
-## <a name="get-device-connection-details"></a>Az eszközkapcsolat részleteinek beszerezni
+## <a name="get-device-connection-details"></a>Eszköz kapcsolati adatainak beolvasása
 
-1. Az Azure IoT Central alkalmazásban válassza az **Eszközsablonok** lapot, és válassza **a + Új**lehetőséget. Az **Előre konfigurált eszközsablon használata**szakaszban válassza az **MXChip IoT DevKit**lehetőséget.
+1. Az Azure IoT Central alkalmazásban válassza az **eszközök sablonok** fület, és válassza az **+ új**lehetőséget. A szakasz **előre konfigurált eszköz használata sablonnal**válassza a **MXChip IoT fejlesztői készlet**elemet.
 
-    ![Eszközsablon az MXChip IoT DevKit-hez](media/howto-connect-devkit/device-template.png)
+    ![Eszköz sablonja a MXChip IoT fejlesztői készlet](media/howto-connect-devkit/device-template.png)
 
-1. Válassza a **Tovább: Testreszabás,** majd **létrehozás lehetőséget.**
+1. Válassza a **Tovább: testreszabás** , majd a **Létrehozás**lehetőséget.
 
-1. Válassza **az Eszközök** lapot. Az eszközök listájában válassza az **MXChip IoT DevKit** lehetőséget, és válassza **a + Új** lehetőséget, ha új eszközt hoz létre a sablonból.
+1. Válassza az **eszközök** fület. Az eszközök listában válassza a **MXChip IoT fejlesztői készlet** lehetőséget, majd az **+ új** gombra kattintva hozzon létre egy új eszközt a sablonból.
 
     ![Új eszköz](media/howto-connect-devkit/new-device.png)
 
-1. Az előugró ablakban adja meg az `SampleDevKit` **eszközazonosítót** és az eszköznevét a ( **eszközneve)** formában. `MXChip IoT DevKit - Sample` Győződjön meg arról, hogy a **Szimulált** beállítás ki van kapcsolva. Ezután válassza **a Létrehozás lehetőséget.**
+1. Az előugró ablakban adja meg az **eszköz azonosítóját** `SampleDevKit` és az **eszköz nevét** `MXChip IoT DevKit - Sample`. Győződjön meg arról, hogy a **szimulált** beállítás ki van kapcsolva. Ezután válassza a **Létrehozás**lehetőséget.
 
-    ![Eszközazonosító és név](media/howto-connect-devkit/device-id-name.png)
+    ![Eszköz azonosítója és neve](media/howto-connect-devkit/device-id-name.png)
 
-1. Jelölje ki a létrehozott eszközt, majd válassza a **Csatlakozás**lehetőséget. Jegyezze fel az **azonosító hatókört,** **az eszközazonosítót**és az **elsődleges kulcsot.** Szüksége van ezekre az értékekre később ebben az útmutató cikkben.
+1. Válassza ki a létrehozott eszközt, majd válassza a **Csatlakoztatás**lehetőséget. Jegyezze fel az **azonosító hatókörét**, az **eszköz azonosítóját**és az **elsődleges kulcsot**. Ezeket az értékeket később kell megadnia ebben a útmutatóban.
 
-    ![Eszközkapcsolat adatai](media/howto-connect-devkit/device-connection-info.png)
+    ![Eszköz csatlakoztatási adatai](media/howto-connect-devkit/device-connection-info.png)
 
-## <a name="prepare-the-device"></a>A készülék előkészítése
+## <a name="prepare-the-device"></a>Az eszköz előkészítése
 
-1. Töltse le a [legújabb, előre elkészített Azure IoT Central Plug and Play (előzetes verzió) belső vezérlőprogramját](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) a DevKit-eszközhöz a GitHubról.
+1. Töltse le a fejlesztői készlet-eszközhöz készült legújabb, [előre elkészített Azure IoT Central Plug and Play (előzetes verzió) firmware](https://github.com/Azure-Samples/mxchip-iot-devkit-pnp/raw/master/bin/iotc_devkit.bin) -t a githubról.
 
-1. Csatlakoztassa a DevKit-eszközt a fejlesztői géphez USB-kábellel. A Windows rendszerben egy fájlkezelő ablak nyílik meg a DevKit-eszköz tárolójához leképezett meghajtón. A meghajtó neve lehet például **AZ3166 (D:)**.
+1. Csatlakoztassa a fejlesztői készlet eszközt a fejlesztői számítógéphez egy USB-kábellel. A Windowsban egy fájlkezelő ablak nyílik meg a fejlesztői készlet eszközön lévő tárolóhoz rendelt meghajtón. Előfordulhat például, hogy a meghajtó neve **AZ3166 (D:)**.
 
-1. Húzza a **iotc_devkit.bin** fájlt a meghajtóablakra. Amikor a másolás befejeződött, az eszköz újraindul az új belső vezérlőprogrammal.
+1. Húzza a **iotc_devkit. bin** fájlt a meghajtó ablakára. A másolás befejezésekor az eszköz újraindul az új belső vezérlőprogram.
 
     > [!NOTE]
-    > Ha hibákat lát a képernyőn, például a **Nincs Wi-Fi**, annak az az oka, hogy a DevKit még nem csatlakozott a WiFi-hez.
+    > Ha a képernyőn olyan hibák jelennek meg, mint például a **Wi-Fi**, ennek az az oka, hogy a fejlesztői készlet még nem kapcsolódott a WiFi szolgáltatáshoz.
 
-1. A DevKiten tartsa lenyomva a **B gombot,** nyomja meg és engedje fel a **Reset** gombot, majd engedje fel a **B gombot.** Az eszköz most hozzáférési pont módban van. A megerősítéshez a képernyőn megjelenik az "IoT DevKit - AP" és a konfigurációs portál IP-címe.
+1. A fejlesztői készlet tartsa lenyomva a **b gombot**, nyomja le és szabadítsa fel az **Alaphelyzetbe állítás** gombot, majd a **b gombot**. Az eszköz most már hozzáférési pont módban van. A megerősítéshez a képernyő a "IoT fejlesztői készlet-AP" és a konfigurációs portál IP-címét jeleníti meg.
 
-1. A számítógépen vagy táblagépen csatlakozzon az eszköz képernyőjén látható Wi-Fi hálózat névhez. A WiFi hálózat az **AZ-** és a MAC-cím után indul. Amikor csatlakozik ehhez a hálózathoz, nincs internet-hozzáférése. Ez az állapot várható, és csak rövid ideig csatlakozik ehhez a hálózathoz az eszköz konfigurálása közben.
+1. A számítógépen vagy a táblaszámítógépen kapcsolódjon az eszköz képernyőjén megjelenő WiFi-hálózathoz. A Wi-Fi-hálózat az **az-** és a MAC-címe után kezdődik. Ha csatlakozik ehhez a hálózathoz, nem rendelkezik internet-hozzáféréssel. Ez az állapot várható, és az eszköz konfigurálásakor csak rövid idő alatt csatlakozhat ehhez a hálózathoz.
 
-1. Nyissa meg a webböngészőt, és keresse meg a t. [http://192.168.0.1/](http://192.168.0.1/) A következő weboldal on-már látható:
+1. Nyissa meg a webböngészőt [http://192.168.0.1/](http://192.168.0.1/), és navigáljon a címre. A következő weblap jelenik meg:
 
-    ![Konfigurációs felhasználói felület](media/howto-connect-devkit/config-ui.png)
+    ![Konfiguráció felhasználói felülete](media/howto-connect-devkit/config-ui.png)
 
-    A weboldalon írja be a következőt:
+    A weblapon írja be a következőt:
 
     - A WiFi-hálózat (SSID) neve.
-    - A WiFi hálózati jelszó.
-    - A kapcsolat részletei: adja meg az **eszközazonosítót,** **az azonosító hatókört**és a korábban feljegyzést készített **SAS elsődleges kulcsot.**
+    - A WiFi hálózati jelszava.
+    - A kapcsolat részletei: írja be az **eszköz azonosítóját**, az **azonosító hatókörét**és az **sas elsődleges kulcsát** , amelyet korábban jegyzett készített.
 
     > [!NOTE]
-    > Jelenleg az IoT DevKit csak 2,4 GHz-es Wi-Fi-hálózathoz tud csatlakozni, az 5 GHz-es szolgáltatás hardverkorlátozások miatt nem támogatott.
+    > Jelenleg a IoT fejlesztői készlet csak a 2,4 GHz-es Wi-Fi-hez tud csatlakozni, az 5 GHz-es hardveres korlátozások miatt nem támogatott.
 
-1. Válassza **az Eszköz konfigurálása**lehetőséget, a DevKit-eszköz újraindul, és futtatja az alkalmazást:
+1. Válassza az **eszköz konfigurálása**lehetőséget, majd a fejlesztői készlet eszköz újraindul, és futtatja az alkalmazást:
 
     ![Felhasználói felület újraindítása](media/howto-connect-devkit/reboot-ui.png)
 
-    A DevKit képernyő jeegy megerősítést, hogy az alkalmazás fut:
+    A fejlesztői készlet képernyőn az alkalmazás futtatásának megerősítése látható:
 
-    ![A DevKit futása](media/howto-connect-devkit/devkit-running.png)
+    ![Futó fejlesztői készlet](media/howto-connect-devkit/devkit-running.png)
 
-A DevKit először regisztrál egy új eszközt az IoT Central alkalmazásban, majd elindítja az adatok küldését.
+A fejlesztői készlet először regisztrál egy új eszközt IoT Central alkalmazásban, majd elkezdi az adatok küldését.
 
-## <a name="view-the-telemetry"></a>A telemetriai adatok megtekintése
+## <a name="view-the-telemetry"></a>A telemetria megtekintése
 
-Ebben a lépésben megtekintheti a telemetriai adatokat az Azure IoT Central alkalmazásban.
+Ebben a lépésben megtekinti a telemetria az Azure IoT Central alkalmazásban.
 
-Az IoT Central alkalmazásban válassza az **Eszközök** fület, válassza ki a hozzáadott eszközt. Az **Áttekintés** lapon láthatja a telemetriai adatokat a DevKit-eszközről:
+A IoT Central alkalmazásban válassza az **eszközök** fület, és válassza ki a hozzáadott eszközt. Az **Áttekintés** lapon a telemetria a fejlesztői készlet eszközről tekintheti meg:
 
-![IoT Central-eszköz – áttekintés](media/howto-connect-devkit/mxchip-overview-page.png)
+![IoT Central eszköz áttekintése](media/howto-connect-devkit/mxchip-overview-page.png)
 
 ## <a name="review-the-code"></a>A kód áttekintése
 
-A kód áttekintéséhez vagy módosításához és fordításához nyissa meg a [Kódminták című részhez.](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/)
+A kód áttekintéséhez vagy módosításához és fordításához nyissa meg a [kód mintáit](https://docs.microsoft.com/samples/azure-samples/mxchip-iot-devkit-pnp/sample/).
 
 ## <a name="next-steps"></a>További lépések
 
-Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
+Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 
-- Az [Azure IoT Central eszközkapcsolatának elolvasása](./concepts-get-connected.md)
-- Az [azure CLI használatával az eszközkapcsolatok figyelése](./howto-monitor-devices-azure-cli.md)
+- További információ [az eszközök kapcsolatáról az Azure IoT Central](./concepts-get-connected.md)
+- Ismerje meg, hogyan [figyelheti az eszközök kapcsolatát az Azure CLI használatával](./howto-monitor-devices-azure-cli.md)

@@ -1,6 +1,6 @@
 ---
-title: Parancsfájlok futtatása Azure Linux os virtuális gépben
-description: Ez a témakör a parancsfájlok virtuális gépen belüli futtatását ismerteti
+title: Parancsfájlok futtatása Azure-beli linuxos virtuális gépen
+description: Ez a témakör a parancsfájlok virtuális gépen belüli futtatását ismerteti.
 services: automation
 ms.service: virtual-machines-linux
 author: bobbytreed
@@ -8,60 +8,60 @@ ms.author: robreed
 ms.date: 05/02/2018
 ms.topic: article
 ms.openlocfilehash: 9dbfb3e76fe1c0e80dd8020b79f4edd6d32a24a3
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758581"
 ---
-# <a name="run-scripts-in-your-linux-vm"></a>Parancsfájlok futtatása a Linux virtuális gépben
+# <a name="run-scripts-in-your-linux-vm"></a>Parancsfájlok futtatása Linux rendszerű virtuális gépen
 
-A feladatok automatizálásához vagy a problémák elhárításához előfordulhat, hogy parancsokat kell futtatnia egy virtuális gépen. A következő cikk rövid áttekintést nyújt a virtuális gépeken belüli parancsfájlok és parancsok futtatásához elérhető szolgáltatásokról.
+A feladatok automatizálásához vagy a hibák elhárításához szükség lehet a virtuális gépeken futtatott parancsok futtatására. A következő cikk rövid áttekintést nyújt a virtuális gépeken belüli parancsfájlok és parancsok futtatásához elérhető funkciókról.
 
 ## <a name="custom-script-extension"></a>Egyéni szkriptbővítmény
 
-Az [egyéni parancsfájl-bővítmény](../extensions/custom-script-linux.md) elsősorban a telepítés utáni konfigurációhoz és a szoftvertelepítéshez használatos.
+Az [Egyéni szkriptek bővítménye](../extensions/custom-script-linux.md) elsődlegesen a telepítés utáni konfiguráció és a Szoftvertelepítés során használatos.
 
-* Parancsfájlok letöltése és futtatása az Azure virtuális gépein.
-* Azure Resource Manager-sablonok, Az Azure CLI, A REST API, a PowerShell vagy az Azure Portal használatával futtatható.
-* A parancsfájlfájlok letölthetők az Azure Storage-ból vagy a GitHubról, vagy a számítógépről biztosíthatók, ha az Azure Portalról futtatják.
-* PowerShell-parancsfájl futtatása Windows-gépeken és Bash parancsfájl linuxos gépeken.
-* A telepítés utáni konfigurációhoz, a szoftvertelepítéshez és egyéb konfigurációs vagy felügyeleti feladatokhoz hasznos.
+* Parancsfájlok letöltése és futtatása az Azure Virtual Machines szolgáltatásban.
+* Futtatható Azure Resource Manager sablonok, Azure CLI, REST API, PowerShell vagy Azure Portal használatával.
+* A parancsfájlok az Azure Storage-ból vagy a GitHubról tölthetők le, illetve a SZÁMÍTÓGÉPRŐL is elérhetők, ha a Azure Portal fut.
+* PowerShell-parancsfájl futtatása Windows rendszerű gépeken és bash-parancsfájlban Linux-gépeken.
+* Hasznos lehet a telepítés utáni konfiguráció, a Szoftvertelepítés, valamint az egyéb konfigurációs vagy felügyeleti feladatok elvégzéséhez.
 
-## <a name="run-command"></a>Futtatás parancs
+## <a name="run-command"></a>Parancs futtatása
 
-A [Parancs futtatása](run-command.md) szolgáltatás lehetővé teszi a virtuális gép- és alkalmazáskezelést és a hibaelhárítást parancsfájlok használatával, és akkor is elérhető, ha a gép nem érhető el, például ha a vendég tűzfal nem rendelkezik az RDP vagy SSH port nyitva.
+A [Futtatás parancs](run-command.md) funkció lehetővé teszi a virtuális gépek és az alkalmazások kezelését és a hibaelhárítást parancsfájlok használatával, és akkor is elérhető, ha a számítógép nem érhető el, például ha a vendég tűzfal nem rendelkezik a megnyitott RDP-vagy SSH-porttal.
 
-* Parancsfájlok futtatása az Azure virtuális gépein.
-* Futtatható az [Azure Portal,](run-command.md) [rest API,](/rest/api/compute/virtual%20machines%20run%20commands/runcommand) [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)vagy [PowerShell használatával](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand)
-* Gyorsan futtathat egy parancsfájlt, és megtekintheti a kimenetet, és szükség szerint ismételje meg az Azure Portalon.
-* Parancsfájl t közvetlenül is beírhatja, vagy futtathatja az egyik beépített parancsfájlt.
-* PowerShell-parancsfájl futtatása Windows-gépeken és Bash parancsfájl linuxos gépeken.
-* Hasznos a virtuális gép és az alkalmazás kezelése és a parancsfájlok futtatásához a virtuális gépek, amelyek nem érhető el.
+* Parancsfájlok futtatása az Azure Virtual Machines szolgáltatásban.
+* Futtatható [Azure Portal](run-command.md), [REST API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [Azure CLI](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke)vagy [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) használatával
+* Futtasson gyorsan egy parancsfájlt, és tekintse meg a kimenetet, és szükség szerint ismételje meg a Azure Portal.
+* A szkript közvetlenül is beírható, vagy futtathatja a beépített parancsfájlok egyikét.
+* PowerShell-parancsfájl futtatása Windows rendszerű gépeken és bash-parancsfájlban Linux-gépeken.
+* A virtuális gépek és az alkalmazások kezeléséhez, valamint a nem elérhető virtuális gépek parancsfájljainak futtatásához hasznos.
 
 ## <a name="hybrid-runbook-worker"></a>hibrid runbook-feldolgozó
 
-A [hibrid Runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md) általános gép-, alkalmazás- és környezetkezelést biztosít egy Automation-fiókban tárolt egyéni parancsfájlokkal.
+A [hibrid Runbook](../../automation/automation-hybrid-runbook-worker.md) -feldolgozó általános gépi, alkalmazás-és környezeti kezelést biztosít az Automation-fiókban tárolt egyéni parancsfájlokkal.
 
-* Parancsfájlokat futtataz Azure-ban és nem Azure-os gépeken.
-* Futtatható az Azure Portal, az Azure CLI, a REST API, a PowerShell, a webhook használatával.
+* Parancsfájlok futtatása az Azure-ban és a nem Azure-beli gépeken.
+* Futtatható a Azure Portal, az Azure CLI, a REST API, a PowerShell és a webhook használatával.
 * Automation-fiókban tárolt és kezelt parancsfájlok.
-* PowerShell, PowerShell-munkafolyamat, Python vagy grafikus runbookok futtatása
-* Nincs időkorlát a parancsfájlok futtatásának idejére.
-* Egyszerre több parancsfájl is futtatható.
-* A teljes parancsfájl kimenetet a rendszer visszaadja és tárolja.
-* A feladatelőzmények 90 napig állnak rendelkezésre.
-* A parancsfájlok helyi rendszerként vagy a felhasználó által megadott hitelesítő adatokkal futtathatók.
+* A PowerShell, a PowerShell-munkafolyamat, a Python vagy a grafikus runbookok futtatása
+* Nincs időkorlát a parancsfájl futási idején.
+* Egyidejűleg több parancsfájl is futtatható.
+* A rendszer a teljes parancsfájl kimenetét adja vissza és tárolja.
+* A feladatok előzményei 90 napig érhetők el.
+* A parancsfájlok helyi rendszerként vagy felhasználó által megadott hitelesítő adatokkal is futtathatók.
 * [Manuális telepítést](../../automation/automation-windows-hrw-install.md) igényel
 
 ## <a name="serial-console"></a>Soros konzol
 
-A [soros konzol](serial-console.md) közvetlen hozzáférést biztosít a virtuális géphez, hasonlóan ahhoz, mint ha a virtuális géphez csatlakoztatott billentyűzet van csatlakoztatva.
+A [Serial Console](serial-console.md) közvetlen hozzáférést biztosít egy virtuális géphez, hasonlóan ahhoz, hogy a billentyűzet csatlakoztatva legyen a virtuális géphez.
 
-* Parancsok futtatása az Azure virtuális gépeken.
-* Futtatható egy szöveges konzol on the machine az Azure Portalon.
-* Bejelentkezés a számítógépre helyi felhasználói fiókkal.
-* Akkor hasznos, ha a virtuális géphez való hozzáférésre a számítógép hálózatától vagy operációs rendszerének állapotától függetlenül van szükség.
+* Parancsok futtatása az Azure Virtual Machines szolgáltatásban.
+* Egy szöveges konzol használatával futtatható a Azure Portal számítógépén.
+* Jelentkezzen be a gépre egy helyi felhasználói fiókkal.
+* Akkor hasznos, ha a virtuális géphez való hozzáférésre a gép hálózati vagy operációsrendszer-állapota nélkül van szükség.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -70,4 +70,4 @@ További információ a virtuális gépeken belüli parancsfájlok és parancsok
 * [Egyéni szkriptbővítmény](../extensions/custom-script-linux.md)
 * [Parancs futtatása](run-command.md)
 * [hibrid runbook-feldolgozó](../../automation/automation-hybrid-runbook-worker.md)
-* [Soros konzol](serial-console.md)
+* [Serial console](serial-console.md)

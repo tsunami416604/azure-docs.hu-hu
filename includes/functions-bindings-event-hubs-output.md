@@ -4,22 +4,22 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 1e25656b58fe675cfbe87fef75af4fcb174b7f55
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 78836ca4e51875be4237267b3bb9256cc4541fe2
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "77589739"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "81791636"
 ---
-Az Event Hubs kimeneti kötés használatával eseményeket írhat egy eseményfolyamba. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
+Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
 
-Mielőtt megpróbálna kimeneti kötést végrehajtani, győződjön meg arról, hogy a szükséges csomaghivatkozások a helyükön vannak.
+A kimeneti kötés megvalósítása előtt győződjön meg arról, hogy a szükséges csomagokra vonatkozó hivatkozások vannak érvényben.
 
 <a id="example" name="example"></a>
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-A következő példa egy [C# függvényt](../articles/azure-functions/functions-dotnet-class-library.md) mutat be, amely üzenetet ír egy eseményközpontba, a metódus visszatérési értékét használva kimenetként:
+Az alábbi példa egy [C#-függvényt](../articles/azure-functions/functions-dotnet-class-library.md) mutat be, amely egy üzenetet ír egy Event hub-ba, a metódus visszatérési értékeként a kimenet:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -31,7 +31,7 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-A következő példa bemutatja, hogyan használhatja a `IAsyncCollector` felületet egy köteg üzenet küldésére. Ez a forgatókönyv gyakori, ha az egyik Event Hubról érkező üzeneteket dolgozza fel, és az eredményt egy másik Eseményközpontnak küldi.
+Az alábbi példa azt szemlélteti, hogyan használható `IAsyncCollector` az interfész egy köteg üzenetek küldésére. Ez a forgatókönyv gyakori, ha egy adott esemény központból érkező üzeneteket dolgoz fel, és az eredményt egy másik Event hub számára küldi el.
 
 ```csharp
 [FunctionName("EH2EH")]
@@ -51,11 +51,11 @@ public static async Task Run(
 }
 ```
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-A következő példa egy eseményközpont-eseményindító tanusítását mutatja be egy *function.json* fájlban, és egy [C# parancsfájlfüggvényt,](../articles/azure-functions/functions-reference-csharp.md) amely a kötést használja. A függvény üzenetet ír egy eseményközpontba.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy [C# parancsfájl-függvényt](../articles/azure-functions/functions-reference-csharp.md) , amely a kötést használja. A függvény egy üzenetet ír az Event hub-ba.
 
-Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json* fájlban. Az első példa a 2.x vagy újabb függvények, a második pedig az 1.x függvények. 
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x és újabb függvények esetében, a második pedig az 1. x függvényre mutat. 
 
 ```json
 {
@@ -77,7 +77,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-Itt a C# parancsfájlkód, amely létrehoz egy üzenetet:
+Az alábbi C#-kód egy üzenetet hoz létre:
 
 ```cs
 using System;
@@ -91,7 +91,7 @@ public static void Run(TimerInfo myTimer, out string outputEventHubMessage, ILog
 }
 ```
 
-Itt a C# parancsfájlkód, amely több üzenetet hoz létre:
+A következő C#-kód több üzenetet hoz létre:
 
 ```cs
 public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessage, ILogger log)
@@ -103,11 +103,11 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 }
 ```
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A következő példa egy eseményközpont-eseményindító-kötést mutat be egy *function.json* fájlban, és egy [JavaScript-függvényt,](../articles/azure-functions/functions-reference-node.md) amely a kötést használja. A függvény üzenetet ír egy eseményközpontba.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](../articles/azure-functions/functions-reference-node.md) , amely a kötést használja. A függvény egy üzenetet ír az Event hub-ba.
 
-Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json* fájlban. Az első példa a 2.x vagy újabb függvények, a második pedig az 1.x függvények. 
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be. Az első példa a 2. x és újabb függvények esetében, a második pedig az 1. x függvényre mutat. 
 
 ```json
 {
@@ -129,7 +129,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-Itt van a JavaScript-kód, amely egyetlen üzenetet küld:
+Az alábbi JavaScript-kód egyetlen üzenetet küld:
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -140,7 +140,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-Itt van a JavaScript-kód, amely több üzenetet küld:
+Az alábbi JavaScript-kód több üzenetet küld:
 
 ```javascript
 module.exports = function(context) {
@@ -157,9 +157,9 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-A következő példa egy eseményközpont-eseményindító tincsét mutatja be egy *function.json* fájlban, és egy [Python-függvényt,](../articles/azure-functions/functions-reference-python.md) amely a kötést használja. A függvény üzenetet ír egy eseményközpontba.
+Az alábbi példa egy Event hub eseményindító-kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [Python-függvényt](../articles/azure-functions/functions-reference-python.md) , amely a kötést használja. A függvény egy üzenetet ír az Event hub-ba.
 
-Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json* fájlban.
+Az alábbi példák a *function. JSON* fájlban Event Hubs kötési adataikat mutatják be.
 
 ```json
 {
@@ -171,7 +171,7 @@ Az alábbi példák az Event Hubs kötési adatait mutatják be a *function.json
 }
 ```
 
-Az alábbiakban python-kódot küld, amely egyetlen üzenetet küld:
+A következő Python-kód egyetlen üzenetet küld:
 
 ```python
 import datetime
@@ -187,7 +187,7 @@ def main(timer: func.TimerRequest) -> str:
 
 # <a name="java"></a>[Java](#tab/java)
 
-A következő példa egy Java-függvényt mutat be, amely az aktuális időt tartalmazó üzenetet ír egy eseményközpontba.
+Az alábbi példa egy Java-függvényt mutat be, amely egy Event hub aktuális időpontját tartalmazó üzenetet ír.
 
 ```java
 @FunctionName("sendTime")
@@ -198,7 +198,7 @@ public String sendTime(
  }
 ```
 
-A [Java függvények futásidejű függvénytárában](/java/api/overview/azure/functions/runtime)használja a jegyzetet azon `@EventHubOutput` paramétereken, amelyek értéke közzé lenne téve az Event Hub on.  A paraméter nek `OutputBinding<T>` típusúnak kell lennie, ahol T POJO vagy bármilyen natív Java típus.
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja `@EventHubOutput` a Megjegyzés azon paramétereket, amelyek értékét közzé szeretné tenni az Event hub-ban.  A paraméternek olyan típusúnak `OutputBinding<T>` kell lennie, ahol a T egy POJO vagy bármely natív Java-típus.
 
 ---
 
@@ -206,9 +206,9 @@ A [Java függvények futásidejű függvénytárában](/java/api/overview/azure/
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-C# [osztálytárak esetén](../articles/azure-functions/functions-dotnet-class-library.md)használja az [EventHubAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs) attribútumot.
+[C# szintű kódtárak](../articles/azure-functions/functions-dotnet-class-library.md)esetén használja a [EventHubAttribute](https://github.com/Azure/azure-functions-eventhubs-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.EventHubs/EventHubAttribute.cs) attribútumot.
 
-Az attribútum konstruktora felveszi az eseményközpont nevét és a kapcsolati karakterláncot tartalmazó alkalmazásbeállítás nevét. Ezekről a beállításokról további információt a [Kimenet - konfiguráció](#configuration)című témakörben talál. Íme egy `EventHub` attribútum példa:
+Az attribútum konstruktora az Event hub nevét, valamint egy, a kapcsolati karakterláncot tartalmazó Alkalmazásbeállítás nevét veszi át. További információ ezekről a beállításokról: [kimeneti konfiguráció](#configuration). Példa egy `EventHub` attribútumra:
 
 ```csharp
 [FunctionName("EventHubOutput")]
@@ -219,38 +219,38 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, ILog
 }
 ```
 
-Egy teljes példa, lásd: [Kimenet - C# példa](#example).
+Teljes példa: [output-C# példa](#example).
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Az attribútumokat a C# script nem támogatja.
+A C# parancsfájl nem támogatja az attribútumokat.
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
 A JavaScript nem támogatja az attribútumokat.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az attribútumokat a Python nem támogatja.
+A Python nem támogatja az attribútumokat.
 
 # <a name="java"></a>[Java](#tab/java)
 
-A [Java függvények futásidejű függvénytárban](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)használja az [EventHubOutput-annotációt](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) azon paramétereken, amelyek értéke közzé lenne téve az Event Hubban. A paraméter nek `OutputBinding<T>` típusúnak `T` kell lennie, ahol POJO vagy bármely natív Java típus.
+A [Java functions runtime library](https://docs.microsoft.com/java/api/overview/azure/functions/runtime)-ben használja a [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) -jegyzetet azon paramétereknél, amelyek értékét közzé szeretné tenni az Event hub-ban. A paraméternek típusúnak `OutputBinding<T>` kell lennie `T` , ahol a egy POJO vagy bármely natív Java-típus.
 
 ---
 
-## <a name="configuration"></a>Konfiguráció
+## <a name="configuration"></a>Configuration
 
-Az alábbi táblázat a *function.json* fájlban és az `EventHub` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
+Az alábbi táblázat a *function. JSON* fájlban és az `EventHub` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
-|function.json tulajdonság | Attribútum tulajdonság |Leírás|
+|function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**Típus** | n/a | "eventHub" (eventHub) beállításra kell beállítva. |
-|**direction** | n/a | Be kell állítani, hogy "ki". Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést az Azure Portalon. |
-|**név** | n/a | Az eseményt jelképező függvénykódban használt változónév. |
-|**Elérési út** |**EventHubName** | Csak 1.x függvényt. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncban, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**eventHubName** |**EventHubName** | Funkciók 2.x és magasabb. Az eseményközpont neve. Ha az eseményközpont neve is szerepel a kapcsolati karakterláncban, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
-|**Kapcsolat** |**Kapcsolat** | Az eseményközpont névteréhez való kapcsolati karakterláncot tartalmazó alkalmazásbeállítás neve. Másolja a kapcsolati karakterláncot úgy, hogy a *névtér* **Kapcsolatinformáció** gombjára kattint, nem magára az eseményközpontra. Ennek a kapcsolati karakterláncnak el kell küldenie az üzenetet az eseményfolyamba.|
+|**típusa** | n/a | "EventHub" értékre kell állítani. |
+|**direction** | n/a | "Out" értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza a kötést a Azure Portalban. |
+|**név** | n/a | Az eseményt jelölő függvény kódjában használt változó neve. |
+|**elérési útja** |**EventHubName** | Csak 1. x függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
+|**eventHubName** |**EventHubName** | A 2. x és újabb függvények. Az Event hub neve. Ha az Event hub neve szerepel a kapcsolati sztringben is, ez az érték felülbírálja ezt a tulajdonságot futásidőben. |
+|**kapcsolat** |**Kapcsolat** | Az Event hub névteréhez tartozó kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. Másolja ezt a kapcsolati karakterláncot a *névtér* **kapcsolati adatok** gombjára kattintva, nem az Event hub-t. Ez a kapcsolati karakterláncnak küldési engedéllyel kell rendelkeznie az üzenet küldéséhez az esemény-adatfolyamba.|
 
 [!INCLUDE [app settings to local.settings.json](../articles/azure-functions/../../includes/functions-app-settings-local.md)]
 
@@ -258,66 +258,36 @@ Az alábbi táblázat a *function.json* fájlban és az `EventHub` attribútumba
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-Üzenetek küldése metódusparaméter használatával, `out string paramName`például . A C# `paramName` parancsfájlban a `name` *function.json*tulajdonságában megadott érték. Több üzenet írásához használhatja `IAsyncCollector<string>` vagy `out string`helyette a ot `ICollector<string>`
+Üzenetek küldése a metódus paraméterének használatával, `out string paramName`például:. A C#-szkriptben `paramName` a `name` *function. JSON*tulajdonságban megadott érték. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét. `out string`
 
-# <a name="c-script"></a>[C# parancsfájl](#tab/csharp-script)
+# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-Üzenetek küldése metódusparaméter használatával, `out string paramName`például . A C# `paramName` parancsfájlban a `name` *function.json*tulajdonságában megadott érték. Több üzenet írásához használhatja `IAsyncCollector<string>` vagy `out string`helyette a ot `ICollector<string>`
+Üzenetek küldése a metódus paraméterének használatával, `out string paramName`például:. A C#-szkriptben `paramName` a `name` *function. JSON*tulajdonságban megadott érték. Több üzenet írásához használhatja a `ICollector<string>` vagy `IAsyncCollector<string>` a helyét. `out string`
 
-# <a name="javascript"></a>[Javascript](#tab/javascript)
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-A kimeneti esemény `context.bindings.<name>` `<name>` elérése a `name` *function.json*tulajdonságában megadott érték használatával.
+A kimeneti eseményt a *függvény. JSON* `<name>` `name` tulajdonságában megadott érték használatával `context.bindings.<name>` érheti el.
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az Event Hub-üzenetek függvényből való kihirdetésére két lehetőség van:
+Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
 
-- **Visszatérési érték** `name` : Állítsa a *function.json* tulajdonságát a értékre. `$return` Ezzel a konfigurációval a függvény visszatérési értéke megmarad egy Event Hub üzenetként.
+- **Visszatérési érték**: állítsa `name` be a tulajdonságot a *függvény. JSON* fájljában `$return`. Ezzel a konfigurációval a függvény visszatérési értéke Event hub-üzenetként is megmarad.
 
-- **Elengedhetetlen:** Adja át [az](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) értéket a megadott metódusa a paraméter deklarált [out](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) típus. Az átadott `set` érték eseményközpont-üzenetként marad meg.
+- **Elengedhetetlen**: adjon meg egy értéket a [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az átadott érték `set` az Event hub-üzenetként is megmarad.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az Event Hub-üzenetek et az [EventHubOutput-megjegyzés](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) használatával kétféleképpen lehet kiküldeni egy függvényből:
+Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehetőség áll rendelkezésre a [EventHubOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.eventhuboutput) jegyzet használatával:
 
-- **Visszatérési érték**: Ha a notációt magára a függvényre alkalmazza, a függvény visszatérési értéke Eseményközpont-üzenetként marad meg.
+- Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke Event hub-üzenetként marad.
 
-- **Elengedhetetlen**: Az üzenet értékének explicit beállításához alkalmazza a megjegyzéseket [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)a `T` típus egy adott paraméterére, ahol POJO vagy bármely natív Java típus. Ezzel a konfigurációval egy `setValue` érték átadása a metódus nak megőrzi az értéket, mint egy Event Hub-üzenet.
+- **Elengedhetetlen**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet egy adott paraméterre [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding), ahol `T` a egy POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a `setValue` metódus értékének átadása az Event hub-üzenetként megőrzi az értéket.
 
 ---
 
-## <a name="exceptions-and-return-codes"></a>Kivételek és visszaküldési kódok
+## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
 | Kötés | Referencia |
 |---|---|
 | Eseményközpont | [Üzemeltetési útmutató](https://docs.microsoft.com/rest/api/eventhub/publisher-policy-operations) |
-
-<a name="host-json"></a>  
-
-## <a name="hostjson-settings"></a>host.json beállítások
-
-Ez a szakasz a kötéshez a 2.x-es vagy újabb verziókban elérhető globális konfigurációs beállításokat ismerteti. Az alábbi host.json példafájl csak a kötés 2.x+ verzióját tartalmazza. A 2.x-es és az azt meghaladó verziók globális konfigurációs beállításairól az [Azure Functions host.json referencia című témakörében](../articles/azure-functions/functions-host-json.md)olvashat bővebben.
-
-> [!NOTE]
-> A host.json 1.x függvényében a [host.json témakörben az Azure Functions 1.x host.json hivatkozása](../articles/azure-functions/functions-host-json-v1.md)látható.
-
-```json
-{
-    "version": "2.0",
-    "extensions": {
-        "eventHubs": {
-            "batchCheckpointFrequency": 5,
-            "eventProcessorOptions": {
-                "maxBatchSize": 256,
-                "prefetchCount": 512
-            }
-        }
-    }
-}  
-```
-
-|Tulajdonság  |Alapértelmezett | Leírás |
-|---------|---------|---------|
-|`maxBatchSize`|10|A fogadási ciklusonként fogadott maximális eseményszám.|
-|`prefetchCount`|300|Az alapul szolgáló `EventProcessorHost`eszköz által használt alapértelmezett lehívás előtti számláló .|
-|`batchCheckpointFrequency`|1|Az EventHub kurzor-ellenőrzőpont létrehozása előtt feldolgozandó eseménykötegek száma.|

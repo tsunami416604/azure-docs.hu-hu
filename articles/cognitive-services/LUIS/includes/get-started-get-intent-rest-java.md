@@ -1,5 +1,5 @@
 ---
-title: Szándék beszerezni a REST-hívást Java-ban
+title: A REST-hívással megkezdheti a javát
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: diberry
@@ -9,44 +9,44 @@ ms.topic: include
 ms.date: 04/20/2020
 ms.author: diberry
 ms.openlocfilehash: d59b7ebd1376d0bee10482cfe5faac1c53d1bde0
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733262"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [JDK SE](https://aka.ms/azure-jdks) (Java fejlesztői készlet, Standard Edition)
-* [Visual Studio Kód](https://code.visualstudio.com/) vagy a kedvenc IDE
-* Luis-alkalmazásazonosító – használja a nyilvános IoT-alkalmazásazonosítóját. `df67dcdb-c37d-46af-88e1-8b97951ca1c2` A gyorsútmutató kódban használt felhasználói lekérdezés az adott alkalmazásra jellemző.
+* A [Visual Studio Code](https://code.visualstudio.com/) vagy a kedvenc ide
+* A LUIS-alkalmazás azonosítója – használja a nyilvános IoT-alkalmazás `df67dcdb-c37d-46af-88e1-8b97951ca1c2`azonosítóját. A rövid útmutató kódjában használt felhasználói lekérdezés az adott alkalmazásra jellemző.
 
-## <a name="create-luis-runtime-key-for-predictions"></a>LUIS-futásidejű kulcs létrehozása előrejelzésekhez
+## <a name="create-luis-runtime-key-for-predictions"></a>LUIS Runtime-kulcs létrehozása előrejelzésekhez
 
-1. Bejelentkezés az [Azure-portálra](https://portal.azure.com)
-1. Kattintson [a **Nyelvismertetés létrehozása gombra.** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Adja meg a **Runtime** kulcs összes szükséges beállítását:
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Kattintson a [Létrehozás gombra **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
+1. Adja meg az összes szükséges beállítást a **futásidejű** kulcshoz:
 
     |Beállítás|Érték|
     |--|--|
     |Name (Név)|Kívánt név (2-64 karakter)|
     |Előfizetés|Válassza ki a megfelelő előfizetést|
-    |Hely|Válassza ki a közeli és elérhető helyeket|
-    |Tarifacsomag|`F0`- a minimális tarifaszint|
-    |Erőforráscsoport|Elérhető erőforráscsoport kiválasztása|
+    |Hely|Válasszon ki egy közeli és elérhető helyet|
+    |Tarifacsomag|`F0`– a minimális díjszabási réteg|
+    |Erőforráscsoport|Válasszon ki egy rendelkezésre álló erőforráscsoportot|
 
-1. Kattintson a **Létrehozás gombra,** és várja meg az erőforrás létrehozását. Létrehozása után keresse meg az erőforráslapot.
-1. Gyűjtse `endpoint` össze `key`a konfigurált és a.
+1. Kattintson a **Létrehozás** gombra, és várja meg az erőforrás létrehozását. A létrehozást követően navigáljon az erőforrás lapra.
+1. A configured `endpoint` és `key`a a összegyűjtése.
 
 ## <a name="get-intent-programmatically"></a>Szándék lekérése programozott módon
 
-Java használatával lekérdezheti az [előrejelzési végpontot,](https://aka.ms/luis-apim-v3-prediction) és előrejelzési eredményt kaphat.
+A Java használatával lekérdezheti az [előrejelzési végpontot](https://aka.ms/luis-apim-v3-prediction) , és lekérheti az előrejelzés eredményét.
 
-1. Készítsen egy alkönyvtárat, `lib` és másolja a következő java libs-be:
+1. Hozzon el egy nevű `lib` alkönyvtárat és másolja a következő Java könyvtárakba:
 
-    * [commons-fakitermelés-1.2.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
-    * [httpclient-4.5.3.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
-    * [httpcore-4.4.6.jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
+    * [Commons-Logging-1.2. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/commons-logging-1.2.jar)
+    * [httpclient-4.5.3. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpclient-4.5.3.jar)
+    * [httpcore-4.4.6. jar](https://raw.githubusercontent.com/Azure-Samples/cognitive-services-language-understanding/master/documentation-samples/quickstarts/analyze-text/java/lib/httpcore-4.4.6.jar)
 
 1. Másolja ki az alábbi kódot egy `Predict.java` nevű osztály létrehozásához:
 
@@ -117,33 +117,33 @@ Java használatával lekérdezheti az [előrejelzési végpontot,](https://aka.m
     }
     ```
 
-1. Cserélje `YOUR-KEY` le `YOUR-ENDPOINT` a és az értékeket a saját **előrejelzési Runtime** kulcs és végpont.
+1. Cserélje le `YOUR-KEY` az `YOUR-ENDPOINT` és az értékeket a saját előrejelzési **futtatókörnyezeti** kulcsára és végpontra.
 
     |Információ|Cél|
     |--|--|
-    |`YOUR-KEY`|A 32 karakterből álló **előrejelzési Runtime** kulcs.|
+    |`YOUR-KEY`|Az 32 karakteres előrejelzési **futtatókörnyezet** kulcsa.|
     |`YOUR-ENDPOINT`| Az előrejelzési URL-végpont. Például: `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
 
 
-1. Fordítsa le a java programot a parancssorból:
+1. A Java-program fordítása a parancssorból:
 
     ```console
     javac -cp ":lib/*" Predict.java
     ```
 
-1. Futtassa a java programot a parancssorból:
+1. Futtassa a Java-programot a parancssorból:
 
     ```console
     java -cp ":lib/*" Predict
     ```
 
-1. Tekintse át az előrejelzési választ, amely JSON-ként ad vissza:
+1. Tekintse át az előrejelzési választ, amely JSON-ként lesz visszaadva:
 
     ```console
     {'query': 'turn on all lights', 'prediction': {'topIntent': 'HomeAutomation.TurnOn', 'intents': {'HomeAutomation.TurnOn': {'score': 0.5375382}, 'None': {'score': 0.08687421}, 'HomeAutomation.TurnOff': {'score': 0.0207554}}, 'entities': {'HomeAutomation.Operation': ['on'], '$instance': {'HomeAutomation.Operation': [{'type': 'HomeAutomation.Operation', 'text': 'on', 'startIndex': 5, 'length': 2, 'score': 0.724984169, 'modelTypeId': -1, 'modelType': 'Unknown', 'recognitionSources': ['model']}]}}}}
     ```
 
-    A JSON válasz formázott olvashatóság:
+    Az olvashatóságra formázott JSON-Válasz:
 
     ```JSON
     {
@@ -188,9 +188,9 @@ Java használatával lekérdezheti az [előrejelzési végpontot,](https://aka.m
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha befejezte ezt a rövid útmutatót, törölje a fájlt a fájlrendszerből.
+Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből.
 
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kimondott szöveg hozzáadása és betanítás a Java-val](../get-started-get-model-rest-apis.md)
+> [Hosszúságú kimondott szöveg és-képzés hozzáadása Javával](../get-started-get-model-rest-apis.md)

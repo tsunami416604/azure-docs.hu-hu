@@ -1,21 +1,21 @@
 ---
-title: Az Azure Application Insights felülbírálja az alapértelmezett SDK-végpontokat
-description: Módosítsa az azure-figyelő application insights SDK-végpontok olyan régiókban, mint az Azure Government.
+title: Azure Application Insights alapértelmezett SDK-végpontok felülbírálása
+description: Az alapértelmezett Azure Monitor Application Insights SDK-végpontok módosítása olyan régiók esetében, mint például a Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
 ms.openlocfilehash: b43bd13c73f77c6292e2062db88d68a20e5bf480
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81729529"
 ---
-# <a name="application-insights-overriding-default-endpoints"></a>Az Application Insights felülbírálja az alapértelmezett végpontokat
+# <a name="application-insights-overriding-default-endpoints"></a>Application Insights felülbírálja az alapértelmezett végpontokat
 
-Ha adatokat szeretne küldeni az Application Insightsból bizonyos régiókba, felül kell bírálnia az alapértelmezett végpontcímeket. Minden SDK némileg eltérő módosításokat igényel, amelyek mindegyike ebben a cikkben ismertetjük. Ezek a módosítások a mintakód módosítását `QuickPulse_Endpoint_Address`és `TelemetryChannel_Endpoint_Address`a `Profile_Query_Endpoint_address` helyőrző értékek cseréjét igénylik az on, és az adott régió tényleges végpontcímeivel. A cikk vége a végpontcímekre mutató hivatkozásokat tartalmaz azon régiók esetében, ahol ez a konfiguráció szükséges.
+Ha Application Insightsről szeretne adatokat küldeni bizonyos régiókba, felül kell bírálnia az alapértelmezett végponti címeket. Az SDK-nak némileg eltérő módosításokra van szüksége, amelyek mindegyike a jelen cikkben szerepel. Ezek a változások megkövetelik a mintakód módosítását, valamint a `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`, és `Profile_Query_Endpoint_address` az adott régió tényleges végponti címeinek cseréjét. A cikk végén a végpontok címeire mutató hivatkozások találhatók, ahol ez a konfiguráció szükséges.
 
 > [!NOTE]
-> [A kapcsolati karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) az egyéni végpontok beállításának új előnyben részesített metódusai az Application Insightsban.
+> A [csatlakozási karakterláncok](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) az új előnyben részesített módszerek, amelyekkel egyéni végpontokat állíthat be Application Insightson belül.
 
 ---
 
@@ -24,7 +24,7 @@ Ha adatokat szeretne küldeni az Application Insightsból bizonyos régiókba, f
 # <a name="net"></a>[.NET](#tab/net)
 
 > [!NOTE]
-> Az applicationinsights.config fájl automatikusan felülírja az SDK-frissítés végrehajtásakor. Az SDK-frissítés végrehajtása után győződjön meg róla, hogy adja meg újra a régióspecifikus végpontértékeket.
+> Az applicationinsights. config fájlt automatikusan felülírja a rendszer, amikor egy SDK-frissítést hajt végre. Az SDK-frissítés végrehajtása után mindenképpen adja meg újra a régió-specifikus végpontok értékeit.
 
 ```xml
 <ApplicationInsights>
@@ -48,7 +48,7 @@ Ha adatokat szeretne küldeni az Application Insightsból bizonyos régiókba, f
 
 # <a name="net-core"></a>[.NET Core](#tab/netcore)
 
-Módosítsa az appsettings.json fájlt a projektben az alábbiak szerint a fő végpont módosításához:
+Módosítsa a appSettings. JSON fájlt a projektben az alábbiak szerint a fő végpont beállításához:
 
 ```json
 "ApplicationInsights": {
@@ -59,7 +59,7 @@ Módosítsa az appsettings.json fájlt a projektben az alábbiak szerint a fő v
   }
 ```
 
-Az élő metrikák és a profillekérdezésvégpont értékei csak kódsegítségével állíthatók be. Ha felül szeretné bírni az összes végpontérték alapértelmezett értékeit a `Startup.cs` kódsegítségével, végezze el a következő módosításokat a `ConfigureServices` fájl metódusában:
+Az élő metrikák és a profil lekérdezési végpontjának értékei csak kód használatával állíthatók be. Ha az összes végpont értékének alapértelmezett értékét szeretné felülbírálni a kódban, hajtsa végre a `ConfigureServices` következő módosításokat a `Startup.cs` fájl metódusában:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -76,15 +76,15 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-### <a name="azure-functions-v2x"></a>Az Azure Functions 2.x-es ével
+### <a name="azure-functions-v2x"></a>Azure Functions v2. x
 
-Telepítse a következő csomagokat a függvényprojektbe:
+Telepítse a következő csomagokat a Function projektben:
 
-- Microsoft.ApplicationInsights verzió 2.10.0
-- Microsoft.ApplicationInsights.PerfCounterCollector verzió 2.10.0
-- Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel 2.10.0-s verziója
+- A Microsoft. ApplicationInsights verziója 2.10.0
+- A Microsoft. ApplicationInsights. PerfCounterCollector verziója 2.10.0
+- Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel verzió 2.10.0
 
-Ezután adja hozzá (vagy módosítsa) a függvényalkalmazás indítókódját:
+Ezután adja hozzá (vagy módosítsa) a Function alkalmazás indítási kódját:
 
 ```csharp
 [assembly: WebJobsStartup(typeof(Example.Startup))]
@@ -129,7 +129,7 @@ namespace Example
 
 # <a name="java"></a>[Java](#tab/java)
 
-Módosítsa az applicationinsights.xml fájlt az alapértelmezett végpontcím módosításához.
+Módosítsa a applicationinsights. xml fájlt az alapértelmezett végponti címek módosításához.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -156,7 +156,7 @@ Módosítsa az applicationinsights.xml fájlt az alapértelmezett végpontcím m
 
 ### <a name="spring-boot"></a>Spring Boot
 
-Módosítsa `application.properties` a fájlt, és adja hozzá:
+Módosítsa a `application.properties` fájlt, és adja hozzá a következőket:
 
 ```yaml
 azure.application-insights.channel.in-process.endpoint-address= TelemetryChannel_Endpoint_Address
@@ -173,7 +173,7 @@ appInsights.defaultClient.config.quickPulseHost = "QuickPulse_Endpoint_Address";
 appInsights.Configuration.start();
 ```
 
-A végpontok környezeti változókon keresztül is konfigurálhatók:
+A végpontokat környezeti változók használatával is konfigurálhatja:
 
 ```
 Instrumentation Key: "APPINSIGHTS_INSTRUMENTATIONKEY"
@@ -196,25 +196,25 @@ Live Metrics Endpoint: "QuickPulse_Endpoint_Address"
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az opencensus-python SDK betöltési végpontjának módosításához az [opencensus-python repo-hoz tájékozódhat.](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py)
+A opencensus-Python SDK betöltési végpontjának módosításával kapcsolatos útmutatásért forduljon a [opencensus-Python-](https://github.com/census-instrumentation/opencensus-python/blob/af284a92b80bcbaf5db53e7e0813f96691b4c696/contrib/opencensus-ext-azure/opencensus/ext/azure/common/__init__.py) tárházhoz.
 
 ---
 
-## <a name="regions-that-require-endpoint-modification"></a>Végpont-módosítást igénylő régiók
+## <a name="regions-that-require-endpoint-modification"></a>Végpontok módosítását igénylő régiók
 
-Jelenleg csak az Azure Government és az [Azure China](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) szükséges végpontmódosításokat igénylő [régiók.](https://docs.microsoft.com/azure/china/resources-developer-guide)
+Jelenleg csak a végpontok módosítását igénylő régiók [Azure Government](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights) és az [Azure China](https://docs.microsoft.com/azure/china/resources-developer-guide).
 
 |Régió |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
-| Azure China | Telemetriai csatorna | `https://dc.applicationinsights.azure.cn/v2/track` |
-| Azure China | QuickPulse (élő mérőszámok) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
-| Azure China | Profillekérdezés |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
-| Azure Government | Telemetriai csatorna |`https://dc.applicationinsights.us/v2/track` |
-| Azure Government | QuickPulse (élő mérőszámok) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
-| Azure Government | Profillekérdezés |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
+| Azure China | Telemetria-csatorna | `https://dc.applicationinsights.azure.cn/v2/track` |
+| Azure China | QuickPulse (élő metrikák) |`https://live.applicationinsights.azure.cn/QuickPulseService.svc` |
+| Azure China | Profil lekérdezése |`https://dc.applicationinsights.azure.cn/api/profiles/{0}/appId`  |
+| Azure Government | Telemetria-csatorna |`https://dc.applicationinsights.us/v2/track` |
+| Azure Government | QuickPulse (élő metrikák) |`https://quickpulse.applicationinsights.us/QuickPulseService.svc` |
+| Azure Government | Profil lekérdezése |`https://dc.applicationinsights.us/api/profiles/{0}/appId` |
 
-Ha jelenleg az [Application Insights REST API-t](https://dev.applicationinsights.io/
-) használja, amely általában a "api.applicationinsights.io" keresztül érhető el, akkor a régió helyi végpontját kell használnia:
+Ha jelenleg a "api.applicationinsights.io"-n keresztül hozzáférő [Application Insights Rest APIt](https://dev.applicationinsights.io/
+) használja, akkor a régió helyi végpontját kell használnia:
 
 |Régió |  Végpont neve | Érték |
 |-----------------|:------------|:-------------|
@@ -222,9 +222,9 @@ Ha jelenleg az [Application Insights REST API-t](https://dev.applicationinsights
 | Azure Government | REST API | `api.applicationinsights.us`|
 
 > [!NOTE]
-> Az Azure App Services kód nélküli ügynök-/bővítményalapú figyelése **jelenleg nem támogatott** ezekben a régiókban. Amint ez a funkció elérhetővé válik, ez a cikk frissül.
+> Ezekben a régiókban **jelenleg nem támogatottak** a kód nélküli ügynök/bővítmény alapú figyelés az Azure app Services-ban. Amint ez a funkció elérhetővé válik, a cikk frissülni fog.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha többet szeretne megtudni az Azure Government egyéni módosításairól, olvassa el az [Azure figyelési és -kezelési részletes útmutatóját.](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)
-- Ha többet szeretne megtudni az Azure China-ról, olvassa el az [Azure China forgatókönyvét.](https://docs.microsoft.com/azure/china/)
+- Ha többet szeretne megtudni a Azure Government egyéni módosításaival kapcsolatban, tekintse meg az [Azure monitorozásával és](https://docs.microsoft.com/azure/azure-government/documentation-government-services-monitoringandmanagement#application-insights)felügyeletével kapcsolatos részletes útmutatást.
+- Ha többet szeretne megtudni az Azure China-ról, tekintse meg az [Azure China](https://docs.microsoft.com/azure/china/)forgatókönyvét.

@@ -1,6 +1,6 @@
 ---
-title: Oracle vész-helyreállítási forgatókönyv áttekintése az Azure-környezetben | Microsoft dokumentumok
-description: Vész-helyreállítási forgatókönyv egy Oracle Database 12c adatbázishoz az Azure-környezetben
+title: Az Oracle vész-helyreállítási forgatókönyvek áttekintése az Azure-környezetben | Microsoft Docs
+description: Vész-helyreállítási forgatókönyv egy Oracle Database 12c-adatbázishoz az Azure-környezetben
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: BorisB2015
@@ -15,89 +15,89 @@ ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: borisb
 ms.openlocfilehash: adf4c54d4f43f806ae985f7c1523303cf574b4c1
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687463"
 ---
-# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Vészhelyreállítás egy Oracle Database 12c adatbázishoz Azure-környezetben
+# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Oracle Database 12c-adatbázis vész-helyreállítása Azure-környezetben
 
 ## <a name="assumptions"></a>Feltételezések
 
-- Ismeri az Oracle Data Guard tervezését és az Azure-környezeteket.
+- Megértette az Oracle-alapú adatvédelem kialakítását és az Azure-környezeteket.
 
 
 ## <a name="goals"></a>Célok
 - Tervezze meg a vész-helyreállítási (DR) követelményeknek megfelelő topológiát és konfigurációt.
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>1. forgatókönyv: Elsődleges és DR-helyek az Azure-ban
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>1. forgatókönyv: az Azure-beli elsődleges és DR-helyek
 
-Az ügyfél oracle-adatbázist állított be az elsődleges helyen. A VÉSZ-hely egy másik régióban található. Az ügyfél az Oracle Data Guard segítségével gyors helyreállítást kér ezen oldalak között. Az elsődleges hely is rendelkezik egy másodlagos adatbázis jelentési és egyéb célokra. 
+Az ügyfél rendelkezik egy Oracle-adatbázissal, amely az elsődleges helyen van beállítva. Egy DR-hely egy másik régióban található. Az ügyfél az Oracle adatvédelmet használja a helyek közötti gyors helyreállításhoz. Az elsődleges hely egy másodlagos adatbázist is tartalmaz a jelentéskészítéshez és más felhasználásokhoz. 
 
 ### <a name="topology"></a>Topológia
 
-Az alábbiakban összefoglaljuk az Azure beállítását:
+Az Azure Setup összefoglalása:
 
-- Két hely (elsődleges hely és vész-pont)
+- Két hely (egy elsődleges hely és egy DR-hely)
 - Két virtuális hálózat
-- Két Oracle adatbázis a Data Guard segítségével (elsődleges és készenléti állapot)
-- Két Oracle adatbázis golden gate-tel vagy data guard-mal (csak elsődleges helyen)
-- Két alkalmazásszolgáltatás, egy elsődleges és egy a VÉSZ-webhelyen
-- Rendelkezésre *állási készlet,* amely az elsődleges helyen lévő adatbázis- és alkalmazásszolgáltatáshoz használatos
-- Minden webhelyen egy ugródoboz, amely korlátozza a hozzáférést a magánhálózathoz, és csak rendszergazda általi bejelentkezést tesz lehetővé
-- Jumpbox, alkalmazásszolgáltatás, adatbázis és VPN-átjáró külön alhálózatokon
-- NSG kényszerítve az alkalmazás- és adatbázis-alhálózatokon
+- Két Oracle-adatbázis az adatvédelemmel (elsődleges és készenléti)
+- Két Oracle-adatbázis a Golden Gate vagy az adatvédelem (csak az elsődleges hely) esetén
+- Két Application Services, egy elsődleges és egy a DR webhelyén
+- Egy *rendelkezésre állási csoport,* amely az elsődleges helyen található adatbázis-és alkalmazás-szolgáltatáshoz használatos
+- Egy Jumpbox minden helyen, amely korlátozza a magánhálózaton való hozzáférést, és csak a rendszergazda általi bejelentkezést engedélyezi
+- Jumpbox, alkalmazás-szolgáltatás, adatbázis és VPN-átjáró külön alhálózatokon
+- NSG kényszerítve az alkalmazás-és adatbázis-alhálózatokon
 
-![Képernyőkép a DR topológia lapról](./media/oracle-disaster-recovery/oracle_topology_01.png)
+![A DR-topológia oldalának képernyőképe](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>2. forgatókönyv: Elsődleges hely a helyszínen és a VÉSZ-hely az Azure-ban
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>2. forgatókönyv: a helyszíni és DR. Azure-beli elsődleges hely
 
-Az ügyfél rendelkezik egy helyszíni Oracle adatbázis-beállítással (elsődleges hely). A DR-webhely az Azure-ban található. Az Oracle Data Guard a helyek közötti gyors helyreállításhoz használható. Az elsődleges hely is rendelkezik egy másodlagos adatbázis jelentési és egyéb célokra. 
+Az ügyfél helyszíni Oracle Database-telepítést (elsődleges helyet) tartalmaz. A DR-hely az Azure-ban található. Az Oracle-adatőr a helyek közötti gyors helyreállításhoz használható. Az elsődleges hely egy másodlagos adatbázist is tartalmaz a jelentéskészítéshez és más felhasználásokhoz. 
 
-Ehhez a beállításhoz két módszer létezik.
+Ennek a beállításnak két megközelítése van.
 
-### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>1. megközelítés: Közvetlen kapcsolatok a helyszíni és az Azure között, amely nyitott TCP-portokat igényel a tűzfalon 
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>1. módszer: közvetlen kapcsolatok a helyszíni és az Azure között, a tűzfalon nyitott TCP-portok megkövetelése 
 
-Nem javasoljuk a közvetlen kapcsolatokat, mert a TCP-portokat a külvilág számára elérhetővé teszik.
+A közvetlen kapcsolatok nem ajánlottak, mert a TCP-portokat a külvilág számára teszik elérhetővé.
 
 #### <a name="topology"></a>Topológia
 
-Az alábbiakban összefoglaljuk az Azure-beállításokat:
+A következőkben az Azure-telepítés összegzése található:
 
-- Egy DR-webhely 
+- Egy DR-hely 
 - Egy virtuális hálózat
-- Egy Oracle adatbázis data guard (aktív)
-- Egy alkalmazásszolgáltatás a VÉSZ-webhelyen
-- Egy ugródoboz, amely korlátozza a hozzáférést a magánhálózathoz, és csak rendszergazda általi bejelentkezést tesz lehetővé
-- Jumpbox, alkalmazásszolgáltatás, adatbázis és VPN-átjáró külön alhálózatokon
-- NSG kényszerítve az alkalmazás- és adatbázis-alhálózatokon
-- NSG-házirend/szabály az 1521-es bejövő TCP-port (vagy a felhasználó által definiált port) engedélyezéséhez
-- NSG-házirend/szabály, amely csak a virtuális hálózat eléréséhez csak a helyszíni IP-címeket/címeket (DB vagy alkalmazás) korlátozza
+- Egy Oracle-adatbázis és egy adatőr (aktív)
+- Egy Application Service a DR webhelyén
+- Egy Jumpbox, amely korlátozza a magánhálózat elérését, és csak a rendszergazda általi bejelentkezést engedélyezi
+- Jumpbox, alkalmazás-szolgáltatás, adatbázis és VPN-átjáró külön alhálózatokon
+- NSG kényszerítve az alkalmazás-és adatbázis-alhálózatokon
+- Egy NSG házirend/szabály, amely engedélyezi a 1521 bejövő TCP-portot (vagy egy felhasználó által megadott portot)
+- Egy NSG házirend/szabály, amely kizárólag a helyszíni IP-címet vagy-címeket korlátozza a virtuális hálózat eléréséhez
 
-![Képernyőkép a DR topológia lapról](./media/oracle-disaster-recovery/oracle_topology_02.png)
+![A DR-topológia oldalának képernyőképe](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="approach-2-site-to-site-vpn"></a>2. megközelítés: Helyek közötti VPN
-A helyek közötti VPN jobb megközelítés. A VPN beállításáról a [Virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a CLI használatával című](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)témakörben talál további információt.
+### <a name="approach-2-site-to-site-vpn"></a>2. módszer: helyek közötti VPN
+A helyek közötti VPN jobb megközelítés. A VPN beállításával kapcsolatos további információkért lásd: [virtuális hálózat létrehozása helyek közötti VPN-kapcsolattal a CLI használatával](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli).
 
 #### <a name="topology"></a>Topológia
 
-Az alábbiakban összefoglaljuk az Azure-beállításokat:
+A következőkben az Azure-telepítés összegzése található:
 
-- Egy DR-webhely 
+- Egy DR-hely 
 - Egy virtuális hálózat 
-- Egy Oracle adatbázis data guard (aktív)
-- Egy alkalmazásszolgáltatás a VÉSZ-webhelyen
-- Egy ugródoboz, amely korlátozza a hozzáférést a magánhálózathoz, és csak rendszergazda általi bejelentkezést tesz lehetővé
-- A jumpbox, az alkalmazásszolgáltatás, az adatbázis és a VPN-átjáró külön alhálózatokon található
-- NSG kényszerítve az alkalmazás- és adatbázis-alhálózatokon
+- Egy Oracle-adatbázis és egy adatőr (aktív)
+- Egy Application Service a DR webhelyén
+- Egy Jumpbox, amely korlátozza a magánhálózat elérését, és csak a rendszergazda általi bejelentkezést engedélyezi
+- A Jumpbox, az alkalmazás-szolgáltatás, az adatbázis és a VPN-átjáró külön alhálózatokon található.
+- NSG kényszerítve az alkalmazás-és adatbázis-alhálózatokon
 - Helyek közötti VPN-kapcsolat a helyszíni és az Azure között
 
-![Képernyőkép a DR topológia lapról](./media/oracle-disaster-recovery/oracle_topology_03.png)
+![A DR-topológia oldalának képernyőképe](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-reading"></a>További olvasás
+## <a name="additional-reading"></a>További olvasnivaló
 
-- [Oracle-adatbázis tervezése és megvalósítása az Azure-ban](oracle-design.md)
+- [Oracle-adatbázis tervezése és implementálása az Azure-ban](oracle-design.md)
 - [Oracle Data Guard konfigurálása](configure-oracle-dataguard.md)
 - [Az Oracle Golden Gate konfigurálása](configure-oracle-golden-gate.md)
 - [Oracle biztonsági mentés és helyreállítás](oracle-backup-recovery.md)
@@ -105,5 +105,5 @@ Az alábbiakban összefoglaljuk az Azure-beállításokat:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Magas rendelkezésre állású virtuális gépek létrehozása](../../linux/create-cli-complete.md)
-- [Fedezze fel a virtuális gép üzembe helyezését az Azure CLI-mintákban](../../linux/cli-samples.md)
+- [Oktatóanyag: kiválóan elérhető virtuális gépek létrehozása](../../linux/create-cli-complete.md)
+- [A virtuális gépek üzembe helyezésének megismerése Azure CLI-mintákkal](../../linux/cli-samples.md)

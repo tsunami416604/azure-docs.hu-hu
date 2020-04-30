@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Az Anomáliadetektor ügyfélkönyvtárának használata'
+title: 'Gyors útmutató: az anomália-detektor ügyféloldali kódtár használata'
 titleSuffix: Azure Cognitive Services
-description: Az Anomáliadetektor API ügyfélkódtárakat kínál az adatsorok rendellenességei észlelésére kötegként vagy streamelési adatokon.
+description: A rendellenesség-Kiderítő API az adatsorozatokban lévő rendellenességek észlelésére szolgáló ügyféloldali kódtárakat biztosít a Batch vagy a streaming adatai számára.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -12,13 +12,13 @@ ms.topic: quickstart
 ms.date: 04/16/2020
 ms.author: aahi
 ms.openlocfilehash: 7a48992ab5978824f1ffb4b2c3ac0670f40c1424
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759978"
 ---
-# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Rövid útmutató: Az Anomáliadetektor ügyfélkönyvtárának használata
+# <a name="quickstart-use-the-anomaly-detector-client-library"></a>Gyors útmutató: az anomália-detektor ügyféloldali kódtár használata
 
 ::: zone pivot="programming-language-csharp"
 

@@ -1,19 +1,19 @@
 ---
-title: 'Rövid útmutató: SDK-lekérdezés előrejelzési végpont - LUIS'
-description: Ez a rövid útmutató bemutatja, hogyan használhatja az SDK-t egy felhasználói utterance (kifejezés) küldéséhez az Azure Cognitive Services LUIS-alkalmazásnak, és hogyan kaphat előrejelzést.
+title: 'Gyors útmutató: SDK-lekérdezések előrejelzési végpontja – LUIS'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan küldhet el egy felhasználót az Azure Cognitive Services LUIS alkalmazásnak az SDK használatával, és hogyan kaphat előrejelzést.
 ms.topic: quickstart
 ms.date: 04/20/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
 ms.openlocfilehash: 2b85e3085a7265fa007422180ff1cfe93d4fef57
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732056"
 ---
-# <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>Rövid útmutató: A V3 előrejelzési végpontjának lekérdezése SDK-val
+# <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>Gyors útmutató: v3 előrejelzési végpont lekérdezése SDK-val
 
-Az SDK használatával küldjön egy felhasználói utterance (LANGUAGE Understanding) (LUIS) és a felhasználó szándékának előrejelzése.
+Használja az SDK-t, hogy a felhasználó teljes Language Understanding (LUIS) küldje el a felhasználót, és a felhasználó szándékának előrejelzését kapja.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get prediction with C# SDK](./includes/sdk-csharp-prediction.md)]
@@ -30,4 +30,4 @@ Az SDK használatával küldjön egy felhasználói utterance (LANGUAGE Understa
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: A LUIS alkalmazás létrehozása a felhasználói szándékok meghatározásához](luis-quickstart-intents-only.md)
+> [Oktatóanyag: a felhasználói szándékok meghatározására szolgáló LUIS-alkalmazás létrehozása](luis-quickstart-intents-only.md)

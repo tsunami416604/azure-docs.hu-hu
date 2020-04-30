@@ -1,42 +1,42 @@
 ---
-title: Az Azure Application Insights .Net Agent API-hivatkozás
-description: Application Insights Ügynök API-referencia. A webhely teljesítményének figyelése a webhely újratelepítése nélkül. Együttműködik ASP.NET helyszíni, virtuális gépeken vagy az Azure-ban üzemeltetett webalkalmazásokkal.
+title: Azure Application Insights .net-ügynök API-referenciája
+description: Application Insights Agent API-referenciája. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 02762c4b3af735eb0b4c19aaf450b2b3a416a2be
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733673"
 ---
-# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Ügynök API-referencia
+# <a name="azure-monitor-application-insights-agent-api-reference"></a>Azure Monitor Application Insights Agent API-referenciája
 
-Ez a cikk az [Az.ApplicationMonitor PowerShell modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagjaként készült parancsmalapot ismerteti.
+Ez a cikk olyan parancsmagot ismertet, amely az az [. ApplicationMonitor PowerShell-modul](https://www.powershellgallery.com/packages/Az.ApplicationMonitor/)tagja.
 
 > [!NOTE] 
-> - A kezdéshez szüksége van egy műszerkulcsra. További információt az [Erőforrás létrehozása](create-new-resource.md#copy-the-instrumentation-key)című témakörben talál.
-> - Ez a parancsmag megköveteli, hogy tekintse át és fogadja el licencünket és adatvédelmi nyilatkozatunkat.
+> - Első lépésként szükség van egy kialakítási kulcsra. További információt az [erőforrás létrehozása](create-new-resource.md#copy-the-instrumentation-key)című témakörben talál.
+> - Ehhez a parancsmaghoz meg kell vizsgálni és el kell fogadnia a licenc-és adatvédelmi nyilatkozatot.
 
 > [!IMPORTANT] 
-> Ehhez a parancsmaghoz rendszergazdai engedélyekkel és emelt szintű végrehajtási szabályzattal rendelkező PowerShell-munkamenet szükséges. További információ: [PowerShell futtatása rendszergazdaként emelt szintű végrehajtási házirenddel.](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy)
-> - Ez a parancsmag megköveteli, hogy tekintse át és fogadja el licencünket és adatvédelmi nyilatkozatunkat.
-> - A műszerezési motor további többletterhelést jelent, és alapértelmezés szerint ki van kapcsolva.
+> Ehhez a parancsmaghoz rendszergazdai engedélyekkel rendelkező PowerShell-munkamenetre és emelt szintű végrehajtási szabályzatra van szükség. További információ: a [PowerShell futtatása rendszergazdaként emelt szintű végrehajtási házirenddel](status-monitor-v2-detailed-instructions.md#run-powershell-as-admin-with-an-elevated-execution-policy).
+> - Ehhez a parancsmaghoz meg kell vizsgálni és el kell fogadnia a licenc-és adatvédelmi nyilatkozatot.
+> - A Instrumentation-motor további terhelést hoz létre, és alapértelmezés szerint ki van kapcsolva.
 
 
-## <a name="enable-instrumentationengine"></a>Enable-InstrumentationEngine
+## <a name="enable-instrumentationengine"></a>InstrumentationEngine engedélyezése
 
-Néhány beállításkulcs beállításával engedélyezi a műszerezési motort.
+A rendszerállapot-kezelő motor egyes kulcsainak beállításával engedélyezhető.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
-A műszerezési motor kiegészítheti a .
-Olyan eseményeket és üzeneteket gyűjt, amelyek egy felügyelt folyamat végrehajtását írják le. Ezek az események és üzenetek közé tartoznak a függőségi eredménykódok, a HTTP-műveletek és [az SQL parancsszöveg.](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)
+A kialakítási motor a .NET SDK-k által gyűjtött adatokat is kiegészítheti.
+Olyan eseményeket és üzeneteket gyűjt, amelyek leírják a felügyelt folyamat végrehajtását. Ezek az események és üzenetek függőségi eredmény kódokat, HTTP-műveleteket és [SQL-parancsok szövegét](asp-net-dependencies.md#advanced-sql-tracking-to-get-full-sql-query)tartalmazzák.
 
-Engedélyezze a műszermotort, ha:
-- Már engedélyezte a figyelést a Parancsmag engedélyezése, de nem engedélyezte a műszermotort.
-- Manuálisan instrumented az alkalmazást a .NET SDK-k, és szeretné összegyűjteni további telemetriai adatokat.
+A rendszerállapot-kezelő motor engedélyezése, ha:
+- Már engedélyezte a figyelést az Enable parancsmaggal, de nem engedélyezte a kialakítási motort.
+- Manuálisan alakította ki az alkalmazást a .NET SDK-val, és további telemetria szeretne gyűjteni.
 
 ### <a name="examples"></a>Példák
 
@@ -47,49 +47,49 @@ PS C:\> Enable-InstrumentationEngine
 ### <a name="parameters"></a>Paraméterek
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**Választható.** Ezzel a kapcsolóval elfogadhatja a licencet és az adatvédelmi nyilatkozatot a fej nélküli telepítésekben.
+**Választható.** Ezzel a kapcsolóval fogadhatja el a fej nélküli telepítések licencét és adatvédelmi nyilatkozatát.
 
 #### <a name="-verbose"></a>-Részletes
-**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat kell kiadnia.
+**Általános paraméter.** Ezt a kapcsolót használja a részletes naplók kinyomtatásához.
 
 ### <a name="output"></a>Kimenet
 
 
-##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Példa kimenet a műszerezési motor sikeres engedélyezéséből
+##### <a name="example-output-from-successfully-enabling-the-instrumentation-engine"></a>Példa a Instrumentation-motor sikeres engedélyezésének eredményére
 
 ```
 Configuring IIS Environment for instrumentation engine...
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="enable-applicationinsightsmonitoring"></a>Enable-ApplicationInsightsMonitoring
+## <a name="enable-applicationinsightsmonitoring"></a>ApplicationInsightsMonitoring engedélyezése
 
-Lehetővé teszi az IIS-alkalmazások kód nélküli csatolását a célszámítógépen.
+Engedélyezi az IIS-alkalmazások kód alapú csatolásának figyelését a célszámítógépen.
 
-Ez a parancsmag módosítja az IIS applicationHost.config fájlját, és beállít néhány beállításkulcsot.
-Létrehoz egy applicationinsights.ikey.config fájlt is, amely meghatározza az egyes alkalmazások által használt instrumentation kulcsot.
-Az IIS indításkor betölti a RedfieldModule modult, amely az alkalmazások indításakor befecskendezi az Application Insights SDK-t az alkalmazásokba.
+Ez a parancsmag módosítja az IIS applicationHost. config fájlt, és beállítja a beállításkulcsokat.
+Emellett létrehoz egy applicationinsights. rendszerállapotkulcsot. config fájlt is, amely meghatározza az egyes alkalmazások által használt kialakítási kulcsot.
+Az IIS betölti a RedfieldModule az indításkor, amely az alkalmazások indításakor beadja a Application Insights SDK-t az alkalmazásokba.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
-Miután engedélyezte a figyelést, azt javasoljuk, hogy [az Élő metrikák](live-stream.md) használatával gyorsan ellenőrizze, hogy az alkalmazás telemetriai adatokat küld-e nekünk.
+Miután engedélyezte a figyelést, javasoljuk, hogy [élő metrikák](live-stream.md) használatával gyorsan ellenőrizze, hogy az alkalmazás küldjön-e nekünk telemetria.
 
 ### <a name="examples"></a>Példák
 
-#### <a name="example-with-a-single-instrumentation-key"></a>Példa egyetlen műszerezési kulccsal
-Ebben a példában az aktuális számítógépen lévő összes alkalmazáshoz egyetlen instrumentation kulcs van rendelve.
+#### <a name="example-with-a-single-instrumentation-key"></a>Példa egyetlen kialakítási kulccsal
+Ebben a példában az aktuális számítógépen lévő összes alkalmazás egyetlen kialakítási kulcshoz van rendelve.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Példa műszerezési kulcstérképpel
+#### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
 Ebben a példában:
-- `MachineFilter`a helyettesítő karakter használatával `'.*'` megegyezik az aktuális számítógéppel.
-- `AppFilter='WebAppExclude'``null` műszerezési kulcsot biztosít. A megadott alkalmazás nem lesz instrumented.
-- `AppFilter='WebAppOne'`a megadott alkalmazáshoz egyedi instrumentation kulcsot rendel.
-- `AppFilter='WebAppTwo'`a megadott alkalmazáshoz egyedi instrumentation kulcsot rendel.
-- Végül `AppFilter` is használja `'.*'` a helyettesítő karaktert, hogy megfeleljen az összes olyan webalkalmazást, amely nem felel meg a korábbi szabályok, és rendeljen hozzá egy alapértelmezett instrumentation kulcs.
-- Az olvashatóság érdekében a szóközök kerülnek hozzáadásra.
+- `MachineFilter`az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
+- `AppFilter='WebAppExclude'``null` rendszerállapot-kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
+- `AppFilter='WebAppOne'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- `AppFilter='WebAppTwo'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- Végezetül a `AppFilter` `'.*'` helyettesítő karaktert is használja a korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
+- A szóközök hozzáadódnak az olvashatósághoz.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap 
@@ -103,52 +103,52 @@ PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap
 
 ### <a name="parameters"></a>Paraméterek
 
-#### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Kötelező.** Ezzel a paraméterrel egyetlen instrumentation kulcsot biztosíthat a célszámítógépen lévő összes alkalmazás számára.
+#### <a name="-instrumentationkey"></a>– InstrumentationKey
+**Kötelező.** Ezzel a paraméterrel egyetlen rendszerállapot-kulcsot adhat meg a célszámítógépen lévő összes alkalmazás számára.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Kötelező.** Ezzel a paraméterrel több instrumentation kulcsot és az egyes alkalmazások által használt instrumentation kulcsok leképezését biztosítja.
-A beállítással egyetlen telepítési parancsfájlt `MachineFilter`hozhat létre több számítógéphez.
+**Kötelező.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
+A beállítással `MachineFilter`egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
 
 > [!IMPORTANT]
-> Az alkalmazások a szabályok sorrendjében egyeznek meg a szabályokkal. Ezért először a legkonkrétabb szabályokat kell megadnia, a legáltalánosabb szabályokat pedig utoljára.
+> Az alkalmazások a szabályok megadásának sorrendjében egyeznek meg a szabályokkal. Ezért a legpontosabb szabályokat kell megadnia az első és a legáltalánosabb szabályok közül.
 
 ##### <a name="schema"></a>Séma
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationSettings=@{InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'}})`
 
-- **MachineFilter** a számítógép vagy a virtuális gép nevének kötelező C# regex.
-    - '.*' mindennek megfelel
-    - A "Számítógépnév" csak a megadott pontos névvel rendelkező számítógépeket egyezteti.
-- **Az AppFilter** az IIS helynevének kötelező C# regex-e. Tudod kap egy listát a helyszínek a szerveren futtatásával a parancsot [get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite).
-    - '.*' mindennek megfelel
-    - A "SiteName" csak a megadott pontos névvel rendelkező IIS-webhelynek felel meg.
-- **InstrumentationKey** szükséges az előző két szűrőnek megfelelő alkalmazások figyelésének engedélyezéséhez.
-    - Hagyja meg ezt az értéket null értékű, ha szabályokat szeretne definiálni a figyelés kizárásához.
+- A **MachineFilter** a számítógép vagy a virtuális gép nevének kötelező C# regexje.
+    - a ". *" mindennek megfelel
+    - A "számítógépnév" csak a pontosan megadott névvel rendelkező számítógépekhez fog megfelelni.
+- A **AppFilter** az IIS-hely nevének kötelező C#-alapú regexje. A [Get-iissite](https://docs.microsoft.com/powershell/module/iisadministration/get-iissite)parancs futtatásával lekérheti a kiszolgálón található helyek listáját.
+    - a ". *" mindennek megfelel
+    - A "SiteName" csak az IIS-helynek felel meg, amely a pontos nevet adja meg.
+- A **InstrumentationKey** az előző két szűrőnek megfelelő alkalmazások figyelésének engedélyezéséhez szükséges.
+    - Ha a figyelés kizárásához szabályokat szeretne meghatározni, hagyja üresen ezt az értéket.
 
 
 #### <a name="-enableinstrumentationengine"></a>-EnableInstrumentationEngine
-**Választható.** Ezzel a kapcsolóval lehetővé teszi, hogy a műszerezési motor eseményeket és üzeneteket gyűjtsön afelügyelt folyamat végrehajtása során zajló eseményekről és üzenetekről. Ezek az események és üzenetek függőségi eredménykódokat, HTTP-műveleteket és SQL parancsszöveget tartalmaznak.
+**Választható.** Ezzel a kapcsolóval engedélyezheti a rendszerállapot-kezelő motornak, hogy eseményeket és üzeneteket gyűjtsön arról, hogy mi történik a felügyelt folyamat végrehajtása során. Ezek az események és üzenetek függőségi eredmény kódokat, HTTP-műveleteket és SQL-parancsok szövegét tartalmazzák.
 
-A műszerezési motor növeli a rezsi, és alapértelmezés szerint ki van kapcsolva.
+A kialakítási motor terhelést hoz létre, és alapértelmezés szerint ki van kapcsolva.
 
 #### <a name="-acceptlicense"></a>-AcceptLicense
-**Választható.** Ezzel a kapcsolóval elfogadhatja a licencet és az adatvédelmi nyilatkozatot a fej nélküli telepítésekben.
+**Választható.** Ezzel a kapcsolóval fogadhatja el a fej nélküli telepítések licencét és adatvédelmi nyilatkozatát.
 
 #### <a name="-ignoresharedconfig"></a>-IgnoreSharedConfig
-Ha webkiszolgáló-fürttel rendelkezik, lehet, hogy [megosztott konfigurációt](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
-A HttpModule nem adható be ebbe a megosztott konfigurációba.
-Ez a parancsfájl sikertelen lesz azzal az üzenettel, hogy további telepítési lépésekre van szükség.
-Ezzel a kapcsolóval figyelmen kívül hagyhatja ezt az ellenőrzést, és folytathatja az előfeltételek telepítését. További információ: [known conflict-with-iis-shared-configuration](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
+Ha webkiszolgálókat tartalmazó fürttel rendelkezik, lehet, hogy [megosztott konfigurációt](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
+A HttpModule nem lehet beinjektálni ebbe a megosztott konfigurációba.
+Ez a parancsfájl nem fog működni, ha az üzenetben további telepítési lépések szükségesek.
+Ezzel a kapcsolóval figyelmen kívül hagyhatja ezt az ellenőrzés, és folytathatja az előfeltételek telepítését. További információ: [ismert ütközés-az-IIS-Shared-Configuration](status-monitor-v2-troubleshoot.md#conflict-with-iis-shared-configuration)
 
 #### <a name="-verbose"></a>-Részletes
-**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
+**Általános paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
 
-#### <a name="-whatif"></a>-Milenne 
-**Közös paraméter.** Ezzel a kapcsolóval tesztelheti és ellenőrizheti a bemeneti paramétereket anélkül, hogy ténylegesen engedélyezné a figyelést.
+#### <a name="-whatif"></a>– WhatIf 
+**Általános paraméter.** Ezzel a kapcsolóval tesztelheti és érvényesítheti a bemeneti paramétereket a figyelés tényleges engedélyezése nélkül.
 
 ### <a name="output"></a>Kimenet
 
-#### <a name="example-output-from-a-successful-enablement"></a>Példa kimenetre egy sikeres engedélyezésből
+#### <a name="example-output-from-a-successful-enablement"></a>Példa a sikeres engedélyezésből származó kimenetre
 
 ```powershell
 Initiating Disable Process
@@ -181,9 +181,9 @@ Updating app pool permissions...
 Successfully enabled Application Insights Status Monitor
 ```
 
-## <a name="disable-instrumentationengine"></a>Disable-InstrumentationEngine
+## <a name="disable-instrumentationengine"></a>InstrumentationEngine letiltása
 
-Letiltja a műszerezési motort néhány beállításkulcs eltávolításával.
+Letiltja a rendszerállapot-kezelő motort néhány beállításkulcs eltávolításával.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
 ### <a name="examples"></a>Példák
@@ -195,12 +195,12 @@ PS C:\> Disable-InstrumentationEngine
 ### <a name="parameters"></a>Paraméterek 
 
 #### <a name="-verbose"></a>-Részletes
-**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat kell kiadnia.
+**Általános paraméter.** Ezt a kapcsolót használja a részletes naplók kinyomtatásához.
 
 ### <a name="output"></a>Kimenet
 
 
-##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Példa a műszermotor sikeres letiltásából származó kimenetre
+##### <a name="example-output-from-successfully-disabling-the-instrumentation-engine"></a>Példa a Instrumentation-motor sikeres letiltásának kimenetére
 
 ```powershell
 Configuring IIS Environment for instrumentation engine...
@@ -210,10 +210,10 @@ Registry: removing 'HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WAS[Env
 Configuring registry for instrumentation engine...
 ```
 
-## <a name="disable-applicationinsightsmonitoring"></a>Disable-ApplicationInsightsMonitoring
+## <a name="disable-applicationinsightsmonitoring"></a>ApplicationInsightsMonitoring letiltása
 
 Letiltja a figyelést a célszámítógépen.
-Ez a parancsmag eltávolítja az IIS applicationHost.config fájl szerkesztéseit, és eltávolítja a beállításkulcsokat.
+Ez a parancsmag eltávolítja a módosításokat az IIS applicationHost. config fájlból, és eltávolítja a beállításkulcsokat.
 
 ### <a name="examples"></a>Példák
 
@@ -224,12 +224,12 @@ PS C:\> Disable-ApplicationInsightsMonitoring
 ### <a name="parameters"></a>Paraméterek 
 
 #### <a name="-verbose"></a>-Részletes
-**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
+**Általános paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
 
 ### <a name="output"></a>Kimenet
 
 
-##### <a name="example-output-from-successfully-disabling-monitoring"></a>Példa a figyelés sikeres letiltásának kimenetére
+##### <a name="example-output-from-successfully-disabling-monitoring"></a>Példa a figyelés sikeres letiltására
 
 ```powershell
 Initiating Disable Process
@@ -255,7 +255,7 @@ Successfully disabled Application Insights Status Monitor
 
 ## <a name="get-applicationinsightsmonitoringconfig"></a>Get-ApplicationInsightsMonitoringConfig
 
-Leveszi a konfigurációs fájlt, és kinyomtatja az értékeket a konzolra.
+Lekéri a konfigurációs fájlt, és kiírja az értékeket a-konzolra.
 
 ### <a name="examples"></a>Példák
 
@@ -265,12 +265,12 @@ PS C:\> Get-ApplicationInsightsMonitoringConfig
 
 ### <a name="parameters"></a>Paraméterek
 
-Nincs szükség paraméterekre.
+Nincs szükség paraméterre.
 
 ### <a name="output"></a>Kimenet
 
 
-##### <a name="example-output-from-reading-the-config-file"></a>Példa kimenetre a konfigurációs fájl olvasásából
+##### <a name="example-output-from-reading-the-config-file"></a>Példa kimenetre a konfigurációs fájl olvasásakor
 
 ```
 RedfieldConfiguration:
@@ -282,15 +282,15 @@ Filters:
 
 ## <a name="get-applicationinsightsmonitoringstatus"></a>Get-ApplicationInsightsMonitoringStatus
 
-Ez a parancsmag hibaelhárítási információkat nyújt az Állapotfigyelővel kapcsolatban.
-Ezzel a parancsmagmal vizsgálja meg a figyelési állapot, a PowerShell-modul verziója, és vizsgálja meg a futó folyamat.
-Ez a parancsmag a figyeléshez szükséges kulcsfájlok verzióadatait és információit jelenti.
+Ez a parancsmag hibaelhárítási információkat biztosít a Állapotmonitorról.
+Ezzel a parancsmaggal vizsgálhatja meg a figyelési állapotot, a PowerShell-modul verzióját, valamint ellenőrizheti a futó folyamatot.
+Ez a parancsmag a figyeléshez szükséges kulcsfontosságú fájlokkal kapcsolatos információkat és információkat fogja jelenteni.
 
 ### <a name="examples"></a>Példák
 
-#### <a name="example-application-status"></a>Példa: Alkalmazás állapota
+#### <a name="example-application-status"></a>Példa: alkalmazás állapota
 
-Futtassa `Get-ApplicationInsightsMonitoringStatus` a parancsot a webhelyek figyelési állapotának megjelenítéséhez.
+Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus` a webhelyek figyelési állapotának megjelenítéséhez.
 
 ```powershell
 
@@ -326,16 +326,16 @@ AppAlreadyInstrumented : true
 ```
 
 Ebben a példában;
-- **A számítógépazonosító** egy névtelen azonosító, amely a kiszolgáló egyedi azonosítására szolgál. Ha létrehoz egy támogatási kérelmet, szükségünk lesz erre az azonosítóra a kiszolgáló naplóinak megkereséséhez.
-- **Az alapértelmezett webhely** le van állítva az IIS-ben
-- **A DemoWebApp111** elindult az IIS-ben, de nem kapott kéréseket. Ez a jelentés azt mutatja, hogy nincs futó folyamat (ProcessId: nem található).
-- **DemoWebApp222** fut, és figyelemmel kíséri (Instrumented: true). A felhasználói konfiguráció alapján a Instrumentation Key xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxx123 egyeztetve lett ehhez az oldalhoz.
-- **A DemoWebApp333** manuálisan lett instrumentálva az Application Insights SDK használatával. Az Állapotfigyelő észlelte az SDK-t, és nem figyeli ezt a helyet.
+- A **számítógép-azonosító** egy névtelen azonosító, amely a kiszolgáló egyedi azonosítására szolgál. Ha támogatási kérelmet hoz létre, erre az AZONOSÍTÓra szüksége lesz a kiszolgáló naplófájljainak megkereséséhez.
+- Az **alapértelmezett** webhely le van ÁLLÍTVA az IIS-ben
+- A **DemoWebApp111** el lett indítva az IIS-ben, de nem kapott kérelmeket. Ez a jelentés azt jeleníti meg, hogy nincs futó folyamat (folyamatazonosító: nem található).
+- A **DemoWebApp222** fut, és folyamatban van a figyelése (instrumentum: true). A felhasználói konfiguráció alapján a rendszerállapot-azonosító kulcs XXXXXXXX-XXXX-XXXX-XXXX-xxxxxxxxx123 a helyhez lett egyeztetve.
+- A **DemoWebApp333** manuálisan lett kialakítva az Application Insights SDK használatával. Állapotmonitor észlelte az SDK-t, és nem figyeli ezt a helyet.
 
 
-#### <a name="example-powershell-module-information"></a>Példa: A PowerShell moduladatai
+#### <a name="example-powershell-module-information"></a>Példa: PowerShell-modul adatai
 
-Futtassa `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` a parancsot az aktuális modullal kapcsolatos információk megjelenítéséhez:
+Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` az aktuális modul adatainak megjelenítéséhez:
 
 ```powershell
 
@@ -388,11 +388,11 @@ ApplicationInsightsSdkPath (Exists: True)
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.dll
 ```
 
-#### <a name="example-runtime-status"></a>Példa: Futásidejű állapot
+#### <a name="example-runtime-status"></a>Példa: futtatókörnyezet állapota
 
-Megvizsgálhatja a folyamatot a műszeres számítógépen, és ellenőrizheti, hogy az összes DL be van-e töltve. Ha a monitorozás működik, legalább 12 DL-t kell betölteni.
+Megvizsgálhatja a folyamatot a műszeres számítógépen, és ellenőrizheti, hogy az összes DLL-fájl be van-e töltve. Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-Futtassa `Get-ApplicationInsightsMonitoringStatus -InspectProcess`a parancsot:
+Futtassa a parancsot `Get-ApplicationInsightsMonitoringStatus -InspectProcess`:
 
 
 ```
@@ -428,37 +428,37 @@ listdlls64.exe -accepteula w3wp
 
 ### <a name="parameters"></a>Paraméterek
 
-#### <a name="no-parameters"></a>(Nincs paraméter)
+#### <a name="no-parameters"></a>(Nincsenek paraméterek)
 
-Alapértelmezés szerint ez a parancsmag jelenti a webes alkalmazások figyelési állapotát.
-Ezzel a beállítással ellenőrizheti, hogy az alkalmazás sikeresen lett-e instrumented.
-Azt is megtekintheti, hogy melyik Instrumentation key-t párosította a webhelyéhez.
+Alapértelmezés szerint ez a parancsmag a webalkalmazások figyelési állapotát fogja jelenteni.
+Ezzel a beállítással ellenőrizheti, hogy az alkalmazás sikeresen létrejött-e.
+Azt is megtekintheti, hogy melyik rendszerállapot-kulcs felelt meg a helynek.
 
 
 #### <a name="-powershellmodule"></a>-PowerShellModule
-**Nem kötelező**. Ezzel a kapcsolóval jelentheti a figyeléshez szükséges DEL-ek verziószámait és elérési útjait.
-Akkor használja ezt a beállítást, ha azonosítania kell bármely DLL verzióját, beleértve az Application Insights SDK-t is.
+Nem **kötelező**. Ezzel a kapcsolóval jelentheti a figyeléshez szükséges DLL-ek verziószámait és elérési útját.
+Akkor használja ezt a beállítást, ha meg kell határoznia bármely DLL verzióját, beleértve a Application Insights SDK-t is.
 
 #### <a name="-inspectprocess"></a>-InspectProcess
 
-**Nem kötelező**. Ezzel a kapcsolóval jelentheti, hogy fut-e az IIS.
-Emellett külső eszközöket is letölt annak megállapítására, hogy a szükséges DEL-ek betöltődnek-e az IIS futásidejébe.
+Nem **kötelező**. Ezzel a kapcsolóval jelentheti, hogy az IIS fut-e.
+Emellett letölti a külső eszközöket is annak megállapításához, hogy a szükséges DLL-fájlok betöltődik-e az IIS-futtatókörnyezetbe.
 
 
-Ha ez a folyamat bármilyen okból sikertelen, manuálisan is futtathatja a parancsokat:
-- iisreset.exe /status
-- [handle64.exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
-- [listdlls64.exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) w3wp | findstr /I "InstrumentationEngine AI ApplicationInsights"
+Ha a folyamat bármilyen okból meghiúsul, manuálisan is futtathatja ezeket a parancsokat:
+- iisreset. exe/status
+- [handle64. exe](https://docs.microsoft.com/sysinternals/downloads/handle) -p W3wp | findstr/I "InstrumentationEngine AI. ApplicationInsights
+- [listdlls64. exe](https://docs.microsoft.com/sysinternals/downloads/listdlls) W3wp | findstr/I "InstrumentationEngine AI ApplicationInsights"
 
 
 #### <a name="-force"></a>-Force
 
-**Nem kötelező**. Csak az InspectProcess segítségével használható. Ezzel a kapcsolóval átugorhat a további eszközök letöltése előtt megjelenő felhasználói kérdést.
+Nem **kötelező**. Csak a InspectProcess használatával használható. Ezzel a kapcsolóval átugorhatja a további eszközök letöltése előtt megjelenő felhasználói üzenetet.
 
 
 ## <a name="set-applicationinsightsmonitoringconfig"></a>Set-ApplicationInsightsMonitoringConfig
 
-Beállítja a konfigurációs fájlt anélkül, hogy teljes újratelepítést végezne.
+A konfigurációs fájl teljes újratelepítés nélkül állítható be.
 A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
 > [!IMPORTANT] 
@@ -467,21 +467,21 @@ A módosítások érvénybe léptetéséhez indítsa újra az IIS-t.
 
 ### <a name="examples"></a>Példák
 
-#### <a name="example-with-a-single-instrumentation-key"></a>Példa egyetlen műszerezési kulccsal
-Ebben a példában az aktuális számítógépen lévő összes alkalmazáshoz egyetlen instrumentation kulcs lesz rendelve.
+#### <a name="example-with-a-single-instrumentation-key"></a>Példa egyetlen kialakítási kulccsal
+Ebben a példában az aktuális számítógépen lévő összes alkalmazás hozzá lesz rendelve egyetlen kialakítási kulcshoz.
 
 ```powershell
 PS C:\> Enable-ApplicationInsightsMonitoring -InstrumentationKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 ```
 
-#### <a name="example-with-an-instrumentation-key-map"></a>Példa műszerezési kulcstérképpel
+#### <a name="example-with-an-instrumentation-key-map"></a>Példa a kialakítási kulcs megfeleltetésére
 Ebben a példában:
-- `MachineFilter`a helyettesítő karakter használatával `'.*'` megegyezik az aktuális számítógéppel.
-- `AppFilter='WebAppExclude'``null` műszerezési kulcsot biztosít. A megadott alkalmazás nem lesz instrumented.
-- `AppFilter='WebAppOne'`a megadott alkalmazáshoz egyedi instrumentation kulcsot rendel.
-- `AppFilter='WebAppTwo'`a megadott alkalmazáshoz egyedi instrumentation kulcsot rendel.
-- Végül `AppFilter` is használja `'.*'` a helyettesítő karaktert, hogy megfeleljen az összes olyan webalkalmazást, amely nem felel meg a korábbi szabályok, és rendeljen hozzá egy alapértelmezett instrumentation kulcs.
-- Az olvashatóság érdekében a szóközök kerülnek hozzáadásra.
+- `MachineFilter`az aktuális számítógépnek felel meg a `'.*'` helyettesítő karakter használatával.
+- `AppFilter='WebAppExclude'``null` rendszerállapot-kulcsot biztosít. A megadott alkalmazás nem lesz kialakítva.
+- `AppFilter='WebAppOne'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- `AppFilter='WebAppTwo'`egy egyedi kialakítási kulcsot rendel hozzá a megadott alkalmazáshoz.
+- Végezetül a `AppFilter` `'.*'` helyettesítő karaktert is használja a korábbi szabályoknak nem megfelelő webalkalmazások és az alapértelmezett kialakítási kulcs hozzárendeléséhez.
+- A szóközök hozzáadódnak az olvashatósághoz.
 
 ```powershell
 Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
@@ -493,38 +493,38 @@ Enable-ApplicationInsightsMonitoring -InstrumentationKeyMap `
 
 ### <a name="parameters"></a>Paraméterek
 
-#### <a name="-instrumentationkey"></a>-InstrumentationKey
-**Kötelező.** Ezzel a paraméterrel egyetlen instrumentation kulcsot biztosíthat a célszámítógépen lévő összes alkalmazás számára.
+#### <a name="-instrumentationkey"></a>– InstrumentationKey
+**Kötelező.** Ezzel a paraméterrel egyetlen rendszerállapot-kulcsot adhat meg a célszámítógépen lévő összes alkalmazás számára.
 
 #### <a name="-instrumentationkeymap"></a>-InstrumentationKeyMap
-**Kötelező.** Ezzel a paraméterrel több instrumentation kulcsot és az egyes alkalmazások által használt instrumentation kulcsok leképezését biztosítja.
-A beállítással egyetlen telepítési parancsfájlt `MachineFilter`hozhat létre több számítógéphez.
+**Kötelező.** Ezzel a paraméterrel több rendszerállapot-kulcs és az egyes alkalmazások által használt rendszerállapot-kulcsok leképezése is megadható.
+A beállítással `MachineFilter`egyetlen telepítési parancsfájlt is létrehozhat több számítógép számára.
 
 > [!IMPORTANT]
-> Az alkalmazások a szabályok sorrendjében egyeznek meg a szabályokkal. Ezért először a legkonkrétabb szabályokat kell megadnia, a legáltalánosabb szabályokat pedig utoljára.
+> Az alkalmazások a szabályok megadásának sorrendjében egyeznek meg a szabályokkal. Ezért a legpontosabb szabályokat kell megadnia az első és a legáltalánosabb szabályok közül.
 
 ##### <a name="schema"></a>Séma
 `@(@{MachineFilter='.*';AppFilter='.*';InstrumentationKey='xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'})`
 
-- **MachineFilter** a számítógép vagy a virtuális gép nevének kötelező C# regex.
-    - '.*' mindennek megfelel
-    - A "Számítógépnév" csak a megadott nevű számítógépeket egyezteti.
-- **AppFilter** a számítógép vagy a virtuális gép nevének kötelező C# regex.
-    - '.*' mindennek megfelel
-    - Az "ApplicationName" csak a megadott nevű IIS-alkalmazásokat egyezteti.
-- **InstrumentationKey** szükséges az előző két szűrőnek megfelelő alkalmazások figyelésének engedélyezéséhez.
-    - Hagyja meg ezt az értéket null értékű, ha szabályokat szeretne definiálni a figyelés kizárásához.
+- A **MachineFilter** a számítógép vagy a virtuális gép nevének kötelező C# regexje.
+    - a ". *" mindennek megfelel
+    - A "számítógépnév" csak a megadott névvel rendelkező számítógépekhez fog megfelelni.
+- A **AppFilter** a számítógép vagy a virtuális gép nevének kötelező C# regexje.
+    - a ". *" mindennek megfelel
+    - A "ApplicationName" csak a megadott nevű IIS-alkalmazásoknak felel meg.
+- A **InstrumentationKey** az előző két szűrőnek megfelelő alkalmazások figyelésének engedélyezéséhez szükséges.
+    - Ha a figyelés kizárásához szabályokat szeretne meghatározni, hagyja üresen ezt az értéket.
 
 
 #### <a name="-verbose"></a>-Részletes
-**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
+**Általános paraméter.** Ezzel a kapcsolóval részletes naplókat jeleníthet meg.
 
 
 ### <a name="output"></a>Kimenet
 
 Alapértelmezés szerint nincs kimenet.
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Példa részletes kimenetre a konfigurációs fájl -InstrumentationKey-en keresztültörténő beállításából
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkey"></a>Példa részletes kimenetre a konfigurációs fájlnak a-InstrumentationKey használatával történő beállításához
 
 ```
 VERBOSE: Operation: InstallWithIkey
@@ -536,7 +536,7 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Példa részletes kimenet reked a konfigurációs fájl beállításából a -InstrumentationKeyMap
+##### <a name="example-verbose-output-from-setting-the-config-file-via--instrumentationkeymap"></a>Példa részletes kimenetre a konfigurációs fájlnak a-InstrumentationKeyMap használatával történő beállításához
 
 ```
 VERBOSE: Operation: InstallWithIkeyMap
@@ -550,62 +550,62 @@ VERBOSE: Config File Path:
 C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\applicationInsights.ikey.config
 ```
 
-## <a name="start-applicationinsightsmonitoringtrace"></a>Start-ApplicationInsightsMonitoringTrace
+## <a name="start-applicationinsightsmonitoringtrace"></a>Start – ApplicationInsightsMonitoringTrace
 
-[EtW-események](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) gyűjtése a kód nélküli csatolási futásidejű. Ez a parancsmag a [PerfView](https://github.com/microsoft/perfview)futtatásának alternatívája.
+A [ETW-eseményeket](https://docs.microsoft.com/windows/desktop/etw/event-tracing-portal) gyűjti a kód-visszacsatolási futtatókörnyezetből. Ez a parancsmag egy alternatív megoldás a [perfview eszköz](https://github.com/microsoft/perfview)futtatására.
 
-Az összegyűjtött eseményeket valós időben nyomtatjuk ki a konzolra, és etl fájlba mentjük. A kimeneti ETL fájlt a [PerfView](https://github.com/microsoft/perfview) további vizsgálatra megnyithatja.
+Az összegyűjtött események valós időben lesznek kinyomtatva a konzolra, és egy ETL-fájlba lesznek mentve. A kimeneti ETL-fájl a [perfview eszköz](https://github.com/microsoft/perfview) segítségével nyitható meg további vizsgálat céljából.
 
-Ez a parancsmag addig fog futni, amíg el nem éri az`Ctrl + C`időtúltöltés időtartamát (alapértelmezett 5 perc), vagy manuálisan le nem állítja ( ).
+Ez a parancsmag addig fut, amíg el nem éri az időtúllépés időtartamát (alapértelmezés szerint 5 perc)`Ctrl + C`, vagy manuálisan leállt ().
 
 ### <a name="examples"></a>Példák
 
-#### <a name="how-to-collect-events"></a>Hogyan gyűjthetünk eseményeket?
+#### <a name="how-to-collect-events"></a>Események gyűjtése
 
-Általában arra kérjük, hogy gyűjtsön eseményeket, hogy kivizsgálja, miért nem a jelentkezését instrumented.
+Általában azt javasoljuk, hogy gyűjtsön eseményeket, és vizsgálja meg, hogy az alkalmazás miért nincs kialakítva.
 
-A kód nélküli csatolási futásidejű etw-eseményeket fog kivetni az IIS indításakor és az alkalmazás indításakor.
+A kód-visszacsatolási futtatókörnyezet ETW eseményeket bocsát ki az IIS indításakor és az alkalmazás indításakor.
 
 Az események összegyűjtése:
-1. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre `iisreset /stop` az IIS és az összes webalkalmazás kikapcsolására.
+1. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre `iisreset /stop` az IIS és az összes webalkalmazás kikapcsolását.
 2. A parancsmag végrehajtása
-3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon hajtsa végre `iisreset /start` az IIS elindításához.
-4. Próbáljon meg böngészni az alkalmazással.
-5. Miután az alkalmazás betöltése befejeződik, manuálisan leállíthatja (`Ctrl + C`) vagy megvárhatja az időtúltöltést.
+3. Rendszergazdai jogosultságokkal rendelkező cmd-konzolon futtassa `iisreset /start` a parancsot az IIS elindításához.
+4. Próbálja meg megkeresni az alkalmazást.
+5. Miután az alkalmazás befejezte a betöltést, manuálisan leállíthatja (`Ctrl + C`), vagy megvárhatja az időtúllépést.
 
-#### <a name="what-events-to-collect"></a>Milyen eseményeket kell összegyűjteni
+#### <a name="what-events-to-collect"></a>A gyűjteni kívánt események
 
-Az események gyűjtésesorán három lehetőség közül választhat:
-1. A kapcsoló `-CollectSdkEvents` segítségével összegyűjtheti az Application Insights SDK által kibocsátott eseményeket.
-2. A kapcsoló `-CollectRedfieldEvents` segítségével összegyűjtheti az Állapotfigyelő és a Redfield Runtime által kibocsátott eseményeket. Ezek a naplók az IIS és az alkalmazások indításának diagnosztizálásakor hasznosak.
-3. Mindkét kapcsoló t használja mindkét eseménytípus összegyűjtéséhez.
-4. Alapértelmezés szerint, ha nincs megadva kapcsoló, a rendszer mindkét eseménytípust összegyűjti.
+Az események gyűjtésére három lehetőség áll rendelkezésre:
+1. Használja a kapcsolót `-CollectSdkEvents` a Application Insights SDK-ból kibocsátott események gyűjtéséhez.
+2. A kapcsolóval `-CollectRedfieldEvents` összegyűjtheti Állapotmonitor és a Redfield futtatókörnyezet által kibocsátott eseményeket. Ezek a naplók az IIS és az alkalmazások indításának diagnosztizálásakor hasznosak.
+3. Mindkét kapcsolót mindkét eseménytípus összegyűjtésére használhatja.
+4. Alapértelmezés szerint, ha nincs megadva kapcsoló, mindkét eseménytípus összegyűjtve lesz.
 
 
 ### <a name="parameters"></a>Paraméterek
 
-#### <a name="-maxdurationinminutes"></a>-MaxDurationinMinutes
-**Választható.** Ezzel a paraméterrel beállíthatja, hogy a parancsfájl mennyi ideig gyűjtsön eseményeket. Az alapértelmezett érték 5 perc.
+#### <a name="-maxdurationinminutes"></a>-MaxDurationInMinutes
+**Választható.** Ezzel a paraméterrel állíthatja be, hogy a parancsfájl mennyi ideig gyűjtsön eseményeket. Az alapértelmezett érték 5 perc.
 
-#### <a name="-logdirectory"></a>-LogDirectory
-**Választható.** Ezzel a kapcsolóval állíthatja be az ETL-fájl kimeneti könyvtárát. Alapértelmezés szerint ez a fájl a PowerShell-modulok könyvtárban jön létre. A teljes elérési út megjelenik a parancsfájl végrehajtása során.
+#### <a name="-logdirectory"></a>– LogDirectory
+**Választható.** Ezzel a kapcsolóval állíthatja be az ETL-fájl kimeneti könyvtárát. Alapértelmezés szerint ez a fájl a PowerShell-modulok könyvtárban lesz létrehozva. A parancsfájl végrehajtása során a teljes elérési út megjelenik.
 
 
-#### <a name="-collectsdkevents"></a>-CollectSdkEsemények
-**Választható.** Ezzel a kapcsolóval összegyűjtheti az Application Insights SDK-eseményeket.
+#### <a name="-collectsdkevents"></a>-CollectSdkEvents
+**Választható.** Ezzel a kapcsolóval Application Insights SDK-eseményeket gyűjthet.
 
-#### <a name="-collectredfieldevents"></a>-CollectRedfieldEsemények
-**Választható.** Ezzel a kapcsolóval eseményeket gyűjthet az Állapotfigyelőből és a Redfield-futásórából.
+#### <a name="-collectredfieldevents"></a>-CollectRedfieldEvents
+**Választható.** Ezzel a kapcsolóval gyűjthet eseményeket a Állapotmonitor és a Redfield futtatókörnyezetből.
 
 #### <a name="-verbose"></a>-Részletes
-**Közös paraméter.** Ezzel a kapcsolóval részletes naplókat kell kiadnia.
+**Általános paraméter.** Ezt a kapcsolót használja a részletes naplók kinyomtatásához.
 
 
 
 ### <a name="output"></a>Kimenet
 
 
-#### <a name="example-of-application-startup-logs"></a>Példa az alkalmazások indítási naplóira
+#### <a name="example-of-application-startup-logs"></a>Alkalmazás-indítási naplók – példa
 ```powershell
 PS C:\Windows\system32> Start-ApplicationInsightsMonitoringTrace -ColectRedfieldEvents
 Starting...
@@ -637,18 +637,18 @@ Timeout Reached. Stopping...
 ## <a name="next-steps"></a>További lépések
 
   A telemetriai adatok megtekintése:
- - [Fedezze fel a teljesítmény](../../azure-monitor/app/metrics-explorer.md) és a használat figyeléséhez.
-- [Keresés események és naplók](../../azure-monitor/app/diagnostic-search.md) diagnosztizálására problémákat.
-- Speciális [lekérdezésekhez használjon analitikát.](../../azure-monitor/app/analytics.md)
+ - [Ismerje meg a mérőszámokat](../../azure-monitor/app/metrics-explorer.md) a teljesítmény és a használat figyeléséhez.
+- [Események és naplók keresése](../../azure-monitor/app/diagnostic-search.md) a problémák diagnosztizálásához.
+- További speciális lekérdezésekhez használja az [elemzést](../../azure-monitor/app/analytics.md) .
 - [Irányítópultok létrehozása](../../azure-monitor/app/overview-dashboard.md).
  
  További telemetriai funkciók hozzáadása:
  - [Létrehozhat webes teszteket](monitor-web-app-availability.md) annak biztosításához, hogy a hely elérhető maradjon.
-- [Webes ügyfél telemetriai adatok](../../azure-monitor/app/javascript.md) hozzáadásával megtekintheti a weblapkódból származó kivételeket, és engedélyezheti a nyomkövetési hívásokat.
-- [Adja hozzá az Application Insights SDK-t a kódhoz,](../../azure-monitor/app/asp-net.md) így nyomkövetési és naplóhívásokat szúrhat be.
+- [Vegyen fel webes ügyfél-telemetria](../../azure-monitor/app/javascript.md) a kivételek megjelenítéséhez a weboldali kódból és a nyomkövetési hívások engedélyezéséhez.
+- [Adja hozzá a Application INSIGHTS SDK-t a kódhoz](../../azure-monitor/app/asp-net.md) , hogy nyomkövetési és naplózási hívásokat helyezzen el.
  
- További információk az Application Insights-ügynökkel:
- - Útmutatónk segítségével [elháríthatja](status-monitor-v2-troubleshoot.md) az Application Insights-ügynök hibáit.
+ Több Application Insights-ügynökkel:
+ - Az útmutató segítségével Application Insights-ügynököt lehet [elhárítani](status-monitor-v2-troubleshoot.md) .
 
 
 

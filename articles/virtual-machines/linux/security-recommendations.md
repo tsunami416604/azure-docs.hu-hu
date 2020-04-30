@@ -1,6 +1,6 @@
 ---
-title: Biztonsági javaslatok Linux os virtuális gépekhez az Azure-ban
-description: Alkalmazza ezeket a javaslatokat a megosztott felelősségi modellben leírt biztonsági kötelezettségek teljesítéséhez és a központi telepítések általános biztonságának javításához.
+title: Biztonsági javaslatok az Azure-beli Linux rendszerű virtuális gépekhez
+description: Alkalmazza ezeket az ajánlásokat a megosztott felelősségi modellben ismertetett biztonsági kötelezettségek teljesítéséhez, valamint az üzemelő példányok általános biztonságának javításához.
 author: msmbaldwin
 manager: RKarlin
 ms.service: virtual-machines
@@ -11,13 +11,13 @@ ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.reviewer: cynthn
 ms.openlocfilehash: 8a0d43c4401fa3fd2bb8ba504e42edc6324675e8
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758516"
 ---
-# <a name="security-recommendations-for-linux-virtual-machines-in-azure"></a>Biztonsági javaslatok Linux os virtuális gépekhez az Azure-ban
+# <a name="security-recommendations-for-linux-virtual-machines-in-azure"></a>Biztonsági javaslatok az Azure-beli Linux rendszerű virtuális gépekhez
 
 
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-security-recommendations.md)]

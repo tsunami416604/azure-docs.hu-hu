@@ -1,6 +1,6 @@
 ---
-title: Támogatás a Kereskedelmi piactér portálhoz a Partnerközpontban
-description: További információ a Partnerközpontban található támogatási lehetőségekről, többek között a támogatási kérelem benyújtásának módjáról.
+title: Támogatás kérése a kereskedelmi piactér portálhoz a partner Centerben
+description: Ismerje meg a partner Center támogatási lehetőségeit, beleértve a támogatási kérések beszerzését.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
@@ -8,74 +8,74 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.openlocfilehash: fd7582877a74aa998de3a6d0a0f38e56c3c3af91
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81733116"
 ---
-# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A Kereskedelmi piactér program támogatása a Partnerközpontban
+# <a name="support-for-the-commercial-marketplace-program-in-partner-center"></a>A kereskedelmi piactér program támogatása a partner Centerben
 
-A Microsoft számos termék- és szolgáltatástámogatást nyújt. A megfelelő támogató csapat megtalálása fontos a megfelelő és időszerű válasz biztosításához. Vegye figyelembe a következő eseteket, amelyek segíthetnek a lekérdezés nek a megfelelő csapathoz való irányításában: 
+A Microsoft számos termék és szolgáltatás támogatását biztosítja. A megfelelő támogatási csapat megtalálása fontos a megfelelő és kellő időben történő válaszadás biztosításához. Vegye figyelembe a következő forgatókönyveket, amelyek segítenek a lekérdezés átirányításában a megfelelő csapatnak: 
 
-- Ha Ön közzétevő, és kérdése van egy ügyféltől, kérje meg az ügyfelet, hogy kérjen támogatást az [Azure Portal](https://portal.azure.com/)támogatási hivatkozásai használatával. 
+- Ha Ön kiadó, és kérdése van egy ügyféltől, kérje meg az ügyfelet, hogy kérjen támogatást a [Azure Portal](https://portal.azure.com/)támogatási hivatkozásait használva. 
 
-- Ha Ön közzétevő, és kérdése van az alkalmazásával vagy szolgáltatásával kapcsolatban, tekintse át az alábbi támogatási lehetőségeket.
+- Ha Ön kiadó, és az alkalmazásával vagy szolgáltatásával kapcsolatos kérdése van, tekintse át a következő támogatási lehetőségeket.
 
-## <a name="support-options-for-publishers"></a>Támogatási lehetőségek a közzétevők számára
+## <a name="support-options-for-publishers"></a>A közzétevők támogatási lehetőségei
 
-1. Jelentkezzen be a [Partnerközpont Kereskedelmi piactér programjába](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a munkahelyi fiókjával. (Ha még nem tette meg, létre kell [hoznia egy Partnerközpont-fiókot.)](./create-account.md)
+1. Jelentkezzen be a [kereskedelmi piactér programba](https://partner.microsoft.com/dashboard/commercial-marketplace/overview) a munkahelyi fiókjával a partner Centerben. (Ha még nem tette meg, [létre kell hoznia egy partner Center-fiókot](./create-account.md).)
 
-2. A lap jobb oldalán található felső menüben válassza a **Támogatás** ikont. 
+2. A lap jobb oldalán található felső menüben válassza a **támogatás** ikont. 
  
-3. A **súgó és támogatás** ablaktábla a lap jobb oldaláról jelenik meg. 
+3. A **Súgó és támogatás** panel az oldal jobb oldaláról fog megjelenni. 
  
    ![Támogatás legördülő menü](./media/commercial-marketplace-support-pane.png)
 
-    Vagy lépjen a **Kezdőlap** ablaktáblára, és válassza a **Súgó és támogatás**lehetőséget.
+    Vagy nyissa meg a **Kezdőlap** ablaktáblát, és kattintson a **Súgó és támogatás**elemre.
 
-   ![Súgó és támogatás a kezdőlapról](./media/homepage-help-support.png)
+   ![Súgó és támogatás a kezdőlapon](./media/homepage-help-support.png)
 
-4. Válassza a **[Dokumentáció](../index.yml)** lehetőséget a kérdésekre és erőforrásokra adott átfogó válaszok áttekintéséhez. 
+4. Válassza ki a **[dokumentációt](../index.yml)** a kérdésekre és erőforrásokra vonatkozó átfogó válaszok áttekintéséhez. 
 
-5. Válassza a **[Marketplace Partner közösségi fórumot,](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** ha más Microsoft-kiadók ismereteit kihasználva válaszolanak kérdéseire. 
+5. Válassza ki a **[Piactéri partnerek közösségi fórumát](https://www.microsoftpartnercommunity.com/t5/Azure-Marketplace-and-AppSource/bd-p/2222)** , hogy válaszoljon a kérdéseire más Microsoft-közzétevők ismeretének kihasználásával. 
 
-6. Válassza a **[További segítség lehetőséget](https://partner.microsoft.com/support/v2/?stage=1)** az Új támogatási **kérelemjegy** megnyitásához.  
+6. Válassza a **[további Súgó](https://partner.microsoft.com/support/v2/?stage=1)** lehetőséget egy **új támogatási kérelem** jegyének megnyitásához.  
 
 ## <a name="how-to-open-a-support-ticket"></a>Támogatási jegy megnyitása
 
-Most már készen áll egy támogatási jegy megnyitására a **Súgó és támogatás** képernyőn.
+Most már készen áll egy támogatási jegy megnyitására a **Súgó és támogatás** képernyőjén.
 
 ![Súgó és támogatás](./media/help-and-support.png)
 
 >[!Note]
->Ha be van jelentkezve a Partnerközpontba, jobb felhasználói élményt kap a támogatással kapcsolatban.
+>Ha bejelentkezett a partner Centerben, a támogatással jobb élményt kaphat.
 
-**1. lehetőség:** Adja meg a kulcsszavakat, mint például: Marketplace, Azure app, SaaS-ajánlat, fiókkezelés, érdeklődőkezelés, üzembe helyezési probléma, kifizetés, stb.
+**1. lehetőség:** Adja meg a kulcsszavakat, például: piactér, Azure-alkalmazás, SaaS-ajánlat, Fiókkezelés, vezető felügyelet, üzembe helyezési probléma, fizetés stb.
 
-**2. lehetőség:** Tallózás témák -> válassza **kategória** = kereskedelmi piactér -> válassza ki a megfelelő **témakör,** majd **Subtopic**.
+**2. lehetőség:** Témakörök tallózása – > **Kategória** kiválasztása = kereskedelmi piactér – > válassza ki a megfelelő **témakört** , majd **altémakört**.
 
-Miután megtalálta az Ön által választott témakört, válassza **a Megoldások áttekintése lehetőséget.**
+Ha megtalálta a kívánt témakört, válassza a **megoldások áttekintése**elemet.
 
 ![Következő lépés](./media/next-step.png)
 
-A következő lehetőségek válnak elérhetővé:
+A következő lehetőségek lesznek elérhetők:
 
-* Másik témakör kiválasztásához válasszon másik témakörhivatkozást a **kijelölt probléma**alatt.
-* Tekintse át a probléma leírását, ha rendelkezésre áll.  Ez a szöveg felett látható az **ajánlott lépéseket**.
-* Tekintse át **az ajánlott lépéseket,** ha rendelkezésre állnak.
-* Tekintse át **az ajánlott dokumentumokat,** ha azok rendelkezésre állnak.
+* Egy másik témakör kiválasztásához válasszon egy másik témakör-hivatkozást a **kiválasztott probléma**területen.
+* Tekintse át a probléma leírását, ha van ilyen.  Ez az **ajánlott lépések**felett látható szöveg.
+* Tekintse át az **ajánlott lépéseket**, ha vannak ilyenek.
+* Tekintse át az **ajánlott dokumentumokat**, ha vannak ilyenek.
 
 ![Ajánlott megoldások](./media/recommended-solutions.png)
 
-Abban az esetben, ha nem találja a választ az **ajánlott megoldásokban,** kattintson a **probléma részleteire**.  Töltse ki az űrlapot és az összes szükséges mezőt a megoldásfelgyorsítás érdekében.  Ezután kattintson **a Küldés gombra.**
+Ha nem találja a választ a **javasolt megoldásokban**, kattintson a **probléma részleteinek megadása**lehetőségre.  Töltse ki az űrlapot és az összes kötelező mezőt a megoldási folyamat felgyorsításához.  Ezután kattintson a **Submit (Küldés**) gombra.
 
 >[!Note]
->Ha még nem jelentkezett be a Partnerközpontba, és a témakör hitelesítést igényel, a folytatás előtt be kell jelentkeznie.  Nyilvános témakörök esetén nincs szükség hitelesítésre.
+>Ha még nem jelentkezett be a partner Centerben, és a témakör hitelesítésre szorul, a folytatáshoz a rendszer kérni fogja a bejelentkezést.  Nyilvános témakörök esetén nincs szükség hitelesítésre.
 
-## <a name="track-your-existing-support-requests"></a>A meglévő támogatási kérelmek nyomon követése 
+## <a name="track-your-existing-support-requests"></a>Meglévő támogatási kérelmek nyomon követése 
 
-Az összes nyitott és lezárt jegy áttekintéséhez nyissa meg a bal oldali navigációs sáv **Kereskedelmi piactér** webhelyét, és válassza a **támogatás**lehetőséget.
+A nyitott és lezárt jegyek áttekintéséhez nyissa meg a **kereskedelmi piactér** elemet a bal oldali navigációs sávon, majd válassza a **támogatás**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,5 +1,5 @@
 ---
-title: Biztonságos és használható házirendek
+title: Szabályzatok védelme és használata
 description: Ismerje meg az Azure-beli virtuális gépek biztonsági és szabályzatait.
 author: cynthn
 ms.service: virtual-machines
@@ -9,13 +9,13 @@ ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
 ms.openlocfilehash: 131b552e6f330cdbce87a35ae45a3e8f38f3fda1
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758533"
 ---
-# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Biztonságos és használható házirendek az Azure-ban lévő virtuális gépeken
+# <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Házirendek biztonságossá tétele és használata az Azure-beli virtuális gépeken
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
 

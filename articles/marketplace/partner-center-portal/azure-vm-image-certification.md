@@ -1,6 +1,6 @@
 ---
-title: Az Azure virtuális gépek minősítése – Azure Piactér
-description: Ismerje meg, hogyan tesztelheti és küldheti el a virtuálisgép-ajánlatot a kereskedelmi piacon.
+title: Azure-beli virtuális gépek minősítése – Azure Marketplace
+description: Megtudhatja, hogyan tesztelheti és küldheti el a virtuálisgép-ajánlatokat a kereskedelmi piactéren.
 author: emuench
 ms.author: mingshen
 ms.service: marketplace
@@ -8,50 +8,50 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.openlocfilehash: 9bd7e40855f30612b90cf28365c0b1410cd3e3d8
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731129"
 ---
-# <a name="azure-virtual-machine-vm-image-certification"></a>Az Azure virtuális gép (VM) lemezképének minősítése
+# <a name="azure-virtual-machine-vm-image-certification"></a>Azure virtuális gép (VM) rendszerképek minősítése
 
 > [!NOTE]
-> Az Azure virtuális gép ajánlatainak kezelését áthelyezzük a Cloud Partner Portalról a Partnerközpontba. Az ajánlatok áttelepítéséig kövesse az [Azure Key Vault tanúsítványok létrehozása](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) a Felhőpartner-portálon című útmutató utasításait az ajánlatok kezeléséhez.
+> Az Azure-beli virtuálisgép-ajánlatok felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Amíg az ajánlatokat át nem telepíti, folytassa a [tanúsítványok létrehozása a Cloud Partner Portal Azure Key Vaulthoz](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-create-key-vault-cert) című témakör utasításait az ajánlatok kezeléséhez.
 
-Ez a cikk ismerteti, hogyan tesztelheti és küldheti el a virtuális gép (VM) rendszerkép a kereskedelmi piacon annak érdekében, hogy megfeleljen a legújabb Azure Marketplace közzétételi követelményeknek.
+Ez a cikk azt ismerteti, hogyan lehet tesztelni és elküldeni a virtuális gép (VM) lemezképét a kereskedelmi piactéren, hogy az megfeleljen az Azure Marketplace legújabb közzétételi követelményeinek.
 
-A virtuális gép ajánlatának elküldése előtt hajtsa végre az alábbi lépéseket:
+A virtuális gép ajánlatának elküldése előtt végezze el a következő lépéseket:
 
-1. Tanúsítványok létrehozása és üzembe helyezése.
-2. Üzembe helyezhet egy Azure-beli virtuális gép az általános rendszerképet.
-3. Futtassa az érvényesítéseket.
+1. Tanúsítványok létrehozása és telepítése.
+2. Helyezzen üzembe egy Azure-beli virtuális gépet az általánosított rendszerkép használatával.
+3. Érvényesítések futtatása.
 
-## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Tanúsítványok létrehozása és üzembe helyezése az Azure Key Vaulthoz
+## <a name="create-and-deploy-certificates-for-azure-key-vault"></a>Azure Key Vault tanúsítványok létrehozása és telepítése
 
-Ez a szakasz azt ismerteti, hogyan hozhat létre és telepíthet önaláírt tanúsítványokat a Windows távkezelés (WinRM) kapcsolatának azure-beli virtuális gépen való beállításához.
+Ez a szakasz azt ismerteti, hogyan hozhatók létre és helyezhetők üzembe a Rendszerfelügyeleti webszolgáltatások (WinRM) Azure-ban üzemeltetett virtuális géphez való beállításához szükséges önaláírt tanúsítványok.
 
-### <a name="create-certificates-for-azure-key-vault"></a>Tanúsítványok létrehozása az Azure Key Vaulthoz
+### <a name="create-certificates-for-azure-key-vault"></a>Azure Key Vault tanúsítványok létrehozása
 
 Ez a folyamat három lépésből áll:
 
 1. Hozza létre a biztonsági tanúsítványt.
-2. Hozza létre az Azure Key Vault a tanúsítvány tárolására.
-3. Tárolja a tanúsítványokat a key vaultban.
+2. Hozza létre a Azure Key Vault a tanúsítvány tárolásához.
+3. Tárolja a tanúsítványokat a Key vaultban.
 
-Ehhez a munkához használhat egy új vagy egy meglévő Azure-erőforráscsoportot.
+Ehhez a munkához egy új vagy egy meglévő Azure-erőforráscsoportot is használhat.
 
 #### <a name="create-the-security-certificate"></a>A biztonsági tanúsítvány létrehozása
 
-A tanúsítványfájl (.pfx) helyi mappában való létrehozásához szerkesztse és futtassa a következő Azure PowerShell-parancsfájlt. Cserélje le az alábbi táblázatban látható paraméterek értékeit.
+Szerkessze és futtassa a következő Azure PowerShell parancsfájlt a tanúsítványfájl (. pfx) helyi mappában való létrehozásához. Cserélje le az alábbi táblázatban látható paraméterek értékeit.
 
 | **Paraméter** | **Leírás** |
 | --- | --- |
-| $certroopath | Helyi mappa a .pfx fájl mentéséhez. |
-| $location | Az Azure szabványos földrajzi helyeinek egyike. |
-| $vmName | A tervezett Azure virtuális gép neve. |
-| $certname | A bizonyítvány neve; meg kell egyeznie a tervezett virtuális gép teljesen minősített tartománynevével. |
-| $certpassword | A tanúsítványok jelszavának meg kell egyeznie a tervezett virtuális géphez használt jelszóval. |
+| $certroopath | Helyi mappa, ahová menteni szeretné a. pfx-fájlt. |
+| $location | Az Azure standard földrajzi helyeinek egyike. |
+| $vmName | A tervezett Azure-beli virtuális gép neve. |
+| $certname | A tanúsítvány neve; meg kell egyeznie a tervezett virtuális gép teljes tartománynevével. |
+| $certpassword | A tanúsítványokhoz tartozó jelszónak meg kell egyeznie a tervezett virtuális géphez használt jelszóval. |
 | | |
 
 ```PowerShell
@@ -82,14 +82,14 @@ A tanúsítványfájl (.pfx) helyi mappában való létrehozásához szerkesztse
 ```
 
 > [!TIP]
-> Tartsa meg ugyanazt az Azure PowerShell-konzolmunkamenetet nyitva és futva a lépések során a különböző paraméterek értékeinek megőrzéséhez.
+> A különböző paraméterek értékeinek megőrzéséhez tartsa megnyitva a Azure PowerShell-konzol munkamenetét, és futtassa a következő lépéseket.
 
 > [!WARNING]
-> Ha menti ezt a parancsfájlt, csak biztonságos helyre mentse, mert biztonsági információkat (jelszót) tartalmaz.
+> Ha menti ezt a parancsfájlt, csak biztonságos helyen mentse, mert biztonsági adatokat (jelszót) tartalmaz.
 
-#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Az Azure-kulcstartó létrehozása a tanúsítvány tárolásához
+#### <a name="create-the-azure-key-vault-to-store-the-certificate"></a>Az Azure Key Vault létrehozása a tanúsítvány tárolásához
 
-Másolja az alábbi sablon tartalmát egy fájlba a helyi számítógépen. Az alábbi példaparancsfájlban ez `C:\certLocation\keyvault.json`az erőforrás a.
+Másolja az alábbi sablon tartalmát a helyi számítógép egyik fájljába. Az alábbi példában szereplő parancsfájlban ez az erőforrás `C:\certLocation\keyvault.json`).
 
 ```json
 {
@@ -184,15 +184,15 @@ Másolja az alábbi sablon tartalmát egy fájlba a helyi számítógépen. Az a
 
 ```
 
-Szerkessze és futtassa a következő Azure PowerShell-parancsfájlt egy Azure Key Vault és a kapcsolódó erőforráscsoport létrehozásához. Az alábbi táblázatban látható paraméterek értékeinek lecserélése
+Szerkessze és futtassa a következő Azure PowerShell parancsfájlt egy Azure Key Vault és a társított erőforráscsoport létrehozásához. Cserélje le az alábbi táblázatban látható paraméterek értékeit.
 
 | **Paraméter** | **Leírás** |
 | --- | --- |
-| $postfix | A központi telepítési azonosítókhoz csatolt véletlenszerű numerikus karakterlánc. |
-| $rgName | Létrehozandó Azure-erőforráscsoport (RG) neve. |
-| $location | Az Azure szabványos földrajzi helyeinek egyike. |
-| $kvTemplateJson | A key vault erőforrás-kezelősablont tartalmazó fájl elérési útja (keyvault.json). |
-| $kvname | Az új kulcstartó neve.|
+| $postfix | A központi telepítési azonosítóhoz csatolt véletlenszerű numerikus karakterlánc. |
+| $rgName | A létrehozandó Azure-erőforráscsoport (RG) neve. |
+| $location | Az Azure standard földrajzi helyeinek egyike. |
+| $kvTemplateJson | A Key Vault Resource Manager-sablonját tartalmazó fájl (kulcstartó. JSON) elérési útja. |
+| $kvname | Az új kulcstároló neve.|
 |   |   |
 
 ```PowerShell
@@ -291,9 +291,9 @@ Szerkessze és futtassa a következő Azure PowerShell-parancsfájlt egy Azure K
 
 ```
 
-#### <a name="store-the-certificates-to-the-key-vault"></a>A tanúsítványok tárolása a key vaultban
+#### <a name="store-the-certificates-to-the-key-vault"></a>A tanúsítványok tárolása a Key vaultban
 
-A .pfx fájlban található tanúsítványokat a parancsfájl használatával tárolja az új kulcstartóban:
+Tárolja a. pfx-fájlban található tanúsítványokat az új Key vaultban a következő parancsfájl használatával:
 
 ```PowerShell
      $fileName =$certroopath+"\$certname"+".pfx"
@@ -317,13 +317,13 @@ A .pfx fájlban található tanúsítványokat a parancsfájl használatával t�
 
 ```
 
-## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Azure-beli virtuális gép üzembe helyezése az általános rendszerkép használatával
+## <a name="deploy-an-azure-vm-using-your-generalized-image"></a>Azure-beli virtuális gép üzembe helyezése az általánosított rendszerkép használatával
 
-Ez a szakasz ismerteti, hogyan telepíthet egy általános virtuális merevlemez-rendszerképet egy új Azure virtuális gép erőforrás létrehozásához. Ehhez a folyamathoz a mellékelt Azure Resource Manager-sablont és az Azure PowerShell-parancsfájlt fogjuk használni.
+Ez a szakasz azt ismerteti, hogyan helyezhet üzembe egy általánosított VHD-rendszerképet egy új Azure-beli virtuálisgép-erőforrás létrehozásához. Ehhez a folyamathoz a megadott Azure Resource Manager sablont és Azure PowerShell szkriptet használjuk.
 
-### <a name="prepare-an-azure-resource-manager-template"></a>Azure Resource Manager-sablon előkészítése
+### <a name="prepare-an-azure-resource-manager-template"></a>Azure Resource Manager sablon előkészítése
 
-Másolja a következő Azure Resource Manager-sablont a virtuális merevlemez üzembe helyezéséhez egy VHDtoImage.json nevű helyi fájlba. A következő parancsfájl kérni fogja a helyet a helyi számítógépen a JSON használatához.
+Másolja a következő Azure Resource Manager sablont a VHD-telepítéshez egy VHDtoImage. JSON nevű helyi fájlba. A következő parancsfájl a helyi gépen található helyet fogja használni a JSON használatához.
 
 ```JSON
 {
@@ -558,32 +558,32 @@ Másolja a következő Azure Resource Manager-sablont a virtuális merevlemez ü
 
 ```
 
-A fájl szerkesztése a következő paraméterek értékeinek megadásához:
+Szerkessze ezt a fájlt a paraméterek értékeinek megadásához:
 
 | **Paraméter** | **Leírás** |
 | --- | --- |
-| ResourceGroupName | Meglévő Azure-erőforráscsoport neve. Általában használja ugyanazt az RG-t, mint a key vault. |
-| Sablonfájl | Teljes elérési út a VHDtoImage.json fájlhoz. |
-| userStorageAccountName | A tárfiók neve. |
-| sNameForPublicIP | A nyilvános IP DNS-neve; kisbetűsnek kell lennie. |
-| subscriptionId | Azure-előfizetés-azonosító. |
-| Hely | Az erőforráscsoport szabványos Azure földrajzi helye. |
+| ResourceGroupName | Meglévő Azure-erőforráscsoport neve. Általában ugyanazt a RG-t használja, mint a Key Vault. |
+| TemplateFile | A VHDtoImage. JSON fájl teljes elérési útja. |
+| userStorageAccountName | A Storage-fiók neve. |
+| sNameForPublicIP | A nyilvános IP-cím DNS-neve; kisbetűsnek kell lennie. |
+| subscriptionId | Azure-előfizetés azonosítója. |
+| Hely | Az erőforráscsoport szabványos Azure-beli földrajzi helye. |
 | vmName | A virtuális gép neve. |
-| vaultName | A kulcstartó neve. |
-| vaultResourceGroup | A kulcstartó erőforráscsoportja. |
-| certificateUrl | A tanúsítvány webcíme (URL-címe), beleértve a key vaultban `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`tárolt verziót is, például: . |
+| vaultName | A Key Vault neve. |
+| vaultResourceGroup | A Key Vault erőforráscsoport. |
+| certificateUrl | A tanúsítvány webcíme (URL-címe), beleértve a Key vaultban tárolt verziót, például: `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7`. |
 | vhdUrl | A virtuális merevlemez webcíme. |
 | vmSize | A virtuálisgép-példány mérete. |
-| nyilvánosIPAddressName | A nyilvános IP-cím neve. |
+| publicIPAddressName | A nyilvános IP-cím neve. |
 | virtualNetworkName | A virtuális hálózat neve. |
-| nicName (név) | A virtuális hálózat hálózati kártya neve. |
+| nicName | A virtuális hálózat hálózati kártyájának neve. |
 | adminUserName | A rendszergazdai fiók felhasználóneve. |
 | adminPassword | Rendszergazdai jelszó. |
 |   |   |
 
 ### <a name="deploy-an-azure-vm"></a>Azure-beli virtuális gép üzembe helyezése
 
-Másolja és szerkesztse a következő `$storageaccount` parancsfájlt, hogy értékeket adjon meg a és `$vhdUrl` a változókszámára. Hajtsa végre egy Azure virtuális gép erőforrás a meglévő általános virtuális merevlemez létrehozásához.
+Másolja és szerkessze a következő parancsfájlt a és `$storageaccount` `$vhdUrl` a változók értékeinek megadásához. Futtassa azt egy Azure-beli virtuálisgép-erőforrás létrehozásához a meglévő általánosított VHD-ről.
 
 ```PowerShell
 
@@ -603,53 +603,53 @@ New-AzResourceGroupDeployment -Name"dplisvvm$postfix" -ResourceGroupName"$rgName
 
 ```
 
-## <a name="run-validations"></a>Érvényesítés futtatása
+## <a name="run-validations"></a>Érvényesítések futtatása
 
-Az üzembe helyezett lemezképen kétféleképpen futtathatok érvényesítéseket:
+Az üzembe helyezett lemezképen kétféleképpen futtathatók érvényesítések:
 
-- Az Azure Certified minősítéssel rendelkező tanúsítványteszteszköz használata
+- Az Azure Certified minősítési teszt eszköz használata
 - Az önteszt API használata
 
-### <a name="download-and-run-the-certification-test-tool"></a>A tanúsítási teszteszköz letöltése és futtatása
+### <a name="download-and-run-the-certification-test-tool"></a>A minősítési teszt eszköz letöltése és futtatása
 
-Az Azure Certified minősítési teszteszköze helyi Windows-gépen fut, de azure-alapú Windows vagy Linux virtuális gépet tesztel. Tanúsítja, hogy a felhasználói virtuális gép lemezképe használható a Microsoft Azure-ral, és hogy a virtuális merevlemez előkészítésére vonatkozó útmutatás és követelmények teljesültek. Az eszköz kimenete egy kompatibilitási jelentés, amelyet a Partnerközpont portálra kell feltöltenie a virtuális gép minősítésének kéréséhez.
+Az Azure Certified minősítési teszt eszköze egy helyi Windows-gépen fut, de egy Azure-alapú Windows vagy Linux rendszerű virtuális gépet tesztel. Tanúsítja, hogy a felhasználói virtuálisgép-rendszerképet Microsoft Azure használhatja, és a virtuális merevlemez előkészítésével kapcsolatos útmutatás és követelmények teljesültek. Az eszköz kimenete egy kompatibilitási jelentés, amelyet fel kell tölteni a partner Center portálra a VM-tanúsítvány igényléséhez.
 
-1. Töltse le és telepítse az Azure Certified legújabb [minősítési teszteszközét.](https://www.microsoft.com/download/details.aspx?id=44299)
-2. Nyissa meg a minősítő eszközt, majd válassza **az Új teszt indítása**lehetőséget.
-3. A **Tesztinformáció** képernyőn adja meg a **tesztnevét** a tesztfuttatáshoz.
-4. Válassza ki a **platform** a virtuális gép, windows Server vagy Linux. A platform választása hatással van a fennmaradó lehetőségekre.
-5. Ha a virtuális gép használja ezt az adatbázis-szolgáltatást, jelölje be az **Azure SQL-adatbázis tesztelése** jelölőnégyzetet.
+1. Töltse le és telepítse a legújabb [minősítési teszt eszközt az Azure Certified](https://www.microsoft.com/download/details.aspx?id=44299)minősítéshez.
+2. Nyissa meg a minősítési eszközt, majd kattintson az **új teszt indítása**lehetőségre.
+3. A teszt **adatai** képernyőn adjon meg egy **teszt nevet** a teszt futtatásához.
+4. Válassza ki a virtuális géphez tartozó **platformot** , amely Windows Server vagy Linux. A platform választása hatással van a fennmaradó lehetőségekre.
+5. Ha a virtuális gép ezt az adatbázis-szolgáltatást használja, jelölje be a **Azure SQL Database teszt** jelölőnégyzetet.
 
-### <a name="connect-the-certification-tool-to-a-vm-image"></a>A minősítő eszköz csatlakoztatása virtuális gép lemezképéhez
+### <a name="connect-the-certification-tool-to-a-vm-image"></a>A minősítési eszköz összekötése egy virtuálisgép-lemezképpel
 
-Az eszköz az [Azure PowerShell](https://docs.microsoft.com/powershell/) segítségével windowsos virtuális gépekhez csatlakozik, és [SSH.Net](https://www.ssh.com/ssh/protocol/)keresztül csatlakozik a Linux-virtuális gépekhez.
+Az eszköz a Windows-alapú virtuális gépekhez csatlakozik [Azure PowerShell](https://docs.microsoft.com/powershell/) és a [SSH.net](https://www.ssh.com/ssh/protocol/)-on keresztül csatlakozik a Linux rendszerű virtuális gépekhez.
 
-### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>A minősítő eszköz csatlakoztatása Linux virtuális géplemezképhez
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>A minősítési eszköz összekötése Linux rendszerű virtuálisgép-lemezképpel
 
-1. Válassza az **SSH hitelesítési** módot: Jelszó-hitelesítés vagy kulcsfájl-hitelesítés.
-2. Jelszóalapú hitelesítés használata esetén adja meg a **virtuális gép DNS-neve**, **felhasználóneve**és **jelszó értékét.** Módosíthatja az alapértelmezett **SSH portszámot** is.
+1. Válassza ki az **SSH hitelesítési** módot: jelszó-hitelesítés vagy kulcsfájl-hitelesítés.
+2. Jelszó-alapú hitelesítés használata esetén adja meg a **virtuális gép DNS-nevének**, **felhasználónevének**és **jelszavának**értékeit. Módosíthatja az alapértelmezett **SSH-portszámot** is.
 
-    ![Azure Certified test tool, Linux VM image jelszóhitelesítés](media/avm-cert2.png)
+    ![Azure Certified test eszköz, linuxos virtuálisgép-rendszerkép jelszavas hitelesítése](media/avm-cert2.png)
 
-3. Kulcsfájl-alapú hitelesítés használata esetén adja meg a **virtuális gép DNS-neve**, **felhasználónév**és **személyes kulcs** helyének értékeit. Megadhat egy **jelszót is,** vagy módosíthatja az alapértelmezett **SSH-portszámot.**
+3. Ha Key file-alapú hitelesítést használ, adja meg a **virtuális gép DNS-neve**, a **Felhasználónév**és a **titkos kulcs** helyének értékeit. Egy **hozzáférési kódot** is megadhat, vagy megváltoztathatja az alapértelmezett **SSH-portszámot** .
 
-### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**A minősítő eszköz csatlakoztatása Windows-alapú virtuálisgép-lemezképhez**
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**A minősítési eszköz összekötése Windows-alapú VM-lemezképpel**
 
 1. Adja meg a teljesen minősített **virtuális gép DNS-nevét** (például MyVMName.Cloudapp.net).
-2. Adja meg a **Felhasználónév** és **a Jelszó**értékét.
+2. Adja meg a **Felhasználónév** és a **jelszó**értékeit.
 
-    ![Azure Certified test tool, Windows-alapú virtuálisgép-lemezkép jelszóhitelesítése](media/avm-cert4.png)
+    ![Azure Certified test eszköz, Windows-alapú VM-rendszerkép jelszavas hitelesítése](media/avm-cert4.png)
 
-### <a name="run-a-certification-test"></a>Hitelesítési vizsgálat futtatása
+### <a name="run-a-certification-test"></a>Minősítési teszt futtatása
 
-Miután megadta a virtuális gép lemezképének paraméterértékeit a minősítő eszközben, válassza a **Kapcsolat tesztelése** lehetőséget, hogy érvényes kapcsolatot hozzon létre a virtuális géppel. A kapcsolat ellenőrzése után válassza a **Tovább** gombot a teszt elindításához. Amikor a vizsgálat befejeződött, a vizsgálati eredmények egy táblázatban jelennek meg. Az Állapot oszlop ban (Pass/Fail/Warning) látható az egyes teszteknél. Ha a tesztek bármelyike sikertelen, a rendszerkép _nem_ lesz hitelesítve. Ebben az esetben tekintse át a követelményeket és a hibaüzeneteket, hajtsa végre a javasolt módosításokat, és futtassa újra a tesztet.
+Miután megadta a virtuálisgép-rendszerkép paramétereinek értékét a minősítési eszközben, válassza a **Kapcsolódás tesztelése** lehetőséget a virtuális géphez való érvényes kapcsolatok létrehozásához. A kapcsolatok ellenőrzése után kattintson a **tovább** gombra a teszt elindításához. A teszt befejezésekor a tesztek eredményei megjelennek a táblázatban. Az Állapot oszlopban az egyes tesztek (Pass/Fail/Warning) láthatók. Ha a tesztek bármelyike meghiúsul, a rendszerkép _nem_ rendelkezik tanúsítvánnyal. Ebben az esetben tekintse át a követelményeket és a hibaüzeneteket, végezze el a javasolt módosításokat, majd futtassa újra a tesztet.
 
-Az automatikus teszt befejezése után adjon meg további információkat a virtuális gép lemezképéről a Kérdőív képernyő, az **Általános értékelés** és a **Kernel testreszabása**képernyő két **lapján,** majd válassza a **Tovább**gombot.
+Az automatikus teszt befejezése után további információkat adhat meg a virtuálisgép-rendszerképről a **Kérdőív** képernyő két lapján, az **általános értékelés** és a **rendszermag testreszabásában**, majd kattintson a **tovább**gombra.
 
-Az utolsó képernyőn további információkat adhat meg, például egy Linux virtuális géplemezkép SSH hozzáférési adatait, és magyarázatot adhat a sikertelen értékelésekre, ha kivételeket keres.
+Az utolsó képernyőn több információt is megadhat, például az SSH-hozzáférési információkat egy linuxos virtuálisgép-rendszerképhez, valamint a sikertelen értékelések magyarázatát, ha kivételeket keres.
 
-Végül válassza **a Jelentés készítése lehetőséget** a teszteredmények és a naplófájlok letöltéséhez a végrehajtott tesztesetekhez, valamint a kérdőívre adott válaszokhoz. Mentse az eredményeket ugyanabban a tárolóban, mint a Virtuálisszámítógép.Save the results in the same container as your VHDs.
+Végül válassza a **jelentés készítése** lehetőséget, hogy letöltse a teszt eredményeit és a naplófájlokat a végrehajtott tesztelési esetekhez, valamint a kérdőívre adott válaszokat. Mentse az eredményeket ugyanabba a tárolóba, mint a virtuális merevlemezeket.
 
 ## <a name="next-step"></a>Következő lépés
 
-- [Egységes erőforrás-azonosítók (URI) létrehozása minden egyes virtuális merevlemezhez](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)
+- [Egységes erőforrás-azonosítók (URI-k) létrehozása minden virtuális merevlemezhez](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/virtual-machine/cpp-get-sas-uri)

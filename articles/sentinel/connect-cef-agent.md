@@ -1,6 +1,6 @@
 ---
-title: A naplótovábbító üzembe helyezése a CEF-adatok Azure Sentinelhez való csatlakoztatásához | Microsoft dokumentumok
-description: Ismerje meg, hogyan telepítheti az ügynököt a CEF-adatok Azure Sentinelhez való csatlakoztatásához.
+title: A naplózási továbbító üzembe helyezése a CEF-adatkapcsolatok Azure Sentinelhez való összekapcsolásához | Microsoft Docs
+description: Megtudhatja, hogyan helyezheti üzembe az ügynököt a CEF-adatkapcsolat Azure Sentinelhez való összekapcsolásához.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,95 +15,95 @@ ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
 ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731661"
 ---
-# <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: A naplótovábbító telepítése
+# <a name="step-1-deploy-the-log-forwarder"></a>1. lépés: a naplózási továbbító üzembe helyezése
 
 
-Ebben a lépésben kijelöli és konfigurálja a Linux-gépet, amely továbbítja a naplókat a biztonsági megoldásból az Azure Sentinel-munkaterületre. Ez a gép lehet egy fizikai vagy virtuális gép a helyszíni környezetben, egy Azure virtuális gép, vagy egy virtuális gép egy másik felhőben. A megadott hivatkozás használatával futtat egy parancsfájlt a kijelölt gépen, amely a következő feladatokat hajtja végre:
-- Telepíti a Log Analytics ügynök Linux (más néven az OMS-ügynök) és konfigurálja azt a következő célokra:
-    - CEF üzenetek hallgatása a beépített Linux Syslog démonról a 25226-os TCP-porton
-    - az üzenetek biztonságos küldése a TLS-en keresztül az Azure Sentinel-munkaterületre, ahol azok elemzésre kerülnek és gazdagodnak
+Ebben a lépésben a Linux-gépet fogja kijelölni és konfigurálni, amely továbbítja a naplókat a biztonsági megoldásból az Azure Sentinel-munkaterületre. Ez a gép lehet fizikai vagy virtuális gép a helyszíni környezetben, egy Azure-beli virtuális gépen vagy egy másik felhőben lévő virtuális gépről. A megadott hivatkozás használatával egy parancsfájlt fog futtatni a kijelölt gépen, amely a következő feladatokat hajtja végre:
+- Telepíti a Linux rendszerhez készült Log Analytics-ügynököt (más néven OMS-ügynököt), és a következő célokra konfigurálja azt:
+    - CEF üzenetek figyelése a beépített Linux syslog démonból a 25226-as TCP-porton
+    - az üzenetek biztonságos küldése a TLS-kapcsolaton keresztül az Azure Sentinel-munkaterületre, ahol a rendszer elemzi és gazdagítja azokat
 
-- A beépített Linux Syslog démon (rsyslog.d/syslog-ng) konfigurálása a következő célokra:
-    - Syslog üzenetek figyelése a biztonsági megoldásokból az 514-es TCP-porton
-    - csak a CEF-ként azonosított üzenetek továbbítása a Localhost Log Analytics-ügynökének a 25226-os TCP-port használatával
+- A beépített Linux syslog démont (rsyslog. d/syslog-ng) konfigurálja a következő célokra:
+    - a biztonsági megoldások syslog-üzeneteinek figyelése a 514-as TCP-porton
+    - csak az általa azonosított üzenetek továbbítása a localhost Log Analytics-ügynök CEF a 25226-as TCP-port használatával
  
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Emelt szintű engedélyekkel (sudo) kell rendelkeznie a kijelölt Linux-gépen.
-- A Python-t telepítenikell a Linux gépen.<br>A `python -version` parancs segítségével ellenőrizze.
-- A Linux-gép nem csatlakozik egyetlen Azure-munkaterülethez sem a Log Analytics-ügynök telepítése előtt.
+- A kijelölt linuxos gépen emelt szintű engedélyekkel (sudo) kell rendelkeznie.
+- A Linux gépen telepítve kell lennie a pythonnak.<br>A parancs `python -version` használatával keresse meg a következőt:.
+- A Linux rendszerű számítógép nem csatlakoztatható Azure-munkaterületekhez az Log Analytics-ügynök telepítése előtt.
 
-## <a name="run-the-deployment-script"></a>A központi telepítési parancsfájl futtatása
+## <a name="run-the-deployment-script"></a>Az üzembe helyezési parancsfájl futtatása
  
-1. Az Azure Sentinel navigációs menüjében kattintson az **Adatösszekötők parancsra.** Az összekötők listájában kattintson a **Közös eseményformátum (CEF)** csempére, majd az **Összekötő lap megnyitása** gombra a jobb alsó sarokban. 
+1. Az Azure Sentinel navigációs menüjében kattintson az **adatösszekötők**elemre. Az összekötők listájában kattintson a **Common Event Format (CEF)** csempére, majd a jobb alsó sarokban található **összekötő megnyitása lap** gombra. 
 
-1. Az **1.2 alatt telepítse a CEF gyűjtőt a Linux gépre**, másolja a Következő szkript futtatása csoportban található linket a **CEF gyűjtő telepítéséhez és alkalmazásához,** vagy az alábbi szövegből:
+1. A **1,2 alatt telepítse a CEF-gyűjtőt a Linux**rendszerű gépre, másolja a **következő szkript futtatásával elérhető hivatkozást a CEF-gyűjtő telepítéséhez és alkalmazásához**, vagy az alábbi szövegből:
 
      `sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
 
-1. A parancsfájl futása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
+1. A szkript futtatása közben ellenőrizze, hogy nem kap-e hibaüzenetet vagy figyelmeztető üzenetet.
 
-Tovább a [2.](connect-cef-solution-config.md)
+Folytassa a [2. lépéssel: a biztonsági megoldás konfigurálása a CEF-üzenetek továbbítására](connect-cef-solution-config.md) .
 
-## <a name="deployment-script-explained"></a>A központi telepítési parancsfájl magyarázata
+## <a name="deployment-script-explained"></a>Üzembe helyezési parancsfájl ismertetése
 
-Az alábbiakban a központi telepítési parancsfájl műveletek parancs-by-command leírása.
+Az alábbi parancs a telepítési parancsfájl műveleteinek parancssori leírását adja meg.
 
-Válassza ki a syslog démon, hogy a megfelelő leírást.
+A megfelelő leírás megtekintéséhez válassza ki a syslog démont.
 
 # <a name="rsyslog-daemon"></a>[rsyslog démon](#tab/rsyslog)
 
-1. **A Log Analytics-ügynök letöltése és telepítése:**
+1. **Az Log Analytics-ügynök letöltése és telepítése:**
 
-    - Letölti a Telepítési parancsfájlt a Log Analytics (OMS) Linux ügynökhöz<br>
+    - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját<br>
         `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
 
-    - A Log Analytics-ügynök telepítése<br>
+    - A Log Analytics ügynök telepítése<br>
         `sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
 
-1. **A Syslog démon konfigurálása:**
+1. **A syslog démon konfigurálása:**
 
-    1. Megnyitja az 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájl `/etc/rsyslog.conf`használatával.
+    1. Megnyitja a 514-es portot a TCP-kommunikációhoz `/etc/rsyslog.conf`a syslog konfigurációs fájljának használatával.
 
-    1. Úgy állítja be a démont, hogy a 25226-os TCP-porton továbbítsa `security-config-omsagent.conf` a CEF-üzeneteket a `/etc/rsyslog.d/`Log Analytics-ügynöknek, egy speciális konfigurációs fájl beszúrásával a syslog démonkönyvtárba.
+    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP- `security-config-omsagent.conf` porton. ehhez egy `/etc/rsyslog.d/`speciális konfigurációs fájlt kell beszúrnia a syslog démon könyvtárába.
 
         A `security-config-omsagent.conf` fájl tartalma:
 
             :rawmsg, regex, "CEF\|ASA" ~
             *.* @@127.0.0.1:25226
 
-1. **A Syslog démon újraindítása**
+1. **A syslog démon újraindítása**
 
     `service rsyslog restart`
 
-1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-os porton való figyeléshez és a CEF-üzenetek továbbításához az Azure Sentinelnek**
+1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-es port figyelésére és a CEF üzenetek továbbítására az Azure Sentinel számára**
 
-    1. Letölti a konfigurációt a Log Analytics-ügynök GitHub-tárházból<br>
+    1. A konfiguráció letöltése a Log Analytics Agent GitHub-adattárból<br>
         `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
 
 
-    1. Újraindítja a Log Analytics-ügynököt<br>
+    1. Újraindítja a Log Analytics ügynököt<br>
         `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
 
 # <a name="syslog-ng-daemon"></a>[syslog-ng démon](#tab/syslogng)
 
-1. **A Log Analytics-ügynök letöltése és telepítése:**
+1. **Az Log Analytics-ügynök letöltése és telepítése:**
 
-    - Letölti a Telepítési parancsfájlt a Log Analytics (OMS) Linux ügynökhöz<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
+    - Letölti a Log Analytics (OMS) Linux-ügynök telepítési parancsfájlját<br>`wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh`
 
-    - A Log Analytics-ügynök telepítése<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
+    - A Log Analytics ügynök telepítése<br>`sh onboard_agent.sh -w [workspaceID] -s [Primary Key] -d opinsights.azure.com`
 
-1. **A Syslog démon konfigurálása:**
+1. **A syslog démon konfigurálása:**
 
-    1. Megnyitja az 514-es portot a TCP-kommunikációhoz a syslog konfigurációs fájl `/etc/syslog-ng/syslog-ng.conf`használatával.
+    1. Megnyitja a 514-es portot a TCP-kommunikációhoz `/etc/syslog-ng/syslog-ng.conf`a syslog konfigurációs fájljának használatával.
 
-    1. Úgy állítja be a démont, hogy a 25226-os TCP-porton továbbítsa `security-config-omsagent.conf` a CEF-üzeneteket a `/etc/syslog-ng/conf.d/`Log Analytics-ügynöknek, egy speciális konfigurációs fájl beszúrásával a syslog démonkönyvtárba.
+    1. Úgy konfigurálja a démont, hogy továbbítsa a CEF üzeneteket a Log Analytics-ügynöknek a 25226-as TCP- `security-config-omsagent.conf` porton. ehhez egy `/etc/syslog-ng/conf.d/`speciális konfigurációs fájlt kell beszúrnia a syslog démon könyvtárába.
 
         A `security-config-omsagent.conf` fájl tartalma:
 
@@ -111,23 +111,23 @@ Válassza ki a syslog démon, hogy a megfelelő leírást.
             destination oms_destination {tcp(\"127.0.0.1\" port("25226"));};
             log {source(s_src);filter(f_oms_filter);destination(oms_destination);};
 
-1. **A Syslog démon újraindítása**
+1. **A syslog démon újraindítása**
 
     `service syslog-ng restart`
 
-1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-os porton való figyeléshez és a CEF-üzenetek továbbításához az Azure Sentinelnek**
+1. **A Log Analytics-ügynök konfigurációjának beállítása a 25226-es port figyelésére és a CEF üzenetek továbbítására az Azure Sentinel számára**
 
-    1. Letölti a konfigurációt a Log Analytics-ügynök GitHub-tárházból<br>
+    1. A konfiguráció letöltése a Log Analytics Agent GitHub-adattárból<br>
         `wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/omsagent.d/security_events.conf`
 
 
-    1. Újraindítja a Log Analytics-ügynököt<br>
+    1. Újraindítja a Log Analytics ügynököt<br>
         `/opt/microsoft/omsagent/bin/service_control restart [workspaceID]`
 
 ---
 
 ## <a name="next-steps"></a>További lépések
-Ebben a dokumentumban megtanulta, hogyan telepítheti a Log Analytics-ügynököt a CEF-készülékek Azure Sentinelhez való csatlakoztatásához. Ha többet szeretne megtudni az Azure Sentinelről, olvassa el az alábbi cikkeket:
-- Ismerje meg, hogyan [kaphat betekintést az adatokba és a potenciális fenyegetésekbe.](quickstart-get-visibility.md)
-- Az Azure Sentinel segítségével első lépések [a fenyegetések észleléséhez.](tutorial-detect-threats.md)
+Ebből a dokumentumból megtudhatta, hogyan helyezheti üzembe a Log Analytics-ügynököt a CEF-berendezések Azure Sentinelhez való összekapcsolásához. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+- Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
+- Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats.md).
 

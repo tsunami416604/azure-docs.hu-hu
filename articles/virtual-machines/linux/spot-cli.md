@@ -1,6 +1,6 @@
 ---
-title: Az Azure Spot virtuális gépek üzembe helyezéséhez használja a CLI-t
-description: Ismerje meg, hogyan használhatja a CLI-t az Azure Spot virtuális gépek üzembe helyezéséhez a költségek csökkentése érdekében.
+title: Azure helyszíni virtuális gépek üzembe helyezése a CLI használatával
+description: Megtudhatja, hogyan használhatja a CLI-t az Azure spot virtuális gépek üzembe helyezéséhez a költségek megtakarítása érdekében.
 author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
@@ -9,36 +9,36 @@ ms.date: 03/25/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
 ms.openlocfilehash: 3f341271c208cc56a704c836433c33af0129a4ac
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758362"
 ---
-# <a name="deploy-spot-vms-using-the-azure-cli"></a>Azonnali virtuális gépek telepítése az Azure CLI használatával
+# <a name="deploy-spot-vms-using-the-azure-cli"></a>Helyszíni virtuális gépek üzembe helyezése az Azure CLI használatával
 
-Az [Azure Spot virtuális gépek](spot-vms.md) használatával jelentős költségmegtakarítást eredményezhet a kihasználatlan kapacitás kihasználása. Bármikor, amikor az Azure-nak szüksége van a kapacitás vissza, az Azure-infrastruktúra kilakoltatja spot virtuális gépek. Ezért a direkt virtuális gépek kiválóan szolgálnak olyan számítási feladatokhoz, amelyek kezelni tudják a megszakításokat, például a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási számítási feladatokat és egyebeket.
+Az [Azure helyszíni virtuális gépek](spot-vms.md) használata lehetővé teszi, hogy a felhasználatlan kapacitást jelentős költségmegtakarítással használja ki. Az Azure-infrastruktúra minden olyan időpontban kizárja a helyszíni virtuális gépeket, amikor az Azure-nak szüksége van a kapacitásra. Ezért a helyszíni virtuális gépek kiválóan alkalmasak olyan munkaterhelések kezelésére, amelyek kezelhetik a kötegelt feldolgozási feladatokat, a fejlesztési és tesztelési környezeteket, a nagy számítási feladatokat és egyebeket.
 
-A direkt virtuális gépek díjszabása változó, a régió és a termékváltozat alapján. További információ: VM-díjszabás [Linuxra](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windowsra.](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) 
+A helyszíni virtuális gépek díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
-Lehetősége van arra, hogy állítsa be a maximális árat, amelyet hajlandó fizetni, óránként, a virtuális gép. A direktvirtuális gép maximális ára usa dollárban (USD) állítható be, legfeljebb 5 tizedesjegy használatával. Az érték `0.98765`például óránként $0,98765 USD max ár. Ha a maximális árat `-1`állítja be, a virtuális gép nem lesz kizárva az ár alapján. A virtuális gép ára a Direktség aktuális ára vagy egy szabványos virtuális gép ára lesz, amely valaha is kevesebb, mindaddig, amíg van kapacitás és kvóta. A maximális ár beállításáról további információt a Azonnali virtuális gépek – árképzés című témakörben [talál.](spot-vms.md#pricing)
+Lehetősége van arra, hogy a virtuális gép számára óránként fizetendő maximális árat adja meg. A helyszíni virtuális gépek maximális díja az USA dollárban (USD) állítható be, akár 5 tizedesjegyet is igénybe vehet. Az érték `0.98765`például a maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1`, a virtuális gép ára nem kerül kizárásra. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta. A maximális ár beállításával kapcsolatos további információkért lásd: [virtuális gépek – díjszabás](spot-vms.md#pricing).
 
-Az Azure CLI használatával a Direktussal létrehozott virtuális gép létrehozása megegyezik a [rövid útmutató cikkben részletezett eljárással.](/azure/virtual-machines/linux/quick-create-cli) Csak adja hozzá a "--priority Spot" `-1`paramétert, és adjon meg egy max árat vagy .
+A helyszíni virtuális gép Azure CLI-vel való létrehozásának folyamata ugyanaz, mint a gyors üzembe helyezési [cikkben](/azure/virtual-machines/linux/quick-create-cli). Csak adja hozzá a "--priority spot" paramétert, és adja meg `-1`a maximális árat vagy a-t.
 
 
 ## <a name="install-azure-cli"></a>Telepítse az Azure CLI-t
 
-Direktgépek létrehozásához az Azure CLI 2.0.74-es vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
+A helyszíni virtuális gépek létrehozásához az Azure CLI 2.0.74 vagy újabb verzióját kell futtatnia. A verzió megkereséséhez futtassa a következő parancsot: **az --version**. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
-Jelentkezzen be az Azure-ba [az az bejelentkezéssel.](/cli/azure/reference-index#az-login)
+Jelentkezzen be az Azure-ba az [az login](/cli/azure/reference-index#az-login)használatával.
 
 ```azurecli
 az login
 ```
 
-## <a name="create-a-spot-vm"></a>Azonnali virtuális gép létrehozása
+## <a name="create-a-spot-vm"></a>Direktszínű virtuális gép létrehozása
 
-Ebben a példában bemutatja, hogyan telepíthet egy Linux spot virtuális gép, amely nem lesz kilakoltatva az ár alapján. 
+Ebből a példából megtudhatja, hogyan helyezhet üzembe egy olyan linuxos helyszíni virtuális gépet, amelyet az ár alapján nem lehet kizárni. 
 
 ```azurecli
 az group create -n mySpotGroup -l eastus
@@ -52,7 +52,7 @@ az vm create \
     --max-price -1
 ```
 
-A virtuális gép létrehozása után lekérdezheti az erőforráscsoport összes virtuális gépének maximális számlázási árát.
+A virtuális gép létrehozása után a lekérdezéssel megtekintheti az erőforráscsoport összes virtuális gépe esetében a maximális számlázási árat.
 
 ```azurecli
 az vm list \
@@ -63,6 +63,6 @@ az vm list \
 
 **További lépések**
 
-Azonnali virtuális gép is létrehozhat Azure [PowerShell](../windows/spot-powershell.md) vagy [sablon](spot-template.md)használatával.
+[Azure PowerShell](../windows/spot-powershell.md) vagy [sablon](spot-template.md)használatával is létrehozhat egy direkt virtuális gépet.
 
-Ha hibát észlel, olvassa el a [Hibakódok című témakört.](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+Ha hibát tapasztal, tekintse meg a [hibakódokat](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

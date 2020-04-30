@@ -1,37 +1,37 @@
 ---
-title: Az Azure Application Insights Ügynök hibaelhárítása és ismert problémák | Microsoft dokumentumok
-description: Az Application Insights-ügynök ismert problémái és hibaelhárítási példák. A webhely teljesítményének figyelése a webhely újratelepítése nélkül. Együttműködik ASP.NET helyszíni, virtuális gépeken vagy az Azure-ban üzemeltetett webalkalmazásokkal.
+title: Azure Application Insights-ügynök hibaelhárítása és ismert problémái | Microsoft Docs
+description: Application Insights-ügynök ismert problémái és a hibaelhárítási példák. Webhelyek teljesítményének figyelése a webhely újbóli üzembe helyezése nélkül. Együttműködik a helyszínen, a virtuális gépeken vagy az Azure-on üzemeltetett ASP.NET Web Apps szolgáltatásokkal.
 ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: 9bb22b12a7b3e972ff144bd121db4288801e2488
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732939"
 ---
-# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Alkalmazáselemzési ügynök hibaelhárítása (korábbi nevén Állapotfigyelő v2)
+# <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
 
-Ha engedélyezi a figyelést, olyan problémákléphetnek be, amelyek megakadályozzák az adatgyűjtést.
+Ha engedélyezi a figyelést, az adatgyűjtést akadályozó problémák merülhetnek fel.
 Ez a cikk felsorolja az összes ismert problémát, és hibaelhárítási példákat tartalmaz.
-Ha olyan problémával találkozol, amely nem szerepel itt, felveheti velünk a kapcsolatot a [GitHubon.](https://github.com/Microsoft/ApplicationInsights-Home/issues)
+Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapcsolatot a [githubon](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 ## <a name="known-issues"></a>Ismert problémák
 
-### <a name="conflicting-dlls-in-an-apps-bin-directory"></a>Ütköző DLL-ek az alkalmazás tárolókönyvtárában
+### <a name="conflicting-dlls-in-an-apps-bin-directory"></a>Ütköző DLL-fájlok egy alkalmazás bin könyvtárában
 
-Ha ezen DL-ek bármelyike szerepel a bin könyvtárban, a figyelés sikertelen lehet:
+Ha a DLL-fájlok bármelyike megtalálható a bin könyvtárban, a figyelés sikertelen lehet:
 
-- Microsoft.ApplicationInsights.dll
-- Microsoft.AspNet.TelemettryCorrelation.dll
-- System.Diagnostics.DiagnosticSource.dll
+- Microsoft. ApplicationInsights. dll
+- Microsoft. AspNet. TelemetryCorrelation. dll
+- System. Diagnostics. DiagnosticSource. dll
 
-Ezen DIL-k némelyikét a Visual Studio alapértelmezett alkalmazássablonjai tartalmazzák, még akkor is, ha az alkalmazás nem használja őket.
-A hibaelhárító eszközök segítségével megtekintheti a tüneti viselkedést:
+Ezek a DLL-fájlok a Visual Studio alapértelmezett alkalmazás-sablonjaiba tartoznak, még akkor is, ha az alkalmazás nem használja őket.
+A hibakeresési eszközök segítségével megtekintheti a tüneti viselkedést:
 
-- PerfView:
+- Perfview eszköz
     ```
     ThreadID="7,500" 
     ProcessorNumber="0" 
@@ -42,7 +42,7 @@ A hibaelhárító eszközök segítségével megtekintheti a tüneti viselkedés
     FormattedMessage="Found 'System.Diagnostics.DiagnosticSource, Version=4.0.2.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51' assembly, skipping attaching redfield binaries" 
     ```
 
-- IISReset és app load (telemetria nélkül). Vizsgálja meg a Sysinternals (Handle.exe és ListDLLs.exe):
+- Az IISReset és az alkalmazás terhelése (telemetria nélkül). Vizsgálat a Sysinternals-szel (Handle. exe és ListDLLs. exe):
     ```
     .\handle64.exe -p w3wp | findstr /I "InstrumentationEngine AI. ApplicationInsights"
     E54: File  (R-D)   C:\Program Files\WindowsPowerShell\Modules\Az.ApplicationMonitor\content\Runtime\Microsoft.ApplicationInsights.RedfieldIISModule.dll
@@ -55,13 +55,13 @@ A hibaelhárító eszközök segítségével megtekintheti a tüneti viselkedés
 
 ### <a name="conflict-with-iis-shared-configuration"></a>Ütközés az IIS megosztott konfigurációjával
 
-Ha webkiszolgáló-fürttel rendelkezik, lehet, hogy [megosztott konfigurációt](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
-A HttpModule nem adható be ebbe a megosztott konfigurációba.
-Futtassa az Engedélyezés parancsot minden webkiszolgálón, és telepítse a DLL-t az egyes kiszolgálók GAC-jába.
+Ha a webkiszolgálók fürtje van, lehet, hogy [megosztott konfigurációt](https://docs.microsoft.com/iis/web-hosting/configuring-servers-in-the-windows-web-platform/shared-configuration_211)használ.
+A HttpModule nem lehet beinjektálni ebbe a megosztott konfigurációba.
+Futtassa az Enable parancsot az összes webkiszolgálón a DLL-fájlnak az egyes kiszolgálók GAC-ba történő telepítéséhez.
 
-Az Engedélyezés parancs futtatása után hajtsa végre az alábbi lépéseket:
-1. Nyissa meg a megosztott konfigurációs könyvtárat, és keresse meg az applicationHost.config fájlt.
-2. Adja hozzá ezt a sort a konfiguráció moduljainak szakaszához:
+Az enable parancs futtatása után végezze el a következő lépéseket:
+1. Nyissa meg a megosztott konfigurációs könyvtárat, és keresse meg a applicationHost. config fájlt.
+2. Adja hozzá ezt a sort a konfiguráció modulok szakaszához:
     ```
     <modules>
         <!-- Registered global managed http module handler. The 'Microsoft.AppInsights.IIS.ManagedHttpModuleHelper.dll' must be installed in the GAC before this config is applied. -->
@@ -71,31 +71,31 @@ Az Engedélyezés parancs futtatása után hajtsa végre az alábbi lépéseket:
 
 ### <a name="iis-nested-applications"></a>IIS beágyazott alkalmazások
 
-Az IIS-ben az 1.0-s verzióban nem eszközként elágyazott alkalmazásokat eszközként.
-Mi nyomon ezt a kérdést [itt](https://github.com/microsoft/ApplicationInsights-Home/issues/369).
+Az IIS-ben a 1,0-es verzióban nem található beágyazott alkalmazás.
+Ezt a problémát [itt](https://github.com/microsoft/ApplicationInsights-Home/issues/369)követjük nyomon.
 
-### <a name="advanced-sdk-configuration-isnt-available"></a>Speciális SDK-konfiguráció nem érhető el.
+### <a name="advanced-sdk-configuration-isnt-available"></a>A speciális SDK-konfiguráció nem érhető el.
 
-Az SDK-konfiguráció nem elérhető a végfelhasználó számára az 1.0-s verzióban.
-Mi nyomon ezt a kérdést [itt](https://github.com/microsoft/ApplicationInsights-Home/issues/375).
+Az SDK-konfiguráció nem érhető el a végfelhasználó számára az 1,0-es verzióban.
+Ezt a problémát [itt](https://github.com/microsoft/ApplicationInsights-Home/issues/375)követjük nyomon.
 
     
     
 ## <a name="troubleshooting"></a>Hibaelhárítás
     
-### <a name="troubleshooting-powershell"></a>A PowerShell hibáinak elhárítása
+### <a name="troubleshooting-powershell"></a>A PowerShell hibaelhárítása
 
-#### <a name="determine-which-modules-are-available"></a>Határozza meg, hogy mely modulok érhetők el
-A `Get-Module -ListAvailable` paranccsal meghatározhatja, hogy mely modulok vannak telepítve.
+#### <a name="determine-which-modules-are-available"></a>Az elérhető modulok meghatározása
+A `Get-Module -ListAvailable` parancs használatával meghatározhatja, hogy mely modulok vannak telepítve.
 
 #### <a name="import-a-module-into-the-current-session"></a>Modul importálása az aktuális munkamenetbe
-Ha egy modul nincs betöltve egy PowerShell-munkamenetbe, manuálisan betöltheti azt a `Import-Module <path to psd1>` parancs használatával.
+Ha egy modult nem töltöttek be egy PowerShell-munkamenetbe, manuálisan is betöltheti `Import-Module <path to psd1>` azt a parancs használatával.
 
 
-### <a name="troubleshooting-the-application-insights-agent-module"></a>Az Application Insights-ügynök modul hibaelhárítása
+### <a name="troubleshooting-the-application-insights-agent-module"></a>Az Application Insights Agent modul hibaelhárítása
 
-#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>Az Application Insights-ügynök modulban elérhető parancsok listája
-Futtassa `Get-Command -Module Az.ApplicationMonitor` a parancsot a rendelkezésre álló parancsok beszerzéséhez:
+#### <a name="list-the-commands-available-in-the-application-insights-agent-module"></a>A Application Insights Agent modulban elérhető parancsok listázása
+Futtassa a parancsot `Get-Command -Module Az.ApplicationMonitor` az elérhető parancsok beszerzéséhez:
 
 ```
 CommandType     Name                                               Version    Source
@@ -110,50 +110,50 @@ Cmdlet          Set-ApplicationInsightsMonitoringConfig            0.4.0      Az
 Cmdlet          Start-ApplicationInsightsMonitoringTrace           0.4.0      Az.ApplicationMonitor
 ```
 
-#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Az Application Insights-ügynök modul aktuális verziójának meghatározása
-Futtassa a `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` parancsot a modullal kapcsolatos alábbi információk megjelenítéséhez:
-   - A PowerShell modul verziója
-   - Az Application Insights SDK-verziója
+#### <a name="determine-the-current-version-of-the-application-insights-agent-module"></a>Az Application Insights Agent modul aktuális verziójának meghatározása
+Futtassa a `Get-ApplicationInsightsMonitoringStatus -PowerShellModule` parancsot a következő információk megjelenítéséhez a modulról:
+   - PowerShell-modul verziója
+   - Application Insights SDK-verzió
    - A PowerShell-modul fájlelérési útjai
     
-Tekintse át az [API-referencia](status-monitor-v2-api-reference.md) részletes leírását, hogyan kell használni ezt a parancsmamot.
+A parancsmag használatának részletes ismertetését az [API-referenciában](status-monitor-v2-api-reference.md) tekintheti meg.
 
 
-### <a name="troubleshooting-running-processes"></a>Futó folyamatok – hibaelhárítás
+### <a name="troubleshooting-running-processes"></a>Futó folyamatok hibaelhárítása
 
-A műszeres számítógépen ellenőrizheti a folyamatokat, és megállapíthatja, hogy az összes DL be van-e töltve.
-Ha a monitorozás működik, legalább 12 DL-t kell betölteni.
+Megvizsgálhatja a rendszerbe helyezett számítógépek folyamatait annak megállapítására, hogy az összes DLL-fájl be van-e töltve.
+Ha a figyelés működik, legalább 12 DLL-t be kell tölteni.
 
-A `Get-ApplicationInsightsMonitoringStatus -InspectProcess` dl-ek ellenőrzéséhez használja a parancsot.
+Használja a `Get-ApplicationInsightsMonitoringStatus -InspectProcess` parancsot a DLL-fájlok vizsgálatához.
 
-Tekintse át az [API-referencia](status-monitor-v2-api-reference.md) részletes leírását, hogyan kell használni ezt a parancsmamot.
+A parancsmag használatának részletes ismertetését az [API-referenciában](status-monitor-v2-api-reference.md) tekintheti meg.
 
 
-### <a name="collect-etw-logs-by-using-perfview"></a>ETW-naplók gyűjtése a PerfView használatával
+### <a name="collect-etw-logs-by-using-perfview"></a>ETW-naplók gyűjtése a Perfview eszköz használatával
 
 #### <a name="setup"></a>Telepítés
 
-1. Töltse le a PerfView.exe és a PerfView64.exe játékot a [GitHubról.](https://github.com/Microsoft/perfview/releases)
-2. Indítsa el a PerfView64.exe.start perfView64.exe.
-3. Bontsa ki **a Speciális beállítások csomópontot.**
-4. Törölje a jelet az alábbi jelölőnégyzetekből:
+1. Töltse le a Perfview eszköz. exe és a PerfView64. exe fájlt a [githubról](https://github.com/Microsoft/perfview/releases).
+2. Indítsa el a PerfView64. exe fájlt.
+3. Bontsa ki a **Speciális beállítások elemet**.
+4. Törölje a jelet a következő jelölőnégyzetekből:
     - **Zip**
     - **Egyesítés**
-    - **.NET szimbólumgyűjtemény**
-5. Állítsa be ezeket **a további szolgáltatókat:**`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
+    - **.NET-szimbólum gyűjteménye**
+5. **További szolgáltatók**beállítása:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
 
 
-#### <a name="collecting-logs"></a>Naplók gyűjtése
+#### <a name="collecting-logs"></a>Naplók összegyűjtése
 
-1. Rendszergazdai jogosultságokkal rendelkező parancskonzolon `iisreset /stop` futtassa a paranccsal az IIS és az összes webalkalmazás kikapcsolására.
-2. A PerfView nézetben válassza **a Gyűjtemény indítása**lehetőséget.
-3. Rendszergazdai jogosultságokkal rendelkező parancskonzolon `iisreset /start` futtassa a parancsot az IIS elindításához.
-4. Próbáljon meg böngészni az alkalmazással.
-5. Az alkalmazás betöltése után térjen vissza a PerfView webhelyre, és válassza **a Gyűjtemény leállítása lehetőséget.**
+1. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa a `iisreset /stop` parancsot az IIS és az összes webalkalmazás kikapcsolásához.
+2. A Perfview eszköz területen válassza a **gyűjtés indítása**elemet.
+3. Rendszergazdai jogosultságokkal rendelkező parancssori konzolon futtassa a `iisreset /start` parancsot az IIS elindításához.
+4. Próbálja meg megkeresni az alkalmazást.
+5. Az alkalmazás betöltése után térjen vissza a Perfview eszköz, és válassza a **gyűjtemény leállítása**lehetőséget.
 
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át az [API-hivatkozást,](status-monitor-v2-overview.md#powershell-api-reference) és ismerje meg a kihagyott paramétereket.
-- Ha olyan problémával találkozol, amely nem szerepel itt, felveheti velünk a kapcsolatot a [GitHubon.](https://github.com/Microsoft/ApplicationInsights-Home/issues)
+- A kihagyott paraméterek megismeréséhez tekintse át az [API-referenciát](status-monitor-v2-overview.md#powershell-api-reference) .
+- Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapcsolatot a [githubon](https://github.com/Microsoft/ApplicationInsights-Home/issues).

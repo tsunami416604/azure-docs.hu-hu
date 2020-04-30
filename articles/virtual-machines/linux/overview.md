@@ -1,6 +1,6 @@
 ---
-title: Linuxos virtuális gépek áttekintése az Azure-ban
-description: Az Azure-beli Linux-virtuális gépek áttekintése.
+title: A Linux rendszerű virtuális gépek áttekintése az Azure-ban
+description: Az Azure-beli Linux rendszerű virtuális gépek áttekintése.
 author: cynthn
 ms.service: virtual-machines-linux
 ms.topic: overview
@@ -9,15 +9,15 @@ ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 83676850a58da4e4bd3c549d9d0c6ac25ae20f83
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81759421"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Linux rendszerű virtuális gépek az Azure-ban
 
-Az Azure Virtual Machines (VM) az Azure által kínálott [igény szerinti, méretezhető számítási erőforrások](/azure/architecture/guide/technology-choices/compute-decision-tree) számos típusának egyike. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Ez a cikk bemutatja, hogy mit kell szem előtt tartania egy virtuális gép létrehozása előtt, valamint hogy hogyan hozhatja létre és kezelheti azt.
+Az Azure Virtual Machines (VM) az Azure által kínált különböző típusú [, igény szerinti, méretezhető számítási erőforrások](/azure/architecture/guide/technology-choices/compute-decision-tree) egyike. Virtuális gépet általában akkor érdemes választani, ha a számítási környezet átfogóbb vezérlésére van szüksége annál, amelyet az egyéb lehetőségek kínálnak. Ez a cikk bemutatja, hogy mit kell szem előtt tartania egy virtuális gép létrehozása előtt, valamint hogy hogyan hozhatja létre és kezelheti azt.
 
 Az Azure VM a virtualizálás rugalmasságát biztosítja anélkül, hogy a virtuális gépet futtató fizikai hardvereket kellene vásárolnia és karbantartania. A virtuális gép karbantartásához azonban így is szükséges elvégeznie néhány feladatot, például a virtuális gépen futó szoftver konfigurálását, javítását és telepítését.
 
@@ -58,7 +58,7 @@ Az Azure bejelentett egy iparágvezető, 99,9%-os elérhetőséget biztosító e
 ## <a name="vm-size"></a>Virtuális gép mérete
 A használt virtuális gép [mérete](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) a futtatni kívánt számítási feladatok mennyiségétől függ. A választott méret határoz meg olyan tényezőket, mint a feldolgozókapacitás, a memória és a tárolókapacitás. Az Azure számos különböző méretet kínál különféle felhasználási módokhoz.
 
-Az Azure [óránkénti díjat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) számít fel a virtuális gép mérete és operációs rendszere alapján. Nem egész órák esetében az Azure csak a használt perceket számlázza. A tárhely árazása és felszámítása külön történik.
+Az Azure [óradíjat](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) számít fel a virtuális gép méretétől és az operációs rendszertől függően. Nem egész órák esetében az Azure csak a használt perceket számlázza. A tárhely árazása és felszámítása külön történik.
 
 ## <a name="vm-limits"></a>A virtuális gépekre korlátai
 Minden előfizetésre alapértelmezett [kvótakorlátozások](../../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak, amelyek akadályt jelenthetnek, ha a projektjéhez nagy számú virtuális gépet szeretne üzembe helyezni. A jelenlegi határérték minden előfizetés esetében régiónként 20 virtuális gép. A határértékek megemelhetők [egy emelést kérvényező támogatási jegy benyújtásával](../../azure-portal/supportability/resource-manager-core-quotas-request.md)
@@ -81,7 +81,7 @@ A Microsoft szorosan együttműködik a partnereivel, hogy az elérhető rendsze
 * Red Hat – [Azure Marketplace – Red Hat Enterprise Linux 7.2](https://azure.microsoft.com/marketplace/partners/redhat/redhatenterpriselinux72/)
 * Canonical – [Azure Marketplace – Ubuntu Server 16.04 LTS](https://azure.microsoft.com/marketplace/partners/canonical/ubuntuserver1604lts/)
 * Debian – [Azure Marketplace – Debian 8 „Jessie”](https://azure.microsoft.com/marketplace/partners/credativ/debian8/)
-* FreeBSD - [Azure Piactér - FreeBSD 10.4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
+* FreeBSD – [Azure Marketplace – freebsd 10,4](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeBSD104)
 * CoreOS – [Azure Marketplace – CoreOS (Stable)](https://azure.microsoft.com/marketplace/partners/coreos/coreosstable/)
 * RancherOS – [Azure Marketplace – RancherOS](https://azure.microsoft.com/marketplace/partners/rancher/rancheros/)
 * Bitnami – [Azure-hoz készült Bitnami Library](https://azure.bitnami.com/)
@@ -92,12 +92,12 @@ A Microsoft szorosan együttműködik a partnereivel, hogy az elérhető rendsze
 
 ## <a name="cloud-init"></a>Cloud-init 
 
-A megfelelő DevOps-kultúra megteremtéséhez minden infrastruktúrának kódoltnak kell lennie.  Ha az összes infrastruktúra kódban él, könnyen újra létrehozható.  Az Azure az összes fontosabb automatizáló eszközt használja, köztük az Ansible, a Chef, a SaltStack és a Puppet eszközöket.  Az Azure továbbá saját automatizáló eszközökkel is rendelkezik:
+A megfelelő DevOps-kultúra megteremtéséhez minden infrastruktúrának kódoltnak kell lennie.  Ha az összes infrastruktúra kód életbe kerül, akkor könnyen létrehozható.  Az Azure az összes fontosabb automatizáló eszközt használja, köztük az Ansible, a Chef, a SaltStack és a Puppet eszközöket.  Az Azure továbbá saját automatizáló eszközökkel is rendelkezik:
 
 * [Azure-sablonok](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Az Azure támogatja a [felhőalapú init](https://cloud-init.io/) et a legtöbb Linux-disztribúcióban, amely támogatja azt.  Aktívan együttműködünk a jóváhagyott Linux disztribúciós partnereinkkel annak érdekében, hogy felhőalapú init-kompatibilis lemezképek álljanak rendelkezésre az Azure piactéren. Ezek a lemezképek teszik a felhő-init központi telepítések és konfigurációk zökkenőmentesen működnek a virtuális gépek és a virtuális gép méretezési készletek.
+Az Azure támogatja a [Cloud-init](https://cloud-init.io/) használatát a legtöbb Linux-disztribúcióban, amely támogatja azt.  Aktívan dolgozunk a támogatott linuxos disztribúciós partnereinkkel, hogy elérhetők legyenek a Cloud-init-lemezképek az Azure piactéren. Ezek a lemezképek a felhő-init üzembe helyezések és konfigurációk zökkenőmentesen működnek a virtuális gépekkel és a virtuálisgép-méretezési csoportokkal.
 
 * [A cloud-init használata Azure-beli Linux rendszerű virtuális gépeken](using-cloud-init.md)
 
@@ -115,7 +115,7 @@ Az Azure támogatja a [felhőalapú init](https://cloud-init.io/) et a legtöbb 
 
 ## <a name="next-steps"></a>További lépések
 
-Hozza létre az első virtuális gép!
+Hozza létre az első virtuális gépet!
 
 - [Portál](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)

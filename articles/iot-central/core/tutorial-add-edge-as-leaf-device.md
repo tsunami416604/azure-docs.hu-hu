@@ -1,6 +1,6 @@
 ---
-title: Azure IoT Edge-eszköz hozzáadása az Azure IoT Centralhoz | Microsoft dokumentumok
-description: Operátorként adjon hozzá egy Azure IoT Edge-eszközt az Azure IoT Central alkalmazáshoz
+title: Azure IoT Edge eszköz hozzáadása az Azure IoT Centralhoz | Microsoft Docs
+description: Operátorként vegyen fel egy Azure IoT Edge eszközt az Azure IoT Central alkalmazásba
 author: rangv
 ms.author: rangv
 ms.date: 12/09/2019
@@ -10,60 +10,60 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: c60cf4b90b089d271c0ccd91031420efe9017b1e
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81758161"
 ---
-# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central alkalmazáshoz
+# <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
 
-*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
+*Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
-Ez az oktatóanyag bemutatja, hogyan konfigurálhat és adhat hozzá egy Azure IoT Edge-eszközt az Azure IoT Central-alkalmazáshoz. Az oktatóanyag egy IoT Edge-kompatibilis Linux-alapú virtuális gépet (VM) használ az Azure Marketplace-ről egy IoT Edge-eszköz szimulálására. Az IoT Edge-eszköz egy modult használ, amely szimulált környezeti telemetriai adatokat hoz létre. A telemetriai adatokat az IoT Central-alkalmazás irányítópultján tekintheti meg.
+Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat és adhat hozzá egy Azure IoT Edge-eszközt az Azure IoT Central-alkalmazáshoz. Az oktatóanyag egy IoT Edge-kompatibilis linuxos virtuális gépet (VM) használ az Azure Marketplace-en egy IoT Edge-eszköz szimulálásához. A IoT Edge eszköz szimulált környezeti telemetria létrehozó modult használ. A telemetria a IoT Central alkalmazásban található irányítópulton tekintheti meg.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Eszközsablon létrehozása IoT Edge-eszközhöz
-> * IoT Edge-eszköz létrehozása az IoT Centralban
-> * Szimulált IoT Edge-eszköz üzembe helyezése Linux os virtuális gépre
+> * Eszköz sablonjának létrehozása IoT Edge eszközhöz
+> * IoT Edge-eszköz létrehozása IoT Central
+> * Szimulált IoT Edge eszköz üzembe helyezése Linux rendszerű virtuális gépen
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Végezze el az [Azure IoT Central alkalmazás](./quick-deploy-iot-central.md) létrehozása rövid útmutatót egy IoT Central alkalmazás létrehozásához az egyéni alkalmazás > egyéni **alkalmazássablon** használatával.
+Fejezze be az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-central.md) című rövid útmutatót egy IoT Central-alkalmazás létrehozásához az **egyéni alkalmazás > egyéni alkalmazásspecifikus** sablon használatával.
 
-Az oktatóanyag lépései végrehajtásához aktív Azure-előfizetésre van szükség.
+Az oktatóanyag lépéseinek elvégzéséhez aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
-Töltse le az IoT Edge-jegyzékfájl a GitHubról. Kattintson a jobb gombbal az alábbi hivatkozásra, majd válassza a **Mentés hivatkozást:** [EnvironmentalSensorManifest.json](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
+Töltse le a IoT Edge manifest-fájlt a GitHubról. Kattintson a jobb gombbal a következő hivatkozásra, majd válassza a **hivatkozás mentése másként**: [EnvironmentalSensorManifest. JSON lehetőséget.](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json)
 
-## <a name="create-device-template"></a>Eszközsablon létrehozása
+## <a name="create-device-template"></a>Eszköz sablonjának létrehozása
 
-Ebben a szakaszban hozzon létre egy eszközsablont egy IoT Edge-eszközhöz, amely csatlakozik az IoT Central-alkalmazáshoz. Az első lépésekhez importál egy IoT Edge-jegyzékfájlt, majd módosítja a sablont telemetriai definíciók és nézetek hozzáadásához:
+Ebben a szakaszban egy IoT Edge eszközhöz tartozó sablont hoz létre, amely a IoT Central alkalmazáshoz csatlakozik. Egy IoT Edge jegyzékfájlt importálhat az első lépésekhez, majd a sablon módosításával telemetria-definíciókat és-nézeteket adhat hozzá:
 
 ### <a name="import-manifest-to-create-template"></a>Jegyzékfájl importálása sablon létrehozásához
 
-Eszközsablon létrehozása IoT Edge-jegyzékfájlból:
+Eszköz sablonjának létrehozása IoT Edge jegyzékfájlból:
 
-1. Az IoT Central alkalmazásban keresse meg az **Eszközsablonok at,** és válassza a **+ Új**lehetőséget.
+1. A IoT Central alkalmazásban navigáljon az **eszközök sablonjaihoz** , és válassza az **+ új**lehetőséget.
 
-1. A **Sablon típusának kiválasztása** lapon válassza ki az **Azure IoT Edge** csempét. Ezután válassza **a Tovább: Testreszabás lehetőséget.**
+1. A **sablon típusának kiválasztása** lapon válassza a **Azure IoT Edge** csempét. Ezután válassza a **Tovább: testreszabás**lehetőséget.
 
-1. Az **Azure IoT Edge központi telepítési jegyzékfájljának feltöltése** lapon válassza a **Tallózás** lehetőséget a korábban letöltött **EnvironmentalSensorManifest.json** feltöltéséhez. Ezután válassza **a Tovább: Véleményezés**lehetőséget.
+1. Az **Azure IoT Edge üzembe helyezési jegyzék feltöltése** lapon válassza a **Tallózás** lehetőséget a korábban letöltött **EnvironmentalSensorManifest. JSON** feltöltéséhez. Ezután válassza a **Tovább: felülvizsgálat**lehetőséget.
 
-1. A **Véleményezés** lapon válassza a **Létrehozás gombot.**
+1. Az **Áttekintés** lapon válassza a **Létrehozás**lehetőséget.
 
-1. A sablon létrehozása után módosítsa a nevét *Környezeti érzékelő peremhálózati eszközre.*
+1. A sablon létrehozása után módosítsa a nevét a *környezeti érzékelő peremhálózati eszközére*.
 
-1. A jegyzékben definiált két tulajdonság megtekintéséhez válassza a Felület **kezelése** lehetőséget a **SimulatedTemperatureSensor** modulban:
+1. Válassza a **kezelés** felületet a **SimulatedTemperatureSensor** modulban a jegyzékfájlban definiált két tulajdonság megtekintéséhez:
 
-![IoT Edge-jegyzékfájlból létrehozott eszközsablon](./media/tutorial-add-edge-as-leaf-device/imported-manifest.png)
+![IoT Edge jegyzékfájlból létrehozott eszköz sablonja](./media/tutorial-add-edge-as-leaf-device/imported-manifest.png)
 
-### <a name="add-telemetry-to-manifest"></a>Telemetria hozzáadása a jegyzékhez
+### <a name="add-telemetry-to-manifest"></a>Telemetria hozzáadása a jegyzékfájlhoz
 
-Az IoT Edge-jegyzékfájl nem határozza meg a modul által küldött telemetriai adatokat. Hozzá kell adnia a telemetriai definíciókat az eszközsablonhoz. A **SimulatedTemperatureSensor** modul telemetriai üzeneteket küld, amelyek a következő JSON-hoz hasonlóan jelennek meg:
+Egy IoT Edge jegyzékfájl nem határozza meg a telemetria által küldött adatokat. A telemetria-definíciókat hozzá kell adnia az eszköz sablonhoz. A **SimulatedTemperatureSensor** modul a következő JSON-hoz hasonló telemetria-üzeneteket küld:
 
 ```json
 {
@@ -79,124 +79,124 @@ Az IoT Edge-jegyzékfájl nem határozza meg a modul által küldött telemetria
 }
 ```
 
-A telemetriai definíciók hozzáadása az eszközsablonhoz:
+A telemetria-definíciók hozzáadása az eszköz sablonhoz:
 
-1. Válassza ki a **Felület kezelése** a környezeti **érzékelő peremhálózati eszköz** sablonban.
+1. Válassza a **kezelés** felületet a **környezeti érzékelő Edge-eszköz** sablonjában.
 
-1. Válassza **a + Add capability**lehetőséget . Adja meg a *gépet* **megjelenítendő névként,** és győződjön meg arról, hogy a **Képesség típusa** **Telemetriai.**
+1. Válassza a **+ képesség hozzáadása**lehetőséget. Adja *machine* meg a gép **megjelenítendő nevét** , és győződjön meg arról, hogy a **telemetria** **típusa** .
 
-1. Válassza az **Objektum** sématípusként lehetőséget, majd válassza a **Definiálás gombot.** Az objektumdefiníciós lapon adja hozzá a *hőmérsékletet* és a *nyomást* **Dupla** típusú attribútumként, majd válassza **az Alkalmaz**lehetőséget.
+1. Válassza az **objektum** lehetőséget a séma típusaként, majd válassza a **Definiálás**lehetőséget. Az objektum definíciója lapon adja hozzá a *hőmérsékletet* és a *nyomást* a **Double** típusú attribútumokként, majd válassza az **alkalmaz**lehetőséget.
 
-1. Válassza **a + Add capability**lehetőséget . Adja meg a *környezeti értéket* **megjelenítendő névként,** és győződjön meg arról, hogy a Képesség **típusa** **Telemetriai.**
+1. Válassza a **+ képesség hozzáadása**lehetőséget. A **megjelenítendő név** mezőben adja meg a *környezeti* értéket, és győződjön meg arról, hogy a **képesség típusa** **telemetria**.
 
-1. Válassza az **Objektum** sématípusként lehetőséget, majd válassza a **Definiálás gombot.** Az objektumdefiníciós lapon adja hozzá a *hőmérsékletet* és a *páratartalmat* **Dupla** típusú attribútumként, majd válassza **az Alkalmaz**lehetőséget.
+1. Válassza az **objektum** lehetőséget a séma típusaként, majd válassza a **Definiálás**lehetőséget. Az objektum definíciója lapon adja hozzá a *hőmérséklet* és a *páratartalom* értéket a **Double** típusú attribútumoknál, majd válassza az **alkalmaz**lehetőséget.
 
-1. Válassza **a + Add capability**lehetőséget . Adja meg az *időlétrehozott* **megjelenítendő névként,** és győződjön meg arról, hogy a **Képesség típusa** **Telemetriai.**
+1. Válassza a **+ képesség hozzáadása**lehetőséget. Írja *timeCreated* be a timeCreated **nevet a megjelenítendő név** értékre, és győződjön meg arról, hogy a **képesség típusa** **telemetria**.
 
-1. Válassza a **DateTime** lehetőséget sématípusként.
+1. Válassza a **datetime** értéket a séma típusaként.
 
-1. A sablon frissítéséhez válassza a **Mentés** gombot.
+1. A sablon frissítéséhez válassza a **Mentés** lehetőséget.
 
-A **Manage** felület most már tartalmazza a **gép,** **környezeti**, és **időLétrehozott** telemetriai típusok:
+A **kezelés** felület mostantól tartalmazza a **gép**-, a **környezeti**és a **timeCreated** telemetria-típusokat:
 
-![Felület gép- és környezeti telemetriai típusokkal](./media/tutorial-add-edge-as-leaf-device/manage-interface.png)
+![Felület gépi és környezeti telemetria-típusokkal](./media/tutorial-add-edge-as-leaf-device/manage-interface.png)
 
-### <a name="add-views-to-template"></a>Nézetek hozzáadása sablonhoz
+### <a name="add-views-to-template"></a>Nézetek hozzáadása a sablonhoz
 
-Az eszközsablon még nem rendelkezik olyan nézettel, amely lehetővé teszi, hogy egy operátor az IoT Edge-eszköz telemetriáját lássa. Nézet hozzáadása az eszközsablonhoz:
+Az eszköz sablonja még nem rendelkezik olyan nézettel, amely lehetővé teszi, hogy az operátor megtekintse a telemetria a IoT Edge eszközről. Nézet hozzáadása az eszköz sablonhoz:
 
-1. Válassza a **Nézetek lehetőséget** a Környezeti **érzékelő peremhálózati eszközsablonjában.**
+1. Válassza a **views (nézetek** ) lehetőséget a **környezeti érzékelő Edge-eszköz** sablonjában.
 
-1. A **Kijelölés új nézet hozzáadásához** jelölje ki **az eszköz** megjelenítése csempét.
+1. Az **új nézet hozzáadása** lapon válassza az **eszköz megjelenítése** csempét.
 
-1. Módosítsa a nézet nevét *Az IoT Edge-eszköz telemetria nézetére.*
+1. Módosítsa a nézet nevét *IoT Edge eszköz telemetria megtekintéséhez*.
 
-1. Válassza ki a **környezeti** és **a gép** telemetriai típusok. Ezután válassza **a Csempe hozzáadása**lehetőséget.
+1. Válassza ki a **környezeti** és a **gépi** telemetria típusait. Ezután válassza a **csempe hozzáadása**lehetőséget.
 
-1. Válassza a **Mentés** lehetőséget az **IoT Edge-eszköz telemetriai** nézetének mentéséhez.
+1. Válassza a **Mentés** lehetőséget a **nézet mentéséhez IoT Edge eszköz telemetria** nézetét.
 
-![Eszközsablon telemetriai nézetgel](./media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png)
+![Eszköz sablonja telemetria nézettel](./media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png)
 
 ### <a name="publish-the-template"></a>A sablon közzététele
 
-Mielőtt hozzáadhatna egy eszközt, amely a **Környezeti érzékelő peremhálózati eszközt** használja, közzé kell tennie a sablont.
+Ahhoz, hogy hozzáadjon egy olyan eszközt, amely a **környezeti érzékelők peremhálózati eszközének** sablonját használja, közzé kell tennie a sablont.
 
-Nyissa meg a **Környezeti érzékelő peremhálózati eszköz sablonját,** és válassza **a Közzététel**lehetőséget. Ezután a közzététel **gombra** a sablon közzétételéhez válassza a következőket:
+Navigáljon a **környezeti érzékelő Edge-eszköz** sablonhoz, és válassza a **Közzététel**lehetőséget. Ezután válassza a **Közzététel** lehetőséget a sablon közzétételéhez:
 
-![Az eszközsablon közzététele](./media/tutorial-add-edge-as-leaf-device/publish-template.png)
+![Az eszköz közzétételének közzététele](./media/tutorial-add-edge-as-leaf-device/publish-template.png)
 
-## <a name="add-iot-edge-device"></a>IoT Edge-eszköz hozzáadása
+## <a name="add-iot-edge-device"></a>IoT Edge eszköz hozzáadása
 
-Most, hogy közzétette a **Környezeti érzékelő peremhálózati eszköz** sablonját, hozzáadhat egy eszközt az IoT Central alkalmazáshoz:
+Most, hogy közzétette a **környezeti érzékelők peremhálózati eszközének** sablonját, hozzáadhat egy eszközt a IoT Central alkalmazáshoz:
 
-1. Az IoT Central alkalmazásban keresse meg az **Eszközök** lapot, és válassza **a Környezeti érzékelő peremhálózati eszköz** lehetőséget az elérhető sablonok listájában.
+1. A IoT Central alkalmazásban navigáljon az **eszközök** lapra, és válassza a **környezeti érzékelő Edge-eszköz** lehetőséget az elérhető sablonok listájában.
 
-1. Jelölje **+** be, ha új eszközt szeretne hozzáadni a sablonból. Az **Új eszköz létrehozása** lapon válassza a **Létrehozás gombot.**
+1. Válassza **+** a lehetőséget, ha új eszközt szeretne hozzáadni a sablonból. Az **új eszköz létrehozása** lapon válassza a **Létrehozás**lehetőséget.
 
-Most már van egy új eszköze, amelynek állapota **Regisztrált:**
+Most már rendelkezik egy új, **regisztrált**állapottal rendelkező eszközzel:
 
-![Az eszközsablon közzététele](./media/tutorial-add-edge-as-leaf-device/new-device.png)
+![Az eszköz közzétételének közzététele](./media/tutorial-add-edge-as-leaf-device/new-device.png)
 
-### <a name="get-the-device-credentials"></a>Az eszköz hitelesítő adatainak beszereznie
+### <a name="get-the-device-credentials"></a>Az eszköz hitelesítő adatainak beolvasása
 
-Ha az oktatóanyag későbbi részében telepíti az IoT Edge-eszközt, szüksége van a hitelesítő adatokra, amelyek lehetővé teszik, hogy az eszköz csatlakozzon az IoT Central-alkalmazáshoz. Az eszköz hitelesítő adatainak bekéselése:
+Amikor az oktatóanyag későbbi részében telepíti a IoT Edge eszközt, szüksége lesz a hitelesítő adatokra, amelyek lehetővé teszik, hogy az eszköz csatlakozhasson a IoT Central alkalmazáshoz. Az eszköz hitelesítő adatainak lekérése:
 
-1. Az **Eszköz** lapon jelölje ki a létrehozott eszközt.
+1. Az **eszköz** lapon válassza ki a létrehozott eszközt.
 
 1. Kattintson a **Csatlakozás** gombra.
 
-1. Az **Eszközkapcsolat** lapon jegyezze fel az **azonosító hatókört,** az **eszközazonosítót**és az **elsődleges kulcsot.** Ezeket az értékeket később használhatja.
+1. Az **eszköz-kapcsolatok** lapon jegyezze fel az **azonosító hatókörét**, az **eszköz azonosítóját**és az **elsődleges kulcsot**. Ezeket az értékeket később használhatja.
 
 1. Kattintson a **Bezárás** gombra.
 
-Ezzel befejezte az IoT Central-alkalmazás konfigurálását, hogy egy IoT Edge-eszköz csatlakozzon.
+Ezzel befejezte a IoT Central alkalmazás konfigurálását, hogy lehetővé váljon IoT Edge-eszköz csatlakoztatása.
 
-## <a name="deploy-an-iot-edge-device"></a>IoT Edge-eszköz üzembe helyezése
+## <a name="deploy-an-iot-edge-device"></a>IoT Edge eszköz üzembe helyezése
 
-Ebben az oktatóanyagban egy Azure IoT Edge-kompatibilis Linux virtuális gép, az Azure-ban létrehozott egy IoT Edge-eszköz szimulálása. Az IoT Edge-kompatibilis virtuális gép létrehozása:
+Ebben az oktatóanyagban egy Azure IoT Edge-kompatibilis linuxos virtuális gépet használ, amelyet az Azure-ban hoztak létre egy IoT Edge-eszköz szimulálásához. A IoT Edge-kompatibilis virtuális gép létrehozása:
 
-1. Keresse meg az [Azure IoT Edge-et az Ubuntun](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) az Azure Marketplace-en. Ezután válassza **a Get it now**lehetőséget.
+1. Az Azure Marketplace-en navigáljon [Azure IoT Edge az Ubuntuhoz](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft_iot_edge.iot_edge_vm_ubuntu?tab=Overview) . Ezután válassza a **Letöltés most**lehetőséget.
 
-1. Az **Alkalmazás létrehozása az Azure-ban** lapon válassza a **Continue (Folytatás)** lehetőséget. Ez a hivatkozás az Azure Portalra vezet, ahol előfordulhat, hogy be kell jelentkeznie az Azure-előfizetésbe.
+1. Az **alkalmazás létrehozása az Azure-ban** lapon válassza a **Folytatás**lehetőséget. Ez a hivatkozás végigvezeti a Azure Portal, ahol előfordulhat, hogy be kell jelentkeznie az Azure-előfizetésbe.
 
-1. Az **Azure IoT Edge ubuntuoldalán** az Azure Portalon válassza a **Létrehozás lehetőséget.**
+1. A Azure Portal **Ubuntu** lapjának Azure IoT Edge válassza a **Létrehozás**lehetőséget.
 
-1. A **Virtuális gép létrehozása > alapjai** lapon:
+1. A **virtuális gép létrehozása > alapjai** lapon:
 
     - Válassza ki az Azure-előfizetését.
-    - Hozzon létre egy **iot-edge-devices**nevű új erőforráscsoportot.
+    - Hozzon létre egy új erőforráscsoportot **IOT-Edge-Devices**néven.
     - Használja a virtuális gép nevét: **iotedgevm**.
-    - Válassza ki az Önhöz legközelebbi régiót.
-    - Állítsa a hitelesítéstípusát **Jelszó .**
-    - Válasszon felhasználónevet és jelszót.
-    - A többi beállítást az alapértelmezett értékekre hagyhatja.
+    - Válassza ki a legközelebbi régiót.
+    - Állítsa a hitelesítési típust **jelszó**értékre.
+    - Válassza ki a felhasználónevet és a jelszót.
+    - A többi beállítást az alapértelmezett értékekre is kihagyhatja.
     - Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-1. Az ellenőrzés befejezése után válassza a **Létrehozás gombot.**
+1. Ha az ellenőrzés befejeződött, válassza a **Létrehozás**lehetőséget.
 
-Néhány perc múlva, amikor a központi telepítés befejeződött, válassza az Ugrás az **erőforrásra**lehetőséget.
+Néhány perc elteltével az üzembe helyezés befejezésekor válassza az **Ugrás erőforráshoz**lehetőséget.
 
-### <a name="provision-vm-as-an-iot-edge-device"></a>Virtuális gép kiépítése IoT Edge-eszközként 
+### <a name="provision-vm-as-an-iot-edge-device"></a>Virtuális gép kiépítése IoT Edge eszközként 
 
-Virtuális gép kiépítése IoT Edge-eszközként:
+Virtuális gép kiépítése IoT Edge eszközként:
 
-1. A **Támogatás + hibaelhárítás** csoportban válassza a **Soros konzol**lehetőséget.
+1. A **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console**lehetőséget.
 
-1. A kérdés megtekintéséhez nyomja **le** az `login:` Enter billentyűt. Adja meg felhasználónevét és jelszavát a bejelentkezéshez.
+1. Nyomja le az **ENTER** billentyűt a `login:` parancssor megjelenítéséhez. A bejelentkezéshez adja meg felhasználónevét és jelszavát.
 
-1. Futtassa a következő parancsot az IoT Edge futásidejű verziójának ellenőrzéséhez. Abban az időben az írás, a változat 1.0.8:
+1. Futtassa a következő parancsot a IoT Edge Runtime verziójának vizsgálatához. Az írás időpontjában a verzió 1.0.8:
 
     ```bash
     sudo iotedge --version
     ```
 
-1. A `nano` szerkesztő segítségével nyissa meg az IoT Edge config.yaml fájlt:
+1. A `nano` szerkesztő segítségével nyissa meg a IoT Edge config. YAML fájlt:
 
     ```bash
     sudo nano /etc/iotedge/config.yaml
     ```
 
-1. Görgessen lefelé, amíg meg nem jelenik. `# Manual provisioning configuration` Fűzzön megjegyzést a következő három sorhoz, ahogy az a következő kódrészletben látható:
+1. Görgessen lefelé, amíg `# Manual provisioning configuration`meg nem jelenik. Tegye megjegyzésbe a következő három sort az alábbi kódrészletben látható módon:
 
     ```yaml
     # Manual provisioning configuration
@@ -205,7 +205,7 @@ Virtuális gép kiépítése IoT Edge-eszközként:
     #  device_connection_string: "<ADD DEVICE CONNECTION STRING HERE>"
     ```
 
-1. Görgessen lefelé, amíg meg nem jelenik. `# DPS symmetric key provisioning configuration` A következő nyolc sor megjegyzésének kimegjegyzést iszágítása a következő kódrészletben látható módon:
+1. Görgessen lefelé, amíg `# DPS symmetric key provisioning configuration`meg nem jelenik. A következő nyolc sor megjegyzésének visszalépése az alábbi kódrészletben látható módon:
 
     ```yaml
     # DPS symmetric key provisioning configuration
@@ -219,27 +219,27 @@ Virtuális gép kiépítése IoT Edge-eszközként:
         symmetric_key: "{symmetric_key}"
     ```
 
-1. Cserélje `{scope_id}` le az **azonosító hatóköraz** Ön készített egy feljegyzést korábban.
+1. A `{scope_id}` helyére írja be az **azonosító hatókörét** , és jegyezze fel korábban.
 
-1. Cserélje `{registration_id}` le azt az **eszközazonosítót,** amelyről korábban feljegyzést készített.
+1. A `{registration_id}` helyére írja be az **eszköz azonosítóját** , amelyet korábban jegyzett készített.
 
-1. Cserélje `{symmetric_key}` le a korábban feljegyzett **elsődleges kulcsra.**
+1. Cserélje `{symmetric_key}` le az t az **elsődleges kulcsra** , amelyet korábban jegyzett készített.
 
-1. Mentse a módosításokat (**Ctrl-O**) és `nano` lépjen ki **(Ctrl-X**) a szerkesztőből.
+1. Mentse a módosításokat (**CTRL-O**), és zárja be (**CTRL-X**) a `nano` szerkesztőt.
 
-1. Az IoT Edge démon újraindításához futtassa a következő parancsot:
+1. Futtassa a következő parancsot a IoT Edge démon újraindításához:
 
     ```bash
     sudo systemctl restart iotedge
     ```
 
-1. Az IoT Edge-modulok állapotának ellenőrzéséhez futtassa a következő parancsot:
+1. A IoT Edge modulok állapotának megtekintéséhez futtassa a következő parancsot:
 
     ```bash
     iotedge list
     ```
 
-    A kimenet a következőre néz ki:
+    A kimenet a következőhöz hasonlóan néz ki:
 
     ```bash
     NAME                        STATUS           DESCRIPTION      CONFIG
@@ -248,25 +248,25 @@ Virtuális gép kiépítése IoT Edge-eszközként:
     edgeHub                     running          Up 22 seconds    mcr.microsoft.com/azureiotedge-hub:1.0
     ```
 
-## <a name="view-the-telemetry"></a>A telemetriai adatok megtekintése
+## <a name="view-the-telemetry"></a>A telemetria megtekintése
 
-A szimulált IoT Edge-eszköz most fut a virtuális gép. Az IoT Central-alkalmazásban az eszköz állapota most **már ki van építve** az **Eszközök** lapon:
+A szimulált IoT Edge eszköz mostantól fut a virtuális gépen. A IoT Central alkalmazásban az eszköz állapota most az **eszközök** lapon lett **kiépítve** :
 
 ![Kiépített eszköz](./media/tutorial-add-edge-as-leaf-device/provisioned-device.png)
 
-A telemetriai adatok at az **IoT Edge-eszköz telemetriai** lapján láthatja:
+A telemetria a **IoT Edge eszköz telemetria megtekintése** lapon tekintheti meg:
 
-![Eszköztelemetria](./media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png)
+![Eszköz telemetria](./media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png)
 
-A **Modulok** lap az IoT Edge modulok állapotát mutatja:
+A **modulok** lap a IoT Edge modulok állapotát jeleníti meg:
 
-![Eszköztelemetria](./media/tutorial-add-edge-as-leaf-device/edge-module-status.png)
+![Eszköz telemetria](./media/tutorial-add-edge-as-leaf-device/edge-module-status.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Eszközfejlesztőként most, hogy megtanulta, hogyan dolgozhat az IoT Edge-eszközökkel és hogyan kezelheti az IoT Centralban, a következő javasolt lépés a következő:
+Most, hogy megtanulta, hogyan dolgozhat és kezelhet IoT Edge-eszközöket IoT Centralban, a következő lépés az, hogy olvassa el a következőket:
 
 <!-- Next how-tos in the sequence -->
 
 > [!div class="nextstepaction"]
-> [Csatlakozzon az Azure IoT Centralhoz](./concepts-get-connected.md)
+> [Csatlakozás az Azure IoT Centralhoz](./concepts-get-connected.md)

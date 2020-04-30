@@ -1,6 +1,6 @@
 ---
-title: Galériaképek megosztása az Azure-beli bérlők között
-description: Megtudhatja, hogyan oszthatja meg a virtuálisgép-lemezképeket az Azure-bérlők között a megosztott képgalériák használatával.
+title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között
+description: Megtudhatja, hogyan oszthat meg virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárakkal.
 author: cynthn
 ms.service: virtual-machines
 ms.subservice: imaging
@@ -9,24 +9,24 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: cynthn
 ms.openlocfilehash: 4259ca01dbe45463b73cf1ec1c620c3921ab9459
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758468"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Galéria virtuálisgép-lemezképeinek megosztása az Azure-bérlők között
+# <a name="share-gallery-vm-images-across-azure-tenants"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között
 
-A megosztott képgalériák lehetővé teszik a képek megosztását az RBAC használatával. Az RBAC segítségével megoszthatja a lemezképeket a bérlőn belül, és még a bérlőn kívüli személyek számára is. Erről az egyszerű megosztási lehetőségről a [Galéria megosztása című témakörben](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery)talál további információt.
+A megosztott képtárak lehetővé teszik a képek megosztását a RBAC használatával. A RBAC segítségével megoszthatja a bérlőn belüli képeket, és akár a bérlőn kívüli személyeket is. További információ erről az egyszerű megosztási lehetőségről: a [gyűjtemény megosztása](/azure/virtual-machines/linux/shared-images-portal#share-the-gallery).
 
 [!INCLUDE [virtual-machines-share-images-across-tenants](../../../includes/virtual-machines-share-images-across-tenants.md)]
 
 > [!IMPORTANT]
-> A portál nem használhatja a virtuális gép üzembe helyezéséhez egy lemezkép egy másik azure-bérlő. Ha virtuális gép létrehozása a bérlők között megosztott lemezképből, az Azure CLI vagy a Powershell kell [használnia.](../windows/share-images-across-tenants.md)
+> A portálon nem lehet virtuális gépet üzembe helyezni egy másik Azure-bérlő lemezképéről. Ha a bérlők között megosztott rendszerképből szeretne virtuális gépet létrehozni, az Azure CLI-t vagy a [PowerShellt](../windows/share-images-across-tenants.md)kell használnia.
 
-## <a name="create-a-vm-using-azure-cli"></a>Virtuális gép létrehozása az Azure CLI használatával
+## <a name="create-a-vm-using-azure-cli"></a>Virtuális gép létrehozása az Azure CLI-vel
 
-Jelentkezzen be a szolgáltatásnév a bérlő 1 az appID, az alkalmazáskulcs és az 1-es bérlő azonosítójával. Szükség esetén `az account show --query "tenantId"` lejuthat a bérlői azonosítók leéséhez.
+Jelentkezzen be az 1. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és az 1. Bérlő AZONOSÍTÓjának használatával. Ha szükséges `az account show --query "tenantId"` , a segítségével kérheti le a bérlői azonosítókat.
 
 ```azurecli-interactive
 az account clear
@@ -34,14 +34,14 @@ az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 1 ID>
 az account get-access-token 
 ```
  
-Jelentkezzen be a bérlő 2 szolgáltatásnévbe az appazonosító, az alkalmazáskulcs és a 2-es bérlő azonosítója használatával:
+Jelentkezzen be a 2. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és a 2. Bérlő AZONOSÍTÓjának használatával:
 
 ```azurecli-interactive
 az login --service-principal -u '<app ID>' -p '<Secret>' --tenant '<tenant 2 ID>'
 az account get-access-token
 ```
 
-Hozza létre a virtuális gép. Cserélje le a példában szereplő információkat a sajátjára.
+Hozza létre a virtuális gépet. Cserélje le a példában szereplő információkat a saját adataira.
 
 ```azurecli-interactive
 az vm create \
@@ -54,4 +54,4 @@ az vm create \
 
 ## <a name="next-steps"></a>További lépések
 
-Ha bármilyen problémába ütközik, [elháríthatja a megosztott képgalériákat.](troubleshooting-shared-images.md)
+Ha bármilyen problémába ütközik, a [megosztott képtárakat is elháríthatja](troubleshooting-shared-images.md).

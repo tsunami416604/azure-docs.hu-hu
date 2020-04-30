@@ -1,59 +1,59 @@
 ---
-title: Sablon erőforrás-egészségügyi riasztások létrehozásához
-description: Hozzon létre riasztásokat programozott módon, amelyek értesítik, ha az Azure-erőforrások elérhetetlenné válnak.
+title: Resource Health riasztásokat létrehozó sablon
+description: Programozott módon hozhat létre riasztásokat, amelyek értesítik, ha az Azure-erőforrások elérhetetlenné válnak.
 ms.topic: conceptual
 ms.date: 9/4/2018
 ms.openlocfilehash: 60ff5bdf2f4f0dab94c18fd7c751869c1893ad65
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81759016"
 ---
-# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Erőforrás-állapotriasztások konfigurálása erőforrás-kezelősablonok használatával
+# <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>Erőforrás-állapotra vonatkozó riasztások konfigurálása Resource Manager-sablonok használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre erőforrás-állapot-naplóriasztások at programozott módon az Azure Resource Manager-sablonok és az Azure PowerShell használatával.
+Ez a cikk bemutatja, hogyan hozhat létre Resource Health tevékenység-naplózási riasztásokat programozott módon Azure Resource Manager sablonok és Azure PowerShell használatával.
 
-Az Azure Resource Health folyamatosan tájékoztatja az Azure-erőforrások aktuális és korábbi állapotáról. Az Azure Resource Health-riasztások közel valós időben értesíthetik Önt, ha ezek az erőforrások állapota megváltozik. Az erőforrás-állapotriasztások programozott létrehozása lehetővé teszi a felhasználók számára, hogy tömegesen hozzanak létre és szabjanak testre riasztásokat.
+Azure Resource Health folyamatosan tájékoztat az Azure-erőforrások aktuális és korábbi állapotáról. Azure Resource Health riasztások közel valós időben értesítik Önt, ha az erőforrások állapota megváltozik. Resource Health riasztások létrehozása programozott módon lehetővé teszi a felhasználók számára a riasztások tömeges létrehozását és testreszabását.
 
 > [!NOTE]
-> Az erőforrás-állapotra vonatkozó riasztások jelenleg előzetes verzióban vannak elérhetők.
+> Resource Health riasztás jelenleg előzetes verzióban érhető el.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az ezen az oldalon található utasítások követéséhez néhány dolgot előre be kell állítania:
+Az oldalon található utasítások követéséhez előre be kell állítania néhány dolgot:
 
-1. Telepítenie kell az [Azure PowerShell-modult](https://docs.microsoft.com/powershell/azure/install-Az-ps)
-2. Létre kell hoznia vagy újra fel kell [használnia egy olyan műveletcsoportot,](../azure-monitor/platform/action-groups.md) amely úgy van beállítva, hogy
+1. Telepítenie kell a [Azure PowerShell modult](https://docs.microsoft.com/powershell/azure/install-Az-ps)
+2. [Létre kell hoznia vagy újra kell használnia egy](../azure-monitor/platform/action-groups.md) , az értesítésre konfigurált műveleti csoportot.
 
 ## <a name="instructions"></a>Utasítások
-1. A PowerShell használatával jelentkezzen be az Azure-ba a fiókjával, és válassza ki azt az előfizetést, amelyet kezelni szeretne
+1. A PowerShell használatával jelentkezzen be az Azure-ba a fiókjával, és válassza ki a használni kívánt előfizetést
 
         Login-AzAccount
         Select-AzSubscription -Subscription <subscriptionId>
 
-    > Az `Get-AzSubscription` előfizetések listázásához használhatja, amelyekhez hozzáférése van.
+    > A használatával `Get-AzSubscription` listázhatja azokat az előfizetéseket, amelyekhez hozzáfér.
 
-2. A műveletcsoport teljes Azure Resource Manager-azonosítójának megkeresése és mentése
+2. A műveleti csoport teljes Azure Resource Manager-AZONOSÍTÓjának megkeresése és mentése
 
         (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
-3. Erőforrás-kezelősablon létrehozása és mentése az `resourcehealthalert.json` erőforrás-állapot-riasztásokhoz ([lásd az alábbi részleteket](#resource-manager-template-options-for-resource-health-alerts))
+3. Hozzon létre és mentsen egy Resource Manager-sablont a `resourcehealthalert.json` Resource Health riasztásokhoz ([lásd az alábbi részleteket](#resource-manager-template-options-for-resource-health-alerts))
 
-4. Új Azure Resource Manager-telepítés létrehozása ezzel a sablonnal
+4. Új Azure Resource Manager központi telepítés létrehozása a sablon használatával
 
         New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
-5. A rendszer kérni fogja, hogy írja be a korábban másolt riasztási név és műveletcsoport erőforrásazonosítóját:
+5. A rendszer kérni fogja, hogy írja be a riasztás nevét és a műveleti csoport erőforrás-AZONOSÍTÓját, amelyet korábban másolt:
 
         Supply values for the following parameters:
         (Type !? for Help.)
         activityLogAlertName: <Alert Name>
         actionGroupResourceId: /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers/microsoft.insights/actionGroups/<actionGroup>
 
-6. Ha minden sikeresen működött, megerősítést kap a PowerShellben
+6. Ha minden sikeresen működött, megerősítő lesz a PowerShellben
 
         DeploymentName          : ExampleDeployment
         ResourceGroupName       : <resourceGroup>
@@ -71,13 +71,13 @@ Az ezen az oldalon található utasítások követéséhez néhány dolgot előr
         Outputs                 :
         DeploymentDebugLogLevel :
 
-Vegye figyelembe, hogy ha azt tervezi, hogy teljesen automatizálja ezt a folyamatot, egyszerűen meg kell szerkeszteni az Erőforrás-kezelő sablont, hogy ne kérje az 5.
+Vegye figyelembe, hogy ha a folyamat teljes automatizálását tervezi, egyszerűen szerkessze a Resource Manager-sablont, hogy ne Kérdezzen rá az 5. lépésben szereplő értékekre.
 
-## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Erőforrás-kezelő sablonbeállításai az Erőforrás-állapot riasztásokhoz
+## <a name="resource-manager-template-options-for-resource-health-alerts"></a>Resource Manager-sablon beállításai Resource Health riasztásokhoz
 
-Ezt az alapsablont használhatja kiindulási pontként az erőforrás-állapot-riasztások létrehozásához. Ez a sablon írással fog működni, és feliratkozik, hogy értesítéseket kapjon az előfizetés összes újonnan aktivált erőforrás-állapoteseményéről.
+Ez az alapsablon kiindulási pontként használható Resource Health riasztások létrehozásához. Ez a sablon írásnak megfelelően működik, és a rendszer aláírja Önt, hogy riasztásokat kapjon az összes újonnan aktivált erőforrás-állapot eseményeiről az előfizetés összes erőforrása esetében.
 
-> A cikk alján egy összetettebb riasztási sablont is tartalmaztunk, amely nek növelnie kell a forrásállapot-riasztások jel-zaj arányát ehhez a sablonhoz képest.
+> A cikk alján egy összetettebb riasztási sablont is tartalmaz, amely a Resource Health riasztások esetében az ehhez a sablonhoz viszonyítva növelheti a jelet a zaj arányának.
 
 ```json
 {
@@ -134,26 +134,26 @@ Ezt az alapsablont használhatja kiindulási pontként az erőforrás-állapot-r
 }
 ```
 
-Azonban egy széles körű riasztást, mint ez általában nem ajánlott. Ismerje meg, hogyan tudjuk hatókör le ezt a riasztást, hogy összpontosítson az eseményeket, amelyek érdekelnek az alábbiakban.
+Azonban az ehhez hasonló széles körű riasztás általában nem ajánlott. Ismerje meg, hogyan szűkítheti a riasztást, hogy az alább látható eseményekre koncentráljon.
 
-### <a name="adjusting-the-alert-scope"></a>A riasztási hatókör módosítása
+### <a name="adjusting-the-alert-scope"></a>A riasztás hatókörének módosítása
 
-Az erőforrás-állapotjelző riasztások beállíthatók úgy, hogy három különböző hatókörben figyeljék az eseményeket:
+Resource Health riasztások beállítható úgy, hogy három különböző hatókörben figyelje az eseményeket:
 
- * Előfizetési szint
+ * Előfizetés szintje
  * Erőforráscsoport szintje
- * Erőforrás-szint
+ * Erőforrás szintje
 
-A riasztási sablon az előfizetés szintjén van konfigurálva, de ha úgy szeretné konfigurálni a riasztást, hogy csak `scopes` bizonyos erőforrásokról vagy erőforrásokról értesítsen egy bizonyos erőforráscsoporton belül, egyszerűen módosítania kell a fenti sablon szakaszát.
+A riasztási sablon az előfizetés szintjén van konfigurálva, de ha úgy szeretné konfigurálni a riasztást, hogy csak bizonyos erőforrásokról vagy erőforrás-csoportokon belüli erőforrásokról kapjon értesítést, egyszerűen módosítania kell a `scopes` fenti sablon szakaszát.
 
-Erőforráscsoport szintű hatókör esetén a hatókörök szakasznak a következőkre kell kinéznie:
+Erőforráscsoport-szintű hatókör esetén a hatókörök szakasznak az alábbihoz hasonlóan kell kinéznie:
 ```json
 "scopes": [
     "/subscriptions/<subscription id>/resourcegroups/<resource group>"
 ],
 ```
 
-Az erőforrásszintű hatókör esetében pedig a hatókörszakasznak így kell kinéznie:
+Az erőforrás-szintű hatókörhöz hasonlóan a hatókör szakasznak kell kinéznie:
 
 ```json
 "scopes": [
@@ -163,11 +163,11 @@ Az erőforrásszintű hatókör esetében pedig a hatókörszakasznak így kell 
 
 Például:`"/subscriptions/d37urb3e-ed41-4670-9c19-02a1d2808ff9/resourcegroups/myRG/providers/microsoft.compute/virtualmachines/myVm"`
 
-> Az Azure Portalon megkeresheti az URL-címet, amikor az Azure-erőforrást tekinti meg a karakterlánc leéséhez.
+> Nyissa meg az Azure Portalt, és tekintse meg az URL-címet, amikor megtekinti az Azure-erőforrást a karakterlánc beszerzéséhez.
 
-### <a name="adjusting-the-resource-types-which-alert-you"></a>Az Önt figyelmeztető erőforrástípusok módosítása
+### <a name="adjusting-the-resource-types-which-alert-you"></a>A riasztást igénylő erőforrástípusok módosítása
 
-Az előfizetés vagy erőforráscsoport szintjén lévő riasztások különböző típusú erőforrásokkal rendelkezhetnek. Ha azt szeretné, hogy a riasztások csak az erőforrástípusok egy bizonyos részhalmazából származhassanak, ezt a `condition` sablon szakaszában a következőképpen határozhatja meg:
+Az előfizetés vagy az erőforráscsoport szintjén lévő riasztások különböző típusú erőforrásokkal rendelkezhetnek. Ha korlátozni szeretné a riasztásokat, hogy csak az erőforrástípusok bizonyos részhalmazára érkezzenek, megadhatja, hogy a `condition` sablon szakaszában a következőhöz hasonló legyen:
 
 ```json
 "condition": {
@@ -192,12 +192,12 @@ Az előfizetés vagy erőforráscsoport szintjén lévő riasztások különböz
 },
 ```
 
-Itt használjuk `anyOf` a burkoló, hogy az erőforrás-állapot riasztás, hogy megfeleljen az általunk megadott feltételek bármelyikének, amely lehetővé teszi a riasztások, amelyek az adott erőforrástípusok.
+Itt a `anyOf` burkoló segítségével engedélyezheti, hogy az erőforrás-állapot riasztása megfeleljen az általunk megadott feltételeknek, ami lehetővé teszi, hogy a riasztások adott típusú erőforrásokra legyenek érvényesek.
 
-### <a name="adjusting-the-resource-health-events-that-alert-you"></a>Az Önt figyelmeztető erőforrás-állapotesemények módosítása
-Amikor az erőforrások állapoteseményen mennek keresztül, az állapotesemény állapotát képviselő szakaszok `Active` `In Progress`sorozatán mennek keresztül: , , `Updated`és `Resolved`.
+### <a name="adjusting-the-resource-health-events-that-alert-you"></a>A Resource Health riasztási események módosítása
+Ha az erőforrások bekerülnek az állapotba, akkor a következő állapotot képviselő szakaszok egy sorozatán keresztül haladnak: `Active` `In Progress` `Updated`,, és `Resolved`.
 
-Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás állapota nem megfelelő, `status` `Active`ebben az esetben a riasztást úgy szeretné beállítani, hogy csak akkor értesítse, ha a . Ha azonban a többi szakaszban is értesítést szeretne kapni, hozzáadhatja ezeket a részleteket, így:
+Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás nem `status` `Active`megfelelő állapotba kerül, ebben az esetben a riasztást úgy kell konfigurálni, hogy csak akkor kapjon értesítést, ha a. Ha azonban más fázisokban is értesítést szeretne kapni, az alábbihoz hasonló adatokat is hozzáadhat:
 
 ```json
 "condition": {
@@ -227,16 +227,16 @@ Előfordulhat, hogy csak akkor szeretne értesítést kapni, ha egy erőforrás 
 }
 ```
 
-Ha azt szeretné, hogy értesítést kapjon mind a négy szakaszában az egészségügyi események, eltávolíthatja ezt a feltételt együtt, és a riasztás értesíti Önt, függetlenül attól, hogy a `status` tulajdonság.
+Ha az állapotadatok mind a négy fázisa esetében értesítést szeretne kapni, ezt a feltételt egyszerre távolíthatja el, a riasztás pedig a `status` tulajdonságtól függetlenül értesíti Önt.
 
 > [!NOTE]
-> Minden "anyOf" szakasznak csak egy mezőtípus-értéket kell tartalmaznia.
+> Minden "anyOf" szakasz csak egyetlen mezőtípus-értéket tartalmazhat.
 
-### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>Az erőforrás-állapotriasztások módosítása az "Ismeretlen" események elkerülése érdekében
+### <a name="adjusting-the-resource-health-alerts-to-avoid-unknown-events"></a>A Resource Health riasztások módosítása az "ismeretlen" események elkerüléséhez
 
-Az Azure Resource Health az erőforrások legfrissebb állapotát jelentheti, ha tesztfutók használatával folyamatosan figyeli őket. A vonatkozó jelentett állapotok a következők: "Elérhető", "Nem érhető el" és "Leromlott". Azonban olyan helyzetekben, amikor a futó és az Azure-erőforrás nem tud kommunikálni, egy "Ismeretlen" állapot az erőforrás, és ez tekinthető "aktív" állapotesemény.
+Azure Resource Health az erőforrások legújabb állapotát a tesztelési futók használatával folyamatosan felügyelheti. A kapcsolódó jelentett állapotok a következők: "elérhető", "nem érhető el" és "csökkentett teljesítményű". Azonban olyan helyzetekben, amikor a futó és az Azure-erőforrás nem tud kommunikálni, "ismeretlen" állapotot jelent az erőforrás, és az "aktív" állapotú eseménynek számít.
 
-Ha azonban egy erőforrás "Ismeretlen" jelentést készít, valószínű, hogy az állapota nem változott a legutóbbi pontos jelentés óta. Ha az "Ismeretlen" eseményekriasztásait szeretné kiküszöbölni, megadhatja ezt a logikát a sablonban:
+Ha azonban egy erőforrás jelentése "ismeretlen", az állapota valószínűleg nem módosult az utolsó pontos jelentés óta. Ha el szeretné távolítani a riasztásokat az "ismeretlen" eseményekről, megadhatja azt a következő sablonban:
 
 ```json
 "condition": {
@@ -284,15 +284,15 @@ Ha azonban egy erőforrás "Ismeretlen" jelentést készít, valószínű, hogy 
 },
 ```
 
-Ebben a példában csak olyan eseményekről értesítünk, ahol az aktuális és a korábbi állapot nem rendelkezik "Ismeretlen" állapottal. Ez a módosítás hasznos lehet, ha az értesítéseket közvetlenül a mobiltelefonjára vagy e-mail-címére küldi. 
+Ebben a példában csak olyan eseményekről értesítünk, amelyekben az aktuális és az előző állapot nem "Unknown". Ez a változás hasznos lehet, ha a riasztásokat közvetlenül a mobiltelefonjára vagy e-mail-címére küldik. 
 
-Vegye figyelembe, hogy lehetséges, hogy a currentHealthStatus és a previousHealthStatus tulajdonságok null értékűek legyenek bizonyos eseményekben. Ha például egy frissített esemény bekövetkezik, valószínű, hogy az erőforrás állapota nem változott az utolsó jelentés óta, csak azt, hogy további eseményadatok állnak rendelkezésre (pl. ok). Ezért a fenti záradék használata azt eredményezheti, hogy egyes riasztások nem aktiválódnak, mert a properties.currentHealthStatus és properties.previousHealthStatus értékek null értékűek lesznek.
+Vegye figyelembe, hogy a currentHealthStatus és a previousHealthStatus tulajdonság bizonyos eseményeknél null értékű lehet. Ha például egy frissített esemény következik be, valószínű, hogy az erőforrás állapota az utolsó jelentés óta nem módosult, csak a további eseményekre vonatkozó információk érhetők el (például ok). Ezért a fenti záradék használatával bizonyos riasztások nem indíthatók el, mert a Properties. currentHealthStatus és a Properties. previousHealthStatus értékek NULL értékre lesznek állítva.
 
-### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>A riasztás módosítása a felhasználó által kezdeményezett események elkerülése érdekében
+### <a name="adjusting-the-alert-to-avoid-user-initiated-events"></a>A riasztás módosítása a felhasználó által kezdeményezett események elkerüléséhez
 
-Az erőforrás-állapot eseményeket a platform által kezdeményezett és a felhasználó által kezdeményezett események aktiválhatják. Előfordulhat, hogy csak akkor küld értesítést, ha az állapotesemény az Azure platform okozza.
+Resource Health eseményeket a platform által kezdeményezett és a felhasználó által kezdeményezett események indíthatják el. Előfordulhat, hogy csak akkor küldjön értesítést, ha az Azure platform okozza az állapotfigyelő eseményt.
 
-A riasztás egyszerűen konfigurálható úgy, hogy csak az ilyen típusú eseményekre szűrjön:
+Egyszerűen beállíthatja, hogy a riasztás csak az ilyen típusú események szűrésére legyen használható:
 
 ```json
 "condition": {
@@ -306,11 +306,11 @@ A riasztás egyszerűen konfigurálható úgy, hogy csak az ilyen típusú esem�
     ]
 }
 ```
-Ne feledje, hogy egyes eseményeknél az okmező null értékű lehet. Ez azt illeti, az egészségügyi átmenet történik (pl. elérhető a nem érhető el), és az esemény azonnal naplózza, hogy megakadályozzák az értesítési késedelmek. Ezért a fenti záradék használata azt eredményezheti, hogy a riasztás nem aktiválódik, mert a properties.clause tulajdonság értéke null értékű lesz.
+Vegye figyelembe, hogy előfordulhat, hogy az OK mező értéke null értékű bizonyos eseményekben. Ez azt eredményezi, hogy az állapot átalakulása zajlik (például elérhető a nem érhető el), és az eseményt azonnal naplózza az értesítési késések elkerülése érdekében. Ezért a fenti záradék használatával a riasztás nem indítható el, mert a Properties. záradék tulajdonság értéke NULL lesz.
 
-## <a name="complete-resource-health-alert-template"></a>Teljes erőforrás-állapot riasztási sablon
+## <a name="complete-resource-health-alert-template"></a>Resource Health riasztási sablon befejezése
 
-Az előző szakaszban ismertetett különböző korrekciók at használva az alábbiakban egy mintasablon látható, amely a jel-zaj arány maximalizálására van beállítva. Ne feledje, a fenti kikötések, ahol a currentHealthStatus, previousHealthStatus, és okoz tulajdonság értékek null lehet bizonyos események.
+Az előző szakaszban leírt különböző beállítások használatával itt látható egy minta sablon, amely a jel és a zaj arányának maximalizálására van konfigurálva. Vegye figyelembe azokat a figyelmeztetéseket, amelyek felett a currentHealthStatus, a previousHealthStatus és az OK tulajdonság értéke null lehet bizonyos eseményekben.
 
 ```json
 {
@@ -434,15 +434,15 @@ Az előző szakaszban ismertetett különböző korrekciók at használva az al�
 }
 ```
 
-Azonban tudni fogja a legjobban, hogy milyen konfigurációk hatékonyak az Ön számára, ezért használja az ebben a dokumentációban tanított eszközöket saját testreszabásához.
+Azonban tudni fogja, hogy milyen konfigurációk érvényesek az Ön számára, ezért használja a dokumentációban ismertetett eszközöket a saját testreszabásának elvégzéséhez.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az erőforrás-állapotról:
--  [Az Azure Resource Health áttekintése](Resource-health-overview.md)
+További információ a Resource Healthról:
+-  [Azure Resource Health áttekintése](Resource-health-overview.md)
 -  [Az Azure Resource Health segítségével elérhető erőforrástípusok és állapotellenőrzések](resource-health-checks-resource-types.md)
 
 
-Szolgáltatásállapot-riasztások létrehozása:
--  [Riasztások konfigurálása a szolgáltatás állapotához](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
--  [Az Azure-tevékenységnapló eseménysémája](../azure-monitor/platform/activity-log-schema.md)
+Service Health riasztások létrehozása:
+-  [Riasztások konfigurálása Service Healthhoz](../azure-monitor/platform/alerts-activity-log-service-notifications.md) 
+-  [Azure Activity log esemény sémája](../azure-monitor/platform/activity-log-schema.md)

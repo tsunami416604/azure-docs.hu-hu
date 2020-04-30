@@ -1,6 +1,6 @@
 ---
-title: Az S2S VPN használata az Azure ExpressRoute privát társviszony-létesítésének biztonsági mentéseként | Microsoft dokumentumok
-description: Ez a lap architekturális javaslatokat nyújt az Azure ExpressRoute privát társviszony-létesítéss S2S VPN-nel történő biztonsági mentéséhez.
+title: A S2S VPN használata biztonsági mentésként az Azure ExpressRoute Private-társításához | Microsoft Docs
+description: Ez az oldal az Azure ExpressRoute privát S2S VPN-sel való biztonsági mentésére szolgáló építészeti javaslatokat tartalmaz.
 services: networking
 author: rambk
 ms.service: expressroute
@@ -8,68 +8,68 @@ ms.topic: article
 ms.date: 02/05/2020
 ms.author: rambala
 ms.openlocfilehash: a6a22b667bc66d6ee69bfbd7ad1db88f72d8df0e
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687828"
 ---
-# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>Az S2S VPN használata az ExpressRoute privát társviszony-létesítésének biztonsági mentéseként
+# <a name="using-s2s-vpn-as-a-backup-for-expressroute-private-peering"></a>A S2S VPN használata biztonsági mentésként a ExpressRoute-alapú privát partnerek számára
 
-A cikk című [tervezése vész-helyreállítási ExpressRoute privát társviszony-létesítési][DR-PP], megvitattuk, hogy szükség van a biztonsági mentési kapcsolat megoldás egy ExpressRoute privát társviszony-létesítési kapcsolat, és hogyan kell használni a georedundáns ExpressRoute-áramkörök erre a célra. Ebben a cikkben nézzük meg, hogyan lehet kihasználni és fenntartani a helyek közötti (S2S) VPN-t az ExpressRoute privát társviszony-létesítésének visszaénül. 
+A ExpressRoute-alapú, a vész- [helyreállítás megtervezése][DR-PP]című cikkből megbeszéltük, hogy szükség van-e a biztonsági mentési megoldásra a ExpressRoute privát kapcsolati kapcsolataihoz, és hogyan használható a Geo-redundáns ExpressRoute-áramkörök a célra. Ebből a cikkből megtudhatja, hogyan hasznosíthatja és kezelheti a helyek közötti (S2S) VPN-t a ExpressRoute privát társításának visszaállítása érdekében. 
 
-A georedundáns ExpressRoute-áramkörökkel ellentétben az ExpressRoute-VPN vész-helyreállítási kombinációt csak aktív-passzív módban használhatja. A passzív módban a biztonsági mentési hálózati kapcsolat használatának egyik fő kihívása, hogy a passzív kapcsolat gyakran meghibásodna az elsődleges kapcsolat mellett. A passzív kapcsolat hibáinak gyakori oka az aktív karbantartás hiánya. Ezért ebben a cikkben koncentráljunk arra, hogyan ellenőrizheti és tarthatja aktívan az ExpressRoute-alapú privát társviszony-létesítést tartalmazó S2S VPN-kapcsolatot.
+A Geo-redundáns ExpressRoute áramköröktől eltérően a ExpressRoute-VPN vész-helyreállítási kombinációja csak aktív-passzív módban használható. A passzív üzemmódban a biztonsági mentés hálózati kapcsolatának egyik fő kihívása, hogy a passzív kapcsolat az elsődleges kapcsolat mellett gyakran meghiúsul. A passzív kapcsolatok meghibásodásának gyakori oka az aktív karbantartás hiánya. Ebből a cikkből megtudhatja, hogyan ellenőrizheti és aktívan karbantarthatja a S2S VPN-kapcsolatot, amely biztonsági mentést készít egy ExpressRoute privát társáról.
 
 >[!NOTE] 
->Ha egy adott útvonalat expressroute-on és VPN-en keresztül is meghirdetnek, az Azure az ExpressRoute-on keresztül imittált.  
+>Ha egy adott útvonal a ExpressRoute és a VPN használatával is meghirdetve van, az Azure előnyben részesíti az útválasztást a ExpressRoute.  
 >
 
-Ebben a cikkben tekintse meg, hogyan ellenőrizheti a kapcsolatot mind az Azure szempontjából, mind az ügyfél oldali hálózati peremperspektívából. Az ellenőrzés mindkét végéről történő érvényesítése attól függetlenül segít, hogy ön kezeli-e azokat az ügyféloldali hálózati eszközöket, amelyek a Microsoft hálózati entitásaival egyenrangúak. 
+Ebből a cikkből megtudhatja, hogyan ellenőrizheti a kapcsolatot az Azure perspektívából és az ügyféloldali hálózat peremhálózati perspektívájában. A végpontok bármelyikének ellenőrzésének lehetősége segítséget nyújt attól függetlenül, hogy felügyeli-e a Microsoft hálózati entitásokkal egyenrangú ügyféloldali hálózati eszközöket. 
 
 ## <a name="example-topology"></a>Példa topológia
 
-A beállítás, van egy helyszíni hálózat csatlakozik egy Azure hub virtuális hálózat egy ExpressRoute-kapcsolaton keresztül, és egy S2S VPN-kapcsolat. Az Azure hub virtuális hálózat a küllővirtuális hálózatra nézve, ahogy az az alábbi ábrán látható:
+A telepítőnk egy Azure hub-VNet csatlakoztatott helyszíni hálózattal rendelkezik, amely egy ExpressRoute áramkörön és egy S2S VPN-kapcsolaton keresztül is elérhető. Az Azure hub VNet egy küllős VNet van csatlakoztatva, ahogy az alábbi ábrán is látható:
 
 ![1][1]
 
-A beállítás során az ExpressRoute-kapcsolatcsoport a helyszíni "Customer Edge" (CE) útválasztók párján fejeződik be. A helyszíni LAN a CE-útválasztókhoz egy vezérkövető módban működő tűzfalon keresztül csatlakozik. Az S2S VPN közvetlenül levan állítva a tűzfalakon.
+A telepítőben a ExpressRoute áramkört a helyszíni "Customer Edge" (CE) útválasztók egy pár végén leállítja. A helyszíni helyi hálózat a következőhöz csatlakozik a CE-útválasztók számára egy olyan tűzfalon keresztül, amely a Leader-követő módban működik. A S2S VPN közvetlenül a tűzfalakon van lezárva.
 
-Az alábbi táblázat a topológia legfontosabb IP-előtagjait sorolja fel:
+A következő táblázat a topológia legfontosabb IP-előtagjait sorolja fel:
 
 | **Entitás** | **Előtag** |
 | --- | --- |
 | Helyszíni helyi hálózat | 10.1.11.0/25 |
-| Az Azure Hub virtuális hálózata | 10.17.11.0/25 |
-| Az Azure beszélt virtuális hálózat | 10.17.11.128/26 |
-| Helyszíni tesztkiszolgáló | 10.1.11.10 |
-| Küllős virtuális hálózat teszt virtuális gépe | 10.17.11.132 |
-| ExpressRoute elsődleges kapcsolat p2p alhálózata | 192.168.11.16/30 |
-| ExpressRoute másodlagos kapcsolat p2p alhálózata | 192.168.11.20/30 |
-| VPN-átjáró elsődleges BGP-társ ÁNAK IP-címe | 10.17.11.76 |
-| VPN-átjáró másodlagos BGP-társ IP-címe | 10.17.11.77 |
-| Helyszíni tűzfal VPN BGP-társ IP-címe | 192.168.11.88 |
+| Azure hub-VNet | 10.17.11.0/25 |
+| Azure küllős VNet | 10.17.11.128/26 |
+| Helyszíni tesztelési kiszolgáló | 10.1.11.10 |
+| Küllős VNet teszt virtuális gép | 10.17.11.132 |
+| ExpressRoute elsődleges kapcsolatok P2P-alhálózat | 192.168.11.16/30 |
+| ExpressRoute másodlagos kapcsolatok P2P alhálózata | 192.168.11.20/30 |
+| VPN-átjáró elsődleges BGP-társ IP-címe | 10.17.11.76 |
+| VPN Gateway másodlagos BGP-társ IP-címe | 10.17.11.77 |
+| Helyszíni tűzfal VPN BGP társ IP-címe | 192.168.11.88 |
 | Elsődleges CE-útválasztó i/f a tűzfal IP-címe felé | 192.168.11.0/31 |
-| Tűzfal i/f felé elsődleges CE router IP | 192.168.11.1/31 |
-| Másodlagos CE-útválasztó i/f a tűzfal IP felé | 192.168.11.2/31 |
-| Tűzfal i/f a másodlagos CE-útválasztó IP-címe felé | 192.168.11.3/31 |
+| Az elsődleges CE útválasztó IP-címére irányuló tűzfal i/f | 192.168.11.1/31 |
+| Másodlagos CE-útválasztó i/f a tűzfal IP-címe felé | 192.168.11.2/31 |
+| Tűzfal i/f a másodlagos CE útválasztó IP-címének eléréséhez | 192.168.11.3/31 |
 
 
-Az alábbi táblázat a topológia ASN-jeit sorolja fel:
+A következő táblázat a topológia ASN sorolja fel:
 
-| **Autonóm rendszer** | **Asn** |
+| **Autonóm rendszerek** | **ASN** |
 | --- | --- |
 | Helyszíni követelmények | 65020 |
-| Microsoft Nagyvállalati Edge | 12076 |
-| Virtuális hálózat GW (ExR) | 65515 |
-| Virtuális hálózat GW (VPN) | 65515 |
+| Microsoft Enterprise Edge | 12076 |
+| Virtual Network GW (ExR) | 65515 |
+| Virtual Network GW (VPN) | 65515 |
 
-## <a name="high-availability-without-asymmetricity"></a>Magas rendelkezésre állás aszimmetria nélkül
+## <a name="high-availability-without-asymmetricity"></a>Magas rendelkezésre állás aszimmetrikus nélkül
 
-### <a name="configuring-for-high-availability"></a>Konfigurálás a magas rendelkezésre álláshoz
+### <a name="configuring-for-high-availability"></a>Magas rendelkezésre állás konfigurálása
 
-[Az ExpressRoute és a helyek közötti kapcsolatok konfigurálása a][Conf-CoExist] meglévő ExpressRoute-kapcsolat és az S2S VPN-kapcsolatok konfigurálását ismerteti. Ahogy azt [tárgyalta tervezése a magas rendelkezésre állás expressroute,,][HA]hogy javítsa ExpressRoute magas rendelkezésre állás a beállítás fenntartja a hálózati redundancia (elkerüli az egypontos hiba) egészen a végpontok ig. Az ExpressRoute-áramkörök elsődleges és másodlagos kapcsolatai is aktív-aktív módban működnek a helyszíni előtagok ugyanazon módon történő hirdetésével mindkét kapcsolaton keresztül. 
+A [ExpressRoute és a helyek közötti egyidejű kapcsolatok konfigurálása][Conf-CoExist] ismerteti, hogyan lehet konfigurálni a egyidejű ExpressRoute áramköri és S2S VPN-kapcsolatokat. Ahogy a ExpressRoute- [vel való magas rendelkezésre állás kialakításával][HA]foglalkozunk, a ExpressRoute magas rendelkezésre állásának javítása érdekében a telepítő fenntartja a hálózati redundanciát (így elkerülhető az egypontos meghibásodás) egészen a végpontok felé. A ExpressRoute-áramkörök elsődleges és másodlagos kapcsolatai is aktív-aktív módban működnek úgy, hogy a helyszíni előtagokat ugyanúgy, a kapcsolatokon keresztül reklámozzák. 
 
-Az elsődleges CE-útválasztó helyszíni útvonalhirdetése az ExpressRoute-kapcsolat elsődleges kapcsolatán keresztül az alábbiakban látható (Junos parancsok):
+Az elsődleges CE útválasztó helyszíni útválasztási hirdetménye az ExpressRoute áramkör elsődleges kapcsolatán keresztül jelenik meg (Junos parancsok):
 
     user@SEA-MX03-01> show route advertising-protocol bgp 192.168.11.18 
 
@@ -77,7 +77,7 @@ Az elsődleges CE-útválasztó helyszíni útvonalhirdetése az ExpressRoute-ka
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-A másodlagos CE-útválasztó helyszíni útvonalhirdetése az ExpressRoute-kapcsolat on keresztül az alábbi (Junos parancsok):
+A másodlagos CE útválasztó helyszíni útválasztási hirdetménye az ExpressRoute áramkör másodlagos kapcsolatán keresztül jelenik meg (Junos parancsok):
 
     user@SEA-MX03-02> show route advertising-protocol bgp 192.168.11.22 
 
@@ -85,11 +85,11 @@ A másodlagos CE-útválasztó helyszíni útvonalhirdetése az ExpressRoute-kap
       Prefix                  Nexthop              MED     Lclpref    AS path
     * 10.1.11.0/25            Self                                    I
 
-A biztonsági mentési kapcsolat magas rendelkezésre állásának javítása érdekében az S2S VPN aktív-aktív módban is konfigurálva van. Az Azure VPN-átjáró konfigurációja alább látható. Vegye figyelembe a VPN-konfiguráció vpn részeként az átjáró BGP-társ IP-címeit is felsorolják - 10.17.11.76 és 10.17.11.77.
+A biztonsági mentési kapcsolat magas rendelkezésre állásának javítása érdekében a S2S VPN is aktív-aktív módban van konfigurálva. Az Azure VPN Gateway konfigurálása alább látható. Vegye figyelembe, hogy a VPN-konfiguráció VPN-ben az átjáró BGP-társ IP-címe (10.17.11.76 és 10.17.11.77) is fel van sorolva.
 
 ![2][2]
 
-A helyszíni útvonalat a tűzfalak a VPN-átjáró elsődleges és másodlagos BGP-társainak hirdetik. Az útvonalhirdetések az alábbiakban láthatók (Junos):
+A helyszíni útvonalat a tűzfal a VPN-átjáró elsődleges és másodlagos BGP-társának hirdeti. Az útvonal-hirdetmények alább láthatók (Junos):
 
     user@SEA-SRX42-01> show route advertising-protocol bgp 10.17.11.76 
 
@@ -105,16 +105,16 @@ A helyszíni útvonalat a tűzfalak a VPN-átjáró elsődleges és másodlagos 
     * 10.1.11.0/25            Self                                    I
 
 >[!NOTE] 
->Az S2S VPN aktív-aktív módban történő konfigurálása nem csak a vész-helyreállítási biztonsági mentési hálózati kapcsolat magas rendelkezésre állását biztosítja, hanem nagyobb átviteli feszültséget is biztosít a biztonsági mentési kapcsolathoz. Más szóval az S2S VPN aktív-aktív módban történő konfigurálása ajánlott, mivel több mögöttes alagutas alagutat hoz létre.
+>Ha a S2S VPN-t aktív-aktív módban konfigurálja, nem csak magas rendelkezésre állást biztosít a vész-helyreállítási biztonsági mentési hálózati kapcsolathoz, de a biztonsági mentési kapcsolathoz is magasabb átviteli sebességet biztosít. Más szóval a S2S VPN konfigurálása aktív-aktív módban javasolt, mivel a több alapul szolgáló alagutat hoz létre.
 >
 
-### <a name="configuring-for-symmetric-traffic-flow"></a>Konfigurálás szimmetrikus forgalomhoz
+### <a name="configuring-for-symmetric-traffic-flow"></a>Konfigurálás szimmetrikus adatforgalomhoz
 
-Megjegyeztük, hogy ha egy adott helyszíni útvonalat az ExpressRoute és az S2S VPN-en keresztül is meghirdetnek, az Azure az ExpressRoute elérési útját részesíti előnyben. Ha az Azure-t az S2S VPN-útvonalat részesíti előnyben a párhuzamos ExpressRoute-tal szemben, a VPN-kapcsolaton keresztül konkrétabb útvonalakat (hosszabb előtagot nagyobb alhálózati maszkkal) kell hirdetnie. Célunk itt az, hogy a VPN-kapcsolatokat csak vissza. Így az Azure alapértelmezett útvonal-kiválasztási viselkedése összhangban van a célkitűzésünkkel. 
+Megjegyezték, hogy ha egy adott helyszíni útvonalat a ExpressRoute és a S2S VPN használatával hirdetnek meg, az Azure előnyben részesíti a ExpressRoute elérési útját. Ahhoz, hogy az Azure inkább a S2S VPN-elérési utat részesíti előnyben az egyidejű ExpressRoute, a VPN-kapcsolaton keresztül több konkrét útvonalat kell meghirdetni (nagyobb alhálózati maszkkal hosszabb előtaggal). A cél az, hogy a VPN-kapcsolatokat csak vissza lehessen használni. Így az Azure alapértelmezett útvonal-kiválasztási viselkedése a célunk. 
 
-A mi felelősségünk annak biztosítása, hogy a helyszíni Azure-ból az Azure-ba irányuló forgalom is előnyben részesíti az ExpressRoute elérési útját az S2S VPN-nel szemben. A ce-útválasztók és tűzfalak alapértelmezett helyi preferenciája a helyszíni beállításban a 100. Így az ExpressRoute privát társviszony-létesítéseken keresztül kapott útvonalak helyi preferenciájának konfigurálásával 100-nál nagyobb (mondjuk 150) értéken, beállíthatjuk, hogy az Azure-ba irányuló forgalom az ExpressRoute-áramkört részesítse előnyben állandó állapotban.
+Felelősségünk biztosítani, hogy az Azure-ba érkező, helyszíni forgalom a ExpressRoute útvonalon is előnyben részesíti a S2S VPN-t. A helyszíni telepítőben a CE-útválasztók és tűzfalak alapértelmezett helyi beállításai a 100. Tehát a 100-nál nagyobb privát ExpressRoute keresztül fogadott útvonalak helyi preferenciájának konfigurálásával (mondjuk 150) az Azure-ba irányuló forgalom a ExpressRoute áramkört stabil állapotba helyezheti.
 
-Az ExpressRoute-kapcsolat elsődleges kapcsolatát lebontó elsődleges CE-útválasztó BGP-konfigurációja az alábbiakban látható. Figyelje meg, hogy az iBGP-munkameneten keresztül meghirdetett útvonalak helyi preferenciájának értéke 150-re van állítva. Hasonlóképpen biztosítanunk kell, hogy az ExpressRoute-kapcsolat másodlagos kapcsolatát lebontó másodlagos CE-útválasztó helyi preferenciája is 150-re van konfigurálva.
+Alább látható az elsődleges CE-útválasztó BGP-konfigurációja, amely leállítja az ExpressRoute áramkör elsődleges kapcsolatát. Figyelje meg, hogy a iBGP-munkamenetben hirdetett útvonalak helyi preferencia értéke 150. Hasonlóképpen biztosítani kell, hogy a ExpressRoute áramkör másodlagos kapcsolatát lezáró másodlagos CE-útválasztó helyi beállításai is 150-re legyenek konfigurálva.
 
     user@SEA-MX03-01> show configuration routing-instances Cust11 
     description "Customer 11 VRF";
@@ -139,7 +139,7 @@ Az ExpressRoute-kapcsolat elsődleges kapcsolatát lebontó elsődleges CE-útv�
       }
     }
 
-A helyszíni tűzfalak útválasztási táblája megerősíti (alább látható), hogy az Azure-ba szánt helyszíni forgalom esetében az előnyben részesített elérési út az ExpressRoute-on keresztül van állandó állapotban.
+A helyszíni tűzfalak útválasztási táblázata (lásd alább) azt jelzi, hogy az Azure-ba irányuló helyszíni forgalom esetében az előnyben részesített útvonal a ExpressRoute, állandó állapotban van.
 
     user@SEA-SRX42-01> show route table Cust11.inet.0 10.17.11.0/24    
 
@@ -177,11 +177,11 @@ A helyszíni tűzfalak útválasztási táblája megerősíti (alább látható)
                           AS path: 65515 I, validation-state: unverified
                         > via st0.119
 
-A fenti útvonaltáblában a hub és a küllő virtuális hálózat útvonalak --10.17.11.0/25 és 10.17.11.128/26 -- látjuk ExpressRoute-kapcsolat előnyben részesített VPN-kapcsolatokkal szemben. A 192.168.11.0 és 192.168.11.2 IP-k a tűzfal interfész felé CE routerek.
+A fenti útválasztási táblázatban a hub és a küllős VNet útvonalakon – 10.17.11.0/25 és 10.17.11.128/26 – a ExpressRoute áramkör előnyben részesített VPN-kapcsolatokon keresztül. A 192.168.11.0 és a 192.168.11.2 a CE-útválasztók felé irányuló IP-címek.
 
-## <a name="validation-of-route-exchange-over-s2s-vpn"></a>Az útvonalcsere érvényesítése S2S VPN-en keresztül
+## <a name="validation-of-route-exchange-over-s2s-vpn"></a>Útvonal-Exchange S2S VPN-en keresztüli ellenőrzése
 
-A cikk korábbi részében ellenőriztük a tűzfalak helyszíni útvonalhirdetését a VPN-átjáró elsődleges és másodlagos BGP-társainak. Emellett erősítsük meg, hogy a tűzfalak a VPN-átjáró elsődleges és másodlagos BGP-társaitól kapott Azure-útvonalakat is meg kell erősíteni.
+A cikk korábbi szakaszaiban ellenőrizte a tűzfalak helyszíni útválasztási hirdetményét a VPN-átjáró elsődleges és másodlagos BGP-társának. Továbbá erősítse meg, hogy az Azure-útvonalak a VPN-átjáró elsődleges és másodlagos BGP-társaitól érkeznek a tűzfalakon.
 
     user@SEA-SRX42-01> show route receive-protocol bgp 10.17.11.76 table Cust11.inet.0 
 
@@ -198,7 +198,7 @@ A cikk korábbi részében ellenőriztük a tűzfalak helyszíni útvonalhirdet�
       10.17.11.0/25           10.17.11.77                             65515 I
       10.17.11.128/26         10.17.11.77                             65515 I
 
-Hasonlóképpen ellenőrizzük a helyszíni hálózati útvonal-előtagok az Azure VPN-átjáró által kapott. 
+Hasonlóképpen ellenőrizzük az Azure VPN Gateway által fogadott helyszíni hálózati útvonalak előtagjait. 
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayLearnedRoute -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn | where {$_.Network -eq "10.1.11.0/25"} | select Network, NextHop, AsPath, Weight
 
@@ -213,9 +213,9 @@ Hasonlóképpen ellenőrizzük a helyszíni hálózati útvonal-előtagok az Azu
     10.1.11.0/25 10.17.11.69   12076-65020  32769
     10.1.11.0/25 10.17.11.69   12076-65020  32769
 
-Amint fent látható, a VPN-átjáró a VPN-átjáró elsődleges és másodlagos BGP-társai által fogadott útvonalakat is rendelkezik. Emellett az elsődleges és másodlagos ExpressRoute-kapcsolatokon keresztül fogadott útvonalak (az 12076-tal előkészített AS-elérési úttal rendelkező) útvonalak on-lásd án is láthatóvá vált. A VPN-kapcsolatokon keresztül fogadott útvonalak megerősítéséhez ismernünk kell a kapcsolatok helyszíni BGP-társ IP-címét. A mi beállítás megfontolás alatt, ez 192.168.11.88 és látjuk az útvonalakat kapott belőle.
+A fentiekben látható módon a VPN-átjáró a VPN-átjáró elsődleges és másodlagos BGP-társai által fogadott útvonalakkal rendelkezik. Emellett az elsődleges és másodlagos ExpressRoute-kapcsolatokon keresztül fogadott útvonalakon is látható (a 12076-AS útvonal-előtagértéke). A VPN-kapcsolatokon keresztül fogadott útvonalak ellenőrzéséhez ismernie kell a kapcsolatok helyszíni BGP-társi IP-címét. A telepítés során figyelembe kell venni a 192.168.11.88, és látjuk a tőle kapott útvonalakat.
 
-Ezután ellenőrizze az Azure VPN-átjáró által meghirdetett útvonalakat a helyszíni bgp-társ (192.168.11.88) létesítő tűzfalához.
+Ezután ellenőrizze az Azure VPN Gateway által hirdetett útvonalakat a helyszíni tűzfal BGP-társával (192.168.11.88).
 
     PS C:\Users\user> Get-AzVirtualNetworkGatewayAdvertisedRoute -Peer 192.168.11.88 -ResourceGroupName SEA-Cust11 -VirtualNetworkGatewayName SEA-Cust11-VNet01-gw-vpn |  select Network, NextHop, AsPath, Weight
 
@@ -227,17 +227,17 @@ Ezután ellenőrizze az Azure VPN-átjáró által meghirdetett útvonalakat a h
     10.17.11.128/26 10.17.11.77 65515       0
 
 
-Az útvonalcserék nem jelennek meg, és a kapcsolat sikertelen. Lásd: [Hibaelhárítás: Az Azure-ból helyek közötti VPN-kapcsolat nem tud csatlakozni, és leáll][VPN Troubleshoot] a VPN-kapcsolat hibaelhárításával kapcsolatos segítségért.
+Nem sikerült megtekinteni a kapcsolódási hibát jelző útválasztási adatcserét. Lásd [: Hibaelhárítás: az Azure-helyek közötti VPN-kapcsolat nem tud csatlakozni, és nem működik][VPN Troubleshoot] a VPN-kapcsolat hibaelhárítása érdekében.
 
 ## <a name="testing-failover"></a>Feladatátvétel tesztelése
 
-Most, hogy megerősítettük a sikeres útvonalcseréket a VPN-kapcsolaton (vezérlősíkon), úgy van beállítva, hogy a forgalmat (adatsíkot) az ExpressRoute-kapcsolatról a VPN-kapcsolatra váltsuk. 
+Most, hogy megerősítettük a sikeres útvonalak cseréjét a VPN-kapcsolaton (vezérlési síkon), úgy van beállítva, hogy a ExpressRoute-kapcsolaton keresztül a VPN-kapcsolat felé váltson adatforgalmat (adatsíkon). 
 
 >[!NOTE] 
->Éles környezetben a feladatátvételi tesztelést az ütemezett hálózati karbantartási munkaablak ban kell elvégezni, mivel az szolgáltatászavaró lehet.
+>Éles környezetekben a feladatátvételi tesztet az ütemezett hálózati karbantartási munka-ablak alatt kell elvégezni, mivel a szolgáltatás zavaró lehet.
 >
 
-A forgalmi kapcsoló előtt kövessük nyomon az aktuális útvonalat a beállításunkban a helyszíni tesztkiszolgálótól a küllővirtuális hálózatban lévő teszt virtuális gépig.
+A forgalmi kapcsoló megkezdése előtt nyomon követheti az aktuális elérési útvonalat a helyszíni tesztelési kiszolgálóról a küllős VNet lévő tesztelési virtuális gépre.
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -251,15 +251,15 @@ A forgalmi kapcsoló előtt kövessük nyomon az aktuális útvonalat a beállí
 
     Trace complete.
 
-A beállítás elsődleges és másodlagos ExpressRoute-pont-pont kapcsolatalhálózatai a 192.168.11.16/30 és a 192.168.11.20/30. A fenti nyomkövetési útvonalon a 3. Az MSEE-felület jelenléte megerősíti, hogy az aktuális útvonalunk a várakozásoknak megfelelően az ExpressRoute felett van.
+A beállítás elsődleges és másodlagos ExpressRoute pont-pont típusú kapcsolatainak alhálózatai a következők: 192.168.11.16/30 és 192.168.11.20/30. A fenti nyomkövetési útvonalon, a 3. lépésben láthatjuk, hogy 192.168.11.18 vagyunk, amely az elsődleges MSEE felületi IP-címe. A MSEE-felület jelenléte megerősíti, hogy az aktuális útvonal a ExpressRoute felett van.
 
-Ahogy arról a [Reset ExpressRoute-kapcsolatlétesítések, használjuk][RST]a következő powershell-parancsokat az ExpressRoute-kapcsolat elsődleges és másodlagos társviszony-létesítésének letiltásához.
+Az [ExpressRoute-áramköri kapcsolatok alaphelyzetbe állításakor][RST]a következő PowerShell-parancsokkal tilthatja le az ExpressRoute áramkör elsődleges és másodlagos társítását is.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Disabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-A feladatátvételi váltási idő a BGP-konvergenciaidejénekfügg. A mi beállítás, a feladatátvevő kapcsoló néhány másodperc (kevesebb, mint 10). A váltás után a nyomkövetési útvonal ismétlése a következő útvonalat jeleníti meg:
+A feladatátvételi váltás ideje a BGP-konvergencia időpontjától függ. A telepítőben a feladatátvételi kapcsoló eltarthat néhány másodpercig (kevesebb mint 10). A kapcsoló után a traceroute ismétlése a következő elérési utat mutatja:
 
     C:\Users\PathLabUser>tracert 10.17.11.132
 
@@ -271,25 +271,25 @@ A feladatátvételi váltási idő a BGP-konvergenciaidejénekfügg. A mi beáll
 
     Trace complete.
 
-A traceroute eredménye megerősíti, hogy az S2S VPN-en keresztüli biztonsági mentési kapcsolat aktív, és szolgáltatásfolytonosságot biztosíthat, ha mind az elsődleges, mind a másodlagos ExpressRoute-kapcsolatok sikertelenek. A feladatátvételi tesztelés befejezéséhez engedélyezze vissza az ExpressRoute-kapcsolatokat, és normalizálja a forgalmat a következő parancskészlet használatával.
+A traceroute-eredmény megerősíti, hogy a S2S VPN-en keresztüli biztonsági mentési kapcsolat aktív, és biztosítja a szolgáltatás folytonosságát, ha az elsődleges és a másodlagos ExpressRoute-kapcsolat nem sikerül. A feladatátvételi teszt befejezéséhez engedélyezzük a ExpressRoute-kapcsolatok visszakapcsolását és normalizálni a forgalmat a következő parancsok használatával.
 
     $ckt = Get-AzExpressRouteCircuit -Name "expressroute name" -ResourceGroupName "SEA-Cust11"
     $ckt.Peerings[0].State = "Enabled"
     Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 
-Annak ellenőrzéséhez, hogy a forgalom vissza van kapcsolva az ExpressRoute-ra, ismételje meg a traceroute-ot, és győződjön meg arról, hogy az expressroute-beli privát társviszony-létesítésen megy keresztül.
+Annak ellenőrzéséhez, hogy a forgalom vissza lett-e állítva a ExpressRoute, ismételje meg a traceroute-t, és győződjön meg arról, hogy a ExpressRoute privát társán keresztül zajlik.
 
 ## <a name="next-steps"></a>További lépések
 
-ExpressRoute célja a magas rendelkezésre állású egyetlen hibapont a Microsoft hálózaton belül. Az ExpressRoute-áramkör továbbra is egyetlen földrajzi régióra és egy szolgáltatóra korlátozódik. Az S2S VPN jó vészhelyreállítási passzív biztonsági mentési megoldás lehet egy ExpressRoute-kapcsolathoz. Egy megbízható passzív biztonsági mentési kapcsolat megoldás, rendszeres karbantartása a passzív konfiguráció és a rendszeres érvényesítésa a kapcsolat fontos. Alapvető fontosságú, hogy ne hagyja, hogy a VPN-konfiguráció elavulttá váljon, és rendszeresen (mondjuk negyedévenként) ismételje meg a cikkben leírt érvényesítési és feladatátvételi tesztelési lépéseket a karbantartási időszak során.
+A ExpressRoute magas rendelkezésre állású, és a Microsoft-hálózaton belül egyetlen meghibásodási pont hiányában van kialakítva. A ExpressRoute áramkör továbbra is egyetlen földrajzi régióra és egy szolgáltatóra korlátozódik. A S2S VPN lehet jó vész-helyreállítási passzív biztonsági mentési megoldás egy ExpressRoute-áramkörhöz. A megbízható passzív biztonsági mentési megoldás esetében fontos a passzív konfiguráció és az időszakos ellenőrzés rendszeres karbantartása. Elengedhetetlen, hogy a VPN-konfiguráció elavult legyen, és rendszeres időközönként (mondjuk minden negyedévben) ismételje meg a jelen cikkben ismertetett ellenőrzési és feladatátvételi teszteket a karbantartási időszak során.
 
-A VPN-átjáró metrikáin alapuló figyelési és riasztások engedélyezéséről a [Riasztások beállítása vpn-átjáró metrikákon című témakörben][VPN-alerts]található.
+A VPN Gateway metrikái alapján történő figyelés és riasztások engedélyezéséhez tekintse meg [a riasztások beállítása VPN Gateway mérőszámokon][VPN-alerts]című témakört.
 
-A BGP-konvergencia ExpressRoute-hibát követő meggyorsításához [konfigurálja a BFD-t az ExpressRoute-on keresztül.][BFD]
+ExpressRoute-meghibásodást követő BGP-konvergencia felgyorsításához [konfigurálja a BFD][BFD]-t a ExpressRoute-en keresztül.
 
 <!--Image References-->
-[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "vizsgált topológia"
-[2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "VPN GW konfiguráció"
+[1]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/topology.png "az érintett topológia"
+[2]: ./media/use-s2s-vpn-as-backup-for-expressroute-privatepeering/vpn-gw-config.png "VPN GW-konfiguráció"
 
 <!--Link References-->
 [DR-PP]: https://docs.microsoft.com/azure/expressroute/designing-for-disaster-recovery-with-expressroute-privatepeering

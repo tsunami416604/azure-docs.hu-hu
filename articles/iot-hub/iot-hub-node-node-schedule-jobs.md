@@ -1,6 +1,6 @@
 ---
-title: Feladatok ütemezése az Azure IoT Hub (Csomópont) használatával | Microsoft dokumentumok
-description: Egy Azure IoT Hub-feladat ütemezése egy közvetlen metódus meghívására több eszközön. Az Azure IoT SDK-k node.js a szimulált eszköz alkalmazások és egy szolgáltatásalkalmazás a feladat futtatásához.
+title: Feladatok ütemezhetnek az Azure IoT Hub (node) segítségével | Microsoft Docs
+description: Azure IoT Hub-feladatok ütemezésének beütemezés közvetlen metódus több eszközön való meghívásához. A Node. js-hez készült Azure IoT SDK-k segítségével megvalósíthatja a szimulált eszköz alkalmazásait és egy szolgáltatási alkalmazást a feladatok futtatásához.
 author: wesmc7777
 manager: philmea
 ms.author: wesmc
@@ -11,79 +11,79 @@ ms.topic: conceptual
 ms.date: 08/16/2019
 ms.custom: mqtt
 ms.openlocfilehash: d7f9ce37ad85d39388eea90af263f59ce312a6b8
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81732270"
 ---
-# <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezése és közvetítése (Node.js)
+# <a name="schedule-and-broadcast-jobs-nodejs"></a>Feladatok ütemezett és szórása (node. js)
 
 [!INCLUDE [iot-hub-selector-schedule-jobs](../../includes/iot-hub-selector-schedule-jobs.md)]
 
-Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi, hogy egy háttéralkalmazás olyan feladatokat hozzon létre és kövessen nyomon, amelyek több millió eszközt ütemeznek és frissítenek.  A feladatok a következő műveletekhez használhatók:
+Az Azure IoT Hub egy teljes körűen felügyelt szolgáltatás, amely lehetővé teszi a háttérbeli alkalmazások számára, hogy több millió eszközt ütemezzen és frissítsen feladatok létrehozásához és nyomon követéséhez.  A feladatokat a következő műveletekhez használhatja:
 
 * Eszköz kívánt tulajdonságainak frissítése
 * Címkék frissítése
 * Közvetlen metódusok meghívása
 
-Fogalmilag a feladat betakarja az egyik ilyen műveleteket, és nyomon követi a végrehajtás előrehaladását egy eszközkészlet, amely egy eszköz iker lekérdezés határozza meg.  Például egy háttéralkalmazás segítségével egy feladat meghívására újraindítási módszer 10 000 eszközön, egy eszköz iker lekérdezés által megadott és egy későbbi időpontban ütemezett. Ez az alkalmazás ezután nyomon követheti a folyamatot, ahogy az egyes eszközök megkapják és végrehajtják az újraindítási módszert.
+Elméletileg a feladatok az alábbi műveletek egyikét betakarják, és nyomon követik a végrehajtás előrehaladását egy adott eszközön, amelyet az eszközök kettős lekérdezése határoz meg.  Egy háttérbeli alkalmazás például felhasználhat egy feladatot egy újraindítási módszer meghívására 10 000-eszközökön, egy eszköz kettős lekérdezésével és egy későbbi időpontban ütemezve. Az alkalmazás ezután nyomon követheti az előrehaladást, mivel az egyes eszközök megkapják és végrehajtják az újraindítási módszert.
 
-Az alábbi cikkekben további információ az egyes funkciókról:
+További információk a következő cikkekben felsorolt lehetőségekről:
 
-* Ikereszköz és tulajdonságok: [Ismerkedés az ikereszközökkel](iot-hub-node-node-twin-getstarted.md) és [az oktatóanyaggal: Az ikereszköz tulajdonságainak használata](tutorial-device-twins.md)
+* Eszközök Twin és Properties: Ismerkedés [az eszközök ikrekkel](iot-hub-node-node-twin-getstarted.md) és [oktatóanyaggal: az eszköz Twin tulajdonságainak használata](tutorial-device-twins.md)
 
-* Közvetlen módszerek: [IoT Hub fejlesztői útmutató - közvetlen módszerek](iot-hub-devguide-direct-methods.md) és [oktatóanyag: közvetlen módszerek](quickstart-control-device-node.md)
+* Közvetlen metódusok: [IoT hub fejlesztői útmutató – közvetlen](iot-hub-devguide-direct-methods.md) metódusok és [oktatóanyag: közvetlen metódusok](quickstart-control-device-node.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 Ez az oktatóanyag a következőket mutatja be:
 
-* Hozzon létre egy Node.js szimulált eszközalkalmazást, amely közvetlen metódussal rendelkezik, amely lehetővé teszi **a lockDoor**alkalmazást, amelyet a megoldás háttér-kezelője meghívhat.
+* Hozzon létre egy olyan, a Node. js által szimulált eszköz alkalmazást, amely közvetlen metódussal rendelkezik, amely lehetővé teszi a **lockDoor**, amelyet a megoldás hátterében hívhat meg.
 
-* Hozzon létre egy Node.js konzolalkalmazást, amely meghívja a **lockDoor** közvetlen metódust a szimulált eszközalkalmazásban egy feladat használatával, és frissíti a kívánt tulajdonságokat egy eszközfeladat használatával.
+* Hozzon létre egy Node. js-konzol alkalmazást, amely meghívja a **lockDoor** Direct metódust a szimulált eszköz alkalmazásban egy feladattal, és a kívánt tulajdonságokat egy eszköz feladattal frissíti.
 
-Az oktatóanyag végén két Node.js alkalmazás sal rendelkezik:
+Az oktatóanyag végén két Node. js-alkalmazás található:
 
-* **simDevice.js**, amely csatlakozik az IoT hub az eszköz identitását, és kap egy **lockDoor** közvetlen metódust.
+* **simDevice. js**, amely az IoT hubhoz csatlakozik az eszköz identitásával, és egy **lockDoor** Direct metódust kap.
 
-* **scheduleJobService.js**, amely meghívja a szimulált eszközalkalmazásban egy közvetlen metódust, és egy feladat használatával frissíti az ikereszköz kívánt tulajdonságait.
+* **scheduleJobService. js**, amely egy közvetlen metódust hív meg a szimulált eszköz alkalmazásban, és feladatokkal frissíti az eszközhöz tartozó dupla kívánt tulajdonságokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Node.js 10.0.x vagy újabb verzió. [A fejlesztői környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) leírja, hogyan telepítheti a Node.js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
+* Node. js 10.0. x vagy újabb verzió. [A fejlesztési környezet előkészítése](https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md) ismerteti, hogyan telepítheti a Node. js-t ehhez az oktatóanyaghoz Windows vagy Linux rendszeren.
 
 * Aktív Azure-fiók. (Ha nincs fiókja, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) néhány perc alatt.)
 
-* Győződjön meg arról, hogy a 8883-as port nyitva van a tűzfalon. A cikkben szereplő eszközminta az MQTT protokollt használja, amely a 8883-as porton keresztül kommunikál. Előfordulhat, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben le van tiltva. A probléma megoldásáról további információt és a probléma megoldásáról a [Csatlakozás az IoT Hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub)című témakörben talál.
+* Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
-## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hubban
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
 ## <a name="create-a-simulated-device-app"></a>Szimulált eszközalkalmazás létrehozása
 
-Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely a felhő által megnevezett közvetlen metódusra reagál, amely egy szimulált **lockDoor** metódust indít el.
+Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely a felhő által meghívott közvetlen metódusra válaszol, amely egy szimulált **lockDoor** metódust indít el.
 
-1. Hozzon létre egy új üres mappát nevű **simDevice**.  A **simDevice** mappában hozzon létre egy package.json fájlt a következő paranccsal a parancssorból.  Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **simDevice**nevű üres mappát.  A **simDevice** mappában hozzon létre egy Package. JSON fájlt a következő parancs parancssorba való beírásával.  Fogadja el az összes alapértelmezett beállítást:
 
    ```console
    npm init
    ```
 
-2. A **simDevice** mappában lévő parancssorból futtassa a következő parancsot az **azure-iot-device** SDK csomag és az **azure-iot-device-mqtt** csomag telepítéséhez:
+2. A **simDevice** mappában a parancssorban futtassa a következő parancsot az **Azure-IOT-Device** eszközoldali SDK csomag és az **Azure-IOT-Device-mqtt** csomag telepítéséhez:
 
    ```console
    npm install azure-iot-device azure-iot-device-mqtt --save
    ```
 
-3. Szövegszerkesztő használatával hozzon létre egy új **simDevice.js** fájlt a **simDevice** mappában.
+3. Egy szövegszerkesztővel hozzon létre egy új **simDevice. js** fájlt a **simDevice** mappában.
 
-4. A **simDevice.js** fájl elején adja hozzá a következő "szükséges" utasításokat:
+4. Adja hozzá a következő "require" utasítást a **simDevice. js** fájl elejéhez:
 
     ```javascript
     'use strict';
@@ -92,7 +92,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely a felhő 
     var Protocol = require('azure-iot-device-mqtt').Mqtt;
     ```
 
-5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt. Cserélje `{yourDeviceConnectionString}` le a helyőrző értéket a korábban másolt eszközkapcsolati karakterláncra.
+5. Adjon hozzá egy **connectionString** változót, és ezzel hozzon létre egy **Ügyfél** példányt. Cserélje le `{yourDeviceConnectionString}` a helyőrző értékét a korábban átmásolt eszköz-összekapcsolási sztringre.
 
     ```javascript
     var connectionString = '{yourDeviceConnectionString}';
@@ -117,7 +117,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely a felhő 
     };
     ```
 
-7. Adja hozzá a következő kódot a **lockDoor** metódus kezelőjének regisztrálásához.
+7. Adja hozzá a következő kódot a kezelő **lockDoor** metódushoz való regisztrálásához.
 
    ```javascript
    client.open(function(err) {
@@ -130,37 +130,37 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely a felhő 
    });
    ```
 
-8. Mentse és zárja be a **simDevice.js** fájlt.
+8. Mentse és zárjuk be a **simDevice. js** fájlt.
 
 > [!NOTE]
-> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban újrapróbálkozási házirendeket (például exponenciális visszamaradást) kell megvalósítania, ahogy azt a cikk, [átmeneti hibakezelés](/azure/architecture/best-practices/transient-faults)című cikk ben javasolt.
+> Az egyszerűség kedvéért ez az oktatóanyag nem valósít meg semmilyen újrapróbálkozási házirendet. Az éles kódban az újrapróbálkozási szabályzatokat (például egy exponenciális leállítási) kell megvalósítani, ahogy azt a cikkben is ismertetjük, az [átmeneti hibák kezelésére](/azure/architecture/best-practices/transient-faults).
 >
 
-## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub kapcsolati karakterláncának beszereznie
+## <a name="get-the-iot-hub-connection-string"></a>Az IoT hub-beli kapcsolatok karakterláncának beolvasása
 
 [!INCLUDE [iot-hub-howto-schedule-jobs-shared-access-policy-text](../../includes/iot-hub-howto-schedule-jobs-shared-access-policy-text.md)]
 
 [!INCLUDE [iot-hub-include-find-registryrw-connection-string](../../includes/iot-hub-include-find-registryrw-connection-string.md)]
 
-## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Feladatok ütemezése közvetlen metódus hívásához és az ikereszköz tulajdonságainak frissítéséhez
+## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>Feladatok ütemezhetnek közvetlen metódus hívásához és az eszközök Twin tulajdonságainak frissítéséhez
 
-Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távoli **lockDoor-t** kezdeményez egy eszközön egy közvetlen metódus használatával, és frissíti az ikereszköz tulajdonságait.
+Ebben a szakaszban egy Node. js-konzol alkalmazást hoz létre, amely egy közvetlen metódus használatával kezdeményez egy távoli **lockDoor** az eszközön, és frissíti az eszköz Twin tulajdonságait.
 
-1. Hozzon létre egy **scheduleJobService**nevű új üres mappát.  A **scheduleJobService** mappában hozzon létre egy package.json fájlt a következő paranccsal a parancssorból.  Fogadja el az összes alapértelmezett beállítást:
+1. Hozzon létre egy új, **scheduleJobService**nevű üres mappát.  A **scheduleJobService** mappában hozzon létre egy Package. JSON fájlt a következő parancs parancssorba való beírásával.  Fogadja el az összes alapértelmezett beállítást:
 
     ```console
     npm init
     ```
 
-2. A **scheduleJobService** mappában lévő parancssorból futtassa a következő parancsot az **azure-iothub** device SDK-csomag és az **azure-iot-device-mqtt** csomag telepítéséhez:
+2. A **scheduleJobService** mappában a parancssorban futtassa a következő parancsot az **Azure-iothub** Device SDK csomag és az **Azure-IOT-Device-mqtt** csomag telepítéséhez:
 
     ```console
     npm install azure-iothub uuid --save
     ```
 
-3. Szövegszerkesztő használatával hozzon létre egy új **scheduleJobService.js** fájlt a **scheduleJobService** mappában.
+3. Egy szövegszerkesztővel hozzon létre egy új **scheduleJobService. js** fájlt a **scheduleJobService** mappában.
 
-4. Adja hozzá a következő "szükséges" utasításokat a **scheduleJobService.js** fájl elején:
+4. Adja hozzá a következő "require" utasítást a **scheduleJobService. js** fájl elejéhez:
 
     ```javascript
     'use strict';
@@ -169,7 +169,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     var JobClient = require('azure-iothub').JobClient;
     ```
 
-5. Adja hozzá a következő változódeklarációkat. Cserélje `{iothubconnectionstring}` le a helyőrző értéket az [IoT hub kapcsolati karakterláncának bemásolása](#get-the-iot-hub-connection-string)című részben másolt értékre. Ha a **myDeviceId-tól**eltérő eszközt regisztrált, győződjön meg róla, hogy módosítja azt a lekérdezési feltételben.
+5. Adja hozzá a következő változó deklarációkat. A `{iothubconnectionstring}` helyőrző értékét cserélje le az [IoT hub-kapcsolatok karakterláncának beolvasása](#get-the-iot-hub-connection-string)elemre. Ha a **myDeviceId**eltérő eszközt regisztrált, ne felejtse el módosítani a lekérdezési feltételben.
 
     ```javascript
     var connectionString = '{iothubconnectionstring}';
@@ -199,7 +199,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     }
     ```
 
-7. Adja hozzá a következő kódot az eszközmetódust megadó feladat ütemezéséhez:
+7. Adja hozzá a következő kódot az eszköz metódusát meghívó feladatokhoz:
   
     ```javascript
     var methodParams = {
@@ -230,7 +230,7 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     });
     ```
 
-8. Adja hozzá a következő kódot az ikereszköz frissítéséhez:
+8. Adja hozzá a következő kódot a feladatok ütemezett frissítéséhez az eszköz kettős frissítése céljából:
 
     ```javascript
     var twinPatch = {
@@ -266,38 +266,38 @@ Ebben a szakaszban hozzon létre egy Node.js konzolalkalmazást, amely egy távo
     });
     ```
 
-9. Mentse és zárja be a **scheduleJobService.js** fájlt.
+9. Mentse és zárjuk be a **scheduleJobService. js** fájlt.
 
 ## <a name="run-the-applications"></a>Az alkalmazások futtatása
 
 Most már készen áll az alkalmazások futtatására.
 
-1. A **simDevice** mappa parancssorában futtassa a következő parancsot az újraindítási közvetlen metódus figyeléséhez.
+1. A **simDevice** mappában a parancssorban futtassa a következő parancsot, hogy megkezdje az újraindítási közvetlen metódus figyelését.
 
     ```console
     node simDevice.js
     ```
 
-2. A **scheduleJobService** mappa parancssorában futtassa a következő parancsot az ajtó zárolásához és az ikerhálózat frissítéséhez
+2. A **scheduleJobService** mappában található parancssorban futtassa a következő parancsot a feladatok elindításához az ajtó zárolásához és a Twin frissítéséhez.
 
     ```console
     node scheduleJobService.js
     ```
 
-3. A konzolon megjelenik az eszköz közvetlen metódusra adott válasza és a feladat állapota.
+3. Megjelenik az eszköz válasza a Direct metódusra és a feladatok állapotára a-konzolon.
 
-   A következőkben látható az eszköz közvetlen módszerre adott válasza:
+   Az alábbi ábrán látható az eszköz válasza a közvetlen metódusra:
 
-   ![Szimulált eszközalkalmazás-kimenet](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
+   ![Szimulált eszköz alkalmazás kimenete](./media/iot-hub-node-node-schedule-jobs/sim-device.png)
 
-   A következőkben a közvetlen metódus és az ikereszköz-frissítés szolgáltatásütemezési feladatait, valamint a befejezésig futó feladatokat mutatja be:
+   A következő táblázat a közvetlen metódus és az eszköz kettős frissítésének szolgáltatás-ütemezési feladatait, valamint a befejezésre futó feladatokat mutatja be:
 
-   ![A szimulált eszközalkalmazás futtatása](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
+   ![A szimulált eszköz alkalmazásának futtatása](./media/iot-hub-node-node-schedule-jobs/schedule-job-service.png)
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban egy feladat segítségével ütemezte a közvetlen metódust egy eszközre, és az ikereszköz tulajdonságainak frissítését.
+Ebben az oktatóanyagban egy olyan feladatot használt, amely egy közvetlen metódust ütemez egy eszközre, és az eszköz Twin tulajdonságainak frissítését.
 
-Az IoT Hub és az eszközfelügyeleti minták , például a távoli belső vezérlőprogram frissítésének megkezdéséhez olvassa el az [Oktatóanyag: Belső vezérlőprogram-frissítés .](tutorial-firmware-update.md)
+Ha továbbra is szeretné megkezdeni a IoT Hub és az eszközkezelés mintáit, például a távoli belső vezérlőprogram frissítését, tekintse meg az [oktatóanyag: a belső vezérlőprogram frissítését](tutorial-firmware-update.md)ismertető témakört.
 
-Az IoT Hub első lépései az [Azure IoT Edge – első lépések.](../iot-edge/tutorial-simulate-device-linux.md)
+A IoT Hub első lépéseinek folytatásához tekintse meg a [Azure IoT Edge első lépéseivel](../iot-edge/tutorial-simulate-device-linux.md)foglalkozó témakört.

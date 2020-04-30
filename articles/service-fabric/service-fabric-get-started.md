@@ -1,15 +1,15 @@
 ---
-title: Windows-fejlesztői környezet beállítása
+title: Windows fejlesztési környezet beállítása
 description: Telepítse a futtatókörnyezetet, az SDK-t és az eszközöket, majd hozzon létre egy helyi fejlesztési fürtöt. A beállítás befejezése után készen áll az alkalmazások létrehozására Windows rendszeren.
 author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/20/2020
 ms.custom: sfrev
 ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81731754"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>A fejlesztőkörnyezet előkészítése Windowson
@@ -37,19 +37,19 @@ A fejlesztéshez a következő operációsrendszer-verziók támogatottak:
 
 > [!NOTE]
 > Windows 7-támogatás:
-> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. A [Windows PowerShell 5.1 letölthető][powershell5-download] a Microsoft letöltőközpontból.
+> - Alapértelmezés szerint a Windows 7 csak a Windows PowerShell 2.0-t tartalmazza. A Service Fabric PowerShell-parancsmagokhoz a PowerShell 3.0 vagy újabb verziója szükséges. A [Windows PowerShell 5,1][powershell5-download] a Microsoft letöltőközpontból tölthető le.
 > - A Service Fabric fordított proxyja nem érhető el Windows 7 rendszeren.
 
 ## <a name="install-the-sdk-and-tools"></a>Az SDK és az eszközök telepítése
 
-Az SDK és az eszközök telepítésének ajánlott módja a Web Platform Installer (WebPI). Ha futásidejű hibákat kap a WebPI használatával, a telepítőkre mutató közvetlen hivatkozásokat is megkereshet idáig egy adott Service Fabric-kiadás kiadási megjegyzésekben. A kibocsátási megjegyzések megtalálhatók a különböző kiadási közlemények a [Service Fabric csapat blog](https://blogs.msdn.microsoft.com/azureservicefabric/).
+A webplatform-telepítő (WebPI) az SDK és az eszközök telepítésének ajánlott módja. Ha futásidejű hibákat kap a WebPI használatával, az adott Service Fabric kiadás kibocsátási megjegyzései között közvetlen hivatkozásokat is találhat a telepítőknek. A kibocsátási megjegyzések a [Service Fabric csapat blogjának](https://blogs.msdn.microsoft.com/azureservicefabric/)különböző kiadási hirdetményekben találhatók.
 
 > [!NOTE]
-> A helyi service fabric fejlesztési fürt frissítései nem támogatottak.
+> A helyi Service Fabric fejlesztési fürtök frissítése nem támogatott.
 
-### <a name="to-use-visual-studio-2017-or-2019"></a>A Visual Studio 2017 vagy 2019 használata
+### <a name="to-use-visual-studio-2017-or-2019"></a>A Visual Studio 2017 vagy a 2019 használata
 
-A Service Fabric-eszközök az Azure Development számítási feladat részét képezik a Visual Studio 2017-ben és 2019-ben. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
+A Service Fabric-eszközök a Visual Studio 2017-es és 2019-es verziójának Azure-fejlesztési számítási feladatának részét képezik. A Visual Studio telepítésének részeként engedélyezze ezt a munkafolyamatot.
 Emellett telepítenie kell a Microsoft Azure Service Fabric SDK-t és futtatókörnyezetet is a webplatform-telepítővel.
 
 * [A Microsoft Azure Service Fabric SDK telepítése][core-sdk]
@@ -68,13 +68,13 @@ Ha csak az SDK-ra van szükség, telepítse a következő csomagot:
 
 Az aktuális verziók a következők:
 
-* Service Fabric SDK és tools 4.1.409
-* Service Fabric futásidejű 7.1.409
+* Service Fabric SDK és eszközök 4.1.409
+* Service Fabric futtatókörnyezet 7.1.409
 
-A támogatott verziók listáját a [Service Fabric-verziók című témakörben található.](service-fabric-versions.md)
+A támogatott verziók listáját lásd: [Service Fabric verziók](service-fabric-versions.md)
 
 > [!NOTE]
-> Az egygépes fürtök (OneBox) nem támogatottak az alkalmazás- vagy fürtfrissítésekhez; törölje a OneBox-fürtöt, és hozza létre újra, ha fürtfrissítést kell végrehajtania, vagy ha alkalmazásfrissítést kell végrehajtania. 
+> Az alkalmazás-vagy fürt frissítései nem támogatják az egyetlen gépi fürtöket (beépített); törölje a beépített-fürtöt, és hozza létre újra, ha a fürt frissítését kell végrehajtania, vagy ha problémába ütközik az alkalmazások frissítésével. 
 
 ## <a name="enable-powershell-script-execution"></a>A PowerShell-parancsfájl végrehajtásának engedélyezése
 
@@ -86,13 +86,13 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 
 ## <a name="install-docker-optional"></a>A Docker telepítése (nem kötelező)
 
-[A Service Fabric egy tároló vezénylő](service-fabric-containers-overview.md) gépfürtön üzembe helyező. A Windows-tárolóalkalmazások helyi fejlesztési fürtön való futtatásához először telepítenie kell a Docker for Windows alkalmazást. Get [Docker CE For Windows (stabil)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
+A [Service Fabric egy tároló Orchestrator](service-fabric-containers-overview.md) , amely a gépek egy fürtön való üzembe helyezését végzi. A Windows-tároló alkalmazások helyi fejlesztési fürtön való futtatásához először telepítenie kell a Docker for Windowst. Szerezze [be a Windows rendszerhez készült Docker CE-t (stable)](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description). Miután telepítette és elindította a Dockert, kattintson a jobb gombbal a tálca ikonjára, és válassza a **Switch to Windows containers** (Váltás Windows-tárolókra) lehetőséget. Ez a lépés szükséges ahhoz, hogy Windows-alapú Docker-rendszerképeket tudjon futtatni.
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy végzett a fejlesztőkörnyezet beállításával, belefoghat az alkalmazások létrehozásába és futtatásába.
 
-* [Útmutató alkalmazások létrehozásához, telepítéséhez és kezeléséhez](service-fabric-tutorial-create-dotnet-app.md)
+* [Ismerje meg, hogyan hozhat létre, helyezhet üzembe és kezelhet alkalmazásokat](service-fabric-tutorial-create-dotnet-app.md)
 * [További tudnivalók a programozási modellekről: Reliable Services és Reliable Actors](service-fabric-choose-framework.md)
 * [A Service Fabric mintakódjainak megtekintése a GitHubon](https://aka.ms/servicefabricsamples)
 * [A fürt megjelenítése a Service Fabric Explorerrel](service-fabric-visualizing-your-cluster.md)

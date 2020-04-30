@@ -1,7 +1,7 @@
 ---
-title: Automatikus kiegészítés és javaslatok hozzáadása a keresőmezőben
+title: Automatikus kiegészítés és javaslatok hozzáadása egy keresési mezőben
 titleSuffix: Azure Cognitive Search
-description: Engedélyezze a felhasználóként történő lekérdezési műveleteket az Azure Cognitive Search szolgáltatásban azáltal, hogy javaslatokat tesz, és olyan kéréseket készít, amelyek automatikusan kiegészítik a keresőmezőt kész kifejezésekkel vagy kifejezésekkel. A javasolt egyezéseket is visszaadhat.
+description: Az Azure-Cognitive Search keresési típusú lekérdezési műveleteinek engedélyezése a javaslatok létrehozásával és a befejezett kifejezésekkel vagy kifejezésekkel rendelkező keresőmező automatikus kiegészítésére szolgáló kérelmek összeállításával. A javasolt egyezéseket is visszaadhatja.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
@@ -9,29 +9,29 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.openlocfilehash: 60e9a435d705ee0fee6509e92cdcb056ac7ab609
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758108"
 ---
-# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazásokhoz
+# <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Automatikus kiegészítés és javaslatok hozzáadása az ügyfélalkalmazások számára
 
-A felhasználó által kezdeményezett lekérdezések hatékonyságának javítására szolgáló közös módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Search szolgáltatásban ezt a felületet az *automatikus kiegészítés*támogatja, amely részleges bemeneten alapuló kifejezést vagy kifejezést fejez be (a "mikro" befejezése a "microsoft"). Egy másik űrlap a *javaslatok:* az egyező dokumentumok rövid listája (azonosítóval rendelkező könyvcímek visszaadása, hogy egy részletoldalra mutató hivatkozást csatolhassunk). Mind az automatikus kiegészítés, mind a javaslatok az indexben lévő egyezésen alapulnak. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
+A keresési típus egy gyakori módszer a felhasználó által kezdeményezett lekérdezések hatékonyságának javítására. Az Azure Cognitive Searchban ez a megoldás az *automatikus kiegészítésen*keresztül támogatott, amely egy kifejezést vagy kifejezést végez a részleges bevitel ("Micro" és "Microsoft") alapján. A *javaslatok*egy másik formája: a megfelelő dokumentumok rövid listája (a könyv címének visszaadása egy azonosítóval, amely egy részletes oldalhoz csatolható). Az automatikus kiegészítés és a javaslatok is az indexben egyeznek meg. A szolgáltatás nem kínál olyan lekérdezéseket, amelyek nulla eredményt adnak vissza.
 
-Ahhoz, hogy ezeket a tapasztalatokat megvalósítsa az Azure Cognitive Search szolgáltatásban, a következőkre lesz szüksége:
+A tapasztalatok Azure Cognitive Search-ban való megvalósításához a következőkre lesz szüksége:
 
-+ Egy *szuggesztő* a hátsó oldalon.
-+ Automatikus *query* [kiegészítést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vagy [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions) API-t a kérelemben megadva.
-+ A *felhasználói felület vezérlője* a keresés önkénti keresésének kezelésére az ügyfélalkalmazásban. Ehhez azt javasoljuk, hogy egy meglévő JavaScript-kódtárat használjon.
++ Egy *javaslat* a háttérben.
++ Egy *lekérdezés* , amely az [automatikus kiegészítést](https://docs.microsoft.com/rest/api/searchservice/autocomplete) vagy a [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions) API-t határozza meg a kérelemre vonatkozóan.
++ Egy *felhasználói felületi vezérlő* , amely a keresési típusok közötti interakciókat kezeli az ügyfélalkalmazás számára. Azt javasoljuk, hogy egy meglévő JavaScript-függvénytárat használjon erre a célra.
 
-Az Azure Cognitive Search, automatikusan kitöltött lekérdezések és a javasolt eredmények lekérése a keresési index, a kiválasztott mezők, amelyek regisztrált a javaslatajánló. A javaslatajánló az index része, és meghatározza, hogy mely mezők biztosítják a lekérdezést letöltő, eredményt sugalló vagy mindkettőt tartalmazó tartalmat. Az index létrehozásakor és betöltésekor egy javaslatajánló adatstruktúra jön létre belsőleg a részleges lekérdezések egyeztetéséhez használt előtagok tárolására. A javaslatok, kiválasztása megfelelő területeken, amelyek egyedi, vagy legalábbis nem ismétlődő, elengedhetetlen, hogy a tapasztalat. További információt a [Javaslatajánló létrehozása](index-add-suggesters.md)című témakörben talál.
+Az Azure Cognitive Searchban az automatikusan befejezett lekérdezéseket és a javasolt eredményeket a rendszer a keresési indexből kérdezi le, a kijelölt mezőkből, amelyeket egy javaslatban regisztráltak. A javaslat az index részét képezi, és meghatározza, hogy mely mezők biztosítanak a lekérdezés befejezését, vagy a két művelet eredményét. Az index létrehozásakor és betöltésekor a rendszer belsőleg létrehoz egy szuggesztív adatstruktúrát a részleges lekérdezésekhez való megfeleltetéshez használt előtagok tárolásához. A javaslatok, amelyek egyedi, vagy legalábbis ismétlődő, megfelelő mezők kiválasztásával elengedhetetlenek a felhasználói élményhez. További információ: [javaslat létrehozása](index-add-suggesters.md).
 
-A cikk további része a lekérdezésekre és az ügyfélkódra összpontosít. JavaScript et és C# -ot használ a főbb pontok szemléltetésére. REST API-példák segítségével az egyes műveletek tömören bemutatják. A végpontok közötti kódmintákra mutató hivatkozásokat a [Következő lépések (További lépések) (További lépések) témakörben tésszel kapcsolatban.](#next-steps)
+A cikk további része a lekérdezésekre és az ügyfél kódjára összpontosít. A JavaScript és a C# használatával mutatja be a legfontosabb pontokat. REST API példákat használunk az egyes műveletek tömör bemutatása érdekében. A végpontok közötti kód mintákra mutató hivatkozásokat a [következő lépések](#next-steps)című szakaszban tekintheti meg.
 
 ## <a name="set-up-a-request"></a>Kérelem beállítása
 
-A kérelem elemei közé tartozik a keresés-as-you-type API-k, részleges lekérdezés, és egy javaslatajánló. A következő parancsfájl egy kérelem összetevőit mutatja be, példaként az automatikus kiegészítés REST API-t használva.
+A kérelem elemei közé tartozik az egyik keresési típusú API, egy részleges lekérdezés és egy javaslat. A következő parancsfájl egy kérelem összetevőit mutatja be, az automatikus kiegészítési REST API használatával példaként.
 
 ```http
 POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
@@ -41,67 +41,67 @@ POST /indexes/myxboxgames/docs/autocomplete?search&api-version=2019-05-06
 }
 ```
 
-A **suggesterName** a kifejezések vagy javaslatok teljesítéséhez használt javaslatírói mezőket adja meg. Különösen a javaslatok esetében a mezőlistának azokból kell állnia, amelyek egyértelmű választási lehetőségeket kínálnak az egyező eredmények között. A számítógépes játékokat értékesítő webhelyeken a mező lehet a játék címe.
+A **suggesterName** megadja a feltételek vagy javaslatok végrehajtásához használt, javasolt mezőket. A konkrét javaslatok esetében a mezőlista olyan elemekből áll, amelyek a megfelelő eredmények között egyértelmű döntéseket nyújtanak. A számítógépes játékokat értékesítő webhelyeken a játék címe lehet.
 
-A **keresési** paraméter biztosítja a részleges lekérdezést, ahol a karakterek etetik a lekérdezési kérelmet a jQuery automatikus kiegészítés vezérlőn keresztül. A fenti példában a "minecraf" egy statikus illusztrációja annak, hogy a vezérlő mit adhatott be.
+A **keresési** paraméter biztosítja a részleges lekérdezést, ahol a karakterek a lekérdezési kérelemhez a jQuery automatikus kiegészítés-vezérlőn keresztül vannak betáplálva. A fenti példában a "minecraf" egy statikus ábrája annak, amit a vezérlő átadott.
 
-Az API-k nem írnak elő minimális hosszkövetelményeket a részleges lekérdezésre; lehet olyan kicsi, mint egy karakter. A jQuery automatikus kiegészítés azonban minimális hosszt biztosít. Legalább két vagy három karakter jellemző.
+Az API-k nem írnak elő minimális hosszúságú követelményeket a részleges lekérdezéshez; akár egy karakter is lehet. A jQuery automatikus kiegészítés azonban minimális hosszt biztosít. A minimum kettő vagy három karakter jellemző.
 
-Az egyezések a kifejezés elején vannak bárhol a bemeneti karakterláncban. Mivel a "gyors barna róka", mind az automatikus kiegészítés és javaslatok egyezik a részleges változatai "a", "gyors", "barna", vagy "róka", de nem a részleges infix kifejezések, mint a "rown" vagy "ökör". Továbbá minden egyezés meghatározza a downstream bővítések hatókörét. A részleges lekérdezés "gyors br" egyezik a "gyors barna" vagy "gyors kenyér", de sem a "barna" vagy a "kenyér" önmagukban lenne egyezik, kivéve, ha "gyors" megelőzi őket.
+A egyezések egy kifejezés elején vannak, bárhol a bemeneti karakterláncban. A "The Quick Brown Fox", az automatikus kiegészítés és a javaslatok a "The", a "Quick", a "Brown" vagy a "Fox" részleges verzióihoz tartoznak, de nem a részleges Infix, például a "sorvégi" vagy az "Ox" kifejezéssel. Emellett az egyes egyezések az alsóbb rétegbeli bővítések hatókörét határozzák meg. A "Quick br" részleges lekérdezése megfelel a "Quick Brown" vagy a "Quick kenyér" kifejezésnek, de a "barna" vagy a "kenyér" nem egyezik meg egymással, hacsak a "gyors" megelőzi őket.
 
-### <a name="apis-for-search-as-you-type"></a>API-k a beírást kitekintő kereséshez
+### <a name="apis-for-search-as-you-type"></a>A kereséshez használt API-k
 
-Kövesse az alábbi hivatkozásokat a REST és a .NET SDK referencialapokhoz:
+Kövesse az alábbi hivatkozásokat a REST és a .NET SDK-referenciák oldalaihoz:
 
 + [Javaslatok REST API](https://docs.microsoft.com/rest/api/searchservice/suggestions) 
-+ [Rest automatikus kiegészítésapi](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
++ [Automatikus kiegészítés REST API](https://docs.microsoft.com/rest/api/searchservice/autocomplete) 
 + [SuggestWithHttpMessagesAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync?view=azure-dotnet)
-+ [Automatikus kiegészítésHttpMessagesAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
++ [AutocompleteWithHttpMessagesAsync metódus](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync?view=azure-dotnet&viewFallbackFrom=azure-dotnet)
 
 ## <a name="structure-a-response"></a>Válasz strukturálása
 
-Az automatikus kiegészítésre és a javaslatokra adott válaszok az, amire számíthat a mintában: Az [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) a kifejezések listáját adja vissza, a Javaslatok feltételeket és egy dokumentumazonosítót, hogy lehívhassa a dokumentumot (a [Lookup Document](https://docs.microsoft.com/rest/api/searchservice/lookup-document) API segítségével lekéri az adott dokumentumot egy részletlaphoz). [Suggestions](https://docs.microsoft.com/rest/api/searchservice/suggestions#response)
+Az automatikus kiegészítésre és a javaslatokra adott válaszok a következő mintában számíthatnak: az [automatikus kiegészítés](https://docs.microsoft.com/rest/api/searchservice/autocomplete#response) a feltételek listáját adja vissza, a [javaslatok](https://docs.microsoft.com/rest/api/searchservice/suggestions#response) pedig egy dokumentum azonosítóját, így a dokumentum beolvasása érdekében (a [keresési dokumentum](https://docs.microsoft.com/rest/api/searchservice/lookup-document) API-val lekérheti az adott dokumentumot egy részletes oldalhoz).
 
-A válaszokat a kérés paraméterei alakítják. Az automatikus kiegészítés mezőben állítsa be az [**automatikus kiegészítésmód**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) beállítását annak meghatározására, hogy a szöveg kiegészítése egy vagy két feltétel szerint történjen-e. A Javaslatok mezőben a kiválasztott mező határozza meg a válasz tartalmát.
+A válaszokat a kérés paraméterei alakítják ki. Az automatikus kiegészítés beállításnál állítsa be a [**autocompleteMode**](https://docs.microsoft.com/rest/api/searchservice/autocomplete#autocomplete-modes) annak megállapítására, hogy a szöveg befejezése egy vagy két kifejezésen történik-e. Javaslatok esetén a kiválasztott mező határozza meg a válasz tartalmát.
 
-Javaslatok esetén tovább kell finomítania a választ, hogy elkerülje az ismétlődéseket vagy a nem kapcsolódó eredményeket. Az eredmények szabályozásához adjon meg további paramétereket a kérésben. A következő paraméterek mind az automatikus kiegészítésre, mind a javaslatokra vonatkoznak, de talán nagyobb szükség van a javaslatokra, különösen akkor, ha a javaslatajánló több mezőt tartalmaz.
+A javaslatok esetében tovább pontosíthatja a választ, hogy elkerülje a duplikált elemeket, vagy hogy mi úgy tűnik, hogy a nem kapcsolódó eredmények. Az eredmények ellenőrzéséhez adjon meg több paramétert a kéréshez. A következő paraméterek mind az automatikus kiegészítésre, mind a javaslatokra érvényesek, de a javaslatok esetében talán több szükséges, különösen akkor, ha egy javaslat több mezőt is tartalmaz.
 
 | Paraméter | Használat |
 |-----------|-------|
-| **$select** | Ha egy javaslatozóban több **forrásmező** is van, **$select** segítségével`$select=GameTitle`választhatja ki, hogy melyik mező járul hozzá az értékekhez ( ). |
-| **keresési mezők** | A lekérdezés korlátozása adott mezőkre. |
-| **$filter** | Egyezési feltételek alkalmazása`$filter=Category eq 'ActionAdventure'`az eredményhalmazra ( ). |
-| **$top** | Az eredményeket egy adott`$top=5`számra ( ) korlátozza.|
+| **$select** | Ha egy javaslat több **sourceFields** rendelkezik, akkor a **$Select** használatával kiválaszthatja, hogy melyik mező járul hozzá`$select=GameTitle`az értékekhez (). |
+| **searchFields** | A lekérdezés korlátozása adott mezőkre. |
+| **$filter** | Egyezési feltételek alkalmazása az eredményhalmaz (`$filter=Category eq 'ActionAdventure'`) értékre. |
+| **$top** | Korlátozza az eredményeket egy adott számra (`$top=5`).|
 
-## <a name="add-user-interaction-code"></a>Felhasználói beavatkozási kód hozzáadása
+## <a name="add-user-interaction-code"></a>Felhasználói interakciós kód hozzáadása
 
-A lekérdezési kifejezés automatikus kitöltése vagy az egyező hivatkozások listájának ledobásához felhasználói beavatkozási kódra , általában JavaScript-re van szükség, amely felhasználhatja a külső forrásokból származó kérelmeket, például az automatikus kiegészítést vagy az Azure Search Cognitive-indexen lévő javaslatlekérdezéseket.
+Egy lekérdezési kifejezés automatikus kitöltésével vagy a megfelelő hivatkozások listájának lebontásával a felhasználói interakciós kód (jellemzően JavaScript) szükséges a külső forrásokból érkező kérések, például az automatikus kiegészítés vagy a javaslatok lekérdezése Azure Search kognitív indexen keresztül.
 
-Bár lehet írni ezt a kódot natívan, ez sokkal könnyebb használni funkciókmeglévő JavaScript könyvtár. Ez a cikk bemutatja két, az egyik a javaslatok és a másik az automatikus kiegészítés. 
+Bár ezt a kódot natív módon is megírhatja, sokkal egyszerűbb a függvények használata a meglévő JavaScript-kódtár használatával. Ez a cikk két, egy javaslatot és egy másikat mutat be az automatikus kiegészítéshez. 
 
-+ [Az automatikus kiegészítésvezérlő (jQuery UI)](https://jqueryui.com/autocomplete/) a Javaslat példában használatos. Létrehozhat egy keresőmezőt, majd hivatkozhat rá egy JavaScript-függvényben, amely az Automatikus kiegészítés widgetet használja. A vezérlő tulajdonságai beállítják a forrást (automatikus kiegészítés vagy javaslatfunkció), a beviteli karakterek minimális hosszát a művelet megkezdése előtt, valamint a pozicionálást.
++ Az [automatikus kiegészítés widget (JQUERY UI)](https://jqueryui.com/autocomplete/) a javaslat példájában van használatban. Létrehozhat egy keresőmezőt, majd hivatkozhat arra egy JavaScript-függvényben, amely az automatikus kiegészítés widgetet használja. A widget tulajdonságai a forrást (automatikus kiegészítés vagy javaslatok függvény), a művelet végrehajtása előtt a bemeneti karakterek minimális hosszát és a pozicionálást is beállítják.
 
-+ [XDSoft automatikus kiegészítés plug-in](https://xdsoft.net/jqplugins/autocomplete/) használják az automatikus kiegészítés példa.
++ A [XDSoft automatikus kiegészítési beépülő modulja](https://xdsoft.net/jqplugins/autocomplete/) az automatikus kiegészítés példáját használja.
 
-Ezeket a könyvtárakat arra használjuk, hogy a javaslatokat és az automatikus kiegészítést támogató keresőmezőt hozzuk létre. A keresőmezőben gyűjtött bemenetek javaslatokkal és automatikus kiegészítési műveletekkel vannak párosítva.
+Ezeket a kódtárakat a javaslatok és az automatikus kiegészítések támogatását támogató keresőmező létrehozásához használjuk. A keresőmezőbe gyűjtött bemenetek a javaslatokkal és az automatikus kiegészítési műveletekkel vannak párosítva.
 
 ## <a name="suggestions"></a>Javaslatok
 
-Ez a szakasz végigvezeti a javasolt találatok megvalósításán, kezdve a keresőmező definíciójával. Azt is bemutatja, hogyan és script, amely meghívja az első JavaScript automatikus kiegészítés könyvtár hivatkozott ebben a cikkben.
+Ez a szakasz végigvezeti a javasolt eredmények megvalósításán, kezdve a keresőmező-definícióval. Azt is bemutatja, hogyan és szkripttel hívja meg a cikkben hivatkozott első JavaScript automatikus kiegészítési függvénytárat.
 
 ### <a name="create-a-search-box"></a>Keresőmező létrehozása
 
-Feltételezve, hogy a [jQuery ui automatikus kiegészítéskönyvtára](https://jqueryui.com/autocomplete/) és egy MVC-projekt C#-ban van, az **Index.cshtml** fájlban javascript használatával definiálhatja a keresőmezőt. A tár hozzáadja a keresés használata közbenső kapcsolati tevékenységet a keresőmezőhöz azáltal, hogy aszinkron hívásokat kezdeményez az MVC-vezérlőhöz a javaslatok lekéréséhez.
+Feltételezve, hogy a [jQuery felhasználói felület automatikus kiegészítésének könyvtára](https://jqueryui.com/autocomplete/) és egy MVC-projekt a C#-ban, az **index. Cshtml** fájlban a JavaScript használatával definiálhatja a keresőmezőt. A könyvtár az MVC-vezérlőhöz a javaslatok beolvasásához aszinkron módon hívja fel a keresési típus típusú interakciót a keresőmezőbe.
 
-Az **Index.cshtml** fájlban a \Views\Home mappában a keresőmező létrehozásához a következő lehet:
+Az **index. cshtml** mappa \Views\Home területén a keresőmező létrehozásához a következő sor lehet:
 
 ```html
 <input class="searchBox" type="text" id="searchbox1" placeholder="search">
 ```
 
-Ez a példa egy egyszerű beviteli szövegdoboz, amely egy stílusosztállyal, a JavaScript által hivatkozott azonosítóval és helyőrző szöveggel rendelkezik.  
+Ez a példa egy egyszerű beviteli szövegmező, amelynek a stílusa, a JavaScript által hivatkozott azonosító, valamint a helyőrző szövege.  
 
-Ugyanabban a fájlban ágyazzon be a keresőmezőre hivatkozó JavaScriptet. A következő függvény meghívja a Javaslat API-t, amely részleges bevitelalapján javasolja a javasolt egyezési dokumentumokat:
+Ugyanazon a fájlon belül ágyazza be a JavaScriptet, amely a keresőmezőbe hivatkozik. A következő függvény meghívja az ajánlott API-t, amely a javasolt egyezési dokumentumokat a részleges feltételek bemenetei alapján kéri le:
 
 ```javascript
 $(function () {
@@ -116,13 +116,13 @@ $(function () {
 });
 ```
 
-A `source` megmondja a jQuery UI automatikus kiegészítés funkció, ahol, hogy a lista elemek jelennek meg a keresőmező alatt. Mivel ez a projekt egy MVC-projekt, meghívja a **javaslat** **függvényt HomeController.cs,** amely a lekérdezési javaslatok visszaadásának logikáját tartalmazza. Ez a függvény néhány paramétert is átad a kiemelések, az intelligens megfeleltetés és a kifejezés vezérléséhez. Az automatikus kiegészítés JavaScript API hozzáadja a kifejezés paraméter.
+Az `source` azt jelzi, hogy a jQuery felhasználói felületének automatikus kiegészítési funkciója a keresőmező alatt megjelenítendő elemek listájának beolvasása. Mivel ez a projekt egy MVC-projekt, meghívja a **HomeController.cs** a **javasolt** függvényt, amely tartalmazza a lekérdezési javaslatok visszaadására vonatkozó logikát. Ez a függvény néhány paramétert is továbbít a csúcsfények, a zavaros egyezés és a kifejezés szabályozásához. Az automatikus kiegészítés JavaScript API hozzáadja a kifejezés paramétert.
 
-A `minLength: 3` biztosítja, hogy a javaslatok csak akkor jelenjenek meg, ha legalább három karakter van a keresőmezőben.
+Az `minLength: 3` biztosítja, hogy a javaslatok csak akkor jelenjenek meg, ha legalább három karakter szerepel a keresőmezőbe.
 
-### <a name="enable-fuzzy-matching"></a>Intelligens megfeleltetés engedélyezése
+### <a name="enable-fuzzy-matching"></a>A zavaros egyezés engedélyezése
 
-Az intelligens kereséssel akkor is lekérheti az eredményeket közeli találatok alapján, ha a felhasználó elírt egy szót a keresőmezőben. A szerkesztési távolság 1, ami azt jelenti, hogy a felhasználói bemenet és az egyezés között egy karakter maximális eltérése lehet. 
+Az intelligens kereséssel akkor is lekérheti az eredményeket közeli találatok alapján, ha a felhasználó elírt egy szót a keresőmezőben. A szerkesztési távolság 1, ami azt jelenti, hogy a felhasználói bevitel és a találatok között egy karakterből álló maximális eltérés lehet. 
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=true&",
@@ -130,17 +130,17 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Kiemelés engedélyezése
 
-A kiemelés betűstílust alkalmaz a bemenetnek megfelelő eredmény karaktereire. Ha például a részleges bemenet "mikro", az eredmény **mikrolágy,** **mikrohatókörként**és így tovább jelenik meg. A kiemelés a HighlightPreTag és a HighlightPostTag paramétereken alapul, amelyek a Javaslat függvénnyel összhangban vannak definiálva.
+A kiemelés a betűméretet az eredményben szereplő karakterekre alkalmazza, amelyek a bemenetnek felelnek meg. Ha például a részleges bemenet "Micro", az eredmény a **Micro**Soft, a **Micro**scope, és így tovább jelenik meg. A kiemelés a HighlightPreTag és a HighlightPostTag paramétereken alapul, amelyek a javaslat függvénnyel vannak meghatározva.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
 ```
 
-### <a name="suggest-function"></a>Javaslat funkció
+### <a name="suggest-function"></a>Javasolt függvény
 
-Ha C# és Egy MVC-alkalmazást használ, **HomeController.cs** a Vezérlők könyvtár alatti fájl, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a Javaslat függvény a [DocumentsOperationsExtensions.Suggest metóduson](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)alapul.
+Ha C#-ot és MVC-alkalmazást használ, a **HomeController.cs** -fájl a vezérlők könyvtárban található, ahol létrehozhat egy osztályt a javasolt eredményekhez. A .NET-ben a javaslati függvény a [DocumentsOperationsExtensions. javaslat metóduson](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet)alapul.
 
-A `InitSearch` metódus létrehoz egy hitelesített HTTP index ügyfél az Azure Cognitive Search szolgáltatáshoz. A .NET SDK-ról további információt az [Azure Cognitive Search használata .NET alkalmazásból című témakörben talál.](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
+A `InitSearch` metódus létrehoz egy hitelesített http-index ügyfelet az Azure Cognitive Search szolgáltatáshoz. A .NET SDK-val kapcsolatos további információkért lásd: az [Azure Cognitive Search használata .NET-alkalmazásokból](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk).
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)
@@ -174,11 +174,11 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 }
 ```
 
-A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a rendszer a találatok kiemeléseit adja vissza, vagy intelligens egyeztetést használ a keresési kifejezés bevitele mellett. A metódus létrehoz egy [SuggestParameters objektumot,](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet)amelyet ezután átad a Javaslat API-nak. A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
+A Suggest függvény két paramétert vesz fel, amelyek meghatározzák, hogy a rendszer a találatok kiemeléseit adja vissza, vagy intelligens egyeztetést használ a keresési kifejezés bevitele mellett. A metódus létrehoz egy [SuggestParameters objektumot](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggestparameters?view=azure-dotnet), amelyet a rendszer továbbít az ajánlott API-nak. A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
 ## <a name="autocomplete"></a>Automatikus kiegészítés
 
-Eddig a keresési UX-kód a javaslatokra összpontosult. A következő kódblokk automatikus kiegészítést jelenít meg az XDSoft jQuery ui automatikus kiegészítési funkciójával, és az Azure Cognitive Search automatikus kiegészítésre vonatkozó kérést továbbítja. Csakúgy, mint a javaslatokat, a C # alkalmazás, kódot, amely támogatja a felhasználói beavatkozás megy **index.cshtml**.
+Eddig a Search UX-kód a javaslatokra van központosítva. A következő kódrészlet az automatikus kiegészítést jeleníti meg, amely a XDSoft jQuery felhasználói felületének automatikus kiegészítési funkciója, amely az Azure Cognitive Search automatikus kiegészítésére vonatkozó kérést küld. Ahogy a javaslatok esetében is, egy C#-alkalmazásban a felhasználói interakciót támogató kód az **index. cshtml**.
 
 ```javascript
 $(function () {
@@ -215,9 +215,9 @@ $(function () {
 });
 ```
 
-### <a name="autocomplete-function"></a>Automatikus kiegészítés i
+### <a name="autocomplete-function"></a>Automatikus kiegészítési függvény
 
-Az automatikus kiegészítés a [DocumentsOperationsExtensions.Autocomplete metóduson](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)alapul. A javaslatokhoz ugyanúgy, mint a kódblokk, a **HomeController.cs** fájlba kerülne.
+Az automatikus kiegészítés a [DocumentsOperationsExtensions. autocomplete metóduson](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete?view=azure-dotnet)alapul. Ahogy a javaslatok esetében, ez a kódrészlet a **HomeController.cs** -fájlban is elérhető.
 
 ```csharp
 public ActionResult AutoComplete(string term)
@@ -242,12 +242,12 @@ public ActionResult AutoComplete(string term)
 }
 ```
 
-Az Automatikus kiegészítés függvény a keresési kifejezés bevitelét veszi át. A metódus létrehoz egy [Automatikus KiegészítésParaméter objektumot.](https://docs.microsoft.com/rest/api/searchservice/autocomplete) A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
+Az automatikus kiegészítési függvény a keresési kifejezés bemenetét veszi igénybe. A metódus létrehoz egy [AutoCompleteParameters objektumot](https://docs.microsoft.com/rest/api/searchservice/autocomplete). A rendszer az eredményt ezután JSON-kifejezéssé alakítja, hogy meg lehessen jeleníteni az ügyfélnek.
 
 ## <a name="next-steps"></a>További lépések
 
-Kövesse ezeket a hivatkozásokat a végpontok közötti utasításokért vagy a keresési-as-you-type élményt bemutató kódért. Mindkét kódpélda a javaslatok hibrid implementációi és az automatikus kiegészítés együttesen.
+Ezeket a hivatkozásokat követve megtekintheti a keresési lehetőségekkel kapcsolatos teljes körű útmutatást és kódot. Mindkét kód például a javaslatok és az automatikus kiegészítések hibrid implementációját tartalmazza.
 
-+ [Bemutató: Az első alkalmazás létrehozása C# nyelven (3. lecke)](tutorial-csharp-type-ahead-and-suggestions.md)
-+ [C# kódminta: azure-search-dotnet-samples/create-first-app/3-add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
-+ [C# és JavaScript REST egymás melletti kódmintával](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)
++ [Oktatóanyag: az első alkalmazás létrehozása C# nyelven (3. lecke)](tutorial-csharp-type-ahead-and-suggestions.md)
++ [C#-kód minta: Azure-Search-DotNet-Samples/Create-First-app/3-Add-typeahead/](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/3-add-typeahead)
++ [C# és JavaScript REST-alapú kóddal minta](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)

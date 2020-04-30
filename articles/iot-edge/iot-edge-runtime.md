@@ -1,6 +1,6 @@
 ---
-title: Ismerje meg, hogyan kezeli a futásidejű eszközök - Azure IoT Edge | Microsoft dokumentumok
-description: Ismerje meg, hogyan kezeli az IoT Edge futásidejű a modulokat, a biztonságot, a kommunikációt és a jelentéseket az eszközökön
+title: Ismerje meg, hogyan kezeli a futtatókörnyezet az eszközöket – Azure IoT Edge | Microsoft Docs
+description: Ismerje meg, hogyan kezeli a IoT Edge Runtime a modulokat, a biztonságot, a kommunikációt és a jelentéskészítést az eszközökön
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -12,54 +12,54 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ef31bd74c73aa081c32031b71392f69a1ca14f75
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81730910"
 ---
-# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Ismerje meg az Azure IoT Edge futásidejét és architektúráját
+# <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>A Azure IoT Edge futtatókörnyezet és az architektúrájának ismertetése
 
-Az IoT Edge-futtatókörnyezet olyan programok gyűjteménye, amelyek az eszközt IoT Edge-eszközzé alakítják. Együttesen az IoT Edge futásidejű összetevői lehetővé teszik, hogy az IoT Edge-eszközök kódot fogadjanak a peremhálózaton, és kommunikálják az eredményeket.
+Az IoT Edge-futtatókörnyezet olyan programok gyűjteménye, amelyek az eszközt IoT Edge-eszközzé alakítják. Együttesen a IoT Edge futtatókörnyezet-összetevők lehetővé teszik, hogy IoT Edge eszközök megkapják a kód futtatását a peremhálózat szélén, és közlik az eredményeket.
 
-Az IoT Edge-futásidejű felelős a következő függvények IoT Edge-eszközökön:
+A IoT Edge futtatókörnyezet felelős a következő függvényekért IoT Edge eszközökön:
 
-* Telepítse és frissítse a számítási feladatokat az eszközön.
-* Az Azure IoT Edge biztonsági szabványainak karbantartása az eszközön.
-* Győződjön meg arról, hogy [az IoT Edge-modulok](iot-edge-modules.md) mindig futnak.
-* Modul állapotának jelentése a felhőbe a távoli figyeléshez.
-* Az alsóbb rétegbeli eszközök és az IoT Edge-eszközök közötti kommunikáció kezelése.
-* Az IoT Edge-eszközön lévő modulok közötti kommunikáció kezelése.
-* Az IoT Edge-eszköz és a felhő közötti kommunikáció kezelése.
+* A számítási feladatok telepítése és frissítése az eszközön.
+* Azure IoT Edge biztonsági szabványok fenntartása az eszközön.
+* Győződjön meg arról, hogy [IoT Edge modulok](iot-edge-modules.md) mindig futnak.
+* Jelentési modul állapota a felhőben távoli figyeléshez.
+* Az alsóbb rétegbeli eszközök és IoT Edge eszközök közötti kommunikáció kezelése.
+* A IoT Edge eszközön található modulok közötti kommunikáció kezelése.
+* Kezelheti a IoT Edge eszköz és a felhő közötti kommunikációt.
 
-![A Runtime kommunikálaz elemzésekről és a modul állapotáról az IoT Hubnak](./media/iot-edge-runtime/Pipeline.png)
+![A Runtime a bepillantást és a modul állapotát közli IoT Hub](./media/iot-edge-runtime/Pipeline.png)
 
-Az IoT Edge futásidejű feladatok két kategóriába sorolhatók: kommunikáció és a modul kezelés. Ezt a két szerepkört két összetevő hajtja végre, amelyek az IoT Edge-futásidejű részét képezik.Az *IoT Edge hub* felelős a kommunikációért, míg az *IoT Edge-ügynök* telepíti és figyeli a modulokat.
+A IoT Edge futtatókörnyezet feladatai két kategóriába sorolhatók: a kommunikáció és a modul kezelése. Ezt a két szerepkört két, a IoT Edge futtatókörnyezet részét képező összetevő hajtja végre.Az *IoT Edge hub* a kommunikációért felelős, míg a *IoT Edge-ügynök* üzembe helyezi és figyeli a modulokat.
 
-Az IoT Edge-hub és az IoT Edge-ügynök is modulok, mint bármely más, az IoT Edge-eszközön futó modul. Ezeket néha *futásidejű moduloknak is nevezik.*
+Az IoT Edge hub és a IoT Edge-ügynök is a modulok, ugyanúgy, mint bármely más, IoT Edge eszközön futó modulhoz. Más néven *futtatókörnyezeti modulok*.
 
-## <a name="iot-edge-hub"></a>IoT edge hub
+## <a name="iot-edge-hub"></a>IoT Edge hub
 
-Az IoT Edge hub egyike az Azure IoT Edge-futásidejű két modulnak. Az IoT Hub helyi proxyjaként működik, és ugyanazokat a protokollvégpontokat teszi ki, mint az IoT Hub. Ez a konzisztencia azt jelenti, hogy az ügyfelek (akár eszközök, akár modulok) ugyanúgy csatlakozhatnak az IoT Edge-futásidőhez, mint az IoT Hubhoz.
+Az IoT Edge hub a Azure IoT Edge futtatókörnyezetet alkotó két modul egyike. A IoT Hub helyi proxyként működik, ha a protokoll-végpontokat IoT Hubként teszi elérhetővé. Ez a konzisztencia azt jelenti, hogy az ügyfelek (függetlenül attól, hogy az eszközök vagy modulok) képesek-e csatlakozni a IoT Edge futtatókörnyezethez ugyanúgy, ahogy IoT Hub.
 
 >[!NOTE]
-> Az IoT Edge hub támogatja az MQTT vagy AMQP használatával csatlakozó ügyfeleket. Nem támogatja a HTTP protokollt használó ügyfeleket.
+> IoT Edge hub a MQTT vagy a AMQP használatával csatlakozó ügyfeleket támogatja. Nem támogatja a HTTP protokollt használó ügyfeleket.
 
-Az IoT Edge hub nem az IoT Hub helyileg futó teljes verziója. Az IoT Edge hub csendesen delegál bizonyos feladatokat az IoT Hub. Például az IoT Edge hub továbbítja a hitelesítési kérelmeket az IoT Hub, amikor egy eszköz először próbál csatlakozni. Az első kapcsolat létrehozása után az IoT Edge hub helyileg gyorsítótárazza a biztonsági információkat. Az eszközről a jövőbeli kapcsolatok anélkül engedélyezettek, hogy újra hitelesíteniük kellene magukat a felhőben.
+Az IoT Edge hub nem a helyileg futó IoT Hub teljes verziója. IoT Edge hub csendesen delegál bizonyos feladatokat IoT Hub. Például IoT Edge hub továbbítja a hitelesítési kéréseket IoT Hub, amikor egy eszköz először próbál csatlakozni. Az első összekapcsolást követően a biztonsági adatokat IoT Edge hub helyileg gyorsítótárazza. Az eszközről érkező jövőbeli kapcsolatok engedélyezése anélkül lehetséges, hogy újra kellene hitelesíteni a felhőben.
 
-Az IoT Edge-megoldás által használt sávszélesség csökkentése érdekében az IoT Edge hub optimalizálja, hogy hány tényleges kapcsolat jön létre a felhőben. Az IoT Edge hub logikai kapcsolatokat vesz igénybe a modulokból vagy az alsóbb rétegbeli eszközökről, és egyesíti őket a felhőhöz való egyetlen fizikai kapcsolathoz. Ennek a folyamatnak a részletei a megoldás többi része számára átláthatóak. Az ügyfelek úgy gondolják, hogy saját kapcsolattal rendelkeznek a felhővel, még akkor is, ha mindegyiket ugyanazon a kapcsolaton keresztül küldik.
+A IoT Edge-megoldás által használt sávszélesség csökkentése érdekében a IoT Edge hub azt optimalizálja, hogy hány tényleges kapcsolat legyen elérhető a felhőben. IoT Edge hub logikai kapcsolatot létesít a modulok vagy az alárendelt eszközök között, és egyetlen fizikai kapcsolattal kombinálja őket a felhővel. A folyamat részletei transzparensek a megoldás többi részén. Az ügyfelek úgy gondolják, hogy saját kapcsolattal rendelkeznek a felhővel, annak ellenére, hogy mindegyiket ugyanazon a kapcsolaton keresztül küldik el.
 
-![Az IoT Edge hub egy átjáró a fizikai eszközök és az IoT Hub között](./media/iot-edge-runtime/Gateway.png)
+![IoT Edge hub a fizikai eszközök és a IoT Hub közötti átjáró.](./media/iot-edge-runtime/Gateway.png)
 
-Az IoT Edge hub meg állapíthatja meg, hogy csatlakozik-e az IoT Hubhoz. Ha a kapcsolat megszakad, az IoT Edge hub menti az üzeneteket vagy a két frissítést helyben. A kapcsolat újbóli létrehozása után szinkronizálja az összes adatot. Az ideiglenes gyorsítótárhoz használt helyet az IoT Edge hub ikermoduljának egy tulajdonsága határozza meg. A gyorsítótár mérete nincs korlátozva, és addig növekszik, amíg az eszköz rendelkezik tárolókapacitással.További információt az Offline lehetőségek című [témakörben talál.](offline-capabilities.md)
+IoT Edge hub képes megállapítani, hogy csatlakozik-e IoT Hubhoz. Ha a kapcsolat megszakad, IoT Edge hub üzeneteket ment helyileg, vagy két különálló frissítést. A kapcsolatok újbóli létrehozása után szinkronizálja az összes adatforrást. Az ehhez az ideiglenes gyorsítótárhoz használt helyet az IoT Edge hub-modul Twin-moduljának egyik tulajdonsága határozza meg. A gyorsítótár mérete nem megengedett, és addig nő, amíg az eszköz tárolókapacitással rendelkezik.További információ: [Offline képességek](offline-capabilities.md).
 
-### <a name="module-communication"></a>Modulkommunikáció
+### <a name="module-communication"></a>Modul kommunikációja
 
-Az IoT Edge hub megkönnyíti a modul-kommunikációt. Az IoT Edge hub üzenetközvetítőként való használata a modulokat egymástól függetlenné teszi. A moduloknak csak azokat a bemeneteket kell megadniuk, amelyekre üzeneteket fogadnak, és azokat a kimeneteket, amelyekre üzeneteket írnak. A megoldás fejlesztői összefűzheti ezeket a bemeneteket és kimeneteket úgy, hogy a modulok az adott megoldásra jellemző sorrendben dolgozzák fel az adatokat.
+IoT Edge hub megkönnyíti a modul kommunikációját. IoT Edge hub használata az üzenetsor-átvitelszervezőként a modulok egymástól függetlenek maradnak. A moduloknak csak azokat a bemeneteket kell megadniuk, amelyeken üzeneteket fogadnak, valamint azokat a kimeneteket, amelyekhez üzeneteket írnak. A megoldás fejlesztője összevonhatja ezeket a bemeneteket és kimeneteket, így a modulok az adott megoldáshoz tartozó sorrendben dolgozzák fel az adatokat.
 
-![Az IoT Edge Hub megkönnyíti a modulok közötti kommunikációt](./media/iot-edge-runtime/module-endpoints.png)
+![IoT Edge hub elősegíti a modul – modul kommunikációt](./media/iot-edge-runtime/module-endpoints.png)
 
-Adatok küldése az IoT Edge hub, egy modul meghívja a SendEventAsync metódust. Az első argumentum határozza meg, hogy melyik kimeneten küldje el az üzenetet. A következő pszeudokód üzenetet küld a **output1-en:**
+Az IoT Edge hubhoz való adatküldéshez egy modul hívja meg a SendEventAsync metódust. Az első argumentum azt adja meg, hogy melyik kimenetre kell elküldeni az üzenetet. A következő pseudocode üzenetet küld a **output1**:
 
    ```csharp
    ModuleClient client = await ModuleClient.CreateFromEnvironmentAsync(transportSettings);
@@ -67,29 +67,29 @@ Adatok küldése az IoT Edge hub, egy modul meghívja a SendEventAsync metódust
    await client.SendEventAsync("output1", message);
    ```
 
-Üzenet fogadásához regisztráljon egy visszahívást, amely egy adott bemeneten érkező üzeneteket dolgoz fel. A következő pszeudokód regisztrálja a bemeneten kapott összes üzenet feldolgozásához használandóProcessor **függvényüzenetet1:**
+Ha üzenetet szeretne kapni, regisztráljon egy olyan visszahívást, amely egy adott bemeneten lévő üzeneteket dolgoz fel. A következő pseudocode regisztrálja a **input1**fogadott összes üzenet feldolgozásához használni kívánt messageProcessor-függvényt:
 
    ```csharp
    await client.SetInputMessageHandlerAsync("input1", messageProcessor, userContext);
    ```
 
-A ModuleClient osztályról és annak kommunikációs módszereiről további információt a kívánt SDK-nyelv API-hivatkozási útmutatójában talál: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C,](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h) [Python,](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python) [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node.js.](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest)
+A ModuleClient osztályról és a hozzá tartozó kommunikációs módszerekről további információt az előnyben részesített SDK-nyelv API-referenciája tartalmaz: [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet), [C](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothub-module-client-h), [Python](https://docs.microsoft.com/python/api/azure-iot-device/azure.iot.device.iothubmoduleclient?view=azure-python), [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.moduleclient?view=azure-java-stable)vagy [Node. js](https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest).
 
-A megoldás fejlesztője felelős a szabályok meghatározásáért, amelyek meghatározzák, hogy az IoT Edge hub hogyan továbbítja az üzeneteket a modulok között. Útválasztási szabályok vannak definiálva a felhőben, és leküldéses az IoT Edge hub a modul iker. Az IoT Hub-útvonalak azonos szintaxisa az Azure IoT Edge-ben lévő modulok közötti útvonalak meghatározására szolgál. További [információ: Ismerje meg, hogyan telepítheti a modulokat, és hogyan hozhat létre útvonalakat az IoT Edge-ben.](module-composition.md)
+A megoldás fejlesztői feladata azoknak a szabályoknak a meghatározása, amelyek meghatározzák, hogy IoT Edge hub hogyan továbbít üzeneteket a modulok között. Az útválasztási szabályok a felhőben vannak meghatározva, és leküldve IoT Edge hubhoz a moduljában. A IoT Hub útvonalakhoz tartozó szintaxis a Azure IoT Edge moduljai közötti útvonalak definiálására szolgál. További információkért lásd: [modulok központi telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
-![A modulok közötti útvonalak az IoT Edge hubon keresztül haladnak](./media/iot-edge-runtime/module-endpoints-with-routes.png)
+![A modulok közötti útvonalak IoT Edge hub-on keresztül haladnak](./media/iot-edge-runtime/module-endpoints-with-routes.png)
 
-## <a name="iot-edge-agent"></a>IoT edge ügynök
+## <a name="iot-edge-agent"></a>IoT Edge ügynök
 
-Az IoT Edge-ügynök a másik modul, amely az Azure IoT Edge futásidejű. A modulok példányosításáért, annak biztosításáért felelős, hogy azok továbbra is fussanak, és a modulok állapotának jelentésével az IoT Hubnak. Ez a konfigurációs adatok az IoT Edge-ügynök ikertulajdonságaként vannak megírva.
+A IoT Edge ügynök az a másik modul, amely a Azure IoT Edge futtatókörnyezetet hozza létre. A modulok létrehozásához, valamint a modulok állapotának a IoT Hub való visszajelentéséhez felelős. Ezek a konfigurációs adatkészletek a IoT Edge Agent modul Twin.
 
-Az [IoT Edge biztonsági démon elindítja](iot-edge-security-manager.md) az IoT Edge-ügynököt az eszköz indításakor. Az ügynök lekéri a modul iker az IoT Hubból, és megvizsgálja a központi telepítési jegyzék. A központi telepítési jegyzékfájl egy JSON-fájl, amely deklarálja az elindítandó modulokat.
+A [IoT Edge biztonsági démon](iot-edge-security-manager.md) elindítja a IoT Edge ügynököt az eszköz indításakor. Az ügynök lekéri a modult a IoT Hub, és megvizsgálja az üzembe helyezési jegyzéket. Az üzembe helyezési jegyzékfájl egy olyan JSON-fájl, amely deklarálja az elindításához szükséges modulokat.
 
-A központi telepítési jegyzékben minden egyes elem tartalmaz konkrét információkat egy modult, és az IoT Edge-ügynök a modul életciklusának szabályozásához használja. Néhány érdekesebb tulajdonságok:
+Az üzembe helyezési jegyzék minden eleme tartalmaz konkrét információkat egy modulról, és a IoT Edge ügynök használja a modul életciklusának szabályozására. A további érdekes tulajdonságok a következők:
 
-* **settings.image** – A tárolólemezkép, amelyet az IoT Edge-ügynök a modul indításához használ. Az IoT Edge-ügynök kell konfigurálni a tároló beállításjegyzék hitelesítő adatait, ha a rendszerképet jelszó védi. A tároló beállításjegyzékhitelesítő adatai távolról konfigurálhatók a központi telepítési jegyzékfájl használatával, `config.yaml` vagy az IoT Edge-eszközön az IoT Edge programmappában lévő fájl frissítésével.
-* **settings.createOptions** – Olyan karakterlánc, amely közvetlenül a Moby-tároló démonnak kerül átad a modul tárolójának indításakor. A tulajdonságban lévő beállítások hozzáadása lehetővé teszi olyan speciális konfigurációk kialakítását, mint a porttovábbítás vagy a kötetek csatlakoztatása a modul tárolójába.  
-* **állapot** – Az az állapot, amelyben az IoT Edge-ügynök elhelyezi a modult. Ez az érték általában úgy van beállítva, hogy *fut,* mivel a legtöbb ember szeretné, hogy az IoT Edge-ügynök azonnal indítsa el az összes modult az eszközön. Azonban megadhatja a leállítandó modul kezdeti állapotát, és megvárhatja a jövőbeli időt, hogy az IoT Edge-ügynök elindítson egy modult.Az IoT Edge-ügynök minden egyes modul állapotát jelenti vissza a felhőbe a jelentett tulajdonságokban. A kívánt tulajdonság és a jelentett tulajdonság közötti különbség a helytelenül viselkedő eszköz mutatója. A támogatott állapotok a következők:
+* **Settings. rendszerkép** – a IoT Edge ügynök által a modul elindításához használt tároló képe. A IoT Edge-ügynököt a tároló-beállításjegyzék hitelesítő adataival kell konfigurálni, ha a képet jelszó védi. A tároló-beállításjegyzék hitelesítő adatai távolról konfigurálhatók az üzembe helyezési jegyzékben vagy maga a IoT Edge eszközön a IoT Edge program `config.yaml` mappában található fájl frissítésével.
+* **Settings. createOptions** – a modul tárolójának indításakor közvetlenül a Moby Container Daemon-hoz átadott karakterlánc. Az ebben a tulajdonságban található beállítások megadása lehetővé teszi olyan speciális konfigurációk használatát, mint a port továbbítása vagy a kötetek csatlakoztatása egy modul tárolójába.  
+* **status (állapot** ) – az a állapot, amelyben a IoT Edge ügynök elhelyezi a modult. Ez az érték általában a *futtatásra* van beállítva, mivel a legtöbb felhasználó szeretné, hogy a IoT Edge ügynök azonnal elindítsa az összes modult az eszközön. Azonban megadhatja a leállítani kívánt modul kezdeti állapotát, és megvárhatja, hogy a jövőbeli idő alapján a IoT Edge ügynök elindítson egy modult.A IoT Edge ügynök az egyes modulok állapotát a felhőbe jelenti a jelentett tulajdonságok között. A kívánt tulajdonság és a jelentett tulajdonság közötti különbség egy helytelenül viselkedő eszköz jelzője. A támogatott állapotok a következők:
 
   * Letöltés
   * Fut
@@ -97,34 +97,34 @@ A központi telepítési jegyzékben minden egyes elem tartalmaz konkrét inform
   * Sikertelen
   * Leállítva
 
-* **restartPolicy** – Hogyan indítja újra az IoT Edge-ügynök a modult. A lehetséges értékek a következők:
+* **restartPolicy** – azt, hogy a IoT Edge ügynök hogyan indítja újra a modult. A lehetséges értékek a következők:
   
-  * `never`– Az IoT Edge-ügynök soha nem indítja újra a modult.
-  * `on-failure`- Ha a modul összeomlik, az IoT Edge-ügynök újraindítja azt. Ha a modul leáll, az IoT Edge-ügynök nem indítja újra.
-  * `on-unhealthy`- Ha a modul összeomlik, vagy nem megfelelő állapotúnak minősül, az IoT Edge-ügynök újraindítja azt.
-  * `always`- Ha a modul összeomlik, nem megfelelő állapotúnak minősül, vagy bármilyen módon leáll, az IoT Edge-ügynök újraindítja azt.
+  * `never`– A IoT Edge ügynök soha nem indítja újra a modult.
+  * `on-failure`-Ha a modul összeomlik, a IoT Edge ügynök újraindul. Ha a modul tiszta módon leáll, a IoT Edge ügynök nem indítja újra.
+  * `on-unhealthy`-Ha a modul összeomlik vagy nem megfelelőnek minősül, akkor a IoT Edge ügynök újraindul.
+  * `always`-Ha a modul összeomlik, nem megfelelő állapotba kerül, vagy bármilyen módon leáll, a IoT Edge ügynök újraindul.
 
-* **imagePullPolicy** – Függetlenül attól, hogy az IoT Edge-ügynök megpróbálja-e automatikusan lekérni a modul legújabb lemezképét. Ha nem ad meg értéket, az alapértelmezett beállítás *a Create .* A lehetséges értékek a következők:
+* **imagePullPolicy** – azt határozza meg, hogy a IoT Edge ügynök automatikusan megpróbálja-e lekérni a modul legújabb rendszerképét. Ha nem ad meg értéket, az alapértelmezett érték a *onCreate*. A lehetséges értékek a következők:
 
-  * `on-create`- Amikor egy modult indít, vagy egy modul frissítése egy új központi telepítési jegyzék, az IoT Edge-ügynök megpróbálja lekéri a modul lemezképet a tároló rendszerleíró adatbázisból.
-  * `never`- Az IoT Edge-ügynök soha nem próbálja meg lekéri a modullemezt a tároló beállításjegyzékből. Ezzel a konfigurációval, akkor te vagy a felelős a modul kép az eszközre, és kezelése minden képfrissítéseket.
+  * `on-create`– Ha egy modul indításakor vagy egy új központi telepítési jegyzék alapján frissít egy modult, akkor a IoT Edge ügynök megpróbálja lekérni a modul rendszerképét a tároló-beállításjegyzékből.
+  * `never`– A IoT Edge ügynök soha nem kísérli meg a modul rendszerképének lekérését a tároló-beállításjegyzékből. Ezzel a konfigurációval a modul lemezképének beszerzése és a lemezképek frissítéseinek kezelése felelős.
 
-Az IoT Edge-ügynök futásidejű választ küld az IoT Hubnak. Itt van egy lista a lehetséges válaszok:
+A IoT Edge ügynök futásidejű választ küld a IoT Hubnak. Itt látható a lehetséges válaszok listája:
   
-* 200 - OK
-* 400 – A központi telepítési konfiguráció hibás vagy érvénytelen.
-* 417 – Az eszköz nem rendelkezik központi telepítési konfigurációkészlettel.
-* 412 – A központi telepítési konfigurációséma verziója érvénytelen.
-* 406 – Az IoT Edge-eszköz offline állapotjelentéseket küld.
-* 500 – Hiba történt az IoT Edge futásidőben.
+* 200 – OK
+* 400 – a telepítési konfiguráció helytelen formátumú vagy érvénytelen.
+* 417 – az eszköz nem rendelkezik telepítési konfigurációs készlettel.
+* 412 – a séma verziója érvénytelen a telepítési konfigurációban.
+* 406 – a IoT Edge eszköz offline állapotban van, vagy nem küld állapotjelentéseket.
+* 500 – hiba történt a IoT Edge futtatókörnyezetben.
 
-További [információ: Ismerje meg, hogyan telepítheti a modulokat, és hogyan hozhat létre útvonalakat az IoT Edge-ben.](module-composition.md)
+További információkért lásd: [modulok központi telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
 ### <a name="security"></a>Biztonság
 
-Az IoT Edge-ügynök kritikus szerepet játszik az IoT Edge-eszköz biztonsága. Például olyan műveleteket hajt végre, mint például egy modul lemezképének ellenőrzése a indítás előtt.
+A IoT Edge ügynök kritikus szerepet játszik egy IoT Edge-eszköz biztonságában. Például végrehajtja az olyan műveleteket, mint a modul rendszerképének ellenőrzése a megkezdése előtt.
 
-Az Azure IoT Edge biztonsági keretrendszeréről az [IoT Edge biztonsági kezelőjéről](iot-edge-security-manager.md)olvashat bővebben.
+A Azure IoT Edge biztonsági keretrendszerével kapcsolatos további információkért olvassa el a [IoT Edge Security Manager](iot-edge-security-manager.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 

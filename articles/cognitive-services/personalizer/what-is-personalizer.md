@@ -1,99 +1,99 @@
 ---
 title: Mi a Personalizer?
-description: A Personalizer egy felhőalapú API-szolgáltatás, amely lehetővé teszi, hogy a legjobb élményt nyújtsa a felhasználóknak, tanulva a valós idejű viselkedésükből.
+description: A személyre szabás egy felhőalapú API-szolgáltatás, amely lehetővé teszi a felhasználók számára a legjobb felhasználói élmény kiválasztását, a valós idejű viselkedésük megismerését.
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687261"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Az Azure Personalizer egy felhőalapú API-szolgáltatás, amely segít az ügyfélalkalmazásnak kiválasztani az egyes felhasználók számára a legjobb, egyetlen _tartalomelemet._ A szolgáltatás a tartalomelemek közül a legjobb elemet választja ki a tartalommal és a környezetről megadott kollektív valós idejű információk alapján.
+Az Azure megszemélyesítő egy felhőalapú API-szolgáltatás, amely segít az ügyfélalkalmazás számára kiválasztani a legjobb, egyetlen _tartalmi_ elemet az egyes felhasználók megjelenítéséhez. A szolgáltatás kiválasztja a legjobb elemet, a tartalmi elemektől a tartalommal és környezettel kapcsolatban megadott kollektív valós idejű információk alapján.
 
-Miután bemutatja a tartalomelemet a felhasználónak, a rendszer figyeli a felhasználók viselkedését, és visszaküldi a jutalompontszámot a Personalizer-nek, hogy javítsa a legjobb tartalom kiválasztását a kapott környezeti információk alapján.
+Miután megjelentette a tartalmi elemet a felhasználó számára, a rendszer figyeli a felhasználói viselkedést, és visszaküldi a jutalom pontszámát a személyre, hogy javítsa a legjobb tartalmat a kapott környezeti információk alapján.
 
-**A tartalom** bármilyen információegység lehet, például szöveg, képek, URL-ek vagy e-mailek, amelyek közül választani szeretne, hogy megjelenjen a felhasználónak.
+A **tartalom** bármely olyan információ lehet, például szöveg, kép, URL-cím vagy e-mail-cím, amelyet ki szeretne választani a felhasználó számára.
 
 <!--
 ![What is personalizer animation](./media/what-is-personalizer.gif)
 -->
 
-## <a name="how-does-personalizer-select-the-best-content-item"></a>Hogyan választja ki a Personalizer a legjobb tartalomelemet?
+## <a name="how-does-personalizer-select-the-best-content-item"></a>Hogyan választja ki a személyre szabott tartalmi elemet?
 
-Personalizer használ **megerősítése tanulás** kiválasztani a legjobb elem (_akció_) alapján a kollektív viselkedés és a jutalom pontszámok minden felhasználó számára. A műveletek azok a tartalomelemek, például hírcikkek, konkrét filmek vagy termékek, amelyek közül választhat.
+A személyre szabás a **megerősítő tanulás** segítségével kiválasztja a legjobb elemet (_művelet_) a kollektív viselkedés és a jutalom pontszámok alapján az összes felhasználó számára. A műveletek a tartalmi elemek, például hírek, adott mozgóképek vagy termékek, amelyek közül választhatnak.
 
-A **Rang** hívás veszi a művelet elem, valamint a funkciók a művelet, és a környezeti funkciók, hogy válassza ki a felső művelet elem:
+A **rangsorban** hívja meg a műveleti elemet, valamint a művelet funkcióit és a környezeti funkciókat, hogy kiválassza a felső műveleti elemet:
 
-* **Funkciókkal rendelkező műveletek** – az egyes elemekre jellemző funkciókkal rendelkező tartalomelemek
-* **Környezetfunkciók** – a felhasználók, a környezetük vagy a környezetük jellemzői az alkalmazás használata során
+* **Funkciókkal rendelkező műveletek** – az egyes elemekhez tartozó funkciókat tartalmazó tartalmi elemek
+* **Környezeti funkciók** – a felhasználók, a környezetük vagy a környezetük funkciói az alkalmazás használatakor
 
-A Ranghívás azt az azonosítót adja vissza, amelynek a __tartalomelem, művelet__, amelyet meg jelenít a felhasználónak a **Jutalomművelet azonosítója** mezőben.
-A felhasználó nak megjelenített __művelet__ gépi tanulási modellekkel kerül kiválasztásra, és megpróbálja maximalizálni a jutalmak teljes összegét az idő múlásával.
+A rangsor hívása azt az azonosítót adja vissza, amely a felhasználó számára megjelenített tartalmi __elem, a__ **jutalmazási művelet azonosítója** mezőben található.
+A felhasználó számára megjelenő __művelet__ gépi tanulási modellel van kiválasztva, és a teljes jutalom összegét az idő múlásával igyekszik maximalizálni.
 
-Több példa forgatókönyvek a következők:
+Számos példa a következőkre:
 
-|Tartalomtípus|**Műveletek (funkciókkal)**|**Környezet jellemzői**|Visszaadott jutalomművelet azonosítója<br>(a tartalom megjelenítése)|
+|Tartalomtípus|**Műveletek (funkciókkal)**|**Környezeti funkciók**|Visszaadott jutalom műveleti azonosítója<br>(a tartalom megjelenítése)|
 |--|--|--|--|
-|Hírek listája|a. `The president...`(nemzeti, politikai, [szöveg])<br>b. `Premier League ...`(globális, sport, [szöveg, kép, videó])<br> c. `Hurricane in the ...`(regionális, időjárás, [szöveg,kép]|Az eszközhírek a következőből olvashatók:<br>Hónap vagy szezon<br>|A`The president...`|
-|Filmek listája|1. `Star Wars` (1977, [akció, kaland, fantázia], George Lucas)<br>2. `Hoop Dreams` (1994, [dokumentumfilm, sport], Steve James<br>3. `Casablanca` (1942, [romantika, dráma, háború], Michael Curtiz)|Az eszközfilmet a<br>képernyő mérete<br>A felhasználó típusa<br>|3.`Casablanca`|
-|Termékek listája|i. `Product A`(3 kg, $$$$, szállít 24 órán belül)<br>ii. `Product B`(20 kg, $$, 2 hetes szállítás vámhatósággal)<br>iii. `Product C`(3 kg, $$$, szállítás 48 óra alatt)|Az eszközvásárlás ta-<br>A felhasználó kiadási szintje<br>Hónap vagy szezon|ii. `Product B`|
+|Hírek listája|a. `The president...`(országos, politikai, [text])<br>b. `Premier League ...`(globális, sport, [szöveg, rendszerkép, videó])<br> c. `Hurricane in the ...`(regionális, időjárás, [szöveg, rendszerkép]|Az eszköz híreinek olvasása<br>Hónap vagy idény<br>|egy`The president...`|
+|Filmek listája|1. `Star Wars` (1977, [művelet, kaland, fantázia], George Lucas)<br>2. `Hoop Dreams` (1994, [dokumentumfilm, sport], Steve James<br>3. `Casablanca` (1942, [Romance, dráma, War], Michael Kertész)|A rendszer figyeli az eszköz mozgóképét<br>képernyő mérete<br>Felhasználó típusa<br>|3.`Casablanca`|
+|Termékek listája|i. `Product A`(3 kg, $ $ $ $, 24 órás kézbesítés)<br>ii. `Product B`(20 kg, $ $, 2 hetes szállítás vámmal)<br>iii. `Product C`(3 kg, $ $ $, kézbesítés 48 órán belül)|Az eszköz vásárlásának beolvasása<br>Felhasználói költségkeret<br>Hónap vagy idény|ii. `Product B`|
 
-Personalizer használt megerősítése tanulás válassza ki az egyetlen legjobb intézkedés, az úgynevezett _jutalom action ID_, kombinációja alapján:
-* Betanított modell – a Personalizer szolgáltatás által kapott múltbeli információk
-* Aktuális adatok – Egyedi műveletek funkciókkal és környezetfunkciókkal
+A személyre szabott megerősítő tanulás segítségével kiválaszthatja az egyetlen legjobb műveletet, amely a _jutalmazási művelet azonosítója_, a következők kombinációja alapján:
+* Betanított modell – múltbeli információk a személyre szabott szolgáltatás fogadásáról
+* Aktuális adatspecifikus műveletek a funkciókkal és a környezeti funkciókkal
 
-## <a name="when-to-call-personalizer"></a>Mikor hívja a Personalizer-t?
+## <a name="when-to-call-personalizer"></a>A személyre szabás meghívása
 
-A **Personalizer's Rank** [API-t](https://go.microsoft.com/fwlink/?linkid=2092082) _minden alkalommal, amikor_ tartalmat mutat be, valós időben. Ezt **eseménynek**nevezzük , _amelyet eseményazonosítóval jegyeznek_fel.
+A személyre szabott **Range** [API](https://go.microsoft.com/fwlink/?linkid=2092082) -t _minden alkalommal, amikor_ valós időben jelennek meg a tartalomban. Ez az **esemény egy esemény-** _azonosítóval_megjegyezve.
 
-A Personalizer **Reward** [API-ja](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) valós időben vagy késleltetett módon hívható, hogy jobban illeszkedjen az infrastruktúrához. A jutalom pontszámot az üzleti igényeid alapján határozhatod meg. A jutalom pontszám a 0 és 1 között van. Ez lehet egyetlen érték, például 1 a jó, és 0 a rossz, vagy egy számot hozott létre egy algoritmust hoz létre figyelembe véve az üzleti célok és metrikák.
+A személyre szabott **jutalmazási** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) valós időben hívható meg, vagy késleltethető, hogy jobban illeszkedjen az infrastruktúrához. Az üzleti igények alapján határozza meg a jutalom pontszámát. A jutalom pontszáma 0 és 1 között van. Ez lehet egyetlen érték, például 1, jó, 0 vagy rossz, vagy egy szám, amelyet egy, az üzleti célok és mérőszámok alapján létrehozott algoritmus állít elő.
 
-## <a name="personalizer-content-requirements"></a>A személyre szabásra vonatkozó tartalomra vonatkozó követelmények
+## <a name="personalizer-content-requirements"></a>Személyre szabott tartalomra vonatkozó követelmények
 
-A Personalizer használata a tartalom esetén:
+A személyre szabott tartalom használata:
 
-* Korlátozott számú elem (max. ~50) közül választhat. Ha nagyobb listával rendelkezik, [használjon javaslati motort](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) a lista 50 elemre való csökkentéséhez.
-* A kívánt tartalmat leíró információkat tartalmazza: a funkciókkal és a _környezettel rendelkező_ _műveleteket._
-* Legalább ~1k/nap tartalommal kapcsolatos eseményeket tartalmaz ahhoz, hogy a Personalizer hatékony legyen. Ha a Personalizer nem kapja meg a szükséges minimális forgalmat, a szolgáltatás hosszabb időt vesz igénybe az egyetlen legjobb tartalomelem meghatározásához.
+* Korlátozott számú elemet tartalmaz (legfeljebb ~ 50), amelyből kiválaszthatja a következőt:. Ha nagyobb listával rendelkezik, az [ajánlási motor használatával](where-can-you-use-personalizer.md#how-to-use-personalizer-with-a-recommendation-solution) csökkentse a listát 50 elemre.
+* A rangsorolni kívánt tartalmat leíró információkkal rendelkezik: a _funkciók és a_ _környezet funkcióival_kapcsolatos műveletek.
+* Legalább ~ 1k/nap tartalommal kapcsolatos eseményt biztosít a személyre szabáshoz. Ha a személyre szabott nem kapja meg a minimálisan szükséges forgalmat, a szolgáltatás továbbra is megtarthatja az egyetlen legmegfelelőbb tartalmi elemet.
 
-Mivel a Personalizer a kollektív információkat közel valós időben használja fel a legjobb tartalomtartalom-tétel visszaküldésére, a szolgáltatás nem:
-* Felhasználói profiladatainak megőrzése és kezelése
-* Az egyes felhasználók preferenciáinak vagy előzményeinek naplózása
-* Tisztított és címkézett tartalom megkövetelése
+Mivel a személyre szabott, közel valós időben a személyre szabott adatokat használ, a szolgáltatás nem a következő:
+* Felhasználói profil adatainak fenntartása és kezelése
+* Egyéni felhasználói beállítások vagy előzmények naplózása
+* Megtisztított és címkézett tartalom megkövetelése
 
-## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Hogyan tervezzünk és valósítsunk meg Personalizer-t az ügyfélalkalmazáshoz?
+## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Az ügyfélalkalmazás személyre szabásának megtervezése és implementálása
 
-1. [Tartalom,](concepts-features.md) **_műveletek_** és **_környezet_** tervezése és tervezése. Határozza meg a jutalom algoritmus a **_jutalom_** pontszámot.
-1. Minden [létrehozott személyre szabó-erőforrás](how-to-settings.md) 1 tanulási huroknak minősül. A hurok megkapja mind a Rang és jutalom hívások, hogy a tartalom vagy a felhasználói élményt.
-1. Add Personalizer a webhely vagy a tartalomrendszer:
-    1. Adjon hozzá **egy Rangsorolási** hívást a Personalizer-hoz az alkalmazásban, a webhelyben vagy a rendszerben, hogy meghatározza a legjobb, egyetlen _tartalomelemet,_ mielőtt a tartalom megjelenik a felhasználónak.
-    1. A legjobb, egyetlen _tartalomelem_ megjelenítése, amely a visszaadott _jutalomművelet-azonosító_a felhasználó számára.
-    1. Az _algoritmus_ alkalmazása a felhasználó működésével kapcsolatos összegyűjtött információkra a **jutalompontszám** meghatározásához, például:
+1. [Tervezze](concepts-features.md) meg és tervezze meg a tartalmat, a **_műveleteket_** és a **_környezetet_**. Határozza meg **_a jutalmas pontszámhoz_** tartozó jutalmazási algoritmust.
+1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) 1 tanulási ciklusnak minősül. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
+1. Személyre szabás hozzáadása a webhelyhez vagy a tartalmi rendszeren:
+    1. Az alkalmazásban, a webhelyen vagy a rendszeren testreszabhatja a személyre szabási **hívást,** hogy meghatározza a legjobb, egyetlen _tartalmi_ elemet, mielőtt a tartalom megjelenik a felhasználó számára.
+    1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_a felhasználónak.
+    1. Alkalmazzon _algoritmust_ a felhasználó működésével kapcsolatos adatok gyűjtésére a **jutalom** pontszámának megállapításához, például:
 
-        |Viselkedés|Számított jutalompontszám|
+        |Viselkedés|Számított jutalom pontszáma|
         |--|--|
-        |A felhasználó a legjobb, egyetlen _tartalomelemet_ választotta ki (jutalomművelet-azonosító)|**1**|
-        |A felhasználó más tartalmat választott ki|**0**|
-        |Felhasználó szüneteltetve, határozatlanul görgetve, mielőtt kiválasztja a legjobb, egyetlen _tartalom_ elemet (jutalomművelet-azonosító)|**0.5**|
+        |A felhasználó a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója) választotta|**1**|
+        |A felhasználó által kiválasztott egyéb tartalom|**0**|
+        |A felhasználó szüneteltetve, a nem határozott módon görgetve, mielőtt kiválasztja a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója)|**0,5**|
 
-    1. **Jutalomhívás** hozzáadása 0 és 1 közötti jutalompontszámot küldve
-        * Közvetlenül a tartalom megjelenítése után
-        * Vagy valamikor később egy offline rendszerben
-    1. [Értékelje ki a ciklust](concepts-offline-evaluation.md) egy offline kiértékeléssel egy használati időszak után. Az offline kiértékelés lehetővé teszi a Personalizer szolgáltatás hatékonyságának tesztelését és értékelését anélkül, hogy megváltoztatná a kódot, vagy befolyásolná a felhasználói élményt.
+    1. **Jutalom-hívás küldése** 0 és 1 közötti jutalom pontszámának megadásához
+        * A tartalom megjelenítése után azonnal
+        * Vagy valamivel később egy offline rendszeren
+    1. Egy használati időszak után [értékelje ki a hurkot](concepts-offline-evaluation.md) offline kiértékeléssel. Az offline kiértékelés lehetővé teszi a személyre szabott szolgáltatás hatékonyságának tesztelését és értékelését a kód módosítása vagy a felhasználói élmény befolyásolása nélkül.
 
 ## <a name="next-steps"></a>További lépések
 
 
 * [A Personalizer működése](how-personalizer-works.md)
-* [Mi a megerősítés tanulás?](concepts-reinforcement-learning.md)
-* [További információ a Rangsorolás kérés funkcióiról és műveleteiről](concepts-features.md)
-* [További információ a jutalomkérelem pontszámának meghatározásáról](concept-rewards.md)
+* [Mi a megerősítő tanulás?](concepts-reinforcement-learning.md)
+* [További információ a Rank kérelem szolgáltatásairól és műveleteiről](concepts-features.md)
+* [Tudnivalók a jutalmazási kérelem pontszámának meghatározásáról](concept-rewards.md)
 * [Rövid útmutatók](sdk-learning-loop.md)
-* [Bemutató](tutorial-use-azure-notebook-generate-loop-data.md)
+* [Oktatóanyag](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

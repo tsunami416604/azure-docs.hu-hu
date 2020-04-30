@@ -1,6 +1,6 @@
 ---
-title: RuuviTag csatlakoztatása az Azure IoT Central szolgáltatásban | Microsoft dokumentumok
-description: Ismerje meg, hogyan csatlakoztathat egy RuuviTag környezetérzékelőt az IoT Central alkalmazáshoz.
+title: RuuviTag összekötése az Azure IoT Centralban | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztatható RuuviTag környezeti érzékelő a IoT Central alkalmazáshoz.
 services: iot-central
 ms.service: iot-central
 ms.topic: how-to
@@ -11,72 +11,72 @@ ms.author: avneets
 author: avneet723
 ms.date: 11/27/2019
 ms.openlocfilehash: 93e4d3d0bed9090573d2b6ee87a29b86ccd72e42
-ms.sourcegitcommit: 31e9f369e5ff4dd4dda6cf05edf71046b33164d3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81758951"
 ---
-# <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag-érzékelő csatlakoztatása az Azure IoT Central alkalmazáshoz
+# <a name="connect-a-ruuvitag-sensor-to-your-azure-iot-central-application"></a>RuuviTag-érzékelő összekötése az Azure IoT Central-alkalmazással
 
-*Ez a cikk a megoldáskészítőkre és az eszközfejlesztőkre vonatkozik.*
+*Ez a cikk a megoldás-építők és az eszközök fejlesztőire vonatkozik.*
 
-Ez a cikk bemutatja, hogyan csatlakoztathatja a RuuviTag-érzékelőt a Microsoft Azure IoT Central alkalmazáshoz megoldáskészítőként.
+Ez a cikk azt ismerteti, hogyan csatlakozhat egy RuuviTag-érzékelőt a Microsoft Azure IoT Central alkalmazáshoz.
 
-Mi az a Ruuvi címke?
+Mi az a ruuvi címke?
 
-A RuuviTag egy fejlett, nyílt forráskódú érzékelőjel platform, amelyet az üzleti ügyfelek, fejlesztők, döntéshozók, diákok és amatőrök igényeinek kielégítésére terveztek. Az eszköz úgy van beállítva, hogy azonnal működjön, amint kiveszi a dobozából, és készen áll arra, hogy ott telepítse, ahol szüksége van rá. Ez egy Bluetooth LE jeladó, beépített környezetérzékelővel és gyorsulásmérővel.
+A RuuviTag egy fejlett, nyílt forráskódú érzékelős irányjelző platform, amely az üzleti ügyfelek, a fejlesztők, a döntéshozók, a tanulók és a Hobbik igényeinek kielégítésére szolgál. Az eszköz úgy van beállítva, hogy a lehető leghamarabb működjön, és készen áll arra, hogy üzembe helyezze, ahol szüksége van rá. A Bluetooth LE Beacon egy beépített környezeti érzékelővel és gyorsulásmérővel rendelkezik.
 
-A RuuviTag BLE -n (Bluetooth Low Energy) keresztül kommunikál, és az Azure IoT Central szolgáltatással való beszélgetéshez átjáróeszközre van szükség. Győződjön meg arról, hogy rendelkezik egy átjáró eszközzel, például a Rigado Cascade 500 beállítással, amely lehetővé teszi a RuuviTag számára az IoT Centralhoz való csatlakozást.
+A RuuviTag kommunikál a kapcsolaton keresztül (Bluetooth alacsony energia), és egy átjárót igényel az Azure IoT Central-vel való kommunikációhoz. Győződjön meg arról, hogy van egy átjáró-eszköz, például a Rigado Cascade 500, amely lehetővé teszi, hogy egy RuuviTag csatlakozhasson a IoT Centralhoz.
 
-Kérjük, kövesse az [itt található utasításokat,](./howto-connect-rigado-cascade-500.md) ha egy Rigado Cascade 500 átjáróeszközt szeretne létrehozni.
+Kövesse az [itt található utasításokat](./howto-connect-rigado-cascade-500.md) , ha Rigado Cascade 500 Gateway-eszközt szeretne beállítani.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A RuuviTag érzékelők csatlakoztatásához a következő erőforrásokra van szükség:
+A RuuviTag-érzékelők összekapcsolásához a következő erőforrásokra van szükség:
 
-* Egy RuuviTag érzékelő. További információkért kérjük, látogasson el [RuuviTag](https://ruuvi.com/).
-* Egy Rigado Cascade 500-as eszköz vagy egy másik BLE átjáró. További információkért kérjük, látogasson el [Rigado](https://www.rigado.com/).
-* Egy Azure IoT Central alkalmazás. További információt az [Új alkalmazás létrehozása című](./quick-deploy-iot-central.md)témakörben talál.
+* Egy RuuviTag-érzékelő. További információért látogasson el a [RuuviTag](https://ruuvi.com/)webhelyre.
+* Egy Rigado lépcsőzetes 500-eszköz vagy egy másik-átjáró. További információért látogasson el a [Rigado](https://www.rigado.com/)webhelyre.
+* Azure IoT Central-alkalmazás. További információt az [új alkalmazás létrehozása](./quick-deploy-iot-central.md)című témakörben talál.
 
-## <a name="add-a-ruuvitag-device-template"></a>RuuviTag eszközsablon hozzáadása
+## <a name="add-a-ruuvitag-device-template"></a>RuuviTag-eszköz sablonjának hozzáadása
 
-A RuuviTag-érzékelő az Azure IoT Central alkalmazáspéldányba való alaplapához konfigurálnia kell egy megfelelő eszközsablont az alkalmazáson belül.
+Ahhoz, hogy egy RuuviTag-érzékelőt beillesszen az Azure IoT Central Application-példányba, konfigurálnia kell egy megfelelő sablont az alkalmazáson belül.
 
-RuuviTag eszközsablon hozzáadása:
+RuuviTag-sablon hozzáadása:
 
-1. Keresse meg a bal oldali ablaktábla ***Eszközsablonok*** ![lapját,](./media/howto-connect-ruuvi/devicetemplate-new.png) válassza a **+ Új**: Új eszközsablon létrehozása Lehetőséget A lap lehetőséget ad ***egyéni sablon létrehozására*** vagy ***előre konfigurált eszközsablon használatára***
-1. Válassza ki a RuuviTag eszközsablont az előre konfigurált ![eszközsablonok listájából az alábbi módon: Válassza a RuuviTag eszközsablont](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
-1. Válassza a ***Tovább: Testreszabás lehetőséget*** a következő lépés hez.
-1. A következő képernyőn válassza a ***Létrehozás*** a C500 eszközsablon nak az IoT Central alkalmazásba való bedeszkázására lehetőséget.
+1. Navigáljon a bal oldali ablaktáblán található ***eszközök*** panelre, majd válassza a ![ **+ új**: új](./media/howto-connect-ruuvi/devicetemplate-new.png) sablon létrehozása lehetőséget, amely lehetővé teszi ***egyéni sablon létrehozását*** vagy ***előre konfigurált sablon használatát*** .
+1. Válassza ki a RuuviTag az előre konfigurált eszközök listájából az alább látható módon: válassza a RuuviTag ![-eszköz sablonja lehetőséget.](./media/howto-connect-ruuvi/devicetemplate-preconfigured.png)
+1. A ***Tovább gombra*** kattintva folytassa a következő lépéssel.
+1. A következő képernyőn válassza a ***Létrehozás*** elemet a C500-eszköz sablonjának a IoT Central alkalmazásba való beléptetéséhez.
 
-## <a name="connect-a-ruuvitag-sensor"></a>RuuviTag érzékelő csatlakoztatása
+## <a name="connect-a-ruuvitag-sensor"></a>RuuviTag-érzékelő összekötése
 
-Mint korábban említettük, a RuuviTag és az IoT Central alkalmazás csatlakoztatásához be kell állítania egy átjáróeszközt. Az alábbi lépések feltételezik, hogy beállított egy Rigado Cascade 500 átjáróeszközt.  
+Amint azt korábban említettük, a RuuviTag és a IoT Central alkalmazás összekapcsolásához be kell állítania egy átjáró-eszközt. Az alábbi lépések feltételezik, hogy beállított egy Rigado Cascade 500 Gateway-eszközt.  
 
-1. Kapcsolja be a Rigado Cascade 500 készüléket, és csatlakoztassa a hálózati kapcsolathoz (Etherneten vagy vezeték nélkül)
-1. Pop a fedelet le a RuuviTag és húzza ki a műanyag fülön, hogy biztosítsa a kapcsolatot az akkumulátorral.
-1. Helyezze a RuuviTag-ot egy Rigado Cascade 500-as átjáró közelébe, amely már konfigurálva van az IoT Central alkalmazásban.
-1. Néhány másodperc en belül a RuuviTag nak meg kell jelennie az IoT Central eszközlistájában.  
-    ![RuuviTag eszközlista](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
+1. Kapcsolja be a Rigado lépcsőzetes 500-eszközét, és csatlakoztatja a hálózati kapcsolathoz (Etherneten vagy vezeték nélküli hálózaton keresztül)
+1. A fedél kikapcsolásával kikapcsolhatja a RuuviTag, és lekérheti a műanyag lapot az akkumulátorral való kapcsolódás biztonságossá tételéhez.
+1. Helyezze a RuuviTag egy olyan Rigado kaszkád 500-átjáróra, amely már konfigurálva van a IoT Central alkalmazásban.
+1. Néhány másodperc elteltével a RuuviTag meg kell jelennie az eszközök listájában a IoT Centralon belül.  
+    ![RuuviTag-eszközök listája](./media/howto-connect-ruuvi/ruuvi-devicelist.png)
 
-Most már használhatja ezt a RuuviTag az IoT Central alkalmazáson belül.  
+Mostantól használhatja ezt a RuuviTag a IoT Central alkalmazáson belül.  
 
 ## <a name="create-a-simulated-ruuvitag"></a>Szimulált RuuviTag létrehozása
 
-Ha nem rendelkezik fizikai RuuviTag-eszközzel, létrehozhat egy szimulált RuuviTag-érzékelőt, amelyet az Azure IoT Central alkalmazáson belüli teszteléshez használhat.
+Ha nem rendelkezik fizikai RuuviTag eszközzel, létrehozhat egy szimulált RuuviTag-érzékelőt, amelyet az Azure IoT Central alkalmazásban való teszteléshez használhat.
 
 Szimulált RuuviTag létrehozása:
 
-1. Válassza **az Eszközök > a RuuviTag lehetőséget.**
-1. Válassza **a + Új**lehetőséget.
-1. Adjon meg egy egyedi **eszközazonosítót** és egy rövid **eszköznevet.**  
-1. Engedélyezze a **Szimulált** beállítást.
+1. Válassza az **eszközök > RuuviTag**elemet.
+1. Válassza az **+ új**lehetőséget.
+1. Adjon meg egy egyedi **azonosítót** és egy felhasználóbarát **eszköznév**.  
+1. Engedélyezze a **szimulált** beállítást.
 1. Kattintson a **Létrehozás** gombra.  
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ha Ön eszközfejlesztő, néhány javasolt következő lépés a következő:
+Ha Ön egy eszköz fejlesztője, néhány javasolt lépés a következő:
 
-- Az [Azure IoT Central eszközkapcsolatának elolvasása](./concepts-get-connected.md)
-- Az [azure CLI használatával az eszközkapcsolatok figyelése](./howto-monitor-devices-azure-cli.md)
+- További információ [az eszközök kapcsolatáról az Azure IoT Central](./concepts-get-connected.md)
+- Ismerje meg, hogyan [figyelheti az eszközök kapcsolatát az Azure CLI használatával](./howto-monitor-devices-azure-cli.md)
