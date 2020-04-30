@@ -4,10 +4,10 @@ description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történ
 ms.topic: article
 ms.date: 01/28/2020
 ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116179"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
@@ -69,7 +69,7 @@ Az alkalmazások Azure AD-vel való regisztrálásával kapcsolatos további inf
 A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesítési szolgáltatásokat biztosít az alkalmazás számára. A bérlő AZONOSÍTÓjának lekéréséhez kövesse az alábbi lépéseket:
 
 1. A Azure Portal válassza ki a Active Directory.
-1. Válassza a **Tulajdonságok**lehetőséget.
+1. Válassza ki a **Tulajdonságok** elemet.
 1. Másolja a **címtár-azonosítóhoz**megadott GUID értéket. Ezt az értéket a bérlői AZONOSÍTÓnak is nevezik.
 
 ![A könyvtár AZONOSÍTÓjának másolása](./media/batch-aad-auth/aad-directory-id.png)
@@ -199,7 +199,7 @@ Az egyéni szerepkörök létrehozásával kapcsolatos általános információk
 A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesítési szolgáltatásokat biztosít az alkalmazás számára. A bérlő AZONOSÍTÓjának lekéréséhez kövesse az alábbi lépéseket:
 
 1. A Azure Portal válassza ki a Active Directory.
-1. Válassza a **Tulajdonságok**lehetőséget.
+1. Válassza ki a **Tulajdonságok** elemet.
 1. Másolja a **címtár-azonosítóhoz**megadott GUID értéket. Ezt az értéket a bérlői AZONOSÍTÓnak is nevezik.
 
 ![A könyvtár AZONOSÍTÓjának másolása](./media/batch-aad-auth/aad-directory-id.png)

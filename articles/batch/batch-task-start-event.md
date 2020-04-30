@@ -4,10 +4,10 @@ description: A Batch-feladat indítási eseményére vonatkozó információk. E
 ms.topic: article
 ms.date: 04/20/2017
 ms.openlocfilehash: 6e897cb02163d11657c915d31ee5564e5bbd7407
-ms.sourcegitcommit: f7d057377d2b1b8ee698579af151bcc0884b32b4
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/24/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "82116400"
 ---
 # <a name="task-start-event"></a>Tevékenység indítása esemény
