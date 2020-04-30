@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure AD összevonása? | Microsoft Docs
-description: Az Összevonás az Azure AD-vel.
+title: Mi az az Azure AD-vel való összevonás? | Microsoft Docs
+description: Az Azure AD-vel való összevonást ismerteti.
 services: active-directory
 author: billmath
 manager: daveba
@@ -14,17 +14,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fd7a5b186ebc98babe1baacc9f56f39dc8fbc093
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80049376"
 ---
-# <a name="what-is-federation-with-azure-ad"></a>Mi az Azure AD összevonása?
+# <a name="what-is-federation-with-azure-ad"></a>Mi az az Azure AD-vel való összevonás?
 
-Az összevonás olyan tartományok gyűjteménye, amelyek bizalmi kapcsolatot hoztak létre. A megbízhatósági szint eltérő lehet, de általában magában foglalja a hitelesítést, és szinte mindig tartalmaz engedélyt. Egy tipikus összevonás tartalmazhat számos olyan szervezetet, amelyek bizalmi kapcsolatot létesítenek az erőforrások egy készletéhez való megosztott hozzáféréshez.
+Az összevonás olyan tartományok gyűjteménye, amelyek megbízhatósági kapcsolatot létesítettek. A megbízhatósági szint eltérő lehet, de általában magában foglalja a hitelesítést, és szinte mindig tartalmazza az engedélyezést. Egy tipikus összevonás több olyan szervezetet is tartalmazhat, amelyek megbízhatósági kapcsolatot létesítettek egy adott erőforráshoz való közös hozzáféréshez.
 
-A helyszíni környezetben az Azure AD-vel összeegyeztetheti, és ezt az összevonást használhatja hitelesítéshez és engedélyezéshez.  Ez a bejelentkezési módszer biztosítja, hogy minden felhasználói hitelesítés a helyszínen történjen.  Ez a módszer lehetővé teszi a rendszergazdák számára, hogy szigorúbb hozzáférés-vezérlési szinteket valósítsanak meg. Összevonás a AD FS és PingFederate áll rendelkezésre.
+A helyszíni környezetet az Azure AD-vel összevonása, és ezt az összevonást használhatja hitelesítéshez és engedélyezéshez.  Ez a bejelentkezési módszer biztosítja, hogy minden felhasználói hitelesítés a helyszínen történjen.  Ez a módszer lehetővé teszi, hogy a rendszergazdák szigorúbb szintű hozzáférés-vezérlést alkalmazzanak. A AD FS és a PingFederate összevonása elérhető.
 
 ![Összevont identitások](./media/whatis-hybrid-identity/federated-identity.png)
 
@@ -39,6 +39,6 @@ A helyszíni környezetben az Azure AD-vel összeegyeztetheti, és ezt az össze
 - [Mi az Azure AD Connect és a Connect Health?](whatis-azure-ad-connect.md)
 - [Mi az a jelszókivonat-szinkronizálás?](whatis-phs.md)
 - [Mi az összevonás?](whatis-fed.md)
-- [Mi az egyszeri bejelentkezés?](how-to-connect-sso.md)
+- [Mi az az egyszeri bejelentkezés?](how-to-connect-sso.md)
 - [Az összevonás működése](how-to-connect-fed-whatis.md)
 - [Összevonás a PingFederate-tel](how-to-connect-install-custom.md#configuring-federation-with-pingfederate)

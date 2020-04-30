@@ -1,140 +1,140 @@
 ---
-title: 'Oktatóanyag: A Log Analytics-lekérdezések első lépései'
-description: Ebből az oktatóanyagból megtudhatja, hogyan írhat és kezelhet Azure Monitor naplólekérdezéseket az Azure Portalon a Log Analytics használatával.
+title: 'Oktatóanyag: Log Analytics lekérdezések első lépései'
+description: Ebből az oktatóanyagból megtudhatja, hogyan írhat és kezelhet Azure Monitor naplózási lekérdezéseket a Azure Portal Log Analytics használatával.
 ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 03/17/2020
 ms.openlocfilehash: 29e24166218a6757cded9d1b002321800ab0c073
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80055480"
 ---
-# <a name="tutorial-get-started-with-log-analytics-queries"></a>Oktatóanyag: A Log Analytics-lekérdezések első lépései
+# <a name="tutorial-get-started-with-log-analytics-queries"></a>Oktatóanyag: Log Analytics lekérdezések első lépései
 
-Ez az oktatóanyag bemutatja, hogyan használhatja a Log Analytics segítségével az Azure Monitor naplólekérdezéseinek írását, végrehajtását és kezelését az Azure Portalon. A Log Analytics-lekérdezések segítségével kifejezéseket kereshet, trendeket azonosíthat, mintákat elemezhet, és számos más elemzési adatot biztosíthat az adatokból. 
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Log Analyticst Azure Monitor-naplók írásához, végrehajtásához és kezeléséhez a Azure Portal. Log Analytics lekérdezésekkel megkeresheti a kifejezéseket, azonosíthatja a trendeket, elemezheti a mintákat, és számos más elemzést is biztosíthat az adatokból. 
 
-Ebben az oktatóanyagban megtudhatja, hogyan használhatja a Log Analytics szolgáltatást a következőkre:
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Log Analytics:
 
 > [!div class="checklist"]
-> * A naplóadat-séma ismertetése
+> * A naplózási Adatséma ismertetése
 > * Egyszerű lekérdezések írása és futtatása, valamint a lekérdezések időtartományának módosítása
-> * Lekérdezési eredmények szűrése, rendezése és csoportosítása
-> * Lekérdezési eredmények vizualizációinak megtekintése, módosítása és megosztása
+> * Lekérdezés eredményeinek szűrése, rendezése és csoportosítása
+> * A lekérdezési eredmények vizualizációinak megtekintése, módosítása és megosztása
 > * Lekérdezések és eredmények mentése, betöltése, exportálása és másolása
 
-A naplólekérdezésekről az [Azure Monitor naplólekérdezéseinek áttekintése](log-query-overview.md)című témakörben olvashat bővebben.<br/>
-A naplólekérdezések írásával kapcsolatos részletes oktatóanyagról az [Azure Monitor naplólekérdezéseinek első lépései](get-started-queries.md)című témakörben található.
+További információ a naplózási lekérdezésekről: [a Azure monitorban található lekérdezések áttekintése](log-query-overview.md).<br/>
+A naplók lekérdezésével kapcsolatos részletes oktatóanyagért lásd: az [első lépések a naplózási lekérdezésekkel kapcsolatban Azure monitor](get-started-queries.md).
 
-## <a name="open-log-analytics"></a>A Log Analytics megnyitása
-A Log Analytics használatához be kell jelentkeznie egy Azure-fiókba. Ha nem rendelkezik Azure-fiókkal, [hozzon létre egyet ingyen.](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
+## <a name="open-log-analytics"></a>Log Analytics megnyitása
+Log Analytics használatához be kell jelentkeznie egy Azure-fiókba. Ha nem rendelkezik Azure-fiókkal, [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-Az oktatóanyag legtöbb lépésének végrehajtásához használhatja [ezt a bemutatókörnyezetet,](https://portal.loganalytics.io/demo)amely számos mintaadatot tartalmaz. A bemutató környezetben nem mentheti a lekérdezéseket, és nem rögzítheti az eredményeket az irányítópulton.
+A jelen oktatóanyagban ismertetett lépések többségének végrehajtásához használhatja [ezt a bemutató környezetet](https://portal.loganalytics.io/demo), amely számos mintaadatok beszámítását is magában foglalja. A bemutató környezettel nem mentheti a lekérdezéseket, és nem rögzítheti az eredményeket az irányítópulton.
 
-Saját környezetét is használhatja, ha az Azure Monitor használatával legalább egy Azure-erőforrásnapló-adatokat gyűjt. A Log Analytics-munkaterület megnyitásához az Azure Monitor bal oldali navigációs sávján válassza a **Naplók**lehetőséget. 
+Használhatja a saját környezetét is, ha a Azure Monitor használatával gyűjti be a naplózási adatokat legalább egy Azure-erőforráson. Log Analytics munkaterület megnyitásához a Azure Monitor bal oldali navigációs sávján válassza a **naplók**lehetőséget. 
 
 ## <a name="understand-the-schema"></a>A séma bemutatása
-A *séma* logikai kategóriák ba csoportosított táblák gyűjteménye. A Demo séma több kategóriában figyelési megoldások. A **LogManagement** kategória például Windows- és Syslog-eseményeket, teljesítményadatokat és ügynökszívveréseket tartalmaz.
+A *sémák* a logikai kategóriák alatt csoportosított táblák gyűjteményei. A bemutató séma több kategóriát is tartalmaz a figyelési megoldásokból. A **LogManagement** kategória például a Windows-és syslog-eseményeket, a teljesítményadatokat és az ügynök szívveréseit tartalmazza.
 
-A sématáblák a Log Analytics munkaterület **Táblák** lapján jelennek meg. A táblázatok oszlopokat tartalmaznak, amelyek adattípusát az oszlop neve melletti ikon jelzi. **Az Esemény** tábla például olyan szövegoszlopokat tartalmaz, mint **a Számítógép** és a numerikus oszlopok, például **az EventCategory**.
+A séma táblái a Log Analytics munkaterület **táblák** lapján jelennek meg. A táblák oszlopokat tartalmaznak, amelyek mindegyike az oszlop neve melletti ikon által megjelenített adattípussal rendelkezik. Az **Event** tábla például olyan szöveges oszlopokat tartalmaz, mint a **számítógép** és a numerikus oszlopok, például a **EventCategory**.
 
 ![Séma](media/get-started-portal/schema.png)
 
-## <a name="write-and-run-basic-queries"></a>Alaplekérdezések írása és futtatása
+## <a name="write-and-run-basic-queries"></a>Alapszintű lekérdezések írása és futtatása
 
-A Log Analytics egy új üres lekérdezéssel nyílik meg a **Lekérdezés szerkesztőben.**
+A Log Analytics megnyílik egy új, üres lekérdezéssel a **lekérdezés-szerkesztőben**.
 
 ![Log Analytics](media/get-started-portal/homepage.png)
 
 ### <a name="write-a-query"></a>Lekérdezés írása
-Az Azure Monitor naplólekérdezések a Kusto lekérdezési nyelv egy verzióját használják. A lekérdezések táblanévvel vagy [keresési](/azure/kusto/query/searchoperator) paranccsal kezdődhetnek. 
+Azure Monitor a naplózási lekérdezések a Kusto lekérdezési nyelvének egy verzióját használják. A lekérdezések egy Táblanév vagy egy [keresési](/azure/kusto/query/searchoperator) paranccsal kezdődhetnek. 
 
-A következő lekérdezés az Összes rekordot beolvassa az **Esemény** táblából:
+A következő lekérdezés az **Event** tábla összes rekordját lekérdezi:
 
 ```Kusto
 Event
 ```
 
-A cső (|) karakter elválasztja a parancsokat, így az első parancs kimenete a következő parancs bemenete. Egyetlen lekérdezéshez tetszőleges számú parancsot adhat hozzá. A következő lekérdezés lekéri a rekordokat az **Esemény** táblából, majd megkeresi őket a **kifejezéshiba** szempontjából bármely tulajdonságban:
+A pipe (|) karakter elválasztja a parancsokat, így az első parancs kimenete a következő parancs bemenete. Egyetlen lekérdezéshez tetszőleges számú parancsot adhat hozzá. Az alábbi lekérdezés lekérdezi a rekordokat az **esemény** táblából, majd megkeresi a kifejezési **hibát** bármely tulajdonságban:
 
 ```Kusto
 Event 
 | search "error"
 ```
 
-Az egyetlen sortörés megkönnyíti a lekérdezések olvasását. Egynél több sortörés osztja fel a lekérdezést külön lekérdezésekre.
+Az egysoros töréspontok könnyebben olvashatóvá teszik a lekérdezéseket. A lekérdezés több sortöréssel külön lekérdezésekre oszlik.
 
-Ugyanazt a lekérdezést a következő módon lehet megírni:
+Ugyanezt a lekérdezést egy másik módon is megírhatja:
 
 ```Kusto
 search in (Event) "error"
 ```
 
-A második példában a **keresési** parancs csak az **Események** táblában lévő rekordokat keresi meg a **hiba**kifejezésre.
+A második példában a **Search** parancs csak az **Events (események** ) táblában lévő rekordokat keresi meg a kifejezés **hibája**miatt.
 
-Alapértelmezés szerint a Log Analytics a lekérdezéseket az elmúlt 24 óra időtartományára korlátozza. Ha másik időtartományt szeretne beállítani, explicit **timeGenerated szűrőt** adhat a lekérdezéshez, vagy használhatja az **Időtartomány** vezérlőt.
+Alapértelmezés szerint a Log Analytics az elmúlt 24 órában megadott időtartományra korlátozza a lekérdezéseket. Egy másik időtartomány beállításához hozzáadhat egy explicit **TimeGenerated** szűrőt a lekérdezéshez, vagy használhatja az **időtartomány** vezérlőelemet is.
 
-### <a name="use-the-time-range-control"></a>Az Időtartomány vezérlő használata
-Az **Időtartomány** vezérlő elem ének használatához jelölje ki a felső sávon, majd jelöljön ki egy értéket a legördülő listából, vagy egyéni időtartomány létrehozásához válassza az **Egyéni** lehetőséget.
+### <a name="use-the-time-range-control"></a>Az időtartomány vezérlőelem használata
+Az **időtartomány** vezérlőelem használatához válassza ki azt a felső sávon, majd válasszon ki egy értéket a legördülő listából, vagy válassza az **Egyéni** lehetőséget az egyéni időtartomány létrehozásához.
 
 ![Időválasztó](media/get-started-portal/time-picker.png)
 
-- Az időtartomány-értékek UTC-ben vannak, ami eltérhet a helyi időzónától.
-- Ha a lekérdezés explicit módon beállít egy szűrőt a **TimeGenerated**számára, az időválasztó vezérlőben megjelenik **a Készlet a lekérdezésben**, és az ütközés megelőzése érdekében le van tiltva.
+- Az időtartomány értékei UTC szerint vannak, ami eltér a helyi időzónától.
+- Ha a lekérdezés explicit módon beállít egy szűrőt a **TimeGenerated**, akkor az időválasztó vezérlőelem a **lekérdezésben jelenik meg**, és le van tiltva, hogy megakadályozza az ütközést.
 
 ### <a name="run-a-query"></a>Lekérdezés futtatása
-Lekérdezés futtatásához helyezze a kurzort a lekérdezésen belülre, és válassza a **Futtatás** gombot a felső sávon, vagy nyomja le a **Shift**+**Enter billentyűt.** A lekérdezés addig fut, amíg üres sort nem talál.
+Lekérdezés futtatásához vigye a kurzort a lekérdezésbe, és válassza a **Futtatás** gombot a felső sávban, **vagy nyomja le**+az**ENTER**billentyűt. A lekérdezés addig fut, amíg nem talál üres sort.
 
 ## <a name="filter-results"></a>Szűrés eredményei
-A Log Analytics legfeljebb 10 000 rekordra korlátozza az eredményeket. Egy általános `Event` lekérdezés, mint túl sok eredményt ad vissza ahhoz, hogy hasznos legyen. A lekérdezés eredményeit szűrheti a lekérdezés táblaelemeinek korlátozásával, vagy az eredményekhez való kifejezett hozzáadásával. A táblaelemek szűrése új eredményhalmazt ad vissza, míg egy explicit szűrő a meglévő eredményhalmazra vonatkozik.
+A Log Analytics legfeljebb 10 000 rekordra korlátozza az eredményeket. Egy általános lekérdezés, `Event` például túl sok eredményt ad vissza, hasznosnak bizonyulhat. A lekérdezési eredményeket szűrheti a lekérdezésben szereplő táblák elemeinek korlátozásával, vagy explicit módon hozzáadhat egy szűrőt az eredményekhez. A táblázat elemeinek szűrése új eredményhalmazt ad vissza, míg egy explicit szűrő a meglévő eredményhalmaz esetében érvényes.
 
-### <a name="filter-by-restricting-table-elements"></a>Szűrés táblaelemek korlátozásával
-A `Event` lekérdezés eredményének **hibaeseményekre** történő szűrése a lekérdezés táblaelemeinek korlátozásával:
+### <a name="filter-by-restricting-table-elements"></a>Szűrés a táblázat elemeinek korlátozásával
+A lekérdezés `Event` eredményeinek szűrése a **hibák** eseményeire a lekérdezésben szereplő táblák elemeinek korlátozásával:
 
-1. A lekérdezés eredményében jelölje ki a hiba oszlopban **hibával** beírt rekordok melletti legördülő **nyilat.** 
+1. A lekérdezés eredményei között válassza ki a legördülő nyilat minden olyan rekord mellett, amely a **EventLevelName** oszlopban **hibát** tartalmaz. 
    
-1. A kibontott részletekben mutasson az **EventLevelName**( Eseménynév ) melletti **...** elemre, majd válassza **a "Hiba" belefoglalása**lehetőséget. 
+1. A kibontott részletek között vigye a kurzort a **EventLevelName**, majd válassza a **...** elemet, majd válassza a **"hiba"** lehetőséget. 
    
    ![Szűrő hozzáadása a lekérdezéshez](media/get-started-portal/add-filter.png)
    
-1. Figyelje meg, hogy a **Lekérdezésszerkesztő** lekérdezése a következőre változott:
+1. Figyelje meg, hogy a **lekérdezés szerkesztője** mostantól a következőre változott:
    
    ```Kusto
    Event
    | where EventLevelName == "Error"
    ```
    
-1. Az új lekérdezés futtatásához válassza a **Futtatás** lehetőséget.
+1. Válassza a **Futtatás** lehetőséget az új lekérdezés futtatásához.
 
 ### <a name="filter-by-explicitly-filtering-results"></a>Szűrés az eredmények explicit szűrésével
-A `Event` lekérdezés eredményeinek **hibaeseményekre** történő szűrése a lekérdezés eredményének szűrésével:
+A `Event` lekérdezés eredményeinek szűrése a **hibák** eseményeire a lekérdezés eredményeinek szűrésével:
 
-1. A lekérdezés eredményében válassza a **Szűrő ikont** az **EventLevelName**oszlop fejléce mellett. 
+1. A lekérdezés eredményei között válassza a **szűrő** ikont a **EventLevelName**oszlopfejléc mellett. 
    
-1. Az előugró ablak első mezőjében válassza az **Egyenlő a**lehetőséget, és a következő mezőbe írja be a *hibát.* 
+1. Az előugró ablak első mezőjében válassza a **egyenlő**elemet, majd a következő mezőben adja meg a *hiba*értéket. 
    
-1. Válassza **a Szűrő**lehetőséget.
+1. Válassza a **szűrő**lehetőséget.
    
    ![Szűrés](media/get-started-portal/filter.png)
 
-## <a name="sort-group-and-select-columns"></a>Oszlopok rendezése, csoportosítása és kijelölése
-Ha a lekérdezés eredményeit egy adott oszlop , például **a TimeGenerated [UTC]** szerint szeretné rendezni, jelölje ki az oszlopfejlécet. Jelölje ki ismét a címsort a növekvő és a csökkenő sorrend közötti váltáshoz.
+## <a name="sort-group-and-select-columns"></a>Oszlopok rendezése, csoportosítása és kiválasztása
+Ha a lekérdezési eredményeket egy adott oszlop szerint szeretné rendezni (például **TimeGenerated [UTC]**), válassza az oszlop fejlécét. A növekvő és a csökkenő sorrend közötti váltáshoz válassza újra a fejlécet.
 
 ![Oszlop rendezése](media/get-started-portal/sort-column.png)
 
-Az eredmények rendszerezésének másik módja a csoportok. Ha az eredményeket egy adott oszlop szerint szeretné csoportosítani, húzza az oszlopfejlécet az eredménytáblázat feletti **sávra: Húzza ide az oszlopfejlécet, és ide dobja az oszlop szerint csoportosítva**. Alcsoportok létrehozásához húzza a többi oszlopot a felső sávra. Átrendezheti a sávban lévő csoportok és alcsoportok hierarchiáját és rendezését.
+Az eredmények rendezésének másik módja csoportok szerint történik. Ha egy adott oszlop alapján kívánja csoportosítani az eredményeket, húzza az oszlopfejléc fölé az oszlop fejlécét az **oszlop áthúzása feliratú oszlop fölé, és dobja el ide az oszlop csoportosításához**. Alcsoportok létrehozásához húzzon más oszlopokat a felső sávra. Átrendezheti a hierarchiát és a csoportok és alcsoportok rendezését a sávon.
 
 ![Csoportok](media/get-started-portal/groups.png)
 
-Ha el szeretné rejteni vagy meg szeretné jelenik az oszlopok at az eredmények között, jelölje be a táblázat feletti **Oszlopok jelölőnégyzetet,** majd jelölje ki vagy törölje a kívánt oszlopok kijelölését a legördülő listából.
+Az eredmények oszlopainak elrejtéséhez vagy megjelenítéséhez válassza a tábla fölötti **oszlopok** lehetőséget, majd válassza ki vagy törölje a kívánt oszlopokat a legördülő listából.
 
 ![Oszlopok kiválasztása](media/get-started-portal/select-columns.png)
 
 ## <a name="view-and-modify-charts"></a>Diagramok megtekintése és módosítása
-A lekérdezési eredmények vizuális formátumban is láthatók. Példaként írja be a következő lekérdezést:
+A lekérdezési eredményeket vizuális formátumokban is megtekintheti. Példaként adja meg a következő lekérdezést:
 
 ```Kusto
 Event 
@@ -143,65 +143,65 @@ Event
 | summarize count() by Source 
 ```
 
-Alapértelmezés szerint az eredmények egy táblázatban jelennek meg. A táblázat feletti **diagram** elemre a grafikus nézetben való eredmény megtekintéséhez válassza a diagramot.
+Alapértelmezés szerint az eredmények egy táblázatban jelennek meg. A táblázat fölötti **diagram** kiválasztásával megjelenítheti az eredményeket grafikus nézetben.
 
 ![Sávdiagram](media/get-started-portal/bar-chart.png)
 
-Az eredmények halmozott sávdiagramon jelennek meg. Az eredmények egyéb nézeteinek megjelenítéséhez adja meg az egyéb beállításokat, **például** a Halmozott oszlop ot vagy a **Körpitét.**
+Az eredmények egy halmozott oszlopdiagram-diagramon jelennek meg. Válasszon más beállításokat, például a **halmozott oszlopot** vagy a **tortadiagramot** az eredmények egyéb nézeteinek megjelenítéséhez.
 
 ![Tortadiagram](media/get-started-portal/pie-chart.png)
 
-A nézet tulajdonságait (például x és y tengelyeket, vagy csoportosítási és felosztási beállításokat) manuálisan módosíthatja a vezérlősávról.
+Megváltoztathatja a nézet tulajdonságait, például az x és az y tengelyt, vagy csoportosíthatja és feloszthatja a beállításokat manuálisan a vezérlő sávon.
 
-Az előnyben részesített nézetet magát a lekérdezést is beállíthatja a [leképezési](/azure/kusto/query/renderoperator) operátor használatával.
+Saját maga is megadhatja a lekérdezés előnyben részesített nézetét a [Render](/azure/kusto/query/renderoperator) operátor használatával.
 
-## <a name="pin-results-to-a-dashboard"></a>Eredmények rögzítése irányítópulton
-Ha egy eredménytáblázatot vagy diagramot szeretne rögzíteni a Log Analytics szolgáltatásból egy megosztott Azure-irányítópultra, válassza a **Rögzítés az irányítópulthoz** lehetőséget a felső sávon. 
+## <a name="pin-results-to-a-dashboard"></a>Eredmények rögzítése egy irányítópulton
+Egy eredmény táblázat vagy diagram Log Analyticsból egy megosztott Azure-irányítópultra való rögzítéséhez válassza a **rögzítés az irányítópulton** lehetőséget a felső sávon. 
 
 ![Rögzítés az irányítópulton](media/get-started-portal/pin-dashboard.png)
 
-A **Pin egy másik irányítópultra** ablaktáblában jelölje ki vagy hozzon létre egy megosztott irányítópultot, amelyet rögzíteni szeretne, majd válassza **az Alkalmaz**lehetőséget. A táblázat vagy diagram megjelenik a kiválasztott Azure-irányítópulton.
+A **PIN-kód másik irányítópult** ablaktábláján válasszon ki vagy hozzon létre egy megosztott irányítópultot a rögzítéshez, majd kattintson az **alkalmaz**gombra. A táblázat vagy a diagram megjelenik a kiválasztott Azure-irányítópulton.
 
-![Irányítópultra rögzített diagram](media/get-started-portal/pin-dashboard2.png)
+![Az irányítópultra rögzített diagram](media/get-started-portal/pin-dashboard2.png)
 
-A megosztott irányítópultra kitűzött táblázat vagy diagramok a következő egyszerűsítéseket követik: 
+A megosztott irányítópulthoz rögzített táblázat vagy diagram a következő egyszerűsítésekkel rendelkezik: 
 
-- Az adatok az elmúlt 14 napra korlátozódnak.
-- Egy táblázatban legfeljebb négy oszlop és az első hét sor látható.
-- A sok különálló kategóriát tartalmazó diagramok automatikusan csoportosítják a kevésbé lakott kategóriákat egyetlen **másik** raktárhelybe.
+- Az adatmennyiség az elmúlt 14 napra korlátozódik.
+- A tábla legfeljebb négy oszlopot és az első hét sort jeleníti meg.
+- A sok különálló kategóriával rendelkező diagramok automatikusan csoportosítják a kevésbé feltöltött kategóriákat egyetlen **más** raktárhelyre.
 
-## <a name="save-load-or-export-queries"></a>Lekérdezések mentése, betöltése és exportálása
+## <a name="save-load-or-export-queries"></a>Lekérdezések mentése, betöltése vagy exportálása
 A lekérdezés létrehozása után mentheti vagy megoszthatja a lekérdezést vagy az eredményeket másokkal. 
 
 ### <a name="save-queries"></a>Lekérdezések mentése
 Lekérdezés mentése:
 
-1. Válassza a **Mentés** gombot a felső sávon.
+1. Válassza a **Mentés** lehetőséget a felső sávon.
    
-1. A **Mentés** párbeszédpanelen adjon nevet a **lekérdezésnek**az a–z, A–Z, 0-9, szóköz, kötőjel, aláhúzás, pont, zárójel vagy cső használatával. 
+1. A **Save (Mentés** ) párbeszédpanelen adja meg a lekérdezés **nevét**az A – Z, a – z, 0-9, szóköz, kötőjel, aláhúzás, időtartam, zárójel vagy cső karakterek használatával. 
    
-1. Adja meg, hogy a lekérdezést **lekérdezésként** vagy **függvényként**szeretné-e menteni. A függvények olyan lekérdezések, amelyekre más lekérdezések hivatkozhatnak. 
+1. Válassza ki, hogy **lekérdezésként** vagy **függvényként**kívánja-e menteni a lekérdezést. A függvények olyan lekérdezések, amelyekre más lekérdezések hivatkozhatnak. 
    
-   Ha függvényként szeretne menteni egy lekérdezést, adjon meg egy **függvényaliast**, amely a lekérdezés hívásához használható többi lekérdezés rövid neve.
+   A lekérdezés függvényként való mentéséhez adjon meg egy **függvény aliast**, amely egy rövid név a lekérdezés meghívásához használni kívánt egyéb lekérdezések számára.
    
-1. Adjon meg egy **kategóriát** a lekérdezéshez használandó **Lekérdezéskezelőszámára.**
+1. Adja meg a lekérdezéshez használni kívánt **lekérdezési tallózó** **kategóriáját** .
    
 1. Kattintson a **Mentés** gombra.
    
-   ![Mentés funkció](media/get-started-portal/save-function.png)
+   ![Függvény mentése](media/get-started-portal/save-function.png)
 
 ### <a name="load-queries"></a>Lekérdezések betöltése
-Mentett lekérdezés betöltéséhez válassza a jobb felső sarokban a **Lekérdezéskezelő lehetőséget.** Megnyílik **a Lekérdezéskezelő** ablaktábla, amely az összes lekérdezést kategória szerint listázza. Bontsa ki a kategóriákat, vagy írjon be egy lekérdezésnevet a keresősávba, majd válasszon egy lekérdezést a **Lekérdezésszerkesztőbe**való betöltéséhez. A lekérdezést **kedvencként** is megjelölheti, ha kiválasztja a lekérdezés neve melletti csillagot.
+Mentett lekérdezés betöltéséhez válassza a jobb felső sarokban található **query Explorer** lehetőséget. Megnyílik a **query Explorer** panel, amely felsorolja az összes lekérdezést kategóriánként. Bontsa ki a kategóriákat, vagy adja meg a lekérdezés nevét a keresősávban, majd válasszon ki egy lekérdezést a **lekérdezés-szerkesztőbe**való betöltéshez. A lekérdezéseket megjelölheti **kedvencként** , ha kiválasztja a lekérdezés neve melletti csillagot.
 
-![Lekérdezéskezelő](media/get-started-portal/query-explorer.png)
+![Lekérdezési tallózó](media/get-started-portal/query-explorer.png)
 
 ### <a name="export-and-share-queries"></a>Lekérdezések exportálása és megosztása
-Lekérdezés exportálásához válassza az **Exportálás** elemet a felső sávon, majd válassza az **Exportálás CSV-re – az összes oszlop**, a **CSV -, a megjelenített oszlopok ,** vagy a Power BI **(M lekérdezés) exportálása** lehetőséget a legördülő listából.
+Egy lekérdezés exportálásához válassza az **Exportálás** lehetőséget a felső sávon, majd válassza az **Exportálás CSV-ként – minden oszlop**, **Exportálás CSV-ben megjelenített oszlopokra**lehetőséget, vagy **exportálja Power bi (M lekérdezés)** értékre a legördülő listából.
 
-Ha lekérdezésre mutató hivatkozást szeretne megosztani, válassza a felső **sávhivatkozás másolása,** majd a **Hivatkozás másolása**a lekérdezéshez lehetőséget, **a Lekérdezés szövegének másolása**vagy a vágólapra másolandó **lekérdezéseredmények másolása** lehetőséget. A lekérdezési hivatkozást elküldheti másoknak, akik hozzáférnek ugyanahhoz a munkaterülethez.
+Ha egy lekérdezésre mutató hivatkozást szeretne megosztani, válassza a felső sávon a **hivatkozás másolása** lehetőséget, majd válassza a **hivatkozás másolása lekérdezéshez**, a **lekérdezési szöveg másolása**vagy a **lekérdezési eredmények** másolása lehetőséget a vágólapra másoláshoz. A lekérdezési hivatkozást elküldheti másoknak is, akik ugyanahhoz a munkaterülethez férnek hozzá.
 
 ## <a name="next-steps"></a>További lépések
 
-Továbbad a következő oktatóanyaghoz, ha többet szeretne megtudni az Azure Monitor naplólekérdezéseinek írásáról.
+Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan lehet Azure Monitor napló lekérdezéseit írni.
 > [!div class="nextstepaction"]
-> [Azure-figyelő naplólekérdezéseinek írása](get-started-queries.md)
+> [Írási Azure Monitor log-lekérdezések](get-started-queries.md)

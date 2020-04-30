@@ -1,5 +1,5 @@
 ---
-title: Biztonságos hozzáférés az alkalmazásadatokhoz
+title: Az alkalmazásadatok biztonságos elérése
 titleSuffix: Azure Storage
 description: Alkalmazásainak adatait SAS-jogkivonatok, titkosítás és HTTPS protokoll segítségével tudhatja biztonságban a felhőben.
 services: storage
@@ -12,13 +12,13 @@ ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
 ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80061329"
 ---
-# <a name="secure-access-to-application-data"></a>Biztonságos hozzáférés az alkalmazásadatokhoz
+# <a name="secure-access-to-application-data"></a>Az alkalmazásadatok biztonságos elérése
 
 Ez az oktatóanyag egy sorozat harmadik része. Megtudhatja, hogyan teheti biztonságossá a tárfiókhoz való hozzáférést. 
 
@@ -54,7 +54,7 @@ az storage container set-permission \
 
 ## <a name="configure-sas-tokens-for-thumbnails"></a>SAS-jogkivonatok konfigurálása miniatűr képekhez
 
-Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében megosztott hozzáférésű aláírások (SAS) jogkivonatokat használ a miniatűr képek lekéréséhez. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján. A SAS-ről további információt az [Azure Storage-erőforrásokhoz megosztott hozzáférésű aláírások (SAS) használatával való korlátozott hozzáférés megadása](../common/storage-sas-overview.md)című témakörben talál.
+Az oktatóanyag-sorozat első részében a webalkalmazás egy nyilvános tárolóból származó képeket jelenített meg. A sorozat ezen részében a közös hozzáférésű aláírások (SAS) jogkivonatok segítségével kérheti le a miniatűr lemezképeket. A SAS-jogkivonatok segítségével korlátozott hozzáférést biztosíthat egy tárolóhoz vagy blobhoz IP-cím, protokoll, időintervallum vagy engedélyezett jogosultságok alapján. Az SAS-vel kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférési aláírások (SAS) használatával](../common/storage-sas-overview.md).
 
 A példában a forráskód adattára a `sasTokens` ágat használja, amely egy frissített kódmintát tartalmaz. Törölje a meglévő GitHub-telepítést az [az webapp deployment source delete](/cli/azure/webapp/deployment/source) parancs segítségével. Azután konfigurálja a GitHub-telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
@@ -68,7 +68,7 @@ az webapp deployment source config --name <web_app> \
     --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-Az adattár `sasTokens` ága frissíti a `StorageHelper.cs` fájlt. A `GetThumbNailUrls` feladatot az alábbi példakóddal cseréli ki. A frissített feladat lekéri a miniatűr URL-címeket egy [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) használatával a SAS-jogkivonat kezdési, lejárati idejének és engedélyeinek megadásához. Telepítést követően a webalkalmazás mostantól SAS-jogkivonatot használó URL-címmel kéri le a miniatűr képeket. A frissített feladat az alábbi példában látható:
+Az adattár `sasTokens` ága frissíti a `StorageHelper.cs` fájlt. A `GetThumbNailUrls` feladatot az alábbi példakóddal cseréli ki. A frissített feladat lekérdezi a miniatűr URL-címeket egy [BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) használatával a kezdő időpont, a lejárati idő és az SAS-token engedélyeinek megadásához. Telepítést követően a webalkalmazás mostantól SAS-jogkivonatot használó URL-címmel kéri le a miniatűr képeket. A frissített feladat az alábbi példában látható:
 
 ```csharp
 public static async Task<List<string>> GetThumbNailUrls(AzureStorageConfig _storageConfig)
@@ -129,11 +129,11 @@ Az előző feladatban használt osztályok, tulajdonságok és metódusok a köv
 |-------|------------|---------|
 |[StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) |  |  |
 |[BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient) |  |[GetBlobContainerClient](/dotnet/api/azure.storage.blobs.blobserviceclient.getblobcontainerclient) |
-|[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [Uri](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Létezik](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs (GetBlobs)](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
+|[BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient) | [URI](/dotnet/api/azure.storage.blobs.blobcontainerclient.uri) |[Létezik](/dotnet/api/azure.storage.blobs.blobcontainerclient.exists) <br> [GetBlobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs) |
 |[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
-|[BlobItem elem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Név](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
-|[UriBuilder között](/dotnet/api/system.uribuilder) | [Lekérdezés](/dotnet/api/system.uribuilder.query) |  |
-|[Lista](/dotnet/api/system.collections.generic.list-1) | | [Hozzáadás](/dotnet/api/system.collections.generic.list-1.add) |
+|[Blobelemet](/dotnet/api/azure.storage.blobs.models.blobitem) | [Név](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
+|[UriBuilder](/dotnet/api/system.uribuilder) | [Lekérdezés](/dotnet/api/system.uribuilder.query) |  |
+|[Listáját](/dotnet/api/system.collections.generic.list-1) | | [Hozzáadás](/dotnet/api/system.collections.generic.list-1.add) |
 
 ## <a name="server-side-encryption"></a>Kiszolgálóoldali titkosítás
 
