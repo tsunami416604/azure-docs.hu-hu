@@ -1,32 +1,32 @@
 ---
 title: Szolgáltatás-hozzáférési jogkivonatok lekérése
-description: Az ARR REST API-k eléréséhez szükséges jogkivonatok létrehozásának ismertetése
+description: Leírja, hogyan hozhatók létre tokenek az ARR REST API-khoz való hozzáféréshez
 author: florianborn71
 ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: fd510f90887353d7486908ee076d5308db72c59d
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81687069"
 ---
 # <a name="get-service-access-tokens"></a>Szolgáltatás-hozzáférési jogkivonatok lekérése
 
-Az ARR REST API-khoz való hozzáférés csak a jogosult felhasználók számára engedélyezett. Az engedély bizonyításához egy *hozzáférési jogkivonatot* kell küldenie a REST-kérelmekkel együtt. Ezeket a jogkivonatokat a *Secure Token Service* (STS) egy fiókkulcsért cserébe bocsátja ki. A jogkivonatok **élettartama 24 óra,** így a felhasználók számára teljes hozzáférés nélkül adhatók ki.
+Az ARR REST API-khoz való hozzáférés csak a jogosult felhasználók számára engedélyezett. Az engedélyezés bizonyításához el kell küldenie egy *hozzáférési jogkivonatot* a REST-kérelmekkel együtt. Ezeket a jogkivonatokat a *biztonságos jogkivonat szolgáltatás* (STS) adja ki az Exchange-fiók kulcsaként. A tokenek **élettartama 24 óra** , így a felhasználók számára a szolgáltatás teljes hozzáférése nélkül is kiállíthatók.
 
-Ez a cikk ismerteti, hogyan hozhat létre ilyen hozzáférési jogkivonatot.
+Ez a cikk bemutatja, hogyan hozhat létre ilyen hozzáférési tokent.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Hozzon létre egy ARR-fiókot,](create-an-account.md)ha még nem rendelkezik ilyensel.
+[Hozzon létre egy ARR-fiókot](create-an-account.md), ha még nem rendelkezik ilyennel.
 
-## <a name="token-service-rest-api"></a>Tokenszolgáltatás REST API-ja
+## <a name="token-service-rest-api"></a>Jogkivonat-szolgáltatás REST API
 
-Hozzáférési jogkivonatok létrehozásához a *biztonságos jogkivonat-szolgáltatás* egyetlen REST API-t biztosít. Az ARR STS szolgáltatás URL-címe https:\//sts.mixedreality.azure.com.
+Hozzáférési tokenek létrehozásához a *biztonságos jogkivonat szolgáltatás* egyetlen REST API biztosít. Az ARR STS-szolgáltatás URL-címe https:\//STS.mixedreality.Azure.com.
 
-### <a name="get-token-request"></a>"Token bekérése" kérés
+### <a name="get-token-request"></a>"Jogkivonat beolvasása" kérés
 
 | URI | Módszer |
 |-----------|:-----------|
@@ -34,23 +34,23 @@ Hozzáférési jogkivonatok létrehozásához a *biztonságos jogkivonat-szolgá
 
 | Fejléc | Érték |
 |--------|:------|
-| Engedélyezés | **"TulajdonosaccountId**:**accountKey"** |
+| Engedélyezés | "Tulajdonos **accountId**:**accountKey**" |
 
-Cserélje *le a fiókazonosítót* és a *fiókkulcsot* a megfelelő adatokra.
+Cserélje le a *accountId* és a *accountKey* a megfelelő adataira.
 
-### <a name="get-token-response"></a>"Token bekéselése" válasz
+### <a name="get-token-response"></a>"Jogkivonat beolvasása" válasz
 
-| Állapotkód | JSON hasznos teher | Megjegyzések |
+| Állapotkód | JSON-adattartalom | Megjegyzések |
 |-----------|:-----------|:-----------|
 | 200 | AccessToken: karakterlánc | Sikeres |
 
 | Fejléc | Cél |
 |--------|:------|
-| MS-CV | Ez az érték a szolgáltatáson belüli hívás nyomon követésére használható. |
+| MS-CV | Ezzel az értékkel lehet nyomon követni a hívást a szolgáltatáson belül |
 
-## <a name="getting-a-token-using-powershell"></a>Token beszerzése a PowerShell használatával
+## <a name="getting-a-token-using-powershell"></a>Jogkivonat beszerzése a PowerShell használatával
 
-Az alábbi PowerShell-kód bemutatja, hogyan küldheti el a szükséges REST-kérelmet az STS-nek. Ezután kinyomtatja a jogkivonatot a PowerShell-parancssorba.
+Az alábbi PowerShell-kód azt mutatja be, hogyan kell elküldeni a szükséges REST-kérést az STS-nek. Ezután kinyomtatja a tokent a PowerShell-parancssorba.
 
 ```PowerShell
 $accountId = "<account_id_from_portal>"
@@ -63,10 +63,10 @@ $response = ConvertFrom-Json -InputObject $webResponse.Content
 Write-Output "Token: $($response.AccessToken)"
 ```
 
-A parancsfájl csak kinyomtatja a tokent a kimenetre, ahonnan & beillesztheti. Egy valódi projekt esetén automatizálnia kell ezt a folyamatot.
+A szkript egyszerűen kinyomtatja a tokent a kimenetre, ahonnan másolhatja & beillesztheti. Valós projekt esetén automatizálja ezt a folyamatot.
 
 ## <a name="next-steps"></a>További lépések
 
 * [PowerShell-példaszkriptek](../samples/powershell-example-scripts.md)
-* [Azure előtér-API-k](../how-tos/frontend-apis.md)
-* [Munkamenet-kezelés REST API](../how-tos/session-rest-api.md)
+* [Azure frontend API-k](../how-tos/frontend-apis.md)
+* [Munkamenet-felügyeleti REST API](../how-tos/session-rest-api.md)

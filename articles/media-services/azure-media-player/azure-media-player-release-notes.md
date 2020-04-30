@@ -1,31 +1,31 @@
 ---
-title: Az Azure Media Player kibocsátási jegyzetei
-description: Kibocsátási megjegyzések az Azure Media Playerhez
+title: Azure Media Player kibocsátási megjegyzések
+description: A Azure Media Player kibocsátási megjegyzései
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/05/2020
 ms.openlocfilehash: cc6b11ebc930c7798cb252f9c322a19c0b8ae0ea
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727124"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
-Az alábbiakban felsoroljuk az ezzel a kiadással kapcsolatos ismert problémákat.  A fejlesztés során a tesztelt és nem támogatott funkciók listája is rendelkezésre áll.
+Alább látható a kiadással kapcsolatos ismert problémák listája.  Emellett a kipróbált és nem támogatott funkciók listája is elérhető a fejlesztés során.
 
-[Szolgáltatáslista](azure-media-player-feature-list.md)
+[Szolgáltatások listája](azure-media-player-feature-list.md)
 
-[Ismert problémalista](azure-media-player-known-issues.md)
+[Ismert problémák listája](azure-media-player-known-issues.md)
 
-[Változatlan](azure-media-player-changelog.md "Változatlan")
+[Változásnapló](azure-media-player-changelog.md "Változásnapló")
 
 <!-- Typescript definitions were moved to the samples repository.>-->
-[TypeScript-definíciók (d.ts)](https://github.com/Azure-Samples/azure-media-player-samples "TypeScript-definíciók" )
+[Írógéppel definiált definíciók (d. TS)](https://github.com/Azure-Samples/azure-media-player-samples "Írógéppel-definíciók" )
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

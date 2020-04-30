@@ -1,620 +1,620 @@
 ---
-title: Az Azure Media Player changelog-ja
-description: Az Azure Media Player changelog.
+title: Azure Media Player changelog
+description: Azure Media Player changelog.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 15f8a3ac8c2777b3a878de92db495e559f64ad20
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726549"
 ---
-# <a name="changelog"></a>Változatlan #
+# <a name="changelog"></a>Változásnapló #
 
-## <a name="224-official-update-february-22-2019"></a>2.2.4 (hivatalos frissítés 2019. február 22.) ##
+## <a name="224-official-update-february-22-2019"></a>2.2.4 (hivatalos frissítés, február 22 2019) ##
 
-### <a name="bug-fixes-224"></a>Hibajavítások 2.2.4 ###
+### <a name="bug-fixes-224"></a>Hibákra vonatkozó, 2.2.4-es hibajavítás ###
 
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem [Kisegítő lehetőségek] Egy elérhető fantomlap eltávolítása a hibaképernyő megírásakor
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Javítottuk az "M" gyorsbillentyűt az IE11 és az Edge számára
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Kijavítottuk a CEA708 feliratok kivételét
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Kijavítottuk az Edge böngésző videófagyasztási problémájait
+- [Hibajavítás] AMP Hozzáférhetőség Eltávolított egy elérhető fantom fület a hiba képernyő megjelenésekor
+- [Hibajavítás] AMP A IE11 és a Edge kijavította a hotkey-t
+- [Hibajavítás] AMP Rögzített kivétel a CEA708-feliratok számára
+- [Hibajavítás] AMP Rögzített videó rögzítése az Edge böngésző számára
 
-### <a name="changes-224"></a>Változások 2.2.4 ###
+### <a name="changes-224"></a>Módosítások 2.2.4 ###
 
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem Amikor töredékvisszafejtési hiba történik, a lejátszó újrapróbálkozik az aktuális és a különböző töredékek, hogy visszaszerezze a lejátszást
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem Az AMP toleránsabbá tette az egymást átfedő video- vagy hangtöredékeket
+- Módosítása AMP Ha egy töredék-visszafejtési hiba történik, a lejátszó újrapróbálkozik a jelenlegi és a különböző töredékekkel a lejátszás helyreállításához.
+- Módosítása AMP Az egymást átfedő videó-vagy hangtöredékek nagyobb toleráns
 
-## <a name="223-official-update-january-9-2019"></a>2.2.3 (hivatalos frissítés 2019. január 9.) ##
+## <a name="223-official-update-january-9-2019"></a>2.2.3 (hivatalos frissítés, január 9 2019) ##
 
 ### <a name="features"></a>Szolgáltatások ###
 
-- [Szolgáltatás] [HLS] Hozzáadva a Safari HLS lejátszásának hangsáv-menüje
+- Vonás HLS A hangkövetési menü hozzáadva a Safari HLS lejátszásához
 
 ### <a name="bug-fixes-223"></a>Hibajavítások 2.2.3 ###
 
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem [Kisegítő lehetőségek] Élő közvetítés közben az "élő" gomb nem választható ki a billentyűzet használatával
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Javítottunk 0x0400003-es hamis pozitív eredményt a sikertelen MSE-teszt miatt
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Kijavítottunk egy problémát, amely miatt a videó lefagyhatott az élő közvetítés indításakor
+- [Hibajavítás] AMP Hozzáférhetőség Az élő közvetítés lejátszásakor az "élő" gomb nem választható ki a billentyűzet használatával
+- [Hibajavítás] AMP Kijavított hamis pozitív 0x0400003 hibák a sikertelen MSE-teszt miatt
+- [Hibajavítás] AMP Kijavítva a probléma, hogy a videó lefagyhat az élő stream indításakor
 
-### <a name="changes-223"></a>Változások 2.2.3 ###
+### <a name="changes-223"></a>Módosítások 2.2.3 ###
 
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem További információk a naplóban a jobb diagnosztika engedélyezéséhez
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem Ha egynél több bitráta érhető el ugyanazon a képernyőfelbontáson, az összes bitráta választható
+- Módosítása AMP További információ a naplóban a jobb diagnosztika érdekében
+- Módosítása AMP Ha több bitráta is elérhető ugyanazon a képernyőfelbontáson, az összes bitráta elérhető a kijelöléshez
 
 ## <a name="222-official-update"></a>2.2.2 (hivatalos frissítés) ##
 
 ### <a name="bug-fixes-222"></a>Hibajavítások 2.2.2 ###
 
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Ha a lejátszó átmeneti hálózati kimaradásba ütközik, azonnal leállítja a lejátszást
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem [Kisegítő lehetőségek] A hibapárbeszédpanel billentyűzettel nem érhető el
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Végtelen pörgető jelenik meg, ha csak hanganyagot játszik le a nem támogatott hiba helyett
+- [Hibajavítás] AMP Ha a lejátszó átmeneti hálózati kimaradást észlel, a lejátszás azonnal leáll
+- [Hibajavítás] AMP Hozzáférhetőség A hiba párbeszédpanel nem érhető el a billentyűzeten
+- [Hibajavítás] AMP A végtelen tárcsa akkor jelenik meg, ha a nem támogatott hiba helyett hangalapú eszközt játszik
 
-### <a name="changes-222"></a>Változások 2.2.2 ###
+### <a name="changes-222"></a>Módosítások 2.2.2 ###
 
-- - Nem, nem, nem, nem, nem, [AMP] honosított karakterláncokat adott hozzá a hirdetési felhasználói felülethez
+- Módosítása [AMP] honosított karakterláncok hozzáadása a hirdetmény felhasználói felületéhez
 
 ## <a name="221-official-update"></a>2.2.1 (hivatalos frissítés) ##
 
-### <a name="features-221"></a>Jellemzők 2.2.1 ###
+### <a name="features-221"></a>Szolgáltatások 2.2.1 ###
 
-- [Szolgáltatás] [CMAF] A HLS CMAF támogatása
+- Vonás CMAF A HLS-CMAF támogatása
 
 ### <a name="bug-fixes"></a>Hibajavítások ###
 
-- [Hibajavítás] [AMP] nem tisztázott időzítők az újrapróbálkozási logikában, ami lejátszási hibákat eredményez
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem [Firefox] véget ért esemény nem lőttek a Firefox és a Chrome, amikor megállt az élő program
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem A setsource után megjelenő vezérlők akkor is, ha a vezérlők hamisra vannak állítva a lejátszó beállításaiban
+- [Hibajavítás] [AMP] nem törölt időzítők az újrapróbálkozási logikában, amely lejátszási hibákat eredményez
+- [Hibajavítás] AMP A (z) [Firefox] véget ért esemény nem fut a Firefox és a Chrome alkalmazásban az élő program leállításakor
+- [Hibajavítás] AMP A setsource után megjelenő vezérlőelemek akkor is, ha a vezérlők hamis értékre vannak állítva a lejátszó beállításainál
 
 ### <a name="changes"></a>Változások ###
 
-- - Nem, nem, nem, nem, nem, [Élő feliratozás] A CEA-feliratok API-neve 608-ról 708-ra változott. További információ: [CEA708 Captions Settings](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
+- Módosítása [Élő felirat] A 608 és 708 közötti CEA-feliratok API-neve módosítva. További információ: CEA708- [feliratok beállításai](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.cea708captionssettings)-->
 
-## <a name="220-official-release"></a>2.2.0 (Hivatalos kiadás) ##
+## <a name="220-official-release"></a>2.2.0 (hivatalos kiadás) ##
 
-### <a name="features-220"></a>Jellemzők 2.2.0 ###
+### <a name="features-220"></a>Szolgáltatások 2.2.0 ###
 
-- [Szolgáltatás] [Azurehtml5JS] - Nem, nem, nem, nem, nem, [LiveCaption] CeA 708 feliratozási támogatás az Azurehtml5JS és a FlashSS technológiában a tiszta és AES-tartalmakért.
+- Vonás [Azurehtml5JS] Flash [LiveCaptions] CEA 708 feliratozási támogatás a Azurehtml5JS-ben és a Flash Tech-ben a tiszta és az AES-tartalomhoz.
 
-### <a name="bug-fixes-220"></a>Hibajavítások 2.2.0 ###
+### <a name="bug-fixes-220"></a>Hibajavítási 2.2.0 ###
 
-- [Hibajavítás] A Flash verziófelismerés nem működik a Chrome/Edge-ben
+- [Hibajavítás] A flash-verzió észlelése nem működik a Chrome-ban vagy az Edge-ben
 
-### <a name="changes-220"></a>Változások 2.2.0 ###
+### <a name="changes-220"></a>Változások a 2.2.0-ban ###
 
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem - Nem, nem, nem, nem, nem, nem, nem, nem, nem, nem Heurisztikus profilnév módosítása QuickStartive-ről LowLatency-re
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, A Flash player módosítása a verziófelismeréshez, hogy lehetővé tegye az AES-tartalom lejátszását az új Adobe Flash frissítéssel.
+- Módosítása AMP Heurisztika A heurisztikus profil nevének megváltozása a gyors útmutatóból a LowLatency
+- Módosítása Flash A Flash Player verzió észlelésének megváltoztatásával engedélyezheti az AES-tartalmak lejátszását az új Adobe Flash-frissítéssel.
 
 ## <a name="219-official-hotfix"></a>2.1.9 (hivatalos gyorsjavítás) ##
 
 ### <a name="bug-fixes-219"></a>Hibajavítások 2.1.9 ###
 
-- [Hibajavítás] - Nem, nem, nem, nem, nem, Kivétel, amikor az élő közvetítések áttérnek a video on demand/live archívumokra
+- [Hibajavítás] Live Kivétel történt, ha élő streamek áttérnek az igény szerinti videóra/élő archívumra
 
-### <a name="changes-219"></a>Változások 2.1.9 ###
+### <a name="changes-219"></a>2.1.9 módosítása ###
 
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, -1, hogy ne kellne. Módosított Flash tech logika, hogy ne használja sharedbytearrays az AES visszafejtése, mint az Adobe blokkolta a használat, mint a Flash 30. Kérjük, vegye figyelembe, hogy a lejátszás csak akkor működik, ha az Adobe telepíti a Flash új verzióját a v30 hibája miatt. További részletekért tekintse meg az [ismert problémákat](azure-media-player-known-issues.md)
+- Módosítása Flash AES A Flash műszaki logikát úgy módosította, hogy ne használja a sharedbytearrays for AES-visszafejtést, mivel az Adobe letiltotta a használatot a Flash 30 használatával. Vegye figyelembe, hogy a lejátszás csak akkor működik, ha az Adobe a V30 hibája miatt új flash-verziót helyez üzembe. További részletekért tekintse meg az [ismert problémákat](azure-media-player-known-issues.md)
 
 ## <a name="218-official-update"></a>2.1.8 (hivatalos frissítés) ##
 
 ### <a name="bug-fixes-218"></a>Hibajavítások 2.1.8 ###
 
-- [Hibajavítás] Spinner néha nem jelenik meg utáni keres és pre-play
-- [Hibajavítás] A lejátszó nem indul el némítva, ha a beállítás engedélyezve van
-- [Hibajavítás] A hangerő csúszka akkor jelenik meg, ha a vezérlők hamisra vannak állítva
-- [Hibajavítás] A lejátszás időnként ismétlődik, amikor a felhasználó az élő szélre ugrik
-- [Hibajavítás] [Firefox] Játékos alkalmanként dobja JavaScript kivétel betöltése
-- [Hibajavítás] [Kisegítő lehetőségek] A Lejátszás/Szünet/Hangerő gomb elveszíti a fókuszkörvonalat, ha billentyűzetvezérlőkkel van kijelölve
-- [Hibajavítás] Javítottuk, hogy a lejátszó memóriaszivárgása
-- [Hibajavítás] Az src() hívása a játékos hibái után nem állítja vissza a forrást
-- [Hibajavítás] - Nem, nem, nem, nem, nem, Az AMP állandó betöltési állapotban van, amikor a felhasználó az Élő gombra kattint az adás befejezése után
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem A lejátszó lefagy, és a lejátszás sikertelen, ha a böngésző a háttérbe marad.
+- [Hibajavítás] A Spinner alkalmanként nem jeleníti meg a post-és a lejátszási keresést
+- [Hibajavítás] A lejátszó nem indul el elnémul, ha engedélyezve van az elnémítva beállítás
+- [Hibajavítás] Ha a vezérlők hamis értékre vannak állítva, a Volume csúszka jelenik meg
+- [Hibajavítás] Lejátszás időnként megismételve, amikor a felhasználó kihagyja az élő szegélyt
+- [Hibajavítás] Firefox A lejátszó időnként JavaScript-kivételt dob a terhelésnél
+- [Hibajavítás] Hozzáférhetőség Lejátszás/szüneteltetés/hangerő gomb elveszíti a fókuszt, ha a billentyűzet vezérlőelemekkel van kiválasztva
+- [Hibajavítás] A lejátszón lévő rögzített memória-szivárgás el van távolítva
+- [Hibajavítás] Az src () hívása, miután a lejátszó hibái nem állítják vissza a forrást
+- [Hibajavítás] Live Az AMP állandó betöltési állapotban van, ha a felhasználó az élő gombra kattint a szórás befejezése után
+- [Hibajavítás] Chrome A lejátszó leáll, és a lejátszás meghiúsul, ha a böngésző a háttérben kis méretre van lebontva.
 
-### <a name="changes-218"></a>Változások 2.1.8 ###
+### <a name="changes-218"></a>2.1.8 módosítása ###
 
-- - Nem, nem, nem, nem, nem, Frissítve 0x0600001 errror megjelenítéséhez, ha Az AES tartalom lejátszása vissza a Flash 30, mivel ez nem támogatott ebben az időben. További részletekért tekintse meg az [ismert problémákat](azure-media-player-known-issues.md)
-- - Nem, nem, nem, nem, nem, További újrapróbálkozások hozzáadása az élő forgatókönyvekhez, amikor a jegyzékfájl 404-es kérelmet küld, vagy üres jegyzékeket ad vissza.
+- Módosítása Frissítve lett a 0x0600001-előállítással, ha az AES-tartalmat a Flash 30 használatával játssza le, mivel jelenleg nem támogatott. További részletekért tekintse meg az [ismert problémákat](azure-media-player-known-issues.md)
+- Módosítása További újrapróbálkozások lettek hozzáadva élő forgatókönyvekhez, amikor a 404-es jegyzékfájl-kérés vagy üres jegyzékfájlt ad vissza.
 
 ## <a name="217-official-update"></a>2.1.7 (hivatalos frissítés) ##
 
-### <a name="features-217"></a>Jellemzők 2.1.7 ###
+### <a name="features-217"></a>Funkciók 2.1.7 ###
 
-- [Szolgáltatás] [AzureHtml5JS] Hozzáadott konfigurációs lehetőség az elavult adatok kiürítéséhez az adathordozó-forráspufferben
+- Vonás [AzureHtml5JS] Konfigurációs beállítás hozzáadva az elavult adatforrások pufferének kiürítéséhez
 
 ### <a name="bug-fixes-217"></a>Hibajavítások 2.1.7 ###
 
-- [Hibajavítás] [Kisegítő lehetőségek] [Képernyőolvasó] Eltávolította az üres fejlécet a játékos tartalmazza, ha a cím nincs beállítva
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem Az AMP kivételt okoz az univerzális Windows-alkalmazásban való lejátszáskor
-- [Hibajavítás] [OSX] setActiveTextTrack() nem működik a Safari oSx
-- [Hibajavítás] - Nem, nem, nem, nem, nem, A játékos ártalmatlanítása és újrainicializálása után az élő élre kattintva kivételt képezakivétel
-- [Hibajavítás] - Nem, nem, nem, nem, nem, Egyes eszközök aktuális ideje csonkolva
-- [Hibajavítás] [DRM] javítás tartalmazza, hogy támogassa a lejátszást a böngészőkben, amelyek támogatják a több CENC DRM
+- [Hibajavítás] Hozzáférhetőség [Képernyőolvasó] Az üres fejléc el lett távolítva, ha a cím nincs beállítva.
+- [Hibajavítás] UWA Az AMP kidobja a kivételt az univerzális Windows-alkalmazásban való lejátszáskor
+- [Hibajavítás] [OSX] setActiveTextTrack () nem működik a Safariban az OSx-ben
+- [Hibajavítás] Live Kattintás az élő szélre a lejátszó hozamának ártalmatlanítása és újrainicializálása után
+- [Hibajavítás] Bőr Bizonyos adategységek aktuális ideje csonkítva
+- [Hibajavítás] [DRM] javítás a több CENC DRM-t támogató böngészőkben való lejátszás támogatásához
 
-### <a name="changes-217"></a>Változások 2.1.7 ###
+### <a name="changes-217"></a>2.1.7 módosítása ###
 
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, [Kisegítő lehetőségek] Nyelvi címke hozzáadása az összes mintához
+- Módosítása Minták Hozzáférhetőség Nyelvi címke hozzáadva az összes mintához
 
 ## <a name="216-official-update"></a>2.1.6 (hivatalos frissítés) ##
 
 ### <a name="bug-fixes-216"></a>Hibajavítások 2.1.6 ###
 
-- [Hibajavítás] Egy adott eszköz helytelen időtartamát megjelenítő AMP
-- [Hibajavítás] [Fairplay-HLS] A Fairplay hibái nem terjednek a felhasználói felületen
-- [Hibajavítás] Az AMP 2.1.5-ös ben figyelmen kívül hagyja az egyéni heurisztikus tulajdonságokat.
+- [Hibajavítás] AMP helytelen időtartam megjelenítése adott eszköz esetében
+- [Hibajavítás] [FairPlay-HLS] Fairplay hibák nem terjednek át a felhasználói felületre
+- [Hibajavítás] Egyéni heurisztikus tulajdonságok figyelmen kívül hagyása az AMP 2.1.5-ben.
 
-### <a name="changes-216"></a>Változások 2.1.6 ###
+### <a name="changes-216"></a>2.1.6 módosítása ###
 
-- - Nem, nem, nem, nem, nem, [FairplayDRM] Eltávolította a Cert-kérelem és a FairPlay licenckérelmének időidejét, hogy a PlayReady és a Widevine implementációkkal való paritás a paritást megtarthassa.
-- - Nem, nem, nem, nem, nem, Misc heurisztikus fejlesztések az elmosódott tartalom elleni küzdelemben
+- Módosítása [FairPlayDRM] A PlayReady-és Widevine-implementációk paritásának megőrzése érdekében a rendszer eltávolította a FairPlay-re vonatkozó tanúsítvány-és tanúsítványkérelem időkorlátját.
+- Módosítása Egyéb heurisztikus változások a homályos tartalom elleni küzdelemben
 
-### <a name="features-216"></a>Jellemzők 2.1.6 ###
+### <a name="features-216"></a>Funkciók 2.1.6 ###
 
-- [Szolgáltatás] Hozzáadott támogatás mpd-time-cmaf formátum
+- Vonás Támogatás: mpd-Time-CMAF formátum hozzáadva
 
 ## <a name="215-official-hotfix"></a>2.1.5 (hivatalos gyorsjavítás) ##
 
 ### <a name="bug-fixes-215"></a>Hibajavítások 2.1.5 ###
 
-- [Hibajavítás] [Feliratok] VTT stílus nem teszi helyesen a játékos
-- [Hibajavítás] [Kisegítő lehetőségek] Az Élő gombnak nincs ária címkéje
+- [Hibajavítás] Feliratok A lejátszó nem megfelelően jeleníti meg a VTT stílusát
+- [Hibajavítás] Hozzáférhetőség Az élő gomb nem rendelkezik ARIA-címkével
 
 ## <a name="214-official-update"></a>2.1.4 (hivatalos frissítés) ##
 
 ### <a name="bug-fixes-214"></a>Hibajavítások 2.1.4 ###
 
-- [Hibajavítás] [Kisegítő lehetőségek] - Nem, nem, nem, nem, nem, A felhasználók nem tudnak a vezérlősávon a teljes képernyős gomb jobb oldalán található egyéni gombokra összpontosítani
-- [Hibajavítás] [IE11] [Hangerősáv] A hangerő-felpakut vált a teljes videoképernyő villogása IE11-ben teljes képernyős módban
-- [Hibajavítás] [Bőr| Kiürítés] A vezérlősáv és a hangerősáv előugró ablaka között megjelenő térköz
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem [Feliratok] A régi beágyazott sávok nem törlődnek, ha egy meglévő lejátszóforrást módosítanak
-- [Hibajavítás] [Kisegítő lehetőségek] - Nem, nem, nem, nem, nem, A Képernyőolvasó helytelenül olvassa be a hangerőszabályzót
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Play Event alkalmanként nem tűz a Flash tech
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem - Nem, nem, nem, nem, nem, A lejátszás/szünet két kattintást igényel, ha a játékos fókuszban van, és teljes képernyős módban van
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem - Nem, nem, nem, nem, nem, Helytelen időtartam jelenik meg egy adott eszköz folyamatjelző sávján
-- [Hibajavítás] [ Hirdetések] - Nem, nem, nem, nem, nem, nem, nem, nem, A VAST-elemző nem kezeli azokat a VAST-fájlt, amely nem rendelkezik folyamatjelző-eseménnyel
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, [AMP 2.1.1] Kijavítottuk a Hive SDN plugin támogatásával kapcsolatos problémát
-- [Hibajavítás] [Kisegítő lehetőségek] A Narrátor felolvassa a "Midnight Mute button" (Éjféli elnémítás gomb) szöveget, ha a felhasználó a hangerőre fókuszál
+- [Hibajavítás] Hozzáférhetőség Fókusz A felhasználók nem láthatják a vezérlő sáv teljes képernyő gombjának jobb oldalán felvett egyéni gombokat.
+- [Hibajavítás] [IE11] [Kötet sáv] A többoldalas felugró ablak a teljes képernyős képernyőt a teljes képernyős módban IE11 teszi
+- [Hibajavítás] [Skin | Kiürítés] a vezérlő sáv és a kötet sáv előugró ablaka között megjelenő terület
+- [Hibajavítás] AMP Feliratok A régi beágyazott számok nem törlődnek, ha a forrás módosul egy meglévő lejátszón
+- [Hibajavítás] Hozzáférhetőség Narrátor A képernyőolvasó helytelenül olvassa be a kötet vezérlőelemet
+- [Hibajavítás] [Flash] A lejátszási esemény alkalmanként nem indul el a Flash techből
+- [Hibajavítás] AMP Fókusz A Play/Pause művelethez két kattintás szükséges, ha a lejátszó fókuszban van, és teljes képernyős módban van
+- [Hibajavítás] AMP Bőr Helytelen időtartam jelenik meg egy adott eszköz folyamatjelző sávján
+- [Hibajavítás] Hirdetések [Ad komornyik] A nagy elemző nem kezel olyan nagy fájlt, amely nem rendelkezik előrehaladási eseménnyel
+- [Hibajavítás] Sdn [AMP 2.1.1] A kaptár SDN beépülő modul támogatásának hibája kijavítva
+- [Hibajavítás] Hozzáférhetőség A Narrátor beolvassa a "Midnight Mute" gombot, ha a felhasználó a hangerő gombra koncentrál
 
-### <a name="changes-214"></a>Változások 2.1.4 ###
+### <a name="changes-214"></a>Módosítások 2.1.4 ###
 
-- - Nem, nem, nem, nem, nem, [Kisegítő lehetőségek] [Kisegítő technológia] Gombok most már aria-live ingatlan, hogy javítsa a tapasztalat segítő technológia
-- - Nem, nem, nem, nem, nem, [Kisegítő lehetőségek] [Hangerő gomb| Narrátor]A hangerőgomb kisegítő lehetőségeinek javítása a betabájzási funkció és a csúszka viselkedésének módosításával. Ezek a módosítások megkönnyítik a billentyűzet használói számára a lejátszó
-- - Nem, nem, nem, nem, nem, Fokozott inaktivitási helyi menü időmeghosszabbítása 3-5 másodpercről
-- - Nem, nem, nem, nem, nem, [Kisegítő lehetőségek] - Nem, nem, nem, nem, nem, nem, nem, nem, nem, nem Továbbfejlesztett fényességi kontrasztarány a legördülő menükben a feliratbeállításokban
+- Módosítása Hozzáférhetőség [Kisegítő technológia] A gombok mostantól ARIA-Live tulajdonsággal javítják a kisegítő technológiákkal kapcsolatos tapasztalatokat
+- Módosítása Hozzáférhetőség [Hangerő gomb | Narrátor] a hangerő-ellenőrzés jobb hozzáférhetősége a tabbing funkció és a csúszka működésének módosításával. Ezek a változtatások megkönnyítik a billentyűzet felhasználói számára a lejátszó kötetének módosítását
+- Módosítása Megnövekedett inaktivitási helyi menü időtúllépése 3 és 5 másodperc között
+- Módosítása Hozzáférhetőség Fényesség Továbbfejlesztett Fényerő-kontraszt arány a feliratok beállításaiban a legördülő menükben
 
 ## <a name="213-official-update"></a>2.1.3 (hivatalos frissítés) ##
 
 ### <a name="bug-fixes-213"></a>Hibajavítások 2.1.3 ###
 
-- [Hibajavítás] [Dugó| Cím Overlay] Cím Overlay plugin dob JS kivételek AMP v2. X+
-- [Hibajavítás] A Forráskészlet esemény akkor is elküldésre kerül a JavaScript-konzolra, ha a naplózás ki van kapcsolva
-- [Hibajavítás] - Nem, nem, nem, nem, nem, A játékos időtippjei a játékos kontextusán kívül jelennek meg, amikor az egérmutatót mindkét végidőtartam-sáv fölé viszik
-- [Hibajavítás] [Kisegítő lehetőségek] [Képernyőolvasó] A Narrátor a "Region Landmark" vagy a "Video Player Region Landmark" szöveget olvassa fel, ha a megtekintő a lejátszóra összpontosít
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem A lejátszó körvonala nem tiltható le CSS-en keresztül
-- [Hibajavítás] [Kisegítő lehetőségek] Nem lehet a teljes lejátszóra összpontosítani, ha a felhasználó teljes képernyős módban van
-- [Hibajavítás] - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, A bőr nem reagál a lokalizált LIVE szövegre japánul
-- [Hibajavítás] - Nem, nem, nem, nem, nem, Az időtartam és az aktuális idő lelesz vágva, amikor a stream 60 perces > -[Hibajavítás][iPhone| Élő]lejátszó az aktuális idő/időtartam szövegét jeleníti meg a vezérlősávon
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem A játékos heurisztika API-k hívása JavaScript-kivételeket eredményez
-- [Hibajavítás] [Natív Html5|iOS] Videotag tulajdonság "playsinline" nem terjed a játékos
-- [Hibajavítás] [iOS|iframe] A lejátszó nem tud teljes képernyős állapotba lépni az iPhone-on, ha a lejátszó be van töltve egy iframe-be
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem - Nem, nem, nem, nem, nem, nem, nem, nem, nem, nem Az AMP mindig hibrid profillal működik, függetlenül a játékoslehetőségektől
-- [Hibajavítás] [AMP| Win8.1]dob, ha a Win8.1 alkalmazásban található egy webview
+- [Hibajavítás] [Plugins | Cím átfedésben] az átfedésben lévő beépülő modul a AMP v2-mel rendelkező JS-kivételeket veti fel. X +
+- [Hibajavítás] A verziókövetés esemény a JavaScript-konzolra kerül, még akkor is, ha a naplózás ki van kapcsolva
+- [Hibajavítás] Bőr A játékosi idő tippek a lejátszó kontextusán kívül jelennek meg, amikor a végponti időtartam sáv fölé mutat
+- [Hibajavítás] Hozzáférhetőség [Képernyőolvasó] A Narrátor beolvassa a "régió Landmark" vagy a "videolejátszó régiójának nevezetessége" kifejezést, ha a megjelenítőn a Playerre fókuszál
+- [Hibajavítás] AMP A lejátszó körvonala nem tiltható le CSS-n keresztül
+- [Hibajavítás] Hozzáférhetőség Nem lehet tabulátort a teljes lejátszóra összpontosítani, ha a felhasználó teljes képernyős módban van
+- [Hibajavítás] Bőr Live A bőr nem válaszol a honosított élő szövegre japán nyelven
+- [Hibajavítás] Bőr Az időtartam és az aktuális idő kivágása a stream > 60 min-[hibajavítás] [iPhone | Élő] a lejátszó megjeleníti a vezérlőelem sávján az aktuális idő/időtartam szövegét
+- [Hibajavítás] AMP A Player heurisztikus API-k hívása JavaScript-kivételeket eredményez
+- [Hibajavítás] [Natív Html5 | iOS] A "playsinline" Videotag tulajdonság nem propagálható a lejátszóra
+- [Hibajavítás] [iOS | iframe] A lejátszó nem tud teljes képernyős értéket megadni az iPhone-on, ha a lejátszó iframe-ben van betöltve
+- [Hibajavítás] AMP Heurisztika Az AMP mindig a hibrid profillal működik, függetlenül a lejátszó lehetőségeitől
+- [Hibajavítás] [AMP | Win 8.1] dob, ha a Win 8.1 alkalmazásban webnézettel rendelkezik
 
 ### <a name="changes-213"></a>Változások 2.1.3 ###
 
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem CDN-végpontinformáció hozzáadva a FragmentDownloadComplete eseményben
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem - Nem, nem, nem, nem, nem, Továbbfejlesztett és optimalizált élő streamelési késleltetés
+- Módosítása AMP CDN-végpont információinak hozzáadása a FragmentDownloadComplete-eseményben
+- Módosítása AMP Live Továbbfejlesztett és optimalizált élő adatfolyam-késés
 
 ## <a name="212-official-hotfix"></a>2.1.2 (hivatalos gyorsjavítás) ##
 
 ### <a name="bug-fixes-212"></a>Hibajavítások 2.1.2 ####
 
-- [Hibajavítás] [Kisegítő lehetőségek] [Windows Narrátor] A Narrátor felolvassa a "Progress midnight" szöveget, ha a felhasználó nak van egy folyamatjelző sávja, és az aktuális idő 0:00
-- [Hibajavítás] [Skin]logo mérete nehezen kódolt JavaScript-kóddal
-- [Kisegítő lehetőségek] - Nem, nem, nem, nem, nem, nem, nem A gyorsbillentyűk nincsenek engedélyezve, ha a lejátszóra kattintanak.
+- [Hibajavítás] Hozzáférhetőség [Windows-Narrátor] A Narrátor a "Progress Midnight" szöveget olvassa be, ha a felhasználó a folyamatjelző sáv és az aktuális idő tekintetében 0:00
+- [Hibajavítás] [Skin] a logo méretének kódolása JavaScript-kódban
+- Hozzáférhetőség Billentyűparancsok Ha a lejátszóra kattint, a gyorsbillentyűk nem engedélyezettek.
 
-### <a name="changes-212"></a>Változások 2.1.2 ####
+### <a name="changes-212"></a>Módosítások 2.1.2 ####
 
-- - Nem, nem, nem, nem, nem, Nem, nem, nem, nem, nem, nem Naplólista URL-címe, ha a játékos nem tudja betölteni a jegyzékfájlt
+- Módosítása Naplózás Napló jegyzékfájljának URL-címe, ha a lejátszó nem tudja betölteni a jegyzékfájlt
 
-### <a name="features-212"></a>Jellemzők 2.1.2 ###
+### <a name="features-212"></a>Szolgáltatások 2.1.2 ###
 
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, [Optimalizálás] Továbbfejlesztett lejátszóterhelés és indítási idők
+- Módosítása Teljesítmény Optimalizálás Továbbfejlesztett lejátszó-betöltési és indítási idő
 
 ## <a name="211-official-update"></a>2.1.1 (hivatalos frissítés) ##
 
 ### <a name="bug-fixes-211"></a>Hibajavítások 2.1.1 ####
 
-- [Hibajavítás] [iOS] Az automatikus lejátszás hamis ra állítása végtelen pörgettyűt eredményez az iOS Safariban
-- [Hibajavítás] A tartalom időtartamánál nagyobb időre való törekvés végtelen pörgettyűt eredményez
-- [Hibajavítás] A gyorsbillentyűk több billentyűzetfülre van szükség ahhoz, hogy a lejátszó kontextusa működjön
-- [Hibajavítás] Videó lefagy néhány másodpercig átméretezése után a játékos bizonyos eszközök
-- [Hibajavítás] Végtelen tárcsa (után keres befejezi), ha a felhasználó nem több törekszik gyorsan
-- [Hibajavítás] A vezérlősáv inaktivitás közben nincs elrejtve
-- [Hibajavítás] Az AMP-t tartalmazó webapp megnyitása a weblap kétszeri betöltését okozhatja
-- [Hibajavítás] Végtelen játék közben tartalom bizonyos eszközök keresztül Flash Tech
-- [Hibajavítás] További beállítások menü nem jelenik meg a 3rd party plugins
-- [Hibajavítás] [Bőr| Tube][Élő] Két élő ikon jelenik meg, ha a játékos egy program élő élvonalában van
-- [Hibajavítás] - Nem, nem, nem, nem, nem, Az embléma nem tiltható le
-- [Hibajavítás] [DD+ tartalom] Folyamatos pörgettyű jelenik meg a Dolby Digital hangsávot tartalmazó eszközökszámára
-- [Hibajavítás] A legújabb AMP lefagy, amikor hangnyelvi sávokat vált az élő közvetítés során
-- [Bug Fix] fix háttér eltűnése a tárcsa
-- [Hibajavítás] Végtelen pörgettyű az AES flash token statikus minták hibajavítások
+- [Hibajavítás] iOS Az automatikus lejátszás beállítása hamis értékre a Safariban iOS-hez készült végtelen Spinner
+- [Hibajavítás] A tartalom időtartamát meghaladó időpontra való törekvés végtelen Spinner-t eredményez
+- [Hibajavítás] A gyorsbillentyűk több billentyűparancsot igényelnek a lejátszó környezetének eléréséhez
+- [Hibajavítás] A videó bizonyos eszközökön való átméretezése után néhány másodpercig lefagy
+- [Hibajavítás] Végtelen Spinner (a keresés befejezése után), ha a felhasználó több gyors keresést hajt végre
+- [Hibajavítás] A vezérlő sáv nem rejtett inaktivitás közben
+- [Hibajavítás] Ha egy olyan webappot nyit meg, amely az AMP-t futtatja, akkor a weblap kétszer is betöltődik
+- [Hibajavítás] Végtelen, miközben bizonyos adategységeket a Flash Tech használatával játszik
+- [Hibajavítás] A további beállítások menü nem jelenik meg a harmadik féltől származó beépülő moduloknál
+- [Hibajavítás] [Skin | Tube] [élő] két élő ikon jelenik meg, ha a lejátszó a program élő szélén van
+- [Hibajavítás] Bőr Az embléma nem tiltható le
+- [Hibajavítás] [DD + tartalom] A folyamatos tárcsa a Dolby Digital hangsávot tartalmazó eszközöket jeleníti meg
+- [Hibajavítás] A legújabb AMP lefagy a hangnyelvi számok a livestream-ban való váltásakor
+- [Hibajavítás] rögzített háttérbeli megszűnés a léptető esetében
+- [Hibajavítás] Végtelen tárcsa az AES Flash-jogkivonat statikus mintáinak hibajavításai
 
 ### <a name="changes-211"></a>Változások 2.1.1 ####
 
-- - Nem, nem, nem, nem, nem, Hozzáadott hibakód widevine Https követelmény: a Chrome v58, widevine tartalmat `https://` kell betölteni / lejátszani a protokollon keresztül, különben lejátszás sikertelen lesz.
-- - Nem, nem, nem, nem, nem, Hozzáadott ária címke betöltésére fonó, így segítő technológia narrátor "videó betöltése", ha a tartalom betöltése  
+- Módosítása A Widevine HTTPS-követelményhez hozzáadott hibakód: a Chrome-v58 a Widevine-tartalmat be kell tölteni/lejátszani a `https://` protokollon keresztül, máskülönben a lejátszás sikertelen lesz.
+- Módosítása Hozzáadott ARIA-címke a Spinner betöltéséhez, így a kisegítő technológia a "videó betöltését" is elmesélheti a tartalom betöltésekor  
 
-## <a name="210-official-release"></a>2.1.0 (Hivatalos kiadás) ##
+## <a name="210-official-release"></a>2.1.0 (hivatalos kiadás) ##
 
-### <a name="features-210"></a>Jellemzők 2.1.0 ###
+### <a name="features-210"></a>Funkciók 2.1.0 ###
 
-- [Szolgáltatás] [AzureHtml5JS] VOD hirdetés támogatás a közép-utáni tekercsek hez
-- [Szolgáltatás] - Nem, nem, nem, nem, nem, [AzureHtml5JS] Élő hirdetés támogatás a közepes utánra vonatkozó tekercsekhez
-- [Szolgáltatás] Hozzáadott új bőr opció - AMP-flush
-- [Szolgáltatás] Hozzáadott jobb ária címkék jobb integráció képernyőolvasók / segítő technológia
-- [Szolgáltatás] - Nem, nem, nem, nem, nem, A felszín mostantól az összes ikont és gombot jól mutatja nagy kontrasztú módban
+- Vonás [AzureHtml5JS] VOD ad-támogatás a pre-Mid-post-Rolls szolgáltatáshoz
+- Vonás Béta [AzureHtml5JS] Élő ad-támogatás a pre-Mid-post-Rolls szolgáltatáshoz
+- Vonás Új skin-beállítás hozzáadva – AMP-flush
+- Vonás Továbbfejlesztett ARIA-címkék hozzáadva a képernyőolvasók és a kisegítő technológiák jobb integrálásához
+- Vonás Bőr A Skin mostantól jól mutatja az összes ikont és gombot kontrasztos módban
 
 ### <a name="bug-fixes-210"></a>Hibajavítások 2.1.0 ###
 
-- [Hibajavítás] Kisegítő lehetőségek és felhasználói felületi javítások száma
-- [Hibajavítás] Az AMP nem töltődik be megfelelően az IE9-ben
+- [Hibajavítás] A kisegítő lehetőségek száma és a felhasználói felület javításai
+- [Hibajavítás] Az AMP nem töltődik be megfelelően a IE9
 
-### <a name="changes-210"></a>Változások 2.1.0 ###
+### <a name="changes-210"></a>2.1.0 módosítása ###
 
-- - Nem, nem, nem, nem, nem, Átalakított DOM elemek játékos elhelyezésére hirdetések munka
-- - Nem, nem, nem, nem, nem, CsS-ről SCSS-re váltott a bőr fejlesztéséhez
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, Hozzáadott minta VOD hirdetések
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, Hozzáadott minta a lejátszási sebességhez
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, Hozzáadott minta Flush Skin
+- Módosítása DOM-elemek átstrukturálása a lejátszóban a hirdetések működéséhez
+- Módosítása A CSS-ből a SCSS-re váltott
+- Módosítása Minták Példa a VOD-hirdetések hozzáadására
+- Módosítása Minták A lejátszási sebességhez hozzáadott minta
+- Módosítása Minták Minta hozzáadva a kiürítési bőrre
 
 ## <a name="200-beta-release"></a>2.0.0 (bétaverzió) ##
 
-- [Change]frissítve VJS5
-- [funkció] Hozzáadott új folyadék API a játékosok válaszkészség folyadék
-- [Szolgáltatás] Lejátszási sebesség
-- - Nem, nem, nem, nem, nem, CsS-ről SCSS-re váltson a bőrszámára
+- [Change] frissítve a VJS5
+- vonás Új Fluid API-t adott meg a lejátszó rugalmassága
+- Vonás Lejátszás sebessége
+- Módosítása A CSS-ből a SCSS for skinre váltott
 
-## <a name="183-official-hotfix-update"></a>1.8.3 (hivatalos gyorsjavítás-frissítés) ##
+## <a name="183-official-hotfix-update"></a>1.8.3 (hivatalos gyorsjavítás frissítése) ##
 
 ### <a name="bug-fixes-183"></a>Hibajavítások 1.8.3 ###
 
-- [Hibajavítás] [AzureHtml5JS] A negatív DTS-sel rendelkező bizonyos eszközök nem fognak lejátszani a Chrome-ban
+- [Hibajavítás] [AzureHtml5JS] Bizonyos, a negatív DTS-vel nem rendelkező eszközök nem fognak lejátszani a Chrome-ban
 
-## <a name="182-official-hotfix-update"></a>1.8.2 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="182-official-hotfix-update"></a>1.8.2 (hivatalos gyorsjavítás frissítése) ##
 
 ### <a name="bug-fixes-182"></a>Hibajavítások 1.8.2 ###
 
-- [Hibajavítás] [AzureHtml5JS] A magasabb hangbitsebességek nem játszódnak le az AzureHtml5JS-en keresztül
+- [Hibajavítás] [AzureHtml5JS] A nagyobb hangsebességek nem kerülnek vissza a AzureHtml5JS-on keresztül
 
 ## <a name="181-official-update"></a>1.8.1 (hivatalos frissítés) ##
 
 ### <a name="bug-fixes-181"></a>Hibajavítások 1.8.1 ###
 
-- [Hibajavítás] [iOS] A feliratok/feliratok nem jelennek meg a natív lejátszóban
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem CDN-fedezetű streamelési URL-címek, amelyek nem lejátszott hitelesítési tokenekkel vannak elfűzve
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem FairPlay hibakód hiányzik Tech ID (Bits [31-28] a ErrorCode) lásd hibakódok további részletek
-- [Hibajavítás] - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, nem, nem PlayReady tartalom a Safariban végtelen tárcsa
+- [Hibajavítás] iOS Nem jelennek meg a natív lejátszón lévő feliratok/feliratok
+- [Hibajavítás] AMP A CDN által támogatott folyamatos átviteli URL-címek, amelyek nem játszanak hitelesítési jogkivonatokkal
+- [Hibajavítás] Fairplay FairPlay hibakód: hiányzó technikai azonosító (BITS [31-28], ErrorCode) további részletekért lásd a hibakódokat.
+- [Hibajavítás] Safari PlayReady PlayReady-tartalom a Safariban végtelen Spinner
 
-### <a name="changes-181"></a>Változások 1.8.1 ###
+### <a name="changes-181"></a>A 1.8.1 módosítása ###
 
-- - Nem, nem, nem, nem, nem, [ Html5] Módosítsa a natív Html5 tech részletes naplókat, hogy tartalmazza a VideoTag eseményeit
+- Módosítása Html5 Natív Html5-technikai részletes naplók módosítása a VideoTag eseményeinek tárolására
 
 ## <a name="180-official-update"></a>1.8.0 (hivatalos frissítés) ##
 
-### <a name="features-180"></a>Jellemzők 1.8.0 ###
+### <a name="features-180"></a>Szolgáltatások 1.8.0 ###
 
-- [Jellemzők] - Nem, nem, nem, nem, nem, nem, nem Hozzáadott FairPlay támogatás (további információ: [Védett tartalom)](azure-media-player-protected-content.md)
+- Szolgáltatások DRM FairPlay-támogatás hozzáadva (további információért lásd a [védett tartalmakat](azure-media-player-protected-content.md) )
 
 ### <a name="bug-fixes-180"></a>Hibajavítások 1.8.0 ###
 
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem A felhasználókeresések nem váltanak ki várakozási eseményt, ha a hálózat szabályozása
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, A flash tech minőségének kiválasztása kivételt okoz
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem A minőség dinamikus kijelölése megjelenik a helyi menüben
-- [Hibajavítás] - Nem, nem, nem, nem, nem, Nehéz kiválasztani a helyi menük utolsó menüelemét
+- [Hibajavítás] AMP A felhasználói keresés nem indít el várakozási eseményt a hálózat szabályozásakor
+- [Hibajavítás] [Flash] A minőség kiválasztása a Flash Tech throws szolgáltatásban kivétel
+- [Hibajavítás] AMP A minőség dinamikus kiválasztása a helyi menüben jelenik meg
+- [Hibajavítás] Bőr Nehéz kiválasztani a helyi menük utolsó menüelemét
 
-### <a name="changes-180"></a>Változások 1.8.0 ###
+### <a name="changes-180"></a>A 1.8.0 módosítása ###
 
-- - Nem, nem, nem, nem, nem, Frissített lejátszó a Chrome EME jelenlegi követelményeinek megfelelően
-- - Nem, nem, nem, nem, nem, Alapértelmezett techOrder megváltozott elhelyezésére új tech- html5FairPlayHLS [(lásd: Védett tartalom](azure-media-player-protected-content.md) további információkért)
-- - Nem, nem, nem, nem, nem, [AzureHtml5JS] Engedélyezett MPEG-Dash lejátszás a Safariban
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, Megváltozott a Multi-DRM minták a FairPlay befogadására
+- Módosítása Frissített lejátszó a jelenlegi Chrome EME-követelményekhez
+- Módosítása Az alapértelmezett techOrder módosult, hogy megfeleljenek az új tech-html5FairPlayHLS (további információért lásd a [védett tartalmakat](azure-media-player-protected-content.md) )
+- Módosítása [AzureHtml5JS] MPEG-Dash-lejátszás engedélyezése a Safariban
+- Módosítása Minták Módosította a többplatformos DRM-mintákat a FairPlay befogadásához
 
-## <a name="174-official-hotfix-update"></a>1.7.4 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="174-official-hotfix-update"></a>1.7.4 (hivatalos gyorsjavítás frissítése) ##
 
 ### <a name="bug-fixes-174"></a>Hibajavítások 1.7.4 ###
 
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem Kék tagolás jelenik meg a seek handle körül, ha a felhasználó nak van kontextusa a lejátszó
-- [Hibajavítás] [IE9] JavaScript kivétel dobott, amikor a játékos betöltve IE9
+- [Hibajavítás] Chrome Kék körvonal jelenik meg, ha a felhasználó a lejátszó kontextusában van
+- [Hibajavítás] IE9 JavaScript-kivétel történt, amikor a lejátszó betöltődött a IE9
 
-## <a name="173-official-hotfix-update"></a>1.7.3 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="173-official-hotfix-update"></a>1.7.3 (hivatalos gyorsjavítások frissítése) ##
 
 ### <a name="bug-fixes-173"></a>Hibajavítások 1.7.3 ###
 
-- [Hibajavítás] [AzureHtml5JS] Játékos időtúllépés a korlátozott hálózatokban
+- [Hibajavítás] [AzureHtml5JS] A lejátszó időzítése korlátozott hálózatokon
 
-### <a name="changes-173"></a>Változások 1.7.3 ###
+### <a name="changes-173"></a>Módosítások 1.7.3 ###
 
-- - Nem, nem, nem, nem, nem, Webcrypto engedélyezése az Edge-en az AES-tartalom visszafejtéséhez
-- - Nem, nem, nem, nem, nem, Az AMP heurisztika optimalizálása a gyorsítótárazott adattömbök figyelembevételével
-- - Nem, nem, nem, nem, nem, [AzureHtml5JS] A heurisztikus optimalizálása a sávszélesség becslésének késleltetésének csökkentésével
+- Módosítása Webkriptográfia engedélyezése az Edge-ben az AES-tartalom visszafejtéséhez
+- Módosítása Az AMP heurisztikus elemek optimalizálása a gyorsítótárazott adattömbök esetében
+- Módosítása [AzureHtml5JS] Heurisztikus optimalizálás a sávszélesség-becslés késleltetésének csökkentésével
 
-## <a name="172-official-hotfix-update"></a>1.7.2 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="172-official-hotfix-update"></a>1.7.2 (hivatalos gyorsjavítás frissítése) ##
 
-### <a name="features-172"></a>Jellemzők 1.7.2 ###
+### <a name="features-172"></a>Funkciók 1.7.2 ###
 <!---API needs onboarding. Removed link to API until remedied.--->
-- [Szolgáltatás] [AzureHtml5JS| Firefox] A Widevine lejátszásának engedélyezése az EME firefox 47+ számára
-- [Szolgáltatás] Esemény hozzáadása a lejátszó dúsítódulatához
+- Vonás [AzureHtml5JS | Firefox] a Widevine-lejátszás engedélyezése az EME-vel a Firefox 47-es és újabb
+- Vonás Esemény hozzáadása a lejátszó ártalmatlanításához
 <!-- ([disposing](index.html#static-amp.eventname.disposing)) -->
 
 ### <a name="bug-fixes-172"></a>Hibajavítások 1.7.2 ###
 
-- [Hibajavítás] Kódolt Akamai CDN URL lekérdezési paraméterek nem megfelelően dekódolt
-- [Hibajavítás] Kivétel jelenik meg a manifestPlayableWindowLength()
-- [Hibajavítás] A megtekintő nem mindig kattinthat a videó lejátszása után, miután a videó újranézett
-- [Hibajavítás] Az adaptív méretezés nem felel meg a gyors ablakméret-változásoknak
-- [Hibajavítás] [Él| IE] Az adaptív méretezés nem lép érvénybe a width=x, height=auto oldalterhelésnél
-- [Hibajavítás] [Android| Chrome] Chrome kér engedélyt a DRM-tartalom lejátszására, ha a tartalom nincs titkosítva
-- [Hibajavítás] [Kisegítő lehetőségek] - Nem, nem, nem, nem, nem, A billentyűzetvezérlők nem jelölik ki megfelelően a helyi menü elemeit
-- [Hibajavítás] [Kisegítő lehetőségek] Hiányzik a megjelenített szegély kontrasztos módban
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Az egérfelegér-figyelő nem lett eltávolítva a lejátszó dispose után kivételt okoz
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Jegyzékfájl URL-címének elemzési problémája kódolt szóközökkel
-- [Hibajavítás] [iOS] Típushiba a tech.featuresVolumeControl kiértékelésekor
+- [Hibajavítás] A kódolt Akamai CDN URL-lekérdezési paraméterek helytelenül vannak dekódolva
+- [Hibajavítás] Kivétel történt a manifestPlayableWindowLength ()-on való kidobáskor
+- [Hibajavítás] A videó nem mindig kattinthat a videó lejátszására, miután a videó véget ért
+- [Hibajavítás] A rugalmas méretezés nem felel meg a gyors ablakméret változásának
+- [Hibajavítás] [Edge | IE] a rugalmas méretezés nem lép érvénybe a szélesség = x, height = automatikus terhelésnél.
+- [Hibajavítás] [Android | Chrome] Chrome – kérdezés a DRM-tartalmak lejátszásához, ha a tartalom nincs titkosítva
+- [Hibajavítás] Hozzáférhetőség Edge A billentyűzet vezérlőelem nem megfelelően jelöli ki a helyi menüelemeket
+- [Hibajavítás] Hozzáférhetőség Hiányzó megjelenő szegély magas kontrasztú módban
+- [Hibajavítás] [Flash] Az egérmutató nem távolítja el az esemény-figyelőt, miután a Player kidobja a kivételt
+- [Hibajavítás] [Flash] A jegyzékfájl URL-címének elemzése a kódolt szóközökkel
+- [Hibajavítás] iOS Írja be a hibát a tech. featuresVolumeControl kiértékelése során
 
-### <a name="changes-172"></a>Változások 1.7.2 ###
+### <a name="changes-172"></a>1.7.2 módosítása ###
 
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, nem, nem Áthelyezte a DRM-ellenőrzéseket a forrás beállítása után, hogy csak akkor ellenőrizze, ha a tartalom titkosítva van
-- - Nem, nem, nem, nem, nem, -1, hogy ne kellne. A kulcskézbesítési kérelemből eltávolított, definiálatlan típus/egyszerű törzs
-- - Nem, nem, nem, nem, nem, [Kisegítő lehetőségek] A Windows narrátor mostantól a "Media Player" szöveget olvassa el, ha a kontextus a lejátszón van a tulajdonságok helyett
+- Módosítása DRM Áthelyezett DRM-ellenőrzések a forrás beállítása után, hogy csak a tartalom titkosítását ellenőrizze.
+- Módosítása AES Nem definiált típus/egyszerű törzs eltávolítva a Key Delivery kérelemből
+- Módosítása Hozzáférhetőség A Windows Narrátor most beolvassa a "Media Player" értéket, ha a környezet a tulajdonságok helyett a lejátszón van
 
-## <a name="171-official-hotfix-update"></a>1.7.1 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="171-official-hotfix-update"></a>1.7.1 (hivatalos gyorsjavítás frissítése) ##
 
-### <a name="features-171"></a>Jellemzők 1.7.1 ###
+### <a name="features-171"></a>Funkciók 1.7.1 ###
 
-- [Szolgáltatás] Hozzáadott lehetőség hibrid heurisztikus profil (ez a profil alapértelmezés szerint be van állítva)
+- Vonás Hozzáadott lehetőség a hibrid heurisztikus profilhoz (alapértelmezés szerint ez a profil van beállítva)
 
 ### <a name="bug-fixes-171"></a>Hibajavítások 1.7.1 ###
 
-- [Hibajavítás] Az adaptív kialakítás nem a HTML5-szabvány szerint működik (width=100%, height=auto)
-- [Hibajavítás] A szélesség és a magasság százalékos értékei nem a várt módon viselkednek az 1.7.0-s részben.
+- [Hibajavítás] A rugalmas kialakítás nem használható HTML5-szabványként (szélesség = 100%, height = automatikus)
+- [Hibajavítás] A szélesség és a magasság százalékos értékei nem a várt módon jelennek meg a v 1.7.0
 
 ## <a name="170-official-update"></a>1.7.0 (hivatalos frissítés) ##
 
-### <a name="features-170"></a>Jellemzők 1.7.0 ###
+### <a name="features-170"></a>Funkciók 1.7.0 ###
 <!---API needs onboarding. Removed link until remedied.--->
-- [Szolgáltatás] [AzureHtml5JS] - Nem, nem, nem, nem, nem, nem, nem, nem, Hozzáadott currentMediaTime() hogy a kódoló média idő az aktuális idő másodpercben
-- [Szolgáltatás] - Nem, nem, nem, nem, nem, nem, nem, nem, Megvalósított letöltési telemetriai API-k videoBufferData() és audioBufferData()<!-- (see [BufferData](index.html#amp.bufferdata) for more details) -->
-- [Szolgáltatás] - Nem, nem, nem, nem, nem, nem, nem, nem, Hozzáadott "downloadbitratechanged" esemény
-- [Szolgáltatás] A betöltési idő javult a lejátszó régebbi verzióihoz képest
-- [Szolgáltatás] A hibákat a Rendszer a JavaScript-konzolra naplózza
+- Vonás [AzureHtml5JS] [Flash] A currentMediaTime () hozzáadása az aktuális idő kódoló adathordozójának lekéréséhez másodpercek alatt
+- Vonás [Flash] Implementált telemetria API-k letöltése a videoBufferData () és a audioBufferData () segítségével<!-- (see [BufferData](index.html#amp.bufferdata) for more details) -->
+- Vonás [Flash] "Downloadbitratechanged" esemény hozzáadva
+- Vonás Betöltési idő javult a lejátszó régebbi verzióihoz képest
+- Vonás A hibák a JavaScript-konzolra vannak naplózva
 
 ### <a name="bug-fixes-170"></a>Hibajavítások 1.7.0 ###
 
-- [Hibajavítás] Kódolt poszter URL-cím olyan lekérdezési karakterlánc-paraméterekkel, amelyek nem jelennek meg a lejátszóban
-- [Hibajavítás] Kivétel történt, ha nincs tech betöltve és API erősítő. Player.poster() neve
-- [Hibajavítás] Kivétel, amikor a függvények megpróbálnak hozzáférni a lejátszóhoz az ártalmatlanítás után
-- [Hibajavítás] [Kisegítő lehetőségek] Hiányzó vázlat a progressdénysáv-keresőfejre való összpontosításról
-- [Hibajavítás] [Kisegítő lehetőségek] A helyi menük árnyéka kontrasztos módban
-- [Hibajavítás] [iOS] natív játékos WebVTT feliratok lejátszás nem működik
-- [Hibajavítás] [AzureHtml5JS] Hiba 0x0100002 kell jelennie, amikor játszik HTTP stream HTTPS oldalon, hogy ahelyett, hozamok végtelen tárcsa eredményeként vegyes tartalom
-- [Hibajavítás] [AzureHtml5JS] Hiányzó zárószegmens, amely hurokállapot-ellenőrzési hibát okoz, és végtelen pufferelési állapotot jelenít meg
-- [Hibajavítás] [AzureHtml5JS] Helytelen hangsáv név a menüben a ManifestForLabel=false és a hárombetűs nyelvkódok használatakor
-- [Hibajavítás] [AzureHtml5JS| Chrome] Érzékelt végtelen puffer állapot végén a tartalom által okozott lebegőpontos pontatlanság időtartama JavaScript a Chrome-ban
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Nem végzetes időszakos hiba egy pillanatra jelenik meg, amikor flash player létre
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Lejátszás sikertelen, ha a video-és audio-patakok használata különböző időskálák miatt kerekítéspontatlanság nem a "Fragment url (...) nem sikerült flvtag-ot létrehozni"
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, A jegyzékfájl URL-címének kódolt szóközökkel való elemzésével kapcsolatos problémák
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Hiányzó ellenőrzés annak megállapítására, hogy a Flash player verziója >= 11.4, amely hibát okoz a lejátszásban, ahelyett, hogy visszaesne a techOrder következő technológiájára
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, -1, hogy ne kellne. Problémák az aláhúzással ellátott AES tokenek elfogadásával
-- [Hibajavítás] [SilverlightSS| Az OSX] "//" a protokoll (HTTP vagy HTTPS) helyett egy jegyzékfájl előhívását a rendszer végtelen tárcsaként eredményező helyi fájlként ismeri fel.
+- [Hibajavítás] Kódolt poszter-URL-cím lekérdezési karakterlánc-paraméterekkel nem jeleníthető meg a lejátszón
+- [Hibajavítás] Kivétel történt, ha nincs Tech betöltve és API amp. A Player. poszter () neve
+- [Hibajavítás] Kivétel történt, ha a függvények kidobás után próbálnak hozzáférni a lejátszóhoz
+- [Hibajavítás] Hozzáférhetőség Hiányzó körvonal a Fókuszban a folyamatjelző sáv számára
+- [Hibajavítás] Hozzáférhetőség A helyi menük árnyéka kontrasztos módban van
+- [Hibajavítás] [iOS] a natív lejátszó WebVTT feliratai nem működnek
+- [Hibajavítás] [AzureHtml5JS] A 0x0100002 hibaüzenetet kell megjeleníteni, ha HTTP-adatfolyamot használ a HTTPS-helyen, amely Ehelyett a végtelen Spinner-t a kevert tartalom eredményeképpen eredményezi.
+- [Hibajavítás] [AzureHtml5JS] Hiányzó végpont, amely az észlelt végtelen pufferelési állapotot eredményező állapot-ellenőrzési hibát okoz
+- [Hibajavítás] [AzureHtml5JS] Helytelen a hangkövetés neve a menüben, ha a useManifestForLabel = false és a három betűs nyelvi kód van használatban
+- [Hibajavítás] [AzureHtml5JS | A Chrome] a tartalom végén észlelte a végtelen puffer állapotát, amely a JavaScriptben a Chrome-ban az időtartam alatt a lebegőpontos pontatlanságot okozta.
+- [Hibajavítás] [Flash] Nem végzetes időszakos hiba, amely egy pillanatra jelenik meg a Flash Player létrehozásakor
+- [Hibajavítás] [Flash] A lejátszás meghiúsul, ha a videó-és hangadatfolyamok eltérő időkereteket használnak a "töredék URL-cím (...) lekerekítése miatt. nem sikerült létrehozni a FLVTags "
+- [Hibajavítás] [Flash] Problémák a jegyzékfájl-URL-címek és a kódolt szóközök elemzésével
+- [Hibajavítás] [Flash] Hiányzik annak megállapítása, hogy a Flash Player verziója >= 11,4, amely hibát okoz a lejátszásban, ahelyett, hogy visszakerül a techOrder következő technológiára.
+- [Hibajavítás] [Flash] AES Az AES-tokenek és az aláhúzások elfogadásával kapcsolatos problémák
+- [Hibajavítás] [Silverlight | OSX] "//" a jegyzékfájlnak a protokoll helyett történő előjavítása (HTTP vagy HTTPS) helyi fájlként a végtelen Spinner
 
-### <a name="changes-170"></a>Változások 1.7.0 ###
+### <a name="changes-170"></a>1.7.0 módosítása ###
 
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, nem, nem, nem, Egyesített SWF-parancsfájlok ("MSAdaptiveStreamingPlugin-osmf2.0.swf" és "StrobeMediaPlayback.2.0.swf") egyetlen SWF-fájlba, a "StrobeMediaPlayback.2.0.swf"
-- - Nem, nem, nem, nem, nem, - Nem, nem, nem, nem, nem, nem, nem, nem, Frissített hibakód-propagálás, hogy pontosabb hibakódokat kapjon (pl. 404s most eredménye0x30200194 helyett általános hiba 0x30200000)
+- Módosítása [Flash] Egyesített SWF-parancsfájlok ("MSAdaptiveStreamingPlugin-osmf 2.0. swf" és "StrobeMediaPlayback. 2.0. swf") egyetlen, "StrobeMediaPlayback. 2.0. swf" nevű SWF-fájlba
+- Módosítása [Flash] Frissített hibakód-propagálás a pontosabb hibakódok beszerzéséhez (pl. a 404s most az általános hiba 0x30200000 helyett 0x30200194 eredményez.
 
-## <a name="163-official-hotfix-update"></a>1.6.3 (hivatalos gyorsjavítás-frissítés) ##
+## <a name="163-official-hotfix-update"></a>1.6.3 (hivatalos gyorsjavítás frissítése) ##
 
 ### <a name="bug-fixes-163"></a>Hibajavítások 1.6.3 ###
 
-- [Hibajavítás] JavaScript-futásidejű kivétel, ha a gyorsbillentyűk eseménykezelője a lejátszó ártalmatlanítása után kerül végrehajtásra
-- [Hibajavítás] - Nem, nem, nem, nem, nem, [AzureHtml5JS] Nincs lejátszás mobileszközön mobilhálózaton
-- [Hibajavítás] Frissítve Forge futtatni, mint a webes munkavállaló, hogy szabadítsa fel UI
+- [Hibajavítás] JavaScript futásidejű kivétel, ha a hotkeys eseménykezelő a lejátszó ártalmatlanítása után fut
+- [Hibajavítás] Android [AzureHtml5JS] A mobileszköz nem használ mobil hálózatot használó lejátszást
+- [Hibajavítás] Frissített hamisítás a webes feldolgozóként való futtatáshoz a felhasználói felület felszabadítása érdekében
 
-## <a name="162-official-hotfix-update"></a>1.6.2 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="162-official-hotfix-update"></a>1.6.2 (hivatalos gyorsjavítás frissítése) ##
 
-### <a name="features-162"></a>Jellemzők 1.6.2 ###
+### <a name="features-162"></a>Szolgáltatások 1.6.2 ###
 
-- [Szolgáltatás] További nyelvek hozzáadása a honosításhoz (további részleteka dokumentációban)
+- Vonás További nyelvek hozzáadása a honosításhoz (további részleteket a dokumentációban talál)
 
 ### <a name="bug-fixes-162"></a>Hibajavítások 1.6.2 ###
 
-- [Hibajavítás] [IE9-10] Kattintson a területek körül a játékos minimalizált böngésző ablak miatt IE9/IE10 hiba, amely minimálisra csökkenti a window.blur()
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Aláhúzással ellátott AES-tokenek nem fogadása
+- [Hibajavítás] [IE9-10] Kattintson a lejátszó környékén található területekre a böngészőablakban, a IE9/IE10 hiba miatt, amely a window. blur ()-ra való lekicsinyítést eredményezi.
+- [Hibajavítás] [Flash] Nem fogad el AES-tokeneket az aláhúzásokkal
 
-## <a name="161-official-hotfix-update"></a>1.6.1 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="161-official-hotfix-update"></a>1.6.1 (hivatalos gyorsjavítás frissítése) ##
 
 ### <a name="bug-fixes-161"></a>Hibajavítások 1.6.1 ###
 
-- [Hibajavítás] [Villog| Él,IE][SilverlightSS| IE] Nem tud összpontosítani más ui elemek bemenetek vagy más IE / Edge
-- [Hibajavítás] AES lejátszás sikertelen, ha kovácsolni undefined
-- [Hibajavítás] - Nem, nem, nem, nem, nem, [AzureHtml5JS| Chrome] A folyamatos pörgettyű nem játssza le a tartalmat az állapotellenőrző ciklusban
-- [Hibajavítás] [IE9] console.log() nem támogatja az IE 9 kivételt okozó
+- [Hibajavítás] [Villanások | Edge, IE] [Silverlights | IE] nem lehet összpontosítani más felhasználói felületi elemekre a bemenetekhez vagy az IE/Edge-ben.
+- [Hibajavítás] Az AES-lejátszás meghiúsul, ha nem definiált hamis
+- [Hibajavítás] Android [AzureHtml5JS | Chrome] a folyamatos tárcsa nem játssza le a tartalmat, ha állapot-ellenőrzési hurokban van
+- [Hibajavítás] [IE9] Console. log () nem támogatott az IE 9 okozza a kivételt
 
 ## <a name="160-official-update"></a>1.6.0 (hivatalos frissítés) ##
 
-### <a name="features-160"></a>Jellemzők 1.6.0 ###
+### <a name="features-160"></a>Funkciók 1.6.0 ###
 
-- [Feature] 33%-os méretcsökkentése azuremediaplayer.min.js
-- [Szolgáltatás] [AzureHtml5JS| Edge][Nem tesztelt] DD+ hangfolyamok támogatása az Edge-ben (a kezdeti választás után nincs kodekváltás). Az alkalmazásnak ekkor kell kiválasztania a megfelelő hangfolyamot.
-- [Szolgáltatás] Gyorsbillentyű-vezérlők (további részletek a dokumentumokban)
-- [Szolgáltatás] Haladás idő tipp lebeg az idő pontos keres
-- [Szolgáltatás] Engedélyezze a bővítmények aszinkron észlelését, ha a setupDone metódus létezik a beépülő modulban
+- [Funkció] 33%-os méret csökkentése a azuremediaplayer. min. js-ben
+- Vonás [AzureHtml5JS | Edge] [nem tesztelt] a DD + audio streamek támogatása az Edge-ben (a kezdeti választás után nincs szükség a kodekre). Az alkalmazásnak most ki kell választania a megfelelő hangadatfolyamot.
+- Vonás Billentyűparancs-vezérlők (további részletekért lásd: docs)
+- Vonás Időponthoz tartozó tipp – pontos keresés
+- Vonás Beépülő modulok aszinkron észlelésének engedélyezése, ha a beépülő modulban létezik a setupDone metódus
 
 ### <a name="bug-fixes-160"></a>Hibajavítások 1.6.0 ###
 
-- [Hibajavítás] A memórianapló nem ürül a getMemoryLog(true)
-- [Hibajavítás] A bitráta választómező visszaáll az egér mozgatásakor, ami problémát okoz az alacsonyabb bitráták egérvezérléssel történő kiválasztásával
-- [Hibajavítás] Az applikátor Mac Office-összeomlása a DRM-ellenőrzés végrehajtásakor
-- [Hibajavítás] CSS osztályok könnyen véletlenül felülírja
-- [Hibajavítás] Nem, nem, nem, nem, nem, nem A felhasználói ügynök karakterlánc-böngészőjének frissítése az Edge
-- [Hibajavítás] [AzureHtml5JS] A Feliratok gomb nem jelenik meg az eszköztáron az Edge(Win10) vagy a Chrome(Mac)
-- [Hibajavítás] - Nem, nem, nem, nem, nem, [AzureHtml5JS| Chrome] InvalidStateError kivétel endOfStream() rövid videók on endOfStream() hívása
-- [Hibajavítás] [Firefox] A Firefox által okozott DRM-figyelmeztetés eltávolítása a böngésző képességeinek ellenőrzésekor
-- [Hibajavítás] [ Html5] A feliratok/feliratok nem jelennek meg progresszív mp4 tartalommal
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Az egyező időbélyeggel rendelkező üzenetek fordított sorrendben voltak naplózva
-- [Hibajavítás] [Kisegítő lehetőségek] [Chrome| Firefox] Tab és válasszuk ellenőrzések automatikusan válassza ki az első menüpont
-- [Hibajavítás] [Kisegítő lehetőségek] Tab billentyűvel vezéreli a hangerőgombot
+- [Hibajavítás] A getMemoryLog nem üríti ki a memória naplóját (igaz)
+- [Hibajavítás] A bitráta kiválasztási mezője alaphelyzetbe állítja az egér mozgatását, ami kijelöli az alsó bitrátát az egér vezérlőelemen keresztül
+- [Hibajavítás] A Mac Office az alkalmazásban összeomlik a DRM-ellenőrzések végrehajtásakor
+- [Hibajavítás] A CSS-osztályok egyszerűen felülírva
+- [Hibajavítás] Chrome A felhasználó-ügynök sztring böngészőből származó azonosítás frissítése Edge
+- [Hibajavítás] [AzureHtml5JS] A feliratok gomb nem jelenik meg az Edge (Win10) vagy a Chrome (Mac) eszköztárán
+- [Hibajavítás] Android [AzureHtml5JS | Chrome] InvalidStateError kivétel a endOfStream () hívása rövid videókon
+- [Hibajavítás] Firefox A Firefox által a böngésző képességeinek ellenőrzésekor okozott DRM-figyelmeztetés eltávolítása
+- [Hibajavítás] Html5 Nem jelennek meg a progresszív MP4-tartalommal rendelkező feliratok/feliratok
+- [Hibajavítás] [Flash] Az egyező időbélyegzővel rendelkező üzenetek naplózása fordított sorrendben történt
+- [Hibajavítás] Hozzáférhetőség [Chrome | Firefox] lapon jelölje be a vezérlők automatikus kiválasztása az első menüelemből elemet.
+- [Hibajavítás] Hozzáférhetőség Lap a Volume gomb vezérléséhez
 
-### <a name="changes-160"></a>Változások 1.6.0 ###
+### <a name="changes-160"></a>1.6.0 módosítása ###
 
-- - Nem, nem, nem, nem, nem, Az AES visszafejtési idejének használata minőségi szintű kiválasztáskor
-- - Nem, nem, nem, nem, nem, Az URL-újraíró frissítése a HLS v4 használata a HLS v3 előtt a többhangú adatfolyamok hoz
-- - Nem, nem, nem, nem, nem, Állítsa a nativeControlsForTouch értéket hamis értékre alapértelmezettként (a megfelelő működéséhez hamisnak kell lennie)
+- Módosítása AES-visszafejtési idő használata a minőségi szint kiválasztásakor
+- Módosítása URL-újraíró frissítése a HLS v4 használatához, mielőtt HLS v3-t használ a több hangos adatfolyamok számára
+- Módosítása A nativeControlsForTouch beállítása false (hamis) értékre alapértelmezettként (false-nak kell lennie ahhoz, hogy megfelelően működjön)
 
 ## <a name="150-official-update"></a>1.5.0 (hivatalos frissítés) ##
 
-### <a name="features-150"></a>Jellemzők 1.5.0 ###
+### <a name="features-150"></a>Szolgáltatások 1.5.0 ###
 
-- [Szolgáltatás] Fejlesztések az általános webes biztonság (megelőzése injekció, XSS, stb)
-- [Szolgáltatás] SDN plugin integrációs horgok sourceset esemény és options.sdn
-- [Szolgáltatás] Az 5XX és 4XX hibák robusztussági kezelése lejátszás közben
+- Vonás Az általános webes biztonság fejlesztései (az injekció, az XSS stb.)
+- Vonás SDN beépülő modul integrációs horgok sourceset-eseményekhez és-beállításokhoz. Sdn
+- Vonás A 5XX és a 4XX hibák robusztus kezelését a lejátszás során
 
 ### <a name="bug-fixes-150"></a>Hibajavítások 1.5.0 ###
 
-- [Hibajavítás] A CSS-minification frissítése a Html-entitás betűtípuskódjainak használatához a Unicode helyett
-- [Hibajavítás] [AzureHtml5JS] A multi-DRM-tartalom mindig kiválasztja az első elem tokenjét a protectionInfo-ből, ami a második DRM sikertelensítését okozza
-- [Hibajavítás] [AzureHtml5JS] Keresek soha nem fejeződik be, ha keres egy olyan területen, a hiányzó szegmensek.
-- [Hibajavítás] [AzureHtml5JS| Edge] Előtaggal rögzített EME engedélyezése az Edge frissítésben a PlayReady lejátszáshoz
-- [Hibajavítás] [AzureHtml5JS| Firefox] Update EME ellenőrzés, hogy a Firefox v42 + (az MSE) a tartalék silverlight a védett tartalom
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, A error.message frissítése számról részletes karakterláncra
+- [Hibajavítás] A CSS-minification frissítése a HTML-entitás betűkészlet-kódjának használatára a Unicode helyett a gombokhoz
+- [Hibajavítás] [AzureHtml5JS] A multi-DRM-tartalom mindig kiválasztja az első elem tokenjét a protectionInfo, ami második DRM-t okoz
+- [Hibajavítás] [AzureHtml5JS] A keresés soha nem fejeződik be, amikor egy hiányzó szegmenst tartalmazó régióban keres.
+- [Hibajavítás] [AzureHtml5JS | Edge] a PlayReady lejátszásának engedélyezése a peremhálózati frissítéshez
+- [Hibajavítás] [AzureHtml5JS | Firefox] a Firefox V42 + (MSE) szolgáltatással való tartalékának engedélyezése a Silverlight szolgáltatáshoz a védett tartalomhoz
+- [Hibajavítás] [Flash] Frissítési hiba. üzenet a számtól a részletes sztringig
 
-### <a name="changes-150"></a>Változások 1.5.0 ###
+### <a name="changes-150"></a>A 1.5.0 módosítása ###
 
-- - Nem, nem, nem, nem, nem, A poszterek jelenleg csak abszolút URL-ként működnek.
+- Módosítása A plakátok jelenleg csak abszolút URL-címekként működnek.
 
 ## <a name="140-official-update"></a>1.4.0 (hivatalos frissítés) ##
 
-### <a name="features-140"></a>Jellemzők 1.4.0 ###
+### <a name="features-140"></a>Funkciók 1.4.0 ###
 
-- [Szolgáltatás] [AzureHtml5JS| Chrome] Egyszerű Widevine DRM támogatás
-- [Szolgáltatás] [AzureHtml5JS] A 404/412 hibák robusztussági kezelése lejátszás közben
+- Vonás [AzureHtml5JS | Chrome] egyszerű Widevine DRM-támogatás
+- Vonás [AzureHtml5JS] 404/412 hibák robusztus feldolgozása lejátszás közben
 
 ### <a name="bug-fixes-140"></a>Hibajavítások 1.4.0 ###
 
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, A paraméterek érvényesítésének javítása
+- [Hibajavítás] [Flash] Paraméterek ellenőrzésének továbbfejlesztése
 
 ## <a name="130-official-update"></a>1.3.0 (hivatalos frissítés) ##
 
-### <a name="features-130"></a>Jellemzők 1.3.0 ###
+### <a name="features-130"></a>Funkciók 1.3.0 ###
 
-- [Szolgáltatás] [AzureHtml5JS] - Nem, nem, nem, nem, nem, nem, nem, nem, Hangváltás ugyanazzal a kodek multi-audio tartalommal
+- Vonás [AzureHtml5JS] [Flash] Ugyanazt a kodeket használó többszörös hangátviteli tartalom hangváltása
 
 ### <a name="bug-fixes-130"></a>Hibajavítások 1.3.0 ###
 
-- [Hibajavítás] [AzureHtml5JS| Chrome] Időszakos végtelen tárcsa
-- [Hibajavítás] [AzureHtml5JS| IE][Windows Phone] Kivétel, amely a Windows Phone-telefon lejátszási problémáit okozza
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Az automatikus lejátszás hamis nem sikerül további példányok esetén
-- [Hibajavítás] A felhasználói felület menüjének méretezési problémái
+- [Hibajavítás] [AzureHtml5JS | Chrome] időszakos végtelen tárcsa
+- [Hibajavítás] [AzureHtml5JS | IE] [Windows Phone-telefon] kivétel okozza Windows Phone-telefon lejátszási problémáit
+- [Hibajavítás] [Flash] További példányok esetén az automatikus lejátszás beállítása hamisra
+- [Hibajavítás] A felhasználói felületi menü méretezési problémái
 
 ## <a name="120-official-update"></a>1.2.0 (hivatalos frissítés) ##
 
-### <a name="features-120"></a>Jellemzők 1.2.0 ###
+### <a name="features-120"></a>Funkciók 1.2.0 ###
 
-- [Szolgáltatás] [AzureHtml5JS| Firefox] Támogatás, ha az MSE engedélyezve van
-- [Szolgáltatás] Már nincs szükség az alkalmazásra, hogy elérési utakat biztosítson a tartalék tech binárisfájlokhoz (swf, xap). Az elérési út az Azure Media Player parancsfájlhoz viszonyítva érhető el.
+- Vonás [AzureHtml5JS | Firefox] támogatás az MSE engedélyezésekor
+- Vonás Már nem szükséges, hogy az alkalmazás a tartalék Tech bináris fájljainak elérési útját adja meg (SWF, xap). Az elérési út a Azure Media Player parancsfájlhoz képest relatív.
 
 ### <a name="bug-fixes-120"></a>Hibajavítások 1.2.0 ###
 
-- [Hibajavítás] [AzureHtml5JS| Chrome] A lejátszó az élő él mögé sodródik, amikor a játékos a háttérben
-- [Hibajavítás] [AzureHtml5JS| Edge] A teljes képernyő nem működik
-- [Hibajavítás] [AzureHtml5JS] A naplózás nincs megfelelően engedélyezve, ha meg vannak állítva a beállításokban
-- [Hibajavítás] - Nem, nem, nem, nem, nem, Mind a "pufferelés" és a pufferelésikon megjelenik a várakozási esemény során
+- [Hibajavítás] [AzureHtml5JS | Chrome] a lejátszó az élő szél mögött sodródik a háttérben lévő játékossal
+- [Hibajavítás] [AzureHtml5JS | Edge] a teljes képernyő nem működik
+- [Hibajavítás] [AzureHtml5JS] A naplózás nem volt megfelelően engedélyezve, ha be van állítva a beállítások között
+- [Hibajavítás] Flash A várakozási esemény során a "pufferelés" és a pufferelés ikon is látható
 - [Hibajavítás] A lejátszás folytatásának engedélyezése, ha a kezdeti sávszélesség-kérelem sikertelen
-- [Hibajavítás] A játékos nem töltődik be, ha nem definiált beállításokkal inicializálva
-- [Hibajavítás] Amikor megpróbálja megsemmisíteni a lejátszót, miután már ártalmatlanították, vdata kivétel lép fel
-- [Hibajavítás] A minőségi sáv ikonjai helytelenül vannak leképezve
+- [Hibajavítás] A lejátszó nem tölthető be, ha nem definiált beállításokkal van inicializálva
+- [Hibajavítás] Ha a lejátszót már eldobása után próbálja meg ártalmatlanítani, vdata kivétel történik.
+- [Hibajavítás] Helytelenül leképezett minőségi sáv ikonjai
 
-## <a name="111-official-hotfix-update"></a>1.1.1 (Hivatalos gyorsjavítás-frissítés) ##
+## <a name="111-official-hotfix-update"></a>1.1.1 (hivatalos gyorsjavítás frissítése) ##
 
 ### <a name="bug-fixes-111"></a>Hibajavítások 1.1.1 ###
 
 - [Hibajavítás] Régebbi IE teljes képernyős probléma
-- [Hibajavítás] A bővítmények már nem felülíródnak
+- [Hibajavítás] A beépülő modulok már nem írhatók felül
 
 ## <a name="110-official-update"></a>1.1.0 (hivatalos frissítés) ##
 
-### <a name="features-110"></a>Jellemzők 1.1.0 ###
+### <a name="features-110"></a>Szolgáltatások 1.1.0 ###
 
-- [Szolgáltatás] Felhasználói felület honosítási karakterláncának frissítése
+- Vonás Felhasználói felület honosítási karakterláncának frissítése
 
 ### <a name="bug-fixes-110"></a>Hibajavítások 1.1.0 ###
 
-- [Hibajavítás] A Big Play gombnak nincs elég kontrasztja
-- [Hibajavítás] Vizuális lap fókuszjelzője
-- [Hibajavítás] Válassza ki a Bitráta menüt a megfelelő felbontási adatok használatával
-- [Hibajavítás] További beállítások menü most dinamikusan méretezett
+- [Hibajavítás] A Big Play gomb nem rendelkezik elegendő kontraszttal
+- [Hibajavítás] Vizualizáció lap fókuszának mutatója
+- [Hibajavítás] Válassza ki a bitráta menüt a helyes megoldási információk használatával
+- [Hibajavítás] Mostantól a további beállítások menü dinamikusan méretezi
 - [Hibajavítás] Különböző felhasználói felületi problémák
 
-## <a name="100-official-release"></a>1.0.0 (Hivatalos kiadás) ##
+## <a name="100-official-release"></a>1.0.0 (hivatalos kiadás) ##
 
-### <a name="features-100"></a>Jellemzők 1.0.0 ###
+### <a name="features-100"></a>Szolgáltatások 1.0.0 ###
 
-- [Szolgáltatás] Alapvető kisegítő lehetőségek tesztelése a tabulátorvezérléshez, a fókuszvezérléshez, a képernyőolvasóhoz, a kontrasztos felhasználói felülethez
-- [Szolgáltatás] Frissített felhasználói felület
-- [Szolgáltatás] Fejlesztői naplózás
-- [Szolgáltatás] API a feliratok/feliratok dinamikus beállításához
-- [Szolgáltatás] Alapvető honosítási funkciók
-- [Szolgáltatás] Hibakód-konszolidáció a technikusok között
-- [Szolgáltatás] Új hibakód arra az okra, ha a bővítmények (például a Flash vagy a Silverlight) nincsenek telepítve
-- [Szolgáltatás] [AzureHtml5JS] Alapvető diagnosztikai események megvalósítása
+- Vonás A TAB Control, a Focus Control, a képernyőolvasó és a nagy kontrasztú felhasználói felület alapszintű hozzáférhetőségének tesztelése
+- Vonás Frissített felhasználói felület
+- Vonás Fejlesztői naplózás
+- Vonás API a feliratok és feliratok dinamikus beállításához
+- Vonás Alapszintű lokalizációs funkciók
+- Vonás Hibakódok összevonása a technológiák között
+- Vonás Új hibakód, ha a beépülő modulok (például a Flash vagy a Silverlight) nincsenek telepítve
+- Vonás [AzureHtml5JS] Alapszintű diagnosztikai események implementálva
 
 ### <a name="bug-fixes-100"></a>Hibajavítások 1.0.0 ###
 <!---What is that actually supposed to say?--->
-- [Hibajavítás] [AzureHtml5JS] Az MPD-frissítések élő lejátszásának fagyasztása, ha az időbélyegben kis pontatlanságok vannak
-- [Hibajavítás] [AzureHtml5JS] Számos élő lejátszási probléma enyhítése
-- [Hibajavítás] [AzureHtml5JS] Pufferek kiürítése, ha az ablakméret heurisztika be van kapcsolva, és nagyobb felbontású képernyőre lép
-- [Hibajavítás] [AzureHtml5JS] A Chrome mostantól megfelelően mutatja a véget ért eseményt. A Chrome korábbi ismert problémája *nem&euro;küld megfelelően az&euro;AzureHtml5JS használatakor. Probléma van az alapul szolgáló böngészőben.*
-- [Hibajavítás] [AzureHtml5JS] Letiltotta a Safarit ehhez a technológiához, hogy megoldhassa az *OSX Yosemite és az AzureHtml5JS technológia lejátszási problémájait. Vannak MSE megvalósítási problémák. Ideiglenes mérséklése:&euro;erő&euro;&euro;â&euro;œflashSSâ , â œsilverlightSSâ a tech érdekében e felhasználói ügynökök*
-- [Hibajavítás] [FlashSS] loadstart a hiba után kiindulva
+- [Hibajavítás] [AzureHtml5JS] Az MPD-frissítések élő lejátszásának lefagyasztása, ha kis pontatlanságok vannak az időbélyegen belül
+- [Hibajavítás] [AzureHtml5JS] Több élő lejátszási probléma elhárítása
+- [Hibajavítás] [AzureHtml5JS] Pufferek ürítése, ha az ablak mérete heurisztikus, és magasabb felbontású képernyőre mutat
+- [Hibajavítás] [AzureHtml5JS] A Chrome mostantól megfelelően mutatja a befejezett eseményt. A Chrome korábbi ismert hibája miatt a *AzureHtml5JS használatakor nem&euro;fogja&euro;megfelelően elküldeni a "œendedâ" eseményt. Probléma van az alapul szolgáló böngészőben.*
+- [Hibajavítás] [AzureHtml5JS] A tech számára letiltott Safari az *OSX Yosemite és a AzureHtml5JS Tech közötti lejátszási probléma megoldása érdekében. Az MSE megvalósítási problémái vannak. Ideiglenes megoldás: Force&euro;â&euro;œflashSSâ, â&euro;œsilverlightSSâ&euro;as Tech order for this user agents*
+- [Hibajavítás] [Flashs] a loadstart hiba történt.
 
-## <a name="020-beta"></a>0.2.0 (béta) ##
+## <a name="020-beta"></a>0.2.0 (bétaverzió) ##
 
-### <a name="features-020"></a>Jellemzők 0.2.0 ###
+### <a name="features-020"></a>Funkciók 0.2.0 ###
 
-- [Szolgáltatás] Befejeződött a PlayReady és az AES tesztelése igény és élő használatra – lásd a kompatibilitási mátrixot
-- [Szolgáltatás] A folytonossági hiány okának kezelése
-- [Szolgáltatás] 2^53-nál nagyobb időbélyegek támogatása
-- [Szolgáltatás] Az URL-lekérdezési paraméter megmarad a jegyzékfájl-kérelemben
-- [Szolgáltatás] [Nem tesztelt] Heurisztikus `QuickStart` `HighQuality` profilok támogatása
-- [Szolgáltatás] [Nem tesztelt] A videostream-információk felfedése bitsebességekhez, szélességhez és magassághoz az AzureHtml5JS és flashSS esetén
-- [Szolgáltatás] [Nem tesztelt] Bitráta kiválasztása az AzureHtml5JS és a FlashSS szolgáltatásban (lásd: API dokumentáció)
+- Vonás A PlayReady és az AES igény szerinti tesztelése, valamint a Live-lásd a kompatibilitási mátrix
+- Vonás Megszakítások kezelésére
+- Vonás 2 ^ 53-nál nagyobb időbélyegek támogatása
+- Vonás Az URL-lekérdezési paraméter megmarad a jegyzékfájl iránti kérelemben
+- Vonás Kipróbálatlan A és `QuickStart` `HighQuality` a heurisztikus profilok támogatása
+- Vonás Kipróbálatlan Videó stream-információk kimutatása a AzureHtml5JS és a Villogáshoz szükséges bitráta, szélesség és magasság alapján
+- Vonás Kipróbálatlan Válassza ki a AzureHtml5JS és a Flashs bitrátát (lásd: API-dokumentáció)
 
 ### <a name="bug-fixes-020"></a>Hibajavítások 0.2.0 ###
 
-- [Bug Fix] nagy lejátszás gomb most már megtekinthető wp8.1
-- [Bug Fix] rögzített több élő lejátszás kérdések
-- [Bug Fix] visszahangosítás gomb most működik a felhasználói felületen
-- [Bug Fix] frissített felhasználói felület betöltési élménye az automatikus lejátszási módhoz
-- [Hibajavítás] AMD betöltő probléma és metódusütközések meghatározása
-- [Hibajavítás] WP 8.1 A Cordova App betöltési problémája
-- [Hibajavítás] Védett tartalom lekérdezések platform/tech támogatott ProtectionType kiválasztásához a megfelelő tech lejátszáshoz.  Javítja a korábbi ismert probléma a "_PlayReady tartalom Chrome (asztali) / Safari 8 (OSX Yosemite) jelenleg nem tartalék silverlight játékos_"
-- [Bug Fix] uncaught exception on WinServer 2012 R2 miatt Media Foundation nincs telepítve a gépen alapértelmezés szerint.  Kísérlet a HTML videotag API-k használatára, amelyek nincsenek megvalósítva, így hibát okoznak. A jelenlegi megoldás az, hogy elkapja a hibát, és hamis értéket ad vissza a hiba eldobása helyett.
-- [Bug Fix] mindig kap az init szegmens után törekszik, vagy http nem, hogy megakadályozzák hibák lejátszás közben
-- [Bug Fix] kapcsolja ki nyomon követése szimulált haladás és időfrissítések, ha hiba történt.
-- [Bug Fix] távolítsa el a jobb klikk menü
-- [Hibajavítás] [AzureHtml5JS] hibaüzenet nem jelenik meg, ha érvénytelen tokenkészlet van beállítva a PlayReady-tartalomhoz
-- [Hibajavítás] [AzureHtml5JS] megy teljes képernyőn élő lejátszás közben nem vette ablak mérete heurisztika figyelembe
-- [Hibajavítás] - Nem, nem, nem, nem, nem, nem, nem, nem, Eltávolított Strobe Media Player megjelenített üzeneteket, hogy csak az Azure Media Player üzenetek jelennek meg
-- [Hibajavítás] [SilverlightSS] nem kapok "keresett" esemény, ha keresünk túl időtartama vagy kevesebb, mint 0
+- [Hibajavítás] a nagy Lejátszás gomb már megtekinthető a WP 8.1-es verziójában
+- [Hibajavítás] rögzített több élő lejátszási probléma
+- [Hibajavítás] az unmute gomb mostantól a felhasználói felületen működik
+- [Hibajavítás] frissített felhasználói felületi betöltési élmény az automatikus lejátszás üzemmódhoz
+- [Hibajavítás] Az AMD-betöltő probléma-és metódus-ütközések meghatározása
+- [Hibajavítás] A WP 8,1 Cordova alkalmazás betöltési hibája
+- [Hibajavítás] A védett tartalom-lekérdezések platform/Tech támogatott Replikavédelemnek válassza ki a megfelelő technológiát a lejátszáshoz.  A "_PlayReady-tartalmak a Chrome-on (Desktop)/Safari 8 (az OSX Yosemite-on) való korábbi ismert hibája jelenleg nem érhető el a Silverlight-lejátszón_"
+- [Hibajavítás] nem kezelt kivétel a WinServer 2012 R2-ben, mert Multimédia alaprendszer nincs telepítve erre a gépre.  A nem megvalósított HTML-videó címke API-k használatára történt kísérlet, ami hibát jelez. A jelenlegi megoldás a hiba észlelése és a hiba visszaküldése helyett false (hamis) érték befogása.
+- [Hibajavítás] az inicializálási szegmens mindig a keresés vagy a HTTP-hiba után a hibák megelőzése a lejátszás során
+- [Hibajavítás] a szimulált folyamat és a timeupdates követésének kikapcsolása, ha hiba történt.
+- [Hibajavítás] Eltávolítás a jobb gombbal menü
+- [Hibajavítás] [AzureHtml5JS] hibaüzenet nem jelenik meg, ha a PlayReady-tartalomhoz érvénytelen jogkivonat van beállítva.
+- [Hibajavítás] Az élő lejátszás során a [AzureHtml5JS] teljes képernyős megjelenítést nem tartotta figyelembe
+- [Hibajavítás] [Flash] A Strobe Media Player üzenet jelenik meg, hogy csak Azure Media Player üzenetek jelenjenek meg
+- [Hibajavítás] [Silverlight] nem kap "keresett" eseményt, ha az időtartamon túl vagy kevesebb mint 0
 
 ## <a name="010-beta-release"></a>0.1.0 (bétaverzió) ##
 
-Első kiadás előtti
+Kezdeti előzetes kiadás
 
 ## <a name="next-steps"></a>További lépések ##
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

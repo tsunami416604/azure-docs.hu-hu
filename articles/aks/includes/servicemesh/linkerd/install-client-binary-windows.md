@@ -4,15 +4,15 @@ ms.topic: include
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 1a023475de1ce2891916807632d9ee15e382326c
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81736277"
 ---
-## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>A Linkerd linkerd ügyfél bináris fájljának letöltése és telepítése
+## <a name="download-and-install-the-linkerd-linkerd-client-binary"></a>Töltse le és telepítse a Linkerd Linkerd-ügyfél bináris fájlját
 
-A Windows PowerShell-alapú rendszerhéjban a Linkerd kiadásletöltéséhez az alábbiak szerint töltheti `Invoke-WebRequest` le:
+A Windows PowerShell-alapú rendszerhéjában a következő paranccsal `Invoke-WebRequest` töltheti le az Linkerd-kiadást:
 
 ```powershell
 # Specify the Linkerd version that will be leveraged throughout these instructions
@@ -23,7 +23,7 @@ $LINKERD_VERSION="stable-2.6.0"
 $ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -URI "https://github.com/linkerd/linkerd2/releases/download/$LINKERD_VERSION/linkerd2-cli-$LINKERD_VERSION-windows.exe" -OutFile "linkerd2-cli-$LINKERD_VERSION-windows.exe"
 ```
 
-Az `linkerd` ügyfél bináris fut az ügyfélgépen, és lehetővé teszi, hogy a Linkerd szolgáltatás háló. A következő parancsokkal telepítse a `linkerd` Linkerd ügyfél bináris egy PowerShell-alapú rendszerhéj a Windows. Ezek a `linkerd` parancsok másolja az ügyfél bináris egy Linkerd mappába, majd elérhetővé mind azonnal (az `PATH`aktuális shell) és véglegesen (az egész shell újraindul) keresztül. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítania a rendszerhéjat.
+Az `linkerd` ügyfél bináris fájlja az ügyfélszámítógépen fut, és lehetővé teszi a Linkerd szolgáltatás hálójának kezelését. A következő parancsokkal telepítheti a Linkerd `linkerd` -ügyfél bináris fájlját egy PowerShell-alapú rendszerhéjban Windows rendszeren. Ezek a parancsok az `linkerd` ügyfél bináris fájljait egy Linkerd mappába másolják, majd azonnal elérhetővé teszik (a jelenlegi rendszerhéjban) és véglegesen (a rendszerhéj újraindításakor `PATH`) a használatával. A parancsok futtatásához nincs szükség emelt szintű (rendszergazdai) jogosultságokra, és nem kell újraindítani a rendszerhéjat.
 
 ```powershell
 # Copy linkerd.exe to C:\Linkerd

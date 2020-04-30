@@ -1,37 +1,37 @@
 ---
-title: Az Azure Media Player áttekintése
-description: További információ az Azure Media Playerről.
+title: Azure Media Player áttekintése
+description: További információ a Azure Media Playerról.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: b6d30aebd4de272ba98fce87f23701b129eacb02
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726521"
 ---
 # <a name="azure-media-player-overview"></a>Az Azure Media Player áttekintése #
 
-Az Azure Media Player egy webes videólejátszó, amely a [Microsoft Azure Media Services](https://azure.microsoft.com/services/media-services/) médiatartalmainak lelejátszására készült a legkülönbözőbb böngészőkben és eszközökön. Az Azure Media Player az iparági szabványokat, például a HTML5-öt, a Media Source Extensions (MSE) és a titkosított médiabővítményeket (EME) használja a bővített adaptív streamelési élmény biztosításához.  Ha ezek a szabványok nem érhetők el egy eszközön vagy böngészőben, az Azure Media Player a Flash és a Silverlight-ot használja tartalék technológiaként. Függetlenül attól, hogy a lejátszási technológia használt, a fejlesztők egy egységes JavaScript felület eléréséhez API-k.  Ez lehetővé teszi, hogy az Azure Media Services által kiszolgált tartalmakat az eszközök és böngészők széles körében, további erőfeszítés nélkül lelehessen játszani.
+A Azure Media Player egy webvideós lejátszó, amely a [Microsoft Azure Media Services](https://azure.microsoft.com/services/media-services/) különböző böngészők és eszközök által készített médiatartalom lejátszására készült. A Azure Media Player az iparági szabványokat, például a HTML5-t, a Media Source Extensions (MSE) és a titkosított adathordozó-bővítményeket (EME) használja a dúsított Adaptív átviteli élmény biztosításához.  Ha ezek a szabványok nem érhetők el egy eszközön vagy böngészőben, Azure Media Player a Flash és a Silverlight protokollt használja tartalék technológiaként. A használt lejátszási technológiától függetlenül a fejlesztőknek egységes JavaScript-felülettel kell rendelkezniük az API-k eléréséhez.  Ez lehetővé teszi, hogy a Azure Media Services által kiszolgált tartalmak a további erőfeszítések nélkül, széles körű eszközökön és böngészőkön keresztül legyenek játszhatók.
 
-A Microsoft Azure Media Services lehetővé teszi, hogy a tartalom DASH, Smooth Streaming és HLS streamelési formátumokkal kerüljön ki, hogy lejátszhassa a tartalmakat. Az Azure Media Player figyelembe veszi ezeket a különböző formátumokat, és automatikusan lejátssza a legjobb hivatkozást a platform/böngésző képességei alapján. A Microsoft Azure Media Services lehetővé teszi a közös titkosítással (PlayReady vagy Widevine) vagy AES-128 bites borítéktitkosítással rendelkező eszközök dinamikus titkosítását is. Az Azure Media Player lehetővé teszi a PlayReady és az AES-128 bites titkosított tartalom visszafejtését, ha megfelelően konfigurálva van.  Ennek konfigurálása a [Védett tartalom](azure-media-player-protected-content.md) című szakaszban található.
+Microsoft Azure Media Services lehetővé teszi, hogy a tartalom a KÖTŐJELtel, a Smooth Streaming és a HLS adatfolyam-formátumokkal legyen kézbesítve a tartalmak lejátszásához. Azure Media Player a különböző formátumokat veszi figyelembe, és a platform/böngésző képességei alapján automatikusan a legjobb hivatkozást játssza le. Microsoft Azure Media Services a közös titkosítással (PlayReady vagy Widevine) vagy AES-128 bites boríték-titkosítással rendelkező eszközök dinamikus titkosítását is lehetővé teszi. A Azure Media Player lehetővé teszi a PlayReady és az AES-128 bites titkosított tartalom visszafejtését, ha az megfelelően van konfigurálva.  Ennek konfigurálásához tekintse meg a [védett tartalom](azure-media-player-protected-content.md) szakaszt.
 
-Új funkciók igényléséhez adjon ötleteket vagy visszajelzést, kérjük, küldje el [a UserVoice for Azure Media Player alkalmazásnak.](https://aka.ms/ampuservoice) Ha van, és konkrét kérdések, kérdések vagy talál ampinfo@microsoft.comhibákat, csepp nekünk egy sort .
+Új szolgáltatások igényléséhez adjon meg ötleteket vagy visszajelzést, küldje el a [UserVoice a Azure Media Player](https://aka.ms/ampuservoice). Ha rendelkezik és adott problémákkal, kérdésekkel vagy hibákat talál, dobjon minket egy sorba ampinfo@microsoft.com.
 
-[Regisztráljon,](https://aka.ms/ampsignup) hogy soha ne maradjon le egy kiadásról, és naprakész maradjon az Azure Media Player által kínált legújabb ajánlatokkal.
+[Regisztráljon](https://aka.ms/ampsignup) , hogy soha ne hagyjon ki egy kiadást, és naprakész maradjon a legújabb, Azure Media Player által kínált lehetőségek közül.
 
 > [!NOTE]
-> Kérjük, vegye figyelembe, hogy az Azure Media Player csak az Azure Media Services-ből származó médiaadatfolyamokat támogatja.
+> Vegye figyelembe, hogy a Azure Media Player csak a Azure Media Services-adatfolyamokat támogatja.
 
 ## <a name="license"></a>Licenc ##
 
-Az Azure Media Player licencelt, és az Azure Media Player microsoftszoftverlicenc-szerződésében meghatározott feltételek nek megfelelően érhető el. A [licencfájl ban](azure-media-player-license.md) a teljes feltételeket lásd. További információt az [Adatvédelmi nyilatkozatban](https://www.microsoft.com/en-us/privacystatement/default.aspx) talál.
+A Azure Media Player licenccel rendelkezik, és a Azure Media Player Microsoft szoftverlicenc-feltételeiben ismertetett feltételekre vonatkozik. Tekintse meg a teljes használati feltételeket [tartalmazó licencfeltételeket](azure-media-player-license.md) . További információért tekintse meg az [adatvédelmi nyilatkozatot](https://www.microsoft.com/en-us/privacystatement/default.aspx) .
 
-Szerzői jog 2015 Microsoft Corporation.
+Copyright 2015 Microsoft Corporation.
 
 ## <a name="next-steps"></a>További lépések ##
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

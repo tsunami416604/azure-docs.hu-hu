@@ -9,13 +9,13 @@ ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
 ms.openlocfilehash: 526d8a6a103e7623bac459004bf9ac79e4927541
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81686997"
 ---
-1. Kapcsolatok megtekintése a kijelölt közvetlen társviszony-létesítésen.
+1. Kapcsolatok megtekintése a kiválasztott közvetlen társon.
     ```powershell
     $directPeering.Connections
 
@@ -31,7 +31,7 @@ ms.locfileid: "81686997"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. Válassza ki azt a kapcsolatot, amelyet engedélyezni szeretne a társviszony-létesítési szolgáltatáshoz. Ebben a példában az egyetlen elérhető kapcsolatot fogjuk használni.
+1. Válassza ki azt a kapcsolatot, amelyet engedélyezni szeretne a társ-kezelés szolgáltatáshoz. Ebben a példában az egyetlen elérhető csatlakozást fogjuk használni.
     ```powershell
     $directPeering.Connections[1] = $directPeering.Connections[1] | Set-AzPeeringDirectConnectionObject -UseForPeeringService $true
 
@@ -47,12 +47,12 @@ ms.locfileid: "81686997"
     SessionStateV6              : None
     ConnectionState             : Active
     ```
-1. Most mentse a közvetlen társviszony-létesítésen végzett módosításokat ezzel a paranccsal:
+1. Most mentse a közvetlen társítás módosításait a következő parancs használatával:
     ```powershell
     $directPeering | Update-AzPeering
     ```
     
-    Íme egy minta kimenet:
+    Íme egy példa kimenet:
     
     ```powershell
         Name                 : SeattleDirectPeering

@@ -1,21 +1,21 @@
 ---
-title: Az Azure Media Player URL-újraírója
-description: Az Azure Media Player átírja az Azure Media Services adott URL-címét, hogy streameket biztosítson a SMOOTH, a DASH, a HLS v3 és a HLS v4 számára.
+title: Azure Media Player URL-újraíró
+description: Azure Media Player egy adott URL-címet ír elő a Azure Media Servicesból a SMOOTH, DASH, HLS v3 és HLS v4 streamek biztosításához.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: f238a2a3c499cf1e36f5e7c40e087375b7db0a70
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81726458"
 ---
-# <a name="url-rewriter"></a>URL-író #
+# <a name="url-rewriter"></a>URL-átíró #
 
-Alapértelmezés szerint az Azure Media Player átírja az Azure Media Services adott URL-címét, hogy streameket biztosítson a SMOOTH, a DASH, a HLS v3 és a HLS v4 számára. Ha például a forrás a következőképpen jelenik meg, az Azure Media Player biztosítja, hogy megkísérli lejátszani az összes fenti protokollt:
+Alapértelmezés szerint a Azure Media Player egy adott URL-címet ír a Azure Media Servicesból a SMOOTH, DASH, HLS v3 és HLS v4 streamek biztosításához. Ha például a forrást a következőképpen adja meg, Azure Media Player biztosítja, hogy megpróbálja lejátszani a fenti protokollokat:
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -23,7 +23,7 @@ Alapértelmezés szerint az Azure Media Player átírja az Azure Media Services 
     </video>
 ```
 
-Ha azonban nem szeretné használni az URL-újraírót, ezt `disableUrlRewriter` úgy teheti meg, hogy hozzáadja a tulajdonságot a paraméterhez. Ez azt jelenti, hogy a forrásoknak átadott összes információt módosítás nélkül közvetlenül átadják a játékosnak.  Íme egy példa két forrás hozzáadására a lejátszóhoz, a DASH-hez és egy SMOOTH Streaminghez.
+Ha azonban nem kívánja használni az URL-újraíró használatát, ezt a `disableUrlRewriter` tulajdonság paraméterrel való hozzáadásával teheti meg. Ez azt jelenti, hogy a forrásoknak átadott összes információ módosítása nélkül, közvetlenül a lejátszónak lesz átadva.  Íme egy példa arra, hogyan lehet két forrást hozzáadni a lejátszóhoz, KÖTŐJELen és egy SMOOTH Streamingen.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -41,7 +41,7 @@ vagy
     ]);
 ```
 
-Ha szeretné, megadhatja azokat a streamelési formátumokat, amelyeket az `streamingFormats` Azure Media Player újraírna a paraméter használatával. A `DASH`lehetőségek `SMOOTH` `HLSv3`közé `HLSv4` `HLS`tartozik a , , , , . A HLS és a HLSv3 & v4 közötti különbség az, hogy a HLS formátum támogatja a FairPlay tartalom lejátszását. v3 és v4 nem támogatják fairplay. Ez akkor hasznos, ha nem rendelkezik egy adott protokollhoz elérhető kézbesítési szabályzattal.  Íme egy példa arra, ha egy DASH protokoll nincs engedélyezve az eszközzel.
+Ha szeretné, megadhatja azokat a folyamatos átviteli formátumokat, amelyeket Azure Media Player szeretne újraírni a `streamingFormats` (z) paraméter használatával. A lehetőségek `DASH`a `SMOOTH`következők `HLSv3`: `HLSv4`, `HLS`,,,. A HLS és a HLSv3 & v4 közötti különbség az, hogy a HLS formátuma támogatja a FairPlay-tartalmak lejátszását. a v3 és a v4 nem támogatja a FairPlay. Ez akkor hasznos, ha nincs elérhető kézbesítési házirend egy adott protokollhoz.  Íme egy példa arra, ha egy kötőjel protokoll nincs engedélyezve az adategységben.
 
 ```html
     <video id="vid1" class="azuremediaplayer amp-default-skin">
@@ -57,11 +57,11 @@ vagy
     ]);
 ```
 
-A fenti kettő egymással kombinálva használható az Adott eszköz alapján több körülmény esetén is.
+A fenti kettő kombinálható egymással az adott eszközön alapuló több körülmény esetén.
 
 > [!NOTE]
-> A widevine védelmi információk csak a DASH protokollon maradnak meg.
+> A Widevine-védelmi információk csak a kötőjel protokollon maradnak meg.
 
 ## <a name="next-steps"></a>További lépések ##
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

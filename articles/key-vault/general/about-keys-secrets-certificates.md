@@ -1,6 +1,6 @@
 ---
-title: Az Azure Key Vault-kulcsok, titkos kulcsok és tanúsítványok – Azure Key Vault
-description: Az Azure Key Vault REST-felületének áttekintése és a kulcsok, titkos kulcsok és tanúsítványok fejlesztői adatai.
+title: Tudnivalók Azure Key Vault kulcsokról, titkokról és tanúsítványokról – Azure Key Vault
+description: A kulcsok, titkok és tanúsítványok Azure Key Vault REST-felületének és fejlesztői adatainak áttekintése.
 services: key-vault
 author: msmbaldwin
 manager: rkarlin
@@ -10,49 +10,49 @@ ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726444"
 ---
-# <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kulcsok és tanúsítványok –
+# <a name="about-keys-secrets-and-certificates"></a>A kulcsok, titkos kódok és tanúsítványok ismertetése
 
-Az Azure Key Vault lehetővé teszi a Microsoft Azure-alkalmazások és felhasználók számára, hogy többféle titkos/kulcsadatot tároljanak és használjanak:
+A Azure Key Vault lehetővé teszi Microsoft Azure alkalmazások és felhasználók számára, hogy több típusú titkos/kulcsos adatot tároljanak és használjanak:
 
-- Kriptográfiai kulcsok: Több kulcstípust és algoritmust támogat, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz. További információt a [Kulcsok – betekintés című témakörben talál.](../keys/about-keys.md)
-- Titkos kulcsok: Biztonságos tárolást biztosít a titkos kulcsok, például a jelszavak és az adatbázis-kapcsolat ihúrjai. További információ: [Of secrets](../secrets/about-secrets.md).
-- Tanúsítványok: Támogatja a kulcsokra és titkos kulcsokra épülő tanúsítványokat, és automatikus megújítási szolgáltatást ad hozzá. További információt a Tanúsítványok – további információ [című témakörben talál.](../certificates/about-certificates.md)
-- Azure Storage: Az Azure Storage-fiók kulcsait kezelheti. Belsőleg a Key Vault listázhatja (szinkronizálhatja) a kulcsokat egy Azure Storage-fiókkal, és rendszeres időközönként újragenerálhatja (elforgatja) a kulcsokat. További információt a [Tárfiók kulcsainak kezelése a Key Vault segítségével című témakörben talál.](../secrets/overview-storage-keys.md)
+- Titkosítási kulcsok: több kulcs típust és algoritmust is támogat, és lehetővé teszi a hardveres biztonsági modulok (HSM) használatát a nagy értékű kulcsokhoz. További információ: [a kulcsok ismertetése](../keys/about-keys.md).
+- Titkok: biztonságos tárhelyet biztosít a titkos kulcsokhoz, például jelszavakhoz és adatbázis-kapcsolatok karakterláncokhoz. További információ: [About Secrets](../secrets/about-secrets.md).
+- Tanúsítványok: a kulcsokra és titkokra épülő tanúsítványokat támogatja, és egy automatikus megújítási funkciót ad hozzá. További információ: [Tudnivalók a tanúsítványokról](../certificates/about-certificates.md).
+- Azure Storage: felügyelheti az Azure Storage-fiók kulcsait. Belsőleg Key Vault a kulcsokat egy Azure Storage-fiókkal listázhatja (szinkronizálhatja), és rendszeresen újragenerálhatja (elforgathatja) a kulcsokat. További információ: [a Storage-fiók kulcsainak kezelése a Key Vault](../secrets/overview-storage-keys.md).
 
-A Key Vaultról további általános tudnivalókat az [Azure Key Vault – tudnivalók.](overview.md)
+További általános információk a Key Vaultről: [about Azure Key Vault](overview.md).
 
 ## <a name="data-types"></a>Adattípusok
 
-A kulcsok, a titkosítás és az aláírás megfelelő adattípusait a JOSE specifikációiban olvassa el.  
+Tekintse meg a következő témakört: a kulcsok, a titkosítás és az aláírás releváns adattípusaihoz tartozó JOSE-specifikációk.  
 
--   **algoritmus** - egy támogatott algoritmus egy kulcsművelethez, például RSA1_5  
--   **rejtjelszöveg-érték** - titkosítási szöveg oktett, Base64URL használatával kódolva  
--   **emészthető érték** - a kimenetegy kivonatoló algoritmus, kódolt segítségével Base64URL  
--   **kulcs-típus** - az egyik támogatott kulcstípus, például az RSA (Rivest-Shamir-Adleman).  
--   **egyszerű szöveg-érték** - egyszerű szöveges oktett, Base64URL használatával kódolva  
--   **aláírás-érték** - egy aláírási algoritmus kimenete, Base64URL használatával kódolva  
--   **base64URL** - base64URL [RFC4648] kódolt bináris érték  
--   **logikai -** igaz vagy hamis  
--   **Identitás** – az Azure Active Directory (AAD) identitása.  
--   **IntDate** - JSON decimális érték, amely az 1970-01-01T0:0:0Z UTC és a megadott UTC dátum/idő között eltelt másodpercek számát jelöli. Lásd az RFC3339-et a dátumra/időpontokra vonatkozó részletekért, általában és különösen az UTC-t illetően.  
+-   **algoritmus** – a kulcs műveletének támogatott algoritmusa, például RSA1_5  
+-   **rejtjelezett-érték** -titkosítatlan szöveges oktettek, Base64URL használatával kódolva  
+-   **kivonatoló érték** – a Base64URL használatával kódolt kivonatoló algoritmus kimenete  
+-   **kulcs-típus** – az egyik támogatott kulcs típusa, például RSA (Rivest-a-Adleman).  
+-   **egyszerű szöveges érték** – egyszerű szöveges oktettek, Base64URL használatával kódolva  
+-   **aláírás-érték** – az Base64URL használatával kódolt aláírási algoritmus kimenete  
+-   **base64URL** – a BASE64URL [RFC4648] kódolású bináris érték  
+-   **logikai** – igaz vagy hamis  
+-   **Identity (identitás** ) – Azure Active Directory identitása (HRE).  
+-   **IntDate** – egy JSON decimális érték, amely az 1970-01-01T0:0: 0z UTC és a megadott UTC dátum/idő közötti másodpercek számát jelöli. A dátum-és időpontokra vonatkozó részletekért, valamint az általános és az UTC RFC3339 lásd:.  
 
 ## <a name="objects-identifiers-and-versioning"></a>Objektumok, azonosítók és verziószámozás
 
-A Key Vaultban tárolt objektumok verziószámmal rendelkeznek, amikor egy objektum új példányát hozják létre. Minden verzió hoz egy egyedi azonosítót és URL-címet. Amikor egy objektumot először hoznak létre, egyedi verzióazonosítót kap, és az objektum aktuális verziójaként van megjelölve. Az azonos objektumnévvel rendelkező új példány létrehozása egyedi verzióazonosítót ad az új objektumnak, így az lesz az aktuális verzió.  
+A Key Vaultban tárolt objektumok verziószámozást kapnak, amikor egy objektum új példánya jön létre. Minden verzióhoz egyedi azonosító és URL-cím tartozik. Egy objektum első létrehozásakor a rendszer egyedi verzióazonosító-azonosítót kap, és az objektum aktuális verziójaként van megjelölve. Egy új példány ugyanazzal az objektummal való létrehozása lehetővé teszi az új objektum egyedi verziószámát, ami azt eredményezi, hogy az aktuális verzió lesz.  
 
-A Key Vault objektumai az aktuális azonosító vagy egy verzióspecifikus azonosító használatával címezhetők. Ha például egy kulcsot `MasterKey`ad meg a nevével, az aktuális azonosítóval végzett műveletek végrehajtása a rendszer a legújabb elérhető verziót használja. Ha a verzióspecifikus azonosítóval hajt végre műveleteket, a rendszer az objektum adott verzióját használja.  
+A Key Vaultban lévő objektumok az aktuális azonosítóval vagy egy Version-specifikus azonosítóval kezelhetők. Például, ha egy kulcs a névvel `MasterKey`van megadva, az aktuális azonosítóval rendelkező műveletek végrehajtásával a rendszer a legújabb elérhető verziót használja. A verzió-specifikus azonosítóval végzett műveletek végrehajtása azt eredményezi, hogy a rendszer az objektum adott verzióját használja.  
 
-Az objektumok egyedileg azonosíthatók a Key Vaultban egy URL-cím használatával. A rendszerben nincs két objektum azonos URL-címe, függetlenül a földrajzi helytől. Az objektum teljes URL-címét objektumazonosítónak nevezzük. Az URL-cím egy előtagból áll, amely azonosítja a Key Vaultot, az objektumtípust, a felhasználó által megadott objektumnevet és az objektumverziót. Az objektumneve nem i. és nem módosítható. Az objektumverziót nem tartalmazó azonosítókat alapazonosítóknak nevezzük.  
+Az objektumok egyedileg azonosíthatók a Key Vaulton belül egy URL-cím használatával. A rendszeren nincs két objektum ugyanazzal az URL-címmel, a földrajzi helytől függetlenül. Az objektum teljes URL-címét objektumazonosítónak nevezzük. Az URL-cím egy előtagból áll, amely a Key Vault, az Objektumtípus, a felhasználó által megadott objektumnév és az objektum verziószámát azonosítja. Az Objektumnév megkülönbözteti a kis-és nagybetűket, és nem változtathatók meg. Az objektum verziószámát nem tartalmazó azonosítókat alapazonosítóknak nevezzük.  
 
-További információ: [Hitelesítés, kérések és válaszok](authentication-requests-and-responses.md)
+További információ: [hitelesítés, kérések és válaszok](authentication-requests-and-responses.md)
 
-Az objektumazonosító általános formátuma a következő:  
+Az objektumazonosító a következő általános formátumú:  
 
 `https://{keyvault-name}.vault.azure.net/{object-type}/{object-name}/{object-version}`  
 
@@ -60,10 +60,10 @@ Az elemek magyarázata:
 
 |||  
 |-|-|  
-|`keyvault-name`|A Microsoft Azure Key Vault szolgáltatás egyik kulcstartójának neve.<br /><br /> A Key Vault-neveket a felhasználó választja ki, és globálisan egyediek.<br /><br /> A Key Vault nevének 3-24 karakterből álló karakterláncnak kell lennie, amely csak 0-9, a-z, A-Z és -.|  
-|`object-type`|Az objektum típusa, "kulcsok", "titkos kulcsok" vagy "tanúsítványok".|  
-|`object-name`|Az `object-name` egy felhasználó által megadott nevet, és egyedinek kell lennie a Key Vault.An is a user provided name for and must be unique within a Key Vault. A névnek 1-127 karakterből kell lennie, amely csak 0-9, a-z, A-Z és -.|  
-|`object-version`|A `object-version` rendszer által létrehozott, 32 karakteres karakterlánc-azonosító, amely opcionálisan egy objektum egyedi verziójának címzésére szolgál.|  
+|`keyvault-name`|A Microsoft Azure Key Vault szolgáltatásban található kulcstartó neve.<br /><br /> A felhasználók a Key Vault neveket választják, és globálisan egyediek.<br /><br /> Key Vault neve csak 0-9, a-z, A-Z és-. karakterláncot tartalmazó 3-24 karakterből állhat.|  
+|`object-type`|Az objektum típusa, "kulcsok", "titkok" vagy "tanúsítványok".|  
+|`object-name`|`object-name` Az a felhasználó által megadott név, és egyedinek kell lennie egy Key Vaulton belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, amely csak 0-9, a-z, A-Z és-.|  
+|`object-version`|Az `object-version` egy rendszer által generált, 32 karakterből álló karakterlánc-azonosító, amely egy objektum egyedi verziójának kezelésére szolgál.|  
 
 ## <a name="next-steps"></a>További lépések
 

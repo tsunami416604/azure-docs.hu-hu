@@ -1,33 +1,33 @@
 ---
-title: Azure Media Player által védett tartalom
-description: Az Azure Media Player jelenleg támogatja az AES-128 bites borítéktitkosított tartalmat és a közös titkosított tartalmat.
+title: Azure Media Player védett tartalom
+description: A Azure Media Player jelenleg támogatja az AES-128 bites boríték titkosított tartalmát és a közösen titkosított tartalmakat.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 64414d3ec31e8763b7c576af93374bf514141fd4
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726493"
 ---
 # <a name="protected-content"></a>Védett tartalom #
 
-Az Azure Media Player jelenleg támogatja az AES-128 bites borítékban titkosított tartalmat és a közös titkosított tartalmat (PlayReady és Widevine-on keresztül) vagy a FairPlay-en keresztül titkosított tartalmat. A védett tartalom helyes lejátszásához meg kell mondania `protectionInfo`az Azure Media Player nek a . Ez az információ forrásonként létezik, és közvetlenül a `<source>` címkén keresztül adható hozzá a `data-setup`címkéhez.  Közvetlenül paraméterként `protectionInfo` is hozzáadhatja a forrást, ha dinamikusan állítja be a forrást.
+A Azure Media Player jelenleg támogatja az AES-128 bites borítékok titkosított tartalmait és közös titkosított tartalmait (PlayReady és Widevine) vagy titkosított tartalmat a FairPlay-en keresztül. A védett tartalom megfelelő lejátszásához meg kell adnia Azure Media Player a `protectionInfo`következőt:. Ez az információ forrásként szerepel, és közvetlenül a címkén `<source>` keresztül vehető fel `data-setup`a címkébe.  Ha dinamikusan állítja be a `protectionInfo` forrást, a közvetlenül paramétert is hozzáadhatja.
 
 `protectionInfo`elfogad egy JSON-objektumot, és a következőket tartalmazza:
 
-- `type`: `AES` `PlayReady` vagy `Widevine` vagy`FairPlay`
-- `certificateUrl`: ennek közvetlen kapcsolatnak kell lennie a házigazdája FairPlay tanúsítványával
+- `type`: `AES` vagy `PlayReady` `Widevine` vagy`FairPlay`
+- `certificateUrl`: az üzemeltetett FairPlay tanúsítvány közvetlen hivatkozásának kell lennie
 
-- `authenticationToken`: ez egy kódolatlan hitelesítési jogkivonat hozzáadására szolgál.
+- `authenticationToken`: ez egy választható mező, amely nem kódolt hitelesítési tokent ad hozzá
 
 > [!IMPORTANT]
-> A **certificateUrl** objektum csak a FairPlay DRM-hez szükséges.***
+> A **certificateUrl** objektumra csak a Fairplay DRM esetében van szükség. * * *
 >[!NOTE]
-> Az alapértelmezett techOrder megváltozott, hogy alkalmazkodjon `html5FairPlayHLS` az új tech- kifejezetten a FairPlay tartalom natív lejátszásához az azt támogató böngészőkben (Safari AZ OSX 8+-on). Ha fairplay tartalmat kell lejátszania, **és** megváltoztatta az alapértelmezett techOrder-t az alkalmazásban lévő egyénire, akkor hozzá kell adnia ezt az új technológiát a techOrder objektumhoz. Javasoljuk, hogy a silverlightSS előtt is adja meg, hogy a tartalom ne legyen lejátszva a PlayReady-en keresztül.
+> Az alapértelmezett techOrder úgy módosult, hogy megfeleljen az új technológiának `html5FairPlayHLS` – kifejezetten a Fairplay-tartalmak natív módon történő lejátszásához az azt támogató böngészőkön (Safari on OSX 8 +). Ha FairPlay tartalommal rendelkezik, **és** módosította az alapértelmezett techOrder egy egyénire az alkalmazásban, akkor ezt az új technológiát hozzá kell adnia a techOrder objektumhoz. Azt javasoljuk, hogy a Silverlight előtt vegye fel azt, hogy a tartalom ne legyen lejátszás a PlayReady-n keresztül.
 
 ## <a name="code-sample"></a>Kódminta ##
 
@@ -79,10 +79,10 @@ vagy több DRM-mel
 ```
 
 > [!NOTE]
-> Nem minden böngésző/platform képes védett tartalom lejátszására. A [támogatott arról,](azure-media-player-playback-technology.md) hogy mi ről a Lejátszási technológia című részben talál további információt.
+> Nem minden böngésző/platform képes lejátszani a védett tartalmat. A támogatott adatokkal kapcsolatos további információkért tekintse meg a [lejátszási technológia](azure-media-player-playback-technology.md) című szakaszt.
 > [!IMPORTANT]
-> A lejátszónak átadott token biztonságos tartalomra szolgál, és csak hitelesített felhasználók számára használható. Feltételezzük, hogy az alkalmazás SSL-t vagy más biztonsági intézkedést használ. Emellett a végfelhasználó megbízhatónak minősül, hogy ne éljen vissza a jogkivonattal; ha nem ez a helyzet, kérjük, vonja be a biztonsági szakértők.
+> A lejátszóba átadott jogkivonat biztonságos tartalomra van kialakítva, és csak hitelesített felhasználók számára használható. Feltételezzük, hogy az alkalmazás SSL-t vagy más biztonsági mértéket használ. Emellett a végfelhasználónak megbízhatónak kell lennie, hogy ne assummed a jogkivonatot; Ha ez nem igaz, vonja be biztonsági szakértőit.
 
 ## <a name="next-steps"></a>További lépések ##
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

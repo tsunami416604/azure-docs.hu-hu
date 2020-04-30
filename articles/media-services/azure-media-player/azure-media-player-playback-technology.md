@@ -1,31 +1,31 @@
 ---
-title: Az Azure Media Player lejátszási technológiája
-description: További információ a video- vagy hanglejátszáshoz használt lejátszási technológiáról.
+title: Azure Media Player lejátszási technológia
+description: További információ a videó vagy Hang lejátszásához használt lejátszási technológiáról.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: overview
 ms.date: 04/20/2020
 ms.openlocfilehash: 85eaa04836774b838da67e073017f4af3d2fe179
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81726486"
 ---
-# <a name="playback-technology-tech"></a>Lejátszási technológia ("tech") #
+# <a name="playback-technology-tech"></a>Lejátszási technológia ("Tech") #
 
-A lejátszási technológia a videó vagy hang lejátszásához használt böngészővagy bővítmény technológiára vonatkozik.
+A lejátszási technológia a videó vagy Hang lejátszásához használt konkrét böngészőre vagy plugin-technológiára utal.
 
-- **azureHtml5JS**: az MSE és az EME szabványokat használja a videóelemmel együtt a DASH-tartalom plugin nélküli lejátszásához, az AES-128 bites borítékos titkosított tartalom vagy a DRM közös titkosított tartalom (PlayReady és Widevine segítségével, ha a böngésző támogatja) használatát az Azure Media Services-ből
-- **flashSS**: flash player technológiát használ a Smooth tartalom lejátszásához az AES-128 bites borítékvisszafejtés támogatásával az Azure Media Services-ből - a Flash 11.4-es vagy újabb verziójára van szükség
-- **html5FairPlayHLS**: használ Safari specifikus böngésző-alapú lejátszástechnológia keresztül HLS a videó elem. Ez a technológia az Azure Media Services-ből származó FairPlay-védelemmel ellátott tartalmak lejátszásához szükséges, és 10/19/16-tól került be a techOrder-be.
-- **silverlightSS:** silverlight technológiát használ a Smooth tartalmak lejátszásához az Azure Media Services PlayReady által védett tartalmainak támogatásával.
-- **html5**: használja a böngésző-alapú lejátszási technológia a videó elem.  Apple iOS vagy Android rendszerű eszközön ez a technológia lehetővé teszi a HLS-adatfolyamok lejátszását az AES-128 bites borítéktitkosítás vagy a DRM-tartalom (a FairPlay-en keresztül, ha a böngésző támogatja).
+- **azureHtml5JS**: az MSE és az eme szabványokat használja a bővítmények nélküli, a Dash-tartalomra épülő, az AES-128 bites, titkosított tartalommal vagy DRM-vel közös titkosított tartalommal (a PlayReady és a Widevine-n keresztül, ha a böngésző támogatja Azure Media Services)
+- **flashs**: a Flash Player technológiáját használja a zökkenőmentes tartalom lejátszásához, amely támogatja az AES-128 bites boríték-visszafejtést Azure Media Services – a 11,4-es vagy újabb Flash-verziót igényli
+- **html5FairPlayHLS**: a HLS és a videó elem használatával a Safari-specifikus böngésző-alapú lejátszási technológián keresztül használható. Ez a tech szükséges a FairPlay által védett tartalom lejátszásához Azure Media Servicesről, és a techOrder a 10/19/16
+- **silverlights**: a Silverlight technológiáját használja a zökkenőmentes tartalom lejátszásához, és támogatja a Azure Media Services PlayReady védett tartalmakat.
+- **HTML5**: böngésző alapú lejátszási technológiát használ a videó elemmel.  Egy Apple iOS-vagy Android-eszközön ez a technológia lehetővé teszi a HLS streamek lejátszását az AES-128 bites boríték-titkosítás vagy a DRM-tartalom (FairPlay-en keresztül, ha a böngésző támogatja) alapvető támogatásával.
 
-## <a name="tech-order"></a>Technikai rendelés ##
+## <a name="tech-order"></a>Technikai sorrend ##
 
-Annak érdekében, hogy az eszköz játszható a legkülönbözőbb eszközök, a következő tech `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` érdekében ajánlott, `<video>` és az alapértelmezett, ha: és lehet beállítani közvetlenül a vagy programozottan a lehetőségek:
+Annak biztosítása érdekében, hogy az eszköz a legkülönbözőbb eszközökön legyen lejátszható, a következő technikai sorrend ajánlott, és az alapértelmezett, ha: `techOrder: ["azureHtml5JS", "flashSS", "html5FairPlayHLS","silverlightSS", "html5"]` , és a beállításokban közvetlenül a `<video>` vagy a programozott módon is beállítható:
 
 `<video data-setup='{"techOrder": ["azureHtml5JS", "flashSS", "html5FairPlayHLS, "silverlightSS", "html5"]}`
 
@@ -39,35 +39,35 @@ vagy
 
 ## <a name="compatibility-matrix"></a>Kompatibilitási mátrix ##
 
-Az Azure Media Services-ből származó streamelési tartalommal kapcsolatos ajánlott technikai rendelés miatt a következő kompatibilitási lejátszási mátrix várható
+Az ajánlott technikai sorrend az Azure Media Services-ból származó tartalom továbbítása esetén az alábbi kompatibilitási lejátszási mátrix várható
 
-| Böngésző        | Operációs rendszer                                                       | Várt technológia (clear)  | Várt technológia (AES)  | Várt technológia (DRM)          |
+| Böngésző        | Operációs rendszer                                                       | Várt technikai (tiszta)  | Várt technológia (AES)  | Várt technológia (DRM)          |
 |----------------|----------------------------------------------------------|------------------------|----------------------|------------------------------|
-| Él 11      | Windows 10, Windows 8.1, Windows Phone 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
-| IE 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | flashSS                | flashSS              | ezüstfény (PlayReady)    |
+| 11. szegély      | Windows 10, Windows 8,1, Windows Phone-telefon 101               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (PlayReady)     |
+| IE 11IE 9-101  | Windows 7, Windows Vista<sup>1</sup>                     | vakuk                | vakuk              | Silverlight (PlayReady)    |
 | IE 11          | Windows Phone 8.1                                        | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
-| Edge           | Xbox One<sup>1</sup> (2015. novemberi frissítés)                   | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
-| Chrome 37+     | Windows 10, Windows 8.1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 47+    | Windows 10, Windows 8.1, macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Firefox 42-46  | Windows 10, Windows 8.1, macOS X Yosemite+<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | ezüstfény (PlayReady)    |
-| Firefox 35-41  | Windows 10, Windows 8.1                                  | flashSS                | flashSS              | ezüstfény (PlayReady)    |
-| Safari         | Legalább iOS 6                                                   | html5                  | html5 (nincs token)3    | nem támogatott                |
-| Szafari 8+      | OS X Yosemite+                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
-| Szafari 6       | OS X hegyi oroszlán<sup>1</sup>                           | flashSS                | flashSS              | ezüstfény (PlayReady)    |
-| Chrome 37+     | Android 4.4.4+<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
-| Chrome 37+     | Android 4.02                                             | html5                  | html5 (nincs token)<sup>3</sup>    | nem támogatott                |
-| Firefox 42+    | Android 5.0+<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
+| Edge           | Xbox One<sup>1</sup> (november 2015 frissítés)                   | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
+| Chrome 37 +     | Windows 10, Windows 8,1, macOS X Yosemite<sup>1</sup>   | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Firefox 47 +    | Windows 10, Windows 8,1, macOS X Yosemite +<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Firefox 42-46  | Windows 10, Windows 8,1, macOS X Yosemite +<sup>1</sup>  | azureHtml5JS           | azureHtml5JS         | Silverlight (PlayReady)    |
+| Firefox 35-41  | Windows 10, Windows 8,1                                  | vakuk                | vakuk              | Silverlight (PlayReady)    |
+| Safari         | Legalább iOS 6                                                   | HTML5                  | HTML5 (nincs token) 3    | nem támogatott                |
+| Safari 8 +      | OS X Yosemite +                                           | azureHtml5JS           | azureHtml5JS         | html5FairPlayHLS (FairPlay)  |
+| 6. szafari       | OS X hegyi oroszlán<sup>1</sup>                           | vakuk                | vakuk              | Silverlight (PlayReady)    |
+| Chrome 37 +     | Android 4.4.4 +<sup>2</sup>                               | azureHtml5JS           | azureHtml5JS         | azureHtml5JS (Widevine)      |
+| Chrome 37 +     | Android 4,02                                             | HTML5                  | HTML5 (nincs token)<sup>3</sup>    | nem támogatott                |
+| Firefox 42 +    | Android 5.0 +<sup>2</sup>                                 | azureHtml5JS           | azureHtml5JS         | nem támogatott                |
 | IE 8           | Windows                                                  | nem támogatott          | nem támogatott        | nem támogatott                |
 
-<sup>1</sup> A konfiguráció nem támogatott vagy tesztelt; a befejezéshez referenciaként kell felsorolni.
+<sup>1</sup> a konfiguráció nem támogatott vagy nem tesztelt; a kiegészítésre hivatkozásként szerepel.
 
-<sup>2</sup> Az Android-eszközökön történő sikeres lejátszáshoz az eszközképességek, a grafikus támogatás, a kodekrenderelés, az operációs rendszer támogatása és így tovább. Mivel az Android egy nyílt forráskódú platform, amely lehetővé teszi a telefongyártók számára, hogy megváltoztassák a Google által biztosított Vanília Android operációs rendszert, ez némi töredezettséget okoz az Android térben, és egyes eszközök nem támogatottak a funkciók hiánya miatt. Emellett egyes Android-eszközök nem támogatják az összes kodeket.  
+<sup>2</sup> az androidos eszközökön való sikeres lejátszáshoz az eszköz képességeinek, a grafikus támogatásnak, a kodek-renderelésnek, az operációs rendszer támogatásának és egyebeknek az együttes Mivel az Android egy nyílt forráskódú platform, amely lehetővé teszi a telefonos gyártók számára, hogy megváltoztassák a Google által biztosított vanília Android operációs rendszert, ami némi töredezettséget okoz az Android-térben, és bizonyos eszközök nem támogatottak a szolgáltatások hiánya miatt. Emellett egyes Android-eszközök nem támogatják az összes kodeket.  
 
-<sup>3</sup> Azokban az esetekben, ahol nincs támogatás a jogkivonathoz, egy proxy használható a funkció hozzáadásához. Nézze meg ezt a [blogot,](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) hogy többet tudjon meg ezt a megoldást.
+<sup>3</sup> azokban az esetekben, amelyekben a jogkivonat nem támogatott, a funkció hozzáadására proxy használható. Tekintse meg ezt a [blogot](https://azure.microsoft.com/blog/2015/03/06/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/) , ha többet szeretne megtudni erről a megoldásról.
 
 > [!NOTE]
-> Ha a várt tech választott igényel plugin kell telepíteni, mint a Flash, és ez nincs telepítve a felhasználó gépén, AMP továbbra is ellenőrzi a képességeit a következő tech, együtt forrástípusok és védelmi információk, a tech listán. Ha például egy nem védett, igény szerinti streamet próbál meg tekinteni a Safari 8-ban az OS X Yosemite rendszeren, és a Flash és a Silverlight sincs telepítve, az AMP kiválasztja a natív Html5 technológiát a lejátszáshoz.<br/><br/>Új böngésző technológiák jelennek meg naponta, és mint ilyen, hatással lehet erre a mátrixra.
+> Ha a várt technikai beállításhoz egy beépülő modult kell telepíteni, például a Flash-t, amely nincs telepítve a felhasználó számítógépén, az AMP továbbra is a következő Tech képességeit fogja ellenőriznie a forrás típusaival és a védelmi információkkal együtt a tech listáról. Ha például egy nem védett, igény szerinti adatfolyamot próbál meg megtekinteni a Safari 8-as verziójában az OS X Yosemite-on, és a Flash és a Silverlight is nincs telepítve, az AMP a natív Html5 Tech for lejátszást fogja kiválasztani.<br/><br/>Az új böngésző-technológiák naponta jelentkeznek, és ez hatással lehet erre a mátrixra.
 
 ## <a name="next-steps"></a>További lépések ##
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

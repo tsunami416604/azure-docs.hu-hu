@@ -1,34 +1,34 @@
 ---
-title: Az Azure Media Player API-metódusai
-description: Az Azure Media Player API lehetővé teszi, hogy a videót JavaScript-en keresztül használja, függetlenül attól, hogy a böngésző HTML5-videóval, Flash-sel, Silverlight-sal vagy bármely más támogatott lejátszási technológiával játssza le a videót.
+title: Azure Media Player API-metódusok
+description: A Azure Media Player API lehetővé teszi, hogy a JavaScript használatával kommunikáljon a videóval, hogy a böngésző a HTML5 videó, a Flash, a Silverlight vagy bármely más támogatott lejátszási technológián keresztül játssza-e a videót.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: d1ad0cbe30ce20e61a31f0534a47fe031f6f257b
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727267"
 ---
 # <a name="api"></a>API #
 
-Az Azure Media Player API lehetővé teszi, hogy a videót JavaScript-en keresztül használja, függetlenül attól, hogy a böngésző HTML5-videóval, Flash-sel, Silverlight-sal vagy bármely más támogatott lejátszási technológiával játssza le a videót.
+A Azure Media Player API lehetővé teszi, hogy a JavaScript használatával kommunikáljon a videóval, hogy a böngésző a HTML5 videó, a Flash, a Silverlight vagy bármely más támogatott lejátszási technológián keresztül játssza-e a videót.
 
 ## <a name="referencing-the-player"></a>Hivatkozás a lejátszóra ##
 
-Az API-függvények használatához hozzá kell férnünk a lejátszó objektumhoz. Szerencsére könnyű megszerezni. Csak meg kell győződnie arról, hogy a videotag rendelkezik azonosítóval. A példabeágyazási kód `vid1`azonosítója . Ha egy oldalon több videó is található, győződjön meg arról, hogy minden videocímke egyedi azonosítóval rendelkezik.
+Az API functions használatához hozzáféréssel kell rendelkeznie a Player objektumhoz. Szerencsére egyszerűen lekérhető. Csak meg kell győződnie arról, hogy a videó címkéje rendelkezik AZONOSÍTÓval. A példában szereplő beágyazási kódnak van egy `vid1`azonosítója. Ha egy oldalon több videó található, győződjön meg róla, hogy minden videó címkéhez egyedi azonosító tartozik.
 
 `var myPlayer = amp('vid1');`
 
 > [!NOTE]
-> Ha a játékos még nem inicializálódott az adatbeállítási attribútummal vagy más módszerrel, akkor ez a lejátszót is inicializálja.
+> Ha a lejátszó még nem lett inicializálva az adattelepítési attribútummal vagy más módszerrel, a rendszer a lejátszót is inicializálja.
 
 ## <a name="wait-until-the-player-is-ready"></a>Várjon, amíg a lejátszó készen áll ##
 
-Az Azure Media Player videó és API beállításához szükséges idő a használt lejátszási technológiától függően változik. HTML5 gyakran sokkal gyorsabban betölteni, mint a Flash vagy silverlight. Ezért a játékos "kész" funkcióját kell használni minden olyan kód aktiválásához, amely hez a játékos API-ja szükséges.
+A videó és az API beállításához szükséges Azure Media Player idő a használt lejátszási technológiától függően változhat. A HTML5 gyakran sokkal gyorsabban töltődik be, mint a Flash vagy a Silverlight. Emiatt a lejátszó "Ready" függvényét kell használni a játékos API-ját igénylő kódok elindításához.
 
 ```javacript
     amp("vid_1").ready(function(){
@@ -47,9 +47,9 @@ VAGY
     });
 ```
 
-## <a name="api-methods"></a>API-módszerek ##
+## <a name="api-methods"></a>API-metódusok ##
 
-Most, hogy hozzáféregy kész lejátszóhoz, szabályozhatja a videót, értékeket kaphat, vagy válaszolhat a videóeseményekre. Az Azure Media Player API-függvénynevei a [HTML5-média API-t](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)próbálják követni. A fő különbség az, hogy a getter / setter funkciókat használják a videó tulajdonságait.
+Most, hogy hozzáfér egy kész lejátszóhoz, megadhatja a videót, beolvashatja az értékeket, vagy reagálhat a videó eseményeire. A Azure Media Player API-függvények nevei megpróbálják követni a [HTML5 Media API](http://www.whatwg.org/specs/web-apps/current-work/multipage/the-video-element.html)-t. A fő különbség az, hogy a videó tulajdonságaihoz a beolvasó/beállító függvények használatosak.
 
 ```javacript
     // setting a property on a bare HTML5 video element
@@ -59,8 +59,8 @@ Most, hogy hozzáféregy kész lejátszóhoz, szabályozhatja a videót, érték
     myPlayer.currentTime(120);
 ```
 
-## <a name="registering-for-events"></a>Regisztráció eseményekre ##
-Az eseményeket közvetlenül a lejátszó inicializálása után kell regisztrálni, hogy minden eseményt megfelelően jelentsék az alkalmazásnak, és azokat a kész eseményen kívül kell elvégezni.
+## <a name="registering-for-events"></a>Regisztrálás eseményekhez ##
+Az eseményeket közvetlenül a lejátszó inicializálását követően kell regisztrálni, hogy az összes eseményt megfelelően jelenteni lehessen az alkalmazásnak, és a kész eseményen kívül kell történnie.
 
 ```javacript
     var myPlayer = amp("vid_1", myOptions, function(){
@@ -73,4 +73,4 @@ Az eseményeket közvetlenül a lejátszó inicializálása után kell regisztr�
 ## <a name="next-steps"></a>További lépések ##
 
 <!---Some context for the following links goes here--->
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

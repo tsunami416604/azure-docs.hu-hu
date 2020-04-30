@@ -1,109 +1,109 @@
 ---
-title: Az Azure Media Player beállításai
-description: Az Azure Media Player beágyazási kód egyszerűen egy HTML5 videó címke, így számos lehetőséget használhatja a szabványos címke attribútumok a beállítások at.
+title: Azure Media Player beállítások
+description: A Azure Media Player beágyazási kód egyszerűen egy HTML5-videó címkéje, ezért számos lehetőség esetében használhatja a standard címke attribútumokat a beállítások megadásához.
 author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: e26215115b4c4484e5e05a2fd94a4d2c6680a4d0
-ms.sourcegitcommit: acb82fc770128234f2e9222939826e3ade3a2a28
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81727163"
 ---
 # <a name="options"></a>Beállítások #
 
 ## <a name="setting-options"></a>Beállítás lehetőségei ##
 
-Az Azure Media Player beágyazási kód egyszerűen egy HTML5 videó címke, így számos lehetőséget használhatja a szabványos címke attribútumok a beállítások at.
+A Azure Media Player beágyazási kód egyszerűen egy HTML5-videó címkéje, ezért számos lehetőség esetében használhatja a standard címke attribútumokat a beállítások megadásához.
 
 `<video controls autoplay ...>`
 
-Azt is megteheti, hogy az adatbeállítási attribútummal [JSON](http://json.org/example.html) formátumban biztosít beállításokat. Ez az a feladata is, hogy olyan beállításokat állítson be, amelyek nem szabványosak a videocímkéhez.
+Azt is megteheti, hogy az adattelepítő attribútumot használja a [JSON](http://json.org/example.html) formátumú beállítások megadására. Azt is megteheti, hogy olyan beállításokat állít be, amelyek nem standard szintűek a videó címkéjére.
 
 `<video data-setup='{ "controls": true, "autoplay": false }'...>`
 
-Végül, ha nem használja az adat-setup attribútumot a lejátszó beállításának elindításához, akkor a JavaScript beállítási funkciójának második argumentumaként átadhat egy objektumot a lejátszó beállításaival.
+Végül, ha nem az adattelepítési attribútumot használja a lejátszó beállításának elindításához, akkor a JavaScript Setup függvény második argumentuma átadhat egy objektumot a lejátszó beállításaival.
 
 `amp("vid1", { "controls": true, "autoplay": false });`
 
 > [!NOTE]
-> A konstruktor beállításai csak a forrás beállítása előtt vannak beállítva az első inicializáláskor.  Ha módosítani szeretné a beállításokat ugyanazon az inicializált Azure Media Player-elemen, frissítenie kell a beállításokat a forrás módosítása előtt. A JavaScript beállításait a `myPlayer.options({/*updated options*/});`használatával frissítheti. Ne feledje, hogy csak a módosított beállításokat érinti, az összes többi korábban megadott beállítás megmarad.
+> A konstruktorban lévő beállítások csak az első inicializálásra vannak beállítva a forrás beállítása előtt.  Ha módosítani szeretné a beállításokat ugyanazon a inicializált Azure Media Player elemen, a forrás módosítása előtt frissítenie kell a beállításokat. A JavaScriptben található beállításokat a használatával `myPlayer.options({/*updated options*/});`frissítheti. Vegye figyelembe, hogy a rendszer csak a megváltozott beállításokat érinti, az összes többi korábban beállított beállítás is megmarad.
 
 ## <a name="individual-options"></a>Egyéni beállítások ##
 
 > [!NOTE]
->A videocímke-attribútumok csak igazak vagy hamisak (logikai értékek), egyszerűen megkell adni a bekapcsoláshoz vagy kizáráshoz az attribútumot (egyenlőségjel nélkül). Például a vezérlők bekapcsolására: ROSSZ `<video controls="true" ...>` HELYES `<video controls ...>` A legnagyobb probléma, amellyel az emberek befutnak, hamis értékként hamis ra állítja be ezeket az értékeket (pl. controls="false"), amely valójában az ellenkezőjét teszi, és az értéket igazértékre állítja, mert az attribútum továbbra is szerepel.
+>A videó címke attribútumai csak TRUE vagy FALSE (Boolean) lehet, egyszerűen belefoglalhatja az attribútumot (nincs egyenlő előjel) a bekapcsolásához, vagy kizárhatja azt a kikapcsoláshoz. Ha például a vezérlők `<video controls="true" ...>` bekapcsolásához nem megfelelő, `<video controls ...>` akkor a legnagyobb probléma, hogy a rendszer a legtöbbet futtatja, és false értékkel állítja be ezeket az értékeket (pl. Controls = "false"), amely valójában az ellenkezőjét adja meg, és az értéket igaz értékre állítja, mert az attribútum továbbra is szerepel.
 
 ### <a name="controls"></a>vezérlők ###
 
-A vezérlők beállítás beállítja, hogy a lejátszó rendelkezik-e olyan vezérlőkkel, amelyekkel a felhasználó interakcióba léphet. Szabályozás nélkül a videó lejátszásának egyetlen módja az automatikus lejátszás attribútum vagy az API.Without controls the only way to start the video playing is with the autoplay tribute or through the API.
+A vezérlők beállítás megadja, hogy a lejátszó rendelkezik-e olyan vezérlőkkel, amelyekkel a felhasználó együttműködhet. Az ellenőrzés nélkül az egyetlen módszer a videó lejátszásának elindítására az Autoplay attribútummal vagy az API-n keresztül.
 
 `<video controls ...>` vagy `{ "controls": true }`
 
 ### <a name="autoplay"></a>autoplay ###
 
-Ha az automatikus lejátszás igaz, a videó lejátszása az oldal betöltésekor (a felhasználó beavatkozása nélkül) elindul.
+Ha az automatikus lejátszás értéke TRUE (igaz), a videó a lap betöltése után azonnal elindul (a felhasználó beavatkozása nélkül).
 
 > [!NOTE]
-> Ezt a lehetőséget a mobileszközök, például a Windows Phone, az Apple iOS és az Android nem támogatják. A mobileszközök blokkolják az automatikus lejátszási funkciót, hogy megakadályozzák a fogyasztói havi adatcsomagok túlzott használatát (gyakran drágák). Ebben az esetben a videó elindításához felhasználói érintésre/kattintásra van szükség.
+> Ez a beállítás nem támogatott a mobileszközök, például az Windows Phone-telefon, az Apple iOS és az Android esetében. A mobileszközök letiltják az automatikus lejátszás funkciót, amely megakadályozza a fogyasztó havi adatcsomagjainak (gyakran költséges) használatát. Ebben az esetben a videó elindításához a felhasználó érintése/kattintás szükséges.
 
-`<video autoplay ...>`Vagy`{ "autoplay": true }`
+`<video autoplay ...>`vagy`{ "autoplay": true }`
 
-### <a name="poster"></a>Poszter ###
-A poszter attribútum beállítja a videó lejátszása előtt megjelenő képet. Ez gyakran a videó vagy az egyéni címképernyő kerete. Amint a felhasználó rákattint játszani a kép elmúlik.
+### <a name="poster"></a>poszter ###
+A poszter attribútum azt a képet állítja be, amely a videó megkezdése előtt megjelenik. Ez gyakran a videó kerete vagy egy egyéni cím képernyő. Amint a felhasználó rákattint a lejátszás gombra, a rendszer elindul.
 
 `<video poster="myPoster.jpg" ...>` vagy `{ "poster": "myPoster.jpg" }`
 
 ### <a name="width"></a>szélesség ###
 
-A width attribútum beállítja a videó megjelenítési szélességét.
+A Width (szélesség) attribútum beállítja a videó megjelenítési szélességét.
 
 `<video width="640" ...>` vagy `{ "width": 640 }`
 
 ### <a name="height"></a>magasság ###
 
-A magasságattribútum beállítja a videó megjelenítési magasságát.
+A magasság attribútum beállítja a videó megjelenítési magasságát.
 
 `<video height="480" ...>` vagy `{ "height": 480 }`
 
-### <a name="plugins"></a>Dugó ###
+### <a name="plugins"></a>dugó ###
 
-A plugins JSON határozza meg, hogy mely dugó betöltődik, hogy a példány az AMP segítségével konfigurálhatja a lehetőségeket, hogy a plugin lehet.
+A plugins JSON meghatározza, hogy mely beépülő modulok tölthetők be az adott példánnyal, lehetővé teszi, hogy a beépülő modul esetlegesen milyen beállításokat konfiguráljon.
 
    `<video... data-setup='{plugins: { "contentTitle": {"name": "Azure Medi Services Overview"}}}'...>`
 
-További információ a plugin fejlesztés és használat, lásd [írásban dugó](azure-media-player-writing-plugins.md)
+További információ a beépülő modulok fejlesztéséről és használatáról: [plugins írása](azure-media-player-writing-plugins.md)
 
-### <a name="other-options"></a>egyéb lehetőségek ###
+### <a name="other-options"></a>egyéb beállítások ###
 
-Más beállításokat is `<video>` meg lehet `data-setup` állítani a címkén a JSON paraméter használatával.
+A `<video>` címkén további beállítások is megadhatók a JSON `data-setup` -t használó paraméter használatával.
 `<video ... data-setup='{"nativeControlsForTouch": false}'>`
 
-#### <a name="nativecontrolsfortouch"></a>natívControlsForTouch ####
+#### <a name="nativecontrolsfortouch"></a>nativeControlsForTouch ####
 
-Ez kifejezetten hamis. Ha hamis ra állítja, lehetővé teszi, hogy az Azure Media Player felszíne azonos legyen a különböző platformokon.  Továbbá, ellentétben a név, touch továbbra is engedélyezve van.
+Ez explicit módon false (hamis) értékre van állítva. A hamis értékre állításával lehetővé teszi, hogy a Azure Media Player-bőr ugyanazokat a platformokat jelenítse meg.  Továbbá a névvel ellentétben a Touch továbbra is engedélyezve lesz.
 
-### <a name="fluid"></a>Folyadék ###
+### <a name="fluid"></a>numerikus ###
 
-Ha ezt a beállítást valódi videoelemre állítja be, akkor a szülőtároló teljes szélessége megtörténik, a magasság pedig úgy lesz beállítva, hogy a normál 16:9-es képaránnyal illeszkedjen a videóhoz.
+Ha ezt a beállítást True video elemre állítja, a rendszer a szülő tároló teljes szélességét és magasságát fogja módosítani úgy, hogy a videóhoz a szabványos 16:9 méretarányt használja.
 
 `<video ... data-setup='{"fluid": true}'>`
 
-`fluid`opció felülbírálja `width` `height` az explicit és a beállításokat. Ez a beállítás csak az `2.0.0` Azure Media Player és újabb verzióban érhető el.
+`fluid`a beállítás felülbírálja a `width` explicit `height` és a beállításokat. Ez a beállítás csak Azure Media Player vagy újabb verzióban `2.0.0` érhető el.
 
-### <a name="playbackspeed"></a>lejátszásSebesség ###
+### <a name="playbackspeed"></a>playbackSpeed ###
 
-`playbackSpeed`opció szabályozza a lejátszássebesség-vezérlést és a felhasználó számára elérhető lejátszási sebességbeállításokat. `playbackSpeed`egy tárgyat vesz igénybe. A vezérlősáv lejátszási sebességének szabályozásához `enabled` az objektum tulajdonságát true értékre kell állítani. Példa a lejátszási sebesség engedélyezésére a korrektúrákban:
+`playbackSpeed`a beállítás szabályozza a felhasználó számára elérhető playbackSpeed-szabályozást és a lejátszási sebesség beállítását. `playbackSpeed`egy objektumot vesz fel. Ha engedélyezni szeretné a lejátszás sebességének vezérlését a menüsávon, `enabled` az objektum tulajdonságát True értékre kell állítani. Példa a lejátszási sebesség engedélyezésére a kódban:
 
 `<video ... data-setup='{"playbackSpeed": {"enabled": true}}'>`
 
 
-A beállítás `playbackSpeed` egyéb tulajdonságait a [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) objektum adja meg.
+A `playbackSpeed` beállítás egyéb tulajdonságait a [PlaybackSpeedOptions](https://docs.microsoft.com/javascript/api/azuremediaplayer/amp.player.playbackspeedoptions) objektum adja meg.
 
-Példa a lejátszási sebesség beállításainak beállítására JavaScriptben:
+Példa a lejátszási sebesség beállításainak beállítására a JavaScriptben:
 
 ```javascript
     var myPlayer = amp('vid1', {
@@ -126,15 +126,15 @@ Példa a lejátszási sebesség beállításainak beállítására JavaScriptben
     });
 ```
 
-Ez a beállítás csak az Azure Media Player 2.0.0-s és újabb verziójában érhető el.
+Ez a beállítás csak Azure Media Player 2.0.0 és újabb verziókban érhető el.
 
 ### <a name="staledatatimelimitinsec"></a>staleDataTimeLimitInSec ###
 
-A `staleDataTimeLimitInSec` beállítás egy optimalizálás, amely lehetővé teszi annak konfigurálását, hogy hány másodpercnyi elavult adatot szeretne megtartani a mediaSource pufferekben. A beállítás alapértelmezés szerint le van tiltva.
+A `staleDataTimeLimitInSec` lehetőség egy olyan optimalizálás, amely lehetővé teszi, hogy a mediaSource-pufferekben a megtartani kívánt elavult adatmennyiséget hány másodpercig szeretné beállítani. A beállítás alapértelmezés szerint le van tiltva.
 
-### <a name="cea708captionssettings"></a>cea708CaptionsBeállítások ###
+### <a name="cea708captionssettings"></a>cea708CaptionsSettings ###
 
-Az igaz beállítás lehetővé teszi, hogy élő CEA feliratozást jelenítsen meg az élő közvetítésekben és az élő archívumokban. A címke attribútum nem szükséges, ha nem tartalmazza a játékos esik vissza az alapértelmezett címkét.
+A True beállítás lehetővé teszi az élő CEA-feliratok élő streamekben és élő archívumokban való megjelenítését. A Label attribútum megadása nem kötelező, ha a lejátszó nem tartalmaz egy alapértelmezett címkét.
 
 ```javascript
      cea708CaptionsSettings: {
@@ -144,8 +144,8 @@ Az igaz beállítás lehetővé teszi, hogy élő CEA feliratozást jelenítsen 
             }
 ```
 
-Ez a beállítás csak az Azure Media Player 2.1.1-es és újabb verziójában érhető el.
+Ez a beállítás csak Azure Media Player 2.1.1-es és újabb verzióiban érhető el.
 
 ## <a name="next-steps"></a>További lépések ##
 
-- [Az Azure Media Player rövid útmutatója](azure-media-player-quickstart.md)
+- [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)
