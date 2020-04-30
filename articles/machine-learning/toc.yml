@@ -91,6 +91,8 @@
       href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Alapelvek
   items:
+    - name: Költségtervezés és a költségek kezelése
+      href: concept-plan-manage-cost.md
     - name: Munkaterület
       href: concept-workspace.md
     - name: Környezetek
@@ -156,6 +158,8 @@
               href: how-to-use-azure-ad-identity.md
             - name: Tárelérési kulcsok újragenerálása
               href: how-to-change-storage-access-key.md
+            - name: Az Azure Firewall használata
+              href: how-to-access-azureml-behind-firewall.md
         - name: Hitelesítés beállítása
           displayName: 'authentication, auth, oauth'
           href: how-to-setup-authentication.md

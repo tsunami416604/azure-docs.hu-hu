@@ -10,10 +10,10 @@ ms.topic: tutorial
 description: Ebből az oktatóanyagból megtudhatja, hogyan használható az Azure dev Spaces és a Visual Studio a Team Development szolgáltatásra a .NET Core-alkalmazásokban az Azure Kubernetes Service-ben
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 ms.openlocfilehash: c84c77fe7a425318700903427ff1c4aaa4e73a11
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "82166036"
 ---
 # <a name="team-development-using-net-core-and-visual-studio-with-azure-dev-spaces"></a>Csoportmunka-fejlesztés a .NET Core és a Visual Studióval az Azure dev Spaces használatával
