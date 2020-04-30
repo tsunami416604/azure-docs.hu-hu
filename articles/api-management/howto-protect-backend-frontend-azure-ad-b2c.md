@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 02/20/2020
 ms.author: wieastbu
 ms.custom: fasttrack-new
-ms.openlocfilehash: 55acea360de11c5fcc699d65daf92cf24dfd691d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 3c5c13b3aae33b098de79a3429a299cc33f1c4f6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79475476"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82202876"
 ---
 # <a name="protect-spa-backend-with-oauth-20-azure-active-directory-b2c-and-azure-api-management"></a>Az OAuth 2,0, a Azure Active Directory B2C és az Azure API Management által védett SPA-háttérrendszer
 
@@ -148,7 +148,7 @@ Nyissa meg a Azure AD B2C panelt a portálon, és hajtsa végre a következő l�
 5. Váltson vissza a HttpTrigger1 lapra, kattintson a "függvény URL-címének beolvasása" elemre, majd másolja ki a megjelenő URL-címet.
 
    > [!NOTE]
-   > Az imént létrehozott kötések egyszerűen csak azt mondják, hogy a függvények válaszolnak a névtelen http GET kérelmekre az imént másolt URL-címre. (https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey) Most már van egy skálázható, kiszolgáló nélküli HTTPS API, amely képes egy nagyon egyszerű hasznos adat visszaküldésére.
+   > Az imént létrehozott kötések egyszerűen csak azt mondják, hogy a függvények válaszolnak a névtelen http GET kérelmekre az imént másolt URL-címre. (`https://yourfunctionappname.azurewebsites.net/api/hello?code=secretkey`) Most már van egy méretezhető, kiszolgáló nélküli HTTPS API-je, amely képes egy nagyon egyszerű hasznos adat visszaküldésére.
    > Most már tesztelheti ezt az API-t egy webböngészőből a fenti URL-cím használatával, és a? Code = Secret részét is megadhatja az URL-címben, és igazolhatja, hogy a Azure Functions 401 hibát ad vissza.
 
 ## <a name="configure-and-secure-the-function-api"></a>A Function API konfigurálása és biztonságossá tétele

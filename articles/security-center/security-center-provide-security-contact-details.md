@@ -1,6 +1,6 @@
 ---
-title: Adja meg a biztonsági kapcsolattartási adatokat az Azure Security Centerben | Microsoft dokumentumok
-description: Ez a dokumentum bemutatja, hogyan adhat meg biztonsági kapcsolattartási adatokat az Azure Security Centerben.
+title: Biztonsági kapcsolattartási adatok megadása a Azure Security Centerban | Microsoft Docs
+description: Ebből a dokumentumból megtudhatja, hogyan biztosíthat biztonsági kapcsolattartási adatokat a Azure Security Centerban.
 services: security-center
 documentationcenter: na
 author: memildin
@@ -13,57 +13,57 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/09/2019
 ms.author: memildin
-ms.openlocfilehash: 64a9600a3014f7e85a7f924d38882bfadaf631db
-ms.sourcegitcommit: d0fd35f4f0f3ec71159e9fb43fcd8e89d653f3f2
+ms.openlocfilehash: 08ad761e81909e6ab23c7c07f5ce05865136bc47
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/30/2020
-ms.locfileid: "80387818"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204100"
 ---
-# <a name="provide-security-contact-details-in-azure-security-center"></a>Adja meg a biztonsági kapcsolattartási adatokat az Azure Security Centerben
+# <a name="provide-security-contact-details-in-azure-security-center"></a>Biztonsági kapcsolattartási adatok megadása Azure Security Center
 Az Azure Security Center javasolni fogja, hogy adja meg a biztonsági kapcsolattartó adatait az Azure-előfizetéséhez, ha még nem tette meg. A Microsoft arra használja ezt az információt, hogy kapcsolatba lépjen Önnel, ha a Microsoft Security Response Center (MSRC) azt észleli, hogy egy jogosulatlan vagy illetéktelen fél hozzáfért az Ön ügyféladataihoz. Az MSRC az Azure-hálózat és -infrastruktúra célzott biztonsági figyelését végzi, és fogadja a külső felektől kapott, fenyegetésekkel és visszaélésekkel kapcsolatos panaszokat.
 
-A rendszer a nagyon súlyos riasztások napi első előfordulásakor e-mailes értesítést küld. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatóak. Az előfizetésben lévő erőforráscsoportok megöröklik ezeket a beállításokat. A riasztások csak az Azure Security Center standard szintű szintjén érhetők el.
+A rendszer a nagyon súlyos riasztások napi első előfordulásakor e-mailes értesítést küld. Az e-mail-beállítások kizárólag előfizetési szabályok esetében konfigurálhatóak. Az előfizetésben lévő erőforráscsoportok megöröklik ezeket a beállításokat. A riasztások csak a standard szintű Azure Security Center érhetők el.
 
 A riasztási e-mail értesítések küldésére vonatkozó szabályok:
 - Naponta egyetlen e-mail-címzettnek riasztástípusonként  
-- Egyetlen nap alatt legfeljebb 3 e-mail üzenetet küld egyetlen címzettnek
+- Legfeljebb 3 e-mail-üzenet küldése egyetlen címzettnek egyetlen nap alatt
 - Mindegyik e-mail-üzenet egyetlen riasztást tartalmaz, nem a riasztások összesítését.
 - Csak a magas súlyosságú riasztások esetében
 
 > [!TIP]
-> A riasztások más súlyossági szintekkel, hozzon létre egy [munkafolyamat-automatizálási](workflow-automation.md) egy logikai alkalmazás, amely e-maileket küld az érintett személyzetnek.
+> Más súlyossági szintű riasztások esetén hozzon létre egy [munkafolyamat-automatizálást](workflow-automation.md) egy olyan logikai alkalmazás használatához, amely e-mailt küld az érintett személynek.
  
 Ha például egy RDP-támadásról már kapott e-mail-üzenetet, RDP-támadásokról aznap már nem kap majd riasztást, még ha egy újabb riasztás aktiválódik is. 
 
-> [!NOTE]
+> [!IMPORTANT]
 > Ez a dokumentum egy üzembe helyezést szemléltető példa segítségével mutatja be a szolgáltatást.  A dokumentum nem tartalmaz lépésenkénti útmutatót.
 
-## <a name="set-up-email-notifications-for-alerts"></a>E-mail értesítések beállítása riasztásokhoz<a name="email"></a>
+## <a name="set-up-email-notifications-for-alerts"></a>Értesítő e-mail-értesítések beállítása<a name="email"></a>
 
-1. Nyissa meg az **E-mail értesítések** lapot:
+1. Nyissa meg az **e-mail-értesítések** lapot a szerepkör-biztonsági rendszergazda vagy az előfizetés tulajdonosának felhasználója számára:
 
-    - Riasztások esetén nyissa meg **az Árképzési & beállításait,** válassza ki a megfelelő előfizetést, és válassza **az E-mail értesítések**lehetőséget.
+    - Riasztások esetén nyissa meg a **díjszabási & beállításait**, válassza ki a megfelelő előfizetést, és válassza az **e-mail értesítések**lehetőséget.
 
-    - Ha egy javaslatot valósít meg, majd **a javaslatok**csoportban válassza a **Biztonsági kapcsolattartási adatok megadásához**lehetőséget, válassza ki az Azure-előfizetést, hogy megadhassa a kapcsolattartási adatokat. Ezzel megnyitja **az e-mail értesítéseket.**
+    - Ha javaslatot valósít meg, akkor a **javaslatok**területen válassza a **biztonsági kapcsolattartási adatok megadása**lehetőséget, majd válassza ki az Azure-előfizetést, amely a kapcsolattartási adatokat adja meg. Ekkor megnyílik az **e-mail-értesítések**.
 
    ![Biztonsági kapcsolattartói adatok megadása][2]
 
-1. Adja meg a biztonsági kapcsolattartó e-mail címét vagy címét vesszővel elválasztva. A beírható e-mail címek száma nincs korlátozva.
+1. Adja meg a biztonsági kapcsolattartási e-mail címet vagy a címeket vesszővel elválasztva. A megadható e-mail-címek száma nincs korlátozva.
 
-1. Ha e-maileket szeretne kapni a magas súlyosságú riasztásokról, kapcsolja be a **Figyelmeztetések küldése e-maileket.** Más súlyossági szintekhez használja a logikai alkalmazást a [munkafolyamat-automatizálásban](workflow-automation.md)leírtak szerint.
+1. Ha a nagy súlyosságú riasztásokra vonatkozó e-maileket szeretne kapni, kapcsolja be a **riasztások küldése e-mailben**című lehetőséget. Egyéb súlyossági szint esetén a logikai alkalmazás a munkafolyamat- [automatizálásban](workflow-automation.md)ismertetett módon használható.
 
-1. E-mail értesítéseket küldhet az előfizetés-tulajdonosoknak (klasszikus szolgáltatás-rendszergazda és társrendszergazdák, valamint RBAC-tulajdonos szerepkör az előfizetés hatókörében).
+1. E-mailes értesítéseket küldhet az előfizetési tulajdonosoknak (a klasszikus szolgáltatás rendszergazdája és a társ-rendszergazdák, valamint a RBAC tulajdonosi szerepkör az előfizetés hatókörében).
 
-1. Ha a biztonsági kapcsolattartási adatokat szeretné alkalmazni az előfizetésre, válassza a **Mentés gombot.**
+1. A biztonsági kapcsolattartási adatok előfizetésre való alkalmazásához válassza a **Mentés**lehetőséget.
 
 ## <a name="see-also"></a>Lásd még
 A Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md) – Ez a cikk bemutatja, hogyan konfigurálhat biztonsági házirendeket Azure-előfizetései és -erőforráscsoportjai számára.
-* [A biztonsági javaslatok kezelése az Azure Security Centerben](security-center-recommendations.md) – Ismerje meg, hogyan segíthetnek a javaslatok az Azure-erőforrások védelmében.
-* [Biztonsági állapotfigyelés az Azure Security Centerben](security-center-monitoring.md) – Ismerje meg, hogyan figyelheti az Azure-erőforrások állapotát.
-* [Biztonsági riasztások kezelése és megválaszolása az Azure Security Centerben](security-center-managing-and-responding-alerts.md) – Ismerje meg, hogyan kezelheti és válaszolhat azokra a biztonsági riasztásokra.
+* [Biztonsági javaslatok kezelése Azure Security Centerban](security-center-recommendations.md) – megtudhatja, hogyan segítheti az ajánlásokat az Azure-erőforrások védelmében.
+* [Biztonsági állapot figyelése Azure Security Centerban](security-center-monitoring.md) – megtudhatja, hogyan figyelheti az Azure-erőforrások állapotát.
+* [Biztonsági riasztások kezelése és válaszadás a Azure Security Center-ben](security-center-managing-and-responding-alerts.md) – útmutató a biztonsági riasztások kezeléséhez és megválaszolásához.
 * [Partnermegoldások figyelése az Azure Security Centerrel](security-center-partner-solutions.md) – Megtudhatja, hogyan figyelheti a partnermegoldások biztonsági állapotát.
 
 <!--Image references-->

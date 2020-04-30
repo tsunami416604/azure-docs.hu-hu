@@ -1,35 +1,218 @@
 ---
-title: Erőforrás-kezelősablonok az Azure Cosmos DB Cassandra API-hoz
-description: Azure Resource Manager-sablonok használatával hozhatja létre és konfigurálhatja az Azure Cosmos DB Cassandra API-t.
-author: TheovanKraay
+title: Resource Manager-sablonok a Azure Cosmos DB Cassandra API
+description: Azure Cosmos DB-Cassandra API létrehozásához és konfigurálásához használjon Azure Resource Manager sablonokat.
+author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.author: thvankra
-ms.openlocfilehash: c4dc97453fe50865db74f8918ef3dffdb4013b4f
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.author: mjbrown
+ms.openlocfilehash: ff75597bece386635195a84572a9f07b04d9c60f
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79251894"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82200810"
 ---
-# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Az Azure Cosmos DB Cassandra API-erőforrások kezelése az Azure Resource Manager-sablonokkal
+# <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával
 
-Ez a cikk ismerteti, hogyan hajthatja végre a különböző műveleteket az Azure Cosmos DB-fiókok, adatbázisok és tárolók felügyeletének automatizálására az Azure Resource Manager-sablonok használatával. Ez a cikk csak sql API-fiókok példákat tartalmaz, hogy példákat találjon más API-típusú fiókokra: használja az Azure Resource Manager-sablonokat az Azure Cosmos DB [SQL](manage-sql-with-resource-manager.md)API-jával, [Gremlin](manage-gremlin-with-resource-manager.md), [MongoDB](manage-mongodb-with-resource-manager.md), [Table](manage-table-with-resource-manager.md) cikkek.
+Ez a cikk bemutatja, hogyan hajthat végre különböző műveleteket a Azure Cosmos DB-fiókok,-adatbázisok és-tárolók felügyeletének automatizálásához Azure Resource Manager-sablonok használatával. Ez a cikk csak a Cassandra API fiókokra mutat példákat más API-típusú fiókokra vonatkozó példák megkereséséhez lásd: Azure Resource Manager-sablonok használata az Azure Cosmos DB API-val az [SQL](manage-sql-with-resource-manager.md), a [Gremlin](manage-gremlin-with-resource-manager.md), a [MongoDB](manage-mongodb-with-resource-manager.md)és a [Table](manage-table-with-resource-manager.md) cikkekhez.
 
-## <a name="create-azure-cosmos-account-keyspace-and-table"></a>Azure Cosmos-fiók, kulcstér és tábla létrehozása<a id="create-resource"></a>
+## <a name="create-azure-cosmos-account-keyspace-and-table"></a>Azure Cosmos-fiók,-térköz és-tábla létrehozása<a id="create-resource"></a>
 
-Hozzon létre Azure Cosmos DB-erőforrásokat egy Azure Resource Manager-sablon használatával. Ez a sablon létrehoz egy Azure Cosmos-fiókot a Cassandra API-hoz két táblával, amelyek 400 RU/s átviteli sebességgel rendelkeznek a keyspace-szinten. Másolja a sablont, és telepítse az alábbiak szerint, vagy keresse fel az [Azure Gyorsútmutató galériát,](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) és telepítse az Azure Portalról. A sablont letöltheti a helyi számítógépre, vagy létrehozhat egy új `--template-file` sablont, és megadhatja a helyi elérési utat a paraméterrel.
+Azure Cosmos DB erőforrások létrehozása Azure Resource Manager sablon használatával. Ez a sablon egy Azure Cosmos-fiókot hoz létre a Cassandra APIhoz két olyan táblázattal, amelyek 400 RU/s átviteli sebességet osztanak meg a szóköz szintjén. Másolja a sablont és az üzembe helyezést az alább látható módon, vagy látogasson el az [Azure Gyorsindítás galériába](https://azure.microsoft.com/resources/templates/101-cosmosdb-cassandra/) , és telepítse a Azure Portal. Le is töltheti a sablont a helyi számítógépre, vagy létrehozhat egy új sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
 
 > [!NOTE]
-> A fiókneveknek kisbetűsnek és 44 vagy kevesebb karakternek kell lenniük.
-> A RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonságértékekkel.
+> A fióknév csak kisbetűket és 44 karaktert tartalmazhat.
+> Az RU/s frissítéséhez küldje el újra a sablont a frissített átviteli tulajdonság-értékekkel.
 
-:::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra/azuredeploy.json":::
+```json
+{
+"$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+"contentVersion": "1.0.0.0",
+"parameters": {
+    "accountName": {
+        "type": "string",
+        "defaultValue": "",
+        "metadata": {
+            "description": "Cosmos DB account name, max length 44 characters"
+        }
+    },
+    "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+            "description": "Location for the Cosmos DB account."
+        }
+    },
+    "primaryRegion":{
+        "type":"string",
+        "metadata": {
+            "description": "The primary replica region for the Cosmos DB account."
+        }
+    },
+    "secondaryRegion":{
+        "type":"string",
+        "metadata": {
+          "description": "The secondary replica region for the Cosmos DB account."
+      }
+    },
+    "defaultConsistencyLevel": {
+        "type": "string",
+        "defaultValue": "Session",
+        "allowedValues": [ "Eventual", "ConsistentPrefix", "Session", "BoundedStaleness", "Strong" ],
+        "metadata": {
+            "description": "The default consistency level of the Cosmos DB account."
+        }
+    },
+    "maxStalenessPrefix": {
+        "type": "int",
+        "defaultValue": 100000,
+        "minValue": 10,
+        "maxValue": 1000000,
+        "metadata": {
+            "description": "Max stale requests. Required for BoundedStaleness. Valid ranges, Single Region: 10 to 1000000. Multi Region: 100000 to 1000000."
+        }
+    },
+    "maxIntervalInSeconds": {
+        "type": "int",
+        "defaultValue": 300,
+        "minValue": 5,
+        "maxValue": 86400,
+        "metadata": {
+            "description": "Max lag time (seconds). Required for BoundedStaleness. Valid ranges, Single Region: 5 to 84600. Multi Region: 300 to 86400."
+        }
+    },
+    "automaticFailover": {
+        "type": "bool",
+        "defaultValue": true,
+        "allowedValues": [ true, false ],
+        "metadata": {
+            "description": "Enable automatic failover for regions"
+        }
+    },
+    "keyspaceName": {
+        "type": "string",
+        "defaultValue": "Keyspace1",
+        "metadata": {
+            "description": "The name for the Cassandra Keyspace"
+        }
+    },
+    "tableName": {
+        "type": "string",
+        "defaultValue": "Table1",
+        "metadata": {
+            "description": "The name for the Cassandra table"
+        }
+    },
+    "throughput": {
+        "type": "int",
+        "defaultValue": 400,
+        "minValue": 400,
+        "maxValue": 1000000,
+        "metadata": {
+            "description": "The throughput for the Cassandra table"
+        }
+    }
+},
+"variables": {
+    "accountName": "[toLower(parameters('accountName'))]",
+    "consistencyPolicy": {
+        "Eventual": {
+            "defaultConsistencyLevel": "Eventual"
+        },
+        "ConsistentPrefix": {
+            "defaultConsistencyLevel": "ConsistentPrefix"
+        },
+        "Session": {
+            "defaultConsistencyLevel": "Session"
+        },
+        "BoundedStaleness": {
+            "defaultConsistencyLevel": "BoundedStaleness",
+            "maxStalenessPrefix": "[parameters('maxStalenessPrefix')]",
+            "maxIntervalInSeconds": "[parameters('maxIntervalInSeconds')]"
+        },
+        "Strong": {
+            "defaultConsistencyLevel": "Strong"
+        }
+    },
+    "locations":
+    [
+        {
+            "locationName": "[parameters('primaryRegion')]",
+            "failoverPriority": 0,
+            "isZoneRedundant": false
+        },
+        {
+            "locationName": "[parameters('secondaryRegion')]",
+            "failoverPriority": 1,
+            "isZoneRedundant": false
+        }
+    ]
+},
+"resources":
+[
+    {
+        "type": "Microsoft.DocumentDB/databaseAccounts",
+        "name": "[variables('accountName')]",
+        "apiVersion": "2020-03-01",
+        "location": "[parameters('location')]",
+        "kind": "GlobalDocumentDB",
+        "properties": {
+            "capabilities": [{ "name": "EnableCassandra" }],
+            "consistencyPolicy": "[variables('consistencyPolicy')[parameters('defaultConsistencyLevel')]]",
+            "locations": "[variables('locations')]",
+            "databaseAccountOfferType": "Standard",
+            "enableAutomaticFailover": "[parameters('automaticFailover')]"
+        }
+    },
+    {
+        "type": "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces",
+        "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'))]",
+        "apiVersion": "2020-03-01",
+        "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/', variables('accountName'))]" ],
+        "properties":{
+            "resource":{
+                "id": "[parameters('keyspaceName')]"
+            }
+        }
+    },
+    {
+        "type": "Microsoft.DocumentDb/databaseAccounts/cassandraKeyspaces/tables",
+        "name": "[concat(variables('accountName'), '/', parameters('keyspaceName'), '/', parameters('tableName'))]",
+        "apiVersion": "2020-03-01",
+        "dependsOn": [ "[resourceId('Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces', variables('accountName'), parameters('keyspaceName'))]" ],
+        "properties":
+        {
+            "resource":{
+                "id":  "[parameters('tableName')]",
+                "schema": {
+                    "columns": [
+                        { "name": "loadid", "type": "uuid" },
+                        { "name": "machine", "type": "uuid" },
+                        { "name": "cpu", "type": "int" },
+                        { "name": "mtime", "type": "int" },
+                        { "name": "load", "type": "float" }
+                    ],
+                    "partitionKeys": [
+                        { "name": "machine" },
+                        { "name": "cpu" },
+                        { "name": "mtime" }
+                    ],
+                    "clusterKeys": [
+                        { "name": "loadid", "orderBy": "asc" }
+                    ]
+                },
+                "options": { "throughput": "[parameters('throughput')]" }
+            }
+        }
+    }
+]
+}
+```
 
 ## <a name="deploy-with-the-azure-cli"></a>Üzembe helyezés az Azure CLI-vel
 
-Az Azure Resource Manager-sablon azure CLI használatával történő üzembe helyezéséhez másolja a **parancsfájlt,** és válassza a **Próbálja ki az** Azure Cloud Shell megnyitásához lehetőséget. A parancsfájl beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés parancsot:**
+A Azure Resource Manager-sablon Azure CLI-vel történő üzembe helyezéséhez **másolja** a szkriptet, és válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**parancsot:
 
 ```azurecli-interactive
 
@@ -38,27 +221,26 @@ read -p 'Enter the location (i.e. westus2): ' location
 read -p 'Enter the account name: ' accountName
 read -p 'Enter the primary region (i.e. westus2): ' primaryRegion
 read -p 'Enter the secondary region (i.e. eastus2): ' secondaryRegion
-read -p 'Enter the keyset name: ' keysetName
-read -p 'Enter the first table name: ' table1Name
-read -p 'Enter the second table name: ' table2Name
+read -p 'Enter the keyspace name: ' keyspaceName
+read -p 'Enter the table name: ' tableName
+read -p 'Enter the throughput: ' throughput
 
 az group create --name $resourceGroupName --location $location
 az group deployment create --resource-group $resourceGroupName \
    --template-uri https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/101-cosmosdb-cassandra/azuredeploy.json \
-   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion keysetName=$keysetName \
-   table1Name=$table1Name table2Name=$table2Name
+   --parameters accountName=$accountName primaryRegion=$primaryRegion secondaryRegion=$secondaryRegion keyspaceName=$keyspaceName \
+   tableName=$tableName throughput=$throughput
 
 az cosmosdb show --resource-group $resourceGroupName --name accountName --output tsv
 ```
 
-A `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg a kiépítés után. Ha úgy dönt, hogy az Azure CLI helyileg telepített verzióját használja a Cloud Shell használata helyett, tekintse meg az [Azure CLI](/cli/azure/) cikket.
-
+A `az cosmosdb show` parancs az újonnan létrehozott Azure Cosmos-fiókot jeleníti meg az üzembe helyezés után. Ha úgy dönt, hogy a Cloud Shell használata helyett az Azure CLI helyileg telepített verzióját használja, tekintse meg az [Azure CLI](/cli/azure/) -cikket.
 
 ## <a name="next-steps"></a>További lépések
 
 Néhány további információforrás:
 
-- [Az Azure Resource Manager dokumentációja](/azure/azure-resource-manager/)
-- [Az Azure Cosmos DB erőforrás-szolgáltatósémája](/azure/templates/microsoft.documentdb/allversions)
-- [Az Azure Cosmos DB rövid útmutató sablonjai](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
-- [Gyakori Azure Resource Manager-telepítési hibák elhárítási hibáinak elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)
+- [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/)
+- [Erőforrás-szolgáltatói séma Azure Cosmos DB](/azure/templates/microsoft.documentdb/allversions)
+- [Azure Cosmos DB gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.DocumentDB&pageNumber=1&sort=Popular)
+- [Gyakori Azure Resource Manager telepítési hibák elhárítása](../azure-resource-manager/templates/common-deployment-errors.md)

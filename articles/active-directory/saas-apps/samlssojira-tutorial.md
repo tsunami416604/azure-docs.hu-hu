@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 957fee48397bc0b23737157dec0e74cf6505fab5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6f6cb87cf7628c48ce6adf12336c4b712dc0ff9
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "73160126"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202621"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH által
 
@@ -291,7 +291,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a JIRA által használt SAML SSO-ra kattint, automatikusan be kell jelentkeznie az SAML SSO-ba a JIRA by Solution GmbH számára, amelyhez be kell állítania az SSO-t. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-Az egyszeri bejelentkezést is tesztelheti, ha a [https://\<Server-Base-url-címet>/plugins/servlet/samlsso](https://\<server-base-url>/plugins/servlet/samlsso)-ra navigál. Helyettesítse be a ** \<Server-Base-URL-címet>** a JIRA-példány alap URL-címével.
+Az egyszeri bejelentkezést is tesztelheti, ha megnyitja a `https://<server-base-url>/plugins/servlet/samlsso`következőt:. Helyettesítse be a ** \<Server-Base-URL-címet>** a JIRA-példány alap URL-címével.
 
 
 ## <a name="enable-single-sign-on-redirection-for-jira"></a>Egyszeri bejelentkezéses átirányítás engedélyezése a JIRA
@@ -311,7 +311,7 @@ Az SSO-átirányítás aktiválásához tegye a következőket az **JIRA-példá
 
 1. Nyomja meg a **Beállítások mentése** gombot a jobb felső sarokban.
 
-A beállítás aktiválása után továbbra is elérheti a Felhasználónév/jelszó kérést, ha a **Nosso engedélyezése** beállítás be van jelölve a [https://\<server-Base-URL>/login.jsp? Nosso](https://\<server-base-url>/login.jsp?nosso)parancsra való navigáláskor. Mint mindig, helyettesítse ** \<be a Server-Base-URL-címet>** az alap URL-címmel.
+A beállítás aktiválása után továbbra is elérheti a Felhasználónév/jelszó kérést, ha az **Nosso engedélyezése** beállítás be `https://\<server-base-url>/login.jsp?nosso`van jelölve. Mint mindig, helyettesítse ** \<be a Server-Base-URL-címet>** az alap URL-címmel.
 
 
 ## <a name="additional-resources"></a>További háttéranyagok

@@ -1,66 +1,66 @@
 ---
-title: Támogatott erőforrások az Azure Red Hat OpenShift-hez
-description: Ismerje meg, hogy a Microsoft Azure Red Hat OpenShift mely Azure-régiókat és virtuálisgép-méreteket támogatja.
+title: Támogatott források az Azure Red Hat OpenShift 3,11
+description: Megtudhatja, hogy mely Azure-régiók és virtuálisgép-méretek támogatottak Microsoft Azure Red Hat-OpenShift.
 author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: 1b794852390141d31a3218a1a434c21133db914c
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: 38203cede755d776ba9142ad16e1bea1fd1637a6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79243665"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203675"
 ---
 # <a name="azure-red-hat-openshift-resources"></a>Azure Red Hat OpenShift-erőforrások
 
-Ez a témakör a Microsoft Azure Red Hat OpenShift szolgáltatás által támogatott Azure-régiókat és virtuálisgép-méreteket sorolja fel.
+Ez a témakör a Microsoft Azure Red Hat OpenShift 3,11 szolgáltatás által támogatott Azure-régiókat és virtuálisgép-méreteket sorolja fel.
 
 ## <a name="azure-regions"></a>Azure-régiók
 
-Tekintse meg [a termékek régiónként elérhető](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) a régiók aktuális listáját, ahol telepítheti az Azure Red Hat OpenShift fürtök.
+Az Azure Red Hat OpenShift-fürtök üzembe helyezéséhez tekintse meg a régiók [által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=openshift&regions=all) listáját.
 
 ## <a name="virtual-machine-sizes"></a>Virtuálisgép-méretek
 
-Az alábbiakban az Azure Red Hat OpenShift fürt számítási csomópontjaihoz megadott támogatott virtuálisgép-méretek láthatók.
+Az alábbiakban az Azure Red Hat OpenShift-fürt számítási csomópontjaihoz megadható támogatott virtuálisgép-méretek láthatók.
 
 > [!Important]
-> Minden virtuális gép különböző számú meghajtóval rendelkezik, amelyek csatolhatók. Ez nem lehet olyan azonnal tiszta, mint a memória vagy a PROCESSZOR mérete.
-> Nem minden virtuális gép mérete érhető el minden régióban. Még akkor is, ha az API támogatja a megadott méretet, hibaüzenetet kaphat, ha a méret nem érhető el a megadott régióban.
-> További információ [a támogatott virtuálisgép-méretek aktuális listája régiónként.](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines)
+> Minden virtuális gép különböző számú meghajtót tud csatolni. Előfordulhat, hogy a memória vagy a CPU mérete nem lehet azonnal egyértelmű.
+> Nem minden virtuálisgép-méret érhető el minden régióban. Ha az API támogatja a megadott méretet, akkor hibaüzenet jelenik meg, ha a méret nem érhető el a megadott régióban.
+> További információkért tekintse meg régiónként a támogatott virtuálisgép- [méretek aktuális listáját](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) .
 
-## <a name="compute-node-sizes"></a>Számítási csomópontméretek
+## <a name="compute-node-sizes"></a>Számítási csomópontok méretei
 
-Az Azure Red Hat OpenShift REST API a következő számítási csomópontméreteket támogatja:
-
-|Méret|vCPU|RAM|
-|-|-|-|
-|Szabványos D4s v3|4|16 GB|
-|Szabványos D8s v3|8|32 GB|
-|Szabványos D16s v3|16|64 GB|
-|Szabványos D32s v3|32|128 GB|
-|-|-|-|
-|Szabványos E4s v3|4|32 GB|
-|Szabványos E8s v3|8|64 GB|
-|Szabványos E16s v3|16|128 GB|
-|Szabványos E32s v3|32|256 GB|
-|-|-|-|
-|Szabványos F8s v2|8|16 GB|
-|Szabványos F16s v2|16|32 GB|
-|Szabványos F32s v2|32|64 GB|
-
-## <a name="master-node-sizes"></a>Fő csomópontméretek
-
-Az Azure Red Hat OpenShift REST API a következő fő/ infrastruktúra csomópontméreteket támogatja:
+Az Azure Red Hat OpenShift REST API a következő számítási csomópont-méreteket támogatja:
 
 |Méret|vCPU|RAM|
 |-|-|-|
-|Szabványos D4s v3|4|16 GB|
-|Szabványos D8s v3|8|32 GB|
-|Szabványos D16s v3|16|64 GB|
-|Szabványos D32s v3|32|128 GB|
+|Standard D4s v3|4|16 GB|
+|Standard D8s v3|8|32 GB|
+|Standard D16s v3|16|64 GB|
+|Standard D32s v3|32|128 GB|
+|-|-|-|
+|Standard E4s v3|4|32 GB|
+|Standard E8s v3|8|64 GB|
+|Standard E16s v3|16|128 GB|
+|Standard E32s v3|32|256 GB|
+|-|-|-|
+|Standard F8s v2|8|16 GB|
+|Standard F16s v2|16|32 GB|
+|Standard F32s v2|32|64 GB|
+
+## <a name="master-node-sizes"></a>Fő csomópontok méretei
+
+Az Azure Red Hat OpenShift REST API a következő fő/infrastrukturális csomópontok méreteit támogatja:
+
+|Méret|vCPU|RAM|
+|-|-|-|
+|Standard D4s v3|4|16 GB|
+|Standard D8s v3|8|32 GB|
+|Standard D16s v3|16|64 GB|
+|Standard D32s v3|32|128 GB|
 
 ## <a name="next-steps"></a>További lépések
 
-Próbálja ki az [Azure Red Hat OpenShift fürt létrehozása](tutorial-create-cluster.md) oktatóanyagot.
+Próbálja ki az [Azure Red Hat OpenShift-fürt létrehozásával](tutorial-create-cluster.md) foglalkozó oktatóanyagot.

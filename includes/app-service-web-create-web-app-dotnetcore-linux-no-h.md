@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 04/22/2020
 ms.author: cephalin
 ms.custom: include file
-ms.openlocfilehash: ca5ef9cebfddb002cd62a9fb0fbbfdf444e0e754
-ms.sourcegitcommit: 09a124d851fbbab7bc0b14efd6ef4e0275c7ee88
+ms.openlocfilehash: f397a3df7280b9277b2b7205368ef5788ed321aa
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82085900"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206671"
 ---
-Hozzon létre egy `myAppServicePlan` [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) az App Service-csomagban. 
+Hozzon létre egy [webalkalmazást](../articles/app-service/containers/app-service-linux-intro.md) a `myAppServicePlan` app Service tervben. 
 
-A Cloud Shell, használhatja [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) a parancsot. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futásidő értéke `DOTNETCORE|LTS`. Az összes támogatott futásidő [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest)megtekintéséhez futtassa a futtassa a futtassa a futtassa a futtassa a futtass 
+A Cloud Shell a [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest) parancsot használhatja. A következő példában cserélje ki az `<app-name>` nevet egy globálisan egyedi névre (érvényes karakterek: `a-z`, `0-9` és `-`). A futtatókörnyezet értéke `DOTNETCORE|LTS`, amely a .net Core 3,1. Az összes támogatott futtatókörnyezet megtekintéséhez futtassa a parancsot [`az webapp list-runtimes --linux`](/cli/azure/webapp?view=azure-cli-latest). 
 
 ```azurecli-interactive
 # Bash
@@ -50,11 +50,11 @@ Ezzel létrehozott egy üres webalkalmazást egy Linux-tárolóban, engedélyeze
 > A távoli Git URL-címe a `deploymentLocalGitUrl` tulajdonságban látható, a következő formátumban: `https://<username>@<app-name>.scm.azurewebsites.net/<app-name>.git`. Mentse ezt az URL-t, mert később még szüksége lesz rá.
 >
 
-A .NET Core verzió megfelelő konfigurálásához (az előző lépésből származó verzió ra cserélhető) `<app-name>` a következő további parancsot kell futtatnia):
+Jelenleg a következő extra parancsot kell futtatnia ahhoz, hogy megfelelően konfigurálja a .NET Core-verziót ( `<app-name>` cserélje le az előző lépésből az egyikre):
 
 ```azurecli-interactive
 # Bash
-az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1.0"
+az webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
 # PowerShell
-az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1.0"
+az --% webapp config set --resource-group myResourceGroup --name <app-name> --linux-fx-version "DOTNETCORE|3.1"
 ```

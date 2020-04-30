@@ -1,11 +1,11 @@
 ---
-title: Felhasználók tömeges létrehozása az Azure Active Directory portálon | Microsoft dokumentumok
-description: Felhasználók tömeges hozzáadása az Azure Active Directory Azure AD felügyeleti központjában
+title: Felhasználók tömeges létrehozása a Azure Active Directory portálon | Microsoft Docs
+description: Felhasználók tömeges hozzáadása az Azure AD felügyeleti központban Azure Active Directory
 services: active-directory
 author: curtand
 ms.author: curtand
 manager: mtillman
-ms.date: 04/16/2020
+ms.date: 04/27/2020
 ms.topic: article
 ms.service: active-directory
 ms.subservice: users-groups-roles
@@ -13,56 +13,77 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3a8b9cb9701288d24534ab08940f6dbd4a698ad
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.openlocfilehash: 03f6e3d6edde51598b1d148469aceb1ff3b3d636
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81532932"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203400"
 ---
-# <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása az Azure Active Directoryban
+# <a name="bulk-create-users-in-azure-active-directory"></a>Felhasználók tömeges létrehozása Azure Active Directory
 
-Az Azure Active Directory (Azure AD) támogatja a tömeges felhasználói létrehozási és törlési műveleteket, a tömeges meghívást a vendégek számára, és támogatja a felhasználók, csoportok és csoporttagok listájának letöltését.
+Azure Active Directory (Azure AD) támogatja a tömeges felhasználói létrehozási és törlési műveleteket, és támogatja a felhasználók leletöltését. Csak töltse ki az Azure AD-portálról letölthető, vesszővel tagolt (CSV) sablont.
 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 
-Ahhoz, hogy tömegesen hozhasson létre felhasználókat a felügyeleti portálon, globális rendszergazdaként vagy felhasználóként kell bejelentkeznie.
+A felhasználók tömeges létrehozásához a felügyeleti portálon globális rendszergazdaként vagy felhasználói rendszergazdaként kell bejelentkeznie.
+
+## <a name="understand-the-csv-template"></a>A CSV-sablon megismerése
+
+Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, amely segít az Azure AD-felhasználók tömeges létrehozásában. A letöltött CSV-sablon a következő példához hasonló lehet:
+
+![Táblázat a feltöltéshez és a híváshoz – az egyes sorok és oszlopok céljának és értékeinek ismertetése](./media/users-bulk-add/create-template-example.png)
+
+### <a name="csv-template-structure"></a>CSV-sablon szerkezete
+
+A letöltött CSV-sablon sorai a következők:
+
+- **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
+- **Oszlopfejlécek**: az oszlopfejlécek &lt; *Item name* &gt; formátuma a (z) [PropertyName] &lt;elemnév *kötelező vagy üres*&gt;. Például: `Name [displayName] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
+- **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
+
+### <a name="additional-guidance"></a>További útmutatás
+
+- A feltöltési sablon első két sora nem távolítható el és nem módosítható, vagy a feltöltés nem dolgozható fel.
+- Először a szükséges oszlopok szerepelnek.
+- Nem ajánlott új oszlopokat hozzáadni a sablonhoz. A hozzáadott további oszlopokat a rendszer figyelmen kívül hagyja, és nem dolgozza fel.
+- Javasoljuk, hogy a lehető legtöbbször töltse le a CSV-sablon legújabb verzióját.
 
 ## <a name="to-create-users-in-bulk"></a>Felhasználók tömeges létrehozása
 
-1. [Jelentkezzen be az Azure AD-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. Az Azure AD-ben válassza a **Felhasználók** > **tömeges létrehozása lehetőséget.**
-1. A **Tömeges létrehozás felhasználói** lapon válassza a **Letöltés** lehetőséget, ha a felhasználói tulajdonságokat egy érvényes, vesszővel tagolt értékfájl (CSV) kapja meg, majd adja hozzá a létrehozni kívánt felhasználókat.
+1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
+1. Az Azure ad-ben válassza a**tömegesen létrehozott** **felhasználók** > elemet.
+1. A felhasználó **tömeges létrehozása** lapon válassza a **Letöltés** lehetőséget a felhasználói tulajdonságok érvényes, VESSZŐVEL tagolt (CSV) fájljának megjelenítéséhez, majd adja hozzá a létrehozni kívánt felhasználókat.
 
-   ![Jelöljön ki egy helyi CSV-fájlt, amelyben felsorolja a hozzáadni kívánt felhasználókat](./media/users-bulk-add/upload-button.png)
+   ![Válassza ki azt a helyi CSV-fájlt, amelyben fel szeretné sorolni a hozzáadni kívánt felhasználókat](./media/users-bulk-add/upload-button.png)
 
-1. Nyissa meg a CSV-fájlt, és adjon hozzá egy sort minden létrehozni kívánt felhasználóhoz. Az egyetlen szükséges érték a **Név**, **az egyszerű felhasználónév**, **a kezdeti jelszó** és a **Bejelentkezés blokkolása (Igen/Nem).** Ezután mentse a fájlt.
+1. Nyissa meg a CSV-fájlt, és adjon hozzá egy sort minden létrehozni kívánt felhasználóhoz. Az egyetlen szükséges érték a **név**, a **egyszerű felhasználónév**, a **kezdeti jelszó** és a **blokkolási bejelentkezés (igen/nem)**. Ezután mentse a fájlt.
 
-   ![A CSV-fájl tartalmazza a létrehozandó felhasználók neveit és azonosítóit](./media/users-bulk-add/add-csv-file.png)
+   [![](media/users-bulk-add/add-csv-file.png "The CSV file contains names and IDs of the users to create")](media/users-bulk-add/add-csv-file.png#lightbox)
 
-1. A **Tömeges létrehozás felhasználói** lapon a CSV-fájl feltöltése csoportban keresse meg a fájlt. Amikor kijelöli a fájlt, és a **Küldés**gombra kattint, elindul a CSV-fájl érvényesítése.
-1. A fájl tartalmának ellenőrzése után a **fájl feltöltése sikeresen megjelenik.** Ha vannak hibák, ki kell javítania azokat, mielőtt elküldheti a feladatot.
-1. Amikor a fájl megfelel az ellenőrzésen, válassza **a Küldés** lehetőséget az új felhasználókat importáló Azure tömeges művelet elindításához.
-1. Amikor az importálási művelet befejeződik, megjelenik egy értesítés a tömeges műveleti feladat állapotáról.
+1. A **felhasználó tömeges létrehozása** lapon a CSV-fájl feltöltése területen keresse meg a fájlt. Ha kijelöli a fájlt, majd a **Küldés**gombra kattint, a CSV-fájl érvényesítése elindul.
+1. A fájl tartalmának ellenőrzése után a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.
+1. Amikor a fájl átadja az ellenőrzést, válassza a **Submit (Küldés** ) lehetőséget, hogy elindítsa az új felhasználókat importáló Azure bulk műveletet.
+1. Amikor az importálási művelet befejeződik, megjelenik egy értesítés a tömeges művelet állapotáról.
 
-Ha vannak hibák, letöltheti és megtekintheti az eredményfájlt a **Tömeges művelet eredménylapján.** A fájl tartalmazza az egyes hibák okát.
+Ha hibák léptek fel, letöltheti és megtekintheti az eredményeket tartalmazó fájlt a **tömeges művelet eredményei** lapon. A fájl az egyes hibák okát tartalmazza.
 
 ## <a name="check-status"></a>Állapot ellenőrzése
 
-Az összes függőben lévő tömeges kérelem állapotát a **Tömeges művelet eredménylapján láthatja.**
+Az összes függőben lévő tömeges kérelem állapotát a **tömeges művelet eredményei** lapon tekintheti meg.
 
    [![](media/users-bulk-add/bulk-center.png "Check create status in the Bulk Operations Results page")](media/users-bulk-add/bulk-center.png#lightbox)
 
-Ezután ellenőrizheti, hogy a létrehozott felhasználók léteznek-e az Azure AD-szervezetben az Azure Portalon vagy a PowerShell használatával.
+Ezután ellenőrizze, hogy a létrehozott felhasználók szerepelnek-e az Azure AD-szervezetben vagy a Azure Portal vagy a PowerShell használatával.
 
-## <a name="verify-users-in-the-azure-portal"></a>Felhasználók ellenőrzése az Azure Portalon
+## <a name="verify-users-in-the-azure-portal"></a>Felhasználók ellenőrzése a Azure Portalban
 
-1. [Jelentkezzen be az Azure AD felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
-1. A navigációs ablakban válassza az **Azure Active Directory**lehetőséget.
+1. [Jelentkezzen be az Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a szervezet felhasználói rendszergazdája.
+1. A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 1. A **Kezelés** alatt válassza a **Felhasználókat**.
-1. A **Megjelenítés**csoportban válassza a **Minden felhasználó** lehetőséget, és ellenőrizze, hogy a létrehozott felhasználók szerepelnek-e a listában.
+1. A **Megjelenítés**területen válassza a **minden felhasználó** lehetőséget, és győződjön meg arról, hogy a létrehozott felhasználók szerepelnek a felsorolásban.
 
-### <a name="verify-users-with-powershell"></a>Felhasználók ellenőrzése a PowerShell használatával
+### <a name="verify-users-with-powershell"></a>Felhasználók ellenőrzése a PowerShell-lel
 
 Futtassa az alábbi parancsot:
 
@@ -70,14 +91,14 @@ Futtassa az alábbi parancsot:
 Get-AzureADUser -Filter "UserType eq 'Member'"
 ```
 
-Látnia kell, hogy a létrehozott felhasználók szerepelnek a listában.
+Látnia kell, hogy a létrehozott felhasználók szerepelnek a listáján.
 
-## <a name="bulk-import-service-limits"></a>Tömeges importálási szolgáltatási korlátok
+## <a name="bulk-import-service-limits"></a>Tömeges importálási szolgáltatás korlátai
 
-A felhasználók létrehozásához a felhasználók létrehozásához végzett minden egyes tömeges tevékenység legfeljebb egy órán keresztül futhat. Ez legalább 50 000 felhasználó tömeges létrehozását teszi lehetővé.
+A felhasználók létrehozásához minden tömeges tevékenység akár egy óráig is futhat. Ez legalább 50 000 felhasználó tömeges létrehozását teszi lehetővé.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Felhasználók tömeges törlése](users-bulk-delete.md)
 - [Felhasználók listájának letöltése](users-bulk-download.md)
-- [Tömeges visszaállítási felhasználók](users-bulk-restore.md)
+- [Felhasználók tömeges visszaállítása](users-bulk-restore.md)

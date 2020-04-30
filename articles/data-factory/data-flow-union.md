@@ -1,50 +1,54 @@
 ---
-title: Leképezési adatfolyam-egyesítő transzformáció
-description: Azure Data Factory leképezési adatfolyam Új ág átalakítása
+title: Az adatáramlási Unió átalakításának leképezése
+description: Azure Data Factory leképezési adatfolyam új ág-átalakítás
 author: kromerm
 ms.author: makromer
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/12/2019
-ms.openlocfilehash: 35f6b74f3b6cce5a0af812d4613f9da2f9fbd552
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.date: 04/27/2020
+ms.openlocfilehash: 1874e3536a3dda123c7fff9726c02e5d92d88804
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
-ms.locfileid: "81606263"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204338"
 ---
-# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Az Azure Data Factory leképezési adatfolyam-egyesítő átalakítása
+# <a name="azure-data-factory-mapping-data-flow-union-transformation"></a>Az adatáramlás-Unió átalakításának Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Az Unió több adatfolyamot fog egyesíteni, és e streamek SQL Unióját az uniós átalakulás új kimeneteként egyesíti. Az egyes bemeneti adatfolyamok összes sémája az adatfolyamon belül lesz kombinálva, anélkül, hogy illesztési kulccsal kellene rendelkeznie.
+A Union több adatfolyamot egyesít egy, a streamek SQL Union szolgáltatásával, amely az Unió átalakításának új kimenete lesz. Az egyes bemeneti adatfolyamokból származó összes séma össze lesz foglalva az adatfolyamattal, anélkül, hogy hozzá kellene adni egy csatlakoztatási kulcsot.
 
-A beállítási táblázatban lévő adatfolyamok n számát az egyes konfigurált sorok melletti "+" ikonra kattintva kombinálhatja, beleértve a forrásadatokat és az adatfolyamok meglévő átalakításaiból származó adatfolyamokat is.
+Az egyes konfigurált sorok melletti "+" ikonra kattintva a "+" ikont is egyesítheti a beállítások táblában, beleértve a forrásadatok és az adatfolyamok meglévő átalakításait is.
 
-![Az Unió átalakítása](media/data-flow/union.png "Union")
+Íme egy rövid videó, amely az ADF leképezési adatforgalmában lévő Union-átalakítási folyamaton keresztül érhető el:
 
-Ebben az esetben több forrásból (ebben a példában három különböző forrásfájlból) származó eltérő metaadatokat egyesíthet, és egyetlen adatfolyamba egyesítheti őket:
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vngz]
 
-![Az unió átalakulásának áttekintése](media/data-flow/union111.png "Unió 1")
+![Unió átalakítása](media/data-flow/union.png "Union")
 
-Ennek érdekében adjon hozzá további sorokat az Union Settings-ba az összes hozzáadni kívánt forrás sal. Nincs szükség közös keresésre vagy illesztési kulcsra:
+Ebben az esetben kombinálhatja a különböző forrásokból származó eltérő metaadatokat (ebben a példában három különböző forrásfájl), és egyetlen streambe kombinálhatja őket:
 
-![Egyesítési beállítások](media/data-flow/unionsettings.png "Uniós beállítások")
+![A Union Transformation áttekintése](media/data-flow/union111.png "1. Unió")
 
-Ha az Unió után a Select transformation-t állítja be, átnevezheti az egymást átfedő mezőket vagy mezőket, amelyeket nem fejléc nélküli forrásokból neveztek el. Kattintson az "Ellenőrzés" gombra, ha meg szeretné tekinteni a metaadatok kombinálását a példában szereplő 132 oszlopmal, három különböző forrásból:
+Ennek eléréséhez vegyen fel további sorokat a Union-beállításokba úgy, hogy a hozzáadni kívánt forrást is tartalmazza. Közös keresési vagy csatlakoztatási kulcsra nincs szükség:
 
-![Az unió átalakulásának végleges](media/data-flow/union333.png "Unió 3")
+![A Union átalakítási beállításai](media/data-flow/unionsettings.png "Union-beállítások")
 
-## <a name="name-and-position"></a>Név és beosztás
+Ha a szervezete után kiválasztja az átalakítást, akkor átnevezheti a nem fejléces forrásokból származó átfedésben lévő mezőket vagy mezőket. A "vizsgálat" gombra kattintva tekintheti meg az alábbi három különböző forrásból származó, 132-es összesített metaadatokat:
 
-Ha a "név szerinti egyesítés" lehetőséget választja, minden oszlopértéke az egyes források megfelelő oszlopába kerül, egy új, összefűzött metaadat-sémával.
+![Az Unió átalakítása végleges](media/data-flow/union333.png "Union 3")
 
-Ha az "egység pozíció szerint" lehetőséget választja, minden oszlopérték az egyes megfelelő forrásokból az eredeti pozícióba esik, ami egy új kombinált adatfolyamot eredményez, ahol az egyes forrásokból származó adatok ugyanabba az adatfolyamhoz kerülnek:
+## <a name="name-and-position"></a>Név és pozíció
 
-![Uniós kibocsátás](media/data-flow/unionoutput.png "Union kimenet")
+Ha az "Unió neve" lehetőséget választja, minden oszlop értéke bekerül a megfelelő oszlopba az egyes forrásokból, egy új összefűzött metaadat-sémával.
+
+Ha a "Union by position" lehetőséget választja, minden egyes oszlop értéke bekerül az eredeti pozícióba az egyes forrásokból, ami egy új, összesített adatstreamet eredményez, amelyben az egyes forrásokból származó adatok ugyanahhoz az adatfolyamhoz lesznek hozzáadva:
+
+![Union-kimenet](media/data-flow/unionoutput.png "Union-kimenet")
 
 ## <a name="next-steps"></a>További lépések
 
-Fedezze fel a hasonló átalakításokat, beleértve [a Csatlakozás](data-flow-join.md) és [a Létezés t.](data-flow-exists.md)
+Fedezze fel a hasonló átalakításokat, beleértve a [csatlakozást](data-flow-join.md) és a [meglévőket](data-flow-exists.md).

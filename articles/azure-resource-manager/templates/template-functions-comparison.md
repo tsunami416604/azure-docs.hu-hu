@@ -3,22 +3,98 @@ title: Sablon functions – összehasonlítás
 description: A Azure Resource Manager-sablonban az értékek összehasonlításához használandó függvényeket ismerteti.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a9b7b32475695e5222b87c8fe75e8982f34ebb21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192331"
+ms.locfileid: "82203777"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM-sablonok összehasonlító függvények
 
 A Resource Manager számos funkciót biztosít a Azure Resource Manager-(ARM-) sablonokban való összehasonlításhoz.
 
+* [összefonódik](#coalesce)
 * [egyenlő](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
 * [less](#less)
 * [lessOrEquals](#lessorequals)
+
+## <a name="coalesce"></a>összefonódik
+
+`coalesce(arg1, arg2, arg3, ...)`
+
+A paraméterekből származó első nem null értéket adja vissza. Az üres karakterláncok, üres tömbök és üres objektumok nem null értékűek.
+
+### <a name="parameters"></a>Paraméterek
+
+| Paraméter | Kötelező | Típus | Leírás |
+|:--- |:--- |:--- |:--- |
+| arg1 |Igen |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
+| További argumentumok |Nem |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
+
+### <a name="return-value"></a>Visszatérítési érték
+
+Az első nem null paraméterek értéke, amely lehet karakterlánc, int, tömb vagy objektum. NULL, ha az összes paraméter null értékű.
+
+### <a name="example"></a>Példa
+
+A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) az egyesítés különböző felhasználási eredményeiből származó kimenetet jeleníti meg.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "objectToTest": {
+            "type": "object",
+            "defaultValue": {
+                "null1": null,
+                "null2": null,
+                "string": "default",
+                "int": 1,
+                "object": {"first": "default"},
+                "array": [1]
+            }
+        }
+    },
+    "resources": [
+    ],
+    "outputs": {
+        "stringOutput": {
+            "type": "string",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
+        },
+        "intOutput": {
+            "type": "int",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
+        },
+        "objectOutput": {
+            "type": "object",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
+        },
+        "arrayOutput": {
+            "type": "array",
+            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
+        },
+        "emptyOutput": {
+            "type": "bool",
+            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
+        }
+    }
+}
+```
+
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
+
+| Name (Név) | Típus | Érték |
+| ---- | ---- | ----- |
+| stringOutput | Sztring | alapértelmezett |
+| intOutput | Int | 1 |
+| objectOutput | Objektum | {"első": "default"} |
+| arrayOutput | Tömb | 1 |
+| emptyOutput | Logikai | True (Igaz) |
 
 ## <a name="equals"></a>egyenlő
 

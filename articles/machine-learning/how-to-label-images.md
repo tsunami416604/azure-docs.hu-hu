@@ -1,131 +1,134 @@
 ---
-title: Képek címkézése feliratozási projektben
+title: Képek címkézése egy címkézési projektben
 title.suffix: Azure Machine Learning
-description: Ismerje meg, hogyan használhatja az adatok címkézési eszközeit egy Azure Machine Learning címkézési projektben.
+description: Megtudhatja, hogyan használhatja az adatcímkéző eszközöket egy Azure Machine Learning címkézési projektben.
 author: lobrien
 ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
-ms.date: 11/04/2019
-ms.openlocfilehash: 371b99c794feb4a64eb3e9af389020e25d14eedb
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.date: 04/09/2020
+ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80879428"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204321"
 ---
-# <a name="tag-images-in-a-labeling-project"></a>Képek címkézése feliratozási projektben
+# <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben
 
-Miután a projekt rendszergazdája [létrehozott egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) az Azure Machine Learningben, a címkézési eszköz (nyilvános előzetes verzió) segítségével gyorsan előkészítheti az adatokat egy Machine Learning-projekthez. Ez a cikk a következőket ismerteti:
+Miután a projekt rendszergazdája [létrehoz egy címkézési projektet](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) a Azure Machine Learningban, a címkézés eszközzel (nyilvános előzetes verzió) gyorsan elő tudja készíteni a Machine learning projekt adatait. Ez a cikk a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A címkézési projektek elérése
-> * A címkéző eszközök
+> * A címkézési eszközök
 > * Az eszközök használata adott címkézési feladatokhoz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A futó adatcímkézési projekt címkézési portálURL-címe
-* [Microsoft-fiók](https://account.microsoft.com/account) vagy Azure Active Directory-fiók a szervezethez és a projekthez
+* A szervezet és a projekt [Microsoft-fiók](https://account.microsoft.com/account) vagy Azure Active Directory fiókja
+* Közreműködői szintű hozzáférés a címkézési projektet tartalmazó munkaterülethez.
 
-> [!NOTE]
-> A projektadminisztrátor a címkeportál URL-címét a **Projekt részletei** lap **Részletek** lapján találja.
+## <a name="sign-in-to-the-workspace"></a>Bejelentkezés a munkaterületre
 
-## <a name="sign-in-to-the-projects-labeling-portal"></a>Bejelentkezés a projekt címkézési portáljára
+1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com).
 
-Nyissa meg a címkeportál által biztosított URL-címet. Jelentkezzen be azzal az e-mail fiókkal, amelyet a rendszergazda használt, hogy felvegye Önt a csapatba. A legtöbb felhasználó számára ez lesz a Microsoft-fiókja. Ha a címkézési projekt az Azure Active Directoryt használja, így fog bejelentkezni.
+1. Válassza ki az előfizetést és a munkaterületet, amely tartalmazza a címkézési projektet.  Ezt az információt a projekt rendszergazdájától szerezheti be.
 
-## <a name="understand-the-labeling-task"></a>A címkézési feladat megismerése
+1. A projekt megkereséséhez kattintson a bal oldalon található **adatfeliratok** elemre.  
 
-A bejelentkezés után megjelenik a projekt áttekintő lapja.
+1. Válassza ki a projekt nevét a listában.
 
-Nyissa meg a Részletes utasítások megtekintése című **nézetet.** Ezek az utasítások a projektre vonatkoznak. Ismertetik az ön előtt álló adatok típusát, a döntések meghozatalának módját és egyéb releváns információkat. Az információ elolvasása után térjen vissza a projektlapra, és válassza **a Címkézés indítása**lehetőséget.
+## <a name="understand-the-labeling-task"></a>A címkézési feladat ismertetése
 
-## <a name="common-features-of-the-labeling-task"></a>A címkézési feladat közös jellemzői
+Miután kiválasztotta a projektet, a lap tetején válassza az **adatfelirat**lehetőséget.
 
-Minden képcímkézési tevékenységben a projekt rendszergazdája által megadott készletből választhat megfelelő címkét vagy címkéket. Az első kilenc címkét a billentyűzet számgombjai segítségével választhatja ki.  
+Megtekintheti a projektre vonatkozó utasításokat. Leírják, hogy milyen típusú adatokra van szüksége, hogyan teheti meg a döntéseket és egyéb releváns információkat. Miután elolvasta ezeket az információkat, a lap tetején válassza a **feladatok**lehetőséget.  Vagy az oldal alján kattintson a **címkézés indítása**lehetőségre.
 
-A képbesorolási feladatokban egyszerre több képet is megtekinthet. Az elrendezés kiválasztásához használja a képterület feletti ikonokat. 
+## <a name="common-features-of-the-labeling-task"></a>A címkézési feladat gyakori funkciói
 
-Az összes megjelenített kép egyidejű kijelöléséhez használja az **Összes kijelölése**lehetőséget. Az egyes képek kijelöléséhez használja a kép jobb felső sarkában található kör alakú kijelölés gombot. A címke alkalmazásához legalább egy képet ki kell jelölnie. Ha több képet jelöl ki, a kiválasztott címke az összes kijelölt képre vonatkozik.
+Az összes képcímkézési feladatban válasszon ki egy megfelelő címkét vagy címkéket a projekt rendszergazdája által megadott készletből. Az első kilenc címkét a billentyűzetén található számgombok használatával választhatja ki.  
 
-Itt már kiválasztott egy 2-by-2 elrendezés, és hamarosan alkalmazni a tag "Emlős" a képeket a medve és orka. A cápa képét már "Porchal" címkével látták el, és az iguánát még nem jelölték meg.
+A rendszerkép-besorolási feladatokban egyszerre több képet is megtekintheti. Az elrendezés kiválasztásához használja a képterületen megjelenő ikonokat. 
 
-![Több képelrendezés és kijelölés](./media/how-to-label-images/layouts.png)
+Az összes megjelenített kép egyidejű kiválasztásához használja az **összes kijelölése lehetőséget**. Az egyes képek kiválasztásához használja a kép jobb felső sarkában található körkörös kijelölés gombot. A címke alkalmazásához ki kell választania legalább egy képet. Ha több lemezképet jelöl ki, a kiválasztott címkék minden kijelölt képre lesznek alkalmazva.
+
+Itt két-két elrendezést választottunk ki, és arra készül, hogy az "emlős" címkét a medve és az Orca képeire alkalmazzuk. A cápa képe már "porcos hal" néven van megjelölve, és az Iguana még nincs megjelölve.
+
+![Több rendszerkép-elrendezés és-kijelölés](./media/how-to-label-images/layouts.png)
 
 > [!Important] 
-> Csak akkor váltson elrendezéseket, ha friss, címkézetlen adatokat tartalmazó oldallal rendelkezik. Az elrendezésváltás törli az oldal folyamatban lévő címkézési munkáját.
+> Csak akkor váltson át elrendezést, ha a címkézetlen adatlapok friss lapja van. Az elrendezések váltás törli az oldal folyamatban lévő címkézési feltételeit.
 
-Az Azure engedélyezi a **Küldés** gombot, ha az oldalon lévő összes képet címkézte. A munka mentéséhez válassza a **Küldés** lehetőséget.
+Az Azure lehetővé teszi a **Küldés** gombot, amikor címkézte az összes képet az oldalon. A munka mentéséhez válassza a **Submit (Küldés** ) lehetőséget.
 
-Miután elküldte az aktuális adatok címkéit, az Azure frissíti az oldalt egy új képkészlettel a munkavárólistából.
+Miután elküldte a címkéket az adatokhoz, az Azure frissíti a lapot egy új rendszerképekkel a munkahelyi sorból.
 
 ### <a name="assisted-machine-learning"></a>Támogatott gépi tanulás 
 
-A gépi tanulási algoritmusok többosztályos vagy többelrendezésű besorolási feladat során aktiválhatók. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
+A gépi tanulási algoritmusok egy többosztályos vagy több címkés besorolási feladat során indíthatók. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
 
-* Miután bizonyos mennyiségű kép meg lett címkézve, a projekt neve mellett a képernyő tetején **csoportosított feladatok** jelenhetnek meg.  Ez azt jelenti, hogy a képek csoportosítva jelennek meg hasonló képeket ugyanazon az oldalon.  Ha igen, váltson a több képnézet egyikére a csoportosítás előnyeinek kihasználásához.  
+* Néhány kép megjelölése után előfordulhat, hogy a képernyő tetején a projekt neve mellett **fürtözött feladatok** láthatók.  Ez azt jelenti, hogy a képek csoportosítva vannak, hogy hasonló képeket nyújtsanak ugyanazon a lapon.  Ha igen, váltson át a több Képnézet egyikére, hogy kihasználhassa a csoportosítást.  
 
-* Egy későbbi időpontban a Projekt neve mellett a **Tevékenységek felirat** látható.  A képek ezután megjelennek egy javasolt címkével, amely egy gépi tanulási besorolási modellből származik. Egyetlen gépi tanulási modell sem rendelkezik 100%-os pontossággal. Bár csak olyan képeket használunk, amelyekben a modell magabiztos, ezek a képek továbbra is helytelenül lehetnek előre címkézve.  Amikor ezeket a címkéket látja, javítsa ki a hibás címkéket az oldal elküldése előtt.  
+* Egy későbbi időpontban a projekt neve mellett előre **címkézett feladatokat** láthat.  A képek ezután egy gépi tanulási besorolási modellből származó javasolt címkével jelennek meg. A Machine learning modellnek nincs 100%-os pontossága. Habár csak olyan rendszerképeket használunk, amelyek esetében a modell magabiztos, előfordulhat, hogy ezek a képek még mindig helytelenül vannak megjelölve.  Ha ezeket a címkéket látja, javítsa ki a helytelen címkéket az oldal elküldése előtt.  
 
-Különösen a címkézési projekt korai szakaszában a gépi tanulási modell csak akkor lehet elég pontos a képek egy kis részhalmazának előzetes címkézéséhez. Miután ezek a képek címkével vannak ellátva, a címkézési projekt visszatér a manuális címkézéshez, hogy több adatot gyűjtsön a modellbetanítás következő köréhez. Idővel a modell magabiztosabbá válik a képek nagyobb arányával kapcsolatban, ami a projekt későbbi részében több előcímkézett tevékenységet eredményez.
+Különösen a címkézési projekt korai szakaszában a gépi tanulási modell csak akkor lehet elég pontos, ha a képek kis részhalmazát szeretné előre megjelölni. Miután megcímkézte a lemezképeket, a címkézési projekt visszatér a manuális címkézéshez, hogy további adatokat gyűjtsön a következő kör betanításához. Az idő múlásával a modell nagyobb biztonságban lesz a képek nagyobb hányadával kapcsolatban, így a projekt későbbi feladataihoz is hozzájárul.
 
 ## <a name="tag-images-for-multi-class-classification"></a>Képek címkézése többosztályos besoroláshoz
 
-Ha a projekt "Image Classification Multi-Class" típusú, akkor egyetlen címkét rendel a teljes képhez. Az utasítások bármikori áttekintéséhez lépjen az **Utasítások** lapra, és válassza **a Részletes utasítások megtekintése**lehetőséget.
+Ha a projekt "képbesorolás többosztályos" típusú, akkor egyetlen címkét fog rendelni a teljes képhez. Ha bármikor át szeretné tekinteni az utasításokat, lépjen az **utasítások** lapra, és válassza a **részletes utasítások megtekintése**lehetőséget.
 
-Ha rájössz, hogy hibát követtél el, miután címkét rendeltél egy képhez, kijavíthatja azt. A címke törléséhez válassza az **"X**" lehetőséget a kép alatt megjelenő címkén. Vagy jelölje ki a képet, és válasszon másik osztályt. Az újonnan kiválasztott érték felülírja a korábban alkalmazott címkét.
+Ha úgy látja, hogy hibát vétett, miután hozzárendelt egy címkét egy képhez, azt megteheti. A címke törléséhez válassza ki a képen látható "**X**" címkét. Vagy válassza ki a képet, és válasszon egy másik osztályt. Az újonnan kiválasztott érték a korábban alkalmazott címkét váltja fel.
 
-## <a name="tag-images-for-multi-label-classification"></a>Képek címkézése többcímkés besoroláshoz
+## <a name="tag-images-for-multi-label-classification"></a>Képek címkézése a többcímkés besoroláshoz
 
-Ha "Image Classification Multi-Label" típusú projekten dolgozik, egy *vagy több* címkét kell alkalmazni a képre. A projektspecifikus útvonaltervek megtekintéséhez válassza az **Utasítások** lehetőséget, és válassza a Részletes utasítások megtekintése című **témakört.**
+Ha "rendszerkép besorolása többcímkés" típusú projekttel dolgozik, egy *vagy több* címkét fog alkalmazni egy képre. A Project-specifikus irányok megtekintéséhez válassza az **utasítások** lehetőséget, és **tekintse meg a részletes utasításokat**.
 
-Jelölje ki a címkét címkézni kívánt képet, majd jelölje ki a címkét. A címke az összes kijelölt képre vonatkozik, majd a program kijelöli a képeket. Ha további címkéket szeretne alkalmazni, újra ki kell jelölnie a képeket. A következő animáció többcímkés címkézést mutat:
+Válassza ki a címkét, majd válassza ki a címkét. A címke az összes kijelölt képre vonatkozik, majd a képek ki lesznek választva. További címkék alkalmazásához újra ki kell választania a lemezképeket. A következő animáció a többcímkés címkézést mutatja be:
 
-1. **Válassza ki** az összes et az "Ocean" címke alkalmazásához.
-1. Egyetlen kép van kijelölve, és "Closeup" címkével van ellátva.
-1. Három kép van kiválasztva, és címkézett "Széles látószögű."
+1. Az **összes kijelölése** az "Ocean" címke alkalmazására szolgál.
+1. Egyetlen rendszerkép van kiválasztva és címkézett "Vértes".
+1. Három kép van kiválasztva és címkézett "Wide Angle".
 
-![Az animáció többcímkés folyamatot mutat](./media/how-to-label-images/multilabel.gif)
+![Az animáció többcímkés folyamatot mutat be](./media/how-to-label-images/multilabel.gif)
 
-Hiba kijavításához kattintson az **"X"** gombra az egyes címke törléséhez vagy a képek kijelöléséhez, majd jelölje ki a címkét, amely törli a címkét az összes kiválasztott képről. Ez a forgatókönyv itt látható. A "Land" gombra kattintva a címke törlődik a két kiválasztott képből.
+A hiba elhárításához kattintson az "**X**" elemre egy adott címke törléséhez, vagy válassza ki a képeket, majd válassza ki a címkét, amely törli a címkét az összes kijelölt rendszerképből. Ez a forgatókönyv itt látható. A "Land" elemre kattintva a rendszer törli a címkét a két kiválasztott rendszerképből.
 
-![A képernyőkép több kiválasztásokat mutat](./media/how-to-label-images/multiple-deselection.png)
+![A képernyőképen több kijelölés látható](./media/how-to-label-images/multiple-deselection.png)
 
-Az Azure csak akkor engedélyezi a **Küldés** gombot, ha minden egyes lemezképre legalább egy címkét alkalmazott. A munka mentéséhez válassza a **Küldés** lehetőséget.
+Az Azure csak akkor engedélyezi a **Küldés** gombot, ha legalább egy címkét alkalmaz az egyes képekre. A munka mentéséhez válassza a **Submit (Küldés** ) lehetőséget.
 
 
-## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Képek címkézése és határolókeret megadása az objektumészleléshez
+## <a name="tag-images-and-specify-bounding-boxes-for-object-detection"></a>Képek címkézése és az objektumok észleléséhez tartozó határoló mezők megadása
 
-Ha a projekt "Objektumazonosítás (határolókeret)" típusú, akkor a képen egy vagy több határolókeretet kell megadnia, és minden egyes mezőre egy-egy címkét kell alkalmaznia. A képektöbb határolókerettel is rendelkezhetnek, amelyek mindegyike egyetlen címkével rendelkezik. A **Részletes nézet utasításokkal** megállapíthatja, hogy több határolókeretet használ-e a projektben.
+Ha a projekt típusa "Object Identification (határolókeret)", akkor meg kell adnia egy vagy több határolókerett a képen, és minden egyes dobozra alkalmaznia kell egy címkét. A képekhez több határolókeret is tartozhat, amelyek mindegyike egyetlen címkével rendelkezik. A **részletes utasítások megtekintésével** megállapíthatja, hogy a projektben több határolókeret van-e használatban.
 
-1. Jelöljön ki egy címkét a létrehozni kívánt határolókerethez.
-1. Jelölje ki a **Téglalap alakú doboz** eszköz ![](./media/how-to-label-images/rectangular-box-tool.png) Téglalap alakú doboz eszközt, vagy válassza az "R" lehetőséget.
-3. Kattintson és húzza átlósan a cél, hogy hozzon létre egy durva határolókeret. A határolókeret módosításához húzza a szegélyeket vagy sarkokat.
+1. Jelöljön ki egy címkét a létrehozni kívánt határoló mezőhöz.
+1. Jelölje be **a négyzet alakú téglalap** ![alakú eszközt](./media/how-to-label-images/rectangular-box-tool.png) , vagy válassza az "R" lehetőséget.
+3. Kattintson és húzza átlósan a célhelyen egy durva határolókeret létrehozásához. A határolókeret módosításához húzza az éleket vagy a sarkokat.
 
-![A képernyőkép az alapvető határolókeret-létrehozást mutatja.](./media/how-to-label-images/bounding-box-sequence.png)
+![A képernyőfelvétel alapszintű határolókeret létrehozását mutatja be.](./media/how-to-label-images/bounding-box-sequence.png)
 
-Ha határolókeretet szeretne törölni, kattintson a létrehozás után a határolókeret mellett megjelenő X-alakú célra.
+A határolókeret törléséhez kattintson a létrehozás után a határolókeret mellett megjelenő X alakú célra.
 
-Meglévő határolókeret címkéje nem módosítható. Ha címkehozzárendelési hibát követ el, törölnie kell a határolókeretet, és létre kell hoznia egy újat a megfelelő címkével.
+Meglévő határolókeret címkéje nem módosítható. Ha címke-hozzárendelési hibát hajt végre, törölnie kell a határoló mezőt, és létre kell hoznia egy újat a megfelelő címkével.
 
-Alapértelmezés szerint szerkesztheti a meglévő határolókereteket. A **Régiók zárolása/feloldása** eszköz ![A régiók zárolása/feloldása eszköz](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" kapcsolók között van ez a viselkedés. Ha a területek zárolva vannak, csak egy új határolókeret alakját vagy helyét módosíthatja.
+Alapértelmezés szerint szerkesztheti a meglévő határoló mezőket. A **zárolás/zárolás feloldása** eszköz ![zárolási/feloldási régiói eszköz](./media/how-to-label-images/lock-bounding-boxes-tool.png) vagy az "L" a viselkedést is bekapcsolja. Ha a régiók zárolva vannak, akkor csak egy új határolókeret alakzatát vagy helyét módosíthatja.
 
-A **Régiók** manipuláció ![eszköz](./media/how-to-label-images/regions-tool.png) Régiók manipuláció eszközzel vagy az "M" eszközzel módosíthatja a meglévő határolókeretet. Az alakzat módosításához húzza a széleket vagy a sarkokat. Kattintson a belső, hogy képes legyen húzni a teljes határolókeret. Ha nem tud szerkesztésre egy régiót, valószínűleg bevan kapcsolva a **Régiók zárolása/feloldása** eszköz.
+A meglévő határolókeret módosításához használja a **régiók manipulációs** eszköz ![régiók manipuláció eszközét](./media/how-to-label-images/regions-tool.png) vagy az "M" lehetőséget. Húzza az éleket vagy a sarkokat az alakzat módosításához. A teljes határolókeret húzásához kattintson a belsejére. Ha nem tudja szerkeszteni a régiót, valószínűleg a **zárolási/zárolási régiók** eszközt is kikapcsolta.
 
-A **Sablon alapú** dobozsablon-doboz ![](./media/how-to-label-images/template-box-tool.png) eszközzel vagy a "T" eszközzel több azonos méretű határolókeretet hozhat létre. Ha a képnem rendelkezik határolókerettel, és aktiválja a sablonalapú mezőket, az eszköz 50 x 50 képpontos mezőket fog létrehozni. Ha létrehoz egy határolókeretet, majd aktiválja a sablonalapú mezőket, minden új határolókeret akkora lesz, mint az utoljára létrehozott mező. A sablonalapú mezők elhelyezés után átméretezhetők. A sablonalapú doboz átméretezése csak az adott mezőt méretezi át.
+A **sablon alapú Box** Tool ![template Box eszköz](./media/how-to-label-images/template-box-tool.png) vagy a "T" használatával több, azonos méretű határolókeret hozható létre. Ha a rendszerkép nem rendelkezik határoló mezőkkel, és aktiválja a sablon alapú mezőket, az eszköz 50-by-50-pixeles mezőket hoz létre. Ha létrehoz egy határoló mezőt, és aktiválja a sablon alapú mezőket, minden új határoló mező a létrehozott utolsó mező mérete lesz. A sablon alapú mezők az elhelyezés után átméretezhetők. A sablon alapú mezők átméretezése csak az adott mezőt méretezi át.
 
-Az aktuális kép *összes* határolódobozának törléséhez jelölje ![be az](./media/how-to-label-images/delete-regions-tool.png)Összes **terület törlése** eszköz Régiók törlése eszközt .
+Az aktuális rendszerkép *összes* határoló mezőjének törléséhez válassza a **minden régió törlése** eszköz ![régiók törlése eszközét.](./media/how-to-label-images/delete-regions-tool.png)
 
-Miután létrehozta egy kép határolókereteit, válassza a **Küldés** lehetőséget a munka mentéséhez, különben a folyamatban lévő munka nem lesz mentve.
+Miután létrehozta a képekhez tartozó határoló mezőket, válassza a **Submit (Küldés** ) lehetőséget a munka mentéséhez, vagy a folyamatban lévő munka nem lesz mentve.
 
 ## <a name="finish-up"></a>Befejezés
 
-A címkézett adatok at tartalmazó lap beküldésekor az Azure új, címkézetlen adatokat rendel önhöz egy munkavárólistából. Ha nincs több címkézetlen adat, akkor egy üzenetet kap, amely ezt a portál kezdőlapjára mutató hivatkozással együtt kapja meg.
+Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozzárendelését teszi elérhetővé egy munkahelyi várólistából. Ha nem áll rendelkezésre több címkézetlen információ, egy üzenet jelenik meg, amely a portál kezdőlapjára mutató hivatkozással együtt.
 
-Ha végzett a címkézéssel, jelölje ki a nevét a címkeportál jobb felső sarkában, majd válassza a **kijelentkezés**lehetőséget. Ha nem jelentkezik ki, végül az Azure "időkitérést" kap, és hozzárendeli az adatokat egy másik címkézőhöz.
+Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ismerje meg a [lemezképbesorolási modellek betanítását az Azure-ban](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
+* Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
 

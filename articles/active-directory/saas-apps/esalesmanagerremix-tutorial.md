@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895fb0d83e383618818325263ac80c5919a0ee7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 167d682bb5ce1266ba6b677f6223c38dd34af9bb
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "65406953"
+ms.locfileid: "82202396"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integrálása az E Sales Manager remixekkel
 
@@ -158,7 +158,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
     
     b. Az **együttműködési elem** szakasz legördülő listájában válassza az **e-mail**lehetőséget.
 
-    c. Az **együttműködési elem** mezőben illessze be a korábban a Azure Portalból másolt jogcím értékét (azaz **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress**).
+    c. Az **együttműködési elem** mezőben illessze be a korábban a Azure Portalból másolt jogcím értékét (azaz **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`**).
 
     d. A **kiállító (entitás azonosítója)** mezőben illessze be azt az azonosító értéket, amelyet korábban a Azure Portal **E Sales Manager Remix tartománya és URL-címei** szakaszban másolt.
 

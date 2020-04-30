@@ -16,12 +16,12 @@ ms.date: 03/22/2020
 ms.author: barclayn
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c38e1a61827da547bb39a699a0e92043e63466c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ddd8e1c64f4db8221937abc54e88d9a884acf3e
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "80128476"
+ms.locfileid: "82207244"
 ---
 # <a name="troubleshoot-azure-ad-entitlement-management"></a>Az Azure AD-jogosultságok kezelése – problémamegoldás
 
@@ -87,13 +87,19 @@ Ez a cikk néhány olyan elemet ismertet, amely segítséget nyújt az Azure Act
 
     Ha a kérelem kézbesítési hibával rendelkezik, a kérelem állapota nem **kézbesítve** vagy **részben kézbesítve**lesz.
 
-    Ha kézbesítési hibák merülnek fel, a kérelem részleteit tartalmazó ablaktáblán a kézbesítési hibák száma jelenik meg.
+    Ha kézbesítési hibák merülnek fel, a kérelem részletei ablaktábláján megjelennek a kézbesítési hibák száma.
 
 1. Kattintson a számra az összes kérelem kézbesítési hibájának megjelenítéséhez.
 
 ### <a name="reprocess-a-request"></a>Kérelem újrafeldolgozása
 
-Ha egy kérelem hibát észlel, újra feldolgozhatja a kérelmet, hogy újra megpróbálja. Csak olyan kérelmeket lehet újra feldolgozni, amelyeknek a **kézbesítési állapota nem sikerült** , vagy **részlegesen kézbesítve** lett, és egy héttel rövidebb befejezési dátummal rendelkezik.
+Ha a hozzáférési csomag újrafeldolgozására vonatkozó kérelem elindítását követően hiba történt, meg kell várnia, amíg a rendszer feldolgozza a kérést. A rendszer többször is megpróbál újradolgozni több órán keresztül, így ez idő alatt nem kényszerítheti az újrafeldolgozást. 
+
+Csak olyan kérelmeket lehet újra feldolgozni, amelyeknek a **kézbesítési állapota nem sikerült** , vagy **részlegesen kézbesítve** lett, és egy héttel rövidebb befejezési dátummal rendelkezik.
+
+- Ha a hiba a próbaverziók ablakában van kijavítva, a kérelem állapota a **kézbesítés**értékre változik. A kérés a felhasználó további műveletei nélkül újra fel lesz dolgozva.
+
+- Ha a hiba nem lett javítva a próbaverziók ablakban, előfordulhat, hogy a kérelem **kézbesítése nem sikerült** vagy **részben kézbesítve**. Ezután használhatja az **újrafeldolgozás** gombot. A kérelem újrafeldolgozása hét nap múlva elvégezhető.
 
 **Előfeltételként szükséges szerepkör:** Globális rendszergazda, felhasználói rendszergazda, katalógus tulajdonosa vagy hozzáférési csomag kezelője
 

@@ -1,24 +1,24 @@
 ---
-title: Sablon szintaxisa és kifejezései
-description: Az Azure Resource Manager-sablonok deklaratív JSON-szintaxisát ismerteti.
+title: Sablon szintaxisa és kifejezések
+description: A Azure Resource Manager-sablonok deklaratív JSON-szintaxisát ismerteti.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 172838fa24709eb60fbcb6a68277f44bbd42f01e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "79460109"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203828"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Szintaxis és kifejezések az Azure Resource Manager-sablonokban
+# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Szintaxis és kifejezések a Azure Resource Manager-sablonokban
 
-A sablon alapszintaxisa JSON. A kifejezések segítségével azonban kiterjesztheti a sablonon belül elérhető JSON-értékeket.  A kifejezések szögletes zárójellel kezdődnek és végződnek: `[` és `]`. A kifejezés értékét a rendszer a sablon üzembe helyezésekor értékeli ki. A kifejezés lehet sztring, egész szám, logikai érték, tömb vagy objektum.
+A sablon alapszintű szintaxisa a JSON. A kifejezésekkel azonban a sablonban elérhető JSON-értékeket is kiterjesztheti.  A kifejezések szögletes zárójellel kezdődnek és végződnek: `[` és `]`. A kifejezés értékét a rendszer a sablon üzembe helyezésekor értékeli ki. A kifejezés lehet sztring, egész szám, logikai érték, tömb vagy objektum.
 
-Egy sablonkifejezés nem haladhatja meg a 24 576 karaktert.
+A sablon kifejezése nem lehet hosszabb 24 576 karakternél.
 
 ## <a name="use-functions"></a>Függvények használata
 
-Az Azure Resource Manager [olyan funkciókat](template-functions.md) biztosít, amelyeket egy sablonban használhat. A következő példa egy olyan kifejezést mutat be, amely egy paraméter alapértelmezett értékében egy függvényt használ:
+A Azure Resource Manager a sablonban használható [függvényeket](template-functions.md) biztosít. Az alábbi példa egy olyan kifejezést mutat be, amely egy függvényt használ egy paraméter alapértelmezett értékében:
 
 ```json
 "parameters": {
@@ -29,41 +29,41 @@ Az Azure Resource Manager [olyan funkciókat](template-functions.md) biztosít, 
 },
 ```
 
-A kifejezésen belül `resourceGroup()` a szintaxis meghívja az Erőforrás-kezelő által a sablonon belüli használatra biztosított függvények egyikét. Ebben az esetben ez a [resourceGroup](template-functions-resource.md#resourcegroup) függvény. Csakúgy, mint a JavaScript, `functionName(arg1,arg2,arg3)`függvény hívások formázott . A szintaxis `.location` egy tulajdonságot olvas be a függvény által visszaadott objektumból.
+A kifejezésen belül a szintaxis `resourceGroup()` meghívja az egyik olyan függvényt, amelyet a Resource Manager biztosít a sablonon belüli használatra. Ebben az esetben ez a [resourceGroup](template-functions-resource.md#resourcegroup) függvény. A JavaScripthez hasonlóan a függvények hívásai is a `functionName(arg1,arg2,arg3)`következőképpen vannak formázva:. A szintaxis `.location` egy tulajdonságot kérdez le a függvény által visszaadott objektumból.
 
-A sablonfüggvények és paramétereik nem különböznek a kis- és nagybetűktől. Az Erőforrás-kezelő például a **változókat('var1')** és a **VARIABLES('VAR1')** azonos értékeket oldja fel. Kiértékeléskor, kivéve, ha a függvény kifejezetten módosítja a kis- és nagybetűket (például toUpper vagy toLower), a függvény megőrzi az esetet. Bizonyos erőforrástípusok nak előfordulhatnak esetkövetelményei, amelyek elkülönülnek a függvények kiértékelésétől.
+A sablon függvények és azok paramétereinek kis-és nagybetűk megkülönböztetése. A Resource Manager például feloldja a **változókat ("var1")** és a **változókat ("var1")** . A kiértékeléskor, ha a függvény kifejezetten nem módosítja a kis-és nagybetűket (például toUpper vagy toLower), a függvény megőrzi a kis-és nagybetűket. Bizonyos erőforrástípusok rendelkezhetnek a függvények kiértékelésének módjától eltérő eseti követelményekkel.
 
-Ha egy karakterlánc-értéket paraméterként szeretne átadni egy függvénynek, használjon egyszeres idézőjeleket.
+Ha karakterlánc-értéket szeretne átadni paraméterként egy függvénynek, használjon aposztrófot.
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
 
-A legtöbb függvény ugyanúgy működik, függetlenül attól, hogy egy erőforráscsoport, előfizetés, felügyeleti csoport vagy bérlő üzembe helyezése. A következő függvények a hatókörön alapuló korlátozásokkal rendelkeznek:
+A legtöbb függvény ugyanúgy működik, hogy az erőforráscsoport, az előfizetés, a felügyeleti csoport vagy a bérlő számára van-e telepítve. A következő függvények korlátozásai a hatókörön alapulnak:
 
-* [resourceGroup](template-functions-resource.md#resourcegroup) – csak egy erőforráscsoportban történő központi telepítésben használható.
-* [resourceId](template-functions-resource.md#resourceid) - bármely hatókörben használható, de az érvényes paraméterek a hatókörtől függően változnak.
-* [előfizetés](template-functions-resource.md#subscription) – csak erőforráscsoportvagy előfizetés központi telepítéseiben használható.
+* [resourceGroup](template-functions-resource.md#resourcegroup) – csak az erőforráscsoporthoz történő központi telepítések esetén használható.
+* [resourceId](template-functions-resource.md#resourceid) – bármely hatókörben használható, de az érvényes paraméterek a hatókörtől függően változnak.
+* [előfizetés](template-functions-resource.md#subscription) – csak erőforráscsoporthoz vagy előfizetéshez használható központi telepítések esetén.
 
-## <a name="escape-characters"></a>Escape karakterek
+## <a name="escape-characters"></a>Escape-karakterek
 
-Ha azt szeretné, hogy a `[` literális karakterlánc `]`bal oldali zárójelgel kezdődjön, és jobb oldali zárójelgel `[[`végződjön , de ne legyen kifejezésként értelmezve, adjon hozzá egy további zárójelet a karakterlánc elindításához. Például a változó:
+Ahhoz, hogy egy literális sztring bal oldali zárójelmel `[` kezdődjön, és jobb oldali `]`szögletes zárójelet adjon meg, de nem értelmezhető kifejezésként, vegyen fel egy extra zárójelet `[[`a sztring elindításához. Például a következő változó:
 
 ```json
 "demoVar1": "[[test value]"
 ```
 
-A megoldás `[test value]`a.
+Feloldás a `[test value]`következőhöz:.
 
-Ha azonban a literális karakterlánc nem ér véget zárójelgel, ne kerüljön el az első zárójelből. Például a változó:
+Ha azonban a literál sztring nem egy szögletes zárójelre végződik, ne hagyja ki az első zárójelet. Például a következő változó:
 
 ```json
 "demoVar2": "[test] value"
 ```
 
-A megoldás `[test] value`a.
+Feloldás a `[test] value`következőhöz:.
 
-Ha el szeretné kerülni a dupla idézőjeleket egy kifejezésben, például json-objektumot szeretne hozzáadni a sablonhoz, használja a fordított perjelet.
+Ha az idézőjeleket egy kifejezésben szeretné kipróbálni, például egy JSON-objektum hozzáadását a sablonban, használja a fordított perjelet.
 
 ```json
 "tags": {
@@ -71,7 +71,7 @@ Ha el szeretné kerülni a dupla idézőjeleket egy kifejezésben, például jso
 },
 ```
 
-Paraméterértékek beadásakor a escape karakterek használata attól függ, hogy hol adja meg a paraméter értékét. Ha alapértelmezett értéket állít be a sablonban, akkor a bal oldali zárójelre van szükség.
+A paraméterek értékeinek átadásakor az Escape-karakterek használata attól függ, hogy hol van megadva a paraméter értéke. Ha a sablonban alapértelmezett értéket állít be, akkor az extra bal oldali szögletes zárójelre van szükség.
 
 ```json
 {
@@ -93,21 +93,21 @@ Paraméterértékek beadásakor a escape karakterek használata attól függ, ho
 }
 ```
 
-Ha az alapértelmezett értéket használja, `[test value]`a sablon a értéket adja vissza.
+Ha az alapértelmezett értéket használja, a sablon visszaadja `[test value]`a értéket.
 
-Ha azonban egy paraméterértéket a parancssoron keresztül ad át, a karaktereket a rendszer szó szerint értelmezi. Az előző sablon telepítése a következővel:
+Ha azonban a parancssorban adja meg a paraméter értékét, a karakterek értelmezése szó szerint történik. Az előző sablon üzembe helyezése az alábbiakkal:
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[[test value]"
 ```
 
-Visszatér `[[test value]`. Ehelyett használja:
+Visszatérési érték `[[test value]`. Ehelyett használja a következőket:
 
 ```azurepowershell
 New-AzResourceGroupDeployment -ResourceGroupName demoGroup -TemplateFile azuredeploy.json -demoParam1 "[test value]"
 ```
 
-Ugyanez a formázás érvényes, ha értékeket ad át egy paraméterfájlból. A karaktereket szó szerint értelmezik. Ha az előző sablonnal használja, `[test value]`a következő paraméterfájl ad vissza:
+Ugyanez a formázás vonatkozik az értékek egy paraméter fájlból való átadásakor. A karakterek értelmezése szó szerint történik. Az előző sablonnal való használat esetén a következő paramétert adja vissza `[test value]`:
 
 ```json
 {
@@ -121,9 +121,9 @@ Ugyanez a formázás érvényes, ha értékeket ad át egy paraméterfájlból. 
 }
 ```
 
-## <a name="null-values"></a>Null értékek
+## <a name="null-values"></a>Null-értékek
 
-Ha egy tulajdonságot null értékűre szeretne állítani, **használhat null** vagy **[json('null')]**. A [json függvény](template-functions-array.md#json) egy üres `null` objektumot ad vissza paraméterként. Az Erőforrás-kezelő sablonjai mindkét esetben úgy kezelik, mintha a tulajdonság nincs jelen.
+Ha a tulajdonságot NULL értékre kívánja beállítani, használhatja a null vagy a **[JSON ("NULL")]** **értéket** . A [JSON-függvény](template-functions-object.md#json) üres objektumot ad vissza, ha `null` paraméterként adja meg. A Resource Manager-sablonok mindkét esetben úgy bánnak, mintha a tulajdonság nincs jelen.
 
 ```json
 "stringValue": null,
@@ -132,5 +132,5 @@ Ha egy tulajdonságot null értékűre szeretne állítani, **használhat null**
 
 ## <a name="next-steps"></a>További lépések
 
-* A sablonfüggvények teljes listáját az [Azure Resource Manager sablonfüggvényei című témakörben olvashatja.](template-functions.md)
-* A sablonfájlokról az [Azure Resource Manager-sablonok szerkezetének és szintaxisának megismerése című témakörben olvashat bővebben.](template-syntax.md)
+* A sablon függvények teljes listájáért lásd: [Azure Resource Manager template functions](template-functions.md).
+* További információ a sablonfájlokről: [Azure Resource Manager sablonok struktúrájának és szintaxisának megismerése](template-syntax.md).

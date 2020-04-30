@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/27/2018
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5440333360549c5df2da57c97b24dcc77436ba4b
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 644e29c3b5e37cd95280cfd2261e644b20bbda98
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "70072705"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82203267"
 ---
 # <a name="add-an-api-manually"></a>API hozzáadása manuálisan
 
@@ -29,30 +29,20 @@ Ebben a cikkben létrehozunk egy üres API-t, és a [httpbin.org](https://httpbi
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
+Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
 ## <a name="create-an-api"></a>API létrehozása
 
-1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+1. Navigáljon a API Management szolgáltatáshoz a Azure Portal, és válassza az **API-kat** a menüből.
 2. A bal oldali menüben válassza az **+ API hozzáadása** elemet.
-3. Válassza az **Üres API** elemet a listából.
-
-    ![Üres API](media/add-api-manually/blank-api.png)
-4. Adja meg az API beállításait.
-
-    |**Név**|**Érték**|**Leírás**|
-    |---|---|---|
-    |**Megjelenített név**|*Üres API*|Ez a név a fejlesztői portálon jelenik meg.|
-    |**Név**|*üres-api*|Egyedi nevet ad meg az API-nak.|
-    |**Webszolgáltatás URL-címe** (nem kötelező)|*https://httpbin.org*| Ha egy API-t szeretne szimulálni, akkor előfordulhat, hogy nem ad meg semmit ebben a mezőben. <br/>Ebben az esetben [https://httpbin.org](https://httpbin.org)belépünk . Ez egy nyilvános tesztszolgáltatás. <br/>Ha olyan API-t szeretne importálni, amely automatikusan le van képezve egy háttérrendszerre, tekintse meg a [kapcsolódó témakörök](#related-topics) egyik témakörét.|
-    |**URL-séma**|*HTT-k*|Ebben az esetben egy biztonságos HTTPS APIM-hozzáférést határozunk meg a háttérrendszerhez, bár magának a háttérrendszernek a hozzáférése nem biztonságos. <br/>Az ilyen forgatókönyveket (HTTPS–HTTP-kapcsolat) nevezzük HTTPS-zárásnak. Akkor lehet rá szükség, ha az API egy virtuális hálózatban található (és így tudja, hogy biztonságos a hozzáférés a HTTPS használata nélkül is). <br/>A „HTTPS-zárás” alkalmazásával számos processzorciklus megspórolható.|
-    |**URL-cím utótagja**|*hbin (hbin)*| Az utótag lesz a név, amely azonosítja az API-t ebben az APIM-példányban. Egyedinek kell lennie az APIM-példányon belül.|
-    |**Termékek**|*Korlátlan*|Az API egy termékkel való társítással tehető közzé. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.<br/><br/>A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. <br/>A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha Ön hozta létre az APIM-példányt, akkor már eleve rendszergazdának számít, így alapértelmezés szerint minden termékre előfizetett.<br/><br/> Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár: **Starter** és **Unlimited**.| 
+3. Válassza az **Üres API** elemet a listából.  
+    ![Üres API](media/add-api-manually/blank-api.png)  
+4. Adja meg az API beállításait. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
 5. Kattintson a **Létrehozás** gombra.
 
-Ezen a ponton nem lesz olyan művelet az APIM-ban, amely leképeződik a háttérrendszeri API-ra. Ha olyan műveletet hív meg, amely közzé lett téve a háttérrendszeren keresztül, de az APIM-on keresztül nem, a **404**-es hibaüzenetet kapja.
+Ezen a ponton nincsenek olyan API Management műveletek, amelyek a háttér-API műveleteire mutatnak. Ha olyan műveletet hív meg, amely a háttérön keresztül érhető el, de nem a API Managementon keresztül, akkor a rendszer **404**-as számot kap.
 
 >[!NOTE] 
 > Alapértelmezés szerint az API hozzáadásakor az APIM nem tesz közzé semmilyen műveletet, amíg fel nem veszi az engedélyezési listára (akkor sem, ha az API kapcsolódik valamilyen háttérszolgáltatáshoz). A háttérszolgáltatás engedélyezési listára való felvételéhez hozzon létre egy APIM-műveletet, amely leképezi a háttérműveletet.

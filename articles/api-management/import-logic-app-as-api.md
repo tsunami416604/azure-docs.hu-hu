@@ -10,18 +10,18 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 08/01/2019
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: 4077187fe04e3be914a6f7fba84c03df1b79d06a
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b6cb0fa3611da44726dabd879c37fec357fc3031
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108390"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202774"
 ---
 # <a name="import-a-logic-app-as-an-api"></a>Logikai alkalmazás importálása API-ként
 
-Ez a cikk bemutatja, hogyan importálhat egy logikai alkalmazást API-ként, és tesztelje az importált API-t.
+Ez a cikk bemutatja, hogyan importálhat egy logikai alkalmazást API-ként, és tesztelheti az importált API-t.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -33,31 +33,32 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
--   A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
--   Győződjön meg arról, hogy van egy logikai alkalmazás az előfizetésben, amely http-végpontot tesz elérhetővé. További információ: [HTTP-végpontokkal rendelkező munkafolyamatok aktiválása](../logic-apps/logic-apps-http-endpoint.md)
+-   Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
+-   Ellenőrizze, hogy van-e olyan logikai alkalmazás az előfizetésben, amely egy HTTP-végpontot tesz elérhetővé. További információ: [munkafolyamatok indítása http-végpontokkal](../logic-apps/logic-apps-http-endpoint.md)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Háttér-API importálása és közzététele
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Háttérbeli API importálása és közzététele
 
-1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+1. Navigáljon a API Management szolgáltatáshoz a Azure Portal, és válassza az **API-kat** a menüből.
 2. Válasszon ki egy **logikai alkalmazást** az **Új API hozzáadása** listából.
 
     ![Logikai alkalmazás](./media/import-logic-app-as-api/logic-app-api.png)
 
-3. A **Tallózás gombra** a HTTP-eseményindítóval rendelkező logikai alkalmazások listájának megtekintéséhez az előfizetésben. (Ne feledje, hogy a HTTP-eseményindító nélküli logikai alkalmazások nem jelennek meg a listában.)
-4. Válassza ki az alkalmazást. Az API Management megkeresi a kijelölt alkalmazáshoz társított swaggert, lekéri és importálja azt.
+3. A **Tallózás** gombra kattintva megtekintheti a http-triggerrel rendelkező Logic apps listáját az előfizetésében. (Vegye figyelembe, hogy a HTTP-trigger nélküli Logic Apps nem jelennek meg a listában.)
+4. Válassza ki az alkalmazást. API Management megkeresi a kiválasztott alkalmazáshoz társított hencegés, beolvassa és importálja.
 5. Adja hozzá az API URL-cím utótagját. Az utótag lesz a név, amely azonosítja az API-t ebben az API Management-példányban. Ebben az API Management-példányban egyedinek kell lennie.
 6. Az API egy termékkel való társítással tehető közzé. Ebben az esetben az „_Unlimited_” terméket használjuk. Ha közzé szeretné tenni az API-t, hogy elérhető legyen a fejlesztők számára, adja hozzá egy termékhez. Ezt megteheti az API létrehozása során, vagy később is.
 
-    A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha létrehozta az API Management példányt, akkor már rendszergazda, így alapértelmezés szerint minden termékre előfizet.
+    A termékek egy vagy több API társításai. Megadhatja az API-k számát, és a fejlesztői portálon elérhetővé teheti őket a fejlesztők számára. A fejlesztőknek elő kell fizetniük a termékre az API-k eléréséhez. Amikor előfizetnek, kapnak egy előfizetési kulcsot, amely a termék minden API-jához használható. Ha létrehozta a API Management példányt, akkor Ön már rendszergazda, így alapértelmezés szerint minden termékre előfizetett.
 
     Alapértelmezés szerint az API Management minden példányához az alábbi két mintatermék jár:
 
     - **Kezdő**
     - **Korlátlan**
 
-7. Kattintson a **Létrehozás** gombra.
+7. Adja meg az egyéb API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
+8. Kattintson a **Létrehozás** gombra.
 
 ## <a name="test-the-api-in-the-azure-portal"></a>Az API tesztelése az Azure Portalon
 
@@ -84,4 +85,4 @@ A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelme
 
 > [!div class="nextstepaction"]
 >
-> [Egy közzétett api átalakítása és védelme](transform-api.md)
+> [Közzétett API átalakítása és védelemmel való ellátása](transform-api.md)

@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 11/22/2017
+ms.date: 04/22/2020
 ms.author: apimpm
-ms.openlocfilehash: bf4039b661ac7e0ee9630b86b9e15d1388991431
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: e6195409a08498527ec40a2ddd2f909a092c9d19
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "74108492"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202825"
 ---
 # <a name="import-an-api-app-as-an-api"></a>API-alkalmazás importálása API-ként
 
@@ -32,14 +32,14 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ A következő rövid útmutató befejezése: [Hozzon létre egy Azure API Management-példányt](get-started-create-service-instance.md)
-+ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információ: [App Service Documentation](https://docs.microsoft.com/azure/app-service/)
++ Hajtsa végre a következő rövid útmutatót: [Azure API Management-példány létrehozása](get-started-create-service-instance.md)
++ Győződjön meg arról, hogy az előfizetése tartalmaz egy API-alkalmazást. További információ: [app Service dokumentáció](https://docs.microsoft.com/azure/app-service/)
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
-## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Háttér-API importálása és közzététele
+## <a name="import-and-publish-a-back-end-api"></a><a name="create-api"> </a>Háttérbeli API importálása és közzététele
 
-1. Válassza ki az **API-kat** az **API MANAGEMENT** részben.
+1. Navigáljon a API Management szolgáltatáshoz a Azure Portal, és válassza az **API-kat** a menüből.
 2. Válasszon ki egy **API-alkalmazást** az **Új API hozzáadása** listából.
 
     ![API-alkalmazás](./media/import-api-app-as-api/api-app.png)
@@ -56,9 +56,10 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
     * **Kezdő**
     * **Korlátlan**   
-7. Kattintson a **Létrehozás** gombra.
+7. Adja meg az egyéb API-beállításokat. Megadhatja az értékeket a létrehozás során, vagy később konfigurálhatja őket a **Beállítások** lapon. A beállításokat az [első API-oktatóanyag importálásával és közzétételével](import-and-publish.md#-import-and-publish-a-backend-api) foglalkozó cikkben ismertetjük.
+8. Kattintson a **Létrehozás** gombra.
 
-## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése az Azure Portalon
+## <a name="test-the-new-api-in-the-azure-portal"></a>Az új API tesztelése a Azure Portal
 
 A műveleteket meg lehet hívni közvetlenül az Azure Portalról, ami kényelmes módot biztosít az API műveleteinek megtekintésére és tesztelésére.  
 

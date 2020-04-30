@@ -8,50 +8,50 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 02/08/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: dd44d9cb01ff072d89afeb4efc4a59071c621315
-ms.sourcegitcommit: 441db70765ff9042db87c60f4aa3c51df2afae2d
+ms.openlocfilehash: 97dfe175a609ab336206098948b4e3fcc401d8bc
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/06/2020
-ms.locfileid: "80758181"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203963"
 ---
-Ez a Postman-alapú rövid útmutató végigvezeti önt arról, hogy választ kapjon a tudásbázisából.
+Ez a Poster-alapú rövid útmutató végigvezeti Önt a Tudásbázisból kapott válasz beszerzésén.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Legújabb [**postás**](https://www.getpostman.com/).
-* Önnek rendelkeznie kell
-    * [A QnA Maker szolgáltatás](../How-To/set-up-qnamaker-service-azure.md)
-    * A betanított és közzétett tudásbázis a rövid útmutatóból származó [kérdésekkel és válaszokkal](../Quickstarts/add-question-metadata-portal.md) metaadatokkal és csevegéssel van konfigurálva.
+* Legújabb [**Poster**](https://www.getpostman.com/).
+* Rendelkeznie kell
+    * Egy [QnA Maker szolgáltatás](../How-To/set-up-qnamaker-service-azure.md)
+    * A betanított és közzétett Tudásbázis a rövid útmutatóból kiépített [kérdésekkel és válaszokkal](../Quickstarts/add-question-metadata-portal.md) a metaadatokkal és a Chit-csevegéssel van konfigurálva.
 
 > [!NOTE]
-> Ha készen áll arra, hogy választ adjon egy kérdésre a tudásbázisából, be kell [tanítania](../Quickstarts/create-publish-knowledge-base.md#save-and-train) és közzé kell [tennie](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) tudásbázisát. A tudásbázis közzétételekor a **Közzététel** lap megjeleníti a HTTP-kérelem beállításait a válasz létrehozásához. A **Postman** lapon a válasz létrehozásához szükséges beállítások láthatók.
+> Ha készen áll arra, hogy a tudásalapú kérdésre válaszoljon, be kell [tanítania](../Quickstarts/create-publish-knowledge-base.md#save-and-train) és [közzé](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base) kell tennie a tudásbázist. A Tudásbázis közzétételekor a **közzétételi** oldal MEGJELENÍTI a HTTP-kérelmek beállításait a válasz létrehozásához. A **Poster** lapon a válasz létrehozásához szükséges beállítások láthatók.
 
-## <a name="set-up-postman-for-requests"></a>Postás beállítása kérésekhez
+## <a name="set-up-postman-for-requests"></a>Poster beállítása a kérelmekhez
 
-Ez a rövid útmutató ugyanazokat a beállításokat használja a Postman **POST** kéréshez, majd konfigurálja a POST body JSON-t, amelyet a lekérdezési cél alapján küld a szolgáltatásnak.
+Ez a rövid útmutató ugyanazokat a beállításokat használja, mint a Poster **post** -kérelem, majd úgy konfigurálja, hogy a rendszer a szolgáltatásnak a lekérdezéshez szükséges JSON-t küldje a szolgáltatásnak.
 
-Ezzel az eljárással konfigurálhatja a Postmant, majd minden további szakaszt elolvashat a Post body JSON beállításához.
+Ezzel az eljárással konfigurálhatja a Poster-t, majd beolvashatja az összes további szakaszt a POST Body JSON konfigurálásához.
 
-1. A tudásbázis **Beállítások** lapján válassza a **Postman** lapot a tudásbázisból a válasz létrehozásához használt konfiguráció megtekintéséhez. Másolja a következő adatokat a Postman programban való használatra.
+1. A Tudásbázis **Beállítások** lapján kattintson a **poster (beküldés** ) fülre, és tekintse meg a Tudásbázisból a válasz létrehozásához használt konfigurációt. Másolja a következő adatokat a Poster-ban való használatra.
 
-    |Név|Beállítás|Cél és érték|
+    |Name (Név)|Beállítás|Cél és érték|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Ez az URL-cím HTTP-metódusa és útvonala.|
-    |`Host`|`https://diberry-qna-s0-s.azurewebsites.net/qnamaker`|Ez az URL-cím állomása. Fűzze össze a host és a Post értékeket a teljes generateAnswer URL-cím leválasztásához.|
-    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|A fejléc értéke, hogy engedélyezze a kérelmet az Azure-ba. |
-    |`Content-type`|`application/json`|A tartalom fejlécértéke.|
-    ||`{"question":"<Your question>"}`|A POST-kérelem törzse JSON-objektumként. Ez az érték az egyes következő szakaszokban megváltozik attól függően, hogy a lekérdezés mire készült.|
+    |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Ez az URL-cím gazdagépe. Fűzze össze a gazdagépet, és tegye az értékeket a teljes generateAnswer URL-cím beszerzéséhez.|
+    |`Authorization`|`EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`|A fejléc értéke, hogy engedélyezze az Azure-ba irányuló kérését. |
+    |`Content-type`|`application/json`|A tartalom fejlécének értéke.|
+    ||`{"question":"<Your question>"}`|A POST kérelem törzse JSON-objektumként. Ez az érték a következő szakaszban módosul, attól függően, hogy mit kell tennie a lekérdezésnek.|
 
-1. Nyissa meg a Postman t, és hozzon létre egy új alap **POST** kérelmet a közzétett tudásbázis-beállításokkal. A következő szakaszokban módosítsa a POST test JSON-t a lekérdezés tudásbázisra való módosításához.
+1. Nyissa meg a Poster-t, és hozzon létre egy új alapszintű **post** -kérelmet a közzétett Tudásbázis-beállításokkal. A következő szakaszban megváltoztathatja a POST Body JSON-t, hogy megváltoztassa a lekérdezést a Tudásbázisban.
 
-## <a name="use-metadata-to-filter-answer"></a>Válasz szűrése metaadatokkal
+## <a name="use-metadata-to-filter-answer"></a>A válasz szűrése metaadatok használatával
 
-Egy korábbi rövid útmutatóban a metaadatok két QnA-párhoz kerültek, hogy különbséget tegyenek két különböző kérdés között. Adja hozzá a metaadatokat a lekérdezéshez, hogy a szűrőt csak a megfelelő QnA-párra korlátozza.
+Egy korábbi rövid útmutatóban a metaadatok két QnA-párokhoz lettek hozzáadva két különböző kérdés megkülönböztetése érdekében. Adja hozzá a metaadatokat a lekérdezéshez, hogy csak a megfelelő QnA-párokra korlátozza a szűrőt.
 
-1. A Postman alkalmazásban csak a JSON `strictFilters` lekérdezést módosítsa úgy, `service:qna_maker`hogy hozzáadja a tulajdonságot a nevével/értékpárjával. A test JSON kell:
+1. A Poster-ben módosítsa a lekérdezés JSON-t úgy `strictFilters` , hogy hozzáadja a tulajdonságot a név `service:qna_maker`/érték párral. A JSON-törzsnek a következőket kell tennie:
 
     ```json
     {
@@ -64,11 +64,11 @@ Egy korábbi rövid útmutatóban a metaadatok két QnA-párhoz kerültek, hogy 
     }
     ```
 
-    A kérdés csak egy `size`szó, amely a két kérdés-válasz halmaz bármelyikét visszatudja adni. A `strictFilters` tömb azt mondja a `qna_maker` választ, hogy csökkentsék csak a válaszokat.
+    A kérdés csak egyetlen szó, `size`amely a két kérdés-és válaszfájl bármelyikét visszaállíthatja. A `strictFilters` tömb arra utasítja a választ, hogy csak a `qna_maker` válaszokat csökkentse.
 
-1. A válasz csak a szűrőfeltételeknek megfelelő választ tartalmazza.
+1. A válasz csak azt a választ tartalmazza, amely megfelel a szűrési feltételeknek.
 
-    Az olvashatóság érdekében a következő válasz lett formázva:
+    A következő válasz formázva lett az olvashatóság érdekében:
 
     ```JSON
     {
@@ -103,13 +103,13 @@ Egy korábbi rövid útmutatóban a metaadatok két QnA-párhoz kerültek, hogy 
     }
     ```
 
-    Ha van olyan kérdés-válasz készlet, amely nem felel meg a keresési kifejezésnek, de megfelelt a szűrőnek, akkor nem lesz visszaadva. Ehelyett az általános `No good match found in KB.` választ adja vissza.
+    Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános `No good match found in KB.` választ adja vissza.
 
-## <a name="use-debug-query-property"></a>Hibakeresési lekérdezéstulajdonság használata
+## <a name="use-debug-query-property"></a>Hibakeresési lekérdezési tulajdonság használata
 
-A hibakeresési információk segítenek megérteni, hogyan határozták meg a visszaadott választ. Bár ez hasznos, ez nem szükséges. Ha hibakeresési adatokkal szeretne választ `debug` adni, adja hozzá a tulajdonságot:
+A hibakeresési információk segítenek megérteni a visszaadott válasz meghatározásának módját. Habár hasznos, nem szükséges. Ha hibakeresési információval szeretne válaszolni, adja hozzá `debug` a következő tulajdonságot:
 
-1. A Postman, változtatni csak a test `debug` JSON hozzáadásával az ingatlan. A JSON legyen:
+1. A Poster-ben módosítsa a törzs JSON-t úgy `debug` , hogy hozzáadja a tulajdonságot. A JSON a következőket kell tennie:
 
     ```json
     {
@@ -121,7 +121,7 @@ A hibakeresési információk segítenek megérteni, hogyan határozták meg a v
     }
     ```
 
-1. A válasz tartalmazza a választ. A következő JSON-kimenetben néhány hibakeresési részletet három ponttal cserélt le.
+1. A válasz tartalmazza a válaszra vonatkozó információkat. A következő JSON-kimenetben néhány hibakeresési részlet lecserélve a három pontra.
 
     ```console
     {
@@ -211,11 +211,11 @@ A hibakeresési információk segítenek megérteni, hogyan határozták meg a v
     }
     ```
 
-## <a name="use-test-knowledge-base"></a>Teszttudás-alap használata
+## <a name="use-test-knowledge-base"></a>Tesztelési Tudásbázis használata
 
-Ha választ szeretne kapni a teszttudásbázistól, `isTest` használja a testtulajdonságot.
+Ha a teszt Tudásbázisból szeretne választ kapni, használja a `isTest` Body (törzs) tulajdonságot.
 
-A Postman, változtatni csak a test `isTest` JSON hozzáadásával az ingatlan. A JSON legyen:
+A Poster-ben módosítsa a törzs JSON-t úgy `isTest` , hogy hozzáadja a tulajdonságot. A JSON a következőket kell tennie:
 
 ```json
 {
@@ -224,14 +224,14 @@ A Postman, változtatni csak a test `isTest` JSON hozzáadásával az ingatlan. 
 }
 ```
 
-A JSON-válasz ugyanazt a sémát használja, mint a közzétett tudásbázis-lekérdezés.
+A JSON-válasz ugyanazt a sémát használja, mint a közzétett Tudásbázis-lekérdezés.
 
 > [!NOTE]
-> Ha a teszt és a közzétett tudásbázisok pontosan azonosak, akkor is előfordulhat, hogy van némi eltérés, mert a tesztindex meg oszlik az erőforrás összes tudásbázisa között.
+> Ha a teszt és a közzétett tudásbázisok pontosan ugyanazok, akkor továbbra is lehet némi eltérés, mert a tesztelési index az erőforrás összes tudásbázisa között meg van osztva.
 
-## <a name="query-for-a-chit-chat-answer"></a>Chit-chat válasz lekérdezése
+## <a name="query-for-a-chit-chat-answer"></a>A Chit-Chat-válasz lekérdezése
 
-1. A Postman, változtassa meg csak a szervezet JSON egy beszélgetés-végződő nyilatkozatot a felhasználótól. A JSON legyen:
+1. A Poster-ben csak a törzs JSON-fájlját módosítsa egy beszélgetési végű utasításra a felhasználótól. A JSON a következőket kell tennie:
 
     ```json
     {
@@ -239,7 +239,7 @@ A JSON-válasz ugyanazt a sémát használja, mint a közzétett tudásbázis-le
     }
     ```
 
-1. A válasz tartalmazza a pontszám és a válasz.
+1. A válasz tartalmazza a pontszámot és a választ.
 
     ```json
     {
@@ -321,13 +321,13 @@ A JSON-válasz ugyanazt a sémát használja, mint a közzétett tudásbázis-le
     }
     ```
 
-    Mivel a `Thank you` utasításhoz tartozó kérdés pontosan megegyezik egy csevegési kérdéssel, a QnA Maker 100-as pontszámmal teljesen biztos a válaszban. A QnA Maker az összes kapcsolódó kérdést, valamint a Chit-chat metaadat-címkét tartalmazó metaadat-tulajdonságot is visszaadta.
+    Mivel a `Thank you` utasításhoz tartozó kérdés pontosan megegyezik egy csevegési kérdéssel, a QnA Maker 100-as pontszámmal teljesen biztos a válaszban. QnA Maker az összes kapcsolódó kérdést, valamint a Chit-Chat metaadat-címkét tartalmazó metaadat-tulajdonságot is visszaadja.
 
 ## <a name="use-threshold-and-default-answer"></a>Küszöbérték és alapértelmezett válasz használata
 
-A válasz minimális küszöbértékét kérheti. Ha a küszöbérték nem teljesül, az alapértelmezett választ adja vissza.
+A válaszhoz minimális küszöbértéket is igényelhet. Ha a küszöbérték nem teljesül, a rendszer az alapértelmezett választ adja vissza.
 
-1. A Postman, változtassa meg csak a szervezet JSON egy beszélgetés-végződő nyilatkozatot a felhasználótól. A JSON legyen:
+1. A Poster-ben csak a törzs JSON-fájlját módosítsa egy beszélgetési végű utasításra a felhasználótól. A JSON a következőket kell tennie:
 
     ```json
     {
@@ -336,9 +336,9 @@ A válasz minimális küszöbértékét kérheti. Ha a küszöbérték nem telje
     }
     ```
 
-    A tudásbázis nem találja meg ezt a választ, mert a kérdés pontszáma 71%, és ehelyett a tudásbázis létrehozásakor megadott alapértelmezett választ adja vissza.
+    A Tudásbázis nem találja a választ, mert a kérdés pontszáma 71%, ehelyett a Tudásbázis létrehozásakor megadott alapértelmezett választ kell visszaadnia.
 
-    A visszaadott JSON válasz, beleértve a pontszám és a válasz:
+    A visszaadott JSON-válasz, beleértve a pontszámot és a választ:
 
     ```json
     {
@@ -357,7 +357,7 @@ A válasz minimális küszöbértékét kérheti. Ha a küszöbérték nem telje
     }
     ```
 
-    QnA Maker vissza `0`adott egy pontszámot , ami azt jelenti, nincs bizalom. Az alapértelmezett választ is visszaadta.
+    QnA Maker egy pontszámot adott vissza `0`, ami nem jelent megbízhatóságot. Emellett az alapértelmezett választ is visszaadja.
 
 1. Módosítsa a küszöbértéket 60%-ra, és kérje újra a lekérdezést:
 

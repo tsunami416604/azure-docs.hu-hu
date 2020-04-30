@@ -136,10 +136,10 @@
         - name: Átviteli sebesség kiosztása tárolókra és adatbázisokra
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Átviteli sebesség kiosztása – automatikus mód
-          href: provision-throughput-autopilot.md
-        - name: Autopilot – GYIK
-          href: autopilot-faq.md
+        - name: Átviteli sebesség kiosztása – automatikus skálázási mód
+          href: provision-throughput-autoscale.md
+        - name: Automatikus skálázással kapcsolatos gyakori kérdések
+          href: autoscale-faq.md
     - name: SQL-lekérdezés
       items:
         - name: Első lépések
@@ -518,6 +518,7 @@
         - name: Teljes bekerülési költség (TCO)
           href: total-cost-ownership.md
         - name: A számla értelmezése
+          displayName: free tier
           href: understand-your-bill.md
         - name: A kiosztott átviteli sebesség költségeinek optimalizálása
           displayName: 'request units, RUs, RU'
@@ -531,6 +532,7 @@
         - name: A több régióban való üzemeltetés költségeinek optimalizálása
           href: optimize-cost-regions.md
         - name: Fejlesztési/tesztelési költségek optimalizálása
+          displayName: free tier
           href: optimize-dev-test.md
         - name: Költségek optimalizálása lefoglalt kapacitással
           href: cosmos-db-reserved-capacity.md

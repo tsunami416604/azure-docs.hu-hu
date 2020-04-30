@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05526a82ed5fc53a5c25e4c87cab1fa56a814645
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: b057f817fb0c30e45c08f8d708441bd52122af7b
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172594"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82206748"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az úszóval
 
@@ -83,28 +83,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Ha a **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, az **ALAPszintű SAML-konfiguráció** szakaszban adja meg a következő mezők értékeit:
 
-    a. Az **azonosító** szövegmezőbe írja be a következő URL-címek valamelyikét:
+    a. Az **azonosító** szövegmezőbe írja be a következő URL- `https://app.float.com/sso/metadata`címet:.
 
-    | |
-    |--|
-    | `https://app.float.com/sso/metadata`|
-    | `https://app.develop.float.com/sso/metadata`|
-
-    b. A **Válasz URL-címe** szövegmezőbe írja be a következő minták valamelyikét:
-
-    | |
-    |--|
-    | `https://<hostname>.float.com/sso/azuread`|
-    | `https://<hostname>.develop.float.com/sso/azuread`|
+    b. A **Válasz URL-címe** szövegmezőbe írja be a mintát `https://<hostname>.float.com/sso/azuread`használó URL-címet.
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    A **bejelentkezési URL** szövegmezőbe írjon be egy URL-címet a következő minták bármelyikének használatával:
-
-    | |
-    |--|
-    | `https://<hostname>.float.com/login`|
-    | `https://<hostname>.develop.float.com/login`|
+    A **bejelentkezési URL-cím** szövegmezőbe írja be a minta `https://<hostname>.float.com/login`URL-címét.
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezekhez az értékekhez vegye fel a kapcsolatot az [úszó ügyfél támogatási csapatával](mailto:support@float.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.

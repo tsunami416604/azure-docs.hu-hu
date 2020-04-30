@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 75100b47ddf8f36ed9a22ff3073c439f8ad9040b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 471d07f4aa5abe7552ff33e767e8783239dd1989
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083298"
+ms.locfileid: "82203879"
 ---
 # <a name="create-an-apache-storm-topology-in-java"></a>Apache Storm topológia létrehozása javában
 
-Megtudhatja, hogyan hozhat létre Java-alapú topológiát [Apache Stormhoz](https://storm.apache.org/). Itt olyan Storm-topológiát hoz létre, amely egy Word-Count alkalmazást implementál. Az [Apache Maven](https://maven.apache.org/) használatával felépítheti és becsomagolhatja a projektet. Ezután megtudhatja, hogyan határozhatja meg a topológiát a [Apache Storm Flux](https://storm.apache.org/releases/2.0.0/flux.html) -keretrendszer használatával.
+Megtudhatja, hogyan hozhat létre Java-alapú topológiát Apache Stormhoz. Olyan Storm-topológiát hoz létre, amely egy Word-Count alkalmazást implementál. Az Apache Maven használatával felépítheti és becsomagolhatja a projektet. Ezután megtudhatja, hogyan határozhatja meg a topológiát a Apache Storm Flux-keretrendszer használatával.
 
 A dokumentum lépéseinek elvégzése után telepítheti a topológiát, hogy Apache Storm a HDInsight.
 
@@ -197,7 +197,7 @@ Ez a szakasz beépülő modulok, erőforrások és egyéb Build-konfigurációs 
 
 * **Apache Maven Compiler beépülő modul**
 
-    Egy másik hasznos beépülő modul az [Apache Maven Compiler beépülő](https://maven.apache.org/plugins/maven-compiler-plugin/)modul, amely a fordítási beállítások módosítására szolgál. Módosítsa a Maven által az alkalmazás forrásához és céljához használt Java-verziót.
+    Egy másik hasznos beépülő modul a [`Apache Maven Compiler Plugin`](https://maven.apache.org/plugins/maven-compiler-plugin/), amely a fordítási beállítások módosítására szolgál. Módosítsa a Maven által az alkalmazás forrásához és céljához használt Java-verziót.
 
   * A __3,4-es vagy korábbi__HDInsight esetében állítsa a forrás és a cél Java-verziót __1,7__-re.
 
@@ -245,7 +245,7 @@ A Java-alapú Apache Storm topológia három olyan összetevőből áll, amelyek
 
 ### <a name="create-the-spout"></a>A kiöntő létrehozása
 
-A külső adatforrások beállításához szükséges követelmények csökkentése érdekében a következő kiöntő egyszerűen véletlenszerű mondatokat bocsát ki. A kiöntő egy módosított verziója, amely a [Storm-Starter-példákkal](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)van ellátva.  Bár ez a topológia csak egy kiöntőt használ, mások is rendelkezhetnek több, a különböző forrásokból származó adatoknak a topológiába való betöltésével.
+A külső adatforrások beállításához szükséges követelmények csökkentése érdekében a következő kiöntő egyszerűen véletlenszerű mondatokat bocsát ki. A kiöntő egy módosított verziója, amely a [Storm-Starter-példákkal](https://github.com/apache/storm/blob/0.10.x-branch/examples/storm-starter/src/jvm/storm/starter)van ellátva.  Bár ez a topológia egy kiöntőt használ, mások rendelkezhetnek több, különböző forrásokból származó adatokkal a topológiában`.`
 
 Új fájl `RandomSentenceSpout.java`létrehozásához és megnyitásához írja be az alábbi parancsot:
 
@@ -481,7 +481,7 @@ public class WordCount extends BaseBasicBolt {
 
 ### <a name="define-the-topology"></a>A topológia definiálása
 
-A topológia összeköti a kifolyókat és a boltokat egy gráfba, amely meghatározza, hogy az adatforgalom Hogyan zajlik az összetevők között. Emellett olyan párhuzamossági mutatókat is biztosít, amelyeket a Storm használ a fürtben található összetevők példányainak létrehozásakor.
+A topológia összeköti a kiöntő és a csavarokat egy gráfba. A gráf határozza meg, hogyan áramlik az adatforgalom az összetevők között. Emellett olyan párhuzamossági mutatókat is biztosít, amelyeket a Storm használ a fürtben található összetevők példányainak létrehozásakor.
 
 A következő kép a topológiához tartozó összetevők gráfjának alapszintű ábrája.
 
@@ -613,15 +613,15 @@ Ahogy fut, a topológia az indítási adatokat jeleníti meg. A következő szö
     17:33:27 [Thread-30-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word dwarfs
     17:33:27 [Thread-12-count] INFO  com.microsoft.example.WordCount - Emitting a count of 57 for word snow
 
-Ez a példa azt jelzi, hogy a "és a" szó 113 alkalommal lett kibocsátva. A számláló addig folytatódik, amíg a topológia fut, mert a kifolyó folyamatosan ugyanazt a mondatot bocsátja ki.
+Ez a példa azt jelzi, hogy a "és a" szó 113 alkalommal lett kibocsátva. A szám folyamatosan növekszik, amíg a topológia fut. Ennek a növekedésnek az az oka, hogy a kifolyó folyamatosan ugyanazt a mondatot bocsátja ki.
 
 A szavak és a számok kibocsátása között 5 másodperces intervallum van. A **WordCount** összetevő úgy van konfigurálva, hogy csak a Tick rekord megérkezése esetén állítson elő információkat. Azt kéri, hogy a Tick rekordok csak öt másodpercenként kerüljön kézbesítésre.
 
 ## <a name="convert-the-topology-to-flux"></a>A topológia átalakítása a Fluxusba
 
-A [Flux](https://storm.apache.org/releases/2.0.0/flux.html) egy új keretrendszer, amely a Storm 0.10.0 és újabb verziókban érhető el, amely lehetővé teszi a konfiguráció elkülönítését a megvalósítástól. Az összetevők továbbra is Java-ban vannak definiálva, de a topológia egy YAML-fájl használatával van definiálva. Egy alapértelmezett topológia-definíciót is becsomagolhat a projektbe, vagy használhat önálló fájlt a topológia elküldésekor. Ha a topológia a Storm-be küldi a topológiát, környezeti változók vagy konfigurációs fájlok használatával tölthet fel értékeket az YAML topológia-definícióban.
+A [Flux](https://storm.apache.org/releases/2.0.0/flux.html) egy új keretrendszer, amely a Storm 0.10.0 és újabb verziókban érhető el. A Flux segítségével elkülönítheti a konfigurációt a megvalósítástól. Az összetevők továbbra is Java-ban vannak definiálva, de a topológia egy YAML-fájl használatával van definiálva. Egy alapértelmezett topológia-definíciót is becsomagolhat a projektbe, vagy használhat önálló fájlt a topológia elküldésekor. Ha a topológiát a Storm-re küldi el, környezeti változók vagy konfigurációs fájlok használatával feltöltheti a YAML topológia-definíciós értékeit.
 
-A YAML fájl határozza meg a topológia és a közöttük lévő adatfolyamok által használt összetevőket. YAML-fájlt is hozzáadhat a jar-fájl részeként, vagy külső YAML-fájlt is használhat.
+A YAML fájl határozza meg a topológia és a közöttük lévő adatfolyamok által használt összetevőket. A jar-fájl részeként YAML-fájlt is megadhat. Külső YAML-fájlt is használhat.
 
 További információ a Fluxról: [Flux Framework (https://storm.apache.org/releases/current/flux.html)](https://storm.apache.org/releases/current/flux.html).
 
@@ -818,7 +818,7 @@ További információ ezekről és a Flux-keretrendszer egyéb funkcióiról: [F
 
 ## <a name="trident"></a>Trident
 
-A [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) egy magas szintű absztrakció, amelyet a Storm biztosít. Támogatja az állapot-nyilvántartó feldolgozást. A Trident elsődleges előnye, hogy garantálni tudja, hogy a topológia összes üzenete csak egyszer lesz feldolgozva. A Trident használata nélkül a topológia csak az üzenetek feldolgozását tudja garantálni legalább egyszer. Vannak más különbségek is, például a beépített összetevők, amelyek felhasználhatók a csavarok létrehozása helyett. Valójában a boltokat kevésbé általános összetevők, például szűrők, kivetítések és függvények váltották fel.
+A [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) egy magas szintű absztrakció, amelyet a Storm biztosít. Támogatja az állapot-nyilvántartó feldolgozást. A Trident elsődleges előnye, hogy garantálja, hogy a topológia összes üzenete csak egyszer lesz feldolgozva. A Trident használata nélkül a topológia csak az üzenetek feldolgozását tudja garantálni legalább egyszer. Vannak más különbségek is, például a beépített összetevők, amelyek felhasználhatók a csavarok létrehozása helyett. A boltokat kevésbé általános összetevők, például szűrők, kivetítések és függvények váltja fel.
 
 A Trident-alkalmazásokat a Maven-projektek használatával lehet létrehozni. Ugyanazokat az alapvető lépéseket használja, mint a cikkben korábban ismertetett – csak a kód különbözik. A Trident nem használható (jelenleg) a Flux-keretrendszerrel.
 
@@ -830,6 +830,6 @@ Megtanulta, hogyan hozhat létre Apache Storm topológiát Java használatával.
 
 * [Apache Storm-topológiák üzembe helyezése és kezelése a HDInsight](apache-storm-deploy-monitor-topology-linux.md)
 
-* [C#-topológiák fejlesztése a Visual Studio használatával történő HDInsight Apache Stormhoz](apache-storm-develop-csharp-visual-studio-topology.md)
+* [Topológiák fejlesztése a Pythonnal](apache-storm-develop-python-topology.md)
 
 Több példát Apache Storm topológiát talál, ha a HDInsight-ben [Apache Storm példa topológiákat keres](apache-storm-example-topology.md).

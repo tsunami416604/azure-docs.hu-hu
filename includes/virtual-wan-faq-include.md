@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2b30c176cf3c9dd31ae3efa85d308b3f89bd4dbe
-ms.sourcegitcommit: ffc6e4f37233a82fcb14deca0c47f67a7d79ce5c
+ms.openlocfilehash: 5d2d33dc2ef135fde0955336a40f851d6ed4e0e7
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/21/2020
-ms.locfileid: "81735096"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82204512"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -49,7 +49,7 @@ A P2S-ügyfelekhez két lehetőség van a DNS-kiszolgálók hozzáadására.
 
 ### <a name="for-user-vpn-point-to-site--how-many-clients-are-supported"></a>Felhasználói VPN (pont – hely) esetén – hány ügyfél támogatott?
 
-Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik, és mindegyik példány támogatja a méretezési egység módosításait. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000-kapcsolatokat, a méretezési egység 7-10 támogatja a 5000-kapcsolatokat, és a 11. méretezési egységet támogatja Tegyük fel például, hogy a felhasználó 1 méretezési egységet választ. Mindegyik skálázási egység egy aktív-aktív átjáró üzembe helyezését jelentené, és a példányok mindegyike (ebben az esetben 2) az 500-os kapcsolatok használatát fogja támogatni. Mivel az 500-es kapcsolatok * 2 átjárón keresztüli elérésére van lehetőség, nem jelenti azt, hogy a 500 helyett a (1000) értéket tervezi a méretezési egységhez, mivel előfordulhat, hogy olyan példányokat kell kiszolgálni, amelyekben a további 500 kapcsolata megszakad, ha túllépi az ajánlott kapcsolatok számát.
+Minden felhasználói VPN P2S-átjáró két példánnyal rendelkezik, és mindegyik példány támogatja a méretezési egység módosításait. A 1-3-es méretezési egység támogatja a 500-kapcsolatokat, a skálázási egység 4-6 támogatja a 1000-kapcsolatokat, a Scale Unit 7-12 támogatja az 5000-kapcsolatokat és a skálázási egység 13-20 támogatja az akár Tegyük fel például, hogy a felhasználó 1 méretezési egységet választ. Mindegyik skálázási egység egy aktív-aktív átjáró üzembe helyezését jelentené, és a példányok mindegyike (ebben az esetben 2) az 500-os kapcsolatok használatát fogja támogatni. Mivel az 500-es kapcsolatok * 2 átjárón keresztüli elérésére van lehetőség, nem jelenti azt, hogy a 500 helyett a (1000) értéket tervezi a méretezési egységhez, mivel előfordulhat, hogy olyan példányokat kell kiszolgálni, amelyekben a további 500 kapcsolata megszakad, ha túllépi az ajánlott kapcsolatok számát.
 
 ### <a name="what-is-the-difference-between-an-azure-virtual-network-gateway-vpn-gateway-and-an-azure-virtual-wan-vpn-gateway"></a>Mi a különbség az Azure Virtual Network Gateway (VPN Gateway) és egy Azure virtuális WAN VPN Gateway között?
 
@@ -215,6 +215,10 @@ Ha egy virtuális központ több távoli hubhoz is megtudhatja ugyanazt az útvo
 1) Útvonal forrása) hálózati útvonalak – a virtuális hub-átjárók által közvetlenül megismert VNET-előtagokat a (statikusan konfigurált útvonalakon) c) InterHub útvonalak
 2)  Útvonal metrikája: a virtuális WAN inkább a VPN-en keresztül ExpressRoute. A ExpressRoute-társ magasabb súlyozással rendelkezik, mint a VPN-társ
 3)  Elérési út hossza
+
+### <a name="is-there-support-for-ipv6-in-virtual-wan"></a>Támogatja az IPv6-ot a virtuális WAN-ban?
+
+A Virtual WAN hub és az átjárók nem támogatják az IPv6 protokollt. Ha olyan VNET rendelkezik, amely IPv6-támogatással rendelkezik, és szeretné a VNET a virtuális WAN-hoz csatlakozni, ez a forgatókönyv szintén nem támogatott. 
 
 ### <a name="what-are-the-differences-between-the-virtual-wan-types-basic-and-standard"></a>Mi a különbség a virtuális WAN-típusok (Basic és standard) között?
 

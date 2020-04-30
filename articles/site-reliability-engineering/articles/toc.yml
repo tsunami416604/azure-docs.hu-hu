@@ -1,0 +1,7 @@
+- name: A webhelyek megbízhatósági tervezésének (SRE) dokumentációja
+  href: ../index.yml
+- name: Gyakori kérdések
+  expanded: true
+  items:
+    - name: SRE és DevOps
+      href: devops.md

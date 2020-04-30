@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 93eddcd8ed0dae6ac6f010dce2e138fc018a06fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: 48b322f32bd6e8f2a2da0c5be8eb7b7987881f83
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190656"
+ms.locfileid: "82204117"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie használata az Apache Hadooppal a munkafolyamatok Linux-alapú Azure HDInsighton való meghatározásához és futtatásához
 
@@ -644,67 +644,6 @@ A koordinátor használatával megadhatja a feladatok kezdési, befejezési és 
 
     ![A OOzie webkonzoljának Job info lapja](./media/hdinsight-use-oozie-linux-mac/coordinator-action-job.png)
 
-## <a name="troubleshooting"></a>Hibaelhárítás
-
-A Oozie felhasználói felületén megtekintheti a Oozie naplókat. A Oozie felhasználói felülete a munkafolyamat által elindított MapReduce-feladatok JobTracker-naplóira mutató hivatkozásokat is tartalmaz. A hibaelhárítási minta a következő lehet:
-
-   1. Tekintse meg a feladatot a Oozie webes felhasználói felületén.
-
-   2. Ha egy adott művelet hibával vagy hibával rendelkezik, válassza ki a műveletet, és ellenőrizze, hogy a **hibaüzenet** mezője tartalmaz-e további információt a hibáról.
-
-   3. Ha elérhető, a művelet URL-címével megtekintheti a művelethez tartozó további részleteket, például a JobTracker naplókat.
-
-A következő konkrét hibák merülhetnek fel, és elháríthatja azokat.
-
-### <a name="ja009-cant-initialize-cluster"></a>JA009: nem lehet inicializálni a fürtöt
-
-**Tünetek**: a feladattípus **felfüggesztve**állapotúra változik. A feladathoz tartozó részletek `RunHiveScript` az állapotot **START_MANUALként**jelenítik meg. A művelet kiválasztásakor a következő hibaüzenet jelenik meg:
-
-    JA009: Cannot initialize Cluster. Please check your configuration for map
-
-**OK**: a **job. XML** fájlban használt Azure Blob Storage-címek nem tartalmazzák a Storage-tárolót vagy a Storage-fiók nevét. A blob Storage-címnek a formátumnak kell lennie `wasbs://containername@storageaccountname.blob.core.windows.net`.
-
-**Megoldás**: módosítsa a feladatok által használt BLOB Storage-címeket.
-
-### <a name="ja002-oozie-isnt-allowed-to-impersonate-ltusergt"></a>JA002: a Oozie nem jogosult megszemélyesíteni &lt;a felhasználót&gt;
-
-**Tünetek**: a feladattípus **felfüggesztve**állapotúra változik. A feladathoz tartozó részletek `RunHiveScript` az állapotot **START_MANUALként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
-
-    JA002: User: oozie is not allowed to impersonate <USER>
-
-**OK**: az aktuális engedélyezési beállítások nem teszik lehetővé, hogy a Oozie megszemélyesítse a megadott felhasználói fiókot.
-
-**Megoldás**: a Oozie megszemélyesítheti a **`users`** csoport felhasználóit. A használatával `groups USERNAME` megtekintheti azokat a csoportokat, amelyeknek a felhasználói fiók tagja. Ha a felhasználó nem tagja a **`users`** csoportnak, akkor a következő paranccsal adhatja hozzá a felhasználót a csoporthoz:
-
-    sudo adduser USERNAME users
-
-> [!NOTE]  
-> Több percet is igénybe vehet, mielőtt a HDInsight észleli, hogy a felhasználó hozzá lett adva a csoporthoz.
-
-### <a name="launcher-error-sqoop"></a>Indító hiba (Sqoop)
-
-**Tünetek**: a feladattípus megszakadt állapotra **változik.** A feladathoz tartozó részletek `RunSqoopExport` az állapotot **hibaként**jelenítik meg. Ha a műveletet választja, a következő hibaüzenet jelenik meg:
-
-    Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], exit code [1]
-
-**OK**: a Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-illesztőt.
-
-**Megoldás**: Ha a Sqoop-t egy Oozie-feladatokból használja, az adatbázis-illesztőprogramot a többi erőforrással együtt kell szerepeltetni, például a Workflow. xml fájlt, amelyet a rendszer a feladatokhoz használ. Továbbá hivatkozzon arra az archívumra, amely az adatbázis-illesztőprogramot `<sqoop>...</sqoop>` tartalmazza a Workflow. xml fájl szakaszában.
-
-A jelen dokumentumban szereplő feladatokhoz például a következő lépéseket kell használni:
-
-1. Másolja a `mssql-jdbc-7.0.0.jre8.jar` fájlt a **/tutorials/useoozie** könyvtárba:
-
-    ```bash
-    hdfs dfs -put /usr/share/java/sqljdbc_7.0/enu/mssql-jdbc-7.0.0.jre8.jar /tutorials/useoozie/mssql-jdbc-7.0.0.jre8.jar
-    ```
-
-2. Módosítsa a `workflow.xml` t a következő XML-kód hozzáadásához a fenti `</sqoop>`új sorban:
-
-    ```xml
-    <archive>mssql-jdbc-7.0.0.jre8.jar</archive>
-    ```
-
 ## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan határozhat meg egy Oozie-munkafolyamatot, és hogyan futtathat egy Oozie-feladatot. Ha többet szeretne megtudni a HDInsight használatáról, tekintse meg a következő cikkeket:
@@ -712,3 +651,4 @@ Ebben a cikkben megtanulta, hogyan határozhat meg egy Oozie-munkafolyamatot, é
 * [Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben](hdinsight-upload-data.md)
 * [Az Apache Sqoop használata Apache Hadoop a HDInsight](hadoop/apache-hadoop-use-sqoop-mac-linux.md)
 * [Apache Hive használata a HDInsight Apache Hadoop használatával](hadoop/hdinsight-use-hive.md)
+* [Az Apache Oozie hibáinak megoldása](./troubleshoot-oozie.md)

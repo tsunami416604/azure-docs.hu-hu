@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 5c71f37741de06b8633e7eafaae2f29823214f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75442663"
+ms.locfileid: "82203148"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
 
@@ -31,36 +31,23 @@ Az új Azure API Management szolgáltatás kezdetben csak egyetlen [egységet][u
 
 [!INCLUDE [premium.md](../../includes/api-management-availability-premium.md)]
 
-## <a name="deploy-an-api-management-service-instance-to-a-new-region"></a><a name="add-region"> </a>API Management szolgáltatási példány üzembe helyezése egy új régióban
+## <a name="deploy-api-management-service-to-a-new-region"></a><a name="add-region"> </a>API Management szolgáltatás üzembe helyezése egy új régióban
 
 > [!NOTE]
 > Ha még nem hozott létre API Management Service-példányt, tekintse meg [a API Management-szolgáltatás példányának létrehozása][create an api management service instance]című témakört.
 
-A Azure Portal navigáljon az API Management Service-példány **méretezési és díjszabási** lapjához.
+1. A Azure Portal navigáljon a API Management szolgáltatáshoz, és kattintson a menü **helyszínek** elemére.
+2. Kattintson a **+ Hozzáadás** elemre a felső sávon.
+3. Válassza ki a helyet a legördülő listából, és állítsa be az egységek számát a csúszkával.
+4. A megerősítéshez kattintson a **Hozzáadás** gombra.
+5. Ismételje meg a folyamatot, amíg meg nem konfigurálja az összes helyet.
+6. A telepítési folyamat elindításához kattintson a felső sávon található **Mentés** gombra.
 
-![Méretezés lap][api-management-scale-service]
+## <a name="delete-an-api-management-service-location"></a><a name="remove-region"> </a>API Management szolgáltatás helyének törlése
 
-Egy új régióban való üzembe helyezéshez kattintson a **+ régió hozzáadása** lehetőségre az eszköztáron.
-
-![Régió hozzáadása][api-management-add-region]
-
-Válassza ki a helyet a legördülő listából, és állítsa be az egységek számát a csúszkával.
-
-![Egységek meghatározása][api-management-select-location-units]
-
-Kattintson a **Hozzáadás** gombra a kijelölés a helyszínek táblában való elhelyezéséhez.
-
-Ismételje meg a folyamatot, amíg nincs konfigurálva minden hely, majd kattintson a **Save (Mentés** ) gombra az eszköztárból a telepítési folyamat elindításához.
-
-## <a name="delete-an-api-management-service-instance-from-a-location"></a><a name="remove-region"> </a>API Management szolgáltatás példányának törlése egy helyről
-
-A Azure Portal navigáljon az API Management Service-példány **méretezési és díjszabási** lapjához.
-
-![Méretezés lap][api-management-scale-service]
-
-Az eltávolítandó helyhez nyissa meg a helyi menüt a tábla jobb oldalán található **..** . gomb használatával. Válassza a **Törlés** lehetőséget.
-
-Erősítse meg a törlést, és kattintson a **Mentés** gombra a módosítások alkalmazásához.
+1. A Azure Portal navigáljon a API Management szolgáltatáshoz, és kattintson a menü **helyszínek** elemére.
+2. Az eltávolítandó helyhez nyissa meg a helyi menüt a tábla jobb oldalán található **..** . gomb használatával. Válassza a **Törlés** lehetőséget.
+3. Erősítse meg a törlést, és kattintson a **Mentés** gombra a módosítások alkalmazásához.
 
 ## <a name="route-api-calls-to-regional-backend-services"></a><a name="route-backend"> </a>API-hívások átirányítása a regionális háttérbeli szolgáltatásokhoz
 
@@ -119,11 +106,6 @@ API Management a [legalacsonyabb késés](../traffic-manager/traffic-manager-rou
 1. [Konfigurálja a API Management regionális állapotjelző végpontokat a Traffic Managerban](../traffic-manager/traffic-manager-monitoring.md). A területi állapot végpontok az URL-mintát követik `https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`, például `https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`:.
 1. A Traffic Manager [útválasztási módszerének](../traffic-manager/traffic-manager-routing-methods.md) meghatározása.
 
-[api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
-[api-management-scale-service]: ./media/api-management-howto-deploy-multi-region/api-management-scale-service.png
-[api-management-add-region]: ./media/api-management-howto-deploy-multi-region/api-management-add-region.png
-[api-management-select-location-units]: ./media/api-management-howto-deploy-multi-region/api-management-select-location-units.png
-[api-management-remove-region]: ./media/api-management-howto-deploy-multi-region/api-management-remove-region.png
 [create an api management service instance]: get-started-create-service-instance.md
 [get started with azure api management]: get-started-create-service-instance.md
 [deploy an api management service instance to a new region]: #add-region

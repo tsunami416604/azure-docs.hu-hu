@@ -4,19 +4,19 @@ description: Megtudhatja, hogyan hozhatja létre a Azure IoT Edge-megoldását a
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 4/24/2020
+ms.date: 4/25/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 6ec196408c047682be527ee21735ce809f5916e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191838"
+ms.locfileid: "82204202"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -174,12 +174,22 @@ A címkézési konvencióra példát a [IoT Edge futtatókörnyezet frissítése
 
 Tudja, hogy a saját Azure-beállításjegyzékében tárolja a tároló lemezképeit, de a nyilvános tárolók lemezképeit is tárolhatja, például a edgeAgent és a edgHub Runtime-modulok esetében. Erre akkor lehet szükség, ha nagyon szűk tűzfal-korlátozásokkal rendelkezik, mivel ezek a futásidejű tárolók a Microsoft Container Registryban (MCR) vannak tárolva.
 
-Szerezze be a lemezképeket a Docker pull paranccsal a beállításjegyzékbe való helyezéshez. Vegye figyelembe, hogy frissítenie kell a lemezképeket IoT Edge futtatókörnyezet minden új kiadásával.
+Szerezze be a lemezképeket a Docker pull paranccsal a privát beállításjegyzékbe való helyezéshez. Vegye figyelembe, hogy frissítenie kell a lemezképeket IoT Edge futtatókörnyezet minden új kiadásával.
 
 | IoT Edge futtatókörnyezet tárolója | Docker-lekérési parancs |
 | --- | --- |
 | [Azure IoT Edge ügynök](https://hub.docker.com/_/microsoft-azureiotedge-agent) | `docker pull mcr.microsoft.com/azureiotedge-agent` |
 | [Azure IoT Edge HUb](https://hub.docker.com/_/microsoft-azureiotedge-hub) | `docker pull mcr.microsoft.com/azureiotedge-hub` |
+
+Ezután frissítse a rendszerkép hivatkozásait a edgeAgent és a edgeHub rendszermodulok telepítési. template. JSON fájljában. Cserélje `mcr.microsoft.com` le a-t a beállításjegyzék nevére és a kiszolgáló mindkét modulra.
+
+* edgeAgent:
+
+    `"image": "<registry name and server>/azureiotedge-agent:1.0",`
+
+* edgeHub:
+
+    `"image": "<registry name and server>/azureiotedge-hub:1.0",`
 
 ## <a name="networking"></a>Hálózat
 

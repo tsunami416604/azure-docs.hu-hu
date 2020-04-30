@@ -1,7 +1,7 @@
 ---
-title: 'Rövid útmutató: Url-eszközzel választ kaphat a tudásbázistól - QnA Maker'
+title: 'Rövid útmutató: az URL-eszköz használatával választ kaphat a Tudásbázisból – QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Ez a rövid útmutató végigvezeti a tudásbázisválasz beszerzésén egy URL-teszteszközzel, például cURL-lel vagy postással.
+description: Ez a rövid útmutató végigvezeti Önt egy olyan URL-tesztelési eszközzel, mint például a cURL vagy a Poster.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 zone_pivot_groups: URL-test-interface
 ms.topic: quickstart
-ms.date: 02/08/2020
+ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 09337ce599b0044ab38bb0ad0b0383ee90bfcbd8
-ms.sourcegitcommit: 9ee0cbaf3a67f9c7442b79f5ae2e97a4dfc8227b
+ms.openlocfilehash: 1f19337aea8b39bbc8c7dc11fba683bee3c2955a
+ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "77109656"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203961"
 ---
-# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Rövid útmutató: Válasz beszerezése a tudásbázistól
+# <a name="quickstart-get-an-answer-from-knowledge-base"></a>Gyors útmutató: Válasz kérése a Tudásbázisból
 
 
 ::: zone pivot="url-test-tool-curl"
@@ -37,4 +37,4 @@ ms.locfileid: "77109656"
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Tudásbázis tesztelése kötegfájllal](batch-testing.md)
+> [Tudásbázis tesztelése a Batch-fájllal](batch-testing.md)

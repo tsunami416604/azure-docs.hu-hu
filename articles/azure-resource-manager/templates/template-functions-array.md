@@ -1,58 +1,56 @@
 ---
-title: Sablonfüggvények - tömbök és objektumok
-description: Ismerteti az Azure Resource Manager-sablonban a tömbök és objektumok használatához használandó függvényeket.
+title: Sablon functions – tömbök
+description: Ismerteti a Azure Resource Manager-sablonban a tömbök használatakor használandó függvényeket.
 ms.topic: conceptual
-ms.date: 07/31/2019
-ms.openlocfilehash: 0b4bb80f6d7a7cc20a8b2dcc71e890f2ada7c5be
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.date: 04/27/2020
+ms.openlocfilehash: f34ba74847ac394e37e6ef33f859304128daacde
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80156375"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203811"
 ---
-# <a name="array-and-object-functions-for-arm-templates"></a>Tömb- és objektumfüggvények ARM-sablonokhoz
+# <a name="array-functions-for-arm-templates"></a>ARM-sablonok tömb függvények
 
-A Resource Manager számos funkciót biztosít az Azure Resource Manager (ARM) sablontömbök és objektumok használatával való munkához.
+A Resource Manager számos funkciót biztosít a tömbök Azure Resource Manager (ARM) sablonban való használatához.
 
 * [tömb](#array)
-* [összeolvad](#coalesce)
-* [Concat](#concat)
-* [Tartalmaz](#contains)
+* [concat](#concat)
+* [tartalmaz](#contains)
 * [createArray](#createarray)
-* [Üres](#empty)
-* [Első](#first)
-* [Kereszteződés](#intersection)
-* [Json](#json)
-* [Utolsó](#last)
-* [Hossza](#length)
+* [üres](#empty)
+* [első](#first)
+* [kereszteződés](#intersection)
+* [utolsó](#last)
+* [hossza](#length)
 * [Max](#max)
-* [Min](#min)
-* [Tartomány](#range)
-* [Ugrál](#skip)
-* [venni](#take)
-* [Unió](#union)
+* [min](#min)
+* [tartomány](#range)
+* [kihagyása](#skip)
+* [eltarthat](#take)
+* [Union](#union)
 
-Ha egy értékkel határolt karakterlánc-értékektömbjét szeretné leválasztani, olvassa el a [Felosztás](template-functions-string.md#split).
+Ha egy értékkel tagolt karakterlánc-értékeket szeretne kapni, tekintse meg a következőt: [Split](template-functions-string.md#split).
 
 ## <a name="array"></a>tömb
 
 `array(convertToArray)`
 
-Az értéket tömbté alakítja.
+Az értéket egy tömbre konvertálja.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| convertToArray |Igen |int, string, array vagy object |Tömbté konvertálandó érték. |
+| convertToArray |Igen |int, string, Array vagy Object |Egy tömbre konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Egy tömb.
+Tömb.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/array.json) bemutatja, hogyan használhatja a tömbfüggvényt különböző típusokkal.
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/array.json) azt mutatja be, hogyan használható a Array függvény különböző típusokkal.
 
 ```json
 {
@@ -91,135 +89,36 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| intOutput | Tömb | [1] |
-| karakterlánckimenet | Tömb | ["efgh"] |
+| intOutput | Tömb | 1 |
+| stringOutput | Tömb | ["efgh"] |
 | objectOutput | Tömb | [{"a": "b", "c": "d"}] |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/array.json
-```
-
-## <a name="coalesce"></a>összeolvad
-
-`coalesce(arg1, arg2, arg3, ...)`
-
-Az első nem null értéket adja vissza a paraméterekből. Az üres karakterláncok, üres tömbök és üres objektumok nem null értékűek.
-
-### <a name="parameters"></a>Paraméterek
-
-| Paraméter | Kötelező | Típus | Leírás |
-|:--- |:--- |:--- |:--- |
-| arg1 |Igen |int, string, array vagy object |Null tesztelső értéke. |
-| további args |Nem |int, string, array vagy object |Null tesztet további értékek. |
-
-### <a name="return-value"></a>Visszatérítési érték
-
-Az első nem null paraméterek értéke, amelyek lehetnek karakterláncok, int, tömb vagy objektumok. Null, ha az összes paraméter null.
-
-### <a name="example"></a>Példa
-
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/coalesce.json) az egyesítés különböző felhasználási adatainak kimenetét mutatja be.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "objectToTest": {
-            "type": "object",
-            "defaultValue": {
-                "null1": null,
-                "null2": null,
-                "string": "default",
-                "int": 1,
-                "object": {"first": "default"},
-                "array": [1]
-            }
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "stringOutput": {
-            "type": "string",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').string)]"
-        },
-        "intOutput": {
-            "type": "int",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').int)]"
-        },
-        "objectOutput": {
-            "type": "object",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').object)]"
-        },
-        "arrayOutput": {
-            "type": "array",
-            "value": "[coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2, parameters('objectToTest').array)]"
-        },
-        "emptyOutput": {
-            "type": "bool",
-            "value": "[empty(coalesce(parameters('objectToTest').null1, parameters('objectToTest').null2))]"
-        }
-    }
-}
-```
-
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
-
-| Név | Típus | Érték |
-| ---- | ---- | ----- |
-| karakterlánckimenet | Sztring | alapértelmezett |
-| intOutput | Int | 1 |
-| objectOutput | Objektum | {"first": "alapértelmezett"} |
-| tömbkimenet | Tömb | [1] |
-| üreskimenet | Logikai | True (Igaz) |
-
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/coalesce.json
-```
-
-## <a name="concat"></a>Concat
+## <a name="concat"></a>concat
 
 `concat(arg1, arg2, arg3, ...)`
 
-Több tömböt egyesít, és az összefont tömböt adja vissza, vagy több karakterláncértéket egyesít, és az összefont karakterláncot adja vissza.
+Több tömböt egyesít, és visszaadja az összefűzött tömböt, vagy kombinálja a több sztringet, és visszaadja az összefűzött karakterláncot.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az összefűzés első tömbje vagy karakterlánca. |
-| további argumentumok |Nem |tömb vagy karakterlánc |További tömbök vagy karakterláncok egymás után egymás után. |
+| arg1 |Igen |tömb vagy karakterlánc |Az Összefűzés első tömbje vagy karakterlánca. |
+| További argumentumok |Nem |tömb vagy karakterlánc |További tömbök vagy karakterláncok egymást követő sorrendben az összefűzéshez. |
 
-Ez a függvény tetszőleges számú argumentumot vehet fel, és elfogadhatja a paraméterek karakterláncait vagy tömbjeit. Azonban nem adhat meg tömböket és karakterláncokat a paraméterekhez. A tömbök csak más tömbökkel vannak összefűzve.
+Ez a függvény tetszőleges számú argumentumot igénybe vehet, és a paraméterekhez karakterláncokat vagy tömböket is elfogadhat. A paraméterekhez azonban nem lehet tömböt és karakterláncot megadni. A tömbök csak más tömbökkel vannak összefűzve.
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Összefektett értékek karakterlánca vagy tömbje.
+Az összefűzött értékek karakterlánca vagy tömbje.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) bemutatja, hogyan kombinálható két tömb.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-array.json) bemutatja, hogyan egyesítheti két tömböt.
 
 ```json
 {
@@ -254,25 +153,13 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| Vissza | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
+| visszatérési | Tömb | ["1-1", "1-2", "1-3", "2-1", "2-2", "2-3"] |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-array.json
-```
-
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) bemutatja, hogyan egyesítheti a két karakterlánc-értéket, és hogyan ad vissza egy összefont karakterláncot.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/concat-string.json) bemutatja, hogyan egyesítheti a két karakterláncot, és hogyan adhat vissza összefűzött karakterláncot.
 
 ```json
 {
@@ -294,44 +181,32 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| concatOutput | Sztring | előtag-5yj4yjf5mbg72 |
-
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/concat-string.json
-```
+| concatOutput | Sztring | előtag – 5yj4yjf5mbg72 |
 
 ## <a name="contains"></a>tartalmazza a következőt:
 
 `contains(container, itemToFind)`
 
-Ellenőrzi, hogy egy tömb tartalmaz-e értéket, objektum tartalmaz-e kulcsot, vagy egy karakterlánc részkarakterláncot. A karakterlánc-összehasonlítás ban a kis- és nagybetűk et is figyelembe kell. Ha azonban egy objektum kulcstartalmat tesztel, az összehasonlítás nem imitot jelent.
+Ellenőrzi, hogy egy tömb tartalmaz-e értéket, egy objektum tartalmaz-e kulcsot, vagy egy karakterlánc tartalmaz-e alkarakterláncot. A karakterlánc-összehasonlítás megkülönbözteti a kis-és nagybetűket. Ha azonban egy objektum kulcsot tartalmaz, az összehasonlítás a kis-és nagybetűk megkülönböztetése nélkül történik.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| tároló |Igen |tömb, objektum vagy karakterlánc |A megkeresandó értéket tartalmazó érték. |
-| itemToFind között |Igen |karakterlánc vagy int |A megtalálandó érték. |
+| tároló |Igen |tömb, objektum vagy karakterlánc |A keresendő értéket tartalmazó érték. |
+| itemToFind |Igen |karakterlánc vagy int |A keresendő érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-**Igaz,** ha az elem megtalálható; ellenkező **esetben, Hamis**.
+**Igaz** , ha az adott tétel megtalálható; Ellenkező esetben **hamis**.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) bemutatja, hogyan használható a különböző típusú tartalmazók használata:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/contains.json) azt mutatja be, hogyan használható a különböző típusú tartalmaz:
 
 ```json
 {
@@ -382,49 +257,37 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| karakterláncIgaz | Logikai | True (Igaz) |
-| karakterláncFalse | Logikai | False (Hamis) |
-| objectTrue (objektumIgaz) | Logikai | True (Igaz) |
+| stringTrue | Logikai | True (Igaz) |
+| stringFalse | Logikai | False (Hamis) |
+| objectTrue | Logikai | True (Igaz) |
 | objectFalse | Logikai | False (Hamis) |
-| tömbIgaz | Logikai | True (Igaz) |
-| tömbFalse | Logikai | False (Hamis) |
+| arrayTrue | Logikai | True (Igaz) |
+| arrayFalse | Logikai | False (Hamis) |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/contains.json
-```
-
-## <a name="createarray"></a>létrehozás
+## <a name="createarray"></a>createarray
 
 `createArray (arg1, arg2, arg3, ...)`
 
-Tömböt hoz létre a paraméterekből.
+Létrehoz egy tömböt a paraméterekből.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |Karakterlánc, egész, tömb vagy objektum |A tömb első értéke. |
-| további argumentumok |Nem |Karakterlánc, egész, tömb vagy objektum |További értékek a tömbben. |
+| arg1 |Igen |Karakterlánc, egész szám, tömb vagy objektum |A tömb első értéke. |
+| További argumentumok |Nem |Karakterlánc, egész szám, tömb vagy objektum |További értékek a tömbben. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Egy tömb.
+Tömb.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/createarray.json) bemutatja, hogyan használható a createArray különböző típusokkal:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/createarray.json) azt mutatja be, hogyan használhatók a createArray különböző típusú típusokkal:
 
 ```json
 {
@@ -463,46 +326,34 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| karakterlánctömb | Tömb | ["a", "b", "c"] |
+| stringArray | Tömb | ["a", "b", "c"] |
 | intArray | Tömb | [1, 2, 3] |
-| objectArray | Tömb | [{"egy": "a", "kettő": "b", "három": "c"}] |
-| tömbtömb | Tömb | ["egy", "kettő", "három"]] |
-
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/createarray.json
-```
+| objectArray | Tömb | [{"One": "a", "Two": "b", "három": "c"}] |
+| arrayArray | Tömb | [["egy", "kettő", "három"]] |
 
 ## <a name="empty"></a>üres
 
 `empty(itemToTest)`
 
-Azt határozza meg, hogy egy tömb, objektum vagy karakterlánc üres-e.
+Meghatározza, hogy egy tömb, objektum vagy karakterlánc üres-e.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| itemToTest |Igen |tömb, objektum vagy karakterlánc |Annak ellenőrzése, hogy üres-e az érték. |
+| itemToTest |Igen |tömb, objektum vagy karakterlánc |Az az érték, amely alapján ellenőrizhető, hogy üres-e. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-**Igaz** értéket ad vissza, ha az érték üres; ellenkező **esetben, Hamis**.
+**Igaz** értéket ad vissza, ha az érték üres. Ellenkező esetben **hamis**.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) ellenőrzi, hogy egy tömb, objektum és karakterlánc üres-e.
+A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/empty.json) ellenőrzi, hogy egy tömb, objektum és karakterlánc üres-e.
 
 ```json
 {
@@ -541,45 +392,33 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayEmpty | Logikai | True (Igaz) |
 | objectEmpty | Logikai | True (Igaz) |
-| karakterláncÜres | Logikai | True (Igaz) |
+| stringEmpty | Logikai | True (Igaz) |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/empty.json
-```
-
-## <a name="first"></a>Első
+## <a name="first"></a>első
 
 `first(arg1)`
 
-A tömb első elemét vagy a karakterlánc első karakterét adja eredményül.
+A tömb első elemét vagy a karakterlánc első karakterét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az első elem vagy karakter beolvasásához. |
+| arg1 |Igen |tömb vagy karakterlánc |Az első elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-A tömb első elemének vagy a karakterlánc első karakterének a típusa (karakterlánc, int, tömb vagy objektum).
+Egy tömb első elemének típusa (karakterlánc, int, tömb vagy objektum) vagy egy karakterlánc első karaktere.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) bemutatja, hogyan használható az első függvény tömbbel és karakterlánccal.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/first.json) azt szemlélteti, hogyan használható az első függvény egy tömb és egy karakterlánc használatával.
 
 ```json
 {
@@ -606,46 +445,34 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| tömbkimenet | Sztring | egy |
-| karakterlánckimenet | Sztring | O |
+| arrayOutput | Sztring | egy |
+| stringOutput | Sztring | O |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
-```
-
-## <a name="intersection"></a>Kereszteződés
+## <a name="intersection"></a>kereszteződés
 
 `intersection(arg1, arg2, arg3, ...)`
 
-Egyetlen tömböt vagy objektumot ad eredményül a paraméterek közös elemeivel.
+Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek közös elemeit tartalmazza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |A közös elemek keresésére használt első érték. |
-| arg2 |Igen |tömb vagy objektum |A közös elemek kereséséhez használandó második érték. |
-| további argumentumok |Nem |tömb vagy objektum |A közös elemek kereséséhez használandó további értékek. |
+| arg1 |Igen |tömb vagy objektum |Az általános elemek kereséséhez használandó első érték. |
+| arg2 |Igen |tömb vagy objektum |A közös elemek kereséséhez használt második érték. |
+| További argumentumok |Nem |tömb vagy objektum |Az általános elemek kereséséhez használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Tömb vagy objektum a közös elemekkel.
+Egy tömb vagy objektum a közös elemekkel.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json) bemutatja, hogyan használható a metszéspont tömbökkel és objektumokkal:
+A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/intersection.json) azt mutatja be, hogyan használhatók az metszetek és objektumok együttes használata:
 
 ```json
 {
@@ -684,117 +511,32 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| objectOutput | Objektum | {"egy": "a", "három": "c"} |
-| tömbkimenet | Tömb | ["kettő", "három"] |
+| objectOutput | Objektum | {"One": "a", "három": "c"} |
+| arrayOutput | Tömb | ["kettő", "három"] |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/intersection.json
-```
-
-## <a name="json"></a>json
-
-`json(arg1)`
-
-JSON-objektumot ad eredményül.
-
-### <a name="parameters"></a>Paraméterek
-
-| Paraméter | Kötelező | Típus | Leírás |
-|:--- |:--- |:--- |:--- |
-| arg1 |Igen |sztring |A JSON-ra konvertálandó érték. |
-
-### <a name="return-value"></a>Visszatérítési érték
-
-A json-objektum a megadott karakterláncból, vagy egy üres objektum, ha **null** érték van megadva.
-
-### <a name="remarks"></a>Megjegyzések
-
-Ha paraméterértéket vagy változót kell megadnia a JSON-objektumban, a [concat](template-functions-string.md#concat) függvénnyel hozza létre a függvénynek átadott karakterláncot.
-
-### <a name="example"></a>Példa
-
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) bemutatja, hogyan használható a json függvény tömbökkel és objektumokkal:
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "testValue": {
-            "type": "string",
-            "defaultValue": "demo value"
-        }
-    },
-    "resources": [
-    ],
-    "outputs": {
-        "jsonOutput": {
-            "type": "object",
-            "value": "[json('{\"a\": \"b\"}')]"
-        },
-        "nullOutput": {
-            "type": "bool",
-            "value": "[empty(json('null'))]"
-        },
-        "paramOutput": {
-            "type": "object",
-            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
-        }
-    }
-}
-```
-
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
-
-| Név | Típus | Érték |
-| ---- | ---- | ----- |
-| jsonKimenet | Objektum | {"a": "b"} |
-| nullOutput | Logikai | True (Igaz) |
-| paramKimenet | Objektum | {"a": "demo érték"}
-
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/json.json
-```
-
-## <a name="last"></a>Utolsó
+## <a name="last"></a>utolsó
 
 `last (arg1)`
 
-A tömb utolsó elemét vagy a karakterlánc utolsó karakterét adja eredményül.
+A tömb utolsó elemét vagy a karakterlánc utolsó karakterét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasásához. |
+| arg1 |Igen |tömb vagy karakterlánc |Az utolsó elem vagy karakter beolvasására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-A tömb utolsó elemének vagy egy karakterlánc utolsó karakterének típusa (karakterlánc, int, tömb vagy objektum).
+Egy tömb utolsó elemének típusa (karakterlánc, int, tömb vagy objektum) vagy egy karakterlánc utolsó karaktere.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) bemutatja, hogyan használható az utolsó függvény tömbbel és karakterlánccal.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/last.json) azt szemlélteti, hogyan használható az utolsó függvény egy tömb és egy karakterlánc használatával.
 
 ```json
 {
@@ -821,36 +563,24 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| tömbkimenet | Sztring | Három |
-| karakterlánckimenet | Sztring | e |
-
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/last.json
-```
+| arrayOutput | Sztring | három |
+| stringOutput | Sztring | e |
 
 ## <a name="length"></a>hossz
 
 `length(arg1)`
 
-Egy tömb elemeinek, egy karakterlánc karaktereinek vagy egy objektum gyökérszintű tulajdonságainak számát adja eredményül.
+Egy tömbben lévő elemek számát, egy karakterláncban szereplő karaktereket vagy egy objektum gyökérszintű tulajdonságait adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának, a karakterek számának lekérő karakterláncnak vagy a gyökérszintű tulajdonságok számának beszerzéséhez használandó objektumnak a lekérnie szükséges tömb. |
+| arg1 |Igen |tömb, karakterlánc vagy objektum |Az elemek számának beolvasásához használandó tömb, a karakterek számának beolvasásához használandó karakterlánc, vagy a gyökérszintű tulajdonságok számának beolvasásához használandó objektum. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -858,7 +588,7 @@ Egy int.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) bemutatja, hogyan használható a hossz tömbökkel és karakterláncokkal:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/length.json) azt szemlélteti, hogyan használható a hossz egy tömb és egy karakterlánc használatával:
 
 ```json
 {
@@ -908,27 +638,15 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| tömbhossz | Int | 3 |
-| karakterlánchossz | Int | 13 |
-| objectLength (objektumhossza) | Int | 4 |
+| arrayLength | Int | 3 |
+| stringLength | Int | 13 |
+| objectLength | Int | 4 |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/length.json
-```
-
-Ezt a függvényt tömbbel együtt használhatja az ismétlések számának megadására az erőforrások létrehozásakor. A következő példában a **siteNames** paraméter a webhelyek létrehozásakor használandó nevek tömbjére hivatkozik.
+A függvényt egy tömb használatával adhatja meg az erőforrások létrehozásakor megjelenő ismétlések számát. A következő példában a **siteNames** paraméter a webhelyek létrehozásakor használandó nevek sorára hivatkozik.
 
 ```json
 "copy": {
@@ -937,27 +655,27 @@ Ezt a függvényt tömbbel együtt használhatja az ismétlések számának mega
 }
 ```
 
-A függvény tömbökkel való használatáról az [Erőforrások több példányának létrehozása az Azure Resource Manager ben című témakörben](copy-resources.md)talál további információt.
+További információ a függvény tömbhöz való használatáról: [több erőforrás-példány létrehozása Azure Resource Managerban](copy-resources.md).
 
 ## <a name="max"></a>Max
 
 `max(arg1)`
 
-Az egész számok tömbjéből vagy egy vesszővel tagolt egész számból álló tömbből származó maximális értéket adja eredményül.
+A maximális értéket adja vissza egész számok tömbje vagy az egész számok vesszővel tagolt listája alapján.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész számok tömbje, vagy vesszővel tagolt egész számok listája |A gyűjtemény a maximális érték bekerüléséhez. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-A maximális értéket képviselő int.
+A maximális értéket jelölő int.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) bemutatja, hogyan használható a max.
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/max.json) azt szemlélteti, hogyan használható a Max egy tömbvel és egy egész számokból álló listával:
 
 ```json
 {
@@ -983,44 +701,32 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| tömbkimenet | Int | 5 |
+| arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
-
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/max.json
-```
 
 ## <a name="min"></a>p
 
 `min(arg1)`
 
-A minimális értéket egész számokból vagy vesszővel tagolt egész számokból származó értéket adja eredményül.
+A minimális értéket adja vissza egész számok tömbje vagy az egész számok vesszővel tagolt listája alapján.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |egész számok tömbje, vagy vesszővel tagolt egész számok listája |A gyűjtemény a minimális érték begyűjtéséhez. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-A minimális értéket képviselő int.
+A minimális értéket jelölő int.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) bemutatja, hogyan használható a min tömbhöz és egész számok listájához:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/min.json) azt szemlélteti, hogyan használható a min egy tömbvel és egy egész számokból álló listával:
 
 ```json
 {
@@ -1046,45 +752,33 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| tömbkimenet | Int | 0 |
+| arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/min.json
-```
-
-## <a name="range"></a>Tartomány
+## <a name="range"></a>tartomány
 
 `range(startIndex, count)`
 
-Kezdő egész számból származó egész tömböt hoz létre, amely több elemet tartalmaz.
+Egész számok tömbjét hozza létre egy kezdő egész számból, és több elemet tartalmaz.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| startIndex |Igen |int |A tömb első egész száma. A startIndex és a darabszám összege nem lehet nagyobb, mint 2147483647. |
-| count |Igen |int |Az egész számok száma a tömbben. 10000-ig nem negatív egész számnak kell lennie. |
+| startIndex |Igen |int |A tömb első egésze. A startIndex és a darabszám összege nem lehet nagyobb, mint 2147483647. |
+| count |Igen |int |A tömbben lévő egész számok száma. Legfeljebb 10000-ig nem negatív egész számnak kell lennie. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
-Egész számok bólika.
+Egész számok tömbje.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/range.json) bemutatja a tartományfüggvény használatát:
+A következő [példában látható sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/range.json) a tartomány függvény használatát mutatja be:
 
 ```json
 {
@@ -1110,36 +804,24 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
 | rangeOutput | Tömb | [5, 6, 7] |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/range.json
-```
-
-## <a name="skip"></a>Ugrál
+## <a name="skip"></a>kihagyása
 
 `skip(originalValue, numberToSkip)`
 
-Egy tömböt ad vissza az összes elemet a megadott szám után a tömbben, vagy egy karakterláncot ad vissza az összes karakterrel a megadott szám után a karakterláncban.
+Egy tömböt ad vissza az összes elemmel a tömbben megadott szám után, vagy egy karakterláncot ad vissza, amely az összes karaktert tartalmazza a karakterláncban megadott szám után.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue (eredeti érték) |Igen |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
-| számKiugrás |Igen |int |Az áthagyandó elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az érték összes elemét vagy karakterét visszaadja a rendszer. Ha nagyobb, mint a tömb vagy karakterlánc hossza, a rendszer üres tömböt vagy karakterláncot ad vissza. |
+| originalValue |Igen |tömb vagy karakterlánc |A kihagyáshoz használandó tömb vagy karakterlánc. |
+| numberToSkip |Igen |int |A kihagyni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, az értékben szereplő összes elemet vagy karaktert adja vissza a rendszer. Ha a tömb vagy a karakterlánc hossza nagyobb, akkor a rendszer üres tömböt vagy karakterláncot ad vissza. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1147,7 +829,7 @@ Tömb vagy karakterlánc.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) kihagyja a tömbben megadott számú elemet és a karakterláncban megadott számú karaktert.
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/skip.json) kihagyja a tömbben megadott számú elemet és a megadott számú karaktert egy karakterláncban.
 
 ```json
 {
@@ -1189,37 +871,25 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| tömbkimenet | Tömb | ["három"] |
-| karakterlánckimenet | Sztring | két három |
+| arrayOutput | Tömb | ["három"] |
+| stringOutput | Sztring | 2 3 |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/skip.json
-```
-
-## <a name="take"></a>venni
+## <a name="take"></a>eltarthat
 
 `take(originalValue, numberToTake)`
 
-Egy tömböt ad vissza a megadott számú elemből a tömb elejétől, vagy egy karakterláncot, amelynek a karakterlánc elejétől a megadott számú karaktere van.
+Egy tömböt ad vissza a megadott számú elemmel a tömb elejétől, vagy egy olyan karakterláncot, amely a karakterlánc elejétől megadott számú karakterből áll.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| originalValue (eredeti érték) |Igen |tömb vagy karakterlánc |Az a tömb vagy karakterlánc, amelyből az elemeket ki kell venni. |
-| számTake |Igen |int |A figyelembe vethet elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, a függvény üres tömböt vagy karakterláncot ad vissza. Ha nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét visszaadja. |
+| originalValue |Igen |tömb vagy karakterlánc |Az elemeket tartalmazó tömb vagy karakterlánc. |
+| numberToTake |Igen |int |A felvenni kívánt elemek vagy karakterek száma. Ha ez az érték 0 vagy kevesebb, üres tömböt vagy karakterláncot ad vissza. Ha az érték nagyobb, mint a megadott tömb vagy karakterlánc hossza, a rendszer a tömb vagy karakterlánc összes elemét adja vissza. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1227,7 +897,7 @@ Tömb vagy karakterlánc.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) a megadott számú elemet veszi fel a tömbből, és karaktereket egy karakterláncból.
+A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/take.json) a tömbben szereplő elemek számát és a karakterláncok karaktereit veszi figyelembe.
 
 ```json
 {
@@ -1269,38 +939,26 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| tömbkimenet | Tömb | ["egy", "kettő"] |
-| karakterlánckimenet | Sztring | itt: |
+| arrayOutput | Tömb | ["egy", "Two"] |
+| stringOutput | Sztring | itt: |
 
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/take.json
-```
-
-## <a name="union"></a>Unió
+## <a name="union"></a>Union
 
 `union(arg1, arg2, arg3, ...)`
 
-Egyetlen tömböt vagy objektumot ad eredményül a paraméterek összes elemével. Az ismétlődő értékek vagy kulcsok csak egyszer szerepelnek.
+Egyetlen tömböt vagy objektumot ad vissza, amely a paraméterek összes elemét tartalmazza. Ismétlődő értékek vagy kulcsok csak egyszer szerepelnek.
 
 ### <a name="parameters"></a>Paraméterek
 
 | Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Igen |tömb vagy objektum |Az elemek illesztéséhez használt első érték. |
-| arg2 |Igen |tömb vagy objektum |Az elemek illesztéséhez használandó második érték. |
-| további argumentumok |Nem |tömb vagy objektum |Az elemek illesztéséhez használandó további értékek. |
+| arg1 |Igen |tömb vagy objektum |Az elemek csatlakoztatásának első értéke. |
+| arg2 |Igen |tömb vagy objektum |Az elemek csatlakoztatásához használt második érték. |
+| További argumentumok |Nem |tömb vagy objektum |Az elemekhez való csatlakozáshoz használandó további értékek. |
 
 ### <a name="return-value"></a>Visszatérítési érték
 
@@ -1308,7 +966,7 @@ Tömb vagy objektum.
 
 ### <a name="example"></a>Példa
 
-A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json) bemutatja, hogyan használható az egyesítés tömbökkel és objektumokkal:
+Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/union.json) azt mutatja be, hogyan használható a Union a tömbökkel és objektumokkal:
 
 ```json
 {
@@ -1347,29 +1005,13 @@ A következő [példasablon](https://github.com/Azure/azure-docs-json-samples/bl
 }
 ```
 
-Az előző példa kimenete az alapértelmezett értékekkel a következő:
+Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Típus | Érték |
+| Name (Név) | Típus | Érték |
 | ---- | ---- | ----- |
-| objectOutput | Objektum | {"egy": "a", "kettő": "b", "három": "c2", "négy": "d", "öt": "e"} |
-| tömbkimenet | Tömb | ["egy", "kettő", "három", "négy"] |
-
-Ha ezt a példasablont az Azure CLI-vel szeretné telepíteni, használja a következőket:
-
-```azurecli-interactive
-az deployment group create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
-```
-
-Ha ezt a példasablont a PowerShell használatával szeretné telepíteni, használja a következőket:
-
-```azurepowershell-interactive
-New-AzResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/union.json
-```
+| objectOutput | Objektum | {"One": "a", "kettő": "b", "három": "C2", "Four": "d", "öt": "e"} |
+| arrayOutput | Tömb | ["egy", "kettő", "három", "négy"] |
 
 ## <a name="next-steps"></a>További lépések
 
-* Az Azure Resource Manager-sablon szakaszainak leírását az [Azure Resource Manager-sablonok készítése című témakörben találja.](template-syntax.md)
-* Több sablon egyesítéséhez olvassa el [a Csatolt sablonok használata az Azure Resource Manager rel.](linked-templates.md)
-* Ha egy erőforrástípus létrehozásakor meghatározott számú alkalommal szeretne meghaladni, olvassa [el az Erőforrások több példányának létrehozása az Azure Resource Manager ben című témakört.](copy-resources.md)
-* A létrehozott sablon központi telepítéséről az Alkalmazás üzembe helyezése az [Azure Resource Manager sablonnal című témakörben](deploy-powershell.md)olvashat.
-
+* Egy Azure Resource Manager sablonban található részekről az [ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető cikk nyújt tájékoztatást.

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/23/2020
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a816f2235fa5356f2300255ec9d2fb2b315acf7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 0fa43eae906c918cad940b8f5efafeea07020098
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190316"
+ms.locfileid: "82201635"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -458,11 +458,11 @@ Ebben a lépésben kapcsolatot létesít a munkanapokkal, és Active Directory a
 
    * **Munkanap jelszava –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
-   * A **munkanap Web Services API URL-címe –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen https://wd3-impl-services1.workday.com/ccx/service/contoso4kell kinéznie:, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül.
+   * A **munkanap Web Services API URL-címe –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen `https://wd3-impl-services1.workday.com/ccx/service/contoso4`kell kinéznie:, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül.
 
      > [!NOTE]
      > Alapértelmezés szerint az alkalmazás a munkanap webszolgáltatások (WWS) v 21.1 verzióját használja, ha az URL-címben nincs megadva a verzióra vonatkozó információ. Ha egy adott WWS API-verziót szeretne használni, használja az URL-formátumot:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Például: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0 <br>
+     > Például: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0` <br>
      
      > [!NOTE]
      > Ha WWS API v 30.0-t és újabb verziókat használ a kiépítési feladatok bekapcsolása előtt, frissítse az **XPath API-kifejezéseket** az **attribútumok leképezése – > speciális beállítások – >** a konfiguráció és a [munkanap attribútumának](../app-provisioning/workday-attribute-reference.md#xpath-values-for-workday-web-services-wws-api-v30) [kezelése](#managing-your-configuration) szakaszra hivatkozó munkanapokhoz tartozó attribútumok listájának szerkesztése lehetőséget.  
@@ -621,11 +621,11 @@ A következő szakaszok ismertetik a felhasználók kiépítésének a munkahely
 
    * **Munkanap jelszava –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
-   * A **munkanap Web Services API URL-címe –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen https://wd3-impl-services1.workday.com/ccx/service/contoso4kell kinéznie:, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül. Ha ez az URL-cím nem ismert, használja a munkanap integrációs partnerét vagy a támogatási képviselőt a megfelelő URL-cím meghatározásához.
+   * A **munkanap Web Services API URL-címe –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen `https://wd3-impl-services1.workday.com/ccx/service/contoso4`kell kinéznie:, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül. Ha ez az URL-cím nem ismert, használja a munkanap integrációs partnerét vagy a támogatási képviselőt a megfelelő URL-cím meghatározásához.
 
      > [!NOTE]
      > Alapértelmezés szerint az alkalmazás a munkanap webszolgáltatások v 21.1 verzióját használja, ha az URL-címben nincs megadva a verzióra vonatkozó információ. Ha egy adott munkanap webszolgáltatási API-verziót szeretne használni, használja az URL-formátumot:https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# <br>
-     > Például: https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0
+     > Például: `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources/v31.0`
 
 
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
@@ -723,7 +723,7 @@ Kövesse ezeket az utasításokat a felhasználói e-mail-címek és felhasznál
 
    * **Rendszergazdai jelszó –** Adja meg a munkanap-integrációs rendszerfiók jelszavát
 
-   * **Bérlői URL-cím –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resourceskell kinéznie:, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül (ha szükséges).
+   * **Bérlői URL-cím –** Adja meg a bérlőhöz tartozó munkanap webszolgáltatások végpontjának URL-címét. Ennek az értéknek a következőképpen `https://wd3-impl-services1.workday.com/ccx/service/contoso4/Human_Resources`kell kinéznie:, ahol a *contoso4* helyére a megfelelő bérlő nevét kell cserélni, és a *wd3-Impl* helyére a megfelelő környezeti karakterlánc kerül (ha szükséges).
 
    * **Értesítő e-mail –** Adja meg az e-mail-címét, és jelölje be az "e-mail küldése, ha hiba történik" jelölőnégyzetet.
 

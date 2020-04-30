@@ -1,35 +1,29 @@
 ---
-title: Hozzon létre egy privát fürtaz Azure Red Hat OpenShift 3.11 | Microsoft dokumentumok
-description: Privát fürt létrehozása az Azure Red Hat OpenShift 3.11-es sel
+title: Privát fürt létrehozása az Azure Red Hat OpenShift 3,11-mel | Microsoft Docs
+description: Privát fürt létrehozása az Azure Red Hat OpenShift 3,11
 author: sakthi-vetrivel
 ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/02/2020
-keywords: aro, openshift, privát klaszter, piros kalap
-ms.openlocfilehash: b34b5d622527742447847102526eba9ee6ca220d
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+keywords: ARO, openshift, privát fürt, Red Hat
+ms.openlocfilehash: f4ce6c79fa9fe6d05fdea4b877a8aa7faf404a9b
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "78399418"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204168"
 ---
-# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Privát fürt létrehozása az Azure Red Hat OpenShift 3.11-es sel
+# <a name="create-a-private-cluster-with-azure-red-hat-openshift-311"></a>Privát fürt létrehozása az Azure Red Hat OpenShift 3,11
 
-> [!IMPORTANT]
-> Az Azure Red Hat OpenShift (ARO) privát fürtök jelenleg csak privát előzetes verzióban érhetők el az USA keleti részén 2. A privát előnézet elfogadása csak meghívással történik. A funkció engedélyezése előtt regisztrálja az előfizetést.
+A privát fürtök a következő előnyöket nyújtják:
 
-A privát fürtök a következő előnyöket biztosítják:
-
-* A privát fürtök nem teszik elérhetővé a fürtvezérlő sík összetevőit (például az API-kiszolgálókat) egy nyilvános IP-címen.
-* A privát fürt virtuális hálózatát az ügyfelek konfigurálhatják, így a hálózatkezelés lehetővé teszi a más virtuális hálózatokkal való társviszony-létesítést, beleértve az ExpressRoute-környezeteket is. A virtuális hálózaton beállíthatja az egyéni DNS-t is, hogy integrálódjon a belső szolgáltatásokkal.
+* A privát fürtök nem teszik elérhetővé a fürtök vezérlési síkjainak összetevőit (például az API-kiszolgálókat) egy nyilvános IP-címen.
+* A privát fürtök virtuális hálózata az ügyfelek által konfigurálható, így a hálózatkezelést úgy állíthatja be, hogy engedélyezze a többi virtuális hálózattal való társítást, beleértve a ExpressRoute-környezeteket is. A belső szolgáltatásokkal való integrációhoz egyéni DNS-t is beállíthat a virtuális hálózaton.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-> [!NOTE]
-> Ehhez a funkcióhoz az ARO HTTP API 2019-10-27-preview verziója szükséges. Az Azure CLI még nem támogatott.
-
-A következő konfigurációs kódrészlet mezői újak, és szerepelniük kell a fürtkonfigurációban. `managementSubnetCidr`a fürt virtuális hálózatán belül kell lennie, és az Azure a fürt kezeléséhez használja.
+A következő konfigurációs kódrészlet mezői újEK, és szerepelniük kell a fürt konfigurációjában. `managementSubnetCidr`a fürt virtuális hálózatán belül kell lennie, és az Azure a fürt kezelésére szolgál.
 
 ```json
 properties:
@@ -40,22 +34,22 @@ properties:
      privateApiServer: true
 ```
 
-A magánfürt az alábbi mintaparancsfájlok használatával telepíthető. A fürt telepítése után hajtsa végre a `cluster get` parancsot, és tekintse meg a `properties.FQDN` tulajdonságot az OpenShift API-kiszolgáló privát IP-címének meghatározásához.
+Egy privát fürt üzembe helyezhető az alábbi minta-szkriptek használatával. A fürt üzembe helyezését követően hajtsa végre `cluster get` a parancsot, és `properties.FQDN` tekintse meg a TULAJDONSÁGOT a OpenShift API-kiszolgáló magánhálózati IP-címének meghatározásához.
 
-A fürt virtuális hálózata engedélyekkel lett létrehozva, így módosítható. Ezután beállíthatja a hálózati hozzáférést a virtuális hálózat (ExpressRoute, VPN, virtuális hálózati társviszony-létesítés) az igényeinek megfelelően.
+A fürt virtuális hálózata engedélyekkel lett létrehozva, hogy módosítható legyen. Ezután beállíthatja a hálózatkezelést a virtuális hálózat (ExpressRoute, VPN, virtuális hálózati társítás) eléréséhez az igényeinek megfelelően.
 
-Ha módosítja a DNS-névkiszolgálók a fürt virtuális hálózaton, akkor meg `properties.RefreshCluster` kell kiadnia egy frissítést a fürta tulajdonság `true` beállítása, hogy a virtuális gépek lehet újralemásolni. Ez a frissítés lehetővé teszi számukra, hogy felvegyék az új névkiszolgálókat.
+Ha megváltoztatja a DNS-kiszolgálókat a fürt virtuális hálózatán, akkor egy frissítést kell kiállítania a fürtön a `properties.RefreshCluster` tulajdonság beállításával `true` , hogy a virtuális gépek rendszerképét el lehessen végezni. Ez a frissítés lehetővé teszi az új névszerverek felvételét.
 
-## <a name="sample-configuration-scripts"></a>Minta konfigurációs parancsfájlok
+## <a name="sample-configuration-scripts"></a>Példa konfigurációs parancsfájlok
 
-Az ebben a szakaszban található mintaparancsfájlok segítségével állítsa be és telepítse a saját fürtöt.
+Az ebben a szakaszban található minta szkriptekkel beállíthatja és telepítheti a privát fürtöt.
 
 ### <a name="environment"></a>Környezet
 
-Töltse ki az alábbi környezeti változókat a saját értékei használatával.
+Adja meg az alábbi környezeti változókat a saját értékek alapján.
 
 > [!NOTE]
-> A helyet be `eastus2` kell állítani, mivel jelenleg ez a magánfürtök egyetlen támogatott helye.
+> A helyet úgy kell beállítani, `eastus2` hogy jelenleg ez az egyetlen támogatott hely a privát fürtök számára.
 
 ``` bash
 export CLUSTER_NAME=
@@ -68,9 +62,9 @@ export CLIENT_ID=
 export SECRET=
 ```
 
-### <a name="private-clusterjson"></a>privát-cluster.json
+### <a name="private-clusterjson"></a>Private-cluster. JSON
 
-A fent meghatározott környezeti változók használatával az alábbiakban egy mintafürt-konfiguráció látható, amelyen engedélyezve van a saját fürt.
+A fent definiált környezeti változók használatával az alábbi példa egy fürtre épülő fürtözött konfigurációt engedélyez a privát fürtön.
 
 ```json
 {
@@ -133,9 +127,9 @@ A fent meghatározott környezeti változók használatával az alábbiakban egy
 }
 ```
 
-## <a name="deploy-a-private-cluster"></a>Privát fürt telepítése
+## <a name="deploy-a-private-cluster"></a>Privát fürt üzembe helyezése
 
-Miután konfigurálta a privát fürtöt a fenti mintaparancsfájlokkal, futtassa a következő parancsot a saját fürt központi telepítéséhez.
+Miután konfigurálta a privát fürtöt a fenti minta-parancsfájlokkal, futtassa a következő parancsot a privát fürt üzembe helyezéséhez.
 
 ``` bash
 az group create --name $CLUSTER_NAME --location $LOCATION
@@ -147,4 +141,4 @@ cat private-cluster.json | envsubst | curl -v -X PUT \
 
 ## <a name="next-steps"></a>További lépések
 
-Az OpenShift konzol eléréséről a [Webkonzol forgatókönyve című témakörben olvashat.](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html)
+További információ a OpenShift-konzol eléréséről: [webkonzol – útmutató](https://docs.openshift.com/container-platform/3.11/getting_started/developers_console.html).

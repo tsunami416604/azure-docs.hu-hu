@@ -1,60 +1,60 @@
 ---
-title: Microsoft-hitelesítés konfigurálása
-description: Ismerje meg, hogyan konfigurálhatja a Microsoft-fiók hitelesítését identitásszolgáltatóként az App Service vagy az Azure Functions alkalmazáshoz.
+title: A Microsoft-hitelesítés konfigurálása
+description: Ismerje meg, hogyan konfigurálhatja a Microsoft-fiók hitelesítését a App Service vagy Azure Functions alkalmazás identitás-szolgáltatójának.
 ms.assetid: ffbc6064-edf6-474d-971c-695598fd08bf
 ms.topic: article
 ms.date: 08/08/2019
 ms.custom:
 - seodec18
 - fasttrack-edit
-ms.openlocfilehash: a78208ba592f86400e9b06b15d8a76923dda736f
-ms.sourcegitcommit: b0ff9c9d760a0426fd1226b909ab943e13ade330
+ms.openlocfilehash: 6fe0e39584cbaa001e11f712bb2f60b45dba6914
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80519888"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82203488"
 ---
-# <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>Az App Service vagy az Azure Functions alkalmazás konfigurálása a Microsoft-fiók bejelentkezéséhez
+# <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
 
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
 
-Ez a témakör bemutatja, hogyan konfigurálhatja az Azure App Service vagy az Azure Functions az AAD használatával a személyes Microsoft-fiók bejelentkezések.
+Ebből a témakörből megtudhatja, hogyan konfigurálhatja Azure App Service vagy Azure Functions a személyes Microsoft-fiók bejelentkezések támogatásához a HRE használatával.
 
 > [!NOTE]
-> Mind a személyes Microsoft-fiókok, mind a szervezeti fiókok az AAD-identitásszolgáltatót használják. Jelenleg nem lehet beállítani ezt az identitásszolgáltatót mindkét típusú bejelentkezéstámogatására.
+> A személyes Microsoft-fiókok és a szervezeti fiókok egyaránt a HRE identitás-szolgáltatót használják. Jelenleg nem lehet konfigurálni ezt az identitás-szolgáltatót mindkét típusú bejelentkezés támogatásához.
 
-## <a name="register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"> </a>Az alkalmazás regisztrálása a Microsoft-fiókkal
+## <a name="register-your-app-with-microsoft-account"></a><a name="register-microsoft-account"> </a>Alkalmazás regisztrálása a Microsoft-fiókkal
 
-1. Nyissa meg [**az alkalmazásregisztrációkat**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) az Azure Portalon. Ha szükséges, jelentkezzen be Microsoft-fiókjával.
-1. Válassza **az Új regisztráció**lehetőséget, majd adjon meg egy alkalmazásnevet.
-1. A **Támogatott fióktípusok**csoportban válassza a **Fiókok lehetőséget bármely szervezeti címtárban (Bármilyen Azure AD-címtárban – többbérlős) és személyes Microsoft-fiókokban (pl. Skype, Xbox)**
-1. Az **Irányított URI-k átirányítása** `https://<app-domain-name>/.auth/login/aad/callback`csoportban válassza a **Web**lehetőséget, majd írja be a parancsot. Cserélje le * \<az alkalmazástartomány-név>* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ügyeljen arra, hogy használja a HTTPS-séma az URL-ben.
+1. Lépjen [**Alkalmazásregisztrációk**](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) a Azure Portal. Ha szükséges, jelentkezzen be a Microsoft-fiók.
+1. Válassza az **új regisztráció**lehetőséget, majd adja meg az alkalmazás nevét.
+1. A **támogatott fióktípus**területen válassza a **fiókok bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő) és a személyes Microsoft-fiókok (például Skype, Xbox) lehetőséget.**
+1. Az **átirányítási URI**-k területen válassza a web `https://<app-domain-name>/.auth/login/aad/callback`lehetőséget, majd írja be a **következőt**:. Cserélje le * \<az App-domain-name>nevet* az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
 
 1. Kattintson a **Register** (Regisztrálás) elemre.
 1. Másolja az **alkalmazás (ügyfél) azonosítóját**. Erre később még szüksége lesz.
-1. A bal oldali ablaktáblában válassza **a Tanúsítványok & titkos kulcsok** > **Új ügyféltitok**lehetőséget. Adjon meg egy leírást, válassza ki az érvényesség időtartamát, és válassza a **Hozzáadás**lehetőséget.
-1. Másolja a **másoláshoz** a Tanúsítványok & titkos kulcsok lapon megjelenő értéket. Miután elhagyta az oldalt, az nem jelenik meg újra.
+1. A bal oldali panelen válassza a **tanúsítványok & titkos kulcsok** > **új ügyfél titka**lehetőséget. Adja meg a leírást, válassza ki az érvényesség időtartamát, és válassza a **Hozzáadás**lehetőséget.
+1. Másolja a **tanúsítványok & titkok** lapon megjelenő értéket. Miután elhagyta a lapot, nem jelenik meg újra.
 
     > [!IMPORTANT]
-    > Az ügyféltitkos érték (jelszó) fontos biztonsági hitelesítő adat. Ne ossza meg a jelszót senkivel, és ne terjessze egy ügyfélalkalmazáson belül.
+    > Az ügyfél titkos értéke (jelszó) fontos biztonsági hitelesítő adat. Ne ossza meg senkivel a jelszót, vagy küldje el azt egy ügyfélalkalmazáson belül.
 
-## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Microsoft-fiókadatok hozzáadása az App Service-alkalmazáshoz
+## <a name="add-microsoft-account-information-to-your-app-service-application"></a><a name="secrets"> </a>Microsoft-fiókadatok hozzáadása a app Service-alkalmazáshoz
 
-1. Nyissa meg az alkalmazást az [Azure Portalon.]
-1. Válassza a **Beállítások** > **hitelesítése / engedélyezés**lehetőséget, és győződjön meg arról, hogy az **App Service-hitelesítés** be van **kapcsolva.**
-1. A **Hitelesítésszolgáltatók csoportban**válassza az **Azure Active Directory**lehetőséget. Válassza **a Speciális** lehetőséget a Felügyeleti **módban.** Illessze be az alkalmazás (ügyfél) azonosítóját és a korábban beszerzett ügyféltitkos kulcsot. A **https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0** **Kiállító url-cím** mezőjéhez használja.
-1. Válassza **az OK gombot.**
+1. Nyissa meg az alkalmazást a [Azure Portalban].
+1. Válassza a **Beállítások** > **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
+1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget. Válassza **Advanced** a speciális **felügyeleti mód**lehetőséget. Illessze be a korábban beszerzett alkalmazás (ügyfél) AZONOSÍTÓját és az ügyfél titkos kulcsát. A **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** **kiállítói URL-cím** mezőhöz használható.
+1. Kattintson az **OK** gombra.
 
-   Az App Service hitelesítést biztosít, de nem korlátozza az engedélyezett hozzáférést a webhely tartalmához és API-ihoz. Az alkalmazáskódban engedélyeznie kell a felhasználókat.
+   App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában.
 
-1. (Nem kötelező) A Microsoft-fiók felhasználóihoz való hozzáférés korlátozásához állítsa be a **Művelet et, ha a kérelem nincs hitelesítve az** **Azure Active Directoryval való bejelentkezéshez.** Ha ezt a funkciót állítja be, az alkalmazás minden kérelem hitelesítését igényli. Emellett átirányítja az összes nem hitelesített kérelmet az AAD hitelesítéshez való használatára. Ne feledje, hogy mivel a **kiállító url-címét** a Microsoft-fiók bérlőjének használatára állította be, csak a személyes acccounts sikeresen hitelesíti magát.
+1. Választható A Microsoft-fiók felhasználókhoz való hozzáférés korlátozásához állítsa be a **műveletet, ha a kérelem nem hitelesítve van** a **Azure Active Directoryval való bejelentkezéshez**. Ha beállítja ezt a funkciót, az alkalmazásnak minden kérelmet hitelesítenie kell. Emellett az összes nem hitelesített kérelmet is átirányítja a HRE használatára a hitelesítéshez. Vegye figyelembe, hogy mivel a **kiállítói URL-címet** a Microsoft-fiók bérlő használatára konfigurálta, a rendszer csak a személyes acccounts hitelesíti.
 
    > [!CAUTION]
-   > A hozzáférés ily módon történő korlátozása az alkalmazás minden hívására vonatkozik, ami nem feltétlenül kívánatos a nyilvánosan elérhető kezdőlappal rendelkező alkalmazások esetében, mint sok egyoldalas alkalmazásban. Az ilyen alkalmazások esetében **előfordulhat, hogy a névtelen kérelmek engedélyezése (nincs művelet)** előnyben részesíthető, így az alkalmazás manuálisan indítja el magát a hitelesítést. További információt a [Hitelesítési folyamat című témakörben talál.](overview-authentication-authorization.md#authentication-flow)
+   > A hozzáférés ily módon való korlátozása az alkalmazás összes hívására vonatkozik, ami nem kívánatos olyan alkalmazások esetében, amelyek nyilvánosan elérhető kezdőlaptal rendelkeznek, mint sok egyoldalas alkalmazásban. Ilyen alkalmazások esetén **engedélyezze a névtelen kérelmeket (nincs művelet)** előnyben részesített, hogy az alkalmazás manuálisan megkezdse a hitelesítést. További információ: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow).
 
 1. Kattintson a **Mentés** gombra.
 
-Most már készen áll a Microsoft-fiók használatára az alkalmazásban történő hitelesítéshez.
+Most már készen áll a Microsoft-fiók használatára a hitelesítéshez az alkalmazásban.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>További lépések
 
@@ -63,4 +63,4 @@ Most már készen áll a Microsoft-fiók használatára az alkalmazásban tört�
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure-portál]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

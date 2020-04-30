@@ -1,7 +1,7 @@
 ---
-title: Csomagrögzítések kezelése – Azure portal
+title: A csomagok rögzítésének kezelése – Azure Portal
 titleSuffix: Azure Network Watcher
-description: Ismerje meg, hogyan kezelheti a Network Watcher csomagrögzítési funkcióját az Azure Portalon.
+description: Megtudhatja, hogyan kezelheti Network Watcher Packet Capture funkcióját a Azure Portal használatával.
 services: network-watcher
 documentationcenter: na
 author: damendo
@@ -12,91 +12,95 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
-ms.openlocfilehash: 6fc4a25e39fb8f27151b2e3bec1959d74a619233
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: d7a61438187534a05a7d3f0307a1a4ded89fc147
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
-ms.locfileid: "76840827"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82204083"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>Csomagrögzítések kezelése az Azure Network Watcher segítségével a portálon
+# <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával
 
-A Network Watcher csomagrögzítése lehetővé teszi rögzítési munkamenetek létrehozását a virtuális gépekre és a virtuális gépekről érkező és onnan érkező forgalom nyomon követésére. A rögzítési munkamenethez szűrők vannak megadva, amelyek biztosítják, hogy csak a kívánt forgalmat rögzítse. A csomagrögzítés segít diagnosztizálni a hálózati anomáliákat, mind reaktív, mind proaktív módon. Más felhasználások közé tartozik a hálózati statisztikák gyűjtése, a hálózati behatolásokkal kapcsolatos információk gyűjtése, az ügyfél-kiszolgáló kommunikáció hibakeresése és még sok más. A csomagrögzítések távoli aktiválása megkönnyíti a csomagrögzítés manuális futtatásának terhét a kívánt virtuális gépen, ami értékes időt takarít meg.
+Network Watcher a csomagok rögzítése lehetővé teszi, hogy rögzítési munkameneteket hozzon létre a virtuális gépekre irányuló és onnan érkező forgalom nyomon követéséhez. A rögzítési munkamenethez szűrőket biztosít, hogy csak a kívánt forgalmat rögzítsen. A csomagok rögzítése segít az újraaktív és proaktív hálózati rendellenességek diagnosztizálásában. Más felhasználások közé tartozik a hálózati statisztikák összegyűjtése, a hálózati behatolásokkal kapcsolatos információk beszerzése, az ügyfél-kiszolgáló kommunikáció hibakeresése és sok más. A csomagok rögzítésének távoli elindítása lehetővé teszi, hogy a csomagok rögzítése manuálisan fusson a kívánt virtuális gépen, ami értékes időt takarít meg.
 
-Ebben a cikkben megtudhatja, hogyan kell elindítani, leállítani, letölteni és törölni egy csomagrögzítést. 
+Ebben a cikkben megismerheti a csomagok rögzítésének elindítását, leállítását, letöltését és törlését. 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A csomagrögzítéshez a következő kapcsolat szükséges:
-* Kimenő kapcsolat egy tárfiókkal a 443-as porton keresztül.
-* Bejövő és kimenő kapcsolat a 169.254.169.254-hez
-* Bejövő és kimenő kapcsolat a 168.63.129.16-hoz
+A csomagok rögzítéséhez a következő kimenő TCP-kapcsolat szükséges:
+- a kiválasztott Storage-fiókhoz a 443-es porton keresztül
+- az 80-as porton keresztüli 169.254.169.254
+- az 8037-as porton keresztüli 168.63.129.16
 
-Ha hálózati biztonsági csoport van társítva ahhoz a hálózati adapterhez vagy alhálózathoz, amelyben a hálózati csatoló található, győződjön meg arról, hogy léteznek olyan szabályok, amelyek engedélyezik az előző portokat. Hasonlóképpen, a felhasználó által definiált forgalmi útvonalak hozzáadása a hálózathoz megakadályozhatja a kapcsolatot a fent említett IP-kés és portok között. Kérjük, győződjön meg róla, hogy elérhető. 
+> [!NOTE]
+> A fenti két esetben említett portok közösek az összes olyan Network Watcher funkció esetében, amely magában foglalja a Network Watcher bővítményt, és esetenként változhat.
 
-## <a name="start-a-packet-capture"></a>Csomagrögzítés indítása
 
-1. A böngészőben keresse meg az [Azure Portalt,](https://portal.azure.com) és válassza a **Minden szolgáltatás**lehetőséget, majd válassza a **Hálózatfigyelő** lehetőséget a **Hálózatcsoport csoportban.**
-2. Válassza a **Csomagrögzítés lehetőséget** a **Hálózati diagnosztikai eszközök csoportban.** A meglévő csomagrögzítések az állapotuktól függetlenül jelennek meg.
-3. Csomagrögzítés létrehozásához válassza a **Hozzáadás** lehetőséget. A következő tulajdonságokhoz választhat értékeket:
-   - **Előfizetés**: Az az előfizetés, amelyhez a csomagrögzítést létrehozni kívánt virtuális gép létre kívánja hozni, megvan.
-   - **Erőforráscsoport**: A virtuális gép erőforráscsoportja.
-   - **Cél virtuális gép:** Az a virtuális gép, amelyhez a csomagrögzítést létre kívánja hozni.
-   - **Csomagrögzítés neve**: A csomagrögzítés neve.
-   - **Tárfiók vagy -fájl:** Válassza a **Tárfiók**, **A Fájl**vagy mindkettő lehetőséget. Ha a Fájl lehetőséget **választja,** a rögzítés a virtuális gépen belüli elérési útra kerül.
-   - **Helyi fájl elérési útja**: Az a helyi elérési út a virtuális gépen, ahová a csomagrögzítés mentésre kerül (csak akkor érvényes, ha a *Fájl* ki van jelölve). Az elérési útnak érvényes elérési útnak kell lennie. Ha Linux os virtuális gépet használ, az elérési útnak *a /var/captures*kapcsolóval kell kezdődnie.
-   - **Tárfiókok:** Válasszon ki egy meglévő tárfiókot, ha a *Tárfiókot*választotta. Ez a beállítás csak akkor érhető el, ha a **Tárolás**lehetőséget választotta.
+Ha hálózati biztonsági csoport van társítva a hálózati adapterhez vagy az alhálózathoz, amelyhez a hálózati adapter tartozik, győződjön meg arról, hogy léteznek olyan szabályok, amelyek engedélyezik a korábbi portokat. Hasonlóképpen, ha a felhasználó által megadott forgalmi útvonalakat a hálózathoz adja, előfordulhat, hogy a fenti IP-címek és portok kapcsolata megszakad. Ellenőrizze, hogy elérhetők-e. 
+
+## <a name="start-a-packet-capture"></a>Csomag rögzítésének elindítása
+
+1. A böngészőben navigáljon a [Azure Portal](https://portal.azure.com) és válassza a **minden szolgáltatás**lehetőséget, majd válassza a **Network Watcher** lehetőséget a **hálózatkezelés szakaszban**.
+2. Válassza a **hálózati diagnosztikai eszközök**területen a **csomagok rögzítése** lehetőséget. A meglévő csomagok rögzítései az állapotuktól függetlenül jelennek meg.
+3. Válassza a **Hozzáadás** lehetőséget a csomagok rögzítésének létrehozásához. A következő tulajdonságok értékeit adhatja meg:
+   - **Előfizetés**: az a virtuális gép, amelyhez a csomagot létre kívánja hozni.
+   - **Erőforráscsoport**: a virtuális gép erőforráscsoport.
+   - **Cél virtuális gép**: az a virtuális gép, amelyhez létre kívánja hozni a csomag rögzítését.
+   - **Csomag-rögzítés neve**: a csomag rögzítésének neve.
+   - **Storage-fiók vagy-fájl**: válassza ki a **Storage-fiókot**, a **fájlt**vagy mindkettőt. Ha a **fájl**lehetőséget választja, a rögzítés a virtuális gépen belüli elérési útra íródik.
+   - **Helyi fájl elérési útja**: annak a virtuális gépnek a helyi elérési útja, ahol a csomag rögzítése el lesz mentve (csak a *fájl* kiválasztásakor érvényes). Az elérési útnak érvényes elérési útnak kell lennie. Ha Linux rendszerű virtuális gépet használ, az elérési útnak */var/Captures*kell kezdődnie.
+   - **Storage-fiókok**: válasszon ki egy meglévő Storage-fiókot, ha a *Storage-fiókot*választotta. Ez a beállítás csak akkor érhető el, ha a **tárolót**választotta.
    
      > [!NOTE]
-     > Prémium szintű tárfiókok jelenleg nem támogatott a csomagrögzítések tárolására.
+     > A prémium szintű Storage-fiókok jelenleg nem támogatottak a csomagok rögzítésének tárolásához.
 
-   - **Csomagonkénti maximális bájt:** A rögzített csomagok bájtjainak száma. Ha üresen hagyja, az összes bájt rögzítésre kerülnek.
-   - **Munkamenetenkénti bájtok**maximális száma: A rögzített bájtok teljes száma. Az érték elérése után a csomagrögzítés leáll.
-   - **Időkorlát (másodperc):** A csomagrögzítés leállítása előtti időkorlát. Az alapértelmezett érték 18 000 másodperc.
-   - Szűrés (nem kötelező). + **Szűrő hozzáadása**
-     - **Protokoll**: A csomagrögzítéshez szűrni való protokoll. A rendelkezésre álló értékek: TCP, UDP és Any.
-     - **Helyi IP-cím:** Szűri a csomagrögzítést azokra a csomagokra, amelyekhelyi IP-címe megegyezik ezzel az értékkel.
-     - **Helyi port**: Szűri a csomagrögzítést azokra a csomagokra, amelyeknek a helyi portja megegyezik ezzel az értékkel.
-     - **Távoli IP-cím**: Szűri a csomagrögzítést azon csomagok esetében, amelyeknél a távoli IP-cím megegyezik ezzel az értékkel.
-     - **Távoli port**: Szűri a csomagrögzítést azokra a csomagokra, amelyeknél a távoli port megfelel ennek az értéknek.
+   - **Maximális bájt/csomag**: az egyes rögzített csomagokból származó bájtok száma. Ha üresen hagyja, a rendszer az összes bájtot rögzíti.
+   - **Maximális bájt/munkamenet**: a rögzített bájtok teljes száma. Ha elérte az értéket, a csomagok rögzítése leáll.
+   - Időkorlát **(másodperc)**: a csomag rögzítésének leállítása előtti időkorlát. Az alapértelmezett érték 18 000 másodperc.
+   - Szűrés (nem kötelező). Válassza a **+ szűrő hozzáadása** lehetőséget
+     - **Protokoll**: a csomag rögzítésére szolgáló protokoll. A rendelkezésre álló értékek: TCP, UDP és any.
+     - **Helyi IP-cím**: azokat a csomagokat szűri, amelyekben a helyi IP-cím megfelel ennek az értéknek.
+     - **Helyi port**: azokat a csomagokat szűri, amelyekben a helyi port megfelel ennek az értéknek.
+     - **Távoli IP-cím**: azokat a csomagokat szűri, amelyekben a távoli IP-cím megfelel ennek az értéknek.
+     - **Távoli port**: azokat a csomagokat szűri, amelyekben a távoli port megfelel ennek az értéknek.
     
      > [!NOTE]
-     > A port- és IP-címértékek lehetnek egyetlen értékek, értéktartomány vagy egy tartomány (például 80-1024) a porthoz. Annyi szűrőt határozhat meg, amennyire szüksége van.
+     > A portok és IP-címek értéke lehet egyetlen érték, egy értéktartomány vagy egy tartomány, például a 80-1024, a porthoz. Tetszőleges számú szűrőt meghatározhat.
 
-4. Válassza **az OK gombot.**
+4. Kattintson az **OK** gombra.
 
-Miután a csomagrögzítésre beállított időkorlát lejárt, a csomagrögzítés leáll, és ellenőrizhető. Manuálisan is leállíthatja a csomagrögzítési munkamenetet.
+Miután a csomag rögzítésére beállított időkorlát lejárt, a csomagok rögzítése leáll, és áttekinthető. Manuálisan is leállíthatja a csomagok rögzítési munkamenetét.
 
 > [!NOTE]
 > A portál automatikusan:
->  * Létrehoz egy hálózati figyelőt ugyanabban a régióban, ahol a kiválasztott virtuális gép létezik, ha a régióban még nincs hálózati figyelő.
->  * Hozzáadja az *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) vagy [Windows](../virtual-machines/windows/extensions-nwa.md) virtuálisgép-bővítményt a virtuális géphez, ha még nincs telepítve.
+>  * Létrehoz egy hálózati figyelőt abban a régióban, ahol a kiválasztott virtuális gép szerepel a régióban, ha a régió még nem rendelkezik hálózati figyelővel.
+>  * Hozzáadja a *AzureNetworkWatcherExtension* [Linux](../virtual-machines/linux/extensions-nwa.md) vagy [Windows rendszerű](../virtual-machines/windows/extensions-nwa.md) virtuálisgép-bővítményt a virtuális géphez, ha még nincs telepítve.
 
-## <a name="delete-a-packet-capture"></a>Csomagrögzítés törlése
+## <a name="delete-a-packet-capture"></a>Csomagok rögzítésének törlése
 
-1. A csomagrögzítési nézetben válassza a **...** lehetőséget a csomagrögzítés jobb oldalán, vagy kattintson a jobb gombbal egy meglévő csomagrögzítésre, és válassza a **Törlés parancsot.**
-2. A rendszer megkéri, hogy erősítse meg a csomagrögzítés törlését. Válassza az **Igen** lehetőséget.
+1. A csomagok rögzítése nézetben válassza a **...** lehetőséget a csomag rögzítésének jobb oldalán, vagy kattintson a jobb gombbal egy meglévő csomag-rögzítésre, és válassza a **Törlés**lehetőséget.
+2. A rendszer megkéri, hogy erősítse meg, hogy törölni kívánja a csomagok rögzítését. Válassza az **Igen** lehetőséget.
 
 > [!NOTE]
-> A csomagrögzítés törlése nem törli a rögzítési fájlt a tárfiókban vagy a virtuális gépen.
+> A csomagok rögzítésének törlése nem törli a rögzítési fájlt a Storage-fiókban vagy a virtuális gépen.
 
-## <a name="stop-a-packet-capture"></a>Csomagrögzítés leállítása
+## <a name="stop-a-packet-capture"></a>Csomagok rögzítésének leállítása
 
-A csomagrögzítési nézetben válassza a **...** lehetőséget a csomagrögzítés jobb oldalán, vagy kattintson a jobb gombbal egy meglévő csomagrögzítésre, és válassza a **Leállítás parancsot.**
+A csomagok rögzítése nézetben válassza a **...** lehetőséget a csomag rögzítésének jobb oldalán, vagy kattintson a jobb gombbal egy meglévő csomag-rögzítésre, és válassza a **Leállítás**lehetőséget.
 
-## <a name="download-a-packet-capture"></a>Csomagrögzítés letöltése
+## <a name="download-a-packet-capture"></a>Csomagok rögzítésének letöltése
 
-Miután a csomagrögzítési munkamenet befejeződött, a rögzítési fájl feltöltésre kerül a blobstorage-ba vagy a virtuális gép helyi fájljába. A csomagrögzítés tárolási helye a csomagrögzítés létrehozása során van definiálva. A tárfiókba mentett rögzítési fájlok elérésének kényelmes eszköze a Microsoft Azure Storage Explorer, amely [letölthető](https://storageexplorer.com/).
+A csomag-rögzítési munkamenet befejezése után a rendszer feltölti a rögzítési fájlt a blob Storage-ba vagy egy helyi fájlba a virtuális gépen. A csomag rögzítésének tárolási helye a csomag rögzítésének létrehozásakor van meghatározva. A Storage-fiókba mentett rögzítési fájlok elérésének kényelmes eszköze Microsoft Azure Storage Explorer, amelyet [letöltheti](https://storageexplorer.com/).
 
-Ha meg van adva tárfiók, a csomagrögzítő fájlok at a következő helyen menti a rendszer egy tárfiókba:
+Ha meg van adva egy Storage-fiók, a rendszer a csomag rögzítési fájljait a következő helyen menti a Storage-fiókba:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-Ha a rögzítés létrehozásakor a **Fájl** lehetőséget választotta, megtekintheti vagy letöltheti a fájlt a virtuális gépen beállított elérési útról.
+Ha a rögzítés létrehozásakor a **fájl** lehetőséget választotta, megtekintheti vagy letöltheti a fájlt a virtuális gépen konfigurált elérési útról.
 
 ## <a name="next-steps"></a>További lépések
 
-- A csomagrögzítések virtuálisgép-riasztásokkal történő automatizálásáról a [Riasztás aktivált csomagrögzítésének létrehozása című](network-watcher-alert-triggered-packet-capture.md)témakörben olvashat.
-- Annak megállapításához, hogy egy adott forgalom engedélyezett-e a virtuális gépen vagy a virtuális gépen kívül, olvassa el [a Virtuálisgép hálózati forgalomszűrőproblémájának diagnosztizálása című témakört.](diagnose-vm-network-traffic-filtering-problem.md)
+- Ha szeretné megtudni, hogyan automatizálható a csomagok rögzítése a virtuális gépek riasztásai között, tekintse meg a [riasztások által aktivált csomagok rögzítésének létrehozása](network-watcher-alert-triggered-packet-capture.md)című témakört.
+- Annak megállapításához, hogy egy adott forgalom engedélyezett-e a virtuális gépeken, illetve ki-vagy befelé, tekintse meg [a virtuális gép hálózati forgalmának szűrésével kapcsolatos problémát](diagnose-vm-network-traffic-filtering-problem.md).

@@ -187,6 +187,8 @@
               href: container-registry-tasks-cross-registry-authentication.md
             - name: Külső hitelesítés kulcstartó használatával
               href: container-registry-tasks-authentication-key-vault.md
+        - name: Gyors feladat futtatása Resource Manager-sablonnal
+          href: container-registry-task-run-template.md
         - name: Rendszerkép összeállítása buildcsomagokkal (előzetes verzió)
           href: container-registry-tasks-pack-build.md
         - name: Feladatnaplók megtekintése

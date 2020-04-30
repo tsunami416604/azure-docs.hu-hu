@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: c647564d685470d86b2aa54be5a86bb995d914bc
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 24b93e9722ff399330b6843f065f183a3b1f5181
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159728"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82202559"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Node. js-alkalmazás létrehozása az Azure-ban
 
@@ -83,7 +83,7 @@ Ezután győződjön meg arról, hogy az alkalmazás fut. A terminálból indít
 npm start
 ```
 
-Most nyissa meg a böngészőt, [http://localhost:3000](http://localhost:3000)és lépjen a címre, ahol a következőhöz hasonlónak kell megjelennie:
+Most nyissa meg a böngészőt, `http://localhost:3000`és lépjen a címre, ahol a következőhöz hasonlónak kell megjelennie:
 
 ![Expressz alkalmazás futtatása](./media/quickstart-nodejs/express.png)
 

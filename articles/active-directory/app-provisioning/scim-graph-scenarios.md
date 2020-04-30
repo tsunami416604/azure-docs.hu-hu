@@ -1,31 +1,26 @@
 ---
-title: A SCIM, a Microsoft Graph és az Azure AD-kiépítési szolgáltatás használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal | Microsoft Docs
+title: A SCIM, a Microsoft Graph és az Azure AD használata a felhasználók kiépítéséhez és az alkalmazások bővítéséhez
 description: A SCIM és a Microsoft Graph együttes használatával kiépítheti a felhasználókat, és gazdagíthatja az alkalmazást az általa igénybe venni kívánt adattal.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/26/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79ffe0474fcfeb28b49f5c2504ede86cd38459d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181834"
+ms.locfileid: "82201686"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>A SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal
 
-**Célközönség:** Ez a dokumentum az Azure AD-vel való integrációt célzó fejlesztők számára készült. Másoknak, akik az Azure AD-vel már integrált alkalmazásokat szeretnének használni, például a nagyítás, a ServiceNow és a DropBox használatával, kihagyhatja ezt, és áttekintheti az alkalmazásra vonatkozó [oktatóanyagokat](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) , vagy áttekintheti [a kiépítési szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
+**Célközönség:** Ez a cikk a Azure Active Directory (Azure AD) integrálására szolgáló fejlesztők számára készült. Ha az Azure AD-vel már integrált alkalmazásokat szeretne használni, például a nagyítást, a ServiceNow és a DropBoxot, kihagyhatja ezt a cikket, és áttekintheti az alkalmazásra vonatkozó [oktatóanyagokat](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) , vagy áttekintheti [a kiépítési szolgáltatás működését](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works).
 
 **Gyakori helyzetek**
 
@@ -46,7 +41,6 @@ Napjainkban a rendszergazdák kiépítik a felhasználókat a felhasználói fi�
 **Javaslat**: 
 * Ha az ügyfelek különböző IDP használnak, és nem szeretné, hogy a szinkronizálási motort az egyes szolgáltatásokkal integrálja, támogassa a SCIM-kompatibilis [/Users](https://aka.ms/scimreferencecode) -végpontot. Az ügyfelek könnyedén használhatják ezt a végpontot az Azure AD-kiépítési szolgáltatásba való integráláshoz és a felhasználói fiókok automatikus létrehozásához, amikor hozzáférésre van szükségük. A végpontot egyszer is felépítheti, és minden IDP kompatibilis lesz. Tekintse meg az alábbi példában, hogy a felhasználók hogyan hozhatók létre a SCIM használatával.
 * Ha felhasználói adatokra van szüksége az Azure AD-ben és a Microsofton kívül más adatokban található felhasználói objektumon, érdemes lehet SCIM-végpontot létrehozni a felhasználók kiépítésekor, és a további adatok beszerzéséhez meg kell hívni a Microsoft Graph. 
-
 
 ```json
 POST /Users

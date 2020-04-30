@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 1827d44f4d4ac812a33aee4791c2103a10328ba7
+ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
-ms.locfileid: "75942712"
+ms.locfileid: "82204450"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -232,7 +232,7 @@ Ne feledje, hogy a Premium Storage lemezek nagyobb teljesítménybeli képesség
 
 ## <a name="disk-caching"></a>Lemez gyorsítótárazása
 
-Az Azure Premium Storaget használó, nagy teljesítményű virtuális gépek többrétegű gyorsítótárazási technológiával rendelkeznek, amelyet BlobCache-nek nevezünk. A BlobCache a virtuális gép RAM és a helyi SSD kombinációját használja a gyorsítótárazáshoz. Ez a gyorsítótár elérhető a Premium Storage állandó lemezek és a virtuális gép helyi lemezei számára. Alapértelmezés szerint ez a gyorsítótár-beállítás az operációsrendszer-lemezek olvasására és írására, valamint a Premium Storage tárolt adatlemezek ReadOnly-ra van állítva. Ha a lemezes gyorsítótárazás engedélyezve van a Premium Storage lemezeken, a nagy léptékű virtuális gépek rendkívül magas szintű teljesítményt érhetnek el, amely meghaladja az alapul szolgáló lemez teljesítményét.
+Az Azure Premium Storaget használó, nagy teljesítményű virtuális gépek többrétegű gyorsítótárazási technológiával rendelkeznek, amelyet BlobCache-nek nevezünk. A BlobCache a gazdagép RAM és a helyi SSD kombinációját használja a gyorsítótárazáshoz. Ez a gyorsítótár elérhető a Premium Storage állandó lemezek és a virtuális gép helyi lemezei számára. Alapértelmezés szerint ez a gyorsítótár-beállítás az operációsrendszer-lemezek olvasására és írására, valamint a Premium Storage tárolt adatlemezek ReadOnly-ra van állítva. Ha a lemezes gyorsítótárazás engedélyezve van a Premium Storage lemezeken, a nagy léptékű virtuális gépek rendkívül magas szintű teljesítményt érhetnek el, amely meghaladja az alapul szolgáló lemez teljesítményét.
 
 > [!WARNING]
 > A lemezes gyorsítótárazás nem támogatott a 4 TiB és nagyobb lemezek esetén. Ha több lemez van csatlakoztatva a virtuális géphez, akkor minden 4 TiB-nál kisebb lemez támogatja a gyorsítótárazást.
