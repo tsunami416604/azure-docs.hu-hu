@@ -1,77 +1,77 @@
 ---
 title: Unity-minta üzembe helyezése az asztalon
-description: Rövid útmutató, amely bemutatja, hogyan juthat el a Unity minta egy asztali számítógépre
+description: Gyors útmutató, amely bemutatja, hogyan kérhető le az Unity minta asztali SZÁMÍTÓGÉPekre
 author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
 ms.openlocfilehash: 95993a54d321c9581d35f12b56d60e4ea052e505
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81415726"
 ---
-# <a name="quickstart-deploy-unity-sample-to-desktop"></a>Rövid útmutató: Unity-minta telepítése az asztalra
+# <a name="quickstart-deploy-unity-sample-to-desktop"></a>Gyors útmutató: Unity-minta üzembe helyezése az asztalra
 
-Ez a rövid útmutató ismerteti, hogyan telepítheti és futtatja a Unity rövid útmutatóminta alkalmazását egy asztali számítógépre.
+Ez a rövid útmutató bemutatja, hogyan helyezheti üzembe és futtathatja az Unity-hez készült gyors üzembe helyezési minta alkalmazást az asztali SZÁMÍTÓGÉPeken.
 
-Ebben a rövid útmutatóban megtudhatja, hogyan:
+Ebből a rövid útmutatóból megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 >
->* A rövid útmutató mintaalkalmazás létrehozása asztali használatra
->* A minta központi telepítése számítógépre
+>* Az asztali gyors üzembe helyezési minta alkalmazás összeállítása
+>* A minta üzembe helyezése SZÁMÍTÓGÉPeken
 >* A minta futtatása számítógépen
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a rövid útmutatóban a mintaprojektet a [Rövid útmutatóból telepítjük: Egy modell renderelése unityvel.](render-model.md)
+Ebben a rövid útmutatóban a minta projektet a gyors üzembe helyezési pontról fogjuk üzembe helyezni [: modell megjelenítése egységgel](render-model.md).
 
-Győződjön meg arról, hogy a hitelesítő adatok mentése megfelelően a jelenetet, és csatlakozhat a munkamenet az Egység szerkesztő.
+Győződjön meg arról, hogy a hitelesítő adatai megfelelően vannak mentve a jelenettel, és csatlakozhat egy munkamenethez az Unity editoron belülről.
 
-## <a name="disable-virtual-reality-support"></a>A virtuális valóság támogatásának letiltása
+## <a name="disable-virtual-reality-support"></a>Virtuális valóság támogatásának letiltása
 
-Az asztali számítógépeken jelenleg csak a sík asztali alkalmazások támogatottak, ezért a VR-támogatást le kell tiltani.
+Jelenleg csak a lapos asztali alkalmazások támogatottak az asztalon, így a VR-támogatást le kell tiltani.
 
-1. A *Projektbeállítások szerkesztése > megnyitása...*
-1. Válassza a bal oldali **Lejátszó** lehetőséget.
-1. Válassza az **Univerzális Windows Platform beállításai** lapot.
-1. Bontsa ki az **XR-beállításokat**.
-1. A **virtuális valóság támogatott letiltása**.
+1. Nyissa meg a *> projekt beállításainak szerkesztése...*
+1. Válassza ki a bal oldali **lejátszót** .
+1. Válassza a **univerzális Windows-platform beállítások** lapot.
+1. Bontsa ki az **XR beállításait**.
+1. Tiltsa le a **virtuális valóságot**.
     ![lejátszó beállításai](./media/unity-disable-xr.png)
-1. Az *XR-beállítások*felett bontsa ki a **Közzétételi beállítások csomópontot.**
-1. A **Támogatott eszközcsaládok területen**ellenőrizze, hogy az **Asztal** jelölőnégyzet be van-e jelölve.
+1. A fenti *XR-beállítások*között bontsa ki a **közzétételi beállítások**elemet.
+1. A **támogatott eszközökhöz tartozó családokban**ellenőrizze, hogy az **asztal** be van-e jelölve.
 
-## <a name="build-the-sample-project"></a>A mintaprojekt létrehozása
+## <a name="build-the-sample-project"></a>A minta projekt összeállítása
 
-1. Nyissa *meg a Fájl > a létrehozási beállításokat.*
-1. A *platform* módosítása **univerzális Windows platformra.**
-1. Állítsa *a céleszközt* **a PC-re.**
-1. Állítsa *az Architektúrát* **x86-ra.**
-1. Állítsa *a Build Type* **(D3D-projekt) beállítását.**
-  ![Build-beállítások](./media/unity-build-settings-pc.png)
-1. Válassza **a Váltás platformra**lehetőséget.
-1. A **Build** (vagy a Build and Run) billentyű lenyomásakor a rendszer megkéri, hogy válasszon ki egy mappát, ahol a megoldást tárolni kell.
-1. Nyissa meg a létrehozott **Quickstart.sln alkalmazást** a Visual Studio segítségével.
-1. Módosítsa a konfigurációt **Release** és **x86**.
-1. Váltson a hibakereső módra **helyi gépre**.
-  ![Megoldás konfigurációja](./media/unity-deploy-config-pc.png)
-1. Készítsd el a megoldást (F7).
+1. Nyissa meg a *fájl > a létrehozási beállítások menüpontot*.
+1. *Platform* módosítása **univerzális Windows-platformra**.
+1. A *célszámítógép* beállítása a **számítógépnek**.
+1. *Architektúra* beállítása **x86**-ra.
+1. A *Build típusának* beállítása a **D3D-projekthez**.
+  ![Összeállítási beállítások](./media/unity-build-settings-pc.png)
+1. Válassza **a váltás platformra**lehetőséget.
+1. A **Build** (vagy a build és a Run) gomb megnyomásakor a rendszer arra kéri, hogy válasszon ki egy mappát, ahol a megoldást tárolni szeretné.
+1. Nyissa meg a generált rövid útmutató **. SLN** a Visual Studióval.
+1. Módosítsa a konfigurációt **kiadásra** és **x86**-ra.
+1. Kapcsolja a hibakereső üzemmódot a **helyi gépre**.
+  ![Megoldás konfigurálása](./media/unity-deploy-config-pc.png)
+1. Hozza létre a megoldást (F7).
 
 > [!WARNING]
-> Győződjön meg arról, hogy **az x86 lehetőséget választja.** **X64** jelenleg nem támogatott, lásd [platform korlátozások](../reference/limits.md#platform-limitations).
+> Győződjön meg arról, hogy az **x86**lehetőséget választotta. az **x64** jelenleg nem támogatott, lásd a [platform korlátozásait](../reference/limits.md#platform-limitations).
 
-## <a name="launch-the-sample-project"></a>A mintaprojekt elindítása
+## <a name="launch-the-sample-project"></a>A minta projekt elindítása
 
-Indítsa el a hibakeresőt a Visual Studio (F5) alkalmazásban. Automatikusan telepíti az alkalmazást a számítógépre.
+Indítsa el a hibakeresőt a Visual Studióban (F5). A rendszer automatikusan telepíti az alkalmazást a számítógépre.
 
-A mintaalkalmazásnak el kell indítania, majd új munkamenetet kell indítania. Egy idő után a munkamenet készen áll, és a távolról renderelt modell megjelenik ön előtt.
-Ha később másodszor is el szeretné indítani a mintát, akkor most már megtalálhatja a Start menüből is.
+A minta alkalmazásnak el kell indítania, majd el kell indítania egy új munkamenetet. Egy idő után a munkamenet készen áll, és a távolról renderelt modell fog megjelenni az Ön előtt.
+Ha később szeretné elindítani a mintát, azt a Start menüből is megtalálhatja.
 
 ## <a name="next-steps"></a>További lépések
 
-A következő rövid útmutatóban egy egyéni modell konvertálását vizsgáljuk.
+A következő rövid útmutatóban egy egyéni modell átalakítását fogjuk megtekinteni.
 
 > [!div class="nextstepaction"]
-> [Rövid útmutató: Modell konvertálása rendereléshez](convert-model.md)
+> [Gyors útmutató: modell átalakítása renderelésre](convert-model.md)

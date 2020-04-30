@@ -1,6 +1,6 @@
 ---
-title: Linuxos virtuális gép létrehozása és titkosítása az Azure Powershell használatával
-description: Ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre és titkosíthat linuxos virtuális gépet az Azure Powershell használatával
+title: Linux rendszerű virtuális gép létrehozása és titkosítása az Azure PowerShell-lel
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és titkosíthat Linux rendszerű virtuális gépeket az Azure PowerShell használatával
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: virtual-machines-linux
@@ -8,21 +8,21 @@ ms.subservice: security
 ms.topic: quickstart
 ms.date: 05/17/2019
 ms.openlocfilehash: a2cb8919ac0752c42f22e064d6201c7120fbc9b6
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78970552"
 ---
-# <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Rövid útmutató: Linuxos virtuális gép létrehozása és titkosítása az Azure PowerShell segítségével
+# <a name="quickstart-create-and-encrypt-a-linux-vm-in-azure-with-azure-powershell"></a>Rövid útmutató: Linux rendszerű virtuális gép létrehozása és titkosítása az Azure-ban Azure PowerShell
 
-Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használhatja az Azure PowerShell-modult egy Linux virtuális gép (VM) létrehozásához, hozzon létre egy Key Vaultot a titkosítási kulcsok tárolásához, és titkosítsa a virtuális gépet. Ez a rövid útmutató az Ubuntu 16.04 LTS piactéri lemezképet használja a Canonical és a VM Standard_D2S_V3 mérete. 
+Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy szkriptekkel történő létrehozására és kezelésére használható. Ez a rövid útmutató bemutatja, hogyan használható a Azure PowerShell modul egy linuxos virtuális gép (VM) létrehozásához, a titkosítási kulcsok tárolásához Key Vault létrehozásához és a virtuális gép titkosításához. Ez a rövid útmutató az Ubuntu 16,04 LTS Marketplace rendszerképét használja a Canonicalből és egy VM-Standard_D2S_V3 méretből. 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup segítségével.](/powershell/module/az.resources/new-azresourcegroup) Az erőforráscsoportok olyan logikai tárolók, amelyekbe a rendszer üzembe helyezi az Azure-erőforrásokat és kezeli azokat:
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoportok olyan logikai tárolók, amelyekbe a rendszer üzembe helyezi az Azure-erőforrásokat és kezeli azokat:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
@@ -30,7 +30,7 @@ New-AzResourceGroup -Name "myResourceGroup" -Location "EastUS"
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-Hozzon létre egy Azure virtuális gépet [a New-AzVM-mel,](/powershell/module/az.compute/new-azvm)és adja át a fent létrehozott virtuális gép konfigurációs objektumot.
+Hozzon létre egy [új AzVM](/powershell/module/az.compute/new-azvm)rendelkező Azure-beli virtuális gépet, és továbbítsa azt a fent létrehozott virtuálisgép-konfigurációs objektumnak.
 
 ```powershell-interactive
 $cred = = Get-Credential
@@ -40,12 +40,12 @@ New-AzVM -Name MyVm -Credential $cred -ResourceGroupName MyResourceGroup -Image 
 
 A virtuális gép üzembe helyezése eltarthat néhány percig. 
 
-## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Titkosítási kulcsokhoz konfigurált kulcstartó létrehozása
+## <a name="create-a-key-vault-configured-for-encryption-keys"></a>Titkosítási kulcsokhoz konfigurált Key Vault létrehozása
 
-Az Azure lemeztitkosítás tárolja a titkosítási kulcsot egy Azure Key Vaultban. Hozzon létre egy key vault [new-azkeyvault](/powershell/module/az.keyvault/new-azkeyvault). Ha engedélyezni szeretné, hogy a Key Vault tárolja a titkosítási kulcsokat, használja az -EnabledForDiskEncryption paramétert.
+Az Azure Disk Encryption egy Azure Key Vault tárolja a titkosítási kulcsát. Hozzon létre egy Key Vaultt a [New-AzKeyvault](/powershell/module/az.keyvault/new-azkeyvault). Ha engedélyezni szeretné a Key Vault számára a titkosítási kulcsok tárolását, használja a-EnabledForDiskEncryption paramétert.
 
 > [!Important]
-> Minden key vault kell egy nevet, amely egyedi az Azure-ban. Az alábbi példákban cserélje le <egyedi keyvault-neve> a választott nevet.
+> Minden Key vaultnak rendelkeznie kell egy egyedi névvel az Azure-ban. Az alábbi példákban cserélje le a <saját egyedi-kulcstartó-Name> a választott névre.
 
 ```azurepowershell-interactive
 New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourceGroup" -Location EastUS -EnabledForDiskEncryption
@@ -53,9 +53,9 @@ New-AzKeyvault -name "<your-unique-keyvault-name>" -ResourceGroupName "myResourc
 
 ## <a name="encrypt-the-virtual-machine"></a>A virtuális gép titkosítása
 
-Titkosítsa a virtuális gép [set-AzVmDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension). 
+Titkosítsa a virtuális gépet a [set-AzVmDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension). 
 
-A Set-AzVmDiskEncryptionExtension bizonyos értékeket igényel a Key Vault-objektumból. Ezeket az értékeket úgy szerezheti be, hogy átadja a kulcstartó egyedi nevét a [Get-AzKeyvault rendszernek.](/powershell/module/az.keyvault/get-azkeyvault)
+A set-AzVmDiskEncryptionExtension-nek néhány értéket kell megadnia a Key Vault objektumtól. Ezeket az értékeket a Key Vault egyedi nevének a [Get-AzKeyvault](/powershell/module/az.keyvault/get-azkeyvault)értékre való átadásával szerezheti be.
 
 ```azurepowershell-interactive
 $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGroupName "MyResourceGroup"
@@ -63,7 +63,7 @@ $KeyVault = Get-AzKeyVault -VaultName "<your-unique-keyvault-name>" -ResourceGro
 Set-AzVMDiskEncryptionExtension -ResourceGroupName MyResourceGroup -VMName "MyVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -SkipVmBackup -VolumeType All
 ```
 
-Néhány perc múlva a folyamat a következőt adja vissza:
+Néhány perc elteltével a folyamat a következőt fogja visszaadni:
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -71,13 +71,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
                          True         OK OK
 ```
 
-A titkosítási folyamatot a [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/Get-AzVMDiskEncryptionStatus)futtatásával ellenőrizheti.
+A [Get-AzVmDiskEncryptionStatus](/powershell/module/az.compute/Get-AzVMDiskEncryptionStatus)futtatásával ellenőrizheti a titkosítási folyamatot.
 
 ```azurepowershell-interactive
 Get-AzVmDiskEncryptionStatus -VMName MyVM -ResourceGroupName MyResourceGroup
 ```
 
-Ha a titkosítás engedélyezve van, a visszaadott kimenetben a következő látható lesz:
+Ha engedélyezve van a titkosítás, a visszaadott kimenetben a következő jelenik meg:
 
 ```
 OsVolumeEncrypted          : EncryptionInProgress
@@ -88,7 +88,7 @@ ProgressMessage            : OS disk encryption started
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, az [Eltávolítás-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmaggal eltávolíthatja az erőforráscsoportot, a virtuális gépés az összes kapcsolódó erőforrást:
+Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához:
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup"
@@ -96,7 +96,7 @@ Remove-AzResourceGroup -Name "myResourceGroup"
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban létrehozott egy virtuális gépet, létrehozott egy Key Vaultot, amely engedélyezte a titkosítási kulcsokat, és titkosította a virtuális gépet.  Továbbad a következő cikkhez, hogy többet tudjon meg az Azure Disk Encryption linuxos virtuális gépekhez.
+Ebben a rövid útmutatóban létrehozott egy virtuális gépet, létrehozott egy Key Vault, amely engedélyezte a titkosítási kulcsokat, és titkosította a virtuális gépet.  A következő cikkből többet tudhat meg a Linux rendszerű virtuális gépek Azure Disk Encryptionéről.
 
 > [!div class="nextstepaction"]
-> [Azure lemeztitkosítás – áttekintés](disk-encryption-overview.md)
+> [Azure Disk Encryption áttekintése](disk-encryption-overview.md)

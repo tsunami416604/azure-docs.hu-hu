@@ -1,6 +1,6 @@
 ---
-title: Mi a jelszókivonat-szinkronizálás az Azure AD-vel? | Microsoft Docs
-description: A jelszókivonat-szinkronizálás ismertetése.
+title: Mi a jelszó-kivonatoló szinkronizálás az Azure AD-vel? | Microsoft Docs
+description: Leírja a jelszó-kivonatok szinkronizálását.
 services: active-directory
 author: billmath
 manager: daveba
@@ -12,35 +12,35 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 83e172e61411c7c1c098706b5ff4566f565d6bf1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "66253860"
 ---
-# <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Mi a jelszókivonat-szinkronizálás az Azure AD-vel?
-A jelszókivonat-szinkronizálás a hibrid identitások megvalósításához használt bejelentkezési módszerek egyike. Az Azure AD Connect szinkronizálja a felhasználói jelszót egy helyszíni Active Directory-példányból egy felhőalapú Azure AD-példányból származó kivonatot a kivonatból.
+# <a name="what-is-password-hash-synchronization-with-azure-ad"></a>Mi a jelszó-kivonatoló szinkronizálás az Azure AD-vel?
+A jelszó-kivonatolás szinkronizálása a hibrid identitások megvalósításához használt bejelentkezési módszerek egyike. Azure AD Connect szinkronizálja egy helyi Active Directory-példány kivonatát, a kivonatot egy felhőalapú Azure AD-példányra.
 
-A jelszókivonat-szinkronizálás az Azure AD Connect sync által megvalósított címtár-szinkronizálási szolgáltatás kiterjesztése. Ezzel a funkcióval bejelentkezhet az Azure AD-szolgáltatásokba, például az Office 365-be. A szolgáltatásba ugyanazzal a jelszóval jelentkezik be, mint amelyet a helyszíni Active Directory-példányba való bejelentkezéshez használ.
+A jelszó-kivonatolási szinkronizálás a Azure AD Connect Sync által megvalósított címtár-szinkronizálási szolgáltatás kiterjesztése. Ezzel a szolgáltatással jelentkezhet be az Azure AD-szolgáltatásokba, például az Office 365-be. A szolgáltatásba való bejelentkezéshez ugyanazt a jelszót használja, amelyet a helyszíni Active Directory-példányba való bejelentkezéshez használ.
 
 ![Mi az az Azure AD Connect?](./media/how-to-connect-password-hash-synchronization/arch1.png)
 
-A jelszókivonat-szinkronizálás segít a jelszavak számának csökkentésében, a felhasználóknak csak egy jelre kell fenntartaniuk. A jelszókivonat-szinkronizálás a következőket teheti:
+A jelszó-kivonatolás szinkronizálása a jelszavak számának csökkentésével segíti a felhasználókat, hogy csak eggyel maradjanak. A jelszó-kivonatolás szinkronizálása a következőket teheti:
 
-* A felhasználók termelékenységének növelése.
+* Javítsa a felhasználók termelékenységét.
 * Csökkentse ügyfélszolgálati költségeit.  
 
-Szükség esetén beállíthatja a jelszókivonat-szinkronizálást biztonsági másolatként, ha úgy dönt, hogy bejelentkezési módszerként az [Összevonást az Active Directory összevonási szolgáltatásokkal (AD FS)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) használja.
+Szükség esetén beállíthatja a jelszó-kivonat szinkronizálását biztonsági másolatként, ha úgy dönt, hogy a bejelentkezési módszerként [Active Directory összevonási szolgáltatások (AD FS) (AD FS) összevonást](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect) használ.
 
-A jelszókivonat-szinkronizálás környezetben való használatához a következőket kell alkalmaznia:
+A jelszó-kivonatoló szinkronizálás a környezetben való használatához a következőket kell tennie:
 
-* Telepítse az Azure AD Connectet.  
-* Konfigurálja a címtár-szinkronizálást a helyszíni Active Directory-példány és az Azure Active Directory-példány között.
-* Engedélyezze a jelszókivonat-szinkronizálást.
+* Telepítse a Azure AD Connect.  
+* Konfigurálja a címtár-szinkronizálást a helyszíni Active Directory-példány és a Azure Active Directory-példány között.
+* Jelszó-kivonat szinkronizálásának engedélyezése.
 
 
 
-További információ: [Mi a hibrid identitás?](whatis-hybrid-identity.md).
+További információ: [Mi az a Hybrid Identity?](whatis-hybrid-identity.md).
 
 
 
@@ -51,5 +51,5 @@ További információ: [Mi a hibrid identitás?](whatis-hybrid-identity.md).
 - [Mi az Azure AD Connect és a Connect Health?](whatis-azure-ad-connect.md)
 - [Mi az átmenő hitelesítés (PTA)?](how-to-connect-pta.md)
 - [Mi az összevonás?](whatis-fed.md)
-- [Mi az egyszeri bejelentkezés?](how-to-connect-sso.md)
-- [A jelszókivonat-szinkronizálás működése](how-to-connect-password-hash-synchronization.md)
+- [Mi az az egyszeri bejelentkezés?](how-to-connect-sso.md)
+- [A jelszó-kivonatolási szinkronizálás működése](how-to-connect-password-hash-synchronization.md)

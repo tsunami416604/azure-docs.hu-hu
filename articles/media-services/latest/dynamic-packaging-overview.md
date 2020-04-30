@@ -1,7 +1,7 @@
 ---
-title: Dinamikus csomagolás az Azure Media Services v3-as részén
+title: Dinamikus csomagolás a Azure Media Services v3-ban
 titleSuffix: Azure Media Services
-description: Ez a cikk áttekintést nyújt az Azure Media Services dinamikus csomagolásáról.
+description: Ez a cikk áttekintést nyújt a Azure Media Services dinamikus csomagolásáról.
 author: Juliako
 manager: femila
 editor: ''
@@ -15,37 +15,37 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.author: juliako
 ms.openlocfilehash: ae049d7486007696d8038eb4e6593cf996df659e
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80372604"
 ---
 # <a name="dynamic-packaging-in-media-services-v3"></a>Dinamikus csomagolás a Media Services v3-ban
 
-A Microsoft Azure Media Services számos médiaforrás-fájlformátum kódolására használható. Különböző streamelési protokollokon keresztül biztosítja őket, tartalomvédelemmel vagy anélkül, hogy elérjék az összes főbb eszközt (például az iOS és az Android eszközöket). Ezek az ügyfelek különböző protokollokat értenek. Az iOS például megköveteli, hogy az adatfolyamokat HTTP Live Streaming (HLS) formátumban kell kézbesíteni, és az Android-eszközök támogatják a HLS-t és az MPEG DASH-t.
+A Microsoft Azure Media Services számos médiafájl-formátum kódolására használható. A szolgáltatás különböző streaming protokollokon keresztül érhető el, tartalom védelme nélkül vagy anélkül, hogy elérje az összes jelentős eszközt (például az iOS és az Android rendszerű eszközöket). Ezek az ügyfelek megismerhetik a különböző protokollokat. Az iOS esetében például HTTP Live Streaming (HLS) formátumban kell továbbítani a streameket, és az Android-eszközök támogatják a HLS, valamint az MPEG DASH-t.
 
-A Media Services szolgáltatásban a [streamelési végpont](streaming-endpoint-concept.md) egy dinamikus (just-in-time) csomagolási és származási szolgáltatást jelent, amely az élő és az igény szerinti tartalmat közvetlenül egy ügyféllejátszó alkalmazásnak juttatja el. A következő szakaszban említett gyakori adatfolyam-protokollok egyikét használja. A dinamikus csomagolási funkciót minden Streamvégpont tartalmazza (a standard és a prémium szintűek egyaránt).
+Media Services a streaming- [végpont](streaming-endpoint-concept.md) egy dinamikus (igény szerinti) csomagolási és forrás-szolgáltatást jelent, amely az élő és az igény szerinti tartalmat közvetlenül az ügyfélalkalmazás számára teszi elérhetővé. A következő szakaszban említett Common Streaming Media-protokollok egyikét használja. A dinamikus csomagolási funkciót minden Streamvégpont tartalmazza (a standard és a prémium szintűek egyaránt).
 
 > [!NOTE]
-> Az Azure [Portal](https://portal.azure.com/) segítségével kezelheti a v3-as [élő eseményeket,](live-events-outputs-concept.md)tekintse meg a v3 [Assets nézetet,](assets-concept.md)és információkat kaphat az API-k eléréséről. Az összes többi felügyeleti feladathoz (például átalakítások és feladatok) használja a [REST API-t,](https://docs.microsoft.com/rest/api/media/)a [CLI-t](https://aka.ms/ams-v3-cli-ref)vagy a támogatott [SDK-k egyikét.](media-services-apis-overview.md#sdks)
+> A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](https://docs.microsoft.com/rest/api/media/), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
-## <a name="to-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>A forrásfájlok előkészítése a kézbesítésre
+## <a name="to-prepare-your-source-files-for-delivery"></a><a id="delivery-protocols"/>A forrásfájlok előkészítése a kézbesítéshez
 
-A dinamikus csomagolás előnyeinek kihasználásához a mezzanine (forrás) fájlt több bitráta MP4 (ISO Base Media 14496-12) fájlokba kell [kódolnia.](encoding-concept.md) A Media Services dinamikus csomagolásához szükséges tartalommal rendelkeznie kell egy [eszközre.](assets-concept.md) Ebből az MP4-fájlkészletből a Dynamic Packaging segítségével az alábbiakban ismertetett adatfolyam-protokollokon keresztül juttathatja el a videókat.
+A dinamikus csomagolás kihasználása érdekében a közbenső (forrás) fájlt több bitrátás MP4-(ISO Base Media 14496-12) fájlba kell [kódolnia](encoding-concept.md) . Media Services dinamikus csomagoláshoz szükséges, kódolt MP4-és folyamatos átviteli konfigurációs fájlokkal rendelkező [eszközre](assets-concept.md) van szükség. Ebből az MP4-fájlokból a dinamikus csomagolás használatával továbbíthatja a videókat az alább ismertetett Streaming Media-protokollok segítségével.
 
 > [!TIP]
-> Az EGYIK módja annak, hogy az MP4 és streaming konfigurációs fájlokat, hogy [kódolja a félemeleten fájlt Media Services](#encode-to-adaptive-bitrate-mp4s). 
+> Az MP4 és a streaming konfigurációs fájlok beszerzésének egyik módja, ha a [köztes fájlt a Media Services használatával kódolja](#encode-to-adaptive-bitrate-mp4s). 
 
-Ahhoz, hogy a kódolt eszközben lévő videókat elérhetővé tegye az ügyfelek számára a lejátszáshoz, létre kell hoznia egy [streamelési lokátort,](streaming-locators-concept.md) és streamelési URL-eket kell létrehoznia. Ezután a streamelési ügyféljegyzékben megadott formátum (HLS, MPEG DASH vagy Smooth Streaming) alapján a kiválasztott protokollban kapja meg az adatfolyamot.
+Ahhoz, hogy a kódolt eszközön a videók elérhetők legyenek az ügyfelek számára a lejátszáshoz, létre kell hoznia egy [folyamatos átviteli lokátort](streaming-locators-concept.md) és a streaming URL-címeket. Ezután a streaming Client manifest (HLS, MPEG DASH vagy Smooth Streaming) megadott formátuma alapján megkapja az adatfolyamot a választott protokollon.
 
 Így elég egyetlen tárolási formátumban tárolni a fájlokat (és kifizetni a tárhelyüket), a Media Services szolgáltatás elkészíti és kiszolgálja az ügyféltől érkező kérésnek megfelelő választ.
 
-Ha a tartalom védelmét a Media Services dinamikus titkosításával kívánja védeni, olvassa el a [Streamelési protokollok és titkosítási típusok (Streamelési protokollok és titkosítási típusok) témakört.](content-protection-overview.md#streaming-protocols-and-encryption-types)
+Ha a tartalom Media Services dinamikus titkosítással való védelemmel való ellátását tervezi, tekintse meg a [streaming protokollok és a titkosítási típusok](content-protection-overview.md#streaming-protocols-and-encryption-types)című témakört.
 
 ### <a name="hls-protocol"></a>HLS protokoll
 
-A streamelt ügyfél a következő HLS-formátumokat adhatja meg:
+A streaming-ügyfél a következő HLS-formátumokat adhatja meg:
 
 |Protocol (Protokoll)|Példa|
 |---|---|
@@ -55,114 +55,114 @@ A streamelt ügyfél a következő HLS-formátumokat adhatja meg:
 
 ### <a name="mpeg-dash-protocol"></a>MPEG-DASH protokoll
 
-A streamelési ügyfél a következő MPEG-DASH formátumokat adhatja meg:
+A streaming-ügyfél a következő MPEG-DASH formátumokat adhatja meg:
 
 |Protocol (Protokoll)|Példa|
 |---|---|
 |MPEG-DASH CSF| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-csf)` ||
 |MPEG-DASH CMAF|`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=mpd-time-cmaf)` ||
 
-### <a name="smooth-streaming-protocol"></a>Sima streamelési protokoll
+### <a name="smooth-streaming-protocol"></a>Smooth Streaming protokoll
 
-A streamelt ügyfél a következő Smooth Streaming formátumokat adhatja meg:
+A folyamatos átviteli ügyfél a következő Smooth Streaming formátumokat adhatja meg:
 
 |Protocol (Protokoll)|Megjegyzések/példák| 
 |---|---|
 |Smooth Streaming| `https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest`||
-|Sima streamelés 2.0 (örökölt jegyzékfájl)|Alapértelmezés szerint a Smooth Streaming jegyzékfájl formátuma tartalmazza az ismétlődő címkét (r-tag). Egyes játékosok azonban nem `r-tag`támogatják a . Az ilyen lejátszóval rendelkező ügyfelek olyan formátumot használhatnak, amely letiltja az r-címkét:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
+|Smooth Streaming 2,0 (örökölt jegyzékfájl)|Alapértelmezés szerint Smooth Streaming jegyzékfájl formátuma az ismétlés címkét (r-tag) tartalmazza. Bizonyos játékosok azonban nem támogatják a `r-tag`használatát. Az ezekkel a játékosokkal rendelkező ügyfelek használhatnak olyan formátumot, amely letiltja az r-címkét:<br/><br/>`https://amsv3account-usw22.streaming.media.azure.net/21b17732-0112-4d76-b526-763dcd843449/ignite.ism/manifest(format=fmp4-v20)`|
 
 > [!NOTE]
-> A Smooth Streaming használatához mind a hang, mind a videó jelen kell lennie az adatfolyamban.
+> Smooth Streaming megköveteli, hogy a hang és a videó legyen jelen a streamben.
 
-## <a name="on-demand-streaming-workflow"></a>Igény szerinti streamelési munkafolyamat
+## <a name="on-demand-streaming-workflow"></a>Igény szerinti folyamatos átviteli munkafolyamat
 
-A következő lépések egy közös Media Services streamelési munkafolyamatot mutatnak be, ahol a dinamikus csomagolást az Azure Media Services standard kódolójával együtt használják.
+Az alábbi lépések egy közös Media Services streaming-munkafolyamatot mutatnak be, amelyben a dinamikus csomagolás a Azure Media Services standard kódolóval együtt használható.
 
-1. Töltsön fel egy bemeneti fájlt, például egy QuickTime/MOV vagy MXF fájlt. Ez a fájl is nevezik a mezzanine vagy forrás fájlt. A támogatott formátumok listáját a Szabványos kódoló által támogatott formátumok című témakörben [tetszésszerint.](media-encoder-standard-formats.md)
-1. [Kódolja](#encode-to-adaptive-bitrate-mp4s) a félemeleti fájlt egy H.264/AAC MP4 adaptív bitráta készletbe.
-1. Tegye közzé az adaptív sávszélességű MP4-készletet tartalmazó kimeneti eszközt. A streamelési lokátor létrehozásával teheti közzé.
-1. Különböző formátumokat (HLS, MPEG-DASH és Smooth Streaming) célzó URL-eket hozhat létre. A **streamelési végpont** gondoskodna a megfelelő jegyzékfájl és a különböző formátumokra vonatkozó kérések kiszolgálásáról.
+1. Töltsön fel egy bemeneti fájlt, például egy QuickTime-/MOV-vagy MXF-fájlt. Ezt a fájlt a köztes vagy a forrásfájl is nevezik. A támogatott formátumok listáját lásd: [a standard kódoló által támogatott formátumok](media-encoder-standard-formats.md).
+1. A köztes fájl [kódolása](#encode-to-adaptive-bitrate-mp4s) egy H. 264/AAC MP4 adaptív sávszélesség-készletbe.
+1. Tegye közzé az adaptív sávszélességű MP4-készletet tartalmazó kimeneti eszközt. Egy adatfolyam-kereső létrehozásával teheti közzé.
+1. Különböző formátumokat (HLS, MPEG-DASH és Smooth Streaming) célzó URL-címeket hozhat létre. A **folyamatos átviteli végpont** gondoskodik a megfelelő jegyzékfájl és kérések kiszolgálásáról a különböző formátumokhoz.
 
-Az alábbi ábrán az igény szerinti streamelés dinamikus csomagolási munkafolyamattal látható.
+A következő ábra az igény szerinti folyamatos átvitelt mutatja be dinamikus csomagolási munkafolyamattal.
 
-![Munkafolyamat diagramja az igény szerinti streameléshez dinamikus csomagolással](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
+![Az igény szerinti folyamatos átvitelre szolgáló munkafolyamat ábrája dinamikus csomagolással](./media/dynamic-packaging-overview/media-services-dynamic-packaging.svg)
 
-### <a name="encode-to-adaptive-bitrate-mp4s"></a>Kódolás adaptív sávszélességű MP4-ekhez
+### <a name="encode-to-adaptive-bitrate-mp4s"></a>Kódolás adaptív sávszélességű MP4
 
-Az alábbi cikkek példákat mutatnak be [arra, hogyan kódoljon egy videót a Media Services szolgáltatással:](encoding-concept.md)
+A következő cikkek példákat mutatnak [be a videók Media Services használatával történő kódolására](encoding-concept.md):
 
-* [Https-URL-címről kódolva beépített készletek használatával.](job-input-from-http-how-to.md)
-* [Helyi fájl kódolása beépített készletek kel.](job-input-from-local-file-how-to.md)
-* [Hozzon létre egy egyéni készletet az adott forgatókönyv vagy eszközkövetelmények célzásához.](customize-encoder-presets-how-to.md)
+* [KÓDOLÁS HTTPS-URL-címről beépített beállításkészletek használatával](job-input-from-http-how-to.md).
+* [Helyi fájl kódolása beépített beállításkészletek használatával](job-input-from-local-file-how-to.md).
+* [Hozzon létre egy egyéni beállításkészletet az adott forgatókönyv vagy eszköz követelményeinek megcélzásához](customize-encoder-presets-how-to.md).
 
-Tekintse meg a szabványos [kódolóformátumok és kodekek](media-encoder-standard-formats.md)listáját.
+Tekintse meg a szabványos kódoló [-formátumok és-kodekek](media-encoder-standard-formats.md)listáját.
 
-## <a name="live-streaming-workflow"></a>Élő közvetítési munkafolyamat
+## <a name="live-streaming-workflow"></a>Élő adatfolyam-továbbítási munkafolyamat
 
-Az élő esemény beállítható *áthaladásra* (egy helyszíni élő kódoló több bitráta-adatfolyamot küld) vagy *élő kódolásra* (a helyszíni élő kódoló egyetlen átviteli adatfolyamot küld). 
+Egy élő esemény lehet egy *átmenő* (egy helyszíni élő kódoló több bitrátás streamet küld) vagy *élő kódolást* (a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld). 
 
-Íme egy gyakori munkafolyamat az élő streameléshez a dinamikus csomagolással:
+Az alábbi gyakori munkafolyamat a dinamikus csomagolással folytatott élő közvetítéshez használható:
 
-1. [Hozzon](live-events-outputs-concept.md)létre egy élő eseményt .
-1. A betöltési URL-cím betöltése és a helyszíni kódoló konfigurálása az URL-cím használatával küldje el a hozzájárulási hírcsatornát.
-1. Az előnézeti URL-cím leérkezésével ellenőrizheti, hogy a kódoló bemenete érkezik-e.
+1. Hozzon létre egy [élő eseményt](live-events-outputs-concept.md).
+1. Szerezze be a betöltési URL-címet, és konfigurálja a helyszíni kódolót úgy, hogy az URL-cím használatával küldje el a hozzájárulási csatornát.
+1. Szerezze be az előnézeti URL-címet, és annak ellenőrzéséhez, hogy a rendszer beolvassa-e a kódolótól érkező adatokat.
 1. Hozzon létre egy új eszközt.
-1. Hozzon létre egy élő kimenetet, és használja a létrehozott eszköznevet.<br />Az élő kimenet archiválja a streamet az eszközbe.
-1. Hozzon létre egy streamelési lokátort a beépített streamelési házirend-típusokkal.<br />Ha titkosítani kívánja a tartalmat, tekintse át a [Tartalomvédelem áttekintését.](content-protection-overview.md)
-1. Sorolja fel a streamelési lokátor elérési útjait az URL-címek használatának lenyomásához.
-1. A streamelési végpont állomásnevének beszereznie, amelyből streamelni szeretne.
-1. Különböző formátumokat (HLS, MPEG-DASH és Smooth Streaming) célzó URL-eket hozhat létre. A streamelési végpont gondoskodik a megfelelő jegyzékfájl és a különböző formátumok kérései kiszolgálásáról.
+1. Hozzon létre egy élő kimenetet, és használja a létrehozott eszköz nevét.<br />Az élő kimenet archiválja a streamet az eszközre.
+1. Hozzon létre egy streaming-keresőt a beépített folyamatos átviteli házirend-típusokkal.<br />Ha titkosítani szeretné a tartalmakat, tekintse át a [tartalomvédelem áttekintését](content-protection-overview.md).
+1. Listázza a streaming-lokátor elérési útját a használandó URL-címek lekéréséhez.
+1. Szerezze be annak a streaming-végpontnak az állomásnevét, amelyről streamet szeretne továbbítani.
+1. Különböző formátumokat (HLS, MPEG-DASH és Smooth Streaming) célzó URL-címeket hozhat létre. A folyamatos átviteli végpont gondoskodik a megfelelő jegyzékfájl és kérések kiszolgálásáról a különböző formátumokban.
 
-Ez az ábra a dinamikus csomagolással rendelkező élő streamelés munkafolyamatát mutatja:
+Ez az ábra az élő adatfolyamok dinamikus csomagolással való működésének munkafolyamatát mutatja be:
 
-![Munkafolyamat diagramja átmenő kódoláshoz dinamikus csomagolással](./media/live-streaming/pass-through.svg)
+![A dinamikus csomagolással rendelkező, átmenő kódolásra szolgáló munkafolyamat ábrája](./media/live-streaming/pass-through.svg)
 
-A Media Services 3-as v3-as szolgáltatásában az élő közvetítésről az [Élő közvetítés áttekintése című témakörben](live-streaming-overview.md)olvashat.
+További információ a Media Services v3 élő közvetítéséről: [élő közvetítés – áttekintés](live-streaming-overview.md).
 
-## <a name="video-codecs-supported-by-dynamic-packaging"></a>A dinamikus csomagolás által támogatott videokodekek
+## <a name="video-codecs-supported-by-dynamic-packaging"></a>Dinamikus csomagolás által támogatott videó-kodekek
 
-A Dynamic Packaging támogatja a [H.264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) vagy [H.265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videót tartalmazó MP4-fájlokat.
+A dinamikus csomagolás támogatja a [h. 264](https://en.m.wikipedia.org/wiki/H.264/MPEG-4_AVC) (MPEG-4 AVC vagy AVC1) és a [h. 265](https://en.m.wikipedia.org/wiki/High_Efficiency_Video_Coding) (HEVC, hev1 vagy hvc1) kódolású videókat tartalmazó MP4-fájlokat.
 
 > [!NOTE]
-> Dinamikus csomagolással akár 4K felbontást és akár 60 képkocka/másodperc képkocka sebességet is teszteltünk. A [prémium kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a H.265-re történő kódolást az örökölt v2 API-kon keresztül.
+> Akár 4K-ig terjedő, akár 60-es képkockákból álló és a frame sebességű, dinamikus csomagolással tesztelt felbontások is megoldhatók. A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a H. 265 kódolást az örökölt v2 API-kon keresztül.
 
-## <a name="audio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>A dinamikus csomagolás által támogatott hangkodekek
+## <a name="audio-codecs-supported-by-dynamic-packaging"></a><a id="audio-codecs"/>Dinamikus csomagolás által támogatott hangkodekek
 
-A Dynamic Packaging támogatja a következő protokollokkal kódolt hangot:
+A dinamikus csomagolás támogatja a következő protokollokkal kódolt hanganyagot:
 
-* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, HE-AAC v1 vagy HE-AAC v2)
-* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (Továbbfejlesztett AC-3 vagy E-AC3)
+* [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC, it-AAC v1 vagy it-AAC v2)
+* [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus) (bővített AC-3 vagy E-AC3)
 * Dolby Atmos<br />
-   A Dolby Atmos-tartalom streamelése olyan szabványok esetében támogatott, mint az MPEG-DASH protokoll, amely vagy a Common Streaming Format (CSF) vagy a Common Media Application Format (CMAF) töredezett MP4, valamint a HTTP Live Streaming (HLS) protokollon keresztül a CMAF-fel.
+   A folyamatos átviteli Dolby Atmos-tartalom olyan szabványok esetében támogatott, mint például az MPEG-DASH protokoll a Common Streaming Format (CSF) vagy a Common Media Application Format (CMAF) darabolt MP4-vel, valamint a (z) HTTP Live Streaming (HLS) és a CMAF használatával.
 
-* [Dts](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
-   A DASH-CSF, DASH-CMAF, HLS-M2TS és HLS-CMAF csomagolási formátumok által támogatott DTS kodekek a következők:  
+* [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)<br />
+   A DASH-CSF, DASH-CMAF, HLS-M2TS és HLS-CMAF csomagolási formátumok által támogatott DTS-kodekek a következők:  
 
-    * DTS digitális térre (dtsc)
-    * DTS-HD nagy felbontású és DTS-HD master audio (dtsh)
+    * DTS digitális surround (dtsc)
+    * DTS-HD nagy felbontású és DTS-HD Master hang (dtsh)
     * DTS Express (dtse)
-    * DTS-HD Veszteségmentes (nincs mag) (dtsl)
+    * DTS-HD veszteségmentes (nincs mag) (DTSL)
 
-A Dynamic Packaging több hangsávot támogat DASH vagy HLS (4-es vagy újabb verzió) segítségével olyan streamelési eszközök esetén, amelyek több kodeket és nyelvet tartalmazó hangsávot is tartalmazóak.
+A dinamikus csomagolás több hangsávot is támogat a DASH vagy a HLS (4-es vagy újabb verzió) esetében, így több, több kodekkel és nyelvtel rendelkező hangsávot tartalmazó adatfolyam-továbbítási eszköz is használható.
 
 ### <a name="additional-notes"></a>További megjegyzések
 
-A Dinamikus csomagolás nem támogatja a [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) hangot tartalmazó fájlokat (ez egy örökölt kodek).
+A dinamikus csomagolás nem támogatja a [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) hanganyagot tartalmazó fájlokat (ez egy örökölt kodek).
 
 > [!NOTE]
-> A [prémium kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a Dolby Digital Plus kódolását az örökölt v2 API-kon keresztül.
+> A [prémium szintű kódoló](https://docs.microsoft.com/azure/media-services/previous/media-services-encode-asset#media-encoder-premium-workflow) támogatja a Dolby Digital Plus kódolását az örökölt v2 API-kon keresztül.
 
-## <a name="manifests"></a>Rakományjegyzék
+## <a name="manifests"></a>Jegyzékek
 
-A Media Services dinamikus csomagolásában a HLS, az MPEG-DASH és a Smooth Streaming streamelési adatfolyamok dinamikusan jönnek létre az URL-cím formátumválasztója alapján.  
+Media Services dinamikus csomagolásban a HLS, MPEG-DASH és Smooth Streaming adatfolyam-ügyfél-jegyzékfájlok dinamikusan jönnek létre az URL-cím kiválasztó alapján.  
 
-A jegyzékfájl olyan adatfolyam-metaadatokat tartalmaz, mint a műsorszám típusa (hang, videó vagy szöveg), a műsorszám neve, a kezdési és befejezési idő, a bitráta (tulajdonságok), a műsoridő, a bemutatóablak (rögzített időtartamú csúszóablak) és a videokodek (FourCC). Arra is utasítja a játékost, hogy a következő töredéket szerezze be a következő rendelkezésre álló lejátszható videotöredékekről és azok helyéről. A töredékek (vagy szegmensek) a videotartalom tényleges "részei".
+A jegyzékfájlok olyan adatfolyam-metaadatokat tartalmaznak, mint például a követés típusa (hang, videó vagy szöveg), a nyomon követési idő, a kezdő és a befejező időpont, a bitráta (Tulajdonságok), a nyelvek nyomon követése, a megjelenítési időszak (rögzített időtartamú ablak) és a video codec (FourCC). Arra is utasítja a lejátszót, hogy a következő töredéket olvassa be a rendelkezésre álló, valamint a helyükre tartozó következő lejátszható videó-töredékek adatainak megadásával. A töredékek (vagy szegmensek) a videotartalom tényleges "darabjai".
 
 ### <a name="examples"></a>Példák
 
 #### <a name="hls"></a>HLS
 
-Íme egy példa egy HLS jegyzékfájlra, más néven EGY HLS mesterlejátszási listára: 
+Íme egy példa egy HLS manifest-fájlra, más néven HLS fő lejátszási listára: 
 
 ```
 #EXTM3U
@@ -187,9 +187,9 @@ QualityLevels(3579827)/Manifest(video,format=m3u8-aapl)
 QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 
-#### <a name="mpeg-dash"></a>MPEG-DASH
+#### <a name="mpeg-dash"></a>MPEG-KÖTŐJEL
 
-Íme egy példa egy MPEG-DASH jegyzékfájlra, más néven MPEG-DASH médiabemutató-leírásra (MPD):
+Íme egy példa egy MPEG-DASH manifest-fájlra, más néven MPEG-DASH Media Presentation Description (MPD):
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -222,7 +222,7 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 ```
 #### <a name="smooth-streaming"></a>Smooth Streaming
 
-Íme egy példa a Smooth Streaming jegyzékfájlra:
+Példa Smooth Streaming manifest-fájlra:
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -244,9 +244,9 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 </SmoothStreamingMedia>
 ```
 
-### <a name="naming-of-tracks-in-the-manifest"></a>A jegyzékben lévő sávok elnevezése
+### <a name="naming-of-tracks-in-the-manifest"></a>A jegyzékben szereplő számok elnevezése
 
-Ha az .ism fájlban meg van adva egy `Label` hangsáv `AdaptationSet` neve, a Media Services hozzáad egy elemet az adott hangsáv szöveges adatainak megadásához. Példa a kimeneti DASH-jegyzékfájlra:
+Ha meg van adva egy hangsáv neve az. ISM fájlban, Media Services egy `Label` elemet ad hozzá az a `AdaptationSet` -n belül, hogy megadja az adott hangsávokhoz tartozó anyagminta-információkat. Példa a kimeneti kötőjel jegyzékfájlra:
 
 ```xml
 <AdaptationSet codecs="mp4a.40.2" contentType="audio" lang="en" mimeType="audio/mp4" subsegmentAlignment="true" subsegmentStartsWithSAP="1">
@@ -258,21 +258,21 @@ Ha az .ism fájlban meg van adva egy `Label` hangsáv `AdaptationSet` neve, a Me
 </AdaptationSet>
 ```
 
-A lejátszó az `Label` elem segítségével megjelenítheti a felhasználói felületét.
+A lejátszó használhatja az `Label` elemet a felhasználói felületen való megjelenítéshez.
 
-### <a name="signaling-audio-description-tracks"></a>A hangleírásának jelzése
+### <a name="signaling-audio-description-tracks"></a>A hangjelzések leírásának nyomon követése
 
-Kísérőszöveg-sávot adhat a videóhoz, hogy a látássérült ügyfelek a kísérőszöveg meghallgatásával kövessék a videofelvételt. Egy hangsávot kell jegyzeteket jegyzetelnie a jegyzékben. Ehhez adja hozzá a "kisegítő lehetőségek" és a "szerep" paramétereket az .ism fájlhoz. Az Ön felelőssége, hogy ezeket a paramétereket helyesen állítsa be, hogy a hangsávot hangleírásként jelezze. Például adja `<param name="accessibility" value="description" />` `<param name="role" value="alternate"` hozzá és adja hozzá az .ism fájlt egy adott hangsávhoz. 
+Kísérőszöveget adhat a videóhoz, hogy az ügyfelek vizuálisan korlátozott számú ügyfelet a Kísérőszöveg figyelésével kövessék. A jegyzékfájlban hanganyagként kell jegyzeteket adni. Ehhez adja hozzá a "kisegítő adatok" és a "szerepkör" paramétereket az. ISM fájlhoz. Az Ön felelőssége, hogy ezeket a paramétereket helyesen adja meg, hogy hangvételt jelezzen a hanganyagok leírásaként. Például vegyen fel `<param name="accessibility" value="description" />` egy `<param name="role" value="alternate"` adott hangsávokat a és az. ISM fájlba. 
 
-További információt a [Példaa Leíró hangsáv jelzése](signal-descriptive-audio-howto.md) című témakörben talál.
+További információ: [útmutató a Description hangfrekvenciás követéséhez](signal-descriptive-audio-howto.md) .
 
-#### <a name="smooth-streaming-manifest"></a>Sima streamelési jegyzék
+#### <a name="smooth-streaming-manifest"></a>Smooth Streaming jegyzékfájl
 
-Ha sima streamelési adatfolyamot játszik le, a jegyzékfájl értékeket `Accessibility` és `Role` attribútumokat hordoz az adott hangsávhoz. Például `Role="alternate" Accessibility="description"` az elem bekerül az `StreamIndex` elembe, jelezve, hogy ez egy hangleírás.
+Ha Smooth Streaming adatfolyamot játszik, a jegyzékfájl a hangsávok értékeit `Accessibility` és `Role` attribútumait fogja végrehajtani. Például `Role="alternate" Accessibility="description"` az `StreamIndex` elemben adja hozzá az elemet, hogy jelezze a hang leírását.
 
-#### <a name="dash-manifest"></a>DASH-jegyzékfájl
+#### <a name="dash-manifest"></a>KÖTŐJEL jegyzékfájlja
 
-A DASH jegyzékfájl esetében a következő két elem jelenik meg a hangleírás jelzéséhez:
+A DASH manifest esetében a következő két elemet kell felvenni a hang leírásának jelzéséhez:
 
 ```xml
 <Accessibility schemeIdUri="urn:mpeg:dash:role:2011" value="description"/>
@@ -281,30 +281,30 @@ A DASH jegyzékfájl esetében a következő két elem jelenik meg a hangleírá
 
 #### <a name="hls-playlist"></a>HLS lejátszási lista
 
-A HLS v7 `(format=m3u8-cmaf)`és újabb `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` , a lejátszási lista járna, ha a hang leírás sáv jelzésre.
+A HLS v7 és újabb `(format=m3u8-cmaf)`verziók esetében a lejátszási `AUTOSELECT=YES,CHARACTERISTICS="public.accessibility.describes-video"` lista a hang leírásának nyomon követése után is elvégezhető.
 
 #### <a name="example"></a>Példa
 
-További információ: [A hangleírás-sávok jelzése.](signal-descriptive-audio-howto.md)
+További információ: [a hangleírás nyomon követése](signal-descriptive-audio-howto.md).
 
 ## <a name="dynamic-manifest"></a>Dinamikus jegyzékfájl
 
-A lejátszóknak küldött zeneszámok, formátumok, bitráták és bemutató-időablakok számának szabályozásához dinamikus szűrést használhat a Media Services dinamikus csomagolójával. További információ: [A jegyzékek előszűrése a dinamikus csomagolóval](filters-dynamic-manifest-overview.md)című témakörben található.
+A játékosok számára eljuttatott zeneszámok, formátumok, bitráták és a bemutató időpontok számának szabályozásához dinamikus szűrést használhat a Media Services dinamikus csomagoló használatával. További információkért lásd: [a dinamikus csomagolóval kapcsolatos előzetes szűrési jegyzékek](filters-dynamic-manifest-overview.md).
 
 ## <a name="dynamic-encryption"></a>Dinamikus titkosítás
 
-A *dinamikus titkosítással* dinamikusan titkosíthatja élő vagy igény szerinti tartalmait az AES-128 vagy a három fő digitális jogkezelési (DRM) rendszer bármelyikével: a Microsoft PlayReady, a Google Widevine és az Apple FairPlay rendszerekkel. A Media Services szolgáltatást is biztosít az AES-kulcsok és DRM-licencek engedélyezett ügyfelek nek történő kézbesítéséhez. További információt a [dinamikus titkosítás](content-protection-overview.md)című témakörben talál.
+A *dinamikus titkosítás* használatával az élő vagy igény szerinti tartalmakat az AES-128 vagy a három nagy digitális jogkezelési (DRM) rendszerű rendszeren keresztül dinamikusan titkosíthatja: Microsoft PlayReady, Google Widevine és Apple Fairplay. A Media Services egy szolgáltatást is biztosít az AES-kulcsok és a DRM-licencek engedélyezésére a hitelesítő ügyfelek számára. További információ: [dinamikus titkosítás](content-protection-overview.md).
 
 > [!NOTE]
-> A Widevine a Google Inc. által nyújtott szolgáltatás, amely a Google, Inc. szolgáltatási feltételei és adatvédelmi irányelvei szerint működik.
+> A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
 ## <a name="more-information"></a>További információ
 
-Tekintse meg [az Azure Media Services-közösségből,](media-services-community.md) hogy megtekintse a kérdések et, visszajelzéseket és frissítéseket kaphat a Media Services szolgáltatásról.
+Tekintse meg [Azure Media Services közösségét](media-services-community.md) , hogy különböző módokon lásson kérdéseket, visszajelzést küldjön, és frissítéseket kérjen a Media Servicesról.
 
 ## <a name="need-help"></a>Segítségre van szüksége?
 
-A támogatási jegyet az [Új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
+A támogatási jegyet az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)való navigálással nyithatja meg.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,16 +1,16 @@
 ---
-title: 'Rövid útmutató: Az első PowerShell-lekérdezés'
-description: Ebben a rövid útmutatóban kövesse a lépéseket az Azure PowerShell Resource Graph moduljának engedélyezéséhez, és futtassa az első lekérdezést.
+title: 'Rövid útmutató: az első PowerShell-lekérdezés'
+description: Ebben a rövid útmutatóban a következő lépésekkel engedélyezheti a Azure PowerShell Resource Graph-modult, és futtathatja az első lekérdezést.
 ms.date: 11/21/2019
 ms.topic: quickstart
 ms.openlocfilehash: dd96324671f46f98d5b6c8bae1839a5b02d38b23
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240659"
 ---
-# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rövid útmutató: Futtassa az első Resource Graph-lekérdezést az Azure PowerShell használatával
+# <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával
 
 Az Azure Resource Graph használatához először meg kell győződnie arról, hogy az Azure PowerShellhez szükséges modul telepítve van. E rövid útmutató segítségével hozzáadhatja a modult a telepített Azure PowerShellhez.
 
@@ -18,13 +18,13 @@ Ezen folyamatban a modult hozzáadja az Azure PowerShell-telepítéshez, és fut
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot, mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
 ## <a name="add-the-resource-graph-module"></a>A Resource Graph modul hozzáadása
 
-Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modul használható a helyileg telepített PowerShell, [az Azure Cloud Shell,](https://shell.azure.com)vagy a [PowerShell Docker-rendszerkép.](https://hub.docker.com/_/microsoft-powershell)
+Ahhoz, hogy az Azure PowerShell lekérdezhesse az Azure Resource Graphot, el kell végezni a modul hozzáadását. Ez a modul helyileg telepített PowerShell-lel, [Azure Cloud Shell](https://shell.azure.com)vagy a [PowerShell Docker-lemezképpel](https://hub.docker.com/_/microsoft-powershell)is használható.
 
 ### <a name="base-requirements"></a>Alapszintű követelmények
 
@@ -36,16 +36,16 @@ Az Azure Resource Graph modulhoz az alábbi szoftverek szükségesek:
 
 ### <a name="install-the-module"></a>A modul telepítése
 
-A PowerShell Erőforrásgráf modulja az **Az.ResourceGraph.**
+A PowerShellhez készült Resource Graph-modul az **az. ResourceGraph**.
 
-1. Egy **felügyeleti** PowerShell-parancssorból futtassa a következő parancsot:
+1. **Rendszergazdai** PowerShell-parancssorból futtassa a következő parancsot:
 
    ```azurepowershell-interactive
    # Install the Resource Graph module from PowerShell Gallery
    Install-Module -Name Az.ResourceGraph
    ```
 
-1. Annak ellenőrzése, hogy a modul importálása megtörtént-e, és a legújabb verzió (0.7.5):
+1. Ellenőrizze, hogy a modul importálása megtörtént-e, és a legújabb verzió-e (0.7.5):
 
    ```azurepowershell-interactive
    # Get a list of commands for the imported Az.ResourceGraph module
@@ -88,7 +88,7 @@ Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, 
 Miután a végső lekérdezés többször is futott, és feltéve, hogy a környezetben semmi sem változik, a visszaadott találatok konzisztensek és a vártnak megfelelőek lesznek – a **Name** tulajdonság szerint lesznek rendezve, és csak az első öt eredmény jelenik meg.
 
 > [!NOTE]
-> Ha a lekérdezés nem ad vissza eredményeket egy olyan `Search-AzGraph` előfizetésből, amelyhez már rendelkezik hozzáféréssel, vegye figyelembe, hogy a parancsmag alapértelmezés szerint az alapértelmezett környezetben az előfizetések. Az alapértelmezett környezet részét képező előfizetés-azonosítók listájának `(Get-AzContext).Account.ExtendedProperties.Subscriptions` megtekintéséhez futtassa ezt a lehetőséget: Ha az összes olyan előfizetésben `Search-AzGraph` szeretne keresni, amelyhez hozzáférése van, beállíthatja a PSDefaultParameterValues parancsot a parancsmaghoz a`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Ha a lekérdezés nem ad vissza olyan előfizetésből származó eredményeket, amelyhez már van hozzáférése, `Search-AzGraph` akkor vegye figyelembe, hogy a parancsmag alapértelmezett környezetében az előfizetések alapértelmezés szerint szerepelnek. `(Get-AzContext).Account.ExtendedProperties.Subscriptions` Ha szeretné megtekinteni az alapértelmezett környezet részét képező előfizetési azonosítók listáját, akkor az összes Ön által elérhető előfizetésben megadhatja a PSDefaultParameterValues a `Search-AzGraph` parancsmag futtatásával.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -107,7 +107,7 @@ Uninstall-Module -Name 'Az.ResourceGraph'
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban hozzáadta a Resource Graph modult az Azure PowerShell-környezethez, és futtatja az első lekérdezést. Ha többet szeretne megtudni az Erőforrás-diagram nyelvéről, folytassa a lekérdezésnyelv részletei lappal.
+Ebben a rövid útmutatóban felvette az erőforrás-gráf modult a Azure PowerShell környezetbe, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 
 > [!div class="nextstepaction"]
-> [További információ a lekérdezés nyelvéről](./concepts/query-language.md)
+> [További információ a lekérdezési nyelvről](./concepts/query-language.md)

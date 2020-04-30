@@ -1,22 +1,22 @@
 ---
-title: Linux-tárolóalkalmazás létrehozása az Azure-beli Service Fabric szolgáltatáson
+title: Linuxos Container-alkalmazás létrehozása Service Fabric az Azure-ban
 description: Ebben a rövid útmutatóban egy Docker-rendszerképet készít az alkalmazásával, amelyet leküld egy tárolóregisztrációs adatbázisba, majd üzembe helyezi a tárolót egy Service Fabric-fürtön.
 ms.topic: quickstart
 ms.date: 07/22/2019
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: eb0a83d0110002cc32998af4083d06cf6e86e16a
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75372686"
 ---
 # <a name="quickstart-deploy-linux-containers-to-service-fabric"></a>Rövid útmutató: Linux-tárolók üzembe helyezése a Service Fabricben
 
 Az Azure Service Fabric egy elosztott rendszerplatform, amely skálázható és megbízható mikroszolgáltatások és tárolók üzembe helyezésére és kezelésére szolgál.
 
-Ez a rövid útmutató bemutatja, hogyan telepítheti a Linux-tárolókat egy Service Fabric-fürtre az Azure-ban. Miután elkészült, egy szavazóalkalmazást kap, amely egy Python-alapú webes előtérrendszert és egy Redis-alapú háttérrendszert tartalmaz, amely egy Service Fabric-fürtben fut. Azt is megismeri, hogyan végezheti el egy alkalmazás feladatátvételét és hogyan skálázhatja a fürtben lévő alkalmazásokat.
+Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe Linux-tárolókat egy Azure-beli Service Fabric-fürtön. Miután elkészült, egy szavazóalkalmazást kap, amely egy Python-alapú webes előtérrendszert és egy Redis-alapú háttérrendszert tartalmaz, amely egy Service Fabric-fürtben fut. Azt is megismeri, hogyan végezheti el egy alkalmazás feladatátvételét és hogyan skálázhatja a fürtben lévő alkalmazásokat.
 
 ![Szavazóalkalmazás weboldala][quickstartpic]
 
@@ -24,20 +24,20 @@ Ez a rövid útmutató bemutatja, hogyan telepítheti a Linux-tárolókat egy Se
 
 Az oktatóanyag elvégzéséhez:
 
-1. Hozzon létre egy [ingyenes Azure-fiókot,](https://azure.microsoft.com/free/) mielőtt elkezdené, ha nem rendelkezik előfizetéssel.
+1. Hozzon létre egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) , mielőtt elkezdené, ha nem rendelkezik előfizetéssel.
 
 2. Telepítse az [Azure CLI-t](/cli/azure/install-azure-cli-apt?view=azure-cli-latest)
 
-3. A [Service Fabric SDK és CLI](service-fabric-get-started-linux.md#installation-methods) telepítése
+3. A [Service FABRIC SDK és parancssori](service-fabric-get-started-linux.md#installation-methods) felület telepítése
 
-4. [Git](https://git-scm.com/) telepítése
+4. A [git](https://git-scm.com/) telepítése
 
 
 ## <a name="get-the-application-package"></a>Az alkalmazáscsomag beszerzése
 
 A tárolók a Service Fabric szolgáltatásban való üzembe helyezéséhez jegyzékfájlok egy készletére lesz szükség (az alkalmazásdefinícióra), amelyek leírják az egyes tárolókat és az alkalmazást.
 
-A konzolon a git segítségével klónozhatja az alkalmazásdefiníció egy példányát; majd változtassa meg `Voting` a könyvtárakat a klón könyvtárába.
+A konzolon a git használatával klónozott az alkalmazás definíciójának másolatát; Ezután módosítsa a címtárakat `Voting` a klónozott könyvtárba.
 
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
@@ -47,7 +47,7 @@ cd service-fabric-containers/Linux/container-tutorial/Voting
 
 ## <a name="create-a-service-fabric-cluster"></a>Service Fabric-fürt létrehozása
 
-Ha az alkalmazást üzembe szeretné helyezni az Azure-ban, szüksége lesz egy Service Fabric-fürtre a futtatásához. A következő parancsok ötcsomópontos fürtöt hoznak létre az Azure-ban.  A parancsok önaláírt tanúsítványt is hoznak létre, hozzáadja a key vaulthoz, és helyileg letölti a tanúsítványt. Az új tanúsítvány a fürt védelmére szolgál, amikor telepíti, és az ügyfelek hitelesítésére szolgál.
+Ha az alkalmazást üzembe szeretné helyezni az Azure-ban, szüksége lesz egy Service Fabric-fürtre a futtatásához. Az alábbi parancsok egy öt csomópontos fürtöt hoznak létre az Azure-ban.  A parancsok létrehoznak egy önaláírt tanúsítványt is, hozzáadják azt egy kulcstartóhoz, és helyileg töltik le a tanúsítványt. A rendszer az új tanúsítványt használja a fürt biztonságossá tételéhez az üzembe helyezés során, és az ügyfelek hitelesítésére szolgál.
 
 ```azurecli
 #!/bin/bash
@@ -77,7 +77,7 @@ az sf cluster create --resource-group $ResourceGroupName --location $Location --
 ```
 
 > [!Note]
-> A webes előtérrendszer a konfigurációja szerint a 80-as porton figyeli a bejövő forgalmat. Alapértelmezés szerint a 80-as port meg van nyitva a fürt virtuális gépeken és az Azure terheléselosztó.
+> A webes előtérrendszer a konfigurációja szerint a 80-as porton figyeli a bejövő forgalmat. Alapértelmezés szerint a 80-es port nyitva van a fürtön futó virtuális gépeken és az Azure Load balanceren.
 >
 
 ## <a name="configure-your-environment"></a>A környezet konfigurálása
@@ -88,29 +88,29 @@ A Service Fabric számos eszközt nyújt, amelyekkel kezelheti a fürtöket és 
 - A Service Fabric parancssori felületet (CLI-t), amely az Azure CLI-n fut. 
 - PowerShell-parancsokat.
 
-Ebben a rövid útmutatóban a Service Fabric CLI és service Fabric Explorer (egy webes alapú eszköz) használatával. A Service Fabric Explorer használatához importálnia kell a pfx-tanúsítványfájlt a böngészőbe. Alapértelmezés szerint a PFX fájlnak nincs jelszava.
+Ebben a rövid útmutatóban az Service Fabric CLI és a Service Fabric Explorer (webalapú eszköz) használatával. A Service Fabric Explorer használatához importálnia kell a tanúsítvány PFX-fájlját a böngészőbe. Alapértelmezés szerint a PFX-fájlnak nincs jelszava.
 
-Mozilla Firefox az alapértelmezett böngésző ubuntu 16.04. A tanúsítvány a Firefoxba importálásához kattintson a böngésző jobb felső sarkában lévő menügombra, majd a **Beállítások** gombra. A **Beállítások** oldalon a keresőmezővel keressen rá a „tanúsítványok” kifejezésre. Kattintson a **Tanúsítványkezelő** gombra, válassza a **Saját tanúsítványok** fület, kattintson az **Importálás** lehetőségre, és kövesse az utasításokat a tanúsítvány importálásához.
+A Mozilla Firefox az Ubuntu 16,04 alapértelmezett böngészője. A tanúsítvány a Firefoxba importálásához kattintson a böngésző jobb felső sarkában lévő menügombra, majd a **Beállítások** gombra. A **Beállítások** oldalon a keresőmezővel keressen rá a „tanúsítványok” kifejezésre. Kattintson a **Tanúsítványkezelő** gombra, válassza a **Saját tanúsítványok** fület, kattintson az **Importálás** lehetőségre, és kövesse az utasításokat a tanúsítvány importálásához.
 
    ![Tanúsítvány telepítése Firefoxon](./media/service-fabric-quickstart-containers-linux/install-cert-firefox.png)
 
 ## <a name="deploy-the-service-fabric-application"></a>A Service Fabric-alkalmazás üzembe helyezése
 
-1. Csatlakozzon a Service Fabric-fürthöz az Azure-ban a CLI használatával. A végpont a fürt felügyeleti végpontja. A PEM-fájlt az előző szakaszban hozta létre. 
+1. Kapcsolódjon a Service Fabric-fürthöz az Azure-ban a parancssori felület használatával. A végpont a fürt felügyeleti végpontja. A PEM-fájlt az előző szakaszban hozta létre. 
 
     ```bash
     sfctl cluster select --endpoint https://containertestcluster.eastus.cloudapp.azure.com:19080 --pem containertestcluster22019013100.pem --no-verify
     ```
 
-2. Használja a telepítési szkriptet a szavazóalkalmazás definíciójának a fürtbe való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.  A PEM-tanúsítványfájlnak ugyanabban a könyvtárban kell lennie, mint a *install.sh* fájlnak.
+2. Használja a telepítési szkriptet a szavazóalkalmazás definíciójának a fürtbe való másolásához, regisztrálja az alkalmazás típusát, és hozza létre az alkalmazás egy példányát.  A PEM-tanúsítványfájl a *install.sh* -fájllal megegyező könyvtárban kell lennie.
 
     ```bash
     ./install.sh
     ```
 
-3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő: **https://\<my-azure-service-fabric-cluster-url>:19080/Explorer**; például `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
+3. Nyisson meg egy webböngészőt, majd navigáljon a fürt Service Fabric Explorer-végpontjára. A végpont formátuma a következő: **https://\<My-Azure-Service-Fabric-cluster-URL>:19080/Explorer**; például: `https://containertestcluster.eastus.cloudapp.azure.com:19080/Explorer`. </br>
 
-4. Bontsa ki az **Alkalmazások** csomópontot, hogy lássa, hogy most már van egy bejegyzés a szavazó alkalmazás típusához és a létrehozott példányhoz.
+4. Bontsa ki az **alkalmazások** csomópontot, és ellenőrizze, hogy most már van-e bejegyzés a szavazási alkalmazás típusához és a létrehozott példányhoz.
 
     ![Service Fabric Explorer][sfx]
 
@@ -169,7 +169,7 @@ Használja a sablonban megadott eltávolítási szkriptet (uninstall.sh) az alka
 
 A fürt és az összes általa használt erőforrás törlésének legegyszerűbb módja az erőforráscsoport törlése.
 
-Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetés-azonosítót, amellyel el szeretné távolítani a fürtöt. Az Azure Portalra bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és az összes fürterőforrást az [az csoport törlés parancsával.](/cli/azure/group?view=azure-cli-latest)
+Jelentkezzen be az Azure-ba, és válassza ki azt az előfizetés-azonosítót, amellyel el szeretné távolítani a fürtöt. Az Azure Portalra bejelentkezve keresheti meg az előfizetés azonosítóját. Törölje az erőforráscsoportot és az összes fürterőforrás-erőforrást az az [Group delete paranccsal](/cli/azure/group?view=azure-cli-latest).
 
 ```azurecli
 az login
@@ -178,7 +178,7 @@ ResourceGroupName="containertestcluster"
 az group delete --name $ResourceGroupName
 ```
 
-Ha végzett a fürt használatával, eltávolíthatja a tanúsítványt a tanúsítványtárolóból. Példa:
+Ha végzett a fürt használatával, eltávolíthatja a tanúsítványt a tanúsítványtárolóból. Például:
 - Windows rendszeren: Használja a [Tanúsítványok MMC beépülő modult](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in). Ügyeljen arra, hogy a **Saját felhasználói fiókot** válassza a beépülő modul hozzáadásakor. Lépjen a `Certificates - Current User\Personal\Certificates` helyre, és távolítsa el a tanúsítványt.
 - Mac rendszeren: Használja a Keychain alkalmazást.
 - Ubuntu rendszeren: Kövesse a tanúsítványok megtekintéséhez használt lépéseket, majd távolítsa el a tanúsítványt.

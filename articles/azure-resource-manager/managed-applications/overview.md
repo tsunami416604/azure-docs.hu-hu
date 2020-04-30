@@ -1,15 +1,15 @@
 ---
-title: Felügyelt alkalmazások áttekintése
-description: Ismerteti az Azure felügyelt alkalmazások fogalmait, amelyek a fogyasztók számára könnyen üzembe helyezhetők és működtethető felhőalapú megoldásokat kínálnak.
+title: A felügyelt alkalmazások áttekintése
+description: Ismerteti a Azure Managed Applications fogalmakat, amelyek olyan felhőalapú megoldásokat biztosítanak, amelyek megkönnyítik a felhasználók számára az üzembe helyezést és a működést.
 author: tfitzmac
 ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
 ms.openlocfilehash: 0615830e525ab60bbb2167dd39d9c4bf14cc91b3
-ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81391581"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
@@ -19,7 +19,7 @@ Az Azure Managed Applications segítségével az ügyfelek által könnyedén ü
 A felügyelt alkalmazások sokban hasonlítanak a Marketplace megoldássablonjaihoz, egy fontos különbséget leszámítva. A felügyelt alkalmazások esetében az erőforrások üzembe helyezése egy erőforráscsoportban történik, amelyet az alkalmazás közzétevője felügyel. Az erőforráscsoport az ügyfél előfizetésében található meg, de a közzétevő bérlőjének egy identitása rendelkezik hozzáféréssel az erőforráscsoporthoz. A megoldás folyamatos támogatásának költségeit a közzétevő határozza meg.
 
 > [!NOTE]
-> Korábban az Azure Custom Providers dokumentációját a felügyelt alkalmazások dokumentációja tartalmazta. A dokumentációt áthelyezték. Most tekintse meg az [Azure egyéni szolgáltatók](../custom-providers/overview.md).
+> Az Azure egyéni szolgáltatók dokumentációját korábban a felügyelt alkalmazások dokumentációja tartalmazza. A dokumentáció át lett helyezve. Most tekintse meg az Azure-beli [egyéni szolgáltatókat](../custom-providers/overview.md).
 
 ## <a name="advantages-of-managed-applications"></a>A felügyelt alkalmazások előnyei
 
@@ -31,7 +31,7 @@ Habár az ügyfelek saját maguk telepítik az előfizetésükhöz tartozó fel�
 
 A felügyelt alkalmazások lehetővé teszik, hogy az informatikai részleg előre jóváhagyott megoldásokat nyújtson a vállalat felhasználói számára. Így biztos lehet abban, hogy a megoldások megfelelnek a vállalati szabványoknak.
 
-A felügyelt alkalmazások [támogatják az Azure-erőforrások felügyelt identitásait.](./publish-managed-identity.md)
+A felügyelt alkalmazások támogatják [Az Azure-erőforrások felügyelt identitásait](./publish-managed-identity.md).
 
 ## <a name="types-of-managed-applications"></a>A felügyelt alkalmazások típusai
 
@@ -53,7 +53,7 @@ A felügyelt alkalmazások Azure Marketplace-en való közzétételével kapcsol
 
 ## <a name="resource-groups-for-managed-applications"></a>Felügyelt alkalmazások erőforráscsoportjai
 
-A felügyelt alkalmazások erőforrásai általában két erőforráscsoportban találhatók. Ezek közül egyet az ügyfél kezel, a másikat pedig a közzétevő felügyeli. A felügyelt alkalmazás meghatározásakor a közzétevő határozza meg a hozzáférési szinteket. A közzétevő kérhet egy állandó szerepkör-hozzárendelést, vagy [just-in-time hozzáférést](request-just-in-time-access.md) egy olyan hozzárendeléshez, amely egy időszakra van korlátozva.
+A felügyelt alkalmazás erőforrásai általában két erőforráscsoporthoz tartoznak. Ezek közül egyet az ügyfél kezel, a másikat pedig a közzétevő felügyeli. A felügyelt alkalmazás meghatározásakor a közzétevő határozza meg a hozzáférési szinteket. A közzétevő egy állandó szerepkör-hozzárendelést igényelhet, vagy igény szerinti [hozzáférést](request-just-in-time-access.md) biztosíthat egy adott időszakra korlátozott hozzárendeléshez.
 
 Az [adatműveletekhez](../../role-based-access-control/role-definitions.md) való hozzáférés korlátozása jelenleg nem támogatott az Azure összes adatszolgáltatójánál.
 
@@ -69,9 +69,9 @@ Az ügyfél teljes hozzáféréssel rendelkezik az erőforráscsoporthoz, így k
 
 ### <a name="managed-resource-group"></a>Felügyelt erőforráscsoportok
 
-Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz. A hozzáférés állandó vagy meghatározott időpontra korlátozódik.
+Ez az erőforráscsoport a felügyelt alkalmazáshoz szükséges összes erőforrást tartalmazza. Ez az erőforrás például a megoldáshoz szükséges virtuális gépeket, tárfiókokat és virtuális hálózatokat is tartalmazza. Az ügyfél korlátozott hozzáféréssel rendelkezik ehhez az erőforráscsoporthoz, mivel nem az ügyfél kezeli a felügyelt alkalmazás különálló erőforrásait. A közzétevő hozzáférése az erőforráscsoporthoz megfelel a felügyelt alkalmazás definíciójában megadott szerepkörnek. Például a közzétevő kérheti a tulajdonosi vagy közreműködői szerepkört az erőforráscsoporthoz. A hozzáférés vagy állandó, vagy egy adott időre korlátozódik.
 
-A [felügyelt alkalmazás piactéren](publish-marketplace-app.md)való közzétételekor a közzétevő lehetővé teheti a felhasználók számára, hogy meghatározott műveleteket hajtsanak végre a felügyelt erőforráscsoport erőforrásain. A közzétevő például megadhatja, hogy a fogyasztók újraindíthassák a virtuális gépeket. Az olvasási műveleteken túli minden egyéb művelet továbbra is megtagadva.
+Amikor közzéteszi a [felügyelt alkalmazást a piactéren](publish-marketplace-app.md), a közzétevő engedélyezheti a felhasználók számára, hogy meghatározott műveleteket hajtsanak végre a felügyelt erőforráscsoport erőforrásain. A közzétevő például megadhatja, hogy a felhasználók újra tudják indítani a virtuális gépeket. Az olvasási műveleteken túl minden más művelet is megtagadva.
 
 Ha az ügyfél törli a felügyelt alkalmazást, az erőforráscsoport is törlődik.
 

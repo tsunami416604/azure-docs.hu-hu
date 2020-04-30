@@ -1,5 +1,5 @@
 ---
-title: 'Azure ExpressRoute – áttekintés: Csatlakozás privát kapcsolaton keresztül'
+title: 'Azure ExpressRoute – Áttekintés: privát kapcsolaton keresztüli csatlakoztatás'
 description: Az ExpressRoute technikai áttekintése ismerteti, hogyan terjeszthető ki a helyszíni hálózatát az Azure-ra egy ExpressRoute-kapcsolattal egy privát kapcsolaton keresztül.
 services: expressroute
 author: mialdrid
@@ -8,18 +8,18 @@ ms.topic: overview
 ms.date: 09/18/2019
 ms.author: mialdrid
 ms.openlocfilehash: d2f31be5e7ece32fb1e0f6d9a2e482688d46eeb3
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75770951"
 ---
 # <a name="expressroute-overview"></a>ExpressRoute – áttekintés
 Az ExpressRoute használatával kiterjesztheti helyszíni hálózatait a Microsoft Cloudba egy privát kapcsolaton keresztül, amelyet egy kapcsolatszolgáltató biztosít. Az ExpressRoute használatával kapcsolatokat létesíthet olyan Microsoft-felhőszolgáltatásokkal, mint például a Microsoft Azure és az Office 365.
 
-A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Ez lehetővé teszi, hogy az ExpressRoute-kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, konzisztens konzisztens késéseket és nagyobb biztonságot nyújtsanak, mint az interneten keresztül isznak. További információk a hálózat a Microsofthoz való csatlakoztatásáról az ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
+A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok közötti Ethernet-hálózat vagy egy virtuális keresztkapcsolat egy kapcsolatszolgáltatón keresztül egy közös elhelyezési létesítményben. Az ExpressRoute-kapcsolatok nem a nyilvános interneten haladnak át. Ez lehetővé teszi a ExpressRoute-kapcsolatok számára, hogy megbízhatóbb, gyorsabb sebességet, konzisztens késést és nagyobb biztonságot nyújtsanak, mint az interneten keresztüli szokásos kapcsolatok. További információk a hálózat a Microsofthoz való csatlakoztatásáról az ExpressRoute használatával: [ExpressRoute kapcsolati modellek](expressroute-connectivity-models.md).
 
-![ExpressRoute-kapcsolat – áttekintés](./media/expressroute-introduction/expressroute-connection-overview.png)
+![ExpressRoute-kapcsolatok áttekintése](./media/expressroute-introduction/expressroute-connection-overview.png)
 
 ## <a name="key-benefits"></a>Főbb előnyök
 
@@ -39,7 +39,7 @@ További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 A Microsoft egy iparági szabványnak megfelelő dinamikus útválasztási protokollt, a BGP-t alkalmazza az útvonalak cseréjéhez a helyszíni hálózat, az Azure-ban lévő példányai és a Microsoft nyilvános címek között. Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
 
 ### <a name="redundancy"></a>Redundancia
-Minden ExpressRoute-kapcsolat két kapcsolatból áll két Microsoft Enterprise peremhálózati útválasztóval egy [ExpressRoute-helyen](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) a kapcsolatszolgáltatótól/a hálózat peremhálózatáról. A Microsoft kettős BGP-kapcsolatot igényel a kapcsolatszolgáltatótól/a peremhálózatról – egyet-egyet mindegyik MSEE-hez. Dönthet úgy, hogy nem helyez üzembe redundáns eszközöket/Ethernet-kapcsolatcsoportokat az Ön oldalán. A kapcsolatszolgáltatók azonban redundáns eszközöket használnak annak biztosítása érdekében, hogy az Ön kapcsolatai redundáns módon jussanak el a Microsofthoz. Az [SLA](https://azure.microsoft.com/support/legal/sla/) érvényességének előfeltétele a redundáns 3. rétegbeli kapcsolódási konfiguráció.
+Minden [ExpressRoute-áramkör](https://docs.microsoft.com/azure/expressroute/expressroute-locations#expressroute-locations) két, két Microsoft Enterprise Edge-útválasztóhoz (msee), a kapcsolati szolgáltatótól/a hálózat szélétől. A Microsoft kettős BGP-kapcsolatot igényel a kapcsolatszolgáltatótól/a peremhálózatról – egyet-egyet mindegyik MSEE-hez. Dönthet úgy, hogy nem helyez üzembe redundáns eszközöket/Ethernet-kapcsolatcsoportokat az Ön oldalán. A kapcsolatszolgáltatók azonban redundáns eszközöket használnak annak biztosítása érdekében, hogy az Ön kapcsolatai redundáns módon jussanak el a Microsofthoz. Az [SLA](https://azure.microsoft.com/support/legal/sla/) érvényességének előfeltétele a redundáns 3. rétegbeli kapcsolódási konfiguráció.
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Kapcsolódás a Microsoft-felhőszolgáltatásokhoz
 Az ExpressRoute-kapcsolatok a következő szolgáltatásokhoz biztosítanak hozzáférést:
@@ -57,11 +57,11 @@ Csatlakozhat a Microsofthoz a [társviszony-létesítési helyszínek](expressro
 
 Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, az Észak- és Nyugat-Európában üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáférhet. A geopolitikai régiók, a hozzájuk rendelt Microsoft-felhőrégiók és a megfelelő ExpressRoute-társviszonylétesítési helyszínek áttekintését az [ExpressRoute-partnerek és -társviszonylétesítési helyszínek](expressroute-locations.md) oldalán találja.
 
-### <a name="global-connectivity-with-expressroute-premium"></a>Globális kapcsolat az ExpressRoute Premium szolgáltatással
-Engedélyezheti [az ExpressRoute Premium](expressroute-faqs.md) számára a kapcsolat kiterjesztése a geopolitikai határokon keresztül. Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, a világszerte az összes régióban (az országos felhők kivételével) üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáférhet. A Dél-Amerikában vagy Ausztráliában üzemeltetett szolgáltatásokat ugyanúgy eléri majd, mint az észak- vagy nyugat-európai régióban lévőket.
+### <a name="global-connectivity-with-expressroute-premium"></a>Globális kapcsolat a ExpressRoute Premium szolgáltatással
+A [ExpressRoute prémium](expressroute-faqs.md) szintű engedélyezésével kiterjesztheti a kapcsolatokat a geopolitikai határokon belül. Ha például Amszterdamban csatlakozik a Microsofthoz az ExpressRoute-on keresztül, a világszerte az összes régióban (az országos felhők kivételével) üzemeltetett összes Microsoft-felhőszolgáltatáshoz hozzáférhet. A Dél-Amerikában vagy Ausztráliában üzemeltetett szolgáltatásokat ugyanúgy eléri majd, mint az észak- vagy nyugat-európai régióban lévőket.
 
-### <a name="local-connectivity-with-expressroute-local"></a>Helyi kapcsolat az ExpressRoute Local-nal
-Az adatok költséghatékony átviteléhez engedélyezve a [helyi termékváltozat,](expressroute-faqs.md) ha az adatokat egy ExpressRoute helyen a kívánt Azure-régió közelében. A Helyi, adatátvitel tartalmazza az ExpressRoute port díj. 
+### <a name="local-connectivity-with-expressroute-local"></a>Helyi kapcsolat a helyi ExpressRoute
+Az adatok költséghatékony átviteléhez engedélyezze a [helyi SKU](expressroute-faqs.md) -t, ha a kívánt Azure-régió közelében helyezheti át az adatait egy ExpressRoute-helyre. A helyi adatátviteli szolgáltatás a ExpressRoute-port díját is tartalmazza. 
 
 ### <a name="across-on-premises-connectivity-with-expressroute-global-reach"></a>Helyszínek közötti csatlakozási lehetőségek az ExpressRoute Global Reach segítségével
 Az ExpressRoute Global Reach használatával adatokat cserélhet a helyszíni helyek között az ExpressRoute-kapcsolatcsoportok csatlakoztatása révén. Ha például van egy privát adatközpontja Kaliforniában, amellyel a Szilícium-völgyben lévő ExpressRoute-hoz csatlakozik, és egy másik Texasban, amellyel a Dallasban lévő ExpressRoute-hoz, akkor az ExpressRoute Global Reach használatával csatlakoztathatja ezeket a privát adatközpontokat két ExpressRoute-kapcsolatcsoporton keresztül. Az adatközpontok közötti forgalom a Microsoft hálózatán fog áthaladni.

@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – Stream Analytics-feladat létrehozása az Azure PowerShell használatával
-description: Ez a rövid útmutató bemutatja, hogyan használhatja az Azure PowerShell-modult egy Azure Stream Analytics-feladat üzembe helyezéséhez és futtatásához.
+title: Rövid útmutató – Stream Analytics-feladatok létrehozása Azure PowerShell használatával
+description: Ez a rövid útmutató azt ismerteti, hogyan használható a Azure PowerShell modul a Azure Stream Analytics feladatok üzembe helyezéséhez és futtatásához.
 author: mamccrea
 ms.author: mamccrea
 ms.date: 12/20/2018
@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 84c132c333e4d6ba052029350f275ebf499a906f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79536802"
 ---
-# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Rövid útmutató: Stream Analytics-feladat létrehozása az Azure PowerShell használatával
+# <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Gyors útmutató: Stream Analytics-feladatok létrehozása Azure PowerShell használatával
 
-Az Azure PowerShell-modul segítségével azure-erőforrásokat hozhat létre és kezelhet PowerShell-parancsmagokkal vagy parancsfájlokkal. Ez az útmutató azt mutatja be, hogy hogyan lehet egy Azure Stream Analytics-feladatot létrehozni és futtatni az Azure PowerShell-modul használatával.
+A Azure PowerShell modul Azure-erőforrások létrehozásához és kezeléséhez használható PowerShell-parancsmagokkal vagy parancsfájlokkal. Ez az útmutató azt mutatja be, hogy hogyan lehet egy Azure Stream Analytics-feladatot létrehozni és futtatni az Azure PowerShell-modul használatával.
 
-A példafeladat beolvassa az IoT Hub-eszközről a streamelési adatokat. A bemeneti adatokat egy Raspberry Pi online szimulátor hozza létre. Ezután a Stream Analytics-feladat átalakítja az adatokat a Stream Analytics lekérdezési nyelv használatával, hogy 27°-nál nagyobb hőmérsékletű üzeneteket szűrjön. Végül az eredményül kapott kimeneti eseményeket egy blob storage-ban lévő fájlba írja.
+A példában szereplő művelet beolvassa az adatfolyam-adatokat egy IoT Hub eszközről. A bemeneti adatokat a málna PI online szimulátor hozza létre. Ezután a Stream Analytics feladatot a Stream Analytics lekérdezési nyelv segítségével alakítja át az üzeneteket a 27 °-nál nagyobb hőmérsékletű üzenetek szűréséhez. Végezetül az eredményül kapott kimeneti eseményeket a blob Storage-ban lévő fájlba írja.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -26,14 +26,14 @@ A példafeladat beolvassa az IoT Hub-eszközről a streamelési adatokat. A beme
 
 * Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot.](https://azure.microsoft.com/free/)
 
-* Ehhez a rövid útmutatóhoz az Azure PowerShell-modul szükséges. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
+* Ehhez a rövid útmutatóhoz a Azure PowerShell modul szükséges. Ahhoz, hogy megtudja, melyik verzió van telepítve a helyi gépen, futtassa a `Get-Module -ListAvailable Az` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](https://docs.microsoft.com/powershell/azure/install-Az-ps) ismertető cikket.
 
-* Néhány IoT Hub-műveletet az Azure PowerShell nem támogat, és az Azure CLI 2.0.70-es vagy újabb verziójával, valamint az Azure CLI IoT-bővítményével kell végrehajtani. [Telepítse az Azure CLI-t,](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) és használja `az extension add --name azure-iot` az IoT-bővítmény telepítéséhez.
+* Egyes IoT Hub műveleteket a Azure PowerShell nem támogat, és az Azure CLI 2.0.70 vagy újabb verziójával, valamint az Azure CLI-hez készült IoT-bővítménnyel kell befejezni. [Telepítse az Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t `az extension add --name azure-iot` , és használja az IoT-bővítmény telepítéséhez.
 
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és adja meg az Azure-hitelesítő adatait az előugró böngészőben:
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` paranccsal, és adja meg az Azure-beli hitelesítő adatait az előugró böngészőben:
 
 ```powershell
 # Connect to your Azure account
@@ -52,7 +52,7 @@ Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubsc
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
-Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup segítségével.](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
+Hozzon létre egy Azure-erőforráscsoportot a [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup). Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
@@ -66,11 +66,11 @@ New-AzResourceGroup `
 
 A Stream Analytics-feladat létrehozása előtt készítse elő azokat az adatokat, amelyek a feladat bemenetét fogják képezni.
 
-A következő Azure CLI kódblokk számos parancsot hajt végre a feladat által igényelt bemeneti adatok előkészítéséhez. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
+A következő Azure CLI-kódrészlet számos parancsot tartalmaz a feladathoz szükséges bemeneti adatok előkészítéséhez. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
 
-1. A PowerShell-ablakban futtassa az [az bejelentkezési](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) parancsot az Azure-fiókjába való bejelentkezéshez.
+1. A PowerShell-ablakban futtassa az az [login](https://docs.microsoft.com/cli/azure/authenticate-azure-cli?view=azure-cli-latest) parancsot az Azure-fiókjába való bejelentkezéshez.
 
-    Sikeres bejelentkezés után az Azure CLI visszaadja az előfizetések listáját. Másolja a rövid útmutatóhoz használt előfizetést, és futtassa az [az fiókkészlet parancsot](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) az adott előfizetés kiválasztásához. Válassza ki ugyanazt az előfizetést, amelyet az előző szakaszban a PowerShell. Győződjön meg `<your subscription name>` róla, hogy lecseréli az előfizetés nevét.
+    Ha sikeresen bejelentkezik, az Azure CLI az előfizetések listáját adja vissza. Másolja ki a rövid útmutatóhoz használt előfizetést, és futtassa az az [Account set](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest#change-the-active-subscription) parancsot az előfizetés kiválasztásához. Válassza ki ugyanazt az előfizetést, amelyet az előző szakaszban kiválasztott a PowerShell-lel. Ügyeljen rá, hogy `<your subscription name>` az előfizetése nevére cserélje le.
 
     ```azurecli
     az login
@@ -78,47 +78,47 @@ A következő Azure CLI kódblokk számos parancsot hajt végre a feladat által
     az account set --subscription "<your subscription>"
     ```
 
-2. Hozzon létre egy IoT Hub az [az ioot hub create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) paranccsal. Ebben a példában létrehoz egy IoT Hub nevű **MyASAIoTHub.** Mivel az IoT Hub-nevek egyediek, saját IoT Hub-névvel kell előállnia. Állítsa be a termékváltozat ot F1-re az ingyenes szint használatára, ha az előfizetéssel elérhető. Ha nem, válassza ki a következő legalacsonyabb szintet.
+2. Hozzon létre egy IoT Hub az az [IoT hub Create](../iot-hub/iot-hub-create-using-cli.md#create-an-iot-hub) paranccsal. Ez a példa egy **MyASAIoTHub**nevű IoT hub hoz létre. Mivel a IoT Hub nevek egyediek, a saját IoT Hub nevét kell megadnia. Állítsa az SKU-t az F1-re, hogy az ingyenes szintet használja, ha az előfizetése elérhető. Ha nem, válassza a következő legalacsonyabb szintet.
 
     ```azurecli
     az iot hub create --name "<your IoT Hub name>" --resource-group $resourceGroup --sku S1
     ```
 
-    Az IoT hub létrehozása után az IoT Hub kapcsolati karakterlánca az [az ioot hub show-connection-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) paranccsal. Másolja a teljes kapcsolati karakterláncot, és mentse azt, amikor hozzáadja az IoT Hub-ot bemenetként a Stream Analytics-feladathoz.
+    Miután létrejött az IoT hub, szerezze be a IoT Hub kapcsolati karakterláncot az az [IoT hub show-kapcsolat-string](https://docs.microsoft.com/cli/azure/iot/hub?view=azure-cli-latest) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt, amikor hozzáadja a IoT Hub a Stream Analytics feladathoz.
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
     ```
 
-3. Adjon hozzá egy eszközt az IoT Hubhoz az [az iothub-eszközidentitás-létrehozási](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) paranccsal. Ebben a példában létrehoz egy **MyASAIoTDevice**nevű eszközt.
+3. Az az [iothub Device-Identity Create](../iot-hub/quickstart-send-telemetry-c.md#register-a-device) paranccsal adhat hozzá IoT hub eszközt. Ez a példa egy **MyASAIoTDevice**nevű eszközt hoz létre.
 
     ```azurecli
     az iot hub device-identity create --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice"
     ```
 
-4. Az eszköz kapcsolati karakterláncának beszereznie az [az iot hub device-identity show-connection-string](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) paranccsal. Másolja a teljes kapcsolati karakterláncot, és mentse el a Raspberry Pi szimulátor létrehozásakor.
+4. Szerezze be az eszköz kapcsolati karakterláncát az az [IOT hub Device-Identity show-kapcsolat-string](/cli/azure/ext/azure-cli-iot-ext/iot/hub/device-identity#ext-azure-cli-iot-ext-az-iot-hub-device-identity-show-connection-string) parancs használatával. Másolja a teljes kapcsolódási karakterláncot, és mentse azt a málna PI szimulátor létrehozásakor.
 
     ```azurecli
     az iot hub device-identity show-connection-string --hub-name "MyASAIoTHub" --device-id "MyASAIoTDevice" --output table
     ```
 
-    **Kimeneti példa:**
+    **Példa a kimenetre:**
 
     ```output
     HostName=MyASAIoTHub.azure-devices.net;DeviceId=MyASAIoTDevice;SharedAccessKey=a2mnUsg52+NIgYudxYYUNXI67r0JmNubmfVafojG8=
     ```
 
-## <a name="create-blob-storage"></a>Blob-tárterület létrehozása
+## <a name="create-blob-storage"></a>BLOB Storage létrehozása
 
-A következő Azure PowerShell-kódblokk parancsokat használ a feladatkimenethez használt blobstorage létrehozásához. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
+Az alábbi Azure PowerShell-kód a parancsok használatával hozza létre a feladatok kimenetéhez használt BLOB Storage-tárolót. Tekintse át az egyes szakaszokat a kód értelmezése céljából.
 
-1. Hozzon létre egy szabványos általános célú tárfiókot [a New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) parancsmag használatával.  Ebben a példában létrehoz egy **myasaquickstartstorage** nevű tárfiókot helyileg redundáns tárral (LRS) és blob titkosítással (alapértelmezés szerint engedélyezve).
+1. Hozzon létre egy szabványos általános célú Storage-fiókot a [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) parancsmag használatával.  Ez a példa létrehoz egy **myasaquickstartstorage** nevű Storage-fiókot a helyileg redundáns tárolással (LRS) és a blob titkosításával (alapértelmezés szerint engedélyezve van).
 
 2. Kérje le a `$storageAccount.Context` nevű tárfiókkörnyezetet, amely meghatározza a használni kívánt tárfiókot. Ha a tárfiókok használatával történő munka során erre a környezetre hivatkozik, nem kell minden alkalommal megadnia a hitelesítő adatokat.
 
-3. Hozzon létre egy tárolótárolót a [New-AzStorageContainer használatával.](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer)
+3. Hozzon létre egy Storage-tárolót a [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/az.storage/new-azstoragecontainer)használatával.
 
-4. Másolja a kód által kimenetelét tartalmazó tárolási kulcsot, és mentse azt a kulcsot a streamelési feladat kimenetének későbbi létrehozásához.
+4. Másolja ki a kód által leképezett tárolási kulcsot, és mentse a kulcsot a folyamatos átviteli feladatok kimenetének későbbi létrehozásához.
 
     ```powershell
     $storageAccountName = "myasaquickstartstorage"
@@ -146,7 +146,7 @@ A következő Azure PowerShell-kódblokk parancsokat használ a feladatkimenethe
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 
-Hozzon létre egy Stream Analytics-feladatot a [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) parancsmaggal. Ez a parancsmag a feladat nevét, az erőforráscsoport nevét és a feladatdefiníciót veszi fel paraméterekként. A feladat neve bármilyen, a feladatot azonosító rövid név lehet. Csak alfanumerikus karaktereket, kötőjeleket és aláhúzásokat tartalmazhat, és 3 és 63 karakter közötti nek kell lennie. A feladat definíciója egy JSON-fájl, amely a feladat létrehozásához szükséges tulajdonságokat tartalmazza. Hozzon létre a helyi gépén egy `JobDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat:
+Hozzon létre egy Stream Analytics feladatot a [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob) parancsmaggal. Ez a parancsmag a feladatok nevét, az erőforráscsoport nevét és a feladatdefiníció paraméterként való megadását végzi. A feladat neve bármilyen, a feladatot azonosító rövid név lehet. Csak alfanumerikus karaktereket, kötőjeleket és aláhúzást tartalmazhat, és 3 – 63 karakter hosszúnak kell lennie. A feladat definíciója egy JSON-fájl, amely a feladat létrehozásához szükséges tulajdonságokat tartalmazza. Hozzon létre a helyi gépén egy `JobDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat:
 
 ```json
 {
@@ -162,7 +162,7 @@ Hozzon létre egy Stream Analytics-feladatot a [New-AzStreamAnalyticsJob](https:
 }
 ```
 
-Ezután futtassa a `New-AzStreamAnalyticsJob` parancsmagot. Cserélje le `jobDefinitionFile` a változó értékét arra az elérési útra, amelyen a feladatdefiníciós JSON-fájlt tárolta.
+Ezután futtassa a `New-AzStreamAnalyticsJob` parancsmagot. Cserélje le a változó `jobDefinitionFile` értékét arra az elérési útra, ahol a feladatdefiníció JSON-fájlját mentette.
 
 ```powershell
 $jobName = "MyStreamingJob"
@@ -176,9 +176,9 @@ New-AzStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>A feladat bemenetének konfigurálása
 
-Adjon hozzá egy bemenetet a feladathoz a [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy blob storage-t hoz létre bemenetként.
+Adjon hozzá egy bemenetet a feladathoz a [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat bemenetének a neve, az erőforráscsoport neve, és a feladat bemenetének definíciója adható meg paraméterként. A feladat bemenetének definíciója egy JSON-fájl, amely a feladat bemenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ebben a példában egy blob Storage-t hoz létre bemenetként.
 
-Hozzon létre a helyi gépén egy `JobInputDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Győződjön meg arról, hogy cserélje le az értéket `accesspolicykey` az `SharedAccessKey` IoT Hub kapcsolati karakterlánc egy előző szakaszban mentett része.
+Hozzon létre a helyi gépén egy `JobInputDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Győződjön meg arról, hogy az értéket `accesspolicykey` lecseréli a IoT hub az előző szakaszban mentett kapcsolódási karakterlánc egy `SharedAccessKey` részével.
 
 ```json
 {
@@ -209,7 +209,7 @@ Hozzon létre a helyi gépén egy `JobInputDefinition.json` nevű fájlt, és ad
 }
 ```
 
-Ezután futtassa a `New-AzStreamAnalyticsInput` parancsmast, `jobDefinitionFile` győződjön meg arról, hogy lecseréli a változó értékét arra az elérési útra, ahol a feladatbemeneti definíciójának JSON-fájlját tárolta.
+Ezután futtassa a `New-AzStreamAnalyticsInput` parancsmagot, ügyeljen arra, hogy a `jobDefinitionFile` változó értékét cserélje le arra az elérési útra, ahol a feladathoz megadott bemeneti definíció JSON-fájlját mentette.
 
 ```powershell
 $jobInputName = "IoTHubInput"
@@ -223,7 +223,7 @@ New-AzStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>A feladat kimenetének konfigurálása
 
-Adjon hozzá egy kimenetet a feladathoz a [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
+Adja hozzá a kimenetet a feladatokhoz a [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat kimenetének a neve, az erőforráscsoport neve, és a feladat kimenetének definíciója adható meg paraméterként. A feladat kimenetének definíciója egy JSON-fájl, amely a feladat kimenetének konfigurálásához szükséges tulajdonságokat tartalmazza. Ez a példa egy Blob Storage-tárolót használ kimenetként.
 
 Hozzon létre a helyi gépén egy `JobOutputDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. Ügyeljen arra, hogy az `accountKey` értékét lecserélje a tárfiókja hozzáférési kulcsára, amelyet a $storageAccountKey értéke ad meg.
 
@@ -272,7 +272,7 @@ New-AzStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>A transzformációs lekérdezés definiálása
 
-Adjon hozzá egy átalakítást a feladathoz a [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. Hozzon létre a helyi gépén egy `JobTransformationDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. A JSON-fájl tartalmaz egy query (lekérdezés) paramétert, amellyel definiálható a transzformációs lekérdezés:
+Adja hozzá a feladatot a [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation) parancsmag használatával. Ennél a parancsmagnál a feladat neve, a feladat transzformációjának a neve, az erőforráscsoport neve, és a feladat transzformációjának definíciója adható meg paraméterként. Hozzon létre a helyi gépén egy `JobTransformationDefinition.json` nevű fájlt, és adja hozzá a következő JSON-adatokat. A JSON-fájl tartalmaz egy query (lekérdezés) paramétert, amellyel definiálható a transzformációs lekérdezés:
 
 ```json
 {
@@ -286,7 +286,7 @@ Adjon hozzá egy átalakítást a feladathoz a [New-AzStreamAnalyticsTransformat
 }
 ```
 
-Ezután futtassa a `New-AzStreamAnalyticsTransformation` parancsmagot. Győződjön meg arról, hogy lecseréli `jobTransformationDefinitionFile` a változó értékét arra az elérési útra, amelyen a feladatátalakítási definíciójának JSON-fájlját tárolta.
+Ezután futtassa a `New-AzStreamAnalyticsTransformation` parancsmagot. Ügyeljen arra, hogy a `jobTransformationDefinitionFile` változó értékét cserélje le arra az elérési útra, ahol a feladatütemezés-definíció JSON-fájlját mentette.
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
@@ -298,13 +298,13 @@ New-AzStreamAnalyticsTransformation `
   -Name $jobTransformationName -Force
 ```
 
-## <a name="run-the-iot-simulator"></a>Az IoT-szimulátor futtatása
+## <a name="run-the-iot-simulator"></a>A IoT Simulator futtatása
 
-1. Nyissa meg a [Raspberry Pi Azure IoT Online Simulator t.](https://azure-samples.github.io/raspberry-pi-web-simulator/)
+1. Nyissa meg a [málna PI Azure IoT online szimulátort](https://azure-samples.github.io/raspberry-pi-web-simulator/).
 
-2. Cserélje le a helyőrzőt a 15- ös sorban az azure IoT Hub-eszköz teljes kapcsolati karakterláncára, amelyet egy előző szakaszban mentett.
+2. A 15. sorban található helyőrzőt cserélje le az előző szakaszban mentett teljes Azure-IoT Hub eszköz-összekapcsolási sztringre.
 
-3. Kattintson a **Futtatás gombra.** A kimenetnek meg kell jelennie az Érzékelő adatait és az IoT Hubnak küldött üzeneteket.
+3. Kattintson a **Futtatás**gombra. A kimenetnek meg kell jelenítenie az érzékelő adatait és a IoT Hub küldött üzeneteket.
 
     ![Online Raspberry Pi Azure IoT-szimulátor](./media/stream-analytics-quick-create-powershell/ras-pi-connection-string.png)
 
@@ -323,7 +323,7 @@ Start-AzStreamAnalyticsJob `
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem fogja tovább használni ezt a feladatot, törölje a rövid útmutató által létrehozott összes erőforrást a következő parancsmag futtatásával:
+Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos átviteli feladatot és az összes kapcsolódó erőforrást. A feladat törlésével megakadályozhatja, hogy a feladat által felhasznált streamelési egységek kiszámlázásra kerüljenek. Ha később is szeretné használni a feladatot, akkor nem kell törölnie, hanem elég, ha leállítja. Ha nem kívánja tovább használni ezt a feladatot, törölje az ebben a rövid útmutatóban létrehozott összes erőforrást a következő parancsmag futtatásával:
 
 ```powershell
 Remove-AzResourceGroup `

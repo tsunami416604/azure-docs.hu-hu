@@ -1,123 +1,123 @@
 ---
-title: Modell konvertálása
-description: Rövid útmutató, amely egy egyéni modell konvertálási lépéseit mutatja be.
+title: Modell átalakítása
+description: Egy egyéni modell átalakítási lépéseit bemutató gyors útmutató.
 author: florianborn71
 ms.author: flborn
 ms.date: 01/23/2020
 ms.topic: quickstart
 ms.openlocfilehash: 7ba8d201c29b5e3835fec52d8c479a388ca07f71
-ms.sourcegitcommit: 7e04a51363de29322de08d2c5024d97506937a60
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81312991"
 ---
-# <a name="quickstart-convert-a-model-for-rendering"></a>Rövid útmutató: Modell konvertálása rendereléshez
+# <a name="quickstart-convert-a-model-for-rendering"></a>Gyors útmutató: modell átalakítása renderelésre
 
-A [rövid útmutatóban: Rendereljen egy modellt unity,](render-model.md)megtanulta, hogyan kell használni a Unity mintaprojekt renderelése egy beépített modell. Ez az útmutató bemutatja, hogyan konvertálhatja saját modelljeit.
+A rövid útmutatóban [: modell megjelenítése egységgel](render-model.md), megtanulta, hogyan használható a Unity Sample Project egy beépített modell megjelenítéséhez. Ez az útmutató bemutatja, hogyan alakíthatja át saját modelljeit.
 
 A következőket fogja megtanulni:
 
 > [!div class="checklist"]
 >
-> * Azure blobstorage-fiók beállítása bemenethez és kimenethez
-> * 3D modell feltöltése és konvertálása az Azure távoli rendereléséhez
-> * Az átalakított 3D modell felvétele renderelésre szolgáló alkalmazásba
+> * Azure Blob Storage-fiók beállítása a bevitelhez és a kimenethez
+> * 3D modell feltöltése és átalakítása az Azure távoli rendereléssel való használatra
+> * Konvertált 3D modell belefoglalása egy alkalmazásba megjelenítéshez
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Teljes [rövid útmutató: Modell renderelése unity](render-model.md)
-* Az Azure PowerShell telepítése [(dokumentáció)](https://docs.microsoft.com/powershell/azure/)
+* Teljes rövid útmutató [: modell megjelenítése egységgel](render-model.md)
+* Azure PowerShell telepítése [(dokumentáció)](https://docs.microsoft.com/powershell/azure/)
   * Rendszergazdai jogosultságokkal rendelkező PowerShell megnyitása
-  * Fuss:`Install-Module -Name Az -AllowClobber`
+  * Futtassa`Install-Module -Name Az -AllowClobber`
 
 ## <a name="overview"></a>Áttekintés
 
-A kiszolgálón lévő megjelenítő nem tud közvetlenül működni a forrásmodell-formátumokban, például az FBX-szel vagy a GLTF-fel. Ehelyett megköveteli, hogy a modell egy saját bináris formátumban legyen.
-A konverziós szolgáltatás az Azure blob storage-ból származó modelleket használ fel, és a konvertált modelleket visszaküldi egy megadott Azure blobtároló-tárolóba.
+A kiszolgálón a megjelenítő nem tud közvetlenül működni a forrás modell formátumával, például a FBX vagy a GLTF. Ehelyett a modellnek védett bináris formátumúnak kell lennie.
+Az átalakítási szolgáltatás felhasználja az Azure Blob Storage modelljeit, és visszaírja a konvertált modelleket egy megadott Azure Blob Storage-tárolóba.
 
 A következők szükségesek:
 
 * Azure-előfizetés
-* "StorageV2" fiók az előfizetésben
-* Blob storage-tároló a bemeneti modellhez
-* Blob storage-tároló a kimeneti adatokhoz
-* Konvertálandó modell, [lásd: mintamodellek](../samples/sample-model.md)
-  * A támogatott [forrásformátumok](../how-tos/conversion/model-conversion.md#supported-source-formats) listájának megtekintése
-  * A mintakonverziós parancsfájl használatához győződjön meg arról, hogy előkészítegy bemeneti mappát, amely tartalmazza a modellt és az összes külső függőséget (például külső textúrákat vagy geometriát)
+* Az előfizetéshez tartozó "StorageV2" fiók
+* BLOB Storage-tároló a bemeneti modellhez
+* A kimeneti adatokat tartalmazó blob Storage-tároló
+* Egy konvertálandó modell, lásd: [minta modellek](../samples/sample-model.md)
+  * Tekintse meg a [támogatott forrás-formátumok](../how-tos/conversion/model-conversion.md#supported-source-formats) listáját
+  * A minta konverziós parancsfájl használatához győződjön meg arról, hogy előkészít egy bemeneti mappát, amely tartalmazza a modellt és az összes külső függőséget (például külső textúrák vagy geometria).
 
-## <a name="azure-setup"></a>Az Azure beállítása
+## <a name="azure-setup"></a>Azure-telepítés
 
-Ha még nincs fiókja, látogasson [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/)el a , kattintson az ingyenes fiók opcióra, és kövesse az utasításokat.
+Ha még nincs fiókja, nyissa meg a parancsot [https://azure.microsoft.com/get-started/](https://azure.microsoft.com/get-started/), kattintson az ingyenes fiók lehetőségre, és kövesse az utasításokat.
 
-Ha rendelkezik Azure-fiókkal, nyissa meg a lehetőséget. [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home)
+Ha már rendelkezik Azure-fiókkal, nyissa meg a [https://ms.portal.azure.com/#home](https://ms.portal.azure.com/#home)következőt:.
 
-### <a name="storage-account-creation"></a>Tárfiók létrehozása
+### <a name="storage-account-creation"></a>Storage-fiók létrehozása
 
-Blob storage létrehozásához először szüksége van egy tárfiókra.
-Ha létre szeretne hozni egyet, kattintson az "Erőforrás létrehozása" gombra:
+BLOB Storage létrehozásához először egy Storage-fiókra van szükség.
+Egy létrehozásához kattintson az "erőforrás létrehozása" gombra:
 
 ![Azure – erőforrás hozzáadása](media/azure-add-a-resource.png)
 
-Az új képernyőn válassza a **Tárolás** a bal oldalon, majd **a Storage fiók - blob, fájl, tábla, várólista** a következő oszlopból:
+Az új képernyőn válassza a **tároló** lehetőséget a bal oldalon, majd a **Storage Account-blob, fájl, tábla, üzenetsor** elemet a következő oszlopból:
 
-![Azure – tárhely hozzáadása](media/azure-add-storage.png)
+![Azure – tárterület hozzáadása](media/azure-add-storage.png)
 
-Erre a gombra kattintva megjelenik a következő képernyő, amelyen tárolótulajdonságok vannak kitöltve:
+Ha erre a gombra kattint, a következő képernyő jelenik meg a tárolási tulajdonságok kitöltésével:
 
-![Azure beállítása](media/azure-setup1.png)
+![Azure-telepítés](media/azure-setup1.png)
 
 Töltse ki az űrlapot a következő módon:
 
-* Hozzon létre egy új erőforráscsoportot a legördülő lista alatti hivatkozásból, és nevezze el ezt a **ARR_Tutorial**
-* A **Storage-fiók nevéhez**itt adjon meg egy egyedi nevet. **Ennek a névnek globálisan egyedinek kell lennie,** ellenkező esetben egy üzenet jelenik meg, amely tájékoztatja, hogy a név készen áll. A program a rövid útmutató hatókörében **arrtutorialstorage-nak**nevezzük. Ennek megfelelően le kell cserélnie a nevére minden olyan esemény ebben a rövid útmutatóban.
-* Válasszon egy önhöz közeli **helyet.** Ideális esetben ugyanazt a helyet használja, mint a többi rövid útmutatóban a renderelés beállítására.
-* **"Standard"** teljesítményre állítva
-* "StorageV2 (általános célú v2)" típusú **fiókfajta**
-* "Read-access georedundáns tárolás (RA-GRS)" lesz a **replikációs** replikációs
-* **"Forró" hozzáférési szint**
+* Hozzon létre egy új erőforráscsoportot a lenti hivatkozás alatt a legördülő listából, és nevezze el ezt a **ARR_Tutorial**
+* A **Storage-fiók neve**mezőben adjon meg egy egyedi nevet. **Ennek a névnek globálisan egyedinek kell lennie**, ellenkező esetben egy üzenet jelenik meg, amely tájékoztatja arról, hogy a név készen áll. Ennek a rövid útmutatónak a hatókörében a **arrtutorialstorage**nevet adja. Ennek megfelelően le kell cserélnie a nevét a rövid útmutató bármely előfordulása esetén.
+* Válasszon ki egy **helyet** a közelben. Ideális esetben ugyanazt a helyet használja, mint a renderelés beállításához a másik rövid útmutatóban.
+* A **teljesítmény** a "standard" értékre van beállítva
+* A **Fiók típusa** a következőre van beállítva: "StorageV2 (általános célú v2)"
+* **Replikálás** a "READ-Access geo-redundáns tárolás (ra-GRS)" értékre
+* A **hozzáférési szint** a "forró" értékre van állítva
 
-A többi lap egyik tulajdonságát sem kell módosítani, így folytathatja a **"Véleményezés + létrehozás"** kifejezést, majd a telepítés befejezéséhez kövesse a lépéseket.
+A többi lapon lévő tulajdonságok egyikét sem kell módosítania, így folytathatja a **"felülvizsgálat + létrehozás"** parancsot, majd a telepítés befejezéséhez kövesse a lépéseket.
 
-A webhely most tájékoztatja Önt a központi telepítés előrehaladásáról, és a "A telepítés befejeződött" jelentést jelent. A következő lépésekhez kattintson az "Ugrás az **erőforráshoz"** gombra:
+A webhely most tájékoztatja az üzemelő példány előrehaladásáról, és az "üzembe helyezés befejezése" jelentésekről. Kattintson a **"Ugrás az erőforráshoz"** gombra a következő lépésekhez:
 
-![Az Azure Storage létrehozása kész](./media/storage-creation-complete.png)
+![Az Azure Storage létrehozása befejeződött](./media/storage-creation-complete.png)
 
-### <a name="blob-storage-creation"></a>Blob-tároló létrehozása
+### <a name="blob-storage-creation"></a>BLOB Storage létrehozása
 
-Ezután két blobtárolóra van szükség, az egyik a bemenethez, a másik a kimenethez.
+A következő két blob-tárolóra van szükségünk, egyet a bemenethez, egyet pedig a kimenethez.
 
-A fenti "Ugrás az **erőforráshoz"** gombról egy listamenüt tartalmazó panellel rendelkező laphoz jut. Ebben a listában a **"Blob szolgáltatás"** kategóriában kattintson a **"Konténerek"** gombra:
+A fenti **"Ugrás az erőforráshoz"** gombra kattintva megtekintheti a bal oldali panelt, amely egy lista menüt tartalmaz. A **"blob Service"** kategóriába tartozó listában kattintson a **"containers" (tárolók** ) gombra:
 
 ![Azure – tárolók hozzáadása](./media/azure-add-containers.png)
 
-Nyomja meg a **"+ tároló"** gombot a **bemeneti** blob tároló tároló létrehozásához.
-Létrehozásakor használja a következő beállításokat:
+A **bemeneti** blob Storage-tároló létrehozásához nyomja meg a **"+ Container"** gombot.
+A létrehozáskor használja az alábbi beállításokat:
   
 * Név = arrinput
-* Nyilvános hozzáférési szint = Privát
+* Nyilvános hozzáférési szint = Private
 
-A tároló létrehozása után kattintson ismét **a + Container** gombra, és ismételje meg a **kimeneti** tároló beállításait:
+Miután létrehozta a tárolót, kattintson ismét a **+ tároló** elemre, majd ismételje meg ezeket a beállításokat a **kimeneti** tárolóhoz:
 
 * Név = arroutput
-* Nyilvános hozzáférési szint = Privát
+* Nyilvános hozzáférési szint = Private
 
-Most már két blob tárolótárolóval kell rendelkeznie:
+Most két blob Storage-tárolóval kell rendelkeznie:
 
-![Blob Storage beállítása](./media/blob-setup.png)
+![Blob Storage telepítő](./media/blob-setup.png)
 
 ## <a name="run-the-conversion"></a>Az átalakítás futtatása
 
-Az eszközkonverziós szolgáltatás hívásának megkönnyítése érdekében egy segédprogram-parancsfájlt biztosítunk. Ez található a *Scripts* mappába, és az úgynevezett **Conversion.ps1**.
+Ahhoz, hogy könnyebb legyen meghívni az Asset Conversion Service-t, biztosítunk egy segédprogram-szkriptet. A *szkriptek* mappában található, és a **konverzió. ps1**néven szerepel.
 
-Ez a szkript különösen
+Ez a szkript különösen a következő:
 
-1. feltölti az adott könyvtárban lévő összes fájlt a helyi lemezről a bemeneti tárolóba
-1. meghívja [az eszközkonverziós REST API-t,](../how-tos/conversion/conversion-rest-api.md) amely lekéri az adatokat a bemeneti tárolóból, és konverziót indít, amely konverziós azonosítót ad vissza
-1. a konverziós állapot API lekérdezése a beolvasott konverzióazonosítóval, amíg a konverziós folyamat sikeres vagy sikertelen
-1. a kimeneti tárolóban lévő konvertált eszközre mutató hivatkozást keresi le
+1. egy adott könyvtár összes fájljának feltöltése a helyi lemezről a bemeneti tárolóba
+1. meghívja az adategység [átalakítási REST API](../how-tos/conversion/conversion-rest-api.md) , amely beolvassa az adatokat a bemeneti tároló tárolóból, és elindít egy konverziót, amely egy konverziós azonosítót ad vissza.
+1. a konverziós állapot API lekérdezése a beolvasott konverziós azonosítóval, amíg az átalakítási folyamat nem fejeződik be sikeres vagy sikertelen
+1. a kimeneti tárolóban található átalakított eszközre mutató hivatkozást kérdez le.
 
-A parancsfájl a *Parancsfájl\arrconfig.json*fájlból olvassa be a konfigurációját. Nyissa meg a JSON-fájlt egy szövegszerkesztőben.
+A parancsfájl beolvassa a konfigurációját a fájl *Scripts\arrconfig.JSON*. Nyissa meg a JSON-fájlt egy szövegszerkesztőben.
 
 ```json
 {
@@ -144,58 +144,58 @@ A parancsfájl a *Parancsfájl\arrconfig.json*fájlból olvassa be a konfigurác
 }
 ```
 
-A **fiókbeállítások** csoporton (fiókazonosító és kulcs) belüli konfigurációt a Unity [rövid útmutatóval rendelkező modell renderelése](render-model.md)című fázisban lévő hitelesítő adatokhoz hasonlóan kell kitölteni.
+A **accountSettings** csoporton belüli konfigurációt (fiókazonosító és kulcs) a modell kimutatása az [Unity](render-model.md)rövid útmutatóval, a hitelesítő adatokhoz hasonlóan kell kitölteni.
 
-Az **assetConversionSettings** csoporton belül győződjön meg arról, hogy módosítsa **az erőforráscsoportot**, **a blobInputContainerName**és **a blobOutputContainerName** értéket a fentiek szerint.
-Vegye figyelembe, hogy az **arrtutorialstorage** értéket le kell cserélni a tárfiók létrehozása során kiválasztott egyedi névvel.
+A **assetConversionSettings** csoportban ügyeljen arra, hogy a fent látható módon módosítsa a **resourceGroup**, a **blobInputContainerName**és a **blobOutputContainerName** .
+Vegye figyelembe, hogy a **arrtutorialstorage** értéket a Storage-fiók létrehozása során kiválasztott egyedi névvel kell helyettesíteni.
 
-Módosítsa a **localAssetDirectoryPath programot** úgy, hogy a lemezen lévő könyvtárra mutasson, amely a konvertálni kívánt modellt tartalmazza. Ügyeljen arra, hogy megfelelően\\elkerülje a fordított perjeleket ("\\\\") az elérési úton dupla fordított perjelekkel (" ").
+Módosítsa a **localAssetDirectoryPath** úgy, hogy a lemez azon könyvtárába mutasson, amely az átalakítani kívánt modellt tartalmazza. Ügyeljen arra, hogy az elérési úton\\lévő fordított perjeleket ("") a dupla\\\\fordított perjel ("") használatával megfelelően elkerülje.
 
-A **localAssetDirectoryPath** elérési útjáról származó összes adat a **blobInputContainerName blob-tárolóba** kerül az **inputFolderPath**által megadott részelérési út alatt. Így a példa konfiguráció felett a tartalom\\a\\"D: tmp robot" könyvtár lesz feltöltve a blob konténer "arrinput" a tárfiók "arrtutorialstorage" elérési út alatt "robotConversion". A már meglévő fájlok felülíródnak.
+A **localAssetDirectoryPath** -ben megadott elérési útról származó összes adat fel lesz töltve a **blobInputContainerName** blob-tárolóba a **inputFolderPath**által megadott alútvonalon. Így a "D:\\tmp\\robot" könyvtár tartalmához tartozó példa konfigurációban a "arrtutorialstorage" Storage-fiók "arrinput" nevű blob-tárolójában lesz feltöltve a "robotConversion" elérési úton. A már meglévő fájlok felülírva lesznek.
 
-Módosítsa **az inputAssetPath-ot** a konvertálandó modell elérési útvonalára – az elérési út a localAssetDirectoryPath-hoz viszonyítva van. Használja a "/"\\helyett a " " részt az útvonalelválasztóként. Tehát egy "robot.fbx" fájl, amely közvetlenül\\a\\"D: tmp robot" használja "robot.fbx".
+Módosítsa a **inputAssetPath** a konvertálandó modell elérési útjára – az elérési út a localAssetDirectoryPath viszonyítva van. Az elérési út elválasztója\\helyett használja a "/" karaktert. Tehát a "D:\\tmp\\robot" alatt található "robot. FBX" fájlhoz a "robot. FBX" kifejezést használja.
 
-A modell konvertálása után a rendszer visszaírja a **blobOutputContainerName**által megadott tárolóba. A másodlagos elérési út a választható **outputFolderPath**paraméter megadásával adható meg. A fenti példában az eredményül kapott "robot.arrAsset" lesz másolva a kimeneti blob tároló alatt "konvertált/robot".
+A modell átalakítása után a rendszer visszaírja a **blobOutputContainerName**által megadott tárolóba. A választható **outputFolderPath**megadásával egy alelérési út is megadható. Az eredményül kapott "robot. arrAsset" nevű példában a rendszer átmásolja a kimeneti blob-tárolóba a "konvertált/robot" alatt.
 
-A **outputAssetFileName** konfigurációs beállítás határozza meg a konvertált eszköz nevét - a paraméter nem kötelező, és a kimeneti fájlnév egyébként a bemeneti fájl nevéből lesz levezethető. 
+A **outputAssetFileName** konfigurációs beállítás határozza meg a konvertált eszköz nevét – a paraméter nem kötelező, és a kimeneti fájlnév a bemeneti fájlnévtől eltérő lesz. 
 
-Nyisson meg egy PowerShellt, győződjön meg arról, hogy telepítette az *Azure PowerShellt* az [előfeltételekben említettek szerint.](#prerequisites) Ezután jelentkezzen be az előfizetésbe a következő paranccsal, és kövesse a képernyőn megjelenő utasításokat:
+Nyisson meg egy PowerShellt, győződjön meg arról, hogy telepítette az [előfeltételekben](#prerequisites)említett *Azure PowerShell* . Ezután jelentkezzen be az előfizetésbe az alábbi paranccsal, és kövesse a képernyőn megjelenő utasításokat:
 
 ```PowerShell
 Connect-AzAccount
 ```
 
 > [!NOTE]
-> Abban az esetben, ha a szervezet egynél több előfizetéssel rendelkezik, előfordulhat, hogy meg kell adnia az Előfizetési és bérlői argumentumokat. Részletek a [Connect-AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
+> Ha a szervezet egynél több előfizetéssel rendelkezik, lehet, hogy meg kell adnia a SubscriptionId és a bérlői argumentumokat. A részletek a [AzAccount dokumentációjában](https://docs.microsoft.com/powershell/module/az.accounts/connect-azaccount)találhatók.
 
-Váltás a `azure-remote-rendering\Scripts` könyvtárra, és futtassa a konvertálási parancsfájlt:
+Váltson át a `azure-remote-rendering\Scripts` könyvtárra, és futtassa az átalakítási parancsfájlt:
 
 ```PowerShell
 .\Conversion.ps1 -UseContainerSas
 ```
 
-Meg kell látni valami ![ilyesmi: Conversion.ps1](./media/successful-conversion.png)
+A következőhöz hasonlónak kell megjelennie: ![Conversion. ps1](./media/successful-conversion.png)
 
-A konvertálási parancsfájl *egy SAS-URI-t* hoz létre a konvertált modellhez. Most már átmásolhatja ezt az URI-t **modellnévként** a rövid útmutató mintaalkalmazásba (lásd: [Rövid útmutató: Modell renderelése unity-vel).](render-model.md)
+Az átalakítási parancsfájl létrehoz egy *közös hozzáférési aláírási (SAS) URI-* t a konvertált modellhez. Ezt az URI-t mostantól a **modell neveként** is másolhatja a gyors üzembe helyezési minta alkalmazásba (lásd: gyors útmutató [: modell megjelenítése Unity](render-model.md)használatával).
 
-![Modell cseréje unity](./media/replace-model-in-unity.png)
+![Modell cseréje Unity](./media/replace-model-in-unity.png)
 
- A minta most betöltődik, és teszi az egyéni modell!
+ A mintának most be kell töltenie és megjelenítenie az egyéni modellt!
 
 ## <a name="optional-re-creating-a-sas-uri"></a>Nem kötelező: SAS URI újbóli létrehozása
 
-A konverziós parancsfájl által létrehozott SAS URI csak 24 óráig lesz érvényes. Azonban lejárt a modell után nem kell újra konvertálnia a modellt. Ehelyett létrehozhat egy új SAS-t a portálon a következő lépésekben leírtak szerint:
+Az átalakítási parancsfájl által létrehozott SAS URI-azonosító csak 24 órára érvényes. A lejártát követően azonban nem kell újra konvertálnia a modellt. Ehelyett létrehozhat egy új SAS-t a portálon a következő lépésekben leírtak szerint:
 
 1. Nyissa meg az [Azure Portalt](https://www.portal.azure.com)
-1. Kattintson a **tárfiók** erőforrás: ![Aláírás Access](./media/portal-storage-accounts.png)
-1. A következő képernyőn kattintson a **tárolókezelőa** a bal oldali panelen, és keresse meg a kimeneti modell (*.arrAsset* fájl) az *arroutput* blob storage tároló tárolóban. Kattintson a jobb gombbal a fájlra, és ![válassza a **Közös hozzáférésű aláírás beírása** parancsot a helyi menüből: Aláírás-hozzáférés](./media/portal-storage-explorer.png)
-1. Megnyílik egy új képernyő, ahol kiválaszthatja a lejárati dátumot. Nyomja le a **Create**billentyűt, és másolja a következő párbeszédpanelen megjelenő URI-t. Ez az új URI felváltja a parancsfájl által létrehozott ideiglenes URI-t.
+1. Kattintson a **Storage-fiók** erőforrás: ![aláírás-hozzáférés](./media/portal-storage-accounts.png)
+1. A következő képernyőn kattintson a bal oldali panel **Storage Explorer** elemére, és keresse meg a kimeneti modellt (*. arrAsset* fájlt) a *arroutput* blob Storage-tárolóban. Kattintson a jobb gombbal a fájlra, majd válassza a **közös hozzáférésű aláírás beolvasása** lehetőséget a helyi menüben: ![aláírás-hozzáférés](./media/portal-storage-explorer.png)
+1. Megnyílik egy új képernyő, ahol kiválaszthatja a lejárati dátumot. Kattintson a **Létrehozás**gombra, és másolja ki a következő párbeszédpanelen megjelenő URI-t. Ez az új URI a parancsfájl által létrehozott ideiglenes URI-t váltja fel.
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri az alapokat, tekintse meg oktatóanyagainkat, hogy alaposabb ismereteket szerezzen.
+Most, hogy megismerte az alapokat, tekintse meg az oktatóanyagokat, amelyekkel részletesebb ismereteket szerezhet.
 
-Ha meg szeretné tudni a modellkonverzió részleteit, tekintse meg [a modellkonverziós REST API-t.](../how-tos/conversion/conversion-rest-api.md)
+Ha szeretné megismerni a modell átalakításának részleteit, tekintse meg [a modell átalakítási REST API](../how-tos/conversion/conversion-rest-api.md).
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: Unity-projekt beállítása a semmiből](../tutorials/unity/project-setup.md)
+> [Oktatóanyag: Unity-projekt létrehozása a semmiből](../tutorials/unity/project-setup.md)

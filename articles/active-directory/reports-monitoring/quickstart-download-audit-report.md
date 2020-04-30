@@ -18,30 +18,30 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6cbea49fe39c92c8a2fc50e501cb4ef5cff74b1
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "68989680"
 ---
 # <a name="quickstart-download-an-audit-report-using-the-azure-portal"></a>Rövid útmutató: Naplózási jelentés letöltése Azure portál használatával
 
-Ebben a rövid útmutatóban megtudhatja, hogyan töltheti le a naplózási naplók CSV-fájlját a bérlő számára az elmúlt 24 órában. Legfeljebb 250 000 rekordot tölthet le az Azure Portalról. A rekordok a legutóbbiak szerint vannak rendezve, így alapértelmezés szerint a legutóbbi 250 000 rekord lesz. 
+Ebből a rövid útmutatóból megtudhatja, hogyan tölthető le az elmúlt 24 órában a bérlőhöz tartozó naplófájlok CSV-fájlja. Legfeljebb 250 000 rekordot tölthet le a Azure Portalból. A rekordok a legutóbbiek szerint rendezve jelennek meg, így alapértelmezés szerint a legfrissebb 250 000 rekordokat kapja meg. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következők szükségesek:
 
 * Egy Azure Active Directory-bérlő. 
-* A bérlő **biztonsági rendszergazdája**, **biztonsági olvasója**vagy **globális rendszergazdai** szerepkörében lévő felhasználó. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
+* Az a felhasználó, aki a **biztonsági rendszergazda**, a **biztonsági olvasó**vagy a **globális rendszergazdai** szerepkör tagja a Bérlőnek. Ezen felül a bérlőnél minden felhasználó elérheti a magára vonatkozó auditnaplókat.
 
 ## <a name="quickstart-download-an-audit-report"></a>Első lépések: Naplózási jelentés letöltése
 
-1. Nyissa meg az [Azure Portalt.](https://portal.azure.com)
+1. Navigáljon a [Azure Portal](https://portal.azure.com).
 2. Válassza ki **Azure Active Directoryt** a bal oldali navigációs ablaktáblában, és a **címtár váltása** gombra kattintva válassza ki az aktív címtárat.
 3. Az irányítópulton az **Azure Active Directory** kiválasztása után válassza az **Auditnaplót**. 
 4. Válassza az **elmúlt 24 órát** a **Dátumtartomány** szűrő legördülő listájából, majd az **Alkalmaz** választása után megtekintheti az utolsó 24 óra auditnaplóját. 
-5. Válassza a **Letöltés** gombot, válassza a **CSV** fájlformátumot, és adjon meg egy fájlnevet a szűrt rekordokat tartalmazó CSV-fájl letöltéséhez. 
+5. Válassza a **Letöltés** gombot, válassza a **CSV** formátumot Fájlformátumként, és adjon meg egy fájlnevet a szűrt rekordokat tartalmazó CSV-fájl letöltéséhez. 
 
 ![Jelentéskészítés](./media/quickstart-download-audit-report/download-audit-logs.png)
 

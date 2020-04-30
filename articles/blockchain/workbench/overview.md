@@ -1,19 +1,19 @@
 ---
-title: Az Azure Blockchain Workbench előzetes verzió – áttekintés
-description: Az Azure Blockchain Workbench előzetes verzió és képességeinek áttekintése.
+title: Az Azure Blockchain Workbench előzetes verziójának áttekintése
+description: Az Azure Blockchain Workbench előzetes verziójának és képességeinek áttekintése.
 ms.date: 09/05/2019
 ms.topic: overview
 ms.reviewer: brendal
 ms.openlocfilehash: 162626ba2303ab04bd2963a5add61c556615ebec
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79203644"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Mi az Azure Blockchain Workbench?
 
-Az Azure Blockchain Workbench Preview az Azure-szolgáltatások és képességek gyűjteménye, amelyek segítségével hozhat létre és helyezhet üzembe blokklánc-alkalmazásokat üzleti folyamatok és adatok más szervezetekkel való megosztásához. Az Azure Blockchain Workbench biztosítja az infrastruktúraszerkezetet a blokkláncalkalmazások építéséhez, lehetővé téve ezzel a fejlesztők számára, hogy az üzleti logika és az intelligens szerződések létrehozására összpontosítsanak. Emellett megkönnyíti a blokkláncalkalmazások létrehozását is, hiszen számos Azure-szolgáltatást és képességet integrál az általános fejlesztési feladatok automatizálásának elősegítése céljából.
+Az Azure Blockchain Workbench előzetes verziója olyan Azure-szolgáltatások és-funkciók gyűjteménye, amelyek segítségével Blockchain-alkalmazásokat hozhat létre és helyezhet üzembe más szervezetekkel való üzleti folyamatok és adatmennyiségek megosztásához. Az Azure Blockchain Workbench biztosítja az infrastruktúraszerkezetet a blokkláncalkalmazások építéséhez, lehetővé téve ezzel a fejlesztők számára, hogy az üzleti logika és az intelligens szerződések létrehozására összpontosítsanak. Emellett megkönnyíti a blokkláncalkalmazások létrehozását is, hiszen számos Azure-szolgáltatást és képességet integrál az általános fejlesztési feladatok automatizálásának elősegítése céljából.
 
 [!INCLUDE [Preview note](./includes/preview.md)]
 
@@ -29,7 +29,7 @@ Az Azure Blockchain Workbench webalkalmazást és REST API-kat biztosít a blokk
 
 A Blockchain Workbench REST API-jai és az üzenetalapú API-k a meglévő rendszerekkel való integrációra is használhatók. Az API-k olyan felületet biztosítanak, amely lehetővé teszi többféle elosztott tranzakciónapló-technológia, tárterület és adatbázis-ajánlat cseréjét vagy felhasználását.
 
-A Blockchain Workbench átalakíthatja az üzenetalapú API-ba küldött üzeneteket, hogy a blokklánc natív API-ja által elvárt formátumban hozzon létre tranzakciókat.  A Workbench aláírja és a megfelelő blokklánchoz irányítja a tranzakciókat. 
+Az Blockchain Workbench átalakíthatja az üzenet-alapú API-nak küldött üzeneteket, hogy a Blockchain natív API-ját elvárt formában hozza létre a tranzakciókat.  A Workbench aláírja és a megfelelő blokklánchoz irányítja a tranzakciókat. 
 
 A Workbench automatikusan továbbítja az eseményeket a Service Bus és az Event Grid részére az üzenetek az alárendelt fogyasztóknak történő elküldése érdekében. A fejlesztők ezen üzenetküldő rendszerek bármelyikével elvégezhetik az integrációt a tranzakciók irányításához és az eredmények megtekintéséhez.
 
@@ -43,19 +43,19 @@ A meglévő blokkláncprotokollokkal a blokkláncidentitások címként jelennek
 
 ## <a name="synchronize-on-chain-data-with-off-chain-storage"></a>Láncon belüli adatok szinkronizálása láncon kívüli tárolóval
 
-Az Azure Blockchain Workbench megkönnyíti a blokkláncesemények és az adatok elemzését azáltal, hogy a blokkláncon szereplő adatokat automatikusan szinkronizálja a láncon kívüli tárolóval. Ahelyett, hogy közvetlenül a blokkláncról nyerné az adatokat, láncon kívüli adatbázisrendszerekről, például az SQL Serverről kérdezheti le azokat. A blokklánc-szakértelem nem szükséges az adatelemzési feladatokat végző végfelhasználók számára.
+Az Azure Blockchain Workbench megkönnyíti a blokkláncesemények és az adatok elemzését azáltal, hogy a blokkláncon szereplő adatokat automatikusan szinkronizálja a láncon kívüli tárolóval. Ahelyett, hogy közvetlenül a blokkláncról nyerné az adatokat, láncon kívüli adatbázisrendszerekről, például az SQL Serverről kérdezheti le azokat. Az adatelemzési feladatokat végző végfelhasználók számára nem szükséges Blockchain szakértelem.
 
 ## <a name="support-and-feedback"></a>Támogatás és visszajelzés
 
-Az Azure Blockchain hírekért látogasson el az [Azure Blockchain blogjára,](https://azure.microsoft.com/blog/topics/blockchain/) hogy naprakész legyen az Azure Blockchain mérnöki csapatának blockchain szolgáltatásajánlatairól és információiról.
+Az Azure Blockchain híreket az Azure [Blockchain blogon](https://azure.microsoft.com/blog/topics/blockchain/) tekintheti meg, ahol naprakészen tarthatja a Blockchain szolgáltatás ajánlatait és az Azure Blockchain Engineering csapata információit.
 
-A termékvisszajelzés biztosításához vagy új funkciók igényléséhez szavazzon egy ötletre az [Azure blockchain visszajelzési fórumán](https://aka.ms/blockchainuservoice)keresztül.
+Ha visszajelzést szeretne küldeni a termékről, vagy új funkciókat szeretne kérni, szavazzon a [blockchain készült Azure visszajelzési fórumán](https://aka.ms/blockchainuservoice)keresztül.
 
 ### <a name="community-support"></a>Közösségi támogatás
 
-Vegye fel a kapcsolatot a Microsoft mérnökeivel és az Azure Blockchain közösségi szakértőivel.
+Folytassa a Microsoft-mérnökökkel és az Azure Blockchain közösségi szakértőivel.
 
-* [Azure Blockchain MSDN fórum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
+* [Azure Blockchain MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=azureblockchain)
 * [Microsoft Tech Community](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 

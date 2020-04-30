@@ -10,10 +10,10 @@ ms.date: 06/18/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
 ms.openlocfilehash: 067d818b7d23fc0b83cb1d4255bfbb8659149412
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79240729"
 ---
 # <a name="what-is-azure-data-box-disk"></a>Mi az az Azure Data Box Disk-lemez?
@@ -84,17 +84,17 @@ További információt az [Azure Data Box biztonsága és adatvédelme](data-box
 | Adatinterfész                                          | USB   |
 | Biztonság                                                | Előre titkosítva BitLocker és biztonságos frissítés használatával <br> Hozzáférési kulcs által védett lemezek <br> Mindig titkosított adatok  |
 | Adatátviteli sebesség                                      | maximum 430 MBps a fájlmérettől függően      |
-|Kezelés                                               | Azure portál |
+|Kezelés                                               | Azure Portal |
 
 
 ## <a name="region-availability"></a>Régiónkénti elérhetőség
 
-A régió elérhetőségéről az [Azure-termékek régiónként elérhető.](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all) A Data Box Disk az Azure Government Cloud ban is telepíthető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
+A régió rendelkezésre állásával kapcsolatos információkért tekintse meg a [régiók által elérhető Azure-termékeket](https://azure.microsoft.com/global-infrastructure/services/?products=databox&regions=all). Data Box Disk a Azure Government felhőben is üzembe helyezhető. További információ: [Mi az Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)
 
 
 ## <a name="pricing"></a>Díjszabás
 
-Az árképzésről az [Árképzés oldalon](https://azure.microsoft.com/pricing/details/databox/disk/)talál információt.
+A díjszabással kapcsolatos információkért lépjen a [díjszabás oldalra](https://azure.microsoft.com/pricing/details/databox/disk/).
 
 ## <a name="next-steps"></a>További lépések
 

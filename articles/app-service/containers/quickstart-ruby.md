@@ -1,24 +1,24 @@
 ---
-title: 'Rövid útmutató: Linux Ruby alkalmazás létrehozása'
-description: Az Azure App Service Linux-alkalmazásai üzembe helyezésével az első Ruby-alkalmazás egy Linux-tárolóba az App Service-ben.
+title: 'Rövid útmutató: Linux Ruby-alkalmazás létrehozása'
+description: Ismerkedjen meg a Linux-alkalmazásokkal Azure App Service az első Ruby-alkalmazás üzembe helyezésével a App Service Linux-tárolójában.
 keywords: azure app service, linux, oss, ruby, rails
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.topic: quickstart
 ms.date: 07/11/2019
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: 33723e6dd8fbcd91d2d5863816786c0f08cdf923
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80045828"
 ---
 # <a name="create-a-ruby-on-rails-app-in-app-service-on-linux"></a>Ruby on Rails-alkalmazás létrehozása a Linuxon futó App Service-ben
 
-[App Service linuxos](app-service-linux-intro.md) nyújt egy jól skálázható, önjavító web hosting szolgáltatás segítségével a Linux operációs rendszer. Ez a rövid útmutató bemutatja, hogyan telepíthet egy Ruby on Rails alkalmazást az Azure App Service linuxos applikátorra a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával.
+A [linuxon app Service](app-service-linux-intro.md) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy Ruby on Rails-alkalmazást a Linuxon a [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)használatával Azure app Service.
 
 > [!NOTE]
-> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha egy másik platformot szeretne használni, például a Sinatrát, vagy ha [nem támogatott Ruby verziót](app-service-linux-intro.md)szeretne használni, akkor azt egy egyéni tárolóban kell [futtatnia.](quickstart-docker-go.md)
+> A Ruby fejlesztői verem jelenleg csak a Ruby on Railst támogatja. Ha más platformot, például Sinatra-t szeretne használni, vagy ha nem [támogatott Ruby-verziót](app-service-linux-intro.md)szeretne használni, [azt egy egyéni tárolóban kell futtatnia](quickstart-docker-go.md).
 
 ![Hello-world](./media/quickstart-ruby/hello-world-configured.png)
 
@@ -26,7 +26,7 @@ ms.locfileid: "80045828"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">Ruby 2.6 vagy újabb telepítése</a>
+* <a href="https://www.ruby-lang.org/en/documentation/installation/#rubyinstaller" target="_blank">A Ruby 2,6 vagy újabb telepítése</a>
 * <a href="https://git-scm.com/" target="_blank">A Git telepítése</a>
 
 ## <a name="download-the-sample"></a>A minta letöltése
@@ -41,7 +41,7 @@ git clone https://github.com/Azure-Samples/ruby-docs-hello-world
 
 Futtassa helyileg az alkalmazást, hogy lássa, hogyan fog kinézni az Azure-ban üzembe helyezve. Nyisson meg egy terminálablakot, váltson át a `hello-world` könyvtárra, és használja a `rails server` parancsot a kiszolgáló elindításához.
 
-Az első lépés a szükséges gemek telepítése. Van egy `Gemfile` része a mintában, ezért csak futtassa a következő parancsot:
+Az első lépés a szükséges gemek telepítése. A minta `Gemfile` tartalmazza a mintát, ezért csak futtassa a következő parancsot:
 
 ```bash
 bundle install
@@ -69,7 +69,7 @@ Webböngészőjével a `http://localhost:3000` hely megkeresésével helyileg te
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-Tallózással keresse meg az alkalmazást, hogy az újonnan létrehozott webalkalmazás beépített képpel jelenjen meg. Cserélje _ &lt;_ le az alkalmazás nevét>a webalkalmazás nevére.
+Nyissa meg az alkalmazást, és tekintse meg az újonnan létrehozott, beépített rendszerképpel rendelkező webalkalmazást. Cserélje le _ &lt;az alkalmazás nevét>_ a webalkalmazás nevére.
 
 ```bash
 http://<app_name>.azurewebsites.net
@@ -81,7 +81,7 @@ Az új webalkalmazásnak így kell kinéznie:
 
 ## <a name="deploy-your-application"></a>Az alkalmazás üzembe helyezése
 
-Futtassa a következő parancsokat a helyi alkalmazás Azure-webalkalmazásba való üzembe helyezéséhez:
+Futtassa a következő parancsokat a helyi alkalmazás üzembe helyezéséhez az Azure-webalkalmazásban:
 
 ```bash
 git remote add azure <Git deployment URL from above>
@@ -107,7 +107,7 @@ To https://<app-name>.scm.azurewebsites.net/<app-name>.git
    a6e73a2..ae34be9  master -> master
 ```
 
-Miután a központi telepítés befejeződött, várjon körülbelül 10 másodpercet, amíg a webalkalmazás újraindul, majd keresse meg a webalkalmazást, és ellenőrizze az eredményeket.
+Miután az üzembe helyezés befejeződött, várjon körülbelül 10 másodpercet a webalkalmazás újraindításához, majd navigáljon a webalkalmazáshoz, és ellenőrizze az eredményeket.
 
 ```bash
 http://<app-name>.azurewebsites.net
@@ -116,7 +116,7 @@ http://<app-name>.azurewebsites.net
 ![frissített webalkalmazás](./media/quickstart-ruby/hello-world-configured.png)
 
 > [!NOTE]
-> Az alkalmazás újraindítása közben megfigyelheti a `Error 503 Server unavailable` HTTP-állapotkódot `Hey, Ruby developers!` a böngészőben vagy az alapértelmezett oldalon. Az alkalmazás teljes újraindítása eltarthat néhány percig.
+> Az alkalmazás újraindítása közben megfigyelheti a HTTP-állapotkódot `Error 503 Server unavailable` a böngészőben, vagy az `Hey, Ruby developers!` alapértelmezett lapot is. Az alkalmazás teljes újraindítása eltarthat néhány percig.
 >
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
@@ -124,7 +124,7 @@ http://<app-name>.azurewebsites.net
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Bemutató: Ruby on Rails a Postgres](tutorial-ruby-postgres-app.md)
+> [Oktatóanyag: Ruby on Rails és postgres](tutorial-ruby-postgres-app.md)
 
 > [!div class="nextstepaction"]
-> [A Ruby alkalmazás konfigurálása](configure-language-ruby.md)
+> [Ruby-alkalmazás konfigurálása](configure-language-ruby.md)

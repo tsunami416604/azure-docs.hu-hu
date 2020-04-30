@@ -4,53 +4,53 @@ description: Ismerje meg, hogy az Azure Resource Graph szolgáltatás hogyan tes
 ms.date: 03/02/2020
 ms.topic: overview
 ms.openlocfilehash: f5c091f60faedb76e3ca6cd68505c06f51be21b6
-ms.sourcegitcommit: ea006cd8e62888271b2601d5ed4ec78fb40e8427
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/14/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81381519"
 ---
 # <a name="what-is-azure-resource-graph"></a>Mi az az Azure Resource Graph?
 
-Az Azure Resource Graph egy olyan azure-szolgáltatás, amelynek célja az Azure Resource Management kiterjesztése azáltal, hogy hatékony és hatékony erőforrás-feltárást biztosít, és képes nagy méretű lekérdezést egy adott előfizetés-készleten keresztül, hogy hatékonyan szabályozhassa a környezetet. Ezek a lekérdezések a következő funkciókat biztosítják:
+Az Azure Resource Graph egy Azure-beli szolgáltatás, amely az Azure Erőforrás-kezelés kibővítésére szolgál azáltal, hogy hatékony és teljesítménybeli erőforrás-feltárást biztosít, és lehetővé teszi az adott előfizetések nagy léptékű lekérdezését, így hatékonyan szabályozhatja a környezetét. Ezek a lekérdezések a következő funkciókat biztosítják:
 
 - Erőforrások lekérdezése az erőforrás-tulajdonságok alapján végzett összetett szűréssel, csoportosítással és rendezéssel.
-- Képes iteratív módon feltárni az erőforrásokat a cégirányítási követelmények alapján.
+- Az erőforrások az irányítási követelmények alapján iteratív.
 - Szabályzatok alkalmazásából adódó következmények felmérése kiterjedt felhőkörnyezetben.
-- Az [erőforrás-tulajdonságokon végrehajtott módosítások részletezésének](./how-to/get-resource-changes.md) lehetősége (előzetes verzió).
+- [Részletes adatok az erőforrás-tulajdonságok](./how-to/get-resource-changes.md) (előzetes verzió) változásairól.
 
 Ez a dokumentáció mindegyik funkciót részletesen tárgyalja.
 
 > [!NOTE]
-> Az Azure Resource Graph az Azure Portal keresősávját, az új "Minden erőforrás" felületet és az Azure Policy [változási előzmények vizuális](../policy/how-to/determine-non-compliance.md#change-history-preview)
-> diff szolgáltatását_működteti._ Úgy tervezték, hogy segítsen az ügyfeleknek a nagyméretű környezetek kezelésében.
+> Az Azure Resource Graph a Azure Portal keresési sávját, az új "minden erőforrás" funkciót és a Azure Policy [változási előzményeinek](../policy/how-to/determine-non-compliance.md#change-history-preview)
+> _vizuális diff_elemeit használja. Ez úgy lett kialakítva, hogy segítse az ügyfeleknek a nagyméretű környezetek kezelését.
 
 [!INCLUDE [azure-lighthouse-supported-service](../../../includes/azure-lighthouse-supported-service.md)]
 
 ## <a name="how-does-resource-graph-complement-azure-resource-manager"></a>Hogyan egészíti ki a Resource Graph az Azure Resource Managert
 
-Az Azure Resource Manager jelenleg támogatja az alapvető erőforrásmezők lekérdezéseit, különösen – Erőforrás név, azonosító, típus, erőforráscsoport, előfizetés és hely. Az Erőforrás-kezelő lehetővé teszi az egyes erőforrás-szolgáltatók hívását is a részletes tulajdonságokhoz, egyszerre egy erőforrást.
+Azure Resource Manager jelenleg a lekérdezéseket támogatja az alapszintű erőforrások mezőin, különösen az erőforrás neve, az azonosító, a típus, az erőforráscsoport, az előfizetés és a hely alapján. A Resource Manager emellett olyan létesítményeket is biztosít, amelyekkel az egyes erőforrás-szolgáltatók meghívhatók a részletes tulajdonságok egy erőforrással egyidejűleg.
 
-Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listájáért tekintse át a [tábla- és erőforrástípus-hivatkozást.](./reference/supported-tables-resources.md) A támogatott erőforrástípusok megtekintésének másik módja az [Azure Resource Graph Explorer sémaböngészője.](./first-query-portal.md#schema-browser)
+Az Azure Resource Graph segítségével az erőforrás-szolgáltatók egyenkénti hívása nélkül is hozzáférhet az általuk visszaadott tulajdonságokhoz. A támogatott erőforrástípusok listáját a [tábla és az erőforrás típusára vonatkozó referenciában](./reference/supported-tables-resources.md)tekintheti meg. A támogatott erőforrástípusok megjelenítésének másik módja az [Azure Resource Graph Explorer sémakezelő böngészője](./first-query-portal.md#schema-browser).
 
 Az Azure Resource Graph segítségével a következőket teheti:
 
-- Az erőforrás-szolgáltatók által visszaadott tulajdonságok elérése anélkül, hogy az egyes erőforrás-szolgáltatókhoz külön hívásokat kellene kezdeményeznie.
-- Tekintse meg az erőforráson végzett módosítási előzmények utolsó 14 napját, és tekintse meg, hogy milyen tulajdonságok változtak, és mikor. (előzetes verzió)
+- Az erőforrás-szolgáltatók által visszaadott tulajdonságok elérése anélkül, hogy az egyes erőforrás-szolgáltatóknak külön hívásokat kellene végezniük.
+- Megtekintheti az Erőforrás változási előzményeinek utolsó 14 napját, és megtekintheti, hogy milyen tulajdonságok változtak és mikor. (előzetes verzió)
 
-## <a name="how-resource-graph-is-kept-current"></a>Az Erőforrás-diagram naprakészen tartása
+## <a name="how-resource-graph-is-kept-current"></a>Az erőforrás-gráf naprakészen tartása
 
-Egy Azure-erőforrás frissítésekor a Resource Graph értesíti az Erőforrás-kezelő a változásról.
-Az Resource Graph ezután frissíti az adatbázist. Resource Graph is csinál egy szabályos _teli átka._ Ez a vizsgálat biztosítja, hogy az Erőforrás-diagram adatai aktuálisak legyenek, ha nem fogadott értesítések vannak, vagy ha egy erőforrást az Erőforrás-kezelőn kívül frissítenek.
+Az Azure-erőforrások frissítésekor a változás erőforrás-kezelője értesíti az erőforrás-diagramot.
+Az erőforrás-gráf ezután frissíti az adatbázisát. Az erőforrás-gráf emellett normál _teljes vizsgálatot_is végez. Ez a vizsgálat biztosítja, hogy az erőforrás-gráf-adat aktuális, ha kimaradt értesítések vannak, vagy ha egy erőforrást a Resource Manageren kívülről frissítenek.
 
 > [!NOTE]
-> A Resource `GET` Graph az egyes erőforrás-szolgáltatók legújabb nem előzetes API-ját használja a tulajdonságok és értékek összegyűjtéséhez. Ennek eredményeképpen előfordulhat, hogy a várt tulajdonság nem érhető el. Bizonyos esetekben a használt API-verzió felülbírálta, hogy több aktuális vagy széles körben használt tulajdonságokat az eredményekben. Tekintse meg az [API-verzió megjelenítése minden erőforrástípus](./samples/advanced.md#apiversion) minta egy teljes listát a környezetben.
+> Az erőforrás-gráf `GET` a-t használja az egyes erőforrás-szolgáltatók legújabb, nem előzetes verziójú API-jával a tulajdonságok és értékek összegyűjtéséhez. Ennek eredményeképpen előfordulhat, hogy a várt tulajdonság nem érhető el. Bizonyos esetekben a használt API-verzió felülbírálva lett, hogy az eredményekben még több aktuális vagy széles körben használt tulajdonság legyen elérhető. A környezet teljes listájáért tekintse meg az [API-verzió megjelenítése az egyes erőforrástípus](./samples/advanced.md#apiversion) -mintákhoz című témakört.
 
 ## <a name="the-query-language"></a>A lekérdezőnyelv
 
-Most, hogy jobban megértheti, hogy mi az Azure Resource Graph, vessünk egy kis betekintést a lekérdezések létrehozásához.
+Most, hogy jobban megértette az Azure-erőforrások Gráfját, nézzük meg, hogyan lehet lekérdezéseket felépíteni.
 
-Fontos megérteni, hogy az Azure Resource Graph lekérdezési nyelve az Azure Data Explorer által használt [Kusto lekérdezési nyelvalapján](/azure/data-explorer/data-explorer-overview) történik.
+Fontos tisztában lenni azzal, hogy az Azure Resource Graph lekérdezési nyelve az Azure Adatkezelő által használt [Kusto-lekérdezési nyelven](/azure/data-explorer/data-explorer-overview) alapul.
 
 Első lépésként olvassa el az Azure Resource Graphfal használható műveleteket és funkciókat ismertető, [a Resource Graph lekérdezőnyelve](./concepts/query-language.md) című cikket.
 Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/explore-resources.md) szóló cikk írja le.
@@ -60,35 +60,35 @@ Az erőforrások tallózását az [erőforrások kezeléséről](./concepts/expl
 A Resource Graph használatához megfelelő jogosultságokkal kell rendelkeznie a [szerepköralapú hozzáférés-vezérlésben](../../role-based-access-control/overview.md) (RBAC), és legalább olvasási jogosultsággal kell rendelkeznie a lekérdezni kívánt erőforrásokon. Ha nem rendelkezik legalább `read` engedélyekkel az Azure-objektumhoz vagy -objektumcsoporthoz, a rendszer nem ad vissza eredményeket.
 
 > [!NOTE]
-> A Resource Graph a bejelentkezés során a rendszerbiztonsági tag számára elérhető előfizetéseket használja. Egy aktív munkamenet során hozzáadott új előfizetés erőforrásainak megtekintéséhez a főtagnak frissítenie kell a környezetet. Ez a művelet automatikusan megtörténik, amikor kijelentkezik, majd vissza.
+> Az erőforrás-diagram a rendszerbiztonsági tag számára elérhető előfizetéseket használja a bejelentkezés során. Egy aktív munkamenet során hozzáadott új előfizetés erőforrásainak megtekintéséhez a rendszerbiztonsági tag frissítenie kell a környezetet. Ez a művelet automatikusan megtörténik a kijelentkezéskor és vissza.
 
-Az Azure CLI és az Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználó rendelkezik hozzáféréssel. A REST API közvetlen használata esetén az előfizetési listát a felhasználó biztosítja. Ha a felhasználó hozzáfér a listában szereplő előfizetések bármelyikéhez, a lekérdezés eredménye azokhoz az előfizetésekhez ad vissza, amelyekhez a felhasználó hozzáféréssel rendelkezik. Ez a viselkedés ugyanaz, mint amikor [meghívja az erőforráscsoportokat – Lista,](/rest/api/resources/resourcegroups/list) \- amelyhez olyan erőforráscsoportokat kap, amelyekhez hozzáfér, anélkül, hogy jeleznék, hogy az eredmény részleges lehet.
-Ha nincsenek olyan előfizetések az előfizetési listában, amelyhez a felhasználó rendelkezik a megfelelő jogokkal, a válasz egy _403-as_ (Tiltott).
+Az Azure CLI és Azure PowerShell olyan előfizetéseket használ, amelyekhez a felhasználónak hozzáférése van. REST API közvetlen használatakor az előfizetési listát a felhasználó kapja meg. Ha a felhasználó hozzáfér a listában szereplő egyik előfizetéshez, a rendszer visszaadja a lekérdezés eredményét azon előfizetések esetében, amelyekhez a felhasználónak hozzáférése van. Ez a viselkedés ugyanaz, mint az erőforráscsoportok meghívásakor [– listázza](/rest/api/resources/resourcegroups/list) \- azokat az erőforráscsoportokat, amelyekhez hozzáférése van, anélkül, hogy az eredmény részleges lenne.
+Ha nincsenek olyan előfizetések az előfizetések listájában, amelyhez a felhasználó megfelelő jogosultsággal rendelkezik, a válasz _403_ (tiltott).
 
 ## <a name="throttling"></a>Throttling
 
-Ingyenes szolgáltatásként a Resource Graph lekérdezések szabályozása, hogy a legjobb élményt és válaszidőt minden ügyfél számára. Ha a szervezet az Erőforrásgráf API-t szeretné használni a nagyméretű és gyakori lekérdezésekhez, használja a "Visszajelzés" portált az [Erőforrásgráf portál lapról.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph)
-Adja meg az üzleti esetet, és jelölje be a "Microsoft e-mailben küldheti el visszajelzését" jelölőnégyzetet, hogy a csapat kapcsolatba léphetjön Önnel.
+Ingyenes szolgáltatásként az erőforrás-gráfra irányuló lekérdezések szabályozva vannak, így biztosítva a legjobb élményt és a válaszadási időt az összes ügyfél számára. Ha a szervezet a nagyméretű és gyakori lekérdezésekhez Graph API erőforrást szeretné használni, használja a "visszajelzés" lehetőséget az erőforrás- [gráf portál oldalon](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyMenuBlade/ResourceGraph).
+Adja meg az üzleti esetét, és válassza a "Microsoft e-mail küldése a visszajelzéshez" jelölőnégyzetet, hogy a csapat felvegye Önnel a kapcsolatot.
 
-A Resource Graph felhasználói szinten szabályozza a lekérdezéseket. A szolgáltatásválasz a következő HTTP-fejléceket tartalmazza:
+Az erőforrás-gráf a lekérdezéseket a felhasználói szinten szabályozza. A szolgáltatás válasza a következő HTTP-fejléceket tartalmazza:
 
-- `x-ms-user-quota-remaining`(int): A felhasználó fennmaradó erőforráskvótája. Ez az érték leképezi a lekérdezések számát.
-- `x-ms-user-quota-resets-after`(óó:pp:ss): A felhasználó kvótafelhasználásának alaphelyzetbe állításáig tartó időtartam
+- `x-ms-user-quota-remaining`(int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
+- `x-ms-user-quota-resets-after`(óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja
 
-További információ: [Útmutató a szabályozott kérelmekhez](./concepts/guidance-for-throttled-requests.md).
+További információ: [útmutatás a szabályozott kérelmekhez](./concepts/guidance-for-throttled-requests.md).
 
 ## <a name="running-your-first-query"></a>Az első lekérdezés futtatása
 
-Az Azure Resource Graph Explorer, amely az Azure Portal része, lehetővé teszi az Erőforrás-gráf lekérdezések közvetlen futtatását az Azure Portalon. Az eredményeket dinamikus diagramként rögzítheti, hogy valós idejű dinamikus információkat nyújtson a portálmunkafolyamatának. További információ: [First query with Azure Resource Graph Explorer](first-query-portal.md).
+A Azure Portal részét képező Azure Resource Graph Explorer lehetővé teszi, hogy közvetlenül a Azure Portalban futtassa az erőforrás-gráf lekérdezéseit. Dinamikus diagramként rögzítheti az eredményeket, hogy valós idejű dinamikus információkat nyújtson a portál munkafolyamatainak. További információ: [első lekérdezés az Azure Resource Graph Explorerben](first-query-portal.md).
 
-A Resource Graph támogatja az Azure CLI-t, az Azure PowerShellt, az Azure SDK-t a .NET-hez és még sok mást. A lekérdezés minden nyelven azonos struktúrában van felépítve. További információ az Erőforrás-diagram engedélyezéséről:
+Az erőforrás-gráf támogatja az Azure CLI, a Azure PowerShell, a .NET-hez készült Azure SDK-t és egyebeket. A lekérdezés minden nyelv esetében azonos szerkezetű. Ismerje meg, hogyan engedélyezhető az erőforrás-gráf a következővel:
 
-- [Az Azure Portal és a Resource Graph Explorer](first-query-portal.md) 
+- [Azure Portal és Resource Graph Explorer](first-query-portal.md) 
 - [Azure CLI](first-query-azurecli.md#add-the-resource-graph-extension)
 - [Azure PowerShell](first-query-powershell.md#add-the-resource-graph-module)
 
 ## <a name="next-steps"></a>További lépések
 
-- Futtassa az első lekérdezést az [Azure Portal](first-query-portal.md)használatával.
-- Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)segítségével.
-- Futtassa az első lekérdezést az [Azure PowerShell](first-query-powershell.md)használatával.
+- Futtassa az első lekérdezést a [Azure Portal](first-query-portal.md)használatával.
+- Futtassa az első lekérdezést az [Azure CLI](first-query-azurecli.md)-vel.
+- Futtassa az első lekérdezést a [Azure PowerShell](first-query-powershell.md).
