@@ -1,6 +1,6 @@
 ---
-title: Az Azure Marketplace-alkalmazás egykattintásos, egyszeri bejelentkezési (SSO) konfigurációja | Microsoft dokumentumok
-description: Az alkalmazás egyszeri konfigurálásának lépései az Azure Piactérről.
+title: Azure Marketplace-alkalmazás egykattintásos, egyszeri bejelentkezéses (SSO) konfigurációja | Microsoft Docs
+description: Az Azure piactéren az alkalmazás egyszeri bejelentkezéses konfigurációjának lépései.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -17,73 +17,73 @@ ms.date: 06/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a83d27af4fd783b95c53ef3a9169cb72bfc29d34
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "67872425"
 ---
-# <a name="one-click-app-configuration-of-single-sign-on"></a>Egyszeri bejelentkezés egykattintásos alkalmazáskonfigurációja
+# <a name="one-click-app-configuration-of-single-sign-on"></a>Egyszeri bejelentkezéses alkalmazás egykattintásos konfigurálása
 
- Ebben az oktatóanyagban megtudhatja, hogyan hajthatja végre az egykattintásos, egyszeri bejelentkezési (Egyszeri bejelentkezés) konfigurációsaml-támogató, Azure Active Directory (Azure AD) alkalmazások az Azure Marketplace-en.
+ Ebből az oktatóanyagból megtudhatja, hogyan hajthat végre egykattintásos, egyszeri bejelentkezéses (SSO) konfigurációt az SAML-támogatású, Azure Active Directory (Azure AD) alkalmazások számára az Azure piactéren.
 
-## <a name="introduction-to-one-click-sso"></a>Bevezetés az egykattintásos összehacsisítás ba
+## <a name="introduction-to-one-click-sso"></a>Az egykattintásos egyszeri bejelentkezés bemutatása
 
-Az egykattintásos egyszeri bejelentkezés funkció az SAML protokollt támogató Azure Marketplace-alkalmazások egyszeri bejelentkezésének konfigurálására szolgál. Az Azure AD SSO konfigurációs lapon ez a beállítás lehetővé teszi, hogy automatikusan konfigurálja az Azure AD metaadatokat az alkalmazás oldalán. Ily módon gyorsan beállíthatja az SSO-t minimális manuális erőfeszítéssel.
+Az egykattintásos egyszeri bejelentkezés funkció az SAML protokollt támogató Azure Marketplace-alkalmazások egyszeri bejelentkezésének konfigurálására szolgál. Az Azure AD SSO konfiguráció lapján ez a beállítás lehetővé teszi az Azure AD-metaadatok automatikus konfigurálását az alkalmazás oldalán. Így gyorsan állíthatja be az egyszeri bejelentkezést minimális manuális erőfeszítéssel.
 
-## <a name="advantages-of-one-click-sso"></a>Az egykattintásos szóhasználatának előnyei
+## <a name="advantages-of-one-click-sso"></a>Egy kattintásos egyszeri bejelentkezés előnyei
 
-- Az Azure Marketplace-alkalmazások gyors SSO-konfigurációja, amelyek az alkalmazás oldalon manuális beállítást igényelnek.
-- Hatékonyabb és pontosabb SSO konfiguráció.
-- A beállításhoz nincs szükség partnerkommunikációra vagy támogatásra. Az alkalmazás biztosítja az SAML-konfiguráció felhasználói felületét.
+- Az Azure Marketplace-alkalmazások gyors egyszeri bejelentkezéses konfigurációja, amely megköveteli az alkalmazás oldalán a manuális telepítést.
+- Hatékonyabb és pontos SSO-konfiguráció.
+- Nincs szükség partneri kommunikációra vagy támogatásra a telepítéshez. Az alkalmazás az SAML-konfiguráció felhasználói felületét biztosítja.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az alkalmazás aktív előfizetése az SSO-val konfigurálandó alkalmazáshoz. Rendszergazdai hitelesítő adatokra is szüksége van.
-- A **Microsoft My Apps Secure bejelentkezési bővítménye** telepítve van a böngészőben. További információt az Alkalmazások portálon lévő [Alkalmazások elérése és használata című témakörben](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)talál.
+- Az alkalmazás aktív előfizetése az SSO-val való konfiguráláshoz. Rendszergazdai hitelesítő adatokra is szükség van.
+- A **saját alkalmazások biztonságos bejelentkezési bővítményét** a Microsoft a böngészőben telepítette. További információ: [alkalmazások elérése és használata a saját alkalmazások portálon](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
 
-## <a name="one-click-sso-configuration-steps"></a>Egykattintásos egyszeri szolgáltatás konfigurációs lépései
+## <a name="one-click-sso-configuration-steps"></a>Egyszeri bejelentkezéses SSO-konfigurációs lépések
 
-1. Adja hozzá az alkalmazást az Azure Piactérről.
+1. Adja hozzá az alkalmazást az Azure Marketplace-ről.
 
-2. Válassza **az Egyszeri bejelentkezés**lehetőséget.
+2. Válassza az **egyszeri bejelentkezés**lehetőséget.
 
-3. Válassza **az Egyszeri bejelentkezés engedélyezése**lehetőséget.
+3. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
 
-4. A kötelező konfigurációs értékek feltöltése az **Egyszerű SAML konfiguráció szakaszban.**
+4. Töltse fel a kötelező konfigurációs értékeket az **alapszintű SAML-konfiguráció** szakaszban.
 
     > [!NOTE]
-    > Ha az alkalmazás egyéni jogcímeket, amelyeket be kell állítania, kezelje őket, mielőtt egy kattintással egyszeri szolgáltató.
+    > Ha az alkalmazáshoz egyéni jogcímek szükségesek, akkor az egykattintásos egyszeri bejelentkezés végrehajtása előtt kezelje őket.
 
-5. Ha az egykattintásos egyszeri szolgáltatás elérhető az Azure Marketplace-alkalmazáshoz, a következő képernyő jelenik meg. Előfordulhat, hogy telepítenie kell a **My Apps Secure Bejelentkezésböngésző bővítményt** **a Bővítmény telepítése**lehetőség kiválasztásával.
+5. Ha az egykattintásos egyszeri bejelentkezés funkció elérhető az Azure Marketplace-alkalmazáshoz, a következő képernyő jelenik meg. Előfordulhat, hogy a **bővítmény telepítése**lehetőségre kattintva telepítenie kell a **saját alkalmazások biztonságos bejelentkezési böngésző bővítményét** .
 
-   ![A Saját alkalmazások biztonságos bejelentkezési böngészőbővítményének telepítése](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
+   ![Saját alkalmazások telepítése biztonságos bejelentkezési böngésző bővítmény](./media/one-click-sso-tutorial/install-myappssecure-extension.png)
 
-6. Miután hozzáadja a bővítményt a böngészőhöz, válassza a **Telepítőalkalmazás \<neve lehetőséget.\>** Miután átirányítja az alkalmazás felügyeleti portálra, jelentkezzen be rendszergazdaként.
+6. Miután hozzáadta a bővítményt a böngészőhöz, válassza az ** \<alkalmazásnév\>beállítása**lehetőséget. Az alkalmazás-felügyeleti portálra való átirányítást követően jelentkezzen be rendszergazdaként.
 
-   ![Telepítőalkalmazás neve](./media/one-click-sso-tutorial/setup-sso.png)
+   ![Alkalmazás nevének beállítása](./media/one-click-sso-tutorial/setup-sso.png)
 
-7. A böngészőbővítmény automatikusan konfigurálja az SSO-t az alkalmazásban. A megerősítés az Igen lehetőség kiválasztásával megerősítést **kér.**
+7. A böngésző bővítménye automatikusan konfigurálja az egyszeri bejelentkezést az alkalmazásban. Erősítse meg az **Igen**lehetőséget.
 
-   ![Az automatikusan kitöltött adatok mentése](./media/one-click-sso-tutorial/save-autopopulate.png)
+   ![Az automatikusan feltöltött adatok mentése](./media/one-click-sso-tutorial/save-autopopulate.png)
 
    > [!NOTE]
-   > Ha az alkalmazás sso-konfigurációja további lépéseket igényel, kövesse a lépéseket a lépések végrehajtásához.
+   > Ha az alkalmazás egyszeri bejelentkezéses konfigurációja további lépéseket igényel, kövesse az utasításokat a lépések végrehajtásához.
 
-8. A konfiguráció befejezése után a módosítások mentéséhez válassza az **OK gombot.**
+8. A konfiguráció befejezése után kattintson az **OK gombra** a módosítások mentéséhez.
 
-   ![Az automatikusan kitöltött adatok mentése](./media/one-click-sso-tutorial/save-data.png)
+   ![Az automatikusan feltöltött adatok mentése](./media/one-click-sso-tutorial/save-data.png)
 
-9. Egy megerősítő ablak jelenik meg, amely tudatja, hogy az SSO-beállítások sikeresen konfigurálva vannak.
+9. Egy megerősítő ablak jelenik meg, amely tudatja Önnel, hogy az SSO-beállítások konfigurálása sikeres volt.
 
-   ![SSO konfigurálva](./media/one-click-sso-tutorial/sso-configured.png)
+   ![Egyszeri bejelentkezés konfigurálva](./media/one-click-sso-tutorial/sso-configured.png)
 
-10. A konfiguráció sikeres befejezése után ki jelentkezett az alkalmazásból, és visszatért az Azure Portalra.
+10. A konfiguráció sikeres végrehajtása után kijelentkezett az alkalmazásból, és visszatért a Azure Portal.
 
-11. Az egyszeri bejelentkezés teszteléséhez a **Teszt** lehetőséget választva választhatja ki.
+11. Kiválaszthatja **az egyszeri bejelentkezés tesztelését** .
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-* [Az SaaS-alkalmazások Azure Active Directoryval való integrálásáról szóló oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
-* [Mi a My Apps Secure Bejelentkezési böngészőbővítmény?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
+* [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+* [Mi a My apps biztonságos bejelentkezési böngésző bővítmény?](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access)
  

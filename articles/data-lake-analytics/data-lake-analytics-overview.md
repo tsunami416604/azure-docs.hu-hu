@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: overview
 ms.date: 06/23/2017
 ms.openlocfilehash: 3572c308310c49eed48ccb25dfa7cb0fb161515f
-ms.sourcegitcommit: c2065e6f0ee0919d36554116432241760de43ec8
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "70164515"
 ---
 # <a name="what-is-azure-data-lake-analytics"></a>Mi az az Azure Data Lake Analytics?
@@ -42,10 +42,10 @@ A Data Lake Analytics egy költséghatékony megoldás big data-számítási fel
     
 ### <a name="works-with-all-your-azure-data"></a>Az összes Azure Data-szolgáltatással együttműködik
   
-A Data Lake Analytics együttműködik az Azure Data Lake Storage szolgáltatással a legnagyobb teljesítmény, átviteli és párhuzamosság érdekében, és együttműködik az Azure Storage-blobokkal, az Azure SQL Database-rel és az Azure Warehouse-ral.
+A Data Lake Analytics a legmagasabb teljesítmény-, átviteli teljesítmény-és párhuzamos Azure Data Lake Storage működik, és az Azure Storage-Blobokkal, Azure SQL Databaseekkel, Azure Warehouse-val működik együtt.
 
 ### <a name="next-steps"></a>További lépések
  
-  * Ismerkedés a Data Lake Analytics szolgáltatással az[Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md) [Azure Portalon](data-lake-analytics-get-started-portal.md) | 
-  * Az Azure Data Lake Analytics kezelése az[Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .NET SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node.js](data-lake-analytics-manage-use-nodejs.md) [használatával](data-lake-analytics-manage-use-portal.md) | 
+  * Ismerkedés a Data Lake Analytics [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI](data-lake-analytics-get-started-cli.md) használatával
+  * Azure Data Lake Analytics kezelése [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) | [Azure .net SDK](data-lake-analytics-manage-use-dotnet-sdk.md) | [Node. js](data-lake-analytics-manage-use-nodejs.md) használatával
   * [A költségek szabályozása és pénz megtakarítása a Data Lake Analytics használatával](https://1drv.ms/f/s!AvdZLquGMt47h213Hg3rhl-Tym1c)

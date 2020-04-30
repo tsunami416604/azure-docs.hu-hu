@@ -1,5 +1,5 @@
 ---
-title: MongoDB, React és Node.js oktatóanyag az Azure-hoz
+title: MongoDB, reakciós és Node. js-oktatóanyag az Azure-hoz
 description: Ebben a videóalapú oktatóanyag-sorozatban megtudhatja, hogyan hozhat létre MongoDB-alkalmazásokat Azure Cosmos DB adatbázison React és Node.js használatával a MongoDB-hez használt API-kkal.
 author: johnpapa
 ms.service: cosmos-db
@@ -10,17 +10,17 @@ ms.date: 09/05/2018
 ms.author: jopapa
 ms.reviewer: sngun
 ms.openlocfilehash: 4efaa90281ddcebf1b800e1016578e38c24be651
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "69614115"
 ---
 # <a name="create-a-mongodb-app-with-react-and-azure-cosmos-db"></a>MongoDB-alkalmazás létrehozása a React és az Azure Cosmos DB használatával  
 
-Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazás node és express a kiszolgáló, csatlakozik a Cosmos-adatbázis konfigurálva az [Azure Cosmos DB API-mongoDB,](mongodb-introduction.md)majd csatlakoztatja a React előtér az alkalmazás kiszolgálórésze. Az oktatóanyag azt is bemutatja, hogyan teheti meg a Cosmos DB pont-és kattintásra méretezését az Azure Portalon, és hogyan telepítheti az alkalmazást az internetre, hogy mindenki nyomon követhesse kedvenc hőseit. 
+Ez a többrészes videóalapú oktatóanyag bemutatja, hogyan hozhat létre főképkövető alkalmazást React-előtérrendszerrel. Az alkalmazás a-kiszolgálóhoz a Node és a Expresst használta, a [Azure Cosmos db API-MongoDB](mongodb-introduction.md)konfigurált Cosmos-adatbázishoz csatlakozik, majd a reakciót az alkalmazás kiszolgálói részére csatlakoztatja. Az oktatóanyag azt is bemutatja, hogyan végezheti el a Cosmos DB méretezését a Azure Portalban, és hogyan helyezheti üzembe az alkalmazást az interneten, így mindenki nyomon követheti kedvenc hőseit. 
 
-[Az Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) támogatja a banki protokoll kompatibilitását a MongoDB-val, lehetővé téve az ügyfelek számára, hogy az Azure Cosmos DB-t használják a MongoDB helyett.  
+A [Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) támogatja a MongoDB-kompatibilitást, és lehetővé teszi, hogy az ügyfelek a Azure Cosmos DBT használják a MongoDB helyett.  
 
 Ez a többrészes oktatóanyag a következő feladatokon vezet végig:
 
@@ -69,7 +69,7 @@ Ez a videó bemutatja, hogyan hozhat létre egy Azure Cosmos DB-fiókot az Azure
 
 ## <a name="read-and-create-heroes-in-the-app"></a>Fő képek olvasása és létrehozása az alkalmazásban
 
-Ez a videó bemutatja, hogyan kell olvasni a hősöket, és hősöket létrehozni a Cosmos adatbázisban, valamint hogyan tesztelhették ezeket a módszereket a Postman és a React ui használatával. 
+Ebből a videóból megtudhatja, hogyan olvashatja el a hősöket, és hogyan hozhat létre a Cosmos adatbázisban, valamint hogyan tesztelheti ezeket a metódusokat a Poster és a felhasználói felület megválaszolása használatával. 
 
 > [!VIDEO https://www.youtube.com/embed/AQK9n_8fsQI] 
 
