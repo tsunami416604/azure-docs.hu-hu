@@ -1,5 +1,5 @@
 ---
-title: Java-alkalmazás üzembe helyezése egy Azure-beli Service Fabric-fürtre
+title: Java-alkalmazás üzembe helyezése Service Fabric-fürtön az Azure-ban
 description: Ez az oktatóanyag azt mutatja be, hogyan kell üzembe helyezni egy Java Service Fabric-alkalmazást egy Azure Service Fabric-fürtön.
 author: suhuruli
 ms.topic: tutorial
@@ -7,10 +7,10 @@ ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
 ms.openlocfilehash: df6719cad79bdb063c2d4d74892206b6e5bbd414
-ms.sourcegitcommit: fab450a18a600d72b583ecfbe6c5e53afd43408c
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/26/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80292036"
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Java-alkalmazás üzembe helyezése egy Service Fabric-fürtön az Azure-ban
@@ -162,7 +162,7 @@ A következő lépésekkel hozhatja létre azokat az erőforrásokat, amelyekre 
     https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Az EventHubs SAS-URL-címe a `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`következő struktúrát követi: . Például: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
+    A EventHubs SAS URL-címe a következő struktúrát `https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken>`követi:. Például: `https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender`
 
 12. Nyissa meg az *sfdeploy.parameters.json* fájlt, és cserélje le a következő tartalmakat az előző lépésekből származó értékekre. [SAS-URL-STORAGE-ACCOUNT] – a 8. lépésben feljegyezve. [SAS-URL-EVENT-HUBS] – a 11. lépésben feljegyezve.
 
