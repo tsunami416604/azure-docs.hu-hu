@@ -1,30 +1,30 @@
 ---
-title: 'Oktatóanyag: e-mail küldése a Logic Apps alkalmazásokkal'
-description: Ismerje meg, hogyan hívhatja meg az üzleti folyamatokat az App Service-alkalmazásból. E-maileket, tweeteket és Facebook-bejegyzéseket küldhet, levelezési listákat adhat hozzá és még sok mást.
+title: 'Oktatóanyag: e-mail küldése Logic Apps'
+description: Megtudhatja, hogyan hívhat meg üzleti folyamatokat a App Service alkalmazásból. E-mailek, tweetek és Facebook-bejegyzések, Hozzáadás a levelezési listához és sok más egyéb üzenet küldése.
 ms.topic: tutorial
 ms.date: 04/08/2020
 ms.custom: mvc
 ms.openlocfilehash: 4073b49a134356943bd7da8d54bf574f2e0d5eea
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
-ms.translationtype: MT
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604852"
 ---
-# <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Oktatóanyag: E-mail küldése és más üzleti folyamatok meghívása az App Service-ből
+# <a name="tutorial-send-email-and-invoke-other-business-processes-from-app-service"></a>Oktatóanyag: e-mail küldése és más üzleti folyamatok meghívása App Service
 
-Ebben az oktatóanyagban megtudhatja, hogyan integrálhatja az App Service-alkalmazást az üzleti folyamataival. Ez gyakori a webalkalmazás-forgatókönyvek, például:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a App Service alkalmazást az üzleti folyamataival. Ez a webalkalmazás-forgatókönyvek esetében gyakori, például a következő esetekben:
 
-- Visszaigazoló e-mail küldése tranzakcióhoz
-- Felhasználó hozzáadása a Facebook-csoporthoz
-- Csatlakozzon külső rendszerekhez, például az SAP-hoz, a SalesForce-hoz stb.
-- Exchange-szabványú B2B-üzenetek
+- Tranzakció megerősítő e-mail-címének küldése
+- Felhasználó felvétele a Facebook-csoportba
+- Kapcsolódjon külső rendszerekhez, például SAP, SalesForce stb.
+- Exchange standard B2B-üzenetek
 
-Ebben az oktatóanyagban az [Azure Logic Apps](../logic-apps/logic-apps-overview.md)használatával e-maileket küldhet a Gmaillel az App Service-alkalmazásból. A webalkalmazásból más módon is küldhet e-maileket, például a nyelvi keretrendszer által biztosított SMTP-konfiguráció. A Logic Apps azonban sokkal nagyobb teljesítményt nyújt az App Service-alkalmazásnak anélkül, hogy a kód összetettségét hozzáadná. A Logic Apps egy egyszerű konfigurációs felületet biztosít a legnépszerűbb üzleti integrációkhoz, és az alkalmazás bármikor hívhatja őket HTTP-kérelemmel.
+Ebben az oktatóanyagban e-maileket küld a Gmailben a App Service alkalmazásból [Azure Logic apps](../logic-apps/logic-apps-overview.md)használatával. Más módokon is küldhet e-maileket egy webalkalmazásból, például a nyelvi keretrendszer által biztosított SMTP-konfigurációból. Logic Apps azonban sokkal nagyobb hatékonyságot biztosít a App Service alkalmazásnak anélkül, hogy komplexitást kellene hozzáadnia a kódhoz. A Logic Apps egy egyszerű konfigurációs felületet biztosít a legnépszerűbb üzleti integrációk számára, és az alkalmazás egy HTTP-kéréssel bármikor meghívhatja őket.
 
 ## <a name="prerequisite"></a>Előfeltétel
 
-Telepítsen egy alkalmazást az Ön által választott nyelvi keretrendszerrel az App Service-be. A mintaalkalmazás üzembe helyezéséhez az alábbi útmutató követéséhez lásd alább:
+Helyezzen üzembe egy alkalmazást az Ön által választott nyelvi keretrendszerrel App Service. A minta alkalmazás üzembe helyezésére vonatkozó oktatóanyag követéséhez tekintse meg az alábbi lépéseket:
 
 # <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
@@ -32,37 +32,37 @@ Telepítsen egy alkalmazást az Ön által választott nyelvi keretrendszerrel a
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-[Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása az Azure App Service-ben](app-service-web-tutorial-dotnetcore-sqldb.md)
+[Oktatóanyag: ASP.NET Core és SQL Database alkalmazás létrehozása Azure App Service](app-service-web-tutorial-dotnetcore-sqldb.md)
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-[Oktatóanyag: Node.js és MongoDB alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-nodejs-mongodb-app.md)
+[Oktatóanyag: Node. js-és MongoDB-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-nodejs-mongodb-app.md)
 
 # <a name="php"></a>[PHP](#tab/php)
 
-[Oktatóanyag: PHP- és MySQL-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-php-mysql.md)
+[Oktatóanyag: PHP-és MySQL-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-php-mysql.md)
 
 # <a name="python"></a>[Python](#tab/python)
 
-[Oktatóanyag: Python (Django) webalkalmazás futtatása a PostgreSQL szolgáltatással az Azure App Service-ben](containers/tutorial-python-postgresql-app.md)
+[Oktatóanyag: Python-(Django-) webalkalmazás futtatása a PostgreSQL-sel Azure App Service](containers/tutorial-python-postgresql-app.md)
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-[Ruby és Postgres alkalmazás létrehozása linuxos Azure App Service-ben](containers/tutorial-ruby-postgres-app.md)
+[Ruby-és postgres-alkalmazás létrehozása Linuxon Azure App Service](containers/tutorial-ruby-postgres-app.md)
 
 ---
 
 ## <a name="create-the-logic-app"></a>A logikai alkalmazás létrehozása
 
-1. Az [Azure Portalon](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást a [Logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)című útmutató utasításait követve. Amikor megjelenik a **Logic Apps Designer**, térjen vissza az oktatóanyaghoz.
-1. A Logic Apps Designer kezdőlapján jelölje be a **HTTP-kérelem fogadásának ideje** lehetőséget **a Kezdés egy közös eseményindítóval**csoportban.
+1. A [Azure Portal](https://portal.azure.com)hozzon létre egy üres logikai alkalmazást a [logikai alkalmazás létrehozása](../logic-apps/quickstart-create-first-logic-app-workflow.md#create-your-logic-app)című témakör útmutatásai alapján. Amikor megjelenik a **Logic apps Designer**, térjen vissza ehhez az oktatóanyaghoz.
+1. A Logic Apps Designer Splash (kikapcsolt) oldalán válassza ki, hogy **mikor érkezik HTTP-kérelem** a **Start és a Common trigger együttes**használata esetén.
 
     ![](./media/tutorial-send-email/receive-http-request.png)
-1. A **HTTP-kérelem beérkezésekor**párbeszédpanelen jelölje be **a Mintahasznos adat használata séma létrehozásához**jelölőnégyzetet.
+1. A **http-kérés fogadásakor**a párbeszédpanelen válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
 
     ![](./media/tutorial-send-email/generate-schema-with-payload.png)
 
-1. Másolja a következő JSON mintát a szövegdobozba, és válassza a **Kész**lehetőséget.
+1. Másolja a következő minta JSON-t a szövegmezőbe, majd válassza a **kész**lehetőséget.
 
     ```json
     {
@@ -72,70 +72,70 @@ Telepítsen egy alkalmazást az Ön által választott nyelvi keretrendszerrel a
     }
     ```
 
-    A séma most jön létre a kívánt kérelem adatokat. A gyakorlatban csak rögzítheti az alkalmazáskód által létrehozott tényleges kérelemadatokat, és lehetővé teheti az Azure számára a JSON-séma létrehozásához. 
+    A rendszer most létrehozta a sémát a kívánt kérelemhez. A gyakorlatban egyszerűen rögzítheti az alkalmazás kódjának tényleges kérelmi adatait, és lehetővé teszi, hogy az Azure létrehozza a JSON-sémát. 
 1. A Logic Apps Designer tetején válassza a **Mentés**lehetőséget. 
 
-    Most már láthatja a HTTP-kérelem eseményindítóurl-címét. Válassza a másolás ikont, hogy másolja későbbi használatra.
+    Ekkor megjelenik a HTTP-kérelem triggerének URL-címe. A másolás ikonra kattintva másolja azt későbbi használatra.
 
     ![](./media/tutorial-send-email/http-request-url.png)
 
-    Ez a HTTP-kérelem-definíció minden, amit ebben a logikai alkalmazásban szeretne megtenni, legyen az Gmail vagy bármi más. Később ezt az URL-címet az App Service-alkalmazásban fogja meghívni. A kérelemeseményindítóval kapcsolatos további információkért tekintse meg a [HTTP-kérelem/válasz hivatkozást.](../connectors/connectors-native-reqres.md)
+    Ez a HTTP-kérelem definíciója minden olyan trigger, amelyet a logikai alkalmazásban szeretne elvégezni, legyen az Gmail vagy bármi más. Később meg fogja hívni ezt az URL-címet a App Service alkalmazásban. További információ a kérelem-triggerről: http- [kérés/-válasz hivatkozása](../connectors/connectors-native-reqres.md).
 
-1. A tervező alján kattintson az **Új lépés**gombra, írja be a **Gmail** kifejezést a műveletek keresőmezőjébe, és keresse meg az **E-mail küldése (V2)** lehetőséget.
+1. A tervező alján kattintson az **új lépés**gombra, írja be a **Gmail** kifejezést a műveletek keresőmezőbe, és keresse meg és válassza az **e-mail küldése (v2)** lehetőséget.
     
     > [!TIP]
-    > Más típusú integrációkat is kereshet, például a SendGridet, a MailChimp-et, az Office 365-öt és a SalesForce-ot. További információt a [Logic Apps dokumentációjában](https://docs.microsoft.com/azure/logic-apps/)talál.
-1. A **Gmail** párbeszédpanelen válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be arra a Gmail-fiókra, amelyről az e-mailt el szeretné küldeni.
+    > Más típusú integrációkat is kereshet, például a SendGrid, a MailChimp, az Office 365 és a SalesForce. További információ: [Logic apps dokumentáció](https://docs.microsoft.com/azure/logic-apps/).
+1. A **Gmail** párbeszédpanelen válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be arra a Gmail-fiókba, ahová el szeretné küldeni az e-mailt.
 
     ![](./media/tutorial-send-email/gmail-sign-in.png)
 
-1. Miután bejelentkezett, kattintson a **Címzett** mezőbe, és a dinamikus tartalom párbeszédpanel automatikusan megnyílik.
+1. Miután bejelentkezett, kattintson a **to** szövegmezőbe, és a dinamikus tartalom párbeszédablak automatikusan megnyílik.
 
-1. **A HTTP-kérelem beérkezésekor** művelet mellett válassza a **Tovább**lehetőséget.
+1. A HTTP- **kérelem fogadása** művelet mellett válassza a **továbbiak**lehetőséget.
 
     ![](./media/tutorial-send-email/expand-dynamic-content.png)
 
-    Most látnia kell a minta JSON-adatok által korábban használt három tulajdonságot. Ebben a lépésben használja ezeket a tulajdonságokat a HTTP-kérelem egy e-mailt.
-1. Ha a **To** mező értékét választja, válassza az **e-mailt**. Ha szeretné, kapcsolja ki a dinamikus tartalom párbeszédpanelt a **Dinamikus tartalom hozzáadása**gombra kattintva.
+    Ekkor megjelenik a korábban használt JSON-adatok három tulajdonsága. Ebben a lépésben ezeket a tulajdonságokat a HTTP-kérelemből használhatja e-mailek létrehozásához.
+1. Mivel kiválasztja a **to** mező értékét, válassza az **e-mail**lehetőséget. Ha szeretné, a dinamikus tartalom **hozzáadása**gombra kattintva kapcsolja ki a dinamikus tartalom párbeszédpanelt.
 
     ![](./media/tutorial-send-email/hide-dynamic-content.png)
 
-1. Az **Új paraméter hozzáadása** legördülő menüben válassza a **Tárgy** és **a Törzs**lehetőséget.
+1. Az **új paraméter hozzáadása** legördülő menüben válassza a **Tárgy** és a **törzs**lehetőséget.
 
-1. Kattintson a **Tárgy** szövegmezőbe, és ugyanígy válassza a **tevékenység**lehetőséget. Ha a kurzor még mindig a **Tárgy** mezőben van, írja be a *létrehozva*a következőt. 
+1. Kattintson a **Tárgy** szövegmezőre, és válassza a **feladat**lehetőséget. A kurzor továbbra is a **Tárgy** mezőbe írja be a következőt *: létrehozva*. 
 
-1. Kattintson a **Törzs**elemre, és ugyanúgy válassza a **Due**lehetőséget. A kurzor mozgatása a esedékesség után **balra,** és írja *be: Ez a munkaelem a mezőben esedékes.*
+1. Kattintson a **törzsre**, és ugyanígy válassza a **megfelelő**lehetőséget. Vigye a kurzort a **megfelelő** értékre, és írja be *ezt a munkaelemet*.
 
     > [!TIP]
-    > Ha a HTML-tartalmat közvetlenül az e-mail törzsében szeretné szerkeszteni, válassza a **Kód nézet** lehetőséget a Logic Apps Designer ablak tetején. Csak győződjön meg róla, hogy megőrzi `@{triggerBody()?['due']}`a dinamikus tartalom kódot (például )
+    > Ha közvetlenül az e-mail szövegtörzsében szeretné szerkeszteni a HTML-tartalmat, válassza a Logic Apps Designer ablak tetején található **kód nézet** lehetőséget. Ügyeljen rá, `@{triggerBody()?['due']}`hogy megőrizze a dinamikus tartalom kódját (például:).
     >
     > ![](./media/tutorial-send-email/edit-rich-html-email.png) 
 
-1. Ezután adjon hozzá egy aszinkron HTTP-választ a HTTP-eseményindítóhoz. A HTTP-eseményindító és a **+** Gmail-művelet között kattintson a jelre, és válassza **a Párhuzamos ág hozzáadása**lehetőséget.
+1. Ezután adjon hozzá egy aszinkron HTTP-választ a HTTP-triggerhez. A HTTP-trigger és a Gmail művelet között kattintson a **+** jelre, majd válassza a **párhuzamos ág hozzáadása**elemet.
 
     ![](./media/tutorial-send-email/add-http-response.png)
 
-1. A keresőmezőben keressen **választ,** majd jelölje ki a **Válasz** műveletet.
+1. A keresőmezőbe írja be a **Válasz**kifejezést, majd válassza ki a **Válasz** műveletet.
 
     ![](./media/tutorial-send-email/choose-response-action.png)
 
-    Alapértelmezés szerint a válaszművelet HTTP 200-at küld. Ez elég jó ez a bemutató. További információt a [HTTP-kérelem/válasz hivatkozás című témakörben talál.](../connectors/connectors-native-reqres.md)
+    Alapértelmezés szerint a Response művelet HTTP 200-et küld. Ez elég jó ehhez az oktatóanyaghoz. További információ: [http-kérés/válasz referenciája](../connectors/connectors-native-reqres.md).
 
 1. A Logic Apps Designer tetején válassza a **Mentés** újra lehetőséget. 
 
-## <a name="add-http-request-code-to-app"></a>HTTP-kérelemkód hozzáadása az alkalmazáshoz
+## <a name="add-http-request-code-to-app"></a>HTTP-kérelem kódjának hozzáadása az alkalmazáshoz
 
-Győződjön meg arról, hogy korábban másolta a HTTP-kérelem eseményindítójának URL-címét. Mivel bizalmas információkat tartalmaz, ajánlott, hogy ne helyezze azt közvetlenül a kódba. Az App Service segítségével az alkalmazásbeállítások használatával környezeti változóként hivatkozhat rá. 
+Győződjön meg arról, hogy a korábban a HTTP-kérelem triggerének URL-címét másolta. Mivel bizalmas adatokat tartalmaz, az ajánlott eljárás, hogy közvetlenül a kódban ne helyezze el. A App Service segítségével Ehelyett környezeti változóként hivatkozhat az Alkalmazásbeállítások használatával. 
 
-A [Cloud Shell](https://shell.azure.com)alkalmazásban hozza létre az alkalmazásbeállítást a következő paranccsal * \<(az alkalmazásnév>, * * \<az erőforráscsoport-név>* és * \<a logic-app-url>) *paranccsal:
+A [Cloud Shell](https://shell.azure.com)hozza létre az alkalmazás beállítását a következő paranccsal (az * \<app-Name>*, * \<az erőforrás-csoport neve>* és * \<a Logic-app-URL>* helyett):
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings LOGIC_APP_URL="<your-logic-app-url>"
 ```
 
-A kódban készítsen szabványos HTTP-bejegyzést az URL-címre bármely, a nyelvi keretrendszer számára elérhető HTTP-ügyfélnyelv használatával, a következő konfigurációval:
+A kódban szabványos HTTP-bejegyzést hajtson végre az URL-címre a nyelvi keretrendszerben elérhető bármely HTTP-ügyfél nyelvén, a következő konfigurációval:
 
-- A kérelem törzse ugyanazt a JSON formátumot tartalmazza, amelyet a logikai alkalmazásnak adott meg:
+- A kérelem törzse ugyanazt a JSON-formátumot tartalmazza, amelyet a logikai alkalmazáshoz adott meg:
 
     ```json
     {
@@ -145,14 +145,14 @@ A kódban készítsen szabványos HTTP-bejegyzést az URL-címre bármely, a nye
     }
     ```
 
-- A kérelem tartalmazza `Content-Type: application/json`a címsort. 
-- A teljesítmény optimalizálása érdekében küldje el a kérelmet aszinkron módon, ha lehetséges.
+- A kérelem tartalmazza a fejlécet `Content-Type: application/json`. 
+- A teljesítmény optimalizálása érdekében a kérést aszinkron módon küldje el, ha lehetséges.
 
-Egy példa megtekintéséhez kattintson az alábbi előnyben részesített nyelv/keretrendszer fülre.
+Egy példa megjelenítéséhez kattintson az alábbi előnyben részesített nyelv/keretrendszer lapra.
 
 # <a name="aspnet"></a>[ASP.NET](#tab/dotnet)
 
-A ASP.NET a HTTP-bejegyzést a [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztályral küldheti el. Például:
+A ASP.NET-ben a HTTP-bejegyzést a [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
 
 ```csharp
 // requires using System.Net.Http;
@@ -173,11 +173,11 @@ HttpResponseMessage result = await client.PostAsync(
 var statusCode = result.StatusCode.ToString();
 ```
 
-Ha teszteli ezt a kódot a minta alkalmazás [oktatóanyag: Hozzon létre egy ASP.NET alkalmazást az Azure-ban az SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)segítségével, akkor [használhatja,](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)hogy küldjön egy e-mail megerősítést a Create művelet, az `Todo` elem hozzáadása után. A fenti aszinkron kód használatához konvertálja a Create műveletet aszinkrondá.
+Ha teszteli ezt a kódot a következő oktatóanyag-alkalmazásban [: ASP.NET-alkalmazás létrehozása az Azure-ban a SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)használatával, a [létrehozási művelettel](https://github.com/Azure-Samples/dotnet-sqldb-tutorial/blob/master/DotNetAppSqlDb/Controllers/TodosController.cs#L52-L63)az `Todo` elem hozzáadása után elküldheti e-mailben a megerősítést. A fenti aszinkron kód használatához alakítsa át a Create műveletet aszinkron értékre.
 
 # <a name="aspnet-core"></a>[ASP.NET Core](#tab/dotnetcore)
 
-A ASP.NET Core alkalmazásban elküldheti a HTTP-bejegyzést a [System.Net.Http.HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztállyal. Például:
+ASP.NET Core a HTTP-bejegyzést a [System .net. http. HttpClient](https://docs.microsoft.com/dotnet/api/system.net.http.httpclient) osztály használatával küldheti el. Például:
 
 ```csharp
 // requires using System.Net.Http;
@@ -199,13 +199,13 @@ var statusCode = result.StatusCode.ToString();
 ```
 
 > [!NOTE]
-> Ez a kód van írva az egyszerűség bizonyítás. A gyakorlatban ne példányosítson el egy `HttpClient` objektumot minden egyes kérelemhez. Kövesse az [IHttpClientFactory használata útmutatót a rugalmas HTTP-kérések megvalósításához.](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)
+> Ez a kód a bemutató egyszerűségére íródott. A gyakorlatban ne hozza létre az összes `HttpClient` kérelemhez tartozó objektumot. A [rugalmas HTTP-kérések megvalósításához kövesse a IHttpClientFactory használata](https://docs.microsoft.com/dotnet/architecture/microservices/implement-resilient-applications/use-httpclientfactory-to-implement-resilient-http-requests)című témakör útmutatását.
 
-Ha teszteli ezt a kódot a minta app [oktató: Hozzon létre egy ASP.NET Core és az SQL Database alkalmazást az Azure App Service-ben,](app-service-web-tutorial-dotnetcore-sqldb.md)akkor használhatja, hogy küldjön egy e-mailt megerősítést a [Create művelet,](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)miután az `Todo` elem hozzáadása.
+Ha teszteli ezt a kódot a minta alkalmazásban [oktatóanyag: ASP.net Core létrehozása és SQL Database alkalmazás](app-service-web-tutorial-dotnetcore-sqldb.md)létrehozása a Azure app Service-ben, akkor a használatával e-mailt küldhet a [létrehozási műveletben](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial/blob/master/Controllers/TodosController.cs#L56-L65)az `Todo` elem hozzáadása után.
 
 # <a name="nodejs"></a>[Node.js](#tab/node)
 
-A Node.js, akkor küldje el a HTTP post könnyen egy npm csomagot, mint [axiók](https://www.npmjs.com/package/axios). Például:
+A Node. js-ben egyszerűen elküldheti a HTTP-Postot egy olyan NPM-csomaggal, mint a [axios](https://www.npmjs.com/package/axios). Például:
 
 ```javascript
 // Requires npm install --save axios
@@ -228,11 +228,11 @@ var jsonData = {
 
 ```
 
-Ha ezt a kódot az oktatóanyagminta alkalmazásában [teszteli: Node.js és MongoDB alkalmazást hozhat létre az Azure-ban,](app-service-web-tutorial-nodejs-mongodb-app.md)akkor a [cikk sikeres mentése](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)után e-mailben is megerősítést küldhet a [létrehozási funkcióban.](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27)
+Ha teszteli ezt a kódot a minta alkalmazásban [oktatóanyag: Node. js-és MongoDB-alkalmazás](app-service-web-tutorial-nodejs-mongodb-app.md)létrehozása az Azure-ban, akkor azt is elküldheti, hogy e-mail-megerősítést küldjön a [create függvényben](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L14-L27) [a cikk sikeres mentése](https://github.com/Azure-Samples/meanjs/blob/master/modules/articles/server/controllers/articles.server.controller.js#L24)után.
 
 # <a name="php"></a>[PHP](#tab/php)
 
-A PHP, akkor küldje el a HTTP post könnyen [Guzzle](http://docs.guzzlephp.org/en/stable/index.html). Például:
+A PHP-ben egyszerűen elküldheti a HTTP-Postot a [zabál](http://docs.guzzlephp.org/en/stable/index.html)használatával. Például:
 
 ```php
 // Requires composer require guzzlehttp/guzzle:~6.0
@@ -260,11 +260,11 @@ $response = $promise->wait();
 Log::info(print_r($response, TRUE));
 ```
 
-Ha ezt a kódot az oktatóanyagminta alkalmazásában [teszteli: PHP- és MySQL-alkalmazást hozhat létre az Azure-ban,](app-service-web-tutorial-php-mysql.md)akkor e-mailben is elküldheti a [Route::post függvényt,](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)közvetlenül a visszatérési utasítás előtt.
+Ha teszteli ezt a kódot a minta alkalmazásban az [oktatóanyaghoz: php-és MySQL-alkalmazás létrehozása az Azure-ban](app-service-web-tutorial-php-mysql.md), akkor azt is megteheti, hogy e-mail-visszaigazolást küld a [Route::p OST függvényben](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), közvetlenül a Return utasítás előtt.
 
 # <a name="python"></a>[Python](#tab/python)
 
-A Pythonban a HTTP-bejegyzést egyszerűen elküldheti [kérésekkel.](https://pypi.org/project/requests/) Például:
+A Pythonban egyszerűen elküldheti a HTTP-bejegyzést a [kérelmekkel](https://pypi.org/project/requests/). Például:
 
 ```python
 # Requires pip install requests && pip freeze > requirements.txt
@@ -291,11 +291,11 @@ async with aiohttp.post('http://httpbin.org/post', data=json.dump(payload)) as r
     print(await resp.status())
 ``` -->
 
-Ha ezt a kódot teszteli a mintaalkalmazás [oktató: Futtasson egy Python (Django) webapp postgreSQL az Azure App Service,](containers/tutorial-python-postgresql-app.md)használhatja, hogy küldjön egy e-mail megerősítést a [Route::post függvény,](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48)közvetlenül a visszatérési utasítás előtt.
+Ha ezt a kódot a minta alkalmazásban a következő [oktatóanyagban teszteli: Python-(Django-) webalkalmazás futtatása a PostgreSQL-](containers/tutorial-python-postgresql-app.md)sel a Azure app Service-ben, akkor azt is megteheti, hogy e-mail-visszaigazolást küld a [Route::p OST függvénynek](https://github.com/Azure-Samples/laravel-tasks/blob/master/routes/web.php#L30-L48), közvetlenül a Return utasítás előtt.
 
 # <a name="ruby"></a>[Ruby](#tab/ruby)
 
-A Ruby, akkor küldje el a HTTP post könnyen [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Például:
+A Ruby szolgáltatásban egyszerűen elküldheti a HTTP-Postot a [JSONClient](https://www.rubydoc.info/gems/httpclient/JSONClient). Például:
 
 ```ruby
 clnt = JSONClient.new
@@ -308,12 +308,12 @@ body = {
 connection = clnt.post_async(ENV['LOGIC_APP_URL'], body)
 ```
 
-Ha ezt a kódot teszteli a mintaalkalmazásban a [Ruby és a Postgres alkalmazás létrehozása](containers/tutorial-ruby-postgres-app.md)az Azure App Service Linux on, akkor használhatja, hogy küldjön egy e-mail megerősítést a [létrehozási](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) művelet, [ha @task.save sikerül.](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30)
+Ha ezt a kódot a alkalmazásban a [Ruby és a postgres alkalmazás](containers/tutorial-ruby-postgres-app.md)létrehozásához használja a linuxon Azure app Service, akkor a használatával e-mailben visszaigazolhatja a [létrehozási](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L26-L38) műveletet, [Ha @task.save a sikeres](https://github.com/Azure-Samples/rubyrails-tasks/blob/master/app/controllers/tasks_controller.rb#L30).
 
 ---
 
 # <a name="more-resources"></a>További erőforrások
 
 [Oktatóanyag: CORS-támogatással rendelkező RESTful API üzemeltetése az Azure App Service-ben](app-service-web-tutorial-rest-api.md)  
-[HTTP-kérelem/válasz hivatkozás a logikai alkalmazásokhoz](../connectors/connectors-native-reqres.md)  
-[Rövid útmutató: Az első munkafolyamat létrehozása az Azure Logic Apps használatával – Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md)
+[HTTP-kérelem/-válasz referenciája Logic Apps](../connectors/connectors-native-reqres.md)  
+[Rövid útmutató: az első munkafolyamat létrehozása Azure Logic Apps-Azure Portal használatával](../logic-apps/quickstart-create-first-logic-app-workflow.md)

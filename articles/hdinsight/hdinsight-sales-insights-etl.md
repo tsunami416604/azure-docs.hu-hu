@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Hozzon létre egy teljes körű ETL-folyamatot az Azure HDInsight értékesítési elemzési adatainak levezetnie'
-description: Megtudhatja, hogyan hozhat létre ETL-folyamatokat az Azure HDInsightsegítségével, hogy a Spark igény szerinti fürtjei és a Power BI használatával betekintést nyerjen az értékesítési adatokból.
+title: 'Oktatóanyag: teljes körű ETL-folyamat létrehozása az értékesítési eredmények kinyeréséhez az Azure HDInsight'
+description: Ismerje meg, hogyan hozhat létre ETL-folyamatokat az Azure HDInsight, és hogyan származtathatja az értékesítési adatokból származó információkat a Spark igény szerinti fürtök és a Power BI használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,39 +9,39 @@ ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: c213b0089af0af295d44afd38bbc5c17b6db159d
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81535230"
 ---
-# <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Oktatóanyag: Hozzon létre egy teljes körű adatfolyamatot az Azure HDInsight értékesítési elemzési adatainak levezetnie
+# <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Oktatóanyag: végpontok közötti adatfolyamat létrehozása az értékesítési elemzések létrehozásához az Azure HDInsight
 
-Ebben az oktatóanyagban egy végpontok között futó adatfolyamatot hozhat létre, amely kibontási, átalakítási és betöltési (ETL) műveleteket hajt végre. A folyamat az Azure HDInsighton futó [Apache Spark](./spark/apache-spark-overview.md) és Apache Hive-fürtöket fogja használni az adatok lekérdezéséhez és kezeléséhez. Olyan technológiákat is használhat, mint az Azure Data Lake Storage Gen2 az adattároláshoz, és a Power BI a vizualizációhoz.
+Ebben az oktatóanyagban egy végpontok közötti adatfolyamatot fog kiépíteni, amely kinyerési, átalakítási és betöltési (ETL) műveleteket hajt végre. A folyamat az Azure HDInsight-on futó [Apache Spark](./spark/apache-spark-overview.md) és Apache Hive fürtöket fogja használni az adatlekérdezéshez és-kezeléshez. Emellett olyan technológiákat is használhat, mint a Azure Data Lake Storage Gen2 az adattároláshoz, és Power BI a vizualizációhoz.
 
-Ez az adatfolyamat egyesíti a különböző tárolókból származó adatokat, eltávolítja a nem kívánt adatokat, új adatokat fűz hozzá, és mindezt visszatölti a tárolóba az üzleti elemzések megjelenítéséhez. Tudjon meg többet az ETL-folyamatokról [az Extract, transform és load (ETL) nagy méretekben.](./hadoop/apache-hadoop-etl-at-scale.md)
+Ez az adatfolyamat a különböző áruházakból származó adatok összegyűjtését, a nemkívánatos adatok eltávolítását, az új adatok hozzáfűzését és a tárhelyre való visszatöltését az üzleti elemzések megjelenítéséhez. További információ a [kinyerési, átalakítási és betöltési (etl)](./hadoop/apache-hadoop-etl-at-scale.md)folyamatokról a skálán.
 
-![ETL architektúra](./media/hdinsight-sales-insights-etl/architecture.png)
+![ETL-architektúra](./media/hdinsight-sales-insights-etl/architecture.png)
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure CLI - legalább 2.2.0-s verzió. Lásd: [Az Azure CLI telepítése.](https://docs.microsoft.com/cli/azure/install-azure-cli)
+* Azure CLI – legalább a 2.2.0-as verzió. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-* jq, egy parancssori JSON processzor.  Lásd: [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/).
+* jQ, parancssori JSON-processzor.  Lásd [https://stedolan.github.io/jq/](https://stedolan.github.io/jq/):.
 
-* Az Azure [beépített szerepkörének](../role-based-access-control/built-in-roles.md)egyik tagja – tulajdonos.
+* Az [Azure beépített szerepkör-tulajdonosának](../role-based-access-control/built-in-roles.md)tagja.
 
-* Ha a PowerShell használatával elindítja a Data Factory folyamatot, szüksége lesz az [Az modulra.](https://docs.microsoft.com/powershell/azure/overview)
+* Ha a PowerShell használatával indítja el a Data Factory folyamatot, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
 
-* [A Power BI Desktop](https://aka.ms/pbiSingleInstaller) az oktatóanyag végén megjeleníti az üzleti elemzéseket.
+* [Power bi Desktop](https://aka.ms/pbiSingleInstaller) az oktatóanyag végén az üzleti eredmények megjelenítéséhez.
 
 ## <a name="create-resources"></a>Erőforrások létrehozása
 
-### <a name="clone-the-repository-with-scripts-and-data"></a>A tárház klónozása parancsfájlokkal és adatokkal
+### <a name="clone-the-repository-with-scripts-and-data"></a>A tárház klónozása parancsfájlokkal és adatkezeléssel
 
-1. Jelentkezzen be Azure-előfizetésbe. Ha az Azure Cloud Shell használatát tervezi, válassza a **Próbálja ki** a kódblokk jobb felső sarkában. Máshol, belép a követel alul:
+1. Jelentkezzen be az Azure-előfizetésbe. Ha azt tervezi, hogy Azure Cloud Shell használ, válassza a **kipróbálás** lehetőséget a kód blokk jobb felső sarkában. Máskülönben adja meg az alábbi parancsot:
 
     ```azurecli-interactive
     az login
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
     # az account set --subscription "SUBSCRIPTIONID"
     ```
 
-1. Győződjön meg arról, hogy tagja az Azure-szerepkör [tulajdonosának.](../role-based-access-control/built-in-roles.md) Cserélje `user@contoso.com` le a fiókját, majd írja be a parancsot:
+1. Győződjön meg arról, hogy tagja az Azure szerepkör- [tulajdonosnak](../role-based-access-control/built-in-roles.md). Cserélje `user@contoso.com` le a fiókot a fiókra, majd írja be a parancsot:
 
     ```azurecli
     az role assignment list \
@@ -58,16 +58,16 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
     --role "Owner"
     ```
 
-    Ha nem ad vissza rekordot, akkor nem tagja, és nem tudja befejezni ezt az oktatóanyagot.
+    Ha nem ad vissza rekordot, nem tagja, és nem tudja befejezni az oktatóanyagot.
 
-1. Töltse le az oktatóanyag adatait és parancsfájljait a [HDInsight sales insights ETL tárházból.](https://github.com/Azure-Samples/hdinsight-sales-insights-etl) Írja be a következő parancsot:
+1. Az oktatóanyaghoz tartozó adatok és parancsfájlok letöltése a [HDInsight Sales bepillantást ETL adattárból](https://github.com/Azure-Samples/hdinsight-sales-insights-etl). Írja be a következő parancsot:
 
     ```bash
     git clone https://github.com/Azure-Samples/hdinsight-sales-insights-etl.git
     cd hdinsight-sales-insights-etl
     ```
 
-1. Győződjön meg róla, `salesdata scripts templates` hogy létrejöttek. Ellenőrizze a következő paranccsal:
+1. Győződjön `salesdata scripts templates` meg róla, hogy létrejött. Ellenőrizze a következő paranccsal:
 
    ```bash
    ls
@@ -75,44 +75,44 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](
 
 ### <a name="deploy-azure-resources-needed-for-the-pipeline"></a>A folyamathoz szükséges Azure-erőforrások üzembe helyezése
 
-1. Végrehajtási engedélyek hozzáadása az összes parancsfájlhoz a következő beírással:
+1. Adja hozzá az összes parancsfájl végrehajtási engedélyeit a következő beírásával:
 
     ```bash
     chmod +x scripts/*.sh
     ````
 
-1. Változó beállítása az erőforráscsoporthoz. Cserélje `RESOURCE_GROUP_NAME` le egy meglévő vagy új erőforráscsoport nevére, majd írja be a következő parancsot:
+1. Erőforráscsoport változójának beállítása. Cserélje `RESOURCE_GROUP_NAME` le a értéket egy meglévő vagy egy új erőforráscsoport nevére, majd írja be a parancsot:
 
     ```bash
     resourceGroup="RESOURCE_GROUP_NAME"
     ```
 
-1. Futtassa a szkriptet. Cserélje `LOCATION` le a kívánt értéket, majd írja be a parancsot:
+1. Futtassa a szkriptet. Cserélje `LOCATION` le a értéket a kívánt értékre, majd írja be a parancsot:
 
     ```bash
     ./scripts/resources.sh $resourceGroup LOCATION
     ```
 
-    Ha nem biztos abban, hogy melyik régiót adja meg, az [az-fióklista-helyek](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) paranccsal lekérheti az előfizetés támogatott régióinak listáját.
+    Ha nem biztos abban, hogy melyik régiót kell megadnia, lekérheti az előfizetéséhez tartozó támogatott régiók listáját az az [Account List-Locations](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list-locations) paranccsal.
 
-    A parancs a következő erőforrásokat telepíti:
+    A parancs a következő erőforrásokat fogja telepíteni:
 
-    * Egy Azure Blob-tárfiók. Ez a számla a vállalati értékesítési adatokat fogja tárolni.
-    * Egy Azure Data Lake Storage Gen2-fiók. Ez a fiók mindkét HDInsight-fürt tárfiókjaként szolgál. Tudjon meg többet a HDInsight és a Data Lake Storage Gen2 az [Azure HDInsight integrációs Data Lake Storage Gen2.](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
-    * Felhasználó által hozzárendelt felügyelt identitás. Ez a fiók hozzáférést biztosít a HDInsight-fürtöknek a Data Lake Storage Gen2 fiókhoz.
-    * Egy Apache Spark-fürt. Ez a fürt a nyers adatok karbantartására és átalakítására szolgál.
-    * Egy Apache Hive [interaktív lekérdezési](./interactive-query/apache-interactive-query-get-started.md) fürt. Ez a fürt lehetővé teszi az értékesítési adatok lekérdezését és megjelenítését a Power BI-val.
-    * A hálózati biztonsági csoport (NSG) szabályai által támogatott Azure virtuális hálózat. Ez a virtuális hálózat lehetővé teszi a fürtök számára a kommunikációt és a kommunikáció biztonságát.
+    * Egy Azure Blob Storage-fiók. Ez a fiók fogja tárolni a vállalati értékesítési adatforgalmat.
+    * Egy Azure Data Lake Storage Gen2-fiók. Ez a fiók a HDInsight-fürtökhöz tartozó Storage-fiókként fog szolgálni. További információ: HDInsight és Data Lake Storage Gen2 az [Azure HDInsight-integrációban Data Lake Storage Gen2okkal](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/).
+    * Felhasználó által hozzárendelt felügyelt identitás. Ez a fiók biztosítja a HDInsight-fürtök számára a Data Lake Storage Gen2 fiók elérését.
+    * Egy Apache Spark-fürt. Ezt a fürtöt a rendszer a nyers Adattisztításra és átalakításra használja.
+    * Egy Apache Hive [interaktív lekérdezési](./interactive-query/apache-interactive-query-get-started.md) fürt. Ez a fürt lehetővé teszi az értékesítési adatlekérdezést és a Power BIsal való megjelenítését.
+    * Hálózati biztonsági csoport (NSG) szabályai által támogatott Azure-beli virtuális hálózat. Ez a virtuális hálózat lehetővé teszi, hogy a fürtök kommunikálhassanak és biztonságossá tegye a kommunikációt.
 
-A fürt létrehozása körülbelül 20 percet is igénybe vehet.
+A fürt létrehozása körülbelül 20 percet vesz igénybe.
 
-A fürtök SSH-hozzáférésének alapértelmezett `Thisisapassword1`jelszava a . Ha módosítani szeretné a jelszót, `./templates/resourcesparameters_remainder.json` nyissa meg a fájlt, `llapClusterLoginPassword`és `llapsshPassword` módosítsa a `sparksshPassword`, `sparkClusterLoginPassword`, és a paraméterek jelszavát.
+A fürtökhöz való SSH-hozzáférés alapértelmezett jelszava `Thisisapassword1`. Ha módosítani szeretné a jelszót, nyissa `./templates/resourcesparameters_remainder.json` meg a fájlt, és módosítsa a `sparksshPassword`, `sparkClusterLoginPassword` `llapClusterLoginPassword`, és `llapsshPassword` paraméterek jelszavát.
 
-### <a name="verify-deployment-and-collect-resource-information"></a>A telepítés ellenőrzése és az erőforrásadatok összegyűjtése
+### <a name="verify-deployment-and-collect-resource-information"></a>Az üzembe helyezés ellenőrzése és az erőforrások adatainak összegyűjtése
 
-1. Ha szeretné ellenőrizni a központi telepítés állapotát, nyissa meg az erőforráscsoportot az Azure Portalon. A **Beállítások csoportban**válassza **a Központi telepítések**lehetőséget, majd a központi telepítést. Itt láthatja a sikeresen üzembe helyezett erőforrásokat és a még folyamatban lévő erőforrásokat.
+1. Ha szeretné megtekinteni az üzemelő példány állapotát, nyissa meg az erőforráscsoportot a Azure Portal. A **Beállítások**területen válassza a **központi telepítések**, majd a telepítés lehetőséget. Itt láthatja a sikeresen telepített erőforrásokat és a még folyamatban lévő erőforrásokat.
 
-1. A fürtök nevének megtekintéséhez írja be a következő parancsot:
+1. A fürtök neveinek megtekintéséhez írja be a következő parancsot:
 
     ```bash
     sparkClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.sparkClusterName.value')
@@ -122,7 +122,7 @@ A fürtök SSH-hozzáférésének alapértelmezett `Thisisapassword1`jelszava a 
     echo "LLAP cluster" $llapClusterName
     ```
 
-1. Az Azure storage-fiók és a hozzáférési kulcs megtekintéséhez írja be a következő parancsot:
+1. Az Azure Storage-fiók és a hozzáférési kulcs megtekintéséhez írja be a következő parancsot:
 
     ```azurecli
     blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
@@ -152,14 +152,14 @@ A fürtök SSH-hozzáférésének alapértelmezett `Thisisapassword1`jelszava a 
 
 ### <a name="create-a-data-factory"></a>Data factory létrehozása
 
-Az Azure Data Factory egy olyan eszköz, amely segít automatizálni az Azure-folyamatokat. Nem ez az egyetlen módja ezeknek a feladatoknak, de ez egy nagyszerű módja annak, hogy automatizálják a folyamatokat. Az Azure Data Factory ról az [Azure Data Factory dokumentációjában](https://azure.microsoft.com/services/data-factory/)olvashat bővebben.
+A Azure Data Factory egy olyan eszköz, amely segít automatizálni az Azure-folyamatokat. Ezen feladatok elvégzése nem az egyetlen módszer, de ez nagyszerű módszer a folyamatok automatizálására. A Azure Data Factoryről a [Azure Data Factory dokumentációjában](https://azure.microsoft.com/services/data-factory/)talál további információt.
 
-Ez az adatgyár egy folyamattal rendelkezik, amely két tevékenységet kínál:
+Ez az adatfeldolgozó egyetlen folyamattal rendelkezik, amely két tevékenységgel rendelkezik:
 
-* Az első tevékenység másolja az adatokat az Azure Blob storage a Data Lake Storage Gen 2 tárfiók utánozni az adatok betöltését.
-* A második tevékenység átalakítja az adatokat a Spark-fürtben. A parancsfájl a nem kívánt oszlopok eltávolításával alakítja át az adatokat. Hozzáfűz egy új oszlopot is, amely kiszámítja az egyetlen tranzakció által generált bevételt.
+* Az első tevékenység az Azure Blob Storage-ból származó adatok másolását a Data Lake Storage Gen 2 Storage-fiókba másolja az adatfeldolgozási műveletek elvégzéséhez.
+* A második tevékenység átalakítja a Spark-fürtben található adatfájlokat. A parancsfájl a nemkívánatos oszlopok eltávolításával átalakítja az adattípust. Egy új oszlopot is hozzáfűz, amely kiszámítja az egyetlen tranzakció által generált bevételt.
 
-Az Azure Data Factory-folyamat beállításához hajtsa végre az alábbi parancsot.  Még mindig a `hdinsight-sales-insights-etl` könyvtárban kellene lenned.
+A Azure Data Factory folyamat beállításához hajtsa végre az alábbi parancsot.  Továbbra is a `hdinsight-sales-insights-etl` címtárban kell lennie.
 
 ```bash
 blobStorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.outputs.blobStorageName.value')
@@ -168,29 +168,29 @@ ADLSGen2StorageName=$(cat resourcesoutputs_storage.json | jq -r '.properties.out
 ./scripts/adf.sh $resourceGroup $ADLSGen2StorageName $blobStorageName
 ```
 
-Ez a szkript a következő dolgokat teszi:
+A szkript a következő műveleteket végzi el:
 
-1. Létrehoz egy egyszerű `Storage Blob Data Contributor` szolgáltatás a Data Lake Storage Gen2 tárfiók engedélyekkel.
-1. Beszerez egy hitelesítési jogkivonatot a POST-kérelmek engedélyezéséhez a [Data Lake Storage Gen2 fájlrendszer REST API-jának.](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create)
-1. Kitölti a Data Lake Storage Gen2 tárfiók `sparktransform.py` tényleges `query.hql` nevét a és a fájlokban.
-1. A Data Lake Storage Gen2 és a Blob storage-fiókok tárolási kulcsok beszerzése.
-1. Létrehoz egy másik erőforrás-telepítést az Azure Data Factory-folyamat létrehozásához a kapcsolódó kapcsolódó szolgáltatásokkal és tevékenységekkel. A tárolási kulcsokat paraméterekként továbbítja a sablonfájlba, hogy a csatolt szolgáltatások megfelelően hozzáférhessenek a tárfiókokhoz.
+1. Létrehoz egy egyszerű szolgáltatást, `Storage Blob Data Contributor` amely a Data Lake Storage Gen2 Storage-fiókra vonatkozó engedélyekkel rendelkezik.
+1. Hitelesítési jogkivonat beszerzése a POST kérések engedélyezéséhez a [Data Lake Storage Gen2 fájlrendszer REST API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/filesystem/create).
+1. A `sparktransform.py` és `query.hql` a fájlban lévő Data Lake Storage Gen2 Storage-fiók tényleges nevét adja meg.
+1. A Data Lake Storage Gen2-és blob Storage-fiókokhoz tartozó tárolási kulcsok beszerzése.
+1. Egy másik erőforrás-telepítést hoz létre egy Azure Data Factory-folyamat létrehozásához társított kapcsolódó szolgáltatásokkal és tevékenységekkel. A tárolási kulcsokat paraméterként adja át a sablonfájl számára, hogy a társított szolgáltatások megfelelően hozzáférhessenek a Storage-fiókokhoz.
 
 ## <a name="run-the-data-pipeline"></a>Az adatfolyamat futtatása
 
-### <a name="trigger-the-data-factory-activities"></a>Indítsa el a Data Factory tevékenységeket
+### <a name="trigger-the-data-factory-activities"></a>A Data Factory tevékenységek kiváltása
 
-Az első tevékenység a Data Factory folyamat, amely létrehozott helyezi át az adatokat blob storage Data Lake Storage Gen2. A második tevékenység a Spark-átalakításokat alkalmazza az adatokra, és az átalakított .csv fájlokat egy új helyre menti. A teljes folyamat befejezéséhez eltarthat néhány perc.
+A létrehozott Data Factory folyamat első tevékenysége áthelyezi az adatait a blob Storage-ból a Data Lake Storage Gen2ba. A második tevékenység alkalmazza a Spark-átalakításokat az adathalmazon, és menti az átalakított. csv fájlokat egy új helyre. A teljes folyamat eltarthat néhány percig.
 
-A Data Factory nevének beolvasásához írja be a következő parancsot:
+A Data Factory nevének lekéréséhez írja be a következő parancsot:
 
 ```azurecli
 cat resourcesoutputs_adf.json | jq -r '.properties.outputs.factoryName.value'
 ```
 
-A folyamat elindításához a következőket teheti:
+A folyamat elindításához a következők közül választhat:
 
-* Indítsa el a Data Factory folyamat a PowerShellben. Cserélje `RESOURCEGROUP`le `DataFactoryName` a és a megfelelő értékeket, majd futtassa a következő parancsokat:
+* Aktiválja a Data Factory folyamatot a PowerShellben. Cserélje `RESOURCEGROUP`le a `DataFactoryName` és a értéket a megfelelő értékekre, majd futtassa a következő parancsokat:
 
     ```powershell
     # If you have multiple subscriptions, set the one to use
@@ -210,31 +210,31 @@ A folyamat elindításához a következőket teheti:
         -PipelineRunId $pipeline
     ```
 
-    Szükség szerint `Get-AzDataFactoryV2PipelineRun` újra végrehajtja a végrehajtást.
+    A folyamat nyomon `Get-AzDataFactoryV2PipelineRun` követéséhez szükség szerint hajtsa végre újra a végrehajtást.
 
     Vagy
 
-* Nyissa meg az adatgyárat, és válassza **a Szerzői & monitor lehetőséget.** Indítsa `IngestAndTransform` el a folyamatot a portálról. A folyamatok portálon keresztüli indításáról az [Igény szerinti Apache Hadoop-fürtök létrehozása a HDInsightban](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline)az Azure Data Factory használatával című témakörben talál további információt.
+* Nyissa meg az adatelőállítót, és válassza a **szerző & figyelő**elemet. A `IngestAndTransform` folyamat elindítása a portálról. A folyamatoknak a portálon keresztüli aktiválásával kapcsolatos további információkért lásd: [igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával](hdinsight-hadoop-create-linux-clusters-adf.md#trigger-a-pipeline).
 
-A folyamat futásának ellenőrzéséhez tegye az alábbi lépések egyikét:
+A folyamat futtatásának ellenőrzéséhez hajtsa végre a következő lépések egyikét:
 
-* Lépjen az adat-előállító **Figyel** szakaszára a portálon keresztül.
-* Az Azure Storage Explorerben nyissa meg a Data Lake Storage Gen 2 tárfiókot. Nyissa meg `files` a fájlrendszert, majd `transformed` lépjen a mappába, és ellenőrizze annak tartalmát, hogy a folyamat sikeres volt-e.
+* A portálon keresztül nyissa meg a **monitoring** szakaszt az adatgyárban.
+* A Azure Storage Explorerban nyissa meg a Data Lake Storage 2. generációs Storage-fiókot. Nyissa meg `files` a fájlrendszert, majd nyissa meg `transformed` a mappát, és ellenőrizze annak tartalmát, és ellenőrizze, hogy a folyamat sikeres volt-e.
 
-Az adatok HDInsight használatával történő átalakításának egyéb módjait [a Jupyter-jegyzetfüzet használatáról szóló cikk ismerteti.](/azure/hdinsight/spark/apache-spark-load-data-run-query)
+Az HDInsight használatával történő adatátalakítás egyéb módjairól [ebben a cikkben olvashat a Jupyter notebook használatáról](/azure/hdinsight/spark/apache-spark-load-data-run-query).
 
-### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Tábla létrehozása az Interaktív lekérdezési fürtön a Power BI adatainak megtekintéséhez
+### <a name="create-a-table-on-the-interactive-query-cluster-to-view-data-on-power-bi"></a>Tábla létrehozása az interaktív lekérdezési fürtön Power BI
 
-1. Másolja `query.hql` a fájlt az LLAP-fürtbe az SCP használatával. Írja be a parancsot:
+1. Másolja a `query.hql` fájlt a LLAP-fürtre SCP használatával. Adja meg a parancsot:
 
     ```bash
     llapClusterName=$(cat resourcesoutputs_remainder.json | jq -r '.properties.outputs.llapClusterName.value')
     scp scripts/query.hql sshuser@$llapClusterName-ssh.azurehdinsight.net:/home/sshuser/
     ```
 
-    Emlékeztető: Az alapértelmezett `Thisisapassword1`jelszó .
+    Emlékeztető: az alapértelmezett jelszó `Thisisapassword1`.
 
-1. Az SSH használatával érheti el az LLAP-fürtöt. Írja be a parancsot:
+1. Használja az SSH-t a LLAP-fürt eléréséhez. Adja meg a parancsot:
 
     ```bash
     ssh sshuser@$llapClusterName-ssh.azurehdinsight.net
@@ -246,34 +246,34 @@ Az adatok HDInsight használatával történő átalakításának egyéb módjai
     beeline -u 'jdbc:hive2://localhost:10001/;transportMode=http' -f query.hql
     ```
 
-    Ez a parancsfájl egy felügyelt táblát hoz létre az interaktív lekérdezési fürtön, amelyet a Power BI-ból érhet el.
+    Ez a szkript egy felügyelt táblát hoz létre az interaktív lekérdezési fürtön, amely a Power BIból érhető el.
 
-### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Power BI-irányítópult létrehozása értékesítési adatokból
+### <a name="create-a-power-bi-dashboard-from-sales-data"></a>Power BI irányítópult létrehozása értékesítési adatokból
 
 1. Nyissa meg a Power BI Desktopot.
 
-1. A menüben keresse meg az >  **Adatok beszedése****Többet...**  >  **Az Azure** > **HDInsight interaktív lekérdezése**.
+1. A menüből válassza az >  **adatok lekérése****továbbiak...** lehetőséget.  > Az **Azure** > **HDInsight interaktív lekérdezése**.
 
 1. Kattintson a **Csatlakozás** gombra.
 
-1. A **HDInsight interaktív lekérdezése** párbeszédpanelen:
-    1. A **Kiszolgáló** mezőbe írja be az LLAP-fürt nevét `https://LLAPCLUSTERNAME.azurehdinsight.net`a formátumban: .
-    1. Az **adatbázis** szövegmezőjébe `default`írja be a be írt értéket.
-    1. Válassza **az OK gombot.**
+1. A **HDInsight interaktív lekérdezés** párbeszédpanelen:
+    1. A **kiszolgáló** szövegmezőbe írja be a LLAP-fürt nevét a formátuma mezőbe `https://LLAPCLUSTERNAME.azurehdinsight.net`.
+    1. Az **adatbázis** szövegmezőbe írja be a `default`értéket.
+    1. Kattintson az **OK** gombra.
 
-1. Az **AzureHive** párbeszédpanelről:
-    1. A **Felhasználónév** mezőbe írja `admin`be a mezőbe.
-    1. A **Jelszó** mezőbe írja `Thisisapassword1`be a mezőbe a mezőt.
+1. A **AzureHive** párbeszédpanelen:
+    1. A **Felhasználónév** szövegmezőbe írja be `admin`a nevet.
+    1. A **jelszó** szövegmezőbe írja be a `Thisisapassword1`értéket.
     1. Kattintson a **Csatlakozás** gombra.
 
-1. A **Navigátor**területen válassza a `sales`lehetőséget, és/vagy `sales_raw` tekintse meg az adatok előnézetét. Az adatok betöltése után kísérletezhet a létrehozni kívánt irányítópulttal. A Power BI irányítópultjainak első lépéseiaz alábbi hivatkozásokon található:
+1. A **Navigátorból**válassza `sales`ki és/vagy `sales_raw` az adatok előnézetét. Az adatgyűjtés után kísérletezhet a létrehozni kívánt irányítópulttal. A Power BI-irányítópultok megismeréséhez tekintse meg az alábbi hivatkozásokat:
 
 * [Irányítópultok a Power BI szolgáltatás tervezői számára – bevezetés](https://docs.microsoft.com/power-bi/service-dashboards)
-* [Oktatóanyag: A Power BI szolgáltatás ismerkedése](https://docs.microsoft.com/power-bi/service-get-started)
+* [Oktatóanyag: a Power BI szolgáltatás első lépései](https://docs.microsoft.com/power-bi/service-get-started)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha nem fogja tovább használni ezt az alkalmazást, törölje az összes erőforrást a következő paranccsal, hogy ne kelljen fizetnie.
+Ha nem folytatja az alkalmazás használatát, az alábbi parancs használatával törölje az összes erőforrást, hogy ne legyen rájuk felszámítva.
 
 1. Az erőforráscsoport eltávolításához írja be a következő parancsot:
 
@@ -291,4 +291,4 @@ Ha nem fogja tovább használni ezt az alkalmazást, törölje az összes erőfo
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Kivonás, átalakítás és betöltés (ETL) nagy méretekben](./hadoop/apache-hadoop-etl-at-scale.md)
+> [Kinyerés, átalakítás és betöltés (ETL) skálán](./hadoop/apache-hadoop-etl-at-scale.md)

@@ -9,20 +9,20 @@ ms.date: 12/27/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: cd7b889560acbe484581f065b641375c222f7ca8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81536486"
 ---
-Alapértelmezés szerint a szabványos fájlmegosztások legfeljebb 5 TiB-re terjedhetnek ki, bár a megosztási korlát 100 TiB-re növelhető. Ehhez engedélyezni kell a *nagy fájlmegosztási* szolgáltatást a tárfiók szintjén. Prémium szintű tárfiókok *(FileStorage* storage fiókok) nem rendelkeznek a nagy fájlmegosztási szolgáltatás jelzője, mivel az összes prémium szintű fájlmegosztások már engedélyezve vannak a teljes 100 TiB-kapacitás kiépítése.
+Alapértelmezés szerint a standard fájlmegosztás legfeljebb 5 TiB-ra terjedhet, bár a megosztási korlát a 100 TiB-ra is növelhető. Ehhez a Storage-fiók szintjén engedélyeznie kell a *nagyméretű fájlmegosztás* szolgáltatást. A Premium Storage-fiókok (*FileStorage* Storage-fiókok) nem rendelkeznek a nagyméretű fájlmegosztás-szolgáltatás jelzőjével, mivel az összes prémium fájlmegosztás már engedélyezve van a teljes 100 TiB-kapacitás kiépítése érdekében.
 
-Csak helyileg redundáns vagy zónaredundáns szabványos tárfiókokon engedélyezhet nagy fájlmegosztásokat. Miután engedélyezte a nagy fájlmegosztási szolgáltatásjelzőt, nem módosíthatja a redundanciaszintet georedundáns vagy geozónaredundáns tárolóra.
+A nagyméretű fájlmegosztást csak a helyileg redundáns vagy a zónában redundáns szabványos Storage-fiókok esetében lehet engedélyezni. Ha engedélyezte a nagyméretű fájlmegosztás funkció jelzőjét, a redundancia nem módosítható a Geo-redundáns vagy a Geo-Zone-redundáns tárolóra.
 
-Ha nagy fájlmegosztásokat szeretne engedélyezni egy meglévő tárfiókban, keresse meg a tárfiók tartalomjegyzékének **Konfiguráció nézetét,** és kapcsolja be a nagy fájlmegosztás-szabályváltót engedélyezve:
+Ha a nagyméretű fájlmegosztást egy meglévő Storage-fiókon szeretné engedélyezni, navigáljon a Storage-fiók tartalomjegyzékében a **konfiguráció** nézetre, és állítsa be a nagyméretű fájlmegosztás rocker-kapcsolóját, hogy engedélyezve legyen:
 
-![A nagy fájlmegosztás-szabálykezelő váltás engedélyezése az Azure Portalon](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
+![Képernyőkép a nagyméretű fájlmegosztás engedélyezése a Azure Portal](media/storage-files-tiers-enable-large-shares/enable-lfs-0.png)
 
-100 TiB-fájlmegosztást is [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) engedélyezhet a PowerShell-parancsmagés az [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure CLI parancs segítségével. A nagyméretű fájlmegosztások engedélyezéséről az [Engedélyezés és a nagyfájlmegosztások engedélyezése és létrehozása](../articles/storage/files/storage-files-how-to-create-large-file-share.md)című témakörben talál részletes útmutatást.
+Az 100 TiB-fájlmegosztás a [`Set-AzStorageAccount`](https://docs.microsoft.com/powershell/module/az.storage/set-azstorageaccount) PowerShell-parancsmagon és az [`az storage account update`](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-update) Azure CLI-parancson keresztül is engedélyezhető. A nagyméretű fájlok megosztásának engedélyezésével kapcsolatos részletes utasításokért lásd: [nagyméretű fájlmegosztás engedélyezése és létrehozása](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
 
-Ha többet szeretne tudni arról, hogyan hozhat létre fájlmegosztásokat az új tárfiókokon, olvassa el [az Azure-fájlmegosztás létrehozása](../articles/storage/files/storage-how-to-create-file-share.md)című témakört.
+Ha többet szeretne megtudni arról, hogyan hozhatók létre fájlmegosztás az új Storage-fiókokban, tekintse meg [Az Azure-fájlmegosztás létrehozását](../articles/storage/files/storage-how-to-create-file-share.md)ismertető részt.

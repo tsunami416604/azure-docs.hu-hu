@@ -1,159 +1,159 @@
 ---
-title: Fizikai kiszolgálók előkészítése az azure-áttelepítéssel az értékelésre/áttelepítésre
-description: Ismerje meg, hogyan készülhet fel a fizikai kiszolgálók értékelésére/áttelepítésére az Azure Migrate segítségével.
+title: Fizikai kiszolgálók előkészítése az értékeléshez és a Migrálás Azure Migrate
+description: Ismerje meg, hogyan készítheti elő a fizikai kiszolgálók értékelését és áttelepítését Azure Migrate használatával.
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
 ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81535281"
 ---
-# <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Felkészülés a fizikai kiszolgálók Azure-ba való értékelésére és áttelepítésére
+# <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Felkészülés a fizikai kiszolgálók Azure-ba történő értékelésére és áttelepítésére
 
-Ez a cikk bemutatja, hogyan készülhet fel a helyszíni fizikai kiszolgálók értékelésére az [Azure Migrate](migrate-services-overview.md)segítségével.
+Ez a cikk azt ismerteti, hogyan lehet felkészülni a helyszíni fizikai kiszolgálók értékelésére [Azure Migrate](migrate-services-overview.md)használatával.
 
-[Az Azure Migrate](migrate-overview.md) olyan eszközök központi eszköze, amelyek segítségével felderítheti, felmérheti és áttelepítheti az alkalmazásokat, az infrastruktúrát és a számítási feladatokat a Microsoft Azure-ba. A központ tartalmazza az Azure Migrate eszközöket és a külső független szoftverszállítói (ISV) ajánlatokat. 
+[Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz. 
 
-Ez az oktatóanyag az első egy sorozatban, amely bemutatja, hogyan értékelheti a fizikai kiszolgálók at Azure Migrate. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Ez az oktatóanyag az első egy olyan sorozatban, amely bemutatja, hogyan kell felmérni a fizikai kiszolgálókat a Azure Migrateokkal. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Készítse elő az Azure-t. Állítsa be az Azure-fiókjához és az Azure Migrate szolgáltatással való együttműködésre szolgáló erőforrások engedélyeit.
-> * Készítse elő a helyszíni fizikai kiszolgálókat a kiszolgáló értékeléséhez.
+> * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
+> * A helyszíni fizikai kiszolgálók előkészítése a kiszolgálók értékeléséhez.
 
 
 > [!NOTE]
-> Az oktatóanyagok a forgatókönyv legegyszerűbb telepítési útvonalát mutatják be, így gyorsan beállíthat egy proof-of-concept-et. Az oktatóanyagok lehetőség szerint az alapértelmezett beállításokat használják, és nem jelenítik meg az összes lehetséges beállítást és elérési utat. Részletes utasításokért tekintse át az Útmutatók fizikai kiszolgálók értékelését.
+> Az oktatóanyagok bemutatják a forgatókönyvek legegyszerűbb telepítési útvonalát, így gyorsan beállíthatja a rendszer megvalósíthatóságát. Az oktatóanyagok az alapértelmezett beállításokat használják, ahol lehetséges, és nem jelennek meg az összes lehetséges beállítás és elérési út. Részletes utasításokért tekintse át a fizikai kiszolgálók értékelésének útmutatója című témakört.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/pricing/free-trial/) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) .
 
 
-## <a name="prepare-azure-for-server-assessment"></a>Az Azure előkészítése a kiszolgálók értékelésére
+## <a name="prepare-azure-for-server-assessment"></a>Az Azure előkészítése a kiszolgálók értékeléséhez
 
-Állítsa be az Azure-t az Azure Migrate szolgáltatással való együttműködésre. 
+Állítsa be az Azure-t, hogy működjön együtt Azure Migrateokkal. 
 
 **Tevékenység** | **Részletek** 
 --- | --- 
-**Azure Migrate projekt létrehozása** | Az Azure-fiókjának közreműködői vagy tulajdonosi engedélyekre van szüksége a projekt létrehozásához. 
-**Erőforrás-szolgáltatók regisztrálása (csak értékelés esetén)** | Az Azure Migrate egy könnyű Azure Migrate készüléket használ a gépek felderítéséhez és értékeléséhez az Azure Migrate:Server Assessment segítségével.<br/><br/> A készülék regisztrációja során az erőforrás-szolgáltatók regisztrálva vannak a készülékben kiválasztott előfizetéssel. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetéshez.
-**Azure AD-alkalmazás létrehozása (csak értékelés esetén)** | A készülék regisztrálásakor az Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást, amely a készüléken futó ügynökök közötti kommunikációra szolgál az Azure-on futó megfelelő szolgáltatásokkal. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Engedélyeket kell létrehoznia az Azure AD-alkalmazások (az alkalmazásfejlesztői szerepkörben érhető el) létrehozásához.
+**Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához. 
+**Erőforrás-szolgáltatók regisztrálása (csak értékelés)** | A Azure Migrate egy könnyű Azure Migrate berendezéssel észleli és értékeli a gépeket a Azure Migrate: Server Assessment használatával.<br/><br/> A készülék regisztrálása során az erőforrás-szolgáltatók regisztrálva vannak a berendezésben kiválasztott előfizetésben. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Az erőforrás-szolgáltatók regisztrálásához közreműködői vagy tulajdonosi szerepkörre van szüksége az előfizetésben.
+**Azure AD-alkalmazás létrehozása (csak értékelés)** | A berendezés regisztrálása során Azure Migrate létrehoz egy Azure Active Directory (Azure AD) alkalmazást, amely a készüléken futó ügynökök és az Azure-on futó szolgáltatások közötti kommunikációhoz használható. [További információ](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Engedélyekre van szüksége az Azure AD-alkalmazások (az Application Developer) szerepkörben való létrehozásához.
 
 
-### <a name="assign-permissions-to-create-project"></a>Engedélyek hozzárendelése projekt létrehozásához 
+### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához 
 
-Ellenőrizze, hogy rendelkezik-e engedéllyel egy Azure Migrate projekt létrehozásához.
+Győződjön meg arról, hogy rendelkezik Azure Migrate-projekt létrehozásához szükséges engedélyekkel.
 
-1. Az Azure Portalon nyissa meg az előfizetést, és válassza **a hozzáférés-vezérlés (IAM)** lehetőséget.
-2. A **Hozzáférés ellenőrzése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
-3. **Közreműködői** vagy tulajdonosi engedélyekkel kell **rendelkeznie.**
-    - Ha most hozott létre egy ingyenes Azure-fiókot, ön az előfizetés tulajdonosa.
-    - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együttműködve rendelje hozzá a szerepkört.
-
-
-### <a name="assign-permissions-to-register-the-appliance"></a>Engedélyek hozzárendelése a készülék regisztrálásához 
-
-Az Azure Migrate engedélyeket rendelhet az Azure AD alkalmazás létrehozásához a berendezés regisztrációja során, az alábbi módszerek egyikével:
-
-- A bérlő/globális rendszergazda engedélyeket adhat a bérlői felhasználóknak az Azure AD-alkalmazások létrehozásához és regisztrálásához.
-- A bérlő/globális rendszergazda hozzárendelheti az alkalmazásfejlesztői szerepkört (amely rendelkezik az engedélyekkel) a fiókhoz.
-
-> [!NOTE]
-> - Az alkalmazás nem rendelkezik más hozzáférési engedélyekkel az előfizetéshez a fent leírtakon kívül.
-> - Csak akkor van szüksége ezekre az engedélyekre, ha új készüléket regisztrál. A készülék beállítása után eltávolíthatja az engedélyeket.
+1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
+3. **Közreműködői** vagy **tulajdonosi** engedélyekkel kell rendelkeznie.
+    - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
+    - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
 
-#### <a name="grant-account-permissions"></a>Fiókengedélyek megadása
+### <a name="assign-permissions-to-register-the-appliance"></a>Engedélyek kiosztása a készülék regisztrálásához 
 
-A bérlő/globális rendszergazda az alábbiak szerint adhat engedélyeket:
+Az Azure AD-alkalmazás létrehozásához az alábbi módszerek egyikének használatával rendelhet engedélyeket Azure Migrate számára:
 
-1. Az Azure AD-ben a bérlőnek/globális rendszergazdának az **Azure Active Directory** > **felhasználói** > **nak felhasználói beállításaira**kell navigálnia.
-2. A rendszergazdának az **alkalmazásregisztrációkat** **Igen**beállításra kell állítania.
-
-    ![Az Azure AD engedélyei](./media/tutorial-prepare-hyper-v/aad.png)
+- A bérlők/globális rendszergazdák engedélyeket adhatnak a bérlő felhasználói számára az Azure AD-alkalmazások létrehozásához és regisztrálásához.
+- A bérlői/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét (amely rendelkezik engedélyekkel) a fiókhoz.
 
 > [!NOTE]
-> Ez az alapértelmezett beállítás nem érzékeny. [További információ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
-
-#### <a name="assign-application-developer-role"></a>Alkalmazásfejlesztői szerepkör hozzárendelése
-
-A bérlő/globális rendszergazda hozzárendelheti az Alkalmazásfejlesztő szerepkört egy fiókhoz. [További információ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+> - Az alkalmazás nem rendelkezik más hozzáférési engedélyekkel az előfizetéshez a fent leírtak kivételével.
+> - Az új berendezések regisztrálásához csak ezekre az engedélyekre van szükség. Az engedélyeket a készülék beállítása után távolíthatja el.
 
 
-## <a name="prepare-azure-for-physical-server-migration"></a>Az Azure előkészítése a kiszolgálók fizikai áttelepítésére
+#### <a name="grant-account-permissions"></a>Fiók engedélyeinek megadása
 
-Készítse elő az Azure-t a fizikai kiszolgálók áttelepítésére a Kiszolgáló áttelepítése használatával.
+A bérlő/globális rendszergazda a következőképpen adhat meg engedélyeket:
+
+1. Az Azure ad-ben a bérlői/globális rendszergazdának meg kell keresnie **Azure Active Directory** > **felhasználók** > **felhasználói beállításait**.
+2. A rendszergazdának az **Igen**értékre kell állítania a **Alkalmazásregisztrációk** .
+
+    ![Azure AD-engedélyek](./media/tutorial-prepare-hyper-v/aad.png)
+
+> [!NOTE]
+> Ez egy alapértelmezett beállítás, amely nem érzékeny. [További információ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+
+#### <a name="assign-application-developer-role"></a>Alkalmazás fejlesztői szerepkörének kiosztása
+
+A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői szerepkörét egy fiókhoz. [További információ](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+
+
+## <a name="prepare-azure-for-physical-server-migration"></a>Az Azure előkészítése a fizikai kiszolgálók áttelepítésére
+
+Készítse elő az Azure-t a fizikai kiszolgálók áttelepítéséhez a kiszolgáló áttelepítése révén.
 
 **Tevékenység** | **Részletek**
 --- | ---
-**Azure Migrate projekt létrehozása** | Az Azure-fiókjának közreműködői vagy tulajdonosi engedélyekre van szüksége a projekt létrehozásához.
-**Az Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fiók nak engedélyeket kell létrehoznia egy virtuális gép létrehozásához, és írniegy Azure felügyelt lemezre.
+**Azure Migrate projekt létrehozása** | Az Azure-fióknak közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie a projekt létrehozásához.
+**Azure-fiók engedélyeinek ellenőrzése** | Az Azure-fióknak rendelkeznie kell a virtuális gép létrehozásához szükséges engedélyekkel, és írnia kell egy Azure-beli felügyelt lemezre.
 **Azure-hálózat létrehozása** | Hozzon létre egy hálózatot az Azure-ban.
 
 
-### <a name="assign-permissions-to-create-project"></a>Engedélyek hozzárendelése projekt létrehozásához
+### <a name="assign-permissions-to-create-project"></a>Engedélyek kiosztása projekt létrehozásához
 
-1. Az Azure Portalon nyissa meg az előfizetést, és válassza **a hozzáférés-vezérlés (IAM)** lehetőséget.
-2. A **Hozzáférés ellenőrzése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
-3. **Közreműködői** vagy tulajdonosi engedélyekkel kell **rendelkeznie.**
-    - Ha most hozott létre egy ingyenes Azure-fiókot, ön az előfizetés tulajdonosa.
-    - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal együttműködve rendelje hozzá a szerepkört.
+1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+2. A **hozzáférés engedélyezése**területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez.
+3. **Közreműködői** vagy **tulajdonosi** engedélyekkel kell rendelkeznie.
+    - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
+    - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
 
-### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyek hozzárendelése
+### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyeinek kiosztása
 
-Rendelje hozzá a Virtuálisgép közreműködőszerepkört az Azure-fiókhoz. Ez a következőkre vonatkozó engedélyeket biztosít:
+Rendelje hozzá a virtuális gépi közreműködő szerepkört az Azure-fiókhoz. Ez a következő engedélyekkel rendelkezik:
 
     - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
     - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
-    - Írjon egy Azure felügyelt lemezre. 
+    - Írás egy Azure-beli felügyelt lemezre. 
 
 ### <a name="create-an-azure-network"></a>Azure-hálózat létrehozása
 
-[Hozzon létre](../virtual-network/manage-virtual-network.md#create-a-virtual-network) egy Azure virtuális hálózat (VNet). Amikor replikálja az Azure-ba, az Azure virtuális gépek jönnek létre, és csatlakozott az Azure virtuális hálózat, amely az áttelepítés beállításakor megadott.
+Azure-beli virtuális hálózat (VNet) [beállítása](../virtual-network/manage-virtual-network.md#create-a-virtual-network) . Az Azure-ba történő replikáláskor Azure-beli virtuális gépek jönnek létre és csatlakozva lesznek az áttelepítés beállításakor megadott Azure-VNet.
 
 
 ## <a name="prepare-for-physical-server-assessment"></a>Felkészülés a fizikai kiszolgáló értékelésére
 
-A fizikai kiszolgálók felmérésére való felkészüléshez ellenőriznie kell a kiszolgáló fizikai beállításait, és ellenőriznie kell a berendezés telepítésének beállításait:
+A fizikai kiszolgáló értékelésének előkészítéséhez ellenőriznie kell a fizikai kiszolgáló beállításait, és ellenőriznie kell a berendezések központi telepítésének beállításait:
 
-### <a name="verify-physical-server-settings"></a>Fizikai kiszolgálóbeállítások ellenőrzése
+### <a name="verify-physical-server-settings"></a>Fizikai kiszolgáló beállításainak ellenőrzése
 
-1. Ellenőrizze a [kiszolgáló fizikai követelményeit](migrate-support-matrix-physical.md#physical-server-requirements) a kiszolgáló értékeléséhez.
-2. Ellenőrizze, hogy a [szükséges portok](migrate-support-matrix-physical.md#port-access) meg vannak-e nyitva a fizikai kiszolgálókon.
-
-
-### <a name="verify-appliance-settings"></a>A készülék beállításainak ellenőrzése
-
-Az Azure Migrate készülék beállítása előtt, és a következő oktatóanyagban megkezdi a kiértékelést, készüljön fel a berendezés üzembe helyezésére.
-
-1. [Ellenőrizze](migrate-appliance.md#appliance---physical) a fizikai kiszolgálók készülékre vonatkozó követelményeit.
-2. Tekintse át az Azure URL-címeket, amelyeket a készüléknek a [nyilvános](migrate-appliance.md#public-cloud-urls) [és](migrate-appliance.md#government-cloud-urls) kormányzati felhőkben kell elérnie.
-3. [Tekintse át,](migrate-appliance.md#collected-data---vmware) hogy a készülék a felfedezés és az értékelés során összegyűlik-e.
-4. [Megjegyzés:](migrate-support-matrix-physical.md#port-access) a porthozzáférési követelmények fizikai kiszolgálóértékelése.
+1. Ellenőrizze a [fizikai kiszolgálóra vonatkozó követelményeket](migrate-support-matrix-physical.md#physical-server-requirements) a kiszolgálók értékeléséhez.
+2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-physical.md#port-access) meg vannak nyitva a fizikai kiszolgálókon.
 
 
-### <a name="set-up-an-account-for-physical-server-discovery"></a>Fiók beállítása a kiszolgáló fizikai felderítéséhez
+### <a name="verify-appliance-settings"></a>Berendezés beállításainak ellenőrzése
 
-Az Azure Migrate-nek engedélyekre van szüksége a helyszíni kiszolgálók felderítéséhez.
+A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt a következő oktatóanyagban készítse elő a berendezés üzembe helyezését.
 
-- **Windows:** Állítson be egy helyi felhasználói fiókot a felderítésbe felvenni kívánt összes Windows-kiszolgálón. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: - Távfelügyeleti felhasználók – Teljesítményfigyelő felhasználók – Teljesítménynapló-felhasználók
-- **Linux:** Szüksége van egy gyökérfiókra a Linux-kiszolgálókon, amelyeket fel szeretne deríteni.
+1. [Ellenőrizze](migrate-appliance.md#appliance---physical) a fizikai kiszolgálók berendezésére vonatkozó követelményeket.
+2. Tekintse át azokat az Azure URL-címeket, amelyeket a készüléknek a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell elérnie.
+3. [Ellenőrizze](migrate-appliance.md#collected-data---vmware) , hogy a berendezés a felderítés és az értékelés során fog-e összegyűjteni.
+4. [Megjegyzés:](migrate-support-matrix-physical.md#port-access) a port hozzáférési követelményeinek fizikai kiszolgáló értékelése.
 
-## <a name="prepare-for-physical-server-migration"></a>Felkészülés a kiszolgáló fizikai áttelepítésére
+
+### <a name="set-up-an-account-for-physical-server-discovery"></a>Fiók beállítása a fizikai kiszolgáló felderítéséhez
+
+Azure Migrate a helyszíni kiszolgálók felderítéséhez szükséges engedélyekkel.
+
+- **Windows:** Állítson be egy helyi felhasználói fiókot az összes olyan Windows-kiszolgálón, amelyet fel szeretne venni a felderítésbe. A felhasználói fiókot fel kell venni a következő csoportokba:-távfelügyeleti felhasználók – Teljesítményfigyelő felhasználók – Teljesítménynapló felhasználói
+- **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon.
+
+## <a name="prepare-for-physical-server-migration"></a>Felkészülés a fizikai kiszolgálók áttelepítésére
 
 Tekintse át a fizikai kiszolgálók áttelepítésére vonatkozó követelményeket.
 
 > [!NOTE]
-> Fizikai gépek áttelepítésekor az Azure Migrate:Server Migration ugyanazt a replikációs architektúrát használja, mint az Azure Site Recovery szolgáltatás ügynökalapú vész-helyreállítási, és egyes összetevők ugyanazt a kódbázist használják. Előfordulhat, hogy egyes tartalmak a Site Recovery dokumentációjára hivatkoznak.
+> Fizikai gépek áttelepítésekor Azure Migrate: a kiszolgáló áttelepítése ugyanazt a replikációs architektúrát használja, mint az ügynök-alapú vész-helyreállítás a Azure Site Recovery szolgáltatásban, és egyes összetevők ugyanazt a kódot használják. Előfordulhat, hogy egyes tartalmak Site Recovery dokumentációra hivatkoznak.
 
-- [Tekintse át](migrate-support-matrix-physical-migration.md#physical-server-requirements) az áttelepítés fizikai kiszolgálói követelményeit.
-- Azure Áttelepítés:A kiszolgálóáttelepítés replikációs kiszolgálót használ a kiszolgáló fizikai áttelepítéséhez:
-    - [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a replikációs berendezés üzembe helyezési követelményeit, valamint a MySQL telepítésének [lehetőségeit](migrate-replication-appliance.md#mysql-installation) a készülékre.
-    - Tekintse át a replikációs készülék nyilvános és kormányzati felhők eléréséhez szükséges [Azure-URL-címeket.](migrate-appliance.md#url-access)
-    - Tekintse át a replikációs berendezés [port] (áttelepítés-replikáció-készülék.md#port-access) hozzáférési követelményeit.
+- [Tekintse át](migrate-support-matrix-physical-migration.md#physical-server-requirements) a fizikai kiszolgáló áttelepítésre vonatkozó követelményeit.
+- Azure Migrate: a kiszolgáló áttelepítése replikációs kiszolgálót használ a fizikai kiszolgálók áttelepítéséhez:
+    - [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a replikációs berendezés telepítési követelményeit, valamint a MySQL telepítésének [lehetőségeit](migrate-replication-appliance.md#mysql-installation) a készüléken.
+    - Tekintse át a replikációs berendezés számára a nyilvános és a kormányzati felhők eléréséhez szükséges [Azure URL-címeket](migrate-appliance.md#url-access) .
+    - Tekintse át a következőt: [port] (Migrálás-replikáció-berendezés. MD # port-Access) a replikációs berendezés hozzáférési követelményei.
 
 
 
@@ -163,10 +163,10 @@ Tekintse át a fizikai kiszolgálók áttelepítésére vonatkozó követelmény
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
-> * Állítsa be az Azure-fiók engedélyeit.
-> * Előkészített fizikai szerverek az értékeléshez.
+> * Azure-fiók engedélyeinek beállítása.
+> * Előkészített fizikai kiszolgálók az értékeléshez.
 
-Folytassa a következő oktatóanyaggal az Azure Migrate projekt létrehozásához és az Azure-ba való áttelepítés fizikai kiszolgálóinak felméréséhez
+Folytassa a következő oktatóanyaggal, amely létrehoz egy Azure Migrate projektet, és felméri a fizikai kiszolgálókat az Azure-ba való áttelepítésre
 
 > [!div class="nextstepaction"]
 > [Fizikai kiszolgálók felmérése](./tutorial-assess-physical.md)

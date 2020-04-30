@@ -1,6 +1,6 @@
 ---
-title: Felügyelt lemezek másolása előfizetésbe – CLI-minta
-description: Azure CLI-parancsfájlminta – Felügyelt lemezek másolása (vagy áthelyezése) ugyanarra vagy egy másik előfizetésre
+title: Felügyelt lemezek másolása az előfizetés-CLI-mintára
+description: Azure CLI-parancsfájl minta – felügyelt lemezek másolása (vagy áthelyezése) egy másik előfizetésbe
 services: virtual-machines-linux
 documentationcenter: storage
 author: ramankumarlive
@@ -16,15 +16,15 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 540f11e2089d6aeac1b6c664695d1dafbf31d65a
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460885"
 ---
 # <a name="copy-managed-disks-to-same-or-different-subscription-with-cli"></a>Felügyelt lemezek másolása előfizetésen belül vagy előfizetések között a CLI használatával
 
-Ez a szkript átmásol egy felügyelt lemezt egy előfizetésen belül vagy egy eltérő, de ugyanabban a régióban található előfizetésbe. A másolat csak akkor működik, ha az előfizetések ugyanannak az AAD-bérlőnek a részét képezik.
+Ez a szkript átmásol egy felügyelt lemezt egy előfizetésen belül vagy egy eltérő, de ugyanabban a régióban található előfizetésbe. A másolás csak akkor működik, ha az előfizetések ugyanahhoz a HRE-bérlőhöz tartoznak.
 
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

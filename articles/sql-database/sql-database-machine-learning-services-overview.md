@@ -1,6 +1,6 @@
 ---
-title: Gépi tanulási szolgáltatások R-rel (előzetes verzió)
-description: Ez a cikk ismerteti az Azure SQL Database Machine Learning Services (R) és ismerteti, hogyan működik.
+title: Machine Learning Services az R-vel (előzetes verzió)
+description: Ez a cikk a Azure SQL Database Machine Learning Services (R) használatát ismerteti, és bemutatja, hogyan működik.
 services: sql-database
 ms.service: sql-database
 ms.subservice: machine-learning
@@ -14,45 +14,45 @@ manager: cgronlun
 ms.date: 11/20/2019
 ROBOTS: NOINDEX
 ms.openlocfilehash: 46ca4661d06b52c861431a680a69297575ac99b0
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461412"
 ---
-# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services R-rel (előzetes verzió)
+# <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services R-vel (előzetes verzió)
 
-A Machine Learning Services az Azure SQL Database egyik szolgáltatása, amely az adatbázison belüli R-parancsfájlok végrehajtására szolgál. A szolgáltatás microsoft R-csomagokat tartalmaz a nagy teljesítményű prediktív elemzésekhez és a gépi tanuláshoz. A relációs adatok az R parancsfájlokban tárolhatók, az R utasításokat tartalmazó T-SQL parancsfájlok vagy a T-SQL-t tartalmazó R-kód segítségével.
+A Machine Learning Services az adatbázis-alapú R-parancsfájlok végrehajtásához használt Azure SQL Database szolgáltatása. A szolgáltatás Microsoft R-csomagokat tartalmaz a nagy teljesítményű prediktív elemzéshez és a gépi tanuláshoz. A viszonyítási adatokat az R-parancsfájlokban tárolt eljárások, az R-utasításokat tartalmazó T-SQL-szkript vagy a T-SQL-t tartalmazó R-kód használatával lehet használni.
 
 [!INCLUDE[ml-preview-note](../../includes/sql-database-ml-preview-note.md)]
 
-## <a name="what-you-can-do-with-r"></a>Mit lehet tenni az R
+## <a name="what-you-can-do-with-r"></a>Az R használatával
 
-Használja az R nyelv erejét a fejlett elemzések és a gépi tanulás adatbázison belüli biztosításához. Ez a képesség a számításokat és a feldolgozást az adatok tartózkodási helyéhez viszi, így nincs szükség az adatok hálózaton keresztüli lekérése. Emellett kihasználhatja a vállalati R-csomagok erejét, hogy nagy léptékű fejlett elemzéseket nyújtson.
+Használja az R nyelv hatékonyságát a fejlett elemzési és gépi tanulási adatbázison. Ez a képesség számításokat és feldolgozást biztosít az adattároláshoz, így nincs szükség a hálózatra irányuló adatkérésre. Emellett kihasználhatja a nagyvállalati R-csomagok hatékonyságát is, így nagy léptékű fejlett analitikai teljesítményt biztosíthat.
 
-A Machine Learning Services tartalmazza az R alapeloszlását, amelyet a Microsoft vállalati R-csomagjai foglalnak el. A Microsoft R-funkcióit és algoritmusait mind a méretezési, mind a segédprogramok számára tervezték, amelyek prediktív elemzéseket, statisztikai modellezést, adatvizualizációkat és élvonalbeli gépi tanulási algoritmusokat biztosítanak.
+A Machine Learning Services az R alapszintű eloszlását tartalmazza, amely a Microsoft vállalati R-csomagjaival van ellátva. A Microsoft R functions és algoritmusai mind a skálázási, mind a segédprogramra, a prediktív elemzések, a statisztikai modellezés, az adatvizualizációk és az élvonalbeli gépi tanulási algoritmusok megvalósítására szolgálnak.
 
-### <a name="r-packages"></a>R csomagok
+### <a name="r-packages"></a>R-csomagok
 
-A leggyakoribb nyílt forráskódú R-csomagok előre telepítve vannak a Machine Learning Servicesszolgáltatásban. A Microsoft következő R-csomagjait is tartalmazza:
+A leggyakoribb nyílt forráskódú R-csomagok a Machine Learning Services előre telepítve vannak. A Microsoft alábbi R-csomagjait is tartalmazza:
 
-| R csomag | Leírás|
+| R-csomag | Leírás|
 |-|-|
-| [Microsoft R Open](https://mran.microsoft.com/rro) | A Microsoft R Open az R továbbfejlesztett terjesztése a Microsofttól. Ez egy teljes nyílt forráskódú platform a statisztikai elemzés és az adattudomány számára. Ez alapján, és 100%-ban kompatibilis az R, és magában foglalja a további képességek a jobb teljesítmény és reprodukálhatóság. |
-| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | A RevoScaleR a méretezhető R elsődleges függvénytár. Ezekben a könyvtárakban adatátalakítások és manipulációk, statisztikai összegzések, vizualizációk, valamint a modellezés és elemzések számos formája található. Emellett a függvényekben ezek a függvények automatikusan elosztja a számítási feladatok között a rendelkezésre álló magok párhuzamos feldolgozás, azzal a képességgel, hogy a számítási motor által koordinált és felügyelt adattömbök. |
-| [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | A MicrosoftML gépi tanulási algoritmusokat ad hozzá a szövegelemzéshez, a képelemzéshez és a hangulatelemzéshez egyéni modellek létrehozásához. |
+| [Microsoft R Open](https://mran.microsoft.com/rro) | A Microsoft R Open az R továbbfejlesztett terjesztése a Microsofttól. Ez egy teljes körű nyílt forráskódú platform a statisztikai elemzéshez és az adatelemzéshez. A szolgáltatás a és a 100%-os kompatibilis az R-vel, és további képességeket tartalmaz a jobb teljesítmény és a reprodukálhatóság érdekében. |
+| [RevoScaleR](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-revoscaler) | A RevoScaleR az elsődleges könyvtár a méretezhető R-hez. a könyvtárban lévő függvények a legszélesebb körben használatosak. Ezekben a tárakban megtalálhatók az adatátalakítások és-manipulációk, a statisztikai összesítések, a vizualizációk és a modellezés és elemzések számos formája. Emellett az ezekben a tárakban lévő függvények automatikusan terjesztik a számítási feladatokat az elérhető magok között a párhuzamos feldolgozáshoz, és lehetővé teszi a számítási motor által koordinált és kezelt adattömbökön végzett munkát. |
+| [MicrosoftML (R)](https://docs.microsoft.com/sql/advanced-analytics/r/ref-r-microsoftml) | A MicrosoftML a gépi tanulási algoritmusok segítségével egyéni modelleket hozhat létre a szöveges elemzéshez, a képelemzéshez és a hangulat elemzéséhez. |
 
-Az előre telepített csomagok mellett további [csomagokat is telepíthet.](sql-database-machine-learning-services-add-r-packages.md)
+Az előre telepített csomagok mellett [további csomagokat is telepíthet](sql-database-machine-learning-services-add-r-packages.md).
 
 <a name="signup"></a>
 
-## <a name="sign-up-for-the-preview-closed"></a>Feliratkozás az előzetes verzióra (lezárva)
+## <a name="sign-up-for-the-preview-closed"></a>Regisztrálás az előzetes verzióra (lezárva)
 
 > [!IMPORTANT]
-> Az Azure SQL Database Machine Learning Services szolgáltatásra való feliratkozás (előzetes verzió) jelenleg **le van zárva.**
+> Azure SQL Database Machine Learning Services (előzetes verzió) regisztrációja jelenleg be van **zárva**.
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg az [SQL Server Machine Learning Services legfontosabb különbségeit.](sql-database-machine-learning-services-differences.md)
-- Ha meg szeretné tudni, hogyan lehet az R használatával lekérdezni az Azure SQL Database Machine Learning Services -t (előzetes verzió), olvassa el a [rövid útmutatót.](sql-database-connect-query-r.md)
-- Néhány egyszerű R-parancsfájl létrehozásáról [és futtatásáról az Azure SQL Database Machine Learning Services szolgáltatásban (előzetes verzió) című témakörben található egyszerű R-parancsfájlok létrehozása és futtatása.](sql-database-quickstart-r-create-script.md)
+- Tekintse meg [SQL Server Machine learning Services főbb különbségeit](sql-database-machine-learning-services-differences.md).
+- Ha szeretné megtudni, hogyan használhatja az R-t a Azure SQL Database Machine Learning Services (előzetes verzió) lekérdezéséhez, tekintse meg a gyors [üzembe helyezési útmutatót](sql-database-connect-query-r.md).
+- Néhány egyszerű R-szkript megkezdéséhez lásd: [egyszerű r-parancsfájlok létrehozása és futtatása Azure SQL Database Machine learning Servicesban (előzetes verzió)](sql-database-quickstart-r-create-script.md).

@@ -1,6 +1,6 @@
 ---
-title: C# ügynök telepítése Windows-eszközre
-description: Ismerje meg, hogyan telepítheti az Azure Security Center for IoT-ügynök 32 bites vagy 64 bites Windows-eszközökre.
+title: A C#-ügynök telepítése Windows-eszközre
+description: Ismerkedjen meg a 32 bites vagy 64-bites Windows-eszközökön a IoT-ügynök Azure Security Center telepítésével.
 services: asc-for-iot
 ms.service: asc-for-iot
 documentationcenter: na
@@ -16,15 +16,15 @@ ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
 ms.openlocfilehash: 4d7d2f0a423a50f85160a856480eaa973be7e2b0
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537610"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>C#-alapú Azure Security Center for IoT biztonsági ügynök üzembe helyezése Windowson
 
-Ez az útmutató bemutatja, hogyan telepítheti az Azure Security Center for IoT C#-alapú biztonsági ügynök a Windows.
+Ez az útmutató ismerteti, hogyan telepítheti a IoT C#-alapú biztonsági ügynök Azure Security Center a Windows rendszeren.
 
 Ebből az útmutatóból a következőket tanulhatja meg:
 
@@ -36,9 +36,9 @@ Ebből az útmutatóból a következőket tanulhatja meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Más platformok és ügynök ízek, [lásd: Válassza ki a megfelelő biztonsági ügynök](how-to-deploy-agent.md).
+Más platformokon és ügynöki Ízeknél tekintse meg [a megfelelő biztonsági ügynök kiválasztása](how-to-deploy-agent.md)című témakört.
 
-1. Helyi rendszergazdai jogok azon a gépen, amelyen telepíteni szeretné.
+1. Helyi rendszergazdai jogosultságok azon a gépen, amelyre telepíteni kívánja.
 
 1. [Hozzon létre egy biztonsági modult](quickstart-create-security-twin.md) az eszközhöz.
 
@@ -46,18 +46,18 @@ Más platformok és ügynök ízek, [lásd: Válassza ki a megfelelő biztonság
 
 A biztonsági ügynök telepítéséhez használja a következő munkafolyamatot:
 
-1. Telepítse az Azure Security Center for IoT Windows C# ügynök az eszközön. Töltse le a legújabb verziót a gépére az Azure Security Center for IoT GitHub repository.Download the recent version to your machine from the Azure Security Center for IoT [GitHub repository.](https://github.com/Azure/Azure-IoT-Security-Agent-CS)
+1. Telepítse a IoT Windows C#-ügynök Azure Security Centerét az eszközön. Töltse le a legújabb verziót a gépére a IoT [GitHub-adattár](https://github.com/Azure/Azure-IoT-Security-Agent-CS)Azure Security Center.
 
-1. Bontsa ki a csomag tartalmát, és keresse meg a /Install mappát.
+1. Bontsa ki a csomag tartalmát, és navigáljon a/install mappára.
 
 1. Nyissa meg a Windows PowerShellt rendszergazdaként.
-1. Adjon hozzá futó engedélyeket az InstallSecurityAgent parancsfájlhoz a következő futtatásával:
+1. A következő parancs futtatásával adja hozzá a futó engedélyeket a InstallSecurityAgent parancsfájlhoz:
 
     ```
     Unblock-File .\InstallSecurityAgent.ps1
     ```
 
-    majd fuss:
+    Ezután futtassa a parancsot:
 
     ```
     .\InstallSecurityAgent.ps1 -Install -aui <authentication identity> -aum <authentication method> -f <file path> -hn <host name> -di <device id> -cl <certificate location kind>
@@ -69,22 +69,22 @@ A biztonsági ügynök telepítéséhez használja a következő munkafolyamatot
     .\InstallSecurityAgent.ps1 -Install -aui Device -aum SymmetricKey -f c:\Temp\Key.txt -hn MyIotHub.azure-devices.net -di Mydevice1 -cl store
     ```
 
-    A hitelesítési paraméterekről a [Hitelesítés konfigurálása](concept-security-agent-authentication-methods.md)című témakörben talál további információt.
+    További információ a hitelesítési paraméterekről: [a hitelesítés konfigurálása](concept-security-agent-authentication-methods.md).
 
-Ez a parancsfájl a következő műveleteket végzi:
+A szkript a következő műveleteket végzi el:
 
 * Telepíti az előfeltételeket.
-* Hozzáad egy szolgáltatásfelhasználót (az interaktív bejelentkezés le van tiltva).
-* Az ügynököt **rendszerszolgáltatásként**telepíti.
-* Az ügynök konfigurálása a megadott hitelesítési paraméterekkel.
+* Szolgáltatásbeli felhasználó (interaktív bejelentkezéssel letiltva) hozzáadásával.
+* Telepíti az ügynököt **rendszerszolgáltatásként**.
+* A megadott hitelesítési paraméterekkel konfigurálja az ügynököt.
 
 További segítségért használja a Get-Help parancsot a PowerShellben.
 
-Súgó példa:```Get-Help .\InstallSecurityAgent.ps1```
+Get-Help példa:```Get-Help .\InstallSecurityAgent.ps1```
 
-### <a name="verify-deployment-status"></a>A telepítés állapotának ellenőrzése
+### <a name="verify-deployment-status"></a>Központi telepítési állapot ellenőrzése
 
-Ellenőrizze az ügynök telepítési állapotát a következő futtatásával:
+Az ügynök központi telepítési állapotának ellenőrzéséhez futtassa a következőket:
 
 ```sc.exe query "ASC IoT Agent"```
 
@@ -92,7 +92,7 @@ Ellenőrizze az ügynök telepítési állapotát a következő futtatásával:
 
 Az ügynök eltávolítása:
 
-1. Futtassa a következő PowerShell-parancsfájlt úgy, hogy a **-mode** paraméter meg van állítva **az Eltávolítás beállítással.**
+1. Futtassa a következő PowerShell-parancsfájlt a **-Mode** paraméterrel az **Eltávolítás**értékre.
 
     ```
     .\InstallSecurityAgent.ps1 -Uninstall
@@ -100,13 +100,13 @@ Az ügynök eltávolítása:
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha az ügynök nem indul el, kapcsolja be a naplózást (a naplózás alapértelmezés szerint ki van *kapcsolva)* további információk értéséhez.
+Ha az ügynök nem indul el, kapcsolja be a naplózást (a naplózás alapértelmezés szerint *ki van kapcsolva* ) további információk eléréséhez.
 
 A naplózás bekapcsolása:
 
-1. Nyissa meg a konfigurációs fájlt (General.config) szerkesztésre szabványos fájlszerkesztővel.
+1. Nyissa meg a konfigurációs fájlt (General. config) a szerkesztéshez egy szabványos fájlkezelő használatával.
 
-1. A következő értékek szerkesztése:
+1. Szerkessze a következő értékeket:
 
    ```xml
    <add key="logLevel" value="Debug" />
@@ -116,11 +116,11 @@ A naplózás bekapcsolása:
    ```
 
     > [!NOTE]
-    > Javasoljuk, hogy a hibaelhárítás befejezése után kapcsolja **ki** a naplózást. A bejelentkezés elhagyása növeli **a** naplófájl méretét és az adathasználatot.
+    > A hibaelhárítás befejezése után javasoljuk a naplózás **kikapcsolását** . A naplózás **bekapcsolásával megnő a** naplófájl mérete és az adatfelhasználás.
 
 1. Indítsa újra az ügynököt a következő PowerShell vagy parancssor futtatásával:
 
-    **Powershell**
+    **PowerShell**
 
      ```
      Restart-Service "ASC IoT Agent"
@@ -128,21 +128,21 @@ A naplózás bekapcsolása:
 
    vagy
 
-    **Cmd**
+    **CMD**
 
      ```
      sc.exe stop "ASC IoT Agent"
      sc.exe start "ASC IoT Agent"
      ```
 
-1. A hiba hiba további információiért tekintse át a naplófájlt. A naplófájl abban a munkakönyvtárban lenne jelen, ahol a parancsfájlt futtatjuk. 
+1. A hibával kapcsolatos további információkért tekintse át a naplófájlt. A naplófájl abban a munkakönyvtárban található, ahol a szkriptet futtatjuk. 
 
    Naplófájl helye:`.\IoTAgentLog.log`
 
 ## <a name="next-steps"></a>További lépések
 
-* Olvassa el az Azure Security Center for IoT szolgáltatás [áttekintését](overview.md)
-* További információ az Azure Security Center for IoT [Architecture szolgáltatásról](architecture.md)
+* A IoT-szolgáltatás [áttekintésének](overview.md) Azure Security Center olvasása
+* További információ a IoT- [architektúra](architecture.md) Azure Security Center
 * A [szolgáltatás](quickstart-onboard-iot-hub.md) engedélyezése
-* Olvassa el a [GYIK-et](resources-frequently-asked-questions.md)
-* A [riasztások ismertetése](concept-security-alerts.md)
+* A [GYIK](resources-frequently-asked-questions.md) áttekintése
+* A [riasztások](concept-security-alerts.md) ismertetése

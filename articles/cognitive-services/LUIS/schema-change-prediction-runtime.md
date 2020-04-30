@@ -1,48 +1,48 @@
 ---
-title: Alkalmazás bővítése futásidőben - LUIS
+title: Alkalmazás kiterjesztése futásidőben – LUIS
 description: ''
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.openlocfilehash: c0f9d71f5d89d73d9cdce2a2f646859d8eba3adc
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81538577"
 ---
-# <a name="extend-app-at-prediction-runtime"></a>Alkalmazás kiterjesztése előrejelzési runtime-on
+# <a name="extend-app-at-prediction-runtime"></a>Alkalmazás kiterjesztése előrejelzési futtatókörnyezetben
 
-Az alkalmazás sémája (modellek és funkciók) be tanítása és közzététele az előrejelzési végponton. Ez a közzétett modell az előrejelzési futásidejű. Az előrejelzési futásidejű előrejelzési idő a felhasználó utterances, valamint a felhasználó utterance (kifejezés) továbbíthatja.
+Az alkalmazás sémája (modelljei és funkciói) ki van tanítva, és közzé van téve az előrejelzési végponton. Ez a közzétett modell az előrejelzési futtatókörnyezetben használatos. Az előrejelzési futtatókörnyezethez új információkat adhat meg, valamint a felhasználó teljes kifejezését is.
 
-Két előrejelzési futásidejű séma módosításai a következők:
+Az előrejelzési futtatókörnyezet két sémájának módosítása többek között:
 * [Külső entitások](#external-entities)
-* [Dinamikus listák](#dynamic-lists)
+* [Dinamikus felsorolások](#dynamic-lists)
 
 <a name="external-entities-passed-in-at-prediction-time"></a>
 
 ## <a name="external-entities"></a>Külső entitások
 
-A külső entitások lehetővé teszik a LUIS-alkalmazás számára az entitások azonosítását és címkézését futásidőben, amelyek meglévő entitások szolgáltatásaként használhatók. Ez lehetővé teszi, hogy saját különálló és egyéni entitáskibontók használata előtt lekérdezések az előrejelzési végpontra. Mivel ez történik a lekérdezés előrejelzési végpont, nem kell újrabetanítása és közzététele a modell.
+A külső entitások lehetővé teszi, hogy a LUIS-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. Ez lehetővé teszi a saját különálló és egyéni entitás-kinyerő használatát, mielőtt lekérdezést küld az előrejelzési végpontnak. Mivel ez a lekérdezés-előrejelzési végponton történik, nincs szükség a modell újratanítására és közzétételére.
 
-Az ügyfél-alkalmazás biztosítja a saját entitás kinyerő kezelő kezelő entitás egyeztető és meghatározza a helyét az adott egyező entitás utterance (kifejezés) az adott entitás, majd elküldi az információt a kéréssel.
+Az ügyfélalkalmazás saját entitást biztosít az entitások megfeleltetésével, és meghatározza az egyező entitások kiválasztásának helyét, majd elküldi ezeket az adatokat a kérelemmel.
 
-A külső entitások bármely entitástípus kiterjesztésének mechanizmusai, miközben továbbra is jelekként használják más modelleknek.
+A külső entitások az entitások típusának kibővítésének mechanizmusa, miközben más modellek számára is jelekként használatosak.
 
-Ez olyan entitás esetében hasznos, amely csak a lekérdezés-előrejelzés imént rendelkezik adatokkal. Ilyen típusú adatok például a felhasználónkénti adatok vagy meghatározott adatok folyamatosan változnak. A LUIS kapcsolattartó entitást kiterjesztheti a felhasználó partnerlistájából származó külső adatokkal.
+Ez olyan entitások esetében hasznos, amelyek csak a lekérdezés-előrejelzési futtatókörnyezetben érhetők el. Ilyen típusú adattípusok például folyamatosan változnak az adathalmazok vagy felhasználónként. A LUIS Contact entitást külső információkkal bővítheti egy felhasználó névjegyalbuma alapján.
 
-A külső entitások a V3-as szerzői API részét képezik. További információ az erre a [verzióra való áttérésről.](luis-migration-api-v3.md)
+A külső entitások a v3 authoring API részét képezik. További információ az [áttelepítésről](luis-migration-api-v3.md) erre a verzióra.
 
 ### <a name="entity-already-exists-in-app"></a>Az entitás már létezik az alkalmazásban
 
-A külső `entityName` entitás értéke, átadott a végpont kérés oszlop, már léteznie kell a betanított és közzétett alkalmazás a kérelem megküldésekén. Az entitás típusa nem számít, minden típus támogatott.
+A kérelem elküldésekor a betanított és a közzétett alkalmazásban már léteznie kell a külső entitás értéke, amelyet a `entityName` rendszer a végponti kérelem post törzsében átadott. Az entitás típusa nem számít, az összes típus támogatott.
 
-### <a name="first-turn-in-conversation"></a>A beszélgetés első fordulója
+### <a name="first-turn-in-conversation"></a>A beszélgetés első bekapcsolása
 
-Fontolja meg az első kimondott szöveget egy csevegőrobot-beszélgetésben, ahol a felhasználó a következő hiányos információkat adja meg:
+Vegye fontolóra egy csevegési bot-beszélgetés első kitöltését, ahol a felhasználó a következő hiányos adatokat írja be:
 
 `Send Hazem a new message`
 
-A kérelem a csevegőrobot a LUIS átadhatja `Hazem` az információkat a POST szervezetben, így közvetlenül illeszkedik, mint a felhasználó egyik kapcsolatok.
+A csevegési robottól a LUIS-re irányuló kérés a POST törzsben található `Hazem` információkkal is átadható, így közvetlenül a felhasználó névjegyeinek felel meg.
 
 ```json
     "externalEntities": [
@@ -58,15 +58,15 @@ A kérelem a csevegőrobot a LUIS átadhatja `Hazem` az információkat a POST s
     ]
 ```
 
-Az előrejelzési válasz tartalmazza, hogy a külső entitás, az összes többi előre jelzett entitások, mert a kérelemben van definiálva.
+Az előrejelzési válasz tartalmazza azt a külső entitást, amely az összes többi előre jelzett entitáshoz tartozik, mert a kérelemben van definiálva.
 
-### <a name="second-turn-in-conversation"></a>Második fordulat a beszélgetésben
+### <a name="second-turn-in-conversation"></a>Második bekapcsolási beszélgetés
 
-A következő felhasználói utterance (kifejezés) a chat bot használ egy homályos kifejezés:
+A csevegési robot következő felhasználójának kimondása homályosan működik:
 
 `Send him a calendar reminder for the party.`
 
-Ebben a fordulóban a beszélgetés, `him` a kimondott szöveg használ hivatkozásként `Hazem`. A társalgási csevegési robot `him` a POST törzsében leképezheti az `Hazem`első utterance (kifejezés) kinyert entitásértéket.
+A beszélgetés ezen részében a Kimondás `him` a következőre hivatkozik: `Hazem`. A POST szövegtörzsben lévő beszélgetési csevegési robot a kinyert entitás értékére képezhető `him` le. `Hazem`
 
 ```json
     "externalEntities": [
@@ -82,13 +82,13 @@ Ebben a fordulóban a beszélgetés, `him` a kimondott szöveg használ hivatkoz
     ]
 ```
 
-Az előrejelzési válasz tartalmazza, hogy a külső entitás, az összes többi előre jelzett entitások, mert a kérelemben van definiálva.
+Az előrejelzési válasz tartalmazza azt a külső entitást, amely az összes többi előre jelzett entitáshoz tartozik, mert a kérelemben van definiálva.
 
 ### <a name="override-existing-model-predictions"></a>Meglévő modell-előrejelzések felülbírálása
 
-A `preferExternalEntities` beállítások tulajdonság azt határozza meg, hogy ha a felhasználó olyan külső entitást küld, amely átfedésben van egy azonos nevű előre jelzett entitással, a LUIS kiválasztja az átadott entitást vagy a modellben meglévő entitást.
+A `preferExternalEntities` beállítások tulajdonság azt adja meg, hogy ha a felhasználó olyan külső entitást küld, amely átfedésben van egy azonos nevű előre jelzett entitással, a Luis kiválasztja az átadott entitást vagy a modellben meglévő entitást.
 
-Vegyük például `today I'm free`a lekérdezést. A LUIS `today` datetimeV2-ként észleli a következő választ:
+Vegyük például a lekérdezést `today I'm free`. A LUIS `today` a következő választ datetimeV2 észleli:
 
 ```JSON
 "datetimeV2": [
@@ -104,7 +104,7 @@ Vegyük például `today I'm free`a lekérdezést. A LUIS `today` datetimeV2-ké
 ]
 ```
 
-Ha a felhasználó elküldi a külső entitást:
+Ha a felhasználó a külső entitást küldi el:
 
 ```JSON
 {
@@ -117,7 +117,7 @@ Ha a felhasználó elküldi a külső entitást:
 }
 ```
 
-Ha `preferExternalEntities` a `false`beállítás a , a LUIS függvény úgy ad vissza választ, mintha a külső entitást nem küldték volna el.
+Ha a `preferExternalEntities` értéke `false`, a Luis egy választ ad vissza, mintha a külső entitás nem lett elküldve.
 
 ```JSON
 "datetimeV2": [
@@ -133,7 +133,7 @@ Ha `preferExternalEntities` a `false`beállítás a , a LUIS függvény úgy ad 
 ]
 ```
 
-Ha `preferExternalEntities` a beállítás `true`a , a LUIS függvény a következő választ adja vissza:
+Ha a `preferExternalEntities` értéke `true`, a Luis egy választ ad vissza, amely a következőket tartalmazza:
 
 ```JSON
 "datetimeV2": [
@@ -147,33 +147,33 @@ Ha `preferExternalEntities` a beállítás `true`a , a LUIS függvény a követk
 
 #### <a name="resolution"></a>Megoldás:
 
-A _választható_ `resolution` tulajdonság visszaadja az előrejelzési választ, amely lehetővé teszi, hogy adja át a külső entitáshoz társított metaadatokat, majd megkapja azt a válaszban.
+A _választható_ `resolution` tulajdonság visszaadja az előrejelzési választ, amely lehetővé teszi a külső entitáshoz társított metaadatok átadását, majd visszaküldi a válaszban.
 
-Az elsődleges cél az előre összeállított entitások kiterjesztése, de ez nem korlátozódik az adott entitástípusra.
+Az elsődleges cél az előre elkészített entitások kiterjesztése, de nem korlátozódik az adott entitás típusára.
 
 A `resolution` tulajdonság lehet szám, karakterlánc, objektum vagy tömb:
 
-* "Dallas"
-* {"szöveg": "érték"}
+* Dallas
+* {"text": "value"}
 * 12345
 * ["a", "b", "c"]
 
 <a name="dynamic-lists-passed-in-at-prediction-time"></a>
 
-## <a name="dynamic-lists"></a>Dinamikus listák
+## <a name="dynamic-lists"></a>Dinamikus felsorolások
 
-A dinamikus listák lehetővé teszik egy meglévő betanított és közzétett listaentitás kiterjesztését, már a LUIS alkalmazásban.
+A dinamikus listák segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a LUIS-alkalmazásban van.
 
-Akkor használja ezt a funkciót, ha a listaentitás értékeit rendszeresen módosítani kell. Ez a funkció lehetővé teszi egy már betanított és közzétett listaentitás kiterjesztését:
+Akkor használja ezt a funkciót, ha a lista entitás értékeit időnként módosítani kell. Ez a funkció lehetővé teszi egy már betanított és közzétett lista entitás kiterjesztését:
 
-* A lekérdezés-előrejelzési végpont-kérelem időpontjában.
-* Egyetlen kérésre.
+* A lekérdezés-előrejelzési végpont kérelmének időpontjában.
+* Egyetlen kérelem esetén.
 
-A listaentitás üres lehet a LUIS alkalmazásban, de léteznie kell. A lista entitás a LUIS alkalmazásban nem változik, de az előrejelzési képesség a végponton kiterjeszti, hogy legfeljebb 2 listák körülbelül 1000 elem.
+A List entitás lehet üres a LUIS-alkalmazásban, de léteznie kell. A LUIS-alkalmazás listázási entitása nem változik, de a végponton megjelenő előrejelzési képesség kiterjeszthető úgy, hogy legfeljebb 2 listát tartalmazzon a 1 000 elemekkel.
 
-### <a name="dynamic-list-json-request-body"></a>Dinamikus lista JSON kérelem törzse
+### <a name="dynamic-list-json-request-body"></a>Dinamikus lista JSON-kérelmének törzse
 
-Küldje be a következő JSON-törzset, hogy szinonimákat tartalmazó új allistát adjon `LUIS`a `POST` listához, és előre jelezze a szöveg listaentitását, a lekérdezés-előrejelzési kérelemmel:
+A következő JSON-törzsbe való küldéssel adjon hozzá egy új, szinonimákkal ellátott allistát a listához, és Tippelje meg a `LUIS`szöveg lista entitását, a `POST` lekérdezés-előrejelzési kérelemmel együtt:
 
 ```JSON
 {
@@ -200,9 +200,9 @@ Küldje be a következő JSON-törzset, hogy szinonimákat tartalmazó új allis
 }
 ```
 
-Az előrejelzési válasz tartalmazza ezt a listaentitást, az összes többi előre jelzett entitással együtt, mert az a kérelemben van meghatározva.
+Az előrejelzési válasz tartalmazza a List entitást az összes többi előre jelzett entitással együtt, mert a kérelemben van definiálva.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Előrejelzési pontszám](luis-concept-prediction-score.md)
-* [Az API V3-módosítások készítése](luis-migration-api-v3.md)
+* [Az API v3-változások készítése](luis-migration-api-v3.md)

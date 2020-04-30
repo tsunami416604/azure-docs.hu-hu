@@ -1,91 +1,91 @@
 ---
-title: További információ az Azure Service Fabric alkalmazásbiztonságáról
-description: A mikroszolgáltatások alkalmazásainak biztonságos futtatásának áttekintése a Service Fabricen. Megtudhatja, hogy miként futtathat szolgáltatásokat és indítási parancsfájlokat különböző biztonsági fiókok alatt, hogyan hitelesítheti és engedélyezheti a felhasználókat, kezelheti az alkalmazástitkokat, nem biztonságos a szolgáltatáskommunikáció, hogyan használhat API-átjárót, és hogyan biztosíthatja az inaktív alkalmazásadatokat.
+title: Tudnivalók az Azure Service Fabric alkalmazás biztonságáról
+description: Annak áttekintése, hogy miként futtathatók biztonságosan a Service-alkalmazások a Service Fabricon. Megtudhatja, hogyan futtathat szolgáltatásokat és indítási parancsfájlokat különböző biztonsági fiókok alatt, hogyan hitelesítheti és engedélyezheti a felhasználókat, kezelheti az alkalmazások titkait, gondoskodhat a biztonságos szolgáltatásokkal való kommunikációról, API-átjárót használhat, és biztonságossá teheti az alkalmazásokat
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.openlocfilehash: c97c5345a1a18cce8c44508542f12d3642d2b8f9
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81461429"
 ---
-# <a name="service-fabric-application-and-service-security"></a>A Service Fabric alkalmazás- és szolgáltatásbiztonsága
-A mikroszolgáltatások architektúrája [számos előnnyel járhat.](service-fabric-overview-microservices.md) A mikroszolgáltatások biztonságának kezelése azonban kihívást jelent, és különbözik a hagyományos monolitikus alkalmazások biztonságának kezelésétől. 
+# <a name="service-fabric-application-and-service-security"></a>Service Fabric alkalmazás és szolgáltatás biztonsága
+A Service-architektúra [számos előnnyel](service-fabric-overview-microservices.md)járhat. A szolgáltatások biztonságának kezelése azonban kihívást jelent, és eltér a hagyományos monolit alkalmazások biztonságának kezelésével. 
 
-Monolit esetén az alkalmazás általában egy vagy több hálózaton fut, és könnyebb azonosítani a kitett portokat és API-kat és IP-címet. Gyakran van egy kerület vagy határ, és egy adatbázis védelme. Ha a rendszer biztonsága megsértése vagy támadás miatt sérül, akkor valószínű, hogy a rendszeren belül minden elérhető lesz a támadó számára. A mikroszolgáltatások, a rendszer összetettebb.  A szolgáltatások decentralizáltak és sok állomás között oszlanak meg, és gazdagépről állomásra vándorolnak.  A megfelelő biztonság gal, korlátozza a támadók által kapható jogosultságokat és az egyetlen támadás során rendelkezésre álló adatok mennyiségét egy szolgáltatás megsértésével.  A kommunikáció nem belső, hanem hálózaton keresztül történik, és sok a kitett port és a szolgáltatások közötti interakció. Az alkalmazás biztonsága szempontjából döntő fontosságú, hogy tudja, mik ezek a szolgáltatásinterakciók, és mikor történnek.
+A monolit esetében az alkalmazás általában egy vagy több kiszolgálón fut egy hálózaton belül, és könnyebben azonosítható a közzétett portok és API-k és IP-címek. Gyakran egy szegély vagy határ és egy adatbázis véd. Ha a rendszer biztonsági rések vagy támadás miatt sérül, akkor valószínű, hogy a rendszeren belül minden a támadó számára elérhető lesz. A szolgáltatásokkal a rendszer összetettebb.  A szolgáltatások decentralizáltak és különböző gazdagépekre oszlanak át, és a gazdagépről a gazdagépre migrálnak.  A megfelelő biztonsággal korlátozza a támadók által lekérhető és az egyetlen támadásban elérhető adatmennyiséget egy szolgáltatás megsértve.  A kommunikáció nem belső, hanem egy hálózaton keresztül történik, és számos elérhető port és interakció van a szolgáltatások között. Annak ismerete, hogy a szolgáltatás hogyan kommunikál, és ha igen, elengedhetetlenek az alkalmazás biztonsága szempontjából.
 
-Ez a cikk nem egy útmutató a mikroszolgáltatások biztonsága, sok ilyen erőforrás érhető el az interneten, de ismerteti, hogyan különböző biztonsági szempontokkal lehet elérni a Service Fabric.
+Ez a cikk nem a szolgáltatásokkal kapcsolatos biztonságra vonatkozó útmutató, ezért számos ilyen erőforrás online érhető el, de leírja, hogy a biztonság különböző szempontjait hogyan lehet elérni Service Fabric.
 
 ## <a name="authentication-and-authorization"></a>Hitelesítés és engedélyezés
-Gyakran szükséges, hogy a szolgáltatás által elérhetővé tett erőforrások és API-k bizonyos megbízható felhasználókra vagy ügyfelekre korlátozódjanak. A hitelesítés a felhasználó identitásának megbízható megállapítása.  Az engedélyezés az a folyamat, amely elérhetővé teszi az API-kat vagy szolgáltatásokat egyes hitelesített felhasználók számára, mások számára azonban nem.
+Gyakran szükséges, hogy a szolgáltatás által elérhető erőforrások és API-k bizonyos megbízható felhasználókra vagy ügyfelekre legyenek korlátozva. A hitelesítés a felhasználó identitásának megbízható megállapításának folyamata.  Az engedélyezés az a folyamat, amely API-kat vagy szolgáltatásokat tesz elérhetővé egyes hitelesített felhasználók számára, de másokat nem.
 
 ### <a name="authentication"></a>Hitelesítés
-Az API-szintű megbízhatósági döntések meghozatalának első lépése a hitelesítés. A hitelesítés a felhasználó identitásának megbízható megállapítása.  Mikroszolgáltatási forgatókönyvekben a hitelesítés általában központilag történik. Ha EGY API-átjárót használ, [kiszervezheti](/azure/architecture/patterns/gateway-offloading) a hitelesítést az átjáróba. Ha ezt a módszert használja, győződjön meg arról, hogy az egyes szolgáltatások nem érhető el közvetlenül (az API-átjáró nélkül), kivéve, ha további biztonsági van érvényben az üzenetek hitelesítéséhez, függetlenül attól, hogy az átjáróról érkeznek-e vagy sem.
+Az API-szintű megbízhatósági döntések meghozatalának első lépése a hitelesítés. A hitelesítés a felhasználó identitásának megbízható megállapításának folyamata.  A szolgáltatással kapcsolatos forgatókönyvekben a hitelesítés általában központilag van kezelve. Ha API-átjárót használ, elvégezheti a [hitelesítés kiszervezését](/azure/architecture/patterns/gateway-offloading) az átjárón. Ha ezt a módszert használja, győződjön meg arról, hogy az egyes szolgáltatások nem érhetők el közvetlenül (az API-átjáró nélkül), kivéve, ha további biztonságra van szükség az üzenetek hitelesítéséhez, függetlenül attól, hogy az átjáróról származnak-e.
 
-Ha a szolgáltatások közvetlenül elérhetők, egy hitelesítési szolgáltatás, például az Azure Active Directory vagy egy dedikált hitelesítési mikroszolgáltatás biztonsági jogkivonat-szolgáltatásként (STS) használható a felhasználók hitelesítéséhez. A megbízhatósági döntéseket a szolgáltatások biztonsági jogkivonatok vagy cookie-k osztják meg. 
+Ha a szolgáltatások közvetlenül érhetők el, egy olyan hitelesítési szolgáltatás, mint a Azure Active Directory, vagy egy biztonsági jogkivonat-szolgáltatásként (STS) működő dedikált hitelesítési szolgáltatás használható a felhasználók hitelesítéséhez. A megbízhatósági döntéseket a szolgáltatások a biztonsági jogkivonatokkal vagy cookie-kkal osztják meg. 
 
-A ASP.NET Core számára a [felhasználók hitelesítésének](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) elsődleges mechanizmusa a ASP.NET Core Identity tagsági rendszer. ASP.NET Core Identity a felhasználói adatokat (beleértve a bejelentkezési adatokat, szerepköröket és jogcímeket) a fejlesztő által konfigurált adattárban tárolja. ASP.NET Core Identity támogatja a kétfaktoros hitelesítést.  A külső hitelesítésszolgáltatók is támogatottak, így a felhasználók a Microsoft, a Google, a Facebook vagy a Twitter szolgáltatótól származó meglévő hitelesítési folyamatok használatával jelentkezhetnek be.
+ASP.NET Core esetében a [felhasználók hitelesítésének](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/) elsődleges mechanizmusa a ASP.net Core identitás-tagsági rendszer. ASP.NET Core identitás a fejlesztő által konfigurált adattárba menti a felhasználói adatokat (beleértve a bejelentkezési információkat, a szerepköröket és a jogcímeket). ASP.NET Core identitás támogatja a kétfaktoros hitelesítést.  A külső hitelesítő szolgáltatók is támogatottak, így a felhasználók a Microsoft, a Google, a Facebook vagy a Twitter szolgáltatásokból származó meglévő hitelesítési folyamatokat is bejelentkezhetnek.
 
 ### <a name="authorization"></a>Engedélyezés
-A hitelesítés után a szolgáltatásoknak engedélyezniük kell a felhasználói hozzáférést, vagy meg kell határozniuk, hogy a felhasználó mire képes. Ez a folyamat lehetővé teszi, hogy egy szolgáltatás elérhetővé tegye az API-kat néhány hitelesített felhasználó számára, de nem mindenki számára. Az engedélyezés ortogonális és független a hitelesítéstől, ami a felhasználó megállapításának folyamata. A hitelesítés egy vagy több identitást hozhat létre az aktuális felhasználó számára.
+A hitelesítés után a szolgáltatásoknak engedélyeznie kell a felhasználói hozzáférést, vagy meg kell határozniuk a felhasználó által elvégezhető műveleteket. Ez a folyamat lehetővé teszi, hogy a szolgáltatás az API-kat néhány hitelesített felhasználó számára elérhetővé tegye, de nem mindegyikre. Az engedélyezés merőleges és független a hitelesítéstől, ami azt a folyamatot vizsgálja, hogy ki a felhasználó. Előfordulhat, hogy a hitelesítés egy vagy több identitást hoz létre az aktuális felhasználó számára.
 
-[ASP.NET Az alapengedélyezés](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) a felhasználói szerepkörök vagy az egyéni házirend alapján végezhető el, amely magában foglalhatja a jogcímek vagy más heurisztika vizsgálatát.
+[ASP.net Core hitelesítés](/dotnet/standard/microservices-architecture/secure-net-microservices-web-applications/authorization-net-microservices-web-applications) a felhasználói szerepkörök alapján vagy egyéni házirend alapján végezhető el, ami magában foglalhatja a jogcímek vagy más heurisztikus vizsgálatát is.
 
 ## <a name="restrict-and-secure-access-using-an-api-gateway"></a>Hozzáférés korlátozása és biztonságossá tétele API-átjáró használatával
-A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Az [API-átjáró](/azure/architecture/microservices/gateway) az ügyfelek és a szolgáltatások között helyezkedik el, és az alkalmazás által nyújtott összes szolgáltatás belépési pontja. Fordított proxyként működik, és az ügyfelektől a szolgáltatásokhoz irányítja a kérelmeket. Emellett különböző, több területet érintő feladatokat is elvégezhet, például hitelesítést és engedélyezést, TLS-végződtetést és sebességkorlátozást. Ha nem telepít iszlamistát, az ügyfeleknek közvetlenül az előtér-szolgáltatásoknak kell kéréseket küldeniük.
+A felhőalapú alkalmazásokhoz általában előtér-átjáró szükséges, amely egyetlen belépési pontként szolgálhat a felhasználók, eszközök és egyéb alkalmazások számára. Az [API-átjáró](/azure/architecture/microservices/gateway) az ügyfelek és a szolgáltatások között helyezkedik el, és a belépési pont az alkalmazás által biztosított összes szolgáltatáshoz. Fordított proxyként működik, az ügyfelektől a szolgáltatások felé irányuló útválasztási kérelmeket. Emellett különböző, több területet érintő feladatokat is végrehajthat, például a hitelesítést és az engedélyezést, a TLS-lezárást és a díjszabást. Ha nem telepít átjárót, az ügyfeleknek közvetlenül kell elküldeni a kérelmeket az előtér-szolgáltatásoknak.
 
-A Service Fabric-ben az átjáró bármilyen állapotnélküli szolgáltatás lehet, például egy [ASP.NET Core alkalmazás,](service-fabric-reliable-services-communication-aspnetcore.md)vagy egy másik, forgalomforgalom-forgalomhoz tervezett szolgáltatás, például [a Traefik,](https://docs.traefik.io/) [az Event Hubs,](https://docs.microsoft.com/azure/event-hubs/)az [IoT Hub](https://docs.microsoft.com/azure/iot-hub/)vagy az Azure API [Management.](https://docs.microsoft.com/azure/api-management)
+Service Fabric az átjáró bármilyen állapot nélküli szolgáltatás lehet, például egy [ASP.net Core alkalmazás](service-fabric-reliable-services-communication-aspnetcore.md)vagy egy másik, a bejövő forgalomra tervezett szolgáltatás, például [Traefik](https://docs.traefik.io/), [Event Hubs](https://docs.microsoft.com/azure/event-hubs/), [IoT hub](https://docs.microsoft.com/azure/iot-hub/)vagy [Azure API Management](https://docs.microsoft.com/azure/api-management).
 
-Az API Management közvetlenül integrálható a Service Fabric, amely lehetővé teszi, hogy api-k at közzé tesz a háttér-Service Fabric-szolgáltatások számos útválasztási szabályok at.  Biztonságos hozzáférést biztosíthat a háttérszolgáltatásokhoz, megakadályozhatja a DOS-támadásokat a szabályozás használatával, vagy ellenőrizheti az API-kulcsokat, jwt-jogkivonatokat, tanúsítványokat és egyéb hitelesítő adatokat. További információért olvassa el a [Service Fabric és az Azure API Management áttekintéscímű témakört.](service-fabric-api-management-overview.md)
+A API Management közvetlenül integrálható Service Fabricekkel, így lehetővé teszi az API-k széles körű útválasztási szabályokkal történő közzétételét a háttérbeli Service Fabric-szolgáltatásokhoz.  Biztonságos hozzáférést biztosíthat a háttér-szolgáltatásokhoz, megakadályozhatja a DOS-támadások szabályozását, vagy ellenőrizheti az API-kulcsokat, a JWT-jogkivonatokat, a tanúsítványokat és az egyéb hitelesítő adatokat. További információért olvassa el [Service Fabric az Azure API Management áttekintése című témakört](service-fabric-api-management-overview.md).
 
 ## <a name="manage-application-secrets"></a>Titkos alkalmazáskulcsok kezelése
-A titkos kulcsok lehetnek bizalmas információk, például tárolási kapcsolati karakterláncok, jelszavak vagy más értékek, amelyeket nem szabad egyszerű szövegként kezelni. Ez a cikk az Azure Key Vault kulcs- és titkos kulcsok kezelésére használja. Azonban egy alkalmazás titkos titkainak *használata* felhőplatform-független, amely lehetővé teszi az alkalmazások üzembe helyezését egy fürtre bárhol üzemeltetett.
+A titkok lehetnek bármilyen bizalmas információk, például a tárolási kapcsolatok karakterláncai, jelszavai vagy más olyan értékek, amelyeket nem szabad egyszerű szövegben kezelni. Ez a cikk a kulcsok és titkok kezeléséhez Azure Key Vault használ. Azonban az alkalmazásokban a titkos kódok *használatával* a felhőalapú platform-agnosztikus lehetővé teszi, hogy az alkalmazások a bárhol üzemeltetett fürtön legyenek telepítve.
 
-A szolgáltatáskonfigurációs beállítások kezelésének ajánlott módja a [szolgáltatáskonfigurációs csomagok.][config-package] A konfigurációs csomagok verziószámmal és frissíthetők a felügyelt működés közbeni frissítésekkel, állapot-ellenőrzéssel és automatikus visszaállítással. Ez előnyös a globális konfiguráció, mivel csökkenti a globális szolgáltatáskimaradás esélyét. A titkosított titkok sem kivételek. A Service Fabric beépített szolgáltatásokkal rendelkezik a Settings.xml fájl ban lévő értékek titkosításához és visszafejtéséhez tanúsítványtitkosítással.
+A szolgáltatás konfigurációs beállításainak a [szolgáltatás konfigurációs csomagjain][config-package]keresztül történő kezelésének ajánlott módja. A konfigurációs csomagok verziója és frissítése a felügyelt működés közbeni frissítésekkel, az állapot-ellenőrzés és az automatikus visszaállítás használatával történik. Ez a globális konfigurációhoz javasolt, mivel ez csökkenti a globális szolgáltatás kimaradásának esélyét. A titkosított titkok nem kivételek. A Service Fabric beépített funkciókkal rendelkezik az értékek titkosításához és visszafejtéséhez a konfigurációs csomag beállításainak. XML fájljában a tanúsítvány titkosítása segítségével.
 
-Az alábbi ábra a titkos kezelés alapfolyamatát mutatja be egy Service Fabric-alkalmazásban:
+Az alábbi ábrán egy Service Fabric alkalmazás titkos felügyeletének alapszintű folyamata látható:
 
-![titkos kezelés – áttekintés][overview]
+![Secret Management – áttekintés][overview]
 
-Ebben a folyamatban négy fő lépés van:
+A folyamat négy fő lépésből áll:
 
-1. Adattitkosítási tanúsítvány beszerzése.
-2. Telepítse a tanúsítványt a fürtbe.
-3. Titkos értékek titkosítása, amikor egy alkalmazást a tanúsítvánnyal telepít, és behelyezi őket a szolgáltatás Settings.xml konfigurációs fájljába.
-4. Olvassa be a titkosított értékeket a Settings.xml fájlból ugyanazzal a titkosítási tanúsítvánnyal történő visszafejtéssel. 
+1. Szerezze be az titkosítási-tanúsítványt.
+2. Telepítse a tanúsítványt a fürtben.
+3. Titkosítsa a titkos értékeket, amikor egy alkalmazást telepít a tanúsítvánnyal, és beilleszti őket a szolgáltatás Settings. xml konfigurációs fájljába.
+4. A titkosított értékeket a Settings. XML fájlból olvashatja, ha ugyanazzal a titkosítási-tanúsítvánnyal végez visszafejtést. 
 
-[Az Azure Key Vault][key-vault-get-started] itt a tanúsítványok biztonságos tárolóhelyeként és az Azure-beli Service Fabric-fürtökre telepített tanúsítványok leszállításának egyik módjaként használatos. Ha nem telepíti az Azure-ba, nem kell használnia a Key Vault a Service Fabric-alkalmazások titkos kulcsok kezeléséhez.
+A [Azure Key Vault][key-vault-get-started] a tanúsítványok biztonságos tárolási helyeként, valamint az Azure-beli Service Fabric-fürtökön telepített tanúsítványok beszerzésének módjaként használatos. Ha nem telepíti az Azure-t, nincs szükség a Key Vault használatára a titkok kezeléséhez Service Fabric alkalmazásokban.
 
-Például az [Alkalmazástitok kezelése című témakörben.](service-fabric-application-secret-management.md)
+Példaként tekintse meg az [alkalmazás-titkok kezelése](service-fabric-application-secret-management.md)című témakört.
 
-## <a name="secure-the-hosting-environment"></a>Az üzemeltetési környezet biztosítása
-Az Azure Service Fabric használatával biztonságossá teheti a fürtben különböző felhasználói fiókok alatt futó alkalmazásokat. A Service Fabric is segít az alkalmazások által a felhasználói fiókok – például fájlok, könyvtárak és tanúsítványok – központi telepítésekor használt erőforrások biztonságossá tétele. Ez még egy megosztott üzemeltetett környezetben is biztonságosabbá teszi az alkalmazások futtatását egymástól.
+## <a name="secure-the-hosting-environment"></a>Az üzemeltetési környezet biztonságossá tétele
+Az Azure Service Fabric használatával a fürtben futó alkalmazások különböző felhasználói fiókokban is biztonságossá tehetők. A Service Fabric az alkalmazások által használt erőforrásokat is biztonságossá teszi a felhasználói fiókok – például a fájlok, a címtárak és a tanúsítványok – telepítésének időpontjában. Így még a megosztottan üzemeltetett környezetekben is elérhetővé válik az alkalmazások egymástól való biztonságosabbá tétele.
 
-Az alkalmazásjegyzék deklarálja a szükséges rendszerbiztonsági tagokat (felhasználókat és csoportokat) a szolgáltatás(ok) futtatásához és a biztonságos erőforrásokhoz.  Ezekre a rendszerbiztonsági tagokra a házirendek hivatkoznak, például a futtatási, végpontkötési, csomagmegosztási vagy biztonsági hozzáférési házirendekben.  A házirendek ezután az alkalmazásjegyzék **ServiceManifestImport** szakaszában lévő szolgáltatás-erőforrásokra lesznek alkalmazva.
+Az alkalmazás jegyzékfájlja kijelenti, hogy a szolgáltatás (ok) és a biztonságos erőforrások futtatásához szükséges rendszerbiztonsági tag (felhasználók és csoportok).  Ezek a rendszerbiztonsági tag a szabályzatokban hivatkozik, például a Futtatás, a végponti kötés, a csomag megosztása vagy a biztonsági hozzáférési házirendek.  Ezután a rendszer alkalmazza a házirendeket a szolgáltatási erőforrásokra az alkalmazás jegyzékfájljának **ServiceManifestImport** szakaszában.
 
-A rendszerbiztonsági tagok deklarálásakor felhasználói csoportokat is definiálhat és hozhat létre, hogy minden csoporthoz egy vagy több felhasználó takarható együtt. Ez akkor hasznos, ha több felhasználó van különböző szolgáltatásbelépési pontokhoz, és rendelkezniük kell bizonyos közös jogosultságokkal, amelyek a csoport szintjén érhetők el.
+A rendszerbiztonsági tag megadásakor létrehozhat és létrehozhat felhasználói csoportokat is, hogy az egyes csoportokhoz hozzá lehessen adni egy vagy több felhasználót, hogy azok együtt felügyelhetők legyenek. Ez akkor hasznos, ha több felhasználó van a különböző szolgáltatási belépési pontokhoz, és szükségük van bizonyos, a csoport szintjén elérhető általános jogosultságokra.
 
-Alapértelmezés szerint a Service Fabric-alkalmazások a Fabric.exe folyamat alatt futó fiók alatt futnak. A Service Fabric azt is lehetővé teszi, hogy alkalmazásokat futtasson egy helyi felhasználói fiók vagy helyi rendszerfiók, amely az alkalmazásjegyzékben van megadva. További információt a [Szolgáltatás futtatása helyi felhasználói fiókként vagy helyi rendszerfiókként című témakörben talál.](service-fabric-application-runas-security.md)  [A szolgáltatás indítási parancsfájlját helyi felhasználóként vagy rendszerfiókként](service-fabric-run-script-at-service-startup.md)is futtathatja.
+Alapértelmezés szerint Service Fabric alkalmazások a Fabric. exe folyamat alatt futó fiók alatt futnak. A Service Fabric lehetővé teszi az alkalmazások futtatását helyi felhasználói fiókkal vagy helyi rendszerfiókkal, amely az alkalmazás jegyzékfájljában van megadva. További információ: [szolgáltatás futtatása helyi felhasználói fiók vagy helyi rendszerfiók](service-fabric-application-runas-security.md).  [A szolgáltatás indítási parancsfájlját helyi felhasználóként vagy rendszerfiókként is futtathatja](service-fabric-run-script-at-service-startup.md).
 
-Ha a Service Fabric szolgáltatást önálló Windows-fürtön futtatja, egy szolgáltatást [az Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportfelügyelt szolgáltatásfiókok](service-fabric-run-service-as-gmsa.md)alatt futtathat.
+Ha Service Fabric futtat egy önálló Windows-fürtön, akkor [Active Directory tartományi fiókok](service-fabric-run-service-as-ad-user-or-group.md) vagy [csoportosan felügyelt](service-fabric-run-service-as-gmsa.md)szolgáltatásfiókok alatt futtathat egy szolgáltatást.
 
 ## <a name="secure-containers"></a>Biztonságos tárolók
-A Service Fabric egy olyan mechanizmust biztosít a tárolón belüli szolgáltatások számára, amelyek egy Windows vagy Linux-fürt (5.7-es vagy újabb verzió) csomópontjaira telepített tanúsítványok eléréséhez érhetők el. Ez a PFX-tanúsítvány használható az alkalmazás vagy szolgáltatás hitelesítésére vagy más szolgáltatásokkal való biztonságos kommunikációra. További információt a [Tanúsítvány importálása tárolóba című témakörben talál.](service-fabric-securing-containers.md)
+A Service Fabric a tárolón belüli szolgáltatások számára biztosít olyan tanúsítványt, amely a Windows vagy Linux rendszerű fürt csomópontjain telepített tanúsítványokhoz fér hozzá (5,7-es vagy újabb verzió). Ez a PFX-tanúsítvány használható az alkalmazás vagy szolgáltatás hitelesítésére vagy más szolgáltatásokkal való biztonságos kommunikációra. További információ: [tanúsítvány importálása tárolóba](service-fabric-securing-containers.md).
 
-Emellett a Service Fabric is támogatja a gMSA (csoport felügyelt szolgáltatásfiókok) a Windows-tárolók. További információt a [GMSA beállítása Windows-tárolókhoz című témakörben talál.](service-fabric-setup-gmsa-for-windows-containers.md)
+Emellett a Service Fabric támogatja a Windows-tárolók gMSA (csoportosan felügyelt szolgáltatásfiókok) is. További információ: [set up gMSA for Windows containers](service-fabric-setup-gmsa-for-windows-containers.md).
 
-## <a name="secure-service-communication"></a>Biztonságos szolgáltatáskommunikáció
-A Service Fabric egy szolgáltatás fut valahol egy Service Fabric-fürt, általában több virtuális gép között elosztva. A Service Fabric számos lehetőséget biztosít a szolgáltatáskommunikáció védelmére.
+## <a name="secure-service-communication"></a>Biztonságos szolgáltatás kommunikációja
+Service Fabric a szolgáltatás egy Service Fabric fürtön fut valahol, általában több virtuális gépen elosztva. Service Fabric számos lehetőséget biztosít a szolgáltatással kapcsolatos kommunikáció biztonságossá tételéhez.
 
-Https-végpontokat engedélyezhet a [ASP.NET Core vagy a Java](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) webszolgáltatásokban.
+Engedélyezheti a HTTPS-végpontokat a [ASP.net Core vagy a Java-](service-fabric-service-manifest-resources.md#example-specifying-an-https-endpoint-for-your-service) webszolgáltatásokban.
 
-Biztonságos kapcsolatot hozhat létre a fordított proxy és a szolgáltatások között, így lehetővé téve a végpontok közötti biztonságos csatornát. A biztonságos szolgáltatásokhoz való csatlakozás csak akkor támogatott, ha a fordított proxy https-kapcsolaton történő figyelésre van beállítva. A fordított proxy konfigurálásáról az [Azure Service Fabric Fordított proxy című témakörében](service-fabric-reverseproxy.md)olvashat.  [A biztonságos szolgáltatáshoz való csatlakozás](service-fabric-reverseproxy-configure-secure-communication.md) azt ismerteti, hogyan lehet biztonságos kapcsolatot létesíteni a fordított proxy és a szolgáltatások között.
+Biztonságos kapcsolatot létesíthet a fordított proxy és a szolgáltatások között, így lehetővé válik a végpontok közötti biztonságos csatorna engedélyezése is. A biztonságos szolgáltatásokhoz való csatlakozás csak akkor támogatott, ha a fordított proxy a HTTPS-figyelésre van konfigurálva. A fordított proxy konfigurálásával kapcsolatos információkért olvassa el a [fordított proxy az Azure Service Fabricban](service-fabric-reverseproxy.md)című témakört.  A [biztonságos szolgáltatáshoz való csatlakozás](service-fabric-reverseproxy-configure-secure-communication.md) azt ismerteti, hogyan hozható létre biztonságos kapcsolat a fordított proxy és a szolgáltatások között.
 
-A Megbízható szolgáltatások alkalmazáskeretrendszer néhány előre összeállított kommunikációs veremeket és eszközöket biztosít, amelyek a biztonság növelése érdekében használhatók. Megtudhatja, hogy miként növelheti a biztonságot a szolgáltatás átirányító használata [(C#](service-fabric-reliable-services-secure-communication.md) vagy [Java](service-fabric-reliable-services-secure-communication-java.md)nyelven) vagy [a WCF használatakor.](service-fabric-reliable-services-secure-communication-wcf.md)
+A Reliable Services alkalmazás-keretrendszer néhány előre elkészített kommunikációs veremet és eszközt biztosít, amelyek segítségével javíthatja a biztonságot. Ismerje meg, hogyan javíthatja a biztonságot a szolgáltatás távelérésének ( [C#](service-fabric-reliable-services-secure-communication.md) vagy [Java](service-fabric-reliable-services-secure-communication-java.md)) vagy a [WCF](service-fabric-reliable-services-secure-communication-wcf.md)használatával történő használatakor.
 
-## <a name="encrypt-application-data-at-rest"></a>Az inaktív alkalmazásadatok titkosítása
-Az Azure-ban futó Service Fabric-fürt minden [csomóponttípusát](service-fabric-cluster-nodetypes.md) egy [virtuálisgép-méretezési csoport támogatja.](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Egy Azure Resource Manager-sablonnal adatlemezeket csatlakoztathat a Service Fabric-fürtöt alkotó méretezési csoport(ok)hoz.  Ha a szolgáltatások adatokat mentenek egy csatolt adatlemezre, az alkalmazásadatok védelme érdekében [titkosíthatja ezeket az adatlemezeket.](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md)
+## <a name="encrypt-application-data-at-rest"></a>Alkalmazás-adatok titkosítása a nyugalmi állapotban
+Az Azure-ban futó Service Fabric fürtök mindegyik [csomópont-típusát](service-fabric-cluster-nodetypes.md) egy [virtuálisgép-méretezési csoport](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)támogatja. Egy Azure Resource Manager-sablonnal adatlemezeket csatlakoztathat a Service Fabric-fürtöt alkotó méretezési csoport(ok)hoz.  Ha a szolgáltatások egy csatolt adatlemezre mentik az adataikat, akkor az [adatlemezeket titkosíthatja](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) az alkalmazásadatok védelme érdekében.
 
 <!--TO DO: Enable BitLocker on Windows standalone clusters?
 TO DO: Encrypt disks on Linux clusters?-->
@@ -94,9 +94,9 @@ TO DO: Encrypt disks on Linux clusters?-->
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>További lépések
 * [Telepítési parancsfájl futtatása a szolgáltatás indításakor](service-fabric-run-script-at-service-startup.md)
-* [Erőforrások megadása szolgáltatásjegyzékben](service-fabric-service-manifest-resources.md)
+* [Erőforrások meghatározása a szolgáltatás jegyzékfájljában](service-fabric-service-manifest-resources.md)
 * [Alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md)
-* [További információ a fürtbiztonságról](service-fabric-cluster-security.md)
+* [Tudnivalók a fürt biztonságáról](service-fabric-cluster-security.md)
 
 <!-- Links -->
 [key-vault-get-started]:../key-vault/general/overview.md

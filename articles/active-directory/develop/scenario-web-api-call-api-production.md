@@ -1,6 +1,6 @@
 ---
-title: Webes API-k webes API-k áthelyezése éles környezetbe – Microsoft identity platform | Azure
-description: Ismerje meg, hogyan helyezhet át webes API-kat, amelyek webes API-kat hívnak éles környezetbe.
+title: Webes API-k áthelyezése webes API-k használatával éles környezetbe – Microsoft Identity platform | Azure
+description: Ismerje meg, hogyan helyezhet át olyan webes API-t, amely webes API-kat hív meg éles környezetben.
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -12,22 +12,22 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 078ed3e5f3a19bfa4350f9edea858b717c69e3f8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537151"
 ---
-# <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó webes API:Ugrás éles környezetbe
+# <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó webes API: áthelyezés éles környezetbe
 
-Miután beszerzett egy jogkivonatot a webes API-k hívásához, áthelyezheti az alkalmazást éles környezetbe.
+Miután beszerzett egy jogkivonatot a webes API-k hívásához, áthelyezheti az alkalmazást az éles környezetbe.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="learn-more"></a>Részletek
 
-Most, hogy már ismeri a web API-k hívásának alapjait a saját webes API-król, a következő oktatóanyag érdekelheti, amely ismerteti a webes API-kat meghívó védett webes API-k létrehozásához használt kódot.
+Most, hogy már ismeri a webes API-k saját webes API-ból való meghívásának alapjait, a következő oktatóanyag érdekli, amely leírja a webes API-kat meghívó védett webes API-k létrehozásához használt kódot.
 
 | Sample | Platform | Leírás |
 |--------|----------|-------------|
-| [active-directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2.2 webes API, asztali (WPF) | ASP.NET Core 2.2 web API-t a Microsoft Graph-nak hív, amelyet egy WPF-alkalmazásból hív meg a Microsoft identity platform (2.0-s verzió) használatával. |
+| [Active-Directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2,2 webes API, asztali (WPF) | ASP.NET Core 2,2 web API hív Microsoft Graph, amelyet a Microsoft Identity platform (v 2.0) használatával hívhat meg egy WPF-alkalmazásból. |

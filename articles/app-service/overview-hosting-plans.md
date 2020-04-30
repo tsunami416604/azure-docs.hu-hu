@@ -1,112 +1,112 @@
 ---
 title: App Service-csomagok
-description: Ismerje meg, hogyan működnek az App Service-csomagok az Azure App Service-ben, hogyan kell fizetni ük az ügyfélnek, és hogyan méretezheti őket az Igényeinek megfelelően.
-keywords: app szolgáltatás, azure app service, méretezés, méretezhető, méretezhetőség, app service terv, app szolgáltatás költsége
+description: Megtudhatja, hogy App Service csomagok hogyan működnek a Azure App Serviceban, hogyan történik a számlázás az ügyfél számára, és Hogyan méretezhetők az igényeinek megfelelően.
+keywords: App Service, Azure app Service, skálázás, skálázható, méretezhetőség, app Service-csomag, app Service-díj
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
 ms.date: 11/09/2017
 ms.custom: seodec18
 ms.openlocfilehash: b1c44fb9f44eb75e6d2a766213c5db094ebe79b1
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537644"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
-Az App Service-ben az alkalmazások _App Service-csomagban_ futnak. Az App Service-csomagok határozzák meg a futtatni kívánt webalkalmazások számítási erőforrásait. Ezek a számítási erőforrások hasonlóak a [_szerver farm_](https://wikipedia.org/wiki/Server_farm) a hagyományos web hosting. Egy vagy több alkalmazás konfigurálható úgy, hogy ugyanazon a számítási erőforráson (vagy ugyanabban az App Service-csomagban) fusson.
+Az App Service-ben az alkalmazások _App Service-csomagban_ futnak. Az App Service-csomagok határozzák meg a futtatni kívánt webalkalmazások számítási erőforrásait. Ezek a számítási erőforrások hasonlóak a [_kiszolgálófarm_](https://wikipedia.org/wiki/Server_farm) számára a hagyományos webes üzemeltetésben. Egy vagy több alkalmazás úgy konfigurálható, hogy ugyanazon a számítási erőforrásokon (vagy ugyanabban a App Service tervben) fusson.
 
-Amikor egy adott régióban (például Nyugat-Európában) létrehoz egy App Service-csomagot, az adott régióban az adott tervhez számítási erőforrások at hoz létre. Bármilyen alkalmazásokat is helyez el ebben az App Service-csomagban, az App Service-csomag által meghatározott számítási erőforrásokon fusson. Az App Service-csomagok a következőket határozzák meg:
+Ha egy App Service tervet hoz létre egy bizonyos régióban (például Nyugat-Európa), akkor az adott régióhoz tartozó számítási erőforrások készlete lesz létrehozva. Minden olyan alkalmazás, amelyet ebbe a App Service csomagba helyezett, a App Service-csomag által meghatározott számítási erőforrásokon futtathatja. Az App Service-csomagok a következőket határozzák meg:
 
 - Régió (USA nyugati régiója, USA keleti régiója, stb.)
 - Virtuálisgép-példányok száma
 - Virtuálisgép-példányok mérete (kicsi, közepes, nagy)
-- Tarifacsomag (ingyenes, megosztott, alapszintű, standard, prémium, premiumv2, elszigetelt)
+- Díjszabási szint (ingyenes, közös, alapszintű, standard, prémium, PremiumV2, elkülönített)
 
-Az App Service-csomag _tarifacsomagja_ határozza meg, hogy milyen App Service-funkciókat kap, és mennyit fizet a csomagért. A tarifacsomagok a következő kategóriákba sorolhatók:
+Egy App Service-csomag _díjszabási szintje_ határozza meg, hogy milyen app Service funkciókat kap, és mennyit fizet a csomagért. A tarifacsomagok a következő kategóriákba sorolhatók:
 
-- **Megosztott számítási:** **Ingyenes** és **megosztott**, a két alapréteg, fut egy alkalmazás ugyanazon az Azure-beli virtuális gép, mint más App Service-alkalmazások, beleértve a más ügyfelek alkalmazásait. Ezek a csomagok CPU-kvótákat rendelnek mindegyik, a közös erőforrásokon futó alkalmazáshoz, és ezek az erőforrások nem skálázhatóak fel horizontálisan.
-- **Dedikált számítási:** Az **alapszintű,** **standard,** **prémium**és **premiumv2** szintek dedikált Azure-virtuális gépeken futtatnak alkalmazásokat. A számítási erőforrások csak az ugyanabban az App Service-csomagban lévő alkalmazások között kerülnek elosztásra. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
-- **Elkülönített:** Ez a réteg dedikált Azure virtuális gépeket futtat dedikált Azure virtuális hálózatokon. Hálózati elkülönítést biztosít az alkalmazások számítási elkülönítésén felül. Ez a szint biztosítja a legnagyobb horizontális felskálázási lehetőségeket.
+- **Megosztott számítás**: az **ingyenes** és a **közös**, a két alapszintű alkalmazás ugyanazon az Azure-beli virtuális gépen futtatja az alkalmazást, mint a többi app Service alkalmazást, beleértve a más ügyfelek alkalmazásait is. Ezek a csomagok CPU-kvótákat rendelnek mindegyik, a közös erőforrásokon futó alkalmazáshoz, és ezek az erőforrások nem skálázhatóak fel horizontálisan.
+- **Dedikált számítás** **: az alapszintű**, **standard**, **prémium**és **PremiumV2** szinteken a dedikált Azure-beli virtuális gépeken futó alkalmazások futnak. A számítási erőforrások csak az ugyanabban az App Service-csomagban lévő alkalmazások között kerülnek elosztásra. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
+- **Elkülönített**: Ez a szintű dedikált Azure-beli virtuális gépeket futtat dedikált Azure-beli virtuális hálózatokon. Hálózati elkülönítést biztosít az alkalmazások számára a számítási elkülönítésen. Ez a szint biztosítja a legnagyobb horizontális felskálázási lehetőségeket.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
-Minden egyes szint az App Service-funkciók egy adott részhalmazát is biztosítja. Ezek közé tartoznak az egyéni tartományok és a TLS/SSL tanúsítványok, automatikus skálázás, telepítési bővítőhelyek, biztonsági mentések, Traffic Manager integráció és így tovább. Minél magasabb a szint, annál több funkció érhető el. Ha meg szeretné tudni, hogy mely funkciók támogatottak az egyes tarifacsomagokban, olvassa el [az App Service-csomag részletei című témakört.](https://azure.microsoft.com/pricing/details/app-service/plans/)
+Az egyes szintek a App Service szolgáltatások egy adott részhalmazát is biztosítják. Ezek a szolgáltatások egyéni tartományokat és TLS/SSL-tanúsítványokat, automatikus skálázást, üzembe helyezési pontokat, biztonsági másolatokat, Traffic Manager integrációt és egyebeket tartalmaznak. Minél magasabb a szintet, annál több funkció érhető el. Ha szeretné megtudni, hogy mely funkciók támogatottak az egyes díjszabási szinten, tekintse meg a [app Service csomag részleteit](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
 <a name="new-pricing-tier-premiumv2"></a>
 
 > [!NOTE]
-> Az új **PremiumV2-díjszabási** szint gyorsabb processzorokkal, SSD-tárolóval és dupla memória-mag aránynal rendelkezik [a Dv2 sorozatú virtuális gépek](../virtual-machines/dv2-dsv2-series.md) számára a **standard** szinthez képest. **A PremiumV2** a nagyobb példányszám növelésével is támogatja a nagyobb példányok számát, miközben továbbra is biztosítja a Standard csomagban található összes speciális képességet. A **premiumv2** tartalmazza a meglévő **PremiumV2**prémium szinten elérhető összes funkciót.
+> Az új **PremiumV2** -díjszabási csomag [Dv2 sorozatú virtuális gépeket](../virtual-machines/dv2-dsv2-series.md) biztosít, amelyek gyorsabb processzorokkal, SSD-tárolóval, valamint a **standard** szinthez képest kétszeres memória-mag aránnyal rendelkeznek. A **PremiumV2** a megnövelt példányszámot is támogatja, miközben továbbra is biztosítja a standard csomagban található összes speciális funkciót. A meglévő **prémium** szinten elérhető összes funkció a **PremiumV2**részét képezi.
 >
-> A többi dedikált réteghez hasonlóan három virtuálisgép-méret érhető el ehhez a réteghez:
+> A többi dedikált platformhoz hasonlóan három virtuálisgép-méret érhető el ehhez a platformhoz:
 >
 > - Kicsi (egy CPU mag, 3,5 GiB memória) 
-> - Közepes (két CPU mag, 7 GiB memória) 
-> - Nagy (négy CPU mag, 14 GiB memória)  
+> - Közepes (két CPU-mag, 7 GiB memória) 
+> - Nagyméretű (négy CPU-mag, 14 GiB memória)  
 >
-> A **PremiumV2** díjszabási információkért lásd: [App Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
+> A **PremiumV2** díjszabásával kapcsolatos információkért lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
 >
-> Az új **PremiumV2** tarifacsomag galibából az [App Service PremiumV2 szint konfigurálása című témakörben kaphat.](app-service-configure-premium-tier.md)
+> Az új **PremiumV2** -díjszabási csomag megkezdéséhez lásd: PremiumV2-csomag [konfigurálása app Servicehoz](app-service-configure-premium-tier.md).
 
-## <a name="how-does-my-app-run-and-scale"></a>Hogyan fut és méretez az alkalmazásom?
+## <a name="how-does-my-app-run-and-scale"></a>Hogyan fut és méretezhető az alkalmazásom?
 
-Az **ingyenes** és **a megosztott** szinteken egy alkalmazás kap CPU-perc egy megosztott virtuálisgép-példány, és nem lehet horizontális felskálázás. Más szinteken egy alkalmazás fut, és az alábbiak szerint méretezhető.
+Az **ingyenes** és a **közös** szinten az alkalmazások CPU-percet kapnak egy megosztott virtuálisgép-példányon, és nem méretezhetők. Más szinteken az alkalmazások a következőképpen futnak és méretezhetők.
 
-Amikor létrehoz egy alkalmazást az App Service-ben, az egy App Service-csomagba kerül. Amikor az alkalmazás fut, az Alkalmazásszolgáltatás-csomagban konfigurált összes virtuálisgép-példányon fut. Ha több alkalmazás ugyanabban az App Service-csomagban van, mindegyik ugyanazt a virtuálisgép-példányt tartalmazza. Ha egy alkalmazáshoz több központi telepítési hely is van, az összes központi telepítési bővítőhely ugyanazon a virtuálisgép-példányon is fut. Ha engedélyezi a diagnosztikai naplókat, biztonsági mentéseket hajt végre, vagy WebJobs-ot futtat, cpu-ciklusokat és memóriát is használnak ezeken a virtuálisgép-példányokon.
+Amikor App Serviceban hoz létre alkalmazást, az egy App Service tervbe kerül. Az alkalmazás futtatásakor az a App Service csomagban konfigurált összes virtuálisgép-példányon fut. Ha több alkalmazás is ugyanabban a App Service csomagban van, akkor az összes azonos virtuálisgép-példányon osztoznak. Ha egy alkalmazáshoz több üzembe helyezési pont is tartozik, az összes üzembe helyezési pont ugyanazon a virtuálisgép-példányokon fut. Ha engedélyezi a diagnosztikai naplókat, biztonsági mentést hajt végre, vagy webjobs-feladatokat futtat, akkor ezek a virtuálisgép-példányokon a CPU-ciklusokat és a memóriát is használják.
 
-Ily módon az App Service-csomag az App Service-alkalmazások méretezési egysége. Ha a csomag öt virtuálisgép-példány futtatására van konfigurálva, akkor a csomagban lévő összes alkalmazás mind az öt példányon fut. Ha a csomag automatikus skálázás, majd a csomag összes alkalmazás a csomagban vannak kiskálázva együtt az automatikus skálázási beállítások alapján.
+Így a App Service terv a App Service alkalmazások méretezési egysége. Ha a csomag öt virtuálisgép-példány futtatására van konfigurálva, akkor a tervben szereplő összes alkalmazás mind az öt példányon fut. Ha a terv automatikus skálázásra van konfigurálva, akkor a csomagban lévő összes alkalmazás az automatikus skálázási beállítások alapján ki lesz bővítve.
 
-Az alkalmazások horizontális felskálázásáról a [Példányszám manuális vagy automatikus méretezése című témakörben](../monitoring-and-diagnostics/insights-how-to-scale.md)talál további információt.
+Az alkalmazások horizontális felskálázásával kapcsolatos információkért tekintse meg a [példányok számának manuális vagy automatikus méretezését](../monitoring-and-diagnostics/insights-how-to-scale.md)ismertető témakört.
 
 <a name="cost"></a>
 
-## <a name="how-much-does-my-app-service-plan-cost"></a>Mennyibe kerül az App Service-csomag?
+## <a name="how-much-does-my-app-service-plan-cost"></a>Mennyibe kerül a App Service terv?
 
-Ez a szakasz azt ismerteti, hogyan számláznak az App Service-alkalmazások. Részletes, régióspecifikus díjszabási információkért lásd: [App Service Díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
+Ez a szakasz azt ismerteti, hogyan történik a App Service alkalmazások számlázása. A régióra vonatkozó díjszabással kapcsolatos részletes információkat a [app Service díjszabását](https://azure.microsoft.com/pricing/details/app-service/)ismertető témakörben talál.
 
-Az **ingyenes** szint kivételével az App Service-csomag óránkénti díjat számít fel az általa használt számítási erőforrásokon.
+Az **ingyenes** csomag kivételével a app Servicei csomagok óradíjat biztosítanak az általa használt számítási erőforrásokhoz.
 
-- A **megosztott** szinten minden alkalmazás kap egy kvótát a CPU perc, így _minden alkalmazás_ óránként kell fizetnie a CPU-kvóta.
-- A dedikált számítási szinteken **(Alapszintű,** **Standard**, **Prémium**, **PremiumV2**), az App Service-csomag határozza meg, hogy az alkalmazások hány virtuálisgép-példányra vannak méretezve, így az App Service-csomag _minden virtuálisgép-példánya_ óránkénti díjat számít fel. Ezek a virtuálisgép-példányok díja ugyanaz, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan díjak elkerülése érdekében olvassa el [az App Service-csomag karbantartása című témakört.](app-service-plan-manage.md#delete)
-- Az **Elkülönített** rétegben az App Service-környezet határozza meg az alkalmazásokat futtató elkülönített dolgozók számát, és _minden egyes dolgozónak_ óránként kell fizetnie. Emellett az App Service-környezet futtatásáért óránkénti alapdíjat is felszámítunk.
+- A **megosztott** szinten az egyes alkalmazások CPU-percenként kapják meg a kvótát, így az _egyes alkalmazások_ ÓRADÍJat kapnak a CPU-kvótához.
+- A dedikált számítási rétegek (**Alapszintű**, **standard**, **prémium**, **PremiumV2**) esetében az App Service-csomag határozza meg, hogy hány virtuálisgép-példányra méretezhetők az alkalmazások, így a app Service csomag minden virtuálisgép- _példánya_ óradíjas díjat számít fel. Ezek a virtuálisgép-példányok ugyanarra a számlára vonatkoznak, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan költségek elkerülése érdekében lásd: [app Service terv tisztítása](app-service-plan-manage.md#delete).
+- Az **elkülönített** szinten a app Service Environment meghatározza az alkalmazásokat futtató elkülönített _munkavégzők számát, és minden feldolgozót_ óránként kell fizetni. Emellett a App Service Environment futtatására óradíjat is igénybe veheti.
 
-Nem kell fizetnie az Ön számára elérhető App Service-szolgáltatások használatáért (egyéni tartományok, TLS/SSL-tanúsítványok, telepítési tárolóhelyek, biztonsági mentések stb.) konfigurálása. A kivételek a következők:
+Nem számítunk fel díjat az Ön számára elérhető App Service szolgáltatások (egyéni tartományok, TLS/SSL-tanúsítványok, üzembe helyezési pontok, biztonsági másolatok stb.) használatára. A kivételek a következők:
 
-- App Service-tartományok – akkor fizet, ha vásárol egyet az Azure-ban, és ha minden évben megújítja.
-- App Service-tanúsítványok – akkor fizet, ha vásárol egyet az Azure-ban, és ha minden évben megújítja.
-- IP-alapú TLS-kapcsolatok – Minden IP-alapú TLS-kapcsolatóránként imperális díjat számít fel, de néhány **standard** szintű vagy annál magasabb szintű csomag egy IP-alapú TLS-kapcsolatot biztosít ingyenesen. Az SNI-alapú TLS-kapcsolatok ingyenesek.
+- App Service-tartományok – ha az Azure-ban vásárol egyet, és minden évben megújítja.
+- App Service tanúsítványok – ha az Azure-ban vásárol egyet, és minden évben megújítja.
+- IP-alapú TLS-kapcsolatok – minden egyes IP-alapú TLS-kapcsolathoz óradíjat biztosítunk, de néhány **standard** szint vagy újabb rendszerű TLS-kapcsolat ingyenes. A SNI-alapú TLS-kapcsolatok ingyenesek.
 
 > [!NOTE]
-> Ha integrálja az App Service-t egy másik Azure-szolgáltatással, előfordulhat, hogy figyelembe kell vennie az egyéb szolgáltatások díjait. Ha például az Azure Traffic Manager használatával méretezi az alkalmazást földrajzilag, az Azure Traffic Manager a használat alapján is díjat számít fel. A szolgáltatások közötti költségek azure-beli becsléséhez olvassa el [a Díjkalkulátor](https://azure.microsoft.com/pricing/calculator/). 
+> Ha a App Service egy másik Azure-szolgáltatással integrálja, előfordulhat, hogy a többi szolgáltatás díjait is figyelembe kell vennie. Ha például az Azure Traffic Manager-t használja az alkalmazás földrajzilag való méretezéséhez, az Azure Traffic Manager a használat alapján is felszámítja a díjat. Az Azure-beli szolgáltatások szolgáltatásainak megbecsléséhez tekintse meg a [díjszabási számológépet](https://azure.microsoft.com/pricing/calculator/). 
 >
 >
 
-## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Mi a teendő, ha az alkalmazásomnak több képességre vagy funkcióra van szüksége?
+## <a name="what-if-my-app-needs-more-capabilities-or-features"></a>Mi a teendő, ha az alkalmazásnak több funkcióra vagy szolgáltatásra van szüksége?
 
-App Service-csomagját bármikor skálázhatja felfelé és lefelé is. Ez olyan egyszerű, mint a csomag árképzési szintjének módosítása. Elsőre választhat egy alacsonyabb tarifájú csomagot is, amelyet később felskálázhat, amikor már további App Service-szolgáltatásokra van szüksége.
+App Service-csomagját bármikor skálázhatja felfelé és lefelé is. Ez olyan egyszerű, mint a csomag díjszabási szintjének módosítása. Elsőre választhat egy alacsonyabb tarifájú csomagot is, amelyet később felskálázhat, amikor már további App Service-szolgáltatásokra van szüksége.
 
-Például elkezdheti tesztelni a webalkalmazást egy **ingyenes** App Service-csomagban, és nem fizet semmit. Ha hozzá szeretné adni az [egyéni DNS-nevét](app-service-web-tutorial-custom-domain.md) a webalkalmazáshoz, csak méretezze fel a csomagot **a Megosztott** szintre. Később, ha [tls-kötést](configure-ssl-bindings.md)szeretne létrehozni, méretezheti a tervet **alapszintű** szintre. Ha átmeneti [környezeteket](deploy-staging-slots.md)szeretne, skálázás **standard** szintre. Ha több magra, memóriára vagy tárolóra van szüksége, nagyobb virtuálisgép-méretre skálázható ugyanabban a rétegben.
+Megkezdheti például a webalkalmazás tesztelését egy **ingyenes** app Service csomaggal, és semmit sem kell fizetnie. Ha hozzá szeretné adni az [Egyéni DNS-nevet](app-service-web-tutorial-custom-domain.md) a webalkalmazáshoz, egyszerűen méretezheti a tervet a **megosztott** szinten. Később, amikor [TLS-kötést szeretne létrehozni](configure-ssl-bindings.md), az **alapszintű csomagra** méretezheti a tervet. Ha [átmeneti környezeteket](deploy-staging-slots.md)szeretne használni, vertikálisan méretezheti a **standard** szintet. Ha további magokra, memóriára vagy tárterületre van szüksége, akkor az azonos szinten lévő nagyobb virtuálisgép-méretre méretezhető.
 
-Ugyanez működik fordítva. Ha úgy érzi, hogy már nincs szüksége egy magasabb szintű szint képességeire vagy funkcióira, alacsonyabb szintre skálázható, ami pénzt takarít meg.
+Ugyanez fordítva is működik. Ha úgy érzi, hogy már nincs szüksége egy magasabb szintű kapacitásra vagy funkcióra, lekicsinyítheti az alacsonyabb szintet, ami pénzt takarít meg.
 
-Az App Service-csomag felskálázásáról az [Azure-beli alkalmazások felskálázása](manage-scale-up.md)című témakörben talál további információt.
+Az App Service terv méretezésével kapcsolatos információkért lásd: alkalmazás felskálázása [Az Azure-ban](manage-scale-up.md).
 
-Ha az alkalmazás ugyanabban az App Service-csomagban van más alkalmazásokkal, érdemes lehet javítani az alkalmazás teljesítményét a számítási erőforrások elkülönítésével. Ezt úgy teheti meg, hogy áthelyezi az alkalmazást egy külön App Service-csomagba. További információt az [Alkalmazás áthelyezése másik App Service-csomagba](app-service-plan-manage.md#move)című témakörben talál.
+Ha az alkalmazás ugyanabban a App Service csomagban van, és más alkalmazásokkal is rendelkezik, érdemes lehet javítani az alkalmazás teljesítményét a számítási erőforrások elkülönítésével. Ezt úgy teheti meg, hogy áthelyezi az alkalmazást egy külön App Service tervbe. További információ: [alkalmazás áthelyezése másik app Service tervbe](app-service-plan-manage.md#move).
 
-## <a name="should-i-put-an-app-in-a-new-plan-or-an-existing-plan"></a>Új vagy meglévő csomagba helyezzek el egy alkalmazást?
+## <a name="should-i-put-an-app-in-a-new-plan-or-an-existing-plan"></a>Be kell helyezni egy alkalmazást egy új csomagba vagy egy meglévő csomagba?
 
-Mivel ön fizet az App Service-csomag által leosztott számítási erőforrásokért (lásd: [Mennyibe kerül az App Service-csomag költsége?](#cost)), potenciálisan pénzt takaríthat meg, ha több alkalmazást helyez el egyetlen App Service-csomagban. Továbbra is hozzáadhat alkalmazásokat egy meglévő csomaghoz, amíg a csomag elegendő erőforrással rendelkezik a terhelés kezeléséhez. Ne feledje azonban, hogy az ugyanabban az App Service-csomagban lévő alkalmazások mindegyike ugyanazokkal a számítási erőforrásokkal rendelkezik. Annak megállapításához, hogy az új alkalmazás rendelkezik-e majd a szükséges számítási erőforrásokkal, ismernie kell a meglévő App Service-csomag kapacitását, és a hozzáadni kívánt alkalmazás várható terheltségét. Az App Service-csomag túlterhelése üzemkimaradást okozhat az új és a meglévő alkalmazások esetében is.
+Mivel a számítási erőforrásokért az App Service-csomag lefoglalása után kell fizetnie (lásd: Mennyibe [kerül a app Service tervem?](#cost)), így pénzt takaríthat meg, ha több alkalmazást helyez üzembe egy app Service tervben. Az alkalmazásokat továbbra is hozzáadhatja egy meglévő csomaghoz, ha a csomag elegendő erőforrással rendelkezik a terhelés kezeléséhez. Ne feledje azonban, hogy az azonos App Service tervben szereplő alkalmazások mindegyike ugyanazokat a számítási erőforrásokat használja. Annak megállapításához, hogy az új alkalmazás rendelkezik-e majd a szükséges számítási erőforrásokkal, ismernie kell a meglévő App Service-csomag kapacitását, és a hozzáadni kívánt alkalmazás várható terheltségét. Az App Service-csomag túlterhelése üzemkimaradást okozhat az új és a meglévő alkalmazások esetében is.
 
 Alkalmazását akkor érdemes egy új önálló App Service-csomagba elkülönítenie ha:
 
 - Az alkalmazás erőforrás-igényes.
-- Az alkalmazást a meglévő csomag többi alkalmazásától függetlenül szeretné méretezni.
-- Az alkalmazásnak szüksége van egy másik földrajzi régióban lévő erőforrásra.
+- Az alkalmazást a meglévő csomag többi alkalmazásából függetlenül szeretné méretezni.
+- Az alkalmazásnak erőforrásra van szüksége egy másik földrajzi régióban.
 
-Így új erőforrásokat rendelhet le az alkalmazáshoz, és nagyobb ellenőrzést vehet át az alkalmazások felett.
+Így lefoglalhatja az alkalmazás új készletét, és hatékonyabban vezérelheti alkalmazásait.
 
-## <a name="manage-an-app-service-plan"></a>App Szolgáltatási csomag kezelése
+## <a name="manage-an-app-service-plan"></a>App Service terv kezelése
 
 > [!div class="nextstepaction"]
-> [App Szolgáltatási csomag kezelése](app-service-plan-manage.md)
+> [App Service terv kezelése](app-service-plan-manage.md)

@@ -1,90 +1,90 @@
 ---
-title: Előrejelzési végpont változások a V3 API-ban
-description: A lekérdezés előrejelzési végpont V3 API-k megváltoztak. Ez az útmutató a 3-as verziójú végpontAPI-kra való áttelepítése.
+title: Az előrejelzési végpont módosításai a V3 API-ban
+description: Megváltoztak a lekérdezés-előrejelzési végpont V3 API-jai. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 3. verziójú Endpoint API-kat.
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: diberry
 ms.openlocfilehash: 4b6d28b24ffc6c0a848d1c7a34e863da0606d936
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81530385"
 ---
-# <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont változások a V3
+# <a name="prediction-endpoint-changes-for-v3"></a>Előrejelzési végpont módosításai v3 esetén
 
-A lekérdezés előrejelzési végpont V3 API-k megváltoztak. Ez az útmutató a 3-as verziójú végpontAPI-kra való áttelepítése.
+Megváltoztak a lekérdezés-előrejelzési végpont V3 API-jai. Ebből az útmutatóból megtudhatja, hogyan telepítheti át a 3. verziójú Endpoint API-kat.
 
-**Általánosan elérhető állapot** – ez a V3 API jelentős JSON-kérelem- és válaszmódosításokat tartalmaz a V2 API-ból.
+**Általánosan elérhető állapot** – ez a V3 API jelentős JSON-kérést és válasz-változásokat tartalmaz a v2 API-ból.
 
 A V3 API a következő új funkciókat biztosítja:
 
 * [Külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time)
-* [Dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
-* [Előre összeállított entitás JSON-módosítások](#prebuilt-entity-changes)
+* [Dinamikus felsorolások](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time)
+* [Előre elkészített entitás JSON-módosításai](#prebuilt-entity-changes)
 
-Az előrejelzési [végpont-kérelem](#request-changes) és [-válasz](#response-changes) jelentős változtatásokat tartalmaz a fent felsorolt új funkciók támogatásához, beleértve a következőket:
+Az előrejelzési végpontra vonatkozó [kérelem](#request-changes) és [Válasz](#response-changes) jelentős módosításokat tartalmaz a fent felsorolt új funkciók támogatásához, beleértve a következőket:
 
-* [Válaszobjektum-módosítások](#top-level-json-changes)
-* [Entitásszerepkör-névhivatkozás az entitásnév helyett](#entity-role-name-instead-of-entity-name)
-* [Entitások megjelölésére irányuló tulajdonságok a kimondott szövegekben](#marking-placement-of-entities-in-utterances)
+* [Válasz objektum változásai](#top-level-json-changes)
+* [Entitás-szerepkör neve hivatkozás az entitás neve helyett](#entity-role-name-instead-of-entity-name)
+* [Entitások megjelölésére szolgáló tulajdonságok a hosszúságú kimondott szöveg](#marking-placement-of-entities-in-utterances)
 
-A V3-hoz [referenciadokumentáció](https://aka.ms/luis-api-v3) áll rendelkezésre.
+A [hivatkozás dokumentációja](https://aka.ms/luis-api-v3) a v3 verzióhoz érhető el.
 
-## <a name="v3-changes-from-preview-to-ga"></a>A V3 előnézetről GA-ra változik
+## <a name="v3-changes-from-preview-to-ga"></a>V3 változások az előzetes verzióról a GA-ra
 
 V3 a következő módosításokat hajtotta végre a GA-ra való áttérés részeként:
 
-* A következő előre összeállított entitások különböző JSON-válaszokkal rendelkeznek:
+* A következő előre összeállított entitások különböző JSON-válaszokat tartalmaznak:
     * [OrdinalV1](luis-reference-prebuilt-ordinal.md)
-    * [FöldrajzV2](luis-reference-prebuilt-geographyv2.md)
-    * [DatetimeV2 között](luis-reference-prebuilt-datetimev2.md)
-    * Mérhető egységkulcs neve `units``unit`
+    * [GeographyV2](luis-reference-prebuilt-geographyv2.md)
+    * [DatetimeV2](luis-reference-prebuilt-datetimev2.md)
+    * Mérhető egység kulcsának neve a `units` -ből`unit`
 
-* Kérelem törzs JSON változás:
-    * innen `preferExternalEntities``preferExternalEntities`
+* Kérelem törzse JSON-változás:
+    * innen `preferExternalEntities` :`preferExternalEntities`
     * választható `score` paraméter külső entitásokhoz
 
-* Válasz szervezet JSON változások:
-    * `normalizedQuery`Eltávolított
+* A válasz törzsének JSON-módosításai:
+    * `normalizedQuery`távolítva
 
-## <a name="suggested-adoption-strategy"></a>Javasolt elfogadási stratégia
+## <a name="suggested-adoption-strategy"></a>Javasolt bevezetési stratégia
 
-Ha a Bot Framework, Bing Helyesírás-ellenőrzés V7, vagy szeretné áttelepíteni a LUIS-alkalmazás szerzői csak, továbbra is használja a V2-végpont.
+Ha bot Framework-t, Bing Spell Check v7-t vagy csak a LUIS-alkalmazás készítését szeretné áttelepíteni, folytassa a v2-végpont használatát.
 
-Ha tudja, hogy az ügyfélalkalmazás vagy integrációk (Bot Framework, és a Bing Helyesírás-ellenőrzés V7) nem érinti, és kényelmesen migrálja a LUIS-alkalmazás szerzői és az előrejelzési végpont egy időben, kezdje meg a V3 előrejelzési végpont. A V2 előrejelzési végpont továbbra is elérhető lesz, és egy jó tartalék stratégia.
+Ha tudja, hogy egyik ügyfélalkalmazás vagy integráció (bot Framework és Bing Spell Check v7) sem érintett, és a LUIS-alkalmazás létrehozása és az előrejelzési végpontja is kényelmesen áttelepíthető a v3 előrejelzési végpont használatával. A v2 előrejelzési végpont továbbra is elérhető lesz, és jó visszaesési stratégia.
 
 
 ## <a name="not-supported"></a>Nem támogatott
 
 ### <a name="bing-spell-check"></a>Bing – Helyesírás-ellenőrzés
 
-Ez az API nem támogatott a V3 előrejelzési végpont – továbbra is használja a V2 API előrejelzési végpont helyesírási javítások. Ha a V3 API használata közben helyesírás-javításra van szüksége, az ügyfélalkalmazás hívja meg a [Bing helyesírás-ellenőrző](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API-t, és módosítsa a szöveget a megfelelő helyesírásra, mielőtt elküldi a szöveget a LUIS API-nak.
+Ez az API nem támogatott a v3 előrejelzési végpontban – továbbra is használja a v2 API-előrejelzési végpontot a helyesírási helyesbítésekhez. Ha a V3 API használatakor helyesírási korrekcióra van szüksége, az ügyfélalkalmazás meghívja a [Bing Spell Check](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/overview) API-t, és a szöveget a megfelelő helyesírásra módosítja, mielőtt elküldené a szöveget a Luis API-nak.
 
-## <a name="bot-framework-and-azure-bot-service-client-applications"></a>Bot Framework és Az Azure Bot Service ügyfélalkalmazások
+## <a name="bot-framework-and-azure-bot-service-client-applications"></a>A bot Framework és Azure Bot Service ügyfélalkalmazások
 
-Továbbra is használja a V2 API előrejelzési végpont, amíg a Robot keretrendszer V4.7-es kiadása.
+Továbbra is használja a v2 API-előrejelzési végpontot, amíg megjelent a bot Framework V 4.7-es verziója.
 
-## <a name="v2-api-deprecation"></a>V2 API-esekessedés
+## <a name="v2-api-deprecation"></a>V2 API-elavult
 
-A V2 előrejelzési API nem lesz elavult legalább 9 hónappal a V3 előzetes verzió után, június 8, 2020.
+A v2 előrejelzési API-t a v3-es előzetes verziótól számítva legalább 9 hónapig nem lehet érvényteleníteni, 2020. június 8-án.
 
-## <a name="endpoint-url-changes"></a>Végpont URL-jének módosítása
+## <a name="endpoint-url-changes"></a>Végpont URL-címének módosítása
 
-### <a name="changes-by-slot-name-and-version-name"></a>Változások a tárolóhely neve és a verziónév szerint
+### <a name="changes-by-slot-name-and-version-name"></a>Változások a tárolóhely neve és a verzió neve alapján
 
-A V3-végpont HTTP-hívásának formátuma megváltozott.
+A v3-végpont HTTP-hívásának formátuma megváltozott.
 
-Ha verzió szerint szeretne lekérdezni, először közzé kell [tennie az API-n keresztül](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) a segítségével. `"directVersionPublish":true` A tárolóhely neve helyett a verzióazonosítóra hivatkozó végpont lekérdezése.
+Ha verzió alapján szeretne lekérdezni, először közzé kell tennie az [API-n keresztül](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c3b) a `"directVersionPublish":true`használatával. A tárolóhely neve helyett a verziószámra hivatkozó végpont lekérdezése.
 
-|ELŐREJELZÉSI API-VERZIÓ|Módszer|URL-cím|
+|ELŐREJELZÉSI API VERZIÓJA|METÓDUS|URL-cím|
 |--|--|--|
-|V3|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>előrejelzés</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict?query=<b>{QUERY}</b>|
-|V3|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>előrejelzés</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/slots/<b>{SLOT-NAME}</b>/predict|
-|2. verzió|GET|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>előrejelzés</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict?query=<b>{QUERY}</b>|
-|2. verzió|POST|https://<b>{REGION}</b>.api.cognitive.microsoft.com/luis/<b>előrejelzés</b>/<b>v3.0</b>/apps/<b>{APP-ID}</b>/versions/<b>{VERSION-ID}</b>/predict|
+|V3|GET|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>Előrejelzés</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Slots/<b>{slot-Name}</b>/Predict? lekérdezés =<b>{query}</b>|
+|V3|POST|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>Előrejelzés</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Slots/<b>{slot-Name}</b>/Predict|
+|2. verzió|GET|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>Előrejelzés</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Versions/<b>{Version-ID}</b>/Predict? lekérdezés =<b>{query}</b>|
+|2. verzió|POST|https://<b>{region}</b>. API.Cognitive.microsoft.com/Luis/<b>Előrejelzés</b>/<b>v 3.0</b>/apps/<b>{app-ID}</b>/Versions/<b>{Version-ID}</b>/Predict|
 
-|Érvényes értékek`SLOT-NAME`|
+|Érvényes értékek a következőhöz:`SLOT-NAME`|
 |--|
 |`production`|
 |`staging`|
@@ -93,19 +93,19 @@ Ha verzió szerint szeretne lekérdezni, először közzé kell [tennie az API-n
 
 ### <a name="query-string-changes"></a>Lekérdezési karakterlánc módosításai
 
-A V3 API különböző lekérdezési karakterlánc-paramétereket rendelkezik.
+A V3 API különböző lekérdezési karakterlánc-paraméterekkel rendelkezik.
 
-|Param név|Típus|Verzió|Alapértelmezett|Cél|
+|Params neve|Típus|Verzió|Alapértelmezett|Cél|
 |--|--|--|--|--|
-|`log`|logikai|V2 & V3|hamis|A lekérdezést naplófájlban tárolja. Az alapértelmezett érték hamis.|
-|`query`|sztring|Csak V3|Nincs alapértelmezett - ez szükséges a GET kérelemben|**A V2-ben**az előre jelezendő `q` utterance (kifejezés) a paraméterben van. <br><br>**A V3-ban**a funkció `query` átkerül a paraméterbe.|
-|`show-all-intents`|logikai|Csak V3|hamis|Adja vissza az összes leképezést a megfelelő pontszámmal az **prediction.intents** objektumban. A leképezések egy `intents` szülőobjektum objektumaként kerülnek visszaadásra. Ez lehetővé teszi a programozott hozzáférést anélkül, `prediction.intents.give`hogy meg kellene találnia a szándékot egy tömbben: . A V2-ben ezeket egy tömbben adták vissza. |
-|`verbose`|logikai|V2 & V3|hamis|**A V2**-ben, ha értéke igaz, az összes előre jelzett szándékok visszaadott. Ha az összes előre jelzett leképezésre van `show-all-intents`szüksége, használja a V3 param-ot.<br><br>**A V3-ban**ez a paraméter csak entitás-metaadatokat ad meg az entitás-előrejelzésről.  |
+|`log`|logikai|V2 & V3|hamis|A lekérdezés tárolása a naplófájlban. Az alapértelmezett érték false (hamis).|
+|`query`|sztring|Csak v3|Nincs alapértelmezett – a GET kérelemben szükséges|A **v2-ben**az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
+|`show-all-intents`|logikai|Csak v3|hamis|Az összes leképezés visszaküldése a megfelelő pontszámmal a **jóslat. szándékok** objektumban. A rendszer a fölérendelt `intents` objektumban lévő objektumokként adja vissza a leképezéseket. Ez lehetővé teszi a programozott hozzáférést anélkül, hogy meg kellene találni a szándékot egy `prediction.intents.give`tömbben:. A v2-ben ezek egy tömbben voltak visszaadva. |
+|`verbose`|logikai|V2 & V3|hamis|Ha **a v2**értéke TRUE (igaz) értékre van állítva, az összes előre jelzett leképezést visszaadja. Ha minden előre jelzett leképezésre van szüksége, használja a v3 paraméterét `show-all-intents`.<br><br>**A v3-** as verzióban ez a paraméter csak az entitások előrejelzését biztosító entitás-metaadatokat tartalmazza.  |
 |`timezoneOffset`|sztring|2. verzió|-|A datetimeV2 entitásokra alkalmazott időzóna.|
-|`datetimeReference`|sztring|V3|-|A datetimeV2 entitásokra alkalmazott [időzóna.](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) Helyettesíti `timezoneOffset` a V2.|
+|`datetimeReference`|sztring|V3|-|A datetimeV2 entitásokra alkalmazott [időzóna](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity) . A `timezoneOffset` rendszer a v2-ből cseréli le.|
 
 
-### <a name="v3-post-body"></a>V3 POST szerv
+### <a name="v3-post-body"></a>V3 POST törzs
 
 ```JSON
 {
@@ -121,21 +121,21 @@ A V3 API különböző lekérdezési karakterlánc-paramétereket rendelkezik.
 
 |Tulajdonság|Típus|Verzió|Alapértelmezett|Cél|
 |--|--|--|--|--|
-|`dynamicLists`|tömb|Csak V3|Nem szükséges.|[A dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) lehetővé teszik egy meglévő betanított és közzétett listaentitás kiterjesztését, már a LUIS alkalmazásban.|
-|`externalEntities`|tömb|Csak V3|Nem szükséges.|[A külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszik a LUIS-alkalmazás számára az entitások azonosítását és címkézését futásidőben, amelyek meglévő entitások szolgáltatásaként használhatók. |
-|`options.datetimeReference`|sztring|Csak V3|Nincs alapértelmezett|A [datetimeV2 eltolásának meghatározására](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)szolgál. A datetimeReference formátuma [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
-|`options.preferExternalEntities`|logikai|Csak V3|hamis|Itt adható meg, hogy a felhasználó [külső entitását (a meglévő entitás nevével megegyező névvel)](schema-change-prediction-runtime.md#override-existing-model-predictions) használja-e a rendszer, vagy a modellben lévő meglévő entitást használja az előrejelzéshez. |
-|`query`|sztring|Csak V3|Kötelező.|**A V2-ben**az előre jelezendő `q` utterance (kifejezés) a paraméterben van. <br><br>**A V3-ban**a funkció `query` átkerül a paraméterbe.|
+|`dynamicLists`|tömb|Csak v3|Nem kötelező.|A [dinamikus listák](schema-change-prediction-runtime.md#dynamic-lists-passed-in-at-prediction-time) segítségével kiterjesztheti a már meglévő betanított és közzétett lista entitást, amely már a Luis-alkalmazásban van.|
+|`externalEntities`|tömb|Csak v3|Nem kötelező.|A [külső entitások](schema-change-prediction-runtime.md#external-entities-passed-in-at-prediction-time) lehetővé teszi, hogy a Luis-alkalmazás képes legyen az entitások azonosítására és címkézésére a futtatókörnyezet során, amely funkciókként használható a meglévő entitásokhoz. |
+|`options.datetimeReference`|sztring|Csak v3|Nincs alapértelmezett érték|A [datetimeV2 eltolásának](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)meghatározására szolgál. A datetimeReference formátuma [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601).|
+|`options.preferExternalEntities`|logikai|Csak v3|hamis|Meghatározza, hogy a felhasználó [külső entitása (a meglévő entitás nevével megegyező névvel)](schema-change-prediction-runtime.md#override-existing-model-predictions) van-e használva, vagy a modellben lévő meglévő entitást használja-e a rendszer az előrejelzéshez. |
+|`query`|sztring|Csak v3|Kötelező.|A **v2-ben**az előre jelzett érték a `q` paraméterben szerepel. <br><br>A **v3**-as verzióban a funkció a `query` paraméterben lesz átadva.|
 
-## <a name="response-changes"></a>Válaszváltozások
+## <a name="response-changes"></a>Válasz módosításai
 
-A json lekérdezési válasz úgy módosult, hogy a leggyakrabban használt adatokhoz nagyobb programozott hozzáférést biztosítson.
+A lekérdezési válasz JSON-je úgy módosult, hogy a leggyakrabban használt adattartalomhoz való nagyobb programozási hozzáférést engedélyezzen.
 
-### <a name="top-level-json-changes"></a>Felső szintű JSON változások
+### <a name="top-level-json-changes"></a>Legfelső szintű JSON-változások
 
 
 
-A V2 legnépszerűbb JSON-tulajdonsága igaz értékre `verbose` van állítva, amely `intents` az összes szándékot és a tulajdonságban lévő pontszámokat adja vissza:
+A v2 leggyakoribb JSON- `verbose` tulajdonságai az igaz értékre vannak állítva, amely visszaadja az összes leképezést és azok pontszámait a `intents` tulajdonságban:
 
 ```JSON
 {
@@ -147,7 +147,7 @@ A V2 legnépszerűbb JSON-tulajdonsága igaz értékre `verbose` van állítva, 
 }
 ```
 
-A V3 legnépszerűbb JSON-tulajdonságai a következők:
+A v3 leggyakoribb JSON-tulajdonságai a következők:
 
 ```JSON
 {
@@ -160,45 +160,45 @@ A V3 legnépszerűbb JSON-tulajdonságai a következők:
 }
 ```
 
-Az `intents` objektum rendezetlen lista. Ne feltételezze, hogy `intents` az első `topIntent`gyermek megfelel a . Ehelyett használja `topIntent` az értéket a pontszám megkereséséhez:
+Az `intents` objektum egy Rendezetlen lista. Ne tegyük fel, hogy az első `intents` gyermek a megfelel `topIntent`a következőnek:. Ehelyett használja az `topIntent` értéket a pontszám megkereséséhez:
 
 ```nodejs
 const topIntentName = response.prediction.topIntent;
 const score = intents[topIntentName];
 ```
 
-A json-séma változásai a következőket teszik lehetővé:
+A válasz JSON-sémájának módosítása az alábbiakat teszi lehetővé:
 
-* Egyértelmű különbség az eredeti `query`utterance (kifejezés) és a visszaadott előrejelzés között. `prediction`
-* Könnyebb programozott hozzáférés az előre jelzett adatokhoz. A V2-ben egy tömbön keresztül történő enumerálás helyett **név** szerint érheti el az értékeket mind a szándékok, mind az entitások számára. Az előre jelzett entitásszerepkörök esetében a szerepkör nevét adja vissza, mert az a teljes alkalmazásban egyedi.
-* Az adattípusok, ha meghatározva vannak, betartják őket. A numerikus szövegeket már nem adja vissza karakterláncként.
-* Az elsődleges prioritás-előrejelzési információk és az `$instance` objektumban visszaadott további metaadatok közötti különbségtétel.
+* Törölje az eredeti Kimondás `query`és a visszaadott előrejelzés közötti különbséget `prediction`.
+* Egyszerűbb programozott hozzáférés az előre jelzett adatértékekhez. A v2-ben a tömbön keresztüli számbavétel helyett a szándékok és az entitások **nevével** is elérheti az értékeket. Az előre jelzett entitási szerepkörök esetében a rendszer a szerepkör nevét adja vissza, mert az a teljes alkalmazásban egyedi.
+* Az adattípusok, ha meg vannak határozva, figyelembe veszik azokat. A numerikus értékeket a rendszer már nem adja vissza karakterláncként.
+* Az első prioritású előrejelzési információk és az `$instance` objektumban visszaadott további metaadatok megkülönböztetése.
 
-### <a name="entity-response-changes"></a>Entitásválasz változásai
+### <a name="entity-response-changes"></a>Entitások válaszának módosításai
 
-#### <a name="marking-placement-of-entities-in-utterances"></a>Entitások elhelyezésének megjelölése a kimondott szövegekben
+#### <a name="marking-placement-of-entities-in-utterances"></a>Entitások elhelyezésének megjelölése a hosszúságú kimondott szöveg-ben
 
-**A V2-ben**egy entitás t a `startIndex` `endIndex`és a kimondásban jelölt meg egy.
+**A v2-ben**egy entitást jelölt ki a és `startIndex` `endIndex`a kifejezéssel.
 
-**A V3-ban**az `startIndex` entitás `entityLength`a és a.
+A **v3**-as verzióban az entitás `startIndex` a `entityLength`és a jelöléssel van megjelölve.
 
-#### <a name="access-instance-for-entity-metadata"></a>Entitásmetaadatok hoz való hozzáférés `$instance`
+#### <a name="access-instance-for-entity-metadata"></a>Hozzáférés `$instance` az entitás metaadatainak számára
 
-Ha entitás metaadatokra van szüksége, a `verbose=true` lekérdezési karakterláncnak a jelzőt `$instance` kell használnia, és a válasz tartalmazza az objektum metaadatait. Példák jelennek meg a JSON válaszok a következő szakaszokban.
+Ha entitás-metaadatokra van szüksége, a lekérdezési karakterláncnak `verbose=true` a jelzőt kell használnia, és a `$instance` válasz tartalmazza a metaadatokat az objektumban. A következő részben a JSON-válaszokban látható példák.
 
 #### <a name="each-predicted-entity-is-represented-as-an-array"></a>Minden előre jelzett entitás tömbként jelenik meg
 
-Az `prediction.entities.<entity-name>` objektum tartalmaz egy tömböt, mert minden entitás lehet előre jelezni egynél többször az utterance (kifejezés).
+Az `prediction.entities.<entity-name>` objektum egy tömböt tartalmaz, mert az egyes entitások többször is megtekinthetők a teljes kiosztásban.
 
 <a name="prebuilt-entities-with-new-json"></a>
 
-#### <a name="prebuilt-entity-changes"></a>Előre összeállított entitásmódosítások
+#### <a name="prebuilt-entity-changes"></a>Előre összeépített entitások módosításai
 
-A V3 válaszobjektum előre összeállított entitások módosításait tartalmazza. További információért tekintse át [az előre összeállított entitásokat.](luis-reference-prebuilt-entities.md)
+A v3 válasz objektum az előre elkészített entitások módosításait tartalmazza. Tekintse át az [adott előre összeépített entitásokat](luis-reference-prebuilt-entities.md) további információért.
 
-#### <a name="list-entity-prediction-changes"></a>Entitás előrejelzési változásainak listázása
+#### <a name="list-entity-prediction-changes"></a>Entitások előrejelzési változásainak listázása
 
-A listaentitás előrejelzésének JSON-ja tömbtömbök tömbjeként változott:
+A lista entitások előrejelzéséhez tartozó JSON a tömbök tömbje lett:
 
 ```JSON
 "entities":{
@@ -208,9 +208,9 @@ A listaentitás előrejelzésének JSON-ja tömbtömbök tömbjeként változott
     ]
 }
 ```
-Minden belső tömb az utterance (kifejezés) szövegnek felel meg. A belső objektum tömb, mivel ugyanaz a szöveg egy listaentitás több allistájában is megjelenhet.
+Az egyes belső tömbök a teljes szövegen belüli szövegnek felelnek meg. A belső objektum egy tömb, mert ugyanaz a szöveg a lista entitásának több allistájában is megjelenhet.
 
-Amikor az `entities` objektum az `$instance` objektum között leképezést rendel az objektumhoz, az objektumok sorrendje megmarad a listaentitás-előrejelzésekhez.
+Az objektum és az `entities` `$instance` objektum közötti leképezéskor a rendszer megőrzi az objektumok sorrendjét az entitások listázása során.
 
 ```nodejs
 const item = 0; // order preserved, use same enumeration for both
@@ -218,17 +218,17 @@ const predictedCanonicalForm = entities.my_list_entity[item];
 const associatedMetadata = entities.$instance.my_list_entity[item];
 ```
 
-#### <a name="entity-role-name-instead-of-entity-name"></a>Entitásszerepkör neve az entitásnév helyett
+#### <a name="entity-role-name-instead-of-entity-name"></a>Entitás-szerepkör neve az entitás neve helyett
 
-V2-ben `entities` a tömb visszaadta az összes előre jelzett entitást, amelynek az entitásneve az egyedi azonosító. A V3-ban, ha az entitás szerepköröket használ, és az előrejelzés egy entitásszerepkörhöz, az elsődleges azonosító a szerepkör neve. Ez azért lehetséges, mert az entitásszerepkör-neveknek egyedinek kell lenniük a teljes alkalmazásban, beleértve más modell (szándék, entitás) neveket is.
+A v2-ben `entities` a tömb az összes előre jelzett entitást visszaadotta, az entitás neve pedig az egyedi azonosító. Ha a v3-as verzióban az entitás szerepköröket használ, és az előrejelzés egy entitási szerepkörhöz tartozik, az elsődleges azonosító a szerepkör neve. Ez azért lehetséges, mert az entitás-szerepkörök nevének egyedinek kell lennie a teljes alkalmazásban, beleértve a más modelleket (szándékok, entitások) nevét.
 
-A következő példában: fontolja meg egy `Yellow Bird Lane`utterance (kifejezés), amely tartalmazza a szöveget, . Ezt a szöveget egyéni `Location` entitás szerepköreként jósolják `Destination`meg.
+A következő példában a szöveget tartalmazó kifejezésnek kell megfontolnia: `Yellow Bird Lane`. Ezt a szöveget a rendszer az egyéni `Location` entitás szerepköre alapján `Destination`Jósolja meg.
 
-|Kimondott szöveg|Entitás neve|Szerepkörnév|
+|Teljes szöveg|Entitás neve|Szerepkörnév|
 |--|--|--|
 |`Yellow Bird Lane`|`Location`|`Destination`|
 
-A V2-ben az entitást az _entitás neve_ azonosítja, és az objektum tulajdonságaként a következő szerepkört kell játszania:
+A v2-ben az entitás neve azonosítja az entitás _nevét_ az objektum tulajdonságának megfelelően:
 
 ```JSON
 "entities":[
@@ -243,7 +243,7 @@ A V2-ben az entitást az _entitás neve_ azonosítja, és az objektum tulajdons�
 ]
 ```
 
-A V3-ban az entitásra az _entitás szerepkör_hivatkozik, ha az előrejelzés a szerepkörre vonatkozik:
+A v3-as verzióban az entitásra az _entitás szerepkör_hivatkozik, ha az előrejelzés a következő szerepkörre vonatkozik:
 
 ```JSON
 "entities":{
@@ -253,7 +253,7 @@ A V3-ban az entitásra az _entitás szerepkör_hivatkozik, ha az előrejelzés a
 }
 ```
 
-A V3-ban ugyanaz `verbose` az eredmény, ha a jelző az entitás metaadatait adja vissza:
+A v3-as verzióban Ugyanez az `verbose` eredmény szerepel az entitás metaadatainak visszaadására szolgáló jelzővel:
 
 ```JSON
 "entities":{
@@ -282,12 +282,12 @@ A V3-ban ugyanaz `verbose` az eredmény, ha a jelző az entitás metaadatait adj
 
 ## <a name="extend-the-app-at-prediction-time"></a>Az alkalmazás kiterjesztése előrejelzési időpontban
 
-Ismerje [meg,](schema-change-prediction-runtime.md) hogyan bővítheti az alkalmazást előrejelzési futásidőben.
+[Megtudhatja](schema-change-prediction-runtime.md) , hogyan bővítheti az alkalmazást az előrejelzési futtatókörnyezetben.
 
 ## <a name="deprecation"></a>Elavulás
 
-A V2 API nem lesz elavult legalább 9 hónappal a V3 előzetes verzió után.
+A v2 API-t a v3 előzetes verzió után legalább 9 hónapig nem lehet érvényteleníteni.
 
 ## <a name="next-steps"></a>További lépések
 
-A V3 API dokumentációjával frissítse a [LUIS-végpont](https://aka.ms/luis-api-v3) API-k meglévő REST-hívásait.
+A V3 API dokumentációjának használatával frissítheti a meglévő REST-hívásokat a LUIS [Endpoint](https://aka.ms/luis-api-v3) API-kra.

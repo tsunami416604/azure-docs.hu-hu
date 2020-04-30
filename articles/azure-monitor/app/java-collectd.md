@@ -1,40 +1,40 @@
 ---
-title: Java webalkalmazás teljesítményének figyelése Linuxon – Azure | Microsoft dokumentumok
-description: A Java-webhely kiterjesztett alkalmazásteljesítmény-figyelése az Application Insights Összegyűjthetési beépülő moduljával.
+title: A Java-webalkalmazások teljesítményének monitorozása Linux rendszeren – Azure | Microsoft Docs
+description: A Java-webhely bővített alkalmazás-teljesítményének figyelése a Application Insights gyűjtött beépülő modullal.
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.openlocfilehash: 62a723dad7e9f6c2bfdabde159968d507d2d5d41
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537525"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>összegyűjtött: Linux teljesítménymutatók az Application Insightsban
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>begyűjtve: Linux teljesítmény-metrikák a Application Insights
 
 
-A Linux rendszer teljesítménymutatóinak megismeréséhez [az Application Insightsban](../../azure-monitor/app/app-insights-overview.md)telepítse az [összegyűjtött](https://collectd.org/), az Application Insights beépülő modullal együtt. Ez a nyílt forráskódú megoldás különböző rendszer- és hálózati statisztikákat gyűjt.
+A Linux rendszerbeli teljesítmény-mérőszámok megismeréséhez [Application Insights](../../azure-monitor/app/app-insights-overview.md)-ben telepítse a [begyűjtést](https://collectd.org/), valamint a Application Insights beépülő modullal. Ez a nyílt forráskódú megoldás különféle rendszerszintű és hálózati statisztikákat gyűjt.
 
-Általában akkor fogja használni a gyűjtött, ha már [műszeres a Java webszolgáltatás Application Insights][java]. Több adatot ad, amelyek segítenek az alkalmazás teljesítményének növelésében vagy a problémák diagnosztizálásában. 
+A gyűjtést általában akkor fogja használni, ha [a Java-webszolgáltatását már Application Insights][java]-mel konfigurálta. Több adat nyújt segítséget az alkalmazás teljesítményének növeléséhez vagy a problémák diagnosztizálásához. 
 
-## <a name="get-your-instrumentation-key"></a>Szerezd meg a műszerkulcs
-A [Microsoft Azure portalon](https://portal.azure.com)nyissa meg az [Application Insights](../../azure-monitor/app/app-insights-overview.md) erőforrást, ahol meg szeretné jelenjenek az adatok. (Vagy [hozzon létre egy új erőforrást.)](../../azure-monitor/app/create-new-resource.md )
+## <a name="get-your-instrumentation-key"></a>A kialakítási kulcs beszerzése
+A [Microsoft Azure Portal](https://portal.azure.com)nyissa meg azt a [Application Insights](../../azure-monitor/app/app-insights-overview.md) -erőforrást, amelyen meg szeretné jeleníteni az adott adatforrást. (Vagy [hozzon létre egy új erőforrást](../../azure-monitor/app/create-new-resource.md ).)
 
-Készítsen másolatot a műszerezési kulcsról, amely azonosítja az erőforrást.
+Készítsen másolatot a kialakítási kulcsról, amely azonosítja az erőforrást.
 
-![Böngésszen az összes, nyissa meg az erőforrást, majd az Essentials legördülő menüben válassza ki és másolja a Instrumentation key-t](./media/java-collectd/instrumentation-key-001.png)
+![Böngésszen az összes, nyissa meg az erőforrást, majd az alapvető erőforrások legördülő menüben válassza ki és másolja a kialakítási kulcsot](./media/java-collectd/instrumentation-key-001.png)
 
-## <a name="install-collectd-and-the-plug-in"></a>Telepítse a begyűjtött és a beépülő modult
-Linux szervergépeken:
+## <a name="install-collectd-and-the-plug-in"></a>A begyűjtött és a beépülő modul telepítése
+A Linux Server rendszerű gépeken:
 
-1. Telepítse az 5.4.0-s vagy újabb [verziót.](https://collectd.org/)
-2. Töltse le az [Application Insights összegyűjtött író plugin](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Jegyezze fel a verziószámot.
-3. Másolja a plugin `/usr/share/collectd/java`JAR-ba .
+1. Telepítse a [gyűjtött](https://collectd.org/) 5.4.0 vagy újabb verziót.
+2. Töltse le a [Application Insights gyűjtött író beépülő modult](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Jegyezze fel a verziószámot.
+3. Másolja a beépülő modult `/usr/share/collectd/java`a-ba.
 4. Szerkesztés `/etc/collectd/collectd.conf`:
    * Győződjön meg arról, hogy [a Java beépülő modul](https://collectd.org/wiki/index.php/Plugin:Java) engedélyezve van.
-   * Frissítse a JVMArg a java.class.path, hogy tartalmazza a következő JAR. Frissítse a verziószámot a letöltött verziószámnak megfelelően:
+   * Frissítse a Java. class. Path JVMArg, hogy az tartalmazza a következő JAR-t. Frissítse a verziószámot, hogy az megfeleljen a letöltöttnek:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
-   * Adja hozzá ezt a kódrészletet az erőforrás instrumentation kulcsával:
+   * Adja hozzá ezt a kódrészletet az erőforrás rendszerállapot-kulcsának használatával:
 
 ```XML
 
@@ -44,7 +44,7 @@ Linux szervergépeken:
      </Plugin>
 ```
 
-A mintakonfigurációs fájl része:
+Itt egy minta konfigurációs fájl része:
 
 ```XML
 
@@ -77,47 +77,47 @@ A mintakonfigurációs fájl része:
     ...
 ```
 
-Konfigurálja más [gyűjtött bővítményeket](https://collectd.org/wiki/index.php/Table_of_Plugins), amelyek különböző adatokat gyűjthetnek különböző forrásokból.
+Konfiguráljon más [begyűjtött beépülő](https://collectd.org/wiki/index.php/Table_of_Plugins)modulokat, amelyek különböző forrásokból származó különböző adatokat gyűjthetnek.
 
-Indítsa újra a [kézikönyv](https://collectd.org/wiki/index.php/First_steps)szerint gyűjtött .
+Az újraindítást a [manuális](https://collectd.org/wiki/index.php/First_steps)alapján kell összegyűjteni.
 
-## <a name="view-the-data-in-application-insights"></a>Az adatok megtekintése az Application Insightsban
-Az Application Insights-erőforrásban nyissa meg [a metrikákat és adja hozzá a diagramokat,][metrics]és jelölje ki az egyéni kategóriában megtekinteni kívánt mutatókat.
+## <a name="view-the-data-in-application-insights"></a>Application Insightsban lévő adatmegjelenítés
+A Application Insights erőforrásban nyissa meg a [metrikákat, és adja hozzá a diagramokat, és][metrics]válassza ki az egyéni kategóriából megjeleníteni kívánt metrikákat.
 
-Alapértelmezés szerint a metrikák összesítve vannak az összes olyan gazdagépen, amelyről a metrikákat gyűjtötték. A gazdagépenkénti mutatók megtekintéséhez a Diagram részletei panelen kapcsolja be a csoportosítást, majd válassza a Csoportosítás t.
+Alapértelmezés szerint a metrikák összesítése minden olyan gazdagépen történik, amelyről a metrikák gyűjtése megtörtént. A metrikák egy gazdagépen való megtekintéséhez a diagram részletei panelen kapcsolja be a csoportosítást, majd válassza a csoport begyűjtve – gazdagép lehetőséget.
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>Konkrét statisztikák feltöltésének kizárása
-Alapértelmezés szerint az Application Insights beépülő modul elküldi az összes összegyűjtött adatot az összes engedélyezett összegyűjtött "olvasási" bővítmény. 
+## <a name="to-exclude-upload-of-specific-statistics"></a>Adott statisztika feltöltésének kizárása
+Alapértelmezés szerint a Application Insights beépülő modul az összes olyan adatot elküldi, amelyet az engedélyezett "READ" beépülő modulok gyűjtöttek össze. 
 
-Adatok kizárása adott bővítményekből vagy adatforrásokból:
+Adott beépülő modulok vagy adatforrások adatainak kizárása:
 
-* A konfigurációs fájl szerkesztése. 
-* A `<Plugin ApplicationInsightsWriter>`alkalmazásban adja hozzá az ehhez hasonló direktívasorokat:
+* Szerkessze a konfigurációs fájlt. 
+* A `<Plugin ApplicationInsightsWriter>`-ben adja hozzá a következőhöz hasonló direktíva-sorokat:
 
 | Irányelv | Hatás |
 | --- | --- |
-| `Exclude disk` |A bővítmény által `disk` gyűjtött összes adat kizárása |
-| `Exclude disk:read,write` |Zárja ki `read` a `write` megnevezett forrásokat és a `disk` bővítményből. |
+| `Exclude disk` |A `disk` beépülő modul által összegyűjtött összes adatok kizárása |
+| `Exclude disk:read,write` |Zárja ki a nevű `read` és `write` a `disk` beépülő modulból származó forrásokat. |
 
-Külön irányelvek egy új vonallal.
+Külön irányelvek egy sortöréssel.
 
 ## <a name="problems"></a>Problémákat tapasztal?
-*Nem látok adatokat a portálon*
+*Nem látok információt a portálon*
 
-* Nyissa meg a Keresés című [témakört,][diagnostic] és nézze meg, hogy megérkeztek-e a nyers események. Néha hosszabb időt vesz igénybe, hogy megjelenjen a metrikák explorer.
-* Előfordulhat, hogy [tűzfalkivételeket kell beállítania a kimenő adatokhoz](../../azure-monitor/app/ip-addresses.md)
-* Engedélyezze a nyomkövetést az Application Insights beépülő modulban. Adja hozzá `<Plugin ApplicationInsightsWriter>`ezt a sort a következő be:
+* Nyissa meg a [keresést][diagnostic] , és ellenőrizze, hogy a nyers események megérkeztek-e. Időnként hosszabb időt is igénybe kell venni a metrikák Explorerben.
+* Előfordulhat, hogy [tűzfal-kivételeket kell beállítania a kimenő adatértékekhez](../../azure-monitor/app/ip-addresses.md) .
+* A nyomkövetés engedélyezése a Application Insights beépülő modulban. A sor hozzáadása a `<Plugin ApplicationInsightsWriter>`következőn belül:
   * `SDKLogger true`
-* Nyisson meg egy terminált, és kezdje el a gyűjtést részletes módban, hogy láthassa az általa jelentett problémákat:
+* Nyisson meg egy terminált, és kezdjen el részletes módban összegyűjteni, hogy megtekintse a jelentett problémákat:
   * `sudo collectd -f`
 
 ## <a name="known-issue"></a>Ismert probléma
 
-Az Application Insights Write beépülő modul nem kompatibilis bizonyos Olvasási beépülő modulokkal. Egyes bővítmények néha "NaN"-t küldenek, ahol az Application Insights bővítmény lebegőpontos számot vár.
+Az Application Insights írási beépülő modul nem kompatibilis bizonyos olvasási beépülő modullal. Egyes beépülő modulok néha "NaN"-t küldenek, ahol a Application Insights beépülő modul egy lebegőpontos számot vár.
 
-Jelenség: A begyűjtött napló olyan hibákat jelenít meg, amelyek tartalmazzák a következőket: "AI: ... Szintaxishiba: Váratlan n token".
+Tünet: a begyűjtött napló megjeleníti az "AI:... SyntaxError: váratlan token N ".
 
-Megoldás: A probléma által gyűjtött adatok kizárása Az Írás beépülő modulok. 
+Megkerülő megoldás: a probléma az írási beépülő modulok által összegyűjtött adatokat nem zárja ki. 
 
 <!--Link references-->
 

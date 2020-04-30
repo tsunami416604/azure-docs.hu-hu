@@ -10,83 +10,83 @@ ms.custom: include file
 ms.date: 04/16/2020
 ms.author: diberry
 ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 5e49f45571aeb1232a3e0bd44725cc17c06d1452
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/17/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81604967"
 ---
-A Cognitive Services két természetes nyelvi feldolgozási szolgáltatást biztosít, [a Language Understanding](../luis/what-is-luis.md) és a [QnA Maker](../qnamaker/overview/overview.md)szolgáltatást, amelyek mindegyike más célt szolgál. Tudja meg, mikor kell használni az egyes szolgáltatások, és hogyan bók egymást.
+Cognitive Services két természetes nyelvi feldolgozási szolgáltatást biztosít, [Language Understanding](../luis/what-is-luis.md) és [QnA Maker](../qnamaker/overview/overview.md), amelyek mindegyike más célra szolgál. Ismerje meg, hogy mikor kell használni az egyes szolgáltatásokat, és hogyan kell egymással kiegészíteni őket.
 
-A természetes nyelvi feldolgozás (NLP) lehetővé teszi, hogy az ügyfélalkalmazás, például egy csevegőrobot természetes nyelven működjön együtt a felhasználókkal. A felhasználó beír egy mondatot vagy kifejezést. A felhasználó szövegének rossz nyelvtana, helyesírása és írásjeleke lehet. A Cognitive Service a felhasználói mondaton keresztül egyébként is dolgozhat, és a csevegőrobotnak a felhasználó nak segítségre van szüksége.
+A természetes nyelvi feldolgozás (NLP) lehetővé teszi az ügyfélalkalmazás, például a csevegési robot használatát a felhasználókkal való munkavégzéshez természetes nyelven. A felhasználó mondatot vagy kifejezést ír be. A felhasználó szövege nem lehet rossz nyelvtan, helyesírás és írásjel. A kognitív szolgáltatás a felhasználói mondaton keresztül is képes működni, így információt ad vissza, amikor a csevegési robot segítségére van szüksége a felhasználónak.
 
-## <a name="cognitive-services-with-nlp"></a>Kognitív szolgáltatások Az NLP
+## <a name="cognitive-services-with-nlp"></a>NLP-Cognitive Services
 
-A language understanding (LUIS) és a QnA Maker biztosítja az NLP-t. Az ügyfélalkalmazás természetes nyelvű szöveget küld. A szolgáltatás átveszi a szöveget, feldolgozza és visszaadja az eredményt.
+Language Understanding (LUIS) és QnA Maker biztosítanak NLP számára. Az ügyfélalkalmazás természetes nyelvi szöveget küld. A szolgáltatás végrehajtja a szöveget, feldolgozza és visszaadja az eredményt.
 
-## <a name="when-to-use-each-service"></a>Mikor kell használni az egyes szolgáltatások
+## <a name="when-to-use-each-service"></a>Mikor kell használni az egyes szolgáltatásokat
 
-A nyelvi megértés (LUIS) és a QnA Maker különböző problémákat old meg. A LUIS határozza meg a felhasználó szövegének (más néven utterance (utterance (a qna maker) szándékát, míg a QnA Maker a felhasználó szövegére (más néven lekérdezésre) adott választ.
+Language Understanding (LUIS) és QnA Maker különböző problémák megoldására. LUIS meghatározza, hogy a felhasználó szövegének (azaz a teljes kifejezésnek) szándéka, míg QnA Maker meghatározza a felhasználó szövegére (azaz lekérdezésre) adott választ.
 
-Annak érdekében, hogy válassza ki a megfelelő szolgáltatást, meg kell értenie a felhasználói szöveget az ügyfélalkalmazásból érkező, és milyen információkat az ügyfélalkalmazás nak kell beszereznie a Cognitive Service.
+A megfelelő szolgáltatás kiválasztásához meg kell ismernie az ügyfélalkalmazástól érkező felhasználói szöveget, valamint azt, hogy milyen információkra van szükség az ügyfélalkalmazás számára a kognitív szolgáltatástól.
 
-Ha a csevegőrobot `How do I get to the Human Resources building on the Seattle North campus?`megkapja a szöveget, az alábbi táblázat segítségével megtudhatja, hogyan működik az egyes szolgáltatások a szöveggel.
+Ha a csevegési robot megkapja a `How do I get to the Human Resources building on the Seattle North campus?`szöveget, az alábbi táblázat segítségével megismerheti, hogy az egyes szolgáltatások hogyan működnek a szöveggel.
 
-|Szolgáltatás|Az ügyfélalkalmazás határozza meg|
+|Szolgáltatás|Ügyfélalkalmazás határozza meg|
 |--|--|
-|LUIS|**Meghatározza a felhasználó szövegszándékát** - a szolgáltatás nem adja vissza a választ a kérdésre. Ez a szöveg például a `FindLocation` szándéknak megfelelőnek minősül.<br>|
-|QnA Maker|**A kérdésre adott választ** egyéni tudásbázisból adja vissza. Ez a szöveg például kérdésként van meghatározva `Get on the #9 bus and get off at Franklin street`a statikus szövegválaszával.|
+|LUIS|**Meghatározza a felhasználó szövegének szándékát** – a szolgáltatás nem adja vissza a kérdésre adott választ. Ez a szöveg például a `FindLocation` szándéknak megfelelőként van osztályozva.<br>|
+|QnA Maker|Egy egyéni Tudásbázisból származó **kérdésre adott válasz visszaadása** . Ez a szöveg például a statikus szöveges válaszával kapcsolatos kérdésként van meghatározva `Get on the #9 bus and get off at Franklin street`.|
 |||
 
 ## <a name="when-do-you-use-luis"></a>Mikor használja a LUIS-t?
 
-A LUIS használata, ha tudnia kell, hogy a szándék a kimondott ság egy folyamat részeként a csevegőrobot. Folytatva a példa `How do I get to the Human Resources building on the Seattle North campus?`szövegét, ha tudja, hogy a felhasználó szándéka az, hogy megtalálja a helyét, átadhatja az utterance (kihúzott entitásokkal) részleteit egy másik szolgáltatásnak, például egy szállítási kiszolgálónak, hogy megkapja a választ.
+Akkor használja a LUIS-t, ha ismernie kell a Kimondás szándékát egy folyamat részeként a csevegési robotban. Ha továbbra is a példában `How do I get to the Human Resources building on the Seattle North campus?`szereplő szövegre kattint, a felhasználó szándéka, hogy megkeresse a helyet, megadhatja a teljes (entitásokkal kihúzott) részletek részleteit egy másik szolgáltatás, például egy szállítási kiszolgáló számára a válasz beszerzéséhez.
 
-A szándék meghatározásához nem kell kombinálnia a LUIS és a QnA Maker.You don't need to combine LUIS and QnA Maker to determine intent.
+Nem kell összekapcsolnia a LUIS és a QnA Makert a szándék meghatározásához.
 
-Előfordulhat, hogy összekapcsolják a két szolgáltatás az utterance (kifejezés), ha a csevegőrobot kell feldolgozni a szöveget a szándékok és entitások (luis), valamint megtalálni az adott statikus szöveges válasz (a QnA Maker használatával).
+Összekapcsolhatja a két szolgáltatást ehhez a kilépéshez, ha a csevegési robotnak a szándékok és entitások alapján kell feldolgoznia a szöveget (a LUIS használatával), valamint meg kell keresnie az adott statikus szöveges választ (QnA Maker használatával).
 
-## <a name="when-do-you-use-qna-maker"></a>Mikor használja a QnA Makert?
+## <a name="when-do-you-use-qna-maker"></a>Mikor használja a QnA Maker?
 
-Használja a QnA Makert, ha statikus tudásbázissal rendelkezik a válaszokhoz. Ez a tudásbázis az igényeinek megfelelően készült, amelyet olyan dokumentumokkal készített, mint a PDF-fájlok és az URL-ek.
+A QnA Maker akkor használja, ha a válaszok statikus tudásbázisa van. Ez a Tudásbázis az Ön igényeinek megfelelően egyedi, amelyet dokumentumok, például PDF-EK és URL-címek használatával készített.
 
-Folytatva a példa `How do I get to the Human Resources building on the Seattle North campus?`utterance (kifejezés) , küldje el a szöveget, lekérdezésként, a közzétett QnA Maker szolgáltatás, és megkapja a legjobb választ.
+Ha folytatja a példát, `How do I get to the Human Resources building on the Seattle North campus?`küldje el a szöveget lekérdezésként a közzétett QnA Maker szolgáltatásba, és fogadja el a legjobb választ.
 
-A kérdésre adott válasz meghatározásához nem kell kombinálnia a LUIS és a QnA Maker.You don't need to combine LUIS and QnA Maker to determine the answer to the question.
+Nincs szükség a LUIS és a QnA Maker összekapcsolására a kérdés megválaszolásának meghatározásához.
 
-Előfordulhat, hogy összekapcsolják a két szolgáltatás az utterance (kifejezés), ha a csevegőrobot kell feldolgozni a szöveget a szándékok és entitások (luis), valamint megtalálni a választ (qna maker használatával).
+Összekapcsolhatja a két szolgáltatást ehhez a kilépéshez, ha a csevegési robotnak a szándékok és entitások alapján kell feldolgoznia a szöveget (a LUIS használatával), valamint a válasz megtalálását (QnA Maker használatával).
 
-## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Mindkét szolgáltatás használata, ha a tudásbázis nem teljes
+## <a name="use-both-services-when-your-knowledge-base-is-incomplete"></a>Mindkét szolgáltatás használata, ha a Tudásbázis hiányos
 
-Ha a QnA Maker tudásbázisát építi, de tudja, hogy a tárgytartomány változik (például időszerű információk), kombinálhatja a LUIS és a QnA Maker szolgáltatásokat. Ez lehetővé teszi, hogy a tudásbázisban lévő információkat használja, de a LUIS-t is használja a felhasználó szándékának meghatározásához. Miután az ügyfélalkalmazás nak megvan a szándéka, kérhet releváns információkat egy másik forrásból.
+Ha felépíti a QnA Maker tudásbázist, de tudja, hogy a tárgy tartománya módosul (például az időben megjelenő információk), akkor a LUIS és a QnA Maker szolgáltatásokat kombinálhatja. Ez lehetővé teszi a tudásbázisban található információk használatát, de a LUIS használatával is meghatározhatja a felhasználó szándékát. Ha az ügyfélalkalmazás szándéka van, kérheti a kapcsolódó adatokat más forrásokból is.
 
-Az ügyfélalkalmazásnak figyelnie kell a LUIS és a QnA Maker válaszait a pontszámokhoz. Ha a QnA Maker pontszáma tetszőleges küszöbérték alatt van, használja a luis által visszaadott szándék- és entitásadatokat az adatok harmadik félnek történő továbbadására.
+Az ügyfélalkalmazás a következő pontszámok esetében is figyelnie kell a LUIS és a QnA Maker válaszokat. Ha a QnA Maker pontszáma valamilyen tetszőleges küszöbérték alá esik, használja a LUIS által visszaadott szándékot és entitási adatokat, hogy átadja az adatokat egy külső szolgáltatásnak.
 
-Folytatva a példaszöveget, tegyük fel, `How do I get to the Human Resources building on the Seattle North campus?`hogy a QnA Maker alacsony megbízhatósági pontszámot ad vissza. Használja a luis visszaadott szándékot, `FindLocation` és a `Human Resources building` `Seattle North campus`kinyert entitásokat, például és a , hogy ezeket az információkat egy leképezési vagy keresési szolgáltatásnak küldje el egy másik válaszért.
+A példában szereplő szöveg `How do I get to the Human Resources building on the Seattle North campus?`folytatásakor tegyük fel, hogy QnA Maker alacsony megbízhatósági pontszámot ad vissza. A LUIS `FindLocation` és a kinyert entitások, például a `Human Resources building` és `Seattle North campus`a által visszaadott szándék használatával küldhetik ezeket az információkat egy leképezési vagy keresési szolgáltatásba egy másik válaszra.
 
-Ezt a harmadik féltől származó választ érvényesítés céljából bemutathatja a felhasználónak. Miután rendelkezik a felhasználó jóváhagyásával, visszatérhet a QnA Maker-hez, és hozzáadhatja az információkat a tudás bővítéséhez.
+Ezt a külső féltől származó választ is bemutathatja a felhasználónak az érvényesítéshez. A felhasználó jóváhagyása után visszatérhet a QnA Makerra, és hozzáadhatja az adatokat az ismeretek növeléséhez.
 
-## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Mindkét szolgáltatást használja, ha a csevegőrobotnak több információra van szüksége
+## <a name="use-both-services-when-your-chat-bot-needs-more-information"></a>Mindkét szolgáltatást használhatja, ha a csevegő robotjának további információra van szüksége
 
-Ha a csevegőrobotnak több információra van szüksége, mint amennyit bármelyik szolgáltatás nyújt, a döntési fán keresztül folytathatja, használja mindkét szolgáltatást, és dolgozza fel mindkét választ az ügyfélalkalmazásban.
+Ha a csevegési robotnak több információra van szüksége, mint amennyit a szolgáltatás nyújt, a döntési fa folytatásához használja mindkét szolgáltatást, és dolgozza fel mindkét választ az ügyfélalkalmazás számára.
 
-A Bot framework **[Dispatch CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** eszközzel mindkét szolgáltatással való együttműködésre irányuló folyamatot hozhat létre. Ez az eszköz egy felső LUIS-alkalmazás leképezéseket hoz létre, amelyek a LUIS és a QnA Maker között gyermekalkalmazásokként szállítanak.
+A robot Framework **[elküldési parancssori](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** felületének használatával létrehozhat egy folyamatot, amely mindkét szolgáltatással használható. Ez az eszköz egy olyan legjobb LUIS-alkalmazást hoz létre, amely a LUIS és a QnA Maker között alárendelt alkalmazásként való kiszállításra szolgál.
 
-Használja a Bot builder minta, **NLP a feladás,** a [C #](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) vagy [Node.js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch), az ilyen típusú chat bot.
+A bot Builder minta, az **NLP a küldéssel**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) vagy [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)használatával hajtsa végre ezt a típusú csevegési robotot.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 
-Az egyes szolgáltatásokra vonatkozó gyakorlati tanácsok megvalósítása:
+Ajánlott eljárások megvalósítása az egyes szolgáltatásokhoz:
 
-* [Luis](../luis/luis-concept-best-practices.md) gyakorlati tanácsok
-* [A QnA Maker](../qnamaker/concepts/best-practices.md) bevált módszerei
+* [Luis](../luis/luis-concept-best-practices.md) – ajánlott eljárások
+* [QnA Maker](../qnamaker/concepts/best-practices.md) ajánlott eljárások
 
 ## <a name="see-also"></a>Lásd még
 
 * [Language Understanding (LUIS)](../luis/what-is-luis.md)
 * [QnA Maker](../qnamaker/overview/overview.md)
-* [Diszpécser CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
-* [Bot keretrendszer minták](https://github.com/Microsoft/BotBuilder-Samples)
-* [Azure-robotszolgáltatás](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
-* [Azure bot emulátor](https://github.com/Microsoft/BotFramework-Emulator)
-* [Bot keretrendszer webes chat](https://github.com/microsoft/BotFramework-WebChat)
+* [Küldési CLI](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)
+* [Robot Framework-minták](https://github.com/Microsoft/BotBuilder-Samples)
+* [Azure bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0)
+* [Azure bot Emulator](https://github.com/Microsoft/BotFramework-Emulator)
+* [Bot Framework webes csevegés](https://github.com/microsoft/BotFramework-WebChat)

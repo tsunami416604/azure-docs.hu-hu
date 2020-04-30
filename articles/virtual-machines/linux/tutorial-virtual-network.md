@@ -1,5 +1,5 @@
 ---
-title: Oktatóanyag – Azure virtuális hálózatok létrehozása és kezelése Linuxos virtuális gépekhez
+title: Oktatóanyag – Azure Virtual Networks létrehozása és kezelése Linux rendszerű virtuális gépekhez
 description: Ez az oktatóanyag bemutatja az Azure-alapú virtuális hálózatok Linux rendszerű virtuális gépeken való létrehozását és kezelését az Azure CLI-vel
 services: virtual-machines-linux
 documentationcenter: virtual-machines
@@ -15,10 +15,10 @@ ms.date: 05/10/2017
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 5527fbfc05eb5aadf5c5775fb9987a88d5ba81bb
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81460443"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-linux-virtual-machines-with-the-azure-cli"></a>Oktatóanyag: Azure-alapú virtuális hálózatok létrehozása és kezelése Linux rendszerű virtuális gépeken az Azure CLI-vel
@@ -32,7 +32,7 @@ Az Azure-beli virtuális gépek Azure hálózatkezelést használnak a belső é
 > * Biztonságos hálózati adatforgalom
 > * Háttérbeli virtuális gép létrehozása
 
-Ez az oktatóanyag az [Azure Cloud Shellen](https://docs.microsoft.com/azure/cloud-shell/overview)belüli CLI-t használja, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **Próbálja ki** a kódblokk tetejéről.
+Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
@@ -58,7 +58,7 @@ Az oktatóanyag végéig a következő virtuális hálózati erőforrások jönn
 
 Ebben az oktatóanyagban egy virtuális hálózatot hozunk létre két alhálózattal, egy előtérbeli alhálózatot egy webalkalmazás üzemeltetéséhez, és egy háttérbeli alhálózatot egy adatbázis-kiszolgáló üzemeltetéséhez.
 
-A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példa létrehoz egy *myRGNetwork* nevű erőforráscsoportot az eastus helyen.
+A virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy *myRGNetwork* nevű erőforráscsoportot a eastus helyen.
 
 ```azurecli-interactive 
 az group create --name myRGNetwork --location eastus
@@ -303,4 +303,4 @@ Ebben az oktatóanyagban virtuális gépekhez csatolva hozta létre és biztosí
 Folytassa a következő oktatóanyaggal, amely a virtuális gépeken lévő adatok Azure biztonsági mentéssel való biztosítását ismerteti. 
 
 > [!div class="nextstepaction"]
-> [Linuxos virtuális gépek biztonsági és biztonsági és biztonsági másolatot az Azure-ban](./tutorial-backup-vms.md)
+> [Linux rendszerű virtuális gépek biztonsági mentése az Azure-ban](./tutorial-backup-vms.md)

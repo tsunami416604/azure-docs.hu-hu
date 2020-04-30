@@ -1,7 +1,7 @@
 ---
 title: Nyelvi támogatás
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services lehetővé teszi olyan alkalmazások készítését, amelyek látják, hallják, beszélnek és megértik a felhasználókat. A szolgáltatások között több mint három tucat nyelv támogatott, így a felhasználók természetes módon kommunikálhatnak az alkalmazással.
+description: Az Azure Cognitive Services lehetővé teszi, hogy olyan alkalmazásokat építsen ki, amelyek megtekinthetik, meghallgatják és megértik a felhasználókat. Ezek a szolgáltatások több mint három tucat nyelvet támogatnak, így a felhasználók természetes módon kommunikálhatnak az alkalmazással.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,17 +11,17 @@ ms.date: 03/31/2020
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: d103b22338672f031fa4f91349a8376f86b703c8
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81530971"
 ---
-# <a name="natural-language-support-for-azure-cognitive-services"></a>Az Azure Cognitive Services természetes nyelvi támogatása
+# <a name="natural-language-support-for-azure-cognitive-services"></a>Természetes nyelvi támogatás az Azure Cognitive Services
 
-Az Azure Cognitive Services lehetővé teszi olyan alkalmazások készítését, amelyek látják, hallják, beszélnek és megértik a felhasználókat. A szolgáltatások között több mint három tucat nyelv támogatott, így a felhasználók természetes módon kommunikálhatnak az alkalmazással. Az alábbi hivatkozásokra kattintva megtekintheti a nyelv elérhetőségét szolgáltatás onként.
+Az Azure Cognitive Services lehetővé teszi, hogy olyan alkalmazásokat építsen fel, amelyek megtekinthetik, meghallgatják és megértik a felhasználókat. Ezek a szolgáltatások több mint három tucat nyelvet támogatnak, így a felhasználók természetes módon kommunikálhatnak az alkalmazással. Az alábbi hivatkozásokra kattintva megtekintheti a nyelv elérhetőségét szolgáltatás alapján.
 
-Ezek a Cognitive Services nyelvi agnosztikus, és nem rendelkeznek az emberi nyelv alapú korlátozásokat.
+Ezek a Cognitive Services nyelvtől függetlenek, és nem rendelkeznek az emberi nyelvtől függően korlátozásokkal.
 
 * [Anomaly Detector (előzetes verzió)](./anomaly-detector/index.yml)
 * [Custom Vision](./Custom-Vision-Service/index.yml)
@@ -45,9 +45,9 @@ Ezek a Cognitive Services nyelvi agnosztikus, és nem rendelkeznek az emberi nye
 
 ## <a name="speech"></a>Beszéd
 
-* [Beszédszolgáltatás: Beszéd-szöveg](./speech-service/supported-languages.md#speech-to-text)
-* [Beszédszolgáltatás:Szövegfelolvasás](./speech-service/supported-languages.md#text-to-speech)
-* [Beszédszolgáltatás: Beszédfordítás](./speech-service/supported-languages.md#speech-translation)
+* [Beszédfelismerési szolgáltatás: beszéd – szöveg](./speech-service/supported-languages.md#speech-to-text)
+* [Beszédfelismerési szolgáltatás: szövegről beszédre](./speech-service/supported-languages.md#text-to-speech)
+* [Beszédfelismerési szolgáltatás: beszéd fordítása](./speech-service/supported-languages.md#speech-translation)
 
 ## <a name="search"></a>Keresés
 
@@ -65,5 +65,5 @@ Ezek a Cognitive Services nyelvi agnosztikus, és nem rendelkeznek az emberi nye
 
 ## <a name="see-also"></a>Lásd még
 
-* [Mik azok a Cognitive Services?](welcome.md)
+* [Mi a Cognitive Services?](welcome.md)
 * [Fiók létrehozása](cognitive-services-apis-create-account.md)

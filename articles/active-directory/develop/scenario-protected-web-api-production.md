@@ -1,7 +1,7 @@
 ---
 title: Védett webes API áthelyezése éles környezetbe | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre egy védett webes API-t (ugrás éles környezetbe).
+description: Ismerje meg, hogyan hozhat létre védett webes API-t (az éles környezetbe).
 services: active-directory
 author: jmprieur
 manager: CelesteDG
@@ -13,32 +13,32 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 86e897547869c917313deeb8d71b361c9e16798b
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "81537185"
 ---
-# <a name="protected-web-api---move-to-production"></a>Védett webes API – ugrás éles környezetbe
+# <a name="protected-web-api---move-to-production"></a>Védett webes API – áttérés éles környezetbe
 
-Most, hogy már tudja, hogyan védheti meg webes API-ját, így helyezheti át éles környezetbe.
+Most, hogy már tudja, hogyan védhető meg a webes API-k, a következőképpen helyezheti át az éles környezetbe.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-További információ az alsóbb rétegbeli API-k hívásáról.
+Útmutató az alsóbb rétegbeli API-k meghívásához.
 
 > [!div class="nextstepaction"]
-> [Forgatókönyv – Webes API-k alsóbb rétegbeli API-kat hív](scenario-web-api-call-api-overview.md)
+> [Forgatókönyv – a webes API-hívások alsóbb rétegbeli API-k](scenario-web-api-call-api-overview.md)
 
 További információ az oktatóanyagokról és a mintákról.
 
 > [!div class="nextstepaction"]
-> [Védett API hívása démon használatával](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
+> [Védett API meghívása démon használatával](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)
 
 > [!div class="nextstepaction"]
 > [ASP.NET Core webes API-oktatóanyag](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2)
 
 > [!div class="nextstepaction"]
-> [webes API-minta ASP.NET](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)
+> [ASP.NET web API-minta](https://github.com/azureadquickstarts/appmodelv2-nativeclient-dotnet)

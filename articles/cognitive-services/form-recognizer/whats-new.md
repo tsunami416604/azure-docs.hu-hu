@@ -1,7 +1,7 @@
 ---
 title: A Form Recognizer újdonságai
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg a Form Recognizer API legújabb módosításait.
+description: Ismerje meg az űrlap-felismerő API legújabb módosításait.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -10,100 +10,100 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: 5f8c66db491b93278fedf1378d3df86e7ce5fdbf
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81531082"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
-Az Űrlapfelismerő szolgáltatás folyamatosan frissül. Ebben a cikkben naprakész maradhat a szolgáltatásfejlesztésekkel, javításokkal és dokumentációfrissítésekkel.
+Az űrlap-felismerő szolgáltatás folyamatosan frissül. Ebből a cikkből megtudhatja, hogyan maradhat naprakészen a funkciók fejlesztései, a javítások és a dokumentációs frissítések segítségével.
 
 > [!NOTE]
-> A rövid útmutatók és útmutatók űrlapfelismerő mindig az API legújabb verzióját használja, kivéve, ha meg van adva.
+> Az űrlap-felismerő rövid útmutatók és útmutatói mindig az API legújabb verzióját használják, kivéve, ha meg van adva.
 
 ## <a name="march-2020"></a>2020. március 
 
 ### <a name="new-features"></a>Új funkciók
 
-* **Értéktípusok címkézéshez** Most már megadhatja, hogy milyen típusú értékeket címkéz a Form Recognizer mintacímkéző eszközzel. A következő értéktípusok és változatok jelenleg támogatottak:
+* **Címkézési értékek típusai** Mostantól megadhatja, hogy milyen típusú értékeket szeretne címkézni az űrlap-felismerő minta feliratozási eszközzel. A következő típusú értékek és változatok jelenleg támogatottak:
   * `string`
     * alapértelmezett, `no-whitespaces`,`alphanumeric`
   * `number`
-    * Alapértelmezett`currency`
+    * alapértelmezett`currency`
   * `date` 
-    * alapértelmezett, `dmy` `mdy`, ,`ymd`
+    * alapértelmezett, `dmy`, `mdy`,`ymd`
   * `time`
   * `integer`
 
-  A [mintacímke-eszköz](./quickstarts/label-tool.md#specify-tag-value-types) útmutatójában megtudhatja, hogyan használhatja ezt a funkciót.
+  A funkció használatának megismeréséhez tekintse meg a [minta címkézési eszköz](./quickstarts/label-tool.md#specify-tag-value-types) útmutatóját.
 
 
-* **Táblázatos megjelenítés** A mintacímkéző eszköz most megjeleníti a dokumentumban felismert táblázatokat. Ez lehetővé teszi, hogy a címkézés és elemzés előtt megtekintse a dokumentumból felismert és kinyert táblákat. Ez a funkció a rétegek beállítással kapcsolható be és ki.
+* **Táblázat vizualizációja** A minta feliratozási eszköz mostantól a dokumentumban felismert táblákat jeleníti meg. Így megtekintheti a dokumentumból felismert és kinyert táblákat a címkézés és az elemzés előtt. Ez a funkció a rétegek lehetőség használatával kapcsolható be/ki.
 
-  Ez egy példa a táblák felismerésére és kibontására:
+  Példa a táblák felismerésére és kinyerésére:
 
   > [!div class="mx-imgBorder"]
-  > ![Táblázatos megjelenítés a mintacímkéző eszközzel](./media/whats-new/formre-table-viz.png)
+  > ![Táblázat vizualizációja a minta feliratozási eszköz használatával](./media/whats-new/formre-table-viz.png)
 
-    A kibontott táblázatok a JSON `"pageResults"`kimenetben érhetők el a alatt.
+    A kibontott táblázatok a alatt `"pageResults"`található JSON-kimenetben érhetők el.
 
   > [!IMPORTANT]
-  > A címkék címkézése nem támogatott. Ha a táblákat nem ismeri fel és nem személyesíti meg automatikusan, akkor csak kulcs/érték párokként címkézheti őket. Amikor a táblázatokat kulcs/érték párként címkézi, minden cellát egyedi értékként címkéz.
+  > A címkézési táblák nem támogatottak. Ha a táblákat nem ismeri fel és nem extrated automatikusan, akkor csak kulcs/érték párokként címkézheti őket. Amikor kulcs/érték párokként címkézi a táblákat, az egyes cellákat egyedi értékként címkézze fel.
 
-### <a name="extraction-enhancements"></a>Kivonási fejlesztések
+### <a name="extraction-enhancements"></a>Extrakciós fejlesztések
 
-Ez a kiadás magában foglalja a kibontási fejlesztések és a pontosság javítása, különösen a képesség, hogy a címke és kivonat több kulcs/érték pár ugyanabban a szövegsorban. 
+Ez a kiadás magában foglalja az extrakciós fejlesztéseket és a pontosságot, pontosabban a több kulcs/érték párok címkézését és kinyerését ugyanabban a sorban. 
  
-### <a name="sample-labeling-tool-is-now-open-source"></a>A mintacímkéző eszköz mostantól nyílt forráskódú
+### <a name="sample-labeling-tool-is-now-open-source"></a>A minta címkéző eszköz mostantól nyílt forráskódú
 
-Az Űrlapfelismerő mintacímkéző eszköz már nyílt forráskódú projektként is elérhető. Integrálhatja azt a megoldásaiba, és igény szerint módosíthatja az ügyfélspecifikus módosításokat.
+Az űrlap-felismerő minta feliratozási eszköze már elérhető nyílt forráskódú projektként. Integrálhatja azt a megoldásain belül, és az ügyfél-specifikus módosításokat az igényeinek megfelelően végezheti el.
 
-Az Űrlapfelismerő mintacímkéző eszközről a [GitHubon](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)elérhető dokumentációban olvashat bővebben.
+Az űrlap-felismerő minta címkézési eszközével kapcsolatos további információkért tekintse át a [githubon](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md)elérhető dokumentációt.
 
 ### <a name="tls-12-enforcement"></a>A TLS 1.2 kényszerítése
 
-A TLS 1.2 mostantól a szolgáltatáshoz érkező összes HTTP-kérelemre érvényes. További információ: [Azure Cognitive Services security.](../cognitive-services-security.md)
+A TLS 1,2 mostantól a szolgáltatáshoz tartozó összes HTTP-kérelem esetében érvénybe lép. További információ: [Azure Cognitive Services Security](../cognitive-services-security.md).
 
 ## <a name="january-2020"></a>2020. január
 
-Ez a kiadás bemutatja a Form Recognizer 2.0 (előzetes verzió). Az alábbi szakaszokban további információkat talál az új funkciókról, fejlesztésekről és módosításokról. 
+Ez a kiadás a 2,0 (előzetes verzió) Form felismerőt mutatja be. Az alábbi szakaszban további információkat talál az új funkciókról, a fejlesztésekről és a változásokról. 
 
 ### <a name="new-features"></a>Új funkciók
 
 * **Egyéni modell**
-  * **Vonat címkékkel** Most már betaníthat egy egyéni modellt manuálisan címkézett adatokkal. Ez jobban teljesítő modelleket eredményez, és olyan modelleket képes előállítani, amelyek összetett űrlapokkal vagy kulcsok nélküli értékeket tartalmazó űrlapokkal dolgoznak.
-  * **Aszinkron API** Az aszinkron API-hívások segítségével nagy adatkészletekkel és fájlokkal taníthatja be és elemezheti azokat.
-  * **TIFF-fájl támogatása** Most már betanítása és kivonat adatok TIFF dokumentumokat.
-  * **A kivonás pontosságának javítása**
+  * **Tanítás címkékkel** Mostantól manuálisan címkézett adattípusú egyéni modellt is betaníthat. Ez jobb teljesítményű modelleket eredményez, és olyan modelleket hozhat létre, amelyek olyan összetett űrlapokkal vagy űrlapokkal működnek, amelyek kulcsok nélkül tartalmaznak értékeket.
+  * **ASZINKRON API** Használhat aszinkron API-hívásokat a nagyméretű adatkészletek és fájlok betanításához és elemzéséhez.
+  * **TIFF-fájl támogatása** Mostantól a TIFF-dokumentumokból is betaníthat és kinyerheti az adatait.
+  * **A kinyerési pontosság fejlesztése**
 
-* **Előre összeállított bevételezési modell**
-  * **Tipp összegek** Most már kivonat tipp összegeket és más kézzel írt értékeket.
-  * **Sorkibontás** A sorértékeket kivonhatja a bevételezésekből.
-  * **Megbízhatósági értékek** Megtekintheti a modell megbízhatóságát az egyes kinyert értékekhez.
-  * **A kivonás pontosságának javítása**
+* **Előre elkészített bevételezési modell**
+  * **Tipp mennyisége** Mostantól kinyerheti a tip-mennyiségeket és az egyéb kézírásos értékeket.
+  * **Vonal kibontása** A sorokból kinyerheti a tételek értékeit a nyugták közül.
+  * **Megbízhatósági értékek** Megtekintheti a modell megbízhatóságát minden kinyert értékhez.
+  * **A kinyerési pontosság fejlesztése**
 
-* **Elrendezés kihúzása** Most már használhatja az Elrendezés API-t szöveges adatok és táblázatadatok kinyerésére az űrlapokból.
+* **Elrendezés kibontása** Mostantól az elrendezési API használatával kinyerheti a szöveges és a táblázatos adatadatokat az űrlapokból.
 
-### <a name="custom-model-api-changes"></a>Egyéni modell API-módosítások
+### <a name="custom-model-api-changes"></a>Egyéni modell API-változások
 
-A betanításhoz és az egyéni modellek használatához használt összes API-t átnevezték, és néhány szinkron metódus most antól aszinkron. A következő jelentős változások:
+A betanításra és az egyéni modellek használatára vonatkozó összes API-t átnevezték, és néhány szinkron módszer már aszinkron módon történik. A következők jelentős változások:
 
-* A modell betanítási folyamata most aszinkron. Az **/custom/models** API-hívással kezdeményezhet betanítást. Ez a hívás egy műveletazonosítót ad vissza, amelyet **az egyéni/modellek/{modelID}** függvénybe adhat át a betanítási eredmények visszaadása érdekében.
-* A kulcs/érték kinyerését most az **/custom/models/{modelID}/analyze** API-hívás kezdeményezi. Ez a hívás egy műveletazonosítót ad vissza, amelyet **az egyéni/modellek/{modelID}/analyzeResults/{resultID}** függvénybe adhat át a kibontási eredmények visszaadása érdekében.
-* A Betanítás művelet műveletazonosítói most már a HTTP-válaszok **Hely** fejlécében találhatók, nem pedig a **Művelet-hely** fejlécben.
+* A modellek betanításának folyamata már aszinkron módon történik. A **/Custom/models** API-hívással kezdeményezheti a betanítást. Ez a hívás egy műveleti azonosítót ad vissza, amelyet az **egyéni/modellek/{ModelID}** átadhat a betanítási eredmények visszaadásához.
+* A kulcs/érték kinyerését mostantól a **/Custom/models/{ModelID}/Analyze** API-hívás kezdeményezte. Ez a hívás egy műveleti azonosítót ad vissza, amelyet az **egyéni/modellek/{ModelID}/analyzeResults/{resultID}** átadhat a kinyerési eredmények visszaadásához.
+* A Train művelethez tartozó műveleti azonosítók mostantól a HTTP-válaszok **hely** fejlécében találhatók, nem a **művelet – hely** fejlécben.
 
-### <a name="receipt-api-changes"></a>Bevételezési API-módosítások
+### <a name="receipt-api-changes"></a>Beérkezési API módosításai
 
-A bevételi beérkezések olvasására szolgáló API-k át lettek nevezve.
+Az értékesítési visszaigazolások olvasására szolgáló API-k átnevezve lettek.
 
-* A bevételezési adatok kinyerését most a **/prebuilt/receipt/analyze** API hívás kezdeményezi. Ez a hívás egy műveletazonosítót ad vissza, amelyet a **/prebuilt/receipt/analyzeResults/{resultID}** értékbe adhat át a kibontási eredmények visszaadásához.
+* A **/prebuilt/Receipt/Analyze** API-hívás kezdeményezte a beérkezési adatbontást. Ez a hívás egy műveleti azonosítót ad vissza, amelyet átadhat a **/prebuilt/Receipt/analyzeResults/{resultID}** a kinyerési eredmények visszaadásához.
 
-### <a name="output-format-changes"></a>Kimeneti formátum módosítása
+### <a name="output-format-changes"></a>Kimeneti formátum módosításai
 
-Az összes API-hívás JSON-válaszai új formátumokkal rendelkeznek. Egyes kulcsok és értékek hozzáadva, eltávolítva vagy átnevezve lettek. Tekintse meg a rövid útmutatók példákat az aktuális JSON-formátumok.
+A JSON-válaszok minden API-híváshoz új formátumok tartoznak. Egyes kulcsok és értékek hozzá lettek adva, el lettek távolítva vagy átnevezve lettek. Tekintse meg az aktuális JSON-formátumok példáit.
 
 ## <a name="next-steps"></a>További lépések
 
-Az [űrlapfelismerő API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)első lépésekhez rövid [útmutatót](quickstarts/curl-train-extract.md) kell végeznie.
+Fejezze be [a gyors](quickstarts/curl-train-extract.md) üzembe helyezési útmutatót az [űrlap-felismerő API](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeWithCustomForm)-k használatának megkezdéséhez.

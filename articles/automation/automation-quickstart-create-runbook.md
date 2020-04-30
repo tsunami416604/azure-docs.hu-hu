@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 250f51c9f028dd55d8327259e35b82b0c392c1f6
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536998"
 ---
 # <a name="create-an-azure-automation-runbook"></a>Azure Automation-runbook létrehozása
@@ -21,7 +21,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az https://portal.azure.comAzure-ba a segítségével.
+Jelentkezzen be az Azure https://portal.azure.com-ba.
 
 ## <a name="create-the-runbook"></a>A runbook létrehozása
 
@@ -29,19 +29,19 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
 
 1. Nyissa meg az Automation-fiókját.
 
-1. Kattintson a Folyamatautomatizálás csoport **Runbookok** **gombparancsára.** Megjelenik a runbookok listája.
+1. Kattintson a **runbookok** elemre a **folyamat automatizálása**alatt. Megjelenik a runbookok listája.
 
-1. Kattintson a **runbook létrehozása** elemre a lista tetején.
+1. Kattintson a **Runbook létrehozása** elemre a lista tetején.
 
-1. Írja `Hello-World` be a runbook nevét a **Név** mezőbe, és válassza a **PowerShell** lehetőséget a **Runbook-típus** mezőhöz. 
+1. Adja `Hello-World` meg a runbook nevét a **név** mezőben, majd válassza a **PowerShell** lehetőséget a **runbook típusa** mezőben. 
 
    ![Adja meg az Automation-runbook információit az oldalon](./media/automation-quickstart-create-runbook/automation-create-runbook-configure.png)
 
-1. Kattintson **a Létrehozás gombra.** Létrejön a runbook, és megnyílik a PowerShell-runbook szerkesztése oldal.
+1. Kattintson a **Létrehozás**gombra. Létrejön a runbook, és megnyílik a PowerShell-runbook szerkesztése oldal.
 
     ![PowerShell-parancsprogram készítése a runbookszerkesztőben](./media/automation-quickstart-create-runbook/automation-edit-runbook-empty.png)
 
-1. Írja be vagy másolja és illessze be a következő kódot a szerkesztés panelre. Létrehoz egy választható bemeneti `Name` `World`paramétert, amelynek alapértelmezett értéke a , és egy ezt a bemeneti értéket használó karakterláncot ad ki:
+1. Írja be vagy másolja és illessze be a következő kódot a szerkesztés panelre. Egy opcionális `Name` `World`, alapértelmezett értékkel rendelkező bemeneti paramétert hoz létre, amely a következő bemeneti értéket használó karakterláncot jeleníti meg:
 
    ```powershell-interactive
    param
@@ -53,13 +53,13 @@ Először hozzunk létre egy runbookot. Az ebben a rövid útmutatóban létreho
    "Hello $Name!"
    ```
 
-1. A **Mentés gombra** kattintva mentse a runbook piszkozatpéldányát.
+1. Kattintson a **Save (Mentés** ) gombra a runbook piszkozatának mentéséhez.
 
     ![PowerShell-parancsprogram készítése a runbookszerkesztőben](./media/automation-quickstart-create-runbook/automation-edit-runbook.png)
 
 ## <a name="test-the-runbook"></a>A runbook tesztelése
 
-A runbook létrehozása után tesztelnie kell a runbookot annak ellenőrzéséhez, hogy működik-e.
+A runbook létrehozása után tesztelje a runbook, és ellenőrizze, hogy működik-e.
 
 1. Kattintson a **Teszt panelre** a Teszt panel megnyitásához.
 
@@ -67,7 +67,7 @@ A runbook létrehozása után tesztelnie kell a runbookot annak ellenőrzéséhe
 
     ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-test-runbook.png)
 
-1. Zárja be a Teszt ablaktáblát a jobb felső sarokban lévő **X-re** kattintva. A megjelenő felugró ablakban válassza az **OK** lehetőséget.
+1. A jobb felső sarokban található **X** gombra kattintva zárjuk be a teszt panelt. A megjelenő felugró ablakban válassza az **OK** lehetőséget.
 
 1. A PowerShell-runbook szerkesztése oldalon kattintson a **Közzététel** lehetőségre, hogy a runbookot a fiókban lévő runbook hivatalos verziójaként tegye közzé.
 
@@ -81,11 +81,11 @@ A runbook közzététele után megjelenik az áttekintő oldal.
 
    ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-start.png)
 
-1. Hagyja üresen a **Név** mezőt, hogy az alapértelmezett értéket használja, és kattintson az **OK** gombra. A runbook-feladat elküldésre kerül, és megjelenik a Feladat lap.
+1. Hagyja üresen a **Név** mezőt, hogy az alapértelmezett értéket használja, és kattintson az **OK** gombra. A rendszer elküldte a runbook-feladatot, és megjelenik a feladatok lap.
 
    ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-job-page.png)
 
-1. Ha a feladat `Running` `Completed`állapota vagy, kattintson a **Kimenet** gombra a Kimenet ablaktábla megnyitásához és a runbook kimenetének megtekintéséhez.
+1. Ha a feladatok állapota `Running` vagy `Completed`, kattintson a **kimenet** gombra a kimenet ablaktábla megnyitásához, és tekintse meg a runbook kimenetét.
 
    ![Runbook tesztfeladat](./media/automation-quickstart-create-runbook/automation-hello-world-runbook-job-output.png)
 

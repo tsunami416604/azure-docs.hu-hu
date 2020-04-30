@@ -1,6 +1,6 @@
 ---
-title: PowerShell-parancsfájl az Azure Cosmos DB MongoDB-hoz való API-jának (RU/s) lehívásához
-description: Azure PowerShell-parancsfájl – Az Azure Cosmos DB átviteli sebességű (RU/s) a MongoDB API-hoz
+title: PowerShell-parancsfájl a MongoDB-hez Azure Cosmos DB API-hoz tartozó átviteli sebesség (RU/s) beszerzéséhez
+description: Azure PowerShell script-Azure Cosmos DB MongoDB API-hoz tartozó átviteli sebesség (RU/s)
 author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
@@ -8,13 +8,13 @@ ms.topic: sample
 ms.date: 03/18/2020
 ms.author: mjbrown
 ms.openlocfilehash: 6421636b806f2c32f5beba8c3cfafc6cd146e945
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81461327"
 ---
-# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Átviteli (RU/s) beszerezni egy adatbázist vagy gyűjteményt az Azure Cosmos DB - MongoDB API-hoz
+# <a name="get-throughput-rus-for-a-database-or-collection-for-azure-cosmos-db---mongodb-api"></a>Teljesítmény (RU/s) beszerzése egy adatbázishoz vagy gyűjteményhez Azure Cosmos DB-MongoDB API-hoz
 
 [!INCLUDE [updated-for-az](../../../../../includes/updated-for-az.md)]
 
@@ -39,9 +39,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 |**Azure Cosmos DB**| |
-| [Get-AzCosmosDBMongoDBAdatbázisÁtható](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | Leadja a megadott MongoDB API-adatbázis átviteli értékét. |
-| [Get-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | Leadja a megadott MongoDB API-gyűjtemény átviteli értékét. |
-|**Azure erőforráscsoportok**| |
+| [Get-AzCosmosDBMongoDBDatabaseThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbdatabasethroughput) | Lekéri a megadott MongoDB API-adatbázis átviteli sebesség értékét. |
+| [Get-AzCosmosDBMongoDBCollectionThroughput](https://docs.microsoft.com/powershell/module/az.cosmosdb/get-azcosmosdbmongodbcollectionthroughput) | A megadott MongoDB API-gyűjtemény teljesítménybeli értékének beolvasása. |
+|**Azure-erőforráscsoportok**| |
 | [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 

@@ -7,43 +7,43 @@ ms.topic: quickstart
 ms.subservice: process-automation
 ms.custom: mvc
 ms.openlocfilehash: 7704f080b7c1878f2fa2b079a1f242c8c2cc87a9
-ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/16/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "81536981"
 ---
 # <a name="create-an-azure-automation-account"></a>Azure Automation-fiók létrehozása
 
-Azure Automation-fiókot az Azure-on keresztül hozhat létre az Azure Portalon, egy böngészőalapú felhasználói felületen, amely számos erőforráshoz biztosít hozzáférést. Egy Automation-fiók kezelheti az erőforrásokat az összes régióban és egy adott bérlő előfizetései között. 
+Létrehozhat egy Azure Automation fiókot az Azure-on keresztül, a Azure Portal használatával egy böngészőalapú felhasználói felülettel, amely lehetővé teszi számos erőforrás elérését. Egy Automation-fiók az adott bérlő összes régiójában és előfizetésében kezelheti az erőforrásokat. 
 
-Ez a rövid útmutató ismerteti, hogy hozzon létre egy Automation-fiókot, és futtasson egy runbookot a fiókban. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ez a rövid útmutató végigvezeti egy Automation-fiók létrehozásán és egy runbook a fiókban való futtatásának lépésein. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-[Jelentkezzen be az Azure-ba.](https://portal.azure.com)
+[Jelentkezzen be az Azure-](https://portal.azure.com)ba.
 
 ## <a name="create-automation-account"></a>Automation-fiók létrehozása
 
-1. Válasszon nevet az Azure-fiókjához. Az automatizálási fióknevek régiónként és erőforráscsoportonként egyediek. Előfordulhat, hogy a törölt Automation-fiókok nevei nem érhetők el azonnal.
+1. Válassza ki az Azure-fiókja nevét. Az Automation-fiókok nevei régiónként és erőforráscsoporthoz egyediek. Előfordulhat, hogy a törölt Automation-fiókok neve nem érhető el azonnal.
 
     > [!NOTE]
-    > A fiók név nem módosítható, miután beírta a felhasználói felületre. 
+    > A fiók neve nem módosítható, ha meg lett adva a felhasználói felületen. 
 
-2. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
+2. Kattintson a Azure Portal bal felső sarkában található **erőforrás létrehozása** gombra.
 
-3. Válassza **az Informatikai & felügyeleti eszközök**, majd az **Automatizálás**lehetőséget.
+3. Válassza ki **& felügyeleti eszközöket**, majd válassza az **Automation**elemet.
 
-4. Adja meg a számlaadatokat, beleértve a kijelölt fióknevet is. Az **Azure-beli futtató fiók létrehozása** területen válassza az **Igen** lehetőséget az Azure-beli hitelesítést leegyszerűsítő összetevők automatikus engedélyezéséhez. Ha az információ elkészült, kattintson a **Létrehozás** gombra az Automation-fiók központi telepítésének elindításához.
+4. Adja meg a fiók adatait, beleértve a kiválasztott fióknevet is. Az **Azure-beli futtató fiók létrehozása** területen válassza az **Igen** lehetőséget az Azure-beli hitelesítést leegyszerűsítő összetevők automatikus engedélyezéséhez. Ha az információk befejeződik, kattintson a **Létrehozás** gombra az Automation-fiók központi telepítésének elindításához.
 
     ![Adja meg az Automation-fiók információit az oldalon](./media/automation-quickstart-create-account/create-automation-account-portal-blade.png)  
 
     > [!NOTE]
-    > Az Automation-fiók üzembe helyezéséhez használható helyek frissített listáját a [Régiónként elérhető Termékek (Termékek régiónként) (Termékek régiónként elérhető)](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)témakörben tájékszerezheti.
+    > Az Automation-fiókkal üzembe helyezhető telephelyek frissített listáját a [régiók által elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=automation&regions=all)című szakaszban tekintheti meg.
 
-5. A telepítés befejezése után kattintson a **Minden szolgáltatás gombra.**
+5. Ha a telepítés befejeződött, kattintson a **minden szolgáltatás**elemre.
 
-6. Válassza **az Automatizálási fiókok lehetőséget,** majd válassza ki a létrehozott Automation-fiókot.
+6. Válassza az **Automation-fiókok** lehetőséget, majd válassza ki a létrehozott Automation-fiókot.
 
     ![Az Automation-fiókok áttekintése](./media/automation-quickstart-create-account/automation-account-overview.png)
 
@@ -51,7 +51,7 @@ Ez a rövid útmutató ismerteti, hogy hozzon létre egy Automation-fiókot, és
 
 Futtassa az oktatóanyag egyik runbookját.
 
-1. Kattintson a Folyamatautomatizálás csoport **Runbookok** **gombparancsára.** Megjelenik a runbookok listája. Alapértelmezés szerint több oktatóanyag runbookok engedélyezve vannak a fiókban.
+1. Kattintson a **runbookok** elemre a **folyamat automatizálása**alatt. Megjelenik a runbookok listája. Alapértelmezés szerint több oktatóanyag-runbookok is engedélyezve van a fiókban.
 
     ![Automation-fiók runbookok listája](./media/automation-quickstart-create-account/automation-runbooks-overview.png)
 
@@ -63,7 +63,7 @@ Futtassa az oktatóanyag egyik runbookját.
 
     ![Runbookfeladat oldal](./media/automation-quickstart-create-account/automation-tutorial-script-job.png)
 
-1. Miután a `Running`feladat állapota lesz, kattintson a **Kimenet** vagy a **Minden napló** a runbook-feladat kimenetének megtekintéséhez. A jelen oktatóanyag runbookjának kimenete az Azure-erőforrások listája.
+1. A feladatok állapotának `Running`elvégzése után kattintson a **kimenet** vagy **az összes napló** lehetőségre a runbook-feladatok kimenetének megtekintéséhez. A jelen oktatóanyag runbookjának kimenete az Azure-erőforrások listája.
 
 ## <a name="next-steps"></a>További lépések
 
