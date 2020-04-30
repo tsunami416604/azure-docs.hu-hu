@@ -1,6 +1,6 @@
 ---
-title: OutOfMemoryError kivételek az Apache Sparkhoz az Azure HDInsightban
-description: Különböző OutOfMemoryError kivételek az Apache Spark-fürthöz az Azure HDInsightban
+title: Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
+description: Különböző működése OutOfMemoryError-kivételek Apache Spark-fürthöz az Azure HDInsight
 ms.service: hdinsight
 ms.topic: troubleshooting
 author: hrasheed-msft
@@ -8,21 +8,21 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271966"
 ---
-# <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>OutOfMemoryError kivételek az Apache Sparkhoz az Azure HDInsightban
+# <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
 
-Ez a cikk az Apache Spark-összetevők Azure HDInsight-fürtökben való használata során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
+Ez a cikk a Apache Spark-összetevők Azure HDInsight-fürtökben való használatakor felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>Eset: OutOfMemoryError kivétel az Apache Spark számára
+## <a name="scenario-outofmemoryerror-exception-for-apache-spark"></a>Forgatókönyv: működése OutOfMemoryError-kivétel Apache Spark
 
 ### <a name="issue"></a>Probléma
 
-Az Apache Spark-alkalmazás nem sikerült egy OutOfMemoryError kezeletlen kivétellel. A következőhöz hasonló hibaüzenet jelenhet meg:
+A Apache Spark alkalmazás nem tudott kezelni egy működése OutOfMemoryError kezeletlen kivételt. A következőhöz hasonló hibaüzenet jelenhet meg:
 
 ```error
 ERROR Executor: Exception in task 7.0 in stage 6.0 (TID 439)
@@ -54,17 +54,17 @@ java.lang.OutOfMemoryError
 
 ### <a name="cause"></a>Ok
 
-A kivétel legvalószínűbb oka az, hogy nincs elég halommemória a Java virtuális gépek (JVM) számára. Ezek a JVM-ek végrehajtóként vagy illesztőprogramként indulnak az Apache Spark alkalmazás részeként.
+Ennek a kivételnek a legvalószínűbb oka az, hogy nem áll rendelkezésre elég halom memória a Java virtuális gépekhez (JVMs). Ezek a JVMs végrehajtók vagy illesztőprogramokként lesznek elindítva a Apache Spark alkalmazás részeként.
 
 ### <a name="resolution"></a>Megoldás:
 
-1. Határozza meg a Spark-alkalmazás által kezelendő adatok maximális méretét. Becsülje meg a méretet a bemeneti adatok maximális mérete, a bemeneti adatok átalakításával előállított köztes adatok és a köztes adatok további átalakításával előállított kimeneti adatok alapján. Ha a kezdeti becslés nem elegendő, növelje a méretet, és addig itetéz, amíg a memóriahibák el nem múlnak.
+1. Határozza meg a Spark-alkalmazás által kezelendő adatok maximális méretét. Becsülje meg a méretet a bemeneti adatok, a bemeneti adatok átalakításával előállított köztes adatok és a köztes adatok további átalakításával létrehozott kimeneti adatok maximális mérete alapján. Ha a kezdeti becslés nem elegendő, növelje a méretet kis mértékben, és ismételje meg a memória hibáit.
 
-1. Győződjön meg arról, hogy a használni kívánt HDInsight-fürtnek elegendő memória-erőforrás áll a rendelkezésére, és elegendő maggal rendelkezik a Spark-alkalmazás elhelyezéséhez. Ez a fürt YARN felhasználói felületének fürtmetrikák szakaszának megtekintésével határozható meg a **felhasznált memória** és a használt **memória összes** **memóriája** és a virtuális magok és a **virtuális magok összesen értékeire vonatkozóan.**
+1. Győződjön meg arról, hogy a használni kívánt HDInsight-fürtnek elegendő memória-erőforrás áll a rendelkezésére, és elegendő maggal rendelkezik a Spark-alkalmazás elhelyezéséhez. Ezt úgy határozhatja meg, hogy megtekinti a fürt fonal felhasználói felületének fürt metrikák szakaszát a **felhasznált memória** és a **virtuális mag** **, illetve** a **virtuális mag teljes**száma alapján.
 
-    ![fonal mag memória nézete](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
+    ![a fonal alapmemóriájának nézete](./media/apache-spark-ts-outofmemory/yarn-core-memory-view.png)
 
-1. Állítsa be a következő Spark-konfigurációk megfelelő értékeket. Az alkalmazáskövetelményeinek és a fürtben rendelkezésre álló erőforrások közötti egyensúly. Ezek az értékek nem haladhatják meg a YARN által nézett memória és magmagok 90%-át, és meg kell felelniük a Spark-alkalmazás minimális memóriaigényének is:
+1. Állítsa be a következő Spark-konfigurációkat a megfelelő értékekre. Az alkalmazásra vonatkozó követelmények elosztása a fürt rendelkezésre álló erőforrásaival. Ezek az értékek nem haladhatják meg a rendelkezésre álló memória és magok 90%-át a fonal alapján megtekintve, és meg kell felelnie a Spark-alkalmazás minimális memória-követelményének is:
 
     ```
     spark.executor.instances (Example: 8 for 8 executor count)
@@ -76,13 +76,13 @@ A kivétel legvalószínűbb oka az, hogy nincs elég halommemória a Java virtu
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB)
     ```
 
-    Az összes végrehajtó által használt összes memória =
+    Az összes végrehajtó által használt memória összesen =
 
     ```
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
 
-    Az illesztőprogram által használt teljes memória =
+    Az illesztőprogram által használt memória összesen =
 
     ```
     spark.driver.memory + spark.yarn.driver.memoryOverhead
@@ -90,11 +90,11 @@ A kivétel legvalószínűbb oka az, hogy nincs elég halommemória a Java virtu
 
 ---
 
-## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Eset: Java halomterület hiba, amikor megpróbálja megnyitni az Apache Spark előzménykiszolgálóját
+## <a name="scenario-java-heap-space-error-when-trying-to-open-apache-spark-history-server"></a>Forgatókönyv: a Java-halom területének hibája a Apache Spark History-kiszolgáló megnyitására tett kísérlet során
 
 ### <a name="issue"></a>Probléma
 
-A Spark-előzmények kiszolgálón az események megnyitásakor a következő hibaüzenet jelenik meg:
+A Spark History Server eseményeinek megnyitásakor a következő hibaüzenet jelenik meg:
 
 ```
 scala.MatchError: java.lang.OutOfMemoryError: Java heap space (of class java.lang.OutOfMemoryError)
@@ -102,7 +102,7 @@ scala.MatchError: java.lang.OutOfMemoryError: Java heap space (of class java.lan
 
 ### <a name="cause"></a>Ok
 
-Ezt a problémát gyakran az erőforrások hiánya okozza a nagy szikraesemény-fájlok megnyitásakor. A Spark halommemória mérete alapértelmezés szerint 1 GB-ra van állítva, de a nagy Spark eseményfájlok ennél többre is szükség lehet.
+Ezt a problémát gyakran az erőforrások hiánya okozza a nagyméretű Spark-Event fájlok megnyitásakor. Alapértelmezés szerint a Spark heap mérete 1 GB-ra van beállítva, de a nagyméretű Spark-eseményeknél ennél többre lehet szükség.
 
 Ha ellenőrizni szeretné a betölteni kívánt fájlok méretét, hajtsa végre a következő parancsokat:
 
@@ -116,25 +116,25 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 
 ### <a name="resolution"></a>Megoldás:
 
-A Spark History Server memóriáját `SPARK_DAEMON_MEMORY` növelheti a tulajdonság szerkesztésével a Spark konfigurációjában, és újraindíthatja az összes szolgáltatást.
+A Spark-előzmények kiszolgálójának memóriáját a Spark- `SPARK_DAEMON_MEMORY` konfigurációban található tulajdonság szerkesztésével és az összes szolgáltatás újraindításával növelheti.
 
-Ezt az Ambari böngésző felhasználói felületén belül teheti meg a Spark2/Config/Advanced spark2-env szakasz kiválasztásával.
+Ezt a Ambari böngésző felhasználói felületén végezheti el a Spark2/config/Advanced Spark2-env szakasz kiválasztásával.
 
-![Speciális szikra2-env szakasz](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
+![Speciális spark2 – env szakasz](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image01.png)
 
-A Spark History Server memóriájának 1 g-ról `SPARK_DAEMON_MEMORY=4g`4g-re történő módosításához adja hozzá a következő tulajdonságot: .
+Adja hozzá a következő tulajdonságot a Spark History-kiszolgáló memóriájának a 1g- `SPARK_DAEMON_MEMORY=4g`ről 4G-re való módosításához:.
 
-![Spark tulajdonság](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
+![Spark-tulajdonság](./media/apache-spark-ts-outofmemory-heap-space/apache-spark-image02.png)
 
-Győződjön meg róla, hogy indítsa újra az összes érintett szolgáltatást Ambari.
+Győződjön meg arról, hogy az összes érintett szolgáltatást újraindítja a Ambari.
 
 ---
 
-## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Forgatókönyv: A Livy Server nem indul el az Apache Spark-fürtön
+## <a name="scenario-livy-server-fails-to-start-on-apache-spark-cluster"></a>Forgatókönyv: a Livy-kiszolgáló nem indul el Apache Spark fürtön
 
 ### <a name="issue"></a>Probléma
 
-A Livy Server nem indítható apache sparkon [(Spark 2.1 Linuxon (HDI 3.6)]. Az újraindítás megkísérlése a Livy-naplókból a következő hibavermet eredményezi:
+A Livy-kiszolgáló nem indítható el egy Apache Sparkon [(Spark 2,1 Linuxon (HDI 3,6)]. Kísérlet az eredmények újraindítására a következő Livy-naplókból:
 
 ```log
 17/07/27 17:52:50 INFO CuratorFrameworkImpl: Starting
@@ -194,65 +194,65 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Ok
 
-`java.lang.OutOfMemoryError: unable to create new native thread`kiemeli az operációs rendszert, amely nem tud több natív szálat hozzárendelni a JVM-ekhez. Megerősítést nyert, hogy ezt a kivételt a folyamatonkénti szálszám-korlát megsértése okozza.
+`java.lang.OutOfMemoryError: unable to create new native thread`kiemeli, hogy az operációs rendszer nem tud több natív szálat hozzárendelni a JVMs. Megerősítette, hogy ezt a kivételt a folyamaton belüli szálak számának korlátja okozza.
 
-Amikor a Livy Server váratlanul leáll, a Spark-fürtökkel létesített összes kapcsolat is megszakad, ami azt jelenti, hogy az összes feladat és a kapcsolódó adatok elvesznek. A HDP 2.6 munkamenet-helyreállítási mechanizmus bevezetése korlett, livy tárolja a munkamenet részleteit Zookeeper vissza kell állítani, miután a Livy Server visszatért.
+Ha a Livy-kiszolgáló váratlanul leáll, a Spark-fürtökkel létesített összes kapcsolat leáll, ami azt jelenti, hogy az összes feladat és kapcsolódó adat el fog veszni. A HDP 2,6 munkamenet-helyreállítási mechanizmus bevezetésekor a Livy a Zookeeper-ben tárolja a munkamenet részleteit a Livy-kiszolgáló újbóli helyreállítása után.
 
-Ha a Livy-n keresztül nagy számú feladat kerül elküldésre, a Livy Server magas rendelkezésre állásának részeként ezeket a munkamenet-állapotokat ZK-ban tárolja (HDInsight-fürtökön), és helyreállítja ezeket a munkameneteket a Livy szolgáltatás újraindításakor. A váratlan megszüntetés t követő újraindításkor livy munkamenetenként egy szálat hoz létre, és ez bizonyos számú helyreállított munkamenetet halmoz fel, ami túl sok szálat hoz létre.
+Ha nagy számú feladatot küldenek el a Livy-on keresztül, a Livy-kiszolgáló magas rendelkezésre állásának részeként a rendszer a ZK (HDInsight-fürtökön) tárolja ezeket a munkamenet-állapotokat, és helyreállítja ezeket a munkameneteket a Livy szolgáltatás újraindításakor. A váratlan megszakítás utáni újraindításkor a Livy egy szálat hoz létre egy munkamenetben, és ez egy bizonyos számú, a-helyreállított munkamenetet generál, ami túl sok szálat hoz létre.
 
 ### <a name="resolution"></a>Megoldás:
 
-Törölje az összes bejegyzést az alábbi lépések segítségével.
+Törölje az összes bejegyzést az alábbi lépésekkel.
 
-1. Az állattartó csomópontok IP-címének beszereznie
+1. A Zookeeper-csomópontok IP-címének lekérése a használatával
 
     ```bash
     grep -R zk /etc/hadoop/conf  
     ```
 
-1. Fent parancs felsorolt a zookeepers az én klaszter
+1. A fenti parancs a saját fürt összes zookeeperek listázott
 
     ```bash
     /etc/hadoop/conf/core-site.xml:      <value>zk1-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk2-      hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181,zk4-hwxspa.lnuwp5akw5ie1j2gi2amtuuimc.dx.internal.cloudapp.net:2181</value>
     ```
 
-1. Szerezd meg az összes IP-címét az állattartó csomópontok segítségével ping Vagy akkor is csatlakozhat zookeeper a headnode segítségével zk név
+1. A Zookeeper-csomópontok összes IP-címének lekérése a ping paranccsal, vagy a átjárócsomóponthoz Zookeeper való kapcsolódás a ZK név használatával
 
     ```bash
     /usr/hdp/current/zookeeper-client/bin/zkCli.sh -server zk2-hwxspa:2181
     ```
 
-1. Miután csatlakozott zookeeper végrehajtja a következő parancsot, hogy sorolja fel az összes munkamenetek, amelyek megpróbálták újraindítani.
+1. Ha csatlakozott a Zookeeper-hez, hajtsa végre a következő parancsot az összes újraindításra megkísérelt munkamenet listázásához.
 
-    1. A legtöbb esetben ez lehet egy lista több mint 8000 ülés ####
+    1. A legtöbb esetben ez több mint 8000 munkamenetből álló lista lehet. ####
 
         ```bash
         ls /livy/v1/batch
         ```
 
-    1. A következő parancs az összes helyreaállított munkamenet eltávolítása. #####
+    1. A következő parancs az összes helyreállítható munkamenet eltávolítása. #####
 
         ```bash
         rmr /livy/v1/batch
         ```
 
-1. Várja meg, amíg a fenti parancs befejeződik, és a kurzor visszaadja a kérdést, majd indítsa újra a Livy szolgáltatást az Ambari-tól, amelynek sikeresnek kell lennie.
+1. Várjon, amíg a fenti parancs befejeződik, és a kurzor visszaadja a kérdést, majd újraindítja a Livy szolgáltatást a Ambari-ból, amelynek sikeresnek kell lennie.
 
 > [!NOTE]
-> `DELETE`a livy ülést, amint az befejezi a végrehajtását. A Livy kötegelt munkamenetek nem törlődnek automatikusan, amint a Spark alkalmazás befejeződik, amely a tervezés szerint. A Livy-munkamenet egy POST-kérelem által a Livy Rest kiszolgáló ellen létrehozott entitás. Az `DELETE` entitás törléséhez hívásra van szükség. Vagy meg kéne várnunk, amíg a GC hatni kezd.
+> `DELETE`a Livy munkamenet befejezése után a végrehajtás befejeződött. A Livy batch-munkamenetek nem törlődnek automatikusan, amint a Spark-alkalmazás befejeződik, ami a tervezés szerint történik. A Livy-munkamenetek egy POST-kérelemmel létrehozott entitások a Livy Rest Serveren. Az `DELETE` entitás törléséhez hívás szükséges. Vagy várnia kell a GC beindítását.
 
 ---
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látta a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikébe:
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
-* [Spark memóriakezelés – áttekintés](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
+* A [Spark memória-kezelési áttekintése](https://spark.apache.org/docs/latest/tuning.html#memory-management-overview).
 
-* [A Spark-alkalmazás hibakeresése HDInsight-fürtökön.](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/)
+* [A Spark-alkalmazás hibakeresése a HDInsight-fürtökön](https://blogs.msdn.microsoft.com/azuredatalake/2016/12/19/spark-debugging-101/).
 
-* Válaszokat kaphat az Azure szakértőitől az [Azure közösségi támogatásán](https://azure.microsoft.com/support/community/)keresztül.
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Lépjen [@AzureSupport](https://twitter.com/azuresupport) kapcsolatba a hivatalos Microsoft Azure-fiókkal az ügyfélélmény javítása érdekében. Az Azure-közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérelmet nyújthat be az [Azure Portalról.](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/) Válassza a **menüsor Támogatás parancsát,** vagy nyissa meg a **Súgó + támogatási** központot. További információkért tekintse [át az Azure-támogatási kérelem létrehozása című áttekintést.](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) Az Előfizetés-kezelés hez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetésrészét képezi, a technikai támogatást pedig az [Azure-támogatási csomagok](https://azure.microsoft.com/support/plans/)egyike biztosítja.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

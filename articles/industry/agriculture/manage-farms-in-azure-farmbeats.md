@@ -1,82 +1,82 @@
 ---
 title: Farmok kezelése
-description: A farmok kezelésének leírása
+description: A farmok felügyeletének ismertetése
 author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 09144c4c35ab911b60931849807123608f2c3cdd
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271719"
 ---
 # <a name="manage-farms"></a>Farmok kezelése
 
-A farmok az Azure FarmBeats kezelésében kezelhetők. Ez a cikk a farmok létrehozásáról, az eszközök, érzékelők és drónok telepítéséről nyújt tájékoztatást, amelyek segítenek a farmok kezelésében.
+A farmokat az Azure FarmBeats kezelheti. Ez a cikk bemutatja, hogyan hozhat létre farmokat, telepíthet eszközöket, érzékelőket és heréket, amelyek segítségével kezelheti a farmokat.
 
 ## <a name="create-farms"></a>Farmok létrehozása
 
 Ehhez a következő lépések szükségesek:
 
-1. Jelentkezzen be a Farm Accelerator, a **Gazdaságok** oldal jelenik meg.
-    A **Farms** lap megjeleníti a farmok listáját abban az esetben, ha már létrehozták őket előfizetésben.
+1. Jelentkezzen be a farm-Gyorssegédbe, a **farmok** lap jelenik meg.
+    A **Farms** lap megjeleníti a farmok listáját, ha azokat már létrehozták az előfizetésben.
 
-    Itt van a minta kép:
+    Itt látható a minta képe:
 
-    ![Projekt Farm Beats](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
+    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/create-farm-main-page-1.png)
 
 
-2. Válassza **a Farm létrehozása** és a **Név,** a **Növények** és **a Cím**lehetőséget.
-3. A **Farmhatár meghatározása**(kötelező mező) mezőben válassza **a Megjelölés a térképen** vagy a **GeoJSON-kód beillesztése lehetőséget.**
+2. Válassza a **farm létrehozása** elemet, és adja meg a **nevet**, a **növényeket** és a **címeket**.
+3. A **Farm határának megadása**(kötelező mező) területen válassza a **megjelölés térképen** vagy a **GeoJSON-kód beillesztése**lehetőséget.
 
-A farmhatár két módját a következőképpen határozhatja meg:
+A farm határának definiálásának két módja van:
 
-1. **Megjelölés a térképen:** A térképvezérlő eszközzel rajzolhatja meg és jelölheti meg a farm határvonalát. A határok jelöléséhez ![a](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) Project Farm Beats és a pontos határok megjelölése.
+1. **Megjelölés térképen**: a Térkép vezérlőelem használatával rajzolhatja meg és jelölheti meg a farm határát. A határok megjelöléséhez ![a Project Farm](./media/create-farms-in-azure-farmbeats/pencil-icon-1.png) veri és megjelöli a pontos határokat.
 
-    ![Projekt Farm Beats](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
+    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/create-farm-mark-on-map-1.png)
 
-2. **GeoJson-kód beillesztése**: A GeoJSON a földrajzi adatstruktúrák kódolásának formátuma, JavaScript objektumjelöléssel (JSON). Ez a beállítás egy olyan szövegmezőt jelenít meg, ahol a farm határainak jelöléséhez geoJSON karakterlánc ot lehet megadni. GeoJSON-kódot is létrehozhat GeoJSON.io.
-Az elemleírások segítségével kitöltheti az adatokat.
+2. **GeoJson-kód beillesztése**: a GeoJson formátuma a földrajzi adatstruktúrák kódolása JavaScript Object Notation (JSON) használatával. Ezzel a beállítással megjelenítheti azt a szövegmezőt, amelyben meg lehet adni egy GeoJSON karakterláncot a farm határainak megjelöléséhez. GeoJSON-kódot a GeoJSON.io is létrehozhat.
+Az elemleírások segítségével kitöltheti az információkat.
 
-    ![Projekt Farm Beats](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
+    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/create-new-farm-1.png)
 
-3.  Farm létrehozásához válassza a **Küldés** lehetőséget. Egy új farm jön létre, és megjelenik a **Gazdaságok** oldalon.
+3.  Farm létrehozásához válassza a **Submit (Küldés** ) lehetőséget. Létrejön egy új Farm, és megjelenik a **farmok** oldalon.
 
 ## <a name="view-farm"></a>Farm megtekintése
 
-A Farm lista lap a létrehozott farmok listáját jeleníti meg. Válasszon ki egy farmot a következők listájának megtekintéséhez:
+A farm listája lap a létrehozott farmok listáját jeleníti meg. Válasszon ki egy Farmt a listájának megtekintéséhez:
 
- - **Eszközszám** – a farmon üzembe helyezett eszközök számát és állapotát jeleníti meg.
- - **Térkép** – a farm térképe a farmban telepített eszközökkel.
- - **Telemetria –** megjeleníti a telemetriai adatokat a farmban telepített érzékelők.
- - **Legújabb precíziós térképek** — megjeleníti a legújabb műholdas indexek térképét (EVI, NDWI), Soil Moisture Heatmap és Sensor Placement térképet.
+ - **Eszközök száma – a** farmon belül üzembe helyezett eszközök számát és állapotát jeleníti meg.
+ - **Térkép** – a farm leképezése a farmon üzembe helyezett eszközökkel.
+ - **Telemetria** – a telemetria a farmon üzembe helyezett érzékelőkből jeleníti meg.
+ - **Legújabb precíziós térképek** – a legújabb Satellite indexeket (Evi, NDWI), a hő és az érzékelő elhelyezési térképét jeleníti meg.
 
 ## <a name="edit-farm"></a>Farm szerkesztése
 
-A **Farmok** lap megjeleníti a létrehozott farmok listáját.
+A **Farms** lap a létrehozott farmok listáját jeleníti meg.
 
-1.  Jelölje ki a farm megtekintéséhez és szerkesztéséhez.
-2.  A farmadatainak szerkesztéséhez válassza a **Farm szerkesztése** lehetőséget. A **Farm részletei** ablakban szerkesztheti **a Nevet,** **a Növényeket**, **a Címet,** és megadhatja a **Farm határmezőket.**
+1.  Válasszon ki egy farmot a farm megtekintéséhez és szerkesztéséhez.
+2.  Válassza a **Farm szerkesztése** elemet a farm adatainak szerkesztéséhez. A **Farm részleteit** tartalmazó ablakban szerkesztheti a **név**, **a növények**, a **címek**és a **Farm határainak** meghatározása mezőket.
 
-    ![Projekt Farm Beats](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
+    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/edit-farm-1.png)
 
-3. A szerkesztett részletek mentéséhez válassza a **Küldés** lehetőséget.
+3. Kattintson a **Submit (Küldés** ) elemre a szerkesztett adatok mentéséhez.
 
 ## <a name="delete-farm"></a>Farm törlése
 
-A **Farmok** lap megjeleníti a létrehozott farmok listáját. Farm törléséhez kövesse az alábbi lépéseket:
+A **Farms** lap a létrehozott farmok listáját jeleníti meg. Farm törléséhez kövesse az alábbi lépéseket:
 
-1.  Válasszon ki egy farmot a listából a farm részleteinek törléséhez.
-2.  A farm törléséhez válassza a **Farm törlése** lehetőséget.
+1.  A farm adatainak törléséhez válasszon ki egy farmot a listából.
+2.  Válassza a **Farm törlése** elemet a farm törléséhez.
 
-    ![Projekt Farm Beats](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
+    ![A Project Farm veri](./media/create-farms-in-azure-farmbeats/delete-farm-1.png)
 
     > [!NOTE]
-    > Farm törlésekor a farmhoz társított eszközök és térképek nem törlődnek. Az eszközhöz és a térképekhez kapcsolódó farmadatok nem lesznek relevánsak. Továbbra is megtekintheti az eszközöket, a telemetriai adatokat és a leképezéseket a FarmBeats szolgáltatásból.
+    > Farm törlésekor a farmhoz társított eszközöket és térképeket nem törli a rendszer. Az eszközhöz és a térképekhez kapcsolódó Farm-információk nem lesznek relevánsak. Továbbra is megtekintheti az eszközöket, a telemetria és a térképeket a FarmBeats szolgáltatásból.
 
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy létrehozta a gazdaság, megtanulják, hogyan [juthat érzékelő adatok](get-sensor-data-from-sensor-partner.md) áramlik be a gazdaságban.
+Most, hogy létrehozta a farmot, megtudhatja, hogyan érheti el a farmján az [érzékelők adatait](get-sensor-data-from-sensor-partner.md) .

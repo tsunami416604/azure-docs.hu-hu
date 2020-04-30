@@ -1,6 +1,6 @@
 ---
-title: Az Azure IoT Hub-eszközkiépítési szolgáltatás SDK-eszközeinek használata
-description: Ez a dokumentum áttekinti az Azure IoT Hub-eszközkiépítési szolgáltatás (DPS) SDK-kban fejlesztési célokra biztosított eszközöket
+title: Az Azure IoT Hub Device Provisioning Service SDK-eszközök használata
+description: Ez a dokumentum az Azure IoT Hub Device Provisioning Service (DPS) SDK-k fejlesztéséhez biztosított eszközöket tekinti át
 author: robinsh
 ms.author: robinsh
 ms.date: 04/09/2018
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: b817b3cfe47ed08cae9e7e0b1c2c24363f2ccfed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79271524"
 ---
-# <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Az SDK-kban található eszközök használata a kiépítés fejlesztésének egyszerűsítése érdekében
-Az IoT Hub-eszközkiépítési szolgáltatás leegyszerűsíti a kiépítési folyamat nulla érintéses, just-in-time [automatikus kiépítése](concepts-auto-provisioning.md) biztonságos és méretezhető módon.  X.509 tanúsítvány vagy platformmegbízhatósági modul (TPM) formájában kiállított biztonsági tanúsítvány szükséges.  A Microsoft más [biztonsági hardverpartnerekkel](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) is együttműködik az IoT telepítésének biztonságossá tétele iránti bizalom növelése érdekében. A hardverbiztonsági követelmény megértése nagy kihívást jelenthet a fejlesztők számára. Az Azure IoT-létesítési szolgáltatás SDK-k egy készletét biztosítjuk, hogy a fejlesztők egy kényelmi réteget használhassanak a kiépítési szolgáltatással beszélő ügyfelek írásához. Az SDK-k is biztosít mintákat a közös forgatókönyvek, valamint egy sor eszközt, hogy egyszerűsítse a biztonsági tanúsítvány fejlesztés alatt.
+# <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Az SDK-k által biztosított eszközök használata a kiépítés fejlesztésének egyszerűsítése érdekében
+A IoT Hub Device Provisioning Service leegyszerűsíti a kiépítési folyamatot a biztonságos és skálázható módon történő [automatikus kiépítés](concepts-auto-provisioning.md) révén.  A biztonsági igazolás X. 509 tanúsítvány vagy platformmegbízhatósági modul (TPM) formájában szükséges.  A Microsoft [más biztonsági partnerekkel](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) is együttműködik a IoT-telepítés biztonságossá tétele érdekében. A hardveres biztonsági követelmények megismerése nagyon nagy kihívást jelenthet a fejlesztők számára. Az Azure IoT-létesítési szolgáltatás SDK-k készletét biztosítjuk, így a fejlesztők egy kényelmi réteget használhatnak a kiépítési szolgáltatással kommunikáló ügyfelek írásához. Az SDK-k emellett mintákat is biztosítanak a gyakori forgatókönyvekhez, valamint a biztonsági igazolások fejlesztésének egyszerűsítésére szolgáló eszközkészletet.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Platformmegbízhatósági modul (TPM) szimulátor
-[A TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) hivatkozhat a kulcsok biztonságos tárolására vonatkozó szabványra a platform hitelesítéséhez, vagy hivatkozhat a szabványt megvalósító modulokkal való interakcióhoz használt I/O interfészre. A TPM-ek különálló hardverként, integrált hardverként, belső vezérlőprogram-alapúként vagy szoftveralapúként létezhetnek.  Éles környezetben a TPM az eszközön található, akár különálló hardverként, integrált hardverként vagy belső vezérlőprogram-alapúként. A tesztelési fázisban egy szoftveralapú TPM-szimulátort biztosítunk a fejlesztőknek.  Ez a szimulátor egyelőre csak Windows platformon fejlesztésre alkalmas.
+A [TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) szabványos módon hivatkozhat a kulcsok biztonságos tárolására a platform hitelesítéséhez, vagy hivatkozhat a szabványt megvalósító modulokkal való interakcióhoz használt I/O-felületre. A TPM különálló hardverként, integrált hardverként, belső vezérlőprogram-vagy szoftver-alapúként is létezhetnek.  Éles környezetben a TPM különálló hardverként, integrált hardverként vagy belső vezérlőprogram-alapúként található az eszközön. A tesztelési fázisban egy szoftveres TPM-szimulátort biztosítanak a fejlesztők számára.  Ez a szimulátor jelenleg csak a Windows platformon való fejlesztéshez érhető el.
 
 A TPM-szimulátor használatának lépései a következők:
-1. [Készítse elő a fejlesztői környezetet,](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) és klónozza a GitHub-tárházat:
+1. [A fejlesztési környezet előkészítése](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) és a GitHub-tárház klónozása:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
-2. Nyissa meg a TPM-szimulátor mappát a csoportban. ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```
-3. Futtassa a Simulator.exe programot, mielőtt bármilyen ügyfélalkalmazást futtatna az eszköz létesítéséhez.
-4. Hagyja, hogy a szimulátor fut a háttérben a kiépítési folyamat során a regisztrációs azonosító és az ellenőrzőkulcs beszerzéséhez.  Mindkét érték csak a futtatás egy példányára érvényes.
+2. Navigáljon a TPM-szimulátor mappához a alatt ```azure-iot-sdk-java/provisioning/provisioning-tool/tpm-simulator/```.
+3. Futtassa a Simulator. exe fájlt, mielőtt bármely ügyfélalkalmazás a kiépítési eszközhöz fut.
+4. A kiépítési folyamat során a szimulátor a háttérben fut a regisztrációs azonosító és a jóváhagyó kulcs beszerzéséhez.  Mindkét érték csak a Futtatás egy példánya esetében érvényes.
 
-## <a name="x509-certificate-generator"></a>X.509 tanúsítványgenerátor
-[Az X.509 tanúsítványok](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates) igazolási mechanizmusként használhatók az éleskörnyezet méretezéséhez és az eszközkiépítés egyszerűsítéséhez.  Az X.509 tanúsítvány beszerzésének [számos módja](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) van:
-* Éles környezetben azt javasoljuk, hogy vásároljon egy X.509 hitelesítésszolgáltatói tanúsítványt egy nyilvános legfelső szintű hitelesítésszolgáltatótól.
-* Tesztelési környezetben x.509-es főtanúsítványt vagy X.509 tanúsítványláncot hozhat létre a következő kkel:
-    * OpenSSL: Parancsfájlok használhatók a tanúsítványok létrehozásához:
+## <a name="x509-certificate-generator"></a>X. 509 tanúsítvány-generátor
+Az [X. 509 tanúsítványokat](https://docs.microsoft.com/azure/iot-dps/concepts-security#x509-certificates) igazolási mechanizmusként használhatja a termelés méretezéséhez és az eszközök üzembe helyezésének egyszerűsítéséhez.  Az X. 509 tanúsítvány beszerzésének [több módja](https://docs.microsoft.com/azure/iot-hub/iot-hub-x509ca-overview#how-to-get-an-x509-ca-certificate) is van:
+* Éles környezetben ajánlott egy X. 509 HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány vásárlása egy nyilvános legfelső szintű hitelesítésszolgáltatótól.
+* Tesztelési környezetben létrehozhat egy X. 509 főtanúsítványt vagy X. 509 tanúsítványláncot a következő használatával:
+    * OpenSSL: parancsfájlokat használhat a tanúsítvány generálásához:
         * [Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools)
-        * [PowerShell vagy Bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
+        * [PowerShell vagy bash](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)
         
-    * Device Identity Composition Engine (DICE) Emulator: DICE használható kriptográfiai eszköz identitás és tanúsítvány alapján TLS protokoll és X.509 ügyfél tanúsítványokat.  [További információ](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/) az eszközidentitásról a DICE segítségével.
+    * Az eszköz Identity kompozíciós motor (DICE) emulátora: a DICE a TLS protokoll és az X. 509 ügyféltanúsítvány alapján történő titkosítási eszköz identitásához és igazolásához használható.  [További információ](https://www.microsoft.com/research/publication/device-identity-dice-riot-keys-certificates/) az eszköz identitásáról a Dice szolgáltatásban.
 
-### <a name="using-x509-certificate-generator-with-dice-emulator"></a>Az X.509 tanúsítványgenerátor használata DICE emulátorral
-Az SDK-k egy X.509 tanúsítványgenerátort biztosítanak a DICE emulátorral, amely a [Java SDK-ban](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-tools/provisioning-x509-cert-generator)található.  Ez a generátor működik cross-platform.  A létrehozott tanúsítvány más nyelveken is használható fejlesztésre.
+### <a name="using-x509-certificate-generator-with-dice-emulator"></a>Az X. 509 tanúsítvány-generátor használata a DICE emulátorral
+Az SDK-k egy X. 509 tanúsítvány-generátort biztosítanak a [Java SDK](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-tools/provisioning-x509-cert-generator)-ban található Dice Emulator használatával.  Ez a generátor több platformon működik.  A generált tanúsítvány más nyelveken is használható fejlesztéshez.
 
-Jelenleg, míg a DICE emulátor kimeneti főtanúsítvány, köztes tanúsítvány, levél tanúsítvány, és a kapcsolódó személyes kulcs.  A főtanúsítvány vagy a köztes tanúsítvány azonban nem használható külön levéltanúsítvány aláírására.  Ha tesztelni kívánja a csoportigénylési forgatókönyvet, amelyben egy aláíró tanúsítványt használ több eszköz levéltanúsítványainak aláírására, az OpenSSL segítségével tanúsítványok láncolatát hozhat létre.
+A DICE-emulátor jelenleg a főtanúsítványt, köztes tanúsítványt, egy levél tanúsítványát és a hozzá tartozó titkos kulcsot jeleníti meg.  Azonban a főtanúsítvány vagy köztes tanúsítvány nem használható külön levél-tanúsítvány aláírására.  Ha olyan csoportos beléptetési forgatókönyvet szeretne tesztelni, amelyben egy aláíró tanúsítvány több eszközön lévő levél-tanúsítványok aláírására szolgál, akkor az OpenSSL-t használhatja tanúsítványok láncának létrehozásához.
 
-X.509 tanúsítvány létrehozása ezzel a generátorral:
-1. [Készítse elő a fejlesztői környezetet,](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) és klónozza a GitHub-tárházat:
+X. 509 tanúsítvány generálása a következő generátor használatával:
+1. [A fejlesztési környezet előkészítése](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) és a GitHub-tárház klónozása:
    ```
    git clone https://github.com/Azure/azure-iot-sdk-java.git
    ```
-2. Módosítsa a gyökeret azúr-iot-sdk-java-ra.
-3. Futtassa ```mvn install -DskipTests=true``` az összes szükséges csomag letöltéséhez és az SDK fordításához
-4. Keresse meg az X.509 tanúsítványgenerátor gyökérét a ban. ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```
-5. Építsd meg```mvn clean install```
+2. Módosítsa a gyökeret az Azure-IOT-SDK-Java értékre.
+3. Az ```mvn install -DskipTests=true``` összes szükséges csomag letöltéséhez és az SDK fordításához futtassa a parancsot.
+4. Navigáljon az X. 509 tanúsítvány-generátor gyökeréhez ```azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator```a alkalmazásban.
+5. Build```mvn clean install```
 6. Futtassa az eszközt az alábbi parancsokkal:
    ```
    cd target
    java -jar ./provisioning-x509-cert-generator-{version}-with-deps.jar
    ```
 7. Amikor a rendszer erre kéri, opcionálisan megadhat egy _köznapi nevet_ a tanúsítvány számára.
-8. Az eszköz helyileg létrehoz egy **ügyféltanúsítványt**, az **ügyféltanúsítvány titkos kulcsát,** **a köztes tanúsítványt**és a **gyökértanúsítványt.**
+8. Az eszköz helyileg létrehoz egy **ügyfél-tanúsítványt**, **az ügyfél tanúsítványának titkos kulcsát**, a **köztes tanúsítványt**és a **főtanúsítványt**.
 
-**Az ügyféltanúsítvány** az eszközön lévő levéltanúsítvány.  **Az ügyféltanúsítványra** és a kapcsolódó **ügyféltanúsítvány titkos kulcsra** van szükség az eszközügyfélben. Attól függően, hogy milyen nyelvet választ, a mechanizmus, hogy ezt az ügyfélalkalmazás eltérő lehet.  További információt az X.509-es használatával szimulált eszköz létrehozásáról szóló [rövid útmutatók](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) ban talál.
+Az **ügyfél** tanúsítványa a levél tanúsítványa az eszközön.  Az **ügyfél tanúsítványa** és a társított **ügyféltanúsítvány titkos kulcsa** szükséges az eszköz ügyfelében. Attól függően, hogy milyen nyelvet választ, az ügyfélalkalmazás ezt a mechanizmust más lehet.  További információért lásd a szimulált eszköz X. 509 használatával történő létrehozásával [kapcsolatos rövid](https://docs.microsoft.com/azure/iot-dps/quick-create-simulated-device-x509) útmutatót.
 
-A főtanúsítvány vagy a köztes tanúsítvány [programozott módon](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) vagy a [portál](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments)használatával lehet regisztrációs csoportot vagy egyéni igénylést létrehozni.
+A főtanúsítvány vagy a köztes tanúsítvány használatával létrehozhat egy regisztrációs csoportot vagy egyéni beléptetést [programozott](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments-sdks) módon vagy a [portálon](https://docs.microsoft.com/azure/iot-dps/how-to-manage-enrollments).
 
 ## <a name="next-steps"></a>További lépések
-* Fejlesztés az Azure IoT Hubhoz és az Azure IoT Hub eszközkiépítési szolgáltatásához tervezett [Azure IoT SDK]( https://github.com/Azure/azure-iot-sdks) használatával
+* Fejlesztés az Azure IoT Hub és az Azure-hoz készült [Azure IOT SDK]( https://github.com/Azure/azure-iot-sdks) -val IoT hub Device Provisioning Service

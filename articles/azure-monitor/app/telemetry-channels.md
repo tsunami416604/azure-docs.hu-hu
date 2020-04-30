@@ -1,49 +1,49 @@
 ---
-title: Telemetriai csatornák az Azure Application Insightsban | Microsoft dokumentumok
-description: Telemetriai csatornák testreszabása az Azure Application Insights SDK-kban .NET és .NET Core.
+title: Telemetria csatornák Az Azure Application Insightsban | Microsoft Docs
+description: Telemetria-csatornák testreszabása az Azure Application Insights SDK-ban a .NET-hez és a .NET Core-hoz.
 ms.topic: conceptual
 ms.date: 05/14/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9c292246f947e4d3a364f79b31fe7a1deebd33d9
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79275697"
 ---
-# <a name="telemetry-channels-in-application-insights"></a>Telemetriai csatornák az Application Insightsban
+# <a name="telemetry-channels-in-application-insights"></a>Telemetria csatornák Application Insights
 
-A telemetriai csatornák az [Azure Application Insights SDK-k](../../azure-monitor/app/app-insights-overview.md)szerves részét képezik. Ők kezelik a pufferelés és a telemetriai adatok átvitelét az Application Insights szolgáltatásba. Az SDK-k .NET és .NET Core verziói két beépített `InMemoryChannel` `ServerTelemetryChannel`telemetriai csatornával rendelkeznek: és . Ez a cikk részletesen ismerteti az egyes csatornákat, többek között a csatorna viselkedésének testreszabását.
+A telemetria csatornák az [Azure Application Insights SDK](../../azure-monitor/app/app-insights-overview.md)-k szerves részét képezik. Kezelik a telemetria pufferelését és a Application Insights szolgáltatásba való átvitelét. Az SDK-k .NET-és .NET Core-verziói két beépített telemetria-csatornával `InMemoryChannel` rendelkeznek `ServerTelemetryChannel`: és. Ez a cikk részletesen ismerteti az egyes csatornákat, beleértve a csatornák viselkedésének testreszabását is.
 
-## <a name="what-are-telemetry-channels"></a>Mik azok a telemetriai csatornák?
+## <a name="what-are-telemetry-channels"></a>Mik azok a telemetria-csatornák?
 
-Telemetriai csatornák felelősek a telemetriai elemek pufferelése, és elküldi őket az Application Insights szolgáltatás, ahol a lekérdezés és elemzés tárolja. A telemetriai csatorna minden olyan [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) osztály, amely megvalósítja a felületet.
+A telemetria csatornák felelősek a telemetria-elemek puffereléséhez és a Application Insights szolgáltatásba való küldéséhez, ahol lekérdezési és elemzési célból vannak tárolva. A telemetria-csatorna bármely olyan osztály, amely megvalósítja az [`Microsoft.ApplicationInsights.ITelemetryChannel`](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.channel.itelemetrychannel?view=azure-dotnet) illesztőfelületet.
 
-A `Send(ITelemetry item)` telemetriai csatorna metódusa az összes telemetriai inicializáló és telemetriai processzorok neve. Így a telemetriai processzor által eldobott elemek nem jutnak el a csatornához. `Send()`általában nem küldi el azonnal az elemeket a háttérbe. Általában puffereli őket a memóriában, és elküldi őket kötegekben, a hatékony átvitel érdekében.
+A `Send(ITelemetry item)` telemetria-csatorna metódusát a rendszer az összes telemetria inicializáló és telemetria processzor hívása után hívja meg. Tehát a telemetria-feldolgozó által eldobott elemek nem érik el a csatornát. `Send()`nem általában azonnal küldi el az elemeket a háttérbe. A szolgáltatás általában a memóriában, és kötegekben küldi el őket a hatékony átvitel érdekében.
 
-[Élő metrikák stream](live-stream.md) is rendelkezik egy egyéni csatorna, amely a telemetriai adatok élő streamelése. Ez a csatorna független a rendszeres telemetriai csatorna, és ez a dokumentum nem vonatkozik rá.
+A [élő metrikastream](live-stream.md) egy egyéni csatornát is tartalmaz, amely a telemetria élő közvetítését is felruházza. Ez a csatorna független a normál telemetria-csatornától, és ez a dokumentum nem vonatkozik rá.
 
-## <a name="built-in-telemetry-channels"></a>Beépített telemetriai csatornák
+## <a name="built-in-telemetry-channels"></a>Beépített telemetria csatornák
 
-Az Application Insights .NET és .NET Core SDK-k két beépített csatornával rendelkeznek:
+A Application Insights .NET és .NET Core SDK-k két beépített csatornával rendelkeznek:
 
-* `InMemoryChannel`: Könnyű csatorna, amely puffereli a memóriában lévő elemeket, amíg el nem küldik őket. Az elemek pufferelése a memóriában történik, és 30 másodpercenként egyszer, illetve 500 elem pufferelésekor kerülnek kiürítésre. Ez a csatorna minimális megbízhatósági garanciákat nyújt, mert nem próbálja meg újra a telemetriai adatok at egy hiba után. Ez a csatorna nem tart elemeket a lemezen, így az el nem küldött elemek véglegesen elvesznek az alkalmazás leállításakor (kecses vagy nem). Ez a csatorna `Flush()` olyan módszert valósít meg, amely a memóriában lévő telemetriai elemek szinkron kiürítésére használható. Ez a csatorna kiválóan alkalmas rövid ideig futó alkalmazásokhoz, ahol a szinkron öblítés ideális.
+* `InMemoryChannel`: Egy könnyűsúlyú csatorna, amely a memóriában lévő elemeket a továbbításig kihasználja. Az elemek a memóriában vannak puffereltek, és 30 másodpercenként kiürítve, vagy ha 500 elem van pufferelt. Ez a csatorna minimális megbízhatósági garanciákat biztosít, mivel a hiba után nem próbálkozik újra a telemetria küldésével. Ez a csatorna nem tartja meg a lemezen lévő elemeket is, így az összes el nem küldött elem véglegesen elvész az alkalmazás leállításakor (kecses vagy nem). Ez a csatorna olyan `Flush()` metódust valósít meg, amely lehetővé teszi a memóriában tárolt telemetria-elemek egyidejű kényszerítését. Ez a csatorna kiválóan alkalmas a rövid ideig futó alkalmazások esetében, amelyeknél a szinkron ürítés ideális.
 
-    Ez a csatorna a nagyobb Microsoft.ApplicationInsights NuGet csomag része, és az alapértelmezett csatorna, amelyet az SDK akkor használ, ha semmi más nincs konfigurálva.
+    Ez a csatorna a Microsoft. ApplicationInsights NuGet csomag részét képezi, és az az alapértelmezett csatorna, amelyet az SDK használ, ha nincs más konfigurálva.
 
-* `ServerTelemetryChannel`: Fejlettebb csatorna, amely újrapróbálkozási házirendekkel rendelkezik, és képes adatokat tárolni a helyi lemezen. Ez a csatorna újramegpróbálja telemetriai adatokat küldeni, ha átmeneti hibák fordulnak elő. Ez a csatorna is használja a helyi lemeztároló tartani elemeket a lemezen hálózati kimaradások vagy a magas telemetriai kötetek. Az újrapróbálkozási mechanizmusok és a helyi lemezes tárolás miatt ez a csatorna megbízhatóbbnak tekinthető, és minden éles forgatókönyv esetén ajánlott. Ez a csatorna az alapértelmezett [a ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) alkalmazások, amelyek a hivatalos dokumentáció szerint konfigurálva. Ez a csatorna hosszú ideig futó folyamatokkal rendelkező kiszolgálói forgatókönyvekhez van optimalizálva. A [`Flush()`](#which-channel-should-i-use) csatorna által megvalósított módszer nem szinkron.
+* `ServerTelemetryChannel`: Egy fejlettebb csatorna, amely újrapróbálkozási házirendekkel rendelkezik, és képes az adattárolásra helyi lemezen. Ez a csatorna újrapróbálkozik a telemetria küldésével, ha átmeneti hibák történnek. Ez a csatorna a helyi lemezes tárolást is használja a hálózati kimaradások vagy a nagy telemetria-kötetek esetében a lemezen lévő elemek megtartására. Az újrapróbálkozási mechanizmusok és a helyi lemezes tárolás miatt ez a csatorna megbízhatóbbnak minősül, és minden éles környezetben ajánlott. Ez a csatorna az alapértelmezett a [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és a [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) a hivatalos dokumentációnak megfelelően konfigurált alkalmazások esetében. Ez a csatorna kiszolgálói forgatókönyvekhez van optimalizálva hosszan futó folyamatokkal. A [`Flush()`](#which-channel-should-i-use) csatorna által megvalósított metódus nem szinkronban van.
 
-    Ez a csatorna microsoft.ApplicationInsights.WindowsServer.TelemetryChannel NuGet csomagként kerül kiszállításra, és a Microsoft.ApplicationInsights.Web vagy a Microsoft.ApplicationInsights.AspNetCore NuGet használatakor automatikusan bekobzódik. Csomag.
+    Ez a csatorna a Microsoft. ApplicationInsights. WindowsServer. TelemetryChannel NuGet csomagként érhető el, és a Microsoft. ApplicationInsights. web vagy a Microsoft. ApplicationInsights. AspNetCore NuGet csomag használatakor automatikusan megtörténik.
 
-## <a name="configure-a-telemetry-channel"></a>Telemetriai csatorna konfigurálása
+## <a name="configure-a-telemetry-channel"></a>Telemetria-csatorna konfigurálása
 
-Telemetriai csatornát úgy konfigurálhat, hogy az aktív telemetriai konfigurációra állítja be. A ASP.NET alkalmazások esetében a konfiguráció magában foglalja `TelemetryConfiguration.Active`a telemetriai csatornapéldány beállítását a számára, vagy a módosításával. `ApplicationInsights.config` ASP.NET core alkalmazások konfiguráció magában foglalja a csatorna hozzáadása a függőségi injektálási tárolóhoz.
+Telemetria-csatornát úgy konfigurálhat, hogy az aktív telemetria-konfigurációra állítja be. A ASP.NET alkalmazások esetében a konfiguráció magában foglalja a telemetria-csatorna `TelemetryConfiguration.Active`példányának vagy módosításának `ApplicationInsights.config`beállítását. ASP.NET Core alkalmazások esetében a konfiguráció magában foglalja a csatorna hozzáadását a függőségi injektálási tárolóhoz.
 
-Az alábbi szakaszok példákat `StorageFolder` mutatnak be a csatorna beállításának konfigurálására a különböző alkalmazástípusokban. `StorageFolder`csak az egyik konfigurálható beállítás. A konfigurációs beállítások teljes listáját a cikk [későbbi, beállításokkal kapcsolatos szakaszában](telemetry-channels.md#configurable-settings-in-channels) találja.
+A következő részekben példákat talál a `StorageFolder` csatorna beállításának konfigurálására különböző típusú alkalmazásokban. `StorageFolder`csak a konfigurálható beállítások egyike. A konfigurációs beállítások teljes listájáért tekintse meg a cikk későbbi, [a beállítások című szakaszát](telemetry-channels.md#configurable-settings-in-channels) .
 
-### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Konfiguráció az ApplicationInsights.config használatával ASP.NET alkalmazásokhoz
+### <a name="configuration-by-using-applicationinsightsconfig-for-aspnet-applications"></a>Konfigurálás a ApplicationInsights. config használatával ASP.NET-alkalmazásokhoz
 
-[Az ApplicationInsights.config](configuration-with-applicationinsights-config.md) következő szakasza `ServerTelemetryChannel` az `StorageFolder` egyéni helyre beállított csatornát mutatja:
+A [ApplicationInsights. config](configuration-with-applicationinsights-config.md) fájl következő szakasza azt `ServerTelemetryChannel` mutatja be, `StorageFolder` hogy a csatorna egyéni helyre van beállítva:
 
 ```xml
     <TelemetrySinks>
@@ -58,9 +58,9 @@ Az alábbi szakaszok példákat `StorageFolder` mutatnak be a csatorna beállít
     </TelemetrySinks>
 ```
 
-### <a name="configuration-in-code-for-aspnet-applications"></a>Konfiguráció a ASP.NET alkalmazások kódjában
+### <a name="configuration-in-code-for-aspnet-applications"></a>Konfiguráció a kódban a ASP.NET-alkalmazásokhoz
 
-A következő kód beállítja a "ServerTelemetryChannel" példányt egy egyéni helyre `StorageFolder` állítva. Adja hozzá ezt a kódot az alkalmazás `Application_Start()` elején, általában a metódus Global.aspx.cs.
+A következő kód egy "ServerTelemetryChannel" példányt állít be, `StorageFolder` amely egyéni helyre van beállítva. Adja hozzá ezt a kódot az alkalmazás elején, jellemzően a `Application_Start()` Global.aspx.cs metódusában.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility;
@@ -74,9 +74,9 @@ protected void Application_Start()
 }
 ```
 
-### <a name="configuration-in-code-for-aspnet-core-applications"></a>Konfiguráció a kódban ASP.NET Core alkalmazásokhoz
+### <a name="configuration-in-code-for-aspnet-core-applications"></a>Konfiguráció a kódban ASP.NET Core alkalmazások számára
 
-Módosítsa `ConfigureServices` az osztály `Startup.cs` módszerét az itt látható módon:
+Módosítsa a `ConfigureServices` `Startup.cs` osztály metódusát az itt látható módon:
 
 ```csharp
 using Microsoft.ApplicationInsights.Channel;
@@ -93,11 +93,11 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 > [!IMPORTANT]
-> A csatorna használatával `TelemetryConfiguration.Active` történő konfigurálása nem ajánlott ASP.NET Core alkalmazásokhoz.
+> ASP.NET Core alkalmazások esetében nem ajánlott `TelemetryConfiguration.Active` a csatornát a használatával konfigurálni.
 
-### <a name="configuration-in-code-for-netnet-core-console-applications"></a>Konfiguráció a .NET/.NET Core konzolalkalmazások kódjában
+### <a name="configuration-in-code-for-netnet-core-console-applications"></a>Konfiguráció a .NET/.NET Core Console-alkalmazások kódjában
 
-Konzolalkalmazások esetén a kód megegyezik a .NET és a .NET Core esetében is:
+A konzolos alkalmazások esetében a kód ugyanaz, mint a .NET és a .NET Core esetében:
 
 ```csharp
 var serverTelemetryChannel = new ServerTelemetryChannel();
@@ -106,65 +106,65 @@ serverTelemetryChannel.Initialize(TelemetryConfiguration.Active);
 TelemetryConfiguration.Active.TelemetryChannel = serverTelemetryChannel;
 ```
 
-## <a name="operational-details-of-servertelemetrychannel"></a>A ServerTelemetryChannel működési adatai
+## <a name="operational-details-of-servertelemetrychannel"></a>A ServerTelemetryChannel működési részletei
 
-`ServerTelemetryChannel`memórián belüli pufferben tárolja az érkező elemeket. Az elemek szerializálása, tömörítése `Transmission` és tárolása 30 másodpercenként egyszer történik, vagy 500 elem pufferelése esetén. Egyetlen `Transmission` példány legfeljebb 500 elemet tartalmaz, és egy telemetriai egy köteget jelöl, amely egyetlen HTTPS-híváson keresztül kerül elküldésre az Application Insights szolgáltatásnak.
+`ServerTelemetryChannel`egy memóriában lévő pufferben tárolja a beérkező elemeket. A rendszer 30 másodpercenként egyszer szerializálja, tömöríti és tárolja `Transmission` a példányokat, vagy ha az 500-es elemek pufferelése megtörtént. Egy `Transmission` példány legfeljebb 500 elemet tartalmaz, és a Application Insights szolgáltatásnak egyetlen HTTPS-híváson keresztül küldött telemetria-köteget jelöl.
 
-Alapértelmezés szerint legfeljebb 10 `Transmission` példány küldhető párhuzamosan. Ha a telemetriai adatok gyorsabb ütemben érkeznek, vagy ha `Transmission` a hálózat vagy az Application Insights háttértartalék a lassú, példányok a memóriában tárolják. A memórián `Transmission` belüli puffer alapértelmezett kapacitása 5 MB. A memórián belüli kapacitás túllépése `Transmission` esetén a példányok legfeljebb 50 MB-os helyi lemezen tárolódnak. `Transmission`a példányok hálózati problémák esetén is a helyi lemezen tárolódnak. Csak a helyi lemezen tárolt elemek élik túl az alkalmazásösszeomlást. A rendszer akkor küldi el őket, amikor a jelentkezés újraindul.
+Alapértelmezés szerint legfeljebb 10 `Transmission` példányt lehet elküldeni párhuzamosan. Ha a telemetria gyorsabban érkezik, vagy ha a hálózat vagy a Application Insights háttérrendszer lassú, `Transmission` a példányok tárolása a memóriában történik. A memóriában `Transmission` lévő puffer alapértelmezett kapacitása 5 MB. Ha túllépte a memórián belüli kapacitást, `Transmission` a példányok tárolása a helyi lemezen legfeljebb 50 MB-ra történik. `Transmission`a példányok helyi lemezen vannak tárolva, ha hálózati problémák vannak. Csak a helyi lemezen tárolt elemek maradnak meg az alkalmazás összeomlása miatt. A rendszer elküldi őket, amikor az alkalmazás újra elindul.
 
-## <a name="configurable-settings-in-channels"></a>Konfigurálható beállítások a csatornákban
+## <a name="configurable-settings-in-channels"></a>Konfigurálható beállítások a csatornákon
 
-Az egyes csatornák konfigurálható beállításainak teljes listáját a következő témakörben találja:
+Az egyes csatornák konfigurálható beállításainak teljes listájáért lásd:
 
 * [InMemoryChannel](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/BASE/src/Microsoft.ApplicationInsights/Channel/InMemoryChannel.cs)
 
 * [ServerTelemetryChannel](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/BASE/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)
 
-Az alábbiak leggyakrabban használt beállításai: `ServerTelemetryChannel`
+A leggyakrabban használt beállítások a következők `ServerTelemetryChannel`:
 
-1. `MaxTransmissionBufferCapacity`: A csatorna által a memóriában lévő átvitelek pufferelésére használt maximális memóriamennyiség bájtban. Ha eléri ezt a kapacitást, az új elemek közvetlenül a helyi lemezre kerülnek. Az alapértelmezett érték 5 MB. A magasabb érték beállítása kevesebb lemezhasználatot eredményez, de ne feledje, hogy a memóriában lévő elemek elvesznek, ha az alkalmazás összeomlik.
+1. `MaxTransmissionBufferCapacity`: A memória maximális mérete (bájt), amelyet a csatorna használ a memóriában lévő pufferek továbbítására. Ha eléri ezt a kapacitást, a rendszer az új elemeket közvetlenül a helyi lemezen tárolja. Az alapértelmezett érték 5 MB. Ha nagyobb értéket ad meg, a lemez kevesebb használatot eredményez, de ne feledje, hogy a memóriában lévő elemek elvesznek, ha az alkalmazás összeomlik.
 
-1. `MaxTransmissionSenderCapacity`: Az Application `Transmission` Insights nak egyidejűleg küldött példányok maximális száma. Az alapértelmezett érték 10. Ez a beállítás nagyobb számra konfigurálható, amely akkor ajánlott, ha hatalmas mennyiségű telemetriai adatokjönnek létre. A nagy mennyiség általában a terheléstesztelés során vagy a mintavétel kikapcsolásakor jelentkezik.
+1. `MaxTransmissionSenderCapacity`: Az Application Insights számára egyszerre `Transmission` küldendő példányok maximális száma. Az alapértelmezett érték 10. Ez a beállítás nagyobb számra állítható be, ami akkor ajánlott, ha nagy mennyiségű telemetria generál. A nagy mennyiség általában a terheléses tesztelés során vagy a mintavétel kikapcsolásakor fordul elő.
 
-1. `StorageFolder`: Az a mappa, amelyet a csatorna az elemek lemezre tárolására használ, ha szükséges. A Windows rendszerben a %LOCALAPPDATA% vagy a %TEMP% akkor használatos, ha nincs külön elérési út megadva. A Windows-tól eltérő környezetekben meg kell adnia egy érvényes helyet, vagy a telemetriai adatok nem tárolódnak a helyi lemezen.
+1. `StorageFolder`: A csatorna által az elemek lemezre való tárolásához használt mappa szükség szerint. A Windows rendszerben a rendszer% LOCALAPPDATA% vagy% TEMP% értéket használ, ha nincs más elérési út megadva explicit módon. A Windowson kívüli környezetekben meg kell adnia egy érvényes helyet vagy telemetria, amely nem tárolódik a helyi lemezen.
 
-## <a name="which-channel-should-i-use"></a>Melyik csatornát használjam?
+## <a name="which-channel-should-i-use"></a>Melyik csatornát érdemes használni?
 
-`ServerTelemetryChannel`a legtöbb, hosszú ideig futó alkalmazásokkal kapcsolatos éles forgatókönyvhez ajánlott. A `Flush()` megvalósított `ServerTelemetryChannel` módszer nem szinkron, és nem garantálja az összes függőben lévő elem küldését a memóriából vagy a lemezről. Ha ezt a csatornát olyan esetekben használja, ahol az alkalmazás le állításra készül, javasoljuk, hogy a hívás `Flush()`után némi késést vezessen be. A pontos késés, hogy szükség lehet a nem kiszámítható. Ez olyan tényezőktől függ, `Transmission` mint például, hogy hány elem vagy példány van a memóriában, hány van a lemezen, hány van továbbítva a háttérrendszernek, és hogy a csatorna az exponenciális visszalépési forgatókönyvek közepén van-e.
+`ServerTelemetryChannel`a hosszú ideig futó alkalmazásokat érintő legtöbb éles környezetben ajánlott. A `Flush()` által `ServerTelemetryChannel` megvalósított metódus nem szinkron, és nem garantálja az összes függőben lévő elem küldését a memóriából vagy a lemezből. Ha ezt a csatornát olyan helyzetekben használja, ahol az alkalmazás leáll, javasoljuk, hogy a hívás `Flush()`után némi késleltetést vezessen be. A szükséges késleltetési időtartam nem kiszámítható. Olyan tényezőktől függ, mint a memóriában lévő `Transmission` elemek vagy példányok száma, a lemez mennyisége, a háttérben továbbított mennyiség, valamint azt, hogy a csatorna exponenciális visszatartási forgatókönyvek közepén van-e.
 
-Ha szinkron öblítést kell végeznie, javasoljuk, `InMemoryChannel`hogy használja a használatát.
+Ha szinkron flöss szükséges, javasoljuk, hogy használja `InMemoryChannel`a következőt:.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-### <a name="does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost"></a>Az Application Insights-csatorna garantálja a telemetriai adatok kézbesítését? Ha nem, milyen forgatókönyvekben veszhet el a telemetriai adatok?
+### <a name="does-the-application-insights-channel-guarantee-telemetry-delivery-if-not-what-are-the-scenarios-in-which-telemetry-can-be-lost"></a>A Application Insights Channel garantálja a telemetria kézbesítését? Ha nem, milyen helyzetekben lehet elveszíteni a telemetria?
 
-A rövid válasz az, hogy a beépített csatornák egyike sem kínál tranzakció-típusú garancia telemetriai kézbesítés a háttérrendszerbe. `ServerTelemetryChannel`a megbízható kézbesítéshez képest `InMemoryChannel` fejlettebb, de csak a legjobb erőfeszítést teszi a telemetriai adatok küldésére. A telemetria továbbra is elveszhet számos helyzetben, többek között a következő gyakori forgatókönyvekben:
+A rövid válasz az, hogy a beépített csatornák egyike sem nyújt tranzakció típusú garanciát a telemetria történő kézbesítéshez. `ServerTelemetryChannel`a megbízható kézbesítéshez képest `InMemoryChannel` fejlettebb, de csak a legjobb erőfeszítést tesz a telemetria küldéséhez. A telemetria több helyzetben is elvész, beleértve a gyakori forgatókönyveket:
 
-1. A memóriában lévő elemek elvesznek, amikor az alkalmazás összeomlik.
+1. Az alkalmazás összeomlása esetén a memóriában lévő elemek elvesznek.
 
-1. A telemetria idvanáns idő a hálózati problémák hosszabb időszakaiban vész el. Telemetriai tárolja a helyi lemezen hálózati kimaradások során, vagy ha problémák merülnek fel az Application Insights háttérrendszer. A 48 óránál régebbi elemeket azonban elveti a rendszer.
+1. A telemetria megszakadt a hálózati problémák hosszabb időtartama alatt. A telemetria helyi lemezre van tárolva a hálózati kimaradások során, vagy ha problémák merülnek fel a Application Insights háttérrel. Az 48 óránál régebbi elemek azonban el lesznek vetve.
 
-1. A telemetriai adatok Windows rendszerben való tárolásának alapértelmezett lemezhelyei a %LOCALAPPDATA% vagy a %TEMP%. Ezek a helyek általában a helyi a gépen. Ha az alkalmazás fizikailag áttelepíti az egyik helyről a másikra, az eredeti helyen tárolt telemetriai adatok elvesznek.
+1. A Windows telemetria tárolásának alapértelmezett helye a következő:% LOCALAPPDATA% vagy% TEMP%. Ezek a helyek általában helyiek a gépen. Ha az alkalmazás fizikailag áttelepíti az egyik helyről a másikra, az eredeti helyen tárolt összes telemetria elvész.
 
-1. A Windows webalkalmazásaiban az alapértelmezett lemeztárolási hely a D:\local\LocalAppData. Ez a hely nem marad meg. Az alkalmazás újraindítása, a horizontális felskálázás és más hasonló műveletek eltörlik, ami az ott tárolt telemetriai adatok elvesztéséhez vezet. Felülbírálhatja az alapértelmezett értéket, és megadhatja a tárolót egy megőrzött helyre, például D:\home. Az ilyen megőrzött helyeket azonban távtároló szolgálja ki, így lassú lehet.
+1. A Windows Web Apps esetében az alapértelmezett lemez-tárolási hely a D:\local\LocalAppData. Ezt a helyet nem őrzi meg a program. Az alkalmazás újraindításakor, kibővítve és más hasonló műveletekben törölhető, ami az ott tárolt telemetria elvesztését eredményezi. Felülbírálhatja az alapértelmezett értéket, és megtarthatja a tárterületet megőrzött helyre, például D:\home. Az ilyen megőrzött telephelyeket azonban a távoli tárterület szolgáltatja, így lassú lehet.
 
-### <a name="does-servertelemetrychannel-work-on-systems-other-than-windows"></a>Működik a ServerTelemetryChannel a Windows-tól eltérő rendszereken is?
+### <a name="does-servertelemetrychannel-work-on-systems-other-than-windows"></a>Működik a ServerTelemetryChannel a Windowson kívül más rendszereken?
 
-Bár a csomag és a névtér neve tartalmazza a "WindowsServer" nevet, ez a csatorna nem windowsos rendszereken támogatott, a következő kivétellel. A Windows rendszertől eltérő rendszereken a csatorna alapértelmezés szerint nem hoz létre helyi tárolómappát. Létre kell hoznia egy helyi tárolómappát, és konfigurálnia kell a csatornát annak használatára. A helyi tároló konfigurálása után a csatorna ugyanúgy működik az összes rendszeren.
+Bár a csomagjának és névterének neve tartalmazza a "WindowsServer" nevet, ez a csatorna a Windows rendszeren kívül más rendszerek esetében is támogatott, a következő kivétellel. A Windowstól eltérő rendszereken a csatorna alapértelmezés szerint nem hoz létre helyi tároló mappát. Létre kell hoznia egy helyi tárolási mappát, és konfigurálnia kell a csatornát a használatára. A helyi tárterület konfigurálása után a csatorna ugyanúgy működik az összes rendszeren.
 
-### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Az SDK ideiglenes helyi tárolót hoz létre? Titkosítva vannak az adatok a tárolóban?
+### <a name="does-the-sdk-create-temporary-local-storage-is-the-data-encrypted-at-storage"></a>Az SDK ideiglenes helyi tárolót hoz létre? Titkosítottak-e az adattárolóban tárolt adatforgalom?
 
-Az SDK tárolja telemetriai elemeket a helyi tárolóban hálózati problémák vagy szabályozás közben. Ezek az adatok nincsenek helyileg titkosítva.
+Az SDK hálózati problémák vagy a szabályozás során tárolja a helyi tárolóban lévő telemetria-elemeket. Ezek az adatforgalom nem helyileg titkosított.
 
-Windows rendszerek esetén az SDK automatikusan létrehoz egy ideiglenes helyi mappát a %TEMP% vagy %LOCALAPPDATA% könyvtárban, és csak a rendszergazdák és az aktuális felhasználó számára korlátozza a hozzáférést.
+Windows rendszerek esetében az SDK automatikusan létrehoz egy ideiglenes helyi mappát a (z)% TEMP% vagy% LOCALAPPDATA% könyvtárban, és korlátozza a hozzáférést a rendszergazdákhoz és az aktuális felhasználóhoz.
 
-A Windows-tól eltérő rendszerek esetében az SDK nem hoz létre automatikusan helyi tárolót, így alapértelmezés szerint nem tárol adatokat helyileg. Saját maga is létrehozhat egy tárolókönyvtárat, és beállíthatja a csatorna használatát. Ebben az esetben Ön felelős a címtár biztonságának biztosításáért.
-További információ az [adatvédelemről és](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage)az adatvédelemről.
+A Windows rendszertől eltérő rendszerek esetén az SDK nem hozza létre automatikusan a helyi tárterületet, így alapértelmezés szerint nem tárolja az adattárolást. Saját maga is létrehozhat egy tárolási könyvtárat, és beállíthatja a csatornát a használatára. Ebben az esetben Ön a felelős a címtár biztonságának biztosításáért.
+További információ az adatvédelem [és az adatvédelem terén](data-retention-privacy.md#does-the-sdk-create-temporary-local-storage).
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
-Mint minden SDK az Application Insights, csatornák nyílt forráskódú. Olvassa el a kódot, és járuljon hozzá a problémák hozadékához [a hivatalos GitHub-tárhivatalban.](https://github.com/Microsoft/ApplicationInsights-dotnet)
+A Application Insights összes SDK-hoz hasonlóan a csatornák is nyílt forráskódúak. Olvassa el és járuljon hozzá a kód vagy a jelentéssel kapcsolatos problémákhoz [a hivatalos GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet)-tárházban.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Mintavételezés](../../azure-monitor/app/sampling.md)
-* [SDK hibaelhárítás](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)
+* [SDK – hibaelhárítás](../../azure-monitor/app/asp-net-troubleshoot-no-data.md)

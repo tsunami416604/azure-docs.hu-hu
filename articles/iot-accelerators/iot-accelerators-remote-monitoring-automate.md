@@ -1,5 +1,5 @@
 ---
-title: A Távoli figyelési megoldás használata az eszközproblémák észlelésére - Azure | Microsoft dokumentumok
+title: Eszközkel kapcsolatos problémák észlelése a távoli figyelési megoldással – Azure | Microsoft Docs
 description: Ez az oktatóprogram bemutatja, hogyan használja a szabályokat és műveleteket a küszöbérték-alapú eszközhibák azonosítására a távoli monitorozási megoldásban.
 author: dominicbetts
 manager: timlt
@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: 676f1133a516174478a456a97bc467e7770fe6e7
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239517"
 ---
 # <a name="tutorial-detect-issues-with-devices-connected-to-your-monitoring-solution"></a>Oktatóanyag: A monitorozási megoldáshoz csatlakoztatott eszközök problémáinak észlelése
@@ -33,7 +33,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * Meglévő szabály szerkesztése
 > * Szabályok be- vagy kikapcsolása
 
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot,](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) mielőtt elkezdené.
+Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 [!INCLUDE [iot-accelerators-tutorial-prereqs](../../includes/iot-accelerators-tutorial-prereqs.md)]
 
@@ -68,7 +68,7 @@ Az új szabály mentéséhez kattintson az **Alkalmaz** gombra.
 
 A szabály aktiválásának idejét a **Szabály** vagy az **Irányítópult** oldalon láthatja:
 
-[![Kiváltott figyelmeztetési szabály](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
+[![Figyelmeztetési szabály aktiválva](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/warningruletriggered-expanded.png#lightbox)
 
 ## <a name="create-an-advanced-rule"></a>Speciális szabály létrehozása
 
@@ -86,7 +86,7 @@ Kattintson az **Új szabály** elemre egy olyan többfeltételes szabály létre
 | 1. feltétel értéke    | 80                                |
 | Súlyossági szint  | Kritikus                              |
 
-[![Több feltételszabály létrehozása első rész](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
+[![Több feltétel szabályának létrehozása](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_v2-expanded.png#lightbox)
 
 A második feltétel hozzáadásához kattintson a „+ feltétel hozzáadása” elemre. Használja a következő értékeket az új feltételhez:
 
@@ -96,13 +96,13 @@ A második feltétel hozzáadásához kattintson a „+ feltétel hozzáadása�
 | 2. feltétel operátora | Nagyobb, mint                      |
 | 2. feltétel értéke    | 75                                |
 
-[![Több feltételszabály második részének létrehozása](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
+[![Több feltételi szabály létrehozása – második rész](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-inline.png)](./media/iot-accelerators-remote-monitoring-automate/rulesactionsnewrule_mult_cond2_v2-expanded.png#lightbox)
 
 Az új szabály mentéséhez kattintson az **Alkalmaz** gombra.
 
 A szabály aktiválásának idejét a **Szabály** vagy az **Irányítópult** oldalon láthatja:
 
-[![Több feltételszabály aktiválva](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
+[![Több feltételi szabály aktiválva](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-inline.png)](./media/iot-accelerators-remote-monitoring-automate/criticalruletriggered-expanded.png#lightbox)
 
 ## <a name="edit-an-existing-rule"></a>Meglévő szabály szerkesztése
 

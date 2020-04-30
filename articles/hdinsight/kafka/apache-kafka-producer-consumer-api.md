@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Apache Kafka Producer & fogyasztói API-k – Azure HDInsight'
+title: 'Oktatóanyag: Apache Kafka producer & fogyasztói API-k – Azure HDInsight'
 description: Ismerkedjen meg az Apache Kafka Producer és Consumer API-k a Kafka on HDInsighttal való használatával. Ez az oktatóanyag ezen API-k használatát mutatja be egy Java-alkalmazásból futtatott Kafka on HDInsighttal.
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 10/08/2019
 ms.openlocfilehash: 5a7d4d1917f65cd3d836db83600937a3e3d89de6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79239538"
 ---
 # <a name="tutorial-use-the-apache-kafka-producer-and-consumer-apis"></a>Oktatóanyag: Az Apache Kafka Producer és Consumer API-k használata
@@ -33,20 +33,20 @@ Az API-król további információkat az Apache dokumentációjának [Producer A
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Apache Kafka a HDInsight-fürtön. A fürt létrehozásáról a [Start az Apache Kafkával című](apache-kafka-get-started.md)témakörben olvashat a HDInsight szolgáltatásban.
-* [Java Developer Kit (JDK) 8-as vagy](https://aka.ms/azure-jdks) azzal egyenértékű verzió, például OpenJDK.
-* [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [telepítve](https://maven.apache.org/install.html) szerint Apache.  Maven egy projekt épít rendszer Java projektek.
-* Egy SSH ügyfél, mint A Putty. További információ: [Csatlakozás a HDInsighthoz (Apache Hadoop) az SSH használatával.](../hdinsight-hadoop-linux-use-ssh-unix.md)
+* Apache Kafka a HDInsight-fürtön. A fürt létrehozásával kapcsolatos további információkért tekintse [meg a Start with apache Kafka on HDInsight](apache-kafka-get-started.md)című témakört.
+* A [Java Developer Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks) vagy azzal egyenértékű, például OpenJDK.
+* Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
+* Egy SSH-ügyfél, például a Putty. További információ: [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 ## <a name="understand-the-code"></a>A kód értelmezése
 
-A példaalkalmazás az [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) `Producer-Consumer` alkönyvtárban található. Ha **vállalati biztonsági csomag (ESP)** engedélyezett Kafka-fürtöt használ, az `DomainJoined-Producer-Consumer` alkönyvtárban található alkalmazásverziót kell használnia.
+A példaként szolgáló alkalmazás a [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)(z) `Producer-Consumer` alkönyvtárban található. Ha **Enterprise Security Package (ESP)** engedélyezett Kafka-fürtöt használ, használja az alkönyvtárban található `DomainJoined-Producer-Consumer` alkalmazás verzióját.
 
 Az alkalmazás elsődlegesen négy fájlból áll:
 * `pom.xml`: Ez a fájl határozza meg a projektfüggőségeket, a Java-verziót és a csomagolási módszereket.
 * `Producer.java`: Ez a fájl véletlenszerű mondatokat küld a Kafkának a Producer API használatával.
 * `Consumer.java`: Ez a fájl a Consumer API-t használatával olvas ki adatokat a Kafkából, és az STDOUT-ba küldi el azokat.
-* `AdminClientWrapper.java`: Ez a fájl az admin API-t használja a Kafka-témakörök létrehozásához, leírásához és törléséhez.
+* `AdminClientWrapper.java`: Ez a fájl a rendszergazdai API-t használja a Kafka-témakörök létrehozására, leírására és törlésére.
 * `Run.java`: A Producer- és Consumer-kód futtatásához a rendszer a parancssori felületet használja.
 
 ### <a name="pomxml"></a>Pom.xml
@@ -73,7 +73,7 @@ A `pom.xml` fájl fontosabb elemei a következők:
 
 ### <a name="producerjava"></a>Producer.java
 
-A Producer a Kafka közvetítő gazdagépeivel (feldolgozó csomópontjaival) kommunikál, és adatok küld egy Kafka-témakörnek. A következő kódrészlet a [Producer.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) fájlból származik a [GitHub-tárházból,](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) és bemutatja, hogyan állíthatja be a termelő imperátusát:
+A Producer a Kafka közvetítő gazdagépeivel (feldolgozó csomópontjaival) kommunikál, és adatok küld egy Kafka-témakörnek. A következő kódrészlet a [GitHub-tárházból](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) származó [producer. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Producer.java) fájlból származik, és bemutatja, hogyan állíthatja be a termelő tulajdonságait:
 
 ```java
 Properties properties = new Properties();
@@ -111,15 +111,15 @@ Ebben a kódban a Consumer úgy van beállítva, hogy a beolvasást a témakör 
 
 ### <a name="runjava"></a>Run.java
 
-A [Run.java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) fájl olyan parancssori felületet biztosít, amely a gyártót vagy a fogyasztói kódot futtatja. Paraméterként a Kafka közvetítő gazdagépének adatait kell megadni. A fogyasztói folyamat által használt csoportazonosító értéket tetszés szerint megadhat. Ha több fogyasztói példányt hoz létre ugyanazzal a csoportazonosítóval, azok terheléselosztási olvasást fognak olvasni a témakörből.
+A [Run. Java](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started/blob/master/Producer-Consumer/src/main/java/com/microsoft/example/Run.java) fájl olyan parancssori felületet biztosít, amely a gyártó vagy a fogyasztó kódját futtatja. Paraméterként a Kafka közvetítő gazdagépének adatait kell megadni. Igény szerint a felhasználói folyamat által használt csoportazonosító értéket is megadhatja. Ha ugyanazzal a csoport-AZONOSÍTÓval hoz létre több fogyasztói példányt, a rendszer a témakörből olvassa be a terheléselosztási egyenleget.
 
 ## <a name="build-and-deploy-the-example"></a>A példa létrehozása és üzembe helyezése
 
-Ha ki szeretné hagyni ezt a lépést, az előre `Prebuilt-Jars` összeállított üvegek letölthetők az alkönyvtárból. Töltse le a kafka-producer-consumer.jar. Ha a fürt **enterprise security package (ESP)** engedélyezve van, használja a kafka-producer-consumer-esp.jar. A 3.
+Ha ki szeretné hagyni ezt a lépést, az előre összeépített tégelyek az `Prebuilt-Jars` alkönyvtárból tölthetők le. Töltse le a Kafka-producer-Consumer. jar fájlt. Ha a fürt **Enterprise Security Package (ESP)** engedélyezve van, használja a Kafka-producer-Consumer-ESP. jar fájlt. Futtassa a 3. lépést a jar a HDInsight-fürtre történő másolásához.
 
-1. Töltse le és [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)bontsa ki a példákat a alkalmazásból.
+1. Töltse le és csomagolja ki [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started)a példákat.
 
-2. Állítsa be az aktuális könyvtárat a `hdinsight-kafka-java-get-started\Producer-Consumer` könyvtár helyére. Ha enterprise **security package (ESP)** engedélyezett Kafka fürtöt használ, a helyet alkönyvtárra `DomainJoined-Producer-Consumer`kell állítania. Az alkalmazás létrehozásához használja a következő parancsot:
+2. Állítsa be az aktuális könyvtárat a `hdinsight-kafka-java-get-started\Producer-Consumer` könyvtár helyére. Ha **Enterprise Security Package (ESP)** engedélyezett Kafka-fürtöt használ, állítsa be a helyet `DomainJoined-Producer-Consumer`az alkönyvtárra. Az alkalmazás létrehozásához használja a következő parancsot:
 
     ```cmd
     mvn clean package
@@ -127,7 +127,7 @@ Ha ki szeretné hagyni ezt a lépést, az előre `Prebuilt-Jars` összeállítot
 
     A parancs létrehozza a `target` nevű könyvtárat, amely a `kafka-producer-consumer-1.0-SNAPSHOT.jar` nevű fájlt tartalmazza.
 
-3. Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `CLUSTERNAME` elemet a fürt nevére. Írja be a következő `kafka-producer-consumer-1.0-SNAPSHOT.jar` parancsot a fájl HDInsight-fürtbe való másolásához. Ha a rendszer kéri, adja meg az SSH-felhasználó jelszavát.
+3. Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `CLUSTERNAME` elemet a fürt nevére. A következő parancs beírásával másolja `kafka-producer-consumer-1.0-SNAPSHOT.jar` a fájlt a HDInsight-fürtre. Ha a rendszer kéri, adja meg az SSH-felhasználó jelszavát.
 
     ```cmd
     scp ./target/kafka-producer-consumer-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:kafka-producer-consumer.jar
@@ -135,13 +135,13 @@ Ha ki szeretné hagyni ezt a lépést, az előre `Prebuilt-Jars` összeállítot
 
 ## <a name="run-the-example"></a><a id="run"></a> A példa futtatása
 
-1. Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `CLUSTERNAME` elemet a fürt nevére. Nyisson meg egy SSH-kapcsolatot a fürttel a következő parancs megadásával. Ha a rendszer kéri, adja meg az SSH-felhasználói fiók jelszavát.
+1. Cserélje le az `sshuser` elemet a fürt SSH-felhasználójára, illetve a `CLUSTERNAME` elemet a fürt nevére. Nyisson meg egy SSH-kapcsolatokat a fürttel a következő parancs beírásával. Ha a rendszer kéri, adja meg az SSH-felhasználói fiók jelszavát.
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. A Kafka brókergazda lekéri az `<clustername>` `<password>` értékeket a következő parancsra, és hajtsa végre azt. Használja ugyanazt a `<clustername>` burkolatot, mint az Azure Portalon látható. Cserélje `<password>` le a fürt bejelentkezési jelszavát, majd hajtsa végre:
+1. A Kafka-átvitelszervező gazdagépek beszerzéséhez cserélje le `<clustername>` az `<password>` értékeket a következő parancsban, majd hajtsa végre. Használja ugyanazt a burkolatot `<clustername>` , mint ahogy az a Azure Portalban látható. Cserélje `<password>` le a nevet a fürt bejelentkezési jelszavára, majd hajtsa végre a következőket:
 
     ```bash
     sudo apt -y install jq
@@ -151,9 +151,9 @@ Ha ki szeretné hagyni ezt a lépést, az előre `Prebuilt-Jars` összeállítot
     ```
 
     > [!Note]  
-    > Ez a parancs Ambari-hozzáférést igényel. Ha a fürt egy NSG mögött van, futtassa ezt a parancsot egy olyan gépről, amely hozzáfér az Ambari eléréséhez.
+    > Ehhez a parancshoz Ambari-hozzáférés szükséges. Ha a fürt egy NSG mögött található, futtassa ezt a parancsot egy olyan gépről, amely hozzáférhet a Ambari.
 
-1. Kafka-témakör `myTest`létrehozása, a következő parancs beírásával:
+1. A Kafka-témakör `myTest`létrehozásához írja be a következő parancsot:
 
     ```bash
     java -jar kafka-producer-consumer.jar create myTest $KAFKABROKERS
@@ -195,14 +195,14 @@ tmux new-session 'java -jar kafka-producer-consumer.jar consumer myTest $KAFKABR
 \; attach
 ```
 
-Ez a parancs a `tmux` használatával két oszlopra osztja a terminált. Mindegyik oszlopban elindul egy-egy fogyasztó, amelyekhez azonos csoportazonosító-érték tartozik. Ha a fogyasztók befejezték a beolvasást, figyelje meg, hogy mindegyik csak a rekordok egy részét olvasta be. A __kilépéshez__ kétszer `tmux`használja a Ctrl+ C billentyűkombinációt.
+Ez a parancs a `tmux` használatával két oszlopra osztja a terminált. Mindegyik oszlopban elindul egy-egy fogyasztó, amelyekhez azonos csoportazonosító-érték tartozik. Ha a fogyasztók befejezték a beolvasást, figyelje meg, hogy mindegyik csak a rekordok egy részét olvasta be. A __CTRL + C billentyűkombinációt__ a `tmux`kilépéshez használhatja.
 
 Az ugyanazon csoportban található ügyfelek általi felhasználás kezelése a témakör partícióinak használatával történik. Ebben a kódmintában a korábban létrehozott `test` témakör nyolc partícióval rendelkezik. Ha elindít nyolc fogyasztót, az egyes fogyasztók a témakör egyetlen partíciójából fognak rekordokat olvasni.
 
 > [!IMPORTANT]  
 > A fogyasztói csoportban található fogyasztói példányok száma nem haladhatja meg a partíciók számát. Ebben a példában egy fogyasztói csoport legfeljebb nyolc fogyasztót tartalmazhat, mivel a témakörben ennyi partíció található. Emellett lehet több, legfeljebb nyolc fogyasztóval rendelkező fogyasztói csoportja is.
 
-A Kafkában tárolt rekordok at a partíción belül fogadott sorrendben tárolják. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül*, hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül*, hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
+A Kafka-ben tárolt rekordok tárolása a partíción belül kapott sorrendben történik. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *egy partíción belül*, hozzon létre egy fogyasztói csoportot, amelyben a fogyasztói példányok száma egyezik a partíciók számával. Ha a rekordokat az érkezési sorrendben szeretné kézbesíteni *a témakörön belül*, hozzon létre egy olyan fogyasztói csoportot, amely csak egyetlen fogyasztói példánnyal rendelkezik.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -216,7 +216,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a dokumentumban megtanulta, hogyan használhatja az Apache Kafka producerés fogyasztói API-t a Kafka-val a HDInsight-on. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
+Ebből a dokumentumból megtanulta, hogyan használhatja a Apache Kafka producer és fogyasztói API-t a Kafka on HDInsight. Az alábbiak további információt biztosítanak a Kafka használatával kapcsolatban:
 
 * [A Kafka REST proxy használata](rest-proxy.md)
 * [Apache Kafka-naplók elemzése](apache-kafka-log-analytics-operations-management.md)

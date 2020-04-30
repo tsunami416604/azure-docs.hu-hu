@@ -1,14 +1,14 @@
 ---
-title: Oktatóanyag – A Windows Server biztonsági és azure-beli biztonsági kezelése
+title: Oktatóanyag – a Windows Server biztonsági mentése az Azure-ba
 description: Ez az oktatóanyag részletesen ismerteti a helyszíni Windows Serverek helyreállítási tárba történő biztonsági mentését.
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: 906901ce4792e8b363a3a9b77c9bf6bb4b59aec5
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "79238747"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
@@ -19,11 +19,11 @@ Az Azure Backuppal megvédheti a Windows Servert a sérülésektől, támadások
 >
 > * A MARS-ügynök letöltése és beállítása
 > * A kiszolgáló biztonsági mentési időpontjainak és a másolatok megőrzési ütemezésének konfigurálása
-> * Igény szerinti biztonsági másolatot kell létrehozni
+> * Igény szerinti biztonsági mentés végrehajtása
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
+Jelentkezzen be az Azure Portalra a <https://portal.azure.com.> webhelyen
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
@@ -39,7 +39,7 @@ Mielőtt biztonsági másolatot készíthetne a Windows Serverről, létre kell 
 
 3. A **Helyreállítási tár** menüben:
 
-    * Írja be a *myRecoveryServicesVault* nevet a **Név mezőbe.**
+    * Írja be a *MyRecoveryServicesVault* **nevet**.
     * Megjelenik az aktuális előfizetési azonosító az **Előfizetés** mezőben.
     * Az **Erőforráscsoport** mezőben válassza a **Meglévő használata** és a *myResourceGroup* elemet. Ha a *myResourceGroup* nem létezik, válassza ki az **Új létrehozása** elemet, és írja be a *myResourceGroup* kifejezést.
     * A **Hely** legördülő menüből válassza a *Nyugat-Európa* elemet.
@@ -59,7 +59,7 @@ A Microsoft Azure Recovery Services- (MARS-) ügynök egy társítást hoz létr
 
 3. A **Biztonsági mentés célja** menüben:
 
-   * a **Hol fut a munkaterhelés?** **On-premises**
+   * **hol fut a munkaterhelése?**, válassza **a** helyszíni lehetőséget.
    * a **Miről szeretne biztonsági másolatot készíteni?** pontnál válassza a **Fájlok és mappák** és a **Rendszerállapot** elemet
 
    ![a tár információinak megadása](./media/tutorial-backup-windows-server-to-azure/backup-goal.png)
