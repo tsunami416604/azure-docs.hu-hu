@@ -8,21 +8,21 @@ ms.topic: sample
 ms.date: 12/03/2018
 ms.author: sngun
 ms.openlocfilehash: 0a9b58a78ee9de48b721511646728bd8140ef980
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "72170174"
 ---
 # <a name="azure-cosmos-db-async-java-examples-for-the-sql-api"></a>Azure Cosmos DB: Aszinkron Java-példák az SQL API-hoz
 
 > [!div class="op_single_selector"]
-> * [.](sql-api-dotnet-samples.md)
-> * [.](sql-api-dotnet-v3sdk-samples.md)
+> * [.NET v2 SDK-példák](sql-api-dotnet-samples.md)
+> * [.NET v3 SDK-példák](sql-api-dotnet-v3sdk-samples.md)
 > * [Java-példák](sql-api-java-samples.md)
 > * [Aszinkron Java-példák](sql-api-async-java-samples.md)
-> * [Példák a Node.js](sql-api-nodejs-samples.md)
-> * [Példák python](sql-api-python-samples.md)
+> * [Node. js-példák](sql-api-nodejs-samples.md)
+> * [Python-példák](sql-api-python-samples.md)
 > * [Azure Kódminta-katalógus](https://azure.microsoft.com/resources/samples/?sort=0&service=cosmos-db)
 > 
 > 
@@ -83,12 +83,12 @@ Futtatás a parancssorból:
     ```
 
    > [!NOTE]
-   > Minden minta önálló; magát állítja be, és törli önmagát. A minták több hívást adnak ki a [DocumentClient.createCollection fájlba.](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.createcollection) Minden ilyen hívás esetén az előfizetésére 1 órányi használat terhelődik a létrehozott gyűjtemény teljesítményszintjének megfelelően. 
+   > Minden minta önálló; magát állítja be, és törli önmagát. A minták több hívást adnak ki a [DocumentClient. createCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.createcollection). Minden ilyen hívás esetén az előfizetésére 1 órányi használat terhelődik a létrehozott gyűjtemény teljesítményszintjének megfelelően. 
    > 
    > 
 
 ## <a name="database-examples"></a>Adatbázis-példák
-A [DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java) fájl bemutatja, hogyan hajthatja végre a következő feladatokat. Az Azure Cosmos-adatbázisok futtatása előtt a következő mintákfuttatásáról az Adatbázisok, tárolók és elemek fogalmi [cikkének munkáért.](databases-containers-items.md) 
+A [DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java) -fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-adatbázisokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -99,7 +99,7 @@ A [DatabaseCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/m
 | [Adatbázis létrehozása és lekérdezése](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DatabaseCRUDAsyncAPITest.java#L282-L312) | [AsyncDocumentClient.queryDatabases](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querydatabases) |
 
 ## <a name="collection-examples"></a>Gyűjtemény-példák
-A [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) fájl bemutatja, hogyan hajthatja végre a következő feladatokat. Az Azure Cosmos-gyűjtemények futtatása előtt a következő mintákat, az [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikk kidolgozása című témakörben olvashat. 
+A [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) -fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-gyűjteményekről, tekintse meg a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -111,7 +111,7 @@ A [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob
 | [Gyűjtemény létrehozása és lekérdezése](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java#L339-L372) | [AsyncDocumentClient.queryCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.querycollections) |
 
 ## <a name="document-examples"></a>Dokumentumpéldák
-A [DocumentCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java) fájl bemutatja, hogyan hajthatja végre a következő feladatokat. Az Azure Cosmos-dokumentumok futtatása előtt a következő mintákfuttatásáról az Adatbázisok, tárolók és elemek fogalmi [cikkének munkáért.](databases-containers-items.md) 
+A [DocumentCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java) -fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos-dokumentumokról, olvassa el a következő témakört: [adatbázisok, tárolók és elemek](databases-containers-items.md) fogalmi cikkének használata. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -125,7 +125,7 @@ A [DocumentCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/m
 | [Dokumentum létrehozása és olvasása](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentCRUDAsyncAPITest.java#L437-L458) | [AsyncDocumentClient.readDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.readdocument) |
 
 ## <a name="indexing-examples"></a>Indexelési példák
-A [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) fájl bemutatja, hogyan hajthatja végre a következő feladatokat.  Ha többet szeretne tudni az Indexelés az Azure Cosmos DB futtatása előtt a következő mintákat, olvassa el az [indexelési szabályzatok](index-policy.md), [indexelési típusok](index-types.md)és [indexelési útvonalak fogalmi](index-paths.md) cikkek. 
+A [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/CollectionCRUDAsyncAPITest.java) -fájl a következő feladatok elvégzését mutatja be.  A következő minták futtatása előtt a Azure Cosmos DB indexelésének megismeréséhez lásd: a [házirendek indexelése](index-policy.md), az [indexelési típusok](index-types.md)és az [indexelési útvonalak](index-paths.md) fogalmi cikkei. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -134,7 +134,7 @@ A [CollectionCrudAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob
 További információ az indexelésről: [Azure Cosmos DB indexelési szabályzat](index-policy.md).
 
 ## <a name="query-examples"></a>Lekérdezéspéldák
-A [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java) fájl bemutatja, hogyan hajthatja végre a következő feladatokat. Ha többet szeretne megtudni az SQL-lekérdezési hivatkozás az Azure Cosmos DB futtatása előtt a következő mintákat, tekintse meg az [SQL-lekérdezési példák](how-to-sql-query.md) fogalmi cikk. 
+A [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java) -fájl a következő feladatok elvégzését mutatja be. Ha a következő minták futtatása előtt szeretne többet megtudni a Azure Cosmos DB SQL-lekérdezési referenciáról, tekintse meg az [SQL-lekérdezési példák](how-to-sql-query.md) fogalmi cikkét. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -142,7 +142,7 @@ A [DocumentQuerySamples](https://github.com/Azure/azure-cosmosdb-java/blob/maste
 | [Egyszerű dokumentumlekérdezés végrehajtása és a kérelemegységek teljes költségének megkeresése](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L249-L268) | [FeedResponse.getRequestCharge](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedresponse.getrequestcharge) |
 | [Egyszerű dokumentumlekérdezés végrehajtása, egy oldal olvasása, és leiratkozás a visszaadott megfigyelhető elemről](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L274-L312) | |
 | [Egyszerű dokumentumlekérdezés végrehajtása, és az eredmények szűrése](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L318-L368) | |
-| [Rendelésalapú, partícióközi dokumentumlekérdezés végrehajtása](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedoptions.setenablecrosspartitionquery) |
+| [Megrendelés elvégzése több partíciós dokumentumok lekérdezésével](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/DocumentQueryAsyncAPITest.java#L410-L457) | [FeedOptions.setEnableCrossPartitionQuery](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.feedoptions.setenablecrosspartitionquery) |
 
 További információ a lekérdezések írásáról: [SQL-lekérdezés az Azure Cosmos DB-ben](how-to-sql-query.md).
 
@@ -156,7 +156,7 @@ Az [OfferCRUDAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/mas
 | [Gyűjtemény teljesítményének frissítése az ajánlata lecserélésével](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/OfferCRUDAsyncAPITest.java#L101-L153) | [AsyncDocumentClient.replaceOffer](https://docs.microsoft.com/java/api/com.microsoft.azure.cosmosdb.rx.asyncdocumentclient.replaceoffer) |
 
 ## <a name="stored-procedure-examples"></a>Tárolt eljárások példái
-A [StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java) fájl bemutatja, hogyan hajthatja végre a következő feladatokat. Ha az alábbi minták futtatása előtt szeretne többet megtudni az Azure Cosmos DB kiszolgálóoldali programozásáról, olvassa el a [Tárolt eljárások, eseményindítók és a felhasználó által definiált függvények](stored-procedures-triggers-udfs.md) fogalmi cikkét. 
+A [StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java) -fájl a következő feladatok elvégzését mutatja be. Ha a következő minták futtatása előtt szeretné megtudni Azure Cosmos DB kiszolgálóoldali programozását, tekintse meg a [tárolt eljárások, eseményindítók és a felhasználó által definiált függvények](stored-procedures-triggers-udfs.md) fogalmi cikkét. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
@@ -165,7 +165,7 @@ A [StoredProcedureAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blo
 | [Tárolt eljárás létrehozása és futtatása objektumargumentumokkal](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/StoredProcedureAsyncAPITest.java#L201-L241) | |
 
 ## <a name="unique-key"></a>Egyedi kulcs
-A [UniqueIndexAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/UniqueIndexAsyncAPITest.java) fájl bemutatja, hogyan hajthatja végre a következő feladatokat. Az azure Cosmos DB egyedi kulcsainak a következő minták futtatása előtt című témakört az [Egyedi kulcsmegkötések](unique-keys.md) fogalmi cikk című témakörben olvashat. 
+A [UniqueIndexAsyncAPITest](https://github.com/Azure/azure-cosmosdb-java/blob/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples/UniqueIndexAsyncAPITest.java) -fájl a következő feladatok elvégzését mutatja be. Ha az alábbi minták futtatása előtt szeretne többet megtudni a Azure Cosmos DB található egyedi kulcsokról, tekintse meg az [egyedi kulcsokra vonatkozó megkötések](unique-keys.md) fogalmi cikkét. 
 
 | Tevékenység | API-referencia |
 | --- | --- |
