@@ -1,47 +1,47 @@
 ---
-title: Oktatóanyag – SAP HANA DB biztonsági mentés az Azure-ban a CLI használatával
-description: Ebben az oktatóanyagban megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépeken futó SAP HANA-adatbázisokról egy Azure Backup Recovery Services-tárolóba az Azure CLI használatával.
+title: Oktatóanyag – SAP HANA adatbázis biztonsági mentése az Azure-ban a parancssori felület használatával
+description: Ebből az oktatóanyagból megtudhatja, hogyan készíthet biztonsági másolatot az Azure-beli virtuális gépeken futó SAP HANA adatbázisokról egy Azure Backup Recovery Services-tárolóra az Azure CLI használatával.
 ms.topic: tutorial
 ms.date: 12/4/2019
 ms.openlocfilehash: cdc8a8fb09a086a2b9212c21d071f267991fa275
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78206622"
 ---
-# <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: Az SAP HANA-adatbázisok biztonsági mentése egy Azure virtuális gépen az Azure CLI használatával
+# <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
 
-Az Azure CLI segítségével azure-erőforrásokat hozhat létre és kezelhet a parancssorból vagy parancsfájlokon keresztül. Ez a dokumentáció részletezi, hogyan készíthet biztonsági másolatot egy SAP HANA-adatbázisról, és hogyan indíthat el igény szerinti biztonsági mentéseket – mindezt az Azure CLI használatával. Ezeket a lépéseket az [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)használatával is végrehajthatja.
+Az Azure CLI az Azure-erőforrások parancssorból vagy szkriptekkel történő létrehozására és kezelésére szolgál. Ez a dokumentáció részletesen ismerteti a SAP HANA adatbázis biztonsági mentését és az igény szerinti biztonsági mentések elindítását – mindezt az Azure CLI használatával. Ezeket a lépéseket a [Azure Portal](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)használatával is végrehajthatja.
 
-Ez a dokumentum feltételezi, hogy már rendelkezik egy SAP HANA-adatbázis telepítve egy Azure virtuális gép. (Virtuális [gép is létrehozható az Azure CLI használatával.](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli) Az oktatóanyag végére a következőkre lesz képes:
+Ez a dokumentum azt feltételezi, hogy már rendelkezik egy Azure-beli virtuális gépen telepített SAP HANA-adatbázissal. ( [Virtuális gépet is létrehozhat az Azure CLI használatával](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)). Az oktatóanyag végére a következőket teheti:
 
 > [!div class="checklist"]
 >
 > * Recovery Services-tároló létrehozása
-> * Sap HANA-példány regisztrálása és adatbázis(ok) felderítése rajta
-> * Biztonsági mentés engedélyezése SAP HANA-adatbázisban
-> * Igény szerinti biztonsági mentés aktiválása
+> * Regisztrálja SAP HANA példányát, és keresse meg az adatbázis (oka) t
+> * Biztonsági mentés engedélyezése SAP HANA adatbázison
+> * Igény szerinti biztonsági mentés indítása
 
-Tekintse meg a [forgatókönyveket, amelyekjelenleg támogatja](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support) az SAP HANA.
+Tekintse át a SAP HANA [jelenleg támogatott forgatókönyveket](https://docs.microsoft.com/azure/backup/sap-hana-backup-support-matrix#scenario-support) .
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-A CLI helyi telepítéséhez és használatához futtatnia kell az Azure CLI xx.xxx.x vagy újabb verzióját. A parancssori felület verziójának megkereséséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető cikket.
+A parancssori felület helyi telepítéséhez és használatához az Azure CLI XX. xxx. x vagy újabb verzióját kell futtatnia. A parancssori felület verziójának megkereséséhez futtassa az `az --version` parancsot. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli) ismertető cikket.
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
 
-A Recovery Services-tároló egy logikai tároló, amely tárolja a biztonsági mentési adatokat az egyes védett erőforrások, például az Azure virtuális gépek vagy az Azure virtuális gépeken futó számítási feladatok – például az SQL vagy hana adatbázisok. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
+A Recovery Services tároló egy logikai tároló, amely az egyes védett erőforrások, például Azure-beli virtuális gépek vagy Azure-beli virtuális gépeken futó munkaterhelések (például SQL vagy HANA-adatbázisok) biztonsági mentési adatait tárolja. Amikor egy védett erőforrás biztonsági mentésének feladata fut, a rendszer egy helyreállítási pontot hoz létre a Recovery Services-tárolóban. Ezt követően ezen helyreállítási pontok egyikével állíthatja vissza az adatokat egy adott időpontra.
 
-Recovery Services-tárolót az [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create) paranccsal hozhat létre. Adja meg a védeni kívánt virtuális gépével megegyező erőforráscsoportot és helyet. Ebből a virtuális gépből megtudhatja, hogyan hozhat létre virtuális gépeket az Azure CLI használatával ezzel a [virtuális gép rövid útmutatójával.](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)
+Recovery Services-tárolót az [az backup vault create](https://docs.microsoft.com/cli/azure/backup/vault#az-backup-vault-create) paranccsal hozhat létre. Adja meg a védeni kívánt virtuális gépével megegyező erőforráscsoportot és helyet. Megtudhatja, hogyan hozhat létre virtuális gépet az Azure CLI- [vel ezzel a](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-cli)virtuálisgép-útmutatóval.
 
-Ehhez az oktatóanyaghoz a következőket fogjuk használni:
+Ebben az oktatóanyagban a következőket fogjuk használni:
 
-* *saphanaResourceGroup* nevű erőforráscsoport
-* *saphanaVM* nevű virtuális gép
-* források a *westus2* helyen.
+* egy *saphanaResourceGroup* nevű erőforráscsoport
+* egy *saphanaVM* nevű virtuális gép
+* erőforrások a *westus2* helyen.
 
-Létrehozunk egy *saphanaVault*nevű trezort.
+Létrehozunk egy *saphanaVault*nevű tárat.
 
 ```azurecli-interactive
 az backup vault create --resource-group saphanaResourceGroup \
@@ -49,7 +49,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A georedundáns tárolás biztosítja, hogy a rendszer egy olyan másodlagos Azure-régióba replikálja a biztonsági mentési adatokat, amely a forrásadatok elsődleges helyétől több száz kilométerre található. Ha a tárolási redundancia beállítást módosítani kell, használja az [az biztonsági másolat-tároló biztonsági mentési készlet](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) parancsmagját.
+A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A georedundáns tárolás biztosítja, hogy a rendszer egy olyan másodlagos Azure-régióba replikálja a biztonsági mentési adatokat, amely a forrásadatok elsődleges helyétől több száz kilométerre található. Ha módosítani kell a tárolási redundancia beállítást, használja az az [Backup Vault Backup-Properties set](https://docs.microsoft.com/cli/azure/backup/vault/backup-properties?view=azure-cli-latest#az-backup-vault-backup-properties-set) parancsmagot.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -58,7 +58,7 @@ az backup vault backup-properties set \
     --backup-storage-redundancy "LocallyRedundant/GeoRedundant"
 ```
 
-Annak megtekintéséhez, hogy a tároló sikeresen létrejött-e, használja az [az biztonsági mentési tároló](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-list) parancsmagját. A következő válasz jelenik meg:
+Ha szeretné megtudni, hogy a tár létrehozása sikeres volt-e, használja az az [Backup Vault List](https://docs.microsoft.com/cli/azure/backup/vault?view=azure-cli-latest#az-backup-vault-list) parancsmagot. A következő választ fogja látni:
 
 ```output
 Location   Name             ResourceGroup
@@ -66,11 +66,11 @@ Location   Name             ResourceGroup
 westus2    saphanaVault     saphanaResourceGroup
 ```
 
-## <a name="register-and-protect-the-sap-hana-instance"></a>Regisztrálja és védje az SAP HANA-példányt
+## <a name="register-and-protect-the-sap-hana-instance"></a>Az SAP HANA-példány regisztrálása és megóvása
 
-Az SAP HANA-példány (a virtuális gép, amelyen telepítve van az SAP HANA) az [Azure-szolgáltatások](https://aka.ms/scriptforpermsonhana) által felderített, egy előzetes regisztrációs parancsfájlt kell futtatni az SAP HANA-gépen. Győződjön meg arról, hogy a parancsfájl futtatása előtt minden [előfeltétel](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) teljesül. Ha többet szeretne megtudni arról, hogy mit csinál a parancsfájl, olvassa el [a Mi az előzetes regisztrációs parancsfájl nem](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) szakaszban.
+Ahhoz, hogy az Azure-szolgáltatások felderítsék az SAP HANA-példányt (a SAP HANA telepített virtuális gépet), az SAP HANA gépen egy [regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) kell futtatni. A parancsfájl futtatása előtt győződjön meg arról, hogy minden [előfeltétel](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db#prerequisites) teljesül. Ha többet szeretne megtudni a szkripttel kapcsolatban, tekintse meg a [Mi az előzetes regisztrációs parancsfájl](tutorial-backup-sap-hana-db.md#what-the-pre-registration-script-does) a következő témakört:.
 
-A parancsfájl futtatása után az SAP HANA-példány regisztrálható a helyreállítási szolgáltatások tárolókorában létrehozott. A példány regisztrálásához használja az [az biztonsági mentési tároló regiszter](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) parancsmagját. *A VMResourceId* az SAP HANA telepítéséhez létrehozott virtuális gép erőforrás-azonosítója.
+A szkript futtatása után a SAP HANA-példány regisztrálható a korábban létrehozott Recovery Services-tárolóban. A példány regisztrálásához használja az az [Backup Container Register](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-register) parancsmagot. A *VMResourceId* a SAP HANA telepítéséhez létrehozott virtuális gép erőforrás-azonosítója.
 
 ```azurecli-interactive
 az backup container register --resource-group saphanaResourceGroup \
@@ -82,11 +82,11 @@ az backup container register --resource-group saphanaResourceGroup \
 ```
 
 >[!NOTE]
->Ha a virtuális gép nem ugyanabban az erőforráscsoportban, mint a tároló, majd *saphanaResourceGroup* hivatkozik az erőforráscsoport, ahol a tároló jött létre.
+>Ha a virtuális gép nem ugyanabban az erőforráscsoporthoz van, mint a tároló, akkor a *saphanaResourceGroup* arra az erőforráscsoporthoz utal, amelyben a tárolót létrehozták.
 
-Az SAP HANA-példány regisztrálása automatikusan felderíti az összes aktuális adatbázisokat. Azonban a jövőben hozzáadható új adatbázisok felderítéséhez tekintse meg a [regisztrált SAP HANA-példány szakaszhoz hozzáadott új adatbázisok felderítése.](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance)
+A SAP HANA példány regisztrálása automatikusan felfedi az összes aktuális adatbázisát. Azonban a későbbiekben felvehető új adatbázisok felderítéséhez tekintse meg a regisztrált SAP HANA példányhoz [hozzáadott új adatbázisok felfedése](tutorial-sap-hana-manage-cli.md#protect-new-databases-added-to-an-sap-hana-instance) című szakaszt.
 
-Annak ellenőrzéséhez, hogy az SAP HANA-példány sikeresen regisztrálva van-e a tárolóban, használja az [az biztonsági mentési tárolók listájának](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) parancsmagját. A következő válasz jelenik meg:
+Az az [Backup Container List](https://docs.microsoft.com/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) parancsmag használatával ellenőrizze, hogy a SAP HANA-példány sikeresen regisztrálva van-e a tárolóban. A következő választ fogja látni:
 
 ```output
 Name                                                    Friendly Name    Resource Group        Type           Registration Status
@@ -95,11 +95,11 @@ VMAppContainer;Compute;saphanaResourceGroup;saphanaVM   saphanaVM        saphana
 ```
 
 >[!NOTE]
-> A fenti kimenetben a "name" oszlop a tároló nevére utal. Ez a tárolónév lesz használva a következő szakaszokban a biztonsági mentések engedélyezéséhez és aktiválásához. Amely ebben az esetben a *VMAppContainer; Számítás;saphanaResourceGroup;saphanaVM*.
+> A fenti kimenet "Name" oszlopa a tároló nevére utal. Ezt a tároló nevét fogja használni a következő részekben a biztonsági mentések engedélyezéséhez és azok aktiválásához. Ebben az esetben a *VMAppContainer; Számítás; saphanaResourceGroup; saphanaVM*.
 
-## <a name="enable-backup-on-sap-hana-database"></a>Biztonsági mentés engedélyezése az SAP HANA-adatbázisban
+## <a name="enable-backup-on-sap-hana-database"></a>Biztonsági mentés engedélyezése SAP HANA adatbázison
 
-Az [az biztonsági mentés védett elemlista](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) parancsmag felsorolja az összes felderített adatbázisok az SAP HANA-példány, amely az előző lépésben regisztrált.
+Az az [Backup Protected-Item List](https://docs.microsoft.com/cli/azure/backup/protectable-item?view=azure-cli-latest#az-backup-protectable-item-list) parancsmag felsorolja az előző lépésben regisztrált SAP HANA példányon felderített összes adatbázist.
 
 ```azurecli-interactive
 az backup protectable-item list --resource-group saphanaResourceGroup \
@@ -108,7 +108,7 @@ az backup protectable-item list --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Ebben a listában meg kell találnia a biztonsági másolatot tartalmazó adatbázist, amely a következőképpen fog kinézni:
+A listában keresse meg azt az adatbázist, amelyről biztonsági másolatot szeretne készíteni, amely a következőképpen fog kinézni:
 
 ```output
 Name                           Protectable Item Type    ParentName    ServerName    IsProtected
@@ -118,9 +118,9 @@ saphanadatabase;hxe;systemdb   SAPHanaDatabase          HXE           hxehost   
 saphanadatabase;hxe;hxe        SAPHanaDatabase          HXE           hxehost       NotProtected
 ```
 
-Mint látható a fenti kimenet, az SAP HANA rendszer SID-je HXE. Ebben az oktatóanyagban konfiguráljuk a *saphanadatabase;hxe;hxe* adatbázis biztonsági mentését, amely a *hxehost* kiszolgálón található.
+Ahogy a fenti kimenetben látható, a SAP HANA rendszer SID-HXE. Ebben az oktatóanyagban a *saphanadatabase; hxe; hxe* -adatbázis biztonsági mentését konfigurálja, amely a *hxehost* -kiszolgálón található.
 
-Az adatbázis biztonsági mentésének védelme és konfigurálása érdekében az [az biztonsági mentés védelmi enable-for-azurewl](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) parancsmagját használjuk. Adja meg a használni kívánt házirend nevét. A CLI használatával házirend létrehozásához használja az [az biztonsági mentési házirend létrehozása](https://docs.microsoft.com//cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) parancsmag. Ebben az oktatóanyagban a *sapahanaPolicy szabályzatot* fogjuk használni.
+Egy adatbázis biztonsági mentésének védelméhez és konfigurálásához használja az az [Backup Protection Enable-for-azurewl](https://docs.microsoft.com/cli/azure/backup/protection?view=azure-cli-latest#az-backup-protection-enable-for-azurewl) parancsmagot. Adja meg a használni kívánt szabályzat nevét. Ha a parancssori felület használatával szeretne szabályzatot létrehozni, használja az az [Backup Policy Create](https://docs.microsoft.com//cli/azure/backup/policy?view=azure-cli-latest#az-backup-policy-create) parancsmagot. Ebben az oktatóanyagban a *sapahanaPolicy* szabályzatot fogjuk használni.
 
 ```azurecli-interactive
 az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
@@ -132,7 +132,7 @@ az backup protection enable-for-azurewl --resource-group saphanaResourceGroup \
     --output table
 ```
 
-Ellenőrizheti, hogy a fenti biztonsági mentési konfiguráció befejeződött-e az [az biztonsági mentési feladatlista](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmag használatával. A kimenet a következőképpen jelenik meg:
+Megtekintheti, hogy a fenti biztonsági mentési konfiguráció készen áll-e az az [Backup Job List](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmag használatával. A kimenet a következőképpen fog megjelenni:
 
 ```output
 Name                                  Operation         Status     Item Name   Start Time UTC
@@ -140,14 +140,14 @@ Name                                  Operation         Status     Item Name   S
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  ConfigureBackup   Completed  hxe         2019-12-03T03:09:210831+00:00  
 ```
 
-Az [az biztonsági mentési feladatlista](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmagja felsorolja az összes olyan biztonsági mentési feladatot (ütemezett vagy igény szerint), amely a védett adatbázisban futott vagy jelenleg fut, az egyéb műveleteken kívül, például a regisztráción, a biztonsági mentés konfigurálása, a biztonsági mentési adatok törlése stb.
+Az az [Backup Job List](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-list) parancsmag felsorolja az összes olyan biztonsági mentési feladatot (ütemezett vagy igény szerint), amely fut vagy jelenleg fut a védett adatbázisban, valamint más műveleteket, például a regisztrálást, a biztonsági mentés konfigurálását, a biztonsági mentési adatok törlését stb.
 
-## <a name="trigger-an-on-demand-backup"></a>Igény szerinti biztonsági mentés aktiválása
+## <a name="trigger-an-on-demand-backup"></a>Igény szerinti biztonsági mentés indítása
 
-Míg a fenti szakasz részletezi, hogyan kell beállítani az ütemezett biztonsági mentést, ez a szakasz az igény szerinti biztonsági mentés elindításáról szól. Ehhez az [az biztonsági mentés védelmi biztonsági mentési parancsmamot](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) használjuk.
+A fenti szakasz részletesen ismerteti, hogyan konfigurálhat ütemezett biztonsági mentést, ez a szakasz az igény szerinti biztonsági mentés aktiválását tárgyalja. Ehhez használja az az [Backup Protection Backup-Now](https://docs.microsoft.com/cli/azure/backup/protection#az-backup-protection-backup-now) parancsmagot.
 
 >[!NOTE]
-> Az igény szerinti biztonsági mentés adatmegőrzési szabályát az adatbázis alapul szolgáló adatmegőrzési házirendje határozza meg.
+> Az igény szerinti biztonsági mentés megőrzési házirendjét az adatbázis alapjául szolgáló adatmegőrzési házirend határozza meg.
 
 ```azurecli-interactive
 az backup protection backup-now --resource-group saphanaResourceGroup \
@@ -159,7 +159,7 @@ az backup protection backup-now --resource-group saphanaResourceGroup \
     --output table
 ```
 
-A kimenet a következőképpen jelenik meg:
+A kimenet a következőképpen fog megjelenni:
 
 ```output
 Name                                  ResourceGroup
@@ -167,15 +167,15 @@ Name                                  ResourceGroup
 e0f15dae-7cac-4475-a833-f52c50e5b6c3  saphanaResourceGroup
 ```
 
-A válasz megadja a feladat nevét. Ez a feladatnév a feladat állapotának nyomon követésére használható az [az biztonsági mentési feladat show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmag használatával.
+A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladatok állapotának nyomon követésére az az [Backup Job show](https://docs.microsoft.com/cli/azure/backup/job?view=azure-cli-latest#az-backup-job-show) parancsmag használatával.
 
 >[!NOTE]
->A teljes vagy különbözeti biztonsági mentés ütemezése mellett jelenleg manuálisan is aktiválhatók. A naplóbiztonsági mentések automatikusan aktiválódnak, és az SAP HANA belsőleg kezeli.
+>A teljes vagy különbözeti biztonsági másolat ütemezése mellett manuálisan is aktiválhatja őket. A naplók biztonsági mentését a rendszer automatikusan aktiválja és felügyeli SAP HANA belsőleg.
 >
-> Növekményes biztonsági mentések jelenleg nem támogatja az Azure Backup.
+> A Azure Backup jelenleg nem támogatja a növekményes biztonsági mentéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-* Ha meg szeretné tudni, hogyan állíthatja vissza az SAP HANA-adatbázist az Azure virtuális gépében a CLI használatával, folytassa az oktatóanyaggal – Állítsa vissza az [SAP HANA-adatbázist az Azure virtuális gépben a CLI használatával](tutorial-sap-hana-restore-cli.md)
+* Ha meg szeretné tudni, hogyan állíthatja vissza SAP HANA adatbázist az Azure virtuális gépen a parancssori felület használatával, folytassa az Oktatóanyaggal – [SAP HANA adatbázis visszaállítása az Azure virtuális gépen a CLI használatával](tutorial-sap-hana-restore-cli.md)
 
-* Ha meg szeretné tudni, hogyan készíthet biztonsági másolatot az Azure Virtuális gépben az Azure Portalon futó SAP HANA-adatbázisról, tekintse meg az [SAP HANA-adatbázisok biztonsági mentését az Azure virtuális gépeken](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)
+* Az Azure-beli virtuális gépen futó SAP HANA adatbázis biztonsági mentéséhez Azure Portal használatával: [SAP HANA-adatbázisok biztonsági mentése Azure virtuális gépeken](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database)
