@@ -1,6 +1,6 @@
 ---
-title: SignalR-szolgáltatás létrehozása az App Service szolgáltatással az Azure CLI használatával
-description: Az Azure CLI használatával signalr szolgáltatást hozhat létre az App Service szolgáltatással. Ismerje meg az Azure SignalR Szolgáltatás összes CLI-parancsát.
+title: Szignáló szolgáltatás létrehozása App Service az Azure CLI használatával
+description: Használja az Azure CLI-t a Signal Service App Service használatával történő létrehozásához. Az Azure Signaler szolgáltatás összes CLI-parancsának megismerése.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: eb45adb699ef0f97782e6cdb8e141e254b3993f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74158017"
 ---
 # <a name="create-a-signalr-service-with-an-app-service"></a>SignalR szolgáltatási erőforrás létrehozása App Service-szel
