@@ -1,14 +1,14 @@
 ---
-title: Függvényalkalmazás létrehozása az Azure Cosmos DB-val – Azure CLI
+title: Function-alkalmazás létrehozása Azure Cosmos DB-Azure CLI-vel
 description: Azure CLI-példaszkript – Egy Azure Cosmos DB-hez kapcsolódó Azure-függvény létrehozása
 ms.topic: sample
 ms.date: 07/03/2018
 ms.custom: mvc
 ms.openlocfilehash: 5ee80283ed39789eabb702a48aa97f678a6409f9
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "75922715"
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Egy Azure Cosmos DB-hez kapcsolódó Azure-függvény létrehozása
@@ -36,12 +36,12 @@ A szkript a következő parancsokat használja: A táblázatban lévő összes p
 | Parancs | Megjegyzések |
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot egy helyen |
-| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Create a storage account |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [felhasználási tervben.](../functions-scale.md#consumption-plan) |
+| [az storage accounts create](/cli/azure/storage/account#az-storage-account-create) | Tárfiók létrehozása |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../functions-scale.md#consumption-plan). |
 | [az cosmosdb create](/cli/azure/cosmosdb#az-cosmosdb-create) | Létrehoz egy Azure Cosmos DB-adatbázist. |
-| [az cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Leveszi az adatbázisfiók-kapcsolatot. |
+| [az cosmosdb show](/cli/azure/cosmosdb#az-cosmosdb-show)| Az adatbázis-fiókkal létesített kapcsolatok beolvasása. |
 | [az cosmosdb list-keys](/cli/azure/cosmosdb#az-cosmosdb-list-keys)| Lekéri az adatbázis kulcsait. |
-| [az functionapp konfigurációs alkalmazásbeállítások készlete](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | A kapcsolati karakterláncot alkalmazásbeállításként állítja be a függvényalkalmazásban. |
+| [az functionapp config appSettings set](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) | A függvény alkalmazásban beállíthatja a kapcsolatok karakterláncát. |
 
 ## <a name="next-steps"></a>További lépések
 
