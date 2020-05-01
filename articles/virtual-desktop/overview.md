@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/10/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3dd971cec33fa9f840a48e597fb3bed9a7965895
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd4268ecad91a023683d1d6f955178fb87d78f87
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82160017"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612843"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -98,9 +98,12 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |prod.warmpath.msftcloudes.com|443|Ügynök forgalma|AzureCloud|
 |catalogartifact.azureedge.net|443|Azure Piactér|AzureCloud|
 |kms.core.windows.net|1688|A Windows aktiválása|Internet|
+|wvdportalstorageblob.blob.core.windows.net|443|Azure Portal támogatás|AzureCloud|
 
 >[!IMPORTANT]
 >A szolgáltatással kapcsolatos problémák megelőzése érdekében javasoljuk, hogy a legtöbb esetben az URL-címek helyett a szolgáltatás címkéit használja. Az URL-címek blokkolásának feloldása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz (például Azure Active Directory).
+>
+>A Windows virtuális asztal mostantól támogatja a FQDN címkét.
 
 A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekhez az Azure-beli virtuális gépek hozzáférhetnek:
 
@@ -193,7 +196,9 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 
 ## <a name="next-steps"></a>További lépések
 
-Első lépésként létre kell hoznia egy bérlőt. Ha többet szeretne megtudni a bérlők létrehozásáról, folytassa a bérlői létrehozási oktatóanyaggal.
+Ha a Windows rendszerű virtuális asztali számítógép 2019-as verzióját használja, megkezdheti az oktatóanyagot a [bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md)című részében.
+
+Ha a Windows rendszerű virtuális asztali Spring 2020 kiadást használja, helyette létre kell hoznia egy gazdagép-készletet. Az első lépésekhez kövesse az alábbi oktatóanyagot.
 
 > [!div class="nextstepaction"]
-> [Bérlő létrehozása a Windows Virtual Desktopon](tenant-setup-azure-active-directory.md)
+> [Állomáslista létrehozása a Azure Portal](create-host-pools-azure-marketplace.md)

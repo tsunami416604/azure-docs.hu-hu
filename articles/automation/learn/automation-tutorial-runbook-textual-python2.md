@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.openlocfilehash: 116f2544b23ed5f9bc0fabbb945cb5cb2b51af96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 2b20796fdcf71ccfb60c519d081b42fba982f0b6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726283"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608694"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Oktatóanyag: Python-runbook létrehozása
 
@@ -224,7 +225,7 @@ A runbook elindításához kattintson **az OK** gombra. A runbook fut, és elind
 A következő konvenciókat is használhatja a különböző streamek lekéréséhez a Python-runbookok, beleértve a FIGYELMEZTETÉSeket, a hibákat és a HIBAKERESÉSi adatfolyamokat.
 
 ```python
-print("Hello World output") 
+print("Hello World output")
 print("ERROR: - Hello world error")
 print("WARNING: - Hello world warning")
 print("DEBUG: - Hello world debug")

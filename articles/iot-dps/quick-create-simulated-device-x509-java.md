@@ -1,6 +1,6 @@
 ---
 title: Szimulált X. 509 eszköz kiépítése az Azure IoT Hub Javával
-description: Azure rövid útmutató – Szimulált X.509-eszköz létrehozása és kiépítése az IoT Hub Device Provisioning Service-hez készült Java eszközoldali SDK-val. Ez a rövid útmutató egyéni regisztrációkat használ.
+description: Azure rövid útmutató – szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Javához készült Java eszközoldali SDK-val (DPS). Ez a rövid útmutató egyéni regisztrációkat használ.
 author: wesmc7777
 ms.author: wesmc
 ms.date: 11/08/2018
@@ -9,25 +9,27 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: ec4c276b951e5cda43a4b224f25aac547cd26bec
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
-ms.translationtype: HT
+ms.openlocfilehash: 5122726cbda2145d190e3dbeb10a3c5b4ae65947
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229572"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82588447"
 ---
 # <a name="quickstart-create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>Rövid útmutató: szimulált X. 509 eszköz létrehozása és kiépítése a IoT Hub Device Provisioning Service Javához készült Java eszközoldali SDK-val
+
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
 
-Ezek a lépések bemutatják, hogyan hozhat létre szimulált X.509-eszközt egy Windows operációs rendszert futtató fejlesztői gépen, és hogyan használhat egy kódmintát, hogy ezt a szimulált eszközt összekösse az eszközkiépítési szolgáltatással és az IoT Hubbal. 
+Ebben a rövid útmutatóban egy szimulált X. 509 eszközt hoz létre egy Windows rendszerű számítógépen. A szimulált eszköz és az IoT hub között a Device kiépítési szolgáltatással (DPS) való egyéni regisztráció használatával csatlakoztathatja a szimulált eszközt az eszköz minta Java-kódjához.
 
-Amennyiben nem ismeri az automatikus kiépítés folyamatát, olvassa el [az automatikus kiépítés alapfogalmait](concepts-auto-provisioning.md) ismertető cikket is. Emellett a folytatás előtt végezze el az [IoT Hub eszközkiépítési szolgáltatás beállítása az Azure Portallal](./quick-setup-auto-provision.md) című cikk lépéseit. 
+## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
-- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
-- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): Egyetlen eszköz regisztrálásához.
-
-Ez a cikk az egyéni regisztrációkat ismerteti.
+- Az [automatikus kiépítési fogalmak](concepts-auto-provisioning.md)áttekintése.
+- [A IoT hub Device Provisioning Service beállításának befejezése a Azure Portal](./quick-setup-auto-provision.md).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egyet ingyen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- [Java SE Development Kit 8](https://aka.ms/azure-jdks).
+- [Maven](https://maven.apache.org/install.html).
+- [Git](https://git-scm.com/download/).
 
 ## <a name="prepare-the-environment"></a>A környezet előkészítése 
 
@@ -64,8 +66,14 @@ Ebben a szakaszban egy önaláírt X.509-tanúsítványt fogunk használni. Font
 
 Az [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) mintakódját használja majd a szimulált eszköz egyéni regisztrációs bejegyzéséhez használt tanúsítvány létrehozásához.
 
+Az Azure IoT Device Provisioning Service kétféle típusú regisztrációt támogat:
 
-1. A korábban megnyitott parancssorablakban navigáljon a `target` mappába, és futtassa az előző lépésben létrehozott JAR-fájlt.
+- [Regisztrációs csoportok](concepts-service.md#enrollment-group): Több kapcsolódó eszköz regisztrálásához.
+- [Egyéni regisztrációk](concepts-service.md#individual-enrollment): egyetlen eszköz regisztrálására szolgál.
+
+Ez a cikk az egyéni regisztrációkat mutatja be.
+
+1. Az előző lépések parancssorának használatával lépjen a `target` mappába, majd futtassa az előző lépésben létrehozott. jar fájlt.
 
     ```cmd/sh
     cd target
@@ -78,22 +86,22 @@ Az [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) min
 
 3. Hozzon létre egy **_X509individual.pem_** nevű fájlt a Windows rendszerű gépén, nyissa meg egy tetszőleges szövegszerkesztőben, és másolja bele a vágólapra kimásolt szöveget. Mentse a fájlt, és zárja be a szerkesztőt.
 
-4. A parancssorban a **Do you want to input Verification Code** (Szeretne megadni ellenőrző kódot?) kérdésnél adja meg az _N_ értéket, és hagyja megnyitva a program kimenetét, hogy az útmutató későbbi részében hivatkozhasson rá. Később másolnia kell a `Client Cert` és a `Client Cert Private Key` értéket, melyeket a következő szakaszban fog használni.
+4. A parancssorba írja be az **N** értéket az _ellenőrző kód_ beírásához, és a program kimenetét a rövid útmutató későbbi részében megnyitva hagyja meg. Később másolnia kell a `Client Cert` és a `Client Cert Private Key` értéket, melyeket a következő szakaszban fog használni.
 
-5. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), a bal oldali menüben kattintson a **Minden erőforrás** gombra, és nyissa meg a Device Provisioning Service-példányt.
+5. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), válassza a bal oldali menüben az **összes erőforrás** gombot, és nyissa meg az eszköz kiépítési szolgáltatásának példányát.
 
-6. Az eszközkiépítési szolgáltatás összefoglalás panelén válassza a **Beléptetések kezelése** lehetőséget. Válassza az **Egyéni regisztrációk** fület, és kattintson a felül lévő **Egyéni regisztráció hozzáadása** gombra. 
+6. Az eszközök kiépítési szolgáltatásának menüjében válassza a **regisztrációk kezelése**lehetőséget. Válassza az **Egyéni regisztrációk** fület, és válassza az **Egyéni regisztráció hozzáadása** gombot a felső részen. 
 
-7. A **Regisztráció hozzáadása** panelen adja meg a következő információkat:
+7. A **beléptetés hozzáadása** panelen adja meg a következő adatokat:
    - Válassza az **X.509** elemet az identitás igazolási *Mechanizmusaként*.
-   - Az *Elsődleges tanúsítványfájl (.pem vagy .cer)* területen kattintson a *Fájl kiválasztása* lehetőségre, és válassza ki az előző lépésekben létrehozott **X509individual.pem** tanúsítványfájlt.  
+   - Az *elsődleges tanúsítvány. PEM vagy. cer fájlban*válassza a *fájl kiválasztása* lehetőséget az előző lépésekben létrehozott **X509individual. PEM** fájl kiválasztásához.  
    - Ha kívánja, megadhatja az alábbi információkat is:
      - Válassza ki a kiépítési szolgáltatáshoz kapcsolódó egyik IoT hubot.
      - Adjon meg egy egyedi eszközazonosítót. Ne használjon bizalmas adatokat az eszköz elnevezésekor. 
      - Frissítse az **Eszköz kezdeti ikerállapotát** az eszköz kívánt kezdeti konfigurációjával.
-     - Ha végzett, kattintson a **Mentés** gombra. 
+     - Ha elkészült, kattintson a **Save (Mentés** ) gombra. 
 
-     [![X.509-igazolás egyéni beléptetésének hozzáadása a portálon](./media/quick-create-simulated-device-x509-csharp/device-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
+     [![Egyéni regisztráció hozzáadása X. 509 tanúsítványhoz a portálon](./media/java-quick-create-simulated-device-x509/device-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 
      Sikeres regisztrációt követően az X.509-eszköz **microsoftriotcore** azonosítóval megjelenik a *Regisztrációs azonosító* oszlopban, az *Egyéni regisztrációk* lapon. 
 
@@ -101,7 +109,7 @@ Az [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) min
 
 ## <a name="simulate-the-device"></a>Az eszköz szimulálása
 
-1. Az eszközkiépítési szolgáltatás összefoglaló panelén válassza az **Áttekintés** lehetőséget, majd jegyezze fel az _Azonosító hatóköre_ és a _Kiépítési szolgáltatás globális végpontja_ értékét.
+1. Az eszközök kiépítési szolgáltatásának menüjében válassza az **Áttekintés** lehetőséget, és jegyezze fel az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_.
 
     ![Szolgáltatás adatai](./media/java-quick-create-simulated-device-x509/extract-dps-endpoints.png)
 
@@ -113,7 +121,7 @@ Az [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) min
 
 3. Adja meg a kiépítési szolgáltatás és az X.509-identitás adatait a kódban. Ezt a rendszer a szimulált eszköz igazolásához használja az automatikus kiépítés során, mielőtt regisztrálná az eszközt:
 
-   - Szerkessze az `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java` fájlt, hogy az tartalmazza a korábban feljegyzett _Azonosító hatóköre_ és _Kiépítési szolgáltatás globális végpontja_ értéket. Adja hozzá a _Client Cert_ és a _Client Cert Private Key_ értéket is az előző szakaszban feljegyzett adatok alapján.
+   - Szerkessze a `/src/main/java/samples/com/microsoft/azure/sdk/iot/ProvisioningX509Sample.java`fájlt, hogy tartalmazza az _azonosító hatókörét_ és a _kiépítési szolgáltatás globális végpontját_ a korábban feljegyzett módon. Adja hozzá a _Client Cert_ és a _Client Cert Private Key_ értéket is az előző szakaszban feljegyzett adatok alapján.
 
       ```java
       private static final String idScope = "[Your ID scope here]";
@@ -140,7 +148,7 @@ Az [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) min
             "-----END PRIVATE KEY-----\n";
       ```
 
-4. Hozza létre a mintát. Lépjen a `target` mappába, és futtassa a létrehozott jar-fájlt.
+4. Hozza létre a mintát. Navigáljon a `target` mappához, és hajtsa végre a létrehozott. jar fájlt.
 
     ```cmd/sh
     mvn clean install
@@ -148,7 +156,7 @@ Az [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) min
     java -jar ./provisioning-x509-sample-{version}-with-deps.jar
     ```
 
-5. Az Azure Portalon lépjen a kiépítési szolgáltatáshoz csatolt IoT hubhoz, és nyissa meg a **Device Explorer** (Eszközkereső) panelt. Ha sikeresen kiépítette a szimulált X.509-eszközt a hubon, az eszköz azonosítója megjelenik a **Device Explorer** panelen, a hozzá tartozó *ÁLLAPOT* pedig **engedélyezett** lesz.  Ha már a minta eszközalkalmazás futtatása előtt megnyitotta a panelt, akkor lehet, hogy rá kell kattintania a fenti **Frissítés** gombra. 
+5. Az Azure Portalon lépjen a kiépítési szolgáltatáshoz csatolt IoT hubhoz, és nyissa meg a **Device Explorer** (Eszközkereső) panelt. Ha sikeresen kiépítette a szimulált X.509-eszközt a hubon, az eszköz azonosítója megjelenik a **Device Explorer** panelen, a hozzá tartozó *ÁLLAPOT* pedig **engedélyezett** lesz.  Előfordulhat, hogy a felső **frissítés** gombra kell kattintania, ha már megnyitotta a panelt a minta eszköz futtatása előtt. 
 
     ![Az eszköz regisztrálva van az IoT Hubbal](./media/java-quick-create-simulated-device-x509/hubregistration.png) 
 
@@ -159,16 +167,16 @@ Az [Azure IoT SDK for Java](https://github.com/Azure/azure-iot-sdk-java.git) min
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt tervezi, hogy folytatja az eszközügyfél minta használatát és megismerését, akkor ne törölje a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a munkát, akkor a következő lépésekkel törölheti a rövid útmutatóhoz létrehozott összes erőforrást.
+Ha azt tervezi, hogy folytatja a munkát, és megkeresi az eszköz ügyféloldali mintáját, ne törölje az ebben a rövid útmutatóban létrehozott erőforrásokat. Ha nem folytatja a műveletet, a következő lépésekkel törölheti az ebben a rövid útmutatóban létrehozott összes erőforrást.
 
 1. Zárja be az eszközügyfél minta kimeneti ablakát a gépen.
-2. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az eszközkiépítési szolgáltatást. Nyissa meg a szolgáltatás **regisztrációk kezelése** paneljét, majd kattintson az **Egyéni regisztrációk** fülre. Válassza ki az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítóját* , majd kattintson a felül található **Törlés** gombra. 
-3. Az Azure Portal bal oldali menüjében kattintson az **Összes erőforrás** lehetőségre, majd válassza ki az IoT Hubot. Nyissa meg a hub **IoT-eszközök** paneljét, válassza ki a rövid útmutatóban regisztrált eszköz *ESZKÖZAZONOSÍTÓJÁT*, majd kattintson a felül található **Törlés** gombra.
+2. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az eszköz kiépítési szolgáltatását. Nyissa meg a szolgáltatás **regisztrációk kezelése** paneljét, majd válassza az **Egyéni regisztrációk** fület. jelölje be az ebben a rövid útmutatóban regisztrált eszköz *regisztrációs azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra. 
+3. A Azure Portal bal oldali menüjében válassza a **minden erőforrás** lehetőséget, majd válassza ki az IoT hubot. Nyissa meg a **IoT-eszközök** panelt, jelölje be az ebben a rövid útmutatóban regisztrált eszköz *azonosítója* melletti jelölőnégyzetet, majd kattintson a panel tetején található **Törlés** gombra.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben a gyors útmutatóban létrehozott egy szimulált X.509-eszközt a Windows rendszerű számítógépén. Ezután konfigurálta az eszköz beléptetését az Azure IoT Hub Device Provisioning szolgáltatásban, majd automatikusan kiépítette az eszközt saját IoT-központján. Ha szeretné megismerni az X.509-eszköz programozott regisztrációjának folyamatát, lépjen tovább az X.509-eszközök programozott regisztrációjának rövid útmutatójára. 
+Ebben a rövid útmutatóban létrehozott egy szimulált X. 509 eszközt a Windows rendszerű gépen. Ezután konfigurálta az eszköz beléptetését az Azure IoT Hub Device Provisioning szolgáltatásban, majd automatikusan kiépítette az eszközt saját IoT-központján. Az X. 509 eszköz programozott módon történő regisztrálásának megismeréséhez folytassa az X. 509 eszközök programozott regisztrálására szolgáló rövid útmutatóval. 
 
 > [!div class="nextstepaction"]
-> [Azure rövid útmutató – X.509-eszközök regisztrációja az Azure IoT Hub Device Provisioning Service-be](quick-enroll-device-x509-java.md)
+> [Azure rövid útmutató – X. 509 eszközök regisztrálása az Azure-ba IoT Hub Device Provisioning Service](quick-enroll-device-x509-java.md)

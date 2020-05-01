@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 08/22/2019
+ms.date: 04/15/2020
 ms.author: trbye
-ms.openlocfilehash: f7ca8fdaddab9757292939c4f7e658179d6e517c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 267c2fb72b38053429019746a573c740d812c38c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81421746"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608377"
 ---
 ### <a name="speech-to-text-sub-chart-chartsspeechtotext"></a>Beszéd – szöveg (Aldiagram: diagramok/speechToText)
 
@@ -40,3 +40,30 @@ Az "esernyő" diagram felülbírálásához adja hozzá az előtagot `speechToTe
 | `service.annotations` | A szolgáltatás metaadatainak **beszéd-szöveg** típusú megjegyzései. A jegyzetek a kulcs érték párok. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
 | `service.autoScaler.enabled` | Azt jelzi, hogy engedélyezve van-e a [horizontális Pod automéretező](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) . Ha `true`a, `speech-to-text-autoscaler` a a Kubernetes-fürtben lesz telepítve. | `true` |
 | `service.podDisruption.enabled` | Azt jelzi, hogy engedélyezve van-e a [Pod-megszakadási költségvetés](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Ha `true`a, `speech-to-text-poddisruptionbudget` a a Kubernetes-fürtben lesz telepítve. | `true` |
+
+#### <a name="sentiment-analysis-sub-chart-chartsspeechtotext"></a>Érzelmek elemzése (Aldiagram: diagramok/speechToText)
+
+A beszéd-szöveg tárolóhoz tartozó v 2.2.0-ból kezdve a következő paraméterek használhatók a Text Analytics API használatával való érzelmek elemzéséhez.
+
+|Paraméter|Leírás|Értékek|Alapértelmezett|
+| --- | --- | --- | --- |
+|`textanalytics.enabled`| Azt jelzi, hogy engedélyezve van-e a **text-Analytics** szolgáltatás| Igaz/hamis| `false`|
+|`textanalytics.image.registry`| A **text-Analytics** Docker-rendszerkép beállításjegyzéke| érvényes Docker-rendszerkép beállításjegyzéke| |
+|`textanalytics.image.repository`| A **text-Analytics** Docker-rendszerkép tárháza| érvényes Docker-rendszerkép tárháza| |
+|`textanalytics.image.tag`| A **text-Analytics** Docker-rendszerkép címkéje| érvényes Docker-rendszerkép címkéje| |
+|`textanalytics.image.pullSecrets`| A **szöveg-Analytics** Docker-rendszerkép kihúzásának képtitka| érvényes titkok neve| |
+|`textanalytics.image.pullByHash`| Megadja, hogy a Docker-rendszerkép kihúzása kivonattal történjen-e.  Ha `yes`szükséges `image.hash` , akkor is. Ha `no`a beállítás értéke "false" (hamis). Az alapértelmezett szint a `false`.| Igaz/hamis| `false`|
+|`textanalytics.image.hash`| A **text-Analytics** Docker-rendszerkép kivonata. Csak a `image.pullByHash:true`használatával.| érvényes Docker-rendszerkép kivonata | |
+|`textanalytics.image.args.eula`| A **text-Analytics** tároló egyik kötelező argumentuma, amely azt jelzi, hogy elfogadta a licencet. A beállítás értékének a következőnek kell `accept`lennie:.| `accept`, ha a tárolót szeretné használni | |
+|`textanalytics.image.args.billing`| A **text-Analytics** tároló egyik kötelező argumentuma, amely a számlázási végpont URI azonosítóját adja meg. A számlázási végpont URI-ja a Azure Portal beszédének áttekintése oldalon érhető el.|érvényes számlázási végpont URI-ja||
+|`textanalytics.image.args.apikey`| Az egyik kötelező argumentum a **text-Analytics-** tárolóban, amely a számlázási információk nyomon követésére szolgál.| érvényes apikey||
+|`textanalytics.cpuRequest`| A kért CPU a **text-Analytics-** tárolóhoz| int| `3000m`|
+|`textanalytics.cpuLimit`| A korlátozott CPU a **text-Analytics-** tárolóhoz| | `8000m`|
+|`textanalytics.memoryRequest`| A **text-Analytics-** tárolóhoz szükséges memória| | `3Gi`|
+|`textanalytics.memoryLimit`| A **text-Analytics-** tároló korlátozott memóriája| | `8Gi`|
+|`textanalytics.service.sentimentURISuffix`| `<service>`A "http://`<port>`/`<sentimentURISuffix>`:" formátum a teljes URI formátumú | | `text/analytics/v3.0-preview/sentiment`|
+|`textanalytics.service.type`| A **text-Analytics** szolgáltatás típusa a Kubernetes-ben. Lásd: [Kubernetes-szolgáltatások típusai](https://kubernetes.io/docs/concepts/services-networking/service/) | érvényes Kubernetes-szolgáltatás típusa | `LoadBalancer` |
+|`textanalytics.service.port`| A **text-Analytics** szolgáltatás portja| int| `50085`|
+|`textanalytics.service.annotations`| A jegyzetek felhasználói hozzáadhatók a **text-Analytics** szolgáltatás metaadataihoz. Ilyenek például a következők:<br/> **Széljegyzetek**<br/>`   `**néhány/annotation1: érték1**<br/>`  `**néhány/annotation2: érték2** | jegyzetek, egy soronként| |
+|`textanalytics.serivce.autoScaler.enabled`| Azt jelzi, hogy engedélyezve van-e a [horizontális Pod autoskálázás](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) . Ha engedélyezve van `text-analytics-autoscaler` , a rendszer a Kubernetes-fürtön fogja telepíteni. | Igaz/hamis| `true`|
+|`textanalytics.service.podDisruption.enabled`| Azt jelzi, hogy engedélyezve van-e a [Pod megszakadási költségkeret](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Ha engedélyezve van `text-analytics-poddisruptionbudget` , a rendszer a Kubernetes-fürtön fogja telepíteni.| Igaz/hamis| `true`|

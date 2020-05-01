@@ -18,12 +18,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 9f8697332d34fc044c805db6c6595fdf067ed054
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0abe443521b928dd087e23b5491635b02cd832e8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80127190"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592026"
 ---
 # <a name="tutorial-send-location-based-push-notifications-with-notification-hubs-and-bing-spatial-data"></a>Oktatóanyag: Location-alapú leküldéses értesítések küldése a Notification Hubs és a Bing térbeli adatainak
 
@@ -217,7 +217,7 @@ Ebben az oktatóanyagban a következő lépéseket hajtja végre:
 
 ## <a name="set-up-the-backend"></a>A háttérrendszer beállítása
 
-1. Töltse le a [.NET-háttérrendszer mintáját a GitHubról](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/NotifyUsers).
+1. Töltse le a [.NET-háttérrendszer mintáját a GitHubról](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/NotifyUsers).
 2. A letöltés után nyissa meg a `NotifyUsers` mappát, majd a `NotifyUsers.sln` fájlt a Visual Studióban.
 3. Állítsa be **Indítási projektként**, majd futtassa az `AppBackend` projektet.
 

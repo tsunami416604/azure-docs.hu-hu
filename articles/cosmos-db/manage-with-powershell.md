@@ -4,24 +4,22 @@ description: Az Azure PowerShell használatával kezelheti Azure Cosmos-fiókjai
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 03/26/2020
+ms.date: 04/29/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: c8e833a4ba18520d8e354398cfd0d00525594d15
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d4473bbfe10fa2d0fc87eed7889a3e06af650b5b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80365761"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592145"
 ---
 # <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
 
 Az alábbi útmutatóban megismerheti, hogyan szkriptelheti és automatizálhatja az Azure Cosmos DB-erőforrások (például a fiókok, az adatbázisok, a tárolók és az átviteli sebesség) felügyeletét a PowerShell használatával.
 
 > [!NOTE]
-> A cikkben szereplő minták az `Get-AzResource` Azure `Set-AzResource` Resource Operations és a PowerShell-parancsmagok használatát, valamint az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. `Az.CosmosDB`a parancsmagok még előzetes verzióban érhetők el, és az általánosan elérhetők előtt változhatnak. A parancsok frissítéseiért tekintse meg az az [. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
-
-A PowerShell-parancsmagok használatával `Get-Resource` / `Set-AzResource` felügyelhető összes tulajdonság megtekintéséhez lásd: [Azure Cosmos db erőforrás-szolgáltatói séma](/azure/templates/microsoft.documentdb/allversions)
+> A cikkben szereplő minták az [az. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. Ezek a parancsmagok még előzetes verzióban érhetők el, és az általánosan elérhetők előtt változhatnak. A parancsok frissítéseiért tekintse meg az az [. CosmosDB](https://docs.microsoft.com/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
 
 A `Az` Azure Cosmos db platformfüggetlen felügyeletéhez használhatja a és `Az.CosmosDB` a parancsmagot a [platformfüggetlen PowerShell](https://docs.microsoft.com/powershell/scripting/install/installing-powershell)-lel, valamint az [Azure CLI](manage-with-cli.md)-vel, a [Rest APIval][rp-rest-api]vagy a [Azure Portalsal](create-sql-api-dotnet.md#create-account).
 
@@ -30,8 +28,6 @@ A `Az` Azure Cosmos db platformfüggetlen felügyeletéhez használhatja a és `
 ## <a name="getting-started"></a>Első lépések
 
 Kövesse a [Azure PowerShell telepítésének és konfigurálásának][powershell-install-configure] lépéseit a PowerShell Azure-fiókjába való telepítéséhez és bejelentkezéséhez.
-
-* `Set-AzureResource`az alábbi használatban van. A rendszer a felhasználó megerősítését kéri.  Ha a felhasználó megerősítésének megkövetelése nélkül szeretné végrehajtani a `-Force` végrehajtást, fűzze hozzá a jelölőt a parancshoz.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-fiókok
 
@@ -57,14 +53,17 @@ Ez a parancs egy Azure Cosmos DB adatbázis-fiókot hoz létre [több régióval
 $resourceGroupName = "myResourceGroup"
 $locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
-$apiKind = "GlobalDocumentDB"
+$apiKind = "Sql"
 $consistencyLevel = "BoundedStaleness"
 $maxStalenessInterval = 300
 $maxStalenessPrefix = 100000
 
-New-AzCosmosDBAccount -ResourceGroupName $resourceGroupName `
-    -Location $locations -Name $accountName `
-    -ApiKind $apiKind -EnableAutomaticFailover:$true `
+New-AzCosmosDBAccount `
+    -ResourceGroupName $resourceGroupName `
+    -Location $locations `
+    -Name $accountName `
+    -ApiKind $apiKind `
+    -EnableAutomaticFailover:$true `
     -DefaultConsistencyLevel $consistencyLevel `
     -MaxStalenessIntervalInSeconds $maxStalenessInterval `
     -MaxStalenessPrefix $maxStalenessPrefix
@@ -110,7 +109,7 @@ Ezzel a paranccsal frissítheti Azure Cosmos DB adatbázis-fiókjának tulajdons
 * Több főkiszolgáló engedélyezése
 
 > [!NOTE]
-> Nem lehet egyszerre hozzáadni vagy eltávolítani a `locations` régiókat, és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani a fiók bármely egyéb változása alapján.
+> Nem lehet egyszerre hozzáadni vagy eltávolítani a régiókat (`locations`), és módosítani az Azure Cosmos-fiók egyéb tulajdonságait. A régiók módosításait külön műveletként kell végrehajtani a fiók bármely egyéb változása alapján.
 > [!NOTE]
 > Ezzel a paranccsal hozzáadhat és eltávolíthat régiókat, de nem teszi lehetővé a feladatátvételi prioritások módosítását, illetve manuális feladatátvételt is indíthat. Lásd: a [feladatátvételi prioritás módosítása](#modify-failover-priority) és a [manuális feladatátvétel elindítása](#trigger-manual-failover).
 
@@ -119,37 +118,33 @@ Ezzel a paranccsal frissítheti Azure Cosmos DB adatbázis-fiókjának tulajdons
 $resourceGroupName = "myResourceGroup"
 $locations = @("West US 2", "East US 2")
 $accountName = "mycosmosaccount"
-$apiKind = "GlobalDocumentDB"
+$apiKind = "Sql"
 $consistencyLevel = "Session"
 $enableAutomaticFailover = $true
 
+# Create the Cosmos DB account
 New-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Location $locations -Name $accountName `
-    -ApiKind $apiKind -EnableAutomaticFailover:$enableAutomaticFailover `
+    -Location $locations `
+    -Name $accountName `
+    -ApiKind $apiKind `
+    -EnableAutomaticFailover:$enableAutomaticFailover `
     -DefaultConsistencyLevel $consistencyLevel
-
-# Region operations
-$resourceType = "Microsoft.DocumentDb/databaseAccounts"
-$apiVersion = "2020-03-01"
 
 # Add a region to the account
 $locations2 = @("West US 2", "East US 2", "South Central US")
 $locationObjects2 = @()
 $i = 0
-ForEach ($location in $locations2) { $locationObjects2 += @{ locationName = "$location"; failoverPriority = $i++ } }
-$accountProperties = @{
-    databaseAccountOfferType = "Standard";
-    locations = $locationObjects2;
-    enableAutomaticFailover = $enableAutomaticFailover;
+ForEach ($location in $locations2) {
+    $locationObjects2 += @{ locationName = "$location"; failoverPriority = $i++ }
 }
 
-Set-AzResource -ResourceType $resourceType `
+Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
-    -ApiVersion $apiVersion -Name $accountName `
-    -PropertyObject $accountProperties
+    -Name $accountName `
+    -LocationObject $locationObjects2
 
-Write-Host "Set-AzResource returns before the region update is complete."
+Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 Write-Host "When region was added, press any key to continue."
 $HOST.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown") | OUT-NULL
@@ -159,19 +154,16 @@ $HOST.UI.RawUI.Flushinputbuffer()
 $locations3 = @("West US 2", "South Central US")
 $locationObjects3 = @()
 $i = 0
-ForEach ($location in $locations3) { $locationObjects3 += @{ locationName = "$location"; failoverPriority = $i++ } }
-$accountProperties = @{
-    databaseAccountOfferType = "Standard";
-    locations = $locationObjects3;
-    enableAutomaticFailover = $enableAutomaticFailover;
+ForEach ($location in $locations3) {
+    $locationObjects3 += @{ locationName = "$location"; failoverPriority = $i++ }
 }
 
-Set-AzResource -ResourceType $resourceType `
+Update-AzCosmosDBAccountRegion `
     -ResourceGroupName $resourceGroupName `
-    -ApiVersion $apiVersion -Name $accountName `
-    -PropertyObject $accountProperties
+    -Name $accountName `
+    -LocationObject $locationObjects3
 
-Write-Host "Set-AzResource returns before the region update is complete."
+Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
 ### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-master"></a>Több írási régió engedélyezése Azure Cosmos-fiókhoz
@@ -206,7 +198,8 @@ $accountName = "mycosmosaccount"
 
 Remove-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -PassThru
+    -Name $accountName `
+    -PassThru:$true
 ```
 
 ### <a name="update-tags-of-an-azure-cosmos-account"></a><a id="update-tags"></a>Azure Cosmos-fiók címkék frissítése
@@ -220,7 +213,8 @@ $tags = @{dept = "Finance"; environment = "Production";}
 
 Update-AzCosmosDBAccount `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -Tag $tags
+    -Name $accountName `
+    -Tag $tags
 ```
 
 ### <a name="list-account-keys"></a><a id="list-keys"></a>Fiók kulcsainak listázása
@@ -235,7 +229,8 @@ $accountName = "mycosmosaccount"
 
 Get-AzCosmosDBAccountKey `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -Type "Keys"
+    -Name $accountName `
+    -Type "Keys"
 ```
 
 ### <a name="list-connection-strings"></a><a id="list-connection-strings"></a>Kapcsolatok karakterláncok listázása
@@ -248,7 +243,8 @@ $accountName = "mycosmosaccount"
 
 Get-AzCosmosDBAccountKey `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -Type "ConnectionStrings"
+    -Name $accountName `
+    -Type "ConnectionStrings"
 ```
 
 ### <a name="regenerate-account-keys"></a><a id="regenerate-keys"></a>Fiók kulcsainak újragenerálása
@@ -263,7 +259,8 @@ $keyKind = "primary" # Other key kinds: secondary, primaryReadOnly, secondaryRea
 
 New-AzCosmosDBAccountKey `
     -ResourceGroupName $resourceGroupName `
-    -Name $accountName -KeyKind $keyKind
+    -Name $accountName `
+    -KeyKind $keyKind
 ```
 
 ### <a name="enable-automatic-failover"></a><a id="enable-automatic-failover"></a>Automatikus feladatátvétel engedélyezése
@@ -573,7 +570,7 @@ Set-AzCosmosDBSqlContainer `
 
 ### <a name="create-an-azure-cosmos-db-container-with-conflict-resolution"></a><a id="create-container-lww"></a>Ütközéses feloldású Azure Cosmos DB-tároló létrehozása
 
-Ha egy tárolt eljárás használatára vonatkozó ütközés-feloldási szabályzatot szeretne `"mode"="custom"` létrehozni, állítsa be és állítsa be a megoldás elérési útját `"conflictResolutionPath"="myResolverStoredProcedure"`a tárolt eljárás neveként. Ha az összes ütközést a ConflictsFeed szeretné írni, és külön `"mode"="custom"` kezeli a leírót, állítsa be és`"conflictResolutionPath"=""`
+Ha az összes ütközést a ConflictsFeed szeretné írni, és külön `-Type "Custom" -Path ""`kezeli a leírót, adja meg a következőt:
 
 ```azurepowershell-interactive
 # Create container with last-writer-wins conflict resolution policy
@@ -597,6 +594,34 @@ Set-AzCosmosDBSqlContainer `
     -PartitionKeyPath $partitionKeyPath `
     -ConflictResolutionPolicy $conflictResolutionPolicy
 ```
+
+Ha egy tárolt eljárás használatára vonatkozó ütközés-feloldási szabályzatot szeretne `New-AzCosmosDBSqlConflictResolutionPolicy` létrehozni, hívja `-Type` meg `-ConflictResolutionProcedure`és adja át a paramétereket és a paramétert.
+
+```azurepowershell-interactive
+# Create container with custom conflict resolution policy using a stored procedure
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+$partitionKeyPath = "/myPartitionKey"
+$conflictResolutionSprocName = "mysproc"
+
+$conflictResolutionSproc = "/dbs/$databaseName/colls/$containerName/sprocs/$conflictResolutionSprocName"
+
+$conflictResolutionPolicy = New-AzCosmosDBSqlConflictResolutionPolicy `
+    -Type Custom `
+    -ConflictResolutionProcedure $conflictResolutionSproc
+
+Set-AzCosmosDBSqlContainer `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -PartitionKeyKind Hash `
+    -PartitionKeyPath $partitionKeyPath `
+    -ConflictResolutionPolicy $conflictResolutionPolicy
+```
+
 
 ### <a name="list-all-azure-cosmos-db-containers-in-a-database"></a><a id="list-containers"></a>Az összes Azure Cosmos DB-tároló listázása egy adatbázisban
 

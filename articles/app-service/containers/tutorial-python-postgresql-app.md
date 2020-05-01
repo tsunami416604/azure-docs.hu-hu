@@ -9,12 +9,12 @@ ms.custom:
 - seodec18
 - seo-python-october2019
 - cli-validate
-ms.openlocfilehash: 0c9329b46d096df1afab6f7e457d143f9c6504be
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 504e2f7c07d8d29e4fe4dad52dc008c895517a3d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085756"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609782"
 ---
 # <a name="tutorial-deploy-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Python-(Django-) webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -133,7 +133,7 @@ A parancs befejeződése után keresse meg a által használt kimeneti sorokat `
 
 <!-- not all locations support az postgres up -->
 > [!TIP]
-> A postgres-kiszolgáló helyének megadásához adja meg az `--location <location-name>`argumentumot `<location_name>` , ahol az az egyik [Azure-régió](https://azure.microsoft.com/global-infrastructure/regions/). Az előfizetéshez elérhető régiókat a [`az account list-locations`](/cli/azure/account#az-account-list-locations) paranccsal érheti el.
+> `--location <location-name>`, az egyik [Azure-régióhoz](https://azure.microsoft.com/global-infrastructure/regions/)is beállítható. Az előfizetéshez elérhető régiókat a [`az account list-locations`](/cli/azure/account#az-account-list-locations) paranccsal érheti el. Éles alkalmazások esetében ugyanazon a helyen helyezze el az adatbázist és az alkalmazást.
 
 ## <a name="deploy-the-app-service-app"></a>A App Service alkalmazás üzembe helyezése
 
@@ -149,7 +149,7 @@ Győződjön meg arról, hogy visszatért az adattár gyökerébe`djangoapp`(), 
 Hozzon létre egy App Service alkalmazást [`az webapp up`](/cli/azure/webapp#az-webapp-up) a paranccsal, ahogy az az alábbi példában is látható. Cserélje le * \<az App-Name>t* *egyedi* névre (a kiszolgálói végpont *https://\<az App-Name>. azurewebsites.net*). `A` - `Z`Az * \<alkalmazás neve>* `9`engedélyezett karakterek:, és `-` `0` -
 
 ```azurecli
-az webapp up --plan myAppServicePlan --sku B1 --name <app-name>
+az webapp up --plan myAppServicePlan --location westus2 --sku B1 --name <app-name>
 ```
 <!-- !!! without --sku creates PremiumV2 plan!! -->
 
@@ -183,10 +183,10 @@ Az üzembe helyezés befejezése után a következőhöz hasonló JSON-kimenet j
 Másolja az * \<app-Resource-Group>* értékét. Szüksége lesz rá az alkalmazás későbbi konfigurálásához. 
 
 > [!TIP]
-> A későbbiekben ugyanezzel a paranccsal telepítheti a módosításokat, és azonnal engedélyezheti a diagnosztikai naplók használatát a következővel:
+> A rendszer a megfelelő beállításokat egy rejtett *. Azure* könyvtárba menti a tárházban. A későbbiekben az egyszerű parancs használatával újratelepítheti a módosításokat, és azonnal engedélyezheti a diagnosztikai naplókat a következővel:
 > 
 > ```azurecli
-> az webapp up --name <app-name>
+> az webapp up
 > ```
 
 A mintakód már telepítve van, de az alkalmazás még nem csatlakozik a postgres-adatbázishoz az Azure-ban. Ezt a következő lépéssel teheti meg.
@@ -219,8 +219,6 @@ cd site/wwwroot
 
 # Activate default virtual environment in App Service container
 source /antenv/bin/activate
-# Install requirements in environment
-pip install -r requirements.txt
 # Run database migrations
 python manage.py migrate
 # Create the super user (follow prompts)
@@ -358,7 +356,7 @@ python manage.py runserver
 A módosítások újbóli üzembe helyezéséhez futtassa a következő parancsot az adattár gyökeréből:
 
 ```azurecli
-az webapp up --name <app-name>
+az webapp up
 ```
 
 App Service észleli, hogy az alkalmazás létezik, és csak telepíti a kódot.

@@ -7,12 +7,12 @@ ms.date: 09/06/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: sample
-ms.openlocfilehash: f4d8eabdba32eaa0a2c04e6b330fbd4c8d3a563e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 900fb5120b1674397c248fd7d090660c7a813705
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061139"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594185"
 ---
 # <a name="azure-storage-samples"></a>Azure Storage-minták
 
@@ -50,9 +50,9 @@ A Node. js-minták megismeréséhez töltse le a [Node. js Storage ügyféloldal
 
 A C++ minták megismeréséhez töltse le a [C++ Storage ügyféloldali kódtárat](https://www.nuget.org/packages/wastorage/) a NuGet webhelyről.
 
-* [Ismerkedés a Blobokkal](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted)
-* [Ismerkedés a táblákkal](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted)
-* [Bevezetés az üzenetsorok használatába](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted)
+* [Ismerkedés a Blobokkal](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)
+* [Ismerkedés a táblákkal](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/TablesGettingStarted.cpp)
+* [Bevezetés az üzenetsorok használatába](https://github.com/Azure/azure-storage-cpp/tree/master/Microsoft.WindowsAzure.Storage/samples/QueuesGettingStarted.cpp)
 
 ## <a name="azure-cli"></a>Azure CLI
 
@@ -64,11 +64,11 @@ Az Azure CLI-minták megismeréséhez először [telepítse az Azure CLI](/cli/a
 
 ## <a name="api-reference-and-source-code"></a>API-referenciák és-forráskód
 
-| Nyelv | API-referencia | Forráskód |
+| Nyelv | API-hivatkozás | Forráskód |
 |----------|---------------|-------------|
 | .NET | [.NET ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/storage) | [A .NET Storage ügyféloldali kódtár forráskódja](https://github.com/Azure/azure-storage-net) |
 | Java | [Java ügyféloldali kódtár – dokumentáció](https://docs.microsoft.com/java/api/overview/azure/storage) | [A Java Storage ügyféloldali kódtár forráskódja](https://github.com/azure/azure-storage-java) |
-| Python | [Python ügyféloldali kódtár – dokumentáció](https://azure-storage.readthedocs.io/) | [Forráskód a Python Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-p[ython]) |
+| Python | [Python ügyféloldali kódtár – dokumentáció](https://azure-storage.readthedocs.io/) | [Forráskód a Python Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-python) |
 | Node.js | [Node. js ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-storage-node) | [Forráskód a Node. js tárolási ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-node) |
 | C++ | [C++ ügyféloldali kódtár – dokumentáció](https://azure.github.io/azure-storage-cpp/) | [Forráskód a C++ Storage ügyféloldali kódtár számára](https://github.com/Azure/azure-storage-cpp)|
 | Azure CLI | [Azure CLI-függvénytár – dokumentáció](/cli/azure/storage) | [Forráskód az Azure CLI Storage ügyféloldali kódtára számára](https://github.com/Azure-Samples/azure-cli-samples/tree/master/storage)

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 37fdd42adf66ebcb11b357ece6ea63384630d9f4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 878c3aa766559e455ee4456d84b86dc486e43fa5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238866"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610683"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Az Azure-ba irányuló vészhelyreállítás beállítása helyszíni VMware virtuális gépekhez
 
@@ -65,11 +65,11 @@ A forrás-környezetben egyetlen, magasan elérhető helyszíni gépre van szük
 - **Fő célkiszolgáló**: a fő célkiszolgáló kezeli a replikálási adatait az Azure-beli feladat-visszavétel során.
 
 
-Ezen összetevők mindegyike a *konfigurációs kiszolgálóként*ismert helyszíni gépeken együtt települ. Alapértelmezés szerint a VMware vész-helyreállítás esetén a konfigurációs kiszolgálót egy magasan elérhető VMware virtuális gépként kell beállítani. Ehhez le kell töltenie egy előkészített Open Virtualization Application (PETESEJT) sablont, és importálnia kell a sablont a VMware-be a virtuális gép létrehozásához. 
+Ezen összetevők mindegyike a *konfigurációs kiszolgálóként*ismert helyszíni gépeken együtt települ. Alapértelmezés szerint a VMware vész-helyreállítás esetén a konfigurációs kiszolgálót egy magasan elérhető VMware virtuális gépként kell beállítani. Ehhez le kell töltenie egy előkészített Open Virtualization Application (PETESEJT) sablont, és importálnia kell a sablont a VMware-be a virtuális gép létrehozásához.
 
 - A konfigurációs kiszolgáló legújabb verziója a portálon érhető el. Közvetlenül a [Microsoft letöltőközpontból](https://aka.ms/asrconfigurationserver)is letöltheti.
 - Ha valamilyen okból kifolyólag nem lehet PETESEJT-sablont használni a virtuális gép beállításához, kövesse az [alábbi utasításokat](physical-manage-configuration-server.md) a konfigurációs kiszolgáló manuális beállításához.
-- A OVF-sablonnal megadott licenc 180 napig érvényes próbaverziós licenc. A virtuális gépen futó Windows rendszernek aktiválnia kell a szükséges licencet. 
+- A OVF-sablonnal megadott licenc 180 napig érvényes próbaverziós licenc. A virtuális gépen futó Windows rendszernek aktiválnia kell a szükséges licencet.
 
 
 ### <a name="download-the-vm-template"></a>A virtuálisgép-sablon letöltése
@@ -77,7 +77,7 @@ Ezen összetevők mindegyike a *konfigurációs kiszolgálóként*ismert helysz�
 1. A tárolóban váltson az **infrastruktúra** > előkészítése**forrásra**.
 2. A **Forrás előkészítése** ablakban válassza a **+Konfigurációs kiszolgáló** elemet.
 3. A **Kiszolgáló hozzáadása** panelen ellenőrizze, hogy a **Kiszolgálótípus** mezőben a **Konfigurációs kiszolgáló VMware-hez** érték jelenik meg.
-4. Töltse le a konfigurációs kiszolgáló OVF-sablonját.
+4. Töltse le a konfigurációs kiszolgáló PETESEJTJEI-sablonját.
 
 
 
@@ -85,7 +85,7 @@ Ezen összetevők mindegyike a *konfigurációs kiszolgálóként*ismert helysz�
 
 
 1. Jelentkezzen be a VMware vCenter-kiszolgálóra vagy a vSphere ESXi-gazdagépre a VMware vSphere Client használatával.
-2. A **fájl** menüben válassza a **OVF-sablon telepítése** lehetőséget a **OVF-sablon központi telepítése varázsló**elindításához. 
+2. A **fájl** menüben válassza a **OVF-sablon telepítése** lehetőséget a **OVF-sablon központi telepítése varázsló**elindításához.
 
      ![OVF-sablon](./media/vmware-azure-tutorial/vcenter-wizard.png)
 
@@ -105,11 +105,11 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 1. A vSphere Client-leltárban kattintson a jobb gombbal a virtuális gépre, és válassza az **Edit Settings** (Beállítások szerkesztése) elemet.
 2. A **Hardware** (Hardver) területen válassza az **Add** > **Ethernet Adapter** (Hozzáadás > Ethernet-adapter) elemet. Ezután válassza a **tovább**lehetőséget.
-3. Válassza ki a hálózati adapter típusát és a hálózatot. 
+3. Válassza ki a hálózati adapter típusát és a hálózatot.
 4. A virtuális hálózati adapter a virtuális gép bekapcsolásakor való csatlakoztatásához válassza a **Connect at power on** (Csatlakoztatás a bekapcsoláskor) elemet. Válassza a **következő** > **Befejezés**lehetőséget. Ezután kattintson az **OK** gombra.
 
 
-## <a name="register-the-configuration-server"></a>A konfigurációs kiszolgáló regisztrálása 
+## <a name="register-the-configuration-server"></a>A konfigurációs kiszolgáló regisztrálása
 
 A konfigurációs kiszolgáló beállítása után regisztrálja a tárolóban.
 
@@ -179,7 +179,7 @@ Engedélyezze a virtuális gépek replikálását a következőképpen:
 3. A **Gép típusa** mezőben válassza a **Virtual Machines** lehetőséget.
 4. A **vCenter/vSphere hipervizor** mezőben válassza ki a vSphere-gazdagépet vagy az azt felügyelő vCenter-kiszolgálót.
 5. Válassza ki a folyamatkiszolgálót (alapértelmezés szerint telepítve van a konfigurációs kiszolgáló virtuális gépén). Ezután kattintson az **OK** gombra. Az egyes folyamatok kiszolgálóinak állapota ajánlott korlátként és egyéb paraméterekként van megjelölve. Válassza ki az egészséges folyamat kiszolgálóját. Nem lehet kiválasztani egy [kritikus](vmware-physical-azure-monitor-process-server.md#process-server-alerts) Process Servert. A hibák [elhárításához és megoldásához,](vmware-physical-azure-troubleshoot-process-server.md) **illetve** a [kibővíthető folyamat kiszolgálójának](vmware-azure-set-up-process-server-scale.md)beállításához is használható.
-6. A **Cél** mezőben válassza ki az előfizetést és az erőforráscsoportot, amelyben a feladatátviteli virtuális gépeket létre szeretné hozni. A Resource Manager-alapú üzemi modellt használjuk. 
+6. A **Cél** mezőben válassza ki az előfizetést és az erőforráscsoportot, amelyben a feladatátviteli virtuális gépeket létre szeretné hozni. A Resource Manager-alapú üzemi modellt használjuk.
 7. Válassza ki azt az Azure-hálózatot és alhálózatot, amelyhez a feladatátvétel után létrejövő Azure-beli virtuális gépek csatlakoznak.
 8. Ha a hálózati beállítást minden olyan virtuális gépre alkalmazni szeretné, amelyen engedélyezte a replikációt, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Válassza a **Konfigurálás később** lehetőséget az Azure-hálózat számítógépenkénti kiválasztásához.
 9. **Virtual Machines** > **válassza a virtuális gépek lehetőséget**, és válassza ki a replikálni kívánt gépeket. Csak olyan gépeket választhat, amelyeken használható a replikáció funkció. Ezután kattintson az **OK** gombra. Ha nem tudja megtekinteni/kijelölni egy adott virtuális gépet, [további](https://aka.ms/doc-plugin-VM-not-showing) információ a probléma megoldásáról.

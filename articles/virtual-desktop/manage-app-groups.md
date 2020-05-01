@@ -1,23 +1,29 @@
 ---
-title: Windows rendszerű virtuális asztali alkalmazás-csoportok kezelése – Azure
-description: Leírja, hogyan kell beállítani a Windows rendszerű virtuális asztali bérlőket a Azure Active Directoryban.
+title: A Windows rendszerű virtuális asztali portál alkalmazás-csoportjainak kezelése – Azure
+description: Windows rendszerű virtuális asztali alkalmazás-csoportok kezelése a Azure Portal.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 08/29/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9a9d92ea525c6b5a64fdf7cc74babdce6a97f923
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f072ed8a758173645c886cabf0b20f9e123cbbab
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79127808"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612150"
 ---
-# <a name="tutorial-manage-app-groups-for-windows-virtual-desktop"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Windows rendszerű virtuális asztali gépeken
+# <a name="tutorial-manage-app-groups-with-the-azure-portal"></a>Oktatóanyag: alkalmazás-csoportok kezelése a Azure Portal
 
-Az új Windows rendszerű virtuális asztali készlethez létrehozott alapértelmezett alkalmazáscsoport a teljes asztalt is közzéteszi. Emellett létrehozhat egy vagy több RemoteApp-alkalmazáscsoport is a gazdagéphez. Ezt az oktatóanyagot követve hozzon létre egy RemoteApp-alkalmazáscsoport alkalmazást, és tegye közzé az egyes **Start** menüket.
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/manage-app-groups-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Az új Windows rendszerű virtuális asztali készlethez létrehozott alapértelmezett alkalmazáscsoport a teljes asztalt is közzéteszi. Emellett létrehozhat egy vagy több RemoteApp-alkalmazáscsoport is a gazdagéphez. Ezt az oktatóanyagot követve hozzon létre egy RemoteApp-alkalmazáscsoport alkalmazást, és tegye közzé az egyes Start menüket.
 
 Az oktatóanyag segítségével megtanulhatja a következőket:
 
@@ -25,56 +31,109 @@ Az oktatóanyag segítségével megtanulhatja a következőket:
 > * Hozzon létre egy RemoteApp-csoportot.
 > * Hozzáférés biztosítása RemoteApp-programokhoz.
 
-Mielőtt elkezdené, [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
-
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
-
 ## <a name="create-a-remoteapp-group"></a>RemoteApp-csoport létrehozása
 
-1. A következő PowerShell-parancsmag futtatásával hozzon létre egy új, üres RemoteApp-alkalmazás csoportot.
+Ha már létrehozott egy gazdagép-készletet és egy munkamenet-gazdagépet a Azure Portal vagy a PowerShell használatával, az alábbi eljárással adhat hozzá alkalmazás-csoportokat a Azure Portalból:
 
-   ```powershell
-   New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
-   ```
+1.  Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
-2. Választható Annak ellenőrzéséhez, hogy az alkalmazáscsoport létrejött-e, a következő parancsmag futtatásával megtekintheti az alkalmazáskészlethez tartozó összes alkalmazás-csoportot.
+2.  Keresse meg és válassza ki a **Windows virtuális asztal**elemet.
 
-   ```powershell
-   Get-RdsAppGroup <tenantname> <hostpoolname>
-   ```
+3.  Az oldal bal oldalán található menüben válassza ki az **alkalmazáscsoport** elemet, majd válassza a **+ Hozzáadás**lehetőséget.
 
-3. Futtassa a következő parancsmagot a **Start** menü alkalmazások listájának lekéréséhez a gazdaszámítógép virtuálisgép-rendszerképén. Jegyezze fel a közzétenni kívánt alkalmazás **filepath**, **IconPath**, **IconIndex**és egyéb fontos információinak értékeit.
+4. Az **alapvető beállítások** lapon válassza ki azt az előfizetési csoportot és erőforráscsoportot, amelyhez az alkalmazás-csoportot létre kívánja hozni. Azt is megteheti, hogy új erőforráscsoportot hoz létre, és nem választ ki egy meglévőt.
 
-   ```powershell
-   Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
-   ```
+5. Válassza ki azt a gazdagépet, amely az alkalmazáskészlet melletti legördülő menüből lesz társítva az alkalmazás **csoportjához.**
+
+    >[!NOTE]
+    >Ki kell választania az alkalmazáscsoport társított készletét. Az alkalmazáscsoport olyan alkalmazásokkal vagy asztali számítógépekkel rendelkezik, amelyek egy munkamenet-gazdagépről származnak, és a munkamenet-gazdagépek a gazdagépek részét képezik. A létrehozás során az alkalmazás csoportjának társítania kell egy gazdagép-készletet.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a Azure Portal alapjai lapról.](media/basics-tab.png)
+
+6. Ha az alkalmazás-csoportokat hozzá szeretné adni a gazdagéphez, a képernyő bal oldalán található menüben válassza a **gazdagép-készletek** lehetőséget.
    
-4. A következő parancsmag futtatásával telepítheti az alkalmazást a `AppAlias`alapján. `AppAlias`a 3. lépés kimenetének futtatásakor láthatóvá válik.
+    Ezután válassza ki annak az állomásnak a nevét, amelyhez alkalmazáscsoport hozzáadására van szüksége.
+   
+    Ezután válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán található menüből, majd válassza a **+ Hozzáadás**lehetőséget.
 
-   ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
-   ```
+    Végül válassza ki azt az előfizetési csoportot és erőforráscsoportot, amelyben az alkalmazás-csoportot létre szeretné hozni. Kiválaszthatja egy meglévő erőforráscsoport nevét a legördülő menüből, vagy az **új létrehozása** lehetőségre kattintva újat hozhat létre.
 
-5. Választható Futtassa a következő parancsmagot egy új RemoteApp-program közzétételéhez az 1. lépésben létrehozott alkalmazáscsoport számára.
+      >[!NOTE]
+      >Amikor alkalmazás-csoportokat ad hozzá a gazdagéphez, az alkalmazáscsoport kapcsolódó alkalmazáskészlete már ki van választva, mert az alkalmazásból navigált.
+      > 
+      > [!div class="mx-imgBorder"]
+      >![Az alapbeállítások lap képernyőképe az előválasztott gazdagép készletével.](media/host-pool-selected.png)
 
-   ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
-   ```
+7. Válassza ki a **RemoteApp** elemet az alkalmazáscsoport típusa területen, majd adja meg a RemoteApp nevét.
 
-6. Az alkalmazás közzétételének ellenőrzéséhez futtassa a következő parancsmagot.
+      > [!div class="mx-imgBorder"]
+      > ![Az alkalmazáscsoport típusú mezők képernyőképe A "RemoteApp" ki van emelve.](media/remoteapp-button.png)
 
-   ```powershell
-   Get-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname>
-   ```
+8.  Válassza a **hozzárendelések** fület.
 
-7. Ismételje meg az 1 – 5. lépést minden olyan alkalmazás esetében, amelyet közzé szeretne tenni ehhez az alkalmazási csoporthoz.
-8. Futtassa a következő parancsmagot, hogy hozzáférést biztosítson a felhasználóknak a RemoteApp-programokhoz az alkalmazás csoportban.
+9.  Ha egyéni felhasználókat vagy felhasználói csoportokat szeretne közzétenni az alkalmazás csoportjában, válassza az **+ Azure ad-felhasználók vagy felhasználói csoportok hozzáadása**lehetőséget.
 
-   ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname> -UserPrincipalName <userupn>
-   ```
+10.  Válassza ki, hogy hány felhasználóhoz kívánja hozzáadni az alkalmazásokat. Kiválaszthat egy vagy több felhasználót és felhasználói csoportot is.
+
+     > [!div class="mx-imgBorder"]
+     > ![A felhasználó kiválasztási menüjének képernyőképe.](media/select-users.png)
+
+11.  Válassza a **Kiválasztás** lehetőséget.
+
+12.  Válassza az **alkalmazások** fület, majd válassza az **+ Alkalmazások hozzáadása**lehetőséget.
+
+13.  Alkalmazás hozzáadása a Start menüből: 
+
+      - Nyissa meg az **alkalmazás forrását** , és válassza a **Start menü** lehetőséget a legördülő menüből. Ezután nyissa meg az **alkalmazást** , és válassza ki az alkalmazást a legördülő menüből.
+
+     > [!div class="mx-imgBorder"]
+     > ![Képernyőkép az alkalmazás hozzáadása képernyőről a Start menü kiválasztásával.](media/add-app-start.png)
+
+      - A **megjelenítendő név**mezőbe írja be annak az alkalmazásnak a nevét, amely megjelenik a felhasználó számára az ügyfélen.
+
+      - Hagyja meg a többi beállítást, és válassza a **Mentés**lehetőséget.
+
+14. Alkalmazás hozzáadása a fájl megadott elérési útjáról:
+
+      - Nyissa meg az **alkalmazás forrását** , és válassza a **fájl elérési útja** elemet a legördülő menüből.
+
+      - Adja meg az alkalmazás elérési útját a munkamenet-gazdagépen, amely regisztrálva van a társított gazdagép-készletben.
+
+      - Adja meg az alkalmazás adatait az **alkalmazás neve**, a **megjelenítendő név**, az **ikon elérési útja**és az **ikon index** mezőiben.
+
+      - Kattintson a **Mentés** gombra.
+
+     > [!div class="mx-imgBorder"]
+     > ![Az alkalmazás hozzáadása oldal képernyőképe a kijelölt fájl elérési útjával.](media/add-app-file.png)
+
+     Ismételje meg ezt a folyamatot minden olyan alkalmazás esetében, amelyet hozzá szeretne adni az alkalmazás csoportjához.
+
+15.  Ezután válassza a **munkaterület** lapot.
+
+16.  Ha egy munkaterületre szeretné regisztrálni az erőforráscsoportot, lépjen az **alkalmazáscsoport regisztrálása** elemre, és válassza az **Igen**lehetőséget. Ha inkább egy későbbi időpontban regisztrálja az alkalmazást, válassza a **nem**lehetőséget.
+
+17.  Ha az **Igen**lehetőséget választja, kiválaszthat egy meglévő munkaterületet, amellyel regisztrálhatja az alkalmazás csoportját.
+       
+       >[!NOTE]
+       >Az alkalmazáscsoport csak abban a helyen létrehozott munkaterületekre regisztrálható, ahol a gazdagép található. Is. Ha korábban már regisztrált egy másik alkalmazást ugyanabból a készletből, mint az új alkalmazáscsoport egy munkaterületre, akkor azt a rendszer kijelöli, és nem szerkesztheti. Egy adott alkalmazáskészletben lévő összes alkalmazás-csoportot regisztrálni kell ugyanahhoz a munkaterülethez.
+
+     > [!div class="mx-imgBorder"]
+     > ![Egy már meglévő munkaterület alkalmazás-csoportjának regisztrálása lapjának képernyőképe. Az alkalmazáskészletet a rendszer előjelöli.](media/register-existing.png)
+
+18. Ha címkéket szeretne létrehozni a munkaterület rendszerezéséhez, válassza a **címkék** lapot, és adja meg a címke nevét.
+
+19. Ha elkészült, válassza a **felülvizsgálat + létrehozás** lapot.
+
+20. Várjon egy kicsit, hogy az érvényesítési folyamat befejeződjön. Ha elkészült, válassza a **Létrehozás** lehetőséget az alkalmazás csoportjának telepítéséhez.
+
+Az üzembe helyezési folyamat a következő műveleteket végzi el:
+
+- Hozza létre a RemoteApp-alkalmazás csoportot.
+- Adja hozzá a kiválasztott alkalmazásokat az alkalmazás csoportjához.
+- Tegye közzé az alkalmazáscsoport közzétételét a kiválasztott felhasználók és felhasználói csoportok számára.
+- Ha ezt a lehetőséget választja, regisztrálja az alkalmazás csoportját.
+- Hozzon létre egy Azure Resource Manager-sablonra mutató hivatkozást, amely a később letölthető és menthető konfiguráció alapján érhető el.
 
 ## <a name="next-steps"></a>További lépések
 

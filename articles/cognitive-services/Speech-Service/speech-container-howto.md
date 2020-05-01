@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 2caae4fecdf13a1833f23cf9423cf3ded67f6f72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d5283051de50b84ea87c0f02a391652854067168
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879017"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610741"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása (előzetes verzió)
 
@@ -28,7 +28,7 @@ A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek olyan besz�
 
 | Függvény | Szolgáltatások | Legújabb |
 |--|--|--|
-| Diktálás | Folyamatos valós idejű beszédet vagy kötegelt hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.1.1 |
+| Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.2.0 |
 | Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.1.1 |
 | Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.3.0 |
 | Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.3.0 |
@@ -164,7 +164,7 @@ A (z) `latest` kivételével az összes címke a következő formátumban van, �
 A következő címke egy példa a formátumra:
 
 ```
-2.1.1-amd64-en-us-preview
+2.2.0-amd64-en-us-preview
 ```
 
 A **beszéd-szöveg** típusú tároló összes támogatott területi beállítását lásd: [beszéd – szöveg képcímkék](../containers/container-image-tags.md#speech-to-text).
@@ -258,6 +258,33 @@ A parancs a következőket hajtja végre:
 * 4 CPU-magot és 4 GB memóriát foglal le.
 * Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
+
+
+#### <a name="analyze-sentiment-on-the-speech-to-text-output"></a>Az érzelmek elemzése a beszédfelismerési kimenetre 
+
+A beszéd-szöveg típusú tárolóhoz tartozó v 2.2.0-tól kezdve a kimeneten meghívhatja a [hangulat elemzése V3 API](../text-analytics/how-tos/text-analytics-how-to-sentiment-analysis.md) -t. A hangulat elemzésének meghívásához szüksége lesz egy Text Analytics API erőforrás-végpontra. Például: 
+* `https://westus2.api.cognitive.microsoft.com/text/analytics/v3.0-preview.1/sentiment`
+* `https://localhost:5000/text/analytics/v3.0-preview.1/sentiment`
+
+Ha a felhőben szöveges elemzési végpontot használ, szüksége lesz egy kulcsra. Ha Text Analytics helyileg futtatja, előfordulhat, hogy nem kell megadnia ezt.
+
+A kulcs és a végpont argumentumként kerül átadásra a Speech tárolónak, ahogy az alábbi példában is látható.
+
+```bash
+docker run -it --rm -p 5000:5000 \
+containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text:latest \
+Eula=accept \
+Billing={ENDPOINT_URI} \
+ApiKey={API_KEY} \
+CloudAI:SentimentAnalysisSettings:TextAnalyticsHost={TEXT_ANALYTICS_HOST} \
+CloudAI:SentimentAnalysisSettings:SentimentAnalysisApiKey={SENTIMENT_APIKEY}
+```
+
+A parancs a következőket hajtja végre:
+
+* A fenti paranccsal megegyező lépéseket hajt végre.
+* Egy Text Analytics API végpontot és kulcsot tárol a hangulati elemzési kérelmek küldéséhez. 
+
 
 # <a name="custom-speech-to-text"></a>[Custom Speech – szöveg](#tab/cstt)
 
@@ -380,6 +407,9 @@ A parancs a következőket hajtja végre:
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
+> [!NOTE]
+> Ha több tárolót futtat, használjon egyedi portszámot.
+
 | Containers | SDK-gazda URL-címe | Protocol (Protokoll) |
 |--|--|--|
 | Beszéd – szöveg és Custom Speech – szöveg | `ws://localhost:5000` | WS |
@@ -388,6 +418,121 @@ A parancs a következőket hajtja végre:
 A WSS és a HTTPS protokollok használatával kapcsolatos további információkért lásd: [tárolók biztonsága](../cognitive-services-container-support.md#azure-cognitive-services-container-security).
 
 [!INCLUDE [Query Speech-to-text container endpoint](includes/speech-to-text-container-query-endpoint.md)]
+
+#### <a name="analyze-sentiment"></a>Vélemények elemzése
+
+Ha megadták a Text Analytics API hitelesítő adatait [a tárolóhoz](#analyze-sentiment-on-the-speech-to-text-output), a Speech SDK használatával elküldheti a beszédfelismerési kérelmeket az érzelmek elemzésével. Az API-válaszokat beállíthatja *egyszerű* vagy *részletes* formátum használatára.
+
+# <a name="simple-format"></a>[Egyszerű formátum](#tab/simple-format)
+
+Ha úgy szeretné beállítani a beszédfelismerési ügyfelet, hogy egyszerű `"Sentiment"` formátumot használjon, adja `Simple.Extensions`hozzá a értéket a értékhez. Ha ki szeretne választani egy adott Text Analytics modell verzióját, a `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` tulajdonság konfigurációjában cserélje le a elemet.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Simple.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Simple.Extensions`a válasz gyökérelem eredményét fogja visszaadni.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6098574b79434bd4849fee7e0a50f22e",
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+# <a name="detailed-format"></a>[Részletes formátum](#tab/detailed-format)
+
+Ha úgy szeretné beállítani a beszédfelismerési ügyfelet, hogy egy `"Sentiment"` részletes formátumot használjon, `Detailed.Extensions`adja `Detailed.Options`hozzá a értéket a, a vagy mindkettő értékhez. Ha ki szeretne választani egy adott Text Analytics modell verzióját, a `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` tulajdonság konfigurációjában cserélje le a elemet.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Options',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-PhraseOutput.Detailed.Extensions',
+    value='["Sentiment"]',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentAnalysis.modelversion',
+    value='latest',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
+
+`Detailed.Extensions`a válasz legfelső rétegében biztosítja a hangulati eredményt. `Detailed.Options`a válasz rétegében `NBest` adja meg az eredményt. Külön vagy együtt is használhatók.
+
+```json
+{
+   "DisplayText":"What's the weather like?",
+   "Duration":13000000,
+   "Id":"6a2aac009b9743d8a47794f3e81f7963",
+   "NBest":[
+      {
+         "Confidence":0.973695,
+         "Display":"What's the weather like?",
+         "ITN":"what's the weather like",
+         "Lexical":"what's the weather like",
+         "MaskedITN":"What's the weather like",
+         "Sentiment":{
+            "Negative":0.03,
+            "Neutral":0.79,
+            "Positive":0.18
+         }
+      },
+      {
+         "Confidence":0.9164971,
+         "Display":"What is the weather like?",
+         "ITN":"what is the weather like",
+         "Lexical":"what is the weather like",
+         "MaskedITN":"What is the weather like",
+         "Sentiment":{
+            "Negative":0.02,
+            "Neutral":0.88,
+            "Positive":0.1
+         }
+      }
+   ],
+   "Offset":4700000,
+   "RecognitionStatus":"Success",
+   "Sentiment":{
+      "Negative":0.03,
+      "Neutral":0.79,
+      "Positive":0.18
+   }
+}
+```
+
+---
+
+Ha szeretné teljesen letiltani a hangulat elemzését, `false` adjon hozzá `sentimentanalysis.enabled`egy értéket a következőhöz:.
+
+```python
+speech_config.set_service_property(
+    name='speechcontext-phraseDetection.sentimentanalysis.enabled',
+    value='false',
+    channel=speechsdk.ServicePropertyChannel.UriQueryParameter
+)
+```
 
 ### <a name="text-to-speech-or-custom-text-to-speech"></a>Szöveg – beszéd vagy egyéni szöveg – beszéd
 

@@ -1,162 +1,186 @@
 ---
-title: Windows rendszerű virtuális asztali alkalmazáskészlet Azure Marketplace – Azure
-description: Windows rendszerű virtuális asztali címkészlet létrehozása az Azure Marketplace használatával.
+title: Windows rendszerű virtuális asztali címkészlet Azure Portal – Azure
+description: Windows rendszerű virtuális asztali címkészlet létrehozása a Azure Portal használatával.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: tutorial
-ms.date: 03/09/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d5165b160ffc196416052a56aaa0d93c05db56bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: def3ed840d2886aabfce1d1081c94298083fe6d6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238621"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611629"
 ---
-# <a name="tutorial-create-a-host-pool-by-using-the-azure-marketplace"></a>Oktatóanyag: állomáslista létrehozása az Azure Marketplace használatával
+# <a name="tutorial-create-a-host-pool-with-the-azure-portal"></a>Oktatóanyag: állomáslista létrehozása a Azure Portal
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy gazdagép-készletet egy Windows rendszerű virtuális asztali bérlőn egy Microsoft Azure Marketplace ajánlat használatával.
-
-A gazdagép-készletek egy vagy több azonos virtuális gép gyűjteményei a Windows rendszerű virtuális asztali bérlői környezetekben. Mindegyik gazdagép tartalmazhatja azt az alkalmazáscsoport-csoportot, amelyet a felhasználók a fizikai asztalon lévők használatával kezelhetnek.
-
-Az oktatóanyag feladatai a következők:
-
-> [!div class="checklist"]
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/create-host-pools-azure-marketplace-2019.md).
 >
-> * Hozzon létre egy gazdagépet a Windows Virtual Desktopban.
-> * Hozzon létre egy erőforráscsoportot virtuális gépekkel egy Azure-előfizetésben.
-> * Csatlakoztassa a virtuális gépeket a Active Directory tartományhoz.
-> * Regisztrálja a virtuális gépeket a Windows Virtual Desktopban.
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A gazdagép-készletek egy vagy több azonos virtuális gép (VM) gyűjteményei, amelyek a Windows rendszerű virtuális asztali környezetekben találhatók. Mindegyik gazdagép tartalmazhatja azt az alkalmazáscsoport-csoportot, amelyet a felhasználók a fizikai asztalon lévők használatával kezelhetnek.
+
+Ebből a cikkből megtudhatja, hogyan hozhat létre egy Windows rendszerű virtuális asztali környezethez tartozó gazdagépet a Azure Portal használatával. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a Windows rendszerű virtuális asztali gazdagépek létrehozásához, egy Azure-előfizetésben található virtuális gépekkel rendelkező erőforráscsoport létrehozásához, a virtuális gépek Azure Active Directory (AD) tartományhoz való csatlakoztatásához, valamint a Windows rendszerű virtuális asztali gépek regisztrálásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy bérlő a virtuális asztalon. Egy korábbi [oktatóanyag](tenant-setup-azure-active-directory.md) létrehoz egy bérlőt.
-* [Windows rendszerű virtuális asztali PowerShell-modul](/powershell/windows-virtual-desktop/overview/).
+A gazdagépek létrehozásához a következő paramétereket kell megadnia:
 
-Ha ezt a modult futtatja, futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+- A virtuális gép rendszerképének neve
+- Virtuális gép konfigurációja
+- Tartomány és hálózat tulajdonságai
+- Windows rendszerű virtuális asztali gazdagép-készlet tulajdonságai
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+Emellett a következő dolgokat is ismernie kell:
 
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
+- A használni kívánt rendszerkép forrása. Ez az Azure-katalógusból vagy egy egyéni rendszerkép?
+- A tartományhoz való csatlakozáshoz szükséges hitelesítő adatok.
 
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+Amikor létrehoz egy Windows rendszerű virtuális asztali címkészletet a Azure Resource Manager sablonnal, létrehozhat egy virtuális gépet az Azure-katalógusból, egy felügyelt képből vagy egy nem felügyelt rendszerképből. A virtuálisgép-lemezképek létrehozásával kapcsolatos további információkért lásd: [Windows VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez](../virtual-machines/windows/prepare-for-upload-vhd-image.md) , valamint [egy általánosított virtuális gép felügyelt rendszerképének létrehozása az Azure-ban](../virtual-machines/windows/capture-image-resource.md).
 
-## <a name="run-the-azure-marketplace-offering-to-provision-a-new-host-pool"></a>Az Azure Marketplace-ajánlat futtatása új címkészlet kiépítéséhez
+Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) , mielőtt elkezdené ezeket az utasításokat.
 
-Az Azure Marketplace ajánlatának futtatása új címkészlet kiépítéséhez:
+## <a name="begin-the-host-pool-setup-process"></a>A gazdagép-készlet telepítési folyamatának megkezdése
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
-1. A piactér keresési ablakában adja meg a **Windows virtuális asztal** kifejezést.
-1. Válassza **a Windows virtuális asztal – címkészlet kiépítése**lehetőséget, majd válassza a **Létrehozás**lehetőséget.
+Az új címkészlet létrehozásának megkezdéséhez:
 
-Ezután kövesse a következő szakaszban található utasításokat a megfelelő lapokra vonatkozó információk megadásához.
+1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com/) webhelyen.
 
-### <a name="basics"></a>Alapvető beállítások
+2. Adja meg a **Windows rendszerű virtuális asztalt** a keresőmezőbe, majd keresse meg és válassza ki a **Windows rendszerű virtuális asztali** szolgáltatások elemet.
 
-Az **alapok** lapon a következő műveleteket végezheti el:
+3. A **Windows rendszerű virtuális asztal** áttekintése lapon válassza **a gazdagép létrehozása**lehetőséget.
 
-1. Válasszon egy **előfizetést**.
-1. Az **erőforráscsoport**területen válassza az **új létrehozása** elemet, és adja meg az új erőforráscsoport nevét.
-1. Válasszon **régiót**.
-1. Adja meg a Windows rendszerű virtuális asztali bérlőn belül egyedi alkalmazáskészlet nevét.
-1. Válassza az **asztal típusa**lehetőséget. Ha a **személyes**lehetőséget választja, a gazdagéphez csatlakozó összes felhasználó véglegesen hozzá van rendelve egy virtuális géphez.
-1. Adja meg azokat a felhasználókat, akik bejelentkezhetnek a Windows rendszerű virtuális asztali ügyfelekbe, és hozzáférnek az asztalhoz. Vesszővel tagolt lista használata. Ha például a hozzárendelést `user1@contoso.com` és `user2@contoso.com` a hozzáférést szeretné használni, írja be a következőt:*`user1@contoso.com,user2@contoso.com`*
-1. A **szolgáltatás metaadatainak helye**területen válassza ki a virtuális hálózattal megegyező helyet, amely kapcsolódik a Active Directory-kiszolgálóhoz.
+4. Az **alapvető beállítások** lapon válassza ki a megfelelő előfizetést a Project Details (projekt részletei) területen.
 
-   >[!IMPORTANT]
-   >Ha tiszta Azure Active Directory Domain Services (Azure AD DS) és Azure Active Directory (Azure AD) megoldást használ, ügyeljen arra, hogy az Azure-AD DS azonos régióban telepítse a gazdagép-készletet, hogy elkerülje a tartományhoz való csatlakozást és a hitelesítő adatokat.
+5. Vagy válassza az új létrehozása lehetőséget az új erőforráscsoport **létrehozásához** , vagy válasszon ki egy meglévő erőforráscsoportot a legördülő menüből.
 
-1. Válassza a Next (tovább) lehetőséget **: virtuális gépek konfigurálása**.
+6. Adjon egyedi nevet a gazdagép-készletnek.
 
-### <a name="configure-virtual-machines"></a>Virtuális gépek konfigurálása
+7. A hely mezőben válassza ki azt a régiót, ahol létre szeretné hozni az alkalmazáskészletet a legördülő menüből.
+   
+   A kiválasztott régiókkal társított Azure földrajz a gazdagép-készlet és a hozzá kapcsolódó objektumok metaadatait fogja tárolni. Győződjön meg arról, hogy a földrajzi helyen belüli régiókat választja, amelyekben a szolgáltatás metaadatait tárolni szeretné.
 
-A **virtuális gépek konfigurálása** lapon:
+     ![A Azure Portal az USA keleti régiójában kiválasztott Location (hely) mezőt bemutató képernyőkép. A mező mellett a "metaadatok az USA keleti régiójában lesznek tárolva."](media/portal-location-field.png)
 
-1. Fogadja el az alapértelmezett értékeket, vagy szabja testre a virtuális gépek számát és méretét.
+8. Az alkalmazáskészlet típusa területen válassza ki, hogy a gazdagép **személyes** vagy **készletezési**készlettel rendelkezik-e.
+
+    - Ha a **személyes**lehetőséget választja, válassza az **automatikus** vagy a **közvetlen** lehetőséget a hozzárendelés típusa mezőben.
+
+      ![A hozzárendelés típusa mező legördülő menüjének képernyőképe. A felhasználó automatikus beállítást adott meg.](media/assignment-type-field.png)
+
+9. Ha a **készletezett**lehetőséget választja, adja meg a következő adatokat:
+
+     - A **munkamenetek**maximális száma lehetőségnél adja meg, hogy legfeljebb hány felhasználót szeretne terheléselosztással elválasztani egyetlen munkamenet-gazdagépre.
+     - **Terheléselosztási algoritmus**esetén a használati minta alapján válassza a szélesség – első vagy a mélység – első lehetőséget.
+
+       ![A hozzárendelés típus mezőjének képernyőképe a "készletezett" beállítással. A felhasználó fölé viszi a kurzort a szélesség – először a terheléselosztás legördülő menüben.](media/pooled-assignment-type.png)
+
+10. Válassza a Next (tovább) lehetőséget **: virtuális gép adatai**.
+
+11. Ha már létrehozott egy virtuális gépet, és használni szeretné őket az új gazdagép-készlettel, válassza a **nem**lehetőséget. Ha új virtuális gépeket szeretne létrehozni, és regisztrálja őket az új gazdagép-készletben, válassza az **Igen**lehetőséget.
+
+Most, hogy elvégezte az első részt, térjünk át a telepítési folyamat következő részére, ahol létrehozjuk a virtuális gépet.
+
+## <a name="virtual-machine-details"></a>Virtuális gép adatai
+
+Most, hogy az első részen vagyunk, be kell állítania a virtuális gépet.
+
+A virtuális gép beállítása a gazdagép-készlet telepítési folyamatán belül:
+
+1. Az erőforráscsoport területen válassza ki azt az erőforráscsoportot, amelyben létre szeretné hozni a virtuális gépeket. Ez lehet egy másik erőforráscsoport, mint a gazdagéphez használt készlet.
+
+2. Válassza ki azt a **virtuálisgép-régiót** , amelyben létre szeretné hozni a virtuális gépeket. Megegyeznek a gazdagéphez kiválasztott régióval, vagy eltérőek lehetnek.
+
+3. Ezután válassza ki a létrehozni kívánt virtuális gép méretét. Megtarthatja az alapértelmezett méretet is, vagy a méret **módosításához válassza a méret módosítása** lehetőséget. Ha a **méret módosítása**lehetőséget választja, a megjelenő ablakban válassza ki a munkaterheléshez megfelelő virtuális gép méretét.
+
+4. A virtuális gépek száma területen adja meg a gazdagéphez létrehozni kívánt virtuális gépek számát.
 
     >[!NOTE]
-    >Ha a keresett virtuálisgép-méret nem jelenik meg a méret-választóban, ez azért van, mert még nem készítettük el az Azure Marketplace eszközre. A méret igényléséhez hozzon létre egy kérést, vagy egy meglévő kérelmet a [Windows virtuális asztali UserVoice fórumában](https://windowsvirtualdesktop.uservoice.com/forums/921118-general).
+    >A telepítési folyamat akár 400 virtuális GÉPET is létrehozhat a gazdagép beállítása közben, és minden egyes virtuálisgép-beállítási folyamat négy objektumot hoz létre az erőforráscsoporthoz. Mivel a létrehozási folyamat nem ellenőrzi az előfizetési kvótát, győződjön meg arról, hogy a megadott virtuális gépek száma az Azure-beli virtuális gépen, valamint az erőforráscsoport és az előfizetés API-korlátain belül van. A gazdagép-készlet létrehozása után további virtuális gépeket adhat hozzá.
 
-1. Adja meg a virtuális gépek neveinek előtagját. Ha például az *előtagot*adja meg, a virtuális gépek neve **előtag-0**, **előtag-1**, és így tovább.
-1. Válassza a **Tovább: virtuális gép beállításai**lehetőséget.
+5. Ezt követően adjon meg egy **előtagot** a virtuális gépek számára a telepítési folyamat által létrehozott névvel. Az utótag a 0 `-` értéktől kezdődő számmal lesz ellátva.
 
-### <a name="virtual-machine-settings"></a>A virtuális gép beállításai
+6. Ezután válassza ki a virtuális gép létrehozásához használni kívánt rendszerképet. Kiválaszthatja a **Katalógus vagy a** **tárolási blob**lehetőséget.
 
-A **virtuális gép beállításai** lapon:
+    - Ha a katalógus lehetőséget **választja, válassza ki a**javasolt rendszerképek egyikét a legördülő menüből:
 
-1. A **képforráshoz**válassza ki a forrást, és adja meg a megfelelő információkat a megkereséséhez és tárolásához. A lehetőségek különböznek a blob Storage-hoz, a felügyelt rendszerképekhez és a gyűjteményekhez.
+      - Windows 10 Enterprise multi-session, Version 1909 + Office 365 ProPlus – Gen 1
+      - Windows 10 Enterprise multi-session, Version 1909 – Gen 1
+      - Windows Server 2019 Datacenter – Gen1
 
-   Ha úgy dönt, hogy nem használja a felügyelt lemezeket, válassza ki azt a Storage-fiókot, amely a *. vhd* -fájlt tartalmazza.
-1. Adja meg az egyszerű felhasználónevet és a jelszót. Ennek a fióknak a tartományi fióknak kell lennie, amely a virtuális gépeket a Active Directory tartományhoz fogja csatlakoztatni. Ugyanezt a felhasználónevet és jelszót a rendszer helyi fiókként hozza létre a virtuális gépeken. Ezeket a helyi fiókokat később is visszaállíthatja.
+     Ha nem látja a kívánt rendszerképet, válassza az **összes rendszerkép és lemez tallózása**lehetőséget, amely lehetővé teszi, hogy a katalógusban vagy a Microsoft által biztosított lemezképet vagy más közzétevőket is válasszon egy másik rendszerképben.
 
-   >[!NOTE]
-   > Ha a virtuális gépeket Azure AD DS-környezethez csatlakoztatja, győződjön meg arról, hogy a tartományhoz való csatlakozás felhasználója az [HRE DC-rendszergazdák csoport](../active-directory-domain-services/tutorial-create-instance-advanced.md#configure-an-administrative-group)tagja.
-   >
-   > A fióknak az Azure AD DS felügyelt tartomány vagy az Azure AD-bérlő részét is kell képeznie. Az Azure AD-bérlőhöz társított külső könyvtárak fiókjai nem tudják megfelelően hitelesíteni magukat a tartományhoz való csatlakozás során.
+     ![A piactér képernyőképe a Microsoft által megjelenített rendszerképek listájáról.](media/marketplace-images.png)
 
-1. Válassza ki azt a **virtuális hálózatot** , amely a Active Directory-kiszolgálóhoz kapcsolódik, majd válasszon egy alhálózatot a virtuális gépek üzemeltetéséhez.
-1. Válassza a Next (tovább) lehetőséget **: Windows virtuális asztali információk**.
+     Megnyithatja **az elemeket** , és kiválaszthat egy már feltöltött egyéni rendszerképet is.
 
-### <a name="windows-virtual-desktop-tenant-information"></a>Windows rendszerű virtuális asztali bérlő adatai
+     ![Képernyőkép a saját elemek lapról.](media/my-items.png)
 
-A **Windows rendszerű virtuális asztali bérlő adatai** lapon:
+    - Ha a **Storage blob**lehetőséget választja, a saját rendszerképét a Hyper-V használatával vagy egy Azure-beli virtuális gépen is kihasználhatja. Mindössze annyit kell tennie, hogy megadja a rendszerkép helyét a Storage-blobban URI-ként.
 
-1. A **Windows rendszerű virtuális asztali bérlői csoport neve**mezőbe írja be a bérlőt tartalmazó bérlői csoport nevét. Hagyja meg az alapértelmezett értéket, ha megadott egy bérlői csoport nevét.
-1. A **Windows rendszerű virtuális asztali bérlő neve**mezőbe írja be annak a bérlőnek a nevét, ahol a gazdagépet létrehozza.
-1. Adja meg, hogy milyen típusú hitelesítő adatokat kíván használni a Windows rendszerű virtuális asztali bérlői RDS-tulajdonosként való hitelesítéshez. Adja meg az egyszerű felhasználónevet vagy szolgáltatásnevet, valamint egy jelszót.
+7. Válassza ki, hogy a virtuális gépek milyen operációsrendszer-lemezeket szeretnének használni: standard SSD, prémium SSD vagy standard HDD.
 
-   Ha végrehajtotta az [egyszerű szolgáltatásnév és a szerepkör-hozzárendelések létrehozása a PowerShell-lel oktatóanyagot](./create-service-principal-role-powershell.md), válassza az **egyszerű szolgáltatásnév**lehetőséget.
+8. A hálózat és biztonság területen válassza ki azt a virtuális hálózatot és alhálózatot, ahol a létrehozni kívánt virtuális gépeket el szeretné helyezni. Győződjön meg arról, hogy a virtuális hálózat tud csatlakozni a tartományvezérlőhöz, mert a virtuális hálózaton belüli virtuális gépeket a tartományhoz kell csatlakoztatnia. Ezután válassza ki, hogy szeretne-e nyilvános IP-címet használni a virtuális gépekhez. Azt javasoljuk, hogy válassza a **nem**lehetőséget, mert a magánhálózati IP-cím biztonságosabb.
 
-1. Az **egyszerű szolgáltatásnév**esetében az **Azure ad-bérlő azonosítója**mezőben adja meg az egyszerű szolgáltatásnevet tartalmazó Azure ad-példány bérlői rendszergazdai fiókját. Csak a jelszavas hitelesítő adatokkal rendelkező egyszerű szolgáltatások támogatottak.
-1. Válassza a **Next (tovább): felülvizsgálat + létrehozás**elemet.
+9. Válassza ki a kívánt biztonsági csoport típusát: **Alapszintű**, **speciális**vagy **nincs**.
 
-## <a name="complete-setup-and-create-the-virtual-machine"></a>A telepítés befejezése és a virtuális gép létrehozása
+    Ha az **alapszintű**lehetőséget választja, ki kell választania, hogy meg kívánja-e nyitni a bejövő portokat. Ha az **Igen**lehetőséget választja, akkor a bejövő kapcsolatok engedélyezéséhez válasszon a szabványos portok listájából.
 
-A **felülvizsgálat és létrehozás**lapon tekintse át a telepítési adatokat. Ha módosítania kell valamit, lépjen vissza, és végezze el a módosításokat. Ha elkészült, válassza a **Létrehozás** lehetőséget a gazdagép-készlet telepítéséhez.
+    >[!NOTE]
+    >A nagyobb biztonság érdekében javasoljuk, hogy ne nyissa meg a nyilvános bejövő portokat.
 
-Attól függően, hogy hány virtuális gépet hoz létre, ez a folyamat 30 percet vagy akár több időt is igénybe vehet.
+    ![A biztonsági csoport oldalának képernyőképe, amely megjeleníti az elérhető portok listáját a legördülő menüben.](media/available-ports.png)
+    
+    Ha a **speciális**lehetőséget választja, válasszon ki egy már konfigurált, meglévő hálózati biztonsági csoportot.
 
->[!IMPORTANT]
-> A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára.
->
-> Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja az igény szerinti hozzáférést. További információ: [a felügyeleti portok biztonságossá tétele az](../security-center/security-center-just-in-time.md)igény szerinti hozzáféréssel.
+10. Ezután válassza ki, hogy szeretné-e a virtuális gépeket egy adott tartományhoz és szervezeti egységhez csatlakoztatni. Ha az **Igen**lehetőséget választja, adja meg azt a tartományt, amelyhez csatlakozni szeretne. Hozzáadhat egy adott szervezeti egységet is, amelyben a virtuális gépeket be szeretné állítani.
 
-## <a name="optional-assign-additional-users-to-the-desktop-application-group"></a>Választható További felhasználók társítása az asztali alkalmazás csoportjához
+11. A rendszergazdai fiók területen adja meg a kiválasztott virtuális hálózat Active Directory-tartomány rendszergazdájához tartozó hitelesítő adatokat.
 
-Miután az Azure Marketplace befejezte a készlet létrehozását, több felhasználót is hozzárendelhet az asztali alkalmazás csoportjához. Ha még nem kívánja hozzáadni, ugorja át ezt a szakaszt.
+12. Válassza ki a **munkaterületet**.
 
-Felhasználók társítása az asztali alkalmazás csoportjához:
+Ezzel készen áll arra, hogy elindítsa a gazdagép készletének következő fázisát: az alkalmazás csoportjának regisztrálása munkaterületre.
 
-1. Indítson el egy PowerShell-ablakot.
+## <a name="workspace-information"></a>Munkaterület-információk
 
-1. A következő parancs futtatásával jelentkezzen be a Windows rendszerű virtuális asztali környezetbe:
+A gazdagép-készlet telepítési folyamata alapértelmezés szerint létrehoz egy asztali alkalmazáscsoport-csoportot. Ahhoz, hogy a gazdagép a kívánt módon működjön, közzé kell tennie ezt az erőforráscsoportot felhasználók vagy felhasználói csoportok számára, és regisztrálnia kell az alkalmazást egy munkaterületen. 
 
-   ```powershell
-   Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-   ```
+Az asztali alkalmazás csoportjának regisztrálása munkaterületre:
 
-1. Adja hozzá a felhasználókat az asztali alkalmazás csoportjához a következő parancs használatával:
+1. Válassza az **Igen** lehetőséget.
 
-   ```powershell
-   Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
-   ```
+   Ha a **nem**lehetőséget választja, akkor később regisztrálhatja az alkalmazást, de azt javasoljuk, hogy a munkaterület regisztrációját a lehető leghamarabb végezze el, amint a gazdagép-készlet megfelelően működik.
 
-   A felhasználó UPN-nek meg kell egyeznie a felhasználó identitásával az Azure AD- *user1@contoso.com*ben, például:. Ha több felhasználót szeretne hozzáadni, futtassa az parancsot minden felhasználóhoz.
+2. Ezután adja meg, hogy szeretne-e új munkaterületet létrehozni, vagy válasszon a meglévő munkaterületekről. Csak abban a helyen létrehozott munkaterületek lesznek regisztrálva az alkalmazásban, ahol a gazdagép-készletet is létrehozták.
 
-Az asztali alkalmazás csoportba felvett felhasználók a támogatott Távoli asztal ügyfelekkel bejelentkezhetnek a Windows rendszerű virtuális asztalra, és megtekinthetik a munkamenetek asztalának erőforrásait.
+3. Lehetőség van a **címkék**kiválasztására is.
 
-A jelenleg támogatott ügyfelek:
+    Itt hozzáadhat címkéket, így a metaadatokkal csoportosíthatja az objektumokat, hogy könnyebb legyen a rendszergazdák számára.
 
-* [Távoli asztal ügyfél a Windows 7 és a Windows 10 rendszerhez](connect-windows-7-and-10.md)
-* [Windows rendszerű virtuális asztali webes ügyfél](connect-web.md)
+4. Ha elkészült, válassza a **felülvizsgálat + létrehozás**elemet. 
+
+     >[!NOTE]
+     >A felülvizsgálat + ellenőrzési folyamat nem ellenőrzi, hogy a Jelszó megfelel-e a biztonsági szabványoknak, vagy ha az architektúra helyes, ezért az ilyen dolgok bármelyikével kapcsolatos problémákat meg kell vizsgálnia. 
+
+5. Tekintse át az üzemelő példány adatait, és győződjön meg róla, hogy minden helyesnek tűnik. Amikor elkészült, válassza a **Létrehozás** lehetőséget. Ez elindítja a telepítési folyamatot, amely a következő objektumokat hozza létre:
+
+     - Az új gazdagép-készletet.
+     - Egy asztali alkalmazás csoportja.
+     - Munkaterület, ha úgy dönt, hogy létrehoz egy munkaterületet.
+     - Ha úgy dönt, hogy regisztrálja az asztali alkalmazás csoportját, akkor a regisztráció befejeződött
+     - Virtuális gépek, ha úgy dönt, hogy létrehozza őket, amelyek a tartományhoz csatlakoznak, és regisztrálva vannak az új gazdagép-készletben.
+     - Egy Azure Resource Management-sablonhoz tartozó letöltési hivatkozás a konfiguráció alapján.
+
+Ezt követően már készen is van!
 
 ## <a name="next-steps"></a>További lépések
 
-Létrehozott egy gazdagépet, és hozzárendelt felhasználókat az asztalához való hozzáféréshez. A gazdagép-készletet a RemoteApp-programokkal töltheti fel. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg ezt az oktatóanyagot:
+Most, hogy elvégezte a gazdagép készletét, feltöltheti azt a RemoteApp-programok használatával. Ha többet szeretne megtudni a Windows rendszerű virtuális asztali alkalmazások kezeléséről, tekintse meg a következő oktatóanyagot:
 
 > [!div class="nextstepaction"]
 > [Alkalmazás-csoportok kezelése – oktatóanyag](./manage-app-groups.md)

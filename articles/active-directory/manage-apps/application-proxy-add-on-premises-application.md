@@ -12,12 +12,12 @@ ms.date: 10/24/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73aa01ea08c8bab1395516c31bb46dbfd88045db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 10d0f949fb2a5755512a30dcca011690d86a7e7b
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481415"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597722"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
 
@@ -47,10 +47,12 @@ Az alkalmazásproxy használatához Windows Server 2012 R2 vagy újabb rendszert
 Az éles környezetben való magas rendelkezésre állás érdekében javasoljuk, hogy egynél több Windows Servert válasszon. Ebben az oktatóanyagban az egyik Windows-kiszolgáló elegendő.
 
 > [!IMPORTANT]
-> Ha az összekötőt a Windows Server 2019 rendszerre telepíti, a HTTP2 korlátozás van érvényben. Az összekötő ezen a verzión való használatának megkerülő megoldásként adja hozzá a következő beállításkulcsot, és indítsa újra a kiszolgálót. Vegye figyelembe, hogy ez egy, a gép beállításjegyzékének széles kulcsa. 
-    ```
-    HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
-    ```
+> Ha az összekötőt a Windows Server 2019-es verzióra telepíti, le kell tiltania a HTTP2 protokoll támogatását a WinHttp összetevőben. Ez alapértelmezés szerint le van tiltva a támogatott operációs rendszerek korábbi verzióiban. A következő beállításkulcs hozzáadásával és a kiszolgáló újraindításával letiltja azt a Windows Server 2019 rendszeren. Vegye figyelembe, hogy ez egy számítógép-szintű beállításkulcs.
+>
+> ```
+> HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Internet Settings\WinHttp\EnableDefaultHttp2 (DWORD) Value: 0 
+> ```
+>
 
 #### <a name="recommendations-for-the-connector-server"></a>Az összekötő-kiszolgáló javaslatai
 

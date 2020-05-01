@@ -8,12 +8,12 @@ ms.devlang: azurepowershell
 ms.topic: quickstart
 ms.date: 04/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 5bb2c75cb43df86829a97a600c2fe253452cd66d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e12da29a8388bf4a232930c3737be7ddce80d12
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234310"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611942"
 ---
 # <a name="quickstart-create-an-azure-database-for-mysql-server-using-powershell"></a>Rövid útmutató: Azure Database for MySQL-kiszolgáló létrehozása a PowerShell használatával
 
@@ -134,7 +134,7 @@ Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
 ```Output
 FullyQualifiedDomainName                    AdministratorLogin
 ------------------------                    ------------------
-mrdemoserver.mysql.database.azure.com       myadmin
+mydemoserver.mysql.database.azure.com       myadmin
 ```
 
 ## <a name="connect-to-the-server-using-the-mysql-command-line-tool"></a>Kapcsolódás a kiszolgálóhoz a MySQL parancssori eszköz használatával
@@ -233,3 +233,8 @@ Ha csak az ebben a rövid útmutatóban létrehozott kiszolgálót szeretné tö
 ```azurepowershell-interactive
 Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
 ```
+
+## <a name="next-steps"></a>További lépések
+
+> [!div class="nextstepaction"]
+> [Azure Database for MySQL tervezése a PowerShell használatával](tutorial-design-database-using-powershell.md)

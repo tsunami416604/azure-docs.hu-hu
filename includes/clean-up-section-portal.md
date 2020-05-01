@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 5c5b2a0c6e27f83e94b8f6a0ba3bb09ed1831680
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f9e50f0d4969e10d3c01496ea29652712a407c5
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73471582"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592390"
 ---
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -19,4 +19,4 @@ A Azure Portal menüben vagy a **kezdőlapon** válassza az **erőforráscsoport
 
 A **myResourceGroup** lapon győződjön meg arról, hogy a felsorolt erőforrások közül azokat törölni kívánja.
 
-Válassza a **Törlés** elemet, írja be a **myResourceGroup** kifejezést a szövegmezőbe, majd válassza a **Törlés** elemet.
+Válassza az **erőforráscsoport törlése**elemet, írja be a **myResourceGroup** szöveget a megerősítéshez, majd válassza a **Törlés**lehetőséget.

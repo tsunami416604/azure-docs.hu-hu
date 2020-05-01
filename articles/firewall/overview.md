@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.date: 04/23/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 81adf005c2e39d9bb585c005f51ab3f89e4c8ff0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a0bd89a2ffdc15e192e51660c58c1d66efa1284a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209128"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598453"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -122,6 +122,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |A DNAT nem támogatott a kényszerített bújtatás használata esetén|A kényszerített bújtatással telepített tűzfalak esetében az aszimmetrikus útválasztás miatt nem támogatott a bejövő hozzáférés az internetről.|Ezt az aszimmetrikus útválasztás miatt tervezték meg. A bejövő kapcsolatok visszatérési útvonala a helyszíni tűzfalon megy keresztül, amely még nem látta el a kapcsolatot.
 |A kimenő passzív FTP nem működik több nyilvános IP-címmel rendelkező tűzfalak esetében.|A passzív FTP különböző kapcsolatokat hoz létre a vezérlési és az adatcsatornákhoz. Ha egy több nyilvános IP-címmel rendelkező tűzfal kimenő adatokat küld, véletlenszerűen kiválasztja az egyik nyilvános IP-címét a forrás IP-címéhez. Az FTP meghiúsul, ha az adat-és vezérlési csatornák eltérő forrás IP-címeket használnak.|A rendszer explicit SNAT-konfigurációt tervez. Addig is érdemes egyetlen IP-címet használni ebben a helyzetben.|
 |A NetworkRuleHit metrika nem tartalmaz protokoll-dimenziót|A ApplicationRuleHit metrika lehetővé teszi a szűrési alapú protokoll használatát, de ez a képesség hiányzik a megfelelő NetworkRuleHit-metrikában.|A rendszer kivizsgálja a javítást.|
+|A 64000 és 65535 közötti portokkal rendelkező NAT-szabályok nem támogatottak|A Azure Firewall engedélyezi az 1-65535 tartomány bármely portját a hálózati és az alkalmazási szabályokban, azonban a NAT-szabályok csak a 1-63999 tartományba tartozó portokat támogatják.|Ez egy aktuális korlátozás.
 |A konfigurációs frissítések átlaga öt percet is igénybe vehet.|Egy Azure Firewall konfigurációs frissítés átlagosan három-öt percet vehet igénybe, és a párhuzamos frissítések nem támogatottak.|A rendszer kivizsgálja a javítást.
 
 ## <a name="next-steps"></a>További lépések

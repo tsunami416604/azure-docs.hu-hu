@@ -16,18 +16,19 @@ ms.topic: tutorial
 ms.date: 05/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8a2c962c69ead28c4e79b663010eab77a499f5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 13c3a7f8376d4c852a74be75e323c6bb042b5407
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048416"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610989"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>OpenID/OAuth-alkalmazás konfigurálása az Azure AD App Galleryből
 
 ## <a name="process-of-adding-an-openid-application-from-the-gallery"></a>OpenID-alkalmazás felvételének folyamata a katalógusból
 
-1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget. 
+1. A [Azure Portal](https://portal.azure.com)a bal oldali ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 
     ![A Azure Active Directory gomb](common/select-azuread.png))
 
@@ -61,17 +62,17 @@ A legalapvetőbb bejelentkezési folyamat a következő lépéseket tartalmazza:
 
 ![Hitelesítési folyamat OpenID Connect használatával](./media/openidoauth-tutorial/authenticationflow.png)
 
-### <a name="multitenant-application"></a>Több-bérlős alkalmazás 
-A több-bérlős alkalmazások számos szervezet számára készültek, nem csupán egyetlen szervezet számára. Ezek jellemzően egy független szoftvergyártó (ISV) által írt, szolgáltatott szoftveres (SaaS) alkalmazások. 
+### <a name="multitenant-application"></a>Több-bérlős alkalmazás
+A több-bérlős alkalmazások számos szervezet számára készültek, nem csupán egyetlen szervezet számára. Ezek jellemzően egy független szoftvergyártó (ISV) által írt, szolgáltatott szoftveres (SaaS) alkalmazások.
 
-Több-bérlős alkalmazásokat kell kiépíteni minden olyan könyvtárban, ahol használni fogják őket. A regisztrációhoz felhasználói vagy rendszergazdai jogosultság szükséges. Ez a engedélyezési folyamat akkor indul el, amikor egy alkalmazás regisztrálva van a címtárban, és hozzáférést kap a Graph APIhoz vagy esetleg egy másik webes API-hoz. Ha egy másik szervezet felhasználói vagy rendszergazdái feliratkozik az alkalmazás használatára, megjelenik egy párbeszédpanel, amely az alkalmazás által igényelt engedélyeket jeleníti meg. 
+Több-bérlős alkalmazásokat kell kiépíteni minden olyan könyvtárban, ahol használni fogják őket. A regisztrációhoz felhasználói vagy rendszergazdai jogosultság szükséges. Ez a engedélyezési folyamat akkor indul el, amikor egy alkalmazás regisztrálva van a címtárban, és hozzáférést kap a Graph APIhoz vagy esetleg egy másik webes API-hoz. Ha egy másik szervezet felhasználói vagy rendszergazdái feliratkozik az alkalmazás használatára, megjelenik egy párbeszédpanel, amely az alkalmazás által igényelt engedélyeket jeleníti meg.
 
 A felhasználó vagy a rendszergazda megadhatja az alkalmazásnak. A belefoglalt engedély lehetővé teszi az alkalmazás számára a megadott információhoz való hozzáférést, és végül regisztrálja az alkalmazást a címtárban.
 
 > [!NOTE]
 > Ha az alkalmazást több címtárban is elérhetővé teszi a felhasználók számára, szüksége lesz egy olyan mechanizmusra, amely meghatározza, hogy melyik bérlőn belül van. Az egybérlős alkalmazásoknak csak a saját címtárában kell megkeresniük a felhasználókat. Egy több-bérlős alkalmazásnak azonosítania kell egy adott felhasználót az Azure AD összes könyvtárában.
-> 
-> A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, amelyben bármely több-bérlős alkalmazás képes a bejelentkezési kérelmeket a bérlő-specifikus végpont helyett. Ez a végpont `https://login.microsoftonline.com/common` az Azure ad összes könyvtára számára elérhető. A bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com`. 
+>
+> A feladat elvégzéséhez az Azure AD egy közös hitelesítési végpontot biztosít, amelyben bármely több-bérlős alkalmazás képes a bejelentkezési kérelmeket a bérlő-specifikus végpont helyett. Ez a végpont `https://login.microsoftonline.com/common` az Azure ad összes könyvtára számára elérhető. A bérlő-specifikus végpont lehet `https://login.microsoftonline.com/contoso.onmicrosoft.com`.
 >
 > A közös végpontot fontos figyelembe venni az alkalmazás fejlesztésekor. A bejelentkezés, a kijelentkezés és a jogkivonat-érvényesítés során több bérlő kezeléséhez szükséges logikára lesz szüksége.
 
@@ -80,9 +81,9 @@ Az Azure AD alapértelmezés szerint támogatja a több-bérlős alkalmazásokat
 ## <a name="consent-framework"></a>Jóváhagyási keretrendszer
 
 A több-bérlős webes és natív ügyfélalkalmazások fejlesztéséhez használhatja az Azure AD-beli engedélyezési keretrendszert. Ezek az alkalmazások lehetővé teszik a felhasználói fiókok általi bejelentkezést egy Azure AD-bérlőtől, amely eltér az alkalmazás regisztrálásának helyétől. Előfordulhat, hogy a következő webes API-kat is el kell érnie:
-- Az Azure AD, az Intune és az Office 365 szolgáltatásainak eléréséhez Microsoft Graph API. 
+- Az Azure AD, az Intune és az Office 365 szolgáltatásainak eléréséhez Microsoft Graph API.
 - Más Microsoft-szolgáltatások API-jai.
-- Saját webes API-k. 
+- Saját webes API-k.
 
 A keretrendszer egy felhasználó vagy egy rendszergazda azon alapul, amely beleegyezik egy olyan alkalmazásba, amely a címtárban való regisztrálást kéri. Előfordulhat, hogy a regisztráció a címtáradatok elérését is magában foglalja. A beleegyező engedély megadása után az ügyfélalkalmazás meghívja a Microsoft Graph API-t a felhasználó nevében, és igény szerint használhatja az információt.
 
@@ -146,7 +147,7 @@ Rendszergazdaként a bérlő összes felhasználója nevében jóváhagyhatja az
 
 Csak az alkalmazásra vonatkozó engedélyek szükségesek a bérlői rendszergazda beleegyezni. Ha az alkalmazás csak alkalmazásra vonatkozó engedélyt kér, és egy felhasználó megpróbál bejelentkezni az alkalmazásba, hibaüzenet jelenik meg. Az üzenet azt mondja, hogy a felhasználó nem tud beleegyezni.
 
-Ha az alkalmazás rendszergazdai jogosultságot igénylő engedélyeket használ, olyan kézmozdulattal kell rendelkeznie, mint például egy gomb vagy egy hivatkozás, amelyben a rendszergazda el tudja indítani a műveletet. Az alkalmazás által a művelethez küldött kérelem a szokásos OAuth2/OpenID Connect engedélyezési kérelem. Ez a kérelem tartalmazza a *prompt = admin_consent* lekérdezési karakterlánc paramétert. 
+Ha az alkalmazás rendszergazdai jogosultságot igénylő engedélyeket használ, olyan kézmozdulattal kell rendelkeznie, mint például egy gomb vagy egy hivatkozás, amelyben a rendszergazda el tudja indítani a műveletet. Az alkalmazás által a művelethez küldött kérelem a szokásos OAuth2/OpenID Connect engedélyezési kérelem. Ez a kérelem tartalmazza a *prompt = admin_consent* lekérdezési karakterlánc paramétert.
 
 Miután a rendszergazda beleegyezett, és az ügyfél bérlője létrehozta a szolgáltatásnevet, a későbbi bejelentkezési kérésekhez nem szükséges a *prompt = admin_consent* paraméter. Mivel a rendszergazda úgy döntött, hogy a kért engedélyek elfogadhatók, a bérlőn kívül más felhasználókat sem kell megadnia az adott időponthoz.
 

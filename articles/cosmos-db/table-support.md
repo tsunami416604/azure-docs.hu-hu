@@ -8,12 +8,12 @@ ms.date: 12/02/2019
 author: sakash279
 ms.author: akshanka
 ms.reviewer: sngun
-ms.openlocfilehash: 82397e49e473b8660dfada54a0e05cafe0da4120
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65cc378ab5b6fd7d2ed724f56a68bdf989ced48c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76770668"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611721"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>Fejlesztés az Azure Cosmos DB Table API és az Azure Table Storage használatával
 
@@ -34,7 +34,7 @@ Az [Azure Cosmos DB Table API](table-introduction.md) jelenleg négy SDK-t bizto
 * [Node. js SDK](table-sdk-nodejs.md): ez az Azure Storage SDK képes csatlakozni Azure Cosmos db fiókokhoz a Table API használatával.
 
 
-A Table API használatával kapcsolatban a [Table API-val történő fejlesztéshez kapcsolódó gyakori kérdések](faq.md#table) között tekinthet meg további információt.
+A Table API használatával kapcsolatban a [Table API-val történő fejlesztéshez kapcsolódó gyakori kérdések](table-api-faq.md) között tekinthet meg további információt.
 
 ## <a name="developing-with-azure-table-storage"></a>Fejlesztés az Azure Table Storage használatával
 

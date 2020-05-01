@@ -3,15 +3,15 @@ title: Egyéni DNS biztonságossá tétele TLS/SSL-kötéssel
 description: Biztonságos HTTPS-hozzáférés az egyéni tartományhoz egy tanúsítványhoz tartozó TLS/SSL-kötés létrehozásával. Javítsa a webhely biztonságát a HTTPS vagy a TLS 1,2 betartatásával.
 tags: buy-ssl-certificates
 ms.topic: tutorial
-ms.date: 10/25/2019
+ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
-ms.openlocfilehash: 9792181379bfa6f9e0337bf14208fe853c16b745
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c93938db4632f6509e386d440c9be75596ea254f
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80811743"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597895"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
 
@@ -83,7 +83,7 @@ A következő táblázat segítségével konfigurálhatja a TLS-kötést a **TLS
 |-|-|
 | Egyéni tartomány | Az a tartománynév, amelyhez hozzá kell adni a TLS/SSL-kötést. |
 | Privát Tanúsítvány ujjlenyomata | A kötni kívánt tanúsítvány. |
-| TLS/SSL-típus | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** – több SNI SSL kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több TLS/SSL-tanúsítvány biztosítson több tartományt ugyanazon az IP-címen. A legtöbb modern böngésző (például az Internet Explorer, a Chrome, a Firefox és az Opera) támogatja a SNI (További információ: [kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** – csak egy IP SSL kötés adható hozzá. Ez a beállítás csak egy TLS/SSL-tanúsítványt engedélyez egy dedikált nyilvános IP-cím biztonságossá tételéhez. Miután konfigurálta a kötést, kövesse a következő témakörben ismertetett lépéseket: [IP SSL](#remap-a-record-for-ip-ssl).<br/>IP SSL csak éles környezetben vagy elszigetelt szinten támogatott. </li></ul> |
+| TLS/SSL-típus | <ul><li>**[SNI SSL](https://en.wikipedia.org/wiki/Server_Name_Indication)** – több SNI SSL kötés adható hozzá. Ez a beállítás lehetővé teszi, hogy több TLS/SSL-tanúsítvány biztosítson több tartományt ugyanazon az IP-címen. A legtöbb modern böngésző (például az Internet Explorer, a Chrome, a Firefox és az Opera) támogatja a SNI (További információ: [kiszolgálónév jelzése](https://wikipedia.org/wiki/Server_Name_Indication)).</li><li>**IP SSL** – csak egy IP SSL kötés adható hozzá. Ez a beállítás csak egy TLS/SSL-tanúsítványt engedélyez egy dedikált nyilvános IP-cím biztonságossá tételéhez. Miután konfigurálta a kötést, kövesse a következő témakörben ismertetett lépéseket: [IP SSL rekordok](#remap-records-for-ip-ssl)visszavonása.<br/>IP SSL csak **standard** vagy újabb verzióban támogatott. </li></ul> |
 
 A művelet befejezése után az egyéni tartomány TLS/SSL-állapota **biztonságosra**változik.
 
@@ -92,15 +92,17 @@ A művelet befejezése után az egyéni tartomány TLS/SSL-állapota **biztonsá
 > [!NOTE]
 > Az **Egyéni tartományokban** található **biztonságos** állapot azt jelenti, hogy a tanúsítvány védett, de app Service nem vizsgálja, hogy a tanúsítvány önaláírt vagy lejárt, például hogy a böngészők hibát vagy figyelmeztetést jelenítenek-e meg.
 
-## <a name="remap-a-record-for-ip-ssl"></a>Az A rekord újbóli leképezése az IP SSL-re
+## <a name="remap-records-for-ip-ssl"></a>IP SSL rekordok ismételt társítása
 
 Ha nem használja a IP SSL alkalmazást az alkalmazásban, ugorjon a [https tesztelése az egyéni tartományhoz](#test-https)lehetőségre.
 
-Alapértelmezés szerint az alkalmazás egy megosztott nyilvános IP-címet használ. Ha IP SSLrel rendelkező tanúsítványt köt össze, App Service létrehoz egy új, dedikált IP-címet az alkalmazáshoz.
+Két módosítást kell végeznie, potenciálisan:
 
-Ha hozzárendelt egy rekordot az alkalmazáshoz, frissítse a tartomány beállításjegyzékét ezzel az új, dedikált IP-címmel.
+- Alapértelmezés szerint az alkalmazás egy megosztott nyilvános IP-címet használ. Ha IP SSLrel rendelkező tanúsítványt köt össze, App Service létrehoz egy új, dedikált IP-címet az alkalmazáshoz. Ha hozzárendelt egy rekordot az alkalmazáshoz, frissítse a tartomány beállításjegyzékét ezzel az új, dedikált IP-címmel.
 
-Az alkalmazás **egyéni tartomány** lapja az új, dedikált IP-címmel frissül. [Másolja ezt az IP-címet](app-service-web-tutorial-custom-domain.md#info), majd [képezze le újra az A rekordot](app-service-web-tutorial-custom-domain.md#map-an-a-record) erre az új IP-címre.
+    Az alkalmazás **egyéni tartomány** lapja az új, dedikált IP-címmel frissül. [Másolja ezt az IP-címet](app-service-web-tutorial-custom-domain.md#info), majd [képezze le újra az A rekordot](app-service-web-tutorial-custom-domain.md#map-an-a-record) erre az új IP-címre.
+
+- Ha SNI SSL `<app-name>.azurewebsites.net`kötése van a szolgáltatáshoz, akkor a CNAME- [hozzárendelést](app-service-web-tutorial-custom-domain.md#map-a-cname-record) újra fel kell vennie, hogy `sni.<app-name>.azurewebsites.net` a rendszer az `sni` előtagot adja meg
 
 ## <a name="test-https"></a>HTTPS tesztelése
 

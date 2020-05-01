@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: tomfitz
-ms.openlocfilehash: 48aaca64949aafecff27c76ad7572b3c2fa44732
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47eda62810b1098fcaca5b734be4f74edc0db49a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81391503"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609357"
 ---
 # <a name="quickstart-create-and-publish-a-managed-application-definition"></a>Rövid útmutató: felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -290,7 +290,7 @@ A parancs befejeződésekor egy felügyeltalkalmazás-definíció található az
 
 * **erőforráscsoport**: az erőforráscsoport neve, amelyben a felügyelt alkalmazás definíciója létrejött.
 * **zárolási szint**: a felügyelt erőforráscsoporthoz helyezett zárolás típusa. Megakadályozza, hogy az ügyfél nemkívánatos műveleteket hajtson végre ezen az erőforráscsoporton. Jelenleg a ReadOnly az egyetlen támogatott zárolási szint. Amikor a ReadOnly van megadva, az ügyfél csak olvashatja a felügyelt erőforráscsoportban lévő erőforrásokat. A kezelt erőforráscsoporthoz hozzáféréssel rendelkező közzétevői identitások mentesítve vannak a zárolás alól.
-* **authorizations**: A felügyelt erőforráscsoporthoz való engedély biztosításához használt résztvevő-azonosítót és szerepkördefiníció-azonosítót ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1> <principalId2>:<roleDefinitionId2>`. Az értékeket szóközzel kell elválasztani egymástól.
+* **authorizations**: A felügyelt erőforráscsoporthoz való engedély biztosításához használt résztvevő-azonosítót és szerepkördefiníció-azonosítót ismerteti. `<principalId>:<roleDefinitionId>` formátumban van megadva. Ha egynél több érték szükséges, adja meg azokat a következő formátumban: `<principalId1>:<roleDefinitionId1>,<principalId2>:<roleDefinitionId2>`. Az értékeket vesszővel kell elválasztani.
 * **csomagfájl URI-ja**: a szükséges fájlokat tartalmazó. zip-csomag helye.
 
 ## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Saját tárterület használata a felügyelt alkalmazás definíciója számára

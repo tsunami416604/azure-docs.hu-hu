@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 08/27/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: dee1d5a744ddfc2ad38cbe93447377a8af27a2f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 74c412ad4c62a5821890aa5602b521f3f63da925
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376651"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594763"
 ---
 # <a name="tutorial-configure-a-jenkins-environment-to-enable-cicd-for-a-java-application-on-service-fabric"></a>Oktatóanyag: Jenkins-környezet konfigurálása a CI/CD engedélyezéséhez Service Fabric-fürtön lévő Java-alkalmazás számára
 
@@ -85,7 +85,7 @@ A Jenkinst egy Service Fabric-fürtben vagy azon kívül is beállíthatja. Az a
 
    a. Az általános beállításokban jelölje be a **GitHub project** (GitHub-projekt) jelölőnégyzetet, és adja meg a GitHub-projekt URL-címét. Ez az URL-cím üzemelteti azt a Service Fabric Java-alkalmazást, amelyet integrálni szeretne a Jenkins folyamatos integrációs és üzembe helyezési (CI/CD) folyamatával (például: ``https://github.com/testaccount/dev_test``).
 
-   b. A **Source Code Management** (Forráskódkezelés) szakaszban válassza a **Git** elemet. Itt adhatja meg azt az adattár-URL-címet, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást *https://github.com/testaccount/dev_test.git*tartalmazza (például:). Itt adhatja meg azt is, hogy melyik ágat kívánja létrehozni, például: **/master**.
+   b. A **Source Code Management** (Forráskódkezelés) szakaszban válassza a **Git** elemet. Itt adhatja meg azt az adattár-URL-címet, amely a Jenkins CI/CD folyamatával integrálni kívánt Service Fabric Java-alkalmazást *`https://github.com/testaccount/dev_test.git`* tartalmazza (például:). Itt adhatja meg azt is, hogy melyik ágat kívánja létrehozni, például: **/master**.
 
 1. Adja meg a *GitHub* beállítását (amelyiken az adattár üzemel), így létrejöhet a kommunikáció a Jenkinsszel. Ehhez a következő lépések szükségesek:
 

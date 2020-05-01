@@ -3,18 +3,45 @@ title: Az első függvény létrehozása az Azure-ban a Visual Studio Code haszn
 description: Hozzon létre és tegyen közzé az Azure-on egy egyszerű, HTTP-eseményindítót használó függvényt az Azure Functions-bővítmény használatával a Visual Studio Code-ban.
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter
+ms.custom: mvc, devcenter, seo
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 08575164334db965a9e5592b761a06205208de9e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8954f75aba176d8222f8a82256e66131bdee8921
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732774"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610955"
 ---
-# <a name="quickstart-create-an-azure-functions-project-using-visual-studio-code"></a>Gyors útmutató: Azure Functions projekt létrehozása a Visual Studio Code használatával
+::: zone pivot="programming-language-csharp"  
+# <a name="quickstart-create-a-c-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: C#-függvény létrehozása az Azure-ban a Visual Studio Code használatával
 
-Ebben a cikkben a Visual Studio Code használatával hoz létre egy olyan függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
+Ebben a cikkben a Visual Studio Code használatával hozzon létre egy C# szintű függvénytár-alapú függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
+::: zone-end  
+::: zone pivot="programming-language-javascript"
+# <a name="quickstart-create-a-javascript-function-in-azure-using-visual-studio-code"></a>Gyors útmutató: JavaScript-függvény létrehozása az Azure-ban a Visual Studio Code használatával
+
+Ebben a cikkben a Visual Studio Code használatával létrehoz egy JavaScript-függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
+::: zone-end
+::: zone pivot="programming-language-typescript"
+# <a name="quickstart-create-a-typescript-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: írógéppel-függvény létrehozása az Azure-ban a Visual Studio Code használatával
+
+Ebben a cikkben a Visual Studio Code használatával hozzon létre egy olyan írógéppel függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
+::: zone-end   
+::: zone pivot="programming-language-powershell"
+# <a name="quickstart-create-a-powershell-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: PowerShell-függvény létrehozása az Azure-ban a Visual Studio Code használatával
+
+Ebben a cikkben a Visual Studio Code használatával hozzon létre egy PowerShell-függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
+::: zone-end  
+::: zone pivot="programming-language-python" 
+# <a name="quickstart-create-a-python-function-in-azure-using-visual-studio-code"></a>Gyors útmutató: Python-függvény létrehozása az Azure-ban a Visual Studio Code használatával
+
+Ebben a cikkben a Visual Studio Code használatával hozzon létre egy Python-függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
+::: zone-end  
+::: zone pivot="programming-language-java" 
+# <a name="quickstart-create-a-java-function-in-azure-using-visual-studio-code"></a>Rövid útmutató: Java-függvény létrehozása az Azure-ban a Visual Studio Code használatával
+
+Ebben a cikkben a Visual Studio Code használatával hozzon létre egy Java-függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár. 
+::: zone-end
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python" 
 Ennek a cikknek a [CLI-alapú verziója](functions-create-first-azure-function-azure-cli.md) is létezik.

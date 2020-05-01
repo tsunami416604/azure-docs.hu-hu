@@ -3,14 +3,14 @@ title: Áttekintés
 description: Ismerje meg, hogy az Azure App Service segítségével miként fejleszthet és üzemeltethet webalkalmazásokat.
 ms.assetid: 94af2caf-a2ec-4415-a097-f60694b860b3
 ms.topic: overview
-ms.date: 01/04/2017
+ms.date: 04/30/2020
 ms.custom: mvc, seodec18
-ms.openlocfilehash: f8449c516bce3f3ab949e88808f73c7240995f99
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7db55a420a9789ef15a5296a6b0200d6b8910ec6
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535638"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597858"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
 
@@ -25,6 +25,7 @@ Az App Service segítségével csak a felhasznált Azure-beli számítási erőf
 A App Service főbb jellemzői:
 
 * **Több nyelv és keretrendszer** – app Service rendelkezik a ASP.net, a ASP.net Core, a Java, a Ruby, a Node. js, a PHP és a Python támogatásával. [PowerShell- és egyéb szkripteket vagy futtatható fájlokat](webjobs-create.md) futtathat háttérszolgáltatásként.
+* **Felügyelt éles környezet** – app Service automatikusan [kijavításokat végez, és KARBANTARTJA az operációs rendszer és a nyelv keretrendszerét](overview-patch-os-runtime.md) . Töltsön fel időt a nagyszerű alkalmazások írásakor, és hagyja, hogy az Azure aggódnia legyen a platformmal kapcsolatban.
 * **DevOps-optimalizálás** – [Folyamatos integrációt és üzembe helyezést](deploy-continuous-deployment.md) állíthat be az Azure DevOps, GitHub, BitBucket, Docker Hub vagy az Azure Container Registry szolgáltatásokhoz. [Teszt- és átmeneti környezetek](deploy-staging-slots.md) segítségével küldheti ki a frissítéseket. Alkalmazásait az App Service-ben az [Azure PowerShell](/powershell/azureps-cmdlets-docs) vagy a [többplatformos parancssori felület (CLI)](/cli/azure/install-azure-cli) segítségével felügyelheti.
 * **Globális méret magas rendelkezésre állással** - Manuálisan vagy automatikusan is végezhet [felfelé skálázást](manage-scale-up.md) és [horizontális skálázást](../monitoring-and-diagnostics/insights-how-to-scale.md). A Microsoft globális adatközpont infrastruktúrájában bárhol üzemeltetheti az alkalmazásait, az App Service [SLA](https://azure.microsoft.com/support/legal/sla/app-service/) pedig magas rendelkezésre állást biztosít.
 * **Csatlakozás SaaS-platformokhoz és helyszíni adatokhoz** – Több mint 50, nagyvállalati rendszerekhez (például SAP), SaaS-szolgáltatásokhoz (például Salesforce), valamint internetes szolgáltatásokhoz (többek között a Facebookhoz) készült [összekötő](../connectors/apis-list.md) közül választhat. Hozzáférhet helyszíni adatokhoz a [Hibrid kapcsolatok](app-service-hybrid-connections.md) és az [Azure virtuális hálózatok](web-sites-integrate-with-vnet.md) segítségével.
