@@ -1,6 +1,6 @@
 ---
-title: Folyamatos üzembe helyezés az Azure-repókból
-description: Ismerje meg, hogyan használhatja az Azure CLI-t az App Service-alkalmazás üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan állíthatja be a CI/CD-t az Azure Repos-ból.
+title: Folyamatos üzembe helyezés az Azure Reposből
+description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan állíthatja be a CI/CD-t az Azure Reposből.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 389d3bd3-cd8e-4715-a3a1-031ec061d385
@@ -10,17 +10,17 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: c0e9db3825de9c8c1429bec1edcc6bbb65588fcd
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80058046"
 ---
-# <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>Alkalmazásszolgáltatási alkalmazás létrehozása folyamatos üzembe helyezéssel az Azure CLI használatával
+# <a name="create-an-app-service-app-with-continuous-deployment-using-azure-cli"></a>App Service-alkalmazás létrehozása folyamatos üzembe helyezéssel az Azure CLI használatával
 
-Ez a mintaparancsfájl létrehoz egy alkalmazást az App Service-ben a kapcsolódó erőforrásokkal, majd folyamatos üzembe helyezést állít be egy Azure DevOps-tárházból. A példához a következők szükségesek:
+Ez a példa egy alkalmazást hoz létre App Service a kapcsolódó erőforrásokkal együtt, majd beállítja a folyamatos üzembe helyezést egy Azure DevOps adattárból. A példához a következők szükségesek:
 
-* Egy Azure DevOps-tárház alkalmazáskóddal, amely rendszergazdai engedélyekkel rendelkezik.
+* Egy Azure DevOps-tárház, amelynek az alkalmazás kódját rendszergazdai jogosultságokkal rendelkezik.
 * Egy [személyes hozzáférési jogkivonat (PAT)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=vsts) az Azure DevOps-szervezethez.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
@@ -44,8 +44,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
-| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Egy App Service-alkalmazást git- vagy Mercurial-tárházhoz társít. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
+| [`az webapp deployment source config`](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az-webapp-deployment-source-config) | Egy App Service alkalmazást társít egy git-vagy Mercurial-tárházhoz. |
 
 ## <a name="next-steps"></a>További lépések
 

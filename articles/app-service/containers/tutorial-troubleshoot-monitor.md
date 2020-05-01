@@ -1,35 +1,35 @@
 ---
-title: 'Oktatóanyag: Hibaelhárítás az Azure Monitorsegítségével'
-description: Ismerje meg, hogy az Azure Monitor és a Log Analytics hogyan segíti az App Service webalkalmazás figyelésében. Az Azure Monitor maximalizálja a rendelkezésre állást azáltal, hogy átfogó megoldást biztosít a környezetek figyelésére.
+title: 'Oktatóanyag: a Azure Monitor hibáinak megoldása'
+description: Megtudhatja, hogyan segíti a Azure Monitor és a Log Analytics a App Service webalkalmazás figyelését. Azure Monitor maximalizálja a rendelkezésre állást azáltal, hogy átfogó megoldást kínál a környezetek figyelésére.
 author: msangapu-msft
 ms.author: msangapu
 ms.topic: tutorial
 ms.date: 2/28/2020
 ms.openlocfilehash: d543a9364311b2cf5f0258fbf9185d27bb1bfb2f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78399536"
 ---
-# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Oktatóanyag: Egy App Service-alkalmazás hibaelhárítása az Azure Monitorsegítségével
+# <a name="tutorial-troubleshoot-an-app-service-app-with-azure-monitor"></a>Oktatóanyag: App Service-alkalmazás hibakeresése Azure Monitor
 
 > [!NOTE]
-> Az Azure Monitor és az App Service [integrációja előzetes verzióban](https://aka.ms/appsvcblog-azmon)érhető el.
+> Az App Service-integráció Azure Monitor [előzetes](https://aka.ms/appsvcblog-azmon)verzióban érhető el.
 >
 
-[App Service linuxos](app-service-linux-intro.md) nyújt egy jól skálázható, önjavító web hosting szolgáltatás segítségével a Linux operációs rendszer. [Az Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a felhőbeli és helyszíni környezetekt tartalmazó telemetriai adatok gyűjtésére, elemzésére és a telemetriai adatokra való reagálásra.
+A [linuxon app Service](app-service-linux-intro.md) a Linux operációs rendszert használó, jól méretezhető, önjavító webes üzemeltetési szolgáltatást nyújt. [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview) maximalizálja az alkalmazások és szolgáltatások rendelkezésre állását és teljesítményét azáltal, hogy átfogó megoldást kínál a Felhőbeli és a helyszíni környezetek telemetria gyűjtésére, elemzésére és működésére.
 
-Ez az oktatóanyag bemutatja, hogyan háríthatja el az alkalmazásokat az [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview)használatával. A mintaalkalmazás olyan kódot tartalmaz, amely a memória kimerítésére és a HTTP 500-as hibák rakoncáta, így diagnosztizálhatja és javíthatja a problémát az Azure Monitor használatával.
+Ez az oktatóanyag bemutatja, hogyan lehet elhárítani egy alkalmazást a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)használatával. A minta alkalmazás a memóriához és a HTTP 500 hibákat okozó kódot tartalmaz, így diagnosztizálhatja és elháríthatja a problémát a Azure Monitor használatával.
 
-Ha elkészült, egy mintaalkalmazás fut az [Azure Monitorba](https://docs.microsoft.com/azure/azure-monitor/overview)integrált Linux-alkalmazásszolgáltatáson.
+Ha elkészült, egy App Serviceon futó minta-alkalmazás fog futni, amely a [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/overview)integrált Linux rendszeren fut.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Webalkalmazás konfigurálása az Azure Monitorsegítségével
-> * Konzolnaplók küldése a Log Analytics szolgáltatásba
-> * A webalkalmazás-hibák azonosítása és elhárítása naplólekérdezésekkel
+> * Webalkalmazás konfigurálása Azure Monitor
+> * Konzol naplófájljainak küldése Log Analytics
+> * A webalkalmazási hibák azonosítása és hibaelhárítása a naplók használatával
 
 Az oktatóanyag lépései macOS, Linux és Windows rendszerre is vonatkoznak.
 
@@ -37,7 +37,7 @@ Az oktatóanyag lépései macOS, Linux és Windows rendszerre is vonatkoznak.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag befejezéséhez a következőkre lesz szükség:
+Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 - [Azure-előfizetés](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)
 - [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)
@@ -45,7 +45,7 @@ Az oktatóanyag befejezéséhez a következőkre lesz szükség:
 
 ## <a name="create-azure-resources"></a>Azure-erőforrások létrehozása
 
-Először több parancsot futtathelyileg egy mintaalkalmazás beállításához, amelyet ezzel az oktatóanyaggal használhat. A parancsok klónoznak egy mintaalkalmazást, azure-erőforrásokat hoznak létre, központi telepítési felhasználót hoznak létre, és telepítik az alkalmazást az Azure-ba. A rendszer kérni fogja a telepítési felhasználó létrehozásának részeként megadott jelszót. 
+Először is futtasson több parancsot helyileg az oktatóanyaghoz használni kívánt minta alkalmazás beállításához. A parancsok klónozása, Azure-erőforrások létrehozása, üzembe helyezési felhasználó létrehozása és az alkalmazás üzembe helyezése az Azure-ban. A rendszer kérni fogja az üzembe helyezési felhasználó létrehozásának részeként megadott jelszót. 
 
 ```bash
 git clone https://github.com/Azure-Samples/App-Service-Troubleshoot-Azure-Monitor
@@ -57,30 +57,30 @@ git remote add azure <url_from_previous_step>
 git push azure master
 ```
 
-## <a name="configure-azure-monitor-preview"></a>Az Azure Monitor konfigurálása (előzetes verzió)
+## <a name="configure-azure-monitor-preview"></a>Azure Monitor konfigurálása (előzetes verzió)
 
-### <a name="create-a-log-analytics-workspace"></a>Log Analytics-munkaterület létrehozása
+### <a name="create-a-log-analytics-workspace"></a>Log Analytics munkaterület létrehozása
 
-Most, hogy telepítette a mintaalkalmazást az Azure App Service szolgáltatásba, konfigurálja a figyelési képességet az alkalmazás hibaelhárításához, ha problémák merülnek fel. Az Azure Monitor a naplóadatokat egy Log Analytics-munkaterületen tárolja. A munkaterület olyan tároló, amely adatokat és konfigurációs adatokat tartalmaz.
+Most, hogy üzembe helyezte a minta alkalmazást a Azure App Servicera, a figyelési funkció konfigurálásával elháríthatja az alkalmazást, amikor problémák merülnek fel. A Azure Monitor Log Analytics munkaterületen tárolja a naplózási adattárakat. A munkaterület egy olyan tároló, amely adatokat és konfigurációs adatokat tartalmaz.
 
-Ebben a lépésben hozzon létre egy Log Analytics-munkaterületet az Azure Monitor alkalmazással való konfigurálásához.
+Ebben a lépésben egy Log Analytics munkaterületet hoz létre az alkalmazással való Azure Monitor konfigurálásához.
 
 ```bash
 az monitor log-analytics workspace create --resource-group myResourceGroup --workspace-name myMonitorWorkspace
 ```
 
 > [!NOTE]
-> [Az Azure Monitor Log Analytics, az adatok betöltése és az adatmegőrzés.](https://azure.microsoft.com/pricing/details/monitor/)
+> [Azure Monitor Log Analytics esetében az adatok betöltését és az adatmegőrzést kell fizetnie.](https://azure.microsoft.com/pricing/details/monitor/)
 >
 
 ### <a name="create-a-diagnostic-setting"></a>Diagnosztikai beállítás létrehozása
 
-A diagnosztikai beállítások segítségével bizonyos Azure-szolgáltatások metrikákat gyűjthet az Azure Monitor Logs-ba, hogy a naplólekérdezések használatával más figyelési adatokkal elemezhessék. Ebben az oktatóanyagban engedélyezi a webkiszolgálót és a szabványos kimeneti/hibanaplókat. A naplótípusok és -leírások teljes listáját a [támogatott naplótípusok](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) és leírások teljes listájában láthatja.
+A diagnosztikai beállításokkal bizonyos Azure-szolgáltatások metrikáit gyűjthetik be Azure Monitor naplókba más figyelési adatokkal való elemzéshez a naplók használatával. Ebben az oktatóanyagban engedélyezheti a webkiszolgálót és a standard kimeneti/hibanapló-naplókat. A naplózási típusok és leírások teljes listájáért lásd: [támogatott naplózási típusok](https://docs.microsoft.com/azure/app-service/troubleshoot-diagnostic-logs#supported-log-types) .
 
-A következő parancsokat futtatja az AppServiceConsoleLogs (standard kimenet/hiba) és az AppServiceHTTPLogs (webkiszolgálói naplók) diagnosztikai beállításainak létrehozásához. Cserélje le _ \<az alkalmazásnév->_ és _ \<a munkaterület-név->_ az értékekre. 
+A következő parancsok futtatásával diagnosztikai beállításokat hozhat létre a AppServiceConsoleLogs (normál kimenet/hiba) és a AppServiceHTTPLogs (webkiszolgáló-naplók) számára. Cserélje le _ \<az App-Name>_ és _ \<a munkaterület neve>_ értékét az értékekre. 
 
 > [!NOTE]
-> Az első két `resourceID` `workspaceID`parancs és a , a `az monitor diagnostic-settings create` parancsban használandó változók. A parancsról további információt a Diagnosztikai beállítások létrehozása az [Azure CLI használatával](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) című témakörben talál.
+> Az első két parancs `resourceID` és `workspaceID`a, a `az monitor diagnostic-settings create` parancsban használandó változók. További információ a parancsról: [diagnosztikai beállítások létrehozása az Azure CLI használatával](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-diagnostic-settings-using-azure-cli) .
 >
 
 ```bash
@@ -97,83 +97,83 @@ az monitor diagnostic-settings create --resource $resourceID \
 
 ```
 
-## <a name="troubleshoot-the-app"></a>Az alkalmazás hibáinak elhárítása
+## <a name="troubleshoot-the-app"></a>Az alkalmazás hibáinak megoldása
 
 Nyissa meg a következő címet: `http://<app-name>.azurewebsites.net`.
 
-A mintaalkalmazás, az ImageConverter `JPG` a `PNG`benne lévő képeket a rendszerből konvertálja. A hiba szándékosan került a kódot az oktatóanyag. Ha elegendő képet választ ki, az alkalmazás HTTP 500-as hibát okoz a képkonvertálás során. Képzeld el, ez a forgatókönyv nem volt figyelembe véve a fejlesztési fázisban. Az Azure Monitor segítségével hárítja el a hibát.
+A minta alkalmazás, a ImageConverter, a-ből `JPG` származó `PNG`képeket is konvertál. Ebben az oktatóanyagban egy hibát szándékosan helyeztek el a kódban. Ha elég képet választ, az alkalmazás HTTP 500 hibát hoz létre a lemezkép átalakítása során. Képzelje el, hogy ezt a forgatókönyvet nem tekintették a fejlesztési fázisban. A hiba megoldásához Azure Monitor fog használni.
 
 ### <a name="verify-the-app-is-works"></a>Az alkalmazás működésének ellenőrzése
 
-A képek konvertálásához kattintson a gombra, `Tools` és válassza a lehetőséget. `Convert to PNG`
+A képek konvertálásához kattintson `Tools` és válassza `Convert to PNG`a lehetőséget.
 
-![Kattintson az "Eszközök" menüpontra, és válassza a "Konvertálás PNG-vé" lehetőséget.](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
+![Kattintson az eszközök elemre, és válassza a "Konvertálás PNG-re" lehetőséget.](./media/tutorial-azure-monitor/sample-monitor-app-tools-menu.png)
 
-Jelölje ki az első `convert`két képet, és kattintson a gombra. Ez sikeresen konvertálható.
+Válassza ki az első két képet, `convert`és kattintson a elemre. A konvertálás sikeresen megtörténik.
 
-![Az első két kép kijelölése](./media/tutorial-azure-monitor/sample-monitor-app-convert-two-images.png)
+![Válassza ki az első két képet](./media/tutorial-azure-monitor/sample-monitor-app-convert-two-images.png)
 
 ### <a name="break-the-app"></a>Az alkalmazás megszakítása
 
-Most, hogy két kép sikeres konvertálásával ellenőrizte az alkalmazást, megpróbáljuk konvertálni az első öt képet.
+Most, hogy ellenőrizte az alkalmazást két rendszerkép sikeres konvertálásával, megpróbáljuk átalakítani az első öt képet.
 
-![Az első öt kép konvertálása](./media/tutorial-azure-monitor/sample-monitor-app-convert-five-images.png)
+![Első öt rendszerkép konvertálása](./media/tutorial-azure-monitor/sample-monitor-app-convert-five-images.png)
 
-Ez a művelet `HTTP 500` sikertelen, és olyan hibát hoz létre, amelyet nem teszteltek a fejlesztés során.
+Ez a művelet meghiúsul, és `HTTP 500` olyan hibát eredményez, amelyet a fejlesztés során nem teszteltek.
 
-![A konvertálás HTTP 500-as hibát eredményez](./media/tutorial-azure-monitor/sample-monitor-app-http-500.png)
+![A konvertálás HTTP 500-es hibát eredményez](./media/tutorial-azure-monitor/sample-monitor-app-http-500.png)
 
-## <a name="use-log-query-to-view-azure-monitor-logs"></a>Az Azure Monitor naplóinak megtekintése naplólekérdezéssel
+## <a name="use-log-query-to-view-azure-monitor-logs"></a>Napló lekérdezés használata Azure Monitor naplók megtekintéséhez
 
-Lássuk, milyen naplók érhetők el a Log Analytics-munkaterületen. 
+Lássuk, milyen naplók érhetők el a Log Analytics munkaterületen. 
 
-Kattintson erre a [Log Analytics-munkaterületi hivatkozásra](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) az Azure Portalon lévő munkaterület eléréséhez.
+Kattintson erre a [log Analytics munkaterület hivatkozásra](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.OperationalInsights%2Fworkspaces) a munkaterület Azure Portal való eléréséhez.
 
-Az Azure Portalon válassza ki a Log Analytics-munkaterületet.
+A Azure Portal válassza ki Log Analytics munkaterületét.
 
 ### <a name="log-queries"></a>Naplólekérdezések
 
-A naplólekérdezések segítségével teljes mértékben kihasználhatja az Azure Monitor naplókban gyűjtött adatok értékét. Naplólekérdezések segítségével azonosíthatja a naplókat mind AppServiceHTTPLogs és AppServiceConsoleLogs. A [naplólekérdezésekkel kapcsolatos](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) további információkért tekintse meg a naplólekérdezés áttekintését.
+A naplók lekérdezései segítségével teljes mértékben kihasználhatja Azure Monitor naplókban összegyűjtött adatok értékét. A naplók segítségével azonosíthatja a naplókat mind a AppServiceHTTPLogs, mind a AppServiceConsoleLogs. A naplók lekérdezésével kapcsolatos további információkért tekintse meg a [napló lekérdezésének áttekintése](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) című témakört.
 
-### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLog-naplók megtekintése naplólekérdezéssel
+### <a name="view-appservicehttplogs-with-log-query"></a>AppServiceHTTPLogs megtekintése a log lekérdezéssel
 
-Most, hogy elértük az alkalmazást, tekintsük meg a HTTP-kérelmekhez kapcsolódó adatokat, amelyek a `AppServiceHTTPLogs`ban találhatók.
+Most, hogy elérhetővé tettük az alkalmazást, tekintsük át a HTTP-kérésekhez kapcsolódó, a `AppServiceHTTPLogs`alkalmazásban található adatmennyiséget.
 
-1. Kattintson `Logs` a bal oldali navigációra.
+1. Kattintson `Logs` a bal oldali navigációs sávon.
 
-![Napló anlytics worksace naplók](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
+![Log Anlytics Worksace-naplók](./media/tutorial-azure-monitor/log-analytics-workspace-logs.png)
 
-2. Keresse `appservice` meg a `AppServiceHTTPLogs`keresést, és kattintson duplán a lehetőségre.
+2. Keresse meg `appservice` és kattintson `AppServiceHTTPLogs`rá duplán.
 
-![Naplóelemzési munkaterületi táblák](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
+![Log Analytics-munkaterület táblái](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-tables.png)
 
 3. Kattintson a `Run` gombra.
 
-![Log Analytics-munkaterületi alkalmazásszolgáltatás HTTP-naplói](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
+![Log Analytics munkaterület App Service HTTP-naplók](./media/tutorial-azure-monitor/log-analytics-workspace-app-service-http-logs.png)
 
-A `AppServiceHTTPLogs` lekérdezés az elmúlt 24 órában az összes kérelmet visszaadja. Az `ScStatus` oszlop a HTTP-állapotot tartalmazza. A hibák `HTTP 500` diagnosztizálásához `ScStatus` korlátozza a lekérdezés500-re, és futtassa a lekérdezést az alábbi módon:
+A `AppServiceHTTPLogs` lekérdezés az elmúlt 24 órában az összes kérelmet visszaadja. Az oszlop `ScStatus` a http-állapotot tartalmazza. A `HTTP 500` hibák diagnosztizálásához korlátozza a `ScStatus` 500-es értéket, és futtassa a lekérdezést az alább látható módon:
 
 ```kusto
 AppServiceHTTPLogs
 | where ScStatus == 500
 ```
 
-### <a name="view-appserviceconsolelogs-with-log-query"></a>AppServiceConsoleLogs megtekintése naplólekérdezéssel
+### <a name="view-appserviceconsolelogs-with-log-query"></a>AppServiceConsoleLogs megtekintése a log lekérdezéssel
 
-Most, hogy megerősítette a HTTP 500s, vessünk egy pillantást a standard kimeneti / hibák az alkalmazásból. Ezek a naplók az "AppServiceConsoleLogs" területen találhatók.
+Most, hogy megerősítette a HTTP-500, vessünk egy pillantást az alkalmazás szabványos kimenetére/hibáira. Ezek a naplók a "AppServiceConsoleLogs" címen találhatók.
 
-(1) `+` Kattintson ide, ha új lekérdezést szeretne létrehozni. 
+(1) új `+` lekérdezés létrehozásához kattintson ide. 
 
-(2) Kattintson `AppServiceConsoleLogs` duplán `Run`a táblázatra, és kattintson a gombra. 
+(2) kattintson duplán a `AppServiceConsoleLogs` táblázatra, `Run`és kattintson a elemre. 
 
-Mivel az öt kép konvertálása kiszolgálói hibákat eredményez, az `ResultDescription` alábbi módon láthatja, hogy az alkalmazás hibákat is ír-e a hibák szűrésével:
+Mivel az öt rendszerkép konvertálása kiszolgálói hibákba ütközik, megtekintheti, hogy az alkalmazás a hibák szűrésével `ResultDescription` is hibákat ír-e, ahogy az alábbi ábrán látható:
 
 ```kusto
 AppServiceConsoleLogs |
 where ResultDescription  contains "error" 
 ```
 
-Az `ResultDescription` oszlopban a következő hiba jelenik meg:
+Az `ResultDescription` oszlopban a következő hibaüzenet jelenik meg:
 
 ```
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
@@ -181,16 +181,16 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>Csatlakozás AppServiceHTTPLogs és AppServiceConsoleLogs
+### <a name="join-appservicehttplogs-and-appserviceconsolelogs"></a>AppServiceHTTPLogs és AppServiceConsoleLogs csatlakoztatása
 
-Most, hogy azonosította a HTTP 500-as és a normál hibákat, meg kell erősítenie, hogy van-e összefüggés az üzenetek között. Ezután az időbélyegző alapján összeilleszti `TimeGenerated`a táblázatokat.
+Most, hogy már azonosította a HTTP-500 és a standard hibákat, meg kell erősítenie, hogy van-e az üzenetek közötti korreláció. Ezután összekapcsolja a táblákat az időbélyegző alapján `TimeGenerated`.
 
 > [!NOTE]
-> A következő lekérdezést készítettük elő:
+> A rendszer előkészített egy lekérdezést, amely a következő műveleteket végzi el:
 >
-> - HTTPLogs szűrők 500 hibához
-> - Lekérdezések konzolnaplók
-> - Összeáll a táblákkal`TimeGenerated`
+> - HTTPLogs szűrők 500 hibákhoz
+> - A konzol naplófájljainak lekérdezése
+> - A következőhöz csatlakozik a táblákhoz`TimeGenerated`
 >
 
 Futtassa az alábbi lekérdezést:
@@ -203,7 +203,7 @@ let myConsole = AppServiceConsoleLogs | project TimeGen=substring(TimeGenerated,
 myHttp | join myConsole on TimeGen | project TimeGen, CsUriStem, ScStatus, ResultDescription;
 ```
 
-Az `ResultDescription` oszlopban a következő hiba jelenik meg a webkiszolgálóhibáival egy időben:
+Az `ResultDescription` oszlopban a következő hibaüzenet jelenik meg a webkiszolgáló hibáival megegyező időpontban:
 
 ```
 PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted 
@@ -211,23 +211,23 @@ PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted
 referer: http://<app-name>.azurewebsites.net/
 ```
 
-Az üzenet szerint a memória kimerítette a 20-as `process.php`vonalon. Most megerősítette, hogy az alkalmazás hibát okozott a HTTP 500-as hiba során. Vessünk egy pillantást a kódot, hogy azonosítsa a problémát.
+Az üzenet állapotainak memóriája kimerült a 20 `process.php`. sorban. Ezzel megerősítette, hogy az alkalmazás hibát jelzett a HTTP 500-hiba során. Vessünk egy pillantást a probléma azonosítására szolgáló kódra.
 
 ## <a name="identify-the-error"></a>A hiba azonosítsa
 
-A helyi könyvtárban `process.php` nyissa meg a és nézze meg a 20-as sort. 
+A helyi könyvtárban nyissa meg a `process.php` (z) parancsot, és tekintse meg a 20. sort. 
 
 ```php
 imagepng($imgArray[$x], $filename);
 ```
 
-Az első `$imgArray[$x]`argumentum egy változó, amely az összes átalakítást igénylő (memórián belüli) JPEG-eket tartalmazza. Azonban `imagepng` csak a kép konvertálására van szüksége, és nem minden képre. A képek előzetes betöltése nem szükséges, és a memória kimerülését okozhatja, ami HTTP 500-as évekhez vezethet. Frissítsük a kódot a képek igény szerinti betöltéséhez, hogy lássuk, megoldja-e a problémát. Ezután javítani fogja a kódot a memóriaprobléma megoldására.
+Az első argumentum egy `$imgArray[$x]`változó, amely a konverziót igénylő összes jpg (memóriában) tartja. Azonban csak `imagepng` az átalakítandó lemezképre van szükség, és nem minden lemezképre. A lemezképek előzetes betöltése nem szükséges, és okozhatja a memória kimerülését, ami a HTTP-500 vezethet. Frissítse a kódot a lemezképek igény szerinti betöltéséhez, és ellenőrizze, hogy a probléma feloldódik-e. Következő lépésként javítani fogja a kódot a memória problémájának megoldásához.
 
 ## <a name="fix-the-app"></a>Az alkalmazás javítása
 
 ### <a name="update-locally-and-redeploy-the-code"></a>A kód frissítése helyileg és ismételt üzembe helyezése
 
-A memóriakimerülés `process.php` kezeléséhez a következő módosításokat hajthatja végre:
+A memória kimerülésének kezeléséhez végezze el a következő módosításokat `process.php` :
 
 ```php
 <?php
@@ -250,11 +250,11 @@ git commit -am "Load images on-demand in process.php"
 git push azure master
 ```
 
-### <a name="browse-to-the-azure-app"></a>Tallózás az Azure alkalmazásban
+### <a name="browse-to-the-azure-app"></a>Tallózással keresse meg az Azure-alkalmazást
 
 Nyissa meg a következő címet: `http://<app-name>.azurewebsites.net`. 
 
-A képek konvertálása nem okozhatja tovább a HTTP 500-as hibákat.
+A lemezképek konvertálása nem eredményezheti a HTTP 500 hibákat.
 
 ![Az Azure App Service-ben futó PHP-alkalmazás](./media/tutorial-azure-monitor/sample-monitor-app-working.png)
 
@@ -268,11 +268,11 @@ az monitor diagnostic-settings delete --resource $resourceID -n myMonitorLogs
 Az alábbiak elvégzését ismerte meg:
 
 > [!div class="checklist"]
-> * Webalkalmazás konfigurálása az Azure Monitorsegítségével
-> * Naplók küldése a Log Analytics szolgáltatásba
-> * A webalkalmazás-hibák azonosítására és elhárítására használt naplólekérdezések
+> * Webalkalmazás konfigurálása Azure Monitor
+> * Naplók elküldése a Log Analyticsba
+> * A webalkalmazások hibáinak azonosítására és elhárítására használt naplózási lekérdezések
 
-## <a name="next-steps"></a><a name="nextsteps"></a>Következő lépések
-* [Lekérdezési naplók az Azure Monitorsegítségével](../../azure-monitor/log-query/log-query-overview.md)
-* [Az Azure App Service hibáinak elhárítása a Visual Studióban](../troubleshoot-dotnet-visual-studio.md)
-* [Alkalmazásnaplók elemzése a HDInsightban](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+## <a name="next-steps"></a><a name="nextsteps"></a>További lépések
+* [Naplók lekérdezése Azure Monitor](../../azure-monitor/log-query/log-query-overview.md)
+* [Hibaelhárítási Azure App Service a Visual Studióban](../troubleshoot-dotnet-visual-studio.md)
+* [Alkalmazás-naplók elemzése a HDInsight-ben](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

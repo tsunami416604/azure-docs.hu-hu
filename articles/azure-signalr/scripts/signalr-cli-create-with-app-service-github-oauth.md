@@ -1,5 +1,5 @@
 ---
-title: Webalkalmazás létrehozása a SignalR szolgáltatás és a GitHub-hitelesítés használatával
+title: Webalkalmazás létrehozása a Signaler Service és a GitHub-hitelesítés használatával
 description: Azure CLI-példaszkript – SignalR szolgáltatást és GitHub-hitelesítést használó webalkalmazás létrehozása
 author: sffamily
 ms.service: signalr
@@ -9,10 +9,10 @@ ms.date: 04/22/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: d30804d132eec3c9f324413acd68014d1adaa710
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74158044"
 ---
 # <a name="create-a-web-app-that-uses-signalr-service-and-github-authentication"></a>SignalR szolgáltatást és GitHub-hitelesítést használó webalkalmazás létrehozása
