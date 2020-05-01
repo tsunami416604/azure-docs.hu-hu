@@ -1,70 +1,70 @@
 ---
-title: További információ az Azure Service Fabric támogatási lehetőségeiről
-description: Az Azure Service Fabric fürtverziói támogatottak, és fájltámogatási jegyekre mutató hivatkozások
+title: További tudnivalók az Azure Service Fabric támogatási lehetőségeiről
+description: Az Azure Service Fabric-fürt támogatott verziói és a fájlokra vonatkozó támogatási jegyekre mutató hivatkozások
 author: pkcsf
 ms.topic: troubleshooting
 ms.date: 8/24/2018
 ms.author: pkc
 ms.openlocfilehash: 7494f0072f27f2c9b00db7070f19dfc05627eacf
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79282093"
 ---
 # <a name="azure-service-fabric-support-options"></a>Az Azure Service Fabric támogatási lehetőségei
 
-A megfelelő támogatást a Service Fabric-fürtök, amelyek az alkalmazás munkabetölti az alkalmazás terhelése, már beállított különböző lehetőségeket az Ön számára. A szükséges támogatás szintjétől és a probléma súlyosságától függően kiválaszthatja a megfelelő lehetőségeket. 
+Annak érdekében, hogy a megfelelő támogatást nyújtson a Service Fabric-fürtökhöz, amelyeken az alkalmazás munkaterhelése betöltődik, különböző beállításokat állítottunk be. Attól függően, hogy milyen szintű támogatásra van szükség, és a probléma súlyosságát, válassza ki a megfelelő beállításokat. 
 
-## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Termelési problémák jelentése vagy fizetős támogatás kérése az Azure-hoz
+## <a name="report-production-issues-or-request-paid-support-for-azure"></a>Termelési problémák jelentése vagy az Azure-ra vonatkozó fizetett támogatás kérése
 
-Az Azure-ban üzembe helyezett Service Fabric-fürttel kapcsolatos problémák jelentéséhez nyisson meg egy támogatási jegyet [az Azure Portalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) vagy a [Microsoft támogatási portálján.](https://support.microsoft.com/oas/default.aspx?prid=16146)
+Az Azure-ban üzembe helyezett Service Fabric-fürtre vonatkozó jelentéskészítési problémákért nyissa meg a [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview) vagy a [Microsoft támogatási portálon](https://support.microsoft.com/oas/default.aspx?prid=16146)a támogatási jegyet.
 
 További információk:
  
-- [Támogatás a Microsoft for Azure-tól](https://azure.microsoft.com/support/plans/?b=16.44).
-- [A Microsoft premier támogatása](https://support.microsoft.com/en-us/premier).
+- A [Microsoft Azure-támogatásának támogatása](https://azure.microsoft.com/support/plans/?b=16.44).
+- A [Microsoft Premier szintű támogatása](https://support.microsoft.com/en-us/premier).
 
 > [!Note]
-> A bronz megbízhatósági szinten vagy egycsomópontos fürtön futó fürtök lehetővé teszik, hogy csak tesztszámítási feladatokat futtasson. Ha a bronzmegbízhatóságon vagy az egycsomópontos fürtön futó fürttel kapcsolatos problémákat tapasztal, a Microsoft támogatási csapata segítséget nyújt a probléma enyhítésében, de nem hajt végre kiváltó ok-elemzést. További részletekért olvassa el [a fürt megbízhatósági jellemzőit.](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster)
+> A bronz megbízhatósági szinten vagy egyetlen csomóponttal rendelkező fürtön futó fürtök csak a tesztelési feladatok futtatását teszik lehetővé. Ha a bronz vagy egy csomópontos fürtön futó fürttel kapcsolatos problémákat tapasztal, a Microsoft támogatási csapata segítséget nyújt a probléma megoldásában, de nem hajt végre kiváltó okokat. További részletekért tekintse meg a [fürt megbízhatósági jellemzőit](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-reliability-characteristics-of-the-cluster) .
 >
-> A termelésre kész fürthöz szükséges információkról a [termelésre való alkalmassági ellenőrzőlistán](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist)olvashat bővebben.
+> Ha további információt szeretne arról, hogy mi szükséges az éles használatra kész fürthöz, tekintse meg az [üzemi készültségi ellenőrzőlistát](https://docs.microsoft.com/azure/service-fabric/service-fabric-production-readiness-checklist).
 
 <a id="getlivesitesupportonprem"></a>
 
-## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Termelési problémák jelentése vagy fizetős támogatás kérése önálló Service Fabric-fürtökhöz
+## <a name="report-production-issues-or-request-paid-support-for-standalone-service-fabric-clusters"></a>Termelési problémák jelentése vagy fizetett támogatás kérése önálló Service Fabric-fürtökhöz
 
-A helyszíni vagy más felhőkön üzembe helyezett Service Fabric-fürtön felmerülő problémák jelentéséhez nyisson meg egy jegyet a [Microsoft támogatási portálján.](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+A helyszíni vagy más felhőkben üzembe helyezett Service Fabric-fürtről történő jelentéskészítéssel kapcsolatos problémákért nyisson meg egy jegyet a [Microsoft támogatási portálján](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)a professzionális támogatáshoz.
 
 További információk:
 
-- [Szakmai támogatás a Microsofttól a helyszíni használatra.](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0)
-- [A Microsoft premier támogatása](https://support.microsoft.com/en-us/premier).
+- [A Microsoft szakmai támogatása a helyszínen](https://support.microsoft.com/en-us/gp/offerprophone?wa=wsignin1.0).
+- A [Microsoft Premier szintű támogatása](https://support.microsoft.com/en-us/premier).
 
-## <a name="report-azure-service-fabric-issues"></a>Az Azure Service Fabric-problémák jelentése
+## <a name="report-azure-service-fabric-issues"></a>Azure Service Fabric-problémák jelentése
 
-Létrehoztunk egy GitHub-repo-t a Service Fabric-problémák jelentéséhez.  Aktívan figyelemmel kísérjük a következő fórumokat is.
+Egy GitHub-tárházat állítottunk be a Service Fabric problémák jelentéséhez.  A következő fórumokon is aktívan figyelik.
 
-### <a name="github-repo"></a>GitHub-tárcsa 
+### <a name="github-repo"></a>GitHub-tárház 
 
-Jelentse az Azure Service Fabric-problémákat a [Service-Fabric-problémák git tárhéten.](https://github.com/Azure/service-fabric-issues) Ez a tártár az Azure Service Fabric szolgáltatással kapcsolatos problémák jelentésére és nyomon követésére, valamint kis funkciókérések készítésére szolgál. **Ne használja ezt az élő webhelyekkel kapcsolatos problémák jelentésére.**
+Azure Service Fabric-problémák jelentése a [Service-Fabric-problémák git-](https://github.com/Azure/service-fabric-issues)tárházban. Ez a tárház az Azure-Service Fabricokkal kapcsolatos problémák jelentéskészítésére és nyomon követésére, valamint a kisméretű szolgáltatásokra vonatkozó kérelmek készítésére szolgál. Ne **használja az élő helyekkel kapcsolatos problémák jelentését**.
 
-### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow és MSDN fórumok
+### <a name="stackoverflow-and-msdn-forums"></a>StackOverflow és MSDN-fórumok
 
-A [Service Fabric-címkén StackOverflow][stackoverflow] és a [Service Fabric fórum MSDN][msdn-forum] a legjobb, ha kérdéseket feltenni a platform működését, és hogyan lehet bizonyos feladatok elvégzéséhez vele.
+A [StackOverflow Service Fabric címkéje][stackoverflow] és az [MSDN-Service Fabric fórum][msdn-forum] a legjobb megoldás a platform működésével és bizonyos feladatok végrehajtásával kapcsolatos kérdések feltevésére.
 
-### <a name="azure-feedback-forum"></a>Azure-visszajelzési fórum
+### <a name="azure-feedback-forum"></a>Azure visszajelzési fórum
 
-Az [Azure Feedback Forum for Service Fabric][uservoice-forum] a legjobb hely a termékhez szükséges nagy funkcióötletek elküldéséhez, mivel a legnépszerűbb kérések áttekintése közép- és hosszú távú tervezésünk részét képezi. Javasoljuk, hogy a közösségen belül támogasson javaslatokat.
+A [Service Fabric Azure visszajelzési fóruma][uservoice-forum] a legjobb hely a nagy funkciós ötletek elküldéséhez a termékhez, ahogy a legnépszerűbb kérések áttekintése a közép-és hosszú távú tervezés részét képezi. Javasoljuk, hogy a Közösségen belüli javaslataihoz támogassa a támogatását.
 
-## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric preview verziók - nem támogatott éles használatra
+## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>A Service Fabric előzetes verziójának verziója – nem támogatott éles használatra
 
-Időről időre olyan verziókat adunk ki, amelyek olyan jelentős funkciókkal rendelkeznek, amelyekről visszajelzést szeretnénk kapni, amelyek előnézetként jelennek meg. Ezeket az előzetes verziókat csak tesztelési célokra szabad használni. Az éles fürt mindig egy támogatott, stabil Service Fabric-verziót kell futtatnia. Az előzetes verzió mindig 255-ös fő- és alverziószámmal kezdődik. Ha például egy Service Fabric 255.255.5703.949-es verziót lát, akkor a kiadási verzió csak tesztfürtökben használható, és előzetes verzióban érhető el. Ezek az előzetes kiadások is bejelentette a [Service Fabric csapat blog,](https://blogs.msdn.microsoft.com/azureservicefabric) és részleteket a funkciók at tartalmazza.
-Ezekhez az előzetes verziókhoz nincs fizetős támogatási lehetőség. Használja az Azure Service [Fabric-problémák jelentésével](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) kapcsolatos problémák egyikét, és kérjen visszajelzést.
+Időről időre olyan verziókat szabadítunk fel, amelyek olyan jelentős funkciókkal rendelkeznek, melyeket előzetes verzióként adnak meg. Ezek az előzetes verziók csak tesztelési célokra használhatók. Az üzemi fürtnek mindig támogatott, stabil Service Fabric verziót kell futtatnia. Az előzetes verzió verziója mindig a fő és alverziószám 255-as számú. Ha például megjelenik egy Service Fabric 255.255.5703.949-verzió, akkor a kiadási verzió csak tesztelési fürtökben használható, és előzetes verzióban érhető el. Ezek az előzetes verziók a [Service Fabric csapat blogjában](https://blogs.msdn.microsoft.com/azureservicefabric) is bejelentve lesznek, és a szolgáltatással kapcsolatos részleteket is tartalmaznak.
+Ezekhez az előzetes verzióhoz nem biztosítunk fizetős támogatási lehetőséget. A kérdésekkel kapcsolatos kérdések és visszajelzések megadásához használja az [Azure-Service Fabrici problémák című](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues) részben felsorolt lehetőségek egyikét.
 
 ## <a name="next-steps"></a>További lépések
 
-[A Service Fabric támogatott verziói](service-fabric-versions.md)
+[Támogatott Service Fabric verziók](service-fabric-versions.md)
 
 <!--references-->
 [msdn-forum]: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric
