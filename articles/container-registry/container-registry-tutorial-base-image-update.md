@@ -1,27 +1,27 @@
 ---
-title: Oktatóanyag - Az alapkép frissítésén alapuló képfrissítésre épülő kép aktiválása
-description: Ebben az oktatóanyagban megtudhatja, hogyan konfigurálhatja az Azure Container Registry Task automatikusan elindítja a tárolórendszerkép-buildek a felhőben, amikor egy alaprendszerkép ugyanabban a beállításjegyzékben frissül.
+title: Oktatóanyag – rendszerkép-Build kiépítése az alapszintű rendszerkép frissítése során
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan aktiválja a tároló rendszerképét a felhőben, amikor egy alaprendszerkép frissül ugyanabban a beállításjegyzékben.
 ms.topic: tutorial
 ms.date: 01/22/2020
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 4797dd1f1fe19b98ab94c4743ad4af3c43ce0627
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78402853"
 ---
-# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: A tárolórendszerkép-összeállítások automatizálása, ha egy alaprendszerkép frissül egy Azure-tároló beállításjegyzékében 
+# <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Oktatóanyag: a tároló rendszerképének automatizálása, amikor egy alaprendszerkép frissül egy Azure Container registryben 
 
-Az ACR-feladatok automatikus tárolólemezképet támogatnak, ha egy tároló [alaplemezképe frissül,](container-registry-tasks-base-images.md)például amikor az operációs rendszert vagy az alkalmazáskeretrendszert az egyik alaplemezképen javítja. 
+Az ACR-feladatok támogatják az automatizált tárolók rendszerképének összeállítását a tároló [alaprendszerképének frissítésekor](container-registry-tasks-base-images.md), például ha az operációs rendszer vagy az alkalmazás keretrendszerét az egyik alaplemezképben javítja. 
 
-Ebben az oktatóanyagban megtudhatja, hogyan hozhat létre egy ACR-feladatot, amely elindítja a felhőben a buildet, amikor egy tároló alaplemezképe ugyanarra a beállításjegyzékbe kerül. Megpróbálhat egy oktatóanyagot is, hogy hozzon létre egy ACR-feladatot, amely elindítja a rendszerkép létrehozását, amikor egy alaprendszerképet [egy másik Azure-tároló beállításjegyzékébe](container-registry-tutorial-private-base-image-update.md)tol. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy olyan ACR-feladatot, amely elindítja a Felhőbeli buildet, ha egy tároló alapképét ugyanarra a beállításjegyzékbe küldi a rendszer. Azt is megteheti, hogy egy olyan ACR-feladatot hoz létre, amely elindít egy rendszerképet, ha egy alaprendszerkép egy [másik Azure Container registrybe](container-registry-tutorial-private-base-image-update.md)van leküldve. 
 
 Ebben az oktatóanyagban:
 
 > [!div class="checklist"]
 > * Az alapként szolgáló rendszerkép összeállítása
-> * Alkalmazáskép létrehozása ugyanabban a beállításjegyzékben az alaplemezkép nyomon követéséhez 
+> * Alkalmazás rendszerképének létrehozása ugyanabban a beállításjegyzékben az alaprendszerkép nyomon követéséhez 
 > * Az alapként szolgáló rendszerkép frissítése egy alkalmazásrendszerkép-feladat aktiválásához
 > * Az aktivált feladat megjelenítése
 > * A frissített alkalmazás-rendszerkép ellenőrzése
@@ -41,7 +41,7 @@ Ez az oktatóanyag feltételezi, hogy elvégezte a sorozat első két oktatóany
 * Mintaadattár klónozása
 * Személyes hozzáférési jogkivonat létrehozása a GitHubban
 
-Ha még nem tette meg, a folytatás előtt végezze el az alábbi útmutatókat:
+Ha még nem tette meg, a folytatás előtt végezze el a következő oktatóanyagokat:
 
 [Tárolórendszerképek összeállítása a felhőben az Azure Container Registry Tasks használatával](container-registry-tutorial-quick-task.md)
 
@@ -49,9 +49,9 @@ Ha még nem tette meg, a folytatás előtt végezze el az alábbi útmutatókat:
 
 ### <a name="configure-the-environment"></a>A környezet konfigurálása
 
-Láss el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem feltölti ezeket a környezeti változókat, manuálisan kell cserélnie az egyes értékeket, bárhol is jelenjen meg a példaparancsokban.
+Láss el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
 
-[![Indítás beágyazása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -62,9 +62,9 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 ### <a name="base-image-update-scenario"></a>Az alapként szolgáló rendszerkép frissítése forgatókönyv
 
-Ez az oktatóanyag végigvezeti az alaprendszerkép-frissítési forgatókönyvön, amelyben egy alaprendszerkép és egy alkalmazásrendszer egyetlen beállításjegyzékben marad fenn. 
+Ez az oktatóanyag végigvezeti egy alapszintű rendszerkép-frissítési forgatókönyvön, amelyben egy alaprendszerkép és egy alkalmazás-rendszerkép egyetlen beállításjegyzékben tartható karban. 
 
-A [kódminta][code-sample] két Docker-fájlt tartalmaz: egy alkalmazás-rendszerképet, és egy rendszerképet, amelyet az alkalmazás-rendszerkép az alapként szolgáló rendszerképeként ad meg. A következő szakaszokban hozzon létre egy ACR-feladatot, amely automatikusan elindítja az alkalmazásrendszerkép buildjét, amikor az alaprendszerkép új verzióját ugyanarra a tárolóbeállítás-beállításjegyzékbe kerül.
+A [kódminta][code-sample] két Docker-fájlt tartalmaz: egy alkalmazás-rendszerképet, és egy rendszerképet, amelyet az alkalmazás-rendszerkép az alapként szolgáló rendszerképeként ad meg. A következő részekben olyan ACR-feladatot hoz létre, amely automatikusan elindítja az alkalmazás rendszerképének összeállítását, ha az alaprendszerkép új verziója ugyanarra a tároló-beállításjegyzékre van leküldve.
 
 * [Dockerfile-app][dockerfile-app]: Egy kisméretű Node.js-webalkalmazás, amely az alapjául szolgáló Node.js-verziót jelző statikus weboldalt jelenít meg. A verziósztring szimulált elem: az alapként szolgáló rendszerképben definiált környezeti változó (`NODE_VERSION`) tartalmát jeleníti meg.
 
@@ -72,11 +72,11 @@ A [kódminta][code-sample] két Docker-fájlt tartalmaz: egy alkalmazás-rendsze
 
 A következő szakaszokban létrehozunk egy feladatot, frissítjük a `NODE_VERSION` értékét az alapként szolgáló rendszerkép Docker-fájljában, majd az ACR Tasks használatával összeállítjuk az alapként szolgáló rendszerképet. Amikor az ACR-feladat leküldi az alapként szolgáló új rendszerképet a regisztrációs adatbázisba, az automatikusan kiváltja az alkalmazás-rendszerkép összeállítását. Ha kívánja, az alkalmazástároló-rendszerkép helyi futtatásával megtekintheti az összeállított rendszerképek eltérő verzió-sztringjeit.
 
-Ebben az oktatóanyagban az ACR-feladat egy Docker-fájlban megadott alkalmazástároló-rendszerképet hoz létre és lelök. Az [ACR-feladatok többlépéses feladatokat](container-registry-tasks-multi-step.md)is futtathatnak, yaml-fájl használatával definiálhatják a több tároló létrehozásának, leküldéses és opcionális tesztelésének lépéseit.
+Ebben az oktatóanyagban az ACR-feladat egy Docker megadott alkalmazás-tároló képet hoz létre és küld le. Az ACR-feladatok [több lépésből álló feladatokat](container-registry-tasks-multi-step.md)is futtathatnak, egy YAML-fájllal a több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez szükséges lépéseket határozzák meg.
 
 ## <a name="build-the-base-image"></a>Az alapként szolgáló rendszerkép összeállítása
 
-Kezdje azzal, hogy az alapképet egy ACR-feladattal *készíti*el , az [acr build][az-acr-build]használatával. Amint azt a sorozat [első részében](container-registry-tutorial-quick-task.md) bemutattuk, ez a folyamat nem csupán összeállítja a rendszerképet, hanem siker esetén le is küldi azt a tárolóregisztrációs adatbázisba.
+Először hozza létre az alapképet egy ACR-feladatok *gyors feladattal*, az [az ACR Build][az-acr-build]használatával. Amint azt a sorozat [első részében](container-registry-tutorial-quick-task.md) bemutattuk, ez a folyamat nem csupán összeállítja a rendszerképet, hanem siker esetén le is küldi azt a tárolóregisztrációs adatbázisba.
 
 ```azurecli-interactive
 az acr build --registry $ACR_NAME --image baseimages/node:9-alpine --file Dockerfile-base .
@@ -97,17 +97,17 @@ az acr task create \
     --git-access-token $GIT_PAT
 ```
 
-Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a lemezkép létrehozásához használt Dockerfile egy nyilvános alaprendszerképet (`FROM node:9-alpine`ad meg a feladatban, a [Dockerfile-app,][dockerfile-app]amely ugyanabban a beállításjegyzékben adja meg az alaplemezképet:
+Ez a feladat hasonló az [előző oktatóanyagban](container-registry-tutorial-build-task.md)létrehozott feladathoz. A feladat utasítja az ACR Tasksot egy rendszerkép-összeállítás aktiválására, amikor a rendszer leküld egy véglegesítést a `--context` által megadott adattárba. Míg az előző oktatóanyagban a rendszerkép létrehozásához használt Docker meghatározza a nyilvános alaprendszerképet (`FROM node:9-alpine`), a Docker ebben a feladatban, [Docker-app][dockerfile-app], egy alaprendszerképet ad meg ugyanabban a beállításjegyzékben:
 
 ```dockerfile
 FROM ${REGISTRY_NAME}/baseimages/node:9-alpine
 ```
 
-Ez a konfiguráció megkönnyíti a keretrendszer-javítás szimulálását az alaplemezképben az oktatóanyag későbbi részében.
+Ez a konfiguráció megkönnyíti a keretrendszer-javítások szimulálása az alaprendszerképben az oktatóanyag későbbi részében.
 
 ## <a name="build-the-application-container"></a>Az alkalmazástároló összeállítása
 
-Az [acr feladat futtatásával][az-acr-task-run] manuálisan indítsa el a feladatot, és az alkalmazáslemezképet. Erre a lépésre azért van szükség, hogy a feladat nyomon követi az alkalmazásrendszer alaplemezképtől való függőségét.
+Használja az [az ACR Task Run parancsot][az-acr-task-run] a feladat manuális elindításához és az alkalmazás rendszerképének elkészítéséhez. Erre a lépésre azért van szükség, hogy a feladat nyomon követi az alkalmazás rendszerképének függőségét az alaprendszerképen.
 
 ```azurecli-interactive
 az acr task run --registry $ACR_NAME --name taskhelloworld
@@ -119,13 +119,13 @@ Amint a feladat véget ért, jegyezze fel a **Run ID** (Futtatási azonosító) 
 
 Ha helyi környezetben dolgozik (nem a Cloud Shellben), és a Docker telepítve lett, a tároló futtatásakor az alkalmazást megtekintheti egy webböngészőben, mielőtt újraépítené az alapként szolgáló rendszerképét. A Cloud Shell használata esetén hagyja ki ezt a szakaszt (a Cloud Shell nem támogatja az `az acr login` és a `docker run` parancsot).
 
-Először hitelesítse magát a tároló rendszerleíró adatbázisában [az acr bejelentkezéssel:][az-acr-login]
+Először hitelesítse magát a Container registryben az [az ACR login][az-acr-login]használatával:
 
 ```azurecli
 az acr login --name $ACR_NAME
 ```
 
-Futtassa helyileg a tárolót a `docker run` paranccsal. Cserélje le ** \<a\> futtatási azonosítót** az előző lépés kimenetében található futtatási azonosítóra (például "da6"). Ez a példa `myapp` elnevezi `--rm` a tárolót, és tartalmazza a tároló leállításának paraméterét.
+Futtassa helyileg a tárolót a `docker run` paranccsal. Cserélje le ** \<a Run\> -ID azonosítót** az előző lépés kimenetében található futtatási azonosítóra (például: "DA6"). Ez a példa a tárolót `myapp` nevezi `--rm` el, és tartalmazza azt a paramétert, amellyel el szeretné távolítani a tárolót, amikor leállítja.
 
 ```bash
 docker run -d -p 8080:80 --name myapp --rm $ACR_NAME.azurecr.io/helloworld:<run-id>
@@ -225,10 +225,10 @@ docker stop updatedapp
 
 ## <a name="next-steps"></a>További lépések
 
-Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolórendszerképek összeállításának automatikus aktiválására a rendszerkép alapként szolgáló rendszerképének frissítése esetén. Most lépjen tovább a következő oktatóanyagra, és ismerje meg, hogyan indíthat el feladatokat egy meghatározott ütemezés szerint.
+Ez az oktatóanyag azt mutatta be, hogyan használhatók a feladatok a tárolórendszerképek összeállításának automatikus aktiválására a rendszerkép alapként szolgáló rendszerképének frissítése esetén. Most lépjen a következő oktatóanyagra, amelyből megtudhatja, hogyan indíthat el műveleteket egy meghatározott ütemterven.
 
 > [!div class="nextstepaction"]
-> [Feladat futtatása ütemezés szerint](container-registry-tasks-scheduled.md)
+> [Feladat futtatása ütemterv szerint](container-registry-tasks-scheduled.md)
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

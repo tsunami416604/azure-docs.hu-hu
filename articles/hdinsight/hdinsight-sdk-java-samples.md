@@ -1,6 +1,6 @@
 ---
 title: 'Azure HDInsight: Java-minták'
-description: Java-példákat találhat a GitHubon a HDInsight SDK Java-hoz használatával végzett gyakori feladatokhoz.
+description: Java-példák a GitHubon gyakori feladatokhoz a Javához készült HDInsight SDK használatával.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,40 +8,40 @@ ms.service: hdinsight
 ms.topic: sample
 ms.date: 11/29/2019
 ms.openlocfilehash: e277814bda41a70f9ac8ff02b6e8018fba4b6f52
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74775357"
 ---
 # <a name="azure-hdinsight-java-samples"></a>Azure HDInsight: Java-minták
 
 > [!div class="op_single_selector"]
 > * [Java-példák](hdinsight-sdk-java-samples.md)
-> * [Példák .](hdinsight-sdk-dotnet-samples.md)
-> * [Példák python](hdinsight-sdk-python-samples.md)
+> * [.NET-példák](hdinsight-sdk-dotnet-samples.md)
+> * [Python-példák](hdinsight-sdk-python-samples.md)
 <!-- * [Go Examples](hdinsight-sdk-dotnet-samples.md)-->
 
 Ez a cikk a következő információkat tartalmazza:
 
-* A fürtlétrehozási feladatok mintáira mutató hivatkozások.
-* Egyéb felügyeleti feladatokhoz kapcsolódó tartalomra mutató hivatkozások.
+* A fürtök létrehozására szolgáló feladatokhoz kapcsolódó mintákra mutató hivatkozások.
+* Hivatkozások a más felügyeleti feladatokra vonatkozó hivatkozási tartalomra.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[Azure HDInsight SDK Java-hoz](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
+[Javához készült Azure HDInsight SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight#sdk-installation)
 
-## <a name="cluster-management---creation"></a>Fürtkezelés - létrehozás
+## <a name="cluster-management---creation"></a>Fürt kezelése – létrehozás
 
 * [Kafka-fürt létrehozása](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateKafkaClusterSample.java)
 * [Spark-fürt létrehozása](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateSparkClusterSample.java)
-* [Spark-fürt létrehozása az Azure Data Lake Storage Gen2 használatával](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateHadoopClusterWithAdlsGen2Sample.java)
-* [Spark-fürt létrehozása vállalati biztonsági csomaggal (ESP)](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateEspClusterSample.java)
+* [Spark-fürt létrehozása Azure Data Lake Storage Gen2](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateHadoopClusterWithAdlsGen2Sample.java)
+* [Spark-fürt létrehozása Enterprise Security Package (ESP)](https://github.com/Azure-Samples/hdinsight-java-sdk-samples/blob/master/management/src/main/java/com/microsoft/azure/hdinsight/samples/CreateEspClusterSample.java)
 
-Ezeket a mintákat a Java a [hdinsight-java-sdk-samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) GitHub-tárház klónozásával kaphatja meg.
+Ezeket a mintákat a Javához a [hdinsight-Java-SDK-Samples](https://github.com/Azure-Samples/hdinsight-java-sdk-samples) GitHub-tárház klónozásával érheti el.
 
 [!INCLUDE [hdinsight-sdk-additional-functionality](../../includes/hdinsight-sdk-additional-functionality.md)]
 
-A további SDK-funkciók kódrészlete megtalálható a [HDInsight SDK java referenciadokumentációjában.](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview)
+Ehhez a további SDK-funkciókhoz tartozó kódrészletek a [HDINSIGHT SDK for Java](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview)dokumentációjában találhatók.
