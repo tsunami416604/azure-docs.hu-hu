@@ -1,24 +1,24 @@
 ---
-title: Oktatóanyag - Kép létrehozása a kódvéglegesítésre
-description: Ebben az oktatóanyagban megtudhatja, hogyan konfigurálhatja az Azure Container Registry Task automatikusan elindítja a tárolórendszerkép-buildek a felhőben, amikor véglegesíti a forráskódot egy Git-tárházba.
+title: Oktatóanyag – rendszerkép létrehozása kód véglegesítve
+description: Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy Azure Container Registry feladatot úgy, hogy automatikusan aktiválja a tároló rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti.
 ms.topic: tutorial
 ms.date: 05/04/2019
 ms.custom: seodec18, mvc
 ms.openlocfilehash: 2f70b829e2202c3d28adcfbbb07338923c43e8a8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "78402847"
 ---
-# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: A tárolórendszerkép-buildek automatizálása a felhőben a forráskód véglegesítésekén
+# <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>Oktatóanyag: tároló-rendszerkép automatizálása a felhőben a forráskód elküldésekor
 
-A mellett egy [gyors feladat,](container-registry-tutorial-quick-task.md)ACR feladatok támogatja az automatikus Docker-tárolórendszerkép-buildek a felhőben, amikor levéglegesíti a forráskódot egy Git-tárházba. Az ACR-feladatok támogatott Git-környezetei közé tartozik a nyilvános vagy privát GitHub vagy az Azure-alapú repók.
+Egy [gyors feladaton](container-registry-tutorial-quick-task.md)kívül az ACR-feladatok támogatják az automatizált Docker-tárolók rendszerképét a felhőben, amikor a forráskódot egy git-tárházba véglegesíti. Az ACR-feladatokhoz támogatott git-környezetek a következők lehetnek: nyilvános vagy privát GitHub vagy Azure Repos.
 
 > [!NOTE]
-> Jelenleg az ACR-feladatok nem támogatják a véglegesítési vagy lekéréses kérelmek eseményindítóit a GitHub Enterprise-repos-ban.
+> Az ACR-feladatok jelenleg nem támogatják a commit vagy a pull kérelem eseményindítóit a GitHub Enterprise reposban.
 
-Ebben az oktatóanyagban az ACR-feladat egyetlen tárolórendszerképet hoz létre, és lelökegy, a Docker-fájlban megadott tárolórendszert, amikor forráskódot véglegesít egy Git-tárházban. Ha [olyan többlépéses feladatot](container-registry-tasks-multi-step.md) szeretne létrehozni, amely YAML-fájl segítségével határozza meg a kódvéglegesítés több tárolójának létrehozásának, leküldéses és szükség esetén tesztelésének lépéseit, olvassa el [az Oktatóanyag: Többlépéses tárolómunkafolyamat futtatása a felhőben a forráskód véglegesítésekor](container-registry-tutorial-multistep-task.md)című témakört. Az ACR-feladatok áttekintése az Operációs rendszer és a [keretrendszer javításának automatizálása Az ACR-feladatokkal című témakörben](container-registry-tasks-overview.md)
+Ebben az oktatóanyagban az ACR-feladat létrehozza és leküldi a Docker megadott egyetlen tároló-rendszerképet, amikor egy git-tárházba véglegesíti a forráskódot. Ha olyan [többlépéses feladatot](container-registry-tasks-multi-step.md) szeretne létrehozni, amely egy YAML-fájlt használ a kód végrehajtásához szükséges több tároló létrehozásához, leküldéséhez és opcionális teszteléséhez, tekintse meg [az oktatóanyag: többlépéses tároló-munkafolyamat futtatása a felhőben a forráskód](container-registry-tutorial-multistep-task.md)beléptetése során című témakört. Az ACR-feladatok áttekintését lásd: az [operációs rendszer és a keretrendszer javításának automatizálása az ACR-feladatokkal](container-registry-tasks-overview.md)
 
 Ebben az oktatóanyagban:
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag feltételezi, hogy elvégezte az [előző oktatóanyag](conta
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha az Azure CLI-t helyileg szeretné használni, az Azure CLI **2.0.46-os** vagy újabb verzióját telepítenie kell, és be kell jelentkeznie [az az bejelentkezéssel.][az-login] A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
+Ha helyileg szeretné használni az Azure CLI-t, az Azure CLI **2.0.46** vagy újabb verzióját kell telepítenie, és be kell jelentkeznie az [az login][az-login]paranccsal. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretné a parancssori felületet, olvassa el [az Azure CLI telepítését][azure-cli] ismertető témakört.
 
 [!INCLUDE [container-registry-task-tutorial-prereq.md](../../includes/container-registry-task-tutorial-prereq.md)]
 
@@ -40,9 +40,9 @@ Ha az Azure CLI-t helyileg szeretné használni, az Azure CLI **2.0.46-os** vagy
 
 Most, miután végrehajtotta az ahhoz szükséges lépéseket, hogy az ACR Tasks olvashassa a véglegesítési állapotokat, és webhookokat hozhasson létre egy adattárban, létrehozhat egy feladatot, amely egy tárolórendszerkép összeállítását váltja ki az adattárban való véglegesítés esetén.
 
-Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem feltölti ezeket a környezeti változókat, manuálisan kell cserélnie az egyes értékeket, bárhol is jelenjen meg a példaparancsokban.
+Először lássa el ezeket a rendszerhéj-környezeti változókat a környezetnek megfelelő értékekkel. Ez a lépés nem feltétlenül szükséges, de némileg könnyebbé teszi az oktatóanyagban lévő többsoros Azure CLI-parancsok végrehajtását. Ha nem tölti fel ezeket a környezeti változókat, manuálisan kell lecserélnie az egyes értékeket, bárhol is megjelenjenek a példában szereplő parancsokban.
 
-[![Indítás beágyazása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
 
 ```console
 ACR_NAME=<registry-name>        # The name of your Azure container registry
@@ -50,7 +50,7 @@ GIT_USER=<github-username>      # Your GitHub user account name
 GIT_PAT=<personal-access-token> # The PAT you generated in the previous section
 ```
 
-Most hozza létre a feladatot a következő [az acr feladat létrehozási][az-acr-task-create] parancs végrehajtásával:
+Most hozza létre a feladatot a következő az [ACR Task Create][az-acr-task-create] parancs végrehajtásával:
 
 ```azurecli-interactive
 az acr task create \
@@ -65,7 +65,7 @@ az acr task create \
 > [!IMPORTANT]
 > Ha korábban már létrehozott feladatokat az előzetes verzióban az `az acr build-task` paranccsal, azokat a feladatokat újra létre kell hoznia az [az acr task][az-acr-task] paranccsal.
 
-A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--context` argumentumban megadott adattár *fő* elágazásába, az ACR Tasks összeállítja a tárolórendszerképet az elágazásban lévő kódból. A tárház `--file` gyökérből megadott Dockerfile a rendszerkép létrehozásához szolgál. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
+A feladat megadja, hogy minden alkalommal, amikor kódot véglegesítenek a `--context` argumentumban megadott adattár *fő* elágazásába, az ACR Tasks összeállítja a tárolórendszerképet az elágazásban lévő kódból. A `--file` rendszer a tárház gyökerében megadott Docker használja a rendszerkép létrehozásához. Az `--image` argumentum a `{{.Run.ID}}` egy parametrikus értékét adja meg a rendszerkép címkéjének a verzióra vonatkozó részéhez, ezzel biztosítva, hogy az összeállított rendszerkép egy adott összeállításhoz tartozzon és egyedi címkével legyen jelölve.
 
 A sikeres [az acr task create][az-acr-task-create] parancs kimenete az alábbihoz hasonló:
 

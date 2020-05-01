@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-parancsfájlminta – SignalR-szolgáltatás létrehozása
-description: Ismerje meg a mintaparancsfájlt követve hozzon létre egy új Azure SignalR-szolgáltatást egy új erőforráscsoportban, véletlenszerű névvel.
+title: Azure CLI parancsfájl-minta – szignáló szolgáltatás létrehozása
+description: Az új Azure Signaler-szolgáltatás új erőforráscsoportbeli, véletlenszerű névvel történő létrehozásához kövesse a minta parancsfájlt.
 author: sffamily
 ms.service: signalr
 ms.devlang: azurecli
@@ -9,10 +9,10 @@ ms.date: 11/13/2018
 ms.author: zhshang
 ms.custom: mvc
 ms.openlocfilehash: 45958f020f2e5dbdb0a50f0190aff78568865f74
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74158077"
 ---
 # <a name="create-a-signalr-service"></a>SignalR szolgáltatás létrehozása 
