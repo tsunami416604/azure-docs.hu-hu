@@ -1,6 +1,6 @@
 ---
-title: 'CLI: Alkalmazás manuális méretezése'
-description: Ismerje meg, hogyan használhatja az Azure CLI-t az App Service-alkalmazás üzembe helyezésének és felügyeletének automatizálására. Ez a minta bemutatja, hogyan skálázható egy alkalmazás manuálisan.
+title: 'CLI: alkalmazások manuális méretezése'
+description: Ismerje meg, hogyan automatizálható az App Service-alkalmazás üzembe helyezése és kezelése az Azure CLI használatával. Ez a minta bemutatja, hogyan méretezhető az alkalmazások manuálisan.
 author: msangapu-msft
 tags: azure-service-management
 ms.assetid: 251d9074-8fff-4121-ad16-9eca9556ac96
@@ -10,15 +10,15 @@ ms.date: 12/11/2017
 ms.author: msangapu
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 91910915384aca27ede9f836d7fe8599d4463f58
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "80057690"
 ---
-# <a name="scale-an-app-service-app-manually-using-azure-cli"></a>App Service-alkalmazás manuális méretezése az Azure CLI használatával
+# <a name="scale-an-app-service-app-manually-using-azure-cli"></a>App Service alkalmazás manuális méretezése az Azure CLI-vel
 
-Ez a mintaparancsfájl létrehoz egy erőforráscsoportot, egy App Service-csomagot és egy alkalmazást. Ezután egy példányból több példányra skálázza az App Service-csomagot.
+Ez a minta parancsfájl létrehoz egy erőforráscsoportot, egy App Service tervet és egy alkalmazást. Ezután egy példányból több példányra skálázza az App Service-csomagot.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -34,13 +34,13 @@ Ha a parancssori felület helyi telepítését és használatát választja, az 
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a parancsfájl a következő parancsokat használja egy erőforráscsoport, az App Service-alkalmazás és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
 | [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-alkalmazást. |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service alkalmazást. |
 | [`az appservice plan update`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-update) | Frissíti az App Service-csomag tulajdonságait. |
 
 ## <a name="next-steps"></a>További lépések
