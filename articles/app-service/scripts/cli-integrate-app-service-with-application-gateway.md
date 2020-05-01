@@ -1,6 +1,6 @@
 ---
-title: Azure CLI-parancsfájlminta – Az App Service integrálása az Application Gateway-rel | Microsoft dokumentumok
-description: Azure CLI-parancsfájlminta – Az App Service integrálása az Application Gateway-rel
+title: Azure CLI parancsfájl-minta – App Service integrálása Application Gateway használatával | Microsoft Docs
+description: Azure CLI parancsfájl-minta – App Service integrálása a Application Gateway
 services: appservice
 documentationcenter: appservice
 author: madsd
@@ -17,21 +17,21 @@ ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
 ms.openlocfilehash: ee5e50bdba0a798d335641dc8a0c7ae69832d8f6
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
+ms.lasthandoff: 04/29/2020
 ms.locfileid: "74979853"
 ---
-# <a name="integrate-app-service-with-application-gateway-using-cli"></a>Az App Service integrálása az Application Gateway alkalmazásával a CLI használatával
+# <a name="integrate-app-service-with-application-gateway-using-cli"></a>App Service integrálása Application Gateway a parancssori felület használatával
 
-Ez a mintaparancsfájl létrehoz egy Azure App Service-webalkalmazást, egy Azure virtuális hálózatot és egy alkalmazásátjárót. Ezután korlátozza a forgalmat a webalkalmazás csak az Application Gateway alhálózatból származik.
+Ez a minta parancsfájl egy Azure App Service webalkalmazást, egy Azure-Virtual Network és egy Application Gateway hoz létre. Ezután korlátozza a webalkalmazás forgalmát, hogy csak a Application Gateway alhálózatból származzanak.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, az Azure CLI 2.0.74-es vagy újabb verziójára van szüksége. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor az Azure CLI 2.0.74 vagy újabb verziójára lesz szüksége. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -41,7 +41,7 @@ Ha úgy dönt, hogy helyileg telepíti és használja a CLI-t, az Azure CLI 2.0.
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a parancsfájl a következő parancsokat használja egy erőforráscsoport, az App Service-alkalmazás, a Cosmos DB és az összes kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
+Ez a szkript a következő parancsokat használja egy erőforráscsoport, App Service alkalmazás, Cosmos DB és minden kapcsolódó erőforrás létrehozásához. A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatkozik.
 
 | Parancs | Megjegyzések |
 |---|---|
@@ -50,11 +50,11 @@ Ez a parancsfájl a következő parancsokat használja egy erőforráscsoport, a
 | [`az network public-ip create`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-create) | Egy nyilvános IP-címet hoz létre. |
 | [`az network public-ip show`](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest#az-network-public-ip-show) | Nyilvános IP-cím részleteinek megjelenítése. |
 | [`az appservice plan create`](https://docs.microsoft.com/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | Létrehoz egy App Service-csomagot. |
-| [`az webapp create`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service-webalkalmazást. |
-| [`az webapp show`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | Az App Service-webalkalmazás részleteinek megjelenítése. |
-| [`az webapp config access-restriction add`](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | Hozzáférési korlátozáshozzáadása az App Service webalkalmazáshoz. |
-| [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | Létrehoz egy alkalmazásátjárót. |
-| [`az network application-gateway http-settings update`](https://docs.microsoft.com/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | Frissíti az Application Gateway HTTP-beállításait. |
+| [`az webapp create`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Létrehoz egy App Service webalkalmazást. |
+| [`az webapp show`](https://docs.microsoft.com/cli/azure/webapp?view=azure-cli-latest#az-webapp-show) | Egy App Service webalkalmazás részleteinek megjelenítése. |
+| [`az webapp config access-restriction add`](https://docs.microsoft.com/cli/azure/webapp/config/access-restriction?view=azure-cli-latest#az-webapp-config-access-restriction-add) | Hozzáférési korlátozást hoz létre a App Service webalkalmazáshoz. |
+| [`az network application-gateway create`](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest#az-network-application-gateway-create) | Létrehoz egy Application Gateway. |
+| [`az network application-gateway http-settings update`](https://docs.microsoft.com/cli/azure/network/application-gateway/http-settings?view=azure-cli-latest#az-network-application-gateway-http-settings-update) | A Application Gateway HTTP-beállításokat frissíti. |
 
 ## <a name="next-steps"></a>További lépések
 

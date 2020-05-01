@@ -1,7 +1,7 @@
 ---
-title: Mindig bekapcsolt VPN felhasználói alagút konfigurálása
+title: Always-On VPN felhasználói alagút konfigurálása
 titleSuffix: Azure VPN Gateway
-description: Ez a cikk azt ismerteti, hogyan konfigurálható a VPN-átjáró mindig bekapcsolt VPN-felhasználói alagútja
+description: Ez a cikk bemutatja, hogyan konfigurálhat egy always on VPN-felhasználói alagutat a VPN-átjáróhoz
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: cherylmc
 ms.openlocfilehash: 56934dd13661d8f623e673e2817e87618675c7ed
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "79502269"
 ---
 # <a name="configure-an-always-on-vpn-user-tunnel"></a>AlwaysOn VPN felhasználói alagút konfigurálása
@@ -21,7 +21,7 @@ ms.locfileid: "79502269"
 
 ## <a name="configure-the-gateway"></a>Az átjáró konfigurálása
 
- A [Pont-hely VPN-kapcsolat konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md) című cikk utasításaival konfigurálhatja a VPN-átjárót az IKEv2 és a tanúsítványalapú hitelesítés használatára.
+ A [pont – hely VPN-kapcsolat konfigurálása](vpn-gateway-howto-point-to-site-resource-manager-portal.md) című cikk utasításait követve konfigurálja a VPN-átjárót a IKEv2 és a tanúsítványalapú hitelesítés használatára.
 
 ## <a name="configure-a-user-tunnel"></a>Felhasználói alagút konfigurálása
 
@@ -29,7 +29,7 @@ ms.locfileid: "79502269"
 
 ## <a name="to-remove-a-profile"></a>Profil eltávolítása
 
-Profil eltávolításához kövesse az alábbi lépéseket:
+A profilok eltávolításához kövesse az alábbi lépéseket:
 
 1. Futtassa az alábbi parancsot:
 
@@ -37,10 +37,10 @@ Profil eltávolításához kövesse az alábbi lépéseket:
    C:\> Remove-VpnConnection UserTest  
    ```
 
-1. Válassza le a kapcsolatot, és törölje a jelet az **Automatikus csatlakozás** jelölőnégyzetből.
+1. Válassza le a kapcsolatot, és törölje az **Automatikus csatlakozás** jelölőnégyzet jelölését.
 
    ![Felesleges tartalmak törlése](./media/vpn-gateway-howto-always-on-user-tunnel/disconnect.jpg)
 
 ## <a name="next-steps"></a>További lépések
 
-Az esetlegesen előforduló csatlakozási problémák elhárításához olvassa el az [Azure pont-hely kapcsolati problémáit.](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+Az esetlegesen előforduló kapcsolódási problémák elhárításához tekintse meg az [Azure pont – hely kapcsolati problémák](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)című témakört.
