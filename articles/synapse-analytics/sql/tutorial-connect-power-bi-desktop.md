@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: e0ac6ccde2443a7b374d9eb85f6f960af79c69dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1bdf2d0e3613af7eec339194d6d8a446be83f365
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769484"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692411"
 ---
-# <a name="tutorial-connect-sql-on-demand-preview-to-power-bi-desktop--create-report"></a>Oktatóanyag: az SQL on-demand (előzetes verzió) összekapcsolása Power BI Desktop & jelentés létrehozása
+# <a name="tutorial-use-sql-on-demand-preview-with-power-bi-desktop--create-a-report"></a>Oktatóanyag: SQL on-demand (előzetes verzió) használata Power BI Desktop & jelentés létrehozása
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -24,7 +24,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >
 > - Bemutató adatbázis létrehozása
 > - Jelentéshez használt nézet létrehozása
-> - Csatlakozás a Power BI Desktophoz
+> - Power BI Desktop összekapcsolása az SQL igény szerinti használatával
 > - Jelentés létrehozása nézet alapján
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -130,11 +130,11 @@ Hozza létre a Power BI Desktop jelentést a következő lépések végrehajtás
 
     - Példa HRE 
   
-    ![Kattintson a Bejelentkezés elemre.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
+        ![Kattintson a Bejelentkezés elemre.](./media/tutorial-connect-power-bi-desktop/step-2.1-select-aad-auth.png)
 
     - Példa az SQL-bejelentkezéshez – írja be a felhasználónevét és a jelszavát.
 
-    ![SQL-bejelentkezés használata.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
+        ![SQL-bejelentkezés használata.](./media/tutorial-connect-power-bi-desktop/step-2.2-select-sql-auth.png)
 
 
 5. Válassza ki a `usPopulationView`nézetet, majd válassza a **Betöltés**lehetőséget. 

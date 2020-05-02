@@ -5,14 +5,14 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall-manager
 ms.topic: tutorial
-ms.date: 02/18/2020
+ms.date: 05/01/2020
 ms.author: victorh
-ms.openlocfilehash: 3dc94a8be265682fbe2128f2e5870dfdf5850a2d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b13f3b4eeb57c34f51152bb6d1914f6c80f31be1
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77443057"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691025"
 ---
 # <a name="tutorial-secure-your-virtual-wan-using-azure-firewall-manager-preview"></a>Oktatóanyag: virtuális WAN biztonságossá tétele a Azure Firewall Manager előzetes verziójával 
 
@@ -36,29 +36,34 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 ## <a name="create-a-hub-and-spoke-architecture"></a>Sugaras architektúra létrehozása
 
-Először hozzon létre egy küllős VNet, amelyen elhelyezheti a kiszolgálókat.
+Először is hozzon létre egy küllős virtuális hálózatot, ahol elhelyezheti a kiszolgálókat.
 
-### <a name="create-a-spoke-vnet-and-subnets"></a>Küllős VNet és alhálózatok létrehozása
+### <a name="create-a-spoke-virtual-network-and-subnets"></a>Küllős virtuális hálózat és alhálózatok létrehozása
 
 1. Az Azure Portal kezdőlapján válassza az **erőforrás létrehozása**lehetőséget.
 2. A **hálózat**területen válassza a **virtuális hálózat**lehetőséget.
-4. A **név**mezőbe írja be a **küllő-01**értéket.
-5. A **Címtér** mezőbe írja be a következőt: **10.0.0.0/16**.
-6. Az **Előfizetés** beállításnál válassza ki az előfizetését.
-7. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, és írja be a név mezőbe az **FW-Manager** nevet, majd kattintson **az OK gombra**.
-8. A hely mezőben válassza ki az USA **keleti** **régióját**.
-9. Az **alhálózat**alatt a **név** típusa **munkaterhelés-SN**.
-10. A **Címtartomány** mezőbe írja be a következőt: **10.0.1.0/24**.
-11. Fogadja el a többi alapértelmezett beállítást, majd kattintson a **Létrehozás**gombra.
+2. Az **Előfizetés** beállításnál válassza ki az előfizetését.
+1. Az **erőforráscsoport**területen válassza az **új létrehozása**lehetőséget, és írja be a név mezőbe az **FW-Manager** nevet, majd kattintson **az OK gombra**.
+2. A **név**mezőbe írja be a **küllő-01**értéket.
+3. A régió területen válassza az USA **keleti** **régióját**.
+4. Válassza a **Tovább: IP-címek**lehetőséget.
+1. A **címterület**esetében fogadja el az alapértelmezett **10.0.0.0/16**értéket.
+3. Az **alhálózat neve**területen válassza az **alapértelmezett**lehetőséget.
+4. Módosítsa az alhálózat nevét a **munkaterhelés-SN**értékre.
+5. **Alhálózati címtartomány**esetében írja be a következőt: **10.0.1.0/24**.
+6. Válassza a **Mentés**lehetőséget.
 
 Ezután hozzon létre egy alhálózatot a Jump Serverhez.
 
-1. A Azure Portal kezdőlapon válassza az **erőforráscsoportok** > **FW-Manager**lehetőséget.
-2. Válassza ki a **küllő-01** virtuális hálózatot.
-3. Válassza az **alhálózatok** > és**alhálózatok**lehetőséget.
-4. A **név**mezőbe írja be a következőt: **Jump-SN**.
-5. A **Címtartomány** mezőbe írja be a következőt: **10.0.2.0/24**.
-6. Kattintson az **OK** gombra.
+1. Válassza az **alhálózat hozzáadása**lehetőséget.
+4. Az **alhálózat neve**mezőbe írja be a következőt: **Jump-SN**.
+5. **Alhálózati címtartomány**esetében írja be a következőt: **10.0.2.0/24**.
+6. Válassza a **Hozzáadás** lehetőséget.
+
+Most hozza létre a virtuális hálózatot.
+
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+2. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-the-secured-virtual-hub"></a>A biztonságos virtuális központ létrehozása
 
@@ -66,36 +71,38 @@ Hozza létre a biztonságos virtuális hubot a Firewall Manager használatával.
 
 1. A Azure Portal kezdőlapon válassza a **minden szolgáltatás**lehetőséget.
 2. A keresőmezőbe írja be a **Firewall Manager** kifejezést, majd válassza a **Firewall Manager**lehetőséget.
-3. A **Firewall Manager** lapon válassza a **biztonságos virtuális központ létrehozása**elemet.
-4. Az **új biztonságos virtuális központ létrehozása** lapon válassza ki az előfizetését és az **FW-Manager** erőforráscsoportot.
-5. A **biztonságos virtuális központ neve**mezőbe írja be a következőt: **hub-01**.
-6. A hely mezőben válassza az **USA keleti** **régiója**lehetőséget.
-7. A **hub címterület**mezőbe írja be a következőt: **10.1.0.0/16**.
-8. Az új vWAN neve mezőbe írja be a következőt: **vWAN-01**.
-9. Hagyja bejelölve a **VPN Gateway belefoglalása a megbízható biztonsági partnerek engedélyezése** jelölőnégyzetet.
-10. Válassza a Next (tovább) lehetőséget **: Azure Firewall**.
-11. Fogadja el az alapértelmezett **Azure Firewall** **engedélyezve** beállítást, majd válassza a **Tovább: megbízható biztonsági partner**lehetőséget.
-12. Fogadja el az alapértelmezett **megbízható biztonsági partner** **letiltott** beállítást, majd kattintson a **Tovább gombra: felülvizsgálat + létrehozás**.
-13. Kattintson a **Létrehozás** gombra. A telepítés körülbelül 30 percet vesz igénybe.
+3. A **Firewall Manager** lapon válassza a **biztonságos virtuális hubok megtekintése**lehetőséget.
+4. A **Firewall Managerben | Biztonságos virtuális hubok** lapon válassza az **új biztonságos virtuális központ létrehozása**lehetőséget.
+5. Az **erőforráscsoport**területen válassza az **FW-Manager**lehetőséget.
+7. A régió területen válassza az **USA keleti** **régiója**lehetőséget.
+1. A **biztonságos virtuális központ neve**mezőbe írja be a következőt: **hub-01**.
+2. A **hub címterület**mezőbe írja be a következőt: **10.1.0.0/16**.
+3. Az új vWAN neve mezőbe írja be a következőt: **vWAN-01**.
+4. Hagyja bejelölve a **VPN Gateway belefoglalása a megbízható biztonsági partnerek engedélyezése** jelölőnégyzetet.
+5. Válassza a Next (tovább) lehetőséget **: Azure Firewall**.
+6. Fogadja el az alapértelmezett **Azure Firewall** **engedélyezve** beállítást, majd válassza a **Tovább: megbízható biztonsági partner**lehetőséget.
+7. Fogadja el az alapértelmezett **megbízható biztonsági partner** **letiltott** beállítást, majd kattintson a **Tovább gombra: felülvizsgálat + létrehozás**.
+8. Kattintson a **Létrehozás** gombra. A telepítés körülbelül 30 percet vesz igénybe.
 
 ### <a name="connect-the-hub-and-spoke-vnets"></a>A hub és a küllős virtuális hálózatok összekötése
 
 Most már elvégezheti a hub és a küllő virtuális hálózatok.
 
-1. Válassza ki az **FW-Manager** erőforráscsoportot, majd válassza ki a **vwan-01** virtuális WAN elemet.
+1. Válassza ki az **FW-Manager** erőforráscsoportot, majd válassza ki a **Vwan-01** virtuális WAN elemet.
 2. A **kapcsolat**területen válassza a **virtuális hálózati kapcsolatok**elemet.
 3. Válassza a **kapcsolatok hozzáadása**lehetőséget.
 4. A **kapcsolatok neve**mezőbe írja be a következőt: **hub-küllő**.
 5. **Hubok**esetében válassza a **hub-01**elemet.
-6. **Virtuális hálózat**esetén válassza a **küllő-01**elemet.
-7. Kattintson az **OK** gombra.
+6. Az **erőforráscsoport**területen válassza az **FW-Manager**lehetőséget.
+7. **Virtuális hálózat**esetén válassza a **küllő-01**elemet.
+8. Kattintson az **OK** gombra.
 
 ## <a name="create-a-firewall-policy-and-secure-your-hub"></a>Tűzfal-házirend létrehozása és a központ biztonságossá tétele
 
 A tűzfalszabályok olyan szabályok gyűjteményeit határozzák meg, amelyek egy vagy több biztonságos virtuális hubhoz irányítják a forgalmat. Hozza létre a tűzfal-házirendet, majd gondoskodjon a központ biztonságossá tételéről.
 
-1. A Firewall Managerben válassza **az Azure Firewall házirend létrehozása**lehetőséget.
-2. Válassza ki az előfizetését, majd válassza ki az **FW-Manager** erőforráscsoportot.
+1. A Firewall Managerben válassza a **Azure Firewall házirendek megtekintése**lehetőséget.
+2. Válassza a **Azure Firewall házirend létrehozása**lehetőséget.
 3. A szabályzat **részletei**területen, a **következő név** : **Policy-01** és régió esetén válassza az **USA keleti** **régiója** lehetőséget.
 4. Válassza a **Tovább: szabályok**lehetőséget.
 5. A **szabályok** lapon válassza a **szabálygyűjtemény hozzáadása**elemet.
@@ -109,10 +116,11 @@ A tűzfalszabályok olyan szabályok gyűjteményeit határozzák meg, amelyek e
 13. Győződjön meg arról, hogy * * a cél típusa **FQDN**.
 14. A **cél**mezőbe írja be ** \*** a következőt:. microsoft.com.
 15. Válassza a **Hozzáadás** lehetőséget.
-16. Válassza a Next (tovább) lehetőséget **: biztonságos virtuális hubok**.
-17. A **biztonságos virtuális hubok** lapon válassza a **hub-01**elemet.
-19. Válassza az **Áttekintés + létrehozás** lehetőséget.
-20. Kattintson a **Létrehozás** gombra.
+16. Válassza a **Next (tovább): hubok**lehetőséget.
+17. A **hubok** lapon válassza a **virtuális hubok hozzárendelése**lehetőséget.
+18. Válassza a **hub-01** elemet, majd kattintson a **Hozzáadás**gombra.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+2. Kattintson a **Létrehozás** gombra.
 
 Ez körülbelül öt percet vesz igénybe.
 
@@ -126,10 +134,9 @@ Most meg kell győződnie arról, hogy a hálózati forgalom átirányítva lesz
 4. Az **internetes forgalom**, **a virtuális hálózatok közötti forgalom**területen válassza a **Küldés Azure Firewall használatával**lehetőséget.
 5. Az **Azure Private Traffic**, **a virtuális hálózatok felé irányuló forgalom**területen válassza a **Küldés Azure Firewallon keresztül**lehetőséget.
 6. Válassza az **IP-cím előtag (ok) szerkesztése**lehetőséget.
-7. Válassza **az IP-cím előtag hozzáadása**lehetőséget.
 8. Írja be a **10.0.1.0/24** értéket a munkaterhelés-alhálózat címére, majd válassza a **Mentés**lehetőséget.
 9. A **Beállítások**területen válassza a **kapcsolatok**lehetőséget.
-10. Válassza ki a **sugaras** kapcsolatot, majd válassza a **biztonságos internetes forgalom** lehetőséget, majd kattintson **az OK gombra**.
+10. Győződjön meg arról, hogy a **sugaras** kapcsolatok **biztonságosként**jeleníti meg az **internetes forgalmat** .
 
 
 ## <a name="test-your-firewall"></a>A tűzfal tesztelése
@@ -147,12 +154,11 @@ A tűzfalszabályok teszteléséhez néhány kiszolgálót kell telepítenie. Ü
    |Erőforráscsoport     |**FW – kezelő**|
    |Virtuális gép neve     |**Ugrás – SRV**|
    |Régió     |**USA USA keleti régiója)**|
-   |Rendszergazda felhasználóneve     |**azureuser**|
-   |Jelszó     |írja be a jelszót|
+   |Rendszergazda felhasználóneve     |adja meg a felhasználónevet|
+   |Jelszó     |írjon be egy jelszót|
 
 4. A **bejövő portszabályok**területen a **nyilvános bejövő portok**esetében válassza a **kijelölt portok engedélyezése**lehetőséget.
 5. A **bejövő portok kiválasztása**lapon válassza az **RDP (3389)** lehetőséget.
-
 6. Fogadja el a többi alapértelmezett értéket, és válassza a **Tovább: lemezek**lehetőséget.
 7. Fogadja el a lemez alapértelmezett értékeit, és válassza a **Tovább: hálózatkezelés**lehetőséget.
 8. Győződjön meg arról, hogy a **küllő-01** a virtuális hálózatra van kiválasztva, és az alhálózat **Ugrás-SN**.

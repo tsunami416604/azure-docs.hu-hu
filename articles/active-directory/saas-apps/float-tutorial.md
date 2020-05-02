@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 04/23/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b057f817fb0c30e45c08f8d708441bd52122af7b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 92d3f2381f2fdce123511caa2339d41b0641b077
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82206748"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690640"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-float"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az úszóval
 
@@ -37,7 +37,7 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Lebegőpontos egyszeri bejelentkezés (SSO) engedélyezett előfizetés.
+* Egy lebegőpontos előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://app.float.com/join?)kérhet.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be a minta `https://<hostname>.float.com/login`URL-címét.
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Ezekhez az értékekhez vegye fel a kapcsolatot az [úszó ügyfél támogatási csapatával](mailto:support@float.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Cserélje <hostname> le az lebegőpontos állomásnévre. Ha nem biztos benne, vegye fel a kapcsolatot az [úszó ügyfél-támogatási csapattal](mailto:support@float.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az lebegőpontos alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -143,11 +143,11 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
 ## <a name="configure-float-sso"></a>Lebegőpontos SSO konfigurálása
 
-Az egyszeri bejelentkezés az **úszó** oldalon való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról az [úszó támogatási csoportba](mailto:support@float.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Ha az egyszeri bejelentkezést az **úszó** oldalon szeretné beállítani, látogasson el az úszó csapat beállításai szakaszba, és válassza a Konfigurálás lehetőséget a hitelesítési modulban. Illessze be az Azure AD bejelentkezési URL-címét az SAML 2,0 Endpoint URL mezőbe, illessze be az Azure AD-azonosítójának karakteres formáját az Identity Provider kiállító URL-címe mezőbe, illessze be a teljes szöveget a letöltött **tanúsítványból (Base64)** az X. 509 tanúsítvány mezőbe, és mentse a fájlt.
 
 ### <a name="create-float-test-user"></a>Lebegőpontos teszt felhasználó létrehozása
 
-Ebben a szakaszban létre fog hozni egy Britta Simon in float nevű felhasználót. A lebegőpontos [támogatással](mailto:support@float.com) rendelkező felhasználók a float platformon való hozzáadására használhatók. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban hozzon létre egy "Britta Simon in float" nevű felhasználót. Adja hozzá a felhasználót a személyek szakasz vagy a csoport beállításai vendég szakaszban, és adjon nekik hozzáférési jogot. Az egyszeri bejelentkezés használata előtt létre kell hozni a felhasználókat, és el kell fogadnia a meghívást.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

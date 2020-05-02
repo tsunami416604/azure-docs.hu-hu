@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: a29fd66cf264b09cc5e0db7ac1a329be3f297bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 64895e5f48168305aea3e83596cdbcae982a6cb9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096333"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692423"
 ---
 # <a name="quickstart-using-synapse-studio-preview"></a>Rövid útmutató: a szinapszis Studio használata (előzetes verzió)
 
@@ -56,7 +56,7 @@ Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg 
 
    ![Fájlok lekérdezése a tárhelyen](./media/quickstart-synapse-studio/query-files-on-storage.png)
 
-3. Futtassa a generált lekérdezést vagy jegyzetfüzetet a fájl tartalmának megtekintéséhez:
+3. Futtassa a generált lekérdezést vagy jegyzetfüzetet a fájl tartalmának megtekintéséhez.
 
    ![A fájl tartalmának megjelenítése](./media/quickstart-synapse-studio/query-files-on-storage-result.png)
 
@@ -64,7 +64,7 @@ Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg 
 
 ## <a name="next-steps"></a>További lépések
 
-- Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését [a **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role) szolgáltatásban
+- Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését a [ **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage szolgáltatásban](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-a-built-in-rbac-role)
 - [Fájlok lekérdezése az Azure Storage-ban az SQL igény szerinti használatával](sql/on-demand-workspace-overview.md)
-- [Apache Spark-készlet létrehozása](quickstart-create-apache-spark-pool.md)
+- [Apache Spark készlet létrehozása a Azure Portal használatával](quickstart-create-apache-spark-pool.md)
 - [Power BI jelentés létrehozása az Azure Storage-ban tárolt fájlokról](sql/tutorial-connect-power-bi-desktop.md)

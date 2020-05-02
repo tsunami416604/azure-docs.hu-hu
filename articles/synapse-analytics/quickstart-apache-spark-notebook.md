@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: f8525c883eb6b2c736e5fbf433464aa64ff42068
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ae866c8be8d162213077e0488a19a556399384b2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101785"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692693"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával
 
@@ -33,7 +33,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [Azure Portalba](https:/portal.azure.com/)
+Jelentkezzen be az [Azure Portalra](https:/portal.azure.com/).
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -66,7 +66,7 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
 
    ![Adatkeret-objektum létrehozása](./media/quickstart-apache-spark-notebook/spark-get-started-create-data-frame-object.png "Kimenet a Spark-feladatokból")
 
-10. Ha a Apache Spark-készlet példánya még nem fut, az automatikusan elindul. Az Apache Spark Pool-példány állapotát a futtatott cella alatt, valamint a jegyzetfüzet alján található állapotjelző panelen tekintheti meg. A készlet méretétől függően a kezdés 2-5 percet vesz igénybe. Miután a kód futása befejeződött, a cella alatt látható információk azt mutatják, hogy mennyi ideig tartott a Futtatás és a végrehajtás. A kimeneti cellában megjelenik a kimenet.
+10. Ha a Apache Spark Pool-példány még nem fut, az automatikusan elindul. A Apache Spark Pool példányának állapotát a futtatott cella alatt, valamint a jegyzetfüzet alján található állapotjelző panelen tekintheti meg. A készlet méretétől függően a kezdés 2-5 percet vesz igénybe. Miután a kód futása befejeződött, a cella alatt látható információk azt mutatják, hogy mennyi ideig tartott a Futtatás és a végrehajtás. A kimeneti cellában megjelenik a kimenet.
 
     ![Cella végrehajtásának kimenete](./media/quickstart-apache-spark-notebook/run-cell-with-output.png "Kimenet a Spark-feladatokból")
 
@@ -79,7 +79,7 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
      demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.windows.net/demodata/demo_df', mode='overwrite')
     ```
 
-    Ha a Storage Explorert használja, megtekintheti a fentiekben használt két különböző módszer hatását. Ha nincs megadva fájlrendszer, a rendszer az alapértelmezett értéket használja, ebben az esetben `default>user>trusted-service-user>demo_df`. A rendszer menti az adatfájlokat a megadott fájlrendszer helyére.
+    Ha a Storage Explorert használja, lehetséges, hogy a fentiekben használt két különböző módszer hatását is láthatja. Ha nincs megadva fájlrendszer, a rendszer az alapértelmezett értéket használja, ebben az esetben `default>user>trusted-service-user>demo_df`. A rendszer menti az adatfájlokat a megadott fájlrendszer helyére.
 
     Figyelje meg, hogy a "CSV" és a "parketta" formátumokban az írási műveletek számos particionált fájllal jönnek létre.
 
@@ -89,7 +89,7 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
 
 ## <a name="run-spark-sql-statements"></a>Spark SQL-utasítások futtatása
 
-Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és legszélesebb körben használt nyelv. A Spark SQL az Apache Spark bővítményeként működik a strukturált adatok ismerős SQL-szintaxissal való feldolgozásához.
+A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben használt nyelv az adatlekérdezéshez és definiáláshoz. A Spark SQL az Apache Spark bővítményeként működik a strukturált adatok ismerős SQL-szintaxissal való feldolgozásához.
 
 1. Illessze be a következő kódot egy üres cellába, majd futtassa a kódot. A parancs felsorolja a készletben lévő táblákat.
 
@@ -109,11 +109,11 @@ Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és leg
 
     A kód két kimeneti cellát hoz létre, amelyek az egyiket, amely az adatokat tartalmazza, a másikat, amely megjeleníti a feladat nézetét.
 
-    Alapértelmezés szerint az eredmények nézet egy rácsot jelenít meg, de a rács alatt egy nézet kapcsoló jelenik meg, amely lehetővé teszi, hogy a nézet a rács és a Graph nézetek között legyen.
+    Alapértelmezés szerint az eredmények nézet egy rácsot jelenít meg. Van azonban egy nézet kapcsoló a rács alatt, amely lehetővé teszi, hogy a nézet a rács és a gráf nézetek között legyen.
 
     ![Lekérdezés kimenete az Azure szinapszis Sparkban](./media/quickstart-apache-spark-notebook/spark-get-started-query.png "Lekérdezés kimenete az Azure szinapszis Sparkban")
 
-3. A **nézet** kapcsolójában válassza a **diagram** lehetőséget.
+3. A **nézet** kapcsolójában válassza a **diagram**lehetőséget.
 4. Válassza ki a **megtekintési beállítások** ikont a jobb szélső oldalról.
 5. A **diagram típusa** mezőben válassza a "sávdiagram" lehetőséget.
 6. Az X tengely oszlop mezőjében válassza az "állapot" lehetőséget.
@@ -133,13 +133,13 @@ Az SQL az adatok lekérdezéséhez és meghatározásához leggyakrabban és leg
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Ha nincs használatban, nyugodtan engedélyezheti a Spark-példányok leállítását. Az Azure szinapszis Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. Mivel a készlet díjai több időt vesznek igénybe, mint a tárterületre vonatkozó díjak, a gazdasági érzék lehetővé teszi, hogy a Spark-példányok leálljanak, amikor nincsenek használatban.
+Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Biztonságosan engedélyezheti a Spark-példányok leállítását, ha az nincs használatban. Az Azure szinapszis Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. A készlet díjai többször is meghaladják a tárterület díját. Ezért a gazdasági értelemben a Spark-példányok leállítására van szükség, amikor nincsenek használatban.
 
 A Spark-példány leállításának biztosításához fejezze be a csatlakoztatott munkameneteket (jegyzetfüzeteket). A készlet leáll, amikor eléri a Apache Spark készletben megadott **üresjárati időt** . A **befejezési munkamenetet** a jegyzetfüzet alján található állapotsorból is kiválaszthatja.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a rövid útmutatóban megtanulta, hogyan hozhat létre Azure szinapszis Apache Spark készletet, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést.
+Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre Azure szinapszis Apache Spark készletet, és hogyan futtathat egy alapszintű Spark SQL-lekérdezést.
 
 - [Azure Synapse Analytics](overview-what-is.md)
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)

@@ -10,14 +10,19 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: a9506d45350a567e3643b6edd6afc7668662f6e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81416025"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690905"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure szinapszis Analytics (korábban SQL DW)?
+
+> [!NOTE] 
+> Próbálja ki a legújabb Azure szinapszis-funkciókat, például a munkaterületeket, a Sparkot, az SQL-t igény szerint, és az integrált szinapszis Studio-élményt, [Ha hozzáférést kér az Azure szinapszishoz (munkaterületek előzetes verzió)](https://aka.ms/synapsepreview). 
+>
+>Ismerje meg az [Azure szinapszis (munkaterületek előzetes verzió) dokumentációját](../overview-what-is.md).
 
 Az Azure szinapszis egy elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big adatelemzést. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához.
 
@@ -30,10 +35,7 @@ Az Azure szinapszis négy összetevőből áll:
 - Szinapszis-folyamatok: hibrid Adatintegráció (előzetes verzió)
 - Studio: egyesített felhasználói élmény.  (Előzetes verzió)
 
-> [!NOTE]
-> Az Azure szinapszis előzetes verzió funkcióinak eléréséhez kérjen hozzáférést [itt](https://aka.ms/synapsepreview). A Microsoft az összes kérelem osztályozását és a lehető leghamarabb válaszol.
->
-> Tekintse meg az [Azure szinapszis előzetes verziójának dokumentációját](../overview-what-is.md).
+
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Szinapszis SQL-készlet az Azure Szinapszisban
 

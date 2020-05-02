@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 8aae650065e8de11ccdc55a8a056c379a219fcb4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876506"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690824"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)
 
@@ -76,7 +76,11 @@ Sajnos a Cognitive Services tárolók natív módon *nem* támogatottak a szuver
 
 **K: Hogyan futtatom a Cognitive Services tárolókat a IoT-eszközökön?**
 
-Függetlenül attól, hogy nem rendelkezik-e megbízható internetkapcsolattal, vagy szeretné menteni a sávszélesség-költségeket. Vagy ha alacsony késési követelményekkel rendelkeznek, vagy a helyszínen elemezni kívánt bizalmas adatokkal rendelkeznek, [Azure IoT Edge a Cognitive Services tárolókkal](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) konzisztensek lesznek a felhővel.
+**A:** Függetlenül attól, hogy nem rendelkezik-e megbízható internetkapcsolattal, vagy szeretné menteni a sávszélesség-költségeket. Vagy ha alacsony késési követelményekkel rendelkeznek, vagy a helyszínen elemezni kívánt bizalmas adatokkal rendelkeznek, [Azure IoT Edge a Cognitive Services tárolókkal](https://azure.microsoft.com/blog/running-cognitive-services-on-iot-edge/) konzisztensek lesznek a felhővel.
+
+**K: kompatibilisek ezek a tárolók a OpenShift-mel?** 
+
+A tárolókat nem teszteljük OpenShift, de általában Cognitive Services tárolókat a Docker-rendszerképeket támogató bármely platformon kell futtatni. Ha a OpenShift-t `root-user`használja, javasoljuk, hogy futtassa a tárolókat.
 
 **K: Hogyan a termékkel kapcsolatos visszajelzéseket és a szolgáltatásokra vonatkozó ajánlásokat?**
 

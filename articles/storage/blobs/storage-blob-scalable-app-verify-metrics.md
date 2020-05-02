@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
-ms.openlocfilehash: dc0f8171e18598e4f805a03a4bc6d17de220fbe1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68698974"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692442"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése tárfiókok esetében
 
@@ -24,7 +24,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
 > * Diagramok konfigurálása az Azure Portalon
 > * Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése
 
-Az [Azure Storage mérőszámai](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) az Azure Monitor használatával adnak egységes képet a tárfiók teljesítményéről és rendelkezésre állásáról.
+Az [Azure Storage mérőszámai](../common/monitor-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) az Azure Monitor használatával adnak egységes képet a tárfiók teljesítményéről és rendelkezésre állásáról.
 
 ## <a name="configure-metrics"></a>Mérőszámok konfigurálása
 
@@ -34,7 +34,7 @@ Válassza a Blob lehetőséget az **ALSZOLGÁLTATÁS** legördülő listáról.
 
 A **METRIKA** területen válassza ki a következő táblázatban található mérőszámok egyikét:
 
-Az alábbi mérőszámok segítségével képet kaphat az alkalmazás késésével és átviteli sebességével kapcsolatban. A portálon konfigurált mérőszámok egyperces átlagértékek. Ha egy tranzakció egy adott percen belül fejeződik be, akkor az átlagérték kiszámításakor a rendszer megfelezi a kérdéses percet. Az alkalmazásban a fel- és letöltési műveletek időzítve vannak, és a rendszer a kimenetek között megjeleníti a fájlok fel- és letöltéséhez szükséges tényleges időt. Ezek az információk és a portál mérőszámai együttesen teljes körűen értelmezhetővé teszik az átviteli sebességet.
+Az alábbi mérőszámok segítségével képet kaphat az alkalmazás késésével és átviteli sebességével kapcsolatban. A portálon konfigurált mérőszámok egyperces átlagértékek. Ha egy tranzakció egy percen belül fejeződött be, akkor a percben megadott érték az átlag felére csökken. Az alkalmazásban a fel- és letöltési műveletek időzítve vannak, és a rendszer a kimenetek között megjeleníti a fájlok fel- és letöltéséhez szükséges tényleges időt. Ezek az információk és a portál mérőszámai együttesen teljes körűen értelmezhetővé teszik az átviteli sebességet.
 
 |Metrika|Meghatározás|
 |---|---|
@@ -52,7 +52,7 @@ A diagramokhoz több mérőszám is társítható, ekkor azonban a rendszer leti
 
 ## <a name="dimensions"></a>Dimenziók
 
-A [Dimenziók](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) segítségével részletesebben megismerhetők a diagramok, és részletesebb információk nyerhetők ki belőlük. A különböző metrikák eltérő dimenziókkal rendelkeznek. Az egyik rendelkezésre álló dimenzió az **API-név** dimenzió. Ez a dimenzió külön API-hívásokra osztja szét a diagramot. Az első alábbi képen egy tárfiókhoz tartozó összes tranzakció diagramjára látható példa. A második képen ugyanez a diagram látható, ezúttal viszont a kiválasztott API-név dimenzióval együtt. Ahogy látható, a listában szereplő tranzakciók mindegyike további részleteket biztosít az API-név által indított meghívások számával kapcsolatban.
+A [Dimenziók](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#metrics-dimensions) segítségével részletesebben megismerhetők a diagramok, és részletesebb információk nyerhetők ki belőlük. A különböző metrikák eltérő dimenziókkal rendelkeznek. Az egyik rendelkezésre álló dimenzió az **API-név** dimenzió. Ez a dimenzió külön API-hívásokra osztja szét a diagramot. Az első alábbi képen egy tárfiókhoz tartozó összes tranzakció diagramjára látható példa. A második képen ugyanez a diagram látható, ezúttal viszont a kiválasztott API-név dimenzióval együtt. Ahogy látható, a listában szereplő tranzakciók mindegyike további részleteket biztosít az API-név által indított meghívások számával kapcsolatban.
 
 ![Tárfiókok mérőszámai – dimenzió nélküli tranzakciók](./media/storage-blob-scalable-app-verify-metrics/transactionsnodimensions.png)
 

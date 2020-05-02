@@ -3,16 +3,16 @@ title: Az Azure Security teljesítményteszt tervezetének mintája
 description: Az Azure biztonsági teljesítményteszt tervének Azure Policyra való leképezésének vezérlése.
 ms.date: 04/16/2020
 ms.topic: sample
-ms.openlocfilehash: 0f2d24d7d8c9f7ce2568f11b15e65ed1fcd02afb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f80b72f06532adef28bf5e5afd1eb94c2e34ee2d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81538732"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691308"
 ---
 # <a name="control-mapping-of-the-azure-security-benchmark-blueprint-sample"></a>Az Azure Security teljesítményteszt tervrajzi mintájának vezérlése
 
-A következő cikk azt ismerteti, hogyan jelennek meg az Azure-tervezetek az Azure Security teljesítményteszt tervezetének mintája az Azure Security teljesítményteszt-vezérlőkhöz. További információ a vezérlőkről: [Azure biztonsági teljesítményteszt](https://docs.microsoft.com/azure/security/benchmarks/overview).
+A következő cikk azt ismerteti, hogyan jelennek meg az Azure-tervezetek az Azure Security teljesítményteszt tervezetének mintája az Azure Security teljesítményteszt-vezérlőkhöz. További információ a vezérlőkről: [Azure biztonsági teljesítményteszt](../../../../security/benchmarks/overview.md).
 
 A következő leképezések az **Azure Security teljesítményteszt** -vezérlőkre vonatkoznak. A jobb oldali navigációs sávon közvetlenül egy adott vezérlőelem-megfeleltetésre ugorhat. A leképezett vezérlők [Azure Policy](../../../policy/overview.md) kezdeményezéssel valósulnak meg. A teljes kezdeményezés áttekintéséhez nyissa meg a **szabályzatot** a Azure Portalban, és válassza a **definíciók** lapot. Ezután keresse meg és válassza ki ** \[az\]előnézetet: az Azure Security teljesítményteszt-javaslatok naplózása és a speciális támogató virtuálisgép-bővítmények** beépített házirend-kezdeményezéssel történő üzembe helyezése.
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/19/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 2126996620d6f891dde4e7530c057d2c7f31a996
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 941fa8d2570d22b6c2a54de02a61b4a7ece2e632
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81676671"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691877"
 ---
 # <a name="query-storage-files-using-sql-on-demand-preview-resources-within-synapse-sql"></a>Storage-fájlok lekérdezése az SQL on-demand (előzetes verzió) erőforrásain belül a szinapszis SQL-ben
 
@@ -123,11 +123,15 @@ OPENROWSET(
 BULK N'path_to_file(s)', FORMAT='PARQUET');
 ```
 
+Győződjön meg arról, hogy a [megfelelő késleltetett adattípusok](best-practices-sql-on-demand.md#check-inferred-data-types) használatos az optimális teljesítmény érdekében. 
+
 ### <a name="filename-function"></a>Filename függvény
 
-Ez a függvény annak a fájlnak a nevét adja vissza, amelyből a sor származik.
+Ez a függvény annak a fájlnak a nevét adja vissza, amelyből a sor származik. 
 
 Adott fájlok lekérdezéséhez olvassa el a fájl- [specifikus fájlok lekérdezése](query-specific-files.md#filename) című cikket.
+
+A visszatérési adattípus a következő: nvarchar (1024). Az optimális teljesítmény érdekében a filename függvény eredményét mindig a megfelelő adattípusra konvertálja. Ha a karakter adattípust használja, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
 
 ### <a name="filepath-function"></a>Filepath függvény
 
@@ -137,6 +141,8 @@ Ez a függvény teljes elérési utat vagy az elérési út egy részét adja vi
 - Ha paraméterrel hívja meg a metódust, az az elérési út azon részét adja vissza, amely megfelel a paraméterben megadott helyettesítő karakternek. Például az 1. paraméter értéke az elérési út azon részét fogja visszaadni, amely megfelel az első helyettesítő karakternek.
 
 További információért olvassa el az [adott fájlok lekérdezése](query-specific-files.md#filepath) című cikk filepath című szakaszát.
+
+A visszatérési adattípus a következő: nvarchar (1024). Az optimális teljesítmény érdekében a filepath függvény eredményét mindig a megfelelő adattípusra konvertálja. Ha a karakter adattípust használja, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
 
 ### <a name="work-with-complex-types-and-nested-or-repeated-data-structures"></a>Összetett típusok és beágyazott vagy ismétlődő adatstruktúrák használata
 
