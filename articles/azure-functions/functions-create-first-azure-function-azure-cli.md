@@ -4,53 +4,42 @@ description: Ismerje meg, hogyan hozhat létre függvényt a parancssorból, maj
 ms.date: 03/30/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 5022ff7239a040a163d8d6a82864d0dee8e65f1e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7826701a2d328fe40ad75bb3d68b2764d53f9590
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610904"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626258"
 ---
-::: zone pivot="programming-language-csharp"  
-# <a name="quickstart-create-a-c-function-in-azure-that-responds-to-http-requests"></a>Rövid útmutató: C#-függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
+# <a name="quickstart-create-a-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: olyan függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
 
-Ebben a cikkben parancssori eszközökkel hozhat létre egy C# szintű függvénytár-alapú függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+::: zone pivot="programming-language-csharp"  
+Ebben a cikkben parancssori eszközökkel hozhat létre egy C# szintű függvénytár-alapú függvényt, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. 
 ::: zone-end  
 ::: zone pivot="programming-language-javascript"
-# <a name="quickstart-create-a-javascript-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: JavaScript-függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
-
-Ebben a cikkben parancssori eszközöket használ a HTTP-kérelmekre válaszoló JavaScript-függvények létrehozásához. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+Ebben a cikkben parancssori eszközöket használ a HTTP-kérelmekre válaszoló JavaScript-függvények létrehozásához. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. 
 ::: zone-end
 ::: zone pivot="programming-language-typescript"
-# <a name="quickstart-create-a-typescript-function-in-azure-that-responds-to-http-requests"></a>Rövid útmutató: az Azure-ban olyan írógéppel-függvényt hozhat létre, amely válaszol a HTTP-kérelmekre
-
-Ebben a cikkben parancssori eszközöket használ a HTTP-kérelmekre válaszoló írógéppel-függvények létrehozásához. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+Ebben a cikkben parancssori eszközöket használ a HTTP-kérelmekre válaszoló írógéppel-függvények létrehozásához. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. 
 ::: zone-end   
 ::: zone pivot="programming-language-powershell"
-# <a name="quickstart-create-a-powershell-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: PowerShell-függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
-
-Ebben a cikkben parancssori eszközöket használ egy olyan PowerShell-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+Ebben a cikkben parancssori eszközöket használ egy olyan PowerShell-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. 
 ::: zone-end  
 ::: zone pivot="programming-language-python" 
-# <a name="quickstart-create-a-python-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: Python-függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
-
-Ebben a cikkben parancssori eszközöket használ egy olyan Python-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+Ebben a cikkben parancssori eszközöket használ egy olyan Python-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. 
 ::: zone-end  
 ::: zone pivot="programming-language-java" 
-# <a name="quickstart-create-a-java-function-in-azure-that-responds-to-http-requests"></a>Gyors útmutató: Java-függvény létrehozása az Azure-ban, amely válaszol a HTTP-kérelmekre
-
-Ebben a cikkben parancssori eszközöket használ egy olyan Java-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+Ebben a cikkben parancssori eszközöket használ egy olyan Java-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. 
 ::: zone-end
 
-Ebben a cikkben parancssori eszközöket használ a HTTP-kérelmekre válaszoló függvények létrehozásához. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
+A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
 ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"  
 A cikk [Visual Studio Code-alapú verziója](functions-create-first-function-vs-code.md) is létezik.
 ::: zone-end  
-
 ::: zone pivot="programming-language-java"  
 > [!NOTE]
-> Ha a Maven nem az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a Java-fejlesztőknek szóló hasonló oktatóanyagokat a [Gradle](/azure/azure-functions/functions-create-first-java-gradle), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [vs Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)használatával.
+> Ha a Maven nem az Ön által előnyben részesített fejlesztői eszköz, tekintse meg a Java-fejlesztőknek szóló hasonló oktatóanyagokat a [Gradle](/azure/azure-functions/functions-create-first-java-gradle), a [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) és a [Visual Studio Code](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-java)használatával.
 ::: zone-end  
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]

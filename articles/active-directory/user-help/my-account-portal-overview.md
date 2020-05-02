@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 01/15/2020
+ms.date: 04/20/2020
 ms.author: curtand
-ms.openlocfilehash: 4c9d421fd9ac8305c27dfa798f2869e59a04f9fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fd22f3b9d365bfee543712f680d504bb134f24d7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062455"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625697"
 ---
 # <a name="what-is-the-my-account-portal"></a>Mi az a Saját fiók portál?
 
 A **saját fiók** portálon a biztonsági adatok beállításával és kezelésével, a csatlakoztatott szervezetek és eszközök kezelésével, valamint a szervezet által használt adatok megtekintésével kezelheti a munkahelyi vagy iskolai fiókját.
 
-A fiókom **-portálon** (https://myprofile.microsoft.com)a következő böngészők bármelyikének aktuális verziójából) elérheti a következőket:
+A fiókom **-portálon** (https://myaccount.microsoft.com)a következő böngészők bármelyikének aktuális verziójából) elérheti a következőket:
 
 - Chrome
 - Microsoft Edge

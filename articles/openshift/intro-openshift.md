@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: overview
 ms.date: 04/24/2020
 ms.custom: mvc
-ms.openlocfilehash: 87126d1beca97a905f0f3b09b565c12c37a4774d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a3bdc3673474b778aa7c1003e48e215bac6d05bf
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82203913"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628520"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -32,19 +32,11 @@ A jobb biztonság és felügyelet érdekében az Azure Red Hat OpenShift lehető
 
 ## <a name="cluster-and-node"></a>Fürt és csomópont
 
-Az Azure Red Hat OpenShift-csomópontjai Azure-beli virtuális gépeken futnak. Csatlakoztathat tárterületet csomópontokhoz és podokhoz, frissíthet fürtkomponenseket, és használhat GPU-kat.
-
-## <a name="virtual-networks-and-ingress"></a>Virtuális hálózatok és bejövő forgalom
-
-A [fürt virtuális hálózatát meglévő virtuális hálózathoz is összekapcsolhatja, vagy létrehozhat egy virtuális hálózatot, amikor fürtöt hoz létre](tutorial-create-cluster.md#create-a-virtual-network-containing-two-empty-subnets).
-
-## <a name="kubernetes-certification"></a>Kubernetes-tanúsítvány
-
-Az Azure Red Hat OpenShift szolgáltatás CNCF minősítéssel rendelkezik, Kubernetes-megfelelőségként.
+Az Azure Red Hat OpenShift-csomópontjai Azure-beli virtuális gépeken futnak. A tárolót csatlakoztathatja a csomópontokhoz és a hüvelyekhez, és frissítheti a fürt összetevőit.
 
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure Red Hat OpenShift előfeltételeit:
 
 > [!div class="nextstepaction"]
-> [A fejlesztési környezet beállítása](howto-setup-environment.md)
+> [A fejlesztési környezet beállítása](tutorial-create-cluster.md)

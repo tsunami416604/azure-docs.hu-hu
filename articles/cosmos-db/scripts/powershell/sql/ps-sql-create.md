@@ -5,14 +5,14 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 03/17/2020
+ms.date: 05/01/2020
 ms.author: mjbrown
-ms.openlocfilehash: 719e2cd831a982c62ab965cd7dc8a37c4cb41265
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 434cc6df326a0028f327c6d9e2eda0d19989ca01
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80365620"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653167"
 ---
 # <a name="create-a-database-and-container-for-azure-cosmos-db---sql-api"></a>Adatbázis és tároló létrehozása a Azure Cosmos DB-SQL API-hoz
 
@@ -43,8 +43,9 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |**Azure Cosmos DB**| |
 | [Új – AzCosmosDBAccount](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbaccount) | Új Cosmos DB-fiók létrehozása. |
 | [Set-AzCosmosDBSqlDatabase](https://docs.microsoft.com/powershell/module/az.cosmosdb/set-azcosmosdbsqldatabase) | Létrehoz egy újat, vagy frissít egy meglévő Cosmos DB SQL Database. |
-| [Új – AzCosmosDBSqlUniqueKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | Létrehoz egy új Cosmos DB SQL UniqueKey objektumot. |
-| [Új – AzCosmosDBSqlUniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | Létrehoz egy új Cosmos DB SQL UniqueKeyPolicy objektumot. |
+| [Új – AzCosmosDBSqlUniqueKey](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekey) | Létrehoz egy új Cosmos DB SQL PSSqlUniqueKey objektumot, amelyet a New-AzCosmosDBSqlUniqueKeyPolicy paraméterként használ. |
+| [Új – AzCosmosDBSqlUniqueKeyPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqluniquekeypolicy) | Létrehoz egy új Cosmos DB SQL PSSqlUniqueKeyPolicy objektumot a set-AzCosmosDBSqlContainer paraméterként. |
+| [Új – AzCosmosDBSqlCompositePath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlcompositepath) | Létrehoz egy új Cosmos DB SQL PSCompositePath objektumot, amelyet a New-AzCosmosDBSqlIndexingPolicy paraméterként használ. |
 | [Új – AzCosmosDBSqlIncludedPathIndex](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpathindex) | Létrehoz egy PSIndexes típusú új objektumot, amely a set-AzCosmosDBSqlIncludedPath paraméterként használható. |
 | [Új – AzCosmosDBSqlIncludedPath](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlincludedpath) | Egy új, PSIncludedPath típusú objektumot hoz létre, amely a New-AzCosmosDBSqlIndexingPolicy paraméterként van használatban. |
 | [Új – AzCosmosDBSqlIndexingPolicy](https://docs.microsoft.com/powershell/module/az.cosmosdb/new-azcosmosdbsqlindexingpolicy) | Létrehoz egy PSSqlIndexingPolicy típusú új objektumot, amely a set-AzCosmosDBSqlContainer paraméterként használható. |

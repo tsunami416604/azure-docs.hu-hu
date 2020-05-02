@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/12/2020
-ms.openlocfilehash: 0488002352d222abb0166737f9a042060b1a1bb1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 47288c5da5b32a9f9640b1ee65c646885bf5cbab
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389426"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82653243"
 ---
 # <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -76,7 +76,7 @@ Beállíthatja a teljes folyamat **alapértelmezett számítási célját** , am
     Ha már van elérhető számítási cél, akkor kiválaszthatja a folyamat futtatásához.
 
     > [!NOTE]
-    > A tervező csak Azure Machine Learning számítási célokon futtathat kísérleteket. Más számítási célok nem jelennek meg.
+    > A tervező csak Azure Machine Learning számítási és Azure Machine Learning számítási példányokra vonatkozó célokat képes futtatni. Más számítási célok nem jelennek meg.
 
 1. Adja meg a számítási erőforrás nevét.
 

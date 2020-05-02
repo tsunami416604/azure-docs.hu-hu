@@ -1,14 +1,14 @@
 ---
 title: CIS Microsoft Azure alapítványok teljesítményteszt-mintájának vezérlői
 description: Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének leképezése a Azure Policyra.
-ms.date: 11/04/2019
+ms.date: 05/01/2020
 ms.topic: sample
-ms.openlocfilehash: ea61ae4ea05b34c785485cbb5fd39c8a772565e3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 735ab26e1f9432a87d5a0d927c64d44e680b0694
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80656968"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688114"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Javaslat a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének hozzárendelésére
 
@@ -25,7 +25,7 @@ A leképezett javaslatok többsége [Azure Policy](../../../policy/overview.md) 
 Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítségével figyelheti, ha a többtényezős hitelesítés nincs engedélyezve a privilegizált Azure Active Directory-fiókokban.
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-t engedélyezni kell az előfizetés írási engedéllyel rendelkező fiókjain
+- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
 
 ## <a name="12-ensure-that-multi-factor-authentication-is-enabled-for-all-non-privileged-users"></a>1,2 Ellenőrizze, hogy a többtényezős hitelesítés engedélyezve van-e az összes nem Kiemelt felhasználó számára
 
@@ -37,9 +37,9 @@ Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel
 
 Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá, amelyek segítenek az esetlegesen eltávolítható vendég fiókok figyelésében.
 
-- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
+- A tulajdonosi engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
 ## <a name="123-ensure-that-no-custom-subscription-owner-roles-are-created"></a>1,23 gondoskodjon arról, hogy ne hozzon létre egyéni előfizetési tulajdonosi szerepkört
 
@@ -51,7 +51,7 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozz
 
 Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a hálózatok és a virtuális gépek figyelésében, ahol a standard szintű Security Center nincs engedélyezve.
 
- - Security Center Standard díjszabási szintet kell kiválasztani
+- Security Center Standard díjszabási szintet kell kiválasztani
 
 ## <a name="22-ensure-that-automatic-provisioning-of-monitoring-agent-is-set-to-on"></a>2,2 Győződjön meg arról, hogy a figyelési ügynök automatikus kiépítés beállítása "on" értékre van állítva
 
@@ -87,20 +87,14 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít az internetre irányuló virtuális gépek biztonságában.
 
-- Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani
-
-## <a name="28-ensure-asc-default-policy-setting-monitor-web-application-firewall-is-not-disabled"></a>2,8 Az ASC alapértelmezett házirend-beállításának biztosítása a "webalkalmazási tűzfal figyelése" nem "Letiltva"
-
-Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a webalkalmazásokat futtató virtuális gépek biztonságában.
-
-- A IaaS lévő webalkalmazások NSG-szabályait meg kell erősíteni
+- Az adaptív hálózatokra vonatkozó kötési javaslatokat az internetre irányuló virtuális gépeken kell alkalmazni
 
 ## <a name="29-ensure-asc-default-policy-setting-enable-next-generation-firewallngfw-monitoring-is-not-disabled"></a>2,9 Az ASC alapértelmezett házirend-beállításának biztosítása "a következő generációs tűzfal (NGFW) figyelésének engedélyezése" nem "Letiltva"
 
 Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciókat rendel hozzá, amelyek segítenek az alhálózatok és a virtuális gépek védelméhez a hozzáférés korlátozásával. Az ezen CIS által hivatkozott Security Center szabályzat Microsoft Azure Founds benchmark ajánlását két új javaslat váltotta fel. Az alább hivatkozott szabályzatok az új ajánlásokat ismertetik.
 
 - Az alhálózatokat hálózati biztonsági csoporttal kell társítani
-- A virtuális gépeket hálózati biztonsági csoporttal kell társítani
+- Az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni
 
 ## <a name="210-ensure-asc-default-policy-setting-monitor-vulnerability-assessment-is-not-disabled"></a>2,10 az ASC alapértelmezett házirend-beállításának biztosítása "a sebezhetőségi felmérés figyelése" nem "Letiltva"
 
@@ -128,7 +122,7 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely lehetővé teszi az SQL Server-naplózás engedélyezését.
 
-- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
+- Az SQL Server naplózását engedélyezni kell
 
 ## <a name="215-ensure-asc-default-policy-setting-monitor-sql-encryption-is-not-disabled"></a>2,15 gondoskodjon az ASC alapértelmezett házirend-beállításáról: "az SQL-titkosítás figyelése" nem "Letiltva"
 
@@ -182,7 +176,7 @@ Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót re
 
 Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely lehetővé teszi az SQL Server-naplózás engedélyezését. 
 
-- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
+- Az SQL Server naplózását engedélyezni kell
 
 ## <a name="42-ensure-that-auditactiongroups-in-auditing-policy-for-a-sql-server-is-set-properly"></a>4,2 Ellenőrizze, hogy a "AuditActionGroups" az SQL Server rendszerhez tartozó naplózási szabályzatban megfelelően van-e beállítva
 
@@ -200,8 +194,8 @@ Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel
 
 Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely lehetővé teszi, hogy az SQL-kiszolgálókon és az SQL felügyelt példányain engedélyezve legyen a speciális adatbiztonság.
 
-- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
+- A speciális adatbiztonságot engedélyezni kell az SQL felügyelt példányain
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 győződjön meg arról, hogy a "veszélyforrások észlelésének típusai" értéke "all".
 
@@ -214,15 +208,15 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozz
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy a speciális adatbiztonsági értesítések megfelelően engedélyezve legyenek.
 
-- Az SQL által felügyelt példány speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
 - Az SQL Server speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
+- Az SQL által felügyelt példány speciális biztonsági beállításaiban szerepelnie kell egy e-mail-címnek a biztonsági riasztások fogadásához
 
 ## <a name="47-ensure-that-email-service-and-co-administrators-is-enabled"></a>4,7 gondoskodjon arról, hogy az "e-mail-szolgáltatás és a társ-rendszergazdák" engedélyezve legyen
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy a speciális adatbiztonsági értesítések megfelelően engedélyezve legyenek.
 
-- A rendszergazdáknak és az előfizetések tulajdonosainak szóló e-mailes értesítéseket engedélyezni kell az SQL felügyelt példány speciális biztonsági beállításaiban.
 - A rendszergazdák és az előfizetések tulajdonosainak szóló e-mail-értesítéseket engedélyezni kell az SQL Server speciális adatbiztonsági beállításaiban
+- A rendszergazdáknak és az előfizetések tulajdonosainak szóló e-mailes értesítéseket engedélyezni kell az SQL felügyelt példány speciális biztonsági beállításaiban.
 
 ## <a name="48-ensure-that-azure-active-directory-admin-is-configured"></a>4,8 ellenőrizze, hogy Azure Active Directory rendszergazda konfigurálva van-e
 
@@ -240,8 +234,8 @@ Ez a terv olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel
 
 Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy az SQL-kiszolgálók és az SQL-felügyelt példányok transzparens titkosított védelme a saját kulccsal legyen titkosítva.
 
-- A felügyelt SQL-példányok TDE-védőjét a saját kulcsával kell titkosítani
 - Az SQL Server TDE-védőt a saját kulccsal kell titkosítani
+- A felügyelt SQL-példányok TDE-védőjét a saját kulcsával kell titkosítani
 
 ## <a name="411-ensure-enforce-ssl-connection-is-set-to-enabled-for-mysql-database-server"></a>4,11 gondoskodjon arról, hogy az "SSL-kapcsolat érvényesítése" beállítás értéke "ENABLED" legyen a MySQL adatbázis-kiszolgáló számára
 
@@ -315,11 +309,83 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 - Azure Monitor az összes régióból gyűjti a tevékenység naplóit
 
+## <a name="516-ensure-the-storage-account-containing-the-container-with-activity-logs-is-encrypted-with-byok-use-your-own-key"></a>Győződjön meg arról, hogy a tárolót tartalmazó 5.1.6 a BYOK titkosítva van (a saját kulcs használata)
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy a BYOK tartalmazó Storage-fiókok titkosítva legyenek.
+
+- A BYOK rendelkező tárolót tartalmazó Storage-fióknak titkosítottnak kell lennie.
+
 ## <a name="517-ensure-that-logging-for-azure-keyvault-is-enabled"></a>Győződjön meg arról, hogy az Azure kulcstartó naplózása engedélyezve van a 5.1.7
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy a diagnosztikai naplók engedélyezve legyenek a Key vaultok számára.
 
 - A Key Vault lévő diagnosztikai naplókat engedélyezni kell
+
+## <a name="521-ensure-that-activity-log-alert-exists-for-create-policy-assignment"></a>5.2.1 Ellenőrizze, hogy létezik-e a műveletnapló riasztása a szabályzat-hozzárendelés létrehozásához
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- Egy adott házirend-művelethez léteznie kell egy műveletnapló-riasztásnak
+
+## <a name="522-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group"></a>5.2.2 Győződjön meg arról, hogy a hálózati biztonsági csoport létrehozása vagy frissítése esetén a műveletnapló riasztása létezik
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- A konkrét felügyeleti műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="523-ensure-that-activity-log-alert-exists-for-delete-network-security-group"></a>5.2.3 Ellenőrizze, hogy létezik-e a hálózati biztonsági csoport törlésére szolgáló műveletnapló riasztása
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- A konkrét felügyeleti műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="524-ensure-that-activity-log-alert-exists-for-create-or-update-network-security-group-rule"></a>Győződjön meg arról, hogy a 5.2.4 riasztás létezik a hálózati biztonsági csoport létrehozása vagy frissítése szabály számára.
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- A konkrét felügyeleti műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="525-ensure-that-activity-log-alert-exists-for-the-delete-network-security-group-rule"></a>Győződjön meg arról, hogy a 5.2.5 riasztás létezik a hálózati biztonsági csoport törlése szabályhoz
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- A konkrét felügyeleti műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="526-ensure-that-activity-log-alert-exists-for-create-or-update-security-solution"></a>Győződjön meg arról, hogy a 5.2.6-riasztás létezik a biztonsági megoldás létrehozásához vagy frissítéséhez
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- Adott biztonsági műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="527-ensure-that-activity-log-alert-exists-for-delete-security-solution"></a>Győződjön meg arról, hogy a 5.2.7 riasztás létezik a biztonsági megoldás törléséhez
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- Adott biztonsági műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="528-ensure-that-activity-log-alert-exists-for-create-or-update-or-delete-sql-server-firewall-rule"></a>5.2.8 győződjön meg arról, hogy a műveletnapló riasztása létezik a SQL Server tűzfalszabály létrehozásához vagy frissítéséhez vagy törléséhez.
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- A konkrét felügyeleti műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="529-ensure-that-activity-log-alert-exists-for-update-security-policy"></a>Győződjön meg arról, hogy a 5.2.9-riasztás létezik a biztonsági szabályzat frissítéséhez
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az adott tevékenység naplójának riasztásai léteznek.
+
+- Adott biztonsági műveletekre vonatkozóan léteznie kell egy műveletnapló-riasztásnak.
+
+## <a name="61-ensure-that-rdp-access-is-restricted-from-the-internet"></a>6,1 Ellenőrizze, hogy az RDP-hozzáférés korlátozva van-e az internetről
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy az RDP-hozzáférés korlátozott legyen.
+
+- Az internetről való RDP-hozzáférést le kell tiltani
+
+## <a name="62-ensure-that-ssh-access-is-restricted-from-the-internet"></a>6,2 Ellenőrizze, hogy az SSH-hozzáférés korlátozva van-e az internetről
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani az SSH-hozzáférés korlátozását.
+
+- Az internetről érkező SSH-hozzáférést le kell tiltani
 
 ## <a name="65-ensure-that-network-watcher-is-enabled"></a>6,5 ellenőrizze, hogy az Network Watcher engedélyezve van-e
 
@@ -349,7 +415,7 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani, hogy csak a jóváhagyott virtuálisgép-bővítmények legyenek telepítve. Ehhez a Szabályzathoz az összes jóváhagyott virtuálisgép-bővítményt megadó paraméter-tömb szükséges. Ez a házirend-kezdeményezési definíció az ügyfelek által érvényesített ajánlott alapértékeket tartalmazza. 
 
- - Csak a jóváhagyott virtuálisgép-bővítményeket kell telepíteni
+- Csak a jóváhagyott virtuálisgép-bővítményeket kell telepíteni
 
 ## <a name="75-ensure-that-the-latest-os-patches-for-all-virtual-machines-are-applied"></a>7,5 ellenőrizze, hogy az összes Virtual Machines legújabb operációsrendszer-javításait alkalmazza-e a rendszer
 
@@ -373,7 +439,15 @@ Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel h
 
 Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít biztosítani a szerepköralapú hozzáférés-vezérlést a Kubernetes Service-fürtökben lévő felügyelt engedélyekhez.
 
-- \[Előzetes\]verzió: szerepköralapú Access Control (RBAC) használata a Kubernetes-szolgáltatásokban
+- Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban
+
+## <a name="91-ensure-app-service-authentication-is-set-on-azure-app-service"></a>9,1 Ellenőrizze, hogy App Service hitelesítés be van-e állítva Azure App Service
+
+Ez a terv egy [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segítséget nyújt a app Service alkalmazások hitelesítésének biztosításához.
+
+- A hitelesítést engedélyezni kell az API-alkalmazásban
+- A hitelesítést engedélyezni kell a Function alkalmazásban
+- A hitelesítést engedélyezni kell a webalkalmazásban
 
 ## <a name="92-ensure-web-app-redirects-all-http-traffic-to-https-in-azure-app-service"></a>9,2 Ellenőrizze, hogy a webalkalmazás átirányítja-e az összes HTTP-forgalmat a HTTPS-re Azure App Service
 
@@ -434,7 +508,7 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozz
 Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozzá, amelyek segítenek biztosítani, hogy a Web Apps a Java legújabb verzióját használja.
 
 - Győződjön meg arról, hogy a Java-verzió a legújabb, ha az API-alkalmazás részeként van használatban
-- Győződjön meg arról, hogy a Java-verzió a legújabb, ha a funtion alkalmazás részeként van használatban
+- Győződjön meg arról, hogy a "Java-verzió" a legújabb, ha a Function alkalmazás részeként van használatban
 - Győződjön meg arról, hogy a Java-verzió a legújabb, ha a webalkalmazás részeként van használatban
 
 ## <a name="910-ensure-that-http-version-is-the-latest-if-used-to-run-the-web-app"></a>9,10 ellenőrizze, hogy a "HTTP-verzió" a legújabb-e, ha a webalkalmazás futtatásához használatos
@@ -444,7 +518,6 @@ Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendel hozz
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha az API-alkalmazás futtatásához használatos
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a Function app futtatásához használatos
 - Győződjön meg arról, hogy a "HTTP-verzió" a legújabb, ha a webalkalmazás futtatására használatos
-
 
 ## <a name="next-steps"></a>További lépések
 

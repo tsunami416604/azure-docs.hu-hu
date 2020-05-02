@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fd4268ecad91a023683d1d6f955178fb87d78f87
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 15bf167df52e8ef54ab45de7b7b03efdaf83672a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612843"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628316"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -103,7 +103,7 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 >[!IMPORTANT]
 >A szolgáltatással kapcsolatos problémák megelőzése érdekében javasoljuk, hogy a legtöbb esetben az URL-címek helyett a szolgáltatás címkéit használja. Az URL-címek blokkolásának feloldása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz (például Azure Active Directory).
 >
->A Windows virtuális asztal mostantól támogatja a FQDN címkét.
+>A Windows virtuális asztal mostantól támogatja a FQDN címkét. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](../firewall/protect-windows-virtual-desktop.md).
 
 A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekhez az Azure-beli virtuális gépek hozzáférhetnek:
 
