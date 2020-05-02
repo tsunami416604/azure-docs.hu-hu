@@ -225,7 +225,7 @@
               href: ../nvv3-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: NVv4 sorozat
               href: ../nvv4-series.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: GPU-illesztők beállítása
+            - name: NVIDIA GPU-illesztők beállítása
               href: n-series-driver-setup.md
             - name: AMD GPU-illesztők beállítása
               href: n-series-amd-driver-setup.md

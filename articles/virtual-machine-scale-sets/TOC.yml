@@ -109,7 +109,7 @@
           href: ../virtual-machines/windows/sizes-gpu.md
           maintainContext: true
           items:
-            - name: GPU-illesztők beállítása
+            - name: NVIDIA GPU-illesztők beállítása
               href: ../virtual-machines/windows/n-series-driver-setup.md
               maintainContext: true
         - name: Nagy teljesítményű számítás

@@ -697,6 +697,8 @@
               href: mongodb-feature-support-36.md
             - name: Vonalprotokoll-támogatás (3.2)
               href: mongodb-feature-support.md
+            - name: GYIK
+              href: mongodb-api-faq.md
         - name: Útmutatók
           items:
             - name: Útmutató a migrálást megelőző folyamatokhoz
@@ -763,6 +765,10 @@
           items:
             - name: 1 – Adatok lekérdezése
               href: tutorial-query-graph.md
+        - name: Alapelvek
+          items:
+            - name: GYIK
+              href: gremlin-api-faq.md
         - name: Útmutatók
           items:
             - name: Gráfadatok modellezése
@@ -844,6 +850,10 @@
             - name: 'F#'
               href: /dotnet/articles/fsharp/using-fsharp-on-azure/table-storage
               maintainContext: true
+        - name: Alapelvek
+          items:
+            - name: GYIK
+              href: table-api-faq.md
         - name: Útmutatók
           items:
             - name: Alkalmazások létrehozása Table API használatával

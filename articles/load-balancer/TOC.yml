@@ -36,8 +36,12 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
-    - name: Összetevők és korlátozások
-      href: concepts-limitations.md
+    - name: Összetevők
+      href: components.md
+    - name: Alapelvek
+      href: concepts.md
+    - name: Típusok
+      href: types.md
     - name: Állapotfigyelés
       items:
         - name: Állapotminták
@@ -133,6 +137,8 @@
       items:
         - name: Az Azure Load Balancer hibaelhárítása
           href: load-balancer-troubleshoot.md
+        - name: Gyakori üzembehelyezési hibák elhárítása
+          href: load-balancer-common-deployment-errors.md
 - name: Referencia
   items:
     - name: Kódminták
