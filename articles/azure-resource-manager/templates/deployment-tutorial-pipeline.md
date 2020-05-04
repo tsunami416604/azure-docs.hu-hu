@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan hozhat létre, tesztelheti és telepítheti Azu
 ms.date: 04/22/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: d1c56ce913a1b63bab90f5dd5aaada382abbf493
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dacbdbcbebbbd696c14745e055ed9f7bd7905b1d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084328"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731934"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
 
@@ -57,7 +57,7 @@ Ha nem rendelkezik GitHub-fiókkal, tekintse meg az [Előfeltételek](#prerequis
 
 1. Válassza az **új**, zöld gomb lehetőséget.
 1. A **tárház neve**mezőbe írja be az adattár nevét.  Például: **AzureRmPipeline-repo**. Ne felejtse el lecserélni bármelyik **AzureRmPipeline** a projekt nevével. Az oktatóanyagban a **nyilvános** vagy a **magánjellegű** lehetőség közül választhat. Majd válassza a **Tárház létrehozása**lehetőséget.
-1. Írja le az URL-címet. Az adattár URL- ** https://github.com/címe a következő formátum: [YourAccountName]/[YourRepositoryName]**.
+1. Írja le az URL-címet. Az adattár URL- **`https://github.com/[YourAccountName]/[YourRepositoryName]`** címe a következő:.
 
 Ezt a tárházat *távoli tárháznak*nevezzük. Ugyanannak a projektnek minden fejlesztője klónozott saját *helyi tárházát*, és egyesítheti a változtatásokat a távoli tárházban.
 
@@ -104,7 +104,7 @@ A azuredeploy. JSON hozzá lett adva a helyi tárházhoz. Ezután töltse fel a 
     ```
 
     Előfordulhat, hogy figyelmeztetést kap a LF-ről. Figyelmen kívül hagyhatja a figyelmeztetést. a **Master** a Master ág.  Általában létre kell hoznia egy ágat az egyes frissítésekhez. Az oktatóanyag leegyszerűsítése érdekében közvetlenül a Master ágat használja.
-1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL-cím: ** https://github.com/[YourAccountName]/[YourGitHubRepository]**. Ekkor megjelenik a **CreateWebApp** mappa, valamint a mappában található három fájl.
+1. Tallózással keresse meg a GitHub-tárházat egy böngészőben.  Az URL- **`https://github.com/[YourAccountName]/[YourGitHubRepository]`** cím:. Ekkor megjelenik a **CreateWebApp** mappa, valamint a mappában található három fájl.
 1. A sablon megnyitásához válassza a **linkedStorageAccount. JSON** fájlt.
 1. Kattintson a **RAW** gombra. Az URL-cím a **RAW.githubusercontent.com**-vel kezdődik.
 1. Másolja az URL-címet.  Ezt az értéket kell megadnia, amikor az oktatóanyag későbbi részében konfigurálja a folyamatot.

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 09/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71e5e13485c4a10664d98363e8e99bfd3b4f4bcf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 79038152dd40b213b92a379c4b50ddd840eb8e6c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72035704"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732537"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-netdocuments"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a NetDocuments
 
@@ -137,49 +137,48 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be a NetDocuments vállalati webhelyre rendszergazdaként.
 
-2. Nyissa meg a **rendszergazdát**.
+2. A jobb felső sarokban válassza ki a nevét>**rendszergazdaként**.
 
-3. Kattintson **a felhasználók és csoportok hozzáadása és eltávolítása**elemre.
+3. Válassza a **Security Center** lehetőséget.
    
-    ![Repository](./media/netdocuments-tutorial/ic795047.png "Adattár") (Adattár)
+    ![Repository](./media/netdocuments-tutorial/security-center.png "Security Center") (Adattár)
 
-4. Kattintson a **speciális hitelesítési beállítások konfigurálása lehetőségre**.
+4. Válassza a **speciális hitelesítés**lehetőséget.
     
-    ![Speciális hitelesítési beállítások konfigurálása](./media/netdocuments-tutorial/ic795048.png "Speciális hitelesítési beállítások konfigurálása")
+    ![Speciális hitelesítési beállítások konfigurálása](./media/netdocuments-tutorial/advance-authentication.png "Speciális hitelesítési beállítások konfigurálása")
 
-5. Az **Összevont identitás** párbeszédpanelen hajtsa végre a következő lépéseket:
+5.  Az **összevont azonosító** lapon hajtsa végre a következő lépéseket:   
    
-    ![Federated Identity](./media/netdocuments-tutorial/ic795049.png "Federated Identity")
+    ![Federated Identity](./media/netdocuments-tutorial/federated-id.png "Federated Identity")
    
     a. **Összevont identitás-kiszolgáló típusaként**válassza a **Active Directory összevonási szolgáltatások (AD FS)** lehetőséget.
-   
-    b. Kattintson a **Fájl választása**gombra, és töltse fel a letöltött metaadat-fájlt, amelyet a Azure Portal letöltött.
-   
-    c. Kattintson az **OK** gombra.
+    
+    b.  Válassza a **fájl kiválasztása**lehetőséget, hogy feltöltse a letöltött metaadat-fájlt, amelyet a Azure Portal letöltött.
+    
+    c.  Válassza a **Mentés**lehetőséget.
 
 ### <a name="create-netdocuments-test-user"></a>NetDocuments-tesztelési felhasználó létrehozása
 
-Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a NetDocuments, a NetDocuments kell kiépíteni őket.  
-NetDocuments esetén a kiépítés manuális feladat.
+Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a NetDocuments, a NetDocuments kell kiépíteni őket. NetDocuments esetén a kiépítés manuális feladat.
 
 **Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:**
 
 1. Jelentkezzen be a **NetDocuments** vállalati webhelyre rendszergazdaként.
 
-2. A felső menüben kattintson a **rendszergazda**elemre.
+2. A jobb felső sarokban válassza ki a nevét>**rendszergazdaként**.
    
-    ![Felügyelet](./media/netdocuments-tutorial/ic795051.png "Rendszergazda")
+    ![Felügyelet](./media/netdocuments-tutorial/user-admin.png "Rendszergazda")
 
-3. Kattintson **a felhasználók és csoportok hozzáadása és eltávolítása**elemre.
+3. Válassza a **Felhasználók és csoportok** elemet.
    
-    ![Repository](./media/netdocuments-tutorial/ic795047.png "Adattár") (Adattár)
+    ![Repository](./media/netdocuments-tutorial/users-groups.png "Adattár") (Adattár)
 
 4. Az **E-mail cím** szövegmezőbe írja be a kiépíteni kívánt érvényes Azure Active Directory fiók e-mail-címét, majd kattintson a **felhasználó hozzáadása**elemre.
    
-    ![E-mail-cím](./media/netdocuments-tutorial/ic795053.png "E-mail-cím")
+    ![E-mail-cím](./media/netdocuments-tutorial/user-mail.png "E-mail-cím")
    
-    >[!NOTE]
-    >A Azure Active Directory fiók tulajdonosa egy e-mailt fog kapni, amely tartalmaz egy hivatkozást, amely megerősíti a fiókot, mielőtt az aktívvá válna. A NetDocuments által biztosított egyéb NetDocuments-létrehozási eszközöket vagy API-kat használhatja Azure Active Directory felhasználói fiókok kiépítéséhez.
+    > [!NOTE]
+    > A Azure Active Directory fiók tulajdonosa egy e-mailt fog kapni, amely tartalmaz egy hivatkozást, amely megerősíti a fiókot, mielőtt az aktívvá válna. A NetDocuments által biztosított egyéb NetDocuments-létrehozási eszközöket vagy API-kat használhatja Azure Active Directory felhasználói fiókok kiépítéséhez.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
@@ -196,4 +195,3 @@ Ha a hozzáférési panelen a NetDocuments csempére kattint, automatikusan be k
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A NetDocuments kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
-

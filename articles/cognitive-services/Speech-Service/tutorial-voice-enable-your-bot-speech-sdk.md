@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: b2c119f6552773bce7bb93a503c22324278ac0bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb016ec490dc14cbde1a1cb3f34caf39e4740961
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399464"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732371"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Oktatóanyag: hang – a robot engedélyezése a Speech SDK használatával
 
@@ -178,7 +178,7 @@ A [bot Framework Emulator](https://github.com/microsoft/botframework-emulator) e
 A következő lépés az ECHO-robot üzembe helyezése az Azure-ban. A robot üzembe helyezésének néhány módja van, de ebben az oktatóanyagban a Visual studióból való közzétételre fogunk összpontosítani.
 
 > [!NOTE]
-> Azt is megteheti, hogy az [Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) és a [telepítési sablonok](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/directline-speech/csharp_dotnetcore/02.echo-bot/DeploymentTemplates)használatával is üzembe helyez egy robotot.
+> Azt is megteheti, hogy az [Azure CLI](https://docs.microsoft.com/azure/bot-service/bot-builder-deploy-az-cli) és a [telepítési sablonok](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/adaptive-dialog/csharp_dotnetcore/04.core-bot/deploymentTemplates)használatával is üzembe helyez egy robotot.
 
 1. A Visual studióból nyissa meg a Direct line Speech Channel használatára konfigurált echo-robotot:
 

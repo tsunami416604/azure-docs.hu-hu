@@ -1,6 +1,6 @@
 ---
-title: Rövid útmutató – a felhasználó hozzáférésének megtekintése az Azure-erőforrásokhoz
-description: Ebből a rövid útmutatóból megtudhatja, hogyan tekintheti meg a felhasználók vagy más rendszerbiztonsági tag hozzáférését az Azure-erőforrásokhoz szerepköralapú hozzáférés-vezérlés (RBAC) és a Azure Portal használatával.
+title: Rövid útmutató – a felhasználó hozzáférésének megtekintése az Azure-erőforrásokhoz – Azure RBAC
+description: Ebből a rövid útmutatóból megtudhatja, hogyan tekintheti meg a felhasználók vagy más rendszerbiztonsági tag hozzáférését az Azure-erőforrásokhoz az Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b23c10fc2a551b8044b208911dbc048968b06564
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9be53aa964e75bab0b90495640537fe927a5af0e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74419617"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734161"
 ---
 # <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Rövid útmutató: a felhasználó hozzáférésének megtekintése Azure-erőforrásokhoz
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) **hozzáférés-vezérlés (iam)** paneljén megtekintheti, hogy egy felhasználó vagy egy másik rendszerbiztonsági tag Hogyan férhet hozzá az Azure-erőforrásokhoz. Előfordulhat azonban, hogy csak egy adott felhasználó vagy egy másik rendszerbiztonsági tag hozzáférését kell gyorsan megtekintenie. Ennek a legegyszerűbb módja a Azure Portal **hozzáférés-ellenőrzési** funkciójának használata.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) **hozzáférés-vezérlés (iam)** paneljén megtekintheti, hogy egy felhasználó vagy egy másik rendszerbiztonsági tag Hogyan férhet hozzá az Azure-erőforrásokhoz. Előfordulhat azonban, hogy csak egy adott felhasználó vagy egy másik rendszerbiztonsági tag hozzáférését kell gyorsan megtekintenie. Ennek a legegyszerűbb módja a Azure Portal **hozzáférés-ellenőrzési** funkciójának használata.
 
 ## <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
 
@@ -54,4 +54,4 @@ A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) **hozzáféré
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal használatával](quickstart-assign-role-user-portal.md)
+> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával](quickstart-assign-role-user-portal.md)

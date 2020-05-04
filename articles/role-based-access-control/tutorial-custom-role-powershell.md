@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: egyéni szerepkör létrehozása az Azure-erőforrásokhoz az Azure PowerShell'
-description: Első lépésként hozzon létre egy egyéni szerepkört az Azure-erőforrásokhoz az oktatóanyag Azure PowerShell használatával.
+title: 'Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell – Azure RBAC'
+description: Első lépésként hozzon létre egy Azure-beli egyéni szerepkört a Azure PowerShell és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával ebben az oktatóanyagban.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/20/2019
 ms.author: rolyon
-ms.openlocfilehash: d337e31f554c0aabbb94771aa7bfca4afb19a431
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8aedc59fc34278bf84983d78bf0e9a31fe38ee93
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138283"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735589"
 ---
-# <a name="tutorial-create-a-custom-role-for-azure-resources-using-azure-powershell"></a>Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz Azure PowerShell használatával
+# <a name="tutorial-create-an-azure-custom-role-using-azure-powershell"></a>Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával
 
-Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure PowerShell-lel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy megtekintse az előfizetés felügyeleti síkja összes adatát, valamint a támogatási jegyek megnyitását is.
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ebben az oktatóanyagban egy Reader Support Tickets (Olvasó – Támogatási jegyek) nevű egyéni szerepkört fog létrehozni az Azure PowerShell-lel. Az egyéni szerepkör lehetővé teszi a felhasználó számára, hogy megtekintse az előfizetés felügyeleti síkja összes adatát, valamint a támogatási jegyek megnyitását is.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -73,7 +73,7 @@ Legegyszerűbben úgy hozhat létre egyéni szerepkört, ha egy beépített szer
 
 1. Nyissa meg a **ReaderSupportRole.json** fájlt egy tetszőleges szövegszerkesztőben.
 
-    Az alábbiakban a JSON kimenete látható. További információkat a különböző tulajdonságokról az [egyéni szerepkörökkel](custom-roles.md) foglalkozó cikkben talál.
+    Az alábbiakban a JSON kimenete látható. További információ a különböző tulajdonságokkal kapcsolatban: [Egyéni Azure-szerepkörök](custom-roles.md).
 
     ```json
     {
@@ -277,4 +277,4 @@ Egyéni szerepkör frissítéséhez módosítsa a JSON-fájlt, vagy használja a
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Egyéni szerepkörök létrehozása Azure-erőforrásokhoz az Azure PowerShell használatával](custom-roles-powershell.md)
+> [Egyéni Azure-szerepkörök létrehozása vagy frissítése Azure PowerShell használatával](custom-roles-powershell.md)

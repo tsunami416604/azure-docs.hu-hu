@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az Azure-erőforrásokhoz való hozzáférés biztosítása a RBAC és a Azure PowerShell használatával'
-description: Megtudhatja, hogyan adhat hozzá csoportos hozzáférést az Azure-erőforrásokhoz szerepköralapú hozzáférés-vezérlés (RBAC) használatával és Azure PowerShell ebben az oktatóanyagban.
+title: 'Oktatóanyag: csoport Azure-erőforrásokhoz való hozzáférésének biztosítása Azure PowerShell használatával – Azure RBAC'
+description: Ebből az oktatóanyagból megtudhatja, hogyan biztosíthat csoportos hozzáférést az Azure-erőforrásokhoz a Azure PowerShell és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 2f001e781640704cfcee161b3de75b3f4cae1423
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d72ea23b74137e7e57f892b831b0be1b4a89de5
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138235"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735521"
 ---
-# <a name="tutorial-grant-a-group-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Oktatóanyag: csoportos hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával
+# <a name="tutorial-grant-a-group-access-to-azure-resources-using-azure-powershell"></a>Oktatóanyag: csoporthoz való hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban hozzáférést biztosít egy csoport számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban hozzáférést biztosít egy csoport számára, hogy mindent megtekinthessen az előfizetésben és mindent kezelhessen egy erőforráscsoportban az Azure PowerShell használatával.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -44,7 +44,7 @@ Az oktatóanyag elvégzéséhez a következőkre van szükség:
 
 ## <a name="role-assignments"></a>Szerepkör-hozzárendelések
 
-Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik. A szerepkör-hozzárendelés három elemből áll: rendszerbiztonsági tagból, szerepkör-definícióból és hatókörből. Az oktatóanyag során a következő két szerepkör-hozzárendelést fogja elvégezni:
+Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkör-hozzárendelést. A szerepkör-hozzárendelés három elemből áll: rendszerbiztonsági tagból, szerepkör-definícióból és hatókörből. Az oktatóanyag során a következő két szerepkör-hozzárendelést fogja elvégezni:
 
 | Rendszerbiztonsági tag | Szerepkör-definíció | Hatókör |
 | --- | --- | --- |
@@ -70,7 +70,7 @@ Szerepkör hozzárendeléséhez felhasználóra, csoportra vagy szolgáltatásn�
    11111111-1111-1111-1111-111111111111 RBAC Tutorial Group
    ```
 
-Ha nem rendelkezik a csoportok létrehozásához szükséges engedélyekkel, kipróbálhatja az [oktatóanyagot: felhasználói hozzáférést biztosíthat az Azure-erőforrásokhoz a RBAC és a Azure PowerShell](tutorial-role-assignments-user-powershell.md) helyett.
+Ha nem rendelkezik a csoportok létrehozásához szükséges engedélyekkel, kipróbálhatja az [oktatóanyagot: felhasználói hozzáférést biztosíthat az Azure-erőforrásokhoz Azure PowerShell](tutorial-role-assignments-user-powershell.md) helyett.
 
 ## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -294,4 +294,4 @@ Ha törölni szeretné a jelen oktatóanyag során létrehozott erőforrásokat,
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a Azure PowerShell használatával](role-assignments-powershell.md)
+> [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](role-assignments-powershell.md)

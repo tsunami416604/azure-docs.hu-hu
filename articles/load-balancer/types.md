@@ -1,6 +1,6 @@
 ---
-title: Azure Load Balancer típusok
-description: Azure Load Balancer típusok áttekintése
+title: SKU Azure Load Balancer
+description: Azure Load Balancer SKU-áttekintés
 services: load-balancer
 documentationcenter: na
 author: asudbring
@@ -9,54 +9,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/30/2020
+ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: 31e2bf19967bb8870ee6ab75687bb3fcc37373f7
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: c7ca630b4a6a1bedeab21feacc22cd27a1a3ee7e
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629972"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734943"
 ---
-# <a name="azure-load-balancer-types"></a>Azure Load Balancer típusok
+# <a name="azure-load-balancer-skus"></a>SKU Azure Load Balancer
 
-Azure Load Balancer két típussal és két SKU-val rendelkezik.
+Azure Load Balancer két ízeket vagy SKU-t tartalmaz.
 
-## <a name="public-load-balancer"></a><a name = "publicloadbalancer"></a>Nyilvános Load Balancer
-
-A nyilvános terheléselosztó a nyilvános IP-címet és a bejövő forgalom portját a virtuális gép magánhálózati IP-címére és portjára képezi le. A Load Balancer a virtuális gépről érkező válasz felé irányuló forgalmat is leképezi. A terheléselosztási szabályok alkalmazásával adott típusú adatforgalom több virtuális gépre vagy szolgáltatásba is terjeszthető. A webkérések adatforgalmát például eloszthatja több webkiszolgáló között.
-
->[!NOTE]
->Rendelkezésre állási csoporton belül csak egy nyilvános terheléselosztó és egy belső terheléselosztó valósítható meg.
-
-Az alábbi ábra egy elosztott terhelésű végpontot mutat be a webes forgalomhoz, amely a nyilvános és a 80-as TCP-porton három virtuális gép között van megosztva. Ez a három virtuális gép egy elosztott terhelésű készlet részeit képezi.
-
-![Nyilvános terheléselosztó – példa](./media/load-balancer-overview/load-balancer.png)
-
-*Ábra: webes forgalom kiegyensúlyozása nyilvános terheléselosztó használatával*
-
-Az internetes ügyfelek a 80-as TCP-porton lévő webalkalmazás nyilvános IP-címére küldenek webszolgáltatási kéréseket. Azure Load Balancer elosztja a kérelmeket a három virtuális gép között a terheléselosztási készletben. További információ a terheléselosztó algoritmusokról: [Load Balancer – fogalmak](concepts.md).
-
-A Azure Load Balancer alapértelmezés szerint több virtuálisgép-példány között egyenlően osztja el a hálózati forgalmat. A munkamenet-affinitást is beállíthatja. További információ: [Azure Load Balancer elosztási módjának konfigurálása](load-balancer-distribution-mode.md).
-
-## <a name="internal-load-balancer"></a><a name = "internalloadbalancer"></a>Belső terheléselosztó
-
-A belső terheléselosztó a virtuális hálózaton belüli erőforrásokra osztja el a forgalmat. Az Azure korlátozza a terheléselosztásban lévő virtuális hálózatok előtér-IP-címeinek elérését. 
-
-Az előtér-IP-címeket és a virtuális hálózatokat a rendszer soha nem teszi elérhetővé közvetlenül az internetes végpontok számára. A belső üzletági alkalmazások az Azure-ban futnak, és csak az Azure-ból vagy a helyszíni erőforrásokból érhetők el.
-
-A belső terheléselosztó a következő típusú terheléselosztást teszi lehetővé:
-
-* **Virtuális hálózaton belül**: terheléselosztás a virtuális hálózatban lévő virtuális gépekről az azonos virtuális hálózatban lévő virtuális gépek készletére.
-* **Létesítmények közötti virtuális hálózat esetén**: terheléselosztás a helyszíni számítógépekről az azonos virtuális hálózatban lévő virtuális gépekre.
-* **Többrétegű alkalmazások esetén**: terheléselosztás az internetre irányuló, többrétegű alkalmazásokhoz, ahol a háttérbeli rétegek nem internetre néznek. A háttérrendszer a forgalmi terheléselosztást igényli az internetre irányuló rétegben. Lásd a következő ábrát.
-* **Üzletági alkalmazásoknál**: Terheléselosztás üzletági alkalmazásokhoz, amelyek további terheléselosztó hardverek vagy szoftverek nélkül üzemelnek az Azure-ban. Ez a forgatókönyv olyan helyszíni kiszolgálókat tartalmaz, amelyek azon számítógépek készletében találhatók, amelyeknek a forgalma elosztott.
-
-![Belső Load Balancer-példa](./media/load-balancer-overview/load-balancer.png)
-
-*Ábra: többrétegű alkalmazások terheléselosztása nyilvános és belső terheléselosztó használatával*
-
-## <a name="load-balancer-sku-comparison"></a><a name="skus"></a> Load Balancer-termékváltozatok összehasonlítása
+## <a name="sku-comparison"></a><a name="skus"></a>SKU-összehasonlítás
 
 A Load Balancer az alapszintű és a standard SKU-t is támogatja. Ezek az SKU-ket a forgatókönyvek skálázása, a funkciók és a díjszabás különbözik. Az alapszintű Load balancerrel lehetséges forgatókönyvek a standard Load Balancer használatával hozhatók létre.
 
@@ -66,7 +32,21 @@ A különbségek összehasonlításához és megértéséhez lásd az alábbi t�
 > A Microsoft a standard Load balancert javasolja.
 Az önálló virtuális gépeket, a rendelkezésre állási csoportokat és a Virtual Machine Scale-készleteket csak egy termékváltozathoz csatlakoztathatja, sosem kettőhöz egyszerre. A terheléselosztó és a nyilvános IP-cím SKU egyeznie kell, ha nyilvános IP-címekkel használja őket. A Load Balancer és a nyilvános IP-címek nem változtathatók meg.
 
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
+| | standard Load Balancer | Alapszintű Load Balancer |
+| --- | --- | --- |
+| [Háttérbeli készlet mérete](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer) | Legfeljebb 1000 példányt támogat. | Legfeljebb 300 példányt támogat. |
+| Háttérbeli készlet végpontjai | Bármely virtuális gép vagy virtuálisgép-méretezési csoport egyetlen virtuális hálózatban. | Egyetlen rendelkezésre állási csoport vagy virtuálisgép-méretezési csoport virtuális gépei. |
+| [Állapotminták](./load-balancer-custom-probe-overview.md#types) | TCP, HTTP, HTTPS | TCP, HTTP |
+| [Állapot-mintavételi leállási viselkedés](./load-balancer-custom-probe-overview.md#probedown) | A TCP-kapcsolatok egy példányon maradnak életben __, és__ az összes mintavétel le van kapcsolva. | A TCP-kapcsolatok egy példányon maradnak életben. Minden TCP-kapcsolat leáll, ha az összes mintavétel le van állítva. |
+| Rendelkezésre állási zónák | Zóna – redundáns és zónákhoz tartozó előtér a bejövő és kimenő forgalomhoz. | Nem érhető el |
+| Diagnosztika | [Többdimenziós metrikák Azure Monitor](./load-balancer-standard-diagnostics.md) | [Azure Monitor-naplók](./load-balancer-monitor-log.md) |
+| HA portok | [Belső Load Balancer számára elérhető](./load-balancer-ha-ports-overview.md) | Nem érhető el |
+| Alapértelmezés szerint biztonságos | Lezárva a bejövő folyamatokhoz, kivéve, ha a hálózati biztonsági csoport engedélyezi azt. Vegye figyelembe, hogy a VNet belső forgalma a belső terheléselosztó számára engedélyezett. | Alapértelmezés szerint megnyílik. A hálózati biztonsági csoport nem kötelező. |
+| Kimenő szabályok | [Deklaratív kimenő NAT-konfiguráció](./load-balancer-outbound-rules-overview.md) | Nem érhető el |
+| TCP alaphelyzetbe állítása üresjáratban | [Bármely szabályban elérhető](./load-balancer-tcp-reset.md) | Nem érhető el |
+| [Több előtér](./load-balancer-multivip-overview.md) | Bejövő és [kimenő](./load-balancer-outbound-connections.md) | Csak bejövő |
+| Felügyeleti műveletek | A legtöbb művelet < 30 másodperc | 60 – 90 + másodperc átlagos |
+| SLA | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nem érhető el | 
 
 További információ: [Load Balancer korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). A Standard Load Balancerről további részleteket az [áttekintés](load-balancer-standard-overview.md), a [díjszabás](https://aka.ms/lbpricing) és az [SLA](https://aka.ms/lbsla) szakaszban talál.
 

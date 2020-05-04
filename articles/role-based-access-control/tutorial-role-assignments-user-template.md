@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: felhasználói hozzáférés engedélyezése az Azure-erőforrásokhoz a RBAC és Resource Manager-sablonnal'
-description: Megtudhatja, hogyan biztosíthat felhasználói hozzáférést az Azure-erőforrásokhoz szerepköralapú hozzáférés-vezérléssel (RBAC) az oktatóanyag Azure Resource Manager sablonjának használatával.
+title: 'Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz egy Azure Resource Manager sablon használatával – Azure RBAC'
+description: Ismerje meg, hogyan biztosíthat felhasználói hozzáférést az Azure-erőforrásokhoz egy Azure Resource Manager sablonnal és Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) az oktatóanyagban.
 services: role-based-access-control,azure-resource-manager
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 05/15/2019
 ms.author: rolyon
-ms.openlocfilehash: 96ca4f65d2def5f5004388c533410f09cc2a71fa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f98b1e9c57cf9f624c5af3e59c8afd56d073dd28
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138204"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735470"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-resource-manager-template"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz az RBAC és Resource Manager-sablonnal
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-an-azure-resource-manager-template"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz Azure Resource Manager sablon használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban létrehoz egy erőforráscsoportot, és felhasználói hozzáférést biztosít a virtuális gépek létrehozásához és kezeléséhez az erőforráscsoporthoz. Ez az oktatóanyag egy Resource Manager-sablon üzembe helyezésének folyamatát ismerteti a hozzáférés biztosításához. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.authorization/allversions
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban létrehoz egy erőforráscsoportot, és felhasználói hozzáférést biztosít a virtuális gépek létrehozásához és kezeléséhez az erőforráscsoporthoz. Ez az oktatóanyag egy Resource Manager-sablon üzembe helyezésének folyamatát ismerteti a hozzáférés biztosításához. A Resource Manager-sablonok fejlesztésével kapcsolatos további információkért tekintse meg a [Resource Manager dokumentációját](/azure/azure-resource-manager/) és a [sablonra vonatkozó referenciát](/azure/templates/microsoft.authorization/allversions
 ).
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
@@ -83,4 +83,4 @@ Remove-AzResourceGroup -Name $resourceGroupName
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
+> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)

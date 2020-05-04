@@ -3,12 +3,12 @@ title: Az Azure status áttekintése | Microsoft Docs
 description: Globális nézet az Azure-szolgáltatások állapotáról
 ms.topic: overview
 ms.date: 06/11/2019
-ms.openlocfilehash: 766e9795b01c4a09916a025cba77744dea235faf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e0813ad5fde19069662c13fcba7bd81b055de2a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78898345"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732550"
 ---
 # <a name="azure-status-overview"></a>Az Azure állapotának áttekintése
 
@@ -24,9 +24,7 @@ Az Azure-állapot lap valós időben frissül az Azure-szolgáltatások állapot
 
 ## <a name="azure-status-history"></a>Azure-állapot előzményei
 
-Amíg az Azure Status (állapot) lapon mindig a legfrissebb állapotadatok láthatók, a régebbi események az [Azure status History (Azure status előzmények) lapon](https://status.azure.com/status/history/)tekinthetők meg.
-
-A 2019 novemberében közzétett eseményektől kezdve az állapot előzményei oldal a múltban legfeljebb 365 nappal mutatja be az eseményeket, beleértve az előzetes kiváltó okot, a mérséklést és az Azure következő lépéseit.
+Amíg az Azure Status (állapot) lapon mindig a legfrissebb állapotadatok láthatók, a régebbi események az [Azure status History (Azure status előzmények) lapon](https://status.azure.com/status/history/)tekinthetők meg. A History (előzmények) oldal a november 20-án, a 2019-ös vagy újabb verzióban bekövetkezett incidensek összes RCAs tartalmazza, majd a határidőig – 5 éves RCA-előzményeket biztosít. A RCAs november 20. előtt a 2019 nem érhető el.
 
 ## <a name="rss-feed"></a>RSS-hírcsatorna
 

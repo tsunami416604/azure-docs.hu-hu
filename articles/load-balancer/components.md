@@ -11,18 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 532dc313a673d28ffe4fc66060d6dcb491ce866c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 4a84c43b57ec4f632a2bfabb10d112e4975249bf
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691268"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733107"
 ---
 # <a name="azure-load-balancer-components"></a>Összetevők Azure Load Balancer
 
-Azure Load Balancer számos kulcsfontosságú összetevőt tartalmaz a művelethez.  
-
-Ezek az összetevők az előfizetésben Azure Portal, Azure CLI, Azure PowerShell vagy sablonok használatával konfigurálhatók.
+Azure Load Balancer számos kulcsfontosságú összetevőt tartalmaz a művelethez. Ezek az összetevők az előfizetésben Azure Portal, Azure CLI, Azure PowerShell vagy sablonok használatával konfigurálhatók.
 
 ## <a name="frontend-ip-configurations"></a>Előtér-IP-konfigurációk
 
@@ -32,6 +30,14 @@ A terheléselosztó IP-címe. Ez a kapcsolódási pont az ügyfelek számára. E
 - **Magánhálózati IP-cím**
 
 Az IP-cím kiválasztása meghatározza a létrehozott terheléselosztó **típusát** . A magánhálózati IP-címek kiválasztása létrehoz egy belső terheléselosztó. A nyilvános IP-cím kiválasztása nyilvános Load balancert hoz létre.
+
+|  | Nyilvános terheléselosztó  | Belső terheléselosztó |
+| ---------- | ---------- | ---------- |
+| Előtér-IP-konfiguráció| Nyilvános IP-cím | Magánhálózati IP-cím|
+| Leírás | A nyilvános terheléselosztó a nyilvános IP-címet és a bejövő forgalom portját a virtuális gép magánhálózati IP-címére és portjára képezi le. A Load Balancer a virtuális gépről érkező válasz felé irányuló forgalmat is leképezi. A terheléselosztási szabályok alkalmazásával a különböző típusú adatforgalmat több virtuális gépre vagy szolgáltatásra is terjesztheti. A webkérések adatforgalmát például eloszthatja több webkiszolgáló között.| A belső terheléselosztó a virtuális hálózaton belüli erőforrásokra osztja el a forgalmat. Az Azure korlátozza a hozzáférést egy elosztott virtuális hálózat előtér-IP-címeihez. Az előtér-IP-címeket és a virtuális hálózatokat a rendszer soha nem teszi elérhetővé közvetlenül az internetes végpontok számára. A belső üzletági alkalmazások az Azure-ban futnak, és csak az Azure-ból vagy a helyszíni erőforrásokból érhetők el. |
+| Támogatott SKU-i | Alapszintű, standard | Alapszintű, standard |
+
+![Rétegű terheléselosztó – példa](./media/load-balancer-overview/load-balancer.png)
 
 ## <a name="backend-pool"></a>A háttérkészlet
 

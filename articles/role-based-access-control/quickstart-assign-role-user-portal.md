@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal '
-description: Ebből az oktatóanyagból megtudhatja, hogyan biztosíthat felhasználói hozzáférést az Azure-erőforrásokhoz a Azure Portal szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+title: 'Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal-Azure RBAC használatával'
+description: Ebből az oktatóanyagból megtudhatja, hogyan biztosíthat felhasználói hozzáférést az Azure-erőforrásokhoz a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/22/2019
 ms.author: rolyon
-ms.openlocfilehash: 6281c9a1818a3b46ac4f7a62f8ae76668db56887
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e70a3a1eedbc56754ad46fd99dddc0c7a3a6cf2f
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77138090"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735844"
 ---
-# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure Portal használatával
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-the-azure-portal"></a>Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a Azure Portal használatával
 
-A [szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban felhasználói hozzáférést biztosít a virtuális gépek egy erőforráscsoporthoz való létrehozásához és kezeléséhez.
+Az Azure [szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) az Azure-erőforrásokhoz való hozzáférés kezelésének módja. Ebben az oktatóanyagban felhasználói hozzáférést biztosít a virtuális gépek egy erőforráscsoporthoz való létrehozásához és kezeléséhez.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -58,7 +58,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létrehozásával történik.
+Az Azure RBAC a hozzáférés biztosításához létre kell hoznia egy szerepkör-hozzárendelést.
 
 1. Az **erőforráscsoportok**listájában kattintson az új **RBAC-Resource-Group** erőforráscsoport elemre.
 
@@ -88,7 +88,7 @@ Az RBAC-ben a hozzáférés biztosítása egy szerepkör-hozzárendelés létreh
 
 ## <a name="remove-access"></a>Hozzáférés eltávolítása
 
-Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést kell eltávolítania.
+Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szerepkör-hozzárendelést.
 
 1. A szerepkör-hozzárendelések listájában vegyen fel egy pipát a felhasználó mellett a virtuális gép közreműködői szerepkörével.
 
@@ -115,4 +115,4 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
+> [Oktatóanyag: felhasználói hozzáférés biztosítása az Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-role-assignments-user-powershell.md)
