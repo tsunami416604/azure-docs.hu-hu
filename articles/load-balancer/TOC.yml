@@ -40,8 +40,6 @@
       href: components.md
     - name: Alapelvek
       href: concepts.md
-    - name: Típusok
-      href: types.md
     - name: Állapotfigyelés
       items:
         - name: Állapotminták
