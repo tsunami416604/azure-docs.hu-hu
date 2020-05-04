@@ -76,6 +76,8 @@
           href: ha-setup-with-stonith.md
         - name: Az operációs rendszer biztonsági mentése II. típusú termékváltozatokhoz
           href: os-backup-type-ii-skus.md
+        - name: A Kdump engedélyezése a HANA nagyméretű példányaihoz
+          href: hana-large-instance-enable-kdump.md
         - name: HANA nagyméretű példányainak operációsrendszer-frissítése
           href: os-upgrade-hana-large-instance.md
         - name: SMT-kiszolgáló beállítása SUSE Linuxhoz

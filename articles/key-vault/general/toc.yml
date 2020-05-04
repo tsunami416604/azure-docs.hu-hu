@@ -48,6 +48,8 @@
       href: authentication-requests-and-responses.md
     - name: Az Azure Key Vaultra vonatkozó szabályozási irányelvek
       href: overview-throttling.md
+    - name: Az Azure Key Vault rendelkezésre állása és redundanciája
+      href: disaster-recovery-guidance.md
     - name: Virtuális hálózati szolgáltatásvégpontok az Azure Key Vaulthoz – Azure Key Vault
       href: overview-vnet-service-endpoints.md
 - name: Útmutatók
@@ -92,6 +94,10 @@
           href: soft-delete-cli.md
         - name: Helyreállítható törlés használata PowerShellel
           href: soft-delete-powershell.md
+    - name: A Key Vault áthelyezése
+      items:
+        - name: A Key Vault áthelyezése egy másik régióba
+          href: keyvault-moveregion.md
     - name: Hibaelhárítás
       items:
         - name: Kulcstartó bérlőazonosítójának módosítása egy előfizetés áthelyezése után

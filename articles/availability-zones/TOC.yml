@@ -8,10 +8,12 @@
   items:
     - name: Magas rendelkezésre állás az Azure-alkalmazásokhoz
       href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: Régiók és Availability Zones
+      href: az-overview.md
     - name: Rendelkezésre állási zónák dokumentációja
       items:
-        - name: Mik a rendelkezésre állási zónák?
-          href: az-overview.md
+        - name: Az Availability Zones használatát támogató régiók
+          href: az-region.md
         - name: Virtual machines (Virtuális gépek)
           items:
             - name: Linux rendszerű virtuális gépek létrehozása egy rendelkezésre állási zónában parancssori felület használatával

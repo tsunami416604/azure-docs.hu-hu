@@ -6,6 +6,10 @@
       href: overview-iot-central.md
     - name: Felhasználói felület bemutatása
       href: overview-iot-central-tour.md
+    - name: Legutóbbi frissítések
+      items:
+        - name: 2020. március
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-march-2020-updates/'
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -127,6 +131,14 @@
               href: howto-show-hide-chat.md
 - name: További források
   items:
+    - name: Legutóbbi frissítések (bármelyik lekérdezés)
+      href: 'https://azure.microsoft.com/updates/?category=iot&query=azure%20iot%20central'
+    - name: Legutóbbi frissítések (vagy lista…)
+      items:
+        - name: 2020. április
+          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
+        - name: 2020. március
+          href: 'https://azure.microsoft.com//updates/new-iot-central-pricing-plans/'
     - name: Támogatási és súgólehetőségek
       href: /azure/iot-fundamentals/iot-support-help
     - name: Iparági alkalmazássablonok

@@ -5,7 +5,7 @@
     - name: Mi az az Azure Resource Graph?
       displayName: 'Resource Manager, query language, rbac, permissions'
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Az első lekérdezés futtatása – Azure Portal
@@ -17,7 +17,10 @@
     - name: Az első lekérdezés futtatása – PowerShell
       displayName: 'module, docker, Az.ResourceGraph'
       href: first-query-powershell.md
-- name: oktatóanyagokat
+    - name: Megosztott lekérdezés üzembe helyezése – ARM-sablon
+      displayName: 'resource manager, queries'
+      href: shared-query-template.md
+- name: Oktatóanyagok
   items:
     - name: Lekérdezés létrehozása és megosztása az Azure Portalon
       displayName: 'query, portal'
@@ -62,7 +65,7 @@
       href: /dotnet/api/Microsoft.Azure.Management.ResourceGraph
     - name: .NET-hez készült Azure SDK (NuGet)
       href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.ResourceGraph/'
-    - name: Góhoz készült Azure SDK
+    - name: Azure SDK for Go
       href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/resourcegraph/mgmt/2019-04-01/resourcegraph'
     - name: Javához készült Azure SDK
       href: /java/api/overview/azure/resourcegraph/management?view=azure-java-stable
@@ -78,6 +81,8 @@
       href: /rest/api/azure-resourcegraph/
     - name: OpenAPI
       href: 'https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/stable/2019-04-01'
+    - name: Resource Manager-sablonok
+      href: /azure/templates/microsoft.resourcegraph/allversions
     - name: Microsoft Graph-táblák és -erőforrástípusok
       href: ./reference/supported-tables-resources.md
 - name: További források

@@ -4,59 +4,69 @@
   items:
     - name: AZ Azure Red Hat OpenShift bemutatása
       href: intro-openshift.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
-    - name: Azure Red Hat OpenShift-fürt létrehozása és felügyelete
-      items:
-        - name: 1 – Azure Red Hat OpenShift-fürt létrehozása
-          href: tutorial-create-cluster.md
-        - name: 2 – Azure Red Hat OpenShift-fürt skálázása
-          href: tutorial-scale-cluster.md
-        - name: 3 – Azure Red Hat OpenShift-fürt törlése
-          href: tutorial-delete-cluster.md
-- name: Fürtfelügyelet
-  items:
-    - name: Azure Red Hat OpenShift-fürtfelügyelet
-      items:
-        - name: 1 – Azure Red Hat OpenShift-fürtfelügyeleti szerepkör
-          href: cluster-administration-cluster-admin-role.md
-        - name: 2 – Biztonsági környezet korlátozásainak kezelése
-          href: cluster-administration-security-context-constraints.md
+    - name: 1 – Azure Red Hat OpenShift 4-fürt létrehozása
+      href: tutorial-create-cluster.md
+    - name: 2 – Csatlakozás Azure Red Hat OpenShift 4-fürthöz
+      href: tutorial-connect-cluster.md
+    - name: 3 – Azure Red Hat OpenShift 4-fürt törlése
+      href: tutorial-delete-cluster.md
 - name: Útmutatók
   expanded: true
   items:
-    - name: Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
-      href: howto-setup-environment.md
-      expanded: true
+    - name: Privát Azure Red Hat OpenShift 4-fürt létrehozása
+      href: create-private-cluster.md
+    - name: DNS-továbbítás konfigurálása Azure Red Hat OpenShift 4-fürthöz
+      href: dns-forwarding.md
+    - name: Azure Active Directory-hitelesítés konfigurálása Azure Red Hat OpenShift 4-fürthöz
       items:
-        - name: Azure AD-bérlő létrehozása
-          href: howto-create-tenant.md
-        - name: Azure AD-alkalmazásobjektum és -felhasználó létrehozása
-          href: howto-aad-app-configuration.md
-    - name: Azure Red Hat OpenShift 4.3 (előzetes verzió)
+        - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (CLI)
+          href: configure-azure-ad-cli.md
+        - name: Az Azure Active Directory-fiókon alapuló hitelesítés konfigurálása (portál)
+          href: configure-azure-ad-ui.md
+    - name: Monitorozás és naplózás az Azure Red Hat OpenShift 4-hez
       items:
-        - name: Azure Red Hat OpenShift 4.3-fürt létrehozása
-          href: howto-using-azure-redhat-openshift.md
-        - name: Az Azure Monitor beállítása az Azure Red Hat OpenShift 4.3-hoz
-          href: howto-azure-monitor-v4.md
-    - name: Különálló Prometheus üzembe helyezése Azure Red Hat OpenShift-fürtön
-      href: howto-deploy-prometheus.md
-    - name: Projektek kezelése egy Azure Red Hat OpenShift-fürtben
-      href: howto-manage-projects.md
-    - name: Privát Azure Red Hat OpenShift-fürt létrehozása
-      href: howto-create-private-cluster.md
-    - name: Monitorozás és naplózás
-      items:
-        - name: Tárolókhoz készült Azure Monitor (előzetes verzió)
+        - name: Azure Monitor az Azure Red Hat OpenShift 4-ben lévő tárolókhoz (előzetes verzió)
           items:
-            - name: A Tárolókhoz készült Azure Monitor konfigurálása
-              href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
-              maintainContext: true
-            - name: A Tárolókhoz készült Azure Monitor letiltása
-              href: ../azure-monitor/insights/container-insights-optout-openshift.md
-              maintainContext: true
-    - name: Kiemelt tárolók futtatása Azure Red Hat OpenShift-fürtön
-      href: howto-run-privileged-containers.md
+            - name: Az Azure Monitor konfigurálása az Azure Red Hat OpenShift 4-ben lévő tárolókhoz (előzetes verzió)
+              href: ../azure-monitor/insights/container-insights-azure-redhat4-setup.md
+            - name: Az Azure Monitor letiltása az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz (előzetes verzió)
+              href: ../azure-monitor/insights/container-insights-optout-openshift-v4.md
+    - name: Azure Red Hat OpenShift 3.11
+      items:
+        - name: Az Azure Red Hat OpenShift fejlesztői környezetének beállítása az Azure Red Hat OpenShift 3.11-hez
+          href: howto-setup-environment.md
+          expanded: true
+          items:
+            - name: Azure AD-bérlő létrehozása
+              href: howto-create-tenant.md
+            - name: Azure AD-alkalmazásobjektum és -felhasználó létrehozása
+              href: howto-aad-app-configuration.md
+        - name: Különálló Prometheus üzembe helyezése Azure Red Hat OpenShift 3.11-fürtön
+          href: howto-deploy-prometheus.md
+        - name: Projektek kezelése egy Azure Red Hat OpenShift 3.11-fürtben
+          href: howto-manage-projects.md
+        - name: Privát Azure Red Hat OpenShift 3.11-fürt létrehozása
+          href: howto-create-private-cluster.md
+        - name: Monitorozás és naplózás az Azure Red Hat OpenShift 3.11-hez
+          items:
+            - name: Azure Monitor az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz (előzetes verzió)
+              items:
+                - name: Az Azure Monitor konfigurálása az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz
+                  href: ../azure-monitor/insights/container-insights-azure-redhat-setup.md
+                  maintainContext: true
+                - name: Az Azure Monitor letiltása az Azure Red Hat OpenShift 3.11-ben lévő tárolókhoz
+                  href: ../azure-monitor/insights/container-insights-optout-openshift.md
+                  maintainContext: true
+        - name: Kiemelt tárolók futtatása az Azure Red Hat OpenShift 3.11-ben
+          href: howto-run-privileged-containers.md
+        - name: Fürtfelügyelet az Azure Red Hat OpenShift 3.11-ben
+          items:
+            - name: 1 – Azure Red Hat OpenShift 3.11-fürtfelügyeleti szerepkör
+              href: cluster-administration-cluster-admin-role.md
+            - name: 2 – Biztonsági környezet korlátozásainak kezelése az Azure Red Hat OpenShift 3.11-ben
+              href: cluster-administration-security-context-constraints.md
 - name: Referencia
   items:
     - name: Az Azure Red Hat OpenShift parancssori felülete
@@ -67,10 +77,12 @@
   items:
     - name: Gyakori kérdések
       href: openshift-faq.md
-    - name: Hibakeresés
+    - name: Hibaelhárítás
       href: troubleshoot.md
-    - name: Támogatott erőforrások
+    - name: Az Azure Red Hat OpenShift 3.11 támogatott erőforrásai
       href: supported-resources.md
+    - name: Az Azure Red Hat OpenShift 4.3 támogatott erőforrásai
+      href: support-policies-v4.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
     - name: A Red Hat OpenShift dokumentációja

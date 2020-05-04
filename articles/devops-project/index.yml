@@ -1,30 +1,30 @@
 ### YamlMime:Landing
-title: Az Azure DevOps Projects dokumentációja
-summary: Az Azure DevOps Projects révén a meglévő kódok és a Git-adattár segítségével, vagy valamelyik mintaalkalmazásból egyszerűen hozhat létre egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot az Azure-ban.
+title: Az Azure DevOps Starter dokumentációja
+summary: Az Azure DevOps Starterrel a meglévő kódok és a Git-adattár segítségével, vagy valamelyik mintaalkalmazásból egyszerűen hozhat létre egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamatot az Azure-ban.
 metadata:
-  title: Az Azure DevOps Projects dokumentációja
+  title: Az Azure DevOps Starter dokumentációja
   description: Használja meglévő kódját és Git-adattárát, vagy válasszon ki egy mintaalkalmazást egy folyamatos integrációs (CI) és folyamatos kézbesítési (CD) folyamat létrehozásához az Azure-ban.
   ms.service: devops-project
   ms.topic: landing-page
   author: 
   ms.author: 
-  ms.date: 03/05/2020
-  ms.openlocfilehash: f03a03b353ffa0d0562169a51a2552c2f2ab143b
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 03/24/2020
+  ms.openlocfilehash: 461d088f85f6845dfb9204381209b477b384a0be
+  ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78942464"
+  ms.lasthandoff: 04/28/2020
+  ms.locfileid: "82231466"
 landingContent:
-- title: Az Azure DevOps Projects ismertetése
+- title: Az Azure DevOps Starter ismertetése
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az az Azure DevOps Projects?
+    - text: Mi az az Azure DevOps Starter?
       url: overview.md
   - linkListType: video
     links:
-    - text: CI/CD létrehozása a DevOps Projects használatával – Videó (8:53)
+    - text: CI/CD létrehozása a DevOps Starter használatával – Videó (8:53)
       url: https://channel9.msdn.com/Events/Connect/2017/T174/player/
 - title: CI/CD-folyamat létrehozása
   linkLists:

@@ -76,6 +76,8 @@
       href: user-overview.md
     - name: Felhasználói profilattribútumok
       href: user-profile-attributes.md
+    - name: SSO-munkamenetek
+      href: session-overview.md
 - name: Útmutatók
   items:
     - name: Alkalmazásintegráció
@@ -335,8 +337,8 @@
                       href: phone-factor-technical-profile.md
                     - name: REST
                       href: restful-technical-profile.md
-                    - name: SAML
-                      href: saml-technical-profile.md
+                    - name: SAML-identitásszolgáltató
+                      href: saml-identity-provider-technical-profile.md
                     - name: SAML-jogkivonatkiállító
                       href: saml-issuer-technical-profile.md
                     - name: Önellenőrzött

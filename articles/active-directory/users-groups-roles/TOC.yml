@@ -155,9 +155,9 @@
           href: directory-assign-admin-roles.md
         - name: Szerepkörök megtekintése és hozzárendelése
           href: directory-manage-roles-portal.md
-        - name: Egyéni szerepkör
+        - name: Egyéni szerepkörök
           items:
-            - name: Egyéni szerepkör
+            - name: Egyéni szerepkörök
               href: roles-custom-overview.md
             - name: Egyéni szerepkör létrehozása
               href: roles-create-custom.md

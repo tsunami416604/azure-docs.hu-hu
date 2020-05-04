@@ -1,10 +1,10 @@
-- name: Az Azure DevOps Projects dokumentációja
+- name: Az Azure DevOps Starter dokumentációja
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Mi az az Azure DevOps Projects?
+    - name: Mi az az Azure DevOps Starter?
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: .NET
@@ -28,9 +28,9 @@
     - name: Indítás
       href: /azure/devops-project/azure-devops-project-go
       maintainContext: true
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
-    - name: 1 – GitHub és DevOps Projects
+    - name: 1 – GitHub és DevOps Starter
       href: azure-devops-project-github.md
       maintainContext: true
     - name: 2 – Üzembe helyezés virtuális gépeken

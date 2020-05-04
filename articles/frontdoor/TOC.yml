@@ -4,6 +4,8 @@
   items:
     - name: Mi az az Azure Front Door?
       href: front-door-overview.md
+    - name: Az Azure Front Door újdonságai
+      href: front-door-whats-new.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -17,6 +19,8 @@
       href: front-door-custom-domain-https.md
     - name: Geoszűrési szabályzat beállítása a frontdoorhoz
       href: front-door-tutorial-geo-filtering.md
+    - name: Szabálymotor beállítása
+      href: front-door-tutorial-rules-engine.md
 - name: Példák
   items:
     - name: Resource Manager-sablonok
@@ -53,6 +57,12 @@
       href: front-door-url-redirect.md
     - name: Helyettesítő karaktert tartalmazó tartomány
       href: front-door-wildcard-domain.md
+    - name: Szabálymotor
+      href: front-door-rules-engine.md
+    - name: Szabálymotor egyezési feltételei
+      href: front-door-rules-engine-match-conditions.md
+    - name: A szabálymotor műveletei
+      href: front-door-rules-engine-actions.md
 - name: Útmutatók
   items:
     - name: Forgalom átirányítása

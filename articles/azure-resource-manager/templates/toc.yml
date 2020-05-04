@@ -291,7 +291,7 @@
       items:
         - name: Minden függvény
           href: template-functions.md
-        - name: Tömb- és objektumfüggvények
+        - name: Tömb függvények
           href: template-functions-array.md
         - name: Összehasonlító függvények
           href: template-functions-comparison.md
@@ -303,6 +303,8 @@
           href: template-functions-logical.md
         - name: Numerikus függvények
           href: template-functions-numeric.md
+        - name: Objektumfüggvények
+          href: template-functions-object.md
         - name: Erőforrásfüggvények
           href: template-functions-resource.md
         - name: Sztringfüggvények

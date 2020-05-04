@@ -167,6 +167,10 @@
               href: concepts-hyperscale-firewall-rules.md
             - name: Az SSL konfigurálása
               href: concepts-hyperscale-ssl-connection-security.md
+        - name: Az üzletmenet folytonossága
+          items:
+            - name: Biztonsági mentés és visszaállítás
+              href: concepts-hyperscale-backup.md
         - name: Figyelés és hangolás
           items:
             - name: Figyelés és hangolás
@@ -273,6 +277,8 @@
               href: howto-data-encryption-portal.md
             - name: Azure CLI
               href: howto-data-encryption-cli.md
+            - name: Adattitkosítás ellenőrzése
+              href: howto-data-encryption-validation.md
         - name: Kiszolgáló újraindítása
           items:
             - name: Azure Portal

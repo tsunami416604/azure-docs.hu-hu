@@ -43,6 +43,8 @@
       href: analysis-services-long-operations.md
     - name: Támogatott adatforrások
       href: analysis-services-datasource.md
+    - name: Hálózati kapcsolat – gyakori kérdések
+      href: analysis-services-network-faq.md
 - name: Használati útmutató
   items:
     - name: Kiszolgáló

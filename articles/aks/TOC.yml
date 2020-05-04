@@ -252,7 +252,7 @@
         - name: Tárolóadatok megtekintése valós időben
           href: ../azure-monitor/insights/container-insights-livedata-overview.md
           maintainContext: true
-    - name: Windows Server-tárolók használata (előzetes verzió)
+    - name: Windows Server-tárolók használata
       items:
         - name: AKS-fürt létrehozása
           href: windows-container-cli.md

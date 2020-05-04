@@ -42,6 +42,10 @@
       href: spring-cloud-quotas.md
     - name: Azure Spring Cloud-metrikák ismertetése
       href: spring-cloud-concept-metrics.md
+    - name: Az Azure Spring Cloud Service biztonsági vezérlői
+      href: spring-cloud-concept-security-controls.md
+    - name: Az Azure Spring Cloud alkalmazásállapotainak ismertetése
+      href: spring-cloud-concept-app-status.md
     - name: Vészhelyreállítás megtervezése
       href: disaster-recovery.md
 - name: Útmutatók
