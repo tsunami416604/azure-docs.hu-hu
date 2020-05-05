@@ -1,5 +1,5 @@
 ---
-title: Nem lehet regisztrálni új Azure-fiókot
+title: Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 description: Azon problémák megoldása, amelyek egy új fiók a Microsoft Azure Portal Fiókközpontjában történő regisztrálása során merülnek fel.
 services: cost-management-billing
 author: v-miegge
@@ -9,20 +9,23 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: e8536555e3763674a2c018182e70f8d50e11556b
-ms.sourcegitcommit: d791f8f3261f7019220dd4c2dbd3e9b5a5f0ceaf
+ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
+ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/18/2020
-ms.locfileid: "81641737"
+ms.lasthandoff: 04/24/2020
+ms.locfileid: "82133172"
 ---
-# <a name="troubleshoot-issues-when-you-sign-up-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
+# <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 
 Előfordulhat, hogy problémába ütközik, amikor új fiókot próbál meg regisztrálni a Microsoft Azure Portalon vagy az Azure Fiókközpontban. A probléma elhárítása előtt ellenőrizze az alábbiakat:
 
 - Az Azure-fiók profiljában megadott adatok (például a kapcsolattartási e-mail-cím, a postai cím és a telefonszám) helyesek.
 - A hitelkártyaadatok helyesek.
 - Ugyanezekkel az adatokkal még nem hozott létre Microsoft-fiókot.
+
+> [!NOTE]
+> Ha már rendelkezik fiókkal, és bejelentkezési problémák elhárításával kapcsolatban van szüksége útmutatásra, tekintse meg [Az Azure-előfizetés bejelentkezési hibáinak elhárítása](https://docs.microsoft.com/azure/cost-management-billing/manage/troubleshoot-sign-in-issue) című cikket.
 
 ## <a name="resolutions"></a>Megoldások
 
