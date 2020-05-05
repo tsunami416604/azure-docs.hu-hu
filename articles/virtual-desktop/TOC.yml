@@ -1,22 +1,20 @@
-- name: Windows Virtual Desktop
+- name: A Windows Virtual Desktop 2020. tavaszi kiadása
   href: index.yml
 - name: Áttekintés
   items:
     - name: Mit takar a Windows Virtual Desktop?
       href: overview.md
+    - name: 2019. őszi kibocsátási megjegyzések
+      href: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
 - name: Oktatóanyagok
   items:
-    - name: 1. Bérlő létrehozása a Windows Virtual Desktopon
-      href: tenant-setup-azure-active-directory.md
-    - name: 2. Szolgáltatásnevek és szerepkör-hozzárendelések létrehozása a PowerShell-lel
-      href: create-service-principal-role-powershell.md
-    - name: 3. Gazdagépkészlet létrehozása az Azure Marketplace használatával
+    - name: 1. Gazdagépcsoport létrehozása az Azure Portalon
       href: create-host-pools-azure-marketplace.md
-    - name: 4. Alkalmazáscsoportok kezelése
+    - name: 2. Alkalmazáscsoportok kezelése
       href: manage-app-groups.md
-    - name: 5. Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
+    - name: 3. Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
       href: create-validation-host-pool.md
-    - name: 6. Szolgáltatásriasztások beállítása
+    - name: 4. Szolgáltatásriasztások beállítása
       href: set-up-service-alerts.md
 - name: Használati útmutató
   items:
@@ -32,18 +30,18 @@
           href: connect-macos.md
         - name: Kapcsolódás az iOS-ügyfélhez
           href: connect-ios.md
+    - name: A PowerShell-modul beállítása
+      href: powershell-module.md
     - name: Gazdagépkészlet és munkamenetgazdák létrehozása
       items:
-        - name: Azure Resource Manager-sablon
-          href: create-host-pools-arm-template.md
         - name: PowerShell
           href: create-host-pools-powershell.md
-        - name: Windows 7 rendszerű virtuális gép üzembe helyezése
-          href: deploy-windows-7-virtual-machine.md
         - name: GPU-alapú munkamenetgazda üzembe helyezése
           href: configure-vm-gpu.md
         - name: Meglévő gazdagépkészlet kibontása
           href: expand-existing-host-pool.md
+        - name: Alkalmazáscsoportok kezelése a PowerShell-lel
+          href: manage-app-groups-powershell.md
     - name: Profiltároló létrehozása
       items:
         - name: VM-alapú fájlmegosztás használata
@@ -68,20 +66,10 @@
           href: set-up-customize-master-image.md
         - name: Az Office telepítése egy fő virtuálisgép-rendszerképre
           href: install-office-on-wvd-master-image.md
-    - name: Munkamenet-gazdagépek automatikus skálázása
-      href: set-up-scaling-script.md
     - name: Csatorna testreszabása
       href: customize-feed-for-virtual-desktop-users.md
-    - name: A felügyeleti eszköz üzembe helyezése
-      items:
-        - name: Azure Resource Manager-sablon
-          href: manage-resources-using-ui.md
-        - name: PowerShell
-          href: manage-resources-using-ui-powershell.md
     - name: Szolgáltatásdiagnosztika használata
       items:
-        - name: A diagnosztikai eszköz üzembe helyezése
-          href: deploy-diagnostics.md
         - name: Diagnosztika használata a Log Analyticsszel
           href: diagnostics-log-analytics.md
     - name: Beépített alkalmazások közzététele
@@ -124,10 +112,6 @@
       href: troubleshoot-set-up-issues.md
     - name: Munkamenetgazda virtuális gép konfigurációja
       href: troubleshoot-vm-configuration.md
-    - name: Windows 7 rendszerű virtuális gép hibaelhárítása a Windows Virtual Desktopban
-      href: troubleshoot-windows-7-vm.md
-    - name: A Windows Virtual Desktop felügyeleti eszköz hibaelhárítása
-      href: troubleshoot-management-tool.md
     - name: Távoli asztali szolgáltatások kapcsolatai
       href: troubleshoot-service-connection.md
     - name: Távoli asztali ügyfelekkel kapcsolatos problémák
@@ -140,10 +124,6 @@
   items:
     - name: Linux-támogatás
       href: linux-overview.md
-    - name: PowerShell
-      href: /powershell/windows-virtual-desktop/overview
-    - name: REST API
-      href: /rest/api/virtual-desktop/
     - name: Támogatott RDP-fájlbeállítások
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context'
     - name: Hálózati útmutató

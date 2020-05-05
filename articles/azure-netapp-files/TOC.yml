@@ -23,10 +23,10 @@
       items:
         - name: Az Azure NetApp Files teljesítményével kapcsolatos szempontok
           href: azure-netapp-files-performance-considerations.md
-        - name: Az Azure NetApp Files teljesítményteszt-eredményei
-          href: azure-netapp-files-performance-benchmarks.md
         - name: Az Azure NetApp Files teljesítménytesztjével kapcsolatos javaslatok
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Teljesítménytesztek Linuxhoz
+          href: performance-benchmarks-linux.md
         - name: Az SMB-teljesítménnyel kapcsolatos gyakori kérdések
           href: azure-netapp-files-smb-performance.md
     - name: Az Azure NetApp Files költségmodellje
@@ -37,10 +37,12 @@
       items:
         - name: Megoldásarchitektúrák az Azure NetApp Filesszal
           href: azure-netapp-files-solution-architectures.md
-        - name: Az Azure NetApp Files Oracle Database-szel való használatának előnyei
-          href: solutions-benefits-azure-netapp-files-oracle-database.md
-        - name: Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
-          href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
+        - name: Adott megoldások
+          items:
+            - name: Az Azure NetApp Files Oracle Database-szel való használatának előnyei
+              href: solutions-benefits-azure-netapp-files-oracle-database.md
+            - name: Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
+              href: solutions-benefits-azure-netapp-files-electronic-design-automation.md
     - name: Gyakori kérdések az Azure NetApp Filesról
       href: azure-netapp-files-faqs.md
 - name: Útmutatók

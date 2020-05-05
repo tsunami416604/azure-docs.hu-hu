@@ -149,6 +149,8 @@
           href: event-filtering.md
         - name: Teljesítés és újrapróbálkozás
           href: delivery-and-retry.md
+        - name: Webhook-eseménykézbesítés
+          href: webhook-event-delivery.md
     - name: Vészhelyreállítás
       items:
         - name: Földrajzi vészhelyreállítás
@@ -161,6 +163,12 @@
           href: security-authorization.md
         - name: Hálózati biztonság
           href: network-security.md
+    - name: Figyelés és hibaelhárítás
+      items:
+        - name: Diagnosztikai naplók
+          href: null
+        - name: Mérőszámok
+          href: metrics.md
 - name: Útmutatók
   items:
     - name: Privát végpontok konfigurálása (előzetes verzió)
@@ -191,12 +199,16 @@
       href: how-to-event-domains.md
     - name: Ügyféloldali feladatátvétel implementálása
       href: custom-disaster-recovery.md
+    - name: Aszinkron REST-műveletek követése
+      href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: Hibaelhárítás
       items:
-        - name: Egy témakör diagnosztikai naplóinak engedélyezése
+        - name: Diagnosztikai naplók engedélyezése
           href: enable-diagnostic-logs-topic.md
         - name: Hibák elhárítása
           href: troubleshoot-errors.md
+        - name: Hibaelhárítás – Előfizetés ellenőrzése
+          href: troubleshoot-subscription-validation.md
         - name: Eseménykézbesítés figyelése
           href: monitor-event-delivery.md
 - name: Referencia

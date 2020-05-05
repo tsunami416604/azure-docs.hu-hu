@@ -1,14 +1,15 @@
-- name: Az Azure biztonsági teljesítménytesztjei
+- name: Azure-biztonsági teljesítményteszt
   href: index.yml
 - name: Introduction (Bevezetés)
   href: introduction.md
 - name: Biztonsági vezérlők
+  expanded: true
   items:
     - name: Az Azure-beli biztonsági vezérlők áttekintése
       href: overview.md
     - name: Hálózati biztonság
       href: security-control-network-security.md
-    - name: Naplózás és monitorozás
+    - name: Naplózás és figyelés
       href: security-control-logging-monitoring.md
     - name: Identitás- és hozzáférés-vezérlés
       href: security-control-identity-access-control.md
@@ -16,7 +17,7 @@
       href: security-control-data-protection.md
     - name: Biztonságirés-kezelés
       href: security-control-vulnerability-management.md
-    - name: Leltár-és eszközfelügyelet
+    - name: Leltár- és eszközfelügyelet
       href: security-control-inventory-asset-management.md
     - name: Biztonságos konfiguráció
       href: security-control-secure-configuration.md
@@ -28,9 +29,9 @@
       href: security-control-incident-response.md
     - name: Behatolási tesztek és Red Team-gyakorlatok
       href: security-control-penetration-tests-red-team-exercises.md
-- name: Biztonsági alapkonfigurációk
+- name: Biztonsági alapkonfigurációk az Azure-hoz
   items:
-    - name: Az Azure biztonsági alapkonfigurációinak áttekintése
+    - name: Az Azure-hoz készült biztonsági alapkonfigurációk áttekintése
       href: security-baselines-overview.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md

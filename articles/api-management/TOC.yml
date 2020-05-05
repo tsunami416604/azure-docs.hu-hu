@@ -8,14 +8,14 @@
       href: api-management-features.md
     - name: AKS-ben üzembe helyezett mikroszolgáltatások kezelése
       href: api-management-kubernetes.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Példány létrehozása – Portal
       href: get-started-create-service-instance.md
     - name: Példány létrehozása – PowerShell
       href: powershell-create-service-instance.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: 1 – Az első API importálása
       href: import-and-publish.md
@@ -37,7 +37,7 @@
       href: api-management-howto-developer-portal-customize.md
 - name: Példák
   items:
-    - name: Szabályzatok
+    - name: Házirendek
       href: policy-samples.md
     - name: Azure PowerShell
       href: powershell-samples.md
@@ -45,7 +45,7 @@
   items:
     - name: Terminológia
       href: api-management-terminology.md
-    - name: Szabályzatok
+    - name: Házirendek
       items:
         - name: Áttekintés
           href: api-management-howto-policies.md
@@ -101,10 +101,12 @@
           href: api-management-howto-deploy-multi-region.md
         - name: Saját üzemeltetésű átjáró üzembe helyezése
           href: api-management-howto-provision-self-hosted-gateway.md
+        - name: Saját üzemeltetésű átjáró üzembe helyezése az Azure Kubernetes Service-ben
+          href: how-to-deploy-self-hosted-gateway-azure-kubernetes-service.md
         - name: Saját üzemeltetésű átjáró üzembe helyezése Kubernetesben
-          href: api-management-howto-deploy-self-hosted-gateway-to-k8s.md
+          href: how-to-deploy-self-hosted-gateway-kubernetes.md
         - name: Saját üzemeltetésű átjáró üzembe helyezése Dockerben
-          href: api-management-howto-deploy-self-hosted-gateway-to-docker.md
+          href: how-to-deploy-self-hosted-gateway-docker.md
         - name: Egyéni tartomány konfigurálása saját üzemeltetésű átjáróhoz
           href: api-management-howto-configure-custom-domain-gateway.md
     - name: Gyorsítótár
@@ -209,12 +211,20 @@
           href: api-management-transformation-policies.md
     - name: Kezelés éles környezetben
       items:
+        - name: API-k exportálása a Power Platformra
+          href: export-api-power-platform.md
         - name: Csoportok kezelése
           href: api-management-howto-create-groups.md
         - name: IP-címek lekérése
           href: api-management-howto-ip-addresses.md
         - name: Eseménynaplózás az Azure Event Hubs segítségével
           href: api-management-howto-log-event-hubs.md
+        - name: Kérések naplózása az Azure Application Insights segítségével
+          href: api-management-howto-app-insights.md
+        - name: Felhőbeli metrikák és naplók konfigurálása saját üzemeltetésű átjáróhoz
+          href: how-to-configure-cloud-metrics-logs.md
+        - name: Helyi metrikák és naplók konfigurálása saját üzemeltetésű átjáróhoz
+          href: how-to-configure-local-metrics-logs.md
         - name: Kérések naplózása az Azure Application Insights segítségével
           href: api-management-howto-app-insights.md
         - name: Vészhelyreállítás biztonsági mentéssel és visszaállítással

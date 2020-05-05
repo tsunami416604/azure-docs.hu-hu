@@ -165,8 +165,6 @@
               href: azure-to-azure-about-networking.md
             - name: A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
               href: azure-to-azure-customize-networking.md
-            - name: Mobilitási szolgáltatás proxybeállításainak konfigurálása
-              href: configure-mobility-service-proxy-settings.md
             - name: Hálózatleképezés beállítása és IP-cím megőrzése feladatátvétel után
               href: azure-to-azure-network-mapping.md
             - name: IP-cím megőrzése feladatátvétel után – példák
@@ -191,6 +189,8 @@
               href: azure-to-azure-how-to-reprotect.md
             - name: Az Azure-beli virtuális gépek vészhelyreállításának beállítása Azure-ba történő migrálás után
               href: azure-to-azure-replicate-after-migration.md
+            - name: Zónák közötti vészhelyreállítás engedélyezése
+              href: azure-to-azure-how-to-enable-zone-to-zone-disaster-recovery.md
         - name: Kezelés
           items:
             - name: Az Azure-beli virtuális gépek mobilitási szolgáltatásának frissítése
@@ -241,7 +241,7 @@
               href: vmware-azure-set-up-replication.md
             - name: A mobilitási szolgáltatás telepítése
               items:
-                - name: Tudnivalók a mobilitási szolgáltatás telepítéséről
+                - name: Mobilitási szolgáltatások áttekintése és telepítése
                   href: vmware-physical-mobility-service-overview.md
                 - name: Előkészületek a leküldéses telepítéshez
                   href: vmware-azure-install-mobility-service.md

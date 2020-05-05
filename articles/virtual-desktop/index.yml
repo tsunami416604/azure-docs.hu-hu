@@ -11,12 +11,12 @@ metadata:
   author: Heidilohr
   ms.author: helohr
   ms.date: 03/06/2020
-  ms.openlocfilehash: f37b0cd68c62813dd4c642d9e45a20a91d08c31c
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 2f00d7b0b1c0bdf78a4908e945dd0f8a890ded1b
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "78898656"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82611517"
 landingContent:
 - title: Tudnivalók a Windows Virtual Desktopról
   linkLists:
@@ -24,18 +24,30 @@ landingContent:
     links:
     - text: Mit takar a Windows Virtual Desktop?
       url: overview.md
-- title: Első lépések
+- title: Ismerkedés a Windows Virtual Desktop 2020. tavaszi kiadásával
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Gazdagépcsoport létrehozása az Azure Marketplace-en
+      url: create-host-pools-azure-marketplace.md
+    - text: A Windows Virtual Desktop alkalmazáscsoportjainak kezelése
+      url: manage-app-groups.md
+    - text: Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
+      url: create-validation-host-pool.md
+    - text: Szolgáltatásriasztások beállítása
+      url: set-up-service-alerts.md
+- title: Ismerkedés a Windows Virtual Desktop 2019. őszi kiadásával
   linkLists:
   - linkListType: tutorial
     links:
     - text: Bérlő létrehozása a Windows Virtual Desktopon
-      url: tenant-setup-azure-active-directory.md
+      url: ./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md
     - text: Gazdagépcsoport létrehozása az Azure Marketplace-en
       url: create-host-pools-azure-marketplace.md
     - text: A Windows Virtual Desktop alkalmazáscsoportjainak kezelése
       url: manage-app-groups.md
     - text: Szolgáltatásnevek létrehozása és szerepkörök hozzárendelése a PowerShell-lel
-      url: create-service-principal-role-powershell.md
+      url: ./virtual-desktop-fall-2019/create-service-principal-role-powershell.md
 - title: Csatlakozás a Windows Virtual Desktophoz
   linkLists:
   - linkListType: how-to-guide

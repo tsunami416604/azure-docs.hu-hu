@@ -13,6 +13,9 @@
       href: container-instances-quickstart-portal.md
     - name: Tárolópéldány üzembe helyezése – PowerShell
       href: container-instances-quickstart-powershell.md
+    - name: Tárolópéldány üzembe helyezése – ARM-sablon
+      displayName: Resource Manager
+      href: container-instances-quickstart-template.md
 - name: Oktatóanyagok
   items:
     - name: Tárolórendszerkép létrehozása és üzembe helyezése
@@ -51,6 +54,8 @@
       href: container-instances-orchestrator-relationship.md
     - name: Biztonsági szempontok
       href: container-instances-image-security.md
+    - name: Virtuális hálózat
+      href: container-instances-virtual-network-concepts.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés
@@ -77,8 +82,6 @@
           href: container-instances-start-command.md
         - name: Parancs végrehajtása (exec)
           href: container-instances-exec.md
-        - name: Jenkins létrehozási feladat futtatása
-          href: container-instances-jenkins.md
         - name: Felügyelt identitás használata (előzetes verzió)
           href: container-instances-managed-identity.md
         - name: GPU-erőforrások használata (előzetes verzió)

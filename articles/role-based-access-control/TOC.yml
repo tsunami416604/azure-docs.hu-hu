@@ -1,9 +1,9 @@
-- name: RBAC az Azure-erőforrásokhoz – dokumentáció
+- name: Az Azure RBAC dokumentációja
   href: index.yml
   items: null
 - name: Áttekintés
   items:
-    - name: Mi az RBAC?
+    - name: Mi az az Azure RBAC?
       href: overview.md
     - name: A különböző szerepkörök ismertetése
       href: rbac-and-directory-admin-roles.md
@@ -74,7 +74,7 @@
           href: deny-assignments-powershell.md
         - name: REST API
           href: deny-assignments-rest.md
-    - name: Egyéni szerepkörök létrehozása
+    - name: Egyéni szerepkörök létrehozása vagy frissítése
       items:
         - name: Áttekintés
           href: custom-roles.md
@@ -100,7 +100,7 @@
       href: built-in-roles.md
     - name: Erőforrás-szolgáltatói műveletek
       href: resource-provider-operations.md
-    - name: RBAC-korlátozások
+    - name: Az Azure RBAC korlátai
       href: '../azure-resource-manager/management/azure-subscription-service-limits.md#role-based-access-control-limits'
     - name: Azure PowerShell
       href: /powershell/module/az.resources

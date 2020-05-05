@@ -23,6 +23,9 @@
     - name: Üzembe helyezés több címmel
       displayName: Resource Manager
       href: quick-create-multiple-ip-template.md
+    - name: Üzembe helyezés rendelkezésre állási zónákkal
+      displayName: Resource Manager
+      href: deploy-template.md
 - name: Példák
   items:
     - name: Azure PowerShell
@@ -61,8 +64,6 @@
       href: tutorial-hybrid-ps.md
     - name: Üzembe helyezés az Azure CLI-vel
       href: deploy-cli.md
-    - name: Üzembe helyezés sablon használatával
-      href: deploy-template.md
     - name: Üzembe helyezés több nyilvános IP-címmel
       href: deploy-multi-public-ip-powershell.md
     - name: Üzembe helyezés rendelkezésre állási zónákkal
@@ -75,6 +76,8 @@
       href: snat-private-range.md
     - name: IP-csoportok létrehozása
       href: create-ip-group.md
+    - name: A Windows Virtual Desktop védelme
+      href: protect-windows-virtual-desktop.md
 - name: Referencia
   items:
     - name: Azure CLI

@@ -1,9 +1,9 @@
 ### YamlMime:Landing
-title: RBAC az Azure-erőforrásokhoz – dokumentáció
-summary: A szerepköralapú hozzáférés-vezérlés (role-based access control, RBAC) egy olyan rendszer, amely lehetőséget nyújt az Azure-erőforrások hozzáférés-kezelésének finomhangolására. Az RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szüksége van.
+title: Az Azure RBAC dokumentációja
+summary: Az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) egy olyan rendszer, amely lehetőséget nyújt az Azure-erőforrások hozzáférés-kezelésének finomhangolására. Az Azure RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szükségük van.
 metadata:
-  title: Az Azure-erőforrások szerepköralapú hozzáférés-vezérlésének (RBAC) dokumentációja
-  description: Megismerkedhet a szerepköralapú hozzáférés-vezérlés (RBAC) részleteivel, amely lehetővé teszi például annak meghatározását, hogy kik férhetnek hozzá az Azure-erőforrásokhoz, mire használhatják azokat fel, és mely területekhez nyerhetnek hozzáférést.
+  title: Az Azure RBAC dokumentációja
+  description: Megismerkedhet az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) részleteivel, amely lehetővé teszi például annak meghatározását, hogy kik férhetnek hozzá az Azure-erőforrásokhoz, mire használhatják azokat fel, és mely területekhez kaphatnak hozzáférést.
   services: role-based-access-control
   ms.service: role-based-access-control
   ms.subservice: na
@@ -11,19 +11,19 @@ metadata:
   ms.collection: na
   author: rolyon
   ms.author: rolyon
-  ms.date: 08/26/2019
-  ms.openlocfilehash: e947b1ab685bcc1da5d3895e49c07d1ff56c0937
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 04/30/2020
+  ms.openlocfilehash: b2661936d82f8d167ec2ef466effcd84d0a972dd
+  ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "70968313"
+  ms.lasthandoff: 05/03/2020
+  ms.locfileid: "82733481"
 landingContent:
-- title: Az Azure-erőforrások szerepköralapú hozzáférés-vezérlésének ismertetése
+- title: Az Azure RBAC ismertetése
   linkLists:
   - linkListType: overview
     links:
-    - text: Mi az RBAC?
+    - text: Mi az az Azure RBAC?
       url: overview.md
     - text: A különböző szerepkörök ismertetése
       url: rbac-and-directory-admin-roles.md
@@ -45,7 +45,7 @@ landingContent:
       url: tutorial-role-assignments-group-powershell.md
   - linkListType: learn
     links:
-    - text: Azure-erőforrások védelme az RBAC használatával
+    - text: Azure-erőforrások védelme az Azure RBAC használatával
       url: https://docs.microsoft.com/learn/modules/secure-azure-resources-with-rbac/
 - title: Hozzáférés kezelése
   linkLists:
@@ -63,12 +63,16 @@ landingContent:
       url: role-assignments-rest.md
     - text: Sablon
       url: role-assignments-template.md
-- title: Egyéni szerepkörök létrehozása
+- title: Egyéni szerepkörök létrehozása vagy frissítése
   linkLists:
   - linkListType: overview
     links:
     - text: Egyéni szerepkörök
       url: custom-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Egyéni szerepkör létrehozása – Portal
+      url: custom-roles-portal.md
   - linkListType: tutorial
     links:
     - text: Egyéni szerepkör létrehozása – PowerShell

@@ -162,7 +162,7 @@
               href: troubleshoot/desired-state-configuration.md
             - name: Az Azure DSC-bővítmény verzióelőzményei
               href: automation-dsc-extension-history.md
-        - name: Change Tracking és Inventory
+        - name: Változáskövetés és leltár
           items:
             - name: Áttekintés
               href: change-tracking.md
@@ -178,7 +178,7 @@
                   href: automation-onboard-solutions-from-automation-account.md
                 - name: Automation-runbookból
                   href: automation-onboard-solutions.md
-            - name: A nyomon követett fájlok tartalmának megtekintése
+            - name: A változáskövetés és a leltár kezelése
               href: change-tracking-file-contents.md
             - name: Leltárkezelés virtuális gépekről
               href: automation-vm-inventory.md

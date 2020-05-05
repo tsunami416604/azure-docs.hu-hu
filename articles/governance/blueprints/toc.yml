@@ -17,6 +17,9 @@
     - name: Terv létrehozása – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
+    - name: Terv létrehozása – ARM-sablon
+      displayName: 'assign, compliance, resource manager'
+      href: ../../azure-resource-manager/templates/deploy-to-subscription.md??toc=/azure/governance/blueprints/toc.json&bc=/azure/governance/blueprints/breadcrumb/toc.json
 - name: Oktatóanyagok
   items:
     - name: Létrehozás tervmintából
@@ -32,9 +35,20 @@
       href: ./samples/index.md
     - name: Azure-biztonsági teljesítményteszt
       items:
+        - name: Áttekintés
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/index.md
         - name: Vezérlőelem-leképezés
           displayName: 'standards, azure, benchmark'
           href: ./samples/azure-security-benchmark/control-mapping.md
+        - name: Az üzembe helyezés lépései
+          displayName: 'standards, azure, benchmark'
+          href: ./samples/azure-security-benchmark/deploy.md
+    - name: Australian Government ISM PROTECTED
+      items:
+        - name: Vezérlőelem-leképezés
+          displayName: 'standards, Australian, Government, ISM, PROTECTED'
+          href: ./samples/ism-protected/control-mapping.md
     - name: Canada Federal PBMM
       items:
         - name: Áttekintés

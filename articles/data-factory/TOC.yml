@@ -675,6 +675,8 @@
           href: how-to-fixed-width.md
         - name: Hibát tartalmazó sorok kezelése
           href: how-to-data-flow-error-rows.md
+        - name: Átállás Azure SQL DB-ről CosmosDB-re
+          href: how-to-sqldb-to-cosmosdb.md
     - name: SSIS-migrálás helyszínről
       items:
         - name: SSIS-migrálás áttekintése

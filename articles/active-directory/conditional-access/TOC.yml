@@ -35,6 +35,8 @@
           href: concept-conditional-access-grant.md
         - name: Munkamenet
           href: concept-conditional-access-session.md
+    - name: Megállapítások és jelentéskészítés
+      href: howto-conditional-access-insights-reporting.md
     - name: Csak jelentési mód
       href: concept-conditional-access-report-only.md
     - name: Szolgáltatásfüggőségek

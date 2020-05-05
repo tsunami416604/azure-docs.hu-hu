@@ -4,6 +4,11 @@
   items:
     - name: Mi az az Azure Arc for Servers?
       href: ./servers/overview.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./servers/policy-samples.md
 - name: Útmutatók
   items:
     - name: Csatlakozás az Azure Archoz

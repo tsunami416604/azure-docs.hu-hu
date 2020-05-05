@@ -2,23 +2,23 @@
 title: Az Azure biztonsági teljesítménytesztjeinek dokumentációja
 summary: Az ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan védheti meg a felhőalapú megoldásait az Azure-ban.
 metadata:
-  title: Azure-biztonsági teljesítménytesztek
-  description: Az Azure biztonsági vezérlőinek teljesítménytesztje olyan javaslatokat tartalmaz, amelyek segítségével nagyobb biztonságban tudhatja alkalmazásait és adatait az Azure-ban.
+  title: Az Azure biztonsági teljesítménytesztjei
+  description: Az Azure biztonsági teljesítménytesztje olyan javaslatokat tartalmaz, amelyekkel nagyobb biztonságban tudhatja alkalmazásait és adatait az Azure-ban.
   services: security
   ms.service: security
   ms.subservice: fundamentals
-  ms.custom: security-baselines
+  ms.custom: security-benchmark
   ms.topic: landing-page
   author: msmbaldwin
   ms.author: mbaldwin
   manager: rkarlin
   ms.date: 12/23/2019
-  ms.openlocfilehash: c2b36e098314af78ca3d6f28534c3d3e97697363
-  ms.sourcegitcommit: d6e4eebf663df8adf8efe07deabdc3586616d1e4
+  ms.openlocfilehash: 7cebc4fb6e676470b46a52cf1ea62e0990e708e9
+  ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/15/2020
-  ms.locfileid: "81393840"
+  ms.lasthandoff: 04/30/2020
+  ms.locfileid: "82607748"
 landingContent:
 - title: Tudnivalók az Azure biztonsági teljesítménytesztjéről
   linkLists:
@@ -34,7 +34,7 @@ landingContent:
     links:
     - text: Hálózati biztonság
       url: security-control-network-security.md
-    - text: Naplózás és monitorozás
+    - text: Naplózás és figyelés
       url: security-control-logging-monitoring.md
     - text: Identitás- és hozzáférés-vezérlés
       url: security-control-identity-access-control.md
