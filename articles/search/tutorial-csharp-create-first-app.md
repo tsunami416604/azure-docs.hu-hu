@@ -3,19 +3,19 @@ title: C#-oktatóanyag az első alkalmazás létrehozásához
 titleSuffix: Azure Cognitive Search
 description: Megtudhatja, hogyan hozhatja létre az első C# Search-alkalmazást lépésről lépésre. Az oktatóanyagban egy, a GitHubon működő alkalmazásra mutató hivatkozás, valamint az alkalmazás teljesen új felépítésének teljes folyamata is elérhető. Az Azure Cognitive Search alapvető összetevőinek megismerése.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 2b4f67fc448d98239947fd764d4926f1d590c5e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a105766b713ce44d800391e2e943f2ac864fa0df
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121587"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780623"
 ---
-# <a name="c-tutorial-create-your-first-app---azure-cognitive-search"></a>C# oktatóanyag: az első alkalmazás létrehozása – Azure Cognitive Search
+# <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
 Megtudhatja, hogyan hozhat létre webes felületet az indexek keresési eredményeinek lekérdezéséhez és megjelenítéséhez az Azure Cognitive Search használatával. Ez az oktatóanyag egy meglévő, üzemeltetett indextel kezdődik, így a keresési oldal kiépítésére koncentrálhat. Az index fiktív szállodai adathalmazt tartalmaz. Ha már rendelkezik alapszintű oldallal, a következő leckében javíthatja a lapozást, az aspektusokat és a fajta élményt.
 

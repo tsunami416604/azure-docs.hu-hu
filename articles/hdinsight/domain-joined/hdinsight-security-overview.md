@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 492c248b9a68b39b37984b978944b4f7ef34d756
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190112"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780079"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>A vállalati biztonság áttekintése az Azure HDInsight
 
@@ -87,7 +87,7 @@ Az alábbi táblázat a biztonsági megoldások egyes típusaihoz kapcsolódó e
 | Operációs rendszer biztonsága | Fürtök létrehozása a legújabb biztonságos alapképpel | Ügyfél |
 |  | Az [operációs rendszer javításának](../hdinsight-os-patching.md) rendszeres időközönkénti ellenőrzése | Ügyfél |
 | Hálózati biztonság | [Virtuális hálózat](../hdinsight-plan-virtual-network-deployment.md) konfigurálása |
-|  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../hdinsight-plan-virtual-network-deployment.md#networktraffic) konfigurálása | Ügyfél |
+|  | A [bejövő hálózati biztonsági csoport (NSG) szabályainak](../control-network-traffic.md) konfigurálása | Ügyfél |
 |  | A [kimenő forgalom korlátozásának](../hdinsight-restrict-outbound-traffic.md) konfigurálása a tűzfallal | Ügyfél |
 | Virtualizált infrastruktúra | N/A | HDInsight (felhőalapú szolgáltató) |
 | Fizikai infrastruktúra biztonsága | N/A | HDInsight (felhőalapú szolgáltató) |

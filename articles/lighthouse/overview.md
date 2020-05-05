@@ -1,14 +1,14 @@
 ---
 title: Mi az az Azure Lighthouse?
 description: Az Azure Lighthouse lehetővé teszi, hogy a szolgáltatók felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek magasabb szintű automatizálással és hatékonysággal.
-ms.date: 04/23/2020
+ms.date: 04/30/2020
 ms.topic: overview
-ms.openlocfilehash: aea1451d995d135506fb93e3fc9e86f67227d5b8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 17e0535f50240c7ea239ae230dce90e397eadce9
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82144255"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780810"
 ---
 # <a name="what-is-azure-lighthouse"></a>Mi az az Azure Lighthouse?
 
@@ -22,7 +22,7 @@ Az Azure Lighthouse segítségével nyereségesen és hatékonyan hozhat létre 
 
 - Nagy **léptékű felügyelet**: az ügyfelek bevonása és a felhasználói erőforrások kezelésének életciklusa egyszerűbbé és méretezhető.
 - **Nagyobb láthatóság és pontosság az ügyfelek számára**: az ügyfelek jobban megtekinthetik a műveleteiket, és pontosan szabályozzák a felügyeletre delegált hatókört, beleértve a hozzáférés teljes eltávolításának lehetőségét is, az IP-cím megőrzése mellett.
-- **Átfogó és egységes platform-eszközök**: az eszközökön a legfontosabb szolgáltatói forgatókönyvek, többek között az EA, a CSP és az utólagos elszámolású licencelési modellek is elérhetők. Az új funkciók a meglévő eszközökkel, API-kkal, licencelési modellekkel és partneri programokkal, például a [felhőalapú megoldás-szolgáltatói programmal (CSP)](https://docs.microsoft.com/partner-center/csp-overview)működnek. Az Azure Lighthouse kiválasztott lehetőségei a meglévő munkafolyamatokhoz és alkalmazásokhoz integrálhatók, és a [partner-azonosító összekapcsolásával](../billing/billing-partner-admin-link-started.md)nyomon követheti az ügyfelek bevonására gyakorolt hatást.
+- **Átfogó és egységes platform-eszközök**: az eszközökön a legfontosabb szolgáltatói forgatókönyvek, többek között az EA, a CSP és az utólagos elszámolású licencelési modellek is elérhetők. Az új funkciók a meglévő eszközökkel, API-kkal, licencelési modellekkel és partneri programokkal, például a [felhőalapú megoldás-szolgáltatói programmal (CSP)](https://docs.microsoft.com/partner-center/csp-overview)működnek. Az Azure Lighthouse integrálható a meglévő munkafolyamataiba és alkalmazásaiba, és nyomon követheti az ügyfelek bevonásával kapcsolatos hatásokat a [partner azonosítójának összekapcsolásával](../billing/billing-partner-admin-link-started.md).
 
 Az Azure Lighthouse használata nem jár további költségekkel az ügyfelek Azure-erőforrásainak kezeléséhez.
 
@@ -34,7 +34,6 @@ Az Azure Lighthouse több módszert is kínál az ügyfelek részvételének és
 - **Új Azure Portali tapasztalatok**: a több-bérlős adatok megtekintése a [Azure Portal](https://portal.azure.com)új **ügyfelek** lapján. A megfelelő **szolgáltatói** panel lehetővé teszi az ügyfelek számára a szolgáltatói hozzáférés megtekintését és kezelését. További információ: [ügyfelek megtekintése és kezelése](./how-to/view-manage-customers.md) , [szolgáltatók megtekintése és kezelése](how-to/view-manage-service-providers.md).
 - **Azure Resource Manager sablonok**: könnyebben elvégezheti a felügyeleti feladatokat, beleértve az Azure-beli delegált erőforrás-kezeléshez szükséges ügyfelek bevezetését. További információkért tekintse meg a [minták](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates) tárházát, és helyezze üzembe az [ügyfelet az Azure-beli delegált erőforrás-kezelésben](how-to/onboard-customer.md).
 - **Felügyelt szolgáltatások ajánlatai az Azure Marketplace-** en: magán-vagy nyilvános ajánlatokon keresztül kínál szolgáltatásokat ügyfeleinek, és automatikusan előkészíti azokat az Azure-beli delegált erőforrás-kezelésre, amely a Azure Resource Manager-sablonok használatával történő bevezetéshez is használható. További információ: [felügyelt szolgáltatások ajánlatai az Azure Marketplace-](concepts/managed-services-offers.md)en.
-- **Azure által felügyelt alkalmazások**: azok az alkalmazások, amelyek megkönnyítik az ügyfelek számára a saját előfizetésekben való üzembe helyezését és használatát. Az alkalmazás üzembe helyezése egy olyan erőforráscsoporthoz történik, amely a bérlőtől fér hozzá, így a szolgáltatás a teljes Azure Lighthouse-élmény részeként kezelhető. További információ: az [Azure által felügyelt alkalmazások áttekintése](../azure-resource-manager/managed-applications/overview.md).
 
 ## <a name="next-steps"></a>További lépések
 

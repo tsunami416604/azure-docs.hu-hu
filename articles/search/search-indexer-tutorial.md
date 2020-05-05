@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: az Azure SQL Database-adatbázisok adatainak indexelése C-ben # '
+title: C#-oktatóanyag az Azure SQL-adatindexeléshez
 titleSuffix: Azure Cognitive Search
 description: Ebben a C# oktatóanyagban kapcsolódhat az Azure SQL Database-hez, kinyerheti a kereshető adatok kinyerését, és betöltheti azt egy Azure Cognitive Search indexbe.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 7660c89032ea3ef8371655b94b75c1f60603ee32
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cab996eb7c0bfccf31ed49294c6aa4b3e8cefc8f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78193968"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780759"
 ---
-# <a name="tutorial-use-c-to-index-data-from-sql-databases-in-azure-cognitive-search"></a>Oktatóanyag: az Azure-beli SQL-adatbázisokból származó adatok indexelése a C# használatával Cognitive Search
+# <a name="tutorial-index-azure-sql-data-using-the-net-sdk"></a>Oktatóanyag: az Azure SQL-adatainak indexelése a .NET SDK használatával
 
 Konfiguráljon egy [Indexelő](search-indexer-overview.md) a kereshető adatok kinyeréséhez az Azure SQL Database-ből, majd küldje el az Azure Cognitive Searchban található keresési indexbe. 
 

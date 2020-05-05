@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: wellsi
-ms.openlocfilehash: 5dbbbbb18bf81d70ed7955530db7c603594c16d0
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 93bedbf4275dacc3ec84e6df9c55e7e9a7b9d632
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652723"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780912"
 ---
 # <a name="release-notes-speech-devices-sdk"></a>Kibocsátási megjegyzések: beszédfelismerési eszközök SDK
 
@@ -23,6 +23,7 @@ A következő fejezetek a legutóbbi kiadások változásait sorolja fel.
 
 ## <a name="speech-devices-sdk-1110"></a>Beszédfelismerési eszközök SDK-1.11.0:
 
+- [Tetszőleges mikrofonos tömb geometriáinak](how-to-devices-microphone-array-configuration.md) támogatása és a munkaszög beállítása [konfigurációs fájlon](https://aka.ms/sdsdk-micarray-json)keresztül.
 - A [URBETTER DDK](http://www.urbetter.com/products_56/278.html)támogatása.
 - Megjelent bináris fájlok a [hangsegéd mintában](https://aka.ms/sdsdk-speaker)használt [GGEC-hangszórókhoz](https://aka.ms/sdsdk-download-speaker) .
 - Megjelent bináris fájlok a [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32) és a [Linux ARM 64](https://aka.ms/sdsdk-download-linux-arm64) -hez a málna PI és hasonló eszközökhöz.

@@ -10,12 +10,12 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 75ae07de9d5c80245a6e75dcb2c12be9128ff4fe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 535cf95216cca210b5add5ca22cd6e5b1b997541
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184588"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779005"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Oktatóanyag: Ismerkedés az első ML-kísérlettel a Python SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,11 +47,7 @@ A munkaterületet az Azure-erőforrások kezeléséhez használható webalapú k
 
 Ez az oktatóanyag a Felhőbeli notebook-kiszolgálót használja a munkaterületen a telepítés ingyenes és előre konfigurált felületén. [Saját környezetét](how-to-configure-environment.md#local) használhatja, ha a környezetét, a csomagokat és a függőségeket szeretné vezérelni.
 
-Kövesse ezt a videót, vagy használja az alábbi részletes lépéseket az oktatóanyag a munkaterületről történő klónozásához és futtatásához. 
-
-> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4mTUr]
-
-
+ Az alábbi részletes lépéseket követve klónozott és futtathatja az oktatóanyagot a munkaterületről. 
 
 ### <a name="clone-a-notebook-folder"></a>Jegyzetfüzet-mappa klónozása
 
@@ -63,7 +59,7 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 1. Válassza a bal oldali **jegyzetfüzetek** lehetőséget.
 
-1. Nyissa meg a **Samples** mappát.
+1. Válassza a felül található **minták** fület.
 
 1. Nyissa meg a **Python** mappát.
 
@@ -71,20 +67,21 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
 
 1. Válassza a **"..."** lehetőséget az **oktatóanyagok** mappa jobb oldalán, majd válassza a **klónozás**elemet.
 
-    ![Klónozási mappa](./media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png)
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/clone-tutorials.png" alt-text="Oktatóanyagok mappa klónozása":::
 
 1. A mappák listája megjeleníti a munkaterülethez hozzáférő összes felhasználót.  Válassza ki azt a mappát, amelybe az **oktatóanyagok** mappát el szeretné klónozott.
 
-### <a name="a-nameopenopen-the-cloned-notebook"></a><a name="open">A klónozott jegyzetfüzet megnyitása
+### <a name="open-the-cloned-notebook"></a><a name="open"></a>A klónozott jegyzetfüzet megnyitása
 
-1. A **felhasználói fájlok** területen nyissa meg a mappát, majd nyissa meg a klónozott **oktatóanyagok** mappát.
-
-    ![Oktatóanyagok mappa megnyitása](./media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png)
+1. Nyissa meg az **oktatóanyagok** mappát, amely éppen be lett zárva a **felhasználói fájlok** szakaszba.
 
     > [!IMPORTANT]
     > A jegyzetfüzeteket megtekintheti a **Samples** mappában, de onnan nem futtathat jegyzetfüzetet.  Jegyzetfüzet futtatásához győződjön meg arról, hogy a **felhasználói fájlok** szakaszban megnyitta a jegyzetfüzet klónozott verzióját.
     
 1. Válassza ki a **tutorial-1st-Experiment-SDK-Train. ipynb** fájlt az **oktatóanyagok/Create-első-ml-Experiment** mappában.
+
+    :::image type="content" source="media/tutorial-1st-experiment-sdk-setup/expand-user-folder.png" alt-text="Oktatóanyagok mappa megnyitása":::
+
 
 1. A felső sávon válassza ki a jegyzetfüzet futtatásához használni kívánt számítási példányt. Ezek a virtuális gépek előre konfigurálva vannak a [Azure Machine learning futtatásához szükséges összes értékkel](concept-compute-instance.md#contents). 
 

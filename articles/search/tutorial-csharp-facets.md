@@ -1,21 +1,21 @@
 ---
 title: C# oktatóanyag a dimenziók használatának támogatásához a navigáláshoz
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag a "keresési eredmények tördelése – Azure Cognitive Search" projektre épül, és dimenziós navigálást is felvehet. Ebből a témakörből megtudhatja, hogyan használhatók a keresések egyszerű szűkítéséhez.
+description: A "lapozási eredmények" lehetőséggel bővítheti a sokoldalú navigálást. Ebből a témakörből megtudhatja, hogyan használhatók a keresések egyszerű szűkítéséhez.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: d88a9d7efdabd493fd31b961748bb6ad3bd8d738
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bc25ba6d95fe58a80c90881c6ad60cdb8801cce4
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121566"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780589"
 ---
-# <a name="c-tutorial-use-facets-to-aid-navigation---azure-cognitive-search"></a>C# oktatóanyag: dimenziók használata a navigáláshoz – Azure Cognitive Search
+# <a name="tutorial-add-faceted-navigation-using-the-net-sdk"></a>Oktatóanyag: sokoldalú Navigálás hozzáadása a .NET SDK használatával
 
 Az aspektusok a navigáláshoz nyújtanak segítséget azáltal, hogy a felhasználó számára a keresésre mutató hivatkozásokat adnak meg. A dimenziók az adathalmazok (például a kategória, vagy egy adott szolgáltatás, a mintaadatok) attribútumai.
 

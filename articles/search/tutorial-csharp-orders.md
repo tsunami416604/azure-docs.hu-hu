@@ -1,21 +1,21 @@
 ---
 title: C#-oktatóanyag az eredmények megrendeléséhez
 titleSuffix: Azure Cognitive Search
-description: Ez az oktatóanyag bemutatja, hogyan rendezheti a keresési eredményeket. A szolgáltatás egy korábbi, az elsődleges tulajdonság és a másodlagos tulajdonság szerinti rendezést, valamint egy pontozási profilt tartalmaz, amely növeli a feltételt.
+description: Ez a C#-oktatóanyag azt mutatja be, hogyan lehet a keresési eredményeket megrendelni. A szolgáltatás egy korábbi, az elsődleges tulajdonság, a másodlagos tulajdonság rendezése, és egy pontozási profilt tartalmaz, amely növeli a feltételt.
 manager: nitinme
-author: tchristiani
-ms.author: terrychr
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/10/2020
-ms.openlocfilehash: 812085a5a4b3e8d1233f19c947d2fd5e433f6ab7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 699b3e5b7e51e12ec0bf39ec0c9045dd3a27a6fd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77121546"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780606"
 ---
-# <a name="c-tutorial-order-the-results---azure-cognitive-search"></a>C# oktatóanyag: az eredmények rendezése – Azure Cognitive Search
+# <a name="tutorial-order-search-results-using-the-net-sdk"></a>Oktatóanyag: keresési eredmények sorrendbe helyezése a .NET SDK használatával
 
 Egészen addig, amíg ez a pont nem szerepel az oktatóanyagokban, a rendszer visszaadja az eredményeket, és megjeleníti az alapértelmezett sorrendet. Ez lehet az a sorrend, amelyben az adatok találhatók, vagy esetleg egy alapértelmezett _pontozási profil_ lett meghatározva, amelyet a rendszer akkor használ, ha nincs megadva rendezési paraméter. Ebben az oktatóanyagban bemutatjuk, hogyan lehet az eredményeket egy elsődleges tulajdonság alapján megrendelni, majd az azonos elsődleges tulajdonsággal rendelkező eredmények esetében a kijelölés sorrendjét egy másodlagos tulajdonsághoz. A numerikus értékek alapján történő rendezés alternatívájaként az utolsó példa azt szemlélteti, hogyan lehet sorrendet rendelni egy egyéni pontozási profil alapján. Az _összetett típusok_megjelenítését is mélyebben fogjuk bemutatni.
 

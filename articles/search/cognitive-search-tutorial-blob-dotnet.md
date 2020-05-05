@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: C# és AI az Azure-blobokon'
+title: C#-oktatóanyag az AI használatával az Azure-blobokon
 titleSuffix: Azure Cognitive Search
 description: A C# és az Azure Cognitive Search .NET SDK használatával a blob Storage-ban található tartalommal kapcsolatos szöveg-kinyerési és természetes nyelvi feldolgozás példája.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: maheff
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/27/2020
-ms.openlocfilehash: 169a33d12e98235dcb4e4f317dbb8d91eb7446a4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 51e1b24f9080d102dee234fa1ca6d460c400ba78
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851136"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780674"
 ---
-# <a name="tutorial-use-c-and-ai-to-generate-searchable-content-from-azure-blobs"></a>Oktatóanyag: a C# és a AI használata kereshető tartalmak létrehozásához az Azure-blobokból
+# <a name="tutorial-ai-generated-searchable-content-from-azure-blobs-using-the-net-sdk"></a>Oktatóanyag: AI által generált kereshető tartalom az Azure-blobokból a .NET SDK használatával
 
 Ha strukturálatlan szöveget vagy rendszerképeket használ az Azure Blob Storage-ban, egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat kinyerheti az adatokat, és létrehozhat olyan új tartalmakat, amelyek hasznosak a teljes szöveges kereséshez és az adatbányászati forgatókönyvekhez. Ebben a C# oktatóanyagban az optikai karakterfelismerést (OCR) alkalmazzuk a képeken, és természetes nyelvi feldolgozást végeznek olyan új mezők létrehozásához, amelyeket használhat a lekérdezésekben, a dimenziókban és a szűrőkben.
 

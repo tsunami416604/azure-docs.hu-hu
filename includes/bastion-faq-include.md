@@ -5,15 +5,15 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: include
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 57a764b62fcda333f042794e176c24c8e6cc5526
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8d30e7fe3138a26d9b64ec35d18260933df7999
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80374075"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780307"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Mely régiók érhetők el?
 
@@ -31,17 +31,19 @@ Az IPv6 jelenleg nem támogatott. Az Azure Bastion csak az IPv4-t támogatja.
 
 Nincs szüksége RDP-vagy SSH-ügyfélre az RDP/SSH eléréséhez az Azure Portal Azure-beli virtuális gépén. A [Azure Portal](https://portal.azure.com) segítségével közvetlenül a böngészőben érheti el az RDP/SSH-hozzáférést a virtuális géphez.
 
-### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Szükséges-e az Azure Bastion RDS CAL adminisztratív célokra az Azure által üzemeltetett virtuális gépeken?
-Nem, a Windows Server rendszerű virtuális gépekhez az Azure Bastion-hez való hozzáféréshez nincs szükség [RDS CALra](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , ha kizárólag adminisztratív célokra használják.
+### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Szükségem van egy, az Azure-beli virtuális gépen futó ügynökre?
+
+Nem kell ügynököt vagy szoftvert telepítenie a böngészőjébe vagy az Azure-beli virtuális gépre. A megerősített szolgáltatás ügynök nélküli, és nem igényel további szoftvereket RDP/SSH-hoz.
 
 ### <a name="how-many-concurrent-rdp-and-ssh-sessions-does-each-azure-bastion-support"></a><a name="limits"></a>Hány egyidejű RDP-és SSH-munkamenetet támogat az Azure-alapú megerősített szolgáltatás?
+
 Az RDP és az SSH egy használaton alapuló protokoll. A munkamenetek magas kihasználtsága miatt a megerősített állomás támogatja a munkamenetek alacsonyabb összesített számát. Az alábbi számok a napi munkafolyamatokat feltételezik.
 
 [!INCLUDE [limits](bastion-limits.md)]
 
-### <a name="do-i-need-an-agent-running-in-the-azure-virtual-machine"></a><a name="agent"></a>Szükségem van egy, az Azure-beli virtuális gépen futó ügynökre?
+### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Milyen funkciók támogatottak egy RDP-munkamenetben?
 
-Nem kell ügynököt vagy szoftvert telepítenie a böngészőjébe vagy az Azure-beli virtuális gépre. A megerősített szolgáltatás ügynök nélküli, és nem igényel további szoftvereket RDP/SSH-hoz.
+Jelenleg csak a szöveg másolása/beillesztése támogatott. Az olyan funkciók, mint a fájlmásolás, nem támogatottak. Kérjük, ossza meg velünk az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion feedback oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Mely böngészők támogatottak?
 
@@ -59,9 +61,8 @@ A kapcsolatok létrehozásához a következő szerepkörök szükségesek:
 
 További tájékoztatás a [díjszabási lapon](https://aka.ms/BastionHostPricing) olvasható.
 
-### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Miért kapok "a munkamenet lejárt" hibaüzenetet, mielőtt megkezdődik a megerősített munkamenet?
-
-A munkamenetet csak a Azure Portal kezdeményezheti. Jelentkezzen be a Azure Portalba, és kezdje újra a munkamenetet. Ha közvetlenül egy másik böngésző-munkamenetből vagy-lapról nyitja meg az URL-címet, a rendszer ezt a hibát várta. Segít biztosítani, hogy a munkamenet biztonságosabb legyen, és hogy a munkamenet csak a Azure Portalon keresztül legyen elérhető.
+### <a name="does-azure-bastion-require-an-rds-cal-for-administrative-purposes-on-azure-hosted-vms"></a><a name="rdscal"></a>Szükséges-e az Azure Bastion RDS CAL adminisztratív célokra az Azure által üzemeltetett virtuális gépeken?
+Nem, a Windows Server rendszerű virtuális gépekhez az Azure Bastion-hez való hozzáféréshez nincs szükség [RDS CALra](https://www.microsoft.com/en-us/p/windows-server-remote-desktop-services-cal/dg7gmgf0dvsv?activetab=pivot:overviewtab) , ha kizárólag adminisztratív célokra használják.
 
 ### <a name="what-keyboard-layouts-are-supported-during-the-bastion-remote-session"></a><a name="keyboard"></a>Milyen billentyűzetkiosztások támogatottak a megerősített távoli munkamenet során?
 
@@ -72,10 +73,10 @@ Az Azure Bastion jelenleg a virtuális gépen belüli en-us-QWERTY billentyűzet
 Nem. Az UDR nem támogatott Azure-beli megerősített alhálózaton.
 Azokban az esetekben, amelyekben az Azure Bastion és a Azure Firewall/Network Virtual Appliance (NVA) is szerepel ugyanabban a virtuális hálózatban, nem kell kényszeríteni az Azure-beli megerősített alhálózatról érkező forgalmat, hogy Azure Firewall, mert az Azure-és a virtuális gépek közötti kommunikáció privát. További információ: [Azure Firewall mögötti virtuális gépek elérése a Bastion-vel](https://azure.microsoft.com/blog/accessing-virtual-machines-behind-azure-firewall-with-azure-bastion/).
 
-### <a name="is-file-transfer-supported-with-azure-bastion-rdp-session"></a><a name="filetransfer"></a>Támogatott-e a fájlátvitel az Azure Bastion RDP-munkamenettel?
+### <a name="why-do-i-get-your-session-has-expired-error-message-before-the-bastion-session-starts"></a><a name="session"></a>Miért kapok "a munkamenet lejárt" hibaüzenetet, mielőtt megkezdődik a megerősített munkamenet?
 
-Keményen dolgozunk új funkciók hozzáadásával. Mostantól a fájlátvitel nem támogatott, de az ütemterv részét képezi. Kérjük, ossza meg velünk az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion feedback oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).
+A munkamenetet csak a Azure Portal kezdeményezheti. Jelentkezzen be a Azure Portalba, és kezdje újra a munkamenetet. Ha közvetlenül egy másik böngésző-munkamenetből vagy-lapról nyitja meg az URL-címet, a rendszer ezt a hibát várta. Segít biztosítani, hogy a munkamenet biztonságosabb legyen, és hogy a munkamenet csak a Azure Portalon keresztül legyen elérhető.
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Hogyan kezeli az üzembe helyezési hibákat?
 
-Szükség szerint tekintse át a hibaüzeneteket, és [igényeljen egy támogatási kérést az Azure Portalon](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Az üzembe helyezési hibák az [Azure-előfizetések korlátozásait, kvótáit és megkötéseit](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)okozhatják. Az ügyfelek az előfizetések által engedélyezett nyilvános IP-címek számának korlátozásával járhatnak, ami miatt az Azure Bastion üzembe helyezése sikertelen lesz.
+Tekintse át a hibaüzeneteket, és szükség szerint [küldjön egy támogatási kérést a Azure Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) . Az üzembe helyezési hibák az [Azure-előfizetések korlátozásait, kvótáit és megkötéseit](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)okozhatják. Az ügyfelek az előfizetések által engedélyezett nyilvános IP-címek számának korlátozásával járhatnak, ami miatt az Azure Bastion üzembe helyezése sikertelen lesz.

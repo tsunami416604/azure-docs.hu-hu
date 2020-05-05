@@ -1,5 +1,5 @@
 ---
-title: 'C# oktatóanyag: több adatforrás indexelése'
+title: C#-oktatóanyag több Azure-adatforrás indexeléséhez
 titleSuffix: Azure Cognitive Search
 description: Megtudhatja, hogyan importálhat több adatforrásból származó adatait egyetlen Azure Cognitive Search indexbe az indexelő használatával. Ez az oktatóanyag és mintakód a C# nyelven van.
 manager: nitinme
@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 02/28/2020
-ms.openlocfilehash: 8e75d9de45c64813ac75de635371d2435fb9261f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb1824e41fe9fc5185ae4e914b4828cddb2c42db
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78271478"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780521"
 ---
-# <a name="tutorial-index-data-from-multiple-data-sources-in-c"></a>Oktatóanyag: több adatforrásból származó adatok indexelése C-ben #
+# <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
 
 Az Azure Cognitive Search több adatforrás adatait is importálhatja, elemezheti és indexelheti egyetlen konszolidált keresési indexbe. Ez olyan helyzeteket támogat, amelyekben a strukturált adatok összesítése kevésbé strukturált vagy akár egyszerű szöveges adatokkal történik más forrásokból, például szöveg-, HTML-vagy JSON-dokumentumokból.
 
