@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan határozhat meg egyéni kimenő útvonalakat az
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 3780680c485aebf1ffc654d31c577821a9b96fff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80676509"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733498"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal (előzetes verzió)
 
@@ -73,7 +73,7 @@ Az alábbiakban egy olyan hálózati topológia található, amely alapértelmez
 
 Ha `userDefinedRouting` be van állítva, az AK nem konfigurálja automatikusan a kimenő útvonalakat. A **felhasználónak**a következőket kell elvégeznie.
 
-A fürtöt egy meglévő, konfigurált alhálózattal rendelkező virtuális hálózatra kell telepíteni. A kimenő kapcsolattal rendelkező alhálózaton léteznie kell egy érvényes, felhasználó által megadott útvonalnak (UDR).
+Az AK-fürtöt egy már konfigurált alhálózattal rendelkező meglévő virtuális hálózatra kell telepíteni. A standard Load Balancer (SLB) architektúrájának használatakor explicit kimenő forgalmat kell létrehoznia. Ehhez a kimenő kérelmeket egy olyan berendezéshez kell küldeni, mint például a tűzfal, az átjáró, a helyszíni vagy a kimenő forgalom a standard Load Balancerhez vagy egy adott csomóponthoz rendelt nyilvános IP-címekkel.
 
 Az AK erőforrás-szolgáltató telepíti a standard Load balancert (SLB). A terheléselosztó nincs konfigurálva semmilyen szabállyal, és nem [számít fel díjat, amíg meg nem történik a szabály elhelyezése](https://azure.microsoft.com/pricing/details/load-balancer/). Az AK **nem** hoz létre automatikusan nyilvános IP-címet a SLB előtérbeli felületéhez. Az AK **nem** konfigurálja automatikusan a terheléselosztó háttér-készletét.
 

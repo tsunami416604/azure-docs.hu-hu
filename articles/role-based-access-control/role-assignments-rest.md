@@ -1,6 +1,6 @@
 ---
-title: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása a RBAC és a REST API
-description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API használatával.
+title: Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API-Azure RBAC használatával
+description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára a REST API és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9beda6589c03f1b14fc9756af86a9ce0711894c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b73de61834a3ab20cab5e664ed307ad63e087608
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063010"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735640"
 ---
-# <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a REST API használatával
+# <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Ez a cikk azt ismerteti, hogyan rendelhet hozzá szerepköröket a REST API használatával.
 
@@ -34,7 +34,7 @@ Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a követk
 
 ## <a name="add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadása
 
-A RBAC-ben a hozzáférés engedélyezéséhez hozzá kell adnia egy szerepkör-hozzárendelést. Szerepkör-hozzárendelés hozzáadásához használja a [szerepkör-hozzárendeléseket – hozzon létre](/rest/api/authorization/roleassignments/create) REST API, és adja meg a rendszerbiztonsági tag, a szerepkör-definíció és a hatókört. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/write` művelethez. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
+Az Azure RBAC a hozzáférés biztosításához hozzá kell adnia egy szerepkör-hozzárendelést. Szerepkör-hozzárendelés hozzáadásához használja a [szerepkör-hozzárendeléseket – hozzon létre](/rest/api/authorization/roleassignments/create) REST API, és adja meg a rendszerbiztonsági tag, a szerepkör-definíció és a hatókört. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/write` művelethez. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
 
 1. Használja a [szerepkör-definíciók – lista](/rest/api/authorization/roledefinitions/list) REST API, vagy tekintse meg a [beépített szerepköröket](built-in-roles.md) a hozzárendelni kívánt szerepkör-definíció azonosítójának lekéréséhez.
 
@@ -85,7 +85,7 @@ A RBAC-ben a hozzáférés engedélyezéséhez hozzá kell adnia egy szerepkör-
 
 ## <a name="remove-a-role-assignment"></a>Szerepkör-hozzárendelés eltávolítása
 
-Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést kell eltávolítania. Szerepkör-hozzárendelés eltávolításához használja a [szerepkör-hozzárendeléseket – törölje](/rest/api/authorization/roleassignments/delete) REST API. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/delete` művelethez. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
+Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szerepkör-hozzárendelést. Szerepkör-hozzárendelés eltávolításához használja a [szerepkör-hozzárendeléseket – törölje](/rest/api/authorization/roleassignments/delete) REST API. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/delete` művelethez. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
 
 1. A szerepkör-hozzárendelési azonosító (GUID) beolvasása. Ezt az azonosítót a rendszer a szerepkör-hozzárendelés első létrehozásakor adja vissza, vagy pedig a szerepkör-hozzárendelések listázásával.
 
@@ -109,7 +109,7 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 
 ## <a name="next-steps"></a>További lépések
 
-- [Szerepkör-hozzárendelések listázása az Azure RBAC és a REST API használatával](role-assignments-list-rest.md)
+- [Azure-beli szerepkör-hozzárendelések listázása a REST API használatával](role-assignments-list-rest.md)
 - [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API-referenciák](/rest/api/azure/)
-- [Egyéni szerepkörök létrehozása az Azure-erőforrásokhoz a REST API használatával](custom-roles-rest.md)
+- [Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API használatával](custom-roles-rest.md)

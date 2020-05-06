@@ -252,7 +252,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| None |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 

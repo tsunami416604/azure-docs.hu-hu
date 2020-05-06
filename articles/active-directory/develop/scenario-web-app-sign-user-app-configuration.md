@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 621aff0a6571714ad8dad587c2385e6081c2d0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1eef510e6389b551e128877ffde723955a1084d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181664"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734637"
 ---
 # <a name="web-app-that-signs-in-users-code-configuration"></a>Felhasználók számára bejelentkező webalkalmazás: kód konfigurálása
 
@@ -298,7 +298,7 @@ A szűrő feldolgozza a OAuth 2,0 engedélyezési kód folyamatát, és ellenőr
 
 Ha a válasz érkezik, amely az engedélyezési kódot tartalmazza, a MSAL Java használatával szerzi be a jogkivonatot. Amikor végül megkapja a tokent a jogkivonat-végponttól (az átirányítási URI-n), a felhasználó bejelentkezett.
 
-További részletekért tekintse `doFilter()` meg a [AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)metódusát.
+További részletekért tekintse `doFilter()` meg a [AuthFilter. Java](https://github.com/Azure-Samples/ms-identity-java-webapp/blob/master/msal-java-webapp-sample/src/main/java/com/microsoft/azure/msalwebsample/AuthFilter.java)metódusát.
 
 > [!NOTE]
 > A kódja némileg eltérő `doFilter()` sorrendben van megírva, de a folyamat az egyik leírása.

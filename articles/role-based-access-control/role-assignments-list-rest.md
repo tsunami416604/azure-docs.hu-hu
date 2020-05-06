@@ -1,6 +1,6 @@
 ---
-title: Szerepkör-hozzárendelések listázása az Azure RBAC és a REST API használatával
-description: Megtudhatja, hogyan határozhatja meg, hogy a felhasználók, csoportok, egyszerű szolgáltatások és felügyelt identitások milyen erőforrásokhoz férnek hozzá az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és a REST API használatához.
+title: Azure-beli szerepkör-hozzárendelések listázása az REST API-Azure RBAC használatával
+description: Megtudhatja, hogyan határozhatja meg, hogy a felhasználók, csoportok, egyszerű szolgáltatások és felügyelt identitások milyen erőforrásokhoz férnek hozzá a REST API és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a494e7fd4c9fb79faa6a1d8cb2c3c871796ccdc5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043c91e5c1ecd86951ac3f9423558a3ab369d506
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062156"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735674"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-rest-api"></a>Szerepkör-hozzárendelések listázása az Azure RBAC és a REST API használatával
+# <a name="list-azure-role-assignments-using-the-rest-api"></a>Azure-beli szerepkör-hozzárendelések listázása a REST API használatával
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Ez a cikk a szerepkör-hozzárendelések REST API használatával történő listázását ismerteti.
 
@@ -31,7 +31,7 @@ ms.locfileid: "80062156"
 
 ## <a name="list-role-assignments"></a>Szerepkör-hozzárendelések felsorolása
 
-A RBAC-ben a hozzáférés listázásához listázhatja a szerepkör-hozzárendeléseket. A szerepkör-hozzárendelések listázásához használja a [szerepkör-hozzárendelések-lista](/rest/api/authorization/roleassignments/list) REST API-k egyikét. Az eredmények pontosításához meg kell adnia egy hatókört és egy opcionális szűrőt.
+Az Azure RBAC a hozzáférés listázásához listázza a szerepkör-hozzárendeléseket. A szerepkör-hozzárendelések listázásához használja a [szerepkör-hozzárendelések-lista](/rest/api/authorization/roleassignments/list) REST API-k egyikét. Az eredmények pontosításához meg kell adnia egy hatókört és egy opcionális szűrőt.
 
 1. Kezdje a következő kéréssel:
 
@@ -63,5 +63,5 @@ A RBAC-ben a hozzáférés listázásához listázhatja a szerepkör-hozzárende
 
 ## <a name="next-steps"></a>További lépések
 
-- [Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a REST API használatával](role-assignments-rest.md)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
 - [Azure REST API-referenciák](/rest/api/azure/)

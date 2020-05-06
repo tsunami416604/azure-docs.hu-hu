@@ -3,12 +3,12 @@ title: A fizikai kiszolgáló értékelésének támogatása Azure Migrate
 description: Tudnivalók a fizikai kiszolgálók értékelésének támogatásáról Azure Migrate Server Assessment szolgáltatással
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: ae76a6b570ec58e71a8a1728a2a601728030f58c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f21ec149aa6f85c0a1f33e91dacf9de48ff72bbb
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538154"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744520"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
@@ -34,16 +34,18 @@ A fizikai kiszolgálók értékeléséhez létre kell hoznia egy Azure Migrate p
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
 | **Fizikai kiszolgáló üzembe helyezése**       | A fizikai kiszolgáló önálló vagy fürtben is üzembe helyezhető. |
-| **Engedélyek**           | **Windows:** A felderíteni kívánt Windows-kiszolgálókon helyi vagy tartományi felhasználói fiókra van szükség. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: Távoli asztal felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/><br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. |
-| **Operációs rendszer** | Az Azure által támogatott összes [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -alapú operációs rendszer, a Windows Server 2003 és a SUSE Linux kivételével.|
+| **Engedélyek**           | **Windows:** A felderíteni kívánt Windows-kiszolgálókon tartományi rendszergazdának vagy helyi rendszergazdának kell lennie. A felhasználói fiókot hozzá kell adni a következő csoportokhoz: távfelügyeleti felhasználók, Teljesítményfigyelő felhasználók és Teljesítménynapló felhasználói. <br/><br/> **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon. |
+| **Operációs rendszer** | Az Azure által támogatott összes [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -kiszolgálói operációs rendszer, a Windows Server 2003 és a SUSE Linux kivételével.<br/><br/> Windows 10 és Windows 8 ügyféloldali operációs rendszerek. |
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei
 
-A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja a felderítéshez és értékeléshez. A fizikai kiszolgálók berendezése virtuális gépen vagy fizikai gépen is futtatható. A készüléket a Azure Portalból letöltött PowerShell-parancsfájl használatával állíthatja be.
+A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja a felderítéshez és értékeléshez. A fizikai kiszolgálók berendezése virtuális gépen vagy fizikai gépen is futtatható. 
 
 - Ismerje meg a fizikai kiszolgálók [készülékre vonatkozó követelményeit](migrate-appliance.md#appliance---physical) .
 - Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
+- A készüléket a Azure Portalból letöltött [PowerShell-parancsfájl](how-to-set-up-appliance-physical.md) használatával állíthatja be.
+A Azure Government-ben telepítse a készüléket a [parancsfájl használatával](deploy-appliance-script-government.md).
 
 ## <a name="port-access"></a>Port-hozzáférés
 
