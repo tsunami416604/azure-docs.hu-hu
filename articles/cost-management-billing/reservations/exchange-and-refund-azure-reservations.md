@@ -6,12 +6,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 393db5d2e14e047ade04e0b688582e272c6ca44f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 174ed17056bf49b541d55719f4058141e88e7ea5
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200435"
+ms.lasthandoff: 04/28/2020
+ms.locfileid: "82192110"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai
 
@@ -81,7 +81,7 @@ Ha egy olyan virtuálisgép-méretre rendelkezik foglalással, amely nem támoga
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](manage-reserved-vm-instance.md) szakaszt.
 - Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
