@@ -8,12 +8,12 @@ ms.date: 08/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9a653d13137a3067bfaf51c64c09454a08783e31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ac37e9bd10caea5c6e58fc797eac73ce6c714162
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131415"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561025"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge
 
@@ -100,6 +100,13 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. Konfigurálja úgy a fol
    * **Alapértelmezett platform**: válassza ki a megfelelő platformot a modulok számára a cél IoT Edge eszköz alapján.
    * **Kimeneti változók**: a kimeneti változók közé tartozik egy hivatkozás neve, amellyel konfigurálható a fájl elérési útja, ahol a rendszer létrehozza a telepítési. JSON fájlt. Adja meg a hivatkozási nevet egy olyan emlékezethez, mint a **Edge**.
 
+
+   Ezek a konfigurációk a képtárat és a `module.json` fájlban definiált címkét használják a modul rendszerképének elnevezéséhez és címkézéséhez. A **Build-modul lemezképei** is segítenek a változók a `module.json` fájlban megadott pontos értékkel való lecserélésében. A Visual Studióban vagy a Visual Studio Code-ban a tényleges értéket kell megadnia egy `.env` fájlban. Az Azure-folyamatokban az értéket a **folyamat változói** lapon állíthatja be. Válassza a **változók** fület, és konfigurálja a nevet és az értéket az alábbiak szerint:
+
+    * **ACR_ADDRESS**: a Azure Container Registry-címe. 
+
+    Ha a projektben más változók is szerepelnek, megadhatja a név és az érték értéket ezen a lapon. a **Build-modul lemezképei** csak a `${VARIABLE}` Format változókat észlelik. Győződjön meg arról, hogy ezt a formátumot `**/module.json` használja a fájlokban.
+    
 7. Válassza ki a második **Azure IoT Edge** feladatot a szerkesztéshez. Ez a feladat leküldi az összes modul lemezképét a kiválasztott tároló-beállításjegyzékbe.
 
    * **Megjelenítendő név**: a művelet mező megváltozásakor a megjelenítendő név automatikusan frissül.

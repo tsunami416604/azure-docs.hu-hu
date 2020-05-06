@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/02/2019
 ms.author: alkohli
-ms.openlocfilehash: e72113313e27949819db567c550401b1f051473f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde84f0973cc7e21e57574bbabe398b38581358f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77022681"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562396"
 ---
 # <a name="use-cases-for-azure-data-box-gateway"></a>Azure Data Box Gateway használati esetei
 
@@ -77,7 +77,7 @@ Ez a tömeges átvitel befejezi a kezdeti előkészítési fázist.
 
 ### <a name="ongoing-feed-with-data-box-gateway"></a>Folyamatos adatcsatorna Data Box Gateway
 
-A Data Box Gateway folyamatos betöltéséhez kövesse az alábbi lépéseket.
+A Data Box Gateway folyamatos betöltéséhez kövesse az alábbi lépéseket. 
 
 1. Hozzon létre egy felhőalapú megosztást Data Box Gateway. Ez a megosztás automatikusan feltölti az összes adattárat az Azure Storage-fiókba. Nyissa meg a Data Box Gateway erőforrásban található **megosztásokat** , és kattintson a **+ megosztás hozzáadása**lehetőségre.
 
