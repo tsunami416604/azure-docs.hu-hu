@@ -30,11 +30,11 @@ A Function apps több módon is üzemeltethető:
 
 |                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium szintű csomag](functions-scale.md#premium-plan)|[App Service terv](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Bejövő IP-korlátozások és privát webhely-hozzáférés](#inbound-ip-restrictions)|✅Igen|✅Igen|✅Igen|✅Igen|
-|[Virtuális hálózat integrációja](#virtual-network-integration)|❌Nem|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅Igen|
-|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌Nem| ✅Igen |✅Igen|✅Igen|
-|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌Nem|✅Igen|✅Igen|✅Igen|
-|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌Nem| ✅Igen|✅Igen|✅Igen|
+|[Bejövő IP-korlátozások és privát webhely-hozzáférés](#inbound-ip-restrictions)|✅igen|✅igen|✅igen|✅igen|
+|[Virtuális hálózat integrációja](#virtual-network-integration)|❌No|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅igen|
+|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌No| ✅igen |✅igen|✅igen|
+|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌No|✅igen|✅igen|✅igen|
+|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌No| ✅igen|✅igen|✅igen|
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
 

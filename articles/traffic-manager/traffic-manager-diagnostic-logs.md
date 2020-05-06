@@ -71,7 +71,7 @@ Az alábbi táblázat az Azure Traffic Manager-profil erőforrásához tartozó 
 
 |||||
 |----|----|---|---|
-|**Mező neve**|**Mező típusa**|**Meghatározás**|**Például**|
+|**Mező neve**|**Mező típusa**|**Meghatározás**|**Példa**|
 |Végpontneve|Sztring|Annak az Traffic Manager végpontnak a neve, amelynek az állapotát rögzíti a rendszer.|*myPrimaryEndpoint*|
 |status|Sztring|A kipróbált Traffic Manager végpont állapota. Az állapot lehet akár **felfelé** , akár **lefelé**is.|**Fel**|
 |||||

@@ -1,30 +1,30 @@
 ---
-title: Megbízható szereplők állami menedzsment
-description: Azt ismerteti, hogyan megbízható szereplők állapota felügyelt, megőrzött és replikált magas rendelkezésre állás érdekében.
+title: Reliable Actors állapot kezelése
+description: Leírja, hogy Reliable Actors állapot felügyelt, megőrzött és replikálható a magas rendelkezésre állás érdekében.
 author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 9962d4333e458243670d1005ad2ccfbc0bb7c92a
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/27/2020
+ms.lasthandoff: 04/28/2020
 ms.locfileid: "75348922"
 ---
-# <a name="reliable-actors-state-management"></a>Megbízható szereplők állami menedzsment
-A Reliable Actors egyszálas objektumok, amelyek logikai és állapot-beágyazási. Mivel a szereplők megbízható szolgáltatásokon futnak, megbízhatóan karbantarthatják az állapotot ugyanazon adatmegőrzési és replikációs mechanizmusok használatával. Így a szereplők nem veszítik el az állapotukat a hibák után, a szemétgyűjtés után újraaktiváláskor, vagy amikor erőforrás-egyensúly vagy frissítés miatt egy fürt csomópontjai között kerülnek áthelyezésre.
+# <a name="reliable-actors-state-management"></a>Reliable Actors állapot kezelése
+A Reliable Actors egyszálas objektumok, amelyek logika és állapot beágyazására is képesek. Mivel a szereplők Reliable Services futnak, megbízhatóan kezelhetik az állapotot ugyanazon megőrzési és replikációs mechanizmusok használatával. Így a szereplők nem veszítik el az állapotukat a meghibásodások után, az újraaktiválást követően, vagy a fürt csomópontjai között, erőforrás-kiegyensúlyozás vagy-verziófrissítés miatt.
 
-## <a name="state-persistence-and-replication"></a>Állapotmegőrzés és replikáció
-Minden megbízható szereplők *állapotalapúnak minősülnek,* mert minden aktor példány leképezi egy egyedi azonosítót. Ez azt jelenti, hogy az azonos aktorazonosítóhoz érkező ismételt hívások ugyanarra az aktorpéldányra vannak irányítva. Egy állapotmentes rendszerben ezzel szemben az ügyfélhívások nem garantáltak, hogy minden alkalommal ugyanarra a kiszolgálóra irányíthatók. Ebből az okból az aktor szolgáltatások mindig állapotalapú szolgáltatások.
+## <a name="state-persistence-and-replication"></a>Állapot-megőrzés és replikálás
+Minden Reliable Actors állapot- *nyilvántartónak* minősül, mivel minden egyes Actor-példány egy egyedi azonosítóra mutat. Ez azt jelenti, hogy az ugyanahhoz a színész-AZONOSÍTÓhoz intézett ismétlődő hívások ugyanahhoz a színészi példányhoz vannak irányítva. Az állapot nélküli rendszerekben az ügyfél-hívások nem garantáltak úgy, hogy minden alkalommal ugyanarra a kiszolgálóra legyenek irányítva. Emiatt a Actor Services mindig állapot-nyilvántartó szolgáltatás.
 
-Annak ellenére, hogy a szereplők állapotalapúnak minősülnek, ez nem jelenti azt, hogy megbízhatóan kell tárolniuk az állapotot. A szereplők az adattárolási követelményeik alapján választhatják ki az állapotmegőrzési és replikációs szintet:
+Bár a szereplők állapot-nyilvántartónak minősülnek, ez nem jelenti azt, hogy megbízhatóan kell tárolniuk az állapotot. A szereplők az adattárolási követelmények alapján választhatják ki az állapot megőrzése és a replikáció szintjét:
 
-* **Megőrzött állapot**: Az állapot lemezre marad, és három vagy több replikára replikálódik. A megőrzött állapot a legtartósabb állapottárolási lehetőség, ahol az állapot teljes fürtkimaradás on keresztül is megmaradhat.
-* **Felejtő állapot**: Az állapot három vagy több replikára replikálódik, és csak a memóriában marad. Az illékony állapot rugalmasságot biztosít a csomópont-meghibásodás és az aktor meghibásodása, valamint a frissítések és az erőforrás-kiegyenlítés során. Az állapot azonban nem marad meg a lemezen. Tehát, ha az összes replikák elvesznek egyszerre, az állam is elveszett.
-* **Nincs megőrzött állapot:** Az állapot nem replikálódik vagy nem íródik lemezre, csak olyan szereplőkhöz használható, amelyeknek nem kell megbízhatóan fenntartaniuk az állapotot.
+* Megőrzött **állapot**: a rendszer megőrzi az állapotot a lemezen, és három vagy több replikára replikálja. A megőrzött állapot a legtartós állapotú tárolási lehetőség, ahol az állapot a teljes fürt kimaradásán keresztül maradhat.
+* **Illékony állapot**: az állapot három vagy több replikára replikálódik, és csak a memóriában marad. A felejtő állapot rugalmasságot biztosít a csomópont-meghibásodások és a színészi hibák, valamint a frissítések és az erőforrások kiegyensúlyozása során. Azonban az állapot nem marad a lemezen. Tehát ha az összes replika elvész egyszerre, az állapot is elvész.
+* **Nincs**megőrzött állapot: az állapot nem replikálódik, vagy nincs lemezre írva, csak azokra a résztvevőkre használja, amelyeknek nem kell megbízható állapotot fenntartaniuk.
 
-A perzisztencia minden szintje egyszerűen egy másik *állapotszolgáltató* és a szolgáltatás *replikációs* konfigurációja. Az, hogy az állapot lemezre van-e írva, az állapotszolgáltatótól függ – az állapotot tároló megbízható szolgáltatás összetevőjéről. A replikáció attól függ, hogy egy szolgáltatás hány replikával van telepítve. A Megbízható szolgáltatásokhoz, az állapotszolgáltató és a replikaszám is könnyen beállítható manuálisan. Az aktor keretrendszer biztosít egy attribútumot, amely egy aktoron használva automatikusan kiválaszt egy alapértelmezett állapotszolgáltatót, és automatikusan létrehozza a replikaszám beállításait a három adatmegőrzési beállítás egyikének eléréséhez. Az StatePersistence attribútum nem öröklődik a származtatott osztálytól, minden aktor típusnak meg kell adnia az statePersistence szintjét.
+Az adatmegőrzés minden szintje egyszerűen egy másik *szolgáltató* és a szolgáltatás *replikációs* konfigurációja. Azt határozza meg, hogy az állapot a lemezre van-e írva, az állami szolgáltatótól függ – ez az összetevő egy megbízható szolgáltatás, amely az állapotot tárolja. A replikáció attól függ, hogy a szolgáltatás hány replikát telepít. A Reliable Serviceshoz hasonlóan az állami szolgáltató és a replika száma is könnyen beállítható manuálisan. A Actors Framework olyan attribútumot biztosít, amely egy szereplő esetében automatikusan kiválasztja az alapértelmezett állapot-szolgáltatót, és automatikusan létrehozza a replikák számának beállításait, hogy az a következő három adatmegőrzési beállítás egyikét érjen el. A származtatott osztály nem örökli a StatePersistence attribútumot, minden egyes Actor típusnak meg kell adnia a StatePersistence szintjét.
 
 ### <a name="persisted-state"></a>Megőrzött állapot
 ```csharp
@@ -39,9 +39,9 @@ class MyActorImpl  extends FabricActor implements MyActor
 {
 }
 ```  
-Ez a beállítás olyan állapotszolgáltatót használ, amely adatokat tárol a lemezen, és automatikusan 3-ra állítja a szolgáltatásreplika számát.
+Ez a beállítás egy olyan szolgáltatót használ, amely lemezen tárolja az adattárolást, és automatikusan beállítja a szolgáltatás replikáinak értékét 3-ra.
 
-### <a name="volatile-state"></a>Változékony állapot
+### <a name="volatile-state"></a>Illékony állapot
 ```csharp
 [StatePersistence(StatePersistence.Volatile)]
 class MyActor : Actor, IMyActor
@@ -54,7 +54,7 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Ez a beállítás csak a memóriában lévő állapotszolgáltatót használja, és a replikaszámot 3-ra állítja.
+Ez a beállítás csak a memóriában tárolt állapot-szolgáltatót használja, és a replika darabszámát 3-ra állítja.
 
 ### <a name="no-persisted-state"></a>Nincs megőrzött állapot
 ```csharp
@@ -69,12 +69,12 @@ class MyActorImpl extends FabricActor implements MyActor
 {
 }
 ```
-Ez a beállítás csak a memóriában lévő állapotszolgáltatót használja, és a replikaszámot 1-re állítja.
+Ez a beállítás a memóriában tárolt állapot-szolgáltatót használja, és a replika darabszámát 1-re állítja.
 
-### <a name="defaults-and-generated-settings"></a>Alapértelmezések és létrehozott beállítások
-Az attribútum használatakor `StatePersistence` az állapotszolgáltató automatikusan kiválasztódik az Ön számára futásidőben, amikor az aktor szolgáltatás elindul. A replikaszámát azonban a Visual Studio aktora készítő eszközei fordításkor állítják be. A buildeszközök automatikusan létrehoznak egy *alapértelmezett szolgáltatást* az ApplicationManifest.xml fájlban az aktorszolgáltatáshoz. Paraméterek jönnek létre a **min replikakészlet méretére** és **a célreplikakészlet méretére.**
+### <a name="defaults-and-generated-settings"></a>Alapértékek és generált beállítások
+Az `StatePersistence` attribútum használatakor a rendszer automatikusan kijelöli az állami szolgáltatót a futtatáskor, amikor a Actor szolgáltatás elindul. A replika száma azonban a Visual Studio Actor Build eszközeinek fordítási ideje szerint van beállítva. A build-eszközök automatikusan létrehozzák a Actors szolgáltatás *alapértelmezett szolgáltatását* a ApplicationManifest. xml fájlban. A paramétereket a rendszer a **minimális replika méretének** és a **célként megadott replika méretének**beállítására hozza létre.
 
-Ezeket a paramétereket manuálisan is módosíthatja. De minden `StatePersistence` alkalommal, amikor az attribútum megváltozik, a paraméterek a kijelölt `StatePersistence` attribútum alapértelmezett replikakészlet-méretértékére vannak beállítva, felülírva a korábbi értékeket. Más szóval a ServiceManifest.xml fájlban megadott értékek *csak* felülírhatók a `StatePersistence` létrehozáskor, amikor módosítja az attribútum értékét.
+Ezeket a paramétereket manuálisan is módosíthatja. Az `StatePersistence` attribútum minden módosításakor azonban a paraméterek a kiválasztott `StatePersistence` attribútum alapértelmezett replikakészlet-méret értékeire vannak beállítva, felülbírálva a korábbi értékeket. Más szóval a ServiceManifest. xml fájlban megadott értékek *csak* a kiépítési időpontban vannak felülbírálva, amikor megváltoztatja az `StatePersistence` attribútumérték értékét.
 
 ```xml
 <ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="Application12Type" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
@@ -96,28 +96,28 @@ Ezeket a paramétereket manuálisan is módosíthatja. De minden `StatePersisten
 </ApplicationManifest>
 ```
 
-## <a name="state-manager"></a>Államkezelő
-Minden aktorpéldánynak saját állapotkezelője van: egy szótárszerű adatstruktúra, amely megbízhatóan tárolja a kulcs-/értékpárokat. Az állapotkezelő egy állami szolgáltató körül van. Használhatja az adatok tárolására, függetlenül attól, hogy melyik adatmegőrzési beállítást használja. Nem nyújt garanciát arra, hogy a futó aktorszolgáltatás módosítható egy felejtő (csak a memóriában lévő) állapotbeállításról egy működés közbeni frissítéssel megőrzött állapotbeállításra, miközben megőrzi az adatokat. A futó szolgáltatás replikaszámának módosítása azonban módosítható.
+## <a name="state-manager"></a>State Manager
+Minden színészi példány saját State Managerrel rendelkezik: egy olyan szótárhoz hasonló adatstruktúra, amely megbízhatóan tárolja a kulcs/érték párokat. A State Manager egy állami szolgáltató körüli burkoló. Az adatmegőrzési beállítástól függetlenül is tárolhatja az adattárolást. Nem biztosít garanciát arra, hogy a futó Actors szolgáltatás a működés közbeni frissítéssel megőrzött állapotra vonatkozó beállítással módosítható legyen az adatok megőrzése mellett. Azonban lehetséges, hogy egy futó szolgáltatás replikáinak száma módosítható.
 
-Az állapotkezelő kulcsoknak karakterláncoknak kell lenniük. Az értékek általánosak, és bármilyen típusúak lehetnek, beleértve az egyéni típusokat is. Az állapotkezelőben tárolt értékeknek szerializálhatónak kell lenniük, mert a replikáció során a hálózaton keresztül más csomópontokra továbbíthatók, és az aktor állapotmegőrzési beállításától függően lemezre írhatók.
+Az állapot-kezelő kulcsai csak karakterláncok lehetnek. Az értékek általánosak, és bármilyen típus lehet, beleértve az egyéni típusokat is. Az állapot-kezelőben tárolt értékeknek szerializálható adategyezménynek kell lenniük, mert előfordulhat, hogy a hálózaton keresztül továbbítják őket más csomópontoknak a replikálás során, és előfordulhat, hogy a szereplő állapotának megőrzési beállításától függően lemezre íródnak.
 
-Az állapotkezelő a Megbízható szótárban találhatóhoz hasonló általános szótári módszereket tár fel az állapot kezeléséhez.
+A State Manager a megbízható szótárban találhatóhoz hasonló általános szótári módszereket tesz elérhetővé az állapot kezeléséhez.
 
-Az aktorállapot kezelésének példáihoz olvassa el [az Access, a Mentés és a Reliable Actors állapot eltávolítását.](service-fabric-reliable-actors-access-save-remove-state.md)
+Példák a Actors állapotának kezelésére, olvasási [hozzáférés, mentés és eltávolítás Reliable Actors állapot](service-fabric-reliable-actors-access-save-remove-state.md).
 
 ## <a name="best-practices"></a>Ajánlott eljárások
-Íme néhány javasolt gyakorlat és hibaelhárítási tippek az aktor állapotának kezeléséhez.
+Íme néhány ajánlott eljárás és hibaelhárítási tipp a színészi állapot kezeléséhez.
 
-### <a name="make-the-actor-state-as-granular-as-possible"></a>Az aktor állapotának a lehető legszemcsésebbé alakítása
-Ez kritikus fontosságú az alkalmazás teljesítmény- és erőforrás-használata szempontjából. Ha egy aktor "elnevezett állapotára" van írási/frissítési lehetőség, az adott "elnevezett állapotnak" megfelelő teljes érték szerializálódik, és a hálózaton keresztül elküldi a másodlagos replikáknak.  A másodlagos írási helyi lemezre, és válaszoljon vissza az elsődleges replika. Amikor az elsődleges kap nyugtázást a másodlagos replikák kvórumától, az állapotot a helyi lemezre írja. Tegyük fel például, hogy az érték egy 20 tagú és 1 MB méretű osztály. Még akkor is, ha csak az egyik osztálytagot módosította, amely 1 KB méretű, végül megkell fizetnie a szerializálás és a hálózat és a lemez írási költségeit a teljes 1 MB-ra. Hasonlóképpen, ha az érték egy gyűjtemény (például egy lista, tömb vagy szótár), akkor fizeti a teljes gyűjtemény költségét, még akkor is, ha módosítja az egyik tagja. Az aktorosztály StateManager felülete olyan, mint egy szótár. Mindig modellezze az aktorállapotot képviselő adatstruktúrát a szótár tetején.
+### <a name="make-the-actor-state-as-granular-as-possible"></a>A szereplő állapotának beállítása a lehető legrészletesebben
+Ez az alkalmazás teljesítmény-és erőforrás-használatának szempontjából kritikus fontosságú. Amikor bármilyen írás/frissítés szerepel a szereplő "nevesített állapotában", a "nevesített állapotnak" megfelelő teljes érték szerializálva van, és a hálózaton keresztül küldi el a másodlagos replikákat.  A formátumú másodlagos zónák írja a helyi lemezre, és válaszoljon vissza az elsődleges replikára. Amikor az elsődleges visszaigazolást kap a másodlagos replikák kvórumáról, a rendszer az állapotot a helyi lemezre írja. Tegyük fel például, hogy az érték egy olyan osztály, amely 20 taggal és 1 MB méretű. Még ha csak az 1. méretű osztály tagjainak egyikét módosította, akkor a teljes 1 MB-ra kifizeti a szerializálási és hálózati és lemez-írási költségeket. Hasonlóképpen, ha az érték egy gyűjtemény (például egy lista, tömb vagy szótár), akkor is a teljes gyűjtemény díját kell megfizetnie, még akkor is, ha módosítja az egyik tagot. A Actors osztály StateManager felülete a szótárhoz hasonló. Mindig modellezheti a szereplő állapotot jelképező adatstruktúrát a szótár tetején.
  
-### <a name="correctly-manage-the-actors-life-cycle"></a>A szereplő életciklusának helyes kezelése
-Egy aktorszolgáltatás minden egyes partícióján az állapot méretének kezelésével kapcsolatban egyértelmű házirendet kell rendelkeznie. Az aktor szolgáltatásnak meghatározott számú szereplővel kell rendelkeznie, és a lehető legnagyobb mértékben újra fel kell használnia őket. Ha folyamatosan új szereplőket hoz létre, törölnie kell őket, miután elvégezték a munkájukat. Az aktor keretrendszer tárolja az egyes szereplő, amely létezik néhány metaadatot. Az aktor összes állapotának törlése nem távolítja el az adott szereplő metaadatait. Törölnie kell az aktor (lásd: [a szereplők és állapotuk törlése)](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)a rendszerben tárolt összes információ eltávolításához. Egy további ellenőrzés, le kell kérdeznie az aktor szolgáltatás [(lásd: a szereplők felsorolása)](service-fabric-reliable-actors-enumerate.md)egyszer-egyszer, hogy megbizonyosodjon arról, hogy az szereplők száma a várt tartományon belül.
+### <a name="correctly-manage-the-actors-life-cycle"></a>A színész életciklusának megfelelő kezelése
+Egyértelmű szabályzattal kell rendelkeznie az állapot méretének kezeléséhez egy Actor szolgáltatás minden partícióján. A Actor szolgáltatásnak rögzített számú szereplőkkel kell rendelkeznie, és a lehető legnagyobb mértékben újra fel kell őket használni. Ha folyamatosan új szereplőkkel hoz létre, akkor azokat a munkájuk után törölnie kell. A Actors keretrendszer néhány metaadatot tárol a létező szereplőkről. Egy színész összes állapotának törlése nem távolítja el a szereplő metaadatait. Törölnie kell a szereplőt (lásd: a [szereplők törlése és állapota](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) a rendszeren tárolt összes információ eltávolításához. További ellenőrzésként le kell kérdezni a Actors szolgáltatást (lásd: [szereplők enumerálása](service-fabric-reliable-actors-enumerate.md)) egy ideje, hogy megbizonyosodjon róla, hogy a szereplők száma a várt tartományon belül van-e.
  
-Ha valaha is látja, hogy az adatbázis fájl mérete egy aktor szolgáltatás növekszik a várt méretnél nagyobb, győződjön meg arról, hogy az előző irányelveket követi. Ha követi ezeket az irányelveket, és továbbra is adatbázisfájl-méret problémák, meg kell [nyitnia egy támogatási jegyet](service-fabric-support.md) a termék csapat, hogy segítséget.
+Ha azt tapasztalja, hogy egy Actor szolgáltatás adatbázis-fájljának mérete meghaladja a várt méretet, ügyeljen arra, hogy a fenti irányelveket követi. Ha követi ezeket az irányelveket, és továbbra is az adatbázis fájlméretével kapcsolatos problémák merülnek fel, akkor segítségért [Nyisson meg egy támogatási jegyet](service-fabric-support.md) a termék csapatával.
 
 ## <a name="next-steps"></a>További lépések
 
-A Reliable Actors-ben tárolt állapotot szerializálni kell a lemezre írt és a magas rendelkezésre állás érdekében replikálódó állapotot. További információ az [Aktor típusszerializálásáról.](service-fabric-reliable-actors-notes-on-actor-type-serialization.md)
+A Reliable Actorsban tárolt állapotot szerializálni kell a lemezre írás előtt, és a magas rendelkezésre állás érdekében replikálni kell őket. További információ a [Actor típusú szerializálásról](service-fabric-reliable-actors-notes-on-actor-type-serialization.md).
 
-Ezután tudjon meg többet [a szereplő diagnosztikáról és a teljesítményfigyelésről.](service-fabric-reliable-actors-diagnostics.md)
+Következő lépésként Ismerkedjen meg a [Actor Diagnostics szolgáltatással és a teljesítmény monitorozásával](service-fabric-reliable-actors-diagnostics.md).

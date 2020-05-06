@@ -160,7 +160,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Egy Azure-fájlmegosztás visszaállításának elindításához a kérelem törzsének összetevői a következők:
 
-Name (Név) |  Típus   |   Leírás
+Name |  Típus   |   Leírás
 --- | ---- | ----
 Tulajdonságok | AzureFileShareRestoreRequest | RestoreRequestResource tulajdonságai
 
@@ -370,7 +370,7 @@ POST https://management.azure.com/Subscriptions/ef4ab5a7-c2c0-4304-af80-af49f48a
 
 Egy Azure-fájlmegosztás visszaállításának elindításához a kérelem törzsének összetevői a következők:
 
-Name (Név) |  Típus   |   Leírás
+Name |  Típus   |   Leírás
 --- | ---- | ----
 Tulajdonságok | AzureFileShareRestoreRequest | RestoreRequestResource tulajdonságai
 
