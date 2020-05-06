@@ -20,12 +20,12 @@ ms.locfileid: "67179082"
 Bizonyos korlátozások vonatkoznak a frissítésre. A következő elemek frissíthetők: 
 
 Megosztott képgyűjtemény:
-- Leírás
+- Description
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Leírás
+- Description
 - Élettartam vége
 
 Rendszerkép verziója:
