@@ -52,8 +52,6 @@
           href: create-workspace.md
         - name: Kezelés
           href: manage-workspace.md
-        - name: Hibaelhárítás
-          href: troubleshooting-creating-ml-workspace.md
         - name: Üzembe helyezés az ARM használatával
           href: deploy-with-resource-manager-template.md
     - name: Betanítási adatok importálása
@@ -84,8 +82,6 @@
               href: algorithm-parameters-optimize.md
             - name: Eredmények értelmezése
               href: interpret-model-results.md
-            - name: Hibakeresés
-              href: debug-models.md
         - name: Modellek újratanítása
           items:
             - name: „Új” webszolgáltatások
@@ -96,19 +92,12 @@
           items:
             - name: Bevezetés az R nyelv használatába
               href: r-get-started.md
-            - name: R-szkriptek végrehajtása
-              href: extend-your-experiment-with-r.md
             - name: Egyéni R-modulok létrehozása
               href: custom-r-modules.md
             - name: Python-szkriptek végrehajtása
               href: execute-python-scripts.md
     - name: Algoritmus kiválasztása
-      items:
-        - name: Algoritmusok kiválasztása
-          href: algorithm-choice.md
-        - name: Algoritmuspéldák
-          displayName: 'infographic, studio basics'
-          href: basics-infographic-with-algorithm-examples.md
+      href: algorithm-choice.md
     - name: Modellek üzembe helyezése
       items:
         - name: Webszolgáltatás üzembe helyezése
@@ -143,14 +132,6 @@
           href: consuming-from-excel.md
         - name: Excel-bővítmény használata
           href: excel-add-in-for-web-services.md
-    - name: Használati esetek
-      items:
-        - name: Ügyfélforgalom
-          href: azure-ml-customer-churn-scenario.md
-        - name: Hangulatelemzés
-          href: text-analytics-module-tutorial.md
-        - name: Elemzések migrálása Excelből a (klasszikus) Studióba
-          href: use-case-excel-studio.md
     - name: Ügyféladatok törlése és exportálása
       items:
         - name: Studio (klasszikus) adatai

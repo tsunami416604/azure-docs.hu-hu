@@ -50,7 +50,7 @@
       href: how-to-migrate-ssis-packages.md
     - name: SSIS-csomagok ismételt üzembe helyezése felügyelt Azure SQL DB-példányban
       href: how-to-migrate-ssis-packages-managed-instance.md
-- name: További források
+- name: Erőforrások
   expanded: true
   items:
     - name: Adatbázis migrációs forgatókönyvének állapota
@@ -78,7 +78,7 @@
         - name: Ismert problémák – Online migrálás Oracle-ből Azure DB for PostgreSQL-be – Egyetlen kiszolgáló
           href: known-issues-oracle-azure-postgresql-online.md
         - name: Ismert problémák – Migrálás a MongoDB-ből az Azure Cosmos DB MongoDB-hez készült API-jába
-          href: tutorial-mongodb-cosmos-db.md
+          href: known-issues-mongo-cosmos-db.md
         - name: Ismert problémák – Hibrid mód használata
           href: known-issues-dms-hybrid-mode.md
     - name: Videók
