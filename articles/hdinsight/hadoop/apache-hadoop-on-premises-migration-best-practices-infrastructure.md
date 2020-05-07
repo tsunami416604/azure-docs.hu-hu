@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: d7ee8ae121e3cbb9760a87c95d12109a9b05e0c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61d7d2a52f58162d288b1155f9724c7912e451f3
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951513"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780096"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
 
@@ -167,7 +167,7 @@ Az Azure Virtual Network és a HDInsight használata a következő forgatóköny
 - HDInsight csatlakoztatása az adattárakhoz egy Azure-beli virtuális hálózaton.
 - Közvetlenül az interneten keresztül nyilvánosan nem elérhető Hadoop-szolgáltatásokhoz férhet hozzá. Például: Kafka API-k vagy a HBase Java API.
 
-A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a HDInsight bekerül egy meglévő Virtual Networkba, a meglévő hálózati biztonsági csoportokat és a felhasználó által megadott útvonalakat frissíteni kell, hogy az Azure-adatközpont [több IP-címéhez](../hdinsight-management-ip-addresses.md) való korlátlan hozzáférést engedélyezzen. Ügyeljen arra is, hogy ne tiltsa le a HDInsight-szolgáltatások által használt [portokra](../hdinsight-plan-virtual-network-deployment.md#hdinsight-ports)irányuló forgalmat.
+A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a HDInsight bekerül egy meglévő Virtual Networkba, a meglévő hálózati biztonsági csoportokat és a felhasználó által megadott útvonalakat frissíteni kell, hogy az Azure-adatközpont [több IP-címéhez](../hdinsight-management-ip-addresses.md) való korlátlan hozzáférést engedélyezzen. Ügyeljen arra is, hogy ne tiltsa le a HDInsight-szolgáltatások által használt [portokra](../control-network-traffic.md#required-ports)irányuló forgalmat.
 
 > [!Note]  
 > A HDInsight jelenleg nem támogatja a kényszerített bújtatást. A kényszerített bújtatás egy olyan alhálózat-beállítás, amely az eszközre irányuló kimenő internetes forgalmat ellenőrzés és naplózás céljából kényszeríti. Távolítsa el a kényszerített bújtatást, mielőtt telepítené a HDInsight egy alhálózatba, vagy hozzon létre egy új alhálózatot a HDInsight. A HDInsight emellett nem támogatja a kimenő hálózati kapcsolatok korlátozását.

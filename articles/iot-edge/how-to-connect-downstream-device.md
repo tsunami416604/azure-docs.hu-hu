@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 3113f01341d2a1ec6160cfea3eb9d12d18b8495c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 49a94b8877d46cf95ec8701f470d87e187713f69
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687171"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583309"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Lefelé irányuló eszköz csatlakoztatása Azure IoT Edge-átjáróhoz
 
@@ -185,9 +185,9 @@ Ez a szakasz egy Azure IoT Java-eszköz ügyfelének egy IoT Edge átjáróhoz v
 
 Ez a szakasz egy Azure IoT Python-eszköz ügyfelének egy IoT Edge átjáróhoz való csatlakoztatására szolgáló minta alkalmazást mutat be.
 
-1. Szerezze be a **send_message** mintáját a [Python-mintákhoz készült Azure IoT Device SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)-val.
-2. Győződjön meg arról, hogy egy IoT Edge tárolóban fut, vagy hibakeresési forgatókönyvben a `EdgeHubConnectionString` és `EdgeModuleCACertificateFile` a környezeti változók vannak beállítva.
-3. A minta eszközön való futtatásával kapcsolatos útmutatásért tekintse meg az SDK dokumentációját.
+1. Szerezze be a **send_message_downstream** mintáját a [Python-mintákhoz készült Azure IoT Device SDK](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples/async-edge-scenarios)-val.
+2. Állítsa be `IOTHUB_DEVICE_CONNECTION_STRING` a `IOTEDGE_ROOT_CA_CERT_PATH` és a környezeti változót a Python-parancsfájl megjegyzései között megadott módon.
+3. A minta eszközön való futtatásával kapcsolatos további információkért tekintse meg az SDK dokumentációját.
 
 ## <a name="test-the-gateway-connection"></a>Az átjáró-kapcsolatok tesztelése
 

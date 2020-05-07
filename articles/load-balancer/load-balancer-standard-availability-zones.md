@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2019
+ms.date: 04/30/2020
 ms.author: allensu
-ms.openlocfilehash: 5a65982c5c13eb4e4273efcfd8d14910b0f35572
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ecfbc610bfa62f723e0a02b8cdeb52cd33fb5cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78197147"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853438"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
@@ -26,20 +26,20 @@ Az Azure standard Load Balancer támogatja a [rendelkezésre állási zónák](.
 
 ## <a name="availability-zones-concepts-applied-to-load-balancer"></a><a name="concepts"></a>A Load Balancerra alkalmazott fogalmak Availability Zones
 
-Egy Load Balancer erőforrás maga a régió, és nem a zóna. A konfigurálni kívánt beállítások részletességét a frontend, a szabály és a háttérrendszer-készlet definíciójának minden konfigurációja korlátozza.
-A rendelkezésre állási zónák kontextusában a Load Balanceri szabályok viselkedését és tulajdonságait a zóna-redundáns vagy a zonaer-ként írja le.  A zóna-redundáns és a zonay leírja egy tulajdonság zonality.  A Load Balancer kontextusában a zóna-redundáns mindig azt jelenti, hogy *több* zóna és a zóna is a szolgáltatás elkülönítését jelenti *egyetlen zónában*.
-Mind a nyilvános, mind a belső Load Balancer támogatja a zóna-redundáns és a zónákra kiterjedő forgatókönyveket, és mindkettő képes a zónák közötti közvetlen forgalmat igény szerint (*több zóna terheléselosztása*). 
+Egy Load Balancer erőforrás maga örökli a zóna konfigurációját az összetevőktől: a frontend, a szabály és a háttér-készlet definíciója.
+A rendelkezésre állási zónák kontextusában a Load Balanceri szabályok viselkedését és tulajdonságait a zóna-redundáns vagy a zonaer-ként írja le.  A Load Balancer kontextusában a zóna-redundáns mindig azt jelenti, hogy *több* zóna és a zóna is a szolgáltatás elkülönítését jelenti *egyetlen zónában*.
+Mindkét típus (nyilvános, belső) Load Balancer támogatási zóna – redundáns és zónákra kiterjedő forgatókönyvek, és mindkettő a zónák közötti közvetlen forgalmat is lehetővé teheti.
 
-### <a name="frontend"></a>Előtér
+## <a name="frontend"></a>Előtér
 
 A Load Balancer előtér olyan előtéri IP-konfiguráció, amely egy nyilvános IP-cím erőforrásra vagy egy virtuális hálózati erőforrás alhálózatán belüli magánhálózati IP-címére hivatkozik.  Ez az elosztott terhelésű végpontot képezi, ahol a szolgáltatás elérhető.
 Egy Load Balancer erőforrás egyszerre tartalmazhatja a zónák és a zóna redundáns előtérben található szabályokat. Ha egy nyilvános IP-erőforrás vagy egy magánhálózati IP-cím garantált egy zónához, a zonality (vagy annak hiánya) nem változtatható meg.  Ha szeretné módosítani vagy kihagyni egy nyilvános IP-cím vagy magánhálózati IP-zonality, újra létre kell hoznia a nyilvános IP-címet a megfelelő zónában.  A rendelkezésre állási zónák nem módosítják a több előtérre vonatkozó korlátozásokat, a lehetőség részleteinek megtekintéséhez tekintse át [Load Balancer több](load-balancer-multivip-overview.md) előtérbeli felületet.
 
-#### <a name="zone-redundant"></a>Felesleges zóna 
+### <a name="zone-redundant"></a>Felesleges zóna 
 
 A rendelkezésre állási zónákkal rendelkező régiókban a standard Load Balancer előtér-terület lehet redundáns.  A felesleges zóna azt jelenti, hogy az összes bejövő vagy kimenő folyamat egy adott régióban egyszerre több rendelkezésre állási zónából áll, egyetlen IP-cím használatával. A DNS-redundancia-sémák nem szükségesek. Egyetlen előtéri IP-cím képes túlélni a zóna meghibásodását, és felhasználható az összes (nem érintett) háttérbeli készlet tagjainak elérésére a zónától függetlenül. Egy vagy több rendelkezésre állási zóna meghiúsulhat, és az adatelérési út addig marad, amíg a régió egy zónája Kifogástalan állapotba kerül. A frontend egyetlen IP-címét egyszerre több független infrastruktúra-telepítés is szolgálja, több rendelkezésre állási zónában.  Ez nem jelenti azt, hogy az adatelérési út hitless, de az újrapróbálkozások és az áttelepítés a zóna meghibásodása által nem érintett más zónákban is sikeres lesz.   
 
-#### <a name="optional-zone-isolation"></a>Választható zónák elkülönítése
+### <a name="zonal"></a>Zónaszintű
 
 Dönthet úgy is, hogy egy olyan előtérben van, amely egyetlen zónában van, amely egy *zónákhoz*tartozik.  Ez azt jelenti, hogy bármely bejövő vagy kimenő folyamat egy adott régióban egyetlen zónában szolgál.  A frontend a zóna állapotával osztja meg a sorsot.  Az adatelérési útvonalat a rendszer nem érinti a nem az adott zónán kívüli zónák meghibásodása esetén. Az IP-cím rendelkezésre állási zónákban való megjelenítéséhez használhatja a zónákhoz tartozó előtérbeli felületet.  
 
@@ -51,13 +51,7 @@ Nyilvános Load Balancer előtér esetén a megfelelő szabály által használt
 
 Belső Load Balancer frontend esetén adjon hozzá egy *Zones* paramétert a belső Load Balancer előtér-IP-konfigurációhoz. A zóna-előtérbeli felület hatására a Load Balancer egy adott zónához tartozó IP-címet garantál.
 
-### <a name="cross-zone-load-balancing"></a>Zónák közötti terheléselosztás
-
-A zónák közötti terheléselosztás az Load Balancer képessége, hogy bármely zónában elérje a háttérbeli végpontot, és független a frontendtől és a zonality.  Bármely terheléselosztási szabály bármely rendelkezésre állási zónában vagy regionális példányban megcélozhatja a backend-példányt.
-
-Ügyelnie kell arra, hogy a forgatókönyvet olyan módon hozza létre, amely a rendelkezésre állási zónák fogalmát jelezte. Például garantálnia kell, hogy a virtuális gép üzembe helyezése egyetlen zónán vagy több zónán belül történjen, és a zóna-előtérben és a zónákhoz tartozó háttér-erőforrások ugyanazon zónához legyenek igazítva.  Ha a rendelkezésre állási zónákat csak a zónákhoz tartozó erőforrásokkal együtt szeretné megtekinteni, a forgatókönyv működni fog, de a rendelkezésre állási zónák tekintetében nem lehet tiszta meghibásodási mód. 
-
-### <a name="backend"></a>Háttérrendszer
+## <a name="backend"></a>Háttérrendszer
 
 A Load Balancer Virtual Machines-példányokkal működik.  Ezek lehetnek önálló, rendelkezésre állási csoportok vagy virtuálisgép-méretezési csoportok.  Az egyetlen virtuális hálózatban található virtuálisgép-példányok a háttér-készlet részét képezhetik, függetlenül attól, hogy az adott zóna számára garantált-e vagy sem, vagy hogy melyik zónában volt garantált.
 
@@ -65,13 +59,13 @@ Ha a felületet és a háttérrendszer egyetlen zónához való igazítását é
 
 Ha több zónában szeretné kezelni a virtuális gépeket, egyszerűen helyezze a virtuális gépeket több zónából ugyanabba a háttérbeli készletbe.  A virtuálisgép-méretezési csoportok használatakor egy vagy több virtuálisgép-méretezési csoport is elhelyezhető ugyanabba a háttérbeli készletbe.  A virtuálisgép-méretezési csoportok mindegyike egyetlen vagy több zónában is lehet.
 
-### <a name="outbound-connections"></a>Kimenő kapcsolatok
+## <a name="outbound-connections"></a>Kimenő kapcsolatok
 
 Ugyanez a zóna – a redundáns és a zónákra vonatkozó tulajdonságok a [kimenő kapcsolatokra](load-balancer-outbound-connections.md)vonatkoznak.  A kimenő kapcsolatokhoz használt zóna-redundáns nyilvános IP-címet az összes zóna kiszolgálja. A zónákhoz tartozó nyilvános IP-címeket csak az általa garantált zóna szolgáltatja.  A kimenő kapcsolatok SNAT a portok megmaradnak a zónákban, és a forgatókönyv továbbra is biztosítja a kimenő SNAT-kapcsolatot, ha a zóna meghibásodása nem érinti.  Ehhez szükség lehet az átvitelre vagy a kapcsolatok ismételt megadására, ha a folyamat egy érintett zóna által szolgált.  Az érintett zónáktól eltérő zónákban lévő folyamatokat a rendszer nem érinti.
 
 A SNAT port előfoglalási algoritmusa ugyanaz, mint a rendelkezésre állási zónák vagy azok nélkül.
 
-### <a name="health-probes"></a>Állapotminták
+## <a name="health-probes"></a>Állapotminták
 
 A meglévő állapot-mintavételi definíciók a rendelkezésre állási zónák nélkül maradnak.  Az egészségügyi modellt azonban infrastrukturális szinten bővítettük. 
 

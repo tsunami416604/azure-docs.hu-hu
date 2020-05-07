@@ -13,12 +13,12 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: f1437ec5d9c3fd0ff69be0c884c340cb857ee181
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 333f23ddfe834307b5cbfebb9540e0b5efc79a53
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80881282"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853782"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
 
@@ -153,12 +153,12 @@ Az `Response` elem az engedélyezési kérelem eredményét tartalmazza. Az Azur
 
 ### <a name="issuer"></a>Kiállító
 
-Az Azure AD az `Issuer` elemet arra `https://login.microsoftonline.com/<TenantIDGUID>/` az \<esetre állítja be, ahol a TenantIDGUID> az Azure ad-bérlő bérlői azonosítója.
+Az Azure AD az `Issuer` elemet arra `https://sts.windows.net/<TenantIDGUID>/` az \<esetre állítja be, ahol a TenantIDGUID> az Azure ad-bérlő bérlői azonosítója.
 
 A kiállítói elemmel kapcsolatos válasz például a következő mintához hasonlóan néz ki:
 
 ```
-<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion"> https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 ### <a name="status"></a>status
@@ -191,7 +191,7 @@ A `ID` `IssueInstant` és `Version`az Azure ad mellett a válasz `Assertion` ele
 Erre a beállításra `https://sts.windows.net/<TenantIDGUID>/`akkor \<kerül sor, ha a TENANTIDGUID> az Azure ad-bérlő bérlői azonosítója.
 
 ```
-<Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
+<Issuer>https://sts.windows.net/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
 ```
 
 #### <a name="signature"></a>Aláírás

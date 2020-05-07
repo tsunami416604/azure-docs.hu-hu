@@ -8,14 +8,14 @@ ms.workload: big-data
 ms.service: time-series-insights
 services: time-series-insights
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a62c2460698408f6a2bfa51c6638bdeaf88bb31f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faf98d4fc5bf6c7028cf7d20bdf8df89fb3d533b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083530"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838722"
 ---
 # <a name="best-practices-for-choosing-a-time-series-id"></a>Ajánlott eljárások idősorozat-AZONOSÍTÓk kiválasztásához
 
@@ -27,6 +27,7 @@ A megfelelő idősorozat-azonosító kiválasztása kritikus. Az idősorozat-azo
 
 > [!IMPORTANT]
 > Az idősorozat-azonosítók a következők:
+>
 > * *Kis-* és nagybetűket megkülönböztető tulajdonság: a levél és a karakter betokozása a keresésekben, összehasonlításokban, frissítésekben és a particionáláskor használatos.
 > * Nem *módosítható tulajdonság:* a létrehozás után nem módosítható.
 
@@ -56,7 +57,7 @@ Az alábbi forgatókönyvek több Key tulajdonság kiválasztását írják le i
 
 ### <a name="example-2-time-series-id-with-a-composite-key"></a>2. példa: idősorozat-azonosító összetett kulccsal
 
-* Több tulajdonságot is meg kell adni az azonos adatflottaon belül. 
+* Több tulajdonságot is meg kell adni az azonos adatflottaon belül.
 * Az intelligens épületek gyártója és az érzékelők üzembe helyezése minden helyiségben. Minden helyiségben általában ugyanazok az értékek szerepelnek a **sensorId**. Ilyenek például a következők: **sensor1**, **sensor2**és **sensor3**.
 * Az épület átfedésben van az alapszintű és a szobai számokkal a **flrRm**tulajdonságban található helyek között. Ezek a számok olyan értékekkel rendelkeznek, mint az **1a**, **2b**és **3A**.
 * Van egy tulajdonsága, **helye**, amely olyan értékeket tartalmaz, mint a **Redmond**, a **Barcelona**és a **Tokió**. Az egyediség létrehozásához a következő három tulajdonságot kell kijelölnie idősorozat-azonosító kulcsaiként: **sensorId**, **flrRm**és **Location**.
@@ -72,7 +73,7 @@ Példa nyers eseményre:
 }
 ```
 
-A Azure Portal az alábbi módon adhatja meg az összetett kulcsot: 
+A Azure Portal az alábbi módon adhatja meg az összetett kulcsot:
 
 ```JSON
 [{"name":"sensorId","type":"String"},{"name":"flrRm","type":"String"},{"name":"location","type":"string"}]

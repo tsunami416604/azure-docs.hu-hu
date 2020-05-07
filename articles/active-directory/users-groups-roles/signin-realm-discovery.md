@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8b6a65a964016f702fcf75aa4cbdab33a952e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1f27c7b91a78da8944c23fd353d3b6791b3e015
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74024252"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582555"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>A Azure Active Directory bejelentkezési oldalain a Kezdőlap tartományának felderítése
 
@@ -28,7 +28,7 @@ A Azure Active Directory (Azure AD) bejelentkezési viselkedését módosítjuk,
 
 A Kezdőlap tartomány felderítését a rendszer a bejelentkezéskor vagy egy örökölt alkalmazásokhoz tartozó Home Realm-felderítési szabályzatban megadott tartomány szabályozza. A felderítési viselkedésben például egy Azure Active Directory felhasználó írhatja be a felhasználónevét, de továbbra is a szervezete hitelesítőadat-gyűjtési képernyőjén fog megérkezni. Ez akkor fordul elő, ha a felhasználó helyesen adja meg a szervezet "contoso.com" tartománynevét. Ez a viselkedés nem teszi lehetővé a részletességet az egyes felhasználók élményének testreszabásához.
 
-A hitelesítő adatok szélesebb körének és a használhatóság növelésének támogatásához a bejelentkezési folyamat során Azure Active Directory Felhasználónév-keresési viselkedése frissül. Az új viselkedés intelligens döntéseket tesz, ha a bejelentkezési oldalon megadott Felhasználónév alapján beolvassa a bérlői és a felhasználói szintű beállításokat. Ennek lehetővé tételéhez Azure Active Directory ellenőrizze, hogy a bejelentkezési oldalon megadott felhasználónév létezik-e a megadott tartományban, vagy átirányítja a felhasználót a hitelesítő adatok megadásához.
+A hitelesítő adatok szélesebb körének és a használhatóság növelésének támogatásához a bejelentkezési folyamat során Azure Active Directory Felhasználónév-keresési viselkedése frissül. Az új viselkedés intelligens döntéseket tesz azáltal, hogy a bejelentkezési oldalon megadott Felhasználónév alapján szervezeti szintű és felhasználói szintű beállításokat olvas be. Ennek lehetővé tételéhez Azure Active Directory ellenőrizze, hogy a bejelentkezési oldalon megadott felhasználónév létezik-e a megadott tartományban, vagy átirányítja a felhasználót a hitelesítő adatok megadásához.
 
 A munka további előnye, hogy javul a hibaüzenetek. Íme néhány példa a továbbfejlesztett hibaüzenetekre, amikor olyan alkalmazásba jelentkezik be, amely csak Azure Active Directory felhasználókat támogat.
 

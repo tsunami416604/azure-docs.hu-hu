@@ -2,17 +2,17 @@
 title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 8a09562f14b95256ee9c2b5ba7d9c308cde66397
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: d378ece1eda906a30ec33e2cf27ad59df473b5c7
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81532204"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779909"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
-Ez a cikk a VMware virtuális gépek Azure-ba történő áttelepítésére vonatkozó előfeltételeket és támogatási követelményeket foglalja össze a Azure Migrate: Server Assessment] (Migrálás-szolgáltatások-áttekintés. MD # Azure-migrál-Server-Assessment-Tool) eszköz használatával. Ha VMware virtuális gépeket szeretne áttelepíteni az Azure-ba, tekintse át az [áttelepítési támogatási mátrixot](migrate-support-matrix-vmware-migration.md).
+Ez a cikk a VMware virtuális gépek Azure-ba történő áttelepítésére vonatkozó előfeltételeket és támogatási követelményeket összegzi a [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool) Tool használatával. Ha VMware virtuális gépeket szeretne áttelepíteni az Azure-ba, tekintse át az [áttelepítési támogatási mátrixot](migrate-support-matrix-vmware-migration.md).
 
 A VMware virtuális gépek felméréséhez létre kell hoznia egy Azure Migrate projektet, majd hozzá kell adnia a kiszolgáló-értékelési eszközt a projekthez. Az eszköz hozzáadása után üzembe helyezi a [Azure Migrate berendezést](migrate-appliance.md). A készülék folyamatosan felfedi a helyszíni gépeket, és számítógép-metaadatokat és teljesítményadatokat küld az Azure-nak. A felderítés befejezése után összegyűjtheti a felderített gépeket csoportokba, és értékelést futtathat egy csoport számára.
 
@@ -62,7 +62,7 @@ A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja 
 
 - A VMware-es [készülékekre vonatkozó követelmények](migrate-appliance.md#appliance---vmware) ismertetése.
 - Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
-- Azure Government a készüléket a szkript használatával kell telepítenie.
+- Azure Government a készüléket [a szkript használatával](deploy-appliance-script-government.md)kell telepítenie.
 
 
 ## <a name="port-access"></a>Port-hozzáférés
@@ -73,6 +73,23 @@ Berendezés | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a t�
 vCenter-kiszolgáló | A 443-es TCP-porton bejövő kapcsolatok lehetővé teszik, hogy a berendezés konfigurációs és teljesítménybeli metaadatokat gyűjtsön az értékelésekhez. <br/><br/> A készülék alapértelmezés szerint az 443-as porton csatlakozik a vCenter-hez. Ha a vCenter-kiszolgáló egy másik portot figyel, akkor a felderítés beállításakor módosíthatja a portot.
 ESXi-gazdagépek (alkalmazás-felderítés/ügynök nélküli függőség elemzése) | Ha az alkalmazások [felderítését](how-to-discover-applications.md) vagy az [ügynök nélküli függőségek elemzését](concepts-dependency-visualization.md#agentless-analysis)szeretné elvégezni, akkor a készülék a 443-as TCP-porton keresztül csatlakozik az ESXi-gazdagépekhez, hogy felderítse az alkalmazásokat, és futtassa az ügynök nélküli függőségi vizualizációt a virtuális gépeken.
 
+## <a name="application-discovery"></a>Alkalmazásfelderítés
+
+A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó alkalmazásokat, szerepköröket és szolgáltatásokat is képes észlelni. Az alkalmazás leltárának felderítése lehetővé teszi a helyszíni munkaterhelésekhez igazított áttelepítési útvonal azonosítását és megtervezését. 
+
+**Támogatás** | **Részletek**
+--- | ---
+**Támogatott gépek** | Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott.
+**Felfedezés** | Az alkalmazás felderítése ügynök nélkül történik. A számítógép vendég hitelesítő adatait használja, és távolról fér hozzá a gépekhez a WMI-és SSH-hívásokkal.
+**VM-támogatás** | Az App-Discovery minden Windows-és Linux-verzió esetében támogatott.
+**vCenter hitelesítő adatai** | Az alkalmazás-felderítésnek egy vCenter Server fiókra van szüksége, amely csak olvasási hozzáféréssel rendelkezik, és Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal rendelkezik.
+**Virtuális gép hitelesítő adatai** | Az alkalmazás-felderítés jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, valamint egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
+**VMware-eszközök** | A felderíteni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket. <br/> A VMware-eszközök verziójának későbbinek kell lennie, mint 10.2.0.
+**PowerShell** | A virtuális gépeknek telepítve kell lennie a PowerShell 2,0-es vagy újabb verziójával.
+**Port-hozzáférés** | A felderíteni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
+**Korlátok** | Az App-Discovery esetében akár 10000 virtuális gépet is felderítheti az egyes Azure Migrate berendezéseken.
+
+
 ## <a name="agentless-dependency-analysis-requirements"></a>Ügynök nélküli függőségek elemzésének követelményei
 
 A függőségek [elemzése](concepts-dependency-visualization.md) segít azonosítani az Azure-ba felmérni és áttelepíteni kívánt helyszíni gépek közötti függőségeket. A táblázat összefoglalja az ügynök nélküli függőségi elemzés beállításának követelményeit. 
@@ -82,7 +99,7 @@ A függőségek [elemzése](concepts-dependency-visualization.md) segít azonos�
 **Üzembe helyezés előtt** | Rendelkeznie kell egy Azure Migrate-projekttel, és a kiszolgáló-értékelési eszközzel hozzáadva a projekthez.<br/><br/>  A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni VMWare-gépek felderítése érdekében.<br/><br/> [Ismerje meg, hogyan](create-manage-projects.md) hozhat létre egy projektet első alkalommal.<br/> [Megtudhatja, hogyan](how-to-assess.md) adhat hozzá egy értékelési eszközt egy meglévő projekthez.<br/> [Ismerje meg, hogyan](how-to-set-up-appliance-vmware.md) állíthatja be a Azure Migrate berendezést a VMWare virtuális gépek kiértékeléséhez.
 **VM-támogatás** | Jelenleg csak a VMware virtuális gépek esetében támogatott.
 **Windows rendszerű virtuális gépek** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bites).
-**Windows-fiók** |  A függőségek elemzéséhez a Azure Migrate készüléknek helyi vagy tartományi rendszergazdai fiókra van szüksége a Windows rendszerű virtuális gépek eléréséhez.
+**Windows-fiók** |  A függőségek elemzéséhez a Azure Migrate készüléknek tartományi rendszergazdai fiókra vagy helyi rendszergazdai fiókra van szüksége a Windows rendszerű virtuális gépek eléréséhez.
 **Linux rendszerű virtuális gépek** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
 **Linux-fiók** | A függőségek elemzéséhez Linux rendszerű gépeken a Azure Migrate berendezésnek rendszergazdai jogosultsággal rendelkező felhasználói fiókra van szüksége.<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
 **Szükséges ügynökök** | Nem szükséges ügynök az elemezni kívánt gépeken.

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
 ms.reviewer: jonbeck
-ms.openlocfilehash: df22c857571e51bb886ff1d25db185a306999540
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420875"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839062"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Nagy teljesítményű számítástechnikai VM-méretek
 
@@ -39,7 +39,7 @@ Az Azure H-sorozatú virtuális gépek (VM-EK) úgy vannak kialakítva, hogy vez
 
 ## <a name="rdma-capable-instances"></a>RDMA-kompatibilis példányok
 
-A HPC VM-méretek többsége (HBv2, HB, HC, H16r, H16mr, A8 és A9) egy hálózati adaptert biztosít a távoli közvetlen memória-hozzáférés (RDMA) kapcsolatához. A kiválasztott [N-Series]https://docs.microsoft.com/azure/virtual-machines/nc-series) (az r-vel jelölt méretek, például a NC24rs konfigurációk (NC24rs_v3, NC24rs_v2 és NC24r) szintén RDMA-kompatibilisek. Ez az interfész a más virtuálisgép-méretekben elérhető szabványos Azure-hálózati adapteren felül van.
+A HPC VM-méretek többsége (HBv2, HB, HC, H16r, H16mr, A8 és A9) egy hálózati adaptert biztosít a távoli közvetlen memória-hozzáférés (RDMA) kapcsolatához. Az "r" jelölésű kiválasztott [N sorozatú](https://docs.microsoft.com/azure/virtual-machines/nc-series) méretek (például a NC24rs konfigurációk (NC24rs_v3, NC24rs_v2 és NC24r) is RDMA-kompatibilisek. Ez az interfész a más virtuálisgép-méretekben elérhető szabványos Azure-hálózati adapteren felül van.
 
 Ez az interfész lehetővé teszi, hogy a RDMA-kompatibilis példányok InfiniBand (IB) hálózaton keresztül kommunikáljanak, a HBv2 HDR-díjszabása, a HB, az HC, a FDR díjszabása pedig a H16r, a H16mr és a RDMA-kompatibilis N sorozatú virtuális gépek esetében, valamint az A8-as és A9-es VM-EK QDR-díjait. Ezek a RDMA-képességek növelhetik bizonyos Message Passing Interface-(MPI-) alkalmazások méretezhetőségét és teljesítményét. A sebességgel kapcsolatos további információkért tekintse meg az ezen a lapon található táblázatok részleteit.
 
@@ -92,7 +92,7 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 - **Virtual Machines** – a RDMA-kompatibilis HPC-alapú virtuális gépeket ugyanabban a méretezési csoporton vagy rendelkezésre állási csoporton helyezheti üzembe (ha a Azure Resource Manager üzembe helyezési modellt használja). Ha a klasszikus üzemi modellt használja, telepítse a virtuális gépeket ugyanabban a felhőalapú szolgáltatásban.
 
-- **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoport (VMSS) esetében ügyeljen arra, hogy a központi telepítést egyetlen elhelyezési csoportra korlátozza. Például egy Resource Manager-sablonban állítsa be a `singlePlacementGroup` tulajdonságot a `true`következőre:. Vegye figyelembe, hogy a `singlePlacementGroup` tulajdonsággal megadható maximális VMSS- `true` méret alapértelmezés szerint 100 virtuális gépenként van korlátozva. Ha a HPC-feladatok skálázása egy VMSS-bérlőnél több mint 100 virtuális gépre van szüksége, akkor a növeléshez igénybe vehet egy [online ügyfélszolgálati kérést](../azure-supportability/how-to-create-azure-support-request.md) ingyenesen.
+- **Virtuálisgép-méretezési** csoportok – egy virtuálisgép-méretezési csoportban (VMSS) ellenőrizze, hogy a központi telepítést egyetlen elhelyezési csoportra korlátozza-e a VMSS belüli InfiniBand-kommunikációra. Például egy Resource Manager-sablonban állítsa be a `singlePlacementGroup` tulajdonságot a `true`következőre:. Vegye figyelembe, hogy a `singlePlacementGroup` tulajdonsággal megadható maximális VMSS- `true` méret alapértelmezés szerint 100 virtuális gépenként van korlátozva. Ha a HPC-feladatok skálázása egy VMSS-bérlőnél több mint 100 virtuális gépre van szüksége, akkor a növeléshez igénybe vehet egy [online ügyfélszolgálati kérést](../azure-supportability/how-to-create-azure-support-request.md) ingyenesen. Az egyetlen VMSS lévő virtuális gépek számának korlátja 300-ra növelhető. Vegye figyelembe, hogy a virtuális gépek a rendelkezésre állási csoportokkal való telepítésekor a maximális korlát a rendelkezésre állási csoporton 200 virtuális gépenként érhető el.
 
 - **MPI a virtuális gépek között** – ha RDMA (például MPI-kommunikációt használ) a virtuális gépek (VM-EK) között kell lennie, ügyeljen arra, hogy a virtuális gépek ugyanabban a virtuálisgép-méretezési csoporton vagy rendelkezésre állási csoporton belül legyenek.
 
@@ -129,6 +129,6 @@ Az Azure számos lehetőséget kínál a RDMA-hálózattal kommunikáló Windows
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ az Azure-beli HPC-alkalmazás optimalizálásáról és néhány példa a [HPC-munkaterhelések] (https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
+- További információ az Azure-hoz készült HPC-alkalmazás optimalizálásáról és néhány példa a [HPC-Munkaterhelésekre](https://docs.microsoft.com/azure/virtual-machines/workloads/hpc/overview) 
 
 - További információ arról, hogy az [Azure számítási egységei (ACU)](acu.md) hogyan segíthetnek az Azure SKU-ban a számítási teljesítmény összehasonlításában.

@@ -63,6 +63,9 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Azure Resource Manager
@@ -81,6 +84,8 @@
           href: ../virtual-network/virtual-network-optimize-network-bandwidth.md?toc=%2fazure%2fvirtual-machine-scale-sets%2fwindows%2ftoc.json
         - name: Tartalék tartományok kezelése méretezési csoportokban
           href: virtual-machine-scale-sets-manage-fault-domains.md
+    - name: Képek
+      href: shared-image-galleries.md
     - name: Virtuálisgép-típusok és -méretek
       href: ../virtual-machines/windows/sizes.md
       maintainContext: true
@@ -184,6 +189,51 @@
           href: virtual-machine-scale-sets-design-overview.md
         - name: A példányazonosítók ismertetése
           href: virtual-machine-scale-sets-instance-ids.md
+    - name: Rendszerképek használata
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Megosztott rendszerkép-katalógusok
+          items:
+            - name: PowerShell
+              items:
+                - name: Katalógus létrehozása
+                  href: ../virtual-machines/shared-images-powershell.md
+                - name: Rendszerkép létrehozása
+                  items:
+                    - name: Virtuális gépről
+                      href: ../virtual-machines/image-version-vm-powershell.md
+                    - name: Migrálás felügyelt rendszerképből
+                      href: ../virtual-machines/image-version-managed-image-powershell.md
+                    - name: Másolás másik katalógusból
+                      href: ../virtual-machines/image-version-another-gallery-powershell.md
+                - name: Méretezési csoport létrehozása
+                  items:
+                    - name: Specializált
+                      href: instance-specialized-image-version-powershell.md
+                    - name: Általánosított
+                      href: instance-generalized-image-version-powershell.md
+                - name: Rendszerkép-erőforrások frissítése
+                  href: ../virtual-machines/update-image-resources-powershell.md
+            - name: parancssori felület
+              items:
+                - name: Katalógus létrehozása
+                  href: ../virtual-machines/shared-images-cli.md
+                - name: Rendszerkép létrehozása
+                  items:
+                    - name: Virtuális gépről
+                      href: ../virtual-machines/image-version-vm-cli.md
+                    - name: Migrálás felügyelt rendszerképből
+                      href: ../virtual-machines/image-version-managed-image-cli.md
+                    - name: Másolás másik katalógusból
+                      href: ../virtual-machines/image-version-another-gallery-cli.md
+                - name: Méretezési csoport létrehozása
+                  items:
+                    - name: Specializált
+                      href: instance-specialized-image-version-cli.md
+                    - name: Általánosított
+                      href: instance-generalized-image-version-cli.md
+                - name: Rendszerkép-erőforrások frissítése
+                  href: ../virtual-machines/update-image-resources-cli.md
     - name: Sablon létrehozása
       items:
         - name: Információk a méretezési csoportok sablonjairól

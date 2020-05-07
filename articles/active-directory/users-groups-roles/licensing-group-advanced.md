@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 139d7e0cf2b57cc466dc97370b90a599257ce755
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0af897ca284b1d51867808c2c74496c73e9bdcc3
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266285"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582780"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
 
@@ -100,7 +100,7 @@ Kezdetben a felhasználó csak az *alapszintű E3 Services* -csoportból örökl
 
 ## <a name="managing-new-services-added-to-products"></a>A termékekhez hozzáadott új szolgáltatások kezelése
 
-Ha a Microsoft új szolgáltatást hoz létre egy termék-licencelési csomaghoz, alapértelmezés szerint engedélyezve van minden olyan csoportban, amelyhez hozzárendelte a licencet. A bérlő azon felhasználói, akik a termék módosításaira vonatkozó értesítésekre előfizetnek, e-maileket kapnak a közelgő szolgáltatási kiegészítésekkel kapcsolatos értesítésekről.
+Ha a Microsoft új szolgáltatást hoz létre egy termék-licencelési csomaghoz, alapértelmezés szerint engedélyezve van minden olyan csoportban, amelyhez hozzárendelte a licencet. A szervezet azon felhasználói, akik a termék módosításaira vonatkozó értesítésekre előfizetnek, e-maileket kapnak a közelgő szolgáltatási kiegészítésekkel kapcsolatos értesítésekről.
 
 Rendszergazdaként áttekintheti a változás által érintett összes csoportot, és megteheti a műveletet, például letilthatja az új szolgáltatást az egyes csoportokban. Ha például olyan csoportokat hozott létre, amelyek csak meghatározott szolgáltatásokat céloznak meg a központi telepítéshez, akkor újra megtekintheti ezeket a csoportokat, és gondoskodhat arról, hogy az újonnan hozzáadott szolgáltatások le legyenek tiltva.
 
@@ -108,7 +108,7 @@ Rendszergazdaként áttekintheti a változás által érintett összes csoportot
 
 1. Eredetileg az *Office 365 Enterprise E5* terméket rendelte több csoporthoz. A *O365 E5-Exchange-* nek nevezett csoportok egyike csak az *Exchange Online (2. csomag)* szolgáltatásnak a tagjai számára történő engedélyezését szolgálja.
 
-2. A Microsofttól értesítést kapott arról, hogy az E5 termék ki lesz bővítve egy új szolgáltatás- *Microsoft stream*. Ha a szolgáltatás elérhetővé válik a bérlőben, a következőket teheti:
+2. A Microsofttól értesítést kapott arról, hogy az E5 termék ki lesz bővítve egy új szolgáltatás- *Microsoft stream*. Ha a szolgáltatás elérhetővé válik a szervezetében, a következőket teheti:
 
 3. Lépjen a [**Azure Active Directory > licencek > minden termék**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) panelre, és válassza az *Office 365 Enterprise E5*lehetőséget, majd válassza a **licencelt csoportok** lehetőséget az adott termékkel rendelkező csoportok listájának megtekintéséhez.
 
@@ -128,9 +128,9 @@ Rendszergazdaként áttekintheti a változás által érintett összes csoportot
 ## <a name="use-powershell-to-see-who-has-inherited-and-direct-licenses"></a>A PowerShell használatával megtekintheti, hogy ki örökölt és közvetlen licenceket
 A PowerShell-parancsfájlok segítségével ellenőrizhető, hogy a felhasználók rendelkeznek-e közvetlenül vagy egy csoporttól örökölt licenccel.
 
-1. Futtassa a `connect-msolservice` parancsmagot a bérlő hitelesítéséhez és a hozzá való kapcsolódáshoz.
+1. Futtassa a `connect-msolservice` parancsmagot a hitelesítéshez és a szervezethez való kapcsolódáshoz.
 
-2. `Get-MsolAccountSku`a bérlő összes kiépített termék-licencének felderítésére használható.
+2. `Get-MsolAccountSku`Az Azure AD-szervezet összes kiépített termék-licencének felderítésére használható.
 
    ![A Get-Msolaccountsku parancsmag képernyőképe](./media/licensing-group-advanced/get-msolaccountsku-cmdlet.png)
 

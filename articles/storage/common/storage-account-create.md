@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/07/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: c2d1e8b4975be0657983192df00cc434da00a6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ff7db383a74ce01f7f1a7bf49a33e41f91decf8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255404"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853499"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Nincs.
+Nincsenek.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -67,7 +67,7 @@ Az Azure CLI-t helyben is telepítheti és használhatja. Ehhez a cikkhez az Azu
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-Nincs.
+Nincsenek.
 
 ---
 
@@ -152,8 +152,8 @@ Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storag
 |Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
-|Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió)    |Standard_GZRS         |
-|Olvasási hozzáférésű geo-Zone-redundáns tárolás (RA-GZRS) (előzetes verzió)    |Standard_RAGZRS         |
+|Geo-zónaredundáns tárolás (GZRS)    |Standard_GZRS         |
+|Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -195,12 +195,12 @@ Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storag
 |Zónaredundáns tárolás (ZRS)     |Standard_ZRS         |
 |Georedundáns tárolás (GRS)     |Standard_GRS         |
 |Írásvédett georedundáns tárolás (GRS)     |Standard_RAGRS         |
-|Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió)    |Standard_GZRS         |
-|Olvasási hozzáférésű geo-Zone-redundáns tárolás (RA-GZRS) (előzetes verzió)    |Standard_RAGZRS         |
+|Geo-zónaredundáns tárolás (GZRS)    |Standard_GZRS         |
+|Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)    |Standard_RAGZRS         |
 
 # <a name="template"></a>[Sablon](#tab/template)
 
-Az Azure PowerShell vagy az Azure CLI használatával üzembe helyezhet egy Resource Manager-sablont egy Storage-fiók létrehozásához. Az ebben a útmutatóban használt sablon [Azure Resource Manager Gyorsindítás sablonokból](https://azure.microsoft.com/resources/templates/101-storage-account-create/)származik. A parancsfájlok futtatásához válassza a **kipróbálás** lehetőséget az Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**lehetőséget.
+A Storage-fiók létrehozásához használhatja a Azure PowerShell vagy az Azure CLI-t is egy Resource Manager-sablon üzembe helyezéséhez. Az ebben a útmutatóban használt sablon [Azure Resource Manager Gyorsindítás sablonokból](https://azure.microsoft.com/resources/templates/101-storage-account-create/)származik. A parancsfájlok futtatásához válassza a **kipróbálás** lehetőséget a Azure Cloud Shell megnyitásához. A szkript beillesztéséhez kattintson a jobb gombbal a rendszerhéjra, majd válassza a **Beillesztés**lehetőséget.
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"

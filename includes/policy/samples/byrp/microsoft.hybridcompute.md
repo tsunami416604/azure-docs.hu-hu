@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: d14f31741147ebe497efbf47b077e41c31b36b7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff2a55d9eb7b5c0787c5327ea34338a7efb90da0
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82653280"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836571"
 ---
-|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name |Description |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Azon Windows-alapú virtuális gépek naplózása, amelyeken nincs engedélyezve a Windows Defender Exploit Guard](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |A Windows Defender Exploit Guard védelmet nyújt a kártevők elleni védelemben, amely az eszközök és a terjesztés használatát teszi lehetővé. A biztonsági rések védelme számos, az operációs rendszerre vagy az egyes alkalmazásokra alkalmazható enyhítési lehetőségből áll. Ehhez a Szabályzathoz a Windows-bővítmény Azure Policy szükséges. Részletekért keresse fel [https://aks.ms/gcpol](https://aks.ms/gcpol)a következőt:. |AuditIfNotExists, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |
 |[Állítsa be az időzónát a Windows rendszerű gépeken.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F6141c932-9384-44c6-a395-59e4c057d7c9) |Ez a házirend egy vendég-konfigurációs hozzárendelést hoz létre a megadott időzóna beállításához a Windows rendszerű virtuális gépeken. |deployIfNotExists |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_SetWindowsTimeZone_Deploy.json) |

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: f68f973882af28d80b3a27bc4591c5ee932404a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443604"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839113"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics kimenet Azure SQL Database
 
@@ -24,7 +24,7 @@ A Azure Stream Analyticsban az SQL-kimenet támogatja az írást párhuzamosan, 
 
 ## <a name="azure-stream-analytics"></a>Azure Stream Analytics
 
-- **Particionálás öröklése** – ez az SQL kimeneti konfigurációs beállítás lehetővé teszi az előző lekérdezési lépés vagy bemenet particionálási sémájának öröklését. Ezzel a beállítással egy lemezes táblára írhat, és [teljes mértékben párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topológiával rendelkezik a feladatokhoz, ezért várhatóan jobb teljesítmény érhető el. Ez a particionálás már automatikusan megtörténik számos más [kimenetnél](stream-analytics-parallelization.md#partitions-in-sources-and-sinks). A tábla zárolása (TABLOCK opció) le van tiltva az ezzel a kapcsolóval készített tömeges beszúrások esetében is.
+- **Particionálás öröklése** – ez az SQL kimeneti konfigurációs beállítás lehetővé teszi az előző lekérdezési lépés vagy bemenet particionálási sémájának öröklését. Ezzel a beállítással egy lemezes táblára írhat, és [teljes mértékben párhuzamos](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topológiával rendelkezik a feladatokhoz, ezért várhatóan jobb teljesítmény érhető el. Ez a particionálás már automatikusan megtörténik számos más [kimenetnél](stream-analytics-parallelization.md#partitions-in-inputs-and-outputs). A tábla zárolása (TABLOCK opció) le van tiltva az ezzel a kapcsolóval készített tömeges beszúrások esetében is.
 
 > [!NOTE] 
 > Ha több mint 8 bemeneti partíció van, akkor előfordulhat, hogy a bemeneti particionálási séma öröklése nem megfelelő választás. Ez a felső korlát egyetlen azonosító oszlopot és egy fürtözött indexet tartalmazó táblában volt megfigyelve. Ebben az esetben [érdemes a lekérdezésben 8-](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) at használni, hogy explicit módon meg lehessen adni a kimeneti írók számát. A séma és az indexek kiválasztása alapján a megfigyelések eltérőek lehetnek.
