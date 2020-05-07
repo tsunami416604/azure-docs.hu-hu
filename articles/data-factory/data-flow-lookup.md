@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/23/2020
-ms.openlocfilehash: af4e33e2653aebe5d1c979aa314463e4beb7b0d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233397"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594321"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Keresési átalakítás a leképezési adatfolyamban
 
@@ -23,7 +23,7 @@ A keresési transzformáció használatával hivatkozhat egy adatfolyamban talá
 
 A keresési transzformáció hasonló a bal külső illesztéshez. Az elsődleges adatfolyamból származó összes sor a kimeneti adatfolyamban található, és a keresési adatfolyam további oszlopaival is rendelkezik. 
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ![Keresési transzformáció](media/data-flow/lookup1.png "Keresés")
 
@@ -33,7 +33,7 @@ A keresési transzformáció hasonló a bal külső illesztéshez. Az elsődlege
 
 **Több sor egyeztetése:** Ha engedélyezve van, az elsődleges adatfolyamban több egyezést tartalmazó sor több sort ad vissza. Ellenkező esetben csak egyetlen sor lesz visszaadva a "Match on" feltétel alapján.
 
-**Egyezés:** Csak akkor látható, ha engedélyezve van több sor egyeztetése. Válassza ki, hogy az összes sor, az első egyezés vagy az utolsó egyezés egyezik-e. Minden sor ajánlott, mert a leggyorsabb végrehajtást hajtja végre. Ha az első sor vagy az utolsó sor van kiválasztva, meg kell adnia a rendezési feltételeket.
+**Egyezés:** Csak akkor látható, ha nincs bejelölve a "több sor egyeztetése" beállítás. Válassza ki, hogy az összes sor, az első egyezés vagy az utolsó egyezés egyezik-e. Minden sor ajánlott, mert a leggyorsabb végrehajtást hajtja végre. Ha az első sor vagy az utolsó sor van kiválasztva, meg kell adnia a rendezési feltételeket.
 
 **Keresési feltételek:** Válassza ki, hogy mely oszlopok egyeznek meg. Ha az egyenlőségi feltétel teljesül, a sorok egyezésnek tekintendők. Vigye a kurzort, és válassza a "számított oszlop" lehetőséget egy érték kinyeréséhez az [adatfolyam kifejezésének nyelvével](data-flow-expression-functions.md).
 

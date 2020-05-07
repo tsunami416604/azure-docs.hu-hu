@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8a49bc979923bf52d099e30615910c5bdb0601b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5e0eda72f39a70f02b596a8fd69728336eac333
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279857"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594814"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
 
@@ -177,9 +177,9 @@ A Azure Resource Manager háromrétegű sablonjai a magas rendelkezésre állás
 
 Itt bemutathatja Azure Resource Manager sablonokat a jelen cikkben ismertetett példához:
 
-* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
+* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace-rendszerkép az Azure Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
-* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/)
 * [Egyéni rendszerkép Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 Az infrastruktúra előkészítése az 1. építészeti sablonhoz:
@@ -270,9 +270,9 @@ Ezt a Azure Resource Manager-sablont használhatja az SAP-hez, hogy egyszerűbb�
 
 A következő helyen kaphat Azure Resource Manager sablonokat ehhez a telepítési forgatókönyvhöz:
 
-* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
+* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/)  
 * [Azure Marketplace-rendszerkép Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
-* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/)
 * [Egyéni rendszerkép Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 
@@ -524,7 +524,7 @@ Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni
 1. A Azure Portal válassza a ** \<SID\>-LB-ASCs terheléselosztó** > terheléselosztási**szabályok**elemet.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Name (Név)
+   * Name
    * Port
    * Háttérbeli port
 

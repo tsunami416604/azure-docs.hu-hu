@@ -1,21 +1,21 @@
 ---
-title: A hírcsatorna-feldolgozó függvénytárának módosítása Azure Cosmos DB
-description: Megtudhatja, hogyan használhatja a Azure Cosmos DB változása a hírcsatorna-feldolgozó függvénytárat a változási hírcsatorna beolvasásához
-author: markjbrown
-ms.author: mjbrown
+title: A változáscsatorna feldolgozója az Azure Cosmos DB-ben
+description: Megtudhatja, hogyan használhatja a Azure Cosmos DB Change feed processzort a változási hírcsatorna beolvasására, a változási hírcsatorna processzorának összetevőire
+author: timsander1
+ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 4/29/2020
 ms.reviewer: sngun
-ms.openlocfilehash: e71b2807595aebeb1f0c8682fde119f4e267e55d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d069df0a095cc0356cd61155dde875a5d92ed18d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273309"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594151"
 ---
-# <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben 
+# <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
 
 A Change feed processzor a [Azure Cosmos db SDK v3](https://github.com/Azure/azure-cosmos-dotnet-v3)részét képezi. Leegyszerűsíti a változási csatorna olvasásának folyamatát, és az események feldolgozását a több fogyasztó számára is hatékonyan terjeszti.
 
@@ -23,13 +23,13 @@ A Change feed Processor Library fő előnye a hibatűrő viselkedés, amely bizt
 
 ## <a name="components-of-the-change-feed-processor"></a>A módosítási hírcsatorna processzorának összetevői
 
-A módosítási hírcsatorna processzorának megvalósításának négy fő összetevője van: 
+A módosítási hírcsatorna processzorának megvalósításának négy fő összetevője van:
 
 1. **A figyelt tároló:** A figyelt tárolóban szerepelnek azok az adatok, amelyekről a változási csatornát létrehozták. A figyelt tároló összes beszúrása és frissítése megjelenik a tároló változási hírcsatornájában.
 
-1. **A bérlet tárolója:** A bérlet tároló állapot-tárolóként működik, és koordinálja a változási csatornát több feldolgozón keresztül. A bérlet tároló a figyelt tárolóval megegyező fiókban vagy egy külön fiókban is tárolható. 
+1. **A bérlet tárolója:** A bérlet tároló állapot-tárolóként működik, és koordinálja a változási csatornát több feldolgozón keresztül. A bérlet tároló a figyelt tárolóval megegyező fiókban vagy egy külön fiókban is tárolható.
 
-1. **A gazdagép:** A gazdagép egy olyan alkalmazás-példány, amely a változási hírcsatorna-feldolgozó használatával figyeli a módosításokat. Az azonos címbérleti konfigurációval rendelkező példányok párhuzamosan futhatnak, de minden példánynak más **példánynév**is kell lennie. 
+1. **A gazdagép:** A gazdagép egy olyan alkalmazás-példány, amely a változási hírcsatorna-feldolgozó használatával figyeli a módosításokat. Az azonos címbérleti konfigurációval rendelkező példányok párhuzamosan futhatnak, de minden példánynak más **példánynév**is kell lennie.
 
 1. **A delegált:** A delegált az a kód, amely meghatározza, hogy az Ön és a fejlesztő milyen módosításokat szeretne végrehajtani a változási hírcsatorna-feldolgozó által beolvasott minden egyes kötegben. 
 
@@ -65,7 +65,11 @@ A gazdagép-példányok normál életciklusa:
 
 ## <a name="error-handling"></a>Hibakezelés
 
-A módosítási hírcsatorna processzora a felhasználói kódok hibáira is rugalmas. Ez azt jelenti, hogy ha a delegált implementációja kezeletlen kivételt tartalmaz (#4. lépés), akkor a rendszer leállítja a szál feldolgozását, és létrehoz egy új szálat. Az új szál azt vizsgálja, hogy a címbérleti tároló milyen legkésőbbi időpontot adott a partíciós kulcs értékeinek, és onnan indítsa újra a rendszert, és így gyakorlatilag ugyanazt a köteget küldi el a delegált állapotnak. Ez a viselkedés mindaddig folytatódni fog, amíg a delegált nem dolgozza fel megfelelően a módosításokat, és ez az oka, hogy a változási hírcsatorna processzorának "legalább egyszer" garanciája van, mert ha a delegált kód dob, akkor újra próbálkozik a kötegtel.
+A módosítási hírcsatorna processzora a felhasználói kódok hibáira is rugalmas. Ez azt jelenti, hogy ha a delegált implementációja kezeletlen kivételt tartalmaz (#4. lépés), akkor a rendszer leállítja a szál feldolgozását, és létrehoz egy új szálat. Az új szál azt vizsgálja, hogy a címbérleti tároló milyen legkésőbbi időpontot adott a partíciós kulcs értékeinek, és onnan indítsa újra a rendszert, és így gyakorlatilag ugyanazt a köteget küldi el a delegált állapotnak. Ez a viselkedés mindaddig folytatódni fog, amíg a delegált nem dolgozza fel megfelelően a módosításokat, és ez az oka, hogy a változási hírcsatorna processzorának "legalább egyszer" garanciája van, mert ha a delegált kód kivételt jelez, akkor a köteget újra próbálkozik.
+
+Ha meg szeretné akadályozni, hogy a Change feed processzora "ragadt" állapotba lépjen, és ne próbálkozzon ugyanazzal a módosítással, adja hozzá a meghatalmazott kódjában található logikát, hogy a rendszer kivétel esetén a kézbesítetlen levelek várólistáján jegyezze fel a dokumentumokat. Ez a kialakítás biztosítja, hogy nyomon követheti a feldolgozatlan módosításokat, miközben továbbra is képes tovább dolgozni a jövőbeli változásokat. Előfordulhat, hogy a kézbesítetlen levelek várólistája egyszerűen egy másik Cosmos-tároló. A pontos adattár nem számít, csupán azt, hogy a feldolgozatlan módosítások megmaradnak.
+
+Emellett a váltás a hírcsatorna- [kalkulátor](how-to-use-change-feed-estimator.md) használatával című cikk segítségével figyelheti a változási csatornához tartozó példányok állapotát, ahogy beolvasták a változási csatornát. A figyelésen kívül, ha a Change feed processzora "ragadt" állapotba kerül, és folyamatosan próbálkozik ugyanazzal a módosítással, akkor azt is megtudhatja, hogy a változási csatorna processzora a rendelkezésre álló erőforrások, például a processzor, a memória és a hálózati sávszélesség miatt marad-e hátra.
 
 ## <a name="dynamic-scaling"></a>Dinamikus méretezés
 
@@ -85,7 +89,7 @@ Emellett a változási hírcsatorna processzora dinamikusan alkalmazkodik a tár
 
 A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adatáthelyezés mindig RUs-t használ. A bérleti tároló által felhasznált RUs díjait kell fizetnie.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md)
 * [Használati minták a GitHubon](https://github.com/Azure/azure-cosmos-dotnet-v3/tree/master/Microsoft.Azure.Cosmos.Samples/Usage/ChangeFeed)

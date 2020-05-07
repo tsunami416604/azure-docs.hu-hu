@@ -3,12 +3,12 @@ title: A Recovery Services-tárolók áttekintése
 description: Áttekintés és összehasonlítás Recovery Services-tárolók és Azure Backup-tárolók között.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: e6a359287533c9ffdd688b5285b24b9c70fa7b7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436963"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597950"
 ---
 # <a name="recovery-services-vaults-overview"></a>A helyreállítási tárak áttekintése
 
@@ -79,6 +79,14 @@ A következő szakaszokban olyan cikkekre mutató hivatkozások találhatók, am
 ### <a name="secure-the-vault"></a>A tár védelme
 
 - [A Felhőbeli biztonsági másolatok védelmének biztosítása Recovery Services-tárolókban](backup-azure-security-feature.md)
+
+## <a name="azure-advisor"></a>Azure Advisor
+
+A [Azure Advisor](https://docs.microsoft.com/azure/advisor/) egy személyre szabott felhőalapú tanácsadó, amely segít optimalizálni az Azure használatát. Elemzi az Azure-használatot, és időben ajánlásokat nyújt az üzemelő példányok optimalizálásához és biztonságossá tételéhez. Négy kategóriában nyújt javaslatokat: magas rendelkezésre állás, biztonság, teljesítmény és költséghatékonyság.
+
+A Azure Advisor óránként [javaslatokat](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations#protect-your-virtual-machine-data-from-accidental-deletion) nyújt a virtuális gépekről, amelyekről nem készül biztonsági mentés, így soha nem marad a fontos virtuális gépek biztonsági mentése. Az ajánlásokat úgy is szabályozhatja, hogy a késleltetéssel megadhatja őket.  Kattintson a javaslatra, és engedélyezze a biztonsági mentést a virtuális gépeken, a tároló (a biztonsági másolatok tárolási helye) és a biztonsági mentési szabályzat (biztonsági mentések ütemezése és biztonsági másolatok megőrzése) megadásával.
+
+![Azure Advisor](./media/backup-azure-recovery-services-vault-overview/azure-advisor.png)
 
 ## <a name="next-steps"></a>További lépések
 

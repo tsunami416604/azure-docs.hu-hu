@@ -6,13 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
-ms.custom: seodec18
-ms.openlocfilehash: 914551bab47ad9db4e0bca4d53226fbae74b92f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411669"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608030"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
 
@@ -30,9 +30,9 @@ Az Azure Storage Explorer legújabb elemei innen telepíthetők: [Azure Storage 
 ## <a name="connect-to-an-azure-subscription"></a>Csatlakozás Azure-előfizetéshez
 
 1. Az **Azure Storage Explorer** telepítését követően kattintson a bal oldali **beépülő modul** ikonra, ahogy az alábbi képen is látható:
-       
+
    ![Beépülő modul ikon](./media/storage-explorer/plug-in-icon.png)
- 
+
 2. Válassza az **Azure-fiók hozzáadása** elemet, majd kattintson a **Bejelentkezés** gombra.
 
    ![Csatlakozás Azure-előfizetéshez](./media/storage-explorer/connect-to-azure-subscription.png)
@@ -100,27 +100,27 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 * Emellett Azure Cosmos DB-fiókot, -adatbázist és -gyűjteményt is hozzáadhat a **gyorselérési** eszköztárhoz.
 * A **Keresés innen** funkció lehetővé teszi a kulcsszavaknak a kijelölt útvonalon történő keresését.
 
-    ![keresés innen:](./media/storage-explorer/search-from-here.png) 
+    ![keresés innen:](./media/storage-explorer/search-from-here.png)
 
 ### <a name="database-and-collection-management"></a>Adatbázisok és gyűjtemények kezelése
-#### <a name="create-a-database"></a>Adatbázis létrehozása 
+#### <a name="create-a-database"></a>Adatbázis létrehozása
 -   Kattintson a jobb gombbal az Azure Cosmos DB-fiókra, válassza az **Adatbázis létrehozása** elemet, adja meg az adatbázis nevét, majd a befejezéshez nyomja le az **Enter** billentyűt.
-       
-    ![Adatbázis létrehozása](./media/storage-explorer/create-database.png) 
+
+    ![Adatbázis létrehozása](./media/storage-explorer/create-database.png)
 
 #### <a name="delete-a-database"></a>Adatbázis törlése
 - Kattintson a jobb gombbal az adatbázisra, kattintson az **Adatbázis törlése** elemre, majd kattintson az **Igen** gombra a felugró ablakban. A rendszer törli az adatbázis-csomópontot, és automatikusan frissíti az Azure Cosmos DB-fiókot.
 
-    ![1. adatbázis törlése](./media/storage-explorer/delete-database1.png)  
+    ![1. adatbázis törlése](./media/storage-explorer/delete-database1.png)
 
-    ![2. adatbázis törlése](./media/storage-explorer/delete-database2.png) 
+    ![2. adatbázis törlése](./media/storage-explorer/delete-database2.png)
 
 #### <a name="create-a-collection"></a>Gyűjtemény létrehozása
-1. Kattintson a jobb gombbal az adatbázisra, válassza a **gyűjtemény létrehozása**lehetőséget, majd adja meg a következő információkat, például a **gyűjtemény azonosítóját**, a **tárolási kapacitást**stb. A befejezéshez kattintson **az OK** gombra. 
+1. Kattintson a jobb gombbal az adatbázisra, válassza a **gyűjtemény létrehozása**lehetőséget, majd adja meg a következő információkat, például a **gyűjtemény azonosítóját**, a **tárolási kapacitást**stb. A befejezéshez kattintson **az OK** gombra.
 
     ![1. gyűjtemény létrehozása](./media/storage-explorer/create-collection.png)
 
-    ![2. gyűjtemény létrehozása](./media/storage-explorer/create-collection2.png) 
+    ![2. gyűjtemény létrehozása](./media/storage-explorer/create-collection2.png)
 
 2. Válassza a **Korlátlan** lehetőséget, hogy megadhassa a partíciókulcsot, majd kattintson az **OK** gombra.
 
@@ -129,11 +129,11 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
     ![Partíciókulcs](./media/storage-explorer/partitionkey.png)
 
 #### <a name="delete-a-collection"></a>Gyűjtemény törlése
-- Kattintson a jobb gombbal a gyűjteményre, kattintson a **Gyűjtemény törlése** elemre, majd kattintson az **Igen** gombra a felugró ablakban. 
+- Kattintson a jobb gombbal a gyűjteményre, kattintson a **Gyűjtemény törlése** elemre, majd kattintson az **Igen** gombra a felugró ablakban.
 
     A rendszer törli a gyűjteménycsomópontot, és automatikusan frissíti az adatbázist.
 
-    ![Gyűjtemény törlése](./media/storage-explorer/delete-collection.png) 
+    ![Gyűjtemény törlése](./media/storage-explorer/delete-collection.png)
 
 ### <a name="document-management"></a>Dokumentumok kezelése
 
@@ -155,8 +155,8 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
 ### <a name="graph-management"></a>Gráfok kezelése
 
 #### <a name="create-and-modify-vertex"></a>Csúcspont létrehozása és módosítása
-1. Új csúcspont létrehozásához nyissa meg a bal oldali ablakban található **Gráf** elemet, kattintson az **Új csúcspont** lehetőségre, szerkessze a tartalmakat, majd kattintson az **OK** gombra.    
-2. Meglévő csúcspont módosításához kattintson a jobb oldali panelen látható toll ikonra.   
+1. Új csúcspont létrehozásához nyissa meg a bal oldali ablakban található **Gráf** elemet, kattintson az **Új csúcspont** lehetőségre, szerkessze a tartalmakat, majd kattintson az **OK** gombra.
+2. Meglévő csúcspont módosításához kattintson a jobb oldali panelen látható toll ikonra.
 
     ![Graph](./media/storage-explorer/vertex.png)
 
@@ -193,7 +193,7 @@ Ha a jobb gombbal kattint egy előfizetésre az Explorer panelen, gyorsan végre
     ![Tábla lekérdezése](./media/storage-explorer/table-query.png)
 
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Tárolt eljárások, eseményindítók és felhasználói függvények kezelése
-* Tárolt eljárás létrehozásához kattintson a jobb gombbal a bal oldali fában található **Tárolt eljárás** elemre, válassza a **Tárolt eljárás létrehozása** lehetőségre, adjon meg egy nevet a bal oldalon, írja be a tárolt eljárás szkriptjeit a jobb oldali ablakban, majd kattintson a **Létrehozás** gombra. 
+* Tárolt eljárás létrehozásához kattintson a jobb gombbal a bal oldali fában található **Tárolt eljárás** elemre, válassza a **Tárolt eljárás létrehozása** lehetőségre, adjon meg egy nevet a bal oldalon, írja be a tárolt eljárás szkriptjeit a jobb oldali ablakban, majd kattintson a **Létrehozás** gombra.
 * Meglévő tárolt eljárás szerkesztéséhez kattintson duplán az eljárásra, végezze el a frissítést, majd kattintson a **Frissítés** gombra a mentéshez, vagy kattintson az **Elvetés** gombra a módosítások visszavonásához.
 
     ![Tárolt eljárás](./media/storage-explorer/stored-procedure.png)
@@ -248,7 +248,7 @@ Ha nem tudja lekérni az előfizetéseit, miután sikeresen bejelentkezett:
 
 ![konzol](./media/storage-explorer/console.png)
 
-#### <a name="unable-to-see-the-authentication-page"></a>A hitelesítési oldalt nem sikerül megjeleníteni 
+#### <a name="unable-to-see-the-authentication-page"></a>A hitelesítési oldalt nem sikerül megjeleníteni
 
 Ha nem látja a hitelesítési oldalt:
 
@@ -273,7 +273,7 @@ Ha nem tud eltávolítani egy fiókot, vagy ha az újrahitelesítési hivatkozá
 
 ### <a name="httphttps-proxy-issue"></a>Http/Https-proxyval kapcsolatos probléma
 
-A bal oldali fában nem listázhatók az Azure Cosmos DB-csomópontok, amikor http/https-proxyt konfigurálunk az ASE-ben. Ez egy ismert probléma, amelyet a következő kiadásra kijavítunk. Jelenleg áthidaló megoldásként használhatja az Azure Cosmos DB-adatkezelőt az Azure Portalon. 
+A bal oldali fában nem listázhatók az Azure Cosmos DB-csomópontok, amikor http/https-proxyt konfigurálunk az ASE-ben. Ez egy ismert probléma, amelyet a következő kiadásra kijavítunk. Jelenleg áthidaló megoldásként használhatja az Azure Cosmos DB-adatkezelőt az Azure Portalon.
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>A „Helyi és csatolt” csomópont alatti „Fejlesztés” csomópont problémája
 
@@ -289,7 +289,7 @@ Ha az alábbi hibát látja, amikor csatolni próbál egy Azure Cosmos DB-fióko
 
 ### <a name="expand-azure-cosmos-db-node-error"></a>Azure Cosmos DB-csomópont kibontása sikertelen
 
-Az alábbi hibával találkozhat, amikor megpróbálja kibontani a bal oldali fa csomópontjait. 
+Az alábbi hibával találkozhat, amikor megpróbálja kibontani a bal oldali fa csomópontjait.
 
 ![Kibontási hiba](./media/storage-explorer/expand-error.png)
 
@@ -306,4 +306,3 @@ Ha a megoldások egyike sem működik Önnek, küldjön e-mailt az Azure Cosmos 
 
 * Tekintse meg a következő videót az Azure Cosmos DB Azure Storage Explorerben való használatáról: [Use Azure Cosmos DB in Azure Storage Explorer](https://www.youtube.com/watch?v=iNIbg1DLgWo&feature=youtu.be) (Az Azure Cosmos DB használata Azure Storage Explorerben).
 * További információk a Storage Explorerrel és további szolgáltatások csatlakoztatásával kapcsolatban: [Ismerkedés a Storage Explorer alkalmazással](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).
-

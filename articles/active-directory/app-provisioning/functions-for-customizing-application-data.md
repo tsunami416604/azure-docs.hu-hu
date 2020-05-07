@@ -1,704 +1,704 @@
 ---
-title: Kifejezések írása attribútumleképezéshez az Azure AD-ben
-description: Ismerje meg, hogyan használhatja a kifejezésleképezések az attribútumértékek elfogadható formátumgá alakításához az Azure Active Directory SaaS-alkalmazásobjektumainak automatikus kiépítése során.
+title: Kifejezések írása a Azure Active Directory attribútum-hozzárendelésekhez
+description: Megtudhatja, hogyan alakíthatja át a kifejezés-hozzárendeléseket az attribútumok értékének elfogadható formátumba való átalakításához az SaaS-alkalmazások objektumainak automatikus kiépítés során Azure Active Directoryban.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mimart
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28e591234e28770a90bed827e4d36c6342661dd1
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: c8573f9151ac59178b19bbf354da43990405b3e0
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81866588"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593692"
 ---
-# <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Kifejezések írása attribútumleképezéshez az Azure Active Directoryban
-SaaS-alkalmazásba való kiépítés konfigurálásakor az attribútumleképezések egyik megadott típusa egy kifejezésleképezés. Ezekhez meg kell írnia egy parancsfájl-szerű kifejezést, amely lehetővé teszi a felhasználók adatainak a SaaS-alkalmazás számára elfogadhatóbb formátumgá alakítását.
+# <a name="how-to-write-expressions-for-attribute-mappings-in-azure-ad"></a>Útmutató: kifejezések írása az attribútum-hozzárendelésekhez az Azure AD-ben
 
-## <a name="syntax-overview"></a>Szintaxis – áttekintés
-Az attribútumleképezések kifejezéseinek szintaxisa a Visual Basic for Applications (VBA) függvényekre emlékeztet.
+Ha egy SaaS-alkalmazásra konfigurálja az üzembe helyezést, a megadható attribútumok egyike egy kifejezés-hozzárendelés. Ilyen esetben olyan parancsfájl-szerű kifejezést kell írnia, amely lehetővé teszi, hogy a felhasználói adatait olyan formátumokba alakítsa át, amelyek az SaaS-alkalmazás számára elfogadhatóak.
 
-* A teljes kifejezést függvényekben kell definiálni, amelyek egy névből állnak, amelyet zárójelben lévő argumentumok követnek: <br>
-  *Függvénynév(`<<argument 1>>``<<argument N>>`, )*
-* A függvényeket egymásba ágyazhatják. Például: <br> *FunctionOne(FunctionTwo(`<<argument1>>`))*
+## <a name="syntax-overview"></a>Szintaxis áttekintése
+
+Az attribútum-hozzárendelések kifejezések szintaxisa Visual Basic for Applications (VBA) függvények emlékeztetője.
+
+* A teljes kifejezést a functions kifejezésben kell definiálni, amely egy, a zárójelben szereplő argumentumokkal kiegészített nevet tartalmaz: <br>
+  *Függvénynév (`<<argument 1>>`,`<<argument N>>`)*
+* A függvények egymásba ágyazhatók. Például: <br> *FunctionOne (FunctionTwo (`<<argument1>>`))*
 * A függvények három különböző típusú argumentumot adhat át:
   
-  1. Jellemzők, amelyeket szögletes zárójelek közé kell tenni. Például: [attribútumnév]
-  2. Karakterlánc-állandók, amelyeket idézőjelek közé kell tenni. Például: "Egyesült Államok"
-  3. Egyéb funkciók. Például: FunctionOne(`<<argument1>>`,`<<argument2>>`FunctionTwo( ))
-* Karakterlánc-állandók esetén, ha a karakterláncban fordított perjelre ( \ ) vagy idézőjelre ( ) van szüksége, akkor azt a fordított perjel ( \ ) szimbólummal kell megkerülni. Például: "Vállalat \\neve: "Contoso\\""
+  1. Attribútumok, amelyeket szögletes zárójelbe kell foglalni. Például: [attributeName]
+  2. Karakterlánc-konstansok, amelyek idézőjelek közé kell, hogy legyenek. Például: "Egyesült Államok"
+  3. Egyéb függvények. Például: FunctionOne (`<<argument1>>`, FunctionTwo (`<<argument2>>`))
+* Karakterlánc-konstansok esetén, ha a karakterláncban a fordított perjel (\) vagy az idézőjel (") értékre van szüksége, akkor azt a fordított perjel (\) szimbólummal kell megadnia. Például: "cég neve: \\" contoso\\""
 
-## <a name="list-of-functions"></a>Függvénylista
-[Bit hozzáfűzéseÉs](#append) &nbsp; &nbsp; &nbsp; &nbsp; [BitAnd](#bitand) &nbsp; &nbsp; &nbsp; &nbsp; [CBool](#cbool) &nbsp; &nbsp; &nbsp; &nbsp; [Count](#count) &nbsp; &nbsp; &nbsp; [Left](#left) &nbsp; [Not](#not) [Mid](#mid) [IIF](#iif) &nbsp; &nbsp; &nbsp; [Replace](#replace) [IsPresent](#ispresent) &nbsp; [InStr](#instr) &nbsp; [CStr](#cstr) &nbsp; &nbsp; [IsString](#isstring) &nbsp; [Guid](#guid) &nbsp; &nbsp; &nbsp; &nbsp; [Item](#item) &nbsp; [DateFromNum](#datefromnum) &nbsp; &nbsp; &nbsp; [SelectUniqueValue](#selectuniquevalue) [FormatDateTime](#formatdatetime) &nbsp; &nbsp; &nbsp; [Coalesce](#coalesce) &nbsp; &nbsp; &nbsp; &nbsp; [IsNull](#isnull) &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) &nbsp; [RemoveDuplicates](#removeduplicates) [Join](#join) [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; &nbsp; &nbsp; [NormalizeDiacritics](#normalizediacritics) [ConvertToBase64](#converttobase64) &nbsp; &nbsp; &nbsp; &nbsp; CBool &nbsp; &nbsp; &nbsp; &nbsp; Coalesce &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ConvertToBase64 &nbsp; &nbsp; &nbsp; ConvertToUTF8Hex Count &nbsp; &nbsp; &nbsp; CStr &nbsp; &nbsp; &nbsp; dateFromNum FormatDateTime &nbsp; &nbsp; Guid IIF &nbsp; InStr &nbsp; IsNull IsNull VagyEmpty IsPresent &nbsp; IsString &nbsp; Elemösszeillesztés bal &nbsp; középső &nbsp; normalizálásAdbók nem removeDuplicates ReplaceUniqueValue &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [Split](#split)&nbsp; [Word](#word) [ToLower](#tolower) [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; &nbsp; &nbsp; [StripSpaces](#stripspaces) &nbsp; [ToUpper](#toupper) [Switch](#switch) SingleAppRoleAssignment&nbsp; osztott &nbsp; &nbsp; stripspaces &nbsp; váltanialsó&nbsp; toupper&nbsp; &nbsp; szó&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
+## <a name="list-of-functions"></a>Függvények listája
+
+[Fűzze hozzá](#append) &nbsp; &nbsp; &nbsp; [IsNullOrEmpty](#isnullorempty) [IsPresent](#ispresent) [BitAnd](#bitand) &nbsp; [ConvertToBase64](#converttobase64) &nbsp; [FormatDateTime](#formatdatetime) [CBool](#cbool) &nbsp; [Replace](#replace) [DateFromNum](#datefromnum) [ConvertToUTF8Hex](#converttoutf8hex) &nbsp; [RemoveDuplicates](#removeduplicates) [IsNull](#isnull) [Left](#left) [NormalizeDiacritics](#normalizediacritics) [Not](#not) [Guid](#guid) [CStr](#cstr) [Item](#item) [Count](#count) [SelectUniqueValue](#selectuniquevalue) [InStr](#instr) [IIF](#iif) [IsString](#isstring) [Mid](#mid) [Join](#join) [Coalesce](#coalesce) &nbsp; a BitAnd &nbsp; CBool egyesítése &nbsp; ConvertToBase64 &nbsp; ConvertToUTF8Hex Count CStr DateFromNum FormatDateTime GUID &nbsp; IIf &nbsp; -beli IsNull &nbsp; IsNullOrEmpty IsPresent IsString &nbsp; elem &nbsp; csatlakozás balra Mid &nbsp; NormalizeDiacritics nem &nbsp; RemoveDuplicates&nbsp; helyett SelectUniqueValue &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp; [ToUpper](#toupper) [StripSpaces](#stripspaces) [SingleAppRoleAssignment](#singleapproleassignment) &nbsp; [ToLower](#tolower) [Split](#split) [Word](#word) [Switch](#switch) SingleAppRoleAssignment &nbsp; Split StripSpaces switch ToLower ToUpper Word&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;
 
 ---
 ### <a name="append"></a>Hozzáfűzés
-**Funkció:**<br> Hozzáfűzés(forrás, utótag)
 
-**Leírás:**<br> Vesz egy forráskarakterlánc értékét, és hozzáfűzi az utótagot a végén.
+**Függvény**<br> Hozzáfűzés (forrás, utótag)
 
-**Paraméterek:**<br> 
+**Leírás:**<br> A forrás sztring értéket veszi fel, és hozzáfűzi az utótagot a végéhez.
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+**Paraméterek**<br> 
+
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |A forrásobjektum attribútumának általában neve. |
-| **Utótag** |Kötelező |Sztring |A forrásérték végéhez hozzáfűző karakterlánc. |
+| **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
+| **utótag** |Kötelező |Sztring |A forrás érték végéhez hozzáfűzni kívánt karakterlánc. |
 
 ---
-### <a name="bitand"></a>Bitand (bitand)
-**Funkció:**<br> BitAnd(érték1; érték2)
+### <a name="bitand"></a>BitAnd
+**Függvény**<br> BitAnd (érték1, érték2)
 
-**Leírás:**<br> Ez a függvény mindkét paramétert bináris reprezentációvá alakítja, és egy kicsit a következőkre állítja be:
+**Leírás:**<br> Ez a függvény mindkét paramétert a bináris ábrázolásra konvertálja, és egy kis mennyiséget állít be a következőre:
 
-0 - ha az egyik vagy mindkét megfelelő bit érték1 és érték2 0                                                  
-1 - ha mindkét megfelelő bit 1.                                    
+0 – Ha a érték1-ben és a érték2-ben található megfelelő bitek közül egyet vagy mindkettőt 0                                                  
+1 – Ha a megfelelő bitek mindegyike 1.                                    
 
-Más szóval minden esetben 0 értéket ad vissza, kivéve, ha mindkét paraméter megfelelő bitje 1.
+Más szóval a 0 értéket adja vissza minden esetben, kivéve, ha mindkét paraméternek megfelelő bitek értéke 1.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **érték1** |Kötelező |num |Az AND'ed értékkel rendelkező numerikus érték2|
-| **érték2** |Kötelező |num |Az AND'ed értékkel rendelkező numerikus érték1|
+| **érték1** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték2|
+| **érték2** |Kötelező |num |Numerikus érték, amelynek AND'ed kell lennie a érték1|
 
-**Példa:**<br>
-BitAnd(&HF, &HF7)                                                                                
-11110111 ÉS 00000111 = 00000111 so BitAnd 7 értéket ad vissza, a bináris értéke 00000111
+**Például**<br>
+BitAnd (&HF, &HF7)                                                                                
+11110111 és 00000111 = 00000111 Szóval a BitAnd 7 értéket ad vissza, a 00000111 bináris értékét
 
 ---
-### <a name="cbool"></a>Kbool
-**Funkció:**<br> CBool(Kifejezés)
+### <a name="cbool"></a>CBool
+**Függvény**<br> CBool (kifejezés)
 
-**Leírás:**<br> A CBool egy logikai értéket ad vissza a kiértékelt kifejezés alapján. Ha a kifejezés nem nulla értéket ad eredményül, akkor a CBool függvény igaz értéket ad vissza, máskülönben hamis értéket ad vissza.If the expression evaluates to a non-zero value, then CBool returns True, else it returns False..
+**Leírás:**<br> A CBool egy logikai értéket ad vissza a kiértékelt kifejezés alapján. Ha a kifejezés kiértékelése nem nulla értékű, akkor a CBool igaz értéket ad vissza, máskülönben hamis értéket ad vissza.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Kifejezés** |Kötelező | kifejezés | Bármely érvényes kifejezés |
+| **kifejezés** |Kötelező | kifejezés | Bármely érvényes kifejezés |
 
-**Példa:**<br>
-CBool([attribútum1] = [attribútum2])                                                                    
-Igaz értéket ad vissza, ha mindkét attribútum értéke megegyezik.
+**Például**<br>
+CBool ([attribute1] = [attribute2])                                                                    
+Igaz értéket ad vissza, ha mindkét attribútum ugyanazzal az értékkel rendelkezik.
 
 ---
 ### <a name="coalesce"></a>Coalesce
-**Funkció:**<br> Összeolvadás(forrás1; forrás2, ..., defaultValue)
+**Függvény**<br> Egyesítés (source1, source2,..., defaultValue)
 
-**Leírás:**<br> Az első nem NULL forrásértéket adja eredményül. Ha az összes argumentum NULL, és a defaultValue értéke jelen van, a defaultValue függvény t ad vissza. Ha az összes argumentum NULL, és a defaultValue értéke nincs jelen, az Egyesítés null értéket ad vissza.
+**Leírás:**<br> Az első olyan értéket adja vissza, amely nem NULL. Ha az összes argumentum értéke NULL, és a defaultValue szerepel, a rendszer a defaultValue értéket adja vissza. Ha az összes argumentum NULL értékű, és a defaultValue értéke nem létezik, az egyesítés NULL értéket ad vissza.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **forrás1 ... forrásN** | Kötelező | Sztring |Kötelező, változó számú alkalommal. A forrásobjektum attribútumának általában neve. |
-| **defaultValue** | Optional | Sztring | Alapértelmezett érték, amelyet akkor használ, ha az összes forrásérték NULL. Lehet üres karakterlánc ("").
+| **source1 ... sourceN** | Kötelező | Sztring |Kötelező, változó számú alkalommal. Az attribútum neve általában a forrásoldali objektumban. |
+| **defaultValue** | Optional | Sztring | Az alapértelmezett érték, amelyet akkor kell használni, ha az összes forrás értéke NULL. Üres karakterlánc ("") lehet.
 
 ---
-### <a name="converttobase64"></a>KonvertálásBase64
-**Funkció:**<br> ConvertToBase64(forrás)
+### <a name="converttobase64"></a>ConvertToBase64
+**Függvény**<br> ConvertToBase64 (forrás)
 
-**Leírás:**<br> A ConvertToBase64 függvény egy karakterláncot Unicode base64 karakterláncgá alakít át.
+**Leírás:**<br> A ConvertToBase64 függvény egy karakterláncot Unicode Base64 karakterlánccá alakít át.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |A 64-es alapra konvertálandó karakterlánc|
+| **forrás** |Kötelező |Sztring |Az alap 64-re konvertálandó karakterlánc|
 
-**Példa:**<br>
-ConvertToBase64("Hello világ!")                                                                                                        
-Eredmény: "SABlAGwAbABvACAAdwBvAHIAbABkACEA"
+**Például**<br>
+ConvertToBase64 ("Helló világ!")                                                                                                        
+A "SABlAGwAbABvACAAdwBvAHIAbABkACEA" értéket adja vissza
 
 ---
 ### <a name="converttoutf8hex"></a>ConvertToUTF8Hex
-**Funkció:**<br> ConvertToUTF8Hex(forrás)
+**Függvény**<br> ConvertToUTF8Hex (forrás)
 
-**Leírás:**<br> A ConvertToUTF8Hex függvény egy karakterláncot UTF8 Hex kódolású értékké alakít át.
+**Leírás:**<br> A ConvertToUTF8Hex függvény egy karakterláncot UTF8 hexadecimális kódolású értékre alakít át.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |UTF8 hexúrrá konvertálandó karakterlánc|
+| **forrás** |Kötelező |Sztring |Az UTF8 hexadecimális értékre konvertálandó karakterlánc|
 
-**Példa:**<br>
-ConvertToUTF8Hex("Hello világ!")                                                                                                         
-Eredménye 48656C6C6F20776F726C6421
+**Például**<br>
+ConvertToUTF8Hex ("Helló világ!")                                                                                                         
+48656C6C6F20776F726C6421 visszaadása
 
 ---
 ### <a name="count"></a>Darabszám
-**Funkció:**<br> Count(attribútum)
+**Függvény**<br> Darabszám (attribútum)
 
-**Leírás:**<br> A Count függvény egy többértékű attribútum elemeinek számát adja eredményül.
+**Leírás:**<br> A Count függvény egy többértékű attribútum elemeinek számát adja vissza.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Attribútum** |Kötelező |attribute |Többértékű attribútum, amelynek elemei meg vannak számlálva|
+| **attribútum** |Kötelező |attribute |Többértékű attribútum, amely megszámolja az elemeket|
 
 ---
 ### <a name="cstr"></a>CStr
-**Funkció:**<br> CStr(érték)
+**Függvény**<br> CStr (érték)
 
-**Leírás:**<br> A CStr függvény egy értéket karakterlánc-adattípussá alakít át.
+**Leírás:**<br> A CStr függvény egy értéket karakterlánc típusú adattípusra konvertál.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Érték** |Kötelező | numerikus, referencia vagy logikai | Lehet numerikus érték, hivatkozási attribútum vagy logikai érték. |
+| **érték** |Kötelező | numerikus, hivatkozás vagy logikai | Számérték, hivatkozási attribútum vagy logikai érték lehet. |
 
-**Példa:**<br>
-CStr([dn])                                                            
-Eredmény: "cn=Joe,dc=contoso,dc=com"
+**Például**<br>
+CStr ([DN])                                                            
+A "CN = Joe, DC = contoso, DC = com" értéket adja vissza.
 
 ---
-### <a name="datefromnum"></a>DateFromNum (Dátumfromnum)
-**Funkció:**<br> DateFromNum(érték)
+### <a name="datefromnum"></a>DateFromNum
+**Függvény**<br> DateFromNum (érték)
 
-**Leírás:**<br> A DateFromNum függvény az AD dátumformátumában lévő értéket DateTime típussá alakítja.
+**Leírás:**<br> A DateFromNum függvény egy értéket AD meg az AD dátumformátum dátum és idő típusára.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Érték** |Kötelező | Dátum | AD dátum datetime típusra konvertálandó dátum |
+| **érték** |Kötelező | Dátum | A DateTime típusúra konvertálandó AD-dátum |
 
-**Példa:**<br>
-DateFromNum([lastLogonTimestamp])                                                                                                   
-DateFromNum(12969932400000000)                                                            
-2012-01-01 23:00:00 dátumidőt ad eredményül.
+**Például**<br>
+DateFromNum ([lastLogonTimestamp])                                                                                                   
+DateFromNum(129699324000000000)                                                            
+A 2012-01-01 23:00:00-et jelölő DateTime értéket ad vissza.
 
 ---
 ### <a name="formatdatetime"></a>FormatDateTime
-**Funkció:**<br> FormatDateTime(forrás, inputFormat, outputFormat)
+**Függvény**<br> FormatDateTime (forrás, inputFormat, outputFormat)
 
-**Leírás:**<br> Egy dátumkarakterláncot vesz fel egy formátumból, és más formátumba konvertálja.
+**Leírás:**<br> Egy dátum sztringet vesz fel az egyik formátumból, és átalakítja azt más formátumra.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |A forrásobjektum attribútumának általában neve. |
-| **inputFormat** |Kötelező |Sztring |A forrásérték várható formátuma. A támogatott formátumokat [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)a témakörben t. |
+| **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
+| **inputFormat** |Kötelező |Sztring |A forrás értékének várt formátuma. Támogatott formátumok: [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx). |
 | **outputFormat** |Kötelező |Sztring |A kimeneti dátum formátuma. |
 
 ---
 ### <a name="guid"></a>Guid
-**Funkció:**<br> Guid()
+**Függvény**<br> GUID ()
 
-**Leírás:**<br> A Guid függvény új véletlenszerű GUID-t hoz létre
+**Leírás:**<br> A függvény GUID-azonosítója új véletlenszerű GUID azonosítót hoz létre
 
 ---
-### <a name="iif"></a>Iif
-**Funkció:**<br> IIF(feltétel;értékHaIgaz,értékHahamis)
+### <a name="iif"></a>IIF
+**Függvény**<br> IIF (feltétel, valueIfTrue, valueIfFalse)
 
-**Leírás:**<br> Az IIF függvény egy megadott feltételen alapuló lehetséges értékek egyikét adja vissza.
+**Leírás:**<br> Az IIF függvény a lehetséges értékek egy halmazát adja vissza egy megadott feltétel alapján.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Feltétel** |Kötelező |Változó vagy kifejezés |Bármely érték vagy kifejezés, amely igaz vagy hamis értékű. |
-| **értékHaIgaz** |Kötelező |Változó vagy karakterlánc | Ha a feltétel értéke igaz, a visszaadott érték. |
-| **értékHaFalse** |Kötelező |Változó vagy karakterlánc |Ha a feltétel eredménye hamis, a visszaadott érték.|
+| **feltétel** |Kötelező |Változó vagy kifejezés |Bármely érték vagy kifejezés, amelynek kiértékelése igaz vagy hamis lehet. |
+| **valueIfTrue** |Kötelező |Változó vagy karakterlánc | Ha a feltétel igaz értéket ad vissza, a visszaadott érték. |
+| **valueIfFalse** |Kötelező |Változó vagy karakterlánc |Ha a feltétel hamis értéket ad vissza, a visszaadott érték.|
 
-**Példa:**<br>
-IIF([ország]="USA",[ország],[osztály])
+**Például**<br>
+IIF ([ország] = "USA", [ország], [részleg])
 
 ---
-### <a name="instr"></a>Instr
-**Funkció:**<br> InStr(érték1;érték2;kezdés,compareType)
+### <a name="instr"></a>InStr
+**Függvény**<br> Érték1 (érték2, Start, compareType)
 
-**Leírás:**<br> Az InStr függvény megkeresi egy karakterlánc részkarakterláncának első előfordulását
+**Leírás:**<br> A beosztási függvény megkeresi egy karakterláncban szereplő alsztring első előfordulását.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
 | **érték1** |Kötelező |Sztring |Keresendő karakterlánc |
-| **érték2** |Kötelező |Sztring |A megtalálandó karakterlánc |
-| **Elkezd** |Optional |Egész szám |Kezdő pozíció a karakterlánc részhalmazának megkereséséhez|
-| **compareType (compareType)** |Optional |Felsorolás |Lehet vbTextCompare vagy vbBinaryCompare |
+| **érték2** |Kötelező |Sztring |A megtalálni kívánt karakterlánc |
+| **Start** |Optional |Egész szám |A kiindulási pozíció a karakterlánc megkereséséhez|
+| **compareType** |Optional |Felsorolás |VbTextCompare vagy vbBinaryCompare lehet |
 
-**Példa:**<br>
-InStr("A gyors barna róka","gyors")                                                                             
-Eértékek értéke 5-re
+**Például**<br>
+("A gyors barna Róka", "gyors")                                                                             
+Evalues – 5
 
-InStr("repEated","e",3,vbBinaryCompare)                                                                                  
-Kiértékeljük a 7
+VbBinaryCompare ("ismétlődő", "e", 3,)                                                                                  
+Értékelés 7-re
 
 ---
 ### <a name="isnull"></a>IsNull
-**Funkció:**<br> IsNull(kifejezés)
+**Függvény**<br> IsNull (kifejezés)
 
-**Leírás:**<br> Ha a kifejezés eredménye Null, akkor az IsNull függvény igaz értéket ad vissza. Egy attribútum esetében a Null értéket az attribútum hiánya fejezi ki.
+**Leírás:**<br> Ha a kifejezés értéke null, akkor a IsNull függvény Igaz értéket ad vissza. Attribútum esetén a null értéket az attribútum hiánya fejezi ki.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Kifejezés** |Kötelező |kifejezés |Kiértékelendő kifejezés |
+| **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
-**Példa:**<br>
-IsNull([displayName])                                                                                                
+**Például**<br>
+IsNull ([displayName])                                                                                                
 Igaz értéket ad vissza, ha az attribútum nincs jelen.
 
 ---
 ### <a name="isnullorempty"></a>IsNullorEmpty
-**Funkció:**<br> IsNullOrEmpty(kifejezés)
+**Függvény**<br> IsNullOrEmpty (kifejezés)
 
-**Leírás:**<br> Ha a kifejezés null vagy üres karakterlánc, akkor az IsNullOrEmpty függvény igaz értéket ad vissza. Egy attribútum esetében ez igaz értéket ad ki, ha az attribútum hiányzik, vagy jelen van, de üres karakterlánc.
+**Leírás:**<br> Ha a kifejezés null értékű vagy üres karakterlánc, akkor a IsNullOrEmpty függvény Igaz értéket ad vissza. Egy attribútum esetében ez igaz értékre értékeli, ha az attribútum hiányzik vagy létezik, de egy üres karakterlánc.
 A függvény inverzének neve IsPresent.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Kifejezés** |Kötelező |kifejezés |Kiértékelendő kifejezés |
+| **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
-**Példa:**<br>
-IsNullOrEmpty([displayName])                                               
-Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc.
+**Például**<br>
+IsNullOrEmpty ([displayName])                                               
+Igaz értéket ad vissza, ha az attribútum nincs jelen, vagy üres karakterlánc
 
 ---
-### <a name="ispresent"></a>IsPresent (Jelen van)
-**Funkció:**<br> IsPresent(kifejezés)
+### <a name="ispresent"></a>IsPresent
+**Függvény**<br> IsPresent (kifejezés)
 
-**Leírás:**<br> Ha a kifejezés nem Null karakterláncot ad eredményül, akkor az IsPresent függvény igaz értéket ad vissza. A függvény inverzneve IsNullOrEmpty.
+**Leírás:**<br> Ha a kifejezés olyan karakterláncot ad vissza, amely nem null értékű, és nem üres, akkor a IsPresent függvény Igaz értéket ad vissza. A függvény inverzének neve IsNullOrEmpty.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Kifejezés** |Kötelező |kifejezés |Kiértékelendő kifejezés |
+| **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
-**Példa:**<br>
-Switch(IsPresent([directManager]),[directManager], IsPresent([skiplevelManager]),[skiplevelManager], IsPresent([rendező][igazgató])
+**Például**<br>
+Switch (IsPresent ([directManager]), [directManager], IsPresent ([skiplevelManager]), [skiplevelManager], IsPresent ([rendező]), [Director])
 
 ---
-### <a name="isstring"></a>Karakterlánc
-**Funkció:**<br> IsString(kifejezés)
+### <a name="isstring"></a>IsString
+**Függvény**<br> IsString (kifejezés)
 
-**Leírás:**<br> Ha a kifejezés karakterlánctípusra értékelhető, akkor az IsString függvény értéke Igaz lesz.
+**Leírás:**<br> Ha a kifejezés kiértékelhető karakterlánc típusúra, akkor a IsString függvény Igaz értéket ad vissza.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Kifejezés** |Kötelező |kifejezés |Kiértékelendő kifejezés |
+| **kifejezés** |Kötelező |kifejezés |Kiértékelni kívánt kifejezés |
 
 ---
 ### <a name="item"></a>Elem
-**Funkció:**<br> Elem(attribútum, index)
+**Függvény**<br> Elem (attribútum, index)
 
-**Leírás:**<br> A Cikk függvény egy elemet ad vissza egy többértékű karakterláncból/attribútumból.
+**Leírás:**<br> Az Item függvény egy elemet ad vissza egy többértékű karakterlánc/attribútumból.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Attribútum** |Kötelező |Attribútum |Keresendő többértékű attribútum |
-| **Index** |Kötelező |Egész szám | Index a többértékű karakterlánc egy eleméhez|
+| **attribútum** |Kötelező |Attribútum |Keresendő többértékű attribútum |
+| **index** |Kötelező |Egész szám | Index a Többértékű karakterlánc egyik elemébe|
 
-**Példa:**<br>
-Elem([proxyAddresses], 1)
+**Például**<br>
+Elem ([proxyAddresses], 1)
 
 ---
 ### <a name="join"></a>Csatlakozás
-**Funkció:**<br> Csatlakozás(elválasztó, forrás1, forrás2, ...)
+**Függvény**<br> Join (elválasztó, source1, source2,...)
 
-**Leírás:**<br> A Join() hasonló a Hozzáfűzés(hez), **source** azzal a különbséggel, hogy több forráskarakterlánc-értéket egyesíthet egyetlen karakterláncba, és minden értéket **elválasztó** karakterlánc választ el egymástól.
+**Leírás:**<br> A JOIN () hasonló a hozzáfűzéshez (), azzal a kivétellel, hogy több **forrás** sztringet is egyesít egyetlen karakterláncban, és az egyes értékeket **elválasztó sztring választja** el egymástól.
 
-Ha az egyik forrásérték többértékű attribútum, akkor az attribútum minden értéke össze lesz kötve, és az elválasztó érték választja el egymástól.
+Ha a forrásadatok egyike egy többértékű attribútum, akkor az adott attribútum minden értéke együtt lesz egyesítve, az elválasztó értékkel elválasztva.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Elválasztó** |Kötelező |Sztring |A karakterlánc a forrásértékek elkülönítésére szolgál, amikor azok egy karakterláncba vannak összefűzve. Lehet "", ha nincs szükség elválasztóra. |
-| **forrás1 ... forrásN** |Kötelező, változó számú alkalommal |Sztring |Az összeadandó karakterlánc-értékek. |
+| **elválasztó** |Kötelező |Sztring |A forrásadatok elválasztására szolgáló karakterlánc, amely egyetlen sztringbe van fűzve. Lehet "", ha nem kötelező elválasztó. |
+| **source1 ... sourceN** |Kötelező, változó – ennyiszer |Sztring |A egyesíteni kívánt karakterlánc-értékek. |
 
 ---
 ### <a name="left"></a>Bal
-**Funkció:**<br> Balra(Karakterlánc;Hányas karakter)
+**Függvény**<br> Left (karakterlánc, NumChars)
 
-**Leírás:**<br> A Bal függvény megadott számú karaktert ad vissza a karakterlánc bal oldalán. Ha numChars = 0, üres karakterláncot ad vissza.
-Ha a numChars < 0, adja vissza a bemeneti karakterláncot.
+**Leírás:**<br> A Left függvény egy karakterlánctól balra megadott számú karaktert ad vissza. Ha a numChars = 0, üres karakterláncot ad vissza.
+Ha a numChars < 0 értéket, adja vissza a bemeneti karakterláncot.
 Ha a karakterlánc null értékű, üres karakterláncot ad vissza.
-Ha a karakterlánc kevesebb karaktert tartalmaz, mint a numChars paraméterben megadott szám, akkor a karakterlánccal (azaz az 1. paraméter összes karakterét tartalmazó) karakterláncot ad vissza.
+Ha a sztring kevesebb karaktert tartalmaz a numChars megadott számnál, akkor a rendszer a karakterlánctal megegyező karakterláncot (azaz az 1. paraméterben szereplő összes karaktert tartalmazza) adja vissza.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Sztring** |Kötelező |Attribútum | A karaktereket visszaadó karakterlánc |
-| **NumChars** |Kötelező |Egész szám | A karakterlánc elejétől (balra) visszaadandó karakterek számát azonosító szám|
+| **Sztring** |Kötelező |Attribútum | A karakterlánc, amelyből karaktereket kell visszaadni |
+| **NumChars** |Kötelező |Egész szám | Egy szám, amely a sztring elejétől (balra) való visszatéréshez szükséges karakterek számát azonosítja.|
 
-**Példa:**<br>
-Balra ("John Doe", 3)                                                            
-Visszaadja a "Joh"
+**Például**<br>
+Left ("John Doe", 3)                                                            
+A "Joh" értéket adja vissza
 
 ---
 ### <a name="mid"></a>Közepes
-**Funkció:**<br> Közép(forrás, kezdés, hossz)
+**Függvény**<br> Mid (forrás, Kezdés, hossz)
 
-**Leírás:**<br> A forrásérték részkarakterláncát adja eredményül. A részkarakterlánc olyan karakterlánc, amely csak a forráskarakterlánc néhány karakterét tartalmazza.
+**Leírás:**<br> A forrás értékének egy alsztringjét adja vissza. Az alsztringek olyan karakterláncok, amelyek csak néhány karaktert tartalmaznak a forrás sztringből.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |Általában az attribútum neve. |
-| **Elkezd** |Kötelező |egész szám |Index a **source** forráskarakterláncban, ahol a karakterlánc részkarakterláncának el kell kezdődnie. A karakterlánc első karaktere indexe 1, a második karakterindex 2 lesz, és így tovább. |
-| **Hossza** |Kötelező |egész szám |A karakterlánc részhossza. Ha a hossz a **forráskarakterláncon** kívül reked, a függvény karakterláncot **ad** vissza a kezdőindextől a **forráskarakterlánc** végéig. |
+| **forrás** |Kötelező |Sztring |Az attribútum neve általában. |
+| **Start** |Kötelező |egész szám |Az index a **forrás** sztringben, ahol az alsztringnek el kell indulnia. A karakterlánc első karakterének indexe 1, a második karakter pedig a 2. indexet fogja tartalmazni. |
+| **hossza** |Kötelező |egész szám |Az alsztring hossza. Ha a hossz a **forrás** sztringen kívülre végződik, a függvény a **kezdő** indexből származó alsztringet ad vissza a **forrás** sztring végéig. |
 
 ---
-### <a name="normalizediacritics"></a>A jelek normalizálása
-**Funkció:**<br> A nagykritikusok normalizálása(forrás)
+### <a name="normalizediacritics"></a>NormalizeDiacritics
+**Függvény**<br> NormalizeDiacritics (forrás)
 
-**Leírás:**<br> Egy karakterlánc-argumentumot igényel. A karakterláncot adja vissza, de a diakritikus karaktereket egyenértékű, nem diakritikus karakterekre cseréli. Általában diakritikus karaktereket (ékezetes jeleket) tartalmazó utónevek és vezetéknevek átalakítására szolgálnak olyan jogi értékekké, amelyek különböző felhasználói azonosítókban használhatók, például egyszerű felhasználónevekben, SAM-fióknevekben és e-mail címekben.
+**Leírás:**<br> Egy karakterlánc-argumentumot igényel. A karakterláncot adja vissza, de bármilyen diakritikus karakterrel egyenértékű, nem diakritikus karakterrel helyettesíthető. Jellemzően a különböző felhasználói azonosítókban, például egyszerű felhasználónevek, SAM-fiókok és e-mail-címekben használható, mellékjeleket és vezetékneveket tartalmazó nevek és vezetéknévek átalakítására szolgálnak.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring | Általában egy keresztnév vagy vezetéknév attribútum. |
+| **forrás** |Kötelező |Sztring | Általában utónév vagy vezetéknév attribútum. |
 
 ---
 ### <a name="not"></a>Not
-**Funkció:**<br> Not(forrás)
+**Függvény**<br> Nem (forrás)
 
-**Leírás:**<br> Megfordítja a **forrás**logikai értékét. Ha a **forrásérték** "*True*", akkor a "*Hamis*" értéket adja vissza. Ellenkező esetben a "*True*" értéket adja vissza.
+**Leírás:**<br> Megfordítja a **forrás**logikai értékét. Ha a **forrás** értéke "*true*" (igaz), a "*false*" értéket adja vissza. Ellenkező esetben az "*igaz*" értéket adja vissza.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Logikai karakterlánc |A várt **forrásértékek** "True" vagy "False". |
+| **forrás** |Kötelező |Logikai karakterlánc |A várt **források** értéke "true" vagy "false". |
 
 ---
-### <a name="numfromdate"></a>NumFromDate (Dátum kezdőszáma)
-**Funkció:**<br> NumFromDate(érték)
+### <a name="numfromdate"></a>NumFromDate
+**Függvény**<br> NumFromDate (érték)
 
-**Leírás:**<br> A NumFromDate függvény egy DateTime értéket konvertál Active Directory formátumba, amely az olyan attribútumok beállításához szükséges, mint a [accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires). Ezzel a funkcióval konvertálhatja a felhőbeli HR-alkalmazásokból , például a Workday-ből és a SuccessFactors-ból kapott DateTime-értékeket azok egyenértékű AD-ábrázolására. 
+**Leírás:**<br> A NumFromDate függvény egy DateTime értéket konvertál Active Directory formátumra, amely az attribútumok (például a [accountExpires](https://docs.microsoft.com/windows/win32/adschema/a-accountexpires)) beállításához szükséges. Ezzel a függvénnyel a Felhőbeli HR-alkalmazásokból (például a munkanapokból és a SuccessFactors) kapott dátum-és időértékek konvertálhatók 
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Érték** |Kötelező | Sztring | A dátumidő-karakterlánc a támogatott formátumban. A támogatott formátumokat https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspxa témakörben t. |
+| **érték** |Kötelező | Sztring | A dátum és idő karakterlánca támogatott formátumban. Támogatott formátumok: https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx. |
 
-**Példa:**<br>
-* Példa munkanapra <br>
-  Feltételezve, hogy a *Workday 2020-12-31-08:00* formátumú *ContractEndDate* attribútumot szeretné leképezni az AD *accountExpires* mezőjéhez, így használhatja ezt a függvényt, és módosíthatja az időzóna eltolását a területi beállításnak megfelelően. 
+**Például**<br>
+* Példa munkanapokra <br>
+  Feltételezve, hogy a *ContractEndDate* attribútumot szeretné leképezni a munkaterületről, amely a *2020-12-31-08:00* érték *ACCOUNTEXPIRES* mezőjében szerepel az ad-ben, itt látható, hogyan használhatja ezt a függvényt, és módosíthatja az időzóna-eltolást a területi beállításnak megfelelően. 
   `NumFromDate(Join("", FormatDateTime([ContractEndDate], "yyyy-MM-ddzzz", "yyyy-MM-dd"), "T23:59:59-08:00"))`
 
 * SuccessFactors példa <br>
-  Feltételezve, hogy le szeretné képezni a successatényezők endtribute *attribútumát,* amely *M/d/yyyy hh:mm:ss tt* to *accountExpires* mezőben az AD-ben, így használhatja ezt a funkciót, és módosíthatja az időzóna eltolását a területi beállításhoz.
+  Feltételezve, hogy le szeretné képezni a *endDate* attribútumot a SuccessFactors-ből, amely a következő formátumban van *: M/d/éééé óó: PP: SS tt* to *accountExpires* Field in ad, itt látható, hogyan használhatja ezt a függvényt, és módosíthatja az időzóna eltolását a területi beállításnak megfelelően.
   `NumFromDate(Join("",FormatDateTime([endDate],"M/d/yyyy hh:mm:ss tt","yyyy-MM-dd"),"T23:59:59-08:00"))`
 
 
 ---
-### <a name="removeduplicates"></a>Másolateltávolítása
-**Funkció:**<br> Duplikált példányok eltávolítása(attribútum)
+### <a name="removeduplicates"></a>RemoveDuplicates
+**Függvény**<br> RemoveDuplicates (attribútum)
 
-**Leírás:**<br> A RemoveDuplicates függvény egy többértékű karakterláncot vesz fel, és győződjön meg arról, hogy minden érték egyedi.
+**Leírás:**<br> A RemoveDuplicates függvény többértékű karakterláncot használ, és minden érték egyedi.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Attribútum** |Kötelező |Többértékű attribútum |Többértékű attribútum, amelynek ismétlődéseit eltávolítják|
+| **attribútum** |Kötelező |Többértékű attribútum |Több értékkel rendelkező attribútum, amelyből duplikált elemek lesznek eltávolítva|
 
-**Példa:**<br>
-RemoveDuplicates([proxyAddresses])                                                                                                       
-Sanitized proxyAddress attribútumot ad vissza, amelyben az összes ismétlődő értéket eltávolították.
+**Például**<br>
+RemoveDuplicates ([proxyAddresses])                                                                                                       
+Egy megtisztított proxyAddress attribútumot ad vissza, amelyben az összes duplikált érték el lett távolítva
 
 ---
 ### <a name="replace"></a>Csere
-**Funkció:**<br> Csere(forrás; oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
+**Függvény**<br> Replace (forrás, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, sablon)
 
 **Leírás:**<br>
-Lecseréli a karakterláncon belüli értékeket. A megadott paraméterektől függően másképp működik:
+Egy karakterláncon belüli értékeket cserél le. A megadott paraméterektől függően másképp működik:
 
-* Ha **az oldValue** és **a replacementValue** meg van adva:
+* A **OldValue** és a **replacementValue** megadása esetén:
   
-  * A **forrásban** lévő **oldValue** összes előfordulását **lecseréli a replacementValue értékre**
-* Ha **az oldValue** és **a sablon** meg van adva:
+  * Lecseréli a **forrásban** lévő **OldValue** összes előfordulását a **replacementValue**
+* A **OldValue** és a **sablon** megadásakor:
   
-  * A **sablonban** lévő **régiÉrték** összes előfordulását lecseréli a **forrásértékre**
-* Ha **regexPattern** és **replacementValue** vannak megadva:
+  * A **sablonban** lévő **OldValue** összes előfordulását lecseréli a **forrás** értékkel
+* A **regexPattern** és a **replacementValue** megadása esetén:
 
-  * A függvény a **regexPattern-et** alkalmazza a forráskarakterláncra, és a regex csoportnevek segítségével létrehozhatja a **replacementValue karakterláncát.** **source**
-* A **regexPattern**, **regexGroupName**, **replacementValue** beállítás esetén a következőket adják meg:
+  * A függvény a **regexPattern** alkalmazza a **forrás** sztringre, és a regex-csoportok nevét használhatja a **replacementValue** karakterlánc létrehozásához.
+* A **regexPattern**, a **regexGroupName**és a **replacementValue** megadásakor:
   
-  * A függvény a **regexPattern-et** alkalmazza a forráskarakterláncra, és a **regexGroupName-nek** megfelelő összes értéket **lecseréli replacementValue értékre.** **source**
-* Ha **regexPattern**, **regexGroupName**, **replacementAttributeName** meg vannak adva:
+  * A függvény a **regexPattern** alkalmazza a **forrás** sztringre, és lecseréli az összes olyan értéket, amely megfelel a **regexGroupName** a **replacementValue**
+* A **regexPattern**, a **regexGroupName**és a **replacementAttributeName** megadásakor:
   
-  * Ha **a forrásnak** nincs értéke, a **forrás** t ad vissza
-  * Ha **a forrásnak** van értéke, a függvény a **regexPattern-et** alkalmazza a **forráskarakterláncra,** és lecseréli a **regexGroupName-nek** megfelelő összes értéket a **replacementAttributeName** értékkel.
+  * Ha a **forrásnak** nincs értéke, a rendszer visszaadja a **forrást** .
+  * Ha a **forrás** értékkel rendelkezik, a függvény a **regexPattern** alkalmazza a **forrás** sztringre, és lecseréli az összes olyan értéket, amely megfelel a **regexGroupName** a **replacementAttributeName** társított értéknek.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |A **forrásobjektum** attribútumának általában neve. |
-| **régiérték** |Optional |Sztring |A **forrásban** vagy **sablonban**helyettesítendő érték . |
-| **regexPattern** |Optional |Sztring |Regex minta a **forrásban**helyettesítendő értékhez . Vagy, ha **replacementPropertyName van** használva, minta kinyerni értéket **replacementPropertyName**. |
-| **regexGroupName** |Optional |Sztring |A **regexPattern**csoporton belüli csoport neve . Csak **akkor, ha replacementPropertyName** van használva, akkor kivonjuk a csoport értékét **replacementValue** a **replacementPropertyName**értékként. |
-| **replacementValue** |Optional |Sztring |Új érték, amivel a régit helyettesítheti. |
+| **forrás** |Kötelező |Sztring |Az attribútum neve általában a **forrásoldali** objektumban. |
+| **oldValue** |Optional |Sztring |A **forrásban** vagy **sablonban**cserélni kívánt érték. |
+| **regexPattern** |Optional |Sztring |A **forrásban**lecserélni kívánt érték regex-mintája. Vagy ha **replacementPropertyName** használ, a **replacementPropertyName**származó érték kinyerésére szolgáló minta. |
+| **regexGroupName** |Optional |Sztring |A csoport neve a **regexPattern**belül. Csak **replacementPropertyName** használata esetén a csoport értékének kinyerése a **replacementPropertyName** **replacementValue** történik. |
+| **replacementValue** |Optional |Sztring |Új érték a régi helyett. |
 | **replacementAttributeName** |Optional |Sztring |A helyettesítő értékhez használandó attribútum neve |
-| **Sablon** |Optional |Sztring |Amikor **sablon** érték van megadva, megkeressük a **régiÉrték** a sablonon belül, és helyette **forrásérték.** |
+| **sablon** |Optional |Sztring |Ha meg van adni a **sablon** értéke, megkeresjük a **OldValue** a sablonon belül, és lecseréljük a **forrás** értékre. |
 
 ---
 ### <a name="selectuniquevalue"></a>SelectUniqueValue
-**Funkció:**<br> SelectUniqueValue(uniqueValueRule1; uniqueValueRule2; uniqueValueRule3, ...)
+**Függvény**<br> SelectUniqueValue(uniqueValueRule1, uniqueValueRule2, uniqueValueRule3, ...)
 
-**Leírás:**<br> Legalább két argumentumot igényel, amelyek egyedi értékgenerálási szabályok, amelyeket kifejezések segítségével határoznak meg. A függvény kiértékeli az egyes szabályokat, majd ellenőrzi a létrehozott értéket a célalkalmazásban/könyvtárban. Az első talált egyedi érték a visszaadott érték lesz. Ha az összes érték már létezik a célban, a bejegyzés lesz letéti ben, és az ok a naplónaplókba kerül. A megadható argumentumok számának nincs felső határa.
+**Leírás:**<br> Legalább két argumentumot igényel, amelyek a kifejezések használatával definiált egyedi érték-létrehozási szabályok. A függvény kiértékeli az egyes szabályokat, majd ellenőrzi az egyediséghez generált értéket a cél alkalmazásban vagy könyvtárban. A rendszer az első egyedi értéket találta vissza. Ha az összes érték már létezik a célhelyen, a bejegyzést letétbe helyezi a rendszer, és az OK bekerül a naplóba. Nincs felső korlát a megadható argumentumok számához.
 
 
  - Ez egy legfelső szintű függvény, nem ágyazható be.
- - Ez a függvény nem alkalmazható olyan attribútumokra, amelyeknek megfelelő a prioritásuk.   
- - Ez a függvény csak a bejegyzés-létrehozáshoz használható. Ha attribútummal használja, állítsa a **Leképezés alkalmazása** tulajdonságot **Csak az objektum létrehozása kor**.
- - Ez a funkció jelenleg csak a "Workday to Active Directory felhasználói kiépítés" esetén támogatott. Nem használható más létesítési alkalmazásokkal. 
+ - Ez a függvény nem alkalmazható olyan attribútumokra, amelyek egyező elsőbbséggel rendelkeznek.   
+ - Ez a függvény csak a bejegyzések létrehozásához használható. Ha attribútummal használja, állítsa a **leképezés alkalmazása** tulajdonságot csak az **objektum létrehozása során**.
+ - Ez a függvény jelenleg csak a "munkanap Active Directory a felhasználók kiosztásához" támogatott. Más kiépítési alkalmazásokkal nem használható. 
 
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **uniqueValueRule1 ... uniqueValueRuleN** |Legalább 2 szükséges, nincs felső határ |Sztring | Kiértékelhető egyedi értékgenerálási szabályok listája. |
+| **uniqueValueRule1 ... uniqueValueRuleN** |Legalább 2 szükséges, nincs felső korlát |Sztring | A kiértékelni kívánt egyedi érték-létrehozási szabályok listája. |
 
 
 ---
 ### <a name="singleapproleassignment"></a>SingleAppRoleAssignment
-**Funkció:**<br> SingleAppRoleAssignment([appRoleAssignments])
+**Függvény**<br> SingleAppRoleAssignment ([appRoleAssignments])
 
-**Leírás:**<br> Egyetlen appRoleAssignment értéket ad vissza az adott alkalmazás felhasználójának hozzárendelt összes appRoleAssignment listájából. Ez a függvény szükséges az appRoleAssignments objektum egyetlen szerepkörnév-karakterláncmá alakításához. Vegye figyelembe, hogy az ajánlott eljárás annak biztosítása, hogy egyszerre csak egy appRoleAssignment legyen hozzárendelve egy felhasználóhoz, és ha több szerepkör van hozzárendelve, a visszaadott szerepkör-karakterlánc nem lehet kiszámítható. 
+**Leírás:**<br> Egyetlen appRoleAssignment ad vissza egy adott alkalmazás felhasználóhoz rendelt összes appRoleAssignments listájáról. Ez a függvény szükséges ahhoz, hogy a appRoleAssignments objektumot egyetlen szerepkör-nevet megadó karakterláncba alakítsa át. Vegye figyelembe, hogy az ajánlott eljárás annak biztosítása, hogy egyszerre csak egy appRoleAssignment legyen hozzárendelve egy felhasználóhoz, és ha több szerepkör van hozzárendelve, a visszaadott szerepkör-karakterlánc nem lehet előre jelezhető. 
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **[appRoleAssignments]** |Kötelező |Sztring |**[appRoleAssignments]** objektum. |
+| **AppRoleAssignments** |Kötelező |Sztring |**[appRoleAssignments]** objektum. |
 
 ---
 ### <a name="split"></a>Felosztás
-**Funkció:**<br> Split(forrás; határoló)
+**Függvény**<br> Felosztás (forrás, elválasztó karakter)
 
-**Leírás:**<br> A karakterláncot többértékű tömbre osztja fel a megadott határoló karakter használatával.
+**Leírás:**<br> A karakterláncot egy többértékű tömbre osztja fel a megadott elválasztó karakter használatával.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |**forrásértéket.** |
-| **elválasztókarakter** |Kötelező |Sztring |Megadja a karakterlánc felosztásához használt karaktert (például: ",") |
+| **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
+| **elválasztókarakter** |Kötelező |Sztring |Meghatározza a karakterlánc felosztására szolgáló karaktert (példa: ",") |
 
 ---
-### <a name="stripspaces"></a>StripSpaces között
-**Funkció:**<br> Csíkozott területek(forrás)
+### <a name="stripspaces"></a>StripSpaces
+**Függvény**<br> StripSpaces (forrás)
 
-**Leírás:**<br> Eltávolítja az összes szóköz (" ") karaktert a forráskarakterláncból.
+**Leírás:**<br> Eltávolítja az összes szóköz ("") karaktert a forrás sztringből.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |**forrásértéket.** |
+| **forrás** |Kötelező |Sztring |a frissítendő **forrás** értéke. |
 
 ---
 ### <a name="switch"></a>Kapcsoló
-**Funkció:**<br> Kapcsoló(forrás; defaultValue, key1, value1, key2, value2, ...)
+**Függvény**<br> Kapcsoló (forrás, defaultValue, key1, érték1, key2, érték2,...)
 
-**Leírás:**<br> Ha **a forrásérték** megegyezik egy **kulcssal,** az adott **kulcs** **értékét** adja vissza. Ha **a forrásérték** nem egyezik egyetlen billentyűvel sem, akkor **a defaultValue értéket**adja vissza.  **A kulcs-** és **értékparamétereknek** mindig párban kell jönniük. A függvény mindig páros számú paramétert vár el. A függvény nem használható hivatkozási attribútumokhoz, például a kezelőhöz. 
+**Leírás:**<br> Ha a **forrás** értéke megegyezik egy **kulccsal**, az adott **kulcs** **értékét** adja vissza. Ha a **forrás** értéke nem felel meg a kulcsoknak, a a **defaultValue**értéket adja vissza.  A **kulcsok** és **értékek** paramétereit mindig párokban kell megadni. A függvény mindig páros számú paramétert vár. A függvény nem használható hivatkozási attribútumokhoz, például a kezelőhöz. 
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |**Frissítandó forrásérték.** |
-| **defaultValue** |Optional |Sztring |Alapértelmezett érték, amelyet akkor használ, ha a forrás nem egyezik meg egyetlen kulcssal sem. Lehet üres karakterlánc (""). |
-| **Kulcs** |Kötelező |Sztring |**A** **forrásérték** összehasonlításához. |
-| **Érték** |Kötelező |Sztring |A kulcsnak megfelelő **forrás** csereértéke. |
+| **forrás** |Kötelező |Sztring |A frissítendő **forrás** értéke. |
+| **defaultValue** |Optional |Sztring |Az alapértelmezett érték, amelyet akkor kell használni, ha a forrás nem felel meg a kulcsoknak. Üres karakterlánc ("") lehet. |
+| **kulcs** |Kötelező |Sztring |A **kulcs** a **forrás** értékének összehasonlításához a következővel:. |
+| **érték** |Kötelező |Sztring |A kulcsnak megfelelő **forrás** helyettesítő értéke. |
 
 ---
-### <a name="tolower"></a>ToLower (ToLower)
-**Funkció:**<br> ToLower(forrás, kultúra)
+### <a name="tolower"></a>ToLower
+**Függvény**<br> ToLower (forrás, kulturális környezet)
 
-**Leírás:**<br> Vesz egy *forrás* karakterlánc értékét, és alakítja át a kisbetűs a kulturális környezet szabályok, amelyek a megadott. Ha nincs megadva *kulturális* adat, akkor az Invariant kulturális környezetet fogja használni.
+**Leírás:**<br> Egy *forrás* sztring értéket vesz igénybe, és a megadott kulturális szabályok alapján átalakítja a kisbetűsre. Ha nincs megadva *kulturális* információ, akkor a rendszer a semleges kultúrát fogja használni.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |A forrásobjektum attribútumának általában neve |
-| **Kultúra** |Optional |Sztring |A 4646-os számú Kulturális környezet nevének formátuma *languagecode2-country/regioncode2,* ahol a *languagecode2* a kétbetűs nyelvkód, *az ország/régiókód2* pedig a kétbetűs szubkultúra kódja. Ilyen például a japán (Japán) és az en-US az angol (Egyesült Államok) esetében. Azokban az esetekben, amikor nem áll rendelkezésre kétbetűs nyelvkód, az ISO 639-2-ből származó hárombetűs kódot kell használni.|
+| **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumból |
+| **kulturális környezet** |Optional |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
 
 ---
-### <a name="toupper"></a>Toupper között
-**Funkció:**<br> ToUpper(forrás, kultúra)
+### <a name="toupper"></a>ToUpper
+**Függvény**<br> ToUpper (forrás, kulturális környezet)
 
-**Leírás:**<br> Vesz egy *forráskarakterlánc* értékét, és alakítja át a nagybetűs a kulturális környezet szabályok, amelyek meg vannak adva. Ha nincs megadva *kulturális* adat, akkor az Invariant kulturális környezetet fogja használni.
+**Leírás:**<br> Egy *forrás* sztring értékét veszi át, és a megadott kulturális szabályok alapján átalakítja a nagybetűre. Ha nincs megadva *kulturális* információ, akkor a rendszer a semleges kultúrát fogja használni.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Forrás** |Kötelező |Sztring |A forrásobjektum attribútumának általában neve. |
-| **Kultúra** |Optional |Sztring |A 4646-os számú Kulturális környezet nevének formátuma *languagecode2-country/regioncode2,* ahol a *languagecode2* a kétbetűs nyelvkód, *az ország/régiókód2* pedig a kétbetűs szubkultúra kódja. Ilyen például a japán (Japán) és az en-US az angol (Egyesült Államok) esetében. Azokban az esetekben, amikor nem áll rendelkezésre kétbetűs nyelvkód, az ISO 639-2-ből származó hárombetűs kódot kell használni.|
+| **forrás** |Kötelező |Sztring |Az attribútum neve általában a forrásoldali objektumban. |
+| **kulturális környezet** |Optional |Sztring |Az RFC 4646 alapján a kulturális név formátuma *languagecode2-ország/regioncode2*, ahol a *languagecode2* a kétbetűs nyelvi kód, az *ország/regioncode2* pedig a kétbetűs alkulturális kód. Ilyenek például a japán (Japán) és az en-US angol (Egyesült Államok). Azokban az esetekben, amikor a kétbetűs nyelvi kód nem érhető el, az ISO 639-2-ből származtatott hárombetűs kód van használatban.|
 
 ---
 ### <a name="word"></a>Word
-**Funkció:**<br> Szó(karakterlánc;WordNumber;Határolók)
+**Függvény**<br> Szó (karakterlánc, WordNumber, határolójelek)
 
-**Leírás:**<br> A Word függvény egy karakterláncban lévő szót ad vissza a használandó határolókat és a visszaadandó szószámot leíró paraméterek alapján. A határolójelek ben lévő karakterek egyikével elválasztott karakterlánc-karakterláncokat a következő szavakként azonosítják:
+**Leírás:**<br> A Word függvény egy karakterláncon belül található szót ad vissza, amely a használni kívánt határolójeleket és a visszaadni kívánt szó paramétereit írja le. A rendszer az elválasztó karakterek egyikével elválasztott karakterláncban szereplő összes karakterláncot szavakként azonosítja:
 
 Ha a szám < 1, üres karakterláncot ad vissza.
-Ha a karakterlánc null értékű, üres karakterláncot ad vissza.
-Ha a karakterlánc kevesebb, mint számszavakat tartalmaz, vagy a karakterlánc nem tartalmaz határolószavakat, a program üres karakterláncot ad vissza.
+Ha a sztring null, üres karakterláncot ad vissza.
+Ha a karakterlánc kevesebb, mint szám szót tartalmaz, vagy a sztring nem tartalmaz határolójelekkel azonosított szavakat, akkor a rendszer üres karakterláncot ad vissza.
 
-**Paraméterek:**<br> 
+**Paraméterek**<br> 
 
-| Name (Név) | Kötelező/ Ismétlődő | Típus | Megjegyzések |
+| Name | Szükséges/ismétlődő | Típus | Megjegyzések |
 | --- | --- | --- | --- |
-| **Sztring** |Kötelező |Többértékű attribútum |A szót visszaadandó karakterlánc.|
-| **WordNumber** |Kötelező | Egész szám | Azazt azonosító szám, hogy melyik szószámot kell visszaadni|
-| **határolók** |Kötelező |Sztring| A szavak azonosítására használandó határoló(k)at jelölő karakterlánc|
+| **Sztring** |Kötelező |Többértékű attribútum |Karakterlánc egy szó a következőből való visszaküldéséhez:.|
+| **WordNumber** |Kötelező | Egész szám | Az a szám, amelyből vissza kell adni a Word-számot|
+| **határolójelek** |Kötelező |Sztring| A szavak azonosításához használandó elválasztó karakter (eke) t jelölő sztring|
 
-**Példa:**<br>
-Szó("A gyors barna róka",3," ")                                                                                       
-"Barna" értéket ad eredményül.
+**Például**<br>
+Word ("a gyors barna Róka", 3, "")                                                                                       
+A "barna" értéket adja vissza.
 
-Word("This,string!has&many separators",3,",!&#")                                                                       
-"Van" értéket ad eredményül.
+Word ("this, string!&sok elválasztó", 3, ",! & #")                                                                       
+A "has" értéket adja vissza.
 
 ---
 
 ## <a name="examples"></a>Példák
-### <a name="strip-known-domain-name"></a>Ismert tartománynév csíkozása
-A felhasználónév megszerzéséhez le kell választania egy ismert tartománynevet a felhasználó e-mail címéről. <br>
+### <a name="strip-known-domain-name"></a>Szalag ismert tartományneve
+A Felhasználónév beszerzéséhez a felhasználó e-mail-címéből egy ismert tartománynevet kell megadnia. <br>
 Ha például a tartomány "contoso.com", akkor a következő kifejezést használhatja:
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 `Replace([mail], "@contoso.com", , ,"", ,)`
 
-**Minta bemenete / kimenete:** <br>
+**Minta bemenet/kimenet:** <br>
 
-* **BEMENET** (mail):john.doe@contoso.com" "
-* **KIMENET**: "john.doe"
+* **Bemenet** (e-mail): "john.doe@contoso.com"
+* **Kimenet**: "John. DOE"
 
 ### <a name="append-constant-suffix-to-user-name"></a>Állandó utótag hozzáfűzése a felhasználónévhez
-Ha Salesforce sandboxot használ, előfordulhat, hogy a szinkronizálás előtt további utótagot kell hozzáfűzött az összes felhasználónévhez.
+Ha Salesforce-munkaterületet használ, előfordulhat, hogy a szinkronizálás előtt hozzá kell fűzni egy további utótagot az összes felhasználónevehöz.
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 `Append([userPrincipalName], ".test")`
 
-**Minta bemenete/kimenete:** <br>
+**Minta bemenet/kimenet:** <br>
 
-* **BEMENET**: (userPrincipalName): " "John.Doe@contoso.com
-* **KIMENET**:John.Doe@contoso.com.test" "
+* **Bemenet**: (userPrincipalName): "John.Doe@contoso.com"
+* **Kimenet**: "John.Doe@contoso.com.test"
 
-### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Felhasználói alias létrehozása a vezeték- és keresztnév részeinek összefűzésével
-Felhasználói aliast kell létrehoznia a felhasználó keresztnevének első 3 betűjével és a felhasználó vezetéknevének első 5 betűjével.
+### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Felhasználói alias előállítása az utónév és a vezetéknév összefűzésével
+Felhasználói aliast kell létrehoznia úgy, hogy az első 3 betűt a felhasználó utónevét és az első 5 betűt adja meg.
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 `Append(Mid([givenName], 1, 3), Mid([surname], 1, 5))`
 
-**Minta bemenete/kimenete:** <br>
+**Minta bemenet/kimenet:** <br>
 
-* **BEMENET** (givenName): "János"
-* **BEMENET** (vezetéknév): "Doe"
-* **KIMENET**: "JohDoe"
+* **Bemenet** (givenName): "John"
+* **Bemenet** (vezetéknév): "DOE"
+* **Kimenet**: "JohDoe"
 
-### <a name="remove-diacritics-from-a-string"></a>Mellékjelek eltávolítása karakterláncból
-Az ékezetes jeleket tartalmazó karaktereket olyan egyenértékű karakterekre kell cserélni, amelyek nem tartalmaznak ékezetes jeleket.
+### <a name="remove-diacritics-from-a-string"></a>Mellékjelek eltávolítása egy sztringből
+Az ékezetes jeleket tartalmazó karaktereket olyan karakterekkel kell helyettesíteni, amelyek nem tartalmaznak ékezetes jeleket.
 
-**Kifejezés:** <br>
-NormalizáljaATónus-jelek([givenName])
+**Kifejezés** <br>
+NormalizeDiacritics ([givenName])
 
-**Minta bemenete/kimenete:** <br>
+**Minta bemenet/kimenet:** <br>
 
-* **BEMENET** (givenName): "Zoë"
-* **KIMENET**: "Zoe"
+* **Bemenet** (givenName): "Zoë"
+* **Kimenet**: "Zoe"
 
-### <a name="split-a-string-into-a-multi-valued-array"></a>Karakterlánc felosztása többértékű tömbre
-Vesszővel tagolt karakterlánclistát kell választania, és fel kell osztania őket egy tömbre, amely egy többértékű attribútumhoz, például a Salesforce PermissionSets attribútumához csatlakoztatható. Ebben a példában az engedélykészletek listáját az Azure AD-ben az Attribute5 bővítményben töltötték fel.
+### <a name="split-a-string-into-a-multi-valued-array"></a>Sztring felosztása többértékű tömbbe
+A karakterláncok vesszővel tagolt listáját kell megadnia, és azokat egy olyan tömbbe kell bontani, amely egy többértékű attribútumhoz, például a Salesforce PermissionSets attribútumához csatlakoztatható. Ebben a példában az extensionAttribute5 az Azure AD-ben az engedélyezési készletek listája lett feltöltve.
 
-**Kifejezés:** <br>
-Split([extensionAttribute5], ",")
+**Kifejezés** <br>
+Split ([extensionAttribute5], ",")
 
-**Minta bemenete/kimenete:** <br>
+**Minta bemenet/kimenet:** <br>
 
-* **BEMENET** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
-* **OUTPUT**: ["PermissionSetOne", "PermissionSetTwo"]
+* **Bemenet** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
+* **Kimenet**: ["PermissionSetOne", "PermissionSetTwo"]
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Kimeneti dátum karakterláncként egy bizonyos formátumban
-Dátumokat szeretne küldeni egy SaaS-alkalmazásnak egy bizonyos formátumban. <br>
-Például a ServiceNow dátumait szeretné formázni.
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Kimeneti dátum karakterláncként egy adott formátumban
+Bizonyos formátumban szeretné elküldeni a dátumokat egy SaaS-alkalmazásnak. <br>
+Például a ServiceNow dátumát szeretné formázni.
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 
 `FormatDateTime([extensionAttribute1], "yyyyMMddHHmmss.fZ", "yyyy-MM-dd")`
 
-**Minta bemenete/kimenete:**
+**Minta bemenet/kimenet:**
 
-* **BEMENET** (extensionAttribute1): "20150123105347.1Z"
-* **KIBOCSÁTÁS**: "2015-01-23"
+* **Bemenet** (extensionAttribute1): "20150123105347.1 z"
+* **Kimenet**: "2015-01-23"
 
-### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Érték cseréje előre meghatározott beállítások alapján
+### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Érték cseréje előre megadott beállítások alapján
 
-Meg kell határoznia a felhasználó időzónáját az Azure AD-ben tárolt állapotkód alapján. <br>
-Ha az állapotkód nem egyezik az előre definiált beállítások egyikével sem, használja az "Ausztrália/Sydney" alapértelmezett értéket.
+Meg kell határoznia a felhasználó időzónáját az Azure AD-ben tárolt állapot kódja alapján. <br>
+Ha az állapotkód nem egyezik az előre definiált beállításokkal, használja az "Australia/Sydney" alapértelmezett értékét.
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
-**Minta bemenete/kimenete:**
+**Minta bemenet/kimenet:**
 
-* **BEMENET** (állapot): "QLD"
-* **OUTPUT**: "Ausztrália/Brisbane"
+* **Bemenet** (állapot): "QLD"
+* **Kimenet**: "Ausztrália/Brisbane"
 
-### <a name="replace-characters-using-a-regular-expression"></a>Karakterek cseréje reguláris kifejezéssel
-Meg kell találnia azokat a karaktereket, amelyek megfelelnek a reguláris kifejezés értékének, és el kell távolítania őket.
+### <a name="replace-characters-using-a-regular-expression"></a>Karakterek cseréje reguláris kifejezés használatával
+Meg kell keresnie a reguláris kifejezés értékének megfelelő karaktereket, és el kell távolítani őket.
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 
-Replace([mailNickname], , "[a-zA-Z_]*", "", , )
+Replace ([mailNickname],, "[a-zA-Z_] *",, "",,)
 
-**Minta bemenete/kimenete:**
+**Minta bemenet/kimenet:**
 
-* **BEMENET** (mailBecenév: "john_doe72"
-* **KIMENET**: "72"
+* **Bemenet** (mailNickname: "john_doe72"
+* **Kimenet**: "72"
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Létrehozott userPrincipalName (UPN) érték átalakítása kisbetűssé
-Az alábbi példában az UPN-értéket a PreferredFirstName és a PreferredLastName forrásmezők összefűzésével hozza létre, és a ToLower függvény a létrehozott karakterláncon működik, hogy az összes karaktert kisbetűssé konvertálja. 
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Generált userPrincipalName (UPN) értékének kisbetűvé alakítása
+Az alábbi példában az UPN-érték a PreferredFirstName és a PreferredLastName forrás mezőinek összefűzésével jön létre, és a ToLower függvény a generált karakterláncon működik, hogy az összes karaktert kisbetűvé alakítsa. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
 
-**Minta bemenete/kimenete:**
+**Minta bemenet/kimenet:**
 
-* **BEMENET** (PreferredFirstName): "János"
-* **BEMENET** (PreferredLastName): "Smith"
-* **KIMENET**:john.smith@contoso.com" "
+* **Bemenet** (PreferredFirstName): "John"
+* **Bemenet** (PreferredLastName): "Kovács"
+* **Kimenet**: "john.smith@contoso.com"
 
-### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték létrehozása a userPrincipalName (UPN) attribútumhoz
-A felhasználó keresztneve, középső neve és vezetékneve alapján létre kell hoznia egy értéket az UPN attribútumhoz, és ellenőriznie kell annak egyediségét a cél AD könyvtárban, mielőtt hozzárendeli az értéket az UPN attribútumhoz.
+### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Egyedi érték előállítása a userPrincipalName (UPN) attribútumhoz
+A felhasználó utóneve, középső neve és vezetékneve alapján értéket kell létrehoznia az UPN-attribútumhoz, és meg kell adnia annak egyediségét a cél AD-címtárban, mielőtt az értéket az UPN-attribútumhoz rendeli.
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 
     SelectUniqueValue( 
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"), 
@@ -706,30 +706,30 @@ A felhasználó keresztneve, középső neve és vezetékneve alapján létre ke
         Join("@", NormalizeDiacritics(StripSpaces(Join(".",  Mid([PreferredFirstName], 1, 2), [PreferredLastName]))), "contoso.com")
     )
 
-**Minta bemenete/kimenete:**
+**Minta bemenet/kimenet:**
 
-* **BEMENET** (PreferredFirstName): "János"
-* **BEMENET** (PreferredLastName): "Smith"
-* **OUTPUT**:John.Smith@contoso.com" " ", ha az John.Smith@contoso.com UPN értéke még nem létezik a címtárban
-* **OUTPUT**:J.Smith@contoso.com" ", John.Smith@contoso.com ha már létezik upn érték a címtárban
-* **OUTPUT**:Jo.Smith@contoso.com" ", ha a fenti két UPN érték már létezik a címtárban
+* **Bemenet** (PreferredFirstName): "John"
+* **Bemenet** (PreferredLastName): "Kovács"
+* **Output**: "John.Smith@contoso.com", John.Smith@contoso.com ha még nem létezik UPN-érték a címtárban
+* **Output**: "J.Smith@contoso.com", John.Smith@contoso.com ha a címtárban már létezik UPN-érték
+* **Kimenet**: "Jo.Smith@contoso.com", ha a fenti két UPN-érték már létezik a címtárban
 
-### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>Flow mail érték, ha nem NULL, egyébként flow userPrincipalName
-Ha jelen van, a mail attribútumot szeretné folyatni. Ha nem, akkor a userPrincipalName értékét szeretné folyatni.
+### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>A flow e-mail-értéke, ha nem NULL értékű, máskülönben flow userPrincipalName
+Ha megtalálható a mail attribútuma. Ha nem, akkor inkább a userPrincipalName értékét kell átvennie.
 
-**Kifejezés:** <br>
+**Kifejezés** <br>
 `Coalesce([mail],[userPrincipalName])`
 
-**Minta bemenete/kimenete:** <br>
+**Minta bemenet/kimenet:** <br>
 
-* **BEMENET** (mail): NULL
-* **BEMENET** (userPrincipalName):John.Doe@contoso.com" "
-* **KIMENET**:John.Doe@contoso.com" "
+* **Bemenet** (e-mail): NULL
+* **Bemenet** (userPrincipalName): "John.Doe@contoso.com"
+* **Kimenet**: "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek
-* [Felhasználói kiépítés/sas-alkalmazásokba való kiépítés automatizálása](../app-provisioning/user-provisioning.md)
-* [Attribútumleképezések testreszabása a felhasználók kiépítéséhez](../app-provisioning/customize-application-attributes.md)
-* [Hatókörszűrők a felhasználók kiépítéshez](define-conditional-rules-for-provisioning-user-accounts.md)
+* [A felhasználók üzembe helyezésének és megszüntetésének automatizálása az SaaS-alkalmazásokban](../app-provisioning/user-provisioning.md)
+* [Attribútum-hozzárendelések testreszabása a felhasználók üzembe helyezéséhez](../app-provisioning/customize-application-attributes.md)
+* [Felhasználói kiépítési szűrők hatóköre](define-conditional-rules-for-provisioning-user-accounts.md)
 * [SCIM használata a felhasználók és csoportok automatikus üzembe helyezésének engedélyezéséhez az Azure Active Directoryból az alkalmazásokba](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 * [Alkalmazáskiépítési értesítések](../app-provisioning/user-provisioning.md)
 * [Az SaaS-alkalmazások integrálásával foglalkozó oktatóanyagok listája](../saas-apps/tutorial-list.md)

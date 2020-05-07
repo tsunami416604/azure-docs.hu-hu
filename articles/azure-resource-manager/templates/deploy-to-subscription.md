@@ -2,13 +2,13 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 03/23/2020
-ms.openlocfilehash: 6bec29a07653ff5ad7d1e2f8317246049e127c8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 80fe451f696480ec24b3d8eced64941de9492fef
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605004"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610819"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
@@ -20,6 +20,7 @@ A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azur
 
 A következő erőforrástípusok az előfizetés szintjén helyezhetők üzembe:
 
+* [tervrajzok](/azure/templates/microsoft.blueprint/blueprints)
 * [költségvetése](/azure/templates/microsoft.consumption/budgets)
 * [központi telepítések](/azure/templates/microsoft.resources/deployments) – az erőforráscsoportok üzembe helyezett beágyazott sablonokhoz.
 * [eventSubscriptions](/azure/templates/microsoft.eventgrid/eventsubscriptions)
@@ -244,11 +245,11 @@ A következő példában létrehozunk egy erőforráscsoportot, és üzembe hely
 }
 ```
 
-## <a name="create-policies"></a>Szabályzatok létrehozása
+## <a name="azure-policy"></a>Azure Policy
 
-### <a name="assign-policy"></a>Házirend kiosztása
+### <a name="assign-policy-definition"></a>Szabályzat-definíció megadása
 
-Az alábbi példa egy meglévő szabályzat-definíciót rendel hozzá az előfizetéshez. Ha a házirend paramétereket fogad, adja meg őket objektumként. Ha a házirend nem fogad paramétereket, használja az alapértelmezett üres objektumot.
+Az alábbi példa egy meglévő szabályzat-definíciót rendel hozzá az előfizetéshez. Ha a házirend-definíció paraméterekkel rendelkezik, adja meg őket objektumként. Ha a házirend-definíció nem fogad paramétereket, használja az alapértelmezett üres objektumot.
 
 ```json
 {
@@ -285,7 +286,7 @@ Az alábbi példa egy meglévő szabályzat-definíciót rendel hozzá az előfi
 A sablon Azure CLI-vel történő üzembe helyezéséhez használja a következőt:
 
 ```azurecli-interactive
-# Built-in policy that accepts parameters
+# Built-in policy definition that accepts parameters
 definition=$(az policy definition list --query "[?displayName=='Allowed locations'].id" --output tsv)
 
 az deployment sub create \
@@ -312,9 +313,9 @@ New-AzSubscriptionDeployment `
   -policyParameters $policyParams
 ```
 
-### <a name="define-and-assign-policy"></a>Házirend meghatározása és hozzárendelése
+### <a name="create-and-assign-policy-definitions"></a>Szabályzat-definíciók létrehozása és kiosztása
 
-[Megadhatja és hozzárendelhet](../../governance/policy/concepts/definition-structure.md) egy szabályzatot ugyanabban a sablonban.
+[Megadhatja és hozzárendelhet](../../governance/policy/concepts/definition-structure.md) egy szabályzat-definíciót ugyanabban a sablonban.
 
 ```json
 {
@@ -357,7 +358,7 @@ New-AzSubscriptionDeployment `
 }
 ```
 
-A házirend-definíció létrehozásához az előfizetésében, majd az előfizetésre való alkalmazásához használja az alábbi CLI-parancsot:
+Az előfizetéshez tartozó szabályzat-definíció létrehozásához és az előfizetéshez való hozzárendeléséhez használja az alábbi CLI-parancsot:
 
 ```azurecli
 az deployment sub create \
@@ -373,6 +374,32 @@ New-AzSubscriptionDeployment `
   -Name definePolicy `
   -Location centralus `
   -TemplateUri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/policydefineandassign.json"
+```
+
+## <a name="azure-blueprints"></a>Azure Blueprints
+
+### <a name="create-blueprint-definition"></a>Terv definíciójának létrehozása
+
+[Létrehozhat](../../governance/blueprints/tutorials/create-from-sample.md) egy tervrajz-definíciót egy sablonból.
+
+:::code language="json" source="~/quickstart-templates/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json":::
+
+Az előfizetéshez tartozó terv definíciójának létrehozásához használja az alábbi CLI-parancsot:
+
+```azurecli
+az deployment sub create \
+  --name demoDeployment \
+  --location centralus \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
+```
+
+A sablon PowerShell használatával történő üzembe helyezéséhez használja a következőt:
+
+```azurepowershell
+New-AzSubscriptionDeployment `
+  -Name demoDeployment `
+  -Location centralus `
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/subscription-level-deployments/blueprints-new-blueprint/azuredeploy.json"
 ```
 
 ## <a name="template-samples"></a>Sablonminták

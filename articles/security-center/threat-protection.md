@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 79638f584f1c65b33f23a68f01dbe82878460cc2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234077"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606891"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -34,7 +34,9 @@ Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy
 > [!TIP]
 > Security Center veszélyforrások elleni védelmi képességeinek engedélyezéséhez alkalmaznia kell a standard szintű díjszabást a megfelelő munkaterheléseket tartalmazó előfizetésre.
 >
-> A Security Center fenyegetések elleni védelme a Storage-fiókoknál és az SQL/MySQL/PG kiszolgálókon jelenleg csak az egyetlen olyan számítási feladat, amely az erőforrás szintjén engedélyezhető az egyes tárolási/SQL-munkaterhelések védelme érdekében.
+> Az **Azure Storage-fiókok** veszélyforrások elleni védelmét az előfizetés szintjén vagy az erőforrás szintjén engedélyezheti.
+> Engedélyezheti a veszélyforrások elleni védelmet **Azure SQL Database SQL-kiszolgálókon** az előfizetés szintjén vagy az erőforrás szintjén.
+> Az **Azure Database for MariaDB/MySQL/PostgreSQL** veszélyforrások elleni védelmét csak az erőforrás szintjén engedélyezheti.
 
 
 

@@ -4,14 +4,14 @@ description: A Azure Key Vault használata az Azure HPC cache használatával a 
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 04/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: f8a8b8dfedd9c4ac0590dc91e5cdced50d2be6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2d10241b8395c33767ffeeb550d9d8060bde3ce3
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195077"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597739"
 ---
 # <a name="use-customer-managed-encryption-keys-for-azure-hpc-cache"></a>Ügyfél által felügyelt titkosítási kulcsok használata az Azure HPC cache-hez
 
@@ -20,11 +20,7 @@ A Azure Key Vault használatával szabályozhatja az Azure HPC cache-ben tárolt
 > [!NOTE]
 > A rendszer alapértelmezés szerint a Microsoft által felügyelt kulcsok használatával titkosítja az Azure-ban tárolt összes, a gyorsítótár-lemezeket is tartalmazó adatforgalomat. A cikkben leírt lépéseket csak akkor kell végrehajtania, ha az adattitkosításhoz használt kulcsokat szeretné kezelni.
 
-Ez a funkció csak az alábbi Azure-régiókban érhető el:
-
-* USA keleti régiója
-* USA déli középső régiója
-* USA nyugati régiója, 2.
+Ez a funkció csak néhány olyan Azure-régióban érhető el, ahol elérhető az Azure HPC cache. A részletekért tekintse meg a [régió elérhetőségét](hpc-cache-overview.md#region-availability) ismertető listát.
 
 Három lépésben engedélyezheti az ügyfél által felügyelt kulcsos titkosítást az Azure HPC cache-ben:
 
@@ -71,7 +67,7 @@ A gyorsítótár-létrehozási időpontnál meg kell adnia a gyorsítótár titk
 A részletekért olvassa el a [Azure Key Vault dokumentációját](../key-vault/key-vault-overview.md) .
 
 > [!NOTE]
-> A Azure Key Vaultnak ugyanazt az előfizetést kell használnia, és ugyanabban a régióban kell lennie, mint az Azure HPC cache-nek. Használja a cikk elején felsorolt támogatott régiók egyikét.
+> A Azure Key Vaultnak ugyanazt az előfizetést kell használnia, és ugyanabban a régióban kell lennie, mint az Azure HPC cache-nek. Győződjön meg arról, hogy a választott régió [támogatja az ügyfél által felügyelt kulcsok funkciót](hpc-cache-overview.md#region-availability).
 
 ## <a name="2-create-the-cache-with-customer-managed-keys-enabled"></a>2. a gyorsítótár létrehozása az ügyfél által felügyelt kulcsokkal engedélyezve
 

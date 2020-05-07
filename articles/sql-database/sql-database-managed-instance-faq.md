@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: 393d67b200a4f8d44cb001b3a7e2e491209e9d58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99fbda6f6d5e8fc88f9f4f34c6e194412a120057
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80364169"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598487"
 ---
 # <a name="sql-database-managed-instance-frequently-asked-questions-faq"></a>SQL Database felügyelt példányok gyakran ismételt kérdései (GYIK)
 
@@ -94,7 +94,13 @@ A hardveres generációk közötti automatizált online váltás akkor lehetség
 
 Ez egy hosszan futó művelet, mivel új felügyelt példány lesz kiépítve a háttérben, és az adatbázisok automatikusan átkerülnek a régi és az új példány között a folyamat végén található gyors feladatátvételsel. 
 
+**Mi a teendő, ha a hardveres generációk nem támogatottak ugyanabban a régióban?**
+
 Ha a hardveres generációk nem támogatottak ugyanabban a régióban, akkor a hardveres generáció módosítása lehetséges, de manuálisan kell elvégezni. Ehhez olyan új példányt kell kiépíteni a régióban, ahol a kívánt hardver-létrehozás elérhető, és manuálisan végezheti el a régi és az új példány közötti biztonsági mentést és visszaállítást.
+
+**Mi a teendő, ha nincs elegendő IP-cím a frissítési művelet végrehajtására?**
+
+Ha nincs elegendő IP-cím abban az alhálózatban, amelyben a felügyelt példányt kiépítik, akkor létre kell hoznia egy új alhálózatot és egy új felügyelt példányt. Javasoljuk továbbá, hogy az új alhálózat több IP-címmel legyen létrehozva, így a későbbi frissítési műveletek elkerülik a hasonló helyzeteket (támaszt alhálózat mérete esetén a [vnet alhálózat méretének megállapítása](sql-database-managed-instance-determine-size-vnet-subnet.md)alocated. Az új példány üzembe helyezése után manuálisan végezheti el az adatok biztonsági mentését és visszaállítását a régi és az új példány között, vagy elvégezheti a példányok közötti [időpontra történő visszaállítást](sql-database-managed-instance-point-in-time-restore.md?tabs=azure-powershell). 
 
 
 ## <a name="tune-performance"></a>Teljesítmény hangolása

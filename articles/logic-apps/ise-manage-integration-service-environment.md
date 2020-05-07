@@ -3,15 +3,15 @@ title: Integrációs szolgáltatási környezetek kezelése Azure Logic Apps
 description: A hálózati állapot és a Logic apps, kapcsolatok, egyéni összekötők és integrációs fiókok kezelése a Azure Logic Apps integrációs szolgáltatási környezetében (ISE)
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: f48106be67763c093a183be01098cab74391752e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 41e511bce3599dd341ccf8192612e3f08111245a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284199"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598419"
 ---
 # <a name="manage-your-integration-service-environment-ise-in-azure-logic-apps"></a>Az integrációs szolgáltatási környezet (ISE) kezelése Azure Logic Apps
 
@@ -54,6 +54,10 @@ Megtekintheti és kezelheti az ISE-ben található Logic apps-alkalmazásokat.
    ![Logikai alkalmazások megtekintése](./media/ise-manage-integration-service-environment/ise-find-logic-apps.png)
 
 1. Ha el szeretné távolítani a már nem szükséges Logic apps-alkalmazásokat az ISE-ben, válassza ki a logikai alkalmazásokat, majd válassza a **Törlés**lehetőséget. A törölni kívánt törlés megerősítéséhez válassza az **Igen**lehetőséget.
+
+> [!NOTE]
+> Ha töröl és újból létrehoz egy alárendelt logikai alkalmazást, újra kell mentenie a szülő logikai alkalmazást. Az újból létrehozott alárendelt alkalmazás eltérő metaadatokkal fog rendelkezni.
+> Ha nem kívánja újra a szülő logikai alkalmazást a gyermek újbóli létrehozása után, a gyermek logikai alkalmazás hívásai sikertelenek lesznek, a "nem engedélyezett" hibaüzenettel. Ez a viselkedés a szülő-gyermek Logic apps-alkalmazásokra vonatkozik, például azokra, amelyek az integrációs fiókokban vagy az Azure functions szolgáltatásban használnak összetevőket.
 
 <a name="find-api-connections"></a>
 

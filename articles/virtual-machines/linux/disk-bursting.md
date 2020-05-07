@@ -1,23 +1,32 @@
 ---
 title: Felügyelt lemez kitörése
-description: Ismerkedjen meg a lemezek kitörésével és az Azure Premium SSD-k működésével.
-author: roygara
-ms.author: rogarana
-ms.date: 03/28/2019
+description: További tudnivalók az Azure-beli lemezek és az Azure-beli virtuális gépek lemezes kitöréséről
+author: albecker1
+ms.author: albecker
+ms.date: 04/27/2020
 ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: 4cac3c3e5346fa9c8ab68a4238d64419060a0967
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25aa9fc166e831acd2ed0389bbbe4d2dc7e04b19
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385197"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594746"
 ---
-# <a name="premium-ssd-bursting"></a>prémium SSD burst
-
+# <a name="disk-bursting"></a>Lemezek adatlöket-kezelése
 [!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="virtual-machine-level-bursting"></a>Virtuális gépek szintjének felszakadása
+A virtuális gépek szintjének feltört támogatása a nyilvános felhőben lévő összes régióban a következő támogatott méreteken engedélyezett: 
+- [Lsv2 sorozat](../lsv2-series.md)
 
-[Adatlemez csatlakoztatása Linux rendszerű virtuális géphez a portál használatával](attach-disk-portal.md)
+A burst beállítás alapértelmezés szerint engedélyezve van az azt támogató virtuális gépek esetében.
+
+## <a name="disk-level-bursting"></a>Lemez szintjének felszakadása
+Az adattelen [prémium SSD](disks-types.md#premium-ssd) -lemezeken is elérhetők a P20 és kisebb méretekben az összes régióban. A lemez kitörése alapértelmezés szerint engedélyezve van az azt támogató lemezek új központi telepítésen. A meglévő lemezek mérete, ha támogatják a lemezek kitörését, a következő módszerek egyikével engedélyezheti a kitörést: 
+- **A virtuális gép újraindítása** 
+- **Lemez leválasztása és újracsatolása**
+
+
+[!INCLUDE [managed-disks-bursting](../../../includes/managed-disks-bursting-2.md)]

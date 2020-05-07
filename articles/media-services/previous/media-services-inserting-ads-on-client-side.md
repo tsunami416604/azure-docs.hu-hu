@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 274ee09ae98dd229b255e58261f462e322be9f89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e5f6b7fa505890dc6bc818d1bd2578e5d974ff0
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565740"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594865"
 ---
 # <a name="inserting-ads-on-the-client-side"></a>Hirdetések beszúrása az ügyféloldali oldalon
 Ez a cikk azt ismerteti, hogyan szúrhat be különféle típusú hirdetéseket az ügyfél oldalán.
@@ -586,7 +586,7 @@ Ez a példa a VmapSchedulerPlugin használja a hirdetések VMAP-fájllal való e
 ```
 
 ## <a name="implementing-an-ios-video-player-with-ad-support"></a>IOS-videolejátszó megvalósítása ad-támogatással
-A Microsoft Media platform: az iOS-hez készült Player Framework olyan minta-alkalmazásokból álló gyűjteményt tartalmaz, amelyek bemutatják, hogyan implementálhat egy videolejátszó-alkalmazást a keretrendszer használatával. A Player Framework és a Samples a [Azure Media Player Framework](https://github.com/Azure/azure-media-player-framework)webhelyről tölthető le. A GitHub-oldal egy olyan wikire mutató hivatkozást tartalmaz, amely a Player Framework további információit tartalmazza, és bevezeti a Player-minta: [Azure Media Player wiki](https://github.com/Azure/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
+A Microsoft Media platform: az iOS-hez készült Player Framework olyan minta-alkalmazásokból álló gyűjteményt tartalmaz, amelyek bemutatják, hogyan implementálhat egy videolejátszó-alkalmazást a keretrendszer használatával. A Player Framework és a Samples a [Azure Media Player Framework](https://github.com/CloudMetal/azure-media-player-framework)webhelyről tölthető le. A GitHub-oldal egy olyan wikire mutató hivatkozást tartalmaz, amely a Player Framework további információit tartalmazza, és bevezeti a Player-minta: [Azure Media Player wiki](https://github.com/CloudMetal/azure-media-player-framework/wiki/How-to-use-Azure-media-player-framework).
 
 ### <a name="scheduling-ads-with-vmap"></a>Hirdetések ütemezése a VMAP
 Az alábbi példa bemutatja, hogyan ütemezhet hirdetéseket egy VMAP-fájl használatával.

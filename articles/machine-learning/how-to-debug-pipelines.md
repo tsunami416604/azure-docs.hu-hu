@@ -9,12 +9,12 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 9c2e00ed14a45c6df7cf72845db2ecd069381ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257215"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594624"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Hibakeresés és hibaelhárítás a gépi tanulási folyamatokban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -128,28 +128,32 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Hibakeresés és hibaelhárítás a Azure Machine Learning Designerben (előzetes verzió)
 
-Ez a szakasz áttekintést nyújt a folyamatoknak a tervezőben való hibakereséséről.
-A tervezőben létrehozott folyamatok esetében a **naplófájlokat** a szerzői műveletek lapon vagy a folyamat futtatása Részletek lapon találja.
+Ez a szakasz áttekintést nyújt a folyamatoknak a tervezőben való hibakereséséről. A tervezőben létrehozott folyamatok esetében az **70_driver_log** fájlt a szerzői műveletek lapon vagy a folyamat futtatása Részletek lapon találja.
 
-### <a name="access-logs-from-the-authoring-page"></a>Naplók elérése a szerzői műveletek lapról
+### <a name="get-logs-from-the-authoring-page"></a>Naplók beolvasása a szerzői műveletek lapról
 
-Amikor elküld egy folyamat futását, és az authoring (szerzői műveletek) oldalon marad, megkeresheti az egyes modulokhoz generált naplófájlokat.
+Amikor elküld egy folyamat futását, és az authoring (szerzői műveletek) oldalon marad, megkeresheti az egyes modulokhoz generált naplófájlokat, mivel az egyes modulok futtatása befejeződött.
 
-1. Válasszon ki egy modult a szerzői műveletek vásznon.
+1. Válassza ki azt a modult, amely a szerzői műveletek vásznon fut.
 1. A modul jobb oldali ablaktáblájában lépjen a **kimenetek és naplók** lapra.
-1. Válassza ki a naplófájlt `70_driver_log.txt`.
+1. Bontsa ki a jobb oldali ablaktáblát, és válassza ki a **70_driver_log. txt** fájlt a fájl böngészőben való megtekintéséhez. A naplókat helyileg is letöltheti.
 
-    ![Szerzői műveletek lapjainak naplói](./media/how-to-debug-pipelines/pipelinerun-05.png)
+    ![Kibontott kimeneti ablaktábla a tervezőben](./media/how-to-debug-pipelines/designer-logs.png)
 
-### <a name="access-logs-from-pipeline-runs"></a>Naplók elérése a folyamat-futtatásokból
+### <a name="get-logs-from-pipeline-runs"></a>Naplók beolvasása a folyamat-futtatásokból
 
-Az adott Futtatások naplófájljait a folyamatok vagy **kísérletek** szakaszban **található folyamat futtatása** részletek lapján is megtalálhatja.
+A naplófájlokat meghatározott futtatásokhoz is megtalálhatja a folyamat futtatása Részletek lapon, amely a Studióban található **folyamatok** vagy **kísérletek** szakaszban található.
 
 1. Válassza ki a tervezőben létrehozott folyamat-futtatást.
-    ![Folyamat futtatása lap](./media/how-to-debug-pipelines/pipelinerun-04.png)
-1. Válassza ki bármelyik modult az előnézet ablaktáblán.
+
+    ![Folyamat futtatása lap](./media/how-to-debug-pipelines/designer-pipelines.png)
+
+1. Válasszon ki egy modult a betekintő ablaktáblán.
 1. A modul jobb oldali ablaktáblájában lépjen a **kimenetek és naplók** lapra.
-1. Válassza ki a naplófájlt `70_driver_log.txt`.
+1. A jobb oldali ablaktábla kibontásával megtekintheti az **70_driver_log. txt** fájlt a böngészőben, vagy kiválaszthatja a fájlt a naplók helyi letöltéséhez.
+
+> [!IMPORTANT]
+> Ha frissíteni szeretne egy folyamatot a folyamat futásának részletei lapon, a **clone** folyamatot egy új folyamat-piszkozatra kell futtatnia. A folyamat futtatása a folyamat pillanatképe. A naplófájlhoz hasonló, és nem módosítható. 
 
 ## <a name="debug-and-troubleshoot-in-application-insights"></a>Hibakeresés és hibaelhárítás a Application Insights
 A OpenCensus Python-függvénytár ily módon történő használatával kapcsolatos további információkért tekintse meg a következő útmutatót: a [gépi tanulási folyamatok hibakeresése és hibaelhárítása Application Insights](how-to-debug-pipelines-application-insights.md)

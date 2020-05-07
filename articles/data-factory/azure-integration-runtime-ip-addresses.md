@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/06/2020
-ms.openlocfilehash: b0ba47ff28208bce1a6fa6ec300a261d788167de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3fae34d0bb1aaaa2471f1cc9fd55ef9b4b73dfd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415596"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594287"
 ---
 # <a name="azure-integration-runtime-ip-addresses"></a>Azure Integration Runtime – IP-címek
 
@@ -25,7 +25,7 @@ ms.locfileid: "81415596"
 A Azure Integration Runtime által használt IP-címek attól a régiótól függenek, ahol az Azure Integration Runtime található. *Az összes* Az azonos régióban található Azure Integration Runtime azonos IP-címtartományt használ.
 
 > [!IMPORTANT]  
-> Az adatfolyamatok jelenleg nem használják ezeket az IP-címeket. 
+> Az adatfolyamatok nem támogatják a rögzített IP-címtartományok használatát.
 >
 > Ezeket az IP-tartományokat az adatáthelyezéshez, a folyamathoz és a külső tevékenységek végrehajtásához is használhatja. Ezek az IP-címtartományok az Azure Integration Runtime-ból bejövő hozzáféréshez használt adattárakban/hálózati biztonsági csoportban (NSG)/tűzfalakon való engedélyezési feladatokhoz használhatók. 
 

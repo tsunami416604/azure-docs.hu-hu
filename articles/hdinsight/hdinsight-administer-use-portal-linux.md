@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/23/2020
-ms.openlocfilehash: 8170a0190e2d322c07f8f4978a77a8171579cbfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/24/2020
+ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232887"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598498"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
 
@@ -219,13 +219,19 @@ A jelszó a fürt összes csomópontján módosul.
 4. A **parancsfájl-műveletek** lapon válassza az **új küldése**lehetőséget.
 5. A **parancsfájl elküldése művelet** lapon adja meg a következő adatokat:
 
+> [!NOTE]
+> Az SSH-jelszavak nem tartalmazhatják a következő karaktereket:
+> ```
+> " ' ` / \ < % ~ | $ & ! 
+> ```
+
    | Mező | Érték |
    | --- | --- |
    | Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-   | Name (Név) |"SSH hitelesítő adatok módosítása" |
+   | Name |"SSH hitelesítő adatok módosítása" |
    | Bash-parancsfájl URI-ja |A changecredentials.sh-fájl URI-ja |
    | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető vagy Zookeeper) |✓ Minden felsorolt csomópont-típushoz |
-   | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. Az SSH-jelszavak nem támogatják a következő karaktereket: "" "/\ <% ~ | $ &
+   | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. |
    | A parancsfájl megtartása művelet... |Hagyja üresen ezt a mezőt. |
 
 6. Válassza a **Létrehozás** elemet a parancsfájl alkalmazásához. A szkript befejeződése után az SSH-val az új hitelesítő adatokkal tud csatlakozni a fürthöz.
