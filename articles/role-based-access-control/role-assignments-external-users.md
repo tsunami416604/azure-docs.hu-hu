@@ -1,6 +1,6 @@
 ---
-title: Szerepkör-hozzárendelések hozzáadása vagy eltávolítása a RBAC és a Azure Portal rendelkező külső felhasználók számára
-description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz a szervezeten kívüli felhasználók számára az Azure szerepköralapú hozzáférés-vezérlés (RBAC) használatával.
+title: Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső felhasználók számára a Azure Portal-Azure RBAC használatával
+description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz a szervezeten kívüli felhasználók számára a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,16 +16,16 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: 1c440b85f792ac5bb1336f4d20f930aafc38ad7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 568cb7602d9cb454685ef69e820288bcc68563c4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79245641"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735759"
 ---
-# <a name="add-or-remove-role-assignments-for-external-guest-users-using-azure-rbac-and-the-azure-portal"></a>Szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső vendég felhasználók számára az Azure RBAC és a Azure Portal használatával
+# <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a külső vendég felhasználók számára a Azure Portal használatával
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) nagyobb biztonságot nyújt a nagyméretű szervezetek számára, valamint a kis-és közepes méretű vállalkozások számára, akik olyan külső közreműködők, szállítók vagy szabadúszók számára biztosítanak hozzáférést, amelyek a környezet adott erőforrásaihoz szükségesek, de nem feltétlenül a teljes infrastruktúrához vagy a számlázással kapcsolatos hatókörökhöz. A [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) funkciói a külső vendég felhasználóival való együttműködéshez használhatók, és a RBAC használatával csak azokat az engedélyeket adhatja meg, amelyekre a vendég felhasználóknak szüksége van a környezetében.
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) nagyobb biztonsági felügyeletet tesz lehetővé a nagyméretű szervezetek számára, valamint a kis-és közepes méretű vállalkozások számára, akik olyan külső közreműködők, szállítók vagy szabadúszók számára biztosítanak hozzáférést, amelyeknek hozzá kell férniük a környezet adott erőforrásaihoz, de nem feltétlenül a teljes infrastruktúrához vagy a számlázással kapcsolatos hatókörökhöz. A [Azure Active Directory B2B](../active-directory/b2b/what-is-b2b.md) funkciói a külső vendég felhasználóival való együttműködéshez használhatók, és az Azure RBAC használatával csak azokat az engedélyeket adhatja meg, amelyekre a vendég felhasználóknak szüksége van a környezetében.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,7 +69,7 @@ További információ a Meghívási folyamatról: [Azure Active Directory B2B eg
 
 ## <a name="add-a-role-assignment-for-a-guest-user"></a>Szerepkör-hozzárendelés hozzáadása vendég felhasználóhoz
 
-A RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha szerepkör-hozzárendelést szeretne hozzáadni egy vendég felhasználóhoz, akkor [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás esetében. Kövesse az alábbi lépéseket, és adjon hozzá egy szerepkör-hozzárendelést egy vendég felhasználóhoz különböző hatókörökben.
+Az Azure RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört. Ha szerepkör-hozzárendelést szeretne hozzáadni egy vendég felhasználóhoz, akkor [ugyanazokat a lépéseket](role-assignments-portal.md#add-a-role-assignment) kell követnie, mint a felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás esetében. Kövesse az alábbi lépéseket, és adjon hozzá egy szerepkör-hozzárendelést egy vendég felhasználóhoz különböző hatókörökben.
 
 1. Az Azure Portalon kattintson a **Minden szolgáltatás** lehetőségre.
 

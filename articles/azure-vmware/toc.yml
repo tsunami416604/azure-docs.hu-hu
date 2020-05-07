@@ -1,0 +1,42 @@
+- name: Azure VMware Solution (AVS)
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Azure VMware Solution (AVS) ismertetése
+      href: introduction.md
+- name: Oktatóanyagok
+  items:
+    - name: 1 – Hálózattervezés
+      href: tutorial-network-checklist.md
+    - name: 2 – AVS-magánfelhő létrehozása
+      href: tutorial-create-private-cloud.md
+    - name: 3 – Hálózatkezelés konfigurálása
+      href: tutorial-configure-networking.md
+    - name: 4 – Hozzáférés egy magánfelhőhöz
+      href: tutorial-access-private-cloud.md
+    - name: 5 – Magánfelhő skálázása
+      href: tutorial-scale-private-cloud.md
+- name: Alapelvek
+  items:
+    - name: Magánfelhők és -fürtök
+      href: concepts-private-clouds-clusters.md
+    - name: Magánfelhő-hálózat és -kapcsolatok
+      href: concepts-networking.md
+    - name: Tárolás magánfelhőkben
+      href: concepts-storage.md
+    - name: Magánfelhők hozzáférése és identitása
+      href: concepts-identity.md
+    - name: Magánfelhők frissítései
+      href: concepts-upgrades.md
+- name: Útmutatók
+  items:
+    - name: DHCP kezelése
+      href: manage-dhcp.md
+    - name: Vészhelyreállítás
+      href: disaster-recovery.md
+- name: Referencia
+  items: null
+- name: További források
+  items:
+    - name: GYIK
+      href: faq.md

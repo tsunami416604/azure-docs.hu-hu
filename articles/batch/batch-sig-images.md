@@ -3,12 +3,12 @@ title: Egyéni készlet létrehozása a megosztott rendszerkép-katalógus haszn
 description: Hozzon létre egy batch-készletet a megosztott rendszerkép-katalógusban, hogy egyéni rendszerképeket építsen ki az alkalmazásához szükséges szoftvereket és adatokból álló számítási csomópontok számára. Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 ms.topic: article
 ms.date: 08/28/2019
-ms.openlocfilehash: 45f721dbdf11e0a6f58da71c644acf687dfadd49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a26aaecc5da0ef348b720919b04d86f8fcfbc70
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116519"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743573"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -77,7 +77,7 @@ A pillanatkép egy virtuális merevlemez teljes, írásvédett másolata. A virt
 
 Felügyelt rendszerkép pillanatképből való létrehozásához használja az Azure parancssori eszközeit, például az az [rendszerkép Create](/cli/azure/image) parancsot. Hozzon létre egy lemezképet egy operációsrendszer-lemez pillanatképének megadásával és opcionálisan egy vagy több adatlemez-pillanatképtel.
 
-### <a name="create-a-shared-image-gallery"></a>Megosztott Képtár létrehozása
+### <a name="create-a-shared-image-gallery"></a>Shared Image Gallery létrehozása
 
 Miután sikeresen létrehozta a felügyelt rendszerképet, létre kell hoznia egy megosztott képtárat, hogy elérhetővé tegye az egyéni rendszerképet. Ha meg szeretné tudni, hogyan hozhat létre megosztott képtárat a rendszerképekhez, tekintse meg a megosztott lemezkép-katalógus [létrehozása az Azure CLI-vel](../virtual-machines/linux/shared-images.md) vagy [a közös rendszerkép-katalógus létrehozása a Azure Portal használatával](../virtual-machines/linux/shared-images-portal.md)című témakört.
 
@@ -128,6 +128,71 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
     }
     ...
 }
+```
+
+## <a name="create-a-pool-from-a-shared-image-using-python"></a>Készlet létrehozása megosztott rendszerképből a Python használatával
+
+A Python SDK használatával egy megosztott rendszerképből is létrehozhat készletet: 
+
+```python
+# Import the required modules from the
+# Azure Batch Client Library for Python
+import azure.batch as batch
+import azure.batch.models as batchmodels
+from azure.common.credentials import ServicePrincipalCredentials
+
+# Specify Batch account and service principal account credentials
+account = "{batch-account-name}"
+batch_url = "{batch-account-url}"
+ad_client_id = "{sp-client-id}"
+ad_tenant = "{tenant-id}"
+ad_secret = "{sp-secret}"
+
+# Pool settings
+pool_id = "LinuxNodesSamplePoolPython"
+vm_size = "STANDARD_D2_V3"
+node_count = 1
+
+# Initialize the Batch client with Azure AD authentication
+creds = ServicePrincipalCredentials(
+    client_id=ad_client_id,
+    secret=ad_secret,
+    tenant=ad_tenant,
+    resource="https://batch.core.windows.net/"
+)
+client = batch.BatchServiceClient(creds, batch_url)
+
+# Configure the start task for the pool
+start_task = batchmodels.StartTask(
+    command_line="printenv AZ_BATCH_NODE_STARTUP_DIR"
+)
+start_task.run_elevated = True
+
+# Create an ImageReference which specifies the image from
+# Shared Image Gallery to install on the nodes.
+ir = batchmodels.ImageReference(
+    virtual_machine_image_id="/subscriptions/{sub id}/resourceGroups/{resource group name}/providers/Microsoft.Compute/galleries/{gallery name}/images/{image definition name}/versions/{version id}"
+)
+
+# Create the VirtualMachineConfiguration, specifying
+# the VM image reference and the Batch node agent to
+# be installed on the node.
+vmc = batchmodels.VirtualMachineConfiguration(
+    image_reference=ir,
+    node_agent_sku_id="batch.node.ubuntu 18.04"
+)
+
+# Create the unbound pool
+new_pool = batchmodels.PoolAddParameter(
+    id=pool_id,
+    vm_size=vm_size,
+    target_dedicated_nodes=node_count,
+    virtual_machine_configuration=vmc,
+    start_task=start_task
+)
+
+# Create pool in the Batch service
+client.pool.add(new_pool)
 ```
 
 ## <a name="create-a-pool-from-a-shared-image-using-the-azure-portal"></a>Készlet létrehozása megosztott rendszerképből a Azure Portal használatával

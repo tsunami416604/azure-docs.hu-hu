@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7d3bcc32dc8f1412a5adbc175a5f8618628bce83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547895"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738048"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
@@ -194,10 +194,10 @@ A 16 virtuális gépet egyszerre replikálhatja egy replikációs csoportba.
 Mivel a több virtuális gépre kiterjedő konzisztencia a CPU-igényes, ami hatással lehet a számítási feladatok teljesítményére. A több virtuális gépre kiterjedő konzisztencia csak akkor használható, ha a gépek ugyanazt a számítási feladatot futtatják, és több gépen is konzisztencia szükséges. Ha például két SQL Server példánya van, és két webkiszolgálója van egy alkalmazásban, akkor a több virtuális gépre kiterjedő konzisztencia csak a SQL Server példányok esetében szükséges.
 
 ### <a name="can-you-add-an-already-replicating-vm-to-a-replication-group"></a>Hozzáadhat egy már replikáló virtuális gépet egy replikációs csoporthoz?
-
 A replikáció engedélyezése során hozzáadhat egy virtuális gépet egy új replikációs csoporthoz. A replikáció engedélyezése során hozzáadhat egy virtuális gépet egy meglévő replikációs csoporthoz is. Nem adhat hozzá azonban már replikáló virtuális gépet egy új replikációs csoporthoz vagy meglévő replikációs csoporthoz.
-
+ 
 ## <a name="failover"></a>Feladatátvétel
+
 
 ### <a name="how-is-capacity-ensured-in-the-target-region-for-azure-vms"></a>Hogyan biztosítható a kapacitás az Azure-beli virtuális gépek számára a célként megadott régióban?
 

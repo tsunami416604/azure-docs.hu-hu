@@ -7,12 +7,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
-ms.openlocfilehash: a61b0cf30ca46eb77837eb09d6a9a0b6f30e89a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04c6444723180c34f6605810260f5f865dff2d12
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77368575"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790915"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
 Service Fabric-fürt telepítésekor a rendszer behelyezi a guardrails-t, így az érvénytelen fürtkonfiguráció esetén sikertelen lesz a Azure Resource Manager központi telepítés. A következő szakaszokban áttekintheti a fürtökkel kapcsolatos gyakori problémákat és a problémák enyhítéséhez szükséges lépéseket. 
@@ -79,7 +79,7 @@ A rendszer a magok csomópontjának eltávolítási műveletét észlelte, és e
 Győződjön meg arról, hogy az elsődleges csomópont típusa elegendő Virtual Machines a fürtben megadott megbízhatósághoz. Nem távolíthat el virtuális gépet, ha a virtuálisgép-méretezési csoport a megadott megbízhatósági szinthez tartozó csomópontok minimális száma alá kerül.
 * Ha a megbízhatósági szintet helyesen adta meg, győződjön meg arról, hogy az elsődleges csomópont-típusban elegendő csomópont van a megbízhatósági szinten. 
 * Ha a megbízhatósági szint helytelen, indítson el egy változást a Service Fabric erőforráson, hogy először csökkentse a megbízhatósági szintet, mielőtt elindítja a virtuálisgép-méretezési csoport műveleteit, és várjon, amíg befejeződik.
-* Ha a megbízhatósági szintet bronz, kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-up-down#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a fürt zökkenőmentes leskálázásához.
+* Ha a megbízhatósági szinten bronz van, kövesse az alábbi [lépéseket](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-scale-in-out#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a fürtben való méretezéshez.
 
 ## <a name="next-steps"></a>További lépések
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)

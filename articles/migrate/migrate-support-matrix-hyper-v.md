@@ -3,12 +3,12 @@ title: A Hyper-V értékelésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrate kiszolgáló értékelésével
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: 990d5026d9621c144c31635fabac4416eb9d20e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67fabebf805e38a6bca5dda6e691c263ee235219
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538171"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744599"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 
@@ -54,7 +54,7 @@ A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja 
 
 - A Hyper-V [készülékre vonatkozó követelmények](migrate-appliance.md#appliance---hyper-v) ismertetése.
 - Ismerje meg azokat az URL-címeket, amelyekhez a készüléknek [nyilvános](migrate-appliance.md#public-cloud-urls) és [kormányzati](migrate-appliance.md#government-cloud-urls) felhőkben kell hozzáférnie.
-- Azure Government a készüléket a szkript használatával kell telepítenie.
+- Azure Government a készüléket [a szkript használatával](deploy-appliance-script-government.md)kell telepítenie.
 
 ## <a name="port-access"></a>Port-hozzáférés
 

@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 34ad2c38ebc79615603cf528625136b0f4784a0a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 280c7bb39c5c920c92608e639bbe3cf7b0c2f006
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191072"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838093"
 ---
-|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name |Description |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[\[Korlátozott előzetes\]verzió \[:\] az AK nem engedélyezi az emelt szintű tárolókat az AK-ban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7ce7ac02-a5c6-45d6-8d1b-844feb1c1531) |Ez a szabályzat nem engedélyezi a privilegizált tárolók létrehozását az Azure Kubernetes Service-fürtben. A korlátozott előzetes verziójú szabályzatok csak regisztrált előfizetések esetén működnek. A regisztráláshoz lépjen a [https://aka.ms/akspolicyonboarding](https://aka.ms/akspolicyonboarding)következőre:. A szabályzat használatával kapcsolatos útmutatásért lépjen a [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc)következőre:. |EnforceRegoPolicy, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/ContainerNoPrivilege_EnforceRegoPolicy.json) |
 |[\[Korlátozott előzetes\]verzió \[:\] AK HTTPS bejövő forgalom kikényszerítve](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2fbff515-eecc-4b7e-9b63-fcc7138b7dc3) |Ez a szabályzat az Azure Kubernetes Service-fürtben lévő HTTPS bejövő forgalmat kényszeríti ki. A korlátozott előzetes verziójú szabályzatok csak regisztrált előfizetések esetén működnek. A regisztráláshoz lépjen a [https://aka.ms/akspolicyonboarding](https://aka.ms/akspolicyonboarding)következőre:. A szabályzat használatával kapcsolatos útmutatásért lépjen a [https://aka.ms/akspolicydoc](https://aka.ms/akspolicydoc)következőre:. |EnforceRegoPolicy, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes%20service/IngressHttpsOnly_EnforceRegoPolicy.json) |

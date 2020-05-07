@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: e7629a53190433c6c331ce372476b0ed768fc5eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587175"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744750"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Engedélyek az Azure Sentinelben
 
@@ -44,7 +44,7 @@ Az Azure Sentinel dedikált RBAC szerepkörein kívül olyan Azure-és Log Analy
 > Log Analytics szerepkörök olvasási hozzáférést is biztosítanak az összes Azure-erőforráshoz, de csak írási engedélyeket rendelnek Log Analytics erőforrásokhoz.
 
 
-Például az **Azure Sentinel Reader** és az **Azure közreműködő** (nem az **Azure Sentinel közreműködői**) szerepkörökhöz hozzárendelt felhasználó szerkesztheti az Azure Sentinel-ben tárolt adatait, de csak a **Sentinel-olvasó** engedélyei vannak. Ezért, ha csak az Azure Sentinelben szeretne engedélyeket megadni, gondosan távolítsa el a felhasználó korábbi engedélyeit, így biztosítva, hogy ne szüntesse meg a szükséges jogosultsági szerepkört egy másik erőforráshoz.
+Például az **Azure Sentinel Reader** és az **Azure közreműködő** (nem az **Azure Sentinel közreműködői**) szerepkörökhöz hozzárendelt felhasználó szerkesztheti az Azure Sentinel-ben tárolt adatait, de csak a **Sentinel-olvasó** engedélyei vannak. Ezért, ha csak az Azure Sentinelben szeretne engedélyeket adni egy felhasználónak, gondosan távolítsa el a felhasználó korábbi engedélyeit, így biztosítva, hogy ne szüntesse meg a szükséges jogosultsági szerepkört egy másik erőforráshoz.
 
 > [!NOTE]
 >- Az Azure Sentinel olyan forgatókönyveket használ, amelyekkel automatizált fenyegetésekre reagálhat. A forgatókönyvek kihasználják Azure Logic Apps és egy különálló Azure-erőforrást. Előfordulhat, hogy a Security Operations csapatának meghatározott tagjait szeretné hozzárendelni a biztonsági előkészítési, automatizálási és reagálási (SZÁRNYALó) műveletek Logic Apps használatához. A [logikai alkalmazás közreműködői](../role-based-access-control/built-in-roles.md#logic-app-contributor) szerepkörét vagy a [Logic app operátori](../role-based-access-control/built-in-roles.md#logic-app-operator) szerepkört használva explicit engedélyeket rendelhet a forgatókönyvek használatához.

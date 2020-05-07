@@ -69,6 +69,8 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Képek
+      href: shared-image-galleries.md
     - name: Azure Resource Manager
       href: ../../azure-resource-manager/management/overview.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Régiók
@@ -457,17 +459,64 @@
         - name: Naplóriasztások létrehozása
           href: ../../azure-monitor/platform/alerts-log.md
     - name: Rendszerképek használata
+      displayName: 'SIG, AMI, image'
       items:
-        - name: Megosztott lemezkép-katalógusok
+        - name: Megosztott rendszerkép-katalógusok
           items:
-            - name: Áttekintés
-              href: shared-image-galleries.md
             - name: parancssori felület
-              href: shared-images.md
+              items:
+                - name: Katalógus létrehozása
+                  href: ../shared-images-cli.md
+                - name: Rendszerkép létrehozása
+                  items:
+                    - name: Virtuális gépről
+                      href: ../image-version-vm-cli.md
+                    - name: Migrálás felügyelt rendszerképből
+                      href: ../image-version-managed-image-cli.md
+                    - name: Másolás másik katalógusból
+                      href: ../image-version-another-gallery-cli.md
+                - name: Virtuális gép létrehozása
+                  items:
+                    - name: Általánosított
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Rendszerkép-erőforrások frissítése
+                  href: ../update-image-resources-cli.md
+                - name: Alkalmazásregisztráció megosztás céljából
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Katalógus létrehozása
+                  href: ../shared-images-powershell.md
+                - name: Rendszerképverzió létrehozása
+                  items:
+                    - name: Virtuális gépről
+                      href: ../image-version-vm-powershell.md
+                    - name: Migrálás felügyelt rendszerképből
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Másolás másik katalógusból
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Virtuális gép létrehozása
+                  items:
+                    - name: Általánosított
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Specializált
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Rendszerkép-erőforrások frissítése
+                  href: ../update-image-resources-powershell.md
             - name: Portál
-              href: shared-images-portal.md
-            - name: Alkalmazásregisztráció megosztás céljából
-              href: share-images-across-tenants.md
+              items:
+                - name: 'Katalógus, rendszerkép és virtuális gép létrehozása'
+                  href: shared-images-portal.md
+            - name: Resource Manager-sablonok
+              items:
+                - name: Shared Image Gallery létrehozása
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Rendszerkép-definíció létrehozása Shared Image Galleryben
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Rendszerképverzió létrehozása Shared Image Galleryben
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Virtuális gép létrehozása rendszerképverzióból
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
             - name: Megosztott rendszerképek hibaelhárítása
               href: troubleshooting-shared-images.md
         - name: Rendszerképkészítő (előzetes verzió)
@@ -544,9 +593,9 @@
         - name: Terraform
           items:
             - name: Telepítés és konfigurálás
-              href: ../../terraform/terraform-install-configure.md
+              href: /azure/developer/terraform/install-configure
             - name: Teljes virtuális gép létrehozása
-              href: ../../terraform/terraform-create-complete-vm.md
+              href: /azure/developer/terraform/create-linux-virtual-machine-with-infrastructure
         - name: Cloud-init
           items:
             - name: A cloud-init áttekintése
@@ -564,14 +613,14 @@
             - name: Meglévő virtuális gépek előkészítése a cloud-initre
               href: cloudinit-prepare-custom-image.md
         - name: Jenkins
-          href: /azure/developer/jenkins/overview.md
+          href: /azure/developer/jenkins/overview
           items:
             - name: Jenkins-kiszolgáló létrehozása
-              href: /azure/developer/jenkins/configure-on-linux-vm.md
+              href: /azure/developer/jenkins/configure-on-linux-vm
             - name: Skálázás virtuálisgép-ügynökökkel
-              href: /azure/developer/jenkins/scale-deployments-using-vm-agents.md
+              href: /azure/developer/jenkins/scale-deployments-using-vm-agents
             - name: Összetevők közzététele a Storage szolgáltatásban
-              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository.md
+              href: /azure/developer/jenkins/azure-storage-blobs-as-build-artifact-repository
             - name: Biztonságos Jenkins
               href: 'https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/'
     - name: Tárolók futtatása

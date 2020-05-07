@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 2eec3ee50f1de695b5432ee50b0900e35b81a6eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585819"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743654"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -16,9 +16,9 @@ Az adatai védelme érdekében a legfontosabb lépések egyike, hogy megbízhat�
 
 ## <a name="management-and-control-of-identity-and-user-access"></a>Az identitás-és felhasználói hozzáférés kezelése és felügyelete
 
-Azure Backup lehetővé teszi a részletes hozzáférés felügyeletét az [Azure szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)használatával. A RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést.
+A Recovery Services-tárolók által használt Storage-fiókok el vannak különítve, és a felhasználók nem férhetnek hozzá semmilyen kártékony célra. A hozzáférés csak Azure Backup felügyeleti műveleteken, például a visszaállításon keresztül engedélyezett. Azure Backup lehetővé teszi a felügyelt műveletek felügyeletét az [Azure szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/backup/backup-rbac-rs-vault)használatával történő részletes hozzáféréssel. A RBAC lehetővé teszi a feladatok elkülönítését a csapaton belül, és csak a feladataik elvégzéséhez szükséges felhasználók számára biztosít hozzáférést.
 
-A Azure Backup három beépített szerepkört biztosít a biztonságimásolat-kezelési műveletek vezérléséhez:
+A Azure Backup három [beépített szerepkört](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles) biztosít a biztonságimásolat-kezelési műveletek vezérléséhez:
 
 * Biztonsági mentési közreműködő – biztonsági másolatok létrehozása és kezelése, kivéve Recovery Services tár törlését és mások számára való hozzáférést biztosít
 * Backup operátor – minden közreműködő a biztonsági mentés és a biztonsági mentési házirendek kezelése kivételével
@@ -47,13 +47,13 @@ Mostantól [privát végpontokat](https://docs.microsoft.com/azure/private-link/
 
 A titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure-on belül az Azure Storage és a tároló közötti adatátvitel HTTPS-védelemmel történik. Ezek az adatközpontok az Azure gerinc hálózatán maradnak.
 
-* A biztonsági mentési adatai automatikusan titkosítva vannak a Microsoft által felügyelt kulcsokkal. A felügyelt lemezes virtuális gépek biztonsági mentését a Recovery Services tárolóban is titkosíthatja a Azure Key Vault tárolt [ügyfelek által felügyelt kulcsok](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys) használatával. A titkosítás engedélyezéséhez nem szükséges explicit műveletet végrehajtania. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
+* A biztonsági mentési adatai automatikusan titkosítva vannak a Microsoft által felügyelt kulcsokkal. A felügyelt lemezes virtuális gépek biztonsági mentését a Recovery Services tárolóban is titkosíthatja a Azure Key Vault tárolt [ügyfelek által felügyelt kulcsok](backup-encryption.md#encryption-of-backup-data-using-customer-managed-keys) használatával. A titkosítás engedélyezéséhez nem szükséges explicit műveletet végrehajtania. Ez a Recovery Services-tárolóba mentett összes munkaterhelésre vonatkozik.
 
 * Azure Backup támogatja az olyan Azure-beli virtuális gépek biztonsági mentését és visszaállítását, amelyek az operációs rendszer/adatlemezei Azure Disk Encryption (ADE) titkosítással rendelkeznek. [További információ a titkosított Azure-beli virtuális gépekről és Azure Backupokról](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption).
 
 ## <a name="protection-of-backup-data-from-unintentional-deletes"></a>A véletlen törlésből származó biztonsági mentési adatok védelme
 
-A Azure Backup biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Ha a felhasználó törli a virtuális gép biztonsági mentését, a törlést követően a biztonsági mentési adat 14 további napig megmarad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár költséggel az ügyfélnek. [További információ a Soft delete](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#soft-delete)szolgáltatásról.
+A Azure Backup biztonsági funkciókat biztosít a biztonsági mentési adatainak a törlés után még a védelme érdekében. Ha a felhasználó törli a virtuális gép biztonsági mentését, a törlést követően a biztonsági mentési adat 14 további napig megmarad, így a biztonsági mentési elem helyreállítása adatvesztés nélkül történik. A "Soft Delete" állapotban lévő biztonsági mentési adatok további 14 napos megőrzése nem jár költséggel az ügyfélnek. [További információ a Soft delete](backup-azure-security-feature-cloud.md)szolgáltatásról.
 
 ## <a name="monitoring-and-alerts-of-suspicious-activity"></a>Gyanús tevékenység figyelése és riasztásai
 

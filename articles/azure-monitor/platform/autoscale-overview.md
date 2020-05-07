@@ -1,24 +1,23 @@
 ---
-title: Az autoskálázás virtuális gépek, Cloud Services és Web Apps
-description: Microsoft Azure az autoskálázás. A Virtual Machinesre, a virtuálisgép-méretezési csoportokra, a Cloud Servicesra és a Web Appsre vonatkozik.
+title: Méretezés Microsoft Azure
+description: Méretezés Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: eeb8b301bf087efa164a7864cdce3a04952f45ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: faf393c01c494538ab647f39e2c4eb1d823d1abd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114137"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791442"
 ---
-# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Az automatikus skálázás áttekintése a Microsoft Azure Virtual Machines, a Cloud Services és a Web Apps szolgáltatásokban
+# <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
 Ez a cikk ismerteti, hogy mi Microsoft Azure az autoscale, annak előnyeit és a használatának első lépéseit.  
 
-Azure Monitor az autoscale csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/)és [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)vonatkozik.
+Azure Monitor az autoskálázás csak [Virtual Machine Scale sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [Cloud Services](https://azure.microsoft.com/services/cloud-services/), [app Service-Web Apps](https://azure.microsoft.com/services/app-service/web/), [API Management szolgáltatásokra](https://docs.microsoft.com/azure/api-management/api-management-key-concepts)és [Azure adatkezelő-fürtökre](https://docs.microsoft.com/azure/data-explorer/)vonatkozik.
 
 > [!NOTE]
 > Az Azure két autoskálázási módszerrel rendelkezik. Az autoscale egy régebbi verziója Virtual Machines (rendelkezésre állási csoportokra) vonatkozik. Ez a funkció korlátozott támogatást nyújt, és javasoljuk, hogy gyorsabban és megbízhatóbban támogassa a virtuálisgép-méretezési csoportokra való áttérést. Ez a cikk a régebbi technológiák használatára mutató hivatkozást tartalmaz.  
->
 >
 
 ## <a name="what-is-autoscale"></a>Mi az az autoscale?
@@ -87,7 +86,6 @@ Az autoskálázás csak horizontálisan méretezhető, ami a virtuálisgép-pél
 
 Ezzel szemben a vertikális skálázás eltérő. Ugyanazokat a virtuális gépeket őrzi meg, de a virtuális gépeket ("felfelé") vagy annál kevesebbet ("Down") teszi hatékonyabbá. A teljesítményt a memória, a processzor sebessége, a lemezterület stb. méri.  A vertikális skálázás több korlátozást tartalmaz. Ez a nagyobb hardverek számától függ, ami gyorsan elér egy felső korlátot, és régiónként változhat. A vertikális skálázáshoz is általában szükség van egy virtuális gép leállítására és újraindítására.
 
-
 ## <a name="methods-of-access"></a>Hozzáférési módszerek
 Beállíthatja az autoscale on
 
@@ -106,6 +104,7 @@ Beállíthatja az autoscale on
 | Virtual Machines: linuxos méretezési csoportok |[Virtuálisgép-méretezési csoportok skálázása Linux rendszeren](../../virtual-machine-scale-sets/tutorial-autoscale-cli.md) |
 | Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | API Management szolgáltatás|[Az Azure API Management-példány automatikus skálázása](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
+| Azure Adatkezelő-fürtök|[Az Azure Adatkezelő-fürtök méretezése a változó igények kielégítése érdekében](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
 
 ## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni az autoscale használatával kapcsolatban, használja az előzőleg felsorolt, vagy a következő erőforrásokra vonatkozó információkat:

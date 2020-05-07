@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 600167e529e1ff8cfa65eeb3d0fb6fe26e9466bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9883065993f35054338079c8b9647a8420574414
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137518"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738065"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>Az Azure-beli virtuális gépek ismételt védetté váltása az elsődleges régióba
 
@@ -95,6 +95,10 @@ A következő feltételek határozzák meg az adatreplikációk mennyiségét:
 |A forrástartomány 1 TB-os prémium lemezzel rendelkezik.<br/>Csak 20 GB-nyi adat használatos, és a lemez többi része üres.<br/>A lemez típusa 200 MBps átviteli sebességgel rendelkező prémium.<br/>A lemezen lévő kezdeti adat a feladatátvétel után azonnal 15 GB volt. A feladatátvétel után 5 GB adatváltozás történt. A teljes feltöltött adat tehát 20 GB| Hozzávetőleges idő: 30-45 perc.<br/>Mivel a lemezen lévő adatok mérete kevesebb, mint a lemez méretének 10%-a, teljes kezdeti replikálást végzünk.<br/>Az átvitel sebessége az átviteli sebesség körülbelül 16%-a vagy 32MBps. Ezért a 20 GB/32 MBps-os változások alkalmazására való átvitel ideje körülbelül 11 percet vesz igénybe.<br/>Az automatikus skálázáshoz szükséges idő Site Recovery körülbelül 20-30 perc |
 
 Ha a virtuális gépet az elsődleges régióba való visszalépést követően újra védeni kell (azaz ha a virtuális gépet az elsődleges régióból a DR régióba kívánja védeni), a rendszer törli a célként megadott virtuális gépet és a hozzá tartozó hálózati adaptereket (ka) t.
+
+Ha a virtuális gépet a DR régióból az elsődleges régióba újra védik, a régi elsődleges virtuális gépet és a hozzá tartozó NIC-t nem törli.
+
+Ha a virtuális gépet az elsődleges régióba való visszalépést követően újra védeni kell (azaz ha a virtuális gépet az elsődleges régióból a DR régióba kívánja védeni), a rendszer törli a célként megadott virtuális gépet és a hozzá tartozó hálózati adaptereket (ka) t. 
 
 Ha a virtuális gépet a DR régióból az elsődleges régióba újra védik, a régi elsődleges virtuális gépet és a hozzá tartozó NIC-t nem törli.
 

@@ -1,6 +1,6 @@
 ---
-title: Szerepkör-hozzárendelések hozzáadása a RBAC és Azure Resource Manager sablonokkal
-description: Ismerje meg, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználók, csoportok, egyszerű szolgáltatások vagy felügyelt identitások számára az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és Azure Resource Manager sablonok használatával.
+title: Azure szerepkör-hozzárendelések hozzáadása Azure Resource Manager sablonok használatával – Azure RBAC
+description: Megtudhatja, hogyan biztosíthat hozzáférést az Azure-erőforrásokhoz felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz Azure Resource Manager sablonokkal és az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC).
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -13,14 +13,14 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9f817880f938f5d03024e3aacd9b84817a5ac721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 777d11a129f02d1a2f5c796dea0af438ca81ba8c
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77138289"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735623"
 ---
-# <a name="add-role-assignments-using-azure-rbac-and-azure-resource-manager-templates"></a>Szerepkör-hozzárendelések hozzáadása az Azure RBAC és a Azure Resource Manager sablonok használatával
+# <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Azure-beli szerepkör-hozzárendelések hozzáadása Azure Resource Manager-sablonok használatával
 
 [!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]A Azure PowerShell vagy az Azure CLI használata mellett szerepköröket is hozzárendelhet [Azure Resource Manager sablonok](../azure-resource-manager/templates/template-syntax.md)használatával. A sablonok akkor lehetnek hasznosak, ha az erőforrásokat következetesen és ismételten kell telepíteni. Ez a cikk azt ismerteti, hogyan rendelhet hozzá szerepköröket sablonok használatával.
 
@@ -66,7 +66,7 @@ objectid=$(az ad sp list --display-name "{name}" --query [].objectId --output ts
 
 ## <a name="add-a-role-assignment"></a>Szerepkör-hozzárendelés hozzáadása
 
-A RBAC-ben a hozzáférés engedélyezéséhez hozzá kell adnia egy szerepkör-hozzárendelést.
+Az Azure RBAC a hozzáférés biztosításához hozzá kell adnia egy szerepkör-hozzárendelést.
 
 ### <a name="resource-group-without-parameters"></a>Erőforráscsoport (paraméterek nélkül)
 

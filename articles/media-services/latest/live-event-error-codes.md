@@ -1,7 +1,7 @@
 ---
 title: Azure Media Services élő események hibakódja | Microsoft Docs
 description: Ez a cikk az élő események hibakódait sorolja fel.
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 services: media-services
@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2020
-ms.author: juliako
-ms.openlocfilehash: f9067562f67190b8bc04392f33078d4d3262f986
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/4/2020
+ms.author: inhenkel
+ms.openlocfilehash: e039a240465478e86ce816890219e5dfaa07dfbf
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77654579"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791051"
 ---
 # <a name="media-services-live-event-error-codes"></a>Media Services élő események hibakódja
 
@@ -40,6 +40,7 @@ Amikor előfizet egy élő esemény [Event Grid](https://docs.microsoft.com/azur
 | MPE_RTMP_FLV_TAG_TIMESTAMP_INVALID | A videó-vagy hangFLVTag időbélyege érvénytelen az RTMP-kódolótól. |
 | MPE_INGEST_FRAMERATE_EXCEEDED | A bejövő kódoló a framerátával betöltött adatfolyamokat túllépte az élő események/csatornák kódolásához megengedett maximális 30fps.|
 | MPE_INGEST_VIDEO_RESOLUTION_NOT_SUPPORTED | A bejövő kódoló által betöltött adatfolyamok meghaladták a következő engedélyezett felbontásokat: 1920x1088 az élő események/csatornák kódolásához, valamint a 4096 x 2160 a továbbított élő eseményekhez/csatornákhoz.|
+| MPE_INGEST_RTMP_TOO_LARGE_UNPROCESSED_FLV | Az élő esemény nagy mennyiségű hanganyagot kapott egyszerre, vagy nagy mennyiségű videó-adatkeret nélkül. Leválasztottuk a kódolót annak érdekében, hogy a megfelelő adatokkal próbálkozzon újra. |
 
 ## <a name="liveeventencoderdisconnected"></a>LiveEventEncoderDisconnected
 

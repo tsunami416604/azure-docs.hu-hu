@@ -1,26 +1,24 @@
 ---
-title: Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez a partner Centerben
-description: Ismerje meg, hogyan foglalkozhat a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdésekre. Adatszótárt tartalmaz az elemzési terminológiához.
+title: Kereskedelmi piactér Analytics – gyakori kérdések & terminológia – partneri központ
+description: Választ kaphat a partner Center kereskedelmi Marketplace Analytics szolgáltatásával kapcsolatos gyakori kérdésekre. Ez a cikk az Analytics-terminológia adatszótárát tartalmazza.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: b7367e58de818c20723c02a6763b1bf1e3b18f24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42478f6e6d6cb28364fe39aafcb52b3a17aa3c23
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251826"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791476"
 ---
-# <a name="frequently-asked-questions-and-terminology-for-commercial-marketplace-analytics"></a>Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez
+# <a name="commercial-marketplace-analytics-terminology-and-common-questions"></a>Kereskedelmi piactér analitikai terminológiája és gyakori kérdések
 
 Ez a cikk a partner Center Analytics-üzeneteivel kapcsolatos gyakori kérdéseket tárgyalja, és az elemzési terminológia szótárát is tartalmazza.
 
-## <a name="frequently-asked-questions"></a>Gyakori kérdések
-
-Ez a szakasz a partner Centerben **még nem elérhető Analytics** -üzenetekkel kapcsolatos gyakran feltett kérdésekre ad választ.
+## <a name="common-questions"></a>Gyakori kérdések
 
 **Nem tudom megtekinteni az elemzési adataikat a partner Centerben. Amikor elérem ezeket az oldalakat, az alábbi üzenet jelenik meg. Miért van ez?**
 

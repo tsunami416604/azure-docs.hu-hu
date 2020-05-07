@@ -87,6 +87,9 @@
       href: cli-samples.md
     - name: Azure Resource Manager
       href: resource-manager-samples.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: NoSQL vagy relációs adatbázisok
@@ -136,7 +139,7 @@
         - name: Átviteli sebesség kiosztása tárolókra és adatbázisokra
           displayName: 'request units, RUs, RU, limits, database throughput, shared throughput, container throughput'
           href: set-throughput.md
-        - name: Átviteli sebesség kiosztása – automatikus skálázási mód
+        - name: Átviteli sebesség kiosztása – automatikus skálázás
           href: provision-throughput-autoscale.md
         - name: Automatikus skálázással kapcsolatos gyakori kérdések
           href: autoscale-faq.md
@@ -913,6 +916,8 @@
           href: how-to-manage-consistency.md
         - name: Ütközésfeloldási szabályzatok konfigurálása
           href: how-to-manage-conflicts.md
+        - name: Munkamenet-jogkivonatok formátumának konvertálása
+          href: how-to-convert-session-token.md
     - name: Kiosztott átviteli sebesség
       items:
         - name: Átviteli sebesség kiosztása tárolók számára
@@ -1051,22 +1056,26 @@
       items:
         - name: A Cosmos DB monitorozása
           href: monitor-cosmos-db.md
-        - name: Kiszolgálóoldali késés monitorozása
-          href: monitor-server-side-latency.md
-        - name: Kérelemegység-használat monitorozása
-          href: monitor-request-unit-usage.md
-        - name: Monitorozás diagnosztikai naplók használatával
-          href: cosmosdb-monitor-resource-logs.md
-        - name: Vezérlősík-naplózás
-          href: audit-control-plane-logs.md
-        - name: Azure Monitor a Cosmoshoz (előzetes verzió)
-          href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+        - name: Azure Monitor-metrikák használata
+          items:
+            - name: Azure Monitor a Cosmoshoz (előzetes verzió)
+              href: ../azure-monitor/insights/cosmosdb-insights-overview.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
+            - name: Kiszolgálóoldali késés monitorozása
+              href: monitor-server-side-latency.md
+            - name: Kérelemegység-használat monitorozása
+              href: monitor-request-unit-usage.md
+        - name: Az Azure Monitor-naplók használata
+          items:
+            - name: Monitorozás diagnosztikai naplók használatával
+              href: cosmosdb-monitor-resource-logs.md
+            - name: Vezérlősík-naplózás
+              href: audit-control-plane-logs.md
         - name: Mérőszámok megtekintése Azure Cosmos DB-fiókból
           href: use-metrics.md
-        - name: Alkalmazásnaplózás a Logic Apps használatával
-          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
         - name: Adatreferencia monitorozása
           href: monitor-cosmos-db-reference.md
+        - name: Alkalmazásnaplózás a Logic Apps használatával
+          href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md?toc=/azure/cosmos-db/toc.json&bc=/azure/cosmos-db/breadcrumb/toc.json
     - name: Helyi fejlesztés
       items:
         - name: Az emulátor használata

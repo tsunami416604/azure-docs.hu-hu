@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: mlottner
-ms.openlocfilehash: 02736b63b900600c51eda8666aff0117b9307824
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeab1a7dcdf2b12efc268ed0d47834b24d34b87
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310771"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734977"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>Azure Security Center for IoT – gyakori kérdések
 
@@ -66,7 +66,7 @@ A IoT-ügynök Azure Security Center az eszközök konfigurálására, viselked�
 
 ## <a name="where-can-i-get-the-azure-security-center-for-iot-security-agent"></a>Honnan szerezhetem be a IoT biztonsági ügynök Azure Security Center?
 
-A IoT biztonsági ügynök Azure Security Center nyílt forráskódú, és elérhető a GitHubon 32 bites és 64-bites Windows-és Linux-verziókon: https://github.com/Azure/Azure-Security-IoT.
+A IoT biztonsági ügynök Azure Security Center nyílt forráskódú, és elérhető a GitHubon 32 bites és 64-bites Windows-és Linux-verziókon: https://github.com/Azure/Azure-IoT-Security.
 
 ## <a name="where-does-the-azure-security-center-for-iot-agent-get-installed"></a>Honnan telepíti a IoT-ügynök Azure Security Center?
 

@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f4c2fa8488490561e8f11746e8e737718ee9f37
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2a6b5c22e2988ed33e6dc15a4729e7bfe938c5f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76261262"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786917"
 ---
 # <a name="what-is-azure-active-directory-authentication"></a>Mi az Azure Active Directory hitelesítés?
 
@@ -86,14 +86,14 @@ Az Azure AD lehetővé teszi, hogy natív módon hitelesítse a jelszavak nélk�
 
 ## <a name="next-steps"></a>További lépések
 
-Első lépésként tekintse meg az [önkiszolgáló jelszó-visszaállítást][quickstart-sspr] és az [Azure multi-Factor Authentication oktatóanyagát ismertető útmutatót][tutorial-mfa-applications].
+Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
 
 Az önkiszolgáló jelszó-visszaállítási fogalmakkal kapcsolatos további tudnivalókért tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás működéséről][concept-sspr]szóló témakört.
 
 A többtényezős hitelesítési fogalmakkal kapcsolatos további tudnivalókért tekintse meg az [Azure multi-Factor Authentication működését][concept-mfa]ismertető témakört.
 
 <!-- INTERNAL LINKS -->
-[quickstart-sspr]: quickstart-sspr.md
-[tutorial-mfa-applications]: tutorial-mfa-applications.md
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
 [concept-sspr]: concept-sspr-howitworks.md
 [concept-mfa]: concept-mfa-howitworks.md

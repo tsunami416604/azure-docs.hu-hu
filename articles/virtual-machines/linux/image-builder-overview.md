@@ -1,18 +1,19 @@
 ---
 title: További tudnivalók az Azure rendszerkép-Készítőről (előzetes verzió)
-description: További információk az Azure-beli virtuális gépekhez készült Azure rendszerkép-Készítőről.
+description: Tudjon meg többet az Azure-beli Virtual Machines Azure rendszerkép-Szerkesztőről.
 author: cynthn
 ms.author: cynthn
 ms.date: 05/02/2019
-ms.topic: article
+ms.topic: conceptual
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.openlocfilehash: d0644fca56b852bb34a001a73511f4df33a5f441
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: danis
+ms.openlocfilehash: 4cacc96975d6a366e2d353580d22c9818b19a321
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944988"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792054"
 ---
 # <a name="preview-azure-image-builder-overview"></a>Előzetes verzió: az Azure rendszerkép-szerkesztő áttekintése
 
