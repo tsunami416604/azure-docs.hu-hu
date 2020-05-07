@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f685ac63e3b4a8cf466be4eb4561472fb084d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 689a528a75613ac6a38bed74d6597d492f498e8b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74026544"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582732"
 ---
 # <a name="troubleshoot-and-resolve-groups-issues"></a>A csoportok problémáinak elhárítása és megoldása
 
@@ -43,7 +43,7 @@ A nem rendszergazda felhasználók csoport létrehozásának letiltása a PowerS
    ```
 
 <br/>**Egy dinamikus csoport a PowerShellben való létrehozásakor engedélyezett maximális csoportok hibaüzenetet kaptam**<br/>
-Ha egy üzenet jelenik meg a PowerShellben, amely jelzi, hogy a _dinamikus csoportházirendek maximálisan engedélyezett csoportok száma elérte a megengedett értéket_, ez azt jelenti, hogy elérte a dinamikus csoportok maximális korlátját a bérlőben. A dinamikus csoportok maximális száma egy bérlőn 5 000.
+Ha egy üzenet jelenik meg a PowerShellben, amely jelzi, hogy a _dinamikus csoportházirendek maximálisan engedélyezett csoportok száma elérte a megengedett értéket_, ez azt jelenti, hogy elérte a szervezet dinamikus csoportjaira vonatkozó maximális korlátot. A szervezeten belüli dinamikus csoportok maximális száma 5 000.
 
 Új dinamikus csoportok létrehozásához először törölnie kell néhány meglévő dinamikus csoportot. Nincs lehetőség a korlát növelésére.
 
@@ -53,7 +53,7 @@ Ha egy üzenet jelenik meg a PowerShellben, amely jelzi, hogy a _dinamikus csopo
 1. Ellenőrizze a szabályban a felhasználó vagy az eszköz attribútumainak értékeit. Ellenőrizze, hogy vannak-e olyan felhasználók, akik megfelelnek a szabálynak. Eszközök esetében ellenőrizze az eszköz tulajdonságait, hogy minden szinkronizált attribútum tartalmazza-e a várt értékeket.<br/>
 2. Ellenőrizze, hogy befejeződött-e a tagság feldolgozási állapota. A csoport **Áttekintés** lapján megtekintheti a [tagság feldolgozási állapotát](groups-create-rule.md#check-processing-status-for-a-rule) és a legutóbbi frissítés dátumát.
 
-Ha minden jól látható, hagyjon némi időt a csoport feltöltésére. Az első feltöltésnél és szabálymódosítás után a bérlő méretétől függően ez akár 24 órát is jelenthet.
+Ha minden jól látható, hagyjon némi időt a csoport feltöltésére. Az Azure AD-szervezet méretétől függően a csoport akár 24 óráig is eltarthat, amíg az első alkalommal vagy egy szabály módosítása után is elvégezheti a feltöltést.
 
 **Konfiguráltam egy szabályt, de mostantól a szabály meglévő tagjai törlődnek.**<br/>Ez az elvárt működés. A csoport meglévő tagjai el lesznek távolítva, amikor egy szabály engedélyezve van vagy megváltozott. A szabály kiértékelésével visszaadott felhasználók tagként lesznek hozzáadva a csoporthoz.
 

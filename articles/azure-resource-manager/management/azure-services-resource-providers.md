@@ -3,12 +3,12 @@ title: Erőforrás-szolgáltatók az Azure-szolgáltatások által
 description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltatói névterét, és megjeleníti az adott névtérhez tartozó Azure-szolgáltatást.
 ms.topic: conceptual
 ms.date: 03/17/2020
-ms.openlocfilehash: 55fbe4ae383e5275d185e2a03224e77660a01ef5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9bb8d91d141997a7dd466d247ddcb0bd364e1c80
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382512"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559851"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
 
@@ -51,7 +51,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. ClassicSubscription | Klasszikus üzemi modell |
 | Microsoft. CognitiveServices | [Cognitive Services](/azure/cognitive-services/) |
 | Microsoft. Commerce | Core |
-| Microsoft.Compute | [Virtuális gépek](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
+| Microsoft.Compute | [Virtual Machines](/azure/virtual-machines/)<br />[Virtual Machine Scale Sets](/azure/virtual-machine-scale-sets/) |
 | Microsoft. felhasználás | [Cost Management](/azure/cost-management/) |
 | Microsoft. ContainerInstance | [Tárolópéldányok](/azure/container-instances/) |
 | Microsoft. ContainerRegistry | [Container Registry](/azure/container-registry/) |
@@ -61,12 +61,12 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. CustomerLockbox | Microsoft Azure Ügyfélszéf |
 | Microsoft. CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
-| Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/data-box-edge-overview.md) |
+| Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
 | Microsoft. Databricks | [Azure Databricks](/azure/azure-databricks/) |
 | Microsoft. DataCatalog | [Data Catalog](/azure/data-catalog/) |
 | Microsoft. DataFactory | [Data Factory](/azure/data-factory/) |
 | Microsoft. DataLakeAnalytics | [Data Lake Analytics](/azure/data-lake-analytics/) |
-| Microsoft. Data Lake Store | [2. generációs Azure Data Lake Storage](../../storage/blobs/data-lake-storage-introduction.md) |
+| Microsoft. Data Lake Store | [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md) |
 | Microsoft. DataMigration | [Azure Database Migration Service](/azure/dms/) |
 | Microsoft. DataShare | [Azure Data Share](/azure/data-share/) |
 | Microsoft. DBforMariaDB | [Azure Database for MariaDB](/azure/mariadb/) |

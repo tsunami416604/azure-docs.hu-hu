@@ -3,12 +3,12 @@ title: A Windows Server biztonsági mentése a PowerShell használatával az Azu
 description: Ebből a cikkből megtudhatja, hogyan használható a PowerShell a Azure Backup Windows Serveren vagy Windows-ügyfélen való beállításához, valamint a biztonsági mentés és a helyreállítás kezeléséhez.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: 3b9bcf8e777244cec11383619d145e3a99ff46d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fde81aba5a2b74ce25c8f3cd70dc24df6f566420
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193020"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597977"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Az Azure-ba történő biztonsági mentés üzembe helyezése és kezelése Windows Server vagy Windows-ügyfél rendszereken a PowerShell-lel
 
@@ -209,7 +209,12 @@ Server properties updated successfully.
 
 A Azure Backup elküldett biztonsági mentési adatok titkosítva vannak az adatok titkosságának védelme érdekében. A titkosítási jelszó a "password" (jelszó), amely a visszaállításkor visszafejti az adatmennyiséget.
 
-A **Létrehozás**lehetőség kiválasztásával biztonsági PIN-kódot kell megadnia a Azure Portal **Recovery Services** tároló szakaszának **Beállítások** > **tulajdonságai** > **biztonsági PIN-kódjában** . Ezt `generatedPIN` követően használja a parancsot a következő paranccsal:
+A **Létrehozás**lehetőség kiválasztásával biztonsági PIN-kódot kell megadnia a Azure Portal **Recovery Services** tároló szakaszának **Beállítások** > **tulajdonságai** > **biztonsági PIN-kódjában** . 
+
+>[!NOTE]
+> A biztonsági PIN-kód csak a Azure Portal használatával hozható létre.
+
+Ezt `generatedPIN` követően használja a parancsot a következő paranccsal:
 
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force

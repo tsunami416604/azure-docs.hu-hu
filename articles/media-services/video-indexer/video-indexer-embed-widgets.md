@@ -10,18 +10,18 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 03/26/2020
 ms.author: juliako
-ms.openlocfilehash: 5134a262397676aa9b59de9b0c6de61c26d21523
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 545dbcfb1db5595ff5b2047ec44afa8a065d816d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262910"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594848"
 ---
 # <a name="embed-video-indexer-widgets-in-your-apps"></a>Video Indexer widgetek beágyazása az alkalmazásokba
 
 Ebből a cikkből megtudhatja, hogyan ágyazhat be Video Indexer widgeteket az alkalmazásaiba. Video Indexer támogatja a három típusú widget beágyazását az alkalmazásokba: *kognitív betekintést*, *lejátszót*és *szerkesztőt*.
 
-A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fiók régióját. Például az USA nyugati régiójában lévő fiók a következőt hozza `https://wus2.videoindexer.ai/embed/insights/...`létre:.
+A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fiók régióját. Például az USA nyugati régiójában lévő fiók a következőt hozza `https://www.videoindexer.ai/embed/insights/.../?location=westus2`létre:.
 
 ## <a name="widget-types"></a>Vezérlőtípusok
 
@@ -29,19 +29,20 @@ A 2. verziótól kezdődően a widget alap URL-címe tartalmazza a megadott fió
 
 A Kognitív elemzési vezérlő az összes vizuális elemzést tartalmazza, amely a videóindexelési folyamat során lett kinyerve. A kognitív bepillantások widget a következő opcionális URL-paramétereket támogatja:
 
-|Name (Név)|Meghatározás|Leírás|
+|Name|Meghatározás|Leírás|
 |---|---|---|
 |`widgets` | Vesszővel elválasztott sztringek | Lehetővé teszi a megjeleníteni kívánt adatfelismerések szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,keywords` a csak a felhasználók és a kulcsszavak felhasználói felületi felismeréseit jeleníti meg.<br/>Elérhető lehetőségek: személyek, animatedCharacters, kulcsszavak, címkék, érzelmek, érzelmek, témakörök, kulcsképek, átiratok, OCR, hangszórók, jelenetek és namedEntities.|
 |`controls`|Vesszővel elválasztott sztringek|Lehetővé teszi a megjeleníteni kívánt vezérlők szabályozását.<br/>Példa: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?controls=search,download` csak a keresési lehetőség és a letöltés gomb megjelenítése.<br/>Elérhető lehetőségek: keresés, letöltés, előzetes beállítás, nyelv.|
 |`language`|Rövid nyelvi kód (nyelv neve)|Az ellenőrzési nyelv szabályozása.<br/>Például: `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=es-es` <br/>vagy`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?language=spanish`|
 |`locale` | Egy rövid nyelvi kód | A felhasználói felület nyelvének szabályozása. Az alapértelmezett érték `en`. <br/>Példa: `locale=de`.|
 |`tab` | Az alapértelmezett kijelölt lap | Az alapértelmezés **Insights** szerint megjelenített adatvizsgálatok lapot vezérli. <br/>Példa: `tab=timeline` a bepillantást jeleníti meg az **Idősor** lapon.|
+|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paraméter alapértelmezett értéke.| 
 
 ### <a name="player-widget"></a>Lejátszó vezérlő
 
 A Player widget Adaptív átviteli sebesség használatával is továbbíthatja a videót. A Player widget a következő opcionális URL-paramétereket támogatja.
 
-|Name (Név)|Meghatározás|Leírás|
+|Name|Meghatározás|Leírás|
 |---|---|---|
 |`t` | Másodperc az elejétől | A lejátszó a megadott időpontból kezdi a lejátszást.<br/> Példa: `t=60`. |
 |`captions` | Nyelvi kód | A megadott nyelven beolvassa a feliratot a widget betöltésével, hogy elérhető legyen a **feliratok** menüben.<br/> Példa: `captions=en-US`. |
@@ -49,34 +50,40 @@ A Player widget Adaptív átviteli sebesség használatával is továbbíthatja 
 |`type`| | Aktiválja a hanglejátszó bőrét (a videó rész törlődik).<br/> Példa: `type=audio`. |
 |`autoplay` | Logikai érték | Azt jelzi, hogy a játékosnak be kell-e játszania a videót a betöltéskor. Az alapértelmezett érték `true`.<br/> Példa: `autoplay=false`. |
 |`language`/`locale` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`.|
+|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paraméter alapértelmezett értéke.| 
 
 ### <a name="editor-widget"></a>Szerkesztői widget
 
 A szerkesztői widgettel új projekteket hozhat létre, és kezelheti a videókban észlelt eredményeket. A szerkesztői widget a következő opcionális URL-paramétereket támogatja.
 
-|Name (Név)|Meghatározás|Leírás|
+|Name|Meghatározás|Leírás|
 |---|---|---|
 |`accessToken`<sup>*</sup> | Sztring | Hozzáférést biztosít azokhoz a videókhoz, amelyek csak a widget beágyazásához használt fiókban találhatók.<br> A szerkesztő widgethez a `accessToken` paraméter szükséges. |
 |`language` | Nyelvi kód | A lejátszó nyelvének szabályozása. Az alapértelmezett érték `en-US`.<br/>Példa: `language=de-DE`. |
 |`locale` | Egy rövid nyelvi kód | Az adatfelismerés nyelvét vezérli. Az alapértelmezett érték `en`.<br/>Példa: `language=de`. |
+|`location` ||A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paramete alapértelmezett értéke.| 
 
 <sup>*</sup>A tulajdonosnak körültekintően kell megadnia `accessToken` .
 
-## <a name="embedding-public-content"></a>Nyilvános tartalom beágyazása
+## <a name="embedding-videos"></a>Videók beágyazása
+
+Ebből a szakaszból megtudhatja, hogyan ágyazhatja be a nyilvános és a magánjellegű tartalmakat az alkalmazásokba.
+
+A `location` paraméternek szerepelnie kell a beágyazott hivatkozásokban. lásd: a [régió nevének beolvasása](regions.md). Ha a fiókja előzetes verzióban érhető `trial` el, a értéket a hely értékére kell használni. `trial`a `location` paramete alapértelmezett értéke. Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
+
+> [!IMPORTANT]
+> Ha megoszt egy hivatkozást a **lejátszóhoz** **vagy az** adatelérési eszközhöz, a hozzáférési jogkivonatot fogja tartalmazni, és megadja a csak olvasási jogosultságokat a fiókjához.
+
+### <a name="public-content"></a>Nyilvános tartalom
 
 1. Jelentkezzen be a [video Indexer](https://www.videoindexer.ai/) webhelyére.
-2. Válassza ki a videót, amelyet használni szeretne.
-3. Válassza a videó alatt megjelenő beágyazás gombot (**</>**).
-
-    A **beágyazás** gomb kiválasztását követően kiválaszthatja az alkalmazásba beágyazni kívánt widgetet.
-4. Válassza ki a kívánt widget típusát (**kognitív ismeretek**, **lejátszó**vagy **szerkesztő**).
+1. Válassza ki a használni kívánt videót, és nyomja meg a **Lejátszás**gombot.
+1. Válassza ki a kívánt widget típusát (**kognitív ismeretek**, **lejátszó**vagy **szerkesztő**).
+1. Kattintson a ** &lt; / &gt; beágyazás**gombra.
 5. Másolja a beágyazási kódot (ekkor megjelenik a **beágyazott kód másolása** a **megosztás & beágyazási** párbeszédpanelen).
 6. Adja hozzá a kódot az alkalmazáshoz.
 
-> [!NOTE]
-> Ha problémák merülnek fel a videó URL-címeinek `location` megosztásakor, adja hozzá a paramétert a hivatkozáshoz. A paramétert azon [Azure-régiókra kell beállítani, amelyekben video Indexer létezik](regions.md). Például: `https://www.videoindexer.ai/accounts/00000000-0000-0000-0000-000000000000/videos/b2b2c74b8e/?location=trial`.
-
-## <a name="embedding-private-content"></a>Személyes tartalom beágyazása
+### <a name="private-content"></a>Magánjellegű tartalom
 
 Privát videó beágyazásához át kell adnia egy hozzáférési jogkivonatot az IFRAME `src` -attribútumban:
 

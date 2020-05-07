@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ddfc4bf7ed3bdf214a44a5dfe03259d32b2f3f94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43eba1b2f3373555e871b586ae633dcb64abfd9b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74025696"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582699"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Egy csoport licenc-hozzárendelési problémáinak azonosítása és megoldása Azure Active Directory
 
@@ -100,7 +100,7 @@ A probléma megoldásához távolítsa el a felhasználókat a nem támogatott h
 
 ## <a name="duplicate-proxy-addresses"></a>Duplikált proxy címek
 
-Ha az Exchange Online-t használja, előfordulhat, hogy a bérlő néhány felhasználója helytelenül van konfigurálva ugyanazzal a proxy-címtartomány értékével. Ha a csoport alapú licencelés megpróbál hozzárendelni egy licencet egy ilyen felhasználóhoz, az sikertelen lesz, és azt mutatja, hogy a "proxy címe már használatban van".
+Ha az Exchange Online-t használja, előfordulhat, hogy a szervezet egyes felhasználói helytelenül vannak konfigurálva ugyanazzal a proxycímek értékkel. Ha a csoport alapú licencelés megpróbál hozzárendelni egy licencet egy ilyen felhasználóhoz, az sikertelen lesz, és azt mutatja, hogy a "proxy címe már használatban van".
 
 > [!TIP]
 > Ha szeretné megtekinteni, hogy van-e duplikált proxy címe, hajtsa végre a következő PowerShell-parancsmagot az Exchange Online-ban:

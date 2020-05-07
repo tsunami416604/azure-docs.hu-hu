@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: include
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: 2ebf5d574b4d185953ab0f7984648c440d6f107e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: fa8d8ccef7d6ad6e1b5d9f19de61e45ee8c439fa
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678623"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587869"
 ---
 A **Get-AzPeeringLocation PowerShell-** parancsmag a kötelező paraméterrel `Kind`adja vissza a társítási helyszínek listáját, amelyet a későbbi lépésekben fog használni.
 
@@ -30,7 +30,7 @@ Az Exchange-társítási helyszínek a következő mezőket tartalmazzák:
 * MicrosoftIPv4Address
 * MicrosoftIPv6Address
 
-Győződjön meg arról, hogy a kívánt társi létesítményben jelen van a [PeeringDB](https://wwww.peeringdb.com).
+Győződjön meg arról, hogy a kívánt társi létesítményben jelen van a [PeeringDB](https://www.peeringdb.com).
 
 Ebből a példából megtudhatja, hogyan használható a Seattle a társas hely létrehozásához.
 

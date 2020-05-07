@@ -14,16 +14,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 141e83e21db18f21468113fd9927c2bdd2ed176d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497877"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582863"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése az Office 365-csoportokban Azure Active Directory
 
-A felhasználók által létrehozott vagy szerkesztett Office 365-csoportok konzisztens elnevezési konvencióinak betartatásához állítson be egy csoport elnevezési szabályzatot a bérlők számára Azure Active Directory (Azure AD). Az elnevezési házirend segítségével például a csoport, a tagság, a földrajzi régió vagy a csoport létrehozásával kommunikálhat. Használhatja az elnevezési házirendet is a címjegyzékben lévő csoportok kategorizálásához. A szabályzat használatával letilthat bizonyos szavakat a csoportok neveiben és az Aliasokban.
+A felhasználók által létrehozott vagy szerkesztett Office 365-csoportok konzisztens elnevezési konvencióinak betartatásához állítson be egy csoport elnevezési szabályzatot a szervezetekhez Azure Active Directory (Azure AD). Az elnevezési házirend segítségével például a csoport, a tagság, a földrajzi régió vagy a csoport létrehozásával kommunikálhat. Használhatja az elnevezési házirendet is a címjegyzékben lévő csoportok kategorizálásához. A szabályzat használatával letilthat bizonyos szavakat a csoportok neveiben és az Aliasokban.
 
 > [!IMPORTANT]
 > Az Office 365-csoportok Azure AD elnevezési házirendjének használata megköveteli, hogy rendelkezzen, de nem feltétlenül rendeljen hozzá egy prémium szintű Azure Active Directory P1-licencet vagy alapszintű Azure AD EDU-licencet minden olyan egyedi felhasználóhoz, amely egy vagy több Office 365-csoport tagja.
@@ -42,7 +42,7 @@ Két különböző módon kényszerítheti ki a csoportok elnevezési szabályza
 
 ### <a name="prefix-suffix-naming-policy"></a>Előtag – utótag elnevezési házirend
 
-Az elnevezési konvenció általános szerkezete a "prefix [csoportnév] utótag". Míg több előtagot és utótagot is meghatározhat, a beállításban csak a [csoportnév] egyetlen példánya lehet. Az előtagok vagy az utótagok lehetnek rögzített karakterláncok vagy felhasználói attribútumok, \[például részlegek\] , amelyek a csoportot létrehozó felhasználó alapján helyettesíthetők. Az előtag és az utótag sztringek teljes megengedett száma 53 karakter. 
+Az elnevezési konvenció általános szerkezete a "prefix [csoportnév] utótag". Míg több előtagot és utótagot is meghatározhat, a beállításban csak a [csoportnév] egyetlen példánya lehet. Az előtagok vagy az utótagok lehetnek rögzített karakterláncok vagy felhasználói attribútumok, \[például részlegek\] , amelyek a csoportot létrehozó felhasználó alapján helyettesíthetők. Az előtag és az utótag sztringek teljes megengedett száma, beleértve a csoportnév 53 karaktert. 
 
 Az előtagok és az utótagok olyan speciális karaktereket tartalmazhatnak, amelyek a csoport neve és a csoport aliasában is támogatottak. Az előtag vagy utótag azon karaktereit, amelyeket a csoport aliasa nem támogat, továbbra is a csoport nevében lesznek alkalmazva, de a csoport aliasa el lesz távolítva. Ennek a korlátozásnak a miatt a csoport nevére alkalmazott előtagok és utótagok eltérőek lehetnek a csoport aliasán alkalmazott értékekkel. 
 
@@ -138,7 +138,7 @@ A PowerShell-parancsok futtatása előtt mindenképpen távolítsa el a Windows 
 
    A megjelenő **Bejelentkezés a fiókba** párbeszédpanelen adja meg a rendszergazdai fiókot és jelszót, hogy kapcsolatot létesítsen a szolgáltatással, majd válassza a **Bejelentkezés** lehetőséget.
 
-1. Kövesse az [Azure Active Directory-parancsmagok a csoportbeállítások konfigurálásához](groups-settings-cmdlets.md) című rész lépéseit a bérlő csoportbeállításainak létrehozásához.
+1. A csoport beállításainak [konfigurálásához kövesse az Azure Active Directory-parancsmagok](groups-settings-cmdlets.md) című szakasz lépéseit a szervezeti beállítások létrehozásához.
 
 ### <a name="view-the-current-settings"></a>Aktuális beállítások megtekintése
 

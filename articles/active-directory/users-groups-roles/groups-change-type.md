@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34451fcc4597f77464e5e9566613e21e9fecdbc6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aff304b0866092badc515df7201fb4873acc298e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74027314"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582927"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Statikus csoporttagság módosítása a Azure Active Directory dinamikus értékre
 
@@ -32,7 +32,7 @@ A csoportok tagságát statikusról dinamikusra (vagy fordítva) is módosíthat
 
 ## <a name="change-the-membership-type-for-a-group"></a>Csoport tagsági típusának módosítása
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy felhasználói rendszergazda a bérlőben.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely globális rendszergazda vagy felhasználói rendszergazda az Azure ad-szervezetben.
 2. Válassza a **csoportok**lehetőséget.
 3. A **minden csoport** listából nyissa meg a módosítani kívánt csoportot.
 4. Válassza ki a **Tulajdonságok** elemet.

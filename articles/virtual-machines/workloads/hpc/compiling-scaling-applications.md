@@ -12,12 +12,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
-ms.openlocfilehash: 00d5b86c8cae01d342d55b7ad20ec59c3f7530bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1de7b1412a242e1b658128ba11f482a2d9dc3107
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67707842"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594797"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
 
@@ -37,7 +37,7 @@ A csenget egy C, C++ és Objective-C fordító, amely az előfeldolgozást, az e
 
 ### <a name="flang"></a>FLANG
 
-A FLANG Compiler a AOCC Suite (2018. április) újabb verziója, és jelenleg előzetes kiadásban érhető el a fejlesztők számára a letöltéshez és teszteléshez. A FORTRAN 2008 alapján az AMD kiterjeszti a FLANG GitHub-verziójáthttps://github.com/flangcompiler/flang)(. A FLANG Compiler támogatja az összes csenget-fordítói beállítást és a FLANG-specifikus fordítási lehetőségek további számát.
+A FLANG Compiler a AOCC Suite (2018. április) újabb verziója, és jelenleg előzetes kiadásban érhető el a fejlesztők számára a letöltéshez és teszteléshez. A FORTRAN 2008 alapján az AMD kiterjeszti a FLANG GitHub-verziójáthttps://github.com/flang-compiler/flang)(. A FLANG Compiler támogatja az összes csenget-fordítói beállítást és a FLANG-specifikus fordítási lehetőségek további számát.
 
 ### <a name="dragonegg"></a>DragonEgg
 

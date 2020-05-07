@@ -4,14 +4,15 @@ description: Útmutatás és információk a Azure Database for PostgreSQL-nagy 
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: 8a691b6d3f28800ab1cb38a72f124e950d485084
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 791eed9419375c7245488b8ec61a1c5481be382e
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422336"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580564"
 ---
 # <a name="configure-tls-in-azure-database-for-postgresql---hyperscale-citus"></a>A TLS konfigurálása Azure Database for PostgreSQL-nagy kapacitású (Citus)
 Az nagy kapacitású (Citus) koordinátori csomóponthoz tartozó ügyfélalkalmazás Transport Layer Security (TLS), korábbi nevén SSL (SSL) szükséges. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti TLS-kapcsolatok érvényesítésével megvédheti a védelmet a kiszolgáló és az alkalmazás közötti adatfolyam titkosításával.

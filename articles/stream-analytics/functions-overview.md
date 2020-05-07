@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/07/2020
-ms.openlocfilehash: 45e766c624ee96f7faa06fb07d00349e620a4c0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d167c603ada885a1a4917c66bab110e4ce38cab4
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133487"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598368"
 ---
 # <a name="user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált függvények Azure Stream Analytics
 
@@ -47,6 +47,9 @@ Azure Stream Analytics nem tartja nyilván az összes függvényt, és eredmény
 
 A futásidejű hibák végzetesnek minősülnek, és tevékenység-és erőforrás-naplókon keresztül vannak felszínben. Azt javasoljuk, hogy a függvény minden kivételt és hibát kezelje, és érvényes eredményt ad vissza a lekérdezéshez. Ezzel megakadályozhatja, hogy a feladata [sikertelen állapotba](job-states.md)kerüljön.  
 
+## <a name="exception-handling"></a>Kivételkezelés
+
+Az adatfeldolgozás során felmerülő kivétel a Azure Stream Analyticsban lévő adatfelhasználás során felmerülő katasztrofális hiba. A felhasználó által definiált függvények nagyobb valószínűséggel okozhatnak kivételeket, és a feldolgozás leállhat. A probléma elkerüléséhez használjon egy *try-catch* blokkot a JavaScriptben vagy a C#-ban a kivételek elvégzéséhez a kód végrehajtása során. A kifogott kivételek naplózása és kezelése rendszerhiba miatt sikertelen lehet. Javasoljuk, hogy mindig az egyéni kódot egy *try-catch* blokkba csomagolja, hogy elkerülje a váratlan kivételek ledobását a feldolgozó motorra.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -54,4 +57,3 @@ A futásidejű hibák végzetesnek minősülnek, és tevékenység-és erőforr�
 * [JavaScript felhasználó által definiált összesítések Azure Stream Analytics](stream-analytics-javascript-user-defined-aggregates.md)
 * [A .NET szabványú, felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz](stream-analytics-edge-csharp-udf-methods.md)
 * [Azure Stream Analytics integrálása Azure Machine Learning](machine-learning-udf.md)
-

@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentésének hibáinak megoldása
 description: A cikk olyan hibákkal kapcsolatos hibaelhárítási információkat tartalmaz, amelyek az Azure fájlmegosztások védelmekor következnek be.
 ms.date: 02/10/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: a6ce613b8c0fe8a7a5df6397ba2f1eb508d61aae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9b3514b4c1a00cc2f9bb1e1922975bf0bb70d24
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100056"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562083"
 ---
 # <a name="troubleshoot-problems-while-backing-up-azure-file-shares"></a>Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása
 
@@ -25,6 +25,7 @@ Ez a cikk a Azure Backup szolgáltatással történő biztonsági mentés vagy a
   >A Storage-fiókokban lévő összes fájlmegosztást csak egy Recovery Services tárolóban lehet védeni. [Ezzel a parancsfájllal](scripts/backup-powershell-script-find-recovery-services-vault.md) megkeresheti azt a Recovery Services-tárolót, ahol a Storage-fiók regisztrálva van.
 
 - Győződjön meg arról, hogy a fájlmegosztás nem szerepel a nem támogatott Storage-fiókok egyikében sem. A támogatott Storage-fiókok kereséséhez tekintse meg az [Azure-fájlmegosztás biztonsági mentésének támogatási mátrixát](azure-file-share-support-matrix.md) .
+- Ellenőrizze a Storage-fiók tűzfal-beállításait, és győződjön meg arról, hogy engedélyezve van-e a megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz lehetőség.
 
 ### <a name="error-in-portal-states-discovery-of-storage-accounts-failed"></a>Hiba történt a portál állapotában a Storage-fiókok felderítése során
 
@@ -280,5 +281,5 @@ Várjon, amíg a másik folyamatban lévő művelet befejeződik, és próbálko
 
 Az Azure-fájlmegosztás biztonsági mentéséről további információt a következő témakörben talál:
 
-- [Azure-fájlmegosztás biztonsági mentése](backup-afs.md)
+- [Azure-fájlmegosztások biztonsági mentése](backup-afs.md)
 - [Azure-fájlmegosztás biztonsági mentése – GYIK](backup-azure-files-faq.md)

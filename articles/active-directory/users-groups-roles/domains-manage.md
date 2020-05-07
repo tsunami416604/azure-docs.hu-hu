@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2395aa5984de2a9fe41e4778d16aba69bfef5192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e21d850f03fdca300085c864a12611acb968aa8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77559233"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582968"
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Egyéni tartománynevek kezelése a Azure Active Directoryban
 
@@ -41,7 +41,7 @@ A címtár létrehozásakor a kezdeti tartománynév (például "contoso.onmicro
 
 A címtár elsődleges tartománynevét úgy módosíthatja, hogy bármely ellenőrzött egyéni tartomány legyen, amely nem összevont. A címtár elsődleges tartományának módosítása nem módosítja a meglévő felhasználók felhasználónevét.
 
-## <a name="add-custom-domain-names-to-your-azure-ad-tenant"></a>Egyéni tartománynevek hozzáadása az Azure AD-bérlőhöz
+## <a name="add-custom-domain-names-to-your-azure-ad-organization"></a>Egyéni tartománynevek hozzáadása az Azure AD-szervezethez
 
 Legfeljebb 900 felügyelt tartománynevet adhat hozzá. Ha az összes tartományt a helyszíni Active Directory segítségével konfigurálja az összevonáshoz, az egyes címtárakban akár 450 tartománynevet is hozzáadhat.
 
@@ -72,7 +72,7 @@ A **ForceDelete** az [Azure ad felügyeleti központban](https://aad.portal.azur
 A **ForceDelete** meghívásához a Azure Portalban meg kell győződnie arról, hogy a tartománynévnek kevesebb, mint 1000 hivatkozása van, és az Exchange [felügyeleti központban](https://outlook.office365.com/ecp/)frissíteni vagy törölni kell a kiépítési szolgáltatást. Ez magában foglalja az Exchange-levelezésre képes biztonsági csoportokat és az elosztott listát; További információ: [levelezésre képes biztonsági csoportok eltávolítása](https://technet.microsoft.com/library/bb123521(v=exchg.160).aspx#Remove%20mail-enabled%20security%20groups). Emellett a **ForceDelete** művelet nem fog sikerülni, ha a következők egyike igaz:
 
 * Az Office 365 tartományi előfizetési szolgáltatásokon keresztül vásárolt egy tartományt
-* Ön egy másik ügyfél bérlője nevében felügyelt partner
+* Ön egy másik ügyfél-szervezet nevében felügyelt partner
 
 A **ForceDelete** művelet részeként a következő műveletek végezhetők el:
 

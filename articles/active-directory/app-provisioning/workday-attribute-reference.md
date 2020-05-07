@@ -1,27 +1,25 @@
 ---
-title: A munkanap attribútumának referenciája | Microsoft Docs
+title: Workday-attribútumok referenciája
 description: Megtudhatja, hogy a SuccessFactors mely attribútumait támogatja a SuccessFactors-HR-vezérelt kiépítés
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 04/19/2020
 ms.author: chmutali
-ms.openlocfilehash: 61f374c3fbc15e78784fe30c4e66ea109537727d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: b0acb058e7e58656257d55f82f5dd02a8ae7d9c3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112881"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593063"
 ---
 # <a name="workday-attribute-reference"></a>Workday-attribútumok referenciája
+
 Ez a szakasz felsorolja azokat az attribútumokat, amelyeket az XPATH-lekérdezések használatával lehet beolvasni a munkanapokból. A használni kívánt munkanap webszolgáltatások API-verziója alapján tekintse meg a megfelelő szakaszt. 
 
 ## <a name="xpath-values-for-workday-web-services-wws-api-v211"></a>A munkanap webszolgáltatások (WWS) API v 21.1 XPATH-értékei
@@ -29,7 +27,7 @@ Ez a szakasz felsorolja azokat az attribútumokat, amelyeket az XPATH-lekérdez�
 
 Az alábbi táblázat rögzíti a munkanapokhoz tartozó attribútumok és a hozzájuk tartozó olyan XPATH-kifejezések listáját, amelyeket a rendszer a munkanap bejövő kiépítési alkalmazás-összekötővel kiszállít. 
 
-| \# | Name (Név)                                  | Munkanap API kifejezés                                                                                                                                                                                                                                                                                                                                                                                       |
+| \# | Name                                  | Munkanap API kifejezés                                                                                                                                                                                                                                                                                                                                                                                       |
 |----|---------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Aktív                                | WD: Worker/WD:\_Worker-vagy WD\_-beli adatfeldolgozás/\_WD\_: feldolgozó állapotadatok/WD: aktív/szöveg\(\)                                                                                                                                                                                                                                                                                                                     |
 | 2  | AddressLine2Data                      | WD: Worker/WD:\_Worker adatai/WD\_: Working adatai/\_WD: position adatai/\_WD\_:\_Business site összefoglaló adatai/\_WD: címadatok/WD\_:\_címterület\[@wd:Typeadatai = "\_címterület\_2"\]/Text\(\)                                                                                                                                                                                                                             |
@@ -117,7 +115,7 @@ Az alábbi táblázat rögzíti a munkanapokhoz tartozó attribútumok és a hoz
 Ha WWS API v 30.0-t vagy újabbat használ, mielőtt a kiépítési feladatot bekapcsolja, frissítse az **XPath API-kifejezéseket** az **attribútumok leképezése – > speciális beállítások – > az attribútumok listájának szerkesztése a munkanapokon** az alább felsorolt értékek használatára. További XPATH-beállítások konfigurálásához tekintse meg az [oktatóanyag: a konfiguráció kezelése](../saas-apps/workday-inbound-tutorial.md#managing-your-configuration)című szakaszt. 
 
 
-| \# | Name (Név)                                  | Munkanap XPATH API-kifejezése                                                                                                                                                                                                                                                                                                                                                |
+| \# | Name                                  | Munkanap XPATH API-kifejezése                                                                                                                                                                                                                                                                                                                                                |
 |----|---------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 1  | Aktív                                | WD: Worker/WD:\_Worker-vagy WD\_-beli adatfeldolgozás/\_WD\_: feldolgozó állapotadatok/WD: aktív/szöveg\(\)                                                                                                                                                                                                                                                                                               |
 | 2  | AddressLine2Data                      | WD: Worker/WD:\_Worker-adatok/\_WD: foglalkoztatási adatok/\_WD\_:\[@wd:Primary\_Worker Job\]adatok feladata =\_1/WD: pozíció adatok\_/\_WD\_: üzleti hely összefoglaló adatok\_/WD: címadatok/\_WD\_:\[@wd:Typecímterület adatai =\_"\_címterület 2\]"/text\(\)                                                                                                                                                            |

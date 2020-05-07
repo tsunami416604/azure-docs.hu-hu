@@ -10,12 +10,12 @@ ms.workload: azure-vs
 ms.topic: how-to
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: abf0570ee9f01a2378e8c0370cfc3ba5fecc7406
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: d864230ff524f6c008f9f05c16505cd9d0e9f229
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098232"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583361"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>ASP.NET-webalkalmazás közzététele Azure-beli virtuális gépen a Visual studióból
 
@@ -24,7 +24,7 @@ Ez a dokumentum azt ismerteti, hogyan tehet közzé egy ASP.NET-webalkalmazást 
 ## <a name="prerequisites"></a>Előfeltételek
 Ahhoz, hogy a Visual Studio használatával közzé lehessen tenni egy ASP.NET-projektet egy Azure-beli virtuális gépen, helyesen kell beállítani a virtuális gépet.
 
-- A gépet úgy kell konfigurálni, hogy ASP.NET-webalkalmazást futtasson, és telepítve legyen a web Deploy.
+- A gépet úgy kell konfigurálni, hogy ASP.NET-webalkalmazást futtasson, és telepítve legyen a web Deploy. További információ: [ASP.net virtuális gép létrehozása Webdeploy](https://github.com/aspnet/Tooling/blob/AspNetVMs/docs/create-asp-net-vm-with-webdeploy.md)paranccsal.
 
 - A virtuális gépnek konfigurálnia kell egy DNS-nevet. További információt a [Windows rendszerű virtuális gépekhez tartozó Azure Portal teljes tartománynév létrehozása](portal-create-fqdn.md)című témakörben talál.
 

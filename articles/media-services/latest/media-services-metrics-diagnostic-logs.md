@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: 75363212684bb09e84a4bc4881af26e6d2a8e7e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f051d02ac06163cf1861ab6bfc6afd0dcbb0ad8a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585271"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559525"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-via-azure-monitor"></a>Media Services metrikák és diagnosztikai naplók figyelése Azure Monitor használatával
 
@@ -63,7 +63,7 @@ A következő Media Services [folyamatos átviteli végpontok](https://docs.micr
 |Metrika neve|Megjelenített név|Leírás|
 |---|---|---|
 |Kérelmek|Kérelmek|A folyamatos átviteli végpont által kiszolgált HTTP-kérelmek teljes számát adja meg.|
-|Kimenő forgalom|Kimenő forgalom|A kimenő bájtok teljes száma. Például a streaming végpont által továbbított bájtok.|
+|Kimenő forgalom|Kimenő forgalom|Kimenő átviteli végpontok percenkénti bájtjainak száma.|
 |SuccessE2ELatency|A Befejezés végének késése|Az az időtartam, amikor a folyamatos átviteli végpont a válasz utolsó bájtjának küldésére vonatkozó kérést kapott.|
 
 ### <a name="why-would-i-want-to-use-metrics"></a>Miért érdemes mérőszámokat használni?
@@ -92,7 +92,7 @@ A Media Services a következő diagnosztikai naplókat támogatja:
 
 ### <a name="key-delivery"></a>Kulcs kézbesítése
 
-|Name (Név)|Leírás|
+|Name|Leírás|
 |---|---|
 |Kulcs kézbesítési szolgáltatásának kérése|A kulcs kézbesítési szolgáltatására vonatkozó adatokat megjelenítő naplók. További információ: [sémák](media-services-diagnostic-logs-schema.md).|
 

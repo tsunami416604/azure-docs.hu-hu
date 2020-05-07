@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5387daffcd3dd231aef5eade1c896db50947b386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c5a483ff7a5a93a6908538fd237cb4cf2dacec6
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484859"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582669"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>A PowerShell és a Graph példák az Azure AD-beli csoportos licencelésre
 
@@ -29,7 +29,7 @@ A csoport alapú licencelés teljes funkcionalitása a [Azure Portalon](https://
 > Mielőtt megkezdené a parancsmagok futtatását, először a `Connect-MsolService`  parancsmag futtatásával győződjön meg arról, hogy csatlakozik a szervezethez.
 
 > [!WARNING]
-> Ez a kód példaként szolgál a bemutató céljára. Ha a környezetében szeretné használni, érdemes lehet kis méretekben, vagy egy külön tesztelési bérlőn tesztelni. Előfordulhat, hogy az adott környezet igényeinek megfelelően módosítania kell a kódot.
+> Ez a kód példaként szolgál a bemutató céljára. Ha a környezetében szeretné használni, érdemes lehet kis méretekben, vagy egy különálló tesztelési szervezetben is tesztelni. Előfordulhat, hogy az adott környezet igényeinek megfelelően módosítania kell a kódot.
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Csoporthoz rendelt termék-licencek megtekintése
 
@@ -251,12 +251,12 @@ HTTP/1.1 200 OK
 
 ```
 
-## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>A teljes bérlő összes licenccel rendelkező felhasználójának beolvasása
+## <a name="get-all-users-with-license-errors-in-the-entire-organization"></a>Összes licenccel rendelkező felhasználó beolvasása a teljes szervezeten belül
 
 A következő parancsfájl használatával lekérheti az összes olyan felhasználót, aki egy vagy több csoport licencelési hibával rendelkezik. A szkript felhasználónként egy sort nyomtat ki, és licencelési hibát jelez, amely lehetővé teszi az egyes hibák forrásának egyértelmű azonosítását.
 
 > [!NOTE]
-> Ez a szkript a bérlő összes felhasználóját enumerálja, ami esetleg nem optimális a nagyméretű bérlők esetében.
+> Ez a parancsfájl a szervezet összes felhasználóját enumerálja, ami esetleg nem optimális a nagyméretű szervezetek számára.
 
 ```powershell
 Get-MsolUser -All | Where {$_.IndirectLicenseErrors } | % {   
@@ -364,10 +364,10 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Ez a szkript végrehajtja ezeket a függvényeket a bérlő minden felhasználóján, az SKU ID-t használva bemenetként – ebben a példában a *Enterprise Mobility + Security*licencét érdeklik, amelynek a bérlőnk a *contoso: EMS*azonosítóval rendelkezik:
+Ez a szkript végrehajtja ezeket a függvényeket a szervezet minden felhasználóján, az SKU ID-t használva bemenetként – ebben a példában a *Enterprise Mobility + Security*licencét érdeklik, amelyet a szervezetünk a *contoso: EMS*azonosítóval együtt képvisel:
 
 ```powershell
-#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your tenant
+#the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
 $skuId = "contoso:EMS"
 
 #find all users that have the SKU license assigned

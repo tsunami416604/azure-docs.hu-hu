@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.openlocfilehash: d1929f937d86001a0f2a399b1ebd92e47bbd2c86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6efe74008b2271b960f877f5f0f6b2b6b549a8d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80990905"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583082"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
 
@@ -95,6 +95,10 @@ Ha az összekötő-kiszolgálók és a webalkalmazás-szolgáltatásfiók ugyana
 
 Ha az összekötő-kiszolgálók és a webalkalmazás-szolgáltatás fiókja különböző tartományokban található, akkor az erőforrás-alapú delegálás használatos. A delegálási engedélyek a cél webkiszolgálón és a webalkalmazás-szolgáltatási fiókon vannak konfigurálva. Ez a korlátozott delegálási módszer viszonylag új. A metódust a Windows Server 2012-ben vezették be, amely támogatja a tartományok közötti delegálást azáltal, hogy az erőforrás (webszolgáltatás) tulajdonosa szabályozhatja, hogy mely számítógép-és szolgáltatásfiókok tudják delegálni. Ehhez a konfigurációhoz nincs szükség felhasználói felületre, ezért a PowerShellt kell használnia.
 További információkért tekintse meg a [Kerberos által korlátozott delegálás az Application proxyval](https://aka.ms/kcdpaper)című tanulmányt.
+
+### <a name="does-ntlm-authentication-work-with-azure-ad-application-proxy"></a>Az NTLM-hitelesítés együttműködik az Azure AD Application Proxy?
+
+Az NTLM-hitelesítés nem használható előhitelesítés vagy egyszeri bejelentkezési módszerként. Az NTLM-hitelesítés csak akkor használható, ha közvetlenül az ügyfél és a közzétett webes alkalmazás között lehet egyeztetni. Az NTLM-hitelesítés használata általában egy bejelentkezési üzenet megjelenítését okozza a böngészőben.
 
 ## <a name="pass-through-authentication"></a>Átmenő hitelesítés
 

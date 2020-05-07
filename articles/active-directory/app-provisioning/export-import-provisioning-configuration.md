@@ -1,50 +1,54 @@
 ---
-title: Exportálja a kiépítési konfigurációt, és állítsa vissza a vész-helyreállítás ismert jó állapotát. | Microsoft Docs
+title: A kiépítés konfigurációjának exportálása és visszavonása a vész-helyreállítás ismert jó állapotára
 description: Megtudhatja, hogyan exportálhatja a kiépítési konfigurációt, és visszaállíthatja a vész-helyreállítás ismert megfelelő állapotát.
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: daveba
-ms.assetid: 1a2c375a-1bb1-4a61-8115-5a69972c6ad6
+manager: CelesteDG
 ms.service: active-directory
-ms.subservice: saas-app-tutorial
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
+ms.subservice: app-provisioning
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 03/19/2020
 ms.author: chmutali
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92a40a5fe3067cf96d3c742102c9ca66078cd5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80051314"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593760"
 ---
-# <a name="export-your-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>A kiépítési konfiguráció exportálása és visszavonása ismert jó állapotba
+# <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Útmutató: az üzembe helyezési konfiguráció exportálása és visszavonása egy ismert megfelelő állapotba
+
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
+
+- Kiépítési konfiguráció exportálása és importálása a Azure Portal
+- A kiépítési konfiguráció exportálása és importálása a Microsoft Graph API használatával
 
 ## <a name="export-and-import-your-provisioning-configuration-from-the-azure-portal"></a>Kiépítési konfiguráció exportálása és importálása a Azure Portal
 
-### <a name="how-can-i-export-my-provisioning-configuration"></a>Hogyan exportálhatók a kiépítési konfigurációm?
+### <a name="export-your-provisioning-configuration"></a>A kiépítési konfiguráció exportálása
+
 A konfiguráció exportálása:
+
 1. A [Azure Portal](https://portal.azure.com/)a bal oldali navigációs panelen válassza a **Azure Active Directory**lehetőséget.
-2. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások** lehetőséget, majd válassza ki az alkalmazást.
-3. A bal oldali navigációs panelen válassza a **kiépítés**lehetőséget. A létesítési konfiguráció lapon kattintson az **attribútum-hozzárendelések**elemre, majd **jelenítse meg a speciális beállításokat**, és végül **tekintse át a sémát**. Ekkor megnyílik a sémakezelő szerkesztő. 
-5. A séma letöltéséhez kattintson a lap tetején található parancssáv Letöltés gombjára.
+1. A **Azure Active Directory** ablaktáblán válassza a **vállalati alkalmazások** lehetőséget, majd válassza ki az alkalmazást.
+1. A bal oldali navigációs panelen válassza a **kiépítés**lehetőséget. A létesítési konfiguráció lapon kattintson az **attribútum-hozzárendelések**elemre, majd **jelenítse meg a speciális beállításokat**, és végül **tekintse át a sémát**. Ekkor megnyílik a sémakezelő szerkesztő.
+1. A séma letöltéséhez kattintson a lap tetején található parancssáv Letöltés gombjára.
 
 ### <a name="disaster-recovery---roll-back-to-a-known-good-state"></a>Vész-helyreállítás – visszaállítás egy ismert jó állapotba
-A konfiguráció exportálása és mentése lehetővé teszi, hogy visszaállítsa a konfiguráció egy korábbi verzióját. Javasoljuk a kiépítési konfiguráció exportálását és későbbi használatra mentését, amikor módosítja az attribútum-hozzárendeléseket vagy a hatóköri szűrőket. Mindössze annyit kell tennie, hogy megnyitja a fenti lépésekben letöltött JSON-fájlt, másolja a JSON-fájl teljes tartalmát, cserélje le a JSON-adattartalom teljes tartalmát a sémakezelő szerkesztőben, majd mentse. Ha aktív kiépítési ciklus van, akkor a művelet befejeződik, és a következő ciklus a frissített sémát fogja használni. A következő ciklus egy kezdeti ciklus is, amely az új konfiguráció alapján újraértékeli az összes felhasználót és csoportot. Egy korábbi konfigurációra való visszalépéskor vegye figyelembe a következőket:
-* A rendszer ismét kiértékeli a felhasználókat annak megállapítása érdekében, hogy a hatókörük legyen-e. Ha a hatókörhöz tartozó szűrők módosítva lettek, a felhasználó nem tartozik többé, akkor azok le lesznek tiltva. Habár a legtöbb esetben ez a kívánt viselkedés, időnként előfordulhat, hogy meg szeretné akadályozni ezt, és használhatja a [hatókör törlése funkció kihagyása](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) funkciót. 
-* A kiépítési konfiguráció módosítása újraindítja a szolgáltatást, és elindítja a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental).
 
+A konfiguráció exportálása és mentése lehetővé teszi, hogy visszaállítsa a konfiguráció egy korábbi verzióját. Javasoljuk a kiépítési konfiguráció exportálását és későbbi használatra mentését, amikor módosítja az attribútum-hozzárendeléseket vagy a hatóköri szűrőket. Mindössze annyit kell tennie, hogy megnyitja a fenti lépésekben letöltött JSON-fájlt, másolja a JSON-fájl teljes tartalmát, cserélje le a JSON-adattartalom teljes tartalmát a sémakezelő szerkesztőben, majd mentse. Ha aktív kiépítési ciklus van, akkor a művelet befejeződik, és a következő ciklus a frissített sémát fogja használni. A következő ciklus egy kezdeti ciklus is, amely az új konfiguráció alapján újraértékeli az összes felhasználót és csoportot. Egy korábbi konfigurációra való visszalépéskor vegye figyelembe a következőket:
+
+- A rendszer ismét kiértékeli a felhasználókat annak megállapítása érdekében, hogy a hatókörük legyen-e. Ha a hatókörhöz tartozó szűrők módosítva lettek, a felhasználó nem tartozik többé, akkor azok le lesznek tiltva. Habár a legtöbb esetben ez a kívánt viselkedés, időnként előfordulhat, hogy meg szeretné akadályozni ezt, és használhatja a [hatókör törlése funkció kihagyása](https://docs.microsoft.com/azure/active-directory/app-provisioning/skip-out-of-scope-deletions) funkciót. 
+- A kiépítési konfiguráció módosítása újraindítja a szolgáltatást, és elindítja a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works#provisioning-cycles-initial-and-incremental).
 
 ## <a name="export-and-import-your-provisioning-configuration-by-using-the-microsoft-graph-api"></a>A kiépítési konfiguráció exportálása és importálása a Microsoft Graph API használatával
-A Microsoft Graph API-val és a Microsoft Graph Explorerrel exportálhatja a felhasználók kiépítési attribútumait egy JSON-fájlba, majd importálhatja azt az Azure AD-be. Az itt rögzített lépéseket az üzembe helyezési konfiguráció biztonsági másolatának létrehozásához is használhatja. 
+
+A Microsoft Graph API-val és a Microsoft Graph Explorerrel exportálhatja a felhasználók kiépítési attribútumait egy JSON-fájlba, majd importálhatja azt az Azure AD-be. Az itt rögzített lépéseket az üzembe helyezési konfiguráció biztonsági másolatának létrehozásához is használhatja.
 
 ### <a name="step-1-retrieve-your-provisioning-app-service-principal-id-object-id"></a>1. lépés: a kiépítési App Service rendszerbiztonsági tag AZONOSÍTÓjának beolvasása (objektumazonosító)
 
-1. Indítsa el a [Azure Portal](https://portal.azure.com), és navigáljon a kiépítési alkalmazás tulajdonságok szakaszába. Ha például azt szeretné, hogy az AD- *felhasználó kiépítési alkalmazásához* tartozó munkaterületet exportálja, navigáljon az alkalmazás tulajdonságok szakaszába. 
+1. Indítsa el a [Azure Portal](https://portal.azure.com), és navigáljon a kiépítési alkalmazás tulajdonságok szakaszába. Ha például azt szeretné, hogy az AD- *felhasználó kiépítési alkalmazásához* tartozó munkaterületet exportálja, navigáljon az alkalmazás tulajdonságok szakaszába.
 1. A kiépítési alkalmazás tulajdonságok szakaszában másolja az *objektumazonosító* mezőhöz társított GUID értéket. Ezt az értéket az alkalmazás **ServicePrincipalId** is nevezik, és Microsoft Graph Explorer-műveletekben lesz használva.
 
    ![Munkanapok App Service résztvevő azonosítója](./media/export-import-provisioning-configuration/wd_export_01.png)
@@ -99,4 +103,4 @@ Az "igénylési fejlécek" lapon adja hozzá a Content-Type fejléc attribútumo
 
    [![Kérések fejlécei](./media/export-import-provisioning-configuration/wd_export_05.png)](./media/export-import-provisioning-configuration/wd_export_05.png#lightbox)
 
-Kattintson a "lekérdezés futtatása" gombra az új séma importálásához.
+Válassza a **lekérdezés futtatása** lehetőséget az új séma importálásához.

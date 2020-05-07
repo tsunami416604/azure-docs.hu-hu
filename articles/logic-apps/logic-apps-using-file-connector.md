@@ -5,15 +5,15 @@ services: logic-apps
 ms.suite: integration
 author: derek1ee
 ms.author: deli
-ms.reviewer: klam, estfan, logicappspm
+ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 01/13/2019
-ms.openlocfilehash: b1f4feab9587fb77089be265801c71f5b23b26ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 79c99a8ba2712fe69ec6d3b9b9d32ddf6aa081cb
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146797"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82580631"
 ---
 # <a name="connect-to-on-premises-file-systems-with-azure-logic-apps"></a>Csatlakozás helyszíni fájlrendszerekhez az Azure Logic Appsből
 
@@ -72,8 +72,8 @@ Ez a cikk bemutatja, hogyan kapcsolódhat a helyi fájlrendszerhez a példa pél
    | -------- | -------- | ----- | ----------- |
    | **Kapcsolat neve** | Igen | <*kapcsolattípus*> | A kapcsolatok kívánt neve |
    | **Gyökérmappa** | Igen | <*gyökér-mappa neve*> | A fájlrendszer gyökérkönyvtára, például ha telepítette a helyszíni adatátjárót, például egy helyi mappát azon a számítógépen, amelyen a helyszíni adatátjáró telepítve van, vagy egy hálózati megosztás mappája, amelyhez a számítógép hozzáférhet. <p>Például:`\\PublicShare\\DropboxFiles` <p>A gyökérmappa a fő szülő mappa, amely a fájlokkal kapcsolatos összes művelet relatív elérési útjaihoz használható. |
-   | **Hitelesítés típusa** | Nem | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
-   | **Username** | Igen | <*domain*>tartomány\\*username* felhasználóneve<> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszere van |
+   | **Hitelesítés típusa** | No | <*hitelesítés típusa*> | A fájlrendszer által használt hitelesítés típusa: **Windows** |
+   | **Username** | Igen | <*domain*>tartomány\\*username* felhasználóneve<> <p>– vagy – <p><*helyi*>\\számítógép<*felhasználóneve*> | Annak a számítógépnek a felhasználóneve, amelyen a fájlrendszer mappája található. <p>Ha a fájlrendszer mappája ugyanazon a számítógépen található, mint a helyszíni adatátjáró, akkor <*helyi számítógép*>\\<*felhasználónevét*> használhatja. |
    | **Jelszó** | Igen | <*saját jelszó*> | A fájlrendszert futtató számítógép jelszava |
    | **átjáró** | Igen | <*telepítve – átjáró – név*> | A korábban telepített átjáró neve |
    |||||

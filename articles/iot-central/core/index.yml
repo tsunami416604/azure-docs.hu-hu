@@ -10,12 +10,12 @@ metadata:
   author: philmea
   ms.author: philmea
   ms.date: 02/18/2020
-  ms.openlocfilehash: 277cc5b2427dd422e49247cb52aff3c25c7fce81
-  ms.sourcegitcommit: 75089113827229663afed75b8364ab5212d67323
+  ms.openlocfilehash: f25cea0da33ca2b96e0e3fb7aa2462c01a830546
+  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/22/2020
-  ms.locfileid: "82024795"
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82560940"
 landingContent:
 - title: Tudnivalók az Azure IoT Centralról
   linkLists:
@@ -25,6 +25,8 @@ landingContent:
       url: overview-iot-central.md
     - text: Felhasználói felület bemutatása
       url: overview-iot-central-tour.md
+    - text: Legutóbbi frissítések
+      url: https://azure.microsoft.com/updates/?status=nowavailable&updateType=features&category=iot&query=azure%20iot%20central
   - linkListType: architecture
     links:
     - text: Az Azure IoT Central architektúrája
@@ -81,7 +83,7 @@ landingContent:
       url: howto-create-custom-rules.md
     - text: Egyéni elemzések létrehozása
       url: howto-create-custom-analytics.md
-- title: Felügyelet
+- title: Adminisztráció
   linkLists:
   - linkListType: how-to-guide
     links:

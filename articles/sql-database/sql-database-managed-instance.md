@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 04/02/2020
-ms.openlocfilehash: 04b07ff60c882501c49ad58607db867e7e99897c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65bce50665b6dd99662e99ca57569f906f3af208
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80879071"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598538"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Mi Azure SQL Database felügyelt példány?
 
@@ -63,7 +63,7 @@ A felügyelt példányok legfontosabb funkciói a következő táblázatban lát
 | Adatfájlok (sorok) száma az adatbázisban | Többszörös |
 | Naplófájlok (napló) száma adatbázisban | 1 |
 | VNet – Azure Resource Manager üzemelő példány | Igen |
-| VNet – klasszikus üzembe helyezési modell | Nem |
+| VNet – klasszikus üzembe helyezési modell | No |
 | Portál támogatása | Igen|
 | Beépített integrációs szolgáltatás (SSIS) | Nem – a SSIS a [Azure Data Factory Péter](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) részét képezi |
 | Beépített Analysis Service (SSAS) | Nem – a SSAS külön [Péter](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
@@ -167,19 +167,31 @@ A következő táblázat összefoglalja a műveleteket és a jellemző általán
 
 \*\*\*12 óra az aktuális konfiguráció, de a jövőben változhat, így nem kell nehéz függőséget okozni. Ha korábban törölni kell egy virtuális fürtöt (például az alhálózat felszabadításához), tekintse meg az [alhálózat törlése Azure SQL Database felügyelt példány törlése után](sql-database-managed-instance-delete-virtual-cluster.md)című témakört.
 
-### <a name="instance-availability-during-management"></a>Példány rendelkezésre állása a felügyelet során
+### <a name="instance-availability-during-management-operations"></a>Példány rendelkezésre állása a felügyeleti műveletek során
 
-A felügyelt példányok nem érhetők el az ügyfélalkalmazások számára az üzembe helyezési és törlési műveletek során.
+A felügyelt példány nem érhető el az ügyfélalkalmazások számára az üzembe helyezési és törlési műveletek során.
 
-A felügyelt példányok elérhetők a frissítési műveletek során, de a feladatátvétel által okozott rövid állásidőt a frissítések végén, amely általában legfeljebb 10 másodpercig tart. Ez alól kivételt képez a általános célú szolgáltatási szinten lévő fenntartott tárterület frissítése, amely nem jár feladatátvételsel, és nem befolyásolja a példány rendelkezésre állását.
-
-> [!IMPORTANT]
-> A feladatátvétel időtartama jelentősen változhat abban az esetben, ha az adatbázisokon hosszan futó tranzakciók történnek, a hosszú távú [helyreállítási idő](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)miatt. Ezért nem ajánlott Azure SQL Database felügyelt példány számítási vagy tárolási kapacitásának méretezésére, vagy a szolgáltatási réteg módosítására egy időben a hosszan futó tranzakciók (adatimportálás, adatfeldolgozási feladatok, indexek újraépítése stb.) alapján. A művelet végén elvégezhető adatbázis-feladatátvétel megszakítja a folyamatban lévő tranzakciókat, és hosszan tartó helyreállítási időt eredményez.
+A felügyelt példány a frissítési műveletek során elérhető, kivéve a frissítés végén előforduló feladatátvétel által okozott rövid állásidőt. A [gyorsított adatbázis-helyreállításnak](sql-database-accelerated-database-recovery.md)köszönhetően általában akár 10 másodpercig is eltarthat.
 
 > [!TIP]
 > Általános célú szolgáltatási szinten foglalt tárterület frissítése nem jár feladatátvételsel, és nem befolyásolja a példány rendelkezésre állását.
 
-A [gyorsított adatbázis-helyreállítás](sql-database-accelerated-database-recovery.md) jelenleg nem érhető el Azure SQL Database felügyelt példányok számára. Ha engedélyezve van, ez a funkció jelentősen csökkenti a feladatátvételi idő változékonyságát, még a hosszan futó tranzakciók esetében is.
+> [!IMPORTANT]
+> Nem ajánlott Azure SQL Database felügyelt példány számítási vagy tárolási kapacitásának méretezésére, vagy a szolgáltatási réteg módosítására egy időben a hosszan futó tranzakciók (adatimportálás, adatfeldolgozási feladatok, indexek újraépítése stb.) alapján. A művelet végén elvégezhető adatbázis-feladatátvétel megszakítja az összes folyamatban lévő tranzakciót.
+
+
+### <a name="management-operations-cross-impact"></a>A kezelési műveletek hatásainak következményei
+
+A felügyelt példányok kezelési műveletei befolyásolhatják az ugyanazon a virtuális fürtön belül elhelyezett példányok más felügyeleti műveleteit is. Ide tartoznak a következők:
+
+- A virtuális fürtben a **hosszú ideig futó visszaállítási műveletek** más példány-létrehozási vagy skálázási műveletet fognak tartani ugyanabban az alhálózatban.<br/>**Példa:** ha hosszú ideig futó visszaállítási művelettel rendelkezik, és a kérelem létrehozása vagy méretezése ugyanabban az alhálózatban történik, akkor ez a kérés hosszabb ideig tart, mert a folytatás előtt megvárja, amíg a visszaállítási művelet befejeződik.
+    
+- A **következő példány-létrehozási vagy skálázási** művelet a virtuális fürt átméretezését kezdeményező, korábban kezdeményezett példány-létrehozási vagy-példány-méretezési művelettel rendelkezik.<br/>**Példa:** ha ugyanazon az alhálózaton több létrehozási és/vagy méretezési kérelem van ugyanabban a virtuális fürtben, és az egyikük a virtuális fürt átméretezését kezdeményezi, az összes olyan kérelem, amely 5 + perccel azután lett elküldve, hogy a virtuális fürt átméretezése meghaladhatja a várt időtartamot
+
+- Az **5 perces ablakban elküldött műveletek létrehozása/méretezése** párhuzamosan történik.<br/>**Példa:** A rendszer csak egy virtuális fürt átméretezését hajtja végre az 5 perces ablakban elküldött összes művelethez (az első műveleti kérelem végrehajtásának pillanatától számítva). Abban az esetben, ha az első elküldés után több mint 5 perccel több kérelem van elküldve, a rendszer a végrehajtás megkezdése előtt megvárja, hogy a virtuális fürt átméretezése befejeződjön.
+
+> [!IMPORTANT]
+> A folyamatban lévő másik művelet miatt megtartott felügyeleti műveletek automatikusan folytatódnak, amikor a feltételek teljesülnek. Nincs szükség felhasználói beavatkozásra az átmenetileg szüneteltetett felügyeleti művelet folytatásához.
 
 ### <a name="canceling-management-operations"></a>Felügyeleti műveletek megszakítása
 
@@ -187,14 +199,14 @@ Az alábbi táblázat összefoglalja az adott felügyeleti műveletek és a jell
 
 Kategória  |Művelet  |Kampány  |Becsült megszakítási időtartam  |
 |---------|---------|---------|---------|
-|Üzembe helyezés |Példány létrehozása |Nem |  |
-|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú) |Nem |  |
+|Üzembe helyezés |Példány létrehozása |No |  |
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú) |No |  |
 |Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
 |Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
 |Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
 |Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
-|Törlés |Példány törlése |Nem |  |
-|Törlés |Virtuális fürt törlése (felhasználó által kezdeményezett művelet) |Nem |  |
+|Törlés |Példány törlése |No |  |
+|Törlés |Virtuális fürt törlése (felhasználó által kezdeményezett művelet) |No |  |
 
 A kezelési művelet megszakításához lépjen az Áttekintés panelre, és kattintson a folyamatban lévő értesítési mezőre. A jobb oldalon megjelenik a folyamatban lévő művelettel rendelkező képernyő, és a művelet megszakítására szolgáló gomb jelenik meg. Az első kattintás után a rendszer kérni fogja, hogy kattintson újra, és erősítse meg, hogy meg kívánja szüntetni a műveletet.
 

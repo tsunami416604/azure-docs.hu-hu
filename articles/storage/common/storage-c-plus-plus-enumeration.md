@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: dineshm
-ms.openlocfilehash: 0f9e80aff20c1b2663491f6d6ceb99aaec58230f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ce845fa3239dd48ff2ff0480beff08cf704b30
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74269450"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591686"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása C++ nyelven
 
@@ -62,7 +62,7 @@ A szegmentált listázási műveletre adott válasz az alábbiakat tartalmazza:
 * *_segment*, amely a tőzsdei API-hoz való egyetlen hívás eredményét adja vissza.
 * *continuation_token*, amelyet a következő hívásnak továbbít a rendszer, hogy az eredmények következő oldalát kapja meg. Ha nincs több eredmény a visszaadáshoz, a folytatási jogkivonat null értékű.
 
-A tárolóban lévő összes blob listázása például a következő kódrészlethez hasonló lehet. A kód a [mintákban](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted/Application.cpp)érhető el:
+A tárolóban lévő összes blob listázása például a következő kódrészlethez hasonló lehet. A kód a [mintákban](https://github.com/Azure/azure-storage-cpp/blob/master/Microsoft.WindowsAzure.Storage/samples/BlobsGettingStarted.cpp)érhető el:
 
 ```cpp
 // List blobs in the blob container

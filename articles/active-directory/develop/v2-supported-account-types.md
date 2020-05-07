@@ -1,5 +1,5 @@
 ---
-title: Támogatott fiókok típusai – Microsoft Identity platform | Azure
+title: Támogatott fióktípus – Microsoft Identity platform | Azure
 description: A célközönségek és az alkalmazások által támogatott fióktípus fogalmi dokumentációja
 services: active-directory
 author: jmprieur
@@ -12,48 +12,46 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b3b0114bb5d545755fe59c49605d6def341d2275
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: d19381094e027bd567ffc503d32f9212ef56a948
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535774"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583101"
 ---
 # <a name="supported-account-types"></a>Támogatott fióktípusok
 
-Ez a cikk azt ismerteti, hogy az alkalmazások milyen típusú fiókokat (más néven célközönségeket) támogatnak.
+Ez a cikk ismerteti, hogy a Microsoft Identity platform alkalmazásai milyen típusú fiókokat (más néven *célközönségeket*) támogatnak.
 
 <!-- This section can be in an include for many of the scenarios (SPA, web app signing-in users, protecting a web API, Desktop (depending on the flows), Mobile -->
 
-## <a name="supported-accounts-types-in-microsoft-identity-platform-applications"></a>Támogatott fiókok típusai a Microsoft Identity platform alkalmazásaiban
+## <a name="account-types-in-the-public-cloud"></a>A nyilvános felhőben lévő fiókok típusai
 
 A Microsoft Azure nyilvános felhőben a legtöbb típusú alkalmazás bejelentkezhet a felhasználók bármelyik hallgatóságával:
 
-- Üzletági (LOB) alkalmazások írásakor a saját szervezetében lévő felhasználókat is bejelentkezhet. Egy ilyen alkalmazást néha **egyetlen bérlőnek**nevezünk.
-- Ha Ön ISV-t használ, írhat olyan alkalmazást, amely bejelentkezik a felhasználók számára:
+- Üzletági (LOB) alkalmazások írásakor a saját szervezetében lévő felhasználókat is bejelentkezhet. Ezt az alkalmazást néha *egy bérlőnek*is nevezik.
+- Ha Ön ISV-t használ, írhat egy olyan alkalmazást, amely bejelentkezik a felhasználók számára:
 
-  - Bármely szervezeten belül. Ilyen alkalmazás neve **több-bérlős** webalkalmazás. Néha azt is elolvashatja, hogy a felhasználók munkahelyi vagy iskolai fiókjaikat használják.
-  - Munkahelyi vagy iskolai vagy személyes Microsoft-fiók.
-  - Csak személyes Microsoft-fiók.
-    > [!NOTE]
-    > Jelenleg a Microsoft Identity platform csak a személyes Microsoft-fiókokat támogatja egy alkalmazás **munkahelyi vagy iskolai vagy személyes Microsoft-fiókokhoz**való regisztrálásával, majd az alkalmazás kódjában az Azure ad-szolgáltató megadásával korlátozza a bejelentkezést a kódban, az alkalmazás létrehozásakor `https://login.microsoftonline.com/consumers`például:.
+  - Bármely szervezeten belül. Ezt az alkalmazást több- *bérlős* webalkalmazásnak nevezzük. Néha azt is elolvashatja, hogy a felhasználók munkahelyi vagy iskolai fiókjaival aláírják a felhasználókat.
+  - Munkahelyi vagy iskolai vagy személyes Microsoft-fiókjával.
+  - Csak személyes Microsoft-fiókokkal.
+    
+- Ha a vállalattól a fogyasztótól származó alkalmazást ír, akkor a felhasználók a közösségi identitásokkal is bejelentkezhetnek Azure Active Directory B2C (Azure AD B2C) használatával.
 
-- Ha üzleti alkalmazást kíván beírni a fogyasztók alkalmazásba, akkor a Azure AD B2C használatával is bejelentkezhet a felhasználók közösségi identitásával.
+## <a name="account-type-support-in-authentication-flows"></a>Fiók típusának támogatása a hitelesítési folyamatokban
 
-## <a name="certain-authentication-flows-dont-support-all-the-account-types"></a>Bizonyos hitelesítési folyamatok nem támogatják az összes számlatípust
+Bizonyos típusú fiókok nem használhatók bizonyos hitelesítési folyamatokkal. Például asztali, UWP vagy Daemon-alkalmazásokban:
 
-Bizonyos típusú fiókok nem használhatók bizonyos hitelesítési folyamatokkal. Például asztali, UWP-alkalmazásokban vagy Daemon-alkalmazásokban:
+- A Daemon-alkalmazásokat csak az Azure AD-szervezetekkel lehet használni. Nincs értelme a Microsoft személyes fiókjainak kezeléséhez használt Daemon-alkalmazásokkal próbálkozni. A rendszergazdai beleegyező engedély soha nem lesz megadva.
+- Az integrált Windows-hitelesítési folyamat csak munkahelyi vagy iskolai fiókkal (a szervezetben vagy bármely szervezetben) használható. Az integrált Windows-hitelesítés tartományi fiókokkal működik, és megköveteli, hogy a gépek tartományhoz legyenek csatlakoztatva, vagy az Azure AD csatlakoztatva legyen. Ez a folyamat nem értelmezi a személyes Microsoft-fiókokat.
+- Az [erőforrás-tulajdonos jelszavának hitelesítő adatai](./v2-oauth-ropc.md) (username/Password) nem használhatók személyes Microsoft-fiókokkal. A személyes Microsoft-fiókok megkövetelik, hogy a felhasználó hozzájáruljon a személyes erőforrások eléréséhez az egyes bejelentkezési munkamenetekben. Ez az oka, hogy ez a viselkedés nem kompatibilis a nem interaktív folyamatokkal.
+- Az eszköz kódjának folyamata nem működik személyes Microsoft-fiókokkal.
 
-- Daemon-alkalmazásokat csak Azure Active Directory szervezetekkel lehet használni. Nincs értelme a Microsoft személyes fiókjainak kezeléséhez szükséges Daemon-alkalmazások használatát (a rendszergazda beleegyezik, soha nem lesz megadva).
-- Az integrált Windows-hitelesítési folyamatot csak munkahelyi vagy iskolai fiókkal (a szervezet vagy bármely szervezet) használhatja. Az integrált Windows-hitelesítés tartományi fiókokkal is működik, és megköveteli, hogy a gépek tartományhoz legyenek csatlakoztatva, vagy az Azure AD csatlakoztatva legyen. Ez a folyamat nem értelmezi a személyes Microsoft-fiókokat.
-- Az [erőforrás-tulajdonos jelszavának megadása](./v2-oauth-ropc.md) (username/Password) nem használható személyes Microsoft-fiókokkal. A személyes Microsoft-fiókokhoz azonban a felhasználó beleegyezik, hogy az egyes bejelentkezési munkamenetekben hozzáférjen a személyes erőforrásokhoz. Ezért ez a viselkedés nem kompatibilis a nem interaktív folyamatokkal.
-- Az eszköz kódjának folyamata még nem működik személyes Microsoft-fiókokkal.
+## <a name="account-types-in-national-clouds"></a>Az országos felhőkben lévő fiókok típusai
 
-## <a name="supported-account-types-in-national-clouds"></a>Az országos felhőkben támogatott fióktípus
-
- Az alkalmazások az [országos felhőkben](authentication-national-cloud.md)is bejelentkezhetnek a felhasználókba. A Microsoft személyes fiókjai azonban ezekben a felhőkben nem támogatottak (a felhők definíciója szerint). Ezért csökkenthető a támogatott fióktípus, ezek a felhők, a szervezet (egyetlen bérlő) vagy bármely szervezet (több-bérlős alkalmazások).
+Az alkalmazások az [országos felhőkben](authentication-national-cloud.md)is bejelentkezhetnek a felhasználókba. A Microsoft személyes fiókjai azonban ezekben a felhőkben nem támogatottak. Ezért csökkenthető a támogatott fióktípus, ezek a felhők, a szervezet (egyetlen bérlő) vagy bármely szervezet (több-bérlős alkalmazások).
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a [Azure Active Directory-beli bérletről](./single-and-multi-tenant-apps.md)
-- További információ az [országos felhőkről](./authentication-national-cloud.md)
+- További információ a [Azure Active Directory-beli bérletről](./single-and-multi-tenant-apps.md).
+- További információ az [országos felhőkről](./authentication-national-cloud.md).

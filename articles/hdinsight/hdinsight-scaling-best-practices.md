@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
-ms.date: 04/23/2020
-ms.openlocfilehash: 64fe56ff506cf256dd7e317984551949f9ffad06
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 2dae0f662eefa7f7b1f56d057cd47f1cb92244ce
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189364"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592060"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
 
@@ -74,27 +74,38 @@ Az adatcsomópontok számának módosításának következményei a HDInsight á
 
 * Apache Storm
 
-    Az adatcsomópontok zökkenőmentesen is hozzáadhatók vagy eltávolíthatók, amíg a Storm fut. A skálázási művelet sikeres befejezése után azonban újra kell osztania a topológiát.
-
-    Az újraelosztás kétféleképpen végezhető el:
+    Az adatcsomópontok zökkenőmentesen is hozzáadhatók vagy eltávolíthatók, amíg a Storm fut. A skálázási művelet sikeres befejezése után azonban újra kell osztania a topológiát. A terheléselosztás lehetővé teszi a topológia számára a [párhuzamossági beállítások](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) újramódosítását a fürtben lévő csomópontok új száma alapján. A futó topológiák újraelosztásához használja az alábbi lehetőségek egyikét:
 
   * Storm webes felhasználói felület
+
+    A következő lépésekkel kiegyensúlyozhatja a topológiát a Storm felhasználói felületének használatával.
+
+    1. Nyissa meg `https://CLUSTERNAME.azurehdinsight.net/stormui` a webböngészőben `CLUSTERNAME` , ahol a a Storm-fürt neve. Ha a rendszer kéri, adja meg a fürt létrehozásakor megadott HDInsight-Fürtfelügyelő (rendszergazda) nevét és jelszavát.
+
+    1. Válassza ki a megismételni kívánt topológiát, majd kattintson az **újraelosztás** gombra. Adja meg az újraelosztási művelet végrehajtása előtti késleltetést.
+
+        ![HDInsight Storm skálázási egyensúly](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+
   * Parancssori felület (CLI) eszköz
 
-    További információ: [Apache Storm dokumentáció](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html).
+    Kapcsolódjon a kiszolgálóhoz, és a következő parancs használatával egyenlítse ki a topológiát:
 
-    A Storm webes felhasználói felülete elérhető a HDInsight-fürtön:
+    ```bash
+     storm rebalance TOPOLOGYNAME
+    ```
 
-    ![HDInsight Storm skálázási egyensúly](./media/hdinsight-scaling-best-practices/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    Paramétereket is megadhat a topológia által eredetileg biztosított párhuzamossági javaslatok felülbírálásához. Az alábbi kód például újrakonfigurálja a `mytopology` topológiát 5 munkavégző folyamatra, 3 végrehajtót a kék kiöntő összetevőhöz, és 10 végrehajtót a sárga-bolt összetevőhöz.
 
-    Íme egy példa CLI-parancs a Storm-topológia újraelosztásához:
-
-    ```console
+    ```bash
     ## Reconfigure the topology "mytopology" to use 5 worker processes,
     ## the spout "blue-spout" to use 3 executors, and
     ## the bolt "yellow-bolt" to use 10 executors
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
+
+* Kafka
+
+    A skálázási műveletek után újra kell osztania a partíciós replikákat. További információ: az [adatok magas rendelkezésre állása Apache Kafka HDInsight](./kafka/apache-kafka-high-availability.md) -dokumentummal.
 
 ## <a name="how-to-safely-scale-down-a-cluster"></a>Fürt biztonságos méretezése
 
@@ -252,3 +263,8 @@ A skálázási művelet elvégzése után néhány percen belül automatikusan k
 ## <a name="next-steps"></a>További lépések
 
 * [Azure HDInsight-fürtök automatikus méretezése](hdinsight-autoscale-clusters.md)
+
+A HDInsight-fürt méretezésével kapcsolatos részletes információkért lásd:
+
+* [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md#scale-clusters)
+* [Apache Hadoop-fürtök kezelése a HDInsight az Azure CLI használatával](hdinsight-administer-use-command-line.md#scale-clusters)
