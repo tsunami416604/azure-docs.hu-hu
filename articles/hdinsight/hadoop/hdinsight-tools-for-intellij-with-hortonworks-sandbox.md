@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 05/16/2018
-ms.openlocfilehash: 65a15a8506b88e95e14af8c87bcbe33087301519
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 986c2783f3d130114da93406bfaf70d5c038d5ed
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75647832"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856147"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>A IntelliJ HDInsight-eszközeinek használata a Hortonworks-homokozóban
 
@@ -32,7 +32,7 @@ A cikk elkezdése előtt a következő elemeket kell megadnia:
 
 - A [Java Developer Kit (JDK) 1,8-es vagy újabb verziója](https://aka.ms/azure-jdks). Azure Toolkit for IntelliJ a JDK-t igényli.
 
-- A [INTELLIJ Idea Community Edition](https://www.jetbrains.com/idea/download) a [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) beépülő modullal és a [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij) beépülő modullal. A IntelliJ HDInsight eszközei a Azure Toolkit for IntelliJ részeként érhetők el. 
+- A [INTELLIJ Idea Community Edition](https://www.jetbrains.com/idea/download) a [Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) beépülő modullal és a [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) beépülő modullal. A IntelliJ HDInsight eszközei a Azure Toolkit for IntelliJ részeként érhetők el.
 
 A beépülő modulok telepítése:
 

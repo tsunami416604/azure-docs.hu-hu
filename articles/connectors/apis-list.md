@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 04/24/2020
-ms.openlocfilehash: 27f86a3fa34f8029e59d11066de9ea5a25a8c5ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2a2ee7a2806a753ffd159c91ed782634e74c704
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147979"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838661"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Az Azure Logic Apps összekötői
 
@@ -192,10 +192,11 @@ Az elkülönített [integrációs szolgáltatási környezet (ISE)](#integration
 
 |   |   |   |   |   |
 |---|---|---|---|---|
-[![API-][as2-icon]<br>ikon**AS2**][as2-doc] | [![API-][azure-blob-storage-icon]<br>ikon**Azure<br>blob Storage**][azure-blob-storage-doc] | [![API-][azure-cosmos-db-icon]<br>ikon**Azure <br> Cosmos db**][azure-cosmos-db-doc] | [![API-][azure-event-hubs-icon]<br>ikon**Azure <br>Event hubok**][azure-event-hubs-doc] | [![API-][azure-file-storage-icon]<br>ikon**Azure<br>file Storage**][azure-file-storage-doc] |
-| [![API-][azure-service-bus-icon]<br>ikon**Azure <br>Service Bus**][azure-service-bus-doc] | [![API-][azure-sql-data-warehouse-icon]<br>ikon**az <br>Azure SQL-adattárházban**][azure-sql-data-warehouse-doc] | [![API-][azure-table-storage-icon]<br>ikon**Azure <br>Table Storage**][azure-table-storage-doc] | [![API-][azure-queues-icon]<br>**ikon <br>Azure-várólisták**][azure-queues-doc] | [![API-][edifact-icon]<br>ikon**EDIFACT**][edifact-doc] |
-| [![API-][file-system-icon]<br>**ikon <br>fájlrendszere**][file-system-doc] | [![API-][ftp-icon]<br>ikon**FTP**][ftp-doc] | [![API-][ibm-3270-icon]<br>ikon**IBM 3270**][ibm-3270-doc] | [![API-][ibm-db2-icon]<br>ikon**IBM DB2**][ibm-db2-doc] | [![API-][ibm-mq-icon]<br>ikon**IBM MQ**][ibm-mq-doc] |
-| [![API-][sap-icon]<br>ikon**SAP**][sap-connector-doc] | [![API][sftp-ssh-icon]<br>**-ikon SFTP – SSH**][sftp-ssh-doc] | [![API-][smtp-icon]<br>ikon**SMTP**][smtp-doc] | [![API-][sql-server-icon]<br>**ikon <br>SQL Server**][sql-server-doc] | [![API-][x12-icon]<br>ikon**X12**][x12-doc] |
+[![API-][as2-icon]<br>ikon**AS2**][as2-doc] | [![API-][azure-automation-icon]<br>**ikon <br>Azure Automation**][azure-automation-doc] | [![API-][azure-blob-storage-icon]<br>ikon**Azure<br>blob Storage**][azure-blob-storage-doc] | [![API-][azure-cosmos-db-icon]<br>ikon**Azure <br> Cosmos db**][azure-cosmos-db-doc] | [![API-][azure-event-hubs-icon]<br>ikon**Azure <br>Event hubok**][azure-event-hubs-doc] |
+[![API-][azure-event-grid-icon]<br>ikon**Azure <br>Event Grid**][azure-event-grid-doc] | [![API-][azure-file-storage-icon]<br>ikon**Azure<br>file Storage**][azure-file-storage-doc] | [![API-][azure-key-vault-icon]<br>ikon az**Azure Key <br>vaultban**][azure-key-vault-doc] | [![API-][azure-monitor-logs-icon]<br>**ikon <br>Azure monitor naplók**][azure-monitor-logs-doc] | [![API-][azure-service-bus-icon]<br>ikon**Azure <br>Service Bus**][azure-service-bus-doc] |
+| [![API-][azure-sql-data-warehouse-icon]<br>ikon**az <br>Azure SQL-adattárházban**][azure-sql-data-warehouse-doc] | [![API-][azure-table-storage-icon]<br>ikon**Azure <br>Table Storage**][azure-table-storage-doc] | [![API-][azure-queues-icon]<br>**ikon <br>Azure-várólisták**][azure-queues-doc] | [![API-][edifact-icon]<br>ikon**EDIFACT**][edifact-doc] | [![API-][file-system-icon]<br>**ikon <br>fájlrendszere**][file-system-doc] |
+| [![API-][ftp-icon]<br>ikon**FTP**][ftp-doc] | [![API-][ibm-3270-icon]<br>ikon**IBM 3270**][ibm-3270-doc] | [![API-][ibm-db2-icon]<br>ikon**IBM DB2**][ibm-db2-doc] | [![API-][ibm-mq-icon]<br>ikon**IBM MQ**][ibm-mq-doc] | [![API-][sap-icon]<br>ikon**SAP**][sap-connector-doc] |
+| [![API][sftp-ssh-icon]<br>**-ikon SFTP – SSH**][sftp-ssh-doc] | [![API-][smtp-icon]<br>ikon**SMTP**][smtp-doc] | [![API-][sql-server-icon]<br>**ikon <br>SQL Server**][sql-server-doc] | [![API-][x12-icon]<br>ikon**X12**][x12-doc] |
 ||||||
 
 További információt az alábbi témakörökben talál:
@@ -250,106 +251,6 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 * [Egyéni összekötők létrehozása logikai alkalmazásokhoz](https://docs.microsoft.com/connectors/custom-connectors/)
 * [Egyéni API-k létrehozása logikai alkalmazásokhoz](../logic-apps/logic-apps-create-api-app.md)
 
-<!--Misc doc links-->
-[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "Kapcsolódás helyszíni adatforrásokhoz a helyszíni adatátjáróval rendelkező logikai alkalmazásokból"
-
-<!--Built-in doc links-->
-[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "Azure API Management Service-példány létrehozása az API-k kezeléséhez és közzétételéhez"
-[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "Logikai alkalmazások integrálása App Service API Apps"
-[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Logikai alkalmazások integrálása Azure Functions-függvényekkel"
-[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "Üzenetek feldolgozása csoportokban vagy kötegként"
-[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "Értékelje ki a feltételt, és futtasson különböző műveleteket attól függően, hogy a feltétel igaz vagy hamis"
-[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "Ugyanazon műveletek végrehajtása egy tömb minden elemén"
-[http-doc]: ./connectors-native-http.md "HTTP-vagy HTTPS-végpontok hívása a logikai alkalmazásokból"
-[http-request-doc]: ./connectors-native-reqres.md "HTTP-kérelmek fogadása a logikai alkalmazásokban"
-[http-response-doc]: ./connectors-native-reqres.md "Válaszadás a logikai alkalmazásokból érkező HTTP-kérelmekre"
-[http-swagger-doc]: ./connectors-native-http-swagger.md "REST-végpontok hívása a logikai alkalmazásokból"
-[http-webhook-doc]: ./connectors-native-webhook.md "Várakozás adott eseményekre HTTP-vagy HTTPS-végpontok esetén"
-[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "Logikai alkalmazások integrálása beágyazott munkafolyamatokkal"
-[query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "Tömbök kiválasztása és szűrése a Lekérdezés művelettel"
-[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "Logikai alkalmazások futtatása ütemterv alapján"
-[schedule-delay-doc]: ./connectors-native-delay.md "A következő művelet futásának késleltetése"
-[schedule-delay-until-doc]: ./connectors-native-delay.md "A következő művelet futásának késleltetése"
-[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "Logikai alkalmazások futtatása ismétlődő ütemterv szerint"
-[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "Olyan logikai alkalmazások futtatása, amelyeknek a folytonos adattömbökben kell kezelnie az adatkezelést"
-[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "Csoportokba rendezheti a műveleteket, amelyek a csoport műveleteinek befejezése után kapják meg a saját állapotukat"
-[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Olyan esetekre szervezheti a műveleteket, amelyek egyedi értékeket rendelnek hozzájuk. Csak azt az esetet futtassa, amelynek értéke megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet."
-[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Aktívan futó munkafolyamatok leállítása vagy megszakítása a logikai alkalmazáshoz"
-[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Ismételje meg a műveleteket, amíg a megadott feltétel igaz vagy valamilyen állapot megváltozott."
-[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Adatműveletek végrehajtása, például tömbök szűrése vagy CSV-és HTML-táblázatok létrehozása"
-[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Műveletek végrehajtása változókkal, például inicializálás, beállítás, növekmény, csökkentés és Hozzáfűzés karakterlánc-vagy Array-változóhoz"
-
-<!--Managed connector doc links-->
-[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "A blobtárolókban található fájlok kezelése az Azure Blob Storage-összekötővel"
-[azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "Kapcsolódás a Azure Cosmos DBhoz a dokumentumok és tárolt eljárások eléréséhez"
-[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "Egy Event Grid által közzétett események figyelése, például amikor az Azure-erőforrások vagy a harmadik féltől származó erőforrások változnak"
-[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Kapcsolódjon az Azure Event Hubshoz, hogy fogadja és küldje el az eseményeket a Logic apps és a Event Hubs között"
-[azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "Kapcsolódjon az Azure Storage-fiókjához, hogy fájlokat lehessen létrehozni, frissíteni, beolvasni és törölni"
-[azure-queues-doc]: https://docs.microsoft.com/connectors/azurequeues/ "Kapcsolódjon az Azure Storage-fiókjához, hogy várólistákat és üzeneteket lehessen létrehozni és kezelni"
-[azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Üzeneteket küldhet a Service Bus-üzenetsorokból és -témakörökből, valamint fogadhatja a Service Bus-üzenetsorok és -előfizetések üzeneteit."
-[azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "A Azure SQL Data Warehouse csatlakozhat, így megtekintheti az adatait"
-[azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "Kapcsolódjon az Azure Storage-fiókjához, így táblákat hozhat létre, frissíthet és lekérdezéseket végezhet"
-[biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "Kapcsolódjon a BizTalk Serverhoz, hogy a BizTalk-alapú alkalmazások párhuzamosan futtathatók legyenek Azure Logic Apps"
-[box-doc]: ./connectors-create-api-box.md "Kapcsolódjon a mezőhöz. A fájlok feltöltése, beolvasása, törlése, listázása és egyebek"
-[dropbox-doc]: ./connectors-create-api-dropbox.md "Kapcsolódjon a Dropboxhoz. A fájlok feltöltése, beolvasása, törlése, listázása és egyebek"
-[dynamics-365-doc]: ./connectors-create-api-crmonline.md "Kapcsolódjon a Dynamics CRM Online-hoz, hogy működjön a CRM Online-beli adatkezeléssel"
-[facebook-doc]: ./connectors-create-api-facebook.md "Kapcsolódjon a Facebookhoz. Közzététel egy idővonalon, egy oldal hírcsatornájának beolvasása és egyebek"
-[file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Csatlakozhat egy helyszíni fájlrendszerhez"
-[ftp-doc]: ./connectors-create-api-ftp.md "Csatlakozhat egy FTP-/FTPS-kiszolgálóhoz, és ott különféle FTP-műveleteket hajthat végre, például fájlokat törölhet, tölthet fel vagy kérhet le"
-[github-doc]: ./connectors-create-api-github.md "Csatlakozhat a GitHubhoz, és különböző problémákat követhet nyomon"
-[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "Kapcsolódik a Google naptárhoz, és kezelheti a naptárat"
-[google-drive-doc]: ./connectors-create-api-googledrive.md "Csatlakozhat a GoogleDrive, hogy működjön az adataival"
-[google-sheets-doc]: ./connectors-create-api-googlesheet.md "Csatlakozhat a Google táblázatokhoz, így módosíthatja a lapokat"
-[google-tasks-doc]: ./connectors-create-api-googletasks.md "A Google-feladatokhoz kapcsolódik, hogy kezelni tudja a feladatokat"
-[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "Kapcsolódás 3270-alkalmazásokhoz IBM-es nagyszámítógépeken"
-[ibm-db2-doc]: ./connectors-create-api-db2.md "Kapcsolódjon az IBM DB2-hez a felhőben vagy a helyszínen. Sor frissítése, tábla beszerzése és egyebek"
-[ibm-informix-doc]: ./connectors-create-api-informix.md "Kapcsolódjon az Informix-hez a felhőben vagy a helyszínen. Egy sor beolvasása, a táblák listázása és egyebek"
-[ibm-mq-doc]: ./connectors-create-api-mq.md "Kapcsolódás az IBM MQ-hoz a helyszínen vagy az Azure-ban üzenetek küldéséhez és fogadásához"
-[instagram-doc]: ./connectors-create-api-instagram.md "Kapcsolódjon a Instagram. Események elindítása vagy művelet"
-[mailchimp-doc]: ./connectors-create-api-mailchimp.md "Kapcsolódjon a MailChimp-fiókjához. Levelezések kezelése és automatizálása"
-[mandrill-doc]: ./connectors-create-api-mandrill.md "Csatlakozhat a Mandrillhoz, ha azon keresztül szeretne kommunikálni"
-[mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "Kapcsolódjon a helyszíni MySQL-adatbázishoz, hogy el tudja olvasni és írni az adatait"
-[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Kapcsolódjon az Office 365-fiókjához, így e-maileket küldhet és fogadhat, kezelheti naptárát és névjegyeit, és így tovább"
-[office-365-users-doc]: ./connectors-create-api-office365-users.md
-[onedrive-doc]: ./connectors-create-api-onedrive.md "Csatlakozhat a személyes Microsoft-OneDrive, így feltöltheti, törölheti és listázhatja a fájlokat"
-[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "Kapcsolódjon vállalata Microsoft-OneDrive, így feltöltheti, törölheti és listázhatja a fájlokat, és így tovább"
-[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Csatlakozhat egy Oracle-adatbázishoz, így hozzáadhat, beszúrhat, törölhet sorokat és egyéb műveleteket is"
-[outlook.com-doc]: ./connectors-create-api-outlook.md "Kapcsolódjon az Outlook-postaládához, így kezelheti az e-maileket, a naptárakat, a névjegyeket és egyebeket"
-[postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "Kapcsolódjon a PostgreSQL-adatbázishoz, hogy beolvassa az adatait a táblákból"
-[project-online-doc]: ./connectors-create-api-projectonline.md "Kapcsolódjon a Microsoft Project online-hoz, hogy kezelje projektjeit, feladatait, erőforrásait és egyéb szolgáltatásait"
-[rss-doc]: ./connectors-create-api-rss.md "Hírcsatorna-elemek közzététele és beolvasása, aktiválási műveletek, ha új elem kerül közzétételre egy RSS-hírcsatornán"
-[salesforce-doc]: ./connectors-create-api-salesforce.md "Kapcsolódjon a Salesforce-fiókjához. Fiókok, érdeklődők, lehetőségek és egyebek kezelése"
-[sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "Csatlakozhat egy helyszíni SAP-rendszerhez"
-[sendgrid-doc]: ./connectors-create-api-sendgrid.md "Kapcsolódjon a SendGrid. E-mail küldése és a címzettek jegyzékeinek kezelése"
-[sftp-ssh-doc]: ./connectors-sftp-ssh.md "Csatlakozzon az SFTP-fiókjához az SSH használatával. Fájlok feltöltése, beolvasása, törlése és egyebek"
-[sharepoint-server-doc]: ./connectors-create-api-sharepointserver.md "Kapcsolódjon a helyszíni SharePoint-kiszolgálóhoz. Dokumentumok, listaelemek és egyéb elemek kezelése"
-[sharepoint-online-doc]: ./connectors-create-api-sharepointonline.md "Kapcsolódjon a SharePoint Online-hoz. Dokumentumok, listaelemek és egyéb elemek kezelése"
-[slack-doc]: ./connectors-create-api-slack.md "Kapcsolódás a Slackhez és üzenetek közzététele a Slack-csatornákon"
-[smtp-doc]: ./connectors-create-api-smtp.md "Kapcsolódás SMTP-kiszolgálóhoz és mellékletek küldése e-mailben"
-[sparkpost-doc]: ./connectors-create-api-sparkpost.md "Csatlakozhat a SparkPosthoz, ha azon keresztül szeretne kommunikálni"
-[sql-server-doc]: ./connectors-create-api-sqlazure.md "Kapcsolódjon Azure SQL Databasehoz vagy SQL Serverhoz. SQL Database-táblázat bejegyzéseinek létrehozása, frissítése, beolvasása és törlése"
-[teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "Kapcsolódás a Teradata-adatbázishoz a táblák adatainak beolvasásához"
-[trello-doc]: ./connectors-create-api-trello.md "Kapcsolódjon a Trello. Kezelheti projektjeit, és bármit megszervezheti bárkivel"
-[twilio-doc]: ./connectors-create-api-twilio.md "Kapcsolódjon a Twilio. Üzenetek küldése és lekérése, rendelkezésre álló számok beolvasása, a bejövő telefonszámok kezelése és egyebek"
-[twitter-doc]: ./connectors-create-api-twitter.md "Kapcsolódjon a Twitterhez. Ütemtervek, tweetek és egyéb bejegyzések beolvasása"
-[yammer-doc]: ./connectors-create-api-yammer.md "Kapcsolódjon a Yammer. Üzenetek közzététele, új üzenetek beolvasása és egyebek"
-[youtube-doc]: ./connectors-create-api-youtube.md "Kapcsolódjon a YouTube-hoz. Videók és csatornák kezelése"
-
-<!--Enterprise Intregation Pack doc links-->
-[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "Az AS2 protokollt használó üzenetek kódolása és dekódolása"
-[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "Az EDIFACT protokollt használó üzenetek kódolása és dekódolása"
-[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "Az EDIFACT protokollt használó üzenetek dekódolása"
-[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "EDIFACT protokollt használó üzenetek kódolása"
-[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Tudnivalók a vállalati integrációs egyszerű fájlról"
-[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Tudnivalók a vállalati integrációs egyszerű fájlról"
-[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "Az integrációs fiók összetevőihez tartozó metaadatok kezelése"
-[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "A JSON átalakítása likvid sablonokkal"
-[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "Az X12 protokollt használó üzenetek kódolása és dekódolása"
-[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "Az X12 protokollt használó üzenetek dekódolása"
-[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 protokollt használó üzenetek kódolása"
-[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML-üzenetek átalakítása"
-[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML-üzenetek ellenőrzése"
-
 <!-- Built-ins icons -->
 [azure-api-management-icon]: ./media/apis-list/azure-api-management.png
 [azure-app-services-icon]: ./media/apis-list/azure-app-services.png
@@ -386,7 +287,9 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 [azure-event-grid-publish-icon]: ./media/apis-list/azure-event-grid-publish.png
 [azure-event-hubs-icon]: ./media/apis-list/azure-event-hubs.png
 [azure-file-storage-icon]: ./media/apis-list/azure-file-storage.png
+[azure-key-vault-icon]: ./media/apis-list/azure-key-vault.png
 [azure-ml-icon]: ./media/apis-list/azure-ml.png
+[azure-monitor-logs-icon]: ./media/apis-list/azure-monitor-logs.png
 [azure-queues-icon]: ./media/apis-list/azure-queues.png
 [azure-resource-manager-icon]: ./media/apis-list/azure-resource-manager.png
 [azure-service-bus-icon]: ./media/apis-list/azure-service-bus.png
@@ -469,3 +372,107 @@ Az egyéni kódot futtató vagy összekötőként nem elérhető API-k meghívá
 [x12-icon]: ./media/apis-list/x12.png
 [xml-validate-icon]: ./media/apis-list/xml-validation.png
 [xml-transform-icon]: ./media/apis-list/xsl-transform.png
+
+<!--Other doc links-->
+[gateway-doc]: ../logic-apps/logic-apps-gateway-connection.md "Kapcsolódás helyszíni adatforrásokhoz a helyszíni adatátjáróval rendelkező logikai alkalmazásokból"
+
+<!--Built-in doc links-->
+[azure-api-management-doc]: ../api-management/get-started-create-service-instance.md "Azure API Management Service-példány létrehozása az API-k kezeléséhez és közzétételéhez"
+[azure-app-services-doc]: ../logic-apps/logic-apps-custom-hosted-api.md "Logikai alkalmazások integrálása App Service API Apps"
+[azure-functions-doc]: ../logic-apps/logic-apps-azure-functions.md "Logikai alkalmazások integrálása Azure Functions-függvényekkel"
+[batch-doc]: ../logic-apps/logic-apps-batch-process-send-receive-messages.md "Üzenetek feldolgozása csoportokban vagy kötegként"
+[condition-doc]: ../logic-apps/logic-apps-control-flow-conditional-statement.md "Értékelje ki a feltételt, és futtasson különböző műveleteket attól függően, hogy a feltétel igaz vagy hamis"
+[for-each-doc]: ../logic-apps/logic-apps-control-flow-loops.md#foreach-loop "Ugyanazon műveletek végrehajtása egy tömb minden elemén"
+[http-doc]: ./connectors-native-http.md "HTTP-vagy HTTPS-végpontok hívása a logikai alkalmazásokból"
+[http-request-doc]: ./connectors-native-reqres.md "HTTP-kérelmek fogadása a logikai alkalmazásokban"
+[http-response-doc]: ./connectors-native-reqres.md "Válaszadás a logikai alkalmazásokból érkező HTTP-kérelmekre"
+[http-swagger-doc]: ./connectors-native-http-swagger.md "REST-végpontok hívása a logikai alkalmazásokból"
+[http-webhook-doc]: ./connectors-native-webhook.md "Várakozás adott eseményekre HTTP-vagy HTTPS-végpontok esetén"
+[nested-logic-app-doc]: ../logic-apps/logic-apps-http-endpoint.md "Logikai alkalmazások integrálása beágyazott munkafolyamatokkal"
+[query-doc]: ../logic-apps/logic-apps-perform-data-operations.md#filter-array-action "Tömbök kiválasztása és szűrése a Lekérdezés művelettel"
+[schedule-doc]: ../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md "Logikai alkalmazások futtatása ütemterv alapján"
+[schedule-delay-doc]: ./connectors-native-delay.md "A következő művelet futásának késleltetése"
+[schedule-delay-until-doc]: ./connectors-native-delay.md "A következő művelet futásának késleltetése"
+[schedule-recurrence-doc]:  ./connectors-native-recurrence.md "Logikai alkalmazások futtatása ismétlődő ütemterv szerint"
+[schedule-sliding-window-doc]: ./connectors-native-sliding-window.md "Olyan logikai alkalmazások futtatása, amelyeknek a folytonos adattömbökben kell kezelnie az adatkezelést"
+[scope-doc]: ../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md "Csoportokba rendezheti a műveleteket, amelyek a csoport műveleteinek befejezése után kapják meg a saját állapotukat"
+[switch-doc]: ../logic-apps/logic-apps-control-flow-switch-statement.md "Olyan esetekre szervezheti a műveleteket, amelyek egyedi értékeket rendelnek hozzájuk. Csak azt az esetet futtassa, amelynek értéke megegyezik egy kifejezés, objektum vagy token eredményével. Ha nem létezik egyezés, futtassa az alapértelmezett esetet."
+[terminate-doc]: ../logic-apps/logic-apps-workflow-actions-triggers.md#terminate-action "Aktívan futó munkafolyamatok leállítása vagy megszakítása a logikai alkalmazáshoz"
+[until-doc]: ../logic-apps/logic-apps-control-flow-loops.md#until-loop "Ismételje meg a műveleteket, amíg a megadott feltétel igaz vagy valamilyen állapot megváltozott."
+[data-operations-doc]: ../logic-apps/logic-apps-perform-data-operations.md "Adatműveletek végrehajtása, például tömbök szűrése vagy CSV-és HTML-táblázatok létrehozása"
+[variables-doc]: ../logic-apps/logic-apps-create-variables-store-values.md "Műveletek végrehajtása változókkal, például inicializálás, beállítás, növekmény, csökkentés és Hozzáfűzés karakterlánc-vagy Array-változóhoz"
+
+<!--Managed connector doc links-->
+[azure-automation-doc]: https://docs.microsoft.com/connectors/azureautomation/ "Automatizálási feladatok létrehozása és kezelése a felhő és a helyszíni infrastruktúra számára"
+[azure-blob-storage-doc]: ./connectors-create-api-azureblobstorage.md "A blobtárolókban található fájlok kezelése az Azure Blob Storage-összekötővel"
+[azure-cosmos-db-doc]: https://docs.microsoft.com/connectors/documentdb/ "Kapcsolódás a Azure Cosmos DBhoz a dokumentumok és tárolt eljárások eléréséhez"
+[azure-event-grid-doc]: ../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md "Egy Event Grid által közzétett események figyelése, például amikor az Azure-erőforrások vagy a harmadik féltől származó erőforrások változnak"
+[azure-event-hubs-doc]: ./connectors-create-api-azure-event-hubs.md "Kapcsolódjon az Azure Event Hubshoz, hogy fogadja és küldje el az eseményeket a Logic apps és a Event Hubs között"
+[azure-file-storage-doc]: https://docs.microsoft.com/connectors/azurefile/ "Kapcsolódjon az Azure Storage-fiókjához, hogy fájlokat lehessen létrehozni, frissíteni, beolvasni és törölni"
+[azure-key-vault-doc]: https://docs.microsoft.com/connectors/keyvault/ "Kapcsolódjon a Azure Key Vaulthoz, hogy kezelni tudja a titkait és kulcsait"
+[azure-monitor-logs-doc]: https://docs.microsoft.com/connectors/azuremonitorlogs/ "Lekérdezések futtatása Azure Monitor naplókon Log Analytics-munkaterületeken és Application Insights-összetevőkön"
+[azure-queues-doc]: https://docs.microsoft.com/connectors/azurequeues/ "Kapcsolódjon az Azure Storage-fiókjához, hogy várólistákat és üzeneteket lehessen létrehozni és kezelni"
+[azure-service-bus-doc]: ./connectors-create-api-servicebus.md "Üzeneteket küldhet a Service Bus-üzenetsorokból és -témakörökből, valamint fogadhatja a Service Bus-üzenetsorok és -előfizetések üzeneteit."
+[azure-sql-data-warehouse-doc]: https://docs.microsoft.com/connectors/sqldw/ "A Azure SQL Data Warehouse csatlakozhat, így megtekintheti az adatait"
+[azure-table-storage-doc]: https://docs.microsoft.com/connectors/azuretables/ "Kapcsolódjon az Azure Storage-fiókjához, így táblákat hozhat létre, frissíthet és lekérdezéseket végezhet"
+[biztalk-server-doc]: https://docs.microsoft.com/connectors/biztalk/ "Kapcsolódjon a BizTalk Serverhoz, hogy a BizTalk-alapú alkalmazások párhuzamosan futtathatók legyenek Azure Logic Apps"
+[box-doc]: ./connectors-create-api-box.md "Kapcsolódjon a mezőhöz. A fájlok feltöltése, beolvasása, törlése, listázása és egyebek"
+[dropbox-doc]: ./connectors-create-api-dropbox.md "Kapcsolódjon a Dropboxhoz. A fájlok feltöltése, beolvasása, törlése, listázása és egyebek"
+[dynamics-365-doc]: ./connectors-create-api-crmonline.md "Kapcsolódjon a Dynamics CRM Online-hoz, hogy működjön a CRM Online-beli adatkezeléssel"
+[facebook-doc]: ./connectors-create-api-facebook.md "Kapcsolódjon a Facebookhoz. Közzététel egy idővonalon, egy oldal hírcsatornájának beolvasása és egyebek"
+[file-system-doc]: ../logic-apps/logic-apps-using-file-connector.md "Csatlakozhat egy helyszíni fájlrendszerhez"
+[ftp-doc]: ./connectors-create-api-ftp.md "Csatlakozhat egy FTP-/FTPS-kiszolgálóhoz, és ott különféle FTP-műveleteket hajthat végre, például fájlokat törölhet, tölthet fel vagy kérhet le"
+[github-doc]: ./connectors-create-api-github.md "Csatlakozhat a GitHubhoz, és különböző problémákat követhet nyomon"
+[google-calendar-doc]: ./connectors-create-api-googlecalendar.md "Kapcsolódik a Google naptárhoz, és kezelheti a naptárat"
+[google-drive-doc]: ./connectors-create-api-googledrive.md "Csatlakozhat a GoogleDrive, hogy működjön az adataival"
+[google-sheets-doc]: ./connectors-create-api-googlesheet.md "Csatlakozhat a Google táblázatokhoz, így módosíthatja a lapokat"
+[google-tasks-doc]: ./connectors-create-api-googletasks.md "A Google-feladatokhoz kapcsolódik, hogy kezelni tudja a feladatokat"
+[ibm-3270-doc]: ./connectors-run-3270-apps-ibm-mainframe-create-api-3270.md "Kapcsolódás 3270-alkalmazásokhoz IBM-es nagyszámítógépeken"
+[ibm-db2-doc]: ./connectors-create-api-db2.md "Kapcsolódjon az IBM DB2-hez a felhőben vagy a helyszínen. Sor frissítése, tábla beszerzése és egyebek"
+[ibm-informix-doc]: ./connectors-create-api-informix.md "Kapcsolódjon az Informix-hez a felhőben vagy a helyszínen. Egy sor beolvasása, a táblák listázása és egyebek"
+[ibm-mq-doc]: ./connectors-create-api-mq.md "Kapcsolódás az IBM MQ-hoz a helyszínen vagy az Azure-ban üzenetek küldéséhez és fogadásához"
+[instagram-doc]: ./connectors-create-api-instagram.md "Kapcsolódjon a Instagram. Események elindítása vagy művelet"
+[mailchimp-doc]: ./connectors-create-api-mailchimp.md "Kapcsolódjon a MailChimp-fiókjához. Levelezések kezelése és automatizálása"
+[mandrill-doc]: ./connectors-create-api-mandrill.md "Csatlakozhat a Mandrillhoz, ha azon keresztül szeretne kommunikálni"
+[mysql-doc]: https://docs.microsoft.com/connectors/mysql/ "Kapcsolódjon a helyszíni MySQL-adatbázishoz, hogy el tudja olvasni és írni az adatait"
+[office-365-outlook-doc]: ./connectors-create-api-office365-outlook.md "Kapcsolódjon az Office 365-fiókjához, így e-maileket küldhet és fogadhat, kezelheti naptárát és névjegyeit, és így tovább"
+[office-365-users-doc]: ./connectors-create-api-office365-users.md
+[onedrive-doc]: ./connectors-create-api-onedrive.md "Csatlakozhat a személyes Microsoft-OneDrive, így feltöltheti, törölheti és listázhatja a fájlokat"
+[onedrive-for-business-doc]: ./connectors-create-api-onedriveforbusiness.md "Kapcsolódjon vállalata Microsoft-OneDrive, így feltöltheti, törölheti és listázhatja a fájlokat, és így tovább"
+[oracle-db-doc]: ./connectors-create-api-oracledatabase.md "Csatlakozhat egy Oracle-adatbázishoz, így hozzáadhat, beszúrhat, törölhet sorokat és egyéb műveleteket is"
+[outlook.com-doc]: ./connectors-create-api-outlook.md "Kapcsolódjon az Outlook-postaládához, így kezelheti az e-maileket, a naptárakat, a névjegyeket és egyebeket"
+[postgre-sql-doc]: https://docs.microsoft.com/connectors/postgresql/ "Kapcsolódjon a PostgreSQL-adatbázishoz, hogy beolvassa az adatait a táblákból"
+[project-online-doc]: ./connectors-create-api-projectonline.md "Kapcsolódjon a Microsoft Project online-hoz, hogy kezelje projektjeit, feladatait, erőforrásait és egyéb szolgáltatásait"
+[rss-doc]: ./connectors-create-api-rss.md "Hírcsatorna-elemek közzététele és beolvasása, aktiválási műveletek, ha új elem kerül közzétételre egy RSS-hírcsatornán"
+[salesforce-doc]: ./connectors-create-api-salesforce.md "Kapcsolódjon a Salesforce-fiókjához. Fiókok, érdeklődők, lehetőségek és egyebek kezelése"
+[sap-connector-doc]: ../logic-apps/logic-apps-using-sap-connector.md "Csatlakozhat egy helyszíni SAP-rendszerhez"
+[sendgrid-doc]: ./connectors-create-api-sendgrid.md "Kapcsolódjon a SendGrid. E-mail küldése és a címzettek jegyzékeinek kezelése"
+[sftp-ssh-doc]: ./connectors-sftp-ssh.md "Csatlakozzon az SFTP-fiókjához az SSH használatával. Fájlok feltöltése, beolvasása, törlése és egyebek"
+[sharepoint-server-doc]: ./connectors-create-api-sharepointserver.md "Kapcsolódjon a helyszíni SharePoint-kiszolgálóhoz. Dokumentumok, listaelemek és egyéb elemek kezelése"
+[sharepoint-online-doc]: ./connectors-create-api-sharepointonline.md "Kapcsolódjon a SharePoint Online-hoz. Dokumentumok, listaelemek és egyéb elemek kezelése"
+[slack-doc]: ./connectors-create-api-slack.md "Kapcsolódás a Slackhez és üzenetek közzététele a Slack-csatornákon"
+[smtp-doc]: ./connectors-create-api-smtp.md "Kapcsolódás SMTP-kiszolgálóhoz és mellékletek küldése e-mailben"
+[sparkpost-doc]: ./connectors-create-api-sparkpost.md "Csatlakozhat a SparkPosthoz, ha azon keresztül szeretne kommunikálni"
+[sql-server-doc]: ./connectors-create-api-sqlazure.md "Kapcsolódjon Azure SQL Databasehoz vagy SQL Serverhoz. SQL Database-táblázat bejegyzéseinek létrehozása, frissítése, beolvasása és törlése"
+[teradata-doc]: https://docs.microsoft.com/connectors/teradata/ "Kapcsolódás a Teradata-adatbázishoz a táblák adatainak beolvasásához"
+[trello-doc]: ./connectors-create-api-trello.md "Kapcsolódjon a Trello. Kezelheti projektjeit, és bármit megszervezheti bárkivel"
+[twilio-doc]: ./connectors-create-api-twilio.md "Kapcsolódjon a Twilio. Üzenetek küldése és lekérése, rendelkezésre álló számok beolvasása, a bejövő telefonszámok kezelése és egyebek"
+[twitter-doc]: ./connectors-create-api-twitter.md "Kapcsolódjon a Twitterhez. Ütemtervek, tweetek és egyéb bejegyzések beolvasása"
+[yammer-doc]: ./connectors-create-api-yammer.md "Kapcsolódjon a Yammer. Üzenetek közzététele, új üzenetek beolvasása és egyebek"
+[youtube-doc]: ./connectors-create-api-youtube.md "Kapcsolódjon a YouTube-hoz. Videók és csatornák kezelése"
+
+<!--Enterprise Intregation Pack doc links-->
+[as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "Az AS2 protokollt használó üzenetek kódolása és dekódolása"
+[edifact-doc]: ../logic-apps/logic-apps-enterprise-integration-edifact.md "Az EDIFACT protokollt használó üzenetek kódolása és dekódolása"
+[edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "Az EDIFACT protokollt használó üzenetek dekódolása"
+[edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "EDIFACT protokollt használó üzenetek kódolása"
+[flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Tudnivalók a vállalati integrációs egyszerű fájlról"
+[flat-file-encode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "Tudnivalók a vállalati integrációs egyszerű fájlról"
+[integration-account-doc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "Az integrációs fiók összetevőihez tartozó metaadatok kezelése"
+[json-liquid-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "A JSON átalakítása likvid sablonokkal"
+[x12-doc]: ../logic-apps/logic-apps-enterprise-integration-x12.md "Az X12 protokollt használó üzenetek kódolása és dekódolása"
+[x12-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-decode.md "Az X12 protokollt használó üzenetek dekódolása"
+[x12-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-X12-encode.md "X12 protokollt használó üzenetek kódolása"
+[xml-transform-doc]: ../logic-apps/logic-apps-enterprise-integration-transform.md "XML-üzenetek átalakítása"
+[xml-validate-doc]: ../logic-apps/logic-apps-enterprise-integration-xml-validation.md "XML-üzenetek ellenőrzése"
+

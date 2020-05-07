@@ -8,12 +8,12 @@ ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
 ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: c2db0cca120d08b85229618547a2aaabbba437ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870217"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611398"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -45,11 +45,13 @@ Hozzon létre és rögzítsen egy virtuálisgép-lemezképet, majd használja az
 
 ### <a name="if-i-reduce-my-scale-set-capacity-from-20-to-15-which-vms-are-removed"></a>Ha a méretezési csoportom kapacitását 20-ról 15-re csökkentem, mely virtuális gépek lesznek eltávolítva?
 
-A rendszer egyenlő arányban távolítja el a virtuális gépeket a méretezési csoportból a frissítési és tartalék tartományok egészében, a rendelkezésre állás maximalizálása érdekében. A rendszer a legmagasabb azonosítóval rendelkező virtuális gépeket távolítja el először.
+Alapértelmezés szerint a rendszer eltávolítja a virtuális gépeket a méretezési csoportból egyenletesen a rendelkezésre állási zónák között (ha a méretezési csoport a zóna-konfigurációban van telepítve) és a tartalék tartományok a rendelkezésre állás maximalizálása érdekében. A rendszer a legmagasabb azonosítóval rendelkező virtuális gépeket távolítja el először.
+
+A virtuális gép eltávolításának sorrendjét a méretezési csoport [méretezési házirendjének](virtual-machine-scale-sets-scale-in-policy.md) megadásával módosíthatja.
 
 ### <a name="what-if-i-then-increase-the-capacity-from-15-to-18"></a>Mi történik, ha ezután 15-ről 18-ra növelem a kapacitást?
 
-Ha 18-ra növeli a kapacitást, akkor a rendszer 3 új virtuális gépet hoz létre. A rendszer minden alkalommal a legmagasabb előző értéktől növeli a virtuálisgép-példány azonosítóját (például: 20, 21, 22). A virtuális gépek a tartalék és frissítési tartományok között oszlanak el.
+Ha 18-ra növeli a kapacitást, akkor a rendszer 3 új virtuális gépet hoz létre. A rendszer minden alkalommal a legmagasabb előző értéktől növeli a virtuálisgép-példány azonosítóját (például: 20, 21, 22). A virtuális gépek kiegyensúlyozva vannak a tartalék tartományok között.
 
 ### <a name="when-im-using-multiple-extensions-in-a-scale-set-can-i-enforce-an-execution-sequence"></a>Ha több bővítményt használok egy méretezési csoportban, van lehetőség végrehajtási sorrend kényszerítésére?
 
@@ -223,7 +225,7 @@ Linuxos virtuális gép létrehozásakor egyszerű szövegként is megadhat SSH 
 
 linuxConfiguration elem neve | Kötelező | Típus | Leírás
 --- | --- | --- | ---
-SSH | Nem | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
+SSH | No | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
 path | Igen | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
 alapértékek | Igen | Sztring | Base64 kódolású nyilvános SSH-kulcsot ad meg
 
@@ -335,13 +337,13 @@ További információkért lásd: [Microsoft Adatvédelmi központ](https://www.
 
 Igen. A [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi) és a [Windows rendszerhez](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)készült Azure gyorsindítási sablonokban néhány példát láthat az MSI-sablonokra.
 
-## <a name="deleting"></a>Törlése 
+## <a name="deleting"></a>Törlése
 
 ### <a name="will-the-locks-i-set-in-place-on-virtual-machine-scale-set-instances-be-respected-when-deleting-instances"></a>Figyelembe veszik a virtuálisgép-méretezési csoport példányain beállított zárolásokat a példányok törlésekor?
 
-Az Azure Portalon lehetősége van egy adott példány vagy tömeges törlés törlésére több példány kiválasztásával. Ha olyan példányt próbál meg törölni, amely zárolva van, a rendszer betartja a zárolást, és nem fogja tudni törölni a példányt. Ha azonban több példányt szeretne kijelölni, és ezek bármelyike zárolva van, a rendszer nem veszi figyelembe a zárolás (oka) t, és az összes kiválasztott példány törölve lesz. 
- 
-Az Azure CLI-ben csak az egyes példányok törölhetők. Ha olyan példányt próbál meg törölni, amely zárolva van, a rendszer betartja a zárolást, és nem fogja tudni törölni a példányt. 
+Az Azure Portalon lehetősége van egy adott példány vagy tömeges törlés törlésére több példány kiválasztásával. Ha olyan példányt próbál meg törölni, amely zárolva van, a rendszer betartja a zárolást, és nem fogja tudni törölni a példányt. Ha azonban több példányt szeretne kijelölni, és ezek bármelyike zárolva van, a rendszer nem veszi figyelembe a zárolás (oka) t, és az összes kiválasztott példány törölve lesz.
+
+Az Azure CLI-ben csak az egyes példányok törölhetők. Ha olyan példányt próbál meg törölni, amely zárolva van, a rendszer betartja a zárolást, és nem fogja tudni törölni a példányt.
 
 ## <a name="extensions"></a>Bővítmények
 

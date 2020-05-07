@@ -5,23 +5,25 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 33d058f028b7032f296ffcf82f0e5fe2c993e6fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad535dd18b89cbe2fceab90f73789180ad332b57
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127920"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612367"
 ---
 # <a name="windows-virtual-desktop-environment"></a>A Windows Virtual Desktop környezete
 
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/environment-setup-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 A Windows Virtual Desktop egy olyan szolgáltatás, amely egyszerű és biztonságos hozzáférést biztosít a felhasználóknak a virtualizált asztali számítógépekhez és a RemoteAppokhoz. Ez a témakör részletesen ismerteti a Windows rendszerű virtuális asztali környezet általános szerkezetét.
-
-## <a name="tenants"></a>Bérlők
-
-A Windows rendszerű virtuális asztali bérlő a Windows rendszerű virtuális asztali környezet felügyeletének elsődleges felülete. Minden Windowsos virtuális asztali bérlőhöz társítani kell a környezetbe bejelentkező felhasználókat tartalmazó Azure Active Directory. A Windows rendszerű virtuális asztali bérlőből megkezdheti a gazdagép-készletek létrehozását a felhasználók munkaterhelésének futtatásához.
 
 ## <a name="host-pools"></a>Gazdagépek készletei
 
@@ -45,12 +47,12 @@ Alapértelmezés szerint a rendszer automatikusan létrehoz egy asztali alkalmaz
 
 Az erőforrások felhasználók számára való közzétételéhez hozzá kell rendelnie azokat az alkalmazás-csoportokhoz. Amikor felhasználókat rendel az alkalmazás-csoportokhoz, vegye figyelembe a következőket:
 
-- Egy felhasználó nem rendelhető hozzá egyszerre egy asztali alkalmazáscsoport és egy RemoteApp-alkalmazáscsoport is ugyanabban a gazdagép-készletben.
+- Egy felhasználó egy asztali alkalmazáscsoport és egy RemoteApp-alkalmazás ugyanahhoz a készlethez is hozzárendelhető. A felhasználók azonban csak egyféle alkalmazáscsoport indítását tudják elindítani. A felhasználók nem indíthatnak egyszerre mindkét típusú alkalmazást egyetlen munkamenetben.
 - Egy felhasználó több, ugyanazon a gazdagépen belüli alkalmazás-csoporthoz is hozzárendelhető, és a hírcsatorna mindkét alkalmazáscsoport összegyűjtését eredményezi.
 
-## <a name="tenant-groups"></a>Bérlői csoportok
+## <a name="workspaces"></a>Munkaterületek
 
-A Windows virtuális asztal szolgáltatásban a Windows rendszerű virtuális asztali bérlő az a hely, ahol a telepítés és a konfigurálás nagy része történik. A Windows rendszerű virtuális asztali bérlő tartalmazza a gazdagépeket, az alkalmazás-csoportokat és az alkalmazáscsoport felhasználói hozzárendeléseit. Bizonyos esetekben azonban előfordulhat, hogy egyszerre több Windows rendszerű virtuális asztali bérlőt kell kezelnie, különösen akkor, ha Ön egy felhőalapú szolgáltató (CSP) vagy egy szolgáltatói partner. Ezekben az esetekben használhat egy egyéni Windowsos virtuális asztali bérlői csoportot az ügyfelek Windows rendszerű virtuális asztali bérlői és központilag felügyelt hozzáférésének elhelyezésére. Ha azonban csak egyetlen Windowsos virtuális asztali bérlőt kezel, a bérlői csoport fogalma nem érvényes, és továbbra is használhatja és kezelheti a bérlőt, amely az alapértelmezett bérlői csoportban található.
+A munkaterület az alkalmazáscsoport logikai csoportosítása a Windows rendszerű virtuális asztalon. Minden Windows rendszerű virtuális asztali alkalmazás csoportjának társítania kell egy munkaterületet a felhasználók számára a közzétett távoli alkalmazások és asztali számítógépek megtekintéséhez.  
 
 ## <a name="end-users"></a>Végfelhasználók
 
@@ -60,9 +62,12 @@ Miután hozzárendelte a felhasználókat az alkalmazás csoportjaihoz, csatlako
 
 További információ a delegált hozzáférésről és a szerepkörök felhasználókhoz való hozzárendeléséről a [Windows Virtual Desktopban](delegated-access-virtual-desktop.md).
 
-A Windows rendszerű virtuális asztali bérlő beállításával kapcsolatos további információkért lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
+A Windows rendszerű virtuális asztali címkészlet beállításával kapcsolatos további információkért lásd: [gazdagép-készlet létrehozása a Azure Portal](create-host-pools-azure-marketplace.md).
 
 A következő cikkekből megtudhatja, hogyan csatlakozhat a Windows rendszerű virtuális asztalhoz:
 
-- [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](connect-windows-7-and-10.md)
-- [Csatlakozás webböngészőről](connect-web.md)
+- [Windows 10 vagy Windows 7 rendszerű kapcsolat](connect-windows-7-and-10.md)
+- [Webböngészővel való kapcsolat](connect-web.md)
+- [Kapcsolódás az Android-ügyféllel](connect-android.md)
+- [Kapcsolódás a macOS-ügyfélhez](connect-macos.md)
+- [Kapcsolódás az iOS-ügyfélhez](connect-ios.md)

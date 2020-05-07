@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 9595ee87801fa4ce187a50197fc58d6c448eac24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09dd4ea3cd039bcb91acc877e51fee7e40168ac3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78303222"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612758"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure Virtual Machines szolgáltatásban
 
@@ -47,7 +47,7 @@ Ezen technológiák általános megismerése is szükséges:
 > [!IMPORTANT]
 > Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített felügyeleti módjával](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, **törölje a megfelelő virtuális gép melletti jelölőnégyzet**jelölését. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
 
-A prémium fájlmegosztás biztosítja a IOPS és a teljes kapacitást, amelyek kielégítik a sok számítási feladat igényeit. Az i/o-igényű számítási feladatokhoz a felügyelt prémium lemezeken vagy az ultra Disks [szolgáltatáson alapuló SQL Server feladatátvevő fürt példányainak közvetlen tárolóhelyek](virtual-machines-windows-portal-sql-create-failover-cluster.md)-mel kell rendelkezniük.  
+A prémium szintű fájlmegosztás biztosítja a IOPS és az átviteli kapacitást, amely megfelel a sok számítási feladat igényeinek. Az i/o-igényű számítási feladatokhoz a felügyelt prémium lemezeken vagy az ultra Disks [szolgáltatáson alapuló SQL Server feladatátvevő fürt példányainak közvetlen tárolóhelyek](virtual-machines-windows-portal-sql-create-failover-cluster.md)-mel kell rendelkezniük.  
 
 Ellenőrizze a környezet IOPS tevékenységét, és ellenőrizze, hogy a prémium szintű fájlmegosztás biztosítja-e a szükséges IOPS az üzembe helyezés vagy az áttelepítés megkezdése előtt. A Windows Teljesítményfigyelő lemezei számlálók segítségével figyelheti az adatokhoz, a naplóhoz és a temp DB-fájlokhoz SQL Server szükséges teljes IOPS (lemez átvitel/másodperc) és átviteli sebesség (bájt/s).
 

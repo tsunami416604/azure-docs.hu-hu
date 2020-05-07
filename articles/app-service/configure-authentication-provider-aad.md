@@ -4,13 +4,13 @@ description: Megtudhatja, hogyan konfigurálhat Azure Active Directory hitelesí
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
-ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 913aac7755e6c4f9a4b42d45933728fcc8840bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190010"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609901"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
@@ -33,7 +33,7 @@ Az alkalmazás és a hitelesítés beállításakor kövesse az alábbi ajánlot
 ## <a name="configure-with-express-settings"></a><a name="express"> </a>Konfigurálás az expressz beállításokkal
 
 > [!NOTE]
-> Az **expressz** beállítás a kormányzati felhők esetében nem érhető el. 
+> Az **expressz** beállítás a kormányzati felhők esetében nem érhető el.
 
 1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
 2. A bal oldali navigációs sávon válassza**a** **hitelesítés/engedélyezés** > lehetőséget.
@@ -45,9 +45,9 @@ Az alkalmazás és a hitelesítés beállításakor kövesse az alábbi ajánlot
    2. Válasszon egy meglévő alkalmazás-regisztrációt, és kattintson **az OK**gombra.
 
 3. Kattintson az **OK** gombra, hogy regisztrálja a app Service alkalmazást a Azure Active Directoryban. Létrejön egy új alkalmazás regisztrálása.
-   
+
     ![Expressz beállítások a Azure Active Directoryban](./media/configure-authentication-provider-aad/express-settings.png)
-   
+
 4. Választható Alapértelmezés szerint a App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában. Ha csak az Azure Active Directory által hitelesített felhasználók számára kívánja korlátozni az alkalmazás-hozzáférést, állítsa be **a végrehajtandó műveletet, ha a kérés nincs hitelesítve** a **Azure Active Directoryval való bejelentkezéshez**. Ha beállítja ezt a funkciót, az alkalmazásnak minden kérelmet hitelesítenie kell. Emellett átirányítja az összes nem hitelesített Azure Active Directory a hitelesítéshez.
 
     > [!CAUTION]
@@ -75,7 +75,7 @@ Hajtsa végre a következő lépéseket:
 1. Jelentkezzen be a [Azure Portalba], keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Jegyezze fel az alkalmazás **URL-címét**. Ezzel konfigurálja a Azure Active Directory alkalmazás regisztrációját.
 1. Válassza **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
 1. Az **alkalmazás regisztrálása** lapon adja meg az alkalmazás regisztrációjának **nevét** .
-1. Az **átirányítási URI**- **Web** ban válassza a `<app-url>/.auth/login/aad/callback`webes és típus lehetőséget. Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. 
+1. Az **átirányítási URI**- **Web** ban válassza a `<app-url>/.auth/login/aad/callback`webes és típus lehetőséget. Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Kattintson a **Létrehozás** gombra.
 1. Az alkalmazás regisztrációjának létrehozása után másolja az **alkalmazás (ügyfél) azonosítóját** és a **címtár (bérlő) azonosítóját** később.
 1. Válassza a **Hitelesítés** lehetőséget. Az **implicit támogatás**lehetőségnél engedélyezze az **azonosító jogkivonatokat** az OpenID Connect felhasználói bejelentkezések app Serviceból való engedélyezéséhez.
@@ -87,14 +87,14 @@ Hajtsa végre a következő lépéseket:
 
 1. Válassza a **Hatókör hozzáadása** lehetőséget.
    1. A **hatókör neve**mezőbe írja be a *user_impersonation*.
-   1. A szövegmezőben adja meg a belefoglalni kívánt hatókör nevét és leírását, amelyet a felhasználók a beleegyező lapon láthatnak. Írja be például a következőt: *hozzáférés az alkalmazáshoz*. 
+   1. A szövegmezőben adja meg a belefoglalni kívánt hatókör nevét és leírását, amelyet a felhasználók a beleegyező lapon láthatnak. Írja be például a következőt: *hozzáférés az alkalmazáshoz*.
    1. Válassza a **hatókör hozzáadása**elemet.
 1. Választható Az ügyfél titkos kulcsának létrehozásához válassza a **tanúsítványok & Secrets** > **új ügyfél titkos** > **hozzáadása**elemet. Másolja a lapon látható ügyfél titkos kulcs értékét. Nem jelenik meg újra.
 1. Választható Több **Válasz URL-cím**hozzáadásához válassza a **hitelesítés**lehetőséget.
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Azure Active Directory engedélyezése a app Service alkalmazásban
 
-1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. 
+1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
 1. A bal oldali ablaktábla **Beállítások**területén válassza**a** **hitelesítés/engedélyezés** > lehetőséget.
 1. Választható Alapértelmezés szerint a App Service hitelesítés lehetővé teszi a nem hitelesített hozzáférést az alkalmazáshoz. A felhasználói hitelesítés érvénybe léptetéséhez állítsa be a **műveletet, ha a kérelem nem hitelesítve van** a **Azure Active Directoryba való bejelentkezéshez**.
 1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.

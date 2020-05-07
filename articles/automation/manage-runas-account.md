@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 04/23/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5cb3752e5a74f26936efcbb9dba5cdcda76e01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d77fc756530115ff828c79a3b444c1152ffe5c5a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113306"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608677"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -475,7 +475,7 @@ Előfordulhat, hogy a futtató vagy klasszikus futtató fiókhoz szükséges kon
 * A futtató fiók el lett távolítva a közreműködő szerepkörből
 * Egyszerű szolgáltatás vagy alkalmazás az Azure AD-ben
 
-Ilyen konfigurációs esetekben az Automation-fiók észleli a módosításokat, és megjeleníti a fiók futtató fiókok `Incomplete` tulajdonságok paneljének állapotát.
+Az ilyen hibás konfigurációs példányok esetében az Automation-fiók észleli a módosításokat, és *hiányos* állapotot jelenít meg a fiók futtató fiókok tulajdonságok paneljén.
 
 ![Hiányos futtatófiók-konfigurációs állapot](media/manage-runas-account/automation-account-runas-incomplete-config.png)
 

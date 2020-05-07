@@ -3,12 +3,12 @@ title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
 description: Ismerje meg, hogyan helyezhet üzembe vSphere-fürtöt az Azure-ban az Azure VMWare-megoldás (AVS) használatával
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: f6dab0dd56adae8b98137354896412e447931c69
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740142"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838797"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Oktatóanyag: AVS Private Cloud üzembe helyezése az Azure-ban
 
@@ -28,6 +28,16 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 - Megfelelő rendszergazdai jogosultságok és engedélyek a privát felhő létrehozásához.
 - Győződjön meg arról, hogy a megfelelő hálózatkezelés konfigurálva van az [oktatóanyag: hálózati ellenőrzőlista](tutorial-network-checklist.md)című témakörben leírtak szerint.
 
+## <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
+
+Az Azure VMWare-megoldás használatához először regisztrálnia kell az erőforrás-szolgáltatót. A következő példa regisztrálja az erőforrás-szolgáltatót az előfizetésében.
+
+```azurecli-interactive
+az provider register -n Microsoft.VMwareVirtustream --subscription <your subscription ID>
+```
+
+Az erőforrás-szolgáltató regisztrálásának további módjaiért tekintse meg az [Azure erőforrás-szolgáltatók és-típusok](../azure-resource-manager/management/resource-providers-and-types.md)című témakört.
+
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
@@ -38,7 +48,7 @@ A [Azure Portal](#azure-portal) vagy az [Azure CLI](#azure-cli)használatával l
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A Azure Portal válassza az **+ új erőforrás létrehozása**lehetőséget. A **Keresés a piactér** szövegmezőbe mezőben adja `vmcp`meg a **VMCP-Private Cloud** elemet a listából. A **VMCP-Private Cloud** ablakban válassza a **Létrehozás** lehetőséget.
+A Azure Portal válassza az **+ új erőforrás létrehozása**lehetőséget. A **Keresés a piactér** szövegmezőbe mezőbe írja `Azure VMware Solution`be az **Azure VMware megoldás** elemet a listából. Az **Azure VMware megoldás** ablakban válassza a **Létrehozás** lehetőséget.
 
 Az **alapvető beállítások** lapon adja meg a mezők értékeit. A következő táblázat a tulajdonságok részletes listáját tartalmazza.
 
@@ -71,14 +81,6 @@ Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a j
 
 A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shellt egy külön böngészőlapon is elindíthatja a https://shell.azure.com/bash cím megnyitásával. Válassza a **Másolás** lehetőséget a kód blokkok másolásához, illessze be a Cloud Shellba, majd nyomja le az **ENTER** billentyűt a futtatásához.
 
-#### <a name="register-the-resource-provider"></a>Az erőforrás-szolgáltató regisztrálása
-
-Az Azure VMWare-megoldás használatához először regisztrálnia kell az erőforrás-szolgáltatót. A következő példa regisztrálja az erőforrás-szolgáltatót az előfizetésében.
-
-```azurecli-interactive
-az extension add --name vmware
-```
-
 #### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
@@ -92,7 +94,7 @@ az group create --name myResourceGroup --location eastus
 Az AVS Private Cloud létrehozásához meg kell adnia egy erőforráscsoport-nevet, a saját felhő nevét, a helyet, a fürt méretét.
 
 
-|Tulajdonság  |Leírás  |
+|Tulajdonság  |Description  |
 |---------|---------|
 |Erőforráscsoport neve     | Annak az erőforráscsoportnak a neve, amelyre a saját felhőt telepíti.        |
 |Saját felhő neve     | A saját felhő neve.        |
