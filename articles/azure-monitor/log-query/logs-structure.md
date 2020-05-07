@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/22/2019
-ms.openlocfilehash: 1d647ba7e8d4f0e29252dfff95099e39bab87895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662076"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738082"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor naplók szerkezete
 A Azure Monitor hatékony funkciója, hogy gyorsan betekintést nyerjen az adataiba a [log lekérdezés](log-query-overview.md) használatával. Hatékony és hasznos lekérdezések létrehozásához ismernie kell néhány olyan alapfogalmakat, mint például a keresett adatok, valamint a strukturált adatok. Ez a cikk az első lépésekhez szükséges alapvető fogalmakat ismerteti.
@@ -54,16 +54,17 @@ A Log Analytics munkaterülettől eltérően egy Application Insights alkalmazá
 
 | Tábla | Leírás | 
 |:---|:---|
-| availabilityResults | A rendelkezésre állási tesztek összesített adatai. |
-| browserTimings      | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő. |
-| customEvents        | Az alkalmazás által létrehozott egyéni események. |
-| customMetrics       | Az alkalmazás által létrehozott egyéni metrikák. |
-| függőségek        | Az alkalmazásból külső összetevőkre irányuló hívások. |
-| kivételek          | Az alkalmazás futtatókörnyezete által kiváltott kivételek. |
-| Oldalmegtekintések           | Adatok az egyes webhelyekről a böngésző információi között. |
-| performanceCounters | Az alkalmazást támogató számítási erőforrások teljesítményének mérése. |
-| kérelmek            | Az egyes alkalmazásokra vonatkozó kérelmek részletei.  |
-| nyomok              | Az elosztott nyomkövetés eredményei. |
+| availabilityResults   | A rendelkezésre állási tesztek összesített adatai.
+| browserTimings      |     Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő.
+| customEvents        | Az alkalmazás által létrehozott egyéni események.
+| customMetrics       | Az alkalmazás által létrehozott egyéni metrikák.
+| függőségek        | Az alkalmazástól a TrackDependency ()-n keresztül rögzített más összetevőkre (beleértve a külső összetevőket is), például a REST API, az adatbázisra vagy a fájlrendszerre irányuló hívásokat. 
+| kivételek            | Az alkalmazás-futtatókörnyezet által kiváltott kivételek rögzítik a kiszolgálóoldali és az ügyféloldali (böngészők) kivételeket is.
+| Oldalmegtekintések           | Adatok az egyes webhelyekről a böngésző információi között.
+| performanceCounters   | Az alkalmazást támogató számítási erőforrások teljesítményének mérései, például a Windows-teljesítményszámlálók.
+| kérelmek            | Az alkalmazás által fogadott kérelmek. Például egy külön kérési rekord kerül a naplóba minden olyan HTTP-kérelem esetében, amelyet a webalkalmazás fogad. 
+| nyomok                | A TrackTrace () segítségével rögzített, az alkalmazás kódjának/naplózási keretrendszerén keresztül kibocsátott részletes naplók (Nyomkövetések).
+
 
 Az alkalmazáshoz tartozó Log Analytics **séma** lapján megtekintheti az egyes táblák sémáját.
 

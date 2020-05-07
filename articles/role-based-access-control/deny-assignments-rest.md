@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások megtagadási hozzárendeléseinek listázása a REST API
-description: Útmutató a felhasználók, csoportok és alkalmazások megtagadási hozzárendeléseinek listázásához szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrások és a REST API számára.
+title: Azure-beli megtagadási hozzárendelések listázása a REST API-Azure RBAC használatával
+description: Útmutató a felhasználók, csoportok és alkalmazások Azure-beli megtagadási hozzárendeléseinek listázásához a REST API és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,25 +15,25 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 0f648405a3d71bf27c64dacbb3fd78f3e9801137
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dae0352566e6cb4f8ed1384ca12213e2aaa07f9d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063020"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733870"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Azure-erőforrások megtagadási hozzárendeléseinek listázása a REST API használatával
+# <a name="list-azure-deny-assignments-using-the-rest-api"></a>Azure-beli megtagadási hozzárendelések listázása a REST API használatával
 
-A [hozzárendelések megtagadása](deny-assignments.md) esetén a felhasználók bizonyos Azure-erőforrás-műveleteket hajtanak végre, még akkor is, ha egy szerepkör-hozzárendelés hozzáférést biztosít Ez a cikk bemutatja, hogyan listázhatja a megtagadási hozzárendeléseket a REST API használatával.
+Az [Azure-megtagadási hozzárendelések](deny-assignments.md) letiltják a felhasználók számára bizonyos Azure-erőforrás-műveletek végrehajtását, még akkor is, ha egy szerepkör-hozzárendelés Ez a cikk bemutatja, hogyan listázhatja a megtagadási hozzárendeléseket a REST API használatával.
 
 > [!NOTE]
-> Nem hozhat létre közvetlenül saját megtagadási hozzárendeléseket. További információ a megtagadási hozzárendelések létrehozásáról: a [hozzárendelések megtagadása](deny-assignments.md).
+> Nem hozhat létre közvetlenül saját megtagadási hozzárendeléseket. További információ a megtagadási hozzárendelések létrehozásáról: [Azure megtagadási hozzárendelések](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a következőket kell tennie:
 
-- `Microsoft.Authorization/denyAssignments/read`az [Azure-erőforrások legtöbb beépített szerepkörének](built-in-roles.md)részét képező engedély.
+- `Microsoft.Authorization/denyAssignments/read`a legtöbb [Azure beépített szerepkör](built-in-roles.md)részét képező engedély.
 
 ## <a name="list-a-single-deny-assignment"></a>Egyetlen megtagadási hozzárendelés listázása
 
@@ -91,7 +91,7 @@ A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a kö
 
 ## <a name="list-deny-assignments-at-the-root-scope-"></a>Megtagadási hozzárendelések listázása a gyökérszintű hatókörben (/)
 
-1. Emelje meg a hozzáférést a [Azure Active Directory globális rendszergazdai jogosultságának jogosultságszint-emelése](elevate-access-global-admin.md)című témakörben leírtak szerint.
+1. A hozzáférést az [Azure-előfizetések és-felügyeleti csoportok felügyeletére vonatkozó jogosultságszint-emelési hozzáférés](elevate-access-global-admin.md)című témakörben leírtak szerint emelheti ki.
 
 1. Használja az alábbi kérelmet:
 
@@ -111,6 +111,6 @@ A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a kö
 
 ## <a name="next-steps"></a>További lépések
 
-- [Az Azure-erőforrások megtagadási hozzárendeléseinek megismerése](deny-assignments.md)
-- [Globális rendszergazda jogosultságszintjének emelése az Azure Active Directoryban](elevate-access-global-admin.md)
+- [Az Azure deny-hozzárendelések ismertetése](deny-assignments.md)
+- [Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez](elevate-access-global-admin.md)
 - [Azure REST API-referenciák](/rest/api/azure/)

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan lehet kódot és konfigurálást Durable Functi
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: d8dd0c86fbc520d0bd3ef6034891bd9871774b4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad498bdbc4e6dc9745c6ef45b3dc601ad36c0a62
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74232744"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733413"
 ---
 # <a name="how-to-run-durable-functions-as-webjobs"></a>Durable Functions futtatása webjobsként
 
@@ -19,7 +19,7 @@ A [Azure functions](../functions-overview.md) és a [Durable functions](durable-
 
 A webjobs SDK 3. x verziójában a gazdagép a (z) `IHost`, és a 2. x verzióban használja az `JobHost` objektumot.
 
-A láncolási Durable Functions minta egy webjobs SDK 2. x verziójában érhető el: töltse le vagy klónozással nyissa meg a [Durable functions tárházat](https://github.com/azure/azure-functions-durable-extension/), és lépjen a *\\Samples webjobssdk\\láncolási* mappájába.
+A láncolási Durable Functions minta egy webjobs SDK 2. x verziójában érhető el: töltse le vagy klónozotta a [Durable functions adattárt](https://github.com/azure/azure-functions-durable-extension/), és a pénztár *v1* ágat, és lépjen a *\\Samples webjobssdk\\láncolási* mappájába.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -184,7 +184,7 @@ while (true)
 
 Durable Functions úgy állította be, hogy Webjobs fusson, és most már tisztában van azzal, hogy ez miben különbözik a futó Durable Functions önálló Azure Functions. Ezen a ponton hasznosnak bizonyulhat a minta működésének meglátása.
 
-Ez a szakasz áttekintést nyújt a [minta projekt](https://github.com/Azure/azure-functions-durable-extension/tree/master/samples/webjobssdk/chaining)futtatásáról. A webjobs SDK-projekt helyi futtatásának és az Azure-Webjobs való üzembe helyezésének részletes leírását lásd: Ismerkedés [a Webjobs SDK-val](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
+Ez a szakasz áttekintést nyújt a [minta projekt](https://github.com/Azure/azure-functions-durable-extension/tree/v1/samples/webjobssdk/chaining)futtatásáról. A webjobs SDK-projekt helyi futtatásának és az Azure-Webjobs való üzembe helyezésének részletes leírását lásd: Ismerkedés [a Webjobs SDK-val](../../app-service/webjobs-sdk-get-started.md#deploy-as-a-webjob).
 
 ### <a name="run-locally"></a>Helyi futtatás
 

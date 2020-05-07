@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 5a8d5f96449cfecd4628c38fa2788a1e06e96b07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a046791b8c50577c1921764b06bac5d88780194d
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758892"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734994"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Az Azure WebJobs SDK használata eseményalapú háttérfeldolgozáshoz
 
@@ -829,7 +829,7 @@ A `ILogger` példányok által létrehozott összes naplóhoz `Category` társí
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|None        | 6 |
+|Nincs        | 6 |
 
 Az egyes kategóriák külön is szűrhetők [`LogLevel`](/dotnet/api/microsoft.extensions.logging.loglevel). Előfordulhat például, hogy meg szeretné jeleníteni az összes naplót a blob-triggerek `Error` feldolgozásához, de minden más esetében csak a magasabbra.
 
@@ -956,9 +956,9 @@ A 3. verzióban. *x*esetén már nem kell kiürítenie a [`TelemetryClient`] gaz
 
 #### <a name="version-2x"></a>2. verzió. *x*
 
-A 2. verzióban. *x*, a [`TelemetryClient`] webjobs SDK által használt [`ServerTelemetryChannel`](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)Application Insights szolgáltató belsőleg létrehozva. Ha a Application Insights végpont nem érhető el, vagy a bejövő kérelmek szabályozása folyamatban van, a csatorna [a webalkalmazás fájlrendszerében menti a kérelmeket, és később újra elküldi őket](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+A 2. verzióban. *x*, a [`TelemetryClient`] webjobs SDK által használt [`ServerTelemetryChannel`](https://github.com/microsoft/ApplicationInsights-dotnet/tree/develop/.publicApi/Microsoft.AI.ServerTelemetryChannel.dll)Application Insights szolgáltató belsőleg létrehozva. Ha a Application Insights végpont nem érhető el, vagy a bejövő kérelmek szabályozása folyamatban van, a csatorna [a webalkalmazás fájlrendszerében menti a kérelmeket, és később újra elküldi őket](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
 
-A [`TelemetryClient`] -t egy olyan osztály hozza létre, `ITelemetryClientFactory`amely megvalósítja. Alapértelmezés szerint ez a [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs)következő:.
+A [`TelemetryClient`] -t egy olyan osztály hozza létre, `ITelemetryClientFactory`amely megvalósítja. Alapértelmezés szerint ez a [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/)következő:.
 
 Ha módosítani szeretné a Application Insightsi folyamat bármely részét, megadhatja saját `ITelemetryClientFactory`adatait, és a gazdagép az osztályt fogja használni a létrehozásához. [`TelemetryClient`] Ez a kód például felülbírálja `DefaultTelemetryClientFactory` a következő tulajdonságának módosítását: `ServerTelemetryChannel`
 

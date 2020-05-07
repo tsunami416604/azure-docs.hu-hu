@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/26/2020
-ms.openlocfilehash: db63ce2d56eb78bf6b361d530511b6902c1cb6d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637774"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732036"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -255,6 +255,10 @@ Tekintse meg az SDK [kibocsátási megjegyzéseit](app/release-notes.md) , amely
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
 A Megoldáskezelő kattintson `ApplicationInsights.config` a jobb gombbal, majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
 
+### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Használhatom `providers('Microsoft.Insights', 'components').apiVersions[0]` a Azure Resource Manager üzembe helyezéseit?
+
+Ezt a módszert nem ajánlott az API verziójának feltöltésére használni. A legújabb verzió olyan előzetes kiadásokat is tartalmazhat, amelyek feltörési változásokat okozhatnak. Még a nem előzetes verziók újabb kiadásai esetén is, az API-verziók nem mindig visszafelé kompatibilisek a meglévő sablonokkal, vagy bizonyos esetekben előfordulhat, hogy az API-verzió nem érhető el az összes előfizetéshez.
+
 ### <a name="what-is-status-monitor"></a>Mi az Állapotfigyelő?
 
 Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
@@ -412,7 +416,7 @@ Ez nem függ attól, hogy hol található a Application Insights-erőforrás. Cs
 
 ### <a name="can-i-send-telemetry-to-the-application-insights-portal"></a>Küldhetek telemetria az Application Insights portálra?
 
-Javasoljuk, hogy használja az SDK-kat, és használja az [SDK API](app/api-custom-events-metrics.md)-t. Különböző [platformokon](app/platforms.md)léteznek az SDK különféle változatai. Ezek az SDK-k pufferelést, tömörítést, szabályozást, újrapróbálkozást és így tovább kezelik. A betöltési [séma](https://github.com/Microsoft/ApplicationInsights-dotnet/tree/develop/Schema/PublicSchema) és a [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) azonban nyilvános.
+Javasoljuk, hogy használja az SDK-kat, és használja az [SDK API](app/api-custom-events-metrics.md)-t. Különböző [platformokon](app/platforms.md)léteznek az SDK különféle változatai. Ezek az SDK-k pufferelést, tömörítést, szabályozást, újrapróbálkozást és így tovább kezelik. A betöltési [séma](https://github.com/microsoft/ApplicationInsights-dotnet/tree/master/BASE/Schema/PublicSchema) és a [végpont protokoll](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/ENDPOINT-PROTOCOL.md) azonban nyilvános.
 
 ### <a name="can-i-monitor-an-intranet-web-server"></a>Nyomon követhető az intranetes webkiszolgáló?
 

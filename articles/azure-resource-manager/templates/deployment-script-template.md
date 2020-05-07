@@ -5,21 +5,20 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: jgao
-ms.openlocfilehash: 99db4ec61a515301224691d7c2e4e3c905fee1c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 14663e71126d8c201015996e3e4dc76976128bcc
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188909"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610802"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
 Ismerje meg, hogyan használhatók az üzembe helyezési parancsfájlok az Azure Resource templates szolgáltatásban. A nevű `Microsoft.Resources/deploymentScripts`új erőforrástípus használatával a felhasználók üzembe helyezhetik a telepítési parancsfájlokat a sablonok központi telepítései során, és áttekinthetik a végrehajtás eredményeit. Ezek a parancsfájlok olyan egyéni lépések végrehajtásához használhatók, mint például a következők:
 
 - felhasználók hozzáadása egy címtárhoz
-- alkalmazás-regisztráció létrehozása
 - adatsík műveletek végrehajtása, például a Blobok vagy a vetőmag-adatbázisok másolása
 - licenckulcs megkeresése és érvényesítése
 - önaláírt tanúsítvány létrehozása
@@ -37,14 +36,14 @@ Az üzembe helyezési parancsfájl előnyei:
 Az üzembe helyezési parancsfájl erőforrása csak azokon a régiókban érhető el, ahol elérhető az Azure Container instance.  Tekintse [meg az Azure-régiók Azure Container instances erőforrás-elérhetőségét](../../container-instances/container-instances-region-availability.md)ismertető témakört.
 
 > [!IMPORTANT]
-> A parancsfájlok végrehajtásához és a hibaelhárításhoz két üzembe helyezési parancsfájl-erőforrás, egy Storage-fiók és egy tároló-példány jön létre ugyanabban az erőforráscsoporthoz. Ezeket az erőforrásokat általában a parancsfájl-szolgáltatás törli, amikor a telepítési parancsfájl végrehajtása egy terminál állapotba kerül. Az erőforrások számlázása az erőforrások törlése után történik. További információért lásd: [telepítési parancsfájl-erőforrások tisztítása](#clean-up-deployment-script-resources).
+> A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy Storage-fiókra és egy tároló példányra. Lehetősége van meglévő Storage-fiók megadására, máskülönben a Storage-fiókkal együtt automatikusan létrejön a tároló-példány. A szkript szolgáltatás általában törli a két automatikusan létrehozott erőforrást, amikor a telepítési parancsfájl végrehajtása egy terminál állapotba kerül. Az erőforrások számlázása az erőforrások törlése után történik. További információért lásd: [telepítési parancsfájl-erőforrások tisztítása](#clean-up-deployment-script-resources).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 - **Felhasználó által hozzárendelt felügyelt identitás a közreműködői szerepkörrel a célként megadott erőforrás-csoport számára**. Ez az identitás az üzembe helyezési parancsfájlok végrehajtásához használatos. Az erőforráscsoporton kívüli műveletek elvégzéséhez további engedélyeket kell megadnia. Rendelje hozzá például az identitást az előfizetés szintjéhez, ha új erőforráscsoportot szeretne létrehozni.
 
   > [!NOTE]
-  > Az üzembe helyezési parancsfájl motorja létrehoz egy Storage-fiókot és egy tároló példányt a háttérben.  Az előfizetési szinten a közreműködő szerepkörrel rendelkező felhasználóhoz rendelt felügyelt identitás megadása kötelező, ha az előfizetés nem regisztrálta az Azure Storage-fiókot (Microsoft. Storage) és az Azure Container instance (Microsoft. ContainerInstance) erőforrás-szolgáltatót.
+  > A parancsfájl-szolgáltatás létrehoz egy Storage-fiókot (kivéve, ha megad egy meglévő Storage-fiókot) és a háttérben található Container-példányt.  Az előfizetési szinten a közreműködő szerepkörrel rendelkező felhasználóhoz rendelt felügyelt identitás megadása kötelező, ha az előfizetés nem regisztrálta az Azure Storage-fiókot (Microsoft. Storage) és az Azure Container instance (Microsoft. ContainerInstance) erőforrás-szolgáltatót.
 
   Identitás létrehozásához tekintse meg a [felhasználó által hozzárendelt felügyelt identitás létrehozása a Azure Portal használatával](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)vagy az [Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)használatával vagy a [Azure PowerShell használatával](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md)című témakört. A sablon üzembe helyezésekor szüksége lesz az azonosító AZONOSÍTÓra. Az identitás formátuma:
 
@@ -101,6 +100,13 @@ A következő JSON egy példa.  A sablon legújabb sémája [itt](/azure/templat
   },
   "properties": {
     "forceUpdateTag": 1,
+    "containerSettings": {
+      "containerGroupName": "mycustomaci"
+    },
+    "storageAccountSettings": {
+      "storageAccountName": "myStorageAccount",
+      "storageAccountKey": "myKey"
+    },
     "azPowerShellVersion": "3.0",  // or "azCliVersion": "2.0.80"
     "arguments": "[concat('-name ', parameters('name'))]",
     "environmentVariables": [
@@ -132,6 +138,8 @@ Tulajdonság értékének részletei:
 - **Identitás**: az üzembe helyezési parancsfájl szolgáltatás felhasználó által hozzárendelt felügyelt identitást használ a parancsfájlok végrehajtásához. Jelenleg csak a felhasználó által hozzárendelt felügyelt identitás támogatott.
 - **Típus: adja**meg a parancsfájl típusát. Jelenleg a Azure PowerShell és az Azure CLI-parancsfájlok támogatottak. Az értékek a következők: **AzurePowerShell** és **AzureCLI**.
 - **forceUpdateTag**: ennek az értéknek a módosítása a sablon központi telepítései között kényszeríti a telepítési parancsfájl ismételt végrehajtását. Használja a newGuid () vagy a utcNow () függvényt, amelyet a paraméter defaultValue értékeként kell beállítani. További információ: [parancsfájl futtatása](#run-script-more-than-once)többször.
+- **containerSettings**: határozza meg az Azure Container instance testreszabásához szükséges beállításokat.  a **containerGroupName** a tároló csoport nevének megadására szolgál.  Ha nincs megadva, a rendszer automatikusan létrehozza a csoport nevét.
+- **storageAccountSettings**: meglévő Storage-fiók használatára vonatkozó beállítások megadása. Ha nincs megadva, a rendszer automatikusan létrehozza a Storage-fiókot. Lásd: [meglévő Storage-fiók használata](#use-an-existing-storage-account).
 - **azPowerShellVersion**/**azCliVersion**: Itt adhatja meg a használni kívánt modul verzióját. A PowerShell és a parancssori felület támogatott verzióinak listájáért lásd: [Előfeltételek](#prerequisites).
 - **argumentumok**: határozza meg a paraméterek értékeit. Az értékeket szóközök választják el egymástól.
 - **environmentVariables**: adja meg azokat a környezeti változókat, amelyeket át kell adni a parancsfájlnak. További információ: [telepítési parancsfájlok fejlesztése](#develop-deployment-scripts).
@@ -241,7 +249,7 @@ a [jQ](https://stedolan.github.io/jq/) az előző mintában van használatban. A
 ### <a name="handle-non-terminating-errors"></a>Nem megszakítást okozó hibák kezelése
 
 Az üzembe helyezési parancsfájl [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) változójának használatával szabályozhatja, hogyan válaszol a PowerShell a nem megszakítást okozó hibákra. Az üzembe helyezési parancsfájl motorja nem állítja be és nem módosítja az értéket.  A $ErrorActionPreferencehoz beállított érték ellenére a telepítési parancsfájl az erőforrás-kiépítési állapotot úgy állítja be, hogy a hiba esetén *meghiúsuljon* , ha a parancsfájl hibát észlel.
+) változójának használatával szabályozhatja, hogyan válaszol a PowerShell a nem megszakítást okozó hibákra. A parancsfájl-szolgáltatás nem állítja be és nem módosítja az értéket.  A $ErrorActionPreferencehoz beállított érték ellenére a telepítési parancsfájl az erőforrás-kiépítési állapotot úgy állítja be, hogy a hiba esetén *meghiúsuljon* , ha a parancsfájl hibát észlel.
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Biztonságos karakterláncok továbbítása a telepítési parancsfájlba
 
@@ -249,7 +257,7 @@ A környezeti változók (EnvironmentVariable) beállítása a Container instanc
 
 ## <a name="debug-deployment-scripts"></a>Üzembe helyezési parancsfájlok hibakeresése
 
-A parancsfájl-szolgáltatás létrehoz egy [Storage-fiókot](../../storage/common/storage-account-overview.md) és egy tároló- [példányt](../../container-instances/container-instances-overview.md) a parancsfájlok futtatásához. Mindkét erőforrás rendelkezik az **azscripts** utótaggal.
+A parancsfájl-szolgáltatás létrehoz egy [Storage-fiókot](../../storage/common/storage-account-overview.md) (kivéve, ha megad egy meglévő Storage-fiókot) és egy tároló- [példányt](../../container-instances/container-instances-overview.md) a parancsfájlok végrehajtásához. Ha ezeket az erőforrásokat a script Service automatikusan hozza létre, mindkét erőforráshoz az **azscripts** utótag tartozik.
 
 ![Resource Manager-sablon telepítési parancsfájljának erőforrásainak nevei](./media/deployment-script-template/resource-manager-template-deployment-script-resources.png)
 
@@ -292,17 +300,38 @@ Ha meg szeretné tekinteni a deploymentScripts-erőforrást a portálon, válass
 
 ![Resource Manager-sablon telepítési parancsfájlja, rejtett típusok megjelenítése, portál](./media/deployment-script-template/resource-manager-deployment-script-portal-show-hidden-types.png)
 
+## <a name="use-an-existing-storage-account"></a>Meglévő Storage-fiók használata
+
+A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy Storage-fiókra és egy tároló példányra. Lehetősége van meglévő Storage-fiók megadására, máskülönben a Storage-fiókkal együtt automatikusan létrejön a tároló-példány. Meglévő Storage-fiók használatára vonatkozó követelmények:
+
+- A támogatott Storage-fiókok a következők: általános célú v2-fiókok, általános célú v1-fiókok és fileStorage-fiókok. További információ: Storage- [fiókok típusai](../../storage/common/storage-account-overview.md).
+- A Storage-fiók tűzfalszabályok ki kell kapcsolni. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md)
+- A telepítési parancsfájl felhasználó által hozzárendelt felügyelt identitásának engedélyekkel kell rendelkeznie a Storage-fiók kezeléséhez, beleértve az olvasás, a létrehozás és a fájlmegosztás törlését.
+
+Meglévő Storage-fiók megadásához adja hozzá a következő JSON-t a tulajdonság `Microsoft.Resources/deploymentScripts`eleméhez:
+
+```json
+"storageAccountSettings": {
+  "storageAccountName": "myStorageAccount",
+  "storageAccountKey": "myKey"
+},
+```
+
+Tekintse meg a teljes `Microsoft.Resources/deploymentScripts` definíciós minta [sablonjait](#sample-templates) .
+
+Meglévő Storage-fiók használatakor a parancsfájl-szolgáltatás egy egyedi névvel rendelkező fájlmegosztást hoz létre. Tekintse meg a [telepítési parancsfájl-erőforrások tisztítása](#clean-up-deployment-script-resources) című témakört, amely azt ismerteti, hogyan törli a parancsfájl-szolgáltatás a fájlmegosztást.
+
 ## <a name="clean-up-deployment-script-resources"></a>Üzembe helyezési parancsfájl erőforrásainak karbantartása
 
-Az üzembe helyezési parancsfájl létrehoz egy Storage-fiókot és egy tároló-példányt, amely a telepítési parancsfájlok végrehajtásához és a hibakeresési adatok tárolásához használatos. Ez a két erőforrás ugyanabban az erőforráscsoportban jön létre, mint a kiépített erőforrások, és a parancsfájl a szkript lejárta után törli. Szabályozhatja ezeknek az erőforrásoknak a életciklusát.  Amíg nem törli őket, mindkét erőforrásért díjat kell fizetnie. Az árakra vonatkozó információkért lásd: [Container instances díjszabás](https://azure.microsoft.com/pricing/details/container-instances/) és az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
+A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy Storage-fiókra és egy tároló példányra. Lehetősége van megadnia egy meglévő Storage-fiókot, ellenkező esetben a rendszer automatikusan létrehozza a Storage-fiókot a tároló-példánnyal együtt. A parancsfájl-szolgáltatás két automatikusan létrehozott erőforrást töröl, amikor a telepítési parancsfájl végrehajtása egy terminál állapotba kerül. Az erőforrások számlázása az erőforrások törlése után történik. Az árakra vonatkozó információkért lásd: [Container instances díjszabás](https://azure.microsoft.com/pricing/details/container-instances/) és az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
 Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai vezérlik:
 
-- **cleanupPreference**: Ha a parancsfájl végrehajtása egy terminál állapotba kerül, a rendszer törli a beállítást.  A támogatott értékek a következők:
+- **cleanupPreference**: Ha a parancsfájl végrehajtása egy terminál állapotba kerül, a rendszer törli a beállítást. A támogatott értékek a következők:
 
-  - **Mindig**: törölje az erőforrásokat, ha a parancsfájl végrehajtása terminál állapotba kerül. Mivel a deploymentScripts-erőforrás továbbra is megtalálható az erőforrások tisztítása után, a rendszerparancsfájl a parancsfájlok végrehajtásának eredményeit, például az stdout-t, a kimeneteket, a visszatérési értéket, az erőforrások törlését pedig az ADATBÁZISba másolja.
-  - **OnSuccess**: csak akkor törölje az erőforrásokat, ha a parancsfájl végrehajtása sikeres. A hibakeresési adatok megkereséséhez továbbra is hozzáférhet az erőforrásokhoz.
-  - **OnExpiration**: csak akkor törölje az erőforrásokat, ha a **retentionInterval** -beállítás lejár. Ez a tulajdonság jelenleg le van tiltva.
+  - **Mindig**: törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása terminál állapotba kerül. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás törli a Storage-fiókban létrehozott fájlmegosztást. Mivel a deploymentScripts-erőforrás továbbra is megtalálható az erőforrások tisztítása után, a parancsfájl-szolgáltatások megőrzik a parancsfájlok végrehajtásának eredményét, például az stdout, a kimenetek, a visszatérési érték stb. értékét az erőforrások törlése előtt.
+  - **OnSuccess**: csak akkor törölje az automatikusan létrehozott erőforrásokat, ha a parancsfájl végrehajtása sikeres. Ha egy meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás csak akkor távolítja el a fájlmegosztást, ha a parancsfájl végrehajtása sikeres. A hibakeresési adatok megkereséséhez továbbra is hozzáférhet az erőforrásokhoz.
+  - **OnExpiration**: az automatikus erőforrások törlése csak akkor, ha a **retentionInterval** -beállítás lejár. Ha meglévő Storage-fiókot használ, a parancsfájl-szolgáltatás eltávolítja a fájlmegosztást, de megtartja a Storage-fiókot.
 
 - **retentionInterval**: adja meg azt az időintervallumot, ameddig a rendszer megőrzi a parancsfájl-erőforrást, majd azután, hogy lejárt és törölve lesz.
 

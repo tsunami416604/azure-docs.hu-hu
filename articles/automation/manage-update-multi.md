@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 03/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5376562d9df35539a33f6746b387a1ff7083b8f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a878ecf4519a852a9798b320bda26cd490487a4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676446"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731985"
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>Több Azure-beli virtuális gép frissítéseinek kezelése
 
@@ -21,7 +21,7 @@ A Windows-és Linux-alapú virtuális gépek frissítéseinek és javításának
 - A szükséges frissítések telepítésének ütemezése.
 - Tekintse át a telepítési eredményeket annak ellenőrzéséhez, hogy a frissítések alkalmazása sikeres volt-e az összes olyan virtuális gépen, amelyhez Update Management engedélyezve van.
 
-A Update Management rendszerkövetelményeivel kapcsolatos további információkért lásd: [Update Management ügyfélre vonatkozó követelmények](automation-update-management.md#clients).
+A Update Management rendszerkövetelményeivel kapcsolatos további információkért lásd: [Update Management ügyfélre vonatkozó követelmények](automation-update-management.md#client-requirements).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -81,7 +81,7 @@ A következő táblázat ismerteti a megoldás által támogatott csatlakoztatot
 | Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
 | Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd kezdeményezi a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
 | Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről. |
-| Azure Storage-fiók |Nem |Az Azure Storage szolgáltatás nem tartalmaz információkat a rendszerfrissítésekről. |
+| Azure Storage-fiók |No |Az Azure Storage szolgáltatás nem tartalmaz információkat a rendszerfrissítésekről. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 

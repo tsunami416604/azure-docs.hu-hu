@@ -14,12 +14,12 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
-ms.openlocfilehash: 61be6bcd957a4e81147d5ef472b8f850e5605e41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8621dde43ff38cee15feb1d30b6ea80ab681c855
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70309273"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594780"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>A Node.js modulok használata az Azure alkalmazásokkal
 Ez a dokumentum útmutatást nyújt a Node. js-modulok használatáról az Azure-ban üzemeltetett alkalmazásokkal. Útmutatást nyújt annak biztosításához, hogy az alkalmazás a modul egy adott verzióját használja, valamint natív modulokat használjon az Azure-ban.
@@ -85,7 +85,7 @@ Ha az alkalmazás készen áll az éles környezetben való használatra, zárol
 > 
 
 ## <a name="next-steps"></a>További lépések
-Most, hogy megértette, hogyan használhatja a Node. js-modulokat az Azure-ban, megtudhatja, hogyan [adhatja meg a](https://github.com/squillace/staging/blob/master/articles/nodejs-specify-node-version-azure-apps.md)Node. js-verziót, hogyan [építhet ki és helyezhet üzembe egy Node. js-webalkalmazást](app-service/app-service-web-get-started-nodejs.md), és [hogyan használhatja az Azure parancssori felületet Mac és Linux rendszereken](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+Most, hogy megértette, hogyan használhatja a Node. js-modulokat az Azure-ban, megtudhatja, hogyan [adhatja meg a](https://github.com/squillace/nodejs-microservice)Node. js-verziót, hogyan [építhet ki és helyezhet üzembe egy Node. js-webalkalmazást](app-service/app-service-web-get-started-nodejs.md), és [hogyan használhatja az Azure parancssori felületet Mac és Linux rendszereken](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 További információk: [Node.js fejlesztői központ](/azure/javascript/).
 

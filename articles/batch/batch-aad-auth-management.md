@@ -3,12 +3,13 @@ title: Azure Active Directory használata a Batch-felügyeleti megoldások hitel
 description: Ismerkedjen meg a Azure Active Directory használatával a Batch Management .NET függvénytárat használó alkalmazásokból való hitelesítéshez.
 ms.topic: article
 ms.date: 04/27/2017
-ms.openlocfilehash: 0aa95aa440303d1577b7646c1a9f1bc5b6e69ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82114785"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608455"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch-felügyeleti megoldások hitelesítése Active Directory
 
@@ -28,7 +29,7 @@ A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazá
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
-Miután elvégezte a regisztrációs folyamatot, megjelenik az alkalmazás azonosítója és az objektum (egyszerű szolgáltatásnév) azonosítója.  
+Miután elvégezte a regisztrációs folyamatot, megjelenik az alkalmazás azonosítója és az objektum (egyszerű szolgáltatásnév) azonosítója.
 
 ![](./media/batch-aad-auth-management/app-registration-client-id.png)
 
@@ -44,7 +45,7 @@ Hajtsa végre a következő lépéseket az Azure Portalon:
     ![Az alkalmazás nevének megkeresése](./media/batch-aad-auth-management/search-app-registration.png)
 
 3. A **Beállítások** panel megjelenítése Az **API-hozzáférés** szakaszban válassza a **szükséges engedélyek**lehetőséget.
-4. Új szükséges engedély hozzáadásához kattintson a **Hozzáadás** gombra. 
+4. Új szükséges engedély hozzáadásához kattintson a **Hozzáadás** gombra.
 5. Az 1. lépésben írja be a **Windows Azure Service Management APIt**, válassza ki az API-t az eredmények listájából, majd kattintson a **kiválasztás** gombra.
 6. A 2. lépésben jelölje be a **klasszikus Azure-beli üzembe helyezési modell a szervezeti felhasználókként való elérésének**jelölőnégyzetét, majd kattintson a **kiválasztás** gombra.
 7. Kattintson a **kész** gombra.
@@ -70,11 +71,11 @@ A AccountManagement-minta alkalmazás állandókat határoz meg ezekhez a végpo
 ```csharp
 // Azure Active Directory "common" endpoint.
 private const string AuthorityUri = "https://login.microsoftonline.com/common";
-// Azure Resource Manager endpoint 
+// Azure Resource Manager endpoint
 private const string ResourceUri = "https://management.core.windows.net/";
 ```
 
-## <a name="reference-your-application-id"></a>Az alkalmazás AZONOSÍTÓjának hivatkozása 
+## <a name="reference-your-application-id"></a>Az alkalmazás AZONOSÍTÓjának hivatkozása
 
 Az ügyfélalkalmazás az alkalmazás AZONOSÍTÓját (más néven ügyfél-azonosítót) használja az Azure AD eléréséhez futásidőben. Miután regisztrálta az alkalmazást a Azure Portalban, frissítse a kódját, hogy az Azure AD által megadott alkalmazás-azonosítót használja a regisztrált alkalmazáshoz. A AccountManagement minta alkalmazásban másolja az alkalmazás AZONOSÍTÓját a Azure Portal a megfelelő konstansba:
 
@@ -96,7 +97,7 @@ private const string RedirectUri = "http://myaccountmanagementsample";
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD-hitelesítési jogkivonat beszerzése
 
-Miután regisztrálta az AccountManagement mintát az Azure AD-bérlőben, és frissíti a minta forráskódját az értékekkel, a minta készen áll a hitelesítésre az Azure AD használatával. A minta futtatásakor a ADAL hitelesítési jogkivonat beszerzését kísérli meg. Ebben a lépésben a Microsoft hitelesítő adatait kéri: 
+Miután regisztrálta az AccountManagement mintát az Azure AD-bérlőben, és frissíti a minta forráskódját az értékekkel, a minta készen áll a hitelesítésre az Azure AD használatával. A minta futtatásakor a ADAL hitelesítési jogkivonat beszerzését kísérli meg. Ebben a lépésben a Microsoft hitelesítő adatait kéri:
 
 ```csharp
 // Obtain an access token using the "common" AAD resource. This allows the application
@@ -109,7 +110,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
                                                         PromptBehavior.Auto);
 ```
 
-A hitelesítő adatok megadása után a minta alkalmazás folytathatja a hitelesített kérések kiküldését a Batch Management szolgáltatásba. 
+A hitelesítő adatok megadása után a minta alkalmazás folytathatja a hitelesített kérések kiküldését a Batch Management szolgáltatásba.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -117,7 +118,7 @@ A [AccountManagement-minta alkalmazás][acct_mgmt_sample]futtatásával kapcsola
 
 Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
 
-A Batch szolgáltatásbeli alkalmazások Azure AD-vel történő hitelesítéséhez tekintse meg [a Batch szolgáltatással kapcsolatos megoldások hitelesítése Active Directory](batch-aad-auth.md)használatával című témakört. 
+A Batch szolgáltatásbeli alkalmazások Azure AD-vel történő hitelesítéséhez tekintse meg [a Batch szolgáltatással kapcsolatos megoldások hitelesítése Active Directory](batch-aad-auth.md)használatával című témakört.
 
 
 [aad_about]:../active-directory/fundamentals/active-directory-whatis.md "Mi az Azure Active Directory?"

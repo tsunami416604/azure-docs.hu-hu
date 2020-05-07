@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/14/2020
-ms.openlocfilehash: 1dceb3db4572ecdaf504745dba1099a5eccead43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 7ed01a57a4c2a55d777907a6cc14b111fb2086e3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80395792"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731900"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és helyreállítása
 
@@ -59,14 +59,13 @@ PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-
 
 ### <a name="troubleshooting"></a>Hibaelhárítás
 
-Log Analytics munkaterület törléséhez "Log Analytics közreműködői" engedélyekkel kell rendelkeznie.<br>
-Ha a munkaterület létrehozásakor "*a munkaterület neve már használatban van*" hibaüzenet jelenik meg, az a következő lehet:
+A munkaterület törléséhez legalább *log Analytics közreműködői* engedélyekkel kell rendelkeznie.<br>
+Ha hibaüzenet jelenik meg, akkor *a munkaterület neve már használatban van* , vagy *ütközést* okoz a munkaterület létrehozásakor, az a következő lehet:
 * A munkaterület neve nem érhető el, és a szervezete vagy más ügyfél által használt személy használja.
-* A munkaterületet az elmúlt 14 napban törölték, és a neve a törlési időszak számára fenntartott marad. A helyreállítható törlés felülbírálásához és a munkaterület azonnali törléséhez és az azonos nevű új munkaterület létrehozásához kövesse az alábbi lépéseket a munkaterület helyreállításához, és végezze el a végleges törlést:<br>
+* A munkaterületet az elmúlt 14 napban törölték, és a neve a törlési időszak számára fenntartott marad. Ha felül szeretné bírálni a munkaterületet, hogy az azonos nevű új munkaterületet hozzon létre, az alábbi lépéseket követve állítsa helyre a munkaterületet, és végezzen végleges törlést:<br>
    1. [Állítsa helyre](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#recover-workspace) a munkaterületet.
    2. A munkaterület [végleges törlése](https://docs.microsoft.com/azure/azure-monitor/platform/delete-workspace#permanent-workspace-delete) .
    3. Hozzon létre egy új munkaterületet ugyanazzal a munkaterület-névvel.
-
 
 ## <a name="permanent-workspace-delete"></a>Állandó munkaterület törlése
 Előfordulhat, hogy a Soft-Delete metódus nem fér el bizonyos helyzetekben, például a fejlesztéshez és a teszteléshez, ahol meg kell ismételnie egy központi telepítést ugyanazzal a beállításokkal és a munkaterület nevével. Ilyen esetekben véglegesen törölheti a munkaterületet, és "felülbírálhatja" a Soft-delete időszakot. Az állandó munkaterület-törlési művelet kiadja a munkaterület nevét, és létrehoz egy új munkaterületet ugyanazzal a névvel.
@@ -96,12 +95,7 @@ Hol "eyJ0eXAiOiJKV1Qi..." a teljes engedélyezési tokent jelöli.
 
 Ha közreműködői engedélyekkel rendelkezik ahhoz az előfizetéshez és erőforráscsoporthoz, amelyben a munkaterület a törlési művelet előtt hozzá volt rendelve, akkor helyreállíthatja azt a puha törlési időszakban, beleértve az adatokat, a konfigurációt és a csatlakoztatott ügynököket. A törlési időtartam után a munkaterület nem helyreállítható és végleges törléshez van rendelve. A törölt munkaterületek nevei a Soft-delete időszakban megmaradnak, és nem használhatók új munkaterületek létrehozására tett kísérlet során.  
 
-A munkaterületet a következő munkaterület-létrehozási metódusok használatával állíthatja helyre: [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) vagy [REST API]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate) , ha a következő tulajdonságok vannak feltöltve a törölt munkaterület részleteivel:
-
-* Előfizetés azonosítója
-* Erőforráscsoport neve
-* Munkaterület neve
-* Régió
+A munkaterületet úgy állíthatja helyre, hogy létrehoz egy munkaterületet a törölt munkaterület részleteivel, beleértve az *előfizetés-azonosítót*, az *erőforráscsoport nevét*, a *munkaterület nevét* és a *régiót*. Ha az erőforráscsoport is törölve lett, és nem létezik, hozzon létre egy azonos nevű erőforráscsoportot, amelyet a törlés előtt használt, majd hozzon létre egy munkaterületet a következő módszerek bármelyikével: [Azure Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace), [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/New-AzOperationalInsightsWorkspace) vagy [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/createorupdate).
 
 ### <a name="powershell"></a>PowerShell
 ```PowerShell

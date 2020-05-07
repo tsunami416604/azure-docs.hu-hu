@@ -3,12 +3,12 @@ title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszín
 description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 03/12/2020
-ms.openlocfilehash: e8ce279afc845ebf37ad4ab8b2ce7236cb18137a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9f5489b513cd1405e6b093d7537e4cbcead041
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79453582"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744616"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -30,17 +30,47 @@ Alkalmazások felderítése Azure Migrate használatával: a kiszolgáló érté
 5. Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-appliance.md) megtekintése.
 6. Ellenőrizze az alkalmazások felderítésének [támogatását és követelményeit](migrate-support-matrix-vmware.md#application-discovery) .
 
-## <a name="prepare-for-app-discovery"></a>Az alkalmazások felderítésének előkészítése
 
-1. [Felkészülés a berendezések üzembe helyezésére](tutorial-prepare-vmware.md). Az előkészítés magában foglalja a berendezés beállításainak ellenőrzését, valamint egy olyan fiók beállítását, amelyet a készülék a vCenter Server eléréséhez használ majd.
-2. Győződjön meg arról, hogy rendelkezik egy felhasználói fiókkal (amely a Windows-és Linux-kiszolgálókon van), és rendszergazdai jogosultságokkal rendelkezik azokon a gépeken, amelyeken alkalmazásokat, szerepköröket és szolgáltatásokat kíván felderíteni.
-3. [Telepítse a Azure Migrate készüléket](how-to-set-up-appliance-vmware.md) a felderítés elindításához. A készülék üzembe helyezéséhez le kell töltenie és importálnia kell egy PETESEJT-sablont a VMware-be a készülék VMware virtuális gépként való létrehozásához. Konfigurálja a készüléket, majd regisztrálja azt a Azure Migrate.
-2. A berendezés üzembe helyezésekor a folyamatos felderítés elindításához a következőket kell megadnia:
+
+## <a name="deploy-the-azure-migrate-appliance"></a>A Azure Migrate berendezés üzembe helyezése
+
+1. [Tekintse át](migrate-appliance.md#appliance---vmware) az Azure Migrate berendezés üzembe helyezésének követelményeit.
+2. Tekintse át azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie a [nyilvános](migrate-appliance.md#public-cloud-urls) és a [kormányzati felhőkben](migrate-appliance.md#government-cloud-urls).
+3. [Tekintse át](migrate-appliance.md#collected-data---vmware) a készülék által a felderítés és az értékelés során gyűjtött adatokat.
+4. [Jegyezze](migrate-support-matrix-vmware.md#port-access) fel a port hozzáférési követelményeit a készülékhez.
+5. [Telepítse a Azure Migrate készüléket](how-to-set-up-appliance-vmware.md) a felderítés elindításához. A készülék üzembe helyezéséhez le kell töltenie és importálnia kell egy PETESEJT-sablont a VMware-be a készülék VMware virtuális gépként való létrehozásához. Konfigurálja a készüléket, majd regisztrálja azt a Azure Migrate.
+6. A berendezés üzembe helyezésekor a folyamatos felderítés elindításához a következőket kell megadnia:
     - Annak a vCenter Server a neve, amelyhez csatlakozni szeretne.
     - A készülékhez a vCenter Serverhoz való kapcsolódáshoz létrehozott hitelesítő adatok.
     - A készülékhez a Windows/Linux rendszerű virtuális gépekhez való kapcsolódáshoz létrehozott fiók hitelesítő adatai.
 
 A készülék üzembe helyezése és a hitelesítő adatok megadása után a készülék elindítja a virtuális gépek metaadatait és teljesítményadatait, valamint az alkalmazások, szolgáltatások és szerepkörök felderítését.  Az alkalmazások felderítésének időtartama attól függ, hogy hány virtuális gép van. Általában egy órát vesz igénybe az 500 virtuális gépek alkalmazás-felderítése során.
+
+## <a name="prepare-a-user-account"></a>Felhasználói fiók előkészítése
+
+Hozzon létre egy, a felderítéshez használandó fiókot, és adja hozzá a berendezéshez.
+
+### <a name="create-a-user-account-for-discovery"></a>Felhasználói fiók létrehozása a felderítéshez
+
+Hozzon létre egy felhasználói fiókot, hogy a kiszolgáló értékelése hozzáférhessen a virtuális géphez a felderítéshez. [További](migrate-support-matrix-vmware.md#application-discovery) információ a fiókokra vonatkozó követelményekről.
+
+
+### <a name="add-the-user-account-to-the-appliance"></a>A felhasználói fiók hozzáadása a berendezéshez
+
+Adja hozzá a felhasználói fiókot a készülékhez.
+
+1. Nyissa meg a berendezés-kezelő alkalmazást. 
+2. Navigáljon az **adja meg a vCenter részletei** panelt.
+3. Az **alkalmazás és a virtuális gépek függőségeinek felderítése**területen kattintson a **hitelesítő adatok hozzáadása** lehetőségre.
+3. Válassza ki az **operációs rendszert**, adjon meg egy felhasználóbarát nevet a fiókhoz, és a **Felhasználónév**/**jelszava**
+6. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson **a Mentés gombra, és indítsa el a felderítést**.
+
+    ![VM-felhasználói fiók hozzáadása](./media/how-to-create-group-machine-dependencies-agentless/add-vm-credential.png)
+
+
+
+
 
 ## <a name="review-and-export-the-inventory"></a>A leltár áttekintése és exportálása
 

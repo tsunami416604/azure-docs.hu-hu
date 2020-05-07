@@ -3,12 +3,12 @@ title: Erőforrások támogatásának címkézése
 description: Megjeleníti, hogy mely Azure-erőforrástípusok támogatják a címkéket. Az összes Azure-szolgáltatás részleteit tartalmazza.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: c971d3af102faf99f97aac261882797460d71f37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c035f4f9ce6b7c842caeab3b705394417d15ba0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255026"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609289"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure-erőforrások támogatásának címkézése
 Ez a cikk azt mutatja be, hogy az erőforrástípus támogatja-e a [címkéket](tag-resources.md). A címkével ellátott oszlopban szereplő **címke jelzi,** hogy az erőforrástípus rendelkezik-e tulajdonsággal a címkéhez. A **címke a Cost jelentésben** feliratú oszlop jelzi, hogy az erőforrástípus átadja-e a címkét a Cost jelentésnek. A költségeket címkék alapján tekintheti meg a [Cost Management Cost Analysis](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) és az [Azure számlázási számlájában és a napi használati adatokban](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
@@ -324,7 +324,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | b2cDirectories | Igen | Nem |
+> | b2cDirectories | Igen | No |
 > | b2ctenants | Nem | Nem |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
@@ -701,7 +701,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ReservationTransactions | Nem | Nem |
 > | Címkék | Nem | Nem |
 > | bérlők | Nem | Nem |
-> | Fogalmak | Nem | Nem |
+> | Kifejezések | Nem | Nem |
 > | UsageDetails | Nem | Nem |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
@@ -825,7 +825,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | munkaterületek | Igen | Nem |
+> | munkaterületek | Igen | No |
 > | munkaterületek/dbWorkspaces | Nem | Nem |
 > | munkaterületek/storageEncryption | Nem | Nem |
 > | munkaterületek/virtualNetworkPeerings | Nem | Nem |
@@ -847,11 +847,11 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | dataFactories | Igen | Nem |
+> | dataFactories | Igen | No |
 > | dataFactories / diagnosticSettings | Nem | Nem |
 > | dataFactories / metricDefinitions | Nem | Nem |
 > | dataFactorySchema | Nem | Nem |
-> | előállítók | Igen | Nem |
+> | előállítók | Igen | No |
 > | gyárak/integrationRuntimes | Nem | Nem |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
@@ -1466,10 +1466,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | netAppAccounts | Igen | Nem |
+> | netAppAccounts | Igen | No |
 > | netAppAccounts / accountBackups | Nem | Nem |
-> | netAppAccounts / capacityPools | Igen | Nem |
-> | netAppAccounts/capacityPools/kötetek | Igen | Nem |
+> | netAppAccounts / capacityPools | Igen | No |
+> | netAppAccounts/capacityPools/kötetek | Igen | No |
 > | netAppAccounts/capacityPools/kötetek/Pillanatképek | Nem | Nem |
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
@@ -1481,8 +1481,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | applicationGatewayWebApplicationFirewallPolicies | Igen | Igen |
 > | applicationSecurityGroups | Igen | Igen |
 > | azureFirewallFqdnTags | Nem | Nem |
-> | azureFirewalls | Igen | Nem |
-> | bastionHosts | Igen | Nem |
+> | azureFirewalls | Igen | No |
+> | bastionHosts | Igen | No |
 > | bgpServiceCommunities | Nem | Nem |
 > | kapcsolatok | Igen | Igen |
 > | ddosCustomPolicies | Igen | Igen |
@@ -1508,7 +1508,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | expressRouteServiceProviders | Nem | Nem |
 > | firewallPolicies | Igen | Igen |
 > | frontdoors | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Igen |
-> | frontdoorWebApplicationFirewallManagedRuleSets | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Nem |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | No |
 > | frontdoorWebApplicationFirewallPolicies | Igen, de korlátozott (lásd az [alábbi megjegyzést](#frontdoor)) | Igen |
 > | getDnsResourceReference | Nem | Nem |
 > | internalNotify | Nem | Nem |
@@ -1520,10 +1520,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | networkProfiles | Igen | Igen |
 > | networkSecurityGroups | Igen | Igen |
 > | networkWatchers | Igen | Igen |
-> | networkWatchers / connectionMonitors | Igen | Nem |
+> | networkWatchers / connectionMonitors | Igen | No |
 > | networkWatchers / flowLogs | Nem | Nem |
-> | networkWatchers/objektívek | Igen | Nem |
-> | networkWatchers / pingMeshes | Igen | Nem |
+> | networkWatchers/objektívek | Igen | No |
+> | networkWatchers / pingMeshes | Igen | No |
 > | p2sVpnGateways | Igen | Igen |
 > | privateDnsOperationStatuses | Nem | Nem |
 > | privateDnsZones | Igen | Igen |
@@ -1551,8 +1551,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | virtualHubs | Igen | Igen |
 > | virtualNetworkGateways | Igen | Igen |
 > | virtualNetworks | Igen | Igen |
+> | virtualNetworks/alhálózatok | Nem | Nem |
 > | virtualNetworkTaps | Igen | Igen |
-> | virtualWans | Igen | Nem |
+> | virtualWans | Igen | No |
 > | vpnGateways | Igen | Igen |
 > | vpnSites | Igen | Igen |
 > | webApplicationFirewallPolicies | Igen | Igen |
@@ -1575,8 +1576,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | névterek | Igen | Nem |
-> | névterek/notificationHubs | Igen | Nem |
+> | névterek | Igen | No |
+> | névterek/notificationHubs | Igen | No |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
@@ -1743,15 +1744,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | központi telepítések | Igen | Nem |
+> | központi telepítések | Igen | No |
 > | üzembe helyezések/műveletek | Nem | Nem |
 > | deploymentScripts | Igen | Igen |
 > | deploymentScripts/naplók | Nem | Nem |
 > | linkek | Nem | Nem |
 > | notifyResourceJobs | Nem | Nem |
 > | szolgáltatók | Nem | Nem |
-> | resourceGroups | Igen | Nem |
-> | előfizetések | Igen | Nem |
+> | resourceGroups | Igen | No |
+> | előfizetések | Igen | No |
 > | bérlők | Nem | Nem |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
@@ -2085,10 +2086,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Címkék támogatása | Címke a Cost jelentésben |
 > | ------------- | ----------- | ----------- |
-> | környezetben | Igen | Nem |
+> | környezetben | Igen | No |
 > | környezetek/accessPolicies | Nem | Nem |
-> | környezetek/eventsources | Igen | Nem |
-> | környezetek/referenceDataSets | Igen | Nem |
+> | környezetek/eventsources | Igen | No |
+> | környezetek/referenceDataSets | Igen | No |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 

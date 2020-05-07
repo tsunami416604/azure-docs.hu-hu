@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan figyelheti Azure App Service alkalmazásait a A
 author: btardif
 ms.assetid: d273da4e-07de-48e0-b99d-4020d84a425e
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 04/23/2020
 ms.author: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: 8baefcbfa1eb34bc6cd37e4325d9a9bfc11e2d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7205f8a842f2086b1cf3a6bbf76c2df48ed679e9
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181222"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738099"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>Alkalmazások figyelése Azure App Service
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) beépített figyelési funkciókat biztosít a webalkalmazások, a mobil és az API-alkalmazások számára a [Azure Portal](https://portal.azure.com).
@@ -49,7 +49,7 @@ Ha egy alkalmazás meghaladja a *CPU-t (röviden)*, a CPU-t *(nap)* vagy a *sáv
 
 ![403-hibaüzenet][http403]
 
-Ha túllépte az alkalmazás memóriájának kvótáját, az alkalmazás újraindul.
+Ha túllépte az alkalmazás memóriájának kvótáját, az alkalmazás átmenetileg leáll.
 
 Ha túllépte a fájlrendszer kvótáját, az írási műveletek meghiúsulnak. Az írási művelet hibái a naplókba való írásokat is tartalmazzák.
 
@@ -131,8 +131,7 @@ A CPU-használatot két mérőszám mutatja:
 **CPU-százalék**: az alapszintű, a standard és a prémium csomagokban üzemeltetett alkalmazásokhoz hasznos, mivel azok felskálázásra képesek. A CPU-százalék jól jelzi az összes példány teljes használatát.
 
 ## <a name="metrics-granularity-and-retention-policy"></a>Mérőszámok részletességi és adatmegőrzési szabályzata
-
-Az alkalmazások és az App Service-csomag metrikáit a szolgáltatás naplózza és összesíti. A metrikák 90 napig őrződnek meg.
+Az alkalmazások és az App Service-csomag metrikáit a szolgáltatás naplózza és összesíti, és [ezeket a szabályoknak megfelelően megőrzi](../azure-monitor/platform/data-platform-metrics.md#retention-of-metrics).
 
 ## <a name="monitoring-quotas-and-metrics-in-the-azure-portal"></a>Kvóták és metrikák figyelése a Azure Portalban
 Az alkalmazást érintő különböző kvóták és mérőszámok állapotának áttekintéséhez lépjen a [Azure Portal](https://portal.azure.com).

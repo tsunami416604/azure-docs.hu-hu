@@ -1,33 +1,37 @@
 ---
-title: SAP SuccessFactors-attribútumok referenciája | Microsoft Docs
+title: SAP SuccessFactors-attribútumok referenciája
 description: Megtudhatja, hogy a SuccessFactors mely attribútumait támogatja a SuccessFactors-HR-vezérelt kiépítés
 services: active-directory
 author: cmmdesai
-documentationcenter: na
-manager: jodadzie
-ms.assetid: afb77f2d-5ddd-4c2e-a840-09021b0efef1
+manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2019
 ms.author: chmutali
-ms.openlocfilehash: 00b16f969525e7b802c008ba247ecba015875689
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: celested
+ms.openlocfilehash: cdd6abf5d10a529aa4c529d0364b2ba9f1df72e3
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522356"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593184"
 ---
 # <a name="sap-successfactors-attribute-reference"></a>SAP SuccessFactors-attribútumok referenciája
 
+Ebben a cikkben a következőkkel kapcsolatos információkat talál:
+
+- [Támogatott SuccessFactors-entitások és-attribútumok](#supported-successfactors-entities-and-attributes)
+- [Alapértelmezett attribútumok leképezése](#default-attribute-mapping)
+
 ## <a name="supported-successfactors-entities-and-attributes"></a>Támogatott SuccessFactors-entitások és-attribútumok
 
-Az alábbi táblázat a következő két üzembe helyezési alkalmazás által támogatott SuccessFactors-attribútumok listáját rögzíti: 
-* [SuccessFactors Active Directory a felhasználók üzembe helyezése](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
-* [SuccessFactors az Azure AD-felhasználók üzembe helyezéséhez](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md) 
+Az alábbi táblázat a következő két üzembe helyezési alkalmazás által támogatott SuccessFactors-attribútumok listáját rögzíti:
+
+- [SuccessFactors Active Directory a felhasználók üzembe helyezése](../saas-apps/sap-successfactors-inbound-provisioning-tutorial.md)
+- [SuccessFactors az Azure AD-felhasználók üzembe helyezéséhez](../saas-apps/sap-successfactors-inbound-provisioning-cloud-only-tutorial.md)
+
 
 | \# | SuccessFactors entitás                  | SuccessFactors attribútum     | Művelettípus |
 |----|----------------------------------------|------------------------------|----------------|
@@ -111,7 +115,6 @@ Az alábbi táblázat a következő két üzembe helyezési alkalmazás által t
 | 77 | EmpEmploymentTermination               | activeEmploymentsCount       | Olvasás           |
 | 78 | EmpEmploymentTermination               | latestTerminationDate        | Olvasás           |
 
-
 ## <a name="default-attribute-mapping"></a>Alapértelmezett attribútumok leképezése
 
 Az alábbi táblázat az alapértelmezett attribútum-hozzárendelést tartalmazza a fent felsorolt SuccessFactors-attribútumok és az AD/Azure AD-attribútumok között. Az Azure AD kiépítési alkalmazás "leképezése" paneljén módosíthatja ezt az alapértelmezett leképezést, hogy tartalmazza a fenti listából származó attribútumokat is. 
@@ -138,4 +141,3 @@ Az alábbi táblázat az alapértelmezett attribútum-hozzárendelést tartalmaz
 | 18 | EmpJob\.helye                       | officeLocationAddress    | streetAddress                           | NA                                                                                           |
 | 19 | EmpJob\.helye                       | officeLocationZipCode    | Irányítószám                              | NA                                                                                           |
 | 20 | EmpEmploymentTermination               | activeEmploymentsCount   | accountEnabled                          | Ha a activeEmploymentsCount = 0, tiltsa le a account\.                                           |
-

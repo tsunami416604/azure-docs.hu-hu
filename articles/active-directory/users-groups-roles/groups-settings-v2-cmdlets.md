@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a218e956c72f8005e533db7b8800e98ee72ce223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc12e571ca955a0ddc47e1c1dd73c2717161df4b
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74233116"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739313"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
 
@@ -52,6 +52,10 @@ A következő parancs használatával ellenőrizheti, hogy a modul használatra 
 
 Most már elkezdheti használni a parancsmagokat a modulban. Az Azure AD-modulban található parancsmagok teljes leírását a [Azure Active Directory PowerShell 2-es verziójának](/powershell/azure/install-adv2?view=azureadps-2.0)online dokumentációjában találja.
 
+> [!NOTE]
+> Az Azure AD PowerShell-parancsmagok nem működnek az új PowerShell 7 használatával, mivel a .net Core-on alapul. Tisztában vagyunk azzal, hogy a frissítés folyamatban van. Mostantól javasoljuk, hogy az Azure AD PowerShell-műveletekhez használni kívánt Windows PowerShell 5. x modult használja. 
+
+
 ## <a name="connect-to-the-directory"></a>Kapcsolódás a címtárhoz
 
 A csoportok Azure AD PowerShell-parancsmagokkal történő kezelésének megkezdése előtt össze kell kapcsolni a PowerShell-munkamenetet a felügyelni kívánt címtárral. Használja az alábbi parancsot:
@@ -63,8 +67,8 @@ A csoportok Azure AD PowerShell-parancsmagokkal történő kezelésének megkezd
 A parancsmag kérni fogja a címtár eléréséhez használni kívánt hitelesítő adatokat. Ebben a példában a szolgáltatást használjuk karen@drumkit.onmicrosoft.com a bemutató könyvtár eléréséhez. A parancsmag visszaigazolja a munkamenet sikeres csatlakoztatását a címtárhoz:
 
 ```powershell
-    Account                       Environment Tenant
-    -------                       ----------- ------
+    Account                       Environment Tenant ID
+    -------                       ----------- ---------
     Karen@drumkit.onmicrosoft.com AzureCloud  85b5ff1e-0402-400c-9e3c-0f…
 ```
 

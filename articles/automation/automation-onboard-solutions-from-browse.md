@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: f5f18e9365b09f06c1bd4f25a8efe909cc308dad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d97fbe6ac515a2559340474105d73b7c9b9c6ee4
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537015"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731917"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Update Management-, Change Tracking-és leltározási megoldások engedélyezése több virtuális gépen
 
@@ -129,7 +129,7 @@ Több gép bevezetéséhez előfordulhat, hogy a gépek is megjelennek `Cannot e
 
 **OK:** A megoldás a Linux-disztribúciók vagy a Windows összes verziója esetében nem támogatott.
 
-**Megoldás:** Tekintse meg a megoldás [támogatott ügyfeleinek listáját](automation-update-management.md#clients) .
+**Megoldás:** Tekintse meg a [támogatott ügyfelek listáját](automation-update-management.md#supported-client-types).
 
 ### <a name="classic-vms-cannot-be-enabled"></a>A klasszikus virtuális gépek nem engedélyezhetők
 

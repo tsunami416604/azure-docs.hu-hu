@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: c91b38fcbfb9b517651adead010408425e519a82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b71890323f6aca92fb9f847252feed57d8db234f
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382749"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594950"
 ---
 # <a name="azure-regions-in-which-video-indexer-exists"></a>Azure-régiók, amelyekben Video Indexer létezik
 
@@ -23,7 +23,7 @@ Video Indexer API-k olyan **Location** paramétert tartalmaznak, amelyet arra az
 
 ## <a name="locations"></a>Helyek
 
-A **Location** paraméter értékeként az Azure-régiókód nevét kell megadni. Ha az előnézeti módban Video Indexert használ, a *"próbaverzió"* értéket kell megtennie értékként. Ellenkező esetben a fiókja által használt Azure-régió kódjának beszerzéséhez és a hívás átirányításához a következő sort futtathatja az [Azure CLI](/cli/azure)-ben:
+A `location` paraméternek meg kell adni az Azure-régió kódjának nevét az értékeként. Ha az előnézeti módban Video Indexert használ, a értéket `"trial"` kell megtennie értékként. `trial`a `location` paraméter alapértelmezett értéke. Ellenkező esetben a fiókja által használt Azure-régió kódjának beszerzéséhez és a hívás átirányításához a következő sort futtathatja az [Azure CLI](/cli/azure)-ben:
 
 ```azurecli-interactive
 az account list-locations
