@@ -3,12 +3,12 @@ title: Az Azure Backup támogatási mátrixa
 description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: b87430c9ff7d806fd1fc74d5d2a8270f9db43b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537321"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801263"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -56,7 +56,7 @@ A következő mi támogatott, ha biztonsági mentést szeretne készíteni a hel
 
 **Korlát** | **Részletek**
 --- | ---
-**Azure-beli VM-adatlemezek** | Legfeljebb 16 <br> Ha regisztrálni szeretne a 16-nál több (legfeljebb 32) adatlemezzel rendelkező virtuális gépek privát előzetes verziójára, írjon nekünk a következő címre: AskAzureBackupTeam@microsoft.com
+**Azure-beli VM-adatlemezek** | Legfeljebb 16 <br> Ha regisztrálni szeretne a virtuális gépek korlátozott előzetes verziójára 16 + lemezzel (akár 32 lemezre), írjon hozzánk a következő helyen:AskAzureBackupTeam@microsoft.com
 **Azure-beli virtuális gép adatlemezének mérete** | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 
 ### <a name="azure-vm-backup-options"></a>Azure virtuális gépek biztonsági mentési lehetőségei
@@ -152,9 +152,9 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Igen.   Támogatott a 4 TB-nál kisebb lemezzel rendelkező titkosított virtuális gépek és virtuális gépek esetében | Minden Azure-beli nyilvános régió.  |
-| MARS-ügynök/helyszíni | Nem                                                           | N/A               |
-| SQL/SAP HANA          | Nem                                                           | N/A               |
-| AFS                    | Nem                                                           | N/A               |
+| MARS-ügynök/helyszíni | No                                                           | N/A               |
+| SQL/SAP HANA          | No                                                           | N/A               |
+| AFS                    | No                                                           | N/A               |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,12 +3,12 @@ title: A felderítéssel, értékeléssel és függőségi elemzéssel kapcsolat
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: b4b2a50bc88768d46c82f6bce73447dc901e5dfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 868755bb8926ffe218fdab76714c9970f26bb0a9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681899"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744584"
 ---
 # <a name="discovery-assessment-and-dependency-analysis---common-questions"></a>Felderítés, értékelés és függőségek elemzése – gyakori kérdések
 
@@ -107,6 +107,11 @@ Működés | Rögzíti a TCP-kapcsolatok mennyiségét a függőségi vizualizá
 Adatok | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port. | Forrásoldali gép kiszolgálójának neve, folyamata, alkalmazás neve.<br/><br/> Célszámítógép kiszolgálójának neve, folyamat, alkalmazás neve és port.<br/><br/> A kapcsolatok száma, a késés és az adatátviteli adatok összegyűjtése és Log Analytics lekérdezések számára elérhetők. 
 Vizualizáció | Az önálló kiszolgálók függőségi térképe egy óra és 30 nap közötti időtartamon belül megtekinthető. | Egyetlen kiszolgáló függőségi térképe.<br/><br/> A Térkép csak egy órán át jeleníthető meg.<br/><br/> Kiszolgálók egy csoportjának függőségi térképe.<br/><br/> Kiszolgálók hozzáadása és eltávolítása a Térkép nézetből.
 Adatexportálás | Jelenleg nem tölthető le táblázatos formátumban. | Az adatlekérdezés a Log Analytics használatával kérdezhető le.
+
+
+## <a name="do-i-need-to-deploy-the-appliance-for-agentless-dependency-analysis"></a>Telepíteni kell a készüléket az ügynök nélküli függőségek elemzéséhez?
+
+Igen, a [Azure Migrate készüléket](migrate-appliance.md) telepíteni kell.
 
 ## <a name="do-i-pay-for-dependency-visualization"></a>Fizetnem kell a függőségi vizualizációért?
 

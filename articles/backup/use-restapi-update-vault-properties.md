@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan frissítheti a tár konfigur�
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 6cecbb18e0cd6f548e1688ef978f10dcee7d9fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252362"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744565"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Az Azure Recovery Services-tároló konfigurációinak frissítése REST API használatával
 
@@ -21,7 +21,7 @@ A védett elemek biztonsági másolatának törlése olyan jelentős művelet, a
 
 Vannak azonban olyan forgatókönyvek, amelyekben ez a képesség nem szükséges. Az Azure Recovery Services-tároló nem törölhető, ha olyan biztonsági másolati elemek találhatók benne, amelyeken még nem is törlődnek. Ez problémát jelenthet, ha a tárolót azonnal törölni kell. Például: az üzembe helyezési műveletek gyakran törlik a létrehozott erőforrásokat ugyanabban a munkafolyamatban. A központi telepítés létrehozhat egy tárolót, konfigurálhatja a biztonsági másolatokat egy elemhez, tesztet állíthat vissza, majd folytathatja a biztonsági mentési elemek és a tár törlését. Ha a tár törlése sikertelen, a teljes telepítés sikertelen lehet. A törlés letiltásával garantálható az azonnali törlés.
 
-Ezért az ügyfélnek gondosan ki kell választania, hogy letiltsa-e az adott tár helyreállítható törlését a forgatókönyvtől függően. További információ: [Soft-delete cikk](backup-azure-security-feature-cloud.md#soft-delete).
+Ezért az ügyfélnek gondosan ki kell választania, hogy letiltsa-e az adott tár helyreállítható törlését a forgatókönyvtől függően. További információ: [Soft-delete cikk](backup-azure-security-feature-cloud.md).
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Helyreállítható törlési állapot beolvasása REST API használatával
 
@@ -43,7 +43,7 @@ GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000
 
 A "GET" művelet sikeres válasza alább látható:
 
-|Name (Név)  |Típus  |Leírás  |
+|Name  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 
@@ -83,7 +83,7 @@ A kérelem törzsének létrehozásához a következő általános definíciók 
 
 További részletekért tekintse meg [a REST API dokumentációját](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/update#request-body) .
 
-|Name (Név)  |Kötelező  |Típus  |Leírás  |
+|Name  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |eTag     |         |   Sztring      |  Opcionális eTag       |
 |location     |  igaz       |Sztring         |   Erőforrás helye      |
@@ -107,7 +107,7 @@ A következő példa a helyreállítható törlési állapot frissítésére szo
 
 A "PATCH" művelet sikeres válasza alább látható:
 
-|Name (Név)  |Típus  |Leírás  |
+|Name  |Típus  |Leírás  |
 |---------|---------|---------|
 |200 OK     |   [BackupResourceVaultConfig](https://docs.microsoft.com/rest/api/backup/backupresourcevaultconfigs/get#backupresourcevaultconfigresource)      | OK        |
 

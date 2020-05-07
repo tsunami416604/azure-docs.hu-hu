@@ -1,44 +1,41 @@
 ---
-title: A partner Center kereskedelmi Piactéri elemzésében szereplő minősítések és értékelések irányítópultja
-description: Megtudhatja, hogyan érheti el az Azure Marketplace-en és a AppSource-ajánlaton keresztül elérhető felhasználói visszajelzések összevont nézetét.
+title: Értékelések & a partner Center Analytics-irányítópultjának értékelésével
+description: Megtudhatja, hogyan férhet hozzá a Microsoft AppSource és az Azure Marketplace-en elérhető ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetéhez.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 405ba37fd10fa48bf45f1031d2e9b5b17620ea0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7ed477ea095defa27878e8f4a84162043829273
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262417"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792921"
 ---
-# <a name="ratings-and-reviews-dashboard-in-commercial-marketplace-analytics"></a>Értékelések és értékelések irányítópult a kereskedelmi piactér elemzésében
+# <a name="ratings--reviews-analytics-dashboard-in-partner-center"></a>Értékelések & a partner Center Analytics-irányítópultjának értékelésével
 
-Ez a cikk a partner Centerben található Ratings & Reviews irányítópultról nyújt információkat. Ez az irányítópult az Azure Marketplace-en és a AppSource-on található ajánlatok felhasználói visszajelzésének összevont nézetét jeleníti meg.
-
-A partner Center Analytics-eszközök **minősítések & értékelések irányítópultjának** eléréséhez nyissa meg az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópultot a kereskedelmi piactér területen.
-
->[!NOTE]
-> Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
-
-## <a name="ratings--reviews"></a>Értékelések & értékelések
-
-Mivel az ügyfelek tallózással, kereséssel és vásárlási ajánlatokkal is rendelkeznek a piactéren, elhagyhatják a beszerzett ajánlatok minősítéseit és felülvizsgálatait.
+Ez a cikk a partner Centerben található Ratings & Reviews irányítópultról nyújt információkat. Ez az irányítópult a Microsoft AppSource és az Azure piactéren elérhető ajánlatok felhasználói visszajelzésének összevont nézetét jeleníti meg. Mivel az ügyfelek tallózással, kereséssel és vásárlási ajánlatokkal is rendelkeznek a piactéren, elhagyhatják a beszerzett ajánlatok minősítéseit és felülvizsgálatait.
 
 - Az ügyfelek beküldhetnek egy új minősítést, vagy áttekinthetik és frissíthetik a meglévő minősítést, vagy törölhetik azokat. Az ügyfelek csak a saját értékelésekre és felülvizsgálatokra módosíthatják a módosításokat.  
 - A felülvizsgálatok az Azure Marketplace-en vagy a AppSource-ajánlat termék megjelenítése lapján, a vélemények lapon jelennek meg. Az ügyfelek a nevüket vagy a közzétételt névtelenül is megadhatják.  
 
-A **minősítések & felülvizsgálati irányítópulton** láthatók az ügyfelek által a tevékenység trendjei és elemzése. A következő elemek grafikus ábrázolását tekintheti meg:
+>[!NOTE]
+> Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
+
+## <a name="access-the-dashboard"></a>Az irányítópult elérése
+
+A partner Center [kereskedelmi piactér irányítópultján](https://partner.microsoft.com/en-us/dashboard/commercial-marketplace/overview) bontsa ki az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** szakaszt, és válassza a **minősítések & felülvizsgálatok**lehetőséget.
+
+Az irányítópult a következő felhasználói tevékenység grafikus megjelenítését jeleníti meg:
 
 - Értékelések & értékelések  
 - Megjegyzések áttekintése
 
-A **piactér kirakat lapok** lehetővé teszik a kiadók számára, hogy az ajánlati metrikákat külön megtekintsék a AppSource & Azure Marketplace lapjain. Adott ajánlati metrikák megtekintéséhez válassza ki az ajánlatot az ajánlat legördülő listából.
+Az ajánlat Microsoft AppSource és az Azure Marketplace-metrikák külön-külön való megtekintéséhez használja a **piactér kirakat** lapjait. Adott ajánlati metrikák megtekintéséhez válassza ki az ajánlatot az ajánlat legördülő listából.
 
-
-### <a name="ratings-and-reviews-summary"></a>Értékelések és értékelések összegzése
+### <a name="ratings--reviews-summary"></a>Értékelések & értékelések összegzése
 
 A minősítések & értékelések összegzése szakasz az alábbi metrikákat jeleníti meg a kiválasztott dátumtartomány esetében:
 

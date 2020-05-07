@@ -1,146 +1,197 @@
 ---
 title: Oktatóanyag – egyéni virtuálisgép-rendszerképek létrehozása az Azure CLI-vel
 description: Ez az oktatóanyag ismerteti, hogyan használja az Azure CLI-t egyéni virtuálisgép-rendszerképek az Azure-ban történő létrehozásához
-services: virtual-machines-linux
-documentationcenter: virtual-machines
 author: cynthn
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machines-linux
+ms.subservice: imaging
 ms.topic: tutorial
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/13/2017
+ms.date: 05/04/2020
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: dc7b395d46fd28cde9ccbbda8a8a55447efa61c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: akjosh
+ms.openlocfilehash: 9f3a175352aa0455cecc2e31e235a60cc27c76c5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81460052"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792173"
 ---
 # <a name="tutorial-create-a-custom-image-of-an-azure-vm-with-the-azure-cli"></a>Oktatóanyag: Azure-beli virtuális gép egyéni rendszerképének létrehozása az Azure CLI használatával
 
 Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni rendszerképek segítségével indíthatók olyan konfigurálások, mint az alkalmazások betöltése, alkalmazások konfigurálása és más operációsrendszer-konfigurálások. Ebben az oktatóanyagban létrehoz egy egyéni rendszerképet egy Azure-beli virtuális gépről. Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!div class="checklist"]
-> * Virtuális gépek megszüntetése és általánosítása
-> * Egyéni lemezkép létrehozása
-> * Virtuális gép létrehozása egyéni rendszerképből
-> * Az előfizetésben lévő összes rendszerkép listázása
-> * Rendszerkép törlése
+> * Shared Image Gallery létrehozása
+> * Rendszerkép-definíció létrehozása
+> * Rendszerképverzió létrehozása
+> * Virtuális gép létrehozása rendszerképből 
+> * Képtár megosztása
+
 
 Ez az oktatóanyag a CLI-t használja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview)belül, amely folyamatosan frissül a legújabb verzióra. A Cloud Shell megnyitásához válassza a **kipróbálás** lehetőséget a kód bármely blokkjának elejéről.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.0.30-as vagy újabb verziójára lesz szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez az oktatóanyaghoz az Azure CLI 2.4.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése]( /cli/azure/install-azure-cli).
+
+## <a name="overview"></a>Áttekintés
+
+A [megosztott képgyűjtemény](shared-image-galleries.md) egyszerűbbé teszi a szervezeten belüli Egyéni rendszerképek megosztását. Az egyéni rendszerképek olyanok, mint a piactérről beszerzett rendszerképek, de Ön hozza azokat létre. Az egyéni rendszerképek segítségével indíthatók olyan konfigurálások, mint az alkalmazások betöltése, alkalmazások konfigurálása és más operációsrendszer-konfigurálások. 
+
+A megosztott képkatalógus lehetővé teszi az egyéni virtuálisgép-rendszerképek megosztását másokkal. Válassza ki a megosztani kívánt képeket, mely régiókat szeretné elérhetővé tenni a alkalmazásban, és hogy kivel szeretné megosztani azokat. 
+
+A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
+
+[!INCLUDE [virtual-machines-shared-image-gallery-resources](../../../includes/virtual-machines-shared-image-gallery-resources.md)]
 
 ## <a name="before-you-begin"></a>Előkészületek
 
 Az alábbi lépések ismertetik, hogyan alakíthat egy meglévő virtuális gépet újrahasznosítható egyéni rendszerképpé, amellyel új virtuálisgép-példányokat hozhat létre.
 
-Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Ha szükséges, a [parancsfájl-minta](../scripts/virtual-machines-linux-cli-sample-create-vm-nginx.md) létrehozhat egyet. Az oktatóanyag elvégzése során cserélje le az erőforráscsoportok és a virtuális gépek neveit, ahol szükséges.
+Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglévő virtuális gépre. Ha szükséges, megtekintheti a [CLI](quick-create-cli.md) gyors üzembe helyezését az oktatóanyaghoz használandó virtuális gép létrehozásához. Az oktatóanyagban végzett munka során cserélje le az erőforrás nevét, ahol szükséges.
 
-## <a name="create-a-custom-image"></a>Egyéni lemezkép létrehozása
+## <a name="launch-azure-cloud-shell"></a>Az Azure Cloud Shell indítása
 
-Egy virtuális gépről készült rendszerkép létrehozásához először elő kell készítenie a virtuális gépet. Ehhez meg kell szüntetni, fel kell szabadítani, majd általánosítottként kell megjelölni a forrásként szolgáló virtuális gépet. Miután előkészítette a virtuális gépet, létrehozhat egy rendszerképet.
+Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-### <a name="deprovision-the-vm"></a>A virtuális gép megszüntetése 
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
-A megszüntetés a gépspecifikus információk eltávolításával általánosítja a virtuális gépet. Ez az általánosítás teszi lehetővé, hogy több virtuális gépet helyezzen üzembe egyetlen rendszerképből. A megszüntetés során a gazdanév visszaáll a *localhost.localdomain* értékre. A rendszer törli az SSH-gazdakulcsokat, a névkiszolgáló-konfigurációkat, a rendszergazdai szintű jelszót és a gyorsítótárazott DHCP-bérleteket is.
+## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása 
 
-> [!WARNING]
-> A virtuális gép általánosított kiépítése és megjelölése a forrásként szolgáló virtuális gép használhatatlanná válik, és nem indítható újra. 
+A képgyűjtemény a képmegosztás engedélyezéséhez használt elsődleges erőforrás. 
 
-A virtuális gép megszüntetéséhez használja az azure-os virtuálisgép-ügynököt (waagent). Az azure-os virtuálisgép-ügynök telepítve van a virtuális gépen, és felügyeli a kiépítést, valamint az Azure Fabric Controllerrel való kommunikációt. További információk: [Azure Linux-ügynök – felhasználói útmutató](../extensions/agent-linux.md).
+A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket.   A katalógus nevének egyedinek kell lennie az előfizetésen belül. 
 
-Csatlakozzon SSH-val a virtuális géphez, és futtassa az alábbi parancsot a virtuális gép megszüntetéséhez. A `+user` argumentummal a rendszer az utoljára kiépített felhasználói fiókot és az ahhoz társított adatokat is törli. Cserélje le a példában szereplő IP-címet a virtuális gépe nyilvános IP-címére.
+Hozzon létre egy képtárat [az az SIG Create](/cli/azure/sig#az-sig-create)paranccsal. A következő példában létrehozunk egy *myGalleryRG* nevű ERŐFORRÁSCSOPORTOT az *USA keleti*régiójában, valamint egy *MyGallery*nevű katalógust.
 
-Hozzon létre SSH–kapcsolatot a virtuális géppel.
-```bash
-ssh azureuser@52.174.34.95
-```
-Szüntesse meg a virtuális gépet.
-
-```bash
-sudo waagent -deprovision+user -force
-```
-Zárja be az SSH-munkamenetet.
-
-```bash
-exit
+```azurecli-interactive
+az group create --name myGalleryRG --location eastus
+az sig create --resource-group myGalleryRG --gallery-name myGallery
 ```
 
-### <a name="deallocate-and-mark-the-vm-as-generalized"></a>Virtuális gép felszabadítása és megjelölése általánosként
+## <a name="get-infornation-about-the-vm"></a>A virtuális géppel kapcsolatos infornation beolvasása
 
-Rendszerkép létrehozásához fel kell szabadítani a virtuális gépet. Szabadítsa fel a virtuális gépet az [az vm deallocate](/cli//azure/vm) paranccsal. 
-   
+Megtekintheti az [az VM List](/cli/azure/vm#az-vm-list)paranccsal elérhető virtuális gépek listáját. 
+
+```azurecli-interactive
+az vm list --output table
+```
+
+Ha ismeri a virtuális gép nevét és a hozzá tartozó erőforráscsoportot, szerezze be a virtuális gép AZONOSÍTÓját az [az VM Get-instance-View](/cli/azure/vm#az-vm-get-instance-view)paranccsal. 
+
+```azurecli-interactive
+az vm get-instance-view -g MyResourceGroup -n MyVm --query id
+```
+
+Másolja ki a virtuális gép AZONOSÍTÓját, hogy később használhassa.
+
+## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása
+
+A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. 
+
+A képdefiníciók nevei kis-és nagybetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. 
+
+További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#image-definitions).
+
+Hozzon létre egy rendszerkép-definíciót a galériában az [az SIG rendszerkép-definition Create](/cli/azure/sig/image-definition#az-sig-image-definition-create)paranccsal. 
+
+Ebben a példában a képdefiníció neve *myImageDefinition*, és egy [speciális](https://docs.microsoft.com/azure/virtual-machines/linux/shared-image-galleries#generalized-and-specialized-images) Linux operációsrendszer-rendszerképhez van. 
+
 ```azurecli-interactive 
-az vm deallocate --resource-group myResourceGroup --name myVM
+az sig image-definition create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --publisher myPublisher \
+   --offer myOffer \
+   --sku mySKU \
+   --os-type Linux \
+   --os-state specialized
 ```
 
-Végezetül állítsa a virtuális gép állapotát általánosítottra az [az vm generalize](/cli//azure/vm) paranccsal, hogy az Azure platform meg tudja állapítani, hogy a virtuális gép általánosítva lett. Rendszerképet csak általánosított virtuális gépből hozhat létre.
-   
+Másolja a rendszerkép-definíció AZONOSÍTÓját a kimenetből későbbi használatra.
+
+## <a name="create-the-image-version"></a>A rendszerkép verziójának létrehozása
+
+Hozzon létre egy rendszerkép-verziót a virtuális gépről az [az rendszerkép-gyűjtemény létrehozása-rendszerkép-Version](/cli/azure/sig/image-version#az-sig-image-version-create)paranccsal.  
+
+A képverzió megengedett karaktereinek száma számok és időszakok. A számoknak egy 32 bites egész számon belüli tartományba kell esniük. Formátum: *MajorVersion*. *MinorVersion*. *Javítás*.
+
+Ebben a példában a rendszerkép verziója a *1.0.0* , és két replikát fogunk létrehozni az *USA nyugati középső* régiójában, 1 replika az *USA déli középső* régiójában és 1 replika az *USA 2. keleti* régiójában, a zóna redundáns tárolásával. A replikációs régióknak tartalmaznia kell azt a régiót, amelyben a forrás virtuális gép található.
+
+Cserélje le a példában `--managed-image` szereplő értéket a virtuális gép azonosítójával az előző lépésből.
+
 ```azurecli-interactive 
-az vm generalize --resource-group myResourceGroup --name myVM
+az sig image-version create \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --gallery-image-definition myImageDefinition \
+   --gallery-image-version 1.0.0 \
+   --target-regions "westcentralus" "southcentralus=1" "eastus=1=standard_zrs" \
+   --replica-count 2 \
+   --managed-image "/subscriptions/<Subscription ID>/resourceGroups/MyResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM"
 ```
 
-### <a name="create-the-image"></a>A rendszerkép létrehozása
+> [!NOTE]
+> Meg kell várnia, amíg a rendszerkép verziója teljesen elkészült és replikálva lett ahhoz, hogy ugyanazt a felügyelt képet használhassa egy másik rendszerkép-verzió létrehozásához.
+>
+> A rendszerképet a prémium tárolóban is tárolhatja egy hozzáadási `--storage-account-type  premium_lrs`vagy a [zóna redundáns tárterületével](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs) , `--storage-account-type  standard_zrs` ha létrehozza a rendszerkép verzióját.
+>
 
-Most létrehozhat egy rendszerképet a virtuális gépből az [az image create](/cli//azure/image) paranccsal. Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a *myVM* nevű virtuális gépből.
-   
-```azurecli-interactive 
-az image create \
-    --resource-group myResourceGroup \
-    --name myImage \
-    --source myVM
-```
  
-## <a name="create-vms-from-the-image"></a>Virtuális gépek létrehozása a rendszerképből
+## <a name="create-the-vm"></a>Virtuális gép létrehozása
 
-Most, hogy már van egy rendszerképe, az [az vm create](/cli/azure/vm) paranccsal létrehozhat belőle egy vagy több új virtuális gépet. Az alábbi példa létrehoz egy *myVMfromImage* nevű virtuális gépet a *myImage* rendszerkép alapján.
+Hozza létre a virtuális gépet az az [VM Create](/cli/azure/vm#az-vm-create) paranccsal a--Specialized paraméterrel, amely jelzi, hogy a rendszerkép egy speciális rendszerkép. 
 
-```azurecli-interactive 
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVMfromImage \
-    --image myImage \
-    --admin-username azureuser \
-    --generate-ssh-keys
+A rendszerkép-definíció AZONOSÍTÓjának `--image` használatával hozza létre a virtuális gépet a rendelkezésre álló rendszerkép legújabb verziójából. A virtuális gépet egy adott verzióból is létrehozhatja, ha megadja a rendszerkép-verziójának `--image`azonosítóját. 
+
+Ebben a példában egy virtuális gépet hozunk létre a *myImageDefinition* -lemezkép legújabb verziójából.
+
+```azurecli
+az group create --name myResourceGroup --location eastus
+az vm create --resource-group myResourceGroup \
+    --name myVM \
+    --image "/subscriptions/<Subscription ID>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition" \
+    --specialized
 ```
 
-Azt javasoljuk, hogy egyetlen rendszerképből korlátozza az egyidejű központi telepítések számát 20 virtuális gépre. Ha több mint 20 virtuális gép nagy léptékű, egyidejű üzembe helyezését tervezi ugyanazon egyéni rendszerképből, több rendszerkép-replikával rendelkező [megosztott képtárat](shared-image-galleries.md) kell használnia. 
+## <a name="share-the-gallery"></a>A katalógus megosztása
 
-## <a name="image-management"></a>Rendszerkép kezelése 
+A rendszerképeket a szerepköralapú Access Control (RBAC) használatával megoszthatja az előfizetések között. A képeket megoszthatja a katalógusban, a képdefinícióban vagy a lemezkép verziójában. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik a lemezkép verziójához, még az előfizetések között is, a lemezkép verziója segítségével telepítheti a virtuális gépet.
 
-Az alábbiakban felsorolunk néhány gyakori rendszerkép-kezelési feladatot, továbbá ismertetjük, hogyan lehet elvégezni ezeket az Azure CLI használatával.
+Javasoljuk, hogy a katalógus szintjén ossza meg más felhasználókkal. A katalógus objektum-AZONOSÍTÓjának lekéréséhez használja az [az SIG show](/cli/azure/sig#az-sig-show)lehetőséget.
 
-Az összes rendszerkép felsorolása táblázatos formátumban.
-
-```azurecli-interactive 
-az image list \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az sig show \
+   --resource-group myGalleryRG \
+   --gallery-name myGallery \
+   --query id
 ```
 
-Rendszerkép törlése. Ez a példa törli a *myOldImage* nevű rendszerképet a *myResourceGroup* erőforráscsoportból.
+Használja az objektumazonosító hatókörként, valamint egy e-mail-cím és [az az szerepkör-hozzárendelés létrehozása](/cli/azure/role/assignment#az-role-assignment-create) lehetőséget, hogy a felhasználók hozzáférhessenek a megosztott képgyűjteményhez. Cserélje `<email-address>` le `<gallery iD>` a és a értékét a saját adataira.
 
-```azurecli-interactive 
-az image delete \
-    --name myOldImage \
-    --resource-group myResourceGroup
+```azurecli-interactive
+az role assignment create \
+   --role "Reader" \
+   --assignee <email address> \
+   --scope <gallery ID>
 ```
+
+Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+
+## <a name="azure-image-builder"></a>Azure Image Builder
+
+Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-overview)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
 ## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy egyéni virtuálisgép-rendszerképet. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * Virtuális gépek megszüntetése és általánosítása
-> * Egyéni lemezkép létrehozása
-> * Virtuális gép létrehozása egyéni rendszerképből
-> * Az előfizetésben lévő összes rendszerkép listázása
-> * Rendszerkép törlése
+> * Shared Image Gallery létrehozása
+> * Rendszerkép-definíció létrehozása
+> * Rendszerképverzió létrehozása
+> * Virtuális gép létrehozása rendszerképből 
+> * Képtár megosztása
 
 A következő oktatóanyagban a magas rendelkezésre állású virtuális gépeket ismerheti meg.
 

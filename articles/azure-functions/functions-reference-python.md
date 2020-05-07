@@ -3,12 +3,12 @@ title: Python fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 936d6455f448e0243c7d4de2b9f1b88673a32798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea128fc7c68b49fc14d796e9a3b91a9dbddd9b26
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185982"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780045"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -22,7 +22,7 @@ A Azure Functions egy olyan állapot nélküli metódust vár a Python-parancsf�
 
 Az eseményindítók és kötések adatai a Function `name` *. JSON* fájlban megadott tulajdonság használatával a metódus attribútumain keresztül vannak kötve. Az alábbi _function. JSON_ például a következő nevű `req`HTTP-kérelem által aktivált egyszerű függvényt írja le:
 
-:::code language="son" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
+:::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
 A definíció alapján a `__init__.py` függvény kódját tartalmazó fájl a következő példához hasonló lehet:
 
@@ -77,6 +77,7 @@ A Python functions projekt javasolt mappastruktúrát a következő példához h
  | | - my_second_helper_function.py
  | - host.json
  | - requirements.txt
+ | - Dockerfile
  tests
 ```
 A fő projekt mappája\_\_(\_\_alkalmazás) a következő fájlokat tartalmazza:
@@ -86,6 +87,7 @@ A fő projekt mappája\_\_(\_\_alkalmazás) a következő fájlokat tartalmazza:
 * a *Host. JSON*: olyan globális konfigurációs beállításokat tartalmaz, amelyek a Function alkalmazás összes funkcióját érintik. Ez a fájl közzé van téve az Azure-ban. Nem minden beállítás támogatott a helyi futtatásakor. További információ: [Host. JSON](functions-host-json.md).
 * *. funcignore*: (nem kötelező) deklarálja azokat a fájlokat, amelyek nem tudnak közzétenni az Azure-ban.
 * *. gitignore*: (nem kötelező) a git-tárházból kizárt fájlokat deklarálja, például a local. Settings. JSON fájlt.
+* *Docker*: (nem kötelező) a projekt [Egyéni tárolóban](functions-create-function-linux-custom-image.md)történő közzétételekor használatos.
 
 Minden függvényhez tartozik a saját kód fájlja és a kötési konfigurációs fájl (function. JSON). 
 

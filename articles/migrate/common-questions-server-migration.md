@@ -1,14 +1,14 @@
 ---
-title: Azure Migrate Server Migration – gyakori kérdések
+title: Azure Migrate kiszolgáló áttelepítésével kapcsolatos gyakori kérdések
 description: Választ kaphat a Azure Migrate kiszolgáló áttelepítésének a gépek áttelepítésére való használatával kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 8d4d83791366e153f0fa8b81ae120ca3fd33be2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0cfe23b4e544040fc3ab69796988ca34b1bdcdbf
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146037"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744324"
 ---
 # <a name="azure-migrate-server-migration-common-questions"></a>Azure Migrate kiszolgáló áttelepítése: gyakori kérdések
 
@@ -86,6 +86,10 @@ A NetQosPolicy használatával szabályozhatja a szabályozást. Például:
 A NetQosPolicy használt AppNamePrefix a következő: "GatewayWindowsService. exe". Létrehozhat egy szabályzatot az Azure Migrate berendezésen a készülék replikációs forgalmának szabályozásához egy olyan házirend létrehozásával, mint például ez:
  
 New-NetQosPolicy-Name "ThrottleReplication"-AppPathNameMatchCondition "GatewayWindowsService. exe"-ThrottleRateActionBitsPerSecond 1MB
+
+## <a name="can-i-migrate-vms-that-are-already-being-replicated-to-azure"></a>Áttelepíthetem azokat a virtuális gépeket, amelyek már replikálódnak az Azure-ba? 
+
+Ha a virtuális gépeket már más módon replikálják az Azure-ba, akkor nem telepítheti át a gépeket Azure Migrate-kiszolgáló áttelepítését biztosító virtuális gépekként. Megkerülő megoldásként kezelheti a virtuális gépeket fizikai kiszolgálóként, és áttelepítheti azokat a [támogatott fizikai kiszolgáló áttelepítésének](migrate-support-matrix-physical-migration.md)megfelelően.
 
 ## <a name="when-do-i-migrate-machines-as-physical-servers"></a>Mikor telepíthetem a gépeket fizikai kiszolgálóként?
 

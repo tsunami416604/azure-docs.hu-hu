@@ -33,6 +33,8 @@
   items:
     - name: Az Azure-hoz készült biztonsági alapkonfigurációk áttekintése
       href: security-baselines-overview.md
+    - name: Az API Management biztonsági alapkonfigurációja
+      href: ../../api-management/security-baseline.md
     - name: Az Azure Cache for Redis biztonsági alapkonfigurációja
       href: ../../azure-cache-for-redis/security-baseline.md
     - name: A Backup biztonsági alapkonfigurációja
@@ -45,8 +47,12 @@
       href: ../../cosmos-db/security-baseline.md
     - name: A Data Explorer biztonsági alapkonfigurációja
       href: /azure/data-explorer/security-baseline
+    - name: A Databricks biztonsági alapkonfigurációja
+      href: ../../azure-databricks/security-baseline.md
     - name: Az Event Hubs biztonsági alapkonfigurációja
       href: ../../event-hubs/security-baseline.md
+    - name: A Functions biztonsági alapkonfigurációja
+      href: ../../azure-functions/security-baseline.md
     - name: A HDInsight biztonsági alapkonfigurációja
       href: ../../hdinsight/security-baseline.md
     - name: A Key Vault biztonsági alapkonfigurációja

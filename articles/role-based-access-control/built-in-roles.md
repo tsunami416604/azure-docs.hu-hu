@@ -1,6 +1,6 @@
 ---
-title: Azure-beli beépített szerepkörök az Azure RBAC
-description: Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (RBAC) Azure-beli beépített szerepköreit ismerteti. Felsorolja a műveleteket, a nem Tapintatokat, a DataActions és a NotDataActions.
+title: Azure-beli beépített szerepkörök – Azure RBAC
+description: Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) Azure-beli beépített szerepköreit ismerteti. Felsorolja a műveleteket, a nem Tapintatokat, a DataActions és a NotDataActions.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,30 +11,30 @@ ms.devlang: ''
 ms.topic: reference
 ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 04/15/2020
+ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 78e5c219d83198f3bf4c329c33018caad2b0cc62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: b6587ca113319c266d2335c9cbb154e0ecc4afa1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194924"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838739"
 ---
 # <a name="azure-built-in-roles"></a>Azure beépített szerepkörök
 
-Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) számos olyan Azure-beli beépített szerepkört tartalmaz, amelyeket felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz rendelhet hozzá. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](custom-roles.md)is.
+Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) számos olyan Azure-beli beépített szerepkört tartalmaz, amelyeket a felhasználókhoz, csoportokhoz, egyszerű szolgáltatásokhoz és felügyelt identitásokhoz rendelhet hozzá. A szerepkör-hozzárendelések lehetővé teszik az Azure-erőforrásokhoz való hozzáférés szabályozását. Ha a beépített szerepkörök nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját [Egyéni Azure-szerepköröket](custom-roles.md)is.
 
-Ez a cikk az Azure-erőforrások beépített szerepköreit sorolja fel, amelyek folyamatosan fejlődnek. A legújabb szerepkörök beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ha Azure Active Directory (Azure AD) rendszergazdai szerepköreit keresi, tekintse meg a [rendszergazdai szerepkör engedélyeit a Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
+Ez a cikk az Azure beépített szerepköreit sorolja fel, amelyek folyamatosan fejlődnek. A legújabb szerepkörök beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ha Azure Active Directory (Azure AD) rendszergazdai szerepköreit keresi, tekintse meg a [rendszergazdai szerepkör engedélyeit a Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="all"></a>Összes
 
-Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörök egyedi AZONOSÍTÓját tartalmazza. Válassza ki a szerepkör nevét a (z) `Actions`, `NotActions`, `DataActions`, és `NotDataActions` minden szerepkör listájának megtekintéséhez. További információ ezekről a műveletekről, valamint a kezelési és adatsíkokra való alkalmazásáról: az [Azure-erőforrások szerepkör-definícióinak megismerése](role-definitions.md).
+Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörök egyedi AZONOSÍTÓját tartalmazza. Válassza ki a szerepkör nevét a (z) `Actions`, `NotActions`, `DataActions`, és `NotDataActions` minden szerepkör listájának megtekintéséhez. További információ ezekről a műveletekről és azokról a kezelési és adatsíkokról: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Leírás | ID (Azonosító) |
+> | Beépített szerepkör | Description | ID (Azonosító) |
 > | --- | --- | --- |
 > | **Általános** |  |  |
 > | [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -81,7 +81,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Tárolási várólista adatüzenetének küldője](#storage-queue-data-message-sender) | Üzenetek hozzáadása egy Azure Storage-várólistához. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | c6a89b2d-59bc-44d0-9896-0f6e12d7b80a |
 > | [Storage-várólista adatolvasója](#storage-queue-data-reader) | Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. Ha meg szeretné tudni, hogy mely műveletek szükségesek egy adott adatművelethez, tekintse meg a [blob-és üzenetsor-műveletek meghívására vonatkozó engedélyeket](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Web** |  |  |
-> | [Azure Maps Adatolvasó (előzetes verzió)](#azure-maps-data-reader-preview) | Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel kapcsolatos adatokhoz. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
+> | [Adatolvasó Azure Maps](#azure-maps-data-reader) | Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel kapcsolatos adatokhoz. | 423170ca-a8f6-4b0f-8487-9e4eb8f49bfa |
 > | [Search Service közreműködő](#search-service-contributor) | Lehetővé teszi a keresési szolgáltatások kezelését, az azokhoz való hozzáférés nélkül. | 7ca78c08-252a-4471-8644-bb5ff32d4ba0 |
 > | [Webes csomag közreműködői](#web-plan-contributor) | Lehetővé teszi a webhelyek webes csomagjainak kezelését, de azokhoz való hozzáférés nélkül. | 2cc479cb-7b4d-49a8-b449-8c00fd0f0a4b |
 > | [Webhely közreműködői](#website-contributor) | Lehetővé teszi a webhelyek (nem webes csomagok) kezelését, de nem fér hozzájuk. | de139f84-1756-47ae-9be6-808fbbe84772 |
@@ -147,10 +147,10 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Azure Sentinel-olvasó](#azure-sentinel-reader) | Azure Sentinel-olvasó | 8d289c81-5878-46d4-8554-54e1e3d8b5cb |
 > | [Azure Sentinel-válaszadó](#azure-sentinel-responder) | Azure Sentinel-válaszadó | 3e150937-b8fe-4cfb-8069-0eaf05ecd056 |
 > | [Key Vault közreműködő](#key-vault-contributor) | Lehetővé teszi a kulcstartók kezelését, de azokhoz való hozzáférés nélkül. | f25e0fa2-a7c8-4377-a976-54943a77a395 |
-> | [Biztonsági rendszergazda](#security-admin) | Megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, szerkesztheti a biztonsági házirendeket, megtekintheti a riasztásokat és a javaslatokat, valamint | fb1c8493-542b-48eb-b624-b4c8fea62acd |
+> | [Biztonsági rendszergazda](#security-admin) | Security Center engedélyeinek megtekintése és frissítése. Ugyanazok az engedélyek, mint a biztonsági olvasó szerepkör, és a biztonsági szabályzatot is frissíthetik, és elérhetik a riasztásokat és a javaslatokat. | fb1c8493-542b-48eb-b624-b4c8fea62acd |
 > | [Biztonsági értékelő közreműködő](#security-assessment-contributor) | Lehetővé teszi az értékelések leküldését Security Center | 612c2aa1-cb24-443b-ac28-3ab7272de6f5 |
 > | [Security Manager (örökölt)](#security-manager-legacy) | Ez egy örökölt szerepkör. Használja helyette a biztonsági rendszergazdát. | e3d13bf0-dd5a-482e-ba6b-9b8433878d10 |
-> | [Biztonsági olvasó](#security-reader) | Megtekintheti a javaslatokat és riasztásokat, megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, de nem végezhet módosításokat. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
+> | [Biztonsági olvasó](#security-reader) | Security Center engedélyeinek megtekintése. Megtekintheti a javaslatokat, a riasztásokat, a biztonsági házirendeket és a biztonsági állapotokat, de nem végezhet módosításokat. | 39bc4728-0917-49c7-9d2c-d95423bc2eb4 |
 > | **DevOps** |  |  |
 > | [DevTest Labs-felhasználó](#devtest-labs-user) | Lehetővé teszi a virtuális gépek a Azure DevTest Labs való összekapcsolását, indítását, újraindítását és leállítását. | 76283e04-6283-4c54-8f91-bcf1374a3c64 |
 > | [Tesztkörnyezet létrehozója](#lab-creator) | Lehetővé teszi a felügyelt Labs Azure Lab-fiókokban való létrehozását, kezelését és törlését. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
@@ -192,7 +192,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 
 ### <a name="contributor"></a>Közreműködő
@@ -2543,7 +2543,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 ## <a name="web"></a>Web
 
 
-### <a name="azure-maps-data-reader-preview"></a>Azure Maps Adatolvasó (előzetes verzió)
+### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
 
 Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel kapcsolatos adatokhoz.
 
@@ -2555,7 +2555,7 @@ Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel ka
 > | **NotActions** |  |
 > | *nincs* |  |
 > | **DataActions** |  |
-> | Microsoft. Maps/fiókok/adatgyűjtés/olvasás | Olvasási hozzáférést biztosít a Maps-fiókhoz. |
+> | Microsoft. Maps/accounts/*/READ |  |
 > | **NotDataActions** |  |
 > | *nincs* |  |
 
@@ -2572,12 +2572,12 @@ Hozzáférést biztosít egy Azure Maps-fiókból az olvasási leképezéssel ka
       "actions": [],
       "notActions": [],
       "dataActions": [
-        "Microsoft.Maps/accounts/data/read"
+        "Microsoft.Maps/accounts/*/read"
       ],
       "notDataActions": []
     }
   ],
-  "roleName": "Azure Maps Data Reader (Preview)",
+  "roleName": "Azure Maps Data Reader",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }
@@ -5710,7 +5710,7 @@ Lehetővé teszi a kulcstartók kezelését, de azokhoz való hozzáférés nél
 
 ### <a name="security-admin"></a>Biztonsági rendszergazda
 
-Megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, szerkesztheti a biztonsági házirendeket, megtekintheti a riasztásokat és a javaslatokat, valamint
+Security Center engedélyeinek megtekintése és frissítése. Ugyanazok az engedélyek, mint a biztonsági olvasó szerepkör, és a biztonsági szabályzatot is frissíthetik, és elérhetik a riasztásokat és a javaslatokat.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -5868,7 +5868,7 @@ Ez egy örökölt szerepkör. Használja helyette a biztonsági rendszergazdát.
 
 ### <a name="security-reader"></a>Biztonsági olvasó
 
-Megtekintheti a javaslatokat és riasztásokat, megtekintheti a biztonsági házirendeket, megtekintheti a biztonsági állapotokat, de nem végezhet módosításokat.
+Security Center engedélyeinek megtekintése. Megtekintheti a javaslatokat, a riasztásokat, a biztonsági házirendeket és a biztonsági állapotokat, de nem végezhet módosításokat.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6217,6 +6217,9 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
 > | Microsoft. bepillantások/scheduledqueryrules/* |  |
 > | Microsoft. bepillantások/webteszt/* | Webes tesztek létrehozása és kezelése |
 > | Microsoft. bepillantások/munkafüzetek/* |  |
+> | Microsoft. bepillantások/privateLinkScopes/* |  |
+> | Microsoft. bepillantások/privateLinkScopeOperationStatuses/* |  |
+> | Microsoft. OperationalInsights/munkaterületek/írás | Létrehoz egy új munkaterületet vagy egy meglévő munkaterületre mutató hivatkozásokat úgy, hogy megadja az ügyfél azonosítóját a meglévő munkaterületen. |
 > | Microsoft. OperationalInsights/munkaterületek/intelligencepacks/* | Log Analytics-megoldási csomagok olvasása/írása/törlése. |
 > | Microsoft. OperationalInsights/munkaterületek/savedSearches/* | A log Analytics-beli mentett keresések olvasása/írása/törlése. |
 > | Microsoft. OperationalInsights/munkaterületek/keresés/művelet | Keresési lekérdezés végrehajtása |
@@ -6263,6 +6266,9 @@ Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még
         "Microsoft.Insights/scheduledqueryrules/*",
         "Microsoft.Insights/webtests/*",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/privateLinkScopes/*",
+        "Microsoft.Insights/privateLinkScopeOperationStatuses/*",
+        "Microsoft.OperationalInsights/workspaces/write",
         "Microsoft.OperationalInsights/workspaces/intelligencepacks/*",
         "Microsoft.OperationalInsights/workspaces/savedSearches/*",
         "Microsoft.OperationalInsights/workspaces/search/action",

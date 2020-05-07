@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
-ms.date: 04/21/2020
-ms.openlocfilehash: d421811c18ac63952432cd853a6928db7c81f3db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: e2db6d1d60026a00fa8e766fbaa1c72975fa2e99
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182429"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786614"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
@@ -44,7 +44,7 @@ A HDInsight virtuális hálózatban való telepítésének tervezésekor a köve
 
 * Szeretné korlátozni/átirányítani a bejövő vagy kimenő forgalmat a HDInsight?
 
-    A HDInsight korlátozás nélküli kommunikációt kell biztosítania adott IP-címekkel az Azure-adatközpontban. Több portot is engedélyezni kell a tűzfalakon keresztül az ügyfél-kommunikációhoz. További információ: a [hálózati forgalom szabályozása](#networktraffic) szakasz.
+    A HDInsight korlátozás nélküli kommunikációt kell biztosítania adott IP-címekkel az Azure-adatközpontban. Több portot is engedélyezni kell a tűzfalakon keresztül az ügyfél-kommunikációhoz. További információ: a [hálózati forgalom szabályozása](./control-network-traffic.md).
 
 ## <a name="add-hdinsight-to-an-existing-virtual-network"></a><a id="existingvnet"></a>HDInsight hozzáadása meglévő virtuális hálózathoz
 
@@ -201,57 +201,9 @@ Az Apache Ambari és más weboldalakhoz a virtuális hálózaton keresztül tör
 
 2. A szolgáltatás által elérhető csomópontok és portok meghatározásához tekintse meg a [Hadoop Services által a HDInsight dokumentumban használt portokat](./hdinsight-hadoop-port-settings-for-services.md) .
 
-## <a name="controlling-network-traffic"></a><a id="networktraffic"></a>Hálózati forgalom szabályozása
-
-### <a name="techniques-for-controlling-inbound-and-outbound-traffic-to-hdinsight-clusters"></a>Technikák a HDInsight-fürtök bejövő és kimenő forgalmának szabályozására
-
-Az Azure-beli virtuális hálózatok hálózati forgalmát a következő módszerekkel lehet vezérelni:
-
-* A **hálózati biztonsági csoportok** (NSG) lehetővé teszik a bejövő és a kimenő forgalom szűrését a hálózatra. További információ: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
-
-* A **hálózati virtuális berendezések** (NVA-EK) csak kimenő forgalom esetén használhatók. A NVA replikálja az eszközök, például a tűzfalak és az útválasztók működését. További információ: [hálózati berendezések](https://azure.microsoft.com/solutions/network-appliances) dokumentum.
-
-Felügyelt szolgáltatásként a HDInsight a HDInsight állapot-és felügyeleti szolgáltatásokhoz való korlátlan hozzáférést igényel mind a VNET érkező bejövő, mind kimenő forgalmához. A NSG használatakor biztosítania kell, hogy ezek a szolgáltatások továbbra is kommunikálhatnak a HDInsight-fürttel.
-
-![Az Azure egyéni VNET létrehozott HDInsight-entitások ábrája](./media/hdinsight-plan-virtual-network-deployment/hdinsight-vnet-diagram.png)
-
-### <a name="hdinsight-with-network-security-groups"></a>HDInsight hálózati biztonsági csoportokkal
-
-Ha **hálózati biztonsági csoportokat** kíván használni a hálózati forgalom szabályozásához, hajtsa végre a következő műveleteket a HDInsight telepítése előtt:
-
-1. Azonosítsa az HDInsight használni kívánt Azure-régiót.
-
-2. Azonosítsa a HDInsight által a régiója számára szükséges szolgáltatási címkéket. További információ: [hálózati biztonsági csoport (NSG) szolgáltatás címkéi az Azure HDInsight](hdinsight-service-tags.md).
-
-3. Hozza létre vagy módosítsa annak az alhálózatnak a hálózati biztonsági csoportjait, amelyre telepíteni kívánja a HDInsight-et.
-
-    * __Hálózati biztonsági csoportok__: engedélyezze a __bejövő__ forgalmat az __443__ -as porton az IP-címekről. Ezzel biztosíthatja, hogy a HDInsight-kezelési szolgáltatások a virtuális hálózaton kívülről is elérjék a fürtöt.
-
-A hálózati biztonsági csoportokkal kapcsolatos további információkért tekintse meg a [hálózati biztonsági csoportok áttekintése](../virtual-network/security-overview.md)című témakört.
-
-### <a name="controlling-outbound-traffic-from-hdinsight-clusters"></a>HDInsight-fürtök kimenő forgalmának szabályozása
-
-További információ a HDInsight-fürtök kimenő forgalmának szabályozásáról: a [kimenő hálózati forgalom korlátozásának konfigurálása az Azure HDInsight-fürtökhöz](hdinsight-restrict-outbound-traffic.md).
-
-#### <a name="forced-tunneling-to-on-premises"></a>Kényszerített bújtatás a helyszíni környezetbe
-
-A kényszerített bújtatás egy felhasználó által megadott útválasztási konfiguráció, amelyben az alhálózat összes forgalma egy adott hálózatra vagy helyre, például a helyszíni hálózatra van kényszerítve. A HDInsight __nem__ támogatja a helyszíni hálózatokra irányuló forgalom kényszerített bújtatását.
-
-## <a name="required-ip-addresses"></a><a id="hdinsight-ip"></a>Szükséges IP-címek
-
-Ha hálózati biztonsági csoportokat vagy felhasználó által megadott útvonalakat használ a forgalom vezérléséhez, tekintse meg a [HDInsight-felügyeleti IP-címek](hdinsight-management-ip-addresses.md)című témakört.
-
-## <a name="required-ports"></a><a id="hdinsight-ports"></a>Szükséges portok
-
-Ha **tűzfalat** szeretne használni, és bizonyos portokon kívülről fér hozzá a fürthöz, lehetséges, hogy engedélyeznie kell a forgalmat az adott forgatókönyvhöz szükséges portokon. Alapértelmezés szerint a portok speciális engedélyezési beállításai nem szükségesek, ha az előző szakaszban ismertetett Azure felügyeleti forgalom a 443-es porton keresztül érhető el a fürt számára.
-
-Az egyes szolgáltatásokhoz tartozó portok listáját lásd: [Apache Hadoop Services által használt portok a HDInsight](hdinsight-hadoop-port-settings-for-services.md) -dokumentumban.
-
-A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetését lásd: [virtuális készülék forgatókönyvének](../virtual-network/virtual-network-scenario-udr-gw-nva.md) dokumentuma.
-
 ## <a name="load-balancing"></a>Terheléselosztás
 
-HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/concepts-limitations.md#skus)van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
+HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/skus.md)van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
@@ -260,3 +212,4 @@ HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terhelése
 * Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az [azure Virtual Network áttekintését](../virtual-network/virtual-networks-overview.md).
 * A hálózati biztonsági csoportokkal kapcsolatos további információkért lásd: [hálózati biztonsági csoportok](../virtual-network/security-overview.md).
 * A felhasználó által megadott útvonalakkal kapcsolatos további információkért lásd: [felhasználó által definiált útvonalak és IP-továbbítás](../virtual-network/virtual-networks-udr-overview.md).
+* A forgalom szabályozásával kapcsolatos további információkért lásd: a [hálózati forgalom szabályozása](./control-network-traffic.md).

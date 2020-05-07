@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/21/2019
+ms.date: 05/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b39238575c05d35a2d87999e08c49c0c77e99bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b0d7816dc83a7c3536e44ff2461d85ea6178ff1
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74380012"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778481"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mi a szolgáltatás függőségei Azure Active Directory feltételes hozzáférésben? 
 
 A feltételes hozzáférési szabályzatok segítségével megadhatja a webhelyekhez és a szolgáltatásokhoz való hozzáférési követelményeket. A hozzáférési követelmények például többek között a többtényezős hitelesítés (MFA) vagy a [felügyelt eszközök](require-managed-devices.md)megkövetelését is tartalmazhatják. 
 
-Ha közvetlenül fér hozzá egy webhelyhez vagy szolgáltatáshoz, a kapcsolódó szabályzatok hatása általában könnyen felmérhető. Ha például olyan szabályzattal rendelkezik, amely az MFA-t igényli a SharePoint Online-hoz, a rendszer minden egyes bejelentkezéskor MFA-t alkalmaz a SharePoint webes portálra. Azonban nem mindig áll készen a szabályzat hatásának felmérésére, mert a Felhőbeli alkalmazások függőségekkel rendelkeznek más felhőalapú alkalmazásokkal. A Microsoft Teams például hozzáférést biztosíthat az erőforrásokhoz a SharePoint Online-ban. Így ha a Microsoft csapatait a jelenlegi forgatókönyvben éri el, a SharePoint MFA-szabályzata is érvényes.   
+Ha közvetlenül fér hozzá egy webhelyhez vagy szolgáltatáshoz, a kapcsolódó szabályzatok hatása általában könnyen felmérhető. Ha például olyan szabályzattal rendelkezik, amely a SharePoint Online-hoz a többtényezős hitelesítés (MFA) használatát igényli, a rendszer minden egyes bejelentkezéskor MFA-t alkalmaz a SharePoint webes portálra. Azonban nem mindig áll készen a szabályzat hatásának felmérésére, mert a Felhőbeli alkalmazások függőségekkel rendelkeznek más felhőalapú alkalmazásokkal. A Microsoft Teams például hozzáférést biztosíthat az erőforrásokhoz a SharePoint Online-ban. Így ha a Microsoft csapatait a jelenlegi forgatókönyvben éri el, a SharePoint MFA-szabályzata is érvényes. 
 
 ## <a name="policy-enforcement"></a>Szabályzatbetartatás 
 
@@ -36,6 +36,8 @@ Az alábbi ábra az MS Teams szolgáltatás függőségeit mutatja be. A folyton
 ![MS Teams szolgáltatás függőségei](./media/service-dependencies/01.png)
 
 Ajánlott eljárásként a kapcsolódó alkalmazásokban és szolgáltatásokban közös házirendeket kell beállítania, amikor csak lehetséges. A konzisztens biztonsági testhelyzet a legjobb felhasználói élményt nyújtja. Például az Exchange Online, a SharePoint Online, a Microsoft Teams és a Skype for Business közös házirendjének beállítása jelentősen csökkenti az alárendelt szolgáltatásokra alkalmazott különböző házirendektől esetlegesen felmerülő váratlan kéréseket. 
+
+Ezt az Office-veremben lévő alkalmazásokkal nagyszerű módszerként használhatja az [office 365 (előzetes verzió)](concept-conditional-access-cloud-apps.md#office-365-preview) használata az egyes alkalmazások célzása helyett.
 
 Az alábbi táblázat felsorolja azokat a szolgáltatási függőségeket, amelyeknek meg kell felelniük az ügyfélalkalmazások számára  
 

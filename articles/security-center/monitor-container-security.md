@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: memildin
-ms.openlocfilehash: 330cbc3f28f5e549d5a21417c3d7ccc1e5444769
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 900398a701659bff593df042db16890792e5cffd
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77919532"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744742"
 ---
 # <a name="monitoring-the-security-of-your-containers"></a>A tárolók biztonságának figyelése
 
@@ -131,7 +131,9 @@ A Azure Security Center a tárolók Docker-gazdagépekre vonatkozó biztonsági 
 
     [![Log Analytics művelet](media/monitor-container-security/log-analytics-for-action-small.png)](media/monitor-container-security/log-analytics-for-action.png#lightbox)
 
-1. Állítsa be a lekérdezési paramétereket, és válassza a **Futtatás** lehetőséget, ha biztos benne, hogy készen áll a gazdagépre. 
+1. Szükség esetén a lekérdezés paramétereinek csípése.
+
+1. Ha biztos abban, hogy a parancs megfelelő, és készen áll a gazdagépre, válassza a **Futtatás**lehetőséget.
 
 
 

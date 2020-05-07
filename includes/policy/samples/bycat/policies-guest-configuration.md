@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: ae37a41f31de068a0a62aa92c857bee99b27398c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 693a763e3ee1dcfe609a778725a18733fe44f990
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191079"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838105"
 ---
-|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name |Description |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[A Windows rendszerű virtuális gépeken a vendég-konfigurációs házirendek engedélyezéséhez szükséges előfeltételek naplózása.](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F5fc23db3-dd4d-4c56-bcc7-43626243e601) |Ez a definíció lehetővé teszi, hogy Azure Policy naplózza a Windows-alapú virtuális gépeken futó Windows-bővítmény Azure Policyét. A bővítmény a vendég-konfigurációs házirendek előfeltétele. A vendég-konfigurációs házirendekkel kapcsolatos további információkért [https://aka.ms/gcpol](https://aka.ms/gcpol)tekintse meg a következőt:. |AuditIfNotExists, letiltva |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_PrerequisitePolicyWindows_Audit.json) |
 |[Azon Windows-alapú virtuális gépek naplózása, amelyeken nincs engedélyezve a Windows Defender Exploit Guard](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbed48b13-6647-468e-aa2f-1af1d3f4dd40) |A Windows Defender Exploit Guard védelmet nyújt a kártevők elleni védelemben, amely az eszközök és a terjesztés használatát teszi lehetővé. A biztonsági rések védelme számos, az operációs rendszerre vagy az egyes alkalmazásokra alkalmazható enyhítési lehetőségből áll. Ehhez a Szabályzathoz a Windows-bővítmény Azure Policy szükséges. Részletekért keresse fel [https://aks.ms/gcpol](https://aks.ms/gcpol)a következőt:. |AuditIfNotExists, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Guest%20Configuration/GuestConfiguration_WindowsDefenderExploitGuard_AuditIfNotExist.json) |

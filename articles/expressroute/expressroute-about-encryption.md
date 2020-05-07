@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 12/13/2019
+ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d48f83df4e83fd1d1fe38eea76432e1b1c711b76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77755ab6bdbb3c1e6416475f5066b5dd463eb7f5
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461463"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838756"
 ---
 # <a name="expressroute-encryption"></a>ExpressRoute titkosítása
  
@@ -30,8 +30,8 @@ Igen. A MACsec-konfiguráció esetében csak az előmegosztott kulcsos üzemmód
 Nem. Ha a MACsec konfigurálva van, és a kulcs nem egyezik, elveszíti a kapcsolatot a Microsofttal. Más szóval nem fogunk visszaesni a nem titkosított kapcsolatokba, és kitéve az adatait. 
 ### <a name="will-enabling-macsec-on-expressroute-direct-degrade-network-performance"></a>Engedélyezi a MACsec a ExpressRoute a hálózati teljesítmény közvetlen romlását?
 A MACsec titkosítás és visszafejtés az általunk használt útválasztó hardverén történik. Az oldalunkon nincs hatással a teljesítményre. Érdemes azonban megkeresni a hálózati szolgáltatót a használt eszközökhöz, és látnia kell, hogy a MACsec rendelkezik-e teljesítménnyel.
-### <a name="which-cipher-suites-are-supported-for-encryption"></a>mely titkosítási csomagok támogatottak a titkosításhoz?
-Támogatjuk a AES128 és a AES256.
+### <a name="which-cipher-suites-are-supported-for-encryption"></a>Mely titkosítási csomagok támogatottak a titkosításhoz?
+A AES128 és a AES256 [kiterjesztett csomagok számozási](https://1.ieee802.org/security/802-1aebw/) verzióját is támogatjuk. Továbbá tiltsa le az eszközön a MACsec konfigurációjában a [biztonságos csatorna azonosítóját (sci)](https://en.wikipedia.org/wiki/IEEE_802.1AE) . 
 
 ## <a name="end-to-end-encryption-by-ipsec-faq"></a>Végpontok közötti titkosítás az IPsec-ben – gyakori kérdések
 Az IPsec egy [IETF standard](https://tools.ietf.org/html/rfc6071). A Internet Protocol (IP) szintjén vagy a 3. hálózati rétegben titkosítja az adatfájlokat. A helyszíni hálózat és az Azure-beli virtuális hálózat (VNET) közötti végpontok közötti kapcsolat titkosításához használhatja az IPsec protokollt. Tekintse meg az alábbi további gyakori kérdéseket.

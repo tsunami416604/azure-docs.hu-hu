@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
-ms.openlocfilehash: 4955df718dcc8f169232052979ccf4a636c3be80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c81d70577c5e7b852d315bdb91993d15624a7336
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390297"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791493"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>Apache Hive-lekérdezések optimalizálása az Azure HDInsightban
 
@@ -198,5 +198,6 @@ Több optimalizálási módszer is megvizsgálható, például:
 Ebben a cikkben több általános kaptár-lekérdezés optimalizálási módszerét is megtanulta. További információt a következő cikkekben talál:
 
 * [Apache Hive használata a HDInsight](hadoop/hdinsight-use-hive.md)
+* [Apache Hive optimalizálása](./optimize-hive-ambari.md)
 * [Repülési késleltetési adatelemzések elemzése a HDInsight interaktív lekérdezés használatával](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
 * [Twitter-adataik elemzése a HDInsight Apache Hive használatával](hdinsight-analyze-twitter-data-linux.md)
