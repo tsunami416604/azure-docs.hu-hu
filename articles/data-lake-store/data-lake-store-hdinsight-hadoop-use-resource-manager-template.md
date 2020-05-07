@@ -1,23 +1,17 @@
 ---
-title: Azure-sablonok használata HDInsight létrehozásához Azure Data Lake Storage Gen1 használatával | Microsoft Docs
-description: HDInsight-fürtök létrehozása és használata Azure Resource Manager-sablonokkal Azure Data Lake Storage Gen1
-services: data-lake-store,hdinsight
-documentationcenter: ''
+title: Sablon – HDInsight-fürt Data Lake Storage Gen1
+description: Azure Resource Manager-sablonokkal Azure HDInsight-fürtöket hozhat létre és használhat a Azure Data Lake Storage Gen1 használatával.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 8ef8152f-2121-461e-956c-51c55144919d
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b09ca2cc358107c5f95fe3426351d380380db3c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 486809201db45e0f5bbeed870e24b1f63770e319
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66161373"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692031"
 ---
 # <a name="create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-using-azure-resource-manager-template"></a>HDInsight-fürt létrehozása Azure Data Lake Storage Gen1 Azure Resource Manager sablon használatával
 > [!div class="op_single_selector"]
@@ -40,7 +34,7 @@ Az alábbiakban néhány fontos szempontot láthat a HDInsight és a Data Lake S
 
 * A HDInsight-fürtök Data Lake Storage Gen1hoz való elérésének lehetősége, mivel a további tárterület 3,2, 3,4, 3,5 és 3,6 verziójú HDInsight érhető el.
 
-Ebben a cikkben egy Hadoop-fürtöt építünk ki Data Lake Storage Gen1 további tárterületként. A Hadoop-fürtök alapértelmezett tárolóként Data Lake Storage Gen1 való létrehozásával kapcsolatos útmutatásért tekintse meg a [HDInsight-fürt létrehozása Data Lake Storage Gen1 az Azure Portal használatával](data-lake-store-hdinsight-hadoop-use-portal.md)című témakört.
+Ebben a cikkben egy Hadoop-fürtöt építünk ki Data Lake Storage Gen1 további tárterületként. A Hadoop-fürtök alapértelmezett tárolóként Data Lake Storage Gen1 való létrehozásával kapcsolatos útmutatásért lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1 használatával Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +42,7 @@ Ebben a cikkben egy Hadoop-fürtöt építünk ki Data Lake Storage Gen1 tovább
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 * **Azure Active Directory egyszerű szolgáltatásnév**. Az oktatóanyag lépései útmutatást nyújtanak az egyszerű szolgáltatás Azure AD-ben való létrehozásához. Az egyszerű szolgáltatásnév létrehozásához azonban Azure AD-rendszergazdának kell lennie. Ha Ön Azure AD-rendszergazda, akkor kihagyhatja ezt az előfeltételt, és folytathatja az oktatóanyagot.
 
@@ -88,7 +82,7 @@ Annak érdekében, hogy a feltöltött mintaadatok elérhetők legyenek a HDInsi
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>Tesztelési feladatok futtatása a HDInsight-fürtön a Data Lake Storage Gen1 használatához
 A HDInsight-fürt konfigurálását követően tesztelési feladatokat futtathat a fürtön annak ellenőrzéséhez, hogy a HDInsight-fürt elérheti-e Data Lake Storage Gen1. Ehhez egy minta kaptár-feladatot fogunk futtatni, amely létrehoz egy táblázatot a korábban a Data Lake Storage Gen1-fiókba feltöltött mintaadatok használatával.
 
-Ebben a szakaszban az SSH-t egy HDInsight Linux-fürtön fogja futtatni, majd futtatja a minta kaptár-lekérdezést. Ha Windows-ügyfelet használ, javasoljuk a **Putty**használatát, amely letölthető innen [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html):.
+Ebben a szakaszban SSH-t HDInsight Linux-fürtön, és futtatja a minta struktúra-lekérdezést. Ha Windows-ügyfelet használ, javasoljuk a **Putty**használatát, amely letölthető innen [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html):.
 
 A PuTTY használatával kapcsolatos további információkért lásd: az [SSH használata a HDInsight készült Linux-alapú Hadoop a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)rendszerből.
 
@@ -124,7 +118,7 @@ A PuTTY használatával kapcsolatos további információkért lásd: az [SSH ha
 ## <a name="access-data-lake-storage-gen1-using-hdfs-commands"></a>Hozzáférés Data Lake Storage Gen1 a HDFS parancsok használatával
 Miután konfigurálta a HDInsight-fürtöt Data Lake Storage Gen1 használatára, a HDFS rendszerhéj-parancsaival érheti el az áruházat.
 
-Ebben a szakaszban az SSH-t egy HDInsight Linux-fürtön fogja futtatni, és futtatja a HDFS-parancsokat. Ha Windows-ügyfelet használ, javasoljuk a **Putty**használatát, amely letölthető innen [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html):.
+Ebben a szakaszban SSH-t HDInsight Linux-fürtön, és futtatja a HDFS-parancsokat. Ha Windows-ügyfelet használ, javasoljuk a **Putty**használatát, amely letölthető innen [https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html):.
 
 A PuTTY használatával kapcsolatos további információkért lásd: az [SSH használata a HDInsight készült Linux-alapú Hadoop a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)rendszerből.
 

@@ -1,31 +1,25 @@
 ---
-title: Azure Data Lake Storage Gen1 adatai elemzése a Power BI használatával | Microsoft Docs
-description: Power BI használata a Azure Data Lake Storage Gen1 tárolt adatelemzéshez
-services: data-lake-store
-documentationcenter: ''
+title: Az Azure Data Lake Storage Gen1-Power BIban lévő adatelemzés
+description: A Power BI segítségével elemezheti a Azure Data Lake Storage Gen1 tárolt adatelemzést.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d8717b8f365e692b5f27bf8a04d65c5147b8f31b
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 952be68a1675732857969f875cd2b39c2feab674
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "65603214"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691661"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>Azure Data Lake Storage Gen1i adatelemzés Power BI használatával
-Ebből a cikkből megtudhatja, hogyan használhatja a Power BI Desktop a Azure Data Lake Storage Gen1 tárolt adatelemzéshez és megjelenítéséhez.
+Ebből a cikkből megtudhatja, hogyan elemezheti és jelenítheti meg a Azure Data Lake Storage Gen1ban tárolt információkat a Power BI Desktop használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Ez a cikk azt feltételezi, hogy már létrehozott egy **myadlsg1**nevű Data Lake Storage Gen1 fiókot, és feltöltött egy minta adatfájlt (**Drivers. txt**). Ez a mintakód [Azure Data Lake git-tárházból](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)tölthető le.
 * **Power bi Desktop**. Ezt letöltheti a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=45331). 
 

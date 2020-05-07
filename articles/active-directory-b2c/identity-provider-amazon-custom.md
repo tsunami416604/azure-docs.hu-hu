@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/05/2018
+ms.date: 05/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2de891ee109677f92ff603759701f7732f5951ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 059c43b24ddc9f319eac4f2783cfc203bed8c7f1
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188511"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900437"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>A bejelentkezés beállítása Amazon-fiókkal egyéni szabályzatok használatával Azure Active Directory B2C
 
@@ -29,17 +29,16 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy Amaz
 - Hajtsa végre az [Ismerkedés az egyéni szabályzatokkal](custom-policy-get-started.md)című témakör lépéseit.
 - Ha még nem rendelkezik Amazon-fiókkal, hozzon létre [https://www.amazon.com/](https://www.amazon.com/)egyet a következő helyen:.
 
-## <a name="register-the-application"></a>Az alkalmazás regisztrálása
+## <a name="create-an-app-in-the-amazon-developer-console"></a>Alkalmazás létrehozása az Amazon fejlesztői konzolján
 
-Ha engedélyezni szeretné a bejelentkezést a felhasználók számára egy Amazon-fiókból, létre kell hoznia egy Amazon-alkalmazást.
+Ha az Amazon-fiókot összevont identitás-szolgáltatóként szeretné használni Azure Active Directory B2C (Azure AD B2C), létre kell hoznia egy alkalmazást az [Amazon fejlesztői szolgáltatásaiban és technológiájában](https://developer.amazon.com). Ha még nem rendelkezik Amazon-fiókkal, regisztrálhat a következő címen: [https://www.amazon.com/](https://www.amazon.com/).
 
-1. Jelentkezzen be az [Amazon fejlesztői központjába](https://login.amazon.com/) az Amazon-fiókja hitelesítő adataival.
-2. Ha még nem tette meg, kattintson a **regisztráció**gombra, kövesse a fejlesztői regisztráció lépéseit, és fogadja el a szabályzatot.
-3. Válassza az **új alkalmazás regisztrálása**lehetőséget.
-4. Adja meg a **név**, a **Leírás**és az **adatvédelmi nyilatkozat URL-címét**, majd kattintson a **Mentés**gombra. Az adatvédelmi nyilatkozat egy olyan oldal, amelyet Ön kezel, és amely adatvédelmi információkat biztosít a felhasználóknak.
-5. A **webes beállítások** szakaszban másolja ki az **ügyfél-azonosító**értékét. Válassza a **titok megjelenítése** lehetőséget az ügyfél titkos kódjának beolvasásához, majd másolja azt. Mindkettőnek szüksége van egy Amazon-fiók konfigurálására a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
-6. A **webes beállítások** szakaszban válassza a **Szerkesztés**lehetőséget, majd adja meg `https://your-tenant-name.b2clogin.com` az **engedélyezett JavaScript-eredetek** és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` az **engedélyezett visszatérési URL-címek**közötti értéket. Cserélje `your-tenant-name` le a helyére a bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlőt nagybetűvel definiálják Azure AD B2Cban.
-7. Kattintson a **Save** (Mentés) gombra.
+> [!NOTE]  
+> Használja a következő URL-címeket az alábbi **8** . `your-tenant-name` lépésben, a helyére pedig a bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlő nagybetűvel van definiálva Azure AD B2Cban.
+> - Az **engedélyezett eredetek**mezőben adja meg a következőt:`https://your-tenant-name.b2clogin.com` 
+> - Az **engedélyezett visszatérési URL-címek**esetében adja meg a`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+
+[!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
 ## <a name="create-a-policy-key"></a>Házirend-kulcs létrehozása
 

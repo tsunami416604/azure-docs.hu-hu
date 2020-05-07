@@ -13,12 +13,12 @@ ms.date: 09/16/2019
 ms.author: jmprieur
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 1aa7de4290d0050b9d6b1c8b048f9e5a2836790f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 1c330bdaedfedbfeb87e740147e5040cc9d72f16
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127997"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690162"
 ---
 # <a name="token-cache-serialization-in-msalnet"></a>Jogkivonat-gyorsítótár szerializálása a MSAL.NET-ben
 A [jogkivonat beszerzése](msal-acquire-cache-tokens.md)után a Microsoft Authentication Library (MSAL) gyorsítótárazza azt.  Az alkalmazás kódjának meg kell próbálnia kapni a tokent a gyorsítótárból, mielőtt másik módszerrel beszerezze a jogkivonatot.  Ez a cikk a jogkivonat-gyorsítótár alapértelmezett és egyéni szerializálását ismerteti a MSAL.NET-ben.
@@ -124,7 +124,7 @@ $"{Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)}\{A
  }
 ```
 
-A termék minőségi jogkivonat-gyorsítótárazási fájlon alapuló szerializálásának előzetes verziója a nyilvános ügyfélalkalmazások számára (Windows, Mac és Linux rendszereken futó asztali alkalmazások esetén) a [Microsoft. Identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) nyílt forráskódú könyvtárában érhető el. Az alkalmazásokban a következő nuget-csomaggal veheti fel: [Microsoft. Identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+A termék minőségi jogkivonat-gyorsítótára a nyilvános ügyfélalkalmazások számára (Windows, Mac és Linux rendszeren futó asztali alkalmazások esetén) a [Microsoft. Identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) nyílt forráskódú függvénytárában érhető el. Az alkalmazásokban a következő NuGet-csomaggal veheti fel: [Microsoft. Identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 #### <a name="dual-token-cache-serialization-msal-unified-cache-and-adal-v3"></a>Kettős jogkivonat-gyorsítótár szerializálási (MSAL Unified cache és ADAL v3)
 
@@ -273,9 +273,57 @@ namespace CommonCacheMsalV3
 
 A Web Apps vagy webes API-k esetében a gyorsítótár kihasználhatja a munkamenetet, a Redis cache-t vagy egy adatbázist.
 
-A Web Apps vagy a webes API-k esetében fiókon belül egy jogkivonat-gyorsítótárat kell megőrizni.  A webalkalmazások esetében a jogkivonat-gyorsítótárat a fiók AZONOSÍTÓjának kell megadnia.  Webes API-k esetében a fióknak az API meghívásához használt jogkivonat kivonatával kell megjelennie. A MSAL.NET egyéni jogkivonat-gyorsítótárazási szerializálást biztosít a .NET-keretrendszer és a .NET Core alplatformok számára. Ha a gyorsítótár elérhető, az alkalmazások eldönthetik, hogy szerializálják vagy deszerializálják a gyorsítótárat. A felhasználókat kezelő bizalmas ügyfélalkalmazások (webalkalmazások, amelyek bejelentkeznek a felhasználók számára, és meghívhatják a webes API-kat, valamint a webes API-kat hívó webes API-k), több felhasználó is lehet, és a felhasználók párhuzamosan lesznek feldolgozva. A biztonság és a teljesítmény érdekében javasoljuk, hogy felhasználónként egy gyorsítótárat szerializáljon. A szerializálási események kiszámítják a gyorsítótár-kulcsot a feldolgozott felhasználó identitása alapján, valamint az adott felhasználóhoz tartozó jogkivonat-gyorsítótár szerializálása/deszerializálása.
+A Web Apps vagy a webes API-k esetében fiókon belül egy jogkivonat-gyorsítótárat kell megőrizni.  A webalkalmazások esetében a jogkivonat-gyorsítótárat a fiók AZONOSÍTÓjának kell megadnia.  Webes API-k esetében a fióknak az API meghívásához használt jogkivonat kivonatával kell megjelennie. A MSAL.NET egyéni jogkivonat-gyorsítótárazási szerializálást biztosít a .NET-keretrendszer és a .NET Core alplatformok számára. Ha a gyorsítótár elérhető, az alkalmazások eldönthetik, hogy szerializálják vagy deszerializálják a gyorsítótárat. A felhasználókat kezelő bizalmas ügyfélalkalmazások (webalkalmazások, amelyek bejelentkeznek a felhasználók számára, és meghívhatják a webes API-kat, valamint a webes API-kat hívó webes API-k), több felhasználó is lehet, és a felhasználók párhuzamosan lesznek feldolgozva. A biztonság és a teljesítmény érdekében javasoljuk, hogy felhasználónként egy gyorsítótárat szerializáljon. A szerializálási események kiszámítják a gyorsítótár-kulcsot a feldolgozott felhasználó identitása alapján, valamint az adott felhasználóhoz tartozó jogkivonat-gyorsítótár szerializálását/deszerializálását.
 
-Példák a Web Apps és a webes API-k jogkivonat-gyorsítótárának használatára a [ASP.net Core webalkalmazás-oktatóanyagban](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) az 2-2-os [token gyorsítótárában](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache). A megvalósítások esetében tekintse meg a [Microsoft-Authentication-Extensions-for-DotNet](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet) Library [TokenCacheProviders](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/Microsoft.Identity.Web/TokenCacheProviders) mappáját (a [Microsoft. Identity. Client. Extensions. Web](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Web) mappában. 
+A [Microsoft. Identity. Web](https://github.com/AzureAD/microsoft-identity-web) Library egy előzetes verziójú NuGet-csomagot biztosít a [Microsoft. Identity. Web](https://www.nuget.org/packages/Microsoft.Identity.Web) , amely a jogkivonat-gyorsítótár szerializálását tartalmazza:
+
+
+| Kiterjesztési módszer | Microsoft. Identity. Web sub névtér | Leírás  |
+| ---------------- | --------- | ------------ |
+| `AddInMemoryTokenCaches` | `TokenCacheProviders.InMemory` | A memória-jogkivonat gyorsítótárának szerializálásakor. Ez a megvalósítás nagyszerű a mintákban. Az éles környezetben is jó, ha nem bánod, ha a jogkivonat gyorsítótára elvész a webalkalmazás újraindításakor. `AddInMemoryTokenCaches`egy opcionális paramétert használ, `MsalMemoryTokenCacheOptions` amely lehetővé teszi, hogy megadja azt az időtartamot, ameddig a gyorsítótár-bejegyzés lejár, kivéve, ha használatban van.
+| `AddSessionTokenCaches` | `TokenCacheProviders.Session` | A jogkivonat-gyorsítótár a felhasználói munkamenethez van kötve. Ez a lehetőség nem ideális, ha az azonosító jogkivonat sok jogcímet tartalmaz, mivel a cookie túl nagy lesz.
+| `AddDistributedTokenCaches` | `TokenCacheProviders.Distributed` | A jogkivonat-gyorsítótár a ASP.NET Core `IDistributedCache` implementációja, ezért lehetővé teszi az elosztott memória-gyorsítótár, a Redis cache, az elosztott NCache vagy a SQL Server cache közötti választást. A `IDistributedCache` megvalósításokkal kapcsolatos további információkért lásd: https://docs.microsoft.com/aspnet/core/performance/caching/distributed#distributed-memory-cache.
+
+Egyszerű eset a memórián belüli gyorsítótár használatával:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddInMemoryTokenCaches();
+```
+
+
+Példák a lehetséges elosztott gyorsítótárokra:
+
+```C#
+// or use a distributed Token Cache by adding
+    services.AddSignIn(Configuration);
+    services.AddWebAppCallsProtectedWebApi(Configuration, new string[] { scopesToRequest })
+            .AddDistributedTokenCaches();
+
+// and then choose your implementation
+
+// For instance the distributed in memory cache (not cleared when you stop the app)
+services.AddDistributedMemoryCache()
+
+// Or a Redis cache
+services.AddStackExchangeRedisCache(options =>
+{
+ options.Configuration = "localhost";
+ options.InstanceName = "SampleInstance";
+});
+
+// Or even a SQL Server token cache
+services.AddDistributedSqlServerCache(options =>
+{
+ options.ConnectionString = _config["DistCache_ConnectionString"];
+ options.SchemaName = "dbo";
+ options.TableName = "TestCache";
+});
+```
+
+Használatuk a [ASP.net Core webalkalmazás-oktatóanyagban](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app/) az 2-2-os [token gyorsítótárban](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/tree/master/2-WebApp-graph-user/2-2-TokenCache)című szakaszban szerepel.
 
 ## <a name="next-steps"></a>További lépések
 A következő minták a jogkivonat-gyorsítótár szerializálását szemléltetik.

@@ -6,22 +6,22 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: 1ead7fcd9d474369e3a62e372a971d88d26f4e9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b5e7f1b70aca50b4e42d056beb0b17795430091c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273562"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690706"
 ---
 # <a name="azure-service-bus-trigger-for-azure-functions"></a>Azure Functions Azure Service Bus trigger
 
-A Service Bus triggerrel válaszolhat Service Bus üzenetsor vagy témakör üzeneteire.
+A Service Bus triggerrel válaszolhat Service Bus üzenetsor vagy témakör üzeneteire. A bővítmény 3.1.0 kezdődően a munkamenet-kompatibilis üzenetsor vagy témakör aktiválható.
 
 További információ a telepítésről és a konfigurációról: [Áttekintés](functions-bindings-service-bus-output.md).
 
 ## <a name="example"></a>Példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely beolvassa az [üzenet metaadatait](#message-metadata) , és naplóz egy Service Bus üzenetsor-üzenetet:
 
@@ -203,7 +203,7 @@ A Java-függvények akkor is elindíthatók, amikor egy üzenet bekerül egy Ser
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a következő attribútumokat egy Service Bus trigger konfigurálásához:
 
@@ -222,7 +222,7 @@ A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a
   }
   ```
 
-  A `Connection` tulajdonság beállításával megadhatja a használni kívánt Service Bus-kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítások nevét, ahogy az a következő példában is látható:
+  Mivel a `Connection` tulajdonság nincs definiálva, a functions megkeresi `AzureWebJobsServiceBus`a nevű Alkalmazásbeállítások értékét, amely az alapértelmezett név a Service Bus a kapcsolatok karakterláncához. A `Connection` tulajdonságot beállíthatja úgy is, hogy megadja a használni kívánt Service Bus-kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás nevét, az alábbi példában látható módon:
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -284,7 +284,7 @@ További részletekért tekintse meg az trigger [példáját](#example) .
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a *function. JSON* fájlban és az `ServiceBusTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
@@ -304,7 +304,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az `ServiceBusTrigger` att
 
 ## <a name="usage"></a>Használat
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A következő típusparaméter-típusok érhetők el a várólista vagy a témakör üzeneteihez:
 
@@ -354,21 +354,24 @@ A `maxAutoRenewDuration` a *Host. JSON*fájlban konfigurálható, amely a [OnMes
 
 ## <a name="message-metadata"></a>Üzenet metaadatai
 
-A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a tulajdonságok a [BrokeredMessage](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) osztály tagjai.
+A Service Bus trigger számos [metaadat-tulajdonságot](./functions-bindings-expressions-patterns.md#trigger-metadata)biztosít. Ezek a tulajdonságok a más kötésekben lévő kötési kifejezések vagy a kódban szereplő paraméterek részeként is használhatók. Ezek a tulajdonságok az [üzenet](/dotnet/api/microsoft.azure.servicebus.message?view=azure-dotnet) osztály tagjai.
 
 |Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
-|`DeliveryCount`|`Int32`|A kézbesítések száma.|
-|`DeadLetterSource`|`string`|A kézbesítetlen levél forrása.|
-|`ExpiresAtUtc`|`DateTime`|A lejárati idő UTC szerint.|
-|`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|
-|`MessageId`|`string`|Felhasználó által definiált érték, amelyet a Service Bus az ismétlődő üzenetek azonosítására használhat, ha engedélyezve van.|
 |`ContentType`|`string`|A küldő és a fogadó által az alkalmazásspecifikus logikához használt tartalomtípus-azonosító.|
-|`ReplyTo`|`string`|A várólista-címnek küldött válasz.|
-|`SequenceNumber`|`Int64`|A Service Bus által az üzenethez hozzárendelt egyedi szám.|
-|`To`|`string`|A Küldés címe.|
-|`Label`|`string`|Az alkalmazásra vonatkozó címke.|
 |`CorrelationId`|`string`|A korrelációs azonosító.|
+|`DeadLetterSource`|`string`|A kézbesítetlen levél forrása.|
+|`DeliveryCount`|`Int32`|A kézbesítések száma.|
+|`EnqueuedTimeUtc`|`DateTime`|A várólistán lévő idő UTC szerint.|
+|`ExpiresAtUtc`|`DateTime`|A lejárati idő UTC szerint.|
+|`Label`|`string`|Az alkalmazásra vonatkozó címke.|
+|`MessageId`|`string`|Felhasználó által definiált érték, amelyet a Service Bus az ismétlődő üzenetek azonosítására használhat, ha engedélyezve van.|
+|`MessageReceiver`|`MessageReceiver`|Service Bus üzenet fogadója. Felhasználható az üzenet lemondása, befejezése vagy kézbesítetlen levelek.|
+|`MessageSession`|`MessageSession`|Egy üzenet-fogadó kifejezetten a munkamenet-kompatibilis várólistákhoz és témakörökhöz.|
+|`ReplyTo`|`string`|A várólista-címnek küldött válasz.|
+|`SequenceNumber`|`long`|A Service Bus által az üzenethez hozzárendelt egyedi szám.|
+|`To`|`string`|A Küldés címe.|
+|`UserProperties`|`IDictionary<string, object>`|A küldő által beállított tulajdonságok.|
 
 Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat használó [példákat](#example) .
 

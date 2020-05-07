@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: bd5fed45332c73c633db1137bdc23aea66fd3403
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332781"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900374"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Egyszeri jelszóval kapcsolatos technikai profil definiálása egy Azure AD B2C egyéni házirendben
 
@@ -73,12 +73,12 @@ A kód generálási módjának konfigurálásához a következő beállításoka
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | Nem | A kód lejárati ideje másodpercben. Minimum: `60`; Maximum: `1200`; Alapértelmezett: `600`. |
-| CodeLength | Nem | A kód hossza. Az alapértelmezett érték `6`. |
-| CharacterSet | Nem | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
-| NumRetryAttempts | Nem | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
+| CodeExpirationInSeconds | No | A kód lejárati ideje másodpercben. Minimum: `60`; Maximum: `1200`; Alapértelmezett: `600`. |
+| CodeLength | No | A kód hossza. Az alapértelmezett érték `6`. |
+| CharacterSet | No | A kód karakterkészlete, amely normál kifejezésben való használatra van formázva. Például: `a-z0-9A-Z`. Az alapértelmezett érték `0-9`. A karakterkészletnek legalább 10 különböző karaktert kell tartalmaznia a megadott készletben. |
+| NumRetryAttempts | No | Az ellenőrzési kísérletek száma, mielőtt a kód érvénytelennek minősül. Az alapértelmezett érték `5`. |
 | Művelet | Igen | A végrehajtandó művelet. Lehetséges érték: `GenerateCode`. |
-| ReuseSameCode | Nem | Azt határozza meg, hogy egy ismétlődő kód megadása helyett új kód generálását kell-e megadni, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`. |
+| ReuseSameCode | No | Azt határozza meg, hogy egy ismétlődő kód megadása helyett új kód generálását kell-e megadni, ha a megadott kód nem járt le, és még érvényes. Az alapértelmezett érték `false`. |
 
 ### <a name="example"></a>Példa
 
@@ -141,10 +141,11 @@ A következő metaadatokkal konfigurálhatja a kód-ellenőrzési hiba esetén m
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesNotExist | Nem | A felhasználónak megjelenítendő üzenet, ha a kód-ellenőrzési munkamenet lejárt. Vagy a kód lejárt, vagy a kód soha nem lett létrehozva egy adott azonosítóhoz. |
-| UserMessageIfMaxRetryAttempted | Nem | A felhasználónak megjelenítendő üzenet, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
-| UserMessageIfInvalidCode | Nem | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg. |
-|UserMessageIfSessionConflict|Nem| A felhasználónak megjelenítendő üzenet, ha a kód nem ellenőrizhető.|
+| UserMessageIfSessionDoesNotExist | No | A felhasználónak megjelenítendő üzenet, ha a kód-ellenőrzési munkamenet lejárt. Vagy a kód lejárt, vagy a kód soha nem lett létrehozva egy adott azonosítóhoz. |
+| UserMessageIfMaxRetryAttempted | No | A felhasználónak megjelenítendő üzenet, ha túllépte a maximálisan engedélyezett ellenőrzési kísérleteket. |
+| UserMessageIfInvalidCode | No | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg. |
+| UserMessageIfVerificationFailedRetryAllowed | No | A felhasználónak megjelenítendő üzenet, ha érvénytelen kódot adott meg, és a felhasználó megadhatja a megfelelő kódot.  |
+|UserMessageIfSessionConflict|No| A felhasználónak megjelenítendő üzenet, ha a kód nem ellenőrizhető.|
 
 ### <a name="example"></a>Példa
 

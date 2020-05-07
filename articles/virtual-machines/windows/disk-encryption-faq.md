@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: b71384e0a42af5481af7b17b91cd0b1d0ed82ee8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61de52e5a6703682d52d49efe9decb814231dae4
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082594"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901278"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Azure Disk Encryption a Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdések
 
@@ -21,7 +21,7 @@ Ez a cikk a Windows rendszerű virtuális gépek Azure Disk Encryptionával kapc
 
 ## <a name="what-is-azure-disk-encryption-for-windows-vms"></a>Mi Azure Disk Encryption a Windows rendszerű virtuális gépekhez?
 
-A Windows rendszerű virtuális gépek Azure Disk Encryption a Windows BitLocker szolgáltatásával biztosítja az operációsrendszer-lemez és az adatlemezek teljes lemezes titkosítását. Emellett az elmúló erőforrás lemezének titkosítását is biztosítja, ha a [VolumeType paraméter mind](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk).  A virtuális gépről a tárolási háttérbe titkosított tartalom-adatfolyamok. Ezáltal teljes körű titkosítást biztosít az ügyfél által felügyelt kulccsal.
+A Windows rendszerű virtuális gépek Azure Disk Encryption a Windows BitLocker szolgáltatásával biztosítja az operációsrendszer-lemez és az adatlemezek teljes lemezes titkosítását. Emellett az ideiglenes lemez titkosítását is biztosítja, ha a [VolumeType paraméter mind](disk-encryption-windows.md#enable-encryption-on-a-newly-added-data-disk).  A virtuális gépről a tárolási háttérbe titkosított tartalom-adatfolyamok. Ezáltal teljes körű titkosítást biztosít az ügyfél által felügyelt kulccsal.
  
 Lásd: [támogatott virtuális gépek és operációs rendszerek](disk-encryption-overview.md#supported-vms-and-operating-systems).
  
@@ -61,7 +61,7 @@ A Storage kiszolgálóoldali titkosítása titkosítja az Azure Managed Disks-t 
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Miben különbözik Azure Disk Encryption a Storage kiszolgálóoldali titkosítás az ügyfél által felügyelt kulccsal, és mikor kell használnia az egyes megoldásokat?
 
-Azure Disk Encryption teljes körű titkosítást biztosít az operációsrendszer-lemez, az adatlemezek és az ideiglenes erőforrás-lemez számára az ügyfél által felügyelt kulccsal.
+Azure Disk Encryption az operációsrendszer-lemez, az adatlemezek és az ügyfél által felügyelt kulccsal rendelkező ideiglenes lemez végpontok közötti titkosítását biztosítja.
 
 - Ha a követelmények közé tartozik az összes fenti és végpontok közötti titkosítás titkosítása, használja a Azure Disk Encryption. 
 - Ha a követelmények magukban foglalják a csak az ügyfél által felügyelt adatok titkosítását, használja a [kiszolgálóoldali titkosítást az ügyfél által felügyelt](disk-encryption.md)kulcsokkal. A Azure Disk Encryption és a Storage kiszolgálóoldali titkosítással rendelkező lemezek nem titkosíthatók az ügyfél által felügyelt kulcsokkal.
@@ -129,9 +129,6 @@ Azure Disk Encryption kiválasztja a BitLocker titkosítási módszerét a Windo
 \*Az AES 256-bit a diffúzorral nem támogatott a Windows 2012 és újabb verziókban.
 
 A Windows operációs rendszer verziójának meghatározásához futtassa a "winver" eszközt a virtuális gépen.
-
-## <a name="if-i-use-encryptformatall-and-specify-all-volume-types-will-it-erase-the-data-on-the-data-drives-that-we-already-encrypted"></a>Ha EncryptFormatAll használok, és megadja az összes mennyiségi típust, akkor törli a már titkosított adatmeghajtókon tárolt adatmennyiséget?
-Nem, az adatok nem törlődnek a Azure Disk Encryption használatával már titkosított adatmeghajtókról. Hasonló ahhoz, hogy a EncryptFormatAll ne titkosítsa újra az operációsrendszer-meghajtót, nem titkosítja újra a már titkosított adatmeghajtót. 
 
 ## <a name="can-i-backup-and-restore-an-encrypted-vm"></a>Készíthetek biztonsági másolatot és állíthatok vissza egy titkosított virtuális gépet? 
 

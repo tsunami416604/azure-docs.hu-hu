@@ -9,16 +9,16 @@ ms.topic: article
 ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/01/2020
 ms.author: curtand
 ms.reviewer: sahenry
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 282946a023e4e79ee79b05cc2a317efc5a4056e4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b88f4aad650d77fea12677e61d3f249a77367e6f
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165865"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690695"
 ---
 # <a name="manage-your-users-with-my-staff-preview"></a>Felhasználók kezelése a munkatársaival (előzetes verzió)
 
@@ -26,9 +26,28 @@ A saját munkatársak lehetővé teszik, hogy a delegálást egy olyan hatóság
 
 Mielőtt a saját munkatársaival konfigurálja a munkahelyét, javasoljuk, hogy tekintse át ezt a dokumentációt, valamint a [felhasználói dokumentációt](../user-help/my-staff-team-manager.md) , hogy megismerje a funkció funkcióit és hatásait a felhasználók számára. A felhasználó dokumentációját kihasználva betaníthatja és felkészítheti a felhasználókat az új felületre, és segítséget nyújthat a sikeres bevezetéshez.
 
+Az SMS-alapú hitelesítés a felhasználók számára a Azure Active Directory egy nyilvános előzetes funkciója. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
+
 ## <a name="how-my-staff-works"></a>A munkatársak működése
 
 A munkatársak a felügyeleti egységeken (AUs) alapulnak, amelyek olyan erőforrás-tárolók, amelyekkel korlátozható a szerepkör-hozzárendelés felügyeleti vezérlő hatóköre. A saját munkatársaiban az AUs a szervezet felhasználóinak, például az áruháznak vagy a részlegnek egy részhalmazát határozza meg. Ezután például a Team Manager olyan szerepkörhöz rendelhető hozzá, amelynek hatóköre egy vagy több AUs. Az alábbi példában a felhasználó megkapta a hitelesítési rendszergazdai szerepkört, és a három au a szerepkör hatókörét képezi. További információ a felügyeleti egységekről: [felügyeleti egységek kezelése Azure Active Directoryban](directory-administrative-units.md).
+
+## <a name="before-you-begin"></a>Előkészületek
+
+A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van szüksége:
+
+* Aktív Azure-előfizetés.
+
+  * Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Az előfizetéshez társított Azure Active Directory bérlő.
+
+  * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt](../fundamentals/sign-up-organization.md) , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához](../fundamentals/active-directory-how-subscriptions-associated-directory.md).
+* Az SMS-alapú hitelesítés engedélyezéséhez *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
+* Az SMS-hitelesítési módszer házirendjében engedélyezett összes felhasználónak licenccel kell rendelkeznie, még akkor is, ha nem használják azt. Minden engedélyezett felhasználónak rendelkeznie kell a következő Azure AD-vagy Microsoft 365-licencek valamelyikével:
+
+  * [prémium szintű Azure AD P1 vagy P2](https://azure.microsoft.com/pricing/details/active-directory/)
+  * [Microsoft 365 (M365) F1 vagy F3](https://www.microsoft.com/licensing/news/m365-firstline-workers)
+  * [Enterprise Mobility + Security (EMS) E3 vagy E5](https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing) vagy [Microsoft 365 (M365) E3 vagy E5](https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans)
 
 ## <a name="how-to-enable-my-staff"></a>Munkatársak engedélyezése
 
@@ -47,7 +66,7 @@ Az Azure AD feltételes hozzáférési szabályzatával védetté teheti a sajá
 
 Határozottan javasoljuk, hogy az [Azure ad feltételes hozzáférési szabályzatok](https://docs.microsoft.com/azure/active-directory/conditional-access/)használatával megvédje a munkatársakat. Ha feltételes hozzáférési szabályzatot szeretne alkalmazni a munkatársaim számára, manuálisan kell létrehoznia a saját munkatársak szolgáltatását a PowerShell használatával.
 
-### <a name="apply-a-----conditional-access-policy-to-my-staff"></a>Feltételes hozzáférési szabályzat alkalmazása a saját munkatársakra
+### <a name="apply-a-conditional-access-policy-to-my-staff"></a>Feltételes hozzáférési szabályzat alkalmazása a saját munkatársakra
 
 1. Telepítse a [Microsoft Graph Beta PowerShell-parancsmagokat](https://github.com/microsoftgraph/msgraph-sdk-powershell/blob/dev/samples/0-InstallModule.ps1).
 1. Futtassa az alábbi parancsot:
@@ -62,13 +81,6 @@ Határozottan javasoljuk, hogy az [Azure ad feltételes hozzáférési szabályz
 ## <a name="using-my-staff"></a>Saját munkatársak használata
 
 Amikor egy felhasználó a saját munkatársaihoz jut, megjelennek azoknak a [felügyeleti egységeknek](directory-administrative-units.md) a neve, amelyeken rendszergazdai jogosultságokkal rendelkeznek. A [saját munkatársak felhasználói dokumentációjában](../user-help/my-staff-team-manager.md)a "location" kifejezést használjuk a felügyeleti egységekre való hivatkozáshoz. Ha egy rendszergazda engedélyei nem rendelkeznek AU-hatókörrel, az engedélyek a szervezeten belül érvényesek. A munkatársaim engedélyezése után az engedélyezett és a hozzájuk rendelt felhasználók hozzáférhetnek a szolgáltatáshoz [https://mystaff.microsoft.com](https://mystaff.microsoft.com). Kiválaszthatnak egy AU-t az adott AU-ban lévő felhasználók megtekintéséhez, és kiválaszthatnak egy felhasználót a profil megnyitásához.
-
-## <a name="licenses"></a>Licencek
-
-A munkatársaink által engedélyezett összes felhasználónak licenccel kell rendelkeznie, még akkor is, ha nem használják a saját munkatársak portált. Minden engedélyezett felhasználónak rendelkeznie kell a következő Azure AD-vagy Microsoft 365-licencek valamelyikével:
-
-- prémium szintű Azure AD P1 vagy P2
-- Microsoft 365 F1 vagy F3
 
 ## <a name="reset-a-users-password"></a>Új felhasználói jelszó létrehozása
 

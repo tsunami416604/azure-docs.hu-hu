@@ -1,10 +1,11 @@
 ---
-title: 'Oktatóanyag: felhasználói kiépítés a LucidChart – Azure AD'
-description: Megtudhatja, hogyan konfigurálhatja a Azure Active Directoryt, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat a LucidChart.
+title: 'Oktatóanyag: a LucidChart konfigurálása az automatikus felhasználó-kiépítés Azure Active Directoryhoz | Microsoft Docs'
+description: Ismerje meg, hogy miként lehet automatikusan kiépíteni és kiépíteni felhasználói fiókjait az Azure AD-ből a LucidChart.
 services: active-directory
 documentationcenter: ''
-author: ArvindHarinder1
-manager: CelesteDG
+author: zchia
+writer: zchia
+manager: beatrizd
 ms.assetid: d4ca2365-6729-48f7-bb7f-c0f5ffe740a3
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
@@ -12,88 +13,161 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/27/2019
-ms.author: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d946c6e257c7676178f9bc3c234f66ba6fe622
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 01/13/2020
+ms.author: Zhchia
+ms.openlocfilehash: 0c7c1f5f633554a88b74694ed2aeafcd30c13a89
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77057328"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690612"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés LucidChart konfigurálása
 
-Ennek az oktatóanyagnak a célja, hogy megmutassa a LucidChart és az Azure AD-ben elvégzendő lépéseket, hogy automatikusan kiépítse és kiépítse a felhasználói fiókokat az Azure AD-ből a LucidChart. 
+Ez az oktatóanyag azokat a lépéseket ismerteti, amelyeket a LucidChart és a Azure Active Directory (Azure AD) szolgáltatásban kell végrehajtania az automatikus felhasználó-kiépítés konfigurálásához. Ha konfigurálva van, az Azure AD automatikusan kiépíti és kiosztja a felhasználókat és csoportokat az Azure AD kiépítési szolgáltatás [LucidChart](https://www.lucidchart.com/user/117598685#/subscriptionLevel) . A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../manage-apps/user-provisioning.md). 
+
+
+## <a name="capabilities-supported"></a>Támogatott képességek
+> [!div class="checklist"]
+> * Felhasználók létrehozása a LucidChart-ben
+> * Felhasználók eltávolítása a LucidChart-ben, ha már nincs szükség hozzáférésre
+> * Felhasználói attribútumok szinkronizálása az Azure AD és a LucidChart között
+> * Csoportok és csoporttagságok kiépítése a LucidChart-ben
+> * [Egyszeri bejelentkezés](https://docs.microsoft.com/azure/active-directory/saas-apps/lucidchart-tutorial) a LucidChart-be (ajánlott)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő előfeltételekkel:
 
-* Azure Active Directory-bérlő
-* LucidChart-bérlő a [nagyvállalati csomaggal](https://www.lucidchart.com/user/117598685#/subscriptionLevel) vagy jobb engedélyezéssel
-* Rendszergazdai jogosultságokkal rendelkező LucidChart felhasználói fiók
+* [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
+* Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
+* A [nagyvállalati csomaggal](https://www.lucidchart.com/user/117598685#/subscriptionLevel) rendelkező LucidChart-bérlő, vagy jobb, ha van ilyen.
+* Rendszergazdai jogosultságokkal rendelkező felhasználói fiók a LucidChart-ben.
 
-## <a name="assigning-users-to-lucidchart"></a>Felhasználók kiosztása a LucidChart
+## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
+1. A kiépítési [szolgáltatás működésének](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)megismerése.
+2. Határozza meg, hogy kik lesznek a [kiépítés hatókörében](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts).
+3. Határozza meg, hogy az [Azure ad és a LucidChart között milyen adatleképezést kell leképezni](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes). 
 
-Azure Active Directory a "hozzárendelések" nevű fogalom használatával határozza meg, hogy mely felhasználók kapnak hozzáférést a kiválasztott alkalmazásokhoz. A felhasználói fiókok automatikus kiosztásának kontextusában a rendszer csak azokat a felhasználókat és csoportokat szinkronizálja, amelyeket az Azure AD-alkalmazáshoz rendeltek.
+## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>2. lépés LucidChart konfigurálása az Azure AD-vel való kiépítés támogatásához
 
-A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell döntenie, hogy az Azure AD mely felhasználói és/vagy csoportjai képviselik a LucidChart alkalmazáshoz hozzáférő felhasználókat. Miután eldöntötte, az alábbi utasításokat követve rendelheti hozzá ezeket a felhasználókat a LucidChart-alkalmazáshoz:
+1. Jelentkezzen be a [LucidChart felügyeleti konzolba](https://www.lucidchart.com). Navigáljon a **Team > alkalmazás-integráció**elemre.
 
-[Felhasználó vagy csoport társítása vállalati alkalmazáshoz](../manage-apps/assign-user-or-group-access-portal.md)
+      ![LucidChart scim](./media/lucidchart-provisioning-tutorial/team1.png)
 
-### <a name="important-tips-for-assigning-users-to-lucidchart"></a>Fontos Tippek a felhasználók LucidChart való hozzárendeléséhez
+2. Navigáljon a **scim**.
 
-* Azt javasoljuk, hogy egyetlen Azure AD-felhasználó legyen hozzárendelve a LucidChart a létesítési konfiguráció teszteléséhez. Később további felhasználókat és/vagy csoportokat is hozzá lehet rendelni.
+      ![LucidChart scim](./media/lucidchart-provisioning-tutorial/scim.png)
 
-* Amikor LucidChart rendel hozzá egy felhasználóhoz, ki kell választania a **felhasználói** szerepkört vagy egy másik érvényes alkalmazásspecifikus szerepkört (ha elérhető) a hozzárendelési párbeszédpanelen. Az **alapértelmezett hozzáférési** szerepkör nem működik a kiépítés során, és ezek a felhasználók kimaradnak.
+3. Görgessen le a **tulajdonosi jogkivonat** és a **LucidChart alap URL-címének**megtekintéséhez. Másolja és mentse a **tulajdonosi jogkivonatot**. Ez az érték a LucidChart alkalmazás üzembe helyezés lapjának **titkos jogkivonat** * mezőjében jelenik meg a Azure Portal. 
 
-## <a name="configuring-user-provisioning-to-lucidchart"></a>A felhasználók üzembe helyezésének beállítása a LucidChart
+      ![LucidChart token](./media/lucidchart-provisioning-tutorial/token.png)
 
-Ez a szakasz végigvezeti az Azure AD-nek a LucidChart felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és LucidChart alapján a felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
+## <a name="step-3-add-lucidchart-from-the-azure-ad-application-gallery"></a>3. lépés LucidChart hozzáadása az Azure AD Application Galleryből
 
-> [!TIP]
-> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a LucidChart, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+Vegyen fel LucidChart az Azure AD-alkalmazás-katalógusból a LucidChart való kiépítés kezelésének megkezdéséhez. Ha korábban már beállította a LucidChart az SSO-hoz, használhatja ugyanazt az alkalmazást. Javasoljuk azonban, hogy hozzon létre egy külön alkalmazást, amikor először teszteli az integrációt. További információ az alkalmazások a katalógusból való hozzáadásáról [.](https://docs.microsoft.com/azure/active-directory/manage-apps/add-gallery-app) 
 
-### <a name="configure-automatic-user-account-provisioning-to-lucidchart-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása az Azure AD-beli LucidChart
+## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>4. lépés Annak meghatározása, hogy ki lesz a kiépítés hatóköre 
 
-1. A [Azure Portal](https://portal.azure.com)keresse meg a **Azure Active Directory > vállalati alkalmazások > minden alkalmazás** szakaszt.
+Az Azure AD kiépítési szolgáltatása lehetővé teszi az alkalmazáshoz való hozzárendelés és a felhasználó/csoport attribútumai alapján kiépített hatókör kiosztását. Ha úgy dönt, hogy a hatókör ki lesz kiépítve az alkalmazáshoz a hozzárendelés alapján, a következő [lépésekkel](../manage-apps/assign-user-or-group-access-portal.md) rendelhet hozzá felhasználókat és csoportokat az alkalmazáshoz. Ha olyan hatókört választ ki, amely kizárólag a felhasználó vagy csoport attribútumai alapján lesz kiépítve, az [itt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)leírtak szerint használhat egy hatókör-szűrőt. 
 
-2. Ha már konfigurálta a LucidChart az egyszeri bejelentkezéshez, keresse meg a LucidChart-példányát a keresőmező használatával. Ellenkező esetben válassza a **Hozzáadás** lehetőséget, és keresse meg a **LucidChart** az alkalmazás-gyűjteményben. Válassza a LucidChart lehetőséget a keresési eredmények közül, és adja hozzá az alkalmazások listájához.
+* Felhasználók és csoportok LucidChart való hozzárendeléséhez ki kell választania az **alapértelmezett hozzáféréstől**eltérő szerepkört. Az alapértelmezett hozzáférési szerepkörrel rendelkező felhasználók ki vannak zárva a kiépítés alól, és a kiépítési naplók nem jogosultak arra, hogy ne legyenek ténylegesen feltüntetve. Ha az alkalmazás egyetlen szerepköre az alapértelmezett hozzáférési szerepkör, akkor a további szerepkörök hozzáadásához [frissítheti az alkalmazás-jegyzékfájlt](https://docs.microsoft.com/azure/active-directory/develop/howto-add-app-roles-in-azure-ad-apps) . 
 
-3. Válassza ki a LucidChart példányát, majd válassza a **kiépítés** lapot.
+* Kis kezdés. Tesztelje a felhasználókat és a csoportokat egy kis készlettel, mielőtt mindenki számára elérhetővé tenné. Ha a kiépítés hatóköre a hozzárendelt felhasználókhoz és csoportokhoz van beállítva, ezt úgy szabályozhatja, hogy egy vagy két felhasználót vagy csoportot rendel az alkalmazáshoz. Ha a hatókör minden felhasználóra és csoportra van beállítva, megadhat egy [attribútum-alapú hatókör-szűrőt](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts). 
+
+
+## <a name="step-5-configure-automatic-user-provisioning-to-lucidchart"></a>5. lépés Automatikus felhasználó-kiépítés beállítása a LucidChart 
+
+Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálásának lépésein, hogy az Azure AD-ben felhasználói és/vagy TestApp alapuló felhasználókat és/vagy csoportokat hozzon létre, frissítsen és tiltsa le.
+
+### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>Az automatikus felhasználó-kiépítés konfigurálása a LucidChart az Azure AD-ben:
+
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
+
+    ![Vállalati alkalmazások panel](common/enterprise-applications.png)
+
+2. Az alkalmazások listában válassza a **LucidChart**lehetőséget.
+
+    ![Az LucidChart hivatkozás az alkalmazások listájában](common/all-applications.png)
+
+3. Válassza ki a **kiépítés** lapot.
+
+    ![Kiépítés lap](common/provisioning.png)
 
 4. Állítsa a **kiépítési módot** **automatikus**értékre.
 
-    ![LucidChart kiépítés](./media/lucidchart-provisioning-tutorial/LucidChart1.png)
+    ![Kiépítés lap](common/provisioning-automatic.png)
 
-5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a LucidChart fiókja által generált **titkos jogkivonatot** (az Ön fiókja alatt találja a tokent: **Team** > **app Integration** > **scim**).
+5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a **titkos jogkivonat** mezőben korábban lekért **tulajdonosi jogkivonat** értékét. Kattintson a **kapcsolat tesztelése** lehetőségre, hogy az Azure ad képes legyen csatlakozni a LucidChart. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a LucidChart-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![LucidChart kiépítés](./media/lucidchart-provisioning-tutorial/LucidChart2.png)
+      ![kiépítési](./media/Lucidchart-provisioning-tutorial/lucidchart1.png)
 
-6. A Azure Portal kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozhasson a LucidChart-alkalmazáshoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a LucidChart-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra az 5. lépéssel.
+6. Az **értesítő e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba** esetén jelölőnégyzetet.
 
-7. Adja meg annak a személynek vagy csoportnak az e-mail-címét, akinek meg kell kapnia az értesítő e-mail-értesítéseket az **értesítési e-mail** mezőben, és jelölje be az "e-mail-értesítés küldése hiba esetén" jelölőnégyzetet.
+    ![Értesítő E-mail](common/provisioning-notification-email.png)
 
-8. Kattintson a **Save** (Mentés) gombra.
+7. Kattintson a **Mentés** gombra.
 
-9. A leképezések szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a LucidChart**lehetőséget.
+8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a LucidChart**lehetőséget.
 
-10. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből az LucidChart-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LucidChart felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban lévő LucidChart. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LucidChart felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Ha úgy dönt, hogy módosítja a [megfelelő cél attribútumot](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), akkor biztosítania kell, hogy a LucidChart API támogassa a felhasználók szűrését az adott attribútum alapján. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-11. Az Azure AD-kiépítési szolgáltatás LucidChart való engedélyezéséhez módosítsa a **kiépítési állapotot** a következőre a **Beállítások** **szakaszban:**
+   |Attribútum|Típus|
+   |---|---|
+   |userName (Felhasználónév)|Sztring|
+   |e-mailek [type EQ "work"]. Value|Sztring|
+   |Active|Logikai|
+   |név. givenName|Sztring|
+   |név. familyName|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: részleg|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Division|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: costCenter|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|Sztring|
+   |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
+   |urn: IETF: params: scim: sémák: bővítmény: LucidChart: 1.0: felhasználó: canEdit|Logikai|
 
-12. Kattintson a **Save** (Mentés) gombra.
+10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a LucidChart**lehetőséget.
 
-Ez a művelet elindítja a felhasználók és csoportok szakaszban LucidChart rendelt felhasználók és/vagy csoportok kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg a szolgáltatás fut. A **szinkronizálás részletei** szakasz használatával figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenység naplóira mutató hivatkozásokat, amelyek a kiépítési szolgáltatás által végrehajtott összes műveletet leírják.
+11. Tekintse át az Azure AD-ből szinkronizált LucidChart az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a LucidChart tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
+      |Attribútum|Típus|
+      |---|---|
+      |displayName|Sztring|
+      |tagok|Referencia|
 
-## <a name="additional-resources"></a>További háttéranyagok
+12. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+13. Az Azure AD-kiépítési szolgáltatás LucidChart való engedélyezéséhez módosítsa a **kiépítési állapotot** **a** **Beállítások** szakaszban.
+
+    ![Kiépítés állapota bekapcsolva](common/provisioning-toggle-on.png)
+
+14. Adja meg a LucidChart kiépíteni kívánt felhasználókat és/vagy csoportokat a **Settings (beállítások** ) szakasz **hatókörében** a kívánt értékek kiválasztásával.
+
+    ![Kiépítési hatókör](common/provisioning-scope.png)
+
+15. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+
+    ![Kiépítési konfiguráció mentése](common/provisioning-configuration-save.png)
+
+Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és csoport kezdeti szinkronizálási ciklusát. A kezdeti ciklus hosszabb időt vesz igénybe, mint a következő ciklusok, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. 
+
+## <a name="step-6-monitor-your-deployment"></a>6. lépés Az üzemelő példány figyelése
+Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figyelheti az üzemelő példányt:
+
+1. A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) segítségével határozza meg, hogy mely felhasználók lettek sikeresen kiépítve vagy sikertelenül
+2. Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
+3. Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).  
+
+## <a name="change-log"></a>Változási napló
+
+* 04/30/2020 – a vállalati bővítmény attribútum és az egyéni "CanEdit" attribútum támogatása a felhasználók számára.
+
+## <a name="additional-resources"></a>További források
+
+* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../manage-apps/check-status-user-account-provisioning.md)

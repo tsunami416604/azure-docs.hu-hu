@@ -2,13 +2,13 @@
 title: Host. JSON-hivatkozás Azure Functions 2. x rendszerhez
 description: A v2 futtatókörnyezettel rendelkező Azure Functions Host. JSON fájl dokumentációja.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 7967cdc7f5f7cbb92c12de15d31471fda8aa6569
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 39e6ce5d6807a554cc1714a3970bed8303c31ce8
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81758849"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690887"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Host. JSON-hivatkozás Azure Functions 2. x és újabb verziókhoz 
 
@@ -24,6 +24,8 @@ A *Host. JSON* metaadat-fájl olyan globális konfigurációs beállításokat t
 A Function app más konfigurációs beállításait az [Alkalmazásbeállítások](functions-app-settings.md) (a telepített alkalmazások esetében) vagy a [Local. Settings. JSON](functions-run-local.md#local-settings-file) fájl kezeli (helyi fejlesztéshez).
 
 A gazdagép. JSON-ben a kötésekhez kapcsolódó konfigurációk a Function alkalmazás minden függvényére egyformán vonatkoznak. 
+
+Az Alkalmazásbeállítások használatával [felülbírálhatja vagy alkalmazhatja a beállításokat a környezetekben](#override-hostjson-values) .
 
 ## <a name="sample-hostjson-file"></a>Példa Host. JSON fájlra
 
@@ -386,6 +388,23 @@ A módosításokat figyelő [megosztott kód-címtárak](functions-reference-csh
 ```json
 {
     "watchDirectories": [ "Shared" ]
+}
+```
+
+## <a name="override-hostjson-values"></a>Gazdagép. JSON értékek felülbírálása
+
+Előfordulhat, hogy a gazdagép. JSON fájl módosítása nélkül szeretné konfigurálni vagy módosítani a gazdagép. JSON fájljában megadott beállításokat.  Felülbírálhatja a megadott gazdagépet. a JSON-értékek egyenértékű értéket hoznak létre alkalmazás-beállításként. Ha a futtatókörnyezet megkeresi az alkalmazás formátumát `AzureFunctionsJobHost__path__to__setting`, a felülbírálja a JSON `path.to.setting` -ban található megfelelő Host. JSON-beállítást. Ha alkalmazás-beállításként van kifejezve, a`.`JSON-hierarchia jelzésére használt pont () egy dupla aláhúzás (`__`) karakterrel lesz helyettesítve. 
+
+Tegyük fel például, hogy helyileg futtatta az alkalmazás-betekintési mintavételt. Ha megváltoztatta a helyi Host. JSON fájlt a Application Insights letiltására, akkor előfordulhat, hogy a módosítás az üzembe helyezés során leküldhető az éles alkalmazásba. Ennek biztonságosabbá tételéhez inkább hozzon létre egy alkalmazás `"AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"` -beállítást a `local.settings.json` fájlban. Ezt a következő `local.settings.json` fájlban tekintheti meg, amely nem jelenik meg:
+
+```json
+{
+    "IsEncrypted": false,
+    "Values": {
+        "AzureWebJobsStorage": "{storage-account-connection-string}",
+        "FUNCTIONS_WORKER_RUNTIME": "{language-runtime}",
+        "AzureFunctionsJobHost__logging__applicationInsights__samplingSettings__isEnabled":"false"
+    }
 }
 ```
 
