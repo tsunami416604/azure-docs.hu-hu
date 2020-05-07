@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 0f815003449f0600bce1cb8927b92b85b51b09a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641623"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801773"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Keresési eredmények használata az Azure-ban Cognitive Search
 
@@ -92,9 +92,15 @@ Egy másik lehetőség [Egyéni pontozási profilt](index-add-scoring-profiles.m
 
 ## <a name="hit-highlighting"></a>Találatok kiemelése
 
-A találatok kiemelése olyan szövegformázást jelent (például félkövér vagy sárga kiemelés), amely a megfelelő kifejezésre vonatkozik, így könnyen megoldható a egyezés. A [lekérdezési kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)a találatok kiemelésére vonatkozó utasításokat tartalmaz. A keresőmotor a címkében `highlightPreTag` `highlightPostTag`a megfelelő kifejezést, a kód pedig a választ (például félkövér betűtípus alkalmazása) kezeli.
+A találatok kiemelése olyan szövegformázást jelent (például félkövér vagy sárga kiemelés), amely a megfelelő kifejezésekre vonatkozik, így könnyen megoldható a egyezés. A [lekérdezési kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)a találatok kiemelésére vonatkozó utasításokat tartalmaz. 
 
-A formázás a teljes távú lekérdezésekre vonatkozik. A következő példában a Leírás mezőben a "Sandy", a "Sand", a "strandok", a "Beach" kifejezés a kiemeléshez van címkézve. Azok a lekérdezések, amelyek kiváltják a lekérdezés kiterjesztését a motorban, például a fuzzy és a helyettesítő karakteres keresés, korlátozott támogatást biztosítanak a találatok kiemeléséhez.
+A találatok kiemelésének engedélyezéséhez adja hozzá `highlight=[comma-delimited list of string fields]` a elemet annak megadásához, hogy mely mezők legyenek kiemelve. A kiemelés hasznos lehet a több tartalom mezőhöz, például a Leírás mezőhöz, ahol az egyeztetés nem azonnal nyilvánvaló. Csak a találatok kiemeléséhez **kereshető** minősítéssel rendelkező mezők definíciói láthatók.
+
+Alapértelmezés szerint az Azure Cognitive Search egy mezőn legfeljebb öt kiemelést ad vissza. Ezt a számot úgy állíthatja be, hogy hozzáfűzi a kötőjelet egy egész számmal kiegészítve. A (z `highlight=Description-10` ) például a Description (Leírás) mezőben szereplő tartalomra vonatkozó, legfeljebb 10 kiemelést ad vissza.
+
+A formázás a teljes távú lekérdezésekre vonatkozik. A formázás típusát a címkék határozzák meg, `highlightPreTag` `highlightPostTag`és a kód kezeli a választ (például félkövér betűtípust vagy sárga hátteret alkalmaz).
+
+A következő példában a Leírás mezőben a "Sandy", a "Sand", a "strandok", a "Beach" kifejezés a kiemeléshez van címkézve. Azok a lekérdezések, amelyek kiváltják a lekérdezés kiterjesztését a motorban, például a fuzzy és a helyettesítő karakteres keresés, korlátozott támogatást biztosítanak a találatok kiemeléséhez.
 
 ```http
 GET /indexes/hotels-sample-index/docs/search=sandy beaches&highlight=Description?api-version=2019-05-06 

@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 019c27b1f7e8560c86252aaf2ed1fb79df2439fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd199bc0245ab1daa090f88b1e92216c714042ee
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677342"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864445"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -97,6 +97,14 @@ Indítsa újra a VSS-írókat, amelyek helytelen állapotban vannak. Egy rendsze
 
 * ```net stop serviceName```
 * ```net start serviceName```
+
+Egy másik eljárás, amely segíthet a következő parancs futtatásával egy rendszergazda jogú parancssorból (rendszergazdaként).
+
+```CMD
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThreads /t REG_SZ /d True /f
+```
+
+A beállításkulcs hozzáadásával a szálak nem hozhatók létre a blob-pillanatképekhez, és megelőzhető az időtúllépés.
 
 ## <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure – hiba történt a biztonsági mentési bővítmény konfigurációjának elemzésekor
 
@@ -196,10 +204,10 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 
 | A hiba részletei | Áthidaló megoldás |
 | --- | --- |
-| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |None |
+| Ez a feladattípus nem támogatja a megszakítást: <br>Várjon, amíg a feladatok befejeződik. |Nincs |
 | A feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. <br>**vagy**<br> A kijelölt feladat nem törölhető állapotban van: <br>Várjon, amíg a feladatok befejeződik. |Valószínű, hogy a feladatot majdnem befejezték. Várjon, amíg a feladatok befejeződik.|
 | A biztonsági mentés nem tudja megszakítani a feladatot, mert nincs folyamatban: <br>A megszakítás csak folyamatban lévő feladatok esetén támogatott. Próbálkozzon egy folyamatban lévő feladat megszakításával. |Ez a hiba átmeneti állapot miatt fordul elő. Várjon egy percet, és ismételje meg a megszakítási műveletet. |
-| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |None |
+| A biztonsági mentés nem tudta megszakítani a feladatot: <br>Várjon, amíg a feladatok befejeződik. |Nincs |
 
 ## <a name="restore"></a>Visszaállítás
 
@@ -207,14 +215,14 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 | --- | --- |
 | A Restore művelet belső felhőalapú hibával meghiúsult. |<ol><li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, DNS-beállításokkal van konfigurálva. A következőket tekintheti meg: <br>**$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" Get-AzureDns-DnsSettings $Deployment. DnsSettings**.<br>Ha a **címe** konfigurálva van, a rendszer konfigurálja a DNS-beállításokat.<br> <li>A felhőalapú szolgáltatás, amelyre a visszaállítást végzi, a **foglalt IP**-sel van konfigurálva, a felhőalapú szolgáltatásban lévő meglévő virtuális gépek pedig leállított állapotban vannak. A következő PowerShell-parancsmagok használatával megtekintheti, hogy a felhőalapú szolgáltatás fenntartott-e egy IP-címet: **$Deployment = Get-AzureDeployment-szolgáltatásnév "szolgáltatásnév"-slot "Production" $DEP. ReservedIPName**. <br><li>Egy virtuális gépet a következő speciális hálózati konfigurációkkal próbál visszaállítani ugyanazon a felhőalapú szolgáltatásban: <ul><li>Virtuális gépek a terheléselosztó konfigurációjában, belső és külső.<li>Több fenntartott IP-címmel rendelkező virtuális gépek. <li>Több hálózati adapterrel rendelkező virtuális gépek. </ul><li>Válasszon egy új felhőalapú szolgáltatást a felhasználói felületen, vagy tekintse meg a speciális hálózati konfigurációval rendelkező virtuális gépek [visszaállítási szempontjait](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations) .</ol> |
 | A kiválasztott DNS-név már használatban van: <br>Adjon meg másik DNS-nevet, és próbálkozzon újra. |Ez a DNS-név a felhőalapú szolgáltatás nevére hivatkozik, általában a **. cloudapp.net**végződéssel. A névnek egyedinek kell lennie. Ha ezt a hibaüzenetet kapja, a visszaállítás során másik virtuálisgép-nevet kell választania. <br><br> Ez a hiba csak a Azure Portal felhasználói számára jelenik meg. A PowerShell-alapú visszaállítási művelet sikeres, mert csak a lemezeket állítja vissza, és nem hozza létre a virtuális gépet. A hiba akkor jelenik meg, ha a virtuális gépet explicit módon hozza létre a lemez-visszaállítási művelet után. |
-| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |None |
-| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |None |
-| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |None |
-| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |None |
-| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |None |
+| A virtuális hálózat megadott konfigurációja nem megfelelő: <br>Adjon meg másik virtuális hálózati konfigurációt, és próbálkozzon újra. |Nincs |
+| A megadott felhőalapú szolgáltatás olyan fenntartott IP-címet használ, amely nem felel meg a visszaállítani kívánt virtuális gép konfigurációjának: <br>Olyan felhőalapú szolgáltatást válasszon, amely nem használ fenntartott IP-címet. Vagy válasszon egy másik helyreállítási pontot a visszaállításhoz. |Nincs |
+| A felhőalapú szolgáltatás elérte a bemeneti végpontok számának korlátját: <br>Próbálja megismételni a műveletet egy másik felhőalapú szolgáltatás megadásával vagy egy meglévő végpont használatával. |Nincs |
+| A Recovery Services-tár és a célként megadott Storage-fiók két különböző régióban található: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók ugyanabban az Azure-régióban található, mint a Recovery Services-tároló. |Nincs |
+| A visszaállítási művelethez megadott Storage-fiók nem támogatott: <br>Csak a helyileg redundáns vagy földrajzilag redundáns replikációs beállításokkal rendelkező alapszintű vagy standard szintű Storage-fiókok támogatottak. Válasszon egy támogatott Storage-fiókot. |Nincs |
 | A visszaállítási művelethez megadott Storage-fiók típusa nincs online állapotban: <br>Győződjön meg arról, hogy a visszaállítási műveletben megadott Storage-fiók online állapotban van. |Ez a hiba az Azure Storage-ban vagy kimaradás miatti átmeneti hiba miatt fordulhat elő. Válasszon másik Storage-fiókot. |
-| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |None |
-| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |None |
+| Elérte az erőforráscsoport-kvótát: <br>Töröljön néhány erőforráscsoportot a Azure Portal, vagy forduljon az Azure támogatási szolgálatához, és növelje a határértékeket. |Nincs |
+| A kiválasztott alhálózat nem létezik: <br>Válasszon egy létező alhálózatot. |Nincs |
 | A Backup szolgáltatásnak nincs engedélye az erőforrásokhoz való hozzáférésre az előfizetésében. |A hiba megoldásához először állítsa vissza a lemezeket a [biztonsági másolatba mentett lemezek visszaállítása](backup-azure-arm-restore-vms.md#restore-disks)című cikkben ismertetett lépések segítségével. Ezután használja a [virtuális gép létrehozása helyreállított lemezekről](backup-azure-vms-automation.md#restore-an-azure-vm)című témakör PowerShell-lépéseit. |
 
 ## <a name="backup-or-restore-takes-time"></a>A biztonsági mentés vagy a visszaállítás időt vesz igénybe

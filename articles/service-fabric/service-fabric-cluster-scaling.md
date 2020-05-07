@@ -4,12 +4,12 @@ description: Ismerje meg, hogy az Azure Service Fabric-fürtök méretezése ki-
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: atsenthi
-ms.openlocfilehash: 9dd60a5898b648215fc8b26e49a706a7b19dfeeb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a21182c974d6141264c8ca0c36bfc8f6a366d6f3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258693"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793176"
 ---
 # <a name="scaling-azure-service-fabric-clusters"></a>Azure Service Fabric-fürtök méretezése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A fürtök akár több ezer csomópontot is tartalmazhatnak. Service Fabric-fürt létrehozása után vízszintesen méretezheti a fürtöt (a csomópontok számának módosítása) vagy függőlegesen (a csomópontok erőforrásainak módosítása).  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -29,13 +29,13 @@ Egy Azure-fürt skálázásakor tartsa szem előtt a következő irányelveket:
 - az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia.
 - az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 - Az arany vagy ezüst [tartóssági szintjének](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) minden csomópont-típusának mindig öt vagy több csomóponttal kell rendelkeznie.
-- Ne távolítsa el a véletlenszerű virtuálisgép-példányokat/csomópontokat a csomópont típusától, mindig használja a virtuálisgép-méretezési csoport méretezési funkcióját. A véletlenszerű virtuálisgép-példányok törlése hátrányosan befolyásolhatja a rendszerek megfelelő terheléselosztásának képességét.
+- Ne távolítsa el a véletlenszerű virtuálisgép-példányokat/csomópontokat a csomópont típusától, mindig használja a virtuálisgép-méretezési csoport méretezését a szolgáltatásban. A véletlenszerű virtuálisgép-példányok törlése hátrányosan befolyásolhatja a rendszerek megfelelő terheléselosztásának képességét.
 - Ha automatikus skálázási szabályokat használ, állítsa be a szabályokat úgy, hogy a (virtuálisgép-példányok eltávolítása) méretezése egyszerre egy csomóponton történjen. Egyszerre legfeljebb egy példány skálázása nem biztonságos.
 
-Mivel a fürtben lévő Service Fabric csomópontok a háttérbeli virtuálisgép-méretezési csoportokból állnak, beállíthatja az [automatikus méretezési szabályokat, vagy manuálisan méretezheti](service-fabric-cluster-scale-up-down.md) az egyes csomópontok típusát/virtuálisgép-méretezési csoportját.
+Mivel a fürtben lévő Service Fabric csomópontok a háttérbeli virtuálisgép-méretezési csoportokból állnak, beállíthatja az [automatikus méretezési szabályokat, vagy manuálisan méretezheti](service-fabric-cluster-scale-in-out.md) az egyes csomópontok típusát/virtuálisgép-méretezési csoportját.
 
 ### <a name="programmatic-scaling"></a>Programozott méretezés
-Számos esetben a [fürt manuális méretezése vagy az automatikus skálázási szabályok](service-fabric-cluster-scale-up-down.md) használata jó megoldás. A speciális forgatókönyvek esetében azonban előfordulhat, hogy nem a megfelelő illeszkedés. A következő megközelítések lehetséges hátrányai a következők:
+Számos esetben a [fürt manuális méretezése vagy az automatikus skálázási szabályok](service-fabric-cluster-scale-in-out.md) használata jó megoldás. A speciális forgatókönyvek esetében azonban előfordulhat, hogy nem a megfelelő illeszkedés. A következő megközelítések lehetséges hátrányai a következők:
 
 - A manuális skálázáshoz be kell jelentkeznie, és explicit módon kell lekérnie a skálázási műveleteket. Ha a skálázási műveletek gyakran vagy előre nem látható időpontokban is szükségesek, akkor ez a megközelítés nem jó megoldás.
 - Ha az automatikus skálázási szabályok eltávolítanak egy példányt egy virtuálisgép-méretezési csoportból, a csomópont nem távolítja el automatikusan a kapcsolódó Service Fabric fürt ismereteit, kivéve, ha a csomópont típusa nem rendelkezik ezüst vagy arany tartóssági szinttel. Mivel az automatikus skálázási szabályok a méretezési csoport szintjén működnek (nem a Service Fabric szinten), az automatikus skálázási szabályok el tudják távolítani Service Fabric csomópontokat anélkül, hogy a rendszer szabályosan leállítja őket. Ez a durva csomópont-Eltávolítás a "Ghost" Service Fabric a csomópont állapotát a skálázási műveletek után elhagyja. Egy személynek (vagy szolgáltatásnak) rendszeresen törölnie kell az eltávolított csomópont-állapotot a Service Fabric-fürtben.

@@ -1,32 +1,36 @@
 ---
-title: Azure Table a kereskedelmi piactér programban | Azure piactér
-description: Az Azure Blobhoz tartozó érdeklődői felügyelet konfigurálása
+title: Vezető felügyelet az Azure Blob Storage-ban – Microsoft kereskedelmi piactér
+description: Ismerje meg, hogyan konfigurálhatja az Azure blobot az Microsoft AppSource és az Azure Marketplace-hez készült érdeklődők konfigurálásához
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 7/30/2019
+ms.date: 05/01/2020
 ms.author: dsindona
-ms.openlocfilehash: 062252b007e22fcd2644c8b647fc0ecc2f5938cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 076edc62a467701eaf0de23f280cdaf2abd945de
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285248"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792717"
 ---
-# <a name="lead-management-instructions-for-azure-blob"></a>Az Azure Blob vezető felügyeleti utasításai
+# <a name="use-azure-blob-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Blob Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
 >[!Caution]
->A Piactéri ajánlatból származó érdeklődők feldolgozására szolgáló Azure Blob-beállítás elavult. Ha jelenleg az Azure Blobhoz vezető felügyeleti konfigurációval közzétett ajánlattal rendelkezik, már nem kap ügyfél-érdeklődőket. Frissítse az érdeklődői felügyeleti konfigurációt bármely más vezető felügyeleti lehetőségre. További információ a [vezető felügyeleti kezdőlapon](./commercial-marketplace-get-customer-leads.md)elérhető egyéb lehetőségekről.
+>Az Azure Blob Storage kereskedelmi piactérről való támogatása elavult, és már nem áll fenn az ajánlatból származó érdeklődők feldolgozására szolgáló lehetőség. Ha jelenleg az Azure Blobhoz konfigurált érdeklődői felügyelettel rendelkező kereskedelmi Piactéri ajánlat van, többé nem kapja meg az ügyfél-érdeklődőket. Frissítse az érdeklődői felügyeleti konfigurációt bármely más vezető felügyeleti lehetőségre. További információ a [vezető felügyeleti kezdőlapon](./commercial-marketplace-get-customer-leads.md)elérhető egyéb lehetőségekről.
 
-Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a partner Centerben az Azure Marketplace és a AppSource-érdeklődők fogadásához, akkor az Azure-Blob használatával kezelheti ezeket az érdeklődőket. Ezután exportálhatja az adatait, és importálhatja azt a CRM-rendszerbe. Az ebben a cikkben szereplő utasítások végigvezetik az Azure Storage-fiók létrehozásának folyamatán, valamint az adott fiókhoz tartozó Azure-blobon. Emellett létrehozhat egy új folyamatot Microsoft Flow használatával, amely e-mailben értesítést küld, ha az ajánlat érdeklődőt kap.
+ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nem támogatott a partner Centerben a Microsoft AppSource és az Azure Marketplace-érdeklődők fogadásához, használhatja az Azure Blob Storage-t. Ezután exportálhatja az adatait, és importálhatja azt a CRM-rendszerbe. A cikkben szereplő utasítások végigvezetik az Azure Storage-fiók létrehozásának folyamatán, valamint az adott fiókhoz tartozó blobon. Emellett létrehozhat egy új folyamatot a Power automatizálás használatával, amely e-mailben értesítést küld, ha az ajánlata érdeklődőt kap.
 
+>[!NOTE]
+>Az ebben az útmutatóban használt energiagazdálkodási összekötőhöz fizetős előfizetés szükséges a Power automatizáláshoz. Mielőtt ezt megtenné, kövesse a jelen cikk utasításait.
 
-## <a name="how-to-configure-azure-blob"></a>Az Azure Blob konfigurálása
+## <a name="configure-azure-blob-storage"></a>Az Azure Blob Storage konfigurálása
 
 1. Ha nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/pricing/free-trial/).
-1. Ha az Azure-fiókja aktív, jelentkezzen be a [Azure Portalba](https://portal.azure.com).
-1. A Azure Portal a következő eljárással hozzon létre egy Storage-fiókot.  
+
+2. Ha az Azure-fiókja aktív, jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+
+3. A Azure Portal a következő eljárással hozzon létre egy Storage-fiókot.  
     1. Válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali menüsorban.  Ekkor megjelenik az **új** ablaktábla (panel) a jobb oldalon.
     2. Válassza a **tároló** lehetőséget az **új** ablaktáblán.  Egy **Kiemelt** lista jelenik meg a jobb oldalon.
     3. A fiók létrehozásának megkezdéséhez válassza ki a **Storage-fiókot** .  Kövesse a [Storage-fiók létrehozása](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)című cikk utasításait.
@@ -65,7 +69,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     ![Új tároló](./media/commercial-marketplace-lead-management-instructions-azure-blob/new-container.png)
 
-## <a name="configure-your-offer-to-send-leads-to-the-azure-blob"></a>Az ajánlat beállítása az Azure-Blobba való küldésre
+## <a name="configure-your-offer-to-send-leads-to-azure-blob-storage"></a>Az ajánlat beállítása az Azure Blob Storage-ba való küldésre
 
 Ha készen áll az ajánlathoz tartozó érdeklődői felügyeleti információk konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket:
 

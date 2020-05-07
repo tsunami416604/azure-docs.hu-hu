@@ -1,0 +1,136 @@
+---
+title: Virtuális gép létrehozása speciális rendszerképből
+description: Hozzon létre egy virtuális gépet egy megosztott képtárban lévő speciális rendszerkép használatával.
+author: cynthn
+ms.service: virtual-machines
+ms.subservice: imaging
+ms.workload: infrastructure-services
+ms.topic: how-to
+ms.date: 05/04/2020
+ms.author: cynthn
+ms.reviewer: akjosh
+ms.openlocfilehash: 7d54fa25bc4ab55e62b8f88a3cf76a5ba1130e55
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82796758"
+---
+# <a name="create-a-vm-using-a-specialized-image"></a>Virtuális gép létrehozása speciális rendszerkép használatával 
+
+Hozzon létre egy virtuális gépet egy megosztott rendszerkép-gyűjteményben tárolt speciális rendszerkép-verzióból. Ha általánosított rendszerkép-verzió használatával szeretne virtuális gépet létrehozni, tekintse meg [a virtuális gép létrehozása speciális rendszerkép-verzióból](vm-generalized-image-version-powershell.md)című témakört.
+
+Ha speciális rendszerkép-verziót használ, létrehozhat egy vagy több új virtuális gépet is. A [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) parancsmag használata. 
+
+Ebben a példában a rendszerkép-definíció AZONOSÍTÓját használjuk annak biztosítására, hogy az új virtuális gép a rendszerkép legújabb verzióját fogja használni. Egy adott verziót is használhat a rendszerkép-verziójának AZONOSÍTÓjának használatával `Set-AzVMSourceImage -Id`. Például a következő rendszerkép *-verzió használata* : `Set-AzVMSourceImage -Id "/subscriptions/<subscription ID where the gallery is located>/resourceGroups/myGalleryRG/providers/Microsoft.Compute/galleries/myGallery/images/myImageDefinition/versions/1.0.0"` 
+
+Vegye figyelembe, hogy egy adott rendszerkép-verzió használata azt jelenti, hogy az Automation sikertelen lehet, ha az adott rendszerkép verziója nem érhető el, mert törölték vagy eltávolították a régióból. Javasoljuk, hogy az új virtuális gép létrehozásához használja a rendszerkép-definíció AZONOSÍTÓját, kivéve, ha egy adott rendszerkép-verzióra van szükség.
+
+Szükség szerint cserélje le az erőforrás-neveket ebben a példában. 
+
+
+```azurepowershell-interactive
+
+# Create some variables for the new VM.
+
+$resourceGroup = "mySIGSpecializedRG"
+$location = "South Central US"
+$vmName = "mySpecializedVM"
+
+# Get the image. Replace the name of your resource group, gallery, and image definition. This will create the VM from the latest image version available.
+
+$imageDefinition = Get-AzGalleryImageDefinition `
+   -GalleryName myGallery `
+   -ResourceGroupName myResourceGroup `
+   -Name myImageDefinition
+
+
+# Create a resource group
+New-AzResourceGroup -Name $resourceGroup -Location $location
+
+# Create the network resources.
+
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
+   -Name mySubnet `
+   -AddressPrefix 192.168.1.0/24
+$vnet = New-AzVirtualNetwork `
+   -ResourceGroupName $resourceGroup `
+   -Location $location `
+   -Name MYvNET `
+   -AddressPrefix 192.168.0.0/16 `
+   -Subnet $subnetConfig
+$pip = New-AzPublicIpAddress `
+   -ResourceGroupName $resourceGroup `
+   -Location $location `
+  -Name "mypublicdns$(Get-Random)" `
+  -AllocationMethod Static `
+  -IdleTimeoutInMinutes 4
+$nsgRuleRDP = New-AzNetworkSecurityRuleConfig `
+   -Name myNetworkSecurityGroupRuleRDP  `
+   -Protocol Tcp `
+   -Direction Inbound `
+   -Priority 1000 `
+   -SourceAddressPrefix * `
+   -SourcePortRange * `
+   -DestinationAddressPrefix * `
+   -DestinationPortRange 3389 -Access Allow
+$nsg = New-AzNetworkSecurityGroup `
+   -ResourceGroupName $resourceGroup `
+   -Location $location `
+   -Name myNetworkSecurityGroup `
+   -SecurityRules $nsgRuleRDP
+$nic = New-AzNetworkInterface `
+   -Name $vmName `
+   -ResourceGroupName $resourceGroup `
+   -Location $location `
+  -SubnetId $vnet.Subnets[0].Id `
+  -PublicIpAddressId $pip.Id `
+  -NetworkSecurityGroupId $nsg.Id
+
+# Create a virtual machine configuration using Set-AzVMSourceImage -Id $imageDefinition.Id to use the latest available image version.
+
+$vmConfig = New-AzVMConfig `
+   -VMName $vmName `
+   -VMSize Standard_D1_v2 | `
+   Set-AzVMSourceImage -Id $imageDefinition.Id | `
+   Add-AzVMNetworkInterface -Id $nic.Id
+
+# Create a virtual machine
+New-AzVM `
+   -ResourceGroupName $resourceGroup `
+   -Location $location `
+   -VM $vmConfig
+
+```
+
+## <a name="attach-the-data-disk"></a>Az adatlemez csatolása
+Ha a lemezkép adatlemezt is tartalmaznak, az adatlemezt csatlakoztatnia kell a virtuális géphez.
+
+```azurepowershell-interactive
+
+$vm = Get-AzVM -Name $vmName -ResourceGroupName $resourceGroup 
+
+$lun = $imageVersion.StorageProfile.DataDiskImages.Lun
+
+Add-AzVMDataDisk `
+   -CreateOption FromImage `
+   -SourceImageUri $imageversion.Id `
+   -Lun $lun `
+   -Caching $imageVersion.StorageProfile.DataDiskImages.HostCaching `
+   -DiskSizeInGB $imageVersion.StorageProfile.DataDiskImages.SizeInGB `
+   -VM $vm
+
+```
+
+
+## <a name="next-steps"></a>További lépések
+Az [Azure rendszerkép-szerkesztő (előzetes verzió)](./linux/image-builder-overview.md) segítségével automatizálhatja a rendszerkép-verziók létrehozását, és [egy meglévő rendszerkép-verzióból](./linux/image-builder-gallery-update-image-version.md)is frissítheti és létrehozhatja az új rendszerkép verzióját. 
+
+Sablonok használatával is létrehozhat megosztott képgyűjteményi erőforrásokat. Több Azure Gyorsindítás-sablon is elérhető: 
+
+- [Shared Image Gallery létrehozása](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Rendszerkép-definíció létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Rendszerképverzió létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Virtuális gép létrehozása rendszerképverzióból](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+
+A megosztott képtárakkal kapcsolatos további információkért tekintse meg az [áttekintést](./windows/shared-image-galleries.md). Ha problémákba ütközik, tekintse meg a [megosztott képtárak hibaelhárítása](./windows/troubleshooting-shared-images.md)című témakört.

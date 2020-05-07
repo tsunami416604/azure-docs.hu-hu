@@ -8,14 +8,14 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/10/2020
-ms.openlocfilehash: 01b2bd464db51e255930fe83a3f4321687322275
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b576fc99e2f203bb3d690a8135ee76cee26b3de8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77151206"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792360"
 ---
-# <a name="receive-and-send-b2b-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B-üzenetek fogadása és küldése Azure Logic Apps és Enterprise Integration Pack használatával
+# <a name="receive-and-confirm--b2b-as2-messages-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>B2B AS2-üzenetek fogadása és megerősítése Azure Logic Apps és Enterprise Integration Pack használatával
 
 Ha olyan integrációs fiókkal rendelkezik, amely kereskedelmi partnereket és megállapodásokat határoz meg, létrehozhat egy olyan automatizált üzleti üzleti (B2B) munkafolyamatot, amely a kereskedelmi partnerek közötti üzeneteket az [Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)használatával [Azure Logic apps](../logic-apps/logic-apps-overview.md) segítségével cseréli le. A Azure Logic Apps az AS2, a X12, a EDIFACT és a RosettaNet iparági szabványnak megfelelő protokollokat támogató összekötőket is működik. Ezeket az összekötőket Logic Apps, például a Salesforce és az Office 365 Outlookhoz [elérhető más összekötők](../connectors/apis-list.md)segítségével is kombinálhatja.
 

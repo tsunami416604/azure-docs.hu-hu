@@ -3,12 +3,12 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 2/24/2020
-ms.openlocfilehash: eb78f6073d2bcb7289f13d5c994cff8c13f9a6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8e7b2f8f6483d462f781d95011ef7b972e83b87
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185795"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801790"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -128,7 +128,9 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | [9,25][9.25 UR] | SP1 3.1
 
 **Kiadás** | **Mobilitási szolgáltatás verziója** | **Kernel verziója** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 15 és 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | A rendszer minden SUSE 15 és 15 kernelt támogat. </br></br> 4.12.14-5.5 – Azure – 4.12.14 – 8.22 – Azure
+SUSE Linux Enterprise Server 15 és 15 SP1 | [9,32](https://support.microsoft.com/help/4550047/) | Alapértelmezés szerint a rendszer az összes [SUSE 15 és 15 kernelt](https://www.suse.com/support/kb/doc/?id=000019587) támogatja. </br></br> 4.12.14-5.5 – Azure – 4.12.14 – 8.22 – Azure
+
+
 
 ## <a name="linux-file-systemsguest-storage"></a>Linux-fájlrendszerek/Guest Storage
 
@@ -183,34 +185,34 @@ Fenntartott IP címe | Igen
 IPv4 | Igen
 Forrás IP-címének megőrzése | Igen
 Azure Virtual Network szolgáltatásbeli végpontok<br/> | Igen
-Gyorsított hálózatkezelés | Nem
+Gyorsított hálózatkezelés | No
 
 ## <a name="storage"></a>Storage
 **Összetevő** | **Támogatott**
 --- | ---
 Dinamikus lemez | Az operációsrendszer-lemeznek alaplemeznek kell lennie. <br/><br/>Az adatlemezek lehetnek dinamikus lemezek
-Docker-lemez konfigurációja | Nem
+Docker-lemez konfigurációja | No
 NFS-gazdagép | Igen, VMware-hez<br/><br/> Nem a fizikai kiszolgálók esetében
 Gazdagép SAN (iSCSI/FC) | Igen
 Gazdagép vSAN | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
 Gazdagép többutas (MPIO) | Igen, tesztelték a Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM for CLARiiON
 Gazdagép virtuális kötetei (VVols) | Igen, VMware-hez<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég/kiszolgáló VMDK | Igen
-Vendég/kiszolgáló megosztott fürtözött lemeze | Nem
-Vendég/kiszolgáló által titkosított lemez | Nem
-Vendég/kiszolgáló NFS | Nem
+Vendég/kiszolgáló megosztott fürtözött lemeze | No
+Vendég/kiszolgáló által titkosított lemez | No
+Vendég/kiszolgáló NFS | No
 Vendég/kiszolgáló iSCSI | Áttelepítéshez – igen<br/>Vész-helyreállítás esetén az iSCSI a virtuális géphez csatlakoztatott lemezként fogja felvenni a feladat-visszavételt
-Vendég/kiszolgáló SMB 3,0 | Nem
+Vendég/kiszolgáló SMB 3,0 | No
 Vendég/kiszolgáló RDM | Igen<br/><br/> N/A fizikai kiszolgálókhoz
 Vendég/kiszolgáló lemez > 1 TB | Igen, a lemeznek nagyobbnak kell lennie, mint 1024 MB<br/><br/>Akár 8 192 GB a felügyelt lemezekre való replikáláskor (9,26-es verzió)<br></br> Akár 4 095 GB a Storage-fiókokba való replikáláskor
-Vendég/kiszolgáló lemez 4K logikai és 4k fizikai szektor méretével | Nem
-Vendég/kiszolgáló lemez 4K logikai és 512 bájtos fizikai szektor méretével | Nem
+Vendég/kiszolgáló lemez 4K logikai és 4k fizikai szektor méretével | No
+Vendég/kiszolgáló lemez 4K logikai és 512 bájtos fizikai szektor méretével | No
 Vendég/kiszolgáló kötet szalagos lemezzel >4 TB | Igen
 Logikai kötet kezelése (LVM)| Sűrű kiépítés – igen <br></br> Dinamikus kiépítés – nem
-Vendég/kiszolgáló – tárolóhelyek | Nem
-Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | Nem
+Vendég/kiszolgáló – tárolóhelyek | No
+Vendég/kiszolgáló – gyors Hozzáadás/Eltávolítás lemez | No
 Vendég/kiszolgáló – lemez kizárása | Igen
-Vendég/kiszolgáló többutas (MPIO) | Nem
+Vendég/kiszolgáló többutas (MPIO) | No
 Vendég/kiszolgáló GPT-partíciók | Az 37-es [kumulatív frissítés](https://support.microsoft.com/help/4508614/) (a mobilitási szolgáltatás 9,25-es verziója) a következő öt partíciót támogatja:. Korábban négy támogatott volt.
 ReFS | A rugalmas fájlrendszer a mobilitási szolgáltatás 9,23-es vagy újabb verziójával támogatott
 Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A Windows Server 2012-es vagy újabb verzióiban támogatott, a SLES 12 SP4 és a RHEL 8,0 a mobilitási ügynök verziójának 9,30-as verziójával<br/> – A Secure UEFI rendszerindítási típus nem támogatott.
@@ -219,9 +221,9 @@ Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A Windows Server 2012-es v
 
 |**Replikáció típusa**   |**Támogatott**  |
 |---------|---------|
-|Kiszervezett adatátvitel (ODX)    |       Nem  |
-|Offline előkészítés        |   Nem      |
-| Azure Data Box | Nem
+|Kiszervezett adatátvitel (ODX)    |       No  |
+|Offline előkészítés        |   No      |
+| Azure Data Box | No
 
 ## <a name="azure-storage"></a>Azure Storage tárterület
 
@@ -230,13 +232,13 @@ Vendég/kiszolgáló EFI/UEFI rendszerindítás | – A Windows Server 2012-es v
 Helyileg redundáns tárolás | Igen
 Georedundáns tárolás | Igen
 Írásvédett georedundáns tárolás (RA-GRS) | Igen
-Ritkán használt tároló | Nem
-Gyors tárolás| Nem
-Blokkblobok | Nem
+Ritkán használt tároló | No
+Gyors tárolás| No
+Blokkblobok | No
 Titkosítás – Rest (SSE)| Igen
 Titkosítás – Rest (CMK)| Igen (a PowerShell az 3.3.0 modultól kezdődően)
 Prémium szintű Storage | Igen
-Importálási/exportálási szolgáltatás | Nem
+Importálási/exportálási szolgáltatás | No
 Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cache Storage-fiókra van konfigurálva (a replikációs adattároláshoz használatos).
 Általános célú v2 Storage-fiókok (gyakori és ritka elérésű szintek) | Igen (a tranzakciós költségek lényegesen magasabbak a v2-höz képest, mint a v1)
 
@@ -245,7 +247,7 @@ Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cac
 **Szolgáltatás** | **Támogatott**
 --- | ---
 Rendelkezésre állási csoportok | Igen
-Rendelkezésre állási zónák | Nem
+Rendelkezésre állási zónák | No
 HUB | Igen
 Felügyelt lemezek | Igen
 
@@ -301,10 +303,10 @@ Folyamatkiszolgáló által támogatott napi adatváltozás maximuma | 2 TB
 
 **Művelet** | **Támogatott**
 --- | ---
-Tár áthelyezése az erőforráscsoportok között | Nem
-Tár áthelyezése az előfizetések között | Nem
-Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között | Nem
-Helyezze át a tárterületet, a hálózatot és az Azure-beli virtuális gépeket az előfizetések között. | Nem
+Tár áthelyezése az erőforráscsoportok között | No
+Tár áthelyezése az előfizetések között | No
+Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforráscsoportok között | No
+Helyezze át a tárterületet, a hálózatot és az Azure-beli virtuális gépeket az előfizetések között. | No
 
 
 ## <a name="obtain-latest-components"></a>Legújabb összetevők beszerzése

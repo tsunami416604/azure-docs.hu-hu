@@ -40,6 +40,8 @@
       href: components.md
     - name: Alapelvek
       href: concepts.md
+    - name: Termékváltozatok
+      href: skus.md
     - name: Állapotfigyelés
       items:
         - name: Állapotminták

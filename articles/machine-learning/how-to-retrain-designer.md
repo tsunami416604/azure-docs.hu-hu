@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 721e5414fc4753cd5d58a17fc7ed51ea99868778
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810348"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837158"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -32,13 +32,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure Machine Learning munkaterület a vállalati SKU-val.
-* A tervező számára elérhető adatkészlet. Ez a következők egyike lehet:
-   * Egy Azure Machine Learning regisztrált adatkészlet
-    
-     **vagy**
-   * Egy Azure Machine Learning adattárban tárolt adatfájl.
-   
-A Designer használatával történő adateléréssel kapcsolatos információkért lásd: [adatok importálása a tervezőbe](how-to-designer-import-data.md).
+* Fejezze be a How-to sorozat 1. részét, [alakítsa át az adatelemzést a tervezőben](how-to-designer-transform-data.md).
 
 A cikk azt is feltételezi, hogy alapvető ismeretekkel rendelkezik a folyamatok létrehozásához a tervezőben. Az interaktív bevezetéshez végezze el az [oktatóanyagot](tutorial-designer-automobile-price-train-score.md). 
 

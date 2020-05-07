@@ -6,12 +6,12 @@ ms.author: msangapu
 ms.date: 08/12/2019
 ms.topic: quickstart
 ms.devlang: javascript
-ms.openlocfilehash: 24b93e9722ff399330b6843f065f183a3b1f5181
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 52466bac083f78002a8208ba52ca7d1b951c4064
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82202559"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801484"
 ---
 # <a name="create-a-nodejs-app-in-azure"></a>Node. js-alkalmazás létrehozása az Azure-ban
 
@@ -151,7 +151,7 @@ Ebből a szakaszból megtudhatja, hogyan tekintheti meg (vagy "farok") a naplók
 
 Keresse meg az alkalmazást az **Azure app Service** Explorerben, kattintson a jobb gombbal az alkalmazásra, majd válassza a **folyamatos átviteli naplók megtekintése**lehetőséget.
 
-Ha a rendszer kéri, válassza a naplózás engedélyezését, és indítsa újra az alkalmazást. Az alkalmazás újraindítása után a VS Code kimenet ablak megnyílik a log streamtel létesített kapcsolatban.
+Megnyílik a VS Code kimenet ablak a log streamtel létesített kapcsolatban.
 
 ![Folyamatos átviteli naplók megtekintése](./media/quickstart-nodejs/view-logs.png)
 

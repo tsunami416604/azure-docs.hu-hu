@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: f2f8c08176f80436a339924adb4b2a09338a548a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313588"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792377"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott Factory megoldás-gyorsító szolgáltatásról
 
@@ -111,7 +111,7 @@ A szimuláció saját maga regisztrálja a következő eszközöket:
 * közzétevő. Rio. Corp. contoso
 * kiadó. Seattle. Corp. contoso
 
-Az Azure CLI-eszköz [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy [IoT-bővítményének](https://github.com/Azure/azure-iot-cli-extension) használatával megtekintheti, hogy mely eszközök legyenek regisztrálva a megoldás által használt IoT hub-ban. Az Eszközkezelő használatához szüksége lesz az IoT hub kapcsolódási karakterláncára az üzemelő példányban. Az Azure CLI IoT-bővítményének használatához a IoT Hub neve szükséges.
+Az Azure CLI-eszköz [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/) vagy [IoT-bővítményének](https://github.com/Azure/azure-iot-cli-extension) használatával megtekintheti, hogy mely eszközök legyenek regisztrálva a megoldás által használt IoT hub-ban. Az Eszközkezelő használatához szüksége lesz az IoT hub kapcsolódási karakterláncára az üzemelő példányban. Az Azure CLI IoT-bővítményének használatához a IoT Hub neve szükséges.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Hogyan szerezhetők be a szimulációs összetevőkből származó adatok?
 
@@ -125,7 +125,7 @@ Másik lehetőségként jelentkezzen be a virtuális gépre SSH-n keresztül, é
 
 ### <a name="how-can-i-check-if-the-simulation-is-sending-data-to-the-cloud"></a>Hogyan ellenőrizhető, hogy a szimuláció adatokat küld a felhőbe?
 
-A [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) vagy az [Azure IoT CLI-figyelő-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) paranccsal ellenőrizheti, hogy az egyes eszközökről IoT hub küldött adatok megtekinthetők-e. Ezeknek az eszközöknek a használatához ismernie kell a IoT hub kapcsolódási karakterláncát az üzemelő példányban. Lásd: [hogyan a saját megoldás által használt IoT hub-beli kapcsolatok karakterláncának megkeresése?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
+Az [Azure IoT Explorer](https://github.com/Azure/azure-iot-explorer) vagy az [Azure IoT CLI-figyelő-Events](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-monitor-events) paranccsal ellenőrizheti, hogy az egyes eszközökről IoT hub küldött adatok megtekinthetők-e. Ezeknek az eszközöknek a használatához ismernie kell a IoT hub kapcsolódási karakterláncát az üzemelő példányban. Lásd: [hogyan a saját megoldás által használt IoT hub-beli kapcsolatok karakterláncának megkeresése?](#how-do-i-find-out-the-connection-string-of-the-iot-hub-used-by-my-solution)
 
 Vizsgálja meg az egyik közzétevő eszköz által továbbított adatmennyiséget:
 

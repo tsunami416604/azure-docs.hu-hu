@@ -6,16 +6,17 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: cynthn
-ms.openlocfilehash: ed8574133eafe751699e90ea8cae832ee649fb00
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: legacy
+ms.openlocfilehash: 406eda6902ae451c7fdf79e1bd1215c035a66750
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969586"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792224"
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-and-managed-disks"></a>Linux rendszerű virtuális gép másolatának létrehozása az Azure CLI és a Managed Disks használatával
 
-Ez a cikk bemutatja, hogyan hozhat létre egy Linux rendszerű Azure-beli virtuális gépet (VM) az Azure CLI és a Azure Resource Manager üzemi modell használatával. 
+Ez a cikk bemutatja, hogyan hozhat létre egy Linux rendszerű virtuális gépet az Azure CLI használatával. A virtuálisgép-lemezképek méretekben történő másolásához, létrehozásához, tárolásához és megosztásához tekintse meg a [megosztott lemezképek gyűjteményét](shared-images.md).
 
 A virtuális [merevlemezeket feltöltheti és létrehozhatja egy VHD-ről](upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)is.
 

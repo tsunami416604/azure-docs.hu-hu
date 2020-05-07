@@ -4,12 +4,12 @@ description: Annak áttekintése, hogy miért fontos a Felhőbeli alkalmazások 
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: sfrev
-ms.openlocfilehash: af18a6cb45808c0af5ec2782a3fd2100e3b7bf99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e0c93423b3639fb2bc3739f0d6569c4c4cec8da
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75750616"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792868"
 ---
 # <a name="why-use-a-microservices-approach-to-building-applications"></a>Miért érdemes alkalmazások létrehozására használni a Service-t
 
@@ -35,7 +35,7 @@ Az ügyfél/kiszolgáló korszakban úgy döntöttünk, hogy az egyes rétegekbe
 
 A monolitikus tervezési megközelítés előnyei vannak. A monolit alkalmazások gyakran egyszerűbbek a tervezéshez, és az összetevők közötti hívások gyorsabbak, mert ezek a hívások gyakran többek között az adatfeldolgozási kommunikáción (IPC) alapulnak. Emellett mindenki tesztel egy terméket, ami általában hatékonyabban használja az emberi erőforrásokat. A hátránya az, hogy a réteges rétegek között szoros kapcsolat áll fenn, és az egyes összetevők nem méretezhetők. Ha javításokra vagy frissítésekre van szüksége, meg kell várnia, amíg mások befejezzük a tesztelést. Nehezebben lehet agilis.
 
-A szolgáltatások a korábbi üzleti igényeknek megfelelően kezelik ezeket a hátrányait. Ugyanakkor előnyökkel és kötelezettségekkel is rendelkeznek. A Service-szolgáltatások előnye, hogy mindegyik általában egyszerűbb üzleti funkciókat ágyaz be, amelyek egymástól függetlenül méretezhetők fel és le, és nem használhatók. A szolgáltatások egyik fontos előnye, hogy a csapatok az üzleti forgatókönyvek szerint, mint a technológián alapulnak. A kisebb csapatok egy ügyfél-forgatókönyv alapján fejlesztenek egy szolgáltatást, és a használni kívánt technológiákat használják.
+A szolgáltatások a korábbi üzleti igényeknek megfelelően kezelik ezeket a hátrányait. Ugyanakkor előnyökkel és kötelezettségekkel is rendelkeznek. A Service-szolgáltatások előnye, hogy mindegyik általában egyszerűbb üzleti funkciókat ágyaz be, amelyek egymástól függetlenül méretezhetők, üzembe helyezhetők és kezelhetők. A szolgáltatások egyik fontos előnye, hogy a csapatok az üzleti forgatókönyvek szerint, mint a technológián alapulnak. A kisebb csapatok egy ügyfél-forgatókönyv alapján fejlesztenek egy szolgáltatást, és a használni kívánt technológiákat használják.
 
 Más szóval a szervezetnek nem kell szabványosítani a technológiát a Service-alkalmazások karbantartásához. Az egyes csapatoknak, amelyeket a saját szolgáltatásai elvégezhetnek, a csapat szakértelmére vagy a probléma megoldására legmegfelelőbbek lehetnek. A gyakorlatban a javasolt technológiák, például egy adott NoSQL-tár vagy webalkalmazás-keretrendszer használata előnyösebb.
 

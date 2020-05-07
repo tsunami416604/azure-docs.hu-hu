@@ -1,23 +1,22 @@
 ---
-title: SaaS-alkalmazás regisztrálása | Azure piactér
-description: Bemutatja, hogyan regisztrálhat egy SaaS-alkalmazást a Azure Portal használatával.
+title: SaaS-alkalmazás regisztrálása – Azure Marketplace
+description: Ismerje meg, hogyan regisztrálhat egy SaaS-alkalmazást a Azure Portal használatával, és hogyan fogadhat egy Azure Active Directory biztonsági jogkivonatot.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 9c20fe34e108de95a34aabea56390e8a6f0d858f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c20d25917d66cba8ae3d811eddaa6455b87722
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275713"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792955"
 ---
 # <a name="register-a-saas-application"></a>SaaS-alkalmazás regisztrálása
 
 Ez a cikk azt ismerteti, hogyan regisztrálhat SaaS-alkalmazásokat a Microsoft [Azure Portal](https://portal.azure.com/)használatával.  Sikeres regisztráció után Azure Active Directory (Azure AD) biztonsági jogkivonatot fog kapni, amelyet a SaaS-teljesítési API-k eléréséhez használhat.  További információ az Azure AD-ről: [Mi az a hitelesítés?](https://docs.microsoft.com/azure/active-directory/develop/authentication-scenarios)
-
 
 ## <a name="service-to-service-authentication-flow"></a>A szolgáltatások közötti hitelesítési folyamat
 
@@ -26,7 +25,6 @@ Az alábbi ábrán egy új ügyfél előfizetési folyamata látható, valamint 
 ![SaaS-ajánlat API-folyamata](./media/saas-offer-publish-api-flow-v1.png)
 
 Az Azure nem kényszeríti az olyan hitelesítési korlátozásokat, amelyeket az SaaS szolgáltatás a végfelhasználók számára tesz elérhetővé. A SaaS-teljesítési API-kkal való hitelesítés azonban egy Azure AD biztonsági jogkivonattal történik, amelyet általában az SaaS-alkalmazásnak az Azure Portal használatával történő regisztrálásával szereztek be. 
-
 
 ## <a name="register-an-azure-ad-secured-app"></a>Azure AD-védelemmel ellátott alkalmazás regisztrálása
 
@@ -55,7 +53,6 @@ Az Azure AD képességeit felhasználó alkalmazásokat először regisztrálni 
 
 >[!Note]
 >Alapértelmezés szerint az újonnan regisztrált alkalmazás úgy van konfigurálva, hogy csak az azonos bérlőhöz tartozó felhasználók jelentkezzenek be az alkalmazásba.
-
 
 ## <a name="using-the-azure-ad-security-token"></a>Az Azure AD biztonsági jogkivonat használata
 
@@ -123,7 +120,6 @@ Példa a válasz tokenre:
       "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayIsImtpZCI6ImlCakwxUmNxemhpeTRmcHhJeGRacW9oTTJZayJ9…"
   }               
 ```
-
 
 ## <a name="next-steps"></a>További lépések
 

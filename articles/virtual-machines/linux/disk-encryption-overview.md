@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa7e085f723d4f4c411f52e045c9437d5cb293b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 80ca7d8ed89ba0a3b196f1b2b29384c749cf1b22
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459780"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792547"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -28,7 +28,7 @@ Ha [Azure Security Center](../../security-center/index.yml)használ, a rendszer 
 > - Bizonyos javaslatok növelhetik az adatok, a hálózat vagy a számítási erőforrások használatát, ami további licenc-vagy előfizetési költségeket eredményezhet. Érvényes aktív Azure-előfizetéssel kell rendelkeznie ahhoz, hogy erőforrásokat hozzon létre az Azure-ban a támogatott régiókban.
 > - Jelenleg a 2. generációs virtuális gépek nem támogatják a Azure Disk Encryption. További részleteket a [2. generációs virtuális gépek támogatása az Azure](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2) -ban című témakörben talál.
 
-A Linux-alapú [virtuális gépek létrehozása és](disk-encryption-cli-quickstart.md) titkosítása az Azure CLI gyors üzembe helyezésével, valamint a Linux rendszerű [virtuális gép létrehozása és titkosítása az Azure PowerShell](disk-encryption-powershell-quickstart.md)gyors üzembe helyezésével – néhány percen belül megismerheti a linuxos Azure Disk Encryption alapjait.
+A Linux rendszerű [virtuális gépek létrehozása és](disk-encryption-cli-quickstart.md) titkosítása az Azure CLI gyors üzembe helyezésével, valamint a [linuxos virtuális gép létrehozása és titkosítása Azure PowerShell](disk-encryption-powershell-quickstart.md)gyors üzembe helyezéssel néhány perc alatt elsajátíthatja a Linux Azure Disk Encryptionének alapjait.
 
 ## <a name="supported-vms-and-operating-systems"></a>Támogatott virtuális gépek és operációs rendszerek
 
@@ -56,29 +56,37 @@ A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endo
 
 Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a Azure Disk Encryption; a támogatottak közül csak a következő disztribúciók és verziók támogatják a Azure Disk Encryption:
 
-| Linux-disztribúció | Verzió | Titkosításhoz támogatott kötet típusa|
-| --- | --- |--- |
-| Ubuntu | 18,04| Operációs rendszer és az adatlemez |
-| Ubuntu | 16,04| Operációs rendszer és az adatlemez |
-| Ubuntu | 14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | Operációs rendszer és az adatlemez |
-| RHEL | 7.7 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.6 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7,5 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.4 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.3 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 7.2 | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 6.8 | Adatlemez (lásd az alábbi megjegyzést) |
-| RHEL | 6.7 | Adatlemez (lásd az alábbi megjegyzést) |
-| CentOS | 7.7 | Operációs rendszer és az adatlemez |
-| CentOS | 7.6 | Operációs rendszer és az adatlemez |
-| CentOS | 7,5 | Operációs rendszer és az adatlemez |
-| CentOS | 7.4 | Operációs rendszer és az adatlemez |
-| CentOS | 7.3 | Operációs rendszer és az adatlemez |
-| CentOS | 7.2 n | Operációs rendszer és az adatlemez |
-| CentOS | 6.8 | Adatlemez |
-| openSUSE | 42,3 | Adatlemez |
-| SLES | 12 – SP4 | Adatlemez |
-| SLES | 12 – SP3 | Adatlemez |
+| Közzétevő | Ajánlat | SKU | URN | Titkosításhoz támogatott kötet típusa |
+| --- | --- |--- | --- |
+| Canonical | Ubuntu | 18,04 – LTS | Canonical: UbuntuServer: 18.04-LTS: legújabb | Operációs rendszer és az adatlemez |
+| Canonical | Ubuntu 18.04 | 18,04 – NAPONTA – LTS | Canonical: UbuntuServer: 18.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
+| Canonical | Ubuntu 16.04 | 16,04 – NAPONTA – LTS | Canonical: UbuntuServer: 16.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
+| Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5-LTS | Canonical: UbuntuServer: 14.04.5-LTS: legújabb | Operációs rendszer és az adatlemez |
+| Canonical | Ubuntu-14.04.5</br>[Az Azure-ban beállított kernel 4,15-es vagy újabb verzióra frissült](disk-encryption-troubleshooting.md) | 14.04.5 – NAPI – LTS | Canonical: UbuntuServer: 14.04.5-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
+| RedHat | RHEL 7,7 | 7.7 | RedHat: RHEL: 7.7: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,7 | 7 – NYERS | RedHat: RHEL: 7 – nyers: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,7 | 7 – LVM | RedHat: RHEL: 7 – LVM: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,6 | 7.6 | RedHat: RHEL: 7.6: legutóbbi | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7.5 | 7,5 | RedHat: RHEL: 7.5: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,4 | 7.4 | RedHat: RHEL: 7.4: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,3 | 7.3 | RedHat: RHEL: 7.3: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 7,2 | 7.2 | RedHat: RHEL: 7.2: legújabb | Operációs rendszer és az adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 6,8 | 6.8 | RedHat: RHEL: 6.8: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
+| RedHat | RHEL 6,7 | 6.7 | RedHat: RHEL: 6.7: legújabb | Adatlemez (lásd az alábbi megjegyzést) |
+| OpenLogic | CentOS 7,7 | 7.7 | OpenLogic: CentOS: 7.7: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7,7 | 7 – LVM | OpenLogic: CentOS: 7-LVM: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7,6 | 7.6 | OpenLogic: CentOS: 7.6: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7.5 | 7,5 | OpenLogic: CentOS: 7.5: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7.4 | 7.4 | OpenLogic: CentOS: 7.4: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7,3 | 7.3 | OpenLogic: CentOS: 7.3: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7.2 n | 7.2 n | OpenLogic: CentOS: 7.2 n: legújabb | Operációs rendszer és az adatlemez |
+| OpenLogic | CentOS 7,1 | 7.1 | OpenLogic: CentOS: 7.1: legújabb | Csak adatlemez |
+| OpenLogic | CentOS 7,0 | 7.0 | OpenLogic: CentOS: 7.0: legújabb | Csak adatlemez |
+| OpenLogic | CentOS 6,8 | 6.8 | OpenLogic: CentOS: 6.8: legújabb | Csak adatlemez |
+| SUSE | openSUSE 42,3 | 42,3 | SUSE: openSUSE-LEAP: 42.3: legújabb | Csak adatlemez |
+| SUSE | SLES-prioritás 12 – SP4 | 12 – SP4 | SUSE: SLES-priority: 12-SP4: legújabb | Csak adatlemez |
+| SUSE | SLES-prioritás 12 – SP3 | 12 – SP3 | SUSE: SLES-priority: 12-SP3: legújabb | Csak adatlemez |
+| SUSE | SLES HPC 12 – SP3 | 12 – SP3 | SUSE: SLES-HPC: 12-SP3: legújabb | Csak adatlemez |
 
 > [!NOTE]
 > Az új Azure Disk Encryption implementációja RHEL operációs rendszer és adatlemez esetén támogatott a RHEL7 utólagos elszámolású lemezképekhez.  

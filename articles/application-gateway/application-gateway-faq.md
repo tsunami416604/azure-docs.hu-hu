@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: 8acf04d26d0c69c426eb86f8a26a9f243c6f5ad2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92011495f5f746b18a7706ed2f9583548cc51286
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136668"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836665"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Gyakori kérdések a Application Gateway
 
@@ -159,7 +159,7 @@ Igen. A kapcsolatok kiürítését beállíthatja úgy, hogy megszakítsa a hát
 
 Igen.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="is-application-gateway-always-deployed-in-a-virtual-network"></a>Application Gateway mindig virtuális hálózatban van üzembe helyezve?
 
@@ -329,42 +329,6 @@ Több tartományalapú (gazdagép-alapú) útválasztáshoz létrehozhat többhe
 ### <a name="can-i-use-special-characters-in-my-pfx-file-password"></a>Használhatok speciális karaktereket a saját. pfx fájl jelszavában?
 
 Nem, csak alfanumerikus karaktereket használjon a. pfx-fájl jelszavában.
-
-## <a name="configuration---web-application-firewall-waf"></a>Konfiguráció – webalkalmazási tűzfal (WAF)
-
-### <a name="does-the-waf-sku-offer-all-the-features-available-in-the-standard-sku"></a>A WAF SKU a standard SKU-ban elérhető összes funkciót felkínálja?
-
-Igen. A WAF a standard SKU összes funkcióját támogatja.
-
-### <a name="how-do-i-monitor-waf"></a>Hogyan monitor WAF?
-
-WAF figyelése diagnosztikai naplózással. További információ: [diagnosztikai naplózás és mérőszámok Application Gatewayhoz](application-gateway-diagnostics.md).
-
-### <a name="does-detection-mode-block-traffic"></a>Blokkolja az észlelési mód a forgalmat?
-
-Nem. Az észlelési mód csak a WAF-szabályt kiváltó forgalmat naplózza.
-
-### <a name="can-i-customize-waf-rules"></a>Testreszabhatók a WAF-szabályok?
-
-Igen. További információ: [WAF és-szabályok testreszabása](application-gateway-customize-waf-rules-portal.md).
-
-### <a name="what-rules-are-currently-available-for-waf"></a>Jelenleg milyen szabályok érhetők el a WAF?
-
-A WAF jelenleg a CRS [2.2.9](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp229), a [3,0](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp30)és a [3,1](../web-application-firewall/ag/application-gateway-crs-rulegroups-rules.md#owasp31)-es verziója támogatja. Ezek a szabályok alapkonfigurációt biztosítanak a Web Application Security Project (OWASP) által azonosított legtöbb 10 legfontosabb biztonsági rés ellen: 
-
-* SQL-injektálás elleni védelem
-* Helyek közötti parancsfájlok elleni védelem
-* Védelem a gyakori webes támadásokkal szemben, például a parancsok befecskendezése, a HTTP-kérések csempészete, a HTTP-válaszok felosztása és a távoli fájl-integrációs támadás ellen
-* HTTP protokoll megsértése elleni védelem
-* HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
-* Robotprogramok, webbejárók és képolvasók elleni védelem
-* Az alkalmazások gyakori konfigurációs beállításainak észlelése (azaz Apache, IIS stb.)
-
-További információ: [OWASP Top-10 biztonsági rések](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
-
-### <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF a DDoS Protectiont?
-
-Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális hálózaton, amelyen az Application Gateway telepítve van. Ezzel a beállítással biztosíthatja, hogy a Azure DDoS Protection szolgáltatás az Application Gateway virtuális IP-címét (VIP) is védi.
 
 ## <a name="configuration---ingress-controller-for-aks"></a>Konfiguráció – bejövő forgalom vezérlője AK-hoz
 

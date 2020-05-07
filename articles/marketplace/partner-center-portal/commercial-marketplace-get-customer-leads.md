@@ -1,24 +1,24 @@
 ---
-title: Érdeklődők konfigurálása a Microsoft kereskedelmi Marketplace-ajánlatból
-description: Ügyfél-érdeklődők konfigurálása a Microsoft kereskedelmi piactéren.
+title: Vezető felügyelet a Microsoft kereskedelmi piactérről
+description: Ismerje meg, hogyan hozhat létre és fogadhat ügyfeleinek vezetőit a Microsoft AppSource és az Azure Marketplace-ajánlatokból
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 54c67656d7847b44c8fc83b33a4e03be3838cf76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d1bf859968c7b7a889abe635c917d0da11bf6e1
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131086"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837328"
 ---
-# <a name="customer-leads-from-your-marketplace-offer"></a>Érdeklődők a Marketplace-ajánlatban
+# <a name="customer-leads-from-your-commercial-marketplace-offer"></a>A kereskedelmi piactér ajánlatának ügyfelei
 
-Az érdeklődők a Microsoft [AppSource](https://appsource.microsoft.com) és az [Azure Marketplace](https://azuremarketplace.microsoft.com)-ről származó ajánlatait vagy üzembe helyezését érdeklik. A vásárlói érdeklődőket az ajánlat közzétételét követően kapja meg a piactéren. Ez a cikk a következőket ismerteti:
+Az érdeklődők az ajánlatok [Microsoft AppSource](https://appsource.microsoft.com) és az [Azure Marketplace](https://azuremarketplace.microsoft.com)-en való üzembe helyezésére és telepítésére is kíváncsiak. A vásárlói érdeklődőket az ajánlat közzétételét követően a kereskedelmi piactéren kaphatja meg. Ez a cikk a következő vezető felügyeleti fogalmakat ismerteti:
 
-* Hogyan hozza létre a piactéren az ügyfeleket, hogy ne hagyjon ki üzleti lehetőségeket. 
+* Hogyan állítja elő a kereskedelmi Marketplace-ajánlat az ügyfeleket, hogy ne maradjon le üzleti lehetőségekről. 
 * Az Ügyfélkapcsolat-kezelési (CRM) rendszernek az ajánlathoz való kapcsolódása, hogy az érdeklődők egyetlen központi helyen kezelhetők legyenek.
 * Az Ön által elküldött érdeklődői adatküldés után nyomon követheti az Ön számára elérhető ügyfeleket.
 
@@ -56,7 +56,7 @@ Az ügyfél beszerzési folyamata során kapott összes érdeklődő meghatároz
 
 Lehetséges értékek:
 
-- **"Ins"**: a *telepítésre*áll. Ez a művelet az Azure Marketplace-en vagy a AppSource van, amikor az ügyfél megvásárolja a terméket.
+- **"Ins"**: a *telepítésre*áll. Ez a művelet az Azure Marketplace-en vagy a AppSource van, amikor egy ügyfél beszerzi a terméket.
 - **"PLT"**: a *partner által vezetett próbaverzióra*áll. Ez a művelet a AppSource, ha az ügyfél kiválasztja a **Kapcsolatfelvétel** lehetőséget.
 - **"DNC –"**: a (z) nem *kapcsolatra*vonatkozó. Ez a művelet abban az esetben AppSource, ha az alkalmazás oldalán felsorolt partnereket kérik a kapcsolatfelvételre. Megosztunk egy értesítést arról, hogy az ügyfél szerepel az alkalmazáson, de nem kell kapcsolatba lépnie.
 - **"Létrehozás"**: Ez a művelet csak a Azure Portal belül történik, és akkor jön létre, amikor egy ügyfél megvásárolja az ajánlatot a fiókjába.
@@ -92,7 +92,7 @@ Az ügyfél adatait több mezőn keresztül küldik el. Az alábbi példa egy é
 - **Követés**: ne felejtsen nyomon követni. A tipikus tranzakció várhatóan 5 – 12 követő hívást igényel.
 - **Ápolás**: táplálja az érdeklődőket, hogy minél magasabb haszonkulcsot kapjon.
 
-## <a name="leads-frequently-asked-questions"></a>Gyakran ismételt kérdések
+## <a name="common-questions-about-lead-management"></a>Az érdeklődők felügyeletével kapcsolatos gyakori kérdések
 
 ### <a name="where-can-i-get-help-in-setting-up-my-lead-destination"></a>Hol kaphatok segítséget az érdeklődői cél beállításakor?
 
@@ -133,7 +133,7 @@ Az Azure Blob Storage már nem támogatott vezető célhelyként, így az ajánl
 
 ### <a name="i-received-an-email-from-the-commercial-marketplace-but-why-cant-i-find-the-lead-in-my-crm"></a>Kaptam egy e-mailt a kereskedelmi piactéren, de miért nem találom a vezetőt a CRM-ben?
 
-Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adjuk át a személyazonosításra alkalmas adatokat az. edu tartományból. Támogatási jegy beküldése a [partner Center Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásán keresztül.
+Lehetséges, hogy a végfelhasználó e-mail-tartománya az. edu címről származik. Adatvédelmi okokból nem adunk át személyes adatokat az. edu tartományból. Támogatási jegy beküldése a [partner Center Súgó és támogatás](https://partner.microsoft.com/support/v2/?stage=1)szolgáltatásán keresztül.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-can-i-view-the-leads"></a>Egy Azure-táblázatot konfiguráltam vezető célként. Hogyan tekinthetem meg az érdeklődőket?
 
@@ -149,7 +149,7 @@ Ellenőrizze, hogy a webes és a vezető űrlap kötelező mező-e a kivételez�
 
 ### <a name="there-was-an-issue-with-my-lead-destination-and-i-missed-some-leads-can-i-have-them-sent-to-me-in-an-email"></a>Probléma merült fel a vezető célhelyen, és néhány érdeklődőt kihagytam. Küldhetek nekem egy e-mailt?
 
-A személyazonosításra alkalmas adatszabályzatok miatt a nem biztonságos e-mailen keresztül nem oszthatjuk meg az érdeklődői adatokat.
+Személyes információs szabályzatok miatt a nem biztonságos e-mailen keresztül nem oszthatjuk meg az érdeklődői adatokat.
 
 ### <a name="i-configured-an-azure-table-as-my-lead-destination-how-much-will-it-cost"></a>Egy Azure-táblázatot konfiguráltam vezető célként. Mennyibe kerül?
 

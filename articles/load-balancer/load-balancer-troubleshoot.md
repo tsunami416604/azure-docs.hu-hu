@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: ca9b70bd71a618f8e3d5f4fe9504ba66a9f14c6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf9fa48019ab88190175131b27f4a40e29eb5ed0
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76935479"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801722"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Start</a></span><span class="has-padding-small">A virtuális ügynök használatával gyorsan megoldhatja a problémát, ha <b>automatizált diagnosztikát futtat.</b> </span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Adatvédelmi <div align="right">nyilatkozat</div></a></span></p>
 Ez az oldal az alapszintű és standard Azure Load Balancer kérdésekre vonatkozó hibaelhárítási információkat tartalmaz. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
 
 Ha a Load Balancer kapcsolat nem érhető el, a leggyakoribb tünetek a következők: 
@@ -124,7 +124,7 @@ Ha egy Load Balancer háttérbeli virtuális gépén lévő alkalmazása megpró
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>4. ok: a belső Load Balancer előtér elérésének elérése a résztvevő Load Balancer backend Pool virtuális gépről
 
-Ha egy belső Load Balancer konfigurálva van egy VNet belül, és a résztvevői háttérbe tartozó virtuális gépek egyike megpróbál hozzáférni a belső Load Balancer előtérhöz, a hibák akkor fordulhatnak elő, ha a folyamat a kezdeményező virtuális gépre van leképezve. Ez a forgatókönyv nem támogatott. Tekintse át a részletes megbeszélések [korlátozásait](concepts-limitations.md#limitations) .
+Ha egy belső Load Balancer konfigurálva van egy VNet belül, és a résztvevői háttérbe tartozó virtuális gépek egyike megpróbál hozzáférni a belső Load Balancer előtérhöz, a hibák akkor fordulhatnak elő, ha a folyamat a kezdeményező virtuális gépre van leképezve. Ez a forgatókönyv nem támogatott. Tekintse át a részletes megbeszélések [korlátozásait](concepts.md#limitations) .
 
 **Megoldás** A forgatókönyv feloldásának számos módja van, beleértve a proxy használatát is. Értékelje ki Application Gateway vagy más harmadik féltől származó proxyt (például Nginx vagy HAProxy). További információ a Application Gatewayról: [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
 

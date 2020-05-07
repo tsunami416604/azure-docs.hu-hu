@@ -5,23 +5,16 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 09/20/2018
+ms.date: 01/28/2020
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 1ec3ecdafb8e475f5f13372789528612ccd7b8b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e8972b1b2bfaac12baee1ea823429749ed70461
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66226019"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792751"
 ---
-## <a name="using-rbac-to-share-images"></a>Képek megosztása a RBAC használatával
-
-A rendszerképeket a szerepköralapú Access Control (RBAC) használatával megoszthatja az előfizetések között. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik a lemezkép verziójához, még az előfizetések között is, telepítheti a virtuális gépet a lemezkép verziójának használatával.
-
-Az erőforrások RBAC használatával történő megosztásával kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és az Azure CLI használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
-
-
 ## <a name="list-information"></a>Információk listázása
 
 A rendelkezésre álló képtárak helyének, állapotának és egyéb információinak lekérése az az [SIG List](/cli/azure/sig#az-sig-list)paranccsal.

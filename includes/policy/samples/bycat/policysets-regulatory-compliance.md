@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 00f6810defe6242338bfa766192b2aa007454513
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f71cc165480b16e26dfe9ab8c35aee3bef5597cb
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82190754"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837732"
 ---
-|Name (Név) |Leírás |Házirendek |Verzió |
+|Name |Description |Házirendek |Verzió |
 |---|---|---|---|
 |[\[Előzetes\]verzió: a kanadai szövetségi PBMM ellenőrzése és speciális virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/CanadaFederalPBMM_audit.json) |Ez a kezdeményezés naplózási és virtuálisgép-bővítményekre vonatkozó telepítési szabályzatokat tartalmaz, amelyek a kanadai szövetségi PBMM-vezérlők egy részhalmazára mutatnak. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el ide:[https://aka.ms/canadafederalPBMM-blueprint](https://aka.ms/canadafederalPBMM-blueprint) |67 |2.0.0 – előzetes verzió |
 |[\[Előzetes\]verzió: a FedRAMP mérsékelt szabályozása és a speciális virtuálisgép-bővítmények üzembe helyezése a naplózási követelmények támogatásához](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Regulatory%20Compliance/FedRAMP_M_audit.json) |Ez a kezdeményezés naplózási és virtuálisgép-bővítményekre vonatkozó telepítési szabályzatokat tartalmaz, amelyek az FedRAMP M vezérlők egy részhalmazát kezelik. További szabályzatok lesznek hozzáadva a közelgő kiadásokban. További információért látogasson el ide [https://aka.ms/fedrampm-blueprint](https://aka.ms/fedrampm-blueprint):. |70 |2.0.0 – előzetes verzió |

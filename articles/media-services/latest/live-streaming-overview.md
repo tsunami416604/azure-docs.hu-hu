@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: e2c4e5b6c10b06d82a1933962cb2d97e031876a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee9dfc11cad61d6190ae4a2382f0124207c32c4c
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80068028"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801620"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Élő közvetítés a Azure Media Services v3-val
 
@@ -129,6 +129,6 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 ## <a name="next-steps"></a>További lépések
 
-* [Élő közvetítés – gyors üzembe helyezés] (live-events-wirecast-quickstart.md (
+* [Élő közvetítés – gyors üzembe helyezés](live-events-wirecast-quickstart.md)
 * [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)
 * [Áttelepítési útmutató Media Services v2-ről v3-re való áthelyezéshez](migrate-from-v2-to-v3.md)

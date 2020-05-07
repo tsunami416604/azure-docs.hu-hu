@@ -8,12 +8,12 @@ ms.author: pafarley
 ms.service: cognitive-search
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 713b790c432f0e416392243262aed4b0fcda8892
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 050848b0bff65b19e2b17bd170e1d3e9ff0176f1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81274574"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792003"
 ---
 # <a name="example-create-a-form-recognizer-custom-skill"></a>Példa: űrlap-felismerő egyéni képességének létrehozása
 
@@ -164,8 +164,8 @@ Ahhoz, hogy ezt a képességet egy Cognitive Search folyamat használja, hozzá 
 
 Ebben az útmutatóban létrehozott egy egyéni képességet az Azure Form-felismerő szolgáltatásból. Az egyéni ismeretekkel kapcsolatos további tudnivalókért tekintse meg a következő forrásokat. 
 
-* [Azure Search energiaellátási készségek: az egyéni képességek tárháza](https://github.com/*zure-Samples/azure-search-power-skills)
+* [Azure Search energiaellátási készségek: az egyéni képességek tárháza](https://github.com/Azure-Samples/azure-search-power-skills)
 * [Egyéni képesség hozzáadása egy mesterséges intelligencia-bővítési folyamathoz](cognitive-search-custom-skill-interface.md)
 * [Képességcsoport megadása](cognitive-search-defining-skillset.md)
-* [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/*earchservice/create-skillset)
+* [Készségkészlet létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
 * [Gazdagított mezők leképezése](cognitive-search-output-field-mapping.md)

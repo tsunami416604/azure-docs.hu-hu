@@ -1,17 +1,17 @@
 ---
+title: A Microsoft kereskedelmi piactérre vonatkozó adózási adatok
 Description: Az árak kiválasztásával, a kifizetési szempontokkal és az adózással kapcsolatos megfontolások megismeréséhez tekintse meg az alábbi táblázatokban a terjesztési országokat/régiókat.
-title: Adózás részletei | Azure piactér
-ms.date: 2/13/2020
 ms.topic: conceptual
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
-ms.openlocfilehash: 2546de2b63c70d7456712ba39086cd7fb540cf82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 0276a859fb82f7775aca498d73d1cbf780aaf5fc
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285163"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793023"
 ---
 # <a name="tax-details-for-commercial-marketplace-publishers"></a>Kereskedelmi piactér-közzétevők adózási adatai
 
@@ -23,10 +23,6 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 > [!IMPORTANT]
 > A viszonteladói országok/régiók és a körülmények (az [alább](#reseller-countriesregions)leírtak szerint) adózási felelőssége a [Microsoft Azure Marketplace kiadói szerződésében](https://go.microsoft.com/fwlink/p/?LinkID=699560)szerepel, az alábbi táblázatban szereplő információk ellenére.
 > Vegye figyelembe, hogy a **kifizetési vonzatú** oszlop csak a közzétevők esetében érvényes. Az ebben az oszlopban szereplő adókulcsok bármikor változhatnak, és a Microsoft nem garantálja, hogy az alábbi táblázatban szereplő díjak mindig pontosak lesznek.
-
-
-
- 
 
 | Ország/régió                   | Adózási szempont az ár kiválasztásához                                                                                                             | Kifizetés következményei                    | Adózási felelősség |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|--------------------|
@@ -262,19 +258,18 @@ Az árak kiválasztására vonatkozó adózási megfontolások, valamint a [Micr
 | Zambia                           | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
 | Zimbabwe                         | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat.                                                                   | Ár mínusz tárolási díj                 | Közzétevő          |
 
-A következők csak az Azure Marketplace-közzétevőket érintik, a fentiektől függetlenül: 
+A következők csak az Azure Marketplace-közzétevőket érintik, a fentiektől függetlenül:
 
-| Ország/régió                   | Adózási szempont az ár kiválasztásához                                                                                                             | Adóügyek kezelése                    | 
+| Ország/régió                   | Adózási szempont az ár kiválasztásához                                                                                                             | Adóügyek kezelése                    |
 |----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------|
 | Ausztrália (a Nagyvállalati Szerződés kivételével az összes ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Microsoft |
 | Ausztrália (csak az Nagyvállalati Szerződés ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Közzétevő |
-| Brazília | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Közzétevő **(lásd: viszonteladói országok/régiók)** |
-| Mexikó | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Közzétevő **(lásd: viszonteladói országok/régiók)** |
+| Brazília | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Közzétevő (**lásd: viszonteladói országok/régiók**) |
+| Mexikó | A kiválasztott díj a végső eladási díj, amely tartalmazza a vonatkozó adókat. | Közzétevő (**lásd: viszonteladói országok/régiók**) |
 
 ## <a name="mixed-remittance-countriesregions-for-publishers"></a>Vegyes átutalási országok/régiók a közzétevők számára
 
-
-Bizonyos Microsoft számlázási partnereink értékesítési, használati, áruk és szolgáltatások, hozzáadott értékű vagy hasonló adók (ha vannak ilyenek) az alábbi országokban/régiókban az áruházban az alkalmazás (ok) vagy az alkalmazáson belüli termék (ek) vásárlásakor alkalmazhatók. A Microsoft által elérhetővé tett [jelentések](payout-summary.md#transaction-history-download-export) alapján azonosíthatja azokat a tranzakciókat, amelyek esetében a számlázási partner az alkalmazás (ok) vagy az alkalmazásban lévő termék (ek) az áruházban való megszerzésével kapcsolatban az ügyfelek által beszerzett értékesítést, felhasználást, termékeket és szolgáltatásokat, hozzáadott értéket vagy hasonló adókat gyűjtött. A jelentésben jelzett tranzakciók kivételével ezekben az országokban sem a Microsoft, sem annak számlázási szolgáltatója nem gyűjti és fizeti be a vonatkozó adókat. A jelentések áttekintése és az adózással kapcsolatos regisztráció és befizetés az Ön felelőssége.
+Bizonyos Microsoft számlázási partnereink értékesítési, használati, áruk és szolgáltatások, hozzáadott értékű vagy hasonló adók (ha vannak ilyenek) az alábbi országokban/régiókban az áruházban az alkalmazás (ok) vagy az alkalmazáson belüli termék (ek) vásárlásakor alkalmazhatók. A Microsoft által elérhetővé tett [jelentések](payout-summary-overview.md#transaction-history-download-export) alapján azonosíthatja azokat a tranzakciókat, amelyek esetében a számlázási partner az alkalmazás (ok) vagy az alkalmazásban lévő termék (ek) az áruházban való megszerzésével kapcsolatban az ügyfelek által beszerzett értékesítést, felhasználást, termékeket és szolgáltatásokat, hozzáadott értéket vagy hasonló adókat gyűjtött. A jelentésben jelzett tranzakciók kivételével ezekben az országokban sem a Microsoft, sem annak számlázási szolgáltatója nem gyűjti és fizeti be a vonatkozó adókat. A jelentések áttekintése és az adózással kapcsolatos regisztráció és befizetés az Ön felelőssége.
 
 | Vegyes átutalási országok/régiók |
 |------------------------------------|
@@ -285,16 +280,13 @@ Bizonyos Microsoft számlázási partnereink értékesítési, használati, áru
 
 Bizonyos országokban/régiókban a Microsoft viszonteladóként viselkedik, nem pedig az ügynök, abban, hogy az alkalmazás (ok) és az alkalmazáson belüli termék (ek) elérhető legyen az áruházban. A viszonteladói országok/régiók használati feltételeivel kapcsolatos további részletekért tekintse meg a [Microsoft Azure Marketplace kiadói szerződést](https://go.microsoft.com/fwlink/p/?LinkID=699560).
 
-A következők csak az Azure Marketplace-közzétevők esetében érvényesek: 
+A következők csak az Azure Marketplace-közzétevők esetében érvényesek:
 
 |                    Viszonteladói országok/régiók                                                                          |
 |------------------------------------------------------------------------------------------------------------------------|
 | Brazília (a CSP kivételével az összes ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) |
 | Mexikó (csak az Nagyvállalati Szerződés ügyfél-vásárlási forgatókönyvön keresztül lebonyolított vásárlások esetén) |
 
+## <a name="next-steps"></a>További lépések
 
- 
-
-
-
-
+[Kifizetési számla és űrlapok beállítása](set-up-your-payout-account-tax-forms.md)

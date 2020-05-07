@@ -4,12 +4,12 @@ description: Ebből a cikkből megismerheti az Azure-beli virtuális gépek Azur
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: a6746944e34b8bd2fbb115baaabece96ee93dd1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5705b70dd210c336fc2baa4da07f96f2ad249f64
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190095"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82800651"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése
 
@@ -176,6 +176,14 @@ A virtuális gép biztonsági mentése a módosított vagy az új szabályzatban
 4. Folytassa a biztonsági mentést.
 
 Visszaállíthatja a virtuális gépet az áthelyezési művelet előtt létrehozott, elérhető visszaállítási pontokból.
+
+### <a name="what-happens-after-i-move-a-vm-to-a-different-resource-group"></a>Mi történik, ha egy virtuális gépet másik erőforráscsoporthoz helyezek át?
+
+Ha egy virtuális gépet egy másik erőforráscsoporthoz helyez át, akkor ez egy új virtuális gép, amely a Azure Backupt illeti.
+
+Miután áthelyezte a virtuális gépet egy új erőforráscsoporthoz, a virtuális gépet újra védetté teheti ugyanazon a tárolóban vagy egy másik tárolóban. Mivel ez egy új virtuális gép a Azure Backuphoz, külön díjat számítunk fel.
+
+Ha szükséges, a régi virtuális gép visszaállítási pontjai a visszaállításhoz lesznek elérhetők. Ha nincs szüksége erre a biztonsági mentési adatokra, leállíthatja a régi virtuális gép védelmét az adatok törlése lehetőséggel.
 
 ### <a name="is-there-a-limit-on-number-of-vms-that-can-beassociated-with-the-same-backup-policy"></a>Van korlátozva a virtuális gépek száma, amelyek ugyanahhoz a biztonsági mentési szabályzathoz társíthatók?
 

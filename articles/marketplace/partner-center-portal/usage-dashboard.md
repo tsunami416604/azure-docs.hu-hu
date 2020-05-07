@@ -1,31 +1,31 @@
 ---
-title: Használati irányítópult a kereskedelmi piactér elemzésében a partner Centerben
-description: Ismerje meg, hogyan érheti el az összes virtuális gép használati és mért számlázási metrikákat.
+title: Használati irányítópult a Microsoft kereskedelmi piactér elemzésében
+description: Ismerje meg, hogyan érheti el az összes virtuális gép használati és mért számlázási metrikákat. Nyissa meg a használati irányítópultot a partner Centerben a kereskedelmi piactéren.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 33762540d14ea51e8325abe9a466007cd7cca748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 89a0a782b4a18b71f7be8bcdd3728fd008c24d5a
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262179"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793006"
 ---
-# <a name="usage-dashboard-in-commercial-marketplace-analytics"></a>Használati irányítópult a kereskedelmi piactér elemzésében
+# <a name="usage-dashboard-in-microsoft-commercial-marketplace-analytics"></a>Használati irányítópult a Microsoft kereskedelmi piactér elemzésében
 
 Ez a cikk a partner Center használati irányítópultján tartalmaz információkat. Ez az irányítópult megjeleníti az összes virtuális gép használati és mért számlázási metrikáit két külön lapon: a virtuális gépek használatát és a mért számlázási használatot.
 
-A használati irányítópult eléréséhez nyissa meg az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópultot a kereskedelmi piactéren.
+A használati irányítópult eléréséhez nyissa meg az **[elemzés](https://partner.microsoft.com/dashboard/commercial-marketplace/analytics/summary)** irányítópultot a **kereskedelmi piactéren**.
 
 >[!NOTE]
 > Az analitikai terminológia részletes leírását lásd: [a kereskedelmi piactér Analytics szolgáltatással kapcsolatos gyakori kérdések és fogalmak](./faq-terminology.md).
 
 ## <a name="usage-dashboard"></a>Használat irányítópult
 
-A használati irányítópult az összes virtuális gép (VM) metrikáját jelöli, amely a használatot és a mért számlázási használatot biztosítja. Ezek két külön lapon találhatók: virtuális gépek használata és mért számlázás használata.
+A használati irányítópult az összes virtuális gép (VM) metrikáját jelöli, amely a használatot és a mért számlázási használatot biztosítja. Ezek a metrikák két külön lapon találhatók: virtuális gépek használata és mért számlázás használata.
 
 A VM-használat lapon a következő elemek grafikus ábrázolásai láthatók:
 
@@ -46,7 +46,7 @@ A VM-használat lapon a következő elemek grafikus ábrázolásai láthatók:
 A használat összegzése tábla az összes megvásárolt ajánlat ügyfél-használati idejét jeleníti meg.
 
 - A normalizált használati idő a virtuálisgép-magok számának ([virtuálisgép-magok száma] x [órányi nyers használat]) fiókban normalizált használati órákat határozza meg. A "SHAREDCORE" jelölésű virtuális gépek a 1/6 (vagy 0,1666) értéket használják [virtuálisgép-magok száma] szorzóként.
-- A nyers használati órák határozzák meg, hogy a virtuális gépek mennyi idő alatt futnak.
+- A nyers használati órák határozzák meg, hogy a virtuális gépek hány óra alatt futnak.
 - A százalékos érték a kiválasztott dátumtartomány felhasználási növekedési változását jelöli ([utolsó hónap használat – első hónap használata])/az első hónap használata).
 - A felfelé mutató zöld háromszögek növekedési változást jeleznek.
 - A piros háromszög lefelé mutat, az előző hónaphoz viszonyítva negatív növekedési változást jelez.
@@ -58,13 +58,13 @@ A **földrajzi hő normalizált használata** az ügyfél országa szerint leké
 
 ### <a name="usage-by-offers"></a>Használat ajánlatok szerint
 
-- Az **ajánlatok által normalizált használat szerint** a tortadiagram a normalizált használati órák részletezését jeleníti meg az ajánlatok alapján a kiválasztott dátumtartomány szerint. Az 5 legfontosabb ajánlat a gráfban jelenik meg, a REST pedig az "Rest all" kategóriában van csoportosítva.
+- Az **ajánlatok által normalizált használat szerint** a tortadiagram a normalizált használati órák részletezését jeleníti meg az ajánlatok alapján a kiválasztott dátumtartomány szerint. Az első öt ajánlat a gráfban jelenik meg, míg a REST az **összes** kategóriába van csoportosítva.
 - A oszlopdiagram a kiválasztott dátumtartomány hónapról hónapra eső növekedési trendjét ábrázolja. A hónap oszlopai az ajánlatokban szereplő használati órákat jelölik az adott hónap legmagasabb használati idejével. A diagram a másodlagos Y tengelyen ábrázolt százalékos növekedési arányt ábrázolja.
 - A diagram tetején található csúszka használatával görgessen jobbra az x tengely mentén, és/vagy az adott adatpontokra koncentrálhat.
 
 ### <a name="usage-trend-by-offers-and-skus"></a>Használati trend ajánlatok és SKU-i alapján
 
-Ez a diagram az ajánlat kiválasztott SKU-pontjainak normalizált használatának tendenciáját jeleníti meg. Az ajánlat ranglistán a legmagasabb szintű 50-ajánlatok jelennek meg, és a használat óra szerint vannak rendezve. Az SKU Leaderboard a legfelső 50 SKU-t jeleníti meg a kiválasztott ajánlat legmagasabb kihasználtságával.
+Ez a diagram az ajánlat kiválasztott SKU-pontjainak normalizált használatának tendenciáját jeleníti meg. Az ajánlat ranglistán a legmagasabb használatú, a használat óra szerint rendezett első 50-ajánlatok láthatók. Az SKU Leaderboard a legfelső 50 SKU-t jeleníti meg a kiválasztott ajánlat legmagasabb kihasználtságával.
 
 ### <a name="usage-by-offer-type"></a>Használat ajánlat típusa szerint
 
@@ -101,7 +101,7 @@ A **használati oldal szűrői** az oldal szintjén lesznek alkalmazva. Több sz
 
 - Az **ajánlat típusa** és az **ajánlat neve** csak a kiválasztott dátumtartomány esetében beszerzett ajánlatokra van felsorolva. A listában szereplő ajánlatok nevei megjelennek a listából kiválasztott ajánlati típusoknál.
 - Az alapértelmezett kijelölés az összes szűrési lehetőség esetében az "all" (a **használat típusának**kivételével). A **használat típusának** alapértelmezett kiválasztása normalizált használat. A diagramok nyers használatának megjelenítéséhez válassza a "nyers használat" lehetőséget.
-- Az alkalmazott szűrők megjelenítik a kiválasztott szűrési beállítások darabszámát. Az alkalmazott szűrők nem jelennek meg az alapértelmezett beállításokhoz.
+- Az alkalmazott szűrők a kiválasztott szűrési beállítások darabszámát jelenítik meg. Az alkalmazott szűrők nem jelennek meg az alapértelmezett beállításokhoz.
 
 > [!NOTE]
 > A "részletes rendelési adat" rács, az oldal szűrők és az összes lehetséges beállítás részletes definíciója a [GYIK és a terminológiai](link needed) cikk adatszótár szakaszában van meghatározva.
@@ -123,5 +123,5 @@ A **mért számlázási használat** lap olyan használati adatokat jelenít meg
 - További információ a megrendelésekről grafikus és letölthető formátumban: [Orders Dashboard a kereskedelmi piactér elemzésében](./orders-dashboard.md).
 - Az ügyfelekkel kapcsolatos részletes információkért, beleértve a növekedési trendeket, lásd [a kereskedelmi piactér elemzésének ügyfél-irányítópultját](./customer-dashboard.md).
 - Az elmúlt 30 napban a letöltési kérelmek listáját lásd: a [kereskedelmi piactér Analytics letöltések irányítópultja](./downloads-dashboard.md).
-- Ha szeretné megtekinteni az Azure Marketplace-en és a AppSource található ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a [kereskedelmi piactér elemzésének minősítések és értékelések irányítópultját](./ratings-reviews.md)
+- Ha szeretné megtekinteni a Microsoft AppSource és az Azure piactéren elérhető ajánlatokra vonatkozó felhasználói visszajelzések összevont nézetét, tekintse meg a [kereskedelmi piactér Analytics minősítések és áttekintések irányítópultját](./ratings-reviews.md).
 - A kereskedelmi piactér elemzésével kapcsolatos gyakori kérdésekre, valamint az adatkifejezések átfogó szótárát lásd: [Gyakori kérdések és terminológia a kereskedelmi piactér elemzéséhez](./faq-terminology.md).

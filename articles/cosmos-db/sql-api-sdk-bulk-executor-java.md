@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: tömeges végrehajtó Java API, SDK &-erőforrások'
 description: Ismerkedjen meg a tömeges végrehajtó Java API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a Azure Cosmos DB tömeges végrehajtó Java SDK egyes verzióiban végrehajtott módosításokat.
-author: tknandu
+author: milismsft
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/21/2018
-ms.author: ramkris
-ms.openlocfilehash: 1a5de2647df5b8092fdcf8e6233f1fddc1690b03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: adrianmi
+ms.openlocfilehash: 0030f974a36dc80dc8c4112000aa5934126a2482
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80981324"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836444"
 ---
 # <a name="java-bulk-executor-library-download-information"></a>Java tömeges végrehajtó könyvtár: letöltési információ
 
@@ -39,4 +39,27 @@ ms.locfileid: "80981324"
 | **API-dokumentáció**| [Java API-referenciák dokumentációja](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor)|
 |**Bevezetés**|[Ismerkedés a tömeges végrehajtó függvénytár Java SDK-val](bulk-executor-java.md)|
 |**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
+
+## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2100"></a><a name="2.10.0"/>2.10.0
+
+* Javítsa ki a DocumentAnalyzer. Java fájlt, hogy megfelelően kinyerje a beágyazott partíciós kulcs értékeit a JSON-ből.
+
+### <a name="294"></a><a name="2.9.4"/>2.9.4
+
+* Adja hozzá a BulkDelete műveletek funkcióit, és próbálkozzon újra a hibákkal, és adja vissza azon hibák listáját, amelyeket újra lehet próbálni.
+
+### <a name="293"></a><a name="2.9.3"/>2.9.3
+
+* A Cosmos SDK verziójának 2.4.7 frissítése.
+
+### <a name="292"></a><a name="2.9.2"/>2.9.2
+
+* Javítsa ki a "mergeAll" parancsot a "id" és a "Partition Key" érték folytatásához, hogy a rendszer az "id" és a "Partition Key" érték után elhelyezett javított dokumentum-tulajdonságokat hozzáadja a frissített elemek listájához.
+
+### <a name="291"></a><a name="2.9.1"/>2.9.1
+
+* Frissítse a párhuzamossági fokot 1 értékre, és adja hozzá a hibakeresési naplókat a minibatch.
+
 

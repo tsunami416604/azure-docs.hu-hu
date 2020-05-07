@@ -4,12 +4,12 @@ description: Service Fabric a fürt kapacitásának tervezési szempontjait. Nod
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: pepogors
-ms.openlocfilehash: 6e60fc10dd7e0eec24de4a089d09d914624dcfbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f011dee94e135ba40f8d3c87240e905e4a2739ec
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258914"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793057"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 A kapacitástervezés az éles rendszerek üzembe helyezésének lényeges lépése. Íme néhány olyan elem, amelyet a folyamat részeként kell figyelembe vennie.
@@ -104,7 +104,7 @@ Használja az ezüst vagy a arany tartósságot az összes olyan csomópont-típ
 
 - Legalább öt csomópontot kell fenntartania minden olyan virtuálisgép-méretezési csoportnál, amelynél a tartóssági szint (arany vagy ezüst) engedélyezve van.
 - Az ezüst vagy arany tartóssági szinttel rendelkező virtuálisgép-méretezési csoportoknak a Service Fabric fürtben lévő saját csomópont-típusra kell leképezniük. Több virtuálisgép-méretezési csoport egyetlen csomópontos típusra való leképezése megakadályozza a Service Fabric-fürt és az Azure-infrastruktúra megfelelő működésének összehangolását.
-- Ne törölje a véletlenszerű virtuálisgép-példányokat, mindig használja a virtuálisgép-méretezési csoport méretezési funkcióját. A véletlenszerű virtuálisgép-példányok törlésének lehetősége van a virtuálisgép-példányok által az UD és az FD-ban elterjedt egyenlőtlenségek létrehozására. Ez az egyensúlyhiány hátrányosan befolyásolhatja, hogy a rendszer képes legyen a szolgáltatás példányainak vagy szolgáltatás-replikái közötti megfelelő terheléselosztásra.
+- Ne törölje a véletlenszerű virtuálisgép-példányokat, mindig használja a virtuálisgép-méretezési csoport méretezését a szolgáltatásban. A véletlenszerű virtuálisgép-példányok törlésének lehetősége van a virtuálisgép-példányok által az UD és az FD-ban elterjedt egyenlőtlenségek létrehozására. Ez az egyensúlyhiány hátrányosan befolyásolhatja, hogy a rendszer képes legyen a szolgáltatás példányainak vagy szolgáltatás-replikái közötti megfelelő terheléselosztásra.
 - Ha az autoscale-t használja, akkor állítsa be azokat a szabályokat, amelyek (a virtuálisgép-példányok eltávolításával) a skálázást végzik, egyszerre csak egy csomópontot végeznek. Egyszerre legfeljebb egy példány skálázása nem biztonságos.
 - Ha a virtuális gépeket az elsődleges csomópont típusa szerint törli vagy felszabadítja, soha ne csökkentse a kiosztott virtuális gépek számát, amely alatt a megbízhatósági réteg szükséges. Ezeket a műveleteket a rendszer határozatlan ideig blokkolja egy olyan méretezési csoportnál, amelynek tartóssági szintje ezüst vagy arany.
 

@@ -5,19 +5,19 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 3/26/2020
+ms.date: 4/30/2020
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 813baba37684525c336bc34a49e496f54a19288d
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: a60591fb33c8f14a65b406073cf3194fca882d12
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509737"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837379"
 ---
 # <a name="azure-synapse-analytics-release-notes"></a>Az Azure szinapszis Analytics kibocsátási megjegyzései
 
@@ -31,7 +31,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 
 
 > [!NOTE]
-> A SELECT @@VERSION által visszaadott terméknév Microsoft Azure SQL Data Warehouseról az Azure szinapszis analyticsre változik. A módosítás előtt speciális értesítést fogunk küldeni. Ez a változás olyan ügyfelek esetében fontos, akik a terméknév alapján elemzik az alkalmazás@VERSION kódjában a Select @ nevet. Ha el szeretné kerülni az alkalmazás kódjának módosítását a termék újrahasznosítása miatt, a következő parancsokkal lekérdezheti a SERVERPROPERTY az adatbázis-terméknév és-verzió számára: a XX-es verziószámot adja vissza. X. XXXXX. X (Terméknév nélkül) használja ezt a parancsot:
+> A SELECT @@VERSION utasítás által visszaadott terméknév Microsoft Azure SQL Data Warehouseról Microsoft Azure szinapszis analyticsre változik. A módosítás előtt speciális értesítést fogunk küldeni. Ez a változás olyan ügyfelek esetében fontos, akik a terméknév alapján elemzik az alkalmazás@VERSION kódjában a Select @ nevet. Ha el szeretné kerülni az alkalmazás kódjának módosítását a termék újrahasznosítása miatt, a következő parancsokkal lekérdezheti a SERVERPROPERTY az adatbázis-terméknév és-verzió számára: a XX-es verziószámot adja vissza. X. XXXXX. X (Terméknév nélkül) használja ezt a parancsot:
 >
 > ```sql
 > SELECT SERVERPROPERTY('ProductVersion')
@@ -48,13 +48,17 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 | Szolgáltatások fejlesztése | Részletek |
 | --- | --- |
 |**Adatbázis-kompatibilitási szint (előzetes verzió)**| Ezzel a kiadással a felhasználók mostantól megadhatják az adatbázis kompatibilitási szintjét, hogy lekérjek a Transact-SQL nyelvét és a lekérdezés-feldolgozási viselkedést a szinapszis SQL-motor egy adott verziójára vonatkozóan. További információ: [sys. database_scoped_configurations](/sql/relational-databases/system-catalog-views/sys-database-scoped-configurations-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) és az [adatbázis-hatókörű konfiguráció módosítása](/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
-|**Sp_describe_undeclared_parameters**| Annak engedélyezése, hogy a felhasználók megtekintsék a nem deklarált paraméterek metaadatait egy Transact-SQL-kötegben. További információ: [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).|
+|**Sp_describe_undeclared_parameters**| Annak engedélyezése, hogy a felhasználók megtekintsék a nem deklarált paraméterek metaadatait egy Transact-SQL-kötegben. További információ: [sp_describe_undeclared_parameters](/sql/relational-databases/system-stored-procedures/sp-describe-undeclared-parameters-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).| <br/><br/><br/>
+
+| Az eszközök fejlesztése                                         | Részletek                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **[Visual Studio 16,6 Preview 5](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#--visual-studio-2019-version-166-preview-5-) -SQL Server Data Tools (SSDT)** | Ez a kiadás a következő SSDT-frissítéseket tartalmazza: </br> </br> – Adatfelderítés és besorolás<br/> – MÁSOLÁSi utasítás <br/> – Egyedi korlátozásokkal rendelkező táblák<br/> -Táblák rendezett fürtözött Oszlopcentrikus indexszel<br/> <br/>Ez a kiadás a következő javításokat tartalmazza a SSDT: </br></br>  – A terjesztési oszlop adattípusának módosításakor a SSDT által generált Frissítési parancsfájl CTAS és ÁTNEVEZÉSi műveletet hajt végre a tábla eldobása és újbóli létrehozása helyett. </br> |
 
 ## <a name="march-2020"></a>2020. március
 
 | Az eszközök fejlesztése                                         | Részletek                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **[Visual Studio 16,6 Preview 2](/visualstudio/releases/2019/release-notes-preview) – SQL Server Data Tools (SSDT)** | Ez a kiadás a következő javításokat és javításokat tartalmazza a SSDT: </br> </br> -Hiba történt egy olyan probléma megoldásakor, amelyben egy származtatott nézet (MV) által hivatkozott tábla módosításakor a rendszer olyan Alter View utasításokat hoz létre, amelyek nem támogatottak az MVs esetében<br/><br/> – A séma-összehasonlítási művelet végrehajtásának biztosítása, ha a sor szintű biztonsági objektumok szerepelnek az adatbázisban vagy a projektben, nem sikerül végrehajtani a módosításokat. A SSDT jelenleg nem támogatottak a sor szintű biztonsági objektumok.  <br/><br/> – A SQL Server Object Explorer időtúllépési küszöbértéke megnő, hogy elkerülje az időtúllépéseket, amikor nagy számú objektumot listáz az adatbázisban<br/><br/> -Optimalizált módon SQL Server Object Explorer lekéri az adatbázis-objektumok listáját, hogy csökkentse az instabilitást és növelje a teljesítményt az Object Explorer feltöltésekor |
+| **[Visual Studio 16,6 Preview 2](https://docs.microsoft.com/visualstudio/releases/2019/release-notes-preview#whats-new-in-visual-studio-2019) – SQL Server Data Tools (SSDT)** | Ez a kiadás a következő javításokat és javításokat tartalmazza a SSDT: </br> </br> -Hiba történt egy olyan probléma megoldásakor, amelyben egy származtatott nézet (MV) által hivatkozott tábla módosításakor a rendszer olyan Alter View utasításokat hoz létre, amelyek nem támogatottak az MVs esetében<br/><br/> – A séma-összehasonlítási művelet végrehajtásának biztosítása, ha a sor szintű biztonsági objektumok szerepelnek az adatbázisban vagy a projektben, nem sikerül végrehajtani a módosításokat. A SSDT jelenleg nem támogatottak a sor szintű biztonsági objektumok.  <br/><br/> – A SQL Server Object Explorer időtúllépési küszöbértéke megnő, hogy elkerülje az időtúllépéseket, amikor nagy számú objektumot listáz az adatbázisban<br/><br/> -Optimalizált módon SQL Server Object Explorer lekéri az adatbázis-objektumok listáját, hogy csökkentse az instabilitást és növelje a teljesítményt az Object Explorer feltöltésekor |
 
 ## <a name="january-2020"></a>2020. január
 
@@ -141,7 +145,7 @@ Az eszközök tökéletesítéséhez győződjön meg arról, hogy a kiadási me
 
 | A dokumentáció fejlesztése | Részletek |
 | --- | --- |
-|Nincs | |
+|nincs | |
 | | |
 
 ## <a name="december-2018"></a>2018. december
