@@ -3,12 +3,12 @@ title: Változó több példányának meghatározása
 description: A másolási művelettel Azure Resource Manager sablonban több alkalommal is megismételheti a változókat.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: ed0c2d87c48a18b0a065f6c76e1e69142a9df048
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153301"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583367"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Változó iteráció az ARM-sablonokban
 
@@ -16,7 +16,7 @@ Ez a cikk bemutatja, hogyan hozhat létre több értéket egy változóhoz a Azu
 
 A másolást [erőforrásokkal](copy-resources.md), [erőforrásokkal](copy-properties.md)és [kimenetekkel](copy-outputs.md)is elvégezheti.
 
-## <a name="variable-iteration"></a>Változó iteráció
+## <a name="syntax"></a>Szintaxis
 
 A másolási elem a következő általános formátumú:
 
@@ -33,6 +33,21 @@ A másolási elem a következő általános formátumú:
 A **Name** tulajdonság bármely olyan érték, amely a hurok azonosítására szolgál. A **Count** tulajdonság határozza meg a változóhoz használni kívánt iterációk számát.
 
 A **bemeneti** tulajdonság határozza meg a megismételni kívánt tulajdonságokat. A **bemeneti** tulajdonság értékével létrehozott elemek tömbjét hozza létre. Ez lehet egy tulajdonság (például egy karakterlánc) vagy egy olyan objektum, amely több tulajdonsággal rendelkezik.
+
+## <a name="copy-limits"></a>Másolási korlátok
+
+A szám nem lehet nagyobb, mint 800.
+
+A darabszám nem lehet negatív szám. Ha az Azure CLI, a PowerShell vagy a REST API legújabb verziójával telepíti a sablont, akkor nulla lehet. Pontosabban a következőket kell használnia:
+
+* Azure PowerShell **2,6** vagy újabb
+* Azure CLI- **2.0.74** vagy újabb
+* REST API **2019-05-10** -es vagy újabb verzió
+* A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
+
+A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
+
+## <a name="variable-iteration"></a>Változó iteráció
 
 Az alábbi példa azt szemlélteti, hogyan hozható létre karakterlánc-értékek tömbje:
 
@@ -294,12 +309,6 @@ A következő példa bemutatja a másolás változókkal való használatának k
   }
 }
 ```
-
-## <a name="copy-limits"></a>Másolási korlátok
-
-A szám nem lehet nagyobb, mint 800.
-
-A darabszám nem lehet negatív szám. Ha Azure PowerShell 2,6-as vagy újabb, Azure CLI-2.0.74 vagy újabb verzióval, REST API vagy a **2019-05-10** -es vagy újabb verziójával rendelkező sablont telepít, akkor a Count értéket nullára állíthatja. A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
 
 ## <a name="example-templates"></a>Példák sablonokra
 

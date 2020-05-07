@@ -13,16 +13,16 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: javascript
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 6e109c5a7f4911893c81c88ae84322fb962fff6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb984a944067ddb1449f58b464e596fd138dc7c7
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71213192"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592009"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Leküldéses értesítések küldése az Azure Notification Hubs és a Node. js-sel
 
@@ -133,7 +133,7 @@ Ugyanaz, mint a fent ismertetett Android- `ApnsService` alkalmazásokban, `send`
 - **Hasznos** adatok – az üzenet JSON-vagy karakterlánc-adattartalma.
 - **Visszahívás** – a visszahívási függvény.
 
-További információ a hasznos adatok formátumáról: a [helyi és leküldéses értesítések programozási útmutatója](https://developer.apple.com/library/ios/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/ApplePushService/ApplePushService.html) dokumentum **értesítési hasznos** adatai című szakasza.
+További információ a hasznos adatok formátumáról: a [UserNotifications útmutatójának](https://developer.apple.com/documentation/usernotifications) **értesítési tartalma** szakasza.
 
 A következő kód a által `ApnsService` elérhetővé tett példányt `NotificationHubService` használja a által küldött riasztási üzenet küldéséhez az összes ügyfélnek:
 

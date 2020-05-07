@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/31/2020
-ms.openlocfilehash: 3d250ef1aba979be04a44acaf31a3d685f162e37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df96ceb47bf33b734f2127bade50af18713a97a0
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283888"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82581363"
 ---
 # <a name="azure-monitor-for-vms-generally-available-ga-frequently-asked-questions"></a>Azure Monitor for VMs általánosan elérhető (GA) gyakran ismételt kérdések
 Ez az általános elérhetőségi gyakori kérdések a GA-ban felkészített, a 2019-as és a Q1 2020-es verzióban végrehajtott módosításokat fedik le.
@@ -44,7 +44,7 @@ Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <resource-grou
 
 ## <a name="what-should-i-do-about-the-performance-counters-in-my-workspace-if-i-install-the-vminsights-solution"></a>Mi a teendő a saját munkaterület teljesítményszámlálói esetében, ha a VMInsights-megoldást telepítem?
 
-Az előző módszer, amely lehetővé teszi Azure Monitor for VMs használt teljesítményszámlálók használatát a munkaterületen. Az aktuális verzió egy nevű `InsightsMetrics`táblában tárolja ezeket az adattárakat. Dönthet úgy, hogy letiltja ezeket a teljesítményt a munkaterületen, ha már nincs szüksége a countersin. 
+Az előző módszer, amely lehetővé teszi Azure Monitor for VMs használt teljesítményszámlálók használatát a munkaterületen. Az aktuális verzió egy nevű `InsightsMetrics`táblában tárolja ezeket az adattárakat. Dönthet úgy, hogy letiltja ezeket a teljesítményszámlálók a munkaterületen, ha már nincs szüksége rájuk. 
 
 >[!NOTE]
 >Ha vannak olyan riasztási szabályok, amelyek hivatkoznak ezekre `Perf` a számlálóra a táblában, frissítenie kell őket a `InsightsMetrics` táblázatban tárolt új adatértékekre való hivatkozáshoz. Tekintse meg a dokumentációt, például a táblázatra hivatkozó log-lekérdezéseket.

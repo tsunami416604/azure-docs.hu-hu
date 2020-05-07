@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 6dcda58652abe51d360748222263f30f337a2251
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182735"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791765"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -138,9 +138,9 @@ Cosmos DB a HMAC használja az engedélyezéshez. Használhatja a főkulcsot vag
 
 Cosmos DB támogatja az eseményindítók végrehajtását az írás során. A szolgáltatás legfeljebb egy trigger előtti és egy trigger utáni műveletet támogat. 
 
-## <a name="autoscale-mode-limits"></a>Az autoskálázási mód korlátai
+## <a name="limits-for-autoscale-provisioned-throughput"></a>Az autoscale kiépített átviteli sebességre vonatkozó korlátok
 
-Az átviteli [Autoscale](provision-throughput-autoscale.md#autoscale-limits) sebességre és a tárterületre vonatkozó korlátozásokat az autoskálázási módban tekintheti meg.
+Az átviteli sebességre és a tárterületre vonatkozó korlátozásokat az autoscale ( [autoscale) című cikkben](provision-throughput-autoscale.md#autoscale-limits) tekintheti meg.
 
 ## <a name="sql-query-limits"></a>SQL-lekérdezés korlátai
 

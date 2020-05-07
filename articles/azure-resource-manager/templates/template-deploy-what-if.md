@@ -3,14 +3,14 @@ title: Template deployment mi a teendő (előzetes verzió)
 description: A Azure Resource Manager-sablon telepítése előtt határozza meg, hogy milyen változások történnek az erőforrásokban.
 author: mumian
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 04/29/2020
 ms.author: jgao
-ms.openlocfilehash: f13789912e5b801295f1f926a12db50849cd75d8
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509584"
+ms.locfileid: "82581204"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
 
@@ -106,7 +106,7 @@ A módosítások előnézetéhez a sablon telepítése előtt adja hozzá `-What
 * `New-AzResourceGroupDeployment -Whatif`erőforráscsoport-telepítések esetén
 * `New-AzSubscriptionDeployment -Whatif`és `New-AzDeployment -Whatif` előfizetési szintű központi telepítések esetén
 
-Vagy a `-Confirm` switch paraméterrel megtekintheti a módosításokat, és a rendszer kérni fogja, hogy folytassa a telepítést.
+A `-Confirm` switch paraméterrel megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést.
 
 * `New-AzResourceGroupDeployment -Confirm`erőforráscsoport-telepítések esetén
 * `New-AzSubscriptionDeployment -Confirm`és `New-AzDeployment -Confirm` előfizetési szintű központi telepítések esetén
@@ -123,10 +123,10 @@ Ha egy sablon telepítése előtt szeretné megtekinteni a `what-if` módosítá
 * `az deployment group what-if`erőforráscsoport-telepítések esetén
 * `az deployment sub what-if`előfizetési szintű központi telepítések esetén
 
-Vagy a `--confirm-with-what-if` paraméterrel megtekintheti a módosításokat, és a rendszer kérni fogja, hogy folytassa a telepítést.
+A `--confirm-with-what-if` kapcsolót (vagy annak rövid formáját `-c`) használva megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést.
 
-* `az deployment group create --confirm-with-what-if`erőforráscsoport-telepítések esetén
-* `az deployment sub create --confirm-with-what-if`előfizetési szintű központi telepítések esetén
+* `az deployment group create --confirm-with-what-if`vagy `-c` erőforráscsoport-telepítések esetén
+* `az deployment sub create --confirm-with-what-if`vagy `-c` előfizetési szintű központi telepítések esetén
 
 Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Egy olyan JSON-objektum beszerzéséhez, amelyet programozott módon vizsgálhat a változásokhoz, használja a következőt:
 
@@ -340,7 +340,7 @@ results=$(az deployment group what-if --resource-group ExampleGroup --template-u
 
 A mi-if művelet támogatja a [telepítési mód](deployment-modes.md)használatát. Ha a befejezési módra van állítva, a sablonban nem szereplő erőforrások törlődnek. A következő példa olyan sablont telepít [, amely nem rendelkezik teljes módban definiált erőforrásokkal](https://github.com/Azure/azure-docs-json-samples/blob/master/empty-template/azuredeploy.json) .
 
-A módosítások előnézetéhez a sablon telepítése előtt használja a `-Confirm` switch paramétert a Deployment paranccsal. Ha a módosítások a várt módon történtek, erősítse meg, hogy a központi telepítés befejezésére van szükség.
+Ha egy sablon telepítése előtt szeretné előtekinteni a módosításokat, használja a Switch paramétert a telepítési paranccsal. Ha a módosítások a várt módon változnak, fogadja el, hogy a központi telepítés befejezését szeretné elvégezni.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

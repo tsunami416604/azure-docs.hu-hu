@@ -3,12 +3,12 @@ title: Egy tulajdonság több példányának meghatározása
 description: A másolási művelettel egy Azure Resource Manager sablonban több alkalommal is megismételheti a tulajdonságok egy erőforráson való létrehozásakor.
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 831ae1af202a1cdf52bdd2bdf0d9a042a97ba52f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81391341"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583408"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Tulajdonság-iteráció az ARM-sablonokban
 
@@ -16,7 +16,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre egy tulajdonság több péld
 
 A másolás [erőforrásokat](copy-resources.md), [változókat](copy-variables.md)és [kimeneteket](copy-outputs.md)is használhat.
 
-## <a name="property-iteration"></a>Tulajdonság iterációja
+## <a name="syntax"></a>Szintaxis
 
 A másolási elem a következő általános formátumú:
 
@@ -35,6 +35,21 @@ A **név mezőben**adja meg a létrehozni kívánt erőforrás-tulajdonság nev�
 A **Count** tulajdonság megadja a tulajdonsághoz használni kívánt iterációk számát.
 
 A **bemeneti** tulajdonság határozza meg a megismételni kívánt tulajdonságokat. A **bemeneti** tulajdonság értékével létrehozott elemek tömbjét hozza létre.
+
+## <a name="copy-limits"></a>Másolási korlátok
+
+A szám nem lehet nagyobb, mint 800.
+
+A darabszám nem lehet negatív szám. Ha az Azure CLI, a PowerShell vagy a REST API legújabb verziójával telepíti a sablont, akkor nulla lehet. Pontosabban a következőket kell használnia:
+
+* Azure PowerShell **2,6** vagy újabb
+* Azure CLI- **2.0.74** vagy újabb
+* REST API **2019-05-10** -es vagy újabb verzió
+* A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
+
+A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
+
+## <a name="property-iteration"></a>Tulajdonság iterációja
 
 Az alábbi példa bemutatja, hogyan alkalmazható `copy` a virtuális gép dataDisks tulajdonságára:
 
@@ -232,12 +247,6 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
   }
 }
 ```
-
-## <a name="copy-limits"></a>Másolási korlátok
-
-A szám nem lehet nagyobb, mint 800.
-
-A darabszám nem lehet negatív szám. Ha Azure PowerShell 2,6-as vagy újabb, Azure CLI-2.0.74 vagy újabb verzióval, REST API vagy a **2019-05-10** -es vagy újabb verziójával rendelkező sablont telepít, akkor a Count értéket nullára állíthatja. A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
 
 ## <a name="example-templates"></a>Példák sablonokra
 

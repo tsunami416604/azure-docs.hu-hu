@@ -3,12 +3,12 @@ title: Egy kimeneti érték több példányának meghatározása
 description: A másolási művelettel Azure Resource Manager sablonban több alkalommal is megismételhető, amikor értéket ad vissza egy központi telepítésből.
 ms.topic: conceptual
 ms.date: 04/17/2020
-ms.openlocfilehash: 0315af2f083285c4704b08fec608341b6f0b2231
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 50c4b4b8f301ad88d3dfde98ace1aed4431693db
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617837"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583427"
 ---
 # <a name="output-iteration-in-arm-templates"></a>Kimeneti iteráció az ARM-sablonokban
 
@@ -16,7 +16,7 @@ Ez a cikk bemutatja, hogyan hozhat létre egynél több értéket egy kimenethez
 
 A másolást [erőforrásokkal](copy-resources.md), [erőforrásokkal](copy-properties.md)és [változókkal](copy-variables.md)is elvégezheti.
 
-## <a name="outputs-iteration"></a>Kimenetek iterációja
+## <a name="syntax"></a>Szintaxis
 
 A másolási elem a következő általános formátumú:
 
@@ -30,6 +30,21 @@ A másolási elem a következő általános formátumú:
 A **Count** tulajdonság megadja a kimeneti értékhez használni kívánt iterációk számát.
 
 A **bemeneti** tulajdonság határozza meg a megismételni kívánt tulajdonságokat. A **bemeneti** tulajdonság értékével létrehozott elemek tömbjét hozza létre. Ez lehet egy tulajdonság (például egy karakterlánc) vagy egy olyan objektum, amely több tulajdonsággal rendelkezik.
+
+## <a name="copy-limits"></a>Másolási korlátok
+
+A szám nem lehet nagyobb, mint 800.
+
+A darabszám nem lehet negatív szám. Ha az Azure CLI, a PowerShell vagy a REST API legújabb verziójával telepíti a sablont, akkor nulla lehet. Pontosabban a következőket kell használnia:
+
+* Azure PowerShell **2,6** vagy újabb
+* Azure CLI- **2.0.74** vagy újabb
+* REST API **2019-05-10** -es vagy újabb verzió
+* A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
+
+A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
+
+## <a name="outputs-iteration"></a>Kimenetek iterációja
 
 Az alábbi példa egy változó számú Storage-fiókot hoz létre, és az egyes Storage-fiókok végpontját adja vissza:
 

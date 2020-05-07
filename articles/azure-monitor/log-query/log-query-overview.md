@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/19/2019
-ms.openlocfilehash: 54a6f875bc33d24d412d2424c634d1019b4af399
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd2a28ddbe970385ff44deec2158c257937982e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670117"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82591652"
 ---
 # <a name="overview-of-log-queries-in-azure-monitor"></a>A Azure Monitor lévő naplók áttekintése
 A naplók lekérdezései segítségével teljes mértékben kihasználhatja [Azure monitor naplókban](../platform/data-platform-logs.md)összegyűjtött adatok értékét. Egy hatékony lekérdezési nyelv lehetővé teszi több táblázatból származó adatok összekapcsolását, nagy mennyiségű adat összesítését, valamint a minimális kóddal rendelkező összetett műveletek végrehajtását. Gyakorlatilag bármilyen kérdés megválaszolható és elemezhető mindaddig, amíg a támogatási adatok gyűjtése megtörtént, és tisztában van a megfelelő lekérdezés létrehozásával is.
@@ -81,7 +81,7 @@ A Log Analytics a Azure Portal elsődleges eszköze a naplók írásához és az
 A Azure Portal több helyről is elindítható Log Analytics. A Log Analytics számára elérhetővé tett adatmennyiséget az elindításának módját határozza meg. További részletekért lásd a [lekérdezési hatókört](scope.md) .
 
 - Válassza a **naplók** lehetőséget a **Azure Monitor** menüből vagy **log Analytics munkaterületek** menüből.
-- Válassza az **elemzés** lehetőséget egy Application Insights alkalmazás **Áttekintés** lapján.
+- A Application Insights alkalmazások **Áttekintés** lapján válassza a **naplók** lehetőséget.
 - Válassza ki a **naplókat** egy Azure-erőforrás menüjéből.
 
 ![Log Analytics](media/log-query-overview/log-analytics.png)

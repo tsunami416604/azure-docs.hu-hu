@@ -6,13 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: 659af8b85cb3736d663e79676b04af8041aeabfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seoapr2020
+ms.date: 04/29/2020
+ms.openlocfilehash: 13ea1043d05c9f349e25623086c2908e176772a8
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80129602"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583950"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
@@ -20,7 +21,7 @@ ms.locfileid: "80129602"
 > * [A Cell Magic használata](apache-spark-jupyter-notebook-use-external-packages.md)
 > * [Parancsfájl-művelet használata](apache-spark-python-package-installation.md)
 
-A HDInsight két beépített Python-telepítéssel rendelkezik a Spark-fürtben, az anaconda Python 2,7 és a Python 3,5. Bizonyos esetekben az ügyfeleknek testre kell szabnia a Python-környezetet, például külső Python-csomagokat vagy más Python-verziót kell telepíteni. Ebben a cikkben azt mutatjuk be, hogyan kezelheti biztonságosan a Python-környezeteket [Apache Spark](./apache-spark-overview.md) -fürtön a HDInsight-on.
+A HDInsight két beépített Python-telepítéssel rendelkezik a Spark-fürtben, az anaconda Python 2,7 és a Python 3,5. Előfordulhat, hogy az ügyfeleknek testre kell szabnia a Python-környezetet. Például külső Python-csomagok vagy más Python-verziók telepítéséhez. Itt bemutatjuk a Python-környezetek biztonságos kezelésének bevált gyakorlatát Apache Spark-fürtökön a HDInsight-on.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,7 +29,7 @@ Apache Spark-fürt megléte a HDInsightban. További útmutatásért lásd: [Apa
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>A HDInsight-fürtökön használt nyílt forráskódú szoftverek támogatása
 
-A Microsoft Azure HDInsight szolgáltatás a Apache Hadoop által létrehozott nyílt forráskódú technológiák ökoszisztémáját használja. A Microsoft Azure a nyílt forráskódú technológiák általános támogatását biztosítja. További információ: Azure- [támogatás – gyakori kérdések webhelye](https://azure.microsoft.com/support/faq/). A HDInsight szolgáltatás további szintű támogatást biztosít a beépített összetevőkhöz.
+A Microsoft Azure HDInsight szolgáltatás olyan nyílt forráskódú technológiák környezetét használja, amelyeket a rendszer Apache Hadoop. A Microsoft Azure a nyílt forráskódú technológiák általános támogatását biztosítja. További információ: Azure- [támogatás – gyakori kérdések webhelye](https://azure.microsoft.com/support/faq/). A HDInsight szolgáltatás további szintű támogatást biztosít a beépített összetevőkhöz.
 
 A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhető el:
 
@@ -40,7 +41,7 @@ A HDInsight szolgáltatásban kétféle nyílt forráskódú összetevő érhet�
 > [!IMPORTANT]
 > A HDInsight-fürthöz biztosított összetevők teljes mértékben támogatottak. Microsoft ügyfélszolgálata segít elkülöníteni és elhárítani ezeket az összetevőket érintő problémákat.
 >
-> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. A Microsoft támogatási szolgálata megoldhatja a problémát, vagy megkérheti, hogy a nyílt forráskódú technológiák számára elérhető csatornákat adjon meg, ahol az adott technológia mélyreható szaktudása található. Többek között több közösségi webhely is használható, például a [következőhöz: msdn Forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) [https://stackoverflow.com](https://stackoverflow.com). Emellett az Apache [https://apache.org](https://apache.org)-projektek is rendelkeznek projekt-webhelyekkel, például: [Hadoop](https://hadoop.apache.org/).
+> Az egyéni összetevők kereskedelmileg ésszerű támogatást kapnak a probléma további megoldásához. A Microsoft támogatási szolgálata megoldhatja a problémát, vagy megkérheti, hogy a nyílt forráskódú technológiák számára elérhető csatornákat adjon meg, ahol az adott technológia mélyreható szaktudása található. Többek között több közösségi webhely is használható, például a [következőhöz: msdn Forum for HDInsight](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight) `https://stackoverflow.com`. Emellett az `https://apache.org`Apache-projektek is rendelkeznek projekt-webhelyekkel.
 
 ## <a name="understand-default-python-installation"></a>A Python alapértelmezett telepítésének ismertetése
 
@@ -55,9 +56,9 @@ A HDInsight Spark-fürt az anaconda telepítésével jön létre. Két Python-te
 
 ## <a name="safely-install-external-python-packages"></a>Külső Python-csomagok biztonságos telepítése
 
-A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettől függ. Ha közvetlenül telepíti az egyéni csomagokat az alapértelmezett beépített környezetekben, előfordulhat, hogy a függvénytár-verziók váratlanul módosulnak, és tovább bontják a fürtöt. A Spark-alkalmazásokhoz tartozó egyéni külső Python-csomagok biztonságos telepítéséhez kövesse az alábbi lépéseket.
+A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettől függ. Ha közvetlenül telepíti az egyéni csomagokat az alapértelmezett beépített környezetekben, előfordulhat, hogy a függvénytár-verzió váratlanul módosul. És bontsa ki a fürtöt. Ha az egyéni külső Python-csomagokat biztonságosan szeretné telepíteni a Spark-alkalmazásokhoz, kövesse az alábbi lépéseket.
 
-1. Python virtuális környezet létrehozása a Conda használatával. A virtuális környezetek elkülönített lemezterületet biztosítanak a projektekhez, és nem kell másokat feltörni. A Python virtuális környezet létrehozásakor megadhatja a használni kívánt Python-verziót. Ne feledje, hogy a Python 2,7 és a 3,5 használatához még a virtuális környezet létrehozása is szükséges. Ezzel a beállítással meggyőződhet arról, hogy a fürt alapértelmezett környezete nem szakad meg. Hozzon létre parancsfájl-műveleteket a fürtön az alábbi szkripttel rendelkező összes csomóponton egy Python virtuális környezet létrehozásához.
+1. Python virtuális környezet létrehozása a Conda használatával. A virtuális környezetek elkülönített lemezterületet biztosítanak a projektekhez, és nem kell másokat feltörni. A Python virtuális környezet létrehozásakor megadhatja a használni kívánt Python-verziót. Még akkor is létre kell hoznia virtuális környezetet, ha a Python 2,7 és a 3,5-et szeretné használni. Ez a követelmény annak biztosítása, hogy a fürt alapértelmezett környezete ne legyen kitört. Hozzon létre parancsfájl-műveleteket a fürtön az alábbi szkripttel rendelkező összes csomóponton egy Python virtuális környezet létrehozásához.
 
     -   `--prefix`Megadja azt az elérési utat, ahol a Conda virtuális környezete él. Az itt megadott elérési út alapján több konfigurációt is meg kell változtatni. Ebben a példában a py35new használjuk, mivel a fürtön már létezik egy py35 nevű meglévő virtuális környezet.
     -   `python=`Megadja a virtuális környezet Python-verzióját. Ebben a példában az 3,5-es verziót használjuk, amely megegyezik a fürt beépített verziójával. A virtuális környezet létrehozásához más Python-verziókat is használhat.
@@ -67,9 +68,9 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
     sudo /usr/bin/anaconda/bin/conda create --prefix /usr/bin/anaconda/envs/py35new python=3.5 anaconda --yes
     ```
 
-2. Szükség esetén telepítsen külső Python-csomagokat a létrehozott virtuális környezetbe. A külső Python-csomagok telepítéséhez futtassa parancsfájl-műveleteket a fürtön az alábbi szkripttel rendelkező összes csomóponthoz. Ahhoz, hogy fájlokat lehessen írni a virtuális környezet mappájába, a sudo jogosultsággal kell rendelkeznie.
+2. Szükség esetén telepítsen külső Python-csomagokat a létrehozott virtuális környezetbe. A külső Python-csomagok telepítéséhez futtassa parancsfájl-műveleteket a fürtön az alábbi szkripttel rendelkező összes csomóponthoz. Ha a virtuális környezet mappájába szeretne fájlokat írni, sudo jogosultsággal kell rendelkeznie.
 
-    A [csomag indexében](https://pypi.python.org/pypi) a rendelkezésre álló csomagok teljes listáját is megkeresheti. Lekérheti az egyéb forrásokból származó elérhető csomagok listáját is. Telepítheti például a [Conda-Forge](https://conda-forge.org/feedstocks/)használatával elérhetővé tett csomagokat.
+    Keresse meg a [csomag indexét](https://pypi.python.org/pypi) az elérhető csomagok teljes listájához. Lekérheti az egyéb forrásokból származó elérhető csomagok listáját is. Telepítheti például a [Conda-Forge](https://conda-forge.org/feedstocks/)használatával elérhetővé tett csomagokat.
 
     Használja az alábbi parancsot, ha a legújabb verziójával szeretné telepíteni a könyvtárat:
 
@@ -114,7 +115,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     2. Bontsa ki a speciális livy2-env elemet, majd a lenti utasításokat. Ha egy másik előtaggal telepítette a virtuális környezetet, módosítsa az elérési utat megfelelően.
 
-        ```
+        ```bash
         export PYSPARK_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         export PYSPARK_DRIVER_PYTHON=/usr/bin/anaconda/envs/py35new/bin/python
         ```
@@ -123,7 +124,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
     3. Bontsa ki a speciális spark2 – env elemet, cserélje le a meglévő export PYSPARK_PYTHON utasítást alulra. Ha egy másik előtaggal telepítette a virtuális környezetet, módosítsa az elérési utat megfelelően.
 
-        ```
+        ```bash
         export PYSPARK_PYTHON=${PYSPARK_PYTHON:-/usr/bin/anaconda/envs/py35new/bin/python}
         ```
 
@@ -133,7 +134,7 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
         ![Spark-konfiguráció módosítása a Ambari használatával](./media/apache-spark-python-package-installation/ambari-restart-services.png)
 
-4. Ha az újonnan létrehozott virtuális környezetet szeretné használni a Jupyter-on. Módosítania kell a Jupyter-konfigurációkat, és újra kell indítania a Jupyter. Futtasson parancsfájl-műveleteket minden olyan fejléc-csomóponton az alábbi utasítással, hogy az új, létrehozott virtuális környezethez Jupyter. Ügyeljen arra, hogy módosítsa a virtuális környezethez megadott előtag elérési útját. A parancsfájl futtatása után indítsa újra a Jupyter szolgáltatást a Ambari felhasználói felületén, hogy elérhetővé tegye ezt a módosítást.
+4. Ha az újonnan létrehozott virtuális környezetet szeretné használni a Jupyter-on. Módosítsa a Jupyter konfigurációit, és indítsa újra a Jupyter. Futtasson parancsfájl-műveleteket minden olyan fejléc-csomóponton az alábbi utasítással, hogy az új, létrehozott virtuális környezethez Jupyter. Ügyeljen arra, hogy módosítsa a virtuális környezethez megadott előtag elérési útját. A parancsfájl futtatása után indítsa újra a Jupyter szolgáltatást a Ambari felhasználói felületén, hogy elérhetővé tegye ezt a módosítást.
 
     ```bash
     sudo sed -i '/python3_executable_path/c\ \"python3_executable_path\" : \"/usr/bin/anaconda/envs/py35new/bin/python3\"' /home/spark/.sparkmagic/config.json
@@ -145,13 +146,12 @@ A HDInsight-fürt a Python 2,7 és a Python 3,5 beépített Python-környezettő
 
 ## <a name="known-issue"></a>Ismert probléma
 
-Ismert hiba történt a Anaconda 4.7.11, a 4.7.12 és a 4.8.0. Ha a parancsfájl műveletei a következő helyen találhatók `"Collecting package metadata (repodata.json): ...working..."` : és sikertelen `"Python script has been killed due to timeout after waiting 3600 secs"`. [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
+Létezik egy ismert hiba a anaconda-verzió `4.7.11`, `4.7.12`a és `4.8.0`a esetében. Ha a parancsfájl műveletei a következő helyen találhatók `"Collecting package metadata (repodata.json): ...working..."` : és sikertelen `"Python script has been killed due to timeout after waiting 3600 secs"`. [Ezt a parancsfájlt](https://gregorysfixes.blob.core.windows.net/public/fix-conda.sh) letöltheti, és parancsfájl-műveletekként futtathatja az összes csomóponton a probléma megoldásához.
 
 A anaconda verziójának megadásához SSH-t használhat a fürt fejlécére, `/usr/bin/anaconda/bin/conda --v`és futtathatja a parancsot.
 
 ## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
-* [Apache Spark BI: interaktív adatelemzés végrehajtása a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
+* [Külső csomagok Jupyter notebookokkal Apache Spark](apache-spark-jupyter-notebook-use-external-packages.md)
 * [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)

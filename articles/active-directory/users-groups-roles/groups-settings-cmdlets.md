@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9d56bb7c30a8289fe7f261979dca6a4ffe2bfe99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b50118dcd4bf0fafa3e25399cf7d82558b7c776c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80048142"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582787"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
 
@@ -160,7 +160,7 @@ Itt láthatók a Group. Unified SettingsTemplate megadott beállítások. Ha má
 |  <ul><li>AllowGuestsToBeGroupOwner<li>Típus: Boolean<li>Alapértelmezett: false | Logikai érték, amely azt jelzi, hogy a vendég felhasználó lehet-e a csoportok tulajdonosa. |
 |  <ul><li>AllowGuestsToAccessGroups<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy a vendég felhasználó tud-e hozzáférni az Office 365-csoportok tartalmához.  Ehhez a beállításhoz nem szükséges prémium szintű Azure Active Directory P1-licenc.|
 |  <ul><li>GuestUsageGuidelinesUrl<li>Típus: Sztring<li>Alapértelmezett: "" | A vendég használati irányelvekre mutató hivatkozás URL-címe. |
-|  <ul><li>AllowToAddGuests<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy engedélyezett-e a vendégek hozzáadása a címtárhoz. <br>Ez a beállítás felülbírálható, és csak olvasható lehet, ha a *EnableMIPLabels* értéke *true (igaz* ), és a rendszer a csoporthoz rendelt érzékenységi címkével társítja a vendég szabályzatot.<br>Ha a AllowToAddGuests beállítása hamis értékre van állítva a bérlő szintjén, a rendszer figyelmen kívül hagyja a csoport szintjén található AllowToAddGuests-beállításokat. Ha csak néhány csoporthoz kívánja engedélyezni a vendég hozzáférést, a AllowToAddGuests a bérlő szintjén igaz értékre kell állítania, majd külön le kell tiltania azokat adott csoportokhoz. |
+|  <ul><li>AllowToAddGuests<li>Típus: Boolean<li>Alapértelmezett: true | Logikai érték, amely azt jelzi, hogy engedélyezett-e a vendégek hozzáadása a címtárhoz. <br>Ez a beállítás felülbírálható, és csak olvasható lehet, ha a *EnableMIPLabels* értéke *true (igaz* ), és a rendszer a csoporthoz rendelt érzékenységi címkével társítja a vendég szabályzatot.<br>Ha a AllowToAddGuests beállítás a szervezet szintjén hamis értékre van állítva, a rendszer figyelmen kívül hagyja a csoport szintjén található AllowToAddGuests-beállításokat. Ha csak néhány csoporthoz kívánja engedélyezni a vendég hozzáférést, a AllowToAddGuests a szervezet szintjén igaz értékre kell állítania, majd külön le kell tiltania azokat adott csoportokhoz. |
 |  <ul><li>ClassificationList<li>Típus: Sztring<li>Alapértelmezett: "" | Az Office 365-csoportokra alkalmazható érvényes besorolási értékek vesszővel tagolt listája. <br>Ez a beállítás nem érvényes, ha a EnableMIPLabels = = True érték van beállítva.|
 |  <ul><li>EnableMIPLabels<li>Típus: Boolean<li>Alapértelmezett: "false" |Ez a jelző jelzi, hogy az Microsoft 365 megfelelőségi központban közzétett érzékenységi címkék alkalmazhatók-e az Office 365-csoportokra. További információ: [az Office 365-csoportok érzékenységi címkéjének társítása](groups-assign-sensitivity-labels.md). |
 

@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 8e7e01dac29cb9ba91c83270dac4e46c73b2089e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d0279cc323f7eee87feb2a596a4c2df0b4667e1
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75610122"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790847"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>Önálló fürt konfigurációjának frissítése 
 
@@ -75,7 +75,7 @@ Négy lehetőség támogatott:
 
 ## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric fürtkonfiguráció beállításait](service-fabric-cluster-fabric-settings.md).
-* Ismerje meg, hogyan [méretezheti a fürtöt a és a](service-fabric-cluster-scale-up-down.md)szolgáltatásban.
+* Ismerje meg, hogyan [méretezheti a fürtöt a és a](service-fabric-cluster-scale-in-out.md)szolgáltatásban.
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md)megismerése.
 
 <!--Image references-->

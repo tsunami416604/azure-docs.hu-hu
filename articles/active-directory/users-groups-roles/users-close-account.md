@@ -1,5 +1,5 @@
 ---
-title: Munkahelyi vagy iskolai fiók lezárása nem felügyelt Azure AD-címtárban
+title: Munkahelyi vagy iskolai fiók lezárása nem felügyelt Azure AD-szervezetben
 description: Munkahelyi vagy iskolai fiók lezárása nem felügyelt Azure Active Directoryban.
 services: active-directory
 author: rolyon
@@ -13,18 +13,18 @@ ms.author: rolyon
 ms.reviewer: ''
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c101c0ef7932151e675c5c514ac558e6e0f94b2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 11c337f4838279771523a1f375b7349387d68f45
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73815722"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582535"
 ---
-# <a name="close-your-work-or-school-account-in-an-unmanaged-directory"></a>Munkahelyi vagy iskolai fiók lezárása nem felügyelt címtárban
+# <a name="close-your-work-or-school-account-in-an-unmanaged-azure-ad-organization"></a>Munkahelyi vagy iskolai fiók lezárása egy nem felügyelt Azure AD-szervezetben
 
-Ha nem felügyelt Azure Active Directory (Azure AD) szervezet felhasználója, és már nem kell használnia az adott szervezettől származó alkalmazásokat, vagy nem kívánja fenntartani a társítást, bármikor lezárhatja a fiókját. A nem felügyelt címtár nem rendelkezik globális rendszergazdával. A nem felügyelt címtárban lévő felhasználók saját fiókjaikat a rendszergazdához való kapcsolatfelvétel nélkül is lezárják.
+Ha Ön egy nem felügyelt Azure Active Directory-(Azure AD-) szervezetben lévő felhasználó, és már nem kell az adott szervezettől származó alkalmazásokat használnia, vagy semmilyen társítást nem kell fenntartania, akkor bármikor lezárhatja a fiókját. A nem felügyelt szervezeteknek nincs globális rendszergazdája. A nem felügyelt szervezet felhasználói saját fiókjaikat a rendszergazdához való kapcsolatfelvétel nélkül is lezárják.
 
-A nem felügyelt címtárban lévő felhasználók gyakran jönnek létre az önkiszolgáló regisztráció során. Ilyen lehet például egy olyan adatfeldolgozó, amely egy ingyenes szolgáltatásra regisztrál. Az önkiszolgáló regisztrációval kapcsolatos további információkért lásd: [Mi az a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
+A nem felügyelt szervezetekben lévő felhasználók gyakran jönnek létre az önkiszolgáló regisztráció során. Ilyen lehet például egy olyan adatfeldolgozó, amely egy ingyenes szolgáltatásra regisztrál. Az önkiszolgáló regisztrációval kapcsolatos további információkért lásd: [Mi az a Azure Active Directory önkiszolgáló regisztrációja?](directory-self-service-signup.md)
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -32,7 +32,7 @@ A nem felügyelt címtárban lévő felhasználók gyakran jönnek létre az ön
 
 A fiók lezárása előtt ellenőrizze a következő elemeket:
 
-* Győződjön meg arról, hogy egy nem felügyelt Azure AD-címtár felhasználója. A fiók nem zárható be, ha egy felügyelt címtárhoz tartozik. Ha egy felügyelt címtárhoz tartozik, és be szeretné állítani a fiókját, forduljon a rendszergazdához. További információ arról, hogyan állapítható meg, hogy egy nem felügyelt címtárhoz tartozik-e: [a felhasználó törlése nem felügyelt bérlőről](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
+* Győződjön meg arról, hogy egy nem felügyelt Azure AD-szervezet felhasználója. Ha felügyelt szervezethez tartozik, nem zárhatja be a fiókját. Ha egy felügyelt szervezethez tartozik, és be szeretné állítani a fiókját, forduljon a rendszergazdához. További információ arról, hogyan állapítható meg, hogy egy nem felügyelt szervezethez tartozik-e: [a felhasználó törlése a nem felügyelt bérlőből](https://docs.microsoft.com/flow/gdpr-dsr-delete#delete-the-user-from-unmanaged-tenant).
 
 * Mentse a megőrizni kívánt összes adatfájlt. További információ az exportálási kérelmek beküldéséről: a nem [felügyelt bérlők számára a rendszer által létrehozott naplók elérése és exportálása](https://docs.microsoft.com/power-platform/admin/powerapps-gdpr-dsr-guide-systemlogs#accessing-and-exporting-system-generated-logs-for-unmanaged-tenants).
 

@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 17a96479b80410cbfcb2a6061904491f95c45f10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5820856f7d4c51e41162f01a9687304cb223088
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116264"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791918"
 ---
 # <a name="field-mappings-and-transformations-using-azure-cognitive-search-indexers"></a>Mező-hozzárendelések és átalakítások az Azure Cognitive Search indexelő használatával
 
@@ -28,7 +28,7 @@ Bizonyos helyzetekben hasznosak lehetnek a mezők leképezése:
 * Az adatai Base64 kódolása vagy dekódolása szükséges. A mező-hozzárendelések több **leképezési funkciót**is támogatnak, beleértve a Base64 kódoláshoz és a dekódoláshoz használható függvényeket.
 
 > [!NOTE]
-> Az indexelő mezőkhöz tartozó leképezések egyszerű módot biztosítanak az adatmezők index mezőibe történő leképezésére, és némi képességgel rendelkeznek a könnyű adatátalakításra. Az összetettebb adatfeldolgozáshoz szükség lehet az előzetes feldolgozásra, hogy egy olyan űrlapra alakítsa át, amely az indexelést eredményezi. Lehetséges, hogy az egyik lehetőség a [Azure Data Factory](https://docs.microsoft.com/zure/data-factory/).
+> Az indexelő mezőkhöz tartozó leképezések egyszerű módot biztosítanak az adatmezők index mezőibe történő leképezésére, és némi képességgel rendelkeznek a könnyű adatátalakításra. Az összetettebb adatfeldolgozáshoz szükség lehet az előzetes feldolgozásra, hogy egy olyan űrlapra alakítsa át, amely az indexelést eredményezi. Lehetséges, hogy az egyik lehetőség a [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/).
 
 ## <a name="set-up-field-mappings"></a>Mezők leképezésének beállítása
 
@@ -188,7 +188,7 @@ A következő táblázat a karakterlánc `00>00?00`különböző Base64 kódolá
 | Base64 kitöltéssel | `MDA+MDA/MDA=` | URL-alapú biztonságos karakterek használata és kitöltés eltávolítása | Szabványos Base64-karakterek használata és kitöltés hozzáadása |
 | Base64 kitöltés nélkül | `MDA+MDA/MDA` | URL-alapú biztonságos karakterek használata | Szabványos Base64-karakterek használata |
 | URL – biztonságos Base64 kitöltéssel | `MDA-MDA_MDA=` | Kitöltés eltávolítása | Kitöltés hozzáadása |
-| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | None | None |
+| URL – biztonságos Base64 kitöltés nélkül | `MDA-MDA_MDA` | Nincs | Nincs |
 
 <a name="extractTokenAtPositionFunction"></a>
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/07/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: d2423d04ead9040cce53d847d24efe75be680d94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ea29888d4dcf589e3e5d4dfe594f5f4bff2287e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397302"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559971"
 ---
 # <a name="view-and-retrieve-azure-activity-log-events"></a>Azure-Tevékenységnaplók eseményeinek megtekintése és lekérése
 
@@ -71,7 +71,7 @@ További információ a változási előzményekről: [erőforrás-változások 
 A [Get-AzLog](https://docs.microsoft.com/powershell/module/az.monitor/get-azlog) parancsmaggal kérheti le a tevékenység naplóját a powershellből. Az alábbiakban néhány gyakori példát talál.
 
 > [!NOTE]
-> `Get-AzLog`csak 15 napos előzményt biztosít. Használja a **-MaxEvents** paramétert az utolsó N esemény lekérdezésére 15 napon belül. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-t. Ha **nem tartalmazza az**időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
+> `Get-AzLog`csak 15 napos előzményt biztosít. Használja a **-MaxRecord** paramétert az utolsó N esemény lekérdezésére 15 napon belül. A 15 napnál régebbi események eléréséhez használja a REST API vagy az SDK-t. Ha **nem tartalmazza az**időpontot, az alapértelmezett érték a **befejezési időpont** mínusz egy óra. Ha nem tartalmazza a **befejezési**időt, az alapértelmezett érték az aktuális idő. Minden alkalommal UTC-ben van.
 
 
 Megadott időpontot követően létrehozott naplóbejegyzések beolvasása:
@@ -107,7 +107,7 @@ Get-AzLog -Caller 'myname@company.com'
 Az utolsó 1000 esemény beolvasása:
 
 ```powershell
-Get-AzLog -MaxEvents 1000
+Get-AzLog -MaxRecord 1000
 ```
 
 

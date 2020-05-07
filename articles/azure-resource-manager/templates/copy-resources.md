@@ -2,13 +2,13 @@
 title: Több erőforrás-példány üzembe helyezése
 description: A másolási művelet és tömbök használata Azure Resource Manager sablonban az erőforrástípus többszöri üzembe helyezéséhez.
 ms.topic: conceptual
-ms.date: 09/27/2019
-ms.openlocfilehash: e65ab93c21daffa0053e53d953fe95fa9f28e2a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: d4f40b606ffd56019b44cc8b67e5629b935bf50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153318"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583387"
 ---
 # <a name="resource-iteration-in-arm-templates"></a>Erőforrás-iteráció az ARM-sablonokban
 
@@ -18,7 +18,7 @@ A másolást a [Tulajdonságok](copy-properties.md), a [változók](copy-variabl
 
 Ha meg kell adnia, hogy az erőforrás telepítve van-e, tekintse meg a [feltétel elemet](conditional-resource-deployment.md).
 
-## <a name="resource-iteration"></a>Erőforrás-iteráció
+## <a name="syntax"></a>Szintaxis
 
 A másolási elem a következő általános formátumú:
 
@@ -34,6 +34,23 @@ A másolási elem a következő általános formátumú:
 A **Name** tulajdonság bármely olyan érték, amely a hurok azonosítására szolgál. A **Count** tulajdonság határozza meg az erőforrástípus kívánt ismétlések számát.
 
 A **Mode** és a **batchSize** tulajdonsággal adhatja meg, hogy az erőforrások párhuzamosan vagy sorba vannak-e telepítve. Ezeket a tulajdonságokat a [soros vagy párhuzamosan](#serial-or-parallel)kell ismertetni.
+
+## <a name="copy-limits"></a>Másolási korlátok
+
+A szám nem lehet nagyobb, mint 800.
+
+A darabszám nem lehet negatív szám. Ha az Azure CLI, a PowerShell vagy a REST API legújabb verziójával telepíti a sablont, akkor nulla lehet. Pontosabban a következőket kell használnia:
+
+* Azure PowerShell **2,6** vagy újabb
+* Azure CLI- **2.0.74** vagy újabb
+* REST API **2019-05-10** -es vagy újabb verzió
+* A [csatolt központi telepítéseknek](linked-templates.md) a telepítési erőforrástípus **2019-05-10** -es vagy újabb API-verzióját kell használniuk
+
+A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
+
+Ügyeljen arra, hogy a [teljes telepítési mód](deployment-modes.md) legyen a másolással. Ha egy erőforráscsoport esetében újratelepíti a teljes módot, a másolási hurok feloldása után a sablonban nem megadott erőforrások törlődnek.
+
+## <a name="resource-iteration"></a>Erőforrás-iteráció
 
 A következő példa a **storageCount** paraméterben megadott Storage-fiókok számát hozza létre.
 
@@ -257,14 +274,6 @@ A következő példa a megvalósítást mutatja be:
   ...
 }]
 ```
-
-## <a name="copy-limits"></a>Másolási korlátok
-
-A szám nem lehet nagyobb, mint 800.
-
-A darabszám nem lehet negatív szám. Ha Azure PowerShell 2,6-as vagy újabb, Azure CLI-2.0.74 vagy újabb verzióval, REST API vagy a **2019-05-10** -es vagy újabb verziójával rendelkező sablont telepít, akkor a Count értéket nullára állíthatja. A PowerShell, a CLI és a REST API korábbi verziói nem támogatják a nulla értéket a darabszámhoz.
-
-Ügyeljen arra, hogy a [teljes telepítési mód](deployment-modes.md) legyen a másolással. Ha egy erőforráscsoport esetében újratelepíti a teljes módot, a másolási hurok feloldása után a sablonban nem megadott erőforrások törlődnek.
 
 ## <a name="example-templates"></a>Példák sablonokra
 

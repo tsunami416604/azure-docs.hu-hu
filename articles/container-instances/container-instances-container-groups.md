@@ -4,12 +4,12 @@ description: További információ a Azure Container Instances lévő tárolók 
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 3efc4528863286da676fc7eb758176156c87a32a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: b5f4f834d44294d846495a59af2fb65b231e4820
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115652"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583833"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tárolócsoportok az Azure Container Instancesben
 
@@ -69,7 +69,7 @@ Ebben az esetben legfeljebb 2 processzort állíthat be a tároló-példányhoz.
 
 ## <a name="networking"></a>Hálózat
 
-A Container groups megoszthat egy külső elérésű IP-címet, egy vagy több portot az adott IP-címen, valamint egy teljes tartománynevet (FQDN) tartalmazó DNS-címkét is. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. Mivel a csoportba tartozó tárolók a portok névterét használják, a port megfeleltetése nem támogatott. A rendszer a tároló csoportjának IP-címét és teljes tartománynevét fogja felszabadítani a Container Group törlésekor. 
+A Container groups megoszthat egy külső elérésű IP-címet, egy vagy több portot az adott IP-címen, valamint egy teljes tartománynevet (FQDN) tartalmazó DNS-címkét is. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. A rendszer a tároló csoportjának IP-címét és teljes tartománynevét kibocsátja a Container Group törlésekor. 
 
 Egy tároló csoporton belül a Container instances a localhost-on keresztül bármilyen portot elér, még akkor is, ha ezek a portok nem jelennek meg a csoport IP-címén vagy a tárolón kívülről.
 
@@ -118,7 +118,7 @@ Megtudhatja, hogyan helyezhet üzembe egy több tárolóból álló tároló cso
 [resource-limits]: /rest/api/container-instances/containergroups/createorupdate#resourcelimits
 [resource-requirements]: /rest/api/container-instances/containergroups/createorupdate#resourcerequirements
 [azure-files]: container-instances-volume-azure-files.md
-[virtual-network]: container-instances-vnet.md
+[virtual-network]: container-instances-virtual-network-concepts.md
 [secret]: container-instances-volume-secret.md
 [volume-gitrepo]: container-instances-volume-gitrepo.md
 [gpus]: container-instances-gpu.md
