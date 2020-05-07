@@ -21,6 +21,11 @@
       href: tutorial-custom-providers-create.md
     - name: Erőforrások bővítése
       href: tutorial-resource-onboarding.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Azure Policy társításokhoz

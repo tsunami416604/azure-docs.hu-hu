@@ -10,6 +10,9 @@
     - name: Index
       displayName: 'template, sample'
       href: ./samples/index.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./samples/policy-samples.md
 - name: Alapelvek
   items:
     - name: Az Azure által delegált erőforrás-kezelés
@@ -33,6 +36,9 @@
     - name: Az Azure Lighthouse nagyvállalati forgatókönyvekben
       displayName: 'corporation, IT, consolidate'
       href: ./concepts/enterprise.md
+    - name: Azure Lighthouse és Azure Managed Applications
+      displayName: 'managed apps, ama'
+      href: ./concepts/managed-applications.md
 - name: Útmutatók
   items:
     - name: Ügyfél előkészítése az Azure által delegált erőforrás-kezeléshez

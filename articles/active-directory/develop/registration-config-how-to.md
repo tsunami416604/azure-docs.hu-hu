@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
-ms.openlocfilehash: 28d85736019a6fea6d977d813fdc1c9be6429748
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043dc4f6e57620f58a1cf5f76db755703421800f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883270"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778736"
 ---
 # <a name="how-to-configure-endpoints"></a>Végpontok konfigurálása
 
@@ -31,6 +31,8 @@ Az alkalmazáshoz tartozó hitelesítési végpontokat a [Azure Portalban](https
 -   Ekkor megnyílik a **végpontok** lap, amely felsorolja a bérlő összes hitelesítési végpontját.
 
 -   Használja az Ön által használt hitelesítési protokollhoz tartozó végpontot, az alkalmazás-AZONOSÍTÓval együtt az alkalmazásra vonatkozó hitelesítési kérelem kiépítéséhez.
+
+Az **országos felhők** (például az Azure ad China, a Germany és az Egyesült Államok kormánya) saját alkalmazás-regisztrációs portált és Azure ad-hitelesítési végpontokat tartalmazhatnak. További információk a [nemzeti felhők áttekintésében](authentication-national-cloud.md).
 
 ## <a name="next-steps"></a>További lépések
 [Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)

@@ -449,6 +449,8 @@
           items:
             - name: Azure-alkalmazásajánlat létrehozása
               href: ./partner-center-portal/create-new-azure-apps-offer.md
+            - name: Azure-alkalmazások forgalmi díjas számlázása
+              href: ./partner-center-portal/azure-app-metered-billing.md
             - name: Értékelési visszajelzések kezelése
               href: ./partner-center-portal/azure-apps-review-feedback.md
             - name: Előkészítési célú API
@@ -515,11 +517,6 @@
               href: ./partner-center-portal/create-new-saas-offer.md
             - name: SaaS forgalmi díjas számlázás
               href: ./partner-center-portal/saas-metered-billing.md
-              items:
-                - name: Marketplace metering service API-k – GYIK
-                  href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
-                - name: Marketplace metering service API-k
-                  href: ./partner-center-portal/marketplace-metering-service-apis.md
             - name: SaaS Fulfillment API-k
               href: ./partner-center-portal/pc-saas-fulfillment-apis.md
               items:
@@ -546,6 +543,14 @@
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
             - name: Salesforce
               href: ./partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Marketplace metering service
+          items:
+            - name: Hitelesítési stratégiák
+              href: ./partner-center-portal/marketplace-metering-service-authentication.md
+            - name: Marketplace metering service API-k
+              href: ./partner-center-portal/marketplace-metering-service-apis.md
+            - name: Marketplace metering service API-k – GYIK
+              href: ./partner-center-portal/marketplace-metering-service-apis-faq.md
         - name: Az ajánlat kipróbálása
           href: ./partner-center-portal/test-drive.md
         - name: Együttes értékesítési lehetőség
@@ -589,11 +594,13 @@
           href: ./partner-center-portal/get-paid.md
         - name: Kifizetési számla és űrlapok beállítása
           href: ./partner-center-portal/set-up-your-payout-account-tax-forms.md
-        - name: Számlázási adatok
-          href: ./partner-center-portal/billing-details.md
         - name: 'Fizetési küszöbértékek, módszerek és időkeretek'
           href: ./partner-center-portal/payment-thresholds-methods-timeframes.md
-        - name: Kifizetés összegzése
+        - name: Fizetési összegzés áttekintése
+          href: ./partner-center-portal/payout-summary-overview.md
+        - name: Fizetési összegzések
           href: ./partner-center-portal/payout-summary.md
+        - name: Fizetési szabályzat részletei
+          href: ./partner-center-portal/payout-policy-details.md
         - name: Adó részletei
           href: ./partner-center-portal/tax-details-paid-transactions.md

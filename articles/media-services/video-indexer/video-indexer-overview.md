@@ -1,5 +1,5 @@
 ---
-title: Mi az a Video Indexer?
+title: Mi az az Azure Media Services Video Indexer?
 titleSuffix: Azure Media Services
 description: Ez a cikk áttekintést nyújt a Azure Media Services Video Indexer szolgáltatásról.
 services: media-services
@@ -10,14 +10,14 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 04/12/2020
 ms.author: juliako
-ms.openlocfilehash: 1c7156da171a101f04db9f83df587f5b8bc71e8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08dcee28c234183aa2b125d82d046d31d4b50e47
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687116"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788853"
 ---
-# <a name="what-is-video-indexer"></a>Mi az a Video Indexer?
+# <a name="what-is-azure-media-services-video-indexer"></a>Mi az az Azure Media Services Video Indexer?
 
 A Video Indexer (VI) a Azure Media Services AI-megoldás, amely az Azure Cognitive Services Brand részét képezi. A Video Indexer lehetővé teszi a részletes elemzések kinyerését (az adatok elemzése és a kódolási képességek nélkül) a gépi tanulási modellek használatával több csatornán (hang, vokál, vizualizáció). Tovább testreszabhatja és betaníthatja a modelleket. A szolgáltatás lehetővé teszi a mélyreható keresést, csökkenti a működési költségeket, lehetővé teszi az új bevételi lehetőségeket, és új felhasználói élményeket hoz létre a videók nagy archívumában (alacsony belépési korlátokkal).
 

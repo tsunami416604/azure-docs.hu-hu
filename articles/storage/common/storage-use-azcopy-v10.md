@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 8701fe6857e95334a5e1d24bfe70feb130d5512c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756028"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780878"
 ---
 # <a name="get-started-with-azcopy"></a>Bevezetés az AzCopy használatába
 
@@ -65,7 +65,7 @@ A táblázat használata útmutatóként:
 
 | Tárolási típus | Jelenleg támogatott hitelesítési módszer |
 |--|--|
-|**Blob Storage** | Azure AD & SAS |
+|**BLOB Storage** | Azure AD & SAS |
 |**BLOB Storage (hierarchikus névtér)** | Azure AD & SAS |
 |**File Storage** | Csak SAS |
 
@@ -84,7 +84,7 @@ Ha csak le szeretné tölteni a fájlokat, ellenőrizze, hogy a [tároló blob-A
 
 Ha fájlokat szeretne feltölteni, ellenőrizze, hogy a következő szerepkörök egyike van-e hozzárendelve a rendszerbiztonsági tag számára:
 
-- [Storage blob adatközreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-queue-data-contributor)
+- [Storage blob adatközreműködői](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-contributor)
 - [Storage blob-adattulajdonos](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner)
 
 Ezeket a szerepköröket a következő hatókörök bármelyikében lehet hozzárendelni a rendszerbiztonsági tag számára:
@@ -273,8 +273,8 @@ A hivatkozás beszerzéséhez futtassa a következő parancsot:
 
 | Operációs rendszer  | Parancs |
 |--------|-----------|
-| **Linux** | `curl -v https://aka.ms/downloadazcopy-v10-linux` |
-| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).RawContent` |
+| **Linux** | `curl -s -D- https://aka.ms/downloadazcopy-v10-linux | grep ^Location` |
+| **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
 > Linux esetén `--strip-components=1` a `tar` parancs eltávolítja a verziószámot tartalmazó legfelső szintű mappát, a bináris fájlt pedig közvetlenül az aktuális mappába bontja ki. Ez lehetővé teszi, hogy a parancsfájl a új verziójával `azcopy` frissüljön, és csak az `wget` URL-címet frissítse.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 01/28/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1208e08f7b85e893ba754bdbdf71a2da4f68c90a
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 6a21effc3e567e75a8851fec35ff80dffc60a761
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509065"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787175"
 ---
 # <a name="overview-of-change-tracking-and-inventory"></a>A Change Tracking és a leltár áttekintése
 
@@ -23,10 +23,15 @@ Ez a cikk a Azure Automation Change Tracking és leltározását ismerteti. Ez a
 - Microsoft-szolgáltatások
 - Linux-démonok
 
-A Change Tracking és a leltár beolvassa az adatait a felhőben lévő Azure Monitor szolgáltatásból. Az Azure a felügyelt kiszolgálókon a telepített szoftverekre, a Microsoft-szolgáltatásokra, a Windows-beállításjegyzékre és-fájlokra, valamint a Linux-démonokra vonatkozó módosításokat küld a Azure Monitor feldolgozásra A felhőalapú szolgáltatás a kapott adatokra alkalmazza a logikát, rögzíti azt, és elérhetővé teszi. 
-
 > [!NOTE]
 > A Azure Resource Manager tulajdonságok változásainak nyomon követéséhez tekintse meg az Azure Resource Graph [változási előzményeit](../governance/resource-graph/how-to/get-resource-changes.md).
+
+A Change Tracking és a leltár Azure Monitorból szerzi be az adatait. Log Analytics munkaterülethez csatlakozó virtuális gépek Log Analytics ügynökökkel gyűjtenek adatokat a telepített szoftverek, a Microsoft-szolgáltatások, a Windows-beállításjegyzék és-fájlok, valamint a figyelt kiszolgálókon futó Linux-démonok változásairól. Ha az adatelérési lehetőség elérhető, az ügynökök elküldik a feldolgozásra Azure Monitor. Azure Monitor alkalmazza a logikát a fogadott adatokra, rögzíti azt, és elérhetővé teszi. 
+
+A Change Tracking és a leltár funkció lehetővé teszi a változások nyomon követését és a készlet funkcionális területének használatát Azure Automationban. Mivel mindkét terület ugyanazt a Log Analytics ügynököt használja, a virtuális gép hozzáadásának folyamata azonos a funkcionális területen. 
+
+> [!NOTE]
+> A Change Tracking és a leltár funkció használatához az összes virtuális gépet az Automation-fiókhoz tartozó előfizetésben és régióban kell megkeresnie.
 
 A Change Tracking és a leltár jelenleg nem támogatja a következő elemeket:
 
@@ -38,7 +43,7 @@ A Change Tracking és a leltár jelenleg nem támogatja a következő elemeket:
 Egyéb korlátozások:
 
 * A **Maximális fájlméret** oszlop és az értékek nem használhatók az aktuális implementációban.
-* Ha egy 30 perces gyűjtési ciklusban több mint 2500 fájlt gyűjt, a megoldás teljesítménye csökkenhet.
+* Ha egy 30 perces gyűjtési ciklusban több mint 2500 fájlt gyűjt, a változások követése és a leltározás teljesítménye csökkenhet.
 * Ha a hálózati forgalom magas, a rekordok módosítása akár hat órát is igénybe vehet.
 * Ha a számítógép leállítása közben módosítja a konfigurációt, a számítógép az előző konfigurációhoz tartozó módosításokat tehet közzé.
 
@@ -49,33 +54,7 @@ A Change Tracking és a leltár jelenleg a következő problémákba ütközik:
 
 ## <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A Change Tracking és a leltár, valamint a Azure Monitor Log Analytics ügynökök a Windows és a Linux operációs rendszereken egyaránt támogatottak.
-
-### <a name="windows-operating-systems"></a>Windows operációs rendszerek
-
-A hivatalosan támogatott Windows operációs rendszer verziója Windows Server 2008 R2 vagy újabb.
-
-### <a name="linux-operating-systems"></a>Linux operációs rendszerek
-
-Az alábbiakban tárgyalt Linux-disztribúciókat a Linux rendszerhez készült Log Analytics-ügynök hivatalosan támogatja. A Linux-ügynök azonban más, nem felsorolt disztribúciókban is futhat. Hacsak másként nincs jelezve, az összes alverzió támogatott a felsorolt főbb verziók esetében.
-
-#### <a name="64-bit-linux-operating-systems"></a>64 bites Linux operációs rendszerek
-
-* CentOS 6 és 7
-* Amazon Linux 2017,09
-* Oracle Linux 6 és 7
-* Red Hat Enterprise Linux 6. és 7. kiszolgáló
-* Debian GNU/Linux 8 és 9
-* Ubuntu Linux 14,04 LTS, 16,04 LTS és 18,04 LTS
-* SUSE Linux Enterprise Server 12
-
-#### <a name="32-bit-linux-operating-systems"></a>32 bites Linux operációs rendszerek
-
-* CentOS 6
-* Oracle Linux 6
-* Red Hat Enterprise Linux Server 6
-* Debian GNU/Linux 8 és 9
-* Ubuntu Linux 14,04 LTS és 16,04 LTS
+A Change Tracking és a leltár minden olyan operációs rendszeren támogatott, amely megfelel Log Analytics ügynök követelményeinek. A hivatalosan támogatott Windows operációs rendszer verziója a Windows Server 2008 SP1 vagy újabb, illetve Windows 7 SP1 vagy újabb verzió. Számos Linux operációs rendszer is támogatott. Lásd: [log Analytics ügynök áttekintése](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
 
 ## <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -83,14 +62,14 @@ A Change Tracking és a leltárnak kifejezetten a következő táblázatban fels
 
 |Azure Public  |Azure Government  |
 |---------|---------|
-|*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
+|*.ods.opinsights.azure.com    | *. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
-|*.blob.core.windows.net|*. blob.core.usgovcloudapi.net|
-|*.azure-automation.net|*. azure-automation.us|
+|*.blob.core.windows.net | *. blob.core.usgovcloudapi.net|
+|*.azure-automation.net | *. azure-automation.us|
 
 ## <a name="change-tracking-and-inventory-user-interface"></a>A Change Tracking és a leltár felhasználói felülete
 
-A Azure Portal Change Tracking és leltár használatával megtekintheti a figyelt számítógépek változásainak összefoglalását. A funkció a **change Tracking (változások követése** ) lehetőség kiválasztásával érhető **el az Automation-** fiókban. 
+A Azure Portal Change Tracking és leltár használatával megtekintheti a figyelt számítógépek változásainak összefoglalását. A funkció az Automation-fiók **konfiguráció kezelése** területén a virtuális gépek hozzáadása lehetőségre kattintva, a **change Tracking** vagy a **Inventory** elemhez választható.  
 
 ![Change Tracking irányítópult](./media/change-tracking/change-tracking-dash01.png)
 
@@ -186,7 +165,7 @@ A következő táblázat a nyomon követett elemek korlátozásait mutatja gépe
 |Szolgáltatások|250|
 |Démonok|250|
 
-A Change Tracking és a leltárt használó gépek Log Analytics átlagos adatfelhasználása körülbelül 40 MB/hó. Ez az érték csak közelítés, és a környezettől függően változhat. Javasoljuk, hogy figyelje a környezetét, és tekintse meg a pontos használatot.
+A Change Tracking és a leltárt használó gépek átlagos Log Analytics adatfelhasználása körülbelül 40 MB/hó, a környezettől függően. A Log Analytics munkaterület használati és becsült költségek funkciójának használatával megtekintheti a Change Tracking és a leltár által betöltött adatokat egy használati diagramon. Ezzel az adatnézettel kiértékelheti az adatfelhasználást, és meghatározhatja, hogy milyen hatással van a számla használatára. Lásd: [a használat és a becsült költségek megismerése](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).  
 
 ### <a name="microsoft-service-data"></a>Microsoft-szolgáltatásokra vonatkozó adatkezelés
 

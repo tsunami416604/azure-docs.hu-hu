@@ -1,42 +1,41 @@
 ---
 title: fájl belefoglalása
 description: fájl belefoglalása
-services: virtual-machines
 author: axayjo
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: a477114bda7d138a6860d21f2fad75e27d968833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80116990"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789036"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
 - A lemezképek felügyelt globális replikálása.
 - A könnyebb felügyelet érdekében a rendszerképek verziószámozása és csoportosítása.
 - A Availability Zones-t támogató régiókban található, a zóna redundáns tárolási (ZRS) fiókjaival rendelkező, nagyon elérhető rendszerképek. A ZRS nagyobb rugalmasságot biztosít a zónabeli hibákkal szemben.
+- Premium Storage-támogatás (Premium_LRS).
 - Megosztás az előfizetések között, és akár Active Directory (AD) bérlők között a RBAC használatával.
 - Az üzembe helyezések skálázása minden egyes régióban képreplikákkal.
 
 Megosztott képkatalógus használatával a képeket megoszthatja a szervezeten belüli különböző felhasználókkal, egyszerű szolgáltatásokkal vagy AD-csoportokkal. A megosztott lemezképek több régióba is replikálhatók, így az üzemelő példányok gyorsabban méretezhetők.
 
-A felügyelt lemezképek egy teljes virtuális gép (beleértve a csatlakoztatott adatlemezeket is) vagy csak az operációsrendszer-lemez másolata, attól függően, hogyan hozza létre a lemezképet. Amikor létrehoz egy virtuális gépet a lemezképből, a lemezképben található virtuális merevlemezek egy másolatát használják az új virtuális gép lemezeinek létrehozásához. A felügyelt rendszerkép a tárolóban marad, és újra felhasználható új virtuális gépek létrehozásához.
+A rendszerkép a teljes virtuális gép (beleértve a csatlakoztatott adatlemezeket is) vagy csak az operációsrendszer-lemez másolata, attól függően, hogy hogyan lett létrehozva. Amikor létrehoz egy virtuális gépet a lemezképből, a lemezképben található virtuális merevlemezek egy másolatát használják az új virtuális gép lemezeinek létrehozásához. A rendszerkép a tárolóban marad, és újra felhasználható új virtuális gépek létrehozásához.
 
-Ha nagy számú felügyelt lemezképet kell fenntartania, és a vállalaton belül elérhetővé szeretné tenni őket, a megosztott képtárat tárházként használhatja, amely megkönnyíti a képek megosztását. 
+Ha nagy számú lemezképet szeretne fenntartani, és a vállalaton belül elérhetővé szeretné tenni őket, a megosztott képkatalógust adattárként is használhatja. 
 
 A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
 | Erőforrás | Leírás|
 |----------|------------|
-| **Felügyelt rendszerkép** | Olyan alapszintű rendszerkép, amely önmagában vagy rendszerkép- **verzió** létrehozásához használható képgyűjteményben. A felügyelt lemezképek [általánosított](#generalized-and-specialized-images) virtuális gépekről jönnek létre. A felügyelt rendszerkép olyan speciális VHD-típus, amellyel több virtuális gép hozható létre, és most már használható a megosztott rendszerkép-verziók létrehozásához is. |
-| **Pillanatkép** | Egy virtuális merevlemez másolata, amely alkalmas a **rendszerkép verziójának**elkészítésére. A pillanatképek olyan [speciális](#generalized-and-specialized-images) virtuális gépekből is készíthetők (amelyek nem lettek általánosítva), majd önállóan vagy adatlemez-pillanatképekkel is használhatók a speciális rendszerkép-verziók létrehozásához.
+| **Rendszerkép forrása** | Ez egy olyan erőforrás, amellyel rendszerkép- **verziót** hozhat létre egy Képtárban. A rendszerkép forrása lehet egy meglévő Azure-beli virtuális gép, amely [általánosított vagy specializált](#generalized-and-specialized-images), felügyelt képet, pillanatképet vagy rendszerkép-verziót használ egy másik rendszerkép-katalógusban. |
 | **Képtár** | Az Azure Marketplace-hez hasonlóan a képkatalógus **is a lemezképek** kezeléséhez és megosztásához használható tárház, de Ön szabályozhatja, hogy ki férhet hozzá. |
-| **Rendszerkép definíciója** | A lemezképek a katalógusban vannak definiálva, és a rendszerképekkel és a szervezeten belüli használattal kapcsolatos követelményekkel kapcsolatos információkat hordoznak. Olyan információkat is tartalmazhat, mint például a rendszerkép általánosított vagy specializált, az operációs rendszer, a minimális és a maximális memória követelményei, valamint a kibocsátási megjegyzések. Ez egy adott típusú rendszerkép definíciója. |
+| **Rendszerkép definíciója** | A képdefiníciók egy gyűjteményen belül jönnek létre, és a rendszerképekkel és a belső használat követelményeivel kapcsolatos információkat hordozzák. Ez magában foglalja azt is, hogy a rendszerkép Windows vagy Linux, kibocsátási megjegyzések, valamint minimális és maximális memória-követelmény. Ez egy adott típusú rendszerkép definíciója. |
 | **Rendszerkép verziója** | A **rendszerkép verziója** az, amit a virtuális gép létrehozásához használ gyűjtemény létrehozásakor. A környezethez szükség lehet a rendszerkép több verziójára. A felügyelt rendszerképekhez hasonlóan, amikor **rendszerkép-verziót** használ egy virtuális gép létrehozásához, a rendszerkép verziója a virtuális gép új lemezének létrehozására szolgál. A rendszerkép verziója többször is használható. |
 
 <br>
@@ -45,7 +44,7 @@ A megosztott képkatalógus funkció több erőforrástípust tartalmaz:
 
 ## <a name="image-definitions"></a>Rendszerkép-definíciók
 
-A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai Csoportosítások. A rendszerkép definíciója információt tartalmaz arról, hogy a rendszerkép hogyan lett létrehozva, melyik operációs rendszer, és milyen információkkal szolgál a rendszerkép használatáról. A rendszerkép definíciója olyan, mint egy csomag, amely az adott rendszerkép létrehozásával kapcsolatos összes részletre vonatkozik. Nem telepít virtuális gépet lemezkép-definícióból, hanem a definícióból létrehozott rendszerkép-verzióból.
+A rendszerkép-definíciók egy adott rendszerkép verzióihoz tartozó logikai Csoportosítások. A rendszerkép definíciója információt tartalmaz arról, hogy a rendszerkép hogyan lett létrehozva, melyik operációs rendszer, illetve a rendszerkép használatával kapcsolatos egyéb információk. A rendszerkép definíciója olyan, mint egy csomag, amely az adott rendszerkép létrehozásával kapcsolatos összes részletre vonatkozik. Nem telepít virtuális gépet lemezkép-definícióból, hanem a definícióból létrehozott lemezkép-verziókból.
 
 Az egyes képdefiníciók három paramétert használnak a **Publisherben**, az **ajánlatban** és az **SKU**-ban. Ezek egy adott rendszerkép-definíció megtalálására szolgálnak. Rendelkezhet egy vagy két, de nem mindhárom értékkel rendelkező képverzióval is.  Íme például három képdefiníció és értékeik:
 
@@ -68,23 +67,18 @@ A következő más paraméterek is megadhatók a képdefinícióban, így könny
 * Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/management/tag-resources.md)
 * Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
 * Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
+* Hyper-V-generáció – megadhatja, hogy a rendszerkép egy 1. vagy 2. generációs Hyper-V virtuális merevlemezről lett-e létrehozva.
 
 ## <a name="generalized-and-specialized-images"></a>Általánosított és speciális rendszerképek
 
 A megosztott rendszerkép-katalógusban két operációsrendszer-állapot támogatott. Általában a lemezképek megkövetelik, hogy a rendszerkép létrehozásához használt virtuális gép általánosítva legyen a lemezkép készítése előtt. Az általánosítás egy olyan folyamat, amely eltávolítja a gép és a felhasználó által megadott adatokat a virtuális gépről. Windows rendszeren a Sysprep is használatban van. A Linux rendszerben [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` vagy `-deprovision+user` paramétereket is használhat.
 
-A speciális virtuális gépek nem a gép specifikus információinak és fiókjainak eltávolítására szolgáló folyamattal rendelkeznek. Emellett a speciális lemezképből létrehozott virtuális gépekhez nincs `osProfile` társítva. Ez azt jelenti, hogy a speciális lemezképek bizonyos korlátozásokkal rendelkeznek.
+A speciális virtuális gépek nem a gép specifikus információinak és fiókjainak eltávolítására szolgáló folyamattal rendelkeznek. Emellett a speciális lemezképből létrehozott virtuális gépekhez nincs `osProfile` társítva. Ez azt jelenti, hogy a speciális képek bizonyos előnyök mellett bizonyos korlátozásokkal is rendelkeznek.
 
+- A speciális rendszerképekből létrehozott virtuális gépek és méretezési csoportok gyorsabban üzembe helyezhetők. Mivel azok olyan forrásokból jönnek létre, amelyek már az első rendszerindításon keresztül lettek létrehozva, a rendszerképekből létrehozott virtuális gépek gyorsabban indulnak.
 - A virtuális gépre való bejelentkezéshez használható fiókok az adott virtuális gépről létrehozott speciális rendszerkép használatával létrehozott virtuális gépeken is használhatók.
 - A virtuális gépek neve annak a virtuális gépnek a **számítógépnevét** fogja tartalmazni, amelyet a rendszerkép készített. Az ütközések elkerülése érdekében módosítsa a számítógép nevét.
 - A `osProfile` használatával a () segítségével a virtuális gép bizalmas adatokat továbbít a `secrets`szolgáltatásnak. Ez problémákat okozhat a kulcstartó, a WinRM és a `secrets` `osProfile`által használt egyéb funkciók használatával. Bizonyos esetekben a felügyelt szolgáltatásbeli identitások (MSI) használatával is megkerülheti ezeket a korlátozásokat.
-
-> [!IMPORTANT]
-> A speciális lemezképek jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
-> **Ismert előzetes verzió korlátai** A virtuális gépeket csak speciális rendszerképekből lehet létrehozni a portál vagy az API használatával. A nem támogatja a CLI-t vagy a PowerShellt az előzetes verzióhoz.
-
 
 ## <a name="regional-support"></a>Regionális támogatás
 
@@ -113,6 +107,7 @@ Az erőforrások megosztott képtárakkal való üzembe helyezéséhez korlátok
 - 100 megosztott képtárak, előfizetések száma régiónként
 - 1 000 képdefiníciók, előfizetések régiónként
 - 10 000 képverzió, előfizetések száma régiónként
+- 10 rendszerkép-verzió replikái, előfizetések régiónként
 - A lemezképhez csatolt minden lemeznek 1 TB-nál kisebbnek vagy azzal egyenlőnek kell lennie
 
 További információ: az [erőforrás-használat korlátainak korlátozása](https://docs.microsoft.com/azure/networking/check-usage-against-limits) példákkal a jelenlegi használat ellenõrzéséhez.
@@ -195,10 +190,10 @@ A következő SDK-k támogatják a megosztott képtárak létrehozását:
 
 Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. Több Azure Gyorsindítás-sablon is elérhető: 
 
-- [Megosztott Képtár létrehozása](https://azure.microsoft.com/resources/templates/101-sig-create/)
-- [Rendszerkép-definíció létrehozása megosztott rendszerkép-gyűjteményben](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
-- [Rendszerkép-verzió létrehozása megosztott rendszerkép-gyűjteményben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
-- [Virtuális gép létrehozása rendszerkép-verzióból](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
+- [Shared Image Gallery létrehozása](https://azure.microsoft.com/resources/templates/101-sig-create/)
+- [Rendszerkép-definíció létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/)
+- [Rendszerképverzió létrehozása Shared Image Galleryben](https://azure.microsoft.com/resources/templates/101-sig-image-version-create/)
+- [Virtuális gép létrehozása rendszerképverzióból](https://azure.microsoft.com/resources/templates/101-vm-from-sig/)
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések 
 
@@ -217,31 +212,32 @@ Létrehozhat megosztott képkatalógus-erőforrást sablonok használatával. T�
 * [Milyen díjak vonatkoznak a megosztott képtárat használó szolgáltatásokra?](#what-are-the-charges-for-using-the-shared-image-gallery)
 * [Milyen API-verziót érdemes használni a megosztott rendszerkép-katalógus és a rendszerkép-definíció és a rendszerkép-verzió létrehozásához?](#what-api-version-should-i-use-to-create-shared-image-gallery-and-image-definition-and-image-version)
 * [Milyen API-verziót használhatok a rendszerkép verziójának használatával létrehozott megosztott virtuális gépek vagy virtuálisgép-méretezések létrehozásához?](#what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version)
+* [Frissíthetem a felügyelt lemezkép használatával létrehozott virtuálisgép-méretezési csoportját a megosztott képgyűjteményi rendszerképek használatára?]
 
 ### <a name="how-can-i-list-all-the-shared-image-gallery-resources-across-subscriptions"></a>Hogyan lehet listázni az összes megosztott képgyűjtemény erőforrását az előfizetések között?
 
 Az alábbi lépéseket követve listázhatja az összes megosztott képkatalógus-erőforrást az előfizetések között, amelyekhez hozzáféréssel rendelkezik a Azure Portalban:
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
-1. Nyissa meg az **összes erőforrást**.
+1. Görgessen le az oldalra, és válassza az **összes erőforrás**lehetőséget.
 1. Válassza ki az összes olyan előfizetést, amelyben az összes erőforrást listázni szeretné.
-1. Keressen a **privát**katalógus típusú erőforrásokat.
- 
-   A képdefiníciók és a képfájlok megjelenítéséhez válassza a **rejtett típusok megjelenítése**lehetőséget is.
- 
-   Ha az összes olyan előfizetésben szeretné listázni az összes megosztott képkatalógus-erőforrást, amelyre jogosult, használja a következő parancsot az Azure CLI-ben:
+1. Keresse meg a **megosztott képgyűjtemény**típusú erőforrásokat.
+  
+Ha az összes olyan előfizetésben szeretné listázni az összes megosztott képkatalógus-erőforrást, amelyre jogosult, használja a következő parancsot az Azure CLI-ben:
 
-   ```azurecli
+```azurecli
    az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
-   ```
+```
+
+További információ: a katalógus- **erőforrások kezelése** az [Azure CLI](../articles/virtual-machines/update-image-resources-cli.md) vagy a [PowerShell](../articles/virtual-machines/update-image-resources-powershell.md)használatával.
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Áthelyezhetem a meglévő rendszerképet a megosztott képgalériába?
  
 Igen. A lemezképek típusain alapuló 3 forgatókönyv van.
 
- 1. forgatókönyv: Ha a SIG-vel megegyező előfizetésben felügyelt rendszerkép található, akkor a rendszerkép definícióját és a rendszerkép verzióját is létrehozhatja.
+ 1. eset: ha felügyelt lemezképpel rendelkezik, létrehozhat egy rendszerkép-definíciót és egy rendszerkép-verziót is. További információ: **Migrálás felügyelt rendszerképből rendszerkép verziójára** az [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) vagy a [PowerShell](../articles/virtual-machines/image-version-managed-image-powershell.md)használatával.
 
- 2. forgatókönyv: Ha nem felügyelt képpel rendelkezik a SIG-vel megegyező előfizetésben, létrehozhat egy felügyelt rendszerképet, majd létrehozhatja a rendszerkép definícióját és a rendszerkép verzióját. 
+ 2. forgatókönyv: Ha nem felügyelt rendszerképet használ, létrehozhat egy felügyelt rendszerképet, majd létrehozhatja a rendszerkép definícióját és a rendszerkép verzióját. 
 
  3. forgatókönyv: Ha a helyi fájlrendszerben virtuális merevlemezt használ, fel kell töltenie a virtuális merevlemezt egy felügyelt rendszerképbe, majd a rendszerkép-definíciót és a rendszerkép verzióját is létrehozhatja belőle.
 
@@ -250,11 +246,17 @@ Igen. A lemezképek típusain alapuló 3 forgatókönyv van.
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Létrehozhatok lemezkép-verziót egy speciális lemezről?
 
-Igen, a speciális lemezek támogatása előzetes verzióban érhető el. A portálon ([Windows](../articles/virtual-machines/linux/shared-images-portal.md) vagy [Linux](../articles/virtual-machines/linux/shared-images-portal.md)) és az API-val csak egy speciális RENDSZERKÉPBŐL hozhat létre virtuális gépet. Az előzetes verzióhoz nem érhető el PowerShell-támogatás.
+Igen, a speciális lemezek támogatása előzetes verzióban érhető el. A portál, a PowerShell vagy az API segítségével csak egy speciális rendszerképből hozhat létre virtuális gépet. 
+
+
+A [PowerShell használatával hozzon létre egy speciális virtuális gép képét](../articles/virtual-machines/image-version-vm-powershell.md).
+
+[Windows](../articles/virtual-machines/linux/shared-images-portal.md) vagy [Linux] (..) létrehozása a portál használatával /articles/Virtual-Machines/Linux/Shared-images-Portal.MD) képe. 
+
 
 ### <a name="can-i-move-the-shared-image-gallery-resource-to-a-different-subscription-after-it-has-been-created"></a>Áthelyezhetem a megosztott rendszerkép-katalógus erőforrását egy másik előfizetésbe a létrehozása után?
 
-Nem, a megosztott rendszerkép-katalógus erőforrását nem lehet másik előfizetésbe áthelyezni. A katalógusban lévő rendszerképeket azonban szükség szerint más régiókban is replikálhatja.
+Nem, nem helyezheti át a megosztott rendszerkép-katalógus erőforrását egy másik előfizetésbe. A katalógusban lévő rendszerképeket más régiókba replikálhatja, vagy átmásolhat egy képet egy másik gyűjteményből az [Azure CLI](../articles/virtual-machines/image-version-another-gallery-cli.md) vagy a [PowerShell](../articles/virtual-machines/image-version-another-gallery-powershell.md)használatával.
 
 ### <a name="can-i-replicate-my-image-versions-across-clouds-such-as-azure-china-21vianet-or-azure-germany-or-azure-government-cloud"></a>Replikálható a képverziók a felhők között, például az Azure China 21Vianet vagy az Azure Germany vagy a Azure Government Cloud?
 
@@ -308,3 +310,7 @@ A megosztott képtárakkal, képdefiníciókkal és képverziókkal való együt
 ### <a name="what-api-version-should-i-use-to-create-shared-vm-or-virtual-machine-scale-set-out-of-the-image-version"></a>Milyen API-verziót használhatok a rendszerkép verziójának használatával létrehozott megosztott virtuális gépek vagy virtuálisgép-méretezések létrehozásához?
 
 A virtuális gépek és a virtuálisgép-méretezési csoport rendszerképeket használó üzembe helyezése esetén javasoljuk, hogy a 2018-04-01-es vagy újabb API-verziót használja.
+
+### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Frissíthetem a felügyelt lemezkép használatával létrehozott virtuálisgép-méretezési csoportját a megosztott képgyűjteményi rendszerképek használatához?
+
+Igen, frissítheti a méretezési csoport képhivatkozását egy felügyelt lemezképből egy megosztott lemezkép-katalógusba, ha az operációs rendszer típusa, a Hyper-V generációja és az adatlemez elrendezése megegyezik a lemezképek között. 

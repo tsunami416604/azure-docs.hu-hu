@@ -3,12 +3,12 @@ title: Fürt Azure Service Fabric verziójának frissítése
 description: Frissítse a Service Fabric kódot és/vagy konfigurációt, amely egy Service Fabric fürtöt futtat, beleértve a fürt frissítési módjának beállítását, a tanúsítványok frissítését, az alkalmazások portjainak hozzáadását, az operációs rendszer javítását stb. Mire számíthat a frissítések végrehajtásakor?
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: c3ffcbd4296385623ff5e2c1ee001c27598ff3fb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 802e7402f60370b7151c5e373c8a4921a5af7c80
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451809"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789600"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>Egy fürt Service Fabric-verziójának frissítése
 
@@ -110,7 +110,7 @@ Output:
 
 ## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
-* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
+* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-in-out.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 
 <!--Image references-->

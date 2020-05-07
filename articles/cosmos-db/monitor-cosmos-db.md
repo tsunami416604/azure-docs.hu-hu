@@ -8,18 +8,19 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: ec0894818c0c246223749e1efcf7ea9e5ebee463
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eef6ece115afc41fd30d77747eb3e368cf95719c
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194533"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780181"
 ---
 # <a name="monitoring-azure-cosmos-db"></a>Figyelés Azure Cosmos DB
+
 Ha kritikus fontosságú alkalmazásokat és üzleti folyamatokat kíván használni az Azure-erőforrásokon, figyelnie kell ezeket az erőforrásokat a rendelkezésre állással, a teljesítménnyel és a művelettel kapcsolatban. Ez a cikk az Azure Cosmos-adatbázisok által létrehozott figyelési információkat ismerteti, valamint azt, hogy miként használhatók a Azure Monitor funkciói az adatelemzéshez és riasztáshoz.
 
 ## <a name="what-is-azure-monitor"></a>Mi az Azure Monitor?
-A Azure Cosmos DB az Azure-ban teljes körű figyelési szolgáltatásként hozza létre a figyelési adatok [Azure monitor](../azure-monitor/overview.md) , amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrások mellett. 
+A Azure Cosmos DB az Azure-ban teljes körű figyelési szolgáltatásként hozza létre a figyelési adatok [Azure monitor](../azure-monitor/overview.md) , amely teljes körű funkciókat biztosít az Azure-erőforrások figyeléséhez más Felhőbeli és helyszíni erőforrások mellett.
 
 Ha még nem ismeri az Azure-szolgáltatások figyelését, kezdje az Azure- [erőforrások monitorozása Azure monitor](../azure-monitor/insights/monitor-azure-resource.md) a következő témakörrel:
 
@@ -32,9 +33,8 @@ Ha még nem ismeri az Azure-szolgáltatások figyelését, kezdje az Azure- [er�
 Az alábbi részekben a cikk a Azure Cosmos DB gyűjtött adatok leírásával, valamint az adatok gyűjtésének konfigurálására és az Azure-eszközökkel történő elemzésére szolgáló példákat tartalmaz.
 
 ## <a name="azure-monitor-for-cosmos-db-preview"></a>Cosmos DB Azure Monitor (előzetes verzió)
-A [Azure Cosmos DB Azure monitor](../azure-monitor/insights/cosmosdb-insights-overview.md) a [Azure monitor munkafüzetek szolgáltatásán](../azure-monitor/app/usage-workbooks.md) alapul, és ugyanazokat a figyelési adatokat használja, amelyeket az alábbi szakaszokban ismertetett Cosmos DBhoz gyűjtöttek be. Ezzel az eszközzel megtekintheti az összes Azure Cosmos DB-erőforrás teljes teljesítményét, hibáit, kapacitását és működési állapotát egy egységes interaktív felhasználói élményben, és kihasználhatja Azure Monitor egyéb funkcióit részletes elemzés és riasztás céljából. 
 
-![Cosmos DB Azure Monitor](media/monitor-cosmos-db/azure-monitor-cosmos-db.png)
+A Azure Cosmos DB Azure Monitor a [Azure monitor munkafüzetek szolgáltatásán](../azure-monitor/app/usage-workbooks.md) alapul, és ugyanazokat a figyelési adatokat használja, amelyeket az alábbi szakaszokban ismertetett Cosmos DBhoz gyűjtöttek be. A Azure Monitor segítségével megtekintheti az összes Azure Cosmos DB-erőforrás teljes teljesítményét, hibáit, kapacitását és működési állapotát egy egységes interaktív felhasználói élményben, és a Azure Monitor egyéb funkcióit kihasználhatja részletes elemzés és riasztás céljából. További információért lásd a [Azure Cosmos DB Azure monitor megismerése](../azure-monitor/insights/cosmosdb-insights-overview.md) című cikket.
 
 > [!NOTE]
 > Tárolók létrehozásakor ügyeljen arra, hogy ne hozzon létre két tárolót ugyanazzal a névvel, de a különböző burkolattal. Ennek az az oka, hogy az Azure-platform egyes részei nem megkülönböztetik a kis-és nagybetűket, így az ilyen nevű tárolók telemetria és műveleteinek összekeveredését és ütközését okozhatják.
@@ -87,7 +87,6 @@ A metrikákat a **Azure monitor** menüből **megnyitva a metrikák** segítség
 - Régió
 - StatusCode
 
-
 ## <a name="analyzing-log-data"></a>Naplózási adatok elemzése
 Azure Monitor naplókban található adatkészletek olyan táblákban tárolódnak, amelyekben az egyes táblák egyedi tulajdonságokkal rendelkeznek. A Azure Cosmos DB az alábbi táblázatokban tárolja az adattárakat.
 
@@ -110,31 +109,15 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
 
     ```Kusto
     AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+    | where ResourceProvider=="Microsoft.DocumentDb" and Category=="DataPlaneRequests"
 
-    ```
-
-* A 10 legutóbb naplózott esemény lekérdezése:
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | limit 10
-    ```
-
-* Az összes művelet lekérdezése művelet típusa szerint csoportosítva:
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | summarize count() by OperationName
     ```
 
 * Az összes művelet lekérdezése erőforrás szerint csoportosítva:
 
     ```Kusto
     AzureActivity 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | where ResourceProvider=="Microsoft.DocumentDb" and Category=="DataPlaneRequests" 
     | summarize count() by Resource
 
     ```
@@ -143,62 +126,16 @@ A következő lekérdezések segítségével figyelheti az Azure Cosmos-adatbáz
 
     ```Kusto
     AzureActivity 
-    | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
+    | where Caller == "test@company.com" and ResourceProvider=="Microsoft.DocumentDb" and Category=="DataPlaneRequests" 
     | summarize count() by Resource
-    ```
-* A 100 RUs-nál nagyobb összes lekérdezés **DataPlaneRequests** és **QueryRunTimeStatistics**származó adatokkal való lekéréséhez.
-
-    ```Kusto
-    AzureDiagnostics
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" and todouble(requestCharge_s) > 100.0
-    | project activityId_g, requestCharge_s
-    | join kind= inner (
-           AzureDiagnostics
-           | where ResourceProvider =="MICROSOFT.DOCUMENTDB" and Category == "QueryRuntimeStatistics"
-           | project activityId_g, querytext_s
-    ) on $left.activityId_g == $right.activityId_g
-    | order by requestCharge_s desc
-    | limit 100
-    ```
-
-* A 3 ezredmásodpercnél hosszabb műveletek lekérdezése:
-
-    ```Kusto
-    AzureDiagnostics 
-    | where toint(duration_s) > 3 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | summarize count() by clientIpAddress_s, TimeGenerated
-    ```
-
-* A műveletet futtató ügynök lekérdezése:
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | summarize count() by OperationName, userAgent_s
-    ```
-
-* Lekérdezés a hosszú ideig futó műveletek végrehajtásakor:
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" 
-    | project TimeGenerated , duration_s 
-    | summarize count() by bin(TimeGenerated, 5s)
-    | render timechart
-    ```
-    
-* A partíciós kulcs statisztikáinak beszerzéséhez az adatbázis-fiók felső 3 partíciójának kiértékeléséhez:
-
-    ```Kusto
-    AzureDiagnostics 
-    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-    | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
     ```
 
 ## <a name="monitor-azure-cosmos-db-programmatically"></a>Figyelő Azure Cosmos DB programozott módon
+
 A portálon elérhető fiók szintű mérőszámok, mint például a fiók tárterület-használata és az összes kérelem, nem érhetők el az SQL API-kon keresztül. A használati adatokat azonban a gyűjtemény szintjén is lekérheti az SQL API-k használatával. A gyűjtési szintű adatgyűjtés lekéréséhez tegye a következőket:
 
 * A REST API használatához [hajtsa végre a Get a gyűjteményt](https://msdn.microsoft.com/library/mt489073.aspx). A rendszer a gyűjteményre vonatkozó kvóta-és használati adatokat az x-MS-Resource-kvóta és az x-MS-Resource-használati fejlécekben adja vissza a válaszban.
+
 * A .NET SDK használatához használja a [DocumentClient. ReadDocumentCollectionAsync](https://msdn.microsoft.com/library/microsoft.azure.documents.client.documentclient.readdocumentcollectionasync.aspx) metódust, amely egy olyan [ResourceResponse](https://msdn.microsoft.com/library/dn799209.aspx) ad vissza, amely számos használati tulajdonságot tartalmaz, például **CollectionSizeUsage**, **DatabaseUsage**, **DocumentUsage**és sok más.
 
 További metrikák eléréséhez használja a [Azure monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Insights)-t. A rendelkezésre álló metrika-definíciókat a meghívásával kérheti le:

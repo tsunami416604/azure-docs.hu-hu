@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46be728216ed4b9c9e84c1c7f68c5ddf2051f42b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdc011a39c5526e6a2577ab1b21567bbe64ffcc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78672302"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788875"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
 
@@ -176,7 +176,7 @@ A különböző típusokról az [eszközfelügyeletet áttekintő](overview.md) 
 
 Meghiúsul minden hitelesítés, amelynek keretében az eszköz végezné a hitelesítést az Azure AD-vel. Néhány gyakori példa:
 
-- **Hibrid Azure AD-csatlakoztatott eszköz** – Lehet, hogy a felhasználók használhatják az eszközt a helyszíni tartományba történő bejelentkezéshez. Az Azure AD-erőforrásokhoz, például az Office 365-höz viszont nem tudnak hozzáférni.
+- **Hibrid Azure ad-hez csatlakoztatott eszköz** – előfordulhat, hogy a felhasználók használhatják az eszközt a helyszíni tartományba való bejelentkezéshez. Az Azure AD-erőforrásokhoz, például az Office 365-höz viszont nem tudnak hozzáférni.
 - **Azure AD-hez csatlakoztatott eszköz** – A felhasználók nem használhatják az eszközt bejelentkezésre. 
 - **Mobileszköz** – A felhasználók nem férhetnek hozzá az Azure AD-erőforrásokhoz, például az Office 365-höz. 
 

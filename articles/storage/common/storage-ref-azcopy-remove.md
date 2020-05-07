@@ -4,16 +4,16 @@ description: Ez a cikk a azcopy Remove parancsra vonatkozó tudnivalókat tartal
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 10/16/2019
+ms.date: 05/04/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: abce1acb88e920c0de7bbb6447ec9d838f10486c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f76489f384f233f65eb8fcca3a8359cd5b67c20a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74033995"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780725"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
 
@@ -89,9 +89,13 @@ azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory
 
 ## <a name="options"></a>Beállítások
 
-**--kizárás-elérésiút-karakterlánc**      Az elérési utak kizárása a eltávolításakor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: myFolder; myFolder/subDirName/file. PDF.
+**--delete-Pillanatképek** sztring alapértelmezés szerint a törlési művelet meghiúsul, ha egy blob pillanatképekkel rendelkezik. A "Belefoglalás" beállítás megadásával távolítsa el a gyökér blobot és annak összes pillanatképét; másik lehetőségként csak a pillanatképeket távolítsa el, de megtarthatja a gyökérkönyvtárat.
+
+**--kizárás – a Path** karakterlánc kizárja ezeket az elérési utakat a eltávolításakor. Ez a beállítás nem támogatja a helyettesítő karaktereket (*). Ellenőrzi a relatív elérési út előtagját. Például: myFolder; myFolder/subDirName/file. PDF.
 
 **--kizárás-Pattern** karakterlánc zárja ki azokat a fájlokat, amelyeknek a neve megegyezik a minta listával. Például: *. jpg;*. PDF; exactName
+
+**--Force-if-csak olvasható**    Azure Files fájl vagy mappa törlésekor kényszerítse a törlést a működésre, még akkor is, ha a meglévő objektum írásvédett attribútuma van beállítva.
 
 **-h,--Súgó** az eltávolításhoz
 
@@ -111,6 +115,7 @@ a- **-include-Path** sztring csak az eltávolításkor megadott elérési utakat
 |---|---|
 |--Cap-Mbps UInt32|Az adatátviteli sebesség (megabit/másodperc). A pillanatnyi átviteli sebesség a korláttól némileg eltérő lehet. Ha a beállítás értéke nulla, vagy nincs megadva, az átviteli sebesség nem lesz maximális.|
 |--output-Type karakterlánc|A parancs kimenetének formátuma. A lehetőségek a következők: Text, JSON. Az alapértelmezett érték a "text".|
+|--megbízható-Microsoft-utótagok karakterlánca   | További tartomány-utótagokat határoz meg, amelyekben Azure Active Directory bejelentkezési tokenek küldhetők.  Az alapértelmezett érték: "*. Core.Windows.net;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Az itt felsorolt beállítások az alapértelmezett értékre kerülnek. A biztonság érdekében itt csak Microsoft Azure-tartományokat helyezhet el. Több bejegyzést pontosvesszővel kell elválasztani.|
 
 ## <a name="see-also"></a>Lásd még
 

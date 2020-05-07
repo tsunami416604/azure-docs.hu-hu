@@ -4,7 +4,7 @@
   items:
     - name: Mi az a Relay?
       href: relay-what-is-it.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Hibrid kapcsolatok
       items:
@@ -40,7 +40,7 @@
           href: service-bus-relay-security-controls.md
     - name: Hibrid kapcsolatok protokollja
       href: relay-hybrid-connections-protocol.md
-- name: 'Útmutató:'
+- name: Útmutató
   items:
     - name: Migrálás Azure Service Manager (klasszikus) API-król Resource Manager API-kra
       href: ../service-bus-messaging/deprecate-service-bus-management.md?toc=%2fazure%2fservice-bus-relay%2ftoc.json
@@ -59,10 +59,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Csomópont
               href: relay-hybrid-connections-node-ws-api-overview.md
-    - name: Kezelés
+    - name: Kezelés és monitorozás
       items:
         - name: Az Azure Relay monitorozása az Azure Monitoring segítségével
           href: relay-metrics-azure-monitor.md
+        - name: Diagnosztikai naplók beállítása
+          href: diagnostic-logs.md
 - name: Referencia
   items:
     - name: .NET

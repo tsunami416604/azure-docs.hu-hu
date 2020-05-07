@@ -8,12 +8,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 91ecff311b8820d3b97e1de0e4b4e87c150e749b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678924"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790830"
 ---
 # <a name="troubleshoot-issues-with-the-update-management-solution"></a>A Update Management megoldással kapcsolatos problémák elhárítása
 
@@ -49,13 +49,13 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * Futtassa a [Windows](update-agent-issues.md#troubleshoot-offline) vagy [Linux](update-agent-issues-linux.md#troubleshoot-offline)rendszerhez készült hibakeresőt az operációs rendszertől függően.
 
-* Nyissa meg a [hálózat megtervezése](../automation-hybrid-runbook-worker.md#network-planning) című témakört, amelyből megtudhatja, mely címeket és portokat kell engedélyezni a Update Management működéséhez.  
+* A [hálózati konfiguráció](../automation-hybrid-runbook-worker.md#network-planning) lehetőségre kattintva megismerheti, hogy mely címeket és portokat kell engedélyezni a Update Management működéséhez.  
 
-* Nyissa meg a [hálózat megtervezése](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) című témakört, amelyből megtudhatja, hogy mely címeket és portokat kell engedélyezni a log Analytics-ügynök működéséhez.
+* A [hálózati konfiguráció](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) lehetőségre kattintva megismerheti, hogy mely címeket és portokat kell engedélyezni a log Analytics-ügynök működéséhez.
 
 * A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek legyenek konfigurálva a megoldáshoz. Ha a gép megjelenik a munkaterületen, de nem a * * Update Management portálon, be kell állítania a hatókör-konfigurációt a gépek célzásához. A hatókör-konfigurációval kapcsolatos további tudnivalókért tekintse meg [a munkaterületen lévő számítógépeket](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)ismertető témakört.
 
-* A [hibrid runbook-feldolgozó törlésének](../automation-hybrid-runbook-worker.md#remove-a-hybrid-runbook-worker)lépéseit követve távolítsa el a munkavégző konfigurációt. 
+* Távolítsa el a munkavégző konfigurációt a [Windows Hybrid Runbook Worker eltávolítása](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) vagy [a Linux Hybrid Runbook Worker eltávolítása](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)című témakör lépéseit követve. 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Forgatókönyv: hiányzóként jelzett, felülírt frissítés Update Management
 
@@ -448,7 +448,7 @@ A gép már bekerült a Update Management egy másik munkaterületére.
 ### <a name="resolution"></a>Megoldás:
 
 1. Kövesse a következő szakaszban leírt lépéseket [a portálon a Update Management alatt](#nologs) , hogy a gép a megfelelő munkaterületre legyen bejelentve.
-2. Távolítsa el az összetevőket a gépen a [hibrid runbook törlésével](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group), majd próbálkozzon újra.
+2. Távolítsa el az összetevőket a gépen a [hibrid runbook törlésével](../automation-windows-hrw-install.md#remove-a-hybrid-worker-group), majd próbálkozzon újra.
 
 ## <a name="scenario-machine-cant-communicate-with-the-service"></a><a name="machine-unable-to-communicate"></a>Forgatókönyv: a gép nem tud kommunikálni a szolgáltatással
 

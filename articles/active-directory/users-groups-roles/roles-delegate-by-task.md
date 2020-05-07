@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/03/2020
+ms.date: 05/04/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89eeb276a7f096133083037e2a1c088cb6ad35f1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: HT
+ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232496"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779960"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Rendszergazdai szerepkörök felügyeleti feladat szerint Azure Active Directory
 
@@ -76,9 +76,9 @@ Vállalati tulajdonságok konfigurálása | Globális rendszergazda |
 
 Tevékenység | Legkevésbé Kiemelt szerepkör | További szerepkörök
 ---- | --------------------- | ----------------
-Továbbító hitelesítés | Globális rendszergazda  | 
-Az összes konfiguráció olvasása | Globális olvasó | Globális rendszergazda  |
-Zökkenőmentes egyszeri bejelentkezés | Globális rendszergazda  | 
+Továbbító hitelesítés | Hibrid identitás-rendszergazda  | 
+Az összes konfiguráció olvasása | Globális olvasó | Hibrid identitás-rendszergazda  |
+Zökkenőmentes egyszeri bejelentkezés | Hibrid identitás-rendszergazda  | 
 
 ## <a name="connect-health"></a>Connect Health
 

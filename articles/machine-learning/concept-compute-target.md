@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/30/2020
-ms.openlocfilehash: f9ca75943eaec2ae018b54145d872fc09294035e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed65d69c18f2dbcd53324fe3cc18af8c51c546b2
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398184"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780113"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -57,18 +57,44 @@ Létrehozhat Azure Machine Learning számítási példányokat (előzetes verzi�
 
 Számítási fürtöket az [Azure CLI Machine learning bővítménnyel](tutorial-train-deploy-model-cli.md#create-the-compute-target-for-training)is létrehozhat.
 
-Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, a más típusú számítási céloktól eltérően.
+Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, más típusú számítási céloktól eltérően.
 
 ### <a name="compute-clusters"></a>Számítási fürtök
 
 Azure Machine Learning számítási fürtöket a betanításhoz és a Batch-következtetésekhez (előzetes verzió) is használhatja.  Ezzel a számítási erőforrással a következőket teheti:
 
 * Egy vagy több csomópontos fürt
-* Minden alkalommal, amikor elküld egy futtatást 
+* Automatikus skálázás minden egyes futtatásakor 
 * Fürt automatikus kezelése és feladatütemezés 
 * A processzor-és a GPU-erőforrások támogatása
 
+### <a name="supported-vm-series-and-sizes"></a>Támogatott VM-sorozatok és-méretek
 
+Ha Azure Machine Learning felügyelt számítási erőforráshoz kiválasztja a csomópont méretét, az Azure-ban elérhető virtuálisgép-méretek közül választhat. Az Azure számos méretet kínál a különböző számítási feladatokhoz használható Linux és Windows rendszerekhez. A különböző virtuálisgép [-típusokkal és-méretekkel](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)kapcsolatos további információkért tekintse meg a következőt:.
+
+A virtuális gépek méretének kiválasztására néhány kivétel és korlátozás vonatkozik:
+* Azure Machine Learningban nem támogatottak a virtuálisgép-adatsorozatok.
+* Néhány virtuálisgép-sorozat korlátozott. Ha korlátozott adatsorozatot szeretne használni, forduljon az ügyfélszolgálathoz, és igényeljen kvóta-növekedést az adatsorozathoz. Az ügyfélszolgálattal való kapcsolatfelvételsel kapcsolatos információkért lásd: [Azure-támogatási lehetőségek](https://azure.microsoft.com/support/options/)
+
+A támogatott adatsorozatokkal és korlátozásokkal kapcsolatos további információkért tekintse meg a következő táblázatot. 
+
+| **Támogatott VM-sorozat**  | **Korlátozások** |
+|------------|------------|
+| D | Nincs |
+| Dv2 | Nincs |  
+| DSv2 | Nincs |  
+| FSv2 | Nincs |  
+| M | Jóváhagyást igényel |
+| NC | Nincs |    
+| NCsv2 | Jóváhagyást igényel |
+| NCsv3 | Jóváhagyást igényel |  
+| NDs | Jóváhagyást igényel |
+| NDv2 | Jóváhagyást igényel |
+| NV | Nincs |
+| NVv3 | Jóváhagyást igényel | 
+
+
+Habár a Azure Machine Learning támogatja ezeket a virtuálisgép-sorozatokat, előfordulhat, hogy az összes Azure-régióban nem érhetők el. A virtuálisgép-sorozatokat itt tekintheti meg: [régiónként elérhető termékek](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines).
 
 ## <a name="unmanaged-compute"></a>Nem felügyelt számítás
 

@@ -3,14 +3,14 @@ title: Windows Update beállítások konfigurálása az Azure-Update Management 
 description: Ez a cikk azokat a Windows Update beállításokat ismerteti, amelyeket az Azure Update Management való együttműködéshez konfigurál.
 services: automation
 ms.subservice: update-management
-ms.date: 03/02/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7f226c4d297d25644b2650d085655f70d8326927
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9b5f2b19b29eae0132ec01a9f3fb7e8355361f5
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279025"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779450"
 ---
 # <a name="configure-windows-update-settings-for-update-management"></a>Update Management Windows Update beállításainak konfigurálása
 
@@ -22,6 +22,8 @@ Az Azure Update Management [Windows Update ügyfélre](https://docs.microsoft.co
 - A beállításjegyzék közvetlen szerkesztése
 
 A Update Management a Windows Update-ügyfél vezérléséhez megadott beállítások többségét tiszteletben tartja. Ha a nem Windows rendszerű frissítéseket engedélyező beállításokat használ, akkor a Update Management a frissítéseket is kezeli. Ha szeretné engedélyezni a frissítések letöltését a frissítés központi telepítése előtt, akkor a frissítés központi telepítése gyorsabb, hatékonyabb és kevésbé valószínű, hogy túllépi a karbantartási időszakot.
+
+A WSUS Azure-előfizetésben való beállításával és a Windows rendszerű virtuális gépek naprakészen tartásával kapcsolatos további javaslatokért tekintse át az Azure-beli [Windows rendszerű virtuális gépek WSUS használatával történő frissítésének megtervezése](https://docs.microsoft.com/azure/architecture/example-scenario/wsus/)című részt.
 
 ## <a name="pre-download-updates"></a>Frissítések előzetes letöltése
 

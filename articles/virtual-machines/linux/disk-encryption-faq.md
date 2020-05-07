@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 06/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 753d606e1fc2dc966c970a210cf6fc5066d5ed83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c49467451963ceb52f114430343fafb955ec4f7
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460137"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82786988"
 ---
 # <a name="azure-disk-encryption-for-linux-virtual-machines-faq"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez – gyakori kérdések
 
@@ -21,7 +21,7 @@ Ez a cikk a Linux rendszerű virtuális gépek (VM) Azure Disk Encryption kapcso
 
 ## <a name="what-is-azure-disk-encryption-for-linux-vms"></a>Mi a Linux rendszerű virtuális gépek Azure Disk Encryption?
 
-A Linux rendszerű virtuális gépek Azure Disk Encryption a Linux dm-crypt funkciójának használatával biztosítja az operációsrendszer-lemez * és az adatlemezek teljes lemezes titkosítását. Emellett a [EncryptFormatAll szolgáltatás](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)használatakor az ideiglenes erőforrás lemezének titkosítását is biztosítja. A virtuális gépről a tárolási háttérbe titkosított tartalom-adatfolyamok. Ezáltal teljes körű titkosítást biztosít az ügyfél által felügyelt kulccsal.
+A Linux rendszerű virtuális gépek Azure Disk Encryption a Linux dm-crypt funkciójának használatával biztosítja az operációsrendszer-lemez * és az adatlemezek teljes lemezes titkosítását. Emellett az ideiglenes lemez titkosítását is biztosítja az [EncryptFormatAll szolgáltatás](disk-encryption-linux.md#use-encryptformatall-feature-for-data-disks-on-linux-vms)használatakor. A virtuális gépről a tárolási háttérbe titkosított tartalom-adatfolyamok. Ezáltal teljes körű titkosítást biztosít az ügyfél által felügyelt kulccsal.
  
 Lásd: [támogatott virtuális gépek és operációs rendszerek](disk-encryption-overview.md#supported-vms-and-operating-systems).
 
@@ -61,7 +61,7 @@ A Storage kiszolgálóoldali titkosítása titkosítja az Azure Managed Disks-t 
  
 ## <a name="how-is-azure-disk-encryption-different-from-storage-server-side-encryption-with-customer-managed-key-and-when-should-i-use-each-solution"></a>Miben különbözik Azure Disk Encryption a Storage kiszolgálóoldali titkosítás az ügyfél által felügyelt kulccsal, és mikor kell használnia az egyes megoldásokat?
 
-Azure Disk Encryption teljes körű titkosítást biztosít az operációsrendszer-lemez, az adatlemezek és az ideiglenes erőforrás-lemez számára az ügyfél által felügyelt kulccsal.
+A Azure Disk Encryption az operációsrendszer-lemez, az adatlemezek és az ideiglenes lemez végpontok közötti titkosítását biztosítja az ügyfél által felügyelt kulcs használatával.
 - Ha a követelmények közé tartozik az összes fenti és végpontok közötti titkosítás titkosítása, használja a Azure Disk Encryption. 
 - Ha a követelmények magukban foglalják a csak az ügyfél által felügyelt adatok titkosítását, használja a [kiszolgálóoldali titkosítást az ügyfél által felügyelt](disk-encryption.md)kulcsokkal. Az ügyfél által felügyelt kulcsokkal Azure Disk Encryption és Storage kiszolgálóoldali titkosítással rendelkező lemezek nem titkosíthatók. 
 - Ha a Linux-disztribúció nem szerepel a [Azure Disk Encryption támogatott operációs rendszerek](disk-encryption-overview.md#supported-operating-systems) listáján, vagy ha olyan forgatókönyvet használ, amely a Windows által nem támogatott [forgatókönyvekben](disk-encryption-linux.md#unsupported-scenarios)ismert, érdemes lehet [kiszolgálóoldali titkosítást használni az ügyfél által felügyelt kulcsokkal](disk-encryption.md).
