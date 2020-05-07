@@ -35,9 +35,9 @@ Először meg kell nyitnia a kívánt portot.
     ![Azure Container Service terheléselosztó-tesztek](./media/container-service-enable-public-access/add-probe.png)
 5. Töltse ki a mintavételi űrlapot, és kattintson **az OK**gombra.
    
-   | Mező | Leírás |
+   | Mező | Description |
    | --- | --- |
-   | Name (Név) |A mintavétel leíró neve. |
+   | Name |A mintavétel leíró neve. |
    | Port |A vizsgálandó tároló portja. |
    | Útvonal |(HTTP-módban) A mintavételhez a relatív webhely elérési útja. A HTTPS nem támogatott. |
    | Intervallum |A mintavételi kísérletek közötti időtartam másodpercben kifejezve. |
@@ -47,9 +47,9 @@ Először meg kell nyitnia a kívánt portot.
     ![Az Azure Container Service terheléselosztó szabályai](./media/container-service-enable-public-access/add-balancer-rule.png)
 7. Töltse ki a terheléselosztó űrlapot, és kattintson **az OK**gombra.
    
-   | Mező | Leírás |
+   | Mező | Description |
    | --- | --- |
-   | Name (Név) |A terheléselosztó leíró neve. |
+   | Name |A terheléselosztó leíró neve. |
    | Port |A nyilvános bejövő port. |
    | Háttér-port |A tároló belső nyilvános portja, amelybe irányítja a forgalmat. |
    | A háttérkészlet |A készletben található tárolók a terheléselosztó célját fogják használni. |
@@ -70,9 +70,9 @@ Ezután hozzá kell adnia egy biztonsági szabályt, amely átirányítja a forg
     ![Azure Container Service hálózati biztonsági csoport szabályai](./media/container-service-enable-public-access/add-firewall-rule.png)
 5. Töltse ki a tűzfalszabály a nyilvános port engedélyezéséhez, majd kattintson **az OK**gombra.
    
-   | Mező | Leírás |
+   | Mező | Description |
    | --- | --- |
-   | Name (Név) |A tűzfalszabály leíró neve. |
+   | Name |A tűzfalszabály leíró neve. |
    | Prioritás |A szabály prioritási rangsora. Minél alacsonyabb a szám, annál magasabb a prioritás. |
    | Forrás |Korlátozza a bejövő IP-címtartományt a szabály által engedélyezett vagy letiltva. Ha **nem** szeretne korlátozást megadni, használja a következőt:. |
    | Szolgáltatás |Válassza ki az előre definiált szolgáltatások készletét, amelyre ez a biztonsági szabály vonatkozik. Más esetben **Egyéni** használatával hozza létre a sajátját. |

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 5414a70180a82be8253dace7d800c90c1ae6a9bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276074"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854977"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -76,7 +76,7 @@ Alapértelmezés szerint a Application Insights JavaScript SDK autogyűjt számo
     - A kérelmet készítő felhasználó azonosítója (ha van)
     - Korrelációs környezet (ha van), ahol a kérelem készül
 - **Felhasználói adatok** (például hely, hálózat, IP)
-- **Eszköz adatai** (például böngésző, operációs rendszer, verzió, nyelv, megoldás, modell)
+- **Eszköz adatai** (például böngésző, operációs rendszer, verzió, nyelv, modell)
 - **A munkamenetadatokat**
 
 ### <a name="telemetry-initializers"></a>Telemetria inicializálók
@@ -96,10 +96,10 @@ appInsights.addTelemetryInitializer(() => false); // Nothing is sent after this 
 appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező `instrumentationKey`, kivéve a következőt:.
 
-| Name (Név) | Alapértelmezett | Leírás |
+| Name | Alapértelmezett | Leírás |
 |------|---------|-------------|
 | instrumentationKey | null | **Szükséges**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -145,7 +145,14 @@ A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre
 
 Alapértelmezés szerint ez az SDK **nem** fogja kezelni az egyoldalas alkalmazásokban megjelenő, az állapot-alapú útvonalak módosítását. Az egyoldalas alkalmazás automatikus útvonal-módosítási nyomon követésének engedélyezéséhez `enableAutoRouteTracking: true` hozzáadhat a telepítési konfigurációhoz.
 
-Jelenleg egy külön, az SDK-val inicializálható [beépülő modult](#react-extensions) is kínálunk. Emellett az útvonal-változások nyomon követését is végrehajtja az Ön számára, valamint [más reagáló specifikus telemetria](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)is gyűjthet.
+Jelenleg egy külön [reakciós beépülő modult](#react-extensions)is kínálunk, amelyet az SDK-val inicializálhat. Emellett az útvonal-változások nyomon követését is végrehajtja az Ön számára, valamint [más reagáló specifikus telemetria](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md)is gyűjthet.
+
+> [!NOTE]
+> Csak `enableAutoRouteTracking: true` akkor használja, ha **nem** az reagáló beépülő modult használja. Mindkettő képes az útvonal változásakor új oldalmegtekintések küldésére. Ha mindkettő engedélyezve van, a rendszer duplikált oldalmegtekintéseket küldhet.
+
+## <a name="configuration-autotrackpagevisittime"></a>Konfiguráció: autoTrackPageVisitTime
+
+A beállítás `autoTrackPageVisitTime: true`szerint a felhasználó által az egyes lapokon töltött idő nyomon követhető. Minden egyes új Oldalmegtekintésnél az *előző* oldalon eltöltött felhasználói időtartamot [Egyéni metrikaként](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) kell elküldeni `PageVisitTime`. Ez az egyéni metrika a [Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) "napló alapú metrika" néven látható.
 
 ## <a name="react-extensions"></a>Reakciós bővítmények
 

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 10/18/2019
+ms.date: 05/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c83aa6e476bbd898999fb6efe490c7847a809ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77120129"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853132"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Értesítések Azure Active Directory Identity Protection
 
@@ -50,12 +50,11 @@ Konfigurálja a veszélyeztetett felhasználókat a **Azure Portal** **Azure Act
 A heti kivonatoló e-mail tartalmazza az új kockázati észlelések összegzését.  
 A következőket tartalmazza:
 
-- Veszélyeztetett felhasználók
-- Gyanús tevékenységek
-- Észlelt biztonsági rések
+- Új kockázatos felhasználók észlelhetők
+- Új kockázatos bejelentkezések észlelhetők (valós időben)
 - Az Identity Protection kapcsolódó jelentéseire mutató hivatkozások
 
-![Heti kivonatoló e-mail](./media/howto-identity-protection-configure-notifications/400.png)
+![Heti kivonatoló e-mail](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
 Alapértelmezés szerint a címzettek a globális rendszergazdákat is tartalmazzák. A globális rendszergazdák további globális rendszergazdákat, biztonsági rendszergazdákat és biztonsági olvasókat is hozzáadhatnak címzettként.
 
