@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: 39ea8dda0fd823d3061b2cb29e1c548f99281c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbcbb19530aebe777a91cbe4c5487e1b50ace2e5
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418796"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559767"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -24,6 +24,10 @@ ms.locfileid: "81418796"
 Ez a cikk bemutatja, hogyan hozhat létre függőséget egy kieséses ablakos triggeren. Az ablakos eseményindítókkal kapcsolatos általános információkért lásd: [a kieséses ablakos eseményindító létrehozása](how-to-create-tumbling-window-trigger.md).
 
 Függőségi lánc létrehozásához és annak ellenőrzéséhez, hogy egy trigger csak egy másik trigger sikeres végrehajtása után fusson az adatgyárban, ezzel a speciális funkcióval hozzon létre egy ablakos függőséget.
+
+Ahhoz, hogy a Azure Data Factory függő folyamatokat hozzon létre a kieséses ablakos triggerrel, tekintse meg a következő videót:
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="create-a-dependency-in-the-data-factory-ui"></a>Függőség létrehozása a Data Factory felhasználói felületen
 
@@ -79,10 +83,10 @@ Az alábbi táblázat tartalmazza az ablak függőségének definiálásához sz
 |---|---|---|---|
 | type  | Ebben a legördülő ablakban minden meglévő ablak-eseményindító megjelenik. Válassza ki a függőség bekapcsolásához szükséges triggert.  | TumblingWindowTriggerDependencyReference vagy SelfDependencyTumblingWindowTriggerReference | Igen |
 | offset | A függőségi trigger eltolása. Adja meg az időtartomány formátumú értéket, és a negatív és a pozitív eltolás is engedélyezett. Ez a tulajdonság akkor kötelező, ha az trigger saját magától függ, és minden más esetben nem kötelező. Az önfüggőségnek mindig negatív eltolásnak kell lennie. Ha nincs megadva érték, az ablak ugyanaz, mint maga az trigger. | Időtartomány<br/>(óó: PP: SS) | Önálló függőség: igen<br/>Egyéb: nem |
-| size | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Időtartomány<br/>(óó: PP: SS) | Nem  |
+| size | A függőséget jelző ablak mérete Adjon meg egy pozitív TimeSpan értéket. Ez a tulajdonság nem kötelező. | Időtartomány<br/>(óó: PP: SS) | No  |
 
 > [!NOTE]
-> A kihelyezett ablakos eseményindítók legfeljebb két másik eseményindítótól függnek.
+> A kihelyezett ablakos eseményindítók legfeljebb öt másik eseményindítótól függnek.
 
 ## <a name="tumbling-window-self-dependency-properties"></a>A kiesési ablak önfüggőségi tulajdonságai
 
@@ -147,10 +151,6 @@ A napi telemetria-feldolgozási feladatok attól függően, hogy az elmúlt hét
 A feladatokhoz tartozó kimeneti adatfolyamok hiánya nélküli napi feladatok:
 
 ![Saját függőségi példa](media/tumbling-window-trigger-dependency/tumbling-window-dependency06.png "Saját függőségi példa")
-
-Ahhoz, hogy a Azure Data Factory függő folyamatokat hozzon létre a kieséses ablakos triggerrel, tekintse meg a következő videót:
-
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Create-dependent-pipelines-in-your-Azure-Data-Factory/player]
 
 ## <a name="monitor-dependencies"></a>Függőségek figyelése
 

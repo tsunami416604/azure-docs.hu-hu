@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: 5a05f2973ac17460250fb3e80eb7bc0da9849940
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 05ff56c904fc48a1041ad40f00110a8ff0fd01f1
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262876"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592043"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Részleges kifejezéses keresés és minták speciális karakterekkel (helyettesítő karakterek, regex, mintázatok)
 
@@ -24,7 +24,7 @@ A részleges és a minta keresés problémát okozhat, ha az index nem rendelkez
 A megoldás egy olyan elemző meghívása, amely megőrzi a teljes karakterláncot, beleértve a szóközöket és a speciális karaktereket is, ha szükséges, a részleges feltételek és minták egyeztetéséhez. Ha egy további mezőt hoz létre egy ép karakterlánchoz, és egy Content-Serving Analyzert használ, a megoldás alapja.
 
 > [!TIP]
-> Ismeri a Poster és a REST API-kat? [Töltse le a lekérdezési példák gyűjteményét](https://github.com/Azure-Samples/azure-search-postman-samples/tree/master/full-syntax-examples) , amely a jelen cikkben ismertetett részleges kifejezéseket és speciális karaktereket kérdezi le.
+> Ismeri a Poster és a REST API-kat? [Töltse le a lekérdezési példák gyűjteményét](https://github.com/Azure-Samples/azure-search-postman-samples/) , amely a jelen cikkben ismertetett részleges kifejezéseket és speciális karaktereket kérdezi le.
 
 ## <a name="what-is-partial-search-in-azure-cognitive-search"></a>Mi a részleges keresés az Azure-ban Cognitive Search
 

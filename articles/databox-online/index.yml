@@ -12,12 +12,12 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 11/04/2019
-  ms.openlocfilehash: 61cda4ccab69396c13581598f399104b0a4fb181
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: bf4f5d7589bdf9ae9b456f7dbe24c8d5fc02afaf
+  ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "73570117"
+  ms.lasthandoff: 04/29/2020
+  ms.locfileid: "82562355"
 landingContent:
 - title: Az Azure Stack Edge és a Data Box Gateway ismertetése
   linkLists:
@@ -26,7 +26,7 @@ landingContent:
     - text: Mi a Data Box Gateway?
       url: data-box-gateway-overview.md
     - text: Mi az Azure Stack Edge?
-      url: data-box-edge-overview.md
+      url: azure-stack-edge-overview.md
   - linkListType: architecture
     links:
     - text: Azure adatátviteli lehetőségek kiválasztása
@@ -44,11 +44,11 @@ landingContent:
     - text: A Data Box Gateway követelményei
       url: data-box-gateway-system-requirements.md
     - text: Az Azure Stack Edge követelményei
-      url: data-box-edge-system-requirements.md
+      url: azure-stack-edge-system-requirements.md
     - text: A Data Box Gateway korlátai
       url: data-box-gateway-limits.md
     - text: Az Azure Stack Edge korlátai
-      url: data-box-edge-limits.md
+      url: azure-stack-edge-limits.md
 - title: Üzembe helyezés
   linkLists:
   - linkListType: tutorial
@@ -56,13 +56,13 @@ landingContent:
     - text: Data Box Gateway
       url: data-box-gateway-deploy-prep.md
     - text: Azure Stack Edge
-      url: data-box-edge-deploy-prep.md
+      url: azure-stack-edge-deploy-prep.md
 - title: Fejlesztés
   linkLists:
   - linkListType: how-to-guide
     links:
     - text: C# peremhálózati számítási modul
-      url: data-box-edge-create-iot-edge-module.md
+      url: azure-stack-edge-create-iot-edge-module.md
   - linkListType: download
     links:
     - text: Minták – A C# használata az Azure Stack Edge-ben
@@ -74,11 +74,11 @@ landingContent:
     - text: A Data Box Gateway megosztásai
       url: data-box-gateway-manage-shares.md
     - text: Az Azure Stack Edge megosztásai
-      url: data-box-edge-manage-shares.md
+      url: azure-stack-edge-manage-shares.md
     - text: Peremhálózati számítás
-      url: data-box-edge-manage-compute.md
+      url: azure-stack-edge-manage-compute.md
     - text: Peremhálózati számítási hálózat
-      url: data-box-edge-extend-compute-access-modules.md
+      url: azure-stack-edge-extend-compute-access-modules.md
 - title: Hibaelhárítás
   linkLists:
   - linkListType: how-to-guide
@@ -86,10 +86,10 @@ landingContent:
     - text: Data Box Gateway
       url: data-box-gateway-troubleshoot.md
     - text: Azure Stack Edge
-      url: data-box-edge-troubleshoot.md
+      url: azure-stack-edge-troubleshoot.md
     - text: Peremhálózati számítási modulok
-      url: data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
+      url: azure-stack-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules
     - text: Az Azure Stack Edge visszaküldése vagy cseréje
-      url: data-box-edge-return-device.md
+      url: azure-stack-edge-return-device.md
     - text: Támogatási jegy megnyitása
-      url: data-box-edge-contact-microsoft-support.md
+      url: azure-stack-edge-contact-microsoft-support.md

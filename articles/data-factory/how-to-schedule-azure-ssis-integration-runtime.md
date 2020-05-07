@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: anandsub
-ms.openlocfilehash: 50ff0afe13b5b098fbc8d9fbeefba295a6217192
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 83ccc3160ed62a1ea801dd8c5795328fd2b5109f
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606073"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584019"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>Azure-SSIS integrációs modul indítása és leállítása ütemezés szerint
 
@@ -353,7 +353,7 @@ A következő szakasz a PowerShell-runbook létrehozásának lépéseit ismertet
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>Ütemtervek létrehozása a runbook indításához/leállításához Azure-SSIS IR
 
-Az előző szakaszban létrehozta a Azure Automation runbook, amely elindítható vagy leállítható Azure-SSIS IR. Ebben a szakaszban két ütemtervet fog létrehozni a runbook. Az első ütemterv konfigurálásakor meg kell adnia a művelet **megkezdése** **műveletet**. Hasonlóképpen, a második konfigurálásakor meg kell adnia a **Leállítás** **műveletet**. Az ütemtervek létrehozásával kapcsolatos részletes lépésekért tekintse meg az [Ütemterv létrehozása](../automation/shared-resources/schedules.md#creating-a-schedule) című cikket.
+Az előző szakaszban létrehozta a Azure Automation runbook, amely elindítható vagy leállítható Azure-SSIS IR. Ebben a szakaszban két ütemtervet fog létrehozni a runbook. Az első ütemterv konfigurálásakor meg kell adnia a művelet **megkezdése** **műveletet**. Hasonlóképpen, a második konfigurálásakor meg kell adnia a **Leállítás** **műveletet**. Az ütemtervek létrehozásával kapcsolatos részletes lépésekért tekintse meg az [Ütemterv létrehozása](../automation/shared-resources/schedules.md#create-a-schedule) című cikket.
 
 1. A **Runbook** ablakban válassza az **ütemtervek**lehetőséget, majd válassza az **+ ütemterv hozzáadása** lehetőséget az eszköztáron. 
 

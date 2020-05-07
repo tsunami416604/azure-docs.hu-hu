@@ -10,20 +10,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 01/28/2020
-ms.openlocfilehash: 4da96df50e961f4291029a37e883fdcf88c6c87f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a87f3563b995081de8e7cbb4b4499718f77b02ff
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80885752"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583247"
 ---
 # <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
-A magasabb szintű biztonság érdekében Notification Hubs letilthatja a 1,0-es és 1,1-es TLS-verziók támogatását 2020 (2020. április 30-ig). Ezek a régebbi protokollok gyenge titkosítást biztosítanak, és ki vannak téve a VADÁLLATok és az USZKÁR elleni támadásoknak. Az Android 5-ös vagy újabb verzióját, vagy az iOS 5-ös vagy újabb verzióját futtató eszközökre telepített alkalmazások nem érintik ezt a változást, mivel ezek az operációs rendszerek támogatják a TLS 1,2-et, és az ügyfél és a kiszolgáló a kapcsolaton keresztül egyezteti a protokoll legmagasabb kölcsönösen támogatott verzióját.
+A magasabb szintű biztonság érdekében Notification Hubs letilthatja a 1,0-es és 1,1-es TLS-verziók támogatását **2020. december 31-** én (a 2020. április 30-ig kiterjesztve). Ezek a régebbi protokollok gyenge titkosítást biztosítanak, és ki vannak téve a VADÁLLATok és az USZKÁR elleni támadásoknak. Az Android 5-ös vagy újabb verzióját, vagy az iOS 5-ös vagy újabb verzióját futtató eszközökre telepített alkalmazások nem érintik ezt a változást, mivel ezek az operációs rendszerek támogatják a TLS 1,2-et, és az ügyfél és a kiszolgáló a kapcsolaton keresztül egyezteti a protokoll legmagasabb kölcsönösen támogatott verzióját.
 
 Javasoljuk, hogy tekintse át az Azure Notification Hubst használó összes alkalmazást, és győződjön meg arról, hogy a legalkalmasabb kódtárak és TLS-csomagok a TLS 1,2-et támogatják.
 

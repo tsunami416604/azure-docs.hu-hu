@@ -10,23 +10,23 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 03/18/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 130ce05e332f4705feb4acd54cbeb25d25a82532
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b9c61bbc794438c34a4bda27c8048ac0b21f9fc1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253064"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582705"
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Licencek kiosztása a felhasználóknak csoporttagság szerint Azure Active Directory
 
 Ebből a cikkből megtudhatja, hogyan rendelheti hozzá a licenceket a felhasználók csoportjához, és ellenőrizze, hogy az Azure Active Directory (Azure AD) megfelelő licenccel rendelkezik-e.
 
-Ebben a példában a bérlő egy **HR részleg**nevű biztonsági csoportot tartalmaz. Ez a csoport tartalmazza az emberi erőforrások részleg összes tagját (1 000-es felhasználók). Office 365 Enterprise E3 licenceket szeretne hozzárendelni a teljes részleghez. A termékben található Yammer Enterprise szolgáltatást átmenetileg le kell tiltani, amíg a részleg készen nem áll az alkalmazás használatára. Enterprise Mobility + Security licenceket is telepítenie kell ugyanahhoz a felhasználói csoportba.
+Ebben a példában az Azure AD-szervezet egy **HR részleg**nevű biztonsági csoportot tartalmaz. Ez a csoport tartalmazza az emberi erőforrások részleg összes tagját (1 000-es felhasználók). Office 365 Enterprise E3 licenceket szeretne hozzárendelni a teljes részleghez. A termékben található Yammer Enterprise szolgáltatást átmenetileg le kell tiltani, amíg a részleg készen nem áll az alkalmazás használatára. Enterprise Mobility + Security licenceket is telepítenie kell ugyanahhoz a felhasználói csoportba.
 
 > [!NOTE]
 > Nem minden Microsoft-szolgáltatás érhető el minden területen. Ahhoz, hogy egy licencet hozzá lehessen rendelni egy felhasználóhoz, a rendszergazdának meg kell adnia a használat helye tulajdonságot a felhasználónál.
@@ -37,7 +37,7 @@ Ebben a példában a bérlő egy **HR részleg**nevű biztonsági csoportot tart
 
 1. Jelentkezzen be az [**Azure ad felügyeleti központba**](https://aad.portal.azure.com) egy licenc-rendszergazdai fiókkal. A licencek kezeléséhez a fióknak licenc-rendszergazdának, felhasználói rendszergazdának vagy globális rendszergazdának kell lennie.
 
-1. Válassza a licencek lehetőséget egy lap megnyitásához, ahol megtekintheti és kezelheti a bérlőben lévő összes **engedélyezhető** terméket.
+1. Válassza a **licencek** lehetőséget egy lap megnyitásához, ahol megtekintheti és kezelheti a szervezet összes licencelő termékét.
 
 1. Az **összes termék**területen válassza ki az Office 365 Enterprise E5 és Enterprise Mobility + Security E3 elemet a terméknév kiválasztásával. A hozzárendelés elindításához válassza a **hozzárendelés** lehetőséget az oldal tetején.
 

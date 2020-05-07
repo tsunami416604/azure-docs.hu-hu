@@ -4,13 +4,13 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 727b2985711b51f1474fecb014906b08d18437cb
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67179764"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562125"
 ---
-- A Data Box Edge szolgáltatás eléréséhez a szervezetnek rendelkeznie kell egy Nagyvállalati Szerződés (EA) vagy a Cloud Solution Provider (CSP) előfizetéssel. További információ: [regisztráció Azure-előfizetésre](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).
+- Az Azure Stack Edge szolgáltatás eléréséhez a szervezetnek rendelkeznie kell egy Nagyvállalati Szerződés (EA) vagy a Cloud Solution Provider (CSP) előfizetéssel. További információ: [regisztráció Azure-előfizetésre](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/).
 - Mivel ez a kezelési szolgáltatás az Azure-ban fut, az Azure biztonsági funkciói védik. Az Azure által biztosított biztonsági szolgáltatásokkal kapcsolatos további információkért látogasson el a [Microsoft Azure adatvédelmi központba](https://azure.microsoft.com/support/trust-center/security/).
 - Az SDK-kezelési műveletek esetében az erőforrás titkosítási kulcsát az **eszköz tulajdonságainál**szerezheti be. Csak akkor tekintheti meg a titkosítási kulcsot, ha rendelkezik a Graph API erőforráshoz szükséges engedélyekkel.

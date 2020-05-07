@@ -4,12 +4,12 @@ ms.service: databox
 ms.topic: include
 ms.date: 03/04/2019
 ms.author: alkohli
-ms.openlocfilehash: d5af557a62f4bd35c242d334c28a38c3d632f7cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 94c132421f1e113b667341b094acad8047e5f465
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67179579"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561779"
 ---
 1. [Kapcsolódjon a PowerShell felületéhez](#connect-to-the-powershell-interface).
 2. Az eszközhöz tartozó információk beszerzéséhez használja a `Get-HcsApplianceInfo` következőt:.
@@ -49,7 +49,7 @@ ms.locfileid: "67179579"
     |--------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------|---|
     | FriendlyName                   | Az eszköz felhasználóbarát neve, amely a helyi webes felületen keresztül van konfigurálva az eszköz telepítése során. Az alapértelmezett felhasználóbarát név az eszköz sorozatszáma.  |   |
     | Sorozatszám                   | Az eszköz sorozatszáma a gyárban hozzárendelt egyedi szám.                                                                             |   |
-    | Modell                          | A Data Box Edge vagy Data Box Gateway eszköz modellje. A modell virtuális Data Box Gatewayhoz és fizikai Data Box Edgehoz.                   |   |
+    | Modell                          | Az Azure Stack Edge-vagy Data Box Gateway-eszközhöz tartozó modell. A modell fizikai Azure Stack Edge és a virtuális Data Box Gateway számára.                   |   |
     | FriendlySoftwareVersion        | Az eszköz szoftverének verziójának megfelelő felhasználóbarát karakterlánc. Az előzetes verziót futtató rendszerek esetében a felhasználóbarát szoftververzió Data Box Edge 1902. |   |
     | HcsVersion                     | Az eszközön futó HCS FRISSÍTŐÜGYNÖK szoftver verziója. Például a Data Box Edge 1902-nek megfelelő HCS FRISSÍTŐÜGYNÖK-szoftververzió 1.4.771.324.            |   |
     | LocalCapacityInMb              | Az eszköz teljes helyi kapacitása a megabitben.                                                                                                        |   |

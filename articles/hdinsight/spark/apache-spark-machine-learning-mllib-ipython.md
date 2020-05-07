@@ -6,18 +6,18 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.date: 04/16/2020
-ms.openlocfilehash: 26695df299ba5d0f50c8f271b5da99284a8d6764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.date: 04/27/2020
+ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531133"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559939"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Gépi tanulási alkalmazások készítése és adatkészletek elemzése Apache Spark MLlib használatával
 
-Ismerje meg, hogyan hozhat létre gépi tanulási alkalmazást a Apache Spark [MLlib](https://spark.apache.org/mllib/) használatával. Az alkalmazás prediktív elemzést végez egy megnyitott adatkészleten. A Spark beépített gépi tanulási könyvtáraiból a példa a logisztikai regresszión keresztüli *besorolást* használja.
+Ismerje meg, hogyan hozhat létre gépi tanulási alkalmazást a Apache Spark MLlib használatával. Az alkalmazás prediktív elemzést végez egy megnyitott adatkészleten. A Spark beépített gépi tanulási könyvtáraiból a példa a logisztikai regresszión keresztüli *besorolást* használja.
 
 A MLlib egy alapvető Spark-könyvtár, amely számos, a gépi tanulási feladatokhoz hasznos segédprogramot biztosít, például:
 
@@ -180,7 +180,7 @@ Kezdjük azzal, hogy az adatkészlet mit tartalmaz.
 
     ![SQL-lekérdezés kimenete](./media/apache-spark-machine-learning-mllib-ipython/spark-machine-learning-query-output.png "SQL-lekérdezés kimenete")
 
-3. A [Matplotlib](https://en.wikipedia.org/wiki/Matplotlib)-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** dataframe kell létrehozni, a kódrészletnek a `%%local` mágia kell kezdődnie. Ez a művelet biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
+3. A Matplotlib-t, az adatvizualizációk létrehozásához használt könyvtárat is használhatja a mintaterület létrehozásához. Mivel a parcellát a helyileg megőrzött **countResultsdf** dataframe kell létrehozni, a kódrészletnek a `%%local` mágia kell kezdődnie. Ez a művelet biztosítja, hogy a kód helyileg fusson a Jupyter-kiszolgálón.
 
     ```PySpark
     %%local
@@ -362,28 +362,5 @@ Miután befejezte az alkalmazás futtatását, állítsa le a notebookot az erő
 ## <a name="next-steps"></a>További lépések
 
 * [Overview: Apache Spark on Azure HDInsight (Áttekintés: Apache Spark on Azure HDInsight)](apache-spark-overview.md)
-
-### <a name="scenarios"></a>Forgatókönyvek
-
-* [Apache Spark BI-val: interaktív adatelemzés a Spark on HDInsight és a BI Tools használatával](apache-spark-use-bi-tools.md)
-* [Apache Spark a Machine Learning használatával: a Spark in HDInsight használata az építési hőmérséklet elemzésére a HVAC-adatok használatával](apache-spark-ipython-notebook-machine-learning.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-run-applications"></a>Alkalmazások létrehozása és futtatása
-
-* [Önálló alkalmazás létrehozása a Scala használatával](apache-spark-create-standalone-application.md)
-* [Feladatok távoli futtatása egy Apache Spark-fürtön az Apache Livy használatával](apache-spark-livy-rest-interface.md)
-
-### <a name="tools-and-extensions"></a>Eszközök és bővítmények
-
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata Spark Scala-alkalmazások létrehozásához és elküldéséhez](apache-spark-intellij-tool-plugin.md)
-* [Az IntelliJ IDEA HDInsight-eszközei beépülő moduljának használata a Apache Spark alkalmazások távoli hibakereséséhez](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Apache Zeppelin notebookok használata Apache Spark-fürttel a HDInsight-on](apache-spark-zeppelin-notebook.md)
-* [Jupyter notebookokhoz elérhető kernelek Apache Spark-fürtben HDInsight](apache-spark-jupyter-notebook-kernels.md)
-* [Külső csomagok használata Jupyter notebookokkal](apache-spark-jupyter-notebook-use-external-packages.md)
-* [A Jupyter telepítése a számítógépre, majd csatlakozás egy HDInsight Spark-fürthöz](apache-spark-jupyter-notebook-install-locally.md)
-
-### <a name="manage-resources"></a>Erőforrások kezelése
-
-* [Apache Spark-fürt erőforrásainak kezelése az Azure HDInsightban](apache-spark-resource-manager.md)
-* [Apache Spark-fürtön futó feladatok nyomon követése és hibakeresése a HDInsightban](apache-spark-job-debugging.md)
+* [Deep learning-modell Microsoft Cognitive Toolkit az Azure HDInsight](apache-spark-microsoft-cognitive-toolkit.md)

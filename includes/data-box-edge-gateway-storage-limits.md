@@ -4,14 +4,14 @@ ms.service: databox
 ms.topic: include
 ms.date: 01/30/2019
 ms.author: alkohli
-ms.openlocfilehash: 94fe099984fae77c65658d7085a8540ff4f2448b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51fde73565c9c4cdb21e998b8d43d303ceef062e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67179575"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561388"
 ---
-Ez a szakasz az Azure Storage szolgáltatásra vonatkozó korlátozásokat, valamint a Azure Files, az Azure Block blobok és az Azure Page Blobok szükséges elnevezési konvencióit írja le a Data Box Gateway/Data Box Edge szolgáltatásra vonatkozóan. Alaposan tekintse át a tárolási korlátokat, és kövesse az összes javaslatot.
+Ez a szakasz az Azure Storage szolgáltatásra vonatkozó korlátozásokat, valamint a Azure Files, az Azure Block blobok és az Azure Page Blobok számára szükséges elnevezési konvenciókat ismerteti az Azure Stack Edge/Data Box Gateway szolgáltatás esetében. Alaposan tekintse át a tárolási korlátokat, és kövesse az összes javaslatot.
 
 Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és fájlok elnevezésére vonatkozó ajánlott eljárásokkal kapcsolatos legfrissebb információkért keresse fel a következőt:
 
@@ -20,4 +20,4 @@ Az Azure Storage szolgáltatás korlátaival és a megosztások, tárolók és f
 - [Blobok és lapok blob-konvencióinak letiltása](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
-> Ha vannak olyan fájlok vagy könyvtárak, amelyek túllépik az Azure Storage szolgáltatás korlátozásait, vagy nem felelnek meg a Azure Files/blob elnevezési konvencióknak, akkor ezeket a fájlokat vagy könyvtárakat a rendszer nem tölti be az Azure Storage-ba az Data Box Gateway/Data Box Edge szolgáltatás használatával.
+> Ha vannak olyan fájlok vagy könyvtárak, amelyek túllépik az Azure Storage szolgáltatás korlátozásait, vagy nem felelnek meg a Azure Files/blob elnevezési konvencióknak, akkor ezeket a fájlokat és könyvtárakat a rendszer nem tölti be az Azure Storage-ba az Azure Stack Edge/Data Box Gateway szolgáltatás használatával.

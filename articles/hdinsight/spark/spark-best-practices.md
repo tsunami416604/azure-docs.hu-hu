@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 424a0cfd02cfce9fb87bc3e21d7b067740df8218
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: HT
+ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509414"
+ms.locfileid: "82562338"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark irányelvek
 
@@ -30,8 +30,8 @@ Ez a cikk a Apache Spark Azure HDInsight való használatának különböző ir�
 | Távoli feladatok beküldése a Livy | [Az Apache Spark REST API használata távoli feladatok küldéséhez egy HDInsight Spark-fürtre](./apache-spark-livy-rest-interface.md) |
 |[Apache Oozie](../hdinsight-use-oozie-linux-mac.md)|A Oozie olyan munkafolyamat-és koordinációs rendszer, amely a Hadoop-feladatokat kezeli.|
 |[Apache Livy](./apache-spark-livy-rest-interface.md)|A Livy használatával interaktív Spark-rendszerhéjakat futtathat, vagy elküldheti a Spark-on futó kötegelt feladatokat.|
-|[Apache Spark Azure Data Factory](/../data-factory/transform-data-using-spark.md)|Egy Data Factory folyamat Spark-tevékenysége egy Spark-programot hajt végre a saját vagy [igény szerinti HDInsight-fürtön.|
-|[Apache Hive Azure Data Factory](/../data-factory/transform-data-using-hadoop-hive.md)|A Data Factory folyamat HDInsight-struktúrájának tevékenysége a saját vagy igény szerinti HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket.|
+|[Apache Spark Azure Data Factory](../../data-factory/transform-data-using-spark.md)|Egy Data Factory folyamat Spark-tevékenysége egy Spark-programot hajt végre a saját vagy [igény szerinti HDInsight-fürtön.|
+|[Apache Hive Azure Data Factory](../../data-factory/transform-data-using-hadoop-hive.md)|A Data Factory folyamat HDInsight-struktúrájának tevékenysége a saját vagy igény szerinti HDInsight-fürtön hajtja végre a kaptár-lekérdezéseket.|
 
 ## <a name="how-do-i-monitor-and-debug-spark-jobs"></a>Hogyan a Spark-feladatok figyelését és hibakeresését?
 

@@ -7,12 +7,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 771d7f5b037fde1144b18dc4ed0dee7aecac6744
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: cf051da4e2976ca54c95b54cd6ac89cb6f6cc1b1
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100209"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562219"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-database-for-postgresql---single-server"></a>Azure Database for PostgreSQL – egyetlen kiszolgáló kapcsolódási problémáinak elhárítása
 
@@ -49,6 +49,7 @@ Ha az alkalmazás tartósan nem tud csatlakozni a Azure Database for PostgreSQLh
 * Kiszolgáló tűzfal-konfigurációja: Ellenőrizze, hogy a Azure Database for PostgreSQL kiszolgáló tűzfala úgy van-e konfigurálva, hogy engedélyezze a kapcsolódást az ügyfélről, beleértve a proxykiszolgálót és az átjárókat is.
 * Ügyféloldali tűzfal konfigurációja: az ügyfélen lévő tűzfalnak engedélyeznie kell az adatbázis-kiszolgálóhoz való kapcsolódást. A kiszolgáló azon IP-címeit és portjait, amelyeket nem lehet engedélyezni, valamint az alkalmazások nevét, például a PostgreSQL-t egyes tűzfalakon.
 * Felhasználói hiba: lehet, hogy hibás típusú kapcsolatok vannak megadva * \@* , például a kiszolgáló neve a (z) vagy a felhasználónévben lévő kiszolgálónév-utótagnál.
+* Ha úgy látja, hogy a hiba _-kiszolgáló nincs konfigurálva az IPv6-kapcsolatok engedélyezésére_, vegye figyelembe, hogy az alapszintű csomag nem támogatja az VNet-szolgáltatási végpontokat. El kell távolítania a Microsoft. SQL-végpontot abból az alhálózatból, amely az alapszintű kiszolgálóhoz próbál csatlakozni.
 
 ### <a name="steps-to-resolve-persistent-connectivity-issues"></a>Az állandó csatlakozási problémák megoldásának lépései
 

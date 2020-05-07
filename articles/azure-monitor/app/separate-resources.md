@@ -2,13 +2,13 @@
 title: Telemetria elválasztása az Azure Application Insightsban
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 565d51751ad50479f4e227b6855ac63b80bd949e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.date: 04/29/2020
+ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536777"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562151"
 ---
 # <a name="separating-telemetry-from-development-test-and-production"></a>Telemetria elválasztása fejlesztési, tesztelési és éles környezetből
 
@@ -20,13 +20,24 @@ Ha egy webalkalmazás következő verzióját fejleszti, nem szeretné összekev
 
 A webalkalmazás Application Insights figyelésének beállításakor egy Application Insights *erőforrást* hoz létre Microsoft Azure. Ezt az erőforrást a Azure Portalban megnyitva megtekintheti és elemezheti az alkalmazásból gyűjtött telemetria. Az erőforrást egy rendszerállapot- *kulcs* (rendszerállapotkulcsot) azonosítja. Ha a Application Insights csomagot az alkalmazás figyelésére telepíti, azt a kialakítási kulccsal konfigurálja, hogy tudja, hová szeretné elküldeni a telemetria.
 
-Általában külön erőforrásokat vagy egyetlen megosztott erőforrást használ különböző helyzetekben:
+Minden Application Insights erőforráshoz elérhető metrikák tartoznak. Ha a teljesen különálló összetevők ugyanarra a Application Insights erőforrásra jelentenek jelentést, előfordulhat, hogy ezek a metrikák nem feltétlenül az irányítópulton/riasztáson alapulnak.
 
-* Különböző független alkalmazások – minden alkalmazáshoz használjon külön erőforrás-és rendszerállapotkulcsot.
-* Egy üzleti alkalmazás több összetevője vagy szerepköre – [egyetlen megosztott erőforrást](../../azure-monitor/app/app-map.md) használhat az összes összetevő-alkalmazáshoz. A telemetria szűrhetők vagy szegmentálható a cloud_RoleName tulajdonsággal.
-* Fejlesztés, tesztelés és kiadás – használjon külön erőforrás-és rendszerállapotkulcsot a rendszer "Stamp" vagy "éles" fázisában lévő verzióihoz.
-* A | B tesztelés – egyetlen erőforrás használata. Hozzon létre egy TelemetryInitializer, és adjon hozzá egy tulajdonságot a telemetria, amely azonosítja a változókat.
+### <a name="use-a-single-application-insights-resource"></a>Egyetlen Application Insights erőforrás használata
 
+-   Együtt telepített alkalmazás-összetevők esetén. Általában egyetlen csapat fejleszti, és ugyanazokat a DevOps/ITOps felhasználók kezelik.
+-   Ha a fő teljesítménymutatók (KPI-k), például a válaszadási időtartamok, az irányítópulton található meghibásodási arányok és az ezekből származó hibák összevonására van lehetőség, alapértelmezés szerint (a Metrikaböngésző felhasználói felületén választhat a szerepkör neve alapján).
+-   Ha nincs szükség a szerepköralapú Access Control (RBAC) kezelésére az alkalmazás-összetevők között.
+-   Ha nem szükségesek a metrikák riasztási feltételei, amelyek eltérőek az összetevők között.
+-   Ha nem kell a folyamatos exportálást a különböző összetevők között kezelni.
+-   Ha nem kell a számlázási/kvótákat az összetevőktől eltérő módon kezelni.
+-   Ha az API-kulcs rendben van, az összes összetevővel azonos hozzáférése van az adatokhoz. És a 10 API-kulcs elegendő a szükségletek kielégítéséhez.
+-   Ha nem szeretné, hogy ugyanazokat az intelligens észlelési és munkaelem-integrációs beállításokat az összes szerepkörbe feldolgozza.
+
+### <a name="other-things-to-keep-in-mind"></a>További tudnivalók a következőkről:
+
+-   Előfordulhat, hogy egyéni kódot kell hozzáadnia ahhoz, hogy a rendszer a [Cloud_RoleName](https://docs.microsoft.com/azure/azure-monitor/app/app-map?tabs=net#set-cloud-role-name) attribútumban az értelmes értékeket adja meg. Az attribútumhoz beállított értelmes értékek hiányában a portál egyik felhasználói felülete *sem* fog működni.
+- Service Fabric-alkalmazások és a klasszikus Cloud Services esetében az SDK automatikusan beolvassa az Azure szerepkör-környezetet, és beállítja ezeket. Minden más típusú alkalmazás esetében valószínűleg ezt explicit módon kell beállítania.
+-   Az élő metrikai élmény nem támogatja a szerepkör-név szerinti felosztást.
 
 ## <a name="dynamic-instrumentation-key"></a><a name="dynamic-ikey"></a>Dynamic Instrumentation-kulcs
 
@@ -34,7 +45,7 @@ Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot,
 
 Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
 
-*C #*
+*C#*
 
     protected void Application_Start()
     {
@@ -47,7 +58,7 @@ Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot,
 Ebben a példában a különböző erőforrások erőforráskulcsot a webes konfigurációs fájl különböző verzióiba helyezi. A webes konfigurációs fájl cseréje – a kiadási parancsfájl részeként is elvégezhető – a cél erőforrást fogja cserélni.
 
 ### <a name="web-pages"></a>Weblapok
-A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a gyors üzembe helyezési panelen [kapott parancsfájlban](../../azure-monitor/app/javascript.md). Ahelyett, hogy a parancsfájlba kellene írnia, azt a kiszolgáló állapotától kell meghoznia. Például egy ASP.NET-alkalmazásban:
+A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a gyors üzembe helyezés [panelen található parancsfájlban](../../azure-monitor/app/javascript.md). Ahelyett, hogy a parancsfájlba kellene írnia, azt a kiszolgáló állapotától kell meghoznia. Például egy ASP.NET-alkalmazásban:
 
 *JavaScript a Borotvában*
 
@@ -63,26 +74,11 @@ A Rendszerállapotkulcsot az alkalmazás weblapjain is használják, a gyors üz
 
 
 ## <a name="create-additional-application-insights-resources"></a>További Application Insights erőforrások létrehozása
-A különböző alkalmazás-összetevők telemetria elkülönítéséhez, illetve ugyanazon összetevő különböző bélyegzők (dev/test/termelés) elválasztásához létre kell hoznia egy új Application Insights erőforrást.
 
-A [Portal.Azure.com](https://portal.azure.com)adjon hozzá egy Application Insights erőforrást:
-
-![Kattintson az Új, majd az Application Insights lehetőségre](./media/separate-resources/01-new.png)
-
-* Az **alkalmazás típusa** befolyásolja az Áttekintés panelen és a [metrika Explorerben](../../azure-monitor/platform/metrics-charts.md)elérhető tulajdonságokat. Ha nem látja az alkalmazás típusát, válassza ki a weblapok egyik webes típusát.
-* Az **erőforráscsoport** a tulajdonságok, például a hozzáférés- [vezérlés](../../azure-monitor/app/resources-roles-access-control.md)kezelésére szolgáló kényelmi szolgáltatás. Külön erőforráscsoportokat használhat fejlesztési, tesztelési és éles környezetekhez.
-* Az **előfizetés** az Azure-beli fizetési fiók.
-* A **hely** , ahol megtartjuk az adatait. Jelenleg nem módosítható. 
-* A **Hozzáadás az irányítópulton** egy gyors elérésű csempét helyez el az Azure kezdőlapján található erőforráshoz. 
-
-Az erőforrás létrehozása eltarthat néhány másodpercig. Ha elkészült, megjelenik egy riasztás.
-
-(Létrehozhat egy PowerShell- [szkriptet](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically) , amely automatikusan létrehoz egy erőforrást.)
+Az Application ininsights-erőforrások létrehozásához kövesse az [Erőforrás-létrehozási útmutatót](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource).
 
 ### <a name="getting-the-instrumentation-key"></a>A kialakítási kulcs beolvasása
-A kialakítási kulcs azonosítja a létrehozott erőforrást. 
-
-![Kattintson az Essentials elemre, kattintson a kialakítási kulcsra, CTRL + C](./media/separate-resources/02-props.png)
+A kialakítási kulcs azonosítja a létrehozott erőforrást.
 
 Szüksége lesz az összes olyan erőforrás rendszerállapot-kulcsaira, amelyekhez az alkalmazás elküldi az adatait.
 
@@ -90,8 +86,6 @@ Szüksége lesz az összes olyan erőforrás rendszerállapot-kulcsaira, amelyek
 Amikor közzéteszi az alkalmazás új verzióját, a különböző buildek közül választhat, hogy el szeretné-e különíteni a telemetria.
 
 Megadhatja az alkalmazás verzió tulajdonságát, így szűrheti a [keresési](../../azure-monitor/app/diagnostic-search.md) és [metrikai Explorer](../../azure-monitor/platform/metrics-charts.md) eredményeit.
-
-![Tulajdonság szűrése](./media/separate-resources/050-filter.png)
 
 Az alkalmazás verzió tulajdonságának beállítása több különböző módszerrel is elvégezhető.
 
@@ -146,7 +140,6 @@ Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorj
 ### <a name="release-annotations"></a>Kiadási jegyzetek
 Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. Az alábbi képen látható, hogy jelenik meg a jelölő.
 
-![Diagramon található példa kiadási jegyzet képernyőképe](media/separate-resources/release-annotation.png)
 ## <a name="next-steps"></a>További lépések
 
 * [Több szerepkör megosztott erőforrásai](../../azure-monitor/app/app-map.md)

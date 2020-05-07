@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan telepíthet és konfigurálhat egy olyan NGINX beáramlási vezérlőt, amely egy Azure Kubernetes-szolgáltatási (ak-) fürtön használja az automatikus TLS-tanúsítvány létrehozását.
 services: container-service
 ms.topic: article
-ms.date: 01/29/2020
-ms.openlocfilehash: c0c0e885f7802c35b5fa33dfa0f81565d730f32a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.date: 04/27/2020
+ms.openlocfilehash: 59f1b63a5c72ed5583b88af9e42bf5337f358b47
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207190"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561896"
 ---
 # <a name="create-an-https-ingress-controller-on-azure-kubernetes-service-aks"></a>HTTPS bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -32,7 +32,7 @@ Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtr
 
 Ez a cikk azt is feltételezi, hogy van [egy egyéni tartománya][custom-domain] egy olyan [DNS-zónával][dns-zone] , amely ugyanabban az erőforráscsoporthoz tartozik, mint az AK-fürt.
 
-Ez a cikk a [Helm 3][helm] használatával telepíti az NGINX beáramló vezérlőt, a tanúsítvány-kezelőt és egy minta webalkalmazást. Győződjön meg arról, hogy a Helm legújabb kiadását használja. A frissítési utasításokért tekintse meg a [Helm install docs][helm-install]című témakört. A Helm konfigurálásával és használatával kapcsolatos további információkért lásd: [alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)][use-helm].
+Ez a cikk a [Helm 3][helm] használatával telepíti az NGINX beáramló vezérlőt és a tanúsítvány-kezelőt. Győződjön meg arról, hogy a Helm legújabb kiadását használja. A frissítési utasításokért tekintse meg a [Helm install docs][helm-install]című témakört. A Helm konfigurálásával és használatával kapcsolatos további információkért lásd: [alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)][use-helm].
 
 Ehhez a cikkhez az Azure CLI 2.0.64 vagy újabb verzióját is futtatnia kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -171,25 +171,89 @@ kubectl apply -f cluster-issuer.yaml
 
 Be van állítva egy bejövő vezérlő és egy tanúsítványkezelő megoldás. Most futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában a Helm egy egyszerű *Hello World* -alkalmazás két példányának üzembe helyezésére szolgál.
 
-A minta Helm-diagramok telepítése előtt adja hozzá az Azure Samples-tárházat a Helm-környezethez.
+A beáramló vezérlő működés közbeni megtekintéséhez futtasson két bemutató alkalmazást az AK-fürtben. Ebben a példában egy egyszerű `kubectl apply` *Helló World* -alkalmazás két példányának üzembe helyezésére használható.
 
-```console
-helm repo add azure-samples https://azure-samples.github.io/helm-charts/
+Hozzon létre egy *AK-HelloWorld-One. YAML* fájlt, és másolja a következő PÉLDÁBAN szereplő YAML:
+
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-one
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-one
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-one
+    spec:
+      containers:
+      - name: aks-helloworld-one
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "Welcome to Azure Kubernetes Service (AKS)"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-one
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-one
 ```
 
-Hozzon létre egy *Kaba-HelloWorld* nevű bemutató alkalmazást az *Azure-Samples/AK-HelloWorld* Helm diagram használatával.
+Hozzon létre egy *AK-HelloWorld-Two. YAML* fájlt, és másolja a következő PÉLDÁBAN szereplő YAML:
 
-```console
-helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
+```yml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: aks-helloworld-two
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: aks-helloworld-two
+  template:
+    metadata:
+      labels:
+        app: aks-helloworld-two
+    spec:
+      containers:
+      - name: aks-helloworld-two
+        image: neilpeterson/aks-helloworld:v1
+        ports:
+        - containerPort: 80
+        env:
+        - name: TITLE
+          value: "AKS Ingress Demo"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: aks-helloworld-two
+spec:
+  type: ClusterIP
+  ports:
+  - port: 80
+  selector:
+    app: aks-helloworld-two
 ```
 
-Hozzon létre egy második példányt az *HelloWorld-Two*nevű bemutató alkalmazáshoz. Adjon meg egy új címet és egy egyedi szolgáltatásnevet, hogy a két alkalmazás vizuálisan megkülönböztethető legyen a *--set*paranccsal.
+Futtassa a két bemutató alkalmazást a `kubectl apply`használatával:
 
 ```console
-helm install aks-helloworld-two azure-samples/aks-helloworld \
-    --namespace ingress-basic \
-    --set title="AKS Ingress Demo" \
-    --set serviceName="aks-helloworld-two"
+kubectl apply -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl apply -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 ## <a name="create-an-ingress-route"></a>Bejövő forgalom útvonalának létrehozása
@@ -197,6 +261,9 @@ helm install aks-helloworld-two azure-samples/aks-helloworld \
 Mindkét alkalmazás már fut a Kubernetes-fürtön. Azonban olyan típusú `ClusterIP` szolgáltatással vannak konfigurálva, amely nem érhető el az internetről. A nyilvánosan elérhetővé tételéhez hozzon létre egy Kubernetes-bejövő erőforrást. A bejövő erőforrás konfigurálja azokat a szabályokat, amelyek átirányítják a forgalmat a két alkalmazás egyikére.
 
 A következő példában a *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN* az *AK-HelloWorld* szolgáltatáshoz van irányítva. A *Hello-World-beáramló címekre irányuló forgalom. MY_CUSTOM_DOMAIN/Hello-World-Two* átirányítva az *AK-HelloWorld-Two* szolgáltatáshoz. Forgalom a *Hello-World-inbehatolással. MY_CUSTOM_DOMAIN/statikus* a rendszer a (z) *HelloWorld* nevű szolgáltatáshoz irányítja a statikus eszközökhöz.
+
+> [!NOTE]
+> Ha az egyéni tartomány helyett a bejövő vezérlő IP-címéhez teljes tartománynevet állított be, akkor a *Hello-World-beáramló helyett használja a teljes tartománynevet. MY_CUSTOM_DOMAIN*. Például ha a teljes tartománynév *demo-AKS-ingress.eastus.cloudapp.Azure.com*, cserélje le a *Hello-World-inbehatolást. MY_CUSTOM_DOMAIN* a *demo-AKS-ingress.eastus.cloudapp.Azure.com* a `hello-world-ingress.yaml`alkalmazásban.
 
 Hozzon létre egy `hello-world-ingress.yaml` nevű fájlt az alábbi példa YAML használatával. Frissítse a *gazdagépeket és a* *gazdagépet* az előző lépésben létrehozott DNS-névre.
 
@@ -219,7 +286,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /(.*)
       - backend:
@@ -245,7 +312,7 @@ spec:
     http:
       paths:
       - backend:
-          serviceName: aks-helloworld
+          serviceName: aks-helloworld-one
           servicePort: 80
         path: /static(/|$)(.*)
 ```
@@ -285,12 +352,6 @@ A teljes minta névtér törléséhez használja a `kubectl delete` parancsot, �
 kubectl delete namespace ingress-basic
 ```
 
-Ezután távolítsa el a Helm-tárházat az AK Hello World alkalmazáshoz:
-
-```console
-helm repo remove azure-samples
-```
-
 ### <a name="delete-resources-individually"></a>Erőforrások egyenkénti törlése
 
 Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozott egyéni erőforrásokat. Először távolítsa el a fürt kiállítói erőforrásait:
@@ -299,33 +360,30 @@ Azt is megteheti, hogy egy részletesebb megközelítéssel törli a létrehozot
 kubectl delete -f cluster-issuer.yaml --namespace ingress-basic
 ```
 
-Sorolja fel az `helm list` paranccsal a Helm kiadásait. Keresse meg az *Nginx-beáramló* és az *AK-HelloWorld*nevű diagramot az alábbi példában látható módon:
+Sorolja fel az `helm list` paranccsal a Helm kiadásait. Keresse meg az *Nginx* és a *CERT-Manager*nevű diagramot az alábbi példában látható módon:
 
 ```
 $ helm list --namespace ingress-basic
 
 NAME                    NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                   APP VERSION
-aks-helloworld          ingress-basic   1               2020-01-15 10:24:32.054871 -0600 CST    deployed        aks-helloworld-0.1.0               
-aks-helloworld-two      ingress-basic   1               2020-01-15 10:24:37.671667 -0600 CST    deployed        aks-helloworld-0.1.0               
 cert-manager            ingress-basic   1               2020-01-15 10:23:36.515514 -0600 CST    deployed        cert-manager-v0.13.0    v0.13.0    
 nginx                   ingress-basic   1               2020-01-15 10:09:45.982693 -0600 CST    deployed        nginx-ingress-1.29.1    0.27.0  
 ```
 
-Törölje a kiadásokat a `helm delete` paranccsal. A következő példa törli az NGINX beáramló üzembe helyezését, valamint a két mintául szolgáló Hello World alkalmazást.
+Távolítsa el a kiadásokat a `helm uninstall` paranccsal. Az alábbi példa eltávolítja az NGINX bejövő és a tanúsítvány-kezelő üzemelő példányait.
 
 ```
-$ helm uninstall aks-helloworld aks-helloworld-two cert-manager nginx --namespace ingress-basic
+$ helm uninstall cert-manager nginx --namespace ingress-basic
 
-release "aks-helloworld" uninstalled
-release "aks-helloworld-two" uninstalled
 release "cert-manager" uninstalled
 release "nginx" uninstalled
 ```
 
-Ezt követően távolítsa el a Helm-tárházat az AK Hello World alkalmazáshoz:
+Ezután távolítsa el a két minta alkalmazást:
 
 ```console
-helm repo remove azure-samples
+kubectl delete -f aks-helloworld-one.yaml --namespace ingress-basic
+kubectl delete -f aks-helloworld-two.yaml --namespace ingress-basic
 ```
 
 Távolítsa el a bejövő forgalom útvonalát, amely irányítja a forgalmat a mintául szolgáló alkalmazásokba:

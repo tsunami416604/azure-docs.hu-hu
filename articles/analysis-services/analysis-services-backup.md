@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot kész�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/24/2020
+ms.date: 04/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2866ec860cbc9037aa6b57389b35f17ec71a7c9d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 02ca7f268f2998d3b7d73ab9fc00bbd688b5f50c
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145462"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582530"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -107,5 +107,5 @@ Használja a [Restore-ASDatabase](https://docs.microsoft.com/powershell/module/s
 ## <a name="related-information"></a>Kapcsolódó információk
 
 [Azure Storage-fiókok](../storage/common/storage-create-storage-account.md)  
-[Magas rendelkezésre állás](analysis-services-bcdr.md)     
-[Azure Analysis Services kezelése](analysis-services-manage.md)
+[Magas rendelkezésre állás](analysis-services-bcdr.md)      
+[Analysis Services hálózati kapcsolat – gyakori kérdések](analysis-services-network-faq.md)

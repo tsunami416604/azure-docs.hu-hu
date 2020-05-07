@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: c3ed780bc50b690b2f5c3285024695ec6426b9b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77167313"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559991"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
@@ -38,7 +38,7 @@ Vegye figyelembe, hogy a bemelegedési trigger csak a kibővített műveletekben
 
 ## <a name="trigger---example"></a>Trigger – példa
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely minden egyes új példányon fut, amikor hozzáadják az alkalmazáshoz. Nincs szükség visszatérési érték attribútumra.
 
@@ -188,7 +188,7 @@ public void run( ExecutionContext context) {
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)az `WarmupTrigger` attribútum a függvény konfigurálására használható.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Ez a példa a [bemelegedési](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) attribútum használatát mutatja be.
 
@@ -240,7 +240,7 @@ A meghívásakor a bemelegedési által aktivált függvények nem kapnak továb
 ## <a name="trigger---limits"></a>Trigger – korlátok
 
 * A bemelegedési trigger csak a [prémium csomagon](./functions-premium-plan.md)futó alkalmazások számára érhető el.
-* A bemelegedési trigger csak vertikális Felskálázási műveletek során hívható meg, az újraindítások vagy más nem léptékű indítások során. A bemelegedési trigger használata nélkül gondoskodnia kell arról, hogy a logikája az összes szükséges függőséget be tudja tölteni. A lusta betöltés jó példa ennek megvalósítására.
+* A bemelegedési trigger csak a kibővített műveletekben, az újraindítások vagy más nem léptékű indítások során hívható meg. A bemelegedési trigger használata nélkül gondoskodnia kell arról, hogy a logikája az összes szükséges függőséget be tudja tölteni. A lusta betöltés jó példa ennek megvalósítására.
 * A bemelegedési eseményindító nem hívható meg, ha egy példány már fut.
 * Function App-alkalmazásban csak egy bemelegedési trigger függvény adható meg.
 

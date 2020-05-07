@@ -1,7 +1,7 @@
 ---
 title: Több bérlői interakció jellemzői – Azure AD | Microsoft Docs
-description: Azure Active Directory bérlők teljes mértékben független szervezetekként való megismerése
-services: active-tenant
+description: A Azure Active Directory-szervezetek adatfüggetlenségének megismerése
+services: active-directory
 documentationcenter: ''
 author: curtand
 manager: daveba
@@ -9,21 +9,21 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/07/2020
+ms.date: 04/29/2020
 ms.author: curtand
 ms.custom: it-pro
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 175d9ce7db1657e0e654f46adaf8a8d8ef28c25e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbe7b0211775e59504443d30fa253cfa14af13b1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878119"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582745"
 ---
 # <a name="understand-how-multiple-azure-active-directory-organizations-interact"></a>Ismerje meg, hogyan hatnak több Azure Active Directory szervezet
 
-Az Azure Active Directory (Azure AD) minden bérlő egy teljesen független szervezet: olyan társ, amely logikailag független a felügyelt többi Azure AD-szervezettől. A szervezetek közötti függetlenség magában foglalja az erőforrások függetlenségét, a felügyelet függetlenségét és a szinkronizálás függetlenségét. A szervezetek között nincs szülő-gyermek kapcsolat.
+Azure Active Directory (Azure AD) esetében minden Azure AD-szervezet teljesen független: olyan társ, amely logikailag független a többi felügyelt Azure AD-szervezettől. A szervezetek közötti függetlenség magában foglalja az erőforrások függetlenségét, a felügyelet függetlenségét és a szinkronizálás függetlenségét. A szervezetek között nincs szülő-gyermek kapcsolat.
 
 ## <a name="resource-independence"></a>Erőforrás-függetlenség
 

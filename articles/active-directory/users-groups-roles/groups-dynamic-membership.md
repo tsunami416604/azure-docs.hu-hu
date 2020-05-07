@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/27/2019
+ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6f8237ac13744e56baa8551f8cced12b2785a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a399ee43ef0ce97274f060b7a5b7df46fb523605
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81114741"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582899"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -31,7 +31,7 @@ Ha a felhasználó vagy az eszköz bármely attribútuma megváltozik, a rendsze
 - Nem hozható létre eszközcsoport az eszköz tulajdonosai attribútumai alapján. Az eszközök tagsági szabályai csak az eszköz attribútumait hivatkozhatják.
 
 > [!NOTE]
-> Ehhez a szolgáltatáshoz egy prémium szintű Azure AD P1 licenc szükséges minden olyan egyedi felhasználóhoz, amely egy vagy több dinamikus csoport tagja. Nem kell licenceket hozzárendelni a felhasználókhoz, hogy azok a dinamikus csoportok tagjai legyenek, de a bérlőben lévő licencek minimális száma csak az összes ilyen felhasználóra vonatkozik. Ha például összesen 1 000 egyedi felhasználó szerepelt a bérlő összes dinamikus csoportjában, akkor legalább 1 000 licenccel kell rendelkeznie a prémium szintű Azure AD P1-hez, hogy megfeleljen a licenc követelményeinek.
+> Ehhez a szolgáltatáshoz egy prémium szintű Azure AD P1 licenc szükséges minden olyan egyedi felhasználóhoz, amely egy vagy több dinamikus csoport tagja. Nem kell licenceket hozzárendelni a felhasználókhoz, hogy azok a dinamikus csoportok tagjai legyenek, de az Azure AD-szervezetben minimális számú licenccel kell rendelkeznie az összes ilyen felhasználó lefedéséhez. Ha például összesen 1 000 egyedi felhasználó szerepelt a szervezet összes dinamikus csoportjában, akkor legalább 1 000 licenccel kell rendelkeznie a prémium szintű Azure AD P1-hez, hogy megfeleljenek a licenc követelményeinek.
 > Nem szükséges licenc a dinamikus eszközcsoport tagjaihoz tartozó eszközökhöz.
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Szabálykészlet a Azure Portalban
@@ -310,20 +310,20 @@ Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
 A következő tippek segíthetnek a szabály megfelelő használatához.
 
 - A **kezelő azonosítója** a felettes objektumazonosító. A kezelő **profiljában**található.
-- A szabály működéséhez győződjön meg arról, hogy a **kezelő** tulajdonság helyesen van beállítva a bérlő felhasználói számára. A felhasználó **profiljában**megtekintheti az aktuális értéket.
+- A szabály működéséhez győződjön meg arról, hogy a **felettes** tulajdonság helyesen van beállítva a szervezet felhasználói számára. A felhasználó **profiljában**megtekintheti az aktuális értéket.
 - Ez a szabály csak a felettes közvetlen jelentéseit támogatja. Más szóval nem hozhat létre csoportot a felettes közvetlen jelentéseivel *és* jelentéseivel.
 - Ez a szabály nem kombinálható más tagsági szabályokkal.
 
 ### <a name="create-an-all-users-rule"></a>"Minden felhasználó" szabály létrehozása
 
-Létrehozhat egy olyan csoportot, amely a bérlőn belüli összes felhasználót egy tagsági szabály használatával hozza létre. Ha a későbbiekben a felhasználókat hozzáadják vagy eltávolítják a bérlőből, a rendszer automatikusan módosítja a csoport tagságát.
+Létrehozhat egy olyan csoportot, amely a szervezeten belüli összes felhasználót egy tagsági szabály használatával hozza létre. Ha a későbbiekben a felhasználók hozzáadása vagy eltávolítása történik a szervezetből, a rendszer automatikusan módosítja a csoport tagságát.
 
 A "minden felhasználó" szabályt egyetlen kifejezéssel kell kiépíteni a-ne operátor és a Null érték használatával. Ez a szabály VÁLLALATKÖZI vendég felhasználókat, valamint a csoport felhasználóit adja hozzá.
 
 ```
 user.objectId -ne null
 ```
-Ha azt szeretné, hogy a csoport kizárjon vendég felhasználókat, és csak a bérlő tagjait tartalmazza, a következő szintaxist használhatja:
+Ha azt szeretné, hogy a csoport kizárjon vendég felhasználókat, és csak a szervezet tagjait tartalmazza, a következő szintaxist használhatja:
 
 ```
 (user.objectId -ne null) -and (user.userType -eq "Member")
@@ -331,7 +331,7 @@ Ha azt szeretné, hogy a csoport kizárjon vendég felhasználókat, és csak a 
 
 ### <a name="create-an-all-devices-rule"></a>"Minden eszköz" szabály létrehozása
 
-Létrehozhat egy olyan csoportot, amely a bérlőn belüli összes eszközt egy tagsági szabály használatával is létrehozhatja. Ha az eszközöket később hozzáadják vagy eltávolítják a bérlőből, a rendszer automatikusan módosítja a csoport tagságát.
+Létrehozhat egy olyan csoportot, amely a szervezeten belüli összes eszközt egy tagsági szabály használatával hozza létre. Ha az eszközöket a későbbiekben hozzáadja vagy eltávolítja a szervezetből, a rendszer automatikusan módosítja a csoport tagságát.
 
 A "minden eszköz" szabályt egyetlen kifejezéssel kell kiépíteni a-ne operátor és a Null érték használatával:
 

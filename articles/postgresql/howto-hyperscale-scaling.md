@@ -4,14 +4,15 @@ description: A kiszolgáló csoport memóriájának, lemezének és CPU-erőforr
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
+ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 3/16/2020
-ms.openlocfilehash: fa48ca287c248155a0271b5134be782d8db1c785
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8e8e1672f754e843a3bd1c75d496599d31e5f11
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063104"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82584000"
 ---
 # <a name="scale-a-hyperscale-citus-server-group"></a>Nagy kapacitású-(Citus-) kiszolgálócsoport méretezése
 

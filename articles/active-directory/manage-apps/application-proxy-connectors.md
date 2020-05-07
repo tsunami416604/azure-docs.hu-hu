@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f1b8b9af8f90629d087246edf0cb3426bd9b66c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3737603360d3fce9d6e11e6c4ce9b2de58f76a6d
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406832"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583124"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Az Azure AD Application Proxy-összekötők ismertetése
 
@@ -136,7 +136,7 @@ A hálózat optimalizálásával kapcsolatos további információkért tekintse
 
 Az összekötők olyan gépen is futtathatók, amely nincs tartományhoz csatlakoztatva. Ha azonban egyszeri bejelentkezésre (SSO) van szüksége az integrált Windows-hitelesítést (IWA) használó alkalmazásokhoz, a tartományhoz csatlakoztatott számítógépekre van szükség. Ebben az esetben az összekötő gépeket olyan tartományhoz kell csatlakoztatni, amely képes a felhasználók nevében [Kerberos](https://web.mit.edu/kerberos) által korlátozott delegálás végrehajtására a közzétett alkalmazásokhoz.
 
-Az összekötők olyan tartományokhoz vagy erdőkhöz is csatlakozhatnak, amelyek részleges megbízhatósággal rendelkeznek, vagy írásvédett tartományvezérlők.
+Az összekötők olyan erdők tartományához is csatlakozhatnak, amelyek részleges megbízhatósággal rendelkeznek, vagy írásvédett tartományvezérlők.
 
 ## <a name="connector-deployments-on-hardened-environments"></a>Összekötő üzembe helyezése megerősített környezetekben
 

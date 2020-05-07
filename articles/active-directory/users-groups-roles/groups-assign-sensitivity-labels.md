@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 667fb39aabfec14cff01221b82a45ba8ad1d68d4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e4dabad5057fda39fe3753c810a85e6aeb55b3a
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78329732"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582955"
 ---
 # <a name="assign-sensitivity-labels-to-office-365-groups-in-azure-active-directory-preview"></a>Érzékenységi címkék társítása az Office 365-csoportokhoz Azure Active Directory (előzetes verzió)
 
@@ -112,10 +112,10 @@ A funkció engedélyezése után a csoportok "klasszikus" besorolása csak a meg
 
 Az érzékenységi címke beállítás csak akkor jelenik meg a csoportok esetében, ha a következő feltételek teljesülnek:
 
-1. A címkék a Microsoft 365 megfelelőségi központban jelennek meg a bérlő számára.
+1. A címkék az Azure AD-szervezet Microsoft 365 megfelelőségi központjában jelennek meg.
 1. A szolgáltatás engedélyezve van, a EnableMIPLabels True értékre van állítva a PowerShellben.
 1. A csoport egy Office 365-csoport.
-1. A bérlő aktív prémium szintű Azure Active Directory P1 licenccel rendelkezik.
+1. A szervezet aktív prémium szintű Azure Active Directory P1 licenccel rendelkezik.
 1. A jelenlegi bejelentkezett felhasználónak megfelelő jogosultsága van a címkék hozzárendeléséhez. A felhasználónak globális rendszergazdának, csoport rendszergazdának vagy a csoport tulajdonosának kell lennie.
 
 Győződjön meg arról, hogy az összes feltétel teljesül, hogy címkéket rendeljen egy csoporthoz.
