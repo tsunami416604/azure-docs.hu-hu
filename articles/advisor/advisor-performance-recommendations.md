@@ -3,12 +3,12 @@ title: Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 description: Az Advisor használatával optimalizálja az Azure-beli üzemelő példányok teljesítményét.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 405ec395feeb33b8511b9b915151b2ed9503c371
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443060"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787940"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Az Azure-alkalmazások teljesítményének javítása Azure Advisor
 
@@ -28,6 +28,10 @@ Az Advisor egységes, összevont áttekintést nyújt az összes Azure-erőforr�
 > A javaslatok beszerzéséhez egy adatbázisnak körülbelül egy hétig kell lennie, és ezen a héten belül bizonyos konzisztens tevékenységnek kell lennie. A SQL Database Advisor könnyebben optimalizálható a konzisztens lekérdezési mintáknál, mint a tevékenységek véletlenszerű kitörése esetén.
 
 További információ a SQL Database Advisorről: [SQL Database Advisor](https://azure.microsoft.com/documentation/articles/sql-database-advisor/).
+
+## <a name="upgrade-your-storage-client-library-to-the-latest-version-for-better-reliability-and-performance"></a>A nagyobb megbízhatóság és jobb teljesítmény érdekében frissítse a Storage-ügyfélkódtárat a legújabb verzióra
+
+A Storage-ügyfélkódtár/SDK legújabb verziója tartalmazza az ügyfelek által jelentett és a minőségbiztosítási folyamat során proaktívan azonosított problémák javításait. Ezenkívül a legújabb verzió megbízhatóságot és teljesítményoptimalizálást is biztosít az új funkciók mellett, amelyek javíthatják az Azure Storage használatának általános élményét. Az Advisor ajánlásokat és lépéseket tartalmaz az SDK legújabb verziójára való frissítéshez, ha elavult verziójú. A javaslatok a támogatott nyelvek – C++ és .net.
 
 ## <a name="improve-app-service-performance-and-reliability"></a>A App Service teljesítményének és megbízhatóságának javítása
 
@@ -73,6 +77,26 @@ Telepítse át a Storage-fiók telepítési modelljét Azure Resource Managerra 
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Tervezze meg a Storage-fiókokat, hogy megakadályozza a maximális előfizetési korlátot
 
 Egy Azure-régió legfeljebb 250 Storage-fiókot tud támogatni előfizetésre. Ha elérte a korlátot, nem fog tudni további Storage-fiókokat létrehozni az adott régióban/előfizetések kombinációjában. Az Advisor megkeresi az előfizetéseket és a felületre vonatkozó javaslatokat, hogy kevesebb Storage-fiókot tervezzen meg, amelyek közel állnak a maximális korlát eléréséhez.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Érdemes megfontolni a VNet Gateway SKU méretének növelését a magas P2S-használat érdekében
+
+Minden átjáró SKU csak az egyidejű P2S-kapcsolatok megadott számát támogatja. Ha a kapcsolatok száma megközelíti az átjáró korlátját, a további kapcsolódási kísérletek sikertelenek lehetnek. Az átjáró méretének növelése lehetővé teszi az egyidejű P2S-felhasználók támogatását. Az Advisor ajánlásokat és lépéseket tesz elérhetővé.
+
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Érdemes megfontolni a VNet Gateway SKU méretének növelését a magas CPU-megoldáshoz
+
+A nagy forgalmú terhelés alatt a VPN-átjáró magas CPU miatt csökkenhet a csomagok. Érdemes lehet frissíteni a VPN Gateway SKU-t, mivel a VPN-t folyamatosan futtatták a-ben. A VPN-átjáró méretének növelésével biztosíthatja, hogy a kapcsolatok ne legyenek elvetve a magas CPU miatt. Advisor provdes-javaslat a probléma proaktív megoldásához. 
+
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>A köteg méretének növelése a terhelés maximalizálása, az adattömörítés és a lekérdezési teljesítmény maximalizálása érdekében
+
+Az Advisor felismeri, hogy növelheti a terhelési teljesítményt és az átviteli sebességet azáltal, hogy növeli a köteg méretét az adatbázisba való betöltéskor. Érdemes lehet a COPY utasítást használni. Ha nem tudja használni a COPY utasítást, vegye fontolóra a Batch méretének növelését, ha olyan betöltési segédprogramokat használ, mint például a SQLBulkCopy API vagy a BCP – a jó ökölszabály a 100 000 – 1 000-es sorok közötti batch-méret. Ez növeli a terhelési sebességet, az adattömörítést és a lekérdezési teljesítményt.
+
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>A tárolási fiók megkeresése ugyanazon a régión belül a késés minimalizálásához a betöltéskor
+
+Az Advisor felismeri, hogy egy olyan régióból töltődik be, amely eltér az SQL-készlettől. Érdemes megfontolni az olyan Storage-fiók betöltését, amely ugyanabban a régióban található, mint az SQL-készlet, hogy az adatok betöltése során csökkentse a késést. Ez segít csökkenteni a késést, és növeli a terhelési teljesítményt.
+
+## <a name="unsupported-kubernetes-version-is-detected"></a>A rendszer nem támogatott Kubernetes-verziót észlelt
+
+Az Advisor észleli, ha a rendszer nem támogatott Kubernetes-verziót észlelt. A javaslat segítséget nyújt annak biztosításához, hogy a Kubernetes-fürt támogatott verzióval fusson.
 
 ## <a name="optimize-the-performance-of-your-azure-mysql-azure-postgresql-and-azure-mariadb-servers"></a>Az Azure MySQL, az Azure PostgreSQL és az Azure MariaDB-kiszolgálók teljesítményének optimalizálása 
 

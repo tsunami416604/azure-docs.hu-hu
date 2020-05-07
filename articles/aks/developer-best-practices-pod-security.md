@@ -1,18 +1,17 @@
 ---
-title: A pod biztonsági bevált eljárásai
-titleSuffix: Azure Kubernetes Service
+title: Fejlesztői ajánlott eljárások – Pod Security az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg az Azure Kubernetes szolgáltatásban (ak) található hüvelyek biztonságossá tételét ismertető fejlesztői ajánlott eljárásokat
 services: container-service
 author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1f093b5276ee7ab334043e57f97a108267c32c87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804384"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779067"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a pod Security számára az Azure Kubernetes szolgáltatásban (ak)
 
@@ -75,7 +74,7 @@ Ha korlátozni szeretné az alkalmazás kódjában elérhető hitelesítő adato
 A következő [társított AK nyílt forráskódú projektek][aks-associated-projects] lehetővé teszik a hüvelyek automatikus hitelesítését, illetve a digitális tárolóban a hitelesítő adatok és kulcsok kérését:
 
 * Felügyelt identitások az Azure-erőforrásokhoz és
-* Azure Key Vault FlexVol-illesztőprogram
+* [Azure Key Vault-szolgáltató a Secrets Store CSI-illesztőprogramhoz](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
 
 Az Azure technikai támogatási szolgálata nem támogatja a társított AK nyílt forráskódú projektjeit. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Ezek a projektek éles használatra nem ajánlottak.
 
@@ -89,28 +88,28 @@ Felügyelt identitás esetén az alkalmazás kódjának nem kell tartalmaznia a 
 
 A pod-identitásokkal kapcsolatos további információkért lásd: [AK-fürtök beállítása a pod felügyelt identitások és az alkalmazásai használatára][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-flexvol"></a>Azure Key Vault használata a FlexVol
+### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Azure Key Vault használata a Secrets Store CSI-illesztőprogrammal
 
-A felügyelt Pod-identitások remekül működnek az Azure-szolgáltatások támogatásával történő hitelesítéshez. Az Azure-erőforrásokhoz felügyelt identitás nélküli saját szolgáltatásokhoz vagy alkalmazásokhoz hitelesítő adatok vagy kulcsok használatával továbbra is hitelesítheti magát. A hitelesítő adatok tárolásához digitális tároló használható.
+A pod Identity projekt használata lehetővé teszi a hitelesítést az Azure-szolgáltatások támogatásával. Az Azure-erőforrásokhoz felügyelt identitás nélküli saját szolgáltatások vagy alkalmazások esetén a hitelesítő adatok vagy kulcsok használatával továbbra is hitelesíthető. A titkos tartalmak tárolására a digitális tároló használható.
 
-Ha az alkalmazásoknak hitelesítő adatokra van szükségük, kommunikálnak a digitális tárolóval, lekérik a legújabb hitelesítő adatokat, majd csatlakoznak a szükséges szolgáltatáshoz. Azure Key Vault lehet ez a digitális tároló. A következő ábrán látható az egyszerűsített munkafolyamat, amely a Azure Key Vault a pod felügyelt identitások használatával beolvassa a hitelesítő adatokat.
+Ha az alkalmazásoknak hitelesítő adatokra van szükségük, kommunikálnak a digitális tárolóval, lekérik a legújabb titkos tartalmakat, majd csatlakoznak a szükséges szolgáltatáshoz. Azure Key Vault lehet ez a digitális tároló. A következő ábrán látható az egyszerűsített munkafolyamat, amely a Azure Key Vault a pod felügyelt identitások használatával beolvassa a hitelesítő adatokat.
 
-![Egyszerűsített munkafolyamat a hitelesítő adatok beolvasásához a Key Vault Pod által felügyelt identitás használatával](media/developer-best-practices-pod-security/basic-key-vault-flexvol.png)
+![Egyszerűsített munkafolyamat a hitelesítő adatok beolvasásához a Key Vault Pod által felügyelt identitás használatával](media/developer-best-practices-pod-security/basic-key-vault.png)
 
-A Key Vault a titkokat, például a hitelesítő adatokat, a Storage-fiók kulcsait vagy a tanúsítványokat tárolja és rendszeresen elforgatja. FlexVolume használatával integrálhat Azure Key Vault egy AK-fürttel. A FlexVolume-illesztőprogram lehetővé teszi, hogy az AK-fürt natív módon beolvassa a hitelesítő adatokat a Key Vaultból, és biztonságosan biztosítsa azokat csak a kérelmező Pod számára. Működjön együtt a fürt üzemeltetőjével, és telepítse a Key Vault FlexVol-illesztőprogramot az AK-csomópontokra. A pod által felügyelt identitással hozzáférést igényelhet Key Vaulthoz, és lekérheti a szükséges hitelesítő adatokat a FlexVolume-illesztőprogramon keresztül.
+A Key Vault a titkokat, például a hitelesítő adatokat, a Storage-fiók kulcsait vagy a tanúsítványokat tárolja és rendszeresen elforgatja. A [Secrets Store CSI-illesztőprogram Azure Key Vault szolgáltatójának](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)használatával integrálhatja Azure Key Vaultt egy AK-fürttel. A Secrets Store CSI-illesztőprogram lehetővé teszi, hogy az AK-fürt natív módon beolvassa a titkos tartalmat a Key Vaultból, és biztonságosan biztosítsa azokat csak a kérelmező Pod számára. Működjön együtt a fürt üzemeltetőjével, hogy a Secrets Store CSI-illesztőprogramot az AK munkavégző csomópontokra telepítse. A pod felügyelt identitással hozzáférést kérhet Key Vaulthoz, és beolvashatja a Secrets Store CSI-illesztőprogramon keresztül szükséges titkos tartalmat.
 
-A FlexVol-hez készült Azure Key Vault a Linux-hüvelyeken és-csomópontokon futó alkalmazásokkal és szolgáltatásokkal használható.
+A Secrets Store-ban található Azure Key Vault a 1,16-es vagy újabb Kubernetes-verziót használó Linux-csomópontokhoz és hüvelyekhez használható. A Windows-csomópontok és a hüvelyek esetében a 1,18-es vagy újabb Kubernetes-verzió szükséges.
 
 ## <a name="next-steps"></a>További lépések
 
 Ez a cikk a hüvely biztonságossá tételére koncentrál. Ezen területek némelyikének megvalósításához tekintse meg a következő cikkeket:
 
 * [Felügyelt identitások használata Azure-erőforrásokhoz AK-val][aad-pod-identity]
-* [Azure Key Vault integrálása AK-val][aks-keyvault-flexvol]
+* [Azure Key Vault integrálása AK-val][aks-keyvault-csi-driver]
 
 <!-- EXTERNAL LINKS -->
 [aad-pod-identity]: https://github.com/Azure/aad-pod-identity#demo
-[aks-keyvault-flexvol]: https://github.com/Azure/kubernetes-keyvault-flexvol
+[aks-keyvault-csi-driver]: https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage
 [linux-capabilities]: http://man7.org/linux/man-pages/man7/capabilities.7.html
 [selinux-labels]: https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.12/#selinuxoptions-v1-core
 [aks-associated-projects]: https://github.com/Azure/AKS/blob/master/previews.md#associated-projects

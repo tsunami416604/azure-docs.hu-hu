@@ -1,20 +1,20 @@
 ---
-title: Bevezetési API Azure-alkalmazásokhoz a kereskedelmi piactéren
-description: Az Azure-alkalmazások API-előfeltételei a kereskedelmi piactéren a Microsoft partner Centerben.
+title: A partner Center beküldési API-ját az Azure-alkalmazások előkészítéséhez a Microsoft kereskedelmi piactéren
+description: Ismerje meg, hogy milyen előfeltételeket kell használni a partner Center beküldési API Azure-alkalmazásokhoz való használatához a kereskedelmi piactéren a Microsoft partner Centerben.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: cc4d56058ce3985ec3a1d9124ef4ec73ff6be1a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2c37e51ad0c6618e20d9445fab7472b1a3a72ab9
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279759"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744894"
 ---
-# <a name="api-for-onboarding-azure-apps-in-partner-center"></a>API az Azure-alkalmazások a partner Centerben való bevezetéséhez
+# <a name="partner-center-submission-api-to-onboard-azure-apps-in-partner-center"></a>A partner Center beküldési API-ját az Azure Apps szolgáltatásba a partner Centerben
 
 A *partner Center beküldési API* használatával programozott módon kérdezheti le, hozhat létre és tehet közzé Azure-ajánlatokat.  Ez az API akkor hasznos, ha a fiók számos ajánlatot kezel, és szeretné automatizálni és optimalizálni az ajánlatok beküldési folyamatát.
 
@@ -70,3 +70,8 @@ A `POST URI` és a *client_id* és a *client_secret* paraméterek *tenant_id* é
 Az Azure AD hozzáférési jogkivonattal metódusokat hívhat a partner Center beküldési API-ban. A kiküldetések létrehozásához vagy frissítéséhez általában több metódust kell meghívni a partner Center beküldési API-ban egy adott sorrendben. Az egyes forgatókönyvekkel és az egyes módszerek szintaxisával kapcsolatos információkért tekintse meg a betöltés API-hencegés című témakört.
 
 https://apidocs.microsoft.com/services/partneringestion/
+
+## <a name="next-steps"></a>További lépések
+
+* Ismerje meg, hogyan hozhat létre egy Azure-beli [virtuális gép technikai eszközét](create-azure-container-technical-assets.md)
+* A kapa megismerése [Azure Container-ajánlat](create-azure-container-offer.md) létrehozásához

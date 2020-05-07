@@ -1,20 +1,20 @@
 ---
-title: A partner Center kereskedelmi piactérének elemzései
-description: Tekintse át az elemzési jelentések elérését az értékesítések figyeléséhez, a teljesítmény kiértékeléséhez és a Piactéri ajánlatok optimalizálásához.
+title: Analitika a Microsoft kereskedelmi piactérhez a partner Centerben
+description: Ismerje meg, hogyan érheti el az elemzési jelentéseket az értékesítések figyeléséhez, a teljesítmény értékeléséhez és a Piactéri ajánlatok Microsoft partner Centerben való optimalizálásához.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 41b9c5244ce9d468d9bf0fb7bafa719b4e6f55ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c406efd30e891c8ca69481299801e7309cdff81
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262281"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744910"
 ---
-# <a name="analytics-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi piactérének elemzései
+# <a name="access-analytic-reports-for-the-commercial-marketplace-in-partner-center"></a>A partner Center kereskedelmi piactérről származó analitikai jelentések elérése
 
 Ismerje meg, hogyan érheti el az elemzési jelentéseket a Microsoft partner Centerben az értékesítések figyelése, a teljesítmény kiértékelése és az ajánlatok a piactéren való optimalizálása érdekében. Partnerként a partner Center által támogatott adatvizualizációk és betekintési diagramok segítségével figyelheti az ajánlati listáját, és megtalálhatja az értékesítés maximalizálásának módjait. A továbbfejlesztett elemzési eszközök lehetővé teszik a teljesítménybeli eredmények elvégzését, valamint az ügyfelekkel és viszonteladókkal való jobb kapcsolatok fenntartását.
 

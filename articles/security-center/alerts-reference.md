@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: ef715ed7df1cc203e66bb33cd1493a7f7a713327
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b96547b841c26f12aff2db781ce55c49ef9cde4
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081608"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790626"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -294,7 +294,7 @@ A riasztások táblázat alatti táblázat a riasztások szándékának kategori
 |**Hozzáférés egy Tor-kilépési csomópontról egy Storage-fiókba**|Azt jelzi, hogy ez a fiók sikeresen elérhető egy olyan IP-címről, amely a Tor aktív kilépési csomópontjának (anonimizálásával-proxy) ismert. Ennek a riasztásnak a súlyossága figyelembe veszi a használt hitelesítési típust (ha van ilyen), és hogy ez az ilyen hozzáférés első esete-e. Lehetséges okok lehetnek olyan támadók, akik a Tor használatával hozzáfértek a Storage-fiókjához, vagy egy olyan legitim felhasználó, aki a Tor használatával fér hozzá a Storage-fiókhoz.|Szondázás/kiaknázás|Magasság|
 |**Hozzáférés szokatlan helyről egy Storage-fiókhoz**|Azt jelzi, hogy a hozzáférési minta egy Azure Storage-fiókra módosult. Valaki hozzáfért a fiókhoz egy, a legutóbbi tevékenységhez képest ismeretlen IP-címről. Vagy egy támadó hozzáfért a fiókhoz, vagy egy megbízható felhasználó új vagy szokatlan földrajzi helyről kapcsolódott. Az utóbbi egy példa egy új alkalmazásból vagy fejlesztőből származó távoli karbantartásra.|Kihasználásának|Alacsony|
 |**Névtelen hozzáférés egy Storage-fiókhoz**|Azt jelzi, hogy a hozzáférési minta módosult egy Storage-fiókhoz. A fiókhoz például névtelenül (hitelesítés nélkül) férhet hozzá, ami nem várt, mint a fiók legutóbbi hozzáférési mintája. Ennek lehetséges oka, hogy egy támadó nyilvános olvasási hozzáférést kapott a blob Storage-t tároló tárolóhoz.|Kihasználásának|Magasság|
-|**A Storage-fiókba feltöltött lehetséges kártevő szoftverek**|Azt jelzi, hogy egy lehetséges kártevőt tartalmazó blob feltöltve lett egy Storage-fiókba. A lehetséges okok miatt előfordulhat, hogy a támadók szándékos kártevőket töltenek fel egy ártó szándékú, rosszindulatú blob általi feltöltéssel, amely egy legitim felhasználó.|LateralMovement|Magasság|
+|**A Storage-fiókba feltöltött lehetséges kártevő szoftverek**|Azt jelzi, hogy egy lehetséges kártevőt tartalmazó blob feltöltve lett egy Storage-fiókba. Ez a riasztás az alapul szolgáló kivonatok elemzése, amely a Microsoft Threat Intelligence hatékonyságát hasznosítja, beleértve a vírusok, trójaiak, kémprogramok és ransomware kivonatait is. A lehetséges okok közé tartozhatnak a támadók szándékos kártevők általi feltöltése, vagy egy legitim felhasználó által esetlegesen rosszindulatú blob véletlen feltöltése. További információ a Microsoft fenyegetés-felderítési képességeiről:https://go.microsoft.com/fwlink/?linkid=2128684 |LateralMovement|Magasság|
 |**Szokatlan hozzáférés-ellenőrzés egy Storage-fiókban**|Azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|Gyűjtemény|Közepes|
 |**A Storage-fiókból kinyert adatok szokatlan mennyisége**|Azt jelzi, hogy a tárolón a legutóbbi tevékenységhez képest szokatlanul nagy mennyiségű adattal lett kibontva. A lehetséges ok az, hogy egy támadó nagy mennyiségű adatmennyiséget adott ki egy olyan tárolóból, amely blob Storage-tárolót tárol.|Kiszűrése|Közepes|
 |**Szokatlan alkalmazás fér hozzá a Storage-fiókhoz**|Azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. A lehetséges ok az, hogy egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.|Kihasználásának|Közepes|
