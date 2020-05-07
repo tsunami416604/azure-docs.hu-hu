@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 426ba4c0ac84799b4d0e6bf9330508f928437fd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5494b1a7590e87bac9f8ffeaeef8f1da791fd6e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060177"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791136"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Oktatóanyag: rendelkezésre állási csoport konfigurálása az Azure SQL Server VM manuálisan
 
@@ -348,7 +348,7 @@ Ezen a ponton van egy rendelkezésre állási csoport, amely replikákat tartalm
 
 Az Azure Virtual Machines szolgáltatásban egy SQL Server rendelkezésre állási csoport terheléselosztó szükséges. A terheléselosztó tárolja a rendelkezésre állási csoport figyelők és a Windows Server feladatátvevő fürt IP-címeit. Ez a szakasz összefoglalja, hogyan hozható létre a terheléselosztó a Azure Portalban.
 
-Egy Azure Load Balancer lehet standard Load Balancer vagy egy alapszintű Load Balancer. Standard Load Balancer több funkcióval rendelkezik, mint az alapszintű Load Balancer. Rendelkezésre állási csoport esetén a standard Load Balancerra akkor van szükség, ha rendelkezésre állási zónát használ (a rendelkezésre állási csoport helyett). A terheléselosztó típusai közötti különbség részleteiért lásd: [Load BALANCER SKU-összehasonlítás](../../../load-balancer/concepts-limitations.md#skus).
+Egy Azure Load Balancer lehet standard Load Balancer vagy egy alapszintű Load Balancer. Standard Load Balancer több funkcióval rendelkezik, mint az alapszintű Load Balancer. Rendelkezésre állási csoport esetén a standard Load Balancerra akkor van szükség, ha rendelkezésre állási zónát használ (a rendelkezésre állási csoport helyett). A terheléselosztó SKU közötti különbség részleteiért lásd: [Load BALANCER SKU-összehasonlítás](../../../load-balancer/skus.md).
 
 1. A Azure Portal nyissa meg az erőforráscsoportot, amelyben az SQL-kiszolgálókat, majd kattintson a **+ Hozzáadás**elemre.
 1. **Load Balancer**keresése. Válassza ki a Microsoft által közzétett terheléselosztó.

@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 03/04/2020
 ms.author: jroth
-ms.openlocfilehash: 505e2d8eec20853fba3743b40cbe289585d14d61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af0f7ef04ce746c502a8ddf7b0d3971f13a42484
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78305003"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82844607"
 ---
 | Erőforrás | Ingyenes | Megosztott | Basic | Standard | Prémium (v2) | Elkülönített </th> |
 | --- | --- | --- | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ ms.locfileid: "78305003"
 | [App Service terv](../articles/app-service/overview-hosting-plans.md) |10 régiónként |10/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport |100/erőforráscsoport|
 | Számítási példány típusa |Megosztott |Megosztott |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált |<sup>3</sup> . dedikált</p> |<sup>3</sup> . dedikált|
 | Vertikális [felskálázás](../articles/app-service/manage-scale-up.md) (példányok maximális száma) |1 megosztott |1 megosztott |3 dedikált<sup>3</sup> |10 dedikált<sup>3</sup> |30 dedikált<sup>3</sup>|100 dedikált<sup>4</sup>|
-| <sup>5</sup> . tárterület |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup></p> |1 TB<sup>5</sup>|
+| <sup>5</sup> . tárterület |1 GB<sup>5</sup> |1 GB<sup>5</sup> |10 GB<sup>5</sup> |50 GB<sup>5</sup> |250 GB<sup>5</sup> <br/><br/> Ha több mint 250 GB-nyi, küldjön egy támogatási kérést. |1 TB<sup>5</sup> <br/><br/> A rendelkezésre álló tárolási kvóta 999 GB. |
 | CPU-idő (5 perc)<sup>6</sup> |3 perc |3 perc |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a>|
 | CPU-idő (nap)<sup>6</sup> |60 perc |240 perc |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |Korlátlan, standard [díjszabás](https://azure.microsoft.com/pricing/details/app-service/) szerint fizetve</a> |
 | Memória (1 óra) |1 024 MB/App Service csomag |1 024 MB/alkalmazás |N/A |N/A |N/A |N/A |

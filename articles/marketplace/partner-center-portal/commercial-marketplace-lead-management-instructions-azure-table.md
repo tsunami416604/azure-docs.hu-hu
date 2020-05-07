@@ -1,24 +1,24 @@
 ---
-title: A Microsoft kereskedelmi piactér vezető felügyeletének konfigurálása Azure-táblázattal
-description: Megtudhatja, hogyan kezelheti az Microsoft AppSource és az Azure Marketplace-en található érdeklődőket az Azure-táblák használatával.
+title: Vezető felügyelet az Azure Table Storage szolgáltatással – Microsoft kereskedelmi piactér
+description: Ismerje meg, hogyan konfigurálhatja az Azure Table Storage-t a Microsoft AppSource és az Azure Marketplace-hez készült érdeklődők konfigurálásához
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 9814b03e348fc807c04364afbf027369f917670a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ecca18e9de02bfe5f3bcb972d0b4034ab8012ac
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131146"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791017"
 ---
-# <a name="configure-lead-management-by-using-an-azure-table"></a>Érdeklődők felügyeletének konfigurálása Azure-tábla használatával
+# <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Az Azure Table Storage használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
 
-Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a fiókpartner számára a Microsoft AppSource és az Azure Marketplace-beli érdeklődők fogadására, akkor az Azure-táblázat segítségével kezelheti ezeket az érdeklődőket. Ezután exportálhatja az adatait, és importálhatja azt a CRM-rendszerbe. A cikkben szereplő utasítások végigvezetik egy Azure Storage-fiók és egy Azure-tábla létrehozásának folyamatán. Emellett létrehozhat egy új folyamatot a Power automatizálás használatával, amely e-mailben értesítést küld, ha az ajánlata érdeklődőt kap.
+Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a partner Centerben a Microsoft AppSource és az Azure Marketplace-érdeklődők fogadásához, az Azure Table Storage használatával kezelheti ezeket az érdeklődőket. Ezután exportálhatja az adatait, és importálhatja azt a CRM-rendszerbe. Ez a cikk azt ismerteti, hogyan hozhat létre egy Azure Storage-fiókot és egy táblát a fiókban. Emellett létrehozhat egy új folyamatot a Power automatizálás használatával, amely e-mailben értesítést küld, ha az ajánlata érdeklődőt kap.
 
-## <a name="configure-an-azure-table"></a>Azure-tábla konfigurálása
+## <a name="configure-an-azure-storage-account"></a>Azure Storage-fiók konfigurálása
 
 1. Ha nem rendelkezik Azure-fiókkal, [létrehozhat egy ingyenes próbaverziós fiókot](https://azure.microsoft.com/pricing/free-trial/).
 1. Ha az Azure-fiókja aktív, jelentkezzen be a [Azure Portalba](https://portal.azure.com).
@@ -32,7 +32,11 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
         További információ a Storage-fiókokról: gyors [útmutató](https://docs.microsoft.com/azure/storage/). További információ a Storage díjszabásáról: [Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
-1. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése. Ez a folyamat általában néhány percet vesz igénybe. Ezután nyissa meg a Storage-fiókját a Azure Portal **kezdőlapján** az **összes erőforrás**megjelenítése lehetőség kiválasztásával. Kiválaszthatja az **összes erőforrás** lehetőséget is a Azure Portal bal oldali menüjében.
+1. Várjon, amíg megtörténik a Storage-fiók üzembe helyezése. Ez a folyamat általában néhány percet vesz igénybe. 
+
+## <a name="create-a-table-in-your-storage-account"></a>Tábla létrehozása a Storage-fiókban
+
+1. A Azure Portal **kezdőlapján** kattintson az **összes erőforrás** elemre a Storage-fiók eléréséhez. Kiválaszthatja az **összes erőforrás** lehetőséget is a Azure Portal bal oldali menüjében.
 
     ![Hozzáférés az Azure Storage-fiókhoz](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-storage-access.png)
 
@@ -52,13 +56,13 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
     A Storage-táblában található információk megtekintéséhez [Azure Storage Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) vagy bármely más eszköz használható. Az Azure-táblában lévő adatexportálást is elvégezheti. 
 
-## <a name="optional-use-power-automate-with-an-azure-table"></a>Választható A Power automatizálás használata Azure-táblázatokkal 
+## <a name="optional-use-power-automate-to-get-lead-notifications"></a>Választható A Power automatizálás használata a vezető értesítések beszerzéséhez
 
-A [Power automatizálás](https://docs.microsoft.com/flow/) segítségével automatizálhatja az értesítéseket minden alkalommal, amikor egy érdeklődőt hozzáadnak egy Azure-táblához. Ha nincs fiókja, regisztrálhat [egy ingyenes fiókot](https://flow.microsoft.com/).
+A [Power automatizálás](https://docs.microsoft.com/flow/) segítségével automatizálhatja az értesítéseket az Azure Storage-táblához vezető összes alkalommal. Ha nincs fiókja, regisztrálhat [egy ingyenes fiókot](https://flow.microsoft.com/).
 
 ### <a name="lead-notification-example"></a>Példa vezető értesítésre
 
-Ez a példa útmutatóként szolgál egy olyan egyszerű folyamat létrehozásához, amely automatikusan értesítő e-mailt küld, ha új érdeklődőt adnak hozzá egy Azure-táblához. Ez a példa egy ismétlődést állít be az érdeklődői adatok óránkénti elküldéséhez, ha a tábla tárterülete frissül.
+A példa létrehoz egy folyamatot, amely automatikusan értesítő e-mailt küld, ha új érdeklődőt adnak hozzá az Azure Table Storage-hoz. Ez a példa egy ismétlődést állít be az érdeklődői adatok óránkénti elküldéséhez, ha a tábla tárterülete frissül.
 
 1. Jelentkezzen be a Power automatizáló fiókjába.
 1. A bal oldali sávon válassza a **saját folyamatok**lehetőséget.
@@ -89,21 +93,21 @@ Ez a példa útmutatóként szolgál egy olyan egyszerű folyamat létrehozásá
    >[!TIP] 
    >Bármikor ellenőrizheti, hogy az egyes lépések megfelelően vannak-e konfigurálva. A folyamat ellenőrzését a **folyamat menüsorában** válassza ki a flow- **ellenőr** lehetőséget.
 
-   A következő lépésekben csatlakozni fog az Azure-táblához, és beállítja a feldolgozási logikát az új érdeklődők kezeléséhez.
+   A következő lépésekben csatlakozni fog a táblához, és beállítja a feldolgozási logikát az új érdeklődők kezeléséhez.
 
-1. A 8. lépés után válassza az **+ új lépés**lehetőséget. Ezután keressen rá az **entitások beolvasása** elemre a **művelet választása** ablakban.
+1. Válassza az **+ Új lépés** gombot. Ezután keressen rá az **entitások beolvasása** elemre a **művelet választása** ablakban.
 1. A **műveletek**területen válassza az **entitások beolvasása (Azure Table Storage)** lehetőséget.
 1. Az **Azure Table Storage** ablakban adja meg a következő mezők adatait, majd válassza a **Létrehozás**lehetőséget:
 
-    * **Kapcsolat neve**: adjon meg egy értelmes nevet a folyamat és az Azure-tábla közötti kapcsolathoz.
-    * **Storage-fiók neve**: adja meg az Azure-tábla Storage-fiókjának nevét. Ezt a nevet a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
-    * **Megosztott tárolási kulcs**: adja meg az Azure-tábla áruházbeli fiókjához tartozó kulcs értékét. Ezt az értéket a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
+    * **Kapcsolat neve**: adjon meg egy értelmes nevet a folyamat és a tábla közötti kapcsolathoz.
+    * **Storage-fiók neve**: adja meg a tábla Storage-fiókjának nevét. Ezt a nevet a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
+    * **Megosztott tárolási kulcs**: adja meg a tábla tárolási fiókjának kulcs értékét. Ezt az értéket a Storage-fiók **hozzáférési kulcsainak** oldalán találja.
 
       ![Azure Table Storage ablak](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-storage.png)
 
    A **Létrehozás**gombra kattintva megjelenik az **entitások beolvasása** ablak. Itt válassza a **Speciális beállítások megjelenítése**lehetőséget, és adja meg a következő mezők adatait:
 
-   * **Tábla**: válassza ki az Azure Table Storage nevét (az Azure-tábla konfigurálása című szakasz utasításának 6. lépésében). Az alábbi képen látható, hogy mikor van kiválasztva a "marketplaceleads" tábla erre a példára.
+   * **Tábla**: válassza ki a tábla nevét ( [tábla létrehozása](#create-a-table-in-your-storage-account)). Az alábbi képen látható, hogy mikor van kiválasztva a "marketplaceleads" tábla erre a példára.
 
      ![Entitások beolvasása ablak](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
@@ -177,9 +181,18 @@ Ha nem kap vezető e-mailes értesítéseket, az azt jelenti, hogy az új érdek
 Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket.
 
 1. Nyissa meg az ajánlat **telepítési** lapját.
+
 1. Válassza a **kapcsolat** lehetőséget az **érdeklődő felügyelete** szakaszban.
-1. A **kapcsolat részletei** előugró ablakban válassza ki az **Azure Table** elemet az **érdeklődő célhelyéhez**. Illessze be a létrehozott Azure Storage-fiókhoz tartozó, a **Storage-fiók kapcsolatainak karakterlánca** mezőben a korábbi lépéseket követve.
+     ![Érdeklődők kezelése](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
+
+1. A **kapcsolat részletei** előugró ablakban válassza ki az **Azure Table** elemet az **érdeklődő célhelyéhez**. 
+     ![Érdeklődők felügyelete, kapcsolat részletei](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
+
+1. Illessze be a létrehozott Azure Storage-fiókhoz tartozó, a **Storage-fiók kapcsolatainak karakterlánca** mezőben a korábbi lépéseket követve.
+     ![Érdeklődők felügyelete, kapcsolat részletei Storage-fiók](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
+
 1. **Kapcsolattartási e-mail cím**: adja meg az e-maileket a vállalatnál, akinek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapnia. A pontosvesszővel elválasztva több e-mailt is megadhat.
+
 1. Kattintson az **OK** gombra.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
@@ -188,10 +201,3 @@ Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen
 >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt.
 
 Az érdeklődők létrehozásakor a Microsoft elküldi az érdeklődőket az Azure-táblába. Ha konfigurált egy folyamatot, a rendszer e-mailt küld a konfigurált e-mail-címre is.
-
-![Érdeklődők kezelése](./media/commercial-marketplace-lead-management-instructions-azure-table/lead-management.png)
-
-![Érdeklődők felügyelete, kapcsolat részletei](./media/commercial-marketplace-lead-management-instructions-azure-table/connection-details.png)
-
-![Érdeklődők felügyelete, kapcsolat részletei Storage-fiók](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
-

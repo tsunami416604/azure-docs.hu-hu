@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Service Fabric-fürt verziójának vagy konfig
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.custom: sfrev
-ms.openlocfilehash: 6897854820339fc78dd9083c82147dce95ab68b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d92ac90e0e41d534231bafbe991a05764dbee07d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258654"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789555"
 ---
 # <a name="upgrading-and-updating-an-azure-service-fabric-cluster"></a>Azure Service Fabric-fürt frissítése
 
@@ -105,7 +105,7 @@ A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, 
 ## <a name="next-steps"></a>További lépések
 
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
-* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
+* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-in-out.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 
 <!--Image references-->

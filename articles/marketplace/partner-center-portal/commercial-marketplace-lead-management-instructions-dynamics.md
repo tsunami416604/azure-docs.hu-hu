@@ -1,18 +1,18 @@
 ---
-title: Vezető felügyelet a Dynamics 365 Customer engagement szolgáltatásban | Azure piactér
-description: A Dynamics 365-ügyfelek bevonásához vezető felügyelet konfigurálása.
+title: Vezető felügyelet a Dynamics 365 Customer engagement-Microsoft kereskedelmi piactéren
+description: Ismerje meg, hogyan állíthatja be a Dynamics 365-ügyfelek részvételét a Microsoft AppSource és az Azure Marketplace-en található érdeklődők kezeléséhez.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: b9158f7b2e3fc73a2fe2a9b20ead2558b7467f6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 985b3258eb0b957242d529945f32ed9704a91e7d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131058"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791000"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Az érdeklődők felügyeletének konfigurálása a Dynamics 365 Customer engagement szolgáltatáshoz
 
@@ -23,12 +23,12 @@ Ez a cikk bemutatja, hogyan állíthatja be a Dynamics 365 Customer Engagementt 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A cikk lépéseinek végrehajtásához a következő felhasználói engedélyek szükségesek. A következőket kell tennie:
+A cikk lépéseinek végrehajtásához a következő felhasználói engedélyek szükségesek:
 
-* A Dynamics 365 Customer engagement-példányának rendszergazdájának kell lennie ahhoz, hogy megoldást tudjon telepíteni, és kövesse ezeket az utasításokat.
-* A bérlői rendszergazdaként hozzon létre egy új szolgáltatásfiókot az érdeklődők számára a kereskedelmi Piactéri ajánlatokból érkező érdeklődők számára.
+* A Dynamics 365 Customer engagement-példány rendszergazdai jogosultságai a megoldás telepítéséhez.
+* Bérlői rendszergazdai jogosultságok új szolgáltatásfiók létrehozásához az érdeklődők számára a kereskedelmi Piactéri ajánlatok által küldött érdeklődők számára.
 * Hozzáférés az Office 365 felügyeleti portálhoz.
-* Hozzáféréssel rendelkezik a Azure Portalhoz.
+* Hozzáférés a Azure Portalhoz.
 
 ## <a name="install-the-solution"></a>A megoldás telepítése
 

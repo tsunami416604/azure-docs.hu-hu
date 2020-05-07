@@ -8,16 +8,16 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: deb2860c8d027a0a258c4a962fe33d6f516e10dc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4509c62b15eb06c89fe80555a26773fdd3876e66
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085643"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790898"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
 
-A Windows rendszerű virtuális gépek (VM) Azure Disk Encryption a Windows BitLocker szolgáltatásával biztosítja az operációsrendszer-lemez és az adatlemez teljes lemezes titkosítását. Emellett az elmúló erőforrás lemezének titkosítását is biztosítja, ha a VolumeType paraméter mind.
+A Windows rendszerű virtuális gépek (VM) Azure Disk Encryption a Windows BitLocker szolgáltatásával biztosítja az operációsrendszer-lemez és az adatlemez teljes lemezes titkosítását. Emellett az ideiglenes lemez titkosítását is biztosítja, ha a VolumeType paraméter mind.
 
 Azure Disk Encryption [integrálva van Azure Key Vault](disk-encryption-key-vault.md) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. A szolgáltatás áttekintését lásd: [Azure Disk Encryption Windows rendszerű virtuális gépekhez](disk-encryption-overview.md).
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: modell betanítása és üzembe helyezése a Visual Studio Code bővítmény használatával'
+title: 'Oktatóanyag: a & üzembe helyezési modelljeinek betanítása: VS Code'
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan lehet betanítani és üzembe helyezni a lemezkép-besorolási modellt a TensorFlow és a Azure Machine Learning Visual Studio Code bővítmény használatával
 services: machine-learning
@@ -9,12 +9,12 @@ ms.topic: tutorial
 author: luisquintanilla
 ms.author: luquinta
 ms.date: 04/13/2020
-ms.openlocfilehash: f793f8c4cb84f821c098cc5ce98e693d272e725f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: b8b72e85f1d1660ee7d21afe3d34fde66f08ff8c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81272793"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791833"
 ---
 # <a name="train-and-deploy-an-image-classification-tensorflow-model-using-the-azure-machine-learning-visual-studio-code-extension"></a>Képbesorolási TensorFlow modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine Learning használatával
 

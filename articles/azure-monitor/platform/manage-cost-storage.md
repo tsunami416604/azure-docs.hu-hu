@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/04/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 8904d584d453cb0945a11b08ad50688aeb1e1fc0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 601f1c224d6e1d756c27dc2478951682ce6bb4fd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207326"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854764"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
@@ -44,11 +44,13 @@ Az adatmennyiség az összes díjszabási szinten az adatok karakterlánc-ábrá
 
 Azt is vegye figyelembe, hogy egyes megoldások, például az [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), az [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) és a [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) saját díjszabási modellel rendelkeznek. 
 
-### <a name="dedicated-clusters"></a>Dedikált fürtök
+### <a name="log-analytics-clusters"></a>Fürtök Log Analytics
 
-A Azure Monitor log dedikált fürtök egyetlen felügyelt Azure Adatkezelő-(ADX-) fürthöz tartozó munkaterületek gyűjteményei, amelyek a speciális forgatókönyvek, például az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys)támogatásához szükségesek.  A dedikált fürtök csak a kapacitás-foglalás díjszabási modelljét támogatják, amely 1000 GB/nap, az utólagos elszámolású díjszabáshoz képest 25%-os kedvezménnyel. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A fürt kapacitásának foglalása a foglalási szint növelése után 31 napos kötelezettségvállalási időszakot tartalmaz. A kötelezettségvállalási időszak alatt a kapacitás foglalási szintje nem csökkenthető, de bármikor megnövelhető. További információ a [dedikált fürtök létrehozásáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) és [a munkaterületek társításáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource).  
+Log Analytics a fürtök egyetlen felügyelt Azure Adatkezelő-fürtbe tartozó munkaterületek gyűjteményei, amelyek olyan speciális forgatókönyveket támogatnak, mint például az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Log Analytics-fürtök csak a kapacitás foglalásának díjszabását támogatják, amely 1000 GB/nap, az utólagos elszámolású díjszabáshoz képest 25%-os kedvezménnyel. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A fürt kapacitásának foglalása a foglalási szint növelése után 31 napos kötelezettségvállalási időszakot tartalmaz. A kötelezettségvállalási időszak alatt a kapacitás foglalási szintje nem csökkenthető, de bármikor megnövelhető. További információ a [log Analytics-fürtök létrehozásáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) és [a munkaterületek társításáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource).  
 
-Mivel a betöltött adatmennyiség számlázása a fürt szintjén történik, a fürthöz társított munkaterületek már nem rendelkeznek díjszabási szinttel. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy a Azure Security Center csomópontokon belüli kiosztások az összesítés előtt lesznek alkalmazva a munkaterület szintjén. Az adatmegőrzés továbbra is a munkaterület szintjén kerül számlázásra.  
+A fürt kapacitásának foglalási szintje a (z `Capacity` `Sku`) paraméterrel a (z) programozott módon Azure Resource Manager használatával van konfigurálva. A `Capacity` a GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben. [Itt](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)részletesen tájékozódhat. Ha a fürtnek 2000 GB/nap feletti foglalásra van szüksége, [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)lépjen kapcsolatba velünk a következő címen:.
+
+Mivel a betöltött adatmennyiség számlázása a fürt szintjén történik, a fürthöz társított munkaterületek már nem rendelkeznek díjszabási szinttel. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy a [Azure Security Center](https://docs.microsoft.com/azure/security-center/) -tól származó csomópont-hozzárendelések a munkaterület szintjén lesznek alkalmazva az összesített adatoknak a fürt összes munkaterülete közötti összesítése előtt. Az adatmegőrzés továbbra is a munkaterület szintjén kerül számlázásra. Vegye figyelembe, hogy a fürt számlázása a fürt létrehozásakor kezdődik, függetlenül attól, hogy a munkaterületek hozzá lettek-e rendelve a fürthöz. 
 
 ## <a name="estimating-the-costs-to-manage-your-environment"></a>A környezet kezelésével kapcsolatos költségek becslése 
 
@@ -310,7 +312,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Adatmennyiség számítógépenként
 
-Az `Usage` adattípus nem tartalmaz információkat a teljes részletességi szinten. Ha szeretné megtekinteni a betöltött adat **méretét** a számítógépen, `_BilledSize` használja a [tulajdonságot](log-standard-properties.md#_billedsize), amely a méretet adja meg bájtban:
+Az `Usage` adattípus nem tartalmaz információkat a számítógép szintjén. Ha szeretné megtekinteni a betöltött adat **méretét** a számítógépen, `_BilledSize` használja a [tulajdonságot](log-standard-properties.md#_billedsize), amely a méretet adja meg bájtban:
 
 ```kusto
 union withsource = tt * 
@@ -467,7 +469,7 @@ union withsource = tt *
 | where computerName != ""
 | summarize nodesPerHour = dcount(computerName) by bin(TimeGenerated, 1h)  
 | summarize nodesPerDay = sum(nodesPerHour)/24.  by day=bin(TimeGenerated, 1d)  
-| join (
+| join kind=leftouter (
     Heartbeat 
     | where TimeGenerated >= startofday(now(-7d)) and TimeGenerated < startofday(now())
     | where Computer != ""

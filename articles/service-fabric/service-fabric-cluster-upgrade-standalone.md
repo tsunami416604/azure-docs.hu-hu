@@ -3,12 +3,12 @@ title: Azure Service Fabric önálló fürt frissítése
 description: Ismerje meg, hogyan frissítheti az Azure Service Fabric önálló fürtjének verzióját vagy konfigurációját.  T
 ms.topic: conceptual
 ms.date: 11/12/2018
-ms.openlocfilehash: 6da9b4c6890895141ecc419382f05f667614fb31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac3e80aae440c6709057e4211f7a4f6a1beea058
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451828"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790643"
 ---
 # <a name="upgrading-and-updating-a-service-fabric-standalone-cluster"></a>Önálló Service Fabric-fürt frissítése és frissítése
 
@@ -38,7 +38,7 @@ A javítási előkészítési alkalmazás (POA) egy Service Fabric alkalmazás, 
 
 ## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan szabhatja testre a [Service Fabric-fürtök néhány beállítását](service-fabric-cluster-fabric-settings.md)
-* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-up-down.md)
+* Ismerje meg, hogyan [méretezheti a fürtöt és ki](service-fabric-cluster-scale-in-out.md)
 * Az [alkalmazások frissítéseinek](service-fabric-application-upgrade.md) megismerése
 
 <!--Image references-->

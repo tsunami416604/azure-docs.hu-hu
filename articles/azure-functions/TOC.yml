@@ -125,6 +125,10 @@
           href: functions-reference-python.md
         - name: TypeScript
           href: 'functions-reference-node.md#typescript'
+    - name: Biztonság
+      items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
     - name: Diagnosztika
       href: functions-diagnostics.md
     - name: Használatalapú csomag költségei

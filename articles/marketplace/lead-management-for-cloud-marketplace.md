@@ -7,24 +7,20 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6f93e00cb9f840b27578eb9a5b0c6a2cab1ac525
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c41831f528ae425b35a04503180a956f67762b70
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160545"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789844"
 ---
 # <a name="lead-management-for-commercial-marketplace"></a>Vezető felügyelet a kereskedelmi piactéren
 
-
 Az ügyfelek a jó üzleti tevékenység központja. A mai termék beszerzésének átalakításakor a marketingeseknek az ügyfelek közvetlen csatlakoztatására és a kapcsolatok létrehozására kell összpontosítaniuk. A kiváló minőségű érdeklődők létrehozásának oka az értékesítési ciklus létfontosságú eszköze. Az ajánlatnak a [partner Centerben](https://partner.microsoft.com/)való listázása után olyan eszközök is elérhetők, amelyekkel programozott módon kaphatják meg az ügyfelek kapcsolattartási adatait, miután az ügyfél kifejezte érdeklődését, vagy üzembe helyezi a terméket a piactéren. 
-
-
 
 ## <a name="what-are-leads-in-the-marketplace"></a>Mik azok az érdeklődők a piactéren?
 
 Az érdeklődők olyan ügyfelektől származnak, akik érdeklik, vagy üzembe helyezik termékeiket a piactéren. Függetlenül attól, hogy a termék szerepel-e az Azure Marketplace-en vagy a AppSource-on, akkor is fogadhat érdeklődőket az ügyfelektől, ha a CRM-ből a partner Centerben lévő listára (k) megfelelően beállította. 
-
 
 ## <a name="how-to-connect-your-crm-system-with-partner-center"></a>A CRM rendszer összekapcsolásának módja a partneri központtal
 
@@ -48,7 +44,7 @@ Miután megfelelően konfigurálta az érdeklődői célhelyet, és az ajánlato
 
 A technikai beállítás bevezetését követően érdemes beépíteni ezeket az érdeklődőket az aktuális értékesítési & marketing stratégiába és működési folyamataiba. Fontos, hogy jobban megértsük a teljes értékesítési folyamatot, és szeretne szorosan együttműködni Önnel, hogy kiváló minőségű érdeklődőket és elegendő adatmennyiséget biztosítson a siker érdekében. Örömmel vesszük visszajelzését arról, hogy miként optimalizálható és növelhető az érdeklődők számára elérhető további információk, amelyek segítenek az ügyfelek sikerességében. Tudassa velünk, ha szeretne visszajelzést küldeni, és javaslatokat tesz arra, hogy az értékesítési csapata még nagyobb sikert biztosítson a piactéren.
 
-## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a>Gyakori vezető konfigurációs hibák a partner Centerben való közzététel során
+## <a name="common-lead-configuration-errors-during-publishing-in-partner-center"></a><a id="publishing-config-errors"></a>Gyakori vezető konfigurációs hibák a partner Centerben való közzététel során
 
 **Nem lehetett menteni a vezetőt a Dynamics CRM-be. Keresse meg a Dynamics CRM-fiók beállításait. LastCRMError: nem lehet bejelentkezni a Dynamics CRM-be, LastCRMException:** 
 

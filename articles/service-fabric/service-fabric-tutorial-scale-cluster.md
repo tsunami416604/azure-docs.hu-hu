@@ -4,12 +4,12 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan méretezhető egy Se
 ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
-ms.openlocfilehash: f1b813576a94541cdc2ab0a67fea71b6f49696c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6e8dbb5a56bf313bf35ad97ec6ea7df8ce483be9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251797"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788821"
 ---
 # <a name="tutorial-scale-a-service-fabric-cluster-in-azure"></a>Oktatóanyag: Service Fabric-fürt skálázása az Azure-ban
 
@@ -84,7 +84,7 @@ A be-és kiskálázás, illetve a horizontális skálázás a fürtben lévő cs
 
 Így a *nt1InstanceCount* értékének frissítésével módosíthatja a csomópontok számát a második csomópont típusában.  Ne feledje, hogy a csomópont-típusok több mint 100 csomópontra nem méretezhetők.  Az állapot-nyilvántartó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább öt csomópontnak kell futnia. Az állapot nélküli éles környezetben futó munkaterheléseket futtató nem elsődleges csomópontok esetében mindig legalább két csomópontnak kell futnia.
 
-Ha méretezést végez, távolítsa el a csomópontokat a ból, a bronz [tartóssági szint][durability] csomópont-típusát [manuálisan el kell távolítania a csomópontok állapotát](service-fabric-cluster-scale-up-down.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Az ezüst és az arany tartóssági szinten ezeket a lépéseket a platform automatikusan végrehajtja.
+Ha méretezést végez, távolítsa el a csomópontokat a ból, a bronz [tartóssági szint][durability] csomópont-típusát [manuálisan el kell távolítania a csomópontok állapotát](service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set).  Az ezüst és az arany tartóssági szinten ezeket a lépéseket a platform automatikusan végrehajtja.
 
 ### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
 Mentse a *template. JSON* és a *Parameters. JSON* fájl módosításait.  A frissített sablon üzembe helyezéséhez futtassa a következő parancsot:

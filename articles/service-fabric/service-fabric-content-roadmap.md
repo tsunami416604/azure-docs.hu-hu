@@ -3,12 +3,12 @@ title: További információ az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric legfontosabb alapfogalmait és főbb területeit. A részletes áttekintést nyújt a Service Fabricről és a szolgáltatások létrehozásáról.
 ms.topic: conceptual
 ms.date: 12/08/2017
-ms.openlocfilehash: 4e6e21f5f9ebfeddb5292e00dc8a929341e77372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 573b1ec662bdc7e72f964698f5e0670860895586
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458146"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791850"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Szeretne többet megtudni a Service Fabricról?
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  Service Fabric nagy felülettel rendelkezik, és sokat tanulhat.  Ez a cikk áttekintést nyújt a Service Fabricekről, valamint ismerteti az alapvető fogalmakat, programozási modelleket, az alkalmazások életciklusát, a tesztelést, a fürtöket és az állapot-figyelést Olvassa el az [áttekintést](service-fabric-overview.md) , és [Mik azok a szolgáltatások?](service-fabric-overview-microservices.md) a bevezetéshez és a Service Fabric használhatók a-szolgáltatások létrehozásához. Ez a cikk nem tartalmaz átfogó listát, de a Service Fabric összes területének áttekintésére és az első lépéseket ismertető cikkekre mutató hivatkozást tartalmaz. 
@@ -136,7 +136,7 @@ A fürt biztonsági forgatókönyvei a következők:
 További információért olvassa el [a fürt biztonságossá tétele](service-fabric-cluster-security.md)című témakört.
 
 ### <a name="scaling"></a>Méretezés
-Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a partíció replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon. A fürtöket [manuálisan](service-fabric-cluster-scale-up-down.md) vagy [programozott](service-fabric-cluster-programmatic-scaling.md)módon méretezheti az Azure-ban. Az önálló fürtök méretezése [manuálisan](service-fabric-cluster-windows-server-add-remove-nodes.md)végezhető el.
+Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a partíció replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon. A fürtöket [manuálisan](service-fabric-cluster-scale-in-out.md) vagy [programozott](service-fabric-cluster-programmatic-scaling.md)módon méretezheti az Azure-ban. Az önálló fürtök méretezése [manuálisan](service-fabric-cluster-windows-server-add-remove-nodes.md)végezhető el.
 
 ### <a name="cluster-upgrades"></a>Fürt frissítései
 Időnként a Service Fabric Runtime új verziói jelennek meg. Futtasson futásidejű vagy hálós frissítéseket a fürtön, hogy mindig [támogatott verziót](service-fabric-support.md)futtasson. A háló frissítésein kívül a fürtkonfiguráció, például a tanúsítványok vagy az alkalmazások portjai is frissíthetők.

@@ -5,14 +5,14 @@ author: bandersmsft
 ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: 4e7e9ea61d74eb38f3c225d66a39906bc18fe6d2
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: b198a781da6e18c363e90d8bd5314dafc563dcca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200520"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791153"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Azure-előfizetések átvitele az előfizetők és a CSP-k között
 
@@ -50,6 +50,7 @@ Bármely más előfizetés egy felhőszolgáltatói partnertől bármely egyéb 
 
 1. Hozzon létre célelőfizetéseket az Azure-ban.
 1. Győződjön meg arról, hogy a forrás- és célelőfizetések ugyanahhoz az Azure Active Directory- (Azure AD-) bérlőhöz vannak társítva. Az Azure AD-bérlő módosításával kapcsolatos további információért lásd: [Azure-előfizetés társítása vagy hozzáadása az Azure Active Directory-bérlőhöz](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+    Vegye figyelembe, hogy a módosított címtár nem a CSP-előfizetés. Tegyük fel például, hogy egy CSP-ről végez átvitelt egy használatalapú fizetéses előfizetésre. Módosítania kell a használatalapú fizetéses előfizetés címtárát a helyes címtárra.
 
     > [!IMPORTANT]
     >  - Ha egy előfizetést társít egy másik címtárhoz, akkor az [RBAC](../../role-based-access-control/role-assignments-portal.md) használatával hozzárendelt szerepkörökkel rendelkező felhasználók elveszítik a hozzáférésüket. A hagyományos előfizetés-rendszergazdák, köztük a szolgáltatásadminisztrátor és a társrendszergazdák is elveszítik a hozzáférésüket.
@@ -64,6 +65,6 @@ Bármely más előfizetés egy felhőszolgáltatói partnertől bármely egyéb 
     > [!IMPORTANT]
     >  - Az Azure-erőforrások előfizetések közötti áthelyezése a szolgáltatás leállását eredményezheti, az előfizetések erőforrásaitól függően.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához](mpa-request-ownership.md).
 - További szükséges ismeretek: [Fiókok és előfizetések kezelése az Azure Billinggel](index.yml).

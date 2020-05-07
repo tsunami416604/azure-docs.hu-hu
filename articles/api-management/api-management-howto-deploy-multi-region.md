@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 0f8d9d7d90e88b4e43721dac274833a3b0df275e
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 17c92558ebef2eee0a4daead45d16a295cedd1bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203148"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790479"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>Azure API Management-szolgáltatáspéldány üzembe helyezése több Azure-régióban
 
 Az Azure API Management támogatja a többrégiós telepítést, amely lehetővé teszi az API-közzétevők számára, hogy egyetlen Azure API Management-szolgáltatást terjesszen az összes támogatott Azure-régió között. A többrégiós szolgáltatás lehetővé teszi a földrajzilag elosztott API-fogyasztók által észlelt kérelmek késésének csökkentését és a szolgáltatás rendelkezésre állásának javítását, ha az egyik régió offline állapotú
 
-Az új Azure API Management szolgáltatás kezdetben csak egyetlen [egységet][unit] tartalmaz egyetlen Azure-régióban, az elsődleges régióban. További régiók is hozzáadhatók az elsődleges vagy másodlagos régióhoz. A rendszer minden kiválasztott elsődleges és másodlagos régióban üzembe helyez egy API Management átjáró összetevőt. A bejövő API-kérelmek automatikusan a legközelebbi régióba lesznek irányítva. Ha egy régió offline állapotba kerül, az API-kérelmeket a rendszer automatikusan átirányítja a meghibásodott régió köré a következő legközelebbi átjáróra.
+Az új Azure API Management szolgáltatás kezdetben csak egyetlen [egységet][unit] tartalmaz egyetlen Azure-régióban, az elsődleges régióban. Az elsődleges vagy a másodlagos régióba további egységek is hozzáadhatók. A rendszer minden kiválasztott elsődleges és másodlagos régióban üzembe helyez egy API Management átjáró összetevőt. A bejövő API-kérelmek automatikusan a legközelebbi régióba lesznek irányítva. Ha egy régió offline állapotba kerül, az API-kérelmeket a rendszer automatikusan átirányítja a meghibásodott régió köré a következő legközelebbi átjáróra.
 
 > [!NOTE]
 > A rendszer csak a API Management átjáró összetevőjét telepíti minden régióra. A Service Management összetevőt és a fejlesztői portált csak az elsődleges régió tárolja. Ezért az elsődleges régió meghibásodása esetén a fejlesztői portálhoz való hozzáférés és a konfiguráció módosításának lehetősége (például az API-k hozzáadása, a házirendek alkalmazása) nem fog megjelenni, amíg az elsődleges régió újra online állapotba nem kerül. Míg az elsődleges régió offline állapotban elérhető másodlagos régiók, az API-forgalmat továbbra is az elérhető legújabb konfigurációval fogja kiszolgálni.

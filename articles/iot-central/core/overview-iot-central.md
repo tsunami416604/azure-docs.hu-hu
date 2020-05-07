@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 05d73ae09d95879c37e86f5f3e73e35ed4607296
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 409ba6cd192f65c73aba6bd6eb11a26ec1f820fa
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82560965"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790881"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
-A IoT Central egy IoT, amely csökkenti a nagyvállalati szintű IoT-megoldások fejlesztésének, kezelésének és karbantartásának terheit és költségeit. A IoT Central való kiépítésének köszönhetően lehetősége van arra, hogy az üzleti környezet IoT-adataival való átalakításának idejére, pénzére és energiára koncentráljon, nem csupán a komplex és folyamatosan fejlődő IoT-infrastruktúra fenntartását és frissítését.
+Az IoT Central egy IoT-alkalmazásplatform, amellyel kevesebb munkával és költséggel lehet nagyvállalati szintű IoT-megoldásokat fejleszteni, kezelni és karbantartani. A IoT Central való kiépítésének köszönhetően lehetősége van arra, hogy az üzleti környezet IoT-adataival való átalakításának idejére, pénzére és energiára koncentráljon, nem csupán a komplex és folyamatosan fejlődő IoT-infrastruktúra fenntartását és frissítését.
 
 A webes felhasználói felülettel figyelheti az eszközök feltételeit, szabályokat hozhat létre, és több millió eszközt és adatmennyiséget kezelhet életciklusa során. Továbbá lehetővé teszi, hogy az IoT-intelligenciát az üzletági alkalmazásokra kiterjesztve az eszköz elemzéseit is fellépjen.
 
@@ -29,19 +29,6 @@ Ez a cikk IoT Central:
 - Az alkalmazás felügyelete.
 - IoT Central Azure IoT Edge képességei.
 - A Azure IoT Edge Runtime-alapú eszközök csatlakoztatása az alkalmazáshoz.
-
-## <a name="known-issues"></a>Ismert problémák
-
-- A folyamatos adatexportálás nem támogatja a Avro formátumot (inkompatibilitás).
-- A GeoJSON jelenleg nem támogatott.
-- A Térkép csempe jelenleg nem támogatott.
-- A feladatok nem támogatják az összetett típusokat.
-- A tömb sémájának típusai nem támogatottak.
-- A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
-- IoT Central jelenleg a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség, Ausztrália, Egyesült Királyság és Japán helyszíneken érhető el.
-- Az **egyéni alkalmazás (örökölt)** alkalmazás-sablon nem használható az Egyesült Királyság és Japán helyein.
-- Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
-- A [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) támogatása előzetes verzióban érhető el, és csak a kiválasztott régiókban támogatott.
 
 ## <a name="personas"></a>Szerepek
 
@@ -152,7 +139,7 @@ A rendszergazdák [felhasználói szerepkörökkel és engedélyekkel](howto-adm
 
 A nagy léptékű működésre tervezett IoT-megoldások esetében fontos az eszközkezelés strukturált megközelítése. Nem elég egyszerűen csatlakoztatni az eszközöket a felhőhöz, és az eszközöket csatlakoztatni és kifogástalan állapotba kell hozni. Az operátorok az alábbi IoT Central képességekkel kezelhetik eszközeiket az alkalmazások életciklusa során:
 
-### <a name="dashboards"></a>Irányítópultok 
+### <a name="dashboards"></a>Irányítópultok
 
 A beépített [irányítópultok](./howto-set-up-template.md#generate-default-views) testreszabható felhasználói felületet biztosítanak az eszközök állapotának és telemetria figyeléséhez. Kezdje egy beépített irányítópulttal egy [alkalmazás-sablonban](howto-use-app-templates.md) , vagy hozzon létre saját irányítópultokat az operátorok igényei szerint. Az irányítópultokat megoszthatja az alkalmazás összes felhasználójának használatával, vagy megtarthatja azokat.
 
@@ -193,6 +180,18 @@ IoT-megoldások létrehozása, például:
 ## <a name="quotas"></a>Kvóták
 
 Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással lehet a IoT-megoldás hatókörére. Jelenleg IoT Central korlátozza az előfizetésben üzembe helyezhető alkalmazások számát 10-re. Ha a korlát növelésére van szüksége, forduljon a [Microsoft ügyfélszolgálatához](https://azure.microsoft.com/support/options/).
+
+## <a name="known-issues"></a>Ismert problémák
+
+- A folyamatos adatexportálás nem támogatja a Avro formátumot (inkompatibilitás).
+- A GeoJSON jelenleg nem támogatott.
+- A Térkép csempe jelenleg nem támogatott.
+- A tömb sémájának típusai nem támogatottak.
+- A rendszer csak a C eszközoldali SDK-t és a Node. js-eszközt és a Service SDK-kat támogatja.
+- IoT Central jelenleg a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség, Ausztrália, Egyesült Királyság és Japán helyszíneken érhető el.
+- Az **egyéni alkalmazás (örökölt)** alkalmazás-sablon nem használható az Egyesült Királyság és Japán helyein.
+- Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
+- A [IoT Plug and Play](../../iot-pnp/overview-iot-plug-and-play.md) támogatása előzetes verzióban érhető el, és csak a kiválasztott régiókban támogatott.
 
 ## <a name="next-steps"></a>További lépések
 

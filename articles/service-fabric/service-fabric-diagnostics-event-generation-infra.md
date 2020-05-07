@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 720cc157111293146b796f8567f94a4f1f4830c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce0cd0866cc6daa36d598767a486faeabac8076d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376936"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791816"
 ---
 # <a name="monitoring-the-cluster"></a>A fürt figyelése
 
@@ -74,7 +74,7 @@ Ha kapcsolatba kell lépnie a Microsoft ügyfélszolgálatával az Azure Service
 
 ## <a name="measuring-performance"></a>Teljesítmény mérése
 
-A fürt teljesítményének mérése segít megérteni, hogyan képes kezelni a terhelést és a meghajtóval kapcsolatos döntéseket a fürt méretezése terén (lásd: a fürt méretezése az [Azure](service-fabric-cluster-scale-up-down.md)-ban vagy [a helyszínen](service-fabric-cluster-windows-server-add-remove-nodes.md)). A teljesítményadatok abban az esetben is hasznosak, ha az Ön vagy alkalmazásai és szolgáltatásai a jövőben is elvégezték a naplók elemzését. 
+A fürt teljesítményének mérése segít megérteni, hogyan képes kezelni a terhelést és a meghajtóval kapcsolatos döntéseket a fürt méretezése terén (lásd: a fürt méretezése az [Azure](service-fabric-cluster-scale-in-out.md)-ban vagy [a helyszínen](service-fabric-cluster-windows-server-add-remove-nodes.md)). A teljesítményadatok abban az esetben is hasznosak, ha az Ön vagy alkalmazásai és szolgáltatásai a jövőben is elvégezték a naplók elemzését. 
 
 A Service Fabric használatakor gyűjtött teljesítményszámlálók listáját lásd: [teljesítményszámlálók a Service Fabric](service-fabric-diagnostics-event-generation-perf.md)
 
