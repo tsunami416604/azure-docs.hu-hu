@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/14/2019
 ms.author: chrimo
-ms.openlocfilehash: 2543dd12e8a75a038a1fc04371b8c562ef696e25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 994edf26e43c7ad67d4f8822d4ed0d18d53b510b
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254234"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612452"
 ---
 # <a name="apply-windows-license-to-session-host-virtual-machines"></a>Windows-licenc alkalmazása a munkamenet-gazdagép virtuális gépei számára
 
@@ -23,7 +23,7 @@ A Windows rendszerű virtuális asztali licencelés lehetővé teszi, hogy licen
 
 A Windows rendszerű virtuális asztali licenc több módon is használható:
 - A gazdagépek és a munkamenet-gazdagépek virtuális gépei az [Azure Marketplace-ajánlat](./create-host-pools-azure-marketplace.md)használatával hozhatók létre. Az ily módon létrehozott virtuális gépek automatikusan a licenccel lettek alkalmazva.
-- A [GitHub Azure Resource Manager sablonnal](./create-host-pools-arm-template.md)létrehozhat egy gazdagépet és a munkamenet-gazda virtuális gépeket. Az ily módon létrehozott virtuális gépek automatikusan a licenccel lettek alkalmazva.
+- A [GitHub Azure Resource Manager sablonnal](./virtual-desktop-fall-2019/create-host-pools-arm-template.md)létrehozhat egy gazdagépet és a munkamenet-gazda virtuális gépeket. Az ily módon létrehozott virtuális gépek automatikusan a licenccel lettek alkalmazva.
 - Egy meglévő munkamenet-gazda virtuális gépre is alkalmazhat licencet. Ehhez kövesse a [gazdagép létrehozása a PowerShell](./create-host-pools-powershell.md) használatával című témakör utasításait a gazdagépek és a társított virtuális gépek létrehozásához, majd térjen vissza ehhez a cikkhez, és Ismerje meg, hogyan alkalmazhatja a licencet.
 
 ## <a name="apply-a-windows-license-to-a-session-host-vm"></a>Windows-licenc alkalmazása egy munkamenet-gazda virtuális gépre

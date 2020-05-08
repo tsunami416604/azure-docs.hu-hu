@@ -8,17 +8,17 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 6b60ccc7a635e4b6071b43d7ff75e182aa96cd08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313629"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792581"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
 
 
-A Linux rendszerű virtuális gépek Azure Disk Encryption a Linux DM-Crypt funkciójának használatával biztosít teljes lemezes titkosítást az operációsrendszer-lemez és az adatlemezek számára. Emellett a EncryptFormatAll szolgáltatás használatakor az ideiglenes erőforrás lemezének titkosítását is biztosítja.
+A Linux rendszerű virtuális gépek Azure Disk Encryption a Linux DM-Crypt funkciójának használatával biztosít teljes lemezes titkosítást az operációsrendszer-lemez és az adatlemezek számára. Emellett az ideiglenes lemez titkosítását is biztosítja az EncryptFormatAll szolgáltatás használatakor.
 
 Azure Disk Encryption [integrálva van Azure Key Vault](disk-encryption-key-vault.md) a lemezes titkosítási kulcsok és titkos kódok felügyeletéhez és kezeléséhez. A szolgáltatás áttekintését lásd: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](disk-encryption-overview.md).
 
@@ -209,9 +209,9 @@ A Linux rendszerű virtuális gép lemezének titkosítási sablonjának konfigu
 
 ## <a name="use-encryptformatall-feature-for-data-disks-on-linux-vms"></a>A EncryptFormatAll funkció használata a Linux rendszerű virtuális gépeken található adatlemezekhez
 
-A **EncryptFormatAll** paraméter csökkenti a Linux-adatlemezek titkosításának idejét. A bizonyos feltételeknek megfelelő partíciók formátuma (a jelenlegi fájlrendszerrel együtt), majd a parancs végrehajtása előtt újra kell csatlakoztatni. Ha ki szeretne zárni egy olyan adatlemezt, amely megfelel a feltételeknek, leválaszthatja azt a parancs futtatása előtt.
+A **EncryptFormatAll** paraméter csökkenti a Linux-adatlemezek titkosításának idejét. A bizonyos feltételeknek megfelelő partíciók a jelenlegi fájlrendszerrel együtt lesznek formázva, majd a parancs végrehajtása előtt újra lecsatlakoznak a rendszerbe. Ha ki szeretne zárni egy olyan adatlemezt, amely megfelel a feltételeknek, leválaszthatja azt a parancs futtatása előtt.
 
- A parancs futtatása után a korábban csatlakoztatott meghajtók formázva lesznek, és a titkosítási réteg a most üres meghajtón lesz elindítva. Ha ez a beállítás be van jelölve, a virtuális géphez csatolt ideiglenes erőforrás lemez is titkosítva lesz. Ha az ideiglenes meghajtót alaphelyzetbe állítja, a rendszer a következő lehetőségnél újraformázza és újra titkosítja a virtuális gépet a Azure Disk Encryption megoldással. Az erőforrás-lemez titkosítása után a [Microsoft Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) nem fogja tudni kezelni az erőforrás lemezét, és engedélyezi a lapozófájlt, de manuálisan is konfigurálhatja a lapozófájlt.
+ A parancs futtatása után a korábban csatlakoztatott meghajtók formázva lesznek, és a titkosítási réteg a most üres meghajtón lesz elindítva. Ha ez a beállítás be van jelölve, a virtuális géphez csatolt ideiglenes lemez is titkosítva lesz. Ha az ideiglenes lemez alaphelyzetbe áll, a rendszer a következő lehetőségnél újraformázza és újra titkosítja a virtuális gépet a Azure Disk Encryption megoldással. Az erőforrás-lemez titkosítása után a [Microsoft Azure Linux-ügynök](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) nem fogja tudni kezelni az erőforrás lemezét, és engedélyezi a lapozófájlt, de manuálisan is konfigurálhatja a lapozófájlt.
 
 >[!WARNING]
 > A EncryptFormatAll nem használható, ha a virtuális gép adatkötetein szükség van a szükséges értékekre. A lemezek a titkosításból való leválasztásával zárhatók ki. Először próbálja ki először a EncryptFormatAll a tesztelési virtuális gépen, és tekintse át a funkció paraméterét és annak következményeit az éles virtuális gépen való kipróbálás előtt. A EncryptFormatAll beállítás az adatlemezt formázza, és a rajta lévő összes adattal elvész. A továbblépés előtt ellenőrizze, hogy a kizárni kívánt lemezek megfelelően le vannak-e választva. </br></br>
@@ -408,9 +408,10 @@ A Azure Disk Encryption a következő Linux-forgatókönyvek, funkciók és tech
 - Megosztott/elosztott fájlrendszerek titkosítása, például (de nem kizárólag): DFS, GFS, DRDB és CephFS.
 - Titkosított virtuális gép áthelyezése egy másik előfizetésre.
 - Kernel-összeomlási memóriakép (kdump).
-- Oracle ACFS (ASM fürt fájlrendszere)
-- Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban)
-- Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md))
+- Oracle ACFS (ASM-fürt fájlrendszere).
+- Gen2 virtuális gépek (lásd: [a 2. generációs virtuális gépek támogatása az Azure](generation-2.md#generation-1-vs-generation-2-capabilities)-ban).
+- Lsv2 sorozatú virtuális gépek (lásd: [Lsv2 sorozat](../lsv2-series.md)).
+- Egy "beágyazott csatlakoztatási ponttal" rendelkező virtuális gép; Ez azt eredményezi, hogy több csatlakoztatási pont van egyetlen elérési úton (például "/1stmountpoint/Data/2stmountpoint").
 
 ## <a name="next-steps"></a>További lépések
 

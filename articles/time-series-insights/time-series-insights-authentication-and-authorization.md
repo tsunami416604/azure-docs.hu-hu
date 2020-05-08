@@ -11,13 +11,13 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.custom: seodec18
-ms.openlocfilehash: beefad41a270233336bb9134268c98341e81a7cd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: bf959a7ac8c1038c4306a45ba4519374c5d85f29
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380807"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612282"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés az Azure Time Series Insights API-hoz
 
@@ -93,7 +93,7 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
    1. Ezután a jogkivonat átadható a `Authorization` fejlécben, amikor az alkalmazás meghívja a Time Series Insights API-t.
 
-* Azt is megteheti, hogy a fejlesztők a MSAL használatával hitelesítik magukat. További információért olvassa el a [Migrálás a MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) -re című cikket, és tekintse meg a [Azure Time Series Insights-környezettel kapcsolatos fontos](time-series-insights-manage-reference-data-csharp.md) tudnivalókat a C# használatával című cikkben. 
+* Azt is megteheti, hogy a fejlesztők a MSAL használatával hitelesítik magukat. További információért olvassa el a [Migrálás a MSAL](https://docs.microsoft.com/azure/active-directory/develop/msal-net-migration) -re című cikket, és tekintse meg a [Azure Time Series Insights-környezettel kapcsolatos fontos](time-series-insights-manage-reference-data-csharp.md) tudnivalókat a C# használatával című cikkben.
 
 ## <a name="common-headers-and-parameters"></a>Gyakori fejlécek és paraméterek
 
@@ -104,7 +104,7 @@ Ez a szakasz a gyakori HTTP-kérelmek fejléceit és paramétereit ismerteti a T
 
 ### <a name="authentication"></a>Hitelesítés
 
-Ha hitelesített lekérdezéseket szeretne végrehajtani a [Time Series INSIGHTS REST API](https://docs.microsoft.com/rest/api/time-series-insights/)-kkal szemben, egy érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az [engedélyezési fejlécben](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) az Ön által választott Rest-ügyfél (Poster, JavaScript, C#) használatával. 
+Ha hitelesített lekérdezéseket szeretne végrehajtani a [Time Series INSIGHTS REST API](https://docs.microsoft.com/rest/api/time-series-insights/)-kkal szemben, egy érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az [engedélyezési fejlécben](/rest/api/apimanagement/2019-12-01/authorizationserver/createorupdate) az Ön által választott Rest-ügyfél (Poster, JavaScript, C#) használatával.
 
 > [!TIP]
 > Tekintse át az üzemeltetett Azure Time Series Insights [Client SDK minta vizualizációját](https://tsiclientsample.azurewebsites.net/) , amelyből megtudhatja, hogyan végezheti el a hitelesítést az Time Series Insights API-kkal programozott módon a [JavaScript ügyféloldali SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) -val a diagramok és diagramok használatával.
@@ -115,7 +115,7 @@ Az alábbiakban a szükséges kérések fejléceit mutatjuk be.
 
 | Kötelező kérelem fejléce | Leírás |
 | --- | --- |
-| Engedélyezés | Time Series Insights használatával történő hitelesítéshez érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az **engedélyezési** fejlécben. | 
+| Engedélyezés | Time Series Insights használatával történő hitelesítéshez érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az **engedélyezési** fejlécben. |
 
 > [!IMPORTANT]
 > A jogkivonatot pontosan az `https://api.timeseries.azure.com/` erőforráshoz kell kiadni (más néven a token célközönsége).

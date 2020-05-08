@@ -8,14 +8,20 @@ ms.topic: troubleshooting
 ms.date: 12/13/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 57d5198cb54dc096fb09bb52d76539b1e4bbc1f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a6298b3a9c5769b1d82f89956736b451935b2c5d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127462"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612639"
 ---
 # <a name="windows-virtual-desktop-service-connections"></a>Windows rendszerű virtuális asztali szolgáltatások kapcsolatai
+
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/troubleshoot-service-connection-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a cikk a Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák megoldásához használható.
 
@@ -30,7 +36,7 @@ A felhasználók elindíthatják Távoli asztal-ügyfeleket, és képesek hitele
 Győződjön meg arról, hogy a problémát jelentő felhasználó a következő parancssor használatával van hozzárendelve az alkalmazási csoportokhoz:
 
 ```PowerShell
-Get-RdsAppGroupUser <tenantname> <hostpoolname> <appgroupname>
+Get-AzRoleAssignment -SignInName <userupn>
 ```
 
 Győződjön meg arról, hogy a felhasználó a megfelelő hitelesítő adatokkal jelentkezik be.
@@ -44,19 +50,21 @@ Ha a virtuális gép nem válaszol, és az RDP-n keresztül nem fér hozzá, akk
 A gazdagép állapotának megtekintéséhez futtassa a következő parancsmagot:
 
 ```powershell
-Get-RdsSessionHost -TenantName $TenantName -HostPoolName $HostPool | ft SessionHostName, LastHeartBeat, AllowNewSession, Status
+Get-AzWvdSessionHost -HostPoolName <hostpoolname> -ResourceGroupName <resourcegroupname>| Format-List Name, LastHeartBeat, AllowNewSession, Status
 ```
 
 Ha a gazdagép állapota `NoHeartBeat`, az azt jelenti, hogy a virtuális gép nem válaszol, és az ügynök nem tud kommunikálni a Windows virtuális asztali szolgáltatással.
 
 ```powershell
-SessionHostName          LastHeartBeat     AllowNewSession    Status 
----------------          -------------     ---------------    ------ 
-WVDHost1.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost2.contoso.com     21-Nov-19 5:21:35            True     Available 
-WVDHost3.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost4.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
-WVDHost5.contoso.com     21-Nov-19 5:21:35            True     NoHeartBeat 
+Name            : 0301HP/win10pd-0.contoso.com 
+LastHeartBeat   : 4/8/2020 1:48:35 AM 
+AllowNewSession : True 
+Status          : Available 
+
+Name            : 0301HP/win10pd-1.contoso.com 
+LastHeartBeat   : 4/8/2020 1:45:44 AM 
+AllowNewSession : True 
+Status          : NoHeartBeat
 ```
 
 Van néhány dolog, amit megtehet a szívverési állapot kijavítása érdekében.
@@ -65,21 +73,10 @@ Van néhány dolog, amit megtehet a szívverési állapot kijavítása érdekéb
 
 Ha a FSLogix nem naprakész, különösen akkor, ha az frxdrvvt. sys verziója 2.9.7205.27375, a holtpontot okozhat. Győződjön meg arról, hogy [a legújabb verzióra frissíti a FSLogix](https://go.microsoft.com/fwlink/?linkid=2084562).
 
-### <a name="disable-bgtaskregistrationmaintenancetask"></a>BgTaskRegistrationMaintenanceTask letiltása
-
-Ha a FSLogix frissítése nem működik, a probléma az lehet, hogy egy BiSrv-összetevő egy heti karbantartási feladat során kimeríti a rendszererőforrásokat. Ideiglenesen tiltsa le a karbantartási feladatot úgy, hogy letiltja a BgTaskRegistrationMaintenanceTask az alábbi két módszer egyikével:
-
-- Lépjen a Start menüre, és keresse **meg a Feladatütemezőt.** Navigáljon a Feladatütemező **könyvtár** > **Microsoft** > **Windows** > **BrokerInfrastructure**. Keresse meg a **BgTaskRegistrationMaintenanceTask**nevű feladatot. Ha megtalálta, kattintson rá a jobb gombbal, és válassza a **Letiltás** lehetőséget a legördülő menüből.
-- Nyisson meg egy parancssori menüt rendszergazdaként, és futtassa a következő parancsot:
-    
-    ```cmd
-    schtasks /change /tn "\Microsoft\Windows\BrokerInfrastructure\BgTaskRegistrationMaintenanceTask" /disable 
-    ```
-
 ## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
-- A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.
+- A Windows rendszerű virtuális asztali környezetek és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
 - A következő témakörben talál útmutatást a hibakereséshez [: oktatóanyag: Resource Manager-sablonok telepítésének hibája](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).

@@ -10,12 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: fcaa7a0c44851d6b48b40b01af4c8ec992c330b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6b2cfa85ea412a5ef8bda47a7ff6e99970ba6b0e
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283536"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611840"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -125,7 +126,7 @@ A következő példa a parancs JSON-kimenetének egyszerűsített példáját sz
 }
 ```
 
-Ezután a következő parancs használatával rendeljen hozzá egyszerű szolgáltatásnevet a Machine learning-munkaterülethez. Szüksége lesz a munkaterület nevére és az erőforráscsoport nevére a és `-w` `-g` a paraméterek számára. A `--user` paraméter esetében használja az `objectId` előző lépésben megadott értéket. A `--role` paraméter lehetővé teszi az egyszerű szolgáltatásnév hozzáférési szerepkörének beállítását, és általában a **tulajdonost** vagy a **közreműködőt**fogja használni. Mindkettő rendelkezik írási hozzáféréssel a meglévő erőforrásokhoz, például a számítási fürtökhöz és az adattárolóhoz, de csak a **tulajdonos** tudja kiépíteni ezeket az erőforrásokat. 
+Ezután a következő parancs használatával rendeljen hozzá egyszerű szolgáltatásnevet a Machine learning-munkaterülethez. Szüksége lesz a munkaterület nevére és az erőforráscsoport nevére a és `-w` `-g` a paraméterek számára. A `--user` paraméter esetében használja az `objectId` előző lépésben megadott értéket. A `--role` paraméter lehetővé teszi az egyszerű szolgáltatásnév hozzáférési szerepkörének beállítását, és általában a **tulajdonost** vagy a **közreműködőt**fogja használni. Mindkettő rendelkezik írási hozzáféréssel a meglévő erőforrásokhoz, például a számítási fürtökhöz és az adattárolóhoz, de csak a **tulajdonos** tudja kiépíteni ezeket az erőforrásokat.
 
 ```azurecli-interactive
 az ml workspace share -w your-workspace-name -g your-resource-group-name --user your-sp-object-id --role owner
@@ -148,7 +149,7 @@ sp = ServicePrincipalAuthentication(tenant_id="your-tenant-id", # tenantID
 A `sp` változó most már rendelkezik egy olyan hitelesítési objektummal, amelyet közvetlenül az SDK-ban használ. Általánosságban elmondható, hogy a fent használt azonosítókat/titkokat a következő kódban látható módon tárolja a környezeti változókon.
 
 ```python
-import os 
+import os
 
 sp = ServicePrincipalAuthentication(tenant_id=os.environ['AML_TENANT_ID'],
                                     service_principal_id=os.environ['AML_PRINCIPAL_ID'],
@@ -160,7 +161,7 @@ A Pythonban futó és az SDK-t használó automatizált munkafolyamatok esetébe
 ```python
 from azureml.core import Workspace
 
-ws = Workspace.get(name="ml-example", 
+ws = Workspace.get(name="ml-example",
                    auth=sp,
                    subscription_id="your-sub-id")
 ws.get_details()
@@ -168,7 +169,7 @@ ws.get_details()
 
 ## <a name="azure-machine-learning-rest-api-auth"></a>Azure Machine Learning REST API hitelesítés
 
-A fenti lépésekben létrehozott egyszerű szolgáltatásnév a Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/)való hitelesítéshez is használható. A Azure Active Directory ügyfél- [hitelesítő adatok engedélyezési folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)használja, amely lehetővé teszi, hogy a szolgáltatások közötti hívás a fej nélküli hitelesítéshez automatizált munkafolyamatokban történjen. A példák a Python és a Node. js [ADAL-könyvtárával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) valósulnak meg, de az OpenID Connect 1,0-et támogató nyílt forráskódú kódtár is használható. 
+A fenti lépésekben létrehozott egyszerű szolgáltatásnév a Azure Machine Learning [REST API](https://docs.microsoft.com/rest/api/azureml/)való hitelesítéshez is használható. A Azure Active Directory ügyfél- [hitelesítő adatok engedélyezési folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow)használja, amely lehetővé teszi, hogy a szolgáltatások közötti hívás a fej nélküli hitelesítéshez automatizált munkafolyamatokban történjen. A példák a Python és a Node. js [ADAL-könyvtárával](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries) valósulnak meg, de az OpenID Connect 1,0-et támogató nyílt forráskódú kódtár is használható.
 
 > [!NOTE]
 > A MSAL. js egy újabb könyvtár, mint a ADAL, de a MSAL. js használatával nem végezhető el a szolgáltatások közötti hitelesítés, mivel ez elsősorban az olyan ügyféloldali függvénytár, amely egy adott felhasználóhoz kötött interaktív vagy felhasználói felületi hitelesítéshez készült. Javasoljuk, hogy az alábbi módon használja az ADAL-t az automatizált munkafolyamatok létrehozásához a REST API használatával.
@@ -206,7 +207,7 @@ context.acquireTokenWithClientCredentials(
 A változó `tokenResponse` egy olyan objektum, amely tartalmazza a jogkivonatot és a társított metaadatokat, például a lejárati időt. A tokenek 1 órára érvényesek, és az új jogkivonat lekéréséhez futtassa újra ugyanezt a hívást. A következő egy példa erre a válaszra.
 
 ```javascript
-{ 
+{
     tokenType: 'Bearer',
     expiresIn: 3599,
     expiresOn: 2019-12-17T19:15:56.326Z,
@@ -214,13 +215,13 @@ A változó `tokenResponse` egy olyan objektum, amely tartalmazza a jogkivonatot
     accessToken: "random-oauth-token",
     isMRRT: true,
     _clientId: 'your-client-id',
-    _authority: 'https://login.microsoftonline.com/your-tenant-id' 
+    _authority: 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
 
 Az Auth `accessToken` token beolvasásához használja a tulajdonságot. Tekintse meg a [REST API dokumentációját](https://github.com/microsoft/MLOps/tree/master/examples/AzureML-REST-API) , amely bemutatja, hogyan használhatja a tokent API-hívások létrehozásához.
 
-### <a name="python"></a>Python 
+### <a name="python"></a>Python
 
 A következő lépésekkel hozhatja végre a hitelesítési tokent a Python használatával. A környezetben futtassa a parancsot `pip install adal`. Ezután használja a `tenantId`, `clientId`a és `clientSecret` a parancsot a fenti lépésekben a következő parancsfájlban a megfelelő változók értékeiként létrehozott egyszerű szolgáltatásnév alapján.
 
@@ -242,13 +243,13 @@ A változó `token_response` egy olyan szótár, amely tartalmazza a tokent és 
 
 ```python
 {
-    'tokenType': 'Bearer', 
-    'expiresIn': 3599, 
-    'expiresOn': '2019-12-17 19:47:15.150205', 
-    'resource': 'https://management.azure.com/', 
-    'accessToken': 'random-oauth-token', 
-    'isMRRT': True, 
-    '_clientId': 'your-client-id', 
+    'tokenType': 'Bearer',
+    'expiresIn': 3599,
+    'expiresOn': '2019-12-17 19:47:15.150205',
+    'resource': 'https://management.azure.com/',
+    'accessToken': 'random-oauth-token',
+    'isMRRT': True,
+    '_clientId': 'your-client-id',
     '_authority': 'https://login.microsoftonline.com/your-tenant-id'
 }
 ```
@@ -314,9 +315,9 @@ print(token)
 > [!IMPORTANT]
 > A jogkivonat `refresh_by` időpontját követően új jogkivonatot kell kérnie. Ha a Python SDK-n kívülre kell frissítenie a jogkivonatokat, az egyik lehetőség az, hogy a REST API a szolgáltatás-egyszerű hitelesítéssel rendszeres időközönként a `service.get_token()` hívást a korábban tárgyalt módon használja.
 >
-> Javasoljuk, hogy az Azure Kubernetes Service-fürttel azonos régióban hozza létre Azure Machine Learning munkaterületét. 
+> Javasoljuk, hogy az Azure Kubernetes Service-fürttel azonos régióban hozza létre Azure Machine Learning munkaterületét.
 >
-> A webszolgáltatások tokenekkel történő hitelesítéséhez a webszolgáltatás meghívja a Azure Machine Learning munkaterület létrehozásához használt régiót. Ha a munkaterület régiója nem érhető el, nem tud beolvasni egy jogkivonatot a webszolgáltatáshoz, még akkor sem, ha a fürt egy másik régióban található a munkaterületen. Ennek eredményeképpen az Azure AD-hitelesítés nem érhető el, amíg a munkaterület régiója újra elérhetővé nem válik. 
+> A webszolgáltatások tokenekkel történő hitelesítéséhez a webszolgáltatás meghívja a Azure Machine Learning munkaterület létrehozásához használt régiót. Ha a munkaterület régiója nem érhető el, nem tud beolvasni egy jogkivonatot a webszolgáltatáshoz, még akkor sem, ha a fürt egy másik régióban található a munkaterületen. Ennek eredményeképpen az Azure AD-hitelesítés nem érhető el, amíg a munkaterület régiója újra elérhetővé nem válik.
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 

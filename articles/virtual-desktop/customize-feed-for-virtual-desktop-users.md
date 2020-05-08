@@ -8,22 +8,26 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 24a295d220cfaa7efe2fdc0d4eee53bb5c409708
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 961fadfff0147d8c5258fa5acf31d8b0649ea12a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128080"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612894"
 ---
 # <a name="customize-feed-for-windows-virtual-desktop-users"></a>Csatorna személyre szabása Windows Virtual Desktop-felhasználók számára
 
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/customize-feed-virtual-desktop-users-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Testreszabhatja a hírcsatornát, hogy a RemoteApp-és távoli asztali erőforrások felismerhető módon jelenjenek meg a felhasználók számára.
 
-Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+## <a name="prerequisites"></a>Előfeltételek
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+Ez a cikk azt feltételezi, hogy már letöltötte és telepítette a Windows rendszerű virtuális asztali PowerShell-modult. Ha még nem tette meg, kövesse a [PowerShell-modul beállítása](powershell-module.md)című témakör utasításait.
 
 ## <a name="customize-the-display-name-for-a-remoteapp"></a>A RemoteApp megjelenítendő nevének testreszabása
 
@@ -32,16 +36,55 @@ A közzétett RemoteApp megjelenített nevét megváltoztathatja a felhasználó
 Az alkalmazáscsoport közzétett RemoteAppinak listájának lekéréséhez futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
-Get-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname>
 ```
-![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/get-rdsremoteapp.png)
 
-Ha rövid nevet szeretne hozzárendelni egy RemoteApp-hoz, futtassa a következő PowerShell-parancsmagot:
+Ha rövid nevet szeretne hozzárendelni egy RemoteApp-hoz, futtassa a következő parancsmagot a szükséges paraméterekkel:
 
 ```powershell
-Set-RdsRemoteApp -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -Name <existingappname> -FriendlyName <newfriendlyname>
+Update-AzWvdApplication -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és új FriendlyName ki van emelve.](media/set-rdsremoteapp.png)
+
+Tegyük fel például, hogy az aktuális alkalmazásokat a következő példa parancsmaggal kérdezte le:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list
+```
+
+A kimenet így néz ki:
+
+```powershell
+CommandLineArgument : 
+CommandLineSetting  : DoNotAllow 
+Description         : 
+FilePath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+FriendlyName        : Microsoft Word 
+IconContent         : {0, 0, 1, 0…} 
+IconHash            : --iom0PS6XLu-EMMlHWVW3F7LLsNt63Zz2K10RE0_64 
+IconIndex           : 0 
+IconPath            : C:\Program Files\Windows NT\Accessories\wordpad.exe 
+Id                  : /subscriptions/<subid>/resourcegroups/0301RG/providers/Microsoft.DesktopVirtualization/applicationgroups/0301RAG/applications/Microsoft Word 
+Name                : 0301RAG/Microsoft Word 
+ShowInPortal        : False 
+Type                : Microsoft.DesktopVirtualization/applicationgroups/applications 
+```
+A rövid név frissítéséhez futtassa a következő parancsmagot:
+
+```powershell
+Update-AzWvdApplication -GroupName 0301RAG -Name "Microsoft Word" -FriendlyName "WordUpdate" -ResourceGroupName 0301RG -IconIndex 0 -IconPath "C:\Program Files\Windows NT\Accessories\wordpad.exe" -ShowInPortal:$true -CommandLineSetting DoNotallow -FilePath "C:\Program Files\Windows NT\Accessories\wordpad.exe" 
+```
+
+A rövid név sikeres frissítésének megerősítéséhez futtassa a következő parancsmagot:
+
+```powershell
+Get-AzWvdApplication -ResourceGroupName 0301RG -ApplicationGroupName 0301RAG | format-list FriendlyName 
+```
+
+A parancsmagnak a következő kimenetet kell adnia:
+
+```powershell
+FriendlyName        : WordUpdate
+```
 
 ## <a name="customize-the-display-name-for-a-remote-desktop"></a>Távoli asztal megjelenítendő nevének testreszabása
 
@@ -50,20 +93,39 @@ Egy közzétett távoli asztal megjelenítendő nevét a felhasználóbarát né
 A távoli asztal erőforrásának lekéréséhez futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
-Get-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname>
+Get-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname>
 ```
-![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/get-rdsremotedesktop.png)
 
 Ha rövid nevet szeretne rendelni a távoli asztali erőforráshoz, futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
-Set-RdsRemoteDesktop -TenantName <tenantname> -HostPoolName <hostpoolname> -AppGroupName <appgroupname> -FriendlyName <newfriendlyname>
+Update-AzWvdDesktop -ResourceGroupName <resourcegroupname> -ApplicationGroupName <appgroupname> -Name <applicationname> -FriendlyName <newfriendlyname>
 ```
-![Képernyőkép a set-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és új FriendlyName ki van emelve.](media/set-rdsremotedesktop.png)
+
+## <a name="customize-a-display-name-in-azure-portal"></a>Megjelenítendő név testreszabása Azure Portal
+
+A közzétett távoli asztal megjelenítendő nevét úgy módosíthatja, hogy egy rövid nevet állít be a Azure Portal használatával. 
+
+1. Jelentkezzen be az Azure Portalra a <https://portal.azure.com> webhelyen. 
+
+2. Keresse meg a **Windows rendszerű virtuális asztalt**.
+
+3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet. 
+
+4. A Windows rendszerű virtuális asztal lapon válassza ki az **alkalmazáscsoport** elemet a képernyő bal oldalán, majd válassza ki a szerkeszteni kívánt alkalmazáscsoport nevét. 
+
+5. A képernyő bal oldalán található menüben válassza az **alkalmazások** lehetőséget.
+
+6. Válassza ki a frissíteni kívánt alkalmazást, majd adjon meg egy új **megjelenítendő nevet**. 
+
+7. Kattintson a **Mentés** gombra. A szerkesztett alkalmazásnak ekkor meg kell jelennie a frissített névnek.
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy testre szabta a hírcsatornát a felhasználók számára, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe a teszteléshez. Ehhez folytassa a Kapcsolódás a Windows rendszerű virtuális asztali környezetekhez:
     
- * [Csatlakozás Windows 10 vagy Windows Server 7 rendszerről](connect-windows-7-and-10.md)
- * [Csatlakozás webböngészőről](connect-web.md) 
+ * [Windows 10 vagy Windows 7 rendszerű kapcsolat](connect-windows-7-and-10.md)
+ * [Kapcsolódás a webügyféllel](connect-web.md) 
+ * [Kapcsolódás az Android-ügyféllel](connect-android.md)
+ * [Kapcsolódás az iOS-ügyfélhez](connect-ios.md)
+ * [Kapcsolódás a macOS-ügyfélhez](connect-macos.md)

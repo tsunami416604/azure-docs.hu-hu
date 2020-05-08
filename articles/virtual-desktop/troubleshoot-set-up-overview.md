@@ -5,38 +5,43 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 02/07/2020
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 2b9dfb2ee7e74f94bfc3e6d2c679cb7da3d6bc66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 196c4f692b425d2fc6592888ba89f2fa6dafd3de
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127404"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612503"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Hibaelhárítási áttekintés, visszajelzés és támogatás
 
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/troubleshoot-set-up-overview-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 Ez a cikk áttekintést nyújt a Windows rendszerű virtuális asztali bérlői környezet beállításakor felmerülő problémákról, és a problémák megoldásához nyújt lehetőségeket.
 
-## <a name="provide-feedback"></a>Visszajelzés küldése
+## <a name="report-issues-during-public-preview"></a>Problémák jelentése a nyilvános előzetes verzióban
 
-Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) , és beszéljen a Windows Virtual Desktop szolgáltatásról a termék csapatával és az aktív közösség tagjaival.
+Ha a Spring 2020 kiadásban nyilvános előzetes verzióban szeretne problémákat jelenteni vagy javaslatokat készíteni, látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop). A technikai Közösség segítségével megismerheti az ajánlott eljárásokat, illetve az új funkciókra vonatkozó javaslatokat és szavazhat. Ha a nyilvános előzetes kiadással kapcsolatos problémát jelent, ügyeljen arra, hogy a probléma típusát a **Spring 2020 Update (előzetes verzió)** címkével adja meg.
+
+Ha olyan bejegyzést tesz, amely segítséget kér vagy új szolgáltatást javasol, a lehető legrészletesebben írja le a témakört. A részletes információk segítséget nyújthatnak más felhasználóknak a kérdés megválaszolásához vagy az Ön által szavazásra javasolt funkció megismeréséhez.
 
 ## <a name="escalation-tracks"></a>Eszkalációs sávok
 
-A következő táblázat segítségével azonosíthatja és megoldhatja a bérlői környezet Távoli asztal-ügyféllel való beállításakor felmerülő problémákat. A bérlő beállítása után az új [diagnosztikai szolgáltatás](diagnostics-role-service.md) segítségével azonosíthatja a gyakori forgatókönyvekkel kapcsolatos problémákat.
+Mielőtt bármit végrehajtaná, győződjön meg róla, hogy az Azure-beli szolgáltatás megfelelően fut-e, és [Azure Service Health](https://azure.microsoft.com/features/service-health/) ellenőrizze az Azure-beli [állapot lapot](https://status.azure.com/status) .
 
->[!NOTE]
-> Van egy technikai közösségi fórum, amelyről megtudhatja, hogy milyen problémák léptek fel a termék csapatával és az aktív közösség tagjaival kapcsolatban. A vitafórum elindításához látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop) .
+A következő táblázat segítségével azonosíthatja és megoldhatja a bérlői környezet Távoli asztal-ügyféllel való beállításakor felmerülő problémákat. A bérlő beállítása után az új [diagnosztikai szolgáltatás](diagnostics-role-service.md) segítségével azonosíthatja a gyakori forgatókönyvekkel kapcsolatos problémákat.
 
 | **Probléma**                                                            | **Javasolt megoldás**  |
 |----------------------------------------------------------------------|-------------------------------------------------|
-| Windows rendszerű virtuális asztali bérlő létrehozása                                                    | Ha van Azure-leállás, [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/); egyéb esetben [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), válassza a szolgáltatáshoz tartozó **Windows virtuális asztal** lehetőséget, válassza a probléma típusának **központi telepítése** lehetőséget, majd válassza ki a problémát altípushoz tartozó **Windowsos virtuális asztali bérlő létrehozásakor felmerülő problémákat** .|
-| A Marketplace-sablonok elérése Azure Portal       | Ha van Azure-leállás, [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/). <br> <br> Az Azure piactéren elérhető Windows rendszerű virtuális asztali sablonok szabadon hozzáférhetők.|
-| Azure Resource Manager sablonok elérése a GitHubról                                  | Tekintse meg a [bérlői és a gazdagép-készlet létrehozása](troubleshoot-set-up-issues.md)a [Windows rendszerű virtuális asztali munkamenetgazda virtuális gépek létrehozása](troubleshoot-set-up-issues.md#creating-windows-virtual-desktop-session-host-vms) című szakaszát. Ha a probléma továbbra is megoldatlan, lépjen kapcsolatba a [GitHub támogatási csapatával](https://github.com/contact). <br> <br> Ha a hiba a GitHub-sablonhoz való hozzáférés után fordul elő, forduljon az [Azure ügyfélszolgálatához](https://azure.microsoft.com/support/create-ticket/).|
+| A Marketplace-sablonok elérése Azure Portal       | Az Azure piactéren elérhető Windows rendszerű virtuális asztali sablonok szabadon hozzáférhetők.|
 | Session Host Pool Azure Virtual Network (VNET) és Express Route-beállítások               | [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), majd válassza ki a megfelelő szolgáltatást (a hálózatkezelés kategóriában). |
-| A munkamenet-gazdagép virtuális gép (VM) létrehozása, ha Azure Resource Manager a Windows rendszerű virtuális asztallal elérhető sablonok nincsenek használatban | [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), majd válassza a **Windows rendszerű virtuális gép** lehetőséget a szolgáltatáshoz. <br> <br> A Windows virtuális asztal szolgáltatásban elérhető Azure Resource Manager sablonokkal kapcsolatos problémákért lásd: a Windows virtuális asztali bérlő létrehozása szakasz a [bérlői és a gazdagép-készlet létrehozásához](troubleshoot-set-up-issues.md). |
+| A munkamenet-gazdagép virtuális gép (VM) létrehozása, ha Azure Resource Manager a Windows rendszerű virtuális asztallal elérhető sablonok nincsenek használatban | [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), majd válassza a **Windows rendszerű virtuális gép** lehetőséget a szolgáltatáshoz. <br> <br> A Windows Virtual Desktop szolgáltatásban elérhető Azure Resource Manager sablonokkal kapcsolatos problémákért lásd: a [környezet és a gazdagépek létrehozásához](troubleshoot-set-up-issues.md)szükséges Windows virtuális asztali bérlő létrehozása szakasz. |
 | Windows rendszerű virtuális asztali munkamenetgazda-környezet kezelése a Azure Portal    | [Nyisson meg egy Azure-támogatási kérelmet](https://azure.microsoft.com/support/create-ticket/). <br> <br> A Távoli asztali szolgáltatások/Windows rendszerű virtuális asztali PowerShell használatakor a felügyeleti problémákért lásd: a [Windows virtuális asztali PowerShell](troubleshoot-powershell.md) vagy [egy Azure-támogatási kérelem megnyitása](https://azure.microsoft.com/support/create-ticket/), válassza a **Windows virtuális asztal** lehetőséget a szolgáltatáshoz, válassza a **konfiguráció és kezelés** lehetőséget a probléma típusa beállításnál, majd válassza ki a probléma altípushoz tartozó **PowerShell használatával kapcsolatos problémákat** . |
 | A Windows rendszerű virtuális asztali konfiguráció kezelése a gazdagépek és az alkalmazások csoportjaihoz kötve (alkalmazás-csoportok)      | Tekintse meg a [Windows rendszerű virtuális asztali PowerShellt](troubleshoot-powershell.md), vagy [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), válassza a szolgáltatáshoz a **Windows virtuális asztal** lehetőséget, majd válassza ki a megfelelő problémát.|
 | FSLogix-profilok tárolóinak üzembe helyezése és kezelése | Tekintse meg a [FSLogix termékekkel kapcsolatos hibaelhárítási útmutatót](/fslogix/fslogix-trouble-shooting-ht/) , és ha ez nem oldja meg a problémát, [Nyisson meg egy Azure-támogatási kérést](https://azure.microsoft.com/support/create-ticket/), válassza a **Windows virtuális asztal** lehetőséget a szolgáltatáshoz, válassza a **FSLogix** lehetőséget, majd válassza ki a megfelelő problémát altípust. |
@@ -46,11 +51,12 @@ A következő táblázat segítségével azonosíthatja és megoldhatja a bérl�
 | Ügyfelek csatlakoztatása                                                                    | Tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatait](troubleshoot-service-connection.md) , és ha ez nem oldja meg a problémát, tekintse meg a [munkamenet-gazdagép virtuális gép konfigurációját](troubleshoot-vm-configuration.md) |
 | A távoli alkalmazások vagy az asztal rugalmassága                                      | Ha a problémák egy adott alkalmazáshoz vagy termékhez vannak kötve, forduljon a termékért felelős csapathoz. |
 | Licencelési üzenetek vagy hibák                                                          | Ha a problémák egy adott alkalmazáshoz vagy termékhez vannak kötve, forduljon a termékért felelős csapathoz. |
-| Problémák a Windows rendszerű virtuális asztali eszközök GitHubon történő használatakor (Azure Resource Manager sablonok, diagnosztikai eszköz, felügyeleti eszköz) | A problémák jelentéséhez tekintse meg [a Távoli asztali szolgáltatások Azure Resource Manager sablonokat](https://github.com/Azure/RDS-Templates/blob/master/README.md) . |
+| Harmadik féltől származó hitelesítési módszerekkel kapcsolatos problémák | Győződjön meg arról, hogy a harmadik féltől származó szolgáltató támogatja a Windows rendszerű virtuális asztali környezeteket, és az ismert problémákkal kapcsolatban megközelíti őket. |
+| Problémák a Windows rendszerű virtuális asztali Log Analytics használatával | A diagnosztikai sémával kapcsolatos problémák esetén [Nyisson meg egy Azure-támogatási kérelmet](https://azure.microsoft.com/support/create-ticket/).<br><br>A Log Analytics lekérdezések, vizualizációk vagy egyéb problémák esetén válassza ki a megfelelő problémát a Log Analytics alatt. |
 
 ## <a name="next-steps"></a>További lépések
 
-- A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.
+- A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az Alkalmazáskészletek létrehozása](troubleshoot-set-up-issues.md)című témakört.
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
 - A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatai](troubleshoot-service-connection.md)című témakört.
 - Távoli asztal-ügyfelekkel kapcsolatos problémák elhárításához tekintse meg [a távoli asztal-ügyfél hibaelhárítása](troubleshoot-client.md) című témakört.
