@@ -3,12 +3,12 @@ title: Oktatóanyag – vSphere-fürt üzembe helyezése az Azure-ban
 description: Ismerje meg, hogyan helyezhet üzembe vSphere-fürtöt az Azure-ban az Azure VMWare-megoldás (AVS) használatával
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 712be25acf5984a4bcdf95ad70e0ccfa660c06bc
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: MT
+ms.openlocfilehash: a11928dd936c29b8be0816257a64deadacda4578
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838797"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928550"
 ---
 # <a name="tutorial-deploy-an-avs-private-cloud-in-azure"></a>Oktatóanyag: AVS Private Cloud üzembe helyezése az Azure-ban
 
@@ -19,7 +19,7 @@ Mivel az AVS nem teszi lehetővé a privát felhő kezelését a helyszíni vCen
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * AVS Private Cloud létrehozása
+> * AVS-magánfelhő létrehozása
 > * A privát felhő üzembe helyezésének ellenőrzése
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -58,7 +58,7 @@ Az **alapvető beállítások** lapon adja meg a mezők értékeit. A következ�
 | **Erőforráscsoport** | A saját felhőalapú erőforrásainak erőforráscsoport. |
 | **Hely** | Válasszon egy helyet, például az **USA keleti**régióját.|
 | **Erőforrás neve** | Az AVS Private-felhő neve. |
-| **SKU** | Válassza ki a megfelelő SKU-t, a rendelkezésre álló értékek a következők: |
+| **SKU** | Válassza ki a followng SKU-értéket: AV36 |
 | **Gazdagépek** | A saját felhőalapú fürtbe felvenni kívánt gazdagépek száma. Az alapértelmezett érték 3. Ez az érték az üzembe helyezés után növelhető vagy csökkenthető.  |
 | **vCenter rendszergazdai jelszava** | Adja meg a Felhőbeli rendszergazdai jelszót. |
 | **NSX-T kezelő jelszava** | Adja meg a NSX-T rendszergazdai jelszót. |
@@ -94,7 +94,7 @@ az group create --name myResourceGroup --location eastus
 Az AVS Private Cloud létrehozásához meg kell adnia egy erőforráscsoport-nevet, a saját felhő nevét, a helyet, a fürt méretét.
 
 
-|Tulajdonság  |Description  |
+|Tulajdonság  |Leírás  |
 |---------|---------|
 |Erőforráscsoport neve     | Annak az erőforráscsoportnak a neve, amelyre a saját felhőt telepíti.        |
 |Saját felhő neve     | A saját felhő neve.        |
@@ -126,7 +126,7 @@ Ehhez navigáljon a privát felhőhöz a Azure Portalban, és válassza a **Tör
 Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
-> * AVS Private Cloud létrehozása
+> * AVS-magánfelhő létrehozása
 > * Ellenőrizte a saját felhő üzembe helyezését
 
 Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan hozhat létre virtuális hálózatot a saját felhőhöz való használatra a saját felhőalapú fürtök helyi felügyeletének beállításának részeként.
