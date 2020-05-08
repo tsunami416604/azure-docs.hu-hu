@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/22/2019
+ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4deae235ed15d02874ab5cb3470c62e934324364
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 389dea74f5002cb09d7683947356d236ea8d338b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80234297"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858693"
 ---
 # <a name="soft-delete-for-azure-storage-blobs"></a>Az Azure Storage-blobok helyreállítható törlése
 
@@ -371,5 +371,5 @@ A Soft delete előnyeit kihasználhatja a használt API-verziótól függetlenü
 * [.NET-mintakód](https://github.com/Azure-Samples/storage-dotnet-blob-soft-delete)
 * [A Blob szolgáltatás REST API-ja](/rest/api/storageservices/blob-service-rest-api)
 * [Azure Storage-replikáció](../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Magasan elérhető alkalmazások tervezése RA-GRS használatával](../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Vész-helyreállítási és Storage-fiók feladatátvétele (előzetes verzió) az Azure Storage-ban](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Vész-helyreállítási és Storage-fiók feladatátvétele](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

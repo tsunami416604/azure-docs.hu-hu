@@ -9,7 +9,7 @@ ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 271770935cf4cb83d4abc6e82a4f4b13ffe865b3
 ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "80295487"

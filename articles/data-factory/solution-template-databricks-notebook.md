@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/03/2020
-ms.openlocfilehash: 65b89a13637f5a4e1712995a6ac58d88b4421806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 2503c26ac0348739bbf117c3538af797833ce8b8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414851"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857641"
 ---
 # <a name="transformation-with-azure-databricks"></a>Átalakítás az Azure Databricks szolgáltatással
 
-[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Ebben az oktatóanyagban egy végpontok közötti folyamatot hoz létre, amely tartalmazza az **érvényesítési**, az **adatmásolási**és a **Jegyzetfüzet** -tevékenységeket Azure Data Factoryban.
 
@@ -153,6 +153,9 @@ Az új folyamat során a legtöbb beállítás automatikusan be van állítva az
 1. Ellenőrizze, hogy a **folyamat paramétereinek** megfelelnek-e a következő képernyőképen láthatók: ![folyamat paraméterei](media/solution-template-Databricks-notebook/pipeline-parameters.png)
 
 1. Kapcsolódjon az adatkészletekhez.
+
+    >[!NOTE]
+    >Az alábbi adatkészletekben a fájl elérési útja automatikusan meg van adva a sablonban. Ha bármilyen módosításra van szükség, győződjön meg arról, hogy a **tároló** és a **könyvtár** elérési útját is megadja, ha bármilyen hiba történt.
 
    - **SourceAvailabilityDataset** – annak ellenőrzését, hogy a forrásadatok elérhetők-e.
 

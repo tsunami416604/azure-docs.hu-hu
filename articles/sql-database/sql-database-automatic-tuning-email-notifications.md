@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/03/2019
-ms.openlocfilehash: b3b235833e794e48ae655d184bf938effc0d7ac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f117f1518211680c4ea1f5ac51ecf0e44396a133
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768377"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856762"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Automatikus hangolással kapcsolatos e-mail-értesítések
 
@@ -69,7 +69,7 @@ A következő lépés egy olyan Runbook létrehozása Azure Automation belül, a
 Új Azure Automation runbook létrehozásához kövesse az alábbi lépéseket:
 
 1. Nyissa meg az előző lépésben létrehozott Azure Automation fiókot.
-1. Az Automation-fiók panelen kattintson a bal oldalon található "**runbookok**" menüelemre, és hozzon létre egy új Azure Automation Runbook a PowerShell-parancsfájllal. További információ az Automation-runbookok létrehozásáról: [új Runbook létrehozása](../automation/manage-runbooks.md#creating-a-runbook).
+1. Az Automation-fiók panelen kattintson a bal oldalon található "**runbookok**" menüelemre, és hozzon létre egy új Azure Automation Runbook a PowerShell-parancsfájllal. Az Automation-runbookok létrehozásával kapcsolatos további tudnivalókért tekintse meg [az új Runbook létrehozása](../automation/manage-runbooks.md#create-a-runbook)című témakört.
 1. Új runbook hozzáadásához kattintson a "**+ Runbook hozzáadása**" menüpontra, majd kattintson a "**gyors létrehozás – új runbook létrehozása**" lehetőségre.
 1. A Runbook panelen írja be a Runbook nevét (a jelen példában a "**AutomaticTuningEmailAutomation**" kifejezést használja), válassza ki a Runbook típusát **powershellként** , és írja le a Runbook leírását, hogy leírja a célját.
 1. Kattintson a **Létrehozás** gombra egy új runbook létrehozásának befejezéséhez.

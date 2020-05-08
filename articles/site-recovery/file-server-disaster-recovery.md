@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 59541c568c1d5341375236f9f074b7f82e1a6f94
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75980299"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858753"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Fájlkiszolgálók védelmének biztosítása az Azure Site Recovery használatával 
 
@@ -30,7 +30,7 @@ A nyílt forráskódú fájlmegosztó rendszerek célja, hogy olyan környezetet
 Az Elosztott fájlrendszer-replikáció a Távoli különbözeti tömörítés (RDC) néven ismert tömörítési algoritmust használja, amely hatékonyan alkalmazható a fájlok frissítésére a korlátozott sávszélességű hálózatokon. Észleli az adatok beszúrását, eltávolítását és átcsoportosítását a fájlokban. A DFSR csak a módosult fájlblokkokat replikálhatja a fájlok frissítése során. Emellett léteznek olyan fájlkiszolgáló-környezetek is, ahol a napi rendszerességű biztonsági mentéseket csúcsidőn kívül végzi el a rendszer, ezzel kiszolgálva a vészhelyreállításra vonatkozó követelményeket. A DFSR nincs implementálva.
 
 A következő ábra a fájlkiszolgáló-környezetet mutatja be implementált DFSR-rel.
-                
+        
 ![DFSR-architektúra](media/site-recovery-file-server/dfsr-architecture.JPG)
 
 Az előző ábrán több fájlkiszolgáló, ún. tag vesz részt aktívan a fájlok replikációjában egy replikációs csoporton belül. A replikált mappa tartalma minden ügyfél számára elérhető, amely kérést küld a tagok egyikének, még akkor is ha egy tag offline állapotra vált.
@@ -57,19 +57,19 @@ Az alábbi ábra segít meghatározni, milyen stratégiát használjon a fájlki
 |Környezet  |Ajánlás  |Megfontolandó szempontok |
 |---------|---------|---------|
 |Fájlkiszolgáló-környezet DFSR-rel vagy anélkül|   [A Site Recovery használata replikációhoz](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    A Site Recovery nem támogatja a megosztott lemezfürtöket és a hálózati tárolókat (NAS). Ha a környezet ezeket a konfigurációkat használja, alkalmazza az egyéb megközelítések valamelyikét igény szerint. <br> A Site Recovery nem támogatja az SMB 3.0-s verziót. A replikált virtuális gépen csak akkor jelennek meg a módosítások, ha a fájlok módosításait azok eredeti helyén is frissíti.<br>  A Site Recovery közel szinkron adatreplikálási folyamatot biztosít, így a nem tervezett feladatátvételi forgatókönyvek esetében lehetséges az adatvesztés, és az USN-eltéréssel kapcsolatos problémák is létrehozhatók.
-|Fájlkiszolgáló-környezet DFSR-rel     |  [A DFSR kiterjesztése egy Azure IaaS virtuális gépre](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      A DFSR kiválóan működik a rendkívüli sávszélesség-terheltségű környezetekben. Ehhez egy folyamatosan működő Azure-beli virtuális gépre van szükség. A tervezés során a virtuális gép költségét is számításba kell venni.         |
+|Fájlkiszolgáló-környezet DFSR-rel     |  [A DFSR kiterjesztése egy Azure IaaS virtuális gépre](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |    A DFSR kiválóan működik a rendkívüli sávszélesség-terheltségű környezetekben. Ehhez egy folyamatosan működő Azure-beli virtuális gépre van szükség. A tervezés során a virtuális gép költségét is számításba kell venni.         |
 |Azure IaaS virtuális gép     |     File Sync     |     Ha a vészhelyreállítási forgatókönyvekhez a File Syncet használja, a feladatátvétel során manuális műveletekkel kell megoldania, hogy a fájlmegosztások átlátható módon legyenek elérhetők az ügyfélszámítógép számára. A File Sync működéséhez a 445-ös portot meg kell nyitni az ügyfélszámítógépen.     |
 
 
 ### <a name="site-recovery-support"></a>Site Recovery támogatása
 Mivel a Site Recovery replikációja alkalmazásfüggetlen, várhatóan az alábbi ajánlásokat érdemes követni a következő forgatókönyvek esetében.
 
-| Forrás    |Egy másodlagos helyre    |Az Azure-ba
+| Forrás  |Egy másodlagos helyre  |Az Azure-ba
 |---------|---------|---------|
-|Azure| -|Igen|
-|Hyper-V|   Igen |Igen
-|VMware |Igen|   Igen
-|Fizikai kiszolgáló|   Igen |Igen
+|Azure|  -|Igen|
+|Hyper-V|  Igen  |Igen
+|VMware  |Igen|  Igen
+|Fizikai kiszolgáló|  Igen  |Igen
  
 
 > [!IMPORTANT]
@@ -97,7 +97,7 @@ Az Azure Files használatával teljes mértékben lecserélheti vagy kiegészít
 
 A következő lépések röviden bemutatják a File Sync használatát:
 
-1. [Hozzon létre egy tárfiókot az Azure-ban](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha a tárfiókokhoz írásvédett georedundáns tárolási módot választ, katasztrófa esetén a másodlagos régióból olvasási hozzáféréssel fog rendelkezni az adataihoz. További információ: vész- [helyreállítás és kényszerített feladatátvétel (előzetes verzió) az Azure Storage-ban](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
+1. [Hozzon létre egy tárfiókot az Azure-ban](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha a tárfiókokhoz írásvédett georedundáns tárolási módot választ, katasztrófa esetén a másodlagos régióból olvasási hozzáféréssel fog rendelkezni az adataihoz. További információkért lásd a vész [-helyreállítási és a Storage-fiók feladatátvételét](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)ismertető témakört.
 2. [Hozzon létre egy fájlmegosztást](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Indítsa el az Azure File Sync-et](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) az Azure-beli fájlkiszolgálón.
 4. Hozzon létre egy szinkronizálási csoportot. A szinkronizálási csoporton belüli végpontokat a rendszer szinkronban tartja egymással. Egy szinkronizálási csoportnak tartalmaznia kell legalább egy felhővégpontot, amely egy Azure-fájlmegosztást képvisel. A szinkronizálási csoportnak egy kiszolgálóvégpontot is tartalmaznia kell, amely egy útvonalat képvisel egy Windows-kiszolgálón.
@@ -146,7 +146,7 @@ A File Sync és a Site Recovery integrálása:
 
 Kövesse az alábbi lépéseket a File Sync használatához:
 
-1. [Hozzon létre egy tárfiókot az Azure-ban](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha a tárfiókokhoz írásvédett georedundáns tárolási módot (ajánlott) választ, katasztrófa esetén a másodlagos régióból olvasási hozzáféréssel fog rendelkezni az adataihoz. További információ: vész- [helyreállítás és kényszerített feladatátvétel (előzetes verzió) az Azure Storage-ban](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
+1. [Hozzon létre egy tárfiókot az Azure-ban](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json). Ha a tárfiókokhoz írásvédett georedundáns tárolási módot (ajánlott) választ, katasztrófa esetén a másodlagos régióból olvasási hozzáféréssel fog rendelkezni az adataihoz. További információ: vész [-helyreállítási és Storage-fiók feladatátvétele](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json)..
 2. [Hozzon létre egy fájlmegosztást](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 3. [Helyezze üzembe a File Sync szolgáltatást](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) a helyszíni fájlkiszolgálón.
 4. Hozzon létre egy szinkronizálási csoportot. A szinkronizálási csoporton belüli végpontokat a rendszer szinkronban tartja egymással. Egy szinkronizálási csoportnak tartalmaznia kell legalább egy felhővégpontot, amely egy Azure-fájlmegosztást képvisel. A szinkronizálási csoportnak egy kiszolgálóvégpontot is tartalmaznia kell, amely egy útvonalat képvisel a helyszíni Windows-kiszolgálón.

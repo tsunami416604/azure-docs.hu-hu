@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/20/2020
+ms.date: 04/17/2020
 ms.author: swmachan
-ms.openlocfilehash: 1821623fbe2a22234af649934ac06e72897a19cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 14d1f042240fd045925afe1725b32ddade490dfe
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80052397"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858538"
 ---
 # <a name="translator-text-api-30-translate"></a>Translator Text API 3,0: fordítás
 
@@ -202,7 +202,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Siker.</td>
+    <td>Sikeres művelet.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -454,6 +454,14 @@ A válasz:
 
 ### <a name="obtain-alignment-information"></a>Igazítási adatok beszerzése
 
+Az igazítás a forrás minden szavához a következő formátumú karakterlánc-értékként lesz visszaadva. Az egyes szavak adatait szóközzel elválasztva, beleértve a nem szóközzel elválasztott nyelveket (parancsfájlokat), például a következőt:
+
+[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]] *
+
+Példa az igazítási karakterláncra: "0:0-7:10 1:2-11:20 3:4-0:3 3:4-4:6 5:5-21:21".
+
+Más szóval a kettőspont elkülöníti a kezdő és a záró indexet, a kötőjel elválasztja a nyelveket, és a szóköz elválasztja a szavakat. Előfordulhat, hogy egy szó nulla, egy vagy több Szóval van igazítva a másik nyelven, és az illesztett szavak nem folytonos. Ha nincs elérhető igazítási információ, az igazítási elem üres lesz. A metódus nem ad vissza hibát ebben az esetben.
+
 Az igazítási adatok fogadásához `includeAlignment=true` a lekérdezési karakterláncban meg kell adni a következőt:.
 
 ```curl
@@ -483,9 +491,10 @@ Az igazítási adatok beszerzése olyan kísérleti funkció, amelyet a lehetsé
 
 * Az igazítás nem érhető el HTML formátumú szöveghez, azaz textType = HTML
 * Az igazítást csak a nyelvi párok egy részhalmaza adja vissza:
-  - Angolról bármely más nyelvre;
-  - bármely más nyelvről angolra, kivéve a kínai (egyszerűsített), a kínai hagyományos és a lett angol nyelvet.
+  - Angolról/más nyelvre, kivéve a hagyományos kínai, a kantoni (hagyományos) vagy a szerb (cirill) nyelvet.
   - Japánról koreaira vagy Koreairól Japánra.
+  - Japánról kínaira egyszerűsített és kínaira egyszerűsített kínaira. 
+  - Egyszerűsített kínairól kínaira, hagyományos kínairól kínaira és egyszerűsített kínaira. 
 * Nem kap igazítást, ha a mondat egy konzerv fordítás. A konzerv fordítás például "Ez egy teszt", "szeretlek" és más nagy gyakoriságú mondatok.
 * Az igazítás nem érhető el, ha az itt leírt módszerek valamelyikét alkalmazza a fordítás megakadályozására az [itt](../prevent-translation.md) leírtak szerint.
 
@@ -515,7 +524,7 @@ A válasz:
 
 ### <a name="translate-with-dynamic-dictionary"></a>Fordítás dinamikus szótárral
 
-Ha már tudja, hogy milyen fordítást szeretne alkalmazni egy szóhoz vagy kifejezésre, a kérelemben megjelölheti azt. A dinamikus szótár csak olyan összetett nevek esetén biztonságos, mint a megfelelő nevek és a termékek neve.
+Ha már tudja, hogy milyen fordítást szeretne alkalmazni egy szóhoz vagy kifejezésre, a kérelemben megjelölheti azt. A dinamikus szótár csak a megfelelő nevekkel, például a személyes nevekkel és a termékek nevével biztonságos.
 
 Az ellátási kód a következő szintaxist használja.
 

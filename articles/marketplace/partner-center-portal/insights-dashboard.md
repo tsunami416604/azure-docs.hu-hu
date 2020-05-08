@@ -1,22 +1,22 @@
 ---
-title: Marketplace-elemzések irányítópultja a kereskedelmi piactéren a partner Centerben
-description: Hozzáférés a piactér webes elemzési szolgáltatásához, amely lehetővé teszi a kiadók számára, hogy a AppSource és az Azure piactéren kirakatokban is mérjék az ügyfelek részvételét.
+title: Piactéri ismeretek – Microsoft kereskedelmi piactér
+description: Elérheti a piactér webes elemzési szolgáltatásának összegzését, amely lehetővé teszi az ügyfelek részvételének mérését Microsoft AppSource és az Azure Marketplace-en.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/16/2019
-ms.openlocfilehash: 05389f0aea7e2637dd28281236e7fd7ec2b412fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cecff7347189c5e5b964e10439297bce405810b7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251707"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857920"
 ---
-# <a name="marketplace-insights-dashboard-in-commercial-marketplace-analytics"></a>Marketplace-elemzések irányítópultja a kereskedelmi piactéren
+# <a name="marketplace-insights-dashboard-in-partner-center"></a>Marketplace-beli ismeretek irányítópultja a partner Centerben
 
-Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a piactér webes elemzési szolgáltatásának összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a piactéren kirakatokban felsorolt termék részletes oldalain mérjék fel az ügyfelek részvételét: AppSource és Azure Marketplace.
+Ez a cikk a partner Center Piactéri információk irányítópultján nyújt információt. Ez az irányítópult a piactér webes elemzési szolgáltatásának összegzését jeleníti meg, amely lehetővé teszi a kiadók számára, hogy a piactéren kirakatokban felsorolt termék részletes oldalain megmérjék az ügyfelek részvételét: Microsoft AppSource és az Azure piactéren.
 
 ## <a name="marketplace-insights-dashboard"></a>Marketplace Insights irányítópult
 

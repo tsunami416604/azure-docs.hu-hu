@@ -1,18 +1,18 @@
 ---
-title: Megosztott hozzáférési aláírás URI-ja a virtuálisgép-rendszerképhez | Azure piactér
-description: Ez a cikk azt ismerteti, hogyan kérhető le a közös hozzáférésű aláírás (SAS) URI-ja az egyes virtuális merevlemezekhez (VHD).
+title: Virtuálisgép-lemezképek közös hozzáférés-aláírási URI-ja – Azure Marketplace
+description: Közös hozzáférésű aláírás (SAS) URI létrehozása a virtuális merevlemezekhez (VHD) az Azure Marketplace-en.
 author: anbene
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: mingshen
-ms.openlocfilehash: c226d35647e4a5a2b1d583dd6328bfb73dae2a1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b521a3a035044e2f0c1b625df19d265cfa35b49a
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81732640"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857927"
 ---
 # <a name="get-shared-access-signature-uri-for-your-vm-image"></a>A virtuálisgép-rendszerkép közös hozzáférésű aláírási URI-azonosítójának beolvasása
 

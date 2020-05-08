@@ -1,6 +1,6 @@
 ---
-title: Virtuálisgép-ajánlat – közzétételi útmutató az Azure Marketplace-hez
-description: Ez a cikk a virtuális gép közzétételének követelményeit és a piactéren üzembe helyezett szoftveres ingyenes próbaverziót ismerteti.
+title: Az Azure Marketplace-en elérhető virtuálisgép-ajánlatok közzétételi útmutatója
+description: Ez a cikk ismerteti a virtuális gépek közzétételének követelményeit, valamint az Azure Marketplace-en üzembe helyezett szoftveres ingyenes próbaverziót.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 author: dsindona
 ms.service: marketplace
@@ -8,63 +8,62 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 2fa67d81546db86535c179a9c59d0602c1175cba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a01c8658ff4929d07cd185dcea45393cfe3b2a17
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687494"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858315"
 ---
-# <a name="virtual-machine-offer-publishing-guide"></a>A virtuális gépek ajánlatának közzétételi útmutatója
+# <a name="publishing-guide-for-virtual-machine-offers"></a>A virtuális gépekkel kapcsolatos ajánlatok közzétételi útmutatója
 
-A virtuálisgép-lemezképek egyike a megoldásnak az Azure Marketplace-en való közzétételének egyik fő módja. Az útmutató segítségével megismerheti az ajánlat követelményeit. 
+A virtuálisgép-lemezképek közzététele az egyik fő módszer az Azure Marketplace-en való megoldás közzétételére. Ez az útmutató az ilyen típusú ajánlatokra vonatkozó követelmények megismerésére használható. 
 
-Ezek olyan tranzakciós ajánlatok, amelyek üzembe helyezése és számlázása a piactéren történik. A felhasználó által megjelenő művelet hívása "Letöltés most".
+A virtuális gépek ajánlatai az Azure Marketplace-en üzembe helyezett és számlázható tranzakciós ajánlatok. A felhasználó által megjelenő művelet meghívása *most*.
 
-## <a name="free-trial"></a>Ingyenes próbaverzió 
+## <a name="free-trial"></a>Ingyenes próbaidőszak 
 
-Ha a saját licenc használata (BYOL) számlázási modellt használja, a felhasználók az ajánlat tesztelésére korlátozott feltételekkel férhetnek hozzá. 
+Ahhoz, hogy a felhasználók az ajánlat tesztelésére legyenek érvényesek, a saját licencű (BYOL) számlázási modell használata esetén a korlátozott idejű szoftverlicenc-licencet is elérheti. 
 
-## <a name="test-drive"></a>Tesztverzió
+## <a name="test-drive"></a>Tesztelési meghajtó
 
-Egy vagy több virtuális gépet üzembe kell helyeznie infrastruktúra-szolgáltatás (IaaS) vagy szolgáltatott (SaaS) alkalmazások használatával. A tesztelési meghajtó közzétételi lehetőségének előnye, hogy egy virtuális gép vagy egy teljes megoldás automatikusan kiépíthető, amelyet egy partner által üzemeltetett interaktív bemutató vezet. A tesztvezetés további díj nélkül nyújt értékelést az ügyfélnek. Az ügyfélnek nem kell egy meglévő Azure-ügyfélnek lennie a próbaidőszakos felhasználói élményben való részvételhez. 
+Egy vagy több virtuális gépet üzembe helyezhet az infrastruktúra-szolgáltatás (IaaS) vagy a szolgáltatott szoftver (SaaS) használatával. A *tesztelési meghajtó* közzétételi lehetőségének előnye, hogy egy virtuális gép vagy egy teljes megoldás automatikus beállítása egy partner által üzemeltetett interaktív bemutató. A tesztvezetés lehetővé teszi, hogy az ügyfelek további díjak nélkül értékeljék a virtuális gépeket. Az ügyfélnek nem kell egy meglévő Azure-ügyfélnek lennie a próbaverzióval való részvételhez. 
 
-Lépjen kapcsolatba velünk az [amp-testdrive](mailto:amp-testdrive@microsoft.com) az első lépésekhez. 
+Első lépésként vegye fel velünk a kapcsolatot e-mailben az [amp-testdrive](mailto:amp-testdrive@microsoft.com)címen. 
 
 |Követelmények  |Részletek |
 |---------|---------|
-| Rendelkezik Piactéri alkalmazással   |    Egy vagy több virtuális gép IaaS vagy SaaS-n keresztül.      |
+| Rendelkezik Azure Marketplace-alkalmazással   |  Egy vagy több virtuális gép IaaS vagy SaaS-n keresztül.      |
 
 ## <a name="interactive-demo"></a>Interaktív bemutató
 
-Interaktív bemutató használatával biztosíthatja megoldását az ügyfeleknek. Az interaktív bemutató közzétételi lehetőségének előnye, hogy az összetett megoldás bonyolult kiépítés nélkül biztosít próbaverziót. 
+Ezzel az ajánlattal interaktív bemutató használatával biztosíthatja ügyfelei számára a megoldás irányítását. Az interaktív bemutató közzétételi lehetőségének előnye, hogy az összetett megoldás bonyolult beállítása nélkül biztosíthatja a próbaverziót. 
 
 ## <a name="virtual-machine-offer"></a>Virtuálisgép-ajánlat
 
-Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. A virtuális gépek teljes mértékben elérhetők az utólagos elszámolású vagy a saját licencű (BYOL) licencelési modellek használatával. A Microsoft üzemelteti a kereskedelmi tranzakciót, és az Ön nevében számlázza az ügyfelet. Az ügyfél és a Microsoft közötti előnyben részesített fizetési kapcsolat előnyeit használhatja, beleértve a nagyvállalati szerződéseket is.
+Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a *virtuális gép* ajánlatának típusát. A virtuális gépek teljes mértékben elérhetők az utólagos elszámolású vagy a saját licencű (BYOL) licencelési modellek használatával. A Microsoft üzemelteti a kereskedelmi tranzakciót, és az Ön nevében számlázza az ügyfelet. Az ügyfél és a Microsoft közötti előnyben részesített fizetési kapcsolat előnyeit használhatja, beleértve a nagyvállalati szerződéseket is.
 
 > [!NOTE]
-> Jelenleg a Nagyvállalati Szerződéshoz kapcsolódó pénzügyi kötelezettségvállalások a virtuális gép Azure-használatával használhatók fel, de nem a szoftveres licencelési díjakra.  
+> Jelenleg a Nagyvállalati Szerződéshez kapcsolódó pénzügyi kötelezettségvállalások a virtuális gép Azure-beli használatára, de a szoftverlicenc-díjakra nem alkalmazhatók.  
 > 
 > [!NOTE]
-> Lehetősége van arra, hogy a virtuális gép felderítését és üzembe helyezését egy adott ügyfélre korlátozza, ha közzéteszi a képet és a díjszabást privát ajánlatként. A privát ajánlatok lehetővé teszi, hogy exkluzív ajánlatokat hozzon létre a legközelebbi ügyfelei számára, és testreszabott szoftvereket és feltételeket nyújtson. A testreszabott feltételek lehetővé teszik különféle forgatókönyvek kiemelését, beleértve a speciális díjszabási és használati feltételeket, valamint a korlátozott kiadású szoftverek korai elérését. A privát ajánlatok lehetővé teszik, hogy meghatározott díjszabást vagy termékeket biztosítson egy korlátozott számú ügyfél számára egy új SKU létrehozásával ezekkel az adatokkal.  
-> *   A privát ajánlatokról a [Azure.microsoft.com/blog/Private-offers-on-Azure-Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace)címen elérhető Azure Marketplace webhelyen talál további információt.  
+> A virtuális gép felderítését és üzembe helyezését egy adott ügyfélre korlátozhatja, ha közzéteszi a képet és a díjszabást privát ajánlatként. A privát ajánlatok lehetővé teszi, hogy exkluzív ajánlatokat hozzon létre a legközelebbi ügyfelei számára, és testreszabott szoftvereket és feltételeket nyújtson. A testreszabott feltételek lehetővé teszik különféle forgatókönyvek kiemelését, beleértve a speciális díjszabási és használati feltételeket, valamint a korlátozott kiadású szoftverek korai elérését. A privát ajánlatok lehetővé teszik, hogy meghatározott díjszabást vagy termékeket biztosítson egy korlátozott számú ügyfél számára egy új SKU létrehozásával ezekkel az adatokkal.  
+>
+> További információ: [privát ajánlatok az Azure Marketplace-en](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).  
 
 | Követelmény | Részletek |  
 |:--- |:--- | 
 | Számlázás és mérés | A virtuális gépnek BYOL vagy utólagos elszámolású havi számlázást kell támogatnia. |  
-| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. <ul> <li>A linuxos virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Az Azure-ban támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>A Windows virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Azure-kompatibilis virtuális merevlemez létrehozása](./partner-center-portal/azure-vm-create-offer.md).</li> </ul> |  
+| Azure-kompatibilis virtuális merevlemez (VHD) | A virtuális gépeket Windows vagy Linux rendszerre kell építeni. A virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: <ul> <li>Az Azure-ban [támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) (linuxos virtuális merevlemezek esetén).</li> <li>[Azure-kompatibilis VHD létrehozása](./partner-center-portal/azure-vm-create-offer.md) (Windows rendszerű virtuális merevlemezekhez).</li> </ul> |  
 
 >[!Note]
->A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető.  Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md) című témakört.
+>Már elérhető a felhőalapú megoldás-szolgáltató (CSP) Partner Channel-beli aktiválása. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha még nem tette meg, 
+Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
 
-- [További](https://azuremarketplace.microsoft.com/sell) információ a Piactérről.
-
-Ha regisztrálva van, és új ajánlatot hoz létre, vagy dolgozik egy meglévőn,
+A partner Centerben való regisztráció és a használat megkezdése:
 
 - Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
 - További információt a [virtuálisgép-ajánlat létrehozása](./partner-center-portal/azure-vm-create-offer.md) című témakörben talál.

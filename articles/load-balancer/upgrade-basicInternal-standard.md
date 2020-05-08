@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 239dc0f3133a5adf59a23d333131c91d3a655597
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770389"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858365"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure belső Load Balancer frissítése – nincs szükség kimenő kapcsolatok megtételére
-Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus).
+Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus).
 
 Ez a cikk egy PowerShell-szkriptet vezet be, amely egy standard Load Balancert hoz létre ugyanazzal a konfigurációval, mint az alapszintű Load Balancer, valamint az alapszintű Load Balancerról standard Load Balancerre történő áttelepítést
 
@@ -33,6 +33,17 @@ Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteke
 * A parancsfájl csak a belső Load Balancer frissítését támogatja, ha nincs szükség kimenő kapcsolatok használatára. Ha egyes virtuális gépekhez [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) szükségesek, tekintse meg ezt az [oldalt](upgrade-InternalBasic-To-PublicStandard.md) . 
 * Ha a standard Load Balancer egy másik régióban lett létrehozva, akkor a régi régióban meglévő virtuális gépeket nem lehet az újonnan létrehozott standard Load Balancerhoz rendelni. A korlátozás megkerüléséhez hozzon létre egy új virtuális gépet az új régióban.
 * Ha a Load Balancer nem rendelkezik előtér-IP-konfigurációval vagy háttér-készlettel, valószínűleg a parancsfájl futtatásakor hiba lépett fel. Győződjön meg arról, hogy nem üresek.
+
+## <a name="change-ip-allocation-method-to-static-for-frontend-ip-configuration-ignore-this-step-if-its-already-static"></a>IP-kiosztási módszer módosítása statikusra a előtér-IP-konfigurációhoz (hagyja figyelmen kívül ezt a lépést, ha már statikus)
+
+1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd válassza ki az alapszintű Load Balancer az erőforrások listából.
+
+2. A **Beállítások**területen válassza ki a **frontend IP-konfiguráció**elemet, majd válassza ki az első előtér-IP-konfigurációt. 
+
+3. A **hozzárendelés**beállításnál válassza a **statikus** lehetőséget.
+
+4. Ismételje meg a 3. lépést az alapszintű Load Balancer összes előtérbeli IP-konfigurációjában.
+
 
 ## <a name="download-the-script"></a>A parancsfájl letöltése
 
@@ -74,7 +85,7 @@ A szkript futtatása:
    * **newLBName: [string]: kötelező** – ez a létrehozandó standard Load Balancer neve.
 1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
 
-    **Például**
+    **Példa**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"

@@ -1,27 +1,27 @@
 ---
 title: A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése
 titleSuffix: Azure Storage
-description: Ismerje meg, hogyan ellenőrizhető a földrajzilag replikált Storage-fiók **utolsó szinkronizálási ideje** tulajdonsága. A **Legutóbbi szinkronizálási idő** tulajdonság azt jelzi, hogy az elsődleges régióból származó összes írás sikeres volt-e a másodlagos régióba való írás során.
+description: Ismerje meg, hogyan ellenőrizhető a földrajzilag replikált Storage-fiók utolsó szinkronizálási ideje tulajdonsága. A legutóbbi szinkronizálási idő tulajdonság azt jelzi, hogy az elsődleges régióból származó összes írás sikeres volt-e a másodlagos régióba való írás során.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 01/16/2019
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 3a406ce6db060b9ff5be7bcadecb6c7ff7e65a1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: afcadd55e87579b25f03176fa3227024863b90fb
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77165487"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858507"
 ---
 # <a name="check-the-last-sync-time-property-for-a-storage-account"></a>A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése
 
 A Storage-fiók konfigurálásakor megadhatja, hogy az adatok egy olyan másodlagos régióba legyenek másolva, amely több száz mérföldre van az elsődleges régióból. A Geo-replikáció az elsődleges régióban jelentős leállás, például természeti katasztrófák esetén tartósságot biztosít az adatai számára. Ha a másodlagos régió olvasási hozzáférését is engedélyezi, az adatok az olvasási műveletekhez is elérhetők maradnak, ha az elsődleges régió elérhetetlenné válik. Az alkalmazás úgy is megtervezhető, hogy zökkenőmentesen váltson a másodlagos régióból való olvasásra, ha az elsődleges régió nem válaszol.
 
-A Geo-redundáns tárolás (GRS) és a Geo-Zone-redundáns tárolás (GZRS) (előzetes verzió) egyaránt aszinkron módon replikálja az adatait egy másodlagos régióba. Ha olvasási hozzáférést szeretne a másodlagos régióhoz, engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna-redundáns tárolást (RA-GZRS). További információ az Azure Storage által kínált redundancia különböző lehetőségeiről: [Azure Storage redundancia](storage-redundancy.md).
+A Geo-redundáns tárolás (GRS) és a Geo-Zone-redundáns tárolás (GZRS) egyaránt aszinkron módon replikálja az adatait egy másodlagos régióba. Ha olvasási hozzáférést szeretne a másodlagos régióhoz, engedélyezze az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS) vagy az olvasási hozzáférésű földrajzi zóna-redundáns tárolást (RA-GZRS). További információ az Azure Storage által kínált redundancia különböző lehetőségeiről: [Azure Storage redundancia](storage-redundancy.md).
 
 Ez a cikk azt ismerteti, hogyan ellenőrizhető a Storage-fiók **utolsó szinkronizálási ideje** tulajdonsága, hogy ki lehessen értékelni az elsődleges és a másodlagos régiók közötti eltéréseket.
 
@@ -37,10 +37,10 @@ A PowerShell vagy az Azure CLI használatával kérheti le a **Legutóbbi szinkr
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha a Storage-fiók utolsó szinkronizálási idejét szeretné lekérni a PowerShell-lel, telepítsen egy Azure Storage betekintő modult, amely támogatja a Geo-replikáció statisztikáit. Például:
+Ha a Storage-fiók utolsó szinkronizálási idejét szeretné lekérni a PowerShell-lel, telepítse az az. Storage modul egy olyan verzióját, amely támogatja a Geo-replikálási statisztikák beszerzését. Például:
 
 ```powershell
-Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
+Install-Module Az.Storage –Repository PSGallery -RequiredVersion ??? –AllowPrerelease –AllowClobber –Force
 ```
 
 Ezután keresse meg a Storage-fiók **GeoReplicationStats. LastSyncTime** tulajdonságát. Ne felejtse el lecserélni a helyőrző értékeket a saját értékeire:
@@ -70,4 +70,4 @@ $lastSyncTime=$(az storage account show \
 
 - [Azure Storage-redundancia](storage-redundancy.md)
 - [Storage-fiók redundancia beállításának módosítása](redundancy-migration.md)
-- [A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással](storage-designing-ha-apps-with-ragrs.md)
+- [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)
