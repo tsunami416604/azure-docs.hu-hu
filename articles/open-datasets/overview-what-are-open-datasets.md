@@ -6,13 +6,13 @@ ms.service: open-datasets
 ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
-ms.date: 11/04/2019
-ms.openlocfilehash: fd5697f9c325dc4ad866c333ce1b20e008ebfa24
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.date: 05/06/2020
+ms.openlocfilehash: aa7cbd9b213d35becd65d9335312c0468760d655
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73606159"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872047"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Mik azok az Azure Open-adatkészletek, és hogyan használhatók?
 
@@ -24,6 +24,8 @@ Az adatkészletek olyan nyilvános tartományi adatokat foglalnak magukban, mint
 
 ## <a name="curated-prepared-datasets"></a>Kurátorok által előkészített adathalmazok
 Az Azure Open-adatkészleteket használó, nyitott nyilvános adatkészletek a gépi tanulási munkafolyamatokban való felhasználásra vannak optimalizálva. 
+
+Az összes rendelkezésre álló adatkészlet megjelenítéséhez nyissa meg az [Azure Open adatkészletek katalógusát](https://azure.microsoft.com/services/open-datasets/catalog/).
 
 Az adatszakértők általában az idő nagy részében elköltik az adattisztítást, és előkészítik a speciális elemzéseket. A megnyitott adatkészletek az Azure-felhőbe kerülnek, és a rendszer elődolgozta az idő megtakarítását. A rendszeres időközönként az adatok a forrásokból származnak, például egy FTP-kapcsolattal az országos óceáni és légköri adminisztráció (NOAA) felé. Ezt követően a rendszer strukturált formátumban elemzi az adatelemzéseket, majd a megfelelő funkciókkal gazdagítja a következő funkciókat: ZIP-kód vagy a legközelebbi meteorológiai állomás helye.
 

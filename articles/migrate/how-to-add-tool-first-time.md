@@ -3,17 +3,26 @@ title: Felmérési/áttelepítési eszköz hozzáadása Azure Migrate
 description: Útmutató Azure Migrate projekt létrehozásához és egy Assessment/Migration eszköz hozzáadásához.
 ms.topic: how-to
 ms.date: 04/16/2020
-ms.openlocfilehash: 48bdea31d17ea1ddf0b983af962dce30b22d8dcf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1294831162df973e1f87052c1520d5d95990cf8f
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537729"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901195"
 ---
 # <a name="add-an-assessmentmigration-tool-for-the-first-time"></a>Felmérési/migrálási eszköz hozzáadása első alkalommal
 
 Ez a cikk azt ismerteti, hogyan adhat hozzá értékelést vagy áttelepítési eszközt egy [Azure Migrate](migrate-overview.md) projekthez az első alkalommal.  
 Azure Migrate egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint a magán-és nyilvános Felhőbeli virtuális gépek felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint az egyéb eszközökhöz és a független szoftvergyártók (ISV) [ajánlatokhoz](migrate-services-overview.md#isv-integration) . 
+
+## <a name="check-permissions-to-create-project"></a>A projekt létrehozásához szükséges engedélyek keresése
+
+Ha még nem hozott létre Azure Migrate projektet, ellenőrizze, hogy rendelkezik-e a megfelelő engedélyekkel.
+
+1. A Azure Portal nyissa meg az előfizetést, és válassza a **hozzáférés-vezérlés (iam)** lehetőséget.
+2. A hozzáférés engedélyezése területen keresse meg a megfelelő fiókot, és kattintson rá az engedélyek megtekintéséhez. Közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie.
+    - Ha csak az ingyenes Azure-fiókot hozta létre, akkor Ön az előfizetés tulajdonosa.
+    - Ha nem Ön az előfizetés tulajdonosa, a tulajdonossal társítsa a szerepkört.
 
 ## <a name="create-a-project-and-add-a-tool"></a>Projekt létrehozása és eszköz hozzáadása
 
@@ -66,4 +75,6 @@ Bizonyos esetekben előfordulhat, hogy további Azure Migrate projekteket kell l
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 
+- Ismerkedjen meg [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool)vagy [Azure Migrate: Server Migration](migrate-services-overview.md#azure-migrate-server-migration-tool).
+- Ha ISV-eszközt adott hozzá, vagy átvezeti az eszközt, [tekintse át](prepare-isv-movere.md) az eszköz Azure Migrate való összekapcsolásának előkészítéséhez szükséges lépéseket.
+- Ismerje meg, hogyan adhat hozzá további [értékelési](how-to-assess.md) és [áttelepítési](how-to-migrate.md) eszközöket. 

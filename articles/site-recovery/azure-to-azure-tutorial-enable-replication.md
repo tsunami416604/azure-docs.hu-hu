@@ -5,12 +5,12 @@ ms.topic: tutorial
 ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: c5d2bbe920f87421550fadf30a7e7e9d23931bfd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 145ae5f6f9204366052d9a182c61d76ff7ffa715
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292484"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871509"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
 
@@ -170,8 +170,8 @@ Ha a forrásoldali virtuális gépnek engedélyezve van az Azure Disk Encryption
    1. **Key encryption Key vaultok**: alapértelmezés szerint a site Recovery egy új kulcstartót hoz létre a céltartományban. A név `asr` utótagot tartalmaz, és a forrás virtuális gép kulcsának titkosítási kulcsain alapul. Ha a Site Recovery által létrehozott Key Vault már létezik, a rendszer újra felhasználja.
 1. Válassza a **Testreszabás** lehetőséget az egyéni kulcstartók kiválasztásához.
 
-> [!NOTE]
-> Azure Site Recovery jelenleg csak a Windows operációs rendszert futtató és [Az Azure ad-alkalmazással való titkosításra engedélyezett](https://aka.ms/ade-aad-app) Azure-beli virtuális gépeket támogatja.
+>[!NOTE]
+> A Site Recovery jelenleg a Windows operációs rendszert futtató virtuális gépekhez Azure Active Directory (HRE) és anélkül is támogatja az ADE-t. A Linux operációs rendszerek esetében csak az ADE használatát HRE nélkül támogatjuk. Továbbá az ADE 1,1-et (HRE nélkül) futtató gépek esetében a virtuális gépnek felügyelt lemezeket kell használnia. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak. Ha az ADE 0,1 (HRE) értékről 1,1-re vált, le kell tiltania a replikálást, és engedélyeznie kell egy virtuális gép replikálását a 1,1 engedélyezése után.
 
 ### <a name="track-replication-status"></a>A replikáció állapotának nyomon követése
 

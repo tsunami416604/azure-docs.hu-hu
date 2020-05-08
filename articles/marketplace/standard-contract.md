@@ -1,22 +1,22 @@
 ---
-title: Standard szintű szerződés | Azure piactér
-description: Standard szintű szerződés az Azure Marketplace és a AppSource számára
+title: Standard szintű szerződés a Microsoft kereskedelmi piactérről
+description: Standard szintű szerződés az Azure Marketplace-hez és a AppSource a partner Centerben
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: facb500299f7196e0e1387c3a7267a917d13a3a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3886b29a47edcfb36114cedf8b8edb3799e0c345
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681447"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871431"
 ---
-# <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
+# <a name="standard-contract-for-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
 
-Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft szabványos szerződést biztosít a Microsoft kereskedelmi piactérről, hogy segítse a tranzakciók megkönnyítése a piactéren. Az egyéni használati feltételek és kikötések elvégzése helyett a kereskedelmi piactér-közzétevők dönthetnek úgy, hogy a standard szintű szerződés keretében kínálják a szoftvereket, amelyeket csak egyszer kell bemutatni és elfogadni. A standard szintű szerződés a következő címen érhető [https://go.microsoft.com/fwlink/?linkid=2041178](https://go.microsoft.com/fwlink/?linkid=2041178)el:.
+A Microsoft szabványos szerződést kínál a Microsoft kereskedelmi Piactérről. Ezzel egyszerűbbé válik a beszerzési folyamat leegyszerűsítése az ügyfelek számára, a szoftvergyártók jogi összetettségének csökkentése és a tranzakciók megkönnyítése a piactéren. Az egyéni használati feltételek és kikötések kereskedelmi Piactéri közzétevőként való használata helyett dönthet úgy, hogy a [standard szintű szerződés](https://go.microsoft.com/fwlink/?linkid=2041178)keretében kínálja a szoftverét, amelyeknek az ügyfeleknek csak a szakképzést és a szükséges időt kell elfogadniuk.
 
 Az ajánlat feltételei és kikötései az ajánlat a partner Centerben való létrehozásakor vannak meghatározva. Kiválaszthatja, hogy a szokásos szerződést használja a Microsoft kereskedelmi piactérre, és nem adja meg saját használati feltételeit.
 

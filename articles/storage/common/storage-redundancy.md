@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: f4fff7c8865a59b916755a69a98448a1684da229
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853331"
+ms.locfileid: "82872010"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -103,6 +103,18 @@ A Geo-Zone-redundáns tárolás (GZRS) a rendelkezésre állási zónákon keres
 GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben.
 
 Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, az oldal blobokat (kivéve a VHD-lemezeket), a fájlokat, a táblákat és a várólistákat. A GZRS és az RA-GZRS minden Azure-régióban elérhető.
+
+A GZRS és az RA-GZRS a következő régiókban támogatott:
+
+- Délkelet-Ázsia
+- Észak-Európa
+- Nyugat-Európa
+- Kelet-Japán
+- Az Egyesült Királyság déli régiója
+- USA középső régiója
+- USA keleti régiója
+- USA 2. keleti régiója
+- USA 2. nyugati régiója
 
 A díjszabással kapcsolatos információkért tekintse meg a [Blobok](https://azure.microsoft.com/pricing/details/storage/blobs), [fájlok](https://azure.microsoft.com/pricing/details/storage/files/), [várólisták](https://azure.microsoft.com/pricing/details/storage/queues/)és [táblák](https://azure.microsoft.com/pricing/details/storage/tables/)díjszabását.
 

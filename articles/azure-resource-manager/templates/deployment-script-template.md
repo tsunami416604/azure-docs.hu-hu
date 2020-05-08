@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/06/2020
 ms.author: jgao
-ms.openlocfilehash: 14663e71126d8c201015996e3e4dc76976128bcc
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 5b938e2072daec56261e529ab8a2a8b15b55d143
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610802"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872334"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -304,8 +304,8 @@ Ha meg szeretné tekinteni a deploymentScripts-erőforrást a portálon, válass
 
 A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy Storage-fiókra és egy tároló példányra. Lehetősége van meglévő Storage-fiók megadására, máskülönben a Storage-fiókkal együtt automatikusan létrejön a tároló-példány. Meglévő Storage-fiók használatára vonatkozó követelmények:
 
-- A támogatott Storage-fiókok a következők: általános célú v2-fiókok, általános célú v1-fiókok és fileStorage-fiókok. További információ: Storage- [fiókok típusai](../../storage/common/storage-account-overview.md).
-- A Storage-fiók tűzfalszabályok ki kell kapcsolni. Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md)
+- A támogatott Storage-fiókok a következők: általános célú v2, általános célú v1 és FileStorage fiókok. A prémium SKU-t csak a FileStorage támogatja. További információ: Storage- [fiókok típusai](../../storage/common/storage-account-overview.md).
+- A Storage-fiók tűzfalszabályok még nem támogatottak. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](../../storage/common/storage-network-security.md).
 - A telepítési parancsfájl felhasználó által hozzárendelt felügyelt identitásának engedélyekkel kell rendelkeznie a Storage-fiók kezeléséhez, beleértve az olvasás, a létrehozás és a fájlmegosztás törlését.
 
 Meglévő Storage-fiók megadásához adja hozzá a következő JSON-t a tulajdonság `Microsoft.Resources/deploymentScripts`eleméhez:
@@ -316,6 +316,16 @@ Meglévő Storage-fiók megadásához adja hozzá a következő JSON-t a tulajdo
   "storageAccountKey": "myKey"
 },
 ```
+
+- **storageAccountName**: adja meg a Storage-fiók nevét.
+- **storageAccountKey "**: a Storage-fiók kulcsainak egyikét kell megadnia. A kulcs lekéréséhez használhatja a [`listKeys()`](./template-functions-resource.md#listkeys) függvényt. Például:
+
+    ```json
+    "storageAccountSettings": {
+        "storageAccountName": "[variables('storageAccountName')]",
+        "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName')), '2019-06-01').keys[0].value]"
+    }
+    ```
 
 Tekintse meg a teljes `Microsoft.Resources/deploymentScripts` definíciós minta [sablonjait](#sample-templates) .
 
@@ -336,7 +346,7 @@ Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai
 - **retentionInterval**: adja meg azt az időintervallumot, ameddig a rendszer megőrzi a parancsfájl-erőforrást, majd azután, hogy lejárt és törölve lesz.
 
 > [!NOTE]
-> Az üzembe helyezési parancsfájl erőforrásai más célra való használata nem ajánlott.
+> A Storage-fiók és a parancsfájl-szolgáltatás által más célra létrehozott tároló-példány használata nem ajánlott. Előfordulhat, hogy a parancsfájl életciklusa alapján a két erőforrás el lesz távolítva.
 
 ## <a name="run-script-more-than-once"></a>Parancsfájl többszöri futtatása
 

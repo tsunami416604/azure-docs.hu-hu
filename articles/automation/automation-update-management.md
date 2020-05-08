@@ -1,37 +1,37 @@
 ---
-title: Update Management megoldás az Azure-ban
-description: Ez a cikk azt ismerteti, hogyan használható az Azure Update Management-megoldás a Windows-és Linux-gépek frissítéseinek kezelésére.
+title: Update Management a Azure Automation
+description: Ez a cikk a Windows és Linux rendszerű gépek frissítéseit kezelő Update Management funkciót ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 02/27/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9bdc8cf97513854cf6a92ffd078febca6302d35c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ca5d8c35aea06143e058aade473282a038212605
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617412"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872167"
 ---
-# <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
+# <a name="update-management-in-azure-automation"></a>Update Management a Azure Automation
 
-A Azure Automation **Update Management megoldásával** kezelheti az operációs rendszer frissítéseit az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben lévő Windows-és Linux-gépekhez. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát.
+Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben lévő Windows-és Linux-gépek operációsrendszer-frissítéseinek kezeléséhez Update Managementt használhat Azure Automation. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát.
 
 A virtuális gépek (VM-EK) Update Management a következő módszerekkel engedélyezhető:
 
-- Azure Automation- [fiókjából](automation-onboard-solutions-from-automation-account.md) egy vagy több Azure-gép számára, és manuálisan a nem Azure-beli gépekhez.
-
-- Egyetlen Azure-beli virtuális géphez a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetében érhető el.
-
-- [Több Azure](manage-update-multi.md) -beli virtuális gép esetén válassza ki őket a Azure Portal Virtual Machines lapján. 
+* Egy vagy több Azure-gép [Azure Automation-fiókjából](automation-onboard-solutions-from-automation-account.md) .
+* Manuálisan nem Azure-beli gépek esetén.
+* Egyetlen Azure-beli virtuális géphez a Azure Portal virtuális gép lapján. Ez a forgatókönyv [Linux](../virtual-machines/linux/tutorial-config-management.md#enable-update-management) és [Windows rendszerű](../virtual-machines/windows/tutorial-config-management.md#enable-update-management) virtuális gépek esetében érhető el.
+* [Több Azure](manage-update-multi.md) -beli virtuális gép esetén válassza ki őket a Azure Portal Virtual Machines lapján.
 
 > [!NOTE]
-> A **Update Management megoldáshoz** egy log Analytics-munkaterületet kell összekapcsolnia az Automation-fiókkal. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](./how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
+> A Update Management Log Analytics munkaterület összekapcsolását igényli az Automation-fiókhoz. A támogatott régiók végleges listáját az [Azure Workspace-hozzárendelések](how-to/region-mappings.md)című témakörben tekintheti meg. A régió-hozzárendelések nem befolyásolják a virtuális gépek az Automation-fióktól eltérő régióban való felügyeletének képességét.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+[Azure Resource Manager-sablon](automation-update-management-deploy-template.md) segítséget nyújt Update Management új vagy meglévő Automation-fiókhoz való üzembe helyezéséhez, és log Analytics munkaterülethez az előfizetésében.
 
-Az Azure [Resource Manager-sablonok](automation-update-management-deploy-template.md) segítséget nyújtanak a **Update Management megoldás** üzembe helyezéséhez egy új vagy meglévő Automation-fiókra, és log Analytics munkaterületre az előfizetésében.
+> [!NOTE]
+> A Update Management konfigurált gépek nem használhatók a Azure Automation egyéni parancsfájljainak futtatásához. Ez a számítógép csak a Microsoft által aláírt frissítési parancsfájlt futtathatja. 
 
-## <a name="solution-overview"></a>Megoldás áttekintése
+## <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
 A Update Management által felügyelt gépek a következő konfigurációkat használják az értékelés végrehajtásához és a központi telepítések frissítéséhez:
 
@@ -40,9 +40,9 @@ A Update Management által felügyelt gépek a következő konfigurációkat has
 * Automation hibrid runbook-feldolgozó
 * Microsoft Update vagy Windows Server Update Services (WSUS) Windows rendszerű gépekhez
 
-A következő ábra azt szemlélteti, hogy a megoldás hogyan vizsgálja és alkalmazza a biztonsági frissítéseket a munkaterületen lévő összes csatlakoztatott Windows Server-és Linux-gépen:
+Az alábbi ábra azt szemlélteti, hogy a Update Management hogyan vizsgálja és alkalmazza a biztonsági frissítéseket a munkaterületen lévő összes csatlakoztatott Windows Server-és Linux-gépen:
 
-![Update Management folyamat](./media/automation-update-management/update-mgmt-updateworkflow.png)
+![Update Management munkafolyamat](./media/automation-update-management/update-mgmt-updateworkflow.png)
 
 Az Update Management ahhoz is használható, hogy ugyanabban a bérlőben több előfizetésben készítse elő natív módon a gépeket.
 
@@ -50,37 +50,39 @@ A csomag felszabadítása után 2 – 3 órát vesz igénybe, hogy a javítás m
 
 Miután a gép befejezte a frissítések megfelelőségi vizsgálatát, az ügynök tömegesen továbbítja az adatokat Azure Monitor naplókhoz. Windows rendszerű gépen a megfelelőségi vizsgálat alapértelmezés szerint 12 óránként fut.
 
-A vizsgálati ütemterven kívül a frissítés megfelelőségének vizsgálata a Log Analytics ügynök újraindítása után 15 percen belül, a frissítés telepítése előtt és a frissítés telepítése után kezdeményezhető.
+A vizsgálati ütemterven kívül a frissítés megfelelőségének vizsgálata a Log Analytics ügynök újraindítása után 15 percen belül elindul, a frissítés telepítése előtt és a frissítés telepítése után.
 
-Linux rendszerű gépek esetén a megfelelőségi vizsgálat alapértelmezés szerint óránként történik. Ha a Log Analytics ügynök újraindítása megtörtént, a rendszer 15 percen belül kezdeményezi a megfelelőségi vizsgálatot.
+Linux rendszerű gépek esetén a megfelelőségi vizsgálat alapértelmezés szerint óránként történik. Ha a Log Analytics ügynök újraindítása megtörténik, a rendszer 15 percen belül elindít egy megfelelőségi vizsgálatot.
 
-A megoldás azt mutatja be, hogy a gép milyen naprakészen van attól függően, hogy milyen forrásra van konfigurálva a szinkronizáláshoz. Ha a Windows rendszerű gép úgy van konfigurálva, hogy a WSUS szolgáltatásnak jelentsen, attól függően, hogy mikor szinkronizálta az Microsoft Update, az eredmények eltérhetnek attól, amit Microsoft Update mutat. Ez a viselkedés ugyanaz, mint a Linux rendszerű gépeken, amelyek úgy vannak konfigurálva, hogy nyilvános tárház helyett helyi tárházba jelentsenek.
+Update Management a jelentést arról, hogy a gép milyen naprakészen van, hogy milyen forrásra van konfigurálva a szinkronizáláshoz. Ha a Windows rendszerű gép úgy van konfigurálva, hogy a WSUS szolgáltatásnak jelentsen, attól függően, hogy mikor szinkronizálta az Microsoft Update, az eredmények eltérhetnek attól, amit Microsoft Update mutat. Ez a viselkedés ugyanaz, mint a Linux rendszerű gépeken, amelyek úgy vannak konfigurálva, hogy nyilvános tárház helyett helyi tárházba jelentsenek.
 
 > [!NOTE]
-> Ahhoz, hogy a szolgáltatás megfelelően jelentsen, Update Management szükség van bizonyos URL-címekre és portokra. Ha többet szeretne megtudni ezekről a követelményekről, tekintse meg [a hibrid feldolgozók hálózati tervezése](automation-hybrid-runbook-worker.md#network-planning)című témakört.
+> Ahhoz, hogy a szolgáltatás megfelelően jelentsen, Update Management szükség van bizonyos URL-címekre és portokra. Ha többet szeretne megtudni ezekről a követelményekről, tekintse meg a [hálózati konfiguráció](https://docs.microsoft.com/azure/automation/automation-hybrid-runbook-worker#network-planning)című témakört.
 
-A frissítéseket egy ütemezett telepítés létrehozásával telepítheti és telepítheti a frissítésekhez szükséges számítógépeken. A *választhatóként* besorolt frissítések nem szerepelnek a Windows rendszerű gépek központi telepítési hatókörében. A központi telepítési hatókörben csak a szükséges frissítések szerepelnek.
+A frissítéseket egy ütemezett telepítés létrehozásával telepítheti és telepítheti a frissítésekhez szükséges számítógépeken. A választhatóként besorolt frissítések nem szerepelnek a Windows rendszerű gépek központi telepítési hatókörében. A központi telepítési hatókörben csak a szükséges frissítések szerepelnek.
 
-Az ütemezett telepítés meghatározza, hogy mely célszámítógépek kapják meg a megfelelő frissítéseket. Ezt az egyes gépek explicit módon történő megadásával, vagy egy olyan [számítógépcsoport](../azure-monitor/platform/computer-groups.md) kiválasztásával hajtja végre, amely egy adott gép (vagy egy olyan [Azure-lekérdezésen](automation-update-management-query-logs.md) alapul, amely dinamikusan kiválasztja az Azure-beli virtuális gépeket a megadott feltételek alapján). Ezek a csoportok eltérnek a [hatókör-konfigurációtól](../azure-monitor/insights/solution-targeting.md), amely csak annak meghatározására szolgál, hogy mely gépek kapják meg a megoldást használó felügyeleti csomagokat.
+Az ütemezett telepítés meghatározza, hogy mely célszámítógépek kapják meg a megfelelő frissítéseket. Ezt az egyes gépek explicit módon történő megadásával, vagy egy olyan [számítógépcsoport](https://docs.microsoft.com/azure/azure-monitor/platform/computer-groups) kiválasztásával hajtja végre, amely egy adott gép (vagy egy olyan [Azure-lekérdezésen](automation-update-management-query-logs.md) alapul, amely dinamikusan kiválasztja az Azure-beli virtuális gépeket a megadott feltételek alapján). Ezek a csoportok eltérnek a [hatókör-konfigurációtól](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting), amellyel szabályozható a Update Management engedélyezése a konfigurációt fogadó gépek célzása. Ezzel megakadályozhatja, hogy a frissítés megfelelőségét és a jóváhagyott szükséges frissítéseket telepítse.
 
-Megadhat egy ütemtervet is a jóváhagyáshoz, és beállíthatja azt az időtartamot, amely alatt a frissítések telepíthetők. Ezt az időtartamot karbantartási időszaknak nevezzük. A karbantartási időszak 20 perces időszaka újraindítások számára van fenntartva, feltételezve, hogy az egyik szükséges, és a megfelelő újraindítási beállítást választotta. Ha a javítás a vártnál hosszabb időt vesz igénybe, és a karbantartási időszakban kevesebb mint 20 perc van, a rendszer újraindítást hajt végre.
+A központi telepítés meghatározásakor meg kell adnia egy ütemtervet is a jóváhagyáshoz, és beállíthatja azt az időszakot, amely alatt a frissítések telepíthetők. Ezt az időtartamot karbantartási időszaknak nevezzük. A karbantartási időszak 20 perces időszaka újraindítások számára van fenntartva, feltételezve, hogy az egyik szükséges, és a megfelelő újraindítási beállítást választotta. Ha a javítás a vártnál hosszabb időt vesz igénybe, és a karbantartási időszakban kevesebb mint 20 perc van, a rendszer újraindítást hajt végre.
 
 A telepítést az Azure Automation runbookjai végzik. Ezeket a runbookok nem lehet megtekinteni, és nem igényelnek semmilyen konfigurálást. Egy frissítés központi telepítésének létrehozásakor egy ütemezést hoz létre, amely a főfrissítési runbook a befoglalt gépekhez megadott időpontban indítja el. A fő runbook elindít egy gyermek runbook az egyes ügynökökön a szükséges frissítések telepítéséhez.
 
 A központi telepítésben megadott napon és időpontban a célszámítógépeken párhuzamosan hajtják végre a telepítést. A telepítés előtt a rendszer ellenőrzi, hogy a frissítések továbbra is szükségesek-e. WSUS-ügyfélszámítógépek esetén, ha a frissítések nem lettek jóváhagyva a WSUS-ben, a frissítés telepítése sikertelen lesz.
-
 Ha a Update Management több Log Analytics munkaterületen (más néven többhelyű) van regisztrálva a gépen, nem támogatott.
 
 ## <a name="clients"></a>Ügyfelek
 
 ### <a name="supported-client-types"></a>Támogatott ügyfelek típusai
 
-A következő táblázat felsorolja a frissítési felmérések támogatott operációs rendszereit. A javításhoz hibrid Runbook-feldolgozóra van szükség. A hibrid Runbook-feldolgozói követelményekkel kapcsolatos információkért tekintse meg a [Windows hibrid Runbook-feldolgozók](automation-windows-hrw-install.md) és a [Linux hibrid Runbook](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker)-feldolgozó telepítéséhez szükséges telepítési útmutatókat.
+A következő táblázat felsorolja a frissítési felmérések támogatott operációs rendszereit. A javításhoz hibrid Runbook-feldolgozóra van szükség. A hibrid Runbook-feldolgozói követelményekkel kapcsolatos információkért lásd: [Windows Hybrid Runbook Worker](automation-windows-hrw-install.md) üzembe helyezése és [Linux Hybrid Runbook Worker üzembe helyezése](automation-linux-hrw-install.md).
+
+> [!NOTE]
+> A Linux rendszerű gépek frissítési felmérése csak bizonyos régiókban támogatott, az Automation-fiók és a Log Analytics munkaterület- [hozzárendelések táblázatban](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings)láthatóak szerint. 
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 || 
-|Windows Server 2008 R2 (RTM és SP1 standard)| Update Management csak az adott operációs rendszerre vonatkozó értékeléseket támogatja, a javítások nem támogatottak, mert a Windows Server 2008 R2 nem támogatja a [hibrid Runbook-feldolgozót](automation-windows-hrw-install.md) . |
+|Windows Server 2008 R2 (RTM és SP1 standard)| Update Management csak az ehhez az operációs rendszerhez tartozó értékeléseket támogatja. A javítások nem támogatottak, mert a [hibrid Runbook](automation-windows-hrw-install.md) -feldolgozó nem támogatott a Windows Server 2008 R2 rendszerben. |
 |CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A besoroláson alapuló javításokhoz `yum` olyan biztonsági adatforrásokat kell visszaadnia, amelyeket a CentOS nem tartalmaz a RTM kiadásokban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](automation-view-update-assessments.md#linux-2)rendszeren.          |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
@@ -102,48 +104,49 @@ A következő táblázat a nem támogatott operációs rendszereket sorolja fel:
 
 ### <a name="client-requirements"></a>Ügyfélkövetelmények
 
-Az alábbi információk az operációs rendszerre vonatkozó ügyfelek követelményeit ismertetik. További útmutatásért lásd: [hálózati tervezés](#ports).
+Az alábbi információk az operációs rendszerre jellemző ügyfelekre vonatkozó követelményeket ismertetik. További útmutatásért lásd: [hálózati tervezés](#ports).
 
 #### <a name="windows"></a>Windows
 
-A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kommunikáljanak, vagy hozzáférést igényelnek a Microsoft Updatehoz.
+A Windows-ügynököket úgy kell konfigurálni, hogy a WSUS-kiszolgálóval kommunikáljanak, vagy hozzáférést igényelnek a Microsoft Updatehoz. További információ a Windows rendszerű Log Analytics ügynök telepítéséről: [Windows rendszerű számítógépek Összekötése Azure monitorhoz](../log-analytics/log-analytics-windows-agent.md).
 
-A Update Management a Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a Configuration Manager integrálása Update Management](oms-solution-updatemgmt-sccmintegration.md#configuration)használatával. A [log Analytics Windows-ügynököt](../azure-monitor/platform/agent-windows.md) kötelező megadni. Az ügynök automatikusan települ, ha Azure-beli virtuális gépet helyez üzembe.
+A Update Management a Microsoft Endpoint Configuration Manager használatával végezheti el. Az integrációs forgatókönyvekkel kapcsolatos további tudnivalókért lásd: [a Configuration Manager integrálása Update Management](updatemgmt-mecmintegration.md#configuration)használatával. A Windows rendszerhez készült [log Analytics ügynök](../azure-monitor/platform/agent-windows.md) szükséges a Configuration Manager-környezetben található helyek által felügyelt Windows-kiszolgálókhoz. 
 
-Alapértelmezés szerint az Azure Marketplace-ről üzembe helyezett Windows-alapú virtuális gépek a Windows Update szolgáltatásból származó automatikus frissítések fogadására vannak beállítva. Ez a viselkedés nem változik, ha hozzáadja ezt a megoldást, vagy Windows rendszerű virtuális gépeket ad hozzá a munkaterülethez. Ha nem kezeli aktívan a frissítéseket a megoldás használatával, a rendszer az alapértelmezett működést (a frissítések automatikus érvénybe lépését) alkalmazza.
+Alapértelmezés szerint az Azure Marketplace-ről üzembe helyezett Windows-alapú virtuális gépek a Windows Update szolgáltatásból származó automatikus frissítések fogadására vannak beállítva. Ez a viselkedés nem változik, ha Windows rendszerű virtuális gépeket ad hozzá a munkaterülethez. Ha nem kezeli aktívan a frissítéseket Update Management használatával, a rendszer az alapértelmezett viselkedést alkalmazza (a frissítések automatikus érvénybe lépéséhez).
 
 > [!NOTE]
-> A felhasználók módosíthatják Csoportházirend, hogy a számítógép újraindítását csak a felhasználó hajtsa végre, nem pedig a rendszer. A felügyelt gépek elakadnak abban az esetben, ha Update Management nem rendelkezik jogosultsággal a gép újraindításához a felhasználó manuális beavatkozása nélkül.
->
-> További információ: [csoportházirend beállítások konfigurálása az automatikus frissítésekhez](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
+> Módosíthatja Csoportházirend úgy, hogy a számítógép újraindítását csak a felhasználó hajtsa végre, nem pedig a rendszer. A felügyelt gépek elakadnak abban az esetben, ha Update Management nem rendelkezik jogosultsággal a gép újraindításához a felhasználó manuális beavatkozása nélkül. További információ: [csoportházirend beállítások konfigurálása az automatikus frissítésekhez](https://docs.microsoft.com/windows-server/administration/windows-server-update-services/deploy/4-configure-group-policy-settings-for-automatic-updates).
 
 #### <a name="linux"></a>Linux
 
-Linux esetén a számítógépnek hozzáférésre van szüksége egy frissítési tárházhoz. A frissítési tárház lehet magán vagy nyilvános. A Update Managementhoz való interakcióhoz TLS 1,1 vagy TLS 1,2 szükséges. Ez a megoldás nem támogatja az olyan Log Analytics Linux-ügynököt, amely több Log Analytics munkaterületre való jelentésre van konfigurálva. A gépnek a Python 2. x verziójának is telepítve kell lennie.
+A Linux rendszerben a számítógépnek nyilvános vagy nyilvános frissítési tárházhoz kell hozzáférnie. A Update Managementhoz való interakcióhoz TLS 1,1 vagy TLS 1,2 szükséges. A Update Management nem támogatja a linuxos Log Analytics-ügynököt, amely több Log Analytics munkaterületre való jelentésre van konfigurálva. A gépnek a Python 2. x verziójának is telepítve kell lennie.
 
-További információ a Linux rendszerhez készült Log Analytics-ügynök telepítéséről és a legújabb verzió letöltéséről: [log Analytics Agent for Linux](../azure-monitor/platform/agent-linux.md). További információ a Windows rendszerű Log Analytics ügynök telepítéséről: [Windows rendszerű számítógépek Összekötése Azure monitorhoz](../log-analytics/log-analytics-windows-agent.md).
+> [!NOTE]
+> A Linux rendszerű gépek frissítési felmérése csak bizonyos régiókban támogatott. Tekintse meg az Automation-fiók és a Log Analytics munkaterület- [hozzárendelések táblát](https://docs.microsoft.com/azure/automation/how-to/region-mappings#supported-mappings). 
 
-Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) lemezképből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat frissítési infrastruktúrához (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) . Minden más Linux-disztribúciót a terjesztés támogatott módszereinek használatával kell frissíteni a disztribúció online fájl-tárházában.
+További információ a Linux rendszerhez készült Log Analytics-ügynök telepítéséről és a legújabb verzió letöltéséről: [log Analytics Agent for Linux](../azure-monitor/platform/agent-linux.md). 
+
+Az Azure piactéren elérhető, igény szerinti Red Hat Enterprise Linux (RHEL) lemezképből létrehozott virtuális gépek regisztrálva vannak az Azure-ban üzembe helyezett [Red Hat frissítési infrastruktúrához (RHUI)](../virtual-machines/workloads/redhat/redhat-rhui.md) . Minden más Linux-disztribúciót a terjesztés által támogatott módszerek használatával kell frissíteni a disztribúció online fájl-tárházában.
 
 ## <a name="permissions"></a>Engedélyek
 
 A frissítési központi telepítések létrehozásához és kezeléséhez konkrét engedélyekre van szükség. További információ ezekről az engedélyekről: [szerepköralapú hozzáférés – Update Management](automation-role-based-access-control.md#update-management-permissions).
 
-## <a name="solution-components"></a>Megoldás-összetevők
+## <a name="update-management-components"></a>Összetevők Update Management
 
-A megoldás a következő erőforrásokból áll. Ezeket az erőforrásokat a rendszer automatikusan hozzáadja az Automation-fiókhoz a megoldás engedélyezésekor. 
+Update Management az ebben a szakaszban ismertetett erőforrásokat használja. Ezeket az erőforrásokat a rendszer automatikusan hozzáadja az Automation-fiókhoz, amikor engedélyezi a Update Management.
 
-### <a name="hybrid-worker-groups"></a>Hibridfeldolgozó-csoportok
+### <a name="hybrid-runbook-worker-groups"></a>Hibrid Runbook Worker-csoportok
 
-Ha engedélyezi ezt a megoldást, a Log Analytics munkaterülethez közvetlenül csatlakozó Windows-gépeket a rendszer automatikusan hibrid Runbook-feldolgozóként konfigurálja a megoldásban foglalt runbookok támogatásához.
+A Update Management engedélyezése után a Log Analytics munkaterülethez közvetlenül csatlakoztatott Windows-gépeket a rendszer automatikusan hibrid Runbook-feldolgozóként konfigurálja a Update Management támogató runbookok támogatásához.
 
-A megoldás által felügyelt minden Windows-gép a hibrid feldolgozói csoportok panelen, az Automation-fiókhoz tartozó rendszer hibrid feldolgozói csoportként jelenik meg. A megoldások az `Hostname FQDN_GUID` elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok csak ezt a felügyeleti megoldást támogatják.
+Az Update Management által felügyelt összes Windows-gép a hibrid munkavégző csoportok ablaktáblán, az Automation-fiókhoz tartozó rendszer hibrid feldolgozói csoportként jelenik meg. A csoportok az `Hostname FQDN_GUID` elnevezési konvenciót használják. Ezek a csoportok nem állíthatók be a runbookok a fiókjában. Ha próbálkozik, a kísérlet sikertelen lesz. Ezek a csoportok kizárólag a Update Management támogatására szolgálnak.
 
-A Windows rendszerű gépet hozzáadhatja az Automation-fiókjában lévő hibrid Runbook Worker csoporthoz az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja mind a megoldáshoz, mind a hibrid Runbook-feldolgozói csoport tagságához. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
+A Windows rendszerű gépet hozzáadhatja az Automation-fiókjában lévő hibrid Runbook Worker csoporthoz az Automation-runbookok támogatásához, ha ugyanazt a fiókot használja a Update Management és a hibrid Runbook-feldolgozó csoport tagságához. Ez a funkció a hibrid Runbook-feldolgozó verziójának 7.2.12024.0 lett hozzáadva.
 
 ### <a name="management-packs"></a>Felügyeleti csomagok
 
-Ha a System Center Operations Manager felügyeleti csoport [egy log Analytics munkaterülethez csatlakozik](../azure-monitor/platform/om-agents.md), a következő felügyeleti csomagok lesznek telepítve a Operations Managerban. Ezeket a felügyeleti csomagokat a megoldás hozzáadása után közvetlenül csatlakoztatott Windows rendszerű gépekre is telepíti a rendszer. A felügyeleti csomagokat nem szükséges konfigurálni vagy felügyelni.
+Ha a Operations Manager felügyeleti csoport [egy log Analytics munkaterülethez csatlakozik](../azure-monitor/platform/om-agents.md), a következő felügyeleti csomagok lesznek telepítve a Operations Managerban. Ezek a felügyeleti csomagok a közvetlenül csatlakoztatott Windows rendszerű gépek Update Management is telepítve vannak. A felügyeleti csomagokat nem szükséges konfigurálni vagy felügyelni.
 
 * Microsoft System Center Advisor Update Assessment Intelligence Pack (Microsoft.IntelligencePacks.UpdateAssessment)
 * Microsoft.IntelligencePack.UpdateAssessment.Configuration (Microsoft.IntelligencePack.UpdateAssessment.Configuration)
@@ -152,32 +155,32 @@ Ha a System Center Operations Manager felügyeleti csoport [egy log Analytics mu
 > [!NOTE]
 > Ha van olyan Operations Manager 1807 vagy 2019 felügyeleti csoport, amely egy Log Analytics munkaterülethez van csatlakoztatva, és a felügyeleti csoportban a naplózási adatok gyűjtéséhez konfigurált ügynökök vannak konfigurálva `IsAutoRegistrationEnabled` , akkor a paramétert felül kell bírálni a **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** szabályban.
 
-A megoldás-felügyeleti csomagok frissítésével kapcsolatos további információkért lásd: [Operations Manager Összekötése Azure monitor naplókhoz](../azure-monitor/platform/om-agents.md).
+A felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager Összekötése Azure monitor naplókhoz](../azure-monitor/platform/om-agents.md).
 
 > [!NOTE]
-> Az Operations Manager-ügynököt Update Management által teljes mértékben felügyelt gépek esetében az ügynököt frissíteni kell a Windows Log Analytics ügynökének vagy a Linux Log Analytics ügynökének. Az ügynök frissítésével kapcsolatos további információkért lásd: [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). A Operations Managert használó környezetekben System Center Operations Manager 2012 R2-es vagy újabb verzióját kell futtatnia.
+> Ahhoz, Update Management hogy a gépek teljes mértékben felügyelhetők legyenek a Log Analytics-ügynökkel, frissítenie kell a Log Analytics ügynökre a Windows rendszerhez vagy a Linux Log Analytics-ügynökéhez. Az ügynök frissítésével kapcsolatos további információkért lásd: [Operations Manager-ügynök frissítése](https://docs.microsoft.com/system-center/scom/deploy-upgrade-agents). A Operations Managert használó környezetekben System Center Operations Manager 2012 R2-es vagy újabb verzióját kell futtatnia.
 
 ## <a name="data-collection"></a>Adatgyűjtés
 
-### <a name="supported-agents"></a>Támogatott ügynökök
+### <a name="supported-sources"></a>Támogatott források
 
-A következő táblázat ismerteti a megoldás által támogatott csatlakoztatott forrásokat:
+A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
 | Csatlakoztatott forrás | Támogatott | Leírás |
 | --- | --- | --- |
-| Windows-ügynökök |Igen |A megoldás adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
-| Linux-ügynökök |Igen |A megoldás adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd kezdeményezi a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
-| Az Operations Manager felügyeleti csoportja |Igen |A megoldás információt szerez be a csatlakoztatott felügyeleti csoportban lévő ügynököktől a rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
+| Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
+| Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
+| Az Operations Manager felügyeleti csoportja |Igen |Update Management adatokat gyűjt a csatlakoztatott felügyeleti csoportban lévő ügynököktől származó rendszerfrissítésekről.<br/><br/>Nincs szükség közvetlen kapcsolódásra a Operations Manager ügynöktől a Azure Monitor naplókhoz. Az adatok továbbítása a felügyeleti csoportból a Log Analytics munkaterületre történik. |
 
 ### <a name="collection-frequency"></a>A gyűjtés gyakorisága
 
-Minden felügyelt Windows-gép naponta kétszer végez vizsgálatot. A rendszer 15 percenként lekérdezi a Windows API-t, hogy lekérdezze az utolsó frissítés idejét annak megállapításához, hogy megváltozott-e az állapot. Ha az állapot módosult, a rendszer megfelelőségi vizsgálatot kezdeményez.
+A Update Management a következő szabályok használatával vizsgálja a felügyelt gépeket az adatkezeléshez. 30 perc és 6 óra között eltarthat, amíg az irányítópult a felügyelt gépekről származó frissített adatok megjelenítésére is képes.
 
-Minden egyes felügyelt Linux rendszerű gép óránként vizsgálatot végez.
+* Minden Windows-gép – Update Management naponta kétszer ellenőrzi az egyes gépeket. A rendszer 15 percenként lekérdezi a Windows API-t az utolsó frissítés idejére annak megállapítására, hogy megváltozott-e az állapot. Ha az állapot módosult, Update Management elindítja a megfelelőségi vizsgálatot.
 
-30 perc és 6 óra között eltarthat, amíg az irányítópult a felügyelt gépekről származó frissített adatok megjelenítésére is képes.
+* Minden linuxos gép – Update Management óránkénti vizsgálatot végez.
 
-Egy Update Management-t használó gép átlagos adatfelhasználása Azure Monitor-naplók havonta körülbelül 25 megabájt (MB). Ez az érték csak egy közelítés, és változhat a környezettől függően. Javasoljuk, hogy figyelje a környezetét, hogy nyomon követhesse a pontos használatot. További információ az adatfelhasználás elemzéséről: a [használat és a Cost kezelése](../azure-monitor/platform/manage-cost-storage.md).
+A Update Management-t használó gépek átlagos adatfelhasználása Azure Monitor-naplók havonta körülbelül 25 MB. Ez az érték csak egy közelítés, és változhat a környezettől függően. Javasoljuk, hogy figyelje a környezetét, hogy nyomon követhesse a pontos használatot. További információ az adatfelhasználás elemzéséről: a [használat és a Cost kezelése](../azure-monitor/platform/manage-cost-storage.md).
 
 ## <a name="network-planning"></a><a name="ports"></a>Hálózattervezés
 
@@ -194,7 +197,7 @@ Windows rendszerű gépek esetén a Windows Update által igényelt végpontokra
 
 A Red Hat Linux rendszerű gépek esetében tekintse meg [az IP-címek a RHUI](../virtual-machines/workloads/redhat/redhat-rhui.md#the-ips-for-the-rhui-content-delivery-servers) a szükséges végpontokhoz című témakört. Más Linux-disztribúciók esetében tekintse meg a szolgáltatói dokumentációt.
 
-A hibrid Runbook-feldolgozók számára szükséges portokkal kapcsolatos további információkért lásd a [hibrid feldolgozói szerepkör portjait](automation-hybrid-runbook-worker.md#hybrid-worker-role).
+A hibrid Runbook-feldolgozók számára szükséges portokkal kapcsolatos további információkért lásd: [Update Management-címek a hibrid Runbook-feldolgozók](automation-hybrid-runbook-worker.md#update-management-addresses-for-hybrid-runbook-worker)számára.
 
 Javasoljuk, hogy használja a kivételek meghatározásakor felsorolt címeket. IP-címek esetén letöltheti [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és az IP-címtartományok aktuálisan telepített tartományait és minden közelgő változását tükrözi.
 
@@ -202,9 +205,7 @@ Az internet-hozzáféréssel nem rendelkező számítógépek konfigurálásáho
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 
-Az alábbi táblázat a Update Management frissítési besorolásait sorolja fel, az egyes besorolások definíciója szerint.
-
-### <a name="windows"></a>Windows
+A következő táblázat azokat a besorolásokat határozza meg, amelyeket Update Management támogat a Windows-frissítésekhez. 
 
 |Osztályozás  |Leírás  |
 |---------|---------|
@@ -217,7 +218,7 @@ Az alábbi táblázat a Update Management frissítési besorolásait sorolja fel
 |Eszközök     | Olyan segédprogram vagy szolgáltatás, amely egy vagy több feladat elvégzését segíti elő.        |
 |Frissítések     | Egy aktuálisan telepített alkalmazás vagy fájl frissítése.        |
 
-### <a name="linux"></a><a name="linux-2"></a>Linux
+A következő táblázat a Linux-frissítések támogatott besorolásait határozza meg.
 
 |Osztályozás  |Leírás  |
 |---------|---------|
@@ -230,30 +231,28 @@ A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kié
 sudo yum -q --security check-update
 ```
 
-Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg csak a lehető legjobb támogatást nyújtja azoknak az ügyfeleknek, akik saját maguk is engedélyezték ezt. 
+Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg csak a lehető legjobb támogatást nyújtja azoknak az ügyfeleknek, akik saját maguk is engedélyezték ezt a szolgáltatást. 
 
-A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7 rendszeren a beépülő modul már maga is része a yum szolgáltatásnak, nem kell semmit telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
+A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7-én a beépülő modul már maga is a yum része, és semmit nem kell telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
 
-## <a name="integrate-with-configuration-manager"></a>Integrálás a Configuration Managerrel
+## <a name="integrate-update-management-with-configuration-manager"></a>Update Management integrálása Configuration Manager
 
-A számítógépek, kiszolgálók és mobileszközök kezeléséhez a Microsoft Endpoint Configuration Managerba befektetett ügyfelek is a Configuration Manager erősségét és érettségét használják a szoftverfrissítések kezeléséhez. Configuration Manager a szoftverfrissítés-kezelési (SUM) ciklus részét képezi.
+A Microsoft Endpoint Configuration Managerban a számítógépek, kiszolgálók és mobileszközök kezeléséhez befektetett ügyfelek is a Configuration Manager erősségét és érettségét használják a szoftverfrissítések kezeléséhez. Ha szeretné megtudni, hogyan integrálhatja a Update Managementt a Configuration Managerrel, tekintse meg a [Configuration Manager integrálása a Update Managementsal](updatemgmt-mecmintegration.md)
 
-Ha szeretné megtudni, hogyan integrálható a felügyeleti megoldás Configuration Manager használatával, tekintse meg a [Configuration Manager integrálása a Update Management](oms-solution-updatemgmt-sccmintegration.md)használatával című témakört.
+## <a name="third-party-updates-on-windows"></a>Harmadik féltől származó frissítések Windows rendszeren
 
-### <a name="third-party-updates-on-windows"></a>Harmadik féltől származó frissítések Windows rendszeren
+Update Management a helyileg konfigurált frissítési adattárra támaszkodik, hogy frissítse a támogatott Windows-rendszereket, akár a WSUS-t, akár a Windows Update. Az olyan eszközök, mint a [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) lehetővé teszik egyéni frissítések importálását és közzétételét a WSUS használatával. Ez a forgatókönyv lehetővé teszi, hogy Update Management frissítse a Configuration Managert használó gépeket a harmadik féltől származó szoftverrel rendelkező frissítési adattárként. Az Updates Publisher konfigurálásával kapcsolatos további információkért lásd: a [frissítések közzétevő telepítése](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher).
 
-A Update Management a helyileg konfigurált frissítési tárházra támaszkodik a támogatott Windows-rendszerek frissítésére. Ez vagy a WSUS vagy a Windows Update. Az olyan eszközök, mint a [System Center Updates Publisher](https://docs.microsoft.com/configmgr/sum/tools/updates-publisher) (a frissítések közzétevője) lehetővé teszik egyéni frissítések importálását és közzétételét a WSUS szolgáltatásban. Ez a forgatókönyv lehetővé teszi, hogy Update Management frissítse a Configuration Managert használó gépeket a harmadik féltől származó szoftverrel rendelkező frissítési adattárként. Az Updates Publisher konfigurálásával kapcsolatos további információkért lásd: a [frissítések közzétevő telepítése](https://docs.microsoft.com/configmgr/sum/tools/install-updates-publisher).
+## <a name="enable-update-management"></a>Az Update Management engedélyezése
 
-## <a name="enable-update-management"></a><a name="onboard"></a>Update Management engedélyezése
+Az Azure [Resource Manager-sablonok](automation-update-management-deploy-template.md) segítségével Update Management telepítheti az új vagy meglévő Automation-fiókra, és Azure monitor log Analytics munkaterületet az előfizetésében. Nem konfigurálja a felügyelni kívánt gépek hatókörét, ez a sablon használata után külön lépésként történik.
 
-A rendszerek frissítésének megkezdéséhez engedélyeznie kell a Update Management megoldást. A megoldás bevezetésének ajánlott és támogatott módszerei a következők:
+Az alábbi módokon engedélyezheti Update Management és kiválaszthatja a felügyelni kívánt gépeket:
 
-- [Virtuális gépről](automation-onboard-solutions-from-vm.md)
-- [Több gép tallózása](automation-onboard-solutions-from-browse.md)
-- [Az Automation-fiókból](automation-onboard-solutions-from-automation-account.md)
-- [Azure Automation runbook](automation-onboard-solutions.md)
-- [Azure Resource Manager sablonnal](automation-update-management-deploy-template.md)
+* [Egy virtuális gépről](automation-onboard-solutions-from-vm.md).
+* [Több gép tallózása](automation-onboard-solutions-from-browse.md).
+* [Egy Azure Automation-fiókból](automation-onboard-solutions.md).
 
 ## <a name="next-steps"></a>További lépések
 
-A megoldással kapcsolatos gyakori kérdések áttekintéséhez tekintse át a Azure Automation [GYIK](automation-faq.md) című szakaszt.
+Tekintse át a Azure Automation [GYIK](automation-faq.md) -t a Update Managementekkel kapcsolatos gyakori kérdések áttekintéséhez.

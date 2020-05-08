@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b66f5a7d85eb91970d5f551b010dd512b216b9c6
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
-ms.translationtype: MT
+ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509516"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872420"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -95,6 +95,14 @@ Az eszközök X. 509 tanúsítvánnyal való tömeges csatlakoztatásához elős
 
 X. 509 Leaf-tanúsítványok előállítása az eszközökön a feltöltött gyökér vagy köztes tanúsítvány használatával. Használja az **eszköz azonosítóját** a `CNAME` levél tanúsítványainak értékeként. Az eszköz kódjának szüksége van az alkalmazás **azonosító hatókörének** értékére, az **eszköz azonosítójára**és a megfelelő eszköz tanúsítványára.
 
+#### <a name="sample-device-code"></a>Minta eszköz kódja
+
+Az [Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) következő mintája azt mutatja be, hogy egy Node. js-eszköz ügyfele X. 509 levél-tanúsítványt és DPS-t használ egy IoT Central alkalmazásban való regisztráláshoz:
+
+:::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
+
+Az egyenértékű C minta esetében lásd: [prov_dev_client_sample. C](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/samples/prov_dev_client_sample/prov_dev_client_sample.c) az [Azure IoT c kiépítési eszköz ügyféloldali SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)-ban.
+
 ### <a name="for-testing-purposes-only"></a>Csak tesztelési célokra
 
 Csak tesztelés esetén a következő segédprogramok segítségével hozhatja ki a gyökér-, köztes és eszköz-tanúsítványokat:
@@ -106,11 +114,6 @@ Csak tesztelés esetén a következő segédprogramok segítségével hozhatja k
   - Mentse a tanúsítványokat. cer fájlként a IoT Central alkalmazásba való feltöltéshez.
   - Az ellenőrző tanúsítvány létrehozásához használja a IoT Central alkalmazásban található ellenőrző kódot.
   - Hozzon létre Leaf-tanúsítványokat az eszközökhöz az eszköz azonosítói alapján az eszköz paraméterének megfelelően.
-
-### <a name="further-reference"></a>További tudnivalók
-
-- [Példa a RaspberryPi megvalósítására](https://aka.ms/iotcentral-docs-Raspi-releases)
-- [Minta-eszköz ügyfél a C-ben](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)
 
 ## <a name="connect-without-registering-devices"></a>Csatlakoztatás eszközök regisztrálása nélkül
 

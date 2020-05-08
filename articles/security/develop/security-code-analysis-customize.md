@@ -2,7 +2,7 @@
 title: A Microsoft biztonsági kód elemzési feladatainak testreszabása
 titleSuffix: Azure
 description: Ez a cikk a Microsoft biztonsági kód elemzése bővítmény feladatainak testreszabását ismerteti
-author: vharindra
+author: sukhans
 manager: sukhans
 ms.author: terrylan
 ms.date: 07/31/2019
@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 6cdf892651407defc21f359a8e3b326b4af63b62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d074c12f28abdc61f4d70356c2a7aa264deb44c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77499986"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871891"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
@@ -91,7 +91,8 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 ![A hitelesítőadat-képolvasó felépítési feladatának konfigurálása](./media/security-tools/3-taskdetails.png)
 
 Az elérhető lehetőségek a következők:
-
+  - **Megjelenítendő név**: az Azure DevOps feladat neve. Az alapértelmezett érték a hitelesítőadat-olvasó futtatása
+  - **Eszköz főverziója**: az elérhető értékek közé tartozik a **CredScan v2**, a **CredScan v1**. Javasoljuk, hogy az ügyfelek a **CredScan v2** verzióját használják.
   - **Kimeneti formátum**: a rendelkezésre álló értékek a **TSV**, a **CSV**, a **SARIF**és az **előgyorsak**.
   - **Eszköz verziója**: javasoljuk, hogy válassza a **legutóbbi**lehetőséget.
   - **Vizsgálati mappa**: a beolvasandó adattár mappája.
@@ -105,7 +106,7 @@ Az elérhető lehetőségek a következők:
   - **Vezérlési beállítások** > **futtassa ezt a feladatot**: Megadja, hogy a feladat Mikor fusson. Összetettebb feltételek megadásához válassza az **Egyéni feltételek** lehetőséget.
   - **Verzió**: a Build feladat verziója az Azure DevOps-n belül. Ez a beállítás nem gyakran használatos.
 
-A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [hitelesítő adatok szkennerének YAML-beállításait](yaml-configuration.md#credential-scanner-task)
+A feladathoz tartozó YAML-konfigurációval kapcsolatos információkért tekintse meg a [hitelesítő adatok szkennerének YAML beállításait](yaml-configuration.md#credential-scanner-task)
 
 ## <a name="microsoft-security-risk-detection-task"></a>Microsoft biztonsági kockázatok észlelése feladat
 
@@ -193,7 +194,7 @@ A feladat konfigurációjának részletei a következő képernyőképen és lis
 - Összetevő **típusa**: a kijelöléstől függően közzéteheti a naplókat a Azure DevOps Server vagy a Build ügynök számára elérhető megosztott fájlon.
 - **Eszközök**: dönthet úgy, hogy megőrzi a naplókat az egyes eszközökön, vagy kiválaszthatja az **összes eszközt** az összes napló megőrzéséhez.
 
-A feladathoz tartozó YAML-konfigurációval kapcsolatos további információkért tekintse meg a [biztonsági naplók közzététele YAML lehetőségeket](yaml-configuration.md#publish-security-analysis-logs-task)
+A feladathoz tartozó YAML-konfigurációval kapcsolatos további információkért tekintse meg a [biztonsági naplók közzététele YAML beállítások](yaml-configuration.md#publish-security-analysis-logs-task) című témakört.
 
 ## <a name="security-report-task"></a>Biztonsági jelentés feladata
 

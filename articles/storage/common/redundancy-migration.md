@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 02/10/2020
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 5c37dbdc34138faab8adae6ad18252c18a75cad4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d047aa3c5c937e3b84b8fa672101bc801221067
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337071"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871365"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>A Storage-fiók replikálási módjának módosítása
 
@@ -26,7 +26,7 @@ Az Azure Storage a következő típusú replikációkat kínálja:
 - Helyileg redundáns tárolás (LRS)
 - Zónaredundáns tárolás (ZRS)
 - Geo-redundáns tárolás (GRS) vagy olvasási hozzáférés geo-redundáns tárolás (RA-GRS)
-- Geo-Zone-redundáns tárolás (GZRS) vagy olvasási hozzáférés geo-Zone-redundáns tárolás (RA-GZRS) (előzetes verzió)
+- Geo-Zone-redundáns tárolás (GZRS) vagy olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS)
 
 Az egyes lehetőségek áttekintését az [Azure Storage redundancia](storage-redundancy.md)című témakörben tekintheti meg.
 
@@ -40,13 +40,14 @@ Az alábbi táblázat áttekintést nyújt az egyes replikálási típusokról a
 |--------------------|----------------------------------------------------|---------------------------------------------------------------------|----------------------------------------------------|---------------------------------------------------------------------|
 | <b>... LRS</b> | N/A | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával | Manuális áttelepítés végrehajtása <br /><br />Élő áttelepítés kérése | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a GRS/RA-GRS, majd igényeljen élő áttelepítést<sup>1</sup> |
 | <b>... GRS/RA-GRS</b> | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A | Manuális áttelepítés végrehajtása <br /><br /> VAGY <br /><br /> Először váltson a LRS, majd kérjen élő áttelepítést | Manuális áttelepítés végrehajtása <br /><br /> Élő áttelepítés kérése |
-| <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N/A | Módosítsa az<sup>1</sup> . replikációs beállítást a Azure Portal, a PowerShell vagy a CLI használatával |
+| <b>... ZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | N/A | A Azure Portal, a PowerShell vagy a CLI használatával módosítsa a replikálási beállítást<sup>1, 2</sup> |
 | <b>... GZRS/RA-GZRS</b> | Manuális áttelepítés végrehajtása | Manuális áttelepítés végrehajtása | A replikálási beállítás módosításához használja a Azure Portal, a PowerShell vagy a CLI-t. | N/A |
 
-<sup>1</sup> egyszeri kimenő díj.
+<sup>1</sup> egyszeri kimenő díj.<br />
+<sup>2</sup> a ZRS-ről GZRS/ra-GZRS-re vagy fordítva történő átalakítás nem támogatott a következő régiókban: USA keleti régiója, USA keleti régiója, Nyugat-Európa.
 
 > [!CAUTION]
-> Ha a (RA-) GRS vagy (RA-) GZRS fiók [feladatátvételét](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance) hajtotta végre, az az új elsődleges régióban helyileg redundánsként van konfigurálva. Az ilyen LRS-fiókok ZRS vagy GZRS való élő áttelepítése nem támogatott. [Manuális áttelepítést](https://docs.microsoft.com/azure/storage/common/redundancy-migration#perform-a-manual-migration-to-zrs)kell végeznie.
+> Ha a (RA-) GRS vagy (RA-) GZRS fiók [feladatátvételét](storage-disaster-recovery-guidance.md) hajtotta végre, a fiók a feladatátvételt követően az új elsődleges régióban helyileg redundánsan szerepel. A ZRS vagy GZRS való élő áttelepítés nem támogatott a feladatátvételt eredményező LRS-fiókok esetében. Végre kell hajtania egy [manuális áttelepítést](#perform-a-manual-migration-to-zrs) a ZRS vagy a GZRS.
 
 ## <a name="change-the-replication-setting"></a>Replikációs beállítás módosítása
 
@@ -195,4 +196,4 @@ Ha a Storage-fiókot a GRS-ből a LRS-be telepíti át, akkor nem jár további 
 
 - [Azure Storage-redundancia](storage-redundancy.md)
 - [A Storage-fiók utolsó szinkronizálási ideje tulajdonságának megtekintése](last-sync-time-get.md)
-- [A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással](storage-designing-ha-apps-with-ragrs.md)
+- [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)

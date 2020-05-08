@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Profit.co SAML-alkalmazással | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Profit.co SAML-alkalmazás között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Profit.co | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Profit.co között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 03/27/2020
+ms.date: 04/30/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 564ca97210d85c5118901f30261abe3de9df1053
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e39a797257b2f06f102a6b774f567b7b3060ccdd
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770927"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871332"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco-saml-app"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Profit.co SAML-alkalmazással
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-profitco"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Profit.co
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Profit.co SAML-alkalmazást Azure Active Directory (Azure AD-val). Ha integrálja a Profit.co SAML-alkalmazást az Azure AD-vel, a következőket teheti:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Profit.co a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Profit.co-t az Azure AD-vel, a következőket teheti:
 
-* A Profit.co SAML-alkalmazáshoz hozzáférő Azure AD-beli vezérlés.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az SAML-alkalmazásba az Azure AD-fiókkal Profit.co.
+* A Profit.co-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Profit.co az Azure AD-fiókjával.
 * A fiókokat egy központi helyen, a Azure Portal kezelheti.
 
 Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
@@ -37,45 +37,45 @@ Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure 
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Profit.co SAML-alkalmazás egyszeri bejelentkezéses (SSO) előfizetésének engedélyezése.
+* Profit.co egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* A Profit.co SAML-alkalmazás támogatja a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
+* A Profit.co támogatja a IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezést.
 
-* A Profit.co SAML-alkalmazás konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* A Profit.co konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="add-profitco-saml-app-from-the-gallery"></a>Profit.co SAML-alkalmazás hozzáadása a katalógusból
+## <a name="add-profitco-from-the-gallery"></a>Profit.co hozzáadása a gyűjteményből
 
-A Profit.co SAML-alkalmazás Azure AD-be való integrálásának konfigurálásához hozzá kell adnia egy Profit.co SAML-alkalmazást a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Profit.co Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Profit.co a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
 1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a **profit.co SAML-alkalmazás** kifejezést a keresőmezőbe.
-1. Válassza ki a **profit.co SAML-alkalmazást** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **profit.co** kifejezést a keresőmezőbe.
+1. Válassza az **profit.co** lehetőséget az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco-saml-app"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Profit.co SAML-alkalmazáshoz
+## <a name="configure-and-test-azure-ad-single-sign-on-for-profitco"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Profit.co
 
-Konfigurálja és tesztelje az Azure AD SSO-t a Profit.co SAML-alkalmazással egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez hozzon létre egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Profit.co SAML-alkalmazásban.
+Konfigurálja és tesztelje az Azure AD SSO-t a Profit.co egy **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez hozzon létre egy összekapcsolt kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Profit.co-ben.
 
-Az alábbi általános lépésekkel konfigurálhatja és tesztelheti az Azure AD SSO-t az Profit.co SAML-alkalmazással:
+Az Azure AD SSO konfigurálásának és tesztelésének általános lépései a Profit.co:
 
 1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
     1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. **[Konfigurálja az SAML-profit.co az egyszeri](#configure-profitco-saml-app-sso)** bejelentkezési beállítások konfigurálásához az alkalmazás oldalán.
-    1. **[Hozzon létre egy profit.co SAML-alkalmazás tesztelése felhasználót](#create-a-profitco-saml-app-test-user)** , hogy a profit.co SAML-alkalmazásban B. Simon-ügyféllel rendelkezzen. Ez a partner a felhasználó Azure AD-képviseletéhez van társítva.
+1. **[Konfigurálja a profit.co SSO](#configure-profitco-sso)** -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    1. **[Hozzon létre profit.co-tesztelési felhasználót](#create-a-profitco-test-user)** , hogy a B. Simon párja legyen a profit.co. Ez a partner a felhasználó Azure AD-képviseletéhez van társítva.
 1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
 Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-1. A [Azure Portal](https://portal.azure.com/)a **profit.co SAML app** Application Integration oldalon keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com/) **profit.co** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt. Válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
@@ -101,10 +101,10 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Profit.co SAML-alkalmazáshoz.
+Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát azáltal, hogy hozzáférést biztosít a Profit.co.
 
 1. A Azure Portal válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
-1. Az alkalmazások listában válassza ki a **profit.co SAML-alkalmazás**elemet.
+1. Az alkalmazások listában válassza a **profit.co**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![Képernyőfelvétel a kezelés szakaszról, Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
@@ -117,21 +117,21 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 1. Ha az SAML-kijelentésben bármelyik szerepkör értékét várta, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a listáról a felhasználó számára. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
 
-## <a name="configure-profitco-saml-app-sso"></a>Profit.co SAML-alkalmazás egyszeri bejelentkezésének konfigurálása
+## <a name="configure-profitco-sso"></a>Profit.co SSO konfigurálása
 
-Az egyszeri bejelentkezés konfigurálásához a Profit.co SAML-alkalmazás oldalán el kell küldenie az alkalmazás-összevonási metaadatok URL-címét a [profit.co SAML-alkalmazás támogatási csapatának](mailto:support@profit.co). Ezt a beállítást úgy konfigurálja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
+Az egyszeri bejelentkezés az Profit.co oldalon való konfigurálásához el kell küldenie az alkalmazás-összevonási metaadatok URL-címét a [profit.co támogatási csapatának](mailto:support@profit.co). Ezt a beállítást úgy konfigurálja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
 
-### <a name="create-a-profitco-saml-app-test-user"></a>Profit.co SAML-alkalmazás tesztelési felhasználójának létrehozása
+### <a name="create-a-profitco-test-user"></a>Profit.co-teszt felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Profit.co SAML-alkalmazásban. Együttműködik a [profit.co SAML-alkalmazás támogatási csapatával](mailto:support@profit.co) , hogy hozzáadja a felhasználókat a profit.co SAML-alkalmazás platformhoz. Nem használhat egyszeri bejelentkezést, amíg nem hoz létre és nem aktivál felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Profit.co-ben. Együttműködik a [profit.co támogatási csapatával](mailto:support@profit.co) , hogy hozzáadja a felhasználókat a profit.co platformhoz. Nem használhat egyszeri bejelentkezést, amíg nem hoz létre és nem aktivál felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját a hozzáférési panel használatával tesztelheti.
 
-Amikor kiválasztja a Profit.co SAML-alkalmazás csempéjét a hozzáférési panelen, automatikusan be kell jelentkeznie a Profit.co SAML-alkalmazásba, amelyhez be kell állítania az SSO-t. További információ: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a Profit.co csempét a hozzáférési panelen, automatikusan be kell jelentkeznie arra a Profit.co, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ: [Bevezetés a hozzáférési panelbe](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Oktatóanyagok SaaS-alkalmazások az Azure Active Directoryval való integrálásához](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
@@ -139,8 +139,8 @@ Amikor kiválasztja a Profit.co SAML-alkalmazás csempéjét a hozzáférési pa
 
 - [Mi az a feltételes hozzáférés az Azure Active Directoryban?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Az SAML-alkalmazás kipróbálása az Azure AD-vel – Profit.co](https://aad.portal.azure.com/)
+- [A Profit.co kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 
 - [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
-- [A Profit.co SAML-alkalmazás védetté tétele fejlett láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+- [A Profit.co és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
