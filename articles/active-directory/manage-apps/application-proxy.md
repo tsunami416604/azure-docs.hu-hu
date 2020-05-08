@@ -12,23 +12,24 @@ ms.date: 05/09/2019
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4780786f0caea2c211b6b93fb0736feaade8de80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74274835"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609952"
 ---
-# <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés helyszíni alkalmazásokhoz Azure Active Directory alkalmazásproxy használatával 
+# <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Távoli hozzáférés helyszíni alkalmazásokhoz Azure Active Directory alkalmazásproxy használatával
 
 Azure Active Directory alkalmazásproxy biztonságos távoli hozzáférést biztosít a helyszíni webalkalmazásokhoz. Az Azure AD-be való egyszeri bejelentkezés után a felhasználók külső URL-címen vagy egy belső alkalmazás-portálon keresztül is hozzáférhetnek a Felhőbeli és a helyszíni alkalmazásokhoz. Az alkalmazásproxy például távoli hozzáférést és egyszeri bejelentkezést biztosíthat a Távoli asztal, a SharePoint, a Teams, a tabló, a Qlik és az üzletági (LOB) alkalmazások számára.
 
 Az Azure AD-alkalmazásproxy használata:
 
-- **Egyszerűen használható**. A felhasználók ugyanúgy férhetnek hozzá a helyszíni alkalmazásokhoz, mint az Azure AD-vel integrált O365 és más SaaS-alkalmazásokhoz. Nem szükséges módosítani vagy frissíteni az alkalmazásokat ahhoz, hogy használhatók legyenek az alkalmazásproxyval. 
+- **Egyszerűen használható**. A felhasználók ugyanúgy férhetnek hozzá a helyszíni alkalmazásokhoz, mint az Azure AD-vel integrált O365 és más SaaS-alkalmazásokhoz. Nem szükséges módosítani vagy frissíteni az alkalmazásokat ahhoz, hogy használhatók legyenek az alkalmazásproxyval.
 
 - **Biztonságos**. A helyszíni alkalmazások az Azure engedélyezési vezérlőit és biztonsági elemzéseit is használhatják. A helyszíni alkalmazások például használhatják a feltételes hozzáférést és a kétlépéses ellenőrzést. Az alkalmazásproxy nem igényli a bejövő kapcsolatok megnyitását a tűzfalon keresztül.
- 
+
 - **Költséghatékony**. A helyszíni megoldások általában vagy demilitarizált zónák (DMZ), peremhálózati kiszolgálók vagy más összetett infrastruktúra beállításához és karbantartásához szükségesek. Az alkalmazásproxy a felhőben fut, így könnyen használható. Az alkalmazásproxy használatához nem kell módosítania a hálózati infrastruktúrát, vagy további berendezéseket kell telepítenie a helyszíni környezetben.
 
 ## <a name="what-is-application-proxy"></a>Mi az alkalmazásproxy?
@@ -36,10 +37,10 @@ Az alkalmazásproxy az Azure AD egyik funkciója, amely lehetővé teszi a felha
 
 Az alkalmazásproxy a következőket támogatja:
 
-* [Integrált Windows-hitelesítést](application-proxy-configure-single-sign-on-with-kcd.md) használó webalkalmazások hitelesítéshez  
-* Űrlapalapú vagy [fejléc-alapú](application-proxy-configure-single-sign-on-with-ping-access.md) hozzáférést használó webalkalmazások  
-* Webes API-k, amelyeket a különböző eszközökön lévő gazdag alkalmazások számára kíván tenni  
-* Egy [Távoli asztali átjáró](application-proxy-integrate-with-remote-desktop-services.md) mögött futó alkalmazások  
+* [Integrált Windows-hitelesítést](application-proxy-configure-single-sign-on-with-kcd.md) használó webalkalmazások hitelesítéshez
+* Űrlapalapú vagy [fejléc-alapú](application-proxy-configure-single-sign-on-with-ping-access.md) hozzáférést használó webalkalmazások
+* Webes API-k, amelyeket a különböző eszközökön lévő gazdag alkalmazások számára kíván tenni
+* Egy [Távoli asztali átjáró](application-proxy-integrate-with-remote-desktop-services.md) mögött futó alkalmazások
 * A Active Directory-hitelesítési tár (ADAL) integrált, gazdag ügyfélalkalmazások
 
 Az alkalmazásproxy támogatja az egyszeri bejelentkezést. További információ a támogatott módszerekről: [egyszeri bejelentkezés módszerének kiválasztása](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
@@ -52,11 +53,11 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 
 ![AzureAD-alkalmazásproxy diagramja](./media/application-proxy/azureappproxxy.png)
 
-1. Ha a felhasználó egy végponton keresztül fér hozzá az alkalmazáshoz, a felhasználó az Azure AD bejelentkezési oldalára lesz irányítva. 
+1. Ha a felhasználó egy végponton keresztül fér hozzá az alkalmazáshoz, a felhasználó az Azure AD bejelentkezési oldalára lesz irányítva.
 2. Sikeres bejelentkezés után az Azure AD jogkivonatot küld a felhasználó ügyfelének.
 3. Az ügyfél elküldi a jogkivonatot az alkalmazásproxy szolgáltatásnak, amely lekéri az egyszerű felhasználónevet (UPN) és a rendszerbiztonsági tag nevét (SPN) a jogkivonatból. Az alkalmazásproxy ezt követően elküldi a kérést az alkalmazásproxy-összekötőnek.
 4. Ha már konfigurálta az egyszeri bejelentkezést, az összekötő a felhasználó nevében további hitelesítést hajt végre.
-5. Az összekötő elküldi a kérést a helyszíni alkalmazásnak.  
+5. Az összekötő elküldi a kérést a helyszíni alkalmazásnak.
 6. A választ az összekötő és az alkalmazásproxy szolgáltatás továbbítja a felhasználónak.
 
 | Összetevő | Leírás |
@@ -66,11 +67,9 @@ Az alábbi ábra bemutatja, hogyan működik együtt az Azure AD és az alkalmaz
 | Alkalmazásproxy szolgáltatás | Ez az alkalmazásproxy-szolgáltatás a felhőben fut az Azure AD részeként. Továbbítja a bejelentkezési jogkivonatot a felhasználótól az alkalmazásproxy-Összekötőbe. Az alkalmazásproxy továbbítja az elérhető fejléceket a kérelemben, és a protokoll szerint állítja be a fejléceket az ügyfél IP-címére. Ha a proxyhoz tartozó bejövő kérelem már tartalmazza ezt a fejlécet, a rendszer hozzáadja az ügyfél IP-címét a vesszővel elválasztott lista végéhez, amely a fejléc értéke.|
 | Alkalmazásproxy-összekötő | Az összekötő egy egyszerűsített ügynök, amely egy Windows Serveren fut a hálózaton belül. Az összekötő kezeli a felhőben és a helyszíni alkalmazásban futó alkalmazásproxy szolgáltatás közötti kommunikációt. Az összekötő csak kimenő kapcsolatokat használ, így nem kell megnyitnia a bejövő portokat, vagy semmit sem kell tennie a DMZ-ben. Az összekötők állapot nélküliek, és szükség szerint lekérik az adatokat a felhőből. Az összekötők, például a terheléselosztás és a hitelesítés módjával kapcsolatos további információkért lásd: az [Azure ad Application proxy-összekötők ismertetése](application-proxy-connectors.md).|
 | Active Directory (AD) | Active Directory a tartományi fiókok hitelesítésének végrehajtásához a helyszínen fut. Ha az egyszeri bejelentkezés konfigurálva van, az összekötő az AD-vel kommunikálva további hitelesítést hajt végre.
-| Helyszíni alkalmazás | Végül a felhasználó hozzáférhet egy helyszíni alkalmazáshoz. 
+| Helyszíni alkalmazás | Végül a felhasználó hozzáférhet egy helyszíni alkalmazáshoz.
 
 ## <a name="next-steps"></a>További lépések
-Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával. 
+Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával.
 
 A legfrissebb híreket és frissítéseket az [alkalmazásproxy blogjában](https://blogs.technet.com/b/applicationproxyblog/) találja.
-
-

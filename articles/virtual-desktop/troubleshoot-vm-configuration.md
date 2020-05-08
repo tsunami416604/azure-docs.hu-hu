@@ -5,17 +5,23 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 12/03/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c7d9a5d576ceec301eba7436c1e0af34412ae854
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cada61f8fa1dfd163062ce22527f41e65291b3f8
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127585"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607248"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
+
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/troubleshoot-vm-configuration-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a cikk a Windows rendszerű virtuális asztali munkamenetgazda virtuális gépek (VM-EK) konfigurálásakor felmerülő problémák elhárítására használható.
 
@@ -28,7 +34,7 @@ Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe]
 Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépek tartományhoz való csatlakoztatásakor.
 
 - Csatlakoztassa manuálisan a virtuális gépet a [Windows Server rendszerű virtuális gép csatlakoztatása felügyelt tartományhoz](../active-directory-domain-services/join-windows-vm.md) vagy a [tartományhoz való csatlakozás sablonjának](https://azure.microsoft.com/resources/templates/201-vm-domain-join-existing/)használatával.
-- Próbálja pingelni a tartománynevet a parancssorból a virtuális gépen.
+- Próbálja pingelni a tartománynevet egy parancssorból a virtuális gépen.
 - Tekintse át a tartományhoz való [Csatlakozás hibaüzeneteit a következő témakörben](https://social.technet.microsoft.com/wiki/contents/articles/1935.troubleshooting-domain-join-error-messages.aspx): tartományi csatlakozási hibaüzenetek.
 
 ### <a name="error-incorrect-credentials"></a>Hiba: helytelen hitelesítő adatok
@@ -77,7 +83,7 @@ Kövesse ezeket az utasításokat, ha problémákat tapasztal a virtuális gépe
 
 ## <a name="windows-virtual-desktop-agent-and-windows-virtual-desktop-boot-loader-are-not-installed"></a>Nincs telepítve a Windows rendszerű virtuális asztali ügynök és a Windows rendszerű virtuális asztali rendszerindító betöltő
 
-A virtuális gépek üzembe helyezésének ajánlott módja a **Windows rendszerű virtuális asztali alkalmazáskészlet sablonjának létrehozása és kiépítése** Azure Resource Manager. A sablon automatikusan telepíti a Windows rendszerű virtuális asztali ügynököt és a Windows virtuális asztali ügynök rendszerindítási betöltőjét.
+A virtuális gépek üzembe helyezésének ajánlott módja a Azure Portal létrehozási sablon használata. A sablon automatikusan telepíti a Windows rendszerű virtuális asztali ügynököt és a Windows virtuális asztali ügynök rendszerindítási betöltőjét.
 
 Kövesse ezeket az utasításokat az összetevők telepítésének megerősítéséhez és a hibaüzenetek ellenőrzéséhez.
 
@@ -96,8 +102,8 @@ Kövesse ezeket az utasításokat az összetevők telepítésének megerősíté
 **2. javítás:** Erősítse meg az alábbi listán szereplő elemeket.
 
 - Győződjön meg arról, hogy a fiók nem rendelkezik MFA-val.
-- Győződjön meg arról, hogy a bérlő neve pontos, és a bérlő létezik a Windows rendszerű virtuális asztalon.
-- Győződjön meg arról, hogy a fiók legalább RDS közreműködői engedéllyel rendelkezik.
+- Ellenőrizze, hogy a gazdagép-készlet neve pontos-e, és létezik-e a Windows rendszerű virtuális asztalon a gazdagép.
+- Erősítse meg, hogy a fiók legalább közreműködői engedélyekkel rendelkezik az Azure-előfizetésben vagy az erőforrás-csoportban.
 
 ### <a name="error-authentication-failed-error-in-cwindowstempscriptloglog"></a>Hiba: a hitelesítés nem sikerült, hiba a C:\Windows\Temp\ScriptLog.log
 
@@ -106,16 +112,16 @@ Kövesse ezeket az utasításokat az összetevők telepítésének megerősíté
 **Javítás:** Erősítse meg az alábbi listán szereplő elemeket.
 
 - Manuálisan regisztrálja a virtuális gépeket a Windows Virtual Desktop szolgáltatással.
-- Ellenőrizze, hogy a Windows rendszerű virtuális asztalhoz való csatlakozáshoz használt fiók rendelkezik-e engedéllyel a bérlőn a gazdagépek létrehozásához.
+- A Windows rendszerű virtuális asztalhoz való csatlakozáshoz használt fiók megerősítése engedélyekkel rendelkezik az Azure-előfizetésben vagy az erőforráscsoporthoz a gazdagépek létrehozásához.
 - A fiók megerősítése nem rendelkezik MFA-val.
 
 ## <a name="windows-virtual-desktop-agent-is-not-registering-with-the-windows-virtual-desktop-service"></a>A Windows rendszerű virtuális asztali ügynök nem regisztrálja magát a Windows rendszerű virtuális asztali szolgáltatással
 
 Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a munkamenet-gazdagép virtuális gépei számára (manuálisan vagy a Azure Resource Manager sablonon és a PowerShell DSC-n keresztül), akkor egy regisztrációs jogkivonatot biztosít. A következő szakasz a Windows rendszerű virtuális asztali ügynökre és a jogkivonatra vonatkozó hibaelhárítási problémákat ismerteti.
 
-### <a name="error-the-status-filed-in-get-rdssessionhost-cmdlet-shows-status-as-unavailable"></a>Hiba: a Get-RdsSessionHost parancsmagban bejelentkezett állapot a nem elérhető állapotot jeleníti meg.
+### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Hiba: a Get-AzWvdSessionHost parancsmagban bejelentkezett állapot a nem elérhető állapotot jeleníti meg.
 
-![A Get-RdsSessionHost parancsmag a nem elérhető állapotot jeleníti meg.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
+![A Get-AzWvdSessionHost parancsmag a nem elérhető állapotot jeleníti meg.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
 
 **OK:** Az ügynök nem tudja frissíteni magát egy új verzióra.
 
@@ -128,17 +134,17 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 5. Fejezze be a telepítővarázsló lépéseit.
 6. Nyissa meg a Feladatkezelő eszközt, és indítsa el a RDAgentBootLoader szolgáltatást.
 
-## <a name="error--windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hiba: a Windows rendszerű virtuális asztali ügynök beállításjegyzékbeli bejegyzése IsRegistered 0 értéket jelenít meg
+## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Hiba: a Windows rendszerű virtuális asztali ügynök beállításjegyzékbeli bejegyzése IsRegistered 0 értéket jelenít meg
 
 **OK:** A regisztrációs jogkivonat lejárt, vagy a (999999) lejárati értékkel lett létrehozva.
 
 **Javítás:** Az ügynök beállításjegyzékbeli hibájának kijavításához kövesse az alábbi utasításokat.
 
-1. Ha már van regisztrációs jogkivonat, távolítsa el a Remove-RDSRegistrationInfo.
-2. Új jogkivonat előállítása az RDS-NewRegistrationInfo.
-3. Győződjön meg arról, hogy a-ExpriationHours paraméter értéke 72 (a maximális érték a 99999).
+1. Ha már van regisztrációs jogkivonat, távolítsa el a Remove-AzWvdRegistrationInfo. 
+2. Új jogkivonat létrehozásához futtassa a **New-AzWvdRegistrationInfo** parancsmagot. 
+3. Győződjön meg arról, hogy a *-ExpriationTime* paraméter értéke 3 nap.
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-rdssessionhost"></a>Hiba: a Windows rendszerű virtuális asztali ügynök nem jelentett szívverést a Get-RdsSessionHost futtatásakor
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Hiba: a Windows rendszerű virtuális asztali ügynök nem jelentett szívverést a Get-AzWvdSessionHost futtatásakor
 
 **1. ok:** A RDAgentBootLoader szolgáltatás le lett állítva.
 
@@ -180,7 +186,7 @@ A Windows rendszerű virtuális asztali párhuzamos verem automatikusan települ
 
 A munkamenet-gazdagépen futó virtuális gépeken a következő három fő módszert kell telepíteni vagy engedélyezni:
 
-- A Azure Resource Manager **új Windowsos virtuális asztali alkalmazáskészlet-sablon létrehozása és kiépítése**
+- A Azure Portal létrehozási sablonnal
 - A fő rendszerképbe való felvétel és engedélyezés
 - Manuálisan telepítve vagy engedélyezve az egyes virtuális gépeken (vagy bővítményekkel/PowerShell-lel)
 
@@ -209,13 +215,7 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 **Javítás:** Kövesse ezeket az utasításokat a párhuzamos verem telepítéséhez a munkamenet-gazda virtuális gépen.
 
 1. A RDP protokoll (RDP) használatával közvetlenül a munkamenet-gazda virtuális gépre kerül a helyi rendszergazdaként.
-2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell-modult](/powershell/windows-virtual-desktop/overview/) , amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
-
-    ```powershell
-    Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-    ```
-
-3. Telepítse a párhuzamos veremet a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md)használatával című részből.
+2. Telepítse a párhuzamos veremet a [gazdagép létrehozása a PowerShell](create-host-pools-powershell.md)használatával című részből.
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>A Windows rendszerű virtuális asztalok egymás melletti veremének kijavítása
 
@@ -339,7 +339,7 @@ Telepítse újra a gazdagép operációs rendszerét a Windows 10 1903-es verzi�
 ## <a name="next-steps"></a>További lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
-- A bérlők és a gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [bérlői és az alkalmazáskészletek létrehozását](troubleshoot-set-up-issues.md)ismertető részt.
+- A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az Alkalmazáskészletek létrehozása](troubleshoot-set-up-issues.md)című témakört.
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration.md).
 - A Windows rendszerű virtuális asztali ügyfélkapcsolatokkal kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali szolgáltatások kapcsolatai](troubleshoot-service-connection.md)című témakört.
 - Távoli asztal-ügyfelekkel kapcsolatos problémák elhárításához tekintse meg [a távoli asztal-ügyfél hibaelhárítása](troubleshoot-client.md) című témakört.

@@ -7,12 +7,12 @@ ms.topic: overview
 author: cjgronlund
 ms.author: cgronlun
 ms.date: 05/06/2020
-ms.openlocfilehash: aa7cbd9b213d35becd65d9335312c0468760d655
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: 24f5a671076a44db382ac37e2f6532e5f0f2a3ae
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872047"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930386"
 ---
 # <a name="what-are-azure-open-datasets-and-how-can-you-use-them"></a>Mik azok az Azure Open-adatkészletek, és hogyan használhatók?
 
@@ -59,5 +59,5 @@ Ha nem találja a kívánt adatokat, küldje el nekünk e-mailben, hogy [adatké
 
 ## <a name="next-steps"></a>További lépések
 * [Minta notebook](samples.md)
-* [Oktatóanyag: regressziós modellezés a New York-i taxival](/azure/machine-learning/service/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
+* [Oktatóanyag: regressziós modellezés a New York-i taxival](/azure/machine-learning/tutorial-auto-train-models?context=azure/open-datasets/context/open-datasets-context)
 * [Python SDK a nyílt adatkészletekhez](/python/api/azureml-opendatasets/?view=azure-ml-py)

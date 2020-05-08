@@ -1,23 +1,21 @@
 ---
 title: Azure Service Fabric fordított proxy biztonságos kommunikációja
 description: Fordított proxy konfigurálása az Azure Service Fabric-alkalmazások biztonságos, végpontok közötti kommunikációjának engedélyezéséhez.
-author: kavyako
 ms.topic: conceptual
 ms.date: 08/10/2017
-ms.author: kavyako
-ms.openlocfilehash: 61a8d1e766ea576f7d2984add239b0da7e2e8183
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e88a81108f38efefe413024fb2b41bbd82f297b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80617111"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858527"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval
 
 Ez a cikk azt ismerteti, hogyan hozható létre biztonságos kapcsolat a fordított proxy és a szolgáltatások között, így lehetővé válik a végpontok közötti biztonságos csatorna engedélyezése. További információ a fordított proxyról: [fordított proxy az Azure-ban Service Fabric](service-fabric-reverseproxy.md)
 
-A biztonságos szolgáltatásokhoz való csatlakozás csak akkor támogatott, ha a fordított proxy a HTTPS-figyelésre van konfigurálva. Ez a cikk azt feltételezi, hogy ez a helyzet.
-A fordított proxy Service Fabric-ben való konfigurálásához tekintse meg a [fordított proxy beállítása az Azure Service Fabricban](service-fabric-reverseproxy-setup.md) című témakört.
+> [!IMPORTANT]
+> A biztonságos szolgáltatásokhoz való csatlakozás csak akkor támogatott, ha a fordított proxy a HTTPS-figyelésre van konfigurálva. Ez a cikk azt feltételezi, hogy ez a helyzet. A fordított proxy Service Fabric-ben való konfigurálásához tekintse meg a [fordított proxy beállítása az Azure Service Fabricban](service-fabric-reverseproxy-setup.md) című témakört.
 
 ## <a name="secure-connection-establishment-between-the-reverse-proxy-and-services"></a>Biztonságos kapcsolat létesítése a fordított proxy és a szolgáltatások között 
 
@@ -183,7 +181,7 @@ Ezután továbbítja az ügyféltanúsítvány-adatkészletet egy **X-Client-Cer
 Ha az ügyfél nem tartalmaz tanúsítványt, a fordított proxy egy üres fejlécet továbbít, és lehetővé teszi, hogy a szolgáltatás kezelje az esetet.
 
 > [!NOTE]
-> A fordított proxy egy egyszerű továbbító. Az ügyfél tanúsítványának érvényesítése nem történik meg.
+> A fordított proxy csak továbbítási szolgáltatásként működik. Az ügyfél tanúsítványának érvényesítése nem történik meg.
 
 
 ## <a name="next-steps"></a>További lépések

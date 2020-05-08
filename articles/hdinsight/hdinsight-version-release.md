@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: d0fd9999abc4a67ded0f66977e1a3ba5310c87be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 466c47492de9c2fc86f309f4cb74df1ff5411dcb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383028"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929298"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4,0 – áttekintés
 
@@ -93,8 +93,12 @@ Nincs támogatott frissítési útvonal a HDInsight korábbi verzióiról a HDIn
 * A HDInsight 4,0 nem támogatja a Apache Storm.
 * A kaptár nézet már nem érhető el a HDInsight 4,0-ben.
 * Az Apache Zeppelin rendszerhéj-értelmező nem támogatott a Spark és az interaktív lekérdezési fürtökben.
-* Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. A LLAP csak ki lehet kapcsolni.
-* A Azure Data Lake Storage Gen2 nem tudja menteni a Jupyter-jegyzetfüzeteket egy Spark-fürtben.
+* Az LLAP nem *tiltható le* a Spark-LLAP-fürtön. Csak az LLAP kikapcsolására van lehetősége.
+* Az Azure Data Lake Storage Gen2 nem tud Juypter jegyzetfüzeteket menteni Spark-fürtökbe.
+* Alapértelmezés szerint az Apache Pig a TEZ-on fut, de a MapReduce-re is módosítható
+* A Spark SQL Ranger integrációja a sor-és az oszlop biztonsága elavult
+* A Spark 2,4 és a Kafka 2,1 a HDInsight 4,0-ban érhető el, így a Spark 2,3 és a Kafka 1,1 már nem támogatott. Javasoljuk, hogy a Spark 2,4 & Kafka 2,3-es vagy újabb verzióját használja a HDInsight 4,0-ban.
+
 
 ## <a name="next-steps"></a>További lépések
 
