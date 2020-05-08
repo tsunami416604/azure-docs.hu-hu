@@ -1,25 +1,27 @@
 ---
-title: Microsoft kereskedelmi piactér – vezető felügyelet a HTTPS használatával
-description: A Microsoft kereskedelmi Piactéri vezető felügyeletének konfigurálása egy HTTPS-végponthoz.
+title: Vezető felügyelet egy HTTPS-végponttal – Microsoft kereskedelmi piactér
+description: Ismerje meg, hogyan kezelheti a Power automatizálható és egy HTTPS-végpontot a Microsoft AppSource és az Azure Marketplace-en található érdeklődők kezeléséhez.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: dsindona
-ms.openlocfilehash: 1c3337e970fdbb22cb1ed88f105d5e7798a68f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a4fc57b3be8dd59997ef2bfc9624892cf726160
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133732"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790983"
 ---
-# <a name="configure-lead-management-by-using-an-https-endpoint"></a>Az érdeklődők felügyeletének konfigurálása HTTPS-végpont használatával
+# <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS-végpont használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
+
+Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a fiókpartner számára a Microsoft AppSource és az Azure Marketplace-beli érdeklődők fogadására, akkor a [Power gyorsbüféban](https://powerapps.microsoft.com/automate-processes/) HTTPS-végpontot használhat az ilyen érdeklődők kezelésére. A HTTPS-végpontok esetében a kereskedelmi Piactéri érdeklődők e-mail-értesítésként küldhetők el, vagy a Power automatizáló által támogatott CRM rendszerbe írhatók.
+
+Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsbüféban, hogy létrehozza a HTTP POST URL-címet, amelyet az érdeklődők konfigurálásához fog használni a partner Centerben. A folyamat a [Poster](https://www.getpostman.com/downloads/)használatával történő tesztelésének lépéseit is tartalmazza.
 
 >[!NOTE]
->Az ebben az útmutatóban használt energiagazdálkodási összekötőhöz fizetős előfizetés szükséges a Power automatizáláshoz. Mielőtt ezt megtenné, kövesse a jelen cikk utasításait.
-
-Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a fiókpartner számára a Microsoft AppSource és az Azure Marketplace-beli érdeklődők fogadására, akkor a Power Gyorsbüféban HTTPS-végpontot használhat az ilyen érdeklődők kezelésére. HTTPS-végpont esetén ezek az érdeklődők e-mail-értesítésként küldhetők el, vagy a Power automatizáló által támogatott CRM rendszerbe írhatók. Az ebben a cikkben található utasítások végigvezetik az új folyamatnak a Power automatizálás használatával történő létrehozásán, amely létrehoz egy HTTP Post URL-címet, amelyet a közzétételi portálon fog megadni a **vezető felügyeleti** > **https-végpont URL-címe** mezőben. Emellett a következő utasításokat is megtalálhatja a folyamat teszteléséhez, a [Poster](https://www.getpostman.com/downloads/)nevű eszköz segítségével, amely online elérhető.
+>Az ebben az útmutatóban használt energiagazdálkodási összekötőhöz fizetős előfizetés szükséges a Power automatizáláshoz. A folyamat konfigurálása előtt győződjön meg róla, hogy ez a fiók.
 
 ## <a name="create-a-flow-by-using-power-automate"></a>Folyamat létrehozása a Power automatizálás használatával
 
@@ -27,22 +29,24 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
 1. Jelentkezzen be, majd a menüben válassza a **saját folyamatok** lehetőséget.
 
-1. Válassza **a + automatikus**lehetőséget (üres).
+    ![Bejelentkezés a saját folyamatok között](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
 
-    ![Saját folyamatok + automatizált – üresről](./media/commercial-marketplace-lead-management-instructions-https/my-flows-automated.png)
+1. Az **+ új**alatt válassza **a + azonnali**lehetőséget.
 
-1. Az **automatikus folyamat létrehozása** ablakban válassza a **kihagyás**lehetőséget. 
+    ![Saját folyamatok + automatizált – üresről](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-create-fromblank.png)
 
-    ![Automatikus folyamat ablakának kihagyása gomb](./media/commercial-marketplace-lead-management-instructions-https/build-automated-flow.png)
+1. Adja meg a folyamat nevét, majd a folyamat kiváltási **módjának kiválasztása**területen válassza ki **a HTTP-kérés fogadásakor**lehetőséget.
 
-1. Az **Összekötők és eseményindítók keresése** **mezőben adja meg a kérést** a kérelem-összekötő kereséséhez.
-1. Az **Eseményindítók**területen válassza ki **a HTTP-kérelem fogadásának**időpontját. 
+    ![Automatikus folyamat ablakának kihagyása gomb](./media/commercial-marketplace-lead-management-instructions-https/https-myflows-pick-request-trigger.png)
 
-    ![Eseményindítók menü](./media/commercial-marketplace-lead-management-instructions-https/request-connector.png)
+1. Kattintson a flow lépésre a kibontásához.
 
-1. A **http-kérés fogadásakor** ablakban másolja és illessze be a következő JSON-sémát a **kérelem törzse JSON-séma** szövegmezőbe. Ezt a sémát a Microsoft használja az érdeklődői adatai tárolására.
+    ![A folyamat lépésének kibontása](./media/commercial-marketplace-lead-management-instructions-https/expand-flow-step.png)
 
-    ![Kérelem törzse JSON-séma szövegmező](./media/commercial-marketplace-lead-management-instructions-https/https-request-received.png)
+1. A **kérelem törzse JSON-séma**konfigurálásához használja a következő módszerek egyikét:
+
+    - Másolja a JSON-sémát a **kérelem törzse JSON-sémájának** szövegmezőbe.
+    - Válassza a **Séma létrehozása hasznosadat-minta használatával** lehetőséget. Az **írja be vagy illessze be a minta JSON-adattartalom** szövegmezőbe illessze be a JSON-példát. Válassza a **kész** lehetőséget a séma létrehozásához.
 
     **JSON-séma**
 
@@ -103,6 +107,26 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
     }
     ```
 
+    **JSON-példa**
+    
+    ```json
+    {
+      "UserDetails": {
+        "FirstName": "Some",
+        "LastName": "One",
+        "Email": "someone@contoso.com",
+        "Phone": "16175555555",
+        "Country": "USA",
+        "Company": "Contoso",
+        "Title": "Esquire"
+     },
+      "LeadSource": "AzureMarketplace",
+      "ActionCode": "INS",
+      "OfferTitle": "Test Microsoft",
+      "Description": "Test run through Power Automate"
+    }
+    ```
+
 >[!NOTE]
 >A konfiguráció ezen pontján lehetőség van arra, hogy egy CRM rendszerhez kapcsolódjon, vagy e-mailes értesítést konfiguráljon. Kövesse az Ön által választott további utasításokat.
 
@@ -157,7 +181,7 @@ Ha az Ügyfélkapcsolat-kezelési (CRM) rendszer nincs kifejezetten támogatva a
 
 ### <a name="testing"></a>Tesztelés
 
-Azt is ellenőrizheti, hogy minden a várt módon működik-e a [Poster](https://app.getpostman.com/app/download/win64)nevű eszköz használatával, amely online letölthető. Ez az eszköz a Windowshoz érhető el. 
+A konfigurációt a [Poster](https://app.getpostman.com/app/download/win64)segítségével tesztelheti. A Poster online letöltése elérhető a Windowsban. 
 
 1. Indítsa el a Poster alkalmazást, és válassza az **új** > **kérelem** lehetőséget a tesztelési eszköz beállításához. 
 
@@ -201,10 +225,18 @@ Azt is ellenőrizheti, hogy minden a várt módon működik-e a [Poster](https:/
 
 Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket.
 
-1. Nyissa meg az ajánlat **telepítési** lapját.
-1. Válassza a **kapcsolat** lehetőséget az **érdeklődő felügyelete** szakaszban.
+1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
+
+1. Válassza ki az ajánlatot, és nyissa meg az **ajánlat beállítása** lapot.
+
+1. A **vezető felügyelet** szakaszban válassza a **kapcsolat**lehetőséget. 
+    ![Vezető felügyeletének összekapcsolása gomb](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
+
 1. A **kapcsolat részletei** előugró ablakban válassza a https- **végpont** lehetőséget az **érdeklődő célhelyéhez**. Illessze be a HTTP POST URL-címet a létrehozott folyamatból, a korábbi lépéseket követve a **https-végpont URL-címe** mezőbe.
+    ![Kapcsolat részletei – kapcsolattartási e-mail cím](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
+
 1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
+
 1. Kattintson az **OK** gombra.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
@@ -213,10 +245,3 @@ Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen
 >Be kell fejeznie az ajánlat többi részének konfigurálását, és közzé kell tennie az ajánlathoz tartozó érdeklődők fogadása előtt.
 
 Az érdeklődők létrehozásakor a Microsoft elküldi az érdeklődőket a folyamatnak. Az érdeklődők a beállított CRM-rendszerhez vagy e-mail-címre vannak irányítva.
-
-![Vezető felügyeletének összekapcsolása gomb](./media/commercial-marketplace-lead-management-instructions-https/lead-management-connect.png)
-
-![Kapcsolat részleteinek vezető célhelye](./media/commercial-marketplace-lead-management-instructions-https/connection-details.png)
-
-![Kapcsolat részletei – kapcsolattartási e-mail cím](./media/commercial-marketplace-lead-management-instructions-https/https-connection-details.png)
-

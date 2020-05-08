@@ -3,12 +3,12 @@ title: Bevezetés a Azure Advisorba
 description: Az Azure-beli üzembe helyezések optimalizálásához használja a Azure Advisor.
 ms.topic: article
 ms.date: 02/01/2019
-ms.openlocfilehash: 600bda282d46f86979d0366719826c3a6c1323e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74048073677cdf0f9f57d84469959a84e78cd6c7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443093"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854438"
 ---
 # <a name="introduction-to-azure-advisor"></a>Bevezetés a Azure Advisorba
 
@@ -24,7 +24,7 @@ Az Advisor használatával a következőket teheti:
 
 Az Advisor a [Azure Portal](https://aka.ms/azureadvisordashboard)keresztül érhető el. Jelentkezzen be a [portálra](https://portal.azure.com), keresse meg az **Advisor** parancsot a navigációs menüben, vagy keresse meg a **minden szolgáltatás** menüben.
 
-Az Advisor irányítópultja személyre szabott javaslatokat jelenít meg az összes előfizetéséhez.  Szűrőket alkalmazhat az egyes előfizetésekhez és erőforrástípusokhöz tartozó javaslatok megjelenítéséhez.  A javaslatok négy kategóriába tartoznak: 
+Az Advisor irányítópultja személyre szabott javaslatokat jelenít meg az összes előfizetéséhez.  Szűrőket alkalmazhat az egyes előfizetésekhez és erőforrástípusokhöz tartozó javaslatok megjelenítéséhez.  A javaslatok öt kategóriába sorolhatók: 
 
 * **Magas rendelkezésre állás**: az üzleti szempontból kritikus fontosságú alkalmazások folytonosságának biztosítása és javítása. További információ: [Advisor magas rendelkezésre állási javaslatai](advisor-high-availability-recommendations.md).
 * **Biztonság**: az olyan fenyegetések és biztonsági rések észlelése, amelyek biztonsági réseket okozhatnak. További információ: [Advisor biztonsági javaslatok](advisor-security-recommendations.md).

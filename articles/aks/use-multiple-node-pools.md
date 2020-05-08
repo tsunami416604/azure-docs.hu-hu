@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet több Node-készlete
 services: container-service
 ms.topic: article
 ms.date: 04/08/2020
-ms.openlocfilehash: f948c115b86abc532a121c68fa7a148ff15caae9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7e767f1a7b0c657c744c96b308160393e3f326
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259085"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610921"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Fürthöz tartozó több Node-készlet létrehozása és kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -722,22 +722,65 @@ az group deployment create \
 
 A Resource Manager-sablonban definiált csomópont-készlet beállításaitól és műveleteitől függően néhány percet is igénybe vehet az AK-fürt frissítése.
 
-## <a name="assign-a-public-ip-per-node-for-a-node-pool-preview"></a>Nyilvános IP-cím társítása egy csomópont-készlethez (előzetes verzió)
+## <a name="assign-a-public-ip-per-node-for-your-node-pools-preview"></a>Nyilvános IP-cím társítása a csomópont-készletek számára (előzetes verzió)
 
 > [!WARNING]
-> A nyilvános IP-címek/csomópontok kiosztásának előnézete során a rendszer nem használhatja a *standard Load BALANCER SKU-t az AK-ban* , mert lehetséges terheléselosztó-szabályok ütköznek a virtuális gépek üzembe helyezésével. Ennek a korlátozásnak az eredményeképpen a Windows-ügynök készletei nem támogatottak ehhez az előzetes verziójú szolgáltatáshoz. Az előzetes verzióban az *Alapszintű Load BALANCER SKU* -t kell használnia, ha csomópontként kell hozzárendelni egy nyilvános IP-címet.
+> A CLI előzetes verziójának 0.4.43 vagy újabb verzióját kell telepítenie a nyilvános IP-cím/csomópont szolgáltatás használatára.
 
 Az AK-csomópontok nem igénylik a saját nyilvános IP-címeiket a kommunikációhoz. A forgatókönyvek azonban megkövetelhetik a csomópontok csomópontjait, hogy megkapják a saját dedikált nyilvános IP-címeiket. Gyakori forgatókönyv a játékok számítási feladataihoz, ahol a konzolnak közvetlen kapcsolatot kell létesítenie egy felhőalapú virtuális géppel a ugrások csökkentése érdekében. Ez a forgatókönyv egy előzetes verziójú funkció, a csomópont nyilvános IP-címe (előzetes verzió) regisztrálásával érhető el az AK-on.
 
-Regisztráljon a csomópont nyilvános IP-címére a következő Azure CLI-parancs kiadásával.
+A legújabb AK-előnézet bővítmény telepítéséhez és frissítéséhez használja az alábbi Azure CLI-parancsokat:
+
+```azurecli
+az extension add --name aks-preview
+az extension update --name aks-preview
+az extension list
+```
+
+Regisztráljon a Node Public IP szolgáltatásra a következő Azure CLI-paranccsal:
 
 ```azurecli-interactive
 az feature register --name NodePublicIPPreview --namespace Microsoft.ContainerService
 ```
+A szolgáltatás regisztrálása több percet is igénybe vehet.  Az állapotot a következő paranccsal tekintheti meg:
 
-A sikeres regisztráció után helyezzen üzembe egy Azure Resource Manager sablont a [fenti](#manage-node-pools-using-a-resource-manager-template) utasítások alapján, és adja hozzá a logikai `enableNodePublicIP` tulajdonságot a agentPoolProfiles. Állítsa az értéket alapértelmezett `true` értékre, `false` ha nincs megadva beállítás. 
+```azurecli-interactive
+ az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/NodePublicIPPreview')].{Name:name,State:properties.state}"
+```
 
-Ez a tulajdonság csak létrehozási idő tulajdonság, és legalább 2019-06-01-es API-verziót igényel. Ez a Linux-és a Windows-csomópont-készletekre is alkalmazható.
+A sikeres regisztráció után hozzon létre egy új erőforráscsoportot.
+
+```azurecli-interactive
+az group create --name myResourceGroup2 --location eastus
+```
+
+Hozzon létre egy új AK-fürtöt, és csatoljon egy nyilvános IP-címet a csomópontjaihoz. A csomópont-készlet minden csomópontja egyedi nyilvános IP-címet kap. Ezt a virtuálisgép-méretezési csoport példányainak megtekintésével ellenőrizheti.
+
+```azurecli-interactive
+az aks create -g MyResourceGroup2 -n MyManagedCluster -l eastus  --enable-node-public-ip
+```
+
+Meglévő AK-fürtök esetében hozzáadhat egy új csomópont-készletet is, és csatlakoztathat egy nyilvános IP-címet a csomópontjaihoz.
+
+```azurecli-interactive
+az aks nodepool add -g MyResourceGroup2 --cluster-name MyManagedCluster -n nodepool2 --enable-node-public-ip
+```
+
+> [!Important]
+> Az előzetes verzióban az Azure Instance Metadata Service jelenleg nem támogatja a nyilvános IP-címek lekérését a standard szintű VM SKU-hoz. Ennek a korlátozásnak köszönhetően a kubectl parancsok nem használhatók a csomópontokhoz rendelt nyilvános IP-címek megjelenítéséhez. Az IP-címek azonban hozzá vannak rendelve, és a kívánt módon működnek. A csomópontjaihoz tartozó nyilvános IP-címek a virtuálisgép-méretezési csoport példányaihoz vannak csatolva.
+
+A csomópontok nyilvános IP-címeit többféleképpen is megtalálhatja:
+
+* Az Azure CLI parancs használata az [vmss List-instance-Public-IPS][az-list-ips]
+* Használjon [PowerShell-vagy bash-parancsokat][vmss-commands]. 
+* A Azure Portal a nyilvános IP-címeket a virtuálisgép-méretezési csoport példányainak megtekintésével is megtekintheti.
+
+> [!Important]
+> A [csomópont-erőforráscsoport][node-resource-group] tartalmazza a csomópontokat és azok nyilvános IP-címeit. A csomópontok erőforráscsoporthoz a csomópontok nyilvános IP-címeinek megkereséséhez használja a parancsok végrehajtását.
+
+```azurecli
+az vmss list-instance-public-ips -g MC_MyResourceGroup2_MyManagedCluster_eastus -n YourVirtualMachineScaleSetName
+```
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -753,6 +796,12 @@ A fürt törléséhez használja az az [Group delete][az-group-delete] parancsot
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
+```
+
+A csomópont-készletek esetében a nyilvános IP-címhez létrehozott további fürtöt is törölheti.
+
+```azurecli-interactive
+az group delete --name myResourceGroup2 --yes --no-wait
 ```
 
 ## <a name="next-steps"></a>További lépések
@@ -795,3 +844,7 @@ A Windows Server Container Node-készletek létrehozásához és használatához
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-system-pool]: use-system-pools.md
+[ip-limitations]: ../virtual-network/virtual-network-ip-addresses-overview-arm#standard
+[node-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
+[vmss-commands]: ../virtual-machine-scale-sets/virtual-machine-scale-sets-networking.md#public-ipv4-per-virtual-machine
+[az-list-ips]: /cli/azure/vmss?view=azure-cli-latest.md#az-vmss-list-instance-public-ips

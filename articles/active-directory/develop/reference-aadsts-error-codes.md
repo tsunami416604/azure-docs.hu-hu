@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/07/2020
+ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 87a962709638391887eaa275f059bf4ceae9218b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec1e7e9aa84c01cd62836f3c09f22cdb143817a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406975"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611330"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Azure AD-hitelesítési és-engedélyezési hibakódok
 
@@ -72,9 +72,9 @@ A `error` mezőnek több lehetséges értéke van – tekintse át a protokoll d
 | `temporarily_unavailable` | A kiszolgáló átmenetileg túl elfoglalt a kérelem kezeléséhez. | Próbálja megismételni a kérelmet. Előfordulhat, hogy az ügyfélalkalmazás megmagyarázza a felhasználót, hogy a válasza egy ideiglenes feltétel miatt késleltetve van. |
 
 ## <a name="lookup-current-error-code-information"></a>Aktuális hibakód információinak keresése
-A hibakódok és az üzenetek változhatnak.  A legfrissebb információkért tekintse meg az `https://login.microsoftonline.com/error` oldalt a AADSTS-hibák leírásának, javításának és néhány javasolt megkerülő megoldás megkereséséhez.  
+A hibakódok és az üzenetek változhatnak.  A legfrissebb információkért tekintse meg az [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) oldalt a AADSTS-hibák leírásának, javításának és néhány javasolt megkerülő megoldás megkereséséhez.  
 
-Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16000" hibakódot kapta, keressen rá a "16000" kifejezésre `https://login.microsoftonline.com/error` .  Közvetlenül egy adott hibához is kapcsolódhat, ha hozzáadja a hibakódot az URL-címhez: `https://login.microsoftonline.com/error?code=16000`.
+Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16000" hibakódot kapta, keressen rá a "16000" kifejezésre [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) .  Közvetlenül egy adott hibához is kapcsolódhat, ha hozzáadja a hibakódot az URL-címhez: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-hibakódok
 
@@ -189,6 +189,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS65001 | DelegationDoesNotExist – a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X AZONOSÍTÓval való használatára. küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. |
 | AADSTS65004 | UserDeclinedConsent – a felhasználó beleegyezett az alkalmazás elérésére. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
 | AADSTS65005 | MisconfiguredApplication – az alkalmazáshoz szükséges erőforrás-hozzáférési lista nem tartalmazza az erőforrás által észlelt alkalmazásokat, vagy az ügyfélalkalmazás hozzáférést kért az erőforráshoz, amely nem lett megadva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás helytelen kérelmet adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, előfordulhat, hogy az alkalmazást nem megfelelő azonosítóval (entitással) konfigurálta. Próbálja ki az SAML-ban felsorolt felbontást az alábbi hivatkozás használatával:[https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav) |
+| AADSTS650052 | Az alkalmazásnak hozzá kell férnie `(\"{name}\")` egy olyan szolgáltatáshoz, amelyet a szervezet `\"{organization}\"` nem fizetett elő vagy engedélyezett. Kérje meg a rendszergazdát, hogy tekintse át a szolgáltatás-előfizetések konfigurációját. |
 | AADSTS67003 | ActorNotValidServiceIdentity |
 | AADSTS70000 | InvalidGrant – a hitelesítés sikertelen volt. A frissítési jogkivonat érvénytelen. A hiba oka a következő lehet:<ul><li>A jogkivonat-kötési fejléc üres</li><li>A jogkivonat kötési kivonata nem egyezik</li></ul> |
 | AADSTS70001 | UnauthorizedClient – az alkalmazás le van tiltva. |
@@ -206,6 +207,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS75001 | BindingSerializationError – hiba történt az SAML-üzenetek kötése közben. |
 | AADSTS75003 | UnsupportedBindingError – az alkalmazás a nem támogatott kötéshez kapcsolódó hibát adott vissza (az SAML protokoll válasza nem küldhető el a HTTP-POSTon kívüli kötéseken keresztül). |
 | AADSTS75005 | Saml2MessageInvalid – az Azure AD nem támogatja az alkalmazás által az SSO-hoz továbbított SAML-kérelmet. |
+| AADSTS7500514 | Nem található egy támogatott típusú SAML-válasz. A támogatott válaszok a következők: "Response" (XML-névtér "urn: Oasis: Names: TC: SAML: 2.0: protokoll") vagy "Érvényesítés" (XML-névtérben: "urn: Oasis: nevek: TC: SAML: 2.0: Érvényesítés"). Alkalmazáshiba – a fejlesztő ezt a hibát fogja kezelni.|
 | AADSTS75008 | RequestDeniedError – az alkalmazástól érkező kérést a rendszer megtagadta, mert az SAML-kérelem nem várt céllal volt. |
 | AADSTS75011 | NoMatchedAuthnContextInOutputClaims – az a hitelesítési módszer, amellyel a felhasználó által hitelesített hitelesítés nem felel meg a kért hitelesítési módszernek. |
 | AADSTS75016 | A Saml2AuthenticationRequestInvalidNameIDPolicy-egy SAML2 hitelesítési kérelem érvénytelen NameIdPolicy rendelkezik. |
@@ -311,6 +313,7 @@ Keresse meg a visszaadott hibakód numerikus részét.  Ha például a "AADSTS16
 | AADSTS700020 | InteractionRequired – a hozzáférési engedélyhez interakció szükséges. |
 | AADSTS700022 | InvalidMultipleResourcesScope – a bemeneti paraméter hatóköréhez megadott érték érvénytelen, mert egynél több erőforrást tartalmaz. |
 | AADSTS700023 | InvalidResourcelessScope – a bemeneti paraméter hatóköréhez megadott érték érvénytelen, ha hozzáférési jogkivonatot kér. |
+| AADSTS7000215 | Érvénytelen ügyfél-titkos kulcs van megadva. Fejlesztői hiba – az alkalmazás a szükséges vagy helyes hitelesítési paraméterek nélkül próbál bejelentkezni.|
 | AADSTS7000222| InvalidClientSecretExpiredKeysProvided – a megadott ügyfél titkos kulcsainak érvényessége lejárt. Az Azure Portalon új kulcsokat hozhat létre az alkalmazáshoz, vagy fontolóra veheti a tanúsítvány hitelesítő adatainak használatát a további biztonság érdekében:https://aka.ms/certCreds |
 | AADSTS700005 | A InvalidGrantRedeemAgainstWrongTenant által biztosított engedélyezési kód más Bérlővel való használatra készült, ezért el lett utasítva. A OAuth2-engedélyezési kódot a (/gyakori hibák vagy/{tenant-ID}) megszerzett Bérlővel azonos Bérlővel kell beváltani. |
 | AADSTS1000000 | UserNotBoundError – a kötési API megköveteli, hogy az Azure AD-felhasználó egy külső IDENTITÁSSZOLGÁLTATÓ is hitelesítse magát, ami még nem történt meg. |

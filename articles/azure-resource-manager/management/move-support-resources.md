@@ -3,12 +3,12 @@ title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 90fbec4dc076feb1fee8c38cf9757d3c5ddbafaf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a92da04f5b883661d53fd291dc72351a1c4eafb1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804792"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610836"
 ---
 # <a name="move-operation-support-for-resources"></a>Erőforrás-áthelyezési műveletek támogatása
 Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
@@ -418,8 +418,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tartománynevek | Igen | Nem |
-> | virtualmachines | Igen | Nem |
+> | tartománynevek | Igen | No |
+> | virtualmachines | Igen | No |
 
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
@@ -441,7 +441,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | storageaccounts | Igen | Nem |
+> | storageaccounts | Igen | No |
 
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
@@ -771,10 +771,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nem | Nem |
-> | Labs | Igen | Nem |
+> | Labs | Igen | No |
 > | Labs/környezetek | Igen | Igen |
 > | Labor/servicerunners | Igen | Igen |
-> | Labor/virtualmachines | Igen | Nem |
+> | Labor/virtualmachines | Igen | No |
 > | menetrend | Igen | Igen |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
@@ -1025,8 +1025,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nem | Nem |
 > | integrationaccounts | Igen | Igen |
-> | integrationserviceenvironments | Igen | Nem |
-> | integrationserviceenvironments/król | Igen | Nem |
+> | integrationserviceenvironments | Igen | No |
+> | integrationserviceenvironments/król | Igen | No |
 > | isolatedenvironments | Nem | Nem |
 > | munkafolyamatok | Igen | Igen |
 
@@ -1036,7 +1036,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | Nem | Nem |
-> | WebServices | Igen | Nem |
+> | WebServices | Igen | No |
 > | munkaterületek | Igen | Igen |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -1197,10 +1197,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | networkinterfaces | Igen | Igen |
 > | networkprofiles | Nem | Nem |
 > | networksecuritygroups | Igen | Igen |
-> | networkwatchers | Igen | Nem |
-> | networkwatchers / connectionmonitors | Igen | Nem |
-> | networkwatchers / flowlogs | Igen | Nem |
-> | networkwatchers / pingmeshes | Igen | Nem |
+> | networkwatchers | Igen | No |
+> | networkwatchers / connectionmonitors | Igen | No |
+> | networkwatchers / flowlogs | Igen | No |
+> | networkwatchers / pingmeshes | Igen | No |
 > | p2svpngateways | Nem | Nem |
 > | privatednszones | Igen | Igen |
 > | privatednszones / virtualnetworklinks | Igen | Igen |
@@ -1396,7 +1396,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazások | Igen | Nem |
+> | alkalmazások | Igen | No |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
 
@@ -1523,6 +1523,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | instancepools | Nem | Nem |
+> | helyek | Igen | Igen |
 > | managedinstances | Nem | Nem |
 > | managedinstances/adatbázisok | Nem | Nem |
 > | kiszolgálók | Igen | Igen |
@@ -1709,7 +1710,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tanúsítványok | Nem | Igen |
+> | tanúsítványok | No | Igen |
 > | connectiongateways | Igen | Igen |
 > | kapcsolatok | Igen | Igen |
 > | customapis | Igen | Igen |

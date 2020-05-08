@@ -3,13 +3,13 @@ title: Rendszercsomópont-készletek használata az Azure Kubernetes szolgáltat
 description: Ismerje meg, hogyan hozhat létre és kezelhet rendszercsomópont-készleteket az Azure Kubernetes szolgáltatásban (ak)
 services: container-service
 ms.topic: article
-ms.date: 04/06/2020
-ms.openlocfilehash: b567d9e618877463e1e659f368d35fbb787a4ef2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/28/2020
+ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259068"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82790558"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -29,6 +29,8 @@ A rendszercsomópont-készleteket támogató AK-fürtök létrehozásakor és ke
 * Tekintse [meg a kvótákat, a virtuális gépek méretére vonatkozó korlátozásokat és a régió elérhetőségét az Azure Kubernetes szolgáltatásban (ak)][quotas-skus-regions].
 * Az AK-fürtöt virtuálisgép-méretezési csoportokkal kell felépíteni.
 * A csomópontok készletének neve csak kisbetűket és kisbetűs karaktereket tartalmazhat. A Linux-csomópontok készletei esetében a hossznak 1 és 12 karakter közöttinek kell lennie. Windows-csomópontos készletek esetén a hossznak 1 és 6 karakter közöttinek kell lennie.
+* A csomópont-készlet üzemmódjának beállításához a 2020-03-01-es vagy újabb API-verziót kell használni.
+* A csomópont-készlet módja kötelező tulajdonság, és az ARM-sablonok vagy a közvetlen API-hívások használata esetén explicit módon kell megadni.
 
 ## <a name="system-and-user-node-pools"></a>Rendszer-és felhasználói csomópontok készletei
 
@@ -175,4 +177,4 @@ Ebben a cikkben megtanulta, hogyan hozhat létre és kezelhet rendszercsomópont
 [taints-tolerations]: operator-best-practices-advanced-scheduler.md#provide-dedicated-nodes-using-taints-and-tolerations
 [vm-sizes]: ../virtual-machines/linux/sizes.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[maximum-pods]: faq.md#why-cant-i-set-maxpods-below-30
+[maximum-pods]: configure-azure-cni.md#maximum-pods-per-node

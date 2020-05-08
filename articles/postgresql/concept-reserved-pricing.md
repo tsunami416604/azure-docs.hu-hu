@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 66d7228e78f03196da0b26249e7f1f86e79d79fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: 7f671e2a77a0a00fd1cc4338e29c14f7b8fca4f2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159013"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734722"
 ---
 # <a name="prepay-for-azure-database-for-postgresql-compute-resources-with-reserved-capacity"></a>Előre fizetés Azure Database for PostgreSQL számítási erőforrások számára fenntartott kapacitással
 
@@ -22,7 +22,7 @@ A foglalást nem kell hozzárendelni adott Azure Database for PostgreSQL kiszolg
 > [!IMPORTANT]
 > A fenntartott kapacitás díjszabása csak a Azure Database for PostgreSQL [egykiszolgálós](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---single-server) telepítés esetén érhető el, és nem a [nagy kapacitású Citus](https://docs.microsoft.com/azure/postgresql/overview#azure-database-for-postgresql---hyperscale-citus) telepítéséhez.
 
-A [Azure Portal](https://portal.azure.com/)Azure Database for PostgreSQL fenntartott kapacitást is vásárolhat. A fenntartott kapacitás megvásárlása:
+A [Azure Portal](https://portal.azure.com/)Azure Database for PostgreSQL fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md). A fenntartott kapacitás megvásárlása:
 
 * Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
 * Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.

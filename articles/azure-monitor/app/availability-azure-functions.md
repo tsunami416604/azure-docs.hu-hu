@@ -2,15 +2,15 @@
 title: Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 description: Ez a dokumentum azt ismerteti, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként a TimerTrigger függvényben megadott konfigurációnak megfelelően fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. A testreszabott tesztek lehetővé teszik az összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET belül, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, ha az nem érhető el a régióban.
 ms.topic: conceptual
-author: morgangrobin
-ms.author: mogrobin
-ms.date: 11/22/2019
-ms.openlocfilehash: 476d66c51c10a5fcfb3cb0319c47b3338d28812c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+author: mrbullwinkle
+ms.author: mbullwin
+ms.date: 05/04/2020
+ms.openlocfilehash: 81040adf6cfbb8820ec7f306c7d614830e3a2613
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665799"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791109"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 
@@ -160,12 +160,10 @@ public async static Task RunAvailbiltyTestAsync(ILogger log)
 Az összes működésének ellenőrzéséhez tekintse meg a diagramot a Application Insights erőforrás rendelkezésre állás lapján.
 
 > [!NOTE]
-> Ha a saját üzleti logikáját implementálta a runAvailabilityTest. CSX-ben, akkor a sikeres eredményeket fogja látni, például az alábbi képernyőképeken, ha nem, akkor a sikertelen találatok jelennek meg.
+> Ha a saját üzleti logikáját implementálta a runAvailabilityTest. CSX-ben, akkor a sikeres eredményeket fogja látni, például az alábbi képernyőképeken, ha nem, akkor a sikertelen találatok jelennek meg. A-ben `TrackAvailability()` létrehozott tesztek a teszt neve mellett **egyéniként** jelennek meg.
 
 >[!div class="mx-imgBorder"]
->![Rendelkezésre állás lap sikeres eredményekkel](media/availability-azure-functions/availtab.png)
-
-Ha a tesztet a Azure Functions használatával állítja be, akkor **a teszt nem** jelenik meg a rendelkezésre állás lapon, és nem fog tudni kommunikálni a tesztek nevével. Az eredmények vizualizációval jelennek meg, de a részletes nézet helyett a portálon keresztüli rendelkezésre állási teszt létrehozásakor is megjelenik egy összegző nézet.
+>![Rendelkezésre állás lap sikeres eredményekkel](media/availability-azure-functions/availability-custom.png)
 
 A végpontok közötti tranzakció részleteinek megtekintéséhez válassza a **sikeres** vagy **sikertelen** művelet elemet a részletezés szakaszban, majd válasszon ki egy mintát. A végpontok közötti tranzakció részleteit úgy is elérheti, ha kijelöl egy adatpontot a diagramon.
 

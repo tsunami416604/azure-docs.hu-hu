@@ -86,7 +86,7 @@
     - name: Teljes körű MLOps-példák
       href: 'https://github.com/microsoft/MLOps'
     - name: Open Datasets (nyilvános)
-      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
+      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
 - name: Alapelvek
   items:
     - name: Költségtervezés és a költségek kezelése
@@ -172,6 +172,8 @@
           href: how-to-setup-authentication.md
         - name: Az Azure Machine Learning monitorozása
           href: monitor-azure-machine-learning.md
+    - name: Event Grid-integráció
+      href: concept-event-grid-integration.md
 - name: Útmutatók
   items:
     - name: Munkaterületek létrehozása és kezelése
@@ -341,7 +343,7 @@
               displayName: functions app
               href: how-to-deploy-functions.md
             - name: Azure IoT Edge-eszközök
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
             - name: FPGA-következtetés
               href: how-to-deploy-fpga-web-service.md
             - name: Egyéni Docker-rendszerképek
@@ -382,7 +384,7 @@
           href: how-to-debug-pipelines-application-insights.md
         - name: Azure Pipelines a CI/CD-hez
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
         - name: Tervező – adatok átalakítása
           displayName: pipeline
           href: how-to-designer-transform-data.md
@@ -454,7 +456,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Machine Learning-termékeink összehasonlítása
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
     - name: Mi történt a Workbenchcsel?
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md
