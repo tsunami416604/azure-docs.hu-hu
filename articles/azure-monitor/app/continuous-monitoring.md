@@ -2,13 +2,13 @@
 title: DevOps-kiadási folyamat folyamatos figyelése Azure-folyamatokkal és Azure-Application Insightsokkal | Microsoft Docs
 description: Útmutatást nyújt a folyamatos figyelés beállításához Application Insights
 ms.topic: conceptual
-ms.date: 07/16/2019
-ms.openlocfilehash: e565101218b975ef2bd29b8a32a4aa1bf4300b6d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 0d47fb1eccdfcfc7b2719825575f06dc85e62452
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77655395"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652751"
 ---
 # <a name="add-continuous-monitoring-to-your-release-pipeline"></a>Folyamatos figyelés hozzáadása a kiadási folyamathoz
 
@@ -51,17 +51,19 @@ A **folyamatos figyelési sablonnal rendelkező Azure app Service üzemelő pél
 
 A riasztási szabály beállításainak módosítása:
 
-1. A kiadási folyamat lap bal oldali ablaktábláján válassza a **Application Insights riasztások konfigurálása**lehetőséget.
+A kiadási folyamat lap bal oldali ablaktábláján válassza a **Application Insights riasztások konfigurálása**lehetőséget.
 
-1. A **Azure monitor riasztások** panelen válassza a három pontot **...** lehetőséget a **riasztási szabályok**mellett.
-   
-1. A **riasztási szabályok** párbeszédpanelen válassza ki a riasztási szabály melletti legördülő szimbólumot, például a **rendelkezésre állást**. 
-   
-1. Módosítsa a **küszöbértéket** és az egyéb beállításokat, hogy megfeleljenek a követelményeinek.
-   
-   ![Riasztás módosítása](media/continuous-monitoring/003.png)
-   
-1. Kattintson az **OK gombra**, majd kattintson a jobb felső sarokban található **Mentés** elemre az Azure DevOps ablakban. Adjon meg egy leíró megjegyzést, majd kattintson **az OK gombra**.
+A négy alapértelmezett riasztási szabály egy beágyazott parancsfájl használatával jön létre:
+
+```bash
+$subscription = az account show --query "id";$subscription.Trim("`"");$resource="/subscriptions/$subscription/resourcegroups/"+"$(Parameters.AppInsightsResourceGroupName)"+"/providers/microsoft.insights/components/" + "$(Parameters.ApplicationInsightsResourceName)";
+az monitor metrics alert create -n 'Availability_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg availabilityResults/availabilityPercentage < 99' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'FailedRequests_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count requests/failed > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerResponseTime_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'avg requests/duration > 5' --description "created from Azure DevOps";
+az monitor metrics alert create -n 'ServerExceptions_$(Release.DefinitionName)' -g $(Parameters.AppInsightsResourceGroupName) --scopes $resource --condition 'count exceptions/server > 5' --description "created from Azure DevOps";
+```
+
+Módosíthatja a parancsfájlt, és további riasztási szabályokat adhat hozzá, módosíthatja a riasztási feltételeket, vagy eltávolíthatja azokat a riasztási szabályokat, amelyek nem ésszerűek a telepítési célokra.
 
 ## <a name="add-deployment-conditions"></a>Központi telepítési feltételek hozzáadása
 

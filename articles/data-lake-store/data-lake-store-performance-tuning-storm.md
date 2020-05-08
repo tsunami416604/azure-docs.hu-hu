@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 Storm Performance tuning iránymutatásai | Microsoft Docs
-description: Azure Data Lake Storage Gen1 Storm Performance tuning iránymutatásai
-services: data-lake-store
-documentationcenter: ''
+title: Teljesítmény-Finomhangolás – Storm és Azure Data Lake Storage Gen1
+description: Ismerje meg a Azure Data Lake Storage Gen1on futó Storm-fürt teljesítmény-hangolási irányelveit.
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85a38a4da65d1b4a669a41eba902b39508e9216c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "61436477"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691642"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és Azure Data Lake Storage Gen1
 
@@ -25,7 +19,7 @@ Megismerheti azokat a tényezőket, amelyeket figyelembe kell venni az Azure Sto
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Azure Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépései](data-lake-store-get-started-portal.md)című témakört.
 * Egy Data Lake Storage Gen1 fiókhoz hozzáféréssel rendelkező **Azure HDInsight-fürt** . Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
 * **Storm-fürt futtatása Data Lake Storage Gen1on**. További információ: [Storm on HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-storm-overview).
@@ -42,7 +36,7 @@ Előfordulhat, hogy a teljesítmény növelése érdekében az I/O és a Data La
 
 Például egy 4 virtuális géppel és 4 munkavégző folyamattal rendelkező fürtön, 32 kiöntő végrehajtó és 32 kiöntő feladat, valamint 256 bolt végrehajtói és 512 bolti feladatok, vegye figyelembe a következőket:
 
-Minden olyan felügyelő, amely egy feldolgozói csomópont, egyetlen feldolgozó Java virtuális gép (JVM) folyamattal rendelkezik. Ez a JVM folyamat 4 kiöntő szálat és 64 bolti szálat kezel. Az egyes szálakon belül a feladatok egymás után futnak. Az előző konfigurációval minden kiöntő szál 1 feladatot tartalmaz, és minden egyes bolti szál 2 feladattal rendelkezik.
+Minden olyan felügyelő, amely egy feldolgozói csomópont, egyetlen feldolgozó Java virtuális gép (JVM) folyamattal rendelkezik. Ez a JVM folyamat 4 kiöntő szálat és 64 bolti szálat kezel. Az egyes szálakon belül a feladatok egymás után futnak. Az előző konfigurációnak megfelelően minden kiöntő szál egyetlen feladattal rendelkezik, és minden egyes bolti szál két feladattal rendelkezik.
 
 A Storm-ben itt láthatók a különböző érintett összetevők, és hogy azok milyen mértékben befolyásolják a párhuzamosság szintjét:
 * A feladatok küldéséhez és kezeléséhez a fő csomópontot (a Storm Nimbus néven ismert) használja a rendszer. Ezek a csomópontok nem befolyásolják a párhuzamosság mértékét.
@@ -59,9 +53,9 @@ Data Lake Storage Gen1 használatakor a legjobb teljesítményt kapja, ha a köv
 
 ### <a name="example-topology"></a>Példa topológia
 
-Tegyük fel, hogy egy D13v2 Azure-beli virtuális géppel rendelkező 8 munkavégző csomópont-fürtöt tartalmaz. Ez a virtuális gép 8 maggal rendelkezik, így a 8 feldolgozó csomópont között összesen 64 mag van.
+Tegyük fel, hogy egy D13v2 Azure-beli virtuális géppel rendelkező nyolc feldolgozói csomópont-fürtöt tartalmaz. Ez a virtuális gép nyolc maggal rendelkezik, így a nyolc feldolgozó csomópont között 64 összes mag van.
 
-Tegyük fel, hogy 8 csavaros szálat teszünk mag-onként. Az adott 64-es magok esetében ez azt jelenti, hogy a 512 összes bolt végrehajtó példányát (azaz a szálakat) szeretnénk használni. Ebben az esetben tegyük fel, hogy a virtuális gépen egy JVM indítunk, és főleg a JVM belüli szál-párhuzamosságot használják a párhuzamosság eléréséhez. Ez azt jelenti, hogy 8 feldolgozói feladatra van szükség (egy Azure-beli virtuális gépen eggyel) és a 512-es bolt végrehajtói Ebben a konfigurációban a Storm a munkavégző csomópontok (más néven felügyeleti csomópontok) között egyenletesen osztja el a dolgozókat, így az egyes munkavégző csomópontok 1 JVM. A Storm most már a felügyelők között igyekszik a végrehajtókat egyenletesen terjeszteni a felügyelők között, így mindegyik felügyelő (azaz JVM) 8 szálat biztosít.
+Tegyük fel, hogy nyolc csavaros szálat teszünk mag szerint. Az adott 64-es magok esetében ez azt jelenti, hogy a 512 összes bolt végrehajtó példányát (azaz a szálakat) szeretnénk használni. Ebben az esetben tegyük fel, hogy a virtuális gépen egy JVM indítunk, és főleg a JVM belüli szál-párhuzamosságot használják a párhuzamosság eléréséhez. Ez azt jelenti, hogy nyolc feldolgozói feladat (egy Azure-beli virtuális gép) és 512-es bolt végrehajtója van szükség. Ebben a konfigurációban a Storm a munkavégző csomópontok (más néven felügyeleti csomópontok) között egyenletesen osztja el a dolgozókat, így az egyes feldolgozói csomópontok egy JVM kapnak. A Storm mostantól a felügyelők között úgy próbálja terjeszteni a végrehajtókat, hogy az egyes felügyelők (azaz a JVM) nyolc szálat biztosítanak.
 
 ## <a name="tune-additional-parameters"></a>További paraméterek hangolása
 Az alapszintű topológia megadását követően megtekintheti, hogy a következő paramétereket szeretné-e használni:
@@ -76,7 +70,7 @@ Ez az alapszintű forgatókönyv jó kiindulási pont. Tesztelje a saját adatai
 
 A kiöntő hangolásához a következő beállításokat módosíthatja.
 
-- **Rekord időtúllépése: topológia. Message. timeout. mp**. Ez a beállítás határozza meg, hogy az üzenet mennyi időt vesz igénybe, és fogadja a nyugtát, mielőtt a rendszer nem veszi figyelembe a hibát.
+- **Rekord időtúllépése: topológia. Message. timeout. mp**. Ez a beállítás határozza meg, hogy az üzenet mennyi időt vesz igénybe, és fogadja a visszaigazolást, mielőtt a rendszer nem tudta figyelembe venni.
 
 - **Maximális memória/munkavégző folyamat: Worker. childopts**. Ezzel a beállítással további parancssori paramétereket adhat meg a Java-feldolgozókhoz. Az itt leggyakrabban használt beállítás a XmX, amely meghatározza a JVM halom számára lefoglalt maximális memóriát.
 
@@ -104,14 +98,14 @@ Ha a rekordok bejövő sebessége nem magas, ezért a 4 MB-os puffer hosszú id�
 * Csökkentse a csavarok számát, így kevesebb puffert kell kitölteni.
 * Olyan időalapú vagy Count-alapú szabályzattal rendelkezik, amelyben a hflush () minden x ürítéssel vagy y ezredmásodperctel aktiválódik, és az eddig felhalmozott rekordok visszaigazolja.
 
-Vegye figyelembe, hogy ebben az esetben az átviteli sebesség alacsonyabb, de a lassú események miatt a maximális átviteli sebesség nem a legnagyobb cél. Ezek a megoldások segítenek csökkenteni a rekordnak az áruházba való áthaladásához szükséges teljes időt. Ez akkor fordulhat elő, ha egy valós idejű adatcsatorna esetében is alacsony esemény arányt szeretne használni. Azt is vegye figyelembe, hogy ha a bejövő rekord sebessége alacsony, állítsa be a topológia. Message. timeout_secs paramétert, hogy a rekordok ne legyen időtúllépés, amíg a rendszer pufferelt vagy feldolgozott értéket kap.
+Ebben az esetben az átviteli sebesség alacsonyabb, de a lassú események miatt a maximális átviteli sebesség nem a legnagyobb cél. Ezek a megoldások segítenek csökkenteni a rekordnak az áruházba való áthaladásához szükséges teljes időt. Ez akkor fordulhat elő, ha egy valós idejű adatcsatorna esetében is alacsony esemény arányt szeretne használni. Azt is vegye figyelembe, hogy ha a bejövő rekord sebessége alacsony, állítsa be a topológia. Message. timeout_secs paramétert, hogy a rekordok ne legyen időtúllépés, amíg a rendszer pufferelt vagy feldolgozott értéket kap.
 
 ## <a name="monitor-your-topology-in-storm"></a>A topológia figyelése a Storm-ben  
 Amíg a topológia fut, nyomon követheti a Storm felhasználói felületén. A következő fő paramétereket tekintheti meg:
 
 * **A folyamat végrehajtásának teljes késése.** Ez az az átlagos idő, amikor egy rekordot a kiöntő, a bolt által feldolgozott, és a rendszer elismerte.
 
-* **A bolt összes folyamatának késése.** Ez az átlagos idő, amelyet a rendszer a rekordban töltött le, amíg nem kap nyugtát.
+* **A bolt összes folyamatának késése.** Ez az átlagos idő, amelyet a tömb a rekordban eltöltött, egészen addig, amíg nem kap nyugtát.
 
 * **A bolt összes végrehajtási késése.** Ez az az átlagos idő, amelyet a bolt hajt végre a végrehajtási metódusban.
 

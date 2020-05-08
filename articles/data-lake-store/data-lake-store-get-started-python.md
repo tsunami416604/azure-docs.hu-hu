@@ -1,23 +1,17 @@
 ---
-title: 'Python: Fiókkezelés-műveletek Azure Data Lake Storage Gen1on | Microsoft Docs'
-description: Megtudhatja, hogyan használhatja a Python SDK-t a Azure Data Lake Storage Gen1 számlavezetés műveletekkel való együttműködéshez.
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1-fiók kezelése a Pythonban
+description: Ismerje meg, hogyan használhatja a Python SDK-t a Azure Data Lake Storage Gen1 Fiókkezelés műveleteihez.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 75f6de6f-6fd8-48f4-8707-cb27d22d27a6
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0c27c4b6d906a0892735697a8e90f87da6edf9c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76290614"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692104"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fiókkezelés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -33,7 +27,7 @@ Megtudhatja, hogyan használhatja a Azure Data Lake Storage Gen1 Python SDK-t ol
 
 * **Python**. A Pythont [innen](https://www.python.org/downloads/) töltheti le. Ez a cikk a Python 3.6.2-es verzióját használja.
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Egy Azure-erőforráscsoport**. További útmutatásért lásd: [Azure-erőforráscsoport létrehozása](../azure-resource-manager/management/manage-resource-groups-portal.md).
 

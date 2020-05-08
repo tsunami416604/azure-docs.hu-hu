@@ -1,23 +1,17 @@
 ---
-title: Stream-adatok Stream Analyticsból a Azure Data Lake Storage Gen1ba | Microsoft Docs
-description: A Azure Stream Analytics használatával továbbíthatja az adatAzure Data Lake Storage Gen1
-services: data-lake-store,stream-analytics
-documentationcenter: ''
+title: Stream-adatok Stream Analyticsról Data Lake Storage Gen1ra – Azure
+description: A Azure Stream Analytics használatával továbbíthatja az adatátvitelt a Azure Data Lake Storage Gen1ba.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: edb58e0b-311f-44b0-a499-04d7e6c07a90
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: twooley
-ms.openlocfilehash: d3dbacd58b3bda3fbf8ee8ad5f175eccc2cb2a24
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: f1740d167bedd20f51ad5bf24a56b7e7e787f754
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60194855"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690982"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Adatok továbbítása Azure Storage Blobról Azure Data Lake Storage Gen1 a Azure Stream Analytics használatával
 Ebből a cikkből megtudhatja, hogyan használhatja a Azure Data Lake Storage Gen1 kimenetként egy Azure Stream Analytics feladatokhoz. Ez a cikk egy egyszerű forgatókönyvet mutat be, amely beolvassa az adatokat egy Azure Storage-blobból (bemenet), és az adatokat a Data Lake Storage Gen1ba (output) írja.
@@ -25,11 +19,11 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Azure Data Lake Storage Ge
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure Storage-fiók**. A fiókból BLOB-tárolót fog használni egy Stream Analytics-feladathoz tartozó adatok beviteléhez. Ebben az oktatóanyagban tegyük fel, hogy rendelkezik egy **storageforasa** nevű Storage-fiókkal és egy **storageforasacontainer**nevű fiókban található tárolóval. Miután létrehozta a tárolót, töltsön fel egy minta adatfájlt. 
   
-* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései az Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Tegyük fel, hogy van egy **myadlsg1**nevű Data Lake Storage Gen1 fiókja. 
+* **Egy Data Lake Storage Gen1-fiók**. Kövesse a [Azure Data Lake Storage Gen1 használatának első lépései a Azure Portal használatával](data-lake-store-get-started-portal.md)című témakör utasításait. Tegyük fel, hogy van egy **myadlsg1**nevű Data Lake Storage Gen1 fiókja. 
 
 ## <a name="create-a-stream-analytics-job"></a>Stream Analytics-feladat létrehozása
 Első lépésként hozzon létre egy Stream Analytics feladatot, amely tartalmaz egy bemeneti forrást és egy kimeneti célhelyet. Ebben az oktatóanyagban a forrás egy Azure Blob-tároló, és a cél Data Lake Storage Gen1.

@@ -1,23 +1,17 @@
 ---
-title: 'PowerShell: Azure HDInsight-fürt Azure Data Lake Storage Gen1 kiegészítő tárolóval | Microsoft Docs'
+title: PowerShell – HDInsight Data Lake Storage Gen1-bővítmény tárolásával – Azure
 description: Megtudhatja, hogyan konfigurálhat egy HDInsight-fürtöt a Azure Data Lake Storage Gen1 további tárolóként a Azure PowerShell használatával.
-services: data-lake-store,hdinsight
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4cd61619e0417ab1db8d8413872b2dff1c904fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fb4ab1cdb60fff40effc1ff2f12f8600ba263d23
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970139"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692045"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>A Azure PowerShell használatával hozzon létre egy HDInsight-fürtöt Azure Data Lake Storage Gen1 (további tárterületként)
 
@@ -56,7 +50,7 @@ A Data Lake Storage Gen1 PowerShell-lel való használatához a HDInsight konfig
 
 Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * Az **Azure PowerShell 1.0-s vagy újabb verziója**. Lásd: [How to install and configure Azure PowerShell](/powershell/azure/overview) (Az Azure PowerShell telepítése és konfigurálása).
 * **Windows SDK**. A készletet [innen](https://dev.windows.com/en-us/downloads) telepítheti. Ezt a biztonsági tanúsítvány létrehozásához használhatja.
 * **Azure Active Directory egyszerű szolgáltatásnév**. Az oktatóanyag lépései útmutatást nyújtanak az egyszerű szolgáltatás Azure AD-ben való létrehozásához. Az egyszerű szolgáltatásnév létrehozásához azonban Azure AD-rendszergazdának kell lennie. Ha Ön Azure AD-rendszergazda, akkor kihagyhatja ezt az előfeltételt, és folytathatja az oktatóanyagot.

@@ -1,29 +1,25 @@
 ---
-title: 'Végfelhasználói hitelesítés: Azure Data Lake Storage Gen1 Azure Active Directorykal | Microsoft Docs'
+title: Végfelhasználói hitelesítés – Data Lake Storage Gen1 az Azure AD-vel
 description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést Azure Data Lake Storage Gen1 használatával Azure Active Directory
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 4c2b774c304e46f9fc68f3beaf64218e614ecad1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.custom: has-adal-ref
+ms.openlocfilehash: 5a0c3e1df5cd283ad08f905ed0bd4f329dcfcc7e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66234059"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688239"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 > [!div class="op_single_selector"]
 > * [Végfelhasználói hitelesítés](data-lake-store-end-user-authenticate-using-active-directory.md)
 > * [Szolgáltatások közötti hitelesítés](data-lake-store-service-to-service-authenticate-using-active-directory.md)
-> 
-> 
+>
+>
 
 A Azure Data Lake Storage Gen1 Azure Active Directory használ a hitelesítéshez. Data Lake Storage Gen1 vagy Azure Data Lake Analytics rendszerű alkalmazás létrehozása előtt el kell döntenie, hogyan hitelesítheti az alkalmazást Azure Active Directory (Azure AD) használatával. A két fő lehetőség közül választhat:
 
@@ -38,11 +34,11 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy **natív Azure ad-alkalmazást
 * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * Az előfizetés azonosítója. A Azure Portal kérheti le. Például a Data Lake Storage Gen1 fiók panelről érhető el.
-  
+
     ![Előfizetés-azonosító lekérése](./media/data-lake-store-end-user-authenticate-using-active-directory/get-subscription-id.png)
 
-* Azure AD-tartományneve. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. Az alábbi képernyőképen a tartománynév **contoso.onmicrosoft.com**, a zárójeleken belüli GUID pedig a bérlő azonosítója. 
-  
+* Azure AD-tartományneve. Lekérheti a Azure Portal jobb felső sarkában lévő egér fölé. Az alábbi képernyőképen a tartománynév **contoso.onmicrosoft.com**, a zárójeleken belüli GUID pedig a bérlő azonosítója.
+
     ![HRE-tartomány beolvasása](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
 * Az Azure-bérlő azonosítója. A bérlői azonosító lekérésével kapcsolatos utasításokért lásd: [a bérlő azonosítójának](../active-directory/develop/howto-create-service-principal-portal.md#get-values-for-signing-in)beolvasása.
@@ -53,12 +49,12 @@ Ez a hitelesítési mechanizmus az ajánlott módszer, ha azt szeretné, hogy a 
 A végfelhasználói bejelentkezés eredménye az, hogy az alkalmazás hozzáférési jogkivonatot és frissítési jogkivonatot kap. A hozzáférési jogkivonat minden Data Lake Storage Gen1 vagy Data Lake Analyticshoz kapcsolódó kérelemhez csatolva lesz, és alapértelmezés szerint egy órára érvényes. A frissítési token új hozzáférési jogkivonat beszerzésére használható, és alapértelmezés szerint legfeljebb két hétig érvényes. A végfelhasználói bejelentkezéshez két különböző megközelítés használható.
 
 ### <a name="using-the-oauth-20-pop-up"></a>A OAuth 2,0 előugró ablak használata
-Az alkalmazás elindíthat egy OAuth 2,0-alapú engedélyezési előugró ablakot, amelyben a végfelhasználó megadhatja a hitelesítő adatait. Ez az előugró ablak az Azure AD kétfaktoros hitelesítési (2FA) folyamatával is együttműködik, ha szükséges. 
+Az alkalmazás elindíthat egy OAuth 2,0-alapú engedélyezési előugró ablakot, amelyben a végfelhasználó megadhatja a hitelesítő adatait. Ez az előugró ablak az Azure AD kétfaktoros hitelesítési (2FA) folyamatával is együttműködik, ha szükséges.
 
 > [!NOTE]
 > Ez a módszer még nem támogatott a Python és a Java rendszerhez készült Azure AD Authentication Library (ADAL) szolgáltatásban.
-> 
-> 
+>
+>
 
 ### <a name="directly-passing-in-user-credentials"></a>Közvetlenül a felhasználói hitelesítő adatok átadása
 Az alkalmazás közvetlenül is biztosíthatja a felhasználói hitelesítő adatokat az Azure AD-nek. Ez a metódus csak szervezeti azonosító felhasználói fiókokkal működik; nem kompatibilis a személyes/"élő azonosító" felhasználói fiókokkal, beleértve a @outlook.com vagy @live.coma végződésű fiókokat is. Továbbá ez a módszer nem kompatibilis olyan felhasználói fiókokkal, amelyek megkövetelik az Azure AD kétfaktoros hitelesítését (2FA).
@@ -106,7 +102,7 @@ Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
 3. Az **API-hozzáférés hozzáadása** panelen kattintson az **API kiválasztása**elemre, majd a **Azure Data Lake**elemre, végül a **kiválasztás**gombra.
 
     ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-2.png)
- 
+
 4.  Az **API-hozzáférés hozzáadása** panelen kattintson az **engedélyek kiválasztása**elemre, jelölje be a jelölőnégyzetet, hogy **teljes hozzáférést adjon a Data Lake Storehoz**, majd kattintson a **kiválasztás**gombra.
 
     ![ügyfél-azonosító](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
@@ -114,7 +110,7 @@ Az átirányítási URI beolvasásához hajtsa végre a következő lépéseket.
     Kattintson a **Done** (Kész) gombra.
 
 5. Ismételje meg az utolsó két lépést a **Windows Azure Service Management API** engedélyeinek megadásához is.
-   
+
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben egy natív Azure AD-alkalmazást hozott létre, és összegyűjtötte a szükséges információkat a .NET SDK, Java SDK, REST API stb. használatával létrehozott ügyfélalkalmazások számára. A következő cikkekkel megtudhatja, hogyan használhatja az Azure AD-webalkalmazást, hogy először hitelesítse Data Lake Storage Gen1, majd más műveleteket hajtson végre az áruházban.
 
@@ -122,4 +118,3 @@ Ebben a cikkben egy natív Azure AD-alkalmazást hozott létre, és összegyűjt
 * [Végfelhasználói hitelesítés a Data Lake Storage Gen1 .NET SDK használatával](data-lake-store-end-user-authenticate-net-sdk.md)
 * [Végfelhasználói hitelesítés Data Lake Storage Gen1 a Python használatával](data-lake-store-end-user-authenticate-python.md)
 * [Végfelhasználói hitelesítés Data Lake Storage Gen1 használatával REST API](data-lake-store-end-user-authenticate-rest-api.md)
-

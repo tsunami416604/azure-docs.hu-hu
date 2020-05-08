@@ -1,6 +1,6 @@
 ---
 title: fájl belefoglalása
-description: szövegfájl belefoglalása a Microsoft kereskedelmi piactér szabványos szerződéséhez
+description: szövegfájl belefoglalása a Microsoft kereskedelmi Marketplace standard szerződéshez
 documentationcenter: partner-center-commercial-marketplace
 author: dsindona
 ms.service: marketplace
@@ -9,51 +9,50 @@ ms.topic: include
 ms.date: 01/22/2020
 ms.author: dsindona
 ms.custom: include file
-ms.openlocfilehash: 9b99876b66826cc5a66cba686a7d6a5243b47b98
-ms.sourcegitcommit: 2ec4b3d0bad7dc0071400c2a2264399e4fe34897
+ms.openlocfilehash: e7692d8c90d71e76628ecb44ade529eabedfa909
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/28/2020
-ms.locfileid: "80277222"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691521"
 ---
-A Microsoft szabványos szerződéssablont biztosít a kereskedelmi piactér számára.
+A Microsoft szabványos szerződési sablont biztosít a kereskedelmi piactérhez.
 
-- **Használja a Microsoft kereskedelmi piactér rekedező szerződését?**
+- **Szabványos szerződést használ a Microsoft kereskedelmi piactérről?**
 
-Az ügyfelek beszerzési folyamatának egyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft a Microsoft kereskedelmi piacterére vonatkozó általános szerződést kínál a tranzakciók megkönnyítése érdekében a piacon. Ahelyett, hogy egyedi feltételeket gyártanának, a kereskedelmi piactér kiadói dönthetnek úgy, hogy az Általános Szerződés alapján kínálják szoftvereiket, amelyet az ügyfeleknek csak egyszer kell ellenőrizniük és elfogadniuk. Az alapszerződés itt található: https://go.microsoft.com/fwlink/?linkid=2041178.
+Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft szabványos szerződést biztosít a Microsoft kereskedelmi piactérről, amely megkönnyíti a tranzakciók megkönnyítése a piactéren. Az egyéni használati feltételek és kikötések elvégzése helyett a kereskedelmi piactér-közzétevők dönthetnek úgy, hogy a standard szintű szerződés keretében kínálják a szoftvereket, amelyeket csak egyszer kell bemutatni és elfogadni. A standard szintű szerződés a következő címen érhető https://go.microsoft.com/fwlink/?linkid=2041178el:.
 
-A "Szabványos szerződés használata a kereskedelmi piachoz" jelölőnégyzet bejelölésével választhatja ki az Általános szerződés használatát a saját egyéni feltételek megadása helyett.
+A normál szerződést úgy is kiválaszthatja, hogy a saját használati feltételeinek megadása helyett a "szabványos szerződés használata a kereskedelmi piactérhez" jelölőnégyzetet válassza.
 
-![A Szabványos szerződés jelölőnégyzet használata](./media/use-standard-contract.png)
+![A standard szerződés használata jelölőnégyzet](./media/use-standard-contract.png)
 
 > [!NOTE]
-> Miután közzétett egy ajánlatot a Microsoft kereskedelmi piactér általános szerződésével, nem tudja használni a saját egyéni szerződéseit. Ez egy "vagy" forgatókönyv. Vagy a Standard Szerződés, **vagy** a saját szerződési feltételek alapján kínálja a megoldást. Ha módosítani szeretné az általános szerződés feltételeit, ezt a Szerződés általános módosításai révén teheti meg.
+> Miután közzétette az ajánlatot a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéssel, nem használhatja saját használati feltételeit és kikötéseit. Ez egy "vagy" forgatókönyv. A megoldást a standard szerződés **vagy** a saját használati feltételei alapján ajánljuk fel. Ha módosítani szeretné a standard szerződés feltételeit, ezt a standard szintű szerződés módosításain keresztül teheti meg.
 
-**Általános szerződésmódosítások**
+**Standard szintű szerződés módosításai**
 
-Az általános szerződésmódosítások lehetővé teszik a megjelenítők számára, hogy az egyszerűség kedvéért kiválasszák az általános szerződési feltételeket, és testre szabják a termékük vagy vállalkozásuk feltételeit. Az ügyfeleknek csak akkor kell áttekinteniük a szerződés módosításait, ha már felülvizsgálták és elfogadták a Microsoft általános szerződését.
+A standard szintű szerződések módosításai lehetővé teszik a kiadók számára, hogy a szokásos szerződési feltételeket használják az egyszerűség kedvéért, és testre szabják a termék vagy a vállalat használati Az ügyfeleknek csak akkor kell áttekinteniük a szerződés módosításait, ha már áttekintették és elfogadták a Microsoft standard szerződést.
 
-A kereskedelmi piactér kiadói számára kétféle módosítás érhető el:
+A kereskedelmi piactér-közzétevők számára két fajta módosítás érhető el:
 
-- Univerzális módosítások: Ezek a módosítások általánosan alkalmazzák az általános szerződés minden ügyfél számára. Az univerzális módosításokat az ajánlat minden ügyfele számára bemutatják a beszerzési folyamatban. Az ügyfeleknek el kell fogadniuk az Általános Szerződés feltételeit és a módosítást, mielőtt felhasználhatnák az ajánlatot.
-- Egyéni módosítások: Ezek a módosítások a standard szerződés speciális módosításai, amelyek csak az Azure-beli bérlői azonosítókon keresztül irányulnak bizonyos ügyfelekre. A közzétevők kiválaszthatják a megcélozni kívánt bérlőt. Csak a bérlői ügyfelek kapnak egyéni módosítási feltételeket az ajánlat beszerzési folyamatában.  Az ügyfeleknek el kell fogadniuk az Általános Szerződés feltételeit és a módosítás(oka)t, mielőtt felhasználhatják az ajánlatot.
+- Univerzális módosítások: ezeket a módosításokat a rendszer univerzálisan alkalmazza az összes ügyfélre vonatkozó standard szerződésre. Az univerzális módosítások az ajánlat minden ügyfelének a vásárlás folyamatában jelennek meg. Az ügyfeleknek el kell fogadniuk a standard szerződés és a módosítás feltételeit, mielőtt felhasználhatják az ajánlatot.
+- Egyéni módosítások: ezek a módosítások a standard szerződés speciális módosításai, amelyek csak az Azure-bérlői azonosítók használatával vannak megcélozva az egyes ügyfelekre. A kiadók kiválaszthatják, hogy melyik bérlőt szeretnék megcélozni. Az ajánlat vásárlási folyamatában csak a bérlő ügyfelei jelennek meg az egyéni módosítási feltételekkel.  Az ügyfeleknek el kell fogadniuk a standard szerződés feltételeit és a módosítás (oka) t, mielőtt felhasználhatják az ajánlatot.
 
 >[!NOTE]
-> Ez a két típusú módosítások verem egymásra. Az egyéni módosításokkal megcélzott ügyfelek a vásárlás során az Általános Szerződés általános módosítását is megkapják.
+> Ez a két típusú módosítás egymásra épül. Az egyéni módosításokkal rendelkező ügyfelek a vásárlás során általános módosítást is kapnak a standard szerződéshez.
 
-**A Microsoft kereskedelmi piacterének általános módosítási feltételei**: Ebben a mezőben adhatja meg az általános módosítási feltételeket. Ajánlatonként egyetlen általános módosítást is megadhat. Ebben a mezőben korlátlan számú karaktert írhat be. Ezek a feltételek az AppSource, az Azure Marketplace és/vagy az Azure Portalon jelennek meg az ügyfelek számára a felderítési és vásárlási folyamat során.
+**Általános módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez**: ebben a mezőben adja meg az univerzális módosítási feltételeket. Ajánlathoz egyetlen általános módosítást is megadhat. Ebben a mezőben korlátlan számú karaktert adhat meg. Ezek a feltételek a AppSource, az Azure Marketplace-en és/vagy Azure Portalban jelennek meg a felderítési és vásárlási folyamat során.
 
-**A Microsoft kereskedelmi piacterének általános szerződésének egyéni módosítási feltételei**: Először válassza **az Egyéni módosítási feltételek hozzáadása lehetőséget**. Ajánlatonként legfeljebb 10 egyéni módosítási feltételt adhat meg.
+**Egyéni módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez**: először válassza az **Egyéni módosítási feltételek hozzáadása**lehetőséget. Ajánlatunk legfeljebb 10 egyéni módosítási feltételt adhat meg.
 
-- **Egyéni módosítási feltételek**: Adja meg az egyéni módosításfeltételeit az egyéni módosítási feltételek mezőben. Ebben a mezőben korlátlan számú karaktert írhat be. Csak a bérlői azonosítók adja meg ezeket az egyéni feltételeket az ajánlat vásárlási folyamat az Azure Portalon jelennek meg.  
-- **Bérlői azonosítók** (szükséges): Minden egyéni módosítás legfeljebb 20 bérlői azonosítók megcélozható. Ha egyéni módosítást ad hozzá, legalább egy bérlői azonosítót meg kell adnia. A bérlői azonosító azonosítja az ügyfelet az Azure-ban. Kérheti az ügyfél ezt az azonosítót, és ők is megtalálhatja azt a portal.azure.com > Azure Active Directory > properties. A címtárazonosító értéke a bérlőazonosító (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet ügyfél bérlői azonosítóját is megkeresheti a Domainname URL-címük használatával [a Mi a Microsoft Azure és az Office 365-ös bérlői azonosítóm?](https://www.whatismytenantid.com).
-- **Leírás** (nem kötelező): Opcionálisan adjon meg egy rövid leírást a bérlői azonosítóhoz, amely segít azonosítani a módosítással megcélzott ügyfelet.
+- **Egyéni módosítási feltételek**: az egyéni módosítási feltételek mezőben adja meg az egyéni módosítási feltételeket. Ebben a mezőben korlátlan számú karaktert adhat meg. Csak az egyéni feltételekhez megadott bérlői azonosítók ügyfelei jelennek meg az ajánlat vásárlási folyamatában az Azure Portalban.  
+- **Bérlői azonosítók** (kötelező): minden egyéni módosítás legfeljebb 20 bérlői azonosítót célozhat meg. Ha egyéni módosítást ad hozzá, meg kell adnia legalább egy bérlői azonosítót. A bérlő azonosítója azonosítja az ügyfelet az Azure-ban. Megkérheti az ügyfelet erre az AZONOSÍTÓra, és megkeresheti a portal.azure.com > Azure Active Directory > a Tulajdonságok lehetőségre kattintva. A címtár-azonosító értéke a bérlő azonosítója (például 50c464d3-4930-494c-963c-1e951d15360e). A szervezet bérlői AZONOSÍTÓját is megkeresheti a saját tartománynév URL-címével, amely a [Microsoft Azure és az Office 365-bérlői azonosítóját használja?](https://www.whatismytenantid.com).
+- **Leírás** (nem kötelező): opcionálisan megadhatja a bérlői azonosító rövid leírását, amely segít azonosítani a módosítással megcélzott ügyfelet.
 
 **Használati feltételek**
 
-Ha saját egyéni feltételeket szeretne megadni, megadhatja azokat a Feltételek mezőben. Ebben a mezőben legfeljebb 10 000 karakternyi szöveget írhat be. Ha a szerződési feltételek hosszabb leírást igényelnek, adjon meg egy URL-hivatkozást ebbe a mezőbe, ahol a feltételek megtalálhatók. Aktív hivatkozásként jelenik meg az ügyfelek számára.
+Ha meg szeretné adni saját használati feltételeit, megadhatja őket a feltételek és kikötések mezőben. Ebben a mezőben legfeljebb 10 000 karakter hosszúságú szöveget adhat meg. Ha a feltételek és kikötések további leírást igényelnek, adjon meg egy URL-hivatkozást ebbe a mezőbe, ahol a feltételek és kikötések megtalálhatók. Aktív hivatkozásként jelenik meg az ügyfelek számára.
 
-Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt megpróbálhatnák az ajánlatot.
+Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
 
-Ne felejtse el **menteni,** mielőtt továbblépne a következő szakaszra.
-Ne felejtse el **menteni,** mielőtt továbblépne a következő szakaszra.
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.

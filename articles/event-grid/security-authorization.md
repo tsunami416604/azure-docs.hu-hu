@@ -8,15 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: babanisa
-ms.openlocfilehash: 03bc2f9de6f50f08c9f62f86a3d1791a067cecd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f8b0a779e6cb70537d126c251e1e065892934a9
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78899281"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629507"
 ---
 # <a name="authorizing-access-to-event-grid-resources"></a>Event Grid erőforrásokhoz való hozzáférés engedélyezése
 Azure Event Grid lehetővé teszi a különböző felhasználók számára megadott hozzáférési szint szabályozását különböző felügyeleti műveletek, például esemény-előfizetések listázása, új adatbázisok létrehozása és kulcsok létrehozása céljából. Event Grid az Azure szerepköralapú hozzáférés-vezérlését (RBAC) használja.
+
 
 ## <a name="operation-types"></a>Működési típusok
 
@@ -182,6 +183,23 @@ Egyéni szerepköröket a [PowerShell](../role-based-access-control/custom-roles
 ### <a name="encryption-at-rest"></a>Titkosítás inaktív állapotban
 
 A Event Grid szolgáltatás által lemezre írt összes eseményt vagy adatfájlt egy Microsoft által felügyelt kulcs titkosítja, amely biztosítja, hogy az inaktív állapotban legyen titkosítva. Emellett az események vagy az adatmegőrzési időszak maximális időtartama 24 óra az [Event Grid újrapróbálkozási házirend](delivery-and-retry.md)betartásával. A Event Grid 24 óra elteltével automatikusan törli az összes eseményt vagy az adatmennyiséget, vagy az esemény élettartama, attól függően, hogy melyik a kisebb.
+
+## <a name="permissions-for-event-subscriptions"></a>Esemény-előfizetések engedélyei
+Ha olyan eseménykezelőt használ, amely nem webhook (például egy Event hub vagy várólista-tároló), írási hozzáféréssel kell rendelkeznie az adott erőforráshoz. Ez az engedély-ellenőrzési funkció megakadályozza, hogy jogosulatlan felhasználó küldjön eseményeket az erőforrásba.
+
+Az eseményforrás erőforrásának a **Microsoft. EventGrid/EventSubscriptions/Write** engedéllyel kell rendelkeznie. Erre az engedélyre azért van szükség, mert az erőforrás hatókörében új előfizetést ír. A szükséges erőforrás különbözik attól függően, hogy egy rendszertémakörre vagy egy egyéni témakörre való feliratkozásra van-e szükség. Ebben a szakaszban mindkét típust ismertetjük.
+
+### <a name="system-topics-azure-service-publishers"></a>Rendszertémakörök (Azure-szolgáltatás közzétevői)
+A rendszertémakörökhöz engedély szükséges ahhoz, hogy új esemény-előfizetést írjon az eseményt közzétevő erőforrás hatókörén. Az erőforrás formátuma:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{resource-provider}/{resource-type}/{resource-name}`
+
+Ha például egy **myacct**nevű Storage-fiókra szeretne előfizetni egy eseményre, szüksége lesz a Microsoft. EventGrid/EventSubscriptions/Write engedélyre a következőn:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.Storage/storageAccounts/myacct`
+
+### <a name="custom-topics"></a>Egyéni témakörök
+Egyéni témakörök esetén engedély szükséges ahhoz, hogy új esemény-előfizetést írjon az Event Grid-témakör hatókörébe. Az erőforrás formátuma:`/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.EventGrid/topics/{topic-name}`
+
+Ha például egy **mytopic**nevű egyéni témakörre szeretne előfizetni, szüksége lesz a Microsoft. EventGrid/EventSubscriptions/Write engedélyre a következőn:`/subscriptions/####/resourceGroups/testrg/providers/Microsoft.EventGrid/topics/mytopic`
+
+
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,12 +3,12 @@ title: Azure Functions – alkalmazásbeállítási referencia
 description: A Azure Functions Alkalmazásbeállítások vagy környezeti változók dokumentációja.
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: e2d168d8828d17e13f875e3b2555c7db0d4ba32d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f42c411263575040d4392b85542920e8f2463d4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80656791"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690763"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions – alkalmazásbeállítási referencia
 
@@ -37,6 +37,10 @@ A Application Insightshoz tartozó kapcsolatok karakterlánca. Akkor `APPLICATIO
 ## <a name="azure_functions_environment"></a>AZURE_FUNCTIONS_ENVIRONMENT
 
 A functions futtatókörnyezet 2. x vagy újabb verziójában a futásidejű környezet alapján konfigurálja az alkalmazások viselkedését. Az [inicializálás során](https://github.com/Azure/azure-functions-host/blob/dev/src/WebJobs.Script.WebHost/Program.cs#L43)ez az érték olvasható. `AZURE_FUNCTIONS_ENVIRONMENT` Bármelyik értéket megadhatja, de [három érték](/dotnet/api/microsoft.aspnetcore.hosting.environmentname) támogatott: [fejlesztés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.development), [előkészítés](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.staging)és [éles környezet](/dotnet/api/microsoft.aspnetcore.hosting.environmentname.production). Ha `AZURE_FUNCTIONS_ENVIRONMENT` nincs beállítva, az alapértelmezett `Development` érték egy helyi környezetben és `Production` az Azure-ban. Ezt a beállítást a futásidejű környezet beállítása `ASPNETCORE_ENVIRONMENT` helyett kell használni. 
+
+## <a name="azurefunctionsjobhost__"></a>AzureFunctionsJobHost__\*
+
+A functions futtatókörnyezet 2. x vagy újabb verziójában az Alkalmazásbeállítások felülbírálják a [gazdagép. JSON](functions-host-json.md) beállításait az aktuális környezetben. Ezek a felülbírálások az Alkalmazásbeállítások nevű `AzureFunctionsJobHost__path__to__setting`alkalmazás-beállításokban vannak kifejezve. További információ: a [Host. JSON értékek felülbírálása](functions-host-json.md#override-hostjson-values).
 
 ## <a name="azurewebjobsdashboard"></a>AzureWebJobsDashboard
 
