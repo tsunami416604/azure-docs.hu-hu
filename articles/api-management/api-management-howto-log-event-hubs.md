@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 2f67079938ddcf4a65e01ef50ab7e5cdf7078b73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d122a56035e58bd5065da8fde56246da6478d54
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260938"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871258"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Események naplózása az Azure Event Hubsba az Azure-ban API Management
 Az Azure Event Hubs egy kiválóan méretezhető adatbefogadási szolgáltatás, amely másodpercenként több millió esemény fogadására képes, így a csatlakoztatott eszközök és alkalmazások által létrehozott nagy mennyiségű adatot egyszerűen feldolgozhatja és elemezheti. Event Hubs "bejárati ajtóként" viselkedik egy esemény-adatcsatorna esetében, és az adatok egy Event hubhoz való gyűjtése után átalakítható és tárolható bármely valós idejű elemzési szolgáltató vagy kötegelt/Storage-adapter használatával. Az Event Hubs elválasztja az eseménystreamek létrehozását azok felhasználásától, így az események felhasználói a saját ütemezésüknek megfelelően férhetnek hozzá az eseményekhez.
@@ -34,9 +34,9 @@ Most, hogy rendelkezik egy Event hub-val, a következő lépés egy [naplózó](
 
 API Management naplózók konfigurálása a [API Management REST API](https://aka.ms/apimapi)használatával történik. A részletes kérelmekre vonatkozó példákat a következő témakörben talál: [naplózók létrehozása](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/logger/createorupdate).
 
-## <a name="configure-log-to-eventhubs-policies"></a>Eventhubs házirendek konfigurálása
+## <a name="configure-log-to-eventhub-policies"></a>Eventhub házirendek konfigurálása
 
-Ha a naplózó konfigurálva van a API Managementban, beállíthatja a eventhubs szabályzatokat a kívánt események naplózásához. A eventhubs házirend a bejövő házirend szakaszban vagy a kimenő házirend szakaszban használható.
+Ha a naplózó konfigurálva van API Managementban, beállíthatja a eventhub-házirendet, hogy naplózza a kívánt eseményeket. A eventhub házirend a bejövő házirend szakaszban vagy a kimenő házirend szakaszban használható.
 
 1. Tallózzon az APIM-példányra.
 2. Válassza az API lapot.
@@ -49,15 +49,32 @@ Ha a naplózó konfigurálva van a API Managementban, beállíthatja a eventhubs
 9. A jobb oldali ablakban válassza a **speciális szabályzatok** > **napló EventHub**lehetőséget. Ez beszúrja `log-to-eventhub` a házirend-utasítás sablonját.
 
 ```xml
-<log-to-eventhub logger-id ='logger-id'>
-  @( string.Join(",", DateTime.UtcNow, context.Deployment.ServiceName, context.RequestId, context.Request.IpAddress, context.Operation.Name))
+<log-to-eventhub logger-id="logger-id">
+    @{
+        return new JObject(
+            new JProperty("EventTime", DateTime.UtcNow.ToString()),
+            new JProperty("ServiceName", context.Deployment.ServiceName),
+            new JProperty("RequestId", context.RequestId),
+            new JProperty("RequestIp", context.Request.IpAddress),
+            new JProperty("OperationName", context.Operation.Name)
+        ).ToString();
+    }
 </log-to-eventhub>
 ```
-Cserélje `logger-id` le az értéket az URL- `{new logger name}` ben használt értékre az előző lépésben létrehozott naplózó létrehozásához.
+Cserélje `logger-id` le a értéket a kérelem URL `{loggerId}` -címében használt értékre az előző lépésben létrehozott naplózó létrehozásához.
 
-Bármely olyan kifejezést használhat, amely egy karakterláncot ad vissza a `log-to-eventhub` elem értékeként. Ebben a példában egy karakterláncot, amely a dátumot és az időt, a szolgáltatás nevét, a kérelem azonosítóját, a kérelem IP-címét és a művelet nevét tartalmazza, a rendszer naplózza.
+Bármely olyan kifejezést használhat, amely egy karakterláncot ad vissza a `log-to-eventhub` elem értékeként. Ebben a példában egy JSON formátumú karakterláncot, amely a dátumot és az időt, a szolgáltatásnév, a kérelem azonosítóját, a kérelem IP-címét és a művelet nevét tartalmazza.
 
 A frissített házirend-konfiguráció mentéséhez kattintson a **Mentés** gombra. Amint menti a szabályzatot, a rendszer aktív állapotba kerül, és az eseményeket a kijelölt Event hub-ba naplózza.
+
+## <a name="preview-the-log-in-event-hubs-by-using-azure-stream-analytics"></a>A bejelentkezés előnézete Event Hubs Azure Stream Analytics használatával
+
+A naplót Event Hubs [Azure stream Analytics lekérdezések](https://docs.microsoft.com/azure/event-hubs/process-data-azure-stream-analytics)használatával tekintheti meg. 
+
+1. A Azure Portal keresse meg azt az Event hub-t, amelyet a naplóz az eseményeket küld. 
+2. A **szolgáltatások**területen válassza a **folyamat adat** lapot.
+3. A **valós idejű** adatvizsgálatok engedélyezése az események kártyáról lapon válassza a **Tallózás**lehetőséget.
+4. A **bemeneti előnézet** lapon megtekintheti a naplót. Ha a megjelenített adatértékek nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez.
 
 ## <a name="next-steps"></a>További lépések
 * További információ az Azure Event Hubs

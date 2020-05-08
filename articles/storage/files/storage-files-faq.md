@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 5aee3a19e33204da00483d0f4ee3f6ee97e8a07d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: b4d3be9fbacee82f36f1238c5d9b4598c95b5df2
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856272"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888818"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Az Azure Filesszal kapcsolatos gyakori kérdések (GYIK)
 A [Azure Files](storage-files-introduction.md) teljes körűen felügyelt fájlmegosztást biztosít a felhőben, amely az iparági szabványnak megfelelő [SMB protokollon](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)keresztül érhető el. Az Azure-fájlmegosztás párhuzamosan csatlakoztatható a Felhőbeli vagy a Windows, Linux és macOS rendszerű helyszíni környezetekhez. Az Azure-fájlmegosztás a Windows Server rendszerű gépeken is gyorsítótárazható a Azure File Sync használatával a gyors eléréshez, ahol az adott adatforgalomhoz közeledik.
@@ -170,7 +170,7 @@ Ez a cikk a Azure Files szolgáltatásokkal és funkciókkal kapcsolatos gyakori
 
     - A közös hozzáférésű aláírások (SAS) használatával olyan jogkivonatokat állíthat elő, amelyek meghatározott engedélyekkel rendelkeznek, és amelyek egy adott időintervallumra érvényesek. Létrehozhat például egy jogkivonatot csak olvasási hozzáféréssel egy adott fájlhoz, amely 10 perces lejáratú. Bárki, aki rendelkezik a jogkivonattal, míg a jogkivonat érvényes, csak olvasási hozzáféréssel rendelkezik a fájlhoz ezen a 10 percen belül. A közös hozzáférésű aláírási kulcsokat csak a REST API vagy az ügyféloldali kódtárak támogatják. A Storage-fiók kulcsainak használatával csatlakoztatnia kell az Azure-fájlmegosztást az SMB-kapcsolaton keresztül.
 
-    - Azure File Sync megőrzi és replikálja az összes tulajdonosi ACL-t vagy DACL-t (akár Active Directory-alapú, akár helyi) az összes olyan kiszolgálói végpontra, amelyet szinkronizál. Mivel a Windows Server már hitelesíthető Active Directorysal, Azure File Sync egy hatályos megszakítási lehetőség, amíg teljes mértékben támogatja a Active Directory-alapú hitelesítés és az ACL-támogatás megérkezését.
+    - Azure File Sync megőrzi és replikálja az összes tulajdonosi ACL-t vagy DACL-t (akár Active Directory-alapú, akár helyi) az összes olyan kiszolgálói végpontra, amelyet szinkronizál. 
     
     Az Azure Storage szolgáltatásban támogatott összes protokoll átfogó megjelenítéséhez tekintse meg az [Azure Storage-hozzáférés engedélyezését](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ismertető témakört. 
 

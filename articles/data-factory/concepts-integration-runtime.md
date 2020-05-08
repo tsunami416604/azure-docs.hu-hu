@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: ffa348c796a4d9d4e3bdb8e7ce18ba0eb82e17ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 214d97822bdb2efbe164c3526939ddbe78777e59
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418382"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890736"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -128,6 +128,10 @@ Az integrációs modul helye meghatározza a háttérszámítások helyét és a
 
 ### <a name="azure-ir-location"></a>Az Azure-beli integrációs modul helye
 
+Beállíthat egy Azure IR adott helyét, amely esetben a tevékenység végrehajtása vagy a feladás az adott régióban fog történni.
+
+Ha úgy dönt, hogy az automatikus feloldási Azure IR használja, amely az alapértelmezett,
+
 - Másolási tevékenység esetén az ADF a legjobb erőfeszítést tesz a fogadó adattár helyének automatikus észleléséhez, majd az IR-t az azonos régióban, ha van ilyen, vagy a legközelebbi ugyanazon a földrajzi helyen; Ha a fogadó adattárának régiója nem észlelhető, a rendszer Alternatív megoldásként az adatfeldolgozó régióban lévő IR-t használja.
 
   Tegyük fel, hogy a gyára az USA keleti régiójában lett létrehozva. 
@@ -135,7 +139,8 @@ Az integrációs modul helye meghatározza a háttérszámítások helyét és a
   - Az USA nyugati régiójában az Azure Blobba való adatmásoláskor, ha az ADF sikeresen észlelte, hogy a blob az USA nyugati régiójában található, a másolási tevékenység az USA nyugati régiójában lévő IR-ben történik Ha a régió észlelése sikertelen, a másolási tevékenységet az USA keleti régiójában hajtja végre az IR-ben.
   - Ha olyan Salesforce másol, amelyből a régió nem észlelhető, a másolási tevékenységet az USA keleti régiójában hajtja végre az IR-ben.
 
-- Másolási tevékenység esetén az ADF a legjobb megoldás a fogadó és a forrás adattároló automatikus észlelésére a legjobb hely kiválasztásához, akár ugyanabban a régióban (ha elérhető), akár a legközelebbi azonos földrajzi régióban, akár nem észlelhető, hogy alternatívként használja az adatfeldolgozó régiót.
+  >[!TIP] 
+  >Ha adatmegfelelőségi követelmények szigorúak, és biztosítania kell, hogy az adatok nem hagynak el egy adott földrajzi helyet, az adott régióban létrehozhat egy Azure-beli integrációs modult, és a ConnectVia tulajdonság használatával ehhez irányíthatja a társított szolgáltatást. Ha például adatokat szeretne másolni az Egyesült Királyság déli régióján belüli blobból az Egyesült Királyság déli régióján belüli SQL DW-be, és biztos szeretne lenni abban, hogy az adatok nem hagyják el az Egyesült Királyságot, hozzon létre egy Azure-beli integrációs modult az Egyesült Királyság déli régiójában, és társítson minden társított szolgáltatást ehhez a modulhoz.
 
 - A keresési/GetMetadata/törlési tevékenység végrehajtásához (más néven folyamat tevékenységekhez), az átalakítási tevékenység elküldéséhez (más néven külső tevékenységekhez) és a szerzői műveletekhez (a kapcsolat teszteléséhez, a mappák listájának megtekintéséhez és a táblázatok listájához, az előzetes verzióhoz tartozó adatokhoz) Az ADF a következőt használja: az IR
 

@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/24/2020
-ms.openlocfilehash: cf9597f4a722ff9cda68e87b31db77c989afcb0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f69a3f61c288b320399d1b3abfc632c93261c540
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129850"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983363"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
@@ -34,9 +34,13 @@ Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészlete
 
 
 ## <a name="how-to-use-evaluate-model"></a>Az értékelés modell használata
-1. Kapcsolja össze a [pontszám modell](./score-model.md) **pontszám** -kimenetét a **modell kiértékelése**bal oldali bemeneti portjával. 
+1. Kapcsolja össze a pontszám [-](./assign-data-to-clusters.md) [modell](./score-model.md) vagy az eredmények adatkészlet **-kimenetét** a **kiértékelési modell**bal oldali bemeneti portjához. 
+  > [!NOTE] 
+  > Ha olyan modulokat használ, mint például az "Oszlopok kiválasztása az adatkészletben" lehetőséget a bemeneti adatkészlet egy részének kiválasztásához, győződjön meg róla, hogy a tényleges címke oszlop (tanításban használatos), a "pontszámmal rendelkező valószínűségek" oszlop és a "pontozott feliratok" oszlop létezik a metrikák, például a AUC, a bináris besorolás
+  > A tényleges felirat oszlop, a "felhorzsolt címkék" oszlop létezik a többosztályos besorolás/regresszió metrikáinak kiszámításához.
+  > "Hozzárendelések" oszlop, oszlop: "DistancesToClusterCenter". X ' (X a középpontját index, amely a 0,... számú centroids-1) létezik a fürtözés metrikáinak kiszámításához.
 
-2. Választható Kapcsolja össze a [pontszám modell](./score-model.md) **pontozásos** kimenetét a második modellhez a **modell kiértékelésének** **jobb** oldali bemenetével. Az eredményeket egyszerűen összehasonlíthatja két különböző modellből ugyanazon adatok alapján. A két bemeneti algoritmusnak azonos algoritmus típusúnak kell lennie. Másik lehetőségként összehasonlíthatja azokat a két különböző futtatásból származó pontszámokat, amelyek különböző paraméterekkel rendelkeznek.
+2. Választható Kapcsolja össze **a** [pontszám-modell](./score-model.md) vagy az eredmények adatkészlet-kimenetét az adatok kiosztása fürtökhöz a második modellnek **megfelelő** bemeneti portra a **modell kiértékeléséhez**. Az eredményeket egyszerűen összehasonlíthatja két különböző modellből ugyanazon adatok alapján. A két bemeneti algoritmusnak azonos algoritmus típusúnak kell lennie. Másik lehetőségként összehasonlíthatja azokat a két különböző futtatásból származó pontszámokat, amelyek különböző paraméterekkel rendelkeznek.
 
     > [!NOTE]
     > Az algoritmus típusa a "kétosztályos besorolás", a "többosztályos besorolás", a "regresszió", a "fürtözés" kifejezésre hivatkozik a "Machine Learning algoritmusok" alatt. 

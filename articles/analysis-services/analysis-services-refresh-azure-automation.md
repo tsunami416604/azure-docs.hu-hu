@@ -6,12 +6,12 @@ ms.service: analysis-services
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: chlound
-ms.openlocfilehash: a79123d57f80474e1871ef68f9a92ea9417089ac
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572353"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871313"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
@@ -173,7 +173,7 @@ Egy statikus nyilvános IP-címmel rendelkező Azure-beli virtuális gép Azure 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy a virtuális gép nyilvános IP-címe statikusként van konfigurálva.
 >
->További információ a Azure Automation hibrid feldolgozók konfigurálásáról: [erőforrások automatizálása adatközpontban vagy felhőben hibrid Runbook-feldolgozók használatával](../automation/automation-hybrid-runbook-worker.md#install-a-hybrid-runbook-worker).
+>A hibrid feldolgozók Azure Automation konfigurálásával kapcsolatos további információkért lásd: [hibrid Runbook Worker telepítése](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
 A hibrid feldolgozók konfigurálása után hozzon létre egy webhookot a következő szakaszban leírtak szerint: [Data Factory használata](#consume-with-data-factory).  Az egyetlen különbség, hogy a webhook konfigurálásakor kiválasztja a**hibrid** feldolgozó **futtatása** > lehetőséget.
 

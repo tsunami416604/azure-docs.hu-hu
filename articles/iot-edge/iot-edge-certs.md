@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mqtt
-ms.openlocfilehash: d3e456d57d98b796fb1aea2e82de51f9fae40c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b299cf21652c23451aed735b10597adb85dc3db
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733166"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982728"
 ---
 # <a name="understand-how-azure-iot-edge-uses-certificates"></a>A Azure IoT Edge tanúsítványok használatának ismertetése
 
@@ -36,7 +36,7 @@ A hitelesítésszolgáltató vagy a "CA" rövid, egy olyan entitás, amely digit
 
 ### <a name="root-ca-certificate"></a>Legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány
 
-A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány a teljes folyamat megbízhatóságának gyökere. Éles környezetben Ez a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány általában megbízható kereskedelmi hitelesítésszolgáltatótól vásárolható, például Baltimore, VeriSign vagy DigiCert. Ha teljes körű vezérléssel rendelkezik a IoT Edge eszközökhöz csatlakozó eszközök felett, vállalati szintű hitelesítésszolgáltató is használható. Mindkét esetben a IoT Edge hub teljes tanúsítványlánc felfelé görget, így a Leaf IoT-eszközöknek meg kell bízniuk a főtanúsítványban. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a megbízható legfelső szintű hitelesítésszolgáltató tárolóban tárolhatja, vagy megadhatja a tanúsítvány részleteit az alkalmazás kódjában.
+A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány a teljes folyamat megbízhatóságának gyökere. Éles környezetben Ez a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány általában megbízható kereskedelmi hitelesítésszolgáltatótól vásárolható, például Baltimore, VeriSign vagy DigiCert. Ha teljes körű vezérléssel rendelkezik a IoT Edge eszközökhöz csatlakozó eszközök felett, vállalati szintű hitelesítésszolgáltató is használható. Mindkét esetben a IoT Edge hub teljes tanúsítványlánc a tekercsek között, így a levél IoT-eszközeinek meg kell bízniuk a főtanúsítványban. A legfelső szintű HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt a megbízható legfelső szintű hitelesítésszolgáltató tárolóban tárolhatja, vagy megadhatja a tanúsítvány részleteit az alkalmazás kódjában.
 
 ### <a name="intermediate-certificates"></a>Köztes tanúsítványok
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 45045cb1360658d394e5469d022ac03033d11aff
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: dd8706c1e95e6b1e4ca4a38d4a336f6186464696
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165790"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872201"
 ---
 # <a name="onboard-update-management-solution-using-azure-resource-manager-template"></a>Update Management megoldás előkészítése Azure Resource Manager sablon használatával
 
@@ -26,6 +26,9 @@ ms.locfileid: "82165790"
 A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép bevezetését.
 
 Ha már rendelkezik egy Log Analytics munkaterülettel és Automation-fiókkal, amely az előfizetés támogatott régiójában van telepítve, akkor nincsenek összekapcsolva. A munkaterületen még nincs telepítve a Update Management megoldás. A sablon használatával sikeresen létrehozta a hivatkozást, és üzembe helyezi a Update Management megoldást. 
+
+>[!NOTE]
+>A Linux Update Management részeként bekészített **nxautomation** -felhasználó csak az aláírt runbookok hajtja végre.
 
 >[!NOTE]
 >A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).

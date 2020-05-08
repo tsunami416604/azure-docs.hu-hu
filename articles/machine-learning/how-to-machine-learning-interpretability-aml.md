@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 45eef976fe10bbb5acda2cd348a77b28c3ffbe02
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769810"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983635"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Az adatelemzési csomag használata a Pythonban & ML-modellek elmagyarázása érdekében
 
@@ -238,10 +238,10 @@ Az alábbi példa bemutatja, hogyan használható az `ExplanationClient` osztál
 * `ExplanationClient` Töltse fel a értelmező környezetet a távoli Futtatás paranccsal.
 * A környezet későbbi letöltése helyi környezetben.
 
-1. Telepítés `azureml-interpret` és `azureml-interpret-contrib` csomagok.
+1. Telepítés `azureml-interpret` és `azureml-contrib-interpret` csomagok.
     ```bash
     pip install azureml-interpret
-    pip install azureml-interpret-contrib
+    pip install azureml-contrib-interpret
     ```
 1. Hozzon létre egy képzési parancsfájlt egy helyi Jupyter jegyzetfüzetben. Például: `train_explain.py`.
 

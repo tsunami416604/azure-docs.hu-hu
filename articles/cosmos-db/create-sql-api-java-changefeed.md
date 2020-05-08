@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: anfeldma
-ms.openlocfilehash: 5eab523dde2a13a85b0c8ff5bcbb3ecb5912e78e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c74ec73eb06c43110747d87e6fecd12183527759
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80586700"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872543"
 ---
 # <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Oktatóanyag – egy végpontok közötti aszinkron Java SQL API-alkalmazási minta a változási hírcsatornával
 
@@ -89,8 +89,8 @@ mvn clean package
 
     Nyomja le az ENTER billentyűt. Most a következő kódrészlet végrehajtja és inicializálja a változási hírcsatorna processzorát egy másik szálon: 
 
+   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
 
-    **Java SDK 4,0**
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -103,7 +103,8 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start
     ```
 
-    **Java SDK-3.7.0**
+   # <a name="java-sdk-370"></a>[Java SDK-3.7.0](#tab/v3sdk)
+
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
     changeFeedProcessorInstance.start()
@@ -115,6 +116,7 @@ mvn clean package
 
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
     ```
+   ---
 
     ```"SampleHost_1"```a a változási csatorna feldolgozó feldolgozójának neve. ```changeFeedProcessorInstance.start()```valójában elindítja a Change feed processzort.
 
@@ -124,7 +126,8 @@ mvn clean package
 
 1. Nyomja le ismét az ENTER billentyűt a terminálon. Ekkor a rendszer 10 dokumentumot szúr be a **InventoryContainerba**. Minden dokumentum beszúrása JSON-ként jelenik meg a változási hírcsatornában. a következő visszahívási kód kezeli ezeket az eseményeket úgy, hogy a JSON-dokumentumokat egy anyagbeli nézetbe tükrözi:
 
-    **Java SDK 4,0**
+   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -150,7 +153,8 @@ mvn clean package
     }
     ```
 
-    **Java SDK-3.7.0**
+   # <a name="java-sdk-370"></a>[Java SDK-3.7.0](#tab/v3sdk)
+
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosContainer feedContainer, CosmosContainer leaseContainer) {
         ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
@@ -175,6 +179,7 @@ mvn clean package
         typeContainer.upsertItem(document).subscribe();
     }    
     ```
+   ---
 
 1. 5 10sec futtatásának engedélyezése a kód számára. Ezután térjen vissza az Azure Portalra Adatkezelő és navigáljon a **InventoryContainer > elemekhez**. Látnia kell, hogy a rendszer beszúrja az elemeket a leltári tárolóba; Jegyezze fel a partíciós```id```kulcsot ().
 
@@ -190,7 +195,8 @@ mvn clean package
 
     Nyomja meg ismét az ENTER billentyűt ```deleteDocument()``` a függvény meghívásához a példában szereplő kódban. Ez a függvény az alább látható módon upsert a dokumentum egy új verzióját ```/ttl == 5```, amely a dokumentumot élettartam (TTL) értékre állítja a 5Sec. 
     
-    **Java SDK 4,0**
+   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+
     ```java
     public static void deleteDocument() {
 
@@ -217,8 +223,8 @@ mvn clean package
         feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
     }    
     ```
+   # <a name="java-sdk-370"></a>[Java SDK-3.7.0](#tab/v3sdk)
 
-    **Java SDK-3.7.0**
     ```java
     public static void deleteDocument() {
 
@@ -245,6 +251,7 @@ mvn clean package
         feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
     }    
     ```
+   ---
 
     A módosítási ```feedPollDelay``` hírcsatorna a 100ms értékre van állítva. Ezért a változási csatorna szinte azonnal reagál erre a frissítésre, ```updateInventoryTypeMaterializedView()``` és a fent látható hívásokat kéri. Az utolsó függvény hívása az új dokumentumot a 5Sec TTL-upsert fogja a **InventoryContainer-pktype**.
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: 78a6e7fa8d030185f537136a3a2124d8bc59d808
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 945a27da874071d22952207b7be5add79ce7e2ec
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79037629"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872624"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az az Azure Machine Learning Designer (előzetes verzió)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -82,7 +82,7 @@ A modul rendelkezhet a belső algoritmusok konfigurálásához használható par
 
 ![Modul tulajdonságai](./media/concept-designer/properties.png)
 
-Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtára között, tekintse meg a következő témakört: [algoritmus & modul ismertetése – áttekintés](algorithm-module-reference/module-reference.md)
+Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtárában, tekintse át a következő témakört: [algoritmus & modul-hivatkozás áttekintése](algorithm-module-reference/module-reference.md). Az algoritmus kiválasztásával kapcsolatos segítségért tekintse meg a [Azure Machine learning algoritmust ismertető lapot](algorithm-cheat-sheet.md).
 
 ## <a name="compute-resources"></a><a name="compute"></a>Számítási erőforrások
 
@@ -91,9 +91,10 @@ A munkaterületen lévő számítási erőforrások használatával futtathatja 
 | Számítási cél | Képzés | Üzembe helyezés |
 | ---- |:----:|:----:|
 | Azure Machine Learning számítás | ✓ | |
+| Azure Machine Learning számítási példány | ✓ | |
 | Azure Kubernetes Service | | ✓ |
 
-A számítási célok a [Azure Machine learning munkaterülethez](concept-workspace.md)vannak csatolva. A számítási célokat a [Azure Machine learning Studio (klasszikus)](https://ml.azure.com)munkaterületen kezelheti.
+A számítási célok a [Azure Machine learning munkaterülethez](concept-workspace.md)vannak csatolva. A számítási célokat a [Azure Machine learning Studióban](https://ml.azure.com)a munkaterületen kezelheti.
 
 ## <a name="deploy"></a>Üzembe helyezés
 

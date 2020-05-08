@@ -3,20 +3,20 @@ title: A Azurite Emulator használata a helyi Azure Storage-fejlesztéshez
 description: A nyílt forráskódú Azurite-emulátor (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Storage-alkalmazások teszteléséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 08/31/2019
+ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76029920"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872580"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>A Azurite Emulator használata helyi Azure Storage-fejlesztéshez és-teszteléshez (előzetes verzió)
 
-A Azurite 3,2-es verziójának nyílt forráskódú emulátora (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob-és üzenetsor-tárolási alkalmazások teszteléséhez. Ha elégedett az alkalmazás helyi működésével, váltson egy Azure Storage-fiók használatára a felhőben. Az emulátor platformfüggetlen támogatást biztosít Windows, Linux és MacOS platformokon. A Azurite v3 támogatja az Azure Blob service által megvalósított API-kat.
+A Azurite 3,2-es verziójának nyílt forráskódú emulátora (előzetes verzió) ingyenes helyi környezetet biztosít az Azure Blob-és üzenetsor-tárolási alkalmazások teszteléséhez. Ha elégedett az alkalmazás helyi működésével, váltson egy Azure Storage-fiók használatára a felhőben. Az emulátor platformfüggetlen támogatást biztosít Windows, Linux és macOS platformokon. A Azurite v3 támogatja az Azure Blob service által megvalósított API-kat.
 
 A Azurite a jövőbeli Storage Emulator platform. A Azurite felülírja az [Azure Storage-emulátort](storage-use-emulator.md). A Azurite továbbra is frissülni fog az Azure Storage API-k legújabb verzióinak támogatásához.
 
@@ -33,39 +33,44 @@ A Visual Studio Code-ban válassza a **bővítmények** ablaktáblát, és keres
 
 ![Visual Studio Code Extensions piactér](media/storage-use-azurite/azurite-vs-code-extension.png)
 
-Másik lehetőségként navigáljon a [vs Code bővítmény piacához](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) a böngészőben. A **telepítés** gombra kattintva nyissa meg a Visual Studio Code-ot, és lépjen közvetlenül a Azurite bővítmény oldalára.
+A böngészőben a [Visual Studio Code-bővítmény piaca](https://marketplace.visualstudio.com/items?itemName=Azurite.azurite) is elérhető. A **telepítés** gombra kattintva nyissa meg a Visual Studio Code-ot, és lépjen közvetlenül a Azurite bővítmény oldalára.
 
-Az Azurite gyors elindításához vagy bezárásához kattintson a **[Azurite blob Service]** vagy a **[Azurite üzenetsor-szolgáltatás]** elemre a vs Code állapotsorban, vagy adja ki a következő parancsokat a vs Code parancs palettáján. A parancs paletta megnyitásához nyomja le az **F1** billentyűt a vs Code-ban.
+A Azurite gyorsan elindíthatja vagy lezárhatja a Visual Studio Code állapotjelző sávján. Kattintson a **[Azurite blob Service]** vagy a **[Azurite üzenetsor-szolgáltatás]** elemre.
 
-A bővítmény a következő Visual Studio Code-parancsokat támogatja:
+A bővítmény a Visual Studio Code következő parancsait támogatja. A parancs paletta megnyitásához nyomja le az F1 billentyűt a Visual Studio Code-ban. 
 
-   * **Azurite: Start** – az összes Azurite-szolgáltatás elindítása
-   * **Azurite: Bezárás** – az összes Azurite-szolgáltatás lezárása
-   * **Azurite:** a Azurite Services összes perzisztencia-adatbázisának törlése
-   * **Azurite: a blob** Service elindítása – blob szolgáltatás indítása
-   * **Azurite: blob szolgáltatás lezárása** – blob szolgáltatás lezárása
-   * **Azurite: a blob Service tisztítása** – a blob szolgáltatás tisztítása
-   * **Azurite: üzenetsor** -szolgáltatás indítása – üzenetsor-szolgáltatás indítása
-   * **Azurite: Bezárás üzenetsor** -szolgáltatás – Bezárás üzenetsor-szolgáltatás
-   * **Azurite: tiszta üzenetsor** -szolgáltatás – a várólista-szolgáltatás tisztítása
+   - **Azurite:** a Azurite Services összes perzisztencia-adatbázisának törlése
+   - **Azurite: a blob Service tisztítása** – a blob szolgáltatás tisztítása
+   - **Azurite: tiszta üzenetsor** -szolgáltatás – a várólista-szolgáltatás tisztítása
+   - **Azurite: Bezárás** – az összes Azurite-szolgáltatás lezárása
+   - **Azurite: blob szolgáltatás lezárása** – blob szolgáltatás lezárása
+   - **Azurite: Bezárás üzenetsor** -szolgáltatás – Bezárás üzenetsor-szolgáltatás
+   - **Azurite: Start** – az összes Azurite-szolgáltatás elindítása
+   - **Azurite: a blob** Service elindítása – blob szolgáltatás indítása
+   - **Azurite: üzenetsor** -szolgáltatás indítása – üzenetsor-szolgáltatás indítása
 
-A Azurite Visual Studio code-on belüli konfigurálásához válassza a kiterjesztések panelt. Válassza a **kezelés** (fogaskerék) ikont a **Azurite**. Válassza a **bővítmény beállításainak konfigurálása**lehetőséget.
+A Azurite Visual Studio code-on belüli konfigurálásához válassza a kiterjesztések panelt. Válassza a **kezelés** (fogaskerék) ikont a **Azurite**. Válassza ki a **bővítmény beállításait**.
 
-![Azurite konfigurálása](media/storage-use-azurite/azurite-configure-extension-settings.png)
+![Azurites konfigurálása](media/storage-use-azurite/azurite-configure-extension-settings.png)
 
 A következő beállítások támogatottak:
 
-   * **Azurite: blob Host** – a blob Service figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
-   * **Azurite: blob port** – a blob Service figyelési port. Az alapértelmezett port a 10000.
-   * **Azurite: hibakeresés** – a hibakeresési napló kimenete a Azurite csatornára. Az alapértelmezett érték: **hamis**.
-   * **Azurite: Location** – a munkaterület helyének elérési útja. Az alapértelmezett érték a Visual Studio Code Working mappa.
-   * **Azurite: várólista-állomás** – a Queue szolgáltatás figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
-   * **Azurite: várólista portja** – a Queue szolgáltatás figyelési port. Az alapértelmezett port a 10001.
-   * **Azurite: csendes** -csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték: **hamis**.
+   - **Azurite: blob Host** – a blob Service figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
+   - **Azurite: blob port** – a blob Service figyelési port. Az alapértelmezett port a 10000.
+   - **Azurite:** tanúsítvány – egy HELYILEG megbízható PEM-vagy pfx-tanúsítványfájl elérési útja a https-mód engedélyezéséhez.
+   - **Azurite: hibakeresés** – a hibakeresési napló kimenete a Azurite csatornára. Az alapértelmezett érték: **hamis**.
+   - **Azurite: kulcs** – a HELYILEG megbízható PEM-kulcsfájl elérési útja, amely akkor szükséges, ha **Azurite: a tanúsítvány** egy PEM-fájlra mutat.
+   - **Azurite: Location** – a munkaterület helyének elérési útja. Az alapértelmezett érték a Visual Studio Code Working mappa.
+   - **Azurite:** laza engedélyezése – a nem támogatott fejléceket és paramétereket figyelmen kívül hagyva.
+   - **Azurite: OAuth** – opcionális OAuth szint.
+   - **Azurite: pwd** – a pfx-fájl jelszava. Kötelező, ha **Azurite: a tanúsítvány** pfx-fájlra mutat.
+   - **Azurite: várólista-állomás** – a Queue szolgáltatás figyelő végpontja. Az alapértelmezett beállítás a 127.0.0.1.
+   - **Azurite: várólista portja** – a Queue szolgáltatás figyelési port. Az alapértelmezett port a 10001.
+   - **Azurite: csendes** -csendes üzemmód letiltja a hozzáférési naplót. Az alapértelmezett érték: **hamis**.
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>A Azurite telepítése és futtatása a NPM használatával
 
-Ehhez a telepítési módszerhez a [Node. js 8,0-es vagy újabb verziójára](https://nodejs.org) van szükség. a **NPM** az összes Node. js-telepítéshez mellékelt csomagkezelő eszköz. A Node. js telepítése után hajtsa végre a következő **NPM** -parancsot a Azurite telepítéséhez.
+Ehhez a telepítési módszerhez a [Node. js 8,0-es vagy újabb verziójára](https://nodejs.org) van szükség. A Node Package Manager (NPM) az összes Node. js-telepítésben található csomagkezelő eszköz. A Node. js telepítése után hajtsa végre `npm` a következő parancsot a Azurite telepítéséhez.
 
 ```console
 npm install -g azurite
@@ -86,7 +91,8 @@ docker pull mcr.microsoft.com/azure-storage/azurite
 A következő parancs futtatja a Azurite Docker-rendszerképet. A `-p 10000:10000` paraméter átirányítja a gazdagépről a 10000-as portra érkező kéréseket a Docker-példányra.
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Munkaterület helyének meghatározása**:
@@ -94,33 +100,18 @@ docker run -p 10000:10000 -p 10001:10001 mcr.microsoft.com/azure-storage/azurite
 A következő példában a `-v c:/azurite:/data` paraméter a *c:/Azurite* adja meg a Azurite megőrzött adathelyként. A Docker-parancs futtatása előtt létre kell hozni a könyvtárat ( *c:/Azurite*).
 
 ```console
-docker run -p 10000:10000 -p 10001:10001 -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 -p 10001:10001 \
+    -v c:/azurite:/data mcr.microsoft.com/azure-storage/azurite
 ```
 
 **Csak a blob szolgáltatás futtatása**
 
 ```console
-docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite
+docker run -p 10000:10000 mcr.microsoft.com/azure-storage/azurite \
     azurite-blob --blobHost 0.0.0.0 --blobPort 10000
 ```
 
-**Az összes Azurite-paraméter beállítása**:
-
-Ez a példa bemutatja, hogyan állíthatja be az összes parancssori paramétert. Az alábbi paramétereket egyetlen parancssorba kell helyezni.
-
-```console
-docker run -p 8888:8888
-           -p 9999:9999
-           -v c:/azurite:/workspace mcr.microsoft.com/azure-storage/azurite azurite
-           -l /workspace
-           -d /workspace/debug.log
-           --blobPort 8888
-           --blobHost 0.0.0.0
-           --queuePort 9999
-           --queueHost 0.0.0.0
-```
-
-További információ a Azurite konfigurálásáról az indításkor: [parancssori kapcsolók](#command-line-options) .
+További információ a Azurite konfigurálásáról az indításkor: [parancssori kapcsolók](#command-line-options).
 
 ## <a name="clone-build-and-run-azurite-from-the-github-repository"></a>Azurite klónozása, létrehozása és futtatása a GitHub-adattárból
 
@@ -143,32 +134,32 @@ A Azurite telepítése és létrehozása után tekintse meg [a Azurite futtatás
 ## <a name="run-azurite-from-a-command-line"></a>Azurite futtatása parancssorból
 
 > [!NOTE]
-> A Azurite nem futtatható a parancssorból, ha csak a Visual Studio Code bővítményt telepítette. Ehelyett használja a VS Code parancs-palettát. További információkért lásd: [a Azurite Visual Studio Code bővítmény telepítése és futtatása](#install-and-run-the-azurite-visual-studio-code-extension).
+> A Azurite nem futtatható a parancssorból, ha csak a Visual Studio Code bővítményt telepítette. Ehelyett használja a Visual Studio Code parancs-palettát. További információkért lásd: [a Azurite Visual Studio Code bővítmény telepítése és futtatása](#install-and-run-the-azurite-visual-studio-code-extension).
 
-A parancssorból való azonnali kezdéshez hozzon létre egy **c:\azurite**nevű könyvtárat, majd indítsa el a Azurite a következő parancs kiadásával:
+A parancssorból történő azonnali kezdéshez hozzon létre egy *c:\azurite*nevű könyvtárat, majd indítsa el a Azurite a következő parancs kiadásával:
 
 ```console
 azurite --silent --location c:\azurite --debug c:\azurite\debug.log
 ```
 
-Ez a parancs arra utasítja a Azurite, hogy egy adott címtárban ( **c:\azurite**) tárolja az összes adatot. Ha a **--Location** beállítás ki van hagyva, az az aktuális munkakönyvtárat fogja használni.
+Ez a parancs arra utasítja a Azurite, hogy egy adott címtárban ( *c:\azurite*) tárolja az összes adatot. Ha a `--location` beállítás nincs megadva, a rendszer az aktuális munkakönyvtárat fogja használni.
 
 ## <a name="command-line-options"></a>Parancssori kapcsolók
 
-Ez a szakasz részletesen ismerteti a Azurite indításakor elérhető parancssori kapcsolókat. Az összes parancssori kapcsoló nem kötelező.
+Ez a szakasz részletesen ismerteti a Azurite indításakor elérhető parancssori kapcsolókat.
+
+### <a name="help"></a>Súgó
+
+**Opcionális** – parancssori Segítség kérése a `-h` vagy `--help` kapcsoló használatával.
 
 ```console
-C:\Azurite> azurite [--blobHost <IP address>] [--blobPort <port address>] 
-    [-d | --debug <log file path>] [-l | --location <workspace path>]
-    [--queueHost <IP address>] [--queuePort <port address>]
-    [-s | --silent] [-h | --help]
+azurite -h
+azurite --help
 ```
-
-A **-d** billentyűparancs a-- **Debug**, **-l** kapcsoló parancsikonja a-- **helyhez**, a **-s** pedig a- **-Silent**, a- **h** pedig egy parancsikon a-- **help**parancshoz.
 
 ### <a name="blob-listening-host"></a>BLOB figyelő gazdagép
 
-Nem **kötelező** Alapértelmezés szerint a Azurite helyi kiszolgálóként fogja figyelni a 127.0.0.1-t. A **--blobHost** kapcsoló használatával állítsa be a címeket a követelményekre.
+**Opcionális** – a Azurite alapértelmezés szerint helyi kiszolgálóként fogja figyelni a 127.0.0.1-t. A `--blobHost` kapcsoló használatával állítsa be a kívánt címeket a követelményekre.
 
 Kérelmek elfogadása csak a helyi gépen:
 
@@ -187,7 +178,7 @@ azurite --blobHost 0.0.0.0
 
 ### <a name="blob-listening-port-configuration"></a>BLOB figyelési portjának konfigurációja
 
-Nem **kötelező** Alapértelmezés szerint a Azurite a 10000-es porton fogja figyelni a Blob service. Használja a **--blobPort** kapcsolót a szükséges figyelési port megadásához.
+**Opcionális** – alapértelmezés szerint a Azurite a 10000-as porton fogja figyelni a blob Service. A `--blobPort` kapcsoló használatával határozza meg a szükséges figyelő portot.
 
 > [!NOTE]
 > Ha testreszabott portot használ, frissítenie kell a kapcsolódási karakterláncot vagy az Azure Storage-eszközök vagy SDK-k megfelelő konfigurációját.
@@ -208,7 +199,7 @@ A használatban lévő port a Azurite indításakor jelenik meg.
 
 ### <a name="queue-listening-host"></a>Üzenetsor-figyelő gazdagép
 
-Nem **kötelező** Alapértelmezés szerint a Azurite helyi kiszolgálóként fogja figyelni a 127.0.0.1-t. A **--queueHost** kapcsoló használatával állítsa be a címeket a követelményekre.
+**Opcionális** – a Azurite alapértelmezés szerint helyi kiszolgálóként fogja figyelni a 127.0.0.1-t. A `--queueHost` kapcsoló használatával állítsa be a kívánt címeket a követelményekre.
 
 Kérelmek elfogadása csak a helyi gépen:
 
@@ -227,7 +218,7 @@ azurite --queueHost 0.0.0.0
 
 ### <a name="queue-listening-port-configuration"></a>Várólista-figyelő portjának konfigurációja
 
-Nem **kötelező** Alapértelmezés szerint a Azurite a 10001-es porton fogja figyelni a Queue szolgáltatás. Használja a **--queuePort** kapcsolót a szükséges figyelési port megadásához.
+**Opcionális** – alapértelmezés szerint a Azurite a 10001-as porton fogja figyelni a Queue szolgáltatás. A `--queuePort` kapcsoló használatával határozza meg a szükséges figyelő portot.
 
 > [!NOTE]
 > Ha testreszabott portot használ, frissítenie kell a kapcsolódási karakterláncot vagy az Azure Storage-eszközök vagy SDK-k megfelelő konfigurációját.
@@ -248,79 +239,90 @@ A használatban lévő port a Azurite indításakor jelenik meg.
 
 ### <a name="workspace-path"></a>Munkaterület elérési útja
 
-Nem **kötelező** A Azurite a helyi lemezre menti az adattárolást a végrehajtás során. A **--Location** kapcsoló használatával megadnia a munkaterület helyének elérési útját. Alapértelmezés szerint a rendszer az aktuális folyamat munkakönyvtárát fogja használni.
-
-```console
-azurite --location c:\azurite
-```
+**Opcionális** – a Azurite a helyi lemezre menti az adattárolást a végrehajtás során. A `-l` vagy `--location` a kapcsoló használatával megadnia a munkaterület helyének elérési útját. Alapértelmezés szerint a rendszer az aktuális folyamat munkakönyvtárát fogja használni. Jegyezze fel az "l" kisbetűt.
 
 ```console
 azurite -l c:\azurite
+azurite --location c:\azurite
 ```
 
 ### <a name="access-log"></a>Hozzáférési napló
 
-Nem **kötelező** Alapértelmezés szerint a hozzáférési napló a konzol ablakban jelenik meg. Tiltsa le a hozzáférési napló megjelenítését a **--Silent** kapcsoló használatával.
-
-```console
-azurite --silent
-```
+**Opcionális** – alapértelmezés szerint a hozzáférési napló a konzol ablakban jelenik meg. Tiltsa le a hozzáférési napló megjelenítését a vagy `-s` `--silent` a kapcsoló használatával.
 
 ```console
 azurite -s
+azurite --silent
 ```
-
 ### <a name="debug-log"></a>Hibakeresési napló
 
-Nem **kötelező** A hibakeresési napló részletes információkat tartalmaz minden kérelemről és a kivételek veremének nyomon követéséről. A hibakeresési napló engedélyezéséhez adjon meg egy érvényes helyi elérési utat a **--Debug** kapcsolóhoz.
-
-```console
-azurite --debug path/debug.log
-```
+Nem **kötelező** – a hibakeresési napló részletes információkat tartalmaz minden kérelemről és a kivételek veremének nyomkövetéséről. A hibakeresési napló engedélyezéséhez adjon meg egy érvényes helyi elérési `-d` utat `--debug` a vagy kapcsoló számára.
 
 ```console
 azurite -d path/debug.log
+azurite --debug path/debug.log
 ```
 
 ### <a name="loose-mode"></a>Kilazult mód
 
-Nem **kötelező** Alapértelmezés szerint a Azurite szigorú módot alkalmaz a nem támogatott kérelmek fejlécének és paramétereinek a blokkolására. Tiltsa le a szigorú módot a **--laza** kapcsoló használatával.
-
-```console
-azurite --loose
-```
-
-Jegyezze fel a "L" főkapcsolót:
+**Opcionális** – alapértelmezés szerint a Azurite szigorú módot alkalmaz a nem támogatott kérelmek fejlécének és paramétereinek a blokkolására. Tiltsa le a szigorú módot a `-L` vagy `--loose` a kapcsoló használatával. Jegyezze fel az "L" tőkét.
 
 ```console
 azurite -L
+azurite --loose
 ```
+### <a name="version"></a>Verzió
+
+Nem **kötelező** – a telepített Azurite verziószámát a `-v` vagy `--version` kapcsoló használatával jelenítheti meg.
+
+```console
+azurite -v
+azurite --version
+```
+
+### <a name="certificate-configuration-https"></a>Tanúsítvány konfigurációja (HTTPS)
+
+**Opcionális** – alapértelmezés szerint a AZURITE a HTTP protokollt használja. Engedélyezze a HTTPS-módot egy Privacy Enhanced Mail (. PEM) vagy [személyes információcsere (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) tanúsítványfájl elérési útjának megadásával a `--cert` kapcsolóhoz.
+
+Ha `--cert` egy PEM-fájlhoz van megadva, meg kell adnia egy `--key` megfelelő kapcsolót.
+
+```console
+azurite --cert path/server.pem --key path/key.pem
+```
+
+Ha `--cert` egy pfx-fájlhoz van megadva, meg kell adnia egy `--pwd` megfelelő kapcsolót.
+
+```console
+azurite --cert path/server.pfx --pwd pfxpassword
+```
+
+A PEM-és PFX-fájlok létrehozásával kapcsolatos részletes információkért lásd: [https-beállítás](https://github.com/Azure/Azurite/blob/master/README.md#https-setup).
+
+### <a name="oauth-configuration"></a>OAuth-konfiguráció
+
+**Opcionális** – engedélyezze a OAuth-hitelesítést a Azurite a `--oauth` kapcsoló használatával.
+
+```console
+azurite --oauth basic --cert path/server.pem --key path/key.pem
+```
+
+> [!NOTE]
+> A OAuth HTTPS-végpontot igényel. Győződjön meg arról, hogy engedélyezve `--cert` van-e a `--oauth` HTTPS a kapcsolóval együtt.
+
+A Azurite az `basic` alapszintű hitelesítést támogatja a `--oauth` kapcsoló paraméterének megadásával. A Azurite alapszintű hitelesítést végez, például érvényesíti a bejövő tulajdonosi jogkivonatot, ellenőrzi a kiállítót, a célközönséget és a lejáratot. A Azurite nem fogja ellenőriznie a jogkivonat aláírását vagy engedélyeit.
 
 ## <a name="authorization-for-tools-and-sdks"></a>Eszközök és SDK-k engedélyezése
 
-Az Azure Storage SDK-k vagy eszközök, például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)bármely hitelesítési stratégia segítségével csatlakozhat a Azurite. Hitelesítés szükséges. A Azurite támogatja a megosztott kulcs és a közös hozzáférésű aláírások (SAS) engedélyezését. A Azurite támogatja a nyilvános tárolók névtelen elérését is.
+Az Azure Storage SDK-k vagy eszközök, például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)bármely hitelesítési stratégia segítségével csatlakozhat a Azurite. Hitelesítés szükséges. A Azurite támogatja az OAuth, a megosztott kulcs és a közös hozzáférésű aláírások (SAS) engedélyezését. A Azurite támogatja a nyilvános tárolók névtelen elérését is.
+
+Ha az Azure SDK-kat használja, indítsa el a Azurite `--oauth basic and --cert --key/--pwd` a lehetőségekkel.
 
 ### <a name="well-known-storage-account-and-key"></a>Jól ismert Storage-fiók és-kulcs
 
-A következő fióknevet és kulcsot használhatja a Azurite. Ez ugyanaz a jól ismert fiók és kulcs, amelyet a régi Azure Storage Emulator használ.
+A Azurite ugyanazt a jól ismert fiókot és kulcsot fogadja el, amelyet a régi Azure Storage-emulátor használ.
 
-* Fiók neve:`devstoreaccount1`
-* Fiók kulcsa:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
-
-> [!NOTE]
-> A SharedKey-hitelesítésen kívül a Azurite támogatja a fiók és a szolgáltatás SAS-hitelesítését. A névtelen hozzáférés akkor is elérhető, ha egy tároló úgy van beállítva, hogy engedélyezze a nyilvános hozzáférést.
-
-### <a name="connection-string"></a>Kapcsolati sztring
-
-Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely a *UseDevelopmentStorage = True*billentyűparancsra hivatkozik. Íme egy példa az *app. config* fájlban található kapcsolatok karakterláncra:
-
-```xml
-<appSettings>
-  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
-</appSettings>
-```
-
-További információ: az [Azure Storage-beli kapcsolatok karakterláncának konfigurálása](storage-configure-connection-string.md).
+- Fiók neve:`devstoreaccount1`
+- Fiók kulcsa:`Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==`
 
 ### <a name="custom-storage-accounts-and-keys"></a>Egyéni Storage-fiókok és-kulcsok
 
@@ -332,10 +334,18 @@ Használjon például egy olyan egyéni Storage-fiókot, amely rendelkezik egy k
 set AZURITE_ACCOUNTS="account1:key1"
 ```
 
+```bash
+export AZURITE_ACCOUNTS="account1:key1"
+```
+
 Vagy használjon több Storage-fiókot két kulccsal:
 
 ```cmd
 set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+```bash
+export AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
 ```
 
 A Azurite alapértelmezés szerint percenként frissíti az egyéni fiókok nevét és kulcsait a környezeti változóból. Ezzel a funkcióval dinamikusan elforgathatja a fiók kulcsát, vagy új Storage-fiókokat adhat hozzá a Azurite újraindítása nélkül.
@@ -343,15 +353,159 @@ A Azurite alapértelmezés szerint percenként frissíti az egyéni fiókok nev�
 > [!NOTE]
 > Az alapértelmezett `devstoreaccount1` Storage-fiók le van tiltva egyéni Storage-fiókok beállításakor.
 
-> [!NOTE]
-> Az egyéni fióknév és kulcsok használata esetén ennek megfelelően frissítse a kapcsolódási karakterláncot.
+### <a name="connection-strings"></a>Kapcsolati sztringek
 
-> [!NOTE]
-> Használja a `export` kulcsszót a környezeti változók Linux-környezetben `set` történő beállításához a Windows rendszerben.
+Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapcsolati karakterlánc konfigurálása az alkalmazás konfigurációs fájljában, amely a *UseDevelopmentStorage = True*billentyűparancsra hivatkozik. Íme egy példa az *app. config* fájlban található kapcsolatok karakterláncra:
 
-### <a name="storage-explorer"></a>Storage Explorer
+```xml
+<appSettings>
+  <add key="StorageConnectionString" value="UseDevelopmentStorage=true" />
+</appSettings>
+```
 
-Azure Storage Explorer a **fiók hozzáadása** ikonra kattintva kapcsolódjon a Azurite, majd válassza a **csatolás helyi emulátorhoz** lehetőséget, majd kattintson a **Kapcsolódás**elemre.
+#### <a name="http-connection-strings"></a>HTTP-kapcsolatok karakterláncai
+
+A következő kapcsolódási karakterláncokat átadhatja az [Azure SDK](https://aka.ms/azsdk) -k vagy eszközök, például az azure CLI 2,0 vagy a Storage Explorer számára.
+
+A teljes kapcsolatok karakterlánca:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+Ha csak a blob szolgáltatáshoz szeretne csatlakozni, a kapcsolati karakterlánc a következő:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;`
+
+Ha csak a várólista-szolgáltatáshoz szeretne csatlakozni, a kapcsolati karakterlánc a következő:
+
+`DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=http://127.0.0.1:10001/devstoreaccount1;`
+
+#### <a name="https-connection-strings"></a>HTTPS-kapcsolati karakterláncok
+
+A teljes HTTPS-kapcsolati karakterlánc:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Ha csak a blob-szolgáltatást szeretné használni, a HTTPS-kapcsolati karakterlánc a következő:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;`
+
+Ha csak a várólista-szolgáltatást szeretné használni, a HTTPS-kapcsolati karakterlánc a következő:
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
+
+Ha az önaláírt tanúsítvány létrehozásához használt `dotnet dev-certs` , használja a következő kapcsolódási karakterláncot.
+
+`DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
+
+A kapcsolódási karakterlánc frissítése [Egyéni Storage-fiókok és-kulcsok](#custom-storage-accounts-and-keys)használata esetén.
+
+További információ: az [Azure Storage-beli kapcsolatok karakterláncának konfigurálása](storage-configure-connection-string.md).
+
+### <a name="azure-sdks"></a>Azure SDK-k
+
+Ha az [Azure SDK](https://aka.ms/azsdk)-k használatával szeretné használni az Azurite-t, használja a OAuth és a https-beállításokat:
+
+```console
+azurite --oauth basic --cert certname.pem --key certname-key.pem
+```
+
+#### <a name="azure-blob-storage"></a>Azure Blob Storage
+
+Ezután BlobContainerClient, BlobServiceClient vagy BlobClient hozhat létre.
+
+```csharp
+// With container URL and DefaultAzureCredential
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new BlobContainerClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "container-name"
+  );
+
+// With account name and key
+var client = new BlobContainerClient(
+    new Uri("https://127.0.0.1:10000/devstoreaccount1/container-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+#### <a name="azure-queue-storage"></a>Azure Queue Storage
+
+QueueClient vagy QueueServiceClient is létrehozhat.
+
+```csharp
+// With queue URL and DefaultAzureCredential
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"), new DefaultAzureCredential()
+  );
+
+// With connection string
+var client = new QueueClient(
+    "DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://127.0.0.1:10000/devstoreaccount1;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;", "queue-name"
+  );
+
+// With account name and key
+var client = new QueueClient(
+    new Uri("https://127.0.0.1:10001/devstoreaccount1/queue-name"),
+    new StorageSharedKeyCredential("devstoreaccount1", "Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==")
+  );
+```
+
+### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+
+Storage Explorer használatával megtekintheti a Azurite tárolt adatfájlokat.
+
+#### <a name="connect-to-azurite-using-http"></a>Kapcsolódás Azurite HTTP használatával
+
+Storage Explorer a következő lépésekkel csatlakozhat a Azurite-hez:
+
+ 1. Válassza **a fiók hozzáadása** ikont
+ 1. **Helyi emulátorhoz tartozó csatolás** kiválasztása
+ 1. Válassza a **tovább** lehetőséget
+ 1. Kattintson a **Tovább gombra**
+ 1. Válassza a **kapcsolat** lehetőséget.
+
+#### <a name="connect-to-azurite-using-https"></a>Kapcsolódás Azurite HTTPS használatával
+
+Alapértelmezés szerint Storage Explorer nem nyit meg olyan HTTPS-végpontot, amely önaláírt tanúsítványt használ. Ha a Azurite-t HTTPS-kapcsolattal futtatja, valószínűleg önaláírt tanúsítványt használ. Storage Explorer az SSL-tanúsítványok **importálása az** -> **SSL-tanúsítványok** -> **importálása tanúsítványok** használatával párbeszédpanelt.
+
+##### <a name="import-certificate-to-storage-explorer"></a>Tanúsítvány importálása a Storage Explorerba
+
+1. Keresse meg a tanúsítványt a helyi gépen.
+1. Az Storage Explorer-ban keresse **Edit** -> meg az**SSL-tanúsítványok** -> **importálása** és a tanúsítvány importálása című részt.
+
+Ha nem importál tanúsítványt, a következő hibaüzenet jelenik meg:
+
+`unable to verify the first certificate` vagy `self signed certificate in chain`
+
+##### <a name="add-azurite-via-https-connection-string"></a>Azurite hozzáadása HTTPS kapcsolati sztring használatával
+
+A következő lépésekkel adhat hozzá HTTPS-Azurite a Storage Explorerhoz:
+
+1. A **váltógomb** kiválasztása
+1. **Helyi & csatolásának** kiválasztása
+1. Kattintson a jobb gombbal a **Storage-fiókok** elemre, és válassza a **Kapcsolódás az Azure Storage-hoz**lehetőséget.
+1. Válassza **a kapcsolatok sztring használata** lehetőséget
+1. Kattintson a **Tovább** gombra.
+1. Adjon meg egy értéket a **megjelenítendő név** mezőben.
+1. Adja meg a jelen dokumentum előző szakaszának [https-kapcsolati karakterláncát](#https-connection-strings) .
+1. Válassza a **tovább** lehetőséget
+1. Válassza a **kapcsolat** lehetőséget.
+
+## <a name="workspace-structure"></a>Munkaterület szerkezete
+
+A következő fájlok és mappák hozhatók létre a munkaterület helyén a Azurite inicializálásakor.
+
+- `__blobstorage__`-A Azurite blob Service-t tartalmazó könyvtár bináris adatvédelmet tartalmaz
+- `__queuestorage__`-A Azurite üzenetsor-kezelő szolgáltatás megőrzött bináris adattartalma
+- `__azurite_db_blob__.json`-Azurite blob szolgáltatás metaadatainak fájlja
+- `__azurite_db_blob_extent__.json`-Azurite blob szolgáltatási mérték metaadat-fájlja
+- `__azurite_db_queue__.json`-Azurite üzenetsor-szolgáltatás metaadatainak fájlja
+- `__azurite_db_queue_extent__.json`-Azurite üzenetsor-szolgáltatási mérték metaadat-fájlja
+
+A Azurite törléséhez törölje a fenti fájlokat és mappákat, majd indítsa újra az emulátort.
 
 ## <a name="differences-between-azurite-and-azure-storage"></a>A Azurite és az Azure Storage közötti különbségek
 
@@ -379,7 +533,7 @@ A következő címnek lehet a blobhoz való hozzáférése a Azurite-ben:
 
 ### <a name="scaling-and-performance"></a>Skálázás és teljesítmény
 
-A Azurite nem méretezhető tárolási szolgáltatás, és nem támogatja nagy számú egyidejű ügyfél használatát. Nincs teljesítménybeli garancia. A Azurite fejlesztési és tesztelési célokra szolgál.
+A Azurite nem támogat nagy számú csatlakoztatott ügyfelet. Nincs teljesítménybeli garancia. A Azurite fejlesztési és tesztelési célokra szolgál.
 
 ### <a name="error-handling"></a>Hibakezelés
 
@@ -387,7 +541,7 @@ A Azurite az Azure Storage-hibák kezelésére szolgáló logikával van összha
 
 ### <a name="ra-grs"></a>RA-GRS
 
-A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a másodlagos helyet a fióknév hozzáfűzésével **érheti el.** Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
+A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a fiók nevének hozzáfűzésével `-secondary` nyissa meg a másodlagos helyet. Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 
@@ -397,5 +551,5 @@ Szívesen fogadjuk a Azurite vonatkozó hozzájárulásokat és javaslatokat. L�
 
 ## <a name="next-steps"></a>További lépések
 
-* [Használja az Azure Storage emulatort fejlesztési és tesztelési](storage-use-emulator.md) dokumentumaihoz az örökölt Azure Storage-emulátort, amelyet a Azurite felülír.
-* Az [Azure Storage-kapcsolódási karakterláncok konfigurálása](storage-configure-connection-string.md) azt ismerteti, hogyan lehet egy érvényes Azure Storage-beli kapcsolódási karakterláncot összeállítani.
+- [Használja az Azure Storage emulatort fejlesztési és tesztelési](storage-use-emulator.md) dokumentumaihoz az örökölt Azure Storage-emulátort, amelyet a Azurite felülír.
+- Az [Azure Storage-kapcsolódási karakterláncok konfigurálása](storage-configure-connection-string.md) azt ismerteti, hogyan lehet egy érvényes Azure Storage-beli kapcsolódási karakterláncot összeállítani.

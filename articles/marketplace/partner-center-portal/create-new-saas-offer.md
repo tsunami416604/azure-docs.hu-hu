@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 9ffa10726c1ca838f00b713e6640f609c122975a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b85846419ce5f6cd4093e198d83240817c95754a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735096"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983057"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -77,7 +77,6 @@ Ha a Service (SaaS) szolgáltatást a partner Center kereskedelmi piactérről s
 
 - Az ajánlatnak [Azure Active Directory (Azure ad)](https://azure.microsoft.com/services/active-directory/) használatát kell használnia az Identitáskezelés és a hitelesítéshez.
 - Az ajánlatnak [SaaS-megvalósítási API-kat](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2) kell használnia az Azure Marketplace-szel való integrációhoz.
-- Részletesebb követelmények: [SaaS-ajánlat közzétételi útmutatója](https://docs.microsoft.com/azure/marketplace/marketplace-saas-applications-technical-publishing-guide).
 
 #### <a name="saas-pricing-and-billing-options"></a>SaaS-díjszabás és számlázási lehetőségek
 

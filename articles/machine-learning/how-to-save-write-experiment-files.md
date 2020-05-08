@@ -12,12 +12,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 12a38b08fd429280f34b4eb02d4b72187b622261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79078431"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872062"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Fájlok mentése és írása Azure Machine Learning kísérletekhez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ A hiba megoldásához tárolja a kísérlet fájljait egy adattárban. Ha nem tu
 Kísérlet&nbsp;leírása|Tárolási korlát megoldás
 ---|---
 Kevesebb mint 2000 fájl & nem használhat adattárt| A pillanatképek maximális méretének felülbírálása <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> Ez a fájlok számától és méretétől függően több percet is igénybe vehet.
-Adott parancsfájl-könyvtárat kell használnia| Hozzon `.amlignore` ki egy fájlt, és zárja ki azokat a kísérlet-pillanatképből származó fájlokat, amelyek nem részei a forráskódnak. Adja hozzá a fájlneveket a `.amlignore` fájlhoz, és helyezze azt a betanítási parancsfájlt tartalmazó könyvtárba. A `.amlignore` fájl ugyanazt a [szintaxist és mintázatot](https://git-scm.com/docs/gitignore) használja `.gitignore` , mint egy fájl.
+Adott parancsfájl-könyvtárat kell használnia| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
 Folyamat|Egy másik alkönyvtár használata az egyes lépésekhez
 Jupyter-notebookok| Hozzon `.amlignore` létre egy fájlt, vagy helyezze át a jegyzetfüzetet egy új, üres, alkönyvtárba, és futtassa újra a kódot.
 

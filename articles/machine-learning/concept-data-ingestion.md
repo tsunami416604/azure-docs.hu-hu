@@ -1,5 +1,5 @@
 ---
-title: Adatfeldolgozási beállítások
+title: Adatfeldolgozási & Automation
 titleSuffix: Azure Machine Learning
 description: Ismerkedjen meg a gépi tanulási modellek betanítására szolgáló adatfeldolgozási lehetőségekkel.
 services: machine-learning
@@ -10,25 +10,27 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 02/26/2020
-ms.openlocfilehash: 6b1c671d2079c7d8ab59e9afe981ccef3f58ef27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 475c4fd6b34996c83035c4f7ef93b9fa02ded11f
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086879"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789861"
 ---
-# <a name="data-ingestion-in-azure-machine-learning"></a>Adatfeldolgozás a Azure Machine Learningban
+# <a name="data-ingestion-options-for-azure-machine-learning-workflows"></a>Adatfeldolgozási lehetőségek Azure Machine Learning munkafolyamatokhoz
 
-Ebből a cikkből megtudhatja, milyen előnyökkel és hátrányokkal jár együtt a Azure Machine Learning a következő adatfeldolgozási lehetőségek közül. 
+Ebből a cikkből megtudhatja, milyen előnyökkel és hátrányokkal érheti el az adatfeldolgozási lehetőségeket a Azure Machine Learning. 
 
-1. [Azure Data Factory](#use-azure-data-factory) folyamatok
-2. [Python SDK Azure Machine Learning](#use-the-python-sdk)
+A következő lehetőségek közül választhat:
++ [Azure Data Factory](#azure-data-factory) folyamatok, amelyek kifejezetten az adatok kinyerésére, betöltésére és átalakítására készültek
+
++ [Azure Machine learning PYTHON SDK](#azure-machine-learning-python-sdk)-t, amely egyéni kódot biztosít az alapszintű adatfeldolgozási feladatokhoz.
+
++ a kettő kombinációja
 
 Az adatfeldolgozás az a folyamat, amelyben a strukturálatlan adatok kinyerése egy vagy több forrásból történik, majd a gépi tanulási modellek előkészítése. Az is időigényes, különösen ha kézzel történik, és ha nagy mennyiségű adattal rendelkezik több forrásból. A tevékenység automatizálása felszabadítja az erőforrásokat, és gondoskodik arról, hogy a modellek a legfrissebb és a vonatkozó adatait használják.
 
-A Azure Data Factory (ADF) kifejezetten az adatok kinyerésére, betöltésére és átalakítására készült, azonban a Python SDK segítségével egyéni kódú megoldást fejleszthet az alapszintű adatfeldolgozási feladatokhoz. Ha egyik sem elég, amire szüksége van, az ADF-t és a Python SDK-t is használhatja egy átfogó adatfeldolgozási munkafolyamat létrehozásához, amely megfelel az igényeinek. 
-
-## <a name="use-azure-data-factory"></a>Az Azure Data Factory használata
+## <a name="azure-data-factory"></a>Azure Data Factory
 
 A [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) natív támogatást nyújt az adatfeldolgozási folyamatokhoz használt adatforrás-figyeléshez és-eseményindítóhoz.  
 
@@ -55,7 +57,7 @@ Ezek a lépések és a következő ábra a Azure Data Factory adatfeldolgozási 
     
 Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot a [Azure Data Factory](how-to-data-ingest-adf.md)Machine Learninghoz.
 
-## <a name="use-the-python-sdk"></a>A Python SDK használata 
+## <a name="azure-machine-learning-python-sdk"></a>Python SDK Azure Machine Learning 
 
 A [PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml)-val beépítheti az adatfeldolgozási feladatokat egy [Azure Machine learning folyamat](how-to-create-your-first-pipeline.md) lépésbe.
 
@@ -73,5 +75,7 @@ A következő ábrán a Azure Machine Learning folyamat két lépésből áll: a
 
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan hozhat létre adatfeldolgozási folyamatot a Machine Learninghoz [Azure Data Factory](how-to-data-ingest-adf.md)
-* Ismerje meg, hogyan automatizálhatja és kezelheti az adatfeldolgozási folyamatokat az Azure- [folyamatokkal](how-to-cicd-data-ingestion.md).
+Kövesse az alábbi útmutatókat:
+* [Adatfeldolgozási folyamat összeállítása Azure Data Factory](how-to-data-ingest-adf.md)
+
+* [Az Azure-folyamatokkal automatizálhatja és kezelheti az adatfeldolgozási folyamatokat](how-to-cicd-data-ingestion.md).

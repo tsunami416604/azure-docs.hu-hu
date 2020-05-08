@@ -2,13 +2,13 @@
 title: Adatváltozás – LUIS
 description: Megtudhatja, hogyan változtathatók meg az adatváltozások a Language Understanding (LUIS) előrejelzések előtt
 ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: b3b36351a64a4e1a0bd13d5785a4e0609a80901d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 3a88739caa9b35679f10b0cb63a804e9464c871c
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292059"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872253"
 ---
 # <a name="alter-utterance-data-before-or-during-prediction"></a>A kiírási adatértékek módosítása az előrejelzés előtt vagy közben
 LUIS lehetővé teszi a Kimondás kezelését a jóslat előtt vagy közben. Ezek közé tartozik a [helyesírás javítása](luis-tutorial-bing-spellcheck.md), valamint az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md)időzóna-problémáinak javítása.
@@ -75,42 +75,27 @@ A LUIS-ben használt Bing Spell Check API nem támogatja a helyesírás-ellenőr
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Előre elkészített datetimeV2 entitás időzónájának módosítása
 Ha egy LUIS-alkalmazás az előre elkészített [datetimeV2](luis-reference-prebuilt-datetimev2.md) entitást használja, az előrejelzési válaszban egy datetime érték adható vissza. A kérelem időzónája a helyes datetime érték meghatározására szolgál. Ha a kérelem egy robotból vagy egy másik központosított alkalmazásból érkezik, mielőtt elkezdené a LUIS-t, javítsa ki az időzóna LUIS használatát.
 
-### <a name="endpoint-querystring-parameter"></a>Endpoint querystring paraméter
-A rendszer kijavítja az időzónát úgy, hogy a `timezoneOffset` paraméterrel hozzáadja a felhasználó időzónáját a [végponthoz](https://go.microsoft.com/fwlink/?linkid=2092356) . Az értéknek `timezoneOffset` a pozitív vagy negatív számnak kell lennie percben, hogy megváltoztassa az időt.
+### <a name="v3-prediction-api-to-alter-timezone"></a>V3 előrejelzési API az időzóna módosításához
 
-|Param|Érték|
-|--|--|
-|`timezoneOffset`|pozitív vagy negatív szám (percben)|
+A v3-as `datetimeReference` verzióban a meghatározza az időzóna eltolását. További információ a [v3-előrejelzések](luis-migration-api-v3.md#v3-post-body)használatáról.
 
-### <a name="daylight-savings-example"></a>Nyári megtakarítások – példa
-Ha a visszaadott előre elkészített datetimeV2 kell beállítani a nyári időszámításhoz, akkor a `timezoneOffset` querystring paramétert a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) lekérdezéséhez percben kell használni.
+### <a name="v2-prediction-api-to-alter-timezone"></a>V2 előrejelzési API az időzóna módosításához
+Az időzóna kijavítása úgy történik, hogy a felhasználó időzónáját `timezoneOffset` hozzáadja a végponthoz az API-verzió alapján a paraméter használatával. A paraméter értékének az idő módosításához a pozitív vagy negatív számnak kell lennie percben.
 
-#### <a name="v2-prediction-endpoint-request"></a>[V2 előrejelzési végpont kérése](#tab/V2)
+#### <a name="v2-prediction-daylight-savings-example"></a>V2 előrejelzési nyári megtakarítások – példa
+Ha a visszaadott előre elkészített datetimeV2 kell beállítani a nyári időszámításhoz, akkor a querystring paramétert a [végpont](https://go.microsoft.com/fwlink/?linkid=2092356) lekérdezéséhez percben kell használni.
 
 60 perc hozzáadása:
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
 60 perc eltávolítása:
 
-`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?**timezoneOffset=-60**&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
+`https://{region}.api.cognitive.microsoft.com/luis/v2.0/apps/{appId}?q=Turn the lights on?timezoneOffset=-60&verbose={boolean}&spellCheck={boolean}&staging={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
 
-#### <a name="v3-prediction-endpoint-request"></a>[V3 előrejelzési végpont kérése](#tab/V3)
+#### <a name="v2-prediction-c-code-determines-correct-value-of-parameter"></a>A v2 előrejelzés C#-kódja meghatározza a paraméter helyes értékét
 
-60 perc hozzáadása:
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-60 perc eltávolítása:
-
-`https://{region}.api.cognitive.microsoft.com/luis/v3.0-preview/apps/{appId}/slots/production/predict?query=Turn the lights on?**timezoneOffset=-60**&spellCheck={boolean}&bing-spell-check-subscription-key={string}&log={boolean}`
-
-További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
-
-* * *
-
-## <a name="c-code-determines-correct-value-of-timezoneoffset"></a>A C#-kód meghatározza a timezoneOffset helyes értékét
-A következő C#-kód a [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) osztály [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metódusának használatával határozza meg a `timezoneOffset` megfelelő rendszeridő alapján:
+A következő C#-kód a [TimeZoneInfo](https://docs.microsoft.com/dotnet/api/system.timezoneinfo) osztály [FindSystemTimeZoneById](https://docs.microsoft.com/dotnet/api/system.timezoneinfo.findsystemtimezonebyid#examples) metódusát használja a megfelelő eltolási érték meghatározásához a rendszeridő alapján:
 
 ```csharp
 // Get CST zone id
@@ -122,8 +107,8 @@ DateTime utcDatetime = DateTime.UtcNow;
 // Get Central Standard Time value of Now
 DateTime cstDatetime = TimeZoneInfo.ConvertTimeFromUtc(utcDatetime, targetZone);
 
-// Find timezoneOffset
-int timezoneOffset = (int)((cstDatetime - utcDatetime).TotalMinutes);
+// Find timezoneOffset/datetimeReference
+int offset = (int)((cstDatetime - utcDatetime).TotalMinutes);
 ```
 
 ## <a name="next-steps"></a>További lépések

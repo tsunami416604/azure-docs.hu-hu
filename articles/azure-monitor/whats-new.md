@@ -5,16 +5,59 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 03/05/2020
-ms.openlocfilehash: a2e6d2a459a6713aa9372496fc3a933c0a886ed9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/06/2020
+ms.openlocfilehash: 8701acc6ac10dd9d31df99bb04dd030d156250e2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80802604"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871403"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített cikkeket. A rendszer minden hónap első hetében frissíti az előző hónapból származó cikkek frissítéseinek befoglalásával.
+
+## <a name="april-2020"></a>2020. április
+
+### <a name="general"></a>Általános kérdések
+- A [Azure monitor ügyfél által felügyelt kulcshoz](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys.md) hozzáadott szakasz az aszinkron műveletekhez
+- [Log Analytics munkaterületek kezelése Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-access.md) – frissített egyéni naplók szakaszban.
+
+### <a name="alerts"></a>Riasztások
+- [Azure monitor riasztásokra vonatkozó műveleti szabályok](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-action-rules) – videó hozzáadva.
+- [A riasztások és az értesítések monitorozásának áttekintése az Azure-ban](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-overview.md) – videó hozzáadva.
+
+### <a name="application-insights"></a>Application Insights
+- [Az Azure Application Insights-ban elérhető alkalmazás-hozzárendelés](https://docs.microsoft.com/azure/azure-monitor/app/app-map.md) – a Java-ügynökhöz hozzáadott Felhőbeli szerepkörök nevei.
+- [Azure Application Insights .net-ügynök API](https://docs.microsoft.com/azure/azure-monitor/app/status-monitor-v2-api-reference.md) -referenciája – összevont API-hivatkozás.
+- Az [Application Insights és log Analytics által használt IP-címek](https://docs.microsoft.com/azure/azure-monitor/app/ip-addresses.md) az alkalmazás-elemzések és az log Analytics API-k, a műveleti csoport webhookok, az Azure USA kormánya számára.
+- [Java-alkalmazások figyelése bárhol](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-config.md) – új cikk
+- [Java-alkalmazások figyelése bármilyen környezetben](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent.md) – új cikk
+- [Bármilyen környezetben futó Java-alkalmazások figyelése](https://docs.microsoft.com/azure/azure-monitor/app/java-standalone-arguments.md) – új cikk
+- [Helyszínen futó Java-alkalmazások figyelése](https://docs.microsoft.com/azure/azure-monitor/app/java-on-premises.md) – új cikk
+- [Application Insights eltávolítása a Visual Studióban](https://docs.microsoft.com/azure/azure-monitor/app/remove-application-insights.md) – új cikk
+- [Telemetria-mintavételezés az Azure Application Insightsban](https://docs.microsoft.com/azure/azure-monitor/app/sampling) – javítás a Pythonban rögzített sebességű mintában.
+
+### <a name="containers"></a>Containers
+- Az [Azure Red Hat OpenShift v4. x konfigurálása az Azure monitor for containers szolgáltatással](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-azure-redhat4-setup) – új cikk
+- [ServiceNow-szinkronizálási problémák manuális javítása](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow) – új cikk
+- [Az Azure és a Red Hat OpenShift v4-fürt figyelésének leállítása](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v4) – új cikk
+- [Az Azure Red Hat OpenShift v3-fürt figyelésének leállítása](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-openshift-v3) – új cikk
+- [A hibrid Kubernetes-fürt figyelésének leállítása](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-optout-hybrid) – új cikk
+
+### <a name="insights"></a>Insights
+- [Azure Key vaultok figyelése a Key vaultok Azure Monitorával (előzetes verzió)](https://docs.microsoft.com/azure/azure-monitor/insights/key-vault-insights-overview) – új cikk
+
+### <a name="logs"></a>Naplók
+- [Azure monitor szolgáltatás korlátai](https://docs.microsoft.com/azure/azure-monitor/service-limits) – a felhasználói lekérdezések szabályozása.
+- [Azure monitor naplók használatának és költségeinek kezelése](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage) – a naplókhoz hozzáadott számlázás. Kusto-lekérdezés hozzáadva, amely lehetővé teszi az ügyfelek számára a csomópontok közötti örökölt díjszabási szintet annak megállapítására, hogy a felhasználóknak GB vagy Capacity foglalási szinten kell áttérniük.
+
+### <a name="metrics"></a>Mérőszámok
+- [Az Azure Metrikaböngésző](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-charts) által hozzáadott összesítési szakasz speciális funkciói.
+
+### <a name="workbooks"></a>Munkafüzetek
+- [Azure monitor munkafüzetek és Azure Resource Manager sablonok](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-automate) – a munkafüzet-sablonok üzembe helyezéséhez hozzáadott Resource Manager-sablon.
+
+
 
 ## <a name="march-2020"></a>2020. március
 

@@ -8,8 +8,6 @@
       href: overview.md
     - name: Üzenetküldő szolgáltatások összehasonlítása
       href: compare-messaging-services.md
-    - name: Prémium szintű vagy alapszintű csomag
-      href: premium-basic-tiers.md
 - name: Rövid útmutatók
   expanded: true
   items:
@@ -166,23 +164,15 @@
     - name: Figyelés és hibaelhárítás
       items:
         - name: Diagnosztikai naplók
-          href: null
+          href: diagnostic-logs.md
         - name: Mérőszámok
           href: metrics.md
 - name: Útmutatók
   items:
-    - name: Privát végpontok konfigurálása (előzetes verzió)
-      href: configure-private-endpoints.md
-    - name: IP-tűzfal konfigurálása (előzetes verzió)
-      href: configure-firewall.md
-    - name: Tarifacsomag frissítése
-      href: update-tier.md
     - name: Közzététel egyéni témakörben
       href: post-to-custom-topic.md
     - name: Események fogadása HTTP-végponton
       href: receive-events.md
-    - name: Biztonságos webhook AAD-vel
-      href: secure-webhook-delivery.md
     - name: Kézbesíthetetlen üzenet és újrapróbálkozás
       href: manage-event-delivery.md
     - name: Események szűrése
@@ -201,6 +191,14 @@
       href: custom-disaster-recovery.md
     - name: Aszinkron REST-műveletek követése
       href: ../azure-resource-manager/management/async-operations.md?toc=%2fazure%2fevent-grid%2ftoc.json
+    - name: Biztonságos
+      items:
+        - name: Privát végpontok konfigurálása (előzetes verzió)
+          href: configure-private-endpoints.md
+        - name: IP-tűzfal konfigurálása (előzetes verzió)
+          href: configure-firewall.md
+        - name: Biztonságos webhook AAD-vel
+          href: secure-webhook-delivery.md
     - name: Hibaelhárítás
       items:
         - name: Diagnosztikai naplók engedélyezése

@@ -35,6 +35,10 @@
       href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Azure-fájlmegosztások pillanatképei
       href: storage-snapshots-files.md
+    - name: Adatredundancia
+      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Vészhelyreállítás és feladatátvétel
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Méretezhetőségi és teljesítménycélok
       href: storage-files-scale-targets.md
     - name: Identitásalapú hitelesítés és engedélyezés
@@ -114,10 +118,18 @@
           href: storage-sync-files-server-endpoint.md
         - name: Tárhely kezelése a független Azure-felhőkben
           href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Az adatreplikálás módjának megváltoztatása
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Fiók feladatátvételének indítása
-          href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Adatredundancia kezelése
+          items:
+            - name: Az adatreplikálás módjának megváltoztatása
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Magas rendelkezésre állású alkalmazások tervezése
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Vészhelyreállítás kezelése
+          items:
+            - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
+              href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: Fiók feladatátvételének indítása
+              href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Figyelés
       items:
         - name: Az Azure File Sync monitorozása
@@ -188,8 +200,6 @@
           href: storage-sync-files-troubleshoot.md
         - name: Az Azure Files törlésével kapcsolatos hibák elhárítása
           href: storage-troubleshoot-cannot-delete-files-azure-file-share.md
-        - name: Törölt tárfiók helyreállítása
-          href: storage-how-to-recover-deleted-account.md
 - name: Referencia
   items:
     - name: Azure PowerShell (Storage)

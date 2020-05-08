@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: 29d5213b8eecd94ed8c8ce565972c9f98872a362
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ae0aec6b87a746ed1f141dcf98f599acd20ab3a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80411428"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864249"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Naplók optimalizálása Azure Monitorban
 Azure Monitor naplók az [Azure adatkezelő (ADX)](/azure/data-explorer/) használatával tárolják a naplófájlokat, és lekérdezéseket futtatnak az adatok elemzéséhez. Létrehozza, kezeli és karbantartja a ADX-fürtöket, és optimalizálja azokat a log Analysis számítási feladatokhoz. Amikor lekérdezést futtat, az optimalizált, és a munkaterület-adatok tárolására szolgáló megfelelő ADX-fürtre irányítja. A Azure Monitor-naplók és az Azure Adatkezelő számos automatikus lekérdezés-optimalizálási mechanizmust használ. Míg az automatikus optimalizálások jelentős lökést nyújtanak, bizonyos esetekben jelentősen növelheti a lekérdezési teljesítményt. Ez a cikk ismerteti a teljesítménnyel kapcsolatos szempontokat és számos technikát a kijavításához.
@@ -108,7 +108,7 @@ Heartbeat
 | summarize count() by Computer
 ```
 
-### <a name="use-effective-aggregation-commands-and-dimmentions-in-summarize-and-join"></a>Hatékony aggregációs parancsok és dimmentions használata az összegzésben és a csatlakozáshoz
+### <a name="use-effective-aggregation-commands-and-dimensions-in-summarize-and-join"></a>Hatékony aggregációs parancsok és méretek használata az összegzésben és a csatlakozáshoz
 
 Míg egyes aggregációs parancsok, például a [Max ()](/azure/kusto/query/max-aggfunction), a [Sum ()](/azure/kusto/query/sum-aggfunction), a [Count ()](/azure/kusto/query/count-aggfunction)és az [AVG ()](/azure/kusto/query/avg-aggfunction) az alacsony CPU-hatást okoznak a logikájuk miatt, más összetettebbek, és olyan becsléseket tartalmaznak, amelyek lehetővé teszik a hatékony végrehajtást. Például a [DCount ()](/azure/kusto/query/dcount-aggfunction) a HyperLogLog algoritmus használatával közelíti meg a nagy adathalmazok különböző számú adatát az egyes értékek tényleges számbavétele nélkül. a percentilis függvények hasonló közelítéseket végeznek a legközelebbi rangsorú percentilis algoritmus használatával. A parancsok közül több olyan választható paramétereket is tartalmaz, amelyek csökkentik a hatásukat. Például a [makeset ()](/azure/kusto/query/makeset-aggfunction) függvény nem kötelező paraméterrel határozhatja meg a maximálisan megengedett méretet, ami jelentősen befolyásolja a processzort és a memóriát.
 

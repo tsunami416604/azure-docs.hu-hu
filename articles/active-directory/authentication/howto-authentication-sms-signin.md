@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 04/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 845948d9aec28ee79a11fb11aaef4cfbf1b263fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 517ff16cd1cbf9bfe31404d3b1b3993a02d6dae9
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770554"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871569"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Felhasználók konfigurálása és engedélyezése SMS-alapú hitelesítéshez Azure Active Directory használatával (előzetes verzió)
 
@@ -38,9 +38,9 @@ A cikk elvégzéséhez a következő erőforrásokra és jogosultságokra van sz
 * Az előfizetéshez társított Azure Active Directory bérlő.
     * Ha szükséges, [hozzon létre egy Azure Active Directory bérlőt][create-azure-ad-tenant] , vagy [rendeljen hozzá egy Azure-előfizetést a fiókjához][associate-azure-ad-tenant].
 * Az SMS-alapú hitelesítés engedélyezéséhez *globális rendszergazdai* jogosultságok szükségesek az Azure ad-bérlőben.
-* Az SMS-hitelesítési módszer házirendjében engedélyezett összes felhasználónak licenccel kell rendelkeznie, még akkor is, ha nem használják azt. Minden engedélyezett felhasználónak rendelkeznie kell a következő Azure AD-vagy Microsoft 365-licencek valamelyikével:
+* Az SMS-hitelesítési módszer házirendjében engedélyezett összes felhasználónak licenccel kell rendelkeznie, még akkor is, ha nem használják azt. Minden engedélyezett felhasználónak rendelkeznie kell a következő Azure AD-, Office 365-vagy Microsoft 365-licencek valamelyikével:
     * [prémium szintű Azure AD P1 vagy P2][azuread-licensing]
-    * [Microsoft 365 (M365) F1 vagy F3][m365-firstline-workers-licensing]
+    * [Microsoft 365 (M365) F1 vagy F3][m365-firstline-workers-licensing] vagy [Office 365 F1][o365-f1] vagy [F3][o365-f3]
     * [Enterprise Mobility + Security (EMS) E3 vagy E5][ems-licensing] vagy [Microsoft 365 (M365) E3 vagy E5][m365-licensing]
 
 ## <a name="limitations"></a>Korlátozások
@@ -164,3 +164,5 @@ Az Azure AD-ba való bejelentkezés további módjai jelszó nélkül, például
 [azuread-licensing]: https://azure.microsoft.com/pricing/details/active-directory/
 [ems-licensing]: https://www.microsoft.com/microsoft-365/enterprise-mobility-security/compare-plans-and-pricing
 [m365-licensing]: https://www.microsoft.com/microsoft-365/compare-microsoft-365-enterprise-plans
+[o365-f1]: https://www.microsoft.com/microsoft-365/business/office-365-f1?market=af
+[o365-f3]: https://www.microsoft.com/microsoft-365/business/office-365-f3?activetab=pivot%3aoverviewtab

@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 10a061163447a60f1c25b386ef28028436284650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b78e227159065d2ae85d9b1dc989e8ea192ae26a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75453075"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982802"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
 
-A Microsoft a világ egyik legnagyobb gerinces hálózatát birtokolja és üzemelteti. Ez a globális és kifinomult architektúra, amely több mint 100 000 mérföldet ölel fel, összekapcsolja az adatközpontokat és az ügyfeleket. 
+A Microsoft a világ egyik legnagyobb gerinces hálózatát birtokolja és üzemelteti. Ez a globális és kifinomult architektúra, amely több mint 160 000 mérföldet ölel fel, összekapcsolja az adatközpontokat és az ügyfeleket. 
  
 Minden nap a világ minden napján csatlakozik, és a Microsoft Azure, a Bing, a Dynamics 365, az Office 365, az XBox és sok más számára több ezer kérést továbbít. A típustól függetlenül az ügyfelek azonnali megbízhatóságot és rugalmasságot várnak a szolgáltatásainktól. 
  
@@ -32,7 +32,7 @@ A [Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/g
  
 ## <a name="get-the-premium-cloud-network"></a>A prémium szintű felhőalapú hálózat beszerzése
  
-A Microsoft Cloud használata esetén a [lehető legjobb élményt](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) lehet választani. Abban a pillanatban, amikor az ügyfél-forgalom stratégiai módon elhelyezett Edge-csomópontokon keresztül belép a globális hálózatba, az adatok az optimalizált útvonalakon haladnak át a fénysebesség közelében. Ez optimális késést biztosít a legjobb teljesítmény érdekében. Ezek a peremhálózat-csomópontok, amelyek több mint 3500 egyedi internetes partnerhez (társhoz) csatlakoznak, több ezer kapcsolaton keresztül több mint 145 helyen, megadják az összekapcsolási stratégiánk alapjait. 
+A Microsoft Cloud használata esetén a [lehető legjobb élményt](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) lehet választani. Abban a pillanatban, amikor az ügyfél-forgalom stratégiai módon elhelyezett Edge-csomópontokon keresztül belép a globális hálózatba, az adatok az optimalizált útvonalakon haladnak át a fénysebesség közelében. Ez optimális késést biztosít a legjobb teljesítmény érdekében. Ezek a peremhálózat-csomópontok, amelyek több mint 3500 egyedi internetes partnerhez (társhoz) csatlakoznak, több ezer kapcsolaton keresztül több mint 165 helyen, megadják az összekapcsolási stratégiánk alapjait. 
  
 Akár Londonból Tokióba, akár Washington D.C.-ből Los Angelesbe, a hálózati teljesítmény számszerűsítve van, és hatással van az olyan dolgokra, mint a késés, a jitter, a csomagok elvesztése és az átviteli sebesség.  A Microsoft a közvetlen csatlakozásokat előnyben részesítette a továbbítási hivatkozások helyett, így a forgalom szimmetrikusan tartja a forgalmat, és segít a komló, a felek és az elérési utak lehető legrövidebb és egyszerű megtartásában. 
 

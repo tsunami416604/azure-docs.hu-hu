@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: f592a7f5a4af38988bcf433f0adc89d9be7579cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082009"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983465"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -130,11 +130,72 @@ További speciális előfeldolgozási és featurization is elérhetők, példáu
 
 + Python SDK: az `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [ `AutoMLConfig` osztály](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)megadása. 
 
+
+
+## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellek
+
+Az automatizált gépi tanulás támogatja az Ensemble-modelleket, amelyek alapértelmezés szerint engedélyezve vannak. A Ensemble learning a gépi tanulási eredmények és a prediktív teljesítmény növelésével több modellt kombinálhat egyetlen modell használatával. Az együttes ismétlések a Futtatás utolsó ismétlései jelennek meg. Az automatizált gépi tanulás mind a szavazási, mind a halmozási módszert használja a modellek kombinálásával:
+
+* **Szavazás**: előre jelezhető az előrejelzett osztály valószínűségének súlyozott átlaga (besorolási feladatoknál) vagy előrejelzett regressziós célok alapján (regressziós feladatokhoz).
+* **Halmozás**: a halmozás kombinálja a különböző-modelleket, és az egyes modellek kimenete alapján egy meta-modellt is betanít. A jelenlegi alapértelmezett meta-modellek a besorolási feladatokhoz és a ElasticNet a regresszió/előrejelzési feladatokhoz LogisticRegression.
+
+A rendezett Ensemble inicializálásával eldöntheti, hogy mely modelleket kívánja használni az Ensemble-ban, a [Caruana Ensemble kiválasztási algoritmusa](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) . Ez az algoritmus magas szinten inicializálja az összevonást akár öt modellel a legjobb egyéni pontszámokkal, és ellenőrzi, hogy ezek a modellek a legjobb pontszámot követő 5%-os küszöbértéken belül vannak-e a gyenge kezdeti együttesek elkerüléséhez. Ezután minden egyes Ensemble-iterációhoz új modellt adnak hozzá a meglévő együtteshez, az eredményül kapott pontszámot pedig kiszámítjuk. Ha egy új modell javította a meglévő Ensemble-pontszámot, a rendszer frissíti az Ensemble-t, hogy tartalmazza az új modellt.
+
+Lásd: [útmutató](how-to-configure-auto-train.md#ensemble) az alapértelmezett Ensemble beállításainak módosításához az automatikus gépi tanulásban.
+
+## <a name="guidance-on-local-vs-remote-managed-ml-compute-targets"></a><a name="local-remote"></a>Útmutató a helyi és a távoli felügyelt ML számítási célokhoz
+
+Az automatizált ML webes felülete mindig távoli [számítási célt](concept-compute-target.md)használ.  Ha azonban a Python SDK-t használja, akkor az automatikus ML-képzéshez helyi vagy távoli számítási célt kell választania.
+
+* **Helyi számítás**: a betanítás helyi laptopon vagy virtuálisgép-számításon történik. 
+* **Távoli számítás**: Machine learning számítási fürtökön bekövetkezett képzések.  
+
+### <a name="choose-compute-target"></a>Számítási cél kiválasztása
+A számítási cél kiválasztásakor vegye figyelembe ezeket a tényezőket:
+
+ * **Helyi számítás választása**: Ha a forgatókönyve a kis-és kisméretű adatokkal és rövid vonatok használatával (például másodperc vagy néhány perc múlva), akkor a helyi számítógép betanítása jobb választás lehet.  Nincs beállítási idő, az infrastruktúra erőforrásai (a számítógép vagy a virtuális gép) közvetlenül elérhetők.
+ * **Válasszon egy távoli ml számítási fürtöt**: Ha nagyobb adatkészleteket szeretne betanítani, például olyan modelleket, amelyeken hosszabb vonatok szükségesek, a távoli számítás sokkal jobb végpontok közötti időt biztosít, mivel `AutoML` a a fürt csomópontjain integrálással a vonatok között. Távoli számítás esetén a belső infrastruktúra megkezdésének ideje 1,5 percet vesz igénybe gyermek futása után, valamint további perceket a fürt infrastruktúrája számára, ha a virtuális gépek még nem működnek.
+
+### <a name="pros-and-cons"></a>Előnyök és hátrányok
+Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli használatának kiválasztásakor.
+
+|  | Profik (előnyök)  |Hátrányok (hátrányok)  |
+|---------|---------|---------|---------|
+|**Helyi számítási cél** |  <li> Nincs környezet-indítási idő   | <li>  A szolgáltatások részhalmaza<li>  Nem integrálással a futtatások <li> Rosszabb a nagyméretű adatmennyiségek esetében. <li>Nincs adatfolyam a betanítás során <li>  Nincs DNN-alapú featurization <li> Csak Python SDK |
+|**Távoli ML számítási fürtök**|  <li> A funkciók teljes készlete <li> Integrálással gyermekek futtatása <li>   Nagy mennyiségű adattámogatás<li>  DNN-alapú featurization <li>  Igény szerinti számítási fürt dinamikus méretezhetősége <li> A kód nélküli felhasználói felület (webes kezelőfelület) is elérhető  |  <li> Fürt csomópontjainak indítási ideje <li> Kezdési idő az egyes alárendelt futtatásokhoz    |
+
+### <a name="feature-availability"></a>Szolgáltatások rendelkezésre állása 
+
+ További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. Ezen funkciók némelyike csak vállalati munkaterületeken érhető el.
+
+| Szolgáltatás                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
+|------------------------------------------------------------|--------|-------|-------------------------------|
+| Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | ✓                             |
+| DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       | ✓                             |
+| Beépített GPU-támogatás (képzés és következtetés)        | ✓      |       | ✓                             |
+| Képbesorolás és címkézés támogatása                  | ✓      |       | ✓                             |
+| Auto-ARIMA, próféták és ForecastTCN modellek előrejelzéshez | ✓      |       | ✓                             |
+| Több Futtatás/ismétlés párhuzamosan                       | ✓      |       | ✓                             |
+| Modellek létrehozása a AutoML Studio webes felületének felhasználói felületének értelmezésével      | ✓      |       | ✓                             |
+| Funkciók mérnöki testreszabása a Studio web Experience felhasználói felületén                        | ✓      |       | ✓                              |
+| Azure ML hiperparaméter hangolás                             | ✓      |       |                               |
+| Azure ML-folyamat – munkafolyamat-támogatás                         | ✓      |       |                               |
+| Futtatás folytatása                                             | ✓      |       |                               |
+| Előrejelzések                                                | ✓      | ✓     | ✓                             |
+| Kísérletek létrehozása és futtatása jegyzetfüzetekben                    | ✓      | ✓     |                               |
+| A kísérlet adatainak és metrikáinak regisztrálása és megjelenítése a felhasználói felületen | ✓      | ✓     |                               |
+| Az adatguardrails                                            | ✓      | ✓     |                               |
+
+
+## <a name="automated-ml-in-azure-machine-learning"></a>Automatizált ML Azure Machine Learning
+
+A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez
+
+* A Code tapasztalt ügyfelek esetében [Azure Machine learning PYTHON SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -t 
+
+* A korlátozott/nem kódokkal rendelkező ügyfelek számára Azure Machine Learning Studio at[https://ml.azure.com](https://ml.azure.com/)  
+
 <a name="parity"></a>
-
-## <a name="the-studio-vs-sdk"></a>A Studio vs SDK
-
-Ismerje meg a Python SDK-ban és a Azure Machine Learningban található stúdióban elérhető, magas szintű automatizált ML-funkciók közötti paritást és különbségeket. 
 
 ### <a name="experiment-settings"></a>Kísérletezési beállítások 
 
@@ -181,17 +242,6 @@ Ezekkel a beállításokkal áttekintheti és szabályozhatja a kísérlet futta
 |Guardrails beolvasása| ✓|✓|
 |& szüneteltetésének folytatása| ✓| |
 
-## <a name="ensemble-models"></a><a name="ensemble"></a>Ensemble-modellek
-
-Az automatizált gépi tanulás támogatja az Ensemble-modelleket, amelyek alapértelmezés szerint engedélyezve vannak. A Ensemble learning a gépi tanulási eredmények és a prediktív teljesítmény növelésével több modellt kombinálhat egyetlen modell használatával. Az együttes ismétlések a Futtatás utolsó ismétlései jelennek meg. Az automatizált gépi tanulás mind a szavazási, mind a halmozási módszert használja a modellek kombinálásával:
-
-* **Szavazás**: előre jelezhető az előrejelzett osztály valószínűségének súlyozott átlaga (besorolási feladatoknál) vagy előrejelzett regressziós célok alapján (regressziós feladatokhoz).
-* **Halmozás**: a halmozás kombinálja a különböző-modelleket, és az egyes modellek kimenete alapján egy meta-modellt is betanít. A jelenlegi alapértelmezett meta-modellek a besorolási feladatokhoz és a ElasticNet a regresszió/előrejelzési feladatokhoz LogisticRegression.
-
-A rendezett Ensemble inicializálásával eldöntheti, hogy mely modelleket kívánja használni az Ensemble-ban, a [Caruana Ensemble kiválasztási algoritmusa](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf) . Ez az algoritmus magas szinten inicializálja az összevonást akár öt modellel a legjobb egyéni pontszámokkal, és ellenőrzi, hogy ezek a modellek a legjobb pontszámot követő 5%-os küszöbértéken belül vannak-e a gyenge kezdeti együttesek elkerüléséhez. Ezután minden egyes Ensemble-iterációhoz új modellt adnak hozzá a meglévő együtteshez, az eredményül kapott pontszámot pedig kiszámítjuk. Ha egy új modell javította a meglévő Ensemble-pontszámot, a rendszer frissíti az Ensemble-t, hogy tartalmazza az új modellt.
-
-Lásd: [útmutató](how-to-configure-auto-train.md#ensemble) az alapértelmezett Ensemble beállításainak módosításához az automatikus gépi tanulásban.
-
 <a name="use-with-onnx"></a>
 
 ## <a name="automl--onnx"></a>AutoML & ONNX
@@ -202,20 +252,19 @@ Tekintse meg a ONNX formátumra való átalakítást [ebben a Jupyter-jegyzetfü
 
 A ONNX Runtime támogatja a C#-t is, így a C#-alkalmazásokban automatikusan létrehozott modellt is használhatja az újrakódolás vagy a REST-végpontok által bevezetett hálózati késések nélkül. További információ [a ONNX-modellekről a ONNX Runtime C# API-val](https://github.com/Microsoft/onnxruntime/blob/master/docs/CSharp_API.md). 
 
-
-
 ## <a name="next-steps"></a>További lépések
 
 Tekintse át a példákat, és Ismerje meg, hogyan hozhat létre modelleket automatizált gépi tanulás használatával:
-
-+ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning](tutorial-auto-train-models.md)
 
 + Konfigurálja az automatikus betanítási kísérlet beállításait:
   + A Azure Machine Learning Studióban [kövesse ezeket a lépéseket](how-to-use-automated-ml-for-ml-models.md).
   + A Python SDK használatával hajtsa [végre az alábbi lépéseket](how-to-configure-auto-train.md).
 
++ Útmutató [távoli számítási cél](how-to-auto-train-remote.md) használatához
+
++ Kövesse az [oktatóanyagot: regressziós modell automatikus betanítása Azure Machine learning](tutorial-auto-train-models.md) 
+
 + Ismerje meg, hogyan [végezheti](how-to-auto-train-forecast.md)el az automatikus betanítást az idősorozat-adatkészletek használatával.
 
 + Próbálja ki [Jupyter notebook mintákat az automatizált gépi tanuláshoz](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-
 * Az automatikus ML más Microsoft-megoldásokban is elérhető, például:, [ml.net](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power bi](https://docs.microsoft.com/power-bi/service-machine-learning-automated) és [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)

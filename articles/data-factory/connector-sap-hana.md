@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 02/17/2020
-ms.openlocfilehash: 74462b68bea38e4d84219adeedb7c3bb0893bbb4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/22/2020
+ms.openlocfilehash: 945ef895304a151ea7e0ef5b94ed0b42757743ad
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417236"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890611"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása SAP HANA használatával Azure Data Factory
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -46,7 +46,7 @@ Pontosabban, ez az SAP HANA-összekötő a következőket támogatja:
 - Párhuzamos másolás egy SAP HANA forrásból. A részletekért tekintse meg a [Parallel másolás SAP HANAről](#parallel-copy-from-sap-hana) című szakaszt.
 
 > [!TIP]
-> Az Adatmásolás **SAP HANA adattárba való** másolásához használja az általános ODBC-összekötőt. További részletek: [SAP HANA](connector-odbc.md#sap-hana-sink) fogadó. Figyelje meg, hogy SAP HANA összekötőhöz társított szolgáltatások és az ODBC-összekötő eltérő típusú, ezért nem használható fel újra.
+> Az Adatmásolás **SAP HANA adattárba való** másolásához használja az általános ODBC-összekötőt. További részletek: [SAP HANA](#sap-hana-sink) fogadó szakasz. Figyelje meg, hogy SAP HANA összekötőhöz társított szolgáltatások és az ODBC-összekötő eltérő típusú, ezért nem használható fel újra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -69,8 +69,8 @@ SAP HANA társított szolgáltatás a következő tulajdonságokat támogatja:
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **SapHana** | Igen |
 | connectionString | Adjon meg olyan információt, amely az **alapszintű hitelesítés** vagy a **Windows-hitelesítés**használatával a SAP HANAhoz való kapcsolódáshoz szükséges. Tekintse át a következő mintákat.<br>A kapcsolódási karakterláncban a kiszolgáló/port kötelező (az alapértelmezett port 30015), és a Felhasználónév és a jelszó megadása kötelező, ha alapszintű hitelesítést használ. További speciális beállításokért lásd: [SAP HANA ODBC-kapcsolatok tulajdonságai](<https://help.sap.com/viewer/0eec0d68141541d1b07893a39944924e/2.0.02/en-US/7cab593774474f2f8db335710b2f5c50.html>)<br/>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a jelszó konfigurációját a kapcsolatok karakterláncán kívül. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
-| userName (Felhasználónév) | Windows-hitelesítés használata esetén adja meg a felhasználónevet. Például: `user@domain.com` | Nem |
-| jelszó | A felhasználói fiók jelszavának megadása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
+| userName (Felhasználónév) | Windows-hitelesítés használata esetén adja meg a felhasználónevet. Például: `user@domain.com` | No |
+| jelszó | A felhasználói fiók jelszavának megadása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | No |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
 **Példa: egyszerű hitelesítés használata**
@@ -298,6 +298,34 @@ Az adatok SAP HANAból való másolása során a rendszer a következő leképez
 | VARCHAR            | Sztring                         |
 | IDŐBÉLYEG          | DateTime                       |
 | VARBINARY          | Bájt []                         |
+
+### <a name="sap-hana-sink"></a>SAP HANA fogadó
+
+Az SAP HANA-összekötő jelenleg nem támogatott a fogadóként, míg az általános ODBC-összekötőt SAP HANA illesztőprogrammal is használhatja az SAP HANAba való íráshoz. 
+
+Kövesse a saját üzemeltetésű Integration Runtime beállításának [előfeltételeit](#prerequisites) , és először telepítse SAP HANA ODBC-illesztőt. Hozzon létre egy ODBC-társított szolgáltatást a SAP HANA adattárhoz való kapcsolódáshoz az alábbi példában látható módon, majd hozza létre az adatkészletet, és másolja a másolási tevékenység fogadóját az ODBC-típusnak megfelelően. További tudnivalók az [ODBC-összekötőről](connector-odbc.md) című cikkben olvashatók.
+
+```json
+{
+    "name": "SAPHANAViaODBCLinkedService",
+    "properties": {
+        "type": "Odbc",
+        "typeProperties": {
+            "connectionString": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015",
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 

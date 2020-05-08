@@ -1,14 +1,14 @@
 ---
 title: A CIS Microsoft Azure alapítványok teljesítményteszt-tervének üzembe helyezése minta
 description: Telepítse a CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének lépéseit, beleértve a Blueprint-összetevők paraméterének részleteit.
-ms.date: 10/14/2019
+ms.date: 05/06/2020
 ms.topic: sample
-ms.openlocfilehash: 7476addee3d31ec355c793ab7fbe1fbb732b8013
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9f132ee47784eedf8d1ced7e0b67f957877d12ef
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74544529"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864470"
 ---
 # <a name="deploy-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>A CIS Microsoft Azure alapítványok teljesítményteszt-tervezetének üzembe helyezése minta
 
@@ -93,8 +93,8 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
-|\[Előzetes\]verzió: a CIS Microsoft Azure alapítványok teljesítményteszt-ajánlásainak és a speciális virtuálisgép-bővítmények üzembe helyezésének ellenőrzése|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
-|\[Előzetes\]verzió: a CIS Microsoft Azure alapítványok teljesítményteszt-ajánlásainak és a speciális virtuálisgép-bővítmények üzembe helyezésének ellenőrzése|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
+|Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|Azon régiók listája, amelyeken engedélyezni kell a Network Watcher|Régiók pontosvesszővel tagolt listája. A régiók teljes listájának megtekintéséhez használja a Get-AzLocation. Pl.: eastus; eastus2|
+|Az audit CIS Microsoft Azure alapítványok teljesítményteszt 1.1.0-javaslatait és a konkrét támogató virtuálisgép-bővítmények üzembe helyezését|Szabályzat-hozzárendelés|A használatra jóváhagyott virtuálisgép-bővítmények listája|A bővítmények pontosvesszővel tagolt listája. A virtuálisgép-bővítmények teljes listájának megtekintéséhez használja a Get-AzVMExtensionImage. Pl.: AzureDiskEncryption; IaaSAntimalware|
 
 ## <a name="next-steps"></a>További lépések
 

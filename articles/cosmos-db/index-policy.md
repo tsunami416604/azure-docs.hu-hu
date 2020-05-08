@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: f010ec46c41c2302cc9c99a631fd18b1af9661eb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232070"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869937"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Az Azure Cosmos DB indexelési szabályzatai
 
@@ -27,7 +27,7 @@ Egyes esetekben előfordulhat, hogy felül szeretné bírálni ezt az automatiku
 A Azure Cosmos DB két indexelési módot támogat:
 
 - **Konzisztens**: az indexet a rendszer szinkron módon frissíti az elemek létrehozásakor, frissítésekor vagy törlésekor. Ez azt jelenti, hogy az olvasási lekérdezések konzisztenciája lesz a [fiókhoz konfigurált konzisztencia](consistency-levels.md).
-- **Nincs**: az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#use-the-net-sdk-v2) a befejezésig figyelhető.
+- **Nincs**: az indexelés le van tiltva a tárolón. Ez általában akkor használatos, ha egy tárolót tiszta kulcs-érték tárolóként használ a másodlagos indexek szükségessége nélkül. Emellett a tömeges műveletek teljesítményének javítására is használható. A tömeges műveletek befejezését követően az index mód beállítható Konzisztensre, majd a [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) a befejezésig figyelhető.
 
 > [!NOTE]
 > A Azure Cosmos DB a lusta indexelési módot is támogatja. A lusta indexelés sokkal alacsonyabb prioritási szinten végzi el az index frissítését, ha a motor nem végez semmilyen más munkát. Ez **inkonzisztens vagy hiányos** lekérdezési eredményeket eredményezhet. Ha egy Cosmos-tároló lekérdezését tervezi, ne válassza a lusta indexelés lehetőséget.

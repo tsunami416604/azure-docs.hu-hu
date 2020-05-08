@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 10/16/2019
-ms.openlocfilehash: 9c43b141608e5a9051499fdfb2adb5d8b0b593df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/07/2020
+ms.openlocfilehash: 805b51bf4e6d8feab9539f660dfc72ca78b82d5c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232470"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982632"
 ---
 # <a name="exists-transformation-in-mapping-data-flow"></a>Létező átalakítás a leképezési adatfolyamban
 
@@ -21,7 +21,9 @@ ms.locfileid: "82232470"
 
 A létező transzformáció egy sor-szűrési átalakítás, amely ellenőrzi, hogy az adatai más forrásban vagy adatfolyamban léteznek-e. A kimeneti adatfolyam tartalmazza a bal oldali stream összes olyan sorát, amely vagy létezik, vagy nem létezik a megfelelő streamben. A létező átalakítás hasonló a ```SQL WHERE EXISTS``` következőhöz ```SQL WHERE NOT EXISTS```: és.
 
-## <a name="configuration"></a>Configuration
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vZKz]
+
+## <a name="configuration"></a>Konfiguráció
 
 1. Válassza ki, hogy melyik adatfolyamot kívánja megkeresni a **megfelelő stream** legördülő menüben.
 1. Adja meg, hogy szeretné-e, ha a létező vagy nem létező **adattípust** szeretné használni.

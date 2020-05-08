@@ -155,8 +155,16 @@
           items:
             - name: Fürtök kezelése az Apache Ambari webes felülettel
               href: ./hdinsight-hadoop-manage-ambari.md
-            - name: Fürtök optimalizálása az Apache Ambari webes felülettel
-              href: ./hdinsight-changing-configs-via-ambari.md
+            - name: Optimalizálás az Apache Ambarival
+              items:
+                - name: Fürtök optimalizálása
+                  href: ./hdinsight-changing-configs-via-ambari.md
+                - name: Az Apache HBase optimalizálása
+                  href: ./optimize-hbase-ambari.md
+                - name: Az Apache Hive optimalizálása
+                  href: ./optimize-hive-ambari.md
+                - name: Az Apache Pig optimalizálása
+                  href: ./optimize-pig-ambari.md
             - name: Az Apache Ambari REST API használata
               href: ./hdinsight-hadoop-manage-ambari-rest-api.md
             - name: Fürt törlése
@@ -221,14 +229,18 @@
               href: ./hdinsight-hadoop-oms-log-analytics-use-queries.md
             - name: Fürtteljesítmény monitorozása
               href: ./hdinsight-key-scenarios-to-monitor.md
-            - name: Fürtök rendelkezésre állásának monitorozása az Ambarival és az Azure Monitor-naplókkal
+            - name: Fürt rendelkezésre állása – Apache Ambari
               href: ./hdinsight-cluster-availability.md
+            - name: Fürt rendelkezésre állása – Azure Monitor-naplók
+              href: ./cluster-availability-monitor-logs.md
         - name: Hibaelhárítás
           items:
             - name: Szkriptműveletek hibaelhárítása
               href: ./troubleshoot-script-action.md
             - name: Erőforráslétrehozási hibák
               href: ./troubleshoot-resource-creation-fails.md
+            - name: Az Apache Oozie hibaelhárítása
+              href: ./troubleshoot-oozie.md
     - name: Referencia
       items:
         - name: Azure PowerShell
@@ -699,6 +711,8 @@
               href: ./hbase/hbase-troubleshoot-timeouts-hbase-hbck.md
             - name: Az Apache HBase hibaelhárítása
               href: ./hbase/apache-troubleshoot-hbase.md
+            - name: Az Apache HBase lekérdezésére szolgáló REST API
+              href: ./hbase/troubleshoot-rest-api.md
 - name: Interaktív lekérdezés
   items:
     - name: Áttekintés
@@ -901,6 +915,8 @@
           href: ./transport-layer-security.md
         - name: HDInsight-alapú virtuális hálózatok tervezése
           href: ./hdinsight-plan-virtual-network-deployment.md
+        - name: Hálózati forgalom szabályozása
+          href: ./control-network-traffic.md
         - name: NSG-khez és UDR-ekhez szükséges IP-címek
           href: ./hdinsight-management-ip-addresses.md
         - name: Az Azure Firewall szolgáltatáscímkéi
@@ -931,6 +947,8 @@
           href: ./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
         - name: Tűzfal használata a kimenő forgalom korlátozására
           href: ./hdinsight-restrict-outbound-traffic.md
+        - name: Hálózati virtuális berendezés konfigurálása
+          href: ./network-virtual-appliance.md
         - name: Hibaelhárítás
           items:
             - name: Az ESP hitelesítéssel kapcsolatos problémái
