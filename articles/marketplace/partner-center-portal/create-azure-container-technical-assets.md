@@ -1,29 +1,29 @@
 ---
-title: Azure-beli virtuális gép technikai eszközének létrehozása
-description: Ez a cikk a tárolók Azure Marketplace-en való konfigurálásának lépéseit és követelményeit ismerteti.
+title: Az Azure Container által kínált technikai fogalmak – Microsoft kereskedelmi piactér
+description: Technikai erőforrások és irányelvek a tárolók Azure Marketplace-en való konfigurálásának megkönnyítéséhez.
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: e51b8c705533fd74a5e46eaa2570563fef485309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730635"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791884"
 ---
-# <a name="create-an-azure-vm-technical-asset"></a>Azure-beli virtuális gép technikai eszközének létrehozása
+# <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
 
 > [!IMPORTANT]
 > Az Azure-beli tárolók felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Az ajánlatok migrálása előtt kövesse a [tároló technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) a Cloud Partner Portal az ajánlatok kezeléséhez című témakör útmutatását.
 
-Ez a cikk a tárolók Azure Marketplace-en való konfigurálásának lépéseit és követelményeit ismerteti.
+Ez a cikk az Azure Marketplace-en elérhető tárolók létrehozására szolgáló technikai forrásokat és javaslatokat tartalmaz.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-A rövid útmutatók, oktatóanyagok és minták esetében lásd: [Azure Container instances](https://docs.microsoft.com/azure/container-instances).
+A gyors útmutatókkal, oktatóanyagokkal és mintákkal kapcsolatban tekintse meg a [Azure Container instances dokumentációját](https://docs.microsoft.com/azure/container-instances).
 
 ## <a name="fundamental-technical-knowledge"></a>Alapvető műszaki ismeretek
 
@@ -61,6 +61,6 @@ További információkért tekintse meg a következő oktatóanyagokat:
 - [Oktatóanyag: tároló-rendszerkép létrehozása a Azure Container Instances való üzembe helyezéshez](https://docs.microsoft.com/azure/container-instances/container-instances-tutorial-prepare-app)
 - [Oktatóanyag: tároló-lemezképek létrehozása és üzembe helyezése a felhőben Azure Container Registry feladatokkal](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-quick-task).
 
-## <a name="next-step"></a>Következő lépés
+## <a name="next-steps"></a>További lépések
 
 - [Hozza létre a tároló ajánlatát](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-azure-container-offer).
