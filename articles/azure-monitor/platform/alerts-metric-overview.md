@@ -4,12 +4,12 @@ description: Tekintse át, hogy mit tehet a metrikus riasztásokkal, és hogyan 
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: a6860cad077b597df923274f8971f5652d4ba9e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397977"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855039"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>A metrikariasztások működése az Azure Monitorban
 
@@ -26,7 +26,7 @@ Tegyük fel, hogy létrehozott egy egyszerű statikus küszöbérték-metrika ri
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: statikus
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A támogatott időösszesítések a következők: min., max., átlag, összeg, darabszám): átlag
+- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#changing-aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -43,7 +43,7 @@ Tegyük fel, hogy létrehozott egy egyszerű dinamikus küszöbértékek mérős
 - Célként megadott erőforrás (a figyelni kívánt Azure-erőforrás): myVM
 - Metrika: százalékos CPU
 - Feltétel típusa: dinamikus
-- Idő összesítése (a nyers metrika értékeit futtató statisztika. A támogatott időösszesítések a következők: min., max., átlag, összeg, darabszám): átlag
+- Idő összesítése (a nyers metrika értékeit futtató statisztika. A [támogatott időösszesítések](metrics-charts.md#changing-aggregation) a következők: min., max., átlag, összeg, darabszám): átlag
 - Időtartam (a visszatekintő ablak, amelyen a metrika értékei be vannak jelölve): az elmúlt 5 percben
 - Gyakoriság (az a gyakoriság, amellyel a metrika riasztása ellenőrzi, hogy teljesülnek-e a feltételek): 1 perc
 - Operátor: nagyobb, mint
@@ -129,9 +129,9 @@ Ez a funkció jelenleg a platform metrikái (nem egyéni metrikák) esetén tám
 | Szolgáltatás | Nyilvános Azure | Government | Kína |
 |:--------|:--------|:--------|:--------|
 | Virtual machines (Virtuális gépek)  | **Igen** | Nem | Nem |
-| SQL Server-adatbázisok | **Igen** | **Igen** | Nem |
-| SQL Server rugalmas készletek | **Igen** | **Igen** | Nem |
-| Adatmező peremhálózati eszközei | **Igen** | **Igen** | Nem |
+| SQL Server-adatbázisok | **Igen** | **Igen** | No |
+| SQL Server rugalmas készletek | **Igen** | **Igen** | No |
+| Adatmező peremhálózati eszközei | **Igen** | **Igen** | No |
 
 A figyelés hatókörét a három módszer egyikével adhatja meg egyetlen metrikai riasztási szabály segítségével. A Virtual Machines használatával például a következő módon adhatja meg a hatókört:  
 

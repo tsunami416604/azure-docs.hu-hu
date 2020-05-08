@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: f07c02df1b8e0032c9e1b4ef9a24c345fee20a40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426310"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598147"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>.NET-es szabványos felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
 
@@ -42,17 +42,29 @@ A UDF háromféle módon valósítható meg:
 Az UDF-csomagok formátuma az elérési `/UserCustomCode/CLR/*`út. A rendszer a dinamikus csatolású kódtárakat (DLL-eket `/UserCustomCode/CLR/*` ) és az erőforrásokat a mappában másolja, ami segít a felhasználói DLL-fájlok elkülönítésében a rendszer-és Azure stream Analytics dll-eken. Ez a csomag elérési útja minden függvényhez használatos, függetlenül az azok alkalmazására használt módszertől.
 
 ## <a name="supported-types-and-mapping"></a>Támogatott típusok és leképezés
+A C# nyelvben használandó Azure Stream Analytics értékeket az egyik környezetből a másikba kell átadni. A átadás az UDF összes bemeneti paramétere esetében történik. Minden Azure Stream Analytics típusnak megfelelő típusúnak kell lennie a C#-ban az alábbi táblázatban látható módon:
 
-|**UDF-típus (C#)**  |**Azure Stream Analytics típusa**  |
+|**Azure Stream Analytics típusa** |**C# típus** |
+|---------|---------|
+|bigint | hosszú |
+|lebegőpontos | double |
+|nvarchar (max.) | sztring |
+|dátum/idő | DateTime |
+|Record | Szótár\<karakterlánca, objektum> |
+|Tömb | Tömb\<objektum> |
+
+Ugyanez igaz, ha az adatokat a C# rendszerből Azure Stream Analyticsre kell átadni, ami az UDF kimeneti értékén történik. Az alábbi táblázat a támogatott típusokat mutatja:
+
+|**C# típus**  |**Azure Stream Analytics típusa**  |
 |---------|---------|
 |hosszú  |  bigint   |
-|double  |  double   |
+|double  |  lebegőpontos   |
 |sztring  |  nvarchar (max.)   |
-|dateTime  |  dateTime   |
-|struct  |  IRecord   |
-|objektum  |  IRecord   |
-|Tömb\<objektum>  |  IArray   |
-|szótár<sztring, objektum>  |  IRecord   |
+|DateTime  |  dateTime   |
+|struct  |  Record   |
+|objektum  |  Record   |
+|Tömb\<objektum>  |  Tömb   |
+|Szótár\<karakterlánca, objektum>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
 Felhasználó által definiált függvényeket írhat a **script. asql** Codebehind. A Visual Studio Tools automatikusan lefordítja a CodeBehind-fájlt egy Assembly-fájlba. A szerelvények zip-fájlként vannak csomagolva, és feltöltve lesznek a Storage-fiókjába, amikor elküldi a feladatot az Azure-ba. Megtudhatja, hogyan írhat egy C# UDF-t az CodeBehind használatával a [C# UDF for stream Analytics Edge feladatok](stream-analytics-edge-csharp-udf.md) oktatóanyagának követésével. 
