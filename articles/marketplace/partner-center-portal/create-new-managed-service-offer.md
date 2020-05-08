@@ -1,5 +1,5 @@
 ---
-title: Új felügyelt szolgáltatási ajánlat létrehozása a kereskedelmi piactéren
+title: Felügyelt szolgáltatási ajánlat létrehozása a Microsoft kereskedelmi piactéren
 description: Új felügyelt szolgáltatási ajánlat létrehozása az Azure Marketplace-en való listázáshoz a partner Center kereskedelmi piactér portáljának használatával.
 author: JnHs
 ms.author: jenhayes
@@ -8,56 +8,60 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: c82c3e0b6e6d11ccc33bf8556b06aeb04a6d37b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: a8cd35ced61c5b0e8b3b534394c9b6a0f543ebbb
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82147913"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691354"
 ---
-# <a name="create-a-new-managed-service-offer"></a>Új felügyelt szolgáltatási ajánlat létrehozása
+# <a name="create-a-managed-service-offer"></a>Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
 
-> [!IMPORTANT]
-> A felügyelt szolgáltatási ajánlatok felügyeletét a Cloud Partner Portalról a partneri központba helyezi át. Amíg az ajánlatokat át nem telepíti, kövesse a [felügyelt szolgáltatás-ajánlat közzététele az Azure Marketplace](../../lighthouse/how-to/publish-managed-services-offers.md) -en című témakör útmutatásait az ajánlatok Cloud Partner Portal-ban való kezeléséhez.
+A felügyelt szolgáltatás segítséget nyújt az [Azure Lighthouse](../../lighthouse/overview.md) -forgatókönyvek engedélyezéséhez. Ha egy ügyfél felügyelt szolgáltatási ajánlatot fogad, akkor az Azure-beli [delegált erőforrás-kezelésre](../../lighthouse/concepts/azure-delegated-resource-management.md)képes erőforrásokat bevezetni. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
-A felügyelt szolgáltatás segítséget nyújt az [Azure Lighthouse](../../lighthouse/overview.md) -forgatókönyvek engedélyezéséhez. Ha egy ügyfél felügyelt szolgáltatási ajánlatot fogad, akkor az Azure-beli [delegált erőforrás-kezelésre](../../lighthouse/concepts/azure-delegated-resource-management.md)képes erőforrásokat bevezetni.
-
-A felügyelt szolgáltatások létrehozásának megkezdéséhez először létre kell [hoznia egy partner Center-fiókot](./create-account.md) , és meg kell nyitnia a [kereskedelmi piactér irányítópultját](https://partner.microsoft.com/dashboard/commercial-marketplace/offers), ahol a kiválasztott **Áttekintés** lap van kiválasztva. A felügyelt szolgáltatások ajánlatának közzétételéhez [ezüst vagy arany szintű Cloud platform kompetenciával](https://partner.microsoft.com/membership/cloud-platform-competency) kell rendelkeznie, vagy [Azure szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) -nek kell lennie.
-
-![Kereskedelmi piactér irányítópultja a partner Centerben](./media/new-offer-overview.png)
-
->[!Note]
-> Ha egy ajánlat közzé lett téve, a partner Centerben végzett ajánlat szerkesztése csak a rendszeren történik meg, és az újbóli közzététel után tárolja az előfizetéseket. Győződjön meg arról, hogy a módosítások elvégzése után elküldi az ajánlatot közzétételre.
+A felügyelt szolgáltatások ajánlatának közzétételéhez [ezüst vagy arany szintű Cloud platform kompetenciával](https://partner.microsoft.com/membership/cloud-platform-competency) kell rendelkeznie, vagy [Azure szakértői MSP](https://partner.microsoft.com/membership/azure-expert-msp) -nek kell lennie.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
-Válassza az **+ új ajánlat** gombot, majd válassza a **felügyelt szolgáltatás** menüelemet. Ekkor megjelenik az **új ajánlat** párbeszédpanel.
+1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat** > **felügyelt szolgáltatás**elemet.
 
-### <a name="offer-id-and-alias"></a>Ajánlat azonosítója és alias
+    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-managed-service.png)
 
-- **Ajánlat azonosítója**: egyedi azonosító a fiókban található összes ajánlathoz. Ez az azonosító látható lesz az ügyfelek számára a Piactéri ajánlat URL-címében. Ez az azonosító csak kisbetűkből álló alfanumerikus karaktereket (például kötőjeleket és aláhúzásokat, de nem szóközt) tartalmazhat, és legfeljebb 50 karakter hosszúságú lehet, és a **create (létrehozás**) gombra kattintva nem módosítható.  Ha például a *test-Offer-1* értéket adja meg, az ajánlat URL-címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+>[!NOTE]
+>Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
 
-- **Ajánlat aliasa**: az ajánlatnak a partner Centerben való hivatkozásához használt név. Ez a név nem lesz használatban a piactéren, és nem egyezik meg az ajánlat nevével és más értékekkel, amelyek megjelennek az ügyfeleknek. Ez az érték nem módosítható a **Létrehozás**gombra kattintva.
+## <a name="new-offer"></a>Új ajánlat
 
-Miután megtörtént az **ajánlat-azonosító** és az **ajánlati alias**megadása, válassza a **Létrehozás**lehetőséget. Ezt követően az ajánlat különböző részein dolgozhat.
+Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
+
+* Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
+* Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+* Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
+
+Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
+
+* Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
+* A **create (létrehozás**) lehetőség kiválasztása után az ajánlat aliasa nem módosítható.
+
+Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
 ## <a name="offer-setup"></a>Ajánlat beállítása
-
-Az **ajánlat beállítása** lap a következő információkat kéri. A mezők kitöltése után válassza a **Mentés** lehetőséget.
 
 ## <a name="connect-lead-management"></a>Az érdeklődők felügyeletének összekötése
 
 [!INCLUDE [Connect lead management](./includes/connect-lead-management.md)]
 
-Vegye figyelembe, hogy a [felügyelt szolgáltatásokra vonatkozó minősítési házirendek](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)alapján szükség van egy **érdeklődő célhelyre** . Ez egy rekordot hoz létre a CRM-rendszerben minden alkalommal, amikor egy ügyfél üzembe helyezi az ajánlatot.
+A [felügyelt szolgáltatásokra vonatkozó minősítési szabályzatok](https://docs.microsoft.com/legal/marketplace/certification-policies#700-managed-services)alapján szükség van egy **érdeklődő célhelyre** . Ez egy rekordot hoz létre a CRM-rendszerben minden alkalommal, amikor egy ügyfél üzembe helyezi az ajánlatot.
 
 További információ: az [ólom kezelése – áttekintés](./commercial-marketplace-get-customer-leads.md).
 
-Ne felejtse el **menteni** a lapot, mielőtt továbblép a következő szakaszra.
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="properties"></a>Tulajdonságok
 
-A **Tulajdonságok** lapon megadhatja az ajánlatnak a piactéren való csoportosításához használt kategóriákat, valamint az ajánlatot támogató jogi szerződéseket. A lap befejezése után válassza a **Mentés** lehetőséget.
+Ezen a lapon megadhatja az ajánlatnak a piactéren való csoportosításához használt kategóriákat, valamint az ajánlatot támogató jogi szerződéseket.
 
 ### <a name="category"></a>Kategória
 
@@ -67,14 +71,16 @@ Válasszon legalább egyet, és legfeljebb öt kategóriát, amelyek az ajánlat
 
 A **feltételek és** kikötések mezőben adja meg a saját jogi feltételeit. Megadhatja azt az URL-címet is, ahol a feltételek és kikötések megtalálhatók. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket, mielőtt kipróbálhatják az ajánlatot.
 
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
+
 ## <a name="offer-listing"></a>Ajánlati lista
 
-Az **ajánlati lista** lapon megadhatja az ajánlathoz tartozó piactér adatait (az ajánlat nevét, leírását, képeit stb.).
+Ezen a lapon megadhatja az ajánlathoz tartozó piactér adatait (például az ajánlat nevét, leírását és lemezképeit).
 
 > [!NOTE]
-> Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek, a használati feltételek stb.) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
+> Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek és a használati feltételek) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelven] érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -100,23 +106,13 @@ Néhány tipp a Leírás írásához:
 - Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania.  
 - A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.
 
-Ha szeretné, hogy az ajánlat leírása jobban megtörténjen, a Rich Text Editor használatával formázhatja a leírást.
+Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, használja a Rich Text Editort a formázás alkalmazásához.
 
-![A Rich Text Editor használata](./media/text-editor2.png)
+![A Rich Text Editor használata](./media/rich-text-editor.png)
 
-A Rich Text Editor használatához kövesse az alábbi utasításokat:
-
-- A tartalom formátumának módosításához jelölje ki a formázni kívánt szöveget, és válasszon egy szövegstílus-stílust az alábbi ábrán látható módon:
-
-     ![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png)
-
-- Ha felsorolásjeles vagy számozott listát szeretne hozzáadni a szöveghez, használja az alábbi beállításokat:
-
-     ![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png)
-
-- A szöveg behúzásának hozzáadásához vagy eltávolításához használja az alábbi beállításokat:
-
-     ![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png)
+| <center>Szöveg formátumának módosítása | <center>Felsorolásjelek vagy számozás hozzáadása | <center>Szöveg behúzásának hozzáadása vagy eltávolítása |
+| --- | --- | --- |
+| <center>![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png) |  <center>![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png) |  <center>![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png) |
 
 ### <a name="privacy-policy-link"></a>Adatvédelmi szabályzat hivatkozása
 
@@ -138,12 +134,19 @@ Ha az **Azure globális ügyfeleinek** és/vagy **Azure Government ügyfeleinek*
 
 Ebben a szakaszban megadhatja azokat az emblémákat és képeket, amelyeket az ajánlat vásárlónak való megjelenítésekor használni fog. Minden képnek. png formátumúnak kell lennie.
 
->[!Note]
+>[!NOTE]
 >Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
 
 #### <a name="marketplace-logos"></a>Piactéri emblémák
 
-Négy embléma mérete szükséges: **kis (40x40cm)**, **közepes (90x90)**, **nagy (115x115)** és **széles (255x115)**. Kövesse az alábbi irányelveket a logókhoz:
+Adja meg ajánlata emblémáját négy képpontos méretben:
+
+- **Kicsi** (40 x 40)
+- **Közepes** (90 x 90)
+- **Nagyméretű** (115 x 115)
+- **Széles** (255 x 115)
+
+Kövesse az alábbi irányelveket a logókhoz:
 
 - Az Azure arculata egyszerű színpalettát használ. Törekedjen minél kevesebb alap- és másodlagos szín használatára az emblémában.
 - A portál témaszínei a fehér és a fekete. Ne használja ezeket a színeket az embléma háttérszíneként. Olyan színt használjon, amelynek hatására az embléma felkelti a figyelmet. Javasoljuk az egyszerű alapszínek használatát.
@@ -164,6 +167,8 @@ Opcionálisan akár öt videót is hozzáadhat az ajánlat bemutatásához. Ezek
 
 - [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
+
 ## <a name="preview"></a>Előzetes verzió
 
 Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, először elérhetővé kell tennie egy korlátozott előzetes verzió célközönségét. Ezzel megerősítheti, hogy az ajánlat hogyan jelenik meg az Azure piactéren, mielőtt elérhetővé tenné az ügyfelek számára. Az előzetes verzió ideje alatt a Microsoft támogatási és mérnöki csapatai is megtekinthetik az ajánlatot.
@@ -171,6 +176,8 @@ Mielőtt közzéteszi ajánlatát a szélesebb körű Piactéri ajánlatban, el�
 Megadhatja az előnézeti célközönséget az Azure-előfizetési azonosítók megadásával a **célközönség megtekintése** szakaszban. Akár 10 előfizetés-azonosítót is megadhat manuálisan, vagy akár 100 előfizetés-azonosítóval rendelkező. csv-fájlt is feltölthet.
 
 Az ehhez az előfizetéshez kapcsolódó ügyfelek az Azure Marketplace-en tekinthetik meg az ajánlatot, mielőtt élőben tennének. Ügyeljen arra, hogy a saját előfizetéseit is tartalmazza, így előzetesen megtekintheti az ajánlatát.
+
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ## <a name="plan-overview"></a>A terv áttekintése
 
@@ -237,18 +244,20 @@ Minden egyes **engedélyezéshez**meg kell adnia a következőket. Ezután több
 
 Miután befejezte a csomag összes részét, válassza az **+ új csomag létrehozása** lehetőséget, ahányszor további csomagokat kell létrehoznia. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
+
 ## <a name="publish"></a>Közzététel
 
 ### <a name="submit-offer-to-preview"></a>Ajánlat beküldése az előzetes verzióra
 
-Miután befejezte az ajánlat összes szükséges szakaszt, válassza a **Közzététel** lehetőséget a portál jobb felső sarkában. A rendszer átirányítja a **felülvizsgálat és közzététel** lapra.
+Miután elvégezte az ajánlat összes szükséges szakaszt, válassza a **felülvizsgálat és közzététel** elemet a portál jobb felső sarkában.
 
 Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 
 - Tekintse meg az ajánlat egyes szakaszainak befejezési állapotát.
-  - *Nincs elindítva* – azt jelenti, hogy a szakasz nem lett megérintve, és el kell végezni.
-  - *Hiányos* – azt jelenti, hogy a szakasznak meg kell oldania a hibákat, vagy további információkat kell megadni. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
-  - *Complete (Befejezés* ) – azt jelenti, hogy a szakasz elkészült, minden szükséges adattal rendelkezik, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
+  - **Nincs elindítva** – a szakasz nincs megérintve, és el kell végezni.
+  - **Hiányos** – a szakasznak olyan hibákkal kell rendelkeznie, amelyeket meg kell oldani, vagy további információkat kell megadnia. Térjen vissza a szakasz (ok) hoz, és frissítse azt.
+  - **Complete (Befejezés** ) – a szakasz elkészült, az összes szükséges információ meg van határozva, és nincsenek hibák. Az ajánlat minden részének teljes állapotban kell lennie ahhoz, hogy el tudja küldeni az ajánlatot.
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvános közzétételére (vagy ha egy privát ajánlatra a privát közönség számára).
 

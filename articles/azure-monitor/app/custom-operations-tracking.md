@@ -4,12 +4,12 @@ description: Egyéni műveletek nyomon követése az Azure Application Insights 
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.reviewer: sergkanz
-ms.openlocfilehash: 31c1fb366e7b109ea1fa4977d8e2f908e766e0f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316c1b7ea32f661b009bfee7a89cb7e5ed082f3b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276100"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690867"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Egyéni műveletek nyomon követése Application Insights .NET SDK-val
 
@@ -38,7 +38,7 @@ Lássuk, hogyan követhetik nyomon ezeket a műveleteket.
 Magas szinten a feladat az ismert tulajdonságok létrehozása `RequestTelemetry` és beállítása. A művelet befejezése után nyomon követheti a telemetria. A következő példa azt mutatja be, hogy ez a feladat.
 
 ### <a name="http-request-in-owin-self-hosted-app"></a>HTTP-kérelem a Owin saját üzemeltetésű alkalmazásában
-Ebben a példában a nyomkövetési környezetet a rendszer a [korrelációhoz tartozó HTTP protokoll](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)szerint propagálja. Az itt ismertetett fejléceket kell elvárnia.
+Ebben a példában a nyomkövetési környezetet a rendszer a [korrelációhoz tartozó HTTP protokoll](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)szerint propagálja. Az itt ismertetett fejléceket kell elvárnia.
 
 ```csharp
 public class ApplicationInsightsMiddleware : OwinMiddleware
@@ -117,7 +117,7 @@ public class ApplicationInsightsMiddleware : OwinMiddleware
 A korrelációs HTTP-protokoll a `Correlation-Context` fejlécet is deklarálja. Az egyszerűség kedvéért azonban itt kimarad.
 
 ## <a name="queue-instrumentation"></a>Üzenetsor-kialakítás
-Míg a [W3C nyomkövetési kontextus](https://www.w3.org/TR/trace-context/) és a [http protokoll a](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) korrelációs adatoknak a http-kérelemmel való átadására szolgál, minden üzenetsor-protokollnak meg kell határoznia, hogyan adja meg ugyanazokat az adatokat az üzenetsor-üzenetben. Egyes üzenetsor-protokollok (például a AMQP) lehetővé teszik a további metaadatok átadását és mások (például az Azure Storage-üzenetsor) használatát, hogy a környezet kódolva legyen az üzenet tartalmába.
+Míg a [W3C nyomkövetési kontextus](https://www.w3.org/TR/trace-context/) és a [http protokoll a](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md) korrelációs adatoknak a http-kérelemmel való átadására szolgál, minden üzenetsor-protokollnak meg kell határoznia, hogyan adja meg ugyanazokat az adatokat az üzenetsor-üzenetben. Egyes üzenetsor-protokollok (például a AMQP) lehetővé teszik a további metaadatok átadását és mások (például az Azure Storage-üzenetsor) használatát, hogy a környezet kódolva legyen az üzenet tartalmába.
 
 > [!NOTE]
 > * **Az összetevők közötti nyomkövetés még nem támogatott a várólisták esetében** Ha a gyártó és a fogyasztó a telemetria különböző Application Insights-erőforrásokra küldi, a tranzakciós diagnosztika és az alkalmazás-hozzárendelés a tranzakciókat jeleníti meg, és leképezi a teljes végpontot. Várólisták esetén ez még nem támogatott. 
@@ -346,7 +346,7 @@ Ha a hangszer-üzenetek törlését végzi, ügyeljen rá, hogy a művelet (korr
 
 ### <a name="dependency-types"></a>Függőségi típusok
 
-A Application Insights függőségi típus használatával cusomize a felhasználói felületi élményeket. A várólisták esetében a következő típusokat `DependencyTelemetry` ismeri fel, amelyek javítják a [tranzakciós diagnosztika élményét](/azure/azure-monitor/app/transaction-diagnostics):
+Application Insights függőségi típust használ a felhasználói felületi élmények testreszabásához. A várólisták esetében a következő típusokat `DependencyTelemetry` ismeri fel, amelyek javítják a [tranzakciós diagnosztika élményét](/azure/azure-monitor/app/transaction-diagnostics):
 - `Azure queue`Azure Storage-várólisták esetén
 - `Azure Event Hubs`Azure-Event Hubs
 - `Azure Service Bus`Azure Service Bus
@@ -482,4 +482,4 @@ Minden Application Insights művelet (kérelem vagy függőség) magában foglal
 - Tekintse meg az [adatmodellt](../../azure-monitor/app/data-model.md) Application Insights típusokhoz és adatmodellekhez.
 - Egyéni [eseményeket és mérőszámokat](../../azure-monitor/app/api-custom-events-metrics.md) jelenthet a Application Insights.
 - Tekintse meg a környezeti tulajdonságok gyűjteményének szabványos [konfigurációját](configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet) .
-- Tekintse meg a [System. Diagnostics. Activity felhasználói útmutatót](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , és nézze meg, hogyan korreláljuk a telemetria.
+- Tekintse meg a [System. Diagnostics. Activity felhasználói útmutatót](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) , és nézze meg, hogyan korreláljuk a telemetria.

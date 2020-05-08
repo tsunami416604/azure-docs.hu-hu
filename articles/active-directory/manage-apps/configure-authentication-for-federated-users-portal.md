@@ -15,12 +15,12 @@ ms.date: 04/08/2019
 ms.author: mimart
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 60bfc964ffc394b3f79c9d279158003f383b7331
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78943442"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690506"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Az alkalmazások Azure Active Directory bejelentkezési viselkedésének konfigurálása egy otthoni tartomány felderítési házirendjének használatával
 
@@ -168,7 +168,7 @@ Az alábbi példákban az Azure AD-ben létrehozhatja, frissítheti, összekapcs
 
 Ha a rendszer nem ad vissza semmit, az azt jelenti, hogy nincsenek szabályzatok létrehozva a bérlőben.
 
-### <a name="example-set-hrd-policy-for-an-application"></a>Példa: HRD szabályzat beállítása egy alkalmazáshoz 
+### <a name="example-set-an-hrd-policy-for-an-application"></a>Példa: HRD szabályzat beállítása egy alkalmazáshoz 
 
 Ebben a példában egy olyan házirendet hoz létre, amely akkor van hozzárendelve egy alkalmazáshoz, ha a következők valamelyike: 
 - Automatikusan felgyorsítja a felhasználókat egy AD FS bejelentkezési képernyőre, amikor bejelentkeznek egy alkalmazásba, ha a bérlő egyetlen tartományba esik. 
@@ -251,7 +251,7 @@ Jegyezze fel annak a szabályzatnak a **ObjectId** , amelynek hozzárendeléseit
 Get-AzureADPolicyAppliedObject -id <ObjectId of the Policy>
 ```
 
-### <a name="example-remove-an-hrd-policy-for-an-application"></a>Példa: egy alkalmazás HRD szabályzatának eltávolítása
+### <a name="example-remove-an-hrd-policy-from-an-application"></a>Példa: HRD szabályzat eltávolítása egy alkalmazásból
 #### <a name="step-1-get-the-objectid"></a>1. lépés: a ObjectID beolvasása
 Az előző példával beolvashatja a házirend **ObjectId** , valamint azt, hogy az alkalmazás melyik egyszerű szolgáltatását kívánja eltávolítani. 
 

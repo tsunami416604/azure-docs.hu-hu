@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ae8be848b5d12e01865fe6bd3b394b460252aa3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606003"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692633"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -165,9 +165,22 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 | Hub/társított szolgáltatások kezelése | IGEN | IGEN | IGEN |
 | Hub/Access Control kezelése (felhasználók társítása a szinapszis-munkaterület szerepköreihez) | IGEN | NO | NO |
 | Hub/Integration Runtimes kezelése | IGEN | IGEN | IGEN |
+| A figyelő központ használata | IGEN | IGEN | IGEN |
+| Központ/előkészítés/folyamat futtatásának figyelése  | IGEN | NO | NO |
+| Központ/előkészítés/trigger-futtatások figyelése  | IGEN | NO | NO |
+| Hub/előkészítési/integrációs modulok figyelése  | IGEN | IGEN | IGEN |
+| Hub/tevékenységek/Spark-alkalmazások figyelése | IGEN | IGEN | NO  |
+| Központ/tevékenységek/SQL-kérelmek figyelése | IGEN | NO | IGEN |
+| Hub/tevékenységek/Spark-készletek figyelése | IGEN | IGEN | NO  |
+| Hub/triggerek figyelése | IGEN | NO | NO |
+| Hub/társított szolgáltatások kezelése | IGEN | IGEN | IGEN |
+| Hub/Access Control kezelése (felhasználók társítása a szinapszis-munkaterület szerepköreihez) | IGEN | NO | NO |
+| Hub/Integration Runtimes kezelése | IGEN | IGEN | IGEN |
+
 
 > [!NOTE]
-> [1] a tárolókban lévő adatokhoz való hozzáférés a ADLSGen2 [2] SQL OD-táblák és a Spark-táblázatok hozzáférés-vezérlésének függvénye, amely a ADLSGen2 és a hozzáféréshez szükséges engedélyeket tárolja a ADLSGen2.
+> [1] a tárolókban lévő adatokhoz való hozzáférés a ADLSGen2 hozzáférés-vezérléstől függ. </br>
+> [2] az SQL OD-táblák és a Spark-táblázatok tárolja az ADLSGen2 és a hozzáféréshez szükséges megfelelő engedélyeket a ADLSGen2.
 
 ## <a name="next-steps"></a>További lépések
 

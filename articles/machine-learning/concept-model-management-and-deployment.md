@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 03/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7857d11c625911cd1b49dfcf0e0d612fc6a3871e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12d86f9415f7f5b813d2dce8eb3ad4bb63dec30c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81314312"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929757"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: a modell kezelése, üzembe helyezése és figyelése Azure Machine Learning
 
@@ -153,7 +153,7 @@ Az Azure ML lehetővé teszi az összes ML-eszköz teljes körű naplózásának
 - A [tolmácsolás](how-to-machine-learning-interpretability.md) lehetővé teszi a modellek magyarázatát, a szabályozásoknak való megfelelést, valamint azt, hogy a modellek hogyan érkeznek meg az adott input miatt.
 - Az Azure ML-futtatási előzményei a modellek betanításához használt kód, adatok és számítások pillanatképét tárolják.
 - Az Azure ML-modell beállításjegyzéke rögzíti a modellhez társított összes metaadatot (amely kitanítja azt, hogy hol van üzembe helyezve, ha a központi telepítése kifogástalan).
-- A [Azure Event Grid integrációja](concept-event-grid-integration.md) lehetővé teszi, hogy az ml-életcikluson belüli eseményeket cselekedjen. Például a modell regisztrációjának, üzembe helyezésének, adateltolódásának és képzésének (futtatásának) eseményei.
+- Az Azure-nal való [integráció](how-to-use-event-grid.md) lehetővé teszi, hogy az ml-életcikluson belüli eseményeket cselekedjen. Például a modell regisztrációjának, üzembe helyezésének, adateltolódásának és képzésének (futtatásának) eseményei.
 
 > [!TIP]
 > Míg a modellekkel és adatkészletekkel kapcsolatos néhány információ automatikusan rögzítve van, a __címkék__használatával további információkat is hozzáadhat. Ha regisztrált modelleket és adatkészleteket keres a munkaterületen, használhat címkéket szűrőként.

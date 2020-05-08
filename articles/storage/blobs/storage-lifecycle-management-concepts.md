@@ -3,17 +3,17 @@ title: Az Azure Storage életciklusának kezelése
 description: Megtudhatja, hogyan hozhat létre életciklus-szabályzatokat az adatok gyors és lassú elérésű és archív szintjeire való áttéréséhez.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/21/2019
+ms.date: 04/24/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 238c12baf55b525a24107a727d09588ef06a6bef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 255e440586af2a5c9115023f45fbf02e25c57ab6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77598306"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692131"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -24,7 +24,7 @@ Az életciklus-kezelési házirend a következőket teszi lehetővé:
 - A Blobok átállítása a hűvösebb tárolási szintre (gyors elérésű, gyors archiválásra vagy az archiválásra) a teljesítmény és a költséghatékonyság optimalizálása érdekében
 - Blobok törlése életciklusuk végén
 - A Storage-fiók szintjén naponta egyszer futtatandó szabályok definiálása
-- Szabályok alkalmazása a tárolók vagy a Blobok egy részhalmaza számára (előtag használata szűrőkkel)
+- Szabályok alkalmazása a tárolók vagy a Blobok egy részhalmaza számára (név előtaggal vagy [blob-index címkékkel](storage-manage-find-blobs.md) szűrőként használva)
 
 Vegyünk például egy olyan forgatókönyvet, amelyben az adatmennyiség az életciklus korai szakaszában, de csak két hét múlva alkalmanként válik elérhetővé. Az első hónapban a rendszer ritkán fér hozzá az adatkészlethez. Ebben az esetben a gyors tárolás a korai fázisokban a legjobb. A ritka elérésű tárolás a legmegfelelőbb az alkalmi hozzáféréshez. Az Archive Storage a legjobb lehetőség az adatvesztést követően a hónapban. Ha a tárolási rétegek mennyiségét az adatmennyiség tekintetében állítja be, az igényeinek leginkább megfelelő tárolási lehetőségeket is megtervezheti. Az áttérés eléréséhez az életciklus-kezelési házirend szabályai elérhetők az adatvesztéshez a hűvösebb rétegekbe.
 
@@ -292,7 +292,11 @@ A szűrők a következők:
 | Szűrő neve | Szűrő típusa | Megjegyzések | Kötelező |
 |-------------|-------------|-------|-------------|
 | blobTypes   | Előre definiált enumerálási értékek tömbje. | A jelenlegi kiadás támogatja `blockBlob`. | Igen |
-| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó `https://myaccount.blob.core.windows.net/container1/foo/...` összes blobot szeretné egyeztetni, a prefixMatch a következő: `container1/foo`. | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik.  | Nem |
+| prefixMatch | Karakterláncok tömbje az előtagok megfeleltetéséhez. Mindegyik szabály legfeljebb 10 előtagot tud definiálni. Egy előtag-karakterláncnak a tároló nevével kell kezdődnie. Ha például egy szabályhoz tartozó `https://myaccount.blob.core.windows.net/container1/foo/...` összes blobot szeretné egyeztetni, a prefixMatch a következő: `container1/foo`. | Ha nem határoz meg prefixMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik.  | No |
+| blobIndexMatch | A blob index címke kulcsát és a hozzájuk illeszkedő értékeket tartalmazó szótárak tömbje. Az egyes szabályok legfeljebb 10 blob-index címkét adhatnak meg. Ha például az összes blobot egy szabály `Project = Contoso` alá `https://myaccount.blob.core.windows.net/` szeretné egyeztetni, a blobIndexMatch a következő:. `{"name": "Project","op": "==","value": "Contoso"}` | Ha nem határoz meg blobIndexMatch, a szabály a Storage-fiókban lévő összes blobra vonatkozik. | No |
+
+> [!NOTE]
+> A blob index nyilvános előzetes verzióban érhető el, és a **franciaországi Közép** -és **dél-franciaországi** régiókban is elérhető. Ha többet szeretne megtudni erről a szolgáltatásról, valamint az ismert problémákról és a korlátozásokról, tekintse meg [Az Azure Blob Storage a blob index (előzetes verzió) használatával történő kezelésével és keresésével](storage-manage-find-blobs.md)kapcsolatos információkat.
 
 ### <a name="rule-actions"></a>Szabály műveletei
 
@@ -311,7 +315,7 @@ Az életciklus-kezelés támogatja a Blobok kiszervezését és törlését, val
 
 A futtatási feltételek életkoron alapulnak. Az alapblobok az utolsó módosítás idejét használják a kor nyomon követéséhez, a blob-Pillanatképek pedig a pillanatkép létrehozásának idejét használják a kor nyomon követéséhez.
 
-| Művelet futtatási feltétele             | Feltétel értéke                          | Leírás                             |
+| Művelet futtatási feltétele             | Feltétel értéke                          | Description                             |
 |----------------------------------|------------------------------------------|-----------------------------------------|
 | daysAfterModificationGreaterThan | Egész számú érték, amely a kora napokat jelzi | Az alap blob-műveletek feltétele     |
 | daysAfterCreationGreaterThan     | Egész számú érték, amely a kora napokat jelzi | A blob-Pillanatképek műveleteinek feltétele |
@@ -405,6 +409,42 @@ A létrehozás után bizonyos adatértékek várhatóan lejárnak a napokban vag
 }
 ```
 
+### <a name="delete-data-with-blob-index-tags"></a>BLOB-indexekkel rendelkező adattörlési Címkék
+Egyes adatmennyiségeket csak akkor lehet lemondani, ha explicit módon meg van jelölve törlésre. Az életciklus-kezelési házirendet konfigurálhatja úgy, hogy lejárjon a blob index kulcs/érték attribútumaival címkézett adatvesztéssel. Az alábbi példa egy olyan házirendet mutat be, amely törli a `Project = Contoso`címkével ellátott összes blokk blobot. További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése a blob indexével (előzetes verzió)](storage-manage-find-blobs.md).
+
+```json
+{
+    "rules": [
+        {
+            "enabled": true,
+            "name": "DeleteContosoData",
+            "type": "Lifecycle",
+            "definition": {
+                "actions": {
+                    "baseBlob": {
+                        "delete": {
+                            "daysAfterModificationGreaterThan": 0
+                        }
+                    }
+                },
+                "filters": {
+                    "blobIndexMatch": [
+                        {
+                            "name": "Project",
+                            "op": "==",
+                            "value": "Contoso"
+                        }
+                    ],
+                    "blobTypes": [
+                        "blockBlob"
+                    ]
+                }
+            }
+        }
+    ]
+}
+```
+
 ### <a name="delete-old-snapshots"></a>Régi Pillanatképek törlése
 
 A gyakran használt és a teljes élettartamon keresztül elért adatmennyiségek esetében a pillanatképeket gyakran a régebbi verziók nyomon követésére használják. Létrehozhat egy szabályzatot, amely a régi pillanatképeket törli a pillanatképek kora alapján. A pillanatképek korát a pillanatkép létrehozásának időpontjának kiértékelésével határozzuk meg. Ez a házirend-szabály törli a pillanatkép- `activedata` létrehozás után 90 napos vagy régebbi tárolóban lévő blob-pillanatképeket.
@@ -448,3 +488,7 @@ Ha egy blobot egy hozzáférési rétegből egy másikba helyez át, az utolsó 
 Megtudhatja, hogyan állíthatja helyre az adatokat a véletlen törlés után:
 
 - [Az Azure Storage-blobok helyreállítható törlése](../blobs/storage-blob-soft-delete.md)
+
+Ismerje meg, hogyan kezelheti és keresheti meg az adatblob-indexet:
+
+- [Az Azure Blob Storageban tárolt adatkezelés és-keresés blob-indexszel](storage-manage-find-blobs.md)

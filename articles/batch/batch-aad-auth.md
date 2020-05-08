@@ -3,12 +3,13 @@ title: Azure Batch szolgáltatások hitelesítése Azure Active Directory
 description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történő hitelesítéshez. Megtudhatja, hogyan végezheti el a hitelesítést két módszer egyikével.
 ms.topic: article
 ms.date: 01/28/2020
-ms.openlocfilehash: e1f95871788b4b9848ba622da1c8eb0cc83c07aa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116179"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608472"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -35,9 +36,9 @@ Az Azure AD-vel való hitelesítéshez ezt a végpontot kell használni a bérl�
 
 `https://login.microsoftonline.com/<tenant-id>`
 
-> [!NOTE] 
-> A bérlő-specifikus végpontra akkor van szükség, ha egy egyszerű szolgáltatásnév használatával végzi a hitelesítést. 
-> 
+> [!NOTE]
+> A bérlő-specifikus végpontra akkor van szükség, ha egy egyszerű szolgáltatásnév használatával végzi a hitelesítést.
+>
 > A bérlő-specifikus végpont nem kötelező, ha az integrált hitelesítés használatával végzi a hitelesítést, de ajánlott. Azonban használhatja az Azure AD Common Endpoint (általános) végpontját is. A Common Endpoint (általános hitelesítő adatok összegyűjtése) felületet biztosít, ha nincs megadva egy adott bérlő. Az általános végpont `https://login.microsoftonline.com/common`.
 >
 >
@@ -126,7 +127,7 @@ Az egyszerű szolgáltatással történő hitelesítéshez hozzá kell rendelnie
 1. A Batch-fiók **Beállítások** szakaszában válassza a **Access Control (iam)** lehetőséget.
 1. Válassza ki a **szerepkör-hozzárendelések** lapot.
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
-1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [a Azure Portal szerepköralapú Access Control első lépései](../role-based-access-control/overview.md).  
+1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [a Azure Portal szerepköralapú Access Control első lépései](../role-based-access-control/overview.md).
 1. A **Select (kiválasztás** ) mezőben adja meg az alkalmazás nevét. Válassza ki az alkalmazást a listából, majd válassza a **Mentés**lehetőséget.
 
 Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállításaiban egy hozzárendelt RBAC-szerepkörrel.
@@ -209,7 +210,7 @@ A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesíté
 Az ebben a szakaszban szereplő példák azt mutatják be, hogyan lehet hitelesíteni az Azure AD-t az integrált hitelesítéssel és egy egyszerű szolgáltatásnév használatával. A példák többsége a .NET-et használja, de a fogalmak hasonlóak más nyelvekhez.
 
 > [!NOTE]
-> Egy Azure AD-hitelesítési jogkivonat egy óra elteltével lejár. Ha hosszú élettartamú **BatchClient** objektumot használ, javasoljuk, hogy minden kérelem esetében kérjen le egy tokent a ADAL-ből, hogy mindig érvényes jogkivonat legyen. 
+> Egy Azure AD-hitelesítési jogkivonat egy óra elteltével lejár. Ha hosszú élettartamú **BatchClient** objektumot használ, javasoljuk, hogy minden kérelem esetében kérjen le egy tokent a ADAL-ből, hogy mindig érvényes jogkivonat legyen.
 >
 >
 > Ennek a .NET-ben való eléréséhez írjon egy metódust, amely lekéri a jogkivonatot az Azure AD-ből, és átadja ezt a metódust egy **BatchTokenCredentials** objektumnak meghatalmazottként. A delegált metódust minden, a Batch szolgáltatásnak küldött kérelemre meghívjuk, hogy érvényes jogkivonat legyen megadva. Alapértelmezés szerint a ADAL gyorsítótárazza a tokeneket, így a rendszer csak akkor kér le új jogkivonatot az Azure AD-ből, ha szükséges. Az Azure AD-jogkivonatokkal kapcsolatos további információkért lásd: [hitelesítési forgatókönyvek az Azure ad-hez][aad_auth_scenarios].
@@ -266,9 +267,9 @@ public static async Task<string> GetAuthenticationTokenAsync()
     var authContext = new AuthenticationContext(AuthorityUri);
 
     // Acquire the authentication token from Azure AD.
-    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri, 
-                                                        ClientId, 
-                                                        new Uri(RedirectUri), 
+    var authResult = await authContext.AcquireTokenAsync(BatchResourceUri,
+                                                        ClientId,
+                                                        new Uri(RedirectUri),
                                                         new PlatformParameters(PromptBehavior.Auto));
 
     return authResult.AccessToken;
@@ -307,7 +308,7 @@ Hivatkozzon a kódban található Azure AD-végpontra, beleértve a bérlő AZON
 private const string AuthorityUri = "https://login.microsoftonline.com/<tenant-id>";
 ```
 
-A Batch szolgáltatás erőforrás-végpontjának hivatkozása:  
+A Batch szolgáltatás erőforrás-végpontjának hivatkozása:
 
 ```csharp
 private const string BatchResourceUri = "https://batch.core.windows.net/";
@@ -372,7 +373,7 @@ Egyszerű szolgáltatásnév használatakor meg kell adnia a bérlő AZONOSÍTÓ
 TENANT_ID = "<tenant-id>"
 ```
 
-A Batch szolgáltatás erőforrás-végpontjának hivatkozása:  
+A Batch szolgáltatás erőforrás-végpontjának hivatkozása:
 
 ```python
 RESOURCE = "https://batch.core.windows.net/"

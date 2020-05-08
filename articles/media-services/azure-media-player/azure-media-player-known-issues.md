@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
-ms.openlocfilehash: ff8dc58b9122e5173a9a6065e2efdbc5697be0d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727215"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692259"
 ---
 # <a name="known-issues"></a>Ismert problémák #
 
@@ -46,9 +46,10 @@ Az aktuális kiadás a következő ismert problémákkal rendelkezik:
 
 - Az élő tartalom DVR-ablakában, ha a tartalom befejezi az idővonalat, a továbbra is növekedni fog, amíg nem kívánja elérni a területét, vagy nem éri el a bemutató végét.
 - Néhány probléma merült fel a Firefox-ban, az MSE-ben való élő bemutatók esetén
-- A hang-vagy video-eszközök csak a AzureHtml5JS-technológia használatával lesznek visszajátszva.
-  - Ha hang-vagy videó nélküli eszközöket szeretne lejátszani, az [Azure Media Services Explorer eszköz](https://aka.ms/amse) használatával üres hang vagy videó beszúrásával teheti ezt meg.
-    - A csendes hang beszúrásával kapcsolatos utasítások [itt](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) találhatók
+
+- A csak hangalapú eszközök nem fognak visszajátszani a AzureHtml5JS-technológián keresztül.
+  - Ha hang nélkül szeretné lejátszani az eszközöket, ezt megteheti, ha üres hangot szúr be a [Azure Media Services Explorer eszköz](https://aka.ms/amse) használatával
+  - A csendes hang beszúrásával kapcsolatos utasítások [itt](https://azure.microsoft.com/documentation/articles/media-services-advanced-encoding-with-mes/#silent_audio) találhatók
 
 ## <a name="flash"></a>Flash ##
 

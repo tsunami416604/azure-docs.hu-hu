@@ -8,12 +8,12 @@ ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: b4abd7e29dec67ddc1be50a2a6703da2a25551d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137662"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692466"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>BLOB-tulajdonságok és-metaadatok kezelése a .NET-tel
 
@@ -24,6 +24,11 @@ A bennük található adatokon kívül a Blobok támogatják a rendszer tulajdon
 - **Rendszertulajdonságok**: Rendszertulajdonságok találhatók az egyes blob Storage-erőforrásokon. Némelyikük olvasható vagy beállítható, míg mások csak olvashatók. A borítók alatt egyes Rendszertulajdonságok megfelelnek bizonyos szabványos HTTP-fejléceknek. Az Azure Storage .NET-hez készült ügyféloldali kódtára ezeket a tulajdonságokat tárolja.
 
 - **Felhasználó által definiált metaadatok**: a felhasználó által definiált metaadatok egy vagy több, a blob Storage-erőforráshoz megadott név-érték párokból állnak. A metaadatok használatával további értékeket is tárolhat az erőforrással. A metaadatok értéke csak saját célra szolgál, és nem befolyásolja az erőforrás működésének módját.
+
+> [!NOTE]
+> A blob index címkéi lehetővé teszik a felhasználó által definiált kulcs/érték attribútumoknak a blob Storage-erőforrással együtt történő tárolását is. A metaadatokhoz hasonlóan csak a blob-indexek indexelése automatikusan történik, és a natív blob szolgáltatás lekérdezi őket. A metaadatokat nem lehet natív módon indexelni és lekérdezni, hacsak nem használ külön szolgáltatást, például Azure Search.
+>
+> A szolgáltatással kapcsolatos további információkért lásd: az [Azure Blob Storage adatainak kezelése és keresése a blob-indextel (előzetes verzió)](storage-manage-find-blobs.md).
 
 A blob Storage-erőforrások metaadatainak és tulajdonságértékek beolvasása egy kétlépéses folyamat. Ezeknek az értékeknek a beolvasása előtt explicit módon be kell olvasnia azokat `FetchAttributes` a `FetchAttributesAsync` vagy metódus meghívásával. A szabály alól kivételt képez, hogy `Exists` a `ExistsAsync` és a metódusok `FetchAttributes` a megfelelő módszert hívják meg a borítók alatt. Ha meghívja az egyik módszert, nem kell meghívnia `FetchAttributes`a következőt:.
 

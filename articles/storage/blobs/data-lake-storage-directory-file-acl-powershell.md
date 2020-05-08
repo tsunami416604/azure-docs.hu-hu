@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: db098210d6de28d9dc1db7e264459f57bc0f4d86
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: c859176857f64559b9a2994c9cfc2d4ec5f61e57
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82161023"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691078"
 ---
 # <a name="use-powershell-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A PowerShell használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
 
@@ -351,15 +351,25 @@ Ebben a példában a tulajdonos felhasználó és a tulajdonos csoport csak olva
 
 ### <a name="set-acls-on-all-items-in-a-file-system"></a>ACL-ek beállítása a fájlrendszer összes eleméhez
 
-A `Get-AzDataLakeGen2Item` és a `-Recurse` paramétert a `Update-AzDataLakeGen2Item` parancsmaggal együtt használva rekurzív módon állíthatja be a fájlrendszer összes könyvtárának és fájljának ACL-fájlját. 
+A (z) `Get-AzDataLakeGen2Item` és a `-Recurse` (z) paramétert a `Update-AzDataLakeGen2Item` (z) parancsmaggal együtt használva REkurzív módon állíthatja be az ACL-t a címtárakban és a fájlokban a fájlrendszerben. 
 
 ```powershell
 $filesystemName = "my-file-system"
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rw- 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType group -Permission rw- -InputObject $acl 
 $acl = set-AzDataLakeGen2ItemAclObject -AccessControlType other -Permission -wx -InputObject $acl
-Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse | Update-AzDataLakeGen2Item -Acl $acl
+
+$Token = $Null
+do
+{
+     $items = Get-AzDataLakeGen2ChildItem -Context $ctx -FileSystem $filesystemName -Recurse -ContinuationToken $Token    
+     if($items.Length -le 0) { Break;}
+     $items | Update-AzDataLakeGen2Item -Acl $acl
+     $Token = $items[$items.Count -1].ContinuationToken;
+}
+While ($Token -ne $Null) 
 ```
+
 ### <a name="add-or-update-an-acl-entry"></a>ACL-bejegyzés hozzáadása vagy frissítése
 
 Először kérje le az ACL-t. Ezután használja a `set-AzDataLakeGen2ItemAclObject` parancsmagot egy ACL-bejegyzés hozzáadásához vagy frissítéséhez. Az ACL `Update-AzDataLakeGen2Item` -t a parancsmag használatával véglegesítheti.

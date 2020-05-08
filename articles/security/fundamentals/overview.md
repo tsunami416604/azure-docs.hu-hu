@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: a7957c7cbcfa511ea441d8c7bd4371f56ab87560
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461684"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731697"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -266,9 +266,9 @@ Traffic Manager számos forgalom-útválasztási módszert kínál a különböz
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Az [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. Ez egy 4. rétegbeli (TCP, UDP) terheléselosztó, amely a bejövő forgalmat egy elosztott terhelésű készletben definiált szolgáltatások kifogástalan példányai között osztja szét. A Azure Load Balancer a következőre konfigurálható:
 
--   A bejövő internetes forgalom terheléselosztása a virtuális gépekre. Ezt a konfigurációt [internetre irányuló terheléselosztásnak](../../load-balancer/concepts-limitations.md#publicloadbalancer)nevezzük.
+-   A bejövő internetes forgalom terheléselosztása a virtuális gépekre. Ezt a konfigurációt [nyilvános terheléselosztásnak](../../load-balancer/components.md#frontend-ip-configurations)nevezzük.
 
--   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](../../load-balancer/concepts-limitations.md#internalloadbalancer)nevezzük.
+-   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](../../load-balancer/components.md#frontend-ip-configurations)nevezzük.
 
 - Külső forgalom továbbítása egy adott virtuális géphez
 

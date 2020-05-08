@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 9593d60f76802cd515ca85616bce028cf3aa0d49
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7591f22286f9ac451a15dd926adab0212adb190e
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77589317"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691286"
 ---
 # <a name="configure-a-shared-image-gallery-in-azure-devtest-labs"></a>Megosztott rendszerkép-katalógus konfigurálása az Azure DevTest Labsben
 A DevTest Labs mostantól támogatja a [megosztott rendszerkép](../virtual-machines/windows/shared-image-galleries.md) -katalógus szolgáltatást. Lehetővé teszi, hogy a labor-felhasználók a laboratóriumi erőforrások létrehozásakor hozzáférjenek a lemezképekhez egy megosztott helyről. Emellett az egyéni felügyelt virtuálisgép-rendszerképekhez is felépítheti a struktúrát és a szervezetet. A megosztott rendszerkép-katalógus funkció a következőket támogatja:
@@ -91,9 +91,21 @@ Ha Azure Resource Manager sablonnal csatlakoztat egy megosztott képtárat a lab
 
 A Resource Manager-sablonok teljes leírását lásd: ezek a Resource Manager-sablonok a nyilvános GitHub-tárházban: a [közös rendszerkép-katalógus konfigurálása a tesztkörnyezet létrehozásakor](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-lab-shared-gallery-configured).
 
-## <a name="use-api"></a>API használata
+## <a name="use-rest-api"></a>A REST API használata
 
-### <a name="shared-image-galleries---create-or-update"></a>Megosztott képtárak – létrehozás vagy frissítés
+### <a name="get-a-list-of-labs"></a>A laborok listájának lekérése 
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs?api-version= 2018-10-15-preview
+```
+
+### <a name="get-the-list-of-shared-image-galleries-associated-with-a-lab"></a>A laborhoz társított megosztott képtárak listájának beolvasása
+
+```rest
+GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries?api-version= 2018-10-15-preview
+   ```
+
+### <a name="create-or-update-shared-image-gallery"></a>Megosztott Képtár létrehozása vagy frissítése
 
 ```rest
 PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}?api-version= 2018-10-15-preview
@@ -107,12 +119,11 @@ Body:
 
 ```
 
-### <a name="shared-image-galleries-images---list"></a>Megosztott képtárak képei – lista 
+### <a name="list-images-in-a-shared-image-gallery"></a>Megosztott képtárban lévő rendszerképek listázása
 
 ```rest
 GET  https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevTestLab/labs/{labName}/sharedgalleries/{name}/sharedimages?api-version= 2018-10-15-preview
 ```
-
 
 
 
