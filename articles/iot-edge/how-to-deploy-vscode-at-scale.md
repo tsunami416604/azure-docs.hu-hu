@@ -220,7 +220,7 @@ Miután konfigurálta az üzembe helyezési jegyzéket és a konfigurált címk�
 
    A paraméterek értékeinek megadása:
 
-  | Paraméter | Leírás |
+  | Paraméter | Description |
   | --- | --- |
   | Központi telepítés azonosítója | Az IoT hub-ban létrehozandó központi telepítés neve. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő `& ^ [ ] { } \ | " < > /`érvénytelen karaktereket:. |
   | Cél feltétel | Adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel.A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával.Például: `tags.environment='test' and properties.reported.devicemodel='4000x'`. |
