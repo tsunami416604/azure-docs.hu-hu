@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 2c0cd47acbd4639ff5eff2af78dcebdfc26270a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc35602b55e79f3351da0def800d2a2b2698e250
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730699"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856729"
 ---
 # <a name="prepare-your-iot-edge-module-technical-assets"></a>A IoT Edge modul technikai eszközeinek előkészítése
-
-> [!IMPORTANT]
-> Áthelyezjük IoT Edge-moduljának felügyeletét Cloud Partner Portalról a partneri központba. Az ajánlatok migrálása előtt kövesse az [IoT Edge modul technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-create-technical-assets) a Cloud Partner Portal az ajánlatok kezeléséhez című témakör útmutatását.
 
 Ez a cikk azokat a követelményeket ismerteti, amelyekkel az Azure Marketplace-en való közzététel előtt meg kell felelniük az eszközök internetes hálózata (IoT) Edge-modul technikai eszközeinek.
 
@@ -67,7 +64,7 @@ Másolja ezt a HTML-szöveget, vagy használja a szerkesztési ablakban a megfel
 <p><u>Minimum hardware requirements:</u> Linux x64 and arm32 OS, 1GB of RAM, 500 Mb of storage</p>
 ```
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
 
 A modulnak tartalmaznia kell az alapértelmezett konfigurációs beállításokat, hogy az üzembe helyezés egy IoT Edge eszközön legyen a lehető legegyértelműbb módon. Ezek az információk a csomag **technikai konfiguráció** lapján, a [partner Centerben](https://partner.microsoft.com/dashboard/commercial-marketplace)találhatók. A tároló a IoT Edge modul SDK-val is rendelkezhet, amely lehetővé teszi a kommunikációt a peremhálózat és a IoT Hub között.
 
@@ -110,8 +107,8 @@ A IoT modul SDK-t használó moduloknak az egyedi modul azonosítóját kell be�
 
 A IoT modul SDK-k használatával az alábbi módszerek egyikével állíthatja be a productinfo olvasása erre az azonosítóra:
 
-- [C #](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
-- [C#](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
+- [C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.deviceclient.productinfo?view=azure-dotnet#Microsoft_Azure_Devices_Client_DeviceClient_ProductInfo)
+- [C](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Python](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md)
 - [Java](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.productinfo?view=azure-java-stable)
 

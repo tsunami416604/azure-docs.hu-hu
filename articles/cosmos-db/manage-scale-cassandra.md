@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: thvankra
-ms.openlocfilehash: 94cdeff36553268d691fc968036c5264e77fddc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13d7e0bfd3c7061d9dec68a1d14ff2a5e2c05fcd
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188807"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791255"
 ---
 # <a name="elastically-scale-an-azure-cosmos-db-cassandra-api-account"></a>Azure Cosmos DB Cassandra API fiók rugalmas skálázása
 
@@ -58,9 +58,9 @@ A rendszer dinamikusan méretezhető a kóddal úgy, hogy végrehajtja a [CQL Al
 
 Ennek a megközelítésnek az az előnye, hogy lehetővé teszi, hogy dinamikusan és egyéni módon válaszoljon a méretezési igényekre. Ezzel a megközelítéssel továbbra is kihasználhatja a standard RU/s díját és díjszabását. Ha a rendszer méretezési igényei többnyire előre jelezhető (körülbelül 70% vagy több), az SDK és a CQL használata költséghatékonyabb módszer lehet, mint az automatikus méretezés használata. Ennek a megközelítésnek a hátránya, hogy az újrapróbálkozások megvalósítása meglehetősen bonyolult lehet, miközben a díjszabás megnövelheti a késést.
 
-## <a name="use-autoscale"></a><a id="use-autoscale"></a>Automatikus méretezés használata
+## <a name="use-autoscale-provisioned-throughput"></a><a id="use-autoscale"></a>Az autoscale kiosztott átviteli sebessége
 
-Az átviteli sebesség manuális vagy programozott módján kívül az Azure Cosmos-tárolókat is konfigurálhatja automatikus méretezési módban. Az automatikus skálázási mód automatikusan és azonnal méretezhető a megadott RU-tartományon belül, a SLA-kat nem veszélyeztetve. További információt az [Azure Cosmos-tárolók és-adatbázisok létrehozása az autoskálázási módban](provision-throughput-autoscale.md) című cikkben talál.
+A standard (manuális) vagy az átviteli sebesség programozott módján kívül az Azure Cosmos-tárolókat is konfigurálhatja az Automatikus méretezéssel kiosztott átviteli sebességben. Az automatikus méretezés automatikusan és azonnal méretezhető a megadott RU-tartományokon belül, a SLA-kat nem veszélyeztetve. További információ: [Azure Cosmos-tárolók és-adatbázisok létrehozása az autoscale](provision-throughput-autoscale.md) cikkben.
 
 Ennek a megközelítésnek az az előnye, hogy ez a legegyszerűbb módszer a méretezési igények kezelésére a rendszeren. Garantálja, hogy **a beállított ru-tartományokon belül**ne alkalmazza a díjszabási korlátozásokat. A hátránya az, hogy ha a rendszer skálázási igénye előre jelezhető, az automatikus skálázás kevésbé költséghatékony módja a skálázási igények kezelésének, mint a fent említett, a testre szabott vezérlési sík vagy az SDK-szintű megoldások használata.
 

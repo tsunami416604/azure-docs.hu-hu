@@ -1010,6 +1010,8 @@
         - name: Biztonsági áttekintés
           href: /azure/databricks/security/index
           maintainContext: true
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Hozzáférés-vezérlés
           items:
             - name: A hozzáférés-vezérlés áttekintése

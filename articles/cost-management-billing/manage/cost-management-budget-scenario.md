@@ -6,14 +6,14 @@ ms.reviewer: adwise
 tags: billing
 ms.service: cost-management-billing
 ms.topic: reference
-ms.date: 04/01/2020
+ms.date: 05/04/2020
 ms.author: banders
-ms.openlocfilehash: a9e1d838e7d3322ddf218c5cbec40b652709b5d7
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 633ca5cd16b8e730225900c30c575e74a0956ada
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586385"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791680"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
@@ -273,7 +273,7 @@ A következő lépésként konfigurálni fogja a **Postmant**, hogy az Azure Con
 1. Az **Értéket** állítsa az előző szakasz végén az ArmClient használatával létrehozott jogkivonatra.
 1. Válassza a **Szövegtörzs** fület a Postmanben.
 1. Válassza ki a **formázatlan** gomb lehetőséget.
-1. A szövegmezőbe illessze be az alábbi minta költségvetés-definíciót, azonban a **subscriptionID**, a **budgetname** és az **actiongroupname** paramétereket ki kell cserélnie a saját előfizetés-azonosítójára, költségvetésének egyedi nevére, valamint az URL-címben és a kérelem törzsében létrehozott műveletcsoport nevére:
+1. A szövegmezőbe illessze be az alábbi költségvetésdefiníció-mintát, azonban a `subscriptionID`, `resourcegroupname` és `actiongroupname` paramétert előtte le kell cserélnie a saját előfizetés-azonosítójára, erőforráscsoportjának egyedi nevére, valamint az URL-címben és a kérelem törzsében létrehozott műveletcsoport nevére:
 
     ```
         {

@@ -3,12 +3,12 @@ title: Áruházi Helm-diagramok
 description: Megtudhatja, hogyan tárolhatja a Kubernetes-alkalmazásokhoz tartozó Helm-diagramokat a Azure Container Registry-Tárházak használatával
 ms.topic: article
 ms.date: 03/20/2020
-ms.openlocfilehash: 3f1a68258b758380a66b63e3c3137f1d460d288c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04ba3aaf312188ab77c04a97ab960cf9b9af078f
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399380"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857608"
 ---
 # <a name="push-and-pull-helm-charts-to-an-azure-container-registry"></a>A Helm-diagramok leküldése és lekérése egy Azure Container registrybe
 
@@ -31,8 +31,8 @@ A Helm 3 vagy a Helm 2 használatával a Helm-diagramokat Azure Container Regist
 ### <a name="additional-information"></a>További információ
 
 * A legtöbb esetben javasolt a Helm 3 munkafolyamat használata natív `helm chart` parancsokkal a diagramok OCI-összetevőkként való kezeléséhez.
-* Az örökölt az [ACR Helm][az-acr-helm] Azure CLI-parancsokat és-munkafolyamatokat a Helm 3 ügyféllel és diagramokkal is használhatja. Azonban bizonyos parancsok, például `az acr helm list` nem kompatibilisek a Helm 3 diagramjaival.
-* A Helm 3 esetében az [az ACR Helm][az-acr-helm] parancsok elsősorban a Helm 2 ügyfél-és diagram-formátumával való kompatibilitás érdekében támogatottak. A parancsok jövőbeli fejlesztése jelenleg nem tervezett.
+* A Helm 3 esetében az [az ACR Helm][az-acr-helm] parancsok támogatottak a Helm 2-ügyfél és a diagram formátumának kompatibilitásához. A parancsok jövőbeli fejlesztése jelenleg nem tervezett. Tekintse meg a [termék ütemtervét](https://github.com/Azure/acr/blob/master/docs/acr-roadmap.md#acr-helm-ga).
+* A Helm 2 diagramot nem lehet megtekinteni vagy kezelni a Azure Portal használatával.
 
 ## <a name="use-the-helm-3-client"></a>A Helm 3-ügyfél használata
 

@@ -1,26 +1,27 @@
 ---
-title: Storage-fiók feladatátvételének kezdeményezése (előzetes verzió) – Azure Storage
+title: A Storage-fiók feladatátvételének kezdeményezése
+titleSuffix: Azure Storage
 description: Megtudhatja, hogyan kezdeményezheti a fiók feladatátvételét abban az esetben, ha a Storage-fiók elsődleges végpontja elérhetetlenné válik. A feladatátvétel frissíti a másodlagos régiót, hogy az elsődleges régió legyen a Storage-fiók számára.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 0c619224201d6225d5e5c127b342f71f2f7fced9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 8de5290c41e6213e61b7b5b09cffba1f4638df30
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535352"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857036"
 ---
-# <a name="initiate-a-storage-account-failover-preview"></a>Storage-fiók feladatátvételének kezdeményezése (előzetes verzió)
+# <a name="initiate-a-storage-account-failover"></a>A Storage-fiók feladatátvételének kezdeményezése
 
-Ha a Geo-redundáns tárolási fiók elsődleges végpontja bármilyen okból elérhetetlenné válik, elindíthat egy fiók feladatátvételét (előzetes verzió). A fiók feladatátvétele frissíti a másodlagos végpontot, hogy az a Storage-fiók elsődleges végpontja legyen. A feladatátvétel befejeződése után az ügyfelek megkezdhetik az új elsődleges régióba való írást. A kényszerített feladatátvétel lehetővé teszi az alkalmazások magas rendelkezésre állásának fenntartását.
+Ha a Geo-redundáns tárolási fiók elsődleges végpontja bármilyen okból elérhetetlenné válik, elindíthatja a fiók feladatátvételét. A fiók feladatátvétele frissíti a másodlagos végpontot, hogy az a Storage-fiók elsődleges végpontja legyen. A feladatátvétel befejeződése után az ügyfelek megkezdhetik az új elsődleges régióba való írást. A kényszerített feladatátvétel lehetővé teszi az alkalmazások magas rendelkezésre állásának fenntartását.
 
-Ez a cikk bemutatja, hogyan kezdeményezheti a fiók feladatátvételét a Storage-fiókhoz a Azure Portal, a PowerShell vagy az Azure CLI használatával. A fiók feladatátvételével kapcsolatos további tudnivalókért lásd: vész- [helyreállítás és fiók feladatátvétele (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md).
+Ez a cikk bemutatja, hogyan kezdeményezheti a fiók feladatátvételét a Storage-fiókhoz a Azure Portal, a PowerShell vagy az Azure CLI használatával. A fiók feladatátvételével kapcsolatos további tudnivalókért tekintse meg a vész [-helyreállítási és a Storage-fiók feladatátvételét](storage-disaster-recovery-guidance.md)ismertető témakört.
 
 > [!WARNING]
 > A fiók feladatátvétele általában valamilyen adatvesztést eredményez. A fiók feladatátvételi következményeinek megismeréséhez és az adatvesztés előkészítéséhez tekintse át [a fiók feladatátvételi folyamatának megismerése](storage-disaster-recovery-guidance.md#understand-the-account-failover-process)című témakört.
@@ -29,19 +30,14 @@ Ez a cikk bemutatja, hogyan kezdeményezheti a fiók feladatátvételét a Stora
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elvégzi a fiók feladatátvételét a Storage-fiókjában, győződjön meg arról, hogy végrehajtotta a következő lépést:
+Mielőtt elvégzi a fiók feladatátvételét a Storage-fiókjában, ellenőrizze, hogy a Storage-fiók konfigurálva van-e a Geo-replikáláshoz. A Storage-fiók a következő redundancia-beállítások bármelyikét használhatja:
 
-- Győződjön meg arról, hogy a Storage-fiókja a Geo-redundáns tárolás (GRS) vagy a Read-Access geo-redundáns tárolás (RA-GRS) használatára van konfigurálva. További információ a földrajzilag redundáns tárolásról: [Azure Storage redundancia](storage-redundancy.md).
+- Geo-redundáns tárolás (GRS) vagy olvasási hozzáférés geo-redundáns tárolás (RA-GRS)
+- Geo-Zone-redundáns tárolás (GZRS) vagy olvasási hozzáférésű földrajzi zóna – redundáns tárolás (RA-GZRS)
 
-## <a name="important-implications-of-account-failover"></a>A fiók feladatátvételének fontos következményei
+Az Azure Storage redundanciával kapcsolatos további információkért lásd: [Azure Storage redundancia](storage-redundancy.md).
 
-Amikor elindít egy fiókot a Storage-fiókhoz, a másodlagos végpont DNS-rekordjai frissülnek, így a másodlagos végpont lesz az elsődleges végpont. A feladatátvétel kezdeményezése előtt győződjön meg arról, hogy tisztában van a Storage-fiók lehetséges hatásával.
-
-Ha a feladatátvétel elindítása előtt szeretné megbecsülni a várható adatvesztés mértékét, a `Get-AzStorageAccount` PowerShell-parancsmag használatával tekintse meg a **Legutóbbi szinkronizálási idő** tulajdonságot, és adja meg a `-IncludeGeoReplicationStats` paramétert. Ezután keresse meg `GeoReplicationStats` a fiókjának tulajdonságát. \
-
-A feladatátvételt követően a rendszer automatikusan átalakítja a Storage-fiók típusát a helyileg redundáns tárterületre (LRS) az új elsődleges régióban. Újra engedélyezheti a Geo-redundáns tárolást (GRS), vagy a fiókhoz tartozó olvasási hozzáférésű geo-redundáns tárolást (RA-GRS). Vegye figyelembe, hogy a LRS-ről GRS-re vagy RA-GRS-re való átalakítás további költségekkel jár. További információ: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).
-
-Miután újraengedélyezte a GRS a Storage-fiókjához, a Microsoft elkezdi replikálni a fiókjában lévő adatait az új másodlagos régióba. A replikálási idő a replikált adatmennyiségtől függ.  
+## <a name="initiate-the-failover"></a>A feladatátvétel kezdeményezése
 
 ## <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -54,14 +50,14 @@ A fiók feladatátvételének elindításához a Azure Portal hajtsa végre az a
 
 3. Ellenőrizze, hogy a Storage-fiókja a Geo-redundáns tároláshoz (GRS) van-e konfigurálva, vagy hogy van-e olvasási hozzáférésű geo-redundáns tárolás (RA-GRS). Ha nem, akkor a **Beállítások** területen válassza a **Konfigurálás** lehetőséget, hogy a fiókját a Geo-redundáns értékre frissítse. 
 4. A **Legutóbbi szinkronizálási idő** tulajdonság azt jelzi, hogy a másodlagos állapot meddig marad az elsődlegesnél. A **legutóbbi szinkronizálás ideje** azt az adatvesztés mértékét adja meg, amelyet a feladatátvétel befejezése után fog tapasztalni.
-5. Válassza **a feladatátvétel előkészítése (előzetes verzió)** lehetőséget. 
+5. Válassza **a feladatátvétel előkészítése**lehetőséget.
 6. Tekintse át a megerősítő párbeszédpanelt. Ha elkészült, az **Igen** gombra kattintva erősítse meg és kezdeményezheti a feladatátvételt.
 
     ![A fiók feladatátvételének megerősítési párbeszédpanelét bemutató képernyőkép](media/storage-initiate-account-failover/portal-failover-confirm.png)
 
 ## <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Ha a PowerShellt a fiók feladatátvételének elindításához szeretné használni, először telepítenie kell a 6.0.1 előzetes verziójának modulját. A modul telepítéséhez kövesse az alábbi lépéseket:
+A fiók feladatátvételi funkciója általánosan elérhető, de továbbra is a PowerShell előzetes verziójú moduljára támaszkodik. Ha a PowerShellt a fiók feladatátvételének elindításához szeretné használni, először telepítenie kell az az. Storage [1.1.1-Preview](https://www.powershellgallery.com/packages/Az.Storage/1.1.1-preview) modult. A modul telepítéséhez kövesse az alábbi lépéseket:
 
 1. Távolítsa el a Azure PowerShell összes korábbi telepítését:
 
@@ -74,7 +70,7 @@ Ha a PowerShellt a fiók feladatátvételének elindításához szeretné haszn�
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
 
-1. A PowerShellGet telepítése után zárjuk be és nyissa meg újra a PowerShell ablakot. 
+1. A PowerShellGet telepítése után zárjuk be és nyissa meg újra a PowerShell ablakot.
 
 1. Telepítse a Azure PowerShell legújabb verzióját:
 
@@ -85,15 +81,13 @@ Ha a PowerShellt a fiók feladatátvételének elindításához szeretné haszn�
 1. Telepítsen egy Azure Storage Preview-modult, amely támogatja a fiók feladatátvételét:
 
     ```powershell
-    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force 
+    Install-Module Az.Storage –Repository PSGallery -RequiredVersion 1.1.1-preview –AllowPrerelease –AllowClobber –Force
     ```
 
-1. Zárjuk be és nyissa meg újra a PowerShell ablakot.
- 
 A következő parancs végrehajtásával kezdeményezheti a fiók feladatátvételét a PowerShellből:
 
 ```powershell
-Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name> 
+Invoke-AzStorageAccountFailover -ResourceGroupName <resource-group-name> -Name <account-name>
 ```
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
@@ -107,8 +101,18 @@ az storage account failover \ --name accountName
 
 ---
 
+## <a name="important-implications-of-account-failover"></a>A fiók feladatátvételének fontos következményei
+
+Amikor elindít egy fiókot a Storage-fiókhoz, a másodlagos végpont DNS-rekordjai frissülnek, így a másodlagos végpont lesz az elsődleges végpont. A feladatátvétel kezdeményezése előtt győződjön meg arról, hogy tisztában van a Storage-fiók lehetséges hatásával.
+
+Ha a feladatátvétel elindítása előtt szeretné megbecsülni a várható adatvesztés mértékét, a `Get-AzStorageAccount` PowerShell-parancsmag használatával tekintse meg a **Legutóbbi szinkronizálási idő** tulajdonságot, és adja meg a `-IncludeGeoReplicationStats` paramétert. Ezután keresse meg `GeoReplicationStats` a fiókjának tulajdonságát.
+
+A feladatátvételt követően a rendszer automatikusan átalakítja a Storage-fiók típusát a helyileg redundáns tárterületre (LRS) az új elsődleges régióban. Újra engedélyezheti a Geo-redundáns tárolást (GRS), vagy a fiókhoz tartozó olvasási hozzáférésű geo-redundáns tárolást (RA-GRS). Vegye figyelembe, hogy a LRS-ről GRS-re vagy RA-GRS-re való átalakítás további költségekkel jár. További információ: a [sávszélesség díjszabása](https://azure.microsoft.com/pricing/details/bandwidth/).
+
+Miután újraengedélyezte a GRS a Storage-fiókjához, a Microsoft elkezdi replikálni a fiókjában lévő adatait az új másodlagos régióba. A replikálási idő a replikált adatmennyiségtől függ.  
+
 ## <a name="next-steps"></a>További lépések
 
-- [Vész-helyreállítási és fiók-feladatátvétel (előzetes verzió) az Azure Storage-ban](storage-disaster-recovery-guidance.md)
-- [Magas rendelkezésre állású alkalmazások tervezése az RA-GRS használatával](storage-designing-ha-apps-with-ragrs.md)
-- [Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val](../blobs/storage-create-geo-redundant-storage.md) 
+- [Vész-helyreállítási és Storage-fiók feladatátvétele](storage-disaster-recovery-guidance.md)
+- [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)
+- [Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val](../blobs/storage-create-geo-redundant-storage.md)

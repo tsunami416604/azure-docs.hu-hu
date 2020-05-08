@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: 07bf03096cbe5ec8e0fe9619519fdddb91cde984
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231662"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838824"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
 
@@ -38,6 +38,7 @@ Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja a
 * [HB-sorozat](../hb-series.md)
 * [HC-sorozat](../hc-series.md)
 * Az [ls-sorozat](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-previous-gen#ls-series) és a [Lsv2 sorozat](../lsv2-series.md)
+* [M sorozat](../m-series.md)
 * [Mv2 –](../mv2-series.md)<sup>1</sup> . sorozat
 * [NCv2](../ncv2-series.md) és [NCv3 sorozat](../ncv3-series.md)
 * [ND sorozat](../nd-series.md)
