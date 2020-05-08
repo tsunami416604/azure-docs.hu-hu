@@ -1,6 +1,6 @@
 ---
-title: Egyéni Azure-szerepkörök létrehozása vagy frissítése a Azure Portal (előzetes verzió) – Azure RBAC
-description: Ismerje meg, hogyan hozhat létre Azure-beli egyéni szerepköröket az Azure szerepköralapú hozzáférés-vezérléshez (Azure RBAC) a Azure Portal használatával. Ez magában foglalja az egyéni szerepkörök listázását, létrehozását, frissítését és törlését.
+title: Egyéni Azure-szerepkörök létrehozása vagy frissítése a Azure Portal-Azure RBAC használatával
+description: Ismerje meg, hogyan hozhat létre egyéni Azure-szerepköröket a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával. Ez magában foglalja az egyéni szerepkörök listázását, létrehozását, frissítését és törlését.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -10,23 +10,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/26/2020
+ms.date: 04/30/2020
 ms.author: rolyon
-ms.openlocfilehash: 3204cdf51f3f37588f684f801a811f569b337d13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9ba8fa64a9699917fe73365cb5d9aa0c858cde7
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77674869"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734179"
 ---
-# <a name="create-or-update-azure-custom-roles-using-the-azure-portal-preview"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése a Azure Portal használatával (előzetes verzió)
+# <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése a Azure Portal használatával
 
-> [!IMPORTANT]
-> A Azure Portalt használó Azure-beli egyéni szerepkörök jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni Azure-szerepköröket is. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket is hozzárendelhet a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetéshez és az erőforráscsoport-hatókörökhöz. Az egyéni szerepkörök egy Azure Active Directory (Azure AD) könyvtárban tárolódnak, és az előfizetések között megoszthatók. Minden címtárhoz legfeljebb 5000 egyéni szerepkör tartozhat. Egyéni szerepkörök hozhatók létre a Azure Portal, a Azure PowerShell, az Azure CLI vagy a REST API használatával. Ez a cikk bemutatja, hogyan hozhat létre egyéni szerepköröket a Azure Portal használatával (jelenleg előzetes verzióban).
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni Azure-szerepköröket is. A beépített szerepkörökhöz hasonlóan egyéni szerepköröket is hozzárendelhet a felhasználókhoz, csoportokhoz és egyszerű szolgáltatásokhoz az előfizetéshez és az erőforráscsoport-hatókörökhöz. Az egyéni szerepkörök egy Azure Active Directory (Azure AD) könyvtárban tárolódnak, és az előfizetések között megoszthatók. Minden címtárhoz legfeljebb 5000 egyéni szerepkör tartozhat. Egyéni szerepkörök hozhatók létre a Azure Portal, a Azure PowerShell, az Azure CLI vagy a REST API használatával. Ez a cikk azt ismerteti, hogyan hozhat létre egyéni szerepköröket a Azure Portal használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -77,7 +72,7 @@ Ha szeretné, az alábbi lépéseket követve elindíthat egy egyéni szerepkör
 
 1. A Azure Portal nyisson meg egy előfizetést vagy erőforráscsoportot, amelyhez az egyéni szerepkört hozzá szeretné rendelni, majd nyissa meg a **hozzáférés-vezérlés (iam)** lehetőséget.
 
-1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása (előzetes verzió)** elemre.
+1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása**elemre.
 
     ![Egyéni szerepkör hozzáadása menü](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -109,7 +104,7 @@ Ha szeretné, megadhatja a legtöbb egyéni szerepkör-értéket egy JSON-fájlb
     }
     ```
 
-1. A JSON-fájlban határozza meg a különböző tulajdonságok értékeit. Íme egy példa néhány hozzáadott értékkel. További információ a különböző tulajdonságokkal kapcsolatban: a [szerepkör-definíciók ismertetése](role-definitions.md).
+1. A JSON-fájlban határozza meg a különböző tulajdonságok értékeit. Íme egy példa néhány hozzáadott értékkel. További információ a különböző tulajdonságokkal kapcsolatban: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
 
     ```json
     {
@@ -141,7 +136,7 @@ Ha szeretné, megadhatja a legtöbb egyéni szerepkör-értéket egy JSON-fájlb
     
 1. A Azure Portal nyissa meg a **hozzáférés-vezérlés (iam)** lapot.
 
-1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása (előzetes verzió)** elemre.
+1. Kattintson a **Hozzáadás** , majd az **Egyéni szerepkör hozzáadása**elemre.
 
     ![Egyéni szerepkör hozzáadása menü](./media/custom-roles-portal/add-custom-role-menu.png)
 
@@ -260,7 +255,7 @@ Ha kizár egy engedélyt, azt a vagy a- `NotActions` `NotDataActions`ként adja 
 
 ## <a name="step-5-assignable-scopes"></a>5. lépés: hozzárendelhető hatókörök
 
-A **hozzárendelhető hatókörök** lapon adhatja meg, hogy az egyéni szerepkör hol érhető el a hozzárendeléshez, például az előfizetéshez vagy az erőforráscsoporthoz. Az indítás helyétől függően ez a lap felsorolja azt a hatókört, ahol megnyitotta a hozzáférés-vezérlés (IAM) lapot. A hozzárendelhető hatókör a gyökérszintű hatókörre ("/") való beállítása nem támogatott. Ebben az előzetes verzióban nem adhat hozzá hozzárendelhető hatókörként felügyeleti csoportot.
+A **hozzárendelhető hatókörök** lapon adhatja meg, hogy az egyéni szerepkör hol érhető el a hozzárendeléshez, például az előfizetéshez vagy az erőforráscsoporthoz. Az indítás helyétől függően ez a lap felsorolja azt a hatókört, ahol megnyitotta a hozzáférés-vezérlés (IAM) lapot. A hozzárendelhető hatókör a gyökérszintű hatókörre ("/") való beállítása nem támogatott. Jelenleg nem adhat hozzá hozzárendelhető hatókörként felügyeleti csoportot.
 
 1. Kattintson a **hozzárendelhető hatókörök hozzáadása** elemre a hozzárendelhető hatókörök hozzáadása panel megnyitásához.
 
@@ -352,6 +347,6 @@ Az alábbi lépéseket követve megtekintheti az egyéni szerepköröket.
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: Egyéni szerepkör létrehozása az Azure PowerShell használatával](tutorial-custom-role-powershell.md)
-- [Egyéni szerepkörök az Azure-ban](custom-roles.md)
+- [Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](tutorial-custom-role-powershell.md)
+- [Egyéni Azure-szerepkörök](custom-roles.md)
 - [Erőforrás-szolgáltatói műveletek Azure Resource Manager](resource-provider-operations.md)

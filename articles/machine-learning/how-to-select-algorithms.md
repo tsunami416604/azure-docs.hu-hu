@@ -10,12 +10,12 @@ author: FrancescaLazzeri
 ms.author: lazzeri
 ms.reviewer: cgronlun
 ms.date: 05/07/2020
-ms.openlocfilehash: 98f7edac5bbec7a88999c728b2e4db8be7a3d2b5
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: ad384896301e809940f6e99df2f5562cfdb6a6fe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891346"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927581"
 ---
 # <a name="how-to-select-algorithms-for-azure-machine-learning"></a>Azure Machine Learning algoritmusok kiválasztása
 
@@ -50,21 +50,21 @@ Az alábbi táblázat a besorolási, a regressziós és a fürtözési családok
 | --- |:---:|:---:|:---:|:---:| --- |
 | **Besorolási család** | | | | | |
 | [Kétosztályos logisztikai regresszió](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-logistic-regression?WT.mc_id=docs-article-lazzeri) |Megfelelő  |Gyors |Igen |4 | |
-| [Kétosztályos döntési erdő](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |No |5 |A lassabb pontozási időket jeleníti meg. Javasoljuk, hogy ne működjön együtt One-vs-All Multiclassval, mert a faszerkezetes előrejelzések felhalmozódása során a futófelület zárolása által okozott lassabb pontozási idő |
-| [Kétosztályos, megnövelt döntési fa](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |No |6 |Nagy memória-lábnyom |
-| [Kétosztályos neurális hálózat](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Megfelelő |Közepes |No |8 | |
+| [Kétosztályos döntési erdő](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-decision-forest?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |Nem |5 |A lassabb pontozási időket jeleníti meg. Javasoljuk, hogy ne működjön együtt One-vs-All Multiclassval, mert a faszerkezetes előrejelzések felhalmozódása során a futófelület zárolása által okozott lassabb pontozási idő |
+| [Kétosztályos, megnövelt döntési fa](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |Nem |6 |Nagy memória-lábnyom |
+| [Kétosztályos neurális hálózat](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-neural-network?WT.mc_id=docs-article-lazzeri) |Megfelelő |Közepes |Nem |8 | |
 | [Kétosztályos átlagú perceptron](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-averaged-perceptron?WT.mc_id=docs-article-lazzeri) |Megfelelő |Közepes |Igen |4 | |
 | [Kétosztályos támogatású vektoros gép](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/two-class-support-vector-machine?WT.mc_id=docs-article-lazzeri) |Megfelelő |Gyors |Igen |5 |Kiválóan alkalmas a nagyméretű szolgáltatások számára |
 | [Többosztályos logisztikai regresszió](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-logistic-regression?WT.mc_id=docs-article-lazzeri) |Megfelelő |Gyors |Igen |4 | |
-| [Többosztályos döntési erdő](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |No |5 |Lassabb pontozási idő megjelenítése |
-| [Többosztályos növelt döntési fa](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |No |6 | Egyre nagyobb pontosságot biztosít a kisebb lefedettséggel járó kis kockázat miatt |
-| [Többosztályos neurális hálózat](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Megfelelő |Közepes |No |8 | |
+| [Többosztályos döntési erdő](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-decision-forest?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |Nem |5 |Lassabb pontozási idő megjelenítése |
+| [Többosztályos növelt döntési fa](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-boosted-decision-tree?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |Nem |6 | Egyre nagyobb pontosságot biztosít a kisebb lefedettséggel járó kis kockázat miatt |
+| [Többosztályos neurális hálózat](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/multiclass-neural-network?WT.mc_id=docs-article-lazzeri) |Megfelelő |Közepes |Nem |8 | |
 | [Egy-és többosztályos](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/one-vs-all-multiclass?WT.mc_id=docs-article-lazzeri) | - | - | - | - |Tekintse meg a kiválasztott kétosztályos módszer tulajdonságait. |
 | **Regressziós család** | | | | | |
 | [Lineáris regresszió](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/linear-regression?WT.mc_id=docs-article-lazzeri) |Megfelelő |Gyors |Igen |4 | |
-| [Döntési erdő regressziója](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Kiváló |Közepes |No |5 | |
-| [A döntési fa regressziójának fokozása](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |No |6 |Nagy memória-lábnyom |
-| [Neurális hálózat regressziója](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Megfelelő |Közepes |No |8 | |
+| [Döntési erdő regressziója](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/decision-forest-regression?WT.mc_id=docs-article-lazzeri)|Kiváló |Közepes |Nem |5 | |
+| [A döntési fa regressziójának fokozása](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/boosted-decision-tree-regression?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |Nem |6 |Nagy memória-lábnyom |
+| [Neurális hálózat regressziója](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/neural-network-regression?WT.mc_id=docs-article-lazzeri) |Megfelelő |Közepes |Nem |8 | |
 | **Fürtözési család** | | | | | |
 | [K – fürtözés](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/k-means-clustering?WT.mc_id=docs-article-lazzeri) |Kiváló |Közepes |Igen |8 |Egy fürtözési algoritmus |
 
@@ -148,6 +148,6 @@ A [permutáció szolgáltatás fontossági moduljának](https://docs.microsoft.c
 
 ## <a name="next-steps"></a>További lépések
 
- - [További információ a Azure Machine Learning designerről](https://docs.microsoft.com/azure/machine-learning/service/concept-designer?WT.mc_id=docs-article-lazzeri)
+ - [További információ a Azure Machine Learning designerről](https://docs.microsoft.com/azure/machine-learning/concept-designer?WT.mc_id=docs-article-lazzeri)
  - A Azure Machine Learning Designerben elérhető gépi tanulási algoritmusok leírását lásd: [Machine learning Designer algoritmus és modul-hivatkozás](https://docs.microsoft.com/azure/machine-learning/algorithm-module-reference/module-reference?WT.mc_id=docs-article-lazzeri)
- - A mély tanulás, a gépi tanulás és a mesterséges intelligencia közötti kapcsolat megismeréséhez tekintse meg a [Deep learning](https://docs.microsoft.com/azure/machine-learning/service/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri) és a Machine learning
+ - A mély tanulás, a gépi tanulás és a mesterséges intelligencia közötti kapcsolat megismeréséhez tekintse meg a [Deep learning](https://docs.microsoft.com/azure/machine-learning/concept-deep-learning-vs-machine-learning?WT.mc_id=docs-article-lazzeri) és a Machine learning

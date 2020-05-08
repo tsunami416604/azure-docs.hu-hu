@@ -3,12 +3,12 @@ title: Application Insights API egyéni eseményekhez és mérőszámokhoz | Mic
 description: A használat és a problémák diagnosztizálásához helyezzen be néhány sornyi kódot az eszközön, az asztali alkalmazásban, a weblapon vagy a szolgáltatásban.
 ms.topic: conceptual
 ms.date: 03/27/2019
-ms.openlocfilehash: 152bd117ec0ae76c2c85ead26ba5278aa71d582f
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 74ca6d6a13967c2139d3d47dd425b6cb1a3ee31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509287"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927938"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Application Insights API egyéni eseményekhez és metrikákhoz
 
@@ -649,7 +649,7 @@ Ideális esetben a flush () metódust kell használni az alkalmazás leállítá
 
 ## <a name="authenticated-users"></a>Hitelesített felhasználók
 
-Egy webalkalmazásban a felhasználók a cookie-k által azonosított (alapértelmezés szerint). Előfordulhat, hogy egy felhasználó többször is megszámolható, ha egy másik gépről vagy böngészőből fér hozzá az alkalmazáshoz, vagy ha cookie-kat töröl.
+Egy webalkalmazásban a felhasználók a [cookie-k által azonosított](../../azure-monitor/app/usage-segmentation.md#the-users-sessions-and-events-segmentation-tool)(alapértelmezés szerint). Előfordulhat, hogy egy felhasználó többször is megszámolható, ha egy másik gépről vagy böngészőből fér hozzá az alkalmazáshoz, vagy ha cookie-kat töröl.
 
 Ha a felhasználók bejelentkeznek az alkalmazásba, pontosabban megadhatja a hitelesített felhasználói azonosító beállítását a böngésző kódjában:
 
@@ -931,7 +931,7 @@ A [szűrés](../../azure-monitor/app/api-filtering-sampling.md#filtering) módos
 
 A [mintavétel](../../azure-monitor/app/api-filtering-sampling.md) egy csomagolt megoldás, amely csökkenti az alkalmazásból a portálra továbbított adatok mennyiségét. Ez nem befolyásolja a megjelenített metrikákat. Ez azonban nem befolyásolja a problémák diagnosztizálását a kapcsolódó elemek, például a kivételek, a kérelmek és az oldalletöltések közötti navigálás során.
 
-[További információ](../../azure-monitor/app/api-filtering-sampling.md).
+[További információk](../../azure-monitor/app/api-filtering-sampling.md).
 
 ## <a name="disabling-telemetry"></a>Telemetria letiltása
 
@@ -1111,7 +1111,7 @@ Az adatok megőrzési időtartamának megállapításához tekintse meg az [adat
 
 * *Milyen kivételeket okozhatnak Track_ () hívások?*
 
-    Nincs. A try-catch záradékokban nem kell becsomagolni őket. Ha az SDK problémákba ütközik, a hibakeresési konzol kimenetében üzeneteket fog naplózni, és – ha az üzenetek – a diagnosztikai keresés során jelentkeznek.
+    Nincsenek. A try-catch záradékokban nem kell becsomagolni őket. Ha az SDK problémákba ütközik, a hibakeresési konzol kimenetében üzeneteket fog naplózni, és – ha az üzenetek – a diagnosztikai keresés során jelentkeznek.
 * *Van REST API az adatok a portálról való lekéréséhez?*
 
     Igen, az [adatelérési API](https://dev.applicationinsights.io/). Az adatok kinyerésének egyéb módjai közé tartozik az [elemzésből való exportálás Power bi](../../azure-monitor/app/export-power-bi.md ) és a [folyamatos exportálás](../../azure-monitor/app/export-telemetry.md).

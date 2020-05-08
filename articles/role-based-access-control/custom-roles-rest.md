@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése a REST API
-description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet egyéni szerepköröket a szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure-erőforrásokhoz az REST API használatával.
+title: Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API-Azure RBAC használatával
+description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet egyéni Azure-szerepköröket a REST API és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,21 +15,21 @@ ms.topic: conceptual
 ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fda0400310f46da64322654c42af75521746d679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0bc96dc9a8e541cfd827ba5f5abe35c13f2d2462
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062192"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734093"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-the-rest-api"></a>Egyéni szerepkörök létrehozása vagy frissítése az Azure-erőforrásokhoz a REST API használatával
+# <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API használatával
 
 > [!IMPORTANT]
 > A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk az egyéni szerepkörök listázását, létrehozását, frissítését és törlését ismerteti a REST API használatával.
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk az egyéni szerepkörök listázását, létrehozását, frissítését és törlését ismerteti a REST API használatával.
 
 ## <a name="list-custom-roles"></a>Egyéni szerepkörök listázása
 
@@ -189,7 +189,7 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciókat –
 
 1. A `notActions` tulajdonságban adja hozzá azokat a műveleteket, amelyek ki vannak zárva az `actions`engedélyezettből.
 
-1. A és `roleName` `description` a tulajdonságok területen adjon meg egy egyedi szerepkör-nevet és egy leírást. A tulajdonságokkal kapcsolatos további információkért lásd: [Egyéni szerepkörök](custom-roles.md).
+1. A és `roleName` `description` a tulajdonságok területen adjon meg egy egyedi szerepkör-nevet és egy leírást. A tulajdonságokkal kapcsolatos további információkért lásd: [Egyéni Azure-szerepkörök](custom-roles.md).
 
     A következő példa egy kérelem törzsét mutatja be:
 
@@ -340,6 +340,6 @@ Egyéni szerepkör törléséhez használja a [szerepkör-definíciókat – tö
 
 ## <a name="next-steps"></a>További lépések
 
-- [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
-- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a REST API használatával](role-assignments-rest.md)
+- [Egyéni Azure-szerepkörök](custom-roles.md)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
 - [Azure REST API-referenciák](/rest/api/azure/)

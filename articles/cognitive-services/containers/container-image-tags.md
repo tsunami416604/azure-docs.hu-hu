@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: reference
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 786fde90e1bcf47e08857c26235a27862c5b3d75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 850d7b9732ad547d502b042e7eaad5d3b471030e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80878765"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926000"
 ---
 # <a name="azure-cognitive-services-container-image-tags"></a>Azure Cognitive Services tároló képcímkék
 
@@ -106,6 +106,7 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | Képcímkék            | Megjegyzések |
 |-----------------------|:------|
 | `latest`              |       |
+| `2.2.0-amd64-preview` |       |
 | `2.1.1-amd64-preview` |       |
 | `2.1.0-amd64-preview` |       |
 | `2.0.2-amd64-preview` |       |
@@ -131,6 +132,46 @@ Ez a tároló-rendszerkép a következő címkéket tartalmazhatja:
 | Képcímkék                  | Megjegyzések                                    |
 |-----------------------------|:-----------------------------------------|
 | `latest`                    | Tároló képe a `en-US` területi beállítással. |
+| `2.2.0-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
+| `2.2.0-amd64-ar-eg-preview` | Tároló képe a `ar-EG` területi beállítással. |
+| `2.2.0-amd64-ar-kw-preview` | Tároló képe a `ar-KW` területi beállítással. |
+| `2.2.0-amd64-ar-qa-preview` | Tároló képe a `ar-QA` területi beállítással. |
+| `2.2.0-amd64-ar-sa-preview` | Tároló képe a `ar-SA` területi beállítással. |
+| `2.2.0-amd64-ca-es-preview` | Tároló képe a `ca-ES` területi beállítással. |
+| `2.2.0-amd64-da-dk-preview` | Tároló képe a `da-DK` területi beállítással. |
+| `2.2.0-amd64-de-de-preview` | Tároló képe a `de-DE` területi beállítással. |
+| `2.2.0-amd64-en-au-preview` | Tároló képe a `en-AU` területi beállítással. |
+| `2.2.0-amd64-en-ca-preview` | Tároló képe a `en-CA` területi beállítással. |
+| `2.2.0-amd64-en-gb-preview` | Tároló képe a `en-GB` területi beállítással. |
+| `2.2.0-amd64-en-in-preview` | Tároló képe a `en-IN` területi beállítással. |
+| `2.2.0-amd64-en-nz-preview` | Tároló képe a `en-NZ` területi beállítással. |
+| `2.2.0-amd64-en-us-preview` | Tároló képe a `en-US` területi beállítással. |
+| `2.2.0-amd64-es-es-preview` | Tároló képe a `es-ES` területi beállítással. |
+| `2.2.0-amd64-es-mx-preview` | Tároló képe a `es-MX` területi beállítással. |
+| `2.2.0-amd64-fi-fi-preview` | Tároló képe a `fi-FI` területi beállítással. |
+| `2.2.0-amd64-fr-ca-preview` | Tároló képe a `fr-CA` területi beállítással. |
+| `2.2.0-amd64-fr-fr-preview` | Tároló képe a `fr-FR` területi beállítással. |
+| `2.2.0-amd64-gu-in-preview` | Tároló képe a `gu-IN` területi beállítással. |
+| `2.2.0-amd64-hi-in-preview` | Tároló képe a `hi-IN` területi beállítással. |
+| `2.2.0-amd64-it-it-preview` | Tároló képe a `it-IT` területi beállítással. |
+| `2.2.0-amd64-ja-jp-preview` | Tároló képe a `ja-JP` területi beállítással. |
+| `2.2.0-amd64-ko-kr-preview` | Tároló képe a `ko-KR` területi beállítással. |
+| `2.2.0-amd64-mr-in-preview` | Tároló képe a `mr-IN` területi beállítással. |
+| `2.2.0-amd64-nb-no-preview` | Tároló képe a `nb-NO` területi beállítással. |
+| `2.2.0-amd64-nl-nl-preview` | Tároló képe a `nl-NL` területi beállítással. |
+| `2.2.0-amd64-pl-pl-preview` | Tároló képe a `pl-PL` területi beállítással. |
+| `2.2.0-amd64-pt-br-preview` | Tároló képe a `pt-BR` területi beállítással. |
+| `2.2.0-amd64-pt-pt-preview` | Tároló képe a `pt-PT` területi beállítással. |
+| `2.2.0-amd64-ru-ru-preview` | Tároló képe a `ru-RU` területi beállítással. |
+| `2.2.0-amd64-sv-se-preview` | Tároló képe a `sv-SE` területi beállítással. |
+| `2.2.0-amd64-ta-in-preview` | Tároló képe a `ta-IN` területi beállítással. |
+| `2.2.0-amd64-te-in-preview` | Tároló képe a `te-IN` területi beállítással. |
+| `2.2.0-amd64-th-th-preview` | Tároló képe a `th-TH` területi beállítással. |
+| `2.2.0-amd64-tr-tr-preview` | Tároló képe a `tr-TR` területi beállítással. |
+| `2.2.0-amd64-zh-cn-preview` | Tároló képe a `zh-CN` területi beállítással. |
+| `2.2.0-amd64-zh-hk-preview` | Tároló képe a `zh-HK` területi beállítással. |
+| `2.2.0-amd64-zh-tw-preview` | Tároló képe a `zh-TW` területi beállítással. |
+| `2.1.1-amd64-en-us-preview` | Tároló képe a `en-US` területi beállítással. |
 | `2.1.1-amd64-ar-ae-preview` | Tároló képe a `ar-AE` területi beállítással. |
 | `2.1.1-amd64-ar-eg-preview` | Tároló képe a `ar-EG` területi beállítással. |
 | `2.1.1-amd64-ar-kw-preview` | Tároló képe a `ar-KW` területi beállítással. |

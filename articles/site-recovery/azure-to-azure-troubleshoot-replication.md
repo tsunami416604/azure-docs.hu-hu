@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 04/03/2020
-ms.openlocfilehash: 8cba02d3c7d1e649853570b199b646b1c4dcce2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c7d4f0a6d33a52fd972815923e60b33ce8a7448
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80667419"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901357"
 ---
 # <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Az Azure-beli virtuális gép vész-helyreállítási replikációjának elhárítása
 
@@ -41,7 +41,7 @@ Ha kijelöli az eseményt, a lemez pontos adatait kell megjelennie:
 
 Az alábbi táblázat az Azure Site Recovery korlátait tartalmazza. Ezek a korlátok a tesztek alapján működnek, de nem fedik le az összes lehetséges Application input-output (I/O) kombinációt. A tényleges eredmények a saját alkalmazásának I/O-műveletei alapján változhatnak.
 
-A virtuális gépenként két korlátozást kell figyelembe venni: a lemezen tárolt adatváltozások és adatváltozások száma. Nézzük meg a prémium szintű P20 lemezt a következő táblázatban egy példára. Egyetlen virtuális gép esetében a Site Recovery legfeljebb öt lemezből álló, legfeljebb 5 MB/s adatforgalom kezelésére képes. A Site Recovery virtuális gépenként legfeljebb 25 MB/s teljes adatforgalom megengedett.
+A virtuális gépenként két korlátozást kell figyelembe venni: a lemezen tárolt adatváltozások és adatváltozások száma. Nézzük meg a prémium szintű P20 lemezt a következő táblázatban egy példára. Egyetlen virtuális gép esetében a Site Recovery legfeljebb öt lemezből álló, legfeljebb 5 MB/s adatforgalom kezelésére képes. A Site Recovery egy virtuális gépenként legfeljebb 54 MB/s összeget tartalmaz.
 
 **Replikáció tárolási célja** | **A forrásoldali lemez átlagos I/O-mérete** |**Adatforgalom átlagos adatváltozása a forrásoldali lemezen** | **Adatváltozások napi száma a forrásadatok lemezén**
 ---|---|---|---

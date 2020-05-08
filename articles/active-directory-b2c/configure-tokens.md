@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 160898f8535d3dad4811af016ebca779b7ef43a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2b9cc0c69f0c559c9561a02de4192974ee7f521
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189617"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926187"
 ---
 # <a name="configure-tokens-in-azure-active-directory-b2c"></a>Jogkivonatok konfigurálása a Azure Active Directory B2Cban
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a [jogkivonatok élettart
 
 [Hozzon létre egy felhasználói folyamatot](tutorial-create-user-flows.md) , amely lehetővé teszi a felhasználók számára az alkalmazásba való regisztrációt és bejelentkezést.
 
-## <a name="configure-token-lifetime"></a>Jogkivonat élettartamának konfigurálása
+## <a name="configure-jwt-token-lifetime"></a>JWT-jogkivonat élettartamának konfigurálása
 
 A jogkivonat élettartama bármely felhasználói folyamaton beállítható.
 
@@ -41,7 +41,7 @@ A jogkivonat élettartama bármely felhasználói folyamaton beállítható.
 
 8. Kattintson a **Save** (Mentés) gombra.
 
-## <a name="configure-token-compatibility"></a>Jogkivonat-kompatibilitás konfigurálása
+## <a name="configure-jwt-token-compatibility"></a>JWT-jogkivonat kompatibilitásának konfigurálása
 
 1. Válassza a **felhasználói folyamatok (szabályzatok)** lehetőséget.
 2. Nyissa meg a korábban létrehozott felhasználói folyamatot.

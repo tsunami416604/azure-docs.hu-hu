@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/07/2020
 ms.author: mimart
-ms.openlocfilehash: 31a6d116ae1afce9afdd3786747490980963d823
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818f33abfdb0655d96c0a8873a43903ee972b3bf
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678041"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82925464"
 ---
 ## <a name="register-an-azure-ad-app"></a>Azure AD-alkalmazás regisztrálása
 
@@ -36,7 +36,7 @@ Ha egy adott Azure AD-szervezet felhasználói számára engedélyezni szeretné
 
 ### <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
 
-Ha a és `family_name` `given_name` a jogcímeket az Azure ad-től szeretné beszerezni, az alkalmazáshoz a Azure Portal felhasználói felületén vagy az alkalmazás-jegyzékfájlban konfigurálhat választható jogcímeket is. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](/active-directory/develop/active-directory-optional-claims.md).
+Ha a és `family_name` `given_name` a jogcímeket az Azure ad-től szeretné beszerezni, az alkalmazáshoz a Azure Portal felhasználói felületén vagy az alkalmazás-jegyzékfájlban konfigurálhat választható jogcímeket is. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](/azure/active-directory/develop/active-directory-optional-claims).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk**lehetőséget.

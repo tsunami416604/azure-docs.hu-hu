@@ -9,42 +9,45 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 6983a2ac7ab5fafcb00aee0b72221a8540ea1668
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678973"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927887"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent problémáinak elhárítása
 
-Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifogástalan) állapotban a Update Managementban. Update Management a hibrid Runbook Worker Agent állapotának ellenőrzését a probléma okának megállapításához. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline).
+Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifogástalan) állapotban a Update Managementban. A probléma okának megállapításához a Windows Hybrid Runbook Worker Agent állapotát is megtekintheti. A következő három készültségi állapotú gép:
 
-A következő három készültségi állapotú gép:
-
-* Kész – a hibrid Runbook Worker üzembe helyezése megtörtént, és legalább 1 órával ezelőtt volt látható.
-* Leválasztva – a hibrid Runbook Worker üzembe helyezése megtörtént, és a rendszer az elmúlt 1 órája óta utoljára látott el.
-* Nincs konfigurálva – a hibrid Runbook Worker nem található vagy nem fejeződött be.
+* Készen áll: a hibrid Runbook-feldolgozó üzembe lett helyezve, és legalább egy órával ezelőtt volt látható.
+* Leválasztva: a hibrid Runbook Worker üzembe helyezése egy órával ezelőtt történt, és utoljára volt látható.
+* Nincs konfigurálva: a hibrid Runbook-feldolgozó nem található vagy nem fejeződött be.
 
 > [!NOTE]
 > A Azure Portal megjelenítése és a gép aktuális állapota között enyhe késés adható meg.
 
+Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépek hibakeresőjét a Azure Portal és nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline). A hibakereső mostantól tartalmazza a Windows Server Update Services (WSUS) és az automatikus letöltés és a telepítési kulcsok ellenőrzését.
+
+> [!NOTE]
+> A hibakereső parancsfájl jelenleg nem irányítja át a forgalmat egy proxykiszolgálón keresztül, ha van ilyen konfigurálva.
+
 ## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
 
-Az Azure-gépek esetében a portál **frissítési ügynök készültsége** oszlopának **hibakeresés** hivatkozására kattintva elindítja az ügynök frissítése lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
+Az Azure-gépek esetében az ügynök frissítése lapon a portálon a **frissítés ügynök felkészültsége** oszlopban található **hibakeresés** hivatkozásra kattintva indíthatja el a **frissítési ügynök hibakeresése** lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
 
-![Virtuális gépek felügyeleti listájának frissítése](../media/update-agent-issues/vm-list.png)
+![A virtuális gépek Update Management listájának képernyőképe](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > A hibrid Runbook-feldolgozók állapotának vizsgálatához a virtuális gépnek futnia kell. Ha a virtuális gép nem fut, megjelenik a **virtuális gép indítása** gomb.
 
-Az ügynök frissítése lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/windows/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
+Az **ügynök frissítése** lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/windows/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
 
-![Az ügynök frissítése lap – problémamegoldás](../media/update-agent-issues/troubleshoot-page.png)
+![Képernyőkép az ügynök frissítése lap hibakereséséről](../media/update-agent-issues/troubleshoot-page.png)
 
 Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések szakaszban látható, hogy mi szerepel az egyes ellenőrzésekben.
 
-![Frissítési ügynök ellenőrzésének hibáinak megoldása](../media/update-agent-issues/update-agent-checks.png)
+![Képernyőkép a frissítési ügynök ellenőrzésével kapcsolatos hibákról](../media/update-agent-issues/update-agent-checks.png)
 
 ## <a name="prerequisite-checks"></a>Előfeltétel-ellenőrzések
 
@@ -54,7 +57,7 @@ Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgo
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows Server 2012 és újabb verziók |A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([A .NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers))<br/> A Windows PowerShell 5,1 megadása kötelező.  (A[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616))        |
+|Windows Server 2012 és újabb verziók |A .NET-keretrendszer 4,6-es vagy újabb verziójára van szükség. ([A .NET-keretrendszer letöltése](/dotnet/framework/install/guide-for-developers).)<br/> A Windows PowerShell 5,1 megadása kötelező.  (A[Windows Management Framework 5,1 letöltése](https://www.microsoft.com/download/details.aspx?id=54616).)        |
 
 ### <a name="net-462"></a>.NET-4.6.2
 
@@ -62,11 +65,11 @@ A .NET-keretrendszer ellenőrzése ellenőrzi, hogy a rendszer legalább a [.NET
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziójával ( [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616)).
+A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziójával: [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
-Ez az érték határozza meg, hogy a TLS 1,2-et használja-e a kommunikáció titkosításához. A platform már nem támogatja a TLS 1,0-et. Javasoljuk, hogy az ügyfelek a TLS 1,2-et használják a Update Management való kommunikációhoz.
+Ez az érték határozza meg, hogy a TLS 1,2-et használja-e a kommunikáció titkosításához. A platform már nem támogatja a TLS 1,0-et. A TLS 1,2 használatával kommunikálhat Update Managementokkal.
 
 ## <a name="connectivity-checks"></a>Kapcsolatok ellenőrzése
 
@@ -98,13 +101,13 @@ Az eseménnyel kapcsolatos további tudnivalókért tekintse meg az esemény [hi
 
 ## <a name="access-permissions-checks"></a>Hozzáférési engedélyek ellenőrzése
 
-### <a name="machinekeys-folder-access"></a>Következő
+### <a name="crypto-folder-access"></a>Titkosítási mappa elérése
 
 A kriptográfiai mappa hozzáférés-ellenőrzését határozza meg, hogy a helyi rendszerfiók hozzáfér-e a C:\ProgramData\Microsoft\Crypto\RSA.
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offline hibák
 
-A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. A szkriptet, a [hibakeresést](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration)és a WindowsUpdateAgentRegistration a PowerShell-galériaban érheti el. A parancsfájl futtatásához a WMF 4,0 vagy újabb rendszernek kell futnia. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+A hibakeresést a hibrid Runbook-feldolgozón offline módon futtathatja a parancsfájl helyi futtatásával. Szerezze be a következő szkriptet a PowerShell-galéria: [hibakeresés – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). A parancsfájl futtatásához a WMF 4,0-es vagy újabb verziójára van szükség. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 A szkript kimenete a következő példához hasonlóan néz ki:
 
@@ -202,4 +205,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>További lépések
 
-A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárításához lásd: [hibrid Runbook-feldolgozók hibaelhárítása](hybrid-runbook-worker.md).
+[Hibrid Runbook-feldolgozók hibáinak megoldása](hybrid-runbook-worker.md)

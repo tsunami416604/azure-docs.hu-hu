@@ -3,12 +3,12 @@ title: Gyors feladat futtatása sablonnal
 description: Az ACR-feladatok futtatásával rendszerképeket hozhat létre Azure Resource Manager sablon használatával
 ms.topic: article
 ms.date: 04/22/2020
-ms.openlocfilehash: 6e85e4a3d10ea34d71efde959aa7d179eba69e3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196529"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927768"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>ACR-feladatok futtatása Resource Manager-sablonok használatával
 
@@ -139,7 +139,7 @@ Bemutatóként hozzon létre egy külön tároló-beállításjegyzéket az alap
 
 ### <a name="create-new-dockerfile"></a>Új Docker létrehozása
 
-Hozzon létre egy Docker, amely lekéri az alaprendszerképet az alapszintű beállításjegyzékből. Hajtsa végre a következő lépéseket a GitHub-tárház helyi villájában, például https://github.com/myGitHubID/acr-build-helloworld-node.git*.
+Hozzon létre egy Docker, amely lekéri az alaprendszerképet az alapszintű beállításjegyzékből. Hajtsa végre a következő lépéseket a GitHub-tárház helyi villájában, például: `https://github.com/myGitHubID/acr-build-helloworld-node.git`.
 
 1. A GitHub felhasználói felületén válassza az **új fájl létrehozása**lehetőséget.
 1. Nevezze el a fájlt *Docker* , és illessze be a következő tartalmakat. Helyettesítse be a *mybaseregistry*beállításjegyzékbeli nevét.
