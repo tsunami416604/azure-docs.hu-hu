@@ -5,27 +5,31 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 4a0f193437353bac1f5998b50b9d7b4d43bedefa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66b76fcdd9729b2a92ea2d561c740dbe148e0bbe
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128062"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611551"
 ---
 # <a name="customize-remote-desktop-protocol-properties-for-a-host-pool"></a>Gazdagépek RDP protokoll tulajdonságainak testreszabása
 
-A gazdagépek RDP protokoll (RDP) tulajdonságainak (például a többmonitoros élmény és a hangátirányítás) testreszabása lehetővé teszi, hogy a felhasználók igényei alapján optimális élményt nyújtson a felhasználóknak. Az RDP-tulajdonságokat a Windows virtuális asztalon a **set-RdsHostPool** parancsmag **-CustomRdpProperty** paraméterrel szabhatja testre.
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/customize-rdp-properties-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+A gazdagépek RDP protokoll (RDP) tulajdonságainak (például a többmonitoros élmény és a hangátirányítás) testreszabása lehetővé teszi, hogy a felhasználók igényei alapján optimális élményt nyújtson a felhasználóknak. Az RDP-tulajdonságokat a Windows rendszerű virtuális asztali számítógépeken a Azure Portal vagy az **Update-AzWvdHostPool** parancsmag *-CustomRdpProperty* paraméter használatával szabhatja testre.
 
 A támogatott tulajdonságok és az alapértelmezett értékek teljes listájáért tekintse meg a [támogatott RDP-fájlok beállításait](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context) .
 
-Először [töltse le és importálja a](/powershell/windows-virtual-desktop/overview/) PowerShell-munkamenetben használni kívánt Windows virtuális asztali PowerShell-modult, ha még nem tette meg. Ezután futtassa a következő parancsmagot a fiókjába való bejelentkezéshez:
+## <a name="prerequisites"></a>Előfeltételek
 
-```powershell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-```
+Mielőtt elkezdené, kövesse a [Windows rendszerű virtuális asztali PowerShell-modul beállítása](powershell-module.md) című témakör útmutatását a PowerShell-modul beállításához és az Azure-ba való bejelentkezéshez.
 
 ## <a name="default-rdp-properties"></a>Alapértelmezett RDP-tulajdonságok
 
@@ -39,40 +43,97 @@ Alapértelmezés szerint a közzétett RDP-fájlok a következő tulajdonságoka
 
 A gazdagép-készlethez definiált egyéni tulajdonságok felülbírálják ezeket az alapértelmezett értékeket.
 
+## <a name="configure-rdp-properties-in-the-azure-portal"></a>RDP-tulajdonságok konfigurálása a Azure Portalban
+
+Az RDP-tulajdonságok konfigurálása a Azure Portalban:
+
+1. Jelentkezzen be az Azure <https://portal.azure.com>-ba.
+2. Adja meg a **Windows rendszerű virtuális asztalt** a keresősávban.
+3. A szolgáltatások területen válassza a **Windows virtuális asztal**elemet.
+4. A Windows rendszerű virtuális asztal lapon a képernyő bal oldalán található menüben válassza a **gazdagép-készletek** elemet.
+5. Válassza ki a frissíteni kívánt **gazdagép-készlet nevét** .
+6. A képernyő bal oldalán található menüben válassza a **Tulajdonságok** lehetőséget.
+7. Az RDP-tulajdonságok szerkesztésének megkezdéséhez válassza az **RDP-beállítások** elemet.
+8. Ha elkészült, kattintson a **Mentés** gombra a módosítások mentéséhez.
+
+Ha olyan beállítást szeretne szerkeszteni, amely nem jelenik meg az RDP-beállítások menüben, manuálisan kell szerkesztenie a PowerShell-parancsmagok futtatásával. A következő szakaszban megtudhatja, hogyan szerkesztheti manuálisan az egyéni RDP-tulajdonságokat a PowerShellben.
+
 ## <a name="add-or-edit-a-single-custom-rdp-property"></a>Egyetlen egyéni RDP-tulajdonság hozzáadása vagy szerkesztése
 
 Egyetlen egyéni RDP-tulajdonság hozzáadásához vagy szerkesztéséhez futtassa a következő PowerShell-parancsmagot:
 
 ```powershell
-Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty "<property>"
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty <property>
 ```
 
-![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/singlecustomrdpproperty.png)
+A következő parancsmag futtatásával ellenőrizheti, hogy az imént futtatott parancsmagot frissítette-e:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty
+
+Name              : <hostpoolname>
+CustomRdpProperty : <customRDPpropertystring>
+```
+
+Ha például a "audiocapturemode" tulajdonságot egy 0301HP nevű gazdagépen keresi meg, akkor a következő parancsmagot kell megadnia:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty
+
+Name              : 0301HP
+CustomRdpProperty : audiocapturemode:i:1;
+```
 
 ## <a name="add-or-edit-multiple-custom-rdp-properties"></a>Több egyéni RDP-tulajdonság hozzáadása vagy szerkesztése
 
 Több egyéni RDP-tulajdonság hozzáadásához vagy szerkesztéséhez futtassa az alábbi PowerShell-parancsmagokat úgy, hogy az egyéni RDP-tulajdonságokat pontosvesszővel tagolt karakterláncként adja meg:
 
 ```powershell
-$properties="<property1>;<property2>;<property3>"
-Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty $properties
+$properties="<property1>;<property2>;<property3>" 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty $properties 
 ```
 
-![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/multiplecustomrdpproperty.png)
+A következő parancsmag futtatásával ellenőrizze, hogy az RDP tulajdonság hozzá lett-e adva:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+
+Name              : <hostpoolname>
+CustomRdpProperty : <customRDPpropertystring>
+```
+
+A korábbi parancsmagok alapján például ha több RDP-tulajdonságot állít be a 0301HP-gazdagépen, a parancsmag a következőhöz hasonlóan fog kinézni:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName 0301rg -Name 0301hp | format-list Name, CustomRdpProperty 
+
+Name              : 0301HP 
+CustomRdpProperty : audiocapturemode:i:1;audiomode:i:0;
+```
 
 ## <a name="reset-all-custom-rdp-properties"></a>Az összes egyéni RDP-tulajdonság alaphelyzetbe állítása
 
 Az egyéni RDP-tulajdonságokat alapértékre állíthatja úgy, hogy az [Egyéni RDP-tulajdonság hozzáadása vagy szerkesztése](#add-or-edit-a-single-custom-rdp-property)lehetőségre kattint, vagy a következő PowerShell-parancsmag futtatásával alaphelyzetbe állíthatja a gazdagépek összes egyéni RDP-tulajdonságát:
 
 ```powershell
-Set-RdsHostPool -TenantName <tenantname> -Name <hostpoolname> -CustomRdpProperty ""
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -CustomRdpProperty ""
 ```
 
-![Képernyőkép a Get-RDSRemoteApp PowerShell-parancsmagról, amelynek neve és FriendlyName ki van emelve.](media/resetcustomrdpproperty.png)
+Annak ellenőrzéséhez, hogy sikeresen eltávolította-e a beállítást, adja meg a következő parancsmagot:
+
+```powershell
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, CustomRdpProperty 
+
+Name              : <hostpoolname> 
+CustomRdpProperty : <CustomRDPpropertystring>
+```
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő két útmutató bemutatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
+Most, hogy testreszabta az adott címkészlet RDP-tulajdonságait, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, hogy egy felhasználói munkamenet részeként tesztelje őket. A következő útmutatókból megtudhatja, hogyan csatlakozhat egy munkamenethez az Ön által választott ügyfél használatával:
 
 - [Kapcsolódás a Windows asztali ügyféllel](connect-windows-7-and-10.md)
 - [Kapcsolódás a webügyféllel](connect-web.md)
+- [Kapcsolódás az Android-ügyféllel](connect-android.md)
+- [Kapcsolódás a macOS-ügyfélhez](connect-macos.md)
+- [Kapcsolódás az iOS-ügyfélhez](connect-ios.md)

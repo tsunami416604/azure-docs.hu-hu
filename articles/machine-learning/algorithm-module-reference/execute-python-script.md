@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: 79dc1b188e91028a98f43dc24972228f2d2101be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684728"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983601"
 ---
 # <a name="execute-python-script-module"></a>Python parancsfájl-modul végrehajtása
 
@@ -150,6 +150,8 @@ Az előre telepített csomagok a következők:
 import os
 os.system(f"pip install scikit-misc")
 ```
+> [!NOTE]
+> Ha a folyamat több végrehajtható Python parancsfájl-modult tartalmaz, és ugyanazokat a csomagokat kell megadnia, amelyek nem szerepelnek az előre telepített listában, akkor telepítse a csomagokat az egyes modulokban. 
 
 ## <a name="upload-files"></a>Fájlok feltöltése
 A **Python-szkript végrehajtása** támogatja a fájlok feltöltését [Azure Machine learning Python SDK](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#upload-file-name--path-or-stream-)használatával.
@@ -218,7 +220,7 @@ A **Python-szkript végrehajtása** modul olyan minta Python-kódot tartalmaz, a
 5. A **Python-szkript** szövegmezőbe írja be vagy illessze be az érvényes Python-szkriptet.
 
     > [!NOTE]
-    > Kérjük, legyen nagyon körültekintő a parancsfájl írásakor, és győződjön meg róla, hogy nincs szintaktikai hiba, például egy nem deklarált objektum vagy egy nem importált modul használata. Emellett az előre telepített modulok listájára is külön figyelmet kell fordítani. A nem felsorolt modulok importálásához telepítse a megfelelő csomagokat a parancsfájlba, például:
+    > Kérjük, legyen nagyon körültekintő a parancsfájl írásakor, és győződjön meg róla, hogy nincs szintaktikai hiba, például nem deklarált objektumok vagy nem importált modulok használata. Az előre telepített modulok listájára is külön figyelmet kell fordítani. A nem felsorolt modulok importálásához telepítse a megfelelő csomagokat a parancsfájlba, például:
     >  ``` Python
     > import os
     > os.system(f"pip install scikit-misc")

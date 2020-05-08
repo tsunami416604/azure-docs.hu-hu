@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
-ms.reviewer: ''
-ms.openlocfilehash: edd607c4d708df9fcfd3cbd5fdb71f0a7652d6c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330911"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610139"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD Application Proxy üzemelő példány megtervezése
 
@@ -28,11 +28,11 @@ A Azure Active Directory (Azure AD) alkalmazásproxy biztonságos és költségh
 
 Az alkalmazásproxy használata ajánlott a távoli felhasználók számára a belső erőforrásokhoz való hozzáférés biztosítása érdekében. Az alkalmazásproxy lecseréli a szükséges VPN-vagy fordított proxyt ezen távelérési használati esetekben. Nem a vállalati hálózaton lévő felhasználók számára készült. Azok a felhasználók, akik az Application proxyt használják az intranetes hozzáféréshez, nem kívánatos teljesítménnyel kapcsolatos problémákat tapasztalnak.
 
-Ez a cikk az Azure-AD Application Proxy tervezéséhez, működtetéséhez és kezeléséhez szükséges erőforrásokat tartalmazza. 
+Ez a cikk az Azure-AD Application Proxy tervezéséhez, működtetéséhez és kezeléséhez szükséges erőforrásokat tartalmazza.
 
 ## <a name="plan-your-implementation"></a>A megvalósítás megtervezése
 
-A következő szakasz áttekintést nyújt a legfontosabb tervezési elemekről, amelyek a hatékony üzembe helyezést teszik lehetővé. 
+A következő szakasz áttekintést nyújt a legfontosabb tervezési elemekről, amelyek a hatékony üzembe helyezést teszik lehetővé.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ A megvalósítás megkezdése előtt meg kell felelnie a következő előfeltét
      * Ha lehetséges, telepítsen összekötőket [ugyanabban a hálózatban](application-proxy-network-topology.md) és szegmensben, mint a háttérbeli webalkalmazás-kiszolgálókat. Az alkalmazások felderítésének befejezése után érdemes az összekötőket üzembe helyezni.
      * Javasoljuk, hogy minden összekötő-csoportnak legalább két összekötője legyen, hogy magas rendelkezésre állást és méretezést biztosítson. Ha a három összekötő optimális, akkor előfordulhat, hogy egy gépet bármikor kell kiszolgálni. Tekintse át az [összekötő kapacitása táblában](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-connectors#capacity-planning) , hogy eldöntse, milyen típusú gépet telepítsen az összekötők. Minél nagyobb a gép, annál több puffert és teljesítményű összekötőt használ a rendszer.
 
-* **Hálózati hozzáférési beállítások**: az Azure ad Application proxy-összekötők [csatlakoznak az Azure-hoz a HTTPS-en keresztül (443-as TCP-port) és HTTP-n (TCP-80 port](application-proxy-add-on-premises-application.md) 
+* **Hálózati hozzáférési beállítások**: az Azure ad Application proxy-összekötők [csatlakoznak az Azure-hoz a HTTPS-en keresztül (443-as TCP-port) és HTTP-n (TCP-80 port](application-proxy-add-on-premises-application.md)
 
    * Az összekötő TLS-forgalmának leállítása nem támogatott, és megakadályozza, hogy az összekötők biztonságos csatornát hozzanak létre a megfelelő Azure app proxy-végpontokkal.
 
@@ -64,7 +64,7 @@ Az Azure AD Application Proxy konfigurálásához és megvalósításához a kö
 
 *  **Azure**-előkészítés: az alkalmazásproxy üzembe helyezése előtt a felhasználói identitásokat egy helyszíni címtárból kell szinkronizálni, vagy közvetlenül az Azure ad-bérlőn belül kell létrehozni. Identitásszinkronizálás lehetővé teszi az Azure AD számára, hogy előzetesen hitelesítse a felhasználókat, mielőtt hozzáférést adna nekik az App proxy közzétett alkalmazásaihoz, és hogy a szükséges felhasználói azonosító információkkal rendelkezzen az egyszeri bejelentkezés (SSO) végrehajtásához.
 
-* **Feltételes hozzáférési követelmények**: az alkalmazásproxy használata nem ajánlott az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy azok közvetlenül hitelesíthetők a HRE. További információkért tekintse meg az [alkalmazások HRE való áttelepítésének erőforrásait](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) . 
+* **Feltételes hozzáférési követelmények**: az alkalmazásproxy használata nem ajánlott az intranetes hozzáféréshez, mert ez a művelet a felhasználókat érintő késést okoz. Azt javasoljuk, hogy az alkalmazásproxy használatát előhitelesítéssel és feltételes hozzáférési szabályzatokkal használja az internetről történő távoli hozzáféréshez.  Az intranetes használatra való feltételes hozzáférés biztosításának megközelítése az alkalmazások modernizálása, hogy azok közvetlenül hitelesíthetők a HRE. További információkért tekintse meg az [alkalmazások HRE való áttelepítésének erőforrásait](https://docs.microsoft.com/azure/active-directory/manage-apps/migration-resources) .
 
 * **Szolgáltatási korlátok**: az egyes bérlők erőforrásainak túlhasználása elleni védelem érdekében az alkalmazások és a bérlők által meghatározott sávszélesség-szabályozási korlátok vannak beállítva. A korlátozások megtekintéséhez tekintse meg az [Azure ad szolgáltatás korlátozásait és korlátozásait](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-service-limits-restrictions). Ezek a sávszélesség-szabályozási korlátok a tipikus használati köteten felüli teljesítményteszten alapulnak, és bőséges puffert biztosítanak az üzemelő példányok többsége számára.
 
@@ -81,11 +81,11 @@ A témakörrel kapcsolatos részletes információkért lásd: [KCD az egyszeri 
 
 * **Rendszergazdai jogosultságok és szerepkörök**
 
-   * Az **összekötő telepítéséhez** helyi rendszergazdai jogosultságok szükségesek ahhoz a Windows Server rendszerhez, amelyre telepítve van. Emellett legalább egy *alkalmazás-rendszergazdai* szerepkörrel kell rendelkeznie az összekötő-példány hitelesítéséhez és az Azure ad-bérlőhöz való regisztrálásához. 
+   * Az **összekötő telepítéséhez** helyi rendszergazdai jogosultságok szükségesek ahhoz a Windows Server rendszerhez, amelyre telepítve van. Emellett legalább egy *alkalmazás-rendszergazdai* szerepkörrel kell rendelkeznie az összekötő-példány hitelesítéséhez és az Azure ad-bérlőhöz való regisztrálásához.
 
    * Az **alkalmazások közzétételéhez és felügyeletéhez** az *alkalmazás-rendszergazdai* szerepkör szükséges. Az alkalmazás-rendszergazdák kezelhetik a címtárban lévő összes alkalmazást, beleértve a regisztrációkat, az SSO-beállításokat, a felhasználók és csoportok hozzárendelését, a licencelést, az alkalmazásproxy beállításait és a jóváhagyást. Nem biztosít lehetőséget a feltételes hozzáférés kezelésére. A *Cloud Application Administrator* szerepkör rendelkezik az alkalmazás-rendszergazda összes képességével, azzal a kivétellel, hogy az alkalmazásproxy-beállítások kezelése nem engedélyezett.
 
-* **Licencelés**: az alkalmazásproxy egy prémium szintű Azure ad-előfizetésen keresztül érhető el. A licencelési lehetőségek és szolgáltatások teljes listájáért tekintse meg a [Azure Active Directory díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/) .  
+* **Licencelés**: az alkalmazásproxy egy prémium szintű Azure ad-előfizetésen keresztül érhető el. A licencelési lehetőségek és szolgáltatások teljes listájáért tekintse meg a [Azure Active Directory díjszabási oldalát](https://azure.microsoft.com/pricing/details/active-directory/) .
 
 ### <a name="application-discovery"></a>Alkalmazás felderítése
 
@@ -117,7 +117,7 @@ A következő területeken kell megadnia a szervezet üzleti követelményeit. M
 
 * A jóváhagyott személyes eszközökkel rendelkező távoli felhasználók biztonságosan hozzáférhetnek az MFA-ban regisztrált közzétett alkalmazásokhoz, és az Microsoft Authenticator alkalmazást a mobiltelefonján hitelesítési módszerként regisztrálták.
 
-**Szabályozás** 
+**Szabályozás**
 
 * A rendszergazdák megadhatják és megfigyelheti az alkalmazásproxy használatával közzétett alkalmazások felhasználói hozzárendeléseinek életciklusát.
 
@@ -141,9 +141,9 @@ A következő területeken kell megadnia a szervezet üzleti követelményeit. M
 
 Határozza meg, hogy mennyi idő és erőfeszítés szükséges ahhoz, hogy az egyszeri bejelentkezés (SSO) használatával teljes körűen el lehessen érni a távelérést. Ehhez futtasson egy olyan próbaverziót, amely a kezdeti felderítést, közzétételt és általános tesztelést veszi figyelembe. Ha egy egyszerű, integrált Windows-hitelesítéshez (IWA) már konfigurált IIS-alapú webalkalmazást használ, akkor az alapkonfiguráció létrehozása segítene, mivel ez a beállítás minimális erőfeszítést igényel a távelérés és az egyszeri bejelentkezés sikeres kipróbálásához.
 
-A következő kialakítási elemeknek a próbaüzem megvalósításának sikerességét közvetlenül egy éles bérlőben kell megjavítani.  
+A következő kialakítási elemeknek a próbaüzem megvalósításának sikerességét közvetlenül egy éles bérlőben kell megjavítani.
 
-**Összekötők kezelése**:  
+**Összekötők kezelése**:
 
 * Az összekötők kulcsszerepet játszanak a helyszíni adatcsatorna alkalmazásokban való biztosításában. Az **alapértelmezett** összekötő-csoport használata megfelelő a közzétett alkalmazások kezdeti kísérleti teszteléséhez, mielőtt üzembe helyezné őket az éles környezetben. A sikeresen tesztelt alkalmazások ezután áthelyezhetők a termelési összekötő csoportjaiba.
 
@@ -157,7 +157,8 @@ A következő kialakítási elemeknek a próbaüzem megvalósításának sikeres
 
 **TLS az összekötő gazdagép és a célalkalmazás között**: a biztonság a legfontosabb, ezért a TLS-t az összekötő gazdagépe és a cél alkalmazások között mindig használni kell. Különösen, ha a webalkalmazás az űrlapalapú hitelesítéshez (FBA) van konfigurálva, mivel a felhasználói hitelesítő adatokat a rendszer hatékonyan továbbítja a tiszta szövegbe.
 
-**Fokozatosan hajtsa végre az egyes lépéseket, és tesztelje**azokat. Az alkalmazás közzététele után alapvető funkcionális tesztelést végezhet, így biztosítva, hogy minden felhasználói és üzleti követelmény teljesül az alábbi utasítások követésével:
+**Fokozatosan hajtsa végre az egyes lépéseket, és tesztelje**azokat.
+Az alkalmazás közzététele után alapvető funkcionális tesztelést végezhet, így biztosítva, hogy minden felhasználói és üzleti követelmény teljesül az alábbi utasítások követésével:
 
 1. A webalkalmazás általános hozzáférésének tesztelése és ellenőrzése az előhitelesítés letiltásával.
 2. Ha sikeresen engedélyezte az előhitelesítést, és hozzárendeli a felhasználókat és a csoportokat. A hozzáférés tesztelése és érvényesítése.
@@ -231,7 +232,7 @@ Az alkalmazás közzététele után elérhetőnek kell lennie a külső URL-cím
 
 ### <a name="enable-pre-authentication"></a>Előzetes hitelesítés engedélyezése
 
-Ellenőrizze, hogy az alkalmazás elérhető-e az alkalmazás-proxyn keresztül a külső URL-cím használatával. 
+Ellenőrizze, hogy az alkalmazás elérhető-e az alkalmazás-proxyn keresztül a külső URL-cím használatával.
 
 1. Navigáljon **Azure Active Directory** > **vállalati alkalmazások** > **minden alkalmazás** elemre, és válassza ki a kezelni kívánt alkalmazást.
 
@@ -243,7 +244,7 @@ Az előhitelesítés engedélyezése esetén az Azure AD először a hitelesít�
 
 ### <a name="enable-single-sign-on"></a>Egyszeri bejelentkezés engedélyezése
 
-Az SSO a lehető legjobb felhasználói élményt és biztonságot biztosítja, mivel a felhasználóknak csak egyszer kell bejelentkezniük az Azure AD-hez való hozzáféréskor. Miután a felhasználó előzetesen hitelesítette, az SSO-t a felhasználó nevében, a helyszíni alkalmazáshoz hitelesítő alkalmazásproxy-összekötő hajtja végre. A háttérbeli alkalmazás úgy dolgozza fel a bejelentkezést, mintha a felhasználó lenne. 
+Az SSO a lehető legjobb felhasználói élményt és biztonságot biztosítja, mivel a felhasználóknak csak egyszer kell bejelentkezniük az Azure AD-hez való hozzáféréskor. Miután a felhasználó előzetesen hitelesítette, az SSO-t a felhasználó nevében, a helyszíni alkalmazáshoz hitelesítő alkalmazásproxy-összekötő hajtja végre. A háttérbeli alkalmazás úgy dolgozza fel a bejelentkezést, mintha a felhasználó lenne.
 
 Az **áteresztő** beállítás választása lehetővé teszi a felhasználók számára a közzétett alkalmazás elérését anélkül, hogy az Azure ad-ben kellene hitelesíteni.
 
@@ -286,8 +287,8 @@ A Microsoft javasolja a lehető legkevesebb jogosultság megadását az Azure AD
 | Alkalmazás tulajdonosa| A vállalati alkalmazások, az alkalmazás-regisztrációk és az alkalmazásproxy-beállítások összes aspektusának létrehozása és kezelése.| Alkalmazás-rendszergazda |
 | Infrastruktúra-rendszergazda | Tanúsítvány-átváltási tulajdonos | Alkalmazás-rendszergazda |
 
-A biztonságos információkhoz vagy erőforrásokhoz hozzáférő személyek számának minimalizálása segít csökkenteni annak esélyét, hogy egy rosszindulatú személy jogosulatlan hozzáférést kapjon, vagy ha egy jogosult felhasználó véletlenül kihathat egy bizalmas erőforrásra. 
- 
+A biztonságos információkhoz vagy erőforrásokhoz hozzáférő személyek számának minimalizálása segít csökkenteni annak esélyét, hogy egy rosszindulatú személy jogosulatlan hozzáférést kapjon, vagy ha egy jogosult felhasználó véletlenül kihathat egy bizalmas erőforrásra.
+
 Ugyanakkor a felhasználóknak továbbra is napi szintű jogosultságokkal rendelkező műveleteket kell elvégezniük, így az igény szerinti (JIT) alapú [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure) házirendek betartatása az Azure-erőforrásokhoz és az Azure ad-hez szükséges, magas rendelkezésre állású hozzáférés biztosításához ajánlott megközelítésünk a rendszergazdai hozzáférés és a naplózás hatékony kezelése érdekében.
 
 ### <a name="reporting-and-monitoring"></a>Jelentés és monitorozás
@@ -310,9 +311,9 @@ Az összekötők rendszergazdai és munkamenet-naplókkal is rendelkeznek. A fel
 
 ### <a name="troubleshooting-guide-and-steps"></a>Hibaelhárítási útmutató és lépések
 
-További információ a gyakori problémákról és azok megoldásáról az útmutatóban a hibaüzenetek [hibaelhárításához](application-proxy-troubleshoot.md) . 
+További információ a gyakori problémákról és azok megoldásáról az útmutatóban a hibaüzenetek [hibaelhárításához](application-proxy-troubleshoot.md) .
 
-A következő cikkek olyan gyakori forgatókönyveket mutatnak be, amelyekkel hibaelhárítási útmutatók hozhatók létre a támogatási szervezet számára. 
+A következő cikkek olyan gyakori forgatókönyveket mutatnak be, amelyekkel hibaelhárítási útmutatók hozhatók létre a támogatási szervezet számára.
 
 * [Probléma az alkalmazáslap megjelenítésekor](application-proxy-page-appearance-broken-problem.md)
 * [Az alkalmazás betöltési ideje túl hosszú](application-proxy-page-load-speed-problem.md)

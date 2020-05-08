@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: troubleshooting
-ms.date: 03/13/2020
+ms.date: 04/30/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf1daca79f3ed20d9b7a89af20d74ff5f3148b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9a2ab4b1ebc1c958be9dc4bd07a010f7fef8afc
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337440"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610512"
 ---
 # <a name="troubleshooting-sign-in-problems-with-conditional-access"></a>Bejelentkezéssel kapcsolatos problémák elhárítása feltételes hozzáféréssel
 
@@ -55,8 +55,11 @@ Annak megállapítása, hogy milyen feltételes hozzáférési szabályzatot vag
    1. A **Hibaelhárítás és támogatás** lapon található információk egyértelmű indoklást adhatnak arról, hogy miért nem sikerült a bejelentkezés, például olyan eszköz, amely nem felelt meg a megfelelőségi követelményeknek.
    1. Ha további vizsgálatot szeretne végezni, tekintse meg a házirendek konfigurációját a **házirend nevére**kattintva. A **szabályzat nevére** kattintva megtekintheti a házirend-konfiguráció felhasználói felületét a kiválasztott házirend felülvizsgálatához és szerkesztéséhez.
    1. A feltételes hozzáférési szabályzat értékeléséhez használt **ügyfél-felhasználó** és- **eszköz adatai** az **alapinformációk**, a **hely**, az **eszköz adatai**, a **hitelesítés részletei**és a bejelentkezési esemény **További részletek** lapjain is elérhetők.
+   1. A házirend jobb oldalán lévő három pont kiválasztásával megadhatja a szabályzat részleteit. Ez további információkat ad a rendszergazdáknak arról, hogy miért volt sikeres a szabályzat alkalmazása.
 
    ![Bejelentkezés az Event feltételes hozzáférés lapra](./media/troubleshoot-conditional-access/image5.png)
+
+   ![Szabályzat részletei (előzetes verzió)](./media/troubleshoot-conditional-access/policy-details.png)
 
 Ha az eseményben szereplő információk nem elegendőek a bejelentkezési eredmények megismeréséhez, vagy a szabályzatot úgy állítja be, hogy a kívánt eredményt kapja, akkor előfordulhat, hogy egy támogatási incidens is megnyitható. Navigáljon a bejelentkezési esemény **hibaelhárítási és támogatási** lapjára, és válassza az **új támogatási kérelem létrehozása**lehetőséget.
 

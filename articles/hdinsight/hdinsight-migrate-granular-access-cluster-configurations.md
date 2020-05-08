@@ -6,13 +6,13 @@ ms.author: tyfox
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/22/2019
-ms.openlocfilehash: bb78d84aa0f9a2832b6599edeac9d50e0e226437
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/20/2020
+ms.openlocfilehash: 058300dca3e7eae41b7d8010e1ca5ee7d4cdcf3a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546342"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598470"
 ---
 # <a name="migrate-to-granular-role-based-access-for-cluster-configurations"></a>Migrálás fürtkonfigurációk részletes szerepköralapú hozzáféréséhez
 
@@ -28,10 +28,10 @@ Egy új [HDInsight-fürtszolgáltatási](https://docs.microsoft.com/azure/role-b
 
 | Szerepkör                                  | Korábban                                                                                       | Továbbítás folyamatban       |
 |---------------------------------------|--------------------------------------------------------------------------------------------------|-----------|
-| Olvasó                                | – Olvasási hozzáférés, beleértve a titkos kulcsokat                                                                   | – Olvasási hozzáférés, a titkok **kivételével** |           |   |   |
+| Olvasó                                | – Olvasási hozzáférés, beleértve a titkokat is.                                                                   | – Olvasási hozzáférés, a titkok **kivételével** |           |   |   |
 | HDInsight-fürt operátora<br>(Új szerepkör) | N/A                                                                                              | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat         |   |   |
-| Közreműködő                           | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat<br>– Az Azure-erőforrások összes típusának létrehozása és kezelése.     | Nincs változás besorolás |
-| Tulajdonos                                 | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat<br>– Teljes hozzáférés az összes erőforráshoz<br>– Hozzáférés delegálása mások számára | Nincs változás besorolás |
+| Közreműködő                           | – Olvasási/írási hozzáférés, beleértve a titkos kulcsokat is.<br>– Az Azure-erőforrások összes típusának létrehozása és kezelése.<br>– Parancsfájl-műveletek végrehajtása.     | Nincs változás besorolás |
+| Tulajdonos                                 | – Olvasási/írási hozzáférés, beleértve a titkokat.<br>– Teljes hozzáférés az összes erőforráshoz<br>– A másokhoz való hozzáférés delegálása.<br>– Parancsfájl-műveletek végrehajtása. | Nincs változás besorolás |
 
 Arról, hogy hogyan adhat hozzá a HDInsight-kezelő szerepkör-hozzárendelést egy felhasználóhoz, hogy olvasási/írási hozzáférést biztosítson a fürt titkos kulcsaihoz, tekintse meg az alábbi szakaszt, és [adja hozzá a HDInsight-kezelő szerepkör-hozzárendelést egy felhasználóhoz](#add-the-hdinsight-cluster-operator-role-assignment-to-a-user).
 

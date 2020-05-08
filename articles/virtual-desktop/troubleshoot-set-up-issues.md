@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális asztali bérlői gazdagép-készlet létrehozása – Azure
-description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali bérlői környezet beállítása során.
+title: Windows rendszerű virtuális asztali környezetbeli gazdagép-készlet létrehozása – Azure
+description: A bérlői és a gazdagép-készletezési problémák elhárítása és megoldása a Windows rendszerű virtuális asztali környezet telepítése során.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
@@ -8,14 +8,20 @@ ms.topic: troubleshooting
 ms.date: 01/08/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 36b15b41279edc60d337a7ba70abe2ca64d4bc7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65a61babe58e1cb9438262186a7f4cf37cb10a34
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371596"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612565"
 ---
-# <a name="tenant-and-host-pool-creation"></a>Bérlői és gazdagépcsoport létrehozása
+# <a name="host-pool-creation"></a>Gazdagép-készlet létrehozása
+
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/troubleshoot-set-up-issues-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ez a cikk a Windows rendszerű virtuális asztali bérlő és a kapcsolódó munkamenet-gazdagépek infrastruktúrájának kezdeti beállítása során felmerülő problémákat ismerteti.
 
@@ -25,92 +31,27 @@ Látogasson el a [Windows rendszerű virtuális asztali technikai Közösségbe]
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>A Windows 10 Enterprise több munkamenetet ábrázoló rendszerképének beszerzése
 
-A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t, majd válassza az első **lépések** > **Microsoft Windows 10** > és [Windows 10 Enterprise for Virtual desktops, 1809-es verzió](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)lehetőséget.
+A Windows 10 Enterprise multi-session rendszerképek használatához nyissa meg az Azure Marketplace-t, válassza a**Microsoft Windows 10** > és a [Windows 10 Enterprise multi-session, 1809-es verziójának](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice)első **lépései** > lehetőséget.
 
-![Képernyőkép a Windows 10 Enterprise rendszerű virtuális asztalok, 1809-es verzió kiválasztásáról.](media/AzureMarketPlace.png)
+## <a name="issues-with-using-the-azure-portal-to-create-host-pools"></a>A gazdagépek létrehozásával kapcsolatos problémák a Azure Portal használatával
 
-## <a name="creating-windows-virtual-desktop-tenant"></a>Windows rendszerű virtuális asztali bérlő létrehozása
+### <a name="error-create-a-free-account-appears-when-accessing-the-service"></a>Hiba: az "ingyenes fiók létrehozása" üzenet jelenik meg a szolgáltatás elérésekor
 
-Ez a szakasz a Windows rendszerű virtuális asztali bérlő létrehozásakor felmerülő esetleges problémákat ismerteti.
+![Az "ingyenes fiók létrehozása" üzenetet megjelenítő Azure Portal ábrázoló kép](media/create-new-account.png)
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
+**OK**: nincsenek aktív előfizetések abban a fiókban, amelybe bejelentkezett az Azure-ba, vagy a fiók nem rendelkezik az előfizetések megtekintéséhez szükséges engedélyekkel. 
 
-![Képernyőkép a PowerShell-ablakról, amelyben a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez.](media/UserNotAuthorizedNewTenant.png)
+**Javítás**: Jelentkezzen be az előfizetésbe, ahol a munkamenet-gazdagép virtuális gépei (VM-EK) egy olyan fiókkal telepíthetők, amely legalább közreműködői szintű hozzáféréssel rendelkezik.
 
-Nyers hiba – példa:
+### <a name="error-exceeding-quota-limit"></a>Hiba: "túllépte a kvóta korlátját"
 
-```Error
-   New-RdsTenant : User isn't authorized to query the management service.
-   ActivityId: ad604c3a-85c6-4b41-9b81-5138162e5559
-   Powershell commands to diagnose the failure:
-   Get-RdsDiagnosticActivities -ActivityId ad604c3a-85c6-4b41-9b81-5138162e5559
-   At line:1 char:1
-   + New-RdsTenant -Name "testDesktopTenant" -AadTenantId "01234567-89ab-c ...
-   + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-       + CategoryInfo          : FromStdErr: (Microsoft.RDInf...nt.NewRdsTenant:NewRdsTenant) [New-RdsTenant], RdsPowerSh
-      ellException
-       + FullyQualifiedErrorId : UnauthorizedAccess,Microsoft.RDInfra.RDPowershell.Tenant.NewRdsTenant
-```
+Ha a művelet túllépi a kvóta korlátját, a következő műveletek közül választhat: 
 
-**OK:** A bejelentkezett felhasználó nem rendelte hozzá a TenantCreator szerepkört a Azure Active Directory.
+- Hozzon létre egy új címkészletet ugyanazzal a paraméterekkel, de kevesebb virtuális géppel és virtuálisgép-maggal.
 
-**Javítás:** Kövesse a TenantCreator- [alkalmazás szerepkörének a Azure Active Directory-bérlőben lévő felhasználóhoz való hozzárendelésével kapcsolatos](tenant-setup-azure-active-directory.md#assign-the-tenantcreator-application-role)utasításokat. Az utasításokat követve egy felhasználó lesz hozzárendelve a TenantCreator szerepkörhöz.
+- Nyissa meg a böngésző statusMessage mezőjében látható hivatkozást, hogy küldjön egy kérést az Azure-előfizetéshez tartozó kvóta növelésére a megadott virtuálisgép-SKU-ra vonatkozóan.
 
-![Képernyőkép a hozzárendelt TenantCreator-szerepkörről.](media/TenantCreatorRoleAssigned.png)
-
-## <a name="creating-windows-virtual-desktop-session-host-vms"></a>Windows rendszerű virtuális asztali munkamenetgazda-alapú virtuális gépek létrehozása
-
-A munkamenet-gazda virtuális gépek többféleképpen is létrehozhatók, de a Windows rendszerű virtuális asztali csapat csak az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -ajánlattal kapcsolatos virtuális gépek üzembe helyezési problémáit támogatja. További információ: [a Windows virtuális asztal használatával kapcsolatos problémák – alkalmazáskészlet Azure Marketplace-ajánlatának kiépítése](#issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering).
-
-## <a name="issues-using-windows-virtual-desktop--provision-a-host-pool-azure-marketplace-offering"></a>Problémák a Windows virtuális asztal használatával – Azure Marketplace-ajánlat kiépítése
-
-A Windows rendszerű virtuális asztal – alkalmazáskészlet sablonjának kiépítése az Azure piactéren érhető el.
-
-### <a name="error-when-using-the-link-from-github-the-message-create-a-free-account-appears"></a>Hiba: a GitHubról való hivatkozás használatakor megjelenik az "ingyenes fiók létrehozása" üzenet.
-
-![Képernyőkép egy ingyenes fiók létrehozásához.](media/be615904ace9832754f0669de28abd94.png)
-
-**1. ok:** Nincsenek aktív előfizetések az Azure-ba való bejelentkezéshez, vagy a használt fiók nem rendelkezik engedéllyel az előfizetések megtekintéséhez.
-
-**1. javítás:** Jelentkezzen be egy olyan fiókkal, amely közreműködői hozzáféréssel rendelkezik (legalább) ahhoz az előfizetéshez, amelyben a munkamenet-gazdagép virtuális gépei telepítve lesznek.
-
-**2. ok:** A használt előfizetés egy Microsoft Cloud szolgáltatói (CSP-) bérlő részét képezi.
-
-**2. javítás:** Nyissa meg a GitHub helyét az **új Windowsos virtuális asztali címkészlet létrehozásához és** kiépítéséhez, és kövesse az alábbi utasításokat:
-
-1. Kattintson a jobb gombbal az **üzembe helyezés az Azure** -ba lehetőségre, és válassza a **hivatkozás címe másolása**lehetőséget.
-2. Nyissa meg a **jegyzettömböt** , és illessze be a hivatkozást.
-3. A # karakter előtt szúrja be a CSP végfelhasználói bérlői nevét.
-4. Nyissa meg az új hivatkozást egy böngészőben, és a Azure Portal betölti a sablont.
-
-    ```Example
-    Example: https://portal.azure.com/<CSP end customer tenant name>
-    #create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%
-    2FRDS-Templates%2Fmaster%2Fwvd-templates%2FCreate%20and%20provision%20WVD%20host%20pool%2FmainTemplate.json
-    ```
-
-### <a name="error-you-receive-template-deployment-is-not-valid-error"></a>Hiba: "a sablon központi telepítése nem érvényes" hibaüzenet jelenik meg
-
-![Képernyőkép a "sablon központi telepítéséről... Érvénytelen "hiba](media/troubleshooting-marketplace-validation-error-generic.png)
-
-A művelet megkezdése előtt ellenőriznie kell a tevékenység naplóját, hogy megtekintse a sikertelen telepítés ellenőrzésének részletes hibáját.
-
-A tevékenység naplójában lévő hiba megtekintéséhez:
-
-1. Lépjen ki az Azure Marketplace aktuális üzembe helyezési ajánlatával.
-2. A felső keresési sávban keresse meg és válassza ki a **műveletnapló**elemet.
-3. Keressen egy olyan nevű tevékenységet, amelynek az **érvényesítése** **sikertelen** állapotú, és válassza ki a tevékenységet.
-   ![Képernyőkép az egyes * * * * * * * * * * * * * állapot ellenőrzése](media/troubleshooting-marketplace-validation-error-activity-summary.png)
-
-4. Válassza a JSON lehetőséget, majd görgessen le a képernyő aljáig egészen addig, amíg meg nem jelenik a "statusMessage" mező.
-   ![Képernyőkép a sikertelen tevékenységről, a JSON-szöveg statusMessage tulajdonsága körüli piros mezővel.](media/troubleshooting-marketplace-validation-error-json-boxed.png)
-
-Ha a műveleti sablon túllépi a kvóta korlátját, akkor a következő műveletek egyikét hajthatja végre a kijavításához:
-
- - Futtassa az Azure Marketplace-t az első alkalommal használt paraméterekkel, de ezúttal kevesebb virtuális GÉPET és virtuálisgép-magot használ.
- - Nyissa meg a böngésző **statusMessage** mezőjében látható hivatkozást, hogy küldjön egy kérést az Azure-előfizetéshez tartozó kvóta növelésére a megadott VIRTUÁLISGÉP-SKU-ra vonatkozóan.
-
-## <a name="azure-resource-manager-template-and-powershell-desired-state-configuration-dsc-errors"></a>A Azure Resource Manager sablon és a PowerShell kívánt állapot-konfigurációs (DSC) hibái
+## <a name="azure-resource-manager-template-errors"></a>Azure Resource Manager sablon hibái
 
 A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi telepítésének hibakereséséhez kövesse az alábbi utasításokat.
 
@@ -121,7 +62,7 @@ A Azure Resource Manager-sablonok és a PowerShell DSC nem sikeres központi tel
 
 ### <a name="error-your-deployment-failedhostnamejoindomain"></a>Hiba: a telepítés nem sikerült...\<. állomásnév>/JoinDomain
 
-![A telepítés sikertelen képernyőkép.](media/e72df4d5c05d390620e07f0d7328d50f.png)
+![A telepítés sikertelen képernyőkép.](media/failure-joindomain.png)
 
 Nyers hiba – példa:
 
@@ -145,7 +86,7 @@ Nyers hiba – példa:
 
 A probléma megoldásához tegye a következőket:
 
-1. Nyissa meg az Azure Portalt, és lépjen a **Virtual Networks (virtuális hálózatok** ) lapra.
+1. Nyissa meg a Azure Portal, és lépjen a **Virtual Networks (virtuális hálózatok** ) lapra.
 2. Keresse meg a VNET, majd válassza a **DNS-kiszolgálók**lehetőséget.
 3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni**lehetőséget.
 4. Győződjön meg arról, hogy a DNS-kiszolgálók szerepelnek a tartományvezérlő vagy a Active Directory tartomány egyéni egyeztetése területén. Ha nem látja a DNS-kiszolgálót, akkor adja hozzá az értékét a **DNS-kiszolgáló hozzáadása** mezőben.
@@ -162,7 +103,7 @@ A probléma megoldásához tegye a következőket:
 
 ### <a name="error-vmextensionprovisioningerror"></a>Hiba: VMExtensionProvisioningError
 
-![A központi telepítés képernyőképe sikertelen volt, mert a terminál kiépítési állapota nem sikerült.](media/7aaf15615309c18a984673be73ac969a.png)
+![A központi telepítés képernyőképe sikertelen volt, mert a terminál kiépítési állapota nem sikerült.](media/failure-vmextensionprovisioning.png)
 
 **1. ok:** Átmeneti hiba a Windows rendszerű virtuális asztali környezettel.
 
@@ -172,17 +113,15 @@ A probléma megoldásához tegye a következőket:
 
 ### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: a megadott rendszergazdai Felhasználónév nem engedélyezett
 
-![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](media/f2b3d3700e9517463ef88fa41875bac9.png)
+![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](media/failure-username.png)
 
 Nyers hiba – példa:
 
 ```Error
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostDesktop/providers/Microsoft.
-  Resources/deployments/vmCreation-linkedTemplate/operations/EXAMPLE", "operationId": "EXAMPLE", "properties": { "provisioningOperation":
- "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId":
- "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message":
- "The Admin Username specified is not allowed.", "target": "adminUsername" } }, "targetResource": { "id": "/subscriptions/EXAMPLE
- /resourceGroups/demoHostDesktop/providers/Microsoft.Compute/virtualMachines/demo", "resourceType": "Microsoft.Compute/virtualMachines", "resourceName": "demo" } }}
+ { …{ "provisioningOperation": 
+ "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T20:53:18.904917Z", "duration": "PT3.0574505S", "trackingId": 
+ "1f460af8-34dd-4c03-9359-9ab249a1a005", "statusCode": "BadRequest", "statusMessage": { "error": { "code": "InvalidParameter", "message": 
+ "The Admin Username specified is not allowed.", "target": "adminUsername" } … }
 ```
 
 **OK:** A megadott jelszó tiltott alkarakterláncokat tartalmaz (adminisztrátor, rendszergazda, gyökér).
@@ -191,24 +130,17 @@ Nyers hiba – példa:
 
 ### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hiba: a virtuális gép hibát jelzett a bővítmény feldolgozásakor
 
-![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](media/49c4a1836a55d91cd65125cf227f411f.png)
+![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](media/failure-processing.png)
 
 Nyers hiba – példa:
 
 ```Error
-{ "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.Resources/deployments/
- rds.wvd-provision-host-pool-20190129132410/operations/5A0757AC9E7205D2", "operationId": "5A0757AC9E7205D2", "properties":
- { "provisioningOperation": "Create", "provisioningState": "Failed", "timestamp": "2019-01-29T21:43:05.1416423Z",
- "duration": "PT7M56.8150879S", "trackingId": "43c4f71f-557c-4abd-80c3-01f545375455", "statusCode": "Conflict",
- "statusMessage": { "status": "Failed", "error": { "code": "ResourceDeploymentFailure", "message":
- "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code":
- "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'.
+{ … "code": "ResourceDeploymentFailure", "message":
+ "The resource operation completed with terminal provisioning state 'Failed'.", "details": [ { "code": 
+ "VMExtensionProvisioningError", "message": "VM has reported a failure when processing extension 'dscextension'. 
  Error message: \"DSC Configuration 'SessionHost' completed with error(s). Following are the first few:
- PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message:
- One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] } }, "targetResource":
- { "id": "/subscriptions/EXAMPLE/resourceGroups/demoHostD/providers/Microsoft.
- Compute/virtualMachines/desktop-1/extensions/dscextension",
- "resourceType": "Microsoft.Compute/virtualMachines/extensions", "resourceName": "desktop-1/dscextension" } }}
+ PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource functionality with error message: 
+ One or more errors occurred. The SendConfigurationApply function did not succeed.\"." } ] … }
 ```
 
 **OK:** A PowerShell DSC bővítmény nem tudta beolvasni a rendszergazdai hozzáférést a virtuális gépen.
@@ -217,7 +149,7 @@ Nyers hiba – példa:
 
 ### <a name="error-deploymentfailed--powershell-dsc-configuration-firstsessionhost-completed-with-errors"></a>Hiba: DeploymentFailed – a (z) FirstSessionHost PowerShell DSC-konfiguráció hibával fejeződött be
 
-![A központi telepítés képernyőképe sikertelen, mert a PowerShell DSC-konfiguráció "FirstSessionHost" hibával fejeződött be.](media/64870370bcbe1286906f34cf0a8646ab.png)
+![A központi telepítés képernyőképe sikertelen, mert a PowerShell DSC-konfiguráció "FirstSessionHost" hibával fejeződött be.](media/failure-dsc.png)
 
 Nyers hiba – példa:
 
@@ -319,58 +251,6 @@ the VM.\\\"
 **OK:** Ezt a hibát egy statikus útvonal, tűzfalszabály vagy NSG okozza, amely blokkolja a Azure Resource Manager sablonhoz kötött zip-fájl letöltését.
 
 **Javítás:** Távolítsa el a statikus útvonal, a tűzfalszabály vagy a NSG blokkolását. Szükség esetén megnyithatja a Azure Resource Manager sablon JSON-fájlját egy szövegszerkesztőben, megtekintheti a zip-fájlra mutató hivatkozást, és letöltheti az erőforrást egy engedélyezett helyre.
-
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
-
-Nyers hiba – példa:
-
-```Error
-"response": { "content": { "startTime": "2019-04-01T17:45:33.3454563+00:00", "endTime": "2019-04-01T17:48:52.4392099+00:00",
-"status": "Failed", "error": { "code": "VMExtensionProvisioningError", "message": "VM has reported a failure when processing
-extension 'dscextension'. Error message: \"DSC Configuration 'FirstSessionHost' completed with error(s).
-Following are the first few: PowerShell DSC resource MSFT_ScriptResource failed to execute Set-TargetResource
- functionality with error message: User is not authorized to query the management service.
-\nActivityId: 1b4f2b37-59e9-411e-9d95-4f7ccd481233\nPowershell commands to diagnose the failure:
-\nGet-RdsDiagnosticActivities -ActivityId 1b4f2b37-59e9-411e-9d95-4f7ccd481233\n
-The SendConfigurationApply function did not succeed.\"." }, "name": "2c3272ec-d25b-47e5-8d70-a7493e9dc473" } } }}
-```
-
-**OK:** A megadott Windows virtuális asztali bérlői rendszergazda nem rendelkezik érvényes szerepkör-hozzárendeléssel.
-
-**Javítás:** A Windows rendszerű virtuális asztali bérlőt létrehozó felhasználónak be kell jelentkeznie a Windows rendszerű virtuális asztali PowerShellbe, és hozzá kell rendelnie egy szerepkör-hozzárendelést a megkísérelt felhasználóhoz. Ha a GitHub Azure Resource Manager-sablon paramétereit futtatja, kövesse az alábbi utasításokat a PowerShell-parancsok használatával:
-
-```PowerShell
-Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
-New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
-```
-
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hiba: a felhasználónak Azure Multi-Factor Authentication (MFA) szükséges
-
-![A központi telepítés képernyőképe nem sikerült, mert nincs Multi-Factor Authentication (MFA)](media/MFARequiredError.png)
-
-Nyers hiba – példa:
-
-```Error
-"message": "{\r\n  \"status\": \"Failed\",\r\n  \"error\": {\r\n    \"code\": \"ResourceDeploymentFailure\",\r\n    \"message\": \"The resource operation completed with terminal provisioning state 'Failed'.\",\r\n    \"details\": [\r\n      {\r\n        \"code\": \"VMExtensionProvisioningError\",\r\n        \"message\": \"VM has reported a failure when processing extension 'dscextension'. Error message: \\\"DSC Configuration 'FirstSessionHost' completed with error(s). Following are the first few: PowerShell DSC resource MSFT_ScriptResource  failed to execute Set-TargetResource functionality with error message: One or more errors occurred.  The SendConfigurationApply function did not succeed.\\\".\"\r\n      }\r\n    ]\r\n  }\r\n}"
-```
-
-**OK:** A megadott Windows virtuális asztali bérlői rendszergazdának az Azure Multi-Factor Authentication (MFA) használatára van szüksége a bejelentkezéshez.
-
-**Javítás:** Hozzon létre egy egyszerű szolgáltatásnevet, és rendeljen hozzá egy szerepkört a Windows rendszerű virtuális asztali bérlőhöz az [oktatóanyag: egyszerű szolgáltatások és szerepkör-hozzárendelések létrehozása a PowerShell](create-service-principal-role-powershell.md)használatával című témakör lépéseit követve. Miután meggyőződött arról, hogy be tud jelentkezni a Windows rendszerű virtuális asztalra az egyszerű szolgáltatással, futtassa újra az Azure Marketplace-ajánlatot vagy a GitHub-Azure Resource Manager sablont attól függően, hogy melyik módszert használja. A metódus helyes paramétereinek megadásához kövesse az alábbi utasításokat.
-
-Ha az Azure Marketplace-ajánlatot futtatja, adja meg a következő paraméterek értékeit a Windows rendszerű virtuális asztal megfelelő hitelesítéséhez:
-
-- Windows virtuális asztali bérlői RDS-tulajdonos: szolgáltatásnév
-- Alkalmazás azonosítója: a létrehozott új egyszerű szolgáltatás alkalmazás-azonosítója
-- Jelszó/Jelszó megerősítése: az egyszerű szolgáltatáshoz létrehozott jelszó titka
-- Azure AD-bérlő azonosítója: az Ön által létrehozott szolgáltatásnév Azure AD-bérlői azonosítója
-
-Ha a GitHub Azure Resource Manager sablont futtatja, adja meg a következő paraméterek értékeit a Windows rendszerű virtuális asztal megfelelő hitelesítéséhez:
-
-- Bérlői rendszergazdai egyszerű felhasználónév (UPN) vagy alkalmazás azonosítója: a létrehozott új egyszerű szolgáltatás alkalmazás-azonosítója
-- Bérlői rendszergazdai jelszó: az egyszerű szolgáltatáshoz létrehozott jelszó titkos kulcsa
-- IsServicePrincipal: **true**
-- AadTenantId: a létrehozott egyszerű szolgáltatás Azure AD-bérlői azonosítója
 
 ## <a name="next-steps"></a>További lépések
 

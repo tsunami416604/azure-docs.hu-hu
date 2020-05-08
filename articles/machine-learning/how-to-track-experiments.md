@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: 0c77e9d0aa4f44f33b1345a6021fc0378459ee85
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcd5668fa2c6e1840eed13a9ee0cbd30d8d8a25a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79296965"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983244"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Azure ML-kísérletek futtatásának és metrikáinak monitorozása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ A következő metrikák adhatók hozzá egy futtatáshoz a kísérlet betanítá
 |Listák|Függvény<br>`run.log_list(name, value, description='')`<br><br>Példa:<br>Run. log_list ("pontosság", [0,6, 0,7, 0,87]) | A megadott névvel naplózza az értékek listáját a futtatáshoz.|
 |Sor|Függvény<br>`run.log_row(name, description=None, **kwargs)`<br>Példa:<br>Run. log_row ("Y felett X", X = 1, y = 0.4) | A *log_row* használatával a kwargs-ben leírtak szerint több oszloppal rendelkező mérőszámot hoz létre. Minden elnevezett paraméter létrehoz egy oszlopot a megadott értékkel.  a *log_row* egy tetszőleges rekord naplózására, vagy egy hurokban többször is meghívható egy teljes tábla létrehozásához.|
 |Tábla|Függvény<br>`run.log_table(name, value, description='')`<br><br>Példa:<br>Run. log_table ("Y over X", {"X": [1, 2, 3], "Y": [0.6, 0,7, 0,89]}) | Egy szótár objektum naplózása a futtatáshoz a megadott névvel. |
-|Képek|Függvény<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>`run.log_image("ROC", plot=plt)` | Rendszerkép naplózása a futtatási rekordba. A log_image használatával naplózhat egy képfájlt vagy egy matplotlib-képet a futtatáshoz.  Ezek a képek láthatók és összehasonlíthatók lesznek a futtatási rekordban.|
+|Képek|Függvény<br>`run.log_image(name, path=None, plot=None)`<br><br>Példa:<br>`run.log_image("ROC", plot=plt)` | Rendszerkép naplózása a futtatási rekordba. A naplózáshoz használja a log_image. PNG-képfájl vagy egy matplotlib a futtatáshoz.  Ezek a képek láthatók és összehasonlíthatók lesznek a futtatási rekordban.|
 |Futtatás címkézése|Függvény<br>`run.tag(key, value=None)`<br><br>Példa:<br>Run. tag ("kiválasztott", "yes") | Címkézse a futtatást egy karakterlánc-kulccsal és egy opcionális karakterlánc-értékkel.|
 |Fájl vagy könyvtár feltöltése|Függvény<br>`run.upload_file(name, path_or_stream)`<br> <br> Példa:<br>Run. upload_file ("best_model. PKL", "./Model.PKL") | Töltsön fel egy fájlt a futtatási rekordba. Futtatja az automatikus rögzítési fájlt a megadott kimeneti könyvtárban, amely alapértelmezés szerint "./outputs" a legtöbb futtatási típushoz.  A upload_file csak akkor használja, ha további fájlokat kell feltölteni, vagy nincs megadva kimeneti könyvtár. Javasoljuk, hogy `outputs` adja hozzá a nevet a kimenet könyvtárba való feltöltéshez. A futtatási rekordhoz társított összes fájlt listázhatja a következő néven:`run.get_file_names()`|
 
