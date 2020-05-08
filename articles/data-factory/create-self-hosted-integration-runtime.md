@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6bc0f002c6927cfd9a314797663e1dabbac392b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416641"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857691"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Helyi integrációs modul létrehozása és konfigurálása
 
@@ -67,7 +67,7 @@ A következő lépésekkel hozhat létre saját üzemeltetésű integrációs mo
 1. Az **Integration Runtime telepítése** lapon válassza az **Azure, a saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra. 
 
 1. A következő lapon válassza a **saját** üzemeltetésű lehetőséget a saját üzemeltetésű IR létrehozásához, majd kattintson a **Folytatás**gombra.
-   ![Selfhosted IR létrehozása](media/create-self-hosted-integration-runtime/new-selfhosted-ir.png)
+   ![Selfhosted IR létrehozása](media/create-self-hosted-integration-runtime/new-selfhosted-integration-runtime.png)
 
 1. Adja meg az IR nevét, majd válassza a **Létrehozás**lehetőséget.
 
@@ -109,22 +109,22 @@ Az alábbiakban az alkalmazás paramétereinek és tulajdonságainak részleteit
 
 | Tulajdonság                                                    | Leírás                                                  | Kötelező |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal. | Nem       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével. | Nem       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről. | Nem       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut. | Nem       |
-| **DisableRemoteAccess**                                         | Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre. | Nem       |
-| **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | Nem       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | Nem       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | Nem       |
-| **Indítsa újra**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | Nem       |
-| **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | Nem       |
-| **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | Nem       |
-| **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | Nem       |
-| **StopUpgradeService**                                          | Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.        | Nem       |
-| **TurnOnAutoUpdate**                                            | Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.        | Nem       |
-| **TurnOffAutoUpdate**                                           | Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.       | Nem       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót. | Nem       |
+| **RegisterNewNode** "`<AuthenticationKey>`"                     | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal. | No       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Regisztrálja a saját üzemeltetésű Integration Runtime csomópontot a megadott hitelesítési kulccsal és csomópont nevével. | No       |
+| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | A magas rendelkezésre állású fürt beállításához engedélyezze a távelérést az aktuális csomóponton. Vagy engedélyezze a hitelesítő adatok közvetlen beállítását a saját üzemeltetésű IR-n keresztül anélkül, hogy Azure Data Factory. Ezt az utóbbit a **New-AzDataFactoryV2LinkedServiceEncryptedCredential** parancsmag használatával végezheti el ugyanazon a hálózaton lévő távoli gépről. | No       |
+| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Engedélyezze a távoli hozzáférést az aktuális csomóponthoz, amikor a csomópont egy tárolóban fut. | No       |
+| **DisableRemoteAccess**                                         | Távoli hozzáférés letiltása az aktuális csomóponthoz. A többcsomópontos telepítéshez távoli hozzáférés szükséges. A **New-AzDataFactoryV2LinkedServiceEncryptedCredential PowerShell-** parancsmag még akkor is működik, ha a távoli hozzáférés le van tiltva. Ez a viselkedés akkor igaz, ha a parancsmagot a saját üzemeltetésű IR-csomóponttal megegyező gépen hajtja végre. | No       |
+| **Kulcs** "`<AuthenticationKey>`"                                 | Felülírja vagy frissítse az előző hitelesítési kulcsot. Ügyeljen erre a műveletre. A korábbi saját üzemeltetésű IR-csomópont offline állapotba léphet, ha a kulcs egy új integrációs modul. | No       |
+| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Biztonságimásolat-fájl létrehozása az aktuális csomóponthoz. A biztonságimásolat-fájl tartalmazza a csomópont kulcsát és az adattároló hitelesítő adatait. | No       |
+| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Állítsa vissza a csomópontot egy biztonságimásolat-fájlból.                          | No       |
+| **Indítsa újra**                                                     | Indítsa újra a saját üzemeltetésű Integration Runtime Host szolgáltatást.   | No       |
+| **Kezdés**                                                       | Indítsa el a saját üzemeltetésű Integration Runtime Host szolgáltatást.     | No       |
+| **Leállítás**                                                        | Állítsa le a saját üzemeltetésű Integration Runtime Host szolgáltatást.        | No       |
+| **StartUpgradeService**                                         | Indítsa el a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.       | No       |
+| **StopUpgradeService**                                          | Állítsa le a saját üzemeltetésű Integration Runtime verziófrissítési szolgáltatását.        | No       |
+| **TurnOnAutoUpdate**                                            | Kapcsolja be a saját üzemeltetésű Integration Runtime automatikus frissítését.        | No       |
+| **TurnOffAutoUpdate**                                           | Kapcsolja ki a saját üzemeltetésű Integration Runtime automatikus frissítését.       | No       |
+| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Állítsa be úgy a DIAHostService, hogy az új fiókként fusson. A rendszerfiókok és a virtuális fiókok esetében használja az üres jelszót. | No       |
 
 
 ## <a name="command-flow-and-data-flow"></a>A parancs folyamata és adatfolyama

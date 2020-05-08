@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: sachins
-ms.openlocfilehash: ac4e126c7ecbd1fc781db74e5b19635b273bbb34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79c4f051318113ebe0c7e0085539d2f24405b4f9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72299673"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857882"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen2"></a>Ajánlott eljárások Azure Data Lake Storage Gen2 használatához
 
@@ -49,7 +49,7 @@ Data Lake Storage Gen2 vagy bármely felhőalapú szolgáltatással rendelkező 
 
 ### <a name="high-availability-and-disaster-recovery"></a>Magas rendelkezésre állás és vészhelyreállítás
 
-A magas rendelkezésre állás (HA) és a vész-helyreállítási (DR) időnként kombinálható együtt, bár mindegyiknek kis mértékben eltérő stratégiája van, különösen akkor, ha az adatforgalomról van szó. Data Lake Storage Gen2 már a motorháztető alatti, a honosított hardverek elleni védelem elleni védelmet biztosító 3x-os replikálást kezeli. Emellett más replikációs beállítások, például a ZRS vagy a GZRS (előzetes verzió), javíthatja a HA-t, míg a GRS & RA-GRS fejleszti a DR-t. Ha egy csomag kiépítésekor a szolgáltatás megszakad, a munkaterhelésnek a lehető leggyorsabban hozzá kell férnie a legfrissebb adatokhoz, ha átvált egy külön replikált példányra helyileg vagy egy új régióban.
+A magas rendelkezésre állás (HA) és a vész-helyreállítási (DR) időnként kombinálható együtt, bár mindegyiknek kis mértékben eltérő stratégiája van, különösen akkor, ha az adatforgalomról van szó. Data Lake Storage Gen2 már a motorháztető alatti, a honosított hardverek elleni védelem elleni védelmet biztosító 3x-os replikálást kezeli. Emellett más replikációs beállítások, például a ZRS vagy a GZRS, javítják a HA-t, míg a GRS & RA-GRS fejleszti a DR-t. Ha egy csomag kiépítésekor a szolgáltatás megszakad, a munkaterhelésnek a lehető leggyorsabban hozzá kell férnie a legfrissebb adatokhoz, ha átvált egy külön replikált példányra helyileg vagy egy új régióban.
 
 Egy DR stratégiában, amely arra készül, hogy felkészüljön egy adott régió katasztrofális meghibásodásának valószínűtlen esetére, fontos, hogy a GRS vagy RA-GRS replikációt használó más régióba replikált adatmennyiségeket is. Meg kell fontolnia az Edge-esetekre vonatkozó követelményeket is, például az adatsérülést, ahol előfordulhat, hogy rendszeres pillanatképeket szeretne készíteni, amelyekkel vissza lehet térni. Az adatmennyiségtől és méretétől függően az 1 – 6 és 24 órás időszakra vonatkozó, kockázati tűréshatárok alapján megjelenő különbözeti pillanatképeket kell figyelembe venni.
 

@@ -10,12 +10,12 @@ ms.date: 03/13/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: e32530ece3626807b199850a2b4af5461ff51cde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414067"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858001"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure Integration Runtime létrehozása és konfigurálása
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -59,10 +59,10 @@ A következő lépések végrehajtásával hozhat létre Azure IR a Azure Data F
 1. Az **Integration Runtime telepítése** lapon válassza az **Azure, a saját**üzemeltetésű lehetőséget, majd kattintson a **Folytatás**gombra. 
 
 1. A következő lapon válassza az **Azure** lehetőséget Azure IR létrehozásához, majd válassza a **Folytatás**lehetőséget.
-   ![Integrációs modul létrehozása](media/create-azure-integration-runtime/new-azure-ir.png)
+   ![Integrációs modul létrehozása](media/create-azure-integration-runtime/new-azure-integration-runtime.png)
 
 1. Adja meg a Azure IR nevét, majd válassza a **Létrehozás**lehetőséget.
-   ![Azure IR létrehozása](media/create-azure-integration-runtime/create-azure-ir.png)
+   ![Azure IR létrehozása](media/create-azure-integration-runtime/create-azure-integration-runtime.png)
 
 1. Ekkor megjelenik egy előugró értesítés, amikor a létrehozás befejeződik. Az **Integration Runtimes (integrációs** modulok) lapon győződjön meg arról, hogy az újonnan létrehozott IR megjelenik a listában.
 

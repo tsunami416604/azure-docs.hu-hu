@@ -10,65 +10,63 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: encorona
-ms.openlocfilehash: 86a12bd1dccc2b6ac15010546d7e990b768ebc02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f43c28d314cb8a0211496664cd20d2c380e4d5b0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456453"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858266"
 ---
 # <a name="how-to-add-a-one-step-correction-to-a-custom-command-preview"></a>Útmutató: egy lépésből álló javítás hozzáadása egyéni parancshoz (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan adhat hozzá egy lépéses megerősítést egy parancshoz.
 
-Az egylépéses javítás egy éppen befejezett parancs frissítésére szolgál.
-
-Ha csak riasztást állít be, megváltoztathatja az elméjét, és frissítheti a riasztás időpontját.
+Az egylépéses javítás egy éppen befejezett parancs frissítésére szolgál. Vagyis ha csak riasztást állít be, megváltoztathatja az elméjét, és frissítheti a riasztás időpontját. Ilyen eset például a következő:
 
 - Bemenet: riasztás beállítása holnap délben
-- Output: "ok, riasztás beállítása 12/06/2019 12:00:00"
+- Kimenet: ok, riasztás beállítása 2020-05-02 12:00:00
 - Bemenet: nem, holnap, 01:00
-- Kimenet: "OK
+- Kimenet: ok
 
-Ne feledje, hogy ez azt jelenti, hogy fejlesztőként olyan mechanizmust kell használni, amely frissíti a riasztást a háttérbeli alkalmazásban.
+Valós forgatókönyv, amelyet általában a parancs befejezésének eredményeképpen a művelet végrehajtásával végrehajtó ügyfél egészít ki – ez a cikk azt feltételezi, hogy fejlesztőinek van olyan mechanizmusa, amely frissíti a riasztást a háttérben futó alkalmazásban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A következő cikkekben ismertetett lépéseket kell végrehajtania:
+> [!div class="checklist"]
 
-- [Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)](./quickstart-custom-speech-commands-create-new.md)
-- [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
-- [Útmutató: megerősítés hozzáadása egyéni parancshoz (előzetes verzió)](./how-to-custom-speech-commands-confirmations.md)
+> * [Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)](./quickstart-custom-speech-commands-create-new.md)
+> * [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
+> * [Útmutató: megerősítés hozzáadása egyéni parancshoz (előzetes verzió)](./how-to-custom-speech-commands-confirmations.md)
 
-## <a name="add-the-advanced-rules-for-one-step-correction"></a>Az egylépéses javítás speciális szabályainak hozzáadása 
 
-Az egylépéses javítás bemutatásához terjessze ki a **SetAlarm** -parancsot, amelyet a [megerősítések című témakörben](./how-to-custom-speech-commands-confirmations.md)hozott létre.
- 
-1. Adjon hozzá egy speciális szabályt az előző riasztás frissítéséhez. 
+## <a name="add-interaction-rules-for-one-step-correction"></a>Az egylépéses javításhoz tartozó interakciós szabályok hozzáadása 
+
+Az egylépéses javítás bemutatásához terjessze ki a **SetAlarm** parancsot, amely a következő [témakörben létrehozott: megerősítés hozzáadása egyéni parancshoz (előzetes verzió)](./how-to-custom-speech-commands-confirmations.md).
+1. A korábban beállított riasztás frissítéséhez adjon hozzá egy kapcsolatitevékenység-szabályt. 
 
     Ez a szabály kéri a felhasználót, hogy erősítse meg a riasztás dátumát és időpontját, és egy megerősítést (igen/nem) vár a következő bekapcsoláshoz.
 
    | Beállítás               | Ajánlott érték                                                  | Leírás                                        |
    | --------------------- | ---------------------------------------------------------------- | -------------------------------------------------- |
    | Szabály neve             | Előző riasztás frissítése                                            | A szabály célját leíró név          |
-   | Feltételek            | UpdateLastCommand & kötelező paraméter-DateTime                | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |   
-   | Műveletek               | SpeechResponse – "a korábbi riasztás frissítése a következőre: {DateTime}"       | A szabály feltételének teljesülésekor végrehajtandó művelet |
-   | Végrehajtás utáni állapot | Teljes parancs                                                 | A felhasználó állapota a turn után                   |
+   | Feltételek            | Az előző parancsot frissíteni kell & kötelező paraméter-> DateTime                | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |   
+   | Műveletek               | Beszédfelismerési válasz küldése – > egyszerű szerkesztő – > korábbi riasztás frissítése a következőre: {DateTime}      | A szabály feltételeinek teljesülése esetén végrehajtandó művelet |
+   | Végrehajtás utáni állapot | A parancs befejeződött        | A felhasználó állapota a turn után                   |
 
-1. Helyezze át az imént létrehozott szabályt a speciális szabályok tetejére (görgessen a szabály fölé a panelen, és kattintson a felfelé mutató nyílra).
+1. Helyezze át az imént létrehozott szabályt a kapcsolatitevékenység-szabályok tetejére (válassza ki a szabályt a panelen, és kattintson a középső ablaktábla tetején `...` található ikon alatti felfelé mutató nyílra).
    > [!div class="mx-imgBorder"]
    > ![Tartomány érvényesítésének hozzáadása](media/custom-speech-commands/one-step-correction-rules.png)
-
-> [!NOTE]
-> Egy valós alkalmazásban a szabály műveletek szakaszában egy tevékenységet is küld az ügyfélnek, vagy meghív egy HTTP-végpontot, hogy frissítse a riasztást a rendszeren.
+    > [!NOTE]
+    > Egy valós alkalmazásban a szabály műveletek szakaszában egy tevékenységet is küld az ügyfélnek, vagy meghív egy HTTP-végpontot, hogy frissítse a riasztást a rendszeren.
 
 ## <a name="try-it-out"></a>Próba
 
-Válassza ki a teszt panelt, és próbálkozzon néhány interakcióval.
+Válassza `Train`a lehetőséget, várjon, amíg befejeződik `Test`a betanítás, majd válassza a lehetőséget.
 
 - Bemenet: riasztás beállítása holnap délben
-- Kimenet: "biztos, hogy 12/07/2019 12:00:00-as riasztást szeretne beállítani?"
+- Kimenet: biztos, hogy 2020-05-02 12:00:00-as riasztást szeretne beállítani
 - Bemenet: igen
-- Output: "ok, riasztás beállítása 12/07/2019 12:00:00"
-- Bemenet: nem, holnap, 01:00
-- Kimenet: "előző riasztás frissítése 12/07/2019 13:00:00-re"
+- Kimenet: ok, riasztás beállítása 2020-05-02 12:00:00
+- Bemenet: nem, holnap, 14:00
+- Kimenet: korábbi riasztás frissítése 2020-05-02 14:00:00-re

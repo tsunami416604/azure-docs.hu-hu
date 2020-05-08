@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 04/17/2020
-ms.openlocfilehash: 6cf89790ee125d8d09d9bdead2f6e34dcb73e8f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 5e4f811d39c75742f11c52de5c178fbf4063000d
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188123"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864640"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -359,7 +359,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 A következő lépésekkel adhatja hozzá az AK-t egy virtuális hálózathoz a munkaterületéhez:
 
 > [!IMPORTANT]
-> Az alábbi eljárás megkezdése előtt kövesse a [speciális hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/configure-advanced-networking#prerequisites) – útmutató és a fürt IP-címzésének megtervezése című témakör előfeltételeit.
+> Az alábbi eljárás megkezdése előtt kövesse a [speciális hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)](https://docs.microsoft.com/azure/aks/configure-azure-cni#prerequisites) – útmutató és a fürt IP-címzésének megtervezése című témakör előfeltételeit.
 >
 > Az AK-példánynak és az Azure-beli virtuális hálózatnak ugyanabban a régióban kell lennie. Ha a virtuális hálózatban a munkaterület által használt Azure Storage-fiók (oka) t védi, azoknak ugyanabban a virtuális hálózatban kell lenniük, mint az AK-példány.
 
@@ -506,7 +506,7 @@ Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére
 
 
 
-## <a name="use-azure-firewall"></a>Azure Firewall használata
+## <a name="use-azure-firewall"></a>Az Azure Firewall használata
 
 További információ a Azure Machine Learning és a Azure Firewall használatáról: [Azure Machine learning munkaterület használata Azure Firewall mögött](how-to-access-azureml-behind-firewall.md).
 
@@ -557,7 +557,7 @@ További információ a Azure Machine Learning és a Azure Firewall használatá
     
     További információkért tekintse meg a [frissítési ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py#update-friendly-name-none--description-none--tags-none--image-build-compute-none--enable-data-actions-none-) metódus-referenciát.
 
-1. Ha a Azure Machine Learning munkaterülethez privát hivatkozást használ, és a munkaterülethez tartozó Azure Container Registry a virtuális hálózaton helyezi el, akkor a következő Azure Resource Manager sablont is alkalmaznia kell. Ez a sablon lehetővé teszi, hogy a munkaterület kommunikáljon az ACR-szel a privát kapcsolaton keresztül.
+1. A következő Azure Resource Manager sablont kell alkalmaznia. Ez a sablon lehetővé teszi, hogy a munkaterület kommunikáljon az ACR-szel.
 
     ```json
     {

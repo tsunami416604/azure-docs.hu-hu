@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 04/11/2019
 ms.author: rogara
 ms.custom: include file
-ms.openlocfilehash: 47bd550bbd8d75a06d38babe88b5a95f3790af50
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5fc106bfd97e8decd47ac7d43383907dcbbbda9c
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106549"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792979"
 ---
-## <a name="2-assign-access-permissions-to-an-identity"></a>2. hozzáférési engedélyek kiosztása identitáshoz
+## <a name="2-assign-access-permissions-to-an-identity"></a>2 hozzáférési engedélyek kiosztása identitáshoz
 
 A Azure Files-erőforrások identitás-alapú hitelesítéssel való eléréséhez az identitásnak (egy felhasználónak, csoportnak vagy egyszerű szolgáltatásnak) rendelkeznie kell a szükséges engedélyekkel a megosztás szintjén. Ez a folyamat hasonló a Windows-megosztási engedélyek megadásához, ahol megadhatja, hogy egy adott felhasználó milyen típusú hozzáférést osszon meg a fájlmegosztás számára. Az ebben a szakaszban található útmutatás azt mutatja be, hogyan lehet olvasási, írási vagy törlési engedélyeket rendelni egy fájlmegosztás identitásához. 
 
@@ -28,7 +28,7 @@ Három Azure-beli beépített szerepkört vezettünk be a felhasználók számá
 > [!IMPORTANT]
 > Egy fájlmegosztás teljes körű felügyeleti ellenőrzése, beleértve a fájl tulajdonjogának átvételének lehetőségét, a Storage-fiók kulcsát kell használnia. Az Azure AD hitelesítő adatai nem támogatják a felügyeleti felügyeletet.
 
-A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzárendelheti a beépített szerepköröket egy felhasználó Azure AD-identitásához a megosztási szintű engedélyek megadásához.
+A Azure Portal, a PowerShell vagy az Azure CLI használatával hozzárendelheti a beépített szerepköröket egy felhasználó Azure AD-identitásához a megosztási szintű engedélyek megadásához. Vegye figyelembe, hogy a megosztási szint RBAC szerepkör-hozzárendelésének végrehajtása hosszabb időt is igénybe vehet. 
 
 > [!NOTE]
 > Ne felejtse el [szinkronizálni AD DS hitelesítő adatait az Azure ad-be](../articles/active-directory/hybrid/how-to-connect-install-roadmap.md) , ha a helyszíni AD DS használatát tervezi a hitelesítéshez. Az AD DSról az Azure AD-re való jelszó-kivonatolási szinkronizálás nem kötelező. A megosztási szint engedély a helyszíni AD DS szinkronizált Azure AD-identitáshoz lesz biztosítva.
@@ -70,7 +70,7 @@ A következő minta parancsfájl futtatása előtt ne felejtse el helyettesíten
 az role assignment create --role "<role-name>" --assignee <user-principal-name> --scope "/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>/fileServices/default/fileshares/<share-name>"
 ```
 
-## <a name="3-configure-ntfs-permissions-over-smb"></a>3. NTFS-engedélyek konfigurálása SMB-kapcsolaton keresztül 
+## <a name="3-configure-ntfs-permissions-over-smb"></a>3 NTFS-engedélyek konfigurálása SMB-kapcsolaton keresztül 
 A megosztási szintű engedélyek RBAC való hozzárendelését követően megfelelő NTFS-engedélyeket kell rendelnie a gyökér, a könyvtár vagy a fájl szintjén. Gondoljon arra, hogy a megosztási szintű engedélyek magas szintű forgalomirányító, amely meghatározza, hogy a felhasználó hozzáférhet-e a megosztáshoz. Míg az NTFS-engedélyek részletesebben határozzák meg, hogy a felhasználó milyen műveleteket végezhet el a címtárban vagy a fájl szintjén.
 
 Azure Files a teljes NTFS alapszintű és speciális engedélyeket támogatja. Az Azure-fájlmegosztás könyvtárain és fájljain NTFS-engedélyeket tekinthet meg és konfigurálhat, ha csatlakoztatja a megosztást, majd a Windows fájlkezelővel vagy a Windows [icacls](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls) vagy a [set-ACL](https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-acl) parancsot futtatja. 
@@ -119,7 +119,7 @@ icacls <mounted-drive-letter>: /grant <user-email>:(f)
 
 Ha többet szeretne megtudni arról, hogyan használható a icacls az NTFS-engedélyek megadásához és a különböző típusú támogatott engedélyekhez, tekintse meg [az icacls parancssori útmutatóját](https://docs.microsoft.com/windows-server/administration/windows-commands/icacls).
 
-## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4. fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
+## <a name="4-mount-a-file-share-from-a-domain-joined-vm"></a>4 fájlmegosztás csatlakoztatása tartományhoz csatlakoztatott virtuális gépről
 
 A következő folyamat ellenőrzi, hogy a fájlmegosztás és a hozzáférési engedélyek megfelelően lettek-e beállítva, és hogy elérhető-e egy Azure-fájlmegosztás egy tartományhoz csatlakoztatott virtuális gépről. Vegye figyelembe, hogy a megosztási szint RBAC szerepkör-hozzárendelésének végrehajtása hosszabb időt is igénybe vehet. 
 

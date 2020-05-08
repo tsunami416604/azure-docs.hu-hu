@@ -5,24 +5,26 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/04/2020
 ms.author: victorh
-ms.openlocfilehash: 5abe9344b0512433c48df50335cce5cf1e3e3547
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da5100fafc98ae38809c93e9b3db5ef41c58766a
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80289640"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863416"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Firewall távoli munkahelyi támogatás
 
-A Azure Firewall felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely az Azure-beli virtuális hálózati erőforrásokat védi. Egy teljes mértékben állapotalapú tűzfalszolgáltatás, beépített magas rendelkezésre állással és korlátlan felhőméretezhetőséggel. 
+A Azure Firewall felügyelt, felhőalapú hálózati biztonsági szolgáltatás, amely az Azure-beli virtuális hálózati erőforrásokat védi. Egy teljes mértékben állapotalapú tűzfalszolgáltatás, beépített magas rendelkezésre állással és korlátlan felhőméretezhetőséggel.
 
-## <a name="firewall-rules"></a>Tűzfalszabályok
+## <a name="virtual-desktop-infrastructure-vdi-deployment-support"></a>A virtuális asztali infrastruktúra (VDI) üzembe helyezésének támogatása
 
-A Azure Firewall használatával biztonságossá teheti a virtuális asztali infrastruktúra (VDI) bejövő RDP-hozzáférését az Azure-beli virtuális hálózathoz Azure Firewall [DNAT-szabályok](rule-processing.md)segítségével. A Windows rendszerű virtuális asztal (WVD) nem igényli a virtuális hálózatra irányuló bejövő hozzáférés megnyitását. A virtuális hálózatban futó WVD virtuális gépekhez azonban engedélyeznie kell a kimenő hálózati kapcsolatok készletét. További információ: [Mi a Windows Virtual Desktop?](../virtual-desktop/overview.md#requirements)
+A otthoni házirendekkel kapcsolatos munkához számos IT-szervezet szükséges a kapacitás, a hálózat, a biztonság és az irányítás alapvető változásainak kezeléséhez. Az alkalmazottakat nem védi a helyszíni szolgáltatásokhoz társított rétegzett biztonsági házirendek, miközben otthon működik. Az Azure-ban a virtuális asztali infrastruktúra (VDI) üzembe helyezésével gyorsan reagálhat a szervezetek erre a változó környezetre. Azonban szükség van arra, hogy megvédje a bejövő/kimenő internet-hozzáférést ezekhez a VDI-telepítésekhez. A VDI-környezetek elleni védelem érdekében Azure Firewall [DNAT-szabályokat](rule-processing.md) és a [fenyegetésekkel kapcsolatos intelligencián](threat-intel.md) alapuló szűrési képességeket is használhatja.
 
-Ezt a kimenő hozzáférést Azure Firewall alkalmazás-szabályok használatával konfigurálhatja. További információ: [oktatóanyag: Azure Firewall telepítése és konfigurálása a Azure Portal használatával](tutorial-firewall-deploy-portal.md).
+## <a name="azure-windows-virtual-desktop-support"></a>Azure Windows rendszerű virtuális asztali ügyfélszolgálat
+
+A Windows Virtual Desktop egy átfogó asztali és app Virtualization szolgáltatás, amely az Azure-ban fut. Ez az egyetlen olyan virtuális asztali infrastruktúra (VDI), amely egyszerűsített felügyeletet, többmunkamenetes Windows 10, az Office 365 ProPlus optimalizálását és Távoli asztali szolgáltatások (RDS) környezetek támogatását biztosítja. Percek alatt üzembe helyezheti és méretezheti a Windows rendszerű asztali számítógépeit és alkalmazásait, és beépített biztonsági és megfelelőségi funkciókat érhet el. A Windows virtuális asztal nem igényli a virtuális hálózathoz való bejövő hozzáférés megnyitását. Azonban engedélyeznie kell a kimenő hálózati kapcsolatok készletét a virtuális hálózatban futó Windows virtuális asztali virtuális gépekhez. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](protect-windows-virtual-desktop.md).
 
 ## <a name="next-steps"></a>További lépések
 

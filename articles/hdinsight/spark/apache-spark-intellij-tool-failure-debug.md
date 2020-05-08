@@ -9,16 +9,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
-ms.openlocfilehash: 1a0a6cf5a26854539dc4bbb0ae0254bbf08dad1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73494589"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857419"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió)
 
-Ez a cikk részletes útmutatást nyújt arról, hogyan használhatja a HDInsight-eszközöket a [Azure Toolkit for IntelliJ](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij?view=azure-java-stable) a **Spark-hibák hibakeresési** alkalmazásainak futtatásához.
+Ez a cikk részletes útmutatást nyújt arról, hogyan használhatja a HDInsight-eszközöket a [Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij) a **Spark-hibák hibakeresési** alkalmazásainak futtatásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,7 +26,7 @@ Ez a cikk részletes útmutatást nyújt arról, hogyan használhatja a HDInsigh
   
 * IntelliJ ötlet. Ez a cikk a [INTELLIJ Idea Community ver. 2019.1.3](https://www.jetbrains.com/idea/download/#section=windows)-t használja.
   
-* Azure Toolkit for IntelliJ. Lásd: [a Azure Toolkit for IntelliJ telepítése](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation?view=azure-java-stable).
+* Azure Toolkit for IntelliJ. Lásd: [a Azure Toolkit for IntelliJ telepítése](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/installation).
 
 * Kapcsolódjon a HDInsight-fürthöz. Lásd: [Kapcsolódás a HDInsight-fürthöz](apache-spark-intellij-tool-plugin.md).
 
