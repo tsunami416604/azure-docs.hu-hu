@@ -4,14 +4,14 @@ description: Térbeli adatainak indexelése Azure Cosmos DB
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 02/20/2020
+ms.date: 05/03/2020
 ms.author: tisande
-ms.openlocfilehash: eb0a2b2778b3217e185b9883def6eaa54674cc5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd96f440c4e8c971d1f1473f667d31e60edef137
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79137903"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82839205"
 ---
 # <a name="index-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatindexek indexelése Azure Cosmos DB
 
@@ -28,11 +28,17 @@ Ha olyan indexelési házirendet ad meg, amely tartalmazza a/* (az összes elér
 
 ## <a name="modifying-geospatial-data-type"></a>Térinformatikai adattípus módosítása
 
-A tárolóban a `geospatialConfig` meghatározza, hogy a térinformatikai adatai hogyan lesznek indexelve. A következőket kell megadnia egy `geospatialConfig` tárolóban: földrajz vagy geometria. Ha nincs megadva, a `geospatialConfig` alapértelmezés szerint a földrajzi adattípust fogja megadni. Ha módosítja a `geospatialConfig`-t, a tárolóban lévő összes meglévő térinformatikai elem újraindexelve lesz.
+A tárolóban a **térinformatikai konfiguráció** meghatározza, hogy a térbeli adatai hogyan lesznek indexelve. Válasszon egy **térinformatikai konfigurációt** egy tárolóban: földrajz vagy geometria.
 
-> [!NOTE]
-> Azure Cosmos DB jelenleg csak a 3,6-es és újabb verziókban támogatja a .NET SDK-ban lévő geospatialConfig módosításait.
->
+Válthat a **földrajzi** és a **geometriai** térbeli típus között a Azure Portal. Fontos, hogy a geometriai térbeli típusra váltás előtt hozzon létre egy [érvényes térbeli geometria-indexelési házirendet egy határoló mezővel](#geometry-data-indexing-examples) .
+
+A következő témakörben állíthatja be a **térinformatikai konfigurációt** a Azure Portal **adatkezelő** belül:
+
+![Térinformatikai konfiguráció beállítása](./media/sql-query-geospatial-index/geospatial-configuration.png)
+
+A (z) a `geospatialConfig` .net SDK-ban is módosítható a **térinformatikai konfiguráció**beállításához:
+
+Ha nincs megadva, a `geospatialConfig` alapértelmezés szerint a földrajzi adattípust fogja megadni. Ha módosítja a `geospatialConfig`-t, a tárolóban lévő összes meglévő térinformatikai elem újraindexelve lesz.
 
 Íme egy példa a térinformatikai adattípus `geometry` módosítására a `geospatialConfig` tulajdonság beállításával és a **boundingBox**hozzáadásával:
 
@@ -112,7 +118,7 @@ A határoló mező a következő tulajdonságokat tartalmazza:
 
 A határolókeret megadása kötelező, mert a geometriai adat egy olyan gépet foglal, amely végtelen lehet. A térbeli indexek esetében azonban véges terület szükséges. A **földrajzi** adattípushoz a föld a határ, és nem kell megadnia egy határoló mezőt.
 
-Létre kell hoznia egy határoló mezőt, amely az összes (vagy a legtöbb) adatát tartalmazza. A térbeli indexet csak a teljes mértékben a határolókeret belsejében lévő objektumokra kiszámított műveletek lesznek képesek használni. A határolókeret a szükségesnél lényegesen nagyobb mértékben nem végezhető el, mert ez negatív hatással lesz a lekérdezés teljesítményére.
+Hozzon létre egy határoló mezőt, amely az összes (vagy a legtöbb) adatát tartalmazza. A térbeli indexet csak a teljes mértékben a határolókeret belsejében lévő objektumokra kiszámított műveletek lesznek képesek használni. Ha a határolókeret mérete nagyobb, mint amennyi szükséges, negatív hatással lesz a lekérdezés teljesítményére.
 
 Az alábbi példa olyan indexelési házirendet mutat `geometry`be, amely a **geometriai** adatoknak a **geospatialConfig** beállítását a következőre állítja:
 

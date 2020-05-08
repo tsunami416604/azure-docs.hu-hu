@@ -226,7 +226,9 @@
         - name: Jogkivonatok és munkamenet-kezelés
           items:
             - name: Jogkivonatok testreszabása
-              href: custom-policy-manage-sso-and-token-config.md
+              href: configure-tokens-custom-policy.md
+            - name: Munkamenet viselkedésének konfigurálása
+              href: session-behavior-custom-policy.md
         - name: Külső identitásszolgáltatói jogkivonat átadása
           href: idp-pass-through-custom.md
         - name: Adaptív élmény

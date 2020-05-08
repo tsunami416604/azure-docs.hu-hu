@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 04/30/2020
+ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 438edd88b3699f3811d8bd32170b62569971c2e9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: ab1d0318464f6b44e1f46bd30dc76272584fde64
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837396"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929825"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -67,8 +67,8 @@ Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendsze
 
 |Operációs rendszer|Szükséges licenc|
 |---|---|
-|Windows 10 Enterprise multi-session vagy Windows 10 Enterprise|Microsoft 365 E3, E5, a3, a5, F3, Business<br>Windows E3, E5, a3, a5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, a5, F3, Business<br>Windows E3, E5, a3, a5|
+|Windows 10 Enterprise multi-session vagy Windows 10 Enterprise|Microsoft 365 E3, E5, a3, a5, F3, üzleti prémium<br>Windows E3, E5, a3, a5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, a5, F3, üzleti prémium<br>Windows E3, E5, a3, a5|
 |Windows Server 2012 R2, 2016, 2019|Távoli asztali ügyféllicenc (CAL) frissítési garanciával|
 
 Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszerű virtuális asztalok támogatásához:
@@ -101,9 +101,9 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 |wvdportalstorageblob.blob.core.windows.net|443|Azure Portal támogatás|AzureCloud|
 
 >[!IMPORTANT]
->A szolgáltatással kapcsolatos problémák megelőzése érdekében javasoljuk, hogy a legtöbb esetben az URL-címek helyett a szolgáltatás címkéit használja. Az URL-címek blokkolásának feloldása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz (például Azure Active Directory).
->
 >A Windows virtuális asztal mostantól támogatja a FQDN címkét. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](../firewall/protect-windows-virtual-desktop.md).
+>
+>Javasoljuk, hogy az URL-címek helyett a teljes tartománynevet vagy a szolgáltatás címkéit használja a szolgáltatási problémák megelőzése érdekében. A felsorolt URL-címek és címkék csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak. Nem tartalmaznak URL-címeket más szolgáltatásokhoz, például a Azure Active Directoryhoz.
 
 A következő táblázat felsorolja azokat az opcionális URL-címeket, amelyekhez az Azure-beli virtuális gépek hozzáférhetnek:
 

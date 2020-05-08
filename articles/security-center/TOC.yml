@@ -37,6 +37,11 @@
       href: tutorial-security-incident.md
     - name: Előírásoknak való megfelelés javítása
       href: security-center-compliance-dashboard.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Biztonsági pontszám
@@ -107,7 +112,7 @@
           href: custom-security-policies.md
         - name: Szabályzatok kezelése az Azure Policy REST API-val
           href: configure-security-policy-azure-policy.md
-    - name: Dinamikus megfelelőségi csomagok hozzáadása
+    - name: A megfelelőségi irányítópultra vonatkozó szabványok kiválasztása
       href: update-regulatory-compliance-packages.md
     - name: Az Information Protection-szabályzat testreszabása
       href: security-center-info-protection-policy.md

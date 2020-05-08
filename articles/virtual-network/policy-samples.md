@@ -1,33 +1,26 @@
 ---
-title: Policy-sablonminták | Microsoft Docs
-description: Azure Policy sablon mintákat a Virtual Networkhoz.
-services: virtual-network
-documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-tags: ''
-ms.assetid: ''
-ms.service: virtual-network
-ms.devlang: na
-ms.topic: sample
-ms.tgt_pltfrm: ''
-ms.workload: ''
+title: Az Azure Virtual Network beépített szabályzat-definíciói
+description: Az Azure Virtual Network beépített szabályzat-definícióit sorolja fel Azure Policy. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 05/05/2020
+ms.topic: sample
+author: KumudD
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: 93d0138f336ffc7055daf9988658a6284af53188
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.service: virtual-network
+ms.custom: subject-policy-samples
+ms.openlocfilehash: 557e3658b73314660ffde134b6151f9d83b26824
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839130"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928516"
 ---
-# <a name="azure-policy-sample-built-ins-for-virtual-network"></a>Azure Policy minta beépített virtuális hálózat
+# <a name="azure-policy-built-in-policy-definitions-for-azure-virtual-network"></a>Azure Policy beépített szabályzat-definíciók az Azure Virtual Network
 
-Az alábbi táblázat [Azure Policy](../governance/policy/overview.md) mintákra mutató hivatkozásokat tartalmaz. A minták az [Azure Policy mintaadattárában](https://github.com/Azure/azure-policy) találhatók.
+Ez az oldal az Azure Virtual Network beépített szabályzat-definícióinak [Azure Policy](../governance/policy/overview.md) indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-## <a name="network"></a>Network (Hálózat)
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+
+## <a name="azure-virtual-network"></a>Azure Virtual Network
 
 [!INCLUDE [azure-policy-samples-policies-network](../../includes/policy/samples/bycat/policies-network.md)]
 
@@ -35,6 +28,12 @@ Az alábbi táblázat [Azure Policy](../governance/policy/overview.md) mintákra
 
 [!INCLUDE [azure-policy-samples-policies-tags](../../includes/policy/samples/bycat/policies-tags.md)]
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 [!INCLUDE [azure-policy-samples-policies-general](../../includes/policy/samples/bycat/policies-general.md)]
+
+## <a name="next-steps"></a>További lépések
+
+- A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).
+- Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../governance/policy/concepts/definition-structure.md) szakaszt.
+- A [Szabályzatok hatásainak ismertetése](../governance/policy/concepts/effects.md).

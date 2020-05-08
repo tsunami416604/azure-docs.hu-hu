@@ -1,26 +1,25 @@
 ---
-title: SaaS-teljesítési API-k | Azure piactér
-description: Bevezeti a teljesítési API-k azon verzióit, amelyek lehetővé teszik a SaaS-ajánlatok integrálását az Azure Marketplace-szel.
+title: SaaS-teljesítési API-k a Microsoft kereskedelmi piactéren
+description: A bevezetési API-k, amelyek lehetővé teszik a SaaS-ajánlatok integrálását Microsoft AppSource és az Azure piactéren.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.author: dsindona
-ms.openlocfilehash: 92b1c52457fa92709381124480c05a5f636167f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba1b158bc529b148a8e3138d122c13ead19e073e
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275730"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858086"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS Fulfillment API-k
+# <a name="saas-fulfillment-apis-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k a Microsoft kereskedelmi piactéren
 
-A SaaS-teljesítési API-k lehetővé teszik a független szoftvergyártók számára az SaaS-alkalmazások integrálását az Azure Marketplace-szel. Ezek az API-k lehetővé teszik az ISV-alkalmazások számára az összes kereskedelmi támogatással rendelkező csatorna részvételét: közvetlen, partner által vezetett (viszonteladói) és mező-vezérelt.  Az Azure Marketplace-en a transacter SaaS-ajánlatok listázásához követelmény.
+A SaaS-teljesítési API-k lehetővé teszik a független szoftvergyártók számára a SaaS-alkalmazások integrálását Microsoft AppSource és az Azure piactéren. Ezek az API-k lehetővé teszik az ISV-alkalmazások számára az összes kereskedelmi támogatással rendelkező csatorna részvételét: közvetlen, partner által vezetett (viszonteladói) és mező-vezérelt. A Microsoft AppSource és az Azure Marketplace-en található, a transacter SaaS-ajánlatok listázásához szükségesek.
 
 > [!WARNING]
 > Az API jelenlegi verziója 2. verzió, amelyet minden új SaaS-ajánlathoz használni kell.  Az API 1. verziója elavult, és a rendszer fenntartja a meglévő ajánlatok támogatását.
-
 
 ## <a name="business-model-support"></a>Üzleti modell támogatása
 
