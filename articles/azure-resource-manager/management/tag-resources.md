@@ -2,13 +2,13 @@
 title: Erőforrások, erőforráscsoportok és előfizetések címkézése a logikai szervezet számára
 description: Bemutatja, hogyan alkalmazhat címkéket az Azure-erőforrások számlázáshoz és felügyelethez való rendszerezéséhez.
 ms.topic: conceptual
-ms.date: 04/10/2020
-ms.openlocfilehash: 2f437682a2ac415ce8478b09a44bff044bd9511b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 9ba7c58f6fa56b8ef2c233a5fe7f8f8e04fe29e1
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81255124"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864487"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Címkék használata az Azure-erőforrások és a felügyeleti hierarchia rendszerezéséhez
 
@@ -591,7 +591,9 @@ Az alábbi korlátozások érvényesek a címkékre:
 * A címkék nevei nem tartalmazhatják a `<`következő `>`karaktereket `%`: `&` `\`,, `?`,,,,`/`
 
    > [!NOTE]
-   > Jelenleg Azure DNS zónák és Traffic Manger-szolgáltatások nem engedélyezik a szóközök használatát a címkében.
+   > Azure DNS zónák és Traffic Manager szolgáltatások jelenleg nem teszik lehetővé a szóközök használatát a címkében.
+   >
+   > Az Azure bejárati ajtó nem támogatja `#` a címke nevében való használatát.
 
 ## <a name="next-steps"></a>További lépések
 

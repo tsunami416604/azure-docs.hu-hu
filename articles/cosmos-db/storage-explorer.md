@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: d2fe231dce26311268e578a495fb2ba7076651e0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 2cf1ab2b9ec7e1094a0afa34973db3441c22ee5b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608030"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982768"
 ---
 # <a name="work-with-data-using-azure-storage-explorer"></a>Adatok kezelése az Azure Storage Explorerrel
 
@@ -273,7 +273,7 @@ Ha nem tud eltávolítani egy fiókot, vagy ha az újrahitelesítési hivatkozá
 
 ### <a name="httphttps-proxy-issue"></a>Http/Https-proxyval kapcsolatos probléma
 
-A bal oldali fában nem listázhatók az Azure Cosmos DB-csomópontok, amikor http/https-proxyt konfigurálunk az ASE-ben. Ez egy ismert probléma, amelyet a következő kiadásra kijavítunk. Jelenleg áthidaló megoldásként használhatja az Azure Cosmos DB-adatkezelőt az Azure Portalon.
+A bal oldali fában nem listázhatók az Azure Cosmos DB-csomópontok, amikor http/https-proxyt konfigurálunk az ASE-ben. Jelenleg áthidaló megoldásként használhatja az Azure Cosmos DB-adatkezelőt az Azure Portalon.
 
 ### <a name="development-node-under-local-and-attached-node-issue"></a>A „Helyi és csatolt” csomópont alatti „Fejlesztés” csomópont problémája
 

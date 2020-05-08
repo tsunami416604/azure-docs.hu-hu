@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: 72a6f97f45ec1adaa42d1f17a1916af137845392
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 013001eebeec232cc60e31f1a850aeab4fd6c905
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559991"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982241"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
@@ -38,7 +38,7 @@ Vegye figyelembe, hogy a bemelegedési trigger csak a kibővített műveletekben
 
 ## <a name="trigger---example"></a>Trigger – példa
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Az alábbi példa egy [C#-függvényt](functions-dotnet-class-library.md) mutat be, amely minden egyes új példányon fut, amikor hozzáadják az alkalmazáshoz. Nincs szükség visszatérési érték attribútumra.
 
@@ -132,7 +132,6 @@ Itt látható a JavaScript-kód:
 ```javascript
 module.exports = async function (context, warmupContext) {
     context.log('Function App instance is warm 🌞🌞🌞');
-    context.done();
 };
 ```
 
@@ -188,7 +187,7 @@ public void run( ExecutionContext context) {
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)az `WarmupTrigger` attribútum a függvény konfigurálására használható.
 
-# <a name="c"></a>[C#](#tab/csharp)
+# <a name="c"></a>[C #](#tab/csharp)
 
 Ez a példa a [bemelegedési](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions/Extensions/Warmup/Trigger/WarmupTriggerAttribute.cs) attribútum használatát mutatja be.
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
-ms.openlocfilehash: d9b02c11c055b4b072c5f8a1ff47e44001ec4580
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 78ec45f5e6c354644e4303db53f276343225eff9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509720"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858830"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
 
@@ -66,11 +66,17 @@ aro                                1.0.0
 
 A Red Hat pull Secret lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt. Ez a lépés nem kötelező, de ajánlott.
 
-A lekéréses titok beszerzéséhez https://cloud.redhat.com/openshift/install/azure/aro-provisioned navigáljon a gombra, és kattintson a *lekérési titok letöltése*elemre.
+1. **[Navigáljon a Red Hat OpenShift a cluster Manager-portálra](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) , és jelentkezzen be.**
 
-Be kell jelentkeznie a Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail-címével, és el kell fogadnia a használati feltételeket.
+   Be kell jelentkeznie a Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail-címével, és el kell fogadnia a használati feltételeket.
+
+2. **Kattintson a lekérési titok letöltése elemre.**
 
 Tartsa meg a `pull-secret.txt` mentett fájlt biztonságos helyen – a rendszer minden egyes fürt létrehozásakor használni fogja.
+
+A `az aro create` parancs futtatásakor a (z) `--pull-secret @pull-secret.txt` paraméter használatával hivatkozhat a lekéréses titkos kulcsra. Futtassa `az aro create` azt a könyvtárat, ahová a `pull-secret.txt` fájlt mentette. Ellenkező esetben cserélje `@pull-secret.txt` le `@<path-to-my-pull-secret-file>`a-t a kifejezésre.
+
+Ha átmásolja a lekéréses titkot, vagy más parancsfájlokban hivatkozik rá, a lekéréses titkot érvényes JSON-karakterláncként kell formázni.
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Két üres alhálózatot tartalmazó virtuális hálózat létrehozása
 
@@ -174,7 +180,10 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-Futtassa a következő parancsot egy fürt létrehozásához. Opcionálisan átadhat egy lekéréses titkot, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt. A lekéréses titok eléréséhez navigáljon a [Red Hat OpenShift](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) , és kattintson a **lekéréses titok másolása**elemre.
+Futtassa a következő parancsot egy fürt létrehozásához. [A Red Hat pull Secret](#get-a-red-hat-pull-secret-optional) is átadható, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt.
+
+>[!NOTE]
+> Ha másolási és beillesztési parancsokat használ, és a választható paraméterek egyikét használja, ügyeljen arra, hogy törölje a kezdeti hashtageket és a záró megjegyzés szövegét. Emellett a parancs előző sorában található argumentumot záró fordított perjeltel is lezárhatja.
 
 ```azurecli-interactive
 az aro create \
@@ -184,10 +193,10 @@ az aro create \
   --master-subnet master-subnet \
   --worker-subnet worker-subnet
   # --domain foo.example.com # [OPTIONAL] custom domain
-  # --pull-secret '$(< pull-secret.txt)' # [OPTIONAL]
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
->[!NOTE]
-> A fürt létrehozása általában körülbelül 35 percet vesz igénybe.
+
+A parancs végrehajtása után `az aro create` az általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
 >[!IMPORTANT]
 > Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`helyett egy URL-címen lesz elérhető.

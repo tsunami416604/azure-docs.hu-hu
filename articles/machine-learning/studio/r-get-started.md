@@ -9,41 +9,37 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
-ms.openlocfilehash: 1dcda3efe3872100100d6e85b68a36359b7eab84
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 665bb12c91c8d6a5a60fd8f60216f30131f34915
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209502"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982190"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 <!-- Stephen F Elston, Ph.D. -->
-Ez az oktatóanyag segítséget nyújt a Azure Machine Learning Studio (klasszikus) kiterjesztésének megkezdéséhez az R programozási nyelv használatával. Kövesse ezt az R programozási oktatóanyagot az R-kód létrehozásához, teszteléséhez és végrehajtásához a studión belül (klasszikus). Az oktatóanyagban végzett munka során egy teljes előrejelzési megoldást fog létrehozni a Studio (klasszikus) R-nyelvének használatával.  
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja a ML Studio (klasszikus) t az R-kód létrehozásához, teszteléséhez és végrehajtásához. A végén egy teljes előrejelző megoldás fog megjelenni.  
 
-A Azure Machine Learning Studio (klasszikus) számos hatékony gépi tanulási és adatkezelési modult tartalmaz. A nagy teljesítményű R nyelv leírása a lingua franca of Analytics. Szerencsére a Studio (klasszikus) elemzési és adatkezelési szolgáltatását az R használatával lehet kiterjeszteni. Ez a kombináció a Studio (klasszikus) méretezhetőségét és egyszerű üzembe helyezését teszi lehetővé az R rugalmasságával és mélyreható elemzésével.
+> [!div class="checklist"]
+> * Kód létrehozása az adattisztításhoz és az átalakításhoz.
+> * Elemezze az adatkészlet több változója közötti korrelációkat.
+> * Hozzon létre egy szezonális idősorozat-előrejelzési modellt a tejtermékek termeléséhez.
 
-### <a name="forecasting-and-the-dataset"></a>Előrejelzés és az adatkészlet
 
-Az előrejelzés egy széles körben alkalmazott és nagyon hasznos analitikai módszer. A gyakori felhasználási tartomány a szezonális elemek előrejelzése, az optimális leltározási szintek meghatározása a makrogazdasági változók előrejelzéséhez. Az előrejelzés általában idősorozat-modellekkel történik.
+A Azure Machine Learning Studio (klasszikus) számos hatékony gépi tanulási és adatkezelési modult tartalmaz. Az R programozási nyelvvel együtt ez a kombináció a Studio (klasszikus) méretezhetőségét és egyszerű üzembe helyezését teszi lehetővé az R rugalmasságával és mélyreható elemzésével.
 
-Az idősorozat-adatok olyan adatok, amelyekben az értékek egy időindextel rendelkeznek. Az időindex lehet rendszeres, például havonta vagy percenként, vagy szabálytalan. Az idősorozat-modell az idősorozat-adatsorokon alapul. Az R programozási nyelv rugalmas keretrendszert és átfogó elemzést tartalmaz az idősorozat-adatokat illetően.
+Az előrejelzés egy széles körben alkalmazott és nagyon hasznos analitikai módszer. A gyakori felhasználási tartomány a szezonális elemek előrejelzése, az optimális leltározási szintek meghatározása a makrogazdasági változók előrejelzéséhez. Az előrejelzés általában idősorozat-modellekkel történik. Az idősorozat-adatok olyan adatok, amelyekben az értékek egy időindextel rendelkeznek. Az időindex lehet rendszeres, például havonta vagy percenként, vagy szabálytalan. Az idősorozat-modell az idősorozat-adatsorokon alapul. Az R programozási nyelv rugalmas keretrendszert és átfogó elemzést tartalmaz az idősorozat-adatokat illetően.
 
-Ebben az útmutatóban a kaliforniai tejtermékek termelési és díjszabási információit fogjuk dolgozni. Ezek az adatok a különböző tejtermékek előállításával, valamint a tejzsír árának összehasonlításával kapcsolatos havi információkat tartalmazzák.
+## <a name="get-the-data"></a>Az adatok lekérése
+
+Ebben az oktatóanyagban a kaliforniai tejtermék-termelési és díjszabási adatokat használja, amelyek havi információkat tartalmaznak a tejtermékek előállításával és a tejzsír árának összehasonlításával.
 
 A cikkben használt adatok, valamint az R-parancsfájlok is letölthetők a [MachineLearningSamples-Notebooks/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples)-ből. A fájlban `cadairydata.csv` lévő adatok eredetileg a Wisconsini Egyetemen elérhető információkból származnak [https://dairymarkets.com](https://dairymarkets.com).
 
-### <a name="organization"></a>Szervezet
 
-A Azure Machine Learning Studio (klasszikus) környezetben az elemzési és adatkezelési R-kód létrehozásával, tesztelésével és végrehajtásával kapcsolatban számos lépéssel elsajátítjuk a folyamatokat.  
-
-* Először is megismerheti az R nyelv használatának alapjait a Azure Machine Learning Studio (klasszikus) környezetben.
-* Ezt követően megbeszéljük az I/O adatkezelési szempontjait, az R-kódot és a grafikát a Azure Machine Learning Studio (klasszikus) környezetben.
-* Az előrejelzési megoldás első részét az adattisztítás és-átalakítás kódjának létrehozásával fogjuk létrehozni.
-* Az adatok előkészítésekor a rendszer elvégzi az adatkészlet számos változója közötti korrelációk elemzését.
-* Végezetül létrehozunk egy szezonális idősorozat-előrejelzési modellt a tejtermékek termeléséhez.
 
 ## <a name="interact-with-r-language-in-machine-learning-studio-classic"></a><a id="mlstudio"></a>Az R nyelvvel való interakció Machine Learning Studio (klasszikus)
 
@@ -143,7 +139,7 @@ Ebből a szakaszból megtudhatja, hogyan szerezhet be és ki az [R-szkriptek vé
 
 A szakasz teljes kódja a [MachineLearningSamples-notebook/Studio-Samples](https://github.com/Azure-Samples/MachineLearningSamples-Notebooks/tree/master/studio-samples).
 
-### <a name="load-and-check-data-in-machine-learning-studio-classic"></a>Machine Learning Studio (klasszikus) betöltési és ellenőrzési szolgáltatás
+### <a name="load-and-check-data"></a>Az adatterhelés és-ellenőrzési 
 
 #### <a name="load-the-dataset"></a><a id="loading"></a>Az adatkészlet betöltése
 

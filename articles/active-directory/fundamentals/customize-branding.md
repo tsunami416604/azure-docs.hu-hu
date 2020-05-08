@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 05/07/2020
 ms.author: ajburnle
 ms.reviewer: kexia
 ms.custom: it-pro, seodec18, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 441fdd14cc2c734b6ce532f3ad1d30663b2f56c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e0fc3cb450c253882ed34a2c4f5748efe55d0ec
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80049795"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982037"
 ---
 # <a name="add-branding-to-your-organizations-azure-active-directory-sign-in-page"></a>Arculat hozzáadása a szervezet Azure Active Directory bejelentkezési lapjához
 A szervezet emblémájának és egyéni színsémáinak használatával egységes megjelenést és működést biztosíthat a Azure Active Directory (Azure AD) bejelentkezési oldalain. A bejelentkezési oldalai akkor jelennek meg, amikor a felhasználók bejelentkeznek a szervezet web-alapú alkalmazásaiba, például az Office 365-be, amely az Azure AD-t használja az identitás-szolgáltatóként.
@@ -52,9 +52,9 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
 
         - **Nyelv.** A nyelv automatikusan alapértelmezettként van beállítva, és nem módosítható.
         
-        - **A bejelentkezési oldal háttérképe.** Válasszon ki egy. png vagy. jpg képfájlt, amelyet a bejelentkezési oldalain háttérként szeretne megjeleníteni. 
+        - **A bejelentkezési oldal háttérképe.** Válasszon ki egy. png vagy. jpg képfájlt, amelyet a bejelentkezési oldalain háttérként szeretne megjeleníteni. A rendszerkép a böngésző közepére lesz rögzítve, és a megtekinthető terület méretét fogja méretezni. Nem választhat olyan képet, amely nagyobb, mint 1920 × 1080 képpont, vagy a fájl mérete meghaladja a 300 KB-ot.
         
-            A rendszerkép mérete nem lehet nagyobb, mint 1920 × 1080 képpont, és a fájlméretnek 300 KB-nál kisebbnek kell lennie.
+            Azt javasoljuk, hogy a képeket erős tárgyú fókusz nélkül használja, például egy átlátszatlan fehér mező jelenik meg a képernyő közepén, és a megtekinthető terület méreteitől függően a kép bármely részét lefedi.
 
         - **Szalagcím emblémája** Válassza ki az embléma egy. png vagy. jpg verzióját, amely a bejelentkezési oldalon jelenik meg, miután a felhasználó bejelentkezett a Felhasználónév és a **saját alkalmazások** portál oldalon.
             
@@ -62,7 +62,7 @@ Az egyéni arculat nem jelenik meg azonnal, amikor a felhasználók olyan webhel
 
         - **Felhasználónév-emlékeztető.** Írja be a felhasználók számára megjelenő tipp szövegét, ha elfelejtik a felhasználónevét. A szövegnek Unicode formátumúnak kell lennie, hivatkozás vagy kód nélkül, és nem lehet hosszabb 64 karakternél. Ha a vendégek bejelentkeznek az alkalmazásba, javasoljuk, hogy ne adja hozzá ezt a tippet.
 
-        - **A bejelentkezési oldal szövege.** Írja be a bejelentkezési oldal alján megjelenő szöveget. Ezt a szöveget használhatja további információk, például telefonszámok vagy jogi nyilatkozatok közlésére. A szövegnek Unicode-nak kell lennie, és nem lehet hosszabb 256 karakternél. Javasoljuk továbbá, hogy a hivatkozásokat és a HTML-címkéket is ne tartalmazza.
+        - **A bejelentkezési oldal szövege.** Írja be a bejelentkezési oldal alján megjelenő szöveget. Ezt a szöveget használhatja további információk, például telefonszámok vagy jogi nyilatkozatok közlésére. A szövegnek Unicode-nak kell lennie, és nem lehet hosszabb 256 karakternél.
 
     - **Speciális beállítások**
             

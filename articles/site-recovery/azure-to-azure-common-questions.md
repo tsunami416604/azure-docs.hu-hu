@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: b6f665c5b0f2fbd291d20ef21d0a447d20f7c2da
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.openlocfilehash: bc2acc4303a270a2bf71f0c9ff249b60a0328a09
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738048"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983278"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
@@ -100,6 +100,10 @@ Nem, Site Recovery nem igényel internetkapcsolatot. Azonban szükség van a Sit
 Igen, replikálhatja az alkalmazást, és megtarthatja a vész-helyreállítási konfigurációt egy külön erőforráscsoporthoz is.
 
 Ha például az alkalmazás egy különálló erőforráscsoport alkalmazásával, adatbázisával és webhelyével rendelkezik, akkor a [replikálási varázslót](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) háromszor kell kiválasztania az összes szinten való védelem érdekében. Site Recovery a három szintet három különböző erőforráscsoporthoz fogja replikálni.
+
+### <a name="can-i-move-storage-accounts-across-resource-groups"></a>Át lehet helyezni a Storage-fiókokat az erőforráscsoportok között?
+
+Nem, ez egy nem támogatott forgatókönyv. Ha azonban véletlenül más erőforráscsoporthoz helyezi át a tárolási fiókokat, és törli az eredeti erőforráscsoportot, akkor létrehozhat egy új erőforráscsoportot a régi erőforráscsoporthoz megegyező névvel, majd áthelyezheti a Storage-fiókot ebbe az erőforráscsoporthoz.
 
 ## <a name="replication-policy"></a>Replikációs szabályzat
 

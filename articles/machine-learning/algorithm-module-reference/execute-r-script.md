@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/10/2020
-ms.openlocfilehash: eb778c8d24639320b60927438de76a29de724ac2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/27/2020
+ms.openlocfilehash: 7b72d83740e0e2b02ef9d2ea3cd1cbf04a4c99cc
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684715"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983567"
 ---
 # <a name="execute-r-script"></a>R-szkript végrehajtása
 
@@ -42,6 +42,8 @@ azureml_main <- function(dataframe1, dataframe2){
   return(list(dataset1=dataframe1, dataset2=dataframe2))
 }
 ```
+> [!NOTE]
+> Ha a folyamat több végrehajtási R-parancsfájl-modult tartalmaz, és ugyanazokat a csomagokat kell megadnia, amelyek nem szerepelnek az előre telepített listában, akkor telepítse a csomagokat az egyes modulokban. 
 
 ## <a name="installing-r-packages"></a>R-csomagok telepítése
 További R-csomagok telepítéséhez használja a `install.packages()` metódust. A csomagok minden **végrehajtási r script** modulhoz telepítve vannak, és nem oszthatók meg más **végrehajtási r-parancsfájl** -modulok között.
@@ -140,7 +142,7 @@ A tervezőben tárolt adatkészletek automatikusan egy R-adatkeretre lesznek kon
 1. Az **r-szkript** szövegmezőbe írja be vagy illessze be az érvényes R-szkriptet.
 
     > [!NOTE]
-    > Kérjük, legyen nagyon körültekintő a parancsfájl írásakor, és ellenőrizze, hogy nincs-e szintaktikai hiba, például egy nem deklarált változó vagy egy nem importált modul vagy függvény használata. A dokumentum végén külön figyelmet kell fordítani az előre telepített csomagok listájára is. A nem felsorolt csomagok használatához telepítse azokat a parancsfájlba, például:`install.packages("zoo",repos = "http://cran.us.r-project.org")`
+    > Kérjük, legyen nagyon körültekintő a parancsfájl írásakor, és ellenőrizze, hogy nincs-e szintaktikai hiba, például nem deklarált változók vagy nem importált modulok vagy függvények használatával. A dokumentum végén külön figyelmet kell fordítani az előre telepített csomagok listájára is. A nem felsorolt csomagok használatához telepítse azokat a parancsfájlba, például:`install.packages("zoo",repos = "http://cran.us.r-project.org")`
     
     > [!NOTE]
     > A függvények az X11 könyvtártól függenek, például a "View" nem támogatott, mert az X11-tár nincs előre telepítve.

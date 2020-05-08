@@ -10,12 +10,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: f7fb9e7867798f46c80fe052b5ee73b9151b0e0b
+ms.openlocfilehash: 8159ef45dee8a2f9ace69c2a5b66a29e4948d82c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "60381195"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982003"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect: ADSyncConfig PowerShell-hivatkozás
 Az alábbi dokumentáció a Azure AD Connect ADSyncConfig. psm1 PowerShell-moduljának hivatkozásait tartalmazza.
@@ -59,25 +59,24 @@ A SearchBase paramétertől kezdődően megkeresi az AD-t, és visszaadja az ös
 ### <a name="examples"></a>PÉLDÁK
 
 #### <a name="example-1"></a>1. PÉLDA
+A "contoso" tartományban letiltott örökléssel rendelkező objektumok keresése (alapértelmezés szerint csak a "organizationalUnit" objektumokat adja vissza)
 ```
-Find objects with disabled inheritance in 'Contoso' domain (by default returns 'organizationalUnit' objects only)
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso'
 ```
-
-Get-ADSyncObjectsWithInheritanceDisabled-SearchBase "contoso"
 
 #### <a name="example-2"></a>2. PÉLDA
+A "contoso" tartományban letiltott örökléssel rendelkező felhasználói objektumok keresése
 ```
-Find 'user' objects with disabled inheritance in 'Contoso' domain
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase 'Contoso' -ObjectClass 'user'
 ```
-
-Get-ADSyncObjectsWithInheritanceDisabled-SearchBase "contoso"-ObjectClass "felhasználó"
 
 #### <a name="example-3"></a>3. PÉLDA
+A szervezeti egységben letiltott örökléssel rendelkező összes típusú objektum megkeresése
 ```
-Find all types of objects with disabled inheritance in a OU
+Get-ADSyncObjectsWithInheritanceDisabled -SearchBase OU=AzureAD,DC=Contoso,DC=com -ObjectClass '*'
 ```
 
-Get-ADSyncObjectsWithInheritanceDisabled-SearchBase OU = AzureAD, DC = contoso, DC = com-ObjectClass ' * '
+
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
