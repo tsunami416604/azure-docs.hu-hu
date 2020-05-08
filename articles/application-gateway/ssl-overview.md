@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 3/19/2019
 ms.author: victorh
-ms.openlocfilehash: ae80b49c3bfb40743665768622d3f4a8a6990c12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 286c9329be38055808571d8d32c724d27a61cbf3
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311853"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855881"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>A TLS-lezárás és a végpontok közötti TLS áttekintése Application Gateway
 
@@ -28,6 +28,10 @@ Application Gateway támogatja a TLS-lezárást az átjárón, amely után a for
 - **Tanúsítványkezelő** – a tanúsítványokat csak az Application gatewayben kell megvásárolni és telepíteni, nem minden háttér-kiszolgálóra. Ez időt és pénzt takarít meg.
 
 A TLS-megszakítás konfigurálásához TLS/SSL-tanúsítványt kell hozzáadni a figyelőhöz, hogy az Application Gateway a TLS/SSL protokoll specifikációja szerint szimmetrikus kulcsot származtatjon. A szimmetrikus kulcs ezután az átjárónak továbbított forgalom titkosítására és visszafejtésére szolgál. A TLS/SSL-tanúsítványnak személyes információcsere (PFX) formátumúnak kell lennie. Ez a fájlformátum lehetővé teszi az Application Gateway által igényelt titkos kulcs exportálását a forgalom titkosításának és visszafejtésének elvégzéséhez.
+
+> [!IMPORTANT] 
+> Vegye figyelembe, hogy a figyelő tanúsítványa a teljes tanúsítványlánc feltöltését igényli. 
+
 
 > [!NOTE] 
 >
