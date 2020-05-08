@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 1fffb3eb10b7d3cbb3360a03112c3b4d7db8d109
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209485"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856895"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Az Azure Files üzembe helyezésének megtervezése
 [Azure Files](storage-files-introduction.md) kétféleképpen helyezhető üzembe: a kiszolgáló nélküli Azure-fájlmegosztás közvetlen csatlakoztatásával vagy az Azure-fájlmegosztás helyszíni gyorsítótárazásával Azure file Sync használatával. Az üzembe helyezési lehetőségek közül válassza ki azokat a beállításokat, amelyeket figyelembe kell vennie az üzemelő példány tervezésekor. 
@@ -84,7 +84,7 @@ További információ az átvitel közbeni titkosításról: [biztonságos átvi
     - A prémium szintű fájlmegosztás számlázása egy kiépített számlázási modellel történik, ami azt jelenti, hogy a kiépített tárterület mennyiségét kell fizetnie, és nem a ténylegesen kért tárterületet. 
     - A standard fájlmegosztás számlázása az utólagos elszámolású modell használatával történik, amely a tárterület alapdíjait tartalmazza a ténylegesen felhasznált tárterülethez, majd a megosztás használati módjától függően további tranzakciós költségeket is tartalmaz. A standard fájlmegosztás esetén a számla akkor is növekedni fog, ha az Azure-fájlmegosztás használatát (olvasás/írás/csatlakoztatás) is növeli.
 - **Redundancia-beállítások**
-    - A prémium fájlmegosztás csak a helyileg redundáns (LRS) és a Zone redundáns (ZRS) tárolók esetében érhető el. 
+    - A prémium fájlmegosztás csak a helyileg redundáns (LRS) és a Zone redundáns (ZRS) tárolók esetében érhető el.
     - A standard fájlmegosztás a helyileg redundáns, a zónák redundáns, a Geo-redundáns (GRS) és a Geo-zóna redundáns (GZRS) tárolók számára érhető el.
 - **Fájlmegosztás maximális mérete**
     - A prémium fájlmegosztást akár 100 TiB-ra is kiépítheti további munka nélkül.

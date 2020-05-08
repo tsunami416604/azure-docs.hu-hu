@@ -1027,7 +1027,7 @@
               href: /azure/databricks/security/access-control/pool-acl
               maintainContext: true
             - name: Feladatok hozzáférés-vezérlése
-              href: /azure/databricks/security/access-control/job-acl
+              href: /azure/databricks/security/access-control/jobs-acl
               maintainContext: true
             - name: Táblázat hozzáférés-vezérlése
               items:
@@ -1666,7 +1666,7 @@
                 - name: SCIM API (Felhasználók)
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-users
                 - name: SCIM API (Csoportok)
-                  href: /azure/databricks/dev-tools/api/latest/scim/scim-group
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-groups
               maintainContext: true
             - name: Titkos kulcsok
               href: /azure/databricks/dev-tools/api/latest/secrets

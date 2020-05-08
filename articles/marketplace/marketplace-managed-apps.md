@@ -1,5 +1,5 @@
 ---
-title: Azure Applications – felügyelt alkalmazás-ajánlat – közzétételi útmutató | Azure piactér
+title: Azure-alkalmazások által felügyelt alkalmazás-ajánlat – közzétételi útmutató – Azure Marketplace
 description: Ez a cikk ismerteti a felügyelt alkalmazások Azure Marketplace-en való közzétételének követelményeit.
 author: dsindona
 ms.service: marketplace
@@ -7,41 +7,48 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: dsindona
-ms.openlocfilehash: 946e7524eada600d5ef17b2663a3fea066dcfaa2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5bd89e406c3067585595479dc1d8351e9ea7eea8
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084872"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856113"
 ---
-# <a name="azure-applications-managed-application-offer-publishing-requirements"></a>Azure-alkalmazások: felügyelt alkalmazások ajánlatának közzétételi követelményei
+# <a name="publishing-guide-for-azure-managed-applications"></a>Közzétételi útmutató az Azure által felügyelt alkalmazásokhoz
 
-Ez a cikk ismerteti a felügyelt alkalmazás-ajánlat típusának követelményeit, amely az Azure-beli alkalmazások ajánlatának az Azure Marketplace-en való közzétételének egyik módja. A felügyelt alkalmazások az Azure Marketplace-en üzembe helyezett és számlázható Transact-ajánlatok. A felhasználó által megjelenő művelet hívása "Letöltés most".
+Az Azure-beli *felügyelt alkalmazások* egyik módja egy Azure-alkalmazás közzététele az Azure Marketplace-en. A felügyelt alkalmazások olyan Transact-ajánlatok, amelyek üzembe helyezése és számlázása az Azure Marketplace-en keresztül történik. A felhasználó által megjelenő művelet meghívása *most*.
 
-Ha a következő feltételek szükségesek, használja a felügyelt alkalmazás ajánlatának típusát:
+Ez a cikk a felügyelt alkalmazási ajánlat típusára vonatkozó követelményeket ismerteti.
 
-- Egy előfizetésen alapuló megoldást helyez üzembe az ügyfél számára vagy egy virtuális gépet vagy egy teljes IaaS-alapú megoldást.
+Használja a felügyelt alkalmazás ajánlat típusát a következő feltételek teljesülése esetén:
+
+- A virtuális gép (VM) vagy egy teljes infrastruktúra-szolgáltatás (IaaS) alapú megoldás használatával üzembe helyezi az előfizetésen alapuló megoldást az ügyfél számára.
 - Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje.
 
 >[!NOTE]
->Előfordulhat például, hogy egy partner egy SI vagy egy felügyelt szolgáltató (MSP).  
+>Egy partner lehet például rendszerintegrátor vagy felügyelt szolgáltató (MSP).  
 
-## <a name="managed-application-offer"></a>Felügyelt alkalmazás ajánlata
+## <a name="managed-application-offer-requirements"></a>A felügyelt alkalmazások ajánlatára vonatkozó követelmények
 
 |Követelmények |Részletek  |
 |---------|---------|
-|Az ügyfél Azure-előfizetéséhez van telepítve | A felügyelt alkalmazásokat az ügyfél előfizetésében kell telepíteni, és egy harmadik fél is felügyelheti. |
-|Számlázás és mérés    |  Az erőforrások az ügyfél Azure-előfizetésében lesznek kiépítve. Az utólagos elszámolású (ÁTTÉRÉSHEZ) virtuális gépeket a Microsofton keresztül, az ügyfél Azure-előfizetésével (ÁTTÉRÉSHEZ) számoljuk el. <br> A saját licenc használata esetén, míg a Microsoft az ügyfél-előfizetésben felmerülő infrastrukturális költségeket számlázza, a szoftveres licencelési díjakat közvetlenül az ügyfélnek kell átirányítani.        |
-|Azure-kompatibilis virtuális merevlemez (VHD)    |   A virtuális gépeket Windows vagy Linux rendszerre kell építeni.<ul> <ul> <li>A linuxos virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Az Azure-ban támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).</li> <li>A Windows virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Azure-alkalmazási ajánlat létrehozása](./partner-center-portal/create-new-azure-apps-offer.md).</li> </ul> |
+|Azure-előfizetés | A felügyelt alkalmazásokat az ügyfél előfizetéséhez kell telepíteni, de egy harmadik fél is felügyelheti. |
+|Számlázás és mérés    |  Az erőforrások az ügyfél Azure-előfizetésében érhetők el. Az utólagos elszámolású fizetési modellt használó virtuális gépeket a Microsofton keresztül, az ügyfél Azure-előfizetésén keresztül számlázzák. <br><br> A saját licencű virtuális gépekhez a Microsoft az ügyfél-előfizetésben felmerülő összes infrastrukturális költséget számláz, de a szoftveres licencelési díjakat közvetlenül az ügyféllel együtt kell lebonyolítani.        |
+|Azure-kompatibilis virtuális merevlemez (VHD)    |   A virtuális gépeket Windows vagy Linux rendszerre kell építeni.<br><br>A linuxos virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Az Azure-ban támogatott Linux-disztribúciók](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros).<br><br>A Windows virtuális merevlemezek létrehozásával kapcsolatos további információkért lásd: [Azure-alkalmazási ajánlat létrehozása](./partner-center-portal/create-new-azure-apps-offer.md). |
 
->[!NOTE]
-> A felügyelt alkalmazásokat a piactéren keresztül kell üzembe helyezni. Ha az ügyfél kommunikációja aggodalomra ad okot, az érdeklődők megosztásának engedélyezése után érdemes megszólítani az érdeklődőket.  
+---
 
->[!Note]
->A Cloud Solution Providers (CSP) Partner Channel opt-in mostantól elérhető. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért lásd: [felhőalapú megoldások szolgáltatói](./cloud-solution-providers.md).
+> [!NOTE]
+> A felügyelt alkalmazásokat az Azure Marketplace-en keresztül kell üzembe helyezni. Ha az ügyfél kommunikációja aggodalomra ad okot, az érdeklődők megosztásának engedélyezése után érdemes megszólítani az érdeklődőket.  
+
+> [!Note]
+> Már elérhető egy felhőalapú megoldás-szolgáltató (CSP) partneri csatorna. Az ajánlat Microsoft CSP-partneri csatornákon keresztüli forgalmazásával kapcsolatos további információkért tekintse meg a [Cloud Solution Providers](./cloud-solution-providers.md)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 
-- Ha még nem tette meg, [Ismerkedjen meg](https://azuremarketplace.microsoft.com/sell) az Azure piactérrel.
+Ha még nem tette meg, Ismerje meg, hogyan [növelheti Felhőbeli üzletét az Azure Marketplace-szel](https://azuremarketplace.microsoft.com/sell).
+
+A partner Centerben való regisztráció és a használat megkezdése:
+
 - Az ajánlat létrehozásához vagy befejezéséhez [Jelentkezzen be a partner Centerben](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) .
-- További információért [hozzon létre egy Azure](./partner-center-portal/create-new-azure-apps-offer.md) -beli alkalmazás-ajánlatot.
+- További információért lásd [Az Azure-alkalmazások létrehozásáról szóló ajánlatot](./partner-center-portal/create-new-azure-apps-offer.md) .

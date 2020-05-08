@@ -6,12 +6,12 @@ ms.date: 04/15/2020
 ms.custom:
 - MVC
 - fasttrack-edit
-ms.openlocfilehash: 3b68531319e83eece11833dba475020060e280b6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 87f746108599928d3e1b4a022abc1b3a3779ef29
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583317"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853554"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>A Hyper-V virtuális gépek migrálása az Azure-ba 
 
@@ -56,7 +56,7 @@ Az oktatóanyag elkezdése előtt:
 
 Adja hozzá a Azure Migrate: Server áttelepítési eszközt.
 
-- Ha követte a [VMWare virtuális gépek felmérésére](/tutorial-assess-hyper-v.md)szolgáló második oktatóanyagot, már beállított egy Azure Migrate projektet, és továbbra is hozzáadhatja az eszközt.
+- Ha követte a [VMWare virtuális gépek felmérésére](tutorial-assess-hyper-v.md)szolgáló második oktatóanyagot, már beállított egy Azure Migrate projektet, és továbbra is hozzáadhatja az eszközt.
 - Ha nem követte a második oktatóanyagot[, kövesse az alábbi utasításokat](how-to-add-tool-first-time.md) egy Azure Migrate projekt beállításához. A projekt létrehozásakor adja hozzá a Azure Migrate: Server áttelepítési eszközt.
 
 Ha beállított egy projektet, adja hozzá az eszközt az alábbiak szerint:
@@ -201,7 +201,7 @@ Végezzen el egy teszt-áttelepítést a következőképpen:
     ![Migrálás törlése](./media/tutorial-migrate-hyper-v/clean-up.png)
 
 
-## <a name="migrate-vms"></a>Virtuális gépek áttelepítése
+## <a name="migrate-vms"></a>Virtuális gép migrálása
 
 Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, áttelepítheti a helyszíni gépeket.
 

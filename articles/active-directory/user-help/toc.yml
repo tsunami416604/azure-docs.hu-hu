@@ -46,6 +46,8 @@
           href: user-help-auth-app-add-account-manual.md
     - name: Bejelentkezés a Microsoft Authenticator alkalmazással
       href: user-help-auth-app-sign-in.md
+    - name: Androidos korlátozások Kínában
+      href: auth-app-android-china.md
     - name: Fiókok biztonsági mentése és helyreállítása
       href: user-help-auth-app-backup-recovery.md
     - name: GYIK

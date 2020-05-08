@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: how-to
 ms.date: 04/20/2020
-ms.openlocfilehash: b7aac80b19a7c30d994f3c14e19047583d5334ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7902dfdf81d8e44921a5218d56effc90f433f02d
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81727111"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857405"
 ---
 # <a name="writing-plugins-for-azure-media-player"></a>Beépülő modulok írása Azure Media Playerhoz #
 
@@ -87,7 +87,7 @@ A beépülő [modulok](azure-media-player-plugin-gallery.md) létrehozásával k
 
 ### <a name="plugin-gallery"></a>Beépülő modul gyűjteménye ###
 
-A [bővítmények](http//:aka.ms/ampplugins) katalógusában számos beépülő modul található, amelyekkel a Közösség már hozzájárult olyan funkciókhoz, mint az idővonal-jelölők, a nagyítás, az elemzés és egyebek. A lap hozzáférést biztosít a beépülő modulhoz, valamint útmutatást nyújt a beállításához, valamint egy bemutatót, amely bemutatja a beépülő modult működés közben. Ha olyan remek beépülő modult hoz létre, amelyet a katalógusba szeretne foglalni, nyugodtan elküldheti, hogy bejelentkezzen.
+A [bővítmények](https://aka.ms/ampplugins) katalógusában számos beépülő modul található, amelyekkel a Közösség már hozzájárult olyan funkciókhoz, mint az idővonal-jelölők, a nagyítás, az elemzés és egyebek. A lap hozzáférést biztosít a beépülő modulhoz, valamint útmutatást nyújt a beállításához, valamint egy bemutatót, amely bemutatja a beépülő modult működés közben. Ha olyan remek beépülő modult hoz létre, amelyet a katalógusba szeretne foglalni, nyugodtan elküldheti, hogy bejelentkezzen.
 
 ## <a name="next-steps"></a>További lépések ##
 

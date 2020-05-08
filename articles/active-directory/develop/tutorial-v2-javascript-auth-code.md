@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/22/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ee156c8118a67061d0a000867ee64fe1f3ebd18c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f664f5fa4219a8bcc32230b352e90cc2516faceb
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182138"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890384"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa---msaljs-20"></a>Jelentkezzen be a felhasználókba, és hívja meg a Microsoft Graph API-t egy JavaScript egyoldalas alkalmazásból (SPA) – MSAL. js 2,0
 
@@ -282,7 +282,7 @@ Most már rendelkezik egy egyszerű kiszolgálóval a gyógyfürdő kiszolgálá
 
 ## <a name="register-your-application"></a>Alkalmazás regisztrálása
 
-Kövesse az utasításokat [egy új egyoldalas alkalmazás regisztrálásához](https://docs.microsoft.com/zure/active-directory/develop/scenario-spa-app-registration).
+Kövesse az utasításokat [egy új egyoldalas alkalmazás regisztrálásához](https://docs.microsoft.com/azure/active-directory/develop/scenario-spa-app-registration).
 
 #### <a name="set-a-redirect-url-for-nodejs"></a>Adja meg a Node. js átirányítási URL-címét
 

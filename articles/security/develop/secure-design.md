@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: c9e3cfa689f2e528f4d20e796017ae9d91c29fe2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 533f287693ca8aac76a3233674d95f3f49d4ae22
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461718"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857174"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztonsági tevékenységeket és vezérlőket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) követelményei és tervezési szakaszaiban figyelembe venni kívánt biztonsági kérdések és fogalmak betanítása, valamint az erőforrások képzése. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások kialakításához használhat.
@@ -222,11 +222,11 @@ Szeretné, hogy a szoftverfejlesztők tartományi rendszergazdai jogokkal rendel
 Győződjön meg arról, hogy az alkalmazás a [legkevesebb jogosultságot](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models#in-applications) alkalmazza a hozzáférési szokásaik során.
 
 > [!NOTE]
->  A minimális jogosultságú szabályoknak a szoftverre és a szoftvert létrehozó személyekre kell vonatkozniuk. A szoftverfejlesztők nagy kockázatot jelenthetnek az informatikai biztonságra, ha túl sok hozzáférést kapnak. A következmények súlyosak lehetnek, ha egy fejlesztő rosszindulatú szándékkal rendelkezik, vagy túl sok hozzáférést kap. Javasoljuk, hogy a fejlesztési életciklus során a lehető legkevesebb jogosultságot alkalmazza a fejlesztőknek.
+> A minimális jogosultságú szabályoknak a szoftverre és a szoftvert létrehozó személyekre kell vonatkozniuk. A szoftverfejlesztők nagy kockázatot jelenthetnek az informatikai biztonságra, ha túl sok hozzáférést kapnak. A következmények súlyosak lehetnek, ha egy fejlesztő rosszindulatú szándékkal rendelkezik, vagy túl sok hozzáférést kap. Javasoljuk, hogy a fejlesztési életciklus során a lehető legkevesebb jogosultságot alkalmazza a fejlesztőknek.
 
 #### <a name="implement-just-in-time-access"></a>Igény szerinti hozzáférés megvalósítása
 
-Igény *szerinti (JIT* ) hozzáférés megvalósítása a jogosultságok expozíciós idejének további csökkentése érdekében. [Azure ad Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-build-visibility-and-take-full-control-of-admin-activity) használata a következőhöz:
+Igény *szerinti (JIT* ) hozzáférés megvalósítása a jogosultságok expozíciós idejének további csökkentése érdekében. [Azure ad Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#stage-3-take-control-of-admin-activity) használata a következőhöz:
 
 - Adja meg a felhasználóknak azokat az engedélyeket, amelyekre csak JIT szükséges.
 - A lerövidített időtartamhoz rendeljen hozzá szerepköröket úgy, hogy a jogosultságok automatikusan visszavonásra kerülnek.
