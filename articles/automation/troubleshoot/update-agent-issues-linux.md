@@ -9,36 +9,39 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: dadfe0022cfb99703222ba7a91ca3ec6f5fce645
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836631"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927972"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>A Linux frissítési ügynökkel kapcsolatos problémák elhárítása
 
-Számos oka lehet annak, hogy a gép a Azure Automation Update Management megoldásban nem felkészültként (kifogástalan) jelenik meg. Update Management a hibrid Runbook Worker Agent állapotának ellenőrzését a probléma okának megállapításához. Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline). 
+Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifogástalan) állapotban a Update Managementban. A Linux Hybrid Runbook Worker Agent állapotát a probléma okának megállapításához tekintheti meg. A következő három készültségi állapotú gép:
 
-A gépek három készültségi állapotban lehetnek:
-
-* **Készen áll**: a hibrid Runbook-feldolgozó üzembe lett helyezve, és legalább egy órával ezelőtt volt látható.
-* **Leválasztva**: a hibrid Runbook Worker üzembe helyezése egy órával ezelőtt történt, és utoljára volt látható.
-* **Nincs konfigurálva**: a hibrid Runbook-feldolgozó nem található vagy nem fejeződött be.
+* Készen áll: a hibrid Runbook-feldolgozó üzembe lett helyezve, és legalább egy órával ezelőtt volt látható.
+* Leválasztva: a hibrid Runbook Worker üzembe helyezése egy órával ezelőtt történt, és utoljára volt látható.
+* Nincs konfigurálva: a hibrid Runbook-feldolgozó nem található vagy nem fejeződött be.
 
 > [!NOTE]
 > A Azure Portal megjelenítése és a gép aktuális állapota között enyhe késés adható meg.
 
+Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépekhez tartozó hibakeresőt a Azure Portal és a nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline). 
+
+> [!NOTE]
+> A hibakereső parancsfájl jelenleg nem irányítja át a forgalmat egy proxykiszolgálón keresztül, ha van ilyen konfigurálva.
+
 ## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
 
-Azure-gépek esetén a portál **frissítési ügynök készültsége** oszlopában válassza a **hibakeresés** hivatkozást az **ügynök frissítése** lap megnyitásához. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépekkel kapcsolatos hibákért tekintse meg az "offline hibakeresés" című szakaszban található utasításokat.
+Azure-gépek esetén a portál **frissítési ügynök készültsége** oszlopában válassza a **hibakeresés** hivatkozást az ügynök frissítése lap megnyitásához. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépekkel kapcsolatos hibákért tekintse meg az "offline hibakeresés" című szakaszban található utasításokat.
 
 ![Virtuálisgép-lista lapja](../media/update-agent-issues-linux/vm-list.png)
 
 > [!NOTE]
 > Az ellenőrzésekhez szükség van a virtuális gép futtatására. Ha a virtuális gép nem fut, akkor **indítsa el a virtuális gépet** .
 
-Az **ügynök frissítése** lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/linux/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
+Az ügynök frissítése lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/linux/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
 
 ![Hibakeresési oldal](../media/update-agent-issues-linux/troubleshoot-page.png)
 
@@ -84,6 +87,9 @@ Ez az ellenőrzés ellenőrzi, hogy a Linux Log Analytics-ügynöke a hibrid Run
 ### <a name="hybrid-runbook-worker-status"></a>Hibrid Runbook Worker állapota
 
 Ez az ellenőrzés ellenőrzi, hogy a hibrid Runbook Worker fut-e a gépen. Ha a hibrid Runbook Worker megfelelően fut, a következő folyamatoknak kell szerepelniük. További információ: [a Linux rendszerhez készült log Analytics-ügynök hibaelhárítása](hybrid-runbook-worker.md#oms-agent-not-running).
+
+> [!NOTE]
+> Ha a hibrid Runbook-feldolgozó nem fut, és az operatív végpont meghiúsult, a frissítés sikertelen lehet. Update Management letölti a hibrid feldolgozói csomagokat az operatív végpontról.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>

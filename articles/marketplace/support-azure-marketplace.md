@@ -1,24 +1,22 @@
 ---
-title: A kereskedelmi piactér támogatása | Azure piactér
-description: Az Azure Marketplace és a AppSource támogatási információi és hivatkozásai
+title: Microsoft kereskedelmi Marketplace-támogatás – Azure Marketplace
+description: Támogatási információk és hivatkozások az Azure Marketplace-hez és a AppSource-hez a partner Centerben
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/16/2020
+ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 3871ef232d9a2315ece632f6f764f8377a8435c5
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 9dacbbac1caad33a6ab2f5f09d3f6c9d31c32bb7
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159915"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871553"
 ---
-# <a name="support-for-the-marketplace"></a>A piactér támogatása
+# <a name="support-for-microsoft-commercial-marketplace"></a>A Microsoft kereskedelmi piactér támogatása
 
-Az alábbi lista a piactér támogatási lehetőségeit sorolja fel.  
-
-Emellett a [C + AI közösségi fórum Marketplace-csatornáján](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)is választ kaphat kérdéseire.  
+Kérdése van a Microsoft kereskedelmi Piactéri közzétevővel kapcsolatos első lépések kapcsán? Az alábbi lista a kereskedelmi piactér támogatási lehetőségeit sorolja fel. A következő erőforrásokon kívül a [C + AI közösségi fórum Marketplace-csatornáján](https://www.microsoftpartnercommunity.com/t5/Marketplace/bd-p/2222)is választ kaphat kérdéseire.  
 
 ## <a name="onboarding"></a>Előkészítés
 

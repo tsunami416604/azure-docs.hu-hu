@@ -1,0 +1,24 @@
+---
+author: DCtheGeek
+ms.service: azure-policy
+ms.topic: include
+ms.date: 05/05/2020
+ms.author: dacoulte
+ms.custom: generated
+ms.openlocfilehash: d7759dbf1377cb46a9868dbcf01c61e20a7a2144
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82966035"
+---
+|Name |Leírás |Hatás (ok) |Verzió |GitHub |
+|---|---|---|---|---|
+|[Az engedélyezett tanúsítványok kulcs-típusainak kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1151cede-290b-4ba0-8b38-0ad145ac888f) |Ez a szabályzat a tanúsítványok engedélyezett kulcs-típusait kezeli. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_AllowedKeyTypes.json) |
+|[Az engedélyezett görbék nevének kezelése az elliptikus görbe titkosítási tanúsítványainak esetében](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fbd78111f-4953-4367-9fd5-7e08808b54bf) |Ez a szabályzat az elliptikus görbe titkosítási tanúsítványokhoz engedélyezett elliptikus görbék nevét kezeli. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_EC_AllowedCurveNames.json) |
+|[A tanúsítvány élettartama művelet eseményindítóinak kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F12ef42cb-9903-4e39-9c26-422d29570417) |Ez a házirend a tanúsítvány élettartama művelet-eseményindítók konfigurációját kezeli a tanúsítvány lejárata előtt. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_LifetimeAction.json) |
+|[Tanúsítvány érvényességi időtartamának kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F0a075868-4c26-42ef-914c-5bc007359560) |Ez a szabályzat a tanúsítványok maximális érvényességi időtartamát kezeli hónapokban. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_ValidityPeriod.json) |
+|[Nem integrált HITELESÍTÉSSZOLGÁLTATÓ által kiadott tanúsítványok kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa22f4a40-01d3-4c7d-8071-da157eeff341) |Ez a házirend a tanúsítványokat egy megadott, nem integrált hitelesítésszolgáltató állítja ki. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_CustomCAs.json) |
+|[Integrált HITELESÍTÉSSZOLGÁLTATÓ által kiadott tanúsítványok kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |Ez a szabályzat kezeli a tanúsítványokat egy megadott Key Vault integrált hitelesítésszolgáltató állítja ki. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |
+|[A megadott számú napon belül lévő tanúsítványok kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ff772fb64-8e40-40ad-87bc-7706e1949427) |Ez a szabályzat a megadott számú napon belüli tanúsítványokat kezeli a lejárati dátumig. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Expiry_ByDays.json) |
+|[RSA-tanúsítványok minimális kulcsának kezelése](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fcee51871-e572-4576-855c-047c820360f0) |Ez a szabályzat az RSA-tanúsítványok minimális kulcsának méretét kezeli. |naplózás, megtagadás, letiltva |1.0.0 – előzetes verzió |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_RSA_MinimumKeySize.json) |
