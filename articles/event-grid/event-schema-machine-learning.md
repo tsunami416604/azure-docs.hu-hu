@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: spelluru
-ms.openlocfilehash: 7d9af420c7e2b47d2aeb4a8bf42ee138a605b305
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f77a76d6acb67c739e0adf186d23e9b16ff7e2ee
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393279"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928873"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
 
@@ -224,7 +224,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
 | ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
@@ -235,7 +235,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | DataDriftId | sztring | Az eseményt kiváltó adatdrift-figyelő azonosítója. |
 | DataDriftName | sztring | Az eseményt kiváltó adatdrift-figyelő neve. |
@@ -248,7 +248,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Típus | Description |
 | -------- | ---- | ----------- |
 | ExperimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
 | ExperimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
@@ -267,5 +267,5 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetési séma](subscription-creation-schema.md)
-* A Azure Event Grid és a Azure Machine Learning használatának bemutatása: [Azure Machine learning események felhasználása](/azure/machine-learning/service/concept-event-grid-integration)
-* A Azure Event Grid és a Azure Machine Learning használatát bemutató példát az [Event Driven Machine learning-munkafolyamatok létrehozása](/azure/machine-learning/service/how-to-use-event-grid) című témakörben talál.
+* A Azure Event Grid és a Azure Machine Learning használatának bemutatása: [Azure Machine learning események felhasználása](/azure/machine-learning/concept-event-grid-integration)
+* A Azure Event Grid és a Azure Machine Learning használatát bemutató példát az [Event Driven Machine learning-munkafolyamatok létrehozása](/azure/machine-learning/how-to-use-event-grid) című témakörben talál.

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 04/03/2020
-ms.openlocfilehash: e53164d1e25f8a8d0a14d21c0544d95cf912fe9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 14d4a3616a1be0964029ddfd8d2697df8e4e8031
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313962"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929332"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Külső metaadattárak használata az Azure HDInsightban
 
@@ -41,6 +41,8 @@ Alapértelmezés szerint a HDInsight létrehoz egy metaadattár minden fürt tí
 * Az alapértelmezett metaadattár az alapszintű Azure SQL DB-t használja, amely öt DTU (adatbázis-tranzakciós egység) korlátot tartalmaz.
 Ez az alapértelmezett metaadattár jellemzően viszonylag egyszerű számítási feladatokhoz használatos. Olyan munkaterhelések, amelyek nem igényelnek több fürtöt, és nem kell megőrizniük a fürt életciklusán túli metaadatokat.
 
+* Éles számítási feladatokhoz ajánlott áttelepíteni egy külső metaadattár. További részletekért tekintse meg az alábbi szakaszt.
+
 ## <a name="custom-metastore"></a>Egyéni metaadattár
 
 A HDInsight az éles fürtökhöz ajánlott egyéni metaadattárak is támogatja:
@@ -64,6 +66,8 @@ A HDInsight az éles fürtökhöz ajánlott egyéni metaadattárak is támogatja
 Hozzon létre vagy rendelkezzen meglévő Azure SQL Database a HDInsight-fürthöz tartozó egyéni Hive-metaadattár beállítása előtt.  További információ: rövid útmutató [: önálló adatbázis létrehozása az Azure SQL dB-ben](https://docs.microsoft.com/azure/sql-database/sql-database-single-database-get-started?tabs=azure-portal).
 
 A fürt létrehozása során a HDInsight szolgáltatásnak csatlakoznia kell a külső metaadattár, és ellenőriznie kell a hitelesítő adatait. Azure SQL Database tűzfalszabályok konfigurálásával engedélyezheti az Azure-szolgáltatások és-erőforrások számára a kiszolgáló elérését. Engedélyezze ezt a beállítást a Azure Portal a **kiszolgáló tűzfalának beállítása**elem kiválasztásával. Ezután válassza a **nincs** a **nyilvános hálózati hozzáférés megtagadása**alatt lehetőséget, és **Igen** , az **Azure-szolgáltatások és-erőforrások engedélyezése** alatt az Azure SQL Database-kiszolgálóhoz vagy-adatbázishoz való hozzáféréshez a kiszolgálóhoz. További információt az [IP-Tűzfalszabályok létrehozásával és kezelésével](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) foglalkozó témakörben talál.
+
+Az SQL-áruházakhoz tartozó magánhálózati végpontok nem támogatottak.
 
 ![kiszolgáló tűzfalának beállítása gomb](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 
@@ -94,6 +98,8 @@ A fürtöt egy korábban létrehozott Azure SQL Databasere irányíthatja bármi
 * Ha több fürtön keresztül oszt meg egy metaadattár, győződjön meg arról, hogy az összes fürt ugyanazt a HDInsight-verziót használja. A különböző kaptár-verziók eltérő metaadattár-adatbázis-sémákat használnak. Például nem oszthat meg metaadattár a kaptár 2,1 és a kaptár 3,1 verziójú fürtök között.
 
 * A HDInsight 4,0-ben a Spark és a kaptár független katalógusokat használ a SparkSQL-vagy kaptár-táblák eléréséhez. A Spark-katalógusban a Spark által létrehozott tábla él. A kaptárak által létrehozott tábla a kaptár-katalógusban él. Ez a viselkedés eltér a HDInsight 3,6-nél, ahol a kaptár és a Spark közös katalógusa található. A HDInsight 4,0 struktúra és Spark integrációja a kaptár Warehouse-összekötőre (ÜZEMELTETHETŐ WEBMAG) támaszkodik. A ÜZEMELTETHETŐ WEBMAG a Spark és a kaptár közötti hídként működik. Tudnivalók [a kaptár-tárház összekötőről](../hdinsight/interactive-query/apache-hive-warehouse-connector.md).
+
+* A HDInsight 4,0-ben, ha meg szeretné osztani a kaptár és a Spark közötti metaadattár, ehhez módosítsa a metaadattár. Catalog. default tulajdonságot a Spark-fürtben található struktúrára. Ezt a tulajdonságot a Ambari Advanced spark2-kaptár-site-felülbírálásban találja. Fontos tisztában lenni azzal, hogy a metaadattár megosztása csak a külső struktúra táblái esetében működik, ez nem fog működni, ha belső/felügyelt struktúra-táblákat vagy savas táblákat tartalmaz.  
 
 ## <a name="apache-oozie-metastore"></a>Apache Oozie metaadattár
 

@@ -3,16 +3,16 @@ title: Tároló csoportjának frissítése
 description: Megtudhatja, hogyan frissítheti a futó tárolókat a Azure Container Instances-tároló csoportjaiban.
 ms.topic: article
 ms.date: 04/17/2020
-ms.openlocfilehash: dc10e38aa6be9473f89df6f7fa10a72f63d9ada8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cfc27de8caae98dd1c3065b5ed06433c4baaa5d2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854448"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928720"
 ---
 # <a name="update-containers-in-azure-container-instances"></a>Tárolók frissítése az Azure Container Instancesben
 
-A tároló példányainak normál működése során előfordulhat, hogy frissítenie kell a futó tárolókat egy [tároló csoportba](container-instances-container-groups.md). Előfordulhat például, hogy frissíteni kíván egy tulajdonságot, például egy rendszerkép verzióját, egy DNS-nevet vagy egy környezeti változót, vagy frissítenie kell egy tulajdonságot egy olyan tárolóban, amelynek az alkalmazása összeomlott.
+A tároló példányainak normál működése során előfordulhat, hogy frissítenie kell a futó tárolókat egy [tároló csoportba](./container-instances-container-groups.md). Előfordulhat például, hogy frissíteni kíván egy tulajdonságot, például egy rendszerkép verzióját, egy DNS-nevet vagy egy környezeti változót, vagy frissítenie kell egy tulajdonságot egy olyan tárolóban, amelynek az alkalmazása összeomlott.
 
 Frissítse a tárolókat egy futó tároló csoportban egy meglévő csoport legalább egy módosított tulajdonsággal való újbóli üzembe helyezésével. Amikor frissít egy tároló csoportot, a csoportban lévő összes futó tárolót a rendszer helyben indítja újra, általában ugyanarra az alapul szolgáló tároló-gazdagépre.
 
@@ -28,7 +28,7 @@ Meglévő tároló csoport frissítése:
 * Adja meg a korábban megadott értékekkel rendelkező egyéb tulajdonságokat. Ha nem állít be értéket a tulajdonsághoz, az visszaáll az alapértelmezett értékére.
 
 > [!TIP]
-> A [YAML-fájlok](container-instances-container-groups.md#deployment) segítenek fenntartani egy tároló csoport telepítési konfigurációját, és kiindulási pontot biztosítanak a frissített csoportok telepítéséhez. Ha más módszert használt a csoport létrehozásához, exportálhatja a konfigurációt YAML az [az Container export][az-container-export]paranccsal. 
+> A [YAML-fájlok](./container-instances-container-groups.md#deployment) segítenek fenntartani egy tároló csoport telepítési konfigurációját, és kiindulási pontot biztosítanak a frissített csoportok telepítéséhez. Ha más módszert használt a csoport létrehozásához, exportálhatja a konfigurációt YAML az [az Container export][az-container-export]paranccsal. 
 
 ### <a name="example"></a>Példa
 
@@ -80,7 +80,7 @@ Amikor töröl egy tároló csoportot, és újból létrehozza, azt nem "újból
 
 Ebben a cikkben többször is említettük a **Container csoportot**. Azure Container Instances összes tárolója egy tároló csoportba van telepítve, és a tárolók csoportjai több tárolót is tartalmazhatnak.
 
-[Tárolócsoportok az Azure Container Instancesben](container-instances-container-groups.md)
+[Tárolócsoportok az Azure Container Instancesben](./container-instances-container-groups.md)
 
 [Többtárolós csoport üzembe helyezése](container-instances-multi-container-group.md)
 

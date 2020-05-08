@@ -90,7 +90,7 @@
             - name: 1 – Alkalmazás magas rendelkezésre állásának biztosítása
               href: storage-create-geo-redundant-storage.md
             - name: 2 – Az elsődleges régióból származó adatok olvasási hibájának szimulálása
-              href: storage-simulate-failure-ragrs-account-app.md
+              href: simulate-primary-region-failure.md
         - name: Blobok titkosítása és visszafejtése az Azure Key Vaulttal
           href: storage-encrypt-decrypt-blobs-key-vault.md
     - name: Példák
@@ -107,6 +107,9 @@
           href: storage-samples-blobs-powershell.md
         - name: Azure CLI
           href: storage-samples-blobs-cli.md
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Alapelvek
       items:
         - name: Tárfiókok
@@ -146,13 +149,17 @@
             - name: Az Azure Private Endpoints használata
               href: ../common/storage-private-endpoints.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Adatredundancia
+          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Adatvédelem
           items:
-            - name: Adatredundancia
-              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Vészhelyreállítás és feladatátvétel
-              href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Magas rendelkezésre állású alkalmazások tervezése
-              href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Verziókezelés
+              href: versioning-overview.md
+            - name: Helyreállítható törlés
+              href: soft-delete-overview.md
+            - name: Pillanatképek
+              href: snapshots-overview.md
+            - name: Csatorna módosítása
+              href: storage-blob-change-feed.md
         - name: Hozzáférési és teljesítményszintek
           items:
             - name: Hozzáférési szintek
@@ -163,6 +170,8 @@
               href: storage-blob-performance-tiers.md
             - name: Az Azure Blob Storage-életciklus felügyelete
               href: storage-lifecycle-management-concepts.md
+        - name: Vészhelyreállítás és feladatátvétel
+          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Teljesítmény, méretezés és költségoptimalizálás'
           items:
             - name: Teljesítmény és kapacitás – ellenőrzőlista
@@ -247,8 +256,6 @@
                   href: ../common/storage-monitoring-diagnosing-troubleshooting.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Eseménykezelés
           href: storage-blob-event-overview.md
-        - name: Csatorna módosítása
-          href: storage-blob-change-feed.md
         - name: Lapblobok funkciói
           href: storage-blob-pageblob-overview.md
         - name: Statikus webhelyek
@@ -282,8 +289,6 @@
               href: storage-blob-properties-metadata.md
             - name: Blob másolása (.NET)
               href: storage-blob-copy.md
-            - name: Blobpillanatképek létrehozása és kezelése (.NET)
-              href: storage-blob-snapshots.md
         - name: Blobadatok védelme
           items:
             - name: Blobadatok hozzáférésének engedélyezése
@@ -370,16 +375,28 @@
                   href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Módosíthatatlansági szabályzatok beállítása és kezelése
               href: storage-blob-immutability-policies-manage.md
-        - name: Az adatreplikálás módjának megváltoztatása
-          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Vészhelyreállítás
+        - name: Adatredundancia kezelése
+          items:
+            - name: Az adatreplikálás módjának megváltoztatása
+              href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+            - name: Magas rendelkezésre állású alkalmazások tervezése
+              href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Az adatok védelme
+          items:
+            - name: Blob verziószámozásának engedélyezése
+              href: versioning-enable.md
+            - name: Helyreállítható törlés engedélyezése
+              href: soft-delete-enable.md
+            - name: Pillanatképek készítése (.NET)
+              href: snapshots-manage-dotnet.md
+            - name: Változáscsatorna-naplók feldolgozása
+              href: storage-blob-change-feed-how-to.md
+        - name: Vészhelyreállítás kezelése
           items:
             - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
               href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Fiók feladatátvételének indítása
               href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Törölt blobok helyreállítása
-              href: storage-blob-soft-delete.md
         - name: A Storage Emulator használata
           items:
             - name: A nyílt forráskódú Azurite emulátor használata
@@ -398,8 +415,6 @@
           href: storage-blob-event-quickstart.md
         - name: Blobindex felhasználása
           href: storage-blob-index-how-to.md
-        - name: Változáscsatorna-naplók feldolgozása
-          href: storage-blob-change-feed-how-to.md
         - name: Adatátvitel
           items:
             - name: AzCopy
@@ -639,6 +654,11 @@
           href: data-lake-storage-tutorial-extract-transform-load-hive.md
         - name: Adatok beszúrása Databricks Delta-táblázatokba az Event Grid használatával
           href: data-lake-storage-events.md
+    - name: Példák
+      items:
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ../common/policy-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Alapelvek
       items:
         - name: Big Data feldolgozása
