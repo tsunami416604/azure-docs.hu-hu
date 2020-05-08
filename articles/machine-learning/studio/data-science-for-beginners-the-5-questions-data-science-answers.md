@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
-ms.openlocfilehash: af0611e121228a587e159bd4e6529c807132d16d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 350363641056802e09eea90c85b4ccf8e33d9051
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204443"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930148"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
 Gyors bevezetést nyerhet az adatelemzésből az adatelemzésből a *kezdők számára* öt rövid videóban egy legfontosabb adattudóstól. Ezek a videók alapszintű, de hasznosak, függetlenül attól, hogy az adatelemzést vagy az adatszakértőkkel való munkát érdekli.
@@ -136,4 +136,4 @@ Tehát az az 5 kérdés, hogy az adatelemzés válaszolni tud.
 
 ## <a name="next-steps"></a>További lépések
 * [Próbálja ki az első adatelemzési kísérletet Machine Learning Studio (klasszikus)](create-experiment.md)
-* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)
+* [Bevezetés a Machine Learning on Microsoft Azure](/azure/machine-learning/overview-what-is-azure-ml)

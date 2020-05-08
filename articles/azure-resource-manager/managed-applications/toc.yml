@@ -25,6 +25,9 @@
       href: powershell-samples.md
     - name: Felügyelt alkalmazási megoldások
       href: sample-projects.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Meghatározás megtekintése összetevő

@@ -11,12 +11,12 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: fab46f7d7ae74ad643ce3f122b27b0dc767f5a78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01fa9c111371c3ede5d3be33f4066f325bad4680
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78399684"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929247"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
@@ -24,12 +24,12 @@ Megtudhatja, hogyan használhatja a Docker-telepítési hibákat a Azure Contain
 
 Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre.
 
-Az ajánlott és a legmodernebb módszer a modell üzembe helyezéséhez a [Model. Deploy () API-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) t használja egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás létrehoz egy alap Docker-rendszerképet az üzembe helyezési fázisban, és egy hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
+Az ajánlott és a legmodernebb módszer a modell üzembe helyezéséhez a [Model. Deploy () API-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) t használja egy [környezeti](how-to-use-environments.md) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás létrehoz egy alap Docker-rendszerképet az üzembe helyezési fázisban, és egy hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
 
 1. Regisztrálja a modellt a munkaterület-modell beállításjegyzékében.
 
 2. Következtetési konfiguráció meghatározása:
-    1. Hozzon létre egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
+    1. Hozzon létre egy [környezeti](how-to-use-environments.md) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
     2. Hozzon létre egy következtetési konfigurációt (InferenceConfig-objektumot) a környezet és a pontozási parancsfájl alapján.
 
 3. A modell üzembe helyezése az Azure Container instance (ACI) szolgáltatásban vagy az Azure Kubernetes szolgáltatásban (ak).
@@ -50,7 +50,7 @@ További információ a folyamatról a [modellkezelés](concept-model-management
 
 Ha bármilyen problémába ütközik, az első lépés az, hogy az üzembe helyezési feladatot (előző Leírás) a probléma elkülönítése érdekében egyedi lépésekbe bontsa.
 
-Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-val egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektummal bemeneti paraméterként, a kód három fő lépésből bontható:
+Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-val egy [környezeti](how-to-use-environments.md) objektummal bemeneti paraméterként, a kód három fő lépésből bontható:
 
 1. Regisztrálja a modellt. Íme néhány mintakód:
 

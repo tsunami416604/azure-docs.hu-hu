@@ -4,12 +4,12 @@ description: Méretezés Microsoft Azure
 ms.subservice: autoscale
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: faf393c01c494538ab647f39e2c4eb1d823d1abd
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.openlocfilehash: 08b39fce046ea9dee02ddf6ffe34971b81c3b5b7
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791442"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928703"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure"></a>Az autoskálázás áttekintése Microsoft Azure
 Ez a cikk ismerteti, hogy mi Microsoft Azure az autoscale, annak előnyeit és a használatának első lépéseit.  
@@ -105,7 +105,8 @@ Beállíthatja az autoscale on
 | Virtual Machines: Windows-példa |[Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets](../../azure-monitor/platform/autoscale-virtual-machine-scale-sets.md) |
 | API Management szolgáltatás|[Az Azure API Management-példány automatikus skálázása](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 | Azure Adatkezelő-fürtök|[Az Azure Adatkezelő-fürtök méretezése a változó igények kielégítése érdekében](https://docs.microsoft.com/azure/data-explorer/manage-cluster-horizontal-scaling)|
-
+| Azure App Service |[Alkalmazások vertikális felskálázása az Azure app Service-ben](https://docs.microsoft.com/azure/app-service/manage-scale-up)|
+| Logic Apps |[Integrációs szolgáltatási környezet (ISE) kapacitásának hozzáadása](https://docs.microsoft.com/azure/logic-apps/ise-manage-integration-service-environment#add-ise-capacity)|
 ## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni az autoscale használatával kapcsolatban, használja az előzőleg felsorolt, vagy a következő erőforrásokra vonatkozó információkat:
 

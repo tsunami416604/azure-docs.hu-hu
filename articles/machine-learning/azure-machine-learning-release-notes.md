@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 03/10/2020
-ms.openlocfilehash: fca57f846b47435d23700c95c03e7246713a9b0c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 40ea1bfe65c963dbbe78c8aca8f5e9e96fd986cb
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780130"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928890"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -71,7 +71,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + A rendszer felső korlátot adott hozzá a fájl méretéhez a feltöltött magyarázatokon a vizualizációs adathoz.
   + **azureml-train-automl-client**
     + A label_column_name & weight_column_name paramétereinek explicit ellenőrzése a AutoMLConfig karakterlánc típusúra.
-  + **azureml-contrib-pipeline-steps**
+  + **azureml – egytörzsű folyamatok – lépések**
     + A ParallelRunStep mostantól támogatja az adatkészletet a pipeline paraméterként. A felhasználó létrehozhatja a folyamatokat a minta adatkészlettel, és az új folyamat futtatásához megváltoztathatja ugyanazt a típusú (fájl vagy táblázatos) bemeneti adatkészletet.
 
   
@@ -92,7 +92,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Engedélyezve van az oszlop céljának featurization testreszabása az előrejelzési feladatokhoz a featurization config alapján. Az előrejelzési feladatokhoz a numerikus és a kategorikus, az oszlop célja már támogatott.
     + A drop Column featurization testreszabása az előrejelzési feladatokhoz featurization-konfiguráció alapján.
     + Engedélyezve van a imputálási testreszabása az előrejelzési feladatokhoz a featurization config alapján. Mostantól támogatott a imputálási és a középérték, a medián, a most_frequent és az állandó érték imputálási.
-  + **azureml – egytörzsű folyamatok – lépések**
+  + **azureml-contrib-pipeline-steps**
     + A ParallelRunConfig átadandó karakterlánc-számítási nevek elfogadása
   + **azureml-core**
     +  A Environment. Clone (new_name) API hozzáadása a környezeti objektum másolatának létrehozásához
@@ -104,7 +104,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Adatkészlet: hozzáadunk egy indexet a idősor oszlophoz, amikor a idősor-adatkészletet Panda-dataframes éri el, amely a idősor-alapú adathozzáféréshez való hozzáférés felgyorsítására szolgál.  Korábban az index ugyanazt a nevet kapta, mint az időbélyeg oszlop, amely zavaros felhasználókat mutat, amely a tényleges timestamp oszlop, és amely az index. Most nem adunk meg konkrét nevet az indexnek, mert nem használható oszlopként. 
     + Adatkészlet: rögzített adatkészlet-hitelesítési probléma a szuverén felhőben.
     + Adatkészlet: az `Dataset.to_spark_dataframe` Azure PostgreSQL-adattárokból létrehozott adatkészletek rögzített hibája.
-  + **azureml – értelmezés**
+  + **azureml-interpret**
     + Globális pontszámok hozzáadása a vizualizációhoz, ha a helyi fontossági értékek ritkák
     + Frissített azureml – a következő értelmezési értelmezést használja: Community 0,9. *
     + Kijavítva a probléma a ritka kiértékelési adattal rendelkező magyarázat letöltésével
@@ -197,7 +197,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Funkciók beolvasása a MirWebservice osztályban a hozzáférési jogkivonat lekéréséhez
     + A MirWebservice jogkivonat-hitelesítés használata alapértelmezés szerint a MirWebservice. Run () hívása esetén, ha a hívás sikertelen
     + A Mir webszolgáltatások üzembe helyezéséhez a [Ds2v2, a A2v2 és a F16] helyett megfelelő SKU-ket [Standard_DS2_v2, Standard_F16, Standard_A2_v2] szükséges.
-  + **azureml – egytörzsű folyamatok – lépések**
+  + **azureml-contrib-pipeline-steps**
     + A nem kötelező paraméter side_inputs hozzáadva a ParallelRunStep-hez. Ezzel a paraméterrel lehet csatlakoztatni a mappát a tárolón. A jelenleg támogatott típusok a következők: DataReference és PipelineData.
     + A ParallelRunConfig átadott paraméterek felülírása a folyamat paramétereinek átadásával lehetséges. Az új folyamat paraméterei támogatottak aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count és aml_process_count_per_node már a korábbi kiadás részét képezik).
   + **azureml-core**
@@ -232,7 +232,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
   + **azureml-pipeline-steps**
     + Áthelyezte `AutoMLStep` a `azureml-pipeline-steps` csomagot a csomagba. A `AutoMLStep` belül `azureml-train-automl-runtime`elavult.
     + Dokumentáció hozzáadva példa az adatkészlethez PythonScriptStep-bemenetként
-  + **azureml – tensorboard**
+  + **azureml-tensorboard**
     + Frissítve azureml-tensorboard a tensorflow 2,0 támogatásához
     + Helyes portszám megjelenítése, ha egy számítási példányon egyéni Tensorboard-portot használ
   + **azureml-train-automl-client**
@@ -310,7 +310,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + A pipeline batch pontozási jegyzetfüzet mostantól a ParallelRunStep-t használja
   + **azureml-pipeline-steps**
     + `AutoMLStep` Áthelyezte a `azureml-pipeline-steps` csomagot a csomagba. A `AutoMLStep` belül `azureml-train-automl-runtime`elavult.
-  + **azureml – egytörzsű folyamatok – lépések**
+  + **azureml-contrib-pipeline-steps**
     + A nem kötelező paraméter side_inputs hozzáadva a ParallelRunStep-hez. Ezzel a paraméterrel lehet csatlakoztatni a mappát a tárolón. A jelenleg támogatott típusok a következők: DataReference és PipelineData.
   + **azureml-tensorboard**
     + Frissítve azureml-tensorboard a tensorflow 2,0 támogatásához
@@ -337,11 +337,11 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + A felhasználók mostantól meghatározhatnak egy értéket az Auth kulcshoz a webszolgáltatások kulcsainak újragenerálása során.
   + **azureml – értelmezés**
     + Frissített azureml – az értelmezéstől függ a közösségi 0.5.0
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Kijavítva egy hiba, ahol a PythonScriptStep-eredmények helytelenül újra felhasználhatók az argumentumok listájának módosításakor
   + **azureml-pipeline-steps**
     + Dokumentáció hozzáadva példa az adatkészlethez PythonScriptStep-bemenetként
-  + **azureml-contrib-pipeline-steps**
+  + **azureml – egytörzsű folyamatok – lépések**
     + A ParallelRunConfig átadott paraméterek felülírása a folyamat paramétereinek átadásával lehetséges. Az új folyamat paraméterei támogatottak aml_mini_batch_size, aml_error_threshold, aml_logging_level, aml_run_invocation_timeout (aml_node_count és aml_process_count_per_node már a korábbi kiadás részét képezik).
   
 ## <a name="2020-01-21"></a>2020-01-21
@@ -352,7 +352,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
   + **azureml-core**
     + Egy adott munkaterülethez és előfizetéshez tartozó AmlCompute-erőforrások aktuális alapvető használati és kvóta-korlátozásának beolvasása
   
-  + **azureml – egytörzsű folyamatok – lépések**
+  + **azureml-contrib-pipeline-steps**
     + Lehetővé teheti, hogy a felhasználó átadja a táblázatos adatkészletet közbenső eredményként az előző lépésből a parallelrunstep
 
 + **Hibajavítások és javítások**
@@ -539,7 +539,7 @@ A Studio alkalmazásban a következő webalapú szerzői eszközöket érheti el
     + Adja hozzá a kivétel naplózását, amely a helyi futtatást okozza idő előtt.
   + **azureml-train-core**
     + Gondolja át, hogy resume_from fut-e az automatikus hiperparaméter hangolásának legjobb alárendelt futtatásainak kiszámításakor.
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Rögzített paraméterek feldolgozása a folyamat argumentumának kialakításakor.
     + Hozzáadott folyamat leírása és a lépés típusa YAML paraméter.
     + Új YAML-formátum a folyamat lépéseihez és a régi formátumra vonatkozó elavult figyelmeztetés hozzáadása.
@@ -584,7 +584,7 @@ A teljes dokumentációért tekintse meg a [csomag webhelyét](https://azure.git
 
 ### <a name="azure-machine-learning-integration-with-event-grid"></a>Azure Machine Learning integráció a Event Grid 
 
-A Azure Machine Learning mostantól a Event Grid erőforrás-szolgáltatója, a Azure Portal vagy az Azure CLI használatával konfigurálhatja a gépi tanulási eseményeket. A felhasználók létrehozhatnak eseményeket a Futtatás befejezésére, a modell regisztrálására, a modell üzembe helyezésére és az adateltolódás észlelésére. Ezeket az eseményeket a Event Grid által támogatott eseménykezelők számára lehet átirányítani. További részletekért tekintse meg a Machine learning-esemény [sémáját](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning), a [fogalmakat](https://docs.microsoft.com/azure/machine-learning/concept-event-grid-integration) és az [oktatóanyagokat](https://docs.microsoft.com/azure/machine-learning/how-to-use-event-grid) ismertető cikket.
+A Azure Machine Learning mostantól a Event Grid erőforrás-szolgáltatója, a Azure Portal vagy az Azure CLI használatával konfigurálhatja a gépi tanulási eseményeket. A felhasználók létrehozhatnak eseményeket a Futtatás befejezésére, a modell regisztrálására, a modell üzembe helyezésére és az adateltolódás észlelésére. Ezeket az eseményeket a Event Grid által támogatott eseménykezelők számára lehet átirányítani. További részletekért tekintse meg a Machine learning-esemény [sémáját](https://docs.microsoft.com/azure/event-grid/event-schema-machine-learning) és az [oktatóanyagokat](how-to-use-event-grid.md) ismertető cikket.
 
 ## <a name="2019-10-31"></a>2019-10-31
 
@@ -668,7 +668,7 @@ A Azure Machine Learning mostantól a Event Grid erőforrás-szolgáltatója, a 
     + A heti és havi monitorozási ütemezés támogatása a napi adatkészlet-figyelők mellett.
     + Az adatfigyelő metrikáinak backfill támogatása az adatkészlet-figyelők korábbi adatainak elemzéséhez.
     + Különböző hibajavítások
-  + [**azureml – folyamat – mag**](https://docs.microsoft.com/python/api/azureml-pipeline-core)
+  + [**azureml-pipeline-core**](https://docs.microsoft.com/python/api/azureml-pipeline-core)
     + a azureml-adatelőkészítés már nem szükséges egy Azure Machine Learning-folyamatnak a folyamat `yaml` fájljából való beküldéséhez.
   + [**azureml-Train-automl**](/python/api/azureml-train-automl-runtime/)
     + Azureml hozzáadása – alapértelmezés szerint automatikusan generált Conda env a modell telepítési hibájának megoldása érdekében
@@ -739,7 +739,7 @@ A Azure Machine Learning mostantól a Event Grid erőforrás-szolgáltatója, a 
     + Átnevezi a AzureML-magyarázza-Model csomagot a AzureML-értelmezésre, így a régi csomagot a visszamenőleges kompatibilitás érdekében megtarthatja
     + kijavítva `automl` a hiba, amely a ExplanationClient-re való letöltéskor nem a regressziós, hanem a besorolási feladatra van beállítva.
     + Támogatás hozzáadása közvetlenül `ScoringExplainer` a következő használatával:`MimicWrapper`
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + Nagyobb teljesítmény a nagy adatcsatornák létrehozásakor
   + **azureml-train-core**
     + TensorFlow 2,0-támogatás hozzáadva a TensorFlow kalkulátorhoz
@@ -863,7 +863,7 @@ Frissült az [Új munkaterület-portál](https://ml.azure.com) Experiment (kís�
   + **azureml-Train-automl**
     + Támogatott training_data, validation_data, label_column_name, weight_column_name adatbevitel formátuma
     + Elavult üzenet hozzáadva a explain_model () és a retrieve_model_explanations () rendszerhez
-  + **[azureml-pipeline-core](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
+  + **[azureml – folyamat – mag](https://docs.microsoft.com/python/api/azureml-pipeline-core)**
     + Hozzáadott egy [jegyzetfüzetet](https://aka.ms/pl-modulestep) a [modul](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.module(class)), a [ModuleVersion](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.moduleversion) és a [ModuleStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.modulestep)leírásához.
   + **[azureml-pipeline-steps](https://docs.microsoft.com/python/api/azureml-pipeline-steps)**
     + A [RScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.rscriptstep) hozzáadva a pénzmosás-folyamaton keresztüli R-szkriptek támogatásához.
@@ -1000,7 +1000,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + Hozzáadott verzió-ellenőrzési lightgbm a nyomtatott figyelmeztetéssel, ha az alábbi támogatott verzió
     + Optimalizált memória használata
     + A AutoML modellek mostantól AutoMLExceptions adnak vissza
-  + **azureml-pipeline-core**
+  + **azureml – folyamat – mag**
     + A PipelineDrafts létrehozásához, frissítéséhez és használatához hozzáadva támogatott a megváltoztathatatlan folyamat-definíciók fenntartása és interaktív módon történő futtatása
   + **azureml-Train-automl**
     + A szolgáltatás a GPU-kompatibilis pytorch v 1.1.0, :::no-loc text="cuda"::: Toolkit 9,0, pytorch-Transformers speciális verzióinak telepítésére szolgál, amely a Bert/XLNet a távoli Python futtatókörnyezeti környezetben való engedélyezéséhez szükséges.
@@ -1067,7 +1067,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + Osztályok hozzáadásával az Egyesült államokbeli lakosságot a megye és a zip alapján szerezheti be.
   + **azureml – folyamat – mag**
     + A Label tulajdonság hozzáadva a bemeneti és a kimeneti port definícióhoz.
-  + **azureml – telemetria**
+  + **azureml-telemetry**
     + Helytelen telemetria-konfiguráció lett kijavítva.
   + **azureml-Train-automl**
     + Kijavítva a hiba, ahol a telepítési hiba miatt nem sikerült bejelentkezni a "hibák" mezőbe a telepítési futtatáshoz, ezért a rendszer nem a szülő "errors" (hibák) alatt tárolja a hibát.

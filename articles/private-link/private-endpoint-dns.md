@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 477a5ffa971120d1a98c09ac4ae8ebda1c82b770
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3ec7021e63257a3c9f8cf84c6ddc0c3707fbf3bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209026"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928613"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Private Endpoint DNS-konfiguráció
 
@@ -36,57 +36,58 @@ Az alkalmazásoknak nem kell módosítaniuk a kapcsolódási URL-címet. Ha nyil
 
 Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az alábbi táblázatban leírtak szerint:
 
-|Privát kapcsolat erőforrástípus   |Alerőforrás  |Zóna neve  |
-|---------|---------|---------|
-|SQL-adatbázis (Microsoft. SQL/Servers)    |  SQL Server (sqlServer)        |   privatelink.database.windows.net       |
-|Azure szinapszis Analytics (Microsoft. SQL/Servers)    |  SQL Server (sqlServer)        | privatelink.database.windows.net |
-|Storage-fiók (Microsoft. Storage/storageAccounts)    |  BLOB (blob, blob_secondary)        |    privatelink.blob.core.windows.net      |
-|Storage-fiók (Microsoft. Storage/storageAccounts)    |    Tábla (tábla, table_secondary)      |   privatelink.table.core.windows.net       |
-|Storage-fiók (Microsoft. Storage/storageAccounts)    |    Üzenetsor (Üzenetsor, queue_secondary)     |   privatelink.queue.core.windows.net       |
-|Storage-fiók (Microsoft. Storage/storageAccounts)   |    Fájl (fájl, file_secondary)      |    privatelink.file.core.windows.net      |
-|Storage-fiók (Microsoft. Storage/storageAccounts)     |  Web (web, web_secondary)        |    privatelink.web.core.windows.net      |
-|Data Lake fájlrendszer Gen2 (Microsoft. Storage/storageAccounts)  |  Data Lake fájlrendszer Gen2 (DFS, dfs_secondary)        |     privatelink.dfs.core.windows.net     |
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|SQL    |privatelink.documents.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|MongoDB    |privatelink.mongo.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Cassandra|privatelink.cassandra.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Gremlin    |privatelink.gremlin.cosmos.azure.com|
-|Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)|Tábla|privatelink.table.cosmos.azure.com|
-|Azure Database for PostgreSQL – egyetlen kiszolgáló (Microsoft. DBforPostgreSQL/Servers)|postgresqlServer|privatelink.postgres.database.azure.com|
-|Azure Database for MySQL (Microsoft. DBforMySQL/Servers)|Portra beállított mysqlserver|privatelink.mysql.database.azure.com|
-|Azure Database for MariaDB (Microsoft. DBforMariaDB/Servers)|mariadbServer|privatelink.mariadb.database.azure.com|
-|Azure Key Vault (Microsoft. kulcstartó/tárolók)|tár|privatelink.vaultcore.azure.net|
-|Azure Kubernetes Service – Kubernetes API (Microsoft. Tárolószolgáltatás/managedClusters)    | managedCluster | {GUID}. privatelink. {Region}. azmk8s. IO|
-|Azure Search (Microsoft. Search/searchServices)|searchService|privatelink.search.windows.net|   
-|Azure Container Registry (Microsoft. ContainerRegistry/nyilvántartók) | registry | privatelink.azurecr.io |
-|Azure-alkalmazás konfigurációja (Microsoft. Appconfiguration/configurationStores)| configurationStore | privatelink.azconfig.io|
-|Azure Backup (Microsoft. Recoveryservices szolgáltatónál/Vaults)| tár |privatelink. {Region}. backup. windowsazure. com|
-|Azure Event hub (Microsoft. EventHub/névterek)| névtér |privatelink.servicebus.windows.net|
-|Azure Service Bus (Microsoft. ServiceBus/névterek) | névtér |privatelink.servicebus.windows.net|
-|Azure Relay (Microsoft. Relay/névterek) | névtér |privatelink.servicebus.windows.net|
-|Azure Event Grid (Microsoft. EventGrid/témakörök)     | témakör | témakör. {Region}. privatelink. eventgrid. Azure. net|
-|Azure Event Grid (Microsoft. EventGrid/Domains) | domain | tartományi. {Region}. privatelink. eventgrid. Azure. net |
-|Azure WebApps (Microsoft. Web/Sites)    | hely | privatelink.azurewebsites.net |
-|Azure Machine Learning (Microsoft. MachineLearningServices/munkaterületek)    | munkaterület | privatelink.api.azureml.ms |
+| Privát kapcsolat erőforrástípus/alerőforrása |saját DNS zóna neve | Nyilvános DNS-zóna neve |
+|---|---|---|---|
+| SQL DB (Microsoft. SQL/Servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
+| Azure szinapszis Analytics (Microsoft. SQL/Servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
+| Storage-fiók (Microsoft. Storage/storageAccounts)/blob (blob, blob_secondary) | privatelink.blob.core.windows.net | blob.core.windows.net |
+| Storage-fiók (Microsoft. Storage/storageAccounts)/tábla (tábla, table_secondary) | privatelink.table.core.windows.net | table.core.windows.net |
+| Storage-fiók (Microsoft. Storage/storageAccounts)/üzenetsor (Üzenetsor, queue_secondary) | privatelink.queue.core.windows.net | queue.core.windows.net |
+| Storage-fiók (Microsoft. Storage/storageAccounts)/fájl (fájl, file_secondary) | privatelink.file.core.windows.net | file.core.windows.net |
+| Storage-fiók (Microsoft. Storage/storageAccounts)/Web (web, web_secondary) | privatelink.web.core.windows.net | web.core.windows.net |
+| Data Lake fájlrendszer Gen2 (Microsoft. Storage/storageAccounts)/Data Lake fájlrendszer Gen2 (DFS, dfs_secondary) | privatelink.dfs.core.windows.net | dfs.core.windows.net |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/SQL | privatelink.documents.azure.com | documents.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/MongoDB | privatelink.mongo.cosmos.azure.com | mongo.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/Cassandra | privatelink.cassandra.cosmos.azure.com | cassandra.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/Gremlin | privatelink.gremlin.cosmos.azure.com | gremlin.cosmos.azure.com |
+| Azure Cosmos DB (Microsoft. AzureCosmosDB/databaseAccounts)/tábla | privatelink.table.cosmos.azure.com | table.cosmos.azure.com |
+| Azure Database for PostgreSQL – egyetlen kiszolgáló (Microsoft. DBforPostgreSQL/Servers)/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
+| Azure Database for MySQL (Microsoft. DBforMySQL/Servers)/portra beállított mysqlserver | privatelink.mysql.database.azure.com | mysql.database.azure.com |
+| Azure Database for MariaDB (Microsoft. DBforMariaDB/Servers)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
+| Azure Key Vault (Microsoft. kulcstartó/tárolók)/tároló | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Kubernetes Service – Kubernetes API (Microsoft. Tárolószolgáltatás/managedClusters)/managedCluster | privatelink. {Region}. azmk8s. IO | {Region}. azmk8s. IO |
+| Azure Search (Microsoft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
+| Azure Container Registry (Microsoft. ContainerRegistry/nyilvántartók)/beállításjegyzék | privatelink.azurecr.io | azurecr.io |
+| Azure-alkalmazás konfigurációja (Microsoft. AppConfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
+| Azure Backup (Microsoft. Recoveryservices szolgáltatónál/Vaults)/tároló | privatelink. {Region}. backup. windowsazure. com | {Region}. backup. windowsazure. com |
+| Azure Event hub (Microsoft. EventHub/névterek)/névtér | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Service Bus (Microsoft. ServiceBus/névterek)/névtér | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Relay (Microsoft. Relay/névterek)/névtér | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure Event Grid (Microsoft. EventGrid/témák)/témakör | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure Event Grid (Microsoft. EventGrid/Domains)/tartomány | privatelink.eventgrid.azure.net | eventgrid.azure.net |
+| Azure WebApps (Microsoft. Web/Sites)/webhely | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure Machine Learning (Microsoft. MachineLearningServices/munkaterületek)/munkaterület | privatelink.api.azureml.ms | api.azureml.ms |
+
  
 
 
 ## <a name="dns-configuration-scenarios"></a>DNS-konfigurációs forgatókönyvek
 
-A szolgáltatások teljes tartományneve feloldja a nyilvános IP-címet, módosítania kell a DNS-konfigurációt a privát végpont magánhálózati IP-címének feloldásához.
+A szolgáltatások teljes tartományneve automatikusan feloldásra kerül egy nyilvános IP-címhez, így a magánhálózati végpont magánhálózati IP-címére való feloldás érdekében a DNS-konfigurációt ennek megfelelően kell módosítania.
 
 A DNS egy kritikus összetevő, amellyel az alkalmazás megfelelően működik úgy, hogy a saját végpont IP-címének megfelelő módon oldja meg a megoldást.
 
 A beállítások alapján az alábbi forgatókönyvek érhetők el az integrált DNS-feloldáshoz:
 
-- [Munkaterhelések Virtual Network egyéni DNS-kiszolgáló nélkül](#virtual-network-workloads-without-custom-dns-server)
+- [Virtuális hálózati munkaterhelések egyéni DNS-kiszolgáló nélkül](#virtual-network-workloads-without-custom-dns-server)
+- [Helyszíni számítási feladatok DNS-továbbító használatával](#on-premises-workloads-using-a-dns-forwarder)
 
-
-## <a name="virtual-network-workloads-without-custom-dns-server"></a>Munkaterhelések Virtual Network egyéni DNS-kiszolgáló nélkül
+## <a name="virtual-network-workloads-without-custom-dns-server"></a>Virtuális hálózati munkaterhelések egyéni DNS-kiszolgáló nélkül
 
 Ez a konfiguráció az egyéni DNS-kiszolgáló nélküli virtuális hálózati munkaterhelésekhez megfelelő. Ebben az esetben az ügyfél lekérdezi a magánhálózati végpont IP-címét az Azure által megadott DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md). Azure DNS a magánhálózati DNS-zónák DNS-feloldására lesz felelős.
 
 
- > [!NOTE]
+> [!NOTE]
 > Ez a forgatókönyv az Azure SQL Database ajánlott saját DNS zónáját használja. Más szolgáltatások esetében a modellt a következő [Azure-szolgáltatások DNS-zóna konfigurációjának](#azure-services-dns-zone-configuration)használatával állíthatja be.
 
 A megfelelő konfiguráláshoz a következő erőforrásokra lesz szüksége:
@@ -99,16 +100,60 @@ A megfelelő konfiguráláshoz a következő erőforrásokra lesz szüksége:
 
 Az alábbi ábrán a virtuális hálózati munkaterhelések DNS-alapú, a saját DNS-zónáját használó számítási feladatait ábrázolják
 
-:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="egyetlen virtuális hálózat és az Azure által biztosított DNS":::
+:::image type="content" source="media/private-endpoint-dns/single-vnet-azure-dns.png" alt-text="Egyetlen virtuális hálózat és az Azure által biztosított DNS":::
 
 Ez a modell bővíthető több, ugyanahhoz a privát végponthoz társított virtuális hálózatra. Ezt úgy teheti meg, hogy [új virtuális hálózati hivatkozásokat ad hozzá](../dns/private-dns-virtual-network-links.md) a magánhálózati DNS-zónához az összes társ virtuális hálózat számára.
 
- > [!IMPORTANT]
+> [!IMPORTANT]
 >  Ehhez a konfigurációhoz egyetlen privát DNS-zónára van szükség, így a különböző virtuális hálózatok azonos nevű zónáinak létrehozásához kézi műveletekre van szükség a DNS-rekordok egyesítéséhez.
 
 Ebben a forgatókönyvben egy központilag [& küllős](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke) hálózati topológia a közös privát végpontot megosztó küllős hálózatokkal, és az összes küllős virtuális hálózat ugyanahhoz a magánhálózati DNS-zónához van csatolva. 
 
-:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="a hub és a küllő az Azure által biztosított DNS-sel":::
+:::image type="content" source="media/private-endpoint-dns/hub-and-spoke-azure-dns.png" alt-text="Hub és küllő az Azure által biztosított DNS-sel":::
+
+## <a name="on-premises-workloads-using-a-dns-forwarder"></a>Helyszíni számítási feladatok DNS-továbbító használatával
+ 
+Ahhoz, hogy a helyszíni munkaterhelések fel tudják oldani a privát végpontok teljes tartománynevét a magánhálózati IP-címekre, DNS-továbbítót kell használnia az Azure-ban üzembe helyezett Azure [-szolgáltatás nyilvános DNS-zónájának](#azure-services-dns-zone-configuration) feloldásához.
+
+
+Az alábbi forgatókönyv olyan helyszíni hálózat számára megfelelő, amely DNS-továbbítóval rendelkezik az Azure-ban, amely az összes DNS-lekérdezést feloldja a kiszolgálói szintű továbbítón keresztül az Azure által biztosított DNS- [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) . 
+
+> [!NOTE]
+> Ez a forgatókönyv az Azure SQL Database ajánlott saját DNS zónáját használja.Más szolgáltatások esetében a modellt a következő [Azure-szolgáltatások DNS-zóna konfigurációjának](#azure-services-dns-zone-configuration)használatával állíthatja be.
+
+A megfelelő konfiguráláshoz a következő erőforrásokra lesz szüksége:
+
+- Helyszíni hálózat
+- Helyi hálózathoz [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- DNS-továbbító üzembe helyezése az Azure-ban 
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)  [type A Record](../dns/dns-zones-records.md#record-types)
+- Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
+
+Az alábbi ábrán egy olyan helyszíni hálózat DNS-feloldási folyamata látható, amely az Azure-ban üzembe helyezett DNS-továbbítót használja, ahol a felbontást egy virtuális hálózathoz társított privát DNS-zóna végzi.
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-using-azure-dns.png" alt-text="Helyszíni Azure DNS használatával":::
+
+Ez a konfiguráció bővíthető olyan helyszíni hálózatra, amely már rendelkezik DNS-megoldással. 
+A helyszíni DNS-megoldást úgy kell konfigurálni, hogy az Azure-ban üzembe helyezett DNS-továbbítóra hivatkozó [feltételes továbbító](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server) használatával továbbítsa a DNS-forgalmat a Azure DNS.
+
+> [!NOTE]
+> Ez a forgatókönyv az Azure SQL Database ajánlott saját DNS zónáját használja.Más szolgáltatások esetében a modellt a következő [Azure-szolgáltatások DNS-zóna konfigurációjának](#azure-services-dns-zone-configuration)használatával állíthatja be.
+
+A megfelelő konfiguráláshoz a következő erőforrásokra lesz szüksége:
+
+
+- Helyszíni hálózat egyéni DNS-megoldással 
+- Helyi hálózathoz [csatlakoztatott](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/) virtuális hálózat
+- DNS-továbbító üzembe helyezése az Azure-ban
+- Saját DNS zónák [privatelink.database.Windows.net](../dns/private-dns-privatednszone.md)   [type A Record](../dns/dns-zones-records.md#record-types)
+- Magánhálózati végpont adatai (FQDN-rekord neve és magánhálózati IP-cím)
+
+Az alábbi ábrán egy olyan helyszíni hálózat DNS-feloldási szakasza látható, amely feltételesen továbbítja a DNS-forgalmat az Azure-ba, ahol a virtuális hálózathoz kapcsolódó magánhálózati DNS-zóna feloldása történik.
+
+> [!IMPORTANT]
+> A feltételes továbbítást a [nyilvános DNS-zónába](#azure-services-dns-zone-configuration) (pl. `database.windows.net` :) kell tenni, a **privatelink**. database.Windows.net helyett.
+
+:::image type="content" source="media/private-endpoint-dns/on-premise-forwarding-to-azure.png" alt-text="Helyszíni továbbítás Azure DNS":::
 
 
 ## <a name="next-steps"></a>További lépések

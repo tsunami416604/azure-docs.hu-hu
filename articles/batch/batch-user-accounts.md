@@ -4,20 +4,20 @@ description: Hasznos lehet konfigurálni azt a felhasználói fiókot, amelyben 
 ms.topic: article
 ms.date: 11/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 22827a1a1406be7cb6ea0bd6e19f6ce316598a48
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1aeb96075e95d7bc0d1e4527fb50b2d5238dbab5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82111742"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980286"
 ---
+# <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
+
 > [!NOTE] 
 > A cikkben tárgyalt felhasználói fiókok nem különböznek a RDP protokoll (RDP) vagy a Secure Shell (SSH) számára biztonsági okokból használt felhasználói fióktól. 
 >
 > Ha SSH-n keresztül szeretne csatlakozni egy linuxos virtuálisgép-konfigurációt futtató csomóponthoz, tekintse meg a Távoli asztal használata Linux rendszerű virtuális gépre [Az Azure-ban](../virtual-machines/virtual-machines-linux-use-remote-desktop.md)című témakört. Ha RDP-n keresztül szeretne csatlakozni a Windows-csomópontokhoz, tekintse meg [a Kapcsolódás Windows Server rendszerű virtuális géphez](../virtual-machines/windows/connect-logon.md)című témakört.<br /><br />
 > Ha a felhőalapú szolgáltatás konfigurációját RDP protokollon keresztül futtató csomóponthoz szeretne csatlakozni, tekintse meg a [Távoli asztali kapcsolat engedélyezése az Cloud Services Azure-beli szerepkörökhöz](../cloud-services/cloud-services-role-enable-remote-desktop-new-portal.md)című témakört.
-
-# <a name="run-tasks-under-user-accounts-in-batch"></a>Feladatok futtatása a Batch felhasználói fiókjai alatt
 
 Egy feladat Azure Batch mindig egy felhasználói fiók alatt fut. Alapértelmezés szerint a feladatok a normál felhasználói fiókok alatt, rendszergazdai jogosultságok nélkül futnak. A felhasználói fiókok alapértelmezett beállításai általában elegendőek. Bizonyos helyzetekben azonban hasznos lehet konfigurálni azt a felhasználói fiókot, amelyben a feladatot futtatni kívánja. Ez a cikk a felhasználói fiókok típusait, valamint azt ismerteti, hogyan konfigurálhatja őket a forgatókönyvhöz.
 

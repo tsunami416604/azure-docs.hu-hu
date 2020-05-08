@@ -56,12 +56,10 @@
             - name: Automatizált gépi tanulási modellek betanítása
               displayName: 'automl, automated, auto ml,'
               href: tutorial-auto-train-models.md
-        - name: Machine Learning-folyamatok (speciális)
-          items:
-            - name: Besorolási modell kötegelt kiértékelése
-              displayName: pipelines
-              href: tutorial-pipeline-batch-scoring-classification.md
-        - name: Átállás a kísérletiről az éles üzemre
+        - name: Modellek kötegelt kiértékelése folyamatokkal
+          displayName: pipelines
+          href: tutorial-pipeline-batch-scoring-classification.md
+        - name: A kód felkészítése éles használatra
           displayName: 'mlops, mlopspython, production'
           href: tutorial-convert-ml-experiment-to-production.md
     - name: R SDK
@@ -88,54 +86,63 @@
     - name: Teljes körű MLOps-példák
       href: 'https://github.com/microsoft/MLOps'
     - name: Open Datasets (nyilvános)
-      href: /azure/open-datasets/samples?context=azure/machine-learning/service/context/ml-context
+      href: /azure/open-datasets/samples?context=azure/machine-learning/context/ml-context
 - name: Alapelvek
   items:
     - name: Költségtervezés és a költségek kezelése
       href: concept-plan-manage-cost.md
+    - name: Tervező (áthúzásos ML)
+      items:
+        - name: A tervező áttekintése
+          displayName: studio
+          href: concept-designer.md
+        - name: Algoritmus-adatlap
+          href: /azure/machine-learning/algorithm-cheat-sheet
+        - name: Algoritmusok kiválasztása
+          href: /azure/machine-learning/how-to-select-algorithms
+    - name: Automatizált ML
+      items:
+        - name: Az Automatizált ML áttekintése
+          displayName: 'automl, auto ml'
+          href: concept-automated-ml.md
+        - name: Túlillesztés és kiegyensúlyozatlan adatok
+          displayName: 'automl, auto ml, risks'
+          href: concept-manage-ml-pitfalls.md
     - name: Munkaterület
       href: concept-workspace.md
     - name: Környezetek
       href: concept-environments.md
-    - name: Adatfeldolgozás
-      href: concept-data-ingestion.md
-    - name: Az adatok elérése
-      href: concept-data.md
-    - name: A modell betanítása
-      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
-      href: concept-train-machine-learning-model.md
-    - name: Elosztott betanítás
-      displayName: 'parallellization, deep learning, deep neural network, dnn'
-      href: concept-distributed-training.md
-    - name: Modellkezelés (MLOps)
-      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
-      href: concept-model-management-and-deployment.md
-    - name: Értelmezhetőség
-      displayName: explainability
-      href: how-to-machine-learning-interpretability.md
-    - name: 'Tervező: kód nélküli ML'
-      displayName: studio
-      href: concept-designer.md
-    - name: Algoritmus-adatlap
-      href: /azure/machine-learning/algorithm-cheat-sheet
-    - name: Algoritmusok kiválasztása
-      href: /azure/machine-learning/how-to-select-algorithms
-    - name: Automatizált ML
-      displayName: 'automl, auto ml'
-      href: concept-automated-ml.md
-    - name: Túlillesztés és kiegyensúlyozatlan adatok
-      displayName: 'automl, auto ml, risks'
-      href: concept-manage-ml-pitfalls.md
     - name: Számítási példány
       displayName: 'resource, dsvm, Data Science Virtual Machine'
       href: concept-compute-instance.md
     - name: Számítási cél
       displayName: 'resource, dsvm, AKS, kubernetes, amlcompute, Data Science Virtual Machine, local, cluster, ACI, container instance, ADB, Databricks, data lake, lake, HDI, HDInsight'
       href: concept-compute-target.md
+    - name: Adatok
+      items:
+        - name: Az adatok elérése
+          href: concept-data.md
+        - name: Adatfeldolgozás
+          href: concept-data-ingestion.md
+    - name: A modell betanítása
+      displayName: 'run config, estimator, machine learning pipeline, ml pipeline, train model'
+      href: concept-train-machine-learning-model.md
+    - name: Elosztott betanítás
+      displayName: 'parallellization, deep learning, deep neural network, dnn'
+      href: concept-distributed-training.md
+    - name: Deep learning
+      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
+      href: concept-deep-learning-vs-machine-learning.md
+    - name: Modellkezelés (MLOps)
+      displayName: 'deploy, deployment, publish, production, operationalize, operationalization'
+      href: concept-model-management-and-deployment.md
+    - name: Modell hordozhatósága (ONNX)
+      href: concept-onnx.md
+    - name: Modell értelmezhetősége
+      displayName: explainability
+      href: how-to-machine-learning-interpretability.md
     - name: Gépi tanulási folyamatok
       href: concept-ml-pipelines.md
-    - name: ONNX
-      href: concept-onnx.md
     - name: Alkalmasság vállalati használatra és biztonság
       items:
         - name: Vállalati biztonság
@@ -165,11 +172,6 @@
           href: how-to-setup-authentication.md
         - name: Az Azure Machine Learning monitorozása
           href: monitor-azure-machine-learning.md
-    - name: Event Grid-integráció
-      href: concept-event-grid-integration.md
-    - name: Deep learning
-      displayName: 'deep learning vs machine learning, deep learning, vs, versus'
-      href: concept-deep-learning-vs-machine-learning.md
 - name: Útmutatók
   items:
     - name: Munkaterületek létrehozása és kezelése
@@ -188,6 +190,8 @@
         - name: Fejlesztési környezetek beállítása
           displayName: 'local, remote, azure notebooks, notebook, Jupyter, dsvm, Databricks, ADB'
           href: how-to-configure-environment.md
+        - name: Jupyter-notebookok futtatása
+          href: how-to-run-jupyter-notebooks.md
         - name: Szoftverkörnyezetek beállítása
           displayName: 'pip, Conda, anaconda'
           href: how-to-use-environments.md
@@ -269,14 +273,14 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
-    - name: Modellek ismertetése
+    - name: Modellek értelmezése és ismertetése
       displayName: interpretability
       items:
-        - name: Gépi tanulási modellek ismertetése
-          displayName: 'SDK, interpret'
+        - name: Gépi tanulási modellek értelmezése
+          displayName: 'SDK, interpret, explain, explanability, interpretability'
           href: how-to-machine-learning-interpretability-aml.md
         - name: Automatizált gépi tanulási modellek ismertetése
-          displayName: 'SDK, interpret, automl'
+          displayName: 'SDK, interpret, interpret, explain, explanability, interpretability, automated ML, automl, auto ml'
           href: how-to-machine-learning-interpretability-automl.md
     - name: Gépi tanulás automatizálása
       displayName: 'automl, auto ml'
@@ -295,6 +299,9 @@
         - name: Előrejelzési modellek automatikus betanítása
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: Automatizált gépi tanulás használata a gépi tanulási folyamatokban (Python)
+          displayName: machine learning automl
+          href: how-to-use-automlstep-in-pipelines.md
         - name: Diagramok és metrikák értelmezése
           href: how-to-understand-automated-ml.md
     - name: Kísérletek nyomon követése és monitorozása
@@ -334,7 +341,7 @@
               displayName: functions app
               href: how-to-deploy-functions.md
             - name: Azure IoT Edge-eszközök
-              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/service/context/ml-context
+              href: /azure/iot-edge/tutorial-deploy-machine-learning?context=azure/machine-learning/context/ml-context
             - name: FPGA-következtetés
               href: how-to-deploy-fpga-web-service.md
             - name: Egyéni Docker-rendszerképek
@@ -375,7 +382,10 @@
           href: how-to-debug-pipelines-application-insights.md
         - name: Azure Pipelines a CI/CD-hez
           displayName: 'continuous, integration, delivery'
-          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/service/context/ml-context
+          href: /azure/devops/pipelines/targets/azure-machine-learning?context=azure/machine-learning/context/ml-context
+        - name: Tervező – adatok átalakítása
+          displayName: pipeline
+          href: how-to-designer-transform-data.md
         - name: Tervező – újratanítás közzétett folyamatok használatával
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
@@ -391,6 +401,9 @@
         - name: Párhuzamos futtatási lépés hibakeresése és hibaelhárítása
           displayName: debug_batch consume pipeline parallelrunstep inference
           href: how-to-debug-parallel-run-step.md
+        - name: Gépi tanulási folyamatok ismétlése és fejlesztése
+          displayName: modularizing testing
+          href: concept-pipeline-practices-tips.md
     - name: Erőforráskvóták kezelése
       displayName: limits
       href: how-to-manage-quotas.md
@@ -441,7 +454,7 @@
     - name: Stack Overflow
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning-service'
     - name: Machine Learning-termékeink összehasonlítása
-      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/service/context/ml-context
+      href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning?context=azure/machine-learning/context/ml-context
     - name: Mi történt a Workbenchcsel?
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md

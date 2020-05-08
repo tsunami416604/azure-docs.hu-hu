@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: acf49c4247c8084a3afd3c2046003ee1b20d2f67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 80da8d2880509a8ed6a2af8cb181b3bc2c281c09
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393107"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930573"
 ---
 # <a name="outbound-connections-in-azure"></a>Kimenő kapcsolatok az Azure-ban
 
@@ -119,7 +119,7 @@ Load Balancer Basic (alapszintű) beállítás egyetlen előtér-felületet vál
 
 ### <a name="port-masquerading-snat-pat"></a><a name="pat"></a>Port maszkolása SNAT (PAT)
 
-Ha egy nyilvános Load Balancer erőforrás virtuálisgép-példányokhoz van társítva, minden kimenő kapcsolódási forrás újraírásra kerül. A forrás a virtuális hálózat magánhálózati IP-címéről a terheléselosztó nyilvános IP-címére íródik újra. A nyilvános IP-címtartomány területen a folyamat 5 rekordjának (forrás IP-címe, forrásport, IP-átviteli protokoll, cél IP-címe, célport) egyedinek kell lennie.  A maszkolási SNAT TCP-vagy UDP-protokollal is használható.
+Ha egy nyilvános Load Balancer erőforrás olyan virtuálisgép-példányokhoz van társítva, amelyek nem rendelkeznek dedikált nyilvános IP-címekkel, minden kimenő kapcsolódási forrás újraírásra kerül. A forrás a virtuális hálózat magánhálózati IP-címéről a terheléselosztó nyilvános IP-címére íródik újra. A nyilvános IP-címtartomány területen a folyamat 5 rekordjának (forrás IP-címe, forrásport, IP-átviteli protokoll, cél IP-címe, célport) egyedinek kell lennie. A maszkolási SNAT TCP-vagy UDP-protokollal is használható.
 
 Az ideiglenes portok (SNAT-portok) a magánhálózati forrás IP-címének újraírása után érhetők el, mert több folyamat egyetlen nyilvános IP-címről származik. A SNAT algoritmusú port az UDP és a TCP protokollal eltérő SNAT-portokat foglal le.
 
@@ -147,7 +147,7 @@ A SNAT-portok kimerüléséhez gyakran vezető feltételek enyhítéséhez tekin
 
 ### <a name="ephemeral-port-preallocation-for-port-masquerading-snat-pat"></a><a name="preallocatedports"></a>Ideiglenes port előfoglalása a port maszkolása SNAT (PAT)
 
-Az Azure egy algoritmus használatával határozza meg, hogy hány előre lefoglalt SNAT-port áll rendelkezésre a háttérrendszer-készlet mérete alapján a SNAT ([Pat](#pat)) port használatakor. A SNAT-portok egy adott nyilvános IP-forráscím számára elérhető ideiglenes portok.
+Az Azure egy algoritmus használatával határozza meg, hogy hány előre lefoglalt SNAT-port áll rendelkezésre a háttérrendszer-készlet mérete alapján a SNAT ([Pat](#pat)) port használatakor. A SNAT-portok egy adott nyilvános IP-forráscím számára elérhető ideiglenes portok. A terheléselosztó minden egyes nyilvános IP-címéhez 64 000-as port érhető el SNAT-portként minden IP-átviteli protokollhoz.
 
 Az UDP és a TCP számára a SNAT-portok száma azonos, és az IP-átviteli protokolltól függetlenül használatos.  A SNAT-port használata azonban eltérő attól függően, hogy a folyamat UDP vagy TCP.
 
@@ -193,11 +193,14 @@ A SNAT portok kiosztása IP-átviteli protokoll specifikus (a TCP és az UDP kü
 Ez a szakasz a SNAT-kimerültség enyhítését, valamint az Azure-beli kimenő kapcsolatok esetén felmerülő megoldásokat ismerteti.
 
 ### <a name="managing-snat-pat-port-exhaustion"></a><a name="snatexhaust"></a>A SNAT (PAT) portjának kimerülésének kezelése
-A [pathoz](#pat) használt [ideiglenes portok](#preallocatedports) kimeríthető erőforrások, amelyeket az [önálló virtuális gép nyilvános IP-cím nélküli](#defaultsnat) és [elosztott terhelésű virtuális gép nyilvános IP-cím](#lb)nélkül című része ismertet. Az időszakos portok használatát figyelemmel kísérheti, és összehasonlíthatja az aktuális kiosztásával, hogy meghatározza a SNAT exhuastion kockázatát vagy megerősítését [az útmutató segítségével](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) .
+A [pathoz](#pat) használt [ideiglenes portok](#preallocatedports) kimeríthető erőforrások, amelyeket az [önálló virtuális gép nyilvános IP-cím nélküli](#defaultsnat) és [elosztott terhelésű virtuális gép nyilvános IP-cím](#lb)nélkül című része ismertet. Az időszakos portok használatát figyelemmel kísérheti, és összehasonlíthatja az aktuális kiosztásával, hogy meghatározza a kockázatát vagy a SNAT kimerülésének megerősítését [az útmutató segítségével](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation) .
 
 Ha tudja, hogy több kimenő TCP-vagy UDP-kapcsolatra van szüksége ugyanahhoz a cél IP-címhez és porthoz, és megfigyelheti a sikertelen kimenő kapcsolatokat, vagy ha támogatja a SNAT-portok kimerítését (a [Pat](#pat)által használt időszakosan lefoglalt időszakos [portok](#preallocatedports) ), számos általános kockázatcsökkentő lehetőség közül választhat. Tekintse át ezeket a beállításokat, és döntse el, hogy mi az elérhető és melyik a legmegfelelőbb a forgatókönyvhöz. Lehetséges, hogy egy vagy több segíthet a forgatókönyv kezelésében.
 
 Ha nem sikerül megismerni a kimenő kapcsolatok viselkedését, használhatja az IP-verem statisztikáit (netstat). Vagy hasznos lehet a kapcsolatok viselkedésének figyelésére a csomagok rögzítései használatával. Ezeket a csomagokat a példány vendég operációs rendszerében hajthatja végre, vagy Network Watcher is használhatja a [csomagok rögzítéséhez](../network-watcher/network-watcher-packet-capture-manage-portal.md). 
+
+#### <a name="manually-allocate-snat-ports-to-maximize-snat-ports-per-vm"></a><a name ="manualsnat"></a>SNAT-portok manuális lefoglalása a SNAT-portok maximalizálása érdekében virtuális gépenként
+Az előre [lefoglalt portokban](#preallocatedports)meghatározottak szerint a terheléselosztó automatikusan kiosztja a portokat a háttérbeli virtuális gépek száma alapján. Alapértelmezés szerint ez konzervatívan történik a méretezhetőség biztosításához. Ha ismeri a háttérbeli virtuális gépek maximális számát, akkor manuálisan is kioszthatja a SNAT-portokat az egyes kimenő szabályokban. Ha például tudja, hogy legfeljebb 10 virtuális gép van, akkor az alapértelmezett 1 024 helyett virtuális gépenként 6 400 SNAT-portot foglalhat le. 
 
 #### <a name="modify-the-application-to-reuse-connections"></a><a name="connectionreuse"></a>Az alkalmazás módosítása a kapcsolatok újrafelhasználásához 
 A SNAT használt ideiglenes portok igényét csökkentheti az alkalmazásban található kapcsolatok újrafelhasználásával. Ez különösen az olyan protokollok esetében igaz, mint a HTTP/1.1, ahol az alapértelmezett a kapcsolatok újrafelhasználása. Továbbá a HTTP protokollt használó más protokollok (például a REST) is hasznosak lehetnek. 
