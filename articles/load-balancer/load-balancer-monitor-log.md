@@ -11,19 +11,16 @@ ms.topic: article
 ms.custom: seodec18
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2018
+ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 0a21af683d9fa7849d3e96c545983c9f40a8d4c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7563eb4d22048021886925f6864e3616bed83a75
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76935318"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858766"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Az Azure Monitor naplózza a nyilvános Alapszintű Load Balancert
-
->[!IMPORTANT]
->Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](load-balancer-standard-overview.md) , amely a Azure monitor többdimenziós metrikák használatával teszi elérhetővé a telemetria.
 
 Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Balancerek felügyeletéhez és hibakereséséhez. Ezek a naplók a portálon keresztül érhetők el. A naplók továbbíthatók egy Event hub-vagy Log Analytics-munkaterületre. Az összes napló kinyerhető az Azure Blob Storage-ból, és különböző eszközökön, például Excelben és Power BI is megtekinthető.  Az alábbi listából további információkat talál a naplók különböző típusairól.
 

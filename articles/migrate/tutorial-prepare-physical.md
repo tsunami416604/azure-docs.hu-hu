@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a fizikai kiszolgálók ért�
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: 539e25f8b6cc92674fef567de6e6de16d0a9394a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b7bde5df943a35bfcf08ace3b454a26dae8c1d89
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81535281"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901411"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Felkészülés a fizikai kiszolgálók Azure-ba történő értékelésére és áttelepítésére
 
@@ -105,10 +105,9 @@ Készítse elő az Azure-t a fizikai kiszolgálók áttelepítéséhez a kiszolg
 ### <a name="assign-azure-account-permissions"></a>Azure-fiók engedélyeinek kiosztása
 
 Rendelje hozzá a virtuális gépi közreműködő szerepkört az Azure-fiókhoz. Ez a következő engedélyekkel rendelkezik:
-
-    - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
-    - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
-    - Írás egy Azure-beli felügyelt lemezre. 
+  - Virtuális gépek létrehozása a kiválasztott erőforráscsoportban.
+  - Virtuális gépek létrehozása a kiválasztott virtuális hálózaton.
+  - Írás egy Azure-beli felügyelt lemezre. 
 
 ### <a name="create-an-azure-network"></a>Azure-hálózat létrehozása
 

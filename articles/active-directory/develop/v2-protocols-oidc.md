@@ -1,27 +1,28 @@
 ---
-title: OpenID Connect protokoll – Microsoft Identity platform | Azure
+title: Microsoft Identity platform és OpenID Connect protokoll | Azure
+titleSuffix: Microsoft identity platform
 description: Hozzon létre webalkalmazásokat az OpenID Connect hitelesítési protokoll Microsoft Identity platform-implementációjának használatával.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 161f97dc99ce5ce16d7c40126b95a769c4b79621
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88f647bbb72c92db194407b677e533a867261ce4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868330"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926493"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform és OpenID Connect protokoll
 
-Az OpenID Connect egy OAuth 2,0-re épülő hitelesítési protokoll, amely segítségével biztonságosan lehet bejelentkezni egy felhasználó webalkalmazásba. Ha az OpenID Connect Microsoft Identity platform-végpontjának megvalósítását használja, hozzáadhat bejelentkezési és API-hozzáférést a webalapú alkalmazásokhoz. Ebből a cikkből megtudhatja, hogyan teheti meg ezt a nyelvet, és leírja, hogyan küldhet és fogadhat HTTP-üzeneteket a Microsoft nyílt forráskódú kódtárai használata nélkül.
+Az OpenID Connect (OIDC) egy OAuth 2,0-re épülő hitelesítési protokoll, amely segítségével biztonságosan lehet bejelentkezni egy felhasználó webalkalmazásba. Ha az OpenID Connect Microsoft Identity platform-végpontjának megvalósítását használja, hozzáadhat bejelentkezési és API-hozzáférést a webalapú alkalmazásokhoz. Ebből a cikkből megtudhatja, hogyan teheti meg ezt a nyelvet, és leírja, hogyan küldhet és fogadhat HTTP-üzeneteket a Microsoft nyílt forráskódú kódtárai használata nélkül.
 
 Az [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html) kibővíti a *OAuth 2,0 hitelesítési protokollját* , *hogy az egyszeri* bejelentkezést a OAuth használatával végezze el. Az OpenID Connect bevezeti az *azonosító jogkivonat*fogalmát, amely egy biztonsági jogkivonat, amely lehetővé teszi az ügyfél számára a felhasználó identitásának ellenőrzését. Az azonosító jogkivonat a felhasználó alapszintű profiljának adatait is beolvassa. Mivel az OpenID Connect kiterjeszti a OAuth 2,0, az alkalmazások biztonságosan kaphatnak *hozzáférési jogkivonatokat*, amelyek az [engedélyezési kiszolgáló](active-directory-v2-protocols.md#the-basics)által védett erőforrások elérésére használhatók. A Microsoft Identity platform végpontja lehetővé teszi, hogy az Azure AD-ben regisztrált harmadik féltől származó alkalmazások hozzáférési jogkivonatokat adjanak ki a biztonságos erőforrások, például a webes API-k számára. További információ arról, hogyan állíthat be egy alkalmazást hozzáférési tokenek kiküldéséhez: alkalmazások [regisztrálása a Microsoft Identity platform-végponttal](quickstart-register-app.md). Javasoljuk, hogy az OpenID connectet használja, ha olyan [webalkalmazást](v2-app-types.md#web-apps) hoz létre, amely egy kiszolgálón fut, és böngészőn keresztül érhető el.
 
