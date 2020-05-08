@@ -1,22 +1,35 @@
 ---
-title: Azure Cosmos DB Java aszinkron SDK diagnosztizálása és megoldása
-description: A Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához használjon olyan szolgáltatásokat, mint az ügyféloldali naplózás és más külső eszközök.
-author: moderakh
+title: Azure Cosmos DB aszinkron Java SDK v2 diagnosztizálása és megoldása
+description: Használjon olyan szolgáltatásokat, mint az ügyféloldali naplózás és más külső eszközök az aszinkron Java SDK v2-ben Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához.
+author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 04/30/2019
-ms.author: moderakh
+ms.date: 05/08/2020
+ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 572139743c66546622450cef8f8a0fa264d24779
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65519982"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982615"
 ---
-# <a name="troubleshoot-issues-when-you-use-the-java-async-sdk-with-azure-cosmos-db-sql-api-accounts"></a>A Java Async SDK Azure Cosmos DB SQL API-fiókokkal való használatakor felmerülő hibák elhárítása
+# <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>A Azure Cosmos DB aszinkron Java SDK v2 és az SQL API-fiókok használata esetén felmerülő problémák elhárítása
+
+> [!div class="op_single_selector"]
+> * [Java SDK v4](troubleshoot-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](troubleshoot-java-async-sdk.md)
+> * [.NET](troubleshoot-dot-net-sdk.md)
+> 
+
+> [!IMPORTANT]
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra Azure Cosmos DB Java SDK v4 használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
+>
+> Ez a cikk csak Azure Cosmos DB aszinkron Java SDK v2-re vonatkozó hibaelhárítást ismerteti. További információért tekintse meg a Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzéseit](sql-api-sdk-async-java.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) és a [teljesítménnyel kapcsolatos tippeket](performance-tips-async-java.md) .
+>
+
 Ez a cikk általános problémákról, megkerülő megoldásokról, diagnosztikai lépésekről és eszközökről tartalmaz Azure Cosmos DB SQL API-fiókkal rendelkező [Java ASZINKRON SDK](sql-api-sdk-async-java.md) -val.
 A Java Async SDK ügyféloldali logikai leképezést biztosít az Azure Cosmos DB SQL API eléréséhez. Ez a cikk azokat az eszközöket és módszereket ismerteti, amelyek segítenek megoldani a problémákat.
 
@@ -80,6 +93,9 @@ Az SDK a [nettó](https://netty.io/) IO-függvénytárat használja a Azure Cosm
 A nettó i/o-szálak csak nem blokkoló, a nettó i/o-működéshez használhatók. Az SDK visszaadja az API meghívásának eredményét az egyik nettó i/o-szálon az alkalmazás kódjára. Ha az alkalmazás hosszú élettartamú műveletet hajt végre, miután az eredményeket kapott a nettó szálon, előfordulhat, hogy az SDK-ban nincs elég IO-szál a belső i/o-művelet elvégzéséhez. Az ilyen alkalmazások kódolása alacsony átviteli sebességet, nagy késést és `io.netty.handler.timeout.ReadTimeoutException` hibákat eredményezhet. A megkerülő megoldás a szál átállítása, ha tudja, hogy a művelet időt vesz igénybe.
 
 Tekintse meg például a következő kódrészletet. Előfordulhat, hogy hosszú távú munkát végez, amely több mint néhány ezredmásodpercet vesz igénybe a nettó szálon. Ha igen, akkor végül egy olyan állapotba kerülhet, amelyben nem szerepelnek a nettó i/o-szálak az IO-munka feldolgozásához. Ennek eredményeképpen ReadTimeoutException-hibát kap.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-readtimeout"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+
 ```java
 @Test
 public void badCodeWithReadTimeoutException() throws Exception {
@@ -131,13 +147,19 @@ public void badCodeWithReadTimeoutException() throws Exception {
     assertThat(failureCount.get()).isGreaterThan(0);
 }
 ```
-   A megkerülő megoldással módosíthatja a szálat, amelyen időt vesz igénybe. Definiálja az ütemező egyedi példányát az alkalmazáshoz.
-   ```java
+A megkerülő megoldással módosíthatja a szálat, amelyen időt vesz igénybe. Definiálja az ütemező egyedi példányát az alkalmazáshoz.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+
+```java
 // Have a singleton instance of an executor and a scheduler.
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
-   ```
-   Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a `customScheduler` által az `.observeOn(customScheduler)` API-val megadott feldolgozónak állítsa be.
+```
+Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a `customScheduler` által az `.observeOn(customScheduler)` API-val megadott feldolgozónak állítsa be.
+
+### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+
 ```java
 Observable<ResourceResponse<Document>> createObservable = client
         .createDocument(getCollectionLink(), docDefinition, null, false);
@@ -169,7 +191,7 @@ Exception in thread "main" java.lang.NoSuchMethodError: rx.Observable.toSingle()
 
 A fenti kivétel azt sugallja, hogy a RxJava lib egy régebbi verziójával (például 1.2.2) függ. Az SDK azon RxJava-1.3.8 támaszkodik, amelyeken a RxJava korábbi verzióiban nem érhető el API-k. 
 
-Az ilyen issuses megkerülő megoldásnak meg kell határoznia, hogy a RxJava-1.2.2 milyen más függőséget biztosít, és zárja ki a RxJava-1.2.2-re irányuló tranzitív függőséget, és engedélyezze a CosmosDB SDK számára az újabb verziót.
+Az ilyen problémák megoldásához meg kell határozni, hogy az RxJava-1.2.2 milyen más függőséget eredményez, és kizárja a RxJava-1.2.2-re irányuló tranzitív függőséget, és lehetővé teszi a CosmosDB SDK számára az újabb verzió használatát.
 
 A RxJava-1.2.2 nevű könyvtár azonosításához futtassa a következő parancsot a Project Pom. xml fájl mellett:
 ```bash

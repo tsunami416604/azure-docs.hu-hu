@@ -3,13 +3,13 @@ title: Fogalmak – biztonság az Azure Kubernetes Servicesben (ak)
 description: Ismerje meg az Azure Kubernetes szolgáltatással (ak) kapcsolatos biztonságot, beleértve a Master és Node kommunikációt, a hálózati házirendeket és a Kubernetes titkokat.
 services: container-service
 ms.topic: conceptual
-ms.date: 03/01/2019
-ms.openlocfilehash: 1960d18396f47b3dbdd51a50ec4241be5ebe4ff1
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/08/2020
+ms.openlocfilehash: f3c4fd922ef0e4243344b34dd90f7e48f903abcd
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82206629"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981391"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) található alkalmazások és fürtök biztonsági fogalmai
 
@@ -27,7 +27,9 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyekkel biztonságossá t
 
 Az AK-ban a Kubernetes fő összetevői a Microsoft által biztosított felügyelt szolgáltatás részét képezik. Mindegyik AK-fürt saját, egyetlen bérlős, dedikált Kubernetes-főkiszolgálóval rendelkezik az API-kiszolgáló, a ütemező stb. biztosításához. Ezt a főkiszolgálót a Microsoft felügyeli és tartja karban.
 
-Alapértelmezés szerint a Kubernetes API-kiszolgáló egy nyilvános IP-címet és egy teljesen minősített tartománynevet (FQDN) használ. Az API-kiszolgálóhoz való hozzáférést az Kubernetes szerepköralapú hozzáférés-vezérlés és a Azure Active Directory használatával szabályozhatja. További információ: [Azure ad-integráció az AK][aks-aad]-nal.
+Alapértelmezés szerint a Kubernetes API-kiszolgáló egy nyilvános IP-címet és egy teljesen minősített tartománynevet (FQDN) használ. Az API-kiszolgáló végpontjának hozzáférését az [engedélyezett IP-címtartományok][authorized-ip-ranges]alapján korlátozhatja. Létrehozhat egy teljesen [privát fürtöt][private-clusters] is az API-kiszolgáló virtuális hálózathoz való hozzáférésének korlátozásához.
+
+Az API-kiszolgálóhoz való hozzáférést az Kubernetes szerepköralapú hozzáférés-vezérlés és a Azure Active Directory használatával szabályozhatja. További információ: [Azure ad-integráció az AK][aks-aad]-nal.
 
 ## <a name="node-security"></a>Csomópont biztonsága
 
@@ -65,6 +67,10 @@ A helyszíni hálózatokkal létesített kapcsolat és biztonság érdekében az
 ### <a name="azure-network-security-groups"></a>Azure-beli hálózati biztonsági csoportok
 
 A virtuális hálózatok forgalmának szűréséhez az Azure hálózati biztonsági csoportokra vonatkozó szabályokat használ. Ezek a szabályok határozzák meg az erőforrásokhoz való hozzáférést engedélyező vagy megtagadott forrás-és cél IP-tartományokat, portokat és protokollokat. Az alapértelmezett szabályok úgy jönnek létre, hogy engedélyezzék a TLS-forgalmat a Kubernetes API-kiszolgálónak. Amikor terheléselosztó, port-hozzárendelés vagy bejövő útvonalak használatával hoz létre szolgáltatásokat, az AK automatikusan módosítja a hálózati biztonsági csoportot a megfelelő forgalomra.
+
+### <a name="kubernetes-network-policy"></a>Kubernetes hálózati házirend
+
+A fürtben található hüvelyek közötti hálózati forgalom korlátozásához az AK támogatást nyújt a [Kubernetes hálózati házirendjeihez][network-policy]. A hálózati házirendek segítségével engedélyezheti vagy megtagadhatja a fürtön belüli adott hálózati elérési utakat a névterek és a címkék választói alapján.
 
 ## <a name="kubernetes-secrets"></a>A Kubernetes titkos kódjai
 
@@ -104,3 +110,6 @@ Az alapvető Kubernetes és az AK-fogalmakkal kapcsolatos további információk
 [operator-best-practices-cluster-security]: operator-best-practices-cluster-security.md
 [developer-best-practices-pod-security]:developer-best-practices-pod-security.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
+[authorized-ip-ranges]: api-server-authorized-ip-ranges.md
+[private-clusters]: private-clusters.md
+[network-policy]: use-network-policies.md

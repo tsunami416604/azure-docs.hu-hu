@@ -3,15 +3,15 @@ title: Hozzáférés az Azure-beli virtuális hálózatokhoz
 description: Az integrációs szolgáltatási környezetek (ISEs) súgójának áttekintése az Azure Virtual Networks (virtuális hálózatok) szolgáltatáshoz való hozzáféréshez
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
-ms.topic: article
-ms.date: 03/12/2020
-ms.openlocfilehash: 9d5e0c088fe773f16e1fc57f292ca812906aa09c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
+ms.date: 05/01/2020
+ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127251"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734916"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával
 
@@ -111,16 +111,18 @@ A díjszabással kapcsolatban lásd: [Logic apps díjszabása](https://azure.mic
 
 ## <a name="ise-endpoint-access"></a>ISE-végponti hozzáférés
 
-Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési végpontokat használ. A kiválasztott beállítás határozza meg, hogy az ISE-beli Logic apps-beli kérelem vagy webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről is.
-
-Ezek a végpontok a logikai alkalmazások futtatási előzményeiben lévő bemenetekhez és kimenetekhez is hatással lehetnek.
-
-* **Belső**: olyan privát végpontok, amelyek lehetővé teszik az ISE-beli Logic Apps-alkalmazások meghívását, ahol a Logic apps bemeneteit és kimeneteit *csak a virtuális hálózatán belül* lehet megtekinteni és elérni
-
-* **Külső**: nyilvános végpontok, amelyek lehetővé teszik az ISE-beli Logic Apps-alkalmazások meghívását, ahol a logikai alkalmazások bemeneteit és kimeneteit a *virtuális hálózatán kívülről*is megtekintheti és elérheti. Ha hálózati biztonsági csoportokat (NSG) használ, győződjön meg róla, hogy be van állítva a bejövő szabályokkal, hogy engedélyezze a futtatási előzmények bemeneteit és kimeneteit. További információ: az [ISE hozzáférésének engedélyezése](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+Az ISE létrehozásakor dönthet úgy, hogy belső vagy külső hozzáférési végpontokat használ. A kiválasztott beállítás határozza meg, hogy az ISE-beli Logic apps-beli kérelem vagy webhook-eseményindítók fogadhatnak-e hívásokat a virtuális hálózaton kívülről is. Ezek a végpontok arra is hatással vannak, hogy milyen módon férhet hozzá a Logic apps futtatási előzményeinek bemenetekhez és kimenetekhez.
 
 > [!IMPORTANT]
-> A hozzáférési végpont beállítás csak az ISE létrehozásakor érhető el, és később nem módosítható.
+> A hozzáférési végpontot csak az ISE létrehozása során választhatja ki, és később nem módosíthatja ezt a beállítást.
+
+* **Belső**: a privát végpontok lehetővé teszik az ISE-beli logikai alkalmazások meghívását, ahol megtekintheti és elérheti a Logic apps futtatási előzményeinek bemeneteit és kimeneteit *csak a virtuális hálózatán belülről*. Győződjön meg arról, hogy van hálózati kapcsolat a privát végpontok és azon számítógép között, ahonnan el szeretné érni a futtatási előzményeket. Például az ügyfélszámítógép létezhet az ISE virtuális hálózatán belül vagy egy olyan virtuális hálózaton belül, amely csatlakozik az ISE virtuális hálózatához, például a peering vagy egy virtuális magánhálózat használatával.
+
+* **Külső**: a nyilvános végpontok lehetővé teszik olyan logikai alkalmazások meghívását az ISE-ben, ahol megtekintheti és elérheti a Logic apps alkalmazásban található bemeneteket és kimeneteket *a virtuális hálózaton kívülről*. Ha hálózati biztonsági csoportokat (NSG) használ, győződjön meg róla, hogy be van állítva a bejövő szabályokkal, hogy engedélyezze a futtatási előzmények bemeneteit és kimeneteit. További információ: az [ISE hozzáférésének engedélyezése](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#enable-access).
+
+Annak megállapításához, hogy az ISE belső vagy külső hozzáférési végpontot használ-e, az ISE menüjében, a **Beállítások**területen válassza a **Tulajdonságok**lehetőséget, és keresse meg a **hozzáférési végpont** tulajdonságot:
+
+![ISE hozzáférési végpontjának keresése](./media/connect-virtual-network-vnet-isolated-environment-overview/find-ise-access-endpoint.png)
 
 <a name="create-integration-account-environment"></a>
 

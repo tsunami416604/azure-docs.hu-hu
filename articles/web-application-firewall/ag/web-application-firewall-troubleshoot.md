@@ -7,18 +7,20 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: ant
 ms.topic: conceptual
-ms.openlocfilehash: 9cfb44fbf84ad85f3e2684dfec21cc83d4aaa666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6fa959b1c9ed021a97031ba03822ae89fbbb7bbb
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131256"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983074"
 ---
 # <a name="troubleshoot-web-application-firewall-waf-for-azure-application-gateway"></a>Az Azure Application Gateway webalkalmazási tűzfalának (WAF) hibáinak megoldása
 
 Néhány dolog elvégezhető, ha a webalkalmazási tűzfalon (WAF) továbbított kérések le vannak tiltva.
 
 Először is győződjön meg róla, hogy elolvasta a [WAF áttekintését](ag-overview.md) és a [WAF konfigurációs](application-gateway-waf-configuration.md) dokumentumait. Győződjön meg arról is, hogy engedélyezte a [WAF-figyelést](../../application-gateway/application-gateway-diagnostics.md) . Ezek a cikkek ismertetik a WAF működését, a WAF-szabály működését, valamint a WAF-naplók elérését.
+
+A OWASP-szabályrendszerek úgy vannak kialakítva, hogy nagyon szigorúak legyenek a dobozból, és az alkalmazás vagy a szervezet konkrét igényeinek megfelelően hangolják magukat a WAF használatával. Ez teljesen normális, és valójában sok esetben várható, a kizárások, az egyéni szabályok létrehozása és a hibák vagy a téves pozitívan okozó szabályok letiltása is. A hely és az URI-alapú házirendek lehetővé teszik, hogy ezek a módosítások csak bizonyos helyeket vagy URI-ket érintsenek, ezért a módosításoknak nem kell más olyan helyeket érinteniük, amelyek esetleg nem futnak az adott problémákkal. 
 
 ## <a name="understanding-waf-logs"></a>A WAF-naplók ismertetése
 

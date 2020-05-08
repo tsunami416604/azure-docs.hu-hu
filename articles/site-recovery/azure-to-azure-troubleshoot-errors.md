@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/07/2020
 ms.author: rochakm
-ms.openlocfilehash: 9f95677211a89c1bb2a18076741dec08e76c5d70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bbb2ddaa1fb84590f9dec1c84ac4bc87a8e03022
+ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81390398"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82738116"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ról az Azure-ba irányuló virtuális gépek replikációs hibáinak elhárítása
 
@@ -172,8 +172,6 @@ Mivel a SUSE Linux szimbolikus hivatkozásokat vagy symlinkeket használ a tanú
 ## <a name="outbound-urls-or-ip-ranges-error-code-151037-or-151072"></a>Kimenő URL-címek vagy IP-címtartományok (hibakód: 151037 vagy 151072)
 
 Site Recovery replikálás működéséhez az adott URL-címekre irányuló kimenő kapcsolat szükséges a virtuális gépről. Ha a virtuális gép tűzfal mögött van, vagy hálózati biztonsági csoport (NSG) szabályok használatával vezérli a kimenő kapcsolatot, akkor előfordulhat, hogy ezek egyike a probléma. Noha az URL-címeken keresztül továbbra is támogatja a kimenő hozzáférést, az IP-címtartományok engedélyezési listájának használata már nem támogatott.
-
-### <a name="issue-1-failed-to-register-azure-vm-with-site-recovery-151195"></a>1. probléma: nem sikerült regisztrálni az Azure-beli virtuális gépet Site Recovery (151195)
 
 #### <a name="possible-causes"></a>Lehetséges okok
 

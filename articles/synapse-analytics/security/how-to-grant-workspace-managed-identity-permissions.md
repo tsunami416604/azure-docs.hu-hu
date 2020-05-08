@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f519022fffe98c565c3b2d30f6578b9ebb70c57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f0644c25d0047f774fe8f99efa34a33e10d7b2b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428016"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983295"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Engedélyek megadása a munkaterület által felügyelt identitásnak (előzetes verzió)
 
-Ez a cikk bemutatja, hogyan adhat engedélyeket a felügyelt identitásnak az Azure szinapszis munkaterületen. Az engedélyek lehetővé teszik az SQL-készletekhez való hozzáférést a munkaterületen, és a ADLS Gen2 a Azure Portal.
+Ez a cikk bemutatja, hogyan adhat engedélyeket a felügyelt identitásnak az Azure szinapszis munkaterületen. Az engedélyek lehetővé teszik az SQL-készletek elérését a munkaterületen, és ADLS Gen2 a Storage-fiókot a Azure Portal keresztül.
 
 >[!NOTE]
 >Ezt a munkaterület felügyelt identitását felügyelt identitásnak nevezzük a dokumentum többi részén.
@@ -29,21 +29,21 @@ Az Azure szinapszis-munkaterület létrehozásakor válassza a **Biztonság és 
 
 ![VEZÉRLÉSi engedély az SQL-készleteken](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
-## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>A felügyelt identitás engedélyeinek megadása ADLS Gen2 Storage-fiókhoz
+## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>Felügyelt identitás engedélyeinek megadása ADLS Gen2 Storage-fiókhoz
 
-Egy Azure-beli szinapszis-munkaterület létrehozásához ADLS Gen2-fiók szükséges. A Spark-készletek Azure szinapszis-munkaterületen való sikeres indításához az Azure szinapszis felügyelt identitásának szüksége van a *Storage blob adatközreműködői* szerepkörre ezen a Storage-fiókon. Az Azure szinapszis folyamat-előkészítési funkciói szintén ebből a szerepkörből származnak.
+Azure szinapszis-munkaterület létrehozásához ADLS Gen2 Storage-fiók szükséges. A Spark-készletek Azure szinapszis-munkaterületen való sikeres indításához az Azure szinapszis felügyelt identitásának szüksége van a *Storage blob adatközreműködői* szerepkörre ezen a Storage-fiókon. Az Azure szinapszis folyamat-előkészítési funkciói szintén ebből a szerepkörből származnak.
 
 ### <a name="grant-permissions-to-managed-identity-during-workspace-creation"></a>Engedélyek megadása a felügyelt identitásnak a munkaterület létrehozása során
 
-Az Azure szinapszis megpróbálja a Storage blob adatközreműködői szerepkört a felügyelt identitáshoz adni, miután létrehozta az Azure szinapszis-munkaterületet a Azure Portal használatával. Az **alapismeretek** lapon megadhatja a ADLS Gen2-fiókjának adatait.
+Az Azure szinapszis megpróbálja a Storage blob adatközreműködői szerepkört a felügyelt identitáshoz adni, miután létrehozta az Azure szinapszis-munkaterületet a Azure Portal használatával. Az **alapismeretek** lapon megadhatja a ADLS Gen2 Storage-fiók adatait.
 
 ![Alapismeretek lap a munkaterület létrehozási folyamatában](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-1.png)
 
-Válassza ki a ADLS Gen2 Storage-fiókját és a fájlrendszert a **fiók neve** és a fájlrendszer **neve**beállításban.
+Válassza ki a ADLS Gen2 Storage-fiókot és a fájlrendszert a **fiók neve** és a fájlrendszer **neve**beállításban.
 
 ![ADLS Gen2 Storage-fiók adatainak megadása](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-2.png)
 
-Ha a munkaterület létrehozója is **tulajdonosa** a ADLS Gen2 Storage-fióknak, akkor az Azure szinapszis a *Storage blob adatközreműködői* szerepkört a felügyelt identitáshoz rendeli. A következő üzenet jelenik meg a Storage-fiók megadott adatai alatt.
+Ha a munkaterület létrehozója a ADLS Gen2 Storage-fiók **tulajdonosa** is, akkor az Azure szinapszis a *Storage blob adatközreműködői* szerepkört a felügyelt identitáshoz rendeli hozzá. A következő üzenet jelenik meg a Storage-fiók megadott adatai alatt.
 
 ![A Storage blob adatközreműködői hozzárendelésének sikeres hozzárendelése](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-3.png)
 
@@ -55,12 +55,12 @@ A Message állapotok nem hozhatnak létre Spark-készleteket, kivéve, ha a *Sto
 
 ### <a name="grant-permissions-to-managed-identity-after-workspace-creation"></a>Engedélyek megadása a felügyelt identitásnak a munkaterület létrehozása után
 
-Ha a munkaterület létrehozása során nem rendeli hozzá a *Storage blob-adatközreműködőt* a felügyelt identitáshoz, akkor a ADLS Gen2-fiók **tulajdonosa** manuálisan rendeli hozzá ezt a szerepkört az identitáshoz. A következő lépések segítséget nyújtanak a manuális hozzárendelés megvalósításában.
+Ha a munkaterület létrehozása során nem rendeli hozzá a *Storage blob-adatközreműködőt* a felügyelt identitáshoz, akkor a ADLS Gen2 Storage-fiók **tulajdonosa** manuálisan rendeli hozzá ezt a szerepkört az identitáshoz. A következő lépések segítséget nyújtanak a manuális hozzárendelés megvalósításában.
 
-#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>1. lépés: navigáljon a ADLS Gen2 Storage-fiókjához Azure Portal
+#### <a name="step-1-navigate-to-the-adls-gen2-storage-account-in-azure-portal"></a>1. lépés: navigáljon a ADLS Gen2 Storage-fiókhoz Azure Portal
 
 A Azure Portalban nyissa meg a ADLS Gen2 Storage-fiókot, és válassza az **Áttekintés** lehetőséget a bal oldali navigációs sávon. A tároló vagy a fájlrendszer szintjén csak a *Storage blob adatközreműködői* szerepkört kell hozzárendelni. Válassza a **tárolók**lehetőséget.  
-![ADLS Gen2 – a Storage-fiók áttekintése](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
+![ADLS Gen2 Storage-fiók áttekintése](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-5.png)
 
 #### <a name="step-2-select-the-container"></a>2. lépés: a tároló kiválasztása
 
@@ -69,7 +69,7 @@ A felügyelt identitásnak hozzáféréssel kell rendelkeznie a munkaterület l�
 
 
 Válassza ki ugyanazt a tárolót vagy fájlrendszert, hogy a *tárolási blob adatközreműködői* szerepkört adja a felügyelt identitásnak.
-![ADLS Gen2-tároló kiválasztása](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
+![ADLS Gen2 Storage-fiók tárolójának kiválasztása](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-6.png)
 
 #### <a name="step-3-navigate-to-access-control"></a>3. lépés: navigáljon a hozzáférés-vezérléshez
 
@@ -114,7 +114,7 @@ Válassza a **Access Control (iam)** lehetőséget, majd válassza a **szerepkö
 ![Szerepkör-hozzárendelés ellenőrzése](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-14.png)
 
 A felügyelt identitást a **Storage blob adatközreműködői** című szakaszban találja a *Storage blob-adatközreműködői* szerepkörhöz hozzárendelve. 
-![ADLS Gen2-tároló kiválasztása](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
+![ADLS Gen2 Storage-fiók tárolójának kiválasztása](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-15.png)
 
 ## <a name="next-steps"></a>További lépések
 

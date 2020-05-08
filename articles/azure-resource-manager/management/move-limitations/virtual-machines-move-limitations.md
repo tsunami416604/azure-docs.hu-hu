@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek áthelyezése új előfizetésre vagy erőfo
 description: A Azure Resource Manager használatával áthelyezheti a virtuális gépeket egy új erőforráscsoporthoz vagy előfizetésbe.
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 144888c4a66ef68448ae8bc863f6aef0923dfb69
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e5bd004b6619db9c9882b8e9e6005309317b8ca5
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160119"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744638"
 ---
 # <a name="move-guidance-for-virtual-machines"></a>Útmutató a virtuális gépekhez
 
@@ -29,7 +29,7 @@ A következő forgatókönyvek még nem támogatottak:
 
 Azure Backuprel konfigurált virtuális gépek áthelyezéséhez törölnie kell a visszaállítási pontokat a tárból.
 
-Ha a helyreállítható [Törlés](../../../backup/backup-azure-security-feature-cloud.md) engedélyezve van a virtuális gépen, akkor a virtuális gép nem helyezhető át a visszaállítási pontok megtartására. [Tiltsa le a nem kötelező törlést](../../../backup/backup-azure-security-feature-cloud.md#disabling-soft-delete) , vagy várjon 14 nappal a visszaállítási pontok törlése után.
+Ha a helyreállítható [Törlés](../../../backup/backup-azure-security-feature-cloud.md) engedélyezve van a virtuális gépen, akkor a virtuális gép nem helyezhető át a visszaállítási pontok megtartására. [Tiltsa le a nem kötelező törlést](../../../backup/backup-azure-security-feature-cloud.md#enabling-and-disabling-soft-delete) , vagy várjon 14 nappal a visszaállítási pontok törlése után.
 
 ### <a name="portal"></a>Portál
 

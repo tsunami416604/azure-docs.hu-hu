@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 7b27f10567816884b14a0a2c69e3bd8e85cb7a76
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 91177c67c9d24f73934381704bca8259af31adca
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81398703"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858632"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk"></a>Oktatóanyag: Azure Data Box Disk rendelése
 
@@ -102,7 +102,7 @@ Data Box Disk megrendeléséhez hajtsa végre az alábbi lépéseket.
 
     ![A megrendelés részletei](media/data-box-disk-deploy-ordered/data-box-order-details.png)
 
-14. A **Szállítási cím** lapon adja meg az utónevét és a vezetéknevét, a cége nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről. 
+14. A **Szállítási cím** lapon adja meg az utónevét és a vezetéknevét, a cége nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről. A Japánban, Szingapúrban, Koreában és Nyugat-Európában szolgáltatást használó ügyfeleink választhatják az önfelügyelt szállítást a megrendelés elhelyezésekor. A megrendelés sikeres elhelyezése után egy e-mailt fog kapni, amely útmutatást ad az eszköznek a kijelölt Azure-adatközpontból való felvételéhez.
 
     ![Szállítási cím megadása](media/data-box-disk-deploy-ordered/data-box-shipping-address.png)
 15. Az **Értesítési adatok** területen adja meg az e-mail-címeket. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre. 

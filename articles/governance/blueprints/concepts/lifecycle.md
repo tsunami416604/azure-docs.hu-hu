@@ -1,14 +1,14 @@
 ---
 title: A terv életciklusának megismerése
 description: Megtudhatja, hogy milyen életciklussal rendelkezik a tervrajzok definíciója, és részletezi az egyes szakaszokat, beleértve a terv-Hozzárendelések frissítését és eltávolítását
-ms.date: 07/30/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 46da42ec97f16af91ef8e41362a085d466bbb887
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dc024c0e6643420d26bdc92e47fabe647c55ae7b
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677371"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864028"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Egy Azure Blueprint életciklusának megismerése
 

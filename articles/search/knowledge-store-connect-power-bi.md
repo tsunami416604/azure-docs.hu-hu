@@ -7,20 +7,25 @@ ms.author: heidist
 manager: nitinme
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/26/2019
-ms.openlocfilehash: 4fd71a7f322cb2672eb485f17e4de2619a7c2d2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: e67bd688d720ed3d7549a86c9cff752bc19fb2fc
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78270035"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858817"
 ---
 # <a name="connect-a-knowledge-store-with-power-bi"></a>Tudástár összekötése Power BI
 
 > [!IMPORTANT] 
 > A Knowledge Store jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg korlátozott a portál támogatása, és nincs .NET SDK-támogatás.
 
-Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és hogyan deríthető fel a Power Query használatával a Power BI Desktop alkalmazásban. A sablonokkal gyorsabban elsajátíthatja az első lépéseket, vagy létrehozhat egy teljesen új irányítópultot.
+Ebből a cikkből megtudhatja, hogyan csatlakozhat a Knowledge Store-hoz, és hogyan deríthető fel a Power Query használatával a Power BI Desktop alkalmazásban. A sablonokkal gyorsabban elsajátíthatja az első lépéseket, vagy létrehozhat egy teljesen új irányítópultot. Ebből a rövid videóból megtudhatja, hogyan bővítheti az adatait az Azure Cognitive Search és az Power BI együttes használatával.
+
+
+> [!VIDEO https://www.youtube.com/embed/XWzLBP8iWqg?version=3&start=593&end=663]
+
+
 
 + Kövesse a [Tudásbázis létrehozása a Azure Portalban](knowledge-store-create-portal.md) című témakör lépéseit, vagy [hozzon létre egy Azure Cognitive Search Knowledge Store](knowledge-store-create-rest.md) -t a REST használatával, és hozza létre az ebben az útmutatóban használt, a minta tudásbázist. Szüksége lesz a Knowledge Store létrehozásához használt Azure Storage-fiók nevére, valamint a Azure Portal elérési kulcsára.
 

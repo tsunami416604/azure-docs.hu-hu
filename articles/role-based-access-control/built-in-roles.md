@@ -15,12 +15,12 @@ ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b6587ca113319c266d2335c9cbb154e0ecc4afa1
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
-ms.translationtype: HT
+ms.openlocfilehash: b5ba4b84fcd9c1722e8ab2f4031ec1551357e406
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838739"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869997"
 ---
 # <a name="azure-built-in-roles"></a>Azure beépített szerepkörök
 
@@ -34,7 +34,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Description | ID (Azonosító) |
+> | Beépített szerepkör | Leírás | ID (Azonosító) |
 > | --- | --- | --- |
 > | **Általános** |  |  |
 > | [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -156,7 +156,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Tesztkörnyezet létrehozója](#lab-creator) | Lehetővé teszi a felügyelt Labs Azure Lab-fiókokban való létrehozását, kezelését és törlését. | b97fb8bc-a8b2-4522-a38b-dd33c7e65ead |
 > | **Figyelő** |  |  |
 > | [Application Insights összetevő közreműködője](#application-insights-component-contributor) | Felügyelheti Application Insights összetevőket | ae349356-3a1b-4a5e-921d-050484c6347e |
-> | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Felhasználói jogosultságot biztosít a Application Insights Snapshot Debugger gyűjtött hibakeresési Pillanatképek megtekintéséhez és letöltéséhez. Vegye figyelembe, hogy ezek az engedélyek nem szerepelnek a [tulajdonos](#owner) vagy a [közreműködő](#contributor) szerepkörben. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
+> | [Application Insights Snapshot Debugger](#application-insights-snapshot-debugger) | Felhasználói jogosultságot biztosít a Application Insights Snapshot Debugger gyűjtött hibakeresési Pillanatképek megtekintéséhez és letöltéséhez. Vegye figyelembe, hogy ezek az engedélyek nem szerepelnek a [tulajdonos](#owner) vagy a [közreműködő](#contributor) szerepkörben. Ha a felhasználók számára a Application Insights Snapshot Debugger szerepkört adja meg, közvetlenül a felhasználónak kell megadnia a szerepkört. A szerepkör nem ismerhető fel, ha hozzá van adva egy egyéni szerepkörhöz. | 08954f03-6346-4c2e-81c0-ec3a5cfae23b |
 > | [Közreműködő figyelése](#monitoring-contributor) | Beolvashatja az összes figyelési és a figyelési beállításokat. Lásd még: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). | 749f88d5-cbae-40b8-bcfc-e573ddc772fa |
 > | [Figyelési metrikák közzétevője](#monitoring-metrics-publisher) | Lehetővé teszi az Azure-erőforrásokhoz való közzétételi mérőszámok közzétételét | 3913510d-42f4-4e42-8a64-420c390055eb |
 > | [Figyelő olvasó](#monitoring-reader) | Az összes figyelési adat (mérőszámok, naplók stb.) olvasása. Lásd még: Ismerkedés [a szerepkörökkel, az engedélyekkel és a biztonsággal a Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). | 43d0d8ad-25c7-4714-9337-8ba259a9fe05 |
@@ -192,7 +192,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Ütemező – feladattípusok közreműködői](#scheduler-job-collections-contributor) | Lehetővé teszi a Scheduler-feladatok összegyűjtését, de nem fér hozzájuk. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 
 ### <a name="contributor"></a>Közreműködő
@@ -6144,7 +6144,7 @@ Felügyelheti Application Insights összetevőket
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 
-Felhasználói jogosultságot biztosít a Application Insights Snapshot Debugger gyűjtött hibakeresési Pillanatképek megtekintéséhez és letöltéséhez. Vegye figyelembe, hogy ezek az engedélyek nem szerepelnek a [tulajdonos](#owner) vagy a [közreműködő](#contributor) szerepkörben.
+Felhasználói jogosultságot biztosít a Application Insights Snapshot Debugger gyűjtött hibakeresési Pillanatképek megtekintéséhez és letöltéséhez. Vegye figyelembe, hogy ezek az engedélyek nem szerepelnek a [tulajdonos](#owner) vagy a [közreműködő](#contributor) szerepkörben. Ha a felhasználók számára a Application Insights Snapshot Debugger szerepkört adja meg, közvetlenül a felhasználónak kell megadnia a szerepkört. A szerepkör nem ismerhető fel, ha hozzá van adva egy egyéni szerepkörhöz. 
 
 > [!div class="mx-tableFixed"]
 > |  |  |

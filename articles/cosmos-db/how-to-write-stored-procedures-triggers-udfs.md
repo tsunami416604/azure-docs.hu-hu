@@ -1,17 +1,17 @@
 ---
 title: Tárolt eljárások, eseményindítók és UDF írása Azure Cosmos DB
 description: Megtudhatja, hogyan határozhat meg tárolt eljárásokat, eseményindítókat és felhasználó által definiált függvényeket Azure Cosmos DB
-author: markjbrown
+author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/31/2019
-ms.author: mjbrown
-ms.openlocfilehash: 4dee017323bda5fc08598a9b24cadd11516807cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/07/2020
+ms.author: tisande
+ms.openlocfilehash: 3c0ac8ac419b3cdd2b154974d3ccbcce6896e847
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75441736"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982292"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Tárolt eljárások, eseményindítók és felhasználó által definiált függvények írása Azure Cosmos DB
 
@@ -21,15 +21,12 @@ A tárolt eljárások, triggerek és felhasználó által definiált függvénye
 
 > [!NOTE]
 > Particionált tárolók esetén a tárolt eljárás végrehajtásakor meg kell adni egy partíciós kulcs értékét a kérés beállításai között. A tárolt eljárásokat a rendszer mindig a partíciós kulcsra szűkíti. A másik partíciós kulcs értékkel rendelkező elemek nem lesznek láthatók a tárolt eljárásban. Ez is a triggerekre is vonatkozik.
-
 > [!Tip]
 > A Cosmos támogatja a tárolók üzembe helyezését tárolt eljárásokkal, eseményindítókkal és felhasználó által definiált függvényekkel. További információ: [Azure Cosmos db tároló létrehozása kiszolgálóoldali funkciókkal.](manage-sql-with-resource-manager.md#create-sproc)
 
 ## <a name="how-to-write-stored-procedures"></a><a id="stored-procedures"></a>Tárolt eljárások írása
 
 A tárolt eljárások JavaScript használatával íródnak, és az Azure Cosmos-tárolóban lévő elemeket hozhatnak létre, frissíthetnek, olvashatnak, lekérhetnek és törölhetnek. A tárolt eljárások gyűjtemény szerint vannak regisztrálva, és a gyűjteményben található bármilyen dokumentumon vagy mellékleten működhetnek.
-
-**Például**
 
 Az alábbi egyszerű tárolt eljárás egy ""Helló világ!"alkalmazás" választ ad vissza.
 
@@ -51,7 +48,7 @@ Az írást követően a tárolt eljárást regisztrálni kell egy gyűjteménybe
 
 ### <a name="create-an-item-using-stored-procedure"></a><a id="create-an-item"></a>Elemek létrehozása tárolt eljárás használatával
 
-Amikor tárolt eljárással hoz létre egy tételt, az elem bekerül az Azure Cosmos-tárolóba, és az újonnan létrehozott elem AZONOSÍTÓját adja vissza. Egy elem létrehozása aszinkron művelet, amely a JavaScript visszahívási függvénytől függ. A visszahívási függvény két paraméterrel rendelkezik – egyet a hiba objektumhoz abban az esetben, ha a művelet meghiúsul, és egy másik a visszatérési értékhez. Ebben az esetben a létrehozott objektum. A visszahíváson belül kezelheti a kivételt, vagy hibát okozhat. Ha nincs megadva visszahívás, és hiba történt, akkor a Azure Cosmos DB futtatókörnyezet hibát jelez. 
+Amikor tárolt eljárással hoz létre egy tételt, az elem bekerül az Azure Cosmos-tárolóba, és az újonnan létrehozott elem AZONOSÍTÓját adja vissza. Egy elem létrehozása aszinkron művelet, amely a JavaScript visszahívási függvénytől függ. A visszahívási függvény két paraméterrel rendelkezik – egyet a hiba objektumhoz abban az esetben, ha a művelet meghiúsul, és egy másik a visszatérési értékhez. Ebben az esetben a létrehozott objektum. A visszahíváson belül kezelheti a kivételt, vagy hibát okozhat. Ha nincs megadva visszahívás, és hiba történt, akkor a Azure Cosmos DB futtatókörnyezet hibát jelez.
 
 A tárolt eljárás egy paramétert is tartalmaz a Leírás megadásához, ez egy logikai érték. Ha a paraméter értéke TRUE (igaz), és a Leírás hiányzik, akkor a tárolt eljárás kivételt jelez. Ellenkező esetben a tárolt eljárás többi része továbbra is fut.
 
@@ -73,7 +70,7 @@ function createToDoItem(itemToCreate) {
 }
 ```
 
-### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Tömbök bemeneti paraméterként a tárolt eljárásokhoz 
+### <a name="arrays-as-input-parameters-for-stored-procedures"></a>Tömbök bemeneti paraméterként a tárolt eljárásokhoz
 
 Azure Portal tárolt eljárás definiálásakor a bemeneti paraméterek mindig karakterláncként lesznek elküldve a tárolt eljáráshoz. Még ha sztringek tömbjét is át kell adni bemenetként, a rendszer karakterlánccá alakítja át a tömböt, és elküldi a tárolt eljárásnak. Ennek megkerüléséhez definiálhat egy függvényt a tárolt eljáráson belül a sztring tömbként való elemzéséhez. A következő kód bemutatja, hogyan elemezheti a karakterlánc bemeneti paramétereit tömbként:
 
@@ -102,12 +99,12 @@ function tradePlayers(playerId1, playerId2) {
     var player1Document, player2Document;
 
     // query for players
-    var filterQuery = 
-    {     
+    var filterQuery =
+    {
         'query' : 'SELECT * FROM Players p where p.id = @playerId1',
         'parameters' : [{'name':'@playerId1', 'value':playerId1}] 
     };
-            
+
     var accept = container.queryDocuments(container.getSelfLink(), filterQuery, {},
         function (err, items, responseOptions) {
             if (err) throw new Error("Error" + err.message);
@@ -115,10 +112,10 @@ function tradePlayers(playerId1, playerId2) {
             if (items.length != 1) throw "Unable to find both names";
             player1Item = items[0];
 
-            var filterQuery2 = 
-            {     
+            var filterQuery2 =
+            {
                 'query' : 'SELECT * FROM Players p where p.id = @playerId2',
-                'parameters' : [{'name':'@playerId2', 'value':playerId2}] 
+                'parameters' : [{'name':'@playerId2', 'value':playerId2}]
             };
             var accept2 = container.queryDocuments(container.getSelfLink(), filterQuery2, {},
                 function (err2, items2, responseOptions2) {
@@ -208,6 +205,56 @@ function bulkImport(items) {
             tryCreate(items[count], callback);
         }
     }
+}
+```
+
+### <a name="async-await-with-stored-procedures"></a><a id="async-promises"></a>Aszinkron várakozás tárolt eljárásokkal
+
+A következő példa egy olyan tárolt eljárásra mutat be példát, amely aszinkron módon használja az ígéreteket egy segítő függvény használatával. A tárolt eljárás lekérdezi egy adott elemmel, és lecseréli azt.
+
+```javascript
+function async_sample() {
+    const ERROR_CODE = {
+        NotAccepted: 429
+    };
+
+    const asyncHelper = {
+        queryDocuments(sqlQuery, options) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.queryDocuments(__.getSelfLink(), sqlQuery, options, (err, feed, options) => {
+                    if (err) reject(err);
+                    resolve({ feed, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        },
+
+        replaceDocument(doc) {
+            return new Promise((resolve, reject) => {
+                const isAccepted = __.replaceDocument(doc._self, doc, (err, result, options) => {
+                    if (err) reject(err);
+                    resolve({ result, options });
+                });
+                if (!isAccepted) reject(new Error(ERROR_CODE.NotAccepted, "replaceDocument was not accepted."));
+            });
+        }
+    };
+
+    async function main() {
+        let continuation;
+        do {
+            let { feed, options } = await asyncHelper.queryDocuments("SELECT * from c", { continuation });
+
+            for (let doc of feed) {
+                doc.newProp = 1;
+                await asyncHelper.replaceDocument(doc);
+            }
+
+            continuation = options.continuation;
+        } while (continuation);
+    }
+
+    main().catch(err => getContext().abort(err));
 }
 ```
 

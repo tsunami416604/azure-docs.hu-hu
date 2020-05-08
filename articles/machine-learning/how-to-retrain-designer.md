@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.author: keli19
 author: likebupt
 ms.date: 04/06/2020
-ms.openlocfilehash: 77c1cc6ef5a7353d246958d1b047f054d5f49890
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: fb0122833dabe4030232efb3ca07557ce1826aff
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82837158"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981901"
 ---
 # <a name="retrain-models-with-azure-machine-learning-designer-preview"></a>Modellek újratanítása az Azure Machine Learning Designerrel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,7 +38,7 @@ A cikk azt is feltételezi, hogy alapvető ismeretekkel rendelkezik a folyamatok
 
 ### <a name="sample-pipeline"></a>Mintavételezési folyamat
 
-A cikkben használt folyamat a 3. minta módosított verziója [: bevétel előrejelzése](samples-designer.md#classification-samples). A folyamat a minta adatkészlet helyett az [adat importálása](algorithm-module-reference/import-data.md) modult használja, hogy megmutassa, hogyan taníthatja be a modelleket a saját adatai alapján.
+A cikkben használt folyamat a 3. minta módosított verziója [: bevétel előrejelzése](samples-designer.md#classification). A folyamat a minta adatkészlet helyett az [adat importálása](algorithm-module-reference/import-data.md) modult használja, hogy megmutassa, hogyan taníthatja be a modelleket a saját adatai alapján.
 
 ![Képernyőfelvétel a módosított mintavételi folyamatról az Adatimportálási modul kiemelésével](./media/how-to-retrain-designer/modified-sample-pipeline.png)
 

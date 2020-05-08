@@ -2,28 +2,23 @@
 title: SCIM-végpont fejlesztése az Azure AD-ből származó alkalmazások felhasználó általi üzembe helyezéséhez
 description: A rendszer a tartományok közötti Identitáskezelés (SCIM) esetében szabványosítja a felhasználók automatikus kiépítési folyamatát. Ismerje meg, hogyan fejleszthet SCIM-végpontokat, hogyan integrálhatja a SCIM API-t a Azure Active Directoryval, és megkezdheti a felhasználók és csoportok kiépítésének automatizálását a felhőalapú alkalmazásokba.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/07/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.custom: aaddev;it-pro;seohack1
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a54bc3cfa67330fb0056ccd1898d9ab3de2b0ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 65bbb35d041a48e68d01a50e88e42fbeb73f2ea6
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229918"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864283"
 ---
-# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-active-directory-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása Azure Active Directory (Azure AD) segítségével
+# <a name="build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>SCIM-végpont létrehozása és a felhasználók üzembe helyezésének konfigurálása az Azure AD-vel
 
 Alkalmazás-fejlesztőként használhatja a tartományok közötti Identitáskezelés (SCIM) felhasználói felügyeleti API-t, hogy lehetővé váljon a felhasználók és csoportok automatikus kiépítés az alkalmazás és az Azure AD között. Ez a cikk bemutatja, hogyan hozhat létre egy SCIM-végpontot, és hogyan integrálható az Azure AD kiépítési szolgáltatásával. A SCIM-specifikáció általános felhasználói sémát biztosít az üzembe helyezéshez. Az olyan összevonási szabványokkal együtt, mint az SAML vagy az OpenID Connect, a SCIM teljes körű, szabványokon alapuló megoldást biztosít a rendszergazdáknak a hozzáférés-kezeléshez.
 
@@ -1200,8 +1195,8 @@ A SCIM spec nem határoz meg SCIM-specifikus sémát a hitelesítéshez és az e
 [!NOTE] Nem ajánlott üresen hagyni a jogkivonat mezőt az Azure AD kiépítési konfiguráció egyéni alkalmazás felhasználói felületén. A generált jogkivonat elsődlegesen tesztelési célokra használható.
 
 **OAuth engedélyezési kód engedélyezése:** A kiépítési szolgáltatás támogatja az [engedélyezési kód engedélyezését](https://tools.ietf.org/html/rfc6749#page-24). Miután elküldte az alkalmazást a katalógusban való közzétételre vonatkozó kérelmét, a csapat együttműködik Önnel a következő információk összegyűjtéséhez:
-*  Engedélyezési URL-cím: az ügyfél URL-címe, amely a felhasználói ügynök átirányításával szerzi be az erőforrás-tulajdonostól az engedélyt. A rendszer átirányítja a felhasználót erre az URL-címre, hogy engedélyezze a hozzáférést. 
-*  Jogkivonat-Exchange URL-cím: az ügyfél URL-címe, amely egy hozzáférési jogkivonat engedélyezési engedélyének kiváltására használható, jellemzően az ügyfél-hitelesítéssel.
+*  Engedélyezési URL-cím: az ügyfél URL-címe, amely a felhasználói ügynök átirányításával szerzi be az erőforrás-tulajdonostól az engedélyt. A rendszer átirányítja a felhasználót erre az URL-címre, hogy engedélyezze a hozzáférést. Vegye figyelembe, hogy ez az URL-cím jelenleg nem konfigurálható bérlőn.
+*  Jogkivonat-Exchange URL-cím: az ügyfél URL-címe, amely egy hozzáférési jogkivonat engedélyezési engedélyének kiváltására használható, jellemzően az ügyfél-hitelesítéssel. Vegye figyelembe, hogy ez az URL-cím jelenleg nem konfigurálható bérlőn.
 *  Ügyfél-azonosító: az engedélyezési kiszolgáló kiállítja a regisztrált ügyfelet az ügyfél-azonosítóval, amely egy egyedi karakterlánc, amely az ügyfél által megadott regisztrációs adatokat jelképezi.  Az ügyfél-azonosító nem titok; az erőforrás tulajdonosának van kitéve, és **nem** használható egyedül az ügyfél-hitelesítéshez.  
 *  Ügyfél titka: az ügyfél titkos kulcsa az engedélyezési kiszolgáló által generált titok. Egyedi értéknek kell lennie, amely csak az engedélyezési kiszolgáló számára ismert. 
 

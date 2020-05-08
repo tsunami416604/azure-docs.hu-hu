@@ -12,12 +12,12 @@ ms.date: 04/23/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7704a758f53b6ba26b1c9cf9e9e2811f533601f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f142a270cae525571ae414602a89b2538c17d0
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112201"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981986"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -47,6 +47,17 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 >Ha engedélyezte a Azure AD Connect for Sync szolgáltatást, hamarosan automatikusan megkezdi az olyan állapotadatok fogadását, amelyek figyelmeztetik a közelgő elavult verziókra, amikor az egyik régebbi verziót futtatja.
 >
 >[Ebben a cikkben](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version) további információt talál arról, hogyan frissítheti Azure ad Connect a legújabb verzióra.
+
+## <a name="15300"></a>1.5.30.0
+
+### <a name="release-status"></a>Kiadás állapota
+05/07/2020: kiadva a letöltéshez
+
+### <a name="fixed-issues"></a>Hibák kijavítva:
+- Kijavított egy hibát, amelyben a nem kiválasztott tartományok helytelenül lettek kiválasztva a varázsló felhasználói felületéről.
+- Javítva lett egy probléma a ADSyncConfig PowerShell-modulban, ahol az összes set-ADSync * permissions parancsmagban használt DSACLS parancs meghívása a következő hibák valamelyikét okozhatja:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -105,6 +116,7 @@ Ez a gyorsjavítás kijavítja a build 1.5.18.0 kapcsolatos problémát, ha enge
 - Az Azure Active Directory szinkronizációs fiók létrehozásával kapcsolatos probléma kijavítva, ahol a címtárszolgáltatások vagy PHS engedélyezése sikertelen lehet, mert a rendszer nem propagálta a fiókot az összes szolgáltatás-replikán a használat megkísérlése előtt. 
 - Kijavított egy hibát a szinkronizálási hibák tömörítése segédprogramban, amely nem megfelelően kezeli a helyettesítő karaktereket. 
 - Kijavított egy hibát az automatikus frissítésben, amely elhagyta a kiszolgálót az ütemező felfüggesztett állapotában. 
+- Kijavított egy hibát a tartomány/OU szűrési lapon, amely egy tartomány futtatási profiljait távolítja el úgy, hogy csak részben bővíti a tartományfa-t, anélkül, hogy módosítani kellene.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Kiadás állapota
@@ -554,7 +566,7 @@ Zárja le a AD DS fiók hozzáférését a helyszíni AD-ben a következő enged
 *   Távolítsa el az összes Ace-t az adott objektumon, kivéve az önmagukhoz tartozó Ace-ket. Azt szeretnénk, hogy az alapértelmezett engedélyek érintetlenek maradjanak, ha önmagukban is megmaradnak.
 *   Rendelje hozzá ezeket a konkrét engedélyeket:
 
-Típus     | Name (Név)                          | Hozzáférés               | Érvényesség
+Típus     | Name                          | Hozzáférés               | Érvényesség
 ---------|-------------------------------|----------------------|--------------|
 Engedélyezés    | RENDSZER                        | Teljes hozzáférés         | Ez az objektum  |
 Engedélyezés    | Vállalati rendszergazdák             | Teljes hozzáférés         | Ez az objektum  |

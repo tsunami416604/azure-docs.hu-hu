@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: bd7726d2bbf2830d18d78b5f0b0d7202b734124d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537678"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858579"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Nagyméretű fájlmegosztás engedélyezése és létrehozása
 
@@ -26,8 +26,9 @@ Ha nagyméretű fájlmegosztást engedélyez a Storage-fiókjában, a fájlmegos
 
 ## <a name="restrictions"></a>Korlátozások
 
-Egyelőre csak helyileg redundáns tárolást (LRS) vagy zóna-redundáns tárolást (ZRS) használhat a nagyméretű fájlmegosztás – engedélyezve fiókok esetében. Nem használhatja a Geo-Zone-redundáns tárolást (GZRS), a Geo-redundáns tárolást (GRS) vagy az olvasási hozzáférésű geo-redundáns tárolást (RA-GRS).
-A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíthatatlan folyamat. Miután engedélyezte, nem fogja tudni átalakítani a fiókját GZRS, GRS vagy RA-GRS-re.
+Egyelőre csak helyileg redundáns tárolást (LRS) vagy zóna-redundáns tárolást (ZRS) használhat a nagyméretű fájlmegosztás – engedélyezve fiókok esetében. Nem használhatja a Geo-Zone-redundáns tárolást (GZRS), a Geo-redundáns tárolást (GRS), a Read-Access geo-redundáns tárolást (RA-GRS), vagy a Read-Access geo-Zone-redundáns tárolást (RA-GZRS).
+
+A nagyméretű fájlmegosztás egy fiókban való engedélyezése visszafordíthatatlan folyamat. Miután engedélyezte, nem fogja tudni átalakítani a fiókját GZRS, GRS, RA-GRS vagy RA-GZRS.
 
 ## <a name="create-a-new-storage-account"></a>Új tárfiók létrehozása
 
@@ -68,7 +69,7 @@ Először [telepítse az Azure CLI legújabb verzióját](https://docs.microsoft
 Nagyméretű fájlmegosztást engedélyező Storage-fiók létrehozásához használja a következő parancsot. Cserélje `<yourStorageAccountName>`le `<yourResourceGroup>`a, `<yourDesiredRegion>` a és az adatait az adataira.
 
 ```azurecli-interactive
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
@@ -79,13 +80,13 @@ Először [telepítse a PowerShell legújabb verzióját](https://docs.microsoft
 Nagyméretű fájlmegosztást engedélyező Storage-fiók létrehozásához használja a következő parancsot. Cserélje `<yourStorageAccountName>`le `<yourResourceGroup>`a, `<yourDesiredRegion>` a és az adatait az adataira.
 
 ```powershell
-## This command creates a large file share–enabled account. It will not support GZRS, GRS, or RA-GRS.
+## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>Nagyméretű fájlok megosztásának engedélyezése egy meglévő fiókon
 
-A nagyméretű fájlmegosztást is engedélyezheti a meglévő fiókokon. Nagyméretű fájlmegosztás engedélyezése esetén a GZRS, GRS vagy RA-GRS-re való átalakítás nem lehetséges. A nagyméretű fájlmegosztás engedélyezése visszafordíthatatlan ezen a Storage-fiókon.
+A nagyméretű fájlmegosztást is engedélyezheti a meglévő fiókokon. Nagyméretű fájlmegosztás engedélyezése esetén a GZRS, GRS, RA-GRS vagy RA-GZRS formátumra nem lehet konvertálni. A nagyméretű fájlmegosztás engedélyezése visszafordíthatatlan ezen a Storage-fiókon.
 
 ### <a name="portal"></a>Portál
 

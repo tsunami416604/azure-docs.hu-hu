@@ -1,6 +1,6 @@
 ---
-title: Szerepkör-hozzárendelések listázása az Azure RBAC és a Azure Portal használatával
-description: Megtudhatja, hogyan határozhatja meg, hogy a felhasználók, csoportok, egyszerű szolgáltatások és felügyelt identitások milyen erőforrásokhoz férnek hozzá az Azure szerepköralapú hozzáférés-vezérlés (RBAC) és a Azure Portal használatához.
+title: Azure-beli szerepkör-hozzárendelések listázása az Azure Portal-Azure RBAC használatával
+description: Megtudhatja, hogyan határozhatja meg, hogy a felhasználók, csoportok, egyszerű szolgáltatások és felügyelt identitások milyen erőforrásokhoz férnek hozzá a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 03a3d3c7d572d7ec5b8d3ac3d527d0d59e649bc2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062248"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983023"
 ---
-# <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Szerepkör-hozzárendelések listázása az Azure RBAC és a Azure Portal használatával
+# <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)]Ez a cikk a szerepkör-hozzárendelések Azure Portal használatával történő listázását ismerteti.
 
@@ -32,7 +32,9 @@ ms.locfileid: "80062248"
 
 Egy előfizetéshez tartozó felhasználóhoz vagy csoporthoz rendelt szerepköröket az **Azure-erőforrások** ablaktábla használatával tekintheti meg.
 
-1. A Azure Portal kattintson a **minden szolgáltatás** elemre, majd válassza a **felhasználók** vagy **csoportok**lehetőséget.
+1. A Azure Portal a Azure Portal menüben válassza a **minden szolgáltatás** lehetőséget.
+
+1. Válassza a **Azure Active Directory** , majd a **felhasználók** vagy **csoportok**lehetőséget.
 
 1. Kattintson arra a felhasználóra vagy csoportra, amely számára a szerepkör-hozzárendeléseket ki szeretné listázni.
 
@@ -138,5 +140,5 @@ Ha a maximális számhoz közeledik, és további szerepkör-hozzárendeléseket
 
 ## <a name="next-steps"></a>További lépések
 
-- [Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a Azure Portal használatával](role-assignments-portal.md)
-- [Azure-erőforrások RBAC kapcsolatos hibák](troubleshooting.md)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md)
+- [Az Azure RBAC hibáinak megoldása](troubleshooting.md)

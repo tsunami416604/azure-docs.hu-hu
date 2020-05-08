@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 1ccfb1b008a7e3e48f56b1af62087d303522ed73
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81676732"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792207"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Rövid útmutató: Azure szinapszis Analytics-munkaterület létrehozása (előzetes verzió)
 
@@ -41,7 +41,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
     | Beállítás | Ajánlott érték | Leírás |
     | :------ | :-------------- | :---------- |
     | **Előfizetés** | *Az előfizetése* | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.windowsazure.com/Subscriptions) ismertető cikket. |
-    | **Erőforráscsoport** | *Bármely erőforráscsoport* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
+    | **Erőforráscsoport** | *Bármely erőforráscsoport* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) ismertető cikket. |
     | **Munkaterület neve** | mysampleworkspace | Megadja a munkaterület nevét, amelyet a rendszer a kapcsolatok végpontjai esetében is használni fog.|
     | **Régió** | USA 2. keleti régiója | Meghatározza a munkaterület helyét.|
     | **2. generációs Data Lake Storage** | Fiók`storage account name` </br> Fájlrendszer:`root file system to use` | Megadja az elsődleges tárolóként használandó ADLS Gen2 Storage-fiók nevét és a használni kívánt fájlrendszert.|

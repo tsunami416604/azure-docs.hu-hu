@@ -250,7 +250,7 @@
         - name: Ügyfélkódtár
           items:
             - name: azure-eventhub 5-ös verzió
-              href: /python/api/overview/azure/eventhub/client
+              href: /python/api/azure-eventhub/?view=azure-python
             - name: azure-eventhub 1-es verzió
               href: /python/api/azure-eventhub/?view=azure-python-previous
         - name: Felügyeleti könyvtár

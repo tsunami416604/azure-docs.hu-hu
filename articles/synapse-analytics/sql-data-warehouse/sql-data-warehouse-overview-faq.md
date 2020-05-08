@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 260086d186f7e2b2d6f76c437057f5fbc8af39b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef8196cebfbdda72f98fee0e9c75bcb80172a55e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416074"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791459"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-frequently-asked-questions"></a>Azure szinapszis Analytics (korábban SQL DW) – gyakori kérdések
 
@@ -23,11 +23,11 @@ ms.locfileid: "81416074"
 
 K. Mi az az Azure Synapse?
 
-A. Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti az adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a saját feltételei szerint, kiszolgáló nélküli, igény szerinti vagy kiépített erőforrásokkal lekérdezze az adatait. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
+A. Az Azure szinapszis egy elemzési szolgáltatás, amely egyesíti az adattárházat és a Big adatelemzéseket. Az Azure szinapszis ezt a két világot közösen ötvözi a BI-és gépi tanulási igényeknek megfelelő adatgyűjtéssel,-előkészítéssel,-kezeléssel és-kiszolgálással kapcsolatos egységes tapasztalattal. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
 K. Mi történt a Azure SQL Data Warehouse?
 
-A. Az Azure szinapszis Azure SQL Data Warehouse (SQL DW) lett kifejlesztve. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Továbbra is futtathatja meglévő adattárház-számítási feladatait az Azure szinapszis szolgáltatással, és automatikusan kihasználhatja az előzetes verzióban elérhető új képességeket. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
+A. Az Azure szinapszis Azure SQL Data Warehouse (SQL DW) lett kifejlesztve. Ugyanezt az piacvezető adattárházat készítettük a teljesítmény és a képességek egész új szintjére. Az Azure szinapszis használatával folytathatja a meglévő adattárház-számítási feladatok futtatását az éles környezetben. További információ: [Mi az az Azure szinapszis Analytics](sql-data-warehouse-overview-what-is.md).
 
 K. Mi az a szinapszis SQL Pool?
 
@@ -43,8 +43,7 @@ A. Az Azure szinapszis számos megoldást kínál az adatok védelmére, példá
 
 K. Honnan tudhatom meg, hogy az Azure szinapszis milyen jogi vagy üzleti szabványoknak felel meg?
 
-A. Tekintse meg a [Microsoft megfelelőségi](https://www.microsoft.com/trustcenter/compliance/complianceofferings) oldalát, ahol különböző megfelelőségi ajánlatokat talál, például a SoC és az ISO terméket.
-Először válassza a megfelelőségi cím lehetőséget. Ezután bontsa ki az Azure-t az oldal jobb oldalán található Microsoft-hatókörű Cloud Services szakaszban, ahol megtekintheti, hogy mely szolgáltatások az Azure szinapszis-kompatibilisek.
+A. Tekintse meg a [Microsoft megfelelőségi](https://www.microsoft.com/trustcenter/compliance/complianceofferings) oldalát, ahol különböző megfelelőségi ajánlatokat talál, például a SoC és az ISO terméket. Először válassza a megfelelőségi cím lehetőséget. Ezután bontsa ki az Azure-t az oldal jobb oldalán található Microsoft-hatókörű Cloud Services szakaszban, ahol megtekintheti, hogy mely szolgáltatások az Azure szinapszis-kompatibilisek.
 
 K. Csatlakozhatok Power BIhoz?
 

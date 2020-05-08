@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/20/2020
-ms.openlocfilehash: 6b353967c9b9c7517f1a42581717c6394c0e6374
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: c3858756a0140481c0ab249e29c95f76c4b90da5
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729139"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982649"
 ---
 # <a name="alter-row-transformation-in-mapping-data-flow"></a>A sorok átalakításának módosítása a leképezési adatfolyamban
 
@@ -24,6 +24,8 @@ Az Alter sort Transformation paranccsal szúrhatja be a sorokba az INSERT, DELET
 ![Módosítási sor beállításai](media/data-flow/alter-row1.png "Módosítási sor beállításai")
 
 Az Alter sor átalakítások csak adatbázis-vagy CosmosDB-tárolókban működnek az adatfolyamban. A sorokhoz rendelt műveletek (INSERT, Update, DELETE, upsert) nem lépnek fel a hibakeresési munkamenetek során. Futtasson egy végrehajtási adatfolyamati tevékenységet egy folyamaton belül, hogy meghozza a módosítási sor szabályzatait az adatbázis tábláiban.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4vJYc]
 
 ## <a name="specify-a-default-row-policy"></a>Alapértelmezett sor szabályzatának meghatározása
 
@@ -54,6 +56,20 @@ Az alapértelmezett viselkedés csak beszúrások engedélyezése. Ha engedélye
 > Ha a lapkák, a frissítések vagy a upsert módosítja a céltábla sémáját a fogadóban, az adatfolyam sikertelen lesz. Ha módosítani szeretné a célként megadott sémát az adatbázisban, válassza a tábla **újbóli létrehozása** lehetőséget a tábla műveletként. Ezzel eldobásra kerül, és újból létrehozza a táblát az új séma-definícióval.
 
 A fogadó átalakításhoz egy vagy több kulcsra van szükség a céladatbázis egyedi sorainak azonosításához. SQL-elsüllyedés esetén állítsa be a kulcsokat a fogadó beállításai lapon. A CosmosDB állítsa be a partíció kulcsát a beállítások között, és állítsa be az "id" CosmosDB rendszer mezőt a fogadó leképezésében. A CosmosDB esetében kötelező megadni a (z) "id" rendszeroszlopot a frissítésekhez, a upsert és a törlésekhez.
+
+## <a name="merges-and-upserts-with-azure-sql-database-and-synapse"></a>Egyesítés és upsert Azure SQL Database és Szinapszisokkal
+
+Az ADF-adatfolyamatok támogatják a Azure SQL Database és a szinapszis adatbázis-készlet (adattárház) egyesítését a upsert kapcsolóval.
+
+Előfordulhat azonban, hogy olyan forgatókönyvekben fut, amelyekben a célként megadott adatbázis-séma a kulcs oszlopainak Identity (identitás) tulajdonságát használta. Az ADF-nek meg kell határoznia azokat a kulcsokat, amelyeket a rendszer a frissítések és upsert sorainak megfeleltetéséhez fog használni. Ha azonban a cél oszlopban az Identity tulajdonság be van állítva, és a upsert szabályzatot használja, a céladatbázis nem teszi lehetővé az oszlopba való írást. Előfordulhat, hogy hibákba ütközik, amikor megpróbál upsert egy elosztott tábla terjesztési oszlopával.
+
+A következő módszerekkel oldható meg:
+
+1. Nyissa meg a fogadó átalakítási beállításokat, és állítsa be a "kihagyás a kulcsok oszlopainak" beállítást. Ezzel a beállítással megadhatja, hogy az ADF ne írja meg a leképezés kulcsaként kiválasztott oszlopot.
+
+2. Ha a kulcs oszlop nem az a oszlop, amely a problémát okozza az identitás oszlopaiban, akkor használhatja a fogadó átalakítás előtti SQL-beállítást: ```SET IDENTITY_INSERT tbl_content ON```. Ezt követően kapcsolja ki a feldolgozás utáni SQL-tulajdonságot: ```SET IDENTITY_INSERT tbl_content OFF```.
+
+3. Mind az identitás, mind a terjesztési oszlop esetében átválthatja a logikát a Upsert-ről egy külön frissítési feltételre és egy külön beszúrási feltételre egy feltételes felosztású átalakítás használatával. Így beállíthatja a leképezést a frissítési útvonalon, hogy figyelmen kívül hagyja a kulcs oszlopának leképezését.
 
 ## <a name="data-flow-script"></a>Adatfolyamszkript
 

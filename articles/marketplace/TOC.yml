@@ -26,11 +26,11 @@
         - name: Közzétételi útmutatók ajánlattípusok szerint
           href: ./publisher-guide-by-offer-type.md
           items:
-            - name: Virtuális gépek
+            - name: Virtual machines (Virtuális gépek)
               href: ./marketplace-virtual-machines.md
-            - name: 'Azure-alkalmazások: Megoldássablonok'
+            - name: 'Azure-alkalmazások: megoldássablonok'
               href: ./marketplace-solution-templates.md
-            - name: 'Azure-alkalmazások: Felügyelt alkalmazások'
+            - name: 'Azure-alkalmazások: felügyelt alkalmazások'
               href: ./marketplace-managed-apps.md
             - name: SaaS-alkalmazások
               href: ./marketplace-saas-applications-technical-publishing-guide.md
@@ -42,7 +42,7 @@
               href: ./consulting-services.md
             - name: 'Office 365, Dynamics 365 és Power BI'
               href: ./appsource-offer-publishing-guide.md
-            - name: AppSource- és Marketplace-termékoldal engedélyezése az Azure Active Directory használatával
+            - name: Ajánlat hitelesítésének engedélyezése az Azure AD-vel
               href: ./enable-appsource-marketplace-using-azure-ad.md
             - name: Integrált megoldások
               href: ./integrated-solutions-for-publishers.md
@@ -51,7 +51,7 @@
           items:
             - name: Ajánlatlistákra vonatkozó ajánlott eljárások
               href: ./gtm-offer-listing-best-practices.md
-            - name: Hogyan válhat kiemeltté?
+            - name: Alkalmazás kiemeltté tétele
               href: ./gtm-how-to-get-featured.md
             - name: Marketplace-tartalmak érvényesítése
               href: ./marketplace-criteria-content-validation.md
@@ -69,7 +69,7 @@
         - name: A kereskedelmi piactér támogatása
           href: ./support-azure-marketplace.md
           items:
-            - name: Piactérrel kapcsolatos gyakori kérdések
+            - name: Kereskedelmi piactér – Gyakori kérdések
               href: ./marketplace-faq-publisher-guide.md
             - name: Földrajzi rendelkezésre állás és pénznemek
               href: ./marketplace-geo-availability-currencies.md
@@ -289,49 +289,9 @@
             - name: Súgó wiki
               href: ./cloud-partner-portal-orig/help-wiki.md
         - name: IoT Edge-modulajánlat
-          href: ./cloud-partner-portal/iot-edge-module/cpp-offer-process-parts.md
-          items:
-            - name: Előfeltételek
-              href: ./cloud-partner-portal/iot-edge-module/cpp-prerequisites.md
-            - name: IoT Edge-modulajánlat létrehozása
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-offer.md
-              items:
-                - name: Ajánlatbeállítási lap
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-offer-settings-tab.md
-                - name: Termékváltozatok lap
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-skus-tab.md
-                - name: Marketplace lap
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-marketplace-tab.md
-                - name: Támogatási lap
-                  href: ./cloud-partner-portal/iot-edge-module/cpp-support-tab.md
-            - name: IoT Edge-modulok technikai eszközeinek létrehozása
-              href: ./cloud-partner-portal/iot-edge-module/cpp-create-technical-assets.md
-            - name: IoT Edge-modulajánlat közzététele
-              href: ./cloud-partner-portal/iot-edge-module/cpp-publish-offer.md
-            - name: Létező ajánlat frissítése
-              href: ./cloud-partner-portal/iot-edge-module/cpp-update-existing-offer.md
+          href: ./cloud-partner-portal/iot-edge-module/iot-edge-module-offer.md
         - name: Power BI-alkalmazásajánlat
           href: ./cloud-partner-portal/power-bi/cpp-power-bi-offer.md
-          items:
-            - name: Előfeltételek
-              href: ./cloud-partner-portal/power-bi/cpp-prerequisites.md
-            - name: Power BI-alkalmazásajánlat létrehozása
-              href: ./cloud-partner-portal/power-bi/cpp-create-offer.md
-              items:
-                - name: Ajánlatbeállítási lap
-                  href: ./cloud-partner-portal/power-bi/cpp-offer-settings-tab.md
-                - name: Technikai információs lap
-                  href: ./cloud-partner-portal/power-bi/cpp-technical-info-tab.md
-                - name: Áruház részletei lap
-                  href: ./cloud-partner-portal/power-bi/cpp-storefront-details-tab.md
-                - name: Névjegyek lap
-                  href: ./cloud-partner-portal/power-bi/cpp-contacts-tab.md
-            - name: Power BI-alkalmazás technikai eszközeinek létrehozása
-              href: ./cloud-partner-portal/power-bi/cpp-create-technical-assets.md
-            - name: Power BI-alkalmazásajánlat közzététele
-              href: ./cloud-partner-portal/power-bi/cpp-publish-offer.md
-            - name: Létező ajánlat frissítése
-              href: ./cloud-partner-portal/power-bi/cpp-update-existing-offer.md
         - name: SaaS-alkalmazásajánlat
           href: ./cloud-partner-portal/saas-app/cpp-saas-offer.md
         - name: Virtuálisgép-ajánlat
@@ -495,10 +455,10 @@
               href: ./partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge-modulajánlat
           items:
-            - name: IoT Edge-modulok technikai eszközeinek előkészítése
-              href: ./partner-center-portal/create-iot-edge-module-asset.md
             - name: IoT Edge-modulajánlat létrehozása
               href: ./partner-center-portal/azure-iot-edge-module-creation.md
+            - name: IoT Edge-modulok technikai eszközeinek előkészítése
+              href: ./partner-center-portal/create-iot-edge-module-asset.md
         - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
           items:
             - name: Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása

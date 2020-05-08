@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 46c53c99c12ade986ab913bf013b652a931a4d22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed1c2f14ca5a791743a95cc50e5af0c29c74fefe
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257742"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983312"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése Azure Lab Services 
 Ez a cikk a tantermi laborok létrehozását és törlését ismerteti. Azt is bemutatja, hogyan tekintheti meg az összes osztályterem Labs-t egy labor-fiókban. 
@@ -104,9 +104,10 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 | Kicsi | 2 | 3,5 GB | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
 | Közepes | 4 | 7 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. | 
 | Közepes (beágyazott virtualizálás) | 4 | 16 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. <p>Ezt a méretet olyan helyzetekben lehet használni, ahol minden tanulónak több virtuális gépre van szüksége. A tanárok beágyazott virtualizálás használatával állíthatnak be néhány kis méretű beágyazott virtuális gépet a virtuális gépen belül. </p> |
-| Nagy | 8 | 32 GB | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott. Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is |  
-| Kis GPU (vizualizáció) | 6 | 56 GB | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. | 
 | Kis GPU (számítás) | 6 | 56 GB | Ez a méret a legjobb megoldás a nagy számítási igényű és hálózati igényű alkalmazások, például a mesterséges intelligencia és a Deep learning-alkalmazások számára. | 
+| Kis GPU (vizualizáció) | 6 | 56 GB | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. | 
+| Nagy | 8 | 16 GB | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott. |
+| Nagyméretű (beágyazott virtualizálás) | 8 | 32 GB | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott. Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. |  
 | Közepes GPU (vizualizáció) | 12 | 112 GB | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. | 
 
 > [!NOTE]

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 18490ec7c3cfde33cef186b753e2adc809f854c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6821e3de3bfec891d98e9291a479cbb7537364ca
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641365"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82733659"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Hozzáférési jogosultságszint emelése az összes Azure-előfizetés és felügyeleti csoport kezeléséhez
 
@@ -84,7 +84,7 @@ Kövesse az alábbi lépéseket a globális rendszergazda hozzáférésének a A
 
 1. Végezze el a szükséges módosításokat a emelt szintű hozzáféréshez.
 
-    A szerepkörök hozzárendelésével kapcsolatos további információkért lásd: [hozzáférés kezelése a RBAC és a Azure Portal használatával](role-assignments-portal.md). Azure AD Privileged Identity Management (PIM) használata esetén olvassa el a következő témakört: [Azure-erőforrások kezelése a PIM-ban](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) , illetve [Azure-erőforrás-szerepkörök kiosztása a PIM-ben](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
+    További információ a szerepkörök hozzárendeléséről: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md). Azure AD Privileged Identity Management (PIM) használata esetén olvassa el a következő témakört: [Azure-erőforrások kezelése a PIM-ban](../active-directory/privileged-identity-management/pim-resource-roles-discover-resources.md) , illetve [Azure-erőforrás-szerepkörök kiosztása a PIM-ben](../active-directory/privileged-identity-management/pim-resource-roles-assign-roles.md).
 
 ### <a name="remove-elevated-access"></a>Emelt szintű hozzáférés eltávolítása
 
@@ -321,5 +321,5 @@ A hívásakor `elevateAccess`létre kell hoznia egy szerepkör-hozzárendelést 
 
 ## <a name="next-steps"></a>További lépések
 
-- [A különböző Azure-beli szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
-- [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és a REST API használatával](role-assignments-rest.md)
+- [A különböző szerepkörök ismertetése](rbac-and-directory-admin-roles.md)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)

@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: e3eca498e5716ae7c0a03e5e624d618899da8dc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df7b8e6243bc45b5d5bdd8a9a72e81b0946454ff
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770403"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858410"
 ---
 # <a name="upgrade-azure-internal-load-balancer---outbound-connection-required"></a>Azure belső Load Balancer frissítése – kimenő kapcsolatok szükségesek
-Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/concepts-limitations#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
+Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus). Mivel a standard belső Load Balancer nem biztosít kimenő kapcsolatokat, megoldást biztosítunk a standard nyilvános Load Balancer létrehozására.
 
 A frissítésnek négy szakasza van:
 
@@ -81,7 +81,7 @@ A szkript futtatása:
    * **newLBName: [string]: kötelező** – ez a létrehozandó standard Load Balancer neve.
 1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
 
-    **Például**
+    **Példa**
 
    ```azurepowershell
    AzurePublicLBUpgrade.ps1 -oldRgName "test_publicUpgrade_rg" -oldLBName "LBForPublic" -newrgName "test_userInput3_rg" -newlocation "centralus" -newLbName "LBForUpgrade"
