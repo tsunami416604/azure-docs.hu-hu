@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 7c1eb9dceda70cd74237f8a824ef03bb9c2dc7ae
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
-ms.translationtype: HT
+ms.openlocfilehash: 43718e992349ff9bcb3635ab1b949c2b2f2c9ec0
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606840"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871999"
 ---
 # <a name="security-baselines-for-azure"></a>Biztonsági alapkonfigurációk az Azure-hoz
 
@@ -30,3 +30,6 @@ Minden javaslat a következő információkat tartalmazza:
 - **Azure Security Center figyelés**: azt határozza meg, hogy a vezérlőt Azure Security Center figyeli-e, hivatkozással.
 
 Az alapkonfiguráció minden olyan javaslatot tartalmaz, amely nem alkalmazható erre a szolgáltatásra, így teljes képet kaphat arról, hogyan kapcsolódik az Azure biztonsági teljesítményteszt az egyes szolgáltatásokhoz. Előfordulhat, hogy esetenként olyan vezérlőkre van szükség, amelyek különböző okok miatt nem alkalmazhatók – például IaaS/számítási központú vezérlők (például az operációs rendszer konfigurálásához tartozó vezérlők esetében) – előfordulhat, hogy nem alkalmazhatók a Pásti-szolgáltatásokra.
+
+
+Szívesen fogadjuk az Azure-szolgáltatások biztonsági alapelveivel kapcsolatos visszajelzéseit. Javasoljuk, hogy adjon meg megjegyzéseket az alábbi visszajelzési területeken. Ha az Azure Security teljesítményteszt-csapatával jobban meg szeretné osztani a bemenetet, kérjük, töltse ki a következő űrlapot: https://aka.ms/AzSecBenchmark.

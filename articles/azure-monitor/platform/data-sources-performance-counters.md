@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
-ms.openlocfilehash: d1a972a1d89066b961f2dcc28fba830e3a04ebc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 446beca9b8491fb252a1e3284a9ec9a0e6dabef5
+ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274761"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82739364"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
 A Windows és Linux rendszerű teljesítményszámlálók betekintést nyújtanak a hardver-összetevők, operációs rendszerek és alkalmazások teljesítményére.  A Azure Monitor a teljesítményadatok a hosszú távú elemzéshez és jelentéskészítéshez való közel valós idejű (vizsgálja) elemzéshez is összegyűjthetők.
@@ -175,7 +175,7 @@ A teljesítmény-metrikák alapértelmezett konfigurációja a következő:
     </source>
 
 ## <a name="data-collection"></a>Adatgyűjtés
-Azure Monitor a megadott mintavételi intervallumban gyűjti az összes megadott teljesítményszámlálókat az összes olyan ügynökön, amelyen telepítve van a számláló.  Az adatokat a rendszer nem összesíti, és a nyers adatokat az előfizetés által megadott időtartamra vonatkozóan az összes naplózási lekérdezési nézetben elérhetővé válik.
+Azure Monitor a megadott mintavételi intervallumban gyűjti az összes megadott teljesítményszámlálókat az összes olyan ügynökön, amelyen telepítve van a számláló.  Az adatokat nem összesíti a rendszer, és a nyers adatokat a log Analytics-munkaterület által megadott időtartamra vonatkozó összes naplózási lekérdezési nézetben elérhetővé kell tennie.
 
 ## <a name="performance-record-properties"></a>Teljesítmény rekord tulajdonságai
 A teljesítményadatokat a teljesítmény **típusa és a** következő táblázatban szereplő tulajdonságok szerepelnek.
