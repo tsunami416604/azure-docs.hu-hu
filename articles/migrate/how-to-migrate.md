@@ -1,32 +1,21 @@
 ---
 title: Áttelepítési eszközök hozzáadása a Azure Migrate
 description: Megtudhatja, hogyan adhat hozzá áttelepítési eszközöket a Azure Migrate.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.manager: carmonm
 ms.topic: article
-ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 6bcb65912627356215769ccc8380ee1a7404f6f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/26/2020
+ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185960"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901473"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása
 
 Ez a cikk bemutatja, hogyan adhat hozzá áttelepítési eszközöket a [Azure Migrate](migrate-overview.md).
 
-Azure Migrate az Azure-ba való áttelepítéshez és az Azure-ba való Migrálás eszközeinek központja. A szolgáltatás magában foglalja a natív eszközöket, más Azure-szolgáltatások által biztosított eszközöket, valamint a külső gyártótól származó független szoftvergyártók (ISV) ajánlatait.
-
-Ha szeretne hozzáadni egy áttelepítési eszközt, és még nem állított be Azure Migrate projektet, kövesse ezt a [cikket](how-to-add-tool-first-time.md).
-
-
-
-## <a name="selecting-an-isv-tool"></a>ISV-eszköz kiválasztása
-
-Ha egy ISV- [eszközt](migrate-services-overview.md#isv-integration) választ az áttelepítéshez, megkezdheti a licenc beszerzését vagy az ingyenes próbaverzióra való regisztrációt az ISV-szabályzatnak megfelelően. Minden eszközön lehetőség van a Azure Migratehoz való kapcsolódásra. Telepítse az eszközt, és kövesse az eszközre vonatkozó utasításokat és dokumentációt az eszköz munkaterületének Azure Migratehoz való összekapcsolásához. 
+- Ha szeretne hozzáadni egy áttelepítési eszközt, és még nem állított be Azure Migrate projektet, kövesse ezt a [cikket](how-to-add-tool-first-time.md).
+- Ha egy ISV-eszközt adott hozzá az áttelepítéshez, [kövesse a lépéseket](prepare-isv-movere.md), hogy felkészítse az eszközt.
 
 ## <a name="select-a-migration-scenario"></a>Áttelepítési forgatókönyv kiválasztása
 

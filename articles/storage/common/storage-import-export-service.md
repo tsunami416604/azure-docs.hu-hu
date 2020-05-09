@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/15/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: eee0fc2797fbe0666a6b848fde574c7807f47cc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 120dbe9c4b79755105ba634c68606edfbfdc4ad2
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282443"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872431"
 ---
 # <a name="what-is-azure-importexport-service"></a>Mi az az Azure import/export szolgáltatás?
 
@@ -41,7 +41,7 @@ Az import/export szolgáltatás a következő összetevőket használja:
 * **WAImportExport eszköz**: ez egy parancssori eszköz, amely a következő műveleteket végzi el:
   * Előkészíti az importálásra szállított lemezmeghajtókat.
   * Megkönnyíti az adatok másolását a meghajtóra.
-  * Titkosítja a meghajtón lévő, AES 128 bites BitLocker-alapú titkosítást. A BitLocker-kulcs védelme érdekében külső kulcstartót használhat.
+  * Titkosítja a meghajtón lévő, AES 256 bites BitLocker-alapú titkosítást. A BitLocker-kulcs védelme érdekében külső kulcstartót használhat.
   * Létrehozza az importálás létrehozásakor használt meghajtó-napló fájljait.
   * Segít az exportálási feladatokhoz szükséges meghajtók számának azonosításában.
 
@@ -131,7 +131,7 @@ Az Azure import/export szolgáltatás lehetővé teszi az adatok másolását az
 
 ## <a name="security-considerations"></a>Biztonsági szempontok
 
-A meghajtón lévő adatai titkosítva vannak az AES 128 bites BitLocker meghajtótitkosítás használatával. Ez a titkosítás védi az adatait, amíg az átvitel közben van.
+A meghajtón lévő adatai titkosítva vannak az AES 256 bites BitLocker meghajtótitkosítás használatával. Ez a titkosítás védi az adatait, amíg az átvitel közben van.
 
 Az importálási feladatok esetében a meghajtók két módon lesznek titkosítva.  
 

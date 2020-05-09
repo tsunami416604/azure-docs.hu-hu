@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 4d103001ba655ea6540c9dd00e937087b7b6311c
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
-ms.translationtype: HT
+ms.openlocfilehash: 27b433ba33d287a183d8ce6cc05d87649b2d0b00
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738311"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891503"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Zóna használatának engedélyezése az Azure Virtual Machines szolgáltatásbeli vész-helyreállításhoz
 
@@ -106,16 +106,16 @@ Jelentkezzen be a Azure Portalba.
 
 ## <a name="faqs"></a>Gyakori kérdések
 
-1. Hogyan működik a díjszabás a zóna és a zóna közötti vész-helyreállításhoz?
+**1. Hogyan működik az árképzés a zónák közötti vész-helyreállításhoz?**
 A zónák közötti vész-helyreállítás díjszabása megegyezik az Azure és az Azure vész-helyreállítás díjszabásával. További részleteket a díjszabási [oldalról itt talál](https://azure.microsoft.com/pricing/details/site-recovery/) [.](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/) Vegye figyelembe, hogy az olyan kimenő forgalom díja, amelyet a zónában, a zóna vész-helyreállítási feladatoknál látni fog, alacsonyabb lesz, mint a régió-és a katasztrófa utáni
 
-2. Mi a RTO és a RPO SLA-ja?
-A RTO SLA ugyanaz, mint a Site Recovery általános. Megígérjük, hogy a RTO <= 2 óra. Nincs definiált SLA a RPO számára.
+**2. Mi a RTO és a RPO SLA-ja?**
+A RTO SLA ugyanaz, mint a Site Recovery általános. A RTO akár 2 óráig is Megígérjük. Nincs definiált SLA a RPO számára.
 
-3. Garantált a kapacitás a másodlagos zónában?
+**3. a kapacitás garantált a másodlagos zónában?**
 A Site Recovery csapat és az Azure Capacity Management csapata elegendő infrastrukturális kapacitást tervez. A feladatátvétel indításakor a csapatok is segítenek biztosítani, hogy Site Recovery által védett virtuálisgép-példányok a célzóna számára legyenek telepítve.
 
-4. Mely operációs rendszerek támogatottak?
+**4. mely operációs rendszerek támogatottak?**
 A zónák közötti vész-helyreállítási szolgáltatás ugyanazokat az operációs rendszereket támogatja, mint az Azure-ban az Azure vész-helyreállítás. Tekintse meg a támogatási mátrixot [itt](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-support-matrix).
 
 ## <a name="next-steps"></a>További lépések

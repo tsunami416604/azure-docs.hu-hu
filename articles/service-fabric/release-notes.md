@@ -5,12 +5,12 @@ ms.date: 06/10/2019
 ms.topic: conceptual
 hide_comments: true
 hideEdit: true
-ms.openlocfilehash: 3e0f6c78b6e5dd066cbfbac6805bb3c42068e66a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28870a197af07e964a50a06ffeef08f3b71451f4
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729598"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891730"
 ---
 # <a name="service-fabric-releases"></a>Service Fabric kiadások
 
@@ -27,17 +27,17 @@ Ez a cikk további információkat tartalmaz a Service Fabric futtatókörnyezet
 ### <a name="service-fabric-71"></a>Service Fabric 7,1
 A jelenlegi COVID válság miatt, valamint az ügyfelek által felmerülő kihívásokat figyelembe véve az 7,1-as verzió érhető el, de nem frissíti automatikusan a fürtöket automatikus verziófrissítések fogadására. A váratlan fennakadások elkerülése érdekében az automatikus frissítést addig szüneteltetjük, amíg további értesítést nem biztosítunk arról, hogy az ügyfelek a legmegfelelőbb módon tudják alkalmazni a frissítéseket.
 
-Az [Azure Portalon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) keresztül, vagy egy Azure Resource Manager üzemelő [példányon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)keresztül frissíthet a 7,1-ra.
+A 7,1-re a [Azure Portal](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-portal) vagy egy Azure Resource Manager üzemelő [példányon](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-version-azure#set-the-upgrade-mode-using-a-resource-manager-template)keresztül tud frissíteni.
 
 Az automatikus frissítésekkel rendelkező Service Fabric fürtök automatikusan megkapják az 7,1-es frissítést, ha folytatjuk a normál bevezetési eljárást. A standard bevezetésének megkezdése előtt újabb bejelentést fogunk benyújtani a [Service Fabric technikai közösségi webhelyről](https://techcommunity.microsoft.com/t5/azure-service-fabric/bg-p/Service-Fabric).
-Emellett a 6,5- [tól 7,1-](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions)ig terjedő jelentősebb kiadásokra vonatkozó támogatási dátum végén közzétett frissítéseket is közzétettünk. 
+Közzétettük a frissítéseket a támogatási dátum végéig a 6,5 7,1-ig terjedő fő kiadásokra vonatkozóan [.](https://docs.microsoft.com/azure/service-fabric/service-fabric-versions#supported-versions) 
 
 ## <a name="what-is-new-in-service-fabric-71"></a>Mi az újdonság a-Service Fabric 7,1-ben?
 Örömmel jelentjük be Service Fabric következő kiadását. Ez a kiadás a legfontosabb funkciókkal és a frissítésekkel tölthető be. A főbb funkciók némelyikét az alábbiakban találja:
 ## <a name="key-announcements"></a>Legfontosabb közlemények
 - **General Availability** [ **Service Fabric felügyelt identitások általános elérhetősége Service Fabric alkalmazásokhoz**](https://docs.microsoft.com/azure/service-fabric/concepts-managed-identity)
-- [**Ubuntu 1804-támogatás**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
- - [**Előzetes verzió: VMSS időszakos operációsrendszer-lemez támogatása**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *: az ideiglenes operációsrendszer-lemezek a helyi virtuális gépen létrehozott tárolók, és nem menthetők a távoli Azure-tárolóba. A rendszer az összes Service Fabric csomópont-típushoz (elsődleges és másodlagos) ajánlott, mivel a hagyományos állandó operációsrendszer-lemezekhez, az ideiglenes operációsrendszer-lemezekhez képest:
+- [**Ubuntu 18,04-támogatás**](https://docs.microsoft.com/azure/service-fabric/service-fabric-tutorial-create-vnet-and-linux-cluster)
+ - [**Előzetes verzió: virtuálisgép-méretezési csoport ideiglenes operációsrendszer-lemezének támogatása**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-azure-deployment-preparation#use-ephemeral-os-disks-for-virtual-machine-scale-sets)* *: az elmúló operációsrendszer-lemezek a helyi virtuális gépen létrehozott tárolók, és nem menthetők a távoli Azure-tárolóba. A rendszer az összes Service Fabric csomópont-típushoz (elsődleges és másodlagos) ajánlott, mivel a hagyományos állandó operációsrendszer-lemezekhez, az ideiglenes operációsrendszer-lemezekhez képest:
       -  Olvasási/írási késés csökkentése operációsrendszer-lemezre
       -  Gyorsabb visszaállítási/Rendszerképbeli csomópont-felügyeleti műveletek engedélyezése
       -  Csökkentse a teljes költséget (a lemezek ingyenesek, és nem merülnek fel további tárolási költségek)
@@ -54,14 +54,14 @@ Emellett a 6,5- [tól 7,1-](https://docs.microsoft.com/azure/service-fabric/serv
 - **[Automatikus alfürt észlelése és kiegyensúlyozása](https://docs.microsoft.com/azure/service-fabric/cluster-resource-manager-subclustering )**: az alfürtözés akkor történik meg, ha a különböző elhelyezési korlátozásokkal rendelkező szolgáltatások közös [terhelési metrikával](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-metrics)rendelkeznek. Ha a különböző típusú csomópontok terhelése jelentősen eltér, a Service Fabric fürterőforrás-kezelő úgy véli, hogy a fürt kiegyensúlyozatlan, még akkor is, ha az elhelyezési korlátozások miatt a lehető legjobb egyensúlyt látja el. Ennek eredményeképpen megkísérli a fürt újraelosztását, ami esetleg szükségtelen szolgáltatási mozgásokat okoz (mivel az "egyensúlyhiány" nem lehet lényegesen javítható). Ettől a kiadástól kezdve a fürterőforrás-kezelő megkísérli automatikusan felderíteni ezeket a konfigurációkat, és megismerni, hogy mikor lehet a mozgással javítani az egyensúlyhiányt  
 - [**A másodlagos replikák eltérő áthelyezési díja**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost): új VeryHigh váltunk ki, amely további rugalmasságot biztosít bizonyos helyzetekben, hogy meghatározza, hogy a másodlagos replikák esetében érdemes-e külön áthelyezési költségeket használni.
 - Engedélyezve van az [**élettartam**](https://docs.microsoft.com/azure/service-fabric/probes-codepackage ) mintavételi mechanizmusa a tároló alkalmazások számára. Az élettartam mintavételi súgója bejelenti a tároló alkalmazás élettartamát, és ha nem válaszol időben, akkor a rendszer újraindítást eredményez.
-- [**Futtatás a szolgáltatások befejezéséig/egyszer**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
+- [**Futtatás befejezésre/egyszer a szolgáltatások számára**](https://docs.microsoft.com/azure/service-fabric/run-to-completion)**
 
 ### <a name="image-store-improvements"></a>lemezképtároló fejlesztése
  - Az Service Fabric 7,1 **Egyéni átvitelt használ a csomópontok közötti, alapértelmezés szerint a fájlátvitel biztonságossá tételéhez**. A rendszer eltávolítja az SMB-fájlmegosztás függőségét az 7,1-es verzióról. A biztonságos SMB-fájlmegosztás továbbra is olyan csomópontokon van, amelyek lemezképtároló szolgáltatás-replikát tartalmaznak az ügyfél számára, hogy kikapcsolják az alapértelmezett értéket, és a frissítés és a visszalépés a régi verzióra.
        
  ### <a name="reliable-collections-improvements"></a>A megbízható gyűjtemények fejlesztése
 
-- [**A memóriában csak a megbízható gyűjteményeket használó állapot-nyilvántartó szolgáltatások támogatása: az**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections)illékony megbízható gyűjtemények lehetővé teszik, hogy az adatok a nagy léptékű leállások miatt tartósak legyenek a lemezre, például a replikált gyorsítótárhoz, például az alkalmi adatvesztéshez. Az állandó [megbízhatóságú gyűjtemények korlátai és korlátozásai](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)alapján ajánlott ezt olyan számítási feladatokhoz használni, amelyek nem igényelnek adatmegőrzést, ezért olyan szolgáltatások esetén, amelyek a kvórum elvesztésének ritka eseményeit kezelik.
+- [**A memóriában csak a megbízható gyűjteményeket használó állapot-nyilvántartó szolgáltatások támogatása: az**](https://docs.microsoft.com/azure/service-fabric/service-fabric-work-with-reliable-collections#volatile-reliable-collections)illékony megbízható gyűjtemények lehetővé teszik, hogy az adatok a nagy léptékű leállások miatt tartósak legyenek a lemezre, például a replikált gyorsítótárhoz, ahol az alkalmi adatvesztés is elfogadható. Az állandó [megbízhatóságú gyűjtemények korlátai és korlátozásai](https://docs.microsoft.com/azure/service-fabric/service-fabric-reliable-services-reliable-collections-guidelines#volatile-reliable-collections)alapján ajánlott ezt olyan számítási feladatokhoz használni, amelyek nem igényelnek adatmegőrzést, ezért olyan szolgáltatások esetén, amelyek a kvórum elvesztésének ritka eseményeit kezelik.
 - [**Előzetes verzió: Service Fabric Backup Explorer**](https://github.com/microsoft/service-fabric-backup-explorer): a megbízható gyűjtemények biztonsági másolatainak Service Fabric állapot-nyilvántartó alkalmazások általi kezelésének megkönnyítése érdekében Service Fabric Backup Explorer lehetővé teszi a felhasználók számára, hogy
     - A megbízható gyűjtemények tartalmának naplózása és áttekintése
     - Aktuális állapot frissítése konzisztens nézetre
@@ -89,9 +89,9 @@ Ez a Service Fabric legújabb kiadása, amely kulcsfontosságú funkciókkal és
   
 - [**Felhasználói szolgáltatások erőforrás-korlátai**](https://docs.microsoft.com/azure/service-fabric/service-fabric-resource-governance#enforcing-the-resource-limits-for-user-services): a felhasználók erőforrás-korlátozásokat állíthatnak be a csomópont felhasználói szolgáltatásaihoz, így elkerülhetők például az Service Fabric rendszerszolgáltatások erőforrás-kimerülése. 
   
-- A replika típusának [**nagyon magas szolgáltatási mozgatási díja**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) . A nagyon magas áthelyezési költségeket tartalmazó replikák csak akkor lesznek áthelyezve, ha a fürtben nem lehet más módon megállapítani a korlátozás megsértését. A "nagyon magas" áthelyezési díjak használata esetén a dokumentációban talál további információkat, és további szempontokat is figyelembe kell vennie.
+- A replika típusának [**nagyon magas szolgáltatási mozgatási díja**](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-resource-manager-movement-cost) . A nagyon magas áthelyezési költségeket tartalmazó replikák csak akkor lesznek áthelyezve, ha a fürtben nem lehet más módon megállapítani a korlátozás megsértését. Tekintse át a csatolt dokumentumot, ahol további információkat talál a "nagyon magas" áthelyezési költségeket illetően, és további szempontokat is figyelembe kell vennie.
   
--  **További fürt biztonsági ellenőrzései**: ebben a kiadásban egy konfigurálható vetőmag-csomópont Kvórumának biztonsági ellenőrzését ismertetjük. Ez lehetővé teszi annak testreszabását, hogy hány mag-csomópontnak kell elérhetőnek lennie a fürt életciklusa és kezelési forgatókönyvei során. Azok a műveletek, amelyeken a fürt a konfigurált érték alá kerülne, le vannak tiltva. Napjainkban az alapértelmezett érték mindig a vetőmag-csomópontok kvóruma, például ha 7 vetőmag-csomóponttal rendelkezik, a rendszer alapértelmezés szerint letilt egy műveletet, amely 5 mag csomópont alatt lenne. Ezzel a módosítással megteheti a minimálisan szükséges 6 értéket, ami lehetővé tenné, hogy egyszerre csak egy mag-csomópont legyen letiltva.
+-  **További fürt biztonsági ellenőrzései**: ebben a kiadásban egy konfigurálható mag-csomópont kvórum biztonsági ellenőrzését vezettünk be. Ez lehetővé teszi annak testreszabását, hogy hány mag-csomópontnak kell elérhetőnek lennie a fürt életciklusa és kezelési forgatókönyvei során. Azok a műveletek, amelyeken a fürt a konfigurált érték alá kerülne, le vannak tiltva. Napjainkban az alapértelmezett érték mindig a vetőmag-csomópontok kvóruma, például ha 7 vetőmag-csomóponttal rendelkezik, a rendszer alapértelmezés szerint letilt egy műveletet, amely 5 mag csomópont alatt lenne. Ezzel a módosítással megteheti a minimálisan szükséges 6 értéket, ami lehetővé tenné, hogy egyszerre csak egy mag-csomópont legyen letiltva.
    
 - [**A Service Fabric Explorer-ben a biztonsági mentési és visszaállítási szolgáltatás felügyeletének**](https://docs.microsoft.com/azure/service-fabric/service-fabric-backuprestoreservice-quickstart-azurecluster)támogatása. Így a következő tevékenységek közvetlenül elérhetővé tehetők az SFX környezetből: a biztonsági mentési és visszaállítási szolgáltatás, a biztonsági mentési szabályzat létrehozása, az automatikus biztonsági mentések, az alkalmi biztonsági másolatok, a visszaállítási műveletek elindítása és a meglévő biztonsági másolatok tallózása.
 

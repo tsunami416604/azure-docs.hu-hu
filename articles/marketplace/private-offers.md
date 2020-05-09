@@ -1,22 +1,22 @@
 ---
-title: Privát ajánlatok | Azure piactér
-description: Privát ajánlatok az Azure Marketplace-en az alkalmazások és szolgáltatások közzétevői számára.
+title: Privát ajánlatok a Microsoft kereskedelmi piactéren
+description: Privát ajánlatok a Microsoft kereskedelmi piactéren az alkalmazások és szolgáltatások közzétevői számára.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/19/2020
 ms.author: dsindona
-ms.openlocfilehash: efda9fb66a65f1f2cd40de8bf32a8a3fa99aea7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e449f65ca65a679aa6c6823938fa561b84e38368
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681434"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872383"
 ---
-# <a name="private-offers"></a>Privát ajánlatok
+# <a name="private-offers-in-the-microsoft-commercial-marketplace"></a>Privát ajánlatok a Microsoft kereskedelmi piactéren
 
-A [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) privát ajánlatai lehetővé teszik a kiadók számára, hogy csak a megrendelt ügyfelek számára látható SKU-ket hozzanak létre.
+A [Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/) privát ajánlatai lehetővé teszik a kiadók számára, hogy olyan csomagokat hozzanak létre, amelyek csak a célcsoportok számára láthatók. Ebben a cikkben megismerheti a privát ajánlatok lehetőségeit és előnyeit.
 
 ## <a name="unlock-enterprise-deals-with-private-offers"></a>A vállalati ajánlatok feloldása privát ajánlatokkal
 

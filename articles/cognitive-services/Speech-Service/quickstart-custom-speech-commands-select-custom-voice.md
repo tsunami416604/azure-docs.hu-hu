@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: anhoang
-ms.openlocfilehash: b0ecbc4dc030fa8e7fbe362c1304c3c97278bdf5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c2b9b4d51e89975d988ed94bf85695bd8a1cc770
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75456409"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872461"
 ---
 # <a name="quickstart-use-custom-commands-with-custom-voice-preview"></a>Gyors útmutató: egyéni parancsok használata egyéni hanggal (előzetes verzió)
 
@@ -35,7 +35,8 @@ Ebben a cikkben kiválasztunk egy egyéni kimeneti hangot az általunk létrehoz
 > ![Minta mondatok paraméterekkel](media/custom-speech-commands/select-custom-voice.png)
 
 > [!NOTE]
-> Egyéni hangok hozhatók létre az egyéni hangprojektek lapról. Válassza ki a **Speech Studio** -hivatkozást, majd a kezdéshez **Egyéni hangfelvételt** .
+> - A **nyilvános hangok**esetében az **neurális típusok** csak bizonyos régiókban érhetők el. A rendelkezésre állás ellenőrzéséhez tekintse meg a [standard és a neurális hangok régiónként/végpont szerint](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices)című témakört.
+> - Az **Egyéni hangokat**az egyéni hangprojektek lapról lehet létrehozni. Lásd: Ismerkedés [az egyéni hanggal](./how-to-custom-voice.md).
 
 Mostantól az alkalmazás az alapértelmezett hang helyett a kiválasztott hangon fog válaszolni.
 

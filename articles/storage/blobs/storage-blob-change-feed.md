@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: ac111b06d578a0e9af8581ef2e8caeccfc4a291e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b712148b9e619cbf5c6886bf0510b4015183d018
+ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536887"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82883336"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>A hírcsatorna-támogatás módosítása az Azure Blob Storage (előzetes verzió)
 
@@ -42,7 +42,7 @@ A hírcsatorna-támogatás módosítása olyan forgatókönyvek esetén megfelel
 
 ## <a name="enable-and-disable-the-change-feed"></a>A módosítási csatorna engedélyezése és letiltása
 
-A módosítások rögzítésének és rögzítésének megkezdéséhez engedélyeznie kell a Storage-fiók módosítási csatornáját. Tiltsa le a változási csatornát a módosítások rögzítésének leállításához. A módosításokat engedélyezheti és letilthatja Azure Resource Manager sablonok használatával a portálon vagy a Powershellen.
+A módosítások rögzítésének és rögzítésének megkezdéséhez engedélyeznie kell a Storage-fiók módosítási csatornáját. Tiltsa le a változási csatornát a módosítások rögzítésének leállításához. A módosításokat engedélyezheti és letilthatja Azure Resource Manager sablonok használatával a portálon vagy a PowerShellen.
 
 Íme néhány dolog, amelyet figyelembe kell venni, amikor engedélyezi a változási csatornát.
 
@@ -61,15 +61,15 @@ A módosítások rögzítésének és rögzítésének megkezdéséhez engedély
 
 A Azure Portal használatával engedélyezze a Storage-fiók módosítási csatornájának használatát:
 
-1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját. 
+1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját.
 
 2. Navigáljon a **blob Service**területen a **Adatvédelem** lehetőségre.
 
-3. Kattintson az **engedélyezve** lehetőségre a **blob-módosítási hírcsatorna** területen
+3. Kattintson az **engedélyezve** lehetőségre a **blob-módosítási hírcsatorna**területen.
 
-4. Kattintson a **Save (Mentés** ) gombra az adatvédelmi beállítások megerősítéséhez
+4. Kattintson a **Save (Mentés** ) gombra az **adatvédelmi** beállítások megerősítéséhez.
 
-![](media/storage-blob-soft-delete/storage-blob-soft-delete-portal-configuration.png)
+    ![](media/soft-delete-enable/storage-blob-soft-delete-portal-configuration.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

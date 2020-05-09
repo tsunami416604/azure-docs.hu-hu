@@ -12,15 +12,15 @@ ms.workload: multiple
 ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b73de61834a3ab20cab5e664ed307ad63e087608
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: f9a8b35b07a4149fa2d6b9f8e6698e41f3e6870c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735640"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891300"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-the-rest-api"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával
 
@@ -43,7 +43,7 @@ Az Azure RBAC a hozzáférés biztosításához hozzá kell adnia egy szerepkör
 1. Kezdje a következő kéréssel és szövegtörzstel:
 
     ```http
-    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
     ```json
@@ -67,7 +67,7 @@ Az Azure RBAC a hozzáférés biztosításához hozzá kell adnia egy szerepkör
 
     Az előző példában a Microsoft. web egy olyan erőforrás-szolgáltató, amely egy App Service példányra hivatkozik. Hasonlóképpen használhatja bármely más erőforrás-szolgáltatót, és megadhatja a hatókört. További információ: [Azure erőforrás-szolgáltatók és típusok](../azure-resource-manager/management/resource-providers-and-types.md) és támogatott [Azure Resource Manager erőforrás-szolgáltatói műveletek](resource-provider-operations.md).  
 
-1. Cserélje le a *{roleAssignmentName}* helyére a szerepkör-hozzárendelés GUID azonosítóját.
+1. Cserélje le a *{roleAssignmentId}* helyére a szerepkör-hozzárendelés GUID azonosítóját.
 
 1. A kérelem törzsében cserélje le a *{scope}* helyére a szerepkör-hozzárendelés hatókörét.
 
@@ -83,6 +83,40 @@ Az Azure RBAC a hozzáférés biztosításához hozzá kell adnia egy szerepkör
 
 1. Cserélje le a *{principalId}* helyére annak a felhasználónak, csoportnak vagy egyszerű szolgáltatásnak az azonosítóját, amely hozzá lesz rendelve a szerepkörhöz.
 
+A következő kérelem és törzs rendeli hozzá a [biztonságimásolat-olvasó](built-in-roles.md#backup-reader) szerepkört egy felhasználóhoz az előfizetés hatókörében:
+
+```http
+PUT https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+```json
+{
+  "properties": {
+    "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+    "principalId": "{objectId1}"
+  }
+}
+```
+
+Az alábbi ábrán egy példa látható a kimenetre:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:23.7679147Z",
+        "updatedOn": "2020-05-06T23:55:23.7679147Z",
+        "createdBy": null,
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
+
 ## <a name="remove-a-role-assignment"></a>Szerepkör-hozzárendelés eltávolítása
 
 Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szerepkör-hozzárendelést. Szerepkör-hozzárendelés eltávolításához használja a [szerepkör-hozzárendeléseket – törölje](/rest/api/authorization/roleassignments/delete) REST API. Az API meghívásához hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/roleAssignments/delete` művelethez. A beépített szerepkörök közül csak a [tulajdonosi](built-in-roles.md#owner) és a [felhasználói hozzáférés-adminisztrátor](built-in-roles.md#user-access-administrator) kap hozzáférést ehhez a művelethez.
@@ -92,7 +126,7 @@ Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szer
 1. Kezdje a következő kéréssel:
 
     ```http
-    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentName}?api-version=2015-07-01
+    DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId}?api-version=2015-07-01
     ```
 
 1. Az URI-n belül cserélje le a *{scope}* elemet a szerepkör-hozzárendelés eltávolítására szolgáló hatókörre.
@@ -105,7 +139,32 @@ Az Azure RBAC a hozzáférés eltávolításához el kell távolítania egy szer
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1` | Erőforráscsoport |
     > | `subscriptions/{subscriptionId1}/resourceGroups/myresourcegroup1/providers/microsoft.web/sites/mysite1` | Erőforrás |
 
-1. Cserélje le a *{roleAssignmentName}* helyére a szerepkör-hozzárendelés GUID azonosítóját.
+1. Cserélje le a *{roleAssignmentId}* helyére a szerepkör-hozzárendelés GUID azonosítóját.
+
+A következő kérelem eltávolítja a megadott szerepkör-hozzárendelést az előfizetés hatókörében:
+
+```http
+DELETE https://management.azure.com/subscriptions/{subscriptionId1}/providers/microsoft.authorization/roleassignments/{roleAssignmentId1}?api-version=2015-07-01
+```
+
+Az alábbi ábrán egy példa látható a kimenetre:
+
+```json
+{
+    "properties": {
+        "roleDefinitionId": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/a795c7a0-d4a2-40c1-ae25-d81f01202912",
+        "principalId": "{objectId1}",
+        "scope": "/subscriptions/{subscriptionId1}",
+        "createdOn": "2020-05-06T23:55:24.5379478Z",
+        "updatedOn": "2020-05-06T23:55:24.5379478Z",
+        "createdBy": "{createdByObjectId1}",
+        "updatedBy": "{updatedByObjectId1}"
+    },
+    "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleAssignments/{roleAssignmentId1}",
+    "type": "Microsoft.Authorization/roleAssignments",
+    "name": "{roleAssignmentId1}"
+}
+```
 
 ## <a name="next-steps"></a>További lépések
 

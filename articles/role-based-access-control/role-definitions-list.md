@@ -1,6 +1,6 @@
 ---
-title: Az Azure RBAC szerepkör-definícióinak listázása Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával | Microsoft Docs
-description: Ismerje meg, hogyan listázhatja az Azure RBAC beépített és egyéni szerepköreit Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával.
+title: Azure-szerepkör-definíciók listázása – Azure RBAC
+description: Ismerje meg, hogyan listázhatja az Azure beépített és egyéni szerepköreit Azure Portal, Azure PowerShell, Azure CLI vagy REST API használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/19/2020
+ms.date: 05/06/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: aa888eedc81ceb3188f801e273c70722207bf512
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e691e37a85604132a6b1c4b2af3501f2c8636e18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062990"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891259"
 ---
-# <a name="list-role-definitions-in-azure-rbac"></a>Szerepkör-definíciók listázása az Azure RBAC
+# <a name="list-azure-role-definitions"></a>Azure-szerepkör-definíciók listázása
 
-A szerepkör-definíció az engedélyek olyan gyűjteménye, amely elvégezhető, például olvasás, írás és törlés. Általában csak szerepkörnek nevezik. Az [Azure szerepköralapú hozzáférés-vezérlés (RBAC)](overview.md) több mint 120 [beépített szerepkörrel](built-in-roles.md) rendelkezik, vagy létrehozhat saját egyéni szerepköröket is. Ez a cikk az Azure-erőforrásokhoz való hozzáférés biztosításához használható beépített és egyéni szerepkörök listázását ismerteti.
+A szerepkör-definíció az engedélyek olyan gyűjteménye, amely elvégezhető, például olvasás, írás és törlés. Általában csak szerepkörnek nevezik. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) több mint 120 [beépített szerepkörrel](built-in-roles.md) rendelkezik, vagy létrehozhat saját egyéni szerepköröket is. Ez a cikk az Azure-erőforrásokhoz való hozzáférés biztosításához használható beépített és egyéni szerepkörök listázását ismerteti.
 
 A Azure Active Directory rendszergazdai szerepköreinek megtekintéséhez tekintse [meg a Azure Active Directory rendszergazdai szerepkör engedélyei](../active-directory/users-groups-roles/directory-assign-admin-roles.md)című témakört.
 
@@ -344,6 +344,55 @@ A szerepkör-definíciók listázásához használja a [szerepkör-definíciók 
     > | `$filter=atScopeAndBelow()` | Felsorolja a megadott hatókör és az alhatókörek szerepkör-definícióit. |
     > | `$filter=type+eq+'{type}'` | Felsorolja a megadott típusú szerepkör-definíciókat. A szerepkör típusa lehet `CustomRole` vagy. `BuiltInRole` |
 
+Az alábbi kérelem felsorolja az egyéni szerepkör-definíciókat az előfizetés hatókörében:
+
+```http
+GET https://management.azure.com/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=type+eq+'CustomRole'
+```
+
+Az alábbi ábrán egy példa látható a kimenetre:
+
+```json
+{
+    "value": [
+        {
+            "properties": {
+                "roleName": "Billing Reader Plus",
+                "type": "CustomRole",
+                "description": "Read billing data and download invoices",
+                "assignableScopes": [
+                    "/subscriptions/{subscriptionId1}"
+                ],
+                "permissions": [
+                    {
+                        "actions": [
+                            "Microsoft.Authorization/*/read",
+                            "Microsoft.Billing/*/read",
+                            "Microsoft.Commerce/*/read",
+                            "Microsoft.Consumption/*/read",
+                            "Microsoft.Management/managementGroups/read",
+                            "Microsoft.CostManagement/*/read",
+                            "Microsoft.Billing/invoices/download/action",
+                            "Microsoft.CostManagement/exports/*"
+                        ],
+                        "notActions": [
+                            "Microsoft.CostManagement/exports/delete"
+                        ]
+                    }
+                ],
+                "createdOn": "2020-02-21T04:49:13.7679452Z",
+                "updatedOn": "2020-02-21T04:49:13.7679452Z",
+                "createdBy": "{createdByObjectId1}",
+                "updatedBy": "{updatedByObjectId1}"
+            },
+            "id": "/subscriptions/{subscriptionId1}/providers/Microsoft.Authorization/roleDefinitions/{roleDefinitionId1}",
+            "type": "Microsoft.Authorization/roleDefinitions",
+            "name": "{roleDefinitionId1}"
+        }
+    ]
+}
+```
+
 ### <a name="list-a-role-definition"></a>Szerepkör-definíció listázása
 
 Egy adott szerepkör részleteinek listázásához használja a [Get](/rest/api/authorization/roledefinitions/get) vagy a szerepkör-definíciókat – [get by id](/rest/api/authorization/roledefinitions/getbyid) REST API.
@@ -372,9 +421,45 @@ Egy adott szerepkör részleteinek listázásához használja a [Get](/rest/api/
      
 1. Cserélje le a *{roleDefinitionId}* helyére a szerepkör-definíció azonosítóját.
 
+A következő kérelem felsorolja az [olvasói](built-in-roles.md#reader) szerepkör definícióját:
+
+```http
+GET https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7?api-version=2015-07-01
+```
+
+Az alábbi ábrán egy példa látható a kimenetre:
+
+```json
+{
+    "properties": {
+        "roleName": "Reader",
+        "type": "BuiltInRole",
+        "description": "Lets you view everything, but not make any changes.",
+        "assignableScopes": [
+            "/"
+        ],
+        "permissions": [
+            {
+                "actions": [
+                    "*/read"
+                ],
+                "notActions": []
+            }
+        ],
+        "createdOn": "2015-02-02T21:55:09.8806423Z",
+        "updatedOn": "2019-02-05T21:24:35.7424745Z",
+        "createdBy": null,
+        "updatedBy": null
+    },
+    "id": "/providers/Microsoft.Authorization/roleDefinitions/acdd72a7-3385-48ef-bd42-f606fba81ae7",
+    "type": "Microsoft.Authorization/roleDefinitions",
+    "name": "acdd72a7-3385-48ef-bd42-f606fba81ae7"
+}
+```
+
 ## <a name="next-steps"></a>További lépések
 
-- [Beépített szerepkörök Azure-erőforrásokhoz](built-in-roles.md)
-- [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
-- [Szerepkör-hozzárendelések listázása az Azure RBAC és a Azure Portal használatával](role-assignments-list-portal.md)
-- [Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a Azure Portal használatával](role-assignments-portal.md)
+- [Azure beépített szerepkörök](built-in-roles.md)
+- [Egyéni Azure-szerepkörök](custom-roles.md)
+- [Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával](role-assignments-list-portal.md)
+- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md)

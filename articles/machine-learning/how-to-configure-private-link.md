@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: 8140fc4286ac97260e0b23ea700a70303ec69e2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5428f24ea5ab780c4b51e0af37908077ddc32232
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411203"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891370"
 ---
 # <a name="configure-azure-private-link-for-an-azure-machine-learning-workspace-preview"></a>Azure Private-hivatkozás konfigurálása Azure Machine Learning munkaterülethez (előzetes verzió)
 
@@ -118,7 +118,7 @@ A Storage-fiók virtuális hálózaton való elhelyezésével kapcsolatos inform
 
 A munkaterület által használt Azure Key Vault biztonságossá tételéhez elhelyezheti a virtuális hálózaton belül, vagy engedélyezheti a saját hivatkozását.
 
-A Key Vault virtuális hálózatban való elhelyezésével kapcsolatos információkért lásd: [Key Vault-példány használata a munkaterülettel](how-to-enable-virtual-network.md#use-a-key-vault-instance-with-your-workspace).
+A Key Vault virtuális hálózatban való elhelyezésével kapcsolatos információkért lásd: [Key Vault-példány használata a munkaterülettel](how-to-enable-virtual-network.md#key-vault-instance).
 
 További információ a Key Vault privát hivatkozásának engedélyezéséről: [Key Vault integrálása az Azure Private linktel](/azure/key-vault/private-link-service).
 
@@ -131,7 +131,7 @@ A munkaterület által használt Azure Kubernetes-szolgáltatások biztonságoss
 
 ## <a name="azure-container-registry"></a>Azure Container Registry
 
-A virtuális hálózaton belüli Azure Container Registry biztonságossá tételével kapcsolatos további információkért lásd: [Azure Container Registry használata](how-to-enable-virtual-network.md#use-azure-container-registry).
+A virtuális hálózaton belüli Azure Container Registry biztonságossá tételével kapcsolatos további információkért lásd: [Azure Container Registry használata](how-to-enable-virtual-network.md#azure-container-registry).
 
 > [!IMPORTANT]
 > Ha a Azure Machine Learning munkaterülethez privát hivatkozást használ, és a munkaterülethez tartozó Azure Container Registry a virtuális hálózaton helyezi el, akkor a következő Azure Resource Manager sablont is alkalmaznia kell. Ez a sablon lehetővé teszi, hogy a munkaterület kommunikáljon az ACR-szel a privát kapcsolaton keresztül.

@@ -3,19 +3,19 @@ title: Nyilvános kimenő IP-cím beállítása a ISEs
 description: Ismerje meg, hogyan állíthat be egyetlen nyilvános kimenő IP-címet az integrációs szolgáltatási környezetekhez (ISEs) Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 02/10/2020
-ms.openlocfilehash: 619c68b84291bc35b8216194ac4534393fde454c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 2132dc464ee404339d9de03c0c797426aea04ce2
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191501"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927139"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Egyetlen IP-cím beállítása egy vagy több integrációs szolgáltatási környezethez Azure Logic Apps
 
-Ha Azure Logic Apps-nal dolgozik, beállíthat egy [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) olyan logikai alkalmazások üzemeltetéséhez, amelyek egy Azure-beli [virtuális hálózat](../virtual-network/virtual-networks-overview.md)erőforrásaihoz férnek hozzá. Ha több ISE-példánnyal rendelkezik, amelyek IP-korlátozásokkal rendelkező más végpontokhoz férnek hozzá, helyezzen üzembe egy [Azure Firewall](../firewall/overview.md) vagy egy [hálózati virtuális berendezést](../virtual-network/virtual-networks-overview.md#filter-network-traffic) a virtuális hálózatban, és irányítsa át a kimenő forgalmat a tűzfalon vagy a hálózati virtuális berendezésen keresztül. Ezután a virtuális hálózat összes ISE-példánya egyetlen, nyilvános, statikus és kiszámítható IP-címet használ a célszámítógépeken való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania a célszámítógépeken az egyes ISE-rendszerek esetében.
+Ha Azure Logic Apps-nal dolgozik, beállíthat egy [ *integrációs szolgáltatási környezetet* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) olyan logikai alkalmazások üzemeltetéséhez, amelyek egy Azure-beli [virtuális hálózat](../virtual-network/virtual-networks-overview.md)erőforrásaihoz férnek hozzá. Ha több ISE-példánnyal rendelkezik, amelyek IP-korlátozásokkal rendelkező más végpontokhoz férnek hozzá, helyezzen üzembe egy [Azure Firewall](../firewall/overview.md) vagy egy [hálózati virtuális berendezést](../virtual-network/virtual-networks-overview.md#filter-network-traffic) a virtuális hálózatban, és irányítsa át a kimenő forgalmat a tűzfalon vagy a hálózati virtuális berendezésen keresztül. Ezután a virtuális hálózat összes ISE-példánya egyetlen, nyilvános, statikus és kiszámítható IP-címet használ a kívánt célhelyekkel való kommunikációhoz. Így nem kell további tűzfal-megnyitásokat beállítania a célszámítógépeken az egyes ISE-rendszerek esetében.
 
 Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Firewallon keresztül, de hasonló fogalmakat alkalmazhat egy hálózati virtuális berendezésre, például egy külső gyártótól származó tűzfalra az Azure piactéren. Habár ez a témakör több ISE-példány beállítására koncentrál, ezt a módszert egyetlen ISE esetében is használhatja, ha a forgatókönyv megköveteli a hozzáférést igénylő IP-címek számának korlátozását. Gondolja át, hogy a tűzfal vagy a virtuális hálózati berendezés további költségei ésszerűek-e a forgatókönyvhöz. További információ a [Azure Firewall díjszabásáról](https://azure.microsoft.com/pricing/details/azure-firewall/).
 
@@ -35,7 +35,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    ![Útvonal hozzáadása a kimenő forgalom irányításához](./media/connect-virtual-network-vnet-set-up-single-ip-address/add-route-to-route-table.png)
 
-1. Az **útvonal hozzáadása** panelen [állítsa be az új útvonalat](../virtual-network/manage-route-table.md#create-a-route) egy szabállyal, amely megadja, hogy a célként megadott rendszerre irányuló összes kimenő forgalom a következő viselkedést követi:
+1. Az **útvonal hozzáadása** panelen [állítsa be az új útvonalat](../virtual-network/manage-route-table.md#create-a-route) egy szabállyal, amely megadja, hogy a célként megadott rendszerre irányuló kimenő forgalom a következő viselkedést követi:
 
    * A következő ugrási típusként használja a [**virtuális készüléket**](../virtual-network/virtual-networks-udr-overview.md#user-defined) .
 
@@ -52,10 +52,12 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Útvonal neve** | <*egyedi-útvonal-név*> | Az útvonal egyedi neve az útválasztási táblában |
-   | **Címzési előtag** | <*cél – címe*> | A célrendszer címe, ahová a forgalmat el szeretné hajtani. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli tartományok közötti útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. |
+   | **Címzési előtag** | <*cél – címe*> | Annak a célhelynek a címe, ahol a kimenő forgalmat el szeretné járni. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli tartományok közötti útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. Ebben a példában ez a memóriacím egy SFTP-kiszolgálóhoz tartozik, amely a következő szakaszban található: [hálózati szabály beállítása](#set-up-network-rule). |
    | **Következő ugrási típus** | **Virtuális berendezés** | A kimenő forgalom által használt [Ugrás típusa](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) |
    | **A következő ugrás címe** | <*tűzfal – magánhálózati-IP-cím*> | A tűzfal magánhálózati IP-címe |
    |||
+
+<a name="set-up-network-rule"></a>
 
 ## <a name="set-up-network-rule"></a>Hálózati szabály beállítása
 
@@ -65,7 +67,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
 1. A gyűjteményben adjon hozzá egy szabályt, amely engedélyezi a forgalmat a célként megadott rendszer felé.
 
-   Tegyük fel például, hogy rendelkezik egy olyan logikai alkalmazással, amely egy ISE-ben fut, és egy SFTP-rendszerrel kell kommunikálnia. Létrehoz egy nevű hálózati szabálygyűjtemény `LogicApp_ISE_SFTP_Outbound`-gyűjteményt, amely egy nevű `ISE_SFTP_Outbound`hálózati szabályt tartalmaz. Ez a szabály minden olyan alhálózat IP-címéről engedélyezi a forgalmat, ahol az ISE a virtuális hálózaton a cél SFTP rendszerre fut a tűzfal magánhálózati IP-címének használatával.
+   Tegyük fel például, hogy rendelkezik egy olyan logikai alkalmazással, amely egy ISE-ben fut, és az SFTP-kiszolgálóval kommunikálni kell. Létrehoz egy nevű hálózati szabálygyűjtemény `LogicApp_ISE_SFTP_Outbound`-gyűjteményt, amely egy nevű `ISE_SFTP_Outbound`hálózati szabályt tartalmaz. Ez a szabály minden olyan alhálózat IP-címéről engedélyezi a forgalmat, amelynél az ISE a virtuális hálózatban fut a cél SFTP-kiszolgálón a tűzfal magánhálózati IP-címének használatával.
 
    ![Hálózati szabály beállítása a tűzfalhoz](./media/connect-virtual-network-vnet-set-up-single-ip-address/set-up-network-rule-for-firewall.png)
 
@@ -85,7 +87,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
    | **Név** | <*hálózati szabály neve*> | A hálózati szabály neve |
    | **Protocol (Protokoll)** | <*kapcsolatok – protokollok*> | A használandó kapcsolódási protokollok. Ha például NSG-szabályokat használ, válassza a **TCP** és az **UDP**beállítást, nem csak a **TCP protokollt**. |
    | **Forrásoldali címek** | <*ISE-alhálózat – címek*> | Az alhálózati IP-címek, amelyeken az ISE fut, és a logikai alkalmazásból származó forgalom |
-   | **Cél címei** | <*cél-IP-cím*> | Annak a célhelynek az IP-címe, amelyen a forgalmat el szeretné jutni |
+   | **Cél címei** | <*cél-IP-cím*> | Annak a célhelynek az IP-címe, amelyen a kimenő forgalmat el szeretné járni. Ebben a példában ez az IP-cím az SFTP-kiszolgáló. |
    | **Célportok** | <*cél – portok*> | A célként megadott rendszer által a bejövő kommunikációhoz használt portok |
    |||
 
