@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: absha
-ms.openlocfilehash: 89d894a5125a16f95e6ef8a15c2503d48f3a8e55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 046946bb9d3ce1ae86d49409d024c862d2edb982
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632177"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856061"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -101,18 +101,18 @@ Ebben a forgatókönyvben a Application Gateway alhálózat NSG használja. A k�
 
    Létrehozhat egy UDR, amely a 0.0.0.0/0 forgalmat közvetlenül az internetre küldi. 
 
-  **3. forgatókönyv**: az Azure Kubernetes Service kubenet UDR
+  **3. forgatókönyv**: az Azure Kubernetes szolgáltatás UDR az kubenet-mel
 
-  Ha a kubenet-t az Azure Kubernetes szolgáltatással (ak) és a Application Gateway beáramló vezérlővel (AGIC) használja, be kell állítania egy útválasztási táblázatot, amely lehetővé teszi, hogy a hüvelynek eljuttatott forgalom a megfelelő csomóponthoz legyen irányítva. Ez az Azure CNI használata esetén nem szükséges. 
+  Ha a kubenet-t az Azure Kubernetes szolgáltatással (ak) és a Application Gateway beáramló vezérlővel (AGIC) használja, szüksége lesz egy útválasztási táblázatra, amely lehetővé teszi, hogy a Application Gateway hüvelyek számára továbbított forgalom a megfelelő csomópontra legyen irányítva. Ez az Azure CNI használata esetén nem szükséges. 
 
-   A következő lépésekkel állíthatja be az útválasztási táblázatot a kubenet működésének engedélyezéséhez:
+  Az alábbi lépésekkel engedélyezheti az útválasztási táblázat használatát a kubenet működésének engedélyezéséhez:
 
-  1. Útválasztási tábla erőforrásának létrehozása az Azure-ban. 
-  2. A létrehozás után nyissa meg az **útvonalak** lapot. 
-  3. Új útvonal hozzáadása:
+  1. Ugrás az AK által létrehozott erőforráscsoporthoz (az erőforráscsoport nevének a "MC_" kifejezéssel kell kezdődnie)
+  2. Keresse meg az AK által létrehozott útválasztási táblázatot az adott erőforráscsoporthoz. Az útválasztási táblázatot a következő információk alapján kell kitölteni:
      - A cím előtagjának az AK-ban elérni kívánt hüvelyek IP-tartományának kell lennie. 
-     - A következő ugrás típusa csak **virtuális készülék**lehet. 
-     - A következő ugrási címnek a cím előtag mezőjében definiált IP-tartományon belüli hüvelyt futtató csomópont IP-címének kell lennie. 
+     - A következő ugrás típusa csak virtuális készülék lehet. 
+     - A következő ugrási címnek a hüvelyt működtető csomópont IP-címének kell lennie.
+  3. Az útválasztási táblázat hozzárendelése a Application Gateway alhálózathoz. 
     
   **v2 nem támogatott forgatókönyvek**
 

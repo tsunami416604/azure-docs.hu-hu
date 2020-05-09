@@ -3,20 +3,18 @@ title: Az első tartós funkció létrehozása az Azure-ban JavaScript használa
 description: Azure tartós függvény létrehozása és közzététele a Visual Studio Code használatával.
 author: anthonychu
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/07/2020
 ms.reviewer: azfuncdf, antchu
-ms.openlocfilehash: 55098daa69d3e878140b20095b0a3e08811269e1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6544cd115dbae2268492a8775a780d2f045f4e4a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80257648"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889676"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
 
 A *Durable Functions* [Azure functions](../functions-overview.md) , amely lehetővé teszi állapot-nyilvántartó függvények írására kiszolgáló nélküli környezetben. A bővítmény automatikusan kezeli az állapotokat, az ellenőrzőpontokat és az újraindításokat.
-
-[!INCLUDE [v1-note](../../../includes/functions-durable-v1-tutorial-note.md)]
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Visual Studio Code Azure Functions bővítményt a "Hello World" tartós funkciójának helyi létrehozására és tesztelésére.  Ez a függvény összehangolja és összekapcsolja a hívásokat más funkciókkal. Ezután közzéteheti a függvénykódot az Azure-ban.
 
@@ -44,7 +42,7 @@ Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi 
 
 1. A Visual Studio Code-ban nyomja le az F1 billentyűt (vagy a CTRL/cmd + SHIFT + P billentyűkombinációt) a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki `Azure Functions: Create New Project...`a következőt:.
 
-    ![Create függvény](media/quickstart-js-vscode/functions-create-project.png)
+    ![Függvény létrehozása](media/quickstart-js-vscode/functions-create-project.png)
 
 1. Válasszon egy üres mappát a projekthez, és válassza a **kiválasztás**lehetőséget.
 
@@ -61,7 +59,7 @@ A Visual Studio Code szükség esetén telepíti a Azure Functions Core Tools. E
 
 A rendszer a gyökérkönyvtárban is létrehoz egy Package. JSON fájlt.
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Azure Functions v2 kompatibilitási mód engedélyezése
+### <a name="enable-compatibility-mode"></a>Kompatibilitási mód engedélyezése
 
 Jelenleg a JavaScript Durable Functions engedélyezni kell Azure Functions v2 kompatibilitási módot.
 
@@ -204,7 +202,7 @@ Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépe
 
 [!INCLUDE [functions-publish-project-vscode](../../../includes/functions-publish-project-vscode.md)]
 
-### <a name="enable-azure-functions-v2-compatibility-mode"></a>Azure Functions v2 kompatibilitási mód engedélyezése
+### <a name="enable-compatibility-mode"></a>Kompatibilitási mód engedélyezése
 
 A helyileg engedélyezett Azure Functions v2 kompatibilitást engedélyezni kell az Azure-beli alkalmazásban.
 

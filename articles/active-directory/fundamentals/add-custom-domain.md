@@ -13,12 +13,12 @@ ms.author: ajburnle
 ms.reviewer: elkuzmen
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de91bd7e1e4c5f9909213f663dd3ede0f979d4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69c96d123ebe97ba4a7a6df0395efe698924fef1
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262151"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734739"
 ---
 # <a name="add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Egyéni tartománynév hozzáadása a Azure Active Directory portál használatával
 
@@ -37,7 +37,7 @@ Az új címtár létrehozásához kövesse az [új bérlő létrehozása a szerv
 >[!IMPORTANT]
 >A bérlőt létrehozó személy automatikusan a bérlő globális rendszergazdája. A globális rendszergazda további rendszergazdákat is hozzáadhat a bérlőhöz.
 
-Az előfizetési szerepkörökkel kapcsolatos további információkért tekintse meg az [Azure RBAC szerepköreivel](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-rbac-roles)foglalkozó témakört.
+Az előfizetési szerepkörökkel kapcsolatos további információkért lásd: [Azure-szerepkörök](../../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles).
 
 >[!TIP]
 > Ha azt tervezi, hogy a helyszíni Windows Server AD-t az Azure AD-vel szeretné összevonása, akkor be kell jelölnie **ezt a tartományt a helyi Active Directory való egyszeri bejelentkezéshez** , amikor a Azure ad Connect eszközt futtatja a címtárak szinkronizálásához.

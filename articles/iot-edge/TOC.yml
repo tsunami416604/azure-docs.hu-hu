@@ -206,7 +206,11 @@
         - name: Jenkinshez készült IoT Edge beépülő modul
           href: how-to-devops-plugins.md
     - name: Hibaelhárítás
-      href: troubleshoot.md
+      items:
+        - name: Általános diagnosztikai lépések
+          href: troubleshoot.md
+        - name: Gyakori hibák megoldásai
+          href: troubleshoot-common-errors.md
 - name: További források
   items:
     - name: Támogatási és súgólehetőségek

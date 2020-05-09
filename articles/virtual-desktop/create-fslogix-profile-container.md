@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 149fb5818ee360c7333997655ea9eb8d7ded346c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270893"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82607384"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>FSLogix-profil tárolójának létrehozása a Azure NetApp Files használatával
 
@@ -23,7 +23,7 @@ A FSLogix-profil tárolókat a [Azure NetApp Files](https://azure.microsoft.com/
 
 Ebből az útmutatóból megtudhatja, hogyan állíthat be egy Azure NetApp Files fiókot, és hogyan hozhat létre FSLogix-profilok tárolókat a Windows virtuális asztalon.
 
-Ez a cikk azt feltételezi, hogy már rendelkezik a Windows rendszerű virtuális asztali környezetben egy vagy több bérlőbe beállított és csoportosított [gazdagépekkel](create-host-pools-azure-marketplace.md) . A bérlők beállításával kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](tenant-setup-azure-active-directory.md) és [a technikai Közösség blogbejegyzése](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
+Ez a cikk azt feltételezi, hogy már rendelkezik a Windows rendszerű virtuális asztali környezetben egy vagy több bérlőbe beállított és csoportosított [gazdagépekkel](create-host-pools-azure-marketplace.md) . A bérlők beállításával kapcsolatos további információkért lásd: [bérlő létrehozása a Windows Virtual Desktopban](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md) és [a technikai Közösség blogbejegyzése](https://techcommunity.microsoft.com/t5/Windows-IT-Pro-Blog/Getting-started-with-Windows-Virtual-Desktop/ba-p/391054).
 
 Az útmutatóban szereplő utasítások kifejezetten a Windows rendszerű virtuális asztali felhasználók számára készültek. Ha további általános útmutatást szeretne arról, hogyan kell beállítani Azure NetApp Files és létrehozni a FSLogix-profilok tárolóit a Windows virtuális asztalon kívül, tekintse [meg a Azure NetApp Files beállítása és az NFS-kötet létrehozása](../azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes.md)című rövid útmutatót.
 
@@ -210,7 +210,7 @@ Ez a szakasz a [címkészlet egy fájlmegosztási használatával történő lé
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Győződjön meg arról, hogy a felhasználók el tudják érni az Azure NetApp-fájlmegosztást
 
-1. Nyissa meg az Internet böngészőt <https://rdweb.wvd.microsoft.com/webclient/index.html>, és lépjen a következőre:.
+1. Nyissa meg az Internet böngészőt <https://rdweb.wvd.microsoft.com/arm/webclient>, és lépjen a következőre:.
 
 2. Jelentkezzen be az Távoli asztal csoporthoz rendelt felhasználó hitelesítő adataival.
 
