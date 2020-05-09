@@ -9,9 +9,9 @@
 - name: Oktatóanyag
   items:
     - name: Regresszió automatizált gépi tanulással
-      href: /azure/machine-learning/service/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-auto-train-models?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
     - name: Képbesorolási modell bővítése
-      href: /azure/machine-learning/service/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
+      href: /azure/machine-learning/tutorial-train-models-with-aml?toc=/azure/open-datasets/toc.json&bc=/azure/open-datasets/breadcrumb/toc.json
 - name: Útmutatók
   items:
     - name: Adathalmazok az Azure Machine Learningben
@@ -38,7 +38,7 @@
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/open-datasets/'
     - name: Régiónkénti rendelkezésre állás
-      href: 'https://azure.microsoft.com/regions/services/'
+      href: 'https://azure.microsoft.com/en-us/global-infrastructure/services/?products=open-datasets&regions=non-regional'
     - name: Felhasználói fórum
       href: 'https://aka.ms/open-datasets-forum'
     - name: Stack Overflow

@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 28abf6fca0933158b067dda7ab54af93dac4b7d9
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872420"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930488"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Csatlakozás az Azure IoT Centralhoz
 
@@ -146,11 +146,11 @@ A folyamat némileg eltér attól függően, hogy az eszközök SAS-jogkivonatok
 
 ### <a name="connect-devices-that-use-x509-certificates-without-registering"></a>X. 509 tanúsítványokat használó eszközök csatlakoztatása regisztráció nélkül
 
-1. [Adjon hozzá és ellenőrizzen egy root vagy Intermediate X. 509 tanúsítványt](#connect-devices-using-x509-certificates) a IoT Central alkalmazáshoz. (#connect-Devices-using-x509-certificates)
+1. [Adjon hozzá és ellenőrizzen egy root vagy Intermediate X. 509 tanúsítványt](#connect-devices-using-x509-certificates) a IoT Central alkalmazáshoz.
 
 1. Az eszközökhöz tartozó levél-tanúsítványok létrehozása a IoT Central alkalmazáshoz hozzáadott legfelső szintű vagy köztes tanúsítvány használatával. A kisbetűket használó eszközök azonosítóit `CNAME` használja a levél tanúsítványainak.
 
-1. Az OEM minden eszközt egy eszköz-AZONOSÍTÓval, egy létrehozott bal X. 509 tanúsítvánnyal és az alkalmazás- **azonosító hatókörének** értékével villan fel.
+1. Az OEM minden eszközt egy eszköz-AZONOSÍTÓval, egy generált levél X. 509 tanúsítvánnyal és az alkalmazás- **azonosító hatókörének** értékével villan fel.
 
 1. Amikor bekapcsol egy eszközt, először csatlakozik a DPS-hez, hogy beolvassa a IoT Central regisztrációs adatait.
 

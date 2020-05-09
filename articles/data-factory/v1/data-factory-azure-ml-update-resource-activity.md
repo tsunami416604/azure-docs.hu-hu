@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: afc79badd19fa180e631f1f8fa9735567a0b1e33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83cb62efd98615b7eda7f52ebafe95dedc282355
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74978713"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930454"
 ---
 # <a name="updating-azure-machine-learning-models-using-update-resource-activity"></a>Azure Machine Learning modellek frissítése az erőforrás frissítése tevékenység használatával
 
@@ -44,7 +44,7 @@ Idővel az Azure ML-pontozási kísérletek prediktív modelljeit új bemeneti a
 1. Hozzon létre egy kísérletet [Azure Machine learning Studio (klasszikus)](https://studio.azureml.net).
 2. Ha elégedett a modellel, használja a Azure Machine Learning Studio (klasszikus) lehetőséget a webes szolgáltatások közzétételére a **betanítási kísérlet** és a pontozási/**prediktív kísérlet**során.
 
-A következő táblázat ismerteti az ebben a példában használt webszolgáltatásokat.  További részletekért lásd: [Machine learning modellek átképzése programozott](../../machine-learning/machine-learning-retrain-models-programmatically.md) módon.
+A következő táblázat ismerteti az ebben a példában használt webszolgáltatásokat.  A részletekért lásd: [Machine learning Studio (klasszikus) modellek átképzése programozott](../../machine-learning/studio/retrain-machine-learning-model.md) módon.
 
 - A **betanítási webszolgáltatás** betanítási és betanított modelleket hoz létre. Az átképzés kimenete egy. ilearner fájl az Azure Blob Storage-ban. Az **alapértelmezett végpont** automatikusan létrejön, amikor webszolgáltatásként teszi közzé a betanítási kísérletet. Több végpontot is létrehozhat, de a példa csak az alapértelmezett végpontot használja.
 - **Pontozási webszolgáltatás** – a rendszer címkézetlen adatpéldákat fogad, és előrejelzéseket készít. Az előrejelzés kimenete különböző formákat tartalmazhat, például egy. csv-fájlt vagy egy Azure SQL-adatbázis sorait a kísérlet konfigurációjától függően. A rendszer automatikusan létrehozza az alapértelmezett végpontot, amikor a prediktív kísérletet webszolgáltatásként teszi közzé. 

@@ -6,14 +6,14 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9515058bc78a2d56dc1734c046dac5d5b04f68d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113167"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82928278"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -99,6 +99,9 @@ Az ágak ExpressRoute áramkörök és/vagy helyek közötti VPN-kapcsolatok has
 
 Ez a beállítás lehetővé teszi, hogy a vállalatok az Azure gerincet használják az ágak összekapcsolásához. Bár ez a funkció elérhető, érdemes mérlegelni a fiókirodák Azure-beli virtuális WAN-kapcsolaton keresztül történő csatlakoztatásának előnyeit, valamint a privát WAN használatát.  
 
+> [!NOTE]
+> Ág – ág kapcsolat letiltása a virtuális WAN-ban – a virtuális WAN konfigurálható a fiókirodák közötti kapcsolat letiltására. Ez a configuation letiltja a VPN (S2S és P2S) és az Express Route Connected-helyek közötti továbbítást. Ez a konfiguráció nem befolyásolja a vnet és a vnet-vnet útvonalat, valamint a kapcsolódást. A beállítás konfigurálása az Azure Portal használatával: a virtuális WAN konfigurálása menüben válassza a beállítás: ág-ág-Letiltva lehetőséget. 
+
 ### <a name="remote-user-to-vnet-c"></a>Távoli felhasználó – VNet (c)
 
 Engedélyezheti a közvetlen, biztonságos távoli hozzáférést az Azure-hoz pont – hely kapcsolat használatával egy távoli felhasználói ügyfélről egy virtuális WAN-ra. A vállalati távoli felhasználóknak már nem kell hajtű a felhőbe a vállalati VPN használatával.
@@ -110,6 +113,15 @@ A távoli felhasználó – ág elérési út lehetővé teszi, hogy a távoli f
 ### <a name="vnet-to-vnet-transit-e-and-vnet-to-vnet-cross-region-h"></a>VNet – VNet tranzit (e) és VNet – VNet régió (h)
 
 A VNet – VNet tranzit lehetővé teszi, hogy a virtuális hálózatok a több virtuális hálózatok-ben megvalósított többrétegű alkalmazások összekapcsolásához csatlakozhasson egymáshoz. A virtuális hálózatok egymással is összekapcsolhatók a VNet-közvetítéssel, és ez olyan esetekben lehet megfelelő, amikor az VWAN hub-on keresztül történő átvitel nem szükséges.
+
+
+## <a name="force-tunneling-and-default-route-in-azure-virtual-wan"></a><a name="DefaultRoute"></a>Kényszerített bújtatás és alapértelmezett útvonal az Azure Virtual WAN-ban
+
+A kényszerített bújtatás engedélyezéséhez konfigurálja az alapértelmezett útvonal engedélyezése VPN-, ExpressRoute-vagy Virtual Network-kapcsolaton a virtuális WAN-ban beállítást.
+
+Egy virtuális központ propagál egy megtanult alapértelmezett útvonalat egy virtuális hálózat/helyek közötti VPN/ExpressRoute kapcsolathoz, ha az alapértelmezett jelző engedélyezése beállítás engedélyezve van a kapcsolaton. 
+
+Ez a jelző akkor látható, ha a felhasználó szerkeszt egy virtuális hálózati kapcsolat, egy VPN-kapcsolat vagy egy ExpressRoute-kapcsolat. Alapértelmezés szerint ez a jelző le van tiltva, ha egy hely vagy egy ExpressRoute áramkör egy hubhoz van csatlakoztatva. Alapértelmezés szerint engedélyezve van, ha egy virtuális hálózati kapcsolat hozzáadásával csatlakozik egy VNet egy virtuális hubhoz. Az alapértelmezett útvonal nem a virtuális WAN-hubhoz származik; a rendszer az alapértelmezett útvonalat propagálja, ha a virtuális WAN-központ már megtanulta a tűzfal központi telepítésének eredményeképpen, vagy ha egy másik csatlakoztatott hely kényszerített bújtatást engedélyez.
 
 ## <a name="security-and-policy-control"></a><a name="security"></a>Biztonság és házirend-vezérlés
 
@@ -137,6 +149,24 @@ A VNet vagy harmadik féltől származó biztonságos tranzit lehetővé teszi, 
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Ág – Internet vagy harmadik féltől származó biztonsági szolgáltatás (j)
 Az ág – Internet vagy harmadik féltől származó biztonságos továbbítás lehetővé teszi, hogy az ágak a virtuális WAN-központban Azure Firewall keresztül csatlakozhassanak az internethez vagy egy támogatott harmadik féltől származó biztonsági szolgáltatáshoz.
+
+### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Alapértelmezett útvonal (0.0.0.0/0) Hogyan engedélyezése biztonságos virtuális központban
+
+A virtuális WAN-központban üzembe helyezett Azure Firewall (biztonságos virtuális központ) alapértelmezett útválasztóként konfigurálható az internethez vagy a megbízható biztonsági szolgáltatóhoz minden olyan ág számára, amely (VPN vagy Express Route használatával csatlakozik), küllős virtuális hálózatok és felhasználók (P2S VPN-en keresztül). Ezt a konfigurációt a Azure Firewall Manager használatával kell elvégezni.  Lásd: forgalom irányítása a központba az ágak (beleértve a felhasználók) és az virtuális hálózatok közötti összes forgalom konfigurálásához a Azure Firewall használatával. 
+
+Ez egy két lépésből álló konfiguráció:
+
+1. Konfigurálja az internetes forgalom útválasztását a biztonságos virtuális hub Route Setting menü használatával. Olyan virtuális hálózatok és ágakat konfigurálhat, amelyek a tűzfalon keresztül küldhetnek forgalmat az internetre.
+
+2. Konfigurálhatja, hogy mely kapcsolatok (vnet és ág) irányítsák át a forgalmat az internetre (0.0.0.0/0) az Azure FW-ben a hub vagy a megbízható biztonsági szolgáltató használatával. Ez a lépés biztosítja, hogy az alapértelmezett útvonal propagálva legyen a kiválasztott ágakra és virtuális hálózatok, amelyek a kapcsolatokon keresztül csatlakoznak a virtuális WAN-hubhoz. 
+
+### <a name="force-tunneling-traffic-to-on-premises-firewall-in-a-secured-virtual-hub"></a>A helyszíni tűzfal felé irányuló adatforgalom kényszerítése biztonságos virtuális központban
+
+Ha a virtuális központ már megtanulta egy alapértelmezett útvonalat (a BGP-n keresztül), akkor ez az alapértelmezett útvonal felülbírálható az Azure Firewall Manager-beállítás által megismert alapértelmezett útvonalon. Ebben az esetben az virtuális hálózatok-ből és az internetre irányuló ágakból beérkező összes forgalom a Azure Firewall vagy a megbízható biztonsági szolgáltatóhoz lesz irányítva.
+
+> [!NOTE]
+> Jelenleg nincs lehetőség a helyszíni tűzfal vagy a Azure Firewall (és a megbízható biztonsági szolgáltató) kiválasztására a virtuális hálózatok, ágakból vagy felhasználókból származó, interneten keresztül kötött forgalomhoz. Az Azure Firewall Manager beállításban megismert alapértelmezett útvonal mindig előnyben részesített az egyik ág által megismert alapértelmezett útvonalon.
+
 
 ## <a name="next-steps"></a>További lépések
 
