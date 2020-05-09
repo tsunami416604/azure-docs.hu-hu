@@ -9,18 +9,18 @@ ms.author: nibaccam
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/27/2020
-ms.openlocfilehash: a0d5bf795e4759a105b9a235770f37aa10bd6751
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52716e070437dd7a6b3b880a5a7f3a4afafe8738
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80385544"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995015"
 ---
 # <a name="distributed-training-with-azure-machine-learning"></a>Elosztott képzés Azure Machine Learning
 
 Ebben a cikkben megismerheti az elosztott képzéseket, és azt, hogy a Azure Machine Learning hogyan támogatja az IT-modelleket. 
 
-Az elosztott képzésben a modell betanításához szükséges számítási feladatok felosztása és megosztása több, feldolgozó csomópontnak nevezett mini-processzor között történik. Ezek a feldolgozói csomópontok párhuzamosan működnek a modell betanításának felgyorsításához. Az elosztott képzések hagyományos ML-modellekhez használhatók, de jobban alkalmazkodnak a számítási és időigényes feladatokhoz, például a mély [tanulás](concept-deep-learning-vs-machine-learning.md) a mély neurális hálózatok betanításához.
+Az elosztott képzésben a modell betanításához szükséges számítási feladatok felosztása és megosztása több, feldolgozó csomópontnak nevezett mini-processzor között történik. Ezek a feldolgozói csomópontok párhuzamosan működnek a modell betanításának felgyorsításához. Az elosztott képzések hagyományos ML-modellekhez használhatók, de jobban alkalmazkodnak a számítási és időigényes feladatokhoz, például a mély [tanulás](concept-deep-learning-vs-machine-learning.md) a mély neurális hálózatok betanításához. 
 
 ## <a name="deep-learning-and-distributed-training"></a>Mélyreható tanulás és elosztott képzés 
 
@@ -36,7 +36,9 @@ Az elosztott képzést nem igénylő ML-modelleknél tekintse meg a modellek [be
 
 Az adatpárhuzamosság a legegyszerűbben a két elosztott képzési módszer megvalósítása, és a legtöbb felhasználási esethez elegendő.
 
-Ebben a megközelítésben az adatok felosztva vannak osztva, ahol a partíciók száma megegyezik az elérhető csomópontok teljes számával a számítási fürtben. A modellt a rendszer átmásolja a munkavégző csomópontok mindegyikében, és mindegyik feldolgozó a saját részhalmazán működik. Ne feledje, hogy minden csomópontnak rendelkeznie kell a betanított modell támogatásához szükséges kapacitással, azaz a modellnek teljes mértékben el kell férnie az egyes csomópontokon.
+Ebben a megközelítésben az adatok felosztva vannak osztva, ahol a partíciók száma megegyezik az elérhető csomópontok teljes számával a számítási fürtben. A modellt a rendszer átmásolja a munkavégző csomópontok mindegyikében, és mindegyik feldolgozó a saját részhalmazán működik. Ne feledje, hogy minden csomópontnak rendelkeznie kell a betanított modell támogatásához szükséges kapacitással, azaz a modellnek teljes mértékben el kell férnie az egyes csomópontokon. A következő ábra vizuálisan mutatja be ezt a megközelítést.
+
+![Adatpárhuzamosság – koncepció – diagram](./media/concept-distributed-training/distributed-training.svg)
 
 Mindegyik csomópont egymástól függetlenül kiszámítja a betanítási minták és a címkézett kimenetek közötti hibákat. Az egyes csomópontok pedig a hibák alapján frissítik a modelljét, és a többi csomóponton lévő összes módosítást tájékoztatni kell a megfelelő modelljeik frissítéséhez. Ez azt jelenti, hogy a feldolgozó csomópontoknak szinkronizálnia kell a modell paramétereit vagy színátmeneteit a Batch kiszámításának végén, így biztosítva, hogy egységes modellt tanítanak. 
 

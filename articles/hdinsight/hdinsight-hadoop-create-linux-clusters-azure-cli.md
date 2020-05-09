@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/03/2020
-ms.openlocfilehash: b9d935e72c67b78484337e39e0897d4962340636
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5cab7f962a829ab8609325e8bb1b35498568726c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77199041"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994184"
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>HDInsight-fürtök létrehozása az Azure CLI használatával
 
@@ -49,7 +49,7 @@ Azure CLI-vel. Ha még nem telepítette az Azure CLI-t, olvassa el a következő
     |`--workernode-count`| A fürtben lévő munkavégző csomópontok száma. Ez a cikk a változót `clusterSizeInNodes` használja az átadott `--workernode-count`értékként. |
     |`--version`| A HDInsight-fürt verziója. Ez a cikk a változót `clusterVersion` használja az átadott `--version`értékként. Lásd még: [támogatott HDInsight-verziók](./hdinsight-component-versioning.md#supported-hdinsight-versions).|
     |`--type`| A HDInsight-fürt típusa, például: Hadoop, interactivehive, hbase, Kafka, Storm, Spark, Rserver, mlservices.  Ez a cikk a változót `clusterType` használja az átadott `--type`értékként. Lásd még: [fürtök típusai és konfigurálása](./hdinsight-hadoop-provision-linux-clusters.md#cluster-type).|
-    |`--component-version`|A különböző Hadoop-összetevők verziói az "összetevő = verzió" formátumban, szóközzel tagolt verziókban. Ez a cikk a változót `componentVersion` használja az átadott `--component-version`értékként. Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md#apache-hadoop-components-available-with-different-hdinsight-versions).|
+    |`--component-version`|A különböző Hadoop-összetevők verziói az "összetevő = verzió" formátumban, szóközzel tagolt verziókban. Ez a cikk a változót `componentVersion` használja az átadott `--component-version`értékként. Lásd még: [Hadoop-összetevők](./hdinsight-component-versioning.md#apache-components-available-with-different-hdinsight-versions).|
 
     `LOCATION`Cserélje `RESOURCEGROUPNAME`le a `CLUSTERNAME`, `STORAGEACCOUNTNAME`,, `PASSWORD` , és értéket a kívánt értékekre. Szükség szerint módosítsa a többi változó értékét. Ezután írja be a CLI-parancsokat.
 
