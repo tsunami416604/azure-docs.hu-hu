@@ -1,24 +1,24 @@
 ---
-title: A Azure Database for PostgreSQL beépített szabályzat-definícióinak listája
-description: A Azure Database for PostgreSQL Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített modulok közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+title: A Azure Database for PostgreSQL beépített szabályzat-definíciói
+description: A Azure Database for PostgreSQL Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 04/30/2020
 ms.topic: sample
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 7eedae20a03a0c25c4fe6161e491cb443c9883b2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 206403e8ad9f6ad14a11996694a2ec24224cbe70
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966161"
+ms.locfileid: "82983550"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-postgresql"></a>Azure Policy beépített szabályzat-definíciók a Azure Database for PostgreSQL
 
 Ez az oldal a Azure Database for PostgreSQL [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 

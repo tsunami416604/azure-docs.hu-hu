@@ -1,24 +1,24 @@
 ---
-title: A Azure Service Bus üzenetkezeléshez használható beépített szabályzat-definíciók listája
-description: Felsorolja Azure Policy Azure Service Bus üzenetkezeléshez tartozó beépített szabályzat-definíciókat. Ezek a beépített modulok közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+title: Beépített szabályzat-definíciók Azure Service Bus üzenetkezeléshez
+description: Felsorolja Azure Policy Azure Service Bus üzenetkezeléshez tartozó beépített szabályzat-definíciókat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 05/01/2020
 ms.topic: sample
 author: spelluru
 ms.author: spelluru
 ms.service: service-bus-messaging
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 1b8cbf53ffce17a4d331bf97da918589895edfe0
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: bdd24f54f324ec08f22f6c56fac2ce42113d27da
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966420"
+ms.locfileid: "82982666"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-service-bus-messaging"></a>Azure Policy beépített szabályzat-definíciók Azure Service Bus üzenetkezeléshez
 
 Ez az oldal az [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe Azure Service Bus üzenetkezeléshez. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-service-bus-messaging"></a>Üzenetküldés Azure Service Bus
 

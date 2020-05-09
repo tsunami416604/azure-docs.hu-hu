@@ -1,5 +1,5 @@
 ---
-title: Példa tervezői folyamatokra
+title: Példa tervezői folyamatokra & adatkészletek
 titleSuffix: Azure Machine Learning
 description: A Azure Machine Learning Designerben mintákat használhat a gépi tanulási folyamatok elindításához.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: sample
 author: peterclu
 ms.author: peterlu
 ms.date: 03/29/2020
-ms.openlocfilehash: f9a8b0a4c51024d91e517db2f6ae10a4dba62384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60f8f2593ef9c05fa905e9d3d6f6ba0901a14243
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80389341"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983346"
 ---
-# <a name="designer-sample-pipelines"></a>Fejlesztői mintafolyamatok
+# <a name="example-pipelines--datasets-for-azure-machine-learning-designer"></a>Példa folyamatokra & adatkészletek Azure Machine Learning Designer számára
 
 A Azure Machine Learning Designer beépített példái segítségével gyorsan megkezdheti saját gépi tanulási folyamatainak kialakítását. A Azure Machine Learning Designer [GitHub-tárház](https://github.com/Azure/MachineLearningDesigner) részletes dokumentációt tartalmaz, amely megkönnyíti a gyakori gépi tanulási forgatókönyvek megismerését.
 
@@ -25,12 +25,11 @@ A Azure Machine Learning Designer beépített példái segítségével gyorsan m
 * Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Azure Machine Learning munkaterület a vállalati SKU-val.
 
-
-## <a name="how-to-use-sample-pipelines"></a>A mintavételi folyamatok használata
+## <a name="use-sample-pipelines"></a>Mintavételezési folyamatok használata
 
 A tervező elmenti a mintavételi folyamatok egy példányát a Studio-munkaterületre. A folyamat szerkesztésével módosíthatja az igényeinek megfelelően, és mentheti a folyamatot. A projektek kiindulási pontként használhatók.
 
-### <a name="open-a-sample-pipeline"></a>Minta folyamat megnyitása
+A következő módon használhat tervezői mintát:
 
 1. Jelentkezzen be a <a href="https://ml.azure.com?tabs=jre" target="_blank">ml.Azure.com</a>-be, és válassza ki a munkaterületet, amellyel dolgozni szeretne.
 
@@ -40,43 +39,37 @@ A tervező elmenti a mintavételi folyamatok egy példányát a Studio-munkater�
 
     Válassza a **további minták megjelenítése** lehetőséget a minták teljes listájához.
 
-### <a name="submit-a-pipeline-run"></a>Folyamat futtatásának elküldése
+1. A folyamat futtatásához először be kell állítania az alapértelmezett számítási célt a folyamat futtatásához.
 
-A folyamat futtatásához először be kell állítania az alapértelmezett számítási célt a folyamat futtatásához.
+   1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása**lehetőséget.
 
-1. A vászontól jobbra található **Beállítások** ablaktáblán válassza a **számítási cél kiválasztása**lehetőséget.
+   1. A megjelenő párbeszédpanelen válasszon ki egy meglévő számítási célt, vagy hozzon létre újat. Kattintson a **Mentés** gombra.
 
-1. A megjelenő párbeszédpanelen válasszon ki egy meglévő számítási célt, vagy hozzon létre újat. Kattintson a **Mentés** gombra.
+   1. Válassza a **beküldés** lehetőséget a vászon tetején a folyamat futtatásának elküldéséhez.
 
-1. Válassza a **beküldés** lehetőséget a vászon tetején a folyamat futtatásának elküldéséhez.
-
-A mintavételezési folyamattól és a számítási beállításoktól függően a futtatások végrehajtása hosszabb időt is igénybe vehet. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
+   A mintavételezési folyamattól és a számítási beállításoktól függően a futtatások végrehajtása hosszabb időt is igénybe vehet. Az alapértelmezett számítási beállításokhoz a csomópont minimális mérete 0, ami azt jelenti, hogy a tervezőnek üresjárat után le kell foglalnia az erőforrásokat. Az ismétlődő folyamat-futtatások kevesebb időt vesznek igénybe, mivel a számítási erőforrások már le vannak foglalva. Emellett a tervező az egyes modulok gyorsítótárazott eredményeit használja a hatékonyság növelése érdekében.
 
 
-### <a name="review-the-results"></a>Az eredmények áttekintése
+1. A folyamat futásának befejeződése után áttekintheti a folyamatot, és megtekintheti az egyes modulok kimenetét, és további információkat jeleníthet meg. A modulok kimeneteit a következő lépésekkel tekintheti meg:
 
-A folyamat futásának befejeződése után áttekintheti a folyamatot, és megtekintheti az egyes modulok kimenetét, és további információkat jeleníthet meg.
+   1. Válasszon ki egy modult a vásznon.
 
-A modulok kimeneteit a következő lépésekkel tekintheti meg:
+   1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók**lehetőséget. Az egyes modulok eredményeinek megtekintéséhez válassza a Graph ikon ![megjelenítés ikonját](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) . 
 
-1. Válasszon ki egy modult a vásznon.
+   A minták kiindulási pontként használhatók a leggyakoribb gépi tanulási forgatókönyvekhez.
 
-1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók**lehetőséget. Az egyes modulok eredményeinek megtekintéséhez válassza a Graph ikon ![megjelenítés ikonját](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) . 
+## <a name="regression"></a>Regresszió
 
-A minták kiindulási pontként használhatók a leggyakoribb gépi tanulási forgatókönyvekhez.
-
-## <a name="regression-samples"></a>Regressziós minták
-
-További információ a beépített regressziós mintákról.
+Ismerkedjen meg ezekkel a beépített regressziós mintákkal.
 
 | Mintacím | Leírás | 
 | --- | --- |
 | [1. példa: regresszió – autó árának előrejelzése (alapszintű)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-basic.md) | Az autó árának előrejelzése lineáris regresszióval. |
 | [2. minta: regresszió – autó árának előrejelzése (speciális)](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-regression-automobile-price-compare-algorithms.md) | Előre jelezheti az autók árát a döntési erdőben és a döntési fa regresszort. Hasonlítsa össze a modelleket a legjobb algoritmus megkereséséhez.
 
-## <a name="classification-samples"></a>Besorolási minták
+## <a name="classification"></a>Osztályozás
 
-További információ a beépített besorolási mintákról. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
+Ismerkedjen meg ezekkel a beépített besorolási mintákkal. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
 
 | Mintacím | Leírás | 
 | --- | --- |
@@ -86,15 +79,15 @@ További információ a beépített besorolási mintákról. A mintákról a min
 | [7. minta: szöveges besorolás – wikipedia SP 500 adatkészlet](https://github.com/Azure/MachineLearningDesigner/blob/master/articles/samples/how-to-designer-sample-text-classification.md) | Vállalati típusok besorolása a wikipedia-cikkekből többosztályos logisztikai regresszióval. |
 | 12. példa: többosztályos besorolás – levél-felismerés | Hozzon létre a bináris osztályozók együttesét írásos betűk besorolásához. |
 
-## <a name="recommender-samples"></a>Ajánlott minták
+## <a name="recommender"></a>Ajánló
 
-További információ a beépített Ajánlói mintákról. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
+Ismerkedjen meg ezekkel a beépített Ajánlói mintákkal. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
 
 | Mintacím | Leírás | 
 | --- | --- |
 | 10. minta: javaslat – film minősítési tweetek | Hozzon létre egy Movie ajánló motort a film címei és minősítése alapján. |
 
-## <a name="utility-samples"></a>Segédprogram-minták
+## <a name="utility"></a>Segédprogram
 
 További információ a Machine learning segédprogramokat és szolgáltatásokat bemutató mintákról. A mintákról a minták megnyitásával és a modulok megjegyzésének megtekintésével többet is megtudhat.
 
@@ -105,10 +98,33 @@ További információ a Machine learning segédprogramokat és szolgáltatásoka
 | 9. példa: a permutáció funkció fontossága | Az adatkészlethez tartozó számítási fontossági pontszámok kiszámításához használja a permutáció funkció fontosságát. 
 | 11. minta: a bináris besorolás paramétereinek hangolása – felnőtt jövedelem előrejelzése | A Hiperparaméterek beállítása hangolása segítségével optimális hiperparaméterek beállítása találhat a bináris osztályozók létrehozásához. |
 
+## <a name="datasets"></a>Adathalmazok
+
+Amikor új folyamatot hoz létre Azure Machine Learning Designerben, a rendszer alapértelmezés szerint számos minta adatkészletet tartalmaz. Ezeket a minta adatkészleteket a tervező kezdőlapján található mintavételi folyamatok használják. 
+
+A minta adatkészletek az **adatkészletek**-**mintáinak** kategóriájában érhetők el. Ez a modul paletta bal oldalán található a tervezőben. Ezeket az adatkészleteket a saját folyamatában is használhatja, ha a vászonra húzza azt.
+
+| Adatkészlet&nbsp;neve&nbsp;&nbsp;&nbsp;&nbsp;| Adatkészlet leírása |
+|-------------|:--------------------|
+| Felnőtt népszámlálás jövedelme bináris besorolási adatkészlet | Az 1994-es népszámlálási adatbázis egy részhalmaza, amely a 16. korban dolgozó felnőtteket használja > 100 korrigált bevételi indexszel.<br/>**Használat**: a demográfiai adatokat használó személyek besorolása annak előrejelzéséhez, hogy egy személy évente több mint 50 000-et keres.<br/> **Kapcsolódó kutatás**: Kohavi, R., Becker, B., (1996). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science|
+|Az autók árát (nyers)|Információk a márka és a modell alapján, beleértve a díjszabást, az olyan szolgáltatásokat, mint például a hengerek száma és az MPG, valamint a biztosítási kockázati pontszám.<br/> A kockázati pontszám kezdetben az automatikus árral van társítva. Ezt követően a rendszer a tényleges kockázatokat egy, a biztosítási matematikusok ismert folyamat során helyesbíti. A + 3 érték azt jelzi, hogy az automatikus kockázatos, a-3 érték pedig valószínűleg biztonságos.<br/>**Használat**:</b> a funkciók kockázati pontszámának előrejelzése regresszió vagy többváltozós besorolás használatával.<br/>**Kapcsolódó kutatás**:</b> Schlimmer, J.C. (1987). [UCI Machine learning adattár](https://archive.ics.uci.edu/ml). Irvine, CA: University of California, School of Information and Computer Science. |
+| Megosztott CRM szolgáltatóváltást-Címkék |A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_appetency. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_appetency.labels)) címkéi.|
+|Megosztott CRM-adatforgalom-Címkék|A KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívás ([orange_small_train_churn. labels](http://www.sigkdd.org/site/2009/files/orange_small_train_churn.labels)) címkéi.|
+|Megosztott CRM-adatkészlet | Ezek az adatok a KDD Cup 2009 ügyfélkapcsolat-előrejelzési kihívásról ([orange_small_train. adat. zip](http://www.sigkdd.org/site/2009/files/orange_small_train.data.zip)) származnak. <br/>Az adatkészlet 50 000 ügyfelet tartalmaz a francia távközlési cég Orange-től. Minden ügyfél 230-es anonim funkciókkal rendelkezik, amelyek 190 a numerikus és a 40-as számú adat kategorikus. A funkciók nagyon ritkák. |
+|Megosztott CRM-Címkék|A KDD Cup 2009 ügyfélkapcsolat-előrejelzési Challenge ([orange_large_train_upselling. labels)](http://www.sigkdd.org/site/2009/files/orange_large_train_upselling.labels) címkéi|
+|Repülési késések adatvédelme|Az Amerikai Egyesült államokbeli Közlekedési Minisztérium TranStats adatgyűjtési szolgáltatásában[(az időpontnál](https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236&DB_Short_Name=On-Time)) üzemelő személyszállító repülési adatok.<br/>Az adatkészlet a 2013. április-október időszakra terjed ki. A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva: <br/>– Az adatkészlet úgy lett szűrve, hogy csak a 70-es legforgalmasabb repülőtérre vonatkozzon az USA kontinentális területén <br/>– A megszakított járatok több mint 15 perc késéssel lettek megjelölve <br/>– A kiszűrt járatok kiszűrése megtörtént <br/>-A következő oszlopok lettek kiválasztva: év, hónap, DayofMonth, DayOfWeek, Carrier, OriginAirportID, DestAirportID, CRSDepTime, DepDelay, DepDel15, CRSArrTime, ArrDelay, ArrDel15, megszakítva|
+|Német hitelkártya UCI-adatkészlet|Az UCI statlog (német bankkártya) adatkészlete ([statlog + német + kredit + adat](https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data))) a német. adatfájl használatával.<br/>Az adatkészlet az attribútumok egy halmaza által leírtak szerint osztályozza a személyeket, alacsony vagy magas hitelezési kockázatként. Mindegyik példa egy személyt jelöl. A rendszer 20 funkciót használ: számszerű és kategorikus, valamint bináris címkét (a kredit kockázati értékét). A magas kockázatú kreditek címkéje = 2, az alacsony kreditek esetében pedig a Label = 1. Az alacsony kockázatú, például a magas kockázatú példa nem megfelelő besorolásának díja 1, míg a magas kockázatú példa alacsony értékkel való megsértésének díja 5.|
+|IMDB-mozgóképek címei|Az adatkészlet a Twitter tweetekben értékelt filmek információit tartalmazza: IMDB-film azonosítója, film neve, műfaj és termelési év. 17K-filmek vannak az adatkészletben. Az adatkészlet az "S" dokumentumban lett bevezetve. Dooms, T. de Pessemier és L. Martens. MovieTweetings: a Twitteren gyűjtött film minősítési adatkészlet. Workshop a közösségi-on és az emberi számításban az ajánló rendszerekhez, CrowdRec a RecSys 2013-kor. "|
+|Film minősítése|Az adatkészlet a Movie tweetek adatkészlet kiterjesztett verziója. Az adatkészlet 170K-minősítésekkel rendelkezik, amelyek a Twitteren jól strukturált tweetekkel lettek kinyerve. Minden példány egy tweetet jelöl, és egy rekord: felhasználói azonosító, IMDB-film azonosítója, minősítés, időbélyeg, kedvencek száma ehhez a tweethez és a tweetek száma. Az adatkészlet elérhetővé tétele a. Said, S. dooms, B. Loni és D. tikk for ajánló Systems Challenge 2014.|
+|Időjárási adatkészlet|A NOAA-ből származó, óránkénti szárazföld-alapú időjárási megfigyelések ([201304 és 201310 közötti egyesített adatok](https://az754797.vo.msecnd.net/data/WeatherDataset.csv)).<br/>Az időjárási adatok a repülőtéri meteorológiai állomások megfigyeléseit fedik le, amely az 2013. április-október időszakra vonatkozik. A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> – A meteorológiai állomások azonosítói a megfelelő repülőtéri azonosítóra vannak leképezve    <br/> – A 70-es legforgalmasabb repülőtérhez nem társított meteorológiai állomások kiszűrése megtörtént    <br/> -A Date oszlop külön évre, hónapra és napi oszlopokra van bontva    <br/> – A következő oszlopok lettek kiválasztva: AirportID, év, hónap, nap, idő, időzóna, SkyCondition, láthatóság, WeatherType, DryBulbFarenheit, DryBulbCelsius, WetBulbFarenheit, WetBulbCelsius, DewPointFarenheit, DewPointCelsius, RelativeHumidity, szélsebesség, WindDirection, ValueForWindCharacter, StationPressure, PressureTendency, PressureChange, SeaLevelPressure, rekordtípus, HourlyPrecip, magasságmérő|
+|Wikipedia SP 500 adatkészlet|Az adatok a wikipedia-ből származnak (https://www.wikipedia.org/) az egyes S&P 500-es vállalatok cikkei alapján, amelyek XML-adatként vannak tárolva.    <br/>A tervezőbe való feltöltés előtt az adatkészlet a következőképpen lett feldolgozva:    <br/> -Szöveges tartalom kinyerése minden egyes vállalatnál    <br/> – Wiki formázásának eltávolítása    <br/> – Nem alfanumerikus karakterek eltávolítása    <br/> – Az összes szöveg konvertálása kisbetűsre    <br/> – Ismert vállalati kategóriák lettek hozzáadva    <br/>Vegye figyelembe, hogy egyes vállalatok esetében nem található cikk, így a rekordok száma kevesebb, mint 500.|
+
+
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg, hogyan hozhat létre és helyezhet üzembe gépi tanulási modelleket [oktatóanyaggal: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
+A prediktív elemzés és a gépi tanulás alapjai a [bemutatóban: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
+

@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: fc7551c081d14a871c8ee96610ca7190f629901d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 62546fc98429c3a28217b1992f803aa40ce615c8
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790966"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982343"
 ---
 # <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Oktatóanyag: a Azure Toolkit for IntelliJ használata a Spark-készletek Apache Spark-alkalmazásainak létrehozásához (előzetes verzió)
 
@@ -56,7 +56,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 5. Kattintson a **Tovább** gombra.
 6. Az **új projekt** ablakban adja meg a következő információkat:
 
-    | Tulajdonság | Description |
+    | Tulajdonság | Leírás |
     | ----- | ----- |
     |Projektnév| Adjon meg egy nevet. Ebben az oktatóanyagban a következőt használjuk: `myApp`.|
     |Projekt&nbsp;helye| Adja meg a kívánt helyet a projekt mentéséhez.|
@@ -143,7 +143,7 @@ A Scala-alkalmazás létrehozása után távolról futtathatja azt.
     |Fő osztály neve|Az alapértelmezett érték a kijelölt fájl fő osztálya. Az osztályt a három pont (**..**.) gombra kattintva módosíthatja, és egy másik osztályt is választhat.|
     |Feladatok konfigurációi|Módosíthatja az alapértelmezett kulcsot és értékeket. További információ: [Apache Livy REST API](https://livy.incubator.apache.org./docs/latest/rest-api.html).|
     |Parancssori argumentumok|Szükség esetén megadhat argumentumokat szóközzel elválasztva a Main osztály számára.|
-    |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Tallózással is tallózhat az Azure-beli virtuális fájlrendszerben, amely jelenleg csak a ADLS Gen 2 fürtöt támogatja. További információ: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) és [erőforrások feltöltése a fürtbe](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
+    |Hivatkozott tégelyek és hivatkozott fájlok|Megadhatja a hivatkozott tégelyek és fájlok elérési útját, ha van ilyen. Az Azure-beli virtuális fájlrendszerben is böngészheti a fájlokat, amelyek jelenleg csak ADLS Gen2 fürtöt támogatják. További információ: [Apache Spark konfiguráció](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) és [erőforrások feltöltése a fürtbe](../../storage/blobs/storage-quickstart-blobs-storage-explorer.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).|
     |Feladatok feltöltési tárolója|Kibontás a további beállítások megjelenítéséhez.|
     |Tárhelytípusa|Válassza az **Azure Blob használata a feltöltéshez** lehetőséget a legördülő listából.|
     |Tárfiók|Adja meg a Storage-fiókját.|

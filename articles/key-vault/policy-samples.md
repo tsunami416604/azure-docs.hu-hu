@@ -1,24 +1,24 @@
 ---
-title: A Key Vault beépített szabályzat-definícióinak listája
-description: A Key Vault Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített modulok közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+title: A Key Vault beépített szabályzat-definíciói
+description: A Key Vault Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 04/30/2020
 ms.topic: sample
 author: msmbaldwin
 ms.author: mbaldwin
 ms.service: key-vault
 ms.custom: subject-policy-samples
-ms.openlocfilehash: f78f8a28ef0ea37a5d9021dcd6a82c0303161b15
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 7304fe906a13da096f48dfc3fb8aa7ff4a6a5a08
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966448"
+ms.locfileid: "82983108"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-key-vault"></a>Azure Policy beépített szabályzat-definíciók a Key Vault
 
 Ez az oldal a Key Vault [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="key-vault-service"></a>Key Vault (szolgáltatás)
 
