@@ -2,13 +2,13 @@
 title: Sablonok csatolása az üzembe helyezéshez
 description: Azt ismerteti, hogyan használhatók a Azure Resource Manager sablonban található csatolt sablonok a moduláris sablonok megoldásához. Bemutatja, hogyan adhatók át a paraméterek értékei, meghatározhatók egy paraméterérték és dinamikusan létrehozott URL-címek.
 ms.topic: conceptual
-ms.date: 12/11/2019
-ms.openlocfilehash: 322797383ee865ceb66c44793387da827aeb8879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131929"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609306"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Kapcsolt és beágyazott sablonok használata Azure-erőforrások üzembe helyezésekor
 
@@ -35,7 +35,7 @@ Sablon beágyazásához vegyen fel egy [központi telepítési erőforrást](/az
   "resources": [
     {
       "name": "nestedTemplate1",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -64,7 +64,7 @@ A következő példa egy Storage-fiókot helyez üzembe egy beágyazott sablonon
   "resources": [
     {
       "name": "nestedTemplate1",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "type": "Microsoft.Resources/deployments",
       "properties": {
         "mode": "Incremental",
@@ -101,7 +101,7 @@ A hatókört a `expressionEvaluationOptions` tulajdonságon keresztül állítha
 ```json
 {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2017-05-10",
+  "apiVersion": "2019-10-01",
   "name": "nestedTemplate1",
   "properties": {
   "expressionEvaluationOptions": {
@@ -124,7 +124,7 @@ A következő sablon azt mutatja be, Hogyan oldhatók fel a sablon kifejezései 
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "name": "nestedTemplate1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -208,7 +208,7 @@ Az alábbi példa egy SQL Servert telepít, és lekéri a jelszóhoz használand
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "dynamicSecret",
       "properties": {
         "mode": "Incremental",
@@ -292,7 +292,7 @@ Sablon csatolásához vegyen fel egy [központi telepítési erőforrást](/azur
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
+      "apiVersion": "2019-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -326,7 +326,7 @@ A csatolt sablon paramétereit külső fájlban vagy beágyazottan is megadhatja
 "resources": [
   {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2018-05-01",
+  "apiVersion": "2019-10-01",
   "name": "linkedTemplate",
   "properties": {
     "mode": "Incremental",
@@ -349,7 +349,7 @@ A paraméterek értékének megadásához használja a **Parameters** tulajdons�
 "resources": [
   {
    "type": "Microsoft.Resources/deployments",
-   "apiVersion": "2018-05-01",
+   "apiVersion": "2019-10-01",
    "name": "linkedTemplate",
    "properties": {
      "mode": "Incremental",
@@ -367,7 +367,7 @@ A paraméterek értékének megadásához használja a **Parameters** tulajdons�
 
 Nem használhat egyszerre beágyazott paramétereket és egy paraméterre mutató hivatkozást. Az üzemelő példány hibát jelez, ha `parametersLink` mindkettő `parameters` és a meg van adva.
 
-## `contentVersion`
+## <a name="contentversion"></a>contentVersion
 
 Nem kell megadnia a `contentVersion` tulajdonságot a `templateLink` vagy `parametersLink` tulajdonsághoz. Ha nem ad meg a `contentVersion`-t, a rendszer a sablon aktuális verzióját telepíti. Ha értéket ad meg a tartalom verziójához, akkor annak meg kell egyeznie a csatolt sablonban található verzióval. Ellenkező esetben a telepítés hibát jelez.
 
@@ -412,7 +412,7 @@ Az alábbi példa bemutatja, hogyan használható a másolás beágyazott sablon
 "resources": [
   {
   "type": "Microsoft.Resources/deployments",
-  "apiVersion": "2018-05-01",
+  "apiVersion": "2019-10-01",
   "name": "[concat('nestedTemplate', copyIndex())]",
   // yes, copy works here
   "copy":{
@@ -486,7 +486,7 @@ A fő sablon telepíti a csatolt sablont, és lekéri a visszaadott értéket. F
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -593,7 +593,7 @@ Ha az előző sablonból a terheléselosztó telepítésekor a nyilvános IP-cí
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "linkedTemplate",
       "properties": {
         "mode": "Incremental",
@@ -666,7 +666,7 @@ Az alábbi sablon az előző sablonra hivatkozik. Három nyilvános IP-címet ho
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "[concat('linkedTemplate', copyIndex())]",
       "copy": {
         "count": 3,
@@ -733,7 +733,7 @@ Az alábbi példa bemutatja, hogyan lehet átadni egy SAS-tokent egy sablonhoz v
   "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2018-05-01",
+    "apiVersion": "2019-10-01",
     "name": "linkedTemplate",
     "properties": {
     "mode": "Incremental",

@@ -5,12 +5,12 @@ ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
 ms.date: 10/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 2f6dd455024aba184cbb16b5b9c7cfffd032dc70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 143317cd424428d7f480f4880d3aab750853890b
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811725"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82592366"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>A TLS kölcsönös hitelesítés konfigurálása Azure App Servicehoz
 
@@ -24,7 +24,7 @@ A Azure App Service-alkalmazáshoz való hozzáférést a különböző típusú
 
 ## <a name="enable-client-certificates"></a>Ügyféltanúsítványok engedélyezése
 
-Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, be kell állítania az `clientCertEnabled` alkalmazás beállítását a következőre: `true`. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
+Ha az alkalmazást az Ügyféltanúsítványok megköveteléséhez szeretné beállítani, **akkor a bejövő** tanúsítvány megkövetelése lehetőségre kattintva megadhatja az Azure Portal **konfiguráció** > **általános beállítások** elemét, `clientCertEnabled` vagy be kell állítania az `true`alkalmazás beállítását a következőre:. A beállítás megadásához futtassa a következő parancsot a [Cloud Shellban](https://shell.azure.com).
 
 ```azurecli-interactive
 az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
