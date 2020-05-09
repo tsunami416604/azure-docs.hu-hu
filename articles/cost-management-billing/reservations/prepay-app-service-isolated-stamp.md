@@ -5,14 +5,14 @@ author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 21c4b7de0324abd2755644265bec61de5e16724f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: d6d91b455501e2deec4f5ea36e48fafd17144b2c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199415"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628146"
 ---
 # <a name="save-costs-for-azure-app-service-isolated-stamp-fee-with-reserved-capacity"></a>Az Azure App Service-beli izolált bélyegek díjainak csökkentése fenntartott kapacitással
 
@@ -41,7 +41,7 @@ Ha egy vagy több windowsos feldolgozóval rendelkezik a bélyegen, akkor Window
 Izolált bélyeghez az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22AppService%22%7D) vásárolhat fenntartott kapacitást. A foglalásért fizethet [előre vagy havi részletekben](monthly-payments-reservations.md). Fenntartott kapacitás vásárlásához legalább egy nagyvállalati vagy egy használatalapú fizetéses, egyéni előfizetés tulajdonosi szerepkörével kell rendelkeznie.
 
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Illetve ha ez a beállítás le van tiltva, akkor Önnek EA-rendszergazdának kell lennie.
-- A felhőszolgáltatói (CSP-) program esetében csak a felügyeleti ügynökök és az értékesítési ügynökök vásárolhatnak fenntartott SQL Data Warehouse-kapacitást.
+- A felhőszolgáltatói (CSP-) program esetében csak a felügyeleti ügynökök és az értékesítési ügynökök vásárolhatnak fenntartott Azure Synapse Analytics-kapacitást.
 
 **A vásárláshoz:**
 

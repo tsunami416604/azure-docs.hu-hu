@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: fbaca387dd8062f50bb7555c7be6e7f65ce346bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79136f86c647c0453d600fe2601be56571ee6fed
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062472"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625884"
 ---
 # <a name="manage-your-connected-organizations-from-the-organizations-page"></a>A csatlakoztatott szervezetek kezelése a szervezetek lapról
 
@@ -34,7 +34,7 @@ A **saját fiók** portál **szervezetek** lapján kezelheti a munkahelyi vagy i
 
 ## <a name="view-your-organizations"></a>A szervezetek megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a **saját fiók** (https://myprofile.microsoft.com/) oldal) lapot.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd nyissa meg a **saját fiók** (https://myaccount.microsoft.com/) oldal) lapot.
 
 2. A bal oldali navigációs ablaktáblán válassza a **szervezetek** lehetőséget, **vagy a szervezetek blokkban** válassza a **szervezetek kezelése** hivatkozást.
 

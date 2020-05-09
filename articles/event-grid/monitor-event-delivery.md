@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a01ab91fe84aaa1fe55018754eddbf8b8f89643
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: 60c59fdd64297ec99922dcdba4c474d7ae37d27b
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890848"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626854"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Figyelő Event Grid üzenet kézbesítése 
 
@@ -27,21 +27,18 @@ További információ az események kézbesítéséről és újrapróbálkozás�
 
 A portál megjeleníti az események kézbesítésének állapotára vonatkozó metrikákat.
 
-A következő témakörökben talál néhány mérőszámot:
+Témakörök esetén a metrikák a következők:
 
 * **Sikeres közzététel**: az esemény sikeresen elküldött a témakörbe, és 2xx-válaszsal lett feldolgozva.
 * A **Közzététel sikertelen**: az esemény a témakörbe lett küldve, de hibakódtal elutasította.
 * Nem **egyező**: az esemény sikeresen közzé lett téve a témakörben, de nem felel meg az esemény-előfizetésnek. Az esemény el lett dobva.
 
-Az előfizetések esetében Íme néhány mérőszám:
+Az előfizetések esetében a metrikák a következők:
 
 * **Sikeres kézbesítés**: az esemény sikeresen kézbesítve lett az előfizetés végpontjának, és 2xx választ kapott.
 * A **kézbesítés sikertelen volt**: minden alkalommal, amikor a szolgáltatás megpróbál eljuttatni, és az eseménykezelő nem ad vissza sikeres 2xx kódot, a **kézbesítés sikertelen** számlálója megnő. Ha ugyanazt az eseményt többször is megpróbáljuk kézbesíteni, és a művelet meghiúsul, a **sikertelen kézbesítés** számlálója az egyes hibáknál növekszik.
 * **Lejárt események**: az esemény nem lett kézbesítve, és az összes újrapróbálkozási kísérlet elküldése megtörtént. Az esemény el lett dobva.
 * **Egyeztetett események**: az esemény-előfizetés megfelelt a témakörben szereplő eseménynek.
-
-    > [!NOTE]
-    > A metrikák teljes listájáért lásd: [Azure Event Grid által támogatott metrikák](metrics.md).
 
 ## <a name="event-subscription-status"></a>Esemény-előfizetés állapota
 
