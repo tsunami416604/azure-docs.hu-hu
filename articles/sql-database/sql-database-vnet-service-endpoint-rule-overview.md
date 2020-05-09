@@ -11,19 +11,19 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 7032f9e8f57ea9400bf6a92f89b13fa1866f8fc1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e7e1f91cd4b647472e1899c3485d038f25b5b24
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414400"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651799"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-database-servers"></a>Virtuális hálózati szolgáltatási végpontok és az adatbázis-kiszolgálók szabályainak használata
 
-A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázis-kiszolgáló az önálló adatbázisok és a rugalmas készlet számára az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy a [SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) a virtuális hálózatokban lévő adatbázisaihoz tartozó adatátvitelt fogadja-e. Ebből a cikkből megtudhatja, miért érdemes a virtuális hálózati szabály funkciót időnként biztonságos módon engedélyezni a Azure SQL Database és SQL Data Warehouse.
+A *virtuális hálózati szabályok* egy tűzfal biztonsági funkciója, amely azt szabályozza, hogy az adatbázis-kiszolgáló az önálló adatbázisok és a rugalmas készlet számára az Azure-ban [SQL Database](sql-database-technical-overview.md) vagy az [Azure szinapszis Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) -beli adatbázisaiban a virtuális hálózatok adott alhálózatáról továbbított kommunikációt fogadja. Ebből a cikkből megtudhatja, miért érdemes a virtuális hálózati szabály funkciót időnként a Azure SQL Database és az Azure szinapszis Analytics szolgáltatással való kommunikáció biztonságos engedélyezésére.
 
 > [!IMPORTANT]
-> Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database. Ez a cikk *nem* vonatkozik a **felügyelt példányokra** Azure SQL Database, mert nem rendelkezik hozzá társított szolgáltatás-végponttal.
+> Ez a cikk az Azure SQL Serverre, valamint az Azure SQL Serveren létrehozott SQL Database és Azure szinapszis Analytics-adatbázisokra vonatkozik. Az egyszerűség kedvéért a rendszer a SQL Database és az Azure szinapszis Analytics szolgáltatásra hivatkozó SQL Database használatát is használja. Ez a cikk *nem* vonatkozik a **felügyelt példányokra** Azure SQL Database, mert nem rendelkezik hozzá társított szolgáltatás-végponttal.
 
 Virtuális hálózati szabály létrehozásához először egy [virtuális hálózati szolgáltatás végpontjának][vm-virtual-network-service-endpoints-overview-649d] kell lennie ahhoz, hogy a szabály hivatkozzon.
 
@@ -105,11 +105,11 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Az VNet szolgáltatásbeli végpontok használatának következményei az Azure Storage-ban
 
-Az Azure Storage ugyanazt a funkciót implementálta, amely lehetővé teszi az Azure Storage-fiókhoz való csatlakozás korlátozását. Ha úgy dönt, hogy ezt a funkciót az Azure SQL Server által használt Azure Storage-fiókkal használja, akkor a problémákba ütközik. A következő lista a Azure SQL Database és Azure SQL Data Warehouse azon szolgáltatásainak listáját és megvitatását tartalmazza, amelyekre hatással van.
+Az Azure Storage ugyanazt a funkciót implementálta, amely lehetővé teszi az Azure Storage-fiókhoz való csatlakozás korlátozását. Ha úgy dönt, hogy ezt a funkciót az Azure SQL Server által használt Azure Storage-fiókkal használja, akkor a problémákba ütközik. A következő lista a Azure SQL Database és az Azure szinapszis Analytics azon funkcióit sorolja fel és tárgyalja, amelyekre hatással van.
 
-### <a name="azure-sql-data-warehouse-polybase"></a>Azure SQL Data Warehouse alapanyag
+### <a name="azure-synapse-analytics-polybase"></a>Azure szinapszis Analitika – alapszintű
 
-A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseba való betöltésére használatos. Ha az Azure Storage-fiók, amelyből az adatok betöltése csak VNet-alhálózatok számára történik, akkor a rendszer az alapszintű kapcsolaton keresztül kapcsolódik a fiókhoz. Az alábbi lépéseket követve engedélyezheti a többek között a VNet védett Azure Storage-hoz való csatlakozást Azure SQL Data Warehouse a Base importálási és exportálási forgatókönyveit:
+A rendszer általában az Azure-beli Storage-fiókokból származó adatok Azure szinapszis Analyticsbe való betöltésére használatos. Ha az Azure Storage-fiók, amelyből az adatok betöltése csak VNet-alhálózatok számára történik, akkor a rendszer az alapszintű kapcsolaton keresztül kapcsolódik a fiókhoz. Az alábbi lépéseket követve engedélyezheti a VNet által védett Azure-tárolóhoz való csatlakozást az Azure szinapszis Analytics szolgáltatással, amely a-alapú importálási és exportálási forgatókönyveket is lehetővé teszi:
 
 #### <a name="prerequisites"></a>Előfeltételek
 
@@ -122,7 +122,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
 
 #### <a name="steps"></a>Lépések
 
-1. A PowerShellben **regisztrálja Azure-SQL Server** a Azure SQL Data Warehouse-példány üzemeltetése Azure Active Directory (HRE) használatával:
+1. A PowerShellben **regisztrálja** azure-SQL Server az Azure szinapszis Analytics-példány üzemeltetése Azure Active Directory (HRE) használatával:
 
    ```powershell
    Connect-AzAccount
@@ -135,11 +135,11 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
    > [!NOTE]
    > - Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, először a **v2-re kell frissítenie** az [útmutató](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade)segítségével.
    > - Azure Data Lake Storage Gen2 kapcsolatos ismert problémák esetén tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/storage/data-lake-storage/known-issues).
-
-1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, majd kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre. Rendelje hozzá a **Storage blob-adatközreműködői** RBAC szerepkört az Azure-SQL Server a Azure SQL Data Warehouse, amelyet az 1. lépésben regisztrált Azure Active Directory (HRE).
+    
+1. A Storage-fiók területen navigáljon a **Access Control (iam)** elemre, és válassza a **szerepkör-hozzárendelés hozzáadása**elemet. Válassza ki a **Storage blob adatközreműködői** RBAC szerepkört a legördülő listából. A **hozzáférés hozzárendeléséhez** válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**lehetőséget. A **Select (kiválasztás**) mezőbe írja be az azure-SQL Server (az Azure szinapszis Analytics-adattárház logikai kiszolgálója) kiszolgálójának nevét, amelyet az 1. lépésben regisztrált a Azure Active Directory (HRE) néven. Csak a kiszolgáló nevét használja, ne a teljes DNS-nevet (**servername** . database.Windows.net nélkül)
 
    > [!NOTE]
-   > Ezt a lépést csak a tulajdonosi jogosultsággal rendelkező tagok hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
+   > Ezt a lépést csak a Storage-fiók tulajdonosi jogosultsággal rendelkező tagjai hajthatják végre. Az Azure-erőforrások különböző beépített szerepköreiért tekintse meg ezt az [útmutatót](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles).
   
 1. **Alapszintű kapcsolat az Azure Storage-fiókkal:**
 

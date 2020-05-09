@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: curtand
-ms.openlocfilehash: ee868ded0dc3a46f2ec20d0141aa2576cbf71f45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 016a09432499c5fd2be8fd488c7ef7a644c00bca
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062336"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628333"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Biztonsági kulcs beállítása ellenőrzési módszerként
 
@@ -63,7 +63,7 @@ A biztonsági kulcs regisztrálásának megkezdése előtt az alábbiaknak igazn
 
 Létre kell hoznia a biztonsági kulcsot, és egyedi PIN-kódot kell megadnia ahhoz, hogy a kulcs használatával bejelentkezzen a munkahelyi vagy iskolai fiókjába. Előfordulhat, hogy a fiókjában legfeljebb 10 kulcs van regisztrálva. 
 
-1. Lépjen a **saját profil** lapra, https://myprofile.microsoft.com és jelentkezzen be, ha még nem tette meg.
+1. Lépjen a **saját profil** lapra, https://myaccount.microsoft.com és jelentkezzen be, ha még nem tette meg.
 
 2. Válassza a **biztonsági adatok**, majd a **metódus hozzáadása**lehetőséget, majd válassza a **biztonsági kulcs** lehetőséget a **metódus hozzáadása** legördülő listából.
 

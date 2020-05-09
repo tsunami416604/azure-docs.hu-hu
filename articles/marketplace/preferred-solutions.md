@@ -1,19 +1,19 @@
 ---
-title: Az Azure Marketplace és a AppSource előnyben részesített megoldásai
-description: Az előnyben részesített megoldások áttekintése a piactéren és azok kiválasztása
+title: Az Azure Marketplace és a AppSource preferált megoldásai – Microsoft kereskedelmi piactér
+description: Előnyben részesített megoldások a piactéren és azok kiválasztása
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: dsindona
-ms.openlocfilehash: 83ac4a3e69cac8a83e41ad52c9b93a1b61de7ed6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 690ee5ed332c7ed342f786e1a9889746054834fa
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80285078"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872364"
 ---
-# <a name="preferred-solutions-in-azure-marketplace-and-appsource"></a>Előnyben részesített megoldások az Azure Marketplace-en és a AppSource
+# <a name="preferred-solutions-in-microsoft-appsource-and-azure-marketplace"></a>Előnyben részesített megoldások a Microsoft AppSource és az Azure Marketplace-en
 
 A Microsoft által előnyben részesített megoldás egy olyan felhőalapú alkalmazás, amely a minőség, a teljesítmény és az ügyfelek igényei szerint van kiválasztva egy adott iparági vertikális vagy megoldási területen. A Microsoft Experts csapata a konkrét bevált kompetenciákkal és képességekkel rendelkező partnerek megoldásait ellenőrzi. Ezek a megoldások a Felhőbeli piactéren, az Azure Marketplace-en és a AppSource, valamint a Azure Portalban is elérhetők. Az iparági vertikális felderíti az AppSource preferált megoldásait. Az Azure Marketplace-en előnyben részesített megoldások és a Azure Portal a horizontális megoldási kategóriákban is felderíthető.
