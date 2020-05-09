@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: acc8ceaa96f6fddafdbf4aa74ab9e43a1a60714a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 68453341defd2d359e69e0ecf8a821464fead0d3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195672"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744065"
 ---
 # <a name="azure-security-baseline-for-backup"></a>Azure biztonsági alapkonfiguráció biztonsági mentéshez
 
@@ -460,7 +460,7 @@ A Microsoft kezeli a Azure Backup alapjául szolgáló infrastruktúrát, és sz
 
 **Útmutató**: a kiszolgálók és a Recovery Services tároló közötti adatforgalom biztonságos HTTPS-kapcsolaton keresztül történik, és a tárolóban tárolt Advanced Encryption Standard (AES) 256 használatával titkosítva lesz.
 
-- [A inaktív adatok titkosításának megismerése Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [A inaktív adatok titkosításának megismerése Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -508,7 +508,7 @@ A Azure Backup három beépített szerepkört biztosít a biztonságimásolat-ke
 
 Ha a MARS-ügynökkel készít biztonsági mentést, vagy egy ügyfél által felügyelt kulccsal titkosított Recovery Services-tárolót használ, csak a titkosítási kulcshoz férhet hozzá. A Microsoft soha nem tart fenn másolatot, és nem fér hozzá a kulcshoz. Ha a kulcs rossz helyre került, a Microsoft nem tudja helyreállítani a biztonsági mentési adatokat.
 
-- [A inaktív adatok titkosításának megismerése Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption)
+- [A inaktív adatok titkosításának megismerése Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption)
 
 **Azure Security Center figyelés**: nem alkalmazható
 
@@ -902,7 +902,7 @@ A Storage-fiókokba feltöltött kártevők észleléséhez használja a Azure S
 
 - [Key Vault-kulcsok biztonsági mentése az Azure-ban](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey)
 
-- [A titkosítás megismerése Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#encryption-of-backup-data-using-customer-managed-keys)
+- [A titkosítás megismerése Azure Backup](https://docs.microsoft.com/azure/backup/backup-encryption#encryption-of-backup-data-using-customer-managed-keys)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

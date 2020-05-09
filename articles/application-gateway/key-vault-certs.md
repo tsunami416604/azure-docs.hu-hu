@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/25/2019
 ms.author: victorh
-ms.openlocfilehash: 934cf854b0c526ed994c7dc91763f65de64fd14b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 780f2774cb37e3d6d43ed5137c29119c0f63fd0a
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617507"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82743693"
 ---
 # <a name="tls-termination-with-key-vault-certificates"></a>TLS-lezárás Key Vault tanúsítványokkal
 
@@ -50,7 +50,21 @@ Application Gateway integrációja Key Vault megköveteli a három lépésből �
    Ezután importáljon egy meglévő tanúsítványt, vagy hozzon létre egy újat a kulcstartóban. A tanúsítványt az Application gatewayen keresztül futó alkalmazások fogják használni. Ebben a lépésben egy Key Vault-titkos kulcsot is használhat, amely jelszó nélküli, Base-64 kódolású PFX-fájlként van tárolva. Azt javasoljuk, hogy a Key vaultban a tanúsítvány típusú objektumokhoz elérhető automatikus megújítási képesség miatt a tanúsítvány típusát is használja. Miután létrehozott egy tanúsítványt vagy titkos kulcsot, a kulcstartóban definiált hozzáférési szabályzatok segítségével engedélyezheti, hogy az *identitás hozzáférjen a* titkos kulcshoz.
    
    > [!NOTE]
-   > Ha az Application Gateway-t az Azure CLI vagy a PowerShell használatával, vagy a Azure Portal központilag telepített Azure-alkalmazáson keresztül telepíti, akkor a Key vaultban a Base-64 kódolású PFX-fájlként tárolt SSL-tanúsítványnak jelszó nélkülinek kell **lennie**. Azt is végre kell hajtania a [használat Azure Key Vault a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)átadásához a telepítés során. Különösen fontos, hogy a `enabledForTemplateDeployment` `true`következőre legyen beállítva:.
+   > Ha az Application Gateway-t az Azure CLI vagy a PowerShell használatával, vagy a Azure Portal központilag telepített Azure-alkalmazáson keresztül telepíti, akkor az SSL-tanúsítványt Base64 kódolású PFX-fájlként tárolja a Key vaultban. Az üzembe helyezés során végre kell hajtania a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)megadásához című témakör lépéseit. 
+   >
+   > Különösen fontos, hogy a `enabledForTemplateDeployment` `true`következőre legyen beállítva:. Lehet, hogy a tanúsítvány jelszavas vagy jelszóval van elvégezve. Jelszóval rendelkező tanúsítvány esetén a következő példa egy alkalmazás-átjáróhoz tartozó ARM- `sslCertificates` `properties` sablon konfigurációjának lehetséges konfigurációját jeleníti meg. A `appGatewaySSLCertificateData` és `appGatewaySSLCertificatePassword` a értékeit a Key vaultban tekintjük át a következő szakaszban leírtak szerint: [Reference Secrets with Dynamic ID](../azure-resource-manager/templates/key-vault-parameter.md#reference-secrets-with-dynamic-id). Kövesse a visszafelé lévő `parameters('secretName')` hivatkozásokat, hogy megtudja, hogyan történik a keresés. Ha a tanúsítvány jelszavas, hagyja ki a `password` bejegyzést.
+   >   
+   > ```
+   > "sslCertificates": [
+   >     {
+   >         "name": "appGwSslCertificate",
+   >         "properties": {
+   >             "data": "[parameters('appGatewaySSLCertificateData')]",
+   >             "password": "[parameters('appGatewaySSLCertificatePassword')]"
+   >         }
+   >     }
+   > ]
+   > ```
 
 1. **Az Application Gateway konfigurálása**
 

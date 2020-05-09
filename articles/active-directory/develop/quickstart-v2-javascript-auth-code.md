@@ -13,12 +13,12 @@ ms.date: 04/22/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
 ROBOTS: NOINDEX
-ms.openlocfilehash: d362db3a51848603c78d663c5b628192ff028d02
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9663c11508b0478a67f528cb301d705a3125e4f6
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82209531"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871521"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Gyors útmutató: bejelentkezés a felhasználókba és hozzáférési token beszerzése egy JavaScript SPA-ban az Auth Code flow használatával 
 
@@ -112,7 +112,7 @@ Ebben a rövid útmutatóban megtudhatja, hogyan jelentkezhet be a JavaScript eg
 
 > [!div renderon="portal" class="sxs-lookup"]
 > > [!NOTE]
-> > `Enter_the_Supported_Account_Info_Here`
+> > :::no-loc text="Enter_the_Supported_Account_Info_Here":::
 
 > [!div renderon="docs"]
 >
@@ -178,7 +178,8 @@ Futtassa a projektet egy webkiszolgálóval a [Node. js](https://nodejs.org/en/d
 A MSAL. js függvénytár aláírja a felhasználókat, és a Microsoft Identity platform által védett API eléréséhez használt jogkivonatokat kéri. A minta *index. html* fájlja a könyvtárra mutató hivatkozást tartalmaz:
 
 ```html
-<script type="text/javascript" src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js" integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://alcdn.msauth.net/browser/2.0.0-beta.0/js/msal-browser.js" integrity=
+"sha384-r7Qxfs6PYHyfoBR6zG62DGzptfLBxnREThAlcJyEfzJ4dq5rqExc1Xj3TPFE/9TH" crossorigin="anonymous"></script>
 ```
 > [!TIP]
 > Az előző verziót lecserélheti a legújabb, a [MSAL. js kiadásban](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)megjelent verzióra.
@@ -186,7 +187,7 @@ A MSAL. js függvénytár aláírja a felhasználókat, és a Microsoft Identity
 Ha a Node. js telepítve van, a legújabb verziót a Node. js csomagkezelő (NPM) használatával töltheti le:
 
 ```batch
-npm install msal
+npm install @azure/msal-browser
 ```
 
 ## <a name="next-steps"></a>További lépések

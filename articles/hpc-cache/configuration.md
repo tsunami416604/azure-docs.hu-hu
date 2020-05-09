@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhat további beállítá
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: 7938fcc0819fc3e5e0762cc8c3c2931594ed1c68
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195060"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871418"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>További Azure HPC-gyorsítótár beállításainak konfigurálása
 
@@ -42,13 +42,15 @@ További információ az Azure Virtual Networks MTU-beállításairól: [TCP/IP 
 ## <a name="configure-root-squash"></a>A root squash konfigurálása
 <!-- linked from troubleshoot -->
 
-A **root squash engedélyezése** beállítás azt szabályozza, hogy az Azure HPC-gyorsítótár hogyan teszi lehetővé a gyökér elérését. A root squash segít megelőzni a jogosulatlan ügyfelek gyökérszintű hozzáférését.
+A **root squash engedélyezése** beállítás azt szabályozza, hogy az Azure HPC-gyorsítótár hogyan kezeli az ügyfélszámítógépeken a legfelső szintű felhasználótól érkező kéréseket.
 
-Ezzel a beállítással a felhasználók a gyorsítótár szintjén vezérelhetik a rendszergazdai hozzáférést, ami segíthet ellensúlyozni a ``no_root_squash`` tárolási célokként használt NAS-rendszerek szükséges beállítását. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prereqs.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
+Ha a root squash engedélyezve van, a rendszer automatikusan leképezi a felhasználókat az ügyfélről, amikor az Azure HPC cache-n keresztül küldenek kéréseket. Azt is megakadályozza, hogy az ügyfelek kérései a set-UID engedélyezési biteket használják.
+
+Ha a root squash le van tiltva, a rendszer az ügyfél gyökérszintű felhasználójának (UID 0) kérelmét átadja egy háttérként szolgáló NFS Storage rendszernek. Ez a konfiguráció a nem megfelelő fájlok elérését is lehetővé teheti.
+
+A gyorsítótárban lévő legfelső szintű squash beállításával kompenzálhatja a ``no_root_squash`` szükséges beállítást a tárolási CÉLKÉNT használt NAS-rendszereken. (További információ az [NFS-tárolási cél előfeltételeiről](hpc-cache-prereqs.md#nfs-storage-requirements).) Emellett az Azure Blob Storage-célokkal való használatkor is javíthatja a biztonságot.
 
 Az alapértelmezett beállítás az **Igen**. (A 2020 áprilisa előtt létrehozott gyorsítótárak esetében az alapértelmezett beállítás **nem**.)
-
-Ha engedélyezve van, ez a funkció megakadályozza a set-UID engedély bitek használatát is a gyorsítótárban az ügyfelek kéréseiben.
 
 ## <a name="view-snapshots-for-blob-storage-targets"></a>BLOB Storage-célokhoz tartozó Pillanatképek megtekintése
 
