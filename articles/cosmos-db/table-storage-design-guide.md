@@ -8,12 +8,12 @@ ms.date: 05/21/2019
 author: sakash279
 ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fcae1ed9064d38457ede73c675afb75ce4872fe6
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246473"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611780"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage tábla tervezési útmutatója: skálázható és elvégezhető táblák
 
@@ -208,7 +208,7 @@ Az alábbi példák azt feltételezik, hogy a Table Storage az alábbi struktúr
 * A második legjobb a *tartomány lekérdezése*. A és a `PartitionKey`(z) és a szűrők `RowKey` használatával több entitást ad vissza. Az `PartitionKey` érték azonosítja az adott partíciót, és az `RowKey` értékek a partícióban található entitások egy részhalmazát azonosítják. Például: `$filter=PartitionKey eq 'Sales' and RowKey ge 'S' and RowKey lt 'T'`.  
 * A harmadik legjobb a *partíciós vizsgálat*. A és a `PartitionKey`szűrőket használja egy másik nem kulcsfontosságú tulajdonsághoz, és több entitást is visszaadhat. Az `PartitionKey` érték azonosítja az adott partíciót, és a tulajdonságértékek a partícióban lévő entitások egy részhalmaza számára kiválasztva. Például: `$filter=PartitionKey eq 'Sales' and LastName eq 'Smith'`.  
 * A *tábla vizsgálata* nem tartalmazza a `PartitionKey`(z), és nem hatékony, mert megkeresi az összes olyan partíciót, amelyik felkészíti a táblázatot a megfelelő entitásokra. Egy táblázatos vizsgálatot végez, függetlenül attól, hogy a szűrő a `RowKey`-t használja-e. Például: `$filter=LastName eq 'Jones'`.  
-* Az Azure Table Storage- `PartitionKey` lekérdezések, amelyek több entitást adnak `RowKey` vissza, és sorrendbe rendezik azokat. Ha nem szeretné, hogy az entitások ne legyenek az `RowKey` ügyfélben, válassza a leggyakoribb rendezési sorrendet definiáló elemet. A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)című részben tekintheti meg.
+* Az Azure Table Storage- `PartitionKey` lekérdezések, amelyek több entitást adnak `RowKey` vissza, és sorrendbe rendezik azokat. Ha nem szeretné, hogy az entitások ne legyenek az `RowKey` ügyfélben, válassza a leggyakoribb rendezési sorrendet definiáló elemet. A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](table-api-faq.md#table-api-vs-table-storage)című részben tekintheti meg.
 
 A "**vagy**" használatával egy szűrő megadásával határozhatja meg az `RowKey` értékek alapján egy partíció vizsgálatát, és nem kezelhető tartomány-lekérdezésként. Ezért Kerülje a szűrőket használó lekérdezéseket, például `$filter=PartitionKey eq 'Sales' and (RowKey eq '121' or RowKey eq '322')`a következőt:.  
 
@@ -250,7 +250,7 @@ Számos tervnek meg kell felelnie az entitások több feltételen alapuló keres
 A Table Storage a lekérdezés eredményeit növekvő sorrendbe rendezi, a és `PartitionKey` a alapján `RowKey`.
 
 > [!NOTE]
-> A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)című részben tekintheti meg.
+> A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table storage Table API közötti különbségek](table-api-faq.md#table-api-vs-table-storage)című részben tekintheti meg.
 
 A Table Storage-ban található kulcsok karakterlánc-értékek. Annak érdekében, hogy a numerikus értékek megfelelően rendezve legyenek, konvertálja őket rögzített hosszba, és a nulla értékkel kell ellátni őket. Ha például az alkalmazott azonosító érték egész érték, akkor a `RowKey` **123** -as alkalmazott azonosító értékét a **00000123**-re kell konvertálnia. 
 
@@ -733,7 +733,7 @@ Az alábbi minták és útmutatók szintén hasznosak lehetnek a minta megvalós
 A partícióhoz legutóbb hozzáadott *n* entitások beolvasása egy `RowKey` olyan értékkel, amely fordított dátum és idő sorrendbe rendezi a sort.  
 
 > [!NOTE]
-> A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. Így, míg ez a minta alkalmas a Table Storage-hoz, nem alkalmas Azure Cosmos DBra. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table Storage Table API közötti különbségek](faq.md#where-is-table-api-not-identical-with-azure-table-storage-behavior)című részben tekintheti meg.
+> A Azure Cosmos DB Azure Table API által visszaadott lekérdezési eredmények nem a partíciós kulcs vagy a sor kulcsa szerint vannak rendezve. Így, míg ez a minta alkalmas a Table Storage-hoz, nem alkalmas Azure Cosmos DBra. A szolgáltatások közötti különbségek részletes listáját a [Azure Cosmos db és az Azure Table Storage Table API közötti különbségek](table-api-faq.md#table-api-vs-table-storage)című részben tekintheti meg.
 
 #### <a name="context-and-problem"></a>Kontextus és probléma
 Gyakori követelmény, hogy a legutóbb létrehozott entitásokat, például az alkalmazott által küldött tíz legutóbbi költséget kéri le. A tábla lekérdezései `$top` támogatják a lekérdezési műveletet, hogy a rendszer az első *n* entitást adja vissza egy készletből. Nincs egyenértékű lekérdezési művelet, amely egy készlet utolsó *n* entitását adja vissza.  

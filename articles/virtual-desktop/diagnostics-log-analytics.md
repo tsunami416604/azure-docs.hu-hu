@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99a9e68a2e0c39364cc5105f230b00ffb90d867d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: MT
+ms.openlocfilehash: e76b100607c0ac39c1b05e44ac0d1e76a6129384
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888798"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612673"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -25,19 +25,31 @@ ms.locfileid: "82888798"
 
 A Windows rendszerű virtuális asztali szolgáltatások számos más Azure-szolgáltatáshoz hasonló figyelési és riasztási [Azure monitor](../azure-monitor/overview.md) használnak. Ez lehetővé teszi, hogy a rendszergazdák egyetlen felületen azonosítsák a problémákat. A szolgáltatás felhasználói és rendszergazdai műveletekhez is létrehozza a tevékenység naplóit. Minden tevékenység naplója a következő kategóriákba tartozik:  
 
-- Felügyeleti tevékenységek:
-    - A Windows rendszerű virtuális asztali objektumok API-kkal vagy PowerShell-lel való módosítására irányuló kísérletek sikerességének nyomon követése. Lehet például, hogy valaki sikeresen létrehoz egy gazdagépet a PowerShell használatával?
+- Felügyeleti tevékenységek:  
+
+   - A Windows rendszerű virtuális asztali objektumok API-kkal vagy PowerShell-lel való módosítására irányuló kísérletek sikerességének nyomon követése. Lehet például, hogy valaki sikeresen létrehoz egy gazdagépet a PowerShell használatával?
+
 - Hírcsatorna 
-    - A felhasználók sikeresen előfizethetnek munkaterületekre? 
-    - A felhasználók látják az Távoli asztal-ügyfélen közzétett összes erőforrást?
+
+   - A felhasználók sikeresen előfizethetnek munkaterületekre? 
+
+   - A felhasználók látják az Távoli asztal-ügyfélen közzétett összes erőforrást?
+
 - Kapcsolatok: 
-    - Amikor a felhasználók kezdeményezik és befejezik a kapcsolatot a szolgáltatással. 
+
+   - Amikor a felhasználók kezdeményezik és befejezik a kapcsolatot a szolgáltatással. 
+
 - Gazdagép regisztrálása: 
-    - Sikerült regisztrálni a munkamenet-állomást a szolgáltatásban a csatlakozáskor?
+
+   - Sikerült regisztrálni a munkamenet-állomást a szolgáltatásban a csatlakozáskor?
+
 - Hibák 
-    - A felhasználók az adott tevékenységekkel kapcsolatos problémákat tapasztalnak? Ez a funkció létrehozhat egy táblázatot, amely nyomon követi a tevékenység adatait mindaddig, amíg az információ csatlakoztatva van a tevékenységekhez.
+
+   - A felhasználók az adott tevékenységekkel kapcsolatos problémákat tapasztalnak? Ez a funkció létrehozhat egy táblázatot, amely nyomon követi a tevékenység adatait mindaddig, amíg az információ csatlakoztatva van a tevékenységekhez.
+
 - Ellenőrzőpontok  
-    - Egy elért tevékenység élettartamának meghatározott lépései. Egy munkamenet során például egy felhasználó terheléselosztásra került egy adott gazdagépre, majd a felhasználó egy kapcsolat során jelentkezett be, és így tovább.
+
+   - Egy elért tevékenység élettartamának meghatározott lépései. Egy munkamenet során például egy felhasználó terheléselosztásra került egy adott gazdagépre, majd a felhasználó egy kapcsolat során jelentkezett be, és így tovább.
 
 Azok a kapcsolatok, amelyek nem érik el a Windows virtuális asztalt, nem jelennek meg a diagnosztikai eredményekben, mert maga a diagnosztikai szerepkör-szolgáltatás a Windows virtuális asztal része. A Windows rendszerű virtuális asztali kapcsolattal kapcsolatos problémák akkor fordulnak elő, ha a felhasználó hálózati kapcsolati problémákba ütközik.
 
@@ -134,7 +146,7 @@ A következő példák azt mutatják be, hogy a diagnosztikai szolgáltatás hog
 
 A felhasználók által készített kapcsolatok listájának lekéréséhez futtassa a következő parancsmagot:
 
-```kusto
+```powershell
 WVDConnections 
 | project-away TenantId,SourceSystem 
 | summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId 
@@ -157,29 +169,45 @@ WVDConnections
 
 A felhasználók hírcsatorna-tevékenységének megtekintése:
 
-```kusto
+```powershell
 WVDFeeds  
+
 | project-away TenantId,SourceSystem  
+
 | join kind=leftouter (  
+
     WVDErrors  
+
     |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId  
+
     ) on CorrelationId      
+
 | join kind=leftouter (  
+
    WVDCheckpoints  
+
    | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId  
+
    | mv-apply Checkpoints on  
+
     (  
+
         order by todatetime(Checkpoints['Time']) asc  
+
         | summarize Checkpoints=makelist(Checkpoints)  
+
     )  
+
    ) on CorrelationId  
+
 | project-away CorrelationId1, CorrelationId2  
+
 | order by  TimeGenerated desc 
 ```
 
 Egyetlen felhasználóhoz tartozó összes kapcsolat megkeresése: 
 
-```kusto
+```powershell
 |where UserName == "userupn" 
 |take 100 
 |sort by TimeGenerated asc, CorrelationId 
@@ -188,7 +216,7 @@ Egyetlen felhasználóhoz tartozó összes kapcsolat megkeresése:
 
 A naponta csatlakoztatott felhasználók számának megállapítása:
 
-```kusto
+```powershell
 WVDConnections 
 |where UserName == "userupn" 
 |take 100 
@@ -199,7 +227,7 @@ WVDConnections
 
 Munkamenet időtartamának megkeresése felhasználónként:
 
-```kusto
+```powershell
 let Events = WVDConnections | where UserName == "userupn" ; 
 Events 
 | where State == "Connected" 
@@ -214,15 +242,15 @@ on CorrelationId
 
 Adott felhasználó hibáinak megkeresése:
 
-```kusto
+```powershell
 WVDErrors
-| where UserName == "userupn" 
+| where UserName == "johndoe@contoso.com" 
 |take 100
 ```
 
 Annak megállapítása, hogy egy adott hiba történt-e:
 
-```kusto
+```powershell
 WVDErrors 
 | where CodeSymbolic =="ErrorSymbolicCode" 
 | summarize count(UserName) by CodeSymbolic 
@@ -230,7 +258,7 @@ WVDErrors
 
 Egy hiba előfordulásának megkeresése az összes felhasználónál:
 
-```kusto
+```powershell
 WVDErrors 
 | where ServiceError =="false" 
 | summarize usercount = count(UserName) by CodeSymbolic 

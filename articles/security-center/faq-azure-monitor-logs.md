@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: f6384c1e9e14e38b4c44c5ac79a674839b43b4ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe306cf7d17f0789c5e134c3fcad3f8f07a0b80
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80436167"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612826"
 ---
 # <a name="faq-for-customers-already-using-azure-monitor-logs"></a>Gyakori kérdések a Azure Monitor naplókat használó ügyfelek számára<a name="existingloganalyticscust"></a>
 
@@ -42,7 +42,7 @@ Ha Security Center azt észleli, hogy egy virtuális gép már csatlakoztatva va
 ## <a name="i-already-have-workspaces-in-my-environment-can-i-use-them-to-collect-security-data"></a>Már van munkaterületem a saját környezetben, használhatom a biztonsági adatok gyűjtésére?
 Ha egy virtuális gépen már telepítve van a Log Analytics ügynök Azure-bővítményként, Security Center a meglévő csatlakoztatott munkaterületet használja. A munkaterületre egy Security Center megoldás van telepítve, ha még nincs jelen, és a megoldás csak a megfelelő virtuális gépekre vonatkozik, a [megoldás célcsoportján](../operations-management-suite/operations-management-suite-solution-targeting.md)keresztül.
 
-Amikor Security Center telepíti a Log Analytics-ügynököt a virtuális gépekre, a Security Center által létrehozott alapértelmezett munkaterületet (ka) t használja.
+Ha Security Center telepíti a Log Analytics-ügynököt a virtuális gépekre, akkor a Security Center által létrehozott alapértelmezett munkaterületet (ka) t használja, ha Security Center nem egy meglévő munkaterületre mutat.
 
 ## <a name="i-already-have-security-solution-on-my-workspaces-what-are-the-billing-implications"></a>Már van biztonsági megoldásom a saját munkaterületeken. Mik a számlázási következményei?
 A biztonsági & auditálási megoldással engedélyezhető az Azure-beli virtuális gépek Security Center standard szintű szolgáltatásainak használata. Ha a biztonsági & auditálási megoldás már telepítve van egy munkaterületen, Security Center a meglévő megoldást használja. A számlázás nem változik.

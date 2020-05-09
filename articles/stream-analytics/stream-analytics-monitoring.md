@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4e9f90035816269d2d41781be34d0d8080628b12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54bff88e9650240a3703e18d583f603cafeb3022
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431649"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611891"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>A Stream Analytics feladatok figyelésének és a lekérdezések figyelésének ismertetése
 
@@ -37,7 +37,7 @@ Ekkor megjelenik az ablak:
 | Függvények kérései      | A Azure Machine Learning függvényhez tartozó hívások száma (ha van). |
 | Bemeneti deszerializálási hibák       | A nem deszerializálható bemeneti események száma.  |
 | Bemeneti esemény bájtjai      | A Stream Analyticsi feladattól fogadott adatok mennyisége bájtban kifejezve. Ezzel ellenőrizheti, hogy a rendszer elküldje-e az eseményeket a bemeneti forrásnak. |
-| Bemeneti események           | A bemeneti eseményekből deszerializált rekordok száma. Ez a szám nem tartalmazza a deszerializálási hibákat eredményező bejövő eseményeket. |
+| Bemeneti események           | A bemeneti eseményekből deszerializált rekordok száma. Ez a szám nem tartalmazza a deszerializálási hibákat eredményező bejövő eseményeket. Ugyanazokat az eseményeket a Stream Analytics többször is betöltheti olyan helyzetekben, mint például a belső helyreállítások és a saját illesztések. Ezért javasoljuk, hogy a bemeneti és a kimeneti események mérőszámait ne várja meg, ha a feladathoz egyszerű "pass through" lekérdezés tartozik. |
 | Fogadott bemeneti források       | A feladatokban fogadott üzenetek száma. Az Event hub esetében az üzenet egyetlen EventData. A blob esetében az üzenet egyetlen blob. Vegye figyelembe, hogy a bemeneti források a deszerializálás előtt számítanak. Deszerializálási hibák esetén a bemeneti források nagyobbak lehetnek a bemeneti eseményeknél. Ellenkező esetben előfordulhat, hogy a bemeneti események kisebbek vagy egyenlőek, mivel az egyes üzenetek több eseményt is tartalmazhatnak. |
 | Késői bemeneti események      | A beállított késői beérkezési tolerancia időszaka után megjelenő események. További információ az [Azure stream Analytics az események rendezésével kapcsolatos megfontolásokról](stream-analytics-out-of-order-and-late-events.md) . |
 | Megrendelésen kívüli események    | Azon események száma, amelyek eldobása vagy kiigazított időbélyege miatt a rendszer eldobott egy megadott időbélyegzőt, és az esemény rendezési házirendje alapján történt. Ezt befolyásolhatja a nem sorrendben beállított tűréshatárok ablakának konfigurációja. |

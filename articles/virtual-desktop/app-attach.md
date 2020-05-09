@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/14/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 20a82cbd7de4b5678648bac19ab9b59bf557b0ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128316"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612469"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
 > [!IMPORTANT]
 > A MSIX-alkalmazás csatolása jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások csatlakoztatását egy Windows rendszerű virtuális asztali környezetben.
 
@@ -28,7 +28,7 @@ Ebből a témakörből megtudhatja, hogyan állíthatja be a MSIX-alkalmazások 
 Mielőtt elkezdené, a következő lépésekkel kell konfigurálnia a MSIX-alkalmazás csatolását:
 
 - Hozzáférés a Windows Insider portálhoz a Windows 10 azon verziójának beszerzéséhez, amely támogatja a MSIX app Attach API-kat.
-- Működő Windowsos virtuális asztali telepítés. További információ: [bérlő létrehozása a Windows rendszerű virtuális asztalban](tenant-setup-azure-active-directory.md).
+- Működő Windowsos virtuális asztali telepítés. További információ: [bérlő létrehozása a Windows rendszerű virtuális asztalban](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
 - A MSIX-csomagoló eszköz
 - Hálózati megosztás a Windows rendszerű virtuális asztali környezetben, ahol a MSIX-csomag tárolva lesz
 

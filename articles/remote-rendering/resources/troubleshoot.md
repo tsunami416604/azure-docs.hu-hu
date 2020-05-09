@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b86af2ff8fad3793fc47cec9399fd499c1cabba7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681861"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792615"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -98,6 +98,10 @@ Ha ez a két lépés nem segített, meg kell állapítani, hogy az ügyfél foga
 
 ### <a name="common-client-side-issues"></a>Gyakori ügyféloldali problémák
 
+**A modell meghaladja a kiválasztott virtuális gép korlátait, pontosabban a sokszögek maximális számát:**
+
+Lásd a virtuálisgép- [méretek bizonyos korlátozásait](../reference/limits.md#overall-number-of-polygons).
+
 **A modell nem a nézet csonkakúpot belül található:**
 
 Sok esetben a modell helyesen jelenik meg, de a kamera csonkakúpot kívül található. Ennek gyakori oka az, hogy a modellt egy távoli középpontú kimutatással exportálták, így azt a kamera távoli nyírási síkja vágja le. Segít lekérdezni a modell határoló mezőjét programozott módon, és megjelenítheti a négyzetet az egységgel, vagy kinyomtathatja az értékeket a hibakeresési naplóba.
@@ -139,8 +143,20 @@ Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, h
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>A távoli renderelési API-t használó Unity kód nem fordítható le
 
+### <a name="use-debug-when-compiling-for-unity-editor"></a>Az Unity Editor fordításakor használja a hibakeresést
+
 Állítsa át az Unity megoldás *Build típusát* a **hibakereséshez**. A Unity Editorban az ARR tesztelésekor a `UNITY_EDITOR` define parancs csak a "debug" buildek esetében érhető el. Vegye figyelembe, hogy ez nem kapcsolódik a [központilag telepített alkalmazásokhoz](../quickstarts/deploy-to-hololens.md)használt Build típushoz, ahol a "Release" buildeket érdemes előnyben részesíteni.
 
+### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Hibák fordítása a 2. HoloLens Unity-minták fordításakor
+
+Hamis hibák történtek, amikor az egységbeli mintákat (gyors üzembe helyezési útmutató, ShowCaseApp,..) próbálta lefordítani a 2. HoloLens. A Visual Studio arra panaszkodik, hogy nem tud fájlokat másolni, noha ott vannak. Ha a probléma a következő:
+* Távolítsa el az összes ideiglenes Unity-fájlt a projektből, és próbálkozzon újra.
+* Győződjön meg arról, hogy a projektek a lemez egy olyan könyvtárában találhatók, amely ésszerűen rövid elérési úttal rendelkezik, mert a másolási lépés néha úgy tűnik, hogy hosszú fájlnevekkel problémákba ütköznek.
+* Ha ez nem segít, előfordulhat, hogy az MS Sense ütközik a másolási lépéssel. Kivétel beállításához futtassa ezt a beállításjegyzék-parancsot a parancssorból (rendszergazdai jogosultságok szükségesek):
+    ```cmd
+    reg.exe ADD "HKLM\SOFTWARE\Policies\Microsoft\Windows Advanced Threat Protection" /v groupIds /t REG_SZ /d "Unity”
+    ```
+    
 ## <a name="unstable-holograms"></a>Instabil Hologramok
 
 Ha úgy tűnik, hogy a megjelenített objektumok a fej mozgásával együtt mozognak, előfordulhat, hogy a *késői fázis-újravetítéssel* (LSR) kapcsolatos problémák merülhetnek fel. Az ilyen helyzetek megközelítésével kapcsolatos útmutatásért tekintse meg a [késői fázisok újravetítésének](../overview/features/late-stage-reprojection.md) szakaszát.

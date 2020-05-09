@@ -8,12 +8,12 @@ author: mgoedtel
 ms.author: magoedte
 ms.date: 03/24/2020
 ms.topic: conceptual
-ms.openlocfilehash: 40885e1de4ff4c16d2a50399c654d8596396ab53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac0a795c98673eba30531f586ff634c62673cdd6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366371"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980949"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-the-azure-portal"></a>Hibrid gépek összekötése az Azure-ba a Azure Portal
 
@@ -73,7 +73,7 @@ Például futtassa a telepítőprogramot a `/?` paraméterrel, és tekintse át 
 msiexec.exe /i AzureConnectedMachineAgent.msi /?
 ```
 
-Ha csendes módban szeretné telepíteni az ügynököt, és létre kell hoznia `C:\Support\Logs` egy telepítési naplófájlt a mappában, futtassa a következő parancsot.
+Ha csendes módban szeretné telepíteni az ügynököt, és létre kell hoznia `C:\Support\Logs` egy telepítési naplófájlt a létező mappában, futtassa a következő parancsot.
 
 ```dos
 msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentsetup.log"
@@ -109,7 +109,7 @@ Restart-Service -Name himds
 
 Az ügynök telepítése után az ügynököt úgy kell konfigurálnia, hogy az alábbi parancs futtatásával kommunikáljon az Azure arc szolgáltatással:
 
-`%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`"%ProgramFiles%\AzureConnectedMachineAgent\azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
 ## <a name="install-and-validate-the-agent-on-linux"></a>Az ügynök telepítése és ellenőrzése Linuxon
 
@@ -146,7 +146,7 @@ bash ~/Install_linux_azcmagent.sh --proxy "{proxy-url}:{proxy-port}"
 
 Az ügynök telepítése után konfigurálja úgy, hogy az alábbi parancs futtatásával kommunikáljon az Azure arc szolgáltatással:
 
-`/opt/azcmagent/bin/azcmagent.exe" connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
+`azcmagent connect --resource-group "<resourceGroupName>" --tenant-id "<tenantID>" --location "<regionName>" --subscription-id "<subscriptionID>"`
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Az Azure arc-beli kapcsolatok ellenőrzése
 

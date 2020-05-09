@@ -4,12 +4,12 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: c77849b2285283a34e6adf84dc3845a4076407af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77597940"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82616016"
 ---
 ## <a name="attack-scenario"></a>Támadási forgatókönyv
 
@@ -29,9 +29,16 @@ Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Ce
  > Ha egy Azure Firewall mögötti virtuális géphez jóváhagy egy JIT hozzáférési kérelmet, akkor Security Center automatikusan módosítja a NSG és a tűzfal házirend-szabályait is. A megadott időtartamra vonatkozóan a szabályok engedélyezik a bejövő forgalmat a kiválasztott portokra és a kért forrás IP-címekre vagy tartományokra. Az idő elteltével Security Center visszaállítja a tűzfal és a NSG szabályait az előző állapotba.
 
 
+## <a name="roles-that-can-read-jit-policies"></a>JIT-szabályzatokat olvasó szerepkörök
+
+Az **olvasó** -és **SecurityReader** -szerepkörök olvasási házirendeket is használhatnak.
+
 ## <a name="permissions-needed-to-configure-and-use-jit"></a>A JIT konfigurálásához és használatához szükséges engedélyek
+
+Ha a JIT-rel használható egyéni szerepköröket szeretne létrehozni, a következő adatokra lesz szüksége:
 
 | A felhasználók engedélyezése: | Beállított engedélyek|
 | --- | --- |
 | Egy virtuális gép JIT-szabályzatának konfigurálása vagy szerkesztése | *Rendelje hozzá ezeket a műveleteket a szerepkörhöz:*  <ul><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Egy előfizetés vagy egy virtuális gép erőforráscsoport hatókörén: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
 |JIT-hozzáférés kérése egy virtuális géphez | *Rendelje hozzá ezeket a műveleteket a felhasználóhoz:*  <ul><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  Az előfizetés vagy az erőforráscsoport vagy a virtuális gép hatókörén:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  Az előfizetés vagy az erőforráscsoport vagy a virtuális gép hatókörén:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
+|JIT-szabályzatok olvasása| *Rendelje hozzá ezeket a műveleteket a felhasználóhoz:*  <ul><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/read`</li><li>`Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action`</li><li>`Microsoft.Security/policies/read`</li><li>`Microsoft.Compute/virtualMachines/read`</li><li>`Microsoft.Network/*/read`</li>|

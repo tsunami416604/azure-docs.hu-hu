@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76314759"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610972"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Átfogó hibaelhárítás Azure Storage-metrikák és -naplózás, az AzCopy és a Message Analyzer használatával
 
@@ -161,7 +161,7 @@ Az üzenetsor olyan Azure Storage-eszközöket tartalmaz, amelyek segítenek a k
 
 ### <a name="download-and-install-message-analyzer-and-the-azure-storage-assets"></a>Az üzenetsor és az Azure Storage-eszközök letöltése és telepítése
 
-1. Töltse le a [Message Analyzert](https://www.microsoft.com/download/details.aspx?id=44226) a Microsoft letöltőközpontból, és futtassa a telepítőt.
+1. Töltse le az [üzenetsor-elemzőt](https://docs.microsoft.com/message-analyzer/installing-and-upgrading-message-analyzer).
 2. Indítsa el az üzenetsor-elemzőt.
 3. Az **eszközök** menüben válassza ki az **Asset Manager**elemet. Az **Asset Manager** párbeszédpanelen válassza a **letöltések**, majd a szűrés az **Azure Storage**-ban lehetőséget. Az Azure Storage-eszközöket az alábbi ábrán látható módon fogja látni.
 4. Az Azure Storage-eszközök telepítéséhez kattintson az **összes megjelenített elem szinkronizálása** elemre. Az elérhető eszközök a következők:

@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 5d4a86f4d9f74cf17229467f19a3afa8bebcf40f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f396f46fa77f75452ac8ac3cd98bccd58fe0dfe4
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187766"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82613302"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -73,14 +73,14 @@ A **mód** attól függően van konfigurálva, hogy a házirend Azure Resource M
 
 A **mód** határozza meg, hogy mely erőforrástípusok lesznek kiértékelve egy házirendhez. A támogatott módok a következők:
 
-- `all`: erőforráscsoportok és minden erőforrástípus kiértékelése
+- `all`: erőforráscsoportok, előfizetések és minden erőforrástípus kiértékelése
 - `indexed`: csak a címkéket és helyet támogató erőforrástípusok kiértékelése
 
 Például az erőforrás `Microsoft.Network/routeTables` támogatja a címkéket és a helyet, és mindkét módban kiértékelésre kerül. Az erőforrás `Microsoft.Network/routeTables/routes` azonban nem címkézhető, és nincs kiértékelve a `Indexed` módban.
 
 Javasoljuk, hogy a legtöbb **mode** esetben állítsa `all` be a módot. A portálon keresztül létrehozott összes házirend-definíció `all` a módot használja. Ha a PowerShellt vagy az Azure CLI-t használja, manuálisan is megadhatja a **Mode** paramétert. Ha a házirend-definíció nem tartalmaz **Mode** értéket, az alapértelmezett `all` értéke Azure POWERSHELL és az Azure CLI `null` -ben. A `null` visszafelé való kompatibilitás támogatásához egy `indexed` mód ugyanaz, mint a használatával.
 
-`indexed`a címkéket vagy helyszíneket kényszerítő házirendek létrehozásakor kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok**. Az erőforráscsoportok helyét vagy címkéit kényszerítő házirendeknek a **módot** kell beállítaniuk, `all` és kifejezetten `Microsoft.Resources/subscriptions/resourceGroups` meg kell célozniuk a típust. Példaként tekintse meg az [erőforráscsoport-címkék betartatása](../samples/enforce-tag-rg.md)című témakört. A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
+`indexed`a címkéket vagy helyszíneket kényszerítő házirendek létrehozásakor kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok** és az **előfizetések**. Az erőforráscsoportok vagy előfizetések helyét vagy címkéit kényszerítő szabályzatok esetében a `all` (z) és `Microsoft.Resources/subscriptions/resourceGroups` a `Microsoft.Resources/subscriptions` (z) és a (z) típust **kell beállítani.** Példaként tekintse meg az [erőforráscsoport-címkék betartatása](../samples/enforce-tag-rg.md)című témakört. A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Erőforrás-szolgáltatói módok (előzetes verzió)
 
