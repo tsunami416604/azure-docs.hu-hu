@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: fa62495a7b51c9a06a91102299378c15e811eae0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74872111"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871010"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Egyedi kulcsok definiálása egy Azure Cosmos-tárolóhoz
 
@@ -39,7 +39,9 @@ Ez a cikk bemutatja az [egyedi kulcsok](unique-keys.md) definiálásának külö
 
 Egyedi kulcsokkal rendelkező tároló létrehozásához lásd: [Azure Cosmos-tároló létrehozása egyedi kulccsal és TTL-vel](manage-with-powershell.md#create-container-unique-key-ttl)
 
-## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
+## <a name="use-the-net-sdk"></a>A .NET SDK használata
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 Amikor új tárolót hoz létre a [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)használatával, `UniqueKeyPolicy` egy objektum használható egyedi kulcsokra vonatkozó megkötések definiálásához.
 
@@ -59,7 +61,7 @@ client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), n
 });
 ```
 
-## <a name="use-the-net-sdk-v3"></a>A .NET SDK v3 használata
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 Amikor új tárolót hoz létre a [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/)használatával, az SDK Fluent API segítségével tömör és olvasható módon deklarálhatja az egyedi kulcsokat.
 
@@ -75,6 +77,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>A Java SDK használata
 

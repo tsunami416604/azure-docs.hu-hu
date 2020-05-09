@@ -13,16 +13,16 @@ ms.date: 11/8/2019
 ms.author: marsma
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
-ms.openlocfilehash: 50c88dd1785bd9177219054fed3800ca725a5274
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a954167dc0698389680a92511621fb6acf4b12b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154593"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889993"
 ---
 # <a name="the-new-azure-portal-app-registration-experience"></a>Az új Azure Portal alkalmazás regisztrációs felülete
 
-A Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületének számos újdonsága van. Ha még jobban ismeri az alkalmazás-regisztrációs portál (apps.dev.microsoft.com) használatát a konvergens alkalmazások regisztrálásához vagy kezeléséhez, amelyet a régi felhasználói élménynek nevezünk, az útmutató segítségével megkezdheti az új felhasználói élmény megszerzését.
+A Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületének számos újdonsága van. Ha még jobban ismeri az Application Registration Portalt (apps.dev.microsoft.com) az alkalmazások regisztrálásához és kezeléséhez, amelyet a "régi felhasználói élmény" néven talál, akkor ez az útmutató az új felület használatának első lépéseit mutatja be.
 
 ## <a name="whats-not-changing"></a>Mi nem változik?
 
@@ -37,7 +37,7 @@ A Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/
 
 ## <a name="key-changes"></a>Legfontosabb változások
 
--   A régi tapasztalatok szerint az alkalmazások alapértelmezés szerint olyan konvergens alkalmazásokként lettek regisztrálva, amelyek támogatják az összes szervezeti fiókot (több-bérlős) és a személyes Microsoft-fiókokat. Ez a régi felülettel nem módosítható, így megnehezíti a csak a szervezeti fiókok (több-bérlős vagy egyetlen bérlő) által támogatott alkalmazások létrehozását.
+-   A régi tapasztalatok szerint az alkalmazások alapértelmezés szerint olyan *konvergens* alkalmazásokként vannak regisztrálva, amelyek támogatják az összes szervezeti fiókot (több-bérlős) és a személyes Microsoft-fiókokat. Ez a régi felülettel nem módosítható, így megnehezíti a csak a szervezeti fiókok (több-bérlős vagy egyetlen bérlő) által támogatott alkalmazások létrehozását.
     Az új felület lehetővé teszi, hogy regisztrálja az összes lehetőséget támogató alkalmazásokat. [További információ az alkalmazások típusairól](active-directory-v2-registration-portal.md).
 
 -   Abban az esetben, ha a személyes Microsoft-fiók egy Azure AD-bérlőben is található, három lapot fog látni – a bérlő összes alkalmazását, a bérlőn belüli alkalmazásokat, valamint a személyes fiókban lévő alkalmazásokat. Ha úgy gondolja, hogy a személyes Microsoft-fiók regisztrált alkalmazások hiányoznak, ellenőrizze az **alkalmazásokat a személyes fiók** lapján.
@@ -52,28 +52,23 @@ A Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/
 
 ## <a name="new-app-registration"></a>Új alkalmazás regisztrálása
 
-A régi felhasználói felületen egy átszervezett alkalmazás regisztrálásához csak a nevet kell megadni. A létrehozott alkalmazások olyan konvergens alkalmazásokként lettek regisztrálva, amelyek támogatják az összes szervezeti könyvtárat (több-bérlős) és a személyes Microsoft-fiókokat.  Ez a régi felülettel nem módosítható, így megnehezíti a csak a szervezeti fiókok (több-bérlős vagy egyetlen bérlő) által támogatott alkalmazások létrehozását. [További információ a támogatott fióktípus](v2-supported-account-types.md)
+A régi felhasználói felületen az alkalmazás regisztrálásához csak egy nevet kell megadnia. A létrehozott alkalmazások összevont alkalmazásokként lettek regisztrálva – az összes szervezeti könyvtárat (több-bérlőt) támogató *alkalmazások, valamint* a személyes Microsoft-fiókok.  Ez nem módosítható a régi felületén keresztül, így megnehezíti olyan alkalmazások létrehozását, amelyek csak a szervezeti fiókokat támogatják (egyetlen vagy több bérlős). [További információ a támogatott fióktípus](v2-supported-account-types.md)
 
 Az új felhasználói felületen meg kell adnia egy nevet az alkalmazásnak, és ki kell választania a támogatott fióktípus lehetőséget. Igény szerint átirányítási URI-t is megadhat.
 Ha átirányítási URI-t ad meg, meg kell adnia, hogy webes vagy nyilvános (natív/mobil és asztali). Ha további információt szeretne arról, hogyan regisztrálhat egy alkalmazást az új alkalmazás-regisztráció használatával, tekintse meg [ezt](quickstart-register-app.md)a rövid útmutatót.
 
 ## <a name="app-management-page"></a>Alkalmazás-kezelés lap
 
-A régi élmény egyetlen alkalmazás-felügyeleti oldal volt az átszervezett alkalmazások számára a következő részekben: tulajdonságok, alkalmazás-titkok, platformok, tulajdonosok, Microsoft Graph engedélyek, profil és speciális beállítások.
+A régi élmény egyetlen app Management-oldalt tartalmazott az alkalmazások számára a következő részekkel: tulajdonságok, alkalmazás-titkok, platformok, tulajdonosok, Microsoft Graph engedélyek, profil és speciális beállítások.
 
-A Azure Portal új felülete ezeket a funkciókat külön lapokon jeleníti meg. Itt találja a megfelelő funkciót:
+A Azure Portal új funkciója ezeket a funkciókat külön lapokon jeleníti meg. Itt találja a megfelelő funkciót:
 
--   Tulajdonságok – a név és az alkalmazás azonosítója az Áttekintés oldalon található.
-
--   Az alkalmazás titkai a tanúsítványok & Secrets oldalon találhatóak.
-
--   A platformok konfigurációja a hitelesítés oldalon található.
-
--   Microsoft Graph engedélyek az API-engedélyek lapon, más engedélyekkel együtt
-
--   A profil a branding oldalon található
-
--   Speciális beállítás – az élő SDK támogatása a hitelesítés oldalon található.
+- Tulajdonságok – a név és az alkalmazás azonosítója az Áttekintés oldalon található.
+- Az alkalmazás titkai a tanúsítványok & Secrets oldalon találhatóak.
+- A platformok konfigurációja a hitelesítés oldalon található.
+- Microsoft Graph engedélyek az API-engedélyek lapon, más engedélyekkel együtt
+- A profil a branding oldalon található
+- Speciális beállítás – az élő SDK támogatása a hitelesítés oldalon található.
 
 ## <a name="application-secretscertificates--secrets"></a>Alkalmazás-titkok/tanúsítványok & titkos kódok
 
@@ -111,7 +106,7 @@ A korábban csak a manifest Editor vagy az API használatával beállított tula
 
 -   Az API (oauth2Permissions) és a jóváhagyott ügyfélalkalmazások (preAuthorizedApplications) által definiált hatókörök az API-k közzététele lapon konfigurálhatók. További információ az alkalmazások webes API-ként való konfigurálásáról és az engedélyek/hatókörök elérhetővé tétele: [ebben](quickstart-configure-app-expose-web-apis.md)a rövid útmutatóban.
 
--   A kiadói tartomány (amely megjelenik az [alkalmazás\'jóváhagyására szolgáló üzenetben](application-consent-experience.md)a felhasználók számára) a branding (védjegyezés) lapon található. A közzétevő tartomány konfigurálásával kapcsolatos további információkért tekintse meg [ezt a útmutató](howto-configure-publisher-domain.md)című témakört.
+-   A kiadói tartomány (amely megjelenik az [alkalmazás\'jóváhagyására szolgáló kérésben](application-consent-experience.md)a felhasználók számára) a márkaépítés lapon található. A közzétevő tartomány konfigurálásával kapcsolatos további információkért tekintse meg [ezt a útmutató](howto-configure-publisher-domain.md)című témakört.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -125,3 +120,7 @@ Az új felhasználói élmény a következő korlátozásokkal jár:
 
    > [!NOTE]
    > Ha Ön személyes Microsoft-fiók felhasználó az Azure AD-bérlőben, és a bérlői rendszergazdának korlátozott hozzáférése van a Azure Portalhoz, akkor a hozzáférés megtagadva lesz. Ha azonban a parancsikonon a Alkalmazásregisztrációk beírásával, vagy a rögzítéssel megadhatja azt, akkor hozzáférhet az új felülethez.
+
+## <a name="next-steps"></a>További lépések
+
+Az új alkalmazás regisztrációs felületének megkezdéséhez tekintse meg a rövid útmutató [: alkalmazás regisztrálása a Microsoft Identity platformmal](quickstart-register-app.md)című témakört.

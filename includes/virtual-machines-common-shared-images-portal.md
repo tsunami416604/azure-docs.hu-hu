@@ -8,37 +8,31 @@ ms.topic: include
 ms.date: 11/06/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 729e757c69887bbdce324e2d8383c970995dc94a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d5947f669b600b544cd7e5265e2cce8de118374
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73903673"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788992"
 ---
-## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba 
-
-Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
-
-> [!NOTE]
-> Ha az előzetes verzióban regisztrált a megosztott képtárak használatára, lehet, hogy újra regisztrálnia kell a `Microsoft.Compute` szolgáltatót. Nyissa meg [Cloud Shell](https://shell.azure.com/bash) és írja be a következőt:`az provider register -n Microsoft.Compute`
-
 ## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása
 
 A képgyűjtemény a képmegosztás engedélyezéséhez használt elsődleges erőforrás. A katalógus nevének megengedett karaktere nagybetűs vagy kisbetűk, számjegyek, pontok és időszakok. A gyűjtemény neve nem tartalmazhat kötőjeleket.  A katalógus nevének egyedinek kell lennie az előfizetésen belül. 
 
 A következő példában létrehozunk egy *MyGallery* nevű katalógust a *myGalleryRG* -erőforráscsoporthoz.
 
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
+1. Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 1. A keresőmezőbe írja be a **megosztott képtárat** , majd a találatok között válassza a **megosztott képtára** lehetőséget.
-1. A **megosztott rendszerkép** -katalógus lapon kattintson a **Létrehozás**gombra.
-1. Válassza ki a megfelelő előfizetést.
+1. A **megosztott rendszerkép** -katalógus lapon kattintson a **Hozzáadás**gombra.
+1. A **megosztott rendszerkép létrehozása** lapon válassza ki a megfelelő előfizetést.
 1. Az **erőforráscsoport**területen válassza az **új létrehozása** lehetőséget, és írja be a *myGalleryRG* nevet.
 1. A **név**mezőbe írja be a *MyGallery* nevet a gyűjtemény neveként.
 1. Hagyja meg az alapértelmezett **régiót**.
 1. Beírhatja a katalógus rövid leírását, például a *saját képtárat a teszteléshez.* majd kattintson a **felülvizsgálat + létrehozás**gombra.
 1. Az érvényesítési fázisok után válassza a **Létrehozás**lehetőséget.
 1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
-   
+
+
 ## <a name="create-an-image-definition"></a>Rendszerkép-definíció létrehozása 
 
 A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. Ezek az adatok a bennük létrehozott rendszerkép-verziókra vonatkozó információk kezelésére szolgálnak. A képdefiníciók nevei nagybetűket, kisbetűket, számokat, pontokat, kötőjeleket és pontokat tartalmazhatnak. További információ a képdefiníciók által megadható értékekről: [képdefiníciók](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#image-definitions).
@@ -46,8 +40,9 @@ A rendszerkép-definíciók logikai csoportosítást hoznak létre a képekhez. 
 Hozza létre a katalógus képének definícióját a katalógusban. Ebben a példában a katalógus rendszerképének neve *myImageDefinition*.
 
 1. Az új rendszerkép-katalógus lapján válassza az **új rendszerkép-definíció hozzáadása** lehetőséget az oldal tetején. 
+1. Az **új rendszerkép-definíció hozzáadása a közös képtárhoz**területen válassza az *USA keleti* **régiója**lehetőséget.
 1. A **rendszerkép-definíció neve**mezőbe írja be a következőt: *myImageDefinition*.
-1. **Operációs rendszer**esetén válassza ki a megfelelő beállítást a forrás virtuális gép alapján.
+1. **Operációs rendszer**esetén válassza ki a megfelelő beállítást a forrás virtuális gép alapján.  
 1. Virtuálisgép- **generáció**esetén válassza a forrás virtuális gép alapján lehetőséget. A legtöbb esetben ez az 1. *Gen*lesz. További információ: 2. [generációs virtuális gépek támogatása](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2).
 1. Az **operációs rendszer állapota**területen válassza a forrás virtuális gép alapján lehetőséget. További információ: [általánosított és specializált](../articles/virtual-machines/linux/shared-image-galleries.md#generalized-and-specialized-images).
 1. A **Publisherben**írja be a következőt: *myPublisher*. 
@@ -58,7 +53,7 @@ Hozza létre a katalógus képének definícióját a katalógusban. Ebben a pé
 1. Ha a telepítés befejeződött, válassza az **Ugrás az erőforráshoz**lehetőséget.
 
 
-## <a name="create-an-image-version"></a>Rendszerkép-verzió létrehozása
+## <a name="create-an-image-version"></a>Rendszerképverzió létrehozása
 
 Rendszerkép-verzió létrehozása felügyelt rendszerképből. Ebben a példában a rendszerkép verziója a *1.0.0* , és a rendszer replikálja az *USA nyugati középső* régiójában és az *USA déli középső* régiójában. A célcsoportok replikáláshoz való kiválasztásakor ne feledje, hogy a *forrás* régiót is meg kell adnia a replikálás céljának.
 

@@ -1,30 +1,30 @@
 ---
 title: Oktatóanyag – kiválóan elérhető alkalmazás létrehozása blob Storage-val
 titleSuffix: Azure Storage
-description: Az olvasási hozzáférésű geo-redundáns tárolással elérhetővé teheti az alkalmazás adatait.
+description: Használja az olvasási hozzáférésű geo-Zone-redundáns (RA-GZRS) tárolót, hogy az alkalmazás adatai elérhetők legyenek.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: tutorial
-ms.date: 02/10/2020
+ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: 27f90edf84fd51e5c13bc082cfaba50e26c54780
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81606029"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82856135"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val
 
 Ez az oktatóanyag egy sorozat első része. Itt megtudhatja, hogyan teheti elérhetővé az alkalmazás adatait az Azure-ban.
 
-Az oktatóanyag elvégzése után egy olyan konzol-alkalmazás lesz, amely feltölti és lekéri egy blobot egy [olvasási hozzáférésű, Geo-redundáns](../common/storage-redundancy.md) (ra-GRS) Storage-fiókból.
+Az oktatóanyag elvégzése után egy olyan konzol-alkalmazás fog rendelkezni, amely feltölti és lekéri egy blobot egy [olvasási hozzáférésű geo-Zone-redundáns](../common/storage-redundancy.md) (ra-GZRS) Storage-fiókból.
 
-Az RA-GRS úgy működik, hogy az elsődleges régióból egy másodlagos régióba replikálja a tranzakciókat. A replikációs folyamat garantálja a másodlagos régió adatainak végső konzisztenciáját. Az alkalmazás az [áramkör-megszakító](/azure/architecture/patterns/circuit-breaker) mintája alapján határozza meg, hogy melyik végponthoz kell csatlakoznia, a végpontok közötti automatikus váltás a hibák és a helyreállítások szimulálása.
+Az Azure Storage-ban a Geo-redundancia aszinkron módon replikálja a tranzakciókat egy elsődleges régióból egy olyan másodlagos régióba, amely több száz mérföld távolságra van. A replikációs folyamat garantálja a másodlagos régió adatainak végső konzisztenciáját. A konzol alkalmazás az [áramkör-megszakító](/azure/architecture/patterns/circuit-breaker) mintával határozza meg, hogy melyik végponthoz kell csatlakoznia, a végpontok közötti automatikus váltás a hibák és a helyreállítások szimulálása.
 
 Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
 
@@ -64,25 +64,24 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatobjektumok tárolásához és eléréséhez.
 
-Kövesse az alábbi lépéseket egy írásvédett georedundáns tárfiók létrehozásához:
+Az alábbi lépéseket követve hozzon létre egy olvasási hozzáférésű geo-Zone-redundáns (RA-GZRS) Storage-fiókot:
 
-1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
-2. Válassza a **tárterület** lehetőséget az **új** lapon.
-3. Válassza ki a **Storage-fiók elemet – blob, fájl, tábla, üzenetsor** a **Kiemelt**területen.
+1. Válassza az **erőforrás létrehozása** gombot a Azure Portal.
+2. Válassza ki a **Storage-fiók-blob, fájl, tábla, üzenetsor** lehetőséget az **új** lapon.
 4. Töltse ki a tárfiók űrlapját a következő adatokkal az alábbi képen látható módon, és kattintson a **Létrehozás** elemre:
 
-   | Beállítás       | Ajánlott érték | Leírás |
+   | Beállítás       | Mintaérték | Leírás |
    | ------------ | ------------------ | ------------------------------------------------- |
-   | **Név** | mystorageaccount | A tárfiók egyedi neve |
-   | **Üzemi modell** | Resource Manager  | A Resource Manager a legújabb funkciókat kínálja.|
-   | **Fiók típusa** | StorageV2 | A fiókok típusaival kapcsolatos információkért lásd [a tárfiókok típusait](../common/storage-introduction.md#types-of-storage-accounts) |
-   | **Teljesítmény** | Standard | A példaforgatókönyvhöz a standard teljesítmény elegendő. |
-   | **Replikáció**| Írásvédett georedundáns tárolás (RA-GRS) | Ez szükséges a minta működéséhez. |
-   |**Előfizetés** | az Ön előfizetése |Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |
-   |**ResourceGroup** | myResourceGroup |Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
-   |**Hely** | USA keleti régiója | Válassza ki a helyet. |
+   | **Előfizetés** | *Saját előfizetés* | Az előfizetései részleteivel kapcsolatban lásd az [előfizetéseket](https://account.azure.com/Subscriptions) ismertető cikket. |
+   | **ResourceGroup** | *myResourceGroup* | Az érvényes erőforráscsoport-nevekkel kapcsolatban lásd az [elnevezési szabályokat és korlátozásokat](/azure/architecture/best-practices/resource-naming) ismertető cikket. |
+   | **Név** | *mystorageaccount* | A Storage-fiók egyedi neve. |
+   | **Hely** | *USA keleti régiója* | Válassza ki a helyet. |
+   | **Teljesítmény** | *Standard* | A standard szintű teljesítmény jó megoldás a példaként szolgáló forgatókönyvhöz. |
+   | **Fiók típusa** | *StorageV2* | Az általános célú v2 Storage-fiók használata ajánlott. További információ az Azure Storage-fiókok típusairól: a [Storage-fiók áttekintése](../common/storage-account-overview.md). |
+   | **Replikáció**| *Olvasási hozzáférés – földrajzi zóna – redundáns tárolás (RA-GZRS)* | Az elsődleges régió a zóna redundáns, és egy másodlagos régióba replikálódik, és olvasási hozzáféréssel rendelkezik a másodlagos régióhoz. |
+   | **Hozzáférési szint**| *Gyakori* | A gyakran használt adatokhoz használja a gyors elérésű szintet. |
 
-![tárfiók létrehozása](media/storage-create-geo-redundant-storage/createragrsstracct.png)
+    ![tárfiók létrehozása](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>A minta letöltése
 
@@ -173,7 +172,7 @@ Telepítse a szükséges függőségeket. Ehhez nyisson meg egy parancssort, lé
 
 A Visual Studióban nyomja le az **F5** billentyűt, vagy kattintson a **Start** gombra az alkalmazás hibakeresésének megkezdéséhez. A Visual Studio automatikusan visszaállítja a hiányzó NuGet-csomagokat, ha vannak konfigurálva. További információért látogasson el a [csomagok telepítése és újratelepítése csomag-visszaállítással](https://docs.microsoft.com/nuget/consume-packages/package-restore#package-restore-overview) című témakörre.
 
-Megnyílik a konzolablak, és az alkalmazás futni kezd. Az alkalmazás feltölti a **HelloWorld.png** képet a megoldásból a tárfiókra. Az alkalmazás ellenőrzi, hogy a kép replikálása valóban megtörtént-e a másodlagos RA-GRS-végpontra. Ezután elkezdi letölteni a képet legfeljebb 999 alkalommal. Minden olvasást egy **P** vagy egy **S**jelöl. Ahol a **P** az elsődleges végpontot és az **S-t** jelöli, a másodlagos végpontot.
+Megnyílik a konzolablak, és az alkalmazás futni kezd. Az alkalmazás feltölti a **HelloWorld.png** képet a megoldásból a tárfiókra. Az alkalmazás ellenőrzi, hogy a rendszerkép replikálva lett-e a másodlagos RA-GZRS-végpontra. Ezután elkezdi letölteni a képet legfeljebb 999 alkalommal. Minden olvasást egy **P** vagy egy **S**jelöl. Ahol a **P** az elsődleges végpontot és az **S-t** jelöli, a másodlagos végpontot.
 
 ![Futó konzolalkalmazás](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -181,7 +180,7 @@ A mintakód a `Program.cs` fájlban található `RunCircuitBreakerAsync` művele
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alkalmazás terminálon vagy parancssorban való futtatásához lépjen a **circuitbreaker.py** könyvtárra, majd írja be a `python circuitbreaker.py` parancsot. Az alkalmazás feltölti a **HelloWorld.png** képet a megoldásból a tárfiókra. Az alkalmazás ellenőrzi, hogy a kép replikálása valóban megtörtént-e a másodlagos RA-GRS-végpontra. Ezután elkezdi letölteni a képet legfeljebb 999 alkalommal. Minden olvasást egy **P** vagy egy **S**jelöl. Ahol a **P** az elsődleges végpontot és az **S-t** jelöli, a másodlagos végpontot.
+Az alkalmazás terminálon vagy parancssorban való futtatásához lépjen a **circuitbreaker.py** könyvtárra, majd írja be a `python circuitbreaker.py` parancsot. Az alkalmazás feltölti a **HelloWorld.png** képet a megoldásból a tárfiókra. Az alkalmazás ellenőrzi, hogy a rendszerkép replikálva lett-e a másodlagos RA-GZRS-végpontra. Ezután elkezdi letölteni a képet legfeljebb 999 alkalommal. Minden olvasást egy **P** vagy egy **S**jelöl. Ahol a **P** az elsődleges végpontot és az **S-t** jelöli, a másodlagos végpontot.
 
 ![Futó konzolalkalmazás](media/storage-create-geo-redundant-storage/figure3.png)
 
@@ -343,9 +342,9 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ## <a name="next-steps"></a>További lépések
 
-A sorozat első részében megtanulta, hogyan lehet az alkalmazást az RA-GRS Storage-fiókokkal nagykörben elérhetővé teszi.
+A sorozat első részében megtanulta, hogyan lehet az alkalmazást az RA-GZRS Storage-fiókokkal nagykörben elérhetővé teszi.
 
-Folytassa a sorozat második részével, ha szeretné megismerni, hogyan szimulálhat hibákat és kényszerítheti az alkalmazást, hogy a másodlagos RA-GRS-végpontot használja.
+Folytassa a sorozat második részével, hogy megtudja, hogyan szimulálhat egy hibát, és kényszerítheti az alkalmazást a másodlagos RA-GZRS végpont használatára.
 
 > [!div class="nextstepaction"]
-> [Az elsődleges régióból beolvasott hiba szimulálása](storage-simulate-failure-ragrs-account-app.md)
+> [Az elsődleges régióból beolvasott hiba szimulálása](simulate-primary-region-failure.md)

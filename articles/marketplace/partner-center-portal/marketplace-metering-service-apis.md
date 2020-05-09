@@ -1,18 +1,18 @@
 ---
-title: Marketplace-mérési szolgáltatás API-k | Azure piactér
-description: Az SaaS-ajánlatok használati eseménye az Azure piactéren.
+title: Mérési szolgáltatás API-k – Microsoft kereskedelmi piactér
+description: A használati esemény API lehetővé teszi az SaaS-ajánlatok használati eseményeinek kibocsátását Microsoft AppSource és az Azure Marketplace-en.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 315f36e5aed9dee0a89e1f9f504b18a6bed806e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 159d2c60fc1fc5ad1f21f2b948208eaae0d06208
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275747"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857864"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace metering service API-k
 
@@ -194,7 +194,7 @@ OK
 
 Az API- `BatchUsageEvent` válaszban hivatkozott állapotkód leírása:
 
-| Állapotkód  | Leírás |
+| Állapotkód  | Description |
 | ---------- | -------------------- |
 | `Accepted` | Elfogadott kód. |
 | `Expired` | Lejárt használat. |
