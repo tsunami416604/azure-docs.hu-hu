@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: a4117acb2fada5c4422e177e9e6b84d7a0a51b69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129322"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744391"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -24,7 +24,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 
 |Tulajdonság  |Leírás |
 |---------|---------|
-|Name (Név)    |    Az erőforráscsoporthoz tartozó egyedi név.      |
+|Name    |    Az erőforráscsoporthoz tartozó egyedi név.      |
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
 |Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
@@ -35,7 +35,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 Íme néhány fontos adat a privát végpontokról: 
 - A privát végpont lehetővé teszi, hogy az azonos VNet, regionálisan egymással virtuális hálózatok, globálisan összekapcsolt virtuális hálózatok és helyszíni kapcsolaton keresztüli kapcsolatot létesítsen a [VPN](https://azure.microsoft.com/services/vpn-gateway/) -t vagy [expressz útvonalat](https://azure.microsoft.com/services/expressroute/) és szolgáltatásokat használó privát kapcsolaton keresztül.
  
-- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy hálózati adaptert. Az illesztőhöz a magánhálózati kapcsolat szolgáltatáshoz hozzárendelt privát IP-cím tartozik.
+- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy írásvédett hálózati adaptert. Az illesztőhöz egy magánhálózati IP-cím van hozzárendelve az alhálózatból, amely leképezi a magánhálózati kapcsolat erőforrását.
  
 - A magánhálózati végpontot a virtuális hálózattal megegyező régióban kell telepíteni. 
  
@@ -56,7 +56,7 @@ A privát kapcsolati erőforrás egy adott privát végpont célját célozza me
 |**Azure SQL Database** | Microsoft. SQL/kiszolgálók    |  SQL Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft. SQL/kiszolgálók    |  SQL Server (sqlServer)        | 
 |**Azure Storage**  | Microsoft. Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Tábla (tábla, table_secondary)<BR> Üzenetsor (Üzenetsor, queue_secondary)<BR> Fájl (fájl, file_secondary)<BR> Web (web, web_secondary)        |
-|**2. generációs Azure Data Lake Storage**  | Microsoft. Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Data Lake fájlrendszer Gen2 (DFS, dfs_secondary)       |
+|**Azure Data Lake Storage Gen2**  | Microsoft. Storage/storageAccounts    |  BLOB (blob, blob_secondary)<BR> Data Lake fájlrendszer Gen2 (DFS, dfs_secondary)       |
 |**Azure Cosmos DB** | Microsoft. AzureCosmosDB/databaseAccounts    | SQL, MongoDB, Cassandra, Gremlin, Table|
 |**Azure Database for PostgreSQL – egyetlen kiszolgáló** | Microsoft. DBforPostgreSQL/kiszolgálók    | postgresqlServer |
 |**Azure Database for MySQL** | Microsoft. DBforMySQL/kiszolgálók    | Portra beállított mysqlserver |

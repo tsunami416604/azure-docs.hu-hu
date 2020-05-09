@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/13/2020
-ms.openlocfilehash: d5edfab0963ec3fca24969d7a54038066ba08765
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3aecaf45a04c1428968791a71abece783c7eb7c0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188395"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891313"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -105,29 +105,9 @@ A Azure Machine Learning egy további alkalmazást hoz létre (a név `aml-` a `
 
 A Azure Machine Learning a számítási erőforrások egyéb Azure-szolgáltatásaira támaszkodik. A számítási erőforrások (számítási célok) a modellek betanítására és üzembe helyezésére szolgálnak. Ezeket a számítási célokat virtuális hálózatban is létrehozhatja. Például az Azure Data Science Virtual Machine használatával betaníthatja a modelleket, majd üzembe helyezheti a modellt az AK-ra.  
 
-További információ: [kísérletek futtatása egy virtuális hálózatban](how-to-enable-virtual-network.md).
+További információ: Hogyan lehet [biztonságosan futtatni a kísérleteket és következtetéseket egy elkülönített virtuális hálózatban](how-to-enable-virtual-network.md).
 
 Az Azure Private-hivatkozást is engedélyezheti a munkaterülethez. A privát hivatkozás lehetővé teszi, hogy a kommunikációt egy Azure-Virtual Network korlátozza a munkaterületre. További információt a [privát hivatkozás konfigurálása](how-to-configure-private-link.md)című témakörben talál.
-
-> [!TIP]
-> A virtuális hálózat és a magánhálózati kapcsolat összekapcsolható a munkaterület és az egyéb Azure-erőforrások közötti kommunikáció védelme érdekében. Bizonyos kombinációk azonban nagyvállalati kiadási munkaterületet igényelnek. A következő táblázat segítségével megismerheti, hogy milyen forgatókönyvek szükségesek a vállalati kiadáshoz:
->
-> | Forgatókönyv | Enterprise</br>Edition | Basic</br>Edition |
-> | ----- |:-----:|:-----:| 
-> | Nincs virtuális hálózat vagy privát hivatkozás | ✔ | ✔ |
-> | Privát hivatkozás nélküli munkaterület. Egyéb erőforrások (a Azure Container Registry kivételével) egy virtuális hálózaton | ✔ | ✔ |
-> | Privát hivatkozás nélküli munkaterület. Egyéb források privát hivatkozással | ✔ | |
-> | Munkaterület privát hivatkozással. Egyéb erőforrások (a Azure Container Registry kivételével) egy virtuális hálózaton | ✔ | ✔ |
-> | Munkaterület és bármely más, privát hivatkozással rendelkező erőforrás | ✔ | |
-> | Munkaterület privát hivatkozással. Egyéb források magánhálózati vagy virtuális hálózat nélkül | ✔ | ✔ |
-> | Azure Container Registry virtuális hálózaton | ✔ | |
-> | Ügyfél által felügyelt kulcsok a munkaterülethez | ✔ | |
-> 
-
-> [!WARNING]
-> Azure Machine Learning számítási példányok előzetes verziója nem támogatott olyan munkaterületen, amelyben engedélyezve van a magánhálózati hivatkozás.
-> 
-> A Azure Machine Learning nem támogatja olyan Azure Kubernetes-szolgáltatás használatát, amelyen engedélyezve van a privát kapcsolat. Ehelyett használhatja az Azure Kubernetes szolgáltatást egy virtuális hálózaton. További információkért lásd: [Azure-beli Virtual Network biztonságossá tétele és következtetések](how-to-enable-virtual-network.md)elvégzése az Azure-on belül.
 
 ## <a name="data-encryption"></a>Adattitkosítás
 
@@ -265,7 +245,7 @@ Minden munkaterülethez tartozik egy társított, rendszerhez rendelt felügyelt
 
 A Microsoft a nem felhasználótól származó azonosító adatokat (például az adathalmaz nevét vagy a Machine learning-kísérlet nevét) vagy a munkahelyi környezeti változókat diagnosztikai célokra gyűjtheti. Az összes ilyen adatokat a Microsoft által felügyelt kulcsok tárolják a Microsoft tulajdonában lévő előfizetésekben üzemeltetett tárolókban, és a [Microsoft szabványos adatvédelmi szabályzatát és adatkezelési szabványait](https://privacy.microsoft.com/privacystatement)követi.
 
-A Microsoft azt is javasolja, hogy ne tárolja a bizalmas adatokat (például a fiók kulcsának titkos adatait) a környezeti változókban. A környezeti változók naplózása, titkosítása és tárolása az USA-ban történik. Hasonlóképpen a [runid](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)elnevezése esetén Kerülje a bizalmas adatokat, például a felhasználóneveket vagy a titkos projektek nevét. Ezek az információk megjelenhetnek Microsoft ügyfélszolgálata mérnökök számára elérhető telemetria-naplókban.
+A Microsoft azt is javasolja, hogy ne tárolja a bizalmas adatokat (például a fiók kulcsának titkos adatait) a környezeti változókban. A környezeti változók naplózása, titkosítása és tárolása az USA-ban történik. Hasonlóképpen a [run_id](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py)elnevezése esetén Kerülje a bizalmas adatokat, például a felhasználóneveket vagy a titkos projektek nevét. Ezek az információk megjelenhetnek Microsoft ügyfélszolgálata mérnökök számára elérhető telemetria-naplókban.
 
 A gyűjtött diagnosztikai adatok közül kiválaszthatja, hogy a `hbi_workspace` paramétert úgy `TRUE` állítja be, hogy kiépítse a munkaterületet. Ez a funkció a AzureML Python SDK, a CLI, a REST API-k vagy a Azure Resource Manager-sablonok használata esetén támogatott.
 

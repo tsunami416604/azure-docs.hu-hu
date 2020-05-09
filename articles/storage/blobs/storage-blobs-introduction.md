@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 03/18/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 084b364f4a1414febb7b6f11c9cf70958ee823c4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f28b660a2afc97cf9faf0f601e247a97e99098cd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176669"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853363"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Az Azure Blob Storage bemutatása
 
@@ -65,7 +65,7 @@ A Blobok különböző típusaival kapcsolatos további információkért lásd:
 
 Számos megoldás létezik a meglévő és a blob Storage-tárolóba való áttelepítéshez:
 
-- A **AzCopy** egy könnyen használható parancssori eszköz a Windows és a Linux rendszerhez, amely a blob Storage-ba, a tárolók között vagy a Storage-fiókokba másolt adatok másolására szolgál. További információ a AzCopy: [adatok átvitele a AzCopy v10-vel (előzetes verzió)](../common/storage-use-azcopy-v10.md).
+- A **AzCopy** egy könnyen használható parancssori eszköz a Windows és a Linux rendszerhez, amely a blob Storage-ba, a tárolók között vagy a Storage-fiókokba másolt adatok másolására szolgál. A AzCopy kapcsolatos további információkért lásd [az adatok átvitele a AzCopy v10-vel](../common/storage-use-azcopy-v10.md)című témakört.
 - Az **Azure Storage adatátviteli könyvtára** egy .net-függvénytár az Azure Storage-szolgáltatások közötti adatáthelyezéshez. A AzCopy segédprogram az adatátviteli függvénytárral együtt épül fel. További információt az adatátviteli [függvénytár dokumentációjában](/dotnet/api/microsoft.azure.storage.datamovement) talál.
 - **Azure Data Factory** támogatja az adatok másolását a blob Storage-ba és a-ból a fiók kulcsa, a közös hozzáférési aláírás, az egyszerű szolgáltatásnév vagy a felügyelt identitások használatával az Azure-erőforrásokhoz. További információ: [adatok másolása az Azure Blob Storage-ba vagy onnan az Azure Data Factory használatával](../../data-factory/connector-azure-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 - A **Blobfuse** egy virtuális fájlrendszer-illesztőprogram az Azure Blob Storage szolgáltatáshoz. A blobfuse használatával elérheti a meglévő blokk blob-adatait a Storage-fiókban a Linux fájlrendszerén keresztül. További információ: a [blob Storage csatlakoztatása fájlrendszerként a blobfuse](storage-how-to-mount-container-linux.md)használatával.

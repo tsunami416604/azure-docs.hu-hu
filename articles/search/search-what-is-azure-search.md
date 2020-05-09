@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: fee7c8eb73fe0bb7c9fd0bd9de9aa57bd8c40215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77580651"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891554"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -154,11 +154,6 @@ Másik lehetőségként [kihasználhatja MSDN-előfizetői előnyeit](https://az
 
 A keresőmotor az a technológia, amelyet a mobilalkalmazások, a webhelyek és a vállalati adattárak általában használnak az információk lekéréséhez. Az Azure Cognitive Search olyan eszközöket biztosít, amelyek hasonlóak a nagyméretű kereskedelmi webhelyek által használt keresési élmények létrehozásához.
 
-Ebben a 9 perces videóban megtudhatja Liam Cavanagh programmenedzsertől, hogy egy keresőmotor integrálása milyen előnyöket nyújt az alkalmazásának. A rövid bemutatók az Azure Cognitive Search főbb funkcióit ismertetik, és a tipikus munkafolyamatok is így néz ki. 
+Ebben a 15 perces videóban a program Manager Luis Cabrera bevezeti az Azure Cognitive Search. 
 
->[!VIDEO https://channel9.msdn.com/Events/Connect/2016/138/player]
- 
-+ A 0–3. percben megismerheti a fő funkciókat és azok használati eseteit.
-+ A 3–4. percben megismerheti a szolgáltatás üzembe helyezését. 
-+ A 4–6. percben megismerheti az indexek Adatok importálása varázslóval való létrehozását a beépített adatkészlet használatával.
-+ A 6–9. percben megismerheti a Keresési ablakot és a lekérdezések végrehajtását.
+>[!VIDEO https://www.youtube.com/embed/kOJU0YZodVk?version=3]

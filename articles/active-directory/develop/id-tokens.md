@@ -1,5 +1,6 @@
 ---
-title: Microsoft Identity platform azonosító jogkivonat-referenciája
+title: Microsoft Identity platform azonosító tokenek | Azure
+titleSuffix: Microsoft identity platform
 description: Ismerje meg, hogyan használhatók az Azure AD v 1.0 és a Microsoft Identity platform (v 2.0) végpontok által kibocsátott id_tokens.
 services: active-directory
 author: hpsin
@@ -8,21 +9,21 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/16/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: e0e327d169c246d023be1aca27d6844b9b92f03e
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690184"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926714"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
-`id_tokens`az alkalmazás az [OpenID Connect](v2-protocols-oidc.md) folyamat részeként elküldi az ügyfélalkalmazás számára. A felhasználók az oldalon vagy a hozzáférési jogkivonat helyett is elküldhetők, és az ügyfél a felhasználó hitelesítésére használja.
+`id_tokens`az alkalmazás az [OpenID Connect](v2-protocols-oidc.md) (OIDC) folyamat részeként lesz elküldve az ügyfélalkalmazás számára. A felhasználók az oldalon vagy a hozzáférési jogkivonat helyett is elküldhetők, és az ügyfél a felhasználó hitelesítésére használja.
 
 ## <a name="using-the-id_token"></a>A id_token használata
 
@@ -30,7 +31,7 @@ Az azonosító jogkivonatokat annak ellenőrzésére kell használni, hogy a fel
 
 ## <a name="claims-in-an-id_token"></a>Jogcímek egy id_token
 
-`id_tokens`a Microsoft-identitások [JWTs](https://tools.ietf.org/html/rfc7519), ami azt jelenti, hogy fejlécből, adattartalomból és aláírásból álló részből állnak. A fejléc és az aláírás segítségével ellenőrizheti a jogkivonat hitelességét, míg a hasznos adatok tartalmazzák az ügyfél által kért felhasználó adatait. Ha nincs megadva, az itt felsorolt jogcímek a v 1.0 és a v 2.0 jogkivonatokban is megjelennek.
+`id_tokens`a Microsoft-identitások [JWTs](https://tools.ietf.org/html/rfc7519) (JSON webes jogkivonatok), ami azt jelenti, hogy egy fejlécből, adattartalomból és aláírásból álló részből állnak. A fejléc és az aláírás segítségével ellenőrizheti a jogkivonat hitelességét, míg a hasznos adatok tartalmazzák az ügyfél által kért felhasználó adatait. Ha nincs megadva, az itt felsorolt összes JWT-jogcím 1.0-s és v 2.0-tokenekben is megjelenik.
 
 ### <a name="v10"></a>1.0-s verzió
 
@@ -52,14 +53,14 @@ Tekintse meg ezt a v 2.0 minta tokent a [JWT.MS](https://jwt.ms/#id_token=eyJ0eX
 
 |Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
-|`typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT.|
+|`typ` | String – mindig "JWT" | Azt jelzi, hogy a token egy JWT token.|
 |`alg` | Sztring | Meghatározza a jogkivonat aláírásához használt algoritmust. Példa: "RS256" |
 |`kid` | Sztring | A jogkivonat aláírásához használt nyilvános kulcs ujjlenyomata. Az 1.0-s és a v 2.0 `id_tokens`-s verzióban is kibocsátva. |
 |`x5t` | Sztring | Ugyanaz (használatban és értékben), `kid`mint. Ez azonban egy örökölt jogcím, amely csak a v 1.0 `id_tokens` -s verzióban, kompatibilitási célból lett kibocsátva. |
 
 ### <a name="payload-claims"></a>Hasznos adatokhoz tartozó jogcímek
 
-Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alapértelmezés szerint (kivéve, ha van ilyen).  Az alkalmazás azonban [választható jogcímeket](active-directory-optional-claims.md) is használhat a id_token további jogcímek igényléséhez.  Ezek a `groups` jogcím alapján a felhasználó nevével kapcsolatos információkra terjedhetnek.
+Ez a lista azokat a JWT jogcímeket jeleníti meg, amelyek alapértelmezés szerint a legtöbb id_tokensban szerepelnek (kivéve, ha van ilyen).  Az alkalmazás azonban [választható jogcímeket](active-directory-optional-claims.md) is használhat a ID_TOKEN további JWT jogcímek igényléséhez.  Ezek a `groups` jogcím alapján a felhasználó nevével kapcsolatos információkra terjedhetnek.
 
 |Jogcím | Formátum | Leírás |
 |-----|--------|-------------|
@@ -85,23 +86,23 @@ Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alap
 |`uti` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
 
-
 > [!NOTE]
-> A v1-es és v2-es id_token különbségek vannak a fenti példákban látható információk mennyiségével. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) az évek során fejlődött. Jelenleg két különböző oAuth-végponttal rendelkezünk a AzureAD-alkalmazásokhoz. Használhatja a v2-ként kategorizált új végpontokat vagy a régit, amely a v1. A OAuth végpontok mindkettő eltérő. A v2-végpont annál újabb, ahol a v1-végpont összes funkcióját megpróbáljuk áttelepíteni, és az új fejlesztőknek javasoljuk, hogy a v2-végpontot használják. 
+> A v1-es és v2-es id_token különbségek vannak a fenti példákban látható információk mennyiségével. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) az évek során fejlődött. Jelenleg két különböző oAuth-végponttal rendelkezünk a AzureAD-alkalmazásokhoz. Használhatja a v2-ként kategorizált új végpontokat vagy a régit, amely a v1. A OAuth végpontok mindkettő eltérő. A v2-végpont annál újabb, ahol a v1-végpont összes funkcióját megpróbáljuk áttelepíteni, és az új fejlesztőknek javasoljuk, hogy a v2-végpontot használják.
+>
 > - V1: Azure Active Directory végpontok:`https://login.microsoftonline.com/common/oauth2/authorize`
 > - V2: Microsoft Identity platform-végpontok:`https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Id_token ellenőrzése
 
-A egy `id_token` [hozzáférési jogkivonat érvényesítésének](access-tokens.md#validating-tokens) első lépése hasonlít a hitelesítéshez. az ügyfélnek ellenőriznie kell, hogy a megfelelő kiállító visszaküldte-e a tokent, és hogy nem módosították-e illetéktelenül. Mivel `id_tokens` mindig JWT, sok könyvtár létezik a jogkivonatok érvényesítéséhez – javasoljuk, hogy ezt a tokent használja, és ne a saját magának.
+A egy `id_token` [hozzáférési jogkivonat érvényesítésének](access-tokens.md#validating-tokens) első lépése hasonlít a hitelesítéshez. az ügyfélnek ellenőriznie kell, hogy a megfelelő kiállító visszaküldte-e a tokent, és hogy nem módosították-e illetéktelenül. Mivel `id_tokens` a JWT-tokenek mindig a jogkivonatok érvényesítésére szolgálnak, ezért javasoljuk, hogy ezeket a tokeneket ne használja.
 
-A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési token érvényesítése](access-tokens.md#validating-tokens)című témakör lépéseit. A jogkivonat aláírásának ellenőrzése után a következő jogcímeket érvényesíteni kell a id_tokenban (ezeket a jogkivonat-ellenőrzési függvénytár is végrehajthatja):
+A jogkivonat manuális érvényesítéséhez tekintse meg a [hozzáférési token érvényesítése](access-tokens.md#validating-tokens)című témakör lépéseit. A jogkivonat aláírásának ellenőrzése után a következő JWT jogcímeket érvényesíteni kell a id_tokenban (ezeket a jogkivonat-ellenőrzési kódtár is megteheti):
 
-* Időbélyegek: `iat`a `nbf`, és `exp` az időbélyegek az aktuális időpont előtt vagy után kell esniük, ha szükséges. 
+* Időbélyegek: `iat`a `nbf`, és `exp` az időbélyegek az aktuális időpont előtt vagy után kell esniük, ha szükséges.
 * Célközönség: a `aud` jogcímnek meg kell egyeznie az alkalmazáshoz tartozó alkalmazás-azonosítóval.
 * Alkalom: az `nonce` adattartalomban szereplő jogcímnek meg kell egyeznie a/Authorize-végpontnak a kezdeti kérelem során átadott egyszeres paraméterrel.
 
 ## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [hozzáférési tokenekről](access-tokens.md)
-* A id_token jogcímeit a [választható jogcímek](active-directory-optional-claims.md)használatával szabhatja testre.
+* A JWT jogcímek testreszabása a id_token [választható jogcímek](active-directory-optional-claims.md)használatával.

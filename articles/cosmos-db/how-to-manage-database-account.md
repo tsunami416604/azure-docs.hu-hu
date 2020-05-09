@@ -4,14 +4,14 @@ description: Megtudhatja, hogyan kezelheti Azure Cosmos DB erőforrásait a Azur
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 04/30/2020
 ms.author: mjbrown
-ms.openlocfilehash: 61670d757611bd0c1dd11c389282b18edb3d7fa1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24eec27f0bc6357942420595a1318e3eb0945a5f
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247383"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82745024"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>Azure Cosmos-fiók kezelése
 
@@ -33,7 +33,7 @@ Tekintse meg [Azure Cosmos db fiók létrehozása a PowerShell használatával](
 
 ### <a name="azure-resource-manager-template"></a><a id="create-database-account-via-arm-template"></a>Azure Resource Manager sablon
 
-Ez a Azure Resource Manager-sablon létrehoz egy Azure Cosmos-fiókot az SQL API-hoz két régióval és lehetőséggel, hogy kiválassza a konzisztencia szintjét, az automatikus feladatátvételt és a több főkiszolgálót. A sablon üzembe helyezéséhez kattintson az üzembe helyezés az Azure-ra lehetőségre a readme oldalon, [Azure Cosmos-fiók létrehozása](https://github.com/Azure/azure-quickstart-templates/tree/master/101-cosmosdb-sql)
+Tekintse meg [Azure Cosmos db fiók létrehozása Azure Resource Manager-sablonokkal](manage-sql-with-resource-manager.md) című témakört.
 
 ## <a name="addremove-regions-from-your-database-account"></a>Régiók hozzáadása és eltávolítása az adatbázisfiókból
 

@@ -3,17 +3,17 @@ title: A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Manage
 description: Ez a cikk segítséget nyújt a felhővel kapcsolatos befektetések leghatékonyabb kihasználásához, a költségek csökkentéséhez és annak kiértékeléséhez, mire költ pénzt.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 05/04/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 8df98514545a2670ea18a2b4b131a097244d7b46
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874585"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791612"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>A felhővel kapcsolatos befektetés optimalizálása az Azure Cost Management használatával
 
@@ -104,6 +104,12 @@ A különböző lehetőségekkel kapcsolatos további információkért lásd [a
 
 - Lehetőségek az előzetes pénzügyi kötelezettségvállalásra
 - Hozzáférés a kedvezményes Azure-díjszabáshoz
+
+#### <a name="azure-in-csp"></a>[Azure in CSP](https://azure.microsoft.com/offers/ms-azr-0145p/)
+
+- A CSP-partnerek az első kapcsolatfelvételi pontok, ha igények merülnek fel az ügyfeleik részéről, és központi szerepet töltenek be az ügyfélkapcsolatokban
+- A CSP-partnerek új ügyfeleket létesítenek, előfizetéseket rendelnek meg, előfizetéseket kezelnek és adminisztrációs feladatokat hajtanak végre az ügyfeleik nevében
+- A CSP-partnerek egyedi megoldásokkal együtt teszik elérhetővé a szolgáltatásokat, vagy a díjszabás, a használati feltételek és a számlázás feletti kontroll mellett értékesítik tovább az Azure-t
 
 ## <a name="estimate-the-cost-of-your-solution"></a>Költségbecslés az adott megoldáshoz
 

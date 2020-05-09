@@ -8,16 +8,16 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e8932097bcdef782b1a551d386c2872e02d8abfd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260188"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562440"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Rendszerkövetelmények Azure Data Box Gateway
 
-Ez a cikk a Microsoft Azure Data Box Gateway megoldás és a Azure Data Box Gatewayhoz csatlakozó ügyfelek fontos rendszerkövetelményeit ismerteti. Javasoljuk, hogy körültekintően tekintse át az információkat, mielőtt üzembe helyezi a Data Box Gateway, majd az üzembe helyezés és az azt követő művelet során szükség szerint visszatekinti azt.
+Ez a cikk a Microsoft Azure Data Box Gateway megoldás és a Azure Data Box Gatewayhoz csatlakozó ügyfelek fontos rendszerkövetelményeit ismerteti. Javasoljuk, hogy körültekintően tekintse át az információkat, mielőtt üzembe helyezi a Data Box Gateway, majd az üzembe helyezés és az azt követő művelet során szükség szerint visszatekinti azt. 
 
 A Data Box Gateway virtuális eszköz rendszerkövetelményei a következők:
 

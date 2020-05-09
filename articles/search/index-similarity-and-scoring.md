@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 9f9cc4c29b117c83595a36c4e28b1edb428c3cde
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254121"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890145"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Hasonlóság és pontozás az Azure Cognitive Search
 
@@ -59,16 +59,9 @@ Az Azure Cognitive Search két különböző hasonlósági algoritmust támogat:
 
 Egyelőre megadhatja, hogy melyik hasonlósági rangsorolási algoritmust szeretné használni. További információ: [rangsorolási algoritmus](index-ranking-similarity.md).
 
-## <a name="watch-this-video"></a>Videó megtekintése
+A következő videó szegmense gyorsan továbbítható az Azure Cognitive Search-ban használt rangsorolási algoritmusok magyarázatával. További háttérként tekintse meg a teljes videót.
 
-Ebben a 16 perces videóban a Merouche-es informatikus mérnök ismerteti a pontozási profilok indexelésének, lekérdezésének és létrehozásának folyamatát. Jó képet nyújt arról, hogy mi történik a motorháztető alatt a dokumentumok indexelése és beolvasása során.
-
->[!VIDEO https://channel9.msdn.com/Shows/AI-Show/Similarity-and-Scoring-in-Azure-Cognitive-Search/player]
-
-+ 2-3 perces indexelés: szövegszerkesztés és lexikális analízis.
-+ 3-4 perces indexelés: invertált indexek.
-+ 4-6 perces lekérdezés: lekérés és rangsorolás.
-+ a 7-16 perc a pontozási profilokat tartalmazza.
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=322&end=643]
 
 ## <a name="see-also"></a>Lásd még
 

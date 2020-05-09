@@ -1,20 +1,17 @@
 ---
-title: A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése
+title: Az Azure Disk Storage foglalási kedvezményeinek ismertetése
 description: Megtudhatja, hogyan érvényesül az Azure-beli fenntartott felügyelt lemezekre vonatkozó kedvezmény a prémium szintű felügyelt SSD-k esetében.
 author: roygara
-ms.service: cost-management-billing
-ms.devlang: na
-ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 01/30/2020
 ms.author: rogarana
-ms.openlocfilehash: 18fdda3e28761fcf912b716f51b5e270a9b224d0
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.service: cost-management-billing
+ms.topic: conceptual
+ms.date: 01/30/2020
+ms.openlocfilehash: 3541e3f12a6d0b1beecdd67821d31f71b47f6c68
+ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77586648"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82509465"
 ---
 # <a name="understand-how-your-reservation-discount-is-applied-to-azure-disk-storage"></a>A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése
 
@@ -28,7 +25,7 @@ Az Azure-beli lemezfoglalási kedvezmény igénybevételére egy alkalommal van 
 
 Egy erőforrás törlésekor a rendszer a foglalási kedvezményt automatikusan a megadott hatókör egy másik egyező erőforrására alkalmazza. Ha nem található egyező erőforrás, akkor a lefoglalt órák elvesznek.
 
-## <a name="discount-examples"></a>Példák a kedvezmény alkalmazására
+## <a name="discount-examples"></a>Példák a kedvezményre
 
 Az alábbi példák bemutatják, hogy a rendszer hogyan alkalmazza a fenntartott Azure-beli lemezfoglalásokra érvényes kedvezményt az üzemelő példánytól függően.
 
@@ -54,7 +51,7 @@ Tegyük fel, hogy a foglalási időszak egy adott órájában összesen 200 pré
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Költségek csökkentése Azure-beli lemezfoglalással (Linux)](../../virtual-machines/linux/disks-reserved-capacity.md)
 - [Költségek csökkentése Azure-beli lemezfoglalással (Windows)](../../virtual-machines/windows/disks-reserved-capacity.md)
