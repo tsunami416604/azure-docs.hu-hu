@@ -10,12 +10,12 @@ ms.author: rezas
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 13936a55baed59d5b6257f13f69305a1ce72927a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 9fb2242f6e3f8ce78a0e5043a53ce3055819725b
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730388"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583680"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Közvetlen metódusok megismerése és meghívása az IoT Hubból
 
@@ -83,11 +83,19 @@ A kérelemben megadott `connectTimeoutInSeconds` érték azt az időtartamot hat
 
 #### <a name="example"></a>Példa
 
-Lásd alább a következőt egy barebone `curl`-példa használatával:. 
+Ez a példa lehetővé teszi, hogy biztonságosan kezdeményezzen egy közvetlen metódus meghívására irányuló kérelmet egy Azure-IoT Hub regisztrált IoT-eszközön.
+
+A kezdéshez használja a [Microsoft Azure IoT bővítményét az Azure CLI-hez](https://github.com/Azure/azure-iot-cli-extension) egy SharedAccessSignature létrehozásához. 
+
+```bash
+az iot hub generate-sas-token -n <iothubName> -du <duration>
+```
+
+Ezután cserélje le az engedélyezési fejlécet az újonnan létrehozott SharedAccessSignature, majd módosítsa a `iothubName`, `deviceId`a `methodName` és `payload` a paramétereket úgy, hogy az megfeleljen az `curl` alábbi példában szereplő parancs megvalósításának.  
 
 ```bash
 curl -X POST \
-  https://iothubname.azure-devices.net/twins/myfirstdevice/methods?api-version=2018-06-30 \
+  https://<iothubName>.azure-devices.net/twins/<deviceId>/methods?api-version=2018-06-30 \
   -H 'Authorization: SharedAccessSignature sr=iothubname.azure-devices.net&sig=x&se=x&skn=iothubowner' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -100,6 +108,14 @@ curl -X POST \
 }'
 ```
 
+Futtassa a módosított parancsot a megadott közvetlen metódus meghívásához. A sikeres kérések egy HTTP 200 állapotkódot adnak vissza.
+
+> [!NOTE]
+> A fenti példa egy közvetlen metódus meghívását mutatja be egy eszközön.  Ha közvetlen metódust szeretne meghívni egy IoT Edge modulban, módosítania kell az URL-kérést az alábbi ábrán látható módon:
+
+```bash
+https://<iothubName>.azure-devices.net/twins/<deviceId>/modules/<moduleName>/methods?api-version=2018-06
+```
 ### <a name="response"></a>Válasz
 
 A háttérbeli alkalmazás a következő elemekből álló választ kap:

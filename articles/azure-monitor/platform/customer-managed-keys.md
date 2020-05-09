@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/07/2020
-ms.openlocfilehash: 068752b01170c2f0c6411ee470d32f3dfb887dea
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
-ms.translationtype: HT
+ms.openlocfilehash: c78d8d603b6686d382ec7edcccc24d5dacc4745a
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901028"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982224"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -25,7 +25,7 @@ Javasoljuk, hogy a konfiguráció előtt tekintse át [az alábbi korlátozások
 
 - Az ebben a cikkben ismertetett CMK üzembe helyezés éles környezetben történik, és ez a funkció a korai hozzáférési szolgáltatásként is támogatott.
 
-- A CMK képesség egy dedikált Log Analytics-fürtön érhető el, amely egy fizikai fürt és adattár, amely akár napi 1 TB-ot küld az ügyfeleknek
+- A CMK képesség egy dedikált Log Analytics-fürtön érhető el, amely egy fizikai fürt és egy adattároló, amely akár napi 1 TB-ot küld az ügyfeleknek
 
 - A CMK díjszabási modell jelenleg nem érhető el, és nem szerepel ebben a cikkben. A dedikált Log Analytics-fürt díjszabási modellje várható a naptári év második negyedévében (CY) 2020, és minden meglévő CMK-telepítésre érvényes lesz.
 
@@ -74,7 +74,7 @@ A következő szabályok érvényesek:
 
 1. Előfizetés-engedélyezési lista – ez a korai hozzáférési szolgáltatáshoz szükséges
 2. Azure Key Vault létrehozása és a kulcs tárolása
-3. *Fürterőforrás* létrehozása – egy dedikált log Analytics-fürtöt hoz létre, amely egy fizikai fürt és adattár
+3. *Fürterőforrás* létrehozása
 5. Engedélyek megadása a Key Vault számára
 6. Log Analytics-munkaterületek társítása
 
@@ -179,7 +179,8 @@ A *billingType* tulajdonság határozza meg a *fürterőforrás* és a hozzá ta
 - *fürt* (alapértelmezett) – a számlázás a *fürterőforrás* üzemeltetéséhez használt előfizetéshez van hozzárendelve.
 - *munkaterületek* – a számlázás a munkaterületek arányosan üzemelő előfizetésekhez van hozzárendelve. 
 
-> [! INFORMÁCIÓ] a *fürterőforrás* létrehozása után frissítheti azt *SKU*-val, *KEYVAULTPROPERTIES* vagy *billingType* a patch Rest-kérelem használatával.
+> [!NOTE]
+> A *fürterőforrás* létrehozása után frissítheti azt *SKU*-val, *KEYVAULTPROPERTIES* vagy *billingType* a patch Rest-kérelem használatával.
 
 **Létrehozás**
 
@@ -278,7 +279,8 @@ Frissítse a *fürterőforrás* KeyVaultProperties a kulcs-azonosító részlete
 
 Ez a Resource Manager-kérelem aszinkron művelet a kulcs-azonosító részleteinek frissítésekor, miközben a kapacitás értékének frissítésekor szinkronban van.
 
-> [! INFORMÁCIÓ] az *SKU*, a *KeyVaultProperties* vagy a *billingType*frissítéséhez a *fürterőforrás* részleges törzsét is megadhatja.
+> [!Note]
+> Az *SKU*-t, a *keyVaultProperties* -t vagy a *billingType*-t egy részleges törzsben is megadhatja a *fürt* erőforrásaiban.
 
 ```rst
 PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -299,7 +301,7 @@ Content-type: application/json
        KeyVaultUri: "https://<key-vault-name>.vault.azure.net",
        KeyName: "<key-name>",
        KeyVersion: "<current-version>"
-       },
+       }
    },
    "location":"<region-name>"
 }
@@ -328,10 +330,10 @@ A *fürt* erőforrására vonatkozó kérésre adott válasznak a következőhö
     "lastSkuUpdate": "Sun, 22 Mar 2020 15:39:29 GMT"
     },
   "properties": {
-    "KeyVaultProperties": {
-      KeyVaultUri: "https://key-vault-name.vault.azure.net",
-      KeyName: "key-name",
-      KeyVersion: "current-version"
+    "keyVaultProperties": {
+      keyVaultUri: "https://key-vault-name.vault.azure.net",
+      kyName: "key-name",
+      keyVersion: "current-version"
       },
     "provisioningState": "Succeeded",
     "clusterType": "LogAnalytics", 
@@ -435,7 +437,7 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
 
 - A *fürt* erőforrásainak maximális száma régiónként és előfizetésben 2
 
-- A *fürt* erőforrásaihoz hozzárendelheti és hozzárendelheti a munkaterületeket. A munkaterület-társítások száma legfeljebb 2/30 nap
+- Hozzárendelhet egy munkaterületet a *fürt* erőforrásához, majd hozzárendelheti azt, ha az ADATAIhoz CMK már nincs szükség, vagy bármilyen más okból. A munkaterületen elvégezhető munkaterület-társítások száma 30 nap alatt legfeljebb 2 lehet
 
 - A *fürthöz* való munkaterület-társítást csak akkor kell végrehajtani, ha meggyőződött arról, hogy a dedikált log Analytics-fürt kiépítés befejeződött. A rendszer eldobta a munkaterületre a befejezés előtt elküldett adatait, és nem lesz helyreállítható.
 
@@ -453,26 +455,9 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
 - Ha egy másik *fürterőforrás* -erőforráshoz van társítva, akkor sikertelen lesz a munkaterület társítása a *fürt* erőforrásaihoz
 
 
-## <a name="troubleshooting-and-management"></a>Hibaelhárítás és felügyelet
+## <a name="management"></a>Kezelés
 
-- Key Vault rendelkezésre állási megfontolások
-    - Normál működés esetén – a tárolási gyorsítótárak rövid időre visszamenőleges gyorsítótárazást biztosítanak, és visszakerül a Key Vaultra a rendszeres kicsomagoláshoz.
-    
-    - Átmeneti kapcsolódási hibák – a tároló átmeneti hibákat (időtúllépések, kapcsolódási hibák, DNS-problémák) biztosít, mivel a kulcsok rövid ideig nem maradhatnak a gyorsítótárban, és ez a rendelkezésre állásban lévő kisméretű rendszerállapot-visszaírásokat eredményezi. A lekérdezési és a betöltési képességek megszakítás nélkül folytatódnak.
-    
-    - Élő webhely – a körülbelül 30 perces leállása miatt a Storage-fiók elérhetetlenné válik. A lekérdezési képesség nem érhető el, és a rendszer az adatvesztés elkerülése érdekében a Microsoft Key használatával több órán keresztül gyorsítótárazza az adatmennyiséget. Ha a rendszer visszaállítja a Key Vault, a lekérdezés elérhetővé válik, és az ideiglenes gyorsítótárazott adatot a rendszer betölti az adattárba, és a CMK titkosítja.
-
-- Ha létrehoz egy *fürterőforrás* -t, és azonnal megadja a KeyVaultProperties, a művelet meghiúsulhat, mivel a hozzáférési házirend nem határozható meg, amíg a rendszer identitása hozzá nem rendeli a *fürterőforrás* -erőforráshoz.
-
-- Ha a meglévő *fürterőforrás* frissítése a KeyVaultProperties és a "Get" kulcs-hozzáférési szabályzat hiányzik a Key Vault, a művelet sikertelen lesz.
-
-- Ha egy munkaterülethez társított *fürterőforrás* törlését kísérli meg, a törlési művelet sikertelen lesz.
-
-- Ha a *fürterőforrás* létrehozásakor ütközési hiba lép fel, akkor előfordulhat, hogy az elmúlt 14 napban törölte a *fürterőforrás* -t, és ez egy nem megfelelő törlési időszak. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A név akkor jelenik meg, ha a rendszer véglegesen törli a *fürt* erőforrását a helyreállított törlési időszak után.
-
-- Ha egy művelet végrehajtása közben frissíti a *fürterőforrás* -erőforrást, a művelet sikertelen lesz.
-
-- Erőforráscsoport összes *fürterőforrás* -erőforrásának beolvasása:
+- **Erőforráscsoport összes *fürterőforrás* -erőforrásának beolvasása**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -515,7 +500,7 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
   }
   ```
 
-- Az előfizetés összes *fürterőforrás* -erőforrásának beolvasása:
+- **Az előfizetés összes *fürterőforrás* -erőforrásának beolvasása**
 
   ```rst
   GET https://management.azure.com/subscriptions/<subscription-id>/providers/Microsoft.OperationalInsights/clusters?api-version=2020-03-01-preview
@@ -526,9 +511,38 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
     
   Ugyanaz a válasz, mint a "*fürterőforrás* egy erőforráscsoport esetében", de az előfizetések hatókörében.
 
-- *Kapacitás foglalásának* frissítése a *fürterőforrás* -ben – ha a társított munkaterületekhez tartozó adatmennyiség megváltozik, és frissíteni szeretné a kapacitás foglalási szintjét a számlázási megfontolások esetében, kövesse a [ *fürt* frissítése](#update-cluster-resource-with-key-identifier-details) és az új kapacitás értékét. A kapacitás foglalási szintje napi 1 000 és 2 000 GB között lehet, a 100-as lépésekben. A napi 2 000 GB-nál nagyobb szint esetén a Microsoft-kapcsolattartóval engedélyezheti.
+- ***Kapacitás foglalásának* frissítése a *fürterőforrás* -ben**
 
-- Hozzárendelési munkaterület – a művelet végrehajtásához "Write" engedélyekre van szükség a munkaterület és a *fürterőforrás* számára. Bármikor elvégezheti a munkaterületek hozzárendelését a *fürterőforrás* használatával. Az új betöltött adatmennyiség a társítási művelet Log Analytics tárolóban történő tárolása és a Microsoft-kulccsal való titkosítása után történik. Lekérdezheti a munkaterületre betöltött adatmennyiséget, mielőtt a társítást zökkenőmentesen elvégezte, amíg a *fürterőforrás* kiépítve és érvényes Key Vault kulccsal van konfigurálva.
+  Ha a társított munkaterületekhez tartozó adatmennyiség idővel módosul, és a kapacitás foglalási szintjét megfelelően szeretné frissíteni. Kövesse a [ *fürt* frissítése erőforrást](#update-cluster-resource-with-key-identifier-details) , és adja meg az új kapacitás értékét. A 1 000 és 2 000 GB közötti tartományban, illetve a 100-as lépéseknél lehet. A napi 2 000 GB-nál nagyobb szint esetén a Microsoft-kapcsolattartóval engedélyezheti. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell az SKU-t:
+
+  ```json
+  {
+    "sku": {
+      "name": "capacityReservation",
+      "Capacity": 1000
+    }
+  }
+  ``` 
+
+- ***BillingType* frissítése a *fürterőforrás* -ben**
+
+  A *billingType* tulajdonság határozza meg a *fürterőforrás* és a hozzá tartozó adatforrások számlázási hozzárendelését:
+  - *fürt* (alapértelmezett) – a számlázás a fürterőforrás üzemeltetéséhez használt előfizetéshez van hozzárendelve.
+  - *munkaterületek* – a számlázás a munkaterületek arányosan üzemelő előfizetésekhez van hozzárendelve.
+  
+  Kövesse a [ *fürt* frissítése erőforrást](#update-cluster-resource-with-key-identifier-details) , és adja meg az új billingType értéket. Vegye figyelembe, hogy nem kell megadnia a teljes REST-kérelem törzsét, és tartalmaznia kell a *billingType*:
+
+  ```json
+  {
+    "properties": {
+      "billingType": "cluster",
+      }  
+  }
+  ``` 
+
+- **Munkaterület hozzárendelése**
+
+  A művelet végrehajtásához a munkaterületre és a *fürt* erőforrására vonatkozó "írási" engedélyekre van szükség. Bármikor elvégezheti a munkaterületek hozzárendelését a *fürterőforrás* használatával. Az új betöltött adatmennyiség a társítási művelet Log Analytics tárolóban történő tárolása és a Microsoft-kulccsal való titkosítása után történik. Lekérdezheti a munkaterületre betöltött adatmennyiséget, mielőtt a társítást zökkenőmentesen elvégezte, amíg a *fürterőforrás* kiépítve és érvényes Key Vault kulccsal van konfigurálva.
 
   Ez a Resource Manager-kérelem aszinkron művelet.
 
@@ -545,7 +559,10 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
   1. Másolja az Azure-AsyncOperation URL értékét a válaszból, és kövesse az [aszinkron műveletek állapotának ellenőrzését](#asynchronous-operations-and-status-check).
   2. [Munkaterületek](https://docs.microsoft.com/rest/api/loganalytics/workspaces/get) elküldése – kérelem kérése és a válasz, de a társított munkaterület nem lesz a *szolgáltatások* *clusterResourceId* .
 
-- A *fürterőforrás* törlése – a művelet végrehajtásához írási engedéllyel kell rendelkeznie a *fürterőforrás* számára. A rendszer helyreállított törlési műveletet végez, amely lehetővé teszi a *fürterőforrás* helyreállítását 14 napon belül, akár véletlen, akár szándékos törlést is. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A Soft-delete időszak után a rendszer felszabadítja a *fürterőforrás* nevét, a *fürt* erőforrásait és adatait véglegesen törli, és nem helyreállítható. A társított munkaterület a törlési művelethez hozzárendeli a *fürterőforrás* -hozzárendelést. Az új betöltött adatot Log Analytics tárolóban tároljuk, és a Microsoft kulccsal titkosítjuk. A munkaterületek de-társított művelete aszinkron, és akár 90 percet is igénybe vehet.
+
+- **A *fürterőforrás* törlése**
+
+  A művelet elvégzéséhez írási engedéllyel kell rendelkeznie a *fürt* erőforrásához. A rendszer helyreállított törlési műveletet végez, amely lehetővé teszi a *fürterőforrás* helyreállítását 14 napon belül, akár véletlen, akár szándékos törlést is. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A Soft-delete időszak után a rendszer felszabadítja a *fürterőforrás* nevét, a *fürt* erőforrásait és adatait véglegesen törli, és nem helyreállítható. A társított munkaterület a törlési művelethez hozzárendeli a *fürterőforrás* -hozzárendelést. Az új betöltött adatot Log Analytics tárolóban tároljuk, és a Microsoft kulccsal titkosítjuk. A munkaterületek de-társított művelete aszinkron, és akár 90 percet is igénybe vehet.
 
   ```rst
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -556,4 +573,25 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
 
   200 OK
 
-- A *fürterőforrás* és az adatok helyreállítása – az elmúlt 14 napban törölt *fürterőforrás* a Soft delete állapotban van, és helyreállítható. Ezt a terméket jelenleg a termékcsoport manuálisan hajtja végre. A Microsoft-csatornát a helyreállítási kérelmekhez használhatja.
+- **A *fürterőforrás* és az adatok helyreállítása** 
+  
+  Az elmúlt 14 napban törölt *fürterőforrás* törlési állapotban van, és helyreállítható. Ezt a terméket jelenleg a termékcsoport manuálisan hajtja végre. A Microsoft-csatornát a helyreállítási kérelmekhez használhatja.
+
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+- Működés Key Vault rendelkezésre állással
+  - Normál működés esetén – a tárolási gyorsítótárak rövid időre visszamenőleges gyorsítótárazást biztosítanak, és visszakerül a Key Vaultra a rendszeres kicsomagoláshoz.
+    
+  - Átmeneti kapcsolódási hibák – a tároló átmeneti hibákat (időtúllépések, kapcsolódási hibák, DNS-problémák) biztosít, mivel a kulcsok rövid ideig nem maradhatnak a gyorsítótárban, és ez a rendelkezésre állásban lévő kisméretű rendszerállapot-visszaírásokat eredményezi. A lekérdezési és a betöltési képességek megszakítás nélkül folytatódnak.
+    
+  - Élő webhely – a körülbelül 30 perces leállása miatt a Storage-fiók elérhetetlenné válik. A lekérdezési képesség nem érhető el, és a rendszer az adatvesztés elkerülése érdekében a Microsoft Key használatával több órán keresztül gyorsítótárazza az adatmennyiséget. Ha a rendszer visszaállítja a Key Vault, a lekérdezés elérhetővé válik, és az ideiglenes gyorsítótárazott adatot a rendszer betölti az adattárba, és a CMK titkosítja.
+
+- Ha létrehoz egy *fürterőforrás* -t, és azonnal megadja a KeyVaultProperties, a művelet meghiúsulhat, mivel a hozzáférési házirend nem határozható meg, amíg a rendszer identitása hozzá nem rendeli a *fürterőforrás* -erőforráshoz.
+
+- Ha a meglévő *fürterőforrás* frissítése a KeyVaultProperties és a "Get" kulcs-hozzáférési szabályzat hiányzik a Key Vault, a művelet sikertelen lesz.
+
+- Ha egy munkaterülethez társított *fürterőforrás* törlését kísérli meg, a törlési művelet sikertelen lesz.
+
+- Ha a *fürterőforrás* létrehozásakor ütközési hiba lép fel, akkor előfordulhat, hogy az elmúlt 14 napban törölte a *fürterőforrás* -t, és ez egy nem megfelelő törlési időszak. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A név akkor jelenik meg, ha a rendszer véglegesen törli a *fürt* erőforrását a helyreállított törlési időszak után.
+
+- Ha egy művelet végrehajtása közben frissíti a *fürterőforrás* -erőforrást, a művelet sikertelen lesz.

@@ -1,22 +1,22 @@
 ---
-title: Az állam-és tartományi kódok közös értékesítése | Azure piactér
-description: Ezeket az állapot-és tartományi kódokat akkor használja, ha az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
+title: Állami és tartományi kódok közös értékesítése az Azure Marketplace-en
+description: Szerezze be a rendelkezésre álló állam-és tartományi kódokat, amikor az Azure Marketplace-en az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: 782f2d6facb28630989f086a68c551314e02e48e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a39cb5f49c9f038f567b7f3322b5962bc1dc9fc8
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619363"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744706"
 ---
-# <a name="co-sell-state-and-province-codes"></a>Az állam-és tartományi kódok közös értékesítése
+# <a name="co-sell-state-and-province-codes-in-azure-marketplace"></a>Állami és tartományi kódok közös értékesítése az Azure Marketplace-en
 
-Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak megadásához, amikor [az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat](commercial-marketplace-co-sell.md#contacts)nyújt.
+Ez a cikk felsorolja a rendelkezésre álló állam-és tartományi kódokat, amikor az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat nyújt. Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak megadásához, amikor [az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat](commercial-marketplace-co-sell.md#contacts)nyújt.
 
 ## <a name="us-states-and-territories"></a>Egyesült Államok és területek
 

@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/25/2020
 ms.author: glenga
-ms.openlocfilehash: a84f0a92703d1b626710cfc4dcfa2820bc58bda6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3929ffa81a8b558d8cb0dbd74135acc9cf1ea47b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673205"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82876067"
 ---
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
@@ -24,7 +24,7 @@ Mielőtt elkezdené, a következőkkel kell rendelkeznie:
 + A Python 3,6-es és 3,7-es verziójának [Azure functions Core Tools](../articles/azure-functions/functions-run-local.md#v2) 2.7.1846 vagy újabb 2. x verziójúnak kell lennie. A Python 3,8-es verziójának a Core Tools [3. x verzióját](../articles/azure-functions/functions-run-local.md#v2) kell megadnia.
 ::: zone-end
 
-+ Az [Azure CLI](/cli/azure/install-azure-cli) verziója 2.0.76 vagy újabb. 
++ Az [Azure CLI](/cli/azure/install-azure-cli) 2,4-es vagy újabb verziója. 
 ::: zone pivot="programming-language-javascript,programming-language-typescript"
 + [Node. js](https://nodejs.org/), aktív LTS és karbantartási LTS-verziók (8.11.1 és 10.14.1 ajánlott).
 ::: zone-end

@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 3/13/2020
+ms.date: 5/4/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: a60b927f7239818b582ffcd85ddb4b7d69594482
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 09f27c922df4a15858236b2635b962f4bc92811b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535961"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871536"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai
 
@@ -37,13 +37,31 @@ A hitelesítési rendszer folyamatosan módosítja és hozzáadja a szolgáltat�
 
 Jelenleg nincs ütemezve.  Tekintse meg az alábbi, a vagy az éles környezetben futó módosításokat.
 
+## <a name="may-2020"></a>2020. május
+
+### <a name="azure-government-endpoints-are-changing"></a>Azure Government végpontok változnak
+
+Hatálybalépés **dátuma**: május 5. (Befejezés 2020. június) 
+
+Érintett **végpontok**: az összes
+
+Érintett **protokoll**: minden folyamat
+
+2018 `https://login.microsoftonline.us`. június 1-jén a Azure Government hivatalos Azure Active Directory (HRE) hatósága a verzióról `https://login-us.microsoftonline.com` a verzióra változott. Ez a változás a Microsoft 365 GCC High és a DoD szolgáltatásra is vonatkozik, amely Azure Government HRE is. Ha egy Egyesült államokbeli kormányzati bérlőn belül egy alkalmazás tulajdonosa, akkor frissítenie kell az alkalmazást, hogy aláírja a felhasználókat a `.us` végponton.  
+
+Május 5. után az Azure AD megkezdi a végpont változásának érvényesítését, és blokkolja a kormányzati felhasználókat a nyilvános végpont (`microsoftonline.com`) használatával az USA kormányzati bérlői által üzemeltetett alkalmazásokba való bejelentkezéskor.  Az érintett alkalmazások megkezdik a hibát `AADSTS900439`  -  `USGClientNotSupportedOnPublicEndpoint`. Ez a hiba azt jelzi, hogy az alkalmazás egy Egyesült államokbeli kormányzati felhasználót próbál bejelentkezni a nyilvános Felhőbeli végponton. Ha az alkalmazás egy nyilvános Felhőbeli bérlőn van, és az USA kormányzati felhasználóinak támogatására szolgál, [frissítenie kell az alkalmazást, hogy explicit módon támogassa őket](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud). Ehhez szükség lehet új alkalmazás-regisztráció létrehozására az USA kormányzati felhőben. 
+
+Ennek a változásnak a kényszerítése egy fokozatos bevezetéssel történik, attól függően, hogy az Egyesült államokbeli kormányzati Felhőbeli felhasználók milyen gyakran jelentkeznek be az USA kormányzati felhasználóinak az alkalmazásba való bejelentkezéshez. A kényszerítést arra várjuk, hogy az összes alkalmazásban az 2020-es verzióban befejeződjön. 
+
+További részletekért tekintse meg az [áttelepítés Azure Government blogbejegyzését](https://devblogs.microsoft.com/azuregov/azure-government-aad-authority-endpoint-update/). 
+
 ## <a name="march-2020"></a>2020. március
 
 ### <a name="user-passwords-will-be-restricted-to-256-characters"></a>A felhasználói jelszavak 256 karakterre lesznek korlátozva.
 
 Hatálybalépés **dátuma**: március 13., 2020
 
-Érintett **végpontok**: v 1.0 és v 2.0
+Érintett **végpontok**: az összes
 
 Érintett **protokoll**: minden felhasználói folyamat.
 

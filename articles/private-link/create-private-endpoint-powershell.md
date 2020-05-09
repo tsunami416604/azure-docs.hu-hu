@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 60032677594537f1e7791b7108eebd5d4cfad5b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8af33e95c92cf51bdabe3325bd9249b4662b7d28
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75430339"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82583771"
 ---
 # <a name="create-a-private-endpoint-using-azure-powershell"></a>Privát végpont létrehozása Azure PowerShell használatával
 A privát végpont az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a Virtual Machines (VM-EK) számára, hogy magánjellegű módon kommunikáljanak a privát kapcsolati erőforrásokkal. 
@@ -137,7 +137,7 @@ $subnet = $virtualNetwork `
 $privateEndpoint = New-AzPrivateEndpoint -ResourceGroupName "myResourceGroup" `
   -Name "myPrivateEndpoint" `
   -Location "westcentralus" `
-  -Subnet  $subnet`
+  -Subnet  $subnet `
   -PrivateLinkServiceConnection $privateEndpointConnection
 ``` 
 
@@ -198,9 +198,10 @@ mstsc /v:<publicIpAddress>
 ## <a name="access-sql-database-server-privately-from-the-vm"></a>SQL Database kiszolgáló magánhálózati elérése a virtuális gépről
 
 1. A myVM Távoli asztal nyissa meg a PowerShellt.
-2. Írja be a `nslookup myserver.database.windows.net` (igen) kifejezést. 
+2. Írja be a `nslookup myserver.database.windows.net` (igen) kifejezést. Ne felejtse `myserver` el lecserélni az SQL-kiszolgáló nevét.
 
     Ehhez hasonló üzenet jelenik meg:
+    
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -209,14 +210,21 @@ mstsc /v:<publicIpAddress>
     Address:  10.0.0.5
     Aliases:   myserver.database.windows.net
     ```
-3. SQL Server Management Studio telepítése
-4. A Kapcsolódás a kiszolgálóhoz lapon adja meg vagy válassza ki ezt az információt: érték-kiszolgáló típusának beállítása adatbázismotor.
-      Kiszolgáló neve válassza a myserver.database.windows.net felhasználónevet, adja meg a létrehozás során megadott felhasználónevet.
-      A jelszó mezőbe írja be a létrehozás során megadott jelszót.
-      Jelszó megjegyzése: válassza az Igen lehetőséget.
-5. Kattintson a Csatlakozás gombra.
-6. A bal oldali menüben lévő adatbázisok tallózása. 
-7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase
+    
+3. Telepítse a SQL Server Management Studio.
+4. A **Kapcsolódás a kiszolgálóhoz**lapon adja meg vagy válassza ki az alábbi adatokat:
+
+    | Beállítás | Érték |
+    | --- | --- |
+    | Kiszolgáló típusa | Adatbázismotor |
+    | Kiszolgálónév | myserver.database.windows.net |
+    | Felhasználónév | Adja meg a létrehozás során megadott felhasználónevet |
+    | Jelszó | Adja meg a létrehozás során megadott jelszót |
+    | Jelszó megjegyzése | Igen |
+    
+5. Kattintson a **Csatlakozás** gombra.
+6. Az **adatbázisok** tallózása a bal oldali menüben. 
+7. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
 8. A távoli asztali kapcsolat bezárásával *myVM*. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
