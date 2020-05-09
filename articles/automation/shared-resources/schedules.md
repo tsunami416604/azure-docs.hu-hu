@@ -1,6 +1,6 @@
 ---
 title: Ütemtervek kezelése Azure Automation
-description: Az Automation-ütemtervek segítségével ütemezhet runbookok az Azure Automation az automatikus indításhoz. Ismerteti, hogyan lehet ütemtervet létrehozni és felügyelni, hogy automatikusan elindítson egy runbook egy adott időpontban vagy ismétlődő ütemterv szerint.
+description: Megtudhatja, hogyan hozhat létre és kezelhet egy ütemtervet a Azure Automationban, hogy automatikusan elindítson egy runbook egy adott időpontban vagy ismétlődő ütemterv szerint.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 17d46ddb738abc812ebfc458e25c745b84a29c2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4cd6d4236b95a17f404df13e8b50daf989cf6072
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82136600"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652112"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Ütemtervek kezelése Azure Automation
 
-Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy vagy több ütemtervhez kell csatolni. Az ütemterv beállítható úgy, hogy egyszer, vagy a Azure Portalban lévő runbookok óránként vagy napi rendszerességgel történjen. Azt is megteheti, hogy hetente, havonta vagy a hónap adott napjain, vagy a hónap adott napján van-e beütemezhetve. Egy runbook több ütemezéssel is összekapcsolható, és egy ütemezéshez több runbook is kapcsolódhat.
+Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy vagy több ütemtervhez kell csatolni. Az ütemterv beállítható úgy, hogy egyszer vagy ismétlődően, óránként vagy napi szinten fusson a Azure Portal runbookok. Azt is megteheti, hogy hetente, havonta vagy a hónap adott napjain, vagy a hónap adott napján van-e beütemezhetve. Egy runbook több ütemezéssel is összekapcsolható, és egy ütemezéshez több runbook is kapcsolódhat.
 
 > [!NOTE]
 > Az ütemtervek jelenleg nem támogatják Azure Automation DSC-konfigurációkat.
@@ -26,9 +26,9 @@ Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy 
 >[!NOTE]
 >A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
 
-## <a name="powershell-cmdlets"></a>PowerShell-parancsmagok
+## <a name="powershell-cmdlets-used-to-access-schedules"></a>Az ütemtervekhez való hozzáféréshez használt PowerShell-parancsmagok
 
-A következő táblázatban található parancsmagok a PowerShell-lel Azure Automation-ben történő létrehozásához és kezeléséhez használatosak. A [Azure PowerShell modul](/powershell/azure/overview)részeként szállítanak.
+Az alábbi táblázatban található parancsmagok automatizálási ütemterveket hoznak létre és kezelhetnek a PowerShell használatával. Az az [modulok](modules.md#az-modules)részét képezik. 
 
 | Parancsmagok | Leírás |
 |:--- |:--- |
@@ -40,29 +40,28 @@ A következő táblázatban található parancsmagok a PowerShell-lel Azure Auto
 | [Set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) |Egy meglévő ütemterv tulajdonságainak beállítása. |
 | [Regisztráció törlése – AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Unregister-AzAutomationScheduledRunbook?view=azps-3.7.0) |Egy runbook leválasztása az ütemtervből. |
 
-## <a name="creating-a-schedule"></a>Ütemterv létrehozása
+## <a name="create-a-schedule"></a>Ütemterv létrehozása
 
-A runbookok új ütemtervet hozhat létre a Azure Portal vagy a PowerShell használatával.
+A runbookok új ütemtervet hozhat létre a Azure Portal vagy a PowerShell használatával. Ha el szeretné kerülni a runbookok és az általuk automatizálható folyamatokat, először tesztelje azokat a runbookok, amelyeken a társított ütemtervek egy tesztelésre kijelölt Automation-fiókkal rendelkeznek. Egy teszt ellenőrzi, hogy az ütemezett runbookok továbbra is megfelelően működik-e. Ha problémát tapasztal, a frissített runbook-verzió éles környezetbe történő áttelepítése előtt hárítsa el és alkalmazza a szükséges módosításokat.
 
 > [!NOTE]
-> A Azure Automation az Automation-fiók legújabb moduljait használja új ütemezett feladatok futtatásakor.  Ha el szeretné kerülni a runbookok és az általuk automatizálható folyamatok hatását, először tesztelje azokat a runbookok, amelyeken a társított ütemtervek egy tesztelésre kijelölt Automation-fiókkal rendelkeznek.  Ez ellenőrzi, hogy az ütemezett runbookok továbbra is megfelelően működik-e, és ha nem, akkor a frissített runbook verziójának éles környezetbe történő áttelepítése előtt továbbra is elháríthatja és alkalmazhatja a szükséges módosításokat.
-> Az Automation-fiókja nem kapja meg automatikusan a modulok új verzióit, hacsak nem frissíti őket manuálisan az [Azure-modulok frissítése](../automation-update-azure-modules.md) lehetőség kiválasztásával a **modulokból**.
+> Az Automation-fiókja nem kapja meg automatikusan a modulok új verzióit, hacsak nem frissíti őket manuálisan az [Azure-modulok frissítése](../automation-update-azure-modules.md) lehetőség kiválasztásával a **modulokból**. A Azure Automation az Automation-fiók legújabb moduljait használja új ütemezett feladatok futtatásakor. 
 
 ### <a name="create-a-new-schedule-in-the-azure-portal"></a>Új ütemterv létrehozása a Azure Portal
 
 1. A Azure Portal az Automation-fiókjából válassza a bal oldalon található **megosztott erőforrások** szakaszban az **ütemtervek** lehetőséget.
-2. Kattintson a lap tetején az **ütemterv hozzáadása** lehetőségre.
-3. Az új ütemterv panelen adjon meg egy nevet és opcionálisan egy leírást az új ütemtervhez.
-4. Válassza ki, hogy az ütemterv **egyszer** fut-e, vagy egy **ismétlődő**ütemterven. Ha **egyszer**van kiválasztva, adjon meg egy kezdési időpontot, majd kattintson a **Létrehozás**gombra. Ha az **ismétlődő**lehetőséget választja, adjon meg egy kezdési időpontot. Az **ismétlődéshez**válassza ki, hogy milyen gyakran szeretné megismételni a runbook az óra, nap, hét vagy hónap alapján.
-    1. Ha a **hét**lehetőséget választja, a hét napjai láthatók. Válasszon annyi napot, amennyit csak szeretne. Az ütemterv első futtatása a kezdési időpont után kiválasztott első napon fog történni. Ha például hétvégi menetrendet szeretne választani, válassza a szombat és a vasárnap lehetőséget. 
+1. A lap tetején kattintson az **ütemterv hozzáadása** lehetőségre.
+1. Az **új ütemterv** panelen adjon meg egy nevet, és szükség esetén adja meg az új ütemterv leírását.
+1. Válassza ki, hogy az ütemterv **egyszer** vagy **ismétlődően**fusson-e egy egyszeri vagy ismétlődő kijelöléssel. Ha **egyszer**van kiválasztva, adjon meg egy kezdési időpontot, majd válassza a **Létrehozás**lehetőséget. Ha az **ismétlődő**lehetőséget választja, adjon meg egy kezdési időpontot. Az **ismétlődéshez**válassza ki, hogy milyen gyakran szeretné megismételni a runbook. Válassza az óra, nap, hét vagy hónap lehetőséget.
+    1. Ha a **hét**lehetőséget választja, a hét napjai láthatók. Válasszon annyi napot, amennyit csak szeretne. Az ütemterv első futtatása a kezdési időpont után kiválasztott első napon fog történni. Ha például hétvégi menetrendet szeretne választani, válassza a szombat és a vasárnap lehetőséget.
     
        ![Hétvégi ismétlődő ütemterv beállítása](../media/schedules/week-end-weekly-recurrence.png)
 
-    2. Ha a **hónap**lehetőséget választja, különböző beállításokat kap. A **havi előfordulások** beállításnál válassza a **hónap napja** vagy a **hét napja**lehetőséget. Ha a **hónap napjait**választja, megjelenik egy naptár, amely lehetővé teszi, hogy a kívánt számú napot válassza ki. Ha olyan dátumot választ, mint az aktuális hónapban nem előforduló 31, az ütemterv nem fog futni. Ha azt szeretné, hogy az ütemezett futtatás az elmúlt nap folyamán fusson, válassza az **Igen** lehetőséget a **hónap utolsó napján**. Ha a **hét napja**lehetőséget választja, az **Ismétlődés minden** beállítás megjelenik. Válassza az **első**, a **második**, a **harmadik**, a **negyedik**vagy a **utolsó**lehetőséget. Végül válasszon ki egy napot a megismétléshez.
+    2. Ha a **hónap**lehetőséget választja, különböző beállításokat kap. A **havi előfordulások** beállításnál válassza a **hónap napja** vagy a **hét napja**lehetőséget. Ha a **hónap napja**lehetőséget választja, akkor a naptár úgy jelenik meg, hogy a kívánt számú napot válassza ki. Ha olyan dátumot választ, mint az aktuális hónapban nem előforduló 31, az ütemterv nem fog futni. Ha azt szeretné, hogy az ütemterv az utolsó napon fusson, válassza az **Igen** lehetőséget a **hónap utolsó napján futtatva**. Ha a **hét napja**lehetőséget választja, megjelenik az **Ismétlődés minden** lehetőség. Válassza az **első**, a **második**, a **harmadik**, a **negyedik**vagy a **utolsó**lehetőséget. Végül válasszon ki egy napot a megismétléshez.
 
        ![Havi ütemterv a hónap első, tizenötödik és utolsó napján](../media/schedules/monthly-first-fifteenth-last.png)
 
-5. Ha elkészült, kattintson a **Létrehozás**gombra.
+1. Ha elkészült, válassza a **Létrehozás**lehetőséget.
 
 ### <a name="create-a-new-schedule-with-powershell"></a>Új ütemterv létrehozása a PowerShell-lel
 
@@ -70,7 +69,7 @@ A runbookok új ütemtervet hozhat létre a Azure Portal vagy a PowerShell haszn
 
 #### <a name="create-a-one-time-schedule"></a>Egyszeri ütemterv létrehozása
 
-A következő minta-parancsok egy egyszeri ütemtervet hoznak létre.
+Az alábbi példa egy egyszeri ütemtervet hoz létre.
 
 ```azurepowershell-interactive
 $TimeZone = ([System.TimeZoneInfo]::Local).Id
@@ -79,7 +78,7 @@ New-AzAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Sched
 
 #### <a name="create-a-recurring-schedule"></a>Ismétlődő ütemterv létrehozása
 
-Az alábbi példa bemutatja, hogyan hozhat létre olyan ismétlődő ütemezést, amely minden nap 1 órakor fut egy évig.
+Az alábbi példa bemutatja, hogyan hozhat létre olyan ismétlődő ütemezést, amely minden nap 1:00 ÓRAKOR fut egy évig.
 
 ```azurepowershell-interactive
 $StartTime = Get-Date "13:00:00"
@@ -99,7 +98,7 @@ New-AzAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Sched
 
 #### <a name="create-a-weekly-recurring-schedule-for-weekends"></a>Heti ismétlődő ütemterv létrehozása hétvégek számára
 
-Az alábbi példák azt mutatják be, hogyan hozhat létre hetente csak hétvégeken futó ütemtervet.
+Az alábbi példa bemutatja, hogyan hozhat létre hetente csak hétvégeken futó ütemtervet.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
@@ -107,30 +106,30 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Weekends 6PM" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekendDays -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-recurring-schedule-for-first-15th-and-last-days-of-the-month"></a>Ismétlődő ütemterv létrehozása a hónap első, 15 és utolsó napjaihoz
+#### <a name="create-a-recurring-schedule-for-the-first-fifteenth-and-last-days-of-the-month"></a>Ismétlődő ütemterv létrehozása a hónap első, tizenötödik és utolsó napjaihoz
 
-Az alábbi példa bemutatja, hogyan hozhat létre olyan ismétlődő ütemtervet, amely egy hónap 1., 15. és utolsó napján fut.
+Az alábbi példa bemutatja, hogyan hozhat létre olyan ismétlődő ütemtervet, amely egy hónap első, tizenötödik és utolsó napján fut.
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st, 15th and Last" -StartTime $StartTime -DaysOfMonth @("One", "Fifteenth", "Last") -ResourceGroupName "TestAzureAuto" -MonthInterval 1
 ```
 
-## <a name="linking-a-schedule-to-a-runbook"></a>Ütemterv összekapcsolása egy runbook
+## <a name="link-a-schedule-to-a-runbook"></a>Ütemterv összekapcsolása egy runbook
 
-Egy runbook több ütemezéssel is összekapcsolható, és egy ütemezéshez több runbook is kapcsolódhat. Ha egy runbook paraméterekkel rendelkezik, akkor megadhatja az értékeket. Meg kell adnia a kötelező paraméterek értékeit, és a választható paraméterek értékét is megadhatja. Ezeket az értékeket a rendszer minden alkalommal felhasználja, amikor ez az ütemterv elindítja a runbook. Ugyanezt a runbook egy másik ütemtervhez is csatolhatja, és különböző paramétereket adhat meg.
+Egy runbook több ütemezéssel is összekapcsolható, és egy ütemezéshez több runbook is kapcsolódhat. Ha egy runbook paraméterekkel rendelkezik, akkor megadhatja az értékeket. Meg kell adnia minden kötelező paraméter értékét, és megadhatja a választható paraméterek értékét is. Ezeket az értékeket a rendszer minden alkalommal felhasználja, amikor ez az ütemterv elindítja a runbook. Ugyanezt a runbook egy másik ütemtervhez is csatolhatja, és különböző paramétereket adhat meg.
 
 ### <a name="link-a-schedule-to-a-runbook-with-the-azure-portal"></a>Ütemterv összekapcsolása egy runbook a Azure Portal
 
 1. A Azure Portal Automation-fiókjából válassza a **runbookok** lehetőséget a **folyamat automatizálása**alatt.
-2. Kattintson az ütemezni kívánt runbook nevére.
-3. Ha a runbook jelenleg nincs ütemtervhez csatolva, lehetősége van arra, hogy új ütemtervet hozzon létre, vagy egy meglévő ütemtervre hivatkozzon.
-4. Ha a runbook paraméterekkel rendelkezik, válassza a **Futtatási beállítások módosítása (alapértelmezett: Azure)** lehetőséget, és megjelenik a paraméterek panel. Itt megadhatja a paraméterre vonatkozó információkat.
+1. Válassza ki az ütemezni kívánt runbook nevét.
+1. Ha a runbook jelenleg nincs ütemtervhez csatolva, lehetősége van arra, hogy új ütemtervet hozzon létre, vagy egy meglévő ütemtervre hivatkozzon.
+1. Ha a runbook paraméterekkel rendelkezik, akkor válassza a **Futtatási beállítások módosítása (alapértelmezett: Azure)** lehetőséget, és megjelenik a **Paraméterek** panel. Itt megadhatja a paraméterre vonatkozó információkat.
 
 ### <a name="link-a-schedule-to-a-runbook-with-powershell"></a>Ütemterv összekapcsolása runbook a PowerShell-lel
 
-Az ütemterv összekapcsolásához használja a [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) parancsmagot. A Parameters paraméter segítségével megadhatja a runbook paramétereinek értékét. A paraméterek értékeinek megadásával kapcsolatos további információkért lásd: [Runbook elindítása Azure Automationban](../automation-starting-a-runbook.md).
-Az alábbi példa bemutatja, hogyan kapcsolhat össze egy ütemtervet egy runbook egy Azure Resource Manager parancsmaggal paraméterekkel.
+Az ütemterv összekapcsolásához használja a [Register-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/Az.Automation/Register-AzAutomationScheduledRunbook?view=azps-3.7.0) parancsmagot. A Parameters paraméter segítségével megadhatja a runbook paramétereinek értékét. A paraméterek értékének megadásával kapcsolatos további információkért lásd: [Runbook elindítása Azure Automationban](../automation-starting-a-runbook.md).
+Az alábbi példa azt szemlélteti, hogyan kapcsolhat össze egy ütemtervet egy runbook egy Azure Resource Manager parancsmag használatával paraméterekkel.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -142,32 +141,32 @@ Register-AzAutomationScheduledRunbook –AutomationAccountName $automationAccoun
 -ResourceGroupName "ResourceGroup01"
 ```
 
-## <a name="scheduling-runbooks-to-run-more-frequently"></a>Runbookok ütemezése gyakrabban
+## <a name="schedule-runbooks-to-run-more-frequently"></a>Runbookok ütemezett futtatása gyakrabban
 
-A leggyakoribb intervallum egy óra Azure Automation konfigurálható. Ha az ütemtervek végrehajtásához gyakrabban kell végrehajtani a műveleteket, akkor két lehetőség közül választhat:
+Az a leggyakoribb időköz, ameddig Azure Automation konfigurálható egy óra. Ha azt szeretné, hogy az ütemtervek gyakrabban fussanak, mint az, két lehetőség közül választhat:
 
-* Hozzon létre egy [webhookot](../automation-webhooks.md) a runbook, és használja a [Azure Logic Appst](../../logic-apps/logic-apps-overview.md) a webhook meghívásához. A Azure Logic Apps az ütemterv meghatározásakor részletesebb részletességet biztosít.
+* Hozzon létre egy [webhookot](../automation-webhooks.md) a runbook, és [Azure Logic apps](../../logic-apps/logic-apps-overview.md) használatával hívja meg a webhookot. Azure Logic Apps részletesebb részletességet biztosít az ütemterv definiálásához.
 
-* Hozzon létre négy ütemezett ütemtervet, amelyek mindegyike óránként 15 percen belül elindul. Ez a forgatókönyv lehetővé teszi, hogy a runbook 15 percenként fusson a különböző ütemtervekkel.
+* Hozzon létre négy olyan ütemtervet, amely 15 percen belül kezdődik, és óránként egyszer fut. Ez a forgatókönyv lehetővé teszi, hogy a runbook 15 percenként fusson a különböző ütemtervekkel.
 
-## <a name="disabling-a-schedule"></a>Ütemterv letiltása
+## <a name="disable-a-schedule"></a>Ütemterv letiltása
 
-Ha letilt egy ütemtervet, az ahhoz társított összes runbook már nem fut az adott ütemterven. Manuálisan letilthatja az ütemtervet, vagy megadhat egy lejárati időt az ütemtervekhez a létrehozásuk gyakorisága alapján. A lejárati idő elérésekor az ütemterv le lesz tiltva.
+Ha letilt egy ütemtervet, az ahhoz társított összes runbook már nem fut az adott ütemterven. Manuálisan letilthatja az ütemtervet, vagy megadhat egy lejárati időt az ütemtervekhez a létrehozásuk gyakorisága alapján. A lejárati idő elérésekor az ütemterv le van tiltva.
 
 ### <a name="disable-a-schedule-from-the-azure-portal"></a>Ütemterv letiltása a Azure Portal
 
 1. Az Automation-fiókban válassza az **ütemtervek** lehetőséget a **megosztott erőforrások**területen.
-2. Kattintson az ütemterv nevére a részletek ablaktábla megnyitásához.
-3. Az **engedélyezve** érték **nem**értékre vált.
+1. Válassza ki az ütemterv nevét a részletek ablaktábla megnyitásához.
+1. Az **engedélyezve** érték **nem**értékre vált.
 
 > [!NOTE]
-> Ha le szeretné tiltani egy olyan ütemtervet, amely múltbeli kezdési időpontot tartalmaz, akkor a Mentés előtt módosítania kell a kezdési dátumot a jövőbeli időpontra.
+> Ha le szeretné tiltani egy olyan ütemtervet, amely múltbeli kezdési időpontot tartalmaz, a Mentés előtt módosítania kell a kezdési dátumot a jövőbeli időpontra.
 
 ### <a name="disable-a-schedule-with-powershell"></a>Ütemterv letiltása a PowerShell-lel
 
 A [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) parancsmag használatával módosíthatja a meglévő ütemtervek tulajdonságait. Az ütemterv letiltásához a paraméternél a `IsEnabled` FALSE értéket kell megadnia.
 
-Az alábbi példa bemutatja, hogyan tilthatja le egy runbook egy Azure Resource Manager parancsmag használatával.
+Az alábbi példa bemutatja, hogyan tilthatja le egy runbook ütemezett használatát egy Azure Resource Manager parancsmag használatával.
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -176,9 +175,9 @@ Set-AzAutomationSchedule –AutomationAccountName $automationAccountName `
 –Name $scheduleName –IsEnabled $false -ResourceGroupName "ResourceGroup01"
 ```
 
-## <a name="removing-a-schedule"></a>Ütemterv eltávolítása
+## <a name="remove-a-schedule"></a>Ütemterv eltávolítása
 
-Ha készen áll az ütemtervek eltávolítására, használhatja a Azure Portal vagy a `Remove-AzureRmAutomationSchedule` parancsmagot is. Ne feledje, hogy csak az előző szakaszban leírtak szerint letiltott ütemtervet lehet eltávolítani.
+Ha készen áll az ütemtervek eltávolítására, használhatja a Azure Portal vagy a PowerShellt is. Ne feledje, hogy csak az előző szakaszban leírtak szerint letiltott ütemtervet lehet eltávolítani.
 
 ### <a name="remove-a-schedule-using-the-azure-portal"></a>Ütemterv eltávolítása a Azure Portal használatával
 
@@ -188,7 +187,7 @@ Ha készen áll az ütemtervek eltávolítására, használhatja a Azure Portal 
 
 ### <a name="remove-a-schedule-with-powershell"></a>Ütemterv eltávolítása a PowerShell-lel
 
-A [Remove-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationSchedule?view=azps-3.7.0) parancsmag használatával törölheti a meglévőket. 
+Meglévő ütemterv törléséhez `Remove-AzAutomationSchedule` használhatja a parancsmagot az alábbi ábrán látható módon. 
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"
@@ -199,4 +198,5 @@ Remove-AzAutomationSchedule -AutomationAccountName $automationAccountName `
 
 ## <a name="next-steps"></a>További lépések
 
-* A Azure Automation runbookok megkezdéséhez tekintse meg a következő témakört: [Runbook elindítása Azure Automationban](../automation-starting-a-runbook.md).
+* Ha többet szeretne megtudni az ütemtervek eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
+* A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).

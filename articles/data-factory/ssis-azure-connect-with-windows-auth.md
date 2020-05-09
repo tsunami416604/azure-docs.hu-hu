@@ -10,14 +10,16 @@ ms.technology: integration-services
 author: swinarko
 ms.author: sawinark
 ms.reviewer: maghan
-ms.openlocfilehash: 0c4cdc3481fb58efd8eaa4cd83e1d6167f203a4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6f2983b375e3eeb73a0372e123d4d2763b3c65ec
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81760185"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629388"
 ---
 # <a name="access-data-stores-and-file-shares-with-windows-authentication-from-ssis-packages-in-azure"></a>Adattárak és fájlmegosztások elérése Windows-hitelesítéssel, Azure-beli SSIS-csomagokból
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 A Windows-hitelesítéssel olyan adattárakhoz férhet hozzá, mint például az SQL-kiszolgálók, a fájlmegosztások, a Azure Files stb. a Azure Data Factory (ADF) Azure-SSIS Integration Runtimeon (IR) futó SSIS-csomagokból. Az adattárak lehetnek a helyszínen, az Azure Virtual Machines (VM) szolgáltatásban, vagy az Azure-ban felügyelt szolgáltatásként futnak. Ha a helyszínen vannak, csatlakoztatnia kell a Azure-SSIS IRt a helyszíni hálózathoz csatlakoztatott Virtual Networkhoz (Microsoft Azure Virtual Network), lásd: [csatlakozás Azure-SSIS IR egy Microsoft Azure Virtual Networkhoz](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). Az adattárakat négy módon érheti el a Azure-SSIS IR futó SSIS-csomagokból származó Windows-hitelesítéssel:
 

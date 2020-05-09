@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ff6ae0de0bbd8c47b81fa5066a97eb0b3e0cf6bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 29852eb0920f7bb32464d91e0be65c7dcb03325c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204392"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627959"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
 
@@ -81,7 +81,6 @@ Például:
 További részletekért tekintse meg a következő cikkeket és mintakód-kódot:
 
 * [Azure Machine learning Studio (klasszikus) parancsmagok](https://docs.microsoft.com/powershell/module/az.machinelearning) referenciája az MSDN-ben
-* [Útmutató](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) a githubon
 
 ## <a name="consume-the-web-services"></a>A webszolgáltatások felhasználása
 
