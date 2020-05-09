@@ -10,35 +10,40 @@ manager: anandsub
 ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/09/2019
-ms.openlocfilehash: 3007865c15ceb03b104282c29179ec59a8196b38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: f327844be57d7f8e177f3bf72b1e3b56c5147e00
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604587"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629337"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Verziókövetés a Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-A Azure Data Factory felhasználói felületi élmény (UX) a Visual authoring szolgáltatásban két funkciót kínál:
+Alapértelmezés szerint a Azure Data Factory felhasználói felületi élmény (UX) szerzője közvetlenül a The Refactory szolgáltatással szemben. Ez a felhasználói élmény a következő korlátozásokkal jár:
 
-- Szerzői közvetlenül a Data Factory szolgáltatással
-- Az Azure Repos git vagy a GitHub integrációjának szerzője
+- A Data Factory szolgáltatás nem tartalmaz olyan tárházat, amely a változtatások JSON-entitásait tárolja. A módosítások mentésének egyetlen módja az **összes közzététele** gomb, és az összes módosítás közvetlenül a Refactory szolgáltatásban lesz közzétéve.
+- A Data Factory szolgáltatás nem az együttműködéshez és a verziókövetés-vezérléshez van optimalizálva.
+
+A jobb authoring Experience Azure Data Factory lehetővé teszi egy git-tárház konfigurálását az Azure Repos vagy a GitHub használatával. A git egy verziókövető rendszer, amely megkönnyíti a változások nyomon követését és együttműködését. Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat és dolgozhat a git-tárházban, valamint kiemelheti az ajánlott eljárásokat és a hibaelhárítási útmutatót.
 
 > [!NOTE]
-> A Azure Government-felhőben csak a Data Factory szolgáltatással történő közvetlen szerzői műveletek támogatottak.
+> Az Azure-beli adatgyári git-integráció nem érhető el a Azure Government felhőben.
 
-## <a name="author-directly-with-the-data-factory-service"></a>Szerzői közvetlenül a Data Factory szolgáltatással
+## <a name="advantages-of-git-integration"></a>A Git-integráció előnyei
 
-A Data Factory szolgáltatással végzett szerzői műveletek során a módosítások mentéséhez kizárólag az **összes közzététele** gomb segítségével lehet menteni. Ha rákattintott, az összes elvégzett módosítás közvetlenül a Data Factory szolgáltatásban lesz közzétéve. 
+Az alábbi lista a git-integráció egyes előnyeit mutatja be a szerzői műveletekhez:
 
-![Közzétételi mód](media/author-visually/data-factory-publish.png)
-
-A Data Factory szolgáltatással történő közvetlen létrehozás a következő korlátozásokkal rendelkezik:
-
-- A Data Factory szolgáltatás nem tartalmaz olyan tárházat, amely a változtatások JSON-entitásait tárolja.
-- A Data Factory szolgáltatás nem optimalizált együttműködésre vagy verziókövetés céljára.
+-   **Verziókövetés:** Mivel az adat-előállító számítási feladatai elengedhetetlenek, a gyárat a git segítségével integrálva számos forrás-ellenőrzési előnyt használhat, például az alábbiakat:
+    -   A módosítások nyomon követésének és naplózásának lehetősége.
+    -   A hibákat bevezetett változások visszaállíthatók.
+-   **Részleges mentés:** A adatfeldolgozó szolgáltatással végzett szerzői műveletek során a módosítások nem menthetők piszkozatként, és az összes közzétételnek át kell adnia az adatfeldolgozó-ellenőrzést. Függetlenül attól, hogy a folyamat nem fejeződött be, vagy egyszerűen nem kívánja elveszíteni a változásokat a számítógép összeomlása esetén, a git-integráció lehetővé teszi a adat-előállító erőforrásainak növekményes módosítását, függetlenül attól, hogy milyen állapotban vannak. A git-tárház konfigurálása lehetővé teszi a módosítások mentését, így csak akkor tehet közzé módosításokat, ha az Ön elégedettségét tesztelte.
+-   **Együttműködés és felügyelet:** Ha több csapattag is járul hozzá ugyanahhoz a gyárhoz, érdemes lehet a csapattársait egy kód-felülvizsgálati folyamattal együttműködni egymással. A gyárat úgy is beállíthatja, hogy ne minden közreműködő legyen egyenlő jogosultsággal. Egyes csapattagok csak a git-n keresztül módosíthatják a módosításokat, és csak a csapat bizonyos tagjai jogosultak a módosítások közzétételére a gyárban.
+-   **Jobb CI/CD:**  Ha [folyamatos kézbesítési folyamattal](continuous-integration-deployment.md)több környezetbe helyez üzembe, a git-integráció megkönnyíti az egyes műveleteket. Példák ilyen műveletekre:
+    -   Konfigurálja úgy a kiadási folyamatot, hogy automatikusan elindítson, amint a "dev" gyárban történt módosítások történnek.
+    -   Szabja testre a gyári tulajdonságokat a Resource Manager-sablonban paraméterként elérhetővé. Hasznos lehet, ha csak a szükséges tulajdonságokat szeretné megtartani paraméterekként, és minden más nehezen kódolva van.
+-   **Jobb teljesítmény:** A git-integrációval rendelkező átlagos gyár tízszer gyorsabban töltődik be, mint egy szerzői művelet az adatfeldolgozó szolgáltatásban. Ez a teljesítmény-fejlesztés az, hogy az erőforrások a git használatával töltődnek le.
 
 > [!NOTE]
 > A Data Factory szolgáltatással közvetlenül történő szerzői műveletek a git-tárház konfigurálásakor le vannak tiltva a Azure Data Factory UX-ben. A módosításokat közvetlenül a PowerShell vagy egy SDK használatával végezheti el a szolgáltatásban.
@@ -78,7 +83,7 @@ A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai
 | **Azure Repos-szervezet** | Az Azure Repos-szervezet neve. Az Azure Repos-szervezet nevét itt találja: `https://{organization name}.visualstudio.com`. Bejelentkezhet az [Azure Repos-szervezetbe](https://www.visualstudio.com/team-services/git/) a Visual Studio-profil eléréséhez, és megtekintheti a tárházait és projektjeit. | `<your organization name>` |
 | **Projektnév** | Azure Repos-projekt neve. Az Azure Repos-projekt nevét itt találja: `https://{organization name}.visualstudio.com/{project name}`. | `<your Azure Repos project name>` |
 | **RepositoryName** | Az Azure Repos-kód tárházának neve. Az Azure Repos-projektek git-adattárakat tartalmaznak, amelyekkel a projekt növekedésével kezelhetők a forráskód. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a projektben. | `<your Azure Repos code repository name>` |
-| **Együttműködési ág** | A közzétételhez használt Azure Repos együttműködési ág. Alapértelmezés szerint ez a érték `master`. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch name>` |
+| **Együttműködési ág** | A közzétételhez használt Azure Repos együttműködési ág. Alapértelmezés szerint a `master`. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch name>` |
 | **Gyökérmappa** | Az Azure Repos együttműködési ág gyökérkönyvtára. | `<your root folder name>` |
 | **Meglévő Data Factory-erőforrások importálása adattárba** | Itt adhatja meg, hogy a rendszer importálja-e a meglévő adatok gyári erőforrásait az UX **authoring vászonból** egy Azure Repos git-tárházba. Jelölje be a jelölőnégyzetet az adatfeldolgozó-erőforrások a társított git-tárházba való importálásához JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat (azaz a társított szolgáltatásokat és adatkészleteket külön JSON-ba exportálja). Ha ez a mező nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
 | **Erőforrás importálása a következőbe** | Meghatározza, hogy az adat-előállító erőforrásait (folyamatokat, adatkészleteket, társított szolgáltatásokat stb.) milyen ágakba importálja a rendszer. Az erőforrásokat a következő ágak egyikére importálhatja: a. Együttműködés: b. Hozzon létre új c-t. Meglévő használata |  |
@@ -88,7 +93,7 @@ A konfiguráció ablaktáblán a következő Azure Repos-adattár beállításai
 
 ### <a name="use-a-different-azure-active-directory-tenant"></a>Másik Azure Active Directory bérlő használata
 
-Létrehozhat egy Azure Repos Git-adattárat egy másik Azure Active Directory-bérlőn. Másik Azure Active Directory-bérlő megadásához rendszergazdai engedélyekkel kell rendelkeznie az Ön által használt Azure-előfizetésben.
+Az Azure Repos git-tárháza lehet egy másik Azure Active Directory bérlő. Másik Azure Active Directory-bérlő megadásához rendszergazdai engedélyekkel kell rendelkeznie az Ön által használt Azure-előfizetésben.
 
 ### <a name="use-your-personal-microsoft-account"></a>Személyes Microsoft-fiók használata
 
@@ -142,10 +147,10 @@ A konfigurációs ablaktábla a GitHub-tárház következő beállításait jele
 |:--- |:--- |:--- |
 | **Tárház típusa** | Az Azure Repos Code adattár típusa. | GitHub |
 | **A GitHub Enterprise használata** | Jelölőnégyzet a GitHub Enterprise kiválasztásához | nincs kiválasztva (alapértelmezett) |
-| **GitHub Enterprise URL-cím** | A GitHub vállalati gyökér URL-címe (a helyi GitHub Enterprise Server esetében HTTPS-nek kell lennie). Például: https://github.mydomain.com. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
+| **GitHub Enterprise URL-cím** | A GitHub vállalati gyökér URL-címe (a helyi GitHub Enterprise Server esetében HTTPS-nek kell lennie). Például: `https://github.mydomain.com`. Csak akkor szükséges, ha a **GitHub Enterprise használata** van kiválasztva | `<your GitHub enterprise url>` |                                                           
 | **GitHub-fiók** | A GitHub-fiók neve. Ez a név a https:\//GitHub.com/{Account Name}/{repository neve} helyről érhető el. Ezen az oldalon navigálva megadhatja a GitHub-OAuth hitelesítő adatait a GitHub-fiókjában. | `<your GitHub account name>` |
 | **Adattár neve**  | A GitHub-kód tárházának neve. A GitHub-fiókok git-tárházat tartalmaznak a forráskód kezeléséhez. Létrehozhat egy új tárházat, vagy használhat olyan meglévő tárházat, amely már szerepel a fiókjában. | `<your repository name>` |
-| **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint ez a fő. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |
+| **Együttműködési ág** | A GitHub-együttműködési ág, amely a közzétételhez használatos. Alapértelmezés szerint a főkiszolgálója. Módosítsa ezt a beállítást abban az esetben, ha egy másik ág erőforrásait közzé szeretné tenni. | `<your collaboration branch>` |
 | **Gyökérmappa** | A legfelső szintű mappa a GitHub-együttműködési ágban. |`<your root folder name>` |
 | **Meglévő Data Factory-erőforrások importálása adattárba** | Meghatározza, hogy a meglévő adatok gyári erőforrásai a UX authoring vászonról egy GitHub-tárházba legyenek importálva. Jelölje be a jelölőnégyzetet az adatfeldolgozó-erőforrások a társított git-tárházba való importálásához JSON formátumban. Ez a művelet egyenként exportálja az egyes erőforrásokat (azaz a társított szolgáltatásokat és adatkészleteket külön JSON-ba exportálja). Ha ez a mező nincs bejelölve, a meglévő erőforrások nem kerülnek importálásra. | Kijelölt (alapértelmezett) |
 | **Erőforrás importálása a következőbe** | Meghatározza, hogy az adat-előállító erőforrásait (folyamatokat, adatkészleteket, társított szolgáltatásokat stb.) milyen ágakba importálja a rendszer. Az erőforrásokat a következő ágak egyikére importálhatja: a. Együttműködés: b. Hozzon létre új c-t. Meglévő használata |  |
@@ -159,18 +164,6 @@ A konfigurációs ablaktábla a GitHub-tárház következő beállításait jele
 - A GitHub-integráció a Data Factory Visual authoring Tools eszközzel csak a Data Factory általánosan elérhető verziójában működik.
 
 - Egy GitHub-ág legfeljebb 1 000 entitást hívhat le (például folyamatokat és adatkészleteket). Ha eléri ezt a korlátot, a rendszer azt javasolja, hogy az erőforrásokat külön gyárakra ossza fel. Az Azure DevOps git nem rendelkezik ezzel a korlátozással.
-
-## <a name="switch-to-a-different-git-repo"></a>Váltás másik git-tárházra
-
-Ha másik git-tárházra szeretne váltani, kattintson a git-tárház **beállításai** ikonra a Data Factory áttekintés oldal jobb felső sarkában. Ha nem látja az ikont, törölje a helyi böngésző gyorsítótárát. Válassza ki az ikont az aktuális tárház társításának eltávolításához.
-
-![Git ikon](media/author-visually/remove-repo.png)
-
-Ha megjelenik az adattár beállításai ablaktábla, válassza a **git eltávolítása**lehetőséget. Adja meg az adatelőállító nevét, és kattintson a **Confirm (megerősítés** ) gombra az adatgyárhoz társított git-tárház eltávolításához.
-
-![Az aktuális git-tárház társításának eltávolítása](media/author-visually/remove-repo2.png)
-
-Miután eltávolította az aktuális tárházhoz való társítást, beállíthatja, hogy a git-beállítások egy másik tárházat használjanak, majd meglévő Data Factory erőforrásokat importáljon az új tárházba. 
 
 ## <a name="version-control"></a>Verziókövetés
 
@@ -188,7 +181,7 @@ Ha készen áll a szolgáltatással kapcsolatos változások egyesítésére az 
 
 ### <a name="configure-publishing-settings"></a>Közzétételi beállítások konfigurálása
 
-A közzétételi ág (azaz a Resource Manager-sablonok mentésének helye) konfigurálásához vegyen fel egy `publish_config.json` fájlt az együttműködési ág gyökérkönyvtárba. Data Factory beolvassa ezt a fájlt, megkeresi a mezőt `publishBranch`, és létrehoz egy új ágat (ha még nem létezik) a megadott értékkel. Ezután menti az összes Resource Manager-sablont a megadott helyre. Például:
+Alapértelmezés szerint a Factory a közzétett gyár Resource Manager-sablonjait hozza létre, és egy nevű `adf_public`ágra menti őket. Egyéni közzétételi ág konfigurálásához vegyen fel egy `publish_config.json` fájlt az együttműködési ág gyökérmappa mappájába. Közzétételkor az ADF beolvassa ezt a fájlt, megkeresi a mezőt `publishBranch`, és menti az összes Resource Manager-sablont a megadott helyre. Ha a ág nem létezik, a rendszer automatikusan létrehozza az adatelőállítót. És példa arra, hogy a fájl milyen módon néz ki:
 
 ```json
 {
@@ -196,7 +189,7 @@ A közzétételi ág (azaz a Resource Manager-sablonok mentésének helye) konfi
 }
 ```
 
-Új közzétételi ág megadásakor Data Factory nem törli az előző közzétételi ágat. Ha el szeretné távolítani az előző közzétételi ágat, törölje manuálisan.
+Azure Data Factory egyszerre csak egy közzétételi ág lehet. Új közzétételi ág megadásakor Data Factory nem törli az előző közzétételi ágat. Ha el szeretné távolítani az előző közzétételi ágat, törölje manuálisan.
 
 > [!NOTE]
 > Data Factory csak akkor olvassa `publish_config.json` be a fájlt, amikor betölti a gyárat. Ha már betöltötte a gyárat a portálon, frissítse a böngészőt a módosítások érvénybe léptetéséhez.
@@ -214,17 +207,6 @@ Ekkor megnyílik egy oldalsó ablaktábla, ahol megerősítheti, hogy a közzét
 > [!IMPORTANT]
 > A fő ág nem reprezentatív a Data Factory szolgáltatásban üzembe helyezett szolgáltatások esetében. A *fő ágat manuálisan közzé kell tenni* a Data Factory szolgáltatásban.
 
-## <a name="advantages-of-git-integration"></a>A Git-integráció előnyei
-
--   **Verziókövetés**. Mivel az adat-előállító számítási feladatai elengedhetetlenek, a gyárat a git segítségével integrálva számos forrás-ellenőrzési előnyt használhat, például az alábbiakat:
-    -   A módosítások nyomon követésének és naplózásának lehetősége.
-    -   A hibákat bevezetett változások visszaállíthatók.
--   **Részleges mentés**. Ahogy sok változást végez a gyárban, azt tapasztalhatja, hogy a normál élő módban nem mentheti a módosításokat piszkozatként, mert nem áll készen, vagy nem szeretné elveszíteni a módosításokat abban az esetben, ha a számítógép összeomlik. A git-integrációval a módosítások növekményes mentését folytathatja, és csak akkor teheti közzé a gyárat, ha készen áll. A git átmeneti helyként működik a munkához, amíg meg nem tesztelte a módosításokat a saját igényeinek megfelelően.
--   **Együttműködés és felügyelet**. Ha több csapattag is részt vesz ugyanahhoz a gyárhoz, érdemes lehet a csapattársait egy kód-felülvizsgálati folyamattal együttműködni egymással. A gyárat úgy is beállíthatja, hogy a gyár nem minden közreműködője jogosult legyen a gyárban való üzembe helyezésre. A csapattagok csak a git-n keresztül módosíthatják a módosításokat, de csak a csapat egyes tagjai számára engedélyezett a gyári módosítások közzététele.
--   **Diffek megjelenítése**. A git módban megtekintheti, hogy a rendszer milyen hasznos adatokat fog közzétenni a gyárban. Ez a különbség azt mutatja, hogy minden olyan erőforrás/entitás, amelyet a gyárban történt legutóbbi közzététel óta módosítottak/hozzáadtak/töröltek. A diff alapján tovább folytathatja a közzétételt, vagy visszatérhet, és megtekintheti a módosításokat, majd később is visszatérhet.
--   **Jobb CI/CD**. Ha git-módot használ, beállíthatja, hogy a kiadási folyamat automatikusan induljon el, amint a fejlesztői gyárban bármilyen változás történt. A gyári tulajdonságokat is testreszabhatja, amelyek a Resource Manager-sablonban paraméterként érhetők el. Hasznos lehet, ha csak a szükséges tulajdonságokat szeretné megtartani paraméterekként, és minden más nehezen kódolva van.
--   **Jobb teljesítmény**. Egy átlagos gyár gyorsabban töltődik be a git módban, mint a normál élő módban, mert az erőforrások a git használatával tölthetők le.
-
 ## <a name="best-practices-for-git-integration"></a>Ajánlott eljárások a git-integrációhoz
 
 ### <a name="permissions"></a>Engedélyek
@@ -238,9 +220,9 @@ Javasoljuk, hogy ne engedélyezze a közvetlen bejelentkezéseket az együttműk
 
 ### <a name="using-passwords-from-azure-key-vault"></a>Jelszavak használata Azure Key Vault
 
-Javasoljuk, hogy a Azure Key Vault használatával tárolja a Data Factory társított szolgáltatások kapcsolati karakterláncait vagy jelszavait. Biztonsági okokból nem tárolunk ilyen titkos adatokat a git-ben, így a társított szolgáltatások módosításai azonnal közzé lesznek téve a Azure Data Factory szolgáltatásnak.
+A Data Factory társított szolgáltatások esetében ajánlott a Azure Key Vault használata a kapcsolati karakterláncok, jelszavak vagy a felügyelt identitások hitelesítésének tárolására. Biztonsági okokból a Factory nem tárolja a titkokat a git szolgáltatásban. A titkos kulcsokat (például a jelszavakat) tartalmazó társított szolgáltatások módosításai azonnal közzé lesznek téve a Azure Data Factory szolgáltatásnak.
 
-A Key Vault használata is megkönnyíti a folyamatos integrációt és üzembe helyezést, mivel nem kell megadnia ezeket a titkokat a Resource Manager-sablonok üzembe helyezése során.
+A Key Vault vagy az MSI-hitelesítés használata is megkönnyíti a folyamatos integrációt és üzembe helyezést, mivel nem kell megadnia ezeket a titkokat a Resource Manager-sablonok telepítése során.
 
 ## <a name="troubleshooting-git-integration"></a>A git-integráció hibaelhárítása
 
@@ -253,15 +235,25 @@ Ha a közzétételi ág nem szinkronizált a főágra, és a legutóbbi közzét
 1. Lekéréses kérelem létrehozása az együttműködési ág változásainak egyesítéséhez 
 
 Az alábbi példák olyan helyzetekre mutatnak, amelyek elavult közzétételi ágat okozhatnak:
-- Egy felhasználónak több ága van. Az egyik szolgáltatási ág törölte azokat a társított szolgáltatásokat, amelyek nincsenek társítva AKV (a nem AKV társított szolgáltatások azonnal közzé lesznek téve, függetlenül attól, hogy git vagy nem), és soha nem egyesítette a szolgáltatási ágat az együttműködési brnach.
+- Egy felhasználónak több ága van. Az egyik szolgáltatási ág törölte azokat a társított szolgáltatásokat, amelyek nincsenek társítva AKV (a nem AKV társított szolgáltatások azonnal közzé lesznek téve, függetlenül attól, hogy git vagy nem), és soha nem vonta össze a szolgáltatási ágat az együttműködési ágra.
 - Egy felhasználó módosította az adatelőállítót az SDK vagy a PowerShell használatával
 - A felhasználó minden erőforrást egy új ágra helyezett át, és első alkalommal próbált közzétenni. A társított szolgáltatásokat manuálisan kell létrehozni az erőforrások importálásakor.
 - Egy felhasználó manuálisan feltölt egy nem AKV társított szolgáltatást vagy egy Integration Runtime JSON-t. Erre az erőforrásra hivatkoznak egy másik erőforrásból, például egy adatkészletből, egy társított szolgáltatásból vagy egy folyamatból. Az UX használatával létrehozott nem AKV társított szolgáltatás azonnal közzé van téve, mert a hitelesítő adatokat titkosítani kell. Ha olyan adatkészletet tölt fel, amely hivatkozik erre a társított szolgáltatásra, és megpróbál közzétenni, az UX lehetővé teszi, hogy a git-környezetben is megtalálható legyen. A közzétételi időpontban elutasításra kerül, mivel nem létezik a (z) adatfeldolgozó szolgáltatásban.
 
-## <a name="provide-feedback"></a>Visszajelzés küldése
-Válassza ki a **visszajelzéseket** a funkciókkal kapcsolatos megjegyzésekhez, vagy tájékoztassa a Microsoftot az eszközzel kapcsolatos problémákról:
+## <a name="switch-to-a-different-git-repository"></a>Váltás másik git-tárházra
 
-![Visszajelzés](media/author-visually/provide-feedback.png)
+Ha másik git-tárházra szeretne váltani, kattintson a git-adattár **beállításai** ikonra a Data Factory áttekintés oldal jobb felső sarkában. Ha nem látja az ikont, törölje a helyi böngésző gyorsítótárát. Válassza ki az ikont az aktuális tárház társításának eltávolításához.
+
+![Git ikon](media/author-visually/remove-repo.png)
+
+Ha megjelenik az adattár beállításai ablaktábla, válassza a **git eltávolítása**lehetőséget. Adja meg az adatelőállító nevét, és kattintson a **Confirm (megerősítés** ) gombra az adatgyárhoz társított git-tárház eltávolításához.
+
+![Az aktuális git-tárház társításának eltávolítása](media/author-visually/remove-repo2.png)
+
+Miután eltávolította az aktuális tárházhoz való társítást, beállíthatja, hogy a git-beállítások egy másik tárházat használjanak, majd meglévő Data Factory erőforrásokat importáljon az új tárházba.
+
+> [!IMPORTANT]
+> A git-konfiguráció adat-előállítóból való eltávolítása nem törli az adattárból származó semmit. A gyár minden közzétett erőforrást tartalmaz majd. A gyárat továbbra is szerkesztheti közvetlenül a szolgáltatással.
 
 ## <a name="next-steps"></a>További lépések
 

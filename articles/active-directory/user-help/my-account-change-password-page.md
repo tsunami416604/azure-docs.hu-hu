@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: 06e5abe04ed1ec75dcbf1b216bfaab1a7458ce72
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 75564ea463198967c6ed170851058202b5ba3478
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064053"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625952"
 ---
 # <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Munkahelyi vagy iskolai fiók jelszavának módosítása a jelszó módosítása lapról
 
@@ -27,7 +27,7 @@ A **saját fiók** portál **jelszó módosítása** lapja segítséget nyújt a
 
 ## <a name="update-a-password-from-the-change-password-page"></a>Jelszó frissítése a jelszó módosítása lapról
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába a meglévő jelszava használatával, majd lépjen a **saját fiókra** (https://myprofile.microsoft.com/) oldal).
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába a meglévő jelszava használatával, majd lépjen a **saját fiókra** (https://myaccount.microsoft.com/) oldal).
 
 2. A bal oldali navigációs ablaktáblán válassza a **jelszó** lehetőséget, vagy kattintson a jelszó **módosítása** hivatkozásra a **jelszó** blokkban.
 

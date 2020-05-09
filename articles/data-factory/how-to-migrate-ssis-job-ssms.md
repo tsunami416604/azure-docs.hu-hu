@@ -11,14 +11,16 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/7/2020
-ms.openlocfilehash: 6e357e98d6c5190c6dfef675dc1ab9cf30a717c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b27fe2abc50396b527e61487acf9797db59c1cce
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81455087"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627585"
 ---
 # <a name="migrate-sql-server-agent-jobs-to-adf-with-ssms"></a>SQL Server Agent feladatok migrálása az ADF-be a SSMS-mel
+
+[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
 Helyszíni [SQL Server Integration Services (SSIS) számítási feladatok ADF-ben történő áttelepítésekor](scenario-ssis-migration-overview.md)a SSIS-csomagok áttelepítése után a SQL Server Agent feladatok kötegelt áttelepítését SQL Server Integration Services csomag feladat-lépési típusával Azure Data Factory (ADF) folyamatok/tevékenységek/ütemezett eseményindítók SQL Server Management Studio (SSMS) **SSIS feladat-áttelepítési varázsló**használatával végezheti el.
 

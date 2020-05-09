@@ -1,23 +1,17 @@
 ---
-title: 'REST API: Fiókkezelés-műveletek Azure Data Lake Storage Gen1on | Microsoft Docs'
-description: A Azure Data Lake Storage Gen1 és a WebHDFS REST API használatával hajthatja végre a fiók-felügyeleti műveleteket a Data Lake Storage Gen1 fiókban
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1-fiók kezelése REST-tel
+description: A WebHDFS-REST API használatával elvégezheti a fiókok felügyeleti műveleteit egy Azure Data Lake Storage Gen1-fiókon.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8a106b55fb90f320b90c81216a205dd10a9bf934
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60877105"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692076"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>Fiókkezelés Azure Data Lake Storage Gen1 a REST API használatával
 > [!div class="op_single_selector"]
@@ -30,7 +24,7 @@ ms.locfileid: "60877105"
 Ebből a cikkből megtudhatja, hogyan hajthat végre Fiókkezelés-műveleteket Azure Data Lake Storage Gen1 a REST API használatával. A fiókkezelés többek között Data Lake Storage Gen1 fiók létrehozását, Data Lake Storage Gen1 fiók törlését stb. A fájlrendszerbeli műveletek REST API használatával történő végrehajtásával kapcsolatos utasításokért tekintse meg a következőt: [Data Lake Storage Gen1 a REST API](data-lake-store-data-operations-rest-api.md)Data Lake Storage Gen1.
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **[curl](https://curl.haxx.se/)**. Ez a cikk a cURL használatával mutatja be, hogyan lehet REST API hívásokat kezdeményezni egy Data Lake Storage Gen1-fiókkal.
 
