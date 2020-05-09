@@ -5,17 +5,17 @@ author: tfitzmac
 ms.topic: conceptual
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6e56c5e528a17d42a75da54158f00857a917645c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a93f4ff2ddc0737692de9e5619cf7a7521936224
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79248449"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980813"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition függvények
 Ez a szakasz a CreateUiDefinition összes támogatott funkciójának aláírásait tartalmazza.
 
-A függvények használatához szögletes zárójelek közé kell belefoglalni a deklarációt. Például:
+A függvények használatához a szögletes zárójelekkel meghívást kell használni. Például:
 
 ```json
 "[function()]"
@@ -484,6 +484,45 @@ A `element1` feltételezések és `element2` nincsenek meghatározva. Az alábbi
 ```json
 "[coalesce(steps('foo').element1, steps('foo').element2, 'foobar')]"
 ```
+
+Ez a függvény különösen olyan választható hívás kontextusában hasznos, amely az oldal betöltése után felhasználói beavatkozás miatt történik. Ilyen például, ha a felhasználói felületen egy mezőre helyezett megkötések egy másik, **kezdetben nem látható** mező aktuálisan kijelölt értékével függenek. Ebben az esetben felhasználható arra, hogy a függvényt az oldal betöltési ideje alatt szintaktikai módon érvényes legyen, `coalesce()` miközben a felhasználó a mezővel folytatott kommunikációhoz szükséges hatást gyakorolja.
+
+Vegye figyelembe `DropDown`, hogy ez lehetővé teszi, hogy a felhasználó több különböző típusú adatbázis közül válasszon:
+
+```
+{
+    "name": "databaseType",
+    "type": "Microsoft.Common.DropDown",
+    "label": "Choose database type",
+    "toolTip": "Choose database type",
+    "defaultValue": "Oracle Database",
+    "visible": "[bool(steps('section_database').connectToDatabase)]"
+    "constraints": {
+        "allowedValues": [
+            {
+                "label": "Azure Database for PostgreSQL",
+                "value": "postgresql"
+            },
+            {
+                "label": "Oracle Database",
+                "value": "oracle"
+            },
+            {
+                "label": "Azure SQL",
+                "value": "sqlserver"
+            }
+        ],
+        "required": true
+    },
+```
+
+Ha egy másik mező műveletét szeretné felvenni a mező aktuálisan kiválasztott értékére, `coalesce()`használja a parancsot az itt látható módon:
+
+```
+"regex": "[concat('^jdbc:', coalesce(steps('section_database').databaseConnectionInfo.databaseType, ''), '.*$')]",
+```
+
+Erre azért van szükség, `databaseType` mert az kezdetben nem látható, ezért nem rendelkezik értékkel. Ennek hatására a teljes kifejezés kiértékelése nem megfelelő.
 
 ## <a name="conversion-functions"></a>Átalakítási függvények
 Ezek a függvények a JSON-adattípusok és a kódolások közötti értékek átalakítására használhatók.

@@ -1,7 +1,6 @@
 ---
-title: Mi az a ML-folyamat?
-titleSuffix: Azure Machine Learning
-description: Ebből a cikkből megtudhatja, milyen előnyökkel jár a gépi tanulási (ML) folyamatok létrehozása a Pythonhoz készült Azure Machine Learning SDK használatával. A gépi tanulási folyamatokat az adatszakértők használják a gépi tanulási munkafolyamatainak létrehozásához, optimalizálásához és kezeléséhez.
+title: Mik azok a Azure Machine Learning folyamatok?
+description: Ismerje meg, hogy a Machine learning (ML) folyamatai hogyan segítenek a gépi tanulási munkafolyamatok létrehozásában, optimalizálásában és felügyeletében.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,16 +8,16 @@ ms.topic: conceptual
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
-ms.openlocfilehash: 0cefa78b6f52cc67df8817f68a9b793ab86b2a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79e9551650866e5f5fc28b123c1259e2a5fb6f20
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878578"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983448"
 ---
 # <a name="what-are-azure-machine-learning-pipelines"></a>Mik azok a Azure Machine Learning folyamatok?
 
-Azure Machine Learning folyamatok lehetővé teszik munkafolyamatok létrehozását a gépi tanulási projektekben. Ezek a munkafolyamatok számos előnnyel rendelkeznek: 
+Ebből a cikkből megtudhatja, hogyan segíti a Azure Machine Learning folyamatokat a gépi tanulási munkafolyamatok létrehozásához, optimalizálásához és kezeléséhez. Ezek a munkafolyamatok számos előnnyel rendelkeznek: 
 
 + Egyszerűség kedvéért
 + Sebesség
@@ -45,7 +44,6 @@ Az Azure-felhő számos más folyamatot is biztosít, amelyek mindegyike más c�
 | Modell-előkészítés (gépi tanulás) | Adatelemző | Azure Machine Learning folyamatok | Kubeflow-folyamatok | Adat> modell | Eloszlás, gyorsítótárazás, kód – első, újrafelhasználás | 
 | Adat-előkészítés (adat-előkészítés) | Adatszakértő | [Azure Data Factory-folyamatok](https://docs.microsoft.com/azure/data-factory/concepts-pipelines-activities) | Apache légáram | Adat>i adatszolgáltatások | Erősen beírt mozgás. Adatközpontú tevékenységek. |
 | Kód & alkalmazás-előkészítés (CI/CD) | Alkalmazás fejlesztője/Ops | [Azure DevOps-folyamatok](https://azure.microsoft.com/services/devops/pipelines/) | Jenkins | Code + Model – > alkalmazás/szolgáltatás | A legtöbb nyitott és rugalmas tevékenység támogatása, jóváhagyási várólisták, fázisok és kapuzás | 
-
 
 ## <a name="what-can-azure-ml-pipelines-do"></a>Mit tehet az Azure ML-folyamatok?
 

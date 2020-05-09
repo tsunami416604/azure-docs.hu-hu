@@ -3,12 +3,12 @@ title: Élő adatértékek (előzetes verzió) megtekintése az Azure Monitor fo
 description: Ez a cikk a Kubernetes-naplók,-események és a pod-metrikák valós idejű nézetét írja le anélkül, hogy a kubectl-t használja a tárolók Azure Monitor.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 9e7c7a7b7bf276b3451cee1d289b8b07ac0f40ba
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38615acf079c33c49e27394bfdb9b8104e5a68ac
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79216541"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872113"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése
 
@@ -42,7 +42,7 @@ Az autogörgetés felfüggesztéséhez és a panel működésének szabályozás
 >A probléma elhárítása során javasoljuk, hogy csak rövid idő alatt felfüggessze vagy szüneteltesse az autoscroll-et. Ezek a kérések befolyásolhatják a fürtön a Kubernetes API rendelkezésre állását és szabályozását. 
 
 >[!IMPORTANT]
->A szolgáltatás működése során a rendszer nem tárolja véglegesen az adattárolást. A rendszer a munkamenet során rögzített összes információt törli a böngésző bezárásakor, vagy innen navigál. Az adatok csak a metrika funkció öt perces időszakában jelennek meg a vizualizáción belül. az öt percnél régebbi metrikákat is törli a rendszer. Az élő adatok (előzetes verzió) pufferének lekérdezései az ésszerű memóriahasználat korlátain belül (itt pontosabban kell megadni, mi az ésszerű?). 
+>A szolgáltatás működése során a rendszer nem tárolja véglegesen az adattárolást. A rendszer a munkamenet során rögzített összes információt törli a böngésző bezárásakor, vagy innen navigál. Az adatok csak a metrika funkció öt perces időszakában jelennek meg a vizualizáción belül. az öt percnél régebbi metrikákat is törli a rendszer. Az élő adatok (előzetes verzió) puffer-lekérdezések az ésszerű memóriahasználat korlátain belül.
 
 ## <a name="view-logs"></a>Naplók megtekintése
 

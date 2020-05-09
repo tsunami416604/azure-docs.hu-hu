@@ -1,5 +1,5 @@
 ---
-title: Egy ML-folyamat futtatásának elindítása logikai alkalmazásból
+title: ML-folyamat elindítása új adatértékekhez
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan indíthat el egy ML-folyamat futtatását Azure Logic Apps használatával.
 services: machine-learning
@@ -10,12 +10,13 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/07/2020
-ms.openlocfilehash: 6bb976b8b310fb3eb4d0247a8d745599f688d7b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 32b3e153a98ca7de91e0dd05258414780b39dec4
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122856"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857975"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Machine Learning folyamat futtatásának elindítása logikai alkalmazásból
 

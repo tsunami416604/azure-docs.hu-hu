@@ -8,16 +8,14 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 509f9557a8128df12353ad02a7c7db02b7b42631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158459"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871939"
 ---
 # <a name="configure-rules"></a>Szabályok konfigurálása
-
-
 
 *Ez a cikk operátorokra, fejlesztőkre és rendszergazdákra vonatkozik.*
 
@@ -36,6 +34,12 @@ A feltételek alapján a szabályok aktiválva lesznek. Jelenleg, ha több felt�
 A következő képernyőképen a feltételek azt állapítják meg, hogy a hőmérséklet nagyobb&deg; -e, mint 70 F, a páratartalom pedig kevesebb, mint 10. Ha mindkét utasítás igaz, a szabály igaz értéket ad vissza, és elindítja a műveletet.
 
 ![Feltételek](media/howto-configure-rules/conditions.png)
+
+### <a name="use-a-cloud-property-in-a-value-field"></a>Felhőbeli tulajdonság használata érték mezőben
+
+Egy Felhőbeli tulajdonságra hivatkozhat egy feltétel **Value (érték** ) mezőjében található eszköz sablonjában. A Cloud Property és a telemetria értékének hasonló típusúnak kell lennie. Ha például a **hőmérséklet** egy dupla, akkor a **Value** legördülő menüben csak a dupla megjelenítés típusú felhő tulajdonságai érhetők el.
+
+Ha egy eseménytípus telemetria értéket választ, az **érték** legördülő menü tartalmazza a **bármely**lehetőséget. A **bármely** beállítás azt jelenti, hogy a szabály akkor következik be, amikor az alkalmazás egy ilyen típusú eseményt kap, függetlenül a hasznos adatoktól.
 
 ## <a name="use-aggregate-windowing"></a>Összesítő ablak használata
 

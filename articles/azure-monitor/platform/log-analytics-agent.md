@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 08c80b0a37e21d53fc974bd878501b9326c9449b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: MT
+ms.openlocfilehash: e85e41796d0fc4fb9ac72b4032de3143b26d890f
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207224"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871057"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](/azure/security-center/)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -147,7 +147,7 @@ Annak érdekében, hogy az adatforgalom biztonsága Azure Monitor naplóba kerü
 
 
 ## <a name="sha-2-code-signing-support-requirement-for-windows"></a>SHA-2 kód aláírásának támogatási követelménye Windows esetén
-A Windows-ügynök kizárólag az SHA-2 aláírást fogja használni 2020. május 18-án. Ez a változás hatással lesz az ügyfelekre az Azure-szolgáltatások (Azure Monitor, Azure Automation, Azure Update Management, Azure Change Tracking, Azure Security Center, Azure Sentinel, Windows Defender ATP) részeként egy örökölt operációs rendszert használó Log Analytics ügynökkel. A módosítás nem követeli meg az ügyfelek beavatkozását, kivéve, ha az ügynököt örökölt operációsrendszer-verzióra (Windows 7, Windows Server 2008 R2 és Windows Server 2008) futtatja. Az örökölt operációsrendszer-verzión futó ügyfeleknek a következő műveletekre van szükségük a gépen a 2020. május 18. előtt, illetve az ügynökök nem fogják tudni elküldeni az adatokat az Log Analytics munkaterületekre:
+A Windows-ügynök a 2020-as augusztus 17-én kizárólag az SHA-2 aláírást fogja használni. Ez a változás hatással lesz az ügyfelekre az Azure-szolgáltatások (Azure Monitor, Azure Automation, Azure Update Management, Azure Change Tracking, Azure Security Center, Azure Sentinel, Windows Defender ATP) részeként egy örökölt operációs rendszert használó Log Analytics ügynökkel. A módosítás nem követeli meg az ügyfelek beavatkozását, kivéve, ha az ügynököt örökölt operációsrendszer-verzióra (Windows 7, Windows Server 2008 R2 és Windows Server 2008) futtatja. Az örökölt operációsrendszer-verzión futó ügyfeleknek a következő műveleteket kell végrehajtaniuk a gépen, mielőtt augusztus 17-én, 2020-es vagy az ügynökük leállítja az adatok küldését az Log Analytics munkaterületekre:
 
 1. Telepítse az operációs rendszerének legújabb szervizcsomagját. A szervizcsomag szükséges verziói a következők:
     - Windows 7 SP1

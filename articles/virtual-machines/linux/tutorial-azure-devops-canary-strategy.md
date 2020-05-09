@@ -1,6 +1,6 @@
 ---
 title: Oktatóanyag – az Azure Linux Virtual Machines Kanári-telepítések konfigurálása
-description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a folyamatos üzembe helyezés (CD) folyamatát, amely az Azure Linux Virtual Machines egy csoportját frissíti a Kanári-telepítési stratégia használatával
+description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a folyamatos üzembe helyezés (CD) folyamatát. Ez a folyamat az Azure Linux rendszerű virtuális gépek egy csoportját frissíti a Kanári-telepítési stratégia használatával.
 author: moala
 manager: jpconnock
 tags: azure-devops-pipelines
@@ -12,65 +12,80 @@ ms.workload: infrastructure
 ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
-ms.openlocfilehash: b51b4aed85f737e436565ce8ba1ab4a295714734
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0fb26896b79fb23bb0f784c0f23aa3af0593c22
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82120477"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871850"
 ---
-# <a name="tutorial---configure-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – a Kanári üzembe helyezési stratégia konfigurálása az Azure Linux Virtual Machines
+# <a name="tutorial---configure-the-canary-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – a Kanári üzembe helyezési stratégia konfigurálása az Azure Linux Virtual Machines
 
+## <a name="infrastructure-as-a-service-iaas---configure-cicd"></a>Infrastruktúra-szolgáltatás (IaaS) – CI/CD konfigurálása
 
-## <a name="iaas---configure-cicd"></a>IaaS – CI/CD konfigurálása 
-Az Azure-folyamatok teljes körűen Kiemelt CI/CD Automation-eszközöket biztosítanak a virtuális gépek üzembe helyezéséhez. Az Azure-beli virtuális gépek folyamatos kézbesítési folyamatát közvetlenül a Azure Portal lehet konfigurálni. Ez a dokumentum egy olyan CI/CD-folyamat beállításával kapcsolatos lépéseket tartalmazza, amely a több gépen üzemelő példányokra vonatkozó Kanári-stratégiát használja. Tekintse meg az olyan egyéb stratégiákat is, mint például a [Rolling](https://aka.ms/AA7jlh8) és a [Blue-Green](https://aka.ms/AA83fwu), amelyek a Azure Portal használatával támogatottak. 
+Az Azure-folyamatok teljes körű CI/CD Automation-eszközöket biztosítanak a virtuális gépekhez való üzembe helyezéshez. Az Azure-beli virtuális gépek folyamatos kézbesítési folyamatát a Azure Portal is konfigurálhatja.
 
+Ez a cikk bemutatja, hogyan állíthat be egy olyan CI/CD-folyamatot, amely a MultiMachine-alapú üzembe helyezésre vonatkozó Kanári-stratégiát használja. A Azure Portal más olyan stratégiákat is támogat, mint például a [Rolling](https://aka.ms/AA7jlh8) és a [Blue-Green](https://aka.ms/AA83fwu).
 
-**CI/CD konfigurálása Virtual Machines**
+### <a name="configure-cicd-on-virtual-machines"></a>CI/CD konfigurálása virtuális gépeken
 
-A virtuális gépeket célként lehet hozzáadni egy [központi telepítési csoporthoz](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups) , és a több gépre kiterjedő frissítéseket is megcélozhat. Az üzembe helyezést követően a telepítési csoportban lévő **telepítési előzmények** nyomon követik a virtuális gép és a folyamat közötti nyomkövetést, majd a végrehajtást. 
- 
-  
-**Kanári**-környezetek: a Kanári-környezetek csökkentik a kockázatot a felhasználók kis részhalmazára való váltás lassan történő bevezetésével. Az új verzió megbízhatóságának növelése érdekében megkezdheti az infrastruktúra további kiszolgálóinak felszabadítását, és további felhasználókat is átirányíthat. A virtuális gépekre a folyamatos kézbesítés lehetőség használatával konfigurálhatja a Kanári-telepítéseket a Azure Portal. Itt találja a lépésenkénti útmutatót. 
-1. Jelentkezzen be a Azure Portalba, és navigáljon egy virtuális géphez 
-2. A virtuális gép bal oldali ablaktábláján navigáljon a **folyamatos kézbesítés** menüre. Kattintson a **Configure** (Konfigurálás) elemre. 
+A virtuális gépeket célként adhatja hozzá egy [központi telepítési csoporthoz](https://docs.microsoft.com/azure/devops/pipelines/release/deployment-groups). Ezután megcélozhatja őket a MultiMachine-frissítésekhez. A gépekre való központi telepítés után megtekintheti a telepítési **előzményeket** egy központi telepítési csoportban. Ez a nézet lehetővé teszi a virtuális gép és a folyamat közötti nyomkövetést, majd a véglegesítés elvégzését.
 
-   ![AzDevOps_configure](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png) 
-3. A konfiguráció panelen kattintson az **Azure DevOps-szervezet** lehetőségre egy meglévő fiók kiválasztásához, vagy hozzon létre egyet. Ezután válassza ki azt a projektet, amelynek a folyamatát konfigurálni szeretné.  
+### <a name="canary-deployments"></a>Kanári-telepítések
 
+A Kanári-környezetek csökkentik a kockázatot a felhasználók kis részhalmazának változásainak lassan történő kiépítésével. Az új verzió megbízhatóságának megszerzése után kiszabadíthatja azt az infrastruktúra több kiszolgálójára, és több felhasználót is átirányíthat.
 
-   ![AzDevOps_project](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png) 
-4. A központi telepítési csoport a központi telepítési célként szolgáló gépek olyan logikai készlete, amely a fizikai környezeteket képviseli; ilyen például a "dev", a "test", a "ellenőrzését" és a "Production". Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévő központi telepítési csoportot is. 
-5. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. Vegye figyelembe, hogy a közzétett csomagnak telepítve kell lennie a _. ps1_ vagy a `deployscripts` _Deploy.sh_ telepítési parancsfájlnak a csomag gyökerében lévő mappában. Ezt az üzembe helyezési parancsfájlt az Azure DevOps-folyamat futtatja a futási időben.
-6. Válassza ki az Ön által választott üzembe helyezési stratégiát. Válassza a **Kanári**lehetőséget.
-7. Vegyen fel egy "Canary" címkét a Kanári-telepítések részét képező virtuális gépekre, valamint egy "Prod" címkét azokra a virtuális gépekre, amelyek az üzembe helyezések részét képezik a Kanári üzembe helyezésének sikeressége után. A címkék segítenek a kizárólag adott szerepkörrel rendelkező virtuális gépek célzásában.
-![AzDevOps_configure_canary](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure-canary.png)
+A folyamatos kézbesítés lehetőséggel a Azure Portal a Kanári-telepítéseket a virtuális gépekre is konfigurálhatja. Itt látható a lépésenkénti útmutató:
 
-8. A folyamatos kézbesítési folyamat konfigurálásához kattintson az **OK gombra** a párbeszédpanelen. Ekkor egy folyamatos szállítási folyamattal fog rendelkezni, amely a virtuális gépre való üzembe helyezésre van konfigurálva.
-![AzDevOps_canary_pipeline](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-pipeline.png)
+1. Jelentkezzen be a Azure Portalba, és navigáljon a virtuális géphez.
+1. A virtuális gép beállításainak bal szélső paneljén válassza a **folyamatos kézbesítés**lehetőséget. Ezután válassza a **Konfigurálás**lehetőséget.
 
+   ![A folyamatos kézbesítés panel a configure (Konfigurálás) gombbal](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure.png)
 
-9. Kattintson a kiadási folyamat **szerkesztése** az Azure DevOps elemre a folyamat konfigurációjának megtekintéséhez. A folyamat három szakaszból áll. Az első fázis egy üzembe helyezési csoport fázisa és üzembe helyezése a _Kanári_-ként címkézett virtuális gépeken. A második fázisban szünetelteti a folyamatot, és megvárja a manuális beavatkozást a Futtatás folytatásához. Ha a felhasználó meggyőződött arról, hogy a Kanári üzembe helyezése stabil, akkor folytathatja a folyamat futását, amely azután futtatja a harmadik fázist, amely _a termékként_címkézett virtuális gépekre lesz telepítve. ![AzDevOps_canary_task](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-task.png)
+1. A konfiguráció panelen válassza az **Azure DevOps Organization** lehetőséget egy meglévő fiók kiválasztásához, vagy hozzon létre újat. Ezután válassza ki azt a projektet, amelyben be szeretné állítani a folyamatot.  
 
-10. Mielőtt folytatná a folyamat futását, győződjön meg arról, hogy legalább egy virtuális gép a következőként van megjelölve: _Prod_. A folyamat harmadik fázisában az alkalmazás csak a _Prod_ címkével rendelkező virtuális gépekre lesz telepítve.
+   ![A folyamatos kézbesítés panel](media/tutorial-devops-azure-pipelines-classic/azure-devops-rolling.png)
 
-11. Az üzembe helyezési parancsfájl végrehajtása feladat alapértelmezés szerint a közzétett csomag gyökérkönyvtárában hajtja végre a _Deploy. ps1_ vagy a _Deploy.sh_ telepítési parancsfájlt a "deployscripts" mappában. Győződjön meg arról, hogy a kiválasztott build-folyamat közzéteszi ezt a csomag gyökérkönyvtárában. 
-![AzDevOps_publish_package](media/tutorial-deployment-strategy/package.png)
+1. A központi telepítési csoport a központi telepítési célszámítógépek logikai készlete, amely a fizikai környezeteket jelképezi. Példák a fejlesztési, tesztelési, ellenőrzését és éles környezetekre. Létrehozhat egy új központi telepítési csoportot, vagy kijelölhet egy meglévőt is.
+1. Válassza ki a Build folyamatot, amely közzéteszi a virtuális gépre telepítendő csomagot. A közzétett csomagnak rendelkeznie kell egy Deploy. ps1 vagy deploy.sh nevű telepítési parancsfájllal a csomag gyökérkönyvtárában lévő deployscripts mappában. A folyamat futtatja ezt az üzembe helyezési parancsfájlt.
+1. A **központi telepítési stratégia**területen válassza a **Kanári**lehetőséget.
+1. Vegyen fel egy "Kanári" címkét a Kanári-környezetek részét képező virtuális gépekhez. Adjon hozzá egy "Prod" címkét a virtuális gépekhez, amelyek a Kanári üzembe helyezése után végrehajtott központi telepítések részét képezik. A címkék segítségével csak az adott szerepkörrel rendelkező virtuális gépeket célozza meg.
 
+   ![A folyamatos kézbesítési panel, a központi telepítési stratégia értékének kiválasztása](media/tutorial-devops-azure-pipelines-classic/azure-devops-configure-canary.png)
 
+1. Kattintson az **OK** gombra a folyamatos kézbesítési folyamat konfigurálásához a virtuális gépen való üzembe helyezéshez.
 
+   ![A Kanári-folyamat](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-pipeline.png)
+
+1. Megjelenik a virtuális gép központi telepítési adatai. A hivatkozásra kattintva megtekintheti az Azure DevOps kiadási folyamatát. A folyamat konfigurációjának megtekintéséhez a kiadási folyamatban válassza a **Szerkesztés** lehetőséget. A folyamatnak a következő három fázisa van:
+
+   1. Ez a fázis egy üzembe helyezési csoport fázisa. Az alkalmazások a "Kanári" címkével rendelkező virtuális gépekre vannak telepítve.
+   1. Ebben a fázisban a folyamat szünetel, és megvárja a manuális beavatkozást a Futtatás folytatásához.
+   1. Ez egy üzembe helyezési csoport fázisa. A frissítés már telepítve van a "Prod" címkével ellátott virtuális gépekre.
+
+      ![A Kanári üzembe helyezése feladat központi telepítési csoport paneljén](media/tutorial-devops-azure-pipelines-classic/azure-devops-canary-task.png)
+
+1. A folyamat futásának folytatása előtt győződjön meg arról, hogy legalább egy virtuális gép "Prod" címkével van megjelölve. A folyamat harmadik fázisában az alkalmazások csak azokra a virtuális gépekre lesznek telepítve, amelyek rendelkeznek a "Prod" címkével.
+
+1. Az üzembe helyezési parancsfájl végrehajtása feladat alapértelmezés szerint a Deploy. ps1 vagy a deploy.sh telepítési parancsfájlt futtatja. A parancsfájl a közzétett csomag gyökérkönyvtárában lévő deployscripts mappában található. Győződjön meg arról, hogy a kiválasztott build-folyamat közzéteszi a központi telepítést a csomag gyökérkönyvtárában.
+
+   ![A deployscripts mappában található deploy.sh mutató összetevők ablaktábla](media/tutorial-deployment-strategy/package.png)
 
 ## <a name="other-deployment-strategies"></a>Egyéb központi telepítési stratégiák
 - [A működés közbeni üzembe helyezési stratégia konfigurálása](https://aka.ms/AA7jlh8)
 - [A kék-zöld telepítési stratégia konfigurálása](https://aka.ms/AA83fwu)
 
-## <a name="azure-devops-project"></a>Azure DevOps-projekt 
-Az Azure-t minden eddiginél könnyebben kezdheti meg.
- 
-A DevOps Projects az alkalmazás futtatását bármely Azure-szolgáltatásban, mindössze három lépésben: válasszon egy alkalmazást, egy futtatókörnyezetet és egy Azure-szolgáltatást.
- 
-[További információ](https://azure.microsoft.com/features/devops-projects/ ).
- 
-## <a name="additional-resources"></a>További háttéranyagok 
-- [Üzembe helyezés az Azure Virtual Machines DevOps Project használatával](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
+## <a name="azure-devops-projects"></a>Azure DevOps Projects
+
+Az Azure-t egyszerűen megteheti. A Azure DevOps Projects használatával a következő parancs kiválasztásával megkezdheti az alkalmazás futtatását bármely Azure-szolgáltatásban mindössze három lépésben:
+
+- Alkalmazás nyelve
+- Egy futtatókörnyezet
+- Azure-szolgáltatás
+
+[További információ](https://azure.microsoft.com/features/devops-projects/).
+
+## <a name="additional-resources"></a>További források
+
+- [Üzembe helyezés az Azure-beli virtuális gépeken Azure DevOps Projects használatával](https://docs.microsoft.com/azure/devops-project/azure-devops-project-vms)
 - [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](https://docs.microsoft.com/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

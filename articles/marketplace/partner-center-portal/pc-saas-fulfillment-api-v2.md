@@ -1,22 +1,22 @@
 ---
-title: SaaS-teljesítési API v2 | Azure piactér
-description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet SaaS-ajánlatokat a AppSource és az Azure Marketplace-en a társított teljesítési v2 API-k használatával.
+title: SaaS-teljesítési API-k v2 a Microsoft kereskedelmi piactéren
+description: Ismerje meg, hogyan hozhat létre és kezelhet SaaS-ajánlatokat a Microsoft AppSource és az Azure Marketplace-en a teljesítési API-k 2-es verziójának használatával.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: reference
 ms.date: 10/18/2019
 ms.author: dsindona
-ms.openlocfilehash: ca49418013357ecaae62ea5e91374eaa1cbde59d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f452349c0d636bc74a3722e2526623c955093f7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275764"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854188"
 ---
-# <a name="saas-fulfillment-apis-version-2"></a>SaaS Fulfillment API-k, 2-es verzió 
+# <a name="saas-fulfillment-apis-version-2-in-microsoft-commercial-marketplace"></a>SaaS-teljesítési API-k 2-es verziója a Microsoft kereskedelmi piactéren
 
-Ez a cikk azokat az API-kat ismerteti, amelyek lehetővé teszik partnerei számára, hogy SaaS-alkalmazásaikat eladják a AppSource piactéren és az Azure piactéren. Ezek az API-k a AppSource és az Azure Marketplace-en elérhető, a transacter SaaS-ajánlatok követelményei.
+Ez a cikk azokat a teljesítési API-kat ismerteti, amelyek lehetővé teszik, hogy a partnerek a Microsoft AppSource és az Azure piactéren értékesítsenek SaaS-alkalmazásaikat. Ezek az API-k a transactd SaaS-ajánlatok esetében szükségesek.
 
 ## <a name="managing-the-saas-subscription-life-cycle"></a>Az SaaS-előfizetési életciklus kezelése
 
