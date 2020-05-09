@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: add0d27ae6a612fed0320b5329d19236b7bbbd01
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79370644"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927207"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Mi a Speech Devices SDK?
 
@@ -49,7 +49,7 @@ Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bi
 A Linux rendszerben a minta alkalmazás platformfüggetlen Java-alkalmazásként van megadva. Töltse le a [JRE Speech Devices SDK](https://aka.ms/sdsdk-download-JRE)legújabb verzióját.
 Az alkalmazás a Speech SDK csomaggal, valamint az Eclipse Java IDE (v4) a 64 bites Linux rendszeren (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8) készült. és 64 bites Java 8 futtatókörnyezetben (JRE) fut.
 
-További bináris fájlok érhetők el a közelgő eszközök, a [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), a [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter)és a [GGEC-hangszórók](https://aka.ms/sdsdk-download-speaker)támogatásához.
+További bináris fájlok érhetők el a közelgő eszközök, a [Roobo v2 DDK](https://aka.ms/sdsdk-download-roobov2), a [Urbetter DDK](https://aka.ms/sdsdk-download-urbetter), a [GGEC Speaker](https://aka.ms/sdsdk-download-speaker), a [Linux ARM32](https://aka.ms/sdsdk-download-linux-arm32)és a [Linux ARM64](https://aka.ms/sdsdk-download-linux-arm64)támogatásához.
 
 ## <a name="next-steps"></a>További lépések
 

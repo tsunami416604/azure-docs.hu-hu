@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 184b60f6147089cbdfd855b473b3346d021f7fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92f2102d8d6353da2002a4ee9d5bfbe57a774e10
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176600"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792071"
 ---
 # <a name="azure-security-baseline-for-azure-storage"></a>Azure-beli biztonsági alapkonfiguráció Azure Storage-hoz
 
@@ -82,7 +82,7 @@ Vegye figyelembe, hogy ha a Storage-fiókjához privát végpontok vannak csatla
 
 **Útmutató**: Network Watcher a csomagok rögzítése lehetővé teszi rögzítési munkamenetek létrehozását a Storage-fiók és a virtuális gép közötti forgalom nyomon követéséhez. A rögzítési munkamenethez szűrőket biztosít, hogy csak a kívánt forgalmat rögzítsen. A csomagok rögzítése segít az újraaktív és proaktív hálózati rendellenességek diagnosztizálásában. Más felhasználások közé tartozik a hálózati statisztikák összegyűjtése, a hálózati behatolásokkal kapcsolatos információk beszerzése, az ügyfél-kiszolgáló kommunikáció hibakeresése és sok más. A csomagok rögzítésének távoli elindítása lehetővé teszi, hogy a csomagok rögzítése manuálisan fusson a kívánt virtuális gépen, ami értékes időt takarít meg. 
 
-- [A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával](https://docs.microsoft.comazure/network-watcher/network-watcher-packet-capture-manage-portal)
+- [A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-manage-portal)
 
 **Azure Security Center figyelés**: igen
 
@@ -887,7 +887,7 @@ A Azure Security Center javaslatainak használata biztonságos alapkonfiguráci�
 
 Emellett a Storage-fiók kulcsainak gyakori elforgatásával korlátozhatja a Storage-fiókok kulcsainak elvesztését vagy közzétételét.
 
-- [Azure Storage-titkosítás a REST-adatokhoz](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
+- [Inaktív adatok Azure Storage-titkosítása](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)
 
 - [A Storage-fiók hozzáférési kulcsainak kezelése](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage)
 

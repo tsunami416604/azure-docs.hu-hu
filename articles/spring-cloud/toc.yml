@@ -36,6 +36,11 @@
       href: spring-cloud-tutorial-custom-domain.md
     - name: IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
       href: spring-cloud-tutorial-intellij-deploy-apps.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Az Azure Spring Cloud-kvóták és -korlátok ismertetése

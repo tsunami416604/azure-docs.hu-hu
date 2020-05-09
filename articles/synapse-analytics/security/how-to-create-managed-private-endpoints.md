@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 363dc4d469d912c14f5f89ef6ff433a2243587e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6a0a84050cb8f1b3ad0c04aa66c5b3797282f2e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428900"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983227"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Felügyelt privát végpont létrehozása az adatforráshoz (előzetes verzió)
 
@@ -35,12 +35,12 @@ Válassza ki az adatforrás típusát. Ebben az esetben a célként megadott ada
 
 ## <a name="step-4-enter-information-about-the-data-source"></a>4. lépés: az adatforrással kapcsolatos adatok megadása
 
-A következő ablakban adja meg az adatforrással kapcsolatos adatokat. Ebben a példában egy felügyelt privát végpontot hozunk létre egy ADLS Gen2-fiókhoz. Adja meg a felügyelt magánhálózati végpont **nevét** . Adja meg az **Azure-előfizetést** és a **Storage-fiók nevét**. Kattintson a **Létrehozás** gombra.
+A következő ablakban adja meg az adatforrással kapcsolatos adatokat. Ebben a példában egy felügyelt magánhálózati végpontot hozunk létre egy ADLS Gen2-fiókhoz. Adja meg a felügyelt magánhálózati végpont **nevét** . Adja meg az **Azure-előfizetést** és a **Storage-fiók nevét**. Kattintson a **Létrehozás** gombra.
 ![Adja meg a célként megadott adatforrás részleteit](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-4.png)
 
 ## <a name="step-5-verify-that-your-managed-private-endpoint-was-successfully-created"></a>5. lépés: annak ellenőrzése, hogy sikerült-e létrehozni a felügyelt magánhálózati végpontot
 
-A kérelem elküldése után megjelenik az állapota. Annak ellenőrzéséhez, hogy létrejött-e a felügyelt privát végpont sikeres létrehozása, ellenőrizze annak *kiépítési állapotát*. Előfordulhat, hogy várnia kell 1 percet, majd a **frissítés** elemre kell kattintania a kiépítési állapot frissítéséhez. Láthatja, hogy a felügyelt magánhálózati végpont sikeresen létrejött a ADLS Gen2-fiókkal.
+A kérelem elküldése után megjelenik az állapota. Annak ellenőrzéséhez, hogy létrejött-e a felügyelt privát végpont sikeres létrehozása, ellenőrizze annak *kiépítési állapotát*. Előfordulhat, hogy várnia kell 1 percet, majd a **frissítés** elemre kell kattintania a kiépítési állapot frissítéséhez. Láthatja, hogy a felügyelt magánhálózati végpont sikeresen létrejött a ADLS Gen2 fiókban.
 
 Azt is láthatja, hogy a *jóváhagyási állapot* *függőben*van. A célként megadott erőforrás tulajdonosa jóváhagyhatja vagy megtagadhatja a magánhálózati végponti kapcsolatok kérelmét. Ha a tulajdonos jóváhagyja a magánhálózati végponti kapcsolódási kérelmet, akkor létrejön egy privát kapcsolat. Ha meg van tagadva, a magánhálózati kapcsolat nincs létrehozva.
 ![Felügyelt magánhálózati végpont-létrehozási kérelem állapota](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-5.png)

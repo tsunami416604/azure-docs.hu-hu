@@ -11,23 +11,23 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/16/2018
-ms.openlocfilehash: 4488c174ba5ff35ec2709d7c1b9f3093b4ee90a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8fb39e8762d31f00029a0eeea33f1e630fb15a6
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409078"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927394"
 ---
-# <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>Az Azure Machine Learning-modellek frissítése az Update-erőforrástevékenység használatával
+# <a name="update-ml-studio-classicv-models-by-using-update-resource-activity"></a>ML Studio (klasszikus) v modellek frissítése az erőforrás frissítése tevékenység használatával
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Ez a cikk a Azure Data Factory Azure Machine Learning integrációs cikket egészíti ki: [prediktív folyamatok létrehozása Azure Machine learning és Azure Data Factory használatával](transform-data-using-machine-learning.md). Ha még nem tette meg, tekintse át a fő cikket, mielőtt beolvassa ezt a cikket.
+Ez a cikk a fő Azure Data Factory-ML Studio (klasszikus) integrációs cikket egészíti ki: [prediktív folyamatok létrehozása Azure Machine learning és Azure Data Factory használatával](transform-data-using-machine-learning.md). Ha még nem tette meg, tekintse át a fő cikket, mielőtt beolvassa ezt a cikket.
 
 ## <a name="overview"></a>Áttekintés
-Azure Machine Learning modellek végrehajtott folyamata részeként a rendszer betanítja és menti a modellt. Ezt követően egy prediktív webszolgáltatás létrehozására használhatja. A webszolgáltatás ezután felhasználható a webhelyeken, az irányítópultokon és a Mobile apps szolgáltatásban.
+A végrehajtott ML Studio (klasszikus) modellek folyamatának részeként a rendszer betanítja és menti a modellt. Ezt követően egy prediktív webszolgáltatás létrehozására használhatja. A webszolgáltatás ezután felhasználható a webhelyeken, az irányítópultokon és a Mobile apps szolgáltatásban.
 
-A Machine Learning használatával létrehozott modellek általában nem statikusak. Mivel az új adatforgalom elérhetővé válik, vagy ha az API felhasználója saját adatmennyiséggel rendelkezik, a modellt újra kell tanítani. Tekintse át a [Machine learning modell](../machine-learning/machine-learning-retrain-machine-learning-model.md) újratanítása című témakört, amely részletesen ismerteti, hogyan lehet a modelleket Azure Machine learning-ben áttanítani.
+A Machine Learning használatával létrehozott modellek általában nem statikusak. Mivel az új adatforgalom elérhetővé válik, vagy ha az API felhasználója saját adatmennyiséggel rendelkezik, a modellt újra kell tanítani. 
 
 Előfordulhat, hogy az újraképzés gyakran előfordul. A kötegelt végrehajtási tevékenységek és az erőforrás-frissítési tevékenységek segítségével működővé tenni a Azure Machine Learning modell átképzését és a prediktív webszolgáltatás frissítését a Data Factory használatával.
 
@@ -35,9 +35,9 @@ Az alábbi ábra a képzés és a prediktív webszolgáltatások közötti kapcs
 
 ![Webszolgáltatások](./media/update-machine-learning-models/web-services.png)
 
-## <a name="azure-machine-learning-update-resource-activity"></a>Erőforrás-frissítési tevékenység Azure Machine Learning
+## <a name="ml-studio-classic-update-resource-activity"></a>ML Studio (klasszikus) erőforrás-frissítési tevékenység
 
-A következő JSON-kódrészlet definiál egy Azure Machine Learning batch végrehajtási tevékenységet.
+A következő JSON-kódrészlet egy ML Studio (klasszikus) batch-végrehajtási tevékenységet határoz meg.
 
 ```json
 {

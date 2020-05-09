@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
-ms.openlocfilehash: 5e8f39b58f258742108fe323d9395efd87bc288f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f1a539096ac1a154ca37bbe6703f820787f927fb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78271812"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778260"
 ---
 # <a name="hdinsight-management-ip-addresses"></a>HDInsight-felügyeleti IP-címek
 
@@ -82,7 +82,7 @@ Az Azure HDInsight Health and Management Services szolgáltatásban felsorolt IP
 
 További információ a Azure Government használt IP-címekről: [Azure Government Intelligence + Analytics](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics) -dokumentum.
 
-További információ: a [hálózati forgalom szabályozása](hdinsight-plan-virtual-network-deployment.md#networktraffic) szakasz.
+További információ: a [hálózati forgalom szabályozása](./control-network-traffic.md).
 
 Ha felhasználó által megadott útvonalakat (UDR) használ, meg kell adnia egy útvonalat, és engedélyeznie kell a kimenő forgalmat a virtuális hálózatról a fenti IP-címekre a következő ugrás "Internet" értékre állításával.
 

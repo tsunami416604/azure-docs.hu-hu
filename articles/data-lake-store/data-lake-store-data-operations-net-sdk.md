@@ -1,17 +1,17 @@
 ---
-title: '.NET SDK: fájlrendszerbeli műveletek Azure Data Lake Storage Gen1'
+title: .NET SDK – fájlrendszerbeli műveletek Data Lake Storage Gen1-Azure-ban
 description: Használja a Azure Data Lake Storage Gen1 .NET SDK-t a fájlrendszerbeli műveletekhez Data Lake Storage Gen1 például mappák létrehozása stb.).
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: twooley
-ms.openlocfilehash: 7e33ecbbb49fc2b0683d0757da36deec72796806
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e52a3cb8d31b5fccc9a0b5a3a76d4e9b43de123
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638901"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690968"
 ---
 # <a name="filesystem-operations-on-data-lake-storage-gen1-using-the-net-sdk"></a>Fájlrendszer-műveletek Data Lake Storage Gen1 a .NET SDK használatával
 
@@ -31,7 +31,7 @@ A Data Lake Storage Gen1 a .NET SDK használatával történő Fiókkezelés-kez
 
 * A **Visual Studio 2013-es vagy újabb**verzióját. A cikkben szereplő utasítások a Visual Studio 2019-et használják.
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Azure Data Lake Storage Gen1 fiók**. A fiókok létrehozásával kapcsolatos útmutatásért tekintse meg a [Azure Data Lake Storage Gen1 első lépéseivel](data-lake-store-get-started-portal.md)foglalkozó témakört.
 
