@@ -2,26 +2,21 @@
 title: Annak megállapítása, hogy egy adott felhasználó tud-e hozzáférni egy alkalmazáshoz
 description: Annak megállapítása, hogy egy kritikus fontosságú felhasználó hozzáférhet-e az Azure AD-vel való felhasználói üzembe helyezéshez konfigurált alkalmazáshoz
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 48370e2806b70d550bce95ceff3857a79561f247
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d976785340e1a032aa4484dd2e8fd6cb2915129
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264140"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593913"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>A felhasználó kiépítési állapotának megtekintése
 
@@ -35,7 +30,7 @@ Amikor először konfigurálja az automatikus kiosztást, az oldal alján talál
 - A jelenleg futó vagy utolsó befejezett kiépítési ciklus típusa (kezdeti vagy növekményes).
 - Egy **folyamatjelző sáv** , amely a befejezett kiépítési ciklus százalékos arányát mutatja. A százalékos arány a kiosztott lapok számát tükrözi. Vegye figyelembe, hogy az egyes lapok több felhasználót vagy csoportot is tartalmazhatnak, így a százalékos arány nem felel meg közvetlenül a felhasználók, csoportok vagy szerepkörök kiépített számával.
 - A **frissítés** gombra kattintva megtarthatja a nézet frissítését.
-- Az összekötő adattárában lévő **felhasználók** és **csoportok** száma. A darabszám növekszik, amikor egy objektum bekerül a kiépítés hatókörébe. A számláló nem fog lejárni, ha a felhasználó nem törölhető vagy nem törölhető, mert ez nem távolítja el az objektumot az összekötő adattárból. A szám a CDS [alaphelyzetbe állítása](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) után recaculated az első szinkronizálás után 
+- Az összekötő adattárában lévő **felhasználók** és **csoportok** száma. A darabszám növekszik, amikor egy objektum bekerül a kiépítés hatókörébe. A számláló nem fog lejárni, ha a felhasználó nem törölhető vagy nem törölhető, mert ez nem távolítja el az objektumot az összekötő adattárból. A rendszer újraszámítja az első szinkronizálást a CDS [alaphelyzetbe állítása](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-restart?view=graph-rest-beta&tabs=http) után. 
 - A **naplók megtekintése** hivatkozás, amely megnyitja az Azure ad-kiépítési naplókat a felhasználói kiépítési szolgáltatás által futtatott összes művelet részleteiről, beleértve az egyes felhasználók kiépítési állapotát is (lásd alább a [kiépítési naplók használata](#use-provisioning-logs-to-check-a-users-provisioning-status) című szakaszt).
 
 A létesítési ciklus befejezése után a **statisztikák a mai napig** szakasz megjeleníti a dátummal kiépített felhasználók és csoportok összesített számát, valamint az utolsó ciklus befejezési dátumát és időtartamát. A **tevékenység azonosítója** egyedileg azonosítja a legutóbbi kiépítési ciklust. A **feladathoz tartozó azonosító** a kiépítési feladathoz tartozó egyedi azonosító, és a bérlőn lévő alkalmazásra vonatkozik.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: a3eae08510e57227b91deeeb7a7a608a6652cb4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ca20f2c8cda84c241391f67ac542faa4a1f5ecd
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535408"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594712"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 1. verziójának használata Linux rendszerű virtuális gépekkel
 
@@ -118,13 +118,13 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus |
+| Name | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. OSTCExtensions | sztring |
 | type | CustomScriptForLinux | sztring |
 | typeHandlerVersion | 1.5 | int |
-| fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
+| fileUris (például) | `https://github.com/MyProject/Archive/MyPythonScript.py` | tömb |
 | commandToExecute (például) | Python- \<MyPythonScript.py My-param1\> | sztring |
 | enableInternalDNSCheck | igaz | logikai |
 | storageAccountName (például) | examplestorageacct | sztring |

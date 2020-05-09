@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 03/25/2020
+ms.date: 05/01/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d9bec829d7fb3e76eb243bda73423303670585e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb13eb699f770d4d7f896b8179888d1514b1c46d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295117"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690371"
 ---
-# <a name="configure-a-conditional-access-policy-in-report-only-mode-preview"></a>Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban (előzetes verzió)
+# <a name="configure-a-conditional-access-policy-in-report-only-mode"></a>Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban
 
 Feltételes hozzáférési szabályzat konfigurálása csak jelentési módban:
 
@@ -42,7 +42,7 @@ Egy adott bejelentkezéshez tartozó jelentés-házirend eredményének megtekin
 1. Jelentkezzen be a **Azure Portal** jelentés-olvasó, biztonsági olvasó, biztonsági rendszergazda vagy globális rendszergazdaként.
 1. Tallózással keresse meg **Azure Active Directory** > a**bejelentkezéseket**.
 1. Válasszon ki egy bejelentkezést, vagy adjon hozzá szűrőket a szűkített eredményekhez.
-1. A **részletek** legördülő menüben válassza a **csak jelentés (előzetes verzió)** fület a bejelentkezés során kiértékelt szabályzatok megtekintéséhez.
+1. A **részletek** legördülő menüben válassza a **csak jelentés** lapot a bejelentkezés során kiértékelt szabályzatok megtekintéséhez.
 
 > [!NOTE]
 > A bejelentkezési naplók letöltésekor válassza a JSON-formátum lehetőséget a feltételes hozzáférés jelentési eredményeinek befoglalásához.
@@ -62,7 +62,7 @@ Miután Azure Monitorrel integrálta Azure AD-naplóit, a feltételes hozzáfér
 
 1. Jelentkezzen be a **Azure Portal** biztonsági rendszergazdaként vagy globális rendszergazdaként.
 1. Tallózással keresse meg **Azure Active Directory** > **munkafüzeteket**.
-1. Válassza a **feltételes hozzáférési információ (előzetes verzió)** lehetőséget.
+1. Válassza a **feltételes hozzáférési ismeretek**lehetőséget.
 1. Válasszon ki egy vagy több szabályzatot a **feltételes hozzáférési** szabályzat legördülő listából. Alapértelmezés szerint az összes engedélyezett házirend ki van választva.
 1. Válasszon időtartományt (ha az időtartomány meghaladja a rendelkezésre álló adatkészletet, a jelentés megjeleníti az összes elérhető adatokat). Miután beállította a **feltételes hozzáférési házirendet** és az **időtartomány** paramétereit, a rendszer betölti a jelentést.
    1. Ha szeretné, megkeresheti az egyes **felhasználókat** vagy **alkalmazásokat** , hogy szűkítse a jelentés hatókörét.

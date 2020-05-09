@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: b945beaa7497e1ad19315bacf1284dd0cbc24d6a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f657e18d7185d6b3c63ac8f1424da9d36d4189e9
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868077"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793040"
 ---
 # <a name="optimize-your-cloudsimple-private-cloud-for-installing-oracle-rac"></a>Optimalizálja CloudSimple saját Felhőjét az Oracle RAC telepítéséhez
 
@@ -46,10 +46,10 @@ A következő példa az alábbi táblázatban definiált lemezeket használja.
 
 | Lemez                                      | Cél                                       | Megosztott lemez |
 |-------------------------------------------|-----------------------------------------------|-------------|
-| Operációs rendszer                                        | Operációsrendszer-lemez                         | Nem          |
-| RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | Nem          |
-| ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | Nem          |
-| ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | Nem          |
+| Operációs rendszer                                        | Operációsrendszer-lemez                         | No          |
+| RÁCS                                      | Az Oracle Grid szoftver telepítési helye     | No          |
+| ADATBÁZIS                                  | Az Oracle Database szoftver telepítési helye | No          |
+| ORAHOME                                   | Az Oracle Database bináris fájljainak alaphelye    | No          |
 | DATA1, DATA2, DATA3, DATA4                | Az Oracle-adatbázisfájlok tárolására szolgáló lemez   | Igen         |
 | REDO1, REDO2, REDO3, REDO4, REDO5, REDO6  | Naplófájlok visszaállítása                                | Igen         |
 | OCR1, OCR2, OCR3, OCR4, OCR5              | Szavazó lemezek                                  | Igen         |
@@ -244,7 +244,7 @@ Ismételje meg a 2 – 7. lépést minden olyan új lemez esetében, amely az Or
 A virtuális gépek közötti affinitási szabályok biztosítják, hogy a virtuális gép a kívánt gazdagépen fusson.  Megadhat szabályokat a vCenter annak biztosításához, hogy az Oracle-alapú virtuális gép a megfelelő erőforrásokkal rendelkező gazdagépen fusson, és kielégítse az adott licencelési követelményeket.
 
 1. A CloudSimple-portálon a cloudowner-felhasználó [jogosultságait is kiterjesztheti](escalate-private-cloud-privileges.md) .
-2. [Jelentkezzen be a privát felhő vSphere-ügyfelébe](https://docs.azure.cloudsimple.com/vsphere-access) .
+2. Jelentkezzen be a privát felhő vSphere-ügyfelébe.
 3. Az vSphere-ügyfélen válassza ki azt a fürtöt, amelyen az Oracle virtuális gépek telepítve vannak, majd kattintson a **Konfigurálás**gombra.
 4. A konfigurálás területen válassza a **virtuális gép/gazda csoportok**lehetőséget.
 5. Kattintson **+** a elemre.

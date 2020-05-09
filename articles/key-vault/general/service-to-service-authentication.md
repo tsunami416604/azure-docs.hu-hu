@@ -10,12 +10,12 @@ ms.date: 08/28/2019
 ms.topic: conceptual
 ms.service: key-vault
 ms.subservice: general
-ms.openlocfilehash: cd630acfd65f0a79c186ba35bc15627bf7ccfdbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 84cf12aa91de72ae54e63f2cfe7a61586b6bf457
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686196"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857081"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Szolgáltatások közötti hitelesítés Azure Key Vault .NET használatával
 
@@ -272,7 +272,7 @@ Az Azure CLI használatával állítsa be az alapértelmezett előfizetést, ame
 
 #### <a name="unauthorized-access-access-denied-forbidden-or-similar-error"></a>Jogosulatlan hozzáférés, hozzáférés megtagadva, tiltott vagy hasonló hiba
 
-A résztvevőnek nincs hozzáférése ahhoz az erőforráshoz, amelyet megpróbál elérni. Adja meg a felhasználói fiókját vagy a App Service MSI "közreműködő" hozzáférését egy erőforráshoz. Az egyik attól függ, hogy a mintát a helyi számítógépen futtatja, vagy az Azure-ban telepítette a App Serviceba. Bizonyos erőforrások, például a kulcstartók is rendelkeznek saját [hozzáférési szabályzatokkal](https://docs.microsoft.com/azure/key-vault/secure-your-key-vault#data-plane-and-access-policies) , amelyeket a rendszerbiztonsági tag, például a felhasználók, az alkalmazások és a csoportok hozzáférésének biztosítására használ.
+A résztvevőnek nincs hozzáférése ahhoz az erőforráshoz, amelyet megpróbál elérni. Adja meg a felhasználói fiókját vagy a App Service MSI "közreműködő" hozzáférését egy erőforráshoz. Az egyik attól függ, hogy a mintát a helyi számítógépen futtatja, vagy az Azure-ban telepítette a App Serviceba. Bizonyos erőforrások, például a kulcstartók is rendelkeznek saját [hozzáférési szabályzatokkal](https://docs.microsoft.com/azure/key-vault/general/secure-your-key-vault#data-plane-and-access-policies) , amelyeket a rendszerbiztonsági tag, például a felhasználók, az alkalmazások és a csoportok hozzáférésének biztosítására használ.
 
 ### <a name="common-issues-when-deployed-to-azure-app-service"></a>Gyakori problémák a Azure App Service való üzembe helyezéskor
 

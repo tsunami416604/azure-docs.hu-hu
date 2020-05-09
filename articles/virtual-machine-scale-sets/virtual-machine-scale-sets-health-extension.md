@@ -5,17 +5,17 @@ author: mimckitt
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.topic: conceptual
-ms.date: 01/30/2019
+ms.date: 05/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: cb5f1d48bb1a95db004d9da553e19a35071c73b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273732"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864368"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Az Application Health bővítmény használata virtuálisgép-méretezési csoportokkal
-Az alkalmazás állapotának figyelése fontos jel az üzemelő példány kezeléséhez és frissítéséhez. Az Azure virtuálisgép-méretezési csoportok támogatást nyújtanak a [működés közbeni](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) frissítésekhez, beleértve az [automatikus operációsrendszer-képek](virtual-machine-scale-sets-automatic-upgrade.md)frissítéseit is, amelyek az egyes példányok állapotának figyelésére támaszkodnak az üzembe helyezés frissítéséhez.
+Az alkalmazás állapotának figyelése fontos jel az üzemelő példány kezeléséhez és frissítéséhez. Az Azure virtuálisgép-méretezési csoportok támogatást nyújtanak a [működés közbeni](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) frissítésekhez, beleértve az [automatikus operációsrendszer-képek](virtual-machine-scale-sets-automatic-upgrade.md)frissítéseit is, amelyek az egyes példányok állapotának figyelésére támaszkodnak az üzembe helyezés frissítéséhez. Az állapotfigyelő szolgáltatással is figyelheti a méretezési csoport egyes példányainak alkalmazási állapotát, és elvégezheti a példányok javítását az [automatikus példányok javításával](virtual-machine-scale-sets-automatic-instance-repairs.md).
 
 Ez a cikk azt ismerteti, hogyan használható az alkalmazás állapota bővítmény a virtuálisgép-méretezési csoportokon telepített alkalmazások állapotának figyelésére.
 
@@ -31,7 +31,7 @@ Mivel a bővítmény a virtuális gépen belülről jelenti az állapotot, a bő
 
 ## <a name="extension-schema"></a>Bővítményséma
 
-A következő JSON az alkalmazás állapotára szolgáló bővítmény sémáját jeleníti meg. A bővítményhez legalább egy "TCP" vagy "http" kérelemnek kell tartoznia egy társított porttal vagy kérelem elérési úttal.
+A következő JSON az alkalmazás állapotára szolgáló bővítmény sémáját jeleníti meg. A bővítményhez legalább egy "TCP", "http" vagy "https" kérelem szükséges egy társított porttal vagy kérelem elérési úttal.
 
 ```json
 {
@@ -55,7 +55,7 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa | Adattípus
+| Name | Érték/példa | Adattípus
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | dátum |
 | közzétevő | `Microsoft.ManagedServices` | sztring |
@@ -64,11 +64,11 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 
 ### <a name="settings"></a>Beállítások
 
-| Name (Név) | Érték/példa | Adattípus
+| Name | Érték/példa | Adattípus
 | ---- | ---- | ----
-| protokoll | `http` vagy `tcp` | sztring |
-| port | A protokoll megadása esetén `http`kötelező megadni, ha a protokoll`tcp` | int |
-| requestPath | Kötelező, ha a `http`protokoll értéke nem engedélyezett, ha a protokoll`tcp` | sztring |
+| protokoll | `http`vagy `https``tcp` | sztring |
+| port | Nem `http` kötelező, ha protokoll `https`vagy`tcp` | int |
+| requestPath | Kötelező, ha a `http` protokoll `https`értéke vagy, nem engedélyezett, ha a protokoll`tcp` | sztring |
 
 ## <a name="deploy-the-application-health-extension"></a>Az alkalmazás állapot-kiterjesztésének üzembe helyezése
 Az alábbi példákban több módon is üzembe helyezheti az alkalmazás állapotának kiterjesztését a méretezési csoportokban.

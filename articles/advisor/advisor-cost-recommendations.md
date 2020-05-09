@@ -3,12 +3,12 @@ title: A szolgáltatási költségek csökkentése Azure Advisor használatával
 description: A Azure Advisor használatával optimalizálhatja az Azure-beli üzemelő példányok költségeit.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 0237feab59551ecab87d78b0d4d66b9fc7b47e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e7b1d7c6b0fe342020c40e1bb4abeba97d18bb
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259694"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788093"
 ---
 # <a name="reduce-service-costs-using-azure-advisor"></a>A szolgáltatási költségek csökkentése Azure Advisor használatával
 
@@ -49,6 +49,9 @@ A 60%-os megtakarítás érdekében javasoljuk, hogy a pillanatképeket a Standa
 
 ## <a name="utilize-lifecycle-management"></a>Életciklus-felügyelet használata
 A Azure Advisor az Azure Blob Storage-objektumok számával, a teljes mérettel és a tranzakciókkal kapcsolatos intelligenciát fogja használni annak észleléséhez, hogy egy vagy több Storage-fiók a legjobb megoldás-e az életciklus-felügyelethez a rétegek adatai számára. Arra fogja kérni, hogy életciklus-kezelési szabályokat hozzon létre, hogy a tárolási költségek optimalizálása érdekében automatikusan leszűkítse az adatait az Azure Blob Storage szolgáltatásban az alkalmazások kompatibilitása érdekében.
+
+## <a name="create-an-ephemeral-os-disk-recommendation"></a>Ideiglenes operációsrendszer-lemezre vonatkozó javaslat létrehozása
+Az [elmúló operációsrendszer-lemezzel](https://docs.microsoft.com/azure/virtual-machines/windows/ephemeral-os-disks)az ügyfelek megkapják a következő előnyöket: az operációsrendszer-lemez tárolási díjainak mentése. Csökkentse az írási/olvasási késleltetést az operációsrendszer-lemezre. A virtuális gép rendszerképének gyorsabb működése az operációs rendszer (és az ideiglenes lemez) eredeti állapotába való alaphelyzetbe állításával. A rövid élettartamú IaaS-alapú virtuális gépekhez és az állapot nélküli számítási feladatokhoz tartozó virtuális gépekhez inkább ideiglenes operációsrendszer-lemezeket kell használni. Az Advisor olyan erőforrásokra vonatkozó javaslatot tartalmaz, amelyek az elmúló operációsrendszer-lemezzel kapcsolatos előnyöket is igénybe vehetnek. 
 
 ## <a name="how-to-access-cost-recommendations-in-azure-advisor"></a>A Cost javaslatokhoz való hozzáférés Azure Advisor
 

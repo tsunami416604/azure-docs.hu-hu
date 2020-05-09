@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 2af20a1ddf4239b7eec6cceabf2ff9711959c128
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dfdf6e1f8edfb4dafaf93e62090ed51878f9b2aa
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77189107"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734824"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>ELAVULT Az Azure Container Service DC/OS-fürtön található vamp kiadási szolgáltatásokkal rendelkező csicsörke
 
@@ -129,7 +129,7 @@ Most, hogy a vamp már működik, üzembe helyezi a szolgáltatást egy tervből
 
 A legegyszerűbb formájában a [vamp tervrajza](https://docs.vamp.io/how-vamp-works/vamp-and-kubernetes#vamp-deployments) a telepítendő végpontokat (átjárókat), fürtöket és szolgáltatásokat ismerteti. A vamp a fürtök használatával csoportosítja ugyanazon szolgáltatás különböző változatait logikai csoportokba a Kanári-kibocsátáshoz vagy A/B teszteléshez.  
 
-Ez a forgatókönyv egy Száva nevű, a 1,0-es verzióban található, a [**savat**](https://github.com/magneticio/sava)használó minta monolitikus alkalmazást használ. A Monolith egy Docker-tárolóba van csomagolva, amely a magneticio/Sava: 1.0.0 alatt található Docker hub-ban. Az alkalmazás általában a 8080-es porton fut, de ebben az esetben az 9050-es porton keresztül szeretné közzétenni. Az alkalmazás üzembe helyezése a vamp segítségével egy egyszerű terv használatával.
+Ez a forgatókönyv egy Száva nevű, a 1,0-es verzióban található, a [**savat**](https://github.com/magneticio/sava-product)használó minta monolitikus alkalmazást használ. A Monolith egy Docker-tárolóba van csomagolva, amely a magneticio/Sava: 1.0.0 alatt található Docker hub-ban. Az alkalmazás általában a 8080-es porton fut, de ebben az esetben az 9050-es porton keresztül szeretné közzétenni. Az alkalmazás üzembe helyezése a vamp segítségével egy egyszerű terv használatával.
 
 1. Ugrás az üzemelő **példányokra**.
 
