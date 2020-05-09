@@ -2,19 +2,19 @@
 title: Azure-Application Insights ASP.NET Core alkalmazásokhoz | Microsoft Docs
 description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, a teljesítmény és a használat érdekében.
 ms.topic: conceptual
-ms.date: 05/22/2019
-ms.openlocfilehash: e8ace92c39ed6b7bdcca0bae14cc0ae95aced2c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: 9c7c2e22d2befb503a388df1fa8a42c3d6eb07c5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82145261"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652774"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Application Insights [ASP.net Core](https://docs.microsoft.com/aspnet/core) alkalmazáshoz. A cikkben szereplő utasítások elvégzése után a Application Insights összegyűjti a kérelmeket, a függőségeket, a kivételeket, a teljesítményszámlálókat, a szívveréseket és a naplókat a ASP.NET Core alkalmazásból.
 
-Az itt használt példa egy [MVC-alkalmazás](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , amely a célokat `netcoreapp2.2`célozza. Ezek az utasítások az összes ASP.NET Core alkalmazásra alkalmazhatók.
+Az itt használt példa egy [MVC-alkalmazás](https://docs.microsoft.com/aspnet/core/tutorials/first-mvc-app) , amely a célokat `netcoreapp3.0`célozza. Ezek az utasítások az összes ASP.NET Core alkalmazásra alkalmazhatók.
 
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
@@ -28,7 +28,7 @@ A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.A
 * **Ide**: Visual Studio, vs Code vagy Command line.
 
 > [!NOTE]
-> Ha ASP.NET Core 3. X-et használ a Application Insights mellett, használja a [2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) vagy újabb verzióját. Ez az egyetlen olyan verzió, amely támogatja az ASP.NET Core 3. X verziót.
+> ASP.NET Core 3. X [Application Insights a 2.8.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.8.0) vagy újabb verzióra van szükség.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -109,7 +109,9 @@ A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.A
 
     * `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
-    Jellemzően az `APPINSIGHTS_INSTRUMENTATIONKEY` Azure Web Apps üzembe helyezett alkalmazások kialakítási kulcsát adja meg.
+    * `APPINSIGHTS_INSTRUMENTATIONKEY`általában az [Azure web Appsban](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps?tabs=net)használatos, de használható minden olyan helyen is, ahol ez az SDK támogatott. (Ha kód nélküli webalkalmazás-figyelést végez, akkor ezt a formátumot kell megadni, ha nem használ kapcsolati karakterláncokat.)
+
+    A rendszerállapot-kulcsok beállítása helyett már használhatja a [kapcsolatok karakterláncait](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net)is.
 
     > [!NOTE]
     > A kód WINS-ben megadott rendszerállapot-kulcs a környezeti `APPINSIGHTS_INSTRUMENTATIONKEY`változón keresztül, amely más beállításokon keresztül nyerhető.
@@ -209,7 +211,7 @@ A beállítások teljes listája`ApplicationInsightsServiceOptions`
 |EnableAzureInstanceMetadataTelemetryModule   |  Engedélyezés/letiltás`AzureInstanceMetadataTelemetryModule` | igaz
 |EnableQuickPulseMetricStream | LiveMetrics funkció engedélyezése/letiltása | igaz
 |EnableAdaptiveSampling | Adaptív mintavételezés engedélyezése/letiltása | igaz
-|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartBeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | igaz
+|EnableHeartbeat | A szívverések funkció engedélyezése/letiltása, amely rendszeres időközönként (15 perces alapértelmezett) a "HeartbeatState" nevű egyéni metrikát küldi el a (z), például a .NET-es verzióval, az Azure-környezettel kapcsolatos információkkal, ha vannak ilyenek, stb. | igaz
 |AddAutoCollectedMetricExtractor | Az AutoCollectedMetrics Extractor engedélyezése/letiltása, amely egy olyan TelemetryProcessor, amely előre összevont metrikákat küld a kérelmek/függőségek számára a mintavétel megkezdése előtt. | igaz
 |RequestCollectionOptions.TrackExceptions | Engedélyezheti vagy letilthatja a nem kezelt kivételek nyomon követését a kérelmek gyűjtési modulja által. | hamis a NETSTANDARD 2.0-ban (mivel a kivételeket a ApplicationInsightsLoggerProvider követte nyomon), ellenkező esetben igaz.
 

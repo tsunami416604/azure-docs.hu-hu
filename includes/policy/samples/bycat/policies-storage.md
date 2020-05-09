@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 04/26/2020
+ms.date: 05/05/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: dae84da3be4d1e68d3844aba29f899d1e233c5d2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1f91cf9de0ec7d4f4d3877d10cef7b5f9dac65c
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82191149"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838138"
 ---
-|Name (Név) |Leírás |Hatás (ok) |Verzió |GitHub |
+|Name |Description |Hatás (ok) |Verzió |GitHub |
 |---|---|---|---|---|
 |[Engedélyezett tárfiók-termékváltozatok](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F7433c107-6db4-4ad1-b57a-a76dce0154a1) |Ez a szabályzat lehetővé teszi, hogy megadhatja a szervezet által üzembe helyezhető Storage Account SKU-készletet. |Megtagadás |1.0.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/AllowedStorageSkus_Deny.json) |
 |[Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F34c877ad-507e-4c82-993e-3452a6e0ad3c) |Naplózza a nem korlátozott hálózati hozzáférést a Storage-fiók tűzfala beállításaiban. Ehelyett konfigurálja úgy a hálózati szabályokat, hogy csak az engedélyezett hálózatokból származó alkalmazások férhessenek hozzá a Storage-fiókhoz. Az adott internetről vagy helyi ügyfelekről érkező kapcsolatok engedélyezéséhez hozzáférés adható a megadott Azure-beli virtuális hálózatoktól vagy a nyilvános internetes IP-címtartományok felé irányuló forgalom számára. |Naplózás, megtagadás, letiltva |1.1.0 |[Hivatkozás](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_NetworkAcls_Audit.json) |

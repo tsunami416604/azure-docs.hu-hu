@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 03/02/2020
 ms.topic: conceptual
-ms.openlocfilehash: 38e9134fdd6fb922fd9ed6efa9aa258a77487013
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.openlocfilehash: 82f6d9e56e5d5745077ef512cb3392c16b95961f
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787566"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872182"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -73,6 +73,9 @@ A Linux hibrid Runbook-feldolgozók minimális követelményei a következők:
 A hibrid Runbook-feldolgozók Linux rendszerű számítógépen történő telepítéséhez és konfigurálásához kövesse az egyszerű manuális folyamatot. Ehhez engedélyezni kell a Automation Hybrid Worker megoldást az Azure Log Analytics-munkaterületen, majd parancsokat kell futtatnia a számítógép feldolgozóként való regisztrálásához és egy csoportba való felvételéhez.
 
 A folytatás előtt jegyezze fel az Automation-fiókhoz kapcsolódó Log Analytics munkaterületet. Jegyezze fel az Automation-fiók elsődleges kulcsát is. A Azure Portal az Automation-fiók kiválasztásával, a munkaterület-azonosító **munkaterületének** kiválasztásával, valamint az elsődleges kulcs **kulcsainak** kiválasztásával is megtalálhatja. További információ a hibrid Runbook-feldolgozóhoz szükséges portokról és címekről: [a hálózat konfigurálása](automation-hybrid-runbook-worker.md#network-planning).
+
+>[!NOTE]
+> A Linux Hybrid Worker telepítése során a megfelelő sudo engedélyekkel rendelkező [nxautomation-fióknak](automation-runbook-execution.md#log-analytics-agent-for-linux) jelen kell lennie. Ha megpróbálja telepíteni a munkavégzőt, és a fiók nem létezik, vagy nem rendelkezik a megfelelő engedélyekkel, a telepítés sikertelen lesz.
 
 1. Engedélyezze a Automation Hybrid Worker megoldást az Azure-ban az alábbi módszerek egyikének használatával:
 

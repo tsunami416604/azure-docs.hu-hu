@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 04/23/2019
 ms.author: alkohli
-ms.openlocfilehash: 46dd89694857138d28255d5b1a86a8c947680520
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cb4d2faafacf8ba4d8bbe519d92c950cd56e32fd
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81398666"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857074"
 ---
 # <a name="tutorial-order-azure-data-box"></a>Oktatóanyag: Az Azure Data Box megrendelése
 
@@ -88,7 +88,7 @@ Az eszköz megrendeléséhez hajtsa végre a következő lépéseket az Azure Po
 
     A felügyelt lemezekhez megadott tárfiókot előkészítési tárfiókként használja a rendszer. A Data Box szolgáltatás lapblobként tölti fel a VHD-ket az előkészítési tárfiókba, majd felügyelt lemezekké konvertálja, és áthelyezi az erőforráscsoportba. További információ: [Az Azure-ba történő adatfeltöltés ellenőrzése](data-box-deploy-picked-up.md#verify-data-upload-to-azure).
 
-7. A **Szállítási cím** területen adja meg a vezeték- és utónevét, a vállalata nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről. Kattintson a **Tovább** gombra.
+7. A **Szállítási cím** területen adja meg a vezeték- és utónevét, a vállalata nevét és postai címét, valamint egy érvényes telefonszámot. Kattintson a **Cím ellenőrzése** elemre. A rendszer ellenőrzi, hogy a szolgáltatás elérhető-e a megadott szállítási címen. Ha a szolgáltatás elérhető a megadott szállítási címen, értesítést fog kapni erről. A Japánban, Szingapúrban, Koreában és Nyugat-Európában szolgáltatást használó ügyfeleink választhatják az önfelügyelt szállítást a megrendelés elhelyezésekor. A megrendelés sikeres elhelyezése után egy e-mailt fog kapni, amely útmutatást ad az eszköznek a kijelölt Azure-adatközpontból való felvételéhez. Kattintson a **tovább** gombra, ha a szállítási adatok érvényesítése sikeres volt.
 
 8. Az **Értesítési adatok** területen adja meg az e-mail-címeket. A szolgáltatás e-mail-értesítést küld a megrendelés állapotának minden változásáról a megadott e-mail-címekre.
 

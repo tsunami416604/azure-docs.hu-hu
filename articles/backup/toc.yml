@@ -44,6 +44,11 @@
           href: tutorial-sap-hana-restore-cli.md
         - name: Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése – parancssori felület
           href: tutorial-sap-hana-manage-cli.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Támogatási mátrixok
@@ -342,10 +347,18 @@
           href: security-overview.md
         - name: Szerepköralapú hozzáférés-vezérlés
           href: backup-rbac-rs-vault.md
-        - name: A felhőalapú számítási feladatok biztonsága
-          href: backup-azure-security-feature-cloud.md
+        - name: Helyreállítható törlés
+          items:
+            - name: Áttekintés
+              href: backup-azure-security-feature-cloud.md
+            - name: Virtuális gépekhez
+              href: soft-delete-virtual-machines.md
+            - name: Azure-beli virtuális gépeken futó SQL Serverhez és SAP HANA-hoz
+              href: soft-delete-sql-saphana-in-azure-vm.md
         - name: Biztonsági szolgáltatások hibrid biztonsági mentésekhez
           href: backup-azure-security-feature.md
+        - name: Titkosítás
+          href: backup-encryption.md
         - name: Beépített biztonsági vezérlők
           href: backup-security-controls.md
         - name: Biztonsági alapkonfiguráció

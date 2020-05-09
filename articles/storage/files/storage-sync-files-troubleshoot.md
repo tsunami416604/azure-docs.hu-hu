@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 11942a08d46f4b46dc5478fca4b64796b9ce0a7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41bc2a05b81bca586cde261bf2eb05db96d687f8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176124"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801316"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -357,7 +357,7 @@ Az alábbi táblázat tartalmazza az összes Unicode-karaktert, Azure File Sync 
 | **HRESULT** | 0x800704c7 |
 | **HRESULT (decimális)** | – 2147023673 | 
 | **Hibasztring** | ERROR_CANCELLED |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 A szinkronizálási munkamenetek különböző okok miatt sikertelenek lehetnek, például a kiszolgáló újraindítása vagy frissítése, VSS-Pillanatképek stb. Bár ez a hiba úgy tűnik, hogy a követést igényli, nyugodtan figyelmen kívül hagyhatja ezt a hibát, ha több órán keresztül nem szűnik meg.
 
@@ -379,7 +379,7 @@ A szinkronizálási munkamenetek különböző okok miatt sikertelenek lehetnek,
 | **HRESULT** | 0x80c8004c |
 | **HRESULT (decimális)** | – 2134376372 |
 | **Hibasztring** | ECS_E_USER_REQUEST_THROTTLED |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Nincs szükség beavatkozásra; a kiszolgáló megkísérli újra. Ha a hiba több órán keresztül fennáll, hozzon létre támogatási kérést.
 
@@ -390,7 +390,7 @@ Nincs szükség beavatkozásra; a kiszolgáló megkísérli újra. Ha a hiba tö
 | **HRESULT** | 0x80c83075 |
 | **HRESULT (decimális)** | – 2134364043 |
 | **Hibasztring** | ECS_E_SYNC_BLOCKED_ON_CHANGE_DETECTION_POST_RESTORE |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Semmit nem kell tenni. Ha egy fájl-vagy fájlmegosztás (Felhőbeli végpont) Azure Backup használatával lett visszaállítva, a rendszer letiltja a szinkronizálást, amíg a változások észlelése be nem fejeződik az Azure-fájlmegosztás esetében. A módosításészlelés a visszaállítás befejezése után azonnal fut, és az időtartam a fájlmegosztásban lévő fájlok számán alapul.
 
@@ -401,7 +401,7 @@ Semmit nem kell tenni. Ha egy fájl-vagy fájlmegosztás (Felhőbeli végpont) A
 | **HRESULT** | 0x80041295 |
 | **HRESULT (decimális)** | – 2147216747 |
 | **Hibasztring** | SYNC_E_METADATA_INVALID_OPERATION |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Ez a hiba általában akkor fordul elő, amikor egy biztonsági mentési alkalmazás létrehoz egy VSS-pillanatképet, és a szinkronizálási adatbázis el van távolítva. Ha a hiba több órán keresztül fennáll, hozzon létre támogatási kérést.
 
@@ -570,7 +570,7 @@ Ez a hiba akkor fordul elő, ha az Azure-fájlmegosztás nem érhető el egy tá
 | **HRESULT** | 0x80c80219 |
 | **HRESULT (decimális)** | – 2134375911 |
 | **Hibasztring** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Ez a hiba általában magától megoldódik, és a következő esetekben fordulhat elő:
 
@@ -704,7 +704,7 @@ Ez a hiba akkor következik be, ha a kötet megtelt. Ez a hiba általában azér
 | **HRESULT** | 0x80c8300f |
 | **HRESULT (decimális)** | – 2134364145 |
 | **Hibasztring** | ECS_E_REPLICA_NOT_READY |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Ez a hiba azért fordul elő, mert a Felhőbeli végpont az Azure-fájlmegosztás már meglévő tartalmával lett létrehozva. Azure File Sync az összes tartalomhoz be kell olvasnia az Azure-fájlmegosztást, mielőtt engedélyezi a kiszolgálói végpontnak a kezdeti szinkronizálást.
 
@@ -761,7 +761,7 @@ Ez a hiba akkor fordul elő, ha a felhőbeli rétegzési szűrő illesztőprogra
 | **HRESULT** | 0x80c8004b |
 | **HRESULT (decimális)** | – 2134376373 |
 | **Hibasztring** | ECS_E_SERVICE_UNAVAILABLE |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Ez a hiba azért következik be, mert az Azure File Sync szolgáltatás nem érhető el. Ez a hiba automatikusan megoldódik, ha az Azure File Sync szolgáltatás ismét elérhetővé válik.
 
@@ -772,7 +772,7 @@ Ez a hiba azért következik be, mert az Azure File Sync szolgáltatás nem érh
 | **HRESULT** | 0x80131500 |
 | **HRESULT (decimális)** | – 2146233088 |
 | **Hibasztring** | COR_E_EXCEPTION |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Ez a hiba akkor fordul elő, ha a szinkronizálás kivétel miatt meghiúsult. Ha a hiba több órán keresztül is fennáll, hozzon létre egy támogatási kérést.
 
@@ -794,7 +794,7 @@ Ez a hiba azért következik be, mert a tárfiók átadta a feladatait egy mási
 | **HRESULT** | 0x80c8020e |
 | **HRESULT (decimális)** | – 2134375922 |
 | **Hibasztring** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Ez a hiba a szinkronizálási adatbázis belső hibája miatt következik be. A szinkronizálási újrapróbálkozáskor ez a hiba automatikusan megoldódik. Ha a hiba hosszabb időt vesz igénybe, hozzon létre egy támogatási kérést, és felvesszük Önnel a kapcsolatot, hogy segítsen a probléma megoldásában.
 
@@ -807,12 +807,9 @@ Ez a hiba a szinkronizálási adatbázis belső hibája miatt következik be. A 
 | **Hibasztring** | ECS_E_INVALID_AAD_TENANT |
 | **Szervizelés szükséges** | Igen |
 
-Ez a hiba azért fordul elő, mert az Azure File Sync jelenleg nem támogatja az előfizetés egy másik Azure Active Directory-bérlőbe való áthelyezését.
+Győződjön meg arról, hogy rendelkezik a legújabb Azure File Sync ügynökkel. Az ügynök V10-es verziójában a Azure File Sync támogatja az előfizetés másik Azure Active Directory bérlőre való áthelyezését.
  
-A probléma az alábbi lehetőségek egyikével oldható meg:
-
-- **1. lehetőség (ajánlott)**: az előfizetés áthelyezése az eredeti Azure Active Directory bérlőre
-- **2. lehetőség**: az aktuális szinkronizálási csoport törlése és újbóli létrehozása. Ha a felhőbeli rétegzés engedélyezve volt a kiszolgálóvégponton, törölje a szinkronizálási csoportot, majd végezze el a [Felhőbeli rétegzés szakaszban]( https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) leírt lépéseket az elárvult rétegezett fájlok eltávolításához a szinkronizálási csoportok újbóli létrehozása előtt. 
+Ha már rendelkezik az ügynök legújabb verziójával, meg kell adnia a Microsoft. StorageSync alkalmazás elérését a Storage-fiókhoz (lásd: [Azure file Sync hozzáférése a Storage-fiókhoz](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot#troubleshoot-rbac)).
 
 <a id="-2134364010"></a>**A szinkronizálás nem sikerült, mert a tűzfal és a virtuális hálózati kivétel nincs konfigurálva**  
 
@@ -881,7 +878,7 @@ Ez a hiba azért fordul elő, mert Azure File Sync nem támogatja a HTTP-átirá
 | **HRESULT** | 0x80c83085 |
 | **HRESULT (decimális)** | – 2134364027 |
 | **Hibasztring** | ECS_E_DATA_INGESTION_WAIT_TIMEOUT |
-| **Szervizelés szükséges** | Nem |
+| **Szervizelés szükséges** | No |
 
 Ez a hiba akkor fordul elő, ha egy adatfeldolgozási művelet túllépi az időkorlátot. Ez a hiba figyelmen kívül hagyható, ha a szinkronizálás folyamatban van (a AppliedItemCount nagyobb, mint 0). Lásd: [hogyan a jelenlegi szinkronizálási munkamenet előrehaladásának figyelése?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
@@ -1248,7 +1245,25 @@ Ha a kiszolgáló Azure File Syncával kapcsolatos problémákat tapasztal, kezd
 3. Ellenőrizze, hogy fut-e a Azure File Sync szűrő-illesztőprogramok (StorageSync. sys és StorageSyncGuard. sys):
     - Futtassa `fltmc`a parancsot egy rendszergazda jogú parancssorban. Győződjön meg arról, hogy a StorageSync. sys és a StorageSyncGuard. sys fájlrendszer-szűrő illesztőprogramjai vannak felsorolva.
 
-Ha a probléma nem oldódik meg, futtassa a AFSDiag eszközt:
+Ha a probléma nem oldódik meg, futtassa a AFSDiag eszközt, és küldje el a. zip-fájl kimenetét a további diagnosztizáláshoz rendelt támogatási szakembernek.
+
+Az ügynök verziójának v11 és újabb verziói esetén:
+
+1. Nyisson meg egy rendszergazda jogú PowerShell-ablakot, majd futtassa a következő parancsokat (nyomja le az ENTER billentyűt minden parancs után):
+
+    > [!NOTE]
+    >A AFSDiag létrehozza a kimeneti könyvtárat és a hozzá tartozó Temp mappát a naplók gyűjtése előtt, és a végrehajtás után törli a Temp mappát. Adja meg a kimeneti helyet, amely nem tartalmaz adatokat.
+    
+    ```powershell
+    cd "c:\Program Files\Azure\StorageSyncAgent"
+    Import-Module .\afsdiag.ps1
+    Debug-AFS -OutputDirectory C:\output -KernelModeTraceLevel Verbose -UserModeTraceLevel Verbose
+    ```
+
+2. Reprodukálja a problémát. Ha elkészült, adja meg a **D**értéket.
+3. A rendszer a naplókat és nyomkövetési fájlokat tartalmazó. zip-fájlt menti a megadott kimeneti könyvtárba. 
+
+Az ügynök V10-es és korábbi verzióiban:
 1. Hozzon létre egy könyvtárat, amelybe a rendszer menti a AFSDiag kimenetét (például C:\Output).
     > [!NOTE]
     >A AFSDiag a naplófájlok gyűjtése előtt törli a kimeneti könyvtár összes tartalmát. Adja meg a kimeneti helyet, amely nem tartalmaz adatokat.

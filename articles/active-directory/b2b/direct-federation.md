@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 05/07/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b99a80a90df8fcfc5efe6dfa0c2cd7e8e5e04e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050879"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926986"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 |     |
@@ -50,10 +50,13 @@ A összevonása kívánt tartomány ***nem*** lehet DNS-ellenőrzés alatt álln
 
 ### <a name="authentication-url"></a>Hitelesítési URL-cím
 A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amelyekben a hitelesítési URL tartománya megegyezik a céltartományban, vagy ha a hitelesítési URL-cím az egyik engedélyezett Identity Provider (ez a lista változhat):
+
 -   accounts.google.com
 -   pingidentity.com
 -   login.pingone.com
 -   okta.com
+-   oktapreview.com
+-   okta-emea.com
 -   my.salesforce.com
 -   federation.exostar.com
 -   federation.exostartest.com

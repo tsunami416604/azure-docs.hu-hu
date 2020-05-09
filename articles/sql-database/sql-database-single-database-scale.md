@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 84846e642fa102045b89eb12dbc85b0995867a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/30/2020
+ms.openlocfilehash: a13b860e01e7ef295df629d79dfa44700b5f0d02
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061597"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691590"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
 
@@ -48,13 +48,27 @@ A szolgáltatási réteg vagy a számítási méret módosítása főleg a köve
 
 ## <a name="latency"></a>Késés 
 
-A szolgáltatási réteg módosításának becsült késése vagy egy önálló adatbázis vagy rugalmas készlet számítási méretének átméretezése a következő paraméterekkel történik:
+A szolgáltatási réteg módosításának becsült késése, az önálló adatbázis vagy a rugalmas készlet számítási méretének skálázása, a rugalmas készleten belüli vagy kívüli adatbázis áthelyezése, illetve a rugalmas készletek közötti adatbázis áthelyezése a következőképpen történik:
 
 |Szolgáltatásszint|Alapszintű önálló adatbázis,</br>Standard (S0-S1)|Alapszintű rugalmas készlet,</br>Standard (S2-S12), </br>Nagy kapacitású </br>Önálló adatbázis vagy rugalmas készlet általános célú|Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet|
 |:---|:---|:---|:---|
 |**Alapszintű önálló</br> adatbázis, Standard (S0-S1)**|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 |**Alapszintű rugalmas </br>készlet, Standard (S2-S12 </br>), </br>nagy kapacitású, általános célú önálló adatbázis vagy rugalmas készlet**|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Állandó időbeli késés a felhasznált területtől függetlenül</br>&bull;&nbsp;Általában kevesebb, mint 5 perc|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 |**Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet**|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull;&nbsp;Az Adatmásolás miatt használt adatbázis-területtel arányos késés</br>&bull;&nbsp;Általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
+
+> [!NOTE]
+> Emellett a standard (S2-S12) és a általános célú-adatbázisok esetében a rugalmas készletből vagy a rugalmas készletekből származó adatbázisok áthelyezésének késése az adatbázis méretétől függ, ha az adatbázis a prémium szintű fájlmegosztás ([PFS](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)) tárolót használja.
+>
+> Annak megállapításához, hogy egy adatbázis PFS-tárolót használ-e, hajtsa végre a következő lekérdezést az adatbázis környezetében. Ha a AccountType oszlopban az érték szerepel `PremiumFileStorage`, az adatbázis PFS-tárolót használ.
+ 
+```sql
+SELECT s.file_id,
+       s.type_desc,
+       s.name,
+       FILEPROPERTYEX(s.name, 'AccountType') AS AccountType
+FROM sys.database_files AS s
+WHERE s.type_desc IN ('ROWS', 'LOG');
+```
 
 > [!TIP]
 > A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).

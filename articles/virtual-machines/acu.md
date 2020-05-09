@@ -13,16 +13,22 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: e344d09497a30dec546dfaedd3d78f30c7d214d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79535697"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629099"
 ---
 # <a name="azure-compute-unit-acu"></a>Azure számítási egység (ACU)
 
-Az Azure számítási egység (ACU) koncepciója lehetővé teszi a számítási (CPU-) teljesítmény összehasonlítását az Azure SKU-ban. Így könnyebben választhatja ki a teljesítményigényeinek leginkább megfelelő termékváltozatot. Az ACU jelenlegi standard alapjaként a Kisméretű (Standard_A1) virtuális gép 100-as értéket képvisel, és a többi termékváltozat értéke ehhez képest jelöli, hogy mennyivel gyorsabban futtatja az adott termékváltozat a standard teljesítménytesztet.
+Az Azure számítási egység (ACU) koncepciója lehetővé teszi a számítási (CPU-) teljesítmény összehasonlítását az Azure SKU-ban. Így könnyebben választhatja ki a teljesítményigényeinek leginkább megfelelő termékváltozatot. Az ACU jelenleg a 100-es kis (Standard_A1) virtuális gépen van szabványosítva, és az összes többi SKU is körülbelül annyit jelent, hogy az SKU képes a szabványos teljesítményteszt futtatására.
+
+* A ACUs az Intel® Turbo technológiát használja a CPU-gyakoriság növelésére és a teljesítmény növelésére.  A teljesítmény növelésének mértéke a virtuális gép méretétől, a számítási feladatoktól és az ugyanazon a gazdagépen futó egyéb számítási feladatoktől függően változhat.
+
+* * A ACUs az AMD® fokozza a technológiát a CPU-gyakoriság növelése és a teljesítmény növelése érdekében.  A teljesítmény növelésének mértéke a virtuális gép méretétől, a számítási feladatoktól és az ugyanazon a gazdagépen futó egyéb számítási feladatoktől függően változhat.
+
+Hyper-threaded és képes a beágyazott virtualizálás futtatására
 
 > [!IMPORTANT]
 > Az ACU csupán iránymutatóként szolgál. Az egyes számítási terhelések eredményei ettől eltérhetnek.
@@ -55,10 +61,6 @@ Az Azure számítási egység (ACU) koncepciója lehetővé teszi a számítási
 | [L4s - L32s](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 – L80s_v2](lsv2-series.md) |150 – 175 * * | 2:1 |
 | [M](m-series.md) | 160 – 180 | 2:1\*\*\* |
-
-* A ACUs az Intel® Turbo technológiát használja a CPU-gyakoriság növelésére és a teljesítmény növelésére.  A teljesítmény növelésének mértéke a virtuális gép méretétől, a számítási feladatoktól és az ugyanazon a gazdagépen futó egyéb számítási feladatoktől függően változhat.
-* * A ACUs az AMD® fokozza a technológiát a CPU-gyakoriság növelése és a teljesítmény növelése érdekében.  A teljesítmény növelésének mértéke a virtuális gép méretétől, a számítási feladatoktól és az ugyanazon a gazdagépen futó egyéb számítási feladatoktől függően változhat.
-Hyper-threaded és képes a beágyazott virtualizálás futtatására
 
 Az alábbiakban további információkra mutató hivatkozásokat talál a különböző méretekről:
 

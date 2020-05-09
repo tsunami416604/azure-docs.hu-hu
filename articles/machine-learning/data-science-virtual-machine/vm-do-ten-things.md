@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6574ccd7616ac1442b1c8c69b6218431ad912ab3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: MT
+ms.openlocfilehash: 47663072be0931961d0f2fded938322027148d7a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204219"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929281"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Tíz dolog, amit elvégezhet a Windows Data Science Virtual Machine
 
@@ -68,7 +68,7 @@ A Jupyter Notebook egy böngészőalapú IDE-t biztosít az adatelemzéshez és 
 
 A Jupyter Notebook elindításához kattintson a **Start** menüben vagy az asztalon található **Jupyter notebook** ikonra. A DSVM-parancssorban futtathatja ```jupyter notebook``` azt a könyvtárat is, ahol meglévő jegyzetfüzetekkel rendelkezik, vagy új jegyzetfüzeteket kíván létrehozni.  
 
-A Jupyter megkezdése után egy olyan könyvtárat kell látnia, amely néhány példát tartalmaz a DSVM előre csomagolt jegyzetfüzetek számára. Ezután:
+A Jupyter megkezdése után navigáljon `/notebooks` a könyvtárba, például a DSVM előre csomagolt jegyzetfüzeteket. Ezután:
 
 * Válassza ki a jegyzetfüzetet a kód megtekintéséhez.
 * Futtassa az egyes cellákat a SHIFT + ENTER billentyűkombináció kiválasztásával.

@@ -4,7 +4,7 @@
   items:
     - name: A Network Watcher névjegye
       href: network-watcher-monitoring-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Kapcsolatfigyelő (előzetes verzió)
@@ -15,7 +15,7 @@
       href: diagnose-vm-network-traffic-filtering-problem-powershell.md
     - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Azure CLI
       href: diagnose-vm-network-traffic-filtering-problem-cli.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: A virtuális gép útválasztási problémáinak diagnosztizálása
       href: diagnose-vm-network-routing-problem.md
@@ -173,7 +173,7 @@
     - name: .NET
       href: /dotnet/api/overview/azure/virtual-network
     - name: Node.js
-      href: /javascript/api/azure-arm-network
+      href: /javascript/api/@azure/arm-network
     - name: REST
       href: /rest/api/network-watcher/
 - name: További források

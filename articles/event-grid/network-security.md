@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: ed3b70ad267252981110e7970bc5c5fad6cf4b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79300153"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857049"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Azure Event Grid erőforrások hálózati biztonsága
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Event Grid használatával: 
@@ -58,7 +58,7 @@ Privát végpont létrehozásakor az erőforráshoz tartozó DNS CNAME rekord az
 
 Ha a témakör vagy a tartomány végpontjának URL-címét a VNet kívülről a privát végpontra oldja fel, a megoldás a szolgáltatás nyilvános végpontját oldja fel. A "Topica" DNS-erőforrásrekordjait, ha a privát végpontot üzemeltető **VNet kívülről** oldották fel, a következő lesz:
 
-| Name (Név)                                          | Típus      | Érték                                         |
+| Name                                          | Típus      | Érték                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure Traffic Manager-profil\>
@@ -67,7 +67,7 @@ Az [IP-tűzfal](#ip-firewall)használatával megtagadhatja vagy szabályozhatja 
 
 A privát végpontot futtató VNet feloldva a témakör vagy a tartomány végpontjának URL-címe feloldódik a magánhálózati végpont IP-címére. A "témakör" nevű DNS-erőforrásrekordok a privát végpontot futtató **VNet** feloldva a következő lesz:
 
-| Name (Név)                                          | Típus      | Érték                                         |
+| Name                                          | Típus      | Érték                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
 | `topicA.westus.privatelink.eventgrid.azure.net` | A         | 10.0.0.5
@@ -85,17 +85,16 @@ A következő táblázat ismerteti a magánhálózati végponti kapcsolatok kül
 | Kapcsolatok állapota   |  Sikeres közzététel (igen/nem) |
 | ------------------ | -------------------------------|
 | Approved           | Igen                            |
-| Elutasítva           | Nem                             |
-| Függőben            | Nem                             |
-| Leválasztott       | Nem                             |
+| Elutasítva           | No                             |
+| Függőben            | No                             |
+| Leválasztott       | No                             |
 
 Ahhoz, hogy a közzététel sikeres legyen, **jóvá**kell hagyni a privát végponti kapcsolatok állapotát. Ha a rendszer visszautasítja a kapcsolatokat, a Azure Portal használatával nem lehet jóváhagyni. Az egyetlen lehetőség, hogy törölje a kapcsolódást, és hozzon létre egy újat.
 
 ## <a name="pricing-and-quotas"></a>Díjszabás és kvóták
-A **privát végpontok** csak a prémium szintű csomagokkal és tartományokkal érhetők el. Event Grid lehetővé teszi, hogy a rendszer akár 64 privát végponti kapcsolatot hozzon létre egy témakör vagy tartomány alapján. Az alapszintű és a prémium szintű csomagra való frissítéshez tekintse meg a [frissítés díjszabási szintjét](update-tier.md) ismertető cikket.
+A **privát végpontok** a Event Grid alapszintű és prémium szintű csomagjaiban is elérhetők. Event Grid lehetővé teszi, hogy a rendszer akár 64 privát végponti kapcsolatot hozzon létre egy témakör vagy tartomány alapján. 
 
 Az **IP-tűzfal** funkció a Event Grid alapszintű és prémium szintjein is elérhető. Egy témakör vagy tartomány alapján legfeljebb 16 IP-tűzfalszabály hozható létre.
-
 
 ## <a name="next-steps"></a>További lépések
 A Event Grid erőforrás IP-tűzfalát úgy is beállíthatja, hogy a nyilvános interneten keresztül csak az IP-címek és az IP-címtartományok egyetlen kiválasztott készletével korlátozza a hozzáférést. Részletes útmutatásért lásd: az [IP-tűzfal konfigurálása](configure-firewall.md).

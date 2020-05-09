@@ -8,12 +8,12 @@ ms.date: 03/11/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 897ae1fa474de8726ed0caa1def162a00e142dbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03e5f1e888680f6020b45f51103e7b5cb6dc86ab
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268404"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692731"
 ---
 # <a name="azure-storage-analytics-metrics-classic"></a>Azure Storage Analytics-metrikák (klasszikus)
 
@@ -23,7 +23,7 @@ A Storage Analytics olyan metrikákat tárolhat, amelyek összesített tranzakci
 
 > [!NOTE]
 > A blob-, üzenetsor-, tábla-és Fájlszolgáltatások Storage Analytics metrikák érhetők el.
-> Storage Analytics metrikák mostantól klasszikus metrikák. A Microsoft azt javasolja, hogy Storage Analytics mérőszámok helyett [Azure monitor tárolási metrikákat](storage-metrics-in-azure-monitor.md) használjon.
+> Storage Analytics metrikák mostantól klasszikus metrikák. A Microsoft azt javasolja, hogy Storage Analytics mérőszámok helyett [Azure monitor tárolási metrikákat](monitor-storage.md) használjon.
 
 ## <a name="transaction-metrics"></a>Tranzakciómetrikák  
  Az egyes tárolási szolgáltatások és a kért API-művelet (beleértve a bejövő/kimenő forgalmat, a rendelkezésre állást, a hibákat és a kategorizált kérelmek százalékos arányát) óránként vagy percenként rögzíti a robusztus adatkészletet. A tranzakció részleteinek teljes listáját a [Storage Analytics mérőszámok tábla sémája](/rest/api/storageservices/storage-analytics-metrics-table-schema) című témakörben tekintheti meg.  
