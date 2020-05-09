@@ -1,22 +1,22 @@
 ---
-title: Az érdeklődők felügyeletének konfigurálása a Marketo-ben | Azure piactér
-description: Az Azure Marketplace-ügyfelek Marketo vezető felügyeletének konfigurálása.
+title: Vezető felügyelet a Marketo-ben – Microsoft kereskedelmi piactér
+description: Megtudhatja, hogyan kezelheti a Marketo CRM-rendszert a Microsoft AppSource és az Azure Marketplace-en található érdeklődők kezeléséhez.
 author: qianw211
 ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 03/30/2020
-ms.openlocfilehash: b142e0ab1aaa242157e207ceecf958be51bb1721
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1f3a097629f8c5f4a3f0ecefa5ee50f2d3e62162
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133657"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82789878"
 ---
-# <a name="configure-lead-management-in-marketo"></a>Az érdeklődők felügyeletének konfigurálása a Marketo-ben
+# <a name="use-marketo-to-manage-commercial-marketplace-leads"></a>A Marketo használata a kereskedelmi Piactéri érdeklődők kezelésére
 
-Ez a cikk azt ismerteti, hogyan állíthat be Marketo CRM-rendszert a kereskedelmi Piactéri ajánlatból származó értékesítési érdeklődők feldolgozásához.
+Ez a cikk azt ismerteti, hogyan állíthatja be az Marketo CRM-rendszert a Microsoft AppSource és az Azure piactéren kínált értékesítési érdeklődők feldolgozásához.
 
 ## <a name="set-up-your-marketo-crm-system"></a>A Marketo CRM rendszer beállítása
 
@@ -67,9 +67,11 @@ Ez a cikk azt ismerteti, hogyan állíthat be Marketo CRM-rendszert a kereskedel
 
 Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk konfigurálására a közzétételi portálon, kövesse az alábbi lépéseket. 
 
-1. Nyissa meg az ajánlat **telepítési** lapját.
+1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
 
-1. Válassza a **kapcsolat** lehetőséget az **érdeklődő felügyelete** szakaszban. 
+1. Válassza ki az ajánlatot, és nyissa meg az **ajánlat beállítása** lapot.
+
+1. A **vezető felügyelet** szakaszban válassza a **kapcsolat**lehetőséget. 
 
     ![Érdeklődői felügyelet szakasz csatlakozási gombja](./media/commercial-marketplace-lead-management-instructions-marketo/lead-management-connect.png)
 
@@ -86,6 +88,6 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. Kattintson az **OK** gombra.
 
-   Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
+   Ha szeretné meggyőződni arról, hogy sikeresen csatlakozott egy érdeklődői célhoz, válassza az **Érvényesítés**lehetőséget. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 
    ![Kapcsolat részletei előugró ablak](./media/commercial-marketplace-lead-management-instructions-marketo/marketo-connection-details.png)

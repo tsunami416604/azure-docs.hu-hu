@@ -154,7 +154,7 @@ A következő gyakori hibaüzenetek jelenhetnek meg, ha a git használatával te
 |`RPC failed; result=22, HTTP code = 5xx.`|Ez a hiba akkor fordulhat elő, ha egy nagyméretű git-tárházat próbál leküldeni HTTPS-kapcsolaton keresztül.|Módosítsa a git-konfigurációt a helyi gépen, hogy `postBuffer` minél nagyobb legyen. Például: `git config --global http.postBuffer 524288000`.|
 |`Error - Changes committed to remote repository but your web app not updated.`|A Node. js-alkalmazások üzembe helyezése egy _Package. JSON_ fájllal, amely további szükséges modulokat határoz meg.|A hiba `npm ERR!` előtt tekintse át a hibaüzeneteket, hogy a probléma további kontextusban legyen. A hiba ismert okai és a hozzájuk tartozó `npm ERR!` üzenetek a következők:<br /><br />**Helytelen formátumú Package. JSON fájl**:`npm ERR! Couldn't read dependencies.`<br /><br />A **natív modul nem rendelkezik bináris terjesztéssel a Windows rendszerhez**:<br />`npm ERR! \cmd "/c" "node-gyp rebuild"\ failed with 1` <br />vagy <br />`npm ERR! [modulename@version] preinstall: \make || gmake\ `|
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [A Project kudu dokumentációja](https://github.com/projectkudu/kudu/wiki)
 - [Folyamatos üzembe helyezés Azure App Service](deploy-continuous-deployment.md)

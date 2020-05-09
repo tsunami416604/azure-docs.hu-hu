@@ -3,12 +3,12 @@ title: Azure Service Fabric-fürt tanúsítványának átadása
 description: Ismerje meg, hogyan lehet áttekinteni a tanúsítvány köznapi nevével azonosított Service Fabric-fürt tanúsítványát.
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.openlocfilehash: 94cc6841886b1b0eb4271ac0f727a2e3561e0081
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a5fe2a7f2a05295605ef0e1d5db321a83b96712
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75451962"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611908"
 ---
 # <a name="manually-roll-over-a-service-fabric-cluster-certificate"></a>Service Fabric-fürt tanúsítványának manuális átadása
 Ha egy Service Fabric-fürt tanúsítványa le van zárva, frissítenie kell a tanúsítványt.  A tanúsítvány-átváltási egyszerű, ha a fürtöt [úgy állították be, hogy a tanúsítványokat köznapi név](service-fabric-cluster-change-cert-thumbprint-to-cn.md) (ujjlenyomat helyett) alapján használja.  Új tanúsítvány beszerzése egy új lejárati dátummal rendelkező hitelesítésszolgáltatótól.  Az önaláírt tanúsítványok nem támogatják az éles Service Fabric fürtöket, így Azure Portal fürt létrehozásakor létrehozott tanúsítványokat is tartalmazhatnak. Az új tanúsítványnak ugyanazzal a köznapi névvel kell rendelkeznie, mint a régebbi tanúsítványnak. 
@@ -64,7 +64,7 @@ $certConfig = New-AzVmssVaultCertificateConfig -CertificateUrl $CertificateURL -
 $vmss = Get-AzVmss -ResourceGroupName $VmssResourceGroupName -VMScaleSetName $VmssName
 
 # Add new secret to the VM scale set.
-$vmss = Add-AzVmssSecret -VirtualMachineScaleSet $vmss -SourceVaultId $SourceVault -VaultCertificate $certConfig
+$vmss.VirtualMachineProfile.OsProfile.Secrets[0].VaultCertificates.Add($newVaultCertificate)
 
 # Update the VM scale set 
 Update-AzVmss -ResourceGroupName $VmssResourceGroupName -Name $VmssName -VirtualMachineScaleSet $vmss  -Verbose

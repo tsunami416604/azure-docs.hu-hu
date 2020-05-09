@@ -1,6 +1,6 @@
 ---
 title: Azure Automation felügyeleti megoldások bevezetésének hibaelhárítása
-description: Útmutató a megoldás-előkészítési hibák elhárításához.
+description: Ismerje meg, hogyan lehet elhárítani a Azure Automation megoldás bevezetésével kapcsolatos hibákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: da5152b459f54cbaae5ec168f103f23a237edebd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679234"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82836529"
 ---
 # <a name="troubleshoot-solution-onboarding"></a>Megoldások előkészítésének megoldása
 
-Előfordulhat, hogy a Update Management megoldás, illetve a Change Tracking és a leltározási megoldás bevezetéséhez hibákat kell kapnia. Ez a cikk az esetlegesen előforduló különböző hibákat és azok megoldását ismerteti.
+A Azure Automation Update Management megoldás vagy a Change Tracking és a leltár megoldás bevezetéséhez hibaüzenetek jelenhetnek meg. Ez a cikk az esetlegesen előforduló különböző hibákat és azok megoldását ismerteti.
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -25,7 +25,7 @@ Előfordulhat, hogy a Update Management megoldás, illetve a Change Tracking és
 
 #### <a name="issue"></a>Probléma
 
-Egy csomópont regisztrálva van Azure Automation, majd megváltoztatják az operációs rendszer számítógépének nevét. A csomópont jelentései továbbra is az eredeti névvel jelennek meg.
+Egy csomópont regisztrálva van Azure Automationban, és az operációs rendszer számítógépneve módosul. A csomópont jelentései továbbra is az eredeti névvel jelennek meg.
 
 #### <a name="cause"></a>Ok
 
@@ -35,23 +35,23 @@ A regisztrált csomópontok átnevezése nem frissíti a csomópont nevét a Azu
 
 Törölje a csomópont regisztrációját Azure Automation állapot-konfigurációból, majd regisztrálja újra. A szolgáltatásban közzétett jelentések már nem lesznek elérhetők.
 
-### <a name="scenario-re-signing-certificates-via-https-proxy-is-not-supported"></a><a name="resigning-cert"></a>Forgatókönyv: a tanúsítványoknak a https-proxyn keresztül történő ismételt aláírása nem támogatott
+### <a name="scenario-re-signing-certificates-via-https-proxy-isnt-supported"></a><a name="resigning-cert"></a>Forgatókönyv: a tanúsítványoknak a HTTPS-proxyn keresztül történő ismételt aláírása nem támogatott
 
 #### <a name="issue"></a>Probléma
 
-Ha olyan proxy-megoldáson keresztül csatlakozik, amely leállítja a HTTPS-forgalmat, majd újra titkosítja a forgalmat egy új tanúsítvánnyal, a szolgáltatás nem engedélyezi a kapcsolatot.
+Ha olyan proxy-megoldáson keresztül csatlakozik, amely leállítja a HTTPS-forgalmat, majd újratitkosítja a forgalmat egy új tanúsítvánnyal, a szolgáltatás nem teszi lehetővé a kapcsolat használatát.
 
 #### <a name="cause"></a>Ok
 
-Azure Automation nem támogatja a forgalom titkosításához használt tanúsítványok ismételt aláírását.
+Azure Automation nem támogatja a forgalom titkosításához használt tanúsítványok újraaláírását.
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma jelenleg nem kerül megkerülő megoldással.
+Ehhez a hibához jelenleg nincs Áthidaló megoldás.
 
 ## <a name="general-errors"></a>Általános hibák
 
-### <a name="scenario-onboarding-fails-with-the-message---the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Forgatókönyv: az előkészítés sikertelen az üzenettel – a megoldás nem engedélyezhető.
+### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Forgatókönyv: a bevezetés sikertelen a következő üzenettel: "a megoldás nem engedélyezhető"
 
 #### <a name="issue"></a>Probléma
 
@@ -71,9 +71,9 @@ Ezt a hibát a virtuális gép vagy munkaterület, illetve a felhasználó szám
 
 #### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy megfelelő [engedélyekkel rendelkezik a számítógépek](../automation-role-based-access-control.md#onboarding-permissions) előkészítéséhez, majd próbálkozzon újra a megoldás bevezetésével. Ha a hibaüzenet `The solution cannot be enabled on this VM because the permission to read the workspace is missing`jelenik meg, ellenőrizze, hogy rendelkezik- `Microsoft.OperationalInsights/workspaces/read` e engedéllyel ahhoz, hogy a virtuális gép be legyen-e telepítve a munkaterületre.
+Győződjön meg arról, hogy megfelelő [engedélyekkel](../automation-role-based-access-control.md#onboarding-permissions)rendelkezik a gépek bevezetéséhez, majd próbálkozzon újra a megoldás bevezetésével. Ha a hibaüzenet jelenik meg `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ellenőrizze, hogy rendelkezik-e `Microsoft.OperationalInsights/workspaces/read` engedéllyel ahhoz, hogy a virtuális gép be legyen-e telepítve a munkaterületre.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Forgatókönyv: az előkészítés sikertelen a következő üzenettel: nem sikerült konfigurálni az Automation-fiókot a diagnosztikai naplózáshoz
+### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Forgatókönyv: az előkészítés sikertelen a következő üzenettel: "nem sikerült konfigurálni az Automation-fiókot a diagnosztikai naplózáshoz"
 
 #### <a name="issue"></a>Probléma
 
@@ -85,7 +85,7 @@ Failed to configure automation account for diagnostic logging
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor okozható, ha a díjszabási csomag nem egyezik az előfizetés számlázási modelljével. Lásd: [a használat figyelése és a becsült költségek Azure monitorban](https://aka.ms/PricingTierWarning).
+Ez a hiba akkor okozható, ha a díjszabási csomag nem egyezik az előfizetés számlázási modelljével. További információ: [a használat figyelése és a becsült költségek Azure monitorban](https://aka.ms/PricingTierWarning).
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -95,7 +95,7 @@ Hozza létre manuálisan a Log Analytics munkaterületet, és ismételje meg a b
 
 #### <a name="issue"></a>Probléma
 
-Ez a hibakód azt jelenti, hogy a rendszer nem formázza megfelelően a mentett keresés számítógépcsoport-lekérdezést, amely a megoldás megcélzására szolgál. 
+Ez a hibakód azt jelenti, hogy a mentett keresés számítógépcsoport-lekérdezés, amely a megoldás céljára szolgál, nem megfelelően van formázva. 
 
 #### <a name="cause"></a>Ok
 
@@ -103,7 +103,7 @@ Lehetséges, hogy módosította a lekérdezést, vagy megváltoztatta a rendszer
 
 #### <a name="resolution"></a>Megoldás:
 
-Törölheti a megoldás lekérdezését, majd újra felkészítheti a megoldást, amely újból létrehozza a lekérdezést. A lekérdezés a munkaterületen, a **mentett keresések**területen található. A lekérdezés neve **MicrosoftDefaultComputerGroup**, a lekérdezés kategóriája pedig a társított megoldás neve. Ha több megoldás is engedélyezve van, a **MicrosoftDefaultComputerGroup** -lekérdezés többször is megjeleníti a **mentett keresések**alatt.
+Törölheti a megoldás lekérdezését, majd újból elvégezheti a megoldás előkészítését, amely újból létrehozza a lekérdezést. A lekérdezés a munkaterület **mentett keresések**területén található. A lekérdezés neve **MicrosoftDefaultComputerGroup**, a lekérdezés kategóriája pedig a társított megoldás neve. Ha több megoldás is engedélyezve van, a **MicrosoftDefaultComputerGroup** -lekérdezés többször is megjeleníti a **mentett keresések**alatt.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Forgatókönyv: PolicyViolation
 
@@ -121,16 +121,16 @@ A megoldás sikeres üzembe helyezéséhez meg kell fontolnia a jelzett háziren
 
 * Távolítsa el a szabályzatot teljes egészében.
 * Próbálja meg egy másik erőforráscsoporthoz bevezetni a megoldást.
-* A szabályzatot egy adott erőforráshoz (például egy Automation-fiókhoz) újra megcélozhatja.
+* A szabályzatot egy adott erőforrásra, például egy Automation-fiókra kell átcélozni.
 * Módosítsa azon erőforrások készletét, amelyeknek a szabályzata el van tiltva.
 
-Tekintse át az értesítéseket a Azure Portal jobb felső sarkában, vagy navigáljon az Automation-fiókját tartalmazó erőforráscsoporthoz, és a **Beállítások** területen válassza a **központi telepítések** lehetőséget a sikertelen telepítés megtekintéséhez. További információ a Azure Policyről: [Azure Policy áttekintése](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
+Tekintse át az értesítéseket a Azure Portal jobb felső sarkában, vagy nyissa meg az Automation-fiókot tartalmazó erőforráscsoportot, és a **Beállítások** területen válassza a **központi telepítések** lehetőséget a sikertelen telepítés megtekintéséhez. További információ a Azure Policyről: [Azure Policy áttekintése](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json).
 
 ### <a name="scenario-errors-trying-to-unlink-a-workspace"></a><a name="unlink"></a>Forgatókönyv: a munkaterület leválasztását megkísérelő hibák
 
 #### <a name="issue"></a>Probléma
 
-A munkaterület leválasztására tett kísérlet során a következő hibaüzenetet kapja:
+A következő hibaüzenet jelenik meg, amikor megpróbál leválasztani egy munkaterületet:
 
 ```error
 The link cannot be updated or deleted because it is linked to Update Management and/or ChangeTracking Solutions.
@@ -142,16 +142,16 @@ Ez a hiba akkor fordul elő, ha a Log Analytics munkaterületen olyan megoldáso
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha használja őket, távolítsa el a következő megoldásokat a munkaterületről:
+Ha ezeket használja, távolítsa el a következő megoldásokat a munkaterületről:
 
 * Frissítéskezelés
 * Change Tracking és Inventory
 * Virtuális gépek indítása és leállítása munkaidőn kívül
 
-A megoldások eltávolítása után megszüntetheti a munkaterület összekapcsolását. Fontos, hogy a munkaterületről és az Automation-fiókból törölje a meglévő összetevőkből származó összetevőket. 
+A megoldások eltávolítása után megszüntetheti a munkaterület összekapcsolását. Fontos, hogy a munkaterületről és az Automation-fiókból minden meglévő összetevőt megtisztítsuk a fenti megoldásokból:
 
-* Update Management esetén távolítsa el az Automation-fiókból a frissítési központi telepítéseket (ütemterveket).
-* Start/Stop VMS During off-hours esetén távolítsa el a megoldás-összetevők zárolásait az Automation-fiókban a **Beállítások** > **zárolása**alatt. Lásd: [a Start/Stop VMS During off-hours megoldás eltávolítása](../automation-solution-vm-management.md#remove-the-solution).
+* Update Management esetén távolítsa el az Automation-fiókból a **frissítési központi telepítéseket (ütemterveket)** .
+* Start/Stop VMS During off-hours esetén távolítsa el a megoldás-összetevők zárolásait az Automation-fiókban a **Beállítások** > **zárolása**alatt. További információ: [a Start/Stop VMS During off-hours megoldás eltávolítása](../automation-solution-vm-management.md#remove-the-solution).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>A Windows-bővítményekkel kapcsolatos hibák Log Analytics
 
@@ -189,13 +189,13 @@ A hiba lehetséges okai a következők:
 
 Győződjön meg arról, hogy a megfelelő portok és címek nyitva vannak a kommunikációhoz. A portok és címek listáját a [hálózat megtervezése](../automation-hybrid-runbook-worker.md#network-planning)című témakörben tekintheti meg.
 
-### <a name="scenario-install-failed-because-of-a-transient-environment-issues"></a><a name="transient-environment-issue"></a>Forgatókönyv: a telepítés átmeneti környezeti problémák miatt nem sikerült
+### <a name="scenario-install-failed-because-of-transient-environment-issues"></a><a name="transient-environment-issue"></a>Forgatókönyv: az átmeneti környezettel kapcsolatos problémák miatt nem sikerült a telepítés
 
-Nem sikerült telepíteni a Windows rendszerhez készült Log Analytics bővítményt a telepítés során, mert egy másik telepítés vagy művelet blokkolja a telepítést
+Nem sikerült telepíteni a Windows rendszerhez készült Log Analytics bővítményt a telepítés során, mert egy másik telepítés vagy művelet blokkolja a telepítést.
 
 #### <a name="issue"></a>Probléma
 
-A következő hibaüzenetek jelenhetnek meg:
+Az alábbi példák az esetleg visszaadott hibaüzenetekre mutatnak:
 
 ```error
 The Microsoft Monitoring Agent failed to install on this machine. Please try to uninstall and reinstall the extension. If the issue persists, please contact support.
@@ -242,8 +242,8 @@ Ha a virtuális gép alacsonyabb terhelés alatt van, próbálja meg telepíteni
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
+Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Az Azure [@AzureSupport](https://twitter.com/azuresupport)-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal való csatlakozással javíthatja az ügyfelek élményét: válaszokat, támogatást és szakértőket.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport)a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 7f927d230efba580cff163d31c6f572a10d0b4aa
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e225d4d37f6bdb3d50b32f6464456e4f7fa0036
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80991141"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82853957"
 ---
 # <a name="quickstart-add-microsoft-identity-platform-sign-in-to-an-aspnet-web-app"></a>Gyors útmutató: Microsoft Identity platform-bejelentkezés hozzáadása egy ASP.NET-webalkalmazáshoz
 Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások személyes fiókjait (hotmail.com, outlook.com, másokat) és munkahelyi és iskolai fiókokat bármely Azure Active Directory (Azure AD-példányból).  (Lásd: [Hogyan működik a minta](#how-the-sample-works) egy ábrán.)
@@ -43,7 +43,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan ASP.NET webalkalmazások szem
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **Alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait:
 >      - A **Név** szakaszban adja meg az alkalmazás felhasználói számára megjelenített, jelentéssel bíró alkalmazásnevet (például `ASPNET-Quickstart`).
->      - Adja `http://localhost:44368/` hozzá az **átirányítási URI**-t, majd kattintson a **regisztráció**elemre.
+>      - Adja `https://localhost:44368/` hozzá az **átirányítási URI**-t, majd kattintson a **regisztráció**elemre.
 >      - A kezelés szakasz bal oldali navigációs paneljén válassza a **hitelesítés** lehetőséget.
 >          - Az **implicit támogatás** alszakasza alatt válassza az **azonosító tokenek**lehetőséget.
 >          - Majd válassza a **Mentés**lehetőséget.

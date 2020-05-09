@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/16/2020
 ms.author: alsin
-ms.openlocfilehash: 028c30fced14a60af9f5683e6c6e087b15591735
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 089858c789bb11245e98f32047cabb4117ece904
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605478"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838586"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Az Azure-ban elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképek
 Az Azure különféle RHEL-rendszerképeket kínál különböző használati esetekhez.
@@ -27,6 +27,9 @@ Az Azure különféle RHEL-rendszerképeket kínál különböző használati es
 
 ## <a name="list-of-rhel-images"></a>RHEL-lemezképek listája
 Ez az Azure-ban elérhető RHEL-lemezképek listája. Ha másként nincs megadva, az összes rendszerkép LVM-particionált, és a normál RHEL-adattárakhoz (nem EUS, nem E4S) van csatolva. Az alábbi rendszerképek jelenleg általános használatra elérhetők:
+
+> [!NOTE]
+> A nyers képek már nem jönnek létre az LVM-particionált lemezképek javára. Az LVM számos előnyt biztosít a régebbi nyers (nem LVM) particionálási sémához képest, beleértve a jóval rugalmasabb partíció-átméretezési lehetőségeket.
 
 Ajánlat| SKU | Particionálás | Kiépítés | Megjegyzések
 :----|:----|:-------------|:-------------|:-----
@@ -47,6 +50,9 @@ RHEL          | 6.7      | NYERS    | Linux-ügynök |
 |             | 7.6      | NYERS    | Linux-ügynök | A EUS-adattárakhoz a 2019-as számú alapértelmezett módon csatolva.
 |             | 76 – Gen2  | NYERS    | Linux-ügynök | Alapértelmezés szerint csatolva van a EUS-adattárakhoz.
 |             | 7.7      | LVM    | Linux-ügynök | Alapértelmezés szerint csatolva van a EUS-adattárakhoz.
+|             | 77 – Gen2  | LVM    | Linux-ügynök | Alapértelmezés szerint csatolva van a EUS-adattárakhoz.
+|             | 7.8      | LVM    | Linux-ügynök | Csatolva a normál adattárakhoz (a RHEL 7,8 EUS nem érhető el)
+|             | 78 – Gen2  | LVM    | Linux-ügynök | Csatolva a normál adattárakhoz (a RHEL 7,8 EUS nem érhető el)
 |             | 8 – LVM    | LVM    | Linux-ügynök | RHEL 8. x rendszerképekből álló család. Normál adattárakhoz csatolva.
 |             | 8 – LVM – Gen2| LVM    | Linux-ügynök | Hyper-V Generation 2 – RHEL 8. x rendszerképek. Normál adattárakhoz csatolva.
 |             | 8        | LVM    | Linux-ügynök | RHEL 8,0 rendszerképek

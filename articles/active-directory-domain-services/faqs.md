@@ -11,18 +11,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/09/2020
 ms.author: iainfou
-ms.openlocfilehash: 86b68b794928900717bea25623e7eb833c23e86c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92b3fd2453a4fb121c97f8f25f1d3ca129826092
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655353"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926969"
 ---
 # <a name="frequently-asked-questions-faqs"></a>Gyakori kérdések (GYIK)
 
 Ez az oldal válaszol a Azure Active Directory Domain Servicesekkel kapcsolatos gyakori kérdésekre.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 * [Több felügyelt tartományt is Létrehozhatok egyetlen Azure AD-címtárhoz?](#can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory)
 * [Engedélyezhető a Azure AD Domain Services egy klasszikus virtuális hálózaton?](#can-i-enable-azure-ad-domain-services-in-a-classic-virtual-network)
@@ -91,6 +91,7 @@ Igen. Minden Azure AD Domain Services felügyelt tartomány két tartományvezé
 * [Módosíthatom vagy Hozzáadhatok DNS-rekordokat a saját felügyelt tartományában?](#can-i-modify-or-add-dns-records-in-my-managed-domain)
 * [Mi a jelszó élettartama házirend egy felügyelt tartományon?](#what-is-the-password-lifetime-policy-on-a-managed-domain)
 * [Biztosít Azure AD Domain Services AD-fiók zárolásának védelmét?](#does-azure-ad-domain-services-provide-ad-account-lockout-protection)
+* [Konfigurálható a elosztott fájlrendszer (DFS) és a replikáció Azure AD Domain Serviceson belül?](#can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services)
 
 ### <a name="can-i-connect-to-the-domain-controller-for-my-managed-domain-using-remote-desktop"></a>Csatlakozhatok a felügyelt tartományhoz tartozó tartományvezérlőhöz a Távoli asztal használatával?
 Nem. Nem rendelkezik engedéllyel a felügyelt tartományhoz való kapcsolódáshoz a Távoli asztal használatával. A *HRE DC rendszergazdák* csoport tagjai felügyelhetik a felügyelt TARTOMÁNYT az ad felügyeleti eszközök, például a Active Directory felügyeleti központ (ADAC) vagy az ad PowerShell használatával. Ezek az eszközök a felügyelt tartományhoz csatlakoztatott Windows Server *Távoli kiszolgálófelügyelet eszközei* funkciójával vannak telepítve. További információ: [felügyeleti virtuális gép létrehozása Azure ad Domain Services felügyelt tartomány konfigurálásához és felügyeletéhez](tutorial-create-management-vm.md).
@@ -118,6 +119,9 @@ Egy Azure AD Domain Services felügyelt tartomány alapértelmezett jelszójána
 
 ### <a name="does-azure-ad-domain-services-provide-ad-account-lockout-protection"></a>Biztosít Azure AD Domain Services AD-fiók zárolásának védelmét?
 Igen. A felügyelt tartomány 2 percen belül öt érvénytelen jelszóval próbálkozik, mert a felhasználói fiók 30 percig kizárja a felhasználót. 30 perc elteltével a felhasználói fiók automatikusan fel lesz oldva. A felügyelt tartomány jelszavas próbálkozásai érvénytelenek, az Azure AD-ben nem zárhatók ki a felhasználói fiókok. A felhasználói fiók csak a Azure AD Domain Services felügyelt tartományon belül van zárolva. További információ: [jelszó-és fiókzárolási házirendek a felügyelt tartományokon](password-policy.md).
+
+### <a name="can-i-configure-distributed-file-system-and-replication-within-azure-ad-domain-services"></a>Konfigurálható a elosztott fájlrendszer és a replikálás a Azure AD Domain Serviceson belül?
+Nem. Azure AD Domain Services használata esetén a elosztott fájlrendszer (DFS) és a replikáció nem érhető el.
 
 ## <a name="billing-and-availability"></a>Számlázás és rendelkezésre állás
 

@@ -92,6 +92,8 @@
       href: create-manage-projects.md
     - name: Eszköz hozzáadása első alkalommal
       href: how-to-add-tool-first-time.md
+    - name: A független szoftverszállítótól származó eszközökkel vagy Moverével folytatott munka előkészítése
+      href: prepare-isv-movere.md
     - name: Felmérőeszközök hozzáadása
       href: how-to-assess.md
     - name: Az Azure Migrate-berendezés üzembe helyezése

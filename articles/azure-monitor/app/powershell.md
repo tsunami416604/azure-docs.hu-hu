@@ -2,13 +2,13 @@
 title: Azure-Application Insights automatizálása a PowerShell használatával | Microsoft Docs
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
-ms.date: 10/17/2019
-ms.openlocfilehash: 9494b659b5b4357f3190c45d8cc72c4e130f0ecc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/02/2020
+ms.openlocfilehash: fba85981f32611164c328945e45de4032ad949eb
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275879"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780487"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -21,10 +21,10 @@ Az erőforrások létrehozásának kulcsa a [Azure Resource Manager](../../azure
 ## <a name="one-time-setup"></a>Egyszeri telepítés
 Ha még nem használta a PowerShellt az Azure-előfizetéséhez, mielőtt:
 
-Telepítse az Azure PowerShell-modult arra a gépre, amelyen futtatni szeretné a parancsfájlokat:
+Telepítse a Azure PowerShell modult arra a gépre, amelyen futtatni szeretné a parancsfájlokat:
 
 1. Telepítse a [Microsoft webplatform-telepítőt (V5 vagy újabb)](https://www.microsoft.com/web/downloads/platform.aspx).
-2. Használja a Microsoft Azure PowerShell telepítéséhez.
+2. Microsoft Azure PowerShell telepítéséhez használja.
 
 A Resource Manager-sablonok használata mellett számos [Application Insights PowerShell-parancsmagot](https://docs.microsoft.com/powershell/module/az.applicationinsights)is tartalmaz, amelyek megkönnyítik Application Insights erőforrások programozott módon konfigurálását. A parancsmagok által engedélyezett képességek a következők:
 
@@ -229,7 +229,21 @@ A további tulajdonságok a parancsmagok használatával érhetők el:
 
 Tekintse át a parancsmagok paramétereinek [részletes dokumentációját](https://docs.microsoft.com/powershell/module/az.applicationinsights) .  
 
-## <a name="set-the-data-retention"></a>Az adatok megőrzésének beállítása 
+## <a name="set-the-data-retention"></a>Az adatok megőrzésének beállítása
+
+Az alábbi három módszer használható az adatmegőrzés programozott beállítására egy Application Insights erőforráson.
+
+### <a name="setting-data-retention-using-a-powershell-commands"></a>Az adatmegőrzés beállítása PowerShell-parancsok használatával
+
+Íme egy egyszerű PowerShell-parancs a Application Insights erőforrás adatmegőrzésének beállításához:
+
+```PS
+$Resource = Get-AzResource -ResourceType Microsoft.Insights/components -ResourceGroupName MyResourceGroupName -ResourceName MyResourceName
+$Resource.Properties.RetentionInDays = 365
+$Resource | Set-AzResource -Force
+```
+
+### <a name="setting-data-retention-using-rest"></a>Az adatmegőrzés beállítása a REST használatával
 
 A Application Insights erőforrás aktuális adatmegőrzésének lekéréséhez használhatja az OSS eszközt [ARMClient](https://github.com/projectkudu/ARMClient).  (További információ a cikkek ARMClient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).)  Íme egy példa a használatával `ARMClient`az aktuális megőrzés beszerzéséhez:
 
@@ -251,6 +265,8 @@ New-AzResourceGroupDeployment -ResourceGroupName "<resource group>" `
        -retentionInDays 365 `
        -appName myApp
 ```
+
+### <a name="setting-data-retention-using-a-powershell-script"></a>Az adatmegőrzés beállítása PowerShell-parancsfájl használatával
 
 Az adatmegőrzés megváltoztatásához a következő szkript is használható. Másolja ezt a parancsfájlt a `Set-ApplicationInsightsRetention.ps1`Mentés másként értékre.
 
