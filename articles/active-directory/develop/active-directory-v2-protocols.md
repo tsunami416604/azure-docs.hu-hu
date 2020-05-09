@@ -1,5 +1,6 @@
 ---
-title: OAuth 2,0 és OpenID Connect protokollok – Microsoft Identity platform | Azure
+title: OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon | Azure
+titleSuffix: Microsoft identity platform
 description: Útmutató a OAuth 2,0 és az OpenID Connect protokollokhoz, amelyeket a Microsoft Identity platform végpontja támogat.
 services: active-directory
 author: hpsin
@@ -8,20 +9,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 80b93efb58d225c53a64fa044f51145b392460d7
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 12f5df9b644246092f0a5da2b30dc5a7187ca827
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690268"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926816"
 ---
-# <a name="oauth-20-and-openid-connect-protocols-on-the-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
+# <a name="oauth-20-and-openid-connect-protocols-on-microsoft-identity-platform"></a>OAuth 2,0 és OpenID Connect protokollok a Microsoft Identity platformon
 
-A Microsoft Identity platform végpontja az iparági szabványoknak megfelelő, az OpenID Connect és a OAuth 2,0-as szolgáltatást nyújtó szolgáltatáshoz. Míg a szolgáltatás szabványoknak megfelelő, a protokollok két implementációja között finom különbségek lehetnek. Az itt olvasható információk akkor hasznosak, ha úgy dönt, hogy a kódot közvetlenül a HTTP-kérések küldésével és felügyeletével vagy harmadik féltől származó nyílt forráskódú kódtár használatával írja elő, és nem használja a [nyílt forráskódú kódtárak](reference-v2-libraries.md)egyikét sem.
+A Microsoft Identity platform végpontja az iparági szabványnak megfelelő protokollokkal, az OpenID Connecttel (OIDC) és a OAuth 2,0-as szolgáltatással. Míg a szolgáltatás szabványoknak megfelelő, a protokollok két implementációja között finom különbségek lehetnek. Az itt olvasható információk akkor hasznosak, ha úgy dönt, hogy a kódot közvetlenül a HTTP-kérések küldésével és felügyeletével vagy harmadik féltől származó nyílt forráskódú kódtár használatával írja le, és nem használja a [nyílt forráskódú kódtárakat](reference-v2-libraries.md).
 
 ## <a name="the-basics"></a>Az alapok
 
@@ -69,7 +70,7 @@ Ha többet szeretne megtudni ezekről a végpontokról, válasszon egy adott alk
 
 ## <a name="tokens"></a>Tokenek
 
-A OAuth 2,0 és az OpenID Connect Microsoft Identity platform általi megvalósítása a tulajdonosi jogkivonatok széleskörű használatát teszi elérhetővé, beleértve a JWTs-ként jelölt tulajdonosi jogkivonatokat is. A tulajdonosi jogkivonat egy olyan egyszerű biztonsági jogkivonat, amely a "tulajdonos" hozzáférést biztosít egy védett erőforráshoz. Ebben az értelemben a "tulajdonos" bármely olyan fél, aki be tudja mutatni a jogkivonatot. Bár a feleknek először hitelesíteniük kell magukat a Microsoft Identity platformmal a tulajdonosi jogkivonat fogadásához, ha a szükséges lépések nem a jogkivonat biztonságossá tételére szolgálnak az átvitel és a tárolás során, akkor azt egy nem szándékolt fél felhasználhatja és használhatja. Míg egyes biztonsági jogkivonatok beépített mechanizmussal rendelkeznek, amely megakadályozza a jogosulatlan felek használatát, a tulajdonosi jogkivonatok nem rendelkeznek ezzel a mechanizmussal, és egy biztonságos csatornán, például a Transport Layer Security (HTTPS) szolgáltatásban kell őket szállítani. Ha egy tulajdonosi jogkivonatot a rendszer egyértelművé tesz, a rosszindulatú felek a támadók megszerezhetik a jogkivonatot, és jogosulatlan hozzáférésre használhatják a védett erőforrásokhoz. Ugyanezek a biztonsági elvek érvényesek a tulajdonosi jogkivonatok későbbi használatra történő tárolására vagy gyorsítótárazására. Mindig győződjön meg arról, hogy az alkalmazás biztonságos módon továbbítja és tárolja a tulajdonosi jogkivonatokat. A tulajdonosi jogkivonatokkal kapcsolatos további biztonsági megfontolásokat lásd: [RFC 6750, 5. szakasz](https://tools.ietf.org/html/rfc6750).
+A OAuth 2,0 és az OpenID Connect Microsoft Identity platform megvalósítása a tulajdonosi jogkivonatok széleskörű használatát teszi elérhetővé, beleértve a JWTs (JSON webes tokenek) által képviselt tulajdonosi jogkivonatokat. A tulajdonosi jogkivonat egy olyan egyszerű biztonsági jogkivonat, amely a "tulajdonos" hozzáférést biztosít egy védett erőforráshoz. Ebben az értelemben a "tulajdonos" bármely olyan fél, aki be tudja mutatni a jogkivonatot. Bár a feleknek először hitelesíteniük kell magukat a Microsoft Identity platformmal a tulajdonosi jogkivonat fogadásához, ha a szükséges lépések nem a jogkivonat biztonságossá tételére szolgálnak az átvitel és a tárolás során, akkor azt egy nem szándékolt fél felhasználhatja és használhatja. Míg egyes biztonsági jogkivonatok beépített mechanizmussal rendelkeznek, amely megakadályozza a jogosulatlan felek használatát, a tulajdonosi jogkivonatok nem rendelkeznek ezzel a mechanizmussal, és egy biztonságos csatornán, például a Transport Layer Security (HTTPS) szolgáltatásban kell őket szállítani. Ha egy tulajdonosi jogkivonatot a rendszer egyértelművé tesz, a rosszindulatú felek a támadók megszerezhetik a jogkivonatot, és jogosulatlan hozzáférésre használhatják a védett erőforrásokhoz. Ugyanezek a biztonsági elvek érvényesek a tulajdonosi jogkivonatok későbbi használatra történő tárolására vagy gyorsítótárazására. Mindig győződjön meg arról, hogy az alkalmazás biztonságos módon továbbítja és tárolja a tulajdonosi jogkivonatokat. A tulajdonosi jogkivonatokkal kapcsolatos további biztonsági megfontolásokat lásd: [RFC 6750, 5. szakasz](https://tools.ietf.org/html/rfc6750).
 
 A Microsoft Identity platform végpontjában használt különböző típusú tokenek további részletei [a Microsoft Identity platform Endpoint token referenciájában](v2-id-and-access-tokens.md)olvashatók.
 

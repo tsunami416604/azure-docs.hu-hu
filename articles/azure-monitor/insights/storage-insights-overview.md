@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/15/2019
-ms.openlocfilehash: f23be7e764ad180a23c76abb7f9bb2218fd61e4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662519"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691110"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban (előzetes verzió)
 
@@ -67,7 +67,7 @@ A legördülő lista alatti számláló csempe összesíti az előfizetésben l�
 Válasszon egy értéket az oszlopok **rendelkezésre állása**, a **E2E késése**, a **kiszolgáló késése**és a **tranzakciós hiba típusa/hibái** egy olyan jelentésre, amely megfelel az adott Storage-fiókhoz kiválasztott oszlopnak. Az egyes kategóriákhoz tartozó munkafüzetekkel kapcsolatos további információkért tekintse meg az alábbi [részletes tárolási munkafüzetek](#detailed-storage-workbooks) szakaszt. 
 
 >[!NOTE]
->A jelentésben megjelenő hibákkal kapcsolatos részletekért tekintse meg a [Válasz típusa sémát](../../storage/common/storage-metrics-in-azure-monitor.md#metrics-dimensions) , és keressen olyan válaszokat, mint például a **ServerOtherError**, a **ClientOtherError**, a **ClientThrottlingError**. A kiválasztott Storage-fiókoktól függően, ha több mint három típusú hibát jelentettek, az összes többi hiba **más**kategóriába tartozik.
+>A jelentésben megjelenő hibákkal kapcsolatos részletekért tekintse meg a [Válasz típusa sémát](../../storage/common/monitor-storage-reference.md#metrics-dimensions) , és keressen olyan válaszokat, mint például a **ServerOtherError**, a **ClientOtherError**, a **ClientThrottlingError**. A kiválasztott Storage-fiókoktól függően, ha több mint három típusú hibát jelentettek, az összes többi hiba **más**kategóriába tartozik.
 
 Az alapértelmezett **rendelkezésre állási** küszöbérték:
 

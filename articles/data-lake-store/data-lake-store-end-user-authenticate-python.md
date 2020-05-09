@@ -1,22 +1,18 @@
 ---
-title: 'Végfelhasználói hitelesítés: Python a Azure Data Lake Storage Gen1 használatával Azure Active Directory | Microsoft Docs'
+title: Végfelhasználói hitelesítés – Python és Data Lake Storage Gen1 – Azure
 description: Ismerje meg, hogyan érheti el a végfelhasználói hitelesítést a Azure Data Lake Storage Gen1 a Python használatával Azure Active Directory
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: c69f6c1f587285c5c52280c4c49008764d5b20d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6d95e8bae428741c82de270507e41b49d23a3793
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265596"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691796"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Végfelhasználói hitelesítés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79265596"
 > * [A .NET SDK használata](data-lake-store-end-user-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-end-user-authenticate-python.md)
 > * [A REST API használata](data-lake-store-end-user-authenticate-rest-api.md)
-> 
-> 
+>
+>
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Python SDK-t a végfelhasználói hitelesítéshez Azure Data Lake Storage Gen1 használatával. A végfelhasználói hitelesítés további két kategóriára osztható:
 
@@ -38,7 +34,7 @@ Ezeket a lehetőségeket a cikk tárgyalja. A Data Lake Storage Gen1 a Python ha
 
 * **Python**. A Pythont [innen](https://www.python.org/downloads/) töltheti le. Ez a cikk a Python 3.6.2-es verzióját használja.
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Hozzon létre egy Azure Active Directory "natív" alkalmazást**. A Data Lake Storage Gen1 a Azure Active Directory használatával végre kell hajtania a [végfelhasználói hitelesítéshez](data-lake-store-end-user-authenticate-using-active-directory.md)szükséges lépéseket.
 
@@ -98,7 +94,7 @@ A következő kódrészlettel végezheti el a hitelesítést az Azure AD-vel a D
     client_id = 'FILL-IN-HERE'
     redirect = 'urn:ietf:wg:oauth:2.0:oob'
     RESOURCE = 'https://management.core.windows.net/'
-    
+
     context = adal.AuthenticationContext(authority_url)
     code = context.acquire_user_code(RESOURCE, client_id)
     print(code['message'])
@@ -114,10 +110,9 @@ Ezzel a művelettel hitelesítheti az Azure AD-t a fájlrendszerbeli műveletek 
 ## <a name="end-user-authentication-without-multi-factor-authentication"></a>Végfelhasználói hitelesítés többtényezős hitelesítés nélkül
 
 Ez elavult. További információ: Azure- [hitelesítés a PYTHON SDK használatával](/azure/python/python-sdk-azure-authenticate).
-   
+
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan használható a végfelhasználói hitelesítés a Azure Data Lake Storage Gen1 a Python használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használható a Python a Azure Data Lake Storage Gen1 való együttműködéshez.
 
 * [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md)
 * [Az adatműveletek Data Lake Storage Gen1 a Python használatával](data-lake-store-data-operations-python.md)
-

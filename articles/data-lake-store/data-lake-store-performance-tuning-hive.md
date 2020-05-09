@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 struktúra teljesítményének finomhangolására vonatkozó irányelvek | Microsoft Docs
-description: Azure Data Lake Storage Gen1 struktúra teljesítményének finomhangolására vonatkozó irányelvek
-services: data-lake-store
-documentationcenter: ''
+title: Performance tuning – struktúra Azure Data Lake Storage Gen1
+description: Teljesítmény-finomhangolási irányelvek a HdInsight és a Azure Data Lake Storage Gen1 struktúrához.
 author: stewu
-manager: amitkul
-editor: stewu
-ms.assetid: ebde7b9f-2e51-4d43-b7ab-566417221335
 ms.service: data-lake-store
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: 433c6b7d70cea9406b67d65e23cc357939cb5aa0
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 2e44332ddab9387c05a45d15101ccd2bdec3ada4
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61437276"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690520"
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a HDInsight és Azure Data Lake Storage Gen1 struktúrához
 
@@ -25,7 +19,7 @@ Az alapértelmezett beállítások úgy lettek beállítva, hogy a jó teljesít
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 * **Egy Data Lake Storage Gen1-fiók**. A létrehozásával kapcsolatos útmutatásért tekintse meg az Ismerkedés [a Azure Data Lake Storage Gen1rel](data-lake-store-get-started-portal.md) című témakört.
 * **Azure HDInsight-fürt** Data Lake Storage Gen1 fiókhoz való hozzáféréssel. Lásd: [HDInsight-fürt létrehozása Data Lake Storage Gen1sal](data-lake-store-hdinsight-hadoop-use-portal.md). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
 * **Struktúra futtatása a HDInsight-on**.  A kaptár-feladatok HDInsight való futtatásával kapcsolatos további információkért lásd: [a kaptár használata a HDInsight](https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)

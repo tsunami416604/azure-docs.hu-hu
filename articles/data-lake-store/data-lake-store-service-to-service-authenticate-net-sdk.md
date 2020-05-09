@@ -1,22 +1,17 @@
 ---
-title: 'Szolgáltatások közötti hitelesítés: .NET SDK és Azure Data Lake Storage Gen1 a Azure Active Directory használatával | Microsoft Docs'
+title: .NET – szolgáltatás – szolgáltatás hitelesítése – Data Lake Storage Gen1
 description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 használatával Azure Active Directory .NET SDK használatával
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: cgronlun
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 96c496ef67e26a3079577bf52e9d019d963467b8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bac5fa95ca5ce4e289d4dd18cba9238da7b8a2e2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265531"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691619"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -32,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a .NET SDK-t a szolgáltatá
 ## <a name="prerequisites"></a>Előfeltételek
 * A **Visual Studio 2013-es vagy újabb**verzióját. Az alábbi utasítások a Visual Studio 2019-et használják.
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Hozzon létre egy Azure Active Directory "web" alkalmazást**. A Data Lake Storage Gen1 Azure Active Directory használatával kell végrehajtania a [szolgáltatások közötti hitelesítéshez](data-lake-store-service-to-service-authenticate-using-active-directory.md)szükséges lépéseket.
 
