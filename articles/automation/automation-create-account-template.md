@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 19aee9d5fdf3f4a3d74484bb7cb2e609bc2807b4
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 949b07a16b2c2b08891d721e46948481cfe572b2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927864"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996104"
 ---
 # <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
 
@@ -22,7 +22,7 @@ ms.locfileid: "82927864"
 * Automatizálja Azure Automation fiók létrehozását.
 * Az Automation-fiók csatolása a Log Analytics munkaterülethez.
 
-A sablon nem automatizálja az Azure-beli vagy nem Azure-beli virtuális gépek vagy megoldások bevezetését. 
+A sablon nem automatizálja az Azure-beli vagy nem Azure-beli virtuális gépek engedélyezését. 
 
 >[!NOTE]
 >Azure Resource Manager-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiókok kezelése](manage-runas-account.md)című témakört.

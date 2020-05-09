@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 4c9e7b6d93fb4bbc3e3b05d9346ec84197665a55
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652811"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995305"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>Azure Automation állapot-konfigurációval kapcsolatos problémák elhárítása
+# <a name="troubleshoot-azure-automation-state-configuration-issues"></a>Az állapot-konfigurációval kapcsolatos problémák elhárítása Azure Automation
 
 Ez a cikk a konfigurációk Azure Automation állapotának konfigurációjában való fordításakor vagy telepítésekor felmerülő hibák elhárításával kapcsolatos információkat tartalmaz.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítése](../automation-update-azure-modules.md)című cikkben ismertetett lépéseket követve.
 
 ## <a name="diagnose-an-issue"></a>Probléma diagnosztizálása
 
@@ -112,7 +109,7 @@ VM has reported a failure when processing extension 'Microsoft.Powershell.DSC / 
 
 ### <a name="cause"></a>Ok
 
-Ezt a problémát rossz vagy lejárt tanúsítvány okozza. Lásd: [tanúsítvány lejárata és újraregisztrálása](../automation-dsc-onboarding.md#re-registering-a-node).
+Ezt a problémát rossz vagy lejárt tanúsítvány okozza. Lásd: [csomópont ismételt regisztrálása](../automation-dsc-onboarding.md#re-register-a-node).
 
 Ezt a problémát az is okozhatja, hogy a proxy konfigurációja nem engedélyezi a ***. Azure-Automation.net**elérését. További információ: [magánhálózatok konfigurálása](../automation-dsc-overview.md#network-planning). 
 
@@ -239,11 +236,11 @@ Egy konfigurációban használta a hitelesítő adatokat, de az egyes `Configura
 
 Győződjön meg arról, hogy a megfelelő `ConfigurationData` értékre `PSDscAllowPlainTextPassword` van állítva a konfigurációban említett minden csomópont-konfiguráció esetében, hogy igaz legyen. Lásd: [DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban](../automation-dsc-compile.md).
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Forgatókönyv: "a bővítmény feldolgozása sikertelen" hiba a DSC-bővítmény bevezetésekor
+## <a name="scenario-failure-processing-extension-error-when-enabling-a-machine-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Forgatókönyv: "nem sikerült feldolgozni a bővítményt" hibaüzenet jelenik meg a gép DSC-bővítményből való engedélyezésekor
 
 ### <a name="issue"></a>Probléma
 
-Ha DSC-bővítmény használatával végez bevezetést, a hibát tartalmazó hiba fordul elő:
+Ha DSC-bővítmény használatával engedélyezi a gépet, a hibát tartalmazó hiba fordul elő:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -256,7 +253,7 @@ Ez a hiba általában akkor fordul elő, ha a csomóponthoz olyan csomópont-kon
 ### <a name="resolution"></a>Megoldás:
 
 * Győződjön meg arról, hogy a csomópontot olyan névvel rendeli hozzá, amely pontosan megegyezik a szolgáltatásban szereplő névvel.
-* Dönthet úgy is, hogy nem tartalmazza a csomópont-konfiguráció nevét, amely a csomópont bevezetését eredményezi, de nem rendel hozzá csomópont-konfigurációt.
+* Dönthet úgy is, hogy nem tartalmazza a csomópont-konfiguráció nevét, ami a csomópont engedélyezését eredményezi, de nem rendel hozzá csomópont-konfigurációt.
 
 ## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>Forgatókönyv: "egy vagy több hiba történt" hibaüzenet jelenik meg, amikor a PowerShell használatával regisztrál egy csomópontot.
 
@@ -274,10 +271,10 @@ Ez a hiba akkor fordul elő, ha olyan csomópontot próbál meg regisztrálni eg
 
 ### <a name="resolution"></a>Megoldás:
 
-Az előfizetési csomópontot úgy kezelheti, mintha egy különálló felhőhöz vagy a helyszíni környezethez van definiálva. Regisztrálja a csomópontot a következő bevezetési lehetőségek egyikével:
+Az előfizetési csomópontot úgy kezelheti, mintha egy különálló felhőhöz vagy a helyszíni környezethez van definiálva. Regisztrálja a csomópontot a következő lehetőségek egyikének használatával a gépek engedélyezéséhez:
 
-* Windows: [fizikai/virtuális Windowsos gépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
-* Linux: [fizikai/virtuális Linux rendszerű számítógépek a helyszínen, vagy az Azure-on kívül más felhőben is](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
+* Windows: [fizikai/virtuális Windowsos gépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben](../automation-dsc-onboarding.md#enable-physicalvirtual-windows-machines).
+* Linux: [fizikai/virtuális Linux rendszerű számítógépek a helyszínen, vagy az Azure-on kívül más felhőben is](../automation-dsc-onboarding.md#enable-physicalvirtual-linux-machines).
 
 ## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>Forgatókönyv: a "kiépítés sikertelen" hibaüzenet
 

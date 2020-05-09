@@ -9,14 +9,14 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: badd8ba676ef25c33a5034bb04d616faeb4ef1b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b0ee75c39ba87503f150ffb72b7ab95aaf83999
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392104"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996052"
 ---
-# <a name="forward-azure-automation-state-configuration-reporting-data-to-azure-monitor-logs"></a>Azure Automation állapot-konfiguráció jelentési adatAzure Monitor naplókba való továbbítása
+# <a name="forward-state-configuration-reporting-data-to-azure-monitor-logs"></a>Állapotkonfiguráció jelentési adatainak továbbítása az Azure Monitor-naplói felé
 
 Azure Automation állapot-konfiguráció 30 napig őrzi meg a csomópontok állapotát. Ha inkább hosszabb ideig szeretné megőrizni ezeket az adatait, elküldheti a csomóponti állapot adatait a Log Analytics munkaterületre. A megfelelőségi állapot látható a Azure Portal vagy a PowerShell-lel, a csomópontok és a csomópont-konfigurációk egyes DSC-erőforrásai esetében. 
 
@@ -30,8 +30,6 @@ Azure Monitor naplók nagyobb működési láthatóságot biztosítanak az Autom
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 

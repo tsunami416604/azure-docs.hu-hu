@@ -15,12 +15,12 @@ ms.date: 05/01/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 9eabd6d2a8f3179c5553bc6ca6d59407388c4d42
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 58e7a46633b7bbdd6074fa7e511569ff9e2aebdf
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735563"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996598"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Az Azure RBAC hibáinak megoldása
 
@@ -28,7 +28,7 @@ Ez a cikk az Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC) kap
 
 ## <a name="azure-role-assignments-limit"></a>Azure szerepkör-hozzárendelések korlátja
 
-Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként. Ha a "nincs több szerepkör-hozzárendelés hozható létre (code: RoleAssignmentLimitExceeded)" hibaüzenet jelenik meg, amikor megpróbál hozzárendelni egy szerepkört, csökkentse a szerepkör-hozzárendelések számát az előfizetésben.
+Az Azure legfeljebb **2000** szerepkör-hozzárendelést támogat előfizetésenként. Ez a korlát tartalmazza az előfizetés, az erőforráscsoport és az erőforrás-hatókörök szerepkör-hozzárendeléseit. Ha a "nincs több szerepkör-hozzárendelés hozható létre (code: RoleAssignmentLimitExceeded)" hibaüzenet jelenik meg, amikor megpróbál hozzárendelni egy szerepkört, csökkentse a szerepkör-hozzárendelések számát az előfizetésben.
 
 > [!NOTE]
 > Az **2000** -os szerepkör-hozzárendelési korlát/előfizetés rögzített, és nem növelhető.

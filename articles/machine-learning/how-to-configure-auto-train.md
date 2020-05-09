@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7b268f3efa64c2f1ae78794056fdfda2b27434e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c917912e50c864f49abd5afcd28df4633702f0f
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186929"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993699"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált gépi tanulási kísérletek konfigurálása Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ Távoli végrehajtás esetén a betanítási adatoknak elérhetőnek kell lenni�
 * adatok egyszerű átvitele statikus fájlokból vagy URL-forrásokból a munkaterületre
 * az adatok elérhetővé tétele a Felhőbeli számítási erőforrásokon futó parancsfájlok betanításához
 
-A következő témakörben talál példát arra, [Hogyan](how-to-train-with-datasets.md#option-2--mount-files-to-a-remote-compute-target) csatlakoztathatók `Dataset` az adatok a számítási célra a osztály használatával.
+A következő témakörben talál példát arra, [Hogyan](how-to-train-with-datasets.md#mount-files-to-remote-compute-targets) csatlakoztathatók `Dataset` az adatok a számítási célra a osztály használatával.
 
 ## <a name="train-and-validation-data"></a>Betanítási és érvényesítési adatkészletek
 

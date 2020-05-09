@@ -11,12 +11,12 @@ ms.date: 06/10/2019
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 53660ad93ab2218d546ae6f363873c4d66872e2b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9554713e50e7a2ead2e25f274428ad0ecba4934d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730307"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996955"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Hivatkozás – IoT Hub végpontok
 
@@ -54,9 +54,9 @@ A következő lista a végpontokat ismerteti:
 
   * *Közvetlen metódusokra vonatkozó kérelmek fogadása*. Egy eszköz ezt a végpontot használja a [közvetlen metódus](iot-hub-devguide-direct-methods.md)kérelmének figyelésére.
 
-    Ezek a végpontok a [MQTT v 3.1.1](https://mqtt.org/), a https 1,1 és a [AMQP 1,0](https://www.amqp.org/) protokoll használatával tehetők elérhetővé. A AMQP a 443-es porton keresztül is elérhető [WebSockets](https://tools.ietf.org/html/rfc6455) -en keresztül.
+    Ezek a végpontok a [MQTT v 3.1.1](https://mqtt.org/), a https 1,1 és a [AMQP 1,0](https://www.amqp.org/) protokoll használatával tehetők elérhetővé. A AMQP és a MQTT a 443-es porton keresztül is elérhetők [WebSockets](https://tools.ietf.org/html/rfc6455) -en keresztül.
 
-* **Szolgáltatási végpontok**. Minden IoT hub a megoldás hátterében lévő végpontokat tesz elérhetővé az eszközökkel való kommunikációhoz. Egyetlen kivétel esetén ezek a végpontok csak az [AMQP](https://www.amqp.org/) protokoll használatával érhetők el. A metódus Meghívási végpontja elérhető a HTTPS protokollon keresztül.
+* **Szolgáltatási végpontok**. Minden IoT hub a megoldás hátterében lévő végpontokat tesz elérhetővé az eszközökkel való kommunikációhoz. Egyetlen kivétel esetén ezek a végpontok csak a [AMQP](https://www.amqp.org/) és a AMQP használatával lesznek elérhetők a WebSockets protokollokon keresztül. A közvetlen metódus Meghívási végpontja elérhető a HTTPS protokollon keresztül.
   
   * *Eszközről a felhőbe irányuló üzenetek fogadása*. Ez a végpont kompatibilis az [Azure Event Hubsával](https://azure.microsoft.com/documentation/services/event-hubs/). A háttér-szolgáltatás segítségével elolvashatja az eszközökről a felhőbe küldött, az [eszközről a felhőbe](iot-hub-devguide-messages-d2c.md) irányuló üzeneteket. A beépített végponton kívül egyéni végpontokat is létrehozhat az IoT hub-ban.
   

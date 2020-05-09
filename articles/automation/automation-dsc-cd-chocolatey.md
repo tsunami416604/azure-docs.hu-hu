@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0c61a431b985e494148500ed0a7aeb106534ed2c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 278c6ee05fdf78cbfa8653381b65233fbb513593
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392120"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996124"
 ---
 # <a name="provide-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>A virtuális gépek folyamatos üzembe helyezésének biztosítása az Automation State Configuration és a chocolatey használatával
 
@@ -21,9 +21,6 @@ A Azure Automation Microsoft Azure felügyelt szolgáltatása, amely lehetővé 
 Ez a cikk bemutatja, hogyan állítható be a folyamatos üzembe helyezés (CD) a Windows rendszerű számítógépekre. Egyszerűen kiterjesztheti a technikát úgy, hogy a szerepkörbe, például egy webhelyre, és onnan további szerepkörökre is szükség legyen a Windows rendszerű számítógépek számára.
 
 ![IaaS virtuális gépek folyamatos üzembe helyezése](./media/automation-dsc-cd-chocolatey/cdforiaasvm.png)
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](automation-update-azure-modules.md).
 
 ## <a name="at-a-high-level"></a>Magas szinten
 

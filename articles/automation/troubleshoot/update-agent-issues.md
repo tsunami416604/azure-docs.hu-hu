@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1b4467128fae3fd71a6e588e3c05d287c153e168
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e9af9c6472f49ebccd36e8d73688636c98918ff1
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927887"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996442"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent problémáinak elhárítása
 
@@ -27,21 +27,21 @@ Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifog�
 > [!NOTE]
 > A Azure Portal megjelenítése és a gép aktuális állapota között enyhe késés adható meg.
 
-Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépek hibakeresőjét a Azure Portal és nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline). A hibakereső mostantól tartalmazza a Windows Server Update Services (WSUS) és az automatikus letöltés és a telepítési kulcsok ellenőrzését.
+Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépek hibakeresőjét a Azure Portal és nem Azure-beli gépekről az [Offline forgatókönyvben](#troubleshoot-offline). 
 
 > [!NOTE]
-> A hibakereső parancsfájl jelenleg nem irányítja át a forgalmat egy proxykiszolgálón keresztül, ha van ilyen konfigurálva.
+> A hibakereső parancsfájl mostantól tartalmazza a Windows Server Update Services (WSUS) és az automatikus letöltés és a telepítési kulcsok ellenőrzését. 
 
 ## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
 
-Az Azure-gépek esetében az ügynök frissítése lapon a portálon a **frissítés ügynök felkészültsége** oszlopban található **hibakeresés** hivatkozásra kattintva indíthatja el a **frissítési ügynök hibakeresése** lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
+Az Azure-gépek esetében az ügynök frissítése lapon a portálon a **frissítés ügynök felkészültsége** oszlopban található **hibakeresés** hivatkozásra kattintva indíthatja el a frissítési ügynök hibakeresése lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
 
 ![A virtuális gépek Update Management listájának képernyőképe](../media/update-agent-issues/vm-list.png)
 
 > [!NOTE]
 > A hibrid Runbook-feldolgozók állapotának vizsgálatához a virtuális gépnek futnia kell. Ha a virtuális gép nem fut, megjelenik a **virtuális gép indítása** gomb.
 
-Az **ügynök frissítése** lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/windows/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
+Az ügynök frissítése lapon válassza az **ellenőrzések futtatása** lehetőséget a hibakereső elindításához. A hibakereső a [Futtatás parancs](../../virtual-machines/windows/run-command.md) használatával futtat egy parancsfájlt a gépen a függőségek ellenőrzéséhez. Ha a hibakereső elkészült, a visszaadja az ellenőrzések eredményét.
 
 ![Képernyőkép az ügynök frissítése lap hibakereséséről](../media/update-agent-issues/troubleshoot-page.png)
 
@@ -53,7 +53,7 @@ Az eredmények a lapon jelennek meg, amikor készen állnak. Az ellenőrzések s
 
 ### <a name="operating-system"></a>Operációs rendszer
 
-Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó a következő operációs rendszerek egyikét futtatja-e:
+Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgozó a következő táblázatban látható operációs rendszerek egyikét futtatja-e.
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
@@ -61,11 +61,11 @@ Az operációs rendszer ellenőrzése ellenőrzi, hogy a hibrid Runbook-feldolgo
 
 ### <a name="net-462"></a>.NET-4.6.2
 
-A .NET-keretrendszer ellenőrzése ellenőrzi, hogy a rendszer legalább a [.NET-keretrendszer 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) telepítve van-e.
+A .NET-keretrendszer ellenőrzése ellenőrzi, hogy a rendszeren telepítve van-e a [.NET-keretrendszer 4.6.2](https://www.microsoft.com/en-us/download/details.aspx?id=53345) vagy újabb verziója.
 
 ### <a name="wmf-51"></a>WMF 5.1
 
-A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziójával: [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
+A WMF-ellenőrzés ellenőrzi, hogy a rendszer rendelkezik-e a Windows Management Framework (WMF) szükséges verziójával, amely a [Windows Management framework 5,1](https://www.microsoft.com/download/details.aspx?id=54616).
 
 ### <a name="tls-12"></a>TLS 1.2
 
@@ -77,13 +77,13 @@ Ez az érték határozza meg, hogy a TLS 1,2-et használja-e a kommunikáció ti
 
 Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni az ügynök szolgáltatással.
 
-A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook Worker ügynök kommunikáljon a regisztrációs végponttal. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook Worker ügynök kommunikáljon a regisztrációs végponttal. A megnyitni kívánt címek és portok listáját itt tekintheti meg: [Network Planning](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>Műveleti végpont
 
 Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni a feladatütemezés adatszolgáltatásával.
 
-A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatütemezés adatszolgáltatásával. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatütemezés adatszolgáltatásával. A megnyitni kívánt címek és portok listáját itt tekintheti meg: [Network Planning](../automation-hybrid-runbook-worker.md#network-planning).
 
 ## <a name="vm-service-health-checks"></a>Virtuálisgép-szolgáltatás állapotának ellenőrzése
 
@@ -91,15 +91,18 @@ A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid
 
 Ez az érték határozza meg, hogy a Windows-`healthservice`ügynök () fut-e a gépen a log Analytics. Ha többet szeretne megtudni a szolgáltatás hibaelhárításáról, tekintse meg [a log Analytics ügynök a Windows rendszerhez nem fut](hybrid-runbook-worker.md#mma-not-running).
 
-A Windows Log Analytics-ügynök újratelepítéséhez lásd: [a windows log Analytics-ügynök telepítése és konfigurálása](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows).
+A Windows Log Analytics ügynökének újratelepítéséhez tekintse meg [a Windows rendszerhez készült ügynök telepítése](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakört.
 
 ### <a name="monitoring-agent-service-events"></a>Figyelési ügynök szolgáltatási eseményei
 
 Ez az érték határozza meg, hogy az Azure Operations Manager a gépen az elmúlt 24 órában megjelenjen-e az összes 4502 esemény.
 
-Az eseménnyel kapcsolatos további tudnivalókért tekintse meg az esemény [hibaelhárítási útmutatóját](hybrid-runbook-worker.md#event-4502) .
+Ha többet szeretne megtudni erről az eseményről, tekintse meg az esemény [4502-es eseményét a Operations Manager naplóban](hybrid-runbook-worker.md#event-4502) .
 
 ## <a name="access-permissions-checks"></a>Hozzáférési engedélyek ellenőrzése
+
+> [!NOTE]
+> A hibakereső jelenleg nem irányítja át a forgalmat egy proxykiszolgálón keresztül, ha van ilyen konfigurálva.
 
 ### <a name="crypto-folder-access"></a>Titkosítási mappa elérése
 

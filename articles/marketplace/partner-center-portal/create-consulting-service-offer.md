@@ -6,18 +6,15 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 7e85175cbee53bd5984a38a587a90b98eaf8dcad
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/08/2020
+ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791901"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994351"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
-
-> [!IMPORTANT]
-> A tanácsadási szolgáltatási ajánlatok felügyeletét a Cloud Partner Portalról a partneri központba helyezi át. Az ajánlatok migrálása előtt kövesse az [Azure-ban és a Dynamics 365 Consulting Service-ajánlatban](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/consulting-services/cloud-partner-portal-consulting-services-publishing-offer) található utasításokat az ajánlatok kezeléséhez Cloud Partner Portal.
 
 Ez a cikk azt ismerteti, hogyan tehet közzé egy tanácsadói szolgáltatást a [Microsoft AppSource](https://appsource.microsoft.com/) vagy az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-en. A Microsoft [Dynamics 365](https://dynamics.microsoft.com/) -es és a AppSource-on futó Power platformon alapuló tanácsadói szolgáltatási ajánlatokat sorolja fel. Az Azure Marketplace-en Microsoft Azureon alapuló tanácsadói szolgáltatási ajánlatok listázása. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
@@ -99,10 +96,10 @@ Ezen a lapon állíthatja be azt az elsődleges terméket, amelyet a tanácsadá
     - A **koncepció igazolása**: korlátozott hatókörű implementáció annak megállapítására, hogy A megoldás megfelel-e az ügyfél igényeinek.
     - **Workshop**: az ügyfél telephelyén folytatott interaktív részvétel. Olyan képzéseket, tájékoztatókat, felméréseket és bemutatókat is tartalmazhat, amelyek az ügyfél által tárolt adatszolgáltatásra vagy környezetre épülnek.
 
-1. Ha az **Azure**elsődleges termékét választotta, válasszon ki legfeljebb három **megoldási területet**. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Ha nem az Azure-t választotta, hagyja ki ezt a lépést.
-2. Ha az Azure-tól _eltérő_ elsődleges terméket jelölt ki, válassza ki a legfeljebb három **alkalmazható terméket**. Ezek megkönnyítik a AppSource ügyfeleinek az ajánlat megtalálását. Részletekért lásd: [Microsoft AppSource Consulting Service listázási irányelvei](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
-3. Válasszon ki legfeljebb hat **iparágat** , amelyre az ajánlat vonatkozik. Ez megkönnyíti az ügyfelek számára az ajánlat megtalálását.
-4. Akár három olyan **kompetenciát** is felvehet, amelyet a vállalat a tanácsadási szolgáltatás ajánlatában jelenít meg. Legalább egy kompetenciát meg kell adni, kivéve az Azure Expert MSP és az Azure hálózati MSP.
+3. Ha az **Azure**elsődleges termékét választotta, válasszon ki legfeljebb három **megoldási területet**. Ezek megkönnyítik az Azure Marketplace-en lévő ügyfelek számára az ajánlat megtalálását. Ha nem az Azure-t választotta, hagyja ki ezt a lépést.
+4. Ha az Azure-tól _eltérő_ elsődleges terméket jelölt ki, válassza ki a legfeljebb három **alkalmazható terméket**. Ezek megkönnyítik a AppSource ügyfeleinek az ajánlat megtalálását. Részletekért lásd: [Microsoft AppSource Consulting Service listázási irányelvei](https://go.microsoft.com/fwlink/?LinkId=828734&amp;clcid=0x409) (PDF).
+5. Válasszon ki legfeljebb hat **iparágat** , amelyre az ajánlat vonatkozik. Ez megkönnyíti az ügyfelek számára az ajánlat megtalálását.
+6. Akár három olyan **kompetenciát** is felvehet, amelyet a vállalat a tanácsadási szolgáltatás ajánlatában jelenít meg. Legalább egy kompetenciát meg kell adni, kivéve az Azure Expert MSP és az Azure hálózati MSP.
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 

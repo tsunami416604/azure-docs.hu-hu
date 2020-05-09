@@ -6,12 +6,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/21/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7e7625ae95d5355ae1122a16ea4828eed5f78c73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1840f4049f8450295e179a89b472d7710c5f61a0
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682930"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993780"
 ---
 # <a name="composing-dsc-configurations-in-azure-automation-state-configuration-using-composite-resources"></a>DSC-konfigurációk összeállítása Azure Automation állapot-konfigurációban összetett erőforrások használatával
 
@@ -34,9 +34,9 @@ A Azure Portal összetett erőforrásaiból származó konfiguráció hozzárend
 1. A **Parameters (paraméterek** ) lépésben minden összetett erőforrás paramétere elérhetővé vált, így az értékek megadhatók. Ha egy paraméternek van leírása, akkor a paraméter mező mellett jelenik meg. Ha egy paraméter `PSCredential` típusú, a legördülő lista az aktuális Automation-fiókban található **hitelesítőadat** -objektumok listáját tartalmazza. A **+ a hitelesítő adatok hozzáadása** lehetőség is elérhető. Ha minden szükséges paramétert megadtak, kattintson a **Mentés és fordítás**elemre.
    ![Képernyőkép az összeállítási konfigurációs oldal paraméterek lépéséről](./media/compose-configurationwithcompositeresources/compose-configuration-parameters.png)
 
-Az új konfiguráció mentése után a rendszer elküldi a fordítást. A fordítási feladatok állapota megtekinthető úgy, mint bármely importált konfiguráció. További információ: [fordítási feladatok megtekintése](automation-dsc-getting-started.md#viewing-a-compilation-job).
+Az új konfiguráció mentése után a rendszer elküldi a fordítást. A fordítási feladatok állapota megtekinthető úgy, mint bármely importált konfiguráció. További információ: [fordítási feladatok megtekintése](automation-dsc-getting-started.md#view-a-compilation-job).
 
-A fordítás sikeresen befejeződött, az új konfiguráció megjelenik a **lefordított konfigurációk** lapon. Ezt követően a konfigurációt hozzárendelheti egy felügyelt csomóponthoz, a [csomópont ismételt hozzárendelésének lépéseivel egy másik csomópont-konfigurációhoz](automation-dsc-getting-started.md#reassigning-a-node-to-a-different-node-configuration).
+A fordítás sikeresen befejeződött, az új konfiguráció megjelenik a **lefordított konfigurációk** lapon. Ezt követően a konfigurációt hozzárendelheti egy felügyelt csomóponthoz, a [csomópont ismételt hozzárendelésének lépéseivel egy másik csomópont-konfigurációhoz](automation-dsc-getting-started.md#reassign-a-node-to-a-different-node-configuration).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: c15f16692e92c4d25d8194aaf93a3da907ae0e67
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 53ebf8adb99362b5aaf27676bbd50fb8b525f526
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598147"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994493"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>.NET-es szabványos felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
 
@@ -51,7 +51,7 @@ A C# nyelvben használandó Azure Stream Analytics értékeket az egyik környez
 |nvarchar (max.) | sztring |
 |dátum/idő | DateTime |
 |Record | Szótár\<karakterlánca, objektum> |
-|Tömb | Tömb\<objektum> |
+|Tömb | Objektum [] |
 
 Ugyanez igaz, ha az adatokat a C# rendszerből Azure Stream Analyticsre kell átadni, ami az UDF kimeneti értékén történik. Az alábbi táblázat a támogatott típusokat mutatja:
 
@@ -63,7 +63,7 @@ Ugyanez igaz, ha az adatokat a C# rendszerből Azure Stream Analyticsre kell át
 |DateTime  |  dateTime   |
 |struct  |  Record   |
 |objektum  |  Record   |
-|Tömb\<objektum>  |  Tömb   |
+|Objektum []  |  Tömb   |
 |Szótár\<karakterlánca, objektum>  |  Record   |
 
 ## <a name="codebehind"></a>CodeBehind
@@ -140,6 +140,43 @@ Bontsa ki a **Felhasználói kód konfigurációja** szakaszt, és töltse ki a 
    |Egyéni kód tárolási beállításainak tárolója|< a Storage-tárolót >|
    |Egyéni kód szerelvényének forrása|Meglévő szerelvény-csomagok a felhőből|
    |Egyéni kód szerelvényének forrása|UserCustomCode. zip|
+
+## <a name="user-logging"></a>Felhasználói naplózás
+A naplózási mechanizmus lehetővé teszi, hogy egyéni adatokat rögzítsen a feladatok futtatása közben. A naplózási adatok segítségével valós időben végezhet hibakeresést vagy felmérni az egyéni kód helyességét.
+
+A `StreamingContext` osztály lehetővé teszi a diagnosztikai adatok közzétételét `StreamingDiagnostics.WriteError` a függvény használatával. Az alábbi kód a Azure Stream Analytics által elérhetővé tett felületet mutatja.
+
+```csharp
+public abstract class StreamingContext
+{
+    public abstract StreamingDiagnostics Diagnostics { get; }
+}
+
+public abstract class StreamingDiagnostics
+{
+    public abstract void WriteError(string briefMessage, string detailedMessage);
+}
+```
+
+`StreamingContext`a rendszer az UDF metódus bemeneti paramétereként adja át, és az UDF-n belül használható az egyéni napló adatainak közzétételéhez. Az alábbi példában egy **adatbevitelt** `MyUdfMethod` határoz meg, amelyet a lekérdezés biztosít, valamint egy **környezeti** bemenetet `StreamingContext`, amelyet a futásidejű motor biztosít. 
+
+```csharp
+public static long MyUdfMethod(long data, StreamingContext context)
+{
+    // write log
+    context.Diagnostics.WriteError("User Log", "This is a log message");
+    
+    return data;
+}
+```
+
+Az `StreamingContext` értéket nem kell átadni az SQL-lekérdezésnek. A Azure Stream Analytics automatikusan helyi objektumot biztosít, ha van bemeneti paraméter. A `MyUdfMethod` nem változik, ahogy az a következő lekérdezésben is látható:
+
+```sql
+SELECT udf.MyUdfMethod(input.value) as udfValue FROM input
+```
+
+A naplózási üzeneteket a [diagnosztikai naplókon](data-errors.md)keresztül érheti el.
 
 ## <a name="limitations"></a>Korlátozások
 Az UDF előzetes verziója jelenleg a következő korlátozásokkal rendelkezik:

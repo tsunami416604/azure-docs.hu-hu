@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 1933688459cd02ee4da448d2e83b0a7a92a1d2c8
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927921"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82994742"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -68,7 +68,7 @@ A runbookok tartalmaznia kell a logikai [erőforrásokat](https://docs.microsoft
 
 ## <a name="security"></a>Biztonság
 
-A Azure Automation a [Azure Security Center (ASC)](https://docs.microsoft.com/azure/security-center/security-center-introAzure) használatával biztosítja az erőforrások biztonságát, és felismeri a támadásokat a Linux rendszerekben. A biztonság a munkaterhelések között érhető el, függetlenül attól, hogy az erőforrások az Azure-ban vannak-e. Lásd: [Bevezetés a hitelesítésbe Azure Automation](automation-security-overview.md).
+A Azure Automation a [Azure Security Center (ASC)](../security-center/security-center-intro.md) használatával biztosítja az erőforrások biztonságát, és felismeri a támadásokat a Linux rendszerekben. A biztonság a munkaterhelések között érhető el, függetlenül attól, hogy az erőforrások az Azure-ban vannak-e. Lásd: [Bevezetés a hitelesítésbe Azure Automation](automation-security-overview.md).
 
 ASC – olyan felhasználók számára, akik aláírt vagy aláíratlan parancsfájlokat futtathatnak egy virtuális gépen. Ha olyan felhasználó, aki rendszergazdai jogosultságokkal rendelkezik egy virtuális géphez, explicit módon konfigurálnia kell a gépet digitális aláírással, vagy ki kell kapcsolni. Ellenkező esetben csak olyan parancsfájlt futtathat, amely az operációs rendszer frissítéseit az Automation-fiók létrehozása és a megfelelő funkció engedélyezése után alkalmazza.
 

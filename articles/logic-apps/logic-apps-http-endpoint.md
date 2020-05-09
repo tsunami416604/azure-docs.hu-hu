@@ -6,12 +6,12 @@ ms.workload: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/06/2020
-ms.openlocfilehash: 734ddcacf46804db8d9aac091b0a9ac0ca512e18
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: aa3733b1231b92f30f5fd36dab64794129e62b07
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983753"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995342"
 ---
 # <a name="call-trigger-or-nest-logic-apps-by-using-https-endpoints-in-azure-logic-apps"></a>Logikai alkalmazások hívása, elindítása vagy beágyazása HTTPS-végpontok használatával Azure Logic Apps
 
@@ -140,17 +140,19 @@ Alapértelmezés szerint a kérelem triggere egy POST-kérést vár. Megadhat eg
 
    ![Az trigger által várt kérelem módszerének kiválasztása](./media/logic-apps-http-endpoint/select-method-request-trigger.png)
 
-## <a name="accept-parameters-in-endpoint-url"></a>Paraméterek elfogadása a végpont URL-címében
+<a name="endpoint-url-parameters"></a>
 
-Ha azt szeretné, hogy a végpont URL-címe a végpont URL-címén keresztül fogadja el a paramétereket, a következő lehetőségek közül választhat:
+## <a name="pass-parameters-through-endpoint-url"></a>Paraméterek továbbítása a végpont URL-címén keresztül
+
+Ha a paraméter értékeit a végpont URL-címén keresztül szeretné elfogadni, a következő lehetőségek közül választhat:
 
 * [Értékek elfogadása a Get paraméterek vagy az](#get-parameters) URL-paraméterek használatával.
 
-  Ezeket az értékeket név-érték párokként adja át a rendszer a kérelemnek a végpont URL-címére való küldésekor. Ehhez a beállításhoz a GET metódust kell használnia a kérelem triggerében. Egy későbbi művelet során a paraméter értékeit trigger kimenetként lehet beolvasni egy kifejezésben szereplő `triggerOutputs()` függvény használatával.
+  Ezeket az értékeket a rendszer név-érték párokként adja át a végpont URL-címében. Ehhez a beállításhoz a GET metódust kell használnia a kérelem triggerében. Egy későbbi művelet során a paraméter értékeit trigger kimenetként lehet beolvasni egy kifejezésben szereplő `triggerOutputs()` függvény használatával.
 
 * Értékek elfogadása a kérelem-trigger paramétereinek [relatív elérési útján](#relative-path) .
 
-  Ezek az értékek a kérelemnek a végpont URL-címére való küldésekor lesznek átadva. Emellett explicit módon [ki kell választania azt a metódust](#select-method) , amelyet az trigger elvár. Egy későbbi művelet során a paraméterek értékét trigger kimenetként is lekérheti, ha közvetlenül a kimenetekre hivatkozik.
+  Ezeket az értékeket a rendszer a végpont URL-címében lévő relatív elérési úton adja át. Emellett explicit módon [ki kell választania azt a metódust](#select-method) , amelyet az trigger elvár. Egy későbbi művelet során a paraméterek értékét trigger kimenetként is lekérheti, ha közvetlenül a kimenetekre hivatkozik.
 
 <a name="get-parameters"></a>
 

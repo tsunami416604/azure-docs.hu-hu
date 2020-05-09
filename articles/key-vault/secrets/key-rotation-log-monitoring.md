@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d2981495a256ce5fb8f8f3584e68ac91541f9d62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a5aaef50f12bfec89cf5e883ed6b1c85fa984ad6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430252"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995971"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Azure Key Vault beállítása a kulcsfontosságú rotációs és naplózási szolgáltatással
 
@@ -85,23 +85,35 @@ Először regisztrálnia kell az alkalmazást Azure Active Directory. Ezután t�
 > [!NOTE]
 > Az alkalmazást a Key vaulttal megegyező Azure Active Directory bérlőn kell létrehozni.
 
-1. Nyissa meg **Azure Active Directory**.
-2. Válassza a **Alkalmazásregisztrációk**lehetőséget. 
-3. Válassza az **új alkalmazás regisztrálása** lehetőséget az alkalmazás Azure Active Directoryhoz való hozzáadásához.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. Ha a fiókja több bérlőhöz biztosít hozzáférést, válassza ki a fiókját a jobb felső sarokban. Állítsa be a portál munkamenetét a kívánt Azure AD-bérlőre.
+1. Keresse meg és válassza ki az **Azure Active Directoryt**. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Válassza az **új regisztráció**lehetőséget.
+1. Az **alkalmazás regisztrálása**területen adja meg a felhasználók számára megjelenítendő, értelmezhető alkalmazás nevét.
+1. A következőképpen adhatja meg, hogy ki használhatja az alkalmazást:
 
-    ![Alkalmazások megnyitása Azure Active Directory](../media/keyvault-keyrotation/azure-ad-application.png)
+    | Támogatott fióktípusok | Leírás |
+    |-------------------------|-------------|
+    | **Csak az ebben a szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha üzletági (LOB) alkalmazást készít. Ez a lehetőség nem érhető el, ha nem regisztrálja az alkalmazást egy címtárban.<br><br>E lehetőség választása esetén az alkalmazás csak egy Azure AD-bérlős lesz.<br><br>Ez az alapértelmezett beállítás, ha az alkalmazást egy címtáron kívül regisztrálja. Ha címtáron kívül regisztrálja az alkalmazást, a több Azure AD-bérlős alkalmazás és a személyes Microsoft-fiókok használata lesz az alapértelmezés. |
+    | **Tetszőleges szervezeti címtárban található fiókok** | Akkor válassza ezt a lehetőséget, ha szeretne minden üzleti és az oktatási ügyfelet megcélozni.<br><br>E lehetőség választása esetén az alkalmazás csak több Azure AD-bérlős lesz.<br><br>Ha az alkalmazást csak az Azure AD-ben regisztrálta, akkor a **hitelesítés** lapon frissítheti azt, hogy az Azure ad több-bérlős legyen, és vissza az egybérlős példányra. |
+    | **Tetszőleges szervezeti címtárban található fiókok és személyes Microsoft-fiókok** | Akkor válassza ezt a lehetőséget, ha a lehető legszélesebb ügyfélkört szeretbé megcélozni.<br><br>E lehetőség választása esetén az alkalmazás több Azure AD-bérlős lesz, és személyes Microsoft-fiókok is használhatók lesznek.<br><br>Ha az alkalmazást Azure AD több-bérlős és személyes Microsoft-fiókkal regisztrálta, akkor ez a beállítás nem módosítható a felhasználói felületen. Ehelyett az alkalmazásjegyzék-szerkesztőt kell használnia a támogatott fióktípusok módosításához. |
 
-4. A **Létrehozás**területen hagyja meg az alkalmazás típusát **webalkalmazásként vagy API** -ként, és adjon nevet az alkalmazásnak. Adja meg az alkalmazásnak a **bejelentkezési URL-címet**. Ez az URL-cím lehet bármi, amit a bemutatóhoz szeretne használni.
+1. Az **átirányítási URI (nem kötelező)** területen válassza ki az Ön által felépített alkalmazás típusát: **webes** vagy **nyilvános ügyfél (mobil & asztali)**. Ezután adja meg az alkalmazáshoz tartozó átirányítási URI-t vagy válasz URL-címét.
 
-    ![Alkalmazás-regisztráció létrehozása](../media/keyvault-keyrotation/create-app.png)
+    * Webalkalmazás esetében adja meg alkalmazás alap URL-címét. A `https://localhost:31544` például a helyi gépen futó webalkalmazás URL-címe lehet. A felhasználók ezzel az URL-címmel jelentkeznek be egy webes ügyfélalkalmazásba.
+    * Nyilvános ügyfélalkalmazások esetében adja meg az URI-t, amelyet az Azure AD a jogkivonatválaszok visszaadására használ. Adjon meg az alkalmazáshoz tartozó értéket, például: `myapp://auth`.
 
-5. Az alkalmazás Azure Active Directoryhoz való hozzáadása után megnyílik az alkalmazás lap. Válassza a **Beállítások**, majd a **Tulajdonságok**elemet. Másolja az **alkalmazás-azonosító** értékét. A későbbi lépésekben szüksége lesz rá.
+1. Miután végzett, válassza a **Regisztrálás** lehetőséget.
 
-Ezután állítson be egy kulcsot az alkalmazáshoz, hogy az interakcióba lépjen a Azure Active Directory használatával. Kulcs létrehozásához válassza a **Beállítások**területen a **kulcsok** elemet. Jegyezze fel az újonnan generált kulcsot a Azure Active Directory alkalmazáshoz. Egy későbbi lépésben szüksége lesz rá. A kulcs a szakasz elhagyása után nem lesz elérhető. 
+    ![Megjeleníti a képernyőt, amely új alkalmazást regisztrál a Azure Portal](../media/new-app-registration.png)
 
-![Azure Active Directory alkalmazás kulcsai](../media/keyvault-keyrotation/create-key.png)
+Az Azure AD egy egyedi alkalmazást vagy ügyfelet rendel hozzá az alkalmazáshoz. A portál megnyitja az alkalmazás **Áttekintés** lapját. Jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét.
 
-Mielőtt bármilyen hívást hozna létre az alkalmazásból a kulcstartóba, meg kell adnia a Key vaultot az alkalmazásról és annak engedélyeiről. A következő parancs a tár nevét és az alkalmazás AZONOSÍTÓját használja a Azure Active Directory alkalmazásból, hogy az **alkalmazás hozzáférjen** a kulcstartóhoz.
+Ha képességeket szeretne hozzáadni az alkalmazáshoz, kiválaszthat más konfigurációs beállításokat, például a védjegyezést, a tanúsítványokat és a titkos kulcsokat, az API-engedélyeket és egyebeket.
+
+![Példa az újonnan regisztrált alkalmazások áttekintő oldalára](../media//new-app-overview-page-expanded.png)
+
+Mielőtt bármilyen hívást hozna létre az alkalmazásból a kulcstartóba, meg kell adnia a Key vaultot az alkalmazásról és annak engedélyeiről. A következő parancs a tár nevét és az **alkalmazás (ügyfél) azonosítóját** használja a Azure Active Directory alkalmazásból, hogy az **alkalmazás hozzáférjen** a kulcstartóhoz.
 
 ```powershell
 Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get

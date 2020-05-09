@@ -9,12 +9,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.custom: amqp
-ms.openlocfilehash: 169d926e466559bc83ba64ce9e976e0d725f614d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf7c4118e17727c6c8141570ab146026d5383059
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81729993"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996932"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Az eszközről a felhőbe irányuló üzenetek beolvasása a beépített végpontról
 
@@ -51,7 +51,7 @@ Ha Event Hubs SDK-kat vagy olyan termék-integrációt használ, amely nem tud I
 
 A portálon az Event hub-kompatibilis végpont mező egy teljes Event Hubs kapcsolati karakterláncot tartalmaz, amely a következőképpen néz ki: **Endpoint = SB://abcd1234namespace.servicebus.Windows.net/; SharedAccessKeyName = iothubowner; SharedAccessKey = keykeykeykeykeykey =; EntityPath = iothub-eHub-ABCD-1234-123456**. Ha az Ön által használt SDK más értékeket igényel, akkor a következő lesz:
 
-| Name (Név) | Érték |
+| Name | Érték |
 | ---- | ----- |
 | Végpont | sb://abcd1234namespace.servicebus.windows.net/ |
 | Gazdanév | abcd1234namespace.servicebus.windows.net |
@@ -61,12 +61,12 @@ Ezután bármilyen megosztott elérési házirendet használhat, amely rendelkez
 
 A beépített, az Event hub-kompatibilis végponthoz való kapcsolódáshoz használható SDK-k, amelyek IoT Hub teszik a következőket:
 
-| Nyelv | SDK | Példa | Megjegyzések |
-| -------- | --- | ------ | ----- |
-| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Első lépések](quickstart-send-telemetry-dotnet.md) | Event Hubs-kompatibilis információt használ |
- Java | https://github.com/Azure/azure-event-hubs-java | [Első lépések](quickstart-send-telemetry-java.md) | Event Hubs-kompatibilis információt használ |
-| Node.js | https://github.com/Azure/azure-event-hubs-node | [Első lépések](quickstart-send-telemetry-node.md) | IoT Hub-kapcsolatok sztringjét használja |
-| Python | https://github.com/Azure/azure-event-hubs-python | https://github.com/Azure/azure-event-hubs-python/blob/master/examples/iothub_recv.py | IoT Hub-kapcsolatok sztringjét használja |
+| Nyelv | SDK | Példa |
+| -------- | --- | ------ |
+| .NET | https://github.com/Azure/azure-event-hubs-dotnet | [Első lépések](quickstart-send-telemetry-dotnet.md) |
+ Java | https://github.com/Azure/azure-event-hubs-java | [Első lépések](quickstart-send-telemetry-java.md) |
+| Node.js | https://www.npmjs.com/package/@azure/event-hubs | [Első lépések](quickstart-send-telemetry-node.md) |
+| Python | https://pypi.org/project/azure-eventhub/ | https://github.com/Azure-Samples/azure-iot-samples-python/tree/master/iot-hub/Quickstarts/read-d2c-messages |
 
 A beépített, az Event hub-kompatibilis végponttal használható termék-integrációk, amelyeket IoT Hub tesznek elérhetővé:
 

@@ -9,12 +9,12 @@ ms.author: migreene
 ms.topic: conceptual
 ms.date: 07/17/2019
 manager: nirb
-ms.openlocfilehash: dfe62c54bfb10d70f1dbf19daec90eec68e66431
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f871b406793e455c857ca14c83434c9ed3e004df
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406086"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993839"
 ---
 # <a name="remediate-noncompliant-dsc-servers"></a>Nem megfelelő DSC-kiszolgálók szervizelése
 
@@ -37,7 +37,7 @@ Update-DscConfiguration -Wait -Verbose
 
 Hasonló funkciók jelenleg nem érhetők el Linux-kiszolgálókon.
 Az egyetlen lehetőség a regisztrációs folyamat megismétlése.
-Az Azure-csomópontok esetében kiválaszthatja a Azure Portal vagy az az Module parancsmagok használatával történő eltolódást. A folyamat részleteit dokumentálja a [bevezetési gépeken, Azure Automation állapot konfigurációjának](automation-dsc-onboarding.md#onboard-a-vm-using-azure-portal)megfelelően.
+Az Azure-csomópontok esetében kiválaszthatja a Azure Portal vagy az az Module parancsmagok használatával történő eltolódást. A folyamat részleteit dokumentálja a [bevezetési gépeken, Azure Automation állapot konfigurációjának](automation-dsc-onboarding.md#enable-a-vm-using-azure-portal)megfelelően.
 A hibrid csomópontok esetében a mellékelt Python-szkriptek használatával is kiválaszthatja a driftt.
 Lásd: [POWERSHELL DSC Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux#performing-dsc-operations-from-the-linux-computer)-tárházhoz.
 

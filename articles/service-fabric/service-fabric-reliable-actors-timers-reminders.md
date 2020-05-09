@@ -1,16 +1,14 @@
 ---
 title: Reliable Actors időzítők és emlékeztetők
 description: Az időzítők és emlékeztetők bevezetője Service Fabric Reliable Actorshoz, beleértve az egyes eszközök használatára vonatkozó útmutatást.
-author: vturecek
 ms.topic: conceptual
 ms.date: 11/02/2017
-ms.author: vturecek
-ms.openlocfilehash: 02d6220b31ee9c991e8450759bf46759af6177a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67dc5d9706c2176b2fe70d2540be00d0af79fd80
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75639615"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996354"
 ---
 # <a name="actor-timers-and-reminders"></a>Színészi időzítők és emlékeztetők
 A szereplők rendszeres munkát ütemezhetnek az időzítők vagy emlékeztetők regisztrálásával. Ez a cikk bemutatja, hogyan használhatók az időzítők és a emlékeztetők, valamint ismertetik a köztük lévő különbségeket.
@@ -122,12 +120,17 @@ Az időzítő következő időszaka a visszahívás befejeződése után kezdőd
 
 A szereplők futtatókörnyezete a visszahívás befejeződése után menti a színész State managerének változásait. Ha az állapot mentésekor hiba történik, akkor a rendszer inaktiválja a Actor objektumot, és egy új példányt aktivál.
 
+Az [emlékeztetők](#actor-reminders)eltérően nem frissíthetők az időzítők. Ha `RegisterTimer` a hívása újra megtörténik, egy új időzítő lesz regisztrálva.
+
 Minden időzítő leáll, ha a színész inaktiválva van a szemetet tartalmazó gyűjtemény részeként. Ezt követően nem hívhat meg időzítő-visszahívást. Emellett a szereplők futtatókörnyezete nem őrzi meg az Inaktiválás előtt futó időzítők adatait. Ez a színész a jövőben az újraaktiváláskor szükséges időzítők regisztrálására szolgál. További információkért lásd a [Actors Garbage gyűjtemény](service-fabric-reliable-actors-lifecycle.md)című szakaszát.
 
 ## <a name="actor-reminders"></a>Színészi emlékeztetők
-Az emlékeztetők olyan mechanizmusok, amelyekkel az állandó visszahívás aktiválható egy adott színészen a megadott időpontokban. A funkcióik hasonlóak az időzítőhöz. Az időzítővel ellentétben azonban az emlékeztetők minden körülmények között aktiválva lesznek, amíg a színész kifejezetten törli a regisztrációt, vagy a szereplő explicit módon törölve lett. Az emlékeztetőket kifejezetten a színészek inaktiválásai és feladatátvétele váltja ki, mert a szereplők futtatókörnyezete továbbra is információt tartalmaz a színészi szolgáltató által használt emlékeztetőről. Vegye figyelembe, hogy az emlékeztetők megbízhatósága a színészi szolgáltató által biztosított állapot-megbízhatósági garanciákkal van kötve. Ez azt jelenti, hogy azoknál a szereplőknél, amelyek állapotának megőrzése nem értékre van állítva, a rendszer nem hajtja végre az emlékeztetőket a feladatátvétel után. 
+Az emlékeztetők olyan mechanizmusok, amelyekkel az állandó visszahívás aktiválható egy adott színészen a megadott időpontokban. A funkcióik hasonlóak az időzítőhöz. Az időzítővel ellentétben azonban az emlékeztetők minden körülmények között aktiválva lesznek, amíg a színész kifejezetten törli a regisztrációt, vagy a szereplő explicit módon törölve lett. Az emlékeztetőket kifejezetten a színészek inaktiválásai és feladatátvétele váltja ki, mert a szereplők futtatókörnyezete továbbra is információt tartalmaz a színészi szolgáltató által használt emlékeztetőről. Az időzítővel ellentétben a meglévő emlékeztetőket úgy is frissítheti, ha a regisztrációs metódust (`RegisterReminderAsync`) újra meghívja ugyanazzal a *reminderName*.
 
-Egy emlékeztető regisztrálásához a színész meghívja az `RegisterReminderAsync` alaposztályon megadott metódust, ahogy az az alábbi példában is látható:
+> [!NOTE]
+> Az emlékeztetők megbízhatósága a szereplők állami szolgáltatója által biztosított állapot-megbízhatósági garanciákkal van kötve. Ez azt jelenti, hogy azoknál a szereplőknél, amelyek állapotának megőrzése nem értékre van *állítva, a*rendszer nem hajtja végre az emlékeztetőket a feladatátvétel után.
+
+Egy emlékeztető regisztrálásához a színész meghívja az [`RegisterReminderAsync`](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.actors.runtime.actorbase.registerreminderasync?view=azure-dotnet#remarks) alaposztályon megadott metódust, ahogy az az alábbi példában is látható:
 
 ```csharp
 protected override async Task OnActivateAsync()

@@ -1,6 +1,6 @@
 ---
 title: Azure Automation állapot konfigurációjának áttekintése
-description: Az Azure Automation állapot-konfiguráció (DSC), a hozzá tartozó feltételek és az ismert problémák áttekintése
+description: A Azure Automation állapot konfigurációjának, annak feltételeinek és ismert problémáinak áttekintése
 keywords: PowerShell DSC, a kívánt állapot konfigurálása, PowerShell DSC Azure
 services: automation
 ms.service: automation
@@ -10,20 +10,34 @@ ms.author: magoedte
 ms.date: 11/06/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: afceb11180662416aa4953b8b58ef03ffaa70eec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbe617e6614eb69f0a7f6e31c89c1f645804fe1b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406184"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993852"
 ---
-# <a name="state-configuration-overview"></a>Állapotkonfiguráció áttekintése
+# <a name="azure-automation-state-configuration-overview"></a>Azure Automation állapot konfigurációjának áttekintése
 
-Azure Automation állapot-konfiguráció egy olyan Azure-szolgáltatás, amely lehetővé teszi a PowerShell kívánt állapot-konfiguráció (DSC) [konfigurációjának](/powershell/scripting/dsc/configurations/configurations)írását, kezelését és fordítását. A szolgáltatás a [DSC-erőforrásokat](/powershell/scripting/dsc/resources/resources)is importálja, és a konfigurációkat a célként megadott csomópontokhoz rendeli hozzá a felhőben.
+Azure Automation állapot-konfiguráció egy [Azure-beli](/powershell/scripting/dsc/configurations/configurations) konfiguráció-felügyeleti szolgáltatás, amely lehetővé teszi a PowerShell kívánt állapot-konfiguráció (DSC) konfigurációjának írását, kezelését és fordítását bármely Felhőbeli vagy helyszíni adatközpontban. A szolgáltatás a [DSC-erőforrásokat](/powershell/scripting/dsc/resources/resources)is importálja, és a konfigurációkat a célként megadott csomópontokhoz rendeli hozzá a felhőben. A Azure Portal Azure Automation állapot konfigurációját az **állapot konfigurálása (DSC)** elemre kattintva érheti el a **konfiguráció**felügyelete alatt. 
+
+A Azure Automation állapot-konfiguráció számos különböző gép kezelésére használható:
+
+- Azure virtuális gépek
+- Azure-beli virtuális gépek (klasszikus)
+- Fizikai/virtuális Windowsos gépek a helyszínen vagy az Azure-tól eltérő felhőben (beleértve az AWS EC2-példányokat)
+- Fizikai/virtuális Linux rendszerű számítógépek a helyszínen, az Azure-ban vagy az Azure-tól eltérő felhőben
+
+Ha nem áll készen a számítógép-konfiguráció felhőből való kezelésére, akkor a Azure Automation állapot konfigurációját csak jelentési végpontként használhatja. Ezzel a funkcióval a DSC-n keresztül állíthatja be (leküldéses) konfigurációkat, és megtekintheti a jelentéskészítés részleteit Azure Automationban.
+
+> [!NOTE]
+> Az Azure-beli virtuális gépek Azure Automation állapotú konfigurációval való kezelése külön díj nélkül történik, ha a telepített Azure-beli virtuális gép kívánt állapot-konfigurációs bővítményének verziója nagyobb, mint 2,70. További információ: Automation- [**díjszabási oldal**](https://azure.microsoft.com/pricing/details/automation/).
 
 ## <a name="why-use-azure-automation-state-configuration"></a>Miért érdemes Azure Automation állapot konfigurációját használni
 
-Azure Automation állapot-konfiguráció számos előnyt biztosít a DSC-t használó Azure-on kívül.
+Azure Automation állapot-konfiguráció számos előnnyel jár, mint a DSC használata az Azure-on kívül. Ez a szolgáltatás lehetővé teszi, hogy a központi és biztonságos helyről gyorsan és egyszerűen lehessen méretezni a több ezer gépen. Könnyedén engedélyezheti a gépeket, hozzárendelheti a deklaratív konfigurációkat, és megtekintheti azokat a jelentéseket, amelyek az egyes gépek megfelelőségét a megadott kívánt állapottal együtt mutatják.
+
+A Azure Automation állapot-konfigurációs szolgáltatás azt a DSC-t adja meg, amit Azure Automation runbookok a PowerShell-parancsfájlok futtatásához. Más szóval ugyanúgy, ahogy a Azure Automation segíti a PowerShell-parancsfájlok kezelését, a DSC-konfigurációk kezelését is segíti. 
 
 ### <a name="built-in-pull-server"></a>Beépített lekéréses kiszolgáló
 
@@ -41,7 +55,7 @@ Azure Automation állapot-konfigurációval felügyelt csomópontok részletes j
 
 ## <a name="prerequisites-for-using-azure-automation-state-configuration"></a>Azure Automation állapot konfigurációjának használatának előfeltételei
 
-A DSC-hez Azure Automation állapot konfigurációjának használatakor vegye figyelembe az alábbi követelményeket.
+Azure Automation állapot konfigurációjának használatakor vegye figyelembe a jelen szakasz követelményeit.
 
 ### <a name="operating-system-requirements"></a>Operációsrendszer-követelmények
 
@@ -63,9 +77,9 @@ A Linux rendszerű csomópontok esetében a DSC linuxos bővítmény a [támogat
 
 ### <a name="dsc-requirements"></a>DSC-követelmények
 
-Az Azure-ban futó összes Windows-csomópont esetében a [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) -es verzióját telepíti a rendszer az előkészítés során. A Windows Server 2012 és Windows 7 rendszert futtató csomópontok esetén a [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) engedélyezve van.
+Az Azure-ban futó összes Windows-csomópont esetében a [WMF 5,1](https://docs.microsoft.com/powershell/scripting/wmf/setup/install-configure) telepítve van, ha a gépek engedélyezve vannak. A Windows Server 2012 és Windows 7 rendszert futtató csomópontok esetén a [WinRM](https://docs.microsoft.com/powershell/scripting/dsc/troubleshooting/troubleshooting#winrm-dependency) engedélyezve van.
 
-Az Azure-ban futó összes Linux-csomópont esetében a [POWERSHELL DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) telepítése az előkészítés során történik.
+Az Azure-ban futó összes Linux-csomópont esetében a [POWERSHELL DSC for Linux](https://github.com/Microsoft/PowerShell-DSC-for-Linux) telepítve van, ha a gépek engedélyezve vannak.
 
 ### <a name="configuration-of-private-networks"></a><a name="network-planning"></a>Magánhálózatok konfigurálása
 
@@ -80,7 +94,7 @@ Ha olyan DSC-erőforrásokat használ, amelyek a csomópontok között kommunik�
 
 #### <a name="proxy-support"></a>Proxy-támogatás
 
-A DSC-ügynök proxy-támogatása a Windows 1809-es és újabb verzióiban érhető el. Ezt a beállítást a csomópontok regisztrálásához használt `ProxyURL` metaconfiguration `ProxyCredential` - [szkript](automation-dsc-onboarding.md#generating-dsc-metaconfigurations) értékeinek beállításával engedélyezheti.
+A DSC-ügynök proxy-támogatása a Windows 1809-es és újabb verzióiban érhető el. Ezt a beállítást a csomópontok regisztrálásához használt `ProxyURL` metaconfiguration `ProxyCredential` - [szkript](automation-dsc-onboarding.md#generate-dsc-metaconfigurations) értékeinek beállításával engedélyezheti.
 
 >[!NOTE]
 >Azure Automation állapot-konfiguráció nem biztosít DSC-proxy támogatást a Windows korábbi verzióihoz.
@@ -121,7 +135,7 @@ Az Azure ExpressRoute felhasználói számára fontos megjegyezni, hogy ez a fá
 ## <a name="next-steps"></a>További lépések
 
 - A DSC Azure Automation állapot konfigurációban való használatának megkezdéséhez tekintse meg [a Azure Automation állapot konfigurációjának első lépései](automation-dsc-getting-started.md)című témakört.
-- A csomópontok bevezetésének megismeréséhez tekintse meg a [Azure Automation állapot-konfigurációval történő felügyelethez szükséges bevezetési gépeket](automation-dsc-onboarding.md).
+- A csomópontok engedélyezésével kapcsolatos információkért lásd: [Azure Automation állapot konfigurációjának engedélyezése a gépek számára a felügyelethez](automation-dsc-onboarding.md).
 - Ha szeretne többet megtudni a DSC-konfigurációk fordításáról, hogy hozzá lehessen rendelni őket a célcsoportokhoz, tekintse meg a [konfigurációk fordítása Azure Automation állapot konfigurációjában](automation-dsc-compile.md)című témakört.
 - A PowerShell-parancsmagok leírása: [az. Automation](https://docs.microsoft.com/powershell/module/az.automation/?view=azps-3.7.0#automation
 ).

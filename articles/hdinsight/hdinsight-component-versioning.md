@@ -7,19 +7,19 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
-ms.date: 04/09/2020
-ms.openlocfilehash: 87c3e2439d1b4bef4a58663e3ea06d8bb7cb9b19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.openlocfilehash: 98bb643e1a780754fcb3b9f4eb91d8f04dc4e90b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192535"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996383"
 ---
-# <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
+# <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
 Ismerkedjen meg a [Apache Hadoop](https://hadoop.apache.org/) környezeti összetevőkkel és verziókkal Microsoft Azure HDInsight és a Enterprise Security Package. Azt is megtudhatja, hogyan tekintheti meg a Hadoop összetevő-verzióit a HDInsight-ben.
 
-## <a name="apache-hadoop-components-available-with-different-hdinsight-versions"></a>Apache Hadoop különböző HDInsight-verziókkal elérhető összetevők
+## <a name="apache-components-available-with-different-hdinsight-versions"></a>Különböző HDInsight-verziókkal elérhető Apache-összetevők
 
 Az Azure HDInsight több Hadoop-fürtöt is támogat, amelyek bármikor üzembe helyezhetők. 2017. április 4-én az Azure HDInsight által használt alapértelmezett fürt verziója 3,6.
 
@@ -53,7 +53,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 > [!NOTE]
 > A rendszer teljesítményével kapcsolatos megfontolások miatt a Kafka 0,10-es verziójának támogatása 2019 márciusában lejár.
 
-## <a name="check-for-current-hadoop-component-version-information"></a>Az aktuális Hadoop-összetevő verziószámával kapcsolatos információk keresése
+## <a name="check-for-current-apache-component-version-information"></a>Az Apache összetevő aktuális verziójával kapcsolatos információk keresése
 
 A HDInsight-Hadoop társított környezet-összetevők verzióit a HDInsight frissítéseivel lehet megváltoztatni. A Hadoop-összetevők ellenőrzéséhez és a fürthöz használt verziók ellenőrzéséhez használja a Ambari REST API. A **GetComponentInformation** parancs adatokat kér le a szolgáltatás összetevőiről. Részletekért tekintse meg az [Apache Ambari dokumentációját](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 
@@ -104,50 +104,6 @@ A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek **nem
 > [!NOTE]  
 > A HDInsight 2,1-es és újabb verzióiban a két fő csomóponttal rendelkező, magasan elérhető fürtök üzembe helyezése alapértelmezés szerint megtörténik. A HDInsight 1,6-es verziójú fürtök esetében nem érhetők el.
 
-## <a name="enterprise-security-package-for-hdinsight"></a>HDInsight Enterprise Security Package
-
-A vállalati biztonság egy opcionális csomag, amelyet hozzáadhat a HDInsight-fürthöz a fürt létrehozása munkafolyamat részeként. A Enterprise Security Package a következőket támogatja:
-
-- Active Directory integrációja a hitelesítéshez.
-
-    Korábban létrehozta a HDInsight-fürtöket a helyi rendszergazda felhasználóval és a helyi SSH-felhasználóval. A helyi rendszergazda felhasználó elérheti az összes fájlt, mappát, táblát és oszlopot.  A Enterprise Security Package lehetővé teszi a szerepköralapú hozzáférés-vezérlést a HDInsight és a Active Directory integrálásával. Ide tartozik a helyszíni Active Directory, Azure Active Directory Domain Services. Vagy Active Directory a IaaS virtuális gépen. A fürt tartományi rendszergazdája engedélyezheti a felhasználóknak, hogy saját vállalati (tartományi) felhasználónevet és jelszót használjanak.
-
-    További információkért lásd:
-
-    - [Bevezetés a Apache Hadoop biztonságba a tartományhoz csatlakoztatott HDInsight-fürtökkel](./domain-joined/hdinsight-security-overview.md)
-    - [Azure-tartományhoz csatlakoztatott Apache Hadoop-fürtök tervezése a HDInsight-ben](./domain-joined/apache-domain-joined-architecture.md)
-    - [Tartományhoz csatlakoztatott tesztkörnyezet konfigurálása](./domain-joined/apache-domain-joined-configure.md)
-    - [Tartományhoz csatlakoztatott HDInsight-fürtök konfigurálása Azure Active Directory Domain Services használatával](./domain-joined/apache-domain-joined-configure-using-azure-adds.md)
-
-- Adathozzáférés engedélyezése
-
-  - Integráció az Apache Ranger-nal a kaptár, a Spark SQL és a fonalas várólisták engedélyezéséhez.
-  - Megadhatja a fájlok és mappák hozzáférés-vezérlését.
-
-    További információkért lásd:
-
-  - [Apache Hive házirendek konfigurálása a tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-run-hive.md)
-
-- Tekintse meg a naplókat a hozzáférések és a konfigurált szabályzatok figyeléséhez.
-
-### <a name="supported-cluster-types"></a>Támogatott fürtök típusai
-
-Jelenleg csak a következő típusú fürtök támogatják a Enterprise Security Package:
-
-- Hadoop (csak HDInsight 3,6)
-- Spark
-- Kafka
-- HBase
-- Interaktív lekérdezés
-
-### <a name="support-for-azure-data-lake-storage"></a>Azure Data Lake Storage támogatása
-
-A Enterprise Security Package az elsődleges tárolóként és a kiegészítő tárolóként is támogatja a Azure Data Lake Storage használatát.
-
-### <a name="pricing-and-service-level-agreement-sla"></a>Díjszabás és szolgáltatói szerződés (SLA)
-
-További információ a Enterprise Security Package díjszabásáról és SLA-ról: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
-
 ## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight-fürt verzióinak szolgáltatói szerződése
 
 A szolgáltatói szerződés (SLA) _támogatási ablakként_van meghatározva. A támogatási ablak az a időszak, amelyet `Microsoft Customer Service and Support`a HDInsight-verzió támogat. Ha a verziónak átadott _támogatás lejárati dátuma_van, a HDInsight-fürt a támogatási ablakon kívül esik. A HDInsight X verziójának támogatása (újabb X + 1 verzió használata esetén) a későbbi:  
@@ -166,3 +122,4 @@ További információ arról, hogy mely virtuálisgép-SKU-ket szeretné kijelö
 - [Fürt beállítása Apache Hadoop, Spark és más HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 - [Munkahelyi Apache Hadoop HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL](hdinsight-hadoop-windows-tools.md)
 - [Az Azure HDInsight-verziókhoz tartozó Hortonworks kibocsátási megjegyzések](./hortonworks-release-notes.md)
+- [Enterprise Security Package](./enterprise-security-package.md)

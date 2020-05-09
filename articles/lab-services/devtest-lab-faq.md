@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: de99e9b1e4adceaf08beaf8ad3b5ea114b31a586
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8697c7a82e271919f8d5aaa48160aa93c833809b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270783"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996897"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -209,6 +209,9 @@ Meglévő virtuális gépek másolása a DevTest Labs szolgáltatásba:
 ### <a name="can-i-attach-multiple-disks-to-my-vms"></a>Több lemezt is Csatolhatok a virtuális gépekhez?
 
 Igen, több lemezt is csatolhat a virtuális gépekhez.
+
+### <a name="are-gen-2-images-supported-by-devtest-labs"></a>A DevTest Labs támogatja a 2. generációs képeket?
+Nem. A DevTest Labs szolgáltatás nem támogatja a [2. generációs képeket](../virtual-machines/windows/generation-2.md). Ha az 1. és a 2. generációs verziók egyaránt elérhetők egy képhez, a DevTest Labs csak a rendszerkép 1. generációs verzióját jeleníti meg a virtuális gép létrehozásakor. A rendszerkép nem jelenik meg, ha csak a 2. generációs verziója érhető el. 
 
 ### <a name="if-i-want-to-use-a-windows-os-image-for-my-testing-do-i-have-to-purchase-an-msdn-subscription"></a>Ha Windows operációsrendszer-rendszerképet kívánok használni a teszteléshez, meg kell vásárolni egy MSDN-előfizetést?
 Ha a Windows ügyfél operációsrendszer-lemezképeit (Windows 7 vagy újabb verziót) szeretné használni a fejlesztéshez vagy a teszteléshez az Azure-ban, hajtsa végre a következő lépések egyikét:

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 77af321b74a47306a7202c1fddf6e81edc0ee02a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926068"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82993964"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
 
@@ -195,7 +195,6 @@ A következő táblázat a blob-verziók törléséhez szükséges engedélyeket
 
 A blob verziószámozása a következő régiókban érhető el előzetes verzióban:
 
-- Dél-Franciaország
 - Közép-Franciaország
 - Kelet-Kanada
 - Közép-Kanada

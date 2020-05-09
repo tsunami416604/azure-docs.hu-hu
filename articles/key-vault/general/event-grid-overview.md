@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cc12cc9a4828404e960aee239bd388af5b1ea3b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 854a489f6381514f80f16665f89042a0e8ed7470
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431903"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82995761"
 ---
 # <a name="monitoring-key-vault-with-azure-event-grid-preview"></a>Key Vault figyelése Azure Event Grid (előzetes verzió)
 
@@ -30,8 +30,6 @@ További információ: [Key Vault esemény sémája](../../event-grid/event-sche
 
 > [!WARNING]
 > Az értesítési események csak a titkok, kulcsok és tanúsítványok új verzióin aktiválódnak, és az értesítések fogadásához először elő kell fizetnie az eseményre a kulcstartóban.
-> 
-> A tanúsítványokra vonatkozó értesítési eseményeket csak akkor kapja meg, ha a tanúsítvány automatikusan megújul a tanúsítványhoz megadott szabályzatnak megfelelően.
 
 ## <a name="practices-for-consuming-events"></a>Az események felhasználásának eljárásai
 
