@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2019
+ms.date: 05/07/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f7be4d01dd930e9ff421b2a163f1648f1793da9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea8c40faad4ee709ae98f868e36fd42e46501bea
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230911"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927037"
 ---
 # <a name="azure-ad-b2c-session"></a>Azure AD B2C-munkamenet
 
@@ -99,22 +99,20 @@ Kijelentkezési kérelem esetén Azure AD B2C:
    - SAML – ha az Identity Provider metaadatai tartalmazzák a `SingleLogoutService` helyet.
 1. Opcionálisan kijelentkezhet más alkalmazásokból is. További információ: az [egyszeri kijelentkezési](#single-sign-out) szakasz.
 
-> [!NOTE]
-> A kijelentkezési szolgáltatás törli a felhasználó egyszeri bejelentkezési állapotát Azure AD B2C, de előfordulhat, hogy nem írja alá a felhasználót a közösségi identitás-szolgáltatói munkamenetből. Ha a felhasználó ugyanazt az identitás-szolgáltatót választja egy későbbi bejelentkezés során, akkor a hitelesítő adatok megadása nélkül is újrahitelesíthetők. Ha a felhasználó ki szeretne jelentkezni az alkalmazásból, nem feltétlenül jelenti azt, hogy ki szeretné jelentkezni a Facebook-fiókjából. Ha azonban helyi fiókokat használ, a felhasználó munkamenete megfelelően végződik.
+A kijelentkezési szolgáltatás törli a felhasználó egyszeri bejelentkezési állapotát Azure AD B2C, de előfordulhat, hogy nem írja alá a felhasználót a közösségi identitás-szolgáltatói munkamenetből. Ha a felhasználó ugyanazt az identitás-szolgáltatót választja egy későbbi bejelentkezés során, akkor a hitelesítő adatok megadása nélkül is újrahitelesíthetők. Ha a felhasználó ki szeretne jelentkezni az alkalmazásból, nem feltétlenül jelenti azt, hogy ki szeretné jelentkezni a Facebook-fiókjából. Ha azonban helyi fiókokat használ, a felhasználó munkamenete megfelelően végződik.
 
-### <a name="single-sign-out"></a>Egyszeri kijelentkezés
+### <a name="single-sign-out"></a>Egyszeri kijelentkezés 
+
+
+> [!NOTE]
+> Ez a szolgáltatás [Egyéni szabályzatokra](custom-policy-overview.md)korlátozódik.
 
 Amikor átirányítja a felhasználót a Azure AD B2C kijelentkezési végpontra (a OAuth2 és az SAML protokollok esetében egyaránt), Azure AD B2C törli a felhasználó munkamenetét a böngészőből. Előfordulhat azonban, hogy a felhasználó továbbra is be van jelentkezve más alkalmazásokba, amelyek az Azure AD B2C-t használják a hitelesítéshez. Ha engedélyezni szeretné, hogy az alkalmazások egyidejűleg írják alá a felhasználót, Azure AD B2C egy HTTP GET kérelmet küld az `LogoutUrl` összes olyan alkalmazás regisztrálásához, amelyhez a felhasználó jelenleg be van jelentkezve.
 
-Az alkalmazásoknak válaszolnia kell erre a kérelemre a felhasználót azonosító munkamenetek törlésével `200` és a válasz visszaadásával. Ha az alkalmazásban szeretné támogatni az egyszeri kijelentkezést, az alkalmazás kódjában végre `LogoutUrl` kell hajtania egy alkalmazást. A `LogoutUrl` Azure Portal a következőt állíthatja be:
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com).
-1. Válassza ki az aktív B2C-címtárat a lap jobb felső sarkában található fiókra kattintva.
-1. A bal oldali navigációs panelen válassza a **Azure ad B2C**lehetőséget, válassza a **Alkalmazásregisztrációk**elemet, majd válassza ki az alkalmazást.
-1. Válassza a **Beállítások**, majd a **Tulajdonságok**elemet, majd keresse meg a **kijelentkezési URL-címet** szövegmezőt. 
-
+Az alkalmazásoknak válaszolnia kell erre a kérelemre a felhasználót azonosító munkamenetek törlésével `200` és a válasz visszaadásával. Ha az alkalmazásban szeretné támogatni az egyszeri kijelentkezést, az alkalmazás kódjában végre `LogoutUrl` kell hajtania egy alkalmazást. 
 
 ## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését a felhasználói folyamatokban](session-behavior.md).
-- Ismerje meg, hogyan [konfigurálhatja a munkamenet-viselkedést az egyéni házirendben](custom-policy-manage-sso-and-token-config.md#session-behavior-and-sso).
+- Megtudhatja, hogyan [konfigurálhatja a munkamenet viselkedését az egyéni házirendekben](session-behavior-custom-policy.md).

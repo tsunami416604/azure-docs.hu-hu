@@ -1,18 +1,18 @@
 ---
 title: Az Azure Blueprints áttekintése
 description: Ismerje meg, hogyan hozhat létre, határozhat meg és helyezhet üzembe összetevőket az Azure-környezetben az Azure BluePrints szolgáltatásban.
-ms.date: 11/21/2019
+ms.date: 05/06/2020
 ms.topic: overview
-ms.openlocfilehash: 4787f2d559daffcbf5d4057ac381f0f7e1ae0c57
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 68baeb8030caa17a9880cb0846688f1db6a15c87
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80677417"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864504"
 ---
 # <a name="what-is-azure-blueprints"></a>Mi az az Azure Blueprints?
 
-Hasonlóan ahhoz, ahogyan a tervekkel a mérnökök és az építészek felvázolják egy projekt tervezési paramétereit, az Azure Blueprints segítségével a felhőmérnökök és központi informatikai csoportok meghatározhatnak egy megismételhető Azure-erőforráskészletet, amely megvalósítja és betartja a vállalat szabványait, mintázatait és követelményeit. Az Azure Blueprints segítségével a fejlesztőcsapatok gyorsan építhetnek ki és helyezhetnek üzembe új környezeteket, annak biztos tudatában, hogy megfelelnek a vállalati követelményeknek, és olyan beépített összetevőkkel (például hálózatkezeléssel), amelyek révén az üzembe helyezés és a szolgáltatások nyújtása gyorsabb lehet.
+Hasonlóan ahhoz, ahogyan a tervekkel a mérnökök és az építészek felvázolják egy projekt tervezési paramétereit, az Azure Blueprints segítségével a felhőmérnökök és központi informatikai csoportok meghatározhatnak egy megismételhető Azure-erőforráskészletet, amely megvalósítja és betartja a vállalat szabványait, mintázatait és követelményeit. Az Azure-tervezetek lehetővé teszik a fejlesztői csapatok számára, hogy gyorsan építsenek és hozzanak létre olyan új környezeteket, amelyek megbízhatósági kapcsolatban állnak a szervezeti megfelelőségben a beépített összetevők, például a hálózatkezelés, a fejlesztés és a teljesítés felgyorsításához.
 
 A tervekkel deklaratív módon, összehangoltan helyezhetők üzembe különböző erőforrássablonok és egyéb tervelemek, például a következők:
 
@@ -21,12 +21,11 @@ A tervekkel deklaratív módon, összehangoltan helyezhetők üzembe különböz
 - Azure Resource Manager-sablonok
 - Erőforráscsoportok
 
-Az Azure Blueprints szolgáltatást a globális terjesztésű [Azure Cosmos DB](../../cosmos-db/introduction.md) támogatja.
-A tervobjektumok több Azure-régióba vannak replikálva. Ez a replikálás alacsony késést, magas rendelkezésre állást és konzisztens hozzáférést biztosít a terv objektumaihoz, függetlenül attól, hogy az Azure-tervrajzok mely régiókban helyezik üzembe az erőforrásokat.
+Az Azure Blueprints szolgáltatást a globális terjesztésű [Azure Cosmos DB](../../cosmos-db/introduction.md) támogatja. A tervobjektumok több Azure-régióba vannak replikálva. Ez a replikálás alacsony késést, magas rendelkezésre állást és konzisztens hozzáférést biztosít a terv objektumaihoz, függetlenül attól, hogy az Azure-tervrajzok mely régiókban helyezik üzembe az erőforrásokat.
 
 ## <a name="how-its-different-from-resource-manager-templates"></a>Miben különbözik ez a Resource Manager-sablonoktól?
 
-A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoportok, szabályzatok, szerepkör-hozzárendelések és Resource Manager-sablonok üzembe helyezését is magában foglalja. A tervek olyan csomagok, amelyekben ezen _tervelemek_ mindegyike megtalálható. A csomagok összeállíthatók, és az egyes verzióik kezelhetőek többek között egy CI/CD-folyamaton keresztül. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
+A szolgáltatás úgy van megtervezve, hogy segítsen a _környezet beállításában_. Ez a beállítás gyakran erőforráscsoportok, szabályzatok, szerepkör-hozzárendelések és Resource Manager-sablonok üzembe helyezését is magában foglalja. A terv egy olyan csomag, amely egyesíti az egyes _összetevők típusait_ , és lehetővé teszi a csomag összeállítását és verzióját, beleértve a CI/CD-folyamatokat. Végül minden csomag egy előfizetéshez van rendelve egyetlen műveletben, amely felügyelhető és nyomon követhető.
 
 Szinte mindent, amit a üzembe helyezéshez szeretne foglalni az Azure-tervekben, Resource Manager-sablonnal is elvégezhető. Azonban a Resource Manager-sablonok olyan dokumentumok, amelyek nem léteznek natív módon az Azure-ban – minden sablon tárolása helyileg vagy a verziókövetési rendszerben történik. A sablonok felhasználhatók egy vagy több Azure-erőforrás üzembe helyezéséhez, azonban az erőforrások üzembe helyezése után a sablonnal való aktív kapcsolat elveszik.
 
@@ -124,10 +123,10 @@ Bizonyos mezőkhöz a következő korlátozások vonatkoznak:
 
 |Objektum|Mező|Engedélyezett karakterek|Legfeljebb Hossz|
 |-|-|-|-|
-|Terv|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
+|Terv|Name|betűk, számok, kötőjelek és időszakok|48|
 |Terv|Verzió|betűk, számok, kötőjelek és időszakok|20|
-|Tervek hozzárendelése|Name (Név)|betűk, számok, kötőjelek és időszakok|90|
-|Tervrajz-összetevő|Name (Név)|betűk, számok, kötőjelek és időszakok|48|
+|Tervek hozzárendelése|Name|betűk, számok, kötőjelek és időszakok|90|
+|Tervrajz-összetevő|Name|betűk, számok, kötőjelek és időszakok|48|
 
 ## <a name="video-overview"></a>Videó – áttekintés
 

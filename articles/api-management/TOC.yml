@@ -53,6 +53,8 @@
           href: api-management-policies.md
     - name: Biztonság
       items:
+        - name: Biztonsági alapkonfiguráció
+          href: security-baseline.md
         - name: Beépített biztonsági vezérlők
           href: api-management-security-controls.md
     - name: Előfizetések

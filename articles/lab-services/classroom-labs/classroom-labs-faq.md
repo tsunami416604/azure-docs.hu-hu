@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691820"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983907"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
 Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
@@ -67,7 +67,7 @@ Nem. a tantermi laborban nem lehet további lemezeket csatlakoztatni egy virtuá
 Akár 400 felhasználót is hozzáadhat egy osztályterem laborhoz. 
 
 ## <a name="blog-post"></a>Blogbejegyzés
-Fizessen elő a [Azure Lab Services blogra](https://azure.microsoft.com/blog/tag/azure-lab-services/).
+Fizessen elő a [Azure Lab Services blogra](https://aka.ms/azlabs-blog).
 
 ## <a name="update-notifications"></a>Frissítési értesítések
 Fizessen elő a [labor Services frissítéseire](https://azure.microsoft.com/updates/?product=lab-services) , és tájékozódjon a labor Services új funkcióiról.

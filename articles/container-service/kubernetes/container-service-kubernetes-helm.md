@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/10/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: a32c9fab3877a693d2df26571b9fae4aa7b4380c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a3423b908ac5e089faa30b19914d3b74ae9a547
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271084"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735419"
 ---
 # <a name="deprecated-use-helm-to-deploy-containers-on-a-kubernetes-cluster"></a>ELAVULT Tárolók üzembe helyezése Kubernetes-fürtön a Helm használatával
 
@@ -34,7 +34,7 @@ A Helm két összetevőből áll:
 
 * [Telepítés és konfigurálás `kubectl` ](../container-service-connect.md) helyi számítógépen
 
-* A [Helm telepítése](https://github.com/kubernetes/helm/blob/master/docs/install.md) helyi számítógépre
+* A [Helm telepítése](https://helm.sh/docs/intro/quickstart/) helyi számítógépre
 
 ## <a name="helm-basics"></a>A Helm alapjai 
 
@@ -149,5 +149,5 @@ Mostantól szabványos SQL-parancsokkal is létrehozhat adatbázisokat, tábláz
  
 ## <a name="next-steps"></a>További lépések
 
-* A Kubernetes-diagramok kezelésével kapcsolatos további információkért tekintse meg a [Helm dokumentációját](https://github.com/kubernetes/helm/blob/master/docs/index.md). 
+* A Kubernetes-diagramok kezelésével kapcsolatos további információkért tekintse meg a [Helm dokumentációját](https://helm.sh/docs/). 
 
