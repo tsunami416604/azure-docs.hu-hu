@@ -3,12 +3,12 @@ title: Az alkalmazás rendelkezésre állásának javítása Azure Advisor
 description: Az Azure-beli üzemelő példányok magas rendelkezésre állásának javításához használja a Azure Advisor.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 997681ed62fa9985e3122ece22565dbae0e65b53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443108"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82788025"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Az alkalmazás rendelkezésre állásának javítása Azure Advisor
 
@@ -28,6 +28,10 @@ Az alkalmazás redundanciájának garantálása érdekében javasoljuk, hogy a v
 ## <a name="use-managed-disks-to-improve-data-reliability"></a>Felügyelt lemezek használata az adatok megbízhatóságának javítása érdekében
 
 Azok a virtuális gépek, amelyek olyan rendelkezésre állási csoportban találhatók, amelyekben a Storage-fiókokat vagy a tárolási méretezési egységeket osztják meg, nem rugalmasak egyetlen tárolási skálázási egység meghibásodása esetén a leállás során. Az Advisor azonosítja ezeket a rendelkezésre állási csoportokat, és javaslatot tesz az Azure Managed Disks-ra való áttérésre. Ezzel biztosíthatja, hogy a rendelkezésre állási csoport különböző virtuális gépei lemezei elég elszigeteltek legyenek, hogy elkerülje az adott meghibásodási pontot. 
+
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Ismert probléma az ellenőrzési pont hálózati virtuális berendezésének rendszerkép-verziójával
+
+Az Advisor képes azonosítani, hogy a virtuális gép futtathatja-e a következő, a platform karbantartási művelete esetén elveszített, hálózati kapcsolattal rendelkező ellenőrzési pont lemezképét. Az Advisor javaslata segítséget nyújt a probléma megoldására szolgáló rendszerkép újabb verziójára való frissítéshez. Ez biztosítja az üzletmenet folytonosságát a jobb hálózati kapcsolaton keresztül.
 
 ## <a name="ensure-application-gateway-fault-tolerance"></a>Az Application Gateway hibatűrésének biztosítása
 
@@ -83,7 +87,7 @@ A Azure Advisor Azure Cosmos DB azonosítja a .NET SDK régi verzióit használ�
 
 ## <a name="upgrade-your-azure-cosmos-db-java-sdk-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Java SDK frissítése a legújabb verzióra a Mavenről
 
-A Azure Advisor Azure Cosmos DB azonosítja a Java SDK régi verzióit használó fiókokat, és javasolja, hogy a legújabb verzióra frissítsen a Maven legújabb verziójára, a teljesítmény fejlesztésére és az új funkciókra. [További információ a Cosmos DB Java SDK-ról](https://aka.ms/cosmosdb/sql-api-sdk-dotnet)
+A Azure Advisor Azure Cosmos DB azonosítja a Java SDK régi verzióit használó fiókokat, és javasolja, hogy a legújabb verzióra frissítsen a Maven legújabb verziójára, a teljesítmény fejlesztésére és az új funkciókra. [További információ a Cosmos DB Java SDK-ról](https://aka.ms/cosmosdb/sql-api-sdk-async-java)
 
 ## <a name="upgrade-your-azure-cosmos-db-spark-connector-to-the-latest-version-from-maven"></a>Az Azure Cosmos DB Spark-összekötő frissítése a legújabb verzióra a Mavenről
 

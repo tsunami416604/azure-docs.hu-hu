@@ -11,6 +11,9 @@
   items:
     - name: Azure-beli virtuális gép replikálása másik régióba
       href: azure-to-azure-quickstart.md
+    - name: Tároló létrehozása – ARM-sablon
+      displayName: Resource Manager
+      href: quickstart-create-vault-template.md
 - name: Oktatóanyagok
   items:
     - name: Azure-beli virtuális gépek vészhelyreállítása az Azure-ba
