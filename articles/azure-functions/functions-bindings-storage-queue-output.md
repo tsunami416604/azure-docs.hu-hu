@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 76af5f398edd736874fa79095f2e80c02298eac0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd8442c00e2b7685b0dc1a7bd5150c87f2c27b7c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277335"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891456"
 ---
 # <a name="azure-queue-storage-output-bindings-for-azure-functions"></a>Az Azure üzenetsor-tároló kimeneti kötései Azure Functions
 
@@ -123,7 +123,7 @@ Itt látható a *function. JSON* fájl:
     {
       "type": "queue",
       "direction": "out",
-      "name": "$return",
+      "name": "myQueueItem",
       "queueName": "outqueue",
       "connection": "MyStorageConnectionAppSetting"
     }
@@ -137,7 +137,8 @@ Itt látható a JavaScript-kód:
 
 ```javascript
 module.exports = function (context, input) {
-    context.done(null, input.body);
+    context.bindings.myQueueItem = input.body;
+    context.done();
 };
 ```
 
@@ -235,7 +236,7 @@ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-b
 
 ## <a name="attributes-and-annotations"></a>Attribútumok és jegyzetek
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 A [C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues/QueueAttribute.cs).
 
@@ -310,7 +311,7 @@ A `QueueOutput` jegyzethez társított paraméter [OutputBinding\<T\> ](https://
 
 ---
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 Az alábbi táblázat a *function. JSON* fájlban és az `Queue` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
 
@@ -326,7 +327,7 @@ Az alábbi táblázat a *function. JSON* fájlban és az `Queue` attribútumban 
 
 ## <a name="usage"></a>Használat
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName`) használatával. `out` Paraméter helyett a metódus visszatérési típusát is használhatja, és `T` a következő típusok bármelyike lehet:
 

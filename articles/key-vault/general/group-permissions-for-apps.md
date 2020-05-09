@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 008058e42dfeb84cb2812ac4e8378cb5a8b5913a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
-ms.translationtype: MT
+ms.openlocfilehash: db6b8b2ff199b7b26d0c641ded31a5c1417468b9
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422598"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901260"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 
@@ -60,10 +60,10 @@ Az alkalmazások objectId a társított egyszerű szolgáltatásnak felel meg. A
 
 Az alkalmazások objectId kétféleképpen szerezhetők be.  Az első az, hogy regisztrálja az alkalmazást Azure Active Directory. Ehhez kövesse az [alkalmazás regisztrálása a Microsoft Identity platformon](../../active-directory/develop/quickstart-register-app.md)című útmutató lépéseit. A regisztráció befejezésekor a objectID "Application (ügyfél-) AZONOSÍTÓként" jelenik meg.
 
-A második egy egyszerű szolgáltatásnév létrehozása egy terminál-ablakban. Az Azure CLI-vel használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot.
+A második egy egyszerű szolgáltatásnév létrehozása egy terminál-ablakban. Az Azure CLI-vel használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot, és adjon meg egy egyedi szolgáltatásnév nevet az-n jelzőhöz a következő formátumban: "http://<My-Unique-Service-elvi-Name>".
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://mySP"
+az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
 A objectId a kimenetben jelenik meg `clientID`.
@@ -72,7 +72,7 @@ A Azure PowerShell használatával használja a [New-AzADServicePrincipal](/powe
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName mySP
+New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
 A objectId a kimenetben `Id` (nem `ApplicationId`) jelenik meg.

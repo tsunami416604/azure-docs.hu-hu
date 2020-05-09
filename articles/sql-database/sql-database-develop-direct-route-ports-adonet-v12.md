@@ -11,12 +11,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: sstein
 ms.date: 04/03/2019
-ms.openlocfilehash: c0012b61cf43d01afd5e7f5f52948310b5eb8420
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34e9b40b0b6989edacd72eb23d357e2a84b6f8d8
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73828061"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891078"
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>Az 1433-as porton túli portok az ADO.NET 4.5 szoftverrel
 
@@ -72,9 +72,9 @@ Ez a szakasz a termék verziójára hivatkozó monikereket pontosítja. Emellett
 
 ## <a name="related-links"></a>Kapcsolódó hivatkozások
 
-* A ADO.NET 4,6 2015. július 20-án jelent meg. A .NET-csapatról szóló blogbejegyzés [itt](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-net-framework-4-6.aspx)érhető el.
-* A ADO.NET 4,5-es verziójának kiadása: 2012. augusztus 15. A .NET-csapatról szóló blogbejegyzés [itt](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code.aspx)érhető el.
-  * Az ADO.NET 4.5.1-re vonatkozó blogbejegyzés [itt](https://blogs.msdn.com/b/dotnet/archive/20../../announcing-the-net-framework-4-5-1-preview.aspx)érhető el.
+* A ADO.NET 4,6 2015. július 20-án jelent meg. A .NET-csapatról szóló blogbejegyzés [itt](https://devblogs.microsoft.com/dotnet/announcing-net-framework-4-6/)érhető el.
+* A ADO.NET 4,5-es verziójának kiadása: 2012. augusztus 15. A .NET-csapatról szóló blogbejegyzés [itt](https://devblogs.microsoft.com/dotnet/announcing-the-release-of-net-framework-4-5-rtm-product-and-source-code/)érhető el.
+  * Az ADO.NET 4.5.1-re vonatkozó blogbejegyzés [itt](https://devblogs.microsoft.com/dotnet/announcing-the-net-framework-4-5-1-preview/)érhető el.
 
 * Microsoft® ODBC-illesztő 17 SQL Server®-Windows, Linux, & macOShttps://www.microsoft.com/download/details.aspx?id=56567
 

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: absha
-ms.openlocfilehash: ebbdda39f019f374f8e5abe951d0180c0dd453f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457875"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889613"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -117,7 +117,7 @@ Application Gateway esetén a következő metrikák érhetők el:
 
    Application Gateway által visszaadott HTTP-válasz állapota. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
 
-- **Átviteli sebesség**
+- **Teljesítmény**
 
    A Application Gateway által kiszolgált bájtok másodpercenkénti száma
 
@@ -168,7 +168,7 @@ Application Gateway esetén a következő metrikák érhetők el:
 
   Application Gateway által visszaadott HTTP-válasz állapota. A válasz állapotkód-eloszlása tovább kategorizálható a válaszok megjelenítéséhez a 2xx, a 3xx, a 4xx és a 5xx kategóriákban.
 
-- **Átviteli sebesség**
+- **Teljesítmény**
 
   A Application Gateway által kiszolgált bájtok másodpercenkénti száma
 
@@ -237,7 +237,7 @@ Ha többet szeretne megtudni a webhookokról, és arról, hogyan használhatja �
 ## <a name="next-steps"></a>További lépések
 
 * Számlálók és Eseménynaplók megjelenítése [Azure monitor naplók](../azure-monitor/insights/azure-networking-analytics.md)használatával.
-* [Jelenítse meg az Azure-beli tevékenység naplóját Power bi](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) blogbejegyzésben.
+* [Jelenítse meg az Azure-beli tevékenység naplóját Power bi](https://powerbi.microsoft.com/blog/monitor-azure-audit-logs-with-power-bi/) blogbejegyzésben.
 * [Megtekintheti és elemezheti az Azure-beli tevékenységek naplóit Power bi és további](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) blogbejegyzésekben.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
