@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások megtagadási hozzárendeléseinek listázása a Azure Portal
-description: Megtudhatja, hogyan listázhatja azokat a felhasználókat, csoportokat, egyszerű szolgáltatásokat és felügyelt identitásokat, amelyek a Azure Portal használatával megtagadták bizonyos Azure-erőforrásokhoz való hozzáférést.
+title: Azure-beli megtagadási hozzárendelések listázása a Azure Portal-Azure RBAC használatával
+description: Megtudhatja, hogyan listázhatja azokat a felhasználókat, csoportokat, egyszerű szolgáltatásokat és felügyelt identitásokat, amelyeket a Azure Portal és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával megtagadott bizonyos Azure-erőforrás-műveletekhez.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,25 +14,25 @@ ms.workload: identity
 ms.date: 06/10/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4db76e5c6191457346ca1f95678cf73843334d3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 97c03d417f8bf123de3332142344f292de00e3b2
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77137424"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734110"
 ---
-# <a name="list-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Azure-erőforrások megtagadási hozzárendeléseinek listázása a Azure Portal használatával
+# <a name="list-azure-deny-assignments-using-the-azure-portal"></a>Azure-beli megtagadási hozzárendelések listázása a Azure Portal használatával
 
-A [hozzárendelések megtagadása](deny-assignments.md) esetén a felhasználók bizonyos Azure-erőforrás-műveleteket hajtanak végre, még akkor is, ha egy szerepkör-hozzárendelés hozzáférést biztosít Ez a cikk bemutatja, hogyan listázhatja a megtagadási hozzárendeléseket a Azure Portal használatával.
+Az [Azure-megtagadási hozzárendelések](deny-assignments.md) letiltják a felhasználók számára bizonyos Azure-erőforrás-műveletek végrehajtását, még akkor is, ha egy szerepkör-hozzárendelés Ez a cikk bemutatja, hogyan listázhatja a megtagadási hozzárendeléseket a Azure Portal használatával.
 
 > [!NOTE]
-> Nem hozhat létre közvetlenül saját megtagadási hozzárendeléseket. További információ a megtagadási hozzárendelések létrehozásáról: a [hozzárendelések megtagadása](deny-assignments.md).
+> Nem hozhat létre közvetlenül saját megtagadási hozzárendeléseket. További információ a megtagadási hozzárendelések létrehozásáról: [Azure megtagadási hozzárendelések](deny-assignments.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A megtagadási hozzárendeléssel kapcsolatos információk lekéréséhez a következőket kell tennie:
 
-- `Microsoft.Authorization/denyAssignments/read`az [Azure-erőforrások legtöbb beépített szerepkörének](built-in-roles.md)részét képező engedély.
+- `Microsoft.Authorization/denyAssignments/read`a legtöbb [Azure beépített szerepkör](built-in-roles.md)részét képező engedély.
 
 ## <a name="list-deny-assignments"></a>Megtagadás-hozzárendelések felsorolása
 
@@ -109,5 +109,5 @@ A megtagadási hozzárendelés további részleteinek listázásához kövesse a
 
 ## <a name="next-steps"></a>További lépések
 
-* [Az Azure-erőforrások megtagadási hozzárendeléseinek megismerése](deny-assignments.md)
-* [Azure-erőforrások megtagadási hozzárendeléseinek listázása Azure PowerShell használatával](deny-assignments-powershell.md)
+* [Az Azure deny-hozzárendelések ismertetése](deny-assignments.md)
+* [Azure-beli megtagadási hozzárendelések listázása Azure PowerShell használatával](deny-assignments-powershell.md)

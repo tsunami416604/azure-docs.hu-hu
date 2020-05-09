@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 330363a78aa9b642f4794cee40bbf040d3484b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 09468272397925d9afd1d3014f4fcc1d6a222198
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80653718"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611381"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből
 
@@ -66,9 +67,9 @@ Ha az Azure Multi-Factor Authentication hálózati házirend-bővítményével k
 
 Időnként előfordulhat, hogy a felhasználók Multi-Factor Authentication üzeneteket kapnak, mert a hitelesítési kérelem sikertelen volt. Ezek nem hibák a konfiguráció termékében, de szándékos figyelmeztetések, amelyek elmagyarázzák a hitelesítési kérelem elutasításának okát.
 
-| Hibakód | Hibaüzenet | Javasolt lépések | 
+| Hibakód | Hibaüzenet | Javasolt lépések |
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Helytelen a kód entered\OATH kódja | A felhasználó érvénytelen kódot adott meg. Próbálkozzon újra egy új kód igénylésével vagy a bejelentkezés újbóli megkeresésével. | 
+| **OathCodeIncorrect** | Helytelen a kód entered\OATH kódja | A felhasználó érvénytelen kódot adott meg. Próbálkozzon újra egy új kód igénylésével vagy a bejelentkezés újbóli megkeresésével. |
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Elérte az újrapróbálkozások maximális megengedett kódját | A felhasználó túl sokszor nem tudta megerősíteni az ellenőrzési feladatot. A beállításoktól függően előfordulhat, hogy a rendszergazdának most fel kell oldania a tiltást.  |
 | **SMSAuthFailedWrongCodeEntered** | Helytelen kód van megadva/szöveges üzenet, OTP helytelen | A felhasználó érvénytelen kódot adott meg. Próbálkozzon újra egy új kód igénylésével vagy a bejelentkezés újbóli megkeresésével. |
 
