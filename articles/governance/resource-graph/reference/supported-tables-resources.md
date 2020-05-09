@@ -1,14 +1,14 @@
 ---
 title: Támogatott Resource Manager-erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Resource Manager-erőforrástípusok listáját.
-ms.date: 04/24/2020
+ms.date: 04/29/2020
 ms.topic: reference
-ms.openlocfilehash: 7092a6dccc2870c7fd7b6dc6feb3af16f0fd3b7a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141899"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594253"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -62,6 +62,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. appconfiguration/configurationstores
 - Microsoft. appplatform/Spring
 - Microsoft. Archive/Collections
+- Microsoft. igazolás/attestationproviders
 - Microsoft. Automation/automationaccounts
 - Microsoft. Automation/automationaccounts/konfigurációk
 - Microsoft. Automation/automationaccounts/runbookok
@@ -75,6 +76,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. azuredata/sqlinstances
 - Microsoft. azuredata/sqlserverregistrations
 - Microsoft. azurestack/regisztrációk
+- Microsoft. azurestackhci/fürtök
 - Microsoft. baremetal/consoleconnections
 - Microsoft. baremetal/crayservers
 - Microsoft. baremetal/monitoringservers
@@ -146,6 +148,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. databricks/munkaterületek
 - Microsoft. datacatalog/katalógusok
 - Microsoft. datacatalog/datacatalogs
+- Microsoft. datadoggal/figyelők
 - Microsoft. DataFactory/datafactories
 - Microsoft. DataFactory/gyárak
 - Microsoft. datalakeanalytics/fiókok

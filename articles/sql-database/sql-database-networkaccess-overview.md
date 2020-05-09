@@ -1,10 +1,10 @@
 ---
 title: Hálózati hozzáférés-vezérlés
-description: Az Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlésének áttekintése a hozzáférés kezeléséhez és egy vagy készletezett adatbázis konfigurálásához.
+description: A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlésének áttekintése a hozzáférések kezeléséhez és egy vagy készletezett adatbázis konfigurálásához.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 8b4ee679b21d904f997f727f5f26275c86acc9c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fdeb8ee3fbb01ea007205e02eb247925fb3baea1
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414408"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629575"
 ---
-# <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>A Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlése
+# <a name="azure-sql-database-and-azure-synapse-analytics-network-access-controls"></a>A Azure SQL Database és az Azure szinapszis Analytics hálózati hozzáférés-vezérlés
 
 > [!NOTE]
-> Ez a cikk az Azure SQL Serverre vonatkozik, valamint az Azure SQL Serveren létrehozott SQL Database és SQL Data Warehouse adatbázisokra is. Az egyszerűség kedvéért a jelen témakörben az SQL Database és az SQL Data Warehouse megnevezése egyaránt SQL Database.
+> Ez a cikk az Azure SQL Serverre, valamint az Azure SQL Serveren létrehozott SQL Database és Azure szinapszis Analytics-adatbázisokra vonatkozik. Az egyszerűség kedvéért a rendszer a SQL Database és az Azure szinapszis Analytics szolgáltatásra hivatkozó SQL Database használatát is használja.
 
 > [!IMPORTANT]
 > Ez a cikk *nem* vonatkozik **Azure SQL Database felügyelt példányra**. a hálózati konfigurációval kapcsolatos további információkért lásd: [Csatlakozás felügyelt példányhoz](sql-database-managed-instance-connect-app.md) .
@@ -56,7 +56,7 @@ Ezt a beállítást a tűzfal panelen is módosíthatja az Azure-SQL Server lét
 
 Ha az Azure SQL Server- **ra** van beállítva, az Azure határán belüli összes erőforrásról folytatott kommunikációt tesz lehetővé, amely esetleg nem része az előfizetésnek.
 
-Sok esetben a **on** beállítás nagyobb mértékben megengedhető, mint amit a legtöbb ügyfél szeretne. Előfordulhat, hogy ezt a beállítást ki szeretné **kapcsolni** , és lecseréli az IP-tűzfalszabályok szigorúbb szabályaira vagy Virtual Network tűzfalszabályok megadására. Ez hatással van az Azure-beli virtuális gépeken futó alábbi szolgáltatásokra, amelyek nem részei a VNet, így az SQL Database-hez egy Azure IP-címen keresztül csatlakozhatnak.
+Sok esetben a **on** beállítás nagyobb mértékben megengedhető, mint amit a legtöbb ügyfél szeretne. Előfordulhat, hogy ezt a beállítást ki szeretné **kapcsolni** , és lecseréli az IP-tűzfalszabályok szigorúbb szabályaira vagy Virtual Network tűzfalszabályok megadására. Ez hatással van az Azure-beli virtuális gépeken futó alábbi szolgáltatásokra, amelyek nem részei a VNet, ezért az Azure IP-címen keresztül csatlakoznak SQL Databasehoz.
 
 ### <a name="import-export-service"></a>Exportálási szolgáltatás importálása
 Az importálási exportálási szolgáltatás nem működik, ha az **Azure-szolgáltatásokhoz való hozzáférés engedélyezése** beállítás **ki van kapcsolva**. A probléma megoldásához azonban a [sqlpackage. exe fájlt manuálisan is futtathatja egy Azure-beli virtuális](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.

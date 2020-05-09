@@ -1,22 +1,17 @@
 ---
-title: 'Szolgáltatások közötti hitelesítés: Azure Data Lake Storage Gen1 Azure Active Directory használatával | Microsoft Docs'
-description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 használatával Azure Active Directory
-services: data-lake-store
-documentationcenter: ''
+title: Szolgáltatások közötti hitelesítés – Data Lake Storage Gen1 – Azure
+description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 Azure Active Directory használatával.
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 3fbf2f2540e8f1ca84aad2759b9a1fc790e4065d
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 74ad40eb7f7483bb010cf8eb002776893c50a256
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "66241372"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688185"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával Azure Active Directory
 > [!div class="op_single_selector"]
@@ -73,7 +68,7 @@ Ha programozott módon jelentkezik be, szüksége lesz az alkalmazás AZONOSÍT�
     ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-authenticate-using-active-directory/adl.acl.4.png "Engedélyek kiosztása a csoportnak")
    
     A Data Lake Storage Gen1 engedélyeivel és az alapértelmezett/hozzáférési ACL-ekkel kapcsolatos további információkért lásd: [Access Control Data Lake Storage Gen1](data-lake-store-access-control.md).
-7. Az **Egyéni hozzáférés hozzáadása** panelen kattintson az **OK**gombra. A társított engedélyekkel rendelkező újonnan hozzáadott csoport megjelenik a **hozzáférés** panelen.
+7. Az **Egyéni hozzáférés hozzáadása** panelen kattintson az **OK**gombra. A társított engedélyekkel rendelkező újonnan hozzáadott csoportok a **hozzáférés** panelen jelennek meg.
    
     ![Engedélyek kiosztása a csoportnak](./media/data-lake-store-authenticate-using-active-directory/adl.acl.5.png "Engedélyek kiosztása a csoportnak")
 

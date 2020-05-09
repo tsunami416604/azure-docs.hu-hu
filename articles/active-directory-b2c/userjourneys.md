@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/04/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d73a1a3ce23817d9d6f742a4a8c730afb58ee0c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 189343888d2856a6945723c030485e58394c912f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78227006"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82559603"
 ---
 # <a name="userjourneys"></a>UserJourneys
 
@@ -64,9 +64,9 @@ A **OrchestrationStep** elem a következő attribútumokat tartalmazza:
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
 | `Order` | Igen | A folyamat lépéseinek sorrendje. |
-| `Type` | Igen | A előkészítési lépés típusa. Lehetséges értékek: <ul><li>**ClaimsProviderSelection** – azt jelzi, hogy a előkészítési lépés különböző jogcím-szolgáltatókat mutat be a felhasználónak az egyik kiválasztásához.</li><li>**CombinedSignInAndSignUp** – azt jelzi, hogy a koordináló lépés a Kombinált közösségi szolgáltató bejelentkezési és helyi fiókjának regisztrációs lapját mutatja be.</li><li>**ClaimsExchange** – azt jelzi, hogy a koordináló lépés jogcímeket cserél a jogcím-szolgáltatóval.</li><li>**GetClaims** – azt jelzi, hogy a hangszerelési lépés beolvassa a bemeneti jogcímeket.</li><li>**SendClaims** – azt jelzi, hogy a koordináló lépés elküldi a jogcímeket a függő entitásnak a jogcímek kiállítói által kiállított jogkivonattal.</li></ul> |
-| ContentDefinitionReferenceId | Nem | Az ehhez a előkészítési lépéshez társított [tartalom-definíció](contentdefinitions.md) azonosítója. Általában a Content definition Reference azonosító az önérvényesített technikai profilban van definiálva. Vannak azonban olyan esetek, amikor Azure AD B2Cnek technikai profil nélküli valamit kell megjelenítenie. Kétféle példa van – ha a előkészítési lépés típusa a következők egyike: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`Azure ad B2C az identitás-szolgáltató kijelölését a technikai profil megadása nélkül kell megjelenítenie. |
-| CpimIssuerTechnicalProfileReferenceId | Nem | Az előkészítési lépés típusa: `SendClaims`. Ez a tulajdonság határozza meg a függő entitáshoz tartozó jogkivonatot kibocsátó jogcím-szolgáltató technikai profiljának azonosítóját.  Ha hiányzik, a rendszer nem hoz létre függő entitás tokenjét. |
+| `Type` | Igen | A előkészítési lépés típusa. Lehetséges értékek: <ul><li>**ClaimsProviderSelection** – azt jelzi, hogy a előkészítési lépés különböző jogcím-szolgáltatókat mutat be a felhasználónak az egyik kiválasztásához.</li><li>**CombinedSignInAndSignUp** – azt jelzi, hogy a koordináló lépés a Kombinált közösségi szolgáltató bejelentkezési és helyi fiókjának regisztrációs lapját mutatja be.</li><li>**ClaimsExchange** – azt jelzi, hogy a koordináló lépés jogcímeket cserél a jogcím-szolgáltatóval.</li><li>**GetClaims** – azt határozza meg, hogy a előkészítési lépésnek a függő entitás által a `InputClaims` konfiguráción keresztül Azure ad B2C elküldett jogcímet kell feldolgoznia.</li><li>**SendClaims** – azt jelzi, hogy a koordináló lépés elküldi a jogcímeket a függő entitásnak a jogcímek kiállítói által kiállított jogkivonattal.</li></ul> |
+| ContentDefinitionReferenceId | No | Az ehhez a előkészítési lépéshez társított [tartalom-definíció](contentdefinitions.md) azonosítója. Általában a Content definition Reference azonosító az önérvényesített technikai profilban van definiálva. Vannak azonban olyan esetek, amikor Azure AD B2Cnek technikai profil nélküli valamit kell megjelenítenie. Kétféle példa van – ha a előkészítési lépés típusa a következők egyike: `ClaimsProviderSelection` vagy `CombinedSignInAndSignUp`Azure ad B2C az identitás-szolgáltató kijelölését a technikai profil megadása nélkül kell megjelenítenie. |
+| CpimIssuerTechnicalProfileReferenceId | No | Az előkészítési lépés típusa: `SendClaims`. Ez a tulajdonság határozza meg a függő entitáshoz tartozó jogkivonatot kibocsátó jogcím-szolgáltató technikai profiljának azonosítóját.  Ha hiányzik, a rendszer nem hoz létre függő entitás tokenjét. |
 
 
 A **OrchestrationStep** elem a következő elemeket tartalmazza:
@@ -172,14 +172,14 @@ A **ClaimsProviderSelections** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| DisplayOption| Nem | Egy olyan eset viselkedését szabályozza, amelyben egyetlen jogcím-szolgáltató választható ki. Lehetséges értékek: `DoNotShowSingleProvider` (alapértelmezett) a rendszer azonnal átirányítja a felhasználót az összevont identitás-szolgáltatóhoz. Vagy `ShowSingleProvider` Azure ad B2C megadja a bejelentkezési oldalt az egyetlen identitás-szolgáltató kijelölésével. Ennek az attribútumnak a használatához a [Content definition verziójának](page-layout.md) és annál újabbnak kell lennie `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` .|
+| DisplayOption| No | Egy olyan eset viselkedését szabályozza, amelyben egyetlen jogcím-szolgáltató választható ki. Lehetséges értékek: `DoNotShowSingleProvider` (alapértelmezett) a rendszer azonnal átirányítja a felhasználót az összevont identitás-szolgáltatóhoz. Vagy `ShowSingleProvider` Azure ad B2C megadja a bejelentkezési oldalt az egyetlen identitás-szolgáltató kijelölésével. Ennek az attribútumnak a használatához a [Content definition verziójának](page-layout.md) és annál újabbnak kell lennie `urn:com:microsoft:aad:b2c:elements:contract:providerselection:1.0.0` .|
 
 A **ClaimsProviderSelection** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Nem | A jogcím-szolgáltató kiválasztásának következő megszervezési lépésében végrehajtott jogcímbarát Exchange azonosítója. Ezt az attribútumot vagy a ValidationClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
-| ValidationClaimsExchangeId | Nem | A jogcímek cseréjének azonosítója, amelyet a rendszer az aktuális előkészítési lépésben hajt végre a jogcím-szolgáltató kijelölésének ellenőrzéséhez. Ezt az attribútumot vagy a TargetClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
+| TargetClaimsExchangeId | No | A jogcím-szolgáltató kiválasztásának következő megszervezési lépésében végrehajtott jogcímbarát Exchange azonosítója. Ezt az attribútumot vagy a ValidationClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
+| ValidationClaimsExchangeId | No | A jogcímek cseréjének azonosítója, amelyet a rendszer az aktuális előkészítési lépésben hajt végre a jogcím-szolgáltató kijelölésének ellenőrzéséhez. Ezt az attribútumot vagy a TargetClaimsExchangeId attribútumot meg kell adni, de nem mindkettőt. |
 
 ### <a name="claimsproviderselection-example"></a>ClaimsProviderSelection példa
 

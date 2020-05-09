@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2ed7f27e2145f666f38eec5ddc6c985a4d32138
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c685fa231bc1f40a78aae0d4fa89569ec146eea
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266376"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582911"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Dinamikus csoport létrehozása vagy frissítése Azure Active Directory
 
@@ -46,7 +46,7 @@ A tagsági szabályok szintaxisára, támogatott tulajdonságaira, operátorára
 
 ## <a name="to-create-a-group-membership-rule"></a>Csoporttagság-szabály létrehozása
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a bérlő globális rendszergazdája, Intune-rendszergazdája vagy felhasználói rendszergazdai szerepköre.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, az Intune-rendszergazda vagy a felhasználói rendszergazdai szerepkör tagja az Azure ad-szervezetben.
 1. **Csoportok**keresése és kiválasztása.
 1. Válassza ki **az összes csoportot**, és válassza az **új csoport**lehetőséget.
 
@@ -66,7 +66,7 @@ Ha a beírt szabály nem érvényes, a portálon egy Azure-értesítésben láth
 
 ## <a name="to-update-an-existing-rule"></a>Meglévő szabály frissítése
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, csoport rendszergazdája, Intune-rendszergazda vagy felhasználói rendszergazdai szerepkör tagja a bérlőn.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy olyan fiókkal, amely a globális rendszergazda, a csoport rendszergazdája, az Intune-rendszergazda vagy a felhasználói rendszergazdai szerepkör tagja az Azure ad-szervezetben.
 1. Válassza a **csoportok** > **minden csoport**elemet.
 1. Válasszon ki egy csoportot a profiljának megnyitásához.
 1. A csoport profil lapján válassza a **dinamikus tagsági szabályok**lehetőséget. A szabály-szerkesztő legfeljebb öt kifejezést támogat. Ötnél több kifejezés hozzáadásához a szövegmezőt kell használnia.
@@ -102,7 +102,7 @@ A következő állapotüzenetek jeleníthetők meg a **tagság utolsó frissít�
 - **Folyamatban**: a frissítések jelenleg folyamatban vannak.
 - **Ismeretlen**: az utolsó frissítés időpontja nem olvasható be. Lehet, hogy a csoport új.
 
-Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha a bérlőn belüli összes csoportra vonatkozóan 24 óránál hosszabb ideig nem dolgozható fel függőben lévő dinamikus tagsági frissítés, a rendszer riasztást jelenít meg az **összes csoport**tetején.
+Ha hiba lép fel egy adott csoport tagsági szabályának feldolgozása közben, a rendszer riasztást jelenít meg a csoport **Áttekintés oldalának** tetején. Ha 24 óránál hosszabb ideig nem lehet feldolgozni a szervezeten belüli összes csoportra vonatkozóan a függőben lévő dinamikus tagsági frissítéseket, a rendszer riasztást jelenít meg az **összes csoport**tetején.
 
 ![hibaüzenetek feldolgozása – riasztások](./media/groups-create-rule/processing-error.png)
 

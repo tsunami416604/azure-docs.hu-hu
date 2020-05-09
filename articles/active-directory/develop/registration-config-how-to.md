@@ -1,6 +1,7 @@
 ---
-title: Végpontok konfigurálása
-description: Az Azure AD-vel fejlesztett vagy regisztrált egyéni alkalmazás hitelesítési végpontjának megkeresése.
+title: Azure AD-alkalmazás-regisztrációhoz tartozó végpontok beszerzése
+titleSuffix: Microsoft identity platform
+description: Az Azure AD-vel való fejlesztéshez vagy regisztráláshoz használt egyéni alkalmazás hitelesítési végpontjának megkeresése.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -9,30 +10,29 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/15/2019
+ms.date: 05/07/2020
 ms.author: ryanwi
-ms.openlocfilehash: 043dc4f6e57620f58a1cf5f76db755703421800f
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: dc37ce474ad3226f5dbf7e6efd687ddf55f7da03
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778736"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926680"
 ---
-# <a name="how-to-configure-endpoints"></a>Végpontok konfigurálása
+# <a name="how-to-discover-endpoints"></a>Végpontok felderítése
 
 Az alkalmazáshoz tartozó hitelesítési végpontokat a [Azure Portalban](https://portal.azure.com)találja.
 
--   Navigáljon a [Azure Portal](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Válassza a **Azure Active Directory**lehetőséget.
+1. A **kezelés**területen válassza a **Alkalmazásregisztrációk**lehetőséget, majd a felső menüben válassza a **végpontok** lehetőséget.
 
--   A bal oldali navigációs panelen kattintson a **Azure Active Directory**elemre.
-
--   Kattintson az **alkalmazás-regisztrációk** elemre, és válassza a **végpontok**lehetőséget.
-
--   Ekkor megnyílik a **végpontok** lap, amely felsorolja a bérlő összes hitelesítési végpontját.
-
--   Használja az Ön által használt hitelesítési protokollhoz tartozó végpontot, az alkalmazás-AZONOSÍTÓval együtt az alkalmazásra vonatkozó hitelesítési kérelem kiépítéséhez.
+    Ekkor megjelenik a **végpontok** lap, amely megjeleníti a bérlőhöz tartozó hitelesítési végpontokat.
+    
+    Használja azt a végpontot, amely az alkalmazás **(ügyfél) azonosítójával** együtt használt hitelesítési protokollnak felel meg az alkalmazásra vonatkozó hitelesítési kérelem kiépítéséhez.
 
 Az **országos felhők** (például az Azure ad China, a Germany és az Egyesült Államok kormánya) saját alkalmazás-regisztrációs portált és Azure ad-hitelesítési végpontokat tartalmazhatnak. További információk a [nemzeti felhők áttekintésében](authentication-national-cloud.md).
 
 ## <a name="next-steps"></a>További lépések
-[Az Azure Active Directory fejlesztői útmutatója](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)
+
+A különböző Azure-környezetekben található végpontokkal kapcsolatos további információkért tekintse meg az [országos felhők áttekintését](authentication-national-cloud.md).

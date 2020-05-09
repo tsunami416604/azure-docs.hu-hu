@@ -1,16 +1,16 @@
 ---
-title: Virtuális gépek indításának és leállításának engedélyezése Azure Automation munkaidőn kívüli megoldásban
-description: Ez a cikk azt ismerteti, hogyan engedélyezhető az Azure-beli virtuális gépek Azure Automation indítása/leállítása virtuálisgép-megoldása.
+title: Azure Automation Start/Stop VMs during off-hours megoldás engedélyezése
+description: Ez a cikk azt ismerteti, hogyan engedélyezhető az Azure-beli virtuális gépeken az Azure Automation elindítása/leállítása a virtuális GÉPEN munkaidőn kívüli megoldásban.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47daa29c65f847fdeb33b9e24a892ac1f31b52a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed9937576334fcba6707f2737e92c3cddce2d7f7
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82096962"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864215"
 ---
 # <a name="enable-azure-automation-startstop-vms-solution"></a>Virtuális gépek megoldásának engedélyezése Azure Automation indítása/leállítása
 

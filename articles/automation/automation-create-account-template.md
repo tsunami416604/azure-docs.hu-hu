@@ -7,25 +7,25 @@ ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
 ms.date: 04/24/2020
-ms.openlocfilehash: 431b89df0ce06736a2e76e58797ded65751bb404
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
-ms.translationtype: MT
+ms.openlocfilehash: 19aee9d5fdf3f4a3d74484bb7cb2e609bc2807b4
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82165824"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927864"
 ---
-# <a name="create-automation-account-using-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
+# <a name="create-an-automation-account-by-using-an-azure-resource-manager-template"></a>Automation-fiók létrehozása Azure Resource Manager sablon használatával
 
-[Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával létrehozhat egy Azure Automation fiókot az erőforráscsoporthoz. Ez a cikk egy minta sablont tartalmaz, amely automatizálja a következőket:
+[Azure Resource Manager-sablonok](../azure-resource-manager/templates/template-syntax.md) használatával létrehozhat egy Azure Automation fiókot az erőforráscsoporthoz. Ez a cikk egy minta sablont tartalmaz, amely a következőket tartalmazza:
 
-* Azure Monitor Log Analytics munkaterület létrehozása.
-* Azure Automation-fiók létrehozása.
+* Automatizálja Azure Monitor Log Analytics munkaterület létrehozását.
+* Automatizálja Azure Automation fiók létrehozását.
 * Az Automation-fiók csatolása a Log Analytics munkaterülethez.
 
-A sablon nem automatizálja egy vagy több Azure-beli vagy nem Azure-beli virtuális gép, illetve megoldás bevezetését. 
+A sablon nem automatizálja az Azure-beli vagy nem Azure-beli virtuális gépek vagy megoldások bevezetését. 
 
 >[!NOTE]
->Azure Resource Manager-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiók kezelése](manage-runas-account.md)című témakört.
+>Azure Resource Manager-sablon használata esetén nem támogatott az Automation futtató fiók létrehozása. Ha manuálisan szeretne létrehozni egy futtató fiókot a portálon vagy a PowerShell-lel, tekintse meg a [futtató fiókok kezelése](manage-runas-account.md)című témakört.
 
 ## <a name="api-versions"></a>API-verziók
 
@@ -36,40 +36,40 @@ A következő táblázat felsorolja az ebben a példában használt erőforráso
 | Munkaterület | munkaterületek | 2017-03-15 – előzetes verzió |
 | Automation-fiók | automation | 2015-10-31 | 
 
-## <a name="before-using-the-template"></a>A sablon használata előtt
+## <a name="before-you-use-the-template"></a>A sablon használata előtt
 
-Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral. A Azure PowerShell használatával a telepítés a [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment)t használja.
+Ha a PowerShell helyi telepítését és használatát választja, akkor ehhez a cikkhez a Azure PowerShell az modul szükséges. A verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissítésre van szükség, olvassa el az [Azure PowerShell-modul telepítését ismertető](/powershell/azure/install-az-ps) szakaszt. Ha helyileg futtatja a PowerShellt, akkor azt is futtatnia `Connect-AzAccount` kell, hogy létrehozza az Azure-hoz való kapcsolódást. A PowerShell használatával a központi telepítés a [New-AzResourceGroupDeployment-](/powershell/module/az.resources/new-azresourcegroupdeployment)t használja.
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a cikkhez az Azure CLI 2.1.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Az Azure CLI-vel ez a telepítés az [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)paranccsal működik. 
+Ha az Azure CLI helyi telepítését és használatát választja, akkor ehhez a cikkhez a 2.1.0 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) ismertető cikket. Az Azure CLI-vel ez a telepítés az [az Group Deployment Create](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)paranccsal működik. 
 
 A JSON-sablon úgy van konfigurálva, hogy a következőre Kérdezzen:
 
-* A munkaterület neve
-* Az a régió, amelyben létre kívánja hozni a munkaterületet
-* Az Automation-fiók neve
-* Az a régió, amelyben létre kell hozni a fiókot
+* A munkaterület neve.
+* Az a régió, amelyben létre kívánja hozni a munkaterületet.
+* Az Automation-fiók neve.
+* Az a régió, amelyben létre kell hozni a fiókot.
 
 A sablonban a következő paraméterek a Log Analytics munkaterület alapértelmezett értékével vannak beállítva:
 
-* SKU – alapértelmezett érték az új GB-os díjszabási szinten, amely az áprilisi 2018 díjszabási modellben jelent meg
-* adatmegőrzés – az alapértelmezett érték 30 nap
-* kapacitás foglalása – alapértelmezett érték: 100 GB
+* az *SKU* alapértelmezett értéke az április 2018 díjszabási modellben megjelent GB-os díjszabási szinten.
+* a *dataRetention* alapértelmezett értéke 30 nap.
+* a *capacityReservationLevel* alapértelmezett értéke 100 GB.
 
 >[!WARNING]
->Ha Log Analytics munkaterületet hoz létre vagy konfigurál egy olyan előfizetésben, amely az új, április 2018 díjszabási modellbe van lefoglalva, az egyetlen érvényes Log Analytics díjszabási csomag **PerGB2018**.
+>Ha egy Log Analytics munkaterületet szeretne létrehozni vagy konfigurálni egy olyan előfizetésben, amely az áprilisi 2018 díjszabási modellre van kiválasztva, akkor az egyetlen érvényes Log Analytics díjszabási csomag *PerGB2018*.
 >
 
 A JSON-sablon olyan alapértelmezett értéket határoz meg a többi paraméter számára, amely valószínűleg a környezetben megszokott konfigurációként lesz használva. A sablont egy Azure Storage-fiókban is tárolhatja a szervezet megosztott hozzáféréséhez. További információ a sablonok használatáról: [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../azure-resource-manager/templates/deploy-cli.md).
 
-Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor ne a hibák elkerülése érdekében a következő konfigurációs részleteket Ismerje meg: Azure Automation és Azure Monitor.
+Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a következő konfigurációs adatokat. Az új Automation-fiókhoz kapcsolódó Log Analytics munkaterületek létrehozásakor, konfigurálásakor és használatakor elkerülheti a hibák elhárítását. 
 
 * [További részletekért](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) tekintse át a munkaterület-konfigurációs beállításokat, például a hozzáférés-vezérlési módot, a díjszabási szintet, a megőrzést és a kapacitás foglalási szintjét.
 
-* Mivel csak bizonyos régiók támogatottak egy Log Analytics munkaterület és egy Automation-fiók összekapcsolásához az előfizetésben, tekintse át a [munkaterület-hozzárendeléseket](how-to/region-mappings.md) a támogatott régiók beágyazott vagy egy Parameters fájlban való megadásához.
+* Tekintse át a [munkaterület-leképezéseket](how-to/region-mappings.md) a támogatott régiók beágyazott vagy egy paraméterérték megadásához. Egy Log Analytics munkaterület és egy Automation-fiók összekapcsolása csak bizonyos régiókban támogatott az előfizetésben.
 
-* Ha még nem Azure Monitor naplókat, és már nem telepített munkaterületet, tekintse át a [munkaterület kialakításával](../azure-monitor/platform/design-logs-deployment.md) kapcsolatos útmutatót a hozzáférés-vezérlés megismeréséhez, és ismerkedjen meg a szervezete számára ajánlott kialakítási stratégiákkal.
+* Ha még nem Azure Monitor naplókat, és már nem telepített munkaterületet, tekintse át a [munkaterület kialakítására vonatkozó útmutatást](../azure-monitor/platform/design-logs-deployment.md). Segít megismerni a hozzáférés-vezérlést, és megismerheti a szervezete számára ajánlott kialakítási stratégiákat.
 
-## <a name="deploy-template"></a>Sablon üzembe helyezése
+## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
 1. Másolja és illessze be a következő JSON-szintaxist a létrehozott fájlba:
 
@@ -96,7 +96,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
             ],
             "defaultValue": "pergb2018",
             "metadata": {
-                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium) which are not available to all customers."
+                "description": "Pricing tier: perGB2018 or legacy tiers (Free, Standalone, PerNode, Standard or Premium), which are not available to all customers."
             }
         },
         "dataRetention": {
@@ -105,14 +105,14 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can only have 7 days."
+                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
             }
         },
         "immediatePurgeDataOn30Days": {
             "type": "bool",
             "defaultValue": "[bool('false')]",
             "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This only applies when retention is being set to 30 days."
+                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
             }
         },
         "location": {
@@ -139,7 +139,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
             },
             "sampleGraphicalRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "sampleGraphicalRunbookContentUri": {
                 "type": "String",
@@ -151,7 +151,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
             },
             "samplePowerShellRunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePowerShellRunbookContentUri": {
                 "type": "String",
@@ -163,7 +163,7 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
             },
             "samplePython2RunbookDescription": {
                 "type": "String",
-                "defaultValue": " An example runbook which gets all the ARM resources using the Run As Account (Service Principal)."
+                "defaultValue": " An example runbook that gets all the Resource Manager resources by using the Run As account (service principal)."
             },
             "samplePython2RunbookContentUri": {
                 "type": "String",
@@ -286,11 +286,11 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
     }
     ```
 
-2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Hozzon létre egy [Resource Manager-paramétereket tartalmazó fájlt](../azure-resource-manager/templates/parameter-files.md) ahelyett, hogy a paramétereket beágyazott értékként adja át.
+2. Szerkessze a sablont, hogy megfeleljen a követelményeinek. Érdemes lehet [Resource Manager-paramétert](../azure-resource-manager/templates/parameter-files.md) létrehozni, ahelyett, hogy a paramétereket beágyazott értékként adja át.
 
 3. Mentse ezt a fájlt deployAzAutomationAccttemplate. JSON néven egy helyi mappába.
 
-4. Készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t is. Ha a rendszer a munkaterület és az Automation-fiók nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
+4. Most már készen áll a sablon üzembe helyezésére. Használhatja a PowerShellt vagy az Azure CLI-t is. Ha a rendszer a munkaterület és az Automation-fiók nevének megadását kéri, adjon meg egy olyan nevet, amely globálisan egyedi az összes Azure-előfizetésen belül.
 
     **PowerShell**
 
@@ -304,10 +304,14 @@ Fontos, hogy az új Automation-fiókhoz kapcsolódó Log Analytics munkaterület
     az group deployment create --resource-group <my-resource-group> --name <my-deployment-name> --template-file deployAzAutomationAccttemplate.json
     ```
 
-    Az üzembe helyezés eltarthat néhány percig. Amikor befejeződik, a következőhöz hasonló üzenet jelenik meg, amely tartalmazza az eredményt:
+    Az üzembe helyezés eltarthat néhány percig. Ha igen, a következőhöz hasonló üzenet jelenik meg, amely tartalmazza az eredményt.
 
     ![Példa az üzembe helyezés befejezésekor bekövetkezett eredményre](media/automation-create-account-template/template-output.png)
 
 ## <a name="next-steps"></a>További lépések
 
 Most, hogy rendelkezik egy Automation-fiókkal, létrehozhat runbookok, és automatizálhatja a manuális folyamatokat.
+
+* A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-first-runbook-textual-powershell.md)című témakört.
+* A PowerShell-munkafolyamat runbookok megkezdéséhez tekintse meg [a PowerShell-munkafolyamat Runbook létrehozása](automation-first-runbook-textual.md)című témakört.
+* A Python 2 runbookok megkezdéséhez tekintse meg [a Python-Runbook létrehozása](automation-first-runbook-textual-python2.md)című témakört.

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2e3219cebcc5e989059c02fec86ba242e1c31cc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b8f6691eab7da42c1f82952b3a20df95ab28d97b
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853872"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891587"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines az SAP NetWeaver tervezése és megvalósítása
 
@@ -487,7 +487,7 @@ A díjszabási modellben számos különböző díjszabási lehetőség közül 
 
 A különböző szolgáltatásokkal rendelkező különböző ajánlatok díjszabása az operációs rendszerek és a különböző régiók számára elérhető a webhelyen [Linux Virtual Machines díjszabás](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és a [Windows Virtual Machines díjszabása](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). Egy vagy három éves fenntartott példány részleteit és rugalmasságát a következő cikkekben találja:
 
-- [Mi a Azure Reservations?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
+- [Mi az az Azure Reservations?](https://docs.microsoft.com/azure/cost-management-billing/reservations/save-compute-costs-reservations)
 - [A Reserved VM Instances virtuális gépeinek méretrugalmassága](https://docs.microsoft.com/azure/virtual-machines/windows/reserved-vm-instance-size-flexibility)
 - [Az Azure-foglalási kedvezmény alkalmazása virtuális gépekre](https://docs.microsoft.com/azure/cost-management-billing/manage/understand-vm-reservation-charges) 
 
@@ -1240,7 +1240,7 @@ Az SAP üzemelő példányok tapasztalatai az elmúlt két évben néhány leck�
 >
 > * [Szoftveres RAID konfigurálása Linuxon][virtual-machines-linux-configure-raid]
 > * [Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban][virtual-machines-linux-configure-lvm]
-> * [Azure Storage-titkok és Linux I/O-optimalizálások](https://blogs.msdn.com/b/igorpag/archive/2014/10/23/azure-storage-secrets-and-linux-i-o-optimizations.aspx)
+> * [Azure Storage-titkok és Linux I/O-optimalizálások](https://docs.microsoft.com/archive/blogs/igorpag/azure-storage-secrets-and-linux-io-optimizations)
 >
 >
 

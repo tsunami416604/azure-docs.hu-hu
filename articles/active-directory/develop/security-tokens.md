@@ -9,26 +9,29 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 04/28/2020
+ms.date: 05/06/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: faaf4a9c4fe37bc184b9860390f1eb99eede035c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584284"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926578"
 ---
 # <a name="security-tokens"></a>Biztonsági jogkivonatok
 
 A központosított identitás-szolgáltató különösen olyan alkalmazások esetében hasznos, amelyeken a világon található felhasználók nem feltétlenül jelentkeznek be a vállalati hálózatról. A Microsoft Identity platform hitelesíti a felhasználókat, és biztonsági jogkivonatokat biztosít, például [hozzáférési tokent](developer-glossary.md#access-token), [frissítési jogkivonatot](developer-glossary.md#refresh-token)és [azonosító](developer-glossary.md#id-token)jogkivonatot, amely lehetővé teszi, hogy az [ügyfélalkalmazás](developer-glossary.md#client-application) hozzáférjen a védett erőforrásokhoz az [erőforrás-kiszolgálón](developer-glossary.md#resource-server).
 
-A **hozzáférési** jogkivonatok olyan biztonsági jogkivonatok, amelyeket egy [engedélyezési kiszolgáló](developer-glossary.md#authorization-server) állít ki egy [OAuth 2,0](active-directory-v2-protocols.md) -folyamat részeként. A felhasználóval és az alkalmazással kapcsolatos információkat tartalmaz, amelyekhez a jogkivonat készült. a webes API-k és más védett erőforrások elérésére használható. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan bocsát ki hozzáférési jogkivonatokat, tekintse meg a [hozzáférési jogkivonatokat](access-tokens.md).
+A **hozzáférési jogkivonat** olyan biztonsági jogkivonat, amelyet egy [engedélyezési kiszolgáló](developer-glossary.md#authorization-server) állít ki egy [OAuth 2,0](active-directory-v2-protocols.md) folyamat részeként. A felhasználóval és az alkalmazással kapcsolatos információkat tartalmaz, amelyekhez a jogkivonat készült. a webes API-k és más védett erőforrások elérésére használható. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan bocsát ki hozzáférési jogkivonatokat, tekintse meg a [hozzáférési jogkivonatokat](access-tokens.md).
 
-A hozzáférési jogkivonatok csak rövid ideig érvényesek, ezért az engedélyezési kiszolgálók időnként kiállítanak egy **frissítési jogkivonatot** a hozzáférési jogkivonat kiadásakor. Az ügyfélalkalmazás ezután szükség esetén átadhatja ezt a frissítési tokent egy új hozzáférési jogkivonathoz. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan használja a frissítési jogkivonatokat az engedélyek visszavonására, lásd: [jogkivonat-visszavonás](access-tokens.md#token-revocation)
+A hozzáférési jogkivonatok csak rövid ideig érvényesek, ezért az engedélyezési kiszolgálók időnként kiállítanak egy **frissítési jogkivonatot** a hozzáférési jogkivonat kikiadásakor. Az ügyfélalkalmazás ezután szükség esetén átadhatja ezt a frissítési tokent egy új hozzáférési jogkivonathoz. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan használja a frissítési jogkivonatokat az engedélyek visszavonására, lásd: [jogkivonat-visszavonás](access-tokens.md#token-revocation)
 
 Az **azonosító jogkivonatokat** az ügyfélalkalmazás az [OpenID Connect](v2-protocols-oidc.md) folyamat részeként elküldi az alkalmazásnak. A felhasználók az oldalon vagy a hozzáférési jogkivonat helyett is elküldhetők, és az ügyfél a felhasználó hitelesítésére használja. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan okoz problémát azonosító jogkivonatokat, tekintse meg az [azonosító jogkivonatokat](id-tokens.md).
+
+> [!NOTE]
+> Ez a cikk a OAuth2 és az OpenID Connect protokollok biztonsági jogkivonatait ismerteti. Számos vállalati alkalmazás SAML-t használ a felhasználók hitelesítéséhez. Az SAML-kijelentésekkel kapcsolatos információkért tekintse meg az [Azure ad SAML-jogkivonat referenciáját](reference-saml-tokens.md) .
 
 ## <a name="validating-security-tokens"></a>Biztonsági jogkivonatok ellenőrzése
 
@@ -45,7 +48,7 @@ Hozzáférési jogkivonatok átadása egy webes API-nak a `Authorization` fejlé
 
 A Microsoft Identity platform a **jogcímeket**tartalmazó **JSON webes tokenként (JWTs)** implementálja a biztonsági jogkivonatokat.
 
-A [jogcím](developer-glossary.md#claim) egy entitásra, például egy ügyfélalkalmazás vagy [erőforrás-tulajdonosra](developer-glossary.md#resource-owner)vonatkozó kijelentéseket biztosít egy másik entitáshoz, például egy erőforrás-kiszolgálóhoz.
+A [jogcím](developer-glossary.md#claim) egy entitásra, például egy ügyfélalkalmazás vagy [erőforrás-tulajdonosra](developer-glossary.md#resource-owner)vonatkozó kijelentéseket biztosít egy másik entitáshoz, például egy erőforrás-kiszolgálóhoz. A jogcímek JWT jogcímként vagy JSON Web Token jogcímként is szerepelhetnek.
 
 A jogcímek olyan név/érték párok, amelyek a jogkivonat tárgyával kapcsolatos adatokat továbbítanak. Előfordulhat például, hogy a jogcím az engedélyezési kiszolgáló által hitelesített rendszerbiztonsági tag tényeit is tartalmazza. Az adott jogkivonatban található jogcímek számos dologtól függenek, beleértve a token típusát, a tulajdonos hitelesítéséhez használt hitelesítő adatokat, az alkalmazás konfigurációját stb.
 
