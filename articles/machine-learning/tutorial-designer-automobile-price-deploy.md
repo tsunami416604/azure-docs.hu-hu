@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel'
+title: 'Oktatóanyag: ML modellek üzembe helyezése tervezővel'
 titleSuffix: Azure Machine Learning
 description: Ez az oktatóanyag bemutatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben (előzetes verzió). A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
 author: peterclu
@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: c3ca37fd47b6551a95f9a491053ec7863acd1eeb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d8c38707f68b5841edb39e4527ec2cdcb1a35adf
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80389392"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983380"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
