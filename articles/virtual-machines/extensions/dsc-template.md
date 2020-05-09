@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 10/05/2018
 ms.author: robreed
-ms.openlocfilehash: 89bae60c30cfe82d38c61f385dbaef574b4152d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4ec81ef69f21fc74864e437a3c6de46550a70c18
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547784"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891656"
 ---
 # <a name="desired-state-configuration-extension-with-azure-resource-manager-templates"></a>A kívánt állapot konfigurációs bővítménye Azure Resource Manager-sablonokkal
 
@@ -185,8 +185,8 @@ Az alapértelmezett konfigurációs parancsfájlhoz elérhető argumentumok list
 | Settings. Configuration. Function |sztring |Megadja a DSC-konfiguráció nevét. A nevű konfigurációnak szerepelnie kell a **Settings. Configuration. script** által definiált parancsfájlban. Ezt a tulajdonságot kötelező megadni, ha a **Settings. Configuration. URL** vagy **Settings. Configuration. Function** definiálva van. Ha nem adott meg értéket ezekhez a tulajdonságokhoz, a bővítmény meghívja az alapértelmezett konfigurációs parancsfájlt, amely az LCD-metaadatokat állítja be, és az argumentumokat meg kell adni. |
 | Settings. configurationArguments |Gyűjtemény |Meghatározza a DSC-konfigurációnak átadni kívánt paramétereket. Ez a tulajdonság nincs titkosítva. |
 | Settings. configurationData. URL |sztring |Meghatározza azt az URL-címet, amelyből le szeretné tölteni a DSC-konfiguráció bemenetként használandó konfigurációs adatait (. psd1). Ha a megadott URL-címnek szüksége van egy SAS-tokenre a hozzáféréshez, állítsa a **protectedsettingsfromkeyvault. configurationDataUrlSasToken** tulajdonságot az SAS-token értékére. |
-| Settings. privacy. Datacollection objektumot |sztring |Engedélyezheti vagy letilthatja a telemetria-gyűjteményt. A tulajdonság egyetlen lehetséges értéke a következő: **Engedélyezés**, **Letiltás**, **""** vagy **$Null**. Ha ezt a tulajdonságot üresen hagyja, vagy NULL értékűre teszi a telemetria. Az alapértelmezett érték: **""**. További információ: az [Azure DSC bővítmény adatgyűjtése](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/). |
-| Settings. advancedOptions. downloadMappings |Gyűjtemény |Meghatározza azokat a másodlagos helyeket, amelyekről a WMF-t le szeretné tölteni. További információkért lásd: [Azure DSC-bővítmény 2,8 és hogyan lehet leképezni a bővítmény függőségeinek letöltését a saját helyére](https://blogs.msdn.com/b/powershell/archive/2015/10/21/azure-dsc-extension-2-2-amp-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location.aspx). |
+| Settings. privacy. Datacollection objektumot |sztring |Engedélyezheti vagy letilthatja a telemetria-gyűjteményt. A tulajdonság egyetlen lehetséges értéke a következő: **Engedélyezés**, **Letiltás**, **""** vagy **$Null**. Ha ezt a tulajdonságot üresen hagyja, vagy NULL értékűre teszi a telemetria. Az alapértelmezett érték: **""**. További információ: az [Azure DSC bővítmény adatgyűjtése](https://devblogs.microsoft.com/powershell/azure-dsc-extension-data-collection-2/). |
+| Settings. advancedOptions. downloadMappings |Gyűjtemény |Meghatározza azokat a másodlagos helyeket, amelyekről a WMF-t le szeretné tölteni. További információkért lásd: [Azure DSC-bővítmény 2,8 és hogyan lehet leképezni a bővítmény függőségeinek letöltését a saját helyére](https://devblogs.microsoft.com/powershell/azure-dsc-extension-2-8-how-to-map-downloads-of-the-extension-dependencies-to-your-own-location/). |
 | Protectedsettingsfromkeyvault. configurationArguments |Gyűjtemény |Meghatározza a DSC-konfigurációnak átadni kívánt paramétereket. Ez a tulajdonság titkosítva van. |
 | Protectedsettingsfromkeyvault. configurationUrlSasToken |sztring |Meghatározza a **Settings. Configuration. URL** által definiált URL-cím eléréséhez használandó sas-tokent. Ez a tulajdonság titkosítva van. |
 | Protectedsettingsfromkeyvault. configurationDataUrlSasToken |sztring |Meghatározza a **Settings. configurationData. URL** által definiált URL-cím eléréséhez használandó sas-tokent. Ez a tulajdonság titkosítva van. |

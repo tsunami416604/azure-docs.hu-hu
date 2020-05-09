@@ -131,7 +131,7 @@ Az ebben a cikkben szereplő összes mintát tartalmazó GetStarted-megoldás me
 * Tekintse át a [SQL Database fejlesztés áttekintését](sql-database-develop-overview.md)
 * További információ az [ODBC API-referenciáról](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 * [Tervezési minták az Azure SQL Database-t használó több-bérlős SaaS-alkalmazásokhoz](sql-database-design-patterns-multi-tenancy-saas-applications.md)
 * Fedezze fel az [SQL Database összes képességét](https://azure.microsoft.com/services/sql-database/)
 

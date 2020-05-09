@@ -9,7 +9,7 @@
       href: text-analytics-user-scenarios.md
     - name: Újdonságok
       href: whats-new.md
-- name: Rövid útmutatók
+- name: Gyors útmutatók
   expanded: true
   items:
     - name: Ügyfélkódtár
@@ -30,7 +30,7 @@
           href: quickstarts/go.md
         - name: A Ruby használata
           href: quickstarts/ruby.md
-- name: Oktatóanyagok
+- name: oktatóanyagokat
   items:
     - name: A Power BI integrálása ügyfelektől származó visszajelzések elemzéséhez
       href: Tutorials/tutorial-power-bi-key-phrases.md
@@ -52,6 +52,8 @@
       href: language-support.md
     - name: Szövegeltolások
       href: concepts/text-offsets.md
+    - name: Adatkorlátok
+      href: concepts/data-limits.md
 - name: Útmutatók
   items:
     - name: Szövegelemzési API hívása
@@ -110,7 +112,7 @@
               href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/?view=azure-node-latest'
             - name: Indítás
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
-- name: További források
+- name: Erőforrások
   items:
     - name: Külső és közösségi tartalom
       href: text-analytics-resource-external-community.md

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/01/2020
 ms.author: allensu
-ms.openlocfilehash: c7ca630b4a6a1bedeab21feacc22cd27a1a3ee7e
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
-ms.translationtype: HT
+ms.openlocfilehash: faf77411abca63516b00ac953bc7203da69f3ca9
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82794153"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854087"
 ---
 # <a name="azure-load-balancer-skus"></a>SKU Azure Load Balancer
 
@@ -49,6 +49,12 @@ Az önálló virtuális gépeket, a rendelkezésre állási csoportokat és a Vi
 | SLA | [99.99%](https://azure.microsoft.com/support/legal/sla/load-balancer/v1_0/) | Nem érhető el | 
 
 További információ: [Load Balancer korlátok](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#load-balancer). A Standard Load Balancerről további részleteket az [áttekintés](load-balancer-standard-overview.md), a [díjszabás](https://aka.ms/lbpricing) és az [SLA](https://aka.ms/lbsla) szakaszban talál.
+
+## <a name="limitations"></a>Korlátozások
+
+- Az SKU nem változtatható. Meglévő erőforrás SKU-jának nem módosítható.
+- Egy önálló virtuálisgép-erőforrás, rendelkezésre állási készlet erőforrás vagy virtuálisgép-méretezési csoport erőforrása hivatkozhat egyetlen SKU-ra, soha nem mindkettőre.
+- Az [előfizetési műveletek](../azure-resource-manager/management/move-resource-group-and-subscription.md) nem támogatottak standard Load Balancer és a standard nyilvános IP-erőforrások esetében.
 
 ## <a name="next-steps"></a>További lépések
 
