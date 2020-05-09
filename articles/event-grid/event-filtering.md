@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: ab5dd716253875e4a992b94a4e143cb3e806a4b0
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509652"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82888786"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
 
@@ -158,6 +158,7 @@ A speciális szűrés a következő korlátozásokkal rendelkezik:
 * Öt speciális szűrő/Event Grid-előfizetés
 * 512 karakter/karakterlánc érték
 * Öt érték a **-ben** és **nem az** operátorokban
+* Kulcsok ** `.` (pont)** karakterrel. Például: `http://schemas.microsoft.com/claims/authnclassreference` vagy `john.doe@contoso.com`. Jelenleg a kulcsok nem támogatják a Escape-karakterek használatát. 
 
 Ugyanaz a kulcs több szűrőben is használható.
 

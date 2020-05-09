@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/29/2019
-ms.openlocfilehash: bbcbb19530aebe777a91cbe4c5487e1b50ace2e5
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 3b417e7c4589f3a4214400a877812d196a63349b
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559767"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82870031"
 ---
 # <a name="create-a-tumbling-window-trigger-dependency"></a>Függőség létrehozása átfedésmentes ablak eseményindítójához
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -90,7 +90,10 @@ Az alábbi táblázat tartalmazza az ablak függőségének definiálásához sz
 
 ## <a name="tumbling-window-self-dependency-properties"></a>A kiesési ablak önfüggőségi tulajdonságai
 
-Olyan helyzetekben, amikor az trigger nem folytatható a következő ablakba, amíg az előző ablak sikeresen be nem fejeződik, hozzon létre egy önfüggőséget. Az előző HR-en belüli korábbi futtatások sikerességét függő önfüggőségi trigger az alábbi tulajdonságokkal fog rendelkezni:
+Azokban az esetekben, amelyekben a trigger nem folytassa a következő ablakba, amíg az előző ablak sikeresen be nem fejeződik, hozzon létre egy önfüggőséget. Egy önfüggőségi trigger, amely az előző órában a korábbi futtatások sikerességének függvénye, az alábbi kódban szereplő tulajdonságokkal fog rendelkezni.
+
+> [!NOTE]
+> Ha az aktivált folyamat a korábban aktivált Windows-folyamatokban lévő folyamatok kimenetére támaszkodik, javasoljuk, hogy csak a legördülő ablakos trigger önfüggőségét használja. A párhuzamos triggerek futtatásának korlátozásához állítsa be a maximimum trigger egyidejűségét.
 
 ```json
 {
