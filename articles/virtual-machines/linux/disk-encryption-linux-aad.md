@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: ee365d37a957350fa8a68da0f34149d3210d6238
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ce3afb533aa33b88b15510eacc88c0884811cc6
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78970607"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792598"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)
 
@@ -158,7 +158,7 @@ Az alábbi táblázat az Azure AD ügyfél-azonosítót használó meglévő vag
 ## <a name="use-the-encryptformatall-feature-for-data-disks-on-linux-iaas-vms"></a><a name="bkmk_EFA"> </a>A EncryptFormatAll funkció használata a Linux IaaS virtuális gépeken található adatlemezekhez
 A EncryptFormatAll paraméter csökkenti a Linux-adatlemezek titkosításának idejét. Az egyes feltételeknek megfelelő partíciók formátuma (a jelenlegi fájlrendszerrel együtt). Ezután újracsatlakoztatják őket a parancs végrehajtása előtt. Ha ki szeretne zárni egy olyan adatlemezt, amely megfelel a feltételeknek, leválaszthatja azt a parancs futtatása előtt.
 
- A parancs futtatása után a korábban csatlakoztatott meghajtók formázása megtörtént. Ezután a titkosítási réteg a most üres meghajtón indul el. Ha ez a beállítás be van jelölve, a virtuális géphez csatolt ideiglenes erőforrás lemez is titkosítva lesz. Ha az ideiglenes meghajtót alaphelyzetbe állítja, a rendszer a következő lehetőségnél újraformázza és újra titkosítja a virtuális gépet a Azure Disk Encryption megoldással.
+ A parancs futtatása után a korábban csatlakoztatott meghajtók formázása megtörtént. Ezután a titkosítási réteg a most üres meghajtón indul el. Ha ez a beállítás be van jelölve, a virtuális géphez csatolt ideiglenes lemez is titkosítva lesz. Ha az ideiglenes meghajtót alaphelyzetbe állítja, a rendszer a következő lehetőségnél újraformázza és újra titkosítja a virtuális gépet a Azure Disk Encryption megoldással.
 
 >[!WARNING]
 > A EncryptFormatAll nem szabad használni, ha a virtuális gép adatkötetein szükség van a szükséges értékekre. A lemezek a titkosításból való leválasztásával zárhatók ki. Először próbálja ki a EncryptFormatAll paramétert egy teszt virtuális gépen, hogy megértse a funkció paraméterét és annak következményeit az éles virtuális gépen való kipróbálás előtt. A EncryptFormatAll beállítás az adatlemezt formázza, így a rajta lévő összes adattal elvész. A folytatás előtt ellenőrizze, hogy a kizárni kívánt lemezek megfelelően le vannak-e választva. </br></br>

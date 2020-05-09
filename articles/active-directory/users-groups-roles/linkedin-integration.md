@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 54e3821d269d11397ec4f9f5833e33ac6b555abc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faa80bf09113786e35a6ce98157f18639e30d210
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755120"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582643"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>A LinkedIn-fiókok kapcsolatainak integrálása Azure Active Directory
 
@@ -30,8 +30,8 @@ Lehetővé teheti, hogy a szervezet felhasználói a LinkedIn-kapcsolataikat biz
 > Kivételek
 >
 > * A beállítás nem érhető el olyan ügyfelek számára, akik az Egyesült Államok kormánya, a Microsoft Cloud Németország vagy az Azure és az Office 365 Microsoft Cloudt használják Kínában 21Vianet.
-> * A beállítás alapértelmezés szerint ki van kapcsolva a Németországban kiépített bérlők esetében. Vegye figyelembe, hogy a beállítás nem érhető el a Microsoft Cloud Németországot használó ügyfelek számára.
-> * A beállítás alapértelmezés szerint ki van kapcsolva a Franciaországban kiépített bérlők esetében.
+> * A beállítás alapértelmezés szerint ki van kapcsolva a Németországban kiépített Azure AD-szervezetek esetében. Vegye figyelembe, hogy a beállítás nem érhető el a Microsoft Cloud Németországot használó ügyfelek számára.
+> * A beállítás alapértelmezés szerint ki van kapcsolva a Franciaországban kiépített szervezeteknek.
 >
 > Ha a LinkedIn-fiókok kapcsolatai engedélyezve vannak a szervezet számára, a fiókok kapcsolatai a felhasználók által a nevükben elérhető vállalati adatokhoz való hozzáférésük után működnek. A felhasználói beleegyező beállításokkal kapcsolatos további információkért lásd: [felhasználó hozzáférésének eltávolítása egy alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/application-access-assignment-how-to-remove-assignment).
 

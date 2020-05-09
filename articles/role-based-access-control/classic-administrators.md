@@ -1,5 +1,5 @@
 ---
-title: Klasszikus Azure-előfizetés rendszergazdái | Microsoft Docs
+title: Klasszikus Azure-előfizetés rendszergazdái
 description: Ismerteti, hogyan lehet hozzáadni vagy módosítani az Azure-beli társ-rendszergazda és szolgáltatás-rendszergazdai szerepköröket, valamint a fiók rendszergazdájának megtekintését.
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cacdeee4512c512b058be96c4fe3a829c2933f06
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243483"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734858"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
-A Microsoft azt javasolja, hogy szerepköralapú hozzáférés-vezérléssel (RBAC) kezelje az Azure-erőforrásokhoz való hozzáférést. Ha azonban továbbra is a klasszikus üzemi modellt használja, akkor klasszikus előfizetés-rendszergazdai szerepkört kell használnia: a szolgáltatás-rendszergazdát és a társ-rendszergazdát. További információ: Azure Resource Manager és [klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
+A Microsoft azt javasolja, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével kezelje az Azure-erőforrásokhoz való hozzáférést. Ha azonban továbbra is a klasszikus üzemi modellt használja, akkor klasszikus előfizetés-rendszergazdai szerepkört kell használnia: a szolgáltatás-rendszergazdát és a társ-rendszergazdát. További információ: Azure Resource Manager és [klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
 
 Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörök hozzáadását és módosítását, valamint a fiók rendszergazdájának megtekintését ismerteti.
 
@@ -71,9 +71,9 @@ A társ-rendszergazda szerepkörrel rendelkező vendég felhasználók bizonyos 
 
 Azt várná, hogy a B felhasználó mindent tud kezelni. Ennek a különbségnek az az oka, hogy a Microsoft-fiók a tag felhasználója helyett vendég felhasználóként adja hozzá az előfizetéshez. A vendég felhasználók a felhasználókhoz képest eltérő alapértelmezett engedélyekkel rendelkeznek az Azure AD-ben. Például a felhasználók más felhasználókat is olvashatnak az Azure AD-ben, és a vendég felhasználói nem. A tagok felhasználói regisztrálhatnak új egyszerű szolgáltatásokat az Azure AD-ben, és a vendég felhasználói nem rendelkezhetnek.
 
-Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás az adott Azure AD-rendszergazdai szerepkörök hozzárendelésére a vendég felhasználói igényeinek megfelelően. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md) További információ a vendégek hozzáférésének biztosításáról: az Azure- [erőforrásokhoz való hozzáférés kezelése külső vendég felhasználók számára a RBAC használatával](role-assignments-external-users.md).
+Ha egy vendégnek el kell tudnia hajtani ezeket a feladatokat, lehetséges megoldás a vendég felhasználói igényeknek megfelelő Azure AD-szerepkörök hozzárendelésére. Az előző forgatókönyvben például hozzárendelheti a [címtár-olvasók](../active-directory/users-groups-roles/directory-assign-admin-roles.md#directory-readers) szerepkört más felhasználók olvasásához és az [alkalmazás fejlesztői](../active-directory/users-groups-roles/directory-assign-admin-roles.md#application-developer) szerepkörének hozzárendeléséhez, hogy az egyszerű szolgáltatásokat lehessen létrehozni. További információ a tagok és a vendég felhasználókról és azok engedélyeiről: [Mi az alapértelmezett felhasználói engedély a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md) További információ a vendég felhasználók hozzáférésének megadásáról: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása külső vendég felhasználók számára a Azure Portal használatával](role-assignments-external-users.md).
 
-Vegye figyelembe, hogy az [Azure-erőforrások beépített szerepkörei](../role-based-access-control/built-in-roles.md) eltérnek az [Azure ad rendszergazdai szerepköreitől](../active-directory/users-groups-roles/directory-assign-admin-roles.md). A beépített szerepkörök nem biztosítanak hozzáférést az Azure AD-hoz. További információ: [a különböző szerepkörök megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md).
+Vegye figyelembe, hogy az [Azure beépített szerepkörei](../role-based-access-control/built-in-roles.md) eltérnek az [Azure ad szerepköreitől](../active-directory/users-groups-roles/directory-assign-admin-roles.md). A beépített szerepkörök nem biztosítanak hozzáférést az Azure AD-hoz. További információ: [a különböző szerepkörök megismerése](../role-based-access-control/rbac-and-directory-admin-roles.md).
 
 A felhasználók és a vendég felhasználók összevetésével kapcsolatos információkért tekintse [meg a mi az alapértelmezett felhasználói engedélyek a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)című témakört.
 
@@ -126,7 +126,7 @@ Azure-előfizetések esetében csak egy szolgáltatás-rendszergazda lehet. A sz
 | Fiók-rendszergazdai fiók | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik Microsoft-fiók? | Megváltoztathatja a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra, amely ugyanabban a címtárban van? | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik címtárban lévő Azure AD-fiókra? |
 | --- | --- | --- | --- |
 | Microsoft-fiók | Igen | Nem | Nem |
-| Azure AD-fiók | Igen | Igen | Nem |
+| Azure AD-fiók | Igen | Igen | No |
 
 Ha a fiók rendszergazdája Azure AD-fiók, akkor a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra módosíthatja, amely ugyanabban a címtárban van, de nem egy másik címtárban. Például abby@contoso.com megváltoztathatja a szolgáltatás-rendszergazdát bob@contoso.com, de nem módosíthatja a szolgáltatás-rendszergazdát john@notcontoso.com , hogy a contoso.com-címtárban ne legyen john@notcontoso.com jelen.
 
@@ -150,6 +150,6 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
 ## <a name="next-steps"></a>További lépések
 
-* [A különböző Azure-beli szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+* [A különböző szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
+* [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 * [Azure-előfizetési rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md)
