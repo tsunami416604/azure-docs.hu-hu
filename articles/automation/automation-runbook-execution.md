@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: ace701a6c19f4fe3af1c9ae6f5e63097dd59d405
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 1a9a503fd566c9b50f1503e0955bf12f69ac9960
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871687"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927921"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -86,7 +86,7 @@ A Azure Automation a [Azure monitor](https://docs.microsoft.com/azure/azure-moni
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows-ügynök Log Analytics
 
-A Windows rendszerhez készült [log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windowsmonitor) Azure monitor a Windows rendszerű virtuális gépek és a fizikai számítógépek kezelésére használható. A gépek akár az Azure-ban, akár egy nem Azure-környezetben, például egy helyi adatközpontban is futtathatók. Az ügynököt úgy kell konfigurálni, hogy egy vagy több Log Analytics-munkaterületre jelentsen. 
+A Windows rendszerhez készült [log Analytics agent](https://docs.microsoft.com/azure/azure-monitor/platform/agent-windows) Azure monitor a Windows rendszerű virtuális gépek és a fizikai számítógépek kezelésére használható. A gépek akár az Azure-ban, akár egy nem Azure-környezetben, például egy helyi adatközpontban is futtathatók. Az ügynököt úgy kell konfigurálni, hogy egy vagy több Log Analytics-munkaterületre jelentsen. 
 
 >[!NOTE]
 >A Windows rendszerhez készült Log Analytics ügynök korábban Microsoft monitoring Agent (MMA) néven ismert.

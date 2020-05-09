@@ -3,12 +3,12 @@ title: Service Fabric-fürt létrehozása az Azure Portalon
 description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürtöt az Azure-ban a Azure Portal és a Azure Key Vault használatával.
 ms.topic: conceptual
 ms.date: 09/06/2018
-ms.openlocfilehash: e0cd3d5e5a37720134a5bce596bba211b375f19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64a4c430cc7402419d64b77fdcc9a6389cf9de6d
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458317"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792479"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Service Fabric-fürt létrehozása az Azure-ban a Azure Portal használatával
 > [!div class="op_single_selector"]
@@ -107,7 +107,7 @@ Konfigurálja a fürtcsomópontok konfigurációját. A csomópontok típusai ha
 2. Az elsődleges csomópont típusához tartozó virtuális gépek minimális **méretét** a fürthöz választott **tartóssági szint** vezérli. A tartóssági szintek alapértelmezett értéke bronz. További információ a tartósságról: [a Service Fabric fürt tartósságának kiválasztása][service-fabric-cluster-durability].
 3. Válassza ki a **virtuális gép méretét**. A D sorozatú virtuális gépek SSD-meghajtókkal rendelkeznek, és az állapot-nyilvántartó alkalmazások esetében kifejezetten ajánlottak. Ne használjon olyan VM SKU-t, amely részleges maggal rendelkezik, vagy kevesebb, mint 10 GB szabad lemezterülettel rendelkezik. A virtuális gép méretének kiválasztásával kapcsolatos segítségért tekintse meg a [Service Fabric-fürt tervezési szempontja című dokumentumot][service-fabric-cluster-capacity] .
 4.  Az **egycsomópontos fürtök és a három csomópontos fürtök** csak tesztelési célú használatra szolgálnak. A futó éles munkaterhelések esetében nem támogatottak.
-5. Válassza ki a virtuálisgép- **méretezési csoport kezdeti kapacitását** a csomópont típusához. A csomópontokban lévő virtuális gépek számának vertikális felskálázása később, de az elsődleges csomópont típusától függően a minimum öt az éles munkaterhelések esetében. A többi csomópont-típushoz legalább egy virtuális gép tartozhat. Az elsődleges csomópont típusú virtuális gépek minimális **száma** a fürt **megbízhatóságát** vezérli.  
+5. Válassza ki a virtuálisgép- **méretezési csoport kezdeti kapacitását** a csomópont típusához. A csomópont-típusokban lévő virtuális gépek számának méretezése vagy kicsinyítése később, de az elsődleges csomópont típusától függően a minimum öt az éles számítási feladatokhoz. A többi csomópont-típushoz legalább egy virtuális gép tartozhat. Az elsődleges csomópont típusú virtuális gépek minimális **száma** a fürt **megbízhatóságát** vezérli.  
 6. **Egyéni végpontok**konfigurálása. Ebben a mezőben megadhatja a portok vesszővel tagolt listáját, amelyeket a Azure Load Balancer az alkalmazások számára elérhető nyilvános internetre kíván tenni. Ha például egy webalkalmazást szeretne üzembe helyezni a fürtön, írja be az "80" értéket, hogy engedélyezze a forgalmat a 80-es porton a fürtben. További információ a végpontokról: [kommunikáció az alkalmazásokkal][service-fabric-connect-and-communicate-with-services]
 7. **Fordított proxy engedélyezése**.  A [Service Fabric fordított proxy](service-fabric-reverseproxy.md) segíti a Service Fabric-fürtökön futó, a http-végpontokkal rendelkező más szolgáltatásokkal való kommunikációt.
 8. Vissza a **fürtkonfiguráció** panelen, a **választható beállítások megjelenítése**alatt konfigurálja a fürt **diagnosztikát**. Alapértelmezés szerint a diagnosztika engedélyezve van a fürtön, hogy segítséget nyújtson a hibák elhárításához. Ha le szeretné tiltani a diagnosztika állapotát, állítsa be az **állapotot** **kikapcsolva**értékre. A diagnosztika kikapcsolása **nem** ajánlott. Ha már létrehozta Application Insights projektet, majd adja meg a kulcsát, hogy az alkalmazás-Nyomkövetések hozzá legyenek irányítva.
