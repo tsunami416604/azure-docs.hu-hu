@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 32bc90cc069ac82641c3aa7692c900c60db7ba87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 915df5d6356e2246c8937cb167c8068b00e0917b
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733104"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854619"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub"></a>Azure monitorozási adatok streamelése egy eseményközpontba
 A Azure Monitor teljes körű figyelési megoldást kínál az Azure-ban, más felhőben és a helyszínen található alkalmazások és szolgáltatások számára. Az adatok elemzéséhez és a különböző figyelési helyzetekben való kihasználásához Azure Monitor használata mellett előfordulhat, hogy a környezetében más figyelési eszközökre is el kell küldenie. A legtöbb esetben az [Azure Event Hubs](/azure/event-hubs/)-t használja a leghatékonyabb módszer a megfigyelési és a külső eszközökre való továbbításra. Ez a cikk rövid leírást tartalmaz arról, hogy miként továbbíthatja a különböző forrásokból származó figyelési adatok egy Event hubhoz való továbbítását, és részletes útmutatásra mutató hivatkozásokat talál.
@@ -23,7 +23,7 @@ A Azure Monitor teljes körű figyelési megoldást kínál az Azure-ban, más f
 Az adatforrások folyamatos átvitelének konfigurálása előtt [létre kell hoznia egy Event Hubs névteret és az Event hub](../../event-hubs/event-hubs-create.md)-t. Ez a névtér és az Event hub az összes megfigyelési adattal kapcsolatos cél. Az Event Hubs névtér olyan esemény-hubok logikai csoportosítása, amelyek ugyanazt a hozzáférési házirendet használják, hasonlóan ahhoz, hogy a Storage-fiókhoz egyedi Blobok tartoznak. Vegye figyelembe a következő adatokat az Event hubok névterével és a figyelési adatok továbbításához használt esemény hubokkal kapcsolatban:
 
 * Az átviteli egységek száma lehetővé teszi az adatforgalom léptékének növelését az Event hubok esetében. Általában csak egy átviteli egységre van szükség. Ha vertikális felskálázásra van szükség a naplók használatának növekedésével, manuálisan növelheti a névtér átviteli egységének számát, vagy engedélyezheti az automatikus inflációt.
-* A partíciók száma lehetővé teszi, hogy integrálással a felhasználást számos fogyasztó között. Egy partíció legfeljebb 20MBps vagy körülbelül 20 000 üzenetet tud támogatni másodpercenként. Az adatok felhasználását igénybe vehető eszköztől függően előfordulhat, hogy nem támogatja több partíció használatát. Négy partíciót érdemes elindítani, ha nem biztos abban, hogy nem biztos benne, hogy hány partíciót kell beállítania.
+* A partíciók száma lehetővé teszi, hogy integrálással a felhasználást számos fogyasztó között. Egy partíció legfeljebb 20MBps vagy körülbelül 20 000 üzenetet tud támogatni másodpercenként. Az adatok felhasználását igénybe vehető eszköztől függően előfordulhat, hogy nem támogatja több partíció használatát. Ha nem biztos benne, hogy hány partíciót kell beállítania, akkor a négy partíciót érdemes kezdeni.
 * Az üzenetek megőrzését az Event hub-ban legalább 7 napig be kell állítani. Ha a felhasználó eszköz több mint egy napja leáll, ezzel biztosíthatja, hogy az eszköz képes legyen a 7 napnál régebbi események kikapcsolására.
 * Az Event hub alapértelmezett fogyasztói csoportját kell használnia. Nem kell más fogyasztói csoportokat létrehoznia, vagy külön fogyasztói csoportot használnia, ha azt tervezi, hogy két különböző eszköz ugyanazt az adatközpontot használja fel ugyanazokból az adatokból.
 * Az Azure-beli tevékenység naplójában válasszon ki egy Event Hubs névteret, és Azure Monitor a névtéren belül létrehoz egy, az elemzések – _naplók – műveleti naplók_nevű Event hubot. Más típusú naplók esetében választhat egy meglévő Event hub-t, vagy létrehozhat egy Azure Monitor Event hub-t is.
@@ -50,12 +50,12 @@ A monitorozási adatait Azure Monitor segítségével átirányíthatja egy Even
 
 | Eszköz | Az Azure-ban üzemeltetve | Leírás |
 |:---|:---| :---|
-|  IBM QRadar | Nem | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
-| Splunk | Nem | [A Splunk Azure monitor-bővítménye](https://splunkbase.splunk.com/app/3534/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. A dokumentáció a következő címen érhető el: [Azure monitor Addon for splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).<br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
-| SumoLogic | Nem | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
-| ArcSight | Nem | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
-| Syslog-kiszolgáló | Nem | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
-| LogRhythm | Nem| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
+|  IBM QRadar | No | A Microsoft Azure DSM és Microsoft Azure Event hub protokoll letölthető [az IBM támogatási webhelyéről](https://www.ibm.com/support). Az Azure-nal való integrációról a [QRADAR DSM-konfigurációjában](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)olvashat bővebben. |
+| Splunk | No | [A Splunk Azure monitor-bővítménye](https://splunkbase.splunk.com/app/3534/) egy nyílt forráskódú projekt, amely elérhető a Splunkbase-ben. A dokumentáció a következő címen érhető el: [Azure monitor Addon for splunk](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk).<br><br> Ha nem telepíthet bővítményt a splunk-példányban, például ha proxyt használ, vagy ha a splunk-felhőben fut, ezeket az eseményeket a [splunk Azure Function](https://github.com/Microsoft/AzureFunctionforSplunkVS)használatával továbbíthatja a splunk http-esemény gyűjtője számára, amelyet az Event hub új üzenetei is aktiválnak. |
+| SumoLogic | No | Az SumoLogic adatok az Event hub-ból való felhasználásának beállítására vonatkozó utasítások [Az Azure-beli audit-alkalmazás eseménynaplójában érhetők el az Event hub-ból](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub). |
+| ArcSight | No | A ArcSight Azure Event hub intelligens összekötő a [ArcSight intelligens összekötő gyűjteményének](https://community.softwaregrp.com/t5/Discussions/Announcing-General-Availability-of-ArcSight-Smart-Connectors-7/m-p/1671852)részeként érhető el. |
+| Syslog-kiszolgáló | No | Ha Azure Monitor-adatforrást közvetlenül egy syslog-kiszolgálóra szeretné továbbítani, használhat egy [Azure-függvényen alapuló megoldást](https://github.com/miguelangelopereira/azuremonitor2syslog/).
+| LogRhythm | No| [Itt](https://logrhythm.com/six-tips-for-securing-your-azure-cloud-environment/)találhat útmutatást a naplók LogRhythm való összegyűjtéséhez. 
 |Logz.io | Igen | További információ: [Ismerkedés az Azure-on futó Java-alkalmazások Logz.IO használatával a figyelés és a naplózás](https://docs.microsoft.com/azure/developer/java/fundamentals/java-get-started-with-logzio) használatába
 
 

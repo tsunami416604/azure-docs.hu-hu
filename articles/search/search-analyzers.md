@@ -8,16 +8,21 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 2e4a6ab8825982969ffa4654c2418f7a9d168d2e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7be56fa48887e2ee500f1b253c078bde16d91e6
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460717"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891226"
 ---
 # <a name="analyzers-for-text-processing-in-azure-cognitive-search"></a>Az Azure Cognitive Searchban való szövegszerkesztés elemzői
 
 Az *elemző* a [teljes szöveges keresőmotor](search-lucene-query-architecture.md) összetevője, amely a lekérdezési karakterláncokban és az indexelt dokumentumokban lévő szövegek feldolgozásához felelős. A különböző elemzők a forgatókönyvtől függően különböző módokon kezelhetik a szöveget. A nyelvi elemzők a nyelvi szabályok segítségével dolgozzák fel a minőségi keresési minőséget, míg más elemzők több alapvető feladatot hajtanak végre, például a karakterek kis-és nagybetűkre való konvertálásakor. 
+
+A következő videós szegmens gyors továbbítással mutatja be, hogyan működik a Text Processing az Azure Cognitive Searchban.
+
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=132&end=189]
+
 
 A nyelvi elemzők a leggyakrabban használatos, és az Azure Cognitive Search indexben található minden kereshető mezőhöz alapértelmezett nyelvi elemző van rendelve. A szöveg elemzése során a következő nyelvi átalakítások jellemzőek:
 

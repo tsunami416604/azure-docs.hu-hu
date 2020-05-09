@@ -1,21 +1,21 @@
 ---
-title: A Azure Automation beépített szabályzat-definícióinak listája
-description: A Azure Automation Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített modulok közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
+title: A Azure Automation beépített szabályzat-definíciói
+description: A Azure Automation Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
 ms.date: 04/30/2020
 ms.topic: sample
 ms.custom: subject-policy-samples
-ms.openlocfilehash: bba1c829d0a639aeb252efab3f295a78024bd76d
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
-ms.translationtype: HT
+ms.openlocfilehash: 0fdffc4fc2eba32190e477b436ba7157b63e670e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/08/2020
-ms.locfileid: "82966259"
+ms.locfileid: "82981255"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-automation"></a>Azure Policy beépített szabályzat-definíciók a Azure Automation
 
 Ez az oldal a Azure Automation [Azure Policy](../governance/policy/overview.md) beépített szabályzat-definícióinak indexe. További Azure Policy a más szolgáltatásokhoz készült beépített [definíciók: Azure Policy beépített definíciók](../governance/policy/samples/built-in-policies.md).
 
-Az egyes beépített hivatkozások neve a Azure Portal házirend-definíciójában. **A forrás oszlopban található** hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
+Az egyes beépített szabályzat-definíciók neve a Azure Portal házirend-definíciójának nevére hivatkozik. A **GitHub** oszlopban található hivatkozás használatával megtekintheti a forrást a [Azure Policy GitHub](https://github.com/Azure/azure-policy)-tárházban.
 
 ## <a name="azure-automation"></a>Azure Automation
 

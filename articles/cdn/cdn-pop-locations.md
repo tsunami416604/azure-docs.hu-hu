@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2020
 ms.author: allensu
-ms.openlocfilehash: 227aae23babbcd5d734a10821d9311f91532ea4e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32b76687910b2bf028365cc6df2bc8272b393f32
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770979"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82837464"
 ---
 # <a name="azure-cdn-coverage-by-metro"></a>Lefedettség Azure CDN Metro szerint 
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Ez a cikk felsorolja az Azure Content Delivery Network-(CDN-) termékek földraj
 | Régió | Microsoft | Verizon | Akamai |
 | --- | --- | --- | --- |
 | Észak-Amerika | Toronto, Kanada<br />Vancouver, Kanada<br />Montreal, Kanada<br />Querétaro, Mexikó<br />San Juan, Puerto Rico<br />Ashburn, VA, USA<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Cheyenne, WY, USA<br />Chicago, IL, USA<br /> Dallas, TX, USA<br />Denver, CO, USA<br />Honolulu, HI, USA<br />Houston, TX, USA<br />Las Vegas, NV, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Newark, NJ, USA<br />Phoenix, AZ, USA<br />Portland, OR, USA<br />San Antonio, TX, USA<br />San Jose, CA, USA<br />Seattle, WA, USA | Guadalajara, Mexikó<br />Mexikóváros, Mexikó<br />Puebla, Mexikó<br />Querétaro, Mexikó<br />Atlanta, GA, USA<br />Boston, MA, USA<br />Chicago, IL, USA<br />Dallas, TX, USA<br />Denver, CO, USA<br />Detroit, MI, USA<br />Los Angeles, CA, USA<br />Miami, FL, USA<br />New York, NY, USA<br />Philadelphia, PA, USA<br />San Jose, CA, USA<br />Seattle, WA, USA<br />Washington, DC, USA | Kanada<br />Mexikó<br />USA |
-| Dél-Amerika | Campinas, Brazília<br />Rio de Janeiro, Brazília<br />Sao Paulo, Brazília<br />Santiago, Chile | Buenos Aires, Argentína<br />Rio de Janeiro, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chile<br />Bogota, Kolumbia<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Quito, Ecuador<br />Lima, Peru | Argentína<br />Brazília<br />Chile<br />Columbia<br />Ecuador<br />Peru<br />Uruguay |
+| Dél-Amerika | Campinas, Brazília<br />Rio de Janeiro, Brazília<br />Sao Paulo, Brazília<br />Santiago, Chile<br />Bogota, Kolumbia<br />Buenos Aires, Argentína | Buenos Aires, Argentína<br />Rio de Janeiro, Brazília<br />São Paulo, Brazília<br />Valparaíso, Chile<br />Bogota, Kolumbia<br />Barranquilla, Kolumbia<br />Medellin, Kolumbia<br />Quito, Ecuador<br />Lima, Peru | Argentína<br />Brazília<br />Chile<br />Columbia<br />Ecuador<br />Peru<br />Uruguay |
 | Európa | Bécs, Ausztria<br />Brüsszel, Belgium<br />Szófia, Bulgária<br />Zágráb, Horvátország<br />Prága, Cseh Köztársaság<br />Koppenhága, Dánia<br /> Helsinki, Finnország<br /> Oslo, Norvégia<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Berlin, Németország<br />Frankfurt, Németország<br />Athén, Görögország<br />Budapest, Magyarország<br />Dublin, Írország<br />Milánó, Olaszország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Lisszabon, Portugália<br />Bukarest, Románia<br />Barcelona, Spanyolország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />Zürich, Svájc<br />London, Egyesült Királyság<br />Manchester, Egyesült Királyság | Bécs, Ausztria<br />Koppenhága, Dánia<br />Helsinki, Finnország<br />Marseille, Franciaország<br />Párizs, Franciaország<br />Frankfurt, Németország<br />Milánó, Olaszország<br />Riga, Lettország<br />Amszterdam, Hollandia<br />Varsó, Lengyelország<br />Madrid, Spanyolország<br />Stockholm, Svédország<br />London, Egyesült Királyság | Ausztria<br />Bulgária<br />Dánia<br />Finnország<br />Franciaország<br />Németország<br />Görögország<br />Írország<br />Olaszország<br />Hollandia<br />Lengyelország<br />Oroszország<br />Spanyolország<br />Svédország<br />Svájc<br />Egyesült Királyság |
 | Afrika | Cape Town, Dél-Afrika<br />Johannesburg, Dél-Afrika<br />Lagos, Nigéria<br />Nairobi, Kenya | Johannesburg, Dél-Afrika | Dél-afrikai Köztársaság |
 | Közel-Kelet | Dubaj, Egyesült Arab Emírségek<br />Tel Aviv, Izrael<br />Isztambul, Törökország | Muscat, Omán<br />Fujirah, Egyesült Arab Emírségek | Katar<br />Egyesült Arab Emírségek |

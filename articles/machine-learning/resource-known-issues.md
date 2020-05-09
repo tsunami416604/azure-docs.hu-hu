@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: 2760033cd66e99a7a7f6d331e03c6f98c486d286
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93015da810f163a48529704e69e1747ac1aec401
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231968"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889397"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning"></a>Ismert problémák és hibaelhárítási Azure Machine Learning
 
@@ -39,7 +39,7 @@ Esetenként hasznos lehet, ha a Segítség kérése során diagnosztikai adatoka
 Ismerje meg, hogy milyen [erőforrás-kvóták](how-to-manage-quotas.md) merülhetnek fel a Azure Machine learning használatakor.
 
 ## <a name="installation-and-import"></a>Telepítés és importálás
-
+                           
 * **Pip-telepítés: a függőségek nem garantáltak, hogy konzisztensek legyenek az egysoros telepítéssel**: 
 
    Ez a pip ismert korlátozása, mivel nem rendelkezik működő függőségi feloldóval, ha egyetlen vonalként telepíti. Az első egyedi függőség az egyetlen, amely a következőt keresi:. 
@@ -56,7 +56,29 @@ Ismerje meg, hogy milyen [erőforrás-kvóták](how-to-manage-quotas.md) merülh
         pip install azure-ml-datadrift
         pip install azureml-train-automl 
      ```
-
+     
+* **A azureml-Train-automl-Client telepítésekor a rendszer nem telepíti a magyarázó csomagot guarateed:** 
+   
+   Ha egy távoli automl futtat, és a modell magyarázata engedélyezve van, a következő hibaüzenet jelenik meg: "" Kérjük, telepítse a azureml-magyarázza-Model csomagot a modell magyarázata című témakörben. " Ez egy ismert probléma, és megkerülő megoldásként kövesse az alábbi lépések egyikét:
+  
+  1. Telepítse a azureml-magyarázza a modellt helyileg.
+   ```
+      pip install azureml-explain-model
+   ```
+  2. A magyarázatot teljes mértékben tiltsa le a automl-konfigurációban model_explainability = False érték beírásával.
+   ```
+      automl_config = AutoMLConfig(task = 'classification',
+                             path = '.',
+                             debug_log = 'automated_ml_errors.log',
+                             compute_target = compute_target,
+                             run_configuration = aml_run_config,
+                             featurization = 'auto',
+                             model_explainability=False,
+                             training_data = prepped_data,
+                             label_column_name = 'Survived',
+                             **automl_settings)
+    ``` 
+    
 * **Panda-hibák: általában a AutoML kísérlet során látható:**
    
    Ha a environmnet-t a pip használatával manuálisan állítja be, akkor az attribútummal kapcsolatos hibákat (különösen a pandákből) láthatja, mert a csomagok telepítése nem támogatott. Az ilyen hibák megelőzése érdekében [telepítse a AUTOML SDK-t a automl_setup. cmd fájl használatával](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md):

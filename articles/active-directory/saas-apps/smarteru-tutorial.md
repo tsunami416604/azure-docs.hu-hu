@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 712e7bcf513592f97950902faff2f7754093b9fc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9e44aecc5015986079afb3190101cdaabc4a6874
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76549291"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981952"
 ---
+# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Oktatóanyag: Azure Active Directory integráció a SmarterU
+
 > [!NOTE]
 > A SmarterU és a Azure Active Directory integrálásának folyamata is dokumentálva és karbantartva van a [SmarterU súgójában](https://help.smarteru.com/ID2053086).
-
-# <a name="tutorial-azure-active-directory-integration-with-smarteru"></a>Oktatóanyag: Azure Active Directory integráció a SmarterU
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a SmarterU a Azure Active Directory (Azure AD) szolgáltatással.
 A SmarterU és az Azure AD integrálásával a következő előnyöket nyújtja:

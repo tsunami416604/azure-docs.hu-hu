@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/10/2020
+ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e10908a3ce0ad372ab7d05fda9a15481d0efc5a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127567"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692237"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -82,6 +82,16 @@ Windows rendszerű virtuális asztallal való használat esetén a ControlUp tov
 - [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3PUit).
 - [Lépjen a partner webhelyére](https://www.controlup.com/solutions/ms_wvd/).
 
+## <a name="dell"></a>Dell
+
+![DELL embléma](./media/partners/dell.png)
+
+A Dell Technologies vékony ügyfelei a Microsoft Azure és a Windows rendszerű virtuális asztali szolgáltatások elérésére vannak optimalizálva. Képes megfelelni az együttműködésen alapuló szakemberektől származó igényeknek a grafikusan nagy teljesítményű felhasználók számára, a Wyse vékony ügyfelek kiváló minőségű számítástechnikai élményt biztosítanak az alkalmazások és tartalmak egyre növekvő számának kihasználásához. Ideális a térben korlátozott környezetekhez, a vékony ügyfelek alkalmazkodnak a sokoldalú Wyse és a csatlakoztatási lehetőségek széles választékához.
+
+A Wyse vékony ügyfelek a korlátozott támadási felülettel, a biztonsági megfelelőségi szabványok támogatásával és a többtényezős hitelesítéssel kapcsolatos speciális megoldásokkal vannak kialakítva. Szigorúan biztonságos, vékony ügyfeleket helyezhet üzembe a Dell-Exclusive Wyse ThinOS, vagy biztonságos hozzáférést érhet el a felhőalapú alkalmazásokhoz és virtuális munkaterületekhez a megerősített Wyse-ThinLinux kereskedelmi bevált kialakítással és Windows 10 IoT Enterprise-mel a Dell által hozzáadott biztonsági funkciókkal. A Wyse Management Suite biztonságos, HTTPS-alapú kommunikációval és Active Directory-hitelesítéssel tartja naprakészen a Wyse-végpontokat, a WMS Pro-hoz készült Mobile App pedig lehetővé teszi a kritikus riasztások megtekintését és a valós idejű parancsok egyetlen koppintással való elküldését.
+
+- [Lépjen a partner webhelyére](https://www.delltechnologies.com/en-us/wyse/index.htm#scroll=off&overlay=//www.dellemc.com/en-us/collaterals/unauth/brochures/products/thin-clients/Wyse_Windows_Embedded_Standard_thin_clients_brochure.pdf).
+
 ## <a name="devicetrust"></a>deviceTRUST
 
 ![deviceTRUST embléma](./media/partners/devicetrust.png)
@@ -110,6 +120,7 @@ A IGEL a Microsoft Azure és a Windows rendszerű virtuális asztali szolgáltat
  
 A IGEL operációs rendszer az összes népszerű virtuális alkalmazást, asztali gépeket és Felhőbeli munkaterület-protokollt támogatja a Citrixtől, a Microsofttól és a VMware-től. Integrált technológiákat tartalmaz a 85 perifériás, Interface és Protocol partnerektől, hogy a szervezetek gyorsan fogadjanak el Windowsos virtuális asztali szolgáltatásokat a saját egyedi felhasználói környezetében. A IGEL operációs rendszer írásvédett, moduláris végpont operációs rendszer, amely segít a védelemben. Emellett egy teljes "megbízhatósági láncot" is tartalmaz, amely ellenőrzi a végponton futó legfontosabb főbb folyamatok integritását, a végponti hardvertől (néhány kiválasztott modelltől), vagy az UEFI folyamattól egészen az Azure Cloud és a Windows Virtual Desktop szolgáltatásokhoz. A IGEL operációs rendszerrel a vállalatok az Azure-felhőből előfizethetnek a Windows rendszerű virtuális asztalra, így teljes körű megbízhatósággal rendelkeznek a felhasználói végpont eszközeinek integritásában, biztonságában és kezelhetőségében.
 
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviO).
 - [Lépjen a partner webhelyére](https://www.igel.com/igel-os-universal-desktop-operating-system/).
 
 ## <a name="ivanti"></a>Ivanti
@@ -191,6 +202,7 @@ A PolicyPak szoftver egy Windows rendszerű virtuális asztali partner, amely az
 
 A PolicyPak leggyakrabban a helyi rendszergazdai jogosultságok eltávolítására és az UAC-kérések letiltására, a ransomware, a több böngésző kezelésére, az Internet Explorer vállalati és kompatibilitási módjaira, a csoportházirend-objektumok számának csökkentésére, a Windows 10 fájltársítások kezelésére, a Windows 10 Start menüjének és a tálcára, valamint a Windows 10 szolgáltatásainak és választható szolgáltatásainak kezelésére használhatók.  
 
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vviN).
 - [Lépjen a partner webhelyére](https://www.policypak.com/integration/policypak-windows-virtual-desktop.html).
 
 ## <a name="printerlogic"></a>PrinterLogic
@@ -211,8 +223,8 @@ A Printix egy Windows rendszerű virtuális asztali értéknövelt szolgáltatá
 
 A nyomtatás alapvető feladat minden irodai és kisméretű üzleti környezetben. A Windows rendszerű virtuális asztalok teljes körű kihasználása és a nagyszerű felhasználói élmény biztosítása érdekében elengedhetetlen, hogy a felhasználók a minimális erőfeszítéssel és a maximális megbízhatósággal csatlakozhassanak a nyomtatókhoz. A Printix használatával az egyszeri bejelentkezés (SSO), a csendes konfiguráció, a rendszeres frissítések és a nyomtatási környezet folyamatos figyelése révén a lehető legtöbbet hozhatja ki a Windows rendszerű virtuális asztalok közül.
 
-- [Rövid útmutató a közös megoldásról](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2)
-- [Ugrás a partner webhelyére](https://www.printix.net/printix-for-windows-virtual-desktop)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4aiK2).
+- [Lépjen a partner webhelyére](https://www.printix.net/printix-for-windows-virtual-desktop).
 
 ## <a name="rdpsoft"></a>RDPSoft
 
@@ -222,7 +234,7 @@ A RDPSoft egy olyan Windows rendszerű virtuális asztali partner, amely hatéko
  
 A RDPSoft Távoli asztal Commander-megoldásai fokozzák a Windows rendszerű virtuális asztali felügyeletet. A prémium szintű felügyeleti funkciók lehetővé teszik a Windows rendszerű virtuális asztalok felügyeleti feladatainak delegálását, és támogatják a Távsegítség, a felhasználói munkamenetek és a folyamatok kezelését. Ugyanakkor a Távoli asztal Commander Suite részletes mérőszámokat gyűjt a felhasználónkénti teljesítményről és betöltésről, a felhasználói tevékenységekről és a naplózásról, a Windows virtuális asztali kapcsolat minőségéről (késés és sávszélesség), a licencelésről és a biztonságról egy központi Azure SQL Database-példányra a felülvizsgálathoz. A RDPSoft, a gazdag történelmi jelentéskészítés és az átfogó irányítópultok csupán egy kattintással elérhetők.
 
-- [Ugrás a partner webhelyére](https://www.rdpsoft.com/products/remote-desktop-commander/suite/)
+- [Lépjen a partner webhelyére](https://www.rdpsoft.com/products/remote-desktop-commander/suite/).
 
 ## <a name="sepago"></a>sepago
 
@@ -232,7 +244,8 @@ a sepago-t 2002-ben alapították Kölnben négy baráttal. Napjainkban a sepago
 
 a sepago innovációs és fejlesztési laborja big data-és AI-technológiák használatával intelligens megoldásokat hoz létre. Ezek a megoldások az üzleti, a felhasználói élmény és a partneri termékek (például a Windows Virtual Desktop) felügyeletének javítására összpontosítanak.
 
-- [Ugrás a partner webhelyére](https://www.sepago.de/wvd-value-add-tools/)
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
+- [Lépjen a partner webhelyére](https://www.sepago.de/wvd-value-add-tools/).
 
 ## <a name="thinprint"></a>ThinPrint
 
@@ -263,7 +276,18 @@ a uberAgent vállalat nagy korlátokat biztosít a Windows rendszerű virtuális
 
 a uberAgent egy figyelési és elemzési termék, amely a végfelhasználói számítástechnika számára lett kialakítva, amely nem csupán az adatokat gyűjti, így az ügyfelek számára a fontos információk szerepelnek. a uberAgent saját mérőszámokkal rendelkezik, amelyek a felhasználói élmény, az alkalmazások és a végpontok biztonságának kulcsfontosságú szempontjait fedik le, és mindent megtudhat a Windows rendszerű virtuális asztali gépekről, anélkül, hogy ez befolyásolná a rendszerek felhasználói sűrűségét. a uberAgent leegyszerűsíti a hibaelhárítást, segíti a méretezést, és részletes információkkal szolgál az információbiztonság terén.
 
-- [Ugrás a partner webhelyére](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop)
+- [Lépjen a partner webhelyére](https://uberagent.com/docs/uberagent/latest/about-uberagent/system-requirements/#windows-virtual-desktop).
+
+## <a name="workspace-365"></a>Munkaterület 365
+
+![Munkaterület 365 emblémája](./media/partners/workspace-365.png)
+
+A munkaterület 365 minden információt (üzleti adatokat, dokumentumokat, kommunikációs és Micro alkalmazásokat) egyesít, és hozzáférést biztosít bármely helyi, webes vagy üzemeltetett alkalmazáshoz egy munkaterületen. A szolgáltatás automatikusan alkalmazkodik a szerepkörhöz, a helyhez, az eszközhöz és a böngészőhöz, és így személyre szabott munkaterületet biztosít. A felhasználók egyszerűsített és konzisztens élményt nyújtanak, függetlenül attól, hogy milyen technológiák vannak a felszín alatt. Integrálhatja jelenlegi megoldásait, például az RDP-, a Citrix-és az örökölt alkalmazásokat, és áthelyezheti őket a Windows rendszerű virtuális asztalra, miközben megtartja ugyanazt a felhasználói élményt. Emellett egyetlen dokumentumkezelő alkalmazásban is integrálhatja az összes fájl helyét, például a SharePoint, a OneDrive, a Teams és a fájlkiszolgálók szolgáltatásait.
+
+A (z) 365 munkaterületen a rendszergazdák a Windows rendszerű virtuális asztali alkalmazások számára elérhetővé tehetik a felhasználók számára az engedélyek alapján elérhetővé tett alkalmazásokat. A rendszergazda ezután hozzáadhatja ezeket az alkalmazásokat egy megosztott alkalmazáscsoport számára. Ha a Windows rendszerű virtuális asztali alkalmazás látható a 365 munkaterületen, a felhasználók a munkaterületről is megnyithatják azt anélkül, hogy újra be kellene jelentkezniük. 
+
+- [Tekintse meg röviden a közös megoldást](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vARh).
+- [Lépjen a partner webhelyére](https://workspace365.net/product-tour/hybrid-workspace-365/).
 
 ## <a name="workspot"></a>Workspot
 
@@ -279,4 +303,4 @@ A Workspot kiterjeszti a Windows virtuális asztal értékét a Cloud Desktop-in
 ## <a name="next-steps"></a>További lépések
 
 - [További információ a Windows rendszerű virtuális asztali környezetről](overview.md).
-- [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
+- [Hozzon létre egy bérlőt a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).

@@ -4,7 +4,7 @@
   items:
     - name: Az Azure Cache for Redis névjegye
       href: cache-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: ASP.NET-alkalmazás
@@ -19,7 +19,7 @@
       href: cache-nodejs-get-started.md
     - name: Python-alkalmazás
       href: cache-python-get-started.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: A gyorsítótárazás és a ranglisták együttes használata
       href: cache-web-app-cache-aside-leaderboard.md
@@ -27,10 +27,13 @@
   items:
     - name: Azure Cache for Redis-minták
       href: cache-redis-samples.md
-    - name: Azure PowerShell
+    - name: Azure
       href: cache-how-to-manage-redis-cache-powershell.md
     - name: Azure CLI
       href: cli-samples.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Biztonság
@@ -45,7 +48,7 @@
       href: 'https://docs.microsoft.com/azure/architecture/best-practices/caching?toc=%2Fazure%2Fredis-cache%2Ftoc.json'
 - name: Útmutatók
   items:
-    - name: Csomag
+    - name: Felkészülés
       items:
         - name: Gyorsítótárszint kiválasztása
           href: 'cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use'
@@ -97,7 +100,7 @@
           href: cache-how-to-redis-cli-tool.md
         - name: A TLS 1.0 és 1.1 eltávolítása
           href: cache-remove-tls-10-11.md
-    - name: Monitoring
+    - name: Figyelés
       items:
         - name: Monitorozás az Azure Portalon
           href: cache-how-to-monitor.md
@@ -130,7 +133,7 @@
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.redis
     - name: Java
-      href: /java/api/com.microsoft.azure.management.redis._redis_cache
+      href: /java/api/com.microsoft.azure.management.redis.rediscache
     - name: Redis ügyfelek
       href: 'https://redis.io/clients'
     - name: Redis parancsok
