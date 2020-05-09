@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 173e663b66eeca676e8120dd46e8eca8b0126a17
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204202"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780742"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Felkészülés a IoT Edge-megoldás éles környezetben történő üzembe helyezésére
 
@@ -107,7 +107,7 @@ Az IoT Edge hub alapértelmezés szerint a teljesítményre van optimalizálva, 
 
 Ha a **OptimizeForPerformance** értéke **true (igaz**), a MQTT-protokoll feje a PooledByteBufferAllocator használja, amely jobb teljesítményt nyújt, de több memóriát foglal le. A lefoglaló nem működik megfelelően a 32 bites operációs rendszereken, illetve az alacsony memóriával rendelkező eszközökön. Emellett, ha teljesítményre optimalizált, a RocksDb több memóriát foglal le a szerepköréhez, mint a helyi tároló szolgáltatója.
 
-További információ: [stabilitási problémák az erőforrás által korlátozott eszközökön](troubleshoot.md#stability-issues-on-resource-constrained-devices).
+További információ: [stabilitási problémák a kisebb eszközökön](troubleshoot-common-errors.md#stability-issues-on-smaller-devices).
 
 #### <a name="disable-unused-protocols"></a>Nem használt protokollok letiltása
 
@@ -200,7 +200,7 @@ Ezután frissítse a rendszerkép hivatkozásait a edgeAgent és a edgeHub rends
 
 ### <a name="review-outboundinbound-configuration"></a>Kimenő/bejövő konfiguráció áttekintése
 
-Az Azure IoT Hub és IoT Edge közötti kommunikációs csatornák mindig kimenő értékre vannak konfigurálva. A legtöbb IoT Edge forgatókönyv esetén csak három kapcsolat szükséges. A tároló-motornak kapcsolódnia kell a modul lemezképeit tároló beállításjegyzékbeli (vagy kibocsátásiegység-nyilvántartási) adatbázishoz. Az IoT Edge futtatókörnyezetnek csatlakoznia kell a IoT Hubhoz az eszköz konfigurációs adatainak lekéréséhez, valamint üzenetek és telemetria küldéséhez. Ha az automatikus kiépítés szolgáltatást használja, a IoT Edge démonnak csatlakoznia kell az eszköz kiépítési szolgáltatásához. További információ: a [tűzfal és a port konfigurációs szabályai](troubleshoot.md#firewall-and-port-configuration-rules-for-iot-edge-deployment).
+Az Azure IoT Hub és IoT Edge közötti kommunikációs csatornák mindig kimenő értékre vannak konfigurálva. A legtöbb IoT Edge forgatókönyv esetén csak három kapcsolat szükséges. A tároló-motornak kapcsolódnia kell a modul lemezképeit tároló beállításjegyzékbeli (vagy kibocsátásiegység-nyilvántartási) adatbázishoz. Az IoT Edge futtatókörnyezetnek csatlakoznia kell a IoT Hubhoz az eszköz konfigurációs adatainak lekéréséhez, valamint üzenetek és telemetria küldéséhez. Ha az automatikus kiépítés szolgáltatást használja, a IoT Edge démonnak csatlakoznia kell az eszköz kiépítési szolgáltatásához. További információ: a [tűzfal és a port konfigurációs szabályai](troubleshoot.md#check-your-firewall-and-port-configuration-rules).
 
 ### <a name="allow-connections-from-iot-edge-devices"></a>IoT Edge eszközök kapcsolatainak engedélyezése
 

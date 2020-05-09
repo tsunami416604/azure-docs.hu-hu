@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: aamalvea
 ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
-ms.date: 03/10/2020
-ms.openlocfilehash: 67c47b35e84a93d7d9032ad55b425ae2bb6971fe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/04/2020
+ms.openlocfilehash: 37eabd4b2f61a82388b1c8d0aaf4aef2320f008e
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79209466"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801807"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-azure-synapse-analytics-databases-using-azure-portal"></a>Riasztások létrehozása a Azure SQL Database és az Azure szinapszis Analytics-adatbázisok számára a Azure Portal használatával
 
@@ -24,8 +24,8 @@ ms.locfileid: "79209466"
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a riasztásokat a Azure SQL Database és az Azure szinapszis Analytics (korábban Azure SQL Data Warehouse) által a Azure Portal használatával létrehozott egyszeres, készletezett és adatraktár-adatbázisokhoz. A riasztások e-mailt küldhetnek, vagy meghívhatnak egy webhookot, ha valamilyen metrika (például az adatbázis mérete vagy a CPU-használat) eléri a küszöbértéket. Ez a cikk a riasztási időszakok beállításának ajánlott eljárásait is tartalmazza.
 
-> [!IMPORTANT]
-> Ez a funkció még nem érhető el a felügyelt példányban. Alternatív megoldásként az SQL Agent használatával e-mail-riasztásokat küldhet a [dinamikus felügyeleti nézeteken](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views)alapuló mérőszámokhoz.
+> [!NOTE]
+> Az SQL által felügyelt példányokra vonatkozó utasításokért lásd: [riasztások létrehozása az Azure SQL felügyelt példányaihoz](sql-database-managed-instance-alerts.md).
 
 Riasztást kaphat az Azure-szolgáltatásokra vonatkozó metrikák vagy események figyelése alapján.
 

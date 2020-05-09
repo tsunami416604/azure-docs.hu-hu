@@ -8,21 +8,18 @@ ms.subservice: studio
 ms.topic: conceptual
 author: likebupt
 ms.author: keli19
-ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: 9a0b855f48085138b28e02e0a5d01c5dd0f666be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23a201ef63a9a1a6bb5bd078867ccc1200893049
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218064"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982020"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio-classic"></a>A modell eredményeinek értelmezése Azure Machine Learning Studio (klasszikus)
 
 [!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 Ez a témakör bemutatja, hogyan jelenítheti meg és értelmezheti az előrejelzési eredményeket Azure Machine Learning Studio (klasszikus). Miután betanított egy modellt, és elvégezte az előrejelzések megtételét ("a modell értékelése"), meg kell ismernie és el kell értelmezni az előrejelzés eredményét.
-
-
 
 A gépi tanulási modellek négy fő típusa Azure Machine Learning Studio (klasszikus):
 
@@ -37,11 +34,11 @@ Az ezen modellek alapján történő előrejelzéshez használt modulok a követ
 * [Hozzárendelés fürtökhöz][assign-to-clusters] modul a fürtözéshez
 * [Matchbox-ajánló][score-matchbox-recommender] a javaslati rendszerekhez
 
-Ez a dokumentum ismerteti, hogyan értelmezhető az egyes modulok előrejelzési eredményei. A modulok áttekintését lásd: [Paraméterek kiválasztása az algoritmusok optimalizálásához Azure Machine learning Studio (klasszikus)](algorithm-parameters-optimize.md).
+Megtudhatja, hogyan [választhat paramétereket az algoritmusok optimalizálásához ml Studio (klasszikus)](algorithm-parameters-optimize.md).
 
-Ez a témakör az előrejelzési értelmezést, de a modell kiértékelését nem tartalmazza. További információ a modell kiértékeléséről: [modell teljesítményének kiértékelése Azure Machine learning Studio (klasszikus)](evaluate-model-performance.md).
+A modellek kiértékeléséről a [modell teljesítményének kiértékelését](evaluate-model-performance.md)ismertető témakörben olvashat bővebben.
 
-Ha új Azure Machine Learning Studio (klasszikus), és segítségre van szüksége egy egyszerű kísérlet létrehozásához az első lépésekhez, tekintse meg [a Azure Machine learning Studio (klasszikus) egyszerű kísérlet létrehozása](create-experiment.md)című témakört.
+Ha új ML Studio (klasszikus), [Ismerje meg, hogyan hozhat létre egy egyszerű kísérletet](create-experiment.md).
 
 ## <a name="classification"></a>Osztályozás
 A besorolási problémák két alkategóriája van:

@@ -59,6 +59,11 @@
       href: tutorial-kubernetes-app-update.md
     - name: 7 – Fürt frissítése
       href: tutorial-kubernetes-upgrade-cluster.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Fürtök és számítási feladatok
