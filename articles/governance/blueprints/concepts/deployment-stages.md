@@ -1,14 +1,14 @@
 ---
 title: Terv üzembe helyezésének szakaszai
 description: Ismerje meg a biztonsági és az összetevőkhöz kapcsolódó lépéseket, amelyekkel az Azure tervrajz-szolgáltatásai áthaladnak a tervrajz-hozzárendelés létrehozása során.
-ms.date: 11/13/2019
+ms.date: 05/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 61d19c84cd659b9df3a272c5c2743944e51df06e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9efc66baa262e004a8beea5295e8567f4ab119dd
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677313"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863994"
 ---
 # <a name="stages-of-a-blueprint-deployment"></a>Terv üzembe helyezésének szakaszai
 

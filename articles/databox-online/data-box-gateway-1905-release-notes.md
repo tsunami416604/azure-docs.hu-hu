@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 06/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 345666b53336cc6959a65eefd4b0f2475bea8c80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f2843623061e39e8c9c0ebc35b4916bf9bd3b186
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67078611"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561860"
 ---
 # <a name="azure-data-box-edge-and-azure-data-box-gateway-1905-release-notes"></a>Azure Data Box Edge és Azure Data Box Gateway 1905 kibocsátási megjegyzései
 
@@ -21,7 +21,7 @@ ms.locfileid: "67078611"
 
 A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint a Azure Data Box Edge és Azure Data Box Gateway 1905-es kiadásával kapcsolatos megoldott problémákat.
 
-A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A Data Box Edge/Data Box Gateway üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
+A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A Data Box Edge/Data Box Gateway üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat. 
 
 Ez a kiadás megfelel a szoftver verzióinak:
 
@@ -33,7 +33,7 @@ Ez a kiadás megfelel a szoftver verzióinak:
 
 ## <a name="whats-new"></a>Újdonságok
 
-- A **Field programozható Gate array (FPGA) naplózásának továbbfejlesztése** – ebben a kiadásban a FPGA kapcsolatos naplózási és riasztási fejlesztéseket hajtottuk végre. Ez egy szükséges frissítés a Data Box Edgehoz, ha az Edge számítási funkciót használja a FPGA. További információkért lásd: [adatok átalakítása az Edge számítási](data-box-edge-deploy-configure-compute-advanced.md)szolgáltatással a Data Box Edge.
+- A **Field programozható Gate array (FPGA) naplózásának továbbfejlesztése** – ebben a kiadásban a FPGA kapcsolatos naplózási és riasztási fejlesztéseket hajtottuk végre. Ez egy szükséges frissítés a Data Box Edgehoz, ha az Edge számítási funkciót használja a FPGA. További információkért lásd: [adatok átalakítása az Edge számítási](azure-stack-edge-deploy-configure-compute-advanced.md)szolgáltatással a Data Box Edge.
 
 ## <a name="known-issues-in-ga-release"></a>Ismert problémák a GA kiadásban
 
@@ -43,4 +43,4 @@ Ebben a kiadásban nem jelennek meg új problémák a kiadásban. Az összes meg
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure Data Box Gateway üzembe helyezésének előkészítése](data-box-gateway-deploy-prep.md)
-- [Az Azure Data Box Edge üzembe helyezésének előkészítése](data-box-edge-deploy-prep.md)
+- [Az Azure Data Box Edge üzembe helyezésének előkészítése](azure-stack-edge-deploy-prep.md)

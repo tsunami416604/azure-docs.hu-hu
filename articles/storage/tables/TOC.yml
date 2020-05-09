@@ -53,15 +53,11 @@
           href: ../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
           items:
             - name: Felhasználó által kezelt kulcsok az Azure Key Vaulttal
-              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Adatredundancia
-      items:
-        - name: Adatredundancia
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Vészhelyreállítás és feladatátvétel
-          href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-        - name: Magas rendelkezésre állású alkalmazások tervezése
-          href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+      href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Vészhelyreállítás és feladatátvétel
+      href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: 'Teljesítmény, méretezés és költségoptimalizálás'
       items:
         - name: Teljesítmény és kapacitás – ellenőrzőlista
@@ -131,9 +127,13 @@
               href: ../common/storage-require-secure-transfer.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
             - name: Transport Layer Security engedélyezése
               href: ../common/storage-security-tls.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Az adatreplikálás módjának megváltoztatása
-      href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
-    - name: Vészhelyreállítás
+    - name: Adatredundancia kezelése
+      items:
+        - name: Az adatreplikálás módjának megváltoztatása
+          href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+        - name: Magas rendelkezésre állású alkalmazások tervezése
+          href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
+    - name: Vészhelyreállítás kezelése
       items:
         - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
           href: ../common/last-sync-time-get.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
@@ -145,8 +145,6 @@
           href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy'
         - name: AzCopy Linuxon (8-as verzió)
           href: 'https://docs.microsoft.com/previous-versions/azure/storage/storage-use-azcopy-linux'
-    - name: Fiók feladatátvételének indítása
-      href: ../common/storage-initiate-account-failover.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json
     - name: Hibaelhárítás
       items:
         - name: Késési problémák

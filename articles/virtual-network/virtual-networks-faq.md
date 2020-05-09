@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/12/2019
 ms.author: kumud
-ms.openlocfilehash: e45d5393833973889b28a95ec86b89593a091f99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d59a2fe32742c2d1d50b9ed33ccace5d377c59c2
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244809"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82791986"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – Gyakori kérdések (GYIK)
 
@@ -44,7 +44,7 @@ Igen. A VNet a helyszíni csatlakoztatása nélkül is használhatja. Futtathatj
 ### <a name="can-i-perform-wan-optimization-between-vnets-or-a-vnet-and-my-on-premises-data-center"></a>Használhatok WAN-optimalizálást a virtuális hálózatok vagy a VNet és a helyszíni adatközpontok között?
 Igen. Az Azure Marketplace-en keresztül üzembe helyezhet egy [WAN-optimalizálási hálózati virtuális készüléket](https://azuremarketplace.microsoft.com/en-us/marketplace/?term=wan%20optimization) több gyártótól.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 ### <a name="what-tools-do-i-use-to-create-a-vnet"></a>Milyen eszközöket használhatok a VNet létrehozásához?
 A VNet létrehozásához és konfigurálásához a következő eszközöket használhatja:
@@ -88,7 +88,7 @@ Igen. Létrehozhat egy útválasztási táblázatot, és hozzárendelheti egy al
 Nem. A csoportos küldés és a szórás nem támogatott.
 
 ### <a name="what-protocols-can-i-use-within-vnets"></a>Milyen protokollokat használhatok a virtuális hálózatok-en belül?
-A virtuális hálózatok belül TCP, UDP és ICMP TCP/IP protokollokat is használhat. Az egyedi küldési szolgáltatás a virtuális hálózatok-n belül támogatott, kivéve a Dynamic Host Configuration Protocol (DHCP) egyedi küldéssel (a forrás port UDP/68/a célport UDP/67). Csoportos küldés, szórás, IP-in-IP-címes csomagok és általános útválasztási beágyazási (GRE) csomagok blokkolva vannak a virtuális hálózatok belül. 
+A virtuális hálózatok belül TCP, UDP és ICMP TCP/IP protokollokat is használhat. Az egyedi küldési szolgáltatás a virtuális hálózatok-n belül támogatott, kivéve a Dynamic Host Configuration Protocol (DHCP) küldését a (z) UDP/68/célport UDP/67-es porton keresztül, valamint az UDP-forrásport 65330, amely a gazdagép számára van fenntartva. Csoportos küldés, szórás, IP-in-IP-címes csomagok és általános útválasztási beágyazási (GRE) csomagok blokkolva vannak a virtuális hálózatok belül. 
 
 ### <a name="can-i-ping-my-default-routers-within-a-vnet"></a>Pingelhető az alapértelmezett útválasztók egy VNet belül?
 Nem.

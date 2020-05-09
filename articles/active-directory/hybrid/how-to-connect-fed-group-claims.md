@@ -12,22 +12,22 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: b8708aec1137836516852135412c4c7cec2feba4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a89c5e3fb84f797d9ad7f81626fb7185ce3e076
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79408402"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82854155"
 ---
-# <a name="configure-group-claims-for-applications-with-azure-active-directory-public-preview"></a>Azure Active Directory (nyilvános előzetes verzió) alkalmazásokhoz tartozó jogcímek konfigurálása
+# <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Jogcímek konfigurálása az alkalmazásokhoz Azure Active Directory
 
 A Azure Active Directory az alkalmazásokon belüli használatra a felhasználók csoport tagsági adatait is megadhatja a jogkivonatokban.  Két fő mintázat támogatott:
 
-- A Azure Active Directory objektumazonosító (OID) attribútummal azonosított csoportok (általánosan elérhető)
-- Active Directory (AD) szinkronizált csoportok és felhasználók (nyilvános előzetes verzió) sAMAccountName vagy GroupSID attribútumai által azonosított csoportok
+- A Azure Active Directory objektumazonosító (OID) attribútummal azonosított csoportok
+- Active Directory (AD) szinkronizált csoportok és felhasználók sAMAccountName vagy GroupSID attribútumai által azonosított csoportok
 
 > [!IMPORTANT]
-> Az előzetes verzió funkcióinak megjegyzései többek között a következők:
+> A funkcióra vonatkozóan számos figyelmeztetést kell megjegyezni:
 >
 >- A helyszínen szinkronizált sAMAccountName-és biztonsági azonosítók (SID-ek) használatának támogatása lehetővé teszi a meglévő alkalmazások áthelyezését AD FS és más identitás-szolgáltatókból. Az Azure AD-ben felügyelt csoportok nem tartalmazzák a jogcímek kibocsátásához szükséges attribútumokat.
 >- Nagyobb szervezeteknél a felhasználók azon csoportjai száma, amelyeknek a felhasználó tagja, túllépheti azt a korlátot, amelyet a Azure Active Directory felvesz a tokenbe. 150 csoport egy SAML-tokenhez és egy JWT 200. Ez előre nem látható eredményekhez vezethet. Ha a felhasználók nagy számú csoporttagság közül választhatnak, javasoljuk, hogy a jogcímek által kibocsátott csoportokat az alkalmazás megfelelő csoportjaira korlátozza.  

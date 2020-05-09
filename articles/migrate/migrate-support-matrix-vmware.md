@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg a VMware virtuális gépek felmérésének támogatásával Azure Migrate kiszolgáló értékelésével.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: d378ece1eda906a30ec33e2cf27ad59df473b5c7
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a0d05c56670c54aca25232a86b5a0e89d2f0bcfd
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779909"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983652"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -53,7 +53,7 @@ A gépek felderítése mellett a kiszolgálók értékelése a gépeken futó al
 **vCenter Server** | A felderítéshez és értékeléshez használni kívánt gépeket a 5,5, 6,0, 6,5 vagy 6,7 vCenter Server-es verzióval kell felügyelni.
 **Engedélyek (Assessment)** | írásvédett fiók vCenter Server.
 **Engedélyek (App-Discovery)** | vCenter Server fiók csak olvasási hozzáféréssel, és a virtuális gépek számára engedélyezett jogosultságokkal **> vendég műveletekkel**.
-**Engedélyek (függőségi vizualizáció)** | Központ-kiszolgáló fiók írásvédett hozzáféréssel, valamint a **virtuális gépek** > **vendég műveleteihez**engedélyezett jogosultságok.
+**Engedélyek (függőségi vizualizáció)** | vCenter Server fiók írásvédett hozzáféréssel, valamint a **virtuális gépek** > **vendég műveleteihez**engedélyezett jogosultságokkal.
 
 
 ## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei

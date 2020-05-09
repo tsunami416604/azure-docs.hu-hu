@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: josels
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0fd8a379927396f2ae44d74c2d968d48fbd039c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2501f66c42360d3ec1626f5f4ee42e0212f1967b
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82096367"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792241"
 ---
 # <a name="quickstart-create-a-new-apache-spark-pool-preview"></a>Rövid útmutató: új Apache Spark-készlet létrehozása (előzetes verzió)
 
@@ -25,16 +25,16 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Apache Spark k�
 > [!IMPORTANT]
 > A Spark-példányok számlázása percenként történik, függetlenül attól, hogy használja-e őket. A használata után állítsa le a Spark-példányt, vagy állítson be egy rövid időkorlátot. További információkért lásd a cikk **Az erőforrások eltávolítása** című szakaszát.
 
-Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https:/azure.microsoft.com/free/).
+Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Azure-előfizetés – [hozzon létre egyet ingyen](https:/azure.microsoft.com/free/)
+- Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 - [Szinapszis Analytics-munkaterület](quickstart-create-workspace.md)
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be a [Azure Portalba](https:/portal.azure.com/)
+Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
 ## <a name="create-new-apache-spark-pool"></a>Új Apache Spark-készlet létrehozása
 

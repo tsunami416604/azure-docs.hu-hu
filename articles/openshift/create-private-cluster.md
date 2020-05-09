@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: a0f726d32f2f63cf85101254fded005fc0b5a1db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cfc28577f089ef22457e9f66ff08106969a5a4b2
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233550"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857391"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 privát fürt létrehozása
 
@@ -65,15 +65,21 @@ aro                                1.0.0
 ...
 ```
 
-### <a name="obtain-a-red-hat-pull-secret-optional"></a>Red Hat pull-titok beszerzése (opcionális)
+### <a name="get-a-red-hat-pull-secret-optional"></a>Red Hat pull-titok beolvasása (nem kötelező)
 
 A Red Hat pull Secret lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt. Ez a lépés nem kötelező, de ajánlott.
 
-A lekéréses titok beszerzéséhez https://cloud.redhat.com/openshift/install/azure/aro-provisioned navigáljon a gombra, és kattintson a *lekérési titok letöltése*elemre.
+1. **[Nyissa meg a Red Hat OpenShift cluster Manager portált](https://cloud.redhat.com/openshift/install/azure/aro-provisioned) , és jelentkezzen be.**
 
-Be kell jelentkeznie a Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail-címével, és el kell fogadnia a használati feltételeket.
+   Be kell jelentkeznie a Red Hat-fiókjába, vagy létre kell hoznia egy új Red Hat-fiókot az üzleti e-mail-címével, és el kell fogadnia a használati feltételeket.
+
+2. **Kattintson a lekérési titok letöltése elemre.**
 
 Tartsa meg a `pull-secret.txt` mentett fájlt biztonságos helyen – a rendszer minden egyes fürt létrehozásakor használni fogja.
+
+A `az aro create` parancs futtatásakor a (z) `--pull-secret @pull-secret.txt` paraméter használatával hivatkozhat a lekéréses titkos kulcsra. Futtassa `az aro create` azt a könyvtárat, ahová a `pull-secret.txt` fájlt mentette. Ellenkező esetben cserélje `@pull-secret.txt` le `@<path-to-my-pull-secret-file`a-t a kifejezésre.
+
+Ha átmásolja a lekéréses titkot, vagy más parancsfájlokban hivatkozik rá, a lekéréses titkot érvényes JSON-karakterláncként kell formázni.
 
 ### <a name="create-a-virtual-network-containing-two-empty-subnets"></a>Két üres alhálózatot tartalmazó virtuális hálózat létrehozása
 
@@ -177,7 +183,10 @@ Ezután létre fog hozni egy virtuális hálózatot, amely két üres alhálóza
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-Futtassa a következő parancsot egy fürt létrehozásához. Jegyezze fel `apiserver-visibility` a és `ingress-visibility` a paramétereket. Opcionálisan átadhat egy lekéréses titkot, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt. A lekéréses titok eléréséhez navigáljon a [Red Hat OpenShift](https://cloud.redhat.com/openshift/install/azure/installer-provisioned) , és kattintson a lekéréses titok másolása elemre.
+Futtassa a következő parancsot egy fürt létrehozásához. [A Red Hat pull Secret](#get-a-red-hat-pull-secret-optional) is átadható, amely lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Container-jegyzékekhez a további tartalommal együtt.
+
+>[!NOTE]
+> Ha másolási és beillesztési parancsokat használ, és a választható paraméterek egyikét használja, ügyeljen arra, hogy törölje a kezdeti hashtageket és a záró megjegyzés szövegét. Emellett a parancs előző sorában található argumentumot záró fordított perjeltel is lezárhatja.
 
 ```azurecli-interactive
 az aro create \
@@ -185,15 +194,12 @@ az aro create \
   --name $CLUSTER \
   --vnet aro-vnet \
   --master-subnet master-subnet \
-  --worker-subnet worker-subnet \
-  --apiserver-visibility Private \
-  --ingress-visibility Private
-  # --domain aro.example.com # [OPTIONAL] custom domain
-  # --pull-secret 'Pull secret from https://cloud.redhat.com/openshift/install/azure/installer-provisioned/' # [OPTIONAL]
+  --worker-subnet worker-subnet
+  # --domain foo.example.com # [OPTIONAL] custom domain
+  # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
->[!NOTE]
-> A fürt létrehozása általában körülbelül 35 percet vesz igénybe.
+A parancs végrehajtása után `az aro create` az általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
 >[!IMPORTANT]
 > Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`helyett egy URL-címen lesz elérhető.

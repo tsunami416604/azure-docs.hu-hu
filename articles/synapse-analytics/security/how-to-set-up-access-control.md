@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 383a28e90c093c0885c34af03371608261ece110
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692633"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983210"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -145,7 +145,7 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 | A szinapszis Studio megnyitása | IGEN | IGEN | IGEN |
 | Kezdőlap hub megtekintése | IGEN | IGEN | IGEN |
 | Adatközpont megtekintése | IGEN | IGEN | IGEN |
-| Adatközpont/lásd a társított ADLSGen2-fiókokat és-tárolókat | IGEN [1] | IGEN [1] | IGEN [1] |
+| Adatközpont/lásd a csatolt ADLS Gen2 fiókokat és tárolókat | IGEN [1] | IGEN [1] | IGEN [1] |
 | Adatközpont/adatbázis-információk | IGEN | IGEN | IGEN |
 | Adatközpont/objektumok megjelenítése az adatbázisokban | IGEN | IGEN | IGEN |
 | Adatközpont/hozzáférési információ az SQL-készlet adatbázisaiban | IGEN   | NO   | IGEN   |
@@ -179,8 +179,8 @@ A szinapszis Studio a felhasználói szerepkörök alapján eltérően fog műk�
 
 
 > [!NOTE]
-> [1] a tárolókban lévő adatokhoz való hozzáférés a ADLSGen2 hozzáférés-vezérléstől függ. </br>
-> [2] az SQL OD-táblák és a Spark-táblázatok tárolja az ADLSGen2 és a hozzáféréshez szükséges megfelelő engedélyeket a ADLSGen2.
+> [1] a tárolókban lévő adatokhoz való hozzáférés a ADLS Gen2 hozzáférés-vezérléstől függ. </br>
+> [2] az SQL OD-táblák és a Spark-táblázatok tárolja az ADLS Gen2 és a hozzáféréshez szükséges megfelelő engedélyeket a ADLS Gen2.
 
 ## <a name="next-steps"></a>További lépések
 

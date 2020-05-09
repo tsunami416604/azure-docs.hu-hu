@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/08/2019
+ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: ced807b25cd1e829988a1e6b7621a5f73e0edfc2
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
-ms.translationtype: HT
+ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82202430"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562236"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>HTTP-fejlécek újraírása Application Gateway
 
@@ -157,6 +157,8 @@ Kiértékelheti a HTTP-kérések vagy a válasz fejléceit egy fejléc vagy kisz
 ## <a name="limitations"></a>Korlátozások
 
 - Ha egy válasznak több fejléce is van ugyanazzal a névvel, akkor az egyik fejléc értékének átírása miatt a rendszer eldobja a válasz többi fejlécét. Ez általában a Set-Cookie fejléctel fordulhat elő, mert a válaszban több Set-Cookie fejléc is lehet. Az egyik ilyen eset az, amikor app Service-t használ egy Application Gateway-vel, és konfigurálta a cookie-alapú munkamenet-affinitást az Application gatewayben. Ebben az esetben a válasz két set-cookie-fejlécet tartalmaz: az egyiket az App Service használja, például `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` : és egy másik az Application Gateway-affinitáshoz, `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`például:. Ebben a forgatókönyvben a Set-Cookie fejlécek egyikének újraírásával a másik set-cookie fejlécet is eltávolíthatja a válaszból.
+
+- Az újraírások nem támogatottak, ha az Application Gateway úgy van konfigurálva, hogy átirányítsa a kéréseket, vagy megjelenjen egy egyéni hiba lap.
 
 - A kapcsolatok, a verziófrissítés és a gazdagép-fejlécek újraírása jelenleg nem támogatott.
 

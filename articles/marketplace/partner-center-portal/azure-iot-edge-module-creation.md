@@ -1,36 +1,30 @@
 ---
-title: Azure IoT Edge modul-ajánlat létrehozása a partner centerrel – Azure Marketplace
-description: Megtudhatja, hogyan hozhat létre IoT Edge Modulos ajánlatot az Azure Marketplace-en a partner Center használatával
+title: Azure IoT Edge modul létrehozása az Azure Marketplace-en a partner centerrel
+description: Megtudhatja, hogyan hozhat létre, konfigurálhat és tehet közzé IoT Edge modul-ajánlatokat az Azure piactéren a partner Center használatával
 author: anbene
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: cca54e4e456fe766b190f64657cd1aca1d9520e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81869147"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82857667"
 ---
-# <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
+# <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>IoT Edge modul ajánlatának létrehozása, konfigurálása és közzététele az Azure Marketplace-en
 
-> [!IMPORTANT]
-> Áthelyezjük IoT Edge-moduljának felügyeletét Cloud Partner Portalról a partneri központba. Az ajánlatok migrálása előtt kövesse az [IoT Edge modul ajánlat-közzététel áttekintése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/iot-edge-module/cpp-offer-process-parts) Cloud Partner Portal az ajánlatok kezeléséhez című témakör útmutatását.
-
-Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök internetes hálózata (IoT) Edge-modult az Azure Marketplace-hez.
-
-IoT Edge modul ajánlatának létrehozása előtt rendelkeznie kell egy kereskedelmi piactér-fiókkal a partner Centerben. Ha még nem hozott létre egyet, tekintse meg [a kereskedelmi piactér fiók létrehozása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account)című témakört.
+Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök internetes hálózata (IoT) Edge-modult az Azure Marketplace-hez. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
-1. Jelentkezzen be a Partnerközpontba.
+1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
 2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat** > **IoT Edge modul**lehetőséget.
 
-    ![A bal oldali navigációs menü ábrázolása.](./media/cs-menu-overview.png)
-
-3. Válassza az **+ új ajánlat** > **IoT Edge modul**lehetőséget. Megjelenik az **új ajánlat** párbeszédpanel.
+    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-iot-edge.png)
 
 > [!IMPORTANT]
 > Az ajánlat közzétételét követően a partner Centerben végzett módosítások csak az ajánlat ismételt közzététele után jelennek meg a kirakatokban. Győződjön meg arról, hogy a módosítások végrehajtása után mindig újra közzé kell tennie a módosításokat.
@@ -41,14 +35,14 @@ Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánl
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
 - Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
-- Az ajánlat azonosítója a Létrehozás gombra kattintva nem módosítható.
+- Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
-Adjon meg egy **ajánlat-aliast**. Ez az ajánlat a partner Centerben való hivatkozásához használt név.
+Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
 
 - Ez a név nem használatos a piactéren, és nem egyezik meg az ajánlat nevével és az ügyfelek számára megjelenített egyéb értékekkel.
 - Ez a **Létrehozás**gombra kattintva nem módosítható.
 
-A két érték beírása után válassza a **Létrehozás** lehetőséget, mielőtt továbblépne a következő oldalra, az ajánlat áttekintése.
+Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a folytatáshoz.
 
 ## <a name="offer-overview"></a>Ajánlat áttekintése
 
@@ -86,10 +80,10 @@ Ha az ajánlatot a piactéren a partner centerrel teszi közzé, akkor opcionál
 
 - [Az érdeklődők kezelése – áttekintés](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-get-customer-leads)
 - [Gyakori kérdések az érdeklődők kezeléséről](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#frequently-asked-questions)
-- [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#common-lead-configuration-errors-during-publishing-on-cloud-partner-portal)
+- [Az érdeklődők konfigurálásának gyakori hibái](https://docs.microsoft.com/azure/marketplace/lead-management-for-cloud-marketplace#publishing-config-errors)
 - Az [érdeklődők kezelése – áttekintés](https://assetsprod.microsoft.com/mpn/cloud-marketplace-lead-management.pdf) PDF (ellenőrizze, hogy ki van-e kapcsolva az előugró ablakok blokkolása).
 
-A következő szakaszra, a Tulajdonságok elemre kattintva válassza a **Piszkozat mentése** elemet.
+A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -132,7 +126,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 > [!NOTE]
 > Az ajánlat részleteit nem kötelező angol nyelven megadni, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Name
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 

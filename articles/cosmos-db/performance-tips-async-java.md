@@ -1,28 +1,35 @@
 ---
-title: Azure Cosmos DB teljesítményre vonatkozó tippek aszinkron Javához
-description: Az ügyfél-konfigurációs beállítások megismerése az Azure Cosmos Database teljesítményének növeléséhez
-author: SnehaGunda
+title: Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v2-hez
+description: Az ügyfél-konfigurációs beállítások megismerése az Azure Cosmos Database teljesítményének az aszinkron Java SDK v2-hez való javításához
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/23/2019
-ms.author: sngun
-ms.openlocfilehash: b892b1f4ff73679ab425d0e97f5361e0f3712252
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.author: anfeldma
+ms.openlocfilehash: 1a3ec22b9d1375f1c438d24791389284c1d4ee84
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549187"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982547"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>Az Azure Cosmos DB és az Async Java teljesítményével kapcsolatos tippek
+# <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB aszinkron Java SDK v2-hez
 
 > [!div class="op_single_selector"]
-> * [Async Java](performance-tips-async-java.md)
-> * [Java](performance-tips-java.md)
+> * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
+> * [Async Java SDK v2](performance-tips-async-java.md)
+> * [Sync Java SDK v2](performance-tips-java.md)
 > * [.NET](performance-tips.md)
 > 
 
-A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezhető a garantált késés és az átviteli sebesség tekintetében. Nem kell megváltoztatnia a jelentős architektúrát, vagy összetett kódot kell írnia az adatbázis méretezéséhez Azure Cosmos DB. A fel-és leskálázás olyan egyszerű, mint egyetlen API-hívás vagy egy SDK-metódus hívása. Mivel azonban a Azure Cosmos DB hálózati hívásokon keresztül érhetők el, ügyféloldali optimalizálási lehetőségek érhetők el, amelyekkel elérheti a maximális teljesítményt az [SQL aszinkron Java SDK](sql-api-sdk-async-java.md)használatakor.
+> [!IMPORTANT]  
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra Azure Cosmos DB Java SDK v4 használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató utasításait. 
+> 
+> A jelen cikkben található teljesítménnyel kapcsolatos tippek csak Azure Cosmos DB aszinkron Java SDK v2-re vonatkoznak. További információkért tekintse meg a Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzéseit](sql-api-sdk-async-java.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb)és a Azure Cosmos db aszinkron Java SDK v2 [hibaelhárítási útmutatót](troubleshoot-java-async-sdk.md) .
+>
+
+A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezhető a garantált késés és az átviteli sebesség tekintetében. Nem kell megváltoztatnia a jelentős architektúrát, vagy összetett kódot kell írnia az adatbázis méretezéséhez Azure Cosmos DB. A fel-és leskálázás olyan egyszerű, mint egyetlen API-hívás vagy egy SDK-metódus hívása. Mivel azonban a Azure Cosmos DB hálózati hívásokkal érhetők el, ügyféloldali optimalizálási lehetőségek érhetők el, ha a [Azure Cosmos db aszinkron Java SDK v2](sql-api-sdk-async-java.md)-t használja a maximális teljesítmény eléréséhez.
 
 Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? vegye figyelembe a következő lehetőségeket:
 
@@ -31,7 +38,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 * **Csatlakoztatási mód: közvetlen mód használata**
 <a id="direct-connection"></a>
     
-    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen az ügyféloldali késések tekintetében. A *ConnectionMode* az ügyfél *ConnectionPolicy*konfigurálásához rendelkezésre álló kulcsfontosságú konfigurációs beállítás. Az aszinkron Java SDK esetében a két elérhető ConnectionModes a következők:  
+    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen az ügyféloldali késések tekintetében. A *ConnectionMode* az ügyfél *ConnectionPolicy*konfigurálásához rendelkezésre álló kulcsfontosságú konfigurációs beállítás. Azure Cosmos DB aszinkron Java SDK v2 esetén a két elérhető ConnectionModes a következők:  
       
     * [Átjáró (alapértelmezett)](/java/api/com.microsoft.azure.cosmosdb.connectionmode)  
     * [Direct](/java/api/com.microsoft.azure.cosmosdb.connectionmode)
@@ -39,7 +46,9 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
     Az átjáró üzemmód minden SDK platformon támogatott, és alapértelmezés szerint a konfigurált beállítás. Ha az alkalmazásai szigorú tűzfal-korlátozásokkal rendelkező vállalati hálózaton belül futnak, az átjáró mód a legjobb választás, mivel a szabványos HTTPS-portot és egyetlen végpontot használ. A teljesítmény-kompromisszum azonban az, hogy az átjáró üzemmód egy további hálózati ugrást is magában foglal minden alkalommal, amikor az összes adat beolvasása vagy írása Azure Cosmos DB. Emiatt a közvetlen mód jobb teljesítményt nyújt kevesebb hálózati ugrás miatt.
 
     A *ConnectionMode* a *DocumentClient* -példány építése során, a *ConnectionPolicy* paraméterrel konfigurálható.
-    
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+
     ```java
         public ConnectionPolicy getConnectionPolicy() {
           ConnectionPolicy policy = new ConnectionPolicy();
@@ -61,7 +70,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 ## <a name="sdk-usage"></a>SDK-használat
 * **A legújabb SDK telepítése**
 
-    A Azure Cosmos DB SDK-kat folyamatosan fejlesztjük a legjobb teljesítmény érdekében. Tekintse meg a [Azure Cosmos db SDK](sql-api-sdk-async-java.md) -lapokat a legújabb SDK-val, és tekintse át a módosításokat.
+    A Azure Cosmos DB SDK-kat folyamatosan fejlesztjük a legjobb teljesítmény érdekében. Tekintse meg az Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzések](sql-api-sdk-async-java.md) oldalait a legújabb SDK-és felülvizsgálati eredmények meghatározásához.
 
 * **Egyedi Azure Cosmos DB-ügyfél használata az alkalmazás élettartama során**
 
@@ -71,9 +80,9 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
 * **ConnectionPolicy finomhangolása**
 
-    Alapértelmezés szerint a közvetlen üzemmód Cosmos DB a kérelmek TCP protokollon keresztül történnek az aszinkron Java SDK használatakor. Belsőleg az SDK egy speciális közvetlen üzemmódú architektúrát használ a hálózati erőforrások dinamikus kezeléséhez és a legjobb teljesítmény eléréséhez.
+    Alapértelmezés szerint a közvetlen üzemmódú Cosmos DB kérelmek TCP protokollon keresztül történnek a Azure Cosmos DB aszinkron Java SDK v2 használata esetén. Belsőleg az SDK egy speciális közvetlen üzemmódú architektúrát használ a hálózati erőforrások dinamikus kezeléséhez és a legjobb teljesítmény eléréséhez.
 
-    Az aszinkron Java SDK-ban a közvetlen mód a legjobb választás az adatbázis teljesítményének növelésére a legtöbb munkaterheléssel. 
+    A Azure Cosmos DB aszinkron Java SDK v2-ben a legjobb választás az adatbázis teljesítményének növelése a legtöbb számítási feladattal. 
 
     * ***Közvetlen üzemmód áttekintése***
 
@@ -106,7 +115,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     * ***Programozási tippek közvetlen üzemmódhoz***
 
-        Az aszinkron Java SDK-problémák megoldásához tekintse át a Azure Cosmos DB [aszinkron Java SDK hibaelhárítási](troubleshoot-java-async-sdk.md) cikkét.
+        Az SDK-problémák megoldásához tekintse át az Azure Cosmos DB aszinkron Java SDK v2 [hibaelhárítási](troubleshoot-java-async-sdk.md) cikkét.
 
         Néhány fontos programozási tipp közvetlen mód használata esetén:
 
@@ -114,14 +123,14 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
         + Nagy **számítási igényű munkaterhelések elvégzése dedikált szálon** – az előző tipphez hasonló okokból, például az összetett adatfeldolgozáshoz a legjobban egy külön szálban kell elhelyezni. Egy másik adattárból származó adatokra lekérő kérelem (például ha a szál Azure Cosmos DB-és Spark-adattárakat is használ) nagyobb késést tapasztalhat, és azt javasoljuk, hogy egy további szálat indítson el, amely a másik adattártól érkező választ vár.
 
-            + Az aszinkron Java SDK-ban található alapul szolgáló hálózati IO-t a rendszer a nettó értékkel kezeli, ezekkel a [tippekkel elkerülhetők a nettó IO-szálakat blokkoló kódolási minták](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread).
+            + A Azure Cosmos DB aszinkron Java SDK v2-ben található alapul szolgáló hálózati IO-t a rendszer a nettó értékkel kezeli, ezekkel a [tippekkel elkerülhetők a nettó IO-szálakat blokkoló kódolási minták](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread).
 
         + **Adatmodellezés** – a Azure Cosmos db SLA azt feltételezi, hogy a dokumentum mérete kisebb, mint 1KB. Ha optimalizálni szeretné az adatmodellt és a programozást, a kisebb méretű dokumentumok méretének csökkentése általában a késés csökkenését eredményezi. Ha a 1KB-nál nagyobb méretű dokumentumok tárolására és lekérésére lesz szüksége, az ajánlott módszer az Azure Blob Storageban lévő adatokra mutató dokumentumok használata.
 
 
 * **A particionált gyűjtemények párhuzamos lekérdezésének finomhangolása**
 
-    Azure Cosmos DB SQL aszinkron Java SDK támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik
+    Azure Cosmos DB aszinkron Java SDK v2 támogatja a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-cosmosdb-java/tree/master/examples/src/test/java/com/microsoft/azure/cosmosdb/rx/examples) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik
 
     * ***SetMaxDegreeOfParallelism finomhangolása\:***
     
@@ -159,9 +168,11 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
 * **A megfelelő ütemező használata (az Event loop IO-szálak kilopásának elkerülése)**
 
-    Az aszinkron Java SDK nem blokkoló IO- [t használ.](https://netty.io/) Az SDK az i/o-műveletekhez rögzített számú i/o-t használ (a gép számos CPU-magja). Az API által visszaadott megfigyelhető érték a megosztott i/o-eseményekhez tartozó többoldalas szálakat eredményezi. Ezért fontos, hogy ne tiltsa le a megosztott IO-esemény hurkos szálait. Ha CPU-igényes munkahelyi vagy letiltási műveletet hajt végre az IO-esemény hurkos szál szálán, a holtpontot okozhat, vagy jelentősen csökkentheti az SDK átviteli sebességét.
+    A Azure Cosmos DB aszinkron Java SDK v2 a nem blokkoló IO- [t használja.](https://netty.io/) Az SDK az i/o-műveletekhez rögzített számú i/o-t használ (a gép számos CPU-magja). Az API által visszaadott megfigyelhető érték a megosztott i/o-eseményekhez tartozó többoldalas szálakat eredményezi. Ezért fontos, hogy ne tiltsa le a megosztott IO-esemény hurkos szálait. Ha CPU-igényes munkahelyi vagy letiltási műveletet hajt végre az IO-esemény hurkos szál szálán, a holtpontot okozhat, vagy jelentősen csökkentheti az SDK átviteli sebességét.
 
     Például az alábbi kód egy CPU-igényes munkát hajt végre az Event loop IO-szálon:
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-noscheduler"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
     ```java
     Observable<ResourceResponse<Document>> createDocObs = asyncDocumentClient.createDocument(
@@ -178,6 +189,8 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
     ```
 
     Ha az eredmény megérkezik, ha a CPU-igényes munkát szeretné elvégezni az eredményen, kerülje az Event loop IO-szálon végzett műveletét. Ehelyett saját ütemező használatával biztosíthatja a saját szálát a munka futtatásához.
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-scheduler"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
     ```java
     import rx.schedulers;
@@ -198,7 +211,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     A munkája típusától függően a megfelelő meglévő RxJava ütemező használatával kell használnia a munkát. Itt [``Schedulers``](http://reactivex.io/RxJava/1.x/javadoc/rx/schedulers/Schedulers.html)olvashat.
 
-    További információkért tekintse meg a GitHub- [oldalt](https://github.com/Azure/azure-cosmosdb-java) az ASZINKRON Java SDK-hoz.
+    További információkért tekintse meg a [GitHub oldalt](https://github.com/Azure/azure-cosmosdb-java) Azure Cosmos db ASZINKRON Java SDK v2-hez.
 
 * **A nettó naplózás letiltása**
 
@@ -258,6 +271,8 @@ Más platformokon (Red Hat, Windows, Mac stb.) tekintse át ezeket az utasítás
 
     Azure Cosmos DB indexelési házirendje lehetővé teszi annak meghatározását, hogy mely dokumentum-elérési utakat kell belefoglalni vagy kizárni az indexelésből az indexelési útvonalak (setIncludedPaths és setExcludedPaths) használatával. Az indexelési útvonalak használata javíthatja az írási teljesítményt és az alacsonyabb indexű tárolást olyan helyzetekben, amikor a lekérdezési mintákat előre ismerték, mivel az indexelési költségek közvetlenül az indexelt egyedi útvonalak számával vannak összekapcsolva. Az alábbi kód például azt mutatja be, hogyan zárható ki a dokumentumok (más néven részfa) teljes szakasza az indexelésből a "*" helyettesítő karakter használatával.
 
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-indexing"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
+
     ```Java
     Index numberIndex = Index.Range(DataType.Number);
     numberIndex.set("precision", -1);
@@ -270,7 +285,7 @@ Más platformokon (Red Hat, Windows, Mac stb.) tekintse át ezeket az utasítás
 
     További információ: [Azure Cosmos db indexelési házirendek](indexing-policies.md).
 
-## <a name="throughput"></a>Átviteli sebesség
+## <a name="throughput"></a>Teljesítmény
 <a id="measure-rus"></a>
 
 * **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
@@ -282,6 +297,8 @@ Más platformokon (Red Hat, Windows, Mac stb.) tekintse át ezeket az utasítás
     A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
     Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet a műveletek által felhasznált kérelmek mennyiségének méréséhez. Az egyenértékű RequestCharge tulajdonságot a ResourceResponse\<T> vagy a FeedResponse\<t>ban is megtekintheti.
+
+    ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
     ```Java
     ResourceResponse<Document> response = asyncClient.createDocument(collectionLink, documentDefinition, null,

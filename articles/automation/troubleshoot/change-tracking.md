@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 11c1fd05055922b07801c20d525d852d5360b069
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679352"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582146"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>A Change Tracking és a leltárral kapcsolatos problémák elhárítása
 
-Ez a cikk a Change Tracking és a leltárral kapcsolatos problémák elhárítását ismerteti.
+Ez a cikk ismerteti, hogyan lehet elhárítani a Azure Automation Change Tracking és a leltárral kapcsolatos problémákat.
 
 >[!NOTE]
 >A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
@@ -35,14 +35,14 @@ Nem jelenik meg Change Tracking és leltározási eredmény a bekészített Wind
 
 Ez a hiba a következő okok miatt fordulhat elő:
 
-* A Windows Log Analytics ügynöke nem fut.
+* A Windows rendszerhez készült Azure Log Analytics-ügynök nem fut.
 * A rendszer blokkolja az Automation-fiókkal való kommunikációt.
 * A Change Tracking és a leltár felügyeleti csomagjai nem tölthetők le.
 * Előfordulhat, hogy a bevezetésben lévő virtuális gép olyan klónozott gépről származik, amely nem volt Sysprep használatával létrehozott a Windows rendszerhez telepített Log Analytics ügynökkel.
 
 #### <a name="resolution"></a>Megoldás:
 
-A Log Analytics ügynök gépen navigáljon a **C:\Program Files\Microsoft monitoring Agent\Agent\Tools** , és futtassa a következő parancsokat:
+A Log Analytics ügynök gépen lépjen a **C:\Program Files\Microsoft monitoring Agent\Agent\Tools** , és futtassa a következő parancsokat:
 
 ```cmd
 net stop healthservice
@@ -51,10 +51,10 @@ StartTracing.cmd VER
 net start healthservice
 ```
 
-Ha továbbra is segítségre van szüksége, diagnosztikai információkat gyűjthet, és kapcsolatba léphet a támogatási szolgálattal. 
+Ha továbbra is segítségre van szüksége, diagnosztikai információkat gyűjthet, és kapcsolatba léphet a támogatási szolgálattal.
 
 > [!NOTE]
-> A log Analytics-ügynök alapértelmezés szerint lehetővé teszi a hibák nyomkövetését. Az előző példában szereplő részletes hibaüzenetek engedélyezéséhez használja a `VER` paramétert. Az információs nyomkövetésekhez használja `INF` a meghívásakor `StartTracing.cmd`.
+> A Log Analytics ügynök alapértelmezés szerint engedélyezi a hibák nyomkövetését. Az előző példában szereplő részletes hibaüzenetek engedélyezéséhez használja a `VER` paramétert. Az információk követéséhez használja `INF` a következőt: `StartTracing.cmd`.
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Log Analytics ügynök nem fut a Windows rendszerben
 
@@ -62,9 +62,9 @@ Ellenőrizze, hogy a Windows rendszerhez készült Log Analytics ügynök (**Hea
 
 ##### <a name="communication-to-automation-account-blocked"></a>Az Automation-fiókkal folytatott kommunikáció blokkolva
 
-Ellenőrizze Eseménynapló a gépen, és keresse meg azokat az eseményeket, amelyekben `changetracking` szó van bennük.
+Ellenőrizze Eseménynapló a gépen, és keresse meg azokat az eseményeket, amelyekben szó `changetracking` van bennük.
 
-A [hibrid Runbook-feldolgozók használatával megismerheti az adatközpontban vagy a felhőben lévő erőforrások automatizálását](../automation-hybrid-runbook-worker.md#network-planning) a Change Tracking és a leltár működéséhez engedélyezett címek és portok megismeréséhez.
+A Change Tracking és a leltár működéséhez engedélyezni kívánt címekkel és portokkal kapcsolatos információkért lásd: [erőforrások automatizálása az adatközpontban vagy a felhőben hibrid Runbook-feldolgozók használatával](../automation-hybrid-runbook-worker.md#network-planning).
 
 ##### <a name="management-packs-not-downloaded"></a>Nem letöltött felügyeleti csomagok
 
@@ -84,7 +84,7 @@ Klónozott rendszerkép használata esetén először a rendszerképet, majd a W
 
 #### <a name="issue"></a>Probléma
 
-Nem jelennek meg leltári és Change Trackingi eredmények a megoldáshoz tartozó linuxos gépekhez. 
+Nem jelennek meg a megoldásba bekészített linuxos gépek Change Tracking és leltározási eredményei. 
 
 #### <a name="cause"></a>Ok
 A probléma lehetséges okai a következők:
@@ -103,7 +103,7 @@ Heartbeat
 | summarize by Computer, Solutions
 ```
 
-Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell telepítenie az ügynököt. További információ a telepítésről és a konfigurálásról: [a naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell telepítenie az ügynököt. További információ a telepítésről és a konfigurálásról: [a naplófájlok adatainak összegyűjtése a log Analytics ügynökkel](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
 
 Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációt. Lásd: [Azure monitor-figyelési megoldások célzása](https://docs.microsoft.com/azure/azure-monitor/insights/solution-targeting).
 
@@ -119,8 +119,8 @@ Előfordulhat, hogy a Azure Security Center FIM-funkciója helytelenül ellenőr
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
+Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Az Azure [@AzureSupport](https://twitter.com/azuresupport)-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal való csatlakozással javíthatja az ügyfelek élményét: válaszokat, támogatást és szakértőket.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport)a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.

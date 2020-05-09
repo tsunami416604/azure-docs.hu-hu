@@ -3,12 +3,12 @@ title: Gyakori kérdésekre adott válaszok
 description: 'Gyakori kérdésekre adott válaszok a következő témakörökben: az Azure Backup szolgáltatásai, mint például a Recovery Services-tárolók, a biztonsági mentés lehetséges elemei, működése, titkosítás és korlátozások. '
 ms.topic: conceptual
 ms.date: 07/07/2019
-ms.openlocfilehash: 039666c4b54da6ac5444f5aa5acda5f1bb438782
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee6df940dd36a325d3638c3ad29ebfd8dec713d8
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156055"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801705"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
@@ -107,7 +107,7 @@ Windows 8 vagy újabb | 54 400 GB
 Windows 7 |1700 GB
 Windows Server 2012 vagy újabb | 54 400 GB
 Windows Server 2008, Windows Server 2008 R2 | 1700 GB
-Azure VM | 16 adatlemez<br/> Ha regisztrálni szeretne a 16-nál több (legfeljebb 32) adatlemezzel rendelkező virtuális gépek privát előzetes verziójára, írjon nekünk a következő címre: AskAzureBackupTeam@microsoft.com <br><br> Akár 32 TB-os adatlemez
+Azure VM | 16 adatlemez<br/> Ha regisztrálni szeretne a virtuális gépek korlátozott előzetes verziójára 16 + lemezzel (akár 32 lemezre), írjon hozzánk a következő helyen:AskAzureBackupTeam@microsoft.com <br><br> Akár 32 TB-os adatlemez
 
 ### <a name="how-is-the-data-source-size-determined"></a>Adatforrás méretének meghatározása
 

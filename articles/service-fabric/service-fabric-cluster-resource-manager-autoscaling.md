@@ -5,12 +5,12 @@ author: radicmilos
 ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: miradic
-ms.openlocfilehash: edcf2774873cc23a74a47cc1c9a12e2daa2ed419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d81feaede7658de69e255c32d3a3ef570156f93
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984537"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793091"
 ---
 # <a name="introduction-to-auto-scaling"></a>Az automatikus skálázás bemutatása
 Az automatikus skálázás az Service Fabric egy további funkciója, amellyel dinamikusan méretezheti a szolgáltatásokat a szolgáltatások által jelentett terhelés vagy az erőforrások használata alapján. Az automatikus skálázás nagy rugalmasságot biztosít, és igény szerint lehetővé teszi a szolgáltatás további példányainak vagy partícióinak üzembe helyezését. A teljes automatikus skálázási folyamat automatizált és átlátható, és a szabályzatok szolgáltatáshoz való beállítása után a szolgáltatás szintjén nem szükséges manuális skálázási művelet. Az automatikus skálázás a szolgáltatás létrehozási idején vagy a szolgáltatás frissítésével bármikor bekapcsolható.
@@ -130,7 +130,7 @@ Ugyanaz, mint a méretezést használó mechanizmusokhoz példányok hozzáadás
 * A _példányok minimális száma_ határozza meg a skálázás legalacsonyabb korlátját. Ha a szolgáltatás partícióinak száma eléri ezt a korlátot, a rendszer a terheléstől függetlenül nem fogja méretezni a szolgáltatást.
 
 > [!WARNING] 
-> A AddRemoveIncrementalNamedPartitionScalingMechanism állapot-nyilvántartó szolgáltatásokkal való használata esetén Service Fabric **értesítés vagy figyelmeztetés nélkül**fogja hozzáadni vagy eltávolítani a partíciókat. A skálázási mechanizmus elindításakor a rendszer nem hajtja végre az adatparticionálást. Vertikális Felskálázási művelet esetén az új partíciók üresek lesznek, és a leskálázási művelet esetén a **partíció a benne található összes adattal együtt törölve**lesz.
+> A AddRemoveIncrementalNamedPartitionScalingMechanism állapot-nyilvántartó szolgáltatásokkal való használata esetén Service Fabric **értesítés vagy figyelmeztetés nélkül**fogja hozzáadni vagy eltávolítani a partíciókat. A skálázási mechanizmus elindításakor a rendszer nem hajtja végre az adatparticionálást. Felskálázási művelet esetén az új partíciók üresek lesznek, és a méretezési művelet esetén a **partíció a benne található összes adattal együtt törölve**lesz.
 
 ## <a name="setting-auto-scaling-policy"></a>Automatikus skálázási szabályzat beállítása
 

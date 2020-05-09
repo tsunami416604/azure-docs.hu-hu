@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
-ms.openlocfilehash: fbd8e03b1f8af7802133c35ae4860116aaea0c3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab25b2e300f9fe9b0b1d077a42538c69fa543af2
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430564"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982700"
 ---
 # <a name="ingesting-data-into-a-sql-pool"></a>Az adatgyűjtés egy SQL-készletbe
 
@@ -39,7 +39,7 @@ Az Azure szinapszis Analyticsben a társított szolgáltatás a kapcsolati adato
 
 ## <a name="create-pipeline"></a>Folyamat létrehozása
 
-A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát tartalmazzák. Ebben a szakaszban egy másolási tevékenységet tartalmazó folyamatot hoz létre, amely a 2. generációs ADLS származó adatok SQL-készletbe való betöltését teszi elérhetővé.
+A folyamatok egy adott tevékenységek végrehajtásának logikai folyamatát tartalmazzák. Ebben a szakaszban egy másolási tevékenységet tartalmazó folyamatot fog létrehozni, amely a ADLS Gen2ból származó adatok SQL-készletbe való betöltését teszi elérhetővé.
 
 1. Lépjen a **hangszerelés** lapra. kattintson a folyamatok fejléc melletti plusz ikonra, és válassza a **folyamat**lehetőséget.
 1. Az **áthelyezés és átalakítás** területen a tevékenységek panelen húzza az **Adatmásolás** elemet a folyamat vászonra.
