@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 7f0c4da7caf71670746e84d5cfaa457ebae57156
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9091d3bd6b57f14bd12083319595cb855a0d42ee
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80755043"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82858707"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100 és 8600 Migrálás Azure File Syncre
 
@@ -23,7 +23,7 @@ A StorSimple 8000-es sorozat [életciklusa](https://support.microsoft.com/en-us/
 ## <a name="azure-file-sync"></a>Azure File Sync
 
 > [!IMPORTANT]
-> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. E AzureFilesMigration@microsoft -mail-cím a testreszabott áttelepítési tervhez, valamint segítségnyújtás az áttelepítés során.
+> A Microsoft elkötelezte magát, hogy segítse az ügyfeleket az áttelepítés során. A AzureFiles@microsoft.com testreszabott áttelepítési tervre vonatkozó e-mailek, valamint az áttelepítés során nyújtandó segítség.
 
 A Azure File Sync egy Microsoft Cloud Service, amely két fő összetevő alapján érhető el:
 

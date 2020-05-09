@@ -2,31 +2,27 @@
 title: Az Azure AD-kiépítés működésének megismerése | Microsoft Docs
 description: Az Azure AD-kiépítés működésének megismerése
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 241d90981ed9ba54d253e6c22c00f9e5a9197863
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ee685da3492b6915a687151beea3e82e46185de
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884885"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593726"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
 Az automatikus kiépítés olyan felhasználói identitások és szerepkörök létrehozására utal, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. A központi telepítés megkezdése előtt tekintse át ezt a cikket, amelyből megtudhatja, hogyan működik az Azure AD-alkalmazás, és milyen javaslatokat kaphat. 
 
-Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az alkalmazás gyártójától származó tartományok közötti IDENTITÁSKEZELÉS (SCIM) 2,0 felhasználói felügyeleti API-végponthoz való csatlakozással. Ez a SCIM-végpont lehetővé teszi, hogy az Azure AD programozott módon hozza létre, frissítse és távolítsa el a felhasználókat. A kiválasztott alkalmazások esetében a kiépítési szolgáltatás további, identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat. Az Azure AD és az alkalmazás közötti kiépítés során használt csatorna HTTPS TLS titkosítás használatával van titkosítva.
+Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az alkalmazás gyártójától származó tartományok közötti IDENTITÁSKEZELÉS (SCIM) 2,0 felhasználói felügyeleti API-végponthoz való csatlakozással. Ez a SCIM-végpont lehetővé teszi, hogy az Azure AD programozott módon hozza létre, frissítse és távolítsa el a felhasználókat. A kiválasztott alkalmazások esetében a kiépítési szolgáltatás további, identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat. Az Azure AD és az alkalmazás közötti üzembe helyezéshez használt csatorna HTTPS TLS 1,2 titkosítással van titkosítva.
 
 
 ![Azure ad-kiépítési szolgáltatás](./media/how-provisioning-works/provisioning0.PNG)

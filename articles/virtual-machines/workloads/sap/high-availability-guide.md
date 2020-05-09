@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 01/24/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: aa0810818bf7cfea21f925ee639b4b5a50dcb23b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9cf3d739054422d219bb6536129c5eb22a2994a
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79246122"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594882"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver számára
 
@@ -452,7 +452,7 @@ Az üzembe helyezés és a konfiguráció egyszerűsítése érdekében ebben a 
 ## <a name="prerequisites"></a><a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a>Előfeltételek
 Mielőtt elkezdené, győződjön meg arról, hogy megfelel az alábbi szakaszokban ismertetett előfeltételeknek. Ügyeljen arra is, hogy ellenőrizze az [erőforrások][sap-ha-guide-2] szakaszban felsorolt összes erőforrást.
 
-Ebben a cikkben a háromrétegű [SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image/)Azure Resource Manager sablonjait használjuk. A sablonok hasznos áttekintését lásd: [SAP Azure Resource Manager-sablonok](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
+Ebben a cikkben a háromrétegű [SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/)Azure Resource Manager sablonjait használjuk. A sablonok hasznos áttekintését lásd: [SAP Azure Resource Manager-sablonok](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
 
 ## <a name="resources"></a><a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a>Erőforrások
 Ezek a cikkek a SAP üzembe helyezéseit fedik le az Azure-ban:
@@ -677,8 +677,8 @@ A Azure Resource Manager háromrétegű sablonjai a magas rendelkezésre állás
 
 Itt bemutathatja Azure Resource Manager sablonokat a jelen cikkben ismertetett példához:
 
-* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
+* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/)  
+* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/)
 
 Az infrastruktúra előkészítése az 1. építészeti sablonhoz:
 
@@ -768,8 +768,8 @@ Az SAP-hez készült Azure Resource Manager-sablon segítségével egyszerűbbé
 
 A következő helyen kaphat Azure Resource Manager sablonokat ehhez a telepítési forgatókönyvhöz:
 
-* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
+* [Azure Marketplace-rendszerkép](https://github.com/Azure/azure-quickstart-templates/)  
+* [Egyéni rendszerkép](https://github.com/Azure/azure-quickstart-templates/)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Az infrastruktúra előkészítése a 3. építészeti sablonhoz
@@ -1016,7 +1016,7 @@ Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni
 1. A Azure Portal válassza ** <a *SID*>-LB-ASCs terheléselosztó** > terheléselosztási**szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Name (Név)
+   * Name
    * Port
    * Háttérbeli port
 

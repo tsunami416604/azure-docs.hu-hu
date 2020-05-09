@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/17/2020
-ms.openlocfilehash: c65e3ad7ed02ddd4e6ed1d60628a738d333e9a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eaf51f6778d38d236808c3fd809082bc3b2d54b2
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189381"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82863433"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
 
@@ -69,13 +69,13 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     **FQDN-címkék szakasz**
 
-    | Name (Név) | Forrás címe | FQDN címke | Megjegyzések |
+    | Name | Forrás címe | FQDN címke | Megjegyzések |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate és HDInsight | A HDI-szolgáltatásokhoz szükséges |
 
     **Cél teljes tartománynevek szakasz**
 
-    | Name (Név) | Forrásoldali címek | `Protocol:Port` | Cél teljes tartománynevek | Megjegyzések |
+    | Name | Forrásoldali címek | `Protocol:Port` | Cél teljes tartománynevek | Megjegyzések |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
@@ -103,7 +103,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **IP-címek szakasz**
 
-    | Name (Név) | Protocol (Protokoll) | Forrásoldali címek | Cél címei | Célportok | Megjegyzések |
+    | Name | Protocol (Protokoll) | Forrásoldali címek | Cél címei | Célportok | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Időszolgáltatás |
     | Rule_2 | Bármelyik | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
@@ -112,7 +112,7 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     **A szolgáltatás címkéi szakasza**
 
-    | Name (Név) | Protocol (Protokoll) | Forráscímek | Szolgáltatáscímkék | Célport | Megjegyzések |
+    | Name | Protocol (Protokoll) | Forráscímek | Szolgáltatáscímkék | Célport | Megjegyzések |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Konfiguráljon egy hálózati szabályt az SQL-hez tartozó szolgáltatás-címkék szakaszban, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. |
 
@@ -188,61 +188,7 @@ A tűzfal sikeres beállítása után a belső végpont (`https://CLUSTERNAME-in
 
 A nyilvános végpont (`https://CLUSTERNAME.azurehdinsight.net`) vagy SSH-végpont (`CLUSTERNAME-ssh.azurehdinsight.net`) használatához győződjön meg arról, hogy a megfelelő útvonalak vannak az ÚTVÁLASZTÁSI táblázatban és a NSG-szabályokban, hogy elkerülje az aszimmetrikus útválasztási probléma magyarázatát. [here](../firewall/integrate-lb.md) Ebben az esetben engedélyeznie kell az ügyfél IP-címét a bejövő NSG-szabályokban, és hozzá kell adnia azt a felhasználó által megadott útválasztási táblázathoz a következő ugrási beállítással `internet`. Ha az Útválasztás helytelenül van beállítva, időtúllépési hiba jelenik meg.
 
-## <a name="configure-another-network-virtual-appliance"></a>Másik hálózati virtuális berendezés konfigurálása
-
-> [!Important]
-> A következő információkra **csak** akkor van szükség, ha nem Azure Firewall hálózati virtuális berendezést (NVA) szeretne konfigurálni.
-
-Az előző utasítások segítséget nyújtanak Azure Firewall konfigurálásához a HDInsight-fürt kimenő forgalmának korlátozásához. A Azure Firewall automatikusan úgy van konfigurálva, hogy a gyakori fontos forgatókönyvek esetében lehetővé tegye a forgalmat. Egy másik hálózati virtuális készülék használata több további funkció konfigurálását is megköveteli. A hálózati virtuális berendezés konfigurálása során tartsa szem előtt a következő tényezőket:
-
-* A szolgáltatási végponttal kompatibilis szolgáltatásokat a szolgáltatási végpontokkal kell konfigurálni.
-* Az IP-címek függőségei nem HTTP/S forgalomra vonatkoznak (TCP-és UDP-forgalom).
-* Az FQDN HTTP/HTTPS-végpontok a NVA-eszközön helyezhetők el.
-* A helyettesítő HTTP/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően változhatnak.
-* Rendelje hozzá a HDInsight-alhálózathoz létrehozott útválasztási táblázatot.
-
-### <a name="service-endpoint-capable-dependencies"></a>Szolgáltatási végpontok számára alkalmas függőségek
-
-| **Végpont** |
-|---|
-| Azure SQL |
-| Azure Storage |
-| Azure Active Directory |
-
-#### <a name="ip-address-dependencies"></a>IP-címek függőségei
-
-| **Végpont** | **Részletek** |
-|---|---|
-| \*: 123 | NTP órajel-ellenőrzési. A forgalom a 123-es porton több végponton van bejelölve |
-| [Itt](hdinsight-management-ip-addresses.md) közzétett IP-címek | Ezek az IP-címek a HDInsight szolgáltatás |
-| HRE – DS magánhálózati IP-címek ESP-fürtökhöz |
-| \*: 16800 KMS Windows-aktiváláshoz |
-| \*12000 Log Analytics |
-
-#### <a name="fqdn-httphttps-dependencies"></a>FQDN HTTP/HTTPS-függőségek
-
-> [!Important]
-> Az alábbi lista csak néhányat ad a legfontosabb FQDN-nek. További teljes tartományneveket (elsősorban az Azure Storage-t és a Azure Service Bust) a [fájl](https://github.com/Azure-Samples/hdinsight-fqdn-lists/blob/master/HDInsightFQDNTags.json)NVA konfigurálásához érhet el.
-
-| **Végpont**                                                          |
-|---|
-| azure.archive.ubuntu.com:80                                           |
-| security.ubuntu.com:80                                                |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-| wawsinfraprodbay063.blob.core.windows.net:443                         |
-| registry-1.docker.io:443                                              |
-| auth.docker.io:443                                                    |
-| production.cloudflare.docker.com:443                                  |
-| download.docker.com:443                                               |
-| us.archive.ubuntu.com:80                                              |
-| download.mono-project.com:80                                          |
-| packages.treasuredata.com:80                                          |
-| security.ubuntu.com:80                                                |
-| azure.archive.ubuntu.com:80                                           |
-| ocsp.msocsp.com:80                                                    |
-| ocsp.digicert.com:80                                                  |
-
 ## <a name="next-steps"></a>További lépések
 
 * [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)
+* [Hálózati virtuális berendezés konfigurálása](./network-virtual-appliance.md)

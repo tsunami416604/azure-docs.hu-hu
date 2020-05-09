@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 7e3ad3a5928b36c221bb83b1c4012c3c9e14f35d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594179"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611466"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Ismerkedés az Azure CDN-fejlesztéssel
 > [!div class="op_single_selector"]
 > * [Node.js](cdn-app-dev-node.md)
 > * [.NET](cdn-app-dev-net.md)
-> 
-> 
+>
+>
 
 A [.net-hez készült Azure CDN kódtár](/dotnet/api/overview/azure/cdn) segítségével automatizálhatja a CDN-profilok és-végpontok létrehozását és felügyeletét.  Ez az oktatóanyag végigvezeti egy olyan egyszerű .NET-konzol alkalmazás létrehozásán, amely számos elérhető műveletet mutat be.  Ez az oktatóanyag nem ismerteti részletesen a Azure CDN-függvénytár összes aspektusát.
 
@@ -34,35 +35,35 @@ Az oktatóanyag elvégzéséhez szüksége lesz a Visual Studio 2015-re.  A [Vis
 
 > [!TIP]
 > Az [oktatóanyagból származó befejezett projekt](https://code.msdn.microsoft.com/Azure-CDN-Management-1f2fba2c) letölthető az MSDN webhelyen.
-> 
-> 
+>
+>
 
 [!INCLUDE [cdn-app-dev-prep](../../includes/cdn-app-dev-prep.md)]
 
 ## <a name="create-your-project-and-add-nuget-packages"></a>A projekt létrehozása és Nuget-csomagok hozzáadása
 Most, hogy létrehozott egy erőforráscsoportot a CDN-profilokhoz, és az Azure AD-alkalmazás engedélyt kapott a CDN-profilok és-végpontok kezelésére a csoporton belül, elkezdheti az alkalmazás létrehozását.
 
-A Visual Studio 2015-es verziójában kattintson a **fájl**, **új**, **projekt...** elemre az új projekt párbeszédpanel megnyitásához.  Bontsa ki a **Visual C#** elemet, majd a bal oldali ablaktáblán válassza a **Windows** lehetőséget.  Kattintson a **konzol alkalmazás** elemre a középső ablaktáblán.  Nevezze el a projektet, majd kattintson **az OK**gombra.  
+A Visual Studio 2015-es verziójában kattintson a **fájl**, **új**, **projekt...** elemre az új projekt párbeszédpanel megnyitásához.  Bontsa ki a **Visual C#** elemet, majd a bal oldali ablaktáblán válassza a **Windows** lehetőséget.  Kattintson a **konzol alkalmazás** elemre a középső ablaktáblán.  Nevezze el a projektet, majd kattintson **az OK**gombra.
 
 ![Új projekt](./media/cdn-app-dev-net/cdn-new-project.png)
 
 A projektünk Nuget-csomagokban található Azure-kódtárakat fog használni.  Vegyük fel ezeket a projektbe.
 
 1. Kattintson az **eszközök** menüre, a **Nuget csomagkezelő**, majd a **Package Manager konzol**elemre.
-   
+
     ![Nuget-csomagok kezelése](./media/cdn-app-dev-net/cdn-manage-nuget.png)
 2. A Package Manager konzolon hajtsa végre a következő parancsot a **Active Directory-hitelesítési tár telepítéséhez (ADAL)**:
-   
+
     `Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory`
 3. A **Azure CDN felügyeleti könyvtár**telepítéséhez hajtsa végre a következő műveleteket:
-   
+
     `Install-Package Microsoft.Azure.Management.Cdn`
 
 ## <a name="directives-constants-main-method-and-helper-methods"></a>Irányelvek, állandók, Main metódus és segítő módszerek
 Nézzük meg a programunk alapszintű szerkezetét.
 
 1. A Program.cs lapon vissza kell cserélnie a `using` felül található irányelveket a következőkkel:
-   
+
     ```csharp
     using System;
     using System.Collections.Generic;
@@ -74,13 +75,13 @@ Nézzük meg a programunk alapszintű szerkezetét.
     using Microsoft.Rest;
     ```
 2. Meg kell határozni néhány állandót, amelyeket a metódusok használni fognak.  A `Program` osztályban, de a `Main` metódus előtt adja hozzá a következőt.  A helyőrzőket cserélje le úgy, hogy a ** &lt;zárójeleket&gt;** is beleértve, szükség esetén a saját értékeivel.
-   
+
     ```csharp
     //Tenant app constants
     private const string clientID = "<YOUR CLIENT ID>";
     private const string clientSecret = "<YOUR CLIENT AUTHENTICATION KEY>"; //Only for service principals
     private const string authority = "https://login.microsoftonline.com/<YOUR TENANT ID>/<YOUR TENANT DOMAIN NAME>";
-   
+
     //Application constants
     private const string subscriptionId = "<YOUR SUBSCRIPTION ID>";
     private const string profileName = "CdnConsoleApp";
@@ -89,48 +90,48 @@ Nézzük meg a programunk alapszintű szerkezetét.
     private const string resourceLocation = "<YOUR PREFERRED AZURE LOCATION, SUCH AS Central US>";
     ```
 3. Az osztály szintjén is definiálja ezt a két változót.  Ezeket később a profil és a végpont létezésének megállapításához fogjuk használni.
-   
+
     ```csharp
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
 4. Cserélje le `Main` a metódust a következőképpen:
-   
+
    ```csharp
    static void Main(string[] args)
    {
        //Get a token
        AuthenticationResult authResult = GetAccessToken();
-   
+
        // Create CDN client
        CdnManagementClient cdn = new CdnManagementClient(new TokenCredentials(authResult.AccessToken))
            { SubscriptionId = subscriptionId };
-   
+
        ListProfilesAndEndpoints(cdn);
-   
+
        // Create CDN Profile
        CreateCdnProfile(cdn);
-   
+
        // Create CDN Endpoint
        CreateCdnEndpoint(cdn);
-   
+
        Console.WriteLine();
-   
+
        // Purge CDN Endpoint
        PromptPurgeCdnEndpoint(cdn);
-   
+
        // Delete CDN Endpoint
        PromptDeleteCdnEndpoint(cdn);
-   
+
        // Delete CDN Profile
        PromptDeleteCdnProfile(cdn);
-   
+
        Console.WriteLine("Press Enter to end program.");
        Console.ReadLine();
    }
    ```
 5. Más módszerekkel a felhasználó "igen/nem" kérdésekkel fog megjelenni.  Adja hozzá a következő metódust, hogy egy kicsit könnyebb legyen:
-   
+
     ```csharp
     private static bool PromptUser(string Question)
     {
@@ -161,9 +162,9 @@ Ahhoz, hogy használhassa a Azure CDN felügyeleti könyvtárat, hitelesítenie 
 ```csharp
 private static AuthenticationResult GetAccessToken()
 {
-    AuthenticationContext authContext = new AuthenticationContext(authority); 
+    AuthenticationContext authContext = new AuthenticationContext(authority);
     ClientCredential credential = new ClientCredential(clientID, clientSecret);
-    AuthenticationResult authResult = 
+    AuthenticationResult authResult =
         authContext.AcquireTokenAsync("https://management.core.windows.net/", credential).Result;
 
     return authResult;
@@ -174,8 +175,8 @@ Ha egyéni felhasználói hitelesítést használ, a `GetAccessToken` metódus n
 
 > [!IMPORTANT]
 > Csak akkor használja ezt a kódot, ha egy egyszerű szolgáltatásnév helyett egyéni felhasználói hitelesítést szeretne használni.
-> 
-> 
+>
+>
 
 ```csharp
 private static AuthenticationResult GetAccessToken()
@@ -271,8 +272,8 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > A fenti példa hozzárendeli a végpontot a *contoso* nevű forráshoz egy `www.contoso.com`állomásnévvel.  Ezt úgy kell módosítania, hogy a saját forrásához tartozó állomásnévre mutasson.
-> 
-> 
+>
+>
 
 ## <a name="purge-an-endpoint"></a>Végpont kiürítése
 Feltételezve, hogy a végpont létrejött, egy gyakori feladat, amelyet a programban végre szeretnénk hajtani, a végponton lévő tartalom megtisztítása.
@@ -292,8 +293,8 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 
 > [!NOTE]
 > A fenti példában a karakterlánc `/*` azt jelöli, hogy a végpont elérési útjának gyökerében mindent törölni kívánok.  Ez egyenértékű az **összes törlés** ellenőrzésével a Azure Portal "Purge" párbeszédablakban. A `CreateCdnProfile` metódusban létrehoztam a profilt a Verizon-profilból **Azure CDN** a kóddal `Sku = new Sku(SkuName.StandardVerizon)`, így ez sikeres lesz.  A **Akamai-profiloktól való Azure CDN** azonban nem támogatja az **összes kiürítést**, így ha az oktatóanyaghoz Akamai-profilt használok, a törléshez konkrét elérési utakat is meg kell adni.
-> 
-> 
+>
+>
 
 ## <a name="delete-cdn-profiles-and-endpoints"></a>CDN-profilok és-végpontok törlése
 A legutóbbi metódusok törlik a végpontot és a profilt.
@@ -341,4 +342,3 @@ Ha meg szeretné tekinteni a kész projektet ebből az útmutatóból, [töltse 
 Ha további dokumentációt szeretne keresni a .NET-hez készült Azure CDN Management Library-hez, tekintse meg az MSDN-beli [referenciát](/dotnet/api/overview/azure/cdn).
 
 A CDN-erőforrások kezelése a [PowerShell](cdn-manage-powershell.md)-lel.
-

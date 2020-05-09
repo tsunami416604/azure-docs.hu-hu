@@ -21,12 +21,12 @@ ms.locfileid: "74795968"
 | Szinkronizálási csoportok/Storage Sync Service | 100 szinkronizálási csoportok | Igen |
 | Regisztrált kiszolgálók/Storage Sync Service | 99-kiszolgálók | Igen |
 | Felhőbeli végpontok szinkronizálása csoportonként | 1 Felhőbeli végpont | Igen |
-| Kiszolgálói végpontok szinkronizálási csoportonként | 50 kiszolgálói végpontok | Nem |
+| Kiszolgálói végpontok szinkronizálási csoportonként | 50 kiszolgálói végpontok | No |
 | Kiszolgálói végpontok száma kiszolgálónként | 30 kiszolgálói végpont | Igen |
-| Fájlrendszerbeli objektumok (címtárak és fájlok) szinkronizálási csoportonként | 100 000 000 objektum | Nem |
+| Fájlrendszerbeli objektumok (címtárak és fájlok) szinkronizálási csoportonként | 100 000 000 objektum | No |
 | A fájlrendszer objektumainak maximális száma (címtárak és fájlok) a címtárban | 5 000 000 objektum | Igen |
 | Maximális objektum (címtárak és fájlok) biztonsági leíró mérete | 64 KiB | Igen |
-| Fájlméret | 100 GiB | Nem |
+| Fájlméret | 100 GiB | No |
 | A többszintű fájl minimális fájlmérete | V9: fájlrendszerbeli fürt méretétől függően (dupla fájlrendszerű fürt mérete). Ha például a fájlrendszer fürtjének mérete 4kb, a rendszer a minimális fájlméretet fogja 8 kb.<br> V8-as és régebbi: 64 KiB  | Igen |
 
 > [!Note]  
