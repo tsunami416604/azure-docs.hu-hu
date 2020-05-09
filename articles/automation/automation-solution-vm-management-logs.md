@@ -1,20 +1,20 @@
 ---
-title: Naplók lekérdezése a virtuális gépek indítása/leállítása megoldásból
-description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a virtuális gépek indítási/leállítási megoldásával létrehozott naplófájlokat a Azure Monitorról.
+title: Naplók lekérdezése Start/Stop VMs during off-hours
+description: Ez a cikk azt ismerteti, hogyan lehet lekérdezni a Start/Stop VMs during off-hours-megoldás által generált naplófájlokat Azure Monitorból.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 472f3762ca18f71ba95053576daf025d8477fee9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 472baa3f4b3cbb970a8f365ccc94929ad565c421
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604727"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864232"
 ---
-# <a name="how-to-query-logs-from-startstop-vms-solution"></a>Naplók lekérdezése a virtuális gépek indítása/leállítása megoldásból
+# <a name="how-to-query-logs-from-startstop-vms-during-off-hours"></a>Naplók lekérdezése Start/Stop VMs during off-hours
 
-Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munkaterületre: a feladatok naplóit és a feladatok folyamait. Ezek az adatAzure Monitor [lekérdezésekhez](../azure-monitor/log-query/log-query-overview.md) érhetők el.
+Azure Automation két típusú rekordot továbbít a csatolt Log Analytics munkaterületre: a feladatok naplóit és a feladatok folyamait. Ez a cikk a Azure Monitor [lekérdezéséhez](../azure-monitor/log-query/log-query-overview.md) rendelkezésre álló adatelemzéseket tekinti át.
 
 ## <a name="job-logs"></a>Feladatnaplók
 

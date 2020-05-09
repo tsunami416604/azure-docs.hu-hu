@@ -6,16 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 9b771a82d88f9902aeb6022f07811ded8a6e0e62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192833"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82608251"
 ---
-# <a name="frequently-asked-questions-about-the-cassandra-api-for-azure-cosmos-db"></a>Gyakori kérdések a Cassandra APIról Azure Cosmos DB
+# <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Gyakran ismételt kérdések a Cassandra APIról Azure Cosmos DB
 
-## <a name="what-are-some-key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Mi a különbség az Apache Cassandra és a Cassandra API között?
+Ez a cikk az Apache Cassandra és a Azure Cosmos DB Cassandra API közötti funkcionalitásbeli különbségeket ismerteti. Emellett választ ad a Azure Cosmos DB Cassandra APIával kapcsolatos gyakori kérdésekre is.
+
+## <a name="key-differences-between-apache-cassandra-and-the-cassandra-api"></a>Az Apache Cassandra és a Cassandra API közötti fő különbségek
 
 - Az Apache Cassandra egy 100 MB-os korlátot javasol a partíciós kulcs méretétől függően. A Azure Cosmos DB Cassandra API legfeljebb 20 GB-nyi partíciót tesz lehetővé.
 - Az Apache Cassandra lehetővé teszi a tartós véglegesítés letiltását. Kihagyhatja az írást a véglegesítő naplóba, és közvetlenül a memtables ugorhat. Ez adatvesztéshez vezethet, ha a csomópont leáll, mielőtt memtables a lemezre SSTables. Azure Cosmos DB mindig tartós véglegesíti az adatvesztés megelőzése érdekében.

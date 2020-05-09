@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 889d0d1e98f5c9947588011774d02e54f05edca1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0dab5f3dcdfb6ddabbd94960dcf8a8bf2bce98af
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257759"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890779"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan állíthat be egy olyan labort, amely a természetes nyelvi feldolgozás (NLP) mély tanulására koncentrál a Azure Lab Services használatával. A természetes nyelvi feldolgozás (NLP) a mesterséges intelligencia (AI) formája, amely lehetővé teszi, hogy a számítógépek fordítással, beszédfelismeréssel és más nyelvi felismerési képességekkel rendelkeznek.  
@@ -40,7 +40,7 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 | ------------ | ------------------ |
 | Virtuális gép (VM) mérete | Kis GPU (számítás). Ez a méret a legjobb megoldás a nagy számítási igényű és a hálózati igényű alkalmazások, például a mesterséges intelligencia és a mély tanulás számára. |
 | VM-rendszerkép | [Linux (Ubuntu) Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Ez a rendszerkép mély tanulási keretrendszert és eszközöket biztosít a gépi tanuláshoz és az adatelemzéshez. A képen található telepített eszközök teljes listájának megtekintéséhez tekintse meg a következő cikket: [Mit tartalmaz a DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Távoli asztali kapcsolat engedélyezése | Engedélyezése. <p>A beállítás engedélyezése lehetővé teszi a tanárok és a tanulók számára, hogy Távoli asztal (RDP) használatával csatlakozzanak a Virtual Machineshoz (VM).</p><p>**Fontos**: az RDP már telepítve van és konfigurálva van a Linux-rendszerképekre Data Science Virtual Machine. Ennek eredményeképpen a tanárok/diákok a további lépések nélkül csatlakozhatnak a virtuális gépekhez RDP-n keresztül. Továbbá, ha a grafikus asztalhoz kell csatlakoznia, ez a rendszerkép már telepítve van a virtuális gépre telepített [X2Go-kiszolgálóval](https://wiki.x2go.org/doku.php/doc:newtox2go) . A tanulóknak telepíteniük kell a X2Go-ügyfelet a helyi gépekre, és az ügyfelet kell használniuk a csatlakozáshoz. További információkért tekintse meg az alábbi útmutatókat: <ul><li>[A Linux Data Science Virtual Machine elérése](../../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)</li><li>[Kapcsolódás a sablon virtuális géphez RDP-és GUI-csomagok telepítéséhez](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm)</li></ul></p>   |
+| Távoli asztali kapcsolat engedélyezése | <p>A beállítás engedélyezése lehetővé teszi a tanárok és a tanulók számára, hogy Távoli asztal (RDP) használatával csatlakozzanak a Virtual Machineshoz (VM).</p><p>**Fontos**: Ez a beállítás csak a Linux rendszerű gépeken lévő **RDP** -portot nyitja meg. Ha az RDP már telepítve van és konfigurálva van a virtuális gép rendszerképén, akkor a tanulók RDP-kapcsolaton keresztül csatlakozhatnak a virtuális gépekhez a további lépések követése nélkül. <p>Ha a virtuálisgép-rendszerképben nincs telepítve és konfigurálva az RDP, először az SSH-val kell csatlakoznia a Linux rendszerű géphez, és telepítenie kell az RDP-és GUI-csomagokat, hogy a tanulók később is csatlakozhassanak a Linux-számítógéphez. További információkért lásd: [Távoli asztal telepítése és konfigurálása egy linuxos virtuális géphez való kapcsolódáshoz az Azure-ban](../../virtual-machines/linux/use-remote-desktop.md). Ezt követően közzéteheti a képet, hogy a tanulók RDP-be tudják állítani a tanulói Linux virtuális gépeket.  |
 
 A Linux-rendszerképekhez készült Data Science Virtual Machine az ilyen típusú osztályok számára szükséges mély tanulási keretrendszereket és eszközöket biztosít. Ennek eredményeképpen a sablon létrehozása után nem kell további testreszabást végeznie. A tanulók számára közzé lehet tenni. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.  
 

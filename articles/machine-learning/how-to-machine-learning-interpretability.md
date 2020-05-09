@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: fcb837af85a54102e8c9eafc33249af9dba6b5ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631414"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82982887"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>A modell értelmezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -74,17 +74,17 @@ Ismerje meg a támogatott értelmező technikákat, a támogatott gépi tanulás
 
 |Értelmező technika|Leírás|Típus|
 |--|--|--------------------|
-|1. SHAP Tree-magyarázat| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
-|2. a Deep elmagyarázó átalakítása| A [Shaper](https://github.com/slundberg/shap)magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|
-|3. az átalakítás lineáris magyarázata| A [Shap](https://github.com/slundberg/shap)lineáris elmagyarázó számítási funkciói a **lineáris modell**értékeit, opcionálisan elvégzik a szolgáltatások közötti korrelációk elszámolását.|Modell-specifikus|
-|4. az SHAPer kernel-magyarázata| A [Shap](https://github.com/slundberg/shap)kernel-magyarázata egy speciálisan súlyozott, helyi lineáris regressziót használ az **egyes modellek**formálási értékeinek becsléséhez.|Modell – agnosztikus|
-|5. utánozza a magyarázatot (globális helyettes)| Az adatutánozás elmagyarázása a [globális helyettesítő modellek](https://christophm.github.io/interpretable-ml-book/global.html) a tábla modelljeinek utánzására való betanításának gondolatán alapul. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kitanítva, hogy a lehető legpontosabban közelítse meg a **fekete Box-modellek** előrejelzéseit. Az adatszakértők a helyettesítő modellt úgy tudják értelmezni, hogy levonja a fekete Box-modellel kapcsolatos következtetéseket. A következő értelmezhető modellek egyikét használhatja helyettesítő modellként: LightGBM (LGBMExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillatos modell (SGDExplainableModel) és döntési fa (DecisionTreeExplainableModel).|Modell – agnosztikus|
-|6. permutáció funkció fontossági magyarázata (PFI)| A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel kapcsolatos tanulmányai](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy a teljesítmény mérőszáma milyen mértékben változik. Minél nagyobb a változás, annál fontosabb a funkció. A PFI megmagyarázhatja a **mögöttes modellek** általános viselkedését, de nem magyarázza el az egyes előrejelzéseket. |Modell – agnosztikus|
+|ALAKÍTÁSi fa magyarázata| A SHAP 's Tree [Deformálója](https://github.com/slundberg/shap), amely a **fák és a fák különböző részeire**jellemző, a többhelyes idő gyors formálására szolgáló algoritmusra koncentrál.|Modell-specifikus|
+|Mélyreható magyarázat kialakítása| A SHAPer magyarázata alapján a Deep deformáló "egy nagy sebességű közelítési algoritmus az értékek alakításához a Deep learning-modellekben, amely egy, a [SHAP](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions)-beli DeepLIFT-ben leírt módon létesített kapcsolatban. A **TensorFlow** modellek és **kerasz** modellek támogatottak a TensorFlow-háttér használatával (a PyTorch előzetes támogatása is elérhető).|Modell-specifikus|
+|Lineáris elmagyarázó ALAKÍTÁS| A SHAP lineáris elmagyarázó számítási funkciói a **lineáris modell**értékeit, opcionálisan elvégzik a szolgáltatások közötti korrelációk elszámolását.|Modell-specifikus|
+|A rendszermag magyarázatának kialakítása| A SHAP kernel-magyarázata egy speciálisan súlyozott, helyi lineáris regressziót használ az **egyes modellek**formálási értékeinek becsléséhez.|Modell – agnosztikus|
+|Elmagyarázó (globális helyettes)| Az adatutánozás elmagyarázása a [globális helyettesítő modellek](https://christophm.github.io/interpretable-ml-book/global.html) a tábla modelljeinek utánzására való betanításának gondolatán alapul. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kitanítva, hogy a lehető legpontosabban közelítse meg a **fekete Box-modellek** előrejelzéseit. Az adatszakértők a helyettesítő modellt úgy tudják értelmezni, hogy levonja a fekete Box-modellel kapcsolatos következtetéseket. A következő értelmezhető modellek egyikét használhatja helyettesítő modellként: LightGBM (LGBMExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillatos modell (SGDExplainableModel) és döntési fa (DecisionTreeExplainableModel).|Modell – agnosztikus|
+|A permutáció funkció fontossági magyarázata (PFI)| A permutáció funkció fontossága egy olyan módszer, amely a [Breiman véletlenszerű erdőkkel kapcsolatos tanulmányai](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) által ihletett besorolási és regressziós modellek magyarázatára szolgál (lásd: 10. szakasz). Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy a teljesítmény mérőszáma milyen mértékben változik. Minél nagyobb a változás, annál fontosabb a funkció. A PFI megmagyarázhatja a **mögöttes modellek** általános viselkedését, de nem magyarázza el az egyes előrejelzéseket. |Modell – agnosztikus|
 
 
 
 
-A fent ismertetett értelmező technikák mellett egy másik, a nevű `TabularExplainer` [SHAP-alapú magyarázat](https://github.com/slundberg/shap)is támogatott. A modelltől függően a támogatott `TabularExplainer` SHAP-magyarázatok egyikét használja:
+A fent ismertetett értelmező technikák mellett egy másik, a nevű `TabularExplainer`SHAP-alapú magyarázat is támogatott. A modelltől függően a támogatott `TabularExplainer` SHAP-magyarázatok egyikét használja:
 
 * TreeExplainer az összes fa alapú modellhez
 * DeepExplainer DNN-modellekhez
@@ -120,4 +120,6 @@ A magyarázatot távolról is futtathatja Azure Machine Learning számításon, 
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az [útmutató](how-to-machine-learning-interpretability-aml.md) a modellek helyi és Azure Machine learning távoli számítási erőforrásokon való értelmezésének engedélyezéséhez című témakört. További forgatókönyvek: [minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) .
+- Tekintse meg az [útmutató](how-to-machine-learning-interpretability-aml.md) a modellek helyi és Azure Machine learning távoli számítási erőforrásokon való értelmezésének engedélyezéséhez című témakört. 
+- További forgatókönyvek: [minta notebookok](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/explain-model) . 
+- Ha érdekli a szöveges forgatókönyvek értelmezése, tekintse meg a következőt: [értelmezési szöveg](https://github.com/interpretml/interpret-text), egy kapcsolódó nyílt forráskódú tárház, amely a [közösségi értelmezést](https://github.com/interpretml/interpret-community/)értelmezi a NLP értelmezési módszereiben. `azureml.interpret`a csomag jelenleg nem támogatja ezeket a technikákat, de megkezdheti a [szöveges besorolású jegyzetfüzetek](https://github.com/interpretml/interpret-text/blob/master/notebooks/text_classification/text_classification_classical_text_explainer.ipynb)használatát.

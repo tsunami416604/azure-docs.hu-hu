@@ -972,10 +972,14 @@
               href: sql-api-query-metrics.md
             - name: Teljesítménnyel kapcsolatos tippek .NET SDK-hoz
               href: performance-tips.md
-            - name: Teljesítménnyel kapcsolatos tippek Java SDK-hoz
-              href: performance-tips-java.md
-            - name: Teljesítménnyel kapcsolatos tippek Async Java SDK-hoz
-              href: performance-tips-async-java.md
+            - name: Teljesítménnyel kapcsolatos tippek Java SDK v4-hez
+              href: performance-tips-java-sdk-v4-sql.md
+            - name: Teljesítménnyel kapcsolatos tippek régebbi Java SDK-khoz
+              items:
+                - name: Async Java SDK v2
+                  href: performance-tips-async-java.md
+                - name: Sync Java SDK v2
+                  href: performance-tips-java.md
             - name: Teljesítményteszt – mintaalkalmazás
               href: performance-testing.md
         - name: Költséghatékony írások és olvasások
@@ -984,8 +988,12 @@
       items:
         - name: Lekérdezési teljesítmény hibaelhárítása
           href: troubleshoot-query-performance.md
-        - name: Java Async SDK-hibák elhárítása
-          href: troubleshoot-java-async-sdk.md
+        - name: Java SDK v4-hibák elhárítása
+          href: troubleshoot-java-sdk-v4-sql.md
+        - name: Régebbi Java SDK-k hibáinak elhárítása
+          items:
+            - name: Async Java SDK v2
+              href: troubleshoot-java-async-sdk.md
         - name: .NET SDK-hibák elhárítása
           href: troubleshoot-dot-net-sdk.md
     - name: Változáscsatorna

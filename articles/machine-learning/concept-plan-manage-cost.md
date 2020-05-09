@@ -9,13 +9,13 @@ ms.reviewer: nigup
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: b777e6a45bdfe78889366982a6c28e10e21c4fbc
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/08/2020
+ms.openlocfilehash: 2161a9e4460526113aaf89609b72250a09fc6af3
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856997"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891214"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>A Azure Machine Learning költségeinek megtervezése és kezelése
 
@@ -63,7 +63,7 @@ A különböző időintervallumokhoz tartozó grafikonok és táblák költsége
 
 Nem jelenik meg külön szolgáltatási rész a Machine Learning számára.  Ehelyett a Machine Learning-munkaterületekhez hozzáadott különböző erőforrásokat fogja látni.
 
-## <a name="use-amlcompute"></a>AmlCompute használata
+## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Azure Machine Learning számítási fürt (AmlCompute) használata
 
 A folyamatosan változó adatváltozások esetén gyors és gördülékeny modell-képzésre és-képzésre van szükség a pontos modellek fenntartása érdekében. A folyamatos képzés azonban a GPU-k mélyreható tanulási modelljeire is kikerül. 
 
@@ -138,5 +138,7 @@ Azure Machine Learning a számítás a fenntartott példányokat is támogatja. 
 
 ## <a name="next-steps"></a>További lépések
 
-* További információ a költségek a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md)szolgáltatással történő kezeléséről.
-* További információ a [Azure Machine learning számítási](how-to-set-up-training-targets.md#amlcompute)feladatokról.
+További információk:
+* [Erőforrás-kvóták kezelése és növelése](how-to-manage-quotas.md)
+* [Költségek kezelése a [Cost Analysis](../cost-management-billing/costs/quick-acm-cost-analysis.md)szolgáltatással.
+* [Azure Machine learning a számítást](how-to-set-up-training-targets.md#amlcompute).

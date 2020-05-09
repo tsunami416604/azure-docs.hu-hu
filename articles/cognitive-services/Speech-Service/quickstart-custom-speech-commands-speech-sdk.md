@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 186b684cc7e4442d1a8ce14f06e16c839e117a26
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76156777"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872490"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Gyors útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Speech SDK-val (előzetes verzió)
 
@@ -24,19 +24,20 @@ Az üzemeltetett egyéni parancsok alkalmazás létrehozása után megkezdheti a
 Ebben a cikkben a következőket fogja megtekinteni:
 
 - Egyéni parancsok alkalmazás közzététele és alkalmazás-azonosító beszerzése (alkalmazás-azonosító)
-- Hozzon létre egy ügyfélalkalmazás a Speech SDK használatával, hogy az egyéni parancsok alkalmazással kommunikáljon
+- Hozzon létre egy Univerzális Windows-platform (UWP) ügyfélalkalmazás a Speech SDK használatával, hogy lehetővé tegye az egyéni parancsok alkalmazással való kommunikációt
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk végrehajtásához egyéni parancsokat tartalmazó alkalmazás szükséges. Ha még nem hozott létre egyéni parancsokat, ezt az előző rövid útmutatókban teheti meg:
-
-- [Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)](./quickstart-custom-speech-commands-create-new.md)
-- [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
+> [!div class = "checklist"]
+> * [Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)](./quickstart-custom-speech-commands-create-new.md)
+> * [Gyors útmutató: Egyéni parancs létrehozása paraméterekkel (előzetes verzió)](./quickstart-custom-speech-commands-create-parameters.md)
 
 A következőkre is szüksége lesz:
-
-- [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-- Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
+> [!div class = "checklist"]
+> * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+> * Egy Azure-előfizetési kulcs a Speech Serviceshez. [Szerezze be ingyen](get-started.md) , vagy hozza létre a [Azure Portal](https://portal.azure.com)
+> * [Az eszköz fejlesztésének engedélyezése](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)
 
 ## <a name="optional-get-started-fast"></a>Opcionális: gyors kezdés
 
@@ -44,12 +45,13 @@ Ebből a rövid útmutatóból megtudhatja, hogyan teheti meg az ügyfélalkalma
 
 ## <a name="step-1-publish-custom-commands-application"></a>1. lépés: egyéni parancsok alkalmazásának közzététele
 
-1. Nyissa meg a [korábban létrehozott egyéni parancsok alkalmazást](./quickstart-custom-speech-commands-create-new.md) , és válassza a **Közzététel** lehetőséget.
+1. Nyissa meg a [korábban létrehozott egyéni parancsok alkalmazást (előzetes verzió)](./quickstart-custom-speech-commands-create-new.md) , és válassza a **Közzététel** lehetőséget.
 
    > [!div class="mx-imgBorder"]
    > ![Az alkalmazás közzététele](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Az alkalmazás AZONOSÍTÓjának másolása a közzétételi értesítésből későbbi használatra
+1. A beszédfelismerési erőforrás kulcsának másolása későbbi használatra
 
 ## <a name="step-2-create-a-visual-studio-project"></a>2. lépés: Visual Studio-projekt létrehozása
 
@@ -129,7 +131,7 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 
 1. A **megoldáskezelő**nyissa meg a kód mögötti forrásfájlt `MainPage.xaml.cs` (a alatt `MainPage.xaml`csoportosítva)
 
-1. Cserélje le a fájl tartalmát a következő kódra:
+1. Cserélje le a fájl tartalmát a következő kódra: 
 
    ```csharp
    using Microsoft.CognitiveServices.Speech;
@@ -298,6 +300,11 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
        }
    }
    ```
+    > [!NOTE]
+    > Ha a következő hibaüzenet jelenik meg: "az objektum típusa nem hivatkozott szerelvényben van definiálva"
+    > 1. A jobb ügyfél a megoldás.
+    > 1. Válassza **a megoldás NuGet-csomagok kezelése**lehetőséget, majd válassza a **frissítések** lehetőséget. 
+    > 1. Ha a frissítés listán a **Microsoft. NETCore. UniversalWindowsPlatform** található, frissítse a **Microsoft. NETCore. UniversalWindowsPlatform** verziót a legújabb verzióra.
 
 1. Adja hozzá a következő kódot a metódus törzséhez`InitializeDialogServiceConnector`
 
@@ -419,3 +426,6 @@ Adja hozzá a forráskód mögötti forrást az alábbiak szerint:
 > [!div class="nextstepaction"]
 > [Útmutató: az ügyfél parancsainak teljesítése a Speech SDK-val (előzetes verzió)](./how-to-custom-speech-commands-fulfill-sdk.md)
 > [útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)](./how-to-custom-speech-commands-validations.md)
+
+## <a name="sample-source-code"></a>Minta forráskódja
+Tekintse meg az ügyfél mintájának kódját a [githubon – VoiceAssistant](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant)

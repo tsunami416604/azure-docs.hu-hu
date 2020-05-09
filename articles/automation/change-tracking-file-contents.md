@@ -5,27 +5,27 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 7dc218416e3b91998a6f06a62670ff8d2158d533
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 8ca1bd7a724d3256bc2e171ce39fd6a06e2e5935
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82509139"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82779297"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
 
 Új fájl vagy beállításkulcs a követéshez való hozzáadásakor Azure Automation engedélyezi a [change Tracking és a leltár](change-tracking.md) funkció használatát. Ez a cikk a funkció használatának eljárásait tartalmazza.
 
-## <a name="enable-the-full-change-tracking-and-inventory-solution"></a>A teljes Change Tracking és a leltározási megoldás engedélyezése
+## <a name="enable-the-full-change-tracking-and-inventory-feature"></a>A teljes Change Tracking és a leltár funkció engedélyezése
 
-Ha engedélyezte a [Azure Security Center fájl integritásának figyelését (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), az alább leírtak szerint használhatja a teljes Change Tracking és a leltározási megoldást. Ez a folyamat nem távolítja el a beállításokat.
+Ha engedélyezte a [Azure Security Center fájl integritásának figyelését (FIM)](https://docs.microsoft.com/azure/security-center/security-center-file-integrity-monitoring), a teljes Change Tracking és a leltár szolgáltatást használhatja az alább leírtak szerint. Ez a folyamat nem távolítja el a beállításokat.
 
 > [!NOTE]
-> A teljes Change Tracking és a leltározási megoldás engedélyezése további díjakat eredményezhet. Lásd: az [Automation díjszabása](https://azure.microsoft.com/pricing/details/automation/).
+> A teljes Change Tracking és a leltár funkció engedélyezése további díjakat eredményezhet. Lásd: az [Automation díjszabása](https://azure.microsoft.com/pricing/details/automation/).
 
 1. A figyelési megoldás eltávolításához lépjen a munkaterületre, és keresse meg a [telepített figyelési megoldások listájában](../azure-monitor/insights/solutions.md#list-installed-monitoring-solutions).
 2. Kattintson a megoldás nevére az összefoglalás oldal megnyitásához, majd kattintson a **Törlés**lehetőségre a [figyelési megoldás eltávolítása](../azure-monitor/insights/solutions.md#remove-a-monitoring-solution)című rész útmutatása szerint.
-3. A megoldás újbóli engedélyezéséhez lépjen az Automation-fiókra, és válassza a **változások követése** lehetőséget a **konfiguráció kezelése**területen.
+3. A Change Tracking és a leltár újbóli engedélyezéséhez lépjen az Automation-fiókra, és válassza a **change Tracking** elemet a **konfiguráció kezelése**elemnél.
 4. Válassza ki az Log Analytics munkaterületet és Automation-fiókot, erősítse meg a munkaterület beállításait, és kattintson az **Engedélyezés**gombra.
 
 ## <a name="onboard-machines-to-change-tracking-and-inventory"></a><a name="onboard"></a>Bevezetési gépek Change Tracking és leltárba
