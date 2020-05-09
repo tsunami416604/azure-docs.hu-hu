@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 02/07/2020
+ms.date: 05/05/2020
 ms.custom: seodec18~~~~
-ms.openlocfilehash: 79628ed44753577023464ef6208027e1b7996d30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 010f7b908ceb9c8d07208db1312d8af8d4e27051
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77087246"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82838518"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
 
@@ -78,7 +78,7 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
    [![Válassza az oszlopok fejlécek adattípusok elemét.](media/add-reference-data-set/select-column-types.png)](media/add-reference-data-set/select-column-types.png#lightbox)
 
-1. Szükség esetén nevezze át az oszlopfejléceket. A kulcs oszlopának neve szükséges az eseményforrás megfelelő tulajdonságához való csatlakozáshoz. 
+1. Szükség esetén nevezze át az oszlopfejléceket. A kulcs oszlopának neve szükséges az eseményforrás megfelelő tulajdonságához való csatlakozáshoz.
 
    > [!IMPORTANT]
    > Győződjön meg arról, hogy a hivatkozási adatkulcs oszlopainak nevei pontosan egyeznek az esemény nevével a bejövő adataihoz, beleértve a kis-és nagybetűket is. A nem kulcsos oszlopnevek a beérkező adatoknak a megfelelő hivatkozási adatértékekkel való kiegészítésére szolgálnak.
