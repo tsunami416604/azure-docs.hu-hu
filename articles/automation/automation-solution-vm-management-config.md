@@ -1,20 +1,20 @@
 ---
-title: Azure Automation a virtuális gépek indításának és leállításának beállítása a munkaidőn kívüli megoldásban
+title: Start/Stop VMs during off-hours megoldás konfigurálása Azure Automation
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Start/Stop VMs during off-hours megoldás a különböző használati esetek és forgatókönyvek támogatásához.
 services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 9842a736cf922e0490f2b0c8acb1d2e5833f3d6c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 4cceb0d5ada82de73bc74c0ed408f8eb988ea8ec
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604764"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864266"
 ---
-# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>Virtuális gépek indításának és leállításának beállítása a munkaidőn kívüli megoldásban
+# <a name="how-to-configure-startstop-vms-during-off-hours-solution"></a>Start/Stop VMs during off-hours megoldás konfigurálása
 
-A **virtuális gépek indítása és leállítása a munkaidőn kívüli** megoldásban a következőket teheti:
+A **Start/Stop VMS During off-hours** megoldással a következőket teheti:
 
 - [Virtuális gépek indítása és leállítása](#schedule).
 - A virtuális gépeket úgy ütemezhet, hogy az Azure- [címkék használatával](#tags) növekvő sorrendben induljon el és álljon le (a klasszikus virtuális gépek nem támogatottak).
@@ -125,7 +125,7 @@ A **AutoStop_CreateAlert_Parent** runbook futtatásakor ellenőrzi, hogy a célk
 
 ### <a name="to-target-the-autostop-action-to-a-list-of-vms"></a>Az autostop művelet megcélzása a virtuális gépek listájára
 
-1. Hozzon létre egy új [ütemtervet](shared-resources/schedules.md#creating-a-schedule) , és kapcsolja össze a **AutoStop_CreateAlert_Parent** runbook, és adja hozzá a virtuális gépek neveinek `VMList` vesszővel tagolt listáját a paraméterhez.
+1. Hozzon létre egy új [ütemtervet](shared-resources/schedules.md#create-a-schedule) , és kapcsolja össze a **AutoStop_CreateAlert_Parent** runbook, és adja hozzá a virtuális gépek neveinek `VMList` vesszővel tagolt listáját a paraméterhez.
 
 2. Ha bizonyos virtuális gépeket ki szeretne zárni az automatikus leállításból, hozzáadhat egy vesszővel elválasztott virtuális gép nevét a `External_ExcludeVMNames` változóhoz.
 

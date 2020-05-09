@@ -7,28 +7,28 @@ ms.service: security
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
-ms.custom: security-baselines
-ms.openlocfilehash: 2f4b034948605b0a53a0320863608d284719a96d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: security-benchmark
+ms.openlocfilehash: f2cdaafddb14d8b69fd708e4c89a578b60e53317
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587532"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82606874"
 ---
 # <a name="overview-of-the-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt áttekintése
 
-Az Azure biztonsági teljesítményteszt olyan javaslatokat tartalmaz, amelyek segítségével javíthatja alkalmazásai és adatai biztonságát az Azure-ban.
+Az Azure biztonsági teljesítménytesztje olyan javaslatokat tartalmaz, amelyekkel nagyobb biztonságban tudhatja alkalmazásait és adatait az Azure-ban.
 
 Ez a teljesítményteszt a felhő-központú ellenőrzési területekre koncentrál. Ezek a vezérlők összhangban vannak a jól ismert biztonsági összehasonlításokkal, például a Center for Internet Security (CIS) által a 7,1-es verzióban leírt szabályokkal.
 
 Az Azure biztonsági Teljesítménytesztben a következő vezérlők használhatók: 
 
 - [Hálózati biztonság](security-control-network-security.md)
-- [Naplózás és monitorozás](security-control-logging-monitoring.md)
+- [Naplózás és figyelés](security-control-logging-monitoring.md)
 - [Identitás- és hozzáférés-vezérlés](security-control-identity-access-control.md)
 - [Adatvédelem](security-control-data-protection.md)
 - [Biztonságirés-kezelés](security-control-vulnerability-management.md)
-- [Leltár-és eszközfelügyelet](security-control-inventory-asset-management.md)
+- [Leltár- és eszközfelügyelet](security-control-inventory-asset-management.md)
 - [Biztonságos konfiguráció](security-control-secure-configuration.md)
 - [Kártevők elleni védelem](security-control-malware-defense.md)
 - [Adat-helyreállítás](security-control-data-recovery.md)
@@ -46,7 +46,7 @@ Minden javaslat a következő információkat tartalmazza:
 - **Felelősség**: azt, hogy az ügyfél vagy a szolgáltató (vagy mindkettő) felelős-e a javaslat végrehajtásáért. A biztonsági kötelezettségek a nyilvános felhőben vannak megosztva. Bizonyos biztonsági vezérlők csak a felhőalapú szolgáltató számára érhetők el, ezért a szolgáltató felelős az ilyen problémák kezeléséhez. Ezek általános megfigyelések – egyes szolgáltatások esetében a felelősség nem fog megjelenni, mint az Azure biztonsági Teljesítménytesztben. Ezeket a különbségeket az egyes szolgáltatásokra vonatkozó alapkövetelmények írják le. 
 - **Részletek**: a javaslat indoklása és a megvalósításával kapcsolatos útmutatásra mutató hivatkozások. Ha Azure Security Center támogatja az ajánlást, a rendszer ezeket az információkat is felsorolja.
 
-Örömmel vesszük a részletes visszajelzéseket és az aktív részvételt az Azure biztonsági teljesítményteszttel kapcsolatos erőfeszítésekben. Ha a teljesítményteszt-csapat közvetlen bemenetét szeretné megadni, töltse ki az űrlapot a következő címen [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark):.
+Örömmel vesszük a részletes visszajelzéseket és az aktív részvételt az Azure biztonsági teljesítményteszttel kapcsolatos erőfeszítésekben. Ha meg szeretné adni az Azure Security teljesítményteszt csapatának közvetlen bemenetét, töltse ki az űrlapot a következő [https://aka.ms/AzSecBenchmark](https://aka.ms/AzSecBenchmark)címen:.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -3,34 +3,29 @@ title: Keresési rangsor növelése pontozási profilok használatával
 titleSuffix: Azure Cognitive Search
 description: Pontozási profilok hozzáadásával növelheti az Azure Cognitive Search eredményeinek keresési rangsorolási pontszámait.
 manager: nitinme
-author: Brjohnstmsft
-ms.author: brjohnst
+author: shmed
+ms.author: ramero
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/28/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: c702ce72492201413d6c72af9dbf37347e49afdd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 56757d1c2810efe608601c231946b2242df82b19
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231101"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890181"
 ---
 # <a name="add-scoring-profiles-to-an-azure-cognitive-search-index"></a>Referenciaprofilok hozzáadása Azure Cognitive Search-indexekhez
 
 A *pontozás* kiszámítja a keresési pontszámot a rangsorban rendezett eredményhalmaz minden egyes eleménél. A keresési eredményhalmaz minden eleme egy keresési pontszámhoz van rendelve, majd a legmagasabb a legalacsonyabb értékre van állítva.
 
  Az Azure Cognitive Search az alapértelmezett pontozást használja a kezdeti pontszám kiszámításához, de a számítást *pontozási profilon*keresztül is testreszabhatja. A pontozási profilok nagyobb mértékben szabályozzák a keresési eredményekben lévő elemek rangsorolását. Előfordulhat például, hogy a bevételi potenciál alapján szeretné növelni az elemeket, előléptetheti az újabb elemeket, vagy növelheti az olyan elemeket, amelyek túl hosszúak voltak a leltárban.  
+
+ A következő videó szegmens gyors továbbítást végez, hogy a pontozási profilok hogyan működnek az Azure Cognitive Searchban.
+ 
+> [!VIDEO https://www.youtube.com/embed/Y_X6USgvB1g?version=3&start=463&end=970]
+
+## <a name="scoring-profile-definitions"></a>Pontozási profilok definíciói
 
  A pontozási profil az index definíciójának részét képezi, amely a súlyozott mezőkből, függvényekből és paraméterekből áll.  
 
@@ -286,6 +281,6 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
 ## <a name="see-also"></a>Lásd még  
 
-+ [REST API-referencia](https://docs.microsoft.com/rest/api/searchservice/)   
++ [REST API referenciája](https://docs.microsoft.com/rest/api/searchservice/)   
 + [Index API létrehozása](https://docs.microsoft.com/rest/api/searchservice/create-index)   
 + [Azure Cognitive Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search?view=azure-dotnet)  

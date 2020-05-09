@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: e9f8fe17fa28cc5fcc4543bfb5e194bd3e7b837d
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272460"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594097"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -95,21 +95,21 @@ Például az adatfájlok és a JAR-fájlok a Hadoop `/example` elosztott fájlre
 
 ## <a name="hdfs-azure-storage-and-data-lake-storage"></a>HDFS, Azure Storage és Data Lake Storage
 
-A legtöbb Hadoop-eloszlásban az adattárolást a HDFS tárolja, amelyet a fürtön lévő gépek helyi tárterülete támogat. A helyi tárterület költséges lehet egy felhőalapú megoldáshoz, ahol a számítási erőforrások óradíja óránként vagy percenként történik.
+A legtöbb Hadoop-eloszlásban az adattárolást a HDFS tárolja. A HDFS a fürtben lévő gépek helyi tárolója támogatja. A helyi tárterület költséges lehet egy felhőalapú megoldáshoz, ahol a számítási erőforrások óradíja óránként vagy percenként történik.
 
-A HDInsight használatakor az adatfájlok skálázható és rugalmas módon tárolódnak a felhőben az Azure Blob Storage és opcionálisan Azure Data Lake Storage használatával. Ezek a szolgáltatások a következő előnyöket nyújtják:
+A HDInsight használatakor az adatfájlokat a felhőben az Azure Blob Storage és opcionálisan Azure Data Lake Storage is rugalmas és rugalmas módon tárolja. Ezek a szolgáltatások a következő előnyöket nyújtják:
 
 * Olcsó hosszú távú tárolás.
 * A külső szolgáltatásokból, például webhelyekről, fájlfeltöltés/letöltési segédprogramokból, különböző nyelvi SDK-kből és webböngészőkből való kisegítés.
-* Nagyméretű fájlok kapacitása és nagyméretű méretezhető tárolás.
+* Nagyméretű fájl kapacitása és nagy mértékben alkalmazkodó tárterület.
 
 További információ: a [Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)ismertetése.
 
-Az Azure Storage vagy a Data Lake Storage használatakor nem kell semmit HDInsight az adatok eléréséhez. Például a következő parancs felsorolja a mappában található fájlokat, `/example/data` függetlenül attól, hogy az Azure Storage-ban vagy Data Lake Storageban van-e tárolva:
+Az Azure Storage vagy a Data Lake Storage használatakor nem kell semmit HDInsight az adatok eléréséhez. Például a következő parancs felsorolja a mappában található fájlokat, `/example/data` hogy az Azure Storage-ban vagy Data Lake Storageban van-e tárolva:
 
     hdfs dfs -ls /example/data
 
-A HDInsight-ben az adattárolási erőforrások (Azure Blob Storage és Azure Data Lake Storage) le vannak választva a számítási erőforrásokból. Ezért létrehozhat HDInsight-fürtöket a számítások elvégzéséhez, és később törölheti a fürtöt a munka befejezésekor, miközben az adatfájlok biztonságban maradnak a Felhőbeli tárolásban, amennyiben szükséges.
+A HDInsight-ben az adattárolási erőforrások (Azure Blob Storage és Azure Data Lake Storage) le vannak választva a számítási erőforrásokból. Létrehozhat HDInsight-fürtöket a számítások elvégzéséhez, majd később törölheti a fürtöt a munka befejezésekor. Eközben az adatfájlok tárolása biztonságosan megőrzött a Felhőbeli tárolásban, amennyiben szükséges.
 
 ### <a name="uri-and-scheme"></a><a name="URI-and-scheme"></a>URI és séma
 
@@ -210,46 +210,11 @@ __Azure Data Lake Storage__használata esetén tekintse meg az alábbi hivatkoz�
 
 ## <a name="scaling-your-cluster"></a><a name="scaling"></a>A fürt skálázása
 
-A fürt skálázási funkciója lehetővé teszi a fürt által használt adatcsomópontok számának dinamikus módosítását. Skálázási műveleteket hajthat végre, miközben más feladatok vagy folyamatok futnak a fürtön.  Lásd még: [HDInsight-fürtök méretezése](./hdinsight-scaling-best-practices.md)
-
-A különböző típusú fürtöket a következőképpen befolyásolja a méretezés:
-
-* **Hadoop**: a fürtben található csomópontok számának skálázásakor a fürt egyes szolgáltatásai újraindulnak. A skálázási műveletek a skálázási művelet befejezésekor a feladatátvételt vagy függőben lévő feladatokat is okozhatnak. A feladatok újbóli elküldése a művelet befejeződése után.
-* **HBase**: a skálázási művelet befejezését követően néhány percen belül automatikusan egyensúlyba kerül a regionális kiszolgálók. A regionális kiszolgálók manuális elosztásához kövesse az alábbi lépéseket:
-
-    1. Kapcsolódjon a HDInsight-fürthöz az SSH használatával. További információ: az [SSH használata a HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md).
-
-    2. A HBase rendszerhéj elindításához használja a következőt:
-
-            hbase shell
-
-    3. A HBase rendszerhéj betöltését követően a következő paranccsal végezheti el a regionális kiszolgálók manuális elosztását:
-
-            balancer
-
-* **Storm**: a futó Storm-topológiák újraelosztása a skálázási művelet végrehajtása után. A terheléselosztás lehetővé teszi a topológia számára a párhuzamossági beállítások újramódosítását a fürtben lévő csomópontok új száma alapján. A futó topológiák újraelosztásához használja az alábbi lehetőségek egyikét:
-
-    * **SSH**: kapcsolódjon a kiszolgálóhoz, és a következő parancs használatával egyenlítse ki a topológiát:
-
-            storm rebalance TOPOLOGYNAME
-
-        Paramétereket is megadhat a topológia által eredetileg biztosított párhuzamossági javaslatok felülbírálásához. Például `storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10` újrakonfigurálja a topológiát 5 munkavégző folyamatra, 3 végrehajtót a kék kiöntő összetevőhöz, és 10 végrehajtót a sárga-bolt összetevőhöz.
-
-    * **Storm felhasználói felület**: a következő lépésekkel kiegyensúlyozhatja a topológiát a Storm felhasználói felület használatával.
-
-        1. Nyissa meg `https://CLUSTERNAME.azurehdinsight.net/stormui` a webböngészőben `CLUSTERNAME` , ahol a a Storm-fürt neve. Ha a rendszer kéri, adja meg a fürt létrehozásakor megadott HDInsight-Fürtfelügyelő (rendszergazda) nevét és jelszavát.
-        2. Válassza ki a megismételni kívánt topológiát, majd kattintson az **újraelosztás** gombra. Adja meg az újraelosztási művelet végrehajtása előtti késleltetést.
-
-* **Kafka**: a partíciós replikák újraelosztása a skálázási műveletek után. További információ: az [adatok magas rendelkezésre állása Apache Kafka HDInsight](./kafka/apache-kafka-high-availability.md) -dokumentummal.
-
-A HDInsight-fürt méretezésével kapcsolatos részletes információkért lásd:
-
-* [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md#scale-clusters)
-* [Apache Hadoop-fürtök kezelése a HDInsight az Azure CLI használatával](hdinsight-administer-use-command-line.md#scale-clusters)
+A fürt skálázási funkciója lehetővé teszi a fürt által használt adatcsomópontok számának dinamikus módosítását. A skálázási műveletek végrehajtása közben más feladatok vagy folyamatok is futnak a fürtön.  Lásd: [HDInsight-fürtök méretezése](./hdinsight-scaling-best-practices.md)
 
 ## <a name="how-do-i-install-hue-or-other-hadoop-component"></a>Hogyan telepíteni a Hue (vagy más Hadoop összetevőt)?
 
-A HDInsight egy felügyelt szolgáltatás. Ha az Azure problémát észlel a fürttel kapcsolatban, akkor előfordulhat, hogy törli a meghibásodott csomópontot, és létrehoz egy csomópontot, amely lecseréli azt. Ha manuálisan telepíti a műveleteket a fürtön, azok nem maradnak meg a művelet bekövetkeztekor. Ehelyett használja a [HDInsight-parancsfájlok műveleteit](hdinsight-hadoop-customize-cluster-linux.md). A következő módosításokat végezheti el egy parancsfájl-művelettel:
+A HDInsight egy felügyelt szolgáltatás. Ha az Azure problémát észlel a fürttel kapcsolatban, akkor előfordulhat, hogy törli a meghibásodott csomópontot, és létrehoz egy csomópontot, amely lecseréli azt. Ha manuálisan telepíti a dolgokat a fürtön, azok nem maradnak meg a művelet bekövetkeztekor. Ehelyett használja a [HDInsight-parancsfájlok műveleteit](hdinsight-hadoop-customize-cluster-linux.md). A következő módosításokat végezheti el egy parancsfájl-művelettel:
 
 * Szolgáltatás vagy webhely telepítése és konfigurálása.
 * Telepítsen és konfiguráljon olyan összetevőt, amely a fürt több csomópontján is konfigurációs módosításokat igényel.
@@ -258,7 +223,7 @@ A parancsfájl-műveletek bash-parancsfájlok. A parancsfájlok a fürt létreho
 
 ### <a name="jar-files"></a>JAR-fájlok
 
-Egyes Hadoop-technológiák olyan önálló jar-fájlokban találhatók, amelyek a MapReduce-feladatok részeként vagy a Pig vagy a kaptáron belül használt függvényeket tartalmazzák. Gyakran nem igényelnek telepítést, és közvetlenül a létrehozás után fel lehet tölteni a fürtbe. Ha azt szeretné, hogy az összetevő megmaradjon a fürt újraképalkotás terén, a jar-fájlt a fürt alapértelmezett tárolójában (WASB vagy ADL) is tárolhatja.
+Egyes Hadoop-technológiák önmagukban foglalt jar-fájlokat biztosítanak. Ezek a fájlok a MapReduce-feladatok részeként, illetve a Pig vagy a kaptáron belül használható függvényeket tartalmazzák. Gyakran nem igényelnek telepítést, és közvetlenül a létrehozás után fel lehet tölteni a fürtbe. Ha azt szeretné, hogy az összetevő ne maradjon meg a fürt újrarendszerképének helyreállításában, tárolja a jar-fájlt a fürt alapértelmezett tárolójában.
 
 Ha például az [Apache DataFu](https://datafu.incubator.apache.org/)legújabb verzióját szeretné használni, letöltheti a projektet tartalmazó jar-t, és feltöltheti azt a HDInsight-fürtbe. Ezután kövesse a DataFu dokumentációját a használatáról a Pig vagy a kaptár használatával.
 

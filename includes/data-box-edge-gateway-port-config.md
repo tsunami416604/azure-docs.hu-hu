@@ -13,7 +13,7 @@ ms.locfileid: "67179559"
 ---
 | Port nem.| Be vagy ki | Port hatóköre| Kötelező|   Megjegyzések |   |
 |--------|-----|-----|-----------|----------|-----------|
-| TCP 80 (HTTP)|Ki|WAN |Nem|A rendszer a kimenő portot használja az internet-hozzáféréshez a frissítések lekéréséhez. <br>A kimenő webes proxy a felhasználó által konfigurálható. |
+| TCP 80 (HTTP)|Ki|WAN |No|A rendszer a kimenő portot használja az internet-hozzáféréshez a frissítések lekéréséhez. <br>A kimenő webes proxy a felhasználó által konfigurálható. |
 | TCP 443 (HTTPS)|Ki|WAN|Igen|A kimenő port a felhőben tárolt adatok elérésére szolgál.<br>A kimenő webes proxy a felhasználó által konfigurálható.|
 | UDP 123 (NTP)|Ki|WAN|Bizonyos esetekben<br>Lásd: megjegyzések|Erre a portra csak akkor van szükség, ha Internet-alapú NTP-kiszolgálót használ.  |   
 | UDP 53 (DNS)|Ki|WAN|Bizonyos esetekben<br>Lásd: megjegyzések|Erre a portra csak akkor van szükség, ha Internet alapú DNS-kiszolgálót használ.<br>Javasoljuk, hogy használjon helyi DNS-kiszolgálót. |

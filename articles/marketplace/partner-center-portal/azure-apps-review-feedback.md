@@ -1,5 +1,5 @@
 ---
-title: Az Azure apps ajánlatra vonatkozó felülvizsgálati visszajelzések a kereskedelmi piactéren
+title: A Microsoft kereskedelmi piactéren az Azure apps ajánlatra vonatkozó felülvizsgálati visszajelzések kezelését
 description: Az Azure-alkalmazások felülvizsgálati visszajelzésének kezelése az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztül a Microsoft partner Center kereskedelmi piactér portálján.
 author: dsindona
 ms.author: dsindona
@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 3932f3fc71dc6427b6cdf93d3a7bc58534a9981c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 464f4d5434c8c0b8615e24eb1a323ae66a52273c
+ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80279793"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82744872"
 ---
-# <a name="handling-review-feedback"></a>Értékelési visszajelzések kezelése
+# <a name="handling-review-feedback-for-azure-apps-offer-before-publishing-in-the-azure-marketplace"></a>Az Azure-alkalmazások felülvizsgálati visszajelzésének kezelését az Azure Marketplace-en való közzététel előtt
 
 Ez a cikk azt ismerteti, hogyan érheti el az Microsoft Azure Marketplace felülvizsgálati csapat által használt Azure DevOps-környezetet. Ha a **Microsoft felülvizsgálati** lépése során kritikus problémák léptek fel az Azure-alkalmazás ajánlatában, bejelentkezhet a rendszerbe a problémák részletes adatainak megtekintéséhez (visszajelzés megtekintése). Az összes probléma kijavítása után újból el kell küldenie az ajánlatát, hogy továbbra is közzé lehessen tenni az Azure piactéren. A következő ábra azt szemlélteti, hogy a visszajelzési folyamat hogyan kapcsolódik a közzétételi folyamathoz.
 

@@ -4,14 +4,14 @@ description: Ez a cikk azt ismerteti, hogyan lehet kódokat frissíteni a Azure 
 author: chrislound
 ms.service: analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/07/2020
 ms.author: chlound
-ms.openlocfilehash: 7908b168adcaa00819990d7ced04ba4888d67d63
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: bbbc2863e06b4602a4175d46bbe21414041583ba
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871313"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926561"
 ---
 # <a name="refresh-with-azure-automation"></a>Frissítés az Azure Automationnel
 
@@ -60,7 +60,7 @@ Az Ön által létrehozott egyszerű szolgáltatásnak kiszolgálói rendszergaz
 
     ![Hitelesítő adat létrehozása](./media/analysis-services-refresh-azure-automation/6.png)
 
-2. Adja meg a hitelesítő adatok részleteit.  A **Felhasználónév**mezőbe írja be az **SPN-ClientId**, a **jelszó**mezőbe írja be az **SPN-titkos kulcsot**.
+2. Adja meg a hitelesítő adatok részleteit. A **Felhasználónév**mezőben adja meg az egyszerű szolgáltatásnév (AppID) nevet, majd a **jelszó**mezőben adja meg az egyszerű szolgáltatás titkos kulcsát.
 
     ![Hitelesítő adat létrehozása](./media/analysis-services-refresh-azure-automation/7.png)
 

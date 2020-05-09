@@ -1,19 +1,20 @@
 ---
-title: Fizetés a kereskedelmi piactéren | Azure piactér
-description: Megtudhatja, hogyan fogadhatja a bevételeit a kereskedelmi piactéren.
+title: Fizetés a Microsoft kereskedelmi piactéren
+description: Megtudhatja, hogyan fogadhatja a bevételeit a Microsoft kereskedelmi piactéren.
 author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
 ms.date: 12/10/2019
-ms.openlocfilehash: 3c75d5ccdd2d632fbc31d1be3faf6cbc6d3fb223
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 678c47fc345838f6d1e93ac397a4e54d1c61391f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80275832"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82780497"
 ---
-# <a name="getting-paid"></a>Fizetés fogadása
+# <a name="getting-paid-in-commercial-marketplace"></a>Fizetés a kereskedelmi piactéren
+
 Íme néhány fontos információ az ajánlatok, bővítmények és hirdetési bevételek fizetésének fogadásáról.
 
 > [!IMPORTANT]
@@ -40,18 +41,17 @@ Minden egyes árszint megfelelő értékkel rendelkezik az áruház által kín�
 
 Lehetősége van arra is, hogy egy adott piac helyi pénznemében adja meg a választott szabad formájú árat. Ha ezt teszi, a rendszer nem módosítja az árat (még akkor is, ha módosulnak a konverziós arányok), kivéve, ha új árral küldi el a frissítést. 
 
-Ne feledje, hogy a kiválasztott díj olyan értékesítési vagy értéknövelt adót is tartalmazhat, amelyet az ügyfeleknek fizetniük kell. További információért tekintse [meg a fizetős ajánlat adózási adatait](tax-details-paid-transactions.md) .
+Ne feledje, hogy a kiválasztott díj olyan értékesítési vagy értéknövelt adót is tartalmazhat, amelyet az ügyfeleknek fizetniük kell. Részletekért lásd [a fizetős ajánlat adózási adatait](tax-details-paid-transactions.md).
 
 
 ## <a name="payout-reporting"></a>Kifizetési jelentéskészítés
 
-A fizetési adatok részleteit a [partner Center](https://partner.microsoft.com/dashboard) **kifizetési összefoglalásával** érheti el, és letöltheti a jelentéseket. Az itt megjelenő információkkal és a keresett pénz kategorizálásával kapcsolatos további információkért lásd a [kifizetési összefoglalót](payout-summary.md).
+A fizetési adatok részleteit a [partner Center](https://partner.microsoft.com/dashboard) **kifizetési összefoglalásával** érheti el, és letöltheti a jelentéseket. Az itt látható információkra és a keresett pénz kategorizálására vonatkozó részletekért tekintse meg a [kifizetési összefoglalás áttekintése](payout-summary-overview.md)című témakört.
 
 
-## <a name="payout-timeframe"></a>Kifizetés időkerete
+## <a name="payout-time-frame"></a>Kinyerési idő kerete
 
-A kifizetések havi rendszerességgel történnek (feltéve, hogy a vonatkozó fizetési küszöbérték teljesült, és az alább leírtak szerint nem helyezte el a befizetését). A hónap 15. napján egy adott hónapban esedékes fizetési díj általában elküldhető. Vegye figyelembe, hogy a kifizetések általában 3 – 10 további munkanapot vesznek igénybe, hogy elérjék a kifizetési fiókját. További információ: [fizetési küszöbértékek, metódusok és időkeretek](payment-thresholds-methods-timeframes.md).
-
+A kifizetések havi rendszerességgel történnek (feltéve, hogy a vonatkozó fizetési küszöbérték teljesült, és az alább leírtak szerint nem helyezte el a befizetését). A hónap 15. napján egy adott hónapban esedékes fizetési díj általában elküldhető. Vegye figyelembe, hogy a kifizetések általában 3 – 10 további munkanapot vesznek igénybe, hogy elérjék a kifizetési fiókját. Részletekért lásd: [fizetési küszöbértékek, metódusok és időbeli keretek](payment-thresholds-methods-timeframes.md).
 
 ##  <a name="payout-hold-status"></a>Kifizetés holdjának állapota
 
@@ -63,12 +63,3 @@ Miután beállította a kifizetés állapotát **a be**értékre, a program öss
 
 > [!NOTE]
 > A **kifizetési Holding-állapot** minden egyes programra külön vonatkozik (Microsoft Store, reklám, Azure Marketplace stb.). Ha az összes programban szeretné kifizetni a befizetéseket, minden egyes programban külön kell fizetnie.
-
-
- 
-
- 
-
-
-
-

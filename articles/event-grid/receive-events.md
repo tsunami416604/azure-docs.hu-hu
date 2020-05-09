@@ -8,16 +8,16 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
 ms.author: babanisa
-ms.openlocfilehash: cb38fd17c0c1bfbe3e5957d8f432f0a43b285c93
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 2c34a9e1463c49ab1822d1de6bf33e81f19cf003
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60803806"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629592"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Események fogadása HTTP-végponton
 
-Ez a cikk azt ismerteti, hogyan lehet [érvényesíteni egy http-végpontot](security-authentication.md#webhook-event-delivery) egy esemény-előfizetés eseményeinek fogadására, majd az események fogadására és deszerializálására. Ez a cikk egy Azure-függvényt használ demonstrációs célokra, azonban ugyanazokat a fogalmakat alkalmazza, függetlenül attól, hogy az alkalmazás hol található.
+Ez a cikk azt ismerteti, hogyan lehet [érvényesíteni egy http-végpontot](webhook-event-delivery.md) egy esemény-előfizetés eseményeinek fogadására, majd az események fogadására és deszerializálására. Ez a cikk egy Azure-függvényt használ demonstrációs célokra, azonban ugyanazokat a fogalmakat alkalmazza, függetlenül attól, hogy az alkalmazás hol található.
 
 > [!NOTE]
 > **Erősen** ajánlott [Event Grid triggert](../azure-functions/functions-bindings-event-grid.md) használni, amikor egy Azure-függvényt indít el Event Grid használatával. Itt látható az általános webhook-trigger használata.
@@ -28,7 +28,7 @@ HTTP által aktivált függvényt igénylő Function alkalmazásra van szükség
 
 ## <a name="add-dependencies"></a>Függőségek hozzáadása
 
-Ha a .net-ben fejleszt fejlesztést, [vegyen fel egy függőséget](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) a `Microsoft.Azure.EventGrid` függvényhez a [Nuget-csomaghoz](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). A cikkben szereplő példák 1.4.0 vagy újabb verziót igényelnek.
+Ha a .net-ben fejleszt fejlesztést, [vegyen fel egy függőséget](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) a `Microsoft.Azure.EventGrid` függvényhez a [NuGet-csomaghoz](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). A cikkben szereplő példák 1.4.0 vagy újabb verziót igényelnek.
 
 A más nyelvekhez készült SDK-k az SDK-k [közzététele](./sdk-overview.md#data-plane-sdks) hivatkozáson keresztül érhetők el. Ezek a csomagok a natív eseménytípus modelljeit (például `EventGridEvent`, `StorageBlobCreatedEventData`, és `EventHubCaptureFileCreatedEventData`) rendelkeznek.
 
@@ -50,7 +50,7 @@ Kattintson a fájlok megtekintése hivatkozásra az Azure-függvényben (a jobb 
 
 ## <a name="endpoint-validation"></a>Végpont ellenőrzése
 
-Az első dolog, amit végre szeretne hajtani, `Microsoft.EventGrid.SubscriptionValidationEvent` az eseményeket kezeli. Minden alkalommal, amikor valaki előfizet egy eseményre, Event Grid egy érvényesítési eseményt küld a végpontnak `validationCode` az adattartalomban. A végpontnak a válasz törzsében újra kell visszhangja ahhoz, hogy [a végpont érvényes legyen, és az Ön tulajdonában](security-authentication.md#webhook-event-delivery)legyen. Ha a webhook által aktivált függvény helyett [Event Grid triggert](../azure-functions/functions-bindings-event-grid.md) használ, a rendszer a végpont-ellenőrzést kezeli. Ha külső gyártótól származó API-szolgáltatást (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)) használ, előfordulhat, hogy nem tudja programozott módon visszhangba állítani az érvényesítési kódot. Ezen szolgáltatások esetében manuálisan érvényesítheti az előfizetést egy érvényesítési URL-cím használatával, amely az előfizetés-ellenőrzési eseményben lett elküldve. Másolja az URL-címet `validationUrl` a tulajdonságba, és küldje el a Get kérelmet egy Rest-ügyfél vagy a webböngésző használatával.
+Az első dolog, amit végre szeretne hajtani, `Microsoft.EventGrid.SubscriptionValidationEvent` az eseményeket kezeli. Minden alkalommal, amikor valaki előfizet egy eseményre, Event Grid egy érvényesítési eseményt küld a végpontnak `validationCode` az adattartalomban. A végpontnak a válasz törzsében újra kell visszhangja ahhoz, hogy [a végpont érvényes legyen, és az Ön tulajdonában](webhook-event-delivery.md)legyen. Ha a webhook által aktivált függvény helyett [Event Grid triggert](../azure-functions/functions-bindings-event-grid.md) használ, a rendszer a végpont-ellenőrzést kezeli. Ha külső gyártótól származó API-szolgáltatást (például [Zapier](https://zapier.com) vagy [IFTTT](https://ifttt.com/)) használ, előfordulhat, hogy nem tudja programozott módon visszhangba állítani az érvényesítési kódot. Ezen szolgáltatások esetében manuálisan érvényesítheti az előfizetést egy érvényesítési URL-cím használatával, amely az előfizetés-ellenőrzési eseményben lett elküldve. Másolja az URL-címet `validationUrl` a tulajdonságba, és küldje el a Get kérelmet egy Rest-ügyfél vagy a webböngésző használatával.
 
 A C# nyelvben `DeserializeEventGridEvents()` a függvény deszerializálja a Event Grid eseményeket. Deszerializálja az eseményeket a megfelelő típusba, például StorageBlobCreatedEventData. Használja a `Microsoft.Azure.EventGrid.EventTypes` osztályt a támogatott eseménytípus és nevek lekéréséhez.
 

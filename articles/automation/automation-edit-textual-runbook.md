@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2ef7db244057bc8b3b2e4d938b9f3bdd11c7940a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aef6a58d18c0d9c1b18915786dd6e3359c31eda0
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406028"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855799"
 ---
 # <a name="editing-textual-runbooks-in-azure-automation"></a>Szöveges runbookok szerkesztése Azure Automationban
 
@@ -22,7 +22,7 @@ A Azure Automationban található szöveges szerkesztő használható a PowerShe
 
 A szöveges szerkesztő tartalmaz egy funkciót, amely a parancsmagok, az eszközök és a gyermek runbookok kódját szúrja be egy runbook. A kód beírása helyett választhat az elérhető erőforrások listájából, és a szerkesztő beszúrja a megfelelő kódot a runbook.
 
-Azure Automation minden runbook két verziója, piszkozata és közzététele van. Szerkessze a runbook Piszkozat verzióját, és tegye közzé azt, hogy végrehajtható legyen. A Közzétett verzió nem szerkeszthető. További információ: [Runbook közzététele](manage-runbooks.md#publishing-a-runbook).
+Azure Automation minden runbook két verziója, piszkozata és közzététele van. Szerkessze a runbook Piszkozat verzióját, és tegye közzé azt, hogy végrehajtható legyen. A Közzétett verzió nem szerkeszthető. További információ: [Runbook közzététele](manage-runbooks.md#publish-a-runbook).
 
 Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel való elvégzésének lépéseit. Ezek a [grafikus runbookok](automation-runbook-types.md#graphical-runbooks)nem alkalmazhatók. Ezekkel a runbookok kapcsolatban lásd: [grafikus létrehozás Azure Automationban](automation-graphical-authoring-intro.md).
 
@@ -84,7 +84,7 @@ Export-AzAutomationRunbook -Name $runbookName -AutomationAccountName $automation
 
 ### <a name="change-the-contents-of-a-runbook-using-windows-powershell"></a>Runbook tartalmának módosítása a Windows PowerShell használatával
 
-Az alábbi példák azt mutatják be, hogyan lehet lecserélni egy runbook meglévő tartalmát egy parancsfájl tartalmával. Ez ugyanaz a mintavételi eljárás, mint [egy Runbook Windows PowerShell-lel való importálása parancsfájlból](manage-runbooks.md#importing-a-runbook).
+Az alábbi példák azt mutatják be, hogyan lehet lecserélni egy runbook meglévő tartalmát egy parancsfájl tartalmával. 
 
 ```powershell-interactive
 $resourceGroupName = "MyResourceGroup"
