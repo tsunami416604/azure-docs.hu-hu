@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a6c44a8253c81b44d02351b2df9c943d9f358f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9c3ea7596e589431412489bea4ac9a23fa604540
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654338"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610649"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
 
@@ -45,7 +46,7 @@ A tanúsítványalapú hitelesítés konfigurálásához a következő utasítá
 - Az ügyfél-hitelesítéshez meg kell adni az ügyfél tanúsítványát.
 
 >[!IMPORTANT]
->A sikeres letöltéshez és gyorsítótárhoz Azure Active Directory visszavont tanúsítványok listájának maximális mérete 20MB, a CRL letöltéséhez szükséges idő pedig nem haladhatja meg a 10 másodpercet.  Ha Azure Active Directory nem tudja letölteni a CRL-t, a tanúsítvány alapú hitelesítés sikertelen lesz, ha a megfelelő HITELESÍTÉSSZOLGÁLTATÓ által kiadott tanúsítványokat használ. Ajánlott eljárások a CRL-fájlok méretének korlátozására a tanúsítványok élettartamának ésszerű korlátokon belüli megőrzése, valamint a lejárt tanúsítványok törlése érdekében. 
+>A sikeres letöltéshez és gyorsítótárhoz Azure Active Directory visszavont tanúsítványok listájának maximális mérete 20MB, a CRL letöltéséhez szükséges idő pedig nem haladhatja meg a 10 másodpercet.  Ha Azure Active Directory nem tudja letölteni a CRL-t, a tanúsítvány alapú hitelesítés sikertelen lesz, ha a megfelelő HITELESÍTÉSSZOLGÁLTATÓ által kiadott tanúsítványokat használ. Ajánlott eljárások a CRL-fájlok méretének korlátozására a tanúsítványok élettartamának ésszerű korlátokon belüli megőrzése, valamint a lejárt tanúsítványok törlése érdekében.
 
 ## <a name="step-1-select-your-device-platform"></a>1. lépés: válassza ki az eszköz platformját
 

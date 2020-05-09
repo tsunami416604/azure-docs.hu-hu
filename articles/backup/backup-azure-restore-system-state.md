@@ -4,12 +4,12 @@ description: Részletes útmutató a Windows Server rendszerállapotának az Azu
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 08/18/2017
-ms.openlocfilehash: 6d46a091a4e620e26d05735f12a201009663e65d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39cac84c4a33c1da209d0a0cc7b0f8ac8ee390a0
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77602467"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610785"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Rendszerállapot visszaállítása a Windows Server rendszerre
 
@@ -124,7 +124,7 @@ Ha az Azure Recovery Services Agent használatával helyreállítja a rendszerá
 
 2. Az újraindítás után nyissa meg a Windows Server biztonsági másolat beépülő modult. Ha nem tudja, hol telepítette a beépülő modult, keresse meg **Windows Server biztonsági másolat**a számítógépet vagy a kiszolgálót.
 
-    Az asztali alkalmazás megjelenik a keresési eredmények között.
+    Az asztali alkalmazás megjelenik a keresési eredmények között. Ha ez nem jelenik meg, vagy ha az alkalmazás megnyitásakor hibákba ütközik, telepítenie kell a **Windows Server biztonsági másolat-szolgáltatásokat**és az alatta lévő függő összetevőket, amelyek a **Kiszolgálókezelő** **szolgáltatások hozzáadása varázslójával** érhetők el.
 
 3. A beépülő modulban válassza a **helyi biztonsági mentés**lehetőséget.
 

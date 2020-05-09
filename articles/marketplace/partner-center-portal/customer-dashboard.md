@@ -1,5 +1,5 @@
 ---
-title: Ügyfél-irányítópult a kereskedelmi piactér elemzésében a partner Centerben
+title: Ügyfél-irányítópult a Microsoft kereskedelmi piactéren a partner Centerben
 description: Megtudhatja, hogyan érheti el az ügyfelekkel kapcsolatos információkat, beleértve a növekedési trendeket, a kereskedelmi Piactéri elemzésekben az ügyfél irányítópultjának használatával.
 author: dsindona
 ms.author: dsindona
@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: a8379ed883311d219bb6eeb56bd4424dfb470bc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d9dc0315a5c87ed67390e8edb23d44ee55f242b
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251639"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82732767"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az ügyfél irányítópultja a kereskedelmi piactér elemzésében
 

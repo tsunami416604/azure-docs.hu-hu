@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/21/2019
 ms.author: apimpm
-ms.openlocfilehash: 300f44daeeea5e8a774575dabcb00686906bb5de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b212316970b77d325552956cfacded2dc570234f
+ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804367"
+ms.lasthandoff: 05/04/2020
+ms.locfileid: "82778974"
 ---
 # <a name="protect-an-api-by-using-oauth-20-with-azure-active-directory-and-api-management"></a>API-k védelme az OAuth 2.0 Azure Active Directoryval és API Managementtel történő használatával
 
@@ -79,7 +79,7 @@ Minden ügyfélalkalmazás, amely meghívja az API-t, alkalmazásként kell regi
     - A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára (például *Client-app*). 
     - A **támogatott fiókok típusai** szakaszban válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő)**. 
 
-1. Az **átirányítási URI** szakaszban válassza ki `Web` és adja meg az `https://contoso5.portal.azure-api.net/signin`URL-címet.
+1. Az **átirányítási URI** szakaszban válassza ki `Web` és hagyja üresen az URL mezőt.
 
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához. 
 
@@ -149,9 +149,9 @@ Ebben a példában a fejlesztői konzol az ügyfél-alkalmazás. A következő l
 
 1. Kattintson a **Létrehozás** gombra.
 
-1. Térjen vissza az ügyfél-alkalmazáshoz, és válassza a **hitelesítés**lehetőséget.
+1. Térjen vissza az ügyfél-alkalmazás regisztrálásához Azure Active Directory, és válassza a **hitelesítés**lehetőséget.
 
-1. Az **átirányítási URI**-k területen válassza ki a típust **webesként**, illessze be a **redirect_urlt** az **átirányítási URI**alatt, majd mentse a következőt:.
+1. A **platform-konfigurációk** területen kattintson a **platform hozzáadása**elemre, és válassza ki a típust **webesként**, illessze be a **redirect_urlt** az **átirányítási URI**alatt, majd kattintson a **Konfigurálás** gombra a mentéshez.
 
 Most, hogy konfigurált egy OAuth 2,0-es engedélyezési kiszolgálót, a fejlesztői konzol hozzáférési jogkivonatokat szerezhet be az Azure AD-ből. 
 
