@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/25/2019
 ms.author: b-juche
-ms.openlocfilehash: 97e3c6212edd2ade4eabb96db3543e9b3b68e2ae
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 4badf550809df6cc63711c47e6e6f5b3690fdfca
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67454138"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691320"
 ---
 # <a name="performance-considerations-for-azure-netapp-files"></a>Az Azure NetApp Files teljesítményével kapcsolatos szempontok
 
@@ -34,8 +34,6 @@ A tárolási teljesítmény jellemző szempontjai, beleértve az olvasási és �
 A tesztelés során megfigyelt maximális empirikus teljesítmény 4 500 MiB/s.  A Premium Storage szintjén a 70,31 TiB mennyiségi kvótája olyan átviteli korlátot fog kiépíteni, amely elég magas a teljesítmény eléréséhez.  
 
 Ha az 70,31 TiB-nál nagyobb mennyiségű mennyiségi kvóta kiosztását fontolgatja, további kvóták is hozzárendelhetők a további adattárolási kötetekhez. A hozzáadott kvóta azonban nem eredményez további növekedést a tényleges átviteli sebességben.  
-
-További információért lásd [a Azure NetApp Files teljesítményének teljesítményteszteit](azure-netapp-files-performance-benchmarks.md) .
 
 ## <a name="overprovisioning-the-volume-quota"></a>A mennyiségi kvóta túlzott kiépítése
 
@@ -64,4 +62,4 @@ Ha a teljesítményre vonatkozó követelmények átmeneti jellegűek, vagy ha e
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
-- [Az Azure NetApp Files teljesítményével kapcsolatos mérőszámok](azure-netapp-files-performance-benchmarks.md)
+- [Teljesítménytesztek Linuxhoz](performance-benchmarks-linux.md)

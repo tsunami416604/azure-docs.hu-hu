@@ -3,16 +3,16 @@ title: Ismerkedés az Azure Enterprise portállal
 description: Ez a cikk azt ismerteti, hogyan használják az Azure Nagyvállalati Szerződéssel (Azure EA) rendelkező ügyfelek az Azure Enterprise portált.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/01/2020
+ms.date: 05/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: da63960b312bde6ae8aafb659ef08ef2f52600cc
-ms.sourcegitcommit: 3c318f6c2a46e0d062a725d88cc8eb2d3fa2f96a
+ms.openlocfilehash: 647802ada8c8ca701c552749730b54bfce1e1651
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/02/2020
-ms.locfileid: "80586304"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691557"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Ismerkedés az Azure Enterprise portállal
 
