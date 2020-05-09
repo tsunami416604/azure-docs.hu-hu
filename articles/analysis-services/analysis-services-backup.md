@@ -4,15 +4,15 @@ description: Ez a cikk azt ismerteti, hogyan lehet biztonsági másolatot kész�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 02ca7f268f2998d3b7d73ab9fc00bbd688b5f50c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: aa98a13b84e89c90e29525fb6743ac33faf1d917
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582530"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871302"
 ---
 # <a name="backup-and-restore"></a>Biztonsági mentés és visszaállítás
 
@@ -24,7 +24,7 @@ A táblázatos modell adatbázisainak biztonsági mentése Azure Analysis Servic
 > 
 
 > [!NOTE]
-> Ha a Storage-fiók egy másik régióban található, a tűzfal beállításait úgy kell konfigurálni, hogy az **összes hálózatról**engedélyezze a hozzáférést. Az engedélyezett IP-címekkel rendelkező kiválasztott hálózatokhoz konfigurált tűzfalbeállítások, valamint a megbízható Microsoft-szolgáltatások engedélyezése kivétel nem támogatott.
+> Ha a Storage-fiók egy másik régióban található, konfigurálja a Storage-fiók tűzfala beállításait, hogy engedélyezze a hozzáférést a **kiválasztott hálózatokból**. A tűzfal **címtartomány**területen válassza ki az IP-címtartományt azon régió számára, amelyen a Analysis Services-kiszolgáló található. A Storage-fiók tűzfala beállításainak konfigurálása az összes hálózatról való hozzáférés engedélyezéséhez, azonban a kiválasztott hálózatok kiválasztása és az IP-címtartomány megadása javasolt. További információ: [hálózati kapcsolat – gyakori kérdések](analysis-services-network-faq.md#backup-and-restore).
 
 A biztonsági mentések. ABF kiterjesztéssel lesznek mentve. A memóriában tárolt táblázatos modellek esetében a modellre vonatkozó adatokat és metaadatokat is tárolja a rendszer. A DirectQuery táblázatos modellek esetében csak a modell metaadatai vannak tárolva. A kiválasztott beállításoktól függően a biztonsági másolatok tömörítve és titkosítva is lehetnek.
 

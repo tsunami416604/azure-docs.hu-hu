@@ -3,12 +3,12 @@ title: Függőségek nyomon követése az Azure Application Insightsban | Micros
 description: A helyszíni vagy Microsoft Azure webalkalmazástól származó függőségi hívások figyelése Application Insightsokkal.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 1e30d8036c1fc624d39f027f38e314c6c57360f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731495"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980847"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -92,14 +92,14 @@ SQL-hívások esetén a rendszer a kiszolgáló és az adatbázis nevét gyűjti
 
 ASP.NET Core alkalmazások esetében nincs szükség további lépésekre a teljes SQL-lekérdezés beszerzéséhez.
 
-A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezést a rendszer a byte Code Instrumentation segítségével gyűjti össze, amelyhez rendszerállapot-kezelő motor szükséges. Az alább leírtak szerint további platform-specifikus lépések szükségesek.
+A ASP.NET-alkalmazások esetében a teljes SQL-lekérdezéseket a rendszer a System. adat. SqlClient könyvtár helyett a [Microsoft. adat. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomag használatával gyűjti. Az alább leírtak szerint további platform-specifikus lépések szükségesek.
 
 | Platform | A teljes SQL-lekérdezés beolvasásához szükséges lépés (ek) |
 | --- | --- |
 | Azure-webalkalmazás |A webalkalmazás-Vezérlőpulton [nyissa meg a Application Insights](../../azure-monitor/app/azure-web-apps.md) panelt, és engedélyezze az SQL-parancsokat a .net alatt. |
-| IIS-kiszolgáló (Azure-beli virtuális gép, helyszíni stb.) | A Állapotmonitor PowerShell-modullal [telepítse a Instrumentation-motort](../../azure-monitor/app/status-monitor-v2-api-reference.md) , és indítsa újra az IIS-t. |
+| IIS-kiszolgáló (Azure-beli virtuális gép, helyszíni stb.) | Használja a [Microsoft. Information. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomagot, vagy használja a Állapotmonitor PowerShell-modult [a Instrumentation-motor telepítéséhez](../../azure-monitor/app/status-monitor-v2-api-reference.md) , és indítsa újra az IIS-t. |
 | Azure-felhőszolgáltatás | [Indítási feladat hozzáadása a StatusMonitor telepítéséhez](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Az alkalmazást a NuGet-csomagok [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) vagy [ASP.net Core alkalmazások](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) számára történő telepítésével kell előkészíteni a ApplicationInsights SDK-ra. |
-| IIS Express | Nem támogatott
+| IIS Express | A [Microsoft. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) NuGet-csomag használata
 
 A fenti esetekben a rendszerállapot-kezelő motor megfelelő ellenőrzésének helyes módszere az, hogy ellenőrzi, hogy a gyűjtött `DependencyTelemetry` SDK-verzió "rddp". a "rdddsd" vagy a "rddf" érték azt jelzi, hogy a függőségek gyűjtése DiagnosticSource vagy EventSource visszahívásokon keresztül történik, így a teljes SQL-lekérdezés nem lesz rögzítve.
 

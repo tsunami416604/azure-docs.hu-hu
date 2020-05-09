@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: da739df761d1d7881764f6ee296872fa02781a6f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
-ms.translationtype: HT
+ms.date: 05/05/2020
+ms.openlocfilehash: 8fab8c51655c860bc63715a5313c18ac72d4b0cd
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734960"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871619"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Csatlakozás Azure-beli virtuális hálózatokhoz Azure Logic Appsból integrációs szolgáltatási környezet (ISE) használatával
 
@@ -80,42 +80,49 @@ Győződjön meg arról, hogy az ISE elérhető, és hogy az ISE logikai alkalma
 
 * Ha új Azure-beli virtuális hálózatot és alhálózatokat hozott létre korlátozás nélkül, nem kell beállítania [hálózati biztonsági csoportokat (NSG)](../virtual-network/security-overview.md#network-security-groups) a virtuális hálózatban az alhálózatok közötti adatforgalom szabályozásához.
 
-* Egy meglévő virtuális hálózatban *opcionálisan* beállíthatja a NSG a [hálózati forgalom alhálózatok közötti szűrésével](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat szeretné használni, vagy ha már használja a NSG-t, győződjön meg arról, hogy [megnyitta a táblázatban található portokat](#network-ports-for-ise) azon a virtuális hálózaton, ahol a NSG vagy a NSG-t szeretné beállítani.
+* Egy meglévő virtuális hálózat esetében *opcionálisan* beállíthat [hálózati biztonsági csoportokat (NSG)](../virtual-network/security-overview.md#network-security-groups) az alhálózatok [közötti hálózati forgalom szűrésére](../virtual-network/tutorial-filter-network-traffic.md). Ha ezt az útvonalat szeretné használni, vagy ha már használja a NSG-t, győződjön meg arról, hogy [megnyitotta az ebben a táblázatban ismertetett portokat](#network-ports-for-ise) a NSG.
 
-  > [!NOTE]
-  > Ha [NSG biztonsági szabályokat](../virtual-network/security-overview.md#security-rules)használ, akkor a TCP és az UDP protokollt *is* használnia kell. A NSG biztonsági szabályai azokat a portokat írják le, amelyeknek meg kell nyitni azokat az IP-címeket, amelyeknek hozzá kell férniük a portokhoz. Győződjön meg arról, hogy a végpontok között található tűzfalak, útválasztók vagy egyéb elemek is megőrzik ezeket a portokat az IP-címek számára.
+  A [NSG biztonsági szabályainak](../virtual-network/security-overview.md#security-rules)beállításakor a **TCP** -és **UDP** -protokollokat is használni kell, **vagy választhatja** azt, hogy nem kell külön szabályokat létrehoznia *az egyes* protokollokhoz. A NSG biztonsági szabályai azokat a portokat írják le, amelyeknek meg kell nyitni azokat az IP-címeket, amelyeknek hozzá kell férniük a portokhoz. Győződjön meg arról, hogy a végpontok között található tűzfalak, útválasztók vagy egyéb elemek is megőrzik ezeket a portokat az IP-címek számára.
 
 <a name="network-ports-for-ise"></a>
 
 ### <a name="network-ports-used-by-your-ise"></a>Az ISE által használt hálózati portok
 
-Ez a táblázat az Azure-beli virtuális hálózat azon portjait ismerteti, amelyeket az ISE használ, és ahol a portok használatban vannak. A biztonsági szabályok létrehozásakor a bonyolultság csökkentése érdekében a táblázatban szereplő [szolgáltatási címkék](../virtual-network/service-tags-overview.md) az adott Azure-szolgáltatáshoz tartozó IP-cím-előtagok csoportjait jelölik.
+Ez a táblázat azokat a portokat ismerteti, amelyeknek az ISE számára elérhetőnek kell lennie, valamint a portok célját. A biztonsági szabályok beállítása során a bonyolultság csökkentése érdekében a táblázat olyan [szolgáltatási címkéket](../virtual-network/service-tags-overview.md) használ, amelyek az IP-cím előtagjainak egy adott Azure-szolgáltatáshoz tartozó csoportjait jelölik. Ahol a megjegyezte, a *belső ISE* és a *külső ISE* az [ISE létrehozásakor kiválasztott hozzáférési végpontra](connect-virtual-network-vnet-isolated-environment.md#create-environment)hivatkozik. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access).
 
 > [!IMPORTANT]
-> A forrásoldali portok elmúlóak, ezért ügyeljen arra `*` , hogy minden szabályhoz beállítsa őket. Ahol a megjegyezte, a belső ISE és a külső ISE az [ISE létrehozásakor kiválasztott végpontra](connect-virtual-network-vnet-isolated-environment.md#create-environment)hivatkozik. További információ: [végponti hozzáférés](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). 
+> Az összes szabály esetében ügyeljen arra `*` , hogy a forrás portjait állítsa be, mert a forrásoldali portok elmúlóak.
 
-| Cél | Irány | Célportok | Forrásoldali szolgáltatás címkéje | Cél szolgáltatáscímkéje | Megjegyzések |
-|---------|-----------|-------------------|--------------------|-------------------------|-------|
-| Alhálózati kommunikáció a virtuális hálózaton belül | Bejövő & kimenő | * | Az ISE alhálózatait tartalmazó virtuális hálózat címterület | Az ISE alhálózatait tartalmazó virtuális hálózat címterület | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
-| Kommunikáció a logikai alkalmazással | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet <br>(lásd a **Megjegyzések** oszlopot) | VirtualNetwork | Az **Internet** Service címke használata helyett megadhatja annak a számítógépnek vagy szolgáltatásnak a forrás IP-címét, amely a logikai alkalmazásban meghívja a kérelem-eseményindítókat vagy webhookokat. <p><p>**Fontos**: a port bezárása vagy blokkolása MEGAKADÁLYOZZA a http-hívásokat olyan logikai alkalmazásokban, amelyeken kérelem-eseményindítók vannak. |
-| Logikai alkalmazás futtatási előzményei | Bejövő | 443 | Belső ISE: <br>VirtualNetwork <p><p>Külső ISE: <br>Internet <br>(lásd a **Megjegyzések** oszlopot) | VirtualNetwork | Az **Internet** Service címke használata helyett megadhatja annak a számítógépnek vagy szolgáltatásnak a forrás IP-címét, ahonnan a logikai alkalmazás futtatási előzményeit szeretné megtekinteni. <p><p>**Fontos**: bár a port bezárása vagy blokkolása nem akadályozza meg a futtatási előzmények megtekintését, nem tekintheti meg a futtatási előzményekben szereplő egyes lépések bemeneteit és kimeneteit. |
-| Logic Apps Designer – dinamikus tulajdonságok | Bejövő | 454 | LogicAppsManagement | VirtualNetwork | A kérelmek az adott régióhoz tartozó Logic Apps hozzáférési végpont [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) IP-címeiből származnak. |
-| Összekötő üzembe helyezése | Bejövő | 454 | AzureConnectors | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
-| Hálózati állapot-ellenőrzési | Bejövő | 454 | LogicApps | VirtualNetwork | A kérelmek az adott régió [bejövő](../logic-apps/logic-apps-limits-and-config.md#inbound) és [kimenő](../logic-apps/logic-apps-limits-and-config.md#outbound) IP-címeihez tartozó Logic apps hozzáférési végpontból származnak. |
-| App Service felügyeleti függőség | Bejövő | 454, 455 | AppServiceManagement | VirtualNetwork | |
-| Kommunikáció az Azure Traffic Manager | Bejövő | Belső ISE: 454 <p><p>Külső ISE: 443 | AzureTrafficManager | VirtualNetwork | |
-| API Management felügyeleti végpont | Bejövő | 3443 | APIManagement | VirtualNetwork | |
-| Összekötő-házirend üzembe helyezése | Bejövő | 3443 | APIManagement | VirtualNetwork | Összekötők üzembe helyezéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
-| Kommunikáció a logikai alkalmazásból | Kimenő | 80, 443 | VirtualNetwork | A célhelytől függően változik | A külső szolgáltatáshoz tartozó végpontok, amelyeknek a logikai alkalmazásnak kommunikálnia kell. |
-| Azure Active Directory | Kimenő | 80, 443 | VirtualNetwork | AzureActiveDirectory | |
-| Kapcsolatok kezelése | Kimenő | 443 | VirtualNetwork  | AppService | |
-| Diagnosztikai naplók közzététele & metrikák | Kimenő | 443 | VirtualNetwork  | AzureMonitor | |
-| Azure Storage-függőség | Kimenő | 80, 443, 445 | VirtualNetwork | Storage | |
-| Azure SQL-függőség | Kimenő | 1433 | VirtualNetwork | SQL | |
-| Azure Resource Health | Kimenő | 1886 | VirtualNetwork | AzureMonitor | A Resource Health állapotának közzétételéhez szükséges. |
-| Függőség a naplótól az Event hub-házirendbe és a figyelési ügynökbe | Kimenő | 5672 | VirtualNetwork | EventHub | |
-| Azure cache elérése Redis-példányok között szerepkör-példányok között | Bejövő <br>Kimenő | 6379 – 6383 | VirtualNetwork | VirtualNetwork | Emellett ahhoz, hogy az ISE működjön az Azure cache-sel az Redis-hez, meg kell nyitnia ezeket [a kimenő és bejövő portokat az Azure cache Redis – gyakori kérdések című témakörben](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements). |
-||||||
+#### <a name="inbound-security-rules"></a>Bejövő biztonsági szabály
+
+| Cél | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Megjegyzések |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
+| Mind <p>Kommunikáció a logikai alkalmazással <p><p>A logikai alkalmazás előzményeinek futtatása| Belső ISE: <br>**VirtualNetwork** <p><p>Külső ISE: **Internet** vagy lásd a **megjegyzéseket** | * | **VirtualNetwork** | 443 | Az **Internet** Service címke használata helyett megadhatja az alábbi elemek forrás IP-címét: <p><p>– Az a számítógép vagy szolgáltatás, amely meghívja a logikai alkalmazásban megjelenő kérelem-eseményindítókat vagy webhookokat <p>– Az a számítógép vagy szolgáltatás, ahonnan el szeretné érni a logikai alkalmazás futtatási előzményeit <p><p>**Fontos**: a port bezárása vagy blokkolása megakadályozza a meghívást az eseményindítókkal vagy webhookokkal rendelkező logikai alkalmazásoknak. Azt is megakadályozhatja, hogy a futtatási előzményekben szereplő egyes lépéseknél hozzáférjenek a bemenetekhez és a kimenetekhez. Azonban nem akadályozza meg a logikai alkalmazás futtatási előzményeinek elérését.|
+| Logic Apps Designer – dinamikus tulajdonságok | **LogicAppsManagement** | * | **VirtualNetwork** | 454 | A kérések az adott régióhoz tartozó Logic Apps hozzáférési végpont [bejövő IP-címeiből](../logic-apps/logic-apps-limits-and-config.md#inbound) származnak. |
+| Összekötő üzembe helyezése | **AzureConnectors** | * | **VirtualNetwork** | 454 | Összekötők telepítéséhez és frissítéséhez szükséges. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
+| Hálózati állapot-ellenőrzési | **LogicApps** | * | **VirtualNetwork** | 454 | A kérelmek a Logic Apps hozzáférési végpont [bejövő IP-címeiből](../logic-apps/logic-apps-limits-and-config.md#inbound) és a régió [kimenő IP-címeiből](../logic-apps/logic-apps-limits-and-config.md#outbound) származnak. |
+| App Service felügyeleti függőség | **AppServiceManagement** | * | **VirtualNetwork** | 454, 455 ||
+| Kommunikáció az Azure Traffic Manager | **AzureTrafficManager** | * | **VirtualNetwork** | Belső ISE: 454 <p><p>Külső ISE: 443 ||
+| Mind <p>Összekötő-házirend üzembe helyezése <p>API Management felügyeleti végpont | **APIManagement** | * | **VirtualNetwork** | 3443 | Az összekötő-házirend üzembe helyezéséhez a port hozzáférés szükséges az összekötők telepítéséhez és frissítéséhez. A port bezárása vagy blokkolása esetén az ISE-telepítések sikertelenek lesznek, és meggátolják az összekötők frissítését és javítását. |
+| Azure cache elérése Redis-példányok között szerepkör-példányok között | **VirtualNetwork** | * | **VirtualNetwork** | 6379 – 6383, plusz lásd: **Megjegyzések**| Ahhoz, hogy az ISE működjön az Azure cache-sel az Redis-hez, meg kell nyitnia ezeket [a kimenő és bejövő portokat, amelyeket az Azure cache ismertet a REDIS GYIK](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)-ban. |
+|||||||
+
+#### <a name="outbound-security-rules"></a>Kimenő biztonsági szabályok
+
+| Cél | Forrásként szolgáló szolgáltatás címkéje vagy IP-címe | Forrásportok | Cél szolgáltatás címkéje vagy IP-címe | Célportok | Megjegyzések |
+|---------|------------------------------------|--------------|-----------------------------------------|-------------------|-------|
+| Alhálózati kommunikáció a virtuális hálózaton belül | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | Az ISE-alhálózatokkal rendelkező virtuális hálózat címterület | * | A virtuális hálózat alhálózatai *közötti* adatforgalomhoz szükséges. <p><p>**Fontos**: az egyes alhálózatokban található *összetevők* közötti adatforgalom esetén győződjön meg arról, hogy az egyes alhálózatokon belül minden portot megnyit. |
+| Kommunikáció a logikai alkalmazásból | **VirtualNetwork** | * | A célhelytől függően változik | 80, 443 | A cél a külső szolgáltatáshoz tartozó végpontok alapján változik, amelyekkel a logikai alkalmazásnak kommunikálnia kell. |
+| Azure Active Directory | **VirtualNetwork** | * | **AzureActiveDirectory** | 80, 443 ||
+| Azure Storage-függőség | **VirtualNetwork** | * | **Storage** | 80, 443, 445 ||
+| Kapcsolatok kezelése | **VirtualNetwork** | * | **AppService** | 443 ||
+| Diagnosztikai naplók közzététele & metrikák | **VirtualNetwork** | * | **AzureMonitor** | 443 ||
+| Azure SQL-függőség | **VirtualNetwork** | * | **SQL** | 1433 ||
+| Azure Resource Health | **VirtualNetwork** | * | **AzureMonitor** | 1886 | A Resource Health állapotának közzétételéhez szükséges. |
+| Függőség a naplótól az Event hub-házirendbe és a figyelési ügynökbe | **VirtualNetwork** | * | **EventHub** | 5672 ||
+| Azure cache elérése Redis-példányok között szerepkör-példányok között | **VirtualNetwork** | * | **VirtualNetwork** | 6379 – 6383, plusz lásd: **Megjegyzések**| Ahhoz, hogy az ISE működjön az Azure cache-sel az Redis-hez, meg kell nyitnia ezeket [a kimenő és bejövő portokat, amelyeket az Azure cache ismertet a REDIS GYIK](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)-ban. |
+|||||||
 
 <a name="create-environment"></a>
 

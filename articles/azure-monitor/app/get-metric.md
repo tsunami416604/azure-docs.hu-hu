@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
-ms.openlocfilehash: 6d0d05f13f592fc981d3df52d107b385bdbbb21e
-ms.sourcegitcommit: eaec2e7482fc05f0cac8597665bfceb94f7e390f
+ms.openlocfilehash: 94525ce901a89935c4ee7800ada44a9dff84b27a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82515286"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82927904"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Egyéni metrika-gyűjtemény a .NET-ben és a .NET Core-ban
 
@@ -20,7 +20,7 @@ Az Azure Monitor Application Insights .NET-és .NET Core SDK-k két különböz�
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus GetMetric
 
-`TrackMetric()`egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()`egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()`a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. A `TrackMetric()`- `GetMetric()` től eltérően a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
+`TrackMetric()`egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()`a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. A `TrackMetric()`- `GetMetric()` től eltérően a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
 
 Application Insights a- `TrackMetric()` `GetMetric()` n keresztül gyűjtött egyéni metrikák nem tartoznak a [mintavételezésbe](https://docs.microsoft.com/azure/azure-monitor/app/sampling). A mintavétel fontos mérőszámai olyan forgatókönyvekhez vezethetnek, amelyekben előfordulhat, hogy a metrikák körére épülő riasztások megbízhatatlanok lehetnek. Az egyéni mérőszámok soha nem mintavételezésével általában biztos lehet abban, hogy a riasztási küszöbértékek megszegése esetén a riasztás tüzet fog okozni.  Mivel azonban az egyéni metrikák nem mintául szolgálnak, néhány lehetséges probléma van.
 
@@ -186,23 +186,11 @@ Azonban észreveheti, hogy nem tudja felosztani a metrikát az új egyéni dimen
 
 ![Támogatás felosztása](./media/get-metric/splitting-support.png)
 
-A metrikus Explorer felhasználói felületén belüli többdimenziós metrikák alapértelmezés szerint nincsenek bekapcsolva Application Insights erőforrásokban. Ha be szeretné kapcsolni ezt a viselkedést, lépjen a használati és becsült költségek lapra a ["riasztás engedélyezése az egyéni metrika-dimenziókban"](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)lehetőségre.
-
-### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>A metricIdentifier használata, ha több mint három dimenzió van
-
-Jelenleg 10 dimenzió támogatott, azonban a három dimenziónál nagyobb mértékben szükséges a felhasználó `metricIdentifier`:
-
-```csharp
-// Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
-// MetricIdentifier id = new MetricIdentifier("[metricNamespace]","[metricId],"[dim1]","[dim2]","[dim3]","[dim4]","[dim5]");
-MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold", "FormFactor", "GraphicsCard", "MemorySpeed", "BatteryCapacity", "StorageCapacity");
-Metric computersSold  = _telemetryClient.GetMetric(id);
-computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
-```
+A metrikus Explorer felhasználói felületén belüli többdimenziós metrikák alapértelmezés szerint nincsenek bekapcsolva Application Insights erőforrásokban.
 
 ### <a name="enable-multi-dimensional-metrics"></a>Többdimenziós mérőszámok engedélyezése
 
-Ha Application Insights erőforráshoz szeretne többdimenziós mérőszámokat engedélyezni, válassza a **használat és becsült költségek** > **Egyéni metrikák** > **engedélyezése az egyéni metrika dimenziók** > számára**OK**lehetőséget.
+Ha Application Insights erőforráshoz szeretne többdimenziós mérőszámokat engedélyezni, válassza a **használat és becsült költségek** > **Egyéni metrikák** > **engedélyezése az egyéni metrika dimenziók** > számára**OK**lehetőséget. Erről további részleteket [itt](pre-aggregated-metrics-log-metrics.md#custom-metrics-dimensions-and-pre-aggregation)találhat.
 
 Miután elvégezte ezt a módosítást, és új többdimenziós telemetria küld, a **felosztást is alkalmazhatja**.
 
@@ -214,6 +202,18 @@ Miután elvégezte ezt a módosítást, és új többdimenziós telemetria küld
 És tekintse meg a metrikák összesítéseit az egyes _FormFactor_ dimenziók esetében:
 
 ![Űrlap-tényezők](./media/get-metric/formfactor.png)
+
+### <a name="how-to-use-metricidentifier-when-there-are-more-than-three-dimensions"></a>A MetricIdentifier használata, ha több mint három dimenzió van
+
+Jelenleg 10 dimenzió támogatott, azonban a három dimenziónál nagyobb a következők használata `MetricIdentifier`:
+
+```csharp
+// Add "using Microsoft.ApplicationInsights.Metrics;" to use MetricIdentifier
+// MetricIdentifier id = new MetricIdentifier("[metricNamespace]","[metricId],"[dim1]","[dim2]","[dim3]","[dim4]","[dim5]");
+MetricIdentifier id = new MetricIdentifier("CustomMetricNamespace","ComputerSold", "FormFactor", "GraphicsCard", "MemorySpeed", "BatteryCapacity", "StorageCapacity");
+Metric computersSold  = _telemetryClient.GetMetric(id);
+computersSold.TrackValue(110,"Laptop", "Nvidia", "DDR4", "39Wh", "1TB");
+```
 
 ## <a name="custom-metric-configuration"></a>Egyéni metrika konfigurálása
 

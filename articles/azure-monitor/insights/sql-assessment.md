@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/28/2019
-ms.openlocfilehash: ceaed0800df01bf2c44fee13d98b01b6e726200d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: b6b32f9eadc6677bad591f4040981c4c95bf1f76
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77662484"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871243"
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>Az SQL-környezet optimalizálása a SQL Server Health-ellenőrzési megoldással Azure Monitor
 
@@ -34,8 +34,8 @@ A megoldás hozzáadása és az értékelés befejezése után a fókusz terüle
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az SQL Health ellenőrzési megoldáshoz a .NET-keretrendszer 4.6.2 egy támogatott verzióját kell telepíteni minden olyan számítógépen, amelyen telepítve van a Microsoft monitoring Agent (MMA).  Az MMA-ügynököt a System Center 2016-Operations Manager és az Operations Manager 2012 R2, valamint a Azure Monitor használja.  
-* A megoldás a 2012, 2014 és 2016 SQL Server verziót támogatja.
-* Log Analytics munkaterület az SQL Health-ellenőrzési megoldás az Azure Marketplace-en való hozzáadásához a Azure Portalban.  A megoldás telepítéséhez rendszergazdának vagy közreműködőnek kell lennie az Azure-előfizetésben.
+* A megoldás a 2012, 2014, 2016, 2017 és 2019 SQL Server verziót támogatja.
+* Log Analytics munkaterület az SQL Health-ellenőrzési megoldás az Azure Marketplace-en való hozzáadásához a Azure Portalban. A megoldás telepítéséhez rendszergazdának vagy közreműködőnek kell lennie az Azure-előfizetésben.
 
   > [!NOTE]
   > A megoldás hozzáadása után a rendszer hozzáadja a AdvisorAssessment. exe fájlt az ügynökökkel rendelkező kiszolgálókhoz. A rendszer beolvassa és elküldi a konfigurációs adatfeldolgozást a felhőben lévő Azure Monitorba. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat.
