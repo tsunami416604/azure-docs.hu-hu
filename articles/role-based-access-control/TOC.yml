@@ -26,6 +26,11 @@
       href: tutorial-custom-role-powershell.md
     - name: Egyéni szerepkör létrehozása – parancssori felület
       href: tutorial-custom-role-cli.md
+- name: Példák
+  items:
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Ajánlott eljárások

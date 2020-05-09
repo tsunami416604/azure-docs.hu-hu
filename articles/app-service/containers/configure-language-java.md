@@ -10,12 +10,12 @@ ms.date: 11/22/2019
 ms.author: brendm
 ms.reviewer: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 01d94b39354333a8840ded8725625d6a91cf56b7
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ffc7c289fd675a68c8b02af1777fea3d4530e17a
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82592162"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82889497"
 ---
 # <a name="configure-a-linux-java-app-for-azure-app-service"></a>Linux Java-alkalmazás konfigurálása az Azure App Service-hez
 
@@ -25,7 +25,7 @@ Ez az útmutató olyan Java-fejlesztőknek nyújt főbb fogalmakat és útmutat�
 
 ## <a name="deploying-your-app"></a>Az alkalmazás üzembe helyezése
 
-A [Maven beépülő modult használhatja Azure app Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) a. jar és a. War fájlok telepítéséhez. A népszerű ide-val történő üzembe helyezést [Azure Toolkit for IntelliJ](/java/azure/intellij/azure-toolkit-for-intellij) vagy [Azure Toolkit for Eclipse](/java/azure/eclipse/azure-toolkit-for-eclipse)is támogatja.
+A [Maven beépülő modult használhatja Azure app Service](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) a. jar és a. War fájlok telepítéséhez. A népszerű ide-val történő üzembe helyezést [Azure Toolkit for IntelliJ](/azure/developer/java/toolkit-for-intellij/) vagy [Azure Toolkit for Eclipse](/azure/developer/java/toolkit-for-eclipse)is támogatja.
 
 Ellenkező esetben a telepítési módszer az archiválás típusától függ:
 

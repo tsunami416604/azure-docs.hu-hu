@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 02/14/2020
+ms.date: 05/06/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b3282dd88b62a6811031e95672638d67702215a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b025d98c230bc82b86a736785fb8e6581ec4519c
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80048450"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82864419"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-google-cloud-g-suite-connector"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Google Cloud (G Suite) összekötővel
 
@@ -140,8 +140,8 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
 
 1. Ha az **alapszintű SAML-konfiguráció** szakaszban szeretné konfigurálni a **Google Cloud platform** , hajtsa végre a következő lépéseket:
@@ -161,8 +161,8 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     
     | |
     |--|
-    | `https://google.com` |
-    | `https://google.com/a/<yourdomain.com>` |
+    | `https://www.google.com` |
+    | `https://www.google.com/a/<yourdomain.com>` |
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A Google Cloud (G Suite) összekötő nem ad meg entitás-azonosító/azonosító értéket az egyszeri bejelentkezés konfigurációjában, így ha törli a **tartományi specifikus kiállítói** beállítást, az `google.com`azonosító értéke a következő lesz:. Ha bejelöli a **tartományra jellemző kiállítói** lehetőséget, `google.com/a/<yourdomainname.com>`az lesz. A **tartomány-specifikus kiállítói** beállítás bejelöléséhez vagy a kijelölés kikapcsolásához lépjen a **Google Cloud (G Suite)-összekötő egyszeri bejelentkezésre szolgáló SSO** szakaszra, amelyet az oktatóanyag későbbi részében ismertet. További információért forduljon a [Google Cloud (G Suite) Connector ügyfél-támogatási csapatához](https://www.google.com/contact/).
@@ -258,7 +258,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a Google Cloud (G Suite) összekötő csempére kattint, automatikusan be kell jelentkeznie a Google Cloud (G Suite) Összekötőbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

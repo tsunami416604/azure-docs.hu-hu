@@ -3,14 +3,14 @@ title: Átmeneti környezetek beállítása
 description: Megtudhatja, hogyan telepíthet alkalmazásokat egy nem éles környezetbe, és hogyan végezheti el az autoswap szolgáltatást éles környezetben. Növelje a megbízhatóságot, és távolítsa el az alkalmazások leállását az üzembe helyezésből.
 ms.assetid: e224fc4f-800d-469a-8d6a-72bcde612450
 ms.topic: article
-ms.date: 03/04/2020
+ms.date: 04/30/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 21e025088e59c7f65f848b332ecb393b05918261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11e133a24ff728cc864e50e898e9db982b186337
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78300860"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82597916"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása az Azure App Service-ben
 <a name="Overview"></a>
@@ -58,11 +58,11 @@ Az alkalmazásnak a **standard**, **prémium**vagy **elkülönített** szinten k
    
     ![Üzembe helyezési pont címe](./media/web-sites-staged-publishing/StagingTitle.png)
 
-    Az előkészítési pont olyan felügyeleti oldallal rendelkezik, mint bármely más App Service alkalmazás. A tárolóhely konfigurációját módosíthatja. A tárolóhely neve megjelenik a lap tetején, és emlékezteti arra, hogy megtekinti az üzembe helyezési pontot.
+    Az előkészítési pont olyan felügyeleti oldallal rendelkezik, mint bármely más App Service alkalmazás. A tárolóhely konfigurációját módosíthatja. Ha szeretné megtekinteni az üzembe helyezési pont megtekintését, az alkalmazás neve az ** \<alkalmazás neve>/\<slot-Name>**, az alkalmazás típusa pedig **app Service (tárolóhely)**. A tárolóhelyet külön alkalmazásként is megtekintheti az erőforráscsoporthoz, ugyanazzal a megjelöléssel.
 
 6. Válassza ki az alkalmazás URL-címét a tárolóhely erőforrás lapján. Az üzembe helyezési pont saját állomásnévvel rendelkezik, és egy élő alkalmazás is. Az üzembe helyezési pont nyilvános hozzáférésének korlátozásához tekintse meg [Azure app Service IP-korlátozásokat](app-service-ip-restrictions.md).
 
-Az új üzembe helyezési pontnak nincs tartalma, még akkor sem, ha a beállításokat egy másik tárolóhelyről klónozott. Például [közzéteheti ezt a tárolóhelyet a git](app-service-deploy-local-git.md)használatával. Egy másik adattárból vagy egy másik adattárból is telepítheti a tárolóhelyre. 
+Az új üzembe helyezési pontnak nincs tartalma, még akkor sem, ha a beállításokat egy másik tárolóhelyről klónozott. Például [közzéteheti ezt a tárolóhelyet a git](app-service-deploy-local-git.md)használatával. Egy másik adattárból vagy egy másik adattárból is telepítheti a tárolóhelyre.
 
 <a name="AboutConfiguration"></a>
 
@@ -272,7 +272,7 @@ Alapértelmezés szerint az új bővítőhelyek útválasztási szabályt kapnak
 
 ## <a name="delete-a-slot"></a>Tárolóhely törlése
 
-Keresse meg és válassza ki az alkalmazást. > >  **áttekintéséhez**válassza a **telepítési bővítőhelyek** > *\<tárolóhelyét *. Válassza a **delete (Törlés** ) lehetőséget a parancssáv sávon.  
+Keresse meg és válassza ki az alkalmazást. > >  **áttekintéséhez**válassza a **telepítési bővítőhelyek** > *\<tárolóhelyét *. Az alkalmazás típusa **app Service (tárolóhelyként)** jelenik meg, és emlékezteti arra, hogy az üzembe helyezési pont megtekintése folyamatban van. Válassza a **delete (Törlés** ) lehetőséget a parancssáv sávon.  
 
 ![Üzembe helyezési pont törlése](./media/web-sites-staged-publishing/DeleteStagingSiteButton.png)
 

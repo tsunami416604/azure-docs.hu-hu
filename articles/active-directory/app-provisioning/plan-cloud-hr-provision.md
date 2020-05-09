@@ -4,20 +4,19 @@ description: Ez a cikk a Felhőbeli HR-rendszerek (például a munkanapok és a 
 services: active-directory
 author: martincoetzer
 manager: CelesteDG
-tags: azuread
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 11/22/2019
 ms.author: martinco
-ms.reviewer: arvindha
-ms.openlocfilehash: 28abe2dfa5a1a13ba09e20202180cb5e47d94072
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: arvindha, celested
+ms.openlocfilehash: 86b858b628dc2ed9eac730d4c3f090f4d7d6c7e2
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77522432"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593301"
 ---
 # <a name="plan-cloud-hr-application-to-azure-active-directory-user-provisioning"></a>A Cloud HR-alkalmazás megtervezése Azure Active Directory a felhasználók üzembe helyezéséhez
 
@@ -53,11 +52,11 @@ A Felhőbeli HR-alkalmazás integrációja az Azure AD-vel – a felhasználók 
 - A felhasználók egy vagy több Active Directory-erdő, tartomány és szervezeti egység számára való szinkronizálásának megkövetelése csak a Cloud HR alkalmazásban észlelt változási információk alapján.
 - Az Office 365 e-mail-cím használata.
 
-## <a name="learn"></a>Tanulás
+## <a name="learn"></a>Learn
 
 A felhasználók üzembe helyezése létrehoz egy alapot a folyamatos identitás-irányításhoz. Fokozza a mérvadó személyazonossági adatokra támaszkodó üzleti folyamatok minőségét.
 
-### <a name="terms"></a>Fogalmak
+### <a name="terms"></a>Kifejezések
 
 Ez a cikk a következő kifejezéseket használja:
 

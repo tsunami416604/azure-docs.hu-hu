@@ -1,22 +1,18 @@
 ---
-title: 'Szolgáltatások közötti hitelesítés: Python és Azure Data Lake Storage Gen1 a Azure Active Directory használatával | Microsoft Docs'
+title: Python-szolgáltatások közötti hitelesítés – Data Lake Storage Gen1
 description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 használatával Azure Active Directory a Python használatával
-services: data-lake-store
-documentationcenter: ''
 author: twooley
-manager: mtillman
-editor: cgronlun
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 449159f6857cb2120f4570a8c20cd82fd11016a2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260292"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688127"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -24,8 +20,8 @@ ms.locfileid: "79260292"
 > * [A .NET SDK használata](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [A Python használata](data-lake-store-service-to-service-authenticate-python.md)
 > * [A REST API használata](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 Ebből a cikkből megtudhatja, hogyan használhatja a Python SDK-t a szolgáltatások közötti hitelesítéshez Azure Data Lake Storage Gen1 használatával. A Data Lake Storage Gen1 a Python használatával történő végfelhasználói hitelesítéshez lásd: [végfelhasználói hitelesítés a Data Lake Storage Gen1 a Python használatával](data-lake-store-end-user-authenticate-python.md).
 
@@ -34,7 +30,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Python SDK-t a szolgáltat
 
 * **Python**. A Pythont [innen](https://www.python.org/downloads/) töltheti le. Ez a cikk a Python 3.6.2-es verzióját használja.
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Hozzon létre egy Azure Active Directory "web" alkalmazást**. A Data Lake Storage Gen1 Azure Active Directory használatával kell végrehajtania a [szolgáltatások közötti hitelesítéshez](data-lake-store-service-to-service-authenticate-using-active-directory.md)szükséges lépéseket.
 
@@ -92,7 +88,7 @@ Ezt a kódrészletet használhatja az Azure AD-vel való hitelesítéshez Data L
     RESOURCE = 'https://management.core.windows.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     context = adal.AuthenticationContext(authority_uri, api_version=None)
     mgmt_token = context.acquire_token_with_client_credentials(RESOURCE, client_id, client_secret)
     armCreds = AADTokenCredentials(mgmt_token, client_id, resource=RESOURCE)
@@ -105,7 +101,7 @@ Az alábbi kódrészlettel hitelesítheti az Azure AD-t a fájlrendszerbeli műv
     RESOURCE = 'https://datalake.azure.net/'
     client_id = '<CLIENT_ID>'
     client_secret = '<CLIENT_SECRET>'
-    
+
     adlCreds = lib.auth(tenant_id = tenant,
                     client_secret = client_secret,
                     client_id = client_id,
@@ -132,5 +128,3 @@ Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hi
 
 * [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md)
 * [Az adatműveletek Data Lake Storage Gen1 a Python használatával](data-lake-store-data-operations-python.md)
-
-

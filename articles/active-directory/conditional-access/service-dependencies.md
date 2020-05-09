@@ -11,18 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b0d7816dc83a7c3536e44ff2461d85ea6178ff1
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: a108c952c4f1f9b8298e57c8fd94c767bb065f00
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82778481"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82981773"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>Mi a szolgáltatás függőségei Azure Active Directory feltételes hozzáférésben? 
 
 A feltételes hozzáférési szabályzatok segítségével megadhatja a webhelyekhez és a szolgáltatásokhoz való hozzáférési követelményeket. A hozzáférési követelmények például többek között a többtényezős hitelesítés (MFA) vagy a [felügyelt eszközök](require-managed-devices.md)megkövetelését is tartalmazhatják. 
 
 Ha közvetlenül fér hozzá egy webhelyhez vagy szolgáltatáshoz, a kapcsolódó szabályzatok hatása általában könnyen felmérhető. Ha például olyan szabályzattal rendelkezik, amely a SharePoint Online-hoz a többtényezős hitelesítés (MFA) használatát igényli, a rendszer minden egyes bejelentkezéskor MFA-t alkalmaz a SharePoint webes portálra. Azonban nem mindig áll készen a szabályzat hatásának felmérésére, mert a Felhőbeli alkalmazások függőségekkel rendelkeznek más felhőalapú alkalmazásokkal. A Microsoft Teams például hozzáférést biztosíthat az erőforrásokhoz a SharePoint Online-ban. Így ha a Microsoft csapatait a jelenlegi forgatókönyvben éri el, a SharePoint MFA-szabályzata is érvényes. 
+
+> [!TIP]
+> Az [office 365 (előzetes verzió)](concept-conditional-access-cloud-apps.md#office-365-preview) alkalmazás használata minden Office-alkalmazást megcéloz, hogy elkerülje a szolgáltatási függőségek problémáit az Office-veremben.
 
 ## <a name="policy-enforcement"></a>Szabályzatbetartatás 
 

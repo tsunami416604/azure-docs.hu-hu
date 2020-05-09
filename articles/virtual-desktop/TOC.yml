@@ -122,6 +122,8 @@
       href: remotefx-graphics-performance-counters.md
 - name: Referencia
   items:
+    - name: Ajánlott biztonsági eljárások
+      href: security-guide.md
     - name: Linux-támogatás
       href: linux-overview.md
     - name: Támogatott RDP-fájlbeállítások

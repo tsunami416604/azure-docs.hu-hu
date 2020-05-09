@@ -2,20 +2,20 @@
 title: Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 description: Javaslatok és ajánlott eljárások az SQL igény szerinti használata esetén (előzetes verzió).
 services: synapse-analytics
-author: mlee3gsd
+author: filippopovic
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
-ms.author: martinle
-ms.reviewer: igorstan
-ms.openlocfilehash: 1d4203141973c10fe7673f6ab9dedbc3bfdc8999
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.author: fipopovi
+ms.reviewer: jrasnick
+ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429069"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692147"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -50,11 +50,73 @@ Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 - Jobb, ha azonos méretű fájlokat szeretne egy OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
 - Particionálja az adatait úgy, hogy a partíciókat különböző mappákba vagy fájlnevekre tárolja, [majd a fájlnév és a filepath függvények használatával adja meg az adott partíciókat](#use-fileinfo-and-filepath-functions-to-target-specific-partitions).
 
+## <a name="push-wildcards-to-lower-levels-in-path"></a>Helyettesítő karakterek leküldése a megadott elérési úthoz alacsonyabb szintre
+
+Az elérési úton helyettesítő karaktereket használhat [több fájl és mappa lekérdezéséhez](develop-storage-files-overview.md#query-multiple-files-or-folders). Az SQL on-demand listázza a Storage-fiókban lévő fájlokat, amelyek a Storage API használatával kezdődnek, és kiküszöböli a megadott elérési úttal nem egyező fájlokat. A fájlok kezdeti listájának csökkentése növelheti a teljesítményt, ha sok olyan fájl található, amely megfelel a megadott elérési útnak az első helyettesítő karakternek.
+
+## <a name="use-appropriate-data-types"></a>Megfelelő adattípusok használata
+
+A lekérdezésben használt adattípusok hatással vannak a teljesítményre. Jobb teljesítményt érhet el, ha: 
+
+- Használja a legkisebb adatméretet, amely a lehető legnagyobb értéket fogja kielégíteni.
+  - Ha a karakteres érték legfeljebb 30 karakter hosszúságú, akkor a karakter adattípust kell használnia a 30 értéknél.
+  - Ha az összes karakteres oszlop értéke rögzített méretű, használja a char vagy a NCHAR. Ellenkező esetben használja a varchar vagy a nvarchar.
+  - Ha a maximális egész oszlop értéke 500, használja a smallint, mert a legkisebb adattípus, amely képes alkalmazkodni ennek az értéknek. [Itt](https://docs.microsoft.com/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=sql-server-ver15)megtalálhatja az egész adattípusok tartományait.
+- Ha lehetséges, használja a varchar és a char helyett a nvarchar és a NCHAR értéket.
+- Ha lehetséges, használja az egész szám alapú adattípust. A rendezési, a illesztési és a csoportosítási műveletek végrehajtása a karakteres adatoknál gyorsabban történik.
+- Ha séma-következtetést használ, ellenőrizze a [késleltetett adattípust](#check-inferred-data-types).
+
+## <a name="check-inferred-data-types"></a>Késleltetett adattípusok keresése
+
+A [séma-következtetés](query-parquet-files.md#automatic-schema-inference) segít gyorsan írni a lekérdezéseket, és az adatelemzést a sémafájl ismerete nélkül. Ez a kényelem a kikövetkeztetett adattípusok esetében a ténylegesnél nagyobb költséggel jár. Ez akkor történik meg, ha nem áll rendelkezésre elegendő információ a forrásfájlok számára a megfelelő adattípus használata érdekében. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban, és az SQL igény szerint varchar (8000) értéket kell kikövetkeztetni. 
+
+A lekérdezés eredményül kapott adattípusait [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15)használatával tekintheti meg.
+
+Az alábbi példa bemutatja, hogyan optimalizálhatja a késleltetett adattípusokat. Az eljárás a késleltetett adattípusok megjelenítésére szolgál. 
+```sql  
+EXEC sp_describe_first_result_set N'
+    SELECT
+        vendor_id, pickup_datetime, passenger_count
+    FROM 
+        OPENROWSET(
+            BULK ''https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*'',
+            FORMAT=''PARQUET''
+        ) AS nyc';
+```
+
+Itt látható az eredményhalmaz.
+
+|is_hidden|column_ordinal|név|system_type_name|max_length|
+|----------------|---------------------|----------|--------------------|-------------------||
+|0|1|vendor_id|varchar (8000)|8000|
+|0|2|pickup_datetime|datetime2 (7)|8|
+|0|3|passenger_count|int|4|
+
+Ha már tudjuk, hogy a lekérdezéshez következtetett adattípusok is megadhatók a megfelelő adattípusok:
+
+```sql  
+SELECT
+    vendor_id, pickup_datetime, passenger_count
+FROM 
+    OPENROWSET(
+        BULK 'https://sqlondemandstorage.blob.core.windows.net/parquet/taxi/*/*/*',
+        FORMAT='PARQUET'
+    ) 
+    WITH (
+        vendor_id varchar(4), -- we used length of 4 instead of inferred 8000
+        pickup_datetime datetime2,
+        passenger_count int
+    ) AS nyc;
+```
+
 ## <a name="use-fileinfo-and-filepath-functions-to-target-specific-partitions"></a>Fileinfo és filepath függvények használata adott partíciók célzásához
 
 Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerint kérhető az adott mappák és fájlok lekérdezésére. Ez a függvény csökkenti a fájlok számát és az adatmennyiséget, amelyet a lekérdezésnek olvasni és feldolgoznia kell. A hozzáadott bónusz az, hogy jobb teljesítményt érhet el.
 
 További információért olvassa el a [filename](develop-storage-files-overview.md#filename-function) és a [filepath](develop-storage-files-overview.md#filepath-function) függvények és példák című témakört a [megadott fájlok lekérdezéséhez](query-specific-files.md).
+
+> [!TIP]
+> A filepath és a fileinfo függvények a megfelelő adattípusokhoz való továbbításának eredménye mindig. Ha karakteres adattípusokat használ, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
 
 Ha a tárolt adatok nincsenek particionálva, érdemes particionálni, hogy ezek a függvények a fájlokra irányuló lekérdezések optimalizálására legyenek optimalizálva. Ha a [particionált Spark-táblákat](develop-storage-files-spark-tables.md) SQL-igény alapján kérdezi le, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 
