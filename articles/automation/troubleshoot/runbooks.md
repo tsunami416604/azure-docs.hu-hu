@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 08325c8163073c083e927f84fecbde9a9d104572
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
-ms.translationtype: HT
+ms.openlocfilehash: 70f3c52adc10556c358ed75a75fd023ffb21a813
+ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652796"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82855086"
 ---
 # <a name="troubleshoot-runbook-errors"></a>Runbook hibák elhárítása
 
@@ -49,7 +49,7 @@ Ha a Azure Automation runbook végrehajtása során hibákat kap, a következő 
     * [Újítsa meg a webhookot](../automation-webhooks.md#renew-a-webhook) , ha a runbook elindításához egy lejárt webhookot próbál használni.
     * [Ellenőrizze a feladatok állapotát](../automation-runbook-execution.md#job-statuses) az aktuális runbook állapotának meghatározásához és a probléma lehetséges okainak megállapításához.
     * [További kimenet hozzáadása](../automation-runbook-output-and-messages.md#message-streams) a runbook annak azonosításához, hogy mi történjen a runbook felfüggesztése előtt.
-    * [Kezelje](../automation-runbook-execution.md#handling-exceptions) a feladatokban felmerülő kivételeket.
+    * [Kezelje](../automation-runbook-execution.md#exceptions) a feladatokban felmerülő kivételeket.
 
 1. Ezt a lépést akkor hajtsa végre, ha a hibrid Runbook-feldolgozó runbook-feladata vagy-környezete nem válaszol.
 
@@ -234,7 +234,7 @@ A runbook nem a megfelelő környezetet használja a futtatásakor.
 
 ### <a name="resolution"></a>Megoldás:
 
-Előfordulhat, hogy az előfizetési környezet elvész, ha egy runbook több runbookok hív meg. Annak biztosítása érdekében, hogy az előfizetési környezet átkerüljön a runbookok, az ügyfélnek runbook kell adnia a `Start-AzureRmAutomationRunbook` kontextust a `AzureRmContext` paraméterben található parancsmagnak. A `Disable-AzureRmContextAutosave` parancsmaggal állítsa `Scope` `Process` be a paramétert annak biztosítására, hogy a megadott hitelesítő adatok csak az aktuális runbook legyenek felhasználva. További információ: [több előfizetés használata](../automation-runbook-execution.md#working-with-multiple-subscriptions).
+Előfordulhat, hogy az előfizetési környezet elvész, ha egy runbook több runbookok hív meg. Annak biztosítása érdekében, hogy az előfizetési környezet átkerüljön a runbookok, az ügyfélnek runbook kell adnia a `Start-AzureRmAutomationRunbook` kontextust a `AzureRmContext` paraméterben található parancsmagnak. A `Disable-AzureRmContextAutosave` parancsmaggal állítsa `Scope` `Process` be a paramétert annak biztosítására, hogy a megadott hitelesítő adatok csak az aktuális runbook legyenek felhasználva. További információ: [előfizetések](../automation-runbook-execution.md#subscriptions).
 
 ```azurepowershell-interactive
 # Ensures that any credentials apply only to the execution of this runbook
@@ -634,7 +634,7 @@ Ez a probléma azért fordulhat elő, mert az Azure-beli munkaterületek megakad
 
 ### <a name="resolution"></a>Megoldás:
 
-Az Azure-beli munkaterületek használatáról további információt a következő témakörben talál: [Runbook-végrehajtás Azure Automation](../automation-runbook-execution.md#where-to-run-your-runbooks).
+Az Azure-beli munkaterületek használatáról további részleteket a [Runbook végrehajtási környezetében](../automation-runbook-execution.md#runbook-execution-environment)talál.
 
 ## <a name="scenario-invalid-forbidden-status-code-when-using-key-vault-inside-a-runbook"></a>Forgatókönyv: érvénytelen tiltott állapotkód Key Vault runbook való használatakor
 

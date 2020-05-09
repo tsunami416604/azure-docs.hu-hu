@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/03/2020
+ms.date: 04/30/2020
 ms.author: b-juche
-ms.openlocfilehash: c4e7566eeb28bc5709acd60ced9fcdffb7e8a725
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfc17825fab6c9a5f0d832318cb1d57271c56da
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668009"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625533"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
@@ -222,6 +222,23 @@ Ez a beállítás a **NetApp-fiókhoz**tartozó **Active Directory-kapcsolatokba
     A létrehozott kötet megjelenik a kötetek lapon. 
  
     A kötetek a kapacitáskészletről öröklik az előfizetésre, az erőforráscsoportra és a helyre vonatkozó attribútumokat. A kötet üzembe helyezésének állapotát az Értesítések lapon követheti nyomon.
+
+## <a name="control-access-to-an-smb-volume"></a>SMB-kötethez való hozzáférés szabályozása  
+
+Az SMB-kötetekhez való hozzáférést az engedélyek szabályozzák.  
+
+### <a name="share-permissions"></a>Megosztási engedélyek  
+
+Alapértelmezés szerint az új kötet a **mindenki/teljes hozzáférés** megosztás engedélyekkel rendelkezik. A Tartománygazdák csoport tagjai a Azure NetApp Files kötethez használt számítógépfiók számítógép-kezelés funkciójával módosíthatják a megosztási engedélyeket.
+
+![SMB-csatlakoztatási útvonal](../media/azure-netapp-files/smb-mount-path.png) 
+![beállítása megosztási engedélyek](../media/azure-netapp-files/set-share-permissions.png) 
+
+### <a name="ntfs-file-and-folder-permissions"></a>NTFS-fájl és mappa engedélyei  
+
+A fájlokra vagy mappákra vonatkozó engedélyeket a Windows SMB-ügyfélben található objektum tulajdonságainak **Biztonság** lapján állíthatja be.
+ 
+![Fájl-és mappa engedélyeinek beállítása](../media/azure-netapp-files/set-file-folder-permissions.png) 
 
 ## <a name="next-steps"></a>További lépések  
 

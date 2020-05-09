@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 75020b0dd58a80f989bd03eb92031d904ebf4c82
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb37efb796ddf41bd1d19e10d22f934590604274
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81313684"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82871707"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure szinapszis Analytics üzleti intelligencia-partnerek
 
@@ -38,7 +38,7 @@ A teljes adattárház-megoldás létrehozásához a szinapszis SQL-készlet hasz
 | ![SiSense](./media/sql-data-warehouse-partner-business-intelligence/sisense_logo.png) |**SiSense**<br>A SiSense egy teljes körű üzleti intelligenciát biztosító szoftver, amely az üzleti igényeknek megfelelő eszközöket kínál az adatok elemzéséhez és megjelenítéséhez: nagy teljesítményű analitikai adatbázis, több forráshoz való csatlakozás, egyszerű kinyerés (etl) és webalapú adatvizualizáció. Megkezdheti a nagyméretű adathalmazok elemzését és megjelenítését a SiSense BI és az Analytics szolgáltatással. |[Termék lap](https://www.sisense.com/product/)<br> |
 | ![Tableau](./media/sql-data-warehouse-partner-business-intelligence/tableau_sparkle_logo.png) |**Tableau**<br>A tabló önkiszolgáló elemzési szolgáltatásának segítségével bárki megtekintheti és értelmezheti az adatait, és számos különböző típusú, a fájloktól az adatbázisokig terjedő adatmennyiséget. A tabló egy natív, optimalizált összekötővel rendelkezik a szinapszis SQL-készlethez, amely egyaránt támogatja az élő és a memóriabeli elemzéseket. |[Termék lap](https://www.tableau.com/)<br> [Azure Piactér](https://azure.microsoft.com/marketplace/partners/tableau/tableau-server/)<br>|
 | ![Targit](./media/sql-data-warehouse-partner-business-intelligence/targit_logo.png) |**Targit (döntési csomag)**<br>A Targit döntési csomagja olyan BI-és elemzési platformot biztosít, amely valós idejű irányítópultokat, önkiszolgáló elemzéseket, felhasználóbarát jelentéskészítést, lenyűgöző mobil képességeket és egyszerű adatfelderítési technológiát kínál egyetlen, összetartó megoldásban. A Targit a vállalatoknak a bátorságot, hogy cselekedjenek. |[Termék lap](https://www.targit.com/targit-decision-suite/analytics)<br> [Azure Piactér](https://azure.microsoft.com/marketplace/partners/targit/targit-decision-suite/)<br> |
-| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>A világ leginnovatívabb vállalatai a ThoughtSpot segítségével minden személyt felhatalmaznak a szervezeten belül, a C-Suite Executive és az előtérben dolgozó munkatársak számára, hogy gyorsan fel tudják fedni az adatvezérelt elemzéseket. A ThoughtSpot segítségével az üzletemberek egyszerű keresést végezhetnek, amelyekkel azonnal elemezheti az adatsorok mennyiségét, és kihasználhatja a mesterséges intelligenciát, hogy megbízható, releváns elemzéseket kapjon a számukra, ha több ezer kérdésre válaszolnak. A ThoughtSpot minden üzleti személy számára elég egyszerű, de még a legnagyobb, legösszetettebb vállalati adatmennyiséget a gyorsaság, a biztonság vagy a szabályozás feláldozása nélkül kezelheti. Ezért az olyan ügyfelek, mint például a Walmart, a 7-11, a BT, a Daimler, az Exxon, a Hulu, a kanadai királyi Bank, a West Bank, és az országos építési társadalom ThoughtSpot, hogy átalakítsák a döntéshozó kultúrákat és elemző cég Gartner nevű ThoughtSpot a 2020 Magic Rusztikusban. Azáltal, hogy az elemzések egy részét minden beszélgetésből és minden döntésből bemutatják, a ThoughtSpot az adat szerepét úgy képzeli el, hogy létrehoz egy tényfeltáró világot. |[Termék lap](https://www.thoughtspot.com)<br>|
+| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>A keresés segítségével részletes elemzéseket készíthet több milliárd sornyi adatmennyiségről, vagy megadhatja, hogy a mesterséges intelligenciával kapcsolatban ne jelenjen meg a kérdés. A ThoughtSpot segít az üzletembereknek másodpercek alatt megtalálni a vállalati adatelemzéseket. A keresés segítségével elemezheti az adatait, és automatizált elemzéseket kaphat, amikor szüksége van rájuk.|[Termék lap](https://www.thoughtspot.com)<br>|
 | ![Sárgaúszójú](./media/sql-data-warehouse-partner-business-intelligence/yellowfin_logo.png) |**Sárgaúszójú**<br>A sárgaúszójú egy legtöbbet értékelt felhőalapú BI-szállító a BERETTYÓ által biztosított ad hoc jelentéskészítéshez és irányítópultokhoz. A BI-felmérés. Kapcsolódjon a szinapszis SQL-készlethez, majd hozzon létre és osszon meg gyönyörű jelentéseket és irányítópultokat a díjnyertes, együttműködésen alapuló BI és Location intelligencia funkciókkal. |[Termék lap](https://www.yellowfinbi.com/)<br> [Azure Piactér](https://azure.microsoft.com/marketplace/partners/yellowfin/yellowfin-for-azure-byol/) |
 
 <!--https://img.youtube.com/vi/0b8sPW2UHrU/0.jpg-->

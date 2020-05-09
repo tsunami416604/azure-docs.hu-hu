@@ -3,16 +3,16 @@ title: Logikai alkalmazások szerkesztése és kezelése a Visual Studio és a C
 description: Szerkesztés, frissítés, kezelés, Hozzáadás a forrás vezérlőelemhez és logikai alkalmazások üzembe helyezése a Visual Studio és a Cloud Explorer használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: article
 ms.custom: mvc
-ms.date: 10/29/2019
-ms.openlocfilehash: 73df5b7f10e038b6894996eb83dec7b6914a4536
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/29/2020
+ms.openlocfilehash: 62807ef25fe6ee70844e72c90751eb383d0ece7c
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80803190"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598436"
 ---
 # <a name="manage-logic-apps-with-visual-studio"></a>Logikai alkalmazások kezelése a Visual Studióval
 
@@ -259,7 +259,11 @@ Ha törölni szeretné a logikai alkalmazást a Azure Portal, a Cloud Explorerbe
 ![Logikai alkalmazás törlése Azure Portal](./media/manage-logic-apps-with-visual-studio/delete-logic-app-from-azure-portal.png)
 
 > [!NOTE]
-> Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat. 
+> Amikor törli a logikai alkalmazást, a rendszer nem kezdeményez új futtatásokat. A rendszer minden folyamatban lévő és függő futtatást megszakít. Ha több ezer futtatása van, a megszakítás jelentős ideig eltarthat.
+
+> [!NOTE]
+> Ha töröl és újból létrehoz egy alárendelt logikai alkalmazást, újra kell mentenie a szülő logikai alkalmazást. Az újból létrehozott alárendelt alkalmazás eltérő metaadatokkal fog rendelkezni.
+> Ha nem kívánja újra a szülő logikai alkalmazást a gyermek újbóli létrehozása után, a gyermek logikai alkalmazás hívásai sikertelenek lesznek, a "nem engedélyezett" hibaüzenettel. Ez a viselkedés a szülő-gyermek Logic apps-alkalmazásokra vonatkozik, például azokra, amelyek az integrációs fiókokban vagy az Azure functions szolgáltatásban használnak összetevőket.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

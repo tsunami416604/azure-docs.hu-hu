@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 02/23/2020
 ms.author: irenehua
-ms.openlocfilehash: fe9ae8997e05e4ab99dba66de88976342fbabe56
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 960897abca67bf2a43c4c056b8dfa8cce0119faa
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858365"
+ms.locfileid: "82871587"
 ---
 # <a name="upgrade-azure-internal-load-balancer--no-outbound-connection-required"></a>Azure belső Load Balancer frissítése – nincs szükség kimenő kapcsolatok megtételére
 Az [Azure standard Load Balancer](load-balancer-overview.md) számos funkciót és magas rendelkezésre állást kínál a zónák redundancia révén. További információ az Load Balancer SKU-ról: [összehasonlító táblázat](https://docs.microsoft.com/azure/load-balancer/skus#skus).
@@ -31,6 +31,7 @@ Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteke
 ### <a name="caveatslimitations"></a>Caveats\Limitations
 
 * A parancsfájl csak a belső Load Balancer frissítését támogatja, ha nincs szükség kimenő kapcsolatok használatára. Ha egyes virtuális gépekhez [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections) szükségesek, tekintse meg ezt az [oldalt](upgrade-InternalBasic-To-PublicStandard.md) . 
+* Az alapszintű Load Balancernak ugyanabban az erőforráscsoporthoz kell esnie, mint a háttérbeli virtuális gépeket és a hálózati adaptereket.
 * Ha a standard Load Balancer egy másik régióban lett létrehozva, akkor a régi régióban meglévő virtuális gépeket nem lehet az újonnan létrehozott standard Load Balancerhoz rendelni. A korlátozás megkerüléséhez hozzon létre egy új virtuális gépet az új régióban.
 * Ha a Load Balancer nem rendelkezik előtér-IP-konfigurációval vagy háttér-készlettel, valószínűleg a parancsfájl futtatásakor hiba lépett fel. Győződjön meg arról, hogy nem üresek.
 
@@ -47,7 +48,7 @@ Olyan Azure PowerShell-parancsfájl érhető el, amely a következő műveleteke
 
 ## <a name="download-the-script"></a>A parancsfájl letöltése
 
-Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureILBUpgrade/2.0).
+Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.powershellgallery.com/packages/AzureILBUpgrade/3.0).
 ## <a name="use-the-script"></a>A szkript használata
 
 A helyi PowerShell-környezet beállításaitól és beállításaitól függően két lehetőség közül választhat:
@@ -85,7 +86,7 @@ A szkript futtatása:
    * **newLBName: [string]: kötelező** – ez a létrehozandó standard Load Balancer neve.
 1. Futtassa a szkriptet a megfelelő paraméterek használatával. A befejezéshez öt – hét percet is igénybe vehet.
 
-    **Példa**
+    **Például**
 
    ```azurepowershell
    AzureILBUpgrade.ps1 -rgName "test_InternalUpgrade_rg" -oldLBName "LBForInternal" -newlocation "centralus" -newLbName "LBForUpgrade"

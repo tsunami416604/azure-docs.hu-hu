@@ -7,12 +7,12 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: 103e19d6e299956b5ee1ad45b577e25f9f2de1c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdb9e346b8deea71ef2af9f9f271ffa446be624e
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164032"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594338"
 ---
 # <a name="lsv2-series"></a>Lsv2 sorozat
 
@@ -27,6 +27,8 @@ A Lsv2 sorozat nagy átviteli sebességű, kis késleltetésű, közvetlenül le
 
 ACU: 150-175
 
+Feltört: támogatott
+
 Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: nem támogatott
@@ -35,14 +37,14 @@ Premium Storage gyorsítótárazás: nem támogatott
 
 Memória-megőrzési frissítések: nem támogatott
 
-| Méret | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Gyorsítótár nélküli adatlemez maximális átviteli sebessége (IOPs/MBps)<sup>4</sup> | Adatlemezek maximális száma | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
-|---|---|---|---|---|---|---|---|---|
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200   |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400   |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32 | 8 / 12800  |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 m/14000   | 48000/960  | 32 | 8/16000 + |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2,9 m/16000   | 64000/1280 | 32 | 8/16000 + |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 32 | 8/16000 + |
+| Méret | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Nem gyorsítótárazott adatlemez átviteli sebessége (IOPs/MBps)<sup>4</sup> | A nem gyorsítótárazott adatlemezek maximális adatátviteli sebessége (IOPs/MBps)<sup>5</sup>| Adatlemezek maximális száma | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
+|---|---|---|---|---|---|---|---|---|---|
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 8000/1280 | 16 | 2 / 3200   |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 16000/1280 | 32 | 4 / 6400   |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32000/1280 | 32 | 8 / 12800  |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 m/14000   | 48000/960  | 48000/2000 | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2,9 m/16000   | 64000/1280 | 64000/2000 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>6</sup> | 80 | 640 | 800 | 10x 1.92 TB | 3.8 m/20000 | 80000/1400 | 80000/2000 | 32 | 8/16000 + |
 
 <sup>1</sup> a Lsv2 sorozatú virtuális gépek szabványos SCSI-alapú ideiglenes erőforrás-lemezzel rendelkeznek az operációs rendszer lapozófájljának/swap-fájljának használatához (D: Windows rendszeren, Linuxon/dev/sdb). Ez a lemez 80 GiB tárterületet, 4 000 IOPS és 80 MBps átviteli sebességet biztosít minden 8 vCPU (például Standard_L80s_v2 biztosítja a 800 GiB-t az 40 000 IOPS és a 800 MBPS-ban). Ez biztosítja, hogy a NVMe-meghajtók teljes mértékben kiállíthatók legyenek az alkalmazások általi használatra. Ez a lemez elmúló, és az összes adatvesztés a Leállítás/felszabadítás során elvész.
 
@@ -52,7 +54,9 @@ Memória-megőrzési frissítések: nem támogatott
 
 <sup>4</sup> a Lsv2 sorozatú virtuális gépek nem biztosítanak gazdagép-gyorsítótárat az adatlemez számára, mivel az nem használja ki a Lsv2 számítási feladatait.  A Lsv2 virtuális gépek azonban az Azure ideiglenes VM operációsrendszer-lemezének beállítását (legfeljebb 30 GiB) tudják kezelni.
 
-<sup>5</sup> a több mint 64 vCPU rendelkező virtuális gépekhez a következő támogatott vendég operációs rendszerek egyike szükséges:
+<sup>5</sup> a Lsv2 sorozatú virtuális gépek egyszerre akár 30 [percig is elérhetik a lemez](linux/disk-bursting.md) teljesítményét. 
+
+<sup>6</sup> több mint 64 vCPU rendelkező virtuális gépekhez a következő támogatott vendég operációs rendszerek egyike szükséges:
 
 - Windows Server 2016 vagy újabb
 - Ubuntu 16,04 LTS vagy újabb, az Azure-ban hangolt kernel (4,15 kernel vagy újabb)

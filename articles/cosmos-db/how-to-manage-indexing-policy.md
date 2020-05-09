@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: bdd5d986752e9d80d2967a8f5fd32491154fa236
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233922"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82869928"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Indexelési szabályzatok kezelése az Azure Cosmos DB-ben
 
@@ -371,7 +371,9 @@ Egyéni indexelési házirenddel rendelkező tároló létrehozásához lásd: [
 
 Egyéni indexelési házirenddel rendelkező tároló létrehozásához lásd: [tároló létrehozása egyéni index-házirenddel a PowerShell használatával](manage-with-powershell.md#create-container-custom-index)
 
-## <a name="use-the-net-sdk-v2"></a>A .NET SDK v2 használata
+## <a name="use-the-net-sdk"></a><a id="dotnet-sdk"></a>A .NET SDK használata
+
+# <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
 A `DocumentCollection` [.net SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) objektuma `IndexingPolicy` egy olyan tulajdonságot tesz elérhetővé, amely lehetővé `IndexingMode` teszi a módosítását `IncludedPaths` , `ExcludedPaths`illetve a hozzáadását és eltávolítását.
 
@@ -401,7 +403,7 @@ ResourceResponse<DocumentCollection> container = await client.ReadDocumentCollec
 long indexTransformationProgress = container.IndexTransformationProgress;
 ```
 
-## <a name="use-the-net-sdk-v3"></a>A .NET SDK v3 használata
+# <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
 A `ContainerProperties` [.net SDK v3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) objektuma [(lásd a](create-sql-api-dotnet.md) használatról szóló rövid `IndexingPolicy` útmutatót) egy olyan tulajdonságot tesz elérhetővé, amely `IndexingMode` lehetővé teszi a módosítását, illetve a hozzáadását és eltávolítását `IncludedPaths` `ExcludedPaths`.
 
@@ -457,6 +459,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
     .Attach()
     .CreateIfNotExistsAsync();
 ```
+---
 
 ## <a name="use-the-java-sdk"></a>A Java SDK használata
 
@@ -610,7 +613,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk-v3"></a>A Python SDK v3 használata
+## <a name="use-the-python-sdk"></a>A Python SDK használata
+
+# <a name="python-sdk-v3"></a>[Python SDK v3](#tab/pythonv3)
 
 A [PYTHON SDK v3](https://pypi.org/project/azure-cosmos/) használatakor [(lásd a](create-sql-api-python.md) használatról szóló rövid útmutatót) a tároló konfigurációja szótárként van kezelve. Ebből a szótárból elérhető az indexelési házirend és annak összes attribútuma.
 
@@ -674,7 +679,7 @@ A tároló frissítése a módosításokkal
 response = client.ReplaceContainer(containerPath, container)
 ```
 
-## <a name="use-the-python-sdk-v4"></a>A Python SDK v4 használata
+# <a name="python-sdk-v4"></a>[Python SDK v4](#tab/pythonv4)
 
 A [PYTHON SDK v4](https://pypi.org/project/azure-cosmos/)használatakor a tároló konfigurációja szótárként van kezelve. Ebből a szótárból elérhető az indexelési házirend és annak összes attribútuma.
 
@@ -739,6 +744,7 @@ A tároló frissítése a módosításokkal
 ```python
 response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
+---
 
 ## <a name="next-steps"></a>További lépések
 

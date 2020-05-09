@@ -655,7 +655,7 @@
             - name: Méretezés
               items:
                 - name: Horizontális felskálázás manuálisan
-                  href: service-fabric-cluster-scale-up-down.md
+                  href: service-fabric-cluster-scale-in-out.md
                 - name: Horizontális felskálázás programozott módon
                   href: service-fabric-cluster-programmatic-scaling.md
                 - name: Elsődleges csomóponttípus vertikális felskálázása
