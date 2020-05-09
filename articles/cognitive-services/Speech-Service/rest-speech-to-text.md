@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: yinhew
-ms.openlocfilehash: 005824b0953be741f47c027d121dbe073adca3ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2f102199c14ba9611a83e3ed3b31ebcd189624d6
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82131284"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82978620"
 ---
 # <a name="speech-to-text-rest-api"></a>Diktálás REST API
 
@@ -52,7 +52,7 @@ Ezek a paraméterek szerepelhetnek a REST-kérelem lekérdezési karakterláncá
 | Paraméter | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
 | `language` | Azonosítja a felismert nyelvet. Lásd: [támogatott nyelvek](language-support.md#speech-to-text). | Kötelező |
-| `format` | Megadja az eredmény formátumát. Az `simple` elfogadott értékek: `detailed`és. Az egyszerű eredmények `RecognitionStatus`közé `DisplayText`tartoznak `Offset`a következők `Duration`:,, és. A részletes válaszok többek között megbízhatósági értékekkel és négy különböző képviselettel rendelkeznek. Az alapértelmezett beállítás: `simple`. | Optional |
+| `format` | Megadja az eredmény formátumát. Az `simple` elfogadott értékek: `detailed`és. Az egyszerű eredmények `RecognitionStatus`közé `DisplayText`tartoznak `Offset`a következők `Duration`:,, és. A részletes válaszok a megjelenítendő szöveg négy különböző ábrázolását tartalmazzák. Az alapértelmezett beállítás: `simple`. | Optional |
 | `profanity` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek `masked`olyanok, amelyek a káromkodást helyettesítik a csillagokkal, `removed`ami eltávolítja az eredményből az `raw`összes trágár elemet, vagy az eredménybe beletartozik a káromkodás is. Az alapértelmezett beállítás: `masked`. | Optional |
 | `pronunciationScoreParams` | Azokat a paramétereket adja meg, amelyekkel megjelenítheti a kiejtési pontszámokat az elismerés eredményei között, amelyek felmérik a beszédfelismerés kiejtési minőségét, pontossággal, gördülékenyen, teljességgel stb. Ez a paraméter egy Base64 kódolású JSON, amely több részletes paramétert tartalmaz. A paraméter kiépítéséhez lásd a [kiejtés értékelési paramétereit](#pronunciation-assessment-parameters) . | Optional |
 | `cid` | Ha egyéni modelleket hoz létre a [Custom Speech-portálon](how-to-custom-speech.md) , egyéni modelleket használhat a **telepítési** oldalon található **végpont-azonosítón** keresztül. Használja a **VÉGPONT azonosítóját** a `cid` lekérdezési karakterlánc paraméter argumentumaként. | Optional |
@@ -74,10 +74,10 @@ Ez a táblázat a beszédfelismerési kérelmekhez szükséges és nem kötelez�
 
 A hang a HTTP `POST` -kérelem törzsében lesz elküldve. Ennek a táblázatnak az egyik formátumában kell szerepelnie:
 
-| Formátum | Codec | Sávszélességű | Mintavételezési arány  |
-|--------|-------|---------|--------------|
-| WAV    | PCM   | 16 bites  | 16 kHz, monó |
-| VORBIS    | OPUS  | 16 bites  | 16 kHz, monó |
+| Formátum | Codec | Átviteli sebesség | Mintavételezési arány  |
+|--------|-------|----------|--------------|
+| WAV    | PCM   | 256 kbps | 16 kHz, monó |
+| VORBIS    | OPUS  | 256 kpbs | 16 kHz, monó |
 
 >[!NOTE]
 >A fenti formátumok a Speech Service REST API és WebSocket szolgáltatásán keresztül támogatottak. A [SPEECH SDK](speech-sdk.md) jelenleg a WAV formátumot támogatja a PCM-kodekkel és [más formátumokkal](how-to-use-codec-compressed-audio-input-streams.md).
@@ -200,9 +200,10 @@ A `RecognitionStatus` mező a következő értékeket tartalmazhatja:
 > [!NOTE]
 > Ha a hang csak a káromkodásból áll, és a `profanity` lekérdezési paraméter értéke `remove`, akkor a szolgáltatás nem ad vissza beszédfelismerési eredményt.
 
-A `detailed` formátum ugyanazokat az adatfájlokat tartalmazza `simple` , mint a formátum `NBest`, valamint az azonos felismerési eredmény alternatív értelmezéseit tartalmazó lista. Ezek az eredmények a legvalószínűbbtől a legkevésbé valószínűtől lesznek rangsorolva. Az első bejegyzés ugyanaz, mint a fő felismerési eredmény.  A `detailed` formátum használatakor a `DisplayText` a `NBest` lista minden `Display` eredményének megfelelően van megadva.
+A `detailed` formátum a felismert eredmények további formáit is tartalmazza.
+A `detailed` formátum használatakor a `DisplayText` a `NBest` lista minden `Display` eredményének megfelelően van megadva.
 
-A lista minden objektuma a `NBest` következőket tartalmazza:
+A `NBest` listában szereplő objektum a következőket tartalmazhatja:
 
 | Paraméter | Leírás |
 |-----------|-------------|
@@ -244,13 +245,6 @@ Egy tipikus válasz az `detailed` elismerésre:
         "ITN" : "remind me to buy 5 pencils",
         "MaskedITN" : "remind me to buy 5 pencils",
         "Display" : "Remind me to buy 5 pencils.",
-      },
-      {
-        "Confidence" : "0.54",
-        "Lexical" : "rewind me to buy five pencils",
-        "ITN" : "rewind me to buy 5 pencils",
-        "MaskedITN" : "rewind me to buy 5 pencils",
-        "Display" : "Rewind me to buy 5 pencils.",
       }
   ]
 }

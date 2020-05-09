@@ -1,5 +1,5 @@
 ---
-title: Rövid útmutató – Azure CDN-profil és -végpont létrehozása | Microsoft Docs
+title: Rövid útmutató – Azure CDN profil és végpont létrehozása
 description: Ez a rövid útmutató egy új CDN-profil és -végpont létrehozásán keresztül ismerteti az Azure CDN aktiválását.
 services: cdn
 documentationcenter: ''
@@ -12,82 +12,76 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 05/24/2018
+ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: e11e6e4cc0194991b322d591049d7156b9979c45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81254036"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996260"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
-Ebben a gyors útmutatóban egy új CDN-profil és -végpont létrehozásán keresztül engedélyezi az Azure Content Delivery Network (CDN) aktiválását. Miután létrehozott egy profilt és egy végpontot, elindíthatja a tartalomszolgáltatást az ügyfelek felé.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Ebben a rövid útmutatóban egy új CDN-profil létrehozásával engedélyezi az Azure Content Delivery Network (CDN) létrehozását, amely egy vagy több CDN-végpont gyűjteménye. Miután létrehozott egy profilt és egy végpontot, elindíthatja a tartalomszolgáltatást az ügyfelek felé.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ehhez a gyors útmutatóhoz rendelkeznie kell egy már létrehozott *mystorageacct123* nevű tárfiókkal, amelyet a forrásgazdanévként használ. További információ: [Azure Storage-fiók integrálása Azure CDNokkal](cdn-create-a-storage-account-with-cdn.md).
 
-## <a name="log-in-to-the-azure-portal"></a>Bejelentkezés az Azure Portalra
-Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy *cdnstorageacct123*nevű Azure Storage-fiók, amelyet a forrás állomásneve használ. A követelmény teljesítéséhez tekintse meg az [Azure Storage-fiók integrálása Azure CDNkal](cdn-create-a-storage-account-with-cdn.md)című témakört.
+
+## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
+
+Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
 ## <a name="create-a-new-cdn-endpoint"></a>Új CDN-végpont létrehozása
 
-A CDN-profil létrehozását követően használhatja azt egy végpont létrehozására.
+Miután létrehozott egy CDN-profilt, a használatával végpontot hozhat létre.
 
-1. Az Azure Portalon válassza ki a létrehozott CDN-profilt az irányítópulton. Ha nem találja, válassza a **Minden szolgáltatás**, majd a **CDN-profilok** elemet. A **CDN-profilok** oldalon válassza ki a használni kívánt profilt. 
+1. Az Azure Portalon válassza ki a létrehozott CDN-profilt az irányítópulton. Ha nem találja, megnyithatja azt az erőforráscsoportot, amelyben létrehozta, vagy használhatja a portál felső részén található keresősávt, adja meg a profil nevét, és válassza ki a profilt az eredmények közül.
    
-    Megjelenik a CDN-profiloldal.
-
-2. Válassza ki a **Végpont** beállítását.
+1. A CDN-profil lapon válassza a **+ végpont**lehetőséget.
    
     ![CDN-profil](./media/cdn-create-new-endpoint/cdn-select-endpoint.png)
    
     Megjelenik a **Végpont hozzáadása** panel.
 
-3. A végpont beállításaihoz a következő táblázatban megadott értékeket használja:
+3. Adja meg a következő beállítási értékeket:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | **Név** | Adja meg a *my-endpoint-123* nevet végpontja gazdaneveként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartományi _ &lt;végpont neve&gt;_. azureedge.net.|
+    | **Név** | Adja meg a *CDN-Endpoint-123* értéket a végponti állomásnévhez. Ennek a névnek globálisan egyedinek kell lennie az Azure-ban. Ha már használatban van, adjon meg másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartomány _ &lt;végpontjának neve&gt;_. azureedge.net.|
     | **Forrás típusa** | Válassza a **tárterület**lehetőséget. | 
-    | **Forrás gazdaneve** | Adja meg a *mystorageacct123.blob.core.windows.net* nevet gazdanévként. Ennek a névnek globálisan egyedinek kell lennie. Ha már használatban van, megadhat egy másik nevet. |
+    | **Forrás gazdaneve** | Válassza ki a legördülő listából a használni kívánt Azure Storage-fiók állomásnevét, például *cdnstorageacct123.blob.Core.Windows.net*. |
     | **Forrás elérési útvonala** | Hagyja üresen. |
-    | **Forrás állomásfejléce** | Hagyja meg az alapértelmezetten létrehozott értéket. |  
+    | **Forrás állomásfejléce** | Hagyja meg az alapértelmezett értéket (amely a Storage-fiók állomásneve). |  
     | **Protocol (Protokoll)** | Hagyja bejelölve az alapértelmezett **HTTP-** és **HTTPS-** beállításokat. |
     | **Forrásport** | Hagyja meg az alapértelmezett portértéket. | 
     | **Optimalizálva a következőre:** | Hagyja meg az alapértelmezett kijelölést, az **Általános webes kézbesítést**. |
 
     ![Végpont hozzáadása panel](./media/cdn-create-new-endpoint/cdn-add-endpoint.png)
 
-3. Új végpont létrehozásához kattintson a **Hozzáadás** gombra.
-   
-   A végpont a létrehozás után megjelenik a profil végpontjainak listájában.
+3. Új végpont létrehozásához kattintson a **Hozzáadás** gombra. A végpont a létrehozás után megjelenik a profil végpontjainak listájában.
     
    ![CDN-végpont](./media/cdn-create-new-endpoint/cdn-endpoint-success.png)
     
-   Mivel némi időre van szükség a regisztráció propagálásához, a végpont nem vehető használatba azonnal: 
-   - A **Microsoft Azure CDN Standard** típusú profilok propagálása általában 10 perc alatt fejeződik be. 
-   - Az **Akamai Azure CDN Standard** típusú profilok propagálása általában egy percen belül befejeződik. 
-   - A **Verizon Azure CDN Standard** és a **Verizon Azure CDN Premium** típusú profilok propagálása általában 90 percen belül fejeződik be. 
+   A végpont propagálásához szükséges idő a profil létrehozásakor kiválasztott árképzési szinttől függ. A **standard szintű Akamai** általában egy percen belül befejeződik, a **standard Microsoft** 10 perc, a **standard Verizon** és a **prémium Verizon** pedig akár 90 perc is.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
 A korábbi lépésekben létrehozott egy CDN-profilt és egy végpontot egy erőforráscsoportban. Mentse ezeket az erőforrásokat, ha a [Következő lépésekre](#next-steps) szeretne lépni, és meg szeretné tudni, hogyan adhat egyéni tartományt a végpontjához. Ugyanakkor ha a jövőben nem várható ezen erőforrások használata, törölheti őket az erőforráscsoport törlésével, így elkerülheti a további díjakat:
 
-1. Az Azure Portal bal oldali menüjében válassza az **Erőforráscsoportok**, majd a **my-resource-group-123** elemet.
+1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok** lehetőséget, majd válassza a **CDNQuickstart-RG**elemet.
 
-2. Az **Erőforráscsoport** oldalon válassza az **Erőforráscsoport törlése** parancsot, adja meg a *my-resource-group-123* nevet a mezőben, majd válassza a **Törlés** elemet.
-
-    Ezzel törli a gyors útmutatóban létrehozott erőforráscsoportot, profilt és a végpontot.
+2. Az **erőforráscsoport** lapon válassza az **erőforráscsoport törlése**elemet, írja be a *CDNQuickstart-RG* karakterláncot a szövegmezőbe, majd válassza a **Törlés**lehetőséget. Ez a művelet törli az ebben a rövid útmutatóban létrehozott erőforráscsoportot, profilt és végpontot.
 
 ## <a name="next-steps"></a>További lépések
-Az alábbi útmutatóból megtudhatja, hogyan adhat hozzá egyéni tartományt CDN-végpontjához:
+
+> [!div class="nextstepaction"]
+> [Oktatóanyag: a CDN használata a webalkalmazások statikus tartalmának lekérdezéséhez](cdn-add-to-web-app.md)
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Egyéni tartomány hozzáadása az Azure CDN-végponthoz](cdn-map-content-to-custom-domain.md)
-
-

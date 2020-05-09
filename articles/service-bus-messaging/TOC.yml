@@ -72,6 +72,9 @@
   items:
     - name: Service Bus-példák
       href: service-bus-samples.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Prémium szintű üzenettovábbítás

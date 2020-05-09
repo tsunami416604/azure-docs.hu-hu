@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00a98fdeb4b8febbcb9d1183fabffc7298cc9e4c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 083bad1aa9abd2cb8efe3520b0acecc9ab00853c
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81770723"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983873"
 ---
 # <a name="azure-synapse-analytics-workspace-preview-frequently-asked-questions"></a>Azure szinapszis Analytics (munkaterület előzetes verziója) – gyakori kérdések
 
@@ -94,9 +94,9 @@ A: az adatforgalom lehetővé teszi, hogy az adatmérnökök programkód írása
 
 A: a teljes körű egyszeri bejelentkezési élmény egy fontos hitelesítési folyamat a szinapszis Analyticsben. Az identitások teljes HRE-integráción keresztül történő kezelése és átadása kötelező.
 
-### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adlsg2"></a>K: Hogyan hozzáférhet a fájlokhoz és mappákhoz a ADLSg2
+### <a name="q-how-do-i-get-access-to-files-and-folders-in-the-adls-gen2"></a>K: Hogyan hozzáférhet a fájlokhoz és mappákhoz a ADLS Gen2
 
-A: a fájlokhoz és mappákhoz való hozzáférés jelenleg a ADLSg2 használatával felügyelhető. További információ: [Data Lake Storage hozzáférés-vezérlése](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+A: a fájlokhoz és mappákhoz való hozzáférés jelenleg ADLS Gen2 felügyelhető. További információ: [Data Lake Storage hozzáférés-vezérlése](../storage/blobs/data-lake-storage-access-control.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="q-can-i-use-third-party-business-intelligence-tools-to-access-azure-synapse-analytics"></a>K: használhatok harmadik féltől származó üzleti intelligencia eszközöket az Azure szinapszis Analytics eléréséhez
 
