@@ -1,17 +1,17 @@
 ---
-title: Szolgáltatások közötti hitelesítés – Data Lake Storage Gen1 – REST API
+title: REST-szolgáltatás – szolgáltatás hitelesítése – Data Lake Storage Gen1 – Azure
 description: Megtudhatja, hogyan valósítható meg a szolgáltatás és a szolgáltatás közötti hitelesítés Azure Data Lake Storage Gen1 és Azure Active Directory a REST API használatával.
 author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 59d0bf20b16beda47d76e6a9940ac9fa4436da3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7d0ec39e9f0f294324eb18337f4234ddaa63e2c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73904514"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82688141"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 használatával REST API
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a REST API a szolgáltatáso
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 * **Hozzon létre egy Azure Active Directory "web" alkalmazást**. A Data Lake Storage Gen1 Azure Active Directory használatával kell végrehajtania a [szolgáltatások közötti hitelesítéshez](data-lake-store-service-to-service-authenticate-using-active-directory.md)szükséges lépéseket.
 

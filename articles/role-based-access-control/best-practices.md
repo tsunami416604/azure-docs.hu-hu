@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 04/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc86dd488ff9e8649ae80f4768941791dd37fce6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 053e86f3493c7a11a3cbbaad0871e45345697878
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726773"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735334"
 ---
 # <a name="best-practices-for-azure-rbac"></a>Ajánlott eljárások az Azure RBAC
 
@@ -26,13 +26,13 @@ Ez a cikk az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) haszn�
 
 ## <a name="only-grant-the-access-users-need"></a>Csak a hozzáférést igénylő felhasználóknak kell megadnia
 
-Az Azure RBAC segítségével elkülönítheti a feladatait a csapaton belül, és csak a felhasználók számára biztosíthatja a feladatok elvégzéséhez szükséges hozzáférés mennyiségét. Ahelyett, hogy mindenki számára korlátlan engedélyeket adna az Azure-előfizetéshez vagy -erőforrásokhoz, az egyes műveletekhez hatókört adhat meg.
+Az Azure RBAC használata lehetővé teszi, hogy elkülönítse a kötelességeket a csapaton belül, valamint csak olyan mértékű hozzáférést biztosítson, amelyre a felhasználóknak a feladataik elvégzéséhez szükségük van. Ahelyett, hogy mindenki számára korlátlan engedélyeket adna az Azure-előfizetéshez vagy -erőforrásokhoz, az egyes műveletekhez hatókört adhat meg.
 
-A hozzáférés-vezérlési stratégia megtervezésekor ajánlott eljárásként csak a munkájuk elvégzéséhez minimálisan szükséges jogosultságokat biztosítsa a felhasználók számára. A következő ábrán az RBAC használatának egy javasolt mintája látható.
+A hozzáférés-vezérlési stratégia megtervezésekor ajánlott eljárásként csak a munkájuk elvégzéséhez minimálisan szükséges jogosultságokat biztosítsa a felhasználók számára. Az alábbi ábrán egy javasolt minta látható az Azure RBAC használatához.
 
-![RBAC és minimális jogosultságok](./media/best-practices/rbac-least-privilege.png)
+![Az Azure RBAC és a legalacsonyabb jogosultság](./media/best-practices/rbac-least-privilege.png)
 
-További információ a szerepkör-hozzárendelések hozzáadásáról: [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](role-assignments-portal.md).
+További információ a szerepkör-hozzárendelések hozzáadásáról: [Azure szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md).
 
 ## <a name="limit-the-number-of-subscription-owners"></a>Az előfizetés-tulajdonosok számának korlátozása
 

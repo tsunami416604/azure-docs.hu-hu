@@ -5,20 +5,20 @@ author: bandersmsft
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/22/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: 1b639da3494c0527141347ca61e77980d29a59ea
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: feee7475dcadc6d06693d9e60020097f8dc9149c
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80135555"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628605"
 ---
 # <a name="determine-what-reservation-to-purchase"></a>A megvásárolni kívánt foglalás kiválasztása
 
 Az Azure Databricksen kívül minden foglalási díj óraalapú. A foglalásokat az alapján érdemes megvásárolni, hogy általában milyen használat jellemzi a rendszerét. Számos módon meg lehet határozni, hogy milyen foglalás megvásárlása mellett érdemes dönteni, és ez a cikk pontosan ehhez nyújt segítséget.
 
-Ha a jellemző használathoz képest nagyobb kapacitást vásárol, az kihasználatlan foglalást eredményez. A kihasználatlanságot mindig érdemes elkerülnie, ha módjában áll. A fel nem használt, lefoglalt kapacitás nem adódik hozzá a következő óra kapacitásához.  A lefoglalt mennyiséget meghaladó használatra drágább, használatalapú díjak vonatkoznak.
+Ha a jellemző használathoz képest nagyobb kapacitást vásárol, az kihasználatlan foglalást eredményez. A kihasználatlanságot mindig érdemes elkerülnie, ha módjában áll. A fel nem használt, lefoglalt kapacitás nem adódik hozzá a következő óra kapacitásához. A lefoglalt mennyiséget meghaladó használatra drágább, használatalapú díjak vonatkoznak.
 
 ## <a name="analyze-usage-data"></a>A használati adatok elemzése
 
@@ -40,11 +40,11 @@ Hagyja figyelmen kívül a napi 24 óránál kevesebb használati idővel rendel
 
 Ha a példányméretet családi szinten szeretné elemezni, akkor a [https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv](https://isfratio.blob.core.windows.net/isfratio/ISFRatio.csv) oldalon elérheti a példányméret rugalmassági értékeit. Az elemzéshez vonja össze ezeket az értékeket az adataival. A példányok méretrugalmasságára vonatkozó további információkért tekintse meg [a Reserved VM Instances virtuális gépeinek méretrugalmasságát](../../virtual-machines/windows/reserved-vm-instance-size-flexibility.md) ismertető cikket.
 
-### <a name="analyze-usage-for-a-sql-database-reserved-instance-purchase"></a>Használat elemzése a fenntartott SQL Database-példányok vásárlásához
+### <a name="analyze-usage-for-an-azure-synapse-analytics-reserved-instance-purchase"></a>Használat elemzése fenntartott Azure Synapse Analytics-példányok vásárlásához
 
-A lefoglalt kapacitás az SQL Database-adatbázisok virtuális magjainak számítási díjszabására vonatkozik. Nem vonatkozik a DTU-alapú díjszabásra, az SQL-licencek költségeire, illetve a nem számítási költségekre.
+A lefoglalt kapacitás az Azure Synapse Analytics DWU-díjszabására vonatkozik. Nem vonatkozik az Azure Synapse Analytics-licencek költségeire, illetve a nem számítási költségekre.
 
-A jogosult SQL-használat szűkítéséhez alkalmazza a következő szűrőket a használati adatokon:
+A jogosult használat szűkítéséhez alkalmazza a következő szűrőket a használati adatokon:
 
 
 - A **MeterCategory** kategóriát szűrje az **SQL Database** elemre.
@@ -60,22 +60,22 @@ Ez az adat az alábbiak általános használatáról biztosít információkat:
 - Generáció. Például 5. generáció.
 - Resource Location (Erőforrás helye)
 
-### <a name="analysis-for-sql-data-warehouse"></a>Elemzés az SQL Data Warehouse-hoz
+### <a name="analysis-for-azure-synapse-analytics"></a>Elemzés az Azure Synapse Analyticshez
 
-A fenntartott kapacitás az SQL Data Warehouse DWU-használatára vonatkozik, és 100 DWU-s növekményekben vásárolható meg. A jogosult SQL-használat szűkítéséhez alkalmazza a következő szűrőket a használati adatokon:
+A fenntartott kapacitás az Azure Synapse Analytics DWU-használatára vonatkozik, és 100 DWU-s növekményekben vásárolható meg. A jogosult használat szűkítéséhez alkalmazza a következő szűrőket a használati adatokon:
 
 - A **MeterName** nevet szűrje a **100 DWU** elemre.
 - A **MeterSubCategory** kategóriát szűrje a **Számításra optimalizált Gen2** elemre.
 
-A **ResourceLocation** mezőben határozza meg az SQL DW használatát egy régión belül.
+A **ResourceLocation** mezőben határozza meg az Azure Synapse Analytics használatát egy régión belül.
 
-Az SQL Data Warehouse-használat vertikálisan fel- és leskálázódhat a nap folyamán. Vegye fel a kapcsolatot az SQL Data Warehouse-példányt felügyelő csapattal, hogy többet tudjon meg a jellemző használati mutatókról.
+Az Azure Synapse Analytics-használat vertikálisan fel- és leskálázódhat a nap folyamán. Vegye fel a kapcsolatot az Azure Synapse Analytics-példányt felügyelő csapattal, hogy többet is megtudjon a jellemző használati mutatókról.
 
-Látogasson el az Azure Portal Foglalások területére, és vásároljon annyiszor 100 DWU fenntartott SQL Data Warehouse-kapacitást, amennyire szüksége van.
+Látogasson el az Azure Portal Foglalások területére, és vásároljon annyiszor 100 DWU-nyi fenntartott Azure Synapse Analytics-kapacitást, amennyire szüksége van.
 
 ## <a name="reservation-purchase-recommendations"></a>Foglalásvásárlási javaslatok
 
-A foglalásvásárlási javaslatokat az elmúlt 7, 30, illetve 60 nap órákra bontott használati adatainak elemzéséből számítjuk ki. Az Azure kiszámítja, hogy ha lett volna, milyen költségekkel járt volna a foglalás, és összehasonlítja az érintett időtartamban aktuálisan fizetett használat alapú költségekkel. A számítás során az adott időkereten belül használt összes mennyiséget figyelembe veszi. Olyan mennyiséget javasol, amely a lehető legnagyobb mértékű megtakarítással jár. 
+A foglalásvásárlási javaslatokat az elmúlt 7, 30, illetve 60 nap órákra bontott használati adatainak elemzéséből számítjuk ki. Az Azure kiszámítja, hogy ha lett volna, milyen költségekkel járt volna a foglalás, és összehasonlítja az érintett időtartamban aktuálisan fizetett használat alapú költségekkel. A számítás során az adott időkereten belül használt összes mennyiséget figyelembe veszi. Olyan mennyiséget javasol, amely a lehető legnagyobb mértékű megtakarítással jár.
 
 Előfordulhat például, hogy az idő nagy részében 500 virtuális gépet használ, de időnként ez a szám eléri a 700-at is. Ebben az esetben az Azure mind az 500, mind a 700 virtuális géphez kiszámítja a megtakarítást. Mivel 700 virtuális gép használatára csak időnként kerül sor, a javaslatszámítás az 500 virtuálisgép-foglalás megvásárlása esetén elérhető maximális megtakarításra tesz javaslatot.
 

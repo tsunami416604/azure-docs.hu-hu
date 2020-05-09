@@ -1,31 +1,21 @@
 ---
 title: Assessment Tools hozzáadása a Azure Migrate
 description: Megtudhatja, hogyan adhat hozzá értékelési eszközöket a Azure Migrateban.
-author: rayne-wiselman
-ms.service: azure-migrate
-ms.topic: article
-ms.manager: carmonm
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 64af78abd8f82b41d4a03fbb56c96e3038cef5a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.date: 04/26/2020
+ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185914"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82901066"
 ---
 # <a name="add-assessment-tools"></a>Felmérőeszközök hozzáadása
 
-Ez a cikk azt ismerteti, hogyan adhat hozzá értékelési eszközöket a [Azure Migrateban](migrate-overview.md).
+Ez a cikk azt ismerteti, hogyan adhat hozzá értékelési eszközöket a [Azure Migrateban](migrate-overview.md). 
 
-Azure Migrate az Azure-ba való áttelepítéshez és az Azure-ba való Migrálás eszközeinek központja. Azure Migrate eszközöket, valamint más eszközöket és független szoftvergyártói ajánlatokat is tartalmaz.
-
-Ha szeretne felvenni egy értékelési eszközt, és még nem rendelkezik Azure Migrate-projekttel, kövesse ezt a [cikket](how-to-add-tool-first-time.md).
-
-## <a name="select-a-tool"></a>Eszköz kiválasztása
-
-Ha a kiértékeléshez nem Azure Migrate eszközt választ, kezdje a licenc beszerzésével, vagy regisztráljon az ingyenes próbaverzióra az eszköz házirendjének megfelelően. Az eszközökhöz lehetőség van a Azure Migratehoz való kapcsolódásra. Az eszköz Azure Migrate való összekapcsolásához kövesse az utasításokat és a dokumentációt. [További](migrate-services-overview.md) információ az eszközökről.
-
+- Ha szeretne felvenni egy értékelési eszközt, és még nem rendelkezik Azure Migrate-projekttel, kövesse ezt a [cikket](how-to-add-tool-first-time.md).-
+- Ha felvettek egy ISV-eszközt, vagy az értékeléshez, [kövesse a lépéseket](prepare-isv-movere.md), hogy felkészüljön az eszközre.
 
 ## <a name="select-an-assessment-scenario"></a>Értékelési forgatókönyv kiválasztása
 

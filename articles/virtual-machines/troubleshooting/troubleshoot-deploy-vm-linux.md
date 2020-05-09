@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5a8a58a3935b7cd5efb8565f7e3278ccaae4f4de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cf8fb383625ec2752264d6e5a70d8625f06689fc
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921436"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628299"
 ---
 # <a name="troubleshoot-deploying-linux-virtual-machine-issues-in-azure"></a>Linux rendszerű virtuális gépek Azure-beli üzembe helyezése során előforduló problémák elhárítása
 
@@ -56,13 +56,13 @@ A Linux GPU-támogatás jelenleg csak az Ubuntu Server 16,04 LTS rendszert futta
 
 ## <a name="my-drivers-are-missing-for-my-linux-n-series-vm"></a>A Linux N sorozatú virtuális gépek illesztőprogramjai hiányoznak
 
-A Linux-alapú virtuális gépek illesztőprogramjai [itt](../linux/n-series-driver-setup.md)találhatók. 
+A Linux-alapú virtuális gépek illesztőprogramjainak telepítésére vonatkozó utasítások [itt](../sizes-gpu.md#supported-operating-systems-and-drivers)találhatók.
 
 ## <a name="i-cant-find-a-gpu-instance-within-my-n-series-vm"></a>Nem találom az N sorozatú virtuális gépen található GPU-példányt
 
-A Windows Server 2016 vagy a Windows Server 2012 R2 rendszerű Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához a telepítés után minden virtuális gépre telepítenie kell az NVIDIA grafikus illesztőprogramokat. Az illesztőprogram telepítési információi a [Windows rendszerű virtuális gépek](../windows/n-series-driver-setup.md) és a [linuxos virtuális gépek](../linux/n-series-driver-setup.md)számára érhetők el.
+Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához az üzembe helyezést követően minden virtuális gépen telepítenie kell a grafikus illesztőprogramokat. Az illesztőprogram beállítási információi [itt](../sizes-gpu.md#supported-operating-systems-and-drivers)érhetők el.
 
-## <a name="is-n-series-vms-available-in-my-region"></a>Az N sorozatú virtuális gépek elérhetők a saját régióban?
+## <a name="are-n-series-vms-available-in-my-region"></a>Az N sorozatú virtuális gépek elérhetők a saját régióban?
 
 A rendelkezésre álló termékek elérhetőségét a [régiók táblázata alapján](https://azure.microsoft.com/regions/services), a díjszabást pedig [itt](https://azure.microsoft.com/pricing/details/virtual-machines/series/#n-series)tekintheti meg.
 
