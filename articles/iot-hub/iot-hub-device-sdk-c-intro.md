@@ -11,12 +11,12 @@ ms.author: robinsh
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: b9b27bb142cb729536a3b7a561ed8b8ff5e0ccf5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2c2a1d817dbe88bebc36f66b441e609b5faea2a
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731310"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629354"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C-hez készült Azure IoT eszközoldali SDK
 
@@ -88,7 +88,7 @@ Az Eszközkezelő eszköz az Azure IoT Service librarys használatával különf
 
 Ha nem ismeri az Eszközkezelő eszközt, az alábbi eljárás azt ismerteti, hogyan lehet eszköz hozzáadására és eszköz-kapcsolódási karakterlánc beszerzésére használni.
 
-1. Az Eszközkezelő eszköz telepítéséhez tekintse meg [a Device Explorer IoT hub eszközökhöz való használatát](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)ismertető témakört.
+1. Az Eszközkezelő eszköz telepítéséhez tekintse meg [a Device Explorer IoT hub eszközökhöz való használatát](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/)ismertető témakört.
 
 1. A program futtatásakor ezt a felületet látja:
 

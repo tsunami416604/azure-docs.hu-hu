@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: curtand
-ms.openlocfilehash: b68e7b517ddaa9b2aaef00cf87d5b6e63871654b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c828878506ee69e90945d1f4be07eb81541b9757
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77064019"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82625408"
 ---
 # <a name="view-and-search-your-recent-sign-in-activity-from-the-my-sign-ins-preview-page"></a>A legutóbbi bejelentkezési tevékenység megtekintése és keresése a saját bejelentkezések (előzetes verzió) lapról
 
@@ -30,7 +30,7 @@ A legutóbbi munkahelyi vagy iskolai fiók bejelentkezési tevékenységeit a **
 
 ## <a name="view-your-recent-sign-in-activity"></a>A legutóbbi bejelentkezési tevékenység megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ lapra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myaccount.microsoft.com/ lapra.
 
 2. A bal oldali navigációs ablaktáblán válassza a **saját bejelentkezések (előzetes verzió)** lehetőséget, vagy a **saját bejelentkezések (előzetes verzió)** blokkból válassza a **Legutóbbi tevékenység áttekintése** hivatkozást.
 

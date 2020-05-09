@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 04/06/2020
+ms.date: 04/30/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: c56db99b056d4b1e9b7dd75bc2f21bf582ee2ab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d039a7e21ac1ef6415cc363201c9754b47503add
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756832"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82627772"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -27,8 +27,9 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
 
-| Kérdés | Megoldás |
-| -------- | -------- |
+| Kérdés | Válasz |
+| -------- | ------ |
+| Az eszköz regisztrálása egyetért a vállalat vagy a szolgáltatás hozzáférésének megadásával az eszközön? | Az eszköz regisztrálása biztosítja az eszköz hozzáférését a szervezet szolgáltatásaihoz, és nem teszi lehetővé a szervezet számára az eszköz hozzáférését. |
 | Képernyőképeket készíthetek az OTP-kódokról az Android Microsoft Authenticatoron? | A Microsoft Authenticator Android kiadási 6.2003.1704 alapértelmezés szerint a hitelesítő képernyőképének elvégzése után az összes OTP-kód rejtve marad a felhasználók jobb megvédése érdekében. Ha egy felhasználó szeretné megtekinteni az egyszeri jelszavas kódokat a képernyőképeken, vagy más alkalmazások számára is lehetővé teszi a hitelesítő képernyőjének rögzítését, a "képernyőfelvétel" beállítás engedélyezésével a hitelesítő alkalmazásban, majd az alkalmazás újraindításakor. |
 | Milyen adattárakat tárol a hitelesítő az Ön nevében, és hogyan törölhetem? | A Microsoft Authenticator alkalmazás háromféle típusú információt gyűjt:<ul><li>A fiók hozzáadásakor megadott fiókadatok. Ezeket az adatvesztést a fiók eltávolításával távolíthatja el.</li><li>A csak az alkalmazásban maradó diagnosztikai naplófájlok, amíg be nem jelöli a **naplók küldése** lehetőséget az alkalmazás **Súgó** menüjében a naplók a Microsoftnak való elküldéséhez. Ezek a naplófájlok személyes adatokat tartalmaznak, például az e-mail-címeit (például: alain@contoso.com), a kiszolgálókat, az IP-címeket és az eszközök adatait (például az eszköz nevét és az operációs rendszer verzióját), az alkalmazással kapcsolatos problémák elhárításához szükséges információkra korlátozva. Ezeket a naplófájlokat bármikor megtekintheti az alkalmazásban az összegyűjtött adatok megtekintéséhez. A naplófájlok elküldésekor a hitelesítési alkalmazás-mérnökök felhasználhatják az ügyfél által jelentett problémák elhárítására.</li><li>Nem személyes azonosításra alkalmas használati adatok, például "a fiók hozzáadása a folyamathoz/sikeres Hozzáadás fiókhoz" vagy "értesítés jóváhagyva". Ezek az információk szerves részét képezik a mérnöki döntéseknek, és segítenek meghatározni, hogy mely funkciók fontosak az Ön számára, és hogy a fejlesztéseket hogyan kell elvégezni az alkalmazások frissítéseinek formájában. Az alkalmazás első indításakor tekintse meg az adatgyűjtésről szóló értesítést, és tájékoztassa arról, hogy az alkalmazás **beállításai** oldalon ki lehet kapcsolni. Bármikor engedélyezheti vagy letilthatja ezt a beállítást.</li></ul> |
 | Mik a kódok az alkalmazásban? | Amikor megnyitja a Microsoft Authenticator alkalmazást, a hozzáadott fiókokat csempévé fogja látni.<li>Egy iOS-eszközön a munkahelyi vagy iskolai fiókjai és a személyes Microsoft-fiókjai hat vagy nyolc számjegyből állhatnak a fiók teljes képernyős nézetében (a fiók csempére koppintva).<br><br>![Fiókok képernyője az alkalmazásban](./media/user-help-auth-app-faq/auth-app-accounts.png)<li>Az iOS-eszközökön és az Android-eszközökön lévő összes fiókon lévő más fiókok esetében az alkalmazás fiókok lapján egy hat vagy nyolc számjegyből álló szám jelenik meg. Ezeket a kódokat ellenőrzésként fogja használni, hogy Ön kinek szól. Miután bejelentkezett felhasználónevével és jelszavával, írja be a fiókhoz társított ellenőrző kódot. Ha például a Katy-fiókjába jelentkezik be, és iOS-eszközt használ, koppintson a fiók csempére, majd az ellenőrző kód segítségével ellenőrizze személyazonosságát. Ha Ön a Katyba jelentkezik be az Outlook-fiókjába, ugyanazokat a lépéseket kell követnie.<br><br>![Miután megkoppintott a fiók csempére az alkalmazásban](./media/user-help-auth-app-faq/katy-signin.png)<br><br>Miután a contoso-fiók csempére koppintott, a Katy látja az ellenőrző kódot a teljes képernyős nézetben, és 895823 beírja a bejelentkezés befejezéséhez.<br><br>![ellenőrző kód képernyője az alkalmazásban](./media/user-help-auth-app-faq/verification-code.png) |

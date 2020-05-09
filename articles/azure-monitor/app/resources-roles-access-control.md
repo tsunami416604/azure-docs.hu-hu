@@ -3,12 +3,12 @@ title: Erőforrások, szerepkörök és hozzáférés-vezérlés az Azure Applic
 description: A szervezet adatai tulajdonosai, közreműködői és olvasói.
 ms.topic: conceptual
 ms.date: 02/14/2019
-ms.openlocfilehash: 1e57af269c4052d0dcd4a8f7970ca23017024299
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee14fee66e3aa6f4e8d999f6f98debe361387515
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473132"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628237"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Erőforrások, szerepkörök és hozzáférés-vezérlés a Application Insightsban
 
@@ -40,11 +40,6 @@ Először is néhány definíció:
 ## <a name="control-access-in-the-resource-group"></a><a name="access"></a>Hozzáférés vezérlése az erőforráscsoporthoz
 
 Fontos tisztában lenni azzal, hogy az alkalmazáshoz létrehozott erőforráson kívül a riasztások és a webes tesztek is külön rejtett erőforrásokkal rendelkeznek. Ezek ugyanahhoz az [erőforráscsoporthoz](#resource-group) vannak csatolva, mint a Application Insights erőforrás. Előfordulhat, hogy más Azure-szolgáltatásokat is elhelyez, például webhelyeket vagy tárhelyet.
-
-Az ehhez az erőforrásokhoz való hozzáférés szabályozása érdekében a következőket javasoljuk:
-
-* Hozzáférés vezérlése az **erőforráscsoport vagy az előfizetés** szintjén.
-* Rendelje hozzá a **Application Insights Component közreműködő** szerepkört a felhasználókhoz. Ez lehetővé teszi a webes tesztek, riasztások és Application Insights erőforrások szerkesztését anélkül, hogy hozzáférést kellene biztosítani a csoport többi szolgáltatásához.
 
 ## <a name="to-provide-access-to-another-user"></a>Hozzáférés biztosítása egy másik felhasználó számára
 

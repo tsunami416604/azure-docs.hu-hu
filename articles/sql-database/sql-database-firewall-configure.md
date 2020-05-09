@@ -1,28 +1,27 @@
 ---
 title: IP-tűzfalszabályok
-description: Kiszolgálói szintű IP-tűzfalszabályok konfigurálása SQL-adatbázishoz vagy SQL Data Warehouse tűzfalhoz. Az adatbázis-szintű IP-tűzfalszabályok hozzáférésének kezelése és konfigurálása egyetlen vagy készletezett adatbázishoz.
+description: Kiszolgálói szintű IP-tűzfalszabályok konfigurálása egy SQL-adatbázishoz vagy az Azure szinapszis Analytics-tűzfalhoz. Az adatbázis-szintű IP-tűzfalszabályok hozzáférésének kezelése és konfigurálása egyetlen vagy készletezett adatbázishoz.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and SQL Data Warehouse
-ms.custom: ''
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.devlang: ''
 ms.topic: conceptual
 author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 12280e8a5b90c6712703fefc60ec1bfb12ba8573
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2fe0881a7e6c624ea1104d1ebace307e6cf4e337
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606095"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629235"
 ---
-# <a name="azure-sql-database-and-azure-sql-data-warehouse-ip-firewall-rules"></a>IP-tűzfalszabályok Azure SQL Database és Azure SQL Data Warehouse
+# <a name="azure-sql-database-and-azure-synapse-analytics-ip-firewall-rules"></a>Azure SQL Database és az Azure szinapszis Analytics IP-tűzfalszabályok
 
 > [!NOTE]
-> Ez a cikk az Azure SQL Server-kiszolgálókra, valamint az Azure SQL-kiszolgálók Azure SQL Database és Azure SQL Data Warehouse adatbázisaira vonatkozik. Az egyszerűség kedvéért a *SQL Database* a SQL Database és a SQL Data Warehousera is vonatkozik.
+> Ez a cikk az Azure SQL Server-kiszolgálókra, valamint a Azure SQL Database és az Azure szinapszis Analytics-adatbázisaira vonatkozik az Azure SQL Serveren. Az egyszerűség kedvéért a *SQL Database* az SQL Database és az Azure szinapszis használatára is vonatkozik.
 
 > [!IMPORTANT]
 > Ez a cikk *nem* vonatkozik *Azure SQL Database felügyelt példányra*. A hálózati konfigurációval kapcsolatos további információkért lásd: [az alkalmazás Összekötése Azure SQL Database felügyelt példányhoz](sql-database-managed-instance-connect-app.md).
@@ -30,7 +29,7 @@ ms.locfileid: "81606095"
 Ha a *portra beállított mysqlserver*nevű új Azure SQL Servert hoz létre, például a SQL Database tűzfal blokkolja a kiszolgáló nyilvános végpontjának hozzáférését (amely a *mysqlserver.database.Windows.net*címen érhető el).
 
 > [!IMPORTANT]
-> A SQL Data Warehouse csak a kiszolgálói szintű IP-tűzfalszabályok használatát támogatja. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak.
+> Az Azure szinapszis csak a kiszolgálói szintű IP-tűzfalszabályok használatát támogatja. Az adatbázis-szintű IP-tűzfalszabályok nem támogatottak.
 
 ## <a name="how-the-firewall-works"></a>A tűzfal működése
 Az internetről és az Azure-ról érkező csatlakozási kísérletek a tűzfalon keresztül jutnak el az SQL-kiszolgáló vagy az SQL-adatbázis eléréséhez, az alábbi ábrán látható módon.
@@ -253,7 +252,7 @@ Vegye figyelembe a következő szempontokat, amikor a SQL Database szolgáltatá
 
 - **A bejelentkezés nincs engedélyezve, vagy helytelen jelszót használt:**
 
-  Ha a bejelentkezési azonosító nem rendelkezik engedéllyel a SQL Database-kiszolgálón, vagy helytelen a jelszó, a rendszer megtagadja a kapcsolódást a kiszolgálóval. A tűzfalszabályok létrehozása csak *lehetőséget* biztosít az ügyfeleknek, hogy megpróbáljon csatlakozni a kiszolgálóhoz. Az ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat. A bejelentkezések előkészítésével kapcsolatos további információkért lásd: [az adatbázis-hozzáférés szabályozása és megadása SQL Database és SQL Data Warehousehoz](sql-database-manage-logins.md).
+  Ha a bejelentkezési azonosító nem rendelkezik engedéllyel a SQL Database-kiszolgálón, vagy helytelen a jelszó, a rendszer megtagadja a kapcsolódást a kiszolgálóval. A tűzfalszabályok létrehozása csak *lehetőséget* biztosít az ügyfeleknek, hogy megpróbáljon csatlakozni a kiszolgálóhoz. Az ügyfélnek továbbra is meg kell adnia a szükséges biztonsági hitelesítő adatokat. A bejelentkezések előkészítésével kapcsolatos további információkért lásd: az [adatbázis-hozzáférés szabályozása és biztosítása SQL Database és az Azure szinapszis](sql-database-manage-logins.md)számára.
 
 - **Dinamikus IP-cím:**
 

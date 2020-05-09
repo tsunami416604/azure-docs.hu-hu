@@ -5,16 +5,16 @@ author: mjrousos
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: ffe07960c6d32bea8ec31b1fe8248b6abc2b63af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd7c57f3089115e4da861fc8fd20331ab92bc33e
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458289"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82787124"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>Service Fabric-fürt programozott méretezése 
 
-Az Azure-ban futó Service Fabric fürtök a virtuálisgép-méretezési csoportokra épülnek.  A [fürt skálázása](./service-fabric-cluster-scale-up-down.md) azt ismerteti, hogyan méretezhető Service Fabric fürtök manuálisan vagy automatikus méretezési szabályokkal. Ez a cikk bemutatja, hogyan kezelheti a hitelesítő adatokat, és hogyan méretezheti be vagy ki a fürtöt a Fluent Azure számítási SDK-val, ami egy fejlettebb forgatókönyv. Áttekintést az [Azure skálázási műveleteinek koordinálására szolgáló programozott módszerekről](service-fabric-cluster-scaling.md#programmatic-scaling)olvashat. 
+Az Azure-ban futó Service Fabric fürtök a virtuálisgép-méretezési csoportokra épülnek.  A [fürt skálázása](./service-fabric-cluster-scale-in-out.md) azt ismerteti, hogyan méretezhető Service Fabric fürtök manuálisan vagy automatikus méretezési szabályokkal. Ez a cikk bemutatja, hogyan kezelheti a hitelesítő adatokat, és hogyan méretezheti be vagy ki a fürtöt a Fluent Azure számítási SDK-val, ami egy fejlettebb forgatókönyv. Áttekintést az [Azure skálázási műveleteinek koordinálására szolgáló programozott módszerekről](service-fabric-cluster-scaling.md#programmatic-scaling)olvashat. 
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -119,6 +119,6 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 A saját automatikus méretezési logikája megvalósításának megkezdéséhez Ismerkedjen meg a következő fogalmakkal és hasznos API-kkal:
 
-- [Méretezés manuálisan vagy automatikus méretezési szabályokkal](./service-fabric-cluster-scale-up-down.md)
+- [Méretezés manuálisan vagy automatikus méretezési szabályokkal](./service-fabric-cluster-scale-in-out.md)
 - [Fluent Azure felügyeleti kódtárak a .net-hez](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (a Service Fabric-fürt mögöttes virtuálisgép-méretezési csoportjaival való interakcióhoz hasznos)
 - [System. Fabric. FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (Service Fabric-fürttel és annak csomópontjaival való interakcióhoz hasznos)

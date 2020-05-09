@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 06/24/2019
+ms.date: 04/30/2020
 ms.author: alkohli
-ms.openlocfilehash: 51935516e26f263e44a926bf9b7d7ec24a5eeb9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12ca4df6e5dd4ba86ece8469255195e2fa1c155e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77560065"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628895"
 ---
 # <a name="troubleshoot-issues-related-to-azure-data-box-and-azure-data-box-heavy"></a>Azure Data Box és Azure Data Box Heavy kapcsolatos problémák elhárítása
 
@@ -92,6 +92,17 @@ Ezek a tárolókkal és a megosztási nevekkel kapcsolatos hibák.
     - Példák a nem érvényes nevekre: `my-folder_1`, `my` `--myfolder`,, `myfolder--`,`myfolder!`
 
     További információ: az Azure elnevezési konvenciói a [tárolók neveihez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names) és a [megosztási nevekhez](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#share-names).
+    
+### <a name="error_file_or_directory_name_illegal"></a>ERROR_FILE_OR_DIRECTORY_NAME_ILLEGAL
+
+**Hiba leírása**: a könyvtár vagy a tároló neve érvénytelen karaktereket tartalmaz.
+
+**Javasolt megoldás**: a másolt könyvtár vagy tároló neve nem támogatott karaktereket tartalmaz.
+
+- A helyi webes felhasználói felület kapcsolódás és másolás lapján töltse le a fájlt, és tekintse át a hibákat tartalmazó mappanevek azonosításához szükséges fájlokat. 
+- Nevezze át a könyvtárat vagy a tárolókat annak biztosítására, hogy megfeleljenek az Azure elnevezési konvencióinak.
+
+További információ: az Azure elnevezési konvenciói a [címtárakhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata#directory-and-file-names) és a [tárolóhoz](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata#container-names).
 
 ## <a name="container-or-share-size-limit-errors"></a>Tároló vagy megosztási méretkorlát hibái
 

@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/22/2019
-ms.openlocfilehash: 521a0ef4053be55e6c7322da5af26ccfc6c844e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c8cbfb619c9eed325161503f705bf5c4c0746265
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74790737"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612333"
 ---
 # <a name="create-and-manage-trading-partner-agreements-in-azure-logic-apps"></a>Kereskedelmi partneri szerződések létrehozása és kezelése Azure Logic Apps
 
@@ -68,6 +68,14 @@ Az Azure fő menüjében válassza a **minden szolgáltatás**lehetőséget. A k
    | **Fogadási beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan fogadja az összes bejövő üzenetet a szerződésben szereplő vendég partnertől. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenet beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12](logic-apps-enterprise-integration-x12.md) |
    | **Küldési beállítások** | Változó | Változó | Ezek a tulajdonságok határozzák meg, hogy a gazdagép partnere hogyan küldi el az összes kimenő üzenetet a szerződésben szereplő vendég partnernek. További információért lásd a vonatkozó szerződés típusát: <p>- [AS2-üzenet beállításai](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT](logic-apps-enterprise-integration-edifact.md) <br>- [X12](logic-apps-enterprise-integration-x12.md) |
    |||||
+
+   > [!IMPORTANT]
+   > A szerződés feloldása a Partnerben és a bejövő üzenetben definiált elemektől függ:
+   >
+   > * A küldő minősítője és azonosítója
+   > * A fogadó minősítője és azonosítója
+   >
+   > Ha ezek az értékek megváltoznak a partnernél, győződjön meg arról, hogy a szerződést is frissíti.
 
 1. Amikor elkészült a szerződés létrehozásával, az Add ( **Hozzáadás** ) lapon kattintson az **OK gombra**, és térjen vissza az integrációs fiókjához.
 

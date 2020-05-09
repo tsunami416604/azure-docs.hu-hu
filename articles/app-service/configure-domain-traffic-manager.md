@@ -5,12 +5,12 @@ ms.assetid: 0f96c0e7-0901-489b-a95a-e3b66ca0a1c2
 ms.topic: article
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8322c12669e41fc7c9aa88e99f95cf1b26ea87d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ae68a8871bc2894191644e4ab183be4b469bf16
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78944120"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610241"
 ---
 # <a name="configure-a-custom-domain-name-in-azure-app-service-with-traffic-manager-integration"></a>Egyéni tartománynév konfigurálása Azure App Serviceban Traffic Manager integrációval
 
@@ -66,12 +66,18 @@ Miután a App Service alkalmazás támogatott árképzési szinten van, megjelen
 
 [!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records-no-h.md)]
 
-Míg az egyes tartományi szolgáltatók sajátosságai eltérőek, az egyéni tartománynévtől (például **contoso.com** *) az* alkalmazáshoz integrált Traffic Manager tartománynévre (**contoso.trafficmanager.net**) van *leképezve* .
+Míg az egyes tartományi szolgáltatók sajátosságai eltérőek, a [nem gyökérszintű egyéni tartománynevet](#what-about-root-domains) (például **www.contoso.com** *) az* alkalmazáshoz integrált Traffic Manager tartománynévre (**contoso.trafficmanager.net** *) képezi le.* 
 
 > [!NOTE]
 > Ha egy rekord már használatban van, és megelőző jelleggel kell kötnie az alkalmazásokat, létrehozhat egy további CNAME rekordot is. Ahhoz például, hogy megelőző jelleggel a kötést a **www\.contoso.com** az alkalmazáshoz, hozzon létre egy CNAME rekordot a **awverify. www** és a **contoso.trafficmanager.net**között. Ezután hozzáadhat "www\.contoso.com" az alkalmazáshoz anélkül, hogy módosítania kellene a "www" CNAME rekordot. További információ: [Active DNS-név Áttelepítésének Azure app Service](manage-custom-dns-migrate-domain.md).
 
 Miután befejezte a DNS-rekordok hozzáadását vagy módosítását a tartományi szolgáltatónál, mentse a módosításokat.
+
+### <a name="what-about-root-domains"></a>Mi a legfelső szintű tartomány?
+
+Mivel a Traffic Manager csak a CNAME rekordokkal rendelkező egyéni tartomány-hozzárendeléseket támogatja, és mivel a DNS-szabványok nem támogatják a CNAME-rekordokat a gyökérszintű tartományok leképezéséhez (például **contoso.com**), Traffic Manager nem támogatja a legfelső szintű tartományok leképezését. A probléma megkerüléséhez használjon URL-átirányítást az alkalmazás szintjén. ASP.NET Core például használhatja az [URL-cím újraírását](/aspnet/core/fundamentals/url-rewriting). Ezután használja a Traffic Manager az altartomány (**www.contoso.com**) elosztásához.
+
+A magas rendelkezésre állási helyzetekben a hibatűrő DNS-telepítést Traffic Manager nélkül is megvalósíthatja, ha több *olyan rekordot* hoz létre, amely a legfelső szintű tartományból az egyes alkalmazás-példányok IP-címére mutat. Ezután [rendelje hozzá ugyanazt a gyökértartomány-példányt az összes alkalmazás-példányhoz](app-service-web-tutorial-custom-domain.md#map-an-a-record). Mivel ugyanaz a tartománynév nem rendelhető hozzá két különböző alkalmazáshoz ugyanabban a régióban, ez a beállítás csak akkor működik, ha az alkalmazás különböző régiókban található.
 
 ## <a name="enable-custom-domain"></a>Egyéni tartomány engedélyezése
 Miután a tartományneven lévő rekordok propagálása megtörtént, a böngésző segítségével ellenőrizze, hogy az Egyéni tartománynév feloldódik-e a App Service alkalmazásra.

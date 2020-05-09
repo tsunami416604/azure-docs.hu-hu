@@ -10,13 +10,13 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.author: mimart
-ms.reviewer: arvinh
-ms.openlocfilehash: ceba22e9289e0a10211ee26a7758238a8b1f06c7
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.reviewer: arvinh, celested
+ms.openlocfilehash: 0b2c8e6bb71e00ccb6eda33ecb1b087d09ce5de7
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201686"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82626190"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>A SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal
 
@@ -103,8 +103,8 @@ Az alkalmazásom be van építve a Microsoft Teams szolgáltatásba, és az üze
 Követni kell a csapatok és az Outlook üzeneteinek változásait, és valós időben reagálni kell rájuk. Hogyan szerezhetem be ezeket a módosításokat az alkalmazásba?
 
 **Javaslat:** A Microsoft Graph a különböző erőforrások [változási értesítéseit](https://docs.microsoft.com/graph/webhooks) és a [változások nyomon követését](https://docs.microsoft.com/graph/delta-query-overview) teszi lehetővé. Vegye figyelembe a változási értesítések következő korlátozásait:
-- Ha egy esemény fogadója tudomásul veszi az eseményt, de bármilyen okból nem sikerül rá lépni, az esemény elvész
-- Ha egy esemény fogadója tudomásul veszi az eseményt, de bármilyen okból nem sikerül rá lépni, az esemény elvész
+- Ha egy esemény fogadója tudomásul veszi az eseményt, de bármilyen okból nem sikerül rá lépni, az esemény elvész.
+- A módosítások fogadásának sorrendje nem garantált időrendben.
 - Az értesítések módosítása a fenti okok miatt nem mindig tartalmaz [erőforrásadatokat](https://docs.microsoft.com/graph/webhooks-with-resource-data) , a fejlesztők gyakran a módosítási értesítéseket használják a szinkronizálási forgatókönyvek módosítási nyomon követésével együtt. 
 
 ## <a name="scenario-6-provision-users-and-groups-in-azure-ad"></a>6. forgatókönyv: felhasználók és csoportok kiépítése az Azure AD-ben

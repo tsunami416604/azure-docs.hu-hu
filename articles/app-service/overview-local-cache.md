@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1945730acaddb0c1c7ee1b28eeb926635efad643
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a1fc4de572fbb8634f8f58452ce5f9b632023a5
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78227877"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82628793"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service a helyi gyorsítótár áttekintése
 
@@ -19,7 +19,7 @@ ms.locfileid: "78227877"
 > A helyi gyorsítótár nem támogatott a Function apps vagy a Container App Service alkalmazásokban, például [Windows-tárolókban](app-service-web-get-started-windows-container.md) vagy [Linuxon app Service](containers/app-service-linux-intro.md).
 
 
-Azure App Service tartalom tárolása az Azure Storage-ban történik, és tartós módon van felkészülve, mint a tartalom megosztása. Ez a kialakítás a különböző alkalmazásokkal való együttműködésre szolgál, és a következő tulajdonságokkal rendelkezik:  
+Azure App Service a tartalmat az Azure Storage tárolja, és tartós módon, tartalmi megosztásként is felszínre kerül. Ez a kialakítás a különböző alkalmazásokkal való együttműködésre szolgál, és a következő tulajdonságokkal rendelkezik:  
 
 * A tartalom megosztása az alkalmazás több virtuális gép (VM) példánya között történik.
 * A tartalom tartós, és az alkalmazások futtatásával módosítható.
@@ -36,7 +36,7 @@ A Azure App Service helyi gyorsítótár szolgáltatás a tartalom webes szerepk
 
 ## <a name="how-the-local-cache-changes-the-behavior-of-app-service"></a>Hogyan módosítja a helyi gyorsítótár a App Service viselkedését
 * A _D:\home_ a helyi gyorsítótárra mutat, amely a virtuálisgép-példányon jön létre, amikor az alkalmazás elindul. A _D:\Local_ továbbra is az ideiglenes VM-specifikus tárterületre mutat.
-* A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 300 MB-ra van korlátozva, de akár 2 GB-ot is megnövelheti. Ha a másolt fájlok mérete meghaladja a helyi gyorsítótár méretét, App Service csendben hagyja figyelmen kívül a helyi gyorsítótárat, és olvassa el a távoli fájlmegosztást.
+* A helyi gyorsítótár a megosztott _/site_ és a _/siteextensions_ mappák egy egyszeri másolatát tartalmazza, a következő helyen: _D:\home\site_ és _D:\home\siteextensions_. Az alkalmazás indításakor a rendszer a helyi gyorsítótárba másolja a fájlokat. Az egyes alkalmazások két mappájának mérete alapértelmezés szerint 1 GB-ra van korlátozva, de 2 GB-ra is növelhető. Vegye figyelembe, hogy mivel a gyorsítótár mérete növekszik, hosszabb időt vesz igénybe a gyorsítótár betöltése. Ha a másolt fájlok mérete meghaladja a helyi gyorsítótár méretét, App Service csendben hagyja figyelmen kívül a helyi gyorsítótárat, és olvassa el a távoli fájlmegosztást.
 * A helyi gyorsítótár írható-olvasható. Ha azonban az alkalmazás a virtuális gépeket helyezi át, vagy újraindul, a módosítások elvesznek. Ne használja a helyi gyorsítótárat olyan alkalmazások esetében, amelyek kritikus fontosságú adatokat tárolnak a tartalom-tárolóban.
 * A _D:\home\LogFiles_ és a _D:\home\Data_ naplófájlokat és alkalmazásadatokat tartalmaznak. A két almappát a rendszer helyileg tárolja a virtuálisgép-példányon, és rendszeres időközönként átmásolja őket a megosztott tartalom tárolójába. Az alkalmazások a naplófájlokat és az adatfájlokat a mappákba írással is megőrzik. A megosztott tartalom tárolójába való másolás azonban a legjobb megoldás, ezért lehetséges, hogy a naplófájlok és az adatmennyiség elvész a virtuálisgép-példányok hirtelen összeomlása miatt.
 * A [naplózási adatfolyamra](troubleshoot-diagnostic-logs.md#stream-logs) a legalkalmasabb másolási lehetőség vonatkozik. Akár egy percet is megfigyelheti a továbbított naplókban.
@@ -75,7 +75,7 @@ A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmaz
 
     "properties": {
         "WEBSITE_LOCAL_CACHE_OPTION": "Always",
-        "WEBSITE_LOCAL_CACHE_SIZEINMB": "300"
+        "WEBSITE_LOCAL_CACHE_SIZEINMB": "1000"
     }
 }
 
@@ -83,7 +83,7 @@ A helyi gyorsítótárat a webalkalmazások alapján engedélyezheti az alkalmaz
 ```
 
 ## <a name="change-the-size-setting-in-local-cache"></a>A méret beállítás módosítása a helyi gyorsítótárban
-Alapértelmezés szerint a helyi gyorsítótár mérete **300 MB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja az alkalmazás beállítását `WEBSITE_LOCAL_CACHE_SIZEINMB`. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet.
+Alapértelmezés szerint a helyi gyorsítótár mérete **1 GB**. Ebbe beletartozik a/site másolt és a/siteextensions mappa, valamint a helyileg létrehozott naplók és adatmappák. A korlát növeléséhez használja az alkalmazás beállítását `WEBSITE_LOCAL_CACHE_SIZEINMB`. Az alkalmazások mérete legfeljebb **2 GB** (2000 MB) lehet. Vegye figyelembe, hogy a méret növekedésével hosszabb időt vesz igénybe a helyi gyorsítótár betöltése.
 
 ## <a name="best-practices-for-using-app-service-local-cache"></a>Ajánlott eljárások App Service helyi gyorsítótár használatához
 Javasoljuk, hogy a helyi gyorsítótárat az [átmeneti környezetek](../app-service/deploy-staging-slots.md) szolgáltatással együtt használja.

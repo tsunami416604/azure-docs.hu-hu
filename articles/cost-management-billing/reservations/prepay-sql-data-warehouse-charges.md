@@ -1,46 +1,46 @@
 ---
-title: Az SQL Data Warehouse költségeinek csökkentése fenntartott Azure-kapacitással
-description: Megtudhatja, hogyan csökkentheti az SQL Data Warehouse költségeit fenntartott kapacitásokkal megtakarítás céljából.
+title: Az Azure Synapse Analytics költségeinek csökkentése fenntartott Azure-kapacitással
+description: Megtudhatja, hogyan csökkentheti az Azure Synapse Analytics költségeit fenntartott kapacitásokkal megtakarítás céljából.
 author: yashesvi
 ms.reviewer: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/12/2020
+ms.date: 04/30/2020
 ms.author: banders
-ms.openlocfilehash: c428472d5564393e9f9fcdc3103bb1506dc50936
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 3706493f0132cd4cc57af589e0d2935c31d6657e
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200367"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629150"
 ---
-# <a name="save-costs-for-sql-data-warehouse-charges-with-reserved-capacity"></a>Az SQL Data Warehouse költségeinek csökkentése fenntartott kapacitással
+# <a name="save-costs-for-azure-synapse-analytics-charges-with-reserved-capacity"></a>Az Azure Synapse Analytics költségeinek csökkentése fenntartott kapacitással
 
-Pénzt takaríthat meg az Azure SQL Data Warehouse-zal, ha egy vagy három évre előre lefoglalja a cDWU-használatot. Fenntartott SQL Data Warehouse-kapacitás vásárlásához ki kell választania az Azure-régiót és az időszakot. Ezután hozzá kell adnia az SQL Data Warehouse-termékváltozatot a kosárhoz, és ki kell választania a cDWU-egységek megvásárolni kívánt mennyiségét.
+Pénzt takaríthat meg az Azure Synapse Analyticsszel, ha egy vagy három évre előre lefoglalja a cDWU-használatot. Fenntartott Azure Synapse Analytics-kapacitás vásárlásához ki kell választania az Azure-régiót és az időszakot. Ezután hozzá kell adnia az Azure Synapse Analytics-termékváltozatot a kosárhoz, és ki kell választania a cDWU-egységek megvásárolni kívánt mennyiségét.
 
-Foglalás vásárlásakor a foglalás jellemzőivel megegyező SQL Data Warehouse-használatért a továbbiakban nem fizet használatalapú díjakat.
+Foglalás vásárlásakor a foglalás jellemzőivel megegyező Azure Synapse Analytics-használatért a továbbiakban nem fizet használatalapú díjakat.
 
-A foglalások nem fedezik az SQL Data Warehouse használatával kapcsolatos tárolási és hálózatkezelési költségeket.
+A foglalások nem fedezik az Azure Synapse Analytics használatával kapcsolatos tárolási és hálózatkezelési költségeket.
 
-A fenntartott kapacitás lejáratakor az SQL Data Warehouse-példányok tovább futnak, azonban használatalapú díjjal lesznek számlázva. A foglalások nem újulnak meg automatikusan.
+A fenntartott kapacitás lejáratakor az Azure Synapse Analytics-példányok tovább futnak, azonban használatalapú díjjal lesznek számlázva. A foglalások nem újulnak meg automatikusan.
 
-A díjszabással kapcsolatos információkért tekintse meg a [fenntartott SQL Data Warehouse-kapacitáshoz kapcsolódó ajánlatot](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/) ismertető cikket.
+A díjszabással kapcsolatos információkért tekintse meg a [fenntartott Azure Synapse Analytics-kapacitáshoz kapcsolódó ajánlatot](https://azure.microsoft.com/pricing/details/synapse-analytics/).
 
-Fenntartott Azure SQL Data Warehouse-kapacitást az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](monthly-payments-reservations.md). Fenntartott kapacitás vásárlása:
+Fenntartott Azure Synapse Analytics-kapacitást az [Azure Portalon](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade) vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](monthly-payments-reservations.md). Fenntartott kapacitás vásárlása:
 
 - Legalább egy nagyvállalati vagy használatalapú fizetéses előfizetés tulajdonosi szerepkörével kell rendelkeznie.
 - Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com/). Ha ez a beállítás le van tiltva, Önnek EA-rendszergazdának kell lennie.
-- A felhőszolgáltatói (CSP-) program esetében csak a felügyeleti ügynökök és az értékesítési ügynökök vásárolhatnak fenntartott SQL Data Warehouse-kapacitást.
+- A felhőszolgáltatói (CSP-) program esetében csak a felügyeleti ügynökök és az értékesítési ügynökök vásárolhatnak fenntartott Azure Synapse Analytics-kapacitást.
 
 A nagyvállalati ügyfelek és használatalapú fizetéses ügyfelek által vásárolt foglalások díjával kapcsolatos további információkért tekintse meg [a nagyvállalati regisztráció esetén az Azure-beli foglalás használatát](understand-reserved-instance-usage-ea.md) és [a használatalapú fizetéses előfizetés esetén az Azure-beli foglalás használatát](understand-reserved-instance-usage.md) ismertető cikket.
 
 ## <a name="choose-the-right-size-before-purchase"></a>A megfelelő méret kiválasztása vásárlás előtt
 
-Az SQL Data Warehouse-foglalás méretének az összes felhasznált számítási adattárházegységen (cDWU-n) kell alapulnia. A vásárlások 100 cDWU-s növekményekben történnek.
+Az Azure Synapse Analytics-foglalás méretének az összes felhasznált számítási adattárházegységen (cDWU-n) kell alapulnia. A vásárlások 100 cDWU-s növekményekben történnek.
 
-Tegyünk fel például, hogy a teljes SQL Data Warehouse-felhasználás DW3000c. Az egészhez szeretne fenntartott kapacitást vásárolni. Ehhez 30 egységnyi fenntartott cDWU-kapacitást kell vásárolnia.
+Tegyük fel például, hogy a teljes Azure Synapse Analytics-felhasználás DW3000c. Az egészhez szeretne fenntartott kapacitást vásárolni. Ehhez 30 egységnyi fenntartott cDWU-kapacitást kell vásárolnia.
 
-## <a name="buy-sql-data-warehouse-reserved-capacity"></a>Fenntartott SQL Data Warehouse-kapacitás vásárlása
+## <a name="buy-azure-synapse-analytics-reserved-capacity"></a>Fenntartott Azure Synapse Analytics-kapacitás vásárlása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Válassza a **Minden szolgáltatás** > **Reservations** lehetőséget.
@@ -56,7 +56,7 @@ Tegyünk fel például, hogy a teljes SQL Data Warehouse-felhasználás DW3000c.
 5. A fenntartott kapacitás által fedezett Azure-régió kiválasztásához válasszon egy régiót.
 6. Válasszon ki egy mennyiséget. Adja meg a megvásárolni kívánt mennyiségű 100 adattárházegységet (cDWU-t).    
    Ha például 30-at ad meg mennyiségként, akkor 3000 fenntartott cDWU-kapacitást kap óránként.
-7. A **Költségek** szakaszban tekintse át a fenntartott SQL Data Warehouse-kapacitás foglalásának költségét.
+7. A **Költségek** szakaszban tekintse át a fenntartott Azure Synapse Analytics-kapacitás foglalásának költségét.
 8. Válassza a **Beszerzés** lehetőséget.
 9. A vásárlás állapotának megtekintéséhez válassza **A foglalás megtekintése** lehetőséget.
 
@@ -64,7 +64,7 @@ Tegyünk fel például, hogy a teljes SQL Data Warehouse-felhasználás DW3000c.
 
 Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](exchange-and-refund-azure-reservations.md).
 
-A rendszer automatikusan alkalmazza a foglalási kedvezményt a fenntartott SQL Data Warehouse-kapacitás hatókörével és régiójával egyező SQL Data Warehouse-példányokra. A fenntartott SQL Data Warehouse-kapacitás hatókörét az [Azure Portal](https://portal.azure.com/), a PowerShell, a parancssori felület és az API használatával frissítheti.
+A rendszer automatikusan alkalmazza a foglalási kedvezményt a fenntartott Azure Synapse Analytics-kapacitás hatókörével és régiójával egyező Azure Synapse Analytics-példányokra. A fenntartott Azure Synapse Analytics-kapacitás hatókörét az [Azure Portal](https://portal.azure.com/), a PowerShell, a parancssori felület és az API használatával frissítheti.
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Kapcsolat
 
@@ -72,7 +72,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>További lépések
 
-- A foglalási kedvezmények Azure SQL Data Warehouse-ra történő alkalmazásával kapcsolatos további információkért lásd [a foglalási kedvezmények alkalmazását az Azure SQL Data Warehouse-ban](prepay-sql-data-warehouse-charges.md) bemutató cikket.
+- A foglalási kedvezmények Azure Synapse Analyticsre történő alkalmazásával kapcsolatos további információkért lásd [a foglalási kedvezmények az Azure Synapse Analyticsben történő alkalmazását](prepay-sql-data-warehouse-charges.md) ismertető cikket.
 
 - Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
   - [Mi az az Azure Reservations?](save-compute-costs-reservations.md)

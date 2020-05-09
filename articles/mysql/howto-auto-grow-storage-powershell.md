@@ -6,14 +6,14 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 09431a6690be751324bb796415d308d3b7727dad
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8a19fe338af14f97e0eb191d7b57e840c71e400
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82254095"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612724"
 ---
-# <a name="auto-grow-storage-in-azure-database-for-mysql-storage-using-powershell"></a>Tárterület automatikus növelése Azure Database for MySQL tárolóban a PowerShell használatával
+# <a name="auto-grow-storage-in-azure-database-for-mysql-server-using-powershell"></a>Tároló automatikus növekedése Azure Database for MySQL-kiszolgálón a PowerShell használatával
 
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy Azure Database for MySQL-kiszolgáló tárterületét úgy, hogy az a munkaterhelés befolyásolása nélkül is növekszik.
 
@@ -52,4 +52,5 @@ New-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup -Sku GP_
 
 ## <a name="next-steps"></a>További lépések
 
-Útmutató [riasztások létrehozásához mérőszámokon](howto-alert-on-metric.md).
+> [!div class="nextstepaction"]
+> [Olvasási replikák létrehozása és kezelése a Azure Database for MySQL a PowerShell használatával](howto-read-replicas-powershell.md).

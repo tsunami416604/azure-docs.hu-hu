@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: c718daa4bc99bffd6fcfeb084299bed6682fe884
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2aed3a66f70864b3445418a51b0e79280e6884bd
+ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75780508"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82629201"
 ---
 # <a name="how-to-migrate-your-sqlite-database-to-azure-sql-database-serverless"></a>Az SQLite-adatbázis migrálása Azure SQL Database kiszolgáló nélkülire
-Az SQLite sok ember számára teszi lehetővé az adatbázisok és az SQL programozás első élményét. Számos operációs rendszerbe és népszerű alkalmazásba való felvételsel a világ egyik legszélesebb körben üzembe helyezett és használt adatbázis-motorja is elérhetővé válik. Mivel valószínűleg az első adatbázismotor sok ember használja, gyakran a projektek vagy alkalmazások központi része lehet. Ezekben az esetekben, amikor a projekt vagy alkalmazás a kezdeti SQLite-implementációt fejleszti, előfordulhat, hogy a fejlesztőknek át kell telepíteniük az adataikat egy megbízható, központosított adattárba.
+Az SQLite sok ember számára teszi lehetővé az adatbázisok és az SQL programozás első élményét. Számos operációs rendszerbe és népszerű alkalmazásba való felvételsel a világ egyik legszélesebb körben telepített és használt adatbázis-motorja is elérhetővé válik. Mivel valószínűleg az első adatbázismotor sok ember használja, gyakran a projektek vagy alkalmazások központi része lehet. Ezekben az esetekben, amikor a projekt vagy alkalmazás a kezdeti SQLite-implementációt fejleszti, előfordulhat, hogy a fejlesztőknek át kell telepíteniük az adataikat egy megbízható, központosított adattárba.
 
 Azure SQL Database kiszolgáló nélküli az önálló adatbázisok számítási szintje, amely a számítási feladatok igény szerint automatikusan méretezi a számítást, és a másodpercenként felhasznált számítások mennyiségére vonatkozó számlákat. A kiszolgáló nélküli számítási rétegek automatikusan szüneteltetik az adatbázisokat az inaktív időszakok során, amikor csak a tárterületet számlázzák, és automatikusan folytatják az adatbázisokat, amikor a tevékenység visszatér.
 

@@ -8,16 +8,22 @@ ms.topic: conceptual
 ms.date: 03/25/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d2990c82efbcdac7d453f920301787b8c83db1e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c1ffb4b1c0018cf56771d3fea56fe56d151bae3
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295378"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612928"
 ---
 # <a name="connect-with-the-android-client"></a>Kapcsolódás az Android-ügyféllel
 
 > A következőkre vonatkozik: Android 4,1 és újabb verziók, Chromebook a ChromeOS 53 és újabb verziókkal.
+
+>[!IMPORTANT]
+>Ez a tartalom a Spring 2020 frissítésre vonatkozik Azure Resource Manager Windows rendszerű virtuális asztali objektumokkal. Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager objektumok nélkül használja, tekintse meg [ezt a cikket](./virtual-desktop-fall-2019/connect-android-2019.md).
+>
+> A Windows rendszerű virtuális asztali Spring 2020 frissítése jelenleg nyilvános előzetes verzióban érhető el. Ezt az előzetes verziót szolgáltatói szerződés nélkül biztosítjuk, és nem javasoljuk, hogy éles számítási feladatokhoz használja azt. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. 
+> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 >[!NOTE]
 > A Windows rendszerű virtuális asztali erőforrások az Android-ügyfélről való elérésének lehetősége jelenleg előzetes verzióban érhető el.
@@ -36,7 +42,7 @@ Előfizetés a hírcsatornára:
 
 1. A csatlakoztatási központban koppintson **+** a elemre, majd koppintson a **távoli erőforrás-hírcsatorna**lehetőségre.
 2. Írja be a hírcsatorna URL-címét a **hírcsatorna URL-címe** mezőbe. A hírcsatorna URL-címe lehet URL vagy e-mail-cím.
-   - Ha URL-címet használ, használja a rendszergazdát, aki a szokásos módon <https://rdweb.wvd.microsoft.com>adta meg.
+   - Ha URL-címet használ, használja a rendszergazdát, aki a szokásos módon <https://rdweb.wvd.microsoft.com/api/arm/feeddiscovery>adta meg.
    - E-mail-cím használatához adja meg az e-mail-címét. Az ügyfél megkeresi az e-mail-címéhez tartozó URL-címet, ha a rendszergazda úgy konfigurálta a kiszolgálót.
 3. Koppintson a **tovább**gombra.
 4. Ha a rendszer kéri, adja meg a hitelesítő adatait.
