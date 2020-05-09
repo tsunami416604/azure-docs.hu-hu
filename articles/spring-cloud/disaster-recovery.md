@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: brendm
-ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8f32f574a4ff7be0cc3cc7915b8203b53824c63
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279142"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82792326"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud vész-helyreállítás
 
@@ -32,3 +32,32 @@ A magas rendelkezésre állás és a katasztrófák elleni védelem biztosítás
 Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) a DNS-alapú forgalom terheléselosztását biztosítja, és több régióban is terjesztheti a hálózati forgalmat.  Az Azure Traffic Manager használatával irányíthatja az ügyfeleket a legközelebbi Azure Spring Cloud Service-példányra.  A legjobb teljesítmény és redundancia érdekében az Azure Traffic Manageron keresztül az összes alkalmazás forgalmát az Azure Spring Cloud Service-be való elküldés előtt irányítsa.
 
 Ha több régióban is rendelkezik Azure Spring Cloud-alkalmazásokkal, az Azure Traffic Manager segítségével szabályozhatja az alkalmazások forgalmának áramlását az egyes régiókban.  Definiáljon egy Azure Traffic Manager végpontot az egyes szolgáltatásokhoz a szolgáltatás IP-címének használatával. Az ügyfeleknek csatlakozniuk kell egy Azure Traffic Manager DNS-névhez, amely az Azure Spring Cloud szolgáltatásra mutat.  Az Azure Traffic Manager terheléselosztási forgalmat a meghatározott végpontok között.  Ha egy katasztrófa egy adatközpontot üt ki, akkor az Azure Traffic Manager az adott régiótól a párja felé irányítja a forgalmat, így biztosítva a szolgáltatás folytonosságát.
+
+## <a name="create-azure-traffic-manager-for-azure-spring-cloud"></a>Azure-Traffic Manager létrehozása az Azure Spring Cloud-hoz
+
+1. Azure Spring Cloud létrehozása két különböző régióban.
+Két különböző régióban (az USA keleti régiójában és Nyugat-Európában) üzembe helyezett Azure Spring Cloud két szolgáltatási példányra lesz szüksége. Nyisson meg egy meglévő Azure Spring Cloud-alkalmazást a Azure Portal használatával két szolgáltatási példány létrehozásához. A forgalom elsődleges és feladatátvételi végpontként szolgál. 
+
+**Két szolgáltatási példány adatai:**
+
+| Szolgáltatásnév | Hely | Alkalmazás |
+|--|--|--|
+| Service-Sample-a | USA keleti régiója | átjáró/Auth-szolgáltatás/fiók-szolgáltatás |
+| szolgáltatás – minta – b | Nyugat-Európa | átjáró/Auth-szolgáltatás/fiók-szolgáltatás |
+
+2. Egyéni tartomány beállítása a Service-hez egyéni tartomány- [dokumentum](spring-cloud-tutorial-custom-domain.md) beállítása a két meglévő szolgáltatási példány egyéni tartományának beállításához. A sikeres beállítás után mindkét szolgáltatási példány az egyéni tartományhoz lesz kötve: bcdr-test.contoso.com
+
+3. Hozzon létre egy Traffic Managert és két végpontot: [hozzon létre egy Traffic Manager profilt a Azure Portal használatával](https://docs.microsoft.com/azure/traffic-manager/quickstart-create-traffic-manager-profile).
+
+Itt látható a Traffic Manager-profil:
+* Traffic Manager DNS-név:http://asc-bcdr.trafficmanager.net
+* Végponti profilok: 
+
+| Profil | Típus | Cél | Prioritás | Egyéni fejléc beállításai |
+|--|--|--|--|--|
+| Egy profil végpontja | Külső végpont | service-sample-a.asc-test.net | 1 | gazdagép: bcdr-test.contoso.com |
+| B végpont profilja | Külső végpont | service-sample-b.asc-test.net | 2 | gazdagép: bcdr-test.contoso.com |
+
+4. Hozzon létre egy CNAME rekordot a DNS-zónában: bcdr-test.contoso.com CNAME asc-bcdr.trafficmanager.net. 
+
+5. Most a környezet teljesen be van állítva. Az ügyfeleknek el kell tudniuk érni az alkalmazást a következőn keresztül: bcdr-test.contoso.com

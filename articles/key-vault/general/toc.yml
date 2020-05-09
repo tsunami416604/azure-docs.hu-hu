@@ -96,6 +96,10 @@
           href: soft-delete-powershell.md
     - name: A Key Vault áthelyezése
       items:
+        - name: Key Vault áthelyezése másik erőforráscsoportba
+          href: keyvault-moveresourcegroup.md
+        - name: A Key Vault áthelyezése egy másik előfizetésbe
+          href: keyvault-move-subscription.md
         - name: A Key Vault áthelyezése egy másik régióba
           href: keyvault-moveregion.md
     - name: Hibaelhárítás

@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 3d89275e1418035fed8aad3ffddd8def2c1d59ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f96ec80b529c594a383be8d668fd28b77372cd80
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81686060"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900920"
 ---
 # <a name="about-azure-key-vault-keys"></a>Azure Key Vault kulcsok ismertetése
 
@@ -103,7 +103,7 @@ További tudnivalókért tekintse [meg a Key Vault REST API dokumentációjában
 
 Miután létrehozta a kulcsot a Key Vaultban, a következő titkosítási műveletek végezhetők el a kulcs használatával:  
 
--   **Aláírás és ellenőrzés**: szigorúan ez a művelet "aláírási kivonat" vagy "kivonat ellenőrzése", mivel Key Vault nem támogatja a tartalom kivonatolását az aláírás létrehozása részeként. Az alkalmazásoknak a helyileg aláírandó adatokat kell megadniuk, majd Key Vault aláírni a kivonatot. Az aláírt kivonatok ellenőrzése olyan alkalmazások kényelmi művelete, amelyek esetleg nem férnek hozzá a [nyilvános] kulcsfontosságú anyagokhoz. A legjobb teljesítmény érdekében ellenőrizze, hogy a műveletek helyileg történnek-e.  
+-   **Aláírás és ellenőrzés**: szigorúan ez a művelet "aláírási kivonat" vagy "kivonat ellenőrzése", mivel Key Vault nem támogatja a tartalom kivonatolását az aláírás létrehozása részeként. Az alkalmazásoknak a helyileg aláírandó adatokat kell megadniuk, majd Key Vault aláírni a kivonatot. Az aláírt kivonatok ellenőrzése olyan alkalmazások kényelmi művelete, amelyek esetleg nem férnek hozzá a [nyilvános] kulcsfontosságú anyagokhoz. Az alkalmazások legjobb teljesítményének ELLENŐRZÉSéhez helyileg kell végrehajtani a műveleteket.  
 -   **Kulcs titkosítása/becsomagolása**: Key Vault tárolt kulcs egy másik kulcs, jellemzően egy szimmetrikus tartalom titkosítási kulcsa (CEK) elleni védelemre használható. Ha a kulcs Key Vault aszimmetrikus, a rendszer a kulcs titkosítását használja. Például az RSA-OAEP és a WRAPKEY/UNWRAPKEY műveletek egyenértékűek a TITKOSÍTÁSsal/VISSZAFEJTÉSsel. Ha a kulcs Key Vault szimmetrikus, a rendszer a kulcs-körbefuttatást használja. Például: AES-KW. A WRAPKEY művelet olyan alkalmazások számára használható, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. Az alkalmazások legjobb teljesítményéhez helyileg kell végrehajtani a WRAPKEY műveleteket.  
 -   **Titkosítás és visszafejtés**: Key Vaultban tárolt egyik kulcs használható egyetlen adatblokk titkosítására vagy visszafejtésére. A blokk méretét a kulcs típusa és a kiválasztott titkosítási algoritmus határozza meg. A titkosító művelet kényelmi célokat szolgál olyan alkalmazások számára, amelyek esetleg nem férnek hozzá a [nyilvános] kulcshoz. A legjobb teljesítmény érdekében a titkosítási műveleteket helyileg kell végrehajtani.  
 

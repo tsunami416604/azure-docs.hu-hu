@@ -1,0 +1,65 @@
+---
+title: Azure webalkalmazási tűzfal Application Gatewayban – gyakori kérdések
+description: Ez a cikk a webalkalmazási tűzfallal kapcsolatos gyakori kérdésekre ad választ Application Gateway
+services: web-application-firewall
+author: vhorne
+ms.service: web-application-firewall
+ms.topic: article
+ms.date: 05/05/2020
+ms.author: victorh
+ms.openlocfilehash: 57081cd948bcee1261415eae31f91b3c61f08c9f
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82842850"
+---
+# <a name="frequently-asked-questions-for-azure-web-application-firewall-on-application-gateway"></a>Gyakori kérdések az Azure webalkalmazási tűzfallal kapcsolatban Application Gateway
+
+Ez a cikk az Azure webalkalmazási tűzfallal (WAF) kapcsolatos gyakori kérdésekre ad választ a Application Gateway szolgáltatásaival és funkcióival kapcsolatban. 
+
+## <a name="what-is-azure-waf"></a>Mi az Azure WAF?
+
+Az Azure WAF egy webalkalmazási tűzfal, amely segít megvédeni webalkalmazásait az olyan gyakori fenyegetésektől, mint az SQL-injektálás, a helyek közötti parancsfájlkezelés és más webszolgáltatások használata. A webalkalmazásokhoz való hozzáférés szabályozásához egyéni és felügyelt szabályok kombinációjából álló WAF-szabályzatot is meghatározhat.
+
+Az Azure-WAF szabályzatok alkalmazhatók Application Gateway vagy Azure-beli előtérben futó webalkalmazásokra is.
+
+## <a name="what-features-does-the-waf-sku-support"></a>Milyen funkciókat támogat a WAF SKU?
+
+A WAF SKU a standard SKU-ban elérhető összes funkciót támogatja.
+
+## <a name="how-do-i-monitor-waf"></a>Hogyan monitor WAF?
+
+WAF figyelése diagnosztikai naplózással. További információ: [diagnosztikai naplózás és mérőszámok Application Gatewayhoz](../../application-gateway/application-gateway-diagnostics.md).
+
+## <a name="does-detection-mode-block-traffic"></a>Blokkolja az észlelési mód a forgalmat?
+
+Nem. Az észlelési mód csak a WAF-szabályt kiváltó forgalmat naplózza.
+
+## <a name="can-i-customize-waf-rules"></a>Testreszabhatók a WAF-szabályok?
+
+Igen. További információ: [WAF és-szabályok testreszabása](application-gateway-customize-waf-rules-portal.md).
+
+## <a name="what-rules-are-currently-available-for-waf"></a>Jelenleg milyen szabályok érhetők el a WAF?
+
+A WAF jelenleg a CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp229), a [3,0](application-gateway-crs-rulegroups-rules.md#owasp30)és a [3,1](application-gateway-crs-rulegroups-rules.md#owasp31)-es verziója támogatja. Ezek a szabályok alapkonfigurációt biztosítanak a Web Application Security Project (OWASP) által azonosított legtöbb 10 legfontosabb biztonsági rés ellen: 
+
+* SQL-injektálás elleni védelem
+* Helyek közötti parancsfájlok elleni védelem
+* Védelem a gyakori webes támadásokkal szemben, például a parancsok befecskendezése, a HTTP-kérések csempészete, a HTTP-válaszok felosztása és a távoli fájl-integrációs támadás ellen
+* HTTP protokoll megsértése elleni védelem
+* HTTP protokollanomáliák (például hiányzó gazdagép-felhasználói ügynök és Accept (Elfogadás) fejlécek) elleni védelem
+* Robotprogramok, webbejárók és képolvasók elleni védelem
+* Az alkalmazások gyakori konfigurációs beállításainak észlelése (azaz Apache, IIS stb.)
+
+További információ: [OWASP Top-10 biztonsági rések](https://www.owasp.org/index.php/Top10#OWASP_Top_10_for_2013).
+
+## <a name="does-waf-support-ddos-protection"></a>Támogatja a WAF a DDoS Protectiont?
+
+Igen. Engedélyezheti a DDoS Protection szolgáltatást azon a virtuális hálózaton, amelyen az Application Gateway telepítve van. Ezzel a beállítással biztosíthatja, hogy a Azure DDoS Protection szolgáltatás az Application Gateway virtuális IP-címét (VIP) is védi.
+
+
+## <a name="next-steps"></a>További lépések
+
+- Ismerje meg az [Azure webalkalmazási tűzfalat](../overview.md).
+- További információ az [Azure bejáratáról](../../frontdoor/front-door-overview.md).
