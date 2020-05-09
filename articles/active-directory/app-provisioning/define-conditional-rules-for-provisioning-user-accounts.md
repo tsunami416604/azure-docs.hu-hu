@@ -2,25 +2,20 @@
 title: Alkalmazások kiépítése a hatóköri szűrőkkel | Microsoft Docs
 description: Ismerje meg, hogyan használhatók a hatóköri szűrők, hogy megakadályozza az olyan alkalmazásokban lévő objektumok használatát, amelyek támogatják az automatikus felhasználó-kiépítés kiépítési módját, ha egy objektum nem felel meg az üzleti követelményeinek.
 services: active-directory
-documentationcenter: ''
 author: msmimart
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: mimart
-ms.custom: H1Hack27Feb2017
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c667409f2abb9f1cf89ae3b34f08e0f9eec067e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79138535"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82593744"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.

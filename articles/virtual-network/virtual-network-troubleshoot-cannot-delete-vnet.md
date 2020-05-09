@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 2d427a8b40fcb537801ce76aae6bc32fcda3a307
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c2152b872c82c224c786e56db0318c9df994ac25
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71056930"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801586"
 ---
 # <a name="troubleshooting-failed-to-delete-a-virtual-network-in-azure"></a>Hibaelhárítás: nem sikerült törölni a virtuális hálózatot az Azure-ban
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=a13a0908-28e0-f9f7-c6c7-301fcd187560" target='_blank'>Start</a></span><span class="has-padding-small">A virtuális ügynök használatával gyorsan megoldhatja a problémát, ha <b>automatizált diagnosztikát futtat.</b> </span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Adatvédelmi <div align="right">nyilatkozat</div></a></span></p>
 Előfordulhat, hogy hibaüzeneteket kap, amikor Microsoft Azure-ben próbál meg törölni egy virtuális hálózatot. Ez a cikk a probléma megoldásához szükséges hibaelhárítási lépéseket ismerteti. 
 
 [!INCLUDE [support-disclaimer](../../includes/support-disclaimer.md)]

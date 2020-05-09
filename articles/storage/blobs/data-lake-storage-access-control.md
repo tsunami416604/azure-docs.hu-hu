@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 93c21656a768ae458572e0b4917412c8103b2f2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd23745f811cf67aa5e7ef7aa96b877b5980c270
+ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80992215"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82793125"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlés a 2. generációs Azure Data Lake Storage-ben
 
@@ -287,7 +287,7 @@ Ha a HNS ki van kapcsolva, az Azure RBAC engedélyezési szabályai továbbra is
 
 ### <a name="what-is-the-best-way-to-apply-acls"></a>Mi a legjobb módszer az ACL-ek alkalmazására?
 
-Mindig az Azure AD-beli biztonsági csoportokat használja a hozzárendelt rendszerbiztonsági csoportokként az ACL-ekben. Lehetősége van arra, hogy közvetlenül rendeljen hozzá egyéni felhasználókat vagy egyszerű szolgáltatásokat. Ezzel a struktúrával felhasználókat vagy egyszerű szolgáltatásokat adhat hozzá és távolíthat el anélkül, hogy újra kellene alkalmaznia az ACL-eket egy teljes címtár-struktúrára. ) Ehelyett egyszerűen fel kell vennie vagy el kell távolítania azokat a megfelelő Azure AD biztonsági csoportból. Ne feledje, hogy az ACL-ek nem öröklődnek, ezért az ACL-ek újraalkalmazása az ACL-eket minden fájlra és alkönyvtárra vonatkozóan frissítenie kell. 
+Mindig az Azure AD-beli biztonsági csoportokat használja a hozzárendelt rendszerbiztonsági csoportokként az ACL-ekben. Lehetősége van arra, hogy közvetlenül rendeljen hozzá egyéni felhasználókat vagy egyszerű szolgáltatásokat. Ezzel a struktúrával felhasználókat vagy egyszerű szolgáltatásokat adhat hozzá és távolíthat el anélkül, hogy újra kellene alkalmaznia az ACL-eket egy teljes címtár-struktúrára. Ehelyett egyszerűen fel kell vennie vagy el kell távolítania azokat a megfelelő Azure AD biztonsági csoportból. Ne feledje, hogy az ACL-ek nem öröklődnek, ezért az ACL-ek újraalkalmazása az ACL-eket minden fájlra és alkönyvtárra vonatkozóan frissítenie kell. 
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-directory-and-its-contents"></a>Mely engedélyek szükségesek a címtár és annak tartalmának rekurzív törléséhez?
 

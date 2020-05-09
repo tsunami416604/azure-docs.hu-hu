@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 11/20/2019
-ms.openlocfilehash: c891cb4eca2c286b3ac636e5995714accd591772
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/06/2020
+ms.openlocfilehash: 255c39eac2285a23403da2db893d9de8835f7d2c
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417349"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891529"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Adatok másolása a és a rendszerből a Dynamics 365 (Common Data Service) vagy a Dynamics CRM-be a Azure Data Factory használatával
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -60,6 +60,10 @@ Ez a Dynamics-összekötő a [Dynamics xrm-eszközökre](https://docs.microsoft.
 
 >[!TIP]
 >A **dynamics 365-as pénzügyi és-műveletek**adatainak másolásához használhatja a [Dynamics AX-összekötőt](connector-dynamics-ax.md).
+
+## <a name="prerequisites"></a>Előfeltételek
+
+Ha ezt az összekötőt a HRE egyszerű hitelesítéssel szeretné használni, Common Data Service vagy Dynamics kiszolgáló-kiszolgáló (S2S) hitelesítést kell beállítania. A részletes lépésekért tekintse meg [ezt a cikket](https://docs.microsoft.com/powerapps/developer/common-data-service/build-web-applications-server-server-s2s-authentication) .
 
 ## <a name="get-started"></a>Bevezetés
 
@@ -320,7 +324,7 @@ Az adatmásoláshoz a másolási tevékenység fogadója szakasz a következő t
 |:--- |:--- |:--- |
 | type | A másolási tevékenység fogadójának Type tulajdonságát **DynamicsSink**, **DynamicsCrmSink**vagy **CommonDataServiceForAppsSink**értékre kell beállítani. | Igen |
 | writeBehavior | A művelet írási viselkedése.<br/>Az engedélyezett érték: **"Upsert"**. | Igen |
-| alternateKeyName | A "Upsert" művelet végrehajtásához adja meg az entitásban definiált másodlagos kulcs nevét. | Nem |
+| alternateKeyName | A "Upsert" művelet végrehajtásához adja meg az entitásban definiált másodlagos kulcs nevét. | No |
 | writeBatchSize | Az egyes kötegekben a Dynamicsba írt adatsorok száma. | Nem (az alapértelmezett érték 10) |
 | ignoreNullValues | Azt jelzi, hogy a rendszer figyelmen kívül hagyja-e az írási művelet során a bemeneti adatokból származó null értékeket (kivéve a legfontosabb mezőket).<br/>Az engedélyezett értékek értéke **igaz** és **hamis**.<br>- **True (igaz**): az upsert/Update művelet végrehajtásakor a célobjektum nem módosul. Definiált alapértelmezett érték beszúrása egy beszúrási művelet végrehajtásakor.<br/>- **Hamis**: a upsert vagy-frissítési művelet végrehajtásakor a célként megadott objektumban lévő ADATFRISSÍTÉS NULL értékűre. Szúrjon be egy NULL értéket a beszúrási művelet végrehajtásakor. | Nem (az alapértelmezett érték hamis) |
 

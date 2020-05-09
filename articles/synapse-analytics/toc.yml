@@ -26,6 +26,10 @@
           href: quickstart-create-apache-spark-pool.md
         - name: SQL-készlet létrehozása
           href: quickstart-create-sql-pool.md
+    - name: Adatok betöltése SQL-készletek használatával
+      items:
+        - name: COPY utasítás
+          href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Az igény szerinti SQL használata
       href: quickstart-sql-on-demand.md
 - name: Oktatóanyagok

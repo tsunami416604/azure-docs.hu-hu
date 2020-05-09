@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2018
 ms.author: genli
-ms.openlocfilehash: b8acb50978c5932fe6e6838be86b65c12a0984ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5a878c8108706c4a3a175c920708beeeaa4aa12
+ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71058939"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82801750"
 ---
 # <a name="troubleshoot-outbound-smtp-connectivity-issues-in-azure"></a>A kimenő SMTP-kapcsolati problémák elhárítása az Azure-ban
-
+<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=027fa865-2329-23de-3740-cfbe35359302" target='_blank'>Start</a></span><span class="has-padding-small">A virtuális ügynök használatával gyorsan megoldhatja a problémát, ha <b>automatizált diagnosztikát futtat.</b> </span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Adatvédelmi <div align="right">nyilatkozat</div></a></span></p>
 A (z) 2017. november 15-én kezdődően a kimenő e-mailek, amelyeket közvetlenül a külső tartományokra (például outlook.com és gmail.com) küldenek egy virtuális gépről (VM), csak az egyes előfizetési típusok számára érhetők el Microsoft Azureban. A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok blokkolva lettek. (A 25-ös port elsődlegesen a nem hitelesített e-mail-küldéshez használatos.)
 
 Ez a változás csak az új előfizetésekre és az új üzemelő példányokra vonatkozik, a 2017. november 15. óta.

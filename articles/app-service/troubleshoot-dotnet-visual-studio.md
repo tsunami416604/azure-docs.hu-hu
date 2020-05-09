@@ -6,12 +6,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.custom: seodec18
-ms.openlocfilehash: cb68860af56914acede6c9cbf04d3e8ad3edbe04
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: 516c7f50f7ff9fe947475b12120a527fc69353bc
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891053"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926850"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
 ## <a name="overview"></a>Áttekintés
@@ -634,7 +634,7 @@ A App Service-alkalmazások és webjobs-feladatok távoli hibakeresésével kapc
 * [A távoli hibakeresés bemutatása Azure App Service 3. rész – többpéldányos környezet és GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
 * [Webjobs-hibakeresés (videó)](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
-Ha az alkalmazás egy Azure web API-t vagy Mobile Services háttér-használatot használ, és hibakeresést szeretne végezni, tekintse meg a [.net-háttér hibakeresése a Visual Studióban](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)című témakört.
+Ha az alkalmazás egy Azure web API-t vagy Mobile Services háttér-használatot használ, és hibakeresést szeretne végezni, tekintse meg a [.net-háttér hibakeresése a Visual Studióban](/archive/blogs/azuremobile/debugging-net-backend-in-visual-studio)című témakört.
 
 ### <a name="tracing-in-aspnet-applications"></a>Nyomkövetés a ASP.NET-alkalmazásokban
 Nincsenek alapos és naprakész bevezetések az interneten elérhető ASP.NET-nyomkövetéshez. A legjobb megoldás, ha a régi bevezető anyagok a Web Formshoz lettek írva, mert az MVC még nem létezett, és kiegészíti az adott problémákra koncentráló újabb blogbejegyzéseket. Néhány jó kezdési hely a következő erőforrások:
@@ -647,7 +647,7 @@ Nincsenek alapos és naprakész bevezetések az interneten elérhető ASP.NET-ny
   Információ a nyomkövetési figyelőkről, de nem említi a [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener).
 * [Útmutató: a ASP.NET-nyomkövetés integrálása a System. Diagnostics nyomkövetésével](/previous-versions/b0ectfxd(v=vs.140))<br/>
   Ez a cikk szintén régi, de tartalmaz néhány további információt, amelyet a bevezető cikk nem fed le.
-* [Nyomkövetés a ASP.NET MVC borotva nézeteiben](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
+* [Nyomkövetés a ASP.NET MVC borotva nézeteiben](https://devblogs.microsoft.com/aspnet/tracing-in-asp-net-mvc-razor-views/)<br/>
   A borotva nézeteinek nyomkövetése mellett a post azt is ismerteti, hogyan hozhat létre egy hibakódot, hogy naplózza az összes kezeletlen kivételt egy MVC-alkalmazásban. További információ a Web Forms alkalmazás összes kezeletlen kivételének naplózásáról: a Global. asax példa az MSDN-beli [hibakódok teljes példájában](/previous-versions/bb397417(v=vs.140)) . Ha az MVC-ben vagy a Web Formsban szeretne bizonyos kivételeket naplózni, de az alapértelmezett keretrendszer kezelése érvénybe lép, az alábbi példához hasonlóan elvégezheti és eldöntheti:
 
     ```csharp

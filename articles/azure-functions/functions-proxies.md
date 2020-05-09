@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 09e4616bc7cbb4361ad067ed64984ed95e9a20c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e756258bb92d7def195959d909068e87e765c0f
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74849190"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82562066"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions-proxyk használata
 
@@ -184,8 +184,8 @@ A proxyk a \ Escape szimbólum használatával beolvassák az összes karakterl�
 A requestOverrides objektum a kérelemben a háttér-erőforrás hívásakor végrehajtott módosításokat határozza meg. Az objektumot a következő tulajdonságok határozzák meg:
 
 * **háttér. Request. Method**: a háttér hívásához használt http-metódus.
-* **háttér. Request. querystring. ParameterName\>: a háttér felé irányuló híváshoz beállítható lekérdezési karakterlánc \<** paraméter. A * \<ParameterName\> * helyére írja be a beállítani kívánt paraméter nevét. Vegye figyelembe, hogy ha az üres karakterláncot adja meg, a paraméter továbbra is szerepel a háttér-kérelemben.
-* **háttér. Request. headers. HeaderName\>: a háttér felé irányuló hívásra beállítható \<** fejléc. Cserélje * \<le\> a HeaderName* a beállítani kívánt fejléc nevére. Ha az üres karakterláncot adja meg, a fejléc nem szerepel a háttér-kérelemben.
+* **háttér. Request. querystring. ParameterName\>: a háttér felé irányuló híváshoz beállítható lekérdezési karakterlánc \<** paraméter. A * \<ParameterName\> * helyére írja be a beállítani kívánt paraméter nevét. Vegye figyelembe, hogy ha üres karakterláncot ad meg, a paraméter továbbra is szerepel a háttér-kérelemben.
+* **háttér. Request. headers. HeaderName\>: a háttér felé irányuló hívásra beállítható \<** fejléc. Cserélje * \<le\> a HeaderName* a beállítani kívánt fejléc nevére. Vegye figyelembe, hogy ha üres karakterláncot ad meg, a paraméter továbbra is szerepel a háttér-kérelemben.
 
 Az értékek hivatkozhatnak az alkalmazás beállításainak és paramétereinek az eredeti ügyfél-kérelem alapján.
 

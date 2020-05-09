@@ -8,18 +8,18 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a8a9840cc6e1f3627c5fbd30e0b7432db0f16e4
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265401"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82561050"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>Azure Data Box Edge/Azure Data Box Gateway általános elérhetőségi kibocsátási megjegyzések
 
 ## <a name="overview"></a>Áttekintés
 
-A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint a Azure Data Box Edge és Azure Data Box Gateway általánosan elérhető kiadásával kapcsolatos feloldott problémákat.
+A következő kibocsátási megjegyzések azonosítják a kritikus nyitott problémákat, valamint a Azure Data Box Edge és Azure Data Box Gateway általánosan elérhető kiadásával kapcsolatos feloldott problémákat. 
 
 A kibocsátási megjegyzések folyamatosan frissülnek, és olyan kritikus fontosságú problémák észlelhetők, amelyek megkerülő megoldást igényelnek. A Data Box Edge/Data Box Gateway üzembe helyezése előtt alaposan tekintse át a kibocsátási megjegyzésekben található információkat.
 
@@ -50,4 +50,4 @@ A következő táblázat összefoglalja az Data Box Gateway futó kiadásának i
 ## <a name="next-steps"></a>További lépések
 
 - [Felkészülés a Azure Data Box Gateway üzembe helyezésére](data-box-gateway-deploy-prep.md).
-- [Felkészülés a Azure Data Box Edge üzembe helyezésére](data-box-edge-deploy-prep.md).
+- [Felkészülés a Azure Data Box Edge üzembe helyezésére](azure-stack-edge-deploy-prep.md).

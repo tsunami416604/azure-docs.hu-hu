@@ -1,23 +1,17 @@
 ---
-title: 'Java SDK: fájlrendszer-műveletek Azure Data Lake Storage Gen1on | Microsoft Docs'
-description: A Azure Data Lake Storage Gen1 Java SDK használatával hajthat végre fájlrendszerbeli műveleteket Data Lake Storage Gen1 például mappák létrehozása stb.).
-services: data-lake-store
-documentationcenter: ''
+title: Java SDK – fájlrendszerbeli műveletek Data Lake Storage Gen1-Azure-ban
+description: A Java SDK for Azure Data Lake Storage Gen1 használatával olyan fájlrendszerbeli műveleteket hajthat végre, mint például a mappák létrehozása, valamint az adatfájlok feltöltése és letöltése Data Lake Storage Gen1.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6f97443e4bcf6689f0bf49917774f662d5462566
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "60877464"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691777"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>Filesystem-műveletek Azure Data Lake Storage Gen1 a Java SDK használatával
 > [!div class="op_single_selector"]
@@ -58,7 +52,7 @@ A [GitHubon](https://azure.microsoft.com/documentation/samples/data-lake-store-j
           </dependency>
         </dependencies>
    
-    Az első függőség a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) használata a Maven adattárból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Storage Gen1 SDK a [slf4j](https://www.slf4j.org/) -naplózási homlokzatot használja, amely számos népszerű naplózási keretrendszer közül választhat, például Log4j, Java-naplózás, logback stb., vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
+    Az első függőség a Data Lake Storage Gen1 SDK (`azure-data-lake-store-sdk`) használata a Maven adattárból. A második függőség az alkalmazással használandó naplózási keretrendszer (`slf4j-nop`) meghatározása. A Data Lake Storage Gen1 SDK a [SLF4J](https://www.slf4j.org/) -naplózási homlokzatot használja, amely számos népszerű naplózási keretrendszer közül választhat, például Log4j, Java-naplózás, Logback stb., vagy nincs naplózás. Ebben a példában kikapcsoljuk a naplózást, mivel az **slf4j-nop** kötést eszközt használjuk. Az alkalmazásban való egyéb naplózási lehetőségek használatáról [itt talál információt](https://www.slf4j.org/manual.html#projectDep).
 
 3. Adja hozzá az alábbi importálási utasításokat az alkalmazáshoz.
 

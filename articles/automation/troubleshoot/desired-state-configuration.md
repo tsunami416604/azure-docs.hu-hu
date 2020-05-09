@@ -1,6 +1,6 @@
 ---
-title: Azure Automation állapot konfigurációjának hibaelhárítása (DSC)
-description: Ez a cikk a Azure Automation állapot-konfiguráció (DSC) hibaelhárításával kapcsolatos információkat tartalmaz.
+title: Azure Automation állapot-konfiguráció hibaelhárítása
+description: Ez a cikk a Azure Automation állapot-konfiguráció hibaelhárításával kapcsolatos információkat tartalmaz.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,33 +9,33 @@ ms.author: magoedte
 ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c045e110e21ed201278dcd84f38cb4a376ae8db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d0801bb44fc0c08df1adee1f817e8fccab166fb5
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679307"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652811"
 ---
-# <a name="troubleshoot-issues-with-azure-automation-state-configuration-dsc"></a>Azure Automation állapot-konfigurációval (DSC) kapcsolatos problémák elhárítása
+# <a name="troubleshoot-issues-with-azure-automation-state-configuration"></a>Azure Automation állapot-konfigurációval kapcsolatos problémák elhárítása
 
-Ez a cikk a konfigurációk Azure Automation állapot-konfigurációban (DSC) történő összeállítása vagy telepítése során felmerülő hibák elhárításával kapcsolatos információkat tartalmaz.
+Ez a cikk a konfigurációk Azure Automation állapotának konfigurációjában való fordításakor vagy telepítésekor felmerülő hibák elhárításával kapcsolatos információkat tartalmaz.
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
+>A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítése](../automation-update-azure-modules.md)című cikkben ismertetett lépéseket követve.
 
-## <a name="diagnosing-an-issue"></a>Probléma diagnosztizálása
+## <a name="diagnose-an-issue"></a>Probléma diagnosztizálása
 
 Ha a konfiguráció fordítási vagy telepítési hibáját kapja, a következő lépésekkel diagnosztizálhatja a problémát.
 
 ### <a name="1-ensure-that-your-configuration-compiles-successfully-on-the-local-machine"></a>1. Győződjön meg arról, hogy a konfiguráció sikeresen lefordításra került a helyi gépen
 
-Azure Automation állapot-konfiguráció (DSC) a PowerShell desired State Configuration (DSC) szolgáltatásra épül. A DSC nyelvét és szintaxisát a [POWERSHELL DSC docs](https://docs.microsoft.com/powershell/scripting/overview)dokumentációjában találja.
+Azure Automation állapot-konfiguráció a PowerShell desired State Configuration (DSC) szolgáltatásra épül. A DSC nyelvét és szintaxisát a [POWERSHELL DSC docs](https://docs.microsoft.com/powershell/scripting/overview)dokumentációjában találja.
 
 A DSC-konfiguráció helyi gépen való fordításával felderítheti és megoldhatja a gyakori hibákat, például a következőket:
 
-   - Hiányzó modulok
-   - Szintaktikai hibák
-   - Logikai hibák
+   - Hiányzó modulok.
+   - Szintaktikai hibák.
+   - Logikai hibák.
 
 ### <a name="2-view-dsc-logs-on-your-node"></a>2. a csomóponton található DSC-naplók megtekintése
 
@@ -45,19 +45,19 @@ A [xDscDiagnostics](https://github.com/PowerShell/xDscDiagnostics) modul segíts
 
 A `xDscDiagnostics` modult a helyi gépen is telepítheti a [STABLE verzió telepítése moduljának](https://github.com/PowerShell/xDscDiagnostics#install-the-stable-version-module)utasításait követve.
 
-Ha a `xDscDiagnostics` modult az Azure-gépen szeretné telepíteni, használja a következőt: [hívás-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0). A Azure Portal Futtatás **parancsát** is használhatja a [Windows rendszerű virtuális gépen futtatott PowerShell-parancsfájlok futtatása](../../virtual-machines/windows/run-command.md)című témakörben ismertetett lépéseket követve a Run paranccsal.
+Ha a `xDscDiagnostics` modult az Azure-gépen szeretné telepíteni, használja a következőt: [hívás-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand?view=azps-3.7.0). A Azure Portal Futtatás **parancsát** is használhatja a [Windows rendszerű virtuális gépen a PowerShell-parancsfájlok futtatása a Futtatás paranccsal](../../virtual-machines/windows/run-command.md)című témakör lépéseit követve.
 
 További információ a **xDscDiagnostics**használatáról: a [XDSCDIAGNOSTICS használata a DSC-naplók elemzéséhez](/powershell/scripting/dsc/troubleshooting/troubleshooting#using-xdscdiagnostics-to-analyze-dsc-logs). Lásd még: [xDscDiagnostics-parancsmagok](https://github.com/PowerShell/xDscDiagnostics#cmdlets).
 
 ### <a name="3-ensure-that-nodes-and-the-automation-workspace-have-required-modules"></a>3. Győződjön meg arról, hogy a csomópontok és az Automation-munkaterület szükséges modulokkal rendelkezik
 
-A DSC a csomóponton telepített moduloktól függ. Azure Automation állapot konfigurációjának használatakor importálja a szükséges modulokat az Automation-fiókjába az [importálási modulok](../shared-resources/modules.md#importing-modules)lépéseinek használatával. A konfigurációk a modulok adott verzióihoz is tartozhatnak. További információ: [modulok hibakeresése](shared-resources.md#modules).
+A DSC a csomóponton telepített moduloktól függ. Azure Automation állapot konfigurációjának használatakor az [importálási modulok](../shared-resources/modules.md#import-modules)lépéseit követve importálja a szükséges modulokat az Automation-fiókjába. A konfigurációk a modulok adott verzióihoz is tartozhatnak. További információ: [modulok hibakeresése](shared-resources.md#modules).
 
-## <a name="scenario-a-configuration-with-special-characters-cannot-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>Forgatókönyv: speciális karaktereket tartalmazó konfiguráció nem törölhető a portálról
+## <a name="scenario-a-configuration-with-special-characters-cant-be-deleted-from-the-portal"></a><a name="unsupported-characters"></a>Forgatókönyv: speciális karaktereket tartalmazó konfiguráció nem törölhető a portálról
 
 ### <a name="issue"></a>Probléma
 
-Amikor egy DSC-konfigurációt próbál meg törölni a portálról, a következő hibaüzenet jelenik meg:
+Amikor egy DSC-konfigurációt próbál törölni a portálról, a következő hibaüzenet jelenik meg:
 
 ```error
 An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
@@ -65,13 +65,13 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 
 ### <a name="cause"></a>Ok
 
-Ez a hiba egy ideiglenes probléma, amelynek megoldódik a megoldása.
+Ez a hiba egy ideiglenes probléma, amelyet megterveztek a megoldás.
 
 ### <a name="resolution"></a>Megoldás:
 
 A konfiguráció törléséhez használja a [Remove-AzAutomationDscConfiguration] (https://docs.microsoft.com/powershell/module/Az.Automation/Remove-AzAutomationDscConfiguration?view=azps-3.7.0 parancsmagot).
 
-### <a name="scenario-failed-to-register-dsc-agent"></a><a name="failed-to-register-agent"></a>Forgatókönyv: nem sikerült regisztrálni a DSC-ügynököt
+## <a name="scenario-failed-to-register-the-dsc-agent"></a><a name="failed-to-register-agent"></a>Forgatókönyv: nem sikerült regisztrálni a DSC-ügynököt
 
 ### <a name="issue"></a>Probléma
 
@@ -94,9 +94,9 @@ Ezt a hibát általában egy tűzfal okozza, a gép a proxykiszolgáló mögött
 
 ### <a name="resolution"></a>Megoldás:
 
-Ellenőrizze, hogy a számítógépe rendelkezik-e a DSC-hez megfelelő végpontokkal, majd próbálkozzon újra. A szükséges portok és címek listáját itt tekintheti meg: [Network Planning](../automation-dsc-overview.md#network-planning)
+Ellenőrizze, hogy a számítógépe rendelkezik-e a DSC-hez megfelelő végpontokkal, majd próbálkozzon újra. A szükséges portok és címek listáját itt tekintheti meg: [hálózati tervezés](../automation-dsc-overview.md#network-planning).
 
-## <a name="a-nameunauthorizedscenario-status-reports-return-response-code-unauthorized"></a><a name="unauthorized"><a/>Forgatókönyv: az állapotjelentések nem engedélyezett válaszüzeneteket adnak vissza
+## <a name="a-nameunauthorizedscenario-status-reports-return-the-response-code-unauthorized"></a><a name="unauthorized"><a/>Forgatókönyv: az állapotjelentések jogosulatlanul adják vissza a válasz kódját
 
 ### <a name="issue"></a>Probléma
 
@@ -118,21 +118,21 @@ Ezt a problémát az is okozhatja, hogy a proxy konfigurációja nem engedélyez
 
 ### <a name="resolution"></a>Megoldás:
 
-Az alábbi lépéseket követve újra regisztrálhatja a meghibásodott DSC-csomópontot.
+A sikertelen DSC-csomópontok újraregisztrálásához kövesse az alábbi lépéseket.
 
-1. lépés – a csomópont regisztrációjának törlése.
+#### <a name="step-1-unregister-the-node"></a>1. lépés: a csomópont regisztrációjának törlése
 
-1. A Azure Portalban navigáljon a **Home** -> **Automation-fiókok** -> (az Automation-fiók)-> **állapot-konfiguráció (DSC)** elemre.
-2. Válassza a **csomópontok**lehetőséget, majd kattintson a csomópontra.
-3. A csomópont regisztrációjának megszüntetéséhez kattintson a **regisztráció** törlése elemre.
+1. A Azure Portal lépjen a **Home** > **Automation-fiókok** > (az Automation-fiók) > **állapot-konfiguráció (DSC)** elemre.
+1. Válassza ki a **csomópontok**elemet, és válassza ki a problémával rendelkező csomópontot.
+1. A csomópont regisztrációjának megszüntetéséhez válassza a **regisztráció** törlése lehetőséget.
 
-2. lépés – a DSC-bővítmény eltávolítása a csomópontból.
+#### <a name="step-2-uninstall-the-dsc-extension-from-the-node"></a>2. lépés: a DSC-bővítmény eltávolítása a csomópontból
 
-1. A Azure Portalban navigáljon a **Home** -> **Virtual Machine** -> (nem csomópont)-> **bővítmények**elemre.
-2. Válassza a **Microsoft. PowerShell. DSC**, a PowerShell DSC bővítmény elemet.
-3. A bővítmény eltávolításához kattintson az **Eltávolítás** gombra.
+1. A Azure Portal nyissa meg a **Kezdőlap** > **virtuális gép** > (a csomópont meghibásodása) > **bővítmények**lehetőséget.
+1. Válassza a **Microsoft. PowerShell. DSC**, a PowerShell DSC bővítmény elemet.
+1. A bővítmény eltávolításához válassza az **Eltávolítás** lehetőséget.
 
-3. lépés – az összes rossz vagy lejárt tanúsítvány eltávolítása a csomópontból.
+#### <a name="step-3-remove-all-bad-or-expired-certificates-from-the-node"></a>3. lépés: az összes hibás vagy lejárt tanúsítvány eltávolítása a csomópontból
 
 Futtassa a következő parancsokat egy rendszergazda jogú PowerShell-parancssorból:
 
@@ -152,19 +152,19 @@ If (($certs.Count) -gt 0)
 }
 ```
 
-4. lépés – a meghibásodott csomópont újbóli regisztrálása.
+#### <a name="step-4-reregister-the-failing-node"></a>4. lépés: a sikertelen csomópont újraregisztrálása
 
-1. A Azure Portal navigáljon a **Home** -> **Automation-fiókok** – > (az Automation-fiók) – > **állapot konfigurálása (DSC)**
-2. Válassza ki a **csomópontokat**.
-3. Kattintson a **Hozzáadás** parancsra.
-4. Válassza a hibás csomópontot.
-5. Kattintson a **kapcsolat** lehetőségre, és válassza ki a kívánt beállításokat.
+1. A Azure Portal lépjen a **Home** > **Automation-fiókok** > (az Automation-fiók) > **állapot-konfiguráció (DSC)** elemre.
+1. Válassza ki a **csomópontokat**.
+1. Válassza a **Hozzáadás** lehetőséget.
+1. Válassza a hibás csomópontot.
+1. Válassza a **kapcsolat**lehetőséget, és válassza ki a kívánt beállításokat.
 
 ## <a name="scenario-node-is-in-failed-status-with-a-not-found-error"></a><a name="failed-not-found"></a>Forgatókönyv: a csomópont "nem található" hiba miatt sikertelen állapotú.
 
 ### <a name="issue"></a>Probléma
 
-A csomópontnak van egy sikertelen állapotú jelentése, amely a következő hibát tartalmazza:
+A csomóponton egy sikertelen állapotú jelentés található, amely a következő hibát tartalmazza:
 
 ```error
 The attempt to get the action from server https://<url>//accounts/<account-id>/Nodes(AgentId=<agent-id>)/GetDscAction failed because a valid configuration <guid> cannot be found.
@@ -177,9 +177,9 @@ Ez a hiba általában akkor fordul elő, ha a csomópontot egy konfigurációs n
 ### <a name="resolution"></a>Megoldás:
 
 * Győződjön meg arról, hogy a csomópontot a csomópont-konfiguráció nevével rendeli hozzá, ne pedig a konfiguráció nevét.
-* Csomópont-konfigurációt Azure Portal vagy PowerShell-parancsmaggal hozzárendelhet egy csomóponthoz.
+* Csomópont-konfigurációt a Azure Portal vagy egy PowerShell-parancsmag használatával rendelhet hozzá egy csomóponthoz.
 
-  * A Azure Portal navigáljon a **Home** -> **Automation-fiókok** – > (az Automation-fiók) – > **állapot-konfiguráció (DSC)** elemre, majd válasszon ki egy csomópontot, és kattintson a **csomópont-konfiguráció kiosztása**elemre.
+  * A Azure Portal lépjen a **Home** > **Automation-fiókok** > (az Automation-fiók) > **állapot-konfiguráció (DSC)** elemre. Ezután válasszon ki egy csomópontot, és válassza a **csomópont-konfiguráció kiosztása**lehetőséget.
   * Használja a [set-AzAutomationDscNode](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationDscNode?view=azps-3.7.0) parancsmagot.
 
 ## <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-was-compiled"></a><a name="no-mof-files"></a>Forgatókönyv: a konfiguráció lefordítása során a rendszer nem állított fel csomópont-konfigurációkat (MOF-fájlokat)
@@ -201,9 +201,9 @@ Ha a DSC-konfigurációban a `Node` kulcsszót követő kifejezés a értékre v
 A probléma megoldásához használja az alábbi megoldások egyikét:
 
 * Győződjön meg arról, hogy a konfigurációs definícióban a `Node` kulcsszó melletti kifejezés nem a NULL értékre van kiértékelve.
-* Ha a konfiguráció fordításakor [ConfigurationData](../automation-dsc-compile.md) adott át, akkor győződjön meg arról, hogy a konfigurációs adatokból származó értékek átadása folyamatban van.
+* Ha a konfiguráció lefordításakor [ConfigurationData](../automation-dsc-compile.md) továbbít, győződjön meg arról, hogy a konfigurációs adatokból származó értékek átadása folyamatban van.
 
-### <a name="scenario-the-dsc-node-report-becomes-stuck-in-the-in-progress-state"></a><a name="dsc-in-progress"></a>Forgatókönyv: a DSC-csomópont jelentésének beragadása folyamatban állapotba kerül
+## <a name="scenario-the-dsc-node-report-becomes-stuck-in-the-in-progress-state"></a><a name="dsc-in-progress"></a>Forgatókönyv: a DSC-csomópont jelentésének beragadása folyamatban állapotba kerül
 
 ### <a name="issue"></a>Probléma
 
@@ -219,7 +219,7 @@ Frissítette a Windows Management Framework (WMF) verzióját, és sérült Wind
 
 ### <a name="resolution"></a>Megoldás:
 
-Kövesse a DSC-ben [ismert problémák és korlátozások](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)című témakör utasításait.
+Kövesse a [DSC ismert problémák és korlátozások](https://docs.microsoft.com/powershell/scripting/wmf/known-issues/known-issues-dsc)című témakör utasításait.
 
 ## <a name="scenario-unable-to-use-a-credential-in-a-dsc-configuration"></a><a name="issue-using-credential"></a>Forgatókönyv: a hitelesítő adatok nem használhatók DSC-konfigurációban
 
@@ -239,11 +239,11 @@ Egy konfigurációban használta a hitelesítő adatokat, de az egyes `Configura
 
 Győződjön meg arról, hogy a megfelelő `ConfigurationData` értékre `PSDscAllowPlainTextPassword` van állítva a konfigurációban említett minden csomópont-konfiguráció esetében, hogy igaz legyen. Lásd: [DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban](../automation-dsc-compile.md).
 
-## <a name="scenario-failure-processing-extension-error-when-onboarding-from-dsc-extension"></a><a name="failure-processing-extension"></a>Forgatókönyv: "a bővítmény feldolgozása sikertelen" hiba a DSC-bővítmény bevezetésekor
+## <a name="scenario-failure-processing-extension-error-when-onboarding-from-a-dsc-extension"></a><a name="failure-processing-extension"></a>Forgatókönyv: "a bővítmény feldolgozása sikertelen" hiba a DSC-bővítmény bevezetésekor
 
 ### <a name="issue"></a>Probléma
 
-Ha DSC-bővítményt használ, a hibát tartalmazó hiba fordul elő:
+Ha DSC-bővítmény használatával végez bevezetést, a hibát tartalmazó hiba fordul elő:
 
 ```error
 VM has reported a failure when processing extension 'Microsoft.Powershell.DSC'. Error message: \"DSC COnfiguration 'RegistrationMetaConfigV2' completed with error(s). Following are the first few: Registration of the Dsc Agent with the server <url> failed. The underlying error is: The attempt to register Dsc Agent with Agent Id <ID> with the server <url> return unexpected response code BadRequest. .\".
@@ -258,11 +258,11 @@ Ez a hiba általában akkor fordul elő, ha a csomóponthoz olyan csomópont-kon
 * Győződjön meg arról, hogy a csomópontot olyan névvel rendeli hozzá, amely pontosan megegyezik a szolgáltatásban szereplő névvel.
 * Dönthet úgy is, hogy nem tartalmazza a csomópont-konfiguráció nevét, amely a csomópont bevezetését eredményezi, de nem rendel hozzá csomópont-konfigurációt.
 
-## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-using-powershell"></a><a name="cross-subscription"></a>Forgatókönyv: "egy vagy több hiba történt" hibaüzenet jelenik meg, amikor egy csomópontot regisztrál a PowerShell használatával
+## <a name="scenario-one-or-more-errors-occurred-error-when-registering-a-node-by-using-powershell"></a><a name="cross-subscription"></a>Forgatókönyv: "egy vagy több hiba történt" hibaüzenet jelenik meg, amikor a PowerShell használatával regisztrál egy csomópontot.
 
 ### <a name="issue"></a>Probléma
 
-Ha regisztrál egy csomópontot a [Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) vagy a [Register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)használatával, a következő hibaüzenet jelenik meg:
+Ha regisztrálja a csomópontot a [Register-AzAutomationDSCNode](https://docs.microsoft.com/powershell/module/az.automation/register-azautomationdscnode?view=azps-3.7.0) vagy a [Register-AzureRMAutomationDSCNode](https://docs.microsoft.com/powershell/module/azurerm.automation/register-azurermautomationdscnode?view=azurermps-6.13.0)használatával, a következő hibaüzenet jelenik meg:
 
 ```error
 One or more errors occurred.
@@ -274,16 +274,16 @@ Ez a hiba akkor fordul elő, ha olyan csomópontot próbál meg regisztrálni eg
 
 ### <a name="resolution"></a>Megoldás:
 
-Az előfizetési csomópontot úgy kezelheti, mintha egy különálló felhőhöz vagy a helyszíni környezethez van definiálva. Regisztrálja a csomópontot az alábbi bevezetési lehetőségek egyikével:
+Az előfizetési csomópontot úgy kezelheti, mintha egy különálló felhőhöz vagy a helyszíni környezethez van definiálva. Regisztrálja a csomópontot a következő bevezetési lehetőségek egyikével:
 
-* Windows – [fizikai/virtuális Windows rendszerű számítógépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
-* Linux- [fizikai/virtuális Linux rendszerű számítógépek a helyszínen, vagy az Azure-on kívül más felhőben is](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
+* Windows: [fizikai/virtuális Windowsos gépek a helyszínen, vagy az Azure-tól/AWS-től eltérő felhőben](../automation-dsc-onboarding.md#onboarding-physicalvirtual-windows-machines).
+* Linux: [fizikai/virtuális Linux rendszerű számítógépek a helyszínen, vagy az Azure-on kívül más felhőben is](../automation-dsc-onboarding.md#onboarding-physicalvirtual-linux-machines).
 
-## <a name="scenario-error-message---provisioning-failed"></a><a name="agent-has-a-problem"></a>Forgatókönyv: hibaüzenet – "kiépítés sikertelen"
+## <a name="scenario-provisioning-has-failed-error-message"></a><a name="agent-has-a-problem"></a>Forgatókönyv: a "kiépítés sikertelen" hibaüzenet
 
 ### <a name="issue"></a>Probléma
 
-Csomópont regisztrálása esetén a következő hibaüzenet jelenik meg:
+Amikor regisztrál egy csomópontot, a következő hibaüzenet jelenik meg:
 
 ```error
 Provisioning has failed
@@ -301,7 +301,7 @@ Ez az üzenet akkor fordul elő, ha probléma van a csomópont és az Azure köz
 
 ### <a name="issue"></a>Probléma
 
-A Linux rendszerű konfiguráció alkalmazásakor a hibát tartalmazó hiba fordul elő:
+Ha Linux rendszeren alkalmazza a konfigurációt, a hibát tartalmazó hiba fordul elő:
 
 ```error
 This event indicates that failure happens when LCM is processing the configuration. ErrorId is 1. ErrorDetail is The SendConfigurationApply function did not succeed.. ResourceId is [resource]name and SourceInfo is ::nnn::n::resource. ErrorMessage is A general error occurred, not covered by a more specific error code..
@@ -315,11 +315,11 @@ Ha a **/tmp** helye értékre van `noexec`állítva, a DSC jelenlegi verziója n
 
 Távolítsa `noexec` el a beállítást a **/tmp** helyéről.
 
-## <a name="scenario-node-configuration-names-that-overlap-can-result-in-bad-release"></a><a name="compilation-node-name-overlap"></a>Forgatókönyv: az átfedésben lévő csomópont-konfigurációs nevek helytelen kiadást eredményezhetnek
+## <a name="scenario-node-configuration-names-that-overlap-can-result-in-a-bad-release"></a><a name="compilation-node-name-overlap"></a>Forgatókönyv: az átfedésben lévő csomópont-konfigurációs nevek rossz kiadást okozhatnak
 
 ### <a name="issue"></a>Probléma
 
-Ha egyetlen konfigurációs parancsfájl használatával hoz létre több csomópontos konfigurációt, és egyes csomópont-konfigurációs nevek más nevek részhalmazai, a fordítási szolgáltatás befejezheti a helytelen konfiguráció hozzárendelését. Ez a probléma csak akkor fordul elő, ha egyetlen parancsfájl használatával állít elő konfigurációkat egy csomóponton, és csak akkor, ha a név átfedésben van a karakterlánc elején. Ez a példa egy olyan konfigurációs parancsfájl, amely a szórótábla átadott csomóponti adat alapján történő konfigurációk létrehozásához használható a parancsmagok használatával, és a csomópont adatai tartalmazzák a **kiszolgáló** és a **1kiszolgáló üzemmódját**nevű kiszolgálókat.
+Ha egyetlen konfigurációs parancsfájl használatával hoz létre több csomópontos konfigurációt, és egyes csomópont-konfigurációs nevek más nevek részhalmazai, a fordítási szolgáltatás befejezheti a helytelen konfiguráció hozzárendelését. Ez a probléma csak akkor fordul elő, ha egyetlen parancsfájl használatával hoz létre konfigurációkat egy csomóponton, és csak akkor, ha a név átfedésben van a karakterlánc elején. Ez a példa egy olyan konfigurációs parancsfájl, amely a szórótábla átadott csomóponti adat alapján történő konfigurációk létrehozásához használható a parancsmagok használatával, és a csomópont adatai tartalmazzák a **kiszolgáló** és a **1kiszolgáló üzemmódját**nevű kiszolgálókat.
 
 ### <a name="cause"></a>Ok
 
@@ -345,8 +345,8 @@ A DSC-konfigurációkat gyorsabban elemezheti, ha explicit módon az `ModuleName
 
 ## <a name="next-steps"></a>További lépések
 
-Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
+Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Az Azure [@AzureSupport](https://twitter.com/azuresupport)-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal való csatlakozással javíthatja az ügyfelek élményét: válaszokat, támogatást és szakértőket.
-* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.
+* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport)a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
+* Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.

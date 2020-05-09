@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/24/2020
+ms.date: 05/06/2020
 ms.author: jingwang
-ms.openlocfilehash: 5ce1b85394a7bb604841f7fb941bdebf12c0bca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1527195296237eb8c9c309f8ac4a5911136cf77
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414159"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891750"
 ---
 #  <a name="preserve-metadata-and-acls-using-copy-activity-in-azure-data-factory"></a>Metaadatok és ACL-ek megőrzése a másolási tevékenység használatával Azure Data Factory
 
@@ -32,6 +32,8 @@ A másolási tevékenység a következő attribútumok megőrzését támogatja 
 
 - **Az ügyfél által megadott metaadatok** 
 - Valamint a következő **öt adattár beépített rendszertulajdonsága**: `contentType` `contentLanguage` (az Amazon S3 kivételével) `contentEncoding`,, `contentDisposition`,. `cacheControl`
+
+**A metaadatok közötti különbségek kezelése:** Az Amazon S3 és az Azure Storage különböző karakterkészleteket tesz lehetővé az ügyfél által megadott metaadatok kulcsaiban. Ha úgy dönt, hogy a metaadatokat a másolási tevékenységnapló használatával őrzi meg, az ADF automatikusan lecseréli az érvénytelen karaktereket az "_" értékre.
 
 Ha fájlokat másol az Amazon S3/Azure Data Lake Storage Gen2/Azure blobból a bináris formátumú Azure Data Lake Storage Gen2/Azure blobba, a **megőrzés** **lehetőséget a tevékenység** > -szerzői műveletek vagy a **Beállítások** lap adatok másolása eszközének**Beállítások lapján** tekintheti meg.
 

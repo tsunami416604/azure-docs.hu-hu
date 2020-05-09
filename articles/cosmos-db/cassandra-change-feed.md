@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: thvankra
-ms.openlocfilehash: 167d9fc68cb075a2cf96d9079131be9e5a510c08
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43743f62b08bb00403f5dac88682d06daab757a4
+ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137416"
+ms.lasthandoff: 05/06/2020
+ms.locfileid: "82872562"
 ---
 # <a name="change-feed-in-the-azure-cosmos-db-api-for-cassandra"></a>A Azure Cosmos DB API-hoz tartozó hírcsatorna módosítása a Cassandra-hoz
 
@@ -21,6 +21,8 @@ A "Cassandra" Azure Cosmos DB API-n keresztüli [adatcsatorna](change-feed.md) -
 Az alábbi példa azt mutatja be, hogyan kérhető le egy módosítási hírcsatorna a Cassandra APIi tábla összes sorában a .NET használatával. Az predikátum COSMOS_CHANGEFEED_START_TIME () közvetlenül a CQL-n belül használható a változási csatornán lévő elemek lekérdezésére a megadott kezdési időpontból (ebben az esetben az aktuális datetime értéknél). A teljes minta letölthető [a C# nyelvhez itt és](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-db-cassandra-change-feed/cassandra-change-feed/) a Javához [itt](https://github.com/Azure-Samples/cosmos-changefeed-cassandra-java).
 
 Az egyes iterációkban a lekérdezés az utolsó pont módosításainál folytatódik, a lapozási állapot használatával. A tábla új változásainak folyamatos streamjét láthatjuk. Ekkor megjelenik a beszúrt vagy frissített sorok változásai. A Cassandra API változási csatornán keresztüli törlési műveletek figyelése jelenleg nem támogatott.
+
+# <a name="c"></a>[C #](#tab/csharp)
 
 ```C#
     //set initial start time for pulling the change feed
@@ -70,6 +72,9 @@ Az egyes iterációkban a lekérdezés az utolsó pont módosításainál folyta
     }
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
         Session cassandraSession = utils.getSession();
 
@@ -104,7 +109,11 @@ Az egyes iterációkban a lekérdezés az utolsó pont módosításainál folyta
         }
 
 ```
+---
+
 Ahhoz, hogy az elsődleges kulcs egyetlen sorba módosítsa a módosításokat, felveheti az elsődleges kulcsot a lekérdezésbe. Az alábbi példa bemutatja, hogyan követheti nyomon a sor változásait, ahol "user_id = 1"
+
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```C#
     //Return the latest change for all row in 'user' table where user_id = 1
@@ -112,11 +121,15 @@ Ahhoz, hogy az elsődleges kulcs egyetlen sorba módosítsa a módosításokat, 
     $"SELECT * FROM uprofile.user where user_id = 1 AND COSMOS_CHANGEFEED_START_TIME() = '{timeBegin.ToString("yyyy-MM-ddTHH:mm:ss.fffZ", CultureInfo.InvariantCulture)}'");
 
 ```
+
+# <a name="java"></a>[Java](#tab/java)
+
 ```java
     String query="SELECT * FROM uprofile.user where user_id=1 and COSMOS_CHANGEFEED_START_TIME()='" 
                     + dtf.format(now)+ "'";
     SimpleStatement st=new  SimpleStatement(query);
 ```
+---
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 A következő korlátozások érvényesek a Change feed Cassandra API használatával történő használatakor:

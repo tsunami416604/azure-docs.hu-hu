@@ -7,14 +7,14 @@ ms.service: mysql
 ms.devlang: azurepowershel
 ms.topic: conceptual
 ms.date: 4/28/2020
-ms.openlocfilehash: 1e63a6e57e1dc929c78e5278df6ef0e4ab2a17d7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 871b1ba81f672459378b23705ad5b96213667a73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82230846"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82609068"
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-powershell"></a>Azure Database for MySQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
+# <a name="how-to-back-up-and-restore-an-azure-database-for-mysql-server-using-powershell"></a>Azure Database for MySQL-kiszolgáló biztonsági mentése és visszaállítása a PowerShell használatával
 
 A visszaállítási funkciók engedélyezéséhez a rendszer rendszeresen biztonsági mentést készít Azure Database for MySQL kiszolgálóról. A szolgáltatás használatával visszaállíthatja a kiszolgálót és az összes adatbázisát egy korábbi időpontra, egy új kiszolgálón.
 
@@ -77,7 +77,7 @@ A **PointInTimeRestore** `Restore-AzMySqlServer` parancsmag PointInTimeRestore p
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 | ResourceGroupName |  myResourceGroup |  Az erőforráscsoport, amelyben a forráskiszolgáló található.  |
-| Name (Név) | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
+| Name | mydemoserver-restored | A visszaállítási paranccsal létrehozott új kiszolgáló neve. |
 | RestorePointInTime | 2020 – 03-13T13:59:00Z | Válasszon ki egy időpontot a visszaállításhoz. Ennek a dátumnak és időnek a forráskiszolgáló biztonsági mentésének megőrzési időszakán belül kell lennie. Használja a ISO8601 dátum és idő formátumát. Használhatja például a saját helyi időzónáját, például **2020-03-13T05:59:00-08:00**. Használhatja az UTC Zulu formátumot is, például **2018-03-13T13:59:00Z**. |
 | UsePointInTimeRestore | `<SwitchParameter>` | A visszaállításhoz használja az időponthoz tartozó módot. |
 
@@ -119,7 +119,7 @@ A **GeoRestore** `Restore-AzMySqlServer` parancsmag GeoRestore paraméterének a
 | Beállítás | Ajánlott érték | Leírás  |
 | --- | --- | --- |
 |ResourceGroupName | myResourceGroup | Azon erőforráscsoport neve, amelyhez az új kiszolgáló tartozik.|
-|Name (Név) | mydemoserver – georestored | Az új kiszolgáló neve. |
+|Name | mydemoserver – georestored | Az új kiszolgáló neve. |
 |Hely | eastus | Az új kiszolgáló helye. |
 |UseGeoRestore | `<SwitchParameter>` | A visszaállításhoz használja a Geo üzemmódot. |
 
@@ -131,6 +131,5 @@ A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az erede
 
 ## <a name="next-steps"></a>További lépések
 
-- További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md)
-- A [replikák](concepts-read-replicas.md) megismerése
-- További információ az [üzletmenet-folytonossági](concepts-business-continuity.md) lehetőségekről
+> [!div class="nextstepaction"]
+> [Azure Database for MySQL kiszolgáló paramétereinek testreszabása a PowerShell használatával](howto-configure-server-parameters-using-powershell.md)

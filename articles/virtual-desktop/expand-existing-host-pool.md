@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: be76c665e1f5319b3e1ff1976e44fee9cd90ea6b
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: d46d5618d7e3dc26775401f4a90d0c98d75ea31a
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607198"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82929213"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel
 
@@ -58,7 +58,7 @@ A gazdagép-készlet bővítése virtuális gépek hozzáadásával:
 
 7. Válassza ki azt az erőforráscsoportot, amelyben létre kívánja hozni a virtuális gépeket, majd válassza ki a régiót. Kiválaszthatja az Ön által használt aktuális régiót vagy egy új régiót.
    
-8. Adja meg a **virtuális gépek számához**használni kívánt munkamenet-gazdagépek új teljes számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, írja be a **8**értéket. 
+8. Adja meg a gazdagép-készletbe felvenni kívánt munkamenet-gazdagépek számát a **virtuális gépek számával**. Ha például öt gazdagépen bővíti a gazdagép-készletet, írja be az **5**értéket.
    
     >[!NOTE]
     >A virtuális gépek mérete vagy képe nem módosítható, mert fontos annak biztosítása, hogy a gazdagépen lévő összes virtuális gép mérete azonos legyen.
