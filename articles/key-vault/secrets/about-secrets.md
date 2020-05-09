@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: eabfa03aa70f54a967fe256f694ef59ad0fe7ebe
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81685438"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82930471"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Tudnivalók a Azure Key Vault titkairól
 
@@ -26,6 +26,10 @@ Fejlesztői szempontból Key Vault API-k elfogadják és visszaadják a titkos �
 A szigorúan bizalmas adatokhoz az ügyfeleknek ajánlott további adatvédelmi rétegeket is használni. Ez lehet például az adatok külön védelmi kulccsal történő titkosítása a Key Vaultba helyezés előtt.  
 
 A Key Vault a Secrets (contentType) mezőt is támogatja. Az ügyfelek megadhatják a titkos kód tartalomtípusát, hogy segítséget nyújtsanak a titkos adatokat a beolvasás során. A mező maximális hossza 255 karakter. Nincsenek előre definiált értékek. A javasolt használat a titkos adatok értelmezésére utal. Előfordulhat például, hogy egy implementáció titkos kulcsként tárolja a jelszavakat és a tanúsítványokat, majd ezt a mezőt használja a megkülönböztetéshez. Nincsenek előre definiált értékek.  
+
+## <a name="encryption"></a>Titkosítás
+
+A Key Vault összes titkát titkosítva tárolja a rendszer. Ez a titkosítás transzparens, és nem igényel műveletet a felhasználótól. A Azure Key Vault szolgáltatás titkosítja a titkot, amikor hozzáadja őket, és automatikusan visszafejti azokat a beolvasás során. A titkosítási kulcs egyedi az egyes kulcstartók esetében.
 
 ## <a name="secret-attributes"></a>Titkos attribútumok
 

@@ -9,12 +9,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: sstein
-ms.openlocfilehash: aa8d1634c015f338053a4d167db34ef0b5a83505
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
-ms.translationtype: HT
+ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
+ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801688"
+ms.locfileid: "82838484"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kibocsátási megjegyzések
 
@@ -93,12 +93,12 @@ A következő funkciók engedélyezve vannak a felügyelt példány üzembe hely
 |[@querya paraméter nem támogatott sp_send_db_mail](#-parameter-not-supported-in-sp_send_db_mail)|Apr 2019|Nincs Áthidaló megoldás| |
 |[A tranzakciós replikációt újra kell konfigurálni a Geo-feladatátvétel után](#transactional-replication-must-be-reconfigured-after-geo-failover)|Mar 2019|Nincs Áthidaló megoldás| |
 |[A VISSZAÁLLÍTÁSi művelet során a rendszer ideiglenes adatbázist használ](#temporary-database-is-used-during-restore-operation)||Megkerülő megoldás| |
-|[A TEMPDB szerkezete és tartalma újra létrejön](#tempdb-structure-and-content-is-re-created)||Nincs Áthidaló megoldás| |
-|[Kis méretű adatbázisfájlok esetén a tárterület nagyobb](#exceeding-storage-space-with-small-database-files)||Megkerülő megoldás| |
-|[Az adatbázis neve helyett GUID-értékek láthatók](#guid-values-shown-instead-of-database-names)||Megkerülő megoldás| |
+|[A TEMPDB szerkezete és tartalma újra létrejön](#tempdb-structure-and-content-is-re-created)| |Nincs Áthidaló megoldás| |
+|[Kis méretű adatbázisfájlok esetén a tárterület nagyobb](#exceeding-storage-space-with-small-database-files)| |Megkerülő megoldás| |
+|[Az adatbázis neve helyett GUID-értékek láthatók](#guid-values-shown-instead-of-database-names) ||Megkerülő megoldás| |
 |[A hibanapló nem marad meg](#error-logs-arent-persisted)||Nincs Áthidaló megoldás| |
-|[Ugyanazon példányon belül két adatbázis tranzakciós hatóköre nem támogatott](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)||Megkerülő megoldás|Mar 2020|
-|[A CLR-modulok és a csatolt kiszolgálók időnként nem hivatkozhatnak helyi IP-címekre.](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)||Megkerülő megoldás| |
+|[A CLR-modulok és a csatolt kiszolgálók időnként nem hivatkozhatnak helyi IP-címekre.](#clr-modules-and-linked-servers-sometimes-cant-reference-a-local-ip-address)| |Megkerülő megoldás| |
+|[Ugyanazon példányon belül két adatbázis tranzakciós hatóköre nem támogatott](#transaction-scope-on-two-databases-within-the-same-instance-isnt-supported)| |Feloldva|Mar 2020|
 |Az adatbázis konzisztencia-ellenőrzése a DBCC CHECKDB UTASÍTÁST használatával nem történt meg az Azure-beli Blob Storage adatbázis visszaállítása után.| |Feloldva|November 2019|
 |Az adott időponthoz tartozó adatbázis-visszaállítás üzletileg kritikus rétegről általános célú szintjére nem lesz sikeres, ha a forrásadatbázis memóriában tárolt OLTP objektumokat tartalmaz.| |Feloldva|TOT 2019|
 |Database Mail funkció külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolatok használatával| |Feloldva|TOT 2019|

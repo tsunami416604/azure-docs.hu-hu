@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8cb641f95e7327e80f42df86a56eba8c34e7e598
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cbe43b298c57d266f0b031b5192f25fe3df07c05
+ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367023"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82582430"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Azure Automation-runbook indítása webhookkal
 
@@ -30,7 +30,7 @@ A következő táblázat ismerteti azokat a tulajdonságokat, amelyeket egy webh
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Name (Név) |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
+| Name |A webhook neve. Megadhatja a kívánt nevet, mert az nem érhető el az ügyfél számára. A rendszer csak a runbook azonosítására szolgál Azure Automationban. Ajánlott eljárásként a webhooknak az azt használó ügyféllel kapcsolatos nevet kell adnia. |
 | URL-cím |A webhook URL-címe. Ez az az egyedi címnek, amelyet az ügyfél HTTP-BEJEGYZÉSsel hív meg, hogy elindítsa a webhookhoz csatolt runbook. A webhook létrehozásakor automatikusan létrejön. Nem adhat meg egyéni URL-címet. <br> <br> Az URL-cím olyan biztonsági jogkivonatot tartalmaz, amely lehetővé teszi, hogy egy harmadik féltől származó rendszer további hitelesítés nélkül hívja meg a runbook. Ezért az URL-címet jelszóként kell kezelni. Biztonsági okokból a webhook létrehozásakor csak a Azure Portal URL-címét tekintheti meg. A jövőbeli használatra biztonságos helyen jegyezze fel az URL-címet. |
 | Lejárat dátuma | A webhook lejárati dátuma, amely után már nem használható. A webhook létrehozása után módosíthatja a lejárati dátumot, feltéve, hogy a webhook nem járt le. |
 | Engedélyezve | Ez a beállítás azt jelzi, hogy a webhook alapértelmezés szerint engedélyezve van-e a létrehozásakor. Ha a tulajdonságot letiltva értékre állítja, akkor egyetlen ügyfél sem használhatja a webhookot. Ezt a tulajdonságot akkor állíthatja be, amikor létrehozza a webhookot vagy bármely más időt a létrehozása után. |
@@ -88,7 +88,7 @@ A runbook belül eldöntheti, hogy egy webhook hívja-e meg a logikát. A runboo
 
 Egy másik stratégia az, hogy a runbook végre kell hajtania egy külső feltétel érvényességét, amikor webhook-kérést kap. Vegyünk például egy GitHub által meghívott runbook, amikor új véglegesít egy GitHub-tárházat. A runbook csatlakozhat a GitHubhoz annak ellenőrzéséhez, hogy új véglegesítés történt a folytatás előtt.
 
-## <a name="creating-a-webhook"></a>Webhook létrehozása
+## <a name="create-a-webhook"></a>Webhook létrehozása
 
 A következő eljárással hozhat létre egy új webhookot, amely egy runbook kapcsolódik a Azure Portal.
 
@@ -106,7 +106,7 @@ A következő eljárással hozhat létre egy új webhookot, amely egy runbook ka
 1. Kattintson a **Parameters (paraméterek** ) elemre a runbook paramétereinek értékének megadásához. Ha a runbook kötelező paraméterekkel rendelkezik, akkor nem hozhatja létre a webhookot, hacsak nem ad meg értékeket.
 1. A webhook létrehozásához kattintson a **Létrehozás** elemre.
 
-## <a name="using-a-webhook"></a>Webhook használata
+## <a name="use-a-webhook"></a>Webhook használata
 
 Ha a létrehozása után webhookot szeretne használni, az ügyfélnek egy HTTP `POST` -kérelmet kell kiadnia a webhook URL-címével. A szintaxis a következő:
 
@@ -131,7 +131,7 @@ Ha a kérelem sikeres, a webhook válasza JSON formátumban tartalmazza a felada
 
 Az ügyfél nem tudja meghatározni, hogy mikor fejeződött be a runbook-feladatok, vagy a befejezési állapota a webhookban. Ezt az információt a feladattal együtt egy másik mechanizmussal, például a [Windows PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationjob) vagy a [Azure Automation API](/rest/api/automation/job)használatával tekintheti meg.
 
-## <a name="renewing-a-webhook"></a><a name="renew-webhook"></a>Webhook megújítása
+## <a name="renew-a-webhook"></a>Webhook megújítása
 
 Webhook létrehozásakor az érvényességi időtartam tíz év, amely után az automatikusan lejár. Miután egy webhook lejárt, nem aktiválhatja újra. Csak azt távolíthatja el, majd újból létrehozhatja. 
 
@@ -200,7 +200,7 @@ else {
 }
 ```
 
-## <a name="testing-the-sample"></a>A minta tesztelése
+## <a name="test-the-sample"></a>A minta tesztelése
 
 Az alábbi példa a Windows PowerShellt használja egy webhooktal rendelkező runbook elindításához. Bármely olyan nyelv, amely HTTP-kéréseket tesz elérhetővé, webhookot használhat. Példaként a Windows PowerShellt használjuk.
 

@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 4f87f2de3747f55562d3f683e1738595624940dd
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
-ms.translationtype: HT
+ms.openlocfilehash: 3ee84c0c868f47dca1aee0401865563a326df3db
+ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854637"
+ms.locfileid: "82864402"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -44,6 +44,8 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **3. ok: [a pillanatkép állapota nem olvasható be, vagy nem lehet pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) .**
 
 **4. ok: [a virtuális gép – ügynök konfigurációs beállításai nincsenek beállítva (Linux rendszerű virtuális gépek esetén)](#vm-agent-configuration-options-are-not-set-for-linux-vms)**
+
+**5. ok: [az Application Control megoldás blokkolja a IaaSBcdrExtension. exe fájlt.](#application-control-solution-is-blocking-iaasbcdrextensionexe)**
 
 ## <a name="usererrorvmprovisioningstatefailed---the-vm-is-in-failed-provisioning-state"></a>UserErrorVmProvisioningStateFailed – a virtuális gép sikertelen kiépítési állapotban van
 
@@ -202,6 +204,14 @@ Ha a waagent részletes naplózásra van szüksége, kövesse az alábbi lépés
 
 A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. Konfigurációs fájl beállításai **bővítmények. az engedélyezés** értékének az **y** és a **kiépítés** beállításnak kell lennie. az ügynököt úgy kell beállítani, hogy a biztonsági mentés **automatikusan** működjön.
 A VM-Agent konfigurációs fájl beállításainak teljes listáját lásd:<https://github.com/Azure/WALinuxAgent#configuration-file-options>
+
+### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Az alkalmazás-ellenőrzési megoldás blokkolja a IaaSBcdrExtension. exe fájlt.
+
+Ha [applockert](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-application-control/applocker/what-is-applocker) (vagy más alkalmazás-vezérlési megoldást) futtat, és a szabályok a közzétevő vagy az elérési út alapján működnek, a **IaaSBcdrExtension. exe** végrehajtható fájl futtatását is megakadályozhatja.
+
+#### <a name="solution"></a>Megoldás
+
+Zárja ki `/var/lib` a Path vagy a **IaaSBcdrExtension. exe** végrehajtható fájlt az applockerből (vagy más alkalmazás-vezérlő szoftverből)
 
 ### <a name="the-snapshot-status-cant-be-retrieved-or-a-snapshot-cant-be-taken"></a><a name="the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken"></a>Nem lehet lekérdezni a pillanatkép állapotát, vagy nem lehet pillanatképet készíteni
 

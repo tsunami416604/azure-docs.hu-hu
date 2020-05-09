@@ -3,12 +3,12 @@ title: Lemezek kizárása a replikációból a Azure Site Recovery
 description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recovery használatával.
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 57bf06f0fde85714530c06cbd008db08de7460d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: abecc19cac57a4a95d01b7a7ec076259088b101b
+ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281846"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82900285"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
 
@@ -26,7 +26,7 @@ A táblázatból összefoglalt lemezek kizárhatók a replikációból.
 
 **Azure – Azure** | **VMware – Azure** | **Hyper-V – Azure** 
 --- | --- | ---
-Igen (a PowerShell használatával) | Igen | Igen 
+Igen | Igen | Igen 
 
 ## <a name="exclude-limitations"></a>Korlátozások kizárása
 
@@ -35,7 +35,7 @@ Igen (a PowerShell használatával) | Igen | Igen
 **Lemez típusa** | A replikációból kizárhatja az alaplemezeket.<br/><br/> Az operációsrendszer-lemezek és a dinamikus lemezek nem zárhatók ki. Az ideiglenes lemezek alapértelmezés szerint ki vannak zárva. | A replikációból kizárhatja az alaplemezeket.<br/><br/> Az operációsrendszer-lemezek és a dinamikus lemezek nem zárhatók ki. | A replikációból kizárhatja az alaplemezeket.<br/><br/> Nem zárhatja ki az operációsrendszer-lemezeket. Azt javasoljuk, hogy ne zárja ki a dinamikus lemezeket. Site Recovery nem tudja azonosítani, hogy melyik VHS alapszintű vagy dinamikus a vendég virtuális gépen. Ha nem zárja ki az összes függő dinamikus kötet lemezét, a védett dinamikus lemez hibás lemezvé válik a feladatátvételi virtuális gépen, és a lemezen lévő adatai nem érhetők el.
 **Lemez replikálása** | A replikáló lemezek nem zárhatók ki.<br/><br/> Tiltsa le és engedélyezze újra a virtuális gép replikálását. |  A replikáló lemezek nem zárhatók ki. |  A replikáló lemezek nem zárhatók ki.
 **Mobilitási szolgáltatás (VMware)** | Nem releváns | A lemezeket csak olyan virtuális gépeken lehet kizárni, amelyeken telepítve van a mobilitási szolgáltatás.<br/><br/> Ez azt jelenti, hogy manuálisan kell telepítenie a mobilitási szolgáltatást azokon a virtuális gépeken, amelyeken ki szeretné zárni a lemezeket. A leküldéses telepítési mechanizmus nem használható, mert csak a replikáció engedélyezése után telepíti a mobilitási szolgáltatást. | Nem releváns.
-**Hozzáadás/Eltávolítás** | A felügyelt lemezekkel rendelkező Azure-beli virtuális gépeken is hozzáadhat és eltávolíthat lemezeket. | A replikáció engedélyezése után nem adhat hozzá és nem távolíthat el lemezeket. Lemez hozzáadásához tiltsa le, majd engedélyezze újra a replikációt. | A replikáció engedélyezése után nem adhat hozzá és nem távolíthat el lemezeket. Tiltsa le, majd engedélyezze újra a replikációt.
+**Hozzáadás/Eltávolítás** | A felügyelt lemezekkel rendelkező, replikálást támogató Azure-beli virtuális gépeken is hozzáadhat felügyelt lemezeket. A replikálásra képes Azure-beli virtuális gépeken nem távolíthat el lemezeket. | A replikáció engedélyezése után nem adhat hozzá és nem távolíthat el lemezeket. Lemez hozzáadásához tiltsa le, majd engedélyezze újra a replikációt. | A replikáció engedélyezése után nem adhat hozzá és nem távolíthat el lemezeket. Tiltsa le, majd engedélyezze újra a replikációt.
 **Feladatátvétel** | Ha egy alkalmazásnak szüksége van egy kizárt lemezre, a feladatátvételt követően manuálisan kell létrehoznia a lemezt, hogy a replikált alkalmazás futtatható legyen.<br/><br/> Azt is megteheti, hogy a virtuális gép feladatátvétele során létrehozza a lemezt az Azure Automation helyreállítási tervbe való integrálásával. | Ha kizár egy olyan lemezt, amelyet az alkalmazásnak szüksége van, manuálisan kell létrehoznia az Azure-ban a feladatátvétel után. | Ha kizár egy olyan lemezt, amelyet az alkalmazásnak szüksége van, manuálisan kell létrehoznia az Azure-ban a feladatátvétel után.
 **Helyszíni feladat-visszavétel – manuálisan létrehozott lemezek** | Nem releváns | **Windows rendszerű virtuális gépek**: az Azure-ban manuálisan létrehozott lemezek nem állnak vissza. Ha például három lemez feladatátvételét hajtja végre, és közvetlenül egy Azure-beli virtuális gépen hoz létre két lemezt, akkor a rendszer csak a feladatátvétel alatt álló három lemezt adja vissza.<br/><br/> **Linuxos virtuális gépek**: az Azure-ban manuálisan létrehozott lemezek visszahívása sikertelen. Ha például egy három lemez feladatátvételét hajtja végre, és két lemezt hoz létre egy Azure-beli virtuális gépen, akkor mind az öt visszakerül a művelet. A manuálisan létrehozott lemezek nem zárhatók ki a feladat-visszavételből. | Az Azure-ban manuálisan létrehozott lemezek nem állnak vissza. Ha például három lemez feladatátvételét hajtja végre, és közvetlenül egy Azure-beli virtuális gépen hoz létre két lemezt, akkor a feladatátvételt csak három lemez hajtja végre.
 **Helyszíni feladat-visszavétel – kizárt lemezek** | Nem releváns | Ha az eredeti gépre visszalép, a feladat-visszavételi virtuálisgép-lemez konfigurációja nem tartalmazza a kizárt lemezeket. A VMware-ből az Azure-ba történő replikációból kizárt lemezek nem érhetők el a feladat-visszavételi virtuális gépen. | Ha a feladat-visszavétel az eredeti Hyper-V helyre esik, a feladat-visszavételi virtuálisgép-lemez konfigurációja változatlan marad, mint az eredeti forrású virtuális gép lemeze. A Hyper-V helyről az Azure-ba való kizárni kívánt lemezek elérhetők a feladat-visszavételi virtuális gépen.

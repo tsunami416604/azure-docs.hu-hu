@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: 94da1639b5398a03b36fba3ff88877468a97ec36
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294116"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983329"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -55,8 +55,7 @@ Amikor engedélyezi a replikációt egy virtuális gép számára, Site Recovery
 A cél erőforrásait a következőképpen kezelheti:
 
 - A cél beállításait a replikálás engedélyezésekor módosíthatja.
-- A célhely beállításait a replikálás után is módosíthatja. A kivétel a rendelkezésre állási típus (egy példány, a készlet vagy a zóna). A beállítás módosításához le kell tiltania a replikációt, módosítania kell a beállítást, majd újra kell engedélyeznie.
-
+- A célhely beállításait a replikálás után is módosíthatja. Vegye figyelembe, hogy a célként megadott virtuális gép alapértelmezett SKU-jának megegyeznek a forrásként szolgáló virtuális gép SKU-jának (vagy a forrásként szolgáló virtuálisgép-SKU-hoz képest a következő legmegfelelőbb SKU-val). Hasonló más erőforrásokhoz, például a célként megadott erőforráscsoport, a célként megadott név és mások számára, a cél régió virtuális gép SKU-jának frissítése a replikáció előtt is lehetséges. A nem frissíthető erőforrás a rendelkezésre állási típus (egy példány, a készlet vagy a zóna). A beállítás módosításához le kell tiltania a replikációt, módosítania kell a beállítást, majd újra kell engedélyeznie. 
 
 
 ## <a name="replication-policy"></a>Replikációs szabályzat 

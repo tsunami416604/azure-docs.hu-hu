@@ -62,6 +62,9 @@
   items:
     - name: Azure CLI
       href: cli-samples.md
+    - name: Az Azure Policy beépített elemei
+      displayName: 'samples, policies, definitions'
+      href: ./policy-samples.md
 - name: Alapelvek
   items:
     - name: Kulcs-érték tároló

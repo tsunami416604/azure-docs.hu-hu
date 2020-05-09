@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 11/28/2019
-ms.openlocfilehash: add55c29bb93d8dce9ad69bd9850a1db02ea5afe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 371c00fd63f7a89f4d50ce130e89f10e2a7a38bd
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74687767"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891096"
 ---
 # <a name="fix-an-apache-hive-out-of-memory-error-in-azure-hdinsight"></a>Az Azure HDInsight Apache Hive memóriájában észlelt hiba elhárítása
 
@@ -101,7 +101,7 @@ A Hive-site. xml fájl **kaptár. Auto. convert. JOIN. noconditionaltask** ért�
 </property>
 ```
 
-Valószínű, hogy a csatlakoztatási folyamat miatt a Java-tárterület kifogyott a memóriában. Ahogy az a HDInsight-ben, a [Hadoop fonal-memóriájának beállításai](https://blogs.msdn.com/b/shanyu/archive/2014/07/31/hadoop-yarn-memory-settings-in-hdinsigh.aspx)című blogbejegyzésben leírtak szerint, a TEZ-végrehajtó motor használatakor a ténylegesen felhasznált halom terület a TEZ-tárolóhoz tartozik. Tekintse meg a TEZ tároló memóriáját ismertető következő képet.
+Valószínű, hogy a csatlakoztatási folyamat miatt a Java-tárterület kifogyott a memóriában. Ahogy az a HDInsight-ben, a [Hadoop fonal-memóriájának beállításai](https://docs.microsoft.com/archive/blogs/shanyu/hadoop-yarn-memory-settings-in-hdinsight)című blogbejegyzésben leírtak szerint, a TEZ-végrehajtó motor használatakor a ténylegesen felhasznált halom terület a TEZ-tárolóhoz tartozik. Tekintse meg a TEZ tároló memóriáját ismertető következő képet.
 
 ![Tez-tároló memória diagramja: a hiba a memóriában](./media/hdinsight-hadoop-hive-out-of-memory-error-oom/hive-out-of-memory-error-oom-tez-container-memory.png)
 
