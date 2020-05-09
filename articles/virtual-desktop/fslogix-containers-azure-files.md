@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1dc5d54fa24217c91e14a8f37e092888b2bb6474
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7728ff96ccc3da5a36d919e61518a3ce3d13581c
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127881"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82611976"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
@@ -49,11 +49,11 @@ Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előn
 
 | Technológia | Modern beállítások | Win32-beállítások | Operációs rendszer beállításai | Felhasználói adatok | Kiszolgáló SKU-ban támogatott | Háttérbeli tároló az Azure-ban | Helyszíni háttérbeli tároló | Verziók támogatása | Későbbi bejelentkezési idő |Megjegyzések|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
-| **Felhasználói profil lemezei (UPD)** | Igen | Igen | Igen | Igen | Igen | Nem | Igen | 7. győzelem + | Igen | |
-| **Barangoló felhasználói profil (központi felhasználói PROFILHOZ), karbantartási mód** | Nem | Igen | Igen | Igen | Igen| Nem | Igen | 7. győzelem + | Nem | |
-| **Enterprise State Roaming (ESR)** | Igen | Nem | Igen | Nem | Lásd: megjegyzések | Igen | Nem | 10. győzelem | Nem | A Server SKU-ban lévő függvények, de nem támogatott felhasználói felület |
-| **Felhasználói élmény virtualizálása (UE-V)** | Igen | Igen | Igen | Nem | Igen | Nem | Igen | 7. győzelem + | Nem |  |
-| **OneDrive Cloud Files** | Nem | Nem | Nem | Igen | Lásd: megjegyzések | Lásd: megjegyzések  | Lásd: megjegyzések | 10 RS3 | Nem | Nem tesztelt a kiszolgálói SKU-ban. Az Azure-beli háttérbeli tárterület a szinkronizálási ügyféltől függ. Az on-back-end tárolónak szinkronizálási ügyfélre van szüksége. |
+| **Felhasználói profil lemezei (UPD)** | Igen | Igen | Igen | Igen | Igen | No | Igen | 7. győzelem + | Igen | |
+| **Barangoló felhasználói profil (központi felhasználói PROFILHOZ), karbantartási mód** | No | Igen | Igen | Igen | Igen| No | Igen | 7. győzelem + | No | |
+| **Enterprise State Roaming (ESR)** | Igen | No | Igen | No | Lásd: megjegyzések | Igen | No | 10. győzelem | No | A Server SKU-ban lévő függvények, de nem támogatott felhasználói felület |
+| **Felhasználói élmény virtualizálása (UE-V)** | Igen | Igen | Igen | No | Igen | No | Igen | 7. győzelem + | No |  |
+| **OneDrive Cloud Files** | Nem | Nem | Nem | Igen | Lásd: megjegyzések | Lásd: megjegyzések  | Lásd: megjegyzések | 10 RS3 | No | Nem tesztelt a kiszolgálói SKU-ban. Az Azure-beli háttérbeli tárterület a szinkronizálási ügyféltől függ. Az on-back-end tárolónak szinkronizálási ügyfélre van szüksége. |
 
 #### <a name="performance"></a>Teljesítmény
 
@@ -98,7 +98,7 @@ Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali k�
 
 A következő útmutatók segítségével állíthatja be a Windows rendszerű virtuális asztali környezetet.
 
-- Az asztali virtualizálási megoldás létrehozásának megkezdéséhez lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](tenant-setup-azure-active-directory.md).
+- Az asztali virtualizálási megoldás létrehozásának megkezdéséhez lásd: [bérlő létrehozása a Windows rendszerű virtuális asztalon](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
 - A Windows rendszerű virtuális asztali bérlőn belüli gazdagépek létrehozásával kapcsolatban lásd: [állomáslista létrehozása az Azure Marketplace-szel](create-host-pools-azure-marketplace.md).
 - A teljes körűen felügyelt fájlmegosztás felhőben való beállításával kapcsolatban lásd: [Azure Files megosztás beállítása](/azure/storage/files/storage-files-active-directory-enable/).
 - A FSLogix-profilok tárolók konfigurálásáról további információt a [fájlmegosztás létrehozása a címkészlet számára](create-host-pools-user-profile.md)című témakörben talál.

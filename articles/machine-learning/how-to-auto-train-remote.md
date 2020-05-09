@@ -11,12 +11,12 @@ ms.subservice: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/09/2020
-ms.openlocfilehash: 9e499d609a3f78dc5f422b9ed90df09be30f2e7c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79080411"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612316"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Modellek betanítása automatizált gépi tanulással a felhőben
 
@@ -30,7 +30,9 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre modellt automatizált ML-vel
 
 ## <a name="how-does-remote-differ-from-local"></a>Miben különbözik a távoli távolság a helyitől?
 
-A "[besorolási modell automatikus gépi tanulással](tutorial-auto-train-models.md)" című oktatóanyaga bemutatja, hogyan használható egy helyi számítógép egy modell automatikus ml-vel való betanításához. A munkafolyamat helyi betanítás esetén is a távoli célokra is vonatkozik. A távoli számítások esetében azonban a rendszer aszinkron módon hajtja végre az automatikus ML-kísérletek ismétlését. Ezzel a funkcióval megszakíthat egy adott iterációt, megtekintheti a végrehajtás állapotát, vagy folytathatja a munkát a Jupyter-jegyzetfüzet más celláiban. A távoli tanításhoz először létre kell hoznia egy távoli számítási célt, például AmlCompute. Ezután konfigurálja a távoli erőforrást, és küldje el a kódot.
+Távoli számítási cél használata esetén további funkciók érhetők el.  További részletek: [helyi és távoli számítási célok](concept-automated-ml.md#local-remote).
+
+A "[besorolási modell automatikus gépi tanulással](tutorial-auto-train-models.md)" című oktatóanyaga bemutatja, hogyan használható egy helyi számítógép egy modell automatikus ml-vel való betanításához. A munkafolyamat helyi betanítás esetén is a távoli célokra is vonatkozik. A távoli tanításhoz először létre kell hoznia egy távoli számítási célt, például AmlCompute. Ezután konfigurálja a távoli erőforrást, és küldje el a kódot.
 
 Ez a cikk azokat az extra lépéseket ismerteti, amelyekkel egy automatizált ML-kísérletet futtathat egy távoli AmlCompute-tárolón. Az oktatóanyagban szereplő `ws`munkaterület-objektum itt található a kódban.
 

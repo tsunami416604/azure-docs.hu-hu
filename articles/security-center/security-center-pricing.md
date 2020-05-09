@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/28/2020
 ms.author: memildin
-ms.openlocfilehash: f4379a5149fff020eb532f0e17cc1c37fbdcd694
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2eb302462e402e701cc5ae664239c457c90ab1b9
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232427"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82612792"
 ---
 # <a name="upgrade-to-standard-tier-for-enhanced-security"></a>Frissítés a standard szintre a fokozott biztonság érdekében
 
@@ -49,9 +49,12 @@ A standard szint beszerzése:
 [![Díjszabás Security Center](media/security-center-pricing/pricing-tier-page.png)](media/security-center-pricing/pricing-tier-page.png#lightbox)
 
 > [!NOTE]
-> Az összes Security Center funkció engedélyezéséhez, beleértve a komplex veszélyforrások elleni védelmi képességeket is, a standard szintű díjszabást a megfelelő munkaterheléseket tartalmazó előfizetésre kell alkalmaznia. A munkaterületek díjszabásának konfigurálása nem teszi lehetővé az igény szerinti virtuálisgép-hozzáférést, az adaptív alkalmazások vezérlését és a hálózati észleléseket az Azure-erőforrásokhoz. 
+> Az összes Security Center funkció engedélyezéséhez, beleértve a veszélyforrások elleni védelmi képességeket is, a standard díjszabási szintet a megfelelő munkaterheléseket tartalmazó előfizetésre kell alkalmaznia. A munkaterületek díjszabásának konfigurálása nem teszi lehetővé az igény szerinti virtuálisgép-hozzáférést, az adaptív alkalmazások vezérlését és a hálózati észleléseket az Azure-erőforrásokhoz. 
 >
-> A Security Center fenyegetések elleni védelme a Storage-fiókoknál és az SQL/MySQL/PG kiszolgálókon jelenleg csak az egyetlen olyan számítási feladat, amely az erőforrás szintjén engedélyezhető az egyes tárolási/SQL-munkaterhelések védelme érdekében.
+> Az **Azure Storage-fiókok** veszélyforrások elleni védelmét az előfizetés szintjén vagy az erőforrás szintjén engedélyezheti.
+> Engedélyezheti a veszélyforrások elleni védelmet **Azure SQL Database SQL-kiszolgálókon** az előfizetés szintjén vagy az erőforrás szintjén.
+> Az **Azure Database for MariaDB/MySQL/PostgreSQL** veszélyforrások elleni védelmét csak az erőforrás szintjén engedélyezheti.
+
 
 ## <a name="why-upgrade-to-standard"></a>Miért érdemes a standard verzióra váltani?
 A Security Center a hibrid Felhőbeli számítási feladatokhoz nyújt fokozott biztonságot és veszélyforrások elleni védelmet, beleértve a következőket:

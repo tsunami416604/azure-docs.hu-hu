@@ -14,24 +14,24 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: mimart
 ms.reviewer: japere
-ms.custom: it-pro
+ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc96c94152b39cc70cfc4553690faaa5b9cb8d20
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a6fab618280f1383e3840c67d85136edc095b9a
+ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77111589"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82610088"
 ---
 # <a name="enable-remote-access-to-power-bi-mobile-with-azure-ad-application-proxy"></a>A Power BI Mobile távoli elérésének engedélyezése Azure AD-alkalmazásproxyval
 
-Ez a cikk azt ismerteti, hogyan használható az Azure AD Application Proxy annak engedélyezéséhez, hogy a Power BI Mobile App Power BI jelentéskészítő kiszolgáló (PBIRS) és a SQL Server Reporting Services (SSRS) 2016-es vagy újabb verziójához kapcsolódjon. Ezen integráció révén a vállalati hálózaton kívüli felhasználók hozzáférhetnek a Power BI-jelentésekhez a Power BI Mobile alkalmazásból, és az Azure AD-hitelesítéssel is védhetők. Ez a védelem olyan [biztonsági előnyöket](application-proxy-security.md#security-benefits) foglal magában, mint például a feltételes hozzáférés és a többtényezős hitelesítés.  
+Ez a cikk azt ismerteti, hogyan használható az Azure AD Application Proxy annak engedélyezéséhez, hogy a Power BI Mobile App Power BI jelentéskészítő kiszolgáló (PBIRS) és a SQL Server Reporting Services (SSRS) 2016-es vagy újabb verziójához kapcsolódjon. Ezen integráció révén a vállalati hálózaton kívüli felhasználók hozzáférhetnek a Power BI-jelentésekhez a Power BI Mobile alkalmazásból, és az Azure AD-hitelesítéssel is védhetők. Ez a védelem olyan [biztonsági előnyöket](application-proxy-security.md#security-benefits) foglal magában, mint például a feltételes hozzáférés és a többtényezős hitelesítés.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk feltételezi, hogy már telepítette a Report Services és az [enabled Application proxy](application-proxy-add-on-premises-application.md)szolgáltatást.
 
-- Az alkalmazásproxy engedélyezéséhez telepítenie kell egy összekötőt egy Windows-kiszolgálón, és el kell töltenie az [előfeltételeket](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) , hogy az összekötő képes legyen kommunikálni az Azure ad-szolgáltatásokkal.  
+- Az alkalmazásproxy engedélyezéséhez telepítenie kell egy összekötőt egy Windows-kiszolgálón, és el kell töltenie az [előfeltételeket](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) , hogy az összekötő képes legyen kommunikálni az Azure ad-szolgáltatásokkal.
 - A Power BI közzétételekor azt javasoljuk, hogy ugyanazokat a belső és külső tartományokat használja. Az egyéni tartományokkal kapcsolatos további tudnivalókért tekintse meg az [Egyéni tartományok használata az Application proxyban](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-custom-domain)című témakört.
 - Ez az integráció a **Power bi Mobile iOS-és Android-** alkalmazásokhoz érhető el.
 
@@ -68,7 +68,7 @@ Konfigurálja úgy a KCD, hogy az Azure AD Application Proxy szolgáltatás dele
 A KCD konfigurálásához ismételje meg az alábbi lépéseket minden összekötő-gépen:
 
 1. Jelentkezzen be tartományi rendszergazdaként egy tartományvezérlőre, majd nyissa meg **Active Directory felhasználókat és számítógépeket**.
-2. Keresse meg azt a számítógépet, amelyen az összekötő fut.  
+2. Keresse meg azt a számítógépet, amelyen az összekötő fut.
 3. Kattintson duplán a számítógépre, majd válassza a **delegálás** lapot.
 4. A delegálási beállítások beállításával **bízza meg a számítógépet, hogy csak a megadott szolgáltatásokhoz delegáljon delegálást**. Ezután válassza **a bármely hitelesítési protokoll használata**lehetőséget.
 5. Válassza a **Hozzáadás**, majd a **felhasználók vagy számítógépek**lehetőséget.
@@ -95,7 +95,7 @@ Most már készen áll az Azure AD Application Proxy konfigurálására.
 
    b. **Egyszeri bejelentkezési mód**esetén válassza az **integrált Windows-hitelesítés**lehetőséget.
 
-   c. A **belső alkalmazás SPN** beállítása a korábban megadott értékre.  
+   c. A **belső alkalmazás SPN** beállítása a korábban megadott értékre.
 
    d. Válassza ki az összekötő **meghatalmazott bejelentkezési azonosítóját** , amelyet a felhasználók nevében kíván használni. További információ: [a különböző helyszíni és Felhőbeli identitások használata](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities).
 
@@ -105,7 +105,7 @@ Az alkalmazás beállításának befejezéséhez nyissa meg **a felhasználók �
 
 ## <a name="step-3-modify-the-reply-uris-for-the-application"></a>3. lépés: a válasz URI-azonosítójának módosítása az alkalmazáshoz
 
-Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Services szolgáltatáshoz, konfigurálnia kell az alkalmazás regisztrációját, amelyet a 2. lépésben automatikusan hozott létre. 
+Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Services szolgáltatáshoz, konfigurálnia kell az alkalmazás regisztrációját, amelyet a 2. lépésben automatikusan hozott létre.
 
 1. Az Azure Active Directory **áttekintése** lapon válassza a **Alkalmazásregisztrációk**lehetőséget.
 2. A **minden alkalmazás** lapon keresse meg a 2. lépésben létrehozott alkalmazást.
@@ -117,11 +117,11 @@ Mielőtt a Power BI Mobile App csatlakozhat és hozzáférhessen a Report Servic
    - `msauth://code/mspbi-adalms%3a%2f%2fcom.microsoft.powerbimobilems`
    - `mspbi-adal://com.microsoft.powerbimobile`
    - `mspbi-adalms://com.microsoft.powerbimobilems`
-   
+
    Power BI Mobile **Androidhoz**készült alkalmazás konfigurálásakor adja hozzá a következő átirányítási URI-k nyilvános ügyfélként (Mobile & Desktop):
    - `urn:ietf:wg:oauth:2.0:oob`
    - `mspbi-adal://com.microsoft.powerbimobile`
-   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D` 
+   - `msauth://com.microsoft.powerbim/g79ekQEgXBL5foHfTlO2TPawrbI%3D`
    - `msauth://com.microsoft.powerbim/izba1HXNWrSmQ7ZvMXgqeZPtNEU%3D`
 
    > [!IMPORTANT]
@@ -144,7 +144,7 @@ A Microsoft Intune segítségével kezelheti a vállalat munkaerő által haszn�
 1. Nyissa meg **Azure Active Directory** , majd az **alkalmazások regisztrációját**.
 2. Válassza ki a natív ügyfélalkalmazás regisztrálása során a 3. lépésben konfigurált alkalmazást.
 3. Az alkalmazás lapján válassza az API- **engedélyek**lehetőséget.
-4. Kattintson **az engedély hozzáadása**lehetőségre. 
+4. Kattintson **az engedély hozzáadása**lehetőségre.
 5. A **saját szervezet által használt API**-k területen keressen rá a "Microsoft Mobile Application Management" kifejezésre, és válassza ki.
 6. Adja hozzá a **DeviceManagementManagedApps. READWRITE** engedélyt az alkalmazáshoz
 7. Kattintson a **rendszergazdai jóváhagyás megadása** lehetőségre az alkalmazáshoz való hozzáférés engedélyezéséhez.

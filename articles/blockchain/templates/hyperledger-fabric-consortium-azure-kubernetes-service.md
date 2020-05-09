@@ -4,12 +4,12 @@ description: A Hyperledger Fabric Consortium Network üzembe helyezése és konf
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 2312c002e5c2e0b813f8acbdc3e3bff597f204d9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476440"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82980225"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 
@@ -42,7 +42,7 @@ Az üzembe helyezési sablon különböző Azure-erőforrásokat indít el az el
   - **FABRIC CA**: a Fabric CA-t futtató Pod.
 - **PostgreSQL**: a rendszer üzembe helyezi a PostgreSQL egy példányát a háló hitelesítésszolgáltatói identitások fenntartásához.
 
-- **Azure Key Vault**: a rendszer üzembe helyezi a Key Vault-példányt, hogy mentse a háló hitelesítésszolgáltatói hitelesítő adatait és az ügyfél által biztosított főtanúsítványokat, amelyeket a rendszer a sablon központi telepítésének újrapróbálkozása esetén használ. Ez a sablon mechanikaának kezelésére szolgál.
+- **Azure Key Vault**: a rendszer üzembe helyezi a Key Vault-példányt, hogy mentse a háló hitelesítésszolgáltatói hitelesítő adatait és az ügyfél által biztosított főtanúsítványokat, amelyeket a rendszer a sablon telepítésének újrapróbálkozása esetén használ a sablon mechanikaának kezeléséhez.
 - **Azure Managed Disk**: az Azure Managed Disk a Főkönyv és a társ-csomópontok globális állapotú adatbázisának állandó tárolója.
 - **Nyilvános IP-cím**: a fürttel való együttműködéshez üzembe helyezett AK-fürt nyilvános IP-végpontja.
 
@@ -54,7 +54,6 @@ A kezdéshez olyan Azure-előfizetésre van szükség, amely támogatja több vi
 
 - [A megrendelés/társ szervezet üzembe helyezése](#deploy-the-ordererpeer-organization)
 - [A konzorcium összeállítása](#build-the-consortium)
-- [Natív HLF-műveletek futtatása](#run-native-hlf-operations)
 
 ## <a name="deploy-the-ordererpeer-organization"></a>A megrendelés/társ szervezet üzembe helyezése
 
@@ -78,7 +77,7 @@ Az HLF hálózati összetevők üzembe helyezésének megkezdéséhez navigáljo
     ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/create-for-hyperledger-fabric-settings.png)
 
 5. Adja meg a következő részleteket:
-    - **Szervezet neve**: a háló szervezet neve, amely különböző adatsíkok-műveletekhez szükséges. Az üzembe helyezéshez a szervezet nevének egyedinek kell lennie. 
+    - **Szervezet neve**: a háló szervezet neve, amely különböző adatsíkok-műveletekhez szükséges. Az üzembe helyezéshez a szervezet nevének egyedinek kell lennie.
     - **Háló hálózati összetevő**: válassza ki a beállítani kívánt Blockchain hálózati összetevő alapján a szolgáltatás vagy társ csomópontok rendezése lehetőséget.
     - **Csomópontok száma** – a következő két típusú csomópont létezik:
         - Rendezési szolgáltatás – válassza ki, hogy hány csomópontot adjon meg a hálózat hibatűrésének. A támogatott sorrendű csomópontok száma csak 3, 5 és 7.
@@ -87,7 +86,7 @@ Az HLF hálózati összetevők üzembe helyezésének megkezdéséhez navigáljo
     - **Háló felhasználóneve**: adja meg a háló hitelesítésszolgáltatói hitelesítéshez használt felhasználónevet.
     - **FABRIC CA-jelszó**: adja meg a háló hitelesítésszolgáltatói hitelesítésének jelszavát.
     - **Jelszó megerősítése**: erősítse meg a háló hitelesítésszolgáltatói jelszavát.
-    - **Tanúsítványok**: Ha saját főtanúsítványokat kíván használni a háló hitelesítésszolgáltató inicializálásához, válassza a főtanúsítvány feltöltése a hálóhoz CA lehetőséget, különben az alapértelmezett Fabric CA önaláírt tanúsítványokat hoz létre.
+    - **Tanúsítványok**: Ha saját főtanúsítványokat kíván használni a háló hitelesítésszolgáltató inicializálásához, válassza a főtanúsítvány feltöltése a hálóhoz CA lehetőséget, máskülönben a Fabric CA alapértelmezés szerint önaláírt tanúsítványokat hoz létre.
     - **Főtanúsítvány**: töltse fel a főtanúsítványt (nyilvános kulcs), amelynek a hálós CA-nak inicializálva kell lennie. A. PEM formátumú tanúsítványok támogatottak, a tanúsítványoknak érvényesnek kell lenniük az UTC időzónában.
     - **Főtanúsítvány titkos kulcsa**: töltse fel a főtanúsítvány titkos kulcsát. Ha olyan. PEM tanúsítvánnyal rendelkezik, amelynek nyilvános és titkos kulcsa is van, töltse fel ide.
 
@@ -116,48 +115,82 @@ Az üzembe helyezés általában 10-12 percet vesz igénybe, a megadott AK-csom�
 
 ## <a name="build-the-consortium"></a>A konzorcium összeállítása
 
-Ha a blockchain konzorciumot a rendezési szolgáltatás és a társ-csomópontok üzembe helyezése után szeretné felépíteni, az alábbi lépéseket kell végrehajtania a sorozatban. Hozza **létre a hálózati** parancsfájlt (Byn.sh), amely segít a konzorcium beállításában, a csatorna létrehozásában és a chaincode telepítésében.
+Ha a blockchain konzorciumot a rendezési szolgáltatás és a társ-csomópontok üzembe helyezése után szeretné felépíteni, az alábbi lépéseket kell végrehajtania a sorozatban. Azure HLF script (azhlf), amely segít a konzorcium beállításában, csatorna-és chaincode-műveletek létrehozásában.
 
 > [!NOTE]
-> A megadott hálózati (Byn) szkriptet kizárólag bemutató/devtest forgatókönyvek esetén kell használni. Az éles környezetben történő telepítéshez a natív HLF API-k használatát javasoljuk.
+> A szkriptben frissítés található, ez a frissítés az Azure HLF szkripttel való további funkcionalitást biztosít. Ha a régi szkriptre szeretne hivatkozni, [tekintse meg a következőt:](https://github.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/blob/master/consortiumScripts/README.md). Ez a szkript kompatibilis a Hyperledger Fabrictel az Azure Kubernetes Service template 2.0.0 vagy újabb verziójában. A központi telepítés verziójának vizsgálatához kövesse a [Hibaelhárítás](#troubleshoot)című szakasz lépéseit.
 
-A Byn parancsfájl futtatásához szükséges összes parancs az Azure bash parancssori felületén (CLI) keresztül hajtható végre. Az Azure Shell web Version-be a következővel jelentkezhet be ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) lehetőség a Azure Portal jobb felső sarkában. A parancssorba írja be a bash parancsot, és váltson a bash parancssori felületre.
+> [!NOTE]
+> Az Azure HLF (azhlf) által biztosított parancsfájl csak a bemutató/DevTest forgatókönyvekhez nyújt segítséget. A szkript által létrehozott Channel és Consortium alapszintű HLF-házirendekkel rendelkezik a bemutató/DevTest forgatókönyv leegyszerűsítése érdekében. Éles környezetben a natív HLF API-k használatával javasolt a Channel/Consortium HLF szabályzatok frissítése a szervezet megfelelőségi igényeinek megfelelően.
+
+
+Az Azure HLF-szkript futtatásához szükséges összes parancs az Azure bash parancssorán keresztül hajtható végre. Felület (CLI). Az Azure Shell web Version-be a következővel jelentkezhet be  ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/arrow.png) lehetőség a Azure Portal jobb felső sarkában. A parancssorba írja be a bash parancsot, és váltson a bash parancssori felületre.
 
 További információt az [Azure-rendszerhéjban](https://docs.microsoft.com/azure/cloud-shell/overview) talál.
 
 ![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/hyperledger-powershell.png)
 
 
-Töltse le a byn.sh és a Fabric-admin. YAML fájlt.
+Az alábbi képen látható, hogyan lehet konzorciumot felépíteni egy megrendelő szervezet és egy társ szervezet között. A lépések végrehajtásához szükséges részletes parancsok a következő fejezetekben vannak rögzítve.
+
+![Hyperledger-háló az Azure Kubernetes Service sablonban](./media/hyperledger-fabric-consortium-azure-kubernetes-service/process-to-build-consortium-flow-chart.png)
+
+Az ügyfélalkalmazás kezdeti beállításához kövesse az alábbi parancsokat: 
+
+1.  [Ügyfél-alkalmazásfájlok letöltése](#download-client-application-files)
+2.  [Környezeti változók beállítása](#setup-environment-variables)
+3.  [Szervezeti kapcsolatprofil, rendszergazdai felhasználó és MSP importálása](#import-organization-connection-profile-admin-user-identity-and-msp)
+
+A kezdeti beállítás befejezése után az ügyfélalkalmazás használatával elérheti az alábbi műveleteket:  
+
+- [Csatorna-felügyeleti parancsok](#channel-management-commands)
+- [Konzorcium-kezelési parancsok](#consortium-management-commands)
+- [Chaincode-kezelési parancsok](#chaincode-management-commands)
+
+### <a name="download-client-application-files"></a>Ügyfél-alkalmazásfájlok letöltése
+
+Az első beállítás az ügyfélalkalmazás fájljainak letöltése. Futtassa az alábbi parancsot az összes szükséges fájl és csomag letöltéséhez:
 
 ```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/byn.sh -o byn.sh; chmod 777 byn.sh
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/consortiumScripts/fabric-admin.yaml -o fabric-admin.yaml
-```
-**Állítsa be az alábbi környezeti változókat az Azure CLI bash rendszerhéjon**:
+curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/azhlfToolSetup.sh | bash
+cd azhlfTool
+npm install
+npm run setup
 
-Csatorna információinak és a megrendelési szervezet adatainak megadása
+```
+Ezek a parancsok a nyilvános GitHub-tárházból fogják betölteni az Azure HLF-ügyfélalkalmazás kódját, majd betöltik az összes függő NPM-csomagot. A parancs sikeres végrehajtása után node_modules mappát láthat az aktuális könyvtárban. Az összes szükséges csomag betöltődik a node_modules mappába.
+
+
+### <a name="setup-environment-variables"></a>Környezeti változók beállítása
+
+> [!NOTE]
+> Az összes környezeti változó az Azure erőforrás-elnevezési konvenciót követi.
+
+
+**Az alábbi környezeti változók beállítása a rendezési szervezet ügyfeléhez**
+
 
 ```bash
-SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
-ORDERER_AKS_SUBSCRIPTION=<ordererAKSClusterSubscriptionID>
-ORDERER_AKS_RESOURCE_GROUP=<ordererAKSClusterResourceGroup>
-ORDERER_AKS_NAME=<ordererAKSClusterName>
-ORDERER_DNS_ZONE=$(az aks show --resource-group $ORDERER_AKS_RESOURCE_GROUP --name $ORDERER_AKS_NAME --subscription $ORDERER_AKS_SUBSCRIPTION -o json | jq .addonProfiles.httpApplicationRouting.config.HTTPApplicationRoutingZoneName | tr -d '"')
-ORDERER_END_POINT="orderer1.$ORDERER_DNS_ZONE:443"
+ORDERER_ORG_SUBSCRIPTION=<ordererOrgSubscription>
+ORDERER_ORG_RESOURCE_GROUP=<ordererOrgResourceGroup>
+ORDERER_ORG_NAME=<ordererOrgName>
+ORDERER_ADMIN_IDENTITY="admin.$ORDERER_ORG_NAME"
 CHANNEL_NAME=<channelName>
 ```
-Társ-szervezeti adatok megadása
+**Az alábbi környezeti változók beállítása a társ-ügyfél számára**
 
 ```bash
-PEER_AKS_RESOURCE_GROUP=<peerAKSClusterResourceGroup>
-PEER_AKS_NAME=<peerAKSClusterName>
-PEER_AKS_SUBSCRIPTION=<peerAKSClusterSubscriptionID>
-#Peer organization name is case-sensitive. Specify exactly the same name, which was provided while creating the Peer AKS Cluster.
-PEER_ORG_NAME=<peerOrganizationName>
+PEER_ORG_SUBSCRIPTION=<peerOrgSubscritpion>
+PEER_ORG_RESOURCE_GROUP=<peerOrgResourceGroup>
+PEER_ORG_NAME=<peerOrgName>
+PEER_ADMIN_IDENTITY="admin.$PEER_ORG_NAME"
+CHANNEL_NAME=<channelName>
 ```
 
-Hozzon létre egy Azure-fájlmegosztást a különböző nyilvános tanúsítványok megosztásához a társ-és a megrendelő szervezetek között.
+> [!NOTE]
+> A konzorciumban található társ-szervezethez száma alapján előfordulhat, hogy meg kell ismételnie a társ-parancsokat, és ennek megfelelően kell beállítania a környezeti változót.
+
+**Az alábbi környezeti változók beállítása az Azure Storage-fiók beállításához**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -165,311 +198,223 @@ STORAGE_RESOURCE_GROUP=<azureFileShareResourceGroup>
 STORAGE_ACCOUNT=<azureStorageAccountName>
 STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
+```
 
+Kövesse az alábbi lépéseket az Azure Storage-fiókok létrehozásához. Ha már létrehozta az Azure Storage-fiókot, ugorja át ezeket a lépéseket
+
+```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
 az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
+```
+
+Kövesse az alábbi lépéseket egy fájlmegosztás Azure Storage-fiókban való létrehozásához. Ha már létrehozott egy fájlmegosztást, ugorja át ezeket a lépéseket
+
+```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 az storage share create  --account-name $STORAGE_ACCOUNT  --account-key $STORAGE_KEY  --name $STORAGE_FILE_SHARE
+```
+
+Kövesse az alábbi lépéseket az Azure file share-kapcsolatok karakterláncának létrehozásához
+
+```bash
+STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
 SAS_TOKEN=$(az storage account generate-sas --account-key $STORAGE_KEY --account-name $STORAGE_ACCOUNT --expiry `date -u -d "1 day" '+%Y-%m-%dT%H:%MZ'` --https-only --permissions lruwd --resource-types sco --services f | tr -d '"')
-AZURE_FILE_CONNECTION_STRING="https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN"
-```
-**Csatorna-felügyeleti parancsok**
+AZURE_FILE_CONNECTION_STRING=https://$STORAGE_ACCOUNT.file.core.windows.net/$STORAGE_FILE_SHARE?$SAS_TOKEN
 
-Ugrás a rendezési szervezet AK-fürthöz és a probléma parancs új csatorna létrehozásához
+```
+
+### <a name="import-organization-connection-profile-admin-user-identity-and-msp"></a>Szervezeti kapcsolatprofil importálása, rendszergazdai felhasználói identitás és MSP
+
+Az alábbi parancsokkal lehívhatja a szervezet profilját, a rendszergazdai felhasználói identitást és az MSP-t az Azure Kubernetes-fürtből, és ezeket az identitásokat az ügyfélalkalmazás helyi tárolójában, azaz a "azhlfTool/Stores" könyvtárban tárolja.
+
+Rendezési szervezet:
 
 ```bash
-SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-./byn.sh createChannel "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -o $ORDERER_ORG_NAME -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION
+./azhlf connectionProfile import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME   
+./azhlf msp import fromAzure -g $ORDERER_ORG_RESOURCE_GROUP -s $ORDERER_ORG_SUBSCRIPTION -o $ORDERER_ORG_NAME
 ```
 
-**Konzorcium-kezelési parancsok**
-
-A megadott sorrendben hajtsa végre az alábbi parancsokat, és adjon hozzá egy partneri szervezetet egy csatornához és konzorciumhoz.
-
-1. Nyissa meg a társ-szervezeti AK-fürtöt, és töltse fel a tagsági szolgáltatását (MSP) egy Azure-File Storage.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh uploadOrgMSP "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-2. Nyissa meg a rendezési szervezeti AK-fürtöt, és adja hozzá a társ-szervezetet a Channel és a Consortium szolgáltatásban.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $ORDERER_AKS_RESOURCE_GROUP $ORDERER_AKS_NAME $ORDERER_AKS_SUBSCRIPTION
-    #add peer in consortium
-    ./byn.sh addPeerInConsortium "$PEER_ORG_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    #add peer in channel
-    ./byn.sh addPeerInChannel "$PEER_ORG_NAME" "$CHANNEL_NAME" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-3. Lépjen vissza a társ-szervezeti felületre, és adja meg a parancsot, hogy csatlakozzon a csatorna egyenrangú csomópontjaihoz.
-
-    ```bash
-    SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-    ./byn.sh joinNodesInChannel "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-    ```
-
-Hasonlóképpen, ha további társközi szervezeteket szeretne hozzáadni a csatornához, frissítse a peer AK környezeti változóit a szükséges társ-munkahelyként, és hajtsa végre az 1 – 3. lépést.
-
-**Chaincode-kezelési parancsok**
-
-Hajtsa végre az alábbi parancsot a chaincode-hez kapcsolódó művelet végrehajtásához. Ezek a parancsok minden műveletet végrehajtanak a bemutató chaincode. Ez a bemutató chaincode két változóval rendelkezik: "a" és "b". A chaincode példányának létrehozásakor az "a" inicializálása 1000, a "b" pedig a 2000-es értékkel van inicializálva. A chaincode minden meghívásakor 10 egység kerül át az "a" és "b" értékre. A chaincode lekérdezési művelete az "a" változó globális állapotát jeleníti meg.
-
-Hajtsa végre a következő parancsokat a társ-szervezeti AK-fürtön.
+Társ-szervezet esetén:
 
 ```bash
-# switch to peer organization AKS cluster. Skip this command if already connected to the required Peer AKS Cluster
-SWITCH_TO_AKS_CLUSTER $PEER_AKS_RESOURCE_GROUP $PEER_AKS_NAME $PEER_AKS_SUBSCRIPTION
-```
-**Chaincode művelet parancsai**
-
-```bash
-PEER_NODE_NAME="peer<peer#>"
-./byn.sh installDemoChaincode "$PEER_NODE_NAME"
-./byn.sh instantiateDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh invokeDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME" "$ORDERER_END_POINT" "$AZURE_FILE_CONNECTION_STRING"
-./byn.sh queryDemoChaincode "$PEER_NODE_NAME" "$CHANNEL_NAME"
+./azhlf adminProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf connectionProfile import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
+./azhlf msp import fromAzure -g $PEER_ORG_RESOURCE_GROUP -s $PEER_ORG_SUBSCRIPTION -o $PEER_ORG_NAME
 ```
 
-## <a name="run-native-hlf-operations"></a>Natív HLF-műveletek futtatása
-
-Annak érdekében, hogy az ügyfelek megismerkedjenek a Hyperledger natív parancsainak futtatásával a HLF-hálózaton az AK-on. A minta alkalmazást a Fabric NodeJS SDK használatával végezheti el a HLF műveletek végrehajtásához. A parancsokkal új felhasználói identitást hozhat létre, és telepítheti saját chaincode.
-
-### <a name="before-you-begin"></a>Előkészületek
-
-Az alkalmazás kezdeti beállításához kövesse az alábbi parancsokat:
-
-- Alkalmazásfájlok letöltése
-- Kapcsolatprofil és rendszergazdai profil létrehozása
-- Rendszergazdai felhasználói identitás importálása
-
-A kezdeti beállítás befejezése után az SDK használatával elérheti az alábbi műveleteket:
-
-- Felhasználói identitás létrehozása
-- Chaincode-műveletek
-
-A fent említett parancsokat Azure Cloud Shell lehet végrehajtani.
-
-### <a name="download-application-files"></a>Alkalmazásfájlok letöltése
-
-Az alkalmazás futtatásának első beállítása az összes alkalmazás fájljának letöltése egy mappában.
-
-**Hozzon létre egy app mappát, és írja be a mappába**:
-
-```bash
-mkdir app
-cd app
-```
-Futtassa az alábbi parancsot az összes szükséges fájl és csomag letöltéséhez:
-
-```bash-interactive
-curl https://raw.githubusercontent.com/Azure/Hyperledger-Fabric-on-Azure-Kubernetes-Service/master/application/setup.sh | bash
-```
-Ez a parancs időt vesz igénybe az összes csomag betöltéséhez. A parancs sikeres végrehajtása után egy `node_modules` mappát láthat az aktuális könyvtárban. Az összes szükséges csomag betöltődik a `node_modules` mappába.
-
-### <a name="generate-connection-profile-and-admin-profile"></a>Kapcsolatprofil és rendszergazdai profil létrehozása
-
-Könyvtár `profile` létrehozása a `app` mappán belül
-
-```bash
-cd app
-mkdir ./profile
-```
-A környezeti változók beállítása az Azure Cloud shellben
-
-```bash
-# Organization name whose connection profile is to be generated
-ORGNAME=<orgname>
-# Organization AKS cluster resource group
-AKS_RESOURCE_GROUP=<resourceGroup>
-```
-
-Az alábbi parancs végrehajtásával létrehozza a szervezet kapcsolódási profilját és rendszergazdai profilját
-
-```bash
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/gateway/g"| xargs curl > ./profile/$ORGNAME-ccp.json
-./getConnector.sh $AKS_RESOURCE_GROUP | sed -e "s/{action}/admin/g"| xargs curl > ./profile/$ORGNAME-admin.json
-```
-
-A profil mappájában létrehozza `profile` a profilt és a nevet, valamint a nevét. `<orgname>-ccp.json` `<orgname>-admin.json`
-
-Hasonlóképpen, az egyes megrendelésekhez és a társ-munkaszervezetekhez kapcsolódó profilt és rendszergazdai profilt is elő kell készíteni.
-
-
-### <a name="import-admin-user-identity"></a>Rendszergazdai felhasználói identitás importálása
-
-Az utolsó lépés a szervezet rendszergazdai felhasználói identitásának importálása a pénztárcába.
-
-```bash
-npm run importAdmin -- -o <orgName>
-
-```
-A fenti parancs végrehajtja a importAdmin. js fájlt, hogy importálja a rendszergazdai felhasználói identitást a pénztárcába. A parancsfájl beolvassa a rendszergazdai identitást `<orgname>-admin.json` a rendszergazdai profilból, és importálja azt a mobiltárca-ben a HLF műveletek végrehajtásához.
-
-A parancsfájlok fájlrendszer-mobiltárca használatával tárolják az identitásokat. Létrehoz egy adatforrást a kapcsolatprofil ". Wallet" mezőjében megadott elérési út alapján. Alapértelmezés szerint a ". Wallet" mező inicializálva van `<orgname>`, ami azt jelenti, hogy a `<orgname>` rendszer létrehoz egy nevű mappát az aktuális könyvtárban az identitások tárolásához. Ha más elérési úton szeretné létrehozni a mobiltárca szolgáltatást, módosítsa a kapcsolódási profil ". Wallet" mezőjét a regisztrálási rendszergazda felhasználó és bármely más HLF művelet futtatása előtt.
-
-Hasonlóképpen importálja az egyes szervezetekhez tartozó rendszergazdai felhasználói identitást is.
-
-A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
-
-```bash
-npm run importAdmin -- -h
-
-```
-
-### <a name="user-identity-generation"></a>Felhasználói identitás létrehozása
-
-A megadott sorrendben hajtsa végre az alábbi parancsokat a HLF-szervezet új felhasználói identitásának létrehozásához.
+### <a name="channel-management-commands"></a>Csatorna-felügyeleti parancsok
 
 > [!NOTE]
-> A felhasználói azonosító létrehozási lépéseinek megkezdése előtt győződjön meg arról, hogy az alkalmazás kezdeti beállítása megtörtént.
+> A Channel művelet megkezdése előtt győződjön meg arról, hogy az ügyfélalkalmazás kezdeti beállítása megtörtént.  
 
-Az alábbi környezeti változók beállítása az Azure Cloud shellben
+A két csatorna-felügyeleti parancs a következő:
+
+1. [Csatorna létrehozása parancs](#create-channel-command)
+2. [A (z) főpartner (ek) parancs beállítása](#setting-anchor-peers-command)
+
+
+#### <a name="create-channel-command"></a>Csatorna létrehozása parancs
+
+Az orderer szervezeti ügyfélprogramból hozzon létre egy új csatornát a kiállító paranccsal. Ezzel a paranccsal olyan csatornát hozhat létre, amely csak a rendezési szervezettel rendelkezik.  
 
 ```bash
-# Organization name for which user identity is to be generated
-ORGNAME=<orgname>
-# Name of new user identity. Identity will be registered with the Fabric-CA using this name.
-USER_IDENTITY=<username>
-
+./azhlf channel create -c $CHANNEL_NAME -u $ORDERER_ADMIN_IDENTITY -o $ORDERER_ORG_NAME
 ```
 
-Új felhasználó regisztrálása és regisztrálása
+#### <a name="setting-anchor-peers-command"></a>A (z) főpartner (ek) parancs beállítása
+A társ szervezeti ügyféltől a következő parancs kiadásával állíthatja be a társ-munkatársat a megadott csatornán.
 
-Új felhasználó regisztrálásához és regisztrálásához hajtsa végre az alábbi parancsot, amely végrehajtja a registerUser. js fájlt. A létrehozott felhasználói identitást a mobiltárca tárolja.
+>[!NOTE]
+> A parancs végrehajtása előtt győződjön meg arról, hogy a társ-szervezet hozzá van adva a csatornához a konzorcium-felügyeleti parancsok használatával.
 
 ```bash
-npm run registerUser -- -o $ORGNAME -u $USER_IDENTITY
-
+./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-> [!NOTE]
-> A rendszergazdai felhasználói identitás az új felhasználó regisztrálási parancsának kiadására szolgál. Ezért a parancs végrehajtása előtt kötelező megadni a rendszergazdai felhasználói identitást a tárcában. Ellenkező esetben a parancs sikertelen lesz.
+`<anchorPeersList>`egy szóközzel elválasztott lista, amely összeállított társ-csomópontként van beállítva. Például:
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
+  - Állítsa `<anchorPeersList>` "peer1" értékre, ha csak peer1-csomópontot kíván beállítani.
+  - Állítsa `<anchorPeersList>` "peer1" "peer3" értékre, ha a peer1 és a peer3 csomópontot is be szeretné állítani a horgony társként.
+
+### <a name="consortium-management-commands"></a>Konzorcium-kezelési parancsok
+
+>[!NOTE]
+> A konzorciumi művelet megkezdése előtt győződjön meg arról, hogy az ügyfélalkalmazás kezdeti beállítása megtörtént.  
+
+A megadott sorrendben hajtsa végre az alábbi parancsokat egy társ-szervezet hozzáadásához egy csatornában és konzorciumban
+1.  Társ-szervezeti ügyfélről, a peer Organization MSP feltöltése az Azure Storage-ban
+
+      ```bash
+      ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
+      ```
+2.  A rendezési szervezet ügyfelétől töltse le a peer Organization MSP-t az Azure Storage-ból, majd a parancs kiadásával adja hozzá a partner szervezetet a Channel/Consortium-ben.
+
+      ```bash
+      ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel join -c  $CHANNEL_NAME -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
+      ```
+
+3.  A rendezési szervezet ügyfelétől, az Azure Storage-beli orderer-kapcsolati profil feltöltése annak érdekében, hogy a társ-munkahelyhez a kapcsolati profil használatával lehessen csatlakozni a rendezési csomópontokhoz
+
+      ```bash
+      ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ```
+
+4.  A társ-ügyfél, az Azure Storage-ból töltse le a rendelés-összekapcsolási profilt, majd adja ki a parancsot a társ-csomópontok hozzáadásához a csatornában
+
+      ```bash
+      ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
+      ./azhlf channel joinPeerNodes -o $PEER_ORG_NAME  -u $PEER_ADMIN_IDENTITY -c $CHANNEL_NAME --ordererOrg $ORDERER_ORG_NAME
+      ```
+
+Hasonlóképpen, ha további társ-szervezeteket szeretne hozzáadni a csatornához, frissítse a társ-környezeti változókat a szükséges társ-szervezet szerint, és hajtsa végre az 1 – 4. lépést.
+
+
+### <a name="chaincode-management-commands"></a>Chaincode-kezelési parancsok
+
+>[!NOTE]
+> A chaincode művelet megkezdése előtt győződjön meg arról, hogy az ügyfélalkalmazás kezdeti beállítása megtörtént.  
+
+**Az alábbi chaincode-specifikus környezeti változók beállítása**
 
 ```bash
-npm run registerUser -- -h
-
-```
-
-### <a name="chaincode-operations"></a>Chaincode-műveletek
-
-
-> [!NOTE]
-> A chaincode művelet megkezdése előtt győződjön meg arról, hogy az alkalmazás kezdeti beállítása megtörtént.
-
-Állítsa be az alábbi chaincode-specifikus környezeti változókat az Azure Cloud shellben:
-
-```bash
-# peer organization name where chaincode is to be installed
-ORGNAME=<orgName>
-USER_IDENTITY="admin.$ORGNAME"
-CC_NAME=<chaincodeName>
+# peer organization name where chaincode operation is to be performed
+ORGNAME=<PeerOrgName>
+USER_IDENTITY="admin.$ORGNAME"  
+# If you are using chaincode_example02 then set CC_NAME=“chaincode_example02”
+CC_NAME=<chaincodeName>  
+# If you are using chaincode_example02 then set CC_VERSION=“1” for validation
 CC_VERSION=<chaincodeVersion>
-# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'
-# Default value is 'golang'
-CC_LANG=<chaincodeLanguage>
-# CC_PATH contains the path where your chaincode is place. In case of go chaincode, this path is relative to 'GOPATH'.
-# For example, if your chaincode is present at path '/opt/gopath/src/chaincode/chaincode.go'.
-# Then, set GOPATH to '/opt/gopath' and CC_PATH to 'chaincode'
-CC_PATH=<chaincodePath>
-# 'GOPATH' environment variable. This needs to be set in case of go chaincode only.
-export GOPATH=<goPath>
-# Channel on which chaincode is to be instantiated/invoked/queried
-CHANNEL=<channelName>
-
-````
-
-Az alábbi chaincode műveletek végezhetők el:
-
-- A chaincode telepítése
-- Chaincode példányának példányai
-- Chaincode meghívása
-- Chaincode lekérdezése
-
-### <a name="install-chaincode"></a>A chaincode telepítése
-
-Futtassa az alábbi parancsot a chaincode telepítéséhez a társ-szervezetben.
-
-```bash
-npm run installCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION
-
-```
-A chaincode a `ORGNAME` környezeti változóban beállított szervezet összes egyenrangú csomópontjára telepíti. Ha a csatornán kettő vagy több egyenrangú szervezet található, és mindegyikhez telepíteni szeretné a chaincode-t, hajtsa végre a parancsokat külön-külön az egyes társ-szervezeteknél.
-
-Kövesse az alábbi lépéseket:
-
-- Állítsa `ORGNAME` be `<peerOrg1Name>` és adja `installCC` meg a parancsot.
-- Állítsa `ORGNAME` be `<peerOrg2Name>` és adja `installCC` meg a parancsot.
-
-  Hajtsa végre az összes társ-szervezet számára.
-
-A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a parancs súgóját.
-
-```bash
-npm run installCC -- -h
-
+# Language in which chaincode is written. Supported languages are 'node', 'golang' and 'java'  
+# Default value is 'golang'  
+CC_LANG=<chaincodeLanguage>  
+# CC_PATH contains the path where your chaincode is place.
+# If you are using chaincode_example02 to validate then CC_PATH=“/home/<username>/azhlfTool/chaincode/src/chaincode_example02/go”
+CC_PATH=<chaincodePath>  
+# Channel on which chaincode is to be instantiated/invoked/queried  
+CHANNEL_NAME=<channelName>  
 ```
 
-### <a name="instantiate-chaincode"></a>Chaincode példányának példányai
+Az alábbi chaincode műveletek végezhetők el:  
 
-Futtassa az alábbi parancsot a chaincode a társon való létrehozásához.
+- [A chaincode telepítése](#install-chaincode)  
+- [Chaincode példányának példányai](#instantiate-chaincode)  
+- [Chaincode meghívása](#invoke-chaincode)
+- [Chaincode lekérdezése](#query-chaincode)
+
+
+### <a name="install-chaincode"></a>A chaincode telepítése  
+
+Futtassa az alábbi parancsot a chaincode telepítéséhez a társ-szervezetben.  
 
 ```bash
-npm run instantiateCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL -f <instantiateFunc> -a <instantiateFuncArgs>
+./azhlf chaincode install -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -l $CC_LANG -v $CC_VERSION  
 
 ```
-A (z) és a (z) és a `<instantiateFunc>` (z `<instantiateFuncArgs>` ) és a (z) argumentumok egymásba lépése Például a [fabrcar chaincode](https://github.com/hyperledger/fabric-samples/blob/release/chaincode/fabcar/fabcar.go)-ben, ha a chaincode-t a `<instantiateFunc>` `"Init"` és a `<instantiateFuncArgs>` értékre állítja `""`, és üres karakterláncot szeretne létrehozni.
+Telepíti a chaincode-t a ORGNAME környezeti változóban beállított társ-szervezeti csoport összes egyenrangú csomópontjára. Ha a csatornán kettő vagy több egyenrangú szervezet található, és mindegyikhez telepíteni szeretné a chaincode-t, akkor az összes társ-szervezetnél külön kell végrehajtania ezt a parancsot.  
+
+Kövesse az alábbi lépéseket:  
+
+1.  A `ORGNAME` és `USER_IDENTITY` a érték beállítása a peerOrg1 `./azhlf chaincode install` és a Issue parancs esetében.  
+2.  A `ORGNAME` és `USER_IDENTITY` a érték beállítása a peerOrg2 `./azhlf chaincode install` és a Issue parancs esetében.  
+
+### <a name="instantiate-chaincode"></a>Chaincode példányának példányai  
+
+A társ ügyfélalkalmazás alkalmazásban futtassa az alábbi parancsot a chaincode a csatornán való létrehozásához.  
+
+```bash
+./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
+```
+A (z) és a (z) és a ( `<instantiateFunc>` z `<instantiateFuncArgs>` ) és a (z) argumentumának átadása az Például chaincode_example02. go chaincode-ben a chaincode a következőre van állítva `<instantiateFunc>` `init` `<instantiateFuncArgs>` : "a" "2000" "b" "1000".
 
 > [!NOTE]
-> Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől.
-> Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a chaincode a csatorna összes társ-csomópontján lévő összes társ-csomóponton példányba kerül.
+> Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől. Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a chaincode a csatorna összes társ-csomópontján lévő összes társ-csomóponton példányba kerül.  
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
+
+### <a name="invoke-chaincode"></a>Chaincode meghívása  
+
+A chaincode függvény meghívásához hajtsa végre az alábbi parancsot a társ szervezeti ügyféltől:  
 
 ```bash
-npm run instantiateCC -- -h
-
+./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-### <a name="invoke-chaincode"></a>Chaincode meghívása
+ `<invokeFunction>` Adja `<invokeFuncArgs>`meg a függvény nevét és az argumentumok szóközzel tagolt listáját. Folytassa a chaincode_example02. go chaincode-példával, hogy elindítsa `<invokeFunction>` a `invoke` meghívási műveletet az "a" "b" vagy `<invokeFuncArgs>` "10" értékre.  
 
-A chaincode függvény meghívásához hajtsa végre az alábbi parancsot:
+>[!NOTE]
+> Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől. Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a globális állapotot a rendszer az összes társ-csomóponton frissíti a csatornán.  
+
+
+### <a name="query-chaincode"></a>Chaincode lekérdezése  
+
+Futtassa az alábbi parancsot a chaincode lekérdezéséhez:  
 
 ```bash
-npm run invokeCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <invokeFunc> -a <invokeFuncArgs>
-
+./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-A (z) és a (z) és `<invokeFunction>` `<invokeFuncArgs>` a (z) argumentumban a függvény neve és vesszővel tagolt listája Folytassa a fabcar chaincode példával, hogy meghívja a initLedger `<invokeFunction>` függvényt `<invokeFuncArgs>` a `""` `"initLedger"` és a értékre.
+Adja át a lekérdezési függvény nevét és az argumentumok `<queryFunction>`  `<queryFuncArgs>` szóközzel tagolt listáját. A chaincode_example02. go chaincode-ként a "a" értéket kell megtekintenie a `<queryFunction>` globális állapotban `query`  `<queryArgs>` lévő "a" érték lekéréséhez.  
 
-> [!NOTE]
-> Hajtsa végre a parancsot egyszer a csatornán lévő bármelyik társ-szervezettől.
-> Miután sikeresen elküldte a tranzakciót a megrendelő számára, a megrendelő elosztja ezt a tranzakciót a csatorna összes társ-szervezete számára. Ezért a globális állapotot a rendszer az összes társ-csomóponton frissíti a csatornán.
+## <a name="troubleshoot"></a>Hibaelhárítás
 
-A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
+**A futó sablon verziójának ellenőrzése**
+
+Futtassa az alábbi parancsokat a sablon központi telepítésének megkereséséhez.
+
+Állítsa be az alábbi környezeti változókat olyan erőforráscsoport szerint, amelyben a sablon telepítve lett.
 
 ```bash
-npm run invokeCC -- -h
 
+SWITCH_TO_AKS_CLUSTER() { az aks get-credentials --resource-group $1 --name $2 --subscription $3; }
+AKS_CLUSTER_SUBSCRIPTION=<AKSClusterSubscriptionID>
+AKS_CLUSTER_RESOURCE_GROUP=<AKSClusterResourceGroup>
+AKS_CLUSTER_NAME=<AKSClusterName>
 ```
-
-### <a name="query-chaincode"></a>Chaincode lekérdezése
-
-Futtassa az alábbi parancsot a chaincode lekérdezéséhez:
-
+Futtassa az alábbi parancsot a sablon verziójának kinyomtatásához
 ```bash
-npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <queryFunction> -a <queryFuncArgs>
-
-```
-
-A `<queryFunction>` `<queryFuncArgs>` lekérdezési függvény neve és az argumentumok vesszővel tagolt listája. A chaincode- `fabcar` ként is, hogy a globális állapotban `<queryFunction>` lévő összes, a `"queryAllCars"` és `<queryArgs>` a értékre `""`irányuló összes autó lekérdezése megtörténjen.
-
-A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
-
-```bash
-npm run queryCC -- -h
+SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER_SUBSCRIPTION
+kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
