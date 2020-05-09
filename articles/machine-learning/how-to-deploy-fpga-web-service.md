@@ -11,17 +11,17 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 870f7b0ab0f1d7b247435cdbb74e21801b3b052a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8569f4751c54d7b37aa15737a9b3f7f394c7e26e
+ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257181"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82983584"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Mik a Field-programozható Gate-tömbök (FPGA) és az üzembe helyezés módja
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez a cikk bevezetést nyújt a Field-programozható Gate-tömbök (FPGA) számára, és bemutatja, hogyan helyezheti üzembe a modelleket Azure Machine Learning használatával egy Azure-FPGA.
+Ez a cikk bevezetést nyújt a Field-programozható Gate-tömbök (FPGA) számára, és bemutatja, hogyan helyezheti üzembe a modelleket [Azure Machine learning](overview-what-is-azure-ml.md) használatával egy Azure-FPGA.
 
 Az FPGA-k programozható logikai blokkok tömbjét és újrakonfigurálható összekötők hierarchiáját tartalmazzák. Az összekapcsolások lehetővé teszik, hogy ezeket a blokkokat különböző módokon konfigurálja a gyártás után. A többi zsetonnal összehasonlítva a FPGA a programozhatóság és a teljesítmény kombinációját biztosítja.
 
@@ -81,9 +81,9 @@ A következő forgatókönyvek a FPGA-t használják:
 
 + [A Land Cover leképezése](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/)
 
-## <a name="example-deploy-models-on-fpgas"></a>Példa: modellek üzembe helyezése a FPGA-on
+## <a name="deploy-models-on-fpgas"></a>Modellek üzembe helyezése a FPGA
 
-A modelleket webszolgáltatásként is üzembe helyezheti a FPGA Azure Machine Learning Hardware Accelerated Models használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban.
+A modelleket webszolgáltatásként is üzembe helyezheti a FPGA [Azure Machine Learning Hardware Accelerated models](https://docs.microsoft.com/python/api/azureml-accel-models/azureml.accel?view=azure-ml-py)használatával. A FPGA használata rendkívül kis késleltetésű következtetést biztosít, akár egyetlen batch-méret is. A következtetés vagy a modell pontozása az a fázis, ahol az üzembe helyezett modellt az előrejelzéshez használják, leggyakrabban a termelési adatforgalomban.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
@@ -118,7 +118,7 @@ A modelleket webszolgáltatásként is üzembe helyezheti a FPGA Azure Machine L
     pip install --upgrade azureml-accel-models[cpu]
     ```
 
-## <a name="1-create-and-containerize-models"></a>1. modellek létrehozása és tárolóba helyezése
+### <a name="1-create-and-containerize-models"></a>1. modellek létrehozása és tárolóba helyezése
 
 Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy TensorFlow gráfot a bemeneti rendszerkép előfeldolgozásához, hogy a Képtulajdonság a ResNet 50-et használja egy FPGA, majd a szolgáltatásokat a ImageNet-adatkészletben szereplő osztályozó használatával futtassa.
 
@@ -132,189 +132,170 @@ Kövesse az alábbi utasításokat:
 
 A [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) segítségével hozzon létre egy szolgáltatás-definíciót. A szolgáltatás definíciója egy olyan fájl, amely a diagramok (bemenet, Képtulajdonság és osztályozó) folyamatát írja le a TensorFlow alapján. A telepítési parancs automatikusan tömöríti a definíciót és a diagramokat egy ZIP-fájlba, és feltölti a ZIP-fájlt az Azure Blob Storage-ba. A DNN már telepítve van, hogy a FPGA fusson.
 
-### <a name="load-azure-machine-learning-workspace"></a>Azure Machine Learning munkaterület betöltése
+1. Azure Machine Learning munkaterület betöltése
 
-Töltse be Azure Machine Learning munkaterületét.
+   ```python
+   import os
+   import tensorflow as tf
+   
+   from azureml.core import Workspace
+  
+   ws = Workspace.from_config()
+   print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
+   ```
 
-```python
-import os
-import tensorflow as tf
+2. Rendszerkép előfeldolgozása. A webszolgáltatás bemenete egy JPEG-rendszerkép.  Az első lépés a JPEG-rendszerkép dekódolása és előfeldolgozása.  A JPEG-képek karakterláncként vannak kezelve, és az eredmény a ResNet 50 modell bemenetét eredményező tízes.
 
-from azureml.core import Workspace
+   ```python
+   # Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
+   import azureml.accel.models.utils as utils
+   tf.reset_default_graph()
+   
+   in_images = tf.placeholder(tf.string)
+   image_tensors = utils.preprocess_array(in_images)
+   print(image_tensors.shape)
+   ```
 
-ws = Workspace.from_config()
-print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep='\n')
-```
+1. Képtulajdonság betöltése. Inicializálja a modellt, és töltsön le egy TensorFlow ellenőrzőpontot a ResNet50 kvantálási verziójáról, amelyet Képtulajdonság kíván használni.  Az alábbi kódrészletben a "QuantizedResnet50" kifejezés helyett más mély neurális hálózatokat is importálhat:
 
-### <a name="preprocess-image"></a>Rendszerkép előfeldolgozása
+   - QuantizedResnet152
+   - QuantizedVgg16
+   - Densenet121
 
-A webszolgáltatás bemenete egy JPEG-rendszerkép.  Az első lépés a JPEG-rendszerkép dekódolása és előfeldolgozása.  A JPEG-képek karakterláncként vannak kezelve, és az eredmény a ResNet 50 modell bemenetét eredményező tízes.
+   ```python
+   from azureml.accel.models import QuantizedResnet50
+   save_path = os.path.expanduser('~/models')
+   model_graph = QuantizedResnet50(save_path, is_frozen=True)
+   feature_tensor = model_graph.import_graph_def(image_tensors)
+   print(model_graph.version)
+   print(feature_tensor.name)
+   print(feature_tensor.shape)
+   ```
 
-```python
-# Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
-import azureml.accel.models.utils as utils
-tf.reset_default_graph()
+1. Osztályozó hozzáadása Ez az osztályozó a ImageNet adatkészleten lett betanítva.  Példák az átadásra és a testreszabott súlyok betanítására a [minta jegyzetfüzetek](https://aka.ms/aml-notebooks)készletében.
 
-in_images = tf.placeholder(tf.string)
-image_tensors = utils.preprocess_array(in_images)
-print(image_tensors.shape)
-```
+   ```python
+   classifier_output = model_graph.get_default_classifier(feature_tensor)
+   print(classifier_output)
+   ```
 
-### <a name="load-featurizer"></a>Képtulajdonság betöltése
+1. Mentse a modellt. Most, hogy az előfeldolgozó, a ResNet 50 Képtulajdonság és az osztályozó be lett töltve, mentse a gráfot és a társított változókat modellként.
 
-Inicializálja a modellt, és töltsön le egy TensorFlow ellenőrzőpontot a ResNet50 kvantálási verziójáról, amelyet Képtulajdonság kíván használni.  Az alábbi kódrészletben a "QuantizedResnet50" kifejezés helyett más mély neurális hálózatokat is importálhat:
+   ```python
+   model_name = "resnet50"
+   model_save_path = os.path.join(save_path, model_name)
+   print("Saving model in {}".format(model_save_path))
+   
+   with tf.Session() as sess:
+       model_graph.restore_weights(sess)
+       tf.saved_model.simple_save(sess, model_save_path,
+                                  inputs={'images': in_images},
+                                  outputs={'output_alias': classifier_output})
+   ```
 
-- QuantizedResnet152
-- QuantizedVgg16
-- Densenet121
+1. Mentse a bemeneti és a kimeneti adatmennyiséget. Az előfeldolgozás és az osztályozó lépések során létrehozott bemeneti és kimeneti kétlépcsők a modell átalakításához és a következtetésekhez szükségesek.
 
-```python
-from azureml.accel.models import QuantizedResnet50
-save_path = os.path.expanduser('~/models')
-model_graph = QuantizedResnet50(save_path, is_frozen=True)
-feature_tensor = model_graph.import_graph_def(image_tensors)
-print(model_graph.version)
-print(feature_tensor.name)
-print(feature_tensor.shape)
-```
+   ```python
+   input_tensors = in_images.name
+   output_tensors = classifier_output.name
 
-### <a name="add-classifier"></a>Osztályozó hozzáadása
+   print(input_tensors)
+   print(output_tensors)
+   ```
 
-Ez az osztályozó a ImageNet adatkészleten lett betanítva.  Példák az átadásra és a testreszabott súlyok betanítására a [minta jegyzetfüzetek](https://aka.ms/aml-notebooks)készletében.
+   > [!IMPORTANT]
+   > Mentse a bemeneti és kimeneti TEN-ket, mert szüksége lesz rájuk a modell átalakításához és a következtetések megkereséséhez.
 
-```python
-classifier_output = model_graph.get_default_classifier(feature_tensor)
-print(classifier_output)
-```
+   Az elérhető modellek és a megfelelő alapértelmezett osztályozó kimeneti TEN-elemek alább láthatók, ami azt eredményezi, hogy az alapértelmezett minősítőt használta.
 
-### <a name="save-the-model"></a>A modell mentése
+   + Resnet50, QuantizedResnet50
+     ```python
+     output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"
+     ```
+   + Resnet152, QuantizedResnet152
+     ```python
+     output_tensors = "classifier/resnet_v1_152/predictions/Softmax:0"
+     ```
+   + Densenet121, QuantizedDensenet121
+     ```python
+     output_tensors = "classifier/densenet121/predictions/Softmax:0"
+     ```
+   + Vgg16, QuantizedVgg16
+     ```python
+     output_tensors = "classifier/vgg_16/fc8/squeezed:0"
+     ```
+   + SsdVgg, QuantizedSsdVgg
+     ```python
+     output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
+     ```
 
-Most, hogy az előfeldolgozó, a ResNet 50 Képtulajdonság és az osztályozó be lett töltve, mentse a gráfot és a társított változókat modellként.
+1. [Regisztrálja](concept-model-management-and-deployment.md) a MODELLT az SDK használatával az Azure Blob Storage-ban található zip-fájllal. A címkék és a modellel kapcsolatos egyéb metaadatok hozzáadásával nyomon követheti a betanított modelleket.
 
-```python
-model_name = "resnet50"
-model_save_path = os.path.join(save_path, model_name)
-print("Saving model in {}".format(model_save_path))
+   ```python
+   from azureml.core.model import Model
 
-with tf.Session() as sess:
-    model_graph.restore_weights(sess)
-    tf.saved_model.simple_save(sess, model_save_path,
-                               inputs={'images': in_images},
-                               outputs={'output_alias': classifier_output})
-```
+   registered_model = Model.register(workspace=ws,
+                                     model_path=model_save_path,
+                                     model_name=model_name)
 
-### <a name="save-input-and-output-tensors"></a>Bemeneti és kimeneti adatmennyiségek mentése
-Az előfeldolgozás és az osztályozó lépések során létrehozott bemeneti és kimeneti kétlépcsők a modell átalakításához és a következtetésekhez szükségesek.
+   print("Successfully registered: ", registered_model.name,
+         registered_model.description, registered_model.version, sep='\t')
+   ```
 
-```python
-input_tensors = in_images.name
-output_tensors = classifier_output.name
+   Ha már regisztrált egy modellt, és be szeretné tölteni, akkor lekérheti.
 
-print(input_tensors)
-print(output_tensors)
-```
+   ```python
+   from azureml.core.model import Model
+   model_name = "resnet50"
+   # By default, the latest version is retrieved. You can specify the version, i.e. version=1
+   registered_model = Model(ws, name="resnet50")
+   print(registered_model.name, registered_model.description,
+         registered_model.version, sep='\t')
+   ```
 
-> [!IMPORTANT]
-> Mentse a bemeneti és kimeneti TEN-ket, mert szüksége lesz rájuk a modell átalakításához és a következtetések megkereséséhez.
+1. Alakítsa át a TensorFlow gráfot a nyílt neurális hálózati Exchange-formátumra ([ONNX](https://onnx.ai/)).  Meg kell adnia a bemeneti és a kimeneti hálózatok nevét, ezeket a neveket pedig az ügyfél fogja használni a webszolgáltatás felhasználása során.
 
-Az elérhető modellek és a megfelelő alapértelmezett osztályozó kimeneti TEN-elemek alább láthatók, ami azt eredményezi, hogy az alapértelmezett minősítőt használta.
+   ```python
+   from azureml.accel import AccelOnnxConverter
 
-+ Resnet50, QuantizedResnet50
-  ```python
-  output_tensors = "classifier_1/resnet_v1_50/predictions/Softmax:0"
-  ```
-+ Resnet152, QuantizedResnet152
-  ```python
-  output_tensors = "classifier/resnet_v1_152/predictions/Softmax:0"
-  ```
-+ Densenet121, QuantizedDensenet121
-  ```python
-  output_tensors = "classifier/densenet121/predictions/Softmax:0"
-  ```
-+ Vgg16, QuantizedVgg16
-  ```python
-  output_tensors = "classifier/vgg_16/fc8/squeezed:0"
-  ```
-+ SsdVgg, QuantizedSsdVgg
-  ```python
-  output_tensors = ['ssd_300_vgg/block4_box/Reshape_1:0', 'ssd_300_vgg/block7_box/Reshape_1:0', 'ssd_300_vgg/block8_box/Reshape_1:0', 'ssd_300_vgg/block9_box/Reshape_1:0', 'ssd_300_vgg/block10_box/Reshape_1:0', 'ssd_300_vgg/block11_box/Reshape_1:0', 'ssd_300_vgg/block4_box/Reshape:0', 'ssd_300_vgg/block7_box/Reshape:0', 'ssd_300_vgg/block8_box/Reshape:0', 'ssd_300_vgg/block9_box/Reshape:0', 'ssd_300_vgg/block10_box/Reshape:0', 'ssd_300_vgg/block11_box/Reshape:0']
-  ```
+   convert_request = AccelOnnxConverter.convert_tf_model(
+       ws, registered_model, input_tensors, output_tensors)
 
-### <a name="register-model"></a>Modell regisztrálása
+   # If it fails, you can run wait_for_completion again with show_output=True.
+   convert_request.wait_for_completion(show_output=False)
 
-[Regisztrálja](concept-model-management-and-deployment.md) a MODELLT az SDK használatával az Azure Blob Storage-ban található zip-fájllal. A címkék és a modellel kapcsolatos egyéb metaadatok hozzáadásával nyomon követheti a betanított modelleket.
+   # If the above call succeeded, get the converted model
+   converted_model = convert_request.result
+   print("\nSuccessfully converted: ", converted_model.name, converted_model.url, converted_model.version,
+         converted_model.id, converted_model.created_time, '\n')
+   ```
 
-```python
-from azureml.core.model import Model
+1. Hozzon létre Docker-rendszerképet a konvertált modellből és az összes függőségből.  Ezt a Docker-rendszerképet ezután üzembe helyezheti és létrehozhatja.  A támogatott üzembe helyezési célok közé tartoznak a Felhőbeli AK vagy az Edge-eszközök, például a [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  Címkéket és leírásokat is hozzáadhat a regisztrált Docker-rendszerképhez.
 
-registered_model = Model.register(workspace=ws,
-                                  model_path=model_save_path,
-                                  model_name=model_name)
+   ```python
+   from azureml.core.image import Image
+   from azureml.accel import AccelContainerImage
 
-print("Successfully registered: ", registered_model.name,
-      registered_model.description, registered_model.version, sep='\t')
-```
+   image_config = AccelContainerImage.image_configuration()
+   # Image name must be lowercase
+   image_name = "{}-image".format(model_name)
 
-Ha már regisztrált egy modellt, és be szeretné tölteni, akkor lekérheti.
+   image = Image.create(name=image_name,
+                        models=[converted_model],
+                        image_config=image_config,
+                        workspace=ws)
+   image.wait_for_creation(show_output=False)
+   ```
 
-```python
-from azureml.core.model import Model
-model_name = "resnet50"
-# By default, the latest version is retrieved. You can specify the version, i.e. version=1
-registered_model = Model(ws, name="resnet50")
-print(registered_model.name, registered_model.description,
-      registered_model.version, sep='\t')
-```
+   Sorolja fel a képeket címkével, és szerezze be a hibakereséshez szükséges részletes naplókat.
 
-### <a name="convert-model"></a>Modell konvertálása
+   ```python
+   for i in Image.list(workspace=ws):
+       print('{}(v.{} [{}]) stored at {} with build log {}'.format(
+           i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
+   ```
 
-Alakítsa át a TensorFlow gráfot a nyílt neurális hálózati Exchange-formátumra ([ONNX](https://onnx.ai/)).  Meg kell adnia a bemeneti és a kimeneti hálózatok nevét, ezeket a neveket pedig az ügyfél fogja használni a webszolgáltatás felhasználása során.
-
-```python
-from azureml.accel import AccelOnnxConverter
-
-convert_request = AccelOnnxConverter.convert_tf_model(
-    ws, registered_model, input_tensors, output_tensors)
-
-# If it fails, you can run wait_for_completion again with show_output=True.
-convert_request.wait_for_completion(show_output=False)
-
-# If the above call succeeded, get the converted model
-converted_model = convert_request.result
-print("\nSuccessfully converted: ", converted_model.name, converted_model.url, converted_model.version,
-      converted_model.id, converted_model.created_time, '\n')
-```
-
-### <a name="create-docker-image"></a>Docker-rendszerkép létrehozása
-
-Az átalakított modell és az összes függőség hozzá van adva egy Docker-rendszerképhez.  Ezt a Docker-rendszerképet ezután üzembe helyezheti és létrehozhatja.  A támogatott üzembe helyezési célok közé tartoznak a Felhőbeli AK vagy az Edge-eszközök, például a [Azure Data Box Edge](https://docs.microsoft.com/azure/databox-online/data-box-edge-overview).  Címkéket és leírásokat is hozzáadhat a regisztrált Docker-rendszerképhez.
-
-```python
-from azureml.core.image import Image
-from azureml.accel import AccelContainerImage
-
-image_config = AccelContainerImage.image_configuration()
-# Image name must be lowercase
-image_name = "{}-image".format(model_name)
-
-image = Image.create(name=image_name,
-                     models=[converted_model],
-                     image_config=image_config,
-                     workspace=ws)
-image.wait_for_creation(show_output=False)
-```
-
-Sorolja fel a képeket címkével, és szerezze be a hibakereséshez szükséges részletes naplókat.
-
-```python
-for i in Image.list(workspace=ws):
-    print('{}(v.{} [{}]) stored at {} with build log {}'.format(
-        i.name, i.version, i.creation_state, i.image_location, i.image_build_log_uri))
-```
-
-## <a name="2-deploy-to-cloud-or-edge"></a>2. üzembe helyezés a felhőben vagy az Edge-ben
-
-### <a name="deploy-to-the-cloud"></a>Üzembe helyezés a felhőben
+### <a name="2-deploy-to-cloud-or-edge"></a>2. üzembe helyezés a felhőben vagy az Edge-ben
 
 Ha a modellt nagy léptékű üzemi webszolgáltatásként szeretné üzembe helyezni, használja az Azure Kubernetes szolgáltatást (ak). Létrehozhat egy újat a Azure Machine Learning SDK, CLI vagy [Azure Machine learning Studio](https://ml.azure.com)használatával.
 

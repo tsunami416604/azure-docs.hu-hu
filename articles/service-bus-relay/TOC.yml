@@ -38,6 +38,8 @@
           href: relay-authentication-and-authorization.md
         - name: Beépített biztonsági vezérlők
           href: service-bus-relay-security-controls.md
+        - name: Hálózati biztonság
+          href: network-security.md
     - name: Hibrid kapcsolatok protokollja
       href: relay-hybrid-connections-protocol.md
 - name: Útmutató
@@ -59,6 +61,12 @@
               href: relay-hybrid-connections-dotnet-api-overview.md
             - name: Csomópont
               href: relay-hybrid-connections-node-ws-api-overview.md
+    - name: Biztonságos
+      items:
+        - name: IP-tűzfal konfigurálása (előzetes verzió)
+          href: ip-firewall-virtual-networks.md
+        - name: Privát végpontok konfigurálása (előzetes verzió)
+          href: private-link-service.md
     - name: Kezelés és monitorozás
       items:
         - name: Az Azure Relay monitorozása az Azure Monitoring segítségével

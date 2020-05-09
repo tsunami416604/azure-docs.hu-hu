@@ -112,8 +112,6 @@
           href: platform/alerts-unified-log.md
         - name: Tevékenységnapló-riasztások
           href: platform/activity-log-alerts.md
-        - name: Elemzés módosítása
-          href: app/change-analysis.md
     - name: Adatok vizualizációja
       href: visualizations.md
     - name: Partnerintegrációk
@@ -528,6 +526,8 @@
               href: platform/resource-logs-blob-format.md
         - name: Adatok streamelése az Event Hubsra
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: Elemzés módosítása
+          href: app/change-analysis.md
     - name: Virtuális gépek és a vendég operációs rendszer monitorozása
       items:
         - name: Azure-beli virtuális gépek monitorozása
