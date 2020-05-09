@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: eb3db23189cbfd07362b1bd5be9aaa181064a2d6
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b1c19ed556a55dec8c84686e80ec988bc593a7a2
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583221"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996032"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>A szintézis fejlesztése a Speech szintézis Markup Language (SSML) nyelvvel
 
@@ -109,7 +109,7 @@ A `speak` elemen belül több hang is megadható a szöveg – beszéd kimenethe
 
 A Speech SDK nyelvétől függően a `"SpeechServiceResponse_Synthesis_WordBoundaryEnabled"` tulajdonságot az `false` `SpeechConfig` objektum egy példányán kell beállítania.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 További információ: <a href="https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig.setproperty?view=azure-dotnet" target="_blank"> `SetProperty` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
 
@@ -258,7 +258,7 @@ Az `break` elem használatával szüneteltetheti a szavak közötti szüneteltet
 
 | Attribútum | Leírás | Kötelező/nem kötelező |
 |-----------|-------------|---------------------|
-| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>Nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Optional |
+| `strength` | Meghatározza a Szüneteltetés relatív időtartamát az alábbi értékek egyikének használatával:<ul><li>nincs</li><li>x – gyenge</li><li>gyenge</li><li>közepes (alapértelmezett)</li><li>erős</li><li>x – erős</li></ul> | Optional |
 | `time` | Megadja a szünet időtartamát másodpercben vagy ezredmásodpercben. Példák érvényes értékekre, `2s` és`500` | Optional |
 
 | Erősségét                      | Leírás |
@@ -359,7 +359,10 @@ A fonetikus ábécék olyan telefonokból állnak, amelyek betűkből, számokb�
 
 ## <a name="use-custom-lexicon-to-improve-pronunciation"></a>A kiejtés javítása egyéni lexikon használatával
 
-Néha a TTS nem tudja pontosan kiejteni a szót, például egy vállalat vagy egy idegen név. A fejlesztők meghatározhatják ezen entitások olvasását a SSML `phoneme` - `sub` ben a és a címke használatával, vagy megadhatják több entitás olvasását úgy, hogy az `lexicon` egyéni lexikon-fájlra hivatkozó címkét használnak.
+Előfordulhat, hogy a szöveg-beszéd szolgáltatás nem tudja pontosan kiejteni a szót. Például egy vállalat neve vagy egy orvosi kifejezés. A fejlesztők meghatározhatják, hogy az egyes entitások hogyan legyenek `sub` beolvasva a SSML a és a `phoneme` címkék használatával. Ha azonban azt is meg kell határoznia, hogy az egyes entitások hogyan legyenek beolvasva, `lexicon` létrehozhat egy egyéni lexikont a címke használatával.
+
+> [!NOTE]
+> Az egyéni lexikon jelenleg támogatja az UTF-8 kódolást. 
 
 **Szintaxis**
 
@@ -375,14 +378,10 @@ Néha a TTS nem tudja pontosan kiejteni a szót, például egy vállalat vagy eg
 
 **Használati**
 
-1. lépés: egyéni lexikon definiálása 
-
-Az entitások olvasását megadhatja egy. XML vagy. pls fájlban tárolt egyéni lexikon elemek listája alapján.
-
-**Például**
+Ha meg szeretné határozni, hogy az egyes entitások hogyan legyenek beolvasva, létrehozhat egy egyéni lexikont, amely. XML vagy. pls fájlként van tárolva. A következő egy minta. xml fájl.
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
@@ -400,39 +399,61 @@ Az entitások olvasását megadhatja egy. XML vagy. pls fájlban tárolt egyéni
 </lexicon>
 ```
 
-Minden `lexeme` elem egy lexikon elem. `grapheme`a OrthoGraph leíró szöveget tartalmazza `lexeme`. A `alias`kiolvasási űrlap is megadható. Az elemben meg lehet adni `phoneme` a telefonos karakterláncot.
+Az `lexicon` elem legalább egy `lexeme` elemet tartalmaz. Minden `lexeme` elem `grapheme` tartalmaz legalább egy elemet, és egy vagy több `grapheme`, `alias`és `phoneme` elemet. Az `grapheme` elem a <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">helyesírást <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>leíró szöveget tartalmaz. Az `alias` elemek a betűszó vagy egy rövidített kifejezés kiejtésének jelzésére szolgálnak. Az `phoneme` elem a kiejtését leíró `lexeme` szöveget tartalmaz.
 
-Az `lexicon` elem legalább egy `lexeme` elemet tartalmaz. Minden `lexeme` elem `grapheme` tartalmaz legalább egy elemet, és egy vagy több `grapheme`, `alais`és `phoneme` elemet. Az `grapheme` elem a <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">helyesírást <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>leíró szöveget tartalmaz. Az `alias` elemek a betűszó vagy egy rövidített kifejezés kiejtésének jelzésére szolgálnak. Az `phoneme` elem a kiejtését leíró `lexeme` szöveget tartalmaz.
+Fontos megjegyezni, hogy az egyéni lexikon használatával nem állítható be közvetlenül egy szó kiejtése. Ha a kiejtést egy értékre kell állítania, először adjon meg `alias`egy, majd társítsa `phoneme` a `alias`-t a következőhöz:. Például:
 
-További információ az egyéni lexikon-fájlról: a [kiejtési lexikon specifikációjának (pls) 1,0-es verziója](https://www.w3.org/TR/pronunciation-lexicon/) a W3C webhelyén.
+```xml
+  <lexeme>
+    <grapheme>Scotland MV</grapheme> 
+    <alias>ScotlandMV</alias> 
+  </lexeme>
+  <lexeme>
+    <grapheme>ScotlandMV</grapheme> 
+    <phoneme>ˈskɒtlənd.ˈmiːdiəm.weɪv</phoneme>
+  </lexeme>
+```
 
-2. lépés: töltse fel az 1. lépésben létrehozott egyéni lexikont, amely bárhol tárolható, és javasoljuk, hogy Microsoft Azure, például az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)tárolja.
+> [!IMPORTANT]
+> Az `phoneme` elem nem tartalmazhat szóközöket az IPA használatakor.
 
-3. lépés: a SSML-beli egyéni lexikon-fájlra vonatkozó hivatkozás
+További információ az egyéni lexikon-fájlról: a [kiejtési lexikon specifikációjának (pls) 1,0-es verziója](https://www.w3.org/TR/pronunciation-lexicon/).
+
+Ezután tegye közzé az egyéni lexikon-fájlt. Habár nem rendelkezünk korlátozásokkal a fájl tárolásához, az [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)használatát javasoljuk.
+
+Miután közzétette az egyéni lexikont, hivatkozhat rá a SSML.
+
+> [!NOTE]
+> Az `lexicon` elemnek a `voice` elemen belül kell lennie.
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" 
           xmlns:mstts="http://www.w3.org/2001/mstts" 
           xml:lang="en-US">
-<lexicon uri="http://www.example.com/customlexicon.xml"/>
-BTW, we will be there probably 8:00 tomorrow morning.
-Could you help leave a message to Robert Benigni for me?
+    <voice name="en-US-AriaRUS">
+        <lexicon uri="http://www.example.com/customlexicon.xml"/>
+        BTW, we will be there probably at 8:00 tomorrow morning.
+        Could you help leave a message to Robert Benigni for me?
+    </voice>
 </speak>
 ```
-A "BTW" a következőképpen lesz beolvasva: "by the way". A "Benigni" a megadott "bɛ tɛsɨfɒn ni ː nji" IPA-vel lesz beolvasva.  
 
-**Korlátozás**
+Ha ezt az egyéni lexikont használja, a "BTW" a "by the way" néven lesz beolvasva. A "Benigni" a megadott IPA "bɛ tɛsɨfɒn ni ː nji" lesz beolvasva.  
+
+**Korlátozások**
 - Fájlméret: az egyéni lexikon fájlméretének maximális korlátja 100 kb, ha ez meghaladja a méretet, a szintézisi kérelem sikertelen lesz.
 - Lexikon gyorsítótárának frissítése: az egyéni lexikont a rendszer az első betöltéskor kulcsként fogja gyorsítótárazni a TTS szolgáltatásban. Az azonos URI-val rendelkező lexikon 15 percen belül nem lesz újratöltve, ezért az egyéni lexikon-módosításnak 15 percnél hosszabb ideig kell megvárnia, hogy érvénybe lépjen.
 
 **Beszédfelismerési szolgáltatás fonetikus készletei**
 
-A fenti mintában a nemzetközi fonetikus ábécét használjuk, más néven IPA-telefont. Javasoljuk, hogy a fejlesztők az IPA-t használják, mivel ez a nemzetközi szabvány. Figyelembe véve, hogy az IPA nem könnyen megjegyezhető, a beszédfelismerési`en-US`szolgáltatás hét nyelvhez (, `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN`,,,, és `zh-TW`) is definiál egy fonetikus készletet.
+A fenti mintában a nemzetközi fonetikus ábécét használjuk, más néven IPA-telefont. Javasoljuk, hogy a fejlesztők az IPA-t használják, mivel ez a nemzetközi szabvány. Egyes IPA-karakterek esetében az "előre összeállított" és a "kibontott" verzió szerepel a Unicode-ban való Ábrázoláskor. Az egyéni lexikon csak a kibontott Unicode-ket támogatja.
+
+Figyelembe véve, hogy az IPA nem könnyen megjegyezhető, a beszédfelismerési`en-US`szolgáltatás hét nyelvhez (, `fr-FR` `de-DE` `es-ES` `ja-JP` `zh-CN`,,,, és `zh-TW`) is definiál egy fonetikus készletet.
 
 A (z) `sapi` és a (z) `alphabet` az egyéni lexikonokkal rendelkező attribútumhoz a (z) az alábbi ábrán látható módon használhatja:
 
 ```xml
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <lexicon version="1.0" 
       xmlns="http://www.w3.org/2005/01/pronunciation-lexicon"
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
