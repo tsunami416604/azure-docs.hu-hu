@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 03/19/2019
-ms.openlocfilehash: 045c1d255ae380c722506615aae9cf5d22105747
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 347f8a4cf1fb95849bcf1008e91d17878f3d01f8
+ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133110"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82598521"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: a helyreállítható törlés áttekintése
 
@@ -24,7 +24,7 @@ Key Vault a helyreállítható törlési funkció lehetővé teszi a törölt t�
 
 ## <a name="supporting-interfaces"></a>Támogató felületek
 
-A Soft-delete funkció kezdetben a [Rest](/rest/api/keyvault/), a [CLI](soft-delete-cli.md), a [PowerShell](soft-delete-powershell.md) és a [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületen érhető el.
+A Soft-delete funkció kezdetben a [Rest](/rest/api/keyvault/), a [CLI](soft-delete-cli.md), a [PowerShell](soft-delete-powershell.md)és a [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületen, valamint az ARM- [sablonokon](https://docs.microsoft.com/azure/templates/microsoft.keyvault/2019-09-01/vaults)keresztül érhető el.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 

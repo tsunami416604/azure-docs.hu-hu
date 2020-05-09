@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: acdac6e3eafc5251ebd31a34bcb9a4db34f0ebbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254364"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731577"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -29,7 +29,7 @@ Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/tr
 Ezért Traffic Manager nem biztosít végpontot vagy IP-címet ahhoz, hogy az ügyfelek csatlakozni tudjanak. Ha statikus IP-címet szeretne használni a szolgáltatáshoz, azt a szolgáltatásban kell konfigurálni, nem Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Milyen típusú forgalmat lehet irányítani a Traffic Manager használatával?
-Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/traffic-manager-how-it-works.md)ismerteti, a Traffic Manager végpont bármely, az Azure-on belül vagy kívül üzemeltetett internetkapcsolattal rendelkező szolgáltatás lehet. Ezért Traffic Manager a nyilvános internetről érkező forgalmat olyan végpontokra irányíthatja, amelyek szintén internetkapcsolattal rendelkeznek. Ha olyan végpontokkal rendelkezik, amelyek egy magánhálózaton belül találhatók (például [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)belső verziója), vagy ha a felhasználók DNS-kérelmeket tesznek elérhetővé az ilyen belső hálózatokból, akkor nem használhatja a forgalmat a Traffic Manager.
+Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/traffic-manager-how-it-works.md)ismerteti, a Traffic Manager végpont bármely, az Azure-on belül vagy kívül üzemeltetett internetkapcsolattal rendelkező szolgáltatás lehet. Ezért Traffic Manager a nyilvános internetről érkező forgalmat olyan végpontokra irányíthatja, amelyek szintén internetkapcsolattal rendelkeznek. Ha olyan végpontokkal rendelkezik, amelyek egy magánhálózaton belül találhatók (például [Azure Load Balancer](../load-balancer/components.md#frontend-ip-configurations)belső verziója), vagy ha a felhasználók DNS-kérelmeket tesznek elérhetővé az ilyen belső hálózatokból, akkor nem használhatja a forgalmat a Traffic Manager.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager támogatja a "Sticky" munkameneteket?
 

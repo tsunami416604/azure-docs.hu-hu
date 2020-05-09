@@ -11,12 +11,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 4cf260620d4e907fdb9190a052155fa22f1c7985
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc08916967b4d64667065373cf2d0828a05069d0
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398331"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82890942"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Több-bérlős alkalmazások rugalmas adatbázis-eszközökkel és sor szintű biztonsággal
 
@@ -341,7 +341,7 @@ GO
 ### <a name="maintenance"></a>Karbantartás
 
 - **Új**szegmensek hozzáadása: hajtsa végre a T-SQL-szkriptet az RLS bármely új szegmensen való engedélyezéséhez, ellenkező esetben a rendszer nem szűri az ilyen szegmensek lekérdezéseit.
-- **Új táblák hozzáadása**: Ha új táblát hoz létre, vegyen fel egy szűrőt és a tiltási predikátumot az összes szegmens biztonsági házirendjébe. Ellenkező esetben a rendszer nem szűri az új tábla lekérdezéseit. Ez a Hozzáadás egy DDL-trigger használatával automatizálható, a következő témakörben leírtak szerint: a [sor szintű biztonság automatikus alkalmazása az újonnan létrehozott táblákra (blog)](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx).
+- **Új táblák hozzáadása**: Ha új táblát hoz létre, vegyen fel egy szűrőt és a tiltási predikátumot az összes szegmens biztonsági házirendjébe. Ellenkező esetben a rendszer nem szűri az új tábla lekérdezéseit. Ez a Hozzáadás egy DDL-trigger használatával automatizálható, a következő témakörben leírtak szerint: a [sor szintű biztonság automatikus alkalmazása az újonnan létrehozott táblákra (blog)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393).
 
 ## <a name="summary"></a>Összefoglalás
 
