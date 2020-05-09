@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 039879cb725c20af3c40698947ea9abe189d08ad
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76271135"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731763"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>ELAVULT A draft használata a Azure Container Service és a Azure Container Registry használatával Kubernetes-alkalmazások készítéséhez és üzembe helyezéséhez
 
@@ -102,7 +102,7 @@ Most, hogy kész a fürt, importálhatja a hitelesítő adatokat az [az acs kube
 
 
 1. Töltse le a környezetének tervezetét https://github.com/Azure/draft/releases , és telepítse az elérési útját, hogy a parancs használható legyen.
-2. Töltse le a saját környezetét https://github.com/kubernetes/helm/releases , és [telepítse azt az elérési útra, hogy a parancs használható legyen](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+2. Töltse le a saját környezetét https://github.com/kubernetes/helm/releases , és [telepítse azt az elérési útra, hogy a parancs használható legyen](https://helm.sh/docs/intro/quickstart#install-helm).
 3. Konfigurálja a Draftot a beállításjegyzék használatára, és hozzon létre altartományt minden általa létrehozott Helm-diagramhoz. A Draft konfigurálásához a következők szükségesek:
    - Az Azure Container Registry neve (a példában `draftacsdemo`)
    - A beállításkulcs vagy jelszó a következőből: `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.

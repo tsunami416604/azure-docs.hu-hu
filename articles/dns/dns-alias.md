@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
-ms.openlocfilehash: 271770935cf4cb83d4abc6e82a4f4b13ffe865b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: HT
+ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295487"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926231"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-aliasrekordok áttekintése
 
@@ -66,7 +66,7 @@ Például a contoso.com és a www\.contoso.com ugyanarra a Traffic Manager profi
 
 A Traffic Manager-profilhoz hasonlóan az alias-rekordok is használhatók a DNS-zóna csúcspontjának Azure CDN végpontokra való rámutatása érdekében. Ez akkor hasznos, ha statikus webhelyeket hoz létre az Azure Storage és a Azure CDN használatával. Ezt követően a webhelyhez a "www" előtag nélkül is hozzáférhet a DNS-névhez.
 
-Ha például a statikus webhely neve `www.contoso.com, your users can access your site using contoso.com` nem szükséges a DNS-név elé, és nem kell megadnia a www-nevet.
+Ha például a statikus webhely neve `www.contoso.com`, a felhasználók hozzáférhetnek a webhelyhez `contoso.com` anélkül, hogy a www-t a DNS-névnek kell megadnia.
 
 Az előzőekben leírtak szerint a CNAME rekordok nem támogatottak a zóna csúcspontján. Ezért nem használhat CNAME-rekordot a CDN-végpontra irányuló contoso.com pontra. Ehelyett használhat alias-rekordot úgy, hogy a zóna csúcsát közvetlenül egy CDN-végpontra irányítsa.
 

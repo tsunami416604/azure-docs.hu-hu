@@ -1,23 +1,17 @@
 ---
-title: Azure Data Lake Storage Gen1 összehasonlítás a Azure Storage Blobval | Microsoft Docs
-description: Azure Data Lake Storage Gen1 összehasonlítása Azure Storage Blob
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1 összehasonlítása blob Storage-val
+description: A Azure Data Lake Storage Gen1 és az Azure Blob Storage közötti különbségek összegzését tartalmazza.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: b199525b-84de-4f79-9eb6-69a613b8b217
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 7c958c3ed4d6ddaabd87f053005fcfc1eba8c842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3565af1f3e0a002cf3852faef9c2853ff88d46e9
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75438723"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691725"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Azure Data Lake Storage Gen1 és az Azure Blob Storage összehasonlítása
 
@@ -40,9 +34,9 @@ A cikkben szereplő táblázat összefoglalja a Azure Data Lake Storage Gen1 és
 | Adatműveletek – naplózás |Elérhető. További [információ:.](data-lake-store-diagnostic-logs.md) |Elérhető |
 | Inaktív adatok titkosítása |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban</li></ul></ul> |<ul><li>Transzparens, kiszolgálóoldali oldal</li> <ul><li>Szolgáltatás által felügyelt kulcsokkal</li><li>Ügyfél által felügyelt kulcsokkal az Azure kulcstartóban (előzetes verzió)</li></ul><li>Ügyféloldali titkosítás</li></ul> |
 | Felügyeleti műveletek (például fiók létrehozása) |Az Azure által biztosított [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a fiókok felügyeletéhez |Az Azure által biztosított [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) (RBAC) a fiókok felügyeletéhez |
-| Fejlesztői SDK-k |.NET, Java, Python, Node. js |.Net, Java, Python, Node. js, C++, Ruby, PHP, go, Android, iOS |
+| Fejlesztői SDK-k |.NET, Java, Python, Node. js |.NET, Java, Python, Node. js, C++, Ruby, PHP, go, Android, iOS |
 | Elemzési számítási feladatok teljesítménye |Optimalizált teljesítmény párhuzamos elemzési számítási feladatokhoz. Nagy átviteli sebesség és IOPS. |Optimalizált teljesítmény párhuzamos elemzési számítási feladatokhoz. |
-| Méretkorlát |Nincs korlátozás a fiókok méretétől, a fájlmérettől vagy a fájlok számától |A konkrét korlátokat lásd: [a standard Storage-fiókok méretezhetőségi célpontjai](../storage/common/scalability-targets-standard-account.md) , valamint [a blob Storage méretezhetőségi és teljesítményi céljai](../storage/blobs/scalability-targets.md). Nagyobb fiókokra vonatkozó korlátozások érhetők el, ha kapcsolatba lép az [Azure ügyfélszolgálatával](https://azure.microsoft.com/support/faq/) |
+| Méretkorlát |Nincs korlátozás a fiók méretére, a fájlméretre vagy a fájlok számára |A konkrét korlátokat lásd: [a standard Storage-fiókok méretezhetőségi célpontjai](../storage/common/scalability-targets-standard-account.md) , valamint [a blob Storage méretezhetőségi és teljesítményi céljai](../storage/blobs/scalability-targets.md). Nagyobb fiókokra vonatkozó korlátozások érhetők el, ha kapcsolatba lép az [Azure ügyfélszolgálatával](https://azure.microsoft.com/support/faq/) |
 | Geo-redundancia |Helyileg redundáns (több példányban, egy Azure-régióban) |Helyileg redundáns (LRS), zóna redundáns (ZRS), globálisan redundáns (GRS), olvasási hozzáférés globális redundáns (RA-GRS). További [információ:](../storage/common/storage-redundancy.md) |
 | Szolgáltatás állapota |Általánosan elérhető |Általánosan elérhető |
 | Régiónkénti rendelkezésre állás |Lásd [itt](https://azure.microsoft.com/regions/#services) |Minden Azure-régióban elérhető |

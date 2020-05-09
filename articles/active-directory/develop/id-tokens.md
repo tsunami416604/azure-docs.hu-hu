@@ -2,7 +2,7 @@
 title: Microsoft Identity platform azonosító jogkivonat-referenciája
 description: Ismerje meg, hogyan használhatók az Azure AD v 1.0 és a Microsoft Identity platform (v 2.0) végpontok által kibocsátott id_tokens.
 services: active-directory
-author: rwike77
+author: hpsin
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
@@ -13,12 +13,12 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 23ff71bf24c3acbce3d27276981739305e1d074a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: 0d1a5ee3ae56e8b5c4886308624159853c52b52c
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309542"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82690184"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 

@@ -1,23 +1,17 @@
 ---
-title: '.NET SDK: Fiókkezelés-műveletek Azure Data Lake Storage Gen1on | Microsoft Docs'
-description: A Azure Data Lake Storage Gen1 .NET SDK használata a felügyeleti műveletek végrehajtásához Data Lake Storage Gen1
-services: data-lake-store
-documentationcenter: ''
+title: Azure Data Lake Storage Gen1-fiók kezelése a .NET-tel
+description: Ismerje meg, hogyan használhatja a .NET SDK-t a Azure Data Lake Storage Gen1 Fiókkezelés műveleteihez.
 author: twooley
-manager: mtillman
-editor: cgronlun
-ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
-ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 8da40aa04381542c8c750c8d7e33c9a29879371d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7ea2b7fffc4edff6cae895e08b955d2e21ff5f2
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65900877"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82692118"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Fiókkezelés Azure Data Lake Storage Gen1 a .NET SDK használatával
 > [!div class="op_single_selector"]
@@ -34,7 +28,7 @@ Az adatkezelési műveletek .NET SDK használatával történő végrehajtásáv
 ## <a name="prerequisites"></a>Előfeltételek
 * A **Visual Studio 2013-es vagy újabb**verzióját. Az alábbi utasítások a Visual Studio 2019-et használják.
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* **Egy Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="create-a-net-application"></a>.NET-alkalmazás létrehozása
 1. A Visual Studióban kattintson a **fájl** menüre, majd az **új**, majd a **projekt**elemre.

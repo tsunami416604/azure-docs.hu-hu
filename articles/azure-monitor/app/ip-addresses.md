@@ -4,26 +4,26 @@ description: A Application Insights által igényelt kiszolgálói tűzfal-kivé
 ms.topic: conceptual
 author: lgayhardt
 ms.author: lagayhar
-ms.date: 04/23/2020
-ms.openlocfilehash: 73147fe2e8c834fd4fc67c4c396bb095f616b6d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: bd0ed9db9723af9015d15429d632712d63e249c1
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105845"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82652745"
 ---
 # <a name="ip-addresses-used-by-application-insights-and-log-analytics"></a>Application Insights és Log Analytics által használt IP-címek
 Az [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) szolgáltatás számos IP-címet használ. Előfordulhat, hogy ismernie kell ezeket a címeket, ha a figyelt alkalmazás tűzfal mögött található.
 
 > [!NOTE]
 > Habár ezek a címek statikusak, lehetséges, hogy időről időre módosítaniuk kell őket. Az összes Application Insights forgalom a kimenő forgalmat a rendelkezésre állás monitorozása és a beérkező tűzfalszabályok használatát igénylő webhookok kivételével jelenti.
-> 
-> 
 
 > [!TIP]
-> Fizessen elő erre az oldalra RSS-hírcsatornáként https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom , ha hozzáadja a kedvenc RSS/Atom-olvasóját, hogy értesítést kapjon a legújabb változásokról.
-> 
-> 
+> Ha Azure hálózati biztonsági csoportokat használ, használhatja az Azure [hálózati szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+) a hozzáférés kezelésére. Ha hibrid/helyszíni erőforrásokhoz való hozzáférést kezel, letöltheti az egyenértékű IP-címlistát [JSON-fájlként](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) , amely minden héten frissül:. A cikkben szereplő összes kivétel lefedéséhez a következő szolgáltatást kell használnia: "ActionGroup", "ApplicationInsightsAvailability", "AzureMonitor".
+
+Azt is megteheti, hogy RSS-hírcsatornáként előfizethet erre https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/azure-monitor/app/ip-addresses.md.atom a lapra, ha hozzáadja a kedvenc RSS/Atom-olvasóját, hogy értesítést kapjon a legújabb változásokról.
+
 
 ## <a name="outgoing-ports"></a>Kimenő portok
 Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy a Application Insights SDK és/vagy Állapotmonitor számára lehetővé váljon az adatküldés a portálra:
@@ -43,13 +43,13 @@ Meg kell nyitnia néhány kimenő portot a kiszolgálója tűzfalán, hogy a App
 
 | Cél | URL-cím | IP | Portok |
 | --- | --- | --- | --- |
-| Configuration |`management.core.windows.net` | |`443` |
-| Configuration |`management.azure.com` | |`443` |
-| Configuration |`login.windows.net` | |`443` |
-| Configuration |`login.microsoftonline.com` | |`443` |
-| Configuration |`secure.aadcdn.microsoftonline-p.com` | |`443` |
-| Configuration |`auth.gfx.ms` | |`443` |
-| Configuration |`login.live.com` | |`443` |
+| Konfiguráció |`management.core.windows.net` | |`443` |
+| Konfiguráció |`management.azure.com` | |`443` |
+| Konfiguráció |`login.windows.net` | |`443` |
+| Konfiguráció |`login.microsoftonline.com` | |`443` |
+| Konfiguráció |`secure.aadcdn.microsoftonline-p.com` | |`443` |
+| Konfiguráció |`auth.gfx.ms` | |`443` |
+| Konfiguráció |`login.live.com` | |`443` |
 | Telepítés | `globalcdn.nuget.org`, `packages.nuget.org` ,`api.nuget.org/v3/index.json` `nuget.org`, `api.nuget.org`, `dc.services.vsallin.net` | |`443` |
 
 ## <a name="availability-tests"></a>Rendelkezésre állási tesztek
@@ -178,6 +178,13 @@ East US
 20.42.35.112/28
 20.42.35.128/28
 
+Azure US Government (Not needed if you are an Azure Public cloud customer)
+
+20.140.48.160/27
+20.140.56.160/27
+20.140.64.160/27
+20.140.72.160/27
+52.127.49.96/27
 ```  
 
 ## <a name="application-insights--log-analytics-apis"></a>Application Insights & Log Analytics API-k
@@ -220,11 +227,11 @@ Megjegyzés: a *. loganalytics.io tartomány tulajdonosa a Log Analytics csapata
 | Application Insights JS SDK CDN | az416426.vo.msecnd.net | dinamikus | 80 443 |
 | Java SDK Application Insights | aijavasdk.blob.core.windows.net | dinamikus | 80 443 |
 
-## <a name="alert-webhooks"></a>Riasztási webhookok
+## <a name="action-group-webhooks"></a>A műveleti csoport webhookai
 
 | Cél | IP | Portok
 | --- | --- | --- |
-| Riasztások kezelése | 23.96.11.4 | 443 |
+| Riasztások kezelése | 13.72.19.232 <br/>13.106.57.181<br/>13.106.54.3<br/>13.106.54.19<br/>13.106.38.142<br/>13.106.38.148<br/>13.106.57.196<br/>13.106.57.197<br/>52.244.68.117<br/>52.244.65.137<br/>52.183.31.0<br/>52.184.145.166<br/>51.4.138.199<br/>51.5.148.86<br/>51.5.149.19 | 443 |
 
 ## <a name="profiler"></a>Profilkészítő
 

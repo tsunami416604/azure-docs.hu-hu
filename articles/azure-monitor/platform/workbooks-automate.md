@@ -7,18 +7,18 @@ manager: carmonm
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 04/30/2020
 ms.author: mbullwin
-ms.openlocfilehash: 2c2d70d1c945e700a3fa42609f8aa0e1607ba77c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: d62fa84711bd8cba57d07f3464c21344bc5c32c6
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658404"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82731737"
 ---
 # <a name="programmatically-manage-workbooks"></a>Munkafüzetek programozott kezelése
 
-Az erőforrás-tulajdonosok lehetőségük van a munkafüzetek programozott módon történő létrehozására és kezelésére Resource Manager-sablonok használatával. 
+Az erőforrás-tulajdonosok lehetőségük van a munkafüzetek programozott módon történő létrehozására és kezelésére Resource Manager-sablonok használatával.
 
 Ez olyan esetekben lehet hasznos, mint például:
 * Szervezeti vagy tartomány-specifikus elemzési jelentések üzembe helyezése az erőforrás-telepítésekkel együtt. Előfordulhat például, hogy üzembe helyezi az új alkalmazások vagy virtuális gépek szervezeti teljesítményével és meghibásodásával kapcsolatos munkafüzeteket.
@@ -26,7 +26,98 @@ Ez olyan esetekben lehet hasznos, mint például:
 
 A munkafüzet a kívánt alcsoportban/erőforrás-csoportban és a Resource Manager-sablonokban megadott tartalommal lesz létrehozva.
 
-## <a name="azure-resource-manager-template-for-deploying-workbooks"></a>Azure Resource Manager sablon a munkafüzetek telepítéséhez
+A munkafüzet-erőforrások két típusa felügyelhető programozott módon:
+* [Munkafüzet-sablonok](#azure-resource-manager-template-for-deploying-a-workbook-template)
+* [Munkafüzet példányai](#azure-resource-manager-template-for-deploying-a-workbook-instance)
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-template"></a>Munkafüzet-sablon üzembe helyezéséhez Azure Resource Manager sablon
+
+1. Nyisson meg egy olyan munkafüzetet, amelyet programozott módon kíván üzembe helyezni.
+2. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
+3. Nyissa _Advanced Editor_ meg a speciális szerkesztő _</>_ az eszköztáron található gomb használatával.
+4. Győződjön meg arról, hogy a katalógus _sablonja_ lapon van.
+
+    ![Galéria sablonja lap](./media/workbooks-automate/gallery-template.png)
+1. Másolja a JSON-t a katalógus sablonjában a vágólapra.
+2. Alább látható egy példa Azure Resource Manager sablon, amely egy munkafüzet-sablont helyez üzembe Azure Monitor munkafüzet-gyűjteménybe. Illessze be a helyére másolt JSON- `<PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>`t. [Itt](https://github.com/microsoft/Application-Insights-Workbooks/blob/master/Documentation/ARM-template-for-creating-workbook-template)található egy hivatkozás Azure Resource Manager sablon, amely létrehoz egy munkafüzet-sablont.
+
+    ```json
+          {
+        "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+            "resourceName": {
+                "type": "string",
+                "defaultValue": "my-workbook-template",
+                "metadata": {
+                    "description": "The unique name for this workbook template instance"
+                }
+            }
+        },
+        "resources": [
+            {
+                "name": "[parameters('resourceName')]",
+                "type": "microsoft.insights/workbooktemplates",
+                "location": "[resourceGroup().location]",
+                "apiVersion": "2019-10-17-preview",
+                "dependsOn": [],
+                "properties": {
+                    "galleries": [
+                        {
+                            "name": "A Workbook Template",
+                            "category": "Deployed Templates",
+                            "order": 100,
+                            "type": "workbook",
+                            "resourceType": "Azure Monitor"
+                        }
+                    ],
+                    "templateData": <PASTE-COPIED-WORKBOOK_TEMPLATE_HERE>
+                }
+            }
+        ]
+    }
+    ```
+1. Az `galleries` objektumban töltse ki az `name` értékeket `category` a és a kulcsokkal. További információ a [paraméterekről](#parameters) a következő szakaszban.
+2. Telepítse ezt a Azure Resource Manager sablont a [Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-portal#deploy-resources-from-custom-template), a [parancssori felület](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-cli), a [PowerShell](https://docs.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)stb. használatával.
+3. Nyissa meg a Azure Portalt, és navigáljon a Azure Resource Manager sablonban kiválasztott munkafüzet-gyűjteményhez. A példa sablonban navigáljon a Azure Monitor munkafüzet-gyűjteményhez:
+    1. Nyissa meg a Azure Portal, és navigáljon a Azure Monitor
+    2. Megnyitás `Workbooks` a tartalomjegyzékből
+    3. Keresse meg a sablont a katalógusban a `Deployed Templates` kategória alatt (a következő lesz a lila elemek egyike).
+
+### <a name="parameters"></a>Paraméterek
+
+|Paraméterek                |Magyarázat                                                                                             |
+|:-------------------------|:-------------------------------------------------------------------------------------------------------|
+| `name`                   | A munkafüzet-sablon erőforrásának neve Azure Resource Managerban.                                  |
+|`type`                    | Mindig Microsoft. bepillantást/workbooktemplates                                                            |
+| `location`               | Az Azure-beli hely, ahová a munkafüzetet létre kívánja hozni.                                               |
+| `apiVersion`             | 2019-10-17 előzetes verzió                                                                                     |
+| `type`                   | Mindig Microsoft. bepillantást/workbooktemplates                                                            |
+| `galleries`              | Azon galériák gyűjteménye, amelyekben ez a munkafüzet-sablon látható.                                                |
+| `gallery.name`           | A munkafüzet sablonjának rövid neve a katalógusban.                                             |
+| `gallery.category`       | A gyűjteményben lévő csoport a sablon elhelyezéséhez.                                                     |
+| `gallery.order`          | Egy szám, amely egy kategórián belüli sablon megjelenítését határozza meg a katalógusban. Az alacsonyabb sorrend nagyobb prioritást jelent. |
+| `gallery.resourceType`   | A gyűjteményhez tartozó erőforrástípus. Ez általában az erőforrás típusának megfelelő karakterlánc (például Microsoft. operationalinsights/workspaces). |
+|`gallery.type`            | Ez egy olyan egyedi kulcs, amely megkülönbözteti a katalógust egy adott erőforrás-típuson belül. Application Insights például a különböző munkafüzet-gyűjteményekhez tartozó típusokkal `workbook` és `tsg` azokkal. |
+
+### <a name="galleries"></a>Katalógusok
+
+| Katalógus                                        | Erőforrás típusa                                      | Munkafüzet típusa |
+| :--------------------------------------------- |:---------------------------------------------------|:--------------|
+| Munkafüzetek Azure Monitor                     | `Azure Monitor`                                    | `workbook`    |
+| VM-bepillantást Azure Monitor                   | `Azure Monitor`                                    | `vm-insights` |
+| Munkafüzetek a log Analytics-munkaterületen           | `microsoft.operationalinsights/workspaces`         | `workbook`    |
+| Munkafüzetek Application Insights              | `microsoft.insights/component`                     | `workbook`    |
+| Hibaelhárítási útmutatók a Application Insights | `microsoft.insights/component`                     | `tsg`         |
+| Használat Application Insights                  | `microsoft.insights/component`                     | `usage`       |
+| Munkafüzetek a Kubernetes szolgáltatásban                | `Microsoft.ContainerService/managedClusters`       | `workbook`    |
+| Erőforráscsoportok munkafüzetek                   | `microsoft.resources/subscriptions/resourcegroups` | `workbook`    |
+| Munkafüzetek Azure Active Directory            | `microsoft.aadiam/tenant`                          | `workbook`    |
+| Virtuálisgép-bepillantást a Virtual Machines szolgáltatásban                | `microsoft.compute/virtualmachines`                | `insights`    |
+| A virtuálisgép-méretezési csoportokban található virtuális gépek                   | `microsoft.compute/virtualmachinescalesets`        | `insights`    |
+
+## <a name="azure-resource-manager-template-for-deploying-a-workbook-instance"></a>Munkafüzet-példány üzembe helyezésének Azure Resource Manager sablonja
+
 1. Nyisson meg egy olyan munkafüzetet, amelyet programozott módon szeretne üzembe helyezni.
 2. Az eszköztár _szerkesztése_ elemre kattintva váltson át a munkafüzet szerkesztési módjára.
 3. Nyissa _Advanced Editor_ meg a speciális szerkesztő _</>_ az eszköztáron található gomb használatával.
@@ -124,4 +215,3 @@ Technikai okokból ez a mechanizmus nem használható munkafüzet-példányok l�
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan használják a munkafüzetek az új Azure Monitor a [tárolási élményhez](../insights/storage-insights-overview.md).
-

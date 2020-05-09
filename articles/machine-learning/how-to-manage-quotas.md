@@ -9,20 +9,21 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 author: nishankgu
 ms.author: nigup
-ms.date: 03/05/2020
-ms.openlocfilehash: 530647c3d32b62f0cac250795ccce580b182fa92
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/08/2020
+ms.custom: contperfq4
+ms.openlocfilehash: b8af654e14d8a5fa48c60ae62c590c4c99e66edb
+ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756603"
+ms.lasthandoff: 05/07/2020
+ms.locfileid: "82891512"
 ---
-# <a name="manage-and-request-quotas-for-azure-resources"></a>Azure-erőforrásokra vonatkozó kvóták kezelése és igénylése
+# <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Erőforrások kezelése & az erőforrásokra vonatkozó kvóták növelése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ez a cikk részletesen ismerteti az előfizetéshez tartozó Azure-erőforrások előre konfigurált korlátait. Emellett az egyes típusú erőforrásokra vonatkozó kvóta-fejlesztések igénylésének utasításait is tartalmazza. Ezeket a korlátozásokat a rendszer a csalás miatt, illetve az Azure-kapacitás megkötések tiszteletben tartásának megelőzése érdekében helyezi el.
+Ez a cikk [Azure Machine learning](overview-what-is-azure-ml.md) felhasználókat ismerteti az előfizetéshez tartozó Azure-erőforrások előre konfigurált korlátaival kapcsolatos részletekkel. Emellett az egyes típusú erőforrásokra vonatkozó kvóta-fejlesztések igénylésének utasításait is tartalmazza. Ezeket a korlátozásokat a rendszer a csalás miatt, illetve az Azure-kapacitás megkötések tiszteletben tartásának megelőzése érdekében helyezi el.
 
-A többi Azure-szolgáltatáshoz hasonlóan a Azure Machine Learninghöz kapcsolódó erőforrások bizonyos korlátai is vannak. Ezek a korlátok a munkaterületek számának korlátján alapulnak, amelyek a modell betanításához vagy a következtetésekhez vagy pontozáshoz használt tényleges számítási feladatokra korlátozzák. 
+A többi Azure-szolgáltatáshoz hasonlóan a Azure Machine Learninghöz kapcsolódó erőforrások bizonyos korlátai is vannak. Ezek a korlátok a [munkaterületek](concept-workspace.md) számának korlátján alapulnak, amelyek a modell betanításához vagy a következtetésekhez vagy pontozáshoz használt tényleges számítási feladatokra korlátozzák. 
 
 A Azure Machine Learning-erőforrások éles számítási feladatokhoz való tervezése és méretezése során ezeket a korlátokat érdemes figyelembe venni. Ha például a fürt nem éri el a csomópontok megcélzott számát, akkor előfordulhat, hogy elérte az előfizetéséhez Azure Machine Learning számítási magokra vonatkozó korlátot. Ha az alapértelmezett korlátnál magasabb korlátot vagy kvótát szeretne növelni, nyisson meg egy online ügyfélszolgálati kérést díjmentesen. Az Azure-kapacitás megkötései miatt a határértékek nem állíthatók be az alábbi táblázatokban látható maximális határérték fölé. Ha nincs maximális korlát oszlop, akkor az erőforrás nem rendelkezik állítható korlátokkal.
 
@@ -48,10 +49,10 @@ A virtuális gépek magjai a regionális teljes korláttal és a (Dv2, F stb.) k
 
 [!INCLUDE [azure-subscription-limits-azure-resource-manager](../../includes/azure-subscription-limits-azure-resource-manager.md)]
 
-A kvóta korlátainak részletesebb és naprakész listáját az Azure-ra vonatkozó kvóta [című cikkben találja](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits).
+A kvóta korlátainak részletesebb és naprakész listáját az [Azure-ra kiterjedő kvóta című cikkben](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)találja.
 
 ### <a name="azure-machine-learning-compute"></a>Azure Machine Learning Compute
-Azure Machine Learning számítás esetében az előfizetések régiónként legfeljebb a magok számának és az egyes régiókban engedélyezett egyedi számítási erőforrások számának az alapértelmezett kvótája. Ez a kvóta különbözik a fenti virtuálisgép-alapkvótatől, és az alapvető korlátok nincsenek megosztva a két erőforrástípus között, mivel a AmlCompute egy felügyelt szolgáltatás, amely erőforrásokat helyez üzembe egy szolgáltatott modellben.
+[Azure Machine learning számítás](concept-compute-target.md#azure-machine-learning-compute-managed)esetében az előfizetések régiónként legfeljebb a magok számának és az egyes régiókban engedélyezett egyedi számítási erőforrások számának az alapértelmezett kvótája. Ez a kvóta különbözik a fenti virtuálisgép-alapkvótatől, és az alapvető korlátok nincsenek megosztva a két erőforrástípus között, mivel a AmlCompute egy felügyelt szolgáltatás, amely erőforrásokat helyez üzembe egy szolgáltatott modellben.
 
 Rendelkezésre álló erőforrások:
 + Régiónként a dedikált magok alapértelmezett korlátja 24-300, amely az előfizetési ajánlat típusától függően magasabb alapértékekkel rendelkezik az EA-és a CSP-típusok esetében.  Az előfizetéshez tartozó dedikált magok száma növelhető, és minden virtuálisgép-család esetében eltérő lehet. Bizonyos speciális virtuálisgép-családok (például a NCv2, a NCv3 vagy az ND sorozat) alapértelmezés szerint nullával kezdődnek. Vegye fel a kapcsolatot az Azure támogatási szolgálatával, és növelje a növelési lehetőségeket.
@@ -76,7 +77,7 @@ Rendelkezésre álló erőforrások:
 <sup>2</sup> az alacsony prioritású csomóponton lévő feladatok bármikor előzik, ha van kapacitási korlátozás. Javasoljuk, hogy hajtsa végre az ellenőrzőpontok megvalósítását a feladatokban.
 
 ### <a name="azure-machine-learning-pipelines"></a>Azure Machine Learning folyamatok
-Azure Machine Learning folyamatok esetében a folyamat lépéseinek száma, valamint az előfizetésben régiónként megjelenő közzétett folyamatok ütemezett futtatásának száma.
+[Azure Machine learning folyamatok](concept-ml-pipelines.md)esetében a folyamat lépéseinek száma, valamint az előfizetésben régiónként megjelenő közzétett folyamatok ütemezett futtatásának száma.
 - A folyamatokban engedélyezett lépések maximális száma 30 000
 - Az ütemezett futtatások és a blob-lekérések összegének maximális száma az előfizetéshez tartozó közzétett folyamatokra vonatkozóan, havonta 100 000
 
@@ -97,7 +98,7 @@ A Storage-fiókok száma régiónként és egy adott előfizetésben is korláto
 
 ## <a name="workspace-level-quota"></a>Munkaterület-szintű kvóta
 
-A különböző munkaterületek közötti Amlcompute erőforrás-kiosztásának jobb kezelése érdekében egy olyan funkciót vezettünk be, amely lehetővé teszi az előfizetési szint kvótáinak (VM-család szerinti) terjesztését és a munkaterület szintjén történő konfigurálását. Az alapértelmezett viselkedés az, hogy minden munkaterületnek ugyanaz a kvótája, mint bármely virtuálisgép-család előfizetési szintjének kvótája. Azonban ahogy a munkaterületek száma nő, és a különböző prioritású munkaterhelések megoszthatják ugyanazokat az erőforrásokat, a felhasználók szeretnék jobban megosztani a kapacitást, és elkerülni az erőforrás-tartalomkezelési problémákat. Azure Machine Learning megoldást biztosít a felügyelt számítási ajánlattal, mivel lehetővé teszi, hogy a felhasználók maximális kvótát állítsanak be egy adott virtuálisgép-család számára az egyes munkaterületeken. Ez hasonló a kapacitás munkaterületek közötti elosztásához, és a felhasználók dönthetnek úgy is, hogy túlterhelik a maximális kihasználtságot. 
+A különböző [munkaterületek](concept-workspace.md)közötti Azure Machine learning számítási cél (Amlcompute) erőforrás-kiosztásának jobb kezelése érdekében egy olyan funkciót vezettünk be, amely lehetővé teszi az előfizetési szintű kvóták (VM-család) terjesztését, és a munkaterület szintjén történő konfigurálását. Az alapértelmezett viselkedés az, hogy minden munkaterületnek ugyanaz a kvótája, mint bármely virtuálisgép-család előfizetési szintjének kvótája. Azonban ahogy a munkaterületek száma nő, és a különböző prioritású munkaterhelések megoszthatják ugyanazokat az erőforrásokat, a felhasználók szeretnék jobban megosztani a kapacitást, és elkerülni az erőforrás-tartalomkezelési problémákat. Azure Machine Learning megoldást biztosít a felügyelt számítási ajánlattal, mivel lehetővé teszi, hogy a felhasználók maximális kvótát állítsanak be egy adott virtuálisgép-család számára az egyes munkaterületeken. Ez hasonló a kapacitás munkaterületek közötti elosztásához, és a felhasználók dönthetnek úgy is, hogy túlterhelik a maximális kihasználtságot. 
 
 Ha a kvótákat a munkaterület szintjén szeretné beállítani, lépjen az előfizetés bármely munkaterületére, majd a bal oldali ablaktáblán kattintson a **kihasználtságok + kvóták** elemre. Ezután a **kvóták konfigurálása** lapon megtekintheti a kvótákat, kibonthatja a virtuálisgép-családokat, és beállíthatja az adott virtuálisgép-családban felsorolt munkaterületekre vonatkozó kvóta korlátját. Ne feledje, hogy nem állítható be negatív érték, vagy az előfizetési szint kvótájának magasabb értéke. Emellett, ahogy azt is megfigyelheti, alapértelmezés szerint minden munkaterülethez a teljes előfizetési kvóta van hozzárendelve, hogy lehetővé váljon a lefoglalt kvóta teljes kihasználtsága.
 
@@ -105,7 +106,7 @@ Ha a kvótákat a munkaterület szintjén szeretné beállítani, lépjen az el�
 
 
 > [!NOTE]
-> Ez csak az Enterprise Edition funkció. Ha az előfizetésében egy alapszintű és egy Enterprise Edition-munkaterülettel is rendelkezik, akkor ez csak a vállalati munkaterületeken lévő kvóták beállítására használható. Az alapszintű munkaterületek továbbra is az előfizetési szint kvótáját fogják használni, amely az alapértelmezett viselkedés.
+> Ez csak az Enterprise Edition funkció. Ha az előfizetésében egy [alapszintű és egy Enterprise Edition](overview-what-is-azure-ml.md#sku) -munkaterülettel is rendelkezik, akkor ez csak a vállalati munkaterületeken lévő kvóták beállítására használható. Az alapszintű munkaterületek továbbra is az előfizetési szint kvótáját fogják használni, amely az alapértelmezett viselkedés.
 >
 > Az előfizetési szintű engedélyekre van szükség a kvóta beállításához a munkaterület szintjén. Ezt úgy kell kikényszeríteni, hogy az egyes munkaterület-tulajdonosok ne szerkesszék vagy növeljék a kvótákat, és a csorbítaná a másik munkaterületre elkülönített erőforrásokra indítsák. Ennek megfelelően az előfizetés-adminisztrátor a legmegfelelőbb a kvóták munkaterületek közötti kiosztásához és terjesztéséhez.
 
@@ -136,9 +137,17 @@ A kvóta megtekinthető a különböző erőforrások, például a Virtual Machi
 
 Ha az alapértelmezett korlátnál magasabb korlátot vagy kvótát szeretne növelni, [Nyisson meg egy online ügyfélszolgálati kérést](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest/) díjmentesen.
 
-A határértékek nem állíthatók be a táblákban megjelenő maximális határérték fölé. Ha nincs maximális korlát, az erőforrás nem rendelkezik állítható korlátokkal. [Ez](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors) a cikk részletesebben ismerteti a kvóta növelésének folyamatát.
+A határértékek nem állíthatók be a táblákban megjelenő maximális határérték fölé. Ha nincs maximális korlát, az erőforrás nem rendelkezik állítható korlátokkal. A [kvóta növelésével kapcsolatban lásd: lépésenkénti útmutató](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
 Ha a kvóta megnövekedését kéri, ki kell választania azt a szolgáltatást, amelyre a kvótát fel kívánja emelni, ami olyan szolgáltatások, mint például a Machine Learning szolgáltatási kvóta, a tároló példányai vagy a tárolási kvóta. A Azure Machine Learning számítás mellett **a kvóta megtekintése gombra is** kattinthat, miközben a fenti lépéseket követve megtekinti a kvótát.
 
 > [!NOTE]
 > Az [ingyenes próbaverziós előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p) nem jogosultak a korlát vagy a kvóta növelésére. Ha [ingyenes próbaverziós előfizetéssel](https://azure.microsoft.com/offers/ms-azr-0044p)rendelkezik, [az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású előfizetésre válthat. További információ: az [Azure ingyenes próbaverziójának frissítése az](../billing/billing-upgrade-azure-subscription.md) utólagos elszámolású és az [ingyenes próbaverziós előfizetésre vonatkozó gyakori kérdések](https://azure.microsoft.com/free/free-account-faq).
+
+## <a name="next-steps"></a>További lépések
+
+További információ ezekről a cikkekről:
+
++ [A Azure Machine Learning költségeinek megtervezése & kezeléséhez](concept-plan-manage-cost.md)
+
++ [A kvóta növelésének módja](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).

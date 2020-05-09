@@ -1,5 +1,6 @@
 ---
-title: OAuth-engedélyezési kód folyamatábrája – Microsoft Identity platform | Azure
+title: Microsoft Identity platform és OAuth 2,0 engedélyezési kód flow | Azure
+titleSuffix: Microsoft identity platform
 description: Webalkalmazásokat készíthet a OAuth 2,0 hitelesítési protokoll Microsoft Identity platform-implementációjának használatával.
 services: active-directory
 author: hpsin
@@ -8,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/31/2020
+ms.date: 05/06/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: ed41150e8247a738d3222127243083470211f7a9
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
-ms.translationtype: HT
+ms.openlocfilehash: 29720b338326a29e65af1b6564cb0b59a976c62c
+ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82689799"
+ms.lasthandoff: 05/08/2020
+ms.locfileid: "82926442"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-authorization-code-flow"></a>Microsoft Identity platform és OAuth 2,0 engedélyezési kód folyamatábrája
 
@@ -25,17 +26,17 @@ A OAuth 2,0 engedélyezési kód megadása az eszközre telepített alkalmazáso
 
 Ez a cikk azt ismerteti, hogyan lehet programozni közvetlenül az alkalmazás protokollját.  Ha lehetséges, javasoljuk, hogy a támogatott Microsoft hitelesítési kódtárakat (MSAL) használja a [jogkivonatok beszerzése és a biztonságos webes API-k hívása](authentication-flows-app-scenarios.md#scenarios-and-supported-authentication-flows)helyett.  Tekintse meg az MSAL-t [használó példákat](sample-v2-code.md)is.
 
-Az OAuth 2,0 engedélyezési kód folyamatát a [OAuth 2,0 specifikáció 4,1. szakasza](https://tools.ietf.org/html/rfc6749)ismerteti. A hitelesítés és az engedélyezés az alkalmazások különböző típusai, például a [Web Apps](v2-app-types.md#web-apps) és a [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps)esetében használatos. A folyamat lehetővé teszi, hogy az alkalmazások biztonságosan beszerezzék access_tokens, amelyek segítségével hozzáférhetnek a Microsoft Identity platform végpontja által védett erőforrásokhoz.
+Az OAuth 2,0 engedélyezési kód folyamatát a [OAuth 2,0 specifikáció 4,1. szakasza](https://tools.ietf.org/html/rfc6749)ismerteti. A hitelesítés és az engedélyezés az alkalmazások különböző típusai, például a [Web Apps](v2-app-types.md#web-apps) és a [natív módon telepített alkalmazások](v2-app-types.md#mobile-and-native-apps)esetében használatos. Ez a OAuth folyamat lehetővé teszi, hogy az alkalmazások biztonságosan beszerezzék access_tokens, amelyek segítségével hozzáférhetnek a Microsoft Identity platform végpontja által védett erőforrásokhoz.
 
 ## <a name="protocol-diagram"></a>Protokoll diagramja
 
-Magas szinten a natív/mobil alkalmazások teljes hitelesítési folyamata a következőképpen néz ki:
+Magas szinten a natív/mobil alkalmazások teljes OAuth2-hitelesítési folyamata a következőképpen néz ki:
 
 ![OAuth-hitelesítési kód folyamatábrája](./media/v2-oauth2-auth-code-flow/convergence-scenarios-native.svg)
 
 ## <a name="request-an-authorization-code"></a>Engedélyezési kód kérése
 
-Az engedélyezési kód folyamata azzal kezdődik, hogy az ügyfél átirányítja `/authorize` a felhasználót a végpontra. Ebben a kérelemben az ügyfél a felhasználótól `offline_access`kéri a `https://graph.microsoft.com/mail.read ` , a `openid`és az engedélyeket.  Bizonyos engedélyek rendszergazdai korlátozások alá esnek, például a segítségével `Directory.ReadWrite.All`a szervezet címtárában lévő adatírással. Ha az alkalmazás egy szervezeti felhasználótól kéri a fenti engedélyek egyikének elérését, a felhasználó hibaüzenetet kap, amely szerint nem jogosult beleegyezni az alkalmazás engedélyeivel. A rendszergazda által korlátozott hatókörökhöz való hozzáférés kéréséhez közvetlenül a vállalati rendszergazdától kell kérnie őket.  További információért olvassa el a [rendszergazda által korlátozott engedélyeket](v2-permissions-and-consent.md#admin-restricted-permissions).
+Az engedélyezési kód folyamata azzal kezdődik, hogy az ügyfél átirányítja `/authorize` a felhasználót a végpontra. Ebben a kérelemben az ügyfél a `openid`, `offline_access`a és `https://graph.microsoft.com/mail.read ` az engedélyeket kéri a felhasználótól.  Bizonyos engedélyek rendszergazdai korlátozások alá esnek, például a segítségével `Directory.ReadWrite.All`a szervezet címtárában lévő adatírással. Ha az alkalmazás egy szervezeti felhasználótól kéri a fenti engedélyek egyikének elérését, a felhasználó hibaüzenetet kap, amely szerint nem jogosult beleegyezni az alkalmazás engedélyeivel. A rendszergazda által korlátozott hatókörökhöz való hozzáférés kéréséhez közvetlenül a vállalati rendszergazdától kell kérnie őket.  További információért olvassa el a [rendszergazda által korlátozott engedélyeket](v2-permissions-and-consent.md#admin-restricted-permissions).
 
 ```
 // Line breaks for legibility only
@@ -148,7 +149,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`      | kötelező   | A hatókörök szóközzel tagolt listája. Az ebben a láb-ban kért hatóköröknek egyenértékűnek kell lenniük az első lábon kért hatókörökkel vagy azok egy részhalmazával. A hatóköröknek egyetlen erőforrásból kell származnia, a OIDC hatókörökkel együtt`profile`( `openid`, `email`,). A hatókörök részletesebb ismertetését az [engedélyek, a beleegyezések és a hatókörök](v2-permissions-and-consent.md)című témakörben találja. |
 | `code`          | kötelező  | A folyamat első szakaszában beszerzett authorization_code. |
 | `redirect_uri`  | kötelező  | A authorization_code megvásárlásához használt redirect_uri érték. |
-| `client_secret` | webalkalmazásokhoz szükséges | Az alkalmazás regisztrációs portálján létrehozott alkalmazás-titkos kód az alkalmazáshoz. Az alkalmazás titkos kulcsát nem szabad natív alkalmazásban használni, mert client_secrets nem lehet megbízhatóan tárolni az eszközökön. A webalkalmazásokhoz és a webes API-khoz szükséges, amelyek képesek a client_secret biztonságos tárolására a kiszolgálóoldali oldalon.  Az ügyfél titkos kódjának URL-kódolással kell rendelkeznie a küldés előtt. További információért kattintson [ide](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | webalkalmazásokhoz szükséges | Az alkalmazás regisztrációs portálján létrehozott alkalmazás-titkos kód az alkalmazáshoz. Az alkalmazás titkos kulcsát nem szabad natív alkalmazásban használni, mert client_secrets nem lehet megbízhatóan tárolni az eszközökön. A webalkalmazásokhoz és a webes API-khoz szükséges, amelyek képesek a client_secret biztonságos tárolására a kiszolgálóoldali oldalon.  Az ügyfél titkos kódjának URL-kódolással kell rendelkeznie a küldés előtt. További információ: [URI általános szintaxisának specifikációja](https://tools.ietf.org/html/rfc3986#page-12). |
 | `code_verifier` | választható  | Ugyanaz a code_verifier, amelyet a authorization_code beszerzéséhez használt. Kötelező, ha a PKCE az engedélyezési kód Grant kérelmében használták. További információ: [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 ### <a name="successful-response"></a>Sikeres válasz
@@ -260,7 +261,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type`    | kötelező    | `refresh_token` Az engedélyezési kód folyamatának ezen szakaszához kell tartoznia. |
 | `scope`         | kötelező    | A hatókörök szóközzel tagolt listája. Az ebben a lábában kért hatóköröknek meg kell egyeznie az eredeti authorization_code kérelem lábában kért hatókörökkel vagy azok egy részhalmazával. Ha a kérelemben megadott hatókörök több erőforrás-kiszolgálóra is kiterjednek, akkor a Microsoft Identity platform végpontja az első hatókörben megadott erőforráshoz tartozó jogkivonatot ad vissza. A hatókörök részletesebb ismertetését az [engedélyek, a beleegyezések és a hatókörök](v2-permissions-and-consent.md)című témakörben találja. |
 | `refresh_token` | kötelező    | A folyamat második szakaszában beszerzett refresh_token. |
-| `client_secret` | webalkalmazásokhoz szükséges | Az alkalmazás regisztrációs portálján létrehozott alkalmazás-titkos kód az alkalmazáshoz. Nem használható natív alkalmazásban, mert client_secrets nem lehet megbízhatóan tárolni az eszközökön. A webalkalmazásokhoz és a webes API-khoz szükséges, amelyek képesek a client_secret biztonságos tárolására a kiszolgálóoldali oldalon. Ezt a titkot URL-kódolással kell elkódolni, további információért kattintson [ide](https://tools.ietf.org/html/rfc3986#page-12). |
+| `client_secret` | webalkalmazásokhoz szükséges | Az alkalmazás regisztrációs portálján létrehozott alkalmazás-titkos kód az alkalmazáshoz. Nem használható natív alkalmazásban, mert client_secrets nem lehet megbízhatóan tárolni az eszközökön. A webalkalmazásokhoz és a webes API-khoz szükséges, amelyek képesek a client_secret biztonságos tárolására a kiszolgálóoldali oldalon. A titkos kód URL-kódolású. További információ: [URI általános szintaxisának specifikációja](https://tools.ietf.org/html/rfc3986#page-12). |
 
 #### <a name="successful-response"></a>Sikeres válasz
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/14/2020
+ms.date: 05/01/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d1ed128181d036af0026ae273c2c5bf1d3a066e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
-ms.translationtype: MT
+ms.openlocfilehash: ee64f26d0ff685a83718c5d5e3d6f6eaf9230807
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443499"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691820"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
 Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
@@ -57,6 +57,9 @@ Lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános fel
 ### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>A tesztkörnyezet létrehozója, miért nem engedélyezhető további képbeállítások a virtuálisgép-lemezképek legördülő menüjében új Labor létrehozásakor?
 
 Ha egy rendszergazda labor-létrehozóként adja hozzá Önt labor-fiókhoz, a rendszer engedélyeket kap a Labs létrehozásához. Azonban nincs engedélye arra, hogy szerkessze a beállításokat a labor-fiókon belül, beleértve az engedélyezett virtuálisgép-rendszerképek listáját is. További lemezképek engedélyezéséhez lépjen kapcsolatba a labor-fiók rendszergazdájával, vagy kérje meg a rendszergazdát, hogy vegye fel Önt közreműködő szerepkörként a labor-fiókba. A közreműködői szerepkör lehetővé teszi a virtuális gép rendszerkép-listájának szerkesztését a labor-fiókban.
+
+### <a name="can-i-attach-additional-disks-to-a-virtual-machine"></a>Tudok további lemezeket csatlakoztatni egy virtuális géphez?
+Nem. a tantermi laborban nem lehet további lemezeket csatlakoztatni egy virtuális géphez. 
 
 ## <a name="users"></a>Felhasználók
 

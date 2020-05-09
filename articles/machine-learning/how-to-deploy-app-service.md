@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 3e6cfde20d9f4d56af836e06b0c9a84010dea47b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
+ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282817"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82651927"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,7 +114,7 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package:<imagename>`. Például: `myml08024f78fd10.azurecr.io/package:20190827151241`.
+Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A folyamat befejeződése után a rendszerkép a munkaterülethez tartozó Azure Container Registryban lett létrehozva. A rendszerkép felépítése után megjelenik a Azure Container Registry helye. A visszaadott hely formátuma `<acrinstance>.azurecr.io/package@sha256:<imagename>`. Például: `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
 
 > [!IMPORTANT]
 > Mentse a hely adatait, ahogy azt a lemezkép telepítésekor használják.
@@ -162,7 +162,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
 1. A webalkalmazás létrehozásához használja a következő parancsot. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékek közül:
 
     ```azurecli-interactive
-    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
+    az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package@sha256:<imagename>
     ```
 
     Ez a parancs a következő JSON-dokumentumhoz hasonló adatokat ad vissza:
@@ -191,7 +191,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
 1. A következő parancs használatával biztosíthatja a webalkalmazásnak a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokat. Cserélje `<app-name>` le a nevet a használni kívánt névre. Cserélje `<acrinstance>` le `<imagename>` a és a értéket a `package.location` korábban visszaadott értékekre. Cserélje `<username>` le `<password>` a és a értékét a korábban beolvasott ACR bejelentkezési adatokra:
 
     ```azurecli-interactive
-    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
+    az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package@sha256:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
     ```
 
     Ez a parancs a következő JSON-dokumentumhoz hasonló adatokat ad vissza:
@@ -220,7 +220,7 @@ Ekkor `show_output=True`megjelenik a Docker-létrehozási folyamat kimenete. A f
     },
     {
         "name": "DOCKER_CUSTOM_IMAGE_NAME",
-        "value": "DOCKER|myml08024f78fd10.azurecr.io/package:20190827195524"
+        "value": "DOCKER|myml08024f78fd10.azurecr.io/package@sha256:20190827195524"
     }
     ]
     ```

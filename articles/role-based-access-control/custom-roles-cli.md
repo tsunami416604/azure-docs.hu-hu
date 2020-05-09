@@ -1,6 +1,6 @@
 ---
-title: Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése az Azure CLI használatával | Microsoft Docs
-description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet egyéni szerepköröket az Azure-erőforrásokhoz készült szerepköralapú hozzáférés-vezérléssel (RBAC) az Azure CLI használatával.
+title: Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure CLI-vel – Azure RBAC
+description: Megtudhatja, hogyan listázhat, hozhat létre, frissíthet vagy törölhet Azure-beli egyéni szerepköröket az Azure CLI és az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44676f7b92c2bcd30612295840054ab2f0c0cf12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062232"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734841"
 ---
-# <a name="create-or-update-custom-roles-for-azure-resources-using-azure-cli"></a>Azure-erőforrások egyéni szerepköreinek létrehozása vagy frissítése az Azure CLI-vel
+# <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése az Azure CLI-vel
 
 > [!IMPORTANT]
 > A felügyeleti csoport hozzáadása a `AssignableScopes` jelenleg előzetes verzióban érhető el.
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
 > További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ha az [Azure-erőforrások beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk azt ismerteti, hogyan lehet egyéni szerepköröket listázni, létrehozni, frissíteni vagy törölni az Azure CLI használatával.
+Ha az [Azure beépített szerepkörei](built-in-roles.md) nem felelnek meg a szervezet konkrét igényeinek, létrehozhat saját egyéni szerepköröket is. Ez a cikk azt ismerteti, hogyan lehet egyéni szerepköröket listázni, létrehozni, frissíteni vagy törölni az Azure CLI használatával.
 
-Az egyéni szerepkörök létrehozásával kapcsolatos részletes oktatóanyagért lásd [: oktatóanyag: egyéni szerepkör létrehozása az Azure-erőforrásokhoz az Azure CLI használatával](tutorial-custom-role-cli.md).
+Az egyéni szerepkörök létrehozásával kapcsolatos lépésenkénti útmutató: [oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI használatával](tutorial-custom-role-cli.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -244,6 +244,6 @@ az role definition delete --name "Virtual Machine Operator"
 
 ## <a name="next-steps"></a>További lépések
 
-- [Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz az Azure CLI használatával](tutorial-custom-role-cli.md)
-- [Egyéni szerepkörök Azure-erőforrásokhoz](custom-roles.md)
+- [Oktatóanyag: egyéni Azure-szerepkör létrehozása az Azure CLI használatával](tutorial-custom-role-cli.md)
+- [Egyéni Azure-szerepkörök](custom-roles.md)
 - [Erőforrás-szolgáltatói műveletek Azure Resource Manager](resource-provider-operations.md)
