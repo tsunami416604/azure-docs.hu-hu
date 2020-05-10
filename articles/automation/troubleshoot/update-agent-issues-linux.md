@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 1f9c8d449fb060d5b1a5f810f9e387057eac3252
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927972"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82997018"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>A Linux frissítési ügynökkel kapcsolatos problémák elhárítása
 
@@ -82,14 +82,14 @@ Ez az érték határozza meg, hogy az ügynök több munkaterületnek jelent-e j
 
 ### <a name="hybrid-runbook-worker"></a>hibrid runbook-feldolgozó
 
-Ez az ellenőrzés ellenőrzi, hogy a Linux Log Analytics-ügynöke a hibrid Runbook Worker csomaggal rendelkezik-e. Ez a csomag a Update Management működéséhez szükséges.
+Ez az ellenőrzés ellenőrzi, hogy a Linux Log Analytics-ügynöke a hibrid Runbook Worker csomaggal rendelkezik-e. Ez a csomag a Update Management működéséhez szükséges. További információ: [log Analytics Linux-ügynök nem fut](hybrid-runbook-worker.md#oms-agent-not-running).
+
+Update Management letölti a hibrid Runbook Worker csomagokat az operatív végpontból. Ezért ha a hibrid Runbook-feldolgozó nem fut, és az [operatív végpont](#operations-endpoint) meghibásodik, a frissítés sikertelen lehet.
 
 ### <a name="hybrid-runbook-worker-status"></a>Hibrid Runbook Worker állapota
 
-Ez az ellenőrzés ellenőrzi, hogy a hibrid Runbook Worker fut-e a gépen. Ha a hibrid Runbook Worker megfelelően fut, a következő folyamatoknak kell szerepelniük. További információ: [a Linux rendszerhez készült log Analytics-ügynök hibaelhárítása](hybrid-runbook-worker.md#oms-agent-not-running).
+Ez az ellenőrzés ellenőrzi, hogy a hibrid Runbook Worker fut-e a gépen. Az alábbi példában szereplő folyamatoknak jelen kell lenniük, ha a hibrid Runbook-feldolgozó megfelelően fut.
 
-> [!NOTE]
-> Ha a hibrid Runbook-feldolgozó nem fut, és az operatív végpont meghiúsult, a frissítés sikertelen lehet. Update Management letölti a hibrid feldolgozói csomagokat az operatív végpontról.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -107,13 +107,13 @@ Ez az ellenőrzés biztosítja, hogy a számítógép hozzáférjen az interneth
 
 Ez az érték határozza meg, hogy a hibrid Runbook-feldolgozó megfelelően tud-e kommunikálni a Log Analytics munkaterületen Azure Automationokkal.
 
-A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook Worker ügynök kommunikáljon a regisztrációs végponttal. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook Worker ügynök kommunikáljon a regisztrációs végponttal. A megnyitni kívánt címek és portok listáját itt tekintheti meg: [Network Planning](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="operations-endpoint"></a>Műveleti végpont
 
-Ez az érték határozza meg, hogy az ügynök megfelelően tud-e kommunikálni a feladatütemezés adatszolgáltatásával.
+Ez az érték határozza meg, hogy a Log Analytics ügynök megfelelően tud-e kommunikálni a feladatütemezés adatszolgáltatásával.
 
-A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatütemezés adatszolgáltatásával. A megnyitni kívánt címek és portok listáját lásd: [a hibrid feldolgozók hálózati tervezése](../automation-hybrid-runbook-worker.md#network-planning).
+A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid Runbook-feldolgozó ügynök kommunikáljon a feladatütemezés adatszolgáltatásával. A megnyitni kívánt címek és portok listáját itt tekintheti meg: [Network Planning](../automation-hybrid-runbook-worker.md#network-planning).
 
 ### <a name="log-analytics-endpoint-1"></a>Log Analytics 1. végpont
 

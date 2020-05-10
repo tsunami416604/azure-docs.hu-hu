@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/18/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: ed7f2b57df97a99a73ad191e45fb900a04f8021f
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 04a13b2b3b8cd6e696f0ac6601b5f23b9d6cb24d
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983023"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996639"
 ---
 # <a name="list-azure-role-assignments-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával
 
@@ -130,7 +130,7 @@ Egy felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás hozzá
 
 ## <a name="list-number-of-role-assignments"></a>Szerepkör-hozzárendelések számának listázása
 
-Az egyes előfizetésekben akár **2000** szerepkör-hozzárendelést is megadhat. A korlát nyomon követéséhez a **szerepkör-hozzárendelések** lapon szerepel egy diagram, amely felsorolja az aktuális előfizetéshez tartozó szerepkör-hozzárendelések számát.
+Az egyes előfizetésekben akár **2000** szerepkör-hozzárendelést is megadhat. Ez a korlát tartalmazza az előfizetés, az erőforráscsoport és az erőforrás-hatókörök szerepkör-hozzárendeléseit. A korlát nyomon követéséhez a **szerepkör-hozzárendelések** lapon szerepel egy diagram, amely felsorolja az aktuális előfizetéshez tartozó szerepkör-hozzárendelések számát.
 
 ![Hozzáférés-vezérlés – szerepkör-hozzárendelési diagram száma](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
 

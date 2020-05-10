@@ -1,27 +1,29 @@
 ---
-title: Oktatóanyag – egy végpontok közötti aszinkron Java SQL API-alkalmazási minta a változási hírcsatornával
-description: Ez az oktatóanyag végigvezeti egy olyan egyszerű Java SQL API-alkalmazáson, amely a dokumentumokat egy Azure Cosmos DB tárolóba szúrja be, miközben a változási hírcsatorna használatával megtartja a tároló anyagilag látható nézetét.
+title: Végpontok közötti Azure Cosmos DB Java SDK v4-alkalmazás mintájának létrehozása a hírcsatorna módosítása szolgáltatás használatával
+description: Ez a útmutató végigvezeti egy olyan egyszerű Java SQL API-alkalmazáson, amely a dokumentumokat egy Azure Cosmos DB tárolóba szúrja be, miközben a változási hírcsatorna használatával megtartja a tárolóhoz tartozó anyagbeli nézetet.
 author: anfeldma
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
-ms.topic: tutorial
-ms.date: 04/01/2020
+ms.topic: conceptual
+ms.date: 05/08/2020
 ms.author: anfeldma
-ms.openlocfilehash: c74ec73eb06c43110747d87e6fecd12183527759
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
-ms.translationtype: HT
+ms.openlocfilehash: 9e28eb4f766677ebbd5cfcc5f61fe54e53a45523
+ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872543"
+ms.lasthandoff: 05/09/2020
+ms.locfileid: "82996507"
 ---
-# <a name="tutorial---an-end-to-end-async-java-sql-api-application-sample-with-change-feed"></a>Oktatóanyag – egy végpontok közötti aszinkron Java SQL API-alkalmazási minta a változási hírcsatornával
+# <a name="how-to-create-a-java-application-that-uses-azure-cosmos-db-sql-api-and-change-feed-processor"></a>Azure Cosmos DB SQL API-t használó Java-alkalmazás létrehozása és a hírcsatorna-feldolgozó módosítása
 
-Ez az oktatóanyag-útmutató végigvezeti egy olyan egyszerű Java SQL API-alkalmazáson, amely a dokumentumokat egy Azure Cosmos DB tárolóba szúrja be, miközben a változási hírcsatorna használatával megtartja a tároló anyagilag látható nézetét.
+> [!IMPORTANT]  
+> A Azure Cosmos DB Java SDK v4-es verziójával kapcsolatos további információkért tekintse meg a Azure Cosmos DB Java SDK v4 kibocsátási megjegyzéseit, a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos), a Azure Cosmos db Java SDK v4 [teljesítménnyel kapcsolatos tippeket](performance-tips-java-sdk-v4-sql.md), valamint Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatót](troubleshoot-java-sdk-v4-sql.md).
+>
+
+Ez az útmutató végigvezeti egy olyan egyszerű Java-alkalmazáson, amely a Azure Cosmos DB SQL API-t használja a dokumentumok Azure Cosmos DB tárolóba való beszúrásához, miközben a tárolóban lévő, a változási csatorna és a változási adatcsatorna használatával megtartja a tárolóra vonatkozó anyagilag látható nézetet. A Java-alkalmazás a Azure Cosmos DB SQL API-val kommunikál Azure Cosmos DB Java SDK v4 használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
-
-* Személyes számítógép
 
 * A Azure Cosmos DB fiókjának URI-ja és kulcsa
 
@@ -45,8 +47,6 @@ Ha még nem tette meg, az alkalmazás klónozása:
 git clone https://github.com/Azure-Samples/azure-cosmos-java-sql-app-example.git
 ```
 
-> Ebben a rövid útmutatóban a Java SDK 4,0 vagy a Java SDK 3.7.0 használatával dolgozhat. **Ha a Java SDK 3.7.0 szeretné használni, a terminál típusában ```git checkout SDK3.7.0``` **. Ellenkező esetben a Java SDK ```master``` 4,0 alapértelmezésben marad a fiókirodában.
-
 Nyisson meg egy terminált a tárház címtárában. Az alkalmazás összeállítása a futtatásával
 
 ```bash
@@ -55,7 +55,7 @@ mvn clean package
 
 ## <a name="walkthrough"></a>Útmutatás
 
-1. Első lépésként Azure Cosmos DB fiókkal kell rendelkeznie. Nyissa meg az **Azure Portalt** a böngészőben, lépjen a Azure Cosmos db-fiókjába, és a bal oldali panelen navigáljon a **adatkezelő**elemre.
+1. Első lépésként Azure Cosmos DB fiókkal kell rendelkeznie. Nyissa meg a **Azure Portal** a böngészőben, lépjen a Azure Cosmos db-fiókra, és a bal oldali ablaktáblán navigáljon **adatkezelő**.
 
     ![Azure Cosmos DB fiók](media/create-sql-api-java-changefeed/cosmos_account_empty.JPG)
 
@@ -71,7 +71,7 @@ mvn clean package
     Press enter to create the grocery store inventory system...
     ```
 
-    Ezután térjen vissza az Azure Portal Adatkezelő a böngészőben. Látni fogja, hogy egy adatbázis- **GroceryStoreDatabase** három üres tárolóval lett hozzáadva: 
+    Ezután térjen vissza a böngészőben a Azure Portal Adatkezelő. Látni fogja, hogy egy adatbázis- **GroceryStoreDatabase** három üres tárolóval lett hozzáadva: 
 
     * **InventoryContainer** – a példaként szolgáló áruház leltározási rekordja, amely egy UUID- ```id``` t tartalmazó elemre van particionálva.
     * **InventoryContainer-pktype** – az elemre irányuló lekérdezésekre optimalizált leltári rekord anyagilag látható nézete```type```
@@ -89,7 +89,7 @@ mvn clean package
 
     Nyomja le az ENTER billentyűt. Most a következő kódrészlet végrehajtja és inicializálja a változási hírcsatorna processzorát egy másik szálon: 
 
-   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
     ```java
     changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
@@ -103,30 +103,15 @@ mvn clean package
     while (!isProcessorRunning.get()); //Wait for Change Feed processor start
     ```
 
-   # <a name="java-sdk-370"></a>[Java SDK-3.7.0](#tab/v3sdk)
-
-    ```java
-    changeFeedProcessorInstance = getChangeFeedProcessor("SampleHost_1", feedContainer, leaseContainer);
-    changeFeedProcessorInstance.start()
-        .subscribeOn(Schedulers.elastic())
-        .doOnSuccess(aVoid -> {
-            isProcessorRunning.set(true);
-        })
-        .subscribe();
-
-    while (!isProcessorRunning.get()); //Wait for Change Feed processor start    
-    ```
-   ---
-
     ```"SampleHost_1"```a a változási csatorna feldolgozó feldolgozójának neve. ```changeFeedProcessorInstance.start()```valójában elindítja a Change feed processzort.
 
-    Térjen vissza az Azure Portal Adatkezelő a böngészőben. A **InventoryContainer-bérletek** tárolóban kattintson az **elemek elemre** a tartalmának megtekintéséhez. Látni fogja, hogy a változási hírcsatorna processzora feltöltte a címbérleti tárolót, azaz a processzor ```SampleHost_1``` a **InventoryContainer**egyes partícióinak bérletét rendelte hozzá a feldolgozóhoz.
+    Térjen vissza a böngészőben a Azure Portal Adatkezelő. A **InventoryContainer-bérletek** tárolóban kattintson az **elemek elemre** a tartalmának megtekintéséhez. Látni fogja, hogy a változási hírcsatorna processzora feltöltte a címbérleti tárolót, azaz a processzor ```SampleHost_1``` a **InventoryContainer**egyes partícióinak bérletét rendelte hozzá a feldolgozóhoz.
 
     ![Bérletek](media/create-sql-api-java-changefeed/cosmos_leases.JPG)
 
 1. Nyomja le ismét az ENTER billentyűt a terminálon. Ekkor a rendszer 10 dokumentumot szúr be a **InventoryContainerba**. Minden dokumentum beszúrása JSON-ként jelenik meg a változási hírcsatornában. a következő visszahívási kód kezeli ezeket az eseményeket úgy, hogy a JSON-dokumentumokat egy anyagbeli nézetbe tükrözi:
 
-   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
     ```java
     public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosAsyncContainer feedContainer, CosmosAsyncContainer leaseContainer) {
@@ -153,35 +138,7 @@ mvn clean package
     }
     ```
 
-   # <a name="java-sdk-370"></a>[Java SDK-3.7.0](#tab/v3sdk)
-
-    ```java
-    public static ChangeFeedProcessor getChangeFeedProcessor(String hostName, CosmosContainer feedContainer, CosmosContainer leaseContainer) {
-        ChangeFeedProcessorOptions cfOptions = new ChangeFeedProcessorOptions();
-        cfOptions.feedPollDelay(Duration.ofMillis(100));
-        cfOptions.startFromBeginning(true);
-        return ChangeFeedProcessor.Builder()
-            .options(cfOptions)
-            .hostName(hostName)
-            .feedContainer(feedContainer)
-            .leaseContainer(leaseContainer)
-            .handleChanges((List<CosmosItemProperties> docs) -> {
-                for (CosmosItemProperties document : docs) {
-                        //Duplicate each document update from the feed container into the materialized view container
-                        updateInventoryTypeMaterializedView(document);
-                }
-
-            })
-            .build();
-    }
-
-    private static void updateInventoryTypeMaterializedView(CosmosItemProperties document) {
-        typeContainer.upsertItem(document).subscribe();
-    }    
-    ```
-   ---
-
-1. 5 10sec futtatásának engedélyezése a kód számára. Ezután térjen vissza az Azure Portalra Adatkezelő és navigáljon a **InventoryContainer > elemekhez**. Látnia kell, hogy a rendszer beszúrja az elemeket a leltári tárolóba; Jegyezze fel a partíciós```id```kulcsot ().
+1. 5 10sec futtatásának engedélyezése a kód számára. Ezután térjen vissza a Azure Portal Adatkezelő, és navigáljon a **InventoryContainer > elemekhez**. Látnia kell, hogy a rendszer beszúrja az elemeket a leltári tárolóba; Jegyezze fel a partíciós```id```kulcsot ().
 
     ![Hírcsatorna-tároló](media/create-sql-api-java-changefeed/cosmos_items.JPG)
 
@@ -189,13 +146,13 @@ mvn clean package
 
     ![Tényleges táblán alapuló nézet](media/create-sql-api-java-changefeed/cosmos_materializedview2.JPG)
 
-1. A **InventoryContainer** és a **InventoryContainer-pktype** dokumentumból csak egyetlen ```upsertItem()``` hívást fogunk törölni. Először tekintse meg az Azure Portal Adatkezelő. Töröljük a dokumentumot, amelynek ```/type == "plums"```; az alábbi piros színnel van Bekerítve
+1. A **InventoryContainer** és a **InventoryContainer-pktype** dokumentumból csak egyetlen ```upsertItem()``` hívást fogunk törölni. Először tekintse meg Azure Portal Adatkezelő. Töröljük a dokumentumot, amelynek ```/type == "plums"```; az alábbi piros színnel van Bekerítve
 
     ![Tényleges táblán alapuló nézet](media/create-sql-api-java-changefeed/cosmos_materializedview-emph-todelete.JPG)
 
     Nyomja meg ismét az ENTER billentyűt ```deleteDocument()``` a függvény meghívásához a példában szereplő kódban. Ez a függvény az alább látható módon upsert a dokumentum egy új verzióját ```/ttl == 5```, amely a dokumentumot élettartam (TTL) értékre állítja a 5Sec. 
     
-   # <a name="java-sdk-40"></a>[Java SDK 4,0](#tab/v4sdk)
+    ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-connection-policy-async"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
     ```java
     public static void deleteDocument() {
@@ -223,35 +180,6 @@ mvn clean package
         feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
     }    
     ```
-   # <a name="java-sdk-370"></a>[Java SDK-3.7.0](#tab/v3sdk)
-
-    ```java
-    public static void deleteDocument() {
-
-        String jsonString =    "{\"id\" : \"" + idToDelete + "\""
-                + ","
-                + "\"brand\" : \"Jerry's\""
-                + ","
-                + "\"type\" : \"plums\""
-                + ","
-                + "\"quantity\" : \"50\""
-                + ","
-                + "\"ttl\" : 5"
-                + "}";
-
-        ObjectMapper mapper = new ObjectMapper();
-        JsonNode document = null;
-
-        try {
-            document = mapper.readTree(jsonString);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        feedContainer.upsertItem(document,new CosmosItemRequestOptions()).block();
-    }    
-    ```
-   ---
 
     A módosítási ```feedPollDelay``` hírcsatorna a 100ms értékre van állítva. Ezért a változási csatorna szinte azonnal reagál erre a frissítésre, ```updateInventoryTypeMaterializedView()``` és a fent látható hívásokat kéri. Az utolsó függvény hívása az új dokumentumot a 5Sec TTL-upsert fogja a **InventoryContainer-pktype**.
 
