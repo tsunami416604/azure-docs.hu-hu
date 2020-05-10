@@ -7,16 +7,27 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/8/2019
-ms.openlocfilehash: b3808524706b13761dd8eccffa301c602d08f481
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b98e89d98295a7cefbc4c0c0906f5c4e10c11280
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267286"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006151"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>A Stream Analytics-keresések hivatkozási adatainak használata
 
 A hivatkozási adatok (más néven keresési táblázat) egy olyan véges adathalmaz, amely statikus vagy lassan változik a természetben, a keresés végrehajtásához vagy az adatfolyamok bővítéséhez. Például egy IoT-forgatókönyvben tárolhatók metaadatok az érzékelőkről (amelyek nem változnak gyakran) a hivatkozási adatokban, és a valós idejű IoT-adatfolyamokhoz csatlakoznak. Azure Stream Analytics betölti a memóriában lévő hivatkozási adatmennyiséget, hogy alacsony késésű adatfolyam-feldolgozást érjen el. Ha a Azure Stream Analytics-feladatokban szeretné használni a hivatkozásokat, a lekérdezésben általában egy [hivatkozási adatokhoz való csatlakozást](https://docs.microsoft.com/stream-analytics-query/reference-data-join-azure-stream-analytics) fog használni. 
+
+## <a name="example"></a>Példa  
+ Ha egy haszongépjármű regisztrálva van a díjköteles vállalatnál, akkor az autópályadíj-kezelő leállítása nélkül továbbíthatja az útdíj-kezelőt. A rendszer a kereskedelmi jármű regisztrációs keresési táblázatát használja az összes olyan kereskedelmi jármű azonosítására, amelynek lejárt a regisztrációja.  
+  
+```SQL  
+SELECT I1.EntryTime, I1.LicensePlate, I1.TollId, R.RegistrationId  
+FROM Input1 I1 TIMESTAMP BY EntryTime  
+JOIN Registration R  
+ON I1.LicensePlate = R.LicensePlate  
+WHERE R.Expired = '1'
+```  
 
 Stream Analytics támogatja az Azure Blob Storage-t, és Azure SQL Database a hivatkozási adattárolási rétegként. Átalakíthatja és/vagy átmásolhatja a blob Storage-ba Azure Data Factory a [felhőalapú és a helyszíni adattárak tetszőleges számú](../data-factory/copy-activity-overview.md)felhasználására is.
 
@@ -34,7 +45,7 @@ A hivatkozási adatok konfigurálásához először létre kell hoznia egy olyan
 |Tárfiók   | Annak a Storage-fióknak a neve, ahol a Blobok találhatók. Ha a Stream Analytics-feladatokkal megegyező előfizetésben szerepel, kiválaszthatja a legördülő menüből.   |
 |Storage-fiók kulcsa   | A Storage-fiókhoz társított titkos kulcs. Ezt automatikusan kitölti a rendszer, ha a Storage-fiók ugyanabban az előfizetésben van, mint a Stream Analytics-feladatokhoz.   |
 |Storage-tároló   | A tárolók logikai csoportosítást biztosítanak a Microsoft Azure Blob service tárolt blobokhoz. Amikor feltölt egy blobot a Blob serviceba, meg kell adnia egy tárolót a blobhoz.   |
-|Path Pattern (Elérésiút-minta)   | A Blobok megadott tárolón belüli megkereséséhez használt elérési út. Az elérési úton a következő két változó egy vagy több példányát is megadhatja:<BR>{Date}, {Time}<BR>1. példa: termékek/{Date}/{Time}/Product-list. csv<BR>2. példa: termékek/{Date}/Product-list. csv<BR>3. példa: Product-list. csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladatot a blob elérhetővé válása határozatlan ideig megvárja.   |
+|Path Pattern (Elérésiút-minta)   | Ez egy kötelező tulajdonság, amely a Blobok a megadott tárolón belüli megkeresésére szolgál. Az elérési úton a következő két változó egy vagy több példányát is megadhatja:<BR>{Date}, {Time}<BR>1. példa: termékek/{Date}/{Time}/Product-list. csv<BR>2. példa: termékek/{Date}/Product-list. csv<BR>3. példa: Product-list. csv<BR><br> Ha a blob nem létezik a megadott elérési úton, a Stream Analytics-feladatot a blob elérhetővé válása határozatlan ideig megvárja.   |
 |Dátumformátum [nem kötelező]   | Ha a megadott elérésiút-mintában a {Date} értéket használta, akkor kiválaszthatja azt a dátumformátum-formátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: éééé/hh/nn, hh/nn/éééé stb.   |
 |Időformátum [nem kötelező]   | Ha a megadott elérési úton a {Time} értéket használta, akkor kiválaszthatja azt az időformátumot, amelyben a Blobok a támogatott formátumok legördülő menüjéből vannak rendszerezve.<BR>Példa: HH, HH/hh vagy HH-mm.  |
 |Esemény szerializálási formátuma   | Annak biztosítása érdekében, hogy a lekérdezések a várt módon működjenek, Stream Analytics tudnia kell, hogy melyik szerializálási formátumot használja a bejövő adatfolyamok számára. A hivatkozási adatformátumok esetében a támogatott formátumok a CSV és a JSON.  |
@@ -110,7 +121,24 @@ A Stream Analytics **legfeljebb 300 MB méretű**hivatkozási adatmennyiséget t
 
 Ha a feladatokhoz tartozó folyamatos átviteli egységek száma nem haladja meg a 6-at, a rendszer nem növeli a támogatott maximális mennyiségű hivatkozási értéket.
 
-A tömörítés támogatása nem érhető el a hivatkozási értékekhez. 
+A tömörítés támogatása nem érhető el a hivatkozási értékekhez.
+
+## <a name="joining-multiple-reference-datasets-in-a-job"></a>Több hivatkozási adatkészlet csatlakoztatása egy feladathoz
+A lekérdezés egyetlen lépésében csak egy adatfolyam-bevitelt lehet csatlakoztatni egy hivatkozással. A lekérdezés több lépésben történő lebontásával azonban több hivatkozási adatkészlethez is csatlakozhat. Erre mutat példát az alábbi ábra.
+
+```SQL  
+With Step1 as (
+    --JOIN input stream with reference data to get 'Desc'
+    SELECT streamInput.*, refData1.Desc as Desc
+    FROM    streamInput
+    JOIN    refData1 ON refData1.key = streamInput.key 
+)
+--Now Join Step1 with second reference data
+SELECT *
+INTO    output 
+FROM    Step1
+JOIN    refData2 ON refData2.Desc = Step1.Desc 
+``` 
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e42a4d738d375b4bceeb32f6159b4476843cf281
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 76348a0aee48cc6d768e8233e376f266eca31917
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612656"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006004"
 ---
 # <a name="troubleshoot-the-remote-desktop-client"></a>Az Távoli asztal-ügyfél hibáinak megoldása
 
@@ -59,6 +59,12 @@ Ha a böngésző a webes ügyfél használata közben elindul vagy leáll, köve
 2. Böngészőbeli cookie-k törlése. Lásd: [cookie-fájlok törlése az Internet Explorerben](https://support.microsoft.com/help/278835/how-to-delete-cookie-files-in-internet-explorer).
 3. Törölje a böngésző-gyorsítótár tartalmát. Lásd: [böngésző gyorsítótárának törlése](https://binged.it/2RKyfdU)a böngészőben.
 4. Nyissa meg a böngészőt privát módban.
+
+## <a name="web-client-does-not-show-my-resources"></a>A webes ügyfél nem jeleníti meg az erőforrásokat
+
+Először tekintse meg az Ön által használt Azure Active Directory fiókot. Ha már bejelentkezett egy másik Azure Active Directory fiókkal, mint amelyet a Winodws virtuális asztalhoz szeretne használni, akkor vagy jelentkezzen be, vagy használjon privát böngészőablakot.
+
+Ha a Windows rendszerű virtuális asztal 2019-as verzióját használja, a [jelen cikkben](./virtual-desktop-fall-2019/connect-web-2019.md) található webes ügyfél hivatkozásra kattintva csatlakozhat az erőforrásokhoz.
 
 ## <a name="web-client-stops-responding-or-disconnects"></a>A webes ügyfél nem válaszol vagy bontja a kapcsolatot
 

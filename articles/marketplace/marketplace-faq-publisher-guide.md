@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 38d1a15f471d353595f57b86df5137257eaf63a5
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: be9a9d6b93068adc6d09db9b9ac23de9abd6a69f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857626"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005174"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
@@ -300,7 +300,7 @@ További információért lépjen a [kifizetési fiók és a Tax Forms](https://
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>A visszaadja és a kereskedelmi piactéren támogatott visszatérítéseket?
 
-A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül törölhetik az előfizetéseket. Azok az ajánlatok, amelyek számlázása a megoldás használata után történik, nem jogosultak a visszatérítésre.
+A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül törölhetik az előfizetéseket. Havi előfizetések esetén 24 óra, éves előfizetések esetén pedig 14 nap. Az olyan ajánlatok, amelyeknek a használata a megoldás alkalmazása után történik, nem jogosultak a visszatérítésre.
 
 ## <a name="resources"></a>További források
 

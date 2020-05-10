@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, klam, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: ab4bf802772c95d8c48a8cdba48def05e8a2761b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 03/25/2020
+ms.openlocfilehash: 3ec71a1ed8d24eb637afbb73b5949b69a1e3c041
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74786911"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004616"
 ---
 # <a name="schedule-and-run-tasks-for-contiguous-data-by-using-the-sliding-window-trigger-in-azure-logic-apps"></a>A folytonos adatokhoz tartozó feladatok ütemezett és futtatásához használja a csúszó ablakos triggert Azure Logic Apps
 
@@ -19,9 +19,9 @@ Ahhoz, hogy rendszeresen futtasson olyan feladatokat, folyamatokat vagy feladato
 
 Íme néhány példa, amelyet ez az trigger támogat:
 
-* Azonnal fusson, és ismételje meg az *n* másodpercenkénti számát, percet vagy órát.
+* Futtassa azonnal, és ismételje meg az *n* másodpercenkénti számát, a perceket, az órákat, a napokat, a heteket és a hónapokat.
 
-* Kezdjen egy adott dátummal és időponttal, majd futtasson és ismételje meg az *n* másodpercenkénti számát, percet vagy órát. Ezzel az eseményindítóval megadhatja a múltbeli kezdési időt, amely minden korábbi ismétlődést futtat.
+* Kezdjen egy adott dátummal és időponttal, majd futtasson és ismételje meg az *n* másodpercenkénti számát, perc, óra, nap, hét vagy hónap. Ezzel az eseményindítóval megadhatja a múltbeli kezdési időt, amely minden korábbi ismétlődést futtat.
 
 * Egy adott időtartamra vonatkozó ismétlődések késleltetése a Futtatás előtt.
 
@@ -40,7 +40,7 @@ Az eseményindító és az ismétlődési eseményindító közötti különbsé
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Üres logikai alkalmazás létrehozása.
 
-1. A Logic app Designer megjelenése után a keresőmezőbe írja be szűrőként a "csúszó ablak" kifejezést. Az eseményindítók listából válassza ki ezt az eseményindítót a logikai alkalmazás munkafolyamatának első lépéseként: **ablak** behúzása
+1. A Logic app Designer megjelenése után a keresőmezőbe írja be `sliding window` szűrőként a kifejezést. Az eseményindítók listából válassza ki a **csúszó ablak** eseményindítóját a logikai alkalmazás munkafolyamatának első lépéseként.
 
    ![Válassza a "csúszó ablak" triggert](./media/connectors-native-sliding-window/add-sliding-window-trigger.png)
 
@@ -48,16 +48,15 @@ Az eseményindító és az ismétlődési eseményindító közötti különbsé
 
    ![Az intervallum és a gyakoriság beállítása](./media/connectors-native-sliding-window/sliding-window-trigger-details.png)
 
-   | Tulajdonság | Kötelező | JSON-név | Típus | Leírás |
+   | Tulajdonság | JSON-név | Kötelező | Típus | Leírás |
    |----------|----------|-----------|------|-------------|
-   | **Időköz** | Igen | interval | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>-Óra: 1 – 12000 óra </br>Perc: 1 – 72000 perc </br>-Másodperc: 1 – 9999999 másodperc<p>Ha például az intervallum 6, és a gyakoriság értéke "Hour", akkor az ismétlődés 6 óránként történik. |
-   | **Gyakoriság** | Igen | frequency | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**vagy **óra** |
+   | **Időköz** | `interval` | Igen | Egész szám | Pozitív egész szám, amely leírja, hogy a munkafolyamat milyen gyakran fut a gyakoriság alapján. Itt láthatók a minimális és a maximális intervallumok: <p>-Hónap: 1-16 hónap <br>Hét: 1-71 hét <br>-Nap: 1-500 nap <br>-Óra: 1 – 12000 óra <br>Perc: 1 – 72000 perc <br>-Másodperc: 1 – 9999999 másodperc <p>Ha például az intervallum 6, és a gyakoriság értéke "Month", akkor az ismétlődés 6 havonta történik. |
+   | **Gyakoriság** | `frequency` | Igen | Sztring | Az ismétlődés időegysége: **másodperc**, **perc**, **óra**, **nap**, **hét**vagy **hónap** |
    ||||||
 
    ![Speciális ismétlődési beállítások](./media/connectors-native-sliding-window/sliding-window-trigger-more-options-details.png)
 
-   További ismétlődési lehetőségekért nyissa meg az **új paraméterek hozzáadása** listát. 
-   A kiválasztott lehetőségek megjelennek az triggeren a kijelölés után.
+   További ismétlődési lehetőségekért nyissa meg az **új paraméterek hozzáadása** listát. A kiválasztott lehetőségek megjelennek az triggeren a kijelölés után.
 
    | Tulajdonság | Kötelező | JSON-név | Típus | Leírás |
    |----------|----------|-----------|------|-------------|

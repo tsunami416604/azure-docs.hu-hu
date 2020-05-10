@@ -3,15 +3,15 @@ title: Webes API-k létrehozása & REST API-kkal Azure Logic Apps
 description: Webes API-k & REST API-k segítségével az API-k, szolgáltatások vagy rendszerek meghívásához a rendszer-integrációhoz Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, jehollan, logicappspm
-ms.topic: article
+ms.reviewer: jonfan, logicappspm
+ms.topic: conceptual
 ms.date: 05/26/2017
-ms.openlocfilehash: bb6c99ea12e5b53631d42a04b36b7bfef2337e42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d892dc75d4e745912ceaf444b56494a2e0ed2a19
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270536"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005250"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Egyéni API-k létrehozása, melyeket hívhat Azure Logic Apps
 
@@ -136,11 +136,13 @@ Ehhez a mintához állítson be két végpontot a vezérlőn `subscribe` : és`u
 
 ![Webhook műveleti minta](./media/logic-apps-create-api-app/custom-api-webhook-action-pattern.png)
 
-> [!NOTE]
-> A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a hencegő használatával. Tehát ehhez a mintához hozzá kell adnia egy [ **webhook** -műveletet](../connectors/connectors-native-webhook.md) , és meg kell adnia a kérelem URL-címét, fejléceit és törzsét. Lásd még: [munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
+A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a hencegő használatával. Tehát ehhez a mintához hozzá kell adnia egy [ **webhook** -műveletet](../connectors/connectors-native-webhook.md) , és meg kell adnia a kérelem URL-címét, fejléceit és törzsét. Lásd még: [munkafolyamat-műveletek és eseményindítók](logic-apps-workflow-actions-triggers.md#apiconnection-webhook-action). Példa webhook-minta esetén tekintse át ezt a [webhook trigger-mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Példa webhook-minta esetén tekintse át ezt a [webhook trigger-mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Íme néhány további tipp és Megjegyzés:
+
+* A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
+
+* Ha a logikai alkalmazás és az előfizetett szolgáltatás tulajdonosa is van, nem kell meghívnia a `unsubscribe` végpontot a visszahívási URL-cím meghívása után. Ellenkező esetben a Logic Apps futtatókörnyezetnek meg kell hívnia a `unsubscribe` végpontot arra, hogy jelezze, ne kelljen több hívást várnia, és hogy az erőforrást a kiszolgáló oldalán is meg lehessen tisztítani.
 
 <a name="triggers"></a>
 
@@ -198,13 +200,15 @@ A webhook-eseményindítók ugyanúgy működnek, mint az ebben a témakörben k
 
 ![Webhook-trigger mintája](./media/logic-apps-create-api-app/custom-api-webhook-trigger-pattern.png)
 
-> [!NOTE]
-> A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a hencegő használatával. Tehát ehhez a mintához hozzá kell adnia egy [ **webhook** -triggert](../connectors/connectors-native-webhook.md) , és meg kell adnia a kérelem URL-címét, fejléceit és törzsét. Lásd még: [HTTPWebhook trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
->
-> Ha nem szeretné, hogy ugyanazokat az adatfeldolgozást többször is feldolgozza, az triggernek törölnie kell a logikai alkalmazásba már olvasott és továbbított adatait.
+A Logic app Designer jelenleg nem támogatja a webhook-végpontok felfedését a hencegő használatával. Tehát ehhez a mintához hozzá kell adnia egy [ **webhook** -triggert](../connectors/connectors-native-webhook.md) , és meg kell adnia a kérelem URL-címét, fejléceit és törzsét. Lásd még: [HTTPWebhook trigger](logic-apps-workflow-actions-triggers.md#httpwebhook-trigger). Egy példa webhook-minta esetén tekintse át ezt a [webhook-indító vezérlő mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
 
-> [!TIP]
-> Egy példa webhook-minta esetén tekintse át ezt a [webhook-indító vezérlő mintát a githubon](https://github.com/logicappsio/LogicAppTriggersExample/blob/master/LogicAppTriggers/Controllers/WebhookTriggerController.cs).
+Íme néhány további tipp és Megjegyzés:
+
+* A visszahívási URL-cím átadásához szükség `@listCallbackUrl()` szerint használhatja a munkafolyamat-függvényt az előző mezők bármelyikén.
+
+* Ha nem szeretné, hogy ugyanazokat az adatfeldolgozást többször is feldolgozza, az triggernek törölnie kell a logikai alkalmazásba már olvasott és továbbított adatait.
+
+* Ha a logikai alkalmazás és az előfizetett szolgáltatás tulajdonosa is van, nem kell meghívnia a `unsubscribe` végpontot a visszahívási URL-cím meghívása után. Ellenkező esetben a Logic Apps futtatókörnyezetnek meg kell hívnia a `unsubscribe` végpontot arra, hogy jelezze, ne kelljen több hívást várnia, és hogy az erőforrást a kiszolgáló oldalán is meg lehessen tisztítani.
 
 ## <a name="improve-security-for-calls-to-your-apis-from-logic-apps"></a>Az API-k hívásai biztonságának növelése a Logic Apps használatával
 

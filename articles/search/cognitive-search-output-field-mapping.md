@@ -8,18 +8,21 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f0537af684632a08a39e3e681900d62238365073
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc1f1b5f7015efc604d461a5e292184398cba44f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74280969"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005488"
 ---
 # <a name="how-to-map-ai-enriched-fields-to-a-searchable-index"></a>AI-gazdagított mezők leképezése kereshető indexre
 
 Ebből a cikkből megtudhatja, hogyan jelenítheti meg a bővíthető beviteli mezőket egy kereshető index kimeneti mezőihez. Miután [meghatározta a készségkészlet](cognitive-search-defining-skillset.md), le kell képeznie minden olyan képesség kimeneti mezőjét, amely közvetlenül járul hozzá az értékekhez a keresési index egy adott mezőjében. 
 
 A bővített dokumentumokból származó tartalomnak az indexbe való áthelyezéséhez kimeneti mezők hozzárendelése szükséges.  A dúsított dokumentum valójában az információk fája, és bár az index összetett típusai is támogatottak, időnként előfordulhat, hogy a dúsított fában lévő adatokat egy egyszerű típusra kívánja átalakítani (például karakterláncok tömbje). A kimeneti mezők leképezése lehetővé teszi az adatalakzatok átalakításának elvégzését az információk összeolvasztásával.
+
+> [!NOTE]
+> Nemrég engedélyezte a leképezési függvények funkcióit a kimeneti mezők hozzárendelésein. További részletek a leképezési függvényekről: [mező-hozzárendelési függvények](https://docs.microsoft.com/azure/search/search-indexer-field-mappings#field-mapping-functions)
 
 ## <a name="use-outputfieldmappings"></a>OutputFieldMappings használata
 A mezők leképezéséhez adja `outputFieldMappings` hozzá az indexelő definícióját az alábbi ábrán látható módon:
@@ -50,7 +53,10 @@ A kérelem törzse a következőképpen van strukturálva:
     "outputFieldMappings": [
         {
             "sourceFieldName": "/document/content/organizations/*/description",
-            "targetFieldName": "descriptions"
+            "targetFieldName": "descriptions",
+            "mappingFunction": {
+                "name": "base64Decode"
+            }
         },
         {
             "sourceFieldName": "/document/content/organizations",

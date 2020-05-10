@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 88e58fbf6acc15b71fd135184cf8806a793140f3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983210"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006066"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -89,7 +89,7 @@ A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes
 - A Azure Portal megnyitása
 - STG1 megkeresése
 - Navigáljon a CNT1
-- Győződjön meg arról, hogy a WS1 MSI-fájlja (Managed Service Identity) hozzá van rendelve az **Azure Blob-adatközreműködői** szerepkörhöz a CNT1
+- Győződjön meg arról, hogy a WS1 MSI-fájlja (Managed Service Identity) hozzá van rendelve a **Storage blob adatközreműködői** szerepkörhöz a CNT1
   - Ha nem látja a hozzárendelést, rendelje hozzá.
   - Az MSI neve megegyezik a munkaterülettel. Ebben az esetben a &quot;WS1&quot;lenne.
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f2fd8f4b7d03be8822c3ec12e2be589054942ce3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13c85dff40e266287d893d9e45b32a66a33f027e
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270605"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006021"
 ---
 # <a name="anchor-relationships-and-way-finding-in-azure-spatial-anchors"></a>Kapcsolatok és a kitalált módszer – keresés az Azure térbeli Horgonyokban
 
@@ -73,7 +73,7 @@ Ezt az eljárást továbbra is használhatja több horgonyra és több munkamene
 
 ### <a name="verify-anchor-connections"></a>Horgony kapcsolatok ellenőrzése
 
-Az alkalmazás képes ellenőrizni, hogy a két horgony csatlakoztatva van-e egy, a közeli horgonyokra vonatkozó lekérdezés kiadásával. Ha a lekérdezés eredménye tartalmazza a cél horgonyt, a rendszer ellenőrzi a horgony kapcsolatát. Ha a horgonyok nincsenek csatlakoztatva, az alkalmazás megpróbálhatja újra csatlakoztatni őket.
+Az alkalmazás képes ellenőrizni, hogy a két horgony csatlakoztatva van-e egy, a közeli horgonyokra vonatkozó lekérdezés kiadásával, amelyet `NearAnchorCriteria` a on `CloudSpatialAnchorWatcher`a-on kell beállítania. Ha a lekérdezés eredménye tartalmazza a cél horgonyt, a rendszer ellenőrzi a horgony kapcsolatát. Ha a horgonyok nincsenek csatlakoztatva, az alkalmazás megpróbálhatja újra csatlakoztatni őket.
 
 Íme néhány ok, amiért a horgonyok sikertelenek lehetnek a kapcsolódáshoz:
 

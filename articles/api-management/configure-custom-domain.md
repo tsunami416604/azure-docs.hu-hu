@@ -12,12 +12,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 4587909ad6fca6cdf21d54d11d89f797bbb29833
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380b61df8a774e69454577d201cebf1c495b4f74
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335840"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004747"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév konfigurálása
 
@@ -71,12 +71,12 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
     > A helyettesítő tartománynevek, például `*.contoso.com` az összes szinten támogatottak, kivéve a felhasználási szintet.
 
     > [!TIP]
-    > Javasoljuk, hogy használjon Azure Key Vault a tanúsítványok kezeléséhez, és állítsa be őket az autoforgatáshoz.
+    > Javasoljuk, hogy használjon [Azure Key Vault a tanúsítványok kezeléséhez](https://docs.microsoft.com/azure/key-vault/certificates/about-certificates) , és állítsa be őket az automegújít értékre.
     > Ha a Azure Key Vault használatával kezeli az egyéni tartomány TLS/SSL-tanúsítványát, akkor győződjön meg arról, hogy a tanúsítvány bekerül a Key Vaultba [ _tanúsítványként_](https://docs.microsoft.com/rest/api/keyvault/CreateCertificate/CreateCertificate), nem _titkosként_.
     >
     > A TLS/SSL-tanúsítvány lekéréséhez API Managementnak tartalmaznia kell a listát, és meg kell kapnia a titkokat a tanúsítványt tartalmazó Azure Key Vault. Azure Portal használatakor a rendszer az összes szükséges konfigurációs lépést automatikusan végrehajtja. Parancssori eszközök vagy felügyeleti API használatakor ezeket az engedélyeket manuálisan kell megadni. Ez két lépésben történik. Először használja a API Management-példány felügyelt identitások lapját, és győződjön meg arról, hogy a felügyelt identitás engedélyezve van, és jegyezze fel az oldalon megjelenő résztvevő azonosítóját. Másodszor, adja meg az engedélyek listáját, és szerezzen be titkokat a rendszerbiztonsági tag számára a tanúsítványt tartalmazó Azure Key Vault.
     >
-    > Ha a tanúsítvány automatikus elforgatásra van beállítva, akkor API Management automatikusan a szolgáltatás leállása nélkül fogja felvenni a legújabb verziót (ha a API Managementi szint SLA-i. e. az összes szinten, kivéve a fejlesztői szintet).
+    > Ha a tanúsítvány automatikus megújításra van beállítva, API Management automatikusan a szolgáltatás leállása nélkül fogja tudni felvenni a legújabb verziót (ha a API Managementi szint SLA-i. e. az összes szinten, kivéve a fejlesztői szintet).
 
 1. Kattintson az Apply (Alkalmaz) gombra.
 

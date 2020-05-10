@@ -4,22 +4,22 @@ description: Ismerje meg az SQL-szintaxist, és példát az Azure Cosmos DB FROM
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: 3939594064b63c567720378b9d316acca64d3266
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e4bbb27a2f49027ed5a456ad824f54b9c92a899c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587685"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005857"
 ---
 # <a name="from-clause-in-azure-cosmos-db"></a>FROM záradék Azure Cosmos DB
 
 A FROM (`FROM <from_specification>`) záradék nem kötelező, kivéve, ha a forrást a lekérdezésben később szűrik vagy tervezték. Egy lekérdezés, `SELECT * FROM Families` például enumerálások a teljes `Families` tárolón. A tároló neve helyett a speciális azonosító GYÖKERÉt is használhatja a tárolóhoz.
 
-A FROM záradék a következő szabályokat alkalmazza a lekérdezésekhez:
+A `FROM` záradék a következő szabályokat érvényesíti a lekérdezéseken:
 
-* A tároló lehet alias, például `SELECT f.id FROM Families AS f` vagy egyszerűen. `SELECT f.id FROM Families f` Itt `f` látható az alias a `Families`következőhöz:. MINT egy opcionális kulcsszó az azonosító [aliasához](sql-query-aliasing.md) .  
+* A tároló lehet alias, például `SELECT f.id FROM Families AS f` vagy egyszerűen. `SELECT f.id FROM Families f` Itt `f` látható az alias a `Families`következőhöz:. MINT egy opcionális kulcsszó az azonosító [aliasához](sql-query-working-with-json.md#aliasing) .  
 
 * Az alias megadása után az eredeti forrás neve nem köthető. Például a szintaktikai `SELECT Families.id FROM Families f` érvénytelen, mert az azonosító `Families` aliast kapott, és többé nem oldható fel.  
 
@@ -30,15 +30,15 @@ A FROM záradék a következő szabályokat alkalmazza a lekérdezésekhez:
 ```sql  
 FROM <from_specification>  
   
-<from_specification> ::=   
+<from_specification> ::=
         <from_source> {[ JOIN <from_source>][,...n]}  
   
-<from_source> ::=   
+<from_source> ::=
           <container_expression> [[AS] input_alias]  
         | input_alias IN <container_expression>  
   
-<container_expression> ::=   
-        ROOT   
+<container_expression> ::=
+        ROOT
      | container_name  
      | input_alias  
      | <container_expression> '.' property_name  
@@ -51,9 +51,9 @@ FROM <from_specification>
   
   Egy adatforrás megadása aliassal vagy anélkül. Ha nincs megadva alias, a rendszer a `<container_expression>` következő szabályok használatával következtet:  
   
-  -  Ha a kifejezés container_name, akkor container_name aliasként lesz használva.  
+-  Ha a kifejezés container_name, akkor container_name aliasként lesz használva.  
   
-  -  Ha a kifejezés `<container_expression>`, akkor property_name, akkor property_name aliasként lesz használva. Ha a kifejezés container_name, akkor container_name aliasként lesz használva.  
+-  Ha a kifejezés `<container_expression>`, akkor property_name, akkor property_name aliasként lesz használva. Ha a kifejezés container_name, akkor container_name aliasként lesz használva.  
   
 - MINT`input_alias`  
   
@@ -99,9 +99,9 @@ Ha egy tároló kifejezése hozzáfér a Tulajdonságok vagy a tömb elemeihez, 
   
 A Container kifejezés lehet tároló-hatókörű vagy dokumentum – hatókör:  
   
--   A kifejezés tároló hatókörű, ha a tároló kifejezésének alapjául szolgáló forrása a ROOT vagy `container_name`a. Ez a kifejezés a tárolóból közvetlenül beolvasott dokumentumok készletét jelöli, és nem függ más tároló-kifejezések feldolgozásából.  
+- A kifejezés tároló hatókörű, ha a tároló kifejezésének alapjául szolgáló forrása a ROOT vagy `container_name`a. Ez a kifejezés a tárolóból közvetlenül beolvasott dokumentumok készletét jelöli, és nem függ más tároló-kifejezések feldolgozásából.  
   
--   A kifejezés dokumentum-hatókörű, ha a lekérdezésben korábban a tároló kifejezés alapjául szolgáló `input_alias` forrás van bevezetve. Ez a kifejezés a tároló kifejezésnek az alias-tárolóhoz társított készlethez tartozó hatókörében való kiértékelésével beszerzett dokumentumok készletét jelöli.  Az eredményül kapott készlet az alapul szolgáló készletben lévő összes dokumentum tároló kifejezésének kiértékelésével létrejött készletek Uniója lesz. 
+- A kifejezés dokumentum-hatókörű, ha a lekérdezésben korábban a tároló kifejezés alapjául szolgáló `input_alias` forrás van bevezetve. Ez a kifejezés a tároló kifejezésnek az alias-tárolóhoz társított készlethez tartozó hatókörében való kiértékelésével beszerzett dokumentumok készletét jelöli. Az eredményül kapott készlet az alapul szolgáló készletben lévő összes dokumentum tároló kifejezésének kiértékelésével létrejött készletek Uniója lesz.
 
 ## <a name="examples"></a>Példák
 

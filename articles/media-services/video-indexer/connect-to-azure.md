@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: juliako
-ms.openlocfilehash: 2093132abaa7aed06113b1856c85ac54fd7ae60d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 405533aad8247350d45cc53009abe6b58a511264
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995715"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005931"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók létrehozása
 
@@ -23,7 +23,7 @@ Video Indexer-fiók létrehozásakor kiválaszthat egy ingyenes próbaverziós f
 
 Ez a cikk bemutatja, hogyan hozhat létre egy Azure-előfizetéshez és egy Azure Media Services-fiókhoz kapcsolódó Video Indexer fiókot. A témakör lépéseit követve csatlakozhat az Azure-hoz az automatikus (alapértelmezett) folyamat használatával. Azt is bemutatja, hogyan csatlakozhat az Azure-hoz manuálisan (speciális).
 
-Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó és modell testreszabását átmásolhatja az új fiókra, amint azt a [tartalom importálása a próbaverziós fiókból](#import-your-content-from-the-trial-account)című cikkben tárgyaljuk.
+Ha *próbaverzióról* *fizetett* video Indexer fiókra vált, az összes videó és modell testreszabását átmásolhatja az új fiókba, ahogy azt a [tartalom importálása a próbaverziós fiókból](#import-your-content-from-the-trial-account) című szakaszban tárgyaljuk.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

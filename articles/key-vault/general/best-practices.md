@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 03/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cf8d461485cefd37b9508031f5cce7ae0a070ef5
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 2a81d28998c531339a1b719e37e4b90004157edf
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653200"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005845"
 ---
 # <a name="best-practices-to-use-key-vault"></a>Ajánlott eljárások a Key Vault használatához
 
@@ -35,7 +35,7 @@ Javasoljuk, hogy a tárolót egy alkalmazás/környezet (fejlesztés, üzem elő
 
 ## <a name="backup"></a>Backup
 
-Győződjön meg arról, hogy a tárolóban rendszeresen készít biztonsági [másolatot a](https://blogs.technet.microsoft.com/kv/2018/07/20/announcing-backup-and-restore-of-keys-secrets-and-certificates/) tárolóban lévő objektumok frissítéséről/törléséről/létrehozásáról.
+Győződjön meg arról, hogy a tárolóban rendszeresen készít biztonsági másolatot a tárolóban lévő objektumok frissítéséről/törléséről/létrehozásáról.
 
 ## <a name="turn-on-logging"></a>Naplózás bekapcsolása
 

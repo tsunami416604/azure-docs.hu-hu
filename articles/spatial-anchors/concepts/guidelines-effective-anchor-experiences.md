@@ -8,20 +8,24 @@ ms.author: mattwoj
 ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a24da8d76f401f534eccf33312fbf0c2bee9f5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74270520"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005529"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Hatékony Anchor-élmény létrehozása Azure térbeli horgonyok használatával
 
-Ez a cikk útmutatást és szempontokat tartalmaz, amelyek segítenek a horgonyok hatékony létrehozásában és megkeresésében a térbeli horgonyok használatával.
+Ez a cikk útmutatást és szempontokat tartalmaz, amelyek segítségével hatékonyan hozhat létre és kereshet horgonyokat az Azure térbeli horgonyok használatával.
+
+## <a name="anchor-improvement-over-time"></a>Javítás az idő múlásával
+
+Az Azure térbeli horgonyok minden alkalommal, amikor megtalálják a horgonyokat, megpróbáljuk javítani a jövőbeli megkeresési műveletek minőségét. Ezt úgy tesszük, hogy a gyűjtött környezeti adatokat felhasználva kibővítjük a keresett horgonyokra vonatkozó vizuális információkat. Ez a folyamat a motorháztető alatt fut, és az Azure térbeli horgonyok szolgáltatás által futtatott offline optimalizálás a környezet optimalizálása érdekében. Az egyes műveletek során összegyűjtött további adatok erőteljesebben értik a környezetet. Ez javítja a minőséget, és lehetővé teszi, hogy jobban megkeresse a horgonyokat a környezeti változások, az idő múlásával, valamint a különböző nézőpontokból és perspektíváokból származó horgonyokat kereső felhasználók számára.
 
 ## <a name="good-anchors"></a>Jó horgonyok
 
-A térbeli horgonyok segítségével jó horgonyokat hozhat létre. Fontos, hogy a megfelelő horgonyok létrehozásához a felhasználói élményben (UX) betanítsa vagy vezérelje a felhasználókat. A jó alapok létrehozásához való befektetéssel a végfelhasználók megbízhatóan megtalálják a horgonyokat:
+Habár az Azure térbeli horgonyok az idő múlásával javítják a horgonyok minőségét, fontos, hogy a jó horgonyok létrehozásához a felhasználói élményben (UX) betanítsa vagy vezérelje a felhasználókat. A jó alapok létrehozásához való befektetéssel a végfelhasználók megbízhatóan megtalálják a horgonyokat:
 
 - Különböző eszközökön.
 - Különböző időpontokban.
@@ -100,7 +104,7 @@ A vizuális nyomkövető rendszerek a környezet vizuális szolgáltatásaira t�
 
 Az ebben a szakaszban található általános útmutatást követve hozzon létre egy olyan UX-t, amely a környezet hasznos vizsgálatára ösztönöz.
 
-Először is, ha a felhasználó néhány másodpercen belül nem talál horgonyt, az alkalmazásnak ösztönöznie kell a felhasználókat az eszköz áthelyezésére, hogy több perspektívát rögzítsen. Az alkalmazás arra is ösztönözheti a felhasználókat, hogy a környezetbe lépjenek, hogy több perspektívából is megkeressék a horgonyt. Minél több funkciói perspektívát lát az eszköz, annál jobb.
+Először is, ha a felhasználó néhány másodpercen belül nem talál horgonyt, az alkalmazásnak ösztönöznie kell a felhasználókat az eszköz áthelyezésére, hogy több perspektívát rögzítsen. Az alkalmazás arra is ösztönözheti a felhasználókat, hogy a környezetbe lépjenek, hogy több perspektívából is megkeressék a horgonyt. Minél több funkciói perspektívát lát az eszköz, annál jobbat, mivel növeli a horgony elérésének valószínűségét, és további környezeti adatokat is gyűjt, amelyeket a rendszer a horgony minőségének javítására fog használni.
 
 A cél forgatókönyvek esetében kérje meg a felhasználót, hogy a cél körül mozogjon, hogy megtekinthesse a különböző perspektívákat. Más szóval, kérje meg a felhasználót, hogy rögzítse a célt az új perspektívából, amíg a horgony nem található.
 

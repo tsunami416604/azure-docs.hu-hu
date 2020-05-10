@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: cde644b821b8c9233c9a79c2c5e9fe8478850a65
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 827a2d6dc8a3622c17cdbcdfb179a3ea0f434f6f
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82997717"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006456"
 ---
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
@@ -190,8 +190,8 @@ A hub teljes VPN-átviteli sebessége a kiválasztott skálázási egység alapj
 Navigáljon a VPN-átjáróhoz a portálon belül, és kattintson a skálázási egységre a megfelelő beállításra való váltáshoz.
 
 ### <a name="does-virtual-wan-allow-the-on-premises-device-to-utilize-multiple-isps-in-parallel-or-is-it-always-a-single-vpn-tunnel"></a>A virtuális WAN lehetővé teszi, hogy a helyszíni eszköz párhuzamosan több internetszolgáltatót is használjon, vagy mindig egyetlen VPN-alagút?
+A helyszíni eszközökhöz tartozó megoldások forgalmi házirendeket alkalmazhatnak arra, hogy több alagúton keresztül irányítsák a forgalmat az Azure-ba.
 
-A virtuális WAN VPN-be érkező kapcsolatok mindig aktív-aktív alagút (az azonos központon vagy régióban lévő rugalmasság esetében) egy, a ágban elérhető hivatkozás használatával. Ez a hivatkozás a helyszíni ág ISP-hivatkozása lehet. A "VPNSite" virtuális WAN lehetővé teszi a kapcsolati adatok hozzáadását a webhelyhez. Ha a fiókirodában több internetszolgáltató található, és mindegyik internetszolgáltató egy hivatkozást tartalmaz, akkor ezek az információk az Azure-beli VPN-hely adataiban állíthatók be. Ugyanakkor a feladatátvétel a fiókirodában lévő internetszolgáltatók közötti kezelése teljesen egy ág-központú útválasztási művelet.
 
 ### <a name="what-is-global-transit-architecture"></a>Mi az a globális átviteli architektúra?
 

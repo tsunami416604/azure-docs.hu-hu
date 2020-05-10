@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/28/2020
 ms.author: allensu
-ms.openlocfilehash: 0db91f3c661ebd3087a4389f4112a7214c992227
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 3959dd115e340a3407c4f30a22ff4b6b51dab4e7
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925949"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005777"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 <p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=fb23185b-6c56-d9f1-7ce1-758c978e08e1" target='_blank'>Start</a></span><span class="has-padding-small">A virtuális ügynök használatával gyorsan megoldhatja a problémát, ha <b>automatizált diagnosztikát futtat.</b> </span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Adatvédelmi <div align="right">nyilatkozat</div></a></span></p>
-Ez az oldal az alapszintű és standard Azure Load Balancer kérdésekre vonatkozó hibaelhárítási információkat tartalmaz. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics).
+
+Ez az oldal az alapszintű és standard Azure Load Balancer kérdésekre vonatkozó hibaelhárítási információkat tartalmaz. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](load-balancer-standard-diagnostics.md).
 
 Ha a Load Balancer kapcsolat nem érhető el, a leggyakoribb tünetek a következők: 
 

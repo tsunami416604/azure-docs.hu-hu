@@ -10,17 +10,18 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d0ada9c1e6b45b1be17b15b67f67fc64fc266203
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d1d93bcd84fd9460e658b221089a4b24d46b0429
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430876"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005812"
 ---
 # <a name="common-parameters-and-headers"></a>Gyakori paraméterek és fejlécek
 
 Az alábbi információk a Key Vault erőforrásokhoz kapcsolódó összes művelet esetében közösek:
 
+- A HTTP `Host` -fejlécnek mindig jelen kell lennie, és meg kell adnia a tároló állomásnevét. Példa: `Host: contoso.vault.azure.net`. Vegye figyelembe, hogy a legtöbb ügyfél- `Host` technológia feltölti a fejlécet az URI-ból. Például a `GET https://contoso.vault.azure.net/secrets/mysecret{...}` `Host` következőt fogja beállítani: `contoso.vault.azure.net`. Ez azt jelenti, hogy ha a Key Vault nyers IP-cím `GET https://10.0.0.23/secrets/mysecret{...}`használatával fér hozzá, a `Host` fejléc automatikus értéke helytelen lesz, és manuálisan kell biztosítania, hogy `Host` a fejléc tartalmazza a tároló állomásnevét.
 - Cserélje `{api-version}` le az elemet az API-verzióra az URI-ban.
 - Cserélje `{subscription-id}` le az elemet az előfizetés azonosítójával az URI-ban
 - Cserélje `{resource-group-name}` le az csoportot az erőforráscsoporthoz. További információ: erőforráscsoportok használata az Azure-erőforrások kezeléséhez.

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/25/2019
-ms.openlocfilehash: 20f27ebc7b9712d440dc1c67c46cb0385a3f874a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 03/25/2020
+ms.openlocfilehash: 6d00c7d7cc88427a3500b28891ec70bb8a4bbb43
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82234094"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005202"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezése és futtatása az Azure Logic Apps használatával
 
@@ -48,13 +48,13 @@ Ez a cikk a beépített eseményindítók és műveletek ütemezett funkcióit i
 
 ## <a name="schedule-triggers"></a>Eseményindítók ütemezett indítása
 
-A logikai alkalmazás munkafolyamata az ismétlődési eseményindító vagy a csúszó ablak eseményindítójának használatával indítható el, amely nincs egyetlen adott szolgáltatáshoz vagy rendszerhez társítva, például Office 365 Outlook vagy SQL Server. Ezek az eseményindítók elindítják és futtatják a munkafolyamatot a megadott ismétlődés alapján, ahol kiválaszthatja az intervallumot és a gyakoriságot, például a másodpercek számát, a perceket és az időpontokat mindkét eseményindító esetében, illetve az ismétlődési eseményindítóhoz tartozó napok, hetek vagy hónapok számát. Megadhatja a kezdési dátumot és az időt, valamint az időzónát is. Minden alkalommal, amikor egy eseményindító tüzek, Logic Apps létrehoz és futtat egy új munkafolyamat-példányt a logikai alkalmazáshoz.
+A logikai alkalmazás munkafolyamatát az ismétlődési eseményindító vagy a csúszó ablak eseményindító használatával indíthatja el, amely nincs egyetlen adott szolgáltatáshoz vagy rendszerhez társítva. Ezek az eseményindítók elindítják és futtatják a munkafolyamatot a megadott ismétlődés alapján, ahol kiválaszthatja az intervallumot és a gyakoriságot, például a másodpercek, a percek, az órák, a napok, a hetek és a hónapok számát Megadhatja a kezdési dátumot és az időt, valamint az időzónát is. Minden alkalommal, amikor egy eseményindító tüzek, Logic Apps létrehoz és futtat egy új munkafolyamat-példányt a logikai alkalmazáshoz.
 
 Ezek az eseményindítók közötti különbségek:
 
 * **Ismétlődés**: a munkafolyamatot a megadott ütemterv alapján rendszeres időközönként futtatja. Ha az ismétlődések kimaradnak, az ismétlődési eseményindító nem dolgozza fel a kihagyott ismétlődéseket, de a következő ütemezett intervallummal újraindítja az ismétlődéseket. Megadhatja a kezdési dátumot és az időt, valamint az időzónát is. Ha a "nap" lehetőséget választja, megadhatja az óra napját és percét, például minden nap 2:30-kor. Ha a "hét" lehetőséget választja, akkor a hét napjait is kiválaszthatja, például a szerda és a szombat lehetőséget. További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, ütemezése és futtatása az ismétlődési eseményindítóval](../connectors/connectors-native-recurrence.md).
 
-* **Csúszó ablak**: rendszeres időközönként futtatja a munkafolyamatot, amely folytonos adattömbökben kezeli az adategységeket. Ha az ismétlődések kimaradnak, a csúszó ablak eseményindítója visszatér, és feldolgozza a kihagyott ismétlődéseket. Megadhatja a kezdési dátumot és időt, az időzónát és egy időtartamot, amellyel késleltetheti az egyes ismétlődéseket a munkafolyamatban. Ez az trigger nem rendelkezik a napok, hetek és hónapok megadására, a nap órájára, az óra percére és a hét napjaira. További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása a csúszó ablakos triggerrel](../connectors/connectors-native-sliding-window.md).
+* **Csúszó ablak**: rendszeres időközönként futtatja a munkafolyamatot, amely folytonos adattömbökben kezeli az adategységeket. Ha az ismétlődések kimaradnak, a csúszó ablak eseményindítója visszatér, és feldolgozza a kihagyott ismétlődéseket. Megadhatja a kezdési dátumot és időt, az időzónát és egy időtartamot, amellyel késleltetheti az egyes ismétlődéseket a munkafolyamatban. Ez az trigger nem támogatja a speciális ütemterveket, például a nap adott óráját, az óra percét és a hét napjait. További információ: [ismétlődő feladatok és munkafolyamatok létrehozása, beosztása és futtatása a csúszó ablakos triggerrel](../connectors/connectors-native-sliding-window.md).
 
 <a name="schedule-actions"></a>
 
