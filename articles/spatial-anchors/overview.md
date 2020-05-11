@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 5ebd29b5fb6fdedcdfbc434209b350512c4cd5dc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 361a75c2e5951dc540830efd6be057753402daf1
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77657307"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83006108"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Az Azure térbeli horgonyok áttekintése
 
@@ -26,7 +26,7 @@ Ezeket a pontos érdeklődési pontokat térbeli Horgonyoknak nevezzük.
 
 Néhány példa a térbeli horgonyok által engedélyezett használati esetekre:
 
-- [Többfelhasználós élmény](tutorials/tutorial-share-anchors-across-devices.md). A térbeli horgonyok megkönnyítik a felhasználók számára, hogy részt vegyenek a többfelhasználós vegyes valóság alkalmazásokban. A két személy például elindíthatja a Mixed Reality Chess játékot úgy, hogy egy virtuális sakk-táblát helyez el egy táblán. Ezt követően az eszközük a táblázatban látható módon megtekinthető és használható a virtuális sakk-táblával együtt.
+- [Többfelhasználós élmény](tutorials/tutorial-share-anchors-across-devices.md). Az Azure térbeli horgonyok megkönnyítik a felhasználók számára, hogy részt vegyenek a többfelhasználós vegyes valóság alkalmazásokban. A két személy például elindíthatja a Mixed Reality Chess játékot úgy, hogy egy virtuális sakk-táblát helyez el egy táblán. Ezt követően az eszközük a táblázatban látható módon megtekinthető és használható a virtuális sakk-táblával együtt.
 
 - [Módszer – keresés](concepts/anchor-relationships-way-finding.md). A fejlesztők összekapcsolhatják a térbeli horgonyokat, és egymás között kapcsolatokat hoznak létre. Előfordulhat például, hogy egy alkalmazás olyan élményt tartalmaz, amely két vagy több olyan hasznos ponttal rendelkezik, amelyekkel a felhasználónak működnie kell a feladat elvégzéséhez. Ezek a pontok a kapcsolódó módon hozhatók létre. Később, amikor a felhasználó elvégezte a többlépéses feladatot, az alkalmazás kérheti az aktuális közelében lévő horgonyokat, hogy a feladat következő lépése felé irányítsa a felhasználót.
 
@@ -36,7 +36,7 @@ Az Azure Spatial Anchors egy felügyelt szolgáltatásból és a támogatott esz
 
 ## <a name="next-steps"></a>További lépések
 
-Hozza létre első alkalmazását térbeli Horgonyokkal.
+Hozza létre első alkalmazását az Azure térbeli Horgonyokkal.
 
 > [!div class="nextstepaction"]
 > [Unity (HoloLens)](quickstarts/get-started-unity-hololens.md)

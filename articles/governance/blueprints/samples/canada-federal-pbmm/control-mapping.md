@@ -1,14 +1,14 @@
 ---
 title: Kanadai szövetségi PBMM terv minta vezérlők
 description: A kanadai szövetségi PBMM tervrajzi mintáinak leképezése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 09/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 943ca6849f9a55ce45b609a06cfcbb9b96b691c2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8fc5b2f369dbe174fb4d5ea8160d592e9aaef3af
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74545252"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005720"
 ---
 # <a name="control-mapping-of-the-canada-federal-pbmm-blueprint-sample"></a>A Kanada szövetségi PBMM tervezetének vezérlési mintája
 
@@ -57,8 +57,8 @@ Csak egy Azure-előfizetéshez tartozó tulajdonos nem engedélyez felügyeleti 
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
 - Az előfizetéshez egynél több tulajdonos rendelhető hozzá
-- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
-- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
+- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
+- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
 - Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
 - Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
 
@@ -68,8 +68,8 @@ Az Azure [szerepköralapú hozzáférés-vezérlést](../../../../role-based-acc
 
 - Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni
 - Az előfizetéshez egynél több tulajdonos rendelhető hozzá
-- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
-- Windows rendszerű virtuális gépek naplózása, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
+- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
+- A Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
 - Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport a megadott tagok bármelyikét tartalmazza
 - Követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyekben a rendszergazdák csoport nem tartalmazza az összes megadott tagot.
 
@@ -85,7 +85,7 @@ A Azure SQL Database speciális adatbiztonságának adatfelderítési és besoro
 
 Ez a terv segít a távelérés figyelésében és vezérlésében azáltal, hogy [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével figyeli, hogy a Azure app Service alkalmazás távoli hibakeresése ki van-e kapcsolva. A terv emellett olyan szabályzat-definíciókat is hozzárendel, amelyek a jelszavak nélküli fiókok távoli kapcsolatait engedélyező linuxos virtuális gépeket naplózzák. Emellett a terv egy Azure Policy-definíciót rendel hozzá, amely segítséget nyújt a Storage-fiókok korlátozás nélküli elérésének figyelésében. Ezen mutatók monitorozásával biztosítható, hogy a távelérési módszerek megfeleljenek a biztonsági szabályzatnak.
 
-- \[Előzetes\]verzió: jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
+- \[Előzetes\]verzió: a Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
 - \[Előzetes\]verzió: követelmények központi telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
@@ -107,7 +107,7 @@ A Azure Monitor által gyűjtött adatok naplózása egy Log Analytics munkater�
 Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat rendeli hozzá, amelyek figyelik a naplózási és eseménynaplózási konfigurációkat. Ezeknek a konfigurációknak a figyelése a rendszerhiba vagy a helytelen konfiguráció jelzését, valamint a javítási műveletek elvégzését is lehetővé teszi.
 
 - Diagnosztikai beállítás naplózása
-- Az SQL Server szintű naplózási beállítások naplózása
+- Az SQL Server naplózását engedélyezni kell
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 
@@ -131,7 +131,7 @@ Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erő
 - \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[Előzetes\]verzió: log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken
 - Diagnosztikai beállítás naplózása
-- Az SQL Server szintű naplózási beállítások naplózása
+- Az SQL Server naplózását engedélyezni kell
 - A speciális adatbiztonságot engedélyezni kell a felügyelt példányokon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Speciális adatbiztonság üzembe helyezése SQL-kiszolgálókon
@@ -167,8 +167,8 @@ Ez a terv segít a privilegizált hozzáférés korlátozásában és szabályoz
 
 Ez a terv azokat a [Azure Policy](../../../policy/overview.md) definíciókat rendeli hozzá, amelyek a Linux rendszerű virtuális gépeket a jelszavak nélküli fiókok távoli kapcsolatainak engedélyezésére és/vagy helytelen engedélyekkel rendelkeznek a passwd fájlban. Ez a terv a Windows rendszerű virtuális gépekhez tartozó jelszó-titkosítási típus konfigurációját naplózó szabályzat-definíciókat is hozzárendeli. Ezen mutatók monitorozásával biztosíthatja, hogy a rendszerhitelesítő megfeleljenek a szervezete azonosítási és hitelesítési házirendjének.
 
-- \[Előzetes\]verzió: olyan linuxos virtuális gépek naplózása, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
-- \[Előzetes\]verzió: jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózása
+- \[Előzetes\]verzió: olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
+- \[Előzetes\]verzió: olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
 - \[Előzetes\]verzió: követelmények telepítése olyan linuxos virtuális gépek naplózására, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
 - \[Előzetes\]verzió: követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
 
@@ -176,11 +176,11 @@ Ez a terv azokat a [Azure Policy](../../../policy/overview.md) definíciókat re
 
 Ez a terv segítséget nyújt az erős jelszavak betartatásához olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem igénylő Windows rendszerű virtuális gépeket naplózzák. A virtuális gépeknek a jelszó erőssége megsértésével kapcsolatos ismerete segít megtenni a szükséges javítási műveleteket, hogy az összes virtuálisgép-felhasználói fiók jelszava megfeleljen a szervezete jelszavas házirendjének.
 
-- \[Előzetes\]verzió: az előző 24 jelszó újbóli használatát lehetővé tevő Windows rendszerű virtuális gépek naplózása
-- \[Előzetes\]verzió: a maximális jelszóval nem rendelkező Windows rendszerű virtuális gépek naplózása 70 nap
-- \[Előzetes\]verzió: olyan Windows rendszerű virtuális gépek naplózása, amelyek nem rendelkeznek minimális jelszóval (1 nap)
-- \[Előzetes\]verzió: engedélyezve van a jelszó-bonyolultsági beállítással nem rendelkező Windows rendszerű virtuális gépek naplózása
-- \[Előzetes\]verzió: a jelszó minimális hosszát 14 karakternél nem korlátozó Windows-alapú virtuális gépek naplózása
+- \[Előzetes\]verzió: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
+- \[Előzetes\]verzió: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek maximális jelszóval (70 nap)
+- \[Előzetes\]verzió: olyan Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek legalább 1 napos jelszóval
+- \[Előzetes\]verzió: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyeken nincs engedélyezve a jelszó bonyolultsága beállítás
+- \[Előzetes\]verzió: a Windows rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem korlátozzák a jelszó minimális hosszát 14 karakternél
 - \[Előzetes\]verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózására, amelyek lehetővé teszik az előző 24 jelszó újbóli használatát
 - \[Előzetes\]verzió: követelmények központi telepítése Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek maximális jelszóval (70 nap)
 - \[Előzetes\]verzió: követelmények telepítése a Windows rendszerű virtuális gépek naplózásához, amelyek nem rendelkeznek legalább 1 napos jelszóval
@@ -217,10 +217,9 @@ Az Azure Distributed szolgáltatásmegtagadás (DDoS) standard csomagja további
 Ez a terv segít a Rendszerhatár kezelésében és szabályozásában azáltal, hogy hozzárendel egy [Azure Policy](../../../policy/overview.md) definíciót, amely figyeli a hálózati biztonsági csoportra vonatkozó ajánlásokat a Azure Security Centerban. Azure Security Center elemzi az internetre irányuló virtuális gépek forgalmi mintáit, és hálózati biztonsági csoportokra vonatkozó ajánlásokat biztosít a potenciális támadási felület csökkentése érdekében.
 Emellett a terv a nem védett végpontokat, alkalmazásokat és tárolási fiókokat figyelő szabályzat-definíciókat is hozzárendeli. A tűzfal által nem védett végpontok és alkalmazások, valamint a korlátlan hozzáféréssel rendelkező Storage-fiókok nem kívánt hozzáférést biztosíthatnak az információs rendszeren belül található információkhoz.
 
-- Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani
+- Az adaptív hálózatokra vonatkozó kötési javaslatokat az internetre irányuló virtuális gépeken kell alkalmazni
 - Korlátozni kell az internet felé irányuló végponton keresztüli hozzáférést
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
-- A IaaS lévő webalkalmazások NSG-szabályait meg kell erősíteni
 
 ## <a name="sc-7-3-boundary-protection--access-points"></a>SC-7 (3) határ védelme | Hozzáférési pontok
 
@@ -239,7 +238,7 @@ Az igény szerinti (JIT) virtuálisgép-hozzáférés lezárja az Azure-beli vir
 Ez a terv segít a továbbított adatok bizalmas és integritásának védelmében [Azure Policy](../../../policy/overview.md) definíciók kiosztásával, amelyek segítségével figyelheti a kommunikációs protokollok által megvalósított titkosítási mechanizmusokat. A kommunikáció megfelelő titkosítása segíthet a szervezet követelményeinek teljesítésében, illetve az információk jogosulatlan közzétételtől és módosítástól való védelmében.
 
 - Az API-alkalmazás csak HTTPS protokollon keresztül érhető el
-- A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózása
+- A nem biztonságos kommunikációs protokollokat használó Windows-webkiszolgálók naplózási eredményeinek megjelenítése
 - Követelmények telepítése a biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához
 - függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el
 - Csak a Redis Cache biztonságos kapcsolatai legyenek engedélyezve

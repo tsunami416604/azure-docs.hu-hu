@@ -1,14 +1,14 @@
 ---
 title: Egyesült Királyság hivatalos & Egyesült Királysági NHS-tervezetének mintája
 description: Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 12/04/2019
+ms.date: 05/08/2020
 ms.topic: sample
-ms.openlocfilehash: 5bef590013a9ef06b791e58dc6c82e74dffe1a17
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 88f9606df5c3dcbca6ade05be918e3500a6ba64c
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74851366"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005612"
 ---
 # <a name="control-mapping-of-the-uk-official-and-uk-nhs-blueprint-samples"></a>Az Egyesült Királyság hivatalos és az Egyesült Királysági NHS-tervezetek mintáinak szabályozása
 
@@ -27,9 +27,6 @@ A terv segítségével biztosítható, hogy az Azure-szolgáltatásokkal való a
 - Engedélyezni kell a tárfiókokba történő biztonságos átvitelt
 - A nem biztonságos kommunikációs protokollokat használó Windows-webkiszolgálók naplózási eredményeinek megjelenítése
 - A biztonságos kommunikációs protokollokat nem használó Windows-webkiszolgálók naplózásához szükséges előfeltételek központi telepítése
-- A legújabb TLS-verziót kell használni az API-alkalmazásban
-- A legújabb TLS-verziót kell használni a webalkalmazásban
-- A legújabb TLS-verziót kell használni a függvényalkalmazás
 
 ## <a name="23-data-at-rest-protection"></a>2,3 inaktív adatok védelme
 
@@ -129,8 +126,8 @@ A terv az Azure-erőforrásokhoz való hozzáférés szabályozását is lehető
 
 - \[Előzetes\]verzió: követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
 - \[Előzetes\]verzió: követelmények központi telepítése a jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózásához
-- \[Előzetes\]verzió: jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózása
-- \[Előzetes\]verzió: jelszavak nélküli fiókok távoli kapcsolatait engedélyező Linux rendszerű virtuális gépek naplózása
+- \[Előzetes\]verzió: olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyekhez jelszó nélküli fiók tartozik
+- \[Előzetes\]verzió: a Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek lehetővé teszik a távoli kapcsolatokat a jelszavak nélküli fiókoktól
 - A Storage-fiókokat át kell telepíteni az új Azure Resource Manager erőforrásokra
 - A virtuális gépeket át kell telepíteni az új Azure Resource Manager erőforrásokra
 - Felügyelt lemezeket nem használó virtuális gépek naplózása
@@ -141,12 +138,10 @@ Ha több mint 25 házirendet használ a megfelelő biztonságos felhasználói f
 
 - Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
-- A IaaS lévő webalkalmazások NSG-szabályait meg kell erősíteni
 - Korlátozni kell az internet felé irányuló végponton keresztüli hozzáférést
-- Az internetre irányuló virtuális gépek hálózati biztonsági csoportjának szabályait meg kell szigorítani
+- Az adaptív hálózatokra vonatkozó kötési javaslatokat az internetre irányuló virtuális gépeken kell alkalmazni
 - Az Endpoint Protection-megoldást a virtuálisgép-méretezési csoportokra kell telepíteni
 - Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken
-- Nem korlátozott hálózati hozzáférés naplózása a Storage-fiókokhoz
 - A távoli hibakeresést ki kell kapcsolni függvényalkalmazás
 - A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz
 - A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz
@@ -179,13 +174,13 @@ Ez a terv Azure Policy-definíciókat is hozzárendeli a naplózási fiókokhoz,
 
 Ez a terv egy Azure Policy-definíciót is hozzárendel, amely a Linux rendszerű virtuális gép jelszavas engedélyeinek naplózására vonatkozó engedélyeket naplózza, ha helytelenül vannak beállítva. Ez a kialakítás lehetővé teszi a korrekciós műveletek elvégzését, hogy a hitelesítő adatok ne legyenek biztonságban.
 
-- \[Előzetes\]verzió: a Linux rendszerű virtuális gép/etc/passwd engedélyeinek naplózása 0644 értékre van állítva
+- \[Előzetes\]verzió: olyan Linux rendszerű virtuális gépek naplózási eredményeinek megjelenítése, amelyek nem rendelkeznek a passwd fájl engedélyeivel 0644 értékre állítva
 
 ## <a name="13-audit-information-for-users"></a>13 naplózási információ a felhasználók számára
 
 Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével. A hozzárendelt szabályzat azt is naplózza, hogy a virtuális gépek nem küldenek naplókat egy adott log Analytics-munkaterületre.
 
-- A naplózást engedélyezni kell a speciális adatbiztonsági beállításokon SQL Server
+- A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 - Diagnosztikai beállítás naplózása
 - \[Előzetes\]verzió: log Analytics-ügynök üzembe helyezése Linux rendszerű virtuális gépeken
 - \[Előzetes\]verzió: log Analytics ügynök üzembe helyezése Windows rendszerű virtuális gépeken

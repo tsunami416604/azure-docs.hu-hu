@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 241efab246dc903981da570a4191f93cc744bca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 627dfee81cb10e4e442b3cefb10d786d87d5c81d
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726444"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83005876"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>A kulcsok, titkos kódok és tanúsítványok ismertetése
 
@@ -46,7 +46,7 @@ Tekintse meg a következő témakört: a kulcsok, a titkosítás és az aláír�
 
 A Key Vaultban tárolt objektumok verziószámozást kapnak, amikor egy objektum új példánya jön létre. Minden verzióhoz egyedi azonosító és URL-cím tartozik. Egy objektum első létrehozásakor a rendszer egyedi verzióazonosító-azonosítót kap, és az objektum aktuális verziójaként van megjelölve. Egy új példány ugyanazzal az objektummal való létrehozása lehetővé teszi az új objektum egyedi verziószámát, ami azt eredményezi, hogy az aktuális verzió lesz.  
 
-A Key Vaultban lévő objektumok az aktuális azonosítóval vagy egy Version-specifikus azonosítóval kezelhetők. Például, ha egy kulcs a névvel `MasterKey`van megadva, az aktuális azonosítóval rendelkező műveletek végrehajtásával a rendszer a legújabb elérhető verziót használja. A verzió-specifikus azonosítóval végzett műveletek végrehajtása azt eredményezi, hogy a rendszer az objektum adott verzióját használja.  
+A Key Vaultban lévő objektumok a specifing egy verziójának vagy az objektum aktuális verziójában lévő műveletek verziójának kihagyásával kezelhetők. Például, ha egy kulcs a névvel `MasterKey`van megadva, és specifing nélkül végez műveleteket, a rendszer a legújabb elérhető verziót használja. A verzió-specifikus azonosítóval végzett műveletek végrehajtása azt eredményezi, hogy a rendszer az objektum adott verzióját használja.  
 
 Az objektumok egyedileg azonosíthatók a Key Vaulton belül egy URL-cím használatával. A rendszeren nincs két objektum ugyanazzal az URL-címmel, a földrajzi helytől függetlenül. Az objektum teljes URL-címét objektumazonosítónak nevezzük. Az URL-cím egy előtagból áll, amely a Key Vault, az Objektumtípus, a felhasználó által megadott objektumnév és az objektum verziószámát azonosítja. Az Objektumnév megkülönbözteti a kis-és nagybetűket, és nem változtathatók meg. Az objektum verziószámát nem tartalmazó azonosítókat alapazonosítóknak nevezzük.  
 
@@ -62,7 +62,7 @@ Az elemek magyarázata:
 |-|-|  
 |`keyvault-name`|A Microsoft Azure Key Vault szolgáltatásban található kulcstartó neve.<br /><br /> A felhasználók a Key Vault neveket választják, és globálisan egyediek.<br /><br /> Key Vault neve csak 0-9, a-z, A-Z és-. karakterláncot tartalmazó 3-24 karakterből állhat.|  
 |`object-type`|Az objektum típusa, "kulcsok", "titkok" vagy "tanúsítványok".|  
-|`object-name`|`object-name` Az a felhasználó által megadott név, és egyedinek kell lennie egy Key Vaulton belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, amely csak 0-9, a-z, A-Z és-.|  
+|`object-name`|`object-name` Az a felhasználó által megadott név, és egyedinek kell lennie egy Key Vaulton belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, betűvel kell kezdődnie, és csak 0-9, a-z, A-Z és-.|  
 |`object-version`|Az `object-version` egy rendszer által generált, 32 karakterből álló karakterlánc-azonosító, amely egy objektum egyedi verziójának kezelésére szolgál.|  
 
 ## <a name="next-steps"></a>További lépések

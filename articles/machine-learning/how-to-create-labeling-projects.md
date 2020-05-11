@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6c553580bc3f2c9cb1aac321bea3c86b04b2ba56
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231220"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007551"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Adatcímkéző projekt létrehozása és címkék exportálása 
 
@@ -138,8 +138,6 @@ A határoló mezőkhöz a következő fontos kérdések tartoznak:
 
 A **ml által támogatott címkézési** oldal lehetővé teszi az automatikus gépi tanulási modellek aktiválását a címkézési feladat felgyorsításához. A címkézési projekt elején a rendszer véletlenszerű sorrendben rendezi a képeket a lehetséges torzulások csökkentése érdekében. A betanított modellben azonban megjelennek az adatkészletben található összes torzítás is. Ha például a lemezképek 80%-a egyetlen osztályból áll, akkor a modell betanításához használt adatmennyiség körülbelül 80%-a az adott osztály lesz. Ez a képzés nem tartalmazza az aktív tanulást.
 
-Ez a funkció képbesoroláshoz (többosztályos vagy többcímkés) feladatokhoz érhető el.  
-
 Válassza a *ml támogatott címkézés engedélyezése* lehetőséget, és adjon meg egy GPU-t a támogatott címkézés engedélyezéséhez, amely két fázisból áll:
 * Fürtözés
 * Előcímkézés
@@ -150,13 +148,15 @@ Mivel a végső címkék továbbra is a Labeler származó adatokra támaszkodna
 
 ### <a name="clustering"></a>Fürtözés
 
-Bizonyos számú címke elküldése után a Machine learning-modell elkezdi csoportosítani a hasonló képeket.  Ezeket a hasonló képeket a jelölők ugyanazon a képernyőn jelennek meg a manuális címkézés felgyorsításához. A fürtözés különösen akkor hasznos, ha a Labeler 4, 6 vagy 9 rendszerképből álló rácsot tekint meg. 
+Bizonyos számú címke elküldése után a lemezkép besorolására szolgáló gépi tanulási modell elkezdi a hasonló rendszerképek csoportosítását.  Ezeket a hasonló képeket a jelölők ugyanazon a képernyőn jelennek meg a manuális címkézés felgyorsításához. A fürtözés különösen akkor hasznos, ha a Labeler 4, 6 vagy 9 rendszerképből álló rácsot tekint meg. 
 
 Miután a gépi tanulási modellt betanítják a manuálisan címkézett adataira, a modell az utolsó teljesen csatlakoztatott rétegre lesz csonkítva. A címke nélküli képeket a rendszer átadja a csonkolt modellnek egy, a "beágyazás" vagy "featurization" néven ismert folyamaton. Ez beágyazza az egyes képeket egy, a modell rétegében definiált, nagy dimenziós területre. A rendszer a terület legközelebbi szomszédaival rendelkező képeket használja a fürtözési feladatokhoz. 
 
+A fürtözési fázis nem jelenik meg az objektumok észlelési modelljeinél.
+
 ### <a name="prelabeling"></a>Előcímkézés
 
-További képfeliratok elküldése után a rendszer egy besorolási modellt használ a képcímkék előrejelzéséhez.  A Labeler mostantól olyan lapokat lát, amelyek az egyes képeken már szerepelnek előre jelzett címkéket.  A feladat ezután áttekinti ezeket a címkéket, és kijavította a helytelenül címkézett képeket az oldal elküldése előtt.  
+A megfelelő képfeliratok elküldése után a rendszer egy besorolási modellt használ a képcímkék előrejelzéséhez. Vagy egy objektum-észlelési modellt használ a határolókeretok előrejelzésére. A Labeler mostantól olyan lapokat lát, amelyek az egyes képeken már szerepelnek előre jelzett címkéket. Az objektumok észleléséhez az előre jelzett mezők is megjelennek. A feladat az, hogy áttekintse ezeket az előrejelzéseket, és javítsa ki a helytelenül címkézett képeket az oldal elküldése előtt.  
 
 Miután a gépi tanulási modellt betanítják a manuálisan címkézett adatokra, a modell kiértékelése manuálisan címkézett képekből történik, hogy meghatározza a pontosságot a különböző megbízhatósági küszöbértékeken. Ez a kiértékelési folyamat egy olyan megbízhatósági küszöbérték meghatározására szolgál, amely felett a modell elég pontos ahhoz, hogy megjelenjenek az előzetes feliratok. Ezt követően a modell kiértékelése a címke nélküli adatértékekkel történik. Az előcímkézéshez használt, a küszöbértéknél jobban megjelenő képek.
 

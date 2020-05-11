@@ -7,12 +7,12 @@ ms.author: laobri
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 2c21a8770209871be4d871a08e6355e4ca7ed169
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1a928726665a743cb874a2f8a51ee63fcf64d9ad
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82204321"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007524"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben
 
@@ -65,11 +65,13 @@ Miután elküldte a címkéket az adatokhoz, az Azure frissíti a lapot egy új 
 
 ### <a name="assisted-machine-learning"></a>Támogatott gépi tanulás 
 
-A gépi tanulási algoritmusok egy többosztályos vagy több címkés besorolási feladat során indíthatók. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
+Előfordulhat, hogy a gépi tanulási algoritmusok aktiválva vannak. Ha ezek az algoritmusok engedélyezve vannak a projektben, a következők jelenhetnek meg:
 
 * Néhány kép megjelölése után előfordulhat, hogy a képernyő tetején a projekt neve mellett **fürtözött feladatok** láthatók.  Ez azt jelenti, hogy a képek csoportosítva vannak, hogy hasonló képeket nyújtsanak ugyanazon a lapon.  Ha igen, váltson át a több Képnézet egyikére, hogy kihasználhassa a csoportosítást.  
 
 * Egy későbbi időpontban a projekt neve mellett előre **címkézett feladatokat** láthat.  A képek ezután egy gépi tanulási besorolási modellből származó javasolt címkével jelennek meg. A Machine learning modellnek nincs 100%-os pontossága. Habár csak olyan rendszerképeket használunk, amelyek esetében a modell magabiztos, előfordulhat, hogy ezek a képek még mindig helytelenül vannak megjelölve.  Ha ezeket a címkéket látja, javítsa ki a helytelen címkéket az oldal elküldése előtt.  
+
+* Az objektum-észlelési modellek esetében előfordulhat, hogy a határolókeret és a címkék már jelen vannak.  A lap elküldése előtt javítsa ki a megfelelőt.
 
 Különösen a címkézési projekt korai szakaszában a gépi tanulási modell csak akkor lehet elég pontos, ha a képek kis részhalmazát szeretné előre megjelölni. Miután megcímkézte a lemezképeket, a címkézési projekt visszatér a manuális címkézéshez, hogy további adatokat gyűjtsön a következő kör betanításához. Az idő múlásával a modell nagyobb biztonságban lesz a képek nagyobb hányadával kapcsolatban, így a projekt későbbi feladataihoz is hozzájárul.
 

@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 563e2da8eba228636b05db2112739fdead4a4aa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
+ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76844887"
+ms.lasthandoff: 05/10/2020
+ms.locfileid: "83004469"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Az Azure térbeli Horgonyokkal kapcsolatos gyakori kérdések
 
@@ -49,6 +49,10 @@ További információ: [Azure térbeli horgonyok – áttekintés](overview.md).
 
 **A:** A horgonyok az Azure-fiókkal vannak elkülönítve. Csak azok az alkalmazások férhetnek hozzá a fiókhoz, amelyekhez hozzáférést biztosít a fiókjához.
 
+**K: hogyan tárolja az Azure térbeli szolgáltatás az adattárolást?**
+
+**A:** A Microsoft által felügyelt adattitkosítási kulccsal titkosított minden adattároló.
+
 **K: milyen információkat továbbítanak és tárolnak egy adott környezetről az Azure térbeli horgonyok használatakor? Továbbítják és tárolják a környezet képeit?**
 
 **A**: a horgonyok létrehozásakor vagy keresésekor a környezet képeit egy származtatott formátumba dolgozzák fel az eszközön. A származtatott formátumot a szolgáltatás továbbítja és tárolja.
@@ -59,7 +63,6 @@ Az Azure térbeli horgonyok megfelelnek az [Azure szolgáltatási szerződés fe
 
 ![Egy környezet és annak származtatott ritka pontja](./media/sparse-point-cloud.png)
 , az*1. ábra: egy környezet és a hozzá tartozó ritka pont felhő*
-
 
 **K: van lehetőség arra, hogy diagnosztikai adatokat küldjön a Microsoftnak?**
 
