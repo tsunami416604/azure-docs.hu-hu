@@ -5,19 +5,20 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/25/2019
-ms.openlocfilehash: 5502df1cd119c0f63c65945d73431a17282ebc0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/09/2019
+ms.openlocfilehash: 5d31c829487400f8eb239c0b837e53eecafeb900
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670256"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201108"
 ---
 # <a name="app-expression-in-azure-monitor-query"></a>alkalmazás () kifejezés Azure Monitor lekérdezésben
 
 A `app` kifejezés egy Azure monitor lekérdezésben van használatban, amely egy adott Application Insights alkalmazásból kér le egy adott erőforráscsoport, egy másik erőforráscsoport vagy egy másik előfizetés adatait. Ez hasznos lehet az alkalmazásadatok Azure Monitor naplózási lekérdezésbe való felvételéhez, valamint az adatlekérdezés több alkalmazás között egy Application Insights lekérdezésben.
 
-
+> [!IMPORTANT]
+> Ha [munkaterületen alapuló Application Insights erőforrást](../app/create-workspace-resource.md) használ, a rendszer nem használja az app () kifejezést, mert a rendszer egy log Analytics munkaterületen tárolja a naplóbeli adatkészletet. A log () kifejezés használatával olyan lekérdezést írhat, amely több munkaterületen is tartalmaz alkalmazást. Ugyanazon a munkaterületen több alkalmazás esetében nincs szükség több munkaterület-lekérdezésre.
 
 ## <a name="syntax"></a>Szintaxis
 

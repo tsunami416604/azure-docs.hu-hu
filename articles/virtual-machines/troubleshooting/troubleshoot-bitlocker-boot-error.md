@@ -12,12 +12,13 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/23/2019
 ms.author: genli
-ms.openlocfilehash: 80fd91106530c0150a85d508b24041b2263da925
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 67a3ba99e29582c5681d69cd0c6db377a258020a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250009"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201346"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
 
@@ -107,7 +108,7 @@ Ha ez a módszer nem oldja meg a problémát, kövesse az alábbi lépéseket a 
 
     Most, hogy már rendelkezik a meghajtóhoz tartozó BEK-fájl nevével, létre kell hoznia a titkos fájl nevét. BEK-fájl a meghajtó zárolásának feloldásához.
 
-6.  Töltse le a BEK-fájlt a helyreállítási lemezre. A következő minta menti a BEK-fájlt a C:\BEK mappába. Győződjön meg arról, `C:\BEK\` hogy az elérési út létezik a parancsfájlok futtatása előtt.
+6.  Töltse le a BEK-fájlt a helyreállítási lemezre. A következő minta menti a BEK-fájlt a C:\BEK mappába. Győződjön meg arról, hogy az `C:\BEK\` elérési út létezik a parancsfájlok futtatása előtt.
 
     ```powershell
     $vault = "myKeyVault"
@@ -273,13 +274,13 @@ A kulcs titkosítási kulcsainak forgatókönyvéhez kövesse az alábbi lépés
 
 **Hiba: nem sikerült betölteni a fájlt vagy a szerelvényt**
 
-Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytelenek. Ha az az modul csak az aktuális felhasználóhoz van telepítve, akkor a ADAL szerelvények a következő helyen `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>`találhatók:.
+Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytelenek. Ha az az modul csak az aktuális felhasználóhoz van telepítve, akkor a ADAL szerelvények a következő helyen találhatók: `C:\Users\<username>\Documents\WindowsPowerShell\Modules\Az.Accounts\<version>` .
 
-A megfelelő elérési utat `Az.Accounts` a mappa keresésével is megkeresheti.
+`Az.Accounts`A megfelelő elérési utat a mappa keresésével is megkeresheti.
 
 **Hiba: a Get-AzKeyVaultSecret vagy a Get-AzKeyVaultSecret nem ismerhető fel a parancsmag neveként**
 
-Ha a régi AZ PowerShell-modult használja, a `Get-AzureKeyVaultSecret` és `Get-AzureKeyVaultSecret`a két parancsot kell módosítania.
+Ha a régi AZ PowerShell-modult használja, a és a két parancsot kell módosítania `Get-AzureKeyVaultSecret` `Get-AzureKeyVaultSecret` .
 
 **Paraméterek mintái**
 

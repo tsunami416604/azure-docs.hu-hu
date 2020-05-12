@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: 2c8cc4c01b172cd11c13558cd195673d21499b41
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983907"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115149"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
 Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
@@ -77,6 +77,6 @@ Fizessen elő a [labor Services frissítéseire](https://azure.microsoft.com/upd
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 
 - Tegye fel kérdéseit a GYIK végén. 
-- Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Azure Lab Services – stack overflow fórumban](https://stackoverflow.com/questions/tagged/azure-lab-services). 
+- Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Azure Lab Services – technikai közösségi fórum](https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices). 
 - A szolgáltatási kérelmek esetében küldje el a kéréseit és ötleteit [Azure Lab Services – felhasználói hang](https://feedback.azure.com/forums/320373-lab-services?category_id=352774).
 

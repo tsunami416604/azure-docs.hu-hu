@@ -2,17 +2,19 @@
 title: Azure spot virtuális gépeket használó méretezési csoport létrehozása
 description: Megtudhatja, hogyan hozhat létre helyszíni virtuális gépeket használó Azure virtuálisgép-méretezési csoportokat a költségek megtakarítása érdekében.
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.topic: article
-ms.date: 03/25/2020
 ms.author: cynthn
-ms.openlocfilehash: a7bd22032a554c83a2ea2323ffdb3ae52dfe4faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: spot
+ms.date: 03/25/2020
+ms.reviewer: jagaveer
+ms.custom: jagaveer
+ms.openlocfilehash: 59de7a8decef807b548ff4b85f06fc1115ce110b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545934"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125043"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot virtuális gépek virtuálisgép-méretezési csoportokhoz 
 
@@ -26,7 +28,7 @@ A rendelkezésre álló kapacitás mennyisége a mérettől, a régiótól, a na
 A helyszíni példányok díjszabása a régió és az SKU alapján változó. További információ: a [Linux](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) és a [Windows](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/windows/)díjszabása. 
 
 
-A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. Az érték `0.98765`például a maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1`, a példány árát a rendszer nem fogja kizárni. A példány díja a helyszíni aktuális díj, vagy egy standard példány díjszabása, amely soha nem kevesebb, ha rendelkezésre áll kapacitás és kvóta.
+A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. Az érték például a `0.98765` maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1` , a példány árát a rendszer nem fogja kizárni. A példány díja a helyszíni aktuális díj, vagy egy standard példány díjszabása, amely soha nem kevesebb, ha rendelkezésre áll kapacitás és kvóta.
 
 ## <a name="eviction-policy"></a>Kizárási szabályzat
 
@@ -49,12 +51,12 @@ A helyszíni virtuális gépek méretezési csoportokon történő üzembe helye
 
 ## <a name="portal"></a>Portál
 
-A helyszíni virtuális gépeket használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-portal.md)részletezett eljárással. Méretezési csoport telepítésekor beállíthatja, hogy a direktszín jelzőt és a kizárási házirendet: hozzon létre egy méretezési készletet a helyszíni virtuális gépekkel. ![](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
+A helyszíni virtuális gépeket használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-portal.md)részletezett eljárással. Méretezési csoport telepítésekor beállíthatja, hogy a direktszín jelzőt és a kizárási házirendet: ![ hozzon létre egy méretezési készletet a helyszíni virtuális gépekkel.](media/virtual-machine-scale-sets-use-spot/vmss-spot-portal-max-price.png)
 
 
 ## <a name="azure-cli"></a>Azure CLI
 
-A helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-cli.md)részletezett eljárással. Csak adja hozzá a "--priority spot"-t `--max-price`, és adja hozzá a következőt:. Ebben a példában a (z `-1` ) `--max-price` rendszert használjuk, így a példány árát nem lehet kizárni.
+A helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-cli.md)részletezett eljárással. Csak adja hozzá a "--priority spot"-t, és adja hozzá a következőt: `--max-price` . Ebben a példában `-1` a (z) `--max-price` rendszert használjuk, így a példány árát nem lehet kizárni.
 
 ```azurecli
 az vmss create \
@@ -71,7 +73,7 @@ az vmss create \
 ## <a name="powershell"></a>PowerShell
 
 A helyszíni virtuális gépekkel rendelkező méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-powershell.md)részletezett eljárással.
-Csak adja hozzá a "-priority spot" lehetőséget, `-max-price` és adjon meg egy-t a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
+Csak adja hozzá a "-priority spot" lehetőséget, és adjon meg egy- `-max-price` t a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig).
 
 ```powershell
 $vmssConfig = New-AzVmssConfig `
@@ -87,7 +89,7 @@ $vmssConfig = New-AzVmssConfig `
 
 A helyszíni virtuális gépeket használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépéseket ismertető cikkben leírtakkal. 
 
-A helyszíni sablonok üzembe helyezéséhez használja`"apiVersion": "2019-03-01"` a vagy a újabb verziót. Adja hozzá `priority`a `evictionPolicy` és `billingProfile` a tulajdonságokat a `"virtualMachineProfile":` sablon szakaszához: 
+A helyszíni sablonok üzembe helyezéséhez használja a `"apiVersion": "2019-03-01"` vagy a újabb verziót. Adja hozzá `priority` a `evictionPolicy` és a tulajdonságokat a `billingProfile` `"virtualMachineProfile":` sablon szakaszához: 
 
 ```json
                 "priority": "Spot",
@@ -97,7 +99,7 @@ A helyszíni sablonok üzembe helyezéséhez használja`"apiVersion": "2019-03-0
                 }
 ```
 
-Ha törölni szeretné a példányt a kizárása után, módosítsa a `evictionPolicy` paramétert a `Delete`következőre:.
+Ha törölni szeretné a példányt a kizárása után, módosítsa a paramétert a következőre: `evictionPolicy` `Delete` .
 
 ## <a name="faq"></a>GYIK
 
@@ -126,9 +128,9 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a `evictionP
 **A:** Nem, a `Spot` jelző beállítása csak a létrehozási időszakban támogatott.
 
 
-**K:** Ha alacsony prioritású `low` méretezési csoportokhoz használok, érdemes inkább a használatot használni `Spot` ?
+**K:** Ha `low` alacsony prioritású méretezési csoportokhoz használok, érdemes inkább a használatot használni `Spot` ?
 
-**A:** Egyelőre mind a `low` , `Spot` mind a működni fog, de a használatára `Spot`való áttérést kell kezdenie.
+**A:** Egyelőre mind a, mind a `low` `Spot` működni fog, de a használatára való áttérést kell kezdenie `Spot` .
 
 
 **K:** Létrehozhatok a normál virtuális gépekkel és a helyszíni virtuális gépekkel is rendelkező méretezési csoportokat?
@@ -164,7 +166,7 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a `evictionP
 
 **K:** Hol tehetek közzé kérdéseket?
 
-**A:** A kérdését a `azure-spot` következő címen teheti közzé és címkézheti: [Q&a](https://docs.microsoft.com/answers/topics/azure-spot.html). 
+**A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
 ## <a name="next-steps"></a>További lépések
 

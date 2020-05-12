@@ -1,19 +1,20 @@
 ---
 title: Meglévő virtuális hálózat referenciája egy Azure Scale set-sablonban
 description: Megtudhatja, hogyan adhat hozzá virtuális hálózatot egy meglévő Azure virtuálisgép-méretezési csoport sablonhoz
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: networking
 ms.date: 04/26/2019
-ms.author: mimckitt
-ms.openlocfilehash: 83328a31dad8009c28e146c81b24d6d9244f88a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fab6e6742fa43e1e38ee661b67896ae4aa11b3ed
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273664"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124822"
 ---
 # <a name="add-reference-to-an-existing-virtual-network-in-an-azure-scale-set-template"></a>Hivatkozás hozzáadása egy meglévő virtuális hálózathoz egy Azure méretezési csoport sablonjában
 
@@ -25,7 +26,7 @@ Egy [korábbi cikkben](virtual-machine-scale-sets-mvss-start.md) egy alapszintű
 
 Először adjon hozzá egy `subnetId` paramétert. A rendszer átadja ezt a karakterláncot a méretezési csoport konfigurációjához, így a méretezési csoport azonosítja az előre létrehozott alhálózatot a virtuális gépek üzembe helyezéséhez. A karakterláncnak a következő formátumúnak kell lennie:`/subscriptions/<subscription-id>resourceGroups/<resource-group-name>/providers/Microsoft.Network/virtualNetworks/<virtual-network-name>/subnets/<subnet-name>`
 
-Ha például a `myvnet`méretezési csoportot egy meglévő, névvel, alhálózattal `mysubnet`, erőforráscsoporthoz `myrg`és előfizetéssel `00000000-0000-0000-0000-000000000000`rendelkező virtuális hálózatra szeretné telepíteni, a következő lesz: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet`.
+Ha például a méretezési csoportot egy meglévő `myvnet` , névvel, alhálózattal `mysubnet` , erőforráscsoporthoz és előfizetéssel rendelkező virtuális hálózatra szeretné telepíteni `myrg` `00000000-0000-0000-0000-000000000000` , a következő lesz: `/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myrg/providers/Microsoft.Network/virtualNetworks/myvnet/subnets/mysubnet` .
 
 ```diff
      },
@@ -82,7 +83,7 @@ A virtuális hálózat már létezik a sablon üzembe helyezése előtt, így ne
          "capacity": 2
 ```
 
-Végül adja meg a felhasználó `subnetId` által beállított paramétert (a használata `resourceId` helyett egy vnet azonosítójának lekérése ugyanazon az üzemelő példányon, amely az alapszintű, életképes méretezési csoport sablonja).
+Végül adja `subnetId` meg a felhasználó által beállított paramétert (a használata helyett `resourceId` egy vnet azonosítójának lekérése ugyanazon az üzemelő példányon, amely az alapszintű, életképes méretezési csoport sablonja).
 
 ```diff
                        "name": "myIpConfig",

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4abae94ded92aca075fcb41a7cd42491e92d41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ccaf662488203e346065cfee082018128f37d95
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77591540"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201665"
 ---
 # <a name="prepare-azure-infrastructure-for-sap-high-availability-by-using-a-windows-failover-cluster-and-file-share-for-sap-ascsscs-instances"></a>Azure-infrastruktúra előkészítése az SAP magas rendelkezésre állásához Windows feladatátvevő fürt és fájlmegosztás használatával SAP ASCS/SCS-példányok esetén
 
@@ -228,7 +228,7 @@ A telepítés megkezdése előtt tekintse át a következő cikket:
 
 **1. táblázat**: ASCS/SCS-fürt
 
-| SAP \<SID> | SAP-ASCS/SCS-példány száma |
+| SAP \< SID> | SAP-ASCS/SCS-példány száma |
 | --- | --- |
 | PR1 | 00 |
 
@@ -348,7 +348,7 @@ Miután sikeresen telepítette a Windows Kibővíthető fájlkiszolgáló-fürt�
 
 - SameSubNetDelay = 2000
 - SameSubNetThreshold = 15
-- RoutingHistoryLength = 30
+- RouteHistoryLength = 30
 
 Ezek a beállítások az ügyfelekkel lettek tesztelve, és jó kompromisszumot biztosítanak. Elég rugalmasak, de a valós hibák és a virtuális gépek meghibásodása esetén is elég gyors feladatátvételt biztosítanak.
 

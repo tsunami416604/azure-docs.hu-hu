@@ -9,28 +9,27 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5e725df5c875f23d82da1fda19bcdf28db548fc8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428562"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201682"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Kapcsolódás a szinapszis SQLhoz a Visual Studióval és a SSDT
 > [!div class="op_single_selector"]
 > * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](get-started-visual-studio.md)
-> * [Sqlcmd](get-started-connect-sqlcmd.md) 
+> * [sqlcmd](get-started-connect-sqlcmd.md) 
 > * [SSMS](get-started-ssms.md)
 > 
 > 
 
 Az SQL-készlet lekérdezése az Azure szinapszis Analytics használatával a Visual Studióval. Ez a metódus a SQL Server Data Tools (SSDT) bővítményt használja a Visual Studio 2019-ben. 
 
-### <a name="supported-tools-for-sql-on-demand-preview"></a>Támogatott SQL-eszközök az igény szerinti használatra (előzetes verzió)
-
-A Visual Studio jelenleg nem támogatja az SQL igény szerinti használatát (előzetes verzió). Az Azure-adatközpont (előzetes verzió) pedig teljes mértékben támogatott eszköz. A SQL Server Management Studio a 18,4-es verzió részben támogatott, és korlátozott funkciókkal rendelkezik, például csatlakozással és lekérdezéssel.
+> [!NOTE]
+> A SSDT nem támogatja az SQL on-demand (előzetes verzió) használatát.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag használatához a következő összetevőket kell használnia:
@@ -41,7 +40,7 @@ Az oktatóanyag használatához a következő összetevőket kell használnia:
 
 ## <a name="1-connect-to-sql-pool"></a>1. kapcsolódás az SQL-készlethez
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
-2. Nyissa meg a SQL Server Object Explorer. Ehhez válassza a**SQL Server Object Explorer** **megtekintése** > lehetőséget.
+2. Nyissa meg a SQL Server Object Explorer. Ehhez válassza a **View**  >  **SQL Server Object Explorer**megtekintése lehetőséget.
    
     ![SQL Server Object Explorer](./media/get-started-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.

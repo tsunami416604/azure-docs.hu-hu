@@ -1,19 +1,19 @@
 ---
 title: Megjelenítési lefedettség | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a régiókat Microsoft Azure Maps-lefedettséggel együtt a megjelenített részletek szintjével.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 03/22/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ddc53111cd69072322f37fdfb25c37665c852c23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7fffa0e5ab75767ab36c83542ac0e3a9ffb1231
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536751"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123938"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps megjelenítési lefedettség
 

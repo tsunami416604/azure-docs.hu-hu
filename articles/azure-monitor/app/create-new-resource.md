@@ -3,12 +3,12 @@ title: Új Azure Application Insights-erőforrás létrehozása | Microsoft Docs
 description: Application Insights figyelésének manuális beállítása egy új élő alkalmazáshoz.
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 0c8b9ccaa70a2fd1bf46c6f4537f54d702ecc48f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d8979469ca83dfd6b81aab10191e8fbf36104ff
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537576"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200659"
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 
@@ -26,9 +26,10 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és hozzon létre 
 
    | Beállítások        |  Érték           | Leírás  |
    | ------------- |:-------------|:-----|
-   | **Név**      | Egyedi érték | A figyelt alkalmazást azonosító név. |
-   | **Erőforráscsoport**     | myResourceGroup      | Az új vagy meglévő erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. |
-   | **Hely** | USA keleti régiója | Válasszon egy Önhöz közeli helyet, vagy a közelében, ahol az alkalmazás üzemeltetve van. |
+   | **Név**      | `Unique value` | A figyelt alkalmazást azonosító név. |
+   | **Erőforráscsoport**     | `myResourceGroup`      | Az új vagy meglévő erőforráscsoport neve az alkalmazás-elemzési adatforrások üzemeltetéséhez. |
+   | **Régió** | `East US` | Válasszon egy Önhöz közeli helyet, vagy a közelében, ahol az alkalmazás üzemeltetve van. |
+   | **Erőforrás mód** | `Classic` vagy `Workspace-based` | A munkaterület-alapú erőforrások jelenleg nyilvános előzetes verzióban érhetők el, és lehetővé teszik, hogy egy közös Log Analytics munkaterületre küldje el Application Insights telemetria. További információt a [munkaterület-alapú erőforrások című cikkben](create-workspace-resource.md)talál.
 
 > [!NOTE]
 > Habár ugyanazt az erőforrást használhatja a különböző erőforráscsoportok között, hasznos lehet globálisan egyedi nevet használni. Ez akkor lehet hasznos, ha [több erőforrás-lekérdezést kell végrehajtania](https://docs.microsoft.com/azure/azure-monitor/log-query/cross-workspace-query#identifying-an-application) , mivel leegyszerűsíti a szükséges szintaxist.
@@ -96,13 +97,13 @@ A parancsmag teljes PowerShell-dokumentációját és a kialakítási kulcs beol
 
 ### <a name="azure-cli-preview"></a>Azure CLI (előzetes verzió)
 
-Az előzetes verzió Application Insights Azure CLI-parancsok eléréséhez először futtatnia kell a következőt:
+Az előzetes verzió Application Insights Azure CLI-parancsokhoz való hozzáféréshez először futtatnia kell a következőt:
 
 ```azurecli
  az extension add -n application-insights
 ```
 
-Ha nem futtatja a `az extension add` parancsot, megjelenik egy hibaüzenet, amely az alábbiakat jelzi:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
+Ha nem futtatja a `az extension add` parancsot, a következő hibaüzenet jelenik meg:`az : ERROR: az monitor: 'app-insights' is not in the 'az monitor' command group. See 'az monitor --help'.`
 
 Most futtathatja a következőt a Application Insights erőforrás létrehozásához:
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 15fd3c18d059466c2b2bd5e2431013f393092b4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77526229"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115047"
 ---
 # <a name="classroom-labs-concepts"></a>Osztályterem-tesztkörnyezetek alapelvei
 
@@ -50,7 +50,7 @@ Ez a cikk az Azure Lab Services különböző felhasználói profiljait ismertet
 
 ### <a name="lab-account-owner"></a>Tesztkörnyezetfiók tulajdonosa
 
-Általában a vállalat felhőerőforrásainak informatikai rendszergazdája, aki az Azure-előfizetés tulajdonosa, és a tesztkörnyezetfiók tulajdonosaként eljárva az alábbi feladatokat hajthatja végre:
+Általában a szervezet felhőalapú erőforrásainak rendszergazdája, aki az Azure-előfizetés tulajdonosa, laboratóriumi fiók tulajdonosaként működik, és a következő feladatokat végzi el:
 
 - Tesztkörnyezetfiókot állít be a vállalat számára.
 - Felügyeli és konfigurálja a szabályzatokat minden tesztkörnyezetre vonatkozóan.
