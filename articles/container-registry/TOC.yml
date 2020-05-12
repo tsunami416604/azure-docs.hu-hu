@@ -32,6 +32,11 @@
               href: container-registry-tutorial-deploy-app.md
             - name: 3 – A webalkalmazás frissítése
               href: container-registry-tutorial-deploy-update.md
+    - name: Példák
+      items:
+        - name: Az Azure Policy beépített elemei
+          displayName: 'samples, policies, definitions'
+          href: ./policy-samples.md
     - name: Alapelvek
       expanded: false
       items:
@@ -39,7 +44,7 @@
           items:
             - name: Biztonsági alapkonfiguráció
               href: security-baseline.md
-        - name: Tárolóregisztrációs adatbázis termékváltozatai és korlátai
+        - name: Tárolóregisztrációs adatbázis szintjei és korlátai
           href: container-registry-skus.md
         - name: 'Beállításjegyzékek, adattárak és rendszerképek'
           href: container-registry-concepts.md
@@ -68,6 +73,8 @@
               href: container-registry-repositories.md
             - name: Tárolórendszerképek importálása
               href: container-registry-import-images.md
+            - name: Átviteli összetevők (előzetes verzió)
+              href: container-registry-transfer-images.md
             - name: Tárolórendszerképek zárolása
               href: container-registry-image-lock.md
             - name: Tárolórendszerképek törlése
@@ -82,10 +89,14 @@
               href: container-registry-webhook.md
         - name: Biztonság és hitelesítés
           items:
-            - name: Hozzáférés korlátozása virtuális hálózattal (előzetes verzió)
-              href: container-registry-vnet.md
-            - name: Integráció az Azure Private Linkkel (előzetes verzió)
+            - name: Hozzáférés korlátozása privát végpont használatával
               href: container-registry-private-link.md
+            - name: Szolgáltatás tűzfalszabályainak konfigurálása
+              href: container-registry-access-selected-networks.md
+            - name: Hozzáférés korlátozása szolgáltatásvégpont használatával (előzetes verzió)
+              href: container-registry-vnet.md
+            - name: Titkosítás felhasználó által felügyelt kulccsal
+              href: container-registry-customer-managed-keys.md
             - name: Tűzfal mögötti hozzáférés
               href: container-registry-firewall-access-rules.md
             - name: Hitelesítés
@@ -102,16 +113,14 @@
                   href: container-registry-auth-kubernetes.md
                 - name: Hitelesítés az Azure Kubernetes Service-ből (AKS)
                   href: ../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
+                - name: Hitelesítés adattárhatókörrel rendelkező jogkivonat segítségével (előzetes verzió)
+                  href: container-registry-repository-scoped-permissions.md
             - name: Szerepköralapú hozzáférés-vezérlés
               href: container-registry-roles.md
-            - name: Adattárhatókörrel rendelkező engedélyek (előzetes verzió)
-              href: container-registry-repository-scoped-permissions.md
             - name: Tartalommegbízhatóság
               href: container-registry-content-trust.md
             - name: Rendszerképek vizsgálata a Security Centerrel
               href: ../security-center/azure-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json
-            - name: Beállításjegyzék-adatok titkosítása (előzetes verzió)
-              href: container-registry-customer-managed-keys.md
         - name: Regisztrációs adatbázisok és más Azure-szolgáltatások
           expanded: false
           items:
