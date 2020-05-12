@@ -130,6 +130,8 @@
       href: reference-powershell-module.md
 - name: További források
   items:
+    - name: Azure Lab Services-blog
+      href: 'https://aka.ms/azlabs-blog'
     - name: Azure-frissítések
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: Díjszabás

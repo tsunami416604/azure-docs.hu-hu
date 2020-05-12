@@ -74,6 +74,8 @@
           href: alerts-schemas.md
         - name: Biztonsági riasztások kezelése
           href: security-center-managing-and-responding-alerts.md
+        - name: Biztonsági riasztások mellőzési szabályai
+          href: alerts-suppression-rules.md
         - name: Biztonsági incidensek kezelése
           href: security-center-incident.md
         - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
