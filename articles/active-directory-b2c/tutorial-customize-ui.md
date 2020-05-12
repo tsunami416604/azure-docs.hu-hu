@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/01/2019
+ms.date: 05/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b2b2bc8dd4e60348553228b8b418df252a8c426a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e023e9c8c4c6f0021eabccad8783c27eba98d0d5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78186250"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116526"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Oktatóanyag: a felhasználói élmények felületének testreszabása Azure Active Directory B2C
 
@@ -63,8 +63,8 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
  A böngészőben Azure AD B2C kód egy modern és standard megközelítést használ a felhasználói folyamatokban megadott URL-címek egyéni tartalmának betöltésére. Az eltérő eredetű erőforrás-megosztás (CORS) lehetővé teszi, hogy a weblapon lévő korlátozott erőforrások más tartományokból is kérhetők legyenek.
 
 1. A menüben válassza a **CORS**lehetőséget.
-2. Az **engedélyezett eredetek**mezőben `https://your-tenant-name.b2clogin.com`adja meg a következőt:. Cserélje `your-tenant-name` le a helyére a Azure ad B2C bérlő nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
-3. Az **engedélyezett módszerek**esetében válassza `GET`a`PUT`, a `OPTIONS`és a lehetőséget.
+2. Az **engedélyezett eredetek**mezőben adja meg a következőt: `https://your-tenant-name.b2clogin.com` . Cserélje le a helyére `your-tenant-name` a Azure ad B2C bérlő nevét. Például: `https://fabrikam.b2clogin.com`. A bérlő nevének megadásakor az összes kisbetűs betűt kell használnia.
+3. Az **engedélyezett módszerek**esetében válassza a, a és a lehetőséget `GET` `PUT` `OPTIONS` .
 4. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
 5. A közzétett **fejlécek**esetében írjon be egy csillagot (*).
 6. A **Max Age**értéknél adja meg a 200 értéket.
@@ -75,9 +75,9 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
 
 ### <a name="create-the-customization-files"></a>A testreszabási fájlok létrehozása
 
-A regisztrációs élmény felhasználói felületének testreszabásához hozzon létre egy egyszerű HTML-és CSS-fájlt. Tetszőleges módon konfigurálhatja a HTML-kódot, de a **div** elemnek egy azonosítóval kell rendelkeznie `api`. Például: `<div id="api"></div>`. A Azure AD B2C elemeket szúr be a `api` tárolóba, amikor megjelenik az oldal.
+A regisztrációs élmény felhasználói felületének testreszabásához hozzon létre egy egyszerű HTML-és CSS-fájlt. Tetszőleges módon konfigurálhatja a HTML-kódot, de a **div** elemnek egy azonosítóval kell rendelkeznie `api` . Például: `<div id="api"></div>`. A Azure AD B2C elemeket szúr be a `api` tárolóba, amikor megjelenik az oldal.
 
-1. A helyi mappában hozza létre a következő fájlt, és győződjön meg arról, hogy `your-storage-account` a Storage-fiók neve és `your-container` a létrehozott tároló neve módosítva van. Például: `https://store1.blob.core.windows.net/b2c/style.css`.
+1. A helyi mappában hozza létre a következő fájlt, és győződjön meg arról, hogy a `your-storage-account` Storage-fiók neve és a `your-container` létrehozott tároló neve módosítva van. Például: `https://store1.blob.core.windows.net/b2c/style.css`.
 
     ```html
     <!DOCTYPE html>
@@ -166,4 +166,4 @@ Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 > * A testreszabott felhasználói felület tesztelése
 
 > [!div class="nextstepaction"]
-> [Nyelvi Testreszabás a Azure Active Directory B2Cban](user-flow-language-customization.md)
+> [A felhasználói felület testreszabása Azure Active Directory B2C](customize-ui-overview.md)

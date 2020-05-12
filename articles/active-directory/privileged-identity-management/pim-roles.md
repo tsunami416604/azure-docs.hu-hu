@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.subservice: pim
-ms.date: 03/31/2020
+ms.date: 05/11/2020
 ms.author: curtand
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b6eaa50f57dd8037ef0ad96b69284f565bd3558f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d1d7ad27c43a0f8b4bbb763a1eb933a63cec58e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80607523"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115642"
 ---
 # <a name="roles-you-cant-manage-in-privileged-identity-management"></a>Nem felügyelhető szerepkörök Privileged Identity Management
 
@@ -40,7 +40,7 @@ A klasszikus előfizetés-rendszergazdai szerepkörökkel kapcsolatos további i
 Az Azure AD-szerepkörök és a rendszergazdák portálon az összes Office 365 szerepkört támogatjuk, például az Exchange-rendszergazdát és a SharePoint-rendszergazdát, de nem támogatjuk az Exchange RBAC vagy a SharePoint RBAC belüli konkrét szerepköröket. További információ ezekről az Office 365-szolgáltatásokról: [office 365 rendszergazdai szerepkörök](https://docs.microsoft.com/office365/admin/add-users/about-admin-roles).
 
 > [!NOTE]
-> A SharePoint rendszergazdai szerepkörre jogosult felhasználók, valamint a Microsoft biztonsági és megfelelőségi központhoz hozzáférő szerepkörök a szerepkör aktiválása után akár néhány órával is előfordulhatnak késésben. Ezekkel a csapatokkal dolgozunk a problémák megoldásában.
+> A SharePoint-rendszergazdai szerepkörhöz, az eszköz rendszergazdai szerepköréhez és a Microsoft biztonsági és megfelelőségi központhoz hozzáférő szerepkörökhöz tartozó jogosult felhasználók a szerepkör aktiválása után akár néhány órával is előfordulhatnak késésben. Ezekkel a csapatokkal dolgozunk a problémák megoldásában.
 
 ## <a name="next-steps"></a>További lépések
 

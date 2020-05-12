@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/06/2020
+ms.date: 05/11/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 1161575104efe8cfc797f84c109a12116f723cad
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: def198a15710d0aff4a943300eedc338a7772e46
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926578"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115795"
 ---
 # <a name="security-tokens"></a>Biztonsági jogkivonatok
 
@@ -31,7 +31,7 @@ A hozzáférési jogkivonatok csak rövid ideig érvényesek, ezért az engedél
 Az **azonosító jogkivonatokat** az ügyfélalkalmazás az [OpenID Connect](v2-protocols-oidc.md) folyamat részeként elküldi az alkalmazásnak. A felhasználók az oldalon vagy a hozzáférési jogkivonat helyett is elküldhetők, és az ügyfél a felhasználó hitelesítésére használja. Ha többet szeretne megtudni arról, hogy a Microsoft Identity platform hogyan okoz problémát azonosító jogkivonatokat, tekintse meg az [azonosító jogkivonatokat](id-tokens.md).
 
 > [!NOTE]
-> Ez a cikk a OAuth2 és az OpenID Connect protokollok biztonsági jogkivonatait ismerteti. Számos vállalati alkalmazás SAML-t használ a felhasználók hitelesítéséhez. Az SAML-kijelentésekkel kapcsolatos információkért tekintse meg az [Azure ad SAML-jogkivonat referenciáját](reference-saml-tokens.md) .
+> Ez a cikk a OAuth2 és az OpenID Connect protokollok által használt biztonsági jogkivonatokat ismerteti. Számos vállalati alkalmazás SAML-t használ a felhasználók hitelesítéséhez. Az SAML-kijelentésekkel kapcsolatos információkért tekintse meg az [Azure ad SAML-jogkivonat referenciáját](reference-saml-tokens.md) .
 
 ## <a name="validating-security-tokens"></a>Biztonsági jogkivonatok ellenőrzése
 
@@ -42,11 +42,11 @@ A tokenek csak korlátozott időtartamra érvényesek. Az STS általában egy p�
 * Hozzáférési token az alkalmazáshoz vagy a védett erőforráshoz való hozzáféréshez, valamint
 * A hozzáférési jogkivonat frissítéséhez használt frissítési jogkivonat, ha a hozzáférési jogkivonat lejár.
 
-Hozzáférési jogkivonatok átadása egy webes API-nak a `Authorization` fejlécben szereplő tulajdonosi jogkivonatként. Egy alkalmazás frissítési tokent biztosíthat az STS számára, és ha az alkalmazáshoz való hozzáférés nem lett visszavonva, egy új hozzáférési tokent és egy új frissítési jogkivonatot fog kapni. Így történik a vállalatot elhagyó személy forgatókönyvének kezelése. Ha az STS megkapja a frissítési jogkivonatot, nem ad ki másik érvényes hozzáférési jogkivonatot, ha a felhasználó már nem rendelkezik jogosultsággal.
+Hozzáférési jogkivonatok átadása egy webes API-nak a fejlécben szereplő tulajdonosi jogkivonatként `Authorization` . Egy alkalmazás frissítési tokent biztosíthat az STS számára, és ha az alkalmazáshoz való hozzáférés nem lett visszavonva, egy új hozzáférési tokent és egy új frissítési jogkivonatot fog kapni. Így történik a vállalatot elhagyó személy forgatókönyvének kezelése. Ha az STS megkapja a frissítési jogkivonatot, nem ad ki másik érvényes hozzáférési jogkivonatot, ha a felhasználó már nem rendelkezik jogosultsággal.
 
 ## <a name="json-web-tokens-jwts-and-claims"></a>JSON webes tokenek (JWTs) és jogcímek
 
-A Microsoft Identity platform a **jogcímeket**tartalmazó **JSON webes tokenként (JWTs)** implementálja a biztonsági jogkivonatokat.
+A Microsoft Identity platform a **jogcímeket**tartalmazó **JSON webes tokenként (JWTs)** implementálja a biztonsági jogkivonatokat. Mivel a JWTs biztonsági jogkivonatként használják, ezt a hitelesítési űrlapot néha JWT- **hitelesítésnek**is nevezik.
 
 A [jogcím](developer-glossary.md#claim) egy entitásra, például egy ügyfélalkalmazás vagy [erőforrás-tulajdonosra](developer-glossary.md#resource-owner)vonatkozó kijelentéseket biztosít egy másik entitáshoz, például egy erőforrás-kiszolgálóhoz. A jogcímek JWT jogcímként vagy JSON Web Token jogcímként is szerepelhetnek.
 
@@ -82,7 +82,7 @@ Az ügyfél felépítésének módjától függően a Microsoft Identity platfor
 |[Meghatalmazásos folyamat](v2-oauth2-on-behalf-of-flow.md) | hozzáférési jogkivonat| x| x| x| |
 |[Ügyfél-hitelesítő adatok](v2-oauth2-client-creds-grant-flow.md) | | | x (csak alkalmazás)| | |
 
-Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol `response_mode` a `query` vagy `fragment`a) a böngészőbe kerül vissza.  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek.
+Az implicit módban kiállított tokenek hossza korlátozott, mert az URL-cím (ahol a vagy a) a böngészőbe kerül vissza `response_mode` `query` `fragment` .  Egyes böngészőkben korlátozva van a böngészőablakban elhelyezhető URL-cím mérete, és a művelet nem hajtható végre, ha túl hosszú.  Így ezek a jogkivonatok nem rendelkeznek `groups` vagy `wids` jogcímek.
 
 ## <a name="next-steps"></a>További lépések
 

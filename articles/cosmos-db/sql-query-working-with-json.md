@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
-ms.openlocfilehash: a8f32ad69d32844305c1cc785afc9f1df3c102b8
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d0b11cdb0cf2719b576b7a4c4f3fa534ae09dfa8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006351"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117019"
 ---
 # <a name="working-with-json-in-azure-cosmos-db"></a>JSON használata a Azure Cosmos DBban
 
@@ -45,9 +45,9 @@ Beágyazott JSON-val rendelkező dokumentum:
 }
 ```
 
-Ebben az esetben a, `state` `country`a és `city` a tulajdonságok a `address` tulajdonságon belül vannak beágyazva.
+Ebben az esetben a `state` , a `country` és a `city` Tulajdonságok a tulajdonságon belül vannak beágyazva `address` .
 
-A következő példa két beágyazott tulajdonságot tervez `f.address.state` : `f.address.city`és.
+A következő példa két beágyazott tulajdonságot tervez: `f.address.state` és `f.address.city` .
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -141,9 +141,9 @@ WHERE EXISTS(
 
 ## <a name="reserved-keywords-and-special-characters-in-json"></a>Fenntartott kulcsszavak és speciális karakterek a JSON-ban
 
-A tulajdonságokat az idézett tulajdonság operátor `[]`használatával érheti el. Például a `SELECT c.grade` és `SELECT c["grade"]` a egyenértékű. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne elmenekülni, amely szóközt, speciális karaktereket vagy egy SQL-kulcsszó vagy fenntartott szó nevét tartalmazza.
+A tulajdonságokat az idézett tulajdonság operátor használatával érheti el `[]` . Például a `SELECT c.grade` és `SELECT c["grade"]` a egyenértékű. Ez a szintaxis akkor hasznos, ha olyan tulajdonságot szeretne elmenekülni, amely szóközt, speciális karaktereket vagy egy SQL-kulcsszó vagy fenntartott szó nevét tartalmazza.
 
-Tegyük fel például, hogy egy olyan dokumentum található, `order` amely egy nevű `price($)` tulajdonságot és egy speciális karaktereket tartalmazó tulajdonságot tartalmaz:
+Tegyük fel például, hogy egy olyan dokumentum található, amely egy nevű tulajdonságot `order` és egy `price($)` speciális karaktereket tartalmazó tulajdonságot tartalmaz:
 
 ```json
 {
@@ -160,7 +160,7 @@ Tegyük fel például, hogy egy olyan dokumentum található, `order` amely egy 
 }
 ```
 
-Ha a `order` tulajdonságot vagy `price($)` tulajdonságot tartalmazó lekérdezéseket futtat, szintaktikai hiba jelenik meg.
+Ha a `order` tulajdonságot vagy tulajdonságot tartalmazó lekérdezéseket futtat `price($)` , szintaktikai hiba jelenik meg.
 
 ```sql
 SELECT * FROM c where c.order.orderid = "12345"
@@ -208,7 +208,7 @@ Az eredmény a következő:
     }]
 ```
 
-Az előző példában a `SELECT` záradéknak létre kell hoznia egy JSON-objektumot, és mivel a minta nem tartalmaz kulcsot, a záradék az implicit argumentum változó nevét `$1`használja. A következő lekérdezés két implicit argumentum változót ad `$1` vissza `$2`: és.
+Az előző példában a `SELECT` záradéknak létre kell hoznia egy JSON-objektumot, és mivel a minta nem tartalmaz kulcsot, a záradék az implicit argumentum változó nevét használja `$1` . A következő lekérdezés két implicit argumentum változót ad vissza: `$1` és `$2` .
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -237,7 +237,7 @@ Explicit módon alias értékeket a lekérdezésekben. Ha egy lekérdezésnek k�
 
 ### <a name="examples"></a>Példák
 
-Az `AS` aliashoz használt kulcsszó nem kötelező, ahogy az alábbi példában is látható, amikor a második értéket a következőként `NameInfo`tervezi meg:
+Az `AS` aliashoz használt kulcsszó nem kötelező, ahogy az alábbi példában is látható, amikor a második értéket a következőként tervezi meg `NameInfo` :
 
 ```sql
     SELECT
@@ -270,7 +270,7 @@ Például:
 ```sql
     SELECT
            {"JSON expression with a space": { "state": f.address.state, "city": f.address.city }},
-           { "JSON expression with a special character": { "name": f.id }}
+           {"JSON expression with a special character!": { "name": f.id }}
     FROM Families f
     WHERE f.id = "AndersenFamily"
 ```

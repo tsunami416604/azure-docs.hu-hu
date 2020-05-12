@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 28e76a93e309112d965c49f25be232ced789ad66
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 012cdc53099bf156e50fe766b04c3176d415db1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983193"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117393"
 ---
 # <a name="scale-session-hosts-using-azure-automation"></a>A munkamenet-gazdagépek méretezése Azure Automation használatával
 
@@ -23,6 +23,10 @@ ms.locfileid: "82983193"
 A virtuális gépek (VM-EK) skálázásával csökkentheti a Windows rendszerű virtuális asztali környezet teljes üzembe helyezési költségeit. Ez azt jelenti, hogy leállítja és felszabadítja a munkamenet-gazda virtuális gépeket a használaton kívüli órákban, majd visszakapcsolja őket a csúcsidőben, majd újra kiosztja őket.
 
 Ebből a cikkből megtudhatja, hogy a Azure Automation és Azure Logic Apps rendszerbe épített skálázási eszköz hogyan fogja automatikusan méretezni a munkamenet-gazdagép virtuális gépeket a Windows rendszerű virtuális asztali környezetben. Ha szeretné megtudni, hogyan használhatja a skálázási eszközt, ugorjon előre az [Előfeltételek](#prerequisites)elemre.
+
+## <a name="report-issues"></a>Problémák bejelentése
+
+A skálázási eszközre vonatkozó jelentések kiadása jelenleg a GitHubon történik a Microsoft ügyfélszolgálata helyett. Ha problémák merülnek fel a skálázási eszközzel kapcsolatban, akkor jelentheti, hogy a "4a-WVD-skálázás-logicapps" címkével ellátott GitHub-problémát nyit meg az [RDS GitHub lapján](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps).
 
 ## <a name="how-the-scaling-tool-works"></a>A skálázási eszköz működése
 
@@ -43,7 +47,7 @@ A maximális kihasználtság ideje alatt a feladattípus ellenőrzi a munkamenet
 
 A maximális kihasználtsági idő alatt a feladattípus határozza meg, hogy a *MinimumNumberOfRDSH* paraméter alapján melyik munkamenet-gazda virtuális gépek legyenek leállítva. A feladattípus beállítja a munkamenet-gazda virtuális gépek kiürítési módját, hogy megakadályozza, hogy az új munkamenetek csatlakozzanak a gazdagépekhez. Ha a *LimitSecondsToForceLogOffUser* paramétert nem nulla értékű pozitív értékre állítja be, akkor a feladatokkal a jelenleg bejelentkezett felhasználók megmenthetik a munkájukat, megvárhatják a beállított időtartamot, majd kényszerítik a felhasználókat a kijelentkezésre. Ha a munkamenet-gazda virtuális gépen lévő összes felhasználói munkamenet ki lett jelentkezve, a rendszer leállítja a virtuális gépet.
 
-Ha a *LimitSecondsToForceLogOffUser* paramétert nulla értékre állítja, a művelet engedélyezi a megadott csoportházirendek munkamenet-konfigurációs beállítását a felhasználói munkamenetek kijelentkezésének kezeléséhez. A csoportházirendek megjelenítéséhez nyissa meg a **számítógép-konfigurációs** > **házirendek** > **Felügyeleti sablonok** > a**Windows-összetevők** > **Terminálszolgáltatások** > **terminálkiszolgáló** > **munkamenet-korlátait**. Ha egy munkamenet-gazda virtuális gépen vannak aktív munkamenetek, a feladatokból a munkamenet-gazda virtuális gép fut. Ha nincsenek aktív munkamenetek, a rendszer leállítja a munkamenet-gazda virtuális gépet.
+Ha a *LimitSecondsToForceLogOffUser* paramétert nulla értékre állítja, a művelet engedélyezi a megadott csoportházirendek munkamenet-konfigurációs beállítását a felhasználói munkamenetek kijelentkezésének kezeléséhez. A csoportházirendek megjelenítéséhez nyissa meg a **számítógép-konfigurációs**  >  **házirendek**  >  **Felügyeleti sablonok**a  >  **Windows-összetevők**  >  **Terminálszolgáltatások**  >  **terminálkiszolgáló**  >  **munkamenet-korlátait**. Ha egy munkamenet-gazda virtuális gépen vannak aktív munkamenetek, a feladatokból a munkamenet-gazda virtuális gép fut. Ha nincsenek aktív munkamenetek, a rendszer leállítja a munkamenet-gazda virtuális gépet.
 
 A feladatot rendszeresen futtatja egy beállított Ismétlődési intervallum alapján. Ezt az időközt a Windows rendszerű virtuális asztali környezet méretétől függően módosíthatja, de ne feledje, hogy a virtuális gépek indítása és leállítása hosszabb időt is igénybe vehet, ezért ne felejtse el a késleltetést figyelembe venni. Ajánlott 15 percenként beállítani az ismétlődési időközt.
 
@@ -258,6 +262,3 @@ Navigáljon a runbook (az alapértelmezett név WVDAutoScaleRunbook) az Azure Au
 
 ![A skálázási eszköz kimeneti ablakának képe.](../media/tool-output.png)
 
-## <a name="report-issues"></a>Problémák bejelentése
-
-Ha problémák merülnek fel a skálázási eszközzel kapcsolatban, az [RDS GitHub oldalán](https://github.com/Azure/RDS-Templates/issues?q=is%3Aissue+is%3Aopen+label%3A4a-WVD-scaling-logicapps)is bejelentheti azokat.

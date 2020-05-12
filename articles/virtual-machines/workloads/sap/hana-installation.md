@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 01/16/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ca59305b22fcf1e81ef518612910731cb6edea5d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4db072cf881c936db6721845e7823082388515b0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77617098"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117121"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>SAP HANA (nagyméretű példányok) telepítése és konfigurálása az Azure-ban
 
@@ -35,7 +35,7 @@ A HANA telepítésének megkezdése előtt ellenőrizze az alábbiakat:
 - [HLI egység (ek)](#validate-the-hana-large-instance-units)
 - [Operációs rendszer konfigurációja](#operating-system)
 - [Hálózati konfiguráció](#networking)
-- [Tároló konfigurálása](#storage)
+- [Tárolási konfiguráció](#storage)
 
 
 ## <a name="validate-the-hana-large-instance-units"></a>A HANA nagyméretű példány-egység (ek) ellenőrzése
@@ -90,7 +90,7 @@ Tekintse meg a SUSE webhelyén és az [SAP-on SUSE](https://wiki.scn.sap.com/wik
 A következő további és hasznos SAP a SUSE-hez kapcsolódó hivatkozásokat tartalmaz:
 
 - [SAP HANA SUSE Linux-helyen](https://wiki.scn.sap.com/wiki/display/ATopics/SAP+on+SUSE)
-- [Ajánlott eljárások az SAP: sorba helyezni Replication – SAP NetWeaver a SUSE Linux Enterprise 12 rendszeren](https://www.suse.com/docrepcontent/container.jsp?containerId=9113)
+- [Ajánlott eljárások az SAP: sorba helyezni Replication – SAP NetWeaver a SUSE Linux Enterprise 12 rendszeren](https://www.suse.com/media/guide/SLES4SAP-NetWeaver-ha-guide-EnqRepl-12_color_en.pdf)
 - [ClamSAP – SLES vírusvédelem az SAP-hez](https://scn.sap.com/community/linux/blog/2014/04/14/clamsap--suse-linux-enterprise-server-integrates-virus-protection-for-sap) (beleértve az SLES 12 for SAP-alkalmazásokat)
 
 A következő SAP-támogatási megjegyzések a 12. SLES SAP HANA megvalósítására alkalmazhatók:
@@ -117,7 +117,7 @@ A következő SAP-támogatási megjegyzések a Red Hat SAP HANA megvalósítás�
 
 ### <a name="time-synchronization"></a>Időszinkronizálás
 
-Az SAP NetWeaver architektúrára épülő SAP-alkalmazások érzékenyek az SAP-rendszer részét képező különböző összetevők időbeli eltérésére. Az SAP ABAP rövid memóriaképei, amelyekben a ZDATE\_nagy\_idő\_diff neve hibás, valószínűleg ismerősek. Ennek az az oka, hogy ezek a rövid memóriaképek akkor jelennek meg, ha a különböző kiszolgálók vagy virtuális gépek rendszerideje túl távol sodródik egymástól.
+Az SAP NetWeaver architektúrára épülő SAP-alkalmazások érzékenyek az SAP-rendszer részét képező különböző összetevők időbeli eltérésére. Az SAP ABAP rövid memóriaképei, amelyekben a ZDATE \_ nagy \_ idő diff neve hibás, \_ valószínűleg ismerősek. Ennek az az oka, hogy ezek a rövid memóriaképek akkor jelennek meg, ha a különböző kiszolgálók vagy virtuális gépek rendszerideje túl távol sodródik egymástól.
 
 SAP HANA az Azure-ban (nagyméretű példányok) az Azure-ban végzett időszinkronizálás nem vonatkozik a nagyméretű példányokban lévő számítási egységekre. Ez a szinkronizálás nem alkalmazható natív Azure-beli virtuális gépeken futó SAP-alkalmazások futtatására, mert az Azure biztosítja, hogy a rendszer időben szinkronizálva legyen. 
 
@@ -136,7 +136,7 @@ Az architektúra Ethernet-adataival kapcsolatos további információkért tekin
 
 ## <a name="storage"></a>Storage
 
-Az Azure-beli SAP HANA tárolási elrendezését (nagyméretű példányok) az Azure `service management` -ban az SAP által ajánlott irányelvek alapján SAP HANA konfigurálni. Ezek az irányelvek dokumentálva vannak a [SAP HANA Storage-követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) című tanulmányban. 
+Az Azure-beli SAP HANA tárolási elrendezését (nagyméretű példányok) az Azure-ban az `service management` SAP által ajánlott irányelvek alapján SAP HANA konfigurálni. Ezek az irányelvek dokumentálva vannak a [SAP HANA Storage-követelmények](https://go.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) című tanulmányban. 
 
 A különböző HANA nagyméretű példányokkal rendelkező különféle kötetek durva méretei a [SAP HANA (nagyméretű példányok) áttekintésében és az Azure architektúrájában](hana-overview-architecture.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)vannak dokumentálva.
 
@@ -144,8 +144,8 @@ A tárolási kötetek elnevezési konvenciói az alábbi táblázatban látható
 
 | Tárterület-használat | Csatlakoztatás neve | Kötet neve | 
 | --- | --- | ---|
-| HANA-adathalmazok | /hana/data/SID/mnt0000\<m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
-| HANA-napló | /hana/log/SID/mnt0000\<m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
+| HANA-adathalmazok | /hana/data/SID/mnt0000 \< m> | Storage IP:/hana_data_SID_mnt00001_tenant_vol |
+| HANA-napló | /hana/log/SID/mnt0000 \< m> | Storage IP:/hana_log_SID_mnt00001_tenant_vol |
 | HANA-napló biztonsági mentése | /hana/log/backups | Storage IP:/hana_log_backups_SID_mnt00001_tenant_vol |
 | HANA megosztott | /hana/shared/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/Shared |
 | usr/SAP | /usr/sap/SID | Storage IP:/hana_shared_SID_mnt00001_tenant_vol/usr_sap |
@@ -164,7 +164,7 @@ A HANA/log/Backup kötet nem lehet az adatbázis biztonsági másolatainak köte
 
 A megadott tárterületen kívül 1 TB-os növekményekben is vásárolhat további tárolókapacitást. Ezt a további tárhelyet új kötetekként lehet hozzáadni a HANA nagyméretű példányaihoz.
 
-Az Azure `service management`-beli SAP HANA bevezetéséhez az ügyfél egy felhasználói azonosítót (UID) és CSOPORTAZONOSÍTÓ (GID) határoz meg a sidadm felhasználói és sapsys csoport számára (például: 1 000 500). A SAP HANA rendszer telepítése során ugyanezeket az értékeket kell használnia. Mivel több HANA-példányt szeretne üzembe helyezni egy egységen, több kötetet kap (egy készletet az egyes példányokhoz). Ennek eredményeképpen a telepítéskor meg kell határoznia a következőket:
+Az Azure-beli SAP HANA bevezetéséhez `service management` az ügyfél egy felhasználói azonosítót (UID) és csoportazonosító (GID) határoz meg a sidadm felhasználói és sapsys csoport számára (például: 1 000 500). A SAP HANA rendszer telepítése során ugyanezeket az értékeket kell használnia. Mivel több HANA-példányt szeretne üzembe helyezni egy egységen, több kötetet kap (egy készletet az egyes példányokhoz). Ennek eredményeképpen a telepítéskor meg kell határoznia a következőket:
 
 - A különböző HANA-példányok SID-azonosítója (sidadm származik).
 - A különböző HANA-példányok memóriájának mérete. A memória mérete/példánya határozza meg a kötetek méretét az egyes kötetek készletében.

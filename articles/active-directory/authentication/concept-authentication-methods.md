@@ -1,64 +1,201 @@
 ---
-title: Hitelesítési módszerek – Azure Active Directory
-description: Az Azure AD-ben elérhető hitelesítési módszerek az MFA és a SSPR esetében
+title: Hitelesítési módszerek és szolgáltatások – Azure Active Directory
+description: További információ a Azure Active Directoryban elérhető különböző hitelesítési módszerekről és szolgáltatásokról a bejelentkezési események javításához és biztonságossá tételéhez
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 05/08/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
-ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5a82c69575e82a7cf397955f08c3f114e449ba6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 3947bf0dcad598bf52a742c790a2f99538d6facb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968772"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116394"
 ---
-# <a name="what-are-authentication-methods"></a>Mik a hitelesítési módszerek?
+# <a name="what-authentication-and-verification-methods-are-available-in-azure-active-directory"></a>Milyen hitelesítési és ellenőrzési módszerek érhetők el Azure Active Directoryban?
 
-Rendszergazdaként válassza az Azure Multi-Factor Authentication és az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési módszerei lehetőséget, ha a felhasználóknak több hitelesítési módszert kell regisztrálniuk. Ha egy felhasználó hitelesítési módszere nem érhető el, dönthet úgy, hogy egy másik módszerrel végez hitelesítést.
+A Azure Active Directory (Azure AD) fiókjaihoz tartozó bejelentkezési élmény részeként különböző módokon végezheti el a felhasználók hitelesítését. A Felhasználónév és a jelszó a leggyakoribb módszer a felhasználók számára a hitelesítő adatok megadására. Az Azure AD modern hitelesítési és biztonsági funkcióival az alapszintű jelszavak további hitelesítési módszerekkel kiegészíthetők vagy cserélhetők le.
 
-A rendszergazdák meghatározhatják a szabályzatban, hogy mely hitelesítési módszerek érhetők el a SSPR és az MFA felhasználói számára. Előfordulhat, hogy egyes hitelesítési módszerek nem állnak rendelkezésre az összes szolgáltatás számára. A szabályzatok konfigurálásával kapcsolatos további információkért tekintse meg a cikk az önkiszolgáló [jelszó-visszaállítás sikeres](howto-sspr-deployment.md) elindítását és [a felhőalapú Azure-multi-Factor Authentication tervezését](howto-mfa-getstarted.md) ismertető cikket.
+Az Azure AD-beli felhasználók a következő hitelesítési módszerek egyikének használatával hitelesíthetők:
 
-A Microsoft nagymértékben javasolja a rendszergazdáknak, hogy a minimálisan szükséges számú hitelesítési módszer közül többet válasszanak, ha nem férnek hozzájuk.
+* Hagyományos Felhasználónév és jelszó
+* Az alkalmazás jelszavas nélküli bejelentkezésének Microsoft Authenticator
+* A hardver-jogkivonat vagy a FIDO2 biztonsági kulcsa
+* SMS-alapú jelszó nélküli bejelentkezés
 
-|Hitelesítési módszer|Használat|
-| --- | --- |
-| Jelszó | MFA és SSPR |
-| Biztonsági kérdések | Csak SSPR |
-| E-mail-cím | Csak SSPR |
-| A Microsoft Authenticator alkalmazás | MFA és SSPR |
-| A hardver-token ESKÜje | Az MFA és a SSPR nyilvános előzetes verziója |
-| SMS | MFA és SSPR |
-| Hanghívás | MFA és SSPR |
-| Alkalmazásjelszavak. | MFA csak bizonyos esetekben |
+Az Azure AD-ben számos fiók engedélyezhető az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az Azure Multi-Factor Authentication számára. Ezek a funkciók további ellenőrzési módszereket is tartalmaznak, például telefonhívást vagy biztonsági kérdéseket. Javasoljuk, hogy a felhasználóknak több ellenőrzési módszert kell regisztrálniuk. Ha az egyik metódus nem érhető el egy felhasználó számára, dönthetnek úgy, hogy más módszerrel hitelesítik magukat.
+
+Az alábbi táblázat ismerteti, hogy milyen hitelesítési vagy ellenőrzési módszerek érhetők el a különböző forgatókönyvekhez:
+
+| Módszer | Használat bejelentkezéskor | Használat az ellenőrzés során |
+| --- | --- | --- |
+| [Jelszó](#password) | Igen | MFA és SSPR |
+| [A Microsoft Authenticator alkalmazás](#microsoft-authenticator-app) | Igen (előzetes verzió) | MFA és SSPR |
+| [FIDO2 biztonsági kulcsok (előzetes verzió)](#fido2-security-keys) | Igen | Csak MFA |
+| [A hardver-tokenek ESKÜje (előzetes verzió)](#oath-hardware-tokens) | Igen | SSPR és MFA |
+| [SMS](#phone-options) | Igen (előzetes verzió) | MFA és SSPR |
+| [Hanghívás](#phone-options) | Nem | MFA és SSPR |
+| [Biztonsági kérdések](#security-questions) | Nem | Csak SSPR |
+| [E-mail cím](#email-address) | Nem | Csak SSPR |
+| [Alkalmazásjelszavak](#app-passwords). | Nem | MFA csak bizonyos esetekben |
+
+Ez a cikk az Azure AD-ben elérhető különböző hitelesítési és ellenőrzési módszereket, valamint az adott korlátozásokat és korlátozásokat ismerteti.
 
 ![A bejelentkezési képernyőn használt hitelesítési módszerek](media/concept-authentication-methods/overview-login.png)
 
-|     |
-| --- |
-| Az MFA és a SSPR-hez tartozó hardver-tokenek a Azure Active Directory nyilvános előzetes verziójának funkciói. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)|
-|     |
-
 ## <a name="password"></a>Jelszó
 
-Az Azure AD-jelszó hitelesítési módszernek minősül. Ez az egyetlen olyan metódus, amely **nem tiltható le**.
+Az Azure AD-jelszó gyakran az egyik elsődleges hitelesítési módszer. A jelszó-hitelesítési módszer nem tiltható le.
+
+Még ha olyan hitelesítési módszert használ, mint például az [SMS-alapú bejelentkezés](howto-authentication-sms-signin.md) , ha a felhasználó nem használja a jelszót az aláíráshoz, a jelszó elérhető hitelesítési módszer marad.
+
+## <a name="microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás
+
+A hitelesítő alkalmazás további biztonsági szintet biztosít az Azure AD munkahelyi vagy iskolai fiókjához vagy a Microsoft-fiókhoz, és [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594)és [Windows Phone-telefon](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)rendszerekhez érhető el. A Microsoft Authenticator alkalmazással a felhasználók jelszó nélküli módon hitelesíthetők a bejelentkezés során, illetve további ellenőrzési lehetőségként az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az Azure Multi-Factor Authentication események során.
+
+A felhasználók értesítéseket kaphatnak a mobil alkalmazástól, hogy jóváhagyják vagy megtagadják, vagy a hitelesítő alkalmazással olyan eskü-ellenőrző kódot állítanak elő, amely bejelentkezési felületen adható meg. Ha az értesítési és ellenőrző kódot is engedélyezi, a hitelesítő alkalmazást regisztráló felhasználók bármelyik módszert használhatják az identitásuk ellenőrzéséhez.
+
+Ha a hitelesítő alkalmazást a Felhasználónév és jelszó kombináció helyett a bejelentkezési üzenetben szeretné használni, tekintse meg [a jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)](howto-authentication-passwordless-phone.md)című témakört.
+
+> [!NOTE]
+> A felhasználók nem regisztrálhatják a SSPR, amikor engedélyezik a mobileszköz regisztrálását. Ehelyett a felhasználók regisztrálhatják a mobil alkalmazást a (z) szolgáltatásban [https://aka.ms/mfasetup](https://aka.ms/mfasetup) a kombinált biztonsági adatok regisztrációjának részeként [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) .
+
+### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
+
+A hitelesítő alkalmazás segít megakadályozni a fiókok jogosulatlan elérését, és letilthatja a csalárd tranzakciókat, ha értesítéseket küld az okostelefonra vagy a táblaszámítógépre. A felhasználók megtekinthetik az értesítést, és ha ez jogos, válassza az **ellenőrzés**lehetőséget. Ellenkező esetben a **Megtagadás**lehetőséget is kiválaszthatja.
+
+![A bejelentkezési folyamat elvégzésére szolgáló, a hitelesítő alkalmazás értesítésére szolgáló webböngészőt kérő példa képernyőképe](media/tutorial-enable-azure-mfa/azure-multi-factor-authentication-browser-prompt.png)
+
+> [!NOTE]
+> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az Android-eszközökön a *Mobile App metóduson keresztül küldött értesítés* nem működik ebben az országban. Az alternatív hitelesítési módszereket elérhetővé kell tenni az adott felhasználók számára.
+
+### <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
+
+A hitelesítő alkalmazás szoftver-tokenként használható az eskü-ellenőrző kód létrehozásához. A Felhasználónév és a jelszó megadása után adja meg a hitelesítő alkalmazás által a bejelentkezési felületen megadott kódot. Az ellenőrzőkód egy második hitelesítési módként szolgál.
+
+Előfordulhat, hogy a felhasználók legfeljebb öt ESKÜvel rendelkező hardver-tokent vagy hitelesítő alkalmazást (például a Microsoft Authenticator alkalmazást) kombinálnak, amelyet bármikor használatra konfiguráltak.
+
+> [!WARNING]
+> Az önkiszolgáló jelszó-visszaállítás legmagasabb szintű biztonságának biztosítása érdekében, ha csak egy módszer szükséges az alaphelyzetbe állításhoz, a felhasználók számára csak egy hitelesítési kód adható meg.
+>
+> Ha két módszerre van szükség, a felhasználók visszaállíthatják az értesítési vagy ellenőrző kódokat a más engedélyezett módszerek kiegészítéseként.
+
+## <a name="fido2-security-keys"></a>FIDO2 biztonsági kulcsok
+
+A (gyors identitás online) Szövetség segíti a nyílt hitelesítési szabványok előléptetését, és a jelszavak felhasználói hitelesítés formájában történő csökkentését. A FIDO2 a legújabb szabvány, amely magában foglalja a webes hitelesítési (WebAuthn) szabványt.
+
+Ha a FIDO2 biztonsági kulcsait nem a Felhasználónév és jelszó kombinációja helyett szeretné használni, tekintse meg a [jelszó nélküli FIDO2 biztonsági kulcsának engedélyezése (előzetes verzió)](howto-authentication-passwordless-security-key.md)című témakört.
+
+A felhasználók regisztrálhatnak és kijelölhetnek egy FIDO2 biztonsági kulcsot a bejelentkezési felületen a hitelesítés fő eszközeként. Ezek a FIDO2 biztonsági kulcsok általában USB-eszközök, de a Bluetooth vagy az NFC használatát is használhatják. Ha a hitelesítést kezelő hardvereszközt használ, a rendszer megnöveli a fiók biztonságát, mivel nincs olyan jelszó, amely elérhetővé vagy kitalált.
+
+Az Azure AD FIDO2 biztonsági kulcsai jelenleg előzetes verzióban érhetők el. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="oath-hardware-tokens"></a>OATH hardveres jogkivonatok
+
+Az eskü egy nyílt szabvány, amely meghatározza, hogy az egyszeri jelszavas (OTP) kódok hogyan jönnek létre. Az Azure AD támogatja az eskü-TOTP SHA-1 tokenek használatát a 30 másodperces vagy a 60-Second fajta esetében. Az ügyfelek megvásárolhatják ezeket a jogkivonatokat a választott gyártótól.
+
+A titkos kulcsok legfeljebb 128 karakterből állhatnak, amelyek nem kompatibilisek az összes jogkivonattal. A titkos kulcs csak az *a-z* , a-z és *a-z* , valamint a *1-7*karakterből állhat, és a *Base32*-ben kell kódolni.
+
+Az Azure AD-beli hardver-tokenek jelenleg előzetes verzióban érhetők el. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+![ESKÜ-tokenek feltöltése az MFA-eskü jogkivonatok ablakba](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
+
+A jogkivonatok beszerzése után a következő példában látható módon fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumot, beleértve az UPN-t, a sorozatszámot, a titkos kulcsot, az időintervallumot, a gyártót és a modellt.
+
+```csv
+upn,serial number,secret key,time interval,manufacturer,model
+Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
+```
+
+> [!NOTE]
+> Ügyeljen rá, hogy a fejlécsor szerepeljen a CSV-fájlban.
+
+Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megnyithatja **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **eskü tokeneket**, és feltöltheti az eredményül kapott CSV-fájlt.
+
+A CSV-fájl méretétől függően a folyamat eltarthat néhány percig. Kattintson a **frissítés** gombra az aktuális állapot lekéréséhez. Ha bármilyen hiba van a fájlban, letöltheti azt a CSV-fájlt, amely felsorolja a feloldható hibákat. A letöltött CSV-fájl mezőinek neve eltér a feltöltött verziótól.
+
+A hibák elhárítása után a rendszergazda ezután aktiválhatja az egyes kulcsokat, ha a jogkivonat **aktiválása** elemre kattint, és beírja a tokenen megjelenő OTP elemet.
+
+Előfordulhat, hogy a felhasználók legfeljebb öt ESKÜvel rendelkező hardver-tokent vagy hitelesítő alkalmazást (például a Microsoft Authenticator alkalmazást) kombinálnak, amelyet bármikor használatra konfiguráltak.
+
+## <a name="phone-options"></a>Telefonos beállítások
+
+A szöveges üzenetekkel történő közvetlen hitelesítéshez beállíthatja [és engedélyezheti a felhasználók számára az SMS-alapú hitelesítést (előzetes verzió)](howto-authentication-sms-signin.md). Az SMS-alapú bejelentkezés kiválóan használható az előtérben dolgozóknak. Az SMS-alapú bejelentkezéshez a felhasználóknak nem kell tudniuk az alkalmazások és a szolgáltatások eléréséhez szükséges felhasználónevet és jelszót. A felhasználó Ehelyett beírja a regisztrált mobiltelefonszámát, egy ellenőrző kódot tartalmazó szöveges üzenetet kap, és a bejelentkezési felületen megadja azt.
+
+A felhasználók az Azure Multi-Factor Authentication vagy az önkiszolgáló jelszó-visszaállítás (SSPR) során is ellenőrizhetik magukat mobiltelefon vagy irodai telefon formájában.
+
+A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonszám*formátumban kell lenniük, például: *+ 1 4251234567*.
+
+> [!NOTE]
+> Az országkód és a telefonszám között szóköz szükséges.
+>
+> A jelszó-visszaállítás nem támogatja a telefonos bővítményeket. A rendszer a hívás elhelyezése előtt is eltávolítja a bővítményeket a *+ 1 4251234567X12345* formátumban.
+
+### <a name="mobile-phone-verification"></a>Mobiltelefon ellenőrzése
+
+Az Azure Multi-Factor Authentication vagy SSPR esetében a felhasználók dönthetnek úgy, hogy szöveges üzenetet kapnak a bejelentkezési felületen megjelenő ellenőrző kóddal, vagy telefonhívást fogadnak a megadott PIN-kód megadásához.
+
+Ha a felhasználó nem szeretné, hogy a mobil telefonszáma megjelenjen a címtárban, de azt szeretné használni a jelszó alaphelyzetbe állításához, akkor a rendszergazdák nem tölthetik fel a telefonszámot a címtárban. Ehelyett a felhasználóknak fel kell tölteniük a **hitelesítési telefonos** attribútumot a következő helyen: [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) . A rendszergazdák láthatják ezeket az információkat a felhasználó profiljában, de máshol nem jelennek meg.
+
+![Képernyőkép a Azure Portalről, amely a hitelesítési módszereket jeleníti meg egy telefonszámmal feltöltve](media/concept-authentication-methods/user-authentication-methods.png)
+
+A Microsoft nem garantálja a konzisztens SMS-és hangalapú Azure-Multi-Factor Authentication küldését ugyanazzal a számmal. A felhasználók érdekében bármikor hozzáadhatjuk vagy eltávolíthatjuk a rövid kódokat, ahogy az útvonal-kiigazításokat az SMS-kézbesítés javítására is felhasználjuk. A Microsoft nem támogatja a rövid kódokat az országok/régiók számára a Egyesült Államok és Kanada mellett.
+
+#### <a name="text-message-verification"></a>SMS-üzenet ellenőrzése
+
+Ha a SSPR vagy az Azure Multi-Factor Authentication során SMS-t szeretne ellenőrizni, egy SMS-t küld a rendszer az ellenőrző kódot tartalmazó mobiltelefon-telefonszámra. A bejelentkezési folyamat befejezéséhez a megadott ellenőrző kód bekerül a bejelentkezési felületre.
+
+#### <a name="phone-call-verification"></a>Telefonhívás ellenőrzése
+
+Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrzést végez, a felhasználó által regisztrált telefonszámra automatikus hanghívás történik. A bejelentkezési folyamat befejezéséhez a rendszer kéri a felhasználótól, hogy adja meg a PIN-kódját, majd a billentyűzetén a # értéket.
+
+### <a name="office-phone-verification"></a>Irodai telefon ellenőrzése
+
+Az Office Phone-attribútumot az Azure AD rendszergazdája felügyeli, és a felhasználó nem regisztrálhat.
+
+Ha a SSPR vagy az Azure Multi-Factor Authenticationban telefonhívás-ellenőrzést végez, a felhasználó által regisztrált telefonszámra automatikus hanghívás történik. A bejelentkezési folyamat befejezéséhez a rendszer kéri a felhasználótól, hogy adja meg a PIN-kódját, majd a billentyűzetén a # értéket.
+
+### <a name="troubleshooting-phone-options"></a>Telefonos beállítások hibaelhárítása
+
+Ha problémák merülnek fel az Azure AD-beli telefonos hitelesítéssel kapcsolatban, tekintse át a következő hibaelhárítási lépéseket:
+
+* Blokkolt hívóazonosító egyetlen eszközön.
+   * Tekintse át az eszközön konfigurált blokkolt számokat.
+* Helytelen a telefonszám vagy helytelen országkód, vagy a személyes telefonszám és a munkahelyi telefonszám közötti zűrzavar.
+   * A felhasználói objektum és a konfigurált hitelesítési módszerek hibáinak megoldása. Győződjön meg arról, hogy a megfelelő telefonszámok regisztrálva vannak.
+* Helytelen PIN-kód van megadva.
+   * Erősítse meg, hogy a felhasználó a megfelelő PIN-kódot használta a fiókjához való regisztrációhoz.
+* A hívás a hangpostára lett továbbítva.
+   * Győződjön meg arról, hogy a felhasználó telefonja be van kapcsolva, és hogy a szolgáltatás elérhető a saját területén, vagy használjon másik módszert.
+* A felhasználó blokkolva van
+   * Az Azure AD-rendszergazda feloldja a felhasználót a Azure Portal.
+* Az SMS nincs előfizetve az eszközön.
+   * A felhasználó módosíthatja a metódusokat, vagy aktiválhatja az SMS-t az eszközön.
+* Hibás távközlési szolgáltatók, például nem észlelhetők a telefonos eszközök, a DTMF-hangok hiánya, a letiltott hívóazonosító több eszközön, illetve az SMS több eszközön való letiltása.
+   * A Microsoft több távközlési szolgáltatót használ a telefonhívások és SMS-üzenetek továbbítására a hitelesítéshez. Ha a fenti problémák bármelyikét látja, akkor a felhasználó öt percen belül legalább ötször megpróbálta használni a metódust, és a felhasználó információi elérhetők a Microsoft ügyfélszolgálatával való kapcsolatfelvételkor.
 
 ## <a name="security-questions"></a>Biztonsági kérdések
 
-A biztonsági kérdések **csak az Azure ad önkiszolgáló jelszó-visszaállítási szolgáltatásában** érhetők el a nem rendszergazdai fiókokra.
+A bejelentkezési esemény során a biztonsági kérdések nem használhatók hitelesítési módszerként. Ehelyett biztonsági kérdéseket használhat az önkiszolgáló jelszó-visszaállítási (SSPR) folyamat során annak megerősítéséhez, hogy ki vagy. A rendszergazdai fiókok nem használhatnak biztonsági kérdéseket ellenőrzési módszerként a SSPR.
 
-Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel együtt használja őket. A biztonsági kérdések kevésbé biztonságosak, mint más metódusok, mert egyes felhasználók tudják, hogy a válaszokat egy másik felhasználó kérdéseire.
+Amikor a felhasználók regisztráljanak a SSPR, a rendszer felkéri a használandó hitelesítési módszerek kiválasztására. Ha úgy döntenek, hogy biztonsági kérdéseket használnak fel, válasszon ki egy kérdést, hogy Kérdezzen rá, majd adja meg a saját válaszait.
+
+![A biztonsági kérdések hitelesítési módszereit és lehetőségeit megjelenítő Azure Portal képernyőképe](media/concept-authentication-methods/security-questions-authentication-method.png)
 
 > [!NOTE]
-> A biztonsági kérdések tárolása a címtárban található felhasználói objektumon történik, és a felhasználók csak a regisztráció során válaszolnak. A rendszergazda nem tudja beolvasni vagy módosítani a felhasználó kérdéseit és válaszait.
->
+> A biztonsági kérdések tárolása a címtárban található felhasználói objektumon történik, és a felhasználók csak a regisztráció során válaszolnak. Nincs mód arra, hogy a rendszergazda beolvassa vagy módosítsa a felhasználó kérdéseit és válaszait.
+
+A biztonsági kérdések kevésbé biztonságosak, mint más metódusok, mert egyes felhasználók tudják, hogy a válaszokat egy másik felhasználó kérdéseire. Ha a SSPR biztonsági kérdéseit használja, azt javasoljuk, hogy egy másik módszerrel együtt használja őket. A felhasználó kérheti a Microsoft Authenticator alkalmazás vagy a telefonos hitelesítés használatát a SSPR folyamat során a személyazonosságának ellenőrzéséhez, és csak akkor válassza a biztonsági kérdéseket, ha azok nem rendelkeznek telefonos vagy regisztrált eszközzel.
 
 ### <a name="predefined-questions"></a>Előre meghatározott kérdések
+
+A következő előre meghatározott biztonsági kérdések használhatók ellenőrzési módszerként a SSPR. Az összes biztonsági kérdést lefordítjuk és honosítjuk az Office 365 teljes készletében, a felhasználó böngésző területi beállítása alapján:
 
 * Melyik városban teljesítette az első házastársa/partnerét?
 * Milyen városokban felelt meg a szülei?
@@ -74,7 +211,7 @@ Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel eg
 * Mi a kedvenc étele?
 * Mi az anyai nagymama első és vezetékneve?
 * Mi az anyja középső neve?
-* Mi a legrégebbi testvére születésnapjának hónapja és éve? (például 1985. november)
+* Mi a legrégebbi testvére születésnapjának hónapja és éve? (például 1985 november)
 * Mi a legrégebbi testvérének középső neve?
 * Apai nagyapa vezetékneve és keresztneve?
 * Mi a legfiatalabb testvér középső neve?
@@ -96,15 +233,15 @@ Ha biztonsági kérdéseket használ, azt javasoljuk, hogy más módszerekkel eg
 * Ha fiatal volt, mit szeretne, amikor felnőtt?
 * Ki a leghíresebb személy, akivel valaha is találkozott?
 
-Az előre definiált biztonsági kérdések mindegyike le van fordítva és honosítva van az Office 365 teljes készletében, a felhasználó böngésző területi beállítása alapján.
-
 ### <a name="custom-security-questions"></a>Egyéni biztonsági kérdések
 
-Az egyéni biztonsági kérdések nincsenek honosítva. Minden egyéni kérdés a rendszergazda felhasználói felületen megadott nyelven jelenik meg, még akkor is, ha a felhasználó böngésző területi beállítása eltér. Ha honosított kérdésekre van szüksége, használja az előre meghatározott kérdéseket.
+A további rugalmasság érdekében megadhatja saját egyéni biztonsági kérdéseit. Az egyéni biztonsági kérdések maximális hossza 200 karakter.
 
-Az egyéni biztonsági kérdések maximális hossza 200 karakter.
+Az egyéni biztonsági kérdések nincsenek automatikusan honosítva, mint az alapértelmezett biztonsági kérdések. Minden egyéni kérdés a rendszergazda felhasználói felületen megadott nyelven jelenik meg, még akkor is, ha a felhasználó böngésző területi beállítása eltér. Ha honosított kérdésekre van szüksége, használja az előre meghatározott kérdéseket.
 
 ### <a name="security-question-requirements"></a>Biztonsági kérdésekkel kapcsolatos követelmények
+
+Az alapértelmezett és az egyéni biztonsági kérdések esetében a következő követelmények és korlátozások érvényesek:
 
 * A minimális válasz karakteres korlát három karakterből állhat.
 * A maximális válasz karakteres korlátja 40 karakter.
@@ -115,154 +252,39 @@ Az egyéni biztonsági kérdések maximális hossza 200 karakter.
 
 ## <a name="email-address"></a>E-mail-cím
 
-Az e-mail **-cím csak az Azure ad önkiszolgáló jelszó-visszaállítási szolgáltatásában**érhető el.
+Egy e-mail-cím nem használható közvetlen hitelesítési módszerként. Az e-mail-cím csak az önkiszolgáló jelszó-visszaállítás (SSPR) hitelesítési beállításaként érhető el. Ha a SSPR során e-mail-cím van kiválasztva, a rendszer e-mailt küld a felhasználónak a hitelesítési/ellenőrzési folyamat elvégzéséhez.
 
-A Microsoft olyan e-mail-fiók használatát javasolja, amely nem igényli a felhasználó Azure AD-jelszavának elérését.
+A SSPR való regisztráció során a felhasználó megadja a használni kívánt e-mail-címet. Azt javasoljuk, hogy a vállalati fióktól eltérő e-mail-fiókot használjanak, hogy biztosan hozzáférhessenek a SSPR.
 
-## <a name="microsoft-authenticator-app"></a>A Microsoft Authenticator alkalmazás
+## <a name="app-passwords"></a>Alkalmazásjelszavak.
 
-A Microsoft Authenticator alkalmazás további biztonsági szintet biztosít az Azure AD munkahelyi vagy iskolai fiókjához vagy a Microsoft-fiókhoz.
+Bizonyos régebbi, nem böngészőbeli alkalmazások nem értik a hitelesítési folyamat szüneteltetését vagy megszakítását. Ha egy felhasználó engedélyezve van a többtényezős hitelesítéshez, és megkísérli használni a régebbi, nem böngészőbeli alkalmazások egyikét, általában nem sikerül hitelesíteni őket. Az alkalmazás jelszava lehetővé teszi a felhasználók számára, hogy megszakítás nélkül továbbra is sikeresen hitelesítsék a régebbi, nem böngészőbeli alkalmazásokat.
 
-A Microsoft Authenticator alkalmazás [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) és [Windows Phone](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6) rendszereken érhető el.
+Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelszavakat. Ha lehetővé szeretné tenni a felhasználóknak az alkalmazás jelszavának létrehozását, jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése** jelölőnégyzetet, ha a felhasználó Azure-multi-Factor Authentication tulajdonságainál a *szolgáltatás beállításai* között a nem böngésző alkalmazások számára szeretne bejelentkezni.
 
-> [!NOTE]
-> A felhasználók nem regisztrálhatják a mobil alkalmazásaikat az önkiszolgáló jelszó-visszaállításhoz való regisztráláskor. Ehelyett a felhasználók a biztonsági adatok regisztrációjának előzetes [https://aka.ms/mfasetup](https://aka.ms/mfasetup) verziójában regisztrálhatják a Mobile alkalmazást [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo).
->
+![Képernyőkép a Azure Portalról, amely a többtényezős hitelesítés szolgáltatás beállításait mutatja be az alkalmazás jelszavainak felhasználójának engedélyezéséhez](media/concept-authentication-methods/app-password-authentication-method.png)
 
-### <a name="notification-through-mobile-app"></a>Értesítés a Mobile App használatával
+Ha a feltételes hozzáférési szabályzatok segítségével kényszeríti az Azure Multi-Factor Authenticationt, és nem a felhasználónkénti MFA-t használja, nem hozhat létre alkalmazás-jelszavakat. A feltételes hozzáférési szabályzatokat használó modern alkalmazások hozzáférés-vezérléséhez nincs szükségük az alkalmazás jelszavára.
 
-A Microsoft Authenticator alkalmazás segít megakadályozni a fiókok jogosulatlan elérését, és letilthatja a csalárd tranzakciókat, ha értesítéseket küld az okostelefonra vagy a táblaszámítógépre. A felhasználók megtekinthetik az értesítést, és ha ez jogos, válassza az ellenőrzés lehetőséget. Ellenkező esetben a Megtagadás lehetőséget is kiválaszthatja.
+Ha a szervezete egyszeri bejelentkezéshez (SSO) van összevont Azure AD-val, és az Azure Multi-Factor Authentication-t használja, a következő szempontokat kell figyelembe vennie:
 
-> [!WARNING]
-> Az önkiszolgáló jelszó-visszaállításhoz, ha csak egy módszer szükséges az alaphelyzetbe állításhoz, az ellenőrzési kód az egyetlen lehetőség a felhasználók számára a **legmagasabb szintű biztonság biztosításához**.
->
-> Ha két módszer szükséges, a felhasználók visszaállíthatják az értesítési **vagy** ellenőrzési **kódokat az egyéb** engedélyezett módszerek kiegészítéseként.
->
-
-Ha engedélyezi mindkét értesítés használatát a Mobile App és az ellenőrző kód használatával a Mobile apps szolgáltatásban, a Microsoft Authenticator alkalmazást az értesítéseket használó felhasználók értesítést és kódot is használhatnak az identitásuk ellenőrzéséhez.
-
-> [!NOTE]
-> Ha a szervezete Kínában dolgozik vagy Kínába utazik, az **Android-eszközökön** a **Mobile App metóduson keresztül küldött értesítés** nem működik az adott országban. Ezeket a felhasználókat alternatív módszereket kell elérhetővé tenni.
-
-### <a name="verification-code-from-mobile-app"></a>Ellenőrző kód a Mobile appből
-
-A Microsoft Authenticator alkalmazás vagy más külső féltől származó alkalmazások szoftver-tokenként használhatók eskü-ellenőrző kód létrehozásához. A Felhasználónév és a jelszó megadása után adja meg az alkalmazás által a bejelentkezési képernyőn megadott kódot. Az ellenőrzőkód egy második hitelesítési módként szolgál.
-
-> [!WARNING]
-> Az önkiszolgáló jelszó-visszaállításhoz, ha csak egy módszerre van szükség az ellenőrző kód alaphelyzetbe állításához, az egyetlen lehetőség a felhasználók számára a **legmagasabb szintű biztonság biztosításához**.
->
-
-Előfordulhat, hogy a felhasználók legfeljebb öt olyan hardver-tokent vagy hitelesítő alkalmazást (például a Microsoft Authenticator alkalmazást, amelyet a használatra konfiguráltak) kombinálnak.
-
-## <a name="oath-hardware-tokens-public-preview"></a>A hardver-tokenek ESKÜje (nyilvános előzetes verzió)
-
-Az eskü egy nyílt szabvány, amely meghatározza, hogy az egyszeri jelszavas (OTP) kódok hogyan jönnek létre. Az Azure AD támogatja az eskü-TOTP SHA-1 tokenek használatát a 30 másodperces vagy a 60-Second fajta esetében. Ezek a jogkivonatok a választott gyártótól származnak. A titkos kulcsok legfeljebb 128 karakterből állhatnak, amelyek nem kompatibilisek az összes jogkivonattal. A titkos kulcs csak az *a-z* , a-z és *a-z* , valamint a *1-7*karakterből állhat, és a Base32-ben kell kódolni.
-
-![ESKÜ-tokenek feltöltése az MFA-eskü tokenek paneljére](media/concept-authentication-methods/mfa-server-oath-tokens-azure-ad.png)
-
-A nyilvános előzetes verzió részeként a rendszer a hardveres jogkivonatokat is támogatja. További információ az előzetes verziókról: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)
-
-A jogkivonatok beszerzése után a következő példában látható módon fel kell tölteni egy vesszővel tagolt (CSV) fájlformátumot, beleértve az UPN-t, a sorozatszámot, a titkos kulcsot, az időintervallumot, a gyártót és a modellt.
-
-```csv
-upn,serial number,secret key,time interval,manufacturer,model
-Helga@contoso.com,1234567,1234567abcdef1234567abcdef,60,Contoso,HardwareKey
-```
-
-> [!NOTE]
-> Ügyeljen rá, hogy a fejlécsor szerepeljen a CSV-fájlban.
-
-Miután megfelelően formázott CSV-fájlként, a rendszergazda bejelentkezhet a Azure Portalba, és megnyithatja **Azure Active Directory** > **biztonsági** > **MFA** > -**eskü tokeneket**, és feltöltheti az eredményül kapott CSV-fájlt.
-
-A CSV-fájl méretétől függően a folyamat eltarthat néhány percig. Kattintson a **frissítés** gombra az aktuális állapot lekéréséhez. Ha a fájlban hibák merülnek fel, lehetősége lesz letölteni egy CSV-fájlt, amely felsorolja a feloldható hibákat. A letöltött CSV-fájl mezőinek neve eltér a feltöltött verziótól.
-
-A hibák elhárítása után a rendszergazda ezután aktiválhatja az egyes kulcsokat, ha a jogkivonat aktiválása elemre kattint, és beírja a tokenen megjelenített egyszeri **jelszavas** azonosítót.
-
-Előfordulhat, hogy a felhasználók legfeljebb öt olyan hardver-tokent vagy hitelesítő alkalmazást (például a Microsoft Authenticator alkalmazást, amelyet a használatra konfiguráltak) kombinálnak.
-
-## <a name="phone-options"></a>Telefonos beállítások
-
-### <a name="mobile-phone"></a>Mobiltelefon
-
-A mobil telefonok esetében két lehetőség érhető el.
-
-Ha a felhasználó nem szeretné, hogy a mobil telefonszáma megjelenjen a címtárban, de továbbra is szeretné használni azt a jelszó-visszaállításhoz, a rendszergazdáknak nem szabad azt a címtárban feltölteniük. A felhasználók a [jelszó-visszaállítási regisztrációs portálon](https://aka.ms/ssprsetup)tölthetik fel a **hitelesítési telefonos** attribútumot. A rendszergazdák láthatják ezeket az információkat a felhasználó profiljában, de máshol nem jelennek meg.
-
-A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonszám*formátumban kell lenniük, például: + 1 4255551234.
-
-> [!NOTE]
-> Az országkód és a telefonszám között szóköz szükséges.
->
-> A jelszó-visszaállítás nem támogatja a telefonos bővítményeket. A rendszer a hívás elhelyezése előtt is eltávolítja a bővítményeket a + 1 4255551234X12345 formátumban.
-
-A Microsoft nem garantálja a konzisztens SMS-és hangalapú Multi-Factor Authentication kérések kézbesítését ugyanazzal a számmal. A felhasználók érdekében a Microsoft bármikor hozzáadhat vagy eltávolíthat rövid kódokat, ahogyan az útvonal-kiigazításokat az SMS-kézbesítés javítása érdekében. A Microsoft nem támogatja a rövid kódokat a Egyesült Államok és Kanadában kívüli országok/régiók számára.
-
-#### <a name="text-message"></a>Szöveges üzenet
-
-A rendszer SMS-t továbbít az ellenőrző kódot tartalmazó mobil telefonszámra. A folytatáshoz adja meg a bejelentkezési felületen megadott ellenőrző kódot.
-
-#### <a name="phone-call"></a>Telefonhívás
-
-Az Ön által megadott telefonszámra automatikusan hanghívás történik. Válaszolja meg a hívást, majd a hitelesítéshez nyomja meg a # gombot a telefon billentyűzetén.
-
-> [!IMPORTANT]
-> Az 2019-as naptól kezdve a telefonhívási lehetőségek nem lesznek elérhetők az MFA és a SSPR felhasználók számára ingyenes/próbaverziós Azure AD-bérlők esetében. Ez a változás nem érinti az SMS-üzeneteket. A telefonos hívás továbbra is elérhető lesz a fizetős Azure AD-bérlők felhasználói számára. Ez a változás csak az ingyenes/próbaverziós Azure AD-bérlőket befolyásolja.
-
-### <a name="office-phone"></a>Munkahelyi telefon
-
-Az Ön által megadott telefonszámra automatikusan hanghívás történik. Válaszolja meg a hívást, majd a hitelesítéshez nyomja meg a telefon billentyűzetén a # gombot.
-
-A megfelelő működéshez a telefonszámoknak a *+ országhívószám telefonszám*formátumban kell lenniük, például: + 1 4255551234.
-
-Az Office Phone-attribútumot a rendszergazda felügyeli.
-
-> [!IMPORTANT]
-> Az 2019-as naptól kezdve a telefonhívási lehetőségek nem lesznek elérhetők az MFA és a SSPR felhasználók számára ingyenes/próbaverziós Azure AD-bérlők esetében. Ez a változás nem érinti az SMS-üzeneteket. A telefonos hívás továbbra is elérhető lesz a fizetős Azure AD-bérlők felhasználói számára. Ez a változás csak az ingyenes/próbaverziós Azure AD-bérlőket befolyásolja.
-
-> [!NOTE]
-> Az országkód és a telefonszám között szóköz szükséges.
->
-> A jelszó-visszaállítás nem támogatja a telefonos bővítményeket. A rendszer a hívás elhelyezése előtt is eltávolítja a bővítményeket a + 1 4255551234X12345 formátumban.
-
-### <a name="troubleshooting-phone-options"></a>Telefonos beállítások hibaelhárítása
-
-A hitelesítési módszerekkel kapcsolatos gyakori problémák telefonszám használatával:
-
-* Blokkolt hívó azonosítója egyetlen eszközön
-   * Eszköz hibáinak megoldása
-* Helytelen telefonszám, helytelen országkód, otthoni telefonszám és munkahelyi telefonszám
-   * Felhasználói objektum és konfigurált hitelesítési módszerek hibakeresése. Győződjön meg arról, hogy a megfelelő telefonszámok regisztrálva vannak.
-* Helytelen PIN-kód van megadva
-   * Erősítse meg, hogy a felhasználó használta az Azure MFA-kiszolgálón regisztrált megfelelő PIN-kódot.
-* Hívás továbbítása a hangpostára
-   * Győződjön meg arról, hogy a felhasználó bekapcsolta a telefont, és a szolgáltatás elérhető a saját területén, vagy használjon alternatív módszert.
-* A felhasználó blokkolva van
-   * A rendszergazda feloldja a felhasználó blokkolását a Azure Portalban.
-* Az SMS nincs előfizetve az eszközön
-   * A felhasználó módosíthatja a metódusokat, vagy aktiválhatja az SMS-t az eszközön.
-* Hibás távközlési szolgáltatók (nem észlelhetők telefonos bemenetek, hiányzó DTMF-hangok, letiltott hívóazonosító több eszközön, vagy a több eszközön letiltott SMS-ek)
-   * A Microsoft több távközlési szolgáltatót használ a telefonhívások és SMS-üzenetek továbbítására a hitelesítéshez. Ha a fenti problémák bármelyikét látja, akkor a felhasználó 5 percen belül legalább 5 alkalommal megpróbálta használni a metódust, és a felhasználó információi elérhetők a Microsoft ügyfélszolgálatával való kapcsolatfelvételkor.
-
-## <a name="app-passwords"></a>Alkalmazás jelszavai
-
-Bizonyos böngészőn kívüli alkalmazások nem támogatják a többtényezős hitelesítést, ha a felhasználó számára engedélyezve van a többtényezős hitelesítés, és a nem böngészőbeli alkalmazások használatát kísérli meg, nem tudnak hitelesíteni. Az alkalmazás jelszava lehetővé teszi, hogy a felhasználók továbbra is hitelesítsék magukat
-
-Ha a feltételes hozzáférési szabályzatok segítségével kényszeríti Multi-Factor Authentication, és nem a felhasználónkénti MFA-n keresztül, nem hozhat létre alkalmazás-jelszavakat. A feltételes hozzáférési házirendeket használó alkalmazások hozzáférés-vezérléséhez nem szükségesek az alkalmazás jelszavai.
-
-Ha a szervezete az Azure AD-vel történő egyszeri bejelentkezéshez készült, és az Azure MFA-t fogja használni, vegye figyelembe a következő adatokat:
-
-* Az alkalmazás jelszavait az Azure AD ellenőrzi, így megkerüli az összevonást. Az összevonás csak az alkalmazás jelszavának beállításakor használatos. Összevont (SSO) felhasználók esetén a rendszer a jelszavakat a szervezeti AZONOSÍTÓban tárolja. Ha a felhasználó elhagyja a vállalatot, az információnak a szervezet AZONOSÍTÓját kell használnia az rSync használatával. A fiókok letiltása/törlése akár három órát is igénybe vehet, ami késlelteti az alkalmazások jelszavainak letiltását/törlését az Azure AD-ben.
-* Az alkalmazásjelszó nem tartja be a helyszíni ügyfél hozzáférés-vezérlési beállításait.
-* Nem érhető el helyszíni hitelesítési naplózási/naplózási képesség az alkalmazások jelszavainak megadásához.
-* Bizonyos speciális építészeti kialakításokhoz szükség lehet a szervezeti felhasználónevek és jelszavak és az alkalmazások jelszavának együttes használatára, ha kétlépéses ellenőrzést használ az ügyfelekkel a hitelesítés helyétől függően. A helyszíni infrastruktúrával hitelesítő ügyfelek esetében szervezeti felhasználónevet és jelszót kell használnia. Az Azure AD-vel hitelesítő ügyfelek esetében használja az alkalmazás jelszavát.
-* Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelszavakat. Ha lehetővé szeretné tenni a felhasználóknak az alkalmazás jelszavának létrehozását, jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése lehetőséget a szolgáltatás beállításai területen lévő nem böngészőalapú alkalmazásokba való bejelentkezéshez** .
+* Az alkalmazás jelszavait az Azure AD ellenőrzi, így megkerüli az összevonást. Az összevonás csak az alkalmazás jelszavának beállításakor használatos. Összevont (SSO) felhasználók esetén a rendszer a jelszavakat a szervezeti AZONOSÍTÓban tárolja. Ha a felhasználó elhagyja a vállalatot, az információnak a szervezet AZONOSÍTÓját kell használnia az rSync használatával. A fiók letiltási vagy törlési eseményeinek szinkronizálása akár három órát is igénybe vehet, ami késlelteti az alkalmazás jelszavának letiltását/törlését az Azure AD-ben.
+* Az alkalmazások jelszavai nem teljesítik a helyszíni ügyfél Access Control beállításait.
+* Nem érhető el helyszíni hitelesítési naplózási vagy naplózási funkció az alkalmazás jelszavához.
+* Bizonyos speciális építészeti kialakításokhoz a hitelesítésük helyétől függően a szervezeti felhasználónevek és jelszavak és az alkalmazások jelszavainak együttes használata szükséges.
+    * A helyszíni infrastruktúrával hitelesítő ügyfelek esetében szervezeti felhasználónevet és jelszót kell használnia.
+    * Az Azure AD-vel hitelesítő ügyfelek esetében használja az alkalmazás jelszavát.
 
 ## <a name="next-steps"></a>További lépések
 
-[Önkiszolgáló jelszó-visszaállítás engedélyezése a szervezet számára](quickstart-sspr.md)
+Első lépésként tekintse meg az önkiszolgáló [jelszó-visszaállítás (SSPR)][tutorial-sspr] és az [Azure multi-Factor Authentication][tutorial-azure-mfa]című oktatóanyagot.
 
-[Azure-Multi-Factor Authentication engedélyezése a szervezet számára](howto-mfa-getstarted.md)
+További információ a SSPR fogalmakról: az [Azure ad önkiszolgáló jelszó-visszaállításának működése][concept-sspr].
 
-[Kombinált regisztráció engedélyezése a bérlőben](howto-registration-mfa-sspr-combined.md)
+További információ az MFA-fogalmakról: [how Azure multi-Factor Authentication Works][concept-mfa].
 
-[A végfelhasználói hitelesítési módszer konfigurációs dokumentációja](https://aka.ms/securityinfoguide)
+<!-- INTERNAL LINKS -->
+[tutorial-sspr]: tutorial-enable-sspr.md
+[tutorial-azure-mfa]: tutorial-enable-azure-mfa.md
+[concept-sspr]: concept-sspr-howitworks.md
+[concept-mfa]: concept-mfa-howitworks.md

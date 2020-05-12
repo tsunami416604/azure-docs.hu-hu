@@ -3,16 +3,16 @@ title: Nagyméretű üzenetek kezelése a darabolás használatával
 description: Megtudhatja, hogyan kezelheti a nagyméretű üzenetek méretét a Azure Logic Apps használatával létrehozott automatizált feladatok és munkafolyamatok darabolásával.
 services: logic-apps
 ms.suite: integration
-author: shae-hurst
-ms.author: shhurst
+author: DavidCBerry13
+ms.author: daberry
 ms.topic: article
 ms.date: 12/03/2019
-ms.openlocfilehash: 81e7c12b04c1ebd9691c11d76f387f7d42490180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54828dded5196c86946d99a9cd8cec7a42533661
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456551"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117563"
 ---
 # <a name="handle-large-messages-with-chunking-in-azure-logic-apps"></a>Nagy méretű üzenetek kezelése Azure Logic Apps
 
@@ -41,7 +41,7 @@ A Logic Apps kommunikáló szolgáltatások rendelkezhetnek saját üzenetek mé
 A darabolást támogató összekötők esetében az alapul szolgáló adatdarabolási protokoll láthatatlan a végfelhasználók számára. Azonban nem minden összekötő támogatja a darabolást, így ezek az összekötők futásidejű hibákat eredményeznek, ha a bejövő üzenetek túllépik az összekötők méretének korlátait.
 
 > [!NOTE]
-> A darabolást használó műveletek esetében nem lehet átadni az trigger törzsét, és nem használhat `@triggerBody()?['Content']` kifejezéseket, például az adott műveletekben. Ehelyett szöveges vagy JSON-fájl tartalma esetén megpróbálhatja az [ **összeállítási** műveletet](../logic-apps/logic-apps-perform-data-operations.md#compose-action) használni, vagy [létrehozhat egy változót](../logic-apps/logic-apps-create-variables-store-values.md) a tartalom kezeléséhez. Ha az trigger törzse más tartalomtípusokat is tartalmaz, például médiafájlokat, más lépéseket kell végrehajtania a tartalom kezeléséhez.
+> A darabolást használó műveletek esetében nem lehet átadni az trigger törzsét, és nem használhat kifejezéseket, például `@triggerBody()?['Content']` az adott műveletekben. Ehelyett szöveges vagy JSON-fájl tartalma esetén megpróbálhatja az [ **összeállítási** műveletet](../logic-apps/logic-apps-perform-data-operations.md#compose-action) használni, vagy [létrehozhat egy változót](../logic-apps/logic-apps-create-variables-store-values.md) a tartalom kezeléséhez. Ha az trigger törzse más tartalomtípusokat is tartalmaz, például médiafájlokat, más lépéseket kell végrehajtania a tartalom kezeléséhez.
 
 <a name="set-up-chunking"></a>
 
@@ -51,7 +51,7 @@ A darabolást támogató összekötők esetében az alapul szolgáló adatdarabo
 
 Ha egy végpont engedélyezte a letöltések vagy a feltöltések darabolását, a logikai alkalmazás HTTP-műveletei automatikusan nagy mennyiségű üzenetet tartalmaznak. Ellenkező esetben be kell állítania az adatdarabolás támogatását a végponton. Ha nem rendelkezik a végpont vagy az összekötő vezérlésével, előfordulhat, hogy nem rendelkezik a darabolás beállításával.
 
-Ha egy HTTP-művelet még nem teszi lehetővé a darabolást, akkor a művelet `runTimeConfiguration` tulajdonságában is be kell állítania a darabolást. Ezt a tulajdonságot a műveleten belül állíthatja be közvetlenül a Code View Editorban a későbbiekben leírtak szerint, vagy a Logic Apps Designerben az itt leírtak szerint:
+Ha egy HTTP-művelet még nem teszi lehetővé a darabolást, akkor a művelet tulajdonságában is be kell állítania a darabolást `runTimeConfiguration` . Ezt a tulajdonságot a műveleten belül állíthatja be közvetlenül a Code View Editorban a későbbiekben leírtak szerint, vagy a Logic Apps Designerben az itt leírtak szerint:
 
 1. A http-művelet jobb felső sarkában kattintson a három pontot ábrázoló gombra (**...**), majd válassza a **Beállítások**lehetőséget.
 
@@ -69,23 +69,23 @@ Ha egy HTTP-művelet még nem teszi lehetővé a darabolást, akkor a művelet `
 
 Számos végpont automatikusan küld nagy mennyiségű üzenetet a HTTP GET kéréssel letöltött adattömbökben. A ledarabolt üzenetek HTTP-n keresztüli letöltéséhez a végpontnak támogatnia kell a részleges tartalmi kéréseket vagy a *darabolásos letöltéseket*. Ha a logikai alkalmazás HTTP GET kérést küld egy végpontnak a tartalom letöltéséhez, és a végpont "206" állapotkódot válaszol, a válasz feldarabolt tartalmat tartalmaz. Logic Apps nem tudja szabályozni, hogy a végpont támogatja-e a részleges kérelmeket. Ha azonban a logikai alkalmazás megkapja az első "206" választ, a logikai alkalmazás automatikusan több kérést küld az összes tartalom letöltéséhez.
 
-Ha szeretné megtekinteni, hogy egy végpont támogatja-e a részleges tartalmat, küldjön egy HEAD-kérelmet. Ez a kérelem segít megállapítani, hogy a válasz `Accept-Ranges` tartalmazza-e a fejlécet. Így ha a végpont támogatja a darabolásos letöltéseket, de nem küldi el a darabolásos tartalmat, ezt a beállítást a `Range` HTTP Get-kérelem fejlécének beállításával *javasolhatja* . 
+Ha szeretné megtekinteni, hogy egy végpont támogatja-e a részleges tartalmat, küldjön egy HEAD-kérelmet. Ez a kérelem segít megállapítani, hogy a válasz tartalmazza-e a `Accept-Ranges` fejlécet. Így ha a végpont támogatja a darabolásos letöltéseket, de nem küldi el a darabolásos *suggest* tartalmat, ezt a beállítást a `Range` http Get-kérelem fejlécének beállításával javasolhatja. 
 
 Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a feldarabolt tartalomnak egy végpontról a logikai alkalmazásba való letöltéséhez használja:
 
 1. A logikai alkalmazás HTTP GET kérelmet küld a végpontnak.
 
-   A kérelem fejléce opcionálisan tartalmazhat egy `Range` olyan mezőt is, amely leírja a tartalom adattömböket kérő bájtok tartományát.
+   A kérelem fejléce opcionálisan tartalmazhat egy olyan `Range` mezőt is, amely leírja a tartalom adattömböket kérő bájtok tartományát.
 
 2. A végpont az "206" állapotkódot és egy HTTP-üzenet törzsét válaszolja meg.
 
-    Az ebben a részletekben található tartalom részletei a válasz `Content-Range` fejlécében jelennek meg, beleértve azokat az információkat is, amelyek segítenek Logic apps meghatározni a darab kezdetét és végét, valamint a teljes tartalom teljes méretét a darabolás előtt.
+    Az ebben a részletekben található tartalom részletei a válasz fejlécében jelennek meg `Content-Range` , beleértve azokat az információkat is, amelyek segítenek Logic apps meghatározni a darab kezdetét és végét, valamint a teljes tartalom teljes méretét a darabolás előtt.
 
 3. A logikai alkalmazás automatikusan elküldi a következő HTTP GET-kéréseket.
 
     A logikai alkalmazás követő GET kérelmeket küld, amíg a teljes tartalmat le nem kéri.
 
-Ez a műveleti definíció például egy HTTP GET kérést mutat be, amely `Range` beállítja a fejlécet. A fejléc *azt sugallja* , hogy a végpontnak a darabolásos tartalommal kell válaszolnia:
+Ez a műveleti definíció például egy HTTP GET kérést mutat be, amely beállítja a `Range` fejlécet. A fejléc *azt sugallja* , hogy a végpontnak a darabolásos tartalommal kell válaszolnia:
 
 ```json
 "getAction": {
@@ -107,7 +107,7 @@ A GET kérelem beállítja a "tartomány" fejlécet a "Bytes = 0-1023" értékre
 
 ## <a name="upload-content-in-chunks"></a>Tartalom feltöltése a darabokban
 
-A feldarabolt tartalom HTTP-műveletből való feltöltéséhez a művelet `runtimeConfiguration` tulajdonságában engedélyezni kell a darabolás támogatását. Ez a beállítás lehetővé teszi, hogy a művelet elindítsa a darabolási protokollt. A logikai alkalmazás ezután elküldheti a kezdeti BEJEGYZÉST, vagy ELHELYEZheti az üzenetet a célként megadott végponton. Azt követően, hogy a végpont egy javasolt mérettel válaszol, a logikai alkalmazás a tartalom adattömböket tartalmazó HTTP-javítási kérelmek küldésével követi nyomon.
+A feldarabolt tartalom HTTP-műveletből való feltöltéséhez a művelet tulajdonságában engedélyezni kell a darabolás támogatását `runtimeConfiguration` . Ez a beállítás lehetővé teszi, hogy a művelet elindítsa a darabolási protokollt. A logikai alkalmazás ezután elküldheti a kezdeti BEJEGYZÉST, vagy ELHELYEZheti az üzenetet a célként megadott végponton. Azt követően, hogy a végpont egy javasolt mérettel válaszol, a logikai alkalmazás a tartalom adattömböket tartalmazó HTTP-javítási kérelmek küldésével követi nyomon.
 
 Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a logikai alkalmazásból egy végpontra feltölti a darabolásos tartalmat:
 
@@ -148,7 +148,7 @@ Ezek a lépések részletesen ismertetik azokat a folyamatokat, Logic Apps a log
    | **x-MS-darab-méret** | Egész szám | Nem | A javasolt adathalmaz mérete bájtban |
    ||||
 
-Ez a műveleti definíció például egy HTTP POST-kérést mutat be a darabolásos tartalom egy végpontra való feltöltéséhez. A művelet `runTimeConfiguration` tulajdonságában a tulajdonság a `contentTransfer` következőre `transferMode` van `chunked`kijelölve:
+Ez a műveleti definíció például egy HTTP POST-kérést mutat be a darabolásos tartalom egy végpontra való feltöltéséhez. A művelet `runTimeConfiguration` tulajdonságában a tulajdonság a következőre van `contentTransfer` kijelölve `transferMode` `chunked` :
 
 ```json
 "postAction": {

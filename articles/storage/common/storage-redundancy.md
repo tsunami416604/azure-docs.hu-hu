@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: d37e790b8a77a48cb5ef53292712164dcdcf459b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872010"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117716"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -102,7 +102,7 @@ A Geo-Zone-redundáns tárolás (GZRS) a rendelkezésre állási zónákon keres
 
 GZRS-fiókkal folytathatja az adatok olvasását és írását, ha a rendelkezésre állási zónák elérhetetlenné válnak, vagy nem állíthatók helyre. Emellett az adatai tartósak is maradnak a teljes regionális leállás vagy egy olyan katasztrófa esetén, amelyben az elsődleges régió nem helyreállítható. A GZRS úgy lett kialakítva, hogy legalább 99.99999999999999%-os (16 9) tartósságot biztosítson az objektumok számára egy adott évben.
 
-Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, az oldal blobokat (kivéve a VHD-lemezeket), a fájlokat, a táblákat és a várólistákat. A GZRS és az RA-GZRS minden Azure-régióban elérhető.
+Csak az általános célú v2 tároló-fiókok támogatják a GZRS és az RA-GZRS. További információ a Storage-fiókok típusairól: az [Azure Storage-fiók áttekintése](storage-account-overview.md). A GZRS és RA-GZRS támogatja a blokk blobokat, az oldal blobokat (kivéve a VHD-lemezeket), a fájlokat, a táblákat és a várólistákat.
 
 A GZRS és az RA-GZRS a következő régiókban támogatott:
 
@@ -126,7 +126,7 @@ A Geo-redundáns tárolás (GRS vagy GZRS) replikálja az adatait a másodlagos 
 
 Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagos régióhoz, akkor megtervezheti, hogy az alkalmazások zökkenőmentesen átálljanak a másodlagos régió adatainak olvasására, ha az elsődleges régió bármilyen okból elérhetetlenné válik. A másodlagos régió mindig olvasási hozzáféréshez érhető el, így tesztelheti az alkalmazást, és ellenőrizheti, hogy a másodlagos esemény leáll-e leállás esetén. További információ az alkalmazások magas rendelkezésre állásra való tervezéséről: a [geo-redundancia használata a magas rendelkezésre állású alkalmazások tervezéséhez](geo-redundant-design.md).
 
-Ha a másodlagos olvasási hozzáférés engedélyezve van, az adatok a másodlagos végpontból és a Storage-fiók elsődleges végpontján is olvashatók. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a blob Storage elsődleges végpontja `myaccount.blob.core.windows.net`, akkor a másodlagos végpont. `myaccount-secondary.blob.core.windows.net` A Storage-fiókhoz tartozó fiók-hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
+Ha a másodlagos olvasási hozzáférés engedélyezve van, az adatok a másodlagos végpontból és a Storage-fiók elsődleges végpontján is olvashatók. A másodlagos végpont hozzáfűzi az utótagot *– a másodlagos* nevet a fiók nevéhez. Ha például a blob Storage elsődleges végpontja `myaccount.blob.core.windows.net` , akkor a másodlagos végpont `myaccount-secondary.blob.core.windows.net` . A Storage-fiókhoz tartozó fiók-hozzáférési kulcsok mind az elsődleges, mind a másodlagos végpont esetében azonosak.
 
 ### <a name="check-the-last-sync-time-property"></a>Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
 
@@ -143,7 +143,7 @@ Az alábbi táblázat azt mutatja be, hogy milyen tartós és elérhető az adat
 | Forgatókönyv                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Az adatközpontban lévő csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                  |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | No                              | Igen                              | Igen                                  | Igen                                  |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen                                  | Igen                                  |
 | Az egész régióra kiterjedő leállás következik be                                                                                     | Nem                              | Nem                               | Igen                                  | Igen                                  |
 | Olvasási hozzáférés a másodlagos régióban lévő adateléréshez, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
 | Objektumok tartóssága az adott évben<sup>1</sup>                                          | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |

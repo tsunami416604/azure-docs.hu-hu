@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2020
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 54fd8caef51a17148714d9cf90328572433c59db
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76717983"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115115"
 ---
 # <a name="use-classroom-labs-for-trainings"></a>A tanterem Labs használata képzésekhez
-Beállíthat egy labort tréningekhez. A Azure Lab Services tanterem Labs segítségével létrehozhat egy labort a betanításhoz, ahol minden egyes gyakornok azonos és elszigetelt környezetet használ a képzéshez. Házirendeket alkalmazhat annak biztosítására, hogy a képzési környezetek csak akkor legyenek elérhetők az egyes gyakornokok számára, ha szükségük van rájuk, és elegendő erőforrást (például virtuális gépeket) tartalmaznak, amelyek a képzéshez szükségesek 
+Az Azure Labs-szolgáltatások lehetővé teszik a professzorok, oktatók vagy tanítási asszisztensek számára, hogy gyorsan és egyszerűen hozzon létre egy online labort a gyakornokok számára előre konfigurált tanulási környezetek kiépítéséhez. Az egyes gyakornokok azonos és elszigetelt környezeteket tudnak használni a képzéshez. A szabályzatok alkalmazhatók annak biztosítására, hogy a képzési környezetek csak akkor legyenek elérhetők az egyes gyakornokok számára, ha szükségük van rájuk, és elegendő erőforrást tartalmaznak – például virtuális gépek – szükségesek a betanításhoz. 
 
 ![Tantermi labor](../media/classroom-labs-scenarios/classroom.png)
 

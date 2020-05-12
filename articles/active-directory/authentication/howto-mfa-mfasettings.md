@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9002447df44a1f0c87ec9de03e316d7d12d8a626
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cfde52db9cbe5bc14be7b30c1063215472bff699
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105658"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116288"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Az Azure Multi-Factor Authentication beállításainak konfigurálása
 
 Ez a cikk segítséget nyújt a Azure Portal Multi-Factor Authentication beállításainak kezelésében. Különböző témaköröket tartalmaz, amelyek segítségével a legtöbbet hozhatja ki az Azure Multi-Factor Authentication. Nem minden szolgáltatás érhető el az Azure Multi-Factor Authentication minden verziójában.
 
-Az Azure multi-Factor Authenticationhoz kapcsolódó beállításokat a Azure Portal a **Azure Active Directory** > **biztonsági** > **MFA**-val való tallózással érheti el.
+Az Azure multi-Factor Authenticationhoz kapcsolódó beállításokat a Azure Portal a **Azure Active Directory**  >  **biztonsági**  >  **MFA**-val való tallózással érheti el.
 
 ![Azure Portal – Azure AD-Multi-Factor Authentication beállításai](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-portal.png)
 
@@ -36,7 +36,7 @@ Ezen beállítások némelyike az MFA-kiszolgálóra, az Azure MFA-ra vagy mindk
 | [Felhasználók blokkolása/feloldása](#block-and-unblock-users) | Arra szolgál, hogy bizonyos felhasználók képesek legyenek Multi-Factor Authentication kérelmek fogadására. A letiltott felhasználók összes hitelesítési kísérlete automatikusan el lesz utasítva. A felhasználók a letiltás időpontjától kezdve 90 napig letiltva maradnak. |
 | [Csalási riasztás](#fraud-alert) | A felhasználókhoz kapcsolódó beállítások konfigurálása a csalárd ellenőrzési kérelmek jelentéséhez |
 | [Értesítések](#notifications) | Az MFA-kiszolgálóról érkező események értesítéseinek engedélyezése. |
-| [ESKÜ tokenek](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
+| [ESKÜ tokenek](concept-authentication-methods.md#oath-hardware-tokens) | Felhőalapú Azure MFA-környezetekben használatos a felhasználók eskü-jogkivonatának kezeléséhez. |
 | [Telefonhívás beállításai](#phone-call-settings) | A Felhőbeli és a helyszíni környezetekhez kapcsolódó telefonhívások és üdvözlések beállításainak konfigurálása. |
 | Szolgáltatók | Ez megjeleníti a fiókjához esetlegesen hozzárendelt meglévő hitelesítési szolgáltatókat is. Az új hitelesítési szolgáltatók nem hozhatók létre szeptember 1-től 2018-ig |
 
@@ -62,15 +62,15 @@ A felhasználók _blokkolása és feloldása_ funkció használatával megakadá
 ### <a name="block-a-user"></a>Felhasználó blokkolása
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. Keresse meg a **Azure Active Directory** > **biztonsági** > **MFA** > **blokkolása/letiltása felhasználókat**.
+2. Keresse meg a **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **blokkolása/letiltása felhasználókat**.
 3. A felhasználó blokkolásához válassza a **Hozzáadás** lehetőséget.
-4. Válassza ki a **replikációs csoportot**. Adja meg a letiltott felhasználó felhasználónevét **a\@Felhasználónév domain.com**. Írjon be egy megjegyzést az **OK** mezőben.
+4. Válassza ki a **replikációs csoportot**. Adja meg a letiltott felhasználó felhasználónevét a **felhasználónév \@ domain.com**. Írjon be egy megjegyzést az **OK** mezőben.
 5. A felhasználó blokkolásának befejezéséhez válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="unblock-a-user"></a>Felhasználó tiltásának feloldása
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. Keresse meg a **Azure Active Directory** > **biztonsági** > **MFA** > **blokkolása/letiltása felhasználókat**.
+2. Keresse meg a **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **blokkolása/letiltása felhasználókat**.
 3. Válassza a **Letiltás feloldása** elemet a **művelet** oszlopban a Letiltás feloldásához.
 4. Adjon meg egy megjegyzést a **blokkolás feloldásának okát** illetően.
 5. Válassza a **tiltás** feloldása lehetőséget a felhasználó tiltásának feloldásához.
@@ -82,14 +82,14 @@ Konfigurálja a _csalási riasztás_ funkciót, hogy a felhasználók jelentsene
 ### <a name="turn-on-fraud-alerts"></a>Csalási riasztások bekapcsolása
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. Keresse meg **Azure Active Directory** > **biztonsági** > **MFA** > -**csalások elleni riasztást**.
+2. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **MFA**-  >  **csalások elleni riasztást**.
 3. Állítsa be a **csalások beküldésének engedélyezése a felhasználók** számára **beállítást.**
 4. Kattintson a **Mentés** gombra.
 
 ### <a name="configuration-options"></a>Beállítási lehetőségek
 
 * **Felhasználó letiltása csalás**esetén: Ha a felhasználó csalást jelez, a fiókja 90 napig blokkolva van, vagy amíg a rendszergazda fel nem oldja a fiókját. A rendszergazdák a bejelentkezési jelentés segítségével ellenőrizhetik a bejelentkezéseket, és megtehetik a megfelelő lépéseket a jövőbeli csalások megelőzése érdekében. A rendszergazdák Ezután [letilthatják](#unblock-a-user) a felhasználó fiókját.
-* **Kód a csalás bejelentéséhez a kezdeti üdvözlés során**: Ha a felhasználók telefonhívást kapnak a kétlépéses ellenőrzés elvégzéséhez **#** , akkor általában megnyomják a bejelentkezést. A csalások jelentéséhez a felhasználónak be kell írnia egy **#** kódot a gomb megnyomása előtt. Alapértelmezés szerint ez a kód **0** , de testre is szabhatja.
+* **Kód a csalás bejelentéséhez a kezdeti üdvözlés során**: Ha a felhasználók telefonhívást kapnak a kétlépéses ellenőrzés elvégzéséhez, akkor általában megnyomják a **#** bejelentkezést. A csalások jelentéséhez a felhasználónak be kell írnia egy kódot a gomb megnyomása előtt **#** . Alapértelmezés szerint ez a kód **0** , de testre is szabhatja.
 
    >[!NOTE]
    >A Microsoft alapértelmezett hang-üdvözlése arra utasítja a felhasználókat, hogy a **0 #** lenyomásával küldjenek csalási riasztást. Ha **nullától**eltérő kódot szeretne használni, jegyezze fel és töltse fel a saját egyéni hangfelvételeit a felhasználókra vonatkozó megfelelő utasításokkal.
@@ -98,11 +98,11 @@ Konfigurálja a _csalási riasztás_ funkciót, hogy a felhasználók jelentsene
 ### <a name="view-fraud-reports"></a>Csalási jelentések megtekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **Azure Active Directory** > a**bejelentkezések** > **hitelesítésének részleteit**. A csalási jelentés mostantól a szabványos Azure AD-beli bejelentkezési jelentés részét képezi, és az **"eredmény részletesen"** jelenik meg, mivel az MFA megtagadva, a csalási kód beírása megtörtént.
+2. Válassza ki **Azure Active Directory**a  >  **bejelentkezések**  >  **hitelesítésének részleteit**. A csalási jelentés mostantól a szabványos Azure AD-beli bejelentkezési jelentés részét képezi, és az **"eredmény részletesen"** jelenik meg, mivel az MFA megtagadva, a csalási kód beírása megtörtént.
  
 ## <a name="notifications"></a>Értesítések
 
-Adja meg az e-mail-címeket azon felhasználók számára, akik csalási riasztási e-maileket kapnak **Azure Active Directory** > **biztonsági** > **multi-Factor Authentication** > **értesítésekben**.
+Adja meg az e-mail-címeket azon felhasználók számára, akik csalási riasztási e-maileket kapnak **Azure Active Directory**  >  **biztonsági**  >  **multi-Factor Authentication**  >  **értesítésekben**.
 
 ![Értesítési csalások riasztási e-mail mintája](./media/howto-mfa-mfasettings/multi-factor-authentication-fraud-alert-email.png)
 
@@ -145,7 +145,7 @@ Ha például csak egy egyéni üzenet van, a német nyelvvel:
 ### <a name="set-up-a-custom-message"></a>Egyéni üzenet beállítása
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **MFA** > **telefonhívási beállításait**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **telefonhívási beállításait**.
 1. Válassza az **üdvözlés hozzáadása**lehetőséget.
 1. Válassza ki az üdvözlés típusát.
 1. Válassza ki a nyelvet.
@@ -184,16 +184,16 @@ Az _egyszeri Mellőzés_ funkció lehetővé teszi, hogy a felhasználó egyetle
 ### <a name="create-a-one-time-bypass"></a>Egyszeri Mellőzés létrehozása
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. **Azure Active Directory** > **Security**biztonsági > **MFA**MFA > **egyszeri mellőzése**tallózással.
+2. **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **egyszeri mellőzése**tallózással.
 3. Válassza a **Hozzáadás** lehetőséget.
 4. Ha szükséges, válassza ki a replikálási csoportot a mellőzéshez.
-5. Adja meg a felhasználónevet **felhasználónév\@domain.com**. Adja meg azt a másodpercet, ameddig a megkerülésnek utolsónak kell lennie. Adja meg a Mellőzés okát.
+5. Adja meg a felhasználónevet **felhasználónév \@ domain.com**. Adja meg azt a másodpercet, ameddig a megkerülésnek utolsónak kell lennie. Adja meg a Mellőzés okát.
 6. Válassza a **Hozzáadás** lehetőséget. Az időkorlát azonnal érvénybe lép. A felhasználónak be kell jelentkeznie, mielőtt az egyszeri Mellőzés lejár.
 
 ### <a name="view-the-one-time-bypass-report"></a>Az egyszeri mellőzési jelentés megtekintése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. **Azure Active Directory** > **Security**biztonsági > **MFA**MFA > **egyszeri mellőzése**tallózással.
+2. **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **egyszeri mellőzése**tallózással.
 
 ## <a name="caching-rules"></a>Gyorsítótárazási szabályok
 
@@ -205,7 +205,7 @@ Beállíthat egy időszakot, amely lehetővé teszi a hitelesítési kísérlete
 ### <a name="set-up-caching"></a>Gyorsítótárazás beállítása
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. Keresse meg **Azure Active Directory** > **biztonsági** > **MFA** > **gyorsítótárazási szabályait**.
+2. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **gyorsítótárazási szabályait**.
 3. Válassza a **Hozzáadás** lehetőséget.
 4. Válassza ki a **gyorsítótár típusát** a legördülő listából. Adja meg a **gyorsítótárazási másodpercek**maximális számát.
 5. Ha szükséges, válasszon ki egy hitelesítési típust, és adjon meg egy alkalmazást.
@@ -213,7 +213,7 @@ Beállíthat egy időszakot, amely lehetővé teszi a hitelesítési kísérlete
 
 ## <a name="mfa-service-settings"></a>MFA-szolgáltatás beállításai
 
-Az alkalmazások jelszavainak, megbízható IP-címeinek, ellenőrzési lehetőségeinek és az Azure Multi-Factor Authentication többtényezős hitelesítésének megjegyzései a szolgáltatás beállításai között találhatók. A szolgáltatás beállításai a Azure Portal érhetők el, ha megkeresi az**új felhőalapú MFA-beállítások****konfigurálására** > szolgáló **Azure Active Directory** > **biztonsági** > **MFA** > **első lépéseit** > .
+Az alkalmazások jelszavainak, megbízható IP-címeinek, ellenőrzési lehetőségeinek és az Azure Multi-Factor Authentication többtényezős hitelesítésének megjegyzései a szolgáltatás beállításai között találhatók. A szolgáltatás beállításai a Azure Portal érhetők el, ha megkeresi **Azure Active Directory**az  >  **Security**  >  **MFA**  >  **Getting started**  >  **Configure**  >  **új felhőalapú MFA-beállítások**konfigurálására szolgáló Azure Active Directory biztonsági MFA első lépéseit.
 
 ![Azure Multi-Factor Authentication szolgáltatás beállításai](./media/howto-mfa-mfasettings/multi-factor-authentication-settings-service-settings.png)
 
@@ -278,7 +278,7 @@ Az Azure AD támogatja az összevonást vagy az egyszeri bejelentkezést (SSO) h
 Alapértelmezés szerint a felhasználók nem hozhatnak létre alkalmazás-jelszavakat. Az alkalmazás jelszava funkciót engedélyezni kell. A következő eljárással biztosíthatja a felhasználóknak az alkalmazás jelszavának létrehozását:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza **Azure Active Directory** > **felhasználók**lehetőséget.
+2. A bal oldalon válassza **Azure Active Directory**  >  **felhasználók**lehetőséget.
 3. Válassza a **multi-Factor Authentication**lehetőséget.
 4. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai**elemet.
 5. A **szolgáltatás beállításai** lapon jelölje be a **felhasználók számára az alkalmazás jelszavának engedélyezése lehetőséget a nem böngésző alkalmazásokba való bejelentkezéshez** .
@@ -318,7 +318,7 @@ Függetlenül attól, hogy engedélyezve van-e a megbízható IP-címek szolgál
 ### <a name="enable-named-locations-by-using-conditional-access"></a>Elnevezett helyszínek engedélyezése feltételes hozzáférés használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza a **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés** > **elnevezett tárolóhelyek**elemet.
+2. A bal oldalon válassza a **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférés**  >  **elnevezett tárolóhelyek**elemet.
 3. Válassza az **új hely**lehetőséget.
 4. Adja meg a hely nevét.
 5. Válassza **a megjelölés megbízható helyként**lehetőséget.
@@ -328,7 +328,7 @@ Függetlenül attól, hogy engedélyezve van-e a megbízható IP-címek szolgál
 ### <a name="enable-the-trusted-ips-feature-by-using-conditional-access"></a>A megbízható IP-címek funkciójának engedélyezése feltételes hozzáférés használatával
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza a **Azure Active Directory** > **biztonsági** >  **feltételes hozzáférés** > **elnevezett tárolóhelyek**elemet.
+2. A bal oldalon válassza a **Azure Active Directory**  >  **biztonsági**  >   **feltételes hozzáférés**  >  **elnevezett tárolóhelyek**elemet.
 3. Válassza az **MFA megbízható IP**-címek konfigurálása lehetőséget.
 4. A **Szolgáltatásbeállítások** oldalon, a **megbízható IP**-címek területen válasszon a következő két lehetőség közül:
 
@@ -346,7 +346,7 @@ Függetlenül attól, hogy engedélyezve van-e a megbízható IP-címek szolgál
 ### <a name="enable-the-trusted-ips-feature-by-using-service-settings"></a>A megbízható IP-címek funkció engedélyezése a szolgáltatás beállításai alapján
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza **Azure Active Directory** > **felhasználók**lehetőséget.
+2. A bal oldalon válassza **Azure Active Directory**  >  **felhasználók**lehetőséget.
 3. Válassza a **multi-Factor Authentication**lehetőséget.
 4. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai**elemet.
 5. A **Szolgáltatásbeállítások** oldalon, a **megbízható IP**-címek területen válasszon egyet (vagy mindkettőt) a következő két lehetőség közül:
@@ -378,7 +378,7 @@ Amikor a felhasználók regisztrálják a fiókjaikat az Azure Multi-Factor Auth
 ### <a name="enable-and-disable-verification-methods"></a>Ellenőrzési módszerek engedélyezése és letiltása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza **Azure Active Directory** > **felhasználók**lehetőséget.
+2. A bal oldalon válassza **Azure Active Directory**  >  **felhasználók**lehetőséget.
 3. Válassza a **multi-Factor Authentication**lehetőséget.
 4. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai**elemet.
 5. A **Szolgáltatásbeállítások** lapon az **ellenőrzési beállítások**területen válassza ki/törölje a felhasználók számára megadható metódusokat.
@@ -414,7 +414,7 @@ A szolgáltatás csökkenti a webes alkalmazások hitelesítésének számát, a
 ### <a name="enable-remember-multi-factor-authentication"></a>Megjegyzés engedélyezése Multi-Factor Authentication
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza **Azure Active Directory** > **felhasználók**lehetőséget.
+2. A bal oldalon válassza **Azure Active Directory**  >  **felhasználók**lehetőséget.
 3. Válassza a **multi-Factor Authentication**lehetőséget.
 4. A Multi-Factor Authentication területen válassza a **szolgáltatás beállításai**elemet.
 5. A **Szolgáltatásbeállítások** lapon **kezelheti a többtényezős hitelesítés megjegyzéseit**, és jelölje be a **felhasználók számára a többtényezős hitelesítés megemlékezésének engedélyezése a megbízható eszközökön** beállítást.

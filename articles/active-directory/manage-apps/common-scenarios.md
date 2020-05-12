@@ -15,12 +15,12 @@ ms.date: 03/02/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21caec50bf9c20ec60194976b1bfbf16e4815914
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1874a2f2cf96aaa905616bddcc6cb83c60c1d279
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261040"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115608"
 ---
 # <a name="centralize-application-management-with-azure-ad"></a>Az alkalmazások kezelésének központosítása az Azure AD-vel
 
@@ -53,7 +53,7 @@ A legtöbb alkalmazásnak szüksége van egy felhasználónak az alkalmazásba v
 
 |Szolgáltatás  |Leírás|Ajánlás |
 |---------|---------|---------|
-|SCIM kiépítés|A [scim](https://aka.ms/SICMOverview) egy iparági ajánlott eljárás a felhasználók üzembe helyezésének automatizálásához. Minden SCIM-kompatibilis alkalmazás integrálható az Azure AD-vel. Felhasználói fiókok automatikus létrehozása, frissítése és törlése anélkül, hogy CSV-fájlokat, egyéni parancsfájlokat vagy helyszíni megoldásokat kellene fenntartania.|Tekintse meg az [előre integrált](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) alkalmazások növekvő listáját az Azure ad app Galleryben|
+|SCIM kiépítés|A [scim](https://aka.ms/SCIMOverview) egy iparági ajánlott eljárás a felhasználók üzembe helyezésének automatizálásához. Minden SCIM-kompatibilis alkalmazás integrálható az Azure AD-vel. Felhasználói fiókok automatikus létrehozása, frissítése és törlése anélkül, hogy CSV-fájlokat, egyéni parancsfájlokat vagy helyszíni megoldásokat kellene fenntartania.|Tekintse meg az [előre integrált](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list) alkalmazások növekvő listáját az Azure ad app Galleryben|
 |Microsoft Graph|Kihasználhatja az Azure AD által az általa igényelt adatmennyiséggel gazdagított alkalmazások kilégzését és mélységét.|Használja ki a [Microsoft Graphot](https://developer.microsoft.com/graph/) a Microsoft-ökoszisztéma adatainak beszerzéséhez. |
 
 
@@ -89,6 +89,6 @@ Az identitás csak akkor lehet a vezérlési síkon, ha mindent a felhőben és 
 - [Alkalmazáskezelés](https://docs.microsoft.com/azure/active-directory/manage-apps/index)
 - [Alkalmazások üzembe helyezése](https://docs.microsoft.com/azure/active-directory/app-provisioning/user-provisioning)
 - [Hibrid biztonságos hozzáférés](https://docs.microsoft.com/azure/active-directory/manage-apps/secure-hybrid-access)
-- [Identitáskezelés](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
+- [Identitás-szabályozás](https://docs.microsoft.com/azure/active-directory/governance/identity-governance-overview)
 - [Microsoft-identitásplatform](https://docs.microsoft.com/azure/active-directory/develop/v2-overview)
 - [Identitás biztonsága](https://docs.microsoft.com/azure/active-directory/conditional-access/index)

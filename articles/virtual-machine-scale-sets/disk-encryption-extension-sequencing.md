@@ -1,17 +1,20 @@
 ---
 title: A Azure Disk Encryption és az Azure virtuálisgép-méretezési csoportok bővítmény-sorrendje
 description: Ez a cikk a Linux IaaS virtuális gépek Microsoft Azure lemezes titkosításának engedélyezéséhez nyújt útmutatást.
-author: msmbaldwin
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.author: mbaldwin
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aa638b86b0788b8c274f9dcb3c04c1fc385b4ae1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 1c93359486379ecfc8bf6df1f29978ba369f551a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279031"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117257"
 ---
 # <a name="use-azure-disk-encryption-with-virtual-machine-scale-set-extension-sequencing"></a>A Azure Disk Encryption használata a virtuálisgép-méretezési csoport bővítményének előkészítésével
 
@@ -22,11 +25,11 @@ A bővítmények, például az Azure Disk Encryption hozzáadhatók egy adott so
 - A lemezeket vagy köteteket előkészítő bővítmények vagy egyéni parancsfájlok után.
 - Olyan bővítmények vagy egyéni parancsfájlok előtt, amelyek hozzáférnek vagy használják a titkosított lemezeken vagy köteteken tárolt adatmennyiséget.
 
-Mindkét esetben a `provisionAfterExtensions` tulajdonság azt jelzi, hogy melyik bővítményt kell hozzáadni később a sorozatban.
+Mindkét esetben a tulajdonság azt jelzi, hogy `provisionAfterExtensions` melyik bővítményt kell hozzáadni később a sorozatban.
 
 ## <a name="sample-azure-templates"></a>Példa Azure-sablonokra
 
-Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény után is alkalmazza `provisionAfterExtensions` , helyezze a tulajdonságot a AzureDiskEncryption-bővítmény blokkba. 
+Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény után is alkalmazza, helyezze a `provisionAfterExtensions` tulajdonságot a AzureDiskEncryption-bővítmény blokkba. 
 
 Az alábbi példa egy olyan PowerShell-parancsfájlt használ, amely inicializálja és formázza a Windows lemezét, majd ezt követi a "AzureDiskEncryption":
 
@@ -84,7 +87,7 @@ Az alábbi példa egy olyan PowerShell-parancsfájlt használ, amely inicializá
 }
 ```
 
-Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény előtt kelljen alkalmazni `provisionAfterExtensions` , helyezze a tulajdonságot a bővítmény blokkjában a következőre:.
+Ha azt szeretné, hogy a Azure Disk Encryption egy másik bővítmény előtt kelljen alkalmazni, helyezze a `provisionAfterExtensions` tulajdonságot a bővítmény blokkjában a következőre:.
 
 Íme egy példa a "AzureDiskEncryption" kifejezéssel, amelyet a "VMDiagnosticsSettings" követ, amely egy Windows-alapú Azure virtuális gépen a figyelési és diagnosztikai képességeket nyújtja:
 

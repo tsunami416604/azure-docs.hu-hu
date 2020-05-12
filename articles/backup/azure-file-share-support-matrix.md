@@ -3,12 +3,12 @@ title: Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 description: Az Azure-fájlmegosztás biztonsági mentésekor a támogatási beállítások és korlátozások összegzését tartalmazza.
 ms.topic: conceptual
 ms.date: 5/07/2020
-ms.openlocfilehash: 4da17bb591e94a0eaf26f95210a3e841ad17973b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
-ms.translationtype: HT
+ms.openlocfilehash: 38e8cdba4913a56b4dc6b4398a99db9e9f93be51
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890727"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116730"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Az Azure fájlmegosztás biztonsági mentésének támogatási mátrixa
 
@@ -18,9 +18,11 @@ Az Azure-fájlmegosztás biztonsági mentését a [Azure Backup szolgáltatássa
 
 Az Azure-fájlmegosztás biztonsági mentése a következő térségek érhető el:
 
-| GA-régiók | Támogatott régiók (az előzetes verzió részeként), de még nem                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Délkelet-Ausztrália, Közép-Kanada (CNC), USA nyugati középső régiója (WCUS), USA 2. nyugati régiója (WUS 2), Dél-India (INS), USA északi középső régiója (NCUS), Kelet-Japán (JPE), Dél-Brazília (BRS), Dél-Kelet-Ázsia (tenger), Nyugat-Svájc (SZW), Egyesült Arab Emírségek középső (UAC), Kelet-Japán (nazt), India nyugati régiója (Egyesült Királyság nyugati régiója INW), Ausztrália középső régiója (ACL), Korea középső régiója (KRC), Dél-Afrika , Dél-Korea (KRS), Észak-Németország (GN), Norvégia nyugati régiója (NWW), Dél-Afrika nyugati régiója (SAW), Észak-Svájc (SZN), Középnyugat-Németország (GWC), UAE North (karbamid), Közép-Franciaország (FRC), India középső régiója (INC), Kelet-Kanada (CNE), Kelet-Ázsia (EA), Kelet-Ausztrália (AE), Közép-USA                                                  |  USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), Észak-Európa (NE), az USA déli középső régiója (SCUS), Egyesült Királyság déli régiója (UKS), Nyugat-Európa (WE), US Gov Arizona (UGA), US Gov Texas (UGT), US Gov Virginia (UGV)           |
+**GA-régiók**:<br>
+Délkelet-Ausztrália, Közép-Kanada (CNC), USA nyugati középső régiója (WCUS), USA 2. nyugati régiója (WUS 2), Dél-India (INS), USA északi középső régiója (NCUS), Kelet-Japán (JPE), Dél-Brazília (BRS), Dél-Kelet-Ázsia (tenger), Nyugat-Svájc (SZW), Egyesült Arab Emírségek középső (UAC), Kelet-Japán (nazt), India nyugati régiója (Egyesült Királyság nyugati régiója INW), Ausztrália középső régiója (ACL), Korea középső régiója (KRC), Dél-Afrika , Dél-Korea (KRS), Észak-Németország (GN), Norvégia nyugati régiója (NWW), Dél-Afrika nyugati régiója (SAW), Észak-Svájc (SZN), Középnyugat-Németország (GWC), UAE North (karbamid), Közép-Franciaország (FRC), Közép-India (INC), Kelet-Kanada (CNE), Kelet-Ázsia (EA), Kelet-Ausztrália (AE), középső USA (ke), USA nyugati régiója (WUS), US Gov Arizona (UGA), US gov Texas (UGT), US Gov Virginia (UGV), US DoD – középső régió (UDC), US DoD – keleti régió (UDE
+
+**Támogatott régiók (az előzetes verzió részeként), de még nem GA**:<br>
+USA keleti régiója (EUS), USA 2. keleti régiója (EUS2), Észak-Európa (NE), az USA déli középső régiója (SCUS), Egyesült Királyság déli régiója (UKS), Nyugat-Európa (mi)
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok
 

@@ -11,12 +11,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 08/14/2019
-ms.openlocfilehash: 3b423a25b6b13ad543ef4a74bc0335ce19f5766d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aea252772bfd911899ebdc00c902996b32475a90
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77461806"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115132"
 ---
 # <a name="configure-a-failover-group-for-azure-sql-database"></a>Feladatátvételi csoport konfigurálása Azure SQL Databasehoz
 
@@ -362,7 +362,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
 
    ![Átjáró hozzáadása az elsődleges felügyelt példányhoz](media/sql-database-managed-instance-failover-group-tutorial/add-subnet-gateway-primary-vnet.png)
 
-1. Az alhálózat-átjáró létrehozása után válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, majd `Virtual network gateway` írja be a keresőmezőbe a kifejezést. Válassza ki a **Microsoft**által közzétett **Virtual Network Gateway** -erőforrást. 
+1. Az alhálózat-átjáró létrehozása után válassza az **erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, majd írja be `Virtual network gateway` a keresőmezőbe a kifejezést. Válassza ki a **Microsoft**által közzétett **Virtual Network Gateway** -erőforrást. 
 
    ![Új virtuális hálózati átjáró létrehozása](media/sql-database-managed-instance-failover-group-tutorial/create-virtual-network-gateway.png)
 
@@ -377,7 +377,7 @@ Hozza létre az elsődleges virtuális hálózati átjárót a Azure Portal hasz
     | **Régió** | Az a régió, amelyben a másodlagos felügyelt példány található. |
     | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
     | **VPN-típus** | **Útvonal-alapú** |
-    | **SKU**| Hagyja meg az `VpnGw1`alapértelmezett értéket. |
+    | **SKU**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
     | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
     | **Virtuális hálózat**| Válassza ki a virtuális hálózatot a másodlagos felügyelt példányhoz. |
     | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
@@ -434,15 +434,15 @@ Az előző szakaszban leírt lépések megismétlésével hozza létre a virtuá
    | **Mező** | Érték |
    | --- | --- |
    | **Előfizetés** |  Az előfizetés, amelyben a másodlagos felügyelt példánya van. |
-   | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway`. | 
+   | **Név** | A virtuális hálózati átjáró neve, például: `secondary-mi-gateway` . | 
    | **Régió** | Az a régió, amelyben a másodlagos felügyelt példány található. |
    | **Átjáró típusa** | Válassza a **VPN**lehetőséget. |
    | **VPN-típus** | **Útvonal-alapú** |
-   | **SKU**| Hagyja meg az `VpnGw1`alapértelmezett értéket. |
+   | **SKU**| Hagyja meg az alapértelmezett értéket `VpnGw1` . |
    | **Hely**| A másodlagos felügyelt példány és a másodlagos virtuális hálózat helye.   |
-   | **Virtuális hálózat**| Válassza ki a 2 `vnet-sql-mi-secondary`. szakaszban létrehozott virtuális hálózatot, például:. |
+   | **Virtuális hálózat**| Válassza ki a 2. szakaszban létrehozott virtuális hálózatot, például: `vnet-sql-mi-secondary` . |
    | **Nyilvános IP-cím**| Válassza az **Új létrehozása** lehetőséget. |
-   | **Nyilvános IP-cím**| Adja meg az IP-cím nevét, például: `secondary-gateway-IP`. |
+   | **Nyilvános IP-cím**| Adja meg az IP-cím nevét, például: `secondary-gateway-IP` . |
    | &nbsp; | &nbsp; |
 
    ![Másodlagos átjáró beállításai](media/sql-database-managed-instance-failover-group-tutorial/settings-for-secondary-gateway.png)
@@ -492,7 +492,7 @@ Mindkét kapcsolathoz ugyanazt a megosztott kulcsot kell használni, mint az egy
 Hozzon létre kapcsolatokat a két átjáró között a Azure Portal használatával. 
 
 1. Válassza az **erőforrás létrehozása** lehetőséget a [Azure Portal](https://portal.azure.com).
-1. Írja `connection` be a keresőmezőbe, majd nyomja le az ENTER billentyűt a kereséshez, amely a Microsoft által közzétett **kapcsolódási** erőforrásra viszi.
+1. Írja be `connection` a keresőmezőbe, majd nyomja le az ENTER billentyűt a kereséshez, amely a Microsoft által közzétett **kapcsolódási** erőforrásra viszi.
 1. Válassza a **Létrehozás** lehetőséget a kapcsolódás létrehozásához. 
 1. Az **alapvető beállítások** lapon válassza ki a következő értékeket, majd kattintson az **OK gombra**. 
     1. Válassza `VNet-to-VNet` a **kapcsolattípus**lehetőséget. 
@@ -500,11 +500,11 @@ Hozzon létre kapcsolatokat a két átjáró között a Azure Portal használat�
     1. Válassza ki a felügyelt példányhoz tartozó erőforráscsoportot a legördülő menüből. 
     1. Válassza ki az elsődleges felügyelt példány helyét a legördülő menüből. 
 1. A **Beállítások** lapon válassza ki vagy adja meg a következő értékeket, majd kattintson az **OK gombra**:
-    1. Válassza ki az **első virtuális hálózati átjáró**elsődleges hálózati átjáróját, például: `Primary-Gateway`.  
-    1. Válassza ki a **második virtuális hálózati átjáró**másodlagos hálózati átjáróját, például: `Secondary-Gateway`. 
+    1. Válassza ki az **első virtuális hálózati átjáró**elsődleges hálózati átjáróját, például: `Primary-Gateway` .  
+    1. Válassza ki a **második virtuális hálózati átjáró**másodlagos hálózati átjáróját, például: `Secondary-Gateway` . 
     1. Jelölje be a **kétirányú kapcsolat létesítése**melletti jelölőnégyzetet. 
     1. Hagyja meg az alapértelmezett elsődleges kapcsolódási nevet, vagy nevezze át tetszőleges értékre. 
-    1. Adjon meg egy **megosztott kulcsot (PSK)** a kapcsolatban, például: `mi1m2psk`. 
+    1. Adjon meg egy **megosztott kulcsot (PSK)** a kapcsolatban, például: `mi1m2psk` . 
 
    ![Átjáró-kapcsolatok létrehozása](media/sql-database-managed-instance-failover-group-tutorial/create-gateway-connection.png)
 
@@ -644,17 +644,30 @@ A feladatátvételi csoport feladatátvételi tesztje a PowerShell használatáv
 
 ---
 
+## <a name="use-private-link"></a>Privát kapcsolat használata
+
+A privát hivatkozások lehetővé teszik, hogy egy logikai kiszolgálót egy adott magánhálózati IP-címhez rendeljen a virtuális hálózaton és az alhálózaton belül. 
+
+Ha privát hivatkozást szeretne használni a feladatátvételi csoporttal, tegye a következőket:
+
+1. Győződjön meg arról, hogy az elsődleges és a másodlagos kiszolgáló egy [párosított régióban](/azure/best-practices-availability-paired-regions)van. 
+1. Hozza létre a virtuális hálózatot és az alhálózatot az egyes régiókban az elsődleges és a másodlagos kiszolgálókhoz tartozó privát végpontok üzemeltetéséhez, hogy azok ne legyenek átfedésben az IP-címekkel. Például a 10.0.0.0/16 elsődleges virtuális hálózati címtartomány és a 10.0.0.1/16 másodlagos virtuális hálózati címtartomány átfedésben van. A virtuális hálózati címtartományok részletes ismertetését az Azure-beli [virtuális hálózatok tervezése](https://devblogs.microsoft.com/premier-developer/understanding-cidr-notation-when-designing-azure-virtual-networks-and-subnets/)című blogban találja.
+1. Hozzon létre egy [privát végpontot és egy Azure saját DNS zónát az elsődleges kiszolgálóhoz](../private-link/create-private-endpoint-portal.md#create-a-private-endpoint). 
+1. Hozzon létre egy privát végpontot a másodlagos kiszolgálóhoz is, de ezúttal úgy dönt, hogy újrahasznosítja ugyanazt a saját DNS zónát, amely az elsődleges kiszolgálóhoz lett létrehozva. 
+1. A magánhálózati kapcsolat létrejötte után a feladatátvételi csoportot a cikkben korábban ismertetett lépéseket követve hozhatja létre. 
+
+
 ## <a name="locate-listener-endpoint"></a>Figyelő végpontjának keresése
 
 Miután konfigurálta a feladatátvételi csoportot, frissítse az alkalmazáshoz tartozó kapcsolódási karakterláncot a figyelő végpontján. Így az alkalmazás az elsődleges adatbázis, a rugalmas készlet vagy a felügyelt példány helyett a feladatátvételi csoport figyelőjét fogja csatlakoztatni. Így nem kell manuálisan frissítenie a kapcsolati karakterláncot, amikor az Azure SQL Database-entitás feladatátvételt hajt végre, és a rendszer átirányítja a forgalmat, hogy melyik entitás jelenleg elsődleges. 
 
-A figyelő végpont formátuma a (z) `fog-name.database.windows.net`, és a Azure Portal látható a feladatátvételi csoport megtekintésekor:
+A figyelő végpont formátuma a (z) `fog-name.database.windows.net` , és a Azure Portal látható a feladatátvételi csoport megtekintésekor:
 
 ![Feladatátvételi csoport kapcsolatainak karakterlánca](media/sql-database-configure-failover-group/find-failover-group-connection-string.png)
 
 ## <a name="remarks"></a>Megjegyzések
 
-- Egyetlen vagy készletezett adatbázis feladatátvételi csoportjának eltávolítása nem állítja le a replikálást, és nem törli a replikált adatbázist. Manuálisan kell leállítania a Geo-replikálást, és törölnie kell az adatbázist a másodlagos kiszolgálóról, ha az eltávolítását követően egyetlen vagy készletezett adatbázist szeretne visszaadni egy feladatátvételi csoportnak. `The operation cannot be performed due to multiple errors` Ha a művelet végrehajtása sikertelen, akkor az adatbázis a feladatátvételi csoportba való felvételére tett kísérlethez hasonló hibaüzenetet eredményezhet. 
+- Egyetlen vagy készletezett adatbázis feladatátvételi csoportjának eltávolítása nem állítja le a replikálást, és nem törli a replikált adatbázist. Manuálisan kell leállítania a Geo-replikálást, és törölnie kell az adatbázist a másodlagos kiszolgálóról, ha az eltávolítását követően egyetlen vagy készletezett adatbázist szeretne visszaadni egy feladatátvételi csoportnak. Ha a művelet végrehajtása sikertelen, akkor az `The operation cannot be performed due to multiple errors` adatbázis a feladatátvételi csoportba való felvételére tett kísérlethez hasonló hibaüzenetet eredményezhet. 
 
 
 ## <a name="next-steps"></a>További lépések

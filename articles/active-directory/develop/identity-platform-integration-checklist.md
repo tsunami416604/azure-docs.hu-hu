@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/11/2019
+ms.date: 05/08/2020
 ms.author: ryanwi
 ms.reviewer: lenalepa, sureshja, jesakowi
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 56975cebbfe4f6dd6452c850c338d431faea27bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7c26780cdba37a2bddc201928dbcbd5f86e0170
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050502"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83115897"
 ---
 # <a name="microsoft-identity-platform-best-practices-and-recommendations"></a>Microsoft Identity platform – ajánlott eljárások és javaslatok
 
@@ -26,6 +26,9 @@ Ez a cikk az ajánlott eljárásokat, javaslatokat és általános áttekintése
 Ha most ismerkedik az első lépésekkel, tekintse meg a [Microsoft Identity platform dokumentációját](index.yml) , ahol megismerheti a hitelesítési alapismereteket, az alkalmazás forgatókönyveit a Microsoft Identity platformon, és így tovább.
 
 Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás hatékonyan legyen integrálva a [Microsoft Identity platformmal](https://docs.microsoft.com/azure/active-directory/develop/).
+
+> [!TIP]
+> A Azure Portal *integrációs asszisztense* segíthet az ajánlott eljárások és javaslatok alkalmazásában. Válassza ki a Azure Portal valamelyik [alkalmazás-regisztrációját](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) , majd a Segéd megkezdéséhez válassza az **Integration Assistant (előzetes verzió)** menüpontot.
 
 ## <a name="basics"></a>Alapvető beállítások
 
@@ -56,7 +59,7 @@ Az alábbi ellenőrzőlista használatával biztosíthatja, hogy az alkalmazás 
 
 |   |   |
 |---|---|
-| ![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Az átirányítási URI-k kezelése: <ul><li>Őrizze meg az összes átirányítási URI tulajdonosát, és tartsa naprakészen a DNS-rekordokat.</li><li>Ne használjon helyettesítő karaktereket (*) az URI-k között.</li><li>Webalkalmazások esetén győződjön meg arról, hogy az összes URI biztonságos és titkosított (például https-sémák használatával).</li><li>Nyilvános ügyfelek esetén használjon platform-specifikus átirányítási URI-ket, ha vannak ilyenek (főleg az iOS és az Android esetében). Ellenkező esetben használja a nagy mennyiségű véletlenszerű átirányítási URI-t, hogy elkerülje az ütközéseket, amikor visszahívja az alkalmazást.</li><li>Ha az alkalmazást egy elkülönített webügynök használja, akkor használhatja `https://login.microsoftonline.com/common/oauth2/nativeclient`a következőt:.</li><li>Tekintse át és vágja fel az összes fel nem használt vagy szükségtelen átirányítási URI-t a szokásos módon.</li></ul> |
+| ![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Az átirányítási URI-k kezelése: <ul><li>Őrizze meg az összes átirányítási URI tulajdonosát, és tartsa naprakészen a DNS-rekordokat.</li><li>Ne használjon helyettesítő karaktereket (*) az URI-k között.</li><li>Webalkalmazások esetén győződjön meg arról, hogy az összes URI biztonságos és titkosított (például https-sémák használatával).</li><li>Nyilvános ügyfelek esetén használjon platform-specifikus átirányítási URI-ket, ha vannak ilyenek (főleg az iOS és az Android esetében). Ellenkező esetben használja a nagy mennyiségű véletlenszerű átirányítási URI-t, hogy elkerülje az ütközéseket, amikor visszahívja az alkalmazást.</li><li>Ha az alkalmazást egy elkülönített webügynök használja, akkor használhatja a következőt: `https://login.microsoftonline.com/common/oauth2/nativeclient` .</li><li>Tekintse át és vágja fel az összes fel nem használt vagy szükségtelen átirányítási URI-t a szokásos módon.</li></ul> |
 | ![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha az alkalmazás regisztrálva van egy címtárban, csökkentse és manuálisan figyelje az alkalmazás-regisztrációs tulajdonosok listáját. |
 | ![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | Ha explicit módon nem szükséges, ne engedélyezze a [OAuth2 implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) támogatását. [Itt](v2-oauth2-implicit-grant-flow.md#suitable-scenarios-for-the-oauth2-implicit-grant)tájékozódhat az érvényes forgatókönyvről. |
 | ![jelölőnégyzet](./media/active-directory-integration-checklist/checkbox-two.svg) | A Felhasználónév/jelszó túllépése. Ne használja az [erőforrás-tulajdonosi jelszó hitelesítő adatait (ROPC)](v2-oauth-ropc.md), amely közvetlenül kezeli a felhasználók jelszavát. Ennek a folyamatnak magas fokú megbízhatóságra és felhasználói expozícióra van szüksége, és csak akkor használható, ha más, biztonságosabb, a folyamatok nem használhatók. Erre a folyamatra továbbra is szükség van bizonyos helyzetekben (például DevOps), de ügyeljen arra, hogy a használatával korlátozásokat fog alkalmazni az alkalmazására.  A modernebb megközelítésekhez olvassa el a [hitelesítési folyamatokat és az alkalmazás forgatókönyveit](authentication-flows-app-scenarios.md).|

@@ -1,19 +1,19 @@
 ---
-title: Hírcsatorna-lekérési modell módosítása
+title: Változáscsatorna lekérési modellje
 description: Megtudhatja, hogyan használhatja a Azure Cosmos DB Change feed lekérési modellt a változási csatorna és a lekéréses modell és a hírcsatorna-feldolgozó közötti különbségek olvasásához
 author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/10/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 2854e3d92462ced3958afd1cf1e7e99d7e9892f6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984680"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83116713"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
 
@@ -24,23 +24,23 @@ Ha a Change feed pull modellt használja, a saját tempójában használhatja a 
 
 ## <a name="consuming-an-entire-containers-changes"></a>Teljes tároló módosításainak felhasználása
 
-Létrehozhat egy `FeedIterator` t a módosítási csatorna feldolgozásához a lekéréses modell használatával. Amikor először létrehoz egy `FeedIterator`-t, megadhat egy opcionálisat `StartTime` a `ChangeFeedRequestOptions`on belül. Ha nem ad meg értéket, `StartTime` a lesz az aktuális időpont.
+Létrehozhat egy t a `FeedIterator` módosítási csatorna feldolgozásához a lekéréses modell használatával. Amikor először létrehoz egy `FeedIterator` -t, megadhat egy opcionálisat `StartTime` a on belül `ChangeFeedRequestOptions` . Ha nem ad meg értéket, a `StartTime` lesz az aktuális időpont.
 
-A `FeedIterator` két ízeket tartalmaz. Az entitás-objektumokat visszaadó lenti példákon kívül a `Stream` támogatással is kérheti a választ. A streamek lehetővé teszik az adatolvasást anélkül, hogy először deszerializált, az ügyfél erőforrásain mentve.
+A `FeedIterator` két ízeket tartalmaz. Az entitás-objektumokat visszaadó lenti példákon kívül a támogatással is kérheti a választ `Stream` . A streamek lehetővé teszik az adatolvasást anélkül, hogy először deszerializált, az ügyfél erőforrásain mentve.
 
-Az alábbi példa egy olyan objektum beszerzését szemlélteti, `FeedIterator` amely entitás-objektumokat ad vissza `User` , ebben az esetben egy objektumot:
+Az alábbi példa egy olyan objektum beszerzését szemlélteti `FeedIterator` , amely entitás-objektumokat ad vissza, ebben az esetben egy `User` objektumot:
 
 ```csharp
 FeedIterator<User> iteratorWithPOCOS = container.GetChangeFeedIterator<User>();
 ```
 
-Az alábbi példa egy `FeedIterator` , a értéket visszaadó beszerzését szemlélteti: `Stream`
+Az alábbi példa egy `FeedIterator` , a értéket visszaadó beszerzését szemlélteti `Stream` :
 
 ```csharp
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 ```
 
-A `FeedIterator`használatával könnyedén feldolgozhatja a teljes tároló változási csatornáját a saját tempójában. Például:
+A használatával `FeedIterator` könnyedén feldolgozhatja a teljes tároló változási csatornáját a saját tempójában. Például:
 
 ```csharp
 FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -76,7 +76,7 @@ while (iteratorForThePartitionKey.HasMoreResults)
 
 ## <a name="using-feedrange-for-parallelization"></a>A FeedRange használata a párhuzamos
 
-A [change feed processzorban](change-feed-processor.md)a munka automatikusan több felhasználó között oszlik meg. A Change feed lekérési modellben `FeedRange` a használatával integrálással a módosítási csatorna feldolgozását. A `FeedRange` a partíciós kulcs értékeinek egy tartományát jelöli.
+A [change feed processzorban](change-feed-processor.md)a munka automatikusan több felhasználó között oszlik meg. A Change feed lekérési modellben a használatával `FeedRange` integrálással a módosítási csatorna feldolgozását. A a `FeedRange` partíciós kulcs értékeinek egy tartományát jelöli.
 
 Az alábbi példa bemutatja, hogyan kérhető le a tárolóhoz tartozó tartományok listája:
 
@@ -86,12 +86,12 @@ IReadOnlyList<FeedRange> ranges = await container.GetFeedRangesAsync();
 
 A tárolóhoz tartozó FeedRanges listájának beszerzése után a `FeedRange` [fizikai partíciók](partition-data.md#physical-partitions)közül egyet kell kapnia.
 
-`FeedRange`A használatával létrehozhatja `FeedIterator` a integrálással a változási csatorna több gépen vagy szálon történő feldolgozását. Az előző példától eltérően, amely megmutatta, `FeedIterator` hogyan szerezhet be egyetlent a teljes tárolóhoz `FeedRange` , a használatával több FeedIterators is beszerezhet, amely párhuzamosan feldolgozhatja a változási csatornát.
+A használatával `FeedRange` létrehozhatja a `FeedIterator` integrálással a változási csatorna több gépen vagy szálon történő feldolgozását. Az előző példától eltérően, amely megmutatta, hogyan szerezhet be egyetlent `FeedIterator` a teljes tárolóhoz, a használatával `FeedRange` több FeedIterators is beszerezhet, amely párhuzamosan feldolgozhatja a változási csatornát.
 
 Abban az esetben, ha a FeedRanges-t szeretné használni, rendelkeznie kell egy Orchestrator-folyamattal, amely beolvassa a FeedRanges, és elosztja azokat a gépeken. A terjesztés a következő lehet:
 
-* A `FeedRange.ToJsonString` karakterlánc értékének használata és terjesztése. A felhasználók használhatják ezt az értéket a következővel`FeedRange.FromJsonString`
-* Ha a terjesztés folyamatban van, a rendszer átadja `FeedRange` az objektum hivatkozását.
+* `FeedRange.ToJsonString`A karakterlánc értékének használata és terjesztése. A felhasználók használhatják ezt az értéket a következővel`FeedRange.FromJsonString`
+* Ha a terjesztés folyamatban van, a rendszer átadja az `FeedRange` objektum hivatkozását.
 
 Íme egy példa, amely bemutatja, hogyan olvashatja el a tároló változási csatornájának elejét két feltételezett különálló, párhuzamosan olvasott gép használatával:
 
@@ -127,7 +127,7 @@ while (iteratorB.HasMoreResults)
 
 ## <a name="saving-continuation-tokens"></a>Folytatási tokenek mentése
 
-Egy folytatási token létrehozásával mentheti `FeedIterator` a pozícióját. A folytatási token olyan karakterlánc-érték, amely nyomon követi a FeedIterator legutóbbi feldolgozott módosításait. Ez lehetővé teszi `FeedIterator` , hogy később folytassa a folytatást. A következő kód beolvassa a változási csatornát a tároló létrehozása óta. Ha nem áll rendelkezésre több módosítás, a rendszer továbbra is megőrzi a folytatási jogkivonatot, így később folytathatja a módosítást.
+`FeedIterator`Egy folytatási token létrehozásával mentheti a pozícióját. A folytatási token olyan karakterlánc-érték, amely nyomon követi a FeedIterator legutóbbi feldolgozott módosításait. Ez lehetővé teszi `FeedIterator` , hogy később folytassa a folytatást. A következő kód beolvassa a változási csatornát a tároló létrehozása óta. Ha nem áll rendelkezésre több módosítás, a rendszer továbbra is megőrzi a folytatási jogkivonatot, így később folytathatja a módosítást.
 
 ```csharp
 FeedIterator<User> iterator = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
@@ -137,9 +137,9 @@ string continuation = null;
 while (iterator.HasMoreResults)
 {
    FeedResponse<User> users = await iterator.ReadNextAsync();
-   continuation = orders.ContinuationToken;
+   continuation = users.ContinuationToken;
 
-   foreach (User user in Users)
+   foreach (User user in users)
     {
         Console.WriteLine($"Detected change for user with id {user.id}");
     }
