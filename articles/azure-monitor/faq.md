@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/26/2020
-ms.openlocfilehash: 728c8605dca183d8eb733b5e674868592d920d03
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/11/2020
+ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732036"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117784"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -196,11 +196,15 @@ A tervező csak közreműködői engedélyekkel rendelkező felhasználók szám
 * [Azure-diagnosztika](platform/diagnostics-extension-to-application-insights.md)
 * [Java webalkalmazások](app/java-troubleshoot.md)
 
-*Nem kapok adatok a kiszolgálóról*
+*Nem kapok adatok a kiszolgálóról:*
 
 * [Tűzfal-kivételek beállítása](app/ip-addresses.md)
 * [ASP.NET-kiszolgáló beállítása](app/monitor-performance-live-website-now.md)
 * [Java-kiszolgáló beállítása](app/java-agent.md)
+
+*Hány Application Insightst kell üzembe helyezni?:*
+
+* [A Application Insights üzembe helyezésének megtervezése: egy vagy több Application Insights erőforrás?](app/separate-resources.md)
 
 ### <a name="can-i-use-application-insights-with-"></a>Használhatom a Application Insights...?
 
@@ -247,13 +251,13 @@ A részletek a projekt típusától függenek. Webalkalmazások esetén:
 * Elemek beszúrása a következőkbe:
   * Web.config
   * packages. config
-* (Csak új projektek – ha [Application Insightst ad hozzá egy meglévő projekthez][start], ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél és a kiszolgáló kódjába az Application Insights erőforrás-AZONOSÍTÓval való inicializáláshoz. Egy MVC-alkalmazásban például a kód bekerül a mesteroldalak nézeteibe/Shared/\_layout. cshtml
+* (Csak új projektek – ha [Application Insightst ad hozzá egy meglévő projekthez][start], ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél és a kiszolgáló kódjába az Application Insights erőforrás-AZONOSÍTÓval való inicializáláshoz. Egy MVC-alkalmazásban például a kód bekerül a mesteroldalak nézeteibe/Shared/ \_ layout. cshtml
 
 ### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíteni a régebbi SDK-verziókról?
 Tekintse meg az SDK [kibocsátási megjegyzéseit](app/release-notes.md) , amelyek megfelelnek az adott alkalmazás típusának.
 
 ### <a name="how-can-i-change-which-azure-resource-my-project-sends-data-to"></a><a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
-A Megoldáskezelő kattintson `ApplicationInsights.config` a jobb gombbal, majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
+A Megoldáskezelő kattintson a jobb gombbal, `ApplicationInsights.config` majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
 
 ### <a name="can-i-use-providersmicrosoftinsights-componentsapiversions0-in-my-azure-resource-manager-deployments"></a>Használhatom `providers('Microsoft.Insights', 'components').apiVersions[0]` a Azure Resource Manager üzembe helyezéseit?
 
@@ -263,7 +267,7 @@ Ezt a módszert nem ajánlott az API verziójának feltöltésére használni. A
 
 Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
-[További információ](app/monitor-performance-live-website-now.md#questions).
+[További információk](app/monitor-performance-live-website-now.md#questions).
 
 ### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
@@ -305,11 +309,11 @@ További információ a [ASP.net](app/api-filtering-sampling.md) és a [Java](ap
 A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megkeresjük a webes ügyfél IP-címét (IPv4 vagy IPv6).
 
 * Böngésző telemetria: összegyűjtjük a küldő IP-címét.
-* Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` be van állítva, a rendszer nem gyűjti.
+* Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha be van állítva, a rendszer nem gyűjti `X-Forwarded-For` .
 * Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-Beállíthatja, hogy `ClientIpHeaderTelemetryInitializer` az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP`. [További információ](https://apmtips.com/blog/2016/07/05/client-ip-address/).
+Beállíthatja `ClientIpHeaderTelemetryInitializer` , hogy az IP-cím más fejlécből legyen végrehajtva. Egyes rendszerekben például egy proxy, egy terheléselosztó vagy egy CDN helyezi át őket `X-Originating-IP` . [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
 A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
@@ -436,7 +440,7 @@ Lehetővé teszi, hogy a webkiszolgáló telemetria küldjön a végpontoknak.
 
 Átirányíthatja a forgalmat a kiszolgálóról az intranetes átjáróra a konfigurációban található végpontok felülírásával. Ha ezek a "végpont" tulajdonságok nem szerepelnek a konfigurációban, ezek az osztályok az alapértelmezett értékeket fogják használni az alábbi példában látható ApplicationInsights. config fájlban. 
 
-Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfigurációban cserélje le az alapértelmezett értékeket a `http://<your.gateway.address>/<relative path>`értékre.
+Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfigurációban cserélje le az alapértelmezett értékeket a értékre `http://<your.gateway.address>/<relative path>` .
 
 
 ##### <a name="example-applicationinsightsconfig-with-default-endpoints"></a>Példa ApplicationInsights. config alapértelmezett végpontokkal:
@@ -515,7 +519,7 @@ Ezek a nem tároló folyamatok, amelyek a csomóponton futnak.
 
 Hogyan számítjuk ki ezt?
 
-**Egyéb folyamatok** = *teljes kihasználtsága a CAdvisor* - *-használatból a tároló folyamatból*
+**Egyéb folyamatok**  =  *Teljes használat a CAdvisor*  -  *Használat a tároló folyamatból*
 
 A **többi folyamat** az alábbiakat tartalmazza:
 
@@ -537,7 +541,7 @@ Az ügynök verziójának ciprod12042019 és újabb verzióiban alapértelmezés
 
 Csatlakozás más táblákhoz, hogy ezek a tulajdonságértékek szerepeljenek az eredmények között.
 
-Módosítsa a lekérdezéseket úgy, hogy a ```ContainerInventory``` táblázatból a ContainerID tulajdonsághoz való csatlakozással képet és ImageTag tulajdonságokat is tartalmazzon. A Name ( ```ContainerLog``` név) tulajdonságot belefoglalhatja a KubepodInventory tábla ContaineName mezőjéből a ContainerID tulajdonsághoz való csatlakozással. Ez az ajánlott lehetőség.
+Módosítsa a lekérdezéseket úgy, hogy a ```ContainerInventory``` táblázatból a ContainerID tulajdonsághoz való csatlakozással képet és ImageTag tulajdonságokat is tartalmazzon. A Name (név) tulajdonságot belefoglalhatja a ```ContainerLog``` KubepodInventory tábla ContaineName mezőjéből a ContainerID tulajdonsághoz való csatlakozással. Ez az ajánlott lehetőség.
 
 A következő példa egy példaként szolgáló részletes lekérdezést tartalmaz, amely ismerteti, hogyan lehet beolvasni ezeket a mezőértékeket az illesztésekkel.
 
@@ -565,7 +569,7 @@ ContainerLog
 
 Engedélyezze újra a gyűjteményt ezen tulajdonságok esetében minden egyes tároló-naplófájlhoz.
 
-Ha az első lehetőség a lekérdezés módosítása miatt nem megfelelő, akkor az [adatgyűjtési konfigurációs beállítások](insights/container-insights-agent-config.md)részben leírtak szerint engedélyezheti ```log_collection_settings.enrich_container_logs``` a mezők begyűjtését az ügynök konfigurációs térképének beállításával.
+Ha az első lehetőség a lekérdezés módosítása miatt nem megfelelő, akkor az ```log_collection_settings.enrich_container_logs``` [adatgyűjtési konfigurációs beállítások](insights/container-insights-agent-config.md)részben leírtak szerint engedélyezheti a mezők begyűjtését az ügynök konfigurációs térképének beállításával.
 
 > [!NOTE]
 > A második lehetőség nem ajánlott olyan nagyméretű fürtök esetében, amelyek több mint 50 csomóponttal rendelkeznek, mert az API-kiszolgáló hívásokat kezdeményez a fürt minden csomópontján, hogy elvégezze ezt a dúsítást. Ez a beállítás az adatok méretét is növeli minden összegyűjtött naplófájl esetében.
@@ -628,7 +632,7 @@ A probléma részletes megtekintéséhez tekintse meg a következő GitHub- [hiv
 
 ### <a name="how-do-i-resolve-azure-ad-errors-when-i-enable-live-logs"></a>Az élő naplók engedélyezésekor Hogyan az Azure AD-hibák elhárítása? 
 
-A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "<Application\>id"**. A megoldás megoldása a következő cikkben található: a [tárolók információinak valós idejű megtekintése Azure monitor a tárolók](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)használatával. 
+A következő hibaüzenet jelenhet meg: a **kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: "<Application ID \> "**. A megoldás megoldása a következő cikkben található: a [tárolók információinak valós idejű megtekintése Azure monitor a tárolók](insights/container-insights-livedata-setup.md#configure-ad-integrated-authentication)használatával. 
 
 ### <a name="why-cant-i-upgrade-cluster-after-onboarding"></a>Miért nem tudom frissíteni a fürtöt a bevezetést követően?
 
