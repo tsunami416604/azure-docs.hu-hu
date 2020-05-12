@@ -3,14 +3,14 @@ title: Nem HTTP-triggerű Azure Functions manuális futtatása
 description: HTTP-kérelem használata nem HTTP-alapú aktivált Azure Functions futtatásához
 author: craigshoemaker
 ms.topic: article
-ms.date: 12/12/2018
+ms.date: 04/23/2020
 ms.author: cshoe
-ms.openlocfilehash: 6571482d738549d2708fd8ab23eaf8c9f6fb1f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd7b0be967c7a0bbc605c51408448917b5222d36
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80892359"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121759"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
 
@@ -33,15 +33,21 @@ A nem HTTP-triggert futtató függvények futtatásához az Azure-ba irányuló 
 Ezt a kérést a Poster-ben, a függvény főkulcsával együtt használhatja az Azure-ba a függvény futtatásához.
 
 > [!NOTE]
-> Helyileg futtatva a függvény főkulcsa nem szükséges. Közvetlenül [hívhatja a](#call-the-function) `x-functions-key` fejlécet kihagyó függvényt.
+> Helyileg futtatva a függvény főkulcsa nem szükséges. Közvetlenül [hívhatja a](#call-the-function) fejlécet kihagyó függvényt `x-functions-key` .
 
 ## <a name="get-the-functions-master-key"></a>A függvény főkulcsának beolvasása
 
-Keresse meg a függvényt a Azure Portalban, majd kattintson a **Manage (kezelés** ) gombra, és keresse meg a **gazdagép kulcsai** szakaszt. Az *_master* sorban található **Másolás** gombra kattintva másolja a főkulcsot a vágólapra.
+1. A Azure Portalban navigáljon a függvényhez, és válassza a **funkcióbillentyűk**lehetőséget. Ezután válassza ki a másolni kívánt funkcióbillentyű. 
 
-![Főkulcs másolása a Function Management képernyőről](./media/functions-manually-run-non-http/azure-portal-functions-master-key.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
-A főkulcs másolása után a függvény nevére kattintva térjen vissza a kódlap ablakába. Ezután kattintson a **naplók** fülre. Az itt bejelentkezett függvény üzeneteit akkor láthatja, amikor manuálisan futtatja a függvényt a Poster szolgáltatásból.
+1. A **kulcs szerkesztése** szakaszban másolja a kulcs értékét a vágólapra, majd kattintson **az OK gombra**.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-copy.png" alt-text="Másolja a főkulcsot a vágólapra." border="true":::
+
+1. A *_master* kulcs másolását követően válassza a **Code + test (kód + teszt**) lehetőséget, majd válassza a **naplók**lehetőséget. Az itt bejelentkezett függvény üzeneteit akkor láthatja, amikor manuálisan futtatja a függvényt a Poster szolgáltatásból.
+
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-function-log.png" alt-text="Tekintse meg a naplókat a főkulcs tesztelési eredményeinek megtekintéséhez." border="true":::
 
 > [!CAUTION]  
 > A főkulcs által biztosított Function app emelt szintű engedélyei miatt ne ossza meg ezt a kulcsot harmadik felekkel, vagy terjessze azt egy alkalmazásban.
@@ -51,27 +57,27 @@ A főkulcs másolása után a függvény nevére kattintva térjen vissza a kód
 Nyissa meg a Poster-t, és kövesse az alábbi lépéseket:
 
 1. Adja meg a **kérelem helyét az URL-cím**szövegmezőben.
-2. Győződjön meg arról, hogy a HTTP-metódus a **post**értékre van beállítva.
-3. **Kattintson** a **fejlécek** fülre.
-4. Adja meg az **x-functions-Key** értéket az első **kulcsként** , és illessze be a főkulcsot (a vágólapról) az **érték** mezőbe.
-5. Adja meg a **Content-Type** **karakterláncot**második **kulcsként** , és adja meg az **Application/JSON** értéket.
+1. Győződjön meg arról, hogy a HTTP-metódus a **post**értékre van beállítva.
+1. Válassza a **fejlécek** fület.
+1. Írja be az **x-functions-Key** értéket az első kulcsként, és illessze be a főkulcsot (a vágólapról) értékként.
+1. Írja be a **Content-Type** karakterláncot második kulcsként, és írja be az **Application/JSON** értéket.
 
-    ![Poster-fejlécek beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-headers.png" alt-text="A Poster-fejlécek beállításai." border="true":::
 
-6. **Kattintson** a **törzs** fülre.
-7. Adja meg a (z) **{"input": "test"}** értéket a kérelem törzse.
+1. Válassza a **törzs** fület.
+1. Írja be a (z) **{"input": "test"}** kifejezést a kérelem törzse.
 
-    ![Poster-törzs beállításai](./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-body.png" alt-text="Poster-törzs beállításai." border="true":::
 
-8. Kattintson a **Küldés** gombra.
+1. Válassza a **Küldés**lehetőséget.
+        
+    :::image type="content" source="./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png" alt-text="Kérelem küldése a Poster-nek." border="true":::
 
-    ![Poster-kérelem küldése](./media/functions-manually-run-non-http/functions-manually-run-non-http-send.png)
+    A Poster ekkor a 202-es állapotot **fogadja el**.
 
-A Poster ekkor a 202-es állapotot **fogadja el**.
+1. Ezután térjen vissza a függvényhez a Azure Portal. Tekintse át a naplókat, és megtekintheti a függvénynek a kézi hívásból érkező üzeneteket.
 
-Ezután térjen vissza a függvényhez a Azure Portal. Keresse meg a *naplók* ablakot, és megtekintheti a függvény manuális hívásával érkező üzeneteket.
-
-![Függvények naplójának eredményei a kézi hívásból](./media/functions-manually-run-non-http/azure-portal-function-log.png)
+    :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Tekintse meg a naplókat a főkulcs tesztelési eredményeinek megtekintéséhez." border="true":::
 
 ## <a name="next-steps"></a>További lépések
 
