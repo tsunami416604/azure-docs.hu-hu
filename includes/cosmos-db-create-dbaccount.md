@@ -8,24 +8,18 @@ ms.service: cosmos-db
 ms.topic: include
 ms.date: 04/10/2020
 ms.custom: include file
-ms.openlocfilehash: 4c6e45eaa816499c7e5969e302a036368bea0937
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2559b7d81a6f60b633d023a35081b54e1204268a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81422083"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120188"
 ---
-1. Azure Cosmos DB-fiók létrehozásához nyissa meg a [Azure Portal](https://portal.azure.com/) . A kezdőlapon válassza az **erőforrás létrehozása** lehetőséget az **Azure-szolgáltatások** paneljén.
+1. Az Azure Portal vagy a **Kezdőlap lapon**válassza az **erőforrás létrehozása**lehetőséget.
 
-   ![Erőforrás létrehozása](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-resource-1.png)
+1. Az **új** lapon keresse meg és válassza ki **Azure Cosmos db**.
 
-1. Keresse meg és válassza az **Azure Cosmos DB** lehetőséget.
-
-   ![A Azure Portal erőforrások legördülő lista](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-updated-1.png)
-
-1. Kattintson a **Létrehozás** gombra.
-
-   ![Azure Cosmos DB erőforrás létrehozása](./media/cosmos-db-create-dbaccount/azure-cosmos-db-create-account-1.png)
+1. A **Azure Cosmos db** lapon válassza a **Létrehozás**lehetőséget.
 
 1. A **Azure Cosmos db fiók létrehozása** lapon adja meg az új Azure Cosmos-fiók alapszintű beállításait. 
 

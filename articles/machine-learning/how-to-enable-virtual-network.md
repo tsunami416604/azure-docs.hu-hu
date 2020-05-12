@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/10/2020
+ms.date: 05/11/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 50c1d7e35b1c4e92664d810836fe1213183fbf83
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5099cc2ce2228bcdbf49d3484e488e7373883ec0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927343"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119044"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>A gépi tanulási életciklusok biztonságossá tétele privát virtuális hálózatokkal
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,8 +29,9 @@ Ebből a cikkből megtudhatja, hogyan különítheti el a kísérletezési/betan
 > - Automatikus gépi tanulás felhasználói felülete
 > - Az Adatfeliratok felhasználói felülete
 > - Adathalmazok felhasználói felülete
+> - Notebooks
 > 
->  Ha megpróbálja, hibaüzenet jelenik meg, amikor egy, a következőhöz hasonló virtuális hálózaton lévő Storage-fiók adatait jeleníti meg:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
+> Ha megpróbál, a következőhöz hasonló hibaüzenet jelenik meg:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="what-is-a-vnet"></a>Mi az a VNET?
 
@@ -133,8 +134,8 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 - A kimenő internetkapcsolat megtagadása a NSG szabályok használatával.
 
 - __Számítási példány__ vagy __számítási fürt__esetén korlátozza a kimenő forgalmat a következő elemekre:
-   - Azure Storage a __Storage. RegionName__ __szolgáltatási címkéjével__ . Ahol `{RegionName}` az egy Azure-régió neve.
-   - Azure Container Registry a __AzureContainerRegistry. RegionName__ __szolgáltatási címkéje__ segítségével. Ahol `{RegionName}` az egy Azure-régió neve.
+   - Azure Storage a __Storage. RegionName__ __szolgáltatási címkéjével__ . Ahol az `{RegionName}` egy Azure-régió neve.
+   - Azure Container Registry a __AzureContainerRegistry. RegionName__ __szolgáltatási címkéje__ segítségével. Ahol az `{RegionName}` egy Azure-régió neve.
    - Azure Machine Learning a __AzureMachineLearning__ __szolgáltatási címkéjének__ használatával
    - Azure Resource Manager a __AzureResourceManager__ __szolgáltatási címkéjének__ használatával
    - Azure Active Directory a __AzureActiveDirectory__ __szolgáltatási címkéjének__ használatával
@@ -176,7 +177,7 @@ Ha a Machine Learning Compute kényszerített bújtatást használ, adja hozzá 
 
 * Hozzon létre egy UDR minden olyan IP-címhez, amelyet a Azure Batch szolgáltatás használ azon a régióban, ahol az erőforrásai léteznek. Ezek a UDR lehetővé teszik a Batch szolgáltatás számára a feladatütemezés számítási csomópontjaival való kommunikációját. Adja hozzá azt a Azure Machine Learning-szolgáltatáshoz tartozó IP-címet is, ahol az erőforrások léteznek, mivel ez szükséges a számítási példányokhoz való hozzáféréshez. A Batch szolgáltatás és a Azure Machine Learning szolgáltatás IP-címeinek listájának megjelenítéséhez használja a következő módszerek egyikét:
 
-    * Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , `BatchNodeManagement.<region>` és `AzureMachineLearning.<region>`keresse meg `<region>` a és a fájlt, ahol az az Azure-régió.
+    * Töltse le az [Azure IP-címtartományok és a szolgáltatás címkéit](https://www.microsoft.com/download/details.aspx?id=56519) , és keresse meg a és a fájlt `BatchNodeManagement.<region>` `AzureMachineLearning.<region>` , ahol `<region>` az az Azure-régió.
 
     * Az adatok letöltéséhez használja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t. Az alábbi példa letölti az IP-cím adatait, és kiszűri az USA 2. keleti régiójának információit:
 
@@ -185,7 +186,7 @@ Ha a Machine Learning Compute kényszerített bújtatást használ, adja hozzá 
         az network list-service-tags -l "East US 2" --query "values[?starts_with(id, 'AzureMachineLearning')] | [?properties.region=='eastus2']"
         ```
 
-* A helyszíni hálózati berendezés nem tilthatja le az Azure Storage-ba irányuló kimenő forgalmat. Pontosabban az URL-címek a és `<account>.table.core.windows.net` `<account>.blob.core.windows.net`a `<account>.queue.core.windows.net`formátumúak.
+* A helyszíni hálózati berendezés nem tilthatja le az Azure Storage-ba irányuló kimenő forgalmat. Pontosabban az URL-címek a és a formátumúak `<account>.table.core.windows.net` `<account>.queue.core.windows.net` `<account>.blob.core.windows.net` .
 
 A UDR hozzáadásakor adja meg az útvonalat az egyes kapcsolódó batch IP-címek előtagjaként, és állítsa be a __következő ugrás típusát__ az __Internet__értékre. Az alábbi képen látható példa erre a UDR mutat a Azure Portalban:
 
@@ -201,7 +202,7 @@ Machine Learning Compute-fürt létrehozásához kövesse az alábbi lépéseket
 
 1. Válassza a bal oldali __számítás__ lehetőséget.
 
-1. Válassza ki a __betanítási fürtök__ lehetőséget a középpontban, majd válassza a elemet __+__.
+1. Válassza ki a __betanítási fürtök__ lehetőséget a középpontban, majd válassza a elemet __+__ .
 
 1. Az __új betanítási fürt__ párbeszédpanelen bontsa ki a __Speciális beállítások__ szakaszt.
 
@@ -213,7 +214,7 @@ Machine Learning Compute-fürt létrehozásához kövesse az alábbi lépéseket
 
    ![Machine Learning Compute virtuális hálózati beállításai](./media/how-to-enable-virtual-network/amlcompute-virtual-network-screen.png)
 
-Machine Learning Compute-fürtöt a Azure Machine Learning SDK használatával is létrehozhat. A következő kód egy új Machine Learning Compute fürtöt hoz létre `default` egy nevű `mynetwork`virtuális hálózat alhálózatában:
+Machine Learning Compute-fürtöt a Azure Machine Learning SDK használatával is létrehozhat. A következő kód egy új Machine Learning Compute fürtöt hoz létre `default` egy nevű virtuális hálózat alhálózatában `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AmlCompute
@@ -309,7 +310,7 @@ Ha az Azure Kubernetes Service (ak) szolgáltatást egy virtuális hálózatban 
 
 1. Válassza a bal oldali __számítás__ lehetőséget.
 
-1. Válassza a középpontban a kikövetkeztetés __fürtök__ lehetőséget, majd __+__ válassza a lehetőséget.
+1. Válassza a középpontban a kikövetkeztetés __fürtök__ lehetőséget, majd válassza a lehetőséget __+__ .
 
 1. A New következtető __fürt__ párbeszédpanelen válassza a __speciális__ a __hálózati konfiguráció__alatt lehetőséget.
 
@@ -330,7 +331,7 @@ Ha az Azure Kubernetes Service (ak) szolgáltatást egy virtuális hálózatban 
 
    [![Egy bejövő biztonsági szabály](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png)](./media/how-to-enable-virtual-network/aks-vnet-inbound-nsg-scoring.png#lightbox)
 
-A Azure Machine Learning SDK-val is hozzáadhatja az Azure Kubernetes szolgáltatást egy virtuális hálózatban. Ha már van egy AK-fürtje egy virtuális hálózaton, csatolja azt a munkaterülethez a következő témakörben leírtak szerint: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban. A következő kód létrehoz egy új AK-példányt egy `default` nevű `mynetwork`virtuális hálózat alhálózatában:
+A Azure Machine Learning SDK-val is hozzáadhatja az Azure Kubernetes szolgáltatást egy virtuális hálózatban. Ha már van egy AK-fürtje egy virtuális hálózaton, csatolja azt a munkaterülethez a következő témakörben leírtak szerint: [üzembe helyezés az AK](how-to-deploy-and-where.md)-ban. A következő kód létrehoz egy új AK-példányt `default` egy nevű virtuális hálózat alhálózatában `mynetwork` :
 
 ```python
 from azureml.core.compute import ComputeTarget, AksCompute
@@ -406,7 +407,7 @@ __Azure CLI__
 az rest --method put --uri https://management.azure.com"/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.ContainerService/managedClusters/<aks-resource-id>?api-version=2018-11-19 --body @body.json
 ```
 
-A parancs által hivatkozott `body.json` fájl tartalma hasonló a következő JSON-dokumentumhoz:
+A `body.json` parancs által hivatkozott fájl tartalma hasonló a következő JSON-dokumentumhoz:
 
 ```json
 { 
@@ -441,7 +442,7 @@ Ha egy virtuális hálózatban szeretné használni az ACI-t a munkaterületére
     > [!IMPORTANT]
     > A delegálás engedélyezésekor használja `Microsoft.ContainerInstance/containerGroups` a __meghatalmazott alhálózatot a szolgáltatás__ értékéhez.
 
-2. Telepítse a modellt a [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)használatával, használja `vnet_name` a `subnet_name` és a paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
+2. Telepítse a modellt a [AciWebservice. deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none--vnet-name-none--subnet-name-none-)használatával, használja a `vnet_name` és a `subnet_name` paramétereket. Állítsa be ezeket a paramétereket a virtuális hálózat nevére és az alhálózatra, ahol engedélyezte a delegálást.
 
 ## <a name="azure-firewall"></a>Azure Firewall
 
@@ -475,7 +476,7 @@ További információ a Azure Machine Learning és a Azure Firewall használatá
     az ml workspace show -w yourworkspacename -g resourcegroupname --query 'containerRegistry'
     ```
 
-    A parancs a következőhöz hasonló értéket `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"`ad vissza:. A karakterlánc utolsó része a munkaterület Azure Container Registry neve.
+    A parancs a következőhöz hasonló értéket ad vissza: `"/subscriptions/{GUID}/resourceGroups/{resourcegroupname}/providers/Microsoft.ContainerRegistry/registries/{ACRname}"` . A karakterlánc utolsó része a munkaterület Azure Container Registry neve.
 
 1. A virtuális hálózathoz való hozzáférés korlátozásához kövesse a [hálózati hozzáférés konfigurálása a beállításjegyzékhez](../container-registry/container-registry-vnet.md#configure-network-access-for-registry)című témakör lépéseit. A virtuális hálózat hozzáadásakor válassza ki a virtuális hálózatot és az alhálózatot a Azure Machine Learning erőforrásaihoz.
 
@@ -618,7 +619,7 @@ Ha egy virtuális gépet vagy Azure HDInsight-fürtöt szeretne használni a mun
 
     * A __forrás szolgáltatás címkéje__ legördülő listában válassza a __AzureMachineLearning__lehetőséget.
 
-    * A __forrás porttartomány-tartományok__ legördülő listában válassza a elemet __*__.
+    * A __forrás porttartomány-tartományok__ legördülő listában válassza a elemet __*__ .
 
     * A __cél__ legördülő listában válassza a __bármelyik__lehetőséget.
 

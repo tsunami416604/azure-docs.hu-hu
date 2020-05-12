@@ -5,19 +5,18 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: 56a0cb66f5b54c817067970ab369d7ca471a1696
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3b2b4e8868b73e22706c684d94371fe37885b9a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132346"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119246"
 ---
-# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications"></a>Zero Instrumentation-alkalmazás figyelése Kubernetes által üzemeltetett alkalmazásokhoz
+# <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Zero Instrumentation-alkalmazás figyelése Kubernetes által üzemeltetett alkalmazásokhoz Istio-elavult
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Ez a funkció jelenleg elavult, és a továbbiakban nem lesz támogatott a 2020. augusztus 1-től.
+> A jelenleg javasolt verzió csak a [Java önálló ügynökön keresztüli használatával](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)működik.
 
 A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Kubernetes-fürtön, így biztosítva a Box-alkalmazások figyelését bármely Kubernetes üzemeltetett alkalmazáshoz. Az alapértelmezett alkalmazás-betekintési funkciókkal (például az [alkalmazás-hozzárendeléssel](../../azure-monitor/app/app-map.md) ) a függőségek modellezéséhez [élő metrikastream](../../azure-monitor/app/live-stream.md) a valós idejű figyeléshez, az [alapértelmezett irányítópulttal](../../azure-monitor/app/overview-dashboard.md), [metrikus Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)és [munkafüzetekhez](../../azure-monitor/app/usage-workbooks.md)tartozó hatékony vizualizációkkal. Ezzel a funkcióval a felhasználók a kiválasztott Kubernetes-névtérben lévő összes Kubernetes-munkafolyamaton belül érhetik el a szűk keresztmetszeteket és a meghibásodási pontokat. Ha a meglévő Service Mesh-beruházásokat a Istio hasonló technológiákkal szeretné kihasználni, Azure Monitor az alkalmazás kódjának módosítása nélkül lehetővé teszi az automatikus műszeres alkalmazások figyelését.
 

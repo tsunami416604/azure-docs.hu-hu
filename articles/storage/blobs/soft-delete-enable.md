@@ -1,24 +1,30 @@
 ---
-title: A Blobok helyreállítható törlésének engedélyezése
+title: A Blobok Soft delete engedélyezése és kezelése
 titleSuffix: Azure Storage
 description: A blob-objektumok helyreállítható törlésének engedélyezésével könnyebben állíthatja helyre az adatokat, ha azok hibásan lettek módosítva vagy törölve lettek.
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/02/2020
+ms.date: 05/11/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 26a16d0eeb81c12faede1c00bdf5a0d724f7a6c6
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82884682"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120096"
 ---
-# <a name="enable-soft-delete-for-blobs"></a>A Blobok helyreállítható törlésének engedélyezése
+# <a name="enable-and-manage-soft-delete-for-blobs"></a>A Blobok Soft delete engedélyezése és kezelése
 
-A következő lépések bemutatják, hogyan kezdheti el a Soft deletet.
+A Soft delete megakadályozza a Blobok adatainak véletlen vagy helytelen módosítását vagy törlését. Ha a helyreállítható törlés engedélyezve van egy Storage-fiókhoz, a Blobok, a blob-verziók (előzetes verzió) és az abban tárolt Pillanatképek a Storage-fiókban is helyreállíthatók, a megadott megőrzési időtartamon belül.
+
+Ha egy alkalmazás vagy egy másik Storage-fiók felhasználója véletlenül nem módosíthatja vagy törölheti az adatait, a Microsoft a Soft delete bekapcsolását javasolja.
+
+Ez a cikk bemutatja, hogyan kezdheti el a Soft delete megkezdését.
+
+## <a name="enable-soft-delete"></a>Helyreállítható törlés engedélyezése
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
@@ -71,6 +77,7 @@ Set-AzContext -Subscription "<subscription-name>"
 $MatchingAccounts = Get-AzStorageAccount | where-object{$_.StorageAccountName -match "<matching-regex>"}
 $MatchingAccounts | Enable-AzStorageDeleteRetentionPolicy -RetentionDays 7
 ```
+
 A következő parancs használatával ellenőrizheti, hogy a Soft delete be van-e kapcsolva:
 
 ```powershell
@@ -174,3 +181,7 @@ blockBlob.StartCopy(copySource);
 
 ---
 
+## <a name="next-steps"></a>További lépések
+
+- [A blob Storage-hoz készült Soft delete](soft-delete-overview.md)
+- [BLOB verziószámozása (előzetes verzió)](versioning-overview.md)

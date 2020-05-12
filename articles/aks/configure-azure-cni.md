@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan konfigurálhatja az Azure CNI (Advanced) háló
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 17778c367eb731a7e41f5017c3ae630dc152454e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207496"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120929"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Az Azure CNI hálózatkezelés konfigurálása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -22,7 +22,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és használhat az *Azure CN
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az AK-fürthöz tartozó virtuális hálózatnak engedélyeznie kell a kimenő internetkapcsolatot.
-* Az AK-fürtök nem `169.254.0.0/16` `172.30.0.0/16`használhatnak `172.31.0.0/16`,, `192.0.2.0/24` vagy a Kubernetes szolgáltatási címtartomány esetében.
+* Az AK-fürtök nem használhatnak,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` vagy `192.0.2.0/24` a Kubernetes szolgáltatási címtartomány esetében.
 * Az AK-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködői](../role-based-access-control/built-in-roles.md#network-contributor) engedélyekkel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -38,10 +38,10 @@ A hüvelyek és a fürt csomópontjainak IP-címei a virtuális hálózaton bel�
 > [!IMPORTANT]
 > A szükséges IP-címek számának tartalmaznia kell a frissítési és skálázási műveletek szempontjait. Ha úgy állítja be az IP-címtartományt, hogy csak a rögzített számú csomópontot támogassa, a fürt nem frissíthető és nem méretezhető.
 >
-> - Az AK-fürt **frissítésekor** a rendszer egy új csomópontot telepít a fürtbe. A szolgáltatások és a munkaterhelések az új csomóponton futnak, és a rendszer eltávolítja egy régebbi csomópontot a fürtből. Ennek a működés közbeni frissítési folyamatnak legalább egy további IP-blokkot kell használnia. Ezután `n + 1`a csomópontok száma megtörténik.
+> - Az AK-fürt **frissítésekor** a rendszer egy új csomópontot telepít a fürtbe. A szolgáltatások és a munkaterhelések az új csomóponton futnak, és a rendszer eltávolítja egy régebbi csomópontot a fürtből. Ennek a működés közbeni frissítési folyamatnak legalább egy további IP-blokkot kell használnia. Ezután a csomópontok száma megtörténik `n + 1` .
 >   - Ez a megfontolás különösen fontos a Windows Server-csomópontok készletének használatakor. Az AK-beli Windows Server-csomópontok nem alkalmazzák automatikusan a Windows-frissítéseket, hanem a csomópont-készleten végeznek frissítést. Ez a frissítés új csomópontokat helyez üzembe a legújabb Window Server 2019 Alapcsomópont-lemezkép és biztonsági javítások alapján. A Windows Server-csomópontok készletének frissítésével kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 >
-> - AK-fürtök **skálázásakor** a rendszer egy új csomópontot telepít a fürtbe. A szolgáltatások és a munkaterhelések az új csomóponton futnak. Az IP-címtartományt figyelembe kell vennie, hogyan érdemes felmérni a fürt által támogatott csomópontok és hüvelyek számát. A frissítési műveletekhez egy további csomópontot is bele kell foglalni. Ezután `n + number-of-additional-scaled-nodes-you-anticipate + 1`a csomópontok száma megtörténik.
+> - AK-fürtök **skálázásakor** a rendszer egy új csomópontot telepít a fürtbe. A szolgáltatások és a munkaterhelések az új csomóponton futnak. Az IP-címtartományt figyelembe kell vennie, hogyan érdemes felmérni a fürt által támogatott csomópontok és hüvelyek számát. A frissítési műveletekhez egy további csomópontot is bele kell foglalni. Ezután a csomópontok száma megtörténik `n + number-of-additional-scaled-nodes-you-anticipate + 1` .
 
 Ha azt szeretné, hogy a csomópontok a maximális számú hüvelyt futtassák, és a hüvelyek rendszeres megsemmisítését és üzembe helyezését is lehetővé teszi, akkor a csomópontok további IP-címeit is érdemes figyelembe venni Ezek a további IP-címek figyelembe veszik, hogy a szolgáltatás törölhető, és az új szolgáltatás üzembe helyezésének és a cím megvásárlásának IP-címe is eltarthat.
 
@@ -50,7 +50,7 @@ Az AK-fürtök IP-címének csomagja egy virtuális hálózatból, a csomóponto
 | Címtartomány/Azure-erőforrás | Korlátok és méretezés |
 | --------- | ------------- |
 | Virtuális hálózat | Az Azure-beli virtuális hálózat lehet olyan nagy, mint/8, de 65 536 konfigurált IP-címekre van korlátozva. |
-| Alhálózat | Elég nagynak kell lennie ahhoz, hogy megfeleljen a fürtben esetlegesen kiépített csomópontoknak, hüvelyeknek és az összes Kubernetes és Azure-erőforrásnak. Ha például belső Azure Load Balancer telepít, az előtér-IP-címek a fürt alhálózatán vannak lefoglalva, nem nyilvános IP-címek. Az alhálózat méretének figyelembe kell vennie a frissítési műveleteket vagy a jövőbeli méretezési igényeket is.<p />Az alhálózat *minimális* méretének kiszámításához, beleértve egy további csomópontot a frissítési műveletekhez:`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Példa 50 csomópontos fürtre: `(51) + (51  * 30 (default)) = 1,581` (/21 vagy nagyobb)<p/>Példa egy 50 csomópontos fürtre, amely a további 10 csomópontok vertikális felskálázását `(61) + (61 * 30 (default)) = 1,891` is magában foglalja: (/21 vagy nagyobb)<p>Ha a fürt létrehozásakor nem ad meg maximális számú hüvelyt egy csomóponton, a csomópontok maximális száma *30*értékre van állítva. Az IP-címek minimálisan szükséges száma az adott értéken alapul. Ha az IP-címek minimális követelményeit eltérő maximális értékre számítja ki, tekintse meg a következő témakört: [a hüvelyek maximális számának beállítása](#configure-maximum---new-clusters) a fürt telepítésekor ezt az értéket. |
+| Alhálózat | Elég nagynak kell lennie ahhoz, hogy megfeleljen a fürtben esetlegesen kiépített csomópontoknak, hüvelyeknek és az összes Kubernetes és Azure-erőforrásnak. Ha például belső Azure Load Balancer telepít, az előtér-IP-címek a fürt alhálózatán vannak lefoglalva, nem nyilvános IP-címek. Az alhálózat méretének figyelembe kell vennie a frissítési műveleteket vagy a jövőbeli méretezési igényeket is.<p />Az alhálózat *minimális* méretének kiszámításához, beleértve egy további csomópontot a frissítési műveletekhez:`(number of nodes + 1) + ((number of nodes + 1) * maximum pods per node that you configure)`<p/>Példa 50 csomópontos fürtre: `(51) + (51  * 30 (default)) = 1,581` (/21 vagy nagyobb)<p/>Példa egy 50 csomópontos fürtre, amely a további 10 csomópontok vertikális felskálázását is magában foglalja: `(61) + (61 * 30 (default)) = 1,891` (/21 vagy nagyobb)<p>Ha a fürt létrehozásakor nem ad meg maximális számú hüvelyt egy csomóponton, a csomópontok maximális száma *30*értékre van állítva. Az IP-címek minimálisan szükséges száma az adott értéken alapul. Ha az IP-címek minimális követelményeit eltérő maximális értékre számítja ki, tekintse meg a következő témakört: [a hüvelyek maximális számának beállítása](#configure-maximum---new-clusters) a fürt telepítésekor ezt az értéket. |
 | A Kubernetes Service címtartománya | Ezt a tartományt nem szabad az ehhez a virtuális hálózathoz csatlakoztatott bármely hálózati elemhez használni. A szolgáltatási címek CIDR kisebbnek kell lennie, mint/12. Ezt a tartományt a különböző AK-fürtökön is felhasználhatja. |
 | A Kubernetes DNS-szolgáltatás IP-címe | Az Kubernetes szolgáltatási címtartomány azon IP-címe, amelyet a fürtszolgáltatás-felderítés (Kube-DNS) használ majd. Ne használja az első IP-címet a címtartományból, például. 1. Az alhálózat tartományának első címe a *kubernetes. default. SVC. cluster. local* címen található. |
 | Docker-híd címe | A Docker-híd hálózati címe az összes Docker-telepítésben található alapértelmezett *docker0* híd hálózati címe. Habár a *docker0* híd nem használatos az AK-fürtök vagy maguk a hüvelyek számára, a címnek úgy kell beállítania, hogy továbbra is támogassa az olyan forgatókönyveket, mint például a *Docker Build* az AK-fürtön belül. A Docker-híd hálózati címéhez ki kell választania egy CIDR, mert máskülönben a Docker automatikusan kiválaszt egy alhálózatot, ami ütközik más CIDRs. Olyan címtartományt kell választania, amely nem ütközik a hálózatok többi CIDRs, beleértve a fürt Service CIDR és a pod CIDR. A 172.17.0.1/16 alapértelmezett értéke. Ezt a tartományt a különböző AK-fürtökön is felhasználhatja. |
@@ -67,7 +67,9 @@ A hüvelyek maximális száma egy AK-fürtben 250. A *kubenet* és az *Azure CNI
 
 ### <a name="configure-maximum---new-clusters"></a>Maximális – új fürtök konfigurálása
 
-A hüvelyek maximális számát *csak a fürt központi telepítésének idejére*lehet konfigurálni. Ha az Azure CLI-vel vagy egy Resource Manager-sablonnal végzi a telepítést, a csomópontok maximális számát a 250 értékre állíthatja.
+A csomópontok maximális számát a fürt központi telepítésének idején vagy új csomópont-készletek hozzáadásakor konfigurálhatja. Ha az Azure CLI-vel vagy egy Resource Manager-sablonnal végzi a telepítést, a csomópontok maximális számát a 250 értékre állíthatja.
+
+Ha nem ad meg maxPods az új csomópontok létrehozásakor, az Azure CNI esetében a 30 alapértelmezett érték jelenik meg.
 
 A csomópontok maximális számaként megadott minimális érték kényszerítve van, hogy a rendszer a fürt állapotának kritikus fontosságú területét biztosítsa. A maximális hüvelyek esetében beállítható minimális érték 10, ha és csak akkor, ha az egyes csomópontok készletének konfigurációja legalább 30 hüvelyből áll. Például a maximális hüvelyek/csomópontok minimum 10 értékre való beállítása megköveteli, hogy minden egyes csomópont-készlet legalább 3 csomóponttal rendelkezzen. Ez a követelmény minden létrehozott új csomópont-készletre vonatkozik, így ha a 10 a csomópontok maximális hüvelye van definiálva, minden további hozzáadott csomópontnak legalább 3 csomóponttal kell rendelkeznie.
 
@@ -79,13 +81,13 @@ A csomópontok maximális számaként megadott minimális érték kényszerítve
 > [!NOTE]
 > A fenti táblázatban szereplő minimális értéket szigorúan kényszeríti az AK szolgáltatás. Nem állíthat be olyan maxPods értéket, amely kisebb, mint a minimálisan megjelenő érték, így megakadályozhatja, hogy a fürt el tudja kezdeni.
 
-* **Azure CLI**: határozza meg `--max-pods` az argumentumot, amikor üzembe helyez egy fürtöt az az [AK Create][az-aks-create] paranccsal. A maximális érték 250.
+* **Azure CLI**: határozza meg az `--max-pods` argumentumot, amikor üzembe helyez egy fürtöt az az [AK Create][az-aks-create] paranccsal. A maximális érték 250.
 * **Resource Manager-sablon**: a `maxPods` [ManagedClusterAgentPoolProfile] objektumban megadhatja a tulajdonságot, amikor Resource Manager-sablonnal telepít egy fürtöt. A maximális érték 250.
 * **Azure Portal**: a többcsomópontos hüvelyek maximális száma nem módosítható, ha fürtöt telepít a Azure Portal. Az Azure CNI hálózatkezelési fürtök a Azure Portal használatával történő üzembe helyezéskor a csomópontokon 30 hüvelyre korlátozódnak.
 
 ### <a name="configure-maximum---existing-clusters"></a>Maximálisan meglévő fürtök konfigurálása
 
-Egy meglévő AK-fürtön nem módosítható a csomópontok maximális száma. A számot csak akkor állíthatja be, ha először telepíti a fürtöt.
+Az új maxPod létrehozásakor a Node (csomópontok száma) beállítás is meghatározható. Ha a maxPod egy meglévő fürtön kell megnövelni, adjon hozzá egy új csomópont-készletet az új kívánt maxPod-számhoz. Miután elvégezte a hüvelyek új készletbe való áttelepítését, törölje a régi készletet. A fürtben lévő bármelyik régebbi készlet törléséhez győződjön meg arról, hogy a csomópont-készlet üzemmódját a [rendszercsomópont-készlet dokumentumrendszer[-csomópont-készletek]pontban meghatározottak szerint állítja be.
 
 ## <a name="deployment-parameters"></a>Központi telepítési paraméterek
 
@@ -100,7 +102,7 @@ AK-fürt létrehozásakor a következő paraméterek konfigurálhatók az Azure 
 * Nem lehet a fürt virtuális hálózati IP-címének tartományán belül
 * Nem lehet átfedésben más olyan virtuális hálózatokkal, amelyekkel a fürt virtuális hálózati társai
 * Nem lehet átfedésben a helyszíni IP-címekkel
-* Nem lehet a (,) `169.254.0.0/16`vagy `172.30.0.0/16`a `172.31.0.0/16`() tartományon belül`192.0.2.0/24`
+* Nem lehet a (,) vagy a () tartományon belül `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16``192.0.2.0/24`
 
 Habár technikailag lehetséges egy szolgáltatási címtartomány megadására ugyanazon a virtuális hálózaton belül, mint a fürt, ez nem ajánlott. Az előre nem látható viselkedés az átfedésben lévő IP-tartományok használata esetén eredményezhet. További információkért tekintse meg a jelen cikk [Gyakori kérdések](#frequently-asked-questions) című szakaszát. A Kubernetes-szolgáltatásokkal kapcsolatos további információkért lásd: [szolgáltatások][services] a Kubernetes dokumentációjában.
 
@@ -123,7 +125,7 @@ $ az network vnet subnet list \
 /subscriptions/<guid>/resourceGroups/myVnet/providers/Microsoft.Network/virtualNetworks/myVnet/subnets/default
 ```
 
-A speciális hálózatkezelést használó fürt létrehozásához `--network-plugin azure` használja az az [AK Create][az-aks-create] parancsot az argumentummal. Frissítse az `--vnet-subnet-id` értéket az előző lépésben összegyűjtött ALhálózati azonosítóval:
+A speciális hálózatkezelést használó fürt létrehozásához használja az az [AK Create][az-aks-create] parancsot az `--network-plugin azure` argumentummal. Frissítse az `--vnet-subnet-id` értéket az előző lépésben összegyűjtött alhálózati azonosítóval:
 
 ```azurecli-interactive
 az aks create \
@@ -212,3 +214,4 @@ Az AK-motorral létrehozott Kubernetes-fürtök támogatják a [kubenet][kubenet
 [network-policy]: use-network-policies.md
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [network-comparisons]: concepts-network.md#compare-network-models
+[rendszercsomópont-készletek]: use-system-pools.md

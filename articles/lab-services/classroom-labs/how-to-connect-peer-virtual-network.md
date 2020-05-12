@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: spelluru
-ms.openlocfilehash: 9e53b6bdb041bfac5a82ed607b75b25ab0513f57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d8f2c747a4bc0ab2119c92e61188e3c57f2b212
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188004"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118362"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának összekötése egy társ virtuális hálózattal Azure Lab Services
 
@@ -48,7 +48,7 @@ Az új [labor-fiók létrehozása](tutorial-setup-lab-account.md)során kiválas
 
 Emellett lehetőség van arra is, hogy **címtartományt** biztosítson a Labs virtuális gépei számára.  A **címtartomány** tulajdonság csak akkor érvényes, ha a **társ virtuális hálózat** engedélyezve van a laborban.  Ha a címtartomány meg van adni, a rendszer a labor fiókban található laborok alatt lévő összes virtuális gépet létrehozza az adott címtartományból. A címtartomány CIDR (például 10.20.0.0/20) kell legyen, és ne legyen átfedésben a meglévő címtartományok.  Címtartomány megadásakor fontos meggondolni a létrehozandó *laborok* számát, és biztosítania kell a címtartomány megadását. A labor-szolgáltatások legfeljebb 512 virtuális gépet feltételeznek laborban.  Egy "/23" nevű IP-címtartomány például csak egy labort hozhat létre.  A (z) "/21" tartománya négy labor létrehozását teszi lehetővé.
 
-Ha nincs megadva a **címtartomány** , a labor Services az Azure által megadott alapértelmezett címtartományt fogja használni, amikor létrehozza a virtuális hálózatot a virtuális hálózattal.  A tartomány gyakran hasonló, mint 10. x. 0.0/16.  Ez az IP-címtartomány átfedéséhez vezethet, ezért győződjön meg arról, hogy a tesztkörnyezet beállításai között meg kell adnia a tartományt, vagy ellenőrizze, hogy a virtuális hálózat milyen címtartományt használ.
+Ha nincs megadva a **címtartomány** , a labor Services az Azure által megadott alapértelmezett címtartományt fogja használni, amikor létrehozza a virtuális hálózatot a virtuális hálózattal.  A tartomány gyakran hasonló, mint 10. x. 0.0/16.  Ez az IP-címtartomány átfedését eredményezheti, ezért ügyeljen arra, hogy adjon meg egy címtartományt a tesztkörnyezet beállításai között, vagy ellenőrizze, hogy a virtuális hálózat milyen címtartományt használ.
 
 ## <a name="configure-after-the-lab-is-created"></a>Konfigurálás a tesztkörnyezet létrehozása után
 

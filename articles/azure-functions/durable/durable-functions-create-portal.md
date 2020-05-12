@@ -2,14 +2,14 @@
 title: Durable Functions létrehozása a Azure Portal használatával
 description: Megtudhatja, hogyan telepítheti a Azure Functions Durable Functions bővítményét a portál fejlesztéséhez.
 ms.topic: conceptual
-ms.date: 10/23/2018
+ms.date: 04/10/2020
 ms.reviewer: azfuncdf
-ms.openlocfilehash: 0060088acb100036c094406e01d0d736a4af88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6416ae4aba8b045c6c4fb0fe6557bdcd1efb3a9b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75769642"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120146"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>Durable Functions létrehozása a Azure Portal használatával
 
@@ -30,17 +30,19 @@ Alapértelmezés szerint a létrehozott Function alkalmazás a Azure Functions f
 
 ## <a name="install-the-durable-functions-npm-package-javascript-only"></a>A tartós függvények NPM-csomagjának telepítése (csak JavaScript)
 
-Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable-functions` NPM csomagot](https://www.npmjs.com/package/durable-functions).
+Ha JavaScript-Durable Functions hoz létre, telepítenie kell a [ `durable-functions` NPM csomagot](https://www.npmjs.com/package/durable-functions):
 
-1. Válassza ki a függvény alkalmazásának nevét, majd a **platform funkcióit**, majd a **speciális eszközöket (kudu)**.
+1. A Function alkalmazás oldalán válassza a **speciális eszközök** lehetőséget a bal oldali ablaktábla **fejlesztői eszközök** területén.
 
-   ![Functions platform-funkciók kudu kiválasztása](./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png)
+   :::image type="content" source="./media/durable-functions-create-portal/function-app-platform-features-choose-kudu.png" alt-text="Functions platform-funkciók kudu kiválasztása":::
 
-2. A kudu-konzolon válassza a **Debug konzol** , majd a **cmd parancsot**.
+2. A **speciális eszközök** lapon válassza az **Indítás**lehetőséget.
 
-   ![Kudu hibakeresési konzol](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+3. A kudu-konzolon válassza a **hibakeresési konzol**, majd a **cmd**elemet.
 
-3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen feltöltheti a `package.json` fájlt úgy, hogy áthúzza a fájl könyvtár ablakába. A minta `package.json` a következő:
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu hibakeresési konzol":::
+
+3. A Function alkalmazás fájljának könyvtár-struktúrájának meg kell jelennie. Navigáljon a `site/wwwroot` mappához. Innen feltöltheti a fájlt úgy, hogy `package.json` áthúzza a fájl könyvtár ablakába. A minta a `package.json` következő:
 
     ```json
     {
@@ -50,37 +52,31 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
     }
     ```
 
-   ![Kudu feltöltési csomag. JSON](./media/durable-functions-create-portal/kudu-choose-debug-console.png)
+   :::image type="content" source="./media/durable-functions-create-portal/kudu-choose-debug-console.png" alt-text="Kudu feltöltési csomag. JSON":::
 
-4. `package.json` A feltöltése után futtassa a `npm install` parancsot a kudu távoli végrehajtási konzolon.
+4. A `package.json` feltöltése után futtassa a parancsot a `npm install` kudu távoli végrehajtási konzolon.
 
    ![Kudu NPM-telepítés futtatása](./media/durable-functions-create-portal/kudu-npm-install.png)
 
 ## <a name="create-an-orchestrator-function"></a>Orchestrator függvény létrehozása
 
-1. Bontsa ki a Function alkalmazást, **+** és kattintson a **függvények**elem melletti gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. A Function alkalmazásban válassza a bal oldali ablaktábla **függvények** elemét, majd a felső menüben válassza a **Hozzáadás** lehetőséget. 
 
-   ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/durable-functions-create-portal/function-app-quickstart-choose-portal.png)
+1. Az **új függvény** lap keresés mezőjébe írja be a kifejezést `durable` , majd válassza ki a **Durable functions http-indító** sablont.
 
-1. Válassza ki a **További sablonok**, majd a **Befejezés és sablonok megtekintése** lehetőséget.
+   :::image type="content" source="./media/durable-functions-create-portal/durable-functions-http-starter-template.png" alt-text="Válassza ki Durable Functions HTTP Starter":::
 
-    ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/durable-functions-create-portal/add-first-function.png)
+1. Az **új függvény** neve mezőbe írja be a következőt: `HttpStart` , majd kattintson a **függvény létrehozása**elemre.
 
-1. A Keresés mezőbe írja be `durable` a kifejezést, majd válassza ki a **Durable functions http-indító** sablont.
+   A létrehozott függvény az előkészítés elindítására szolgál.
 
-1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure DurableTask bővítmény és a Function alkalmazásban lévő függőségek telepítéséhez. A bővítményt csak egyszer kell telepíteni az adott függvényalkalmazáshoz. A telepítést követően válassza a **Folytatás** gombot.
+1. Hozzon létre egy másik függvényt a Function alkalmazásban, ezúttal a **Durable functions Orchestrator** sablon használatával. Nevezze el az új előkészítési függvényt `HelloSequence` .
 
-    ![Kötési bővítmények telepítése](./media/durable-functions-create-portal/install-durabletask-extension.png)
-
-1. A telepítés befejezése után nevezze el az új függvényt `HttpStart` , és válassza a **Létrehozás**lehetőséget. A létrehozott függvény az előkészítés elindítására szolgál.
-
-1. Hozzon létre egy másik függvényt a Function alkalmazásban, ezúttal a **Durable functions Orchestrator** sablon használatával. Nevezze el az új előkészítési `HelloSequence`függvényt.
-
-1. Hozzon létre egy nevű `Hello` harmadik függvényt a **Durable functions Activity** sablon használatával.
+1. Hozzon létre egy nevű harmadik függvényt `Hello` a **Durable functions Activity** sablon használatával.
 
 ## <a name="test-the-durable-function-orchestration"></a>A tartós függvények előkészítésének tesztelése
 
-1. Lépjen vissza a **HttpStart** függvényhez, válassza a **</> a függvény URL-címének beolvasása** lehetőséget, és **másolja** az URL-címet. Ezt az URL-címet használhatja a **HelloSequence** függvény elindításához.
+1. Lépjen vissza a **HttpStart** függvényhez, válassza a **függvény URL-címének beolvasása**lehetőséget, majd a **Másolás a vágólapra** ikonra kattintva másolja az URL-címet. Ezt az URL-címet használhatja a **HelloSequence** függvény elindításához.
 
 1. Használjon olyan HTTP-eszközt, mint a Poster vagy a cURL, hogy POST-kérést küldjön a másolt URL-címre. A következő példa egy olyan cURL-parancs, amely POST-kérést küld a tartós függvénynek:
 
@@ -88,7 +84,7 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
     curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
     ```
 
-    Ebben a példában `{your-function-app-name}` az a tartomány, amely a Function alkalmazás neve. A válaszüzenet URI-végpontok készletét fogja tartalmazni, amelyek a végrehajtás monitorozásához és szabályozásához használhatók fel hasonlóan a következő példához:
+    Ebben a példában az a `{your-function-app-name}` tartomány, amely a Function alkalmazás neve. A válaszüzenet URI-végpontok készletét fogja tartalmazni, amelyek a végrehajtás monitorozásához és szabályozásához használhatók fel hasonlóan a következő példához:
 
     ```json
     {  
@@ -100,7 +96,7 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
     }
     ```
 
-1. Hívja meg `statusQueryGetUri` a végpont URI-ját, és láthatja a tartós függvény aktuális állapotát, ami az alábbi példához hasonló lehet:
+1. Hívja meg a `statusQueryGetUri` végpont URI-ját, és láthatja a tartós függvény aktuális állapotát, ami az alábbi példához hasonló lehet:
 
     ```json
         {
@@ -112,7 +108,7 @@ Ha JavaScript-Durable functions hoz létre, akkor telepítenie kell a [ `durable
         }
     ```
 
-1. Folytassa a `statusQueryGetUri` végpont meghívását mindaddig, amíg az állapot be nem **fejeződik**, és az alábbi példához hasonló választ láthat:
+1. Folytassa a végpont meghívását `statusQueryGetUri` mindaddig, amíg az állapot be nem **fejeződik**, és az alábbi példához hasonló választ láthat:
 
     ```json
     {

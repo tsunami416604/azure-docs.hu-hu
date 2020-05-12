@@ -10,12 +10,12 @@ ms.service: lab-services
 ms.topic: article
 ms.date: 11/21/2019
 ms.author: enewman
-ms.openlocfilehash: c1aaf588f61b329fa3b838b8a92f3e287897315b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ed2a506fc4446f78685c6cd6ae9dec2b65e1743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80521189"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119297"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató Windows-sablonok számítógépének beállításához Azure Lab Services
 
@@ -32,7 +32,7 @@ Ha a virtuális gép alaphelyzetbe állítása esetén a tanulói adatok elveszn
 
 A OneDrive manuális letöltéséhez és telepítéséhez tekintse meg a [OneDrive](https://onedrive.live.com/about/download/) vagy a [OneDrive for Business](https://onedrive.live.com/about/business/) letöltési lapját.
 
-A következő PowerShell-parancsfájlt is használhatja.  A rendszer automatikusan letölti és telepíti a OneDrive legújabb verzióját.  Miután telepítette a OneDrive-ügyfelet, futtassa a telepítőt.  A példánkban a `/allUsers` kapcsoló használatával telepítjük a OneDrive a gépen lévő összes felhasználóra. A kapcsolót a `/silent` OneDrive csendes telepítésére is használjuk.
+A következő PowerShell-parancsfájlt is használhatja.  A rendszer automatikusan letölti és telepíti a OneDrive legújabb verzióját.  Miután telepítette a OneDrive-ügyfelet, futtassa a telepítőt.  A példánkban a `/allUsers` kapcsoló használatával telepítjük a OneDrive a gépen lévő összes felhasználóra. A `/silent` kapcsolót a OneDrive csendes telepítésére is használjuk.
 
 ```powershell
 Write-Host "Downloading OneDrive Client..."
@@ -136,9 +136,9 @@ New-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\OneDrive\DiskSpaceChec
 Ha a sablon számítógépének szüksége van az Office-ra, javasoljuk, hogy az Office üzembe helyezését az Office [Deployment Tool (ODT)](https://www.microsoft.com/download/details.aspx?id=49117 )használatával. Létre kell hoznia egy újrafelhasználható konfigurációs fájlt az [office 365 ügyfél-konfigurációs szolgáltatás](https://config.office.com/) használatával, amely kiválaszthatja, hogy melyik architektúrára, milyen funkciókra lesz szüksége az Office-től, és milyen gyakran frissíti őket.
 
 1. Nyissa meg az [Office 365 ügyfél-konfigurációs szolgáltatást](https://config.office.com/) , és töltse le a saját konfigurációs fájlját.
-2. Töltse le az [Office üzembehelyezési eszközét](https://www.microsoft.com/download/details.aspx?id=49117).  A `setup.exe`letöltött fájl lesz.
-3. Az `setup.exe /download configuration.xml` Office-összetevők letöltéséhez futtassa a parancsot.
-4. Az `setup.exe /configure configuration.xml` Office-összetevők telepítéséhez futtassa a parancsot.
+2. Töltse le az [Office üzembehelyezési eszközét](https://www.microsoft.com/download/details.aspx?id=49117).  A letöltött fájl lesz `setup.exe` .
+3. `setup.exe /download configuration.xml`Az Office-összetevők letöltéséhez futtassa a parancsot.
+4. `setup.exe /configure configuration.xml`Az Office-összetevők telepítéséhez futtassa a parancsot.
 
 ### <a name="change-the-microsoft-office-365-update-channel"></a>A Microsoft Office 365 frissítési csatorna módosítása
 
@@ -211,11 +211,11 @@ Ha a virtuális gépen további nyelvekre van szüksége, akkor a Microsoft Stor
 2. A "nyelvi csomag" kifejezés keresése
 3. Válassza ki a telepítendő nyelvet
 
-Ha már bejelentkezett a sablon virtuális gépre, a ["nyelvi csomag telepítése" parancsikon](ms-settings:regionlanguage?activationSource=SMC-IA-4027670) használatával lépjen közvetlenül a megfelelő beállítások lapra.
+Ha már bejelentkezett a sablon virtuális gépre, a "nyelvi csomag telepítése" parancsikon () használatával `ms-settings:regionlanguage?activationSource=SMC-IA-4027670` lépjen közvetlenül a megfelelő beállítások lapra.
 
 ## <a name="remove-unneeded-built-in-apps"></a>Szükségtelen beépített alkalmazások eltávolítása
 
-A Windows 10 számos beépített alkalmazást tartalmaz, amelyek esetleg nem szükségesek az adott osztályhoz. A diákoknak szánt számítógépes rendszerkép leegyszerűsítése érdekében előfordulhat, hogy el szeretné távolítani néhány alkalmazást a sablon gépről.  A telepített alkalmazások listájának megtekintéséhez használja a PowerShell `Get-AppxPackage` -parancsmagot.  Az alábbi példa az összes eltávolítható alkalmazást megjeleníti.
+A Windows 10 számos beépített alkalmazást tartalmaz, amelyek esetleg nem szükségesek az adott osztályhoz. A diákoknak szánt számítógépes rendszerkép leegyszerűsítése érdekében előfordulhat, hogy el szeretné távolítani néhány alkalmazást a sablon gépről.  A telepített alkalmazások listájának megtekintéséhez használja a PowerShell- `Get-AppxPackage` parancsmagot.  Az alábbi példa az összes eltávolítható alkalmazást megjeleníti.
 
 ```powershell
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name

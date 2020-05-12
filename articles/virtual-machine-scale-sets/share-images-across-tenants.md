@@ -2,18 +2,19 @@
 title: Katalógusbeli rendszerképek megosztása az Azure-beli bérlők között
 description: Megtudhatja, hogyan oszthat meg virtuálisgép-lemezképeket az Azure-bérlők között megosztott képtárakkal.
 author: cynthn
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm-windows
-ms.topic: conceptual
-ms.date: 04/05/2019
 ms.author: cynthn
-ms.openlocfilehash: a29999102ad8a10d8965145b31a7d804675e0e57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.service: virtual-machine-scale-sets
+ms.subservice: imaging
+ms.date: 04/05/2019
+ms.reviewer: akjosh
+ms.custom: akjosh
+ms.openlocfilehash: 5b86335ab8bcc3af75dbd8af39e3d913f2461e58
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76276343"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119841"
 ---
 # <a name="share-gallery-vm-images-across-azure-tenants"></a>Katalógusbeli virtuálisgép-rendszerképek megosztása Azure-bérlők között
 
@@ -22,7 +23,7 @@ ms.locfileid: "76276343"
 
 ## <a name="create-a-scale-set-using-azure-cli"></a>Méretezési csoport létrehozása az Azure CLI-vel
 
-Jelentkezzen be az 1. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és az 1. Bérlő AZONOSÍTÓjának használatával. Ha szükséges `az account show --query "tenantId"` , a segítségével kérheti le a bérlői azonosítókat.
+Jelentkezzen be az 1. bérlői szolgáltatásnév appID, az alkalmazás kulcsával és az 1. Bérlő AZONOSÍTÓjának használatával. `az account show --query "tenantId"`Ha szükséges, a segítségével kérheti le a bérlői azonosítókat.
 
 ```azurecli-interactive
 az account clear

@@ -5,18 +5,18 @@ services: container-service
 ms.topic: article
 ms.date: 06/26/2019
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 09fd5326c2532e115dbab0752af31a809488f04c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 060e98f2617da503068911ec1e687241d909dabc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559695"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120912"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Kubenet hálózatkezelés használata saját IP-címtartományok az Azure Kubernetes szolgáltatásban (ak)
 
 Alapértelmezés szerint az AK-fürtök a [kubenet][kubenet]-t használják, és létrehoznak egy Azure-beli virtuális hálózatot és egy alhálózatot. A *kubenet*a csomópontok IP-címet kapnak az Azure virtuális hálózat alhálózatáról. A podok IP-címe a csomópontok Azure-beli virtuális hálózati alhálózatától logikailag eltérő címtérből származik. A hálózati címfordítás (NAT) konfigurálása lehetővé teszi, hogy a podok hozzáférjenek az Azure-beli virtuális hálózat erőforrásaihoz. A forgalom forrás IP-címe a NAT-t a csomópont elsődleges IP-címére irányítja. Ez a megközelítés nagy mértékben csökkenti azon IP-címek számát, amelyeket a hüvelyek számára a hálózati térben le kell foglalni.
 
-Az [Azure Container Network Interface (CNI)][cni-networking]használatával minden Pod IP-címet kap az alhálózatból, és közvetlenül elérhető. Ezeknek az IP-címeknek egyedinek kell lenniük a hálózati térben, és előre kell tervezni. Mindegyik csomóponthoz tartozik egy konfigurációs paraméter az általa támogatott hüvelyek maximális számához. A csomópontok azonos számú IP-címet, majd az adott csomópont előtt fenntartanak. Ennek a megközelítésnek több megtervezésre van szüksége, és gyakran az IP-címek kimerülését, illetve a fürtök egy nagyobb alhálózaton való újraépítését igényli, mivel az alkalmazás által igényelt növekedés.
+Az [Azure Container Network Interface (CNI)][cni-networking]használatával minden Pod IP-címet kap az alhálózatból, és közvetlenül elérhető. Ezeknek az IP-címeknek egyedinek kell lenniük a hálózati térben, és előre kell tervezni. Mindegyik csomóponthoz tartozik egy konfigurációs paraméter az általa támogatott hüvelyek maximális számához. A csomópontok azonos számú IP-címet, majd az adott csomópont előtt fenntartanak. Ennek a megközelítésnek több megtervezésre van szüksége, és gyakran az IP-címek kimerülését, illetve a fürtök egy nagyobb alhálózaton való újraépítését igényli, mivel az alkalmazás által igényelt növekedés. A fürtön üzembe helyezhető maximális hüvelyeket konfigurálhatja egy csomópont létrehozási ideje vagy új csomópont-készletek létrehozásakor. Ha nem ad meg maxPods az új csomópontok létrehozásakor, a rendszer a kubenet alapértelmezett 110-as értékét kapja meg.
 
 Ebből a cikkből megtudhatja, hogyan használhatja a *kubenet* hálózatkezelést virtuális hálózati alhálózat létrehozására és használatára egy AK-fürthöz. A hálózati beállításokkal és a szempontokkal kapcsolatos további információkért lásd: [hálózati fogalmak a Kubernetes és az AK][aks-network-concepts]-hoz.
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a *kubenet* hálózatkezelé
 
 * Az AK-fürthöz tartozó virtuális hálózatnak engedélyeznie kell a kimenő internetkapcsolatot.
 * Ne hozzon létre egynél több AK-fürtöt ugyanabban az alhálózatban.
-* Az AK-fürtök nem `169.254.0.0/16` `172.30.0.0/16`használhatnak `172.31.0.0/16`,, `192.0.2.0/24` vagy a Kubernetes szolgáltatási címtartomány esetében.
+* Az AK-fürtök nem használhatnak,, `169.254.0.0/16` `172.30.0.0/16` `172.31.0.0/16` vagy `192.0.2.0/24` a Kubernetes szolgáltatási címtartomány esetében.
 * Az AK-fürt által használt egyszerű szolgáltatásnak legalább [hálózati közreműködő](../role-based-access-control/built-in-roles.md#network-contributor) szerepkörrel kell rendelkeznie a virtuális hálózaton belüli alhálózaton. Ha [Egyéni szerepkört](../role-based-access-control/custom-roles.md) szeretne definiálni a beépített hálózati közreműködő szerepkör használata helyett, a következő engedélyek szükségesek:
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
@@ -34,7 +34,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a *kubenet* hálózatkezelé
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfigurálva van. A `az --version` verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
+Szüksége lesz az Azure CLI-verzió 2.0.65 vagy újabb verziójára, és konfigurálva van.  `az --version`A verzió megkereséséhez futtassa a parancsot. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését][install-azure-cli]ismertető témakört.
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>A saját alhálózat kubenet hálózatkezelésének áttekintése
 
@@ -139,7 +139,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Most rendeljen hozzá egy egyszerű szolgáltatásnevet a virtuális hálózathoz tartozó AK-fürt *közreműködői* engedélyeihez az az [role hozzárendelés Create][az-role-assignment-create] parancs használatával. Adja meg saját * \<AppID>* az előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
+Most rendeljen hozzá egy egyszerű szolgáltatásnevet a virtuális hálózathoz tartozó AK-fürt *közreműködői* engedélyeihez az az [role hozzárendelés Create][az-role-assignment-create] parancs használatával. Adja meg saját * \< AppID>* az előző parancs kimenetében látható módon az egyszerű szolgáltatás létrehozásához:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -147,7 +147,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>AK-fürt létrehozása a virtuális hálózaton
 
-Ezzel létrehozta a virtuális hálózatot és az alhálózatot, és létrehozta és hozzárendelte az egyszerű szolgáltatásnév számára a hálózati erőforrások használatára vonatkozó engedélyeket. Most hozzon létre egy AK-fürtöt a virtuális hálózaton és az alhálózatban az az [AK Create][az-aks-create] paranccsal. Adja meg a saját egyszerű * \<AppID>* és * \<a jelszó>*, ahogy az előző parancs kimenetében látható az egyszerű szolgáltatásnév létrehozásához.
+Ezzel létrehozta a virtuális hálózatot és az alhálózatot, és létrehozta és hozzárendelte az egyszerű szolgáltatásnév számára a hálózati erőforrások használatára vonatkozó engedélyeket. Most hozzon létre egy AK-fürtöt a virtuális hálózaton és az alhálózatban az az [AK Create][az-aks-create] paranccsal. Adja meg a saját egyszerű * \< AppID>* és a * \< jelszó>*, ahogy az előző parancs kimenetében látható az egyszerű szolgáltatásnév létrehozásához.
 
 A következő IP-címtartományok a fürt létrehozási folyamatának részeként is definiálva vannak:
 

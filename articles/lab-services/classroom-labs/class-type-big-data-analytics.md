@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: c499b7a0f1cd16bf57fef21742b01bda71249916
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538777"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118430"
 ---
 # <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Tesztkörnyezet beállítása big data elemzéshez a HortonWorks-adatplatform Docker-telepítésével
 
@@ -102,7 +102,7 @@ Ebben a szakaszban üzembe helyezi a HDP-munkaterületet, majd a böngésző has
 1. Amint üzembe helyezi és futtatja a HDP-Homokozóhoz tartozó Docker-tárolókat, a böngésző elindításával és a HDP irányítópultjának megnyitásával [a Cloudera](https://www.cloudera.com/tutorials/learning-the-ropes-of-the-hdp-sandbox.html#welcome-page) utasításait követve elérheti a környezetet.
 
     > [!NOTE] 
-    > Ezek az utasítások azt feltételezik, hogy először leképezte a homokozó környezet helyi IP-címét a sablonban lévő virtuális gépen lévő sandbox-hdp.hortonworks.com.  Ha **nem** hajtja végre ezt a leképezést, a alkalmazásban elérheti a homokozó kezdőlapját [http://localhost:8080](http://localhost:8080).
+    > Ezek az utasítások azt feltételezik, hogy először leképezte a homokozó környezet helyi IP-címét a sablonban lévő virtuális gépen lévő sandbox-hdp.hortonworks.com.  Ha **nem** hajtja végre ezt a leképezést, a alkalmazásban elérheti a homokozó kezdőlapját `http://localhost:8080` .
 
 ### <a name="automatically-start-docker-containers-when-students-log-in"></a>Docker-tárolók automatikus elindítása, ha a tanulók bejelentkeznek
 

@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 05/06/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 904f93aa705a4e327f29bbec109bdf3b937f6c70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c8af4cafb2c7ab4d39a591f5972803161c2aa0f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80519483"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120385"
 ---
 # <a name="azure-importexport-service-frequently-asked-questions"></a>Azure import/export szolgáltatás: gyakori kérdések
 
@@ -109,7 +109,7 @@ A feltöltés befejezése után a meghajtó (k) egy nemzetközi címnek való vi
 
 A követelmények az adott Azure-adatközpont korlátozásai függenek.
 
-- Van néhány olyan webhely, mint például Ausztrália, Németország és Egyesült Királyság déli régiója, amelyek biztonsági okokból a Microsoft Datacenter bejövő AZONOSÍTÓjának számát igénylik a parcellán való íráshoz. A meghajtók vagy lemezek adatközpontba való szállítása előtt forduljon az Azure DataBox Operations (adbops@microsoft.com) szolgáltatáshoz, és kérje le ezt a számot. A szám nélkül a csomag el lesz utasítva.
+- Van néhány olyan webhely, mint például Ausztrália, Németország és Egyesült Királyság déli régiója, amelyek biztonsági okokból a Microsoft Datacenter bejövő AZONOSÍTÓjának számát igénylik a parcellán való íráshoz. A meghajtók vagy lemezek adatközpontba való szállítása előtt forduljon az Azure DataBox Operations () szolgáltatáshoz, és kérje le adbops@microsoft.com ezt a számot. A szám nélkül a csomag el lesz utasítva.
 - Az indiai adatközpontok megkövetelik az illesztőprogram személyes adatait, például a kormányzati azonosító kártyáját vagy a nem. (például a PAN, a ICUKA, a DL), a név, a Contact és az autótelefon száma, hogy beszerezze a kapu belépési menetét. A kézbesítés késésének elkerülése érdekében tájékoztassa a szolgáltatót ezekről a követelményekről.
 
 ### <a name="when-creating-a-job-the-shipping-address-is-a-location-that-is-different-from-my-storage-account-location-what-should-i-do"></a>A feladatok létrehozásakor a szállítási címe nem azonos a saját Storage-fiók helyétől. Mit tegyek?
@@ -153,7 +153,7 @@ Nem. A WAImportExport eszköz csak a 64 bites Windows operációs rendszerekkel 
 
 ### <a name="does-azure-importexport-support-aes-256-encryption"></a>Az Azure import/export támogatja az AES-256 titkosítást?
 
-Nem. Az Azure import/export szolgáltatás AES-128 BitLocker-titkosítást használ.
+Igen. Az Azure import/export szolgáltatás AES-256 BitLocker-titkosítást használ.
 
 ## <a name="next-steps"></a>További lépések
 

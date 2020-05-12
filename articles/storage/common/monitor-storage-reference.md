@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: ba268e623a2858c2863ffc86eacfe25284a1e37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82722959"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118158"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Az Azure Storage figyelési adatreferenciája
 
@@ -131,18 +131,18 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 |:--- |:---|
 |**idő** | Az az egyezményes világidő (UTC), amikor a kérést a tároló fogadta. Például: `2018/11/08 21:09:36.6900118`.|
 |**resourceId** | A Storage-fiók erőforrás-azonosítója. Például:`/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
-|**Kategória** | A kért művelet kategóriája. Például: `StorageRead`, `StorageWrite`, vagy. `StorageDelete`|
+|**Kategória** | A kért művelet kategóriája. Például: `StorageRead` , `StorageWrite` , vagy `StorageDelete` .|
 |**operationName** | A végrehajtott REST-művelet típusa. <br> A műveletek teljes listáját lásd: [Storage Analytics naplózott műveletek és állapotüzenetek témakör](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
 |**operationVersion** | A tárolási szolgáltatás azon verziója, amely a kérelem végrehajtásakor lett megadva. Ez egyenértékű az **x-MS-Version** fejléc értékével. Például: `2017-04-17`.|
 |**sémaverzióval** | A napló séma-verziója. Például: `1.0`.|
-|**statusCode** | A kérelem HTTP-állapotkódot. Ha a kérés megszakad, lehet, hogy `Unknown`ez az érték értéke. <br> Például:`206` |
-|**statusText** | A kért művelet állapota.  Az állapotüzenetek teljes listáját lásd: [Storage Analytics naplózott műveletek és állapotüzenetek témakör](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). Az 2017-04-17-es és újabb verziókban az `ClientOtherError` állapotjelző üzenet nincs használatban. Ehelyett ez a mező hibakódot tartalmaz. Például:`SASSuccess`  |
+|**statusCode** | A kérelem HTTP-állapotkódot. Ha a kérés megszakad, lehet, hogy ez az érték értéke `Unknown` . <br> Például:`206` |
+|**statusText** | A kért művelet állapota.  Az állapotüzenetek teljes listáját lásd: [Storage Analytics naplózott műveletek és állapotüzenetek témakör](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). Az 2017-04-17-es és újabb verziókban az állapotjelző üzenet `ClientOtherError` nincs használatban. Ehelyett ez a mező hibakódot tartalmaz. Például:`SASSuccess`  |
 |**durationMs** | A kért művelet végrehajtásához szükséges teljes idő ezredmásodpercben kifejezve. Ide tartozik a beérkező kérelem olvasásának ideje, valamint a válasz küldése a kérelmezőnek. Például: `12`.|
 |**callerIpAddress** | A kérelmező IP-címe, beleértve a portszámot is. Például: `192.100.0.102:4362`. |
 |**correlationId** | A naplók erőforrások közötti összekapcsolásához használt azonosító. Például: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
 |**helyen** | A Storage-fiók helye. Például: `North Europe`. |
-|**protokoll**|A műveletben használt protokoll. Például: `HTTP`, `HTTPS`, `SMB`, vagy`NFS`|
-| **URI** | A kért egységes erőforrás-azonosító. Például: http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10. |
+|**protokoll**|A műveletben használt protokoll. Például: `HTTP` ,, `HTTPS` `SMB` , vagy`NFS`|
+| **URI** | A kért egységes erőforrás-azonosító. Például: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>A művelet hitelesítésének módját leíró mezők
 
@@ -177,7 +177,7 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 
 | Tulajdonság | Leírás |
 |:--- |:---|
-|**identitás/típus** | A kérelem elvégzéséhez használt hitelesítés típusa. Például: `OAuth`, `SAS Key`, `Account Key`, vagy`Anonymous` |
+|**identitás/típus** | A kérelem elvégzéséhez használt hitelesítés típusa. Például: `OAuth` ,, `SAS Key` `Account Key` , vagy`Anonymous` |
 |**identitás/tokenHash**|Ez a mező csak belső használatra van fenntartva. |
 |**engedélyezés/művelet** | A kérelemhez rendelt művelet. Például:`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
 |**engedélyezés/roleAssignmentId** | A szerepkör-hozzárendelés azonosítója. Például: `4e2521b7-13be-4363-aeda-111111111111`.|
@@ -239,8 +239,8 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 |**ügyfélkérelem** | A kérelem **x-MS-Client-Request-ID** fejlécének értéke. Például: `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`. |
 |**ETAG** | A visszaadott objektum ETag azonosítója az idézőjelek között. Például: `0x8D101F7E4B662C4`.  |
 |**serverLatencyMs** | A kért művelet végrehajtásához szükséges ezredmásodpercben kifejezett teljes idő. Ez az érték nem tartalmazza a hálózati késést (a bejövő kérelem beolvasásának idejét és a válasz küldését a kérelmezőnek). Például: `22`. |
-|**serviceType** | A kérelemhez társított szolgáltatás. Például: `blob`, `table`, `files`, vagy. `queue` |
-|**operationCount** | A kérelemben érintett összes naplózott művelet száma. Ez a szám a indexével kezdődik `0`. Egyes kérelmeknél több műveletre van szükség, például egy blob másolására irányuló kérelemre. A legtöbb kérelem csak egy műveletet hajt végre. Például: `1`. |
+|**serviceType** | A kérelemhez társított szolgáltatás. Például: `blob` ,, `table` `files` , vagy `queue` . |
+|**operationCount** | A kérelemben érintett összes naplózott művelet száma. Ez a szám a indexével kezdődik `0` . Egyes kérelmeknél több műveletre van szükség, például egy blob másolására irányuló kérelemre. A legtöbb kérelem csak egy műveletet hajt végre. Például: `1`. |
 |**requestHeaderSize** | A kérelem fejlécének mérete bájtban kifejezve. Például: `578`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet. |
 |**requestBodySize** | A tárolási szolgáltatás által beolvasott kérési csomagok mérete bájtban kifejezve. <br> Például: `0`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet.  |
 |**responseHeaderSize** | A válasz fejlécének mérete bájtban kifejezve. Például: `216`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet.  |

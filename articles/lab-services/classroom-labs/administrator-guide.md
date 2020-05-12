@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2019
+ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 307ca08e733417efc9496415a09a0898fe10393e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: af69b9105d55749267e6c54a6584566b499b4097
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183466"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118464"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – rendszergazdai útmutató
 Az Egyetem Felhőbeli erőforrásait kezelő informatikai rendszergazdák általában felelősek az iskolájuk laboratóriumi fiókjának beállításához. A labor-fiók beállítása után a rendszergazdák vagy a pedagógusok létrehozzák a labor-fiókban található tantermi laborokat. Ez a cikk átfogó áttekintést nyújt az érintett Azure-erőforrásokról és a létrehozásához szükséges útmutatóról.
@@ -124,16 +124,16 @@ A Azure Lab Services első lépéseinél javasoljuk, hogy hozzon létre elnevez�
 
 | Erőforrás típusa | Szerepkör | Javasolt minta | Példák |
 | ------------- | ---- | ----------------- | -------- | 
-| Erőforráscsoport | Egy vagy több Lab-fiókot, valamint egy vagy több megosztott képgyűjteményt tartalmaz | \<szervezet rövid neve\>-\<környezet\>– RG<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>A **környezet** azonosítja az erőforrás környezetét, például a próbaüzem vagy a gyártás</li><li>A **RG** a következő erőforrástípus: erőforráscsoport.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-Pilot-RG<br/>contosouniversitylabs – Prod-RG |
-| Labor-fiók | Egy vagy több labort tartalmaz | \<szervezet rövid neve\>-\<:\>környezet – La<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>A **környezet** azonosítja az erőforrás környezetét, például a próbaüzem vagy a gyártás</li><li>A **La** az erőforrástípus: Lab-fiók.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs – pilóta – La<br/>sciencedeptlabs-Prod-La |
-| Tantermi labor | Egy vagy több virtuális gépet tartalmaz |\<osztály neve\>-\<\>-időkeret\<oktató azonosítója\><ul><li>Az **osztály neve** azonosítja a labor által támogatott osztály nevét.</li><li>Az **időkeret** azonosítja azt az időkeretet, amelyben az osztály elérhető.</li>Az **oktatási azonosító** azonosítja azt a pedagógust, amely a labor tulajdonosa.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
-| Közös Képtár | Egy vagy több virtuálisgép-rendszerkép-verziót tartalmaz | \<szervezet rövid neve\>– gyűjtemény | contosouniversitylabsgallery |
+| Erőforráscsoport | Egy vagy több Lab-fiókot, valamint egy vagy több megosztott képgyűjteményt tartalmaz | \<szervezet rövid neve \> - \< környezet \> – RG<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>A **környezet** azonosítja az erőforrás környezetét, például a próbaüzem vagy a gyártás</li><li>A **RG** a következő erőforrástípus: erőforráscsoport.</li></ul> | contosouniversitylabs – RG<br/>contosouniversitylabs-Pilot-RG<br/>contosouniversitylabs – Prod-RG |
+| Labor-fiók | Egy vagy több labort tartalmaz | \<szervezet rövid neve: \> - \< környezet \> – La<ul><li>A **szervezet rövid neve** azonosítja annak a szervezetnek a nevét, amelyet az erőforráscsoport támogat</li><li>A **környezet** azonosítja az erőforrás környezetét, például a próbaüzem vagy a gyártás</li><li>A **La** az erőforrástípus: Lab-fiók.</li></ul> | contosouniversitylabs-La<br/>mathdeptlabs-La<br/>sciencedeptlabs – pilóta – La<br/>sciencedeptlabs-Prod-La |
+| Tantermi labor | Egy vagy több virtuális gépet tartalmaz |\<osztály neve \> - \< időkeret \> - \< oktató azonosítója\><ul><li>Az **osztály neve** azonosítja a labor által támogatott osztály nevét.</li><li>Az **időkeret** azonosítja azt az időkeretet, amelyben az osztály elérhető.</li>Az **oktatási azonosító** azonosítja azt a pedagógust, amely a labor tulajdonosa.</li></ul> | CS1234-fall2019-johndoe<br/>CS1234-spring2019-johndoe |
+| Közös Képtár | Egy vagy több virtuálisgép-rendszerkép-verziót tartalmaz | \<szervezet rövid neve – \> gyűjtemény | contosouniversitylabsgallery |
 
 További információ az Azure-erőforrások elnevezéséről: az [Azure-erőforrások elnevezési konvenciói](/azure/architecture/best-practices/naming-conventions).
 
 ## <a name="regionslocations"></a>Regions\locations
 
-A Azure Lab Services erőforrásainak beállításakor meg kell adnia az erőforrást tároló adatközpont régióját (vagy helyét). Az alábbiakban részletesen tájékozódhat arról, hogy a régió milyen hatással van az egyes újraforrásokra a labor beállításával.
+A Azure Lab Services erőforrásainak beállításakor meg kell adnia az erőforrást tároló adatközpont régióját (vagy helyét). Itt talál további információt arról, hogy a régió hogyan befolyásolja a laborok beállításában érintett erőforrásokat.
 
 ### <a name="resource-group"></a>Erőforráscsoport
 

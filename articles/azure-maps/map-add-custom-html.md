@@ -1,20 +1,20 @@
 ---
 title: HTML-jelölő hozzáadása a térképhez | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan adhat hozzá HTML-jelölőket térképekhez a Microsoft Azure Maps web SDK használatával.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 07/29/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 2700d42c25d58911fb275ad9ce6c5610cd22624d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 30d9cf9848a8d99505bf9f9c97bef5aaa31065ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536768"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83119282"
 ---
 # <a name="add-html-markers-to-the-map"></a>HTML-jelölők hozzáadása a térképhez
 
@@ -28,9 +28,9 @@ Ez a cikk bemutatja, hogyan adhat hozzá egy egyéni HTML-fájlt, például egy 
 
 ## <a name="add-an-html-marker"></a>HTML-jelölő hozzáadása
 
-A [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) osztály alapértelmezett stílusú. Testreszabhatja a jelölőt a jelölő színének és szövegének megadásával. A HTML-jelölő osztály alapértelmezett stílusa egy SVG-sablon, amely tartalmaz egy `{color}` és `{text}` egy helyőrzőt. A gyors testreszabáshoz adja meg a szín és a szöveg tulajdonságokat a HTML-jelölő beállításai között. 
+A [HtmlMarker](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.htmlmarker?view=azure-iot-typescript-latest) osztály alapértelmezett stílusú. Testreszabhatja a jelölőt a jelölő színének és szövegének megadásával. A HTML-jelölő osztály alapértelmezett stílusa egy SVG-sablon, amely tartalmaz egy `{color}` és egy `{text}` helyőrzőt. A gyors testreszabáshoz adja meg a szín és a szöveg tulajdonságokat a HTML-jelölő beállításai között. 
 
-A következő kód egy HTML-jelölőt hoz létre, és a Color tulajdonságot "DodgerBlue" értékre állítja, a Text tulajdonság pedig "10". Az előugró ablak a jelölőhöz van `click` csatolva, és az esemény a felugró ablak láthatóságának váltására szolgál.
+A következő kód egy HTML-jelölőt hoz létre, és a Color tulajdonságot "DodgerBlue" értékre állítja, a Text tulajdonság pedig "10". Az előugró ablak a jelölőhöz van csatolva, és az `click` esemény a felugró ablak láthatóságának váltására szolgál.
 
 ```javascript
 //Create an HTML marker and add it to the map.
@@ -56,16 +56,16 @@ Alább látható a fenti funkciók teljes futási kódjának mintája.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='HTML-jelölő hozzáadása térképhez' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat egy <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>HTML-jelölő hozzáadásával</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='HTML-jelölő hozzáadása térképhez' src='//codepen.io/azuremaps/embed/MVoeVw/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat egy <a href='https://codepen.io/azuremaps/pen/MVoeVw/'>HTML-jelölő hozzáadásával</a> Azure Maps () használatával a <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="create-svg-templated-html-marker"></a>SVG-sablon alapján létrehozott HTML-jelölő létrehozása
 
-A HTML `htmlContent` -jelölő alapértelmezett értéke egy SVG-sablon, amelyben a `{color}` mappák `{text}` és a benne található. Létrehozhat egyéni SVG-karakterláncokat, és felveheti ugyanezeket a helyőrzőket az SVG-be `color` , `text` így a jelölő és a beállítások is módosíthatják ezeket a helyőrzőket az SVG-ben.
+A `htmlContent` HTML-jelölő alapértelmezett értéke egy SVG-sablon, amelyben a mappák `{color}` és `{text}` a benne található. Létrehozhat egyéni SVG-karakterláncokat, és felveheti ugyanezeket a helyőrzőket az SVG-be, így a `color` jelölő és a `text` beállítások is módosíthatják ezeket a helyőrzőket az SVG-ben.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='HTML-jelölő egyéni SVG-sablonnal' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>HTML-jelölőjét egyéni SVG</a> -<a href='https://codepen.io/azuremaps'>@azuremaps</a>sablonnal Azure Maps () használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='HTML-jelölő egyéni SVG-sablonnal' src='//codepen.io/azuremaps/embed/LXqMWx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a toll <a href='https://codepen.io/azuremaps/pen/LXqMWx/'>HTML-jelölőjét egyéni SVG-sablonnal</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 > [!TIP]
@@ -77,16 +77,16 @@ A HTML-jelölők egyik előnye, hogy a CSS használatával számos nagyszerű te
 
 <br/>
 
-<iframe height='500' scrolling='no' title='HTML-adatforrás' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML-Adatforrást</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='HTML-adatforrás' src='//codepen.io/azuremaps/embed/qJVgMx/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a Pen <a href='https://codepen.io/azuremaps/pen/qJVgMx/'>HTML-Adatforrást</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="draggable-html-markers"></a>Mozgatható HTML-jelölők
 
-Ez a minta bemutatja, hogyan lehet egy HTML-jelölőt áthúzni. A HTML- `drag`jelölők `dragstart`támogatása, `dragend` és események.
+Ez a minta bemutatja, hogyan lehet egy HTML-jelölőt áthúzni. A HTML-jelölők támogatása `drag` , `dragstart` és `dragend` események.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Mozgatható HTML-jelölő' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollra <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>HÚZHATÓ HTML-jelölőt</a> Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Mozgatható HTML-jelölő' src='//codepen.io/azuremaps/embed/wQZoEV/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollra <a href='https://codepen.io/azuremaps/pen/wQZoEV/'>HÚZHATÓ HTML-jelölőt</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="add-mouse-events-to-html-markers"></a>Egér-események hozzáadása HTML-jelölőhöz
@@ -95,7 +95,7 @@ Ezek a minták azt mutatják be, hogyan adhat hozzá egeret, és áthúzhatja az
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Egér-események hozzáadása HTML-jelölőhöz' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat az <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>egérmutató hozzáadásával a HTML-jelölőket</a> a következő helyen: Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Egér-események hozzáadása HTML-jelölőhöz' src='//codepen.io/azuremaps/embed/RqOKRz/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat az <a href='https://codepen.io/azuremaps/pen/RqOKRz/'>egérmutató hozzáadásával a HTML-jelölőket</a> a következő helyen: Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="next-steps"></a>További lépések

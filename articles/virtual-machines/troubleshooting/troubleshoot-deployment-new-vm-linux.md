@@ -3,7 +3,7 @@ title: Linux rendszerű virtuális gépek üzembe helyezése – problémamegold
 description: A Resource Manager üzembe helyezésével kapcsolatos problémák elhárítása új Linux rendszerű virtuális gép létrehozásakor az Azure-ban
 services: virtual-machines-linux, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
-ms.author: cjiang
-ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: daberry
+ms.openlocfilehash: f85389d8fc2269b346df22854bb7ddce08844a88
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981418"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118226"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>A Resource Manager üzembe helyezésével kapcsolatos hibák elhárítása új Linux rendszerű virtuális gép létrehozásával az Azure-ban
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -74,7 +74,7 @@ Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem 
 * Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 * Ha a kért virtuális gép mérete nem módosítható:
   * Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból.
-    Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** > *a rendelkezésre állási* > csoport**Virtual Machines** > *a virtuális gép* > **leállítása**elemre.
+    Kattintson az **erőforráscsoportok**  >  *az erőforráscsoport*  >  **erőforrásai**  >  *a rendelkezésre állási*csoport  >  **Virtual Machines**  >  *a virtuális gép*  >  **leállítása**elemre.
   * Az összes virtuális gép leállítása után hozza létre az új virtuális gépet a kívánt méretben.
   * Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az **Indítás**gombra.
 
