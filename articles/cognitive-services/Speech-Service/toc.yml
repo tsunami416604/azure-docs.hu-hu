@@ -426,6 +426,24 @@
           items:
             - name: Hangvezérelt asszisztensekkel kapcsolatos gyakori kérdések
               href: faq-voice-assistants.md
+    - name: Hangvezérelt asszisztensek Windows rendszeren
+      items:
+        - name: A Windows rendszeren elérhető hangvezérelt asszisztensek áttekintése
+          href: windows-voice-assistants-overview.md
+        - name: Útmutatók
+          items:
+            - name: Az asszisztens fejlesztésének megkezdése Windows rendszeren
+              href: how-to-windows-voice-assistants-get-started.md
+            - name: Hangalapú aktiválás engedélyezése
+              href: windows-voice-assistants-implementation-guide.md
+        - name: További források
+          items:
+            - name: Adatvédelmi követelmények és útmutatások
+              href: windows-voice-assistants-automatic-enablement-guidelines.md
+            - name: Ajánlott eljárások asszisztens használatához
+              href: windows-voice-assistants-best-practices.md
+            - name: Minták és gyakori kérdések
+              href: windows-voice-assistants-faq.md
     - name: Egyéni kulcsszó
       items:
         - name: Az egyéni kulcsszavak áttekintése

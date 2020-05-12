@@ -15,7 +15,7 @@
           href: quick-setup-auto-provision-cli.md
         - name: Azure RM-sablon
           href: quick-setup-auto-provision-rm.md
-    - name: Egyetlen szimulált eszköz üzembe helyezése
+    - name: Egyetlen eszköz kiépítése
       items:
         - name: Szimmetrikus kulcsú igazolás
           items:
