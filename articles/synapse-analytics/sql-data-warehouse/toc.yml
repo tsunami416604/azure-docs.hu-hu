@@ -37,6 +37,8 @@
       items:
         - name: COPY utasítás
           href: quickstart-bulk-load-copy-tsql.md
+        - name: Példák COPY utasításra
+          href: quickstart-bulk-load-copy-tsql-examples.md
     - name: Méretezés
       items:
         - name: Portál

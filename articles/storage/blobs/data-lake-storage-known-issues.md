@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/20/2020
+ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: dfa4d65464192b90d4a6f74255faaf8b664ce118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e80d1a05765d224dc4682c6f64faccc8c81f8ebd
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767975"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007481"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ Ez a szakasz a blob API-k és a Data Lake Storage Gen2 API-k használatával kap
 
 * A blob API-k és a Data Lake Storage API-k nem használhatók a fájlok ugyanazon példányára való íráshoz. Ha Data Lake Storage Gen2 API-k használatával ír fájlba egy fájlt, a rendszer nem fogja látni a fájl blokkokat a [letiltási lista](https://docs.microsoft.com/rest/api/storageservices/get-block-list) blob API-jának meghívásához. A fájlokat Data Lake Storage Gen2 API-k vagy blob API-k használatával írhatja felül. Ez nem befolyásolja a fájl tulajdonságait.
 
-* Ha a [lista Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények a címtárakat és a blobokat is tartalmazzák. Ha elválasztót választ, csak egy perjelet (`/`) használjon. Ez az egyetlen támogatott elválasztó karakter.
+* Ha a [lista Blobok](https://docs.microsoft.com/rest/api/storageservices/list-blobs) műveletet határolójel megadása nélkül használja, az eredmények a címtárakat és a blobokat is tartalmazzák. Ha elválasztót választ, csak egy perjelet ( `/` ) használjon. Ez az egyetlen támogatott elválasztó karakter.
 
 * Ha a [blob törlése](https://docs.microsoft.com/rest/api/storageservices/delete-blob) API-t használja egy könyvtár törléséhez, akkor a rendszer csak akkor törli a könyvtárat, ha üres. Ez azt jelenti, hogy a blob API rekurzív törlése nem végezhető el.
 
@@ -70,12 +70,11 @@ A nem felügyelt virtuálisgép-lemezek nem támogatottak olyan fiókoknál, ame
 
 ## <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-* A blob-Pillanatképek törlése még nem támogatott.  
+A blob-Pillanatképek törlése még nem támogatott. 
 
 ## <a name="archive-tier"></a>Archiválási szint
 
 Jelenleg van egy olyan hiba, amely hatással van az archív hozzáférési szintre.
-
 
 ## <a name="blobfuse"></a>Blobfuse
 
@@ -91,7 +90,7 @@ Csak a AzCopy legújabb verzióját használja ([AzCopy v10](https://docs.micros
 
 ## <a name="azure-storage-explorer"></a>Azure Storage Explorer
 
-Csak a vagy `1.6.0` újabb verziókat használja.
+Csak a vagy újabb verziókat használja  `1.6.0`   .
 
 <a id="explorer-in-portal" />
 
@@ -108,6 +107,39 @@ A REST API-kat használó harmadik féltől származó alkalmazások továbbra i
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Hozzáférés-vezérlési listák (ACL) és névtelen olvasási hozzáférés
 
 Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
+
+## <a name="premium-performance-block-blob-storage-accounts"></a>Prémium szintű teljesítményű blokk blob Storage-fiókok
+
+### <a name="diagnostic-logs"></a>Diagnosztikai naplók
+
+A diagnosztikai naplók még nem engedélyezhetők a Azure Portal használatával. A PowerShell használatával is engedélyezheti őket. Például:
+
+```powershell
+#To login
+Connect-AzAccount
+
+#Set default block blob storage account.
+Set-AzCurrentStorageAccount -Name premiumGen2Account -ResourceGroupName PremiumGen2Group
+
+#Enable logging
+Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,write,delete -RetentionDays 14
+```
+
+### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
+
+- Az életciklus-kezelési házirendek még nem támogatottak a prémium szintű blokk blob Storage-fiókokban. 
+
+- Az adatok nem helyezhetők át a prémium szintről az alacsonyabb szintekre. 
+
+- A **blob törlése** művelet jelenleg nem támogatott. 
+
+### <a name="hdinsight-support"></a>HDInsight-támogatás
+
+N HDInsight-fürt létrehozásakor még nem választhat olyan blokk blob Storage-fiókot, amelyen engedélyezve van a hierarchikus névtér funkció. A fiókot azonban a létrehozása után is csatlakoztathatja a fürthöz.
+
+### <a name="dremio-support"></a>Dremio-támogatás
+
+A Dremio még nem csatlakozik olyan blokk blob Storage-fiókhoz, amelyen engedélyezve van a hierarchikus névtér funkció. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) illesztőprogram (nem támogatott a Data Lake Storage Gen2)
 

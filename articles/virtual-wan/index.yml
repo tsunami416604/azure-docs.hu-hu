@@ -9,13 +9,13 @@ metadata:
   ms.topic: landing-page
   author: cherylmc
   ms.author: cherylmc
-  ms.date: 11/13/2019
-  ms.openlocfilehash: f004b965901f161d16034f0cea91a99c50cc2575
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.date: 05/08/2020
+  ms.openlocfilehash: 02385eaefec2ed095b0922d5b098139caf56daec
+  ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74072237"
+  ms.lasthandoff: 05/10/2020
+  ms.locfileid: "83005450"
 landingContent:
 - title: A Virtual WAN bemutatása
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: virtual-wan-locations-partners.md
     - text: GYIK
       url: virtual-wan-faq.md
-- title: Első lépések
+- title: Bevezetés
   linkLists:
   - linkListType: tutorial
     links:
@@ -53,10 +53,12 @@ landingContent:
   linkLists:
   - linkListType: concept
     links:
-    - text: Globális átviteli hálózati architektúra
-      url: virtual-wan-global-transit-network-architecture.md
     - text: Migrálás virtuális WAN-ba
       url: migrate-from-hub-spoke-topology.md
+    - text: Globális átviteli hálózati architektúra
+      url: virtual-wan-global-transit-network-architecture.md
+    - text: SD-WAN kapcsolati architektúra
+      url: sd-wan-connectivity-architecture.md
 - title: Referencia
   linkLists:
   - linkListType: reference

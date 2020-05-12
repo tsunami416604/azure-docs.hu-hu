@@ -5,21 +5,22 @@ author: tamram
 services: storage
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/23/2019
+ms.date: 05/10/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 6303644ada5c6f093611dba94daf8006f8cc5819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4767c0310783e7e2cc51b4caa7d6e6a052d0a05a
+ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536904"
+ms.lasthandoff: 05/11/2020
+ms.locfileid: "83007300"
 ---
 # <a name="create-a-blockblobstorage-account"></a>BlockBlobStorage-fiók létrehozása
 
 A BlockBlobStorage fiók típusa lehetővé teszi, hogy a prémium szintű teljesítménnyel rendelkező blokk blobokat hozzon létre. Ez a típusú Storage-fiók olyan számítási feladatokhoz van optimalizálva, amelyek nagy tranzakciós díjszabással rendelkeznek, vagy amelyek nagyon gyors hozzáférési időt igényelnek. Ez a cikk bemutatja, hogyan hozhat létre BlockBlobStorage-fiókot a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával.
 
-[!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
+> [!NOTE]
+> A blokk blob Storage-fiók hierarchikus névtér funkciója nyilvános előzetes verzióban érhető el, és az USA keleti régiójában, az USA keleti régiójában, az USA középső régiójában, az USA déli középső régiójában, az USA 2. nyugati régiójában, Egyesült Királyság déli régiója, Közép-és Kelet-Ausztrália régióban található. A korlátozások áttekintéséhez tekintse meg Azure Data Lake Storage Gen2 és [ismert problémák](data-lake-storage-known-issues.md)a [blob Storage szolgáltatásait](data-lake-storage-supported-blob-storage-features.md) . Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adlspremiumonboard).
 
 A BlockBlobStorage-fiókokkal kapcsolatos további információkért lásd: az [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 
@@ -29,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-Nincs.
+Nincsenek.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -91,21 +92,21 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
 1. A Azure Portal válassza a **minden szolgáltatás** > a **tárolási** kategória > **Storage-fiókok**lehetőséget.
 
-1. A **Storage-fiókok**területen válassza a **Hozzáadás**lehetőséget.
+2. A **Storage-fiókok**területen válassza a **Hozzáadás**lehetőséget.
 
-1. Az **előfizetés** mezőben válassza ki azt az előfizetést, amelyben létre szeretné hozni a Storage-fiókot.
+3. Az **előfizetés** mezőben válassza ki azt az előfizetést, amelyben létre szeretné hozni a Storage-fiókot.
 
-1. Az **erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget, és adja meg az új erőforráscsoport nevét.
+4. Az **erőforráscsoport** mezőben válasszon ki egy meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget, és adja meg az új erőforráscsoport nevét.
 
-1. A **Storage-fiók neve** mezőben adja meg a fiók nevét. Vegye figyelembe a következő irányelveket:
+5. A **Storage-fiók neve** mezőben adja meg a fiók nevét. Vegye figyelembe a következő irányelveket:
 
    - A névnek egyedinek kell lennie az Azure-ban.
    - A névnek három – 24 karakter hosszúnak kell lennie.
    - A név csak számokat és kisbetűket tartalmazhat.
 
-1. A **hely** mezőben válassza ki a Storage-fiók helyét, vagy használja az alapértelmezett helyet.
+6. A **hely** mezőben válassza ki a Storage-fiók helyét, vagy használja az alapértelmezett helyet.
 
-1. A többi beállításnál konfigurálja a következőket:
+7. A többi beállításnál konfigurálja a következőket:
 
    |Mező     |Érték  |
    |---------|---------|
@@ -115,9 +116,18 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
    ![Megjeleníti a portál felhasználói felületét egy blokk blob Storage-fiók létrehozásához](media/storage-blob-create-account-block-blob/create-block-blob-storage-account.png)
 
-1. A Storage-fiók beállításainak áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet.
+8. Válassza a **speciális** lapot.
 
-1. Kattintson a **Létrehozás** gombra.
+9. Ha optimalizálni szeretné a Storage-fiókját az adatelemzéshez, akkor állítsa a **hierarchikus névteret** **engedélyezve**értékre. Ellenkező esetben hagyja meg ezt a beállítást, ha az alapértelmezett értékre van állítva.
+
+   További információ: [Bevezetés a Azure Data Lake Storage Gen2ba](data-lake-storage-introduction.md).
+
+   > [!NOTE]
+   > A blokk blob Storage-fiók hierarchikus névtér funkciója nyilvános előzetes verzióban érhető el, és az USA keleti régiójában, az USA keleti régiójában, az USA középső régiójában, az USA déli középső régiójában, az USA 2. nyugati régiójában, Egyesült Királyság déli régiója, Közép-és Kelet-Ausztrália régióban található. A korlátozások áttekintéséhez tekintse meg Azure Data Lake Storage Gen2 és [ismert problémák](data-lake-storage-known-issues.md)a [blob Storage szolgáltatásait](data-lake-storage-supported-blob-storage-features.md) . Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adlspremiumonboard).
+
+8. A Storage-fiók beállításainak áttekintéséhez válassza a **felülvizsgálat + létrehozás** elemet.
+
+9. Kattintson a **Létrehozás** gombra.
 
 ## <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
@@ -125,19 +135,19 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
 1. Nyisson meg egy emelt szintű Windows PowerShell-munkamenetet (Futtatás rendszergazdaként).
 
-1. A következő parancs futtatásával ellenőrizze, hogy telepítve van-e `Az` a PowerShell-modul legújabb verziója.
+2. A következő parancs futtatásával ellenőrizze, hogy telepítve van-e a PowerShell-modul legújabb verziója `Az` .
 
    ```powershell
    Install-Module -Name Az -AllowClobber
    ```
 
-1. Nyisson meg egy új PowerShell-konzolt, és jelentkezzen be az Azure-fiókjával.
+3. Nyisson meg egy új PowerShell-konzolt, és jelentkezzen be az Azure-fiókjával.
 
    ```powershell
    Connect-AzAccount -SubscriptionId <SubscriptionID>
    ```
 
-1. Ha szükséges, hozzon létre egy új erőforráscsoportot. Cserélje le az értékeket az idézőjelek között, és futtassa a következő parancsot.
+4. Ha szükséges, hozzon létre egy új erőforráscsoportot. Cserélje le az értékeket az idézőjelek között, és futtassa a következő parancsot.
 
    ```powershell
    $resourcegroup = "new_resource_group_name"
@@ -145,7 +155,7 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
    New-AzResourceGroup -Name $resourceGroup -Location $location
    ```
 
-1. Hozza létre a BlockBlobStorage-fiókot. Cserélje le az értékeket az idézőjelek között, és futtassa a következő parancsot.
+5. Hozza létre a BlockBlobStorage-fiókot. Cserélje le az értékeket az idézőjelek között, és futtassa a következő parancsot.
 
    ```powershell
    $resourcegroup = "resource_group_name"
@@ -154,6 +164,10 @@ Ha BlockBlobStorage-fiókot szeretne létrehozni a Azure Portalban, kövesse az 
 
    New-AzStorageAccount -ResourceGroupName $resourcegroup -Name $storageaccount -Location $location -Kind "BlockBlobStorage" -SkuName "Premium_LRS"
    ```
+   Ha optimalizálni szeretné a Storage-fiókját az adatelemzéshez, adja hozzá `-EnableHierarchicalNamespace $True` a parancsot a parancshoz. További információ: [Bevezetés a Azure Data Lake Storage Gen2ba](data-lake-storage-introduction.md).
+
+   > [!NOTE]
+   > A blokk blob Storage-fiók hierarchikus névtér funkciója nyilvános előzetes verzióban érhető el, és az USA keleti régiójában, az USA keleti régiójában, az USA középső régiójában, az USA déli középső régiójában, az USA 2. nyugati régiójában, Egyesült Királyság déli régiója, Közép-és Kelet-Ausztrália régióban található. A korlátozások áttekintéséhez tekintse meg Azure Data Lake Storage Gen2 és [ismert problémák](data-lake-storage-known-issues.md)a [blob Storage szolgáltatásait](data-lake-storage-supported-blob-storage-features.md) . Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adlspremiumonboard).
 
 ## <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -165,7 +179,7 @@ Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, elősz�
    az login
    ```
 
-1. Ha szükséges, hozzon létre egy új erőforráscsoportot. Cserélje le a zárójelben lévő értékeket (beleértve a zárójeleket is), majd futtassa a következő parancsot.
+2. Ha szükséges, hozzon létre egy új erőforráscsoportot. Cserélje le a zárójelben lévő értékeket (beleértve a zárójeleket is), majd futtassa a következő parancsot.
 
    ```azurecli
    az group create \
@@ -173,7 +187,7 @@ Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, elősz�
     --location "<location>"
    ```
 
-1. Hozza létre a BlockBlobStorage-fiókot. Cserélje le a zárójelben lévő értékeket (beleértve a zárójeleket is), majd futtassa a következő parancsot.
+3. Hozza létre a BlockBlobStorage-fiókot. Cserélje le a zárójelben lévő értékeket (beleértve a zárójeleket is), majd futtassa a következő parancsot.
 
    ```azurecli
    az storage account create \
@@ -184,6 +198,11 @@ Ha az Azure CLI használatával szeretne blokk-blob-fiókot létrehozni, elősz�
     --sku "Premium_LRS"
    ```
 
+   Ha optimalizálni szeretné a Storage-fiókját az adatelemzéshez, adja hozzá `--hierarchical-namespace true` a parancsot a parancshoz. További információ: [Bevezetés a Azure Data Lake Storage Gen2ba](data-lake-storage-introduction.md).
+
+   > [!NOTE]
+   > A blokk blob Storage-fiók hierarchikus névtér funkciója nyilvános előzetes verzióban érhető el, és az USA keleti régiójában, az USA keleti régiójában, az USA középső régiójában, az USA déli középső régiójában, az USA 2. nyugati régiójában, Egyesült Királyság déli régiója, Közép-és Kelet-Ausztrália régióban található. A korlátozások áttekintéséhez tekintse meg Azure Data Lake Storage Gen2 és [ismert problémák](data-lake-storage-known-issues.md)a [blob Storage szolgáltatásait](data-lake-storage-supported-blob-storage-features.md) . Az előzetes verzióra való regisztráláshoz tekintse meg [ezt az űrlapot](https://aka.ms/adlspremiumonboard).
+   
 ---
 
 ## <a name="next-steps"></a>További lépések

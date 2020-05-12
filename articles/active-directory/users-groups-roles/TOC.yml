@@ -68,7 +68,7 @@
           href: /azure/active-directory/b2b/use-dynamic-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Címtár kezelése
       items:
-        - name: A címtár felügyelete
+        - name: Azure AD-szervezetek
           href: /azure/active-directory/fundamentals/active-directory-administer?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Tartománynevek kezelése
           href: domains-manage.md
@@ -84,7 +84,7 @@
           href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
     - name: Csoportok kezelése
       items:
-        - name: Hozzáférés kezelése Azure AD-csoportokkal
+        - name: Hozzáférések kezelése csoportokkal
           href: /azure/active-directory/fundamentals/active-directory-manage-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Csoport létrehozása (Azure Portal)
           href: /azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context
@@ -134,6 +134,8 @@
           href: groups-assign-sensitivity-labels.md
     - name: Licencek hozzárendelése
       items:
+        - name: Licencek hozzárendelése felhasználókhoz
+          href: /azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context
         - name: Licencek hozzárendelése egy csoporthoz
           href: licensing-groups-assign.md
         - name: Csoportlicenccel kapcsolatos problémák megoldása

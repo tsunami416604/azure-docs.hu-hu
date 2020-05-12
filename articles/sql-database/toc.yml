@@ -127,6 +127,8 @@
               items:
                 - name: Sebezhetőségi felmérés
                   href: sql-vulnerability-assessment.md
+                - name: Sebezhetőségi felmérés szabályai
+                  href: sql-database-vulnerability-assessment-rules.md
                 - name: Biztonságirés-értékelési vizsgálatok tárolása tűzfalak és virtuális hálózatok mögött
                   href: sql-database-vulnerability-assessment-storage.md
             - name: Fejlett fenyegetésvédelem
