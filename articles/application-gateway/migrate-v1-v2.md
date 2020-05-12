@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: victorh
-ms.openlocfilehash: 2a6165cf2739482805d712ddffb5c6a9f5ebabf8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57a49f9e1473f33eceba14591815415338aeecf4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312049"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198802"
 ---
 # <a name="migrate-azure-application-gateway-and-web-application-firewall-from-v1-to-v2"></a>Az Azure Application Gateway és a webalkalmazási tűzfal migrálása v1-ről v2-re
 
@@ -50,18 +50,18 @@ Töltse le az áttelepítési parancsfájlt a [PowerShell-Galéria](https://www.
 
 A helyi PowerShell-környezet beállításaitól és beállításaitól függően két lehetőség közül választhat:
 
-* Ha nem rendelkezik az Azure az modulok telepítésével, vagy ne feledje eltávolítani az Azure-t, akkor a legjobb lehetőség a szkript futtatására szolgáló `Install-Script` lehetőség használata.
+* Ha nem rendelkezik az Azure az modulok telepítésével, vagy ne feledje eltávolítani az Azure-t, akkor a legjobb lehetőség a `Install-Script` szkript futtatására szolgáló lehetőség használata.
 * Ha meg kell őriznie az Azure az modulokat, a legjobb megoldás, ha letölti a szkriptet, és közvetlenül futtatja.
 
-Annak megállapításához, hogy telepítve van-e az Azure az `Get-InstalledModule -Name az`modulok, futtassa a parancsot. Ha a telepített modulok nem láthatók, akkor használhatja a `Install-Script` metódust.
+Annak megállapításához, hogy telepítve van-e az Azure az modulok, futtassa a parancsot `Get-InstalledModule -Name az` . Ha a telepített modulok nem láthatók, akkor használhatja a `Install-Script` metódust.
 
 ### <a name="install-using-the-install-script-method"></a>Telepítés az install-script metódus használatával
 
 Ha ezt a beállítást szeretné használni, az Azure az modulokat nem kell telepítenie a számítógépre. Ha telepítve vannak, a következő parancs hibát jelez. Távolítsa el az Azure az modulokat, vagy használja a másik lehetőséget a szkript manuális letöltéséhez és futtatásához.
   
-Futtassa a szkriptet a következő paranccsal:
+Futtassa a szkriptet a következő paranccsal a legújabb verzió beszerzéséhez:
 
-`Install-Script -Name AzureAppGWMigration`
+`Install-Script -Name AzureAppGWMigration -Force`
 
 Ez a parancs telepíti a szükséges az modulokat is.  
 
@@ -71,9 +71,9 @@ Ha van néhány Azure az modulok telepítve, és nem távolítható el (vagy nem
 
 A szkript futtatása:
 
-1. Az `Connect-AzAccount` Azure-hoz való kapcsolódáshoz használható.
+1. Az Azure-hoz való `Connect-AzAccount` kapcsolódáshoz használható.
 
-1. A `Import-Module Az` használatával importálhatja az az modulokat.
+1. `Import-Module Az`A használatával importálhatja az az modulokat.
 
 1. Futtassa `Get-Help AzureAppGWMigration.ps1` a parancsot a szükséges paraméterek vizsgálatához:
 
@@ -115,7 +115,7 @@ A szkript futtatása:
         -Password $password
       ```
 
-     Az előző példában szereplő `$mySslCert1, $mySslCert2` (vesszővel tagolt) értékeket a parancsfájlban szereplő paraméterek értékeiként adhatja át.
+     Az `$mySslCert1, $mySslCert2` előző példában szereplő (vesszővel tagolt) értékeket a parancsfájlban szereplő paraméterek értékeiként adhatja át.
    * **trustedRootCertificates: [PSApplicationGatewayTrustedRootCertificate]: nem kötelező**. Az Ön által létrehozott PSApplicationGatewayTrustedRootCertificate-objektumok vesszővel tagolt listája, hogy azok a [megbízható legfelső szintű tanúsítványok](ssl-overview.md) a v2-átjáróról származó háttér-példányok hitelesítésére legyenek kialakítva.
    
       ```azurepowershell
@@ -162,7 +162,7 @@ Emellett a v2-átjárón keresztül is küldhet kis mennyiségű forgalmat kézi
 
   * Ha a nyilvános IP-címeket használja az Application gatewayen, a Traffic Manager profil használatával felügyelt, részletes áttelepítést végezhet a forgalom fokozatos átirányításához (súlyozott forgalom-útválasztási módszer) az új v2-átjáróra.
 
-    Ezt úgy teheti meg, hogy a v1 és v2 Application Gateway DNS-címkéit is hozzáadja a [Traffic Manager profiljához](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), és az egyéni DNS-rekordot (például `www.contoso.com`) a Traffic Manager tartományhoz (például contoso.trafficmanager.net) adja.
+    Ezt úgy teheti meg, hogy a v1 és v2 Application Gateway DNS-címkéit is hozzáadja a [Traffic Manager profiljához](../traffic-manager/traffic-manager-routing-methods.md#weighted-traffic-routing-method), és az egyéni DNS-rekordot (például `www.contoso.com` ) a Traffic Manager tartományhoz (például contoso.trafficmanager.net) adja.
   * Másik lehetőségként frissítheti az egyéni tartomány DNS-rekordját, hogy az az új v2 Application Gateway DNS-címkéjére mutasson. A DNS-rekordon beállított TTL-től függően előfordulhat, hogy az összes ügyfél-forgalom az új v2-átjáróra kerül át.
 * Az **ügyfelek az Application Gateway előtérbeli IP-címéhez csatlakoznak**.
 
@@ -196,7 +196,7 @@ Nem. Jelenleg a parancsfájl nem támogatja a kulcstartóban lévő tanúsítvá
 
 ### <a name="i-ran-into-some-issues-with-using-this-script-how-can-i-get-help"></a>Néhány probléma merült fel a szkript használatával. Hogyan Kérhetek segítséget?
   
-E-mailt küldhet a appgwmigrationsup@microsoft.comszolgáltatásnak, megnyithat egy támogatási esetet az Azure-támogatással, vagy mindkettőt.
+Az Azure-támogatással kapcsolatban a "konfiguráció és beállítás/Migrálás v2 SKU-ra" című témakörben olvashat. További információ az [Azure-támogatásról](https://azure.microsoft.com/support/options/).
 
 ## <a name="next-steps"></a>További lépések
 

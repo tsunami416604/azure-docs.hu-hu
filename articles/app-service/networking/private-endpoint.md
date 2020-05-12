@@ -4,17 +4,17 @@ description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoi
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 03/18/2020
+ms.date: 05/12/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4d139cfa50afa94621066995314737fac70bbafe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a95c021153a458a4e3f804e64724b73ea1f1937
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756280"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198816"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
 
@@ -28,7 +28,7 @@ A webalkalmazás privát végpontjának használata lehetővé teszi a következ
 - A webalkalmazás biztonságossá tételéhez konfigurálja a privát végpontot a nyilvános expozíció kiküszöbölése érdekében.
 - Biztonságosan csatlakozhat a webalkalmazáshoz olyan helyszíni hálózatokból, amelyek VPN-vagy ExpressRoute-alapú privát kapcsolattal csatlakoznak a VNet.
 
-Ha csak biztonságos kapcsolatra van szüksége a VNet és a webalkalmazás között, a legegyszerűbb megoldás a szolgáltatási végpont. Ha a webalkalmazást a helyszíni Azure-átjárón keresztül is el kell érnie, egy regionálisan felhasználható VNet vagy egy globálisan megválasztott VNet, a magánhálózati végpont a megoldás.  
+Ha csak biztonságos kapcsolatra van szüksége a VNet és a webalkalmazás között, a legegyszerűbb megoldás a szolgáltatási végpont. Ha a webalkalmazást egy Azure-átjárón keresztül is el kell érnie, egy regionálisan felhasználható VNet vagy egy globálisan felhasználható VNet, a magánhálózati végpont a megoldás.  
 
 További információ: szolgáltatás- [végpontok][serviceendpoint].
 
@@ -63,13 +63,21 @@ A webalkalmazás webes HTTP-naplóiban megtalálja az ügyfél forrásának IP-c
 ## <a name="dns"></a>DNS
 
 Mivel ez a funkció előzetes verzióban érhető el, nem változtatjuk meg a DNS-bejegyzést az előzetes verzióban. A DNS-bejegyzést a saját DNS-kiszolgálójában vagy saját maga Azure DNS saját zónájában kell kezelnie.
-Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a webalkalmazásban. Az előzetes verzióban az egyéni nevet a nyilvános DNS-feloldást használó bármely egyéni névnek hasonlóan kell érvényesíteni. További információért lásd az [Egyéni DNS-érvényesítést][dnsvalidation] ismertető témakört.
+Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a webalkalmazásban. Az előzetes verzióban az egyéni nevet a nyilvános DNS-feloldást használó bármely egyéni névnek hasonlóan kell érvényesíteni. További információ: [Egyéni DNS-ellenőrzés][dnsvalidation].
+
+Ha például a kudu-konzolt kell használnia, vagy a kudu REST API (az Azure DevOps saját üzemeltetésű ügynökökkel való üzembe helyezése), két rekordot kell létrehoznia a saját Azure DNS saját zónájában vagy az egyéni DNS-kiszolgálón. 
+- PrivateEndpointIP yourwebappname.azurewebsites.net 
+- PrivateEndpointIP yourwebappname.scm.azurewebsites.net 
 
 ## <a name="pricing"></a>Díjszabás
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása][pricing].
 
 ## <a name="limitations"></a>Korlátozások
+
+Ha az Azure-függvényt privát végponttal rendelkező rugalmas prémium szintű csomagban használja, a függvény futtatásához vagy végrehajtásához az Azure web Portalon közvetlen hálózati hozzáférésre van szükség, vagy HTTP 403-hibaüzenetet fog kapni. Más szóval a böngészőnek képesnek kell lennie arra, hogy elérje a privát végpontot, hogy végrehajtsa a függvényt az Azure web Portalon. 
+
+Az előzetes verzió ideje alatt a rendszer csak az üzemi tárolóhelyet teszi elérhetővé a privát végpont mögött, a többi tárolóhely csak nyilvános végponton érhető el.
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 

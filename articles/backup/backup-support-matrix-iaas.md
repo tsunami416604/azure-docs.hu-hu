@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentésének támogatási mátri
 description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: 86141532e0db80f75c6e79277b36060ecb939a53
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: b7201972811c5b9cc8187b671c9e688236667860
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801433"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199867"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -158,7 +158,7 @@ Gen2 virtuális gépek | Támogatott <br> Azure Backup támogatja a [Gen2 virtu�
 
 **Összetevő** | **Támogatás**
 --- | ---
-Azure-beli VM-adatlemezek | Egy virtuális gép biztonsági mentése 16 vagy kevesebb adatlemezzel.<BR> Ha regisztrálni szeretne a virtuális gépek korlátozott előzetes verziójára 16 + lemezzel (akár 32 lemezre), írjon hozzánk a következő helyen:AskAzureBackupTeam@microsoft.com
+Azure-beli VM-adatlemezek | [Ezekben a régiókban](#backup-of-azure-virtual-machines-with-up-to-32-disks)a legfeljebb 32 lemezzel rendelkező Azure-beli virtuális gépek biztonsági mentésének támogatása nyilvános előzetes verzióban érhető el.<br><br> Az Azure-beli virtuális gépek nem felügyelt lemezekkel vagy klasszikus virtuális gépekkel történő biztonsági mentésének támogatása legfeljebb 16 lemezből áll.
 Adatlemez mérete | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 Tárolási típus | Standard HDD, standard SSD, prémium SSD.
 Felügyelt lemezek | Támogatott.
@@ -169,6 +169,13 @@ Lemez hozzáadása a védett virtuális géphez | Támogatott.
 Lemez átméretezése védett virtuális gépen | Támogatott.
 Megosztott tároló| A virtuális gépek Fürt megosztott kötete (CSV) vagy Kibővíthető fájlkiszolgáló használatával történő biztonsági mentése nem támogatott. A CSV-írók valószínűleg sikertelenek lesznek a biztonsági mentés során. A Restore utasításban előfordulhat, hogy a CSV-köteteket tartalmazó lemezek nem jönnek létre.
 [Megosztott lemezek](https://docs.microsoft.com/azure/virtual-machines/windows/disks-shared-enable) | Nem támogatott.
+
+### <a name="backup-of-azure-virtual-machines-with-up-to-32-disks"></a>Azure-beli virtuális gépek biztonsági mentése akár 32 lemezzel
+
+A Azure Backup mostantól támogatja az Azure-beli virtuális gépek legfeljebb 32 csatlakoztatott lemezzel történő biztonsági mentését.  Ez a funkció nyilvános előzetes verzióban érhető el az USA nyugati középső régiójában.  Ha más régiókban is érdekli ezt a funkciót, regisztráljon a korlátozott előzetes verzióra, és írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com .  
+
+>[!NOTE]
+>A Azure Backup csak a nem felügyelt lemezekkel vagy klasszikus virtuális gépekkel rendelkező Azure-beli virtuális gépekhez legfeljebb 16 lemezt támogat.
 
 ## <a name="vm-network-support"></a>VM-hálózat támogatása
 

@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfb094bc9f84e7129a3e1c733a054c5f6cd96372
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008634"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196940"
 ---
 Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS Virtual Machines (VM) szolgáltatásokhoz. Ez az új ajánlat a vonal teljesítményét a meglévő lemezekkel megegyező rendelkezésre állási szinten biztosítja. Az ultra Disks szolgáltatás egyik fő előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítania a virtuális gépeket. Az ultralemezek olyan adatigényes számítási feladatokhoz használhatók, mint az SAP HANA, a felső szintű adatbázisok és a tranzakcióigényes számítási feladatok.
 
@@ -51,7 +51,7 @@ A válasz az alábbi űrlaphoz hasonló lesz, ahol az X a kiválasztott régiób
 
 Őrizze meg a **zónák** értékét, amely a rendelkezésre állási zónát képviseli, és szüksége lesz rá egy ultra-lemez üzembe helyezése érdekében.
 
-|ResourceType  |Name (Név)  |Hely  |Zóna  |Korlátozás  |Képesség  |Érték  |
+|ResourceType  |Name  |Hely  |Zóna  |Korlátozás  |Képesség  |Érték  |
 |---------|---------|---------|---------|---------|---------|---------|
 |lemezek     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -62,7 +62,7 @@ Most, hogy megismerte, hogy melyik zónát kívánja telepíteni, kövesse a jel
 
 ### <a name="vms-with-no-redundancy-options"></a>Redundancia nélküli virtuális gépek
 
-Az USA nyugati régiójában üzembe helyezett Ultra lemezeket redundancia nélkül kell üzembe helyezni. Ebben a régióban azonban nem minden olyan lemez mérete lehet, amely támogatja az ultra-lemezeket. Annak megállapításához, hogy az USA nyugati régiójában milyenek támogatják az ultra-lemezeket, az alábbi kódrészletek bármelyikét használhatja. Először cserélje le a és `vmSize` `subscription` az értékeket:
+Az USA nyugati régiójában üzembe helyezett Ultra lemezeket redundancia nélkül kell üzembe helyezni. Ebben a régióban azonban nem minden olyan lemez mérete lehet, amely támogatja az ultra-lemezeket. Annak megállapításához, hogy az USA nyugati régiójában milyenek támogatják az ultra-lemezeket, az alábbi kódrészletek bármelyikét használhatja. Először cserélje le a `vmSize` és az `subscription` értékeket:
 
 ```azurecli
 $subscription = "<yourSubID>"
@@ -115,7 +115,7 @@ Először határozza meg a telepítendő virtuális gép méretét. A támogatot
 
 Ha több Ultra lemezzel rendelkező virtuális gépet szeretne létrehozni, tekintse meg a mintát [több Ultra lemezzel rendelkező virtuális gép létrehozása](https://aka.ms/ultradiskArmTemplate)című témakörben.
 
-Ha saját sablont szeretne használni, győződjön meg róla, hogy a **apiVersion** a `Microsoft.Compute/virtualMachines` és `Microsoft.Compute/Disks` a `2018-06-01` (vagy újabb) értékre van beállítva.
+Ha saját sablont szeretne használni, győződjön meg róla, hogy a **apiVersion** a `Microsoft.Compute/virtualMachines` és a `Microsoft.Compute/Disks` `2018-06-01` (vagy újabb) értékre van beállítva.
 
 Állítsa be a lemez SKU-jának **UltraSSD_LRS**, majd állítsa be a lemez kapacitása, a IOPS, a rendelkezésre állási zóna és az átviteli sebesség (MB/s) értéket egy ultra-lemez létrehozásához.
 

@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0015beadfea61fc31bf3f37232105b9cfd2ced71
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692147"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198879"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -44,7 +44,7 @@ A szabályozás észlelése után az SQL on-demand beépített kezeléssel rende
 
 Ha lehetséges, készíthet fájlokat a jobb teljesítmény érdekében:
 
-- CSV konvertálása a parkettára – a parketta oszlopos formátumú. Mivel tömörítve van, a fájlméretek kisebbek, mint a CSV-fájlok, amelyek ugyanazokat az adatmennyiségeket használják. Az SQL on-demand kevesebb időt és tárolási kérést igényel a beolvasáshoz.
+- CSV-és JSON-fájl konvertálása a Parquet-parketta oszlopos formátumú. Mivel tömörítve van, a fájlméretek kisebbek, mint a CSV-vagy JSON-fájlok ugyanazzal az adattal. Az SQL on-demand kevesebb időt és tárolási kérést igényel a beolvasáshoz.
 - Ha egy lekérdezés egyetlen nagyméretű fájlt céloz meg, akkor a több kisebb fájlra is kihasználhatja.
 - Próbálja meg a CSV-fájl méretét 10 GB alatt tartani.
 - Jobb, ha azonos méretű fájlokat szeretne egy OPENROWSET elérési úthoz vagy egy külső tábla HELYéhez.
@@ -118,7 +118,14 @@ További információért olvassa el a [filename](develop-storage-files-overview
 > [!TIP]
 > A filepath és a fileinfo függvények a megfelelő adattípusokhoz való továbbításának eredménye mindig. Ha karakteres adattípusokat használ, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
 
+> [!NOTE]
+> A Partition eliminációs, a filepath és a fileinfo szolgáltatáshoz használt függvények jelenleg nem támogatottak a szinapszis Spark-ban létrehozott minden egyes tábla számára automatikusan létrehozott külső táblák esetében.
+
 Ha a tárolt adatok nincsenek particionálva, érdemes particionálni, hogy ezek a függvények a fájlokra irányuló lekérdezések optimalizálására legyenek optimalizálva. Ha a [particionált Spark-táblákat](develop-storage-files-spark-tables.md) SQL-igény alapján kérdezi le, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
+
+## <a name="use-parser_version-20-for-querying-csv-files"></a>PARSER_VERSION 2,0 használata CSV-fájlok lekérdezéséhez
+
+A CSV-fájlok lekérdezése során teljesítményre optimalizált elemzőt használhat. Részletekért olvassa el a [PARSER_VERSION](develop-openrowset.md) .
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
@@ -127,6 +134,12 @@ A [CETAS](develop-tables-cetas.md) az SQL igény szerint elérhető legfontosabb
 A CETAS használatával a lekérdezések gyakran használt részeit (például az összekapcsolt hivatkozási táblákat) a fájlok új készletéhez is tárolhatja. Ezután csatlakozhat ehhez az egyetlen külső táblához, és nem kell ismétlődő közös illesztéseket használnia több lekérdezésben.
 
 Ahogy a CETAS a parketta-fájlokat hozza létre, a statisztikák automatikusan létrejönnek, amikor az első lekérdezés ezt a külső táblázatot célozza meg, ami jobb teljesítményt eredményez.
+
+## <a name="aad-pass-through-performance"></a>HRE átmenő teljesítmény
+
+Az SQL on-demand lehetővé teszi a tárolóban lévő fájlok elérését a HRE átmenő vagy SAS hitelesítő adatok használatával. Az SAS-vel való összehasonlítás során lassabb teljesítményt tapasztalhat a HRE. 
+
+Ha jobb teljesítményre van szüksége, próbálja ki az SAS hitelesítő adatait a tároló eléréséhez, amíg a HRE-teljesítmény nem javul.
 
 ## <a name="next-steps"></a>További lépések
 

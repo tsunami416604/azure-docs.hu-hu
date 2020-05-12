@@ -6,12 +6,12 @@ author: DaleKoetke
 ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6c597ea559e7337c9c84914d168f1055e0631886
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b99c1c9348f8442233eeee8fd4442736c78ee4e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995544"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199041"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
 
@@ -29,6 +29,10 @@ Az [Azure Application Insights][start] díjszabása egy **utólagos** elszámol�
 A [többlépéses webes tesztek](../../azure-monitor/app/availability-multistep.md) felár ellenében merülhetnek fel. A többlépéses webes tesztek olyan webes tesztek, amelyek műveletek sorozatát hajtják végre. Egyetlen oldal *pingelési tesztei* esetében nincs külön díj. A ping tesztekből és a többlépéses tesztekből származó telemetria az alkalmazás más telemetria azonos módon kell fizetni.
 
 Az [Egyéni metrikai dimenziókkal kapcsolatos riasztások engedélyezésének](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics#custom-metrics-dimensions-and-pre-aggregation) Application Insights lehetősége további költségeket is eredményezhet, mivel ez további előzetes összesítési mérőszámok létrehozását eredményezheti. [További](https://docs.microsoft.com/azure/azure-monitor/app/pre-aggregated-metrics-log-metrics) információ a Application Insights naplózási és előre összesített mérőszámáról, valamint a Azure monitor egyéni metrikák [díjszabásáról](https://azure.microsoft.com/pricing/details/monitor/) .
+
+### <a name="workspace-based-application-insights"></a>Munkaterület-alapú Application Insights
+
+Olyan Application Insights-erőforrások esetében, amelyek az adatoknak a [munkaterület-alapú Application Insights erőforrások](create-workspace-resource.md)nevű log Analytics munkaterületre küldenek, az adatok betöltésének és megőrzésének számlázását azon munkaterület végzi el, ahol a Application Insights adatok találhatók. Ez lehetővé teszi az ügyfelek számára a Log Analytics [díjszabási modell](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#pricing-model) összes beállítását, amely az utólagos elszámolású kapacitás fenntartását is magában foglalja. Log Analytics emellett több lehetőség is rendelkezésre áll az adatmegőrzésre, beleértve az [adattípusok megőrzését](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#retention-by-data-type)is. A munkaterületen Application Insights adattípusok esetén a rendszer 90 napos megőrzési időt kap, díjak nélkül. A webes tesztek használata és a riasztások egyéni metrikai dimenziókban való engedélyezése továbbra is Application Insights keresztül történik. Megtudhatja, hogyan követheti nyomon az adatfeldolgozási és-megőrzési költségeket Log Analytics a [használati és becsült költségek](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs), [Azure Cost Management + számlázási](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#viewing-log-analytics-usage-on-your-azure-bill) és [log Analytics lekérdezések](#data-volume-for-workspace-based-application-insights-resources)használatával. 
 
 ## <a name="estimating-the-costs-to-manage-your-application"></a>Az alkalmazás kezelésével kapcsolatos költségek becslése
 
@@ -75,11 +79,11 @@ Ha többet szeretne megtudni az adatkötetekről, válassza ki a Application Ins
 
 ### <a name="queries-to-understand-data-volume-details"></a>Az adatmennyiség részleteit értelmező lekérdezések
 
-A Application Insights adatköteteinek vizsgálatára két módszer áll rendelkezésre. Az első összesített információt használ a `systemEvents` táblában, a második pedig a `_BilledSize` tulajdonságot használja, amely minden betöltött eseménynél elérhető.
+A Application Insights adatköteteinek vizsgálatára két módszer áll rendelkezésre. Az első összesített információt használ a `systemEvents` táblában, a második pedig a `_BilledSize` tulajdonságot használja, amely minden betöltött eseménynél elérhető. `systemEvents`a nem rendelkezik adatméreti információkkal a [munkaterület-alapú alkalmazások](#data-volume-for-workspace-based-application-insights-resources)és az elemzések számára.
 
 #### <a name="using-aggregated-data-volume-information"></a>Összesített adatmennyiség-információ használata
 
-A `systemEvents` táblázat segítségével például megtekintheti az elmúlt 24 órában betöltött adatmennyiséget a lekérdezéssel:
+A táblázat segítségével például `systemEvents` megtekintheti az elmúlt 24 órában betöltött adatmennyiséget a lekérdezéssel:
 
 ```kusto
 systemEvents
@@ -116,15 +120,56 @@ systemEvents
 
 #### <a name="using-data-size-per-event-information"></a>Adatok méretének használata az események adatai alapján
 
-Az adatkötetek forrásával kapcsolatos további információkért használja az `_BilledSize` egyes betöltött eseményeken megtalálható tulajdonságot.
+Az adatkötetek forrásával kapcsolatos további információkért használja az egyes betöltött `_BilledSize` eseményeken megtalálható tulajdonságot.
 
-Ha például azt szeretné megvizsgálni, hogy mely műveletek eredményezik a legtöbb adatmennyiséget az elmúlt 30 napban, `_BilledSize` akkor az összes függőségi esemény összegét összesítheti:
+Ha például azt szeretné megvizsgálni, hogy mely műveletek eredményezik a legtöbb adatmennyiséget az elmúlt 30 napban, akkor az `_BilledSize` összes függőségi esemény összegét összesítheti:
 
 ```kusto
 dependencies
 | where timestamp >= startofday(ago(30d))
 | summarize sum(_BilledSize) by operation_Name
 | render barchart  
+```
+
+#### <a name="data-volume-for-workspace-based-application-insights-resources"></a>Adatmennyiség munkaterület-alapú Application Insights erőforrásokhoz
+
+Ha szeretné megtekinteni a munkaterület [-alapú Application Insights összes erőforrásának](create-workspace-resource.md) adatmennyiségét az elmúlt hét munkaterületen, lépjen a log Analytics munkaterületre, és futtassa a lekérdezést:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| summarize sum(_BilledSize) by _ResourceId, bin(TimeGenerated, 1d)
+| render areachart
+```
+
+Ha egy adott munkaterület-alapú Application Insights erőforráshoz tartozó adatmennyiség-trendeket szeretne lekérdezni, akkor a Log Analytics munkaterületen a következőt használja:
+
+```kusto
+union (AppAvailabilityResults),
+      (AppBrowserTimings),
+      (AppDependencies),
+      (AppExceptions),
+      (AppEvents),
+      (AppMetrics),
+      (AppPageViews),
+      (AppPerformanceCounters),
+      (AppRequests),
+      (AppSystemEvents),
+      (AppTraces)
+| where TimeGenerated >= startofday(ago(7d) and TimeGenerated < startofday(now())
+| where _ResourceId contains "<myAppInsightsResourceName>"
+| summarize sum(_BilledSize) by Type, bin(TimeGenerated, 1d)
+| render areachart
 ```
 
 ## <a name="viewing-application-insights-usage-on-your-azure-bill"></a>Application Insights használatának megtekintése az Azure-számlán
@@ -174,7 +219,7 @@ A napi korlát módosításához a Application Insights erőforrás **Konfigurá
 
 ![A napi telemetria mennyiségi korlátjának módosítása](./media/pricing/pricing-003.png)
 
-A [napi korlát Azure Resource Manageron keresztüli módosításához](../../azure-monitor/app/powershell.md)a módosítandó tulajdonság a `dailyQuota`következő:.  Azure Resource Manager a `dailyQuotaResetTime` és a napi korlátot is beállíthatja `warningThreshold`.
+A [napi korlát Azure Resource Manageron keresztüli módosításához](../../azure-monitor/app/powershell.md)a módosítandó tulajdonság a következő: `dailyQuota` .  Azure Resource Manager a `dailyQuotaResetTime` és a napi korlátot is beállíthatja `warningThreshold` .
 
 ### <a name="create-alerts-for-the-daily-cap"></a>Riasztások létrehozása a napi korláthoz
 
@@ -220,7 +265,7 @@ Az adatmegőrzés módosításához a Application Insights erőforrásból lépj
 
 A megőrzési idő csökkentése után a legrégebbi adatok eltávolítása előtt több napos türelmi időszakot is megtarthat.
 
-A megőrzés a programozott módon is [beállítható a PowerShell](powershell.md#set-the-data-retention) használatával a `retentionInDays` paraméter használatával. Ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméter használatával azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a kiürítési funkció csak Azure Resource Manageron keresztül érhető el, és rendkívül körültekintően használható. Az adatmennyiség-korlát napi visszaállítási ideje konfigurálható Azure Resource Manager használatával a `dailyQuotaResetTime` paraméter beállításához.
+A megőrzés a programozott módon is [beállítható a PowerShell](powershell.md#set-the-data-retention) használatával a `retentionInDays` paraméter használatával. Ha az adatmegőrzést 30 napra állítja be, a paraméter használatával azonnal törölheti a régebbi adatok törlését `immediatePurgeDataOn30Days` , ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a kiürítési funkció csak Azure Resource Manageron keresztül érhető el, és rendkívül körültekintően használható. Az adatmennyiség-korlát napi visszaállítási ideje konfigurálható Azure Resource Manager használatával a paraméter beállításához `dailyQuotaResetTime` .
 
 ## <a name="data-transfer-charges-using-application-insights"></a>Adatátviteli díjak az Application Insights használatával
 

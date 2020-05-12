@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 9ac6927df63d51830a58773e32ad0968920c0867
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061761"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198561"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -61,6 +61,8 @@ Az alábbi példákkal kipróbálhatja a következő műveleteket:
 SQL Database támogatja az önkiszolgáló szolgáltatást az időponthoz tartozó visszaállításhoz (PITR) a teljes biztonsági mentések, a különbözeti biztonsági másolatok és a tranzakciónapló biztonsági másolatainak automatikus létrehozásával. A teljes adatbázis biztonsági mentése hetente jön létre, és a különbözeti adatbázis biztonsági mentései általában 12 óránként jönnek létre. A tranzakciónaplók biztonsági mentései általában 5 – 10 percenként jönnek létre. A tranzakciónapló biztonsági mentései gyakorisága a számítási mérettől és az adatbázis-tevékenység mennyiségétől függ. 
 
 Az első teljes biztonsági mentést az adatbázis létrehozása után azonnal ütemezi a rendszer. Ez a biztonsági mentés általában 30 percen belül elvégezhető, de hosszabb időt is igénybe vehet, ha az adatbázis nagy méretű. A kezdeti biztonsági mentés például hosszabb időt vehet igénybe egy visszaállított adatbázison vagy adatbázis-másolaton. Az első teljes biztonsági mentés után a további mentések felhasználói beavatkozás nélkül, a háttérben lesznek automatikusan ütemezve és felügyelve. Az adatbázis-mentések pontos időzítését az SQL Database szolgáltatás határozza meg a teljes rendszer terhelésének kiegyensúlyozásával. A biztonsági mentési feladatok nem módosíthatók és nem tilthatók le.
+
+### <a name="default-backup-retention-period"></a>Alapértelmezett biztonsági mentés megőrzési ideje
 
 A PITR biztonsági mentések földrajzilag redundáns tárolással védettek. További információ: [Azure Storage-redundancia](../storage/common/storage-redundancy.md).
 
@@ -156,7 +158,7 @@ Ha az adatbázis TDE van titkosítva, a biztonsági másolatok automatikusan tit
 
 A Azure SQL Database mérnöki csapat folyamatosan ellenőrzi a logikai kiszolgálókon és a rugalmas adatbázis-készletekben elhelyezett adatbázisok automatizált adatbázis-biztonsági másolatának visszaállítását. (Ez a teszt a felügyelt példányban nem érhető el.) Az időponthoz tartozó visszaállításkor az adatbázisok a DBCC CHECKDB UTASÍTÁST is megkapják.
 
-A felügyelt példány az áttelepítés befejezése `CHECKSUM` után a natív `RESTORE` paranccsal vagy az Azure adatáttelepítési szolgáltatással visszaállított adatbázisok automatikus kezdeti biztonsági mentését végzi.
+A felügyelt példány az `CHECKSUM` `RESTORE` áttelepítés befejezése után a natív paranccsal vagy az Azure adatáttelepítési szolgáltatással visszaállított adatbázisok automatikus kezdeti biztonsági mentését végzi.
 
 A sértetlenség-ellenőrzés során észlelt problémák miatt a mérnöki csapat riasztást küld. További információ: az [adatintegritás Azure SQL Databaseban](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 

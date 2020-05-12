@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 474d2e0c31eed852ba96780ca996eca632bd5842
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926986"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199451"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 |     |
@@ -28,7 +28,7 @@ ms.locfileid: "82926986"
 Ez a cikk azt ismerteti, hogyan állítható be a közvetlen összevonás egy másik szervezettel a B2B-együttműködéshez. Beállíthat közvetlen összevonást bármely olyan szervezettel, amelynek az identitás-szolgáltatója (identitásszolgáltató) támogatja az SAML 2,0 vagy a WS-fed protokollt.
 Ha közvetlen kapcsolatot hoz létre egy partner identitásszolgáltató, az adott tartományhoz tartozó új vendég felhasználók saját identitásszolgáltató által felügyelt szervezeti fiókkal jelentkezhetnek be az Azure AD-bérlőbe, és megkezdhetik a velük való együttműködést. Nincs szükség arra, hogy a vendég felhasználó külön Azure AD-fiókot hozzon létre.
 > [!NOTE]
-> A közvetlen összevonási vendég felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői `https://myapps.microsoft.com/?tenantid=<tenant id>` környezetet `https://portal.azure.com/<tenant id>`(például vagy egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com`). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A közvetlen összevonási felhasználók jelenleg nem tudnak bejelentkezni olyan közös végpontok használatával, amelyek nem rendelkeznek bérlői környezettel. Például a, `https://myapps.microsoft.com` `https://portal.azure.com`a, a vagy `https://teams.microsoft.com` a használatakor hibaüzenetet fog eredményezni.
+> A közvetlen összevonási vendég felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>` egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A közvetlen összevonási felhasználók jelenleg nem tudnak bejelentkezni olyan közös végpontok használatával, amelyek nem rendelkeznek bérlői környezettel. Például a, a, a vagy a használatakor `https://myapps.microsoft.com` `https://portal.azure.com` `https://teams.microsoft.com` hibaüzenetet fog eredményezni.
  
 ## <a name="when-is-a-guest-user-authenticated-with-direct-federation"></a>Mikor van hitelesítve a vendég felhasználó közvetlen összevonással?
 Miután beállította a közvetlen összevonást egy szervezettel, a meghívott új vendég-felhasználók a közvetlen összevonás használatával lesznek hitelesítve. Fontos megjegyezni, hogy a közvetlen összevonás beállítása nem módosítja a hitelesítési módszert azon vendég felhasználók számára, akik már beváltottak egy meghívót. Néhány példa:
@@ -61,7 +61,7 @@ A közvetlen összevonás csak olyan házirendek esetében engedélyezett, amely
 -   federation.exostar.com
 -   federation.exostartest.com
 
-Ha például a **fabrikam.com**közvetlen összevonását állítja be, a hitelesítési URL `https://fabrikam.com/adfs` -cím továbbítja az ellenőrzést. Az azonos tartományba tartozó gazdagépek is átadhatják például `https://sts.fabrikam.com/adfs`a-t. Azonban a hitelesítési URL- `https://fabrikamconglomerate.com/adfs` cím `https://fabrikam.com.uk/adfs` vagy ugyanahhoz a tartományhoz nem lesz továbbítva.
+Ha például a **fabrikam.com**közvetlen összevonását állítja be, a hitelesítési URL-cím `https://fabrikam.com/adfs` továbbítja az ellenőrzést. Az azonos tartományba tartozó gazdagépek is átadhatják például a-t `https://sts.fabrikam.com/adfs` . Azonban a hitelesítési URL-cím `https://fabrikamconglomerate.com/adfs` vagy `https://fabrikam.com.uk/adfs` ugyanahhoz a tartományhoz nem lesz továbbítva.
 
 ### <a name="signing-certificate-renewal"></a>Tanúsítvány megújításának aláírása
 Ha a metaadatok URL-címét a személyazonosság-szolgáltató beállításaiban adta meg, az Azure AD automatikusan megújítja az aláíró tanúsítványt, amikor lejár. Ha azonban a rendszer a lejárati idő előtt bármilyen okból elforgatja a tanúsítványt, vagy ha nem ad meg metaadat-URL-címet, az Azure AD nem tudja megújítani. Ebben az esetben manuálisan kell frissítenie az aláíró tanúsítványt.
@@ -146,8 +146,8 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Közvetlen összevonás konfigurálása az Azure AD-portálon
 
 1. Lépjen a [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok**lehetőséget.
-3. Válassza az **identitás-szolgáltatók**lehetőséget, majd válassza az **Új SAML/ws-fed identitásszolgáltató**elemet.
+2. Válassza a **szervezeti kapcsolatok**  >  **minden Identity Provider** (vagy **külső identitások**  >  **minden identitás szolgáltató**) lehetőséget.
+3. Válassza ki a elemet, majd válassza az **Új SAML/ws-fed identitásszolgáltató**elemet.
 
     ![Új SAML-vagy WS-fed-identitásszolgáltató hozzáadását bemutató gomb](media/direct-federation/new-saml-wsfed-idp.png)
 
@@ -174,7 +174,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
    Connect-AzureAD
    ```
 1. A bejelentkezési kérésben jelentkezzen be a felügyelt globális rendszergazdai fiókkal. 
-2. Futtassa az alábbi parancsokat, és cserélje le az összevonási metaadatok fájljának értékeit. AD FS-kiszolgáló és a okta esetében az összevonási fájl az federationmetadata. XML, például: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml`. 
+2. Futtassa az alábbi parancsokat, és cserélje le az összevonási metaadatok fájljának értékeit. AD FS-kiszolgáló és a okta esetében az összevonási fájl az federationmetadata. XML, például: `https://sts.totheclouddemo.com/federationmetadata/2007-06/federationmetadata.xml` . 
 
    ```powershell
    $federationSettings = New-Object Microsoft.Open.AzureAD.Model.DomainFederationSettings
@@ -194,8 +194,8 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Hogyan a közvetlen összevonási kapcsolat szerkesztését?
 
 1. Lépjen a [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok**lehetőséget.
-3. **Identitás-szolgáltatók** kiválasztása
+2. Válassza a **szervezeti kapcsolatok** (vagy **külső identitások**) lehetőséget.
+3. **Az összes Identity Provider** kijelölése
 4. Az **SAML/ws-fed identitás-szolgáltatók**területen válassza ki a szolgáltatót.
 5. Az identitás-szolgáltató részletei ablaktáblán frissítse az értékeket.
 6. Kattintson a **Mentés** gombra.
@@ -205,8 +205,8 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 Törölheti a közvetlen összevonási telepítést. Ha így tesz, a meghívónak már beváltott felhasználók nem fognak tudni bejelentkezni. Ha azonban ismét hozzáférést ad az erőforrásokhoz, törölje őket a címtárból, és hívja fel őket. Az Azure AD-portálon lévő közvetlen összevonás eltávolítása az identitás-szolgáltatóval:
 
 1. Lépjen a [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok**lehetőséget.
-3. Válassza az **identitás-szolgáltatók**elemet.
+2. Válassza a **szervezeti kapcsolatok** (vagy **külső identitások**) lehetőséget.
+3. Válassza ki **az összes identitás szolgáltatót**.
 4. Válassza ki az identitás-szolgáltatót, majd válassza a **Törlés**lehetőséget. 
 5. A törlés megerősítéséhez válassza az **Igen** lehetőséget. 
 

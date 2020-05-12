@@ -5,21 +5,16 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: 858cfc9a8c15f1e33e688bb5086a58f194e7173f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28252b42264dc6c1be403e99689f845d7143b1f7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501495"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200464"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall alkalmazás-szabályok konfigurálása SQL FQDN-sel
-
-> [!IMPORTANT]
-> Azure Firewall SQL FQDN-sel rendelkező alkalmazás-szabályok jelenleg nyilvános előzetes verzióban érhetők el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mostantól az SQL FQDN-sel is konfigurálhatja Azure Firewall alkalmazási szabályokat. Ez lehetővé teszi, hogy a virtuális hálózatokról csak a megadott SQL Server-példányokra korlátozza a hozzáférést.
 
@@ -29,7 +24,7 @@ Az SQL FQDN használatával szűrheti a forgalmat:
 - A helyszínről az Azure SQL felügyelt példányaira vagy a virtuális hálózatok futó SQL-IaaS.
 - Az Azure SQL felügyelt példányain vagy a virtuális hálózatok futó SQL-IaaS.
 
-A nyilvános előzetes verzióban az SQL FQDN-szűrés csak [proxy módban](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) támogatott (1433-es port). Ha az SQL-t az alapértelmezett átirányítási módban használja, a [hálózati szabályok](overview.md#network-traffic-filtering-rules)részeként szűrheti a hozzáférést az SQL-szolgáltatás címkével.
+Az SQL FQDN-szűrés csak [proxy módban](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) támogatott (1433-es port). Ha az SQL-t az alapértelmezett átirányítási módban használja, a [hálózati szabályok](overview.md#network-traffic-filtering-rules)részeként szűrheti a hozzáférést az SQL-szolgáltatás címkével.
 Ha nem alapértelmezett portokat használ az SQL IaaS-forgalomhoz, ezeket a portokat a tűzfal alkalmazási szabályaiban állíthatja be.
 
 Az SQL FQDN-sel rendelkező alkalmazási szabályok jelenleg minden régióban elérhetők az Azure Portal, az Azure CLI, a REST és a sablonok használatával.

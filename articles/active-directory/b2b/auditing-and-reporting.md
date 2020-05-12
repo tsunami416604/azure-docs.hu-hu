@@ -5,25 +5,25 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74d2473d37dcf0d435ab61763e72a64111845956
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67b543bd46b195a0944959f3f462a2bdc7d150ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74273285"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199457"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>B2B csoportmunka-felhasználó naplózása és jelentése
 A vendég felhasználóival a felhasználókhoz hasonló naplózási funkciókkal rendelkezhet. 
 
 ## <a name="access-reviews"></a>Hozzáférési felülvizsgálatok
-A hozzáférési felülvizsgálatok segítségével rendszeres időközönként ellenőrizheti, hogy a vendég felhasználóknak továbbra is szükségük van-e az erőforrásokhoz való hozzáférésre. A **hozzáférési felülvizsgálatok** szolgáltatás **Azure Active Directory** a**szervezeti kapcsolatok** **kezelése** > területen érhető el. (A Azure Portal **összes szolgáltatásának** "hozzáférési felülvizsgálatok" kifejezésére is lehetősége van.) A hozzáférési felülvizsgálatok használatának megismeréséhez lásd: [a vendég hozzáférésének kezelése az Azure ad hozzáférési felülvizsgálatokkal](../governance/manage-guest-access-with-access-reviews.md).
+A hozzáférési felülvizsgálatok segítségével rendszeres időközönként ellenőrizheti, hogy a vendég felhasználóknak továbbra is szükségük van-e az erőforrásokhoz való hozzáférésre. A **hozzáférési felülvizsgálatok** szolgáltatás a **Azure Active Directory** **szervezeti kapcsolatok**  >  **hozzáférési felülvizsgálatok** (vagy **külső identitások**  >  **hozzáférési felülvizsgálatai** ) területen érhető el. A "hozzáférési felülvizsgálatok" kifejezésre is rákereshet a Azure Portal **összes szolgáltatásában** . A hozzáférési felülvizsgálatok használatának megismeréséhez lásd: [a vendég hozzáférésének kezelése az Azure ad hozzáférési felülvizsgálatokkal](../governance/manage-guest-access-with-access-reviews.md).
 
 ## <a name="audit-logs"></a>Naplók
 

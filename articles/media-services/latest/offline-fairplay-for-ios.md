@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/08/2019
 ms.author: willzhan
-ms.openlocfilehash: 41893c2460ecb2d17e3893f867bc460105d57bbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e65bf39db00f1277635d600da87346f19a881a6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887214"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197168"
 ---
 # <a name="offline-fairplay-streaming-for-ios-with-media-services-v3"></a>Offline FairPlay streaming iOS-hez Media Services v3
 
@@ -59,7 +59,7 @@ Mielőtt offline DRM-t implementál a FairPlay iOS 10 + eszközön:
 
     - Az FPS Server SDK, amely a legfontosabb biztonsági modult (KSM), az ügyfél mintáit, a specifikációt és a tesztelési vektorok készletét tartalmazza.
     - Az FPS üzembehelyezési csomagja, amely a D függvény specifikációját tartalmazza, valamint útmutatást nyújt az FPS-tanúsítvány, az ügyfél-specifikus titkos kulcs és az alkalmazás titkos kulcsának létrehozásához. Az Apple csak a licencelt tartalomszolgáltatók számára bocsát ki az FPS központi telepítési csomagot.
-* Klónozás https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git. 
+* Klónozás https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials.git . 
 
     A FairPlay-konfigurációk hozzáadásához módosítania kell a kódot a [DRM-titkosítással a .NET használatával](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/tree/master/AMSV3Tutorials/EncryptWithDRM) .  
 
@@ -87,7 +87,7 @@ options.Add(
 
 ## <a name="enable-offline-mode"></a>Offline mód engedélyezése
 
-Az offline mód engedélyezéséhez hozzon létre egy egyéni StreamingPolicy, és használja a nevét, amikor StreamingLocator hoz létre a [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L563)-ben.
+Az offline mód engedélyezéséhez hozzon létre egy egyéni StreamingPolicy, és használja a nevét, amikor StreamingLocator hoz létre a [CreateStreamingLocatorAsync](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/EncryptWithDRM/Program.cs#L561)-ben.
  
 ```csharp
 CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
@@ -96,23 +96,24 @@ CommonEncryptionCbcs objStreamingPolicyInput= new CommonEncryptionCbcs()
     {
         FairPlay = new StreamingPolicyFairPlayConfiguration()
         {
-            AllowPersistentLicense = true  //this enables offline mode
+            AllowPersistentLicense = true // This enables offline mode
         }
     },
     EnabledProtocols = new EnabledProtocols()
     {
         Hls = true,
-        Dash = true //Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
+        Dash = true // Even though DASH under CBCS is not supported for either CSF or CMAF, HLS-CMAF-CBCS uses DASH-CBCS fragments in its HLS playlist
     },
 
     ContentKeys = new StreamingPolicyContentKeys()
     {
-        //Default key must be specified if keyToTrackMappings is present
+        // Default key must be specified if keyToTrackMappings is present
         DefaultKey = new DefaultKey()
         {
             Label = "CBCS_DefaultKeyLabel"
         }
     }
+}
 
 ```
 
@@ -133,7 +134,7 @@ Az FPS nélküli offline üzemmódú támogatás csak iOS 10 és újabb rendszer
 
 Ezek a lépések bemutatják, hogyan állíthat be egy futó iOS-lejátszót. Tegyük fel, hogy az FPS Server SDK-ban a HLSCatalog mintából indul el a következő kód módosításával:
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift alkalmazásban implementálja `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` a metódust a következő kóddal. Hagyja, hogy a "drmUr" változó legyen a HLS URL-címhez rendelve.
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift alkalmazásban implementálja a metódust `requestContentKeyFromKeySecurityModule(spcData: Data, assetID: String)` a következő kóddal. Hagyja, hogy a "drmUr" változó legyen a HLS URL-címhez rendelve.
 
 ```swift
     var ckcData: Data? = nil
@@ -166,7 +167,7 @@ A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift alkalmazásban implementá
     return ckcData
 ```
 
-A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift-ben implementálja `requestApplicationCertificate()`a metódust. Ez a megvalósítás attól függ, hogy a tanúsítványt (csak nyilvános kulcs) ágyazza-e be az eszközzel, vagy a tanúsítványt a weben tárolja. A következő implementáció a tesztelési mintákban használt üzemeltetett alkalmazás tanúsítványát használja. Hagyja, hogy a "certUrl" olyan változó legyen, amely az alkalmazás tanúsítványának URL-címét tartalmazza.
+A HLSCatalog\Shared\Managers\ContentKeyDelegate.swift-ben implementálja a metódust `requestApplicationCertificate()` . Ez a megvalósítás attól függ, hogy a tanúsítványt (csak nyilvános kulcs) ágyazza-e be az eszközzel, vagy a tanúsítványt a weben tárolja. A következő implementáció a tesztelési mintákban használt üzemeltetett alkalmazás tanúsítványát használja. Hagyja, hogy a "certUrl" olyan változó legyen, amely az alkalmazás tanúsítványának URL-címét tartalmazza.
 
 ```swift
 func requestApplicationCertificate() throws -> Data {

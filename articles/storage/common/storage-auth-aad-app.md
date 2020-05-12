@@ -9,12 +9,13 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d3ee211298598d78f423d88fd4df1c58ed4bfa29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 0cda75469edaa183ed6553a431b9ad13b611db7d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268482"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201072"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Jogkivonat beszerzése az Azure AD-ből az ügyfélalkalmazástól érkező kérések engedélyezéséhez
 
@@ -178,7 +179,7 @@ Authorization: Bearer eyJ0eXAiOnJKV1...Xd6j
 
 Ezután adjon hozzá egy metódust, amely jogkivonatot kér az Azure AD-től a felhasználó nevében. Ez a metódus határozza meg azt a hatókört, amelyhez engedélyeket kell megadni. Az engedélyekkel és hatókörökkel kapcsolatos további információkért tekintse [meg a Microsoft Identity platform végpontjának engedélyek és](../../active-directory/develop/v2-permissions-and-consent.md)hozzájárulások című témakörét.
 
-Az erőforrás-AZONOSÍTÓval hozza létre azt a hatókört, amelyhez a jogkivonat beszerzését kéri. A példa a hatókört az erőforrás-azonosító és a beépített `user_impersonation` hatókör használatával hozza létre, amely azt jelzi, hogy a jogkivonatot a felhasználó nevében kérték.
+Az erőforrás-AZONOSÍTÓval hozza létre azt a hatókört, amelyhez a jogkivonat beszerzését kéri. A példa a hatókört az erőforrás-azonosító és a beépített hatókör használatával hozza létre `user_impersonation` , amely azt jelzi, hogy a jogkivonatot a felhasználó nevében kérték.
 
 Ne feledje, hogy előfordulhat, hogy a felhasználót egy olyan felülettel kell bemutatnia, amely lehetővé teszi a felhasználó számára, hogy a jogkivonatot az ő nevében kérje. Ha beleegyezik a jóváhagyásra, a példa megkeresi a **MsalUiRequiredException** , és egy másik módszert hív meg a jóváhagyás iránti kérés megkönnyítése érdekében:
 
@@ -202,7 +203,7 @@ public async Task<IActionResult> Blob()
 }
 ```
 
-A hozzájárulás egy olyan felhasználó, aki engedélyt ad egy alkalmazásnak a védett erőforrások elérésére a nevükben. A Microsoft Identity platform 2,0 támogatja a növekményes hozzáférést, ami azt jelenti, hogy egy rendszerbiztonsági tag először is kérheti le az engedélyek minimális készletét, és szükség szerint adja hozzá az engedélyeket. Ha a kód hozzáférési jogkivonatot kér, adja meg az alkalmazás által a `scope` paraméterben megadott időpontban szükséges engedélyek hatókörét. További információ **a növekményes** beleegyező engedélyekről: a [Microsoft Identity platform (v 2.0) frissítése](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)
+A hozzájárulás egy olyan felhasználó, aki engedélyt ad egy alkalmazásnak a védett erőforrások elérésére a nevükben. A Microsoft Identity platform 2,0 támogatja a növekményes hozzáférést, ami azt jelenti, hogy egy rendszerbiztonsági tag először is kérheti le az engedélyek minimális készletét, és szükség szerint adja hozzá az engedélyeket. Ha a kód hozzáférési jogkivonatot kér, adja meg az alkalmazás által a paraméterben megadott időpontban szükséges engedélyek hatókörét `scope` . További információ **a növekményes** beleegyező engedélyekről: a [Microsoft Identity platform (v 2.0) frissítése](../../active-directory/azuread-dev/azure-ad-endpoint-comparison.md#incremental-and-dynamic-consent)
 
 A következő módszer a növekményes belefoglalási kérelemhez tartozó hitelesítési tulajdonságokat hozza létre:
 

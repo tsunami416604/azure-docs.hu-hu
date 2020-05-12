@@ -3,12 +3,12 @@ title: Azure Files visszaállítása a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: bcd85635dbacceb7d1c125bb550feedbdb57e04a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 63c318b66ec8f876a260b3c5b8db38bb088fb862
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097642"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201953"
 ---
 # <a name="restore-azure-files-with-powershell"></a>Azure Files visszaállítása a PowerShell-lel
 
@@ -17,7 +17,7 @@ Ez a cikk azt ismerteti, hogyan lehet visszaállítani egy teljes fájlmegosztá
 Visszaállíthat egy teljes fájlmegosztást vagy adott fájlokat a megosztáson. Az eredeti helyre vagy egy másik helyre is visszaállíthatja.
 
 > [!WARNING]
-> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További információkért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) .
+> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További információkért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice-backup-item-identification) .
 
 >[!NOTE]
 >Azure Backup mostantól támogatja több fájl vagy mappa visszaállítását az eredeti vagy a másik helyre a PowerShell használatával. Ennek megismeréséhez tekintse meg a dokumentum [ezen szakaszát](#restore-multiple-files-or-folders-to-original-or-alternate-location) .

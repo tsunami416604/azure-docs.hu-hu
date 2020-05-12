@@ -1,6 +1,6 @@
 ---
-title: Az Azure N sorozatú AMD GPU-illesztőprogram beállítása a Windows rendszerhez
-description: Az AMD GPU-illesztőprogramok beállítása Az Azure-ban Windows Server vagy Windows rendszert futtató N sorozatú virtuális gépekhez
+title: Azure N sorozatú AMD GPU illesztőprogram-telepítő Windows rendszerhez
+description: AMD GPU-illesztőprogramok beállítása az Azure-ban Windows Servert vagy Windowst futtató N sorozatú virtuális gépekhez
 author: vikancha
 manager: jkabat
 ms.service: virtual-machines-windows
@@ -8,18 +8,22 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 12/4/2019
 ms.author: vikancha
-ms.openlocfilehash: 63114bdf60c1feb2b6cb1092ef78397efdc5b666
-ms.sourcegitcommit: af1cbaaa4f0faa53f91fbde4d6009ffb7662f7eb
+ms.openlocfilehash: 1bcc13db3f503c80fda71a2104d0ff8d99e67df6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/22/2020
-ms.locfileid: "81865742"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197999"
 ---
-# <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>AMD GPU-illesztőprogramok telepítése Windows rendszerű N sorozatú virtuális gépekre
+# <a name="install-amd-gpu-drivers-on-n-series-vms-running-windows"></a>Az AMD GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken
 
-Az új Azure NVv4 sorozatú Windows rendszerű virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az AMD GPU-illesztőprogramokat. Az AMD illesztőprogram-bővítmény az elkövetkező hetekben lesz elérhető. Ez a cikk támogatott operációs rendszereket, illesztőprogramokat, valamint manuális telepítési és ellenőrzési lépéseket tartalmaz.
+Az új Azure NVv4 sorozatú virtuális gépek GPU-képességeinek kihasználásához telepíteni kell az AMD GPU-illesztőprogramokat. Az [AMD GPU illesztőprogram-bővítmény](../extensions/hpccompute-amd-gpu-windows.md) egy NVv4-sorozatú virtuális gépen telepíti az AMD GPU-illesztőprogramokat. A bővítmény telepítése vagy kezelése a Azure Portal vagy eszközök, például Azure PowerShell vagy Azure Resource Manager sablonok használatával. Tekintse meg az [AMD GPU illesztőprogram-bővítmény dokumentációját](../extensions/hpccompute-amd-gpu-windows.md) a támogatott operációs rendszerekhez és üzembe helyezési lépésekhez.
 
-Az alapvető specifikációkat, a tárolási kapacitást és a lemezadatokat a [GPU Windows vm-méretei című](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)témakörben találja.
+Ha manuálisan telepíti az AMD GPU-illesztőprogramokat, ez a cikk a támogatott operációs rendszereket, illesztőprogramokat és telepítési és ellenőrzési lépéseket tartalmazza.
+
+A NVv4 virtuális gépeken csak a Microsoft által közzétett GPU-illesztőprogramok támogatottak. Ne telepítse a GPU-illesztőprogramokat bármilyen más forrásból.
+
+Az alapszintű specifikációk, a tárolási kapacitások és a lemezek részleteiért lásd: [GPU Windowsos virtuális gépek méretei](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 
 
@@ -27,16 +31,16 @@ Az alapvető specifikációkat, a tárolási kapacitást és a lemezadatokat a [
 
 | Operációs rendszer | Illesztőprogram |
 | -------- |------------- |
-| Windows 10 EVD - Build 1903 <br/><br/>Windows 10 – Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20.Q1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (.exe) |
+| Windows 10 EVD – 1903-es Build <br/><br/>Windows 10 – Build 1809<br/><br/>Windows Server 2016<br/><br/>Windows Server 2019 | [20. q 1.1](https://download.microsoft.com/download/3/8/9/3893407b-e8aa-4079-8592-735d7dd1c19a/Radeon-Pro-Software-for-Enterprise-GA.exe) (. exe) |
 
 
 ## <a name="driver-installation"></a>Illesztőprogram telepítése
 
-1. Csatlakozzon a Távoli asztallal az egyes NVv4 sorozatú virtuális gépekhez.
+1. Kapcsolódjon Távoli asztal az egyes NVv4-sorozatú virtuális gépekhez.
 
-2. Ha Ön NVv4 előzetes verziójú ügyfél, akkor állítsa le a virtuális gép, és várja meg, hogy átáll a Leállítva (Felszabadított) állapotba.
+2. Ha Ön a NVv4 előzetes verziójának ügyfelét használja, állítsa le a virtuális gépet, és várjon, amíg a leállítva (fel nem szabadítva) állapotba kerül.
 
-3. Indítsa el a virtuális gép és töltse le a legújabb [AMD Cleanup Utility](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Távolítsa el a meglévő illesztőprogramot az "amdcleanuputility-x64.exe" futtatásával. Ne használjon olyan meglévő tisztítási segédprogramot, amely az előző illesztőprogrammal volt telepítve.  
+3. Indítsa el a virtuális gépet, és töltse le a legújabb [AMD-karbantartó segédprogramot](https://download.microsoft.com/download/4/f/1/4f19b714-9304-410f-9c64-826404e07857/AMDCleanupUtilityni.exe). Távolítsa el a meglévő illesztőprogramot a "amdcleanuputility-x64. exe" futtatásával. Ne használjon olyan meglévő karbantartási segédprogramot, amely az előző illesztőprogrammal lett telepítve.  
 
 4. Töltse le és telepítse a legújabb illesztőprogramot.
 
@@ -44,15 +48,15 @@ Az alapvető specifikációkat, a tárolási kapacitást és a lemezadatokat a [
 
 ## <a name="verify-driver-installation"></a>Illesztőprogram telepítésének ellenőrzése
 
-Az eszközkezelőben ellenőrizheti az illesztőprogram telepítését. A következő példa bemutatja a Radeon Instinct MI25-kártya sikeres konfigurálását egy Azure NVv4 virtuális számítógépen.
+Az illesztőprogram telepítését a Eszközkezelő ellenőrizheti. Az alábbi példa a Radeon ösztön MI25 kártya sikeres konfigurálását mutatja be egy Azure NVv4 virtuális gépen.
 <br />
 ![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/device-manager.png)
 
-A dxdiag segítségével ellenőrizheti a GPU kijelzőtulajdonságait, beleértve a videoRAM-ot is. A következő példa a Radeon Instinct MI25-kártya 1/2-es partícióját mutatja be egy Azure NVv4 virtuális gépen.
+A Dxdiag használatával ellenőrizheti a GPU megjelenítési tulajdonságait, beleértve a videó RAM-ját is. Az alábbi példa egy Azure NVv4 virtuális gépen található Radeon ösztön MI25 kártya 1/2-es partícióját mutatja be.
 <br />
 ![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag-output.png)
 
-Ha Windows 10 build 1903 vagy újabb rendszert futtat, akkor a dxdiag nem jelenik meg a "Megjelenítés" lapon. Kérjük, használja az "Összes információ mentése" opciót az alján, és a kimeneti fájl megmutatja az AMD MI25 GPU-val kapcsolatos információkat.
+Ha a Windows 10 Build 1903-es vagy újabb verzióját futtatja, akkor a Dxdiag nem jelenít meg információt a "Display" (megjelenítés) lapon. Használja az összes információ mentése lehetőséget az alján, és a kimeneti fájl megjeleníti az AMD MI25 GPU-val kapcsolatos információkat.
 
 ![GPU-illesztőprogram tulajdonságai](./media/n-series-amd-driver-setup/dxdiag-details.png)
 

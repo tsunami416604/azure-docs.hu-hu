@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2019
 ms.author: juliako
-ms.openlocfilehash: b8f4de1a5b9d8216ae2442631f5f9135c3c72d0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 6dc05f225e3585b83bd6a57ca47bd5adf97934ea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79269808"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201118"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Kapcsolódás Media Services V3 API-hoz – .NET
 
@@ -35,15 +36,15 @@ Ez a cikk bemutatja, hogyan csatlakozhat a Azure Media Services v3 .NET SDK-hoz 
 ## <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
 1. Indítsa el a Visual Studiót. 
-1. A **fájl** menüben kattintson az **új** > **projekt**elemre. 
+1. A **fájl** menüben kattintson az **új**  >  **projekt**elemre. 
 1. Hozzon létre egy **.net Core** Console-alkalmazást.
 
-Az ebben a témakörben található minta alkalmazás `netcoreapp2.0`a célokat célozza meg. A kód az "aszinkron Main" protokollt használja, amely a C# 7,1-től kezdődően érhető el. További részletekért tekintse meg ezt a [blogot](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
+Az ebben a témakörben található minta alkalmazás a célokat célozza meg `netcoreapp2.0` . A kód az "aszinkron Main" protokollt használja, amely a C# 7,1-től kezdődően érhető el. További részletekért tekintse meg ezt a [blogot](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/) .
 
 ## <a name="add-required-nuget-packages"></a>Szükséges NuGet-csomagok hozzáadása
 
-1. A Visual Studióban válassza az **eszközök** > **NuGet csomagkezelő** > **NuGet-kezelő konzolt**.
-2. A **Package Manager Console (csomagkezelő konzol** ) `Install-Package` ablakban a következő NuGet-csomagok hozzáadásához használja a parancsot. Például: `Install-Package Microsoft.Azure.Management.Media`.
+1. A Visual Studióban válassza az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-kezelő konzolt**.
+2. A **Package Manager Console (csomagkezelő konzol** ) ablakban a `Install-Package` következő NuGet-csomagok hozzáadásához használja a parancsot. Például: `Install-Package Microsoft.Azure.Management.Media`.
 
 |Csomag|Leírás|
 |---|---|
@@ -57,7 +58,7 @@ Az ebben a témakörben található minta alkalmazás `netcoreapp2.0`a célokat 
 
 ### <a name="create-appsettingsjson"></a>AppSettings. JSON létrehozása
 
-1. Ugrás az **általános** > **szövegfájlba**.
+1. Ugrás az **általános**  >  **szövegfájlba**.
 1. Nevezze el "appSettings. JSON" néven.
 1. Állítsa a. JSON fájl "másolás a kimeneti könyvtárba" tulajdonságát a "Copy if újabb" értékre (hogy az alkalmazás elérhető legyen a közzétételkor).
 
@@ -70,7 +71,7 @@ Futtassa a `az ams account sp create` parancsot a következő témakörben leír
 A kényelem érdekében adjon hozzá egy olyan konfigurációs fájlt, amely felelős az értékek "appSettings. JSON"-ból való olvasásához.
 
 1. Adjon hozzá egy új. cs osztályt a projekthez. Nevezze el a következőképpen: `ConfigWrapper`. 
-1. Illessze be a következő kódot a fájlba (ez a példa feltételezi, hogy rendelkezik a `ConsoleApp1`névtérrel).
+1. Illessze be a következő kódot a fájlba (ez a példa feltételezi, hogy rendelkezik a névtérrel `ConsoleApp1` ).
 
 ```csharp
 using System;

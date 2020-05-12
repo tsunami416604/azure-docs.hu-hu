@@ -8,12 +8,13 @@ ms.topic: troubleshooting
 ms.date: 01/09/2020
 ms.author: jingwang
 ms.reviewer: craigg
-ms.openlocfilehash: 62ad337646cf3fc0bbe4305dccad5adb56f8ee15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 50f76d9b4f3061e6e9a1e4a0b510146dbded422a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81410234"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199014"
 ---
 # <a name="troubleshoot-azure-data-factory-connectors"></a>Azure Data Factory-összekötők hibaelhárítása
 
@@ -30,7 +31,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: a blob Storage-művelettel kapcsolatos probléma lépett fel.
 
-- **Javaslat**: vizsgálja meg a hibát a részletek között. Tekintse meg a blob Súgó https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codesdokumentumát:. Ha segítségre van szüksége, lépjen kapcsolatba a Storage csapatával.
+- **Javaslat**: vizsgálja meg a hibát a részletek között. Tekintse meg a blob Súgó dokumentumát: https://docs.microsoft.com/rest/api/storageservices/blob-service-error-codes . Ha segítségre van szüksége, lépjen kapcsolatba a Storage csapatával.
 
 
 ### <a name="error-code--azureblobservicenotreturnexpecteddatalength"></a>Hibakód: AzureBlobServiceNotReturnExpectedDataLength
@@ -134,7 +135,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: Ha a hibaüzenet "tiltott" üzenetet tartalmaz, akkor előfordulhat, hogy az Ön által használt egyszerű szolgáltatásnév vagy felügyelt identitás nem rendelkezik elegendő engedéllyel a ADLS Gen2 eléréséhez.
 
-- **Javaslat**: Tekintse meg a Súgó dokumentumot https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication:.
+- **Javaslat**: Tekintse meg a Súgó dokumentumot: https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage#service-principal-authentication .
 
 - **OK**: Ha a hibaüzenetben a "InternalServerError" szöveg szerepel, a ADLS Gen2 a hibát adja vissza.
 
@@ -198,11 +199,11 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: Ha a hibaüzenetben a "SqlException" szerepel, akkor a SQL Database a hibát jelző hiba miatt nem sikerült.
 
-- **Javaslat**: a további részletekért tekintse meg a következő SQL-hibakódot ebben https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsa dokumentációban:. Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
+- **Javaslat**: a további részletekért tekintse meg a következő SQL-hibakódot ebben a dokumentációban: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
 
 - **OK**: Ha a hibaüzenetben szerepel az "ügyfél IP-címmel"... a nem fér hozzá a kiszolgálóhoz, és a Azure SQL Databasehoz próbál csatlakozni, általában Azure SQL Database tűzfal okozza a problémát.
 
-- **Javaslat**: az Azure SQL Server tűzfal konfigurációjában engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálóhoz" lehetőséget. Dokumentáció: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure.
+- **Javaslat**: az Azure SQL Server tűzfal konfigurációjában engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése a kiszolgálóhoz" lehetőséget. Dokumentáció: https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure .
 
 
 ### <a name="error-code--sqloperationfailed"></a>Hibakód: SqlOperationFailed
@@ -211,8 +212,8 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: Ha a hibaüzenetben a "SqlException" szerepel, akkor a SQL Database a hibát jelző hiba miatt nem sikerült.
 
-- **Javaslat**: Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre (150). A legújabb verziójú SQL-hibákat is el tudja dobni. Tekintse át a részleteket tartalmazó https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompatdoc:.
-        Az SQL-problémák elhárításához a jelen dokumentációban keresse meg az SQL-hibakódot a további https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errorsrészletekért:. Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
+- **Javaslat**: Ha az SQL-hiba nem egyértelmű, próbálja meg módosítani az adatbázist a legújabb kompatibilitási szintre (150). A legújabb verziójú SQL-hibákat is el tudja dobni. Tekintse át a részleteket tartalmazó doc: https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level?view=sql-server-ver15#backwardCompat .
+        Az SQL-problémák elhárításához a jelen dokumentációban keresse meg az SQL-hibakódot a további részletekért: https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors . Ha további segítségre van szüksége, forduljon az Azure SQL támogatási szolgálatához.
 
 - **OK**: Ha a hibaüzenet "PdwManagedToNativeInteropException"-t tartalmaz, általában a forrás-és a fogadó oszlop méretének eltérése okozta.
 
@@ -220,7 +221,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: Ha a hibaüzenet "InvalidOperationException"-t tartalmaz, általában érvénytelen bemeneti adatok okozzák.
 
-- **Javaslat**: annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sort (ka) t a tárolóba. Dokumentáció: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Javaslat**: annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sort (ka) t a tárolóba. Dokumentáció: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlunauthorizedaccess"></a>Hibakód: SqlUnauthorizedAccess
@@ -323,7 +324,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: az SQL tömeges másolása nem sikerült, mert a BCP-ügyfél érvénytelen hosszúságú oszlopot kapott.
 
-- **Javaslat**: annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sort (ka) t a tárolóba. Dokumentáció: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance.
+- **Javaslat**: annak megállapításához, hogy melyik sor találkozik a problémával, engedélyezze a hibatűrési funkciót a másolási tevékenységnél, amely további vizsgálat céljából átirányíthatja a problémás sort (ka) t a tárolóba. Dokumentáció: https://docs.microsoft.com/azure/data-factory/copy-activity-fault-tolerance .
 
 
 ### <a name="error-code--sqlconnectionisclosed"></a>Hibakód: SqlConnectionIsClosed
@@ -545,7 +546,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: a Azure Data Factory nem támogatja a parketta formátumát.
 
-- **Javaslat**: Ellenőrizze a forrásadatokat. Tekintse meg a doc https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs:.
+- **Javaslat**: Ellenőrizze a forrásadatokat. Tekintse meg a doc: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetmisseddecimalprecisionscale"></a>Hibakód: ParquetMissedDecimalPrecisionScale
@@ -581,7 +582,7 @@ Ez a cikk a Azure Data Factory összekötők gyakori hibaelhárítási módszere
 
 - **OK**: az adattípusok nem alakíthatók át a leképezésekben megadott típusra. forrás
 
-- **Javaslat**: Ellenőrizze a forrásadatokat, vagy adja meg a megfelelő adattípust ehhez az oszlophoz a másolási tevékenység oszlop-hozzárendelésében. Tekintse meg a doc https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs:.
+- **Javaslat**: Ellenőrizze a forrásadatokat, vagy adja meg a megfelelő adattípust ehhez az oszlophoz a másolási tevékenység oszlop-hozzárendelésében. Tekintse meg a doc: https://docs.microsoft.com/azure/data-factory/supported-file-formats-and-compression-codecs .
 
 
 ### <a name="error-code--parquetdatacountnotmatchcolumncount"></a>Hibakód: ParquetDataCountNotMatchColumnCount

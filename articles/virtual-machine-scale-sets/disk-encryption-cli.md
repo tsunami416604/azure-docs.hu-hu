@@ -1,19 +1,20 @@
 ---
 title: Lemezek titkosítása az Azure-méretezési csoportokhoz az Azure CLI-vel
 description: Ismerje meg, hogyan titkosíthatja a virtuálisgép-példányokat és a csatlakoztatott lemezeket a Azure PowerShell használatával a Windowsos virtuálisgép-méretezési csoportokban
-author: msmbaldwin
-manager: rkarlin
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: tutorial
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 10/15/2019
-ms.author: mbaldwin
-ms.openlocfilehash: 557d5c023acbc7987d58c9e78bfe11e25f314879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: fd8b88e55f487032f76aa379018f09c144842d60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76279076"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200296"
 ---
 # <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli"></a>Operációs rendszer és csatlakoztatott adatlemezek titkosítása virtuálisgép-méretezési csoportokban az Azure CLI-vel
 
