@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/31/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e1cf3905a34fdced878526cfcc55e6dd0a1a369f
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: e87b6ee4739818e25ee069986e299f8205d44a2a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82595228"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343303"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -257,32 +257,6 @@ Az összes Azure-régió már támogatja standard SSD lemezeket.
 **A standard SSD-k használata esetén Azure Backup érhető el?**
 Igen, Azure Backup már elérhető.
 
-**Hogyan standard SSD lemezeket létrehozni?**
-Standard SSD lemezeket a Azure Resource Manager sablonok, az SDK, a PowerShell vagy a parancssori felület használatával hozhat létre. Az alábbi paraméterek szükségesek a Resource Manager-sablonban standard SSD lemezek létrehozásához:
-
-* a Microsoft *apiVersion* . a számítást `2018-04-01` (vagy újabb) kell beállítani
-* A *managedDisk. tárfióktípus* a következőképpen adható meg:`StandardSSD_LRS`
-
-A következő példa egy standard SSD lemezeket használó virtuális gép *Properties. storageProfile. osDisk* szakaszát mutatja be:
-
-```json
-"osDisk": {
-    "osType": "Windows",
-    "name": "myOsDisk",
-    "caching": "ReadWrite",
-    "createOption": "FromImage",
-    "managedDisk": {
-        "storageAccountType": "StandardSSD_LRS"
-    }
-}
-```
-
-Az standard SSD-lemezek sablonnal történő létrehozásával kapcsolatos példa: [virtuális gép létrehozása egy standard SSD Adatlemezekkel rendelkező Windows-lemezképből](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
-
-**Átválthatom a meglévő lemezeket standard SSDre?**
-Igen. Tekintse át az [Azure Managed Disks Storage standard és Premium közötti átalakítását, és fordítva](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage) a Managed Disks átalakítására vonatkozó általános irányelveket. Továbbá a következő érték használatával frissítse a lemez típusát standard SSDra.
-– AccountType StandardSSD_LRS
-
 **Milyen előnyökkel jár a standard SSD lemezek használata a HDD helyett?**
 Standard SSD lemezek jobb késést, következetességet, rendelkezésre állást és megbízhatóságot biztosítanak a HDD-lemezekhez képest. Az alkalmazás munkaterhelései sokkal simábban futnak a standard SSD miatt. Vegye figyelembe, prémium SSD lemezek a legtöbb IO-igényes éles számítási feladathoz ajánlott megoldás.
 
@@ -332,9 +306,9 @@ Igen
 
 ## <a name="managed-disks-and-storage-service-encryption"></a>Managed Disks és Storage Service Encryption
 
-**A felügyelt lemez létrehozásakor alapértelmezés szerint engedélyezve van-e az Azure Storage Service Encryption?**
+**Alapértelmezés szerint engedélyezve van-e a kiszolgálóoldali titkosítás a felügyelt lemez létrehozásakor?**
 
-Igen.
+Igen. A Managed Disks a platform által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítással vannak titkosítva. 
 
 **A rendszerindító kötetet alapértelmezés szerint titkosították a felügyelt lemezeken?**
 
@@ -342,30 +316,27 @@ Igen. Alapértelmezés szerint minden felügyelt lemez titkosítva van, beleért
 
 **Kik kezelik a titkosítási kulcsokat?**
 
-A Microsoft kezeli a titkosítási kulcsokat.
+A platform által felügyelt kulcsokat a Microsoft felügyeli. A Azure Key Vaultban tárolt saját kulcsokat is használhatja és kezelheti. 
 
-**Letilthatom Storage Service Encryption a felügyelt lemezeken?**
+**Le lehet tiltani a felügyelt lemezek kiszolgálóoldali titkosítását?**
 
 Nem.
 
-**Storage Service Encryption csak bizonyos régiókban érhető el?**
+**Csak bizonyos régiókban érhető el kiszolgálóoldali titkosítás?**
 
-Nem. Ez minden olyan régióban elérhető, ahol elérhetők a Managed Disks. Managed Disks minden nyilvános régióban és Németországban elérhető. Azonban Kínában is elérhető, csak a Microsoft által felügyelt kulcsokhoz, nem pedig az ügyfél által felügyelt kulcsokhoz.
+Nem. A kiszolgálóoldali titkosítás a platformmal és az ügyfél által felügyelt kulcsokkal minden olyan régióban elérhető, ahol Managed Disks elérhető. 
 
-**Hogyan állapítható meg, hogy a felügyelt lemez titkosított-e?**
+**A Azure Site Recovery támogatja a kiszolgálóoldali titkosítást az ügyfél által felügyelt kulccsal a helyszínen az Azure-ba és az Azure-ba a vész-helyreállítási forgatókönyvek esetében?**
 
-Megtudhatja, hogy mikor jött létre felügyelt lemez a Azure Portal, az Azure CLI és a PowerShell használatával. Ha az idő a 2017. június 9. után van, akkor a lemez titkosítva lesz.
+Igen. 
 
-**Hogyan lehet titkosítani a 2017. június 10. előtt létrehozott meglévő lemezeket?**
+**Az ügyfél által felügyelt kulccsal rendelkező kiszolgálóoldali titkosítással titkosított Managed Disks Azure Backup szolgáltatás használatával?**
 
-2017. június 10-ig a meglévő felügyelt lemezekre írt új adatmennyiségek automatikusan titkosítva vannak. Azt is tervezzük, hogy a meglévőket titkosítani fogjuk, és a titkosítás aszinkron módon történik a háttérben. Ha most titkosítania kell a meglévő adatait, hozzon létre egy másolatot a lemezről. Az új lemezek titkosítva lesznek.
-
-* [Felügyelt lemezek másolása az Azure CLI használatával](../articles/virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
-* [Felügyelt lemezek másolása a PowerShell használatával](../articles/virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md?toc=%2fcli%2fmodule%2ftoc.json)
+Igen.
 
 **A felügyelt Pillanatképek és lemezképek titkosítva vannak?**
 
-Igen. A 2017. június 9. után létrehozott összes felügyelt pillanatkép és rendszerkép automatikusan titkosítva lesz. 
+Igen. Minden felügyelt pillanatkép és rendszerkép automatikusan titkosítva lesz. 
 
 **Átalakíthatók-e a virtuális gépek olyan nem felügyelt lemezekkel, amelyek olyan Storage-fiókokon találhatók, amelyek korábban felügyelt lemezekre lettek titkosítva?**
 

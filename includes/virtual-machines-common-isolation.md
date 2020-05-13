@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 3aeb0369ee4a04dbbe89a4d0684b2a6c97378d13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 033ec0f4011cae657fc464849aac5c5d9a850907
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77123208"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343320"
 ---
 Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz ideálisak, amelyek nagy fokú elkülönítést igényelnek más ügyfelektől olyan munkaterhelések esetén, mint például a megfelelőségi és szabályozási követelmények.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.
 
@@ -23,11 +23,11 @@ Az elkülönített méret kihasználása garantálja, hogy a virtuális gép az 
 * Standard_M128ms
 * Standard_GS5
 * Standard_G5
-* Standard_DS15_v2
-* Standard_D15_v2
+* Standard_DS15_v2<sup>*</sup>
+* Standard_D15_v2<sup>*</sup>
 * Standard_F72s_v2
 
-Az összes rendelkezésre álló elszigetelt méretről [itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)olvashat bővebben.
+<sup>*</sup>Az elkülönítési garancia a 2020. május 15-én lesz kivezetve
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-may-15-2020"></a>D15_v2/DS15_v2 elkülönítés kivonása 2020. május 15-én
 **Frissítés a 2020. február 10-én: az "elkülönítés" nyugdíjazási idővonala a 2020. május 15-én lett kiterjesztve.**

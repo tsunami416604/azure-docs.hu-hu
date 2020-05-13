@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 01/23/2020
+ms.date: 05/05/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 658910dc4291375c7b2ab22e88c599b970b885af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11a9b8609218a6cf56a789b18094d048e26d4af8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419121"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83343337"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
@@ -30,7 +30,7 @@ Az előzetes verzióban ezek a funkciók támogatottak:
 - Az Azure Shared Image Gallery integrációja lehetővé teszi a lemezképek globális terjesztését, verzióját és méretezését, valamint egy rendszerkép-kezelő rendszer létrehozását.
 - Integráció meglévő rendszerkép-létrehozási folyamatokkal, csak a rendszerkép-készítő hívása a folyamatból, vagy az egyszerű előzetes rendszerkép-készítő Azure DevOps feladat használata.
 - Meglévő rendszerkép-testreszabási folyamat migrálása az Azure-ba. A lemezképek testreszabásához használja meglévő parancsfájlait, parancsait és folyamatait.
-- Lemezképek létrehozása VHD formátumban.
+- Lemezképek létrehozása VHD formátumban a Azure Stack támogatásához.
  
 
 ## <a name="regions"></a>Régiók
@@ -55,8 +55,7 @@ A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatn
 - Windows 2016
 - Windows 2019
 
-A RHEL ISOs-támogatás elavult, további részletekért tekintse át a sablon dokumentációját.
-
+A RHEL ISOs támogatása már nem támogatott.
 ## <a name="how-it-works"></a>Működés
 
 
@@ -71,40 +70,28 @@ Az Azure rendszerkép-szerkesztő egy teljes körűen felügyelt Azure-szolgált
 ![Az Azure rendszerkép-készítő folyamatának elméleti rajza](./media/virtual-machines-image-builder-overview/image-builder-process.png)
 
 1. Hozza létre a rendszerkép sablonját. JSON-fájlként. Ez a. JSON fájl a rendszerkép forrásával, testreszabásával és terjesztésével kapcsolatos információkat tartalmaz. Az [Azure rendszerkép-készítő GitHub-tárházban](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts)több példa is van.
-1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_\<DestinationResourceGroup>_\<TemplateName>. 
-1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet (alapértelmezett méret: Standard_D1_v2), a hálózat, a nyilvános IP-cím, a\<NSG és\<a tárterületet a IT_ DestinationResourceGroup>_ TemplateName> erőforráscsoporthoz.
-1. A rendszerkép létrehozása során a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a folyamathoz létrehozott IT_\<DestinationResourceGroup>_\<TemplateName> erőforráscsoporthoz.
+1. Küldje el a szolgáltatást, amely létrehoz egy Képsablon-összetevőt az Ön által megadott erőforráscsoporthoz. A háttérben a rendszerkép-szerkesztő szükség szerint letölti a forrás-vagy ISO-és parancsfájl-fájlokat. Ezeket egy külön erőforráscsoport tárolja, amely automatikusan létrejön az előfizetésben, a következő formátumban: IT_ \< DestinationResourceGroup>_ \< TemplateName>. 
+1. A rendszerkép-sablon létrehozása után létrehozhatja a rendszerképet. A háttérben futó rendszerkép-készítő a sablon és a forrásfájlok használatával hozza létre a virtuális gépet (alapértelmezett méret: Standard_D1_v2), a hálózat, a nyilvános IP-cím, a NSG és a tárterületet a IT_ \< DestinationResourceGroup>_ \< TemplateName> erőforráscsoporthoz.
+1. A rendszerkép létrehozása során a rendszerkép-szerkesztő a sablon alapján osztja el a képet, majd törli a további erőforrásokat a \< \< folyamathoz létrehozott IT_ DestinationResourceGroup>_ TemplateName> erőforráscsoporthoz.
 
 
 ## <a name="permissions"></a>Engedélyek
+A (z) (AIB) regisztrálásakor a AIB szolgáltatás engedélyt ad az átmeneti erőforráscsoport létrehozásához, kezeléséhez és törléséhez (IT_ *), és jogosultsággal rendelkezik ahhoz, hogy erőforrásokat adjon hozzá, amelyek szükségesek a rendszerkép létrehozásához. Ezt egy AIB egyszerű szolgáltatásnév (SPN) hajtja végre, amely a sikeres regisztráció során elérhetővé válik az előfizetésben.
 
-Annak engedélyezéséhez, hogy az Azure VM Image Builder lemezképeket terjesszen a felügyelt lemezképekre vagy egy megosztott képkatalógusba, meg kell adnia a "közreműködői" jogosultságokat a (z) "Azure Virtual Machine Image Builder" (App ID: cf32a0cc-373c-47c9-9156-0db11f6a6dfc) szolgáltatáshoz az erőforráscsoportok számára. 
+Annak engedélyezéséhez, hogy az Azure VM Image Builder lemezképeket terjesszen a felügyelt lemezképekre vagy egy megosztott képkatalógusba, létre kell hoznia egy Azure-beli felhasználó által hozzárendelt identitást, amely jogosult a képek olvasására és írására. Ha az Azure Storage-hoz fér hozzá, akkor a privát tárolók olvasásához engedélyre van szüksége.
 
-Ha meglévő egyéni felügyelt rendszerképeket vagy rendszerképeket használ, az Azure-rendszerkép-szerkesztőnek legalább "olvasó" hozzáférésre van szüksége az erőforráscsoportok számára.
+Kezdetben létre kell [hoznia az Azure-felhasználóhoz rendelt felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli) dokumentációját az identitás létrehozásához.
 
-A hozzáférést az Azure CLI használatával rendelheti hozzá:
+Ha rendelkezik az Ön számára szükséges engedélyekkel, ezt megteheti, használhat egy egyéni Azure-szerepkör-definíciót, majd hozzárendelheti a felhasználó által hozzárendelt felügyelt identitást az egyéni szerepkör-definíció használatához.
 
-```azurecli-interactive
-az role assignment create \
-    --assignee cf32a0cc-373c-47c9-9156-0db11f6a6dfc \
-    --role Contributor \
-    --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
-```
+Az engedélyeket [itt](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)részletesebben ismertetjük, a példák pedig azt mutatják be, hogy ez hogyan valósul meg.
 
-A PowerShell használatával is hozzárendelhet hozzáférést:
-
-```azurePowerShell-interactive
-New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
-```
-
-
-Ha a szolgáltatásfiók nem található, az azt jelentheti, hogy az előfizetés, amelyhez hozzáadja a szerepkör-hozzárendelést, még nincs regisztrálva az erőforrás-szolgáltatónál.
-
+> [Megjegyzés!] A AIB korábban a AIB SPN-t használja, és megadja az SPN-engedélyeket a rendszerkép-erőforráscsoportok számára. A jövőbeli képességek lehetővé teszik a modellből való átlépést. Június 1-től 2020 a képszerkesztő nem fogad el olyan sablonokat, amelyek nem rendelkeznek felhasználó által hozzárendelt identitással, a meglévő sablonokat újra kell küldeni a szolgáltatásnak a [felhasználó identitásával](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). A példák már azt mutatják be, hogyan hozhat létre felhasználó által hozzárendelt identitást, és hogyan adhatja hozzá őket egy sablonhoz.
 
 ## <a name="costs"></a>Költségek
 A lemezképek Azure Image Builder szolgáltatással való létrehozásakor, kiépítésekor és tárolásakor a számítási, hálózati és tárolási költségek is felmerülhetnek. Ezek a költségek hasonlóak az egyéni lemezképek manuális létrehozása során felmerülő költségekhez. Az erőforrásokra az Azure díjszabása alapján számítunk fel díjat. 
 
-A rendszerkép-létrehozási folyamat során a `IT_<DestinationResourceGroup>_<TemplateName>` rendszer letölti és tárolja a fájlokat az erőforráscsoporthoz, ami kisebb tárolási költségekkel jár. Ha nem szeretné megtartani ezeket a fájlokat, törölje a **képsablont** a rendszerkép létrehozása után.
+A rendszerkép-létrehozási folyamat során a rendszer letölti és tárolja a fájlokat az `IT_<DestinationResourceGroup>_<TemplateName>` erőforráscsoporthoz, ami kisebb tárolási költségekkel jár. Ha nem szeretné megtartani ezeket a fájlokat, törölje a **képsablont** a rendszerkép létrehozása után.
  
 A rendszerkép-készítő létrehoz egy virtuális gépet egy D1v2 VM-mérettel, valamint a virtuális gép számára szükséges tárterületet és hálózatkezelést. Ezek az erőforrások a létrehozási folyamat időtartama alatt maradnak, és törölve lesznek, ha a rendszerkép-készítő befejezte a rendszerkép létrehozását. 
  
@@ -113,5 +100,4 @@ Az Azure-rendszerkép-szerkesztő továbbítja a rendszerképet a kiválasztott 
 ## <a name="next-steps"></a>További lépések 
  
 Az Azure Image Builder kipróbálásához tekintse meg a [Linux](../articles/virtual-machines/linux/image-builder.md) -és [Windows](../articles/virtual-machines/windows/image-builder.md) -rendszerképek készítésével foglalkozó cikkeket.
- 
  
