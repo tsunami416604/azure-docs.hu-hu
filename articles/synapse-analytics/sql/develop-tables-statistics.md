@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: 5196c85ca1d68028893caee55035c6c455b37d64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81676939"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197596"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 
@@ -34,7 +34,7 @@ Ha például az optimalizáló becslése szerint a lekérdezés szűrésének d�
 
 ### <a name="automatic-creation-of-statistics"></a>Statisztikák automatikus létrehozása
 
-Az SQL-készlet elemzi a hiányzó statisztikai adatok bejövő felhasználói lekérdezéseit, amikor az adatbázis AUTO_CREATE_STATISTICS `ON`beállítás értéke:.  Ha hiányoznak a statisztikák, a lekérdezés-optimalizáló a lekérdezési predikátumban vagy a csatlakozás feltételben lévő egyes oszlopokra vonatkozó statisztikát hoz létre. Ez a függvény a lekérdezési tervhez tartozó kardinális becslések javítására szolgál.
+Az SQL-készlet elemzi a hiányzó statisztikai adatok bejövő felhasználói lekérdezéseit, amikor az adatbázis AUTO_CREATE_STATISTICS beállítás értéke: `ON` .  Ha hiányoznak a statisztikák, a lekérdezés-optimalizáló a lekérdezési predikátumban vagy a csatlakozás feltételben lévő egyes oszlopokra vonatkozó statisztikát hoz létre. Ez a függvény a lekérdezési tervhez tartozó kardinális becslések javítására szolgál.
 
 > [!IMPORTANT]
 > A statisztikák automatikus létrehozása jelenleg alapértelmezés szerint be van kapcsolva.
@@ -149,7 +149,7 @@ A következő irányadó elveket kell megadnia a statisztikák frissítéséhez 
 - A JOIN, a GROUP BY, a ORDER BY és a DISTINCT záradékban részt vevő oszlopokra koncentrálhat.
 - Érdemes lehet frissíteni a "növekvő kulcs" oszlopokat, például a tranzakciók dátumát gyakrabban, mert ezek az értékek nem szerepelnek a statisztikai hisztogramon.
 - Érdemes lehet ritkábban frissíteni a statikus terjesztési oszlopokat.
-- Ne feledje, hogy minden egyes statisztikai objektum sorba van frissítve. A megvalósítás `UPDATE STATISTICS <TABLE_NAME>` egyszerűen nem mindig ideális, különösen a sok statisztikai objektummal rendelkező széles táblák esetében.
+- Ne feledje, hogy minden egyes statisztikai objektum sorba van frissítve. A megvalósítás egyszerűen `UPDATE STATISTICS <TABLE_NAME>` nem mindig ideális, különösen a sok statisztikai objektummal rendelkező széles táblák esetében.
 
 További információ: a [kardinális becslése](/sql/relational-databases/performance/cardinality-estimation-sql-server).
 
@@ -239,7 +239,7 @@ Több oszlopból álló statisztikai objektum létrehozásához használja az el
 > [!NOTE]
 > A lekérdezési eredményben szereplő sorok számának becsléséhez használt hisztogram csak a statisztikai objektum definíciójában felsorolt első oszlop esetében érhető el.
 
-Ebben a példában a hisztogram a *\_termék kategóriájában*van. Az oszlopokra vonatkozó statisztikákat a *termék\_kategóriája* és a *\_termék sub_category*alapján számítjuk ki:
+Ebben a példában a hisztogram a *termék \_ kategóriájában*van. Az oszlopokra vonatkozó statisztikákat a *termék \_ kategóriája* és a *termék \_ sub_category*alapján számítjuk ki:
 
 ```sql
 CREATE STATISTICS stats_2cols
@@ -248,7 +248,7 @@ CREATE STATISTICS stats_2cols
     WITH SAMPLE = 50 PERCENT;
 ```
 
-Mivel a *termék\_kategóriája* és a *termék\_\_alkategóriája*közötti korreláció létezik, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egy időben érhetők el.
+Mivel a *termék \_ kategóriája* és a *termék \_ \_ alkategóriája*közötti korreláció létezik, a többoszlopos statisztikai objektum akkor lehet hasznos, ha ezek az oszlopok egy időben érhetők el.
 
 #### <a name="create-statistics-on-all-columns-in-a-table"></a>Statisztikák létrehozása egy tábla összes oszlopához
 
@@ -423,7 +423,7 @@ A frissítés STATISZTIKÁi utasítás egyszerűen használható. Ne feledje, ho
 > [!NOTE]
 > Egy tábla összes statisztikájának frissítésekor az SQL-készlet ellenőrzi, hogy az egyes statisztikai objektumok táblázatát kell-e felvenni. Ha a tábla nagyméretű, és sok oszlopot és számos statisztikát tartalmaz, akkor lehet, hogy hatékonyabban kell frissíteni az egyes statisztikákat igény szerint.
 
-Egy `UPDATE STATISTICS` eljárás végrehajtásához tekintse meg az [ideiglenes táblákat](develop-tables-temporary.md). A megvalósítási módszer némileg eltér az előző `CREATE STATISTICS` eljárástól, de az eredmény ugyanaz.
+Egy eljárás végrehajtásához `UPDATE STATISTICS` tekintse meg az [ideiglenes táblákat](develop-tables-temporary.md). A megvalósítási módszer némileg eltér az előző `CREATE STATISTICS` eljárástól, de az eredmény ugyanaz.
 A teljes szintaxist a [statisztika frissítése](/sql/t-sql/statements/update-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)című részben tekintheti meg.
 
 ### <a name="statistics-metadata"></a>Statisztikai metaadatok
@@ -611,6 +611,8 @@ Az alábbi példák bemutatják, hogyan használhatók a különböző beállít
 
 > [!NOTE]
 > Egyoszlopos statisztikákat csak jelenleg hozhat létre.
+>
+> Az eljárás sp_create_file_statistics át lesz nevezve sp_create_openrowset_statisticsre. A nyilvános kiszolgálói szerepkör rendelkezik a TÖMEGES műveletek engedélyezésével, míg a nyilvános adatbázis-szerepkör végrehajtási engedélyekkel rendelkezik sp_create_file_statistics és sp_drop_file_statistics. Lehetséges, hogy ez a későbbiekben változhat.
 
 A következő tárolt eljárással lehet statisztikát létrehozni:
 
@@ -618,7 +620,7 @@ A következő tárolt eljárással lehet statisztikát létrehozni:
 sys.sp_create_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-Argumentumok: @stmt [=] N "statement_text" – egy Transact-SQL-utasítás, amely a statisztikához használandó oszlop-értékeket adja vissza. A TABLESAMPLE segítségével megadhatja a használni kívánt adatmintákat. Ha a TABLESAMPLE nincs megadva, a rendszer a FULLSCAN fogja használni.
+Argumentumok: [ @stmt =] N "statement_text" – egy Transact-SQL-utasítás, amely a statisztikához használandó oszlop-értékeket adja vissza. A TABLESAMPLE segítségével megadhatja a használni kívánt adatmintákat. Ha a TABLESAMPLE nincs megadva, a rendszer a FULLSCAN fogja használni.
 
 ```syntaxsql
 <tablesample_clause> ::= TABLESAMPLE ( sample_number PERCENT )
@@ -696,7 +698,10 @@ A statisztikák frissítéséhez el kell dobnia és létre kell hoznia a statisz
 sys.sp_drop_file_statistics [ @stmt = ] N'statement_text'
 ```
 
-Argumentumok: @stmt [=] N "statement_text" – a statisztikák létrehozásakor használt Transact-SQL-utasítást adja meg.
+> [!NOTE]
+> Az eljárás sp_drop_file_statistics át lesz nevezve sp_drop_openrowset_statisticsre. A nyilvános kiszolgálói szerepkör rendelkezik a TÖMEGES műveletek engedélyezésével, míg a nyilvános adatbázis-szerepkör végrehajtási engedélyekkel rendelkezik sp_create_file_statistics és sp_drop_file_statistics. Lehetséges, hogy ez a későbbiekben változhat.
+
+Argumentumok: [ @stmt =] N "statement_text" – a statisztikák létrehozásakor használt Transact-SQL-utasítást adja meg.
 
 Az adatkészletben található év oszlop statisztikáinak frissítéséhez, amely a populáció. csv fájlon alapul, el kell dobnia és létre kell hoznia a statisztikát:
 

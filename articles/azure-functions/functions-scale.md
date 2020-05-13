@@ -5,12 +5,12 @@ ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3b000776c04550e1deb883039d94deeb735061ce
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 40d6768b528d132b3d238227098d4340fce37cca
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985881"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125791"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Az Azure Functions méretezése és üzemeltetése
 
@@ -105,11 +105,11 @@ Ha App Service csomagot futtat, engedélyezze a **mindig** beállítást, hogy a
 [!INCLUDE [Timeout Duration section](../../includes/functions-timeout-duration.md)]
 
 
-Még ha az Always on is engedélyezve van, az egyes függvények végrehajtási időtúllépését `functionTimeout` a [Host. JSON](functions-host-json.md#functiontimeout) projektfájl beállítása szabályozza.
+Még ha az Always on is engedélyezve van, az egyes függvények végrehajtási időtúllépését a `functionTimeout` [Host. JSON](functions-host-json.md#functiontimeout) projektfájl beállítása szabályozza.
 
 ## <a name="determine-the-hosting-plan-of-an-existing-application"></a>Meglévő alkalmazás üzemeltetési tervének meghatározása
 
-A Function app által használt üzemeltetési csomag meghatározásához tekintse meg a [Azure Portal](https://portal.azure.com)a Function alkalmazás **áttekintés** lapján a **app Service terv/árképzési szintet** . App Service csomagok esetében a díjszabási szintet is jelezni kell.
+A Function app által használt üzemeltetési csomag meghatározásához tekintse meg a [Azure Portal](https://portal.azure.com)a Function alkalmazás **áttekintés** lapján található **app Service terv** című részt. Az árképzési csomag megjelenítéséhez válassza ki a **app Service terv**nevét, majd a bal oldali ablaktáblán válassza a **Tulajdonságok** lehetőséget.
 
 ![Méretezési terv megtekintése a portálon](./media/functions-scale/function-app-overview-portal.png)
 
@@ -120,11 +120,11 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-Ha a parancs kimenete a `dynamic`, a Function alkalmazás a használati tervben van. Ha a parancs kimenete a `ElasticPremium`, a Function alkalmazás a prémium csomagban van. Az összes többi érték egy App Service terv különböző szintjeire utal.
+Ha a parancs kimenete a `dynamic` , a Function alkalmazás a használati tervben van. Ha a parancs kimenete a `ElasticPremium` , a Function alkalmazás a prémium csomagban van. Az összes többi érték egy App Service terv különböző szintjeire utal.
 
 ## <a name="storage-account-requirements"></a>Storage-fiókra vonatkozó követelmények
 
-Bármely csomag esetében a Function alkalmazáshoz egy általános Azure Storage-fiók szükséges, amely támogatja az Azure Blob, a üzenetsor, a fájlok és a Table Storage szolgáltatást. Ennek az az oka, hogy a függvények az Azure Storage-on alapulnak olyan műveletekre, mint az eseményindítók és a naplózási függvények végrehajtása, de egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok, amelyek csak blob Storage-fiókokat (beleértve a Premium Storage-t) és az általános célú Storage-fiókokat, amelyek zóna-redundáns tárolási replikációval rendelkeznek, a rendszer kiszűri a meglévő **Storage** -fiókok kiválasztásával, amikor létrehoz egy Function alkalmazást.
+Bármely csomag esetében a Function alkalmazáshoz egy általános Azure Storage-fiók szükséges, amely támogatja az Azure Blob, a üzenetsor, a fájlok és a Table Storage szolgáltatást. Ennek az az oka, hogy Azure Functions az Azure Storage-ra támaszkodik olyan műveletekre, mint az eseményindítók és a naplózási függvények végrehajtása, de egyes Storage-fiókok nem támogatják a várólistákat és a táblákat. Ezek a fiókok, amelyek csak blob Storage-fiókokat (beleértve a Premium Storage-t) és az általános célú Storage-fiókokat, amelyek zóna-redundáns tárolási replikációval rendelkeznek, a rendszer kiszűri a meglévő **Storage** -fiókok kiválasztásával, amikor létrehoz egy Function alkalmazást.
 
 A Function alkalmazás által használt Storage-fiókot az eseményindítók és kötések is felhasználhatják az alkalmazásadatok tárolásához. A tárolási igényű műveletek esetében azonban külön Storage-fiókot kell használnia.  
 

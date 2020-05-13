@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 9667d82551e169dcc4a4bfd3ac79b15390f58aa0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ae20a0372c5808cc2265a4fae63b79ef2bb71605
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609221"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125502"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Magas rendelkezésre állás az Azure Cosmos DB használatával
 
@@ -82,27 +82,7 @@ A zóna redundancia a [több főkiszolgálós replikáció](how-to-multi-master.
 
 Ha többrégiós írásokat konfigurál az Azure Cosmos-fiókhoz, külön díj nélkül is dönthet a zóna-redundancia szolgáltatásban. Ellenkező esetben tekintse meg az alábbi megjegyzést a zóna redundancia támogatásának díjszabását illetően. Az Azure Cosmos-fiók meglévő régiójába engedélyezheti a zóna redundanciát, ha eltávolítja a régiót, és újból hozzáadja a zóna redundancia beállítással.
 
-Ez a funkció a következő Azure-régiókban érhető el:
-
-- Az Egyesült Királyság déli régiója
-
-- Délkelet-Ázsia
-
-- USA keleti régiója
-
-- USA 2. keleti régiója
-
-- USA középső régiója
-
-- Nyugat-Európa
-
-- USA nyugati régiója, 2.
-
-- Kelet-Ausztrália
-
-- Kelet-Japán
-
-- Észak-Európa
+Ez a funkció a következő helyen érhető el: *Egyesült Királyság déli régiója, Délkelet-Ázsia, USA keleti régiója, USA 2. keleti régiója, USA középső régiója, Nyugat-Európa, USA 2. nyugati régiója, Kelet-Ausztrália, Kelet-Japán, Észak-Európa*
 
 > [!NOTE]
 > Az egyetlen régióhoz tartozó Azure Cosmos-fiók Availability Zonesának engedélyezése olyan díjakat eredményez, amelyek egy további régiónak a fiókhoz való hozzáadásával egyenértékűek. A díjszabással kapcsolatos részletekért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/cosmos-db/) és a [többrégiós költségeket Azure Cosmos db](optimize-cost-regions.md) cikkekben.
@@ -120,12 +100,12 @@ A következő táblázat összefoglalja a különböző fiókok konfigurációin
 |Írási késés | Régiók közötti régió | Régiók közötti régió | Alacsony |
 |Regionális leállás – adatvesztés | Adatvesztés |  Adatvesztés | Adatvesztés <br/><br/> A többszörös főkiszolgálóval és több régióval rendelkező, kötött elavulás konzisztenciájának használatakor az adatvesztés a fiókban konfigurált határos elavulás miatt van korlátozva. <br /><br />A regionális leállás során elkerülhető az adatvesztés azáltal, hogy erős konzisztenciát konfigurál több régióval. Ez a lehetőség olyan kompromisszumokat tartalmaz, amelyek befolyásolják a rendelkezésre állást és a teljesítményt. Csak az egyrégiós írásokhoz konfigurált fiókokon konfigurálható. |
 |Regionális leállás – rendelkezésre állás | Rendelkezésre állás elvesztése | Rendelkezésre állás elvesztése | Nincs rendelkezésre állási veszteség |
-|Átviteli sebesség | X RU/s kiosztott átviteli sebesség | X RU/s kiosztott átviteli sebesség | 2X RU/s kiosztott átviteli sebesség <br/><br/> Ennek a konfigurációs módnak kétszer kell megfelelnie az átviteli sebességnek, ha egyetlen régióhoz képest Availability Zones van, mert két régió van. |
+|Teljesítmény | X RU/s kiosztott átviteli sebesség | X RU/s kiosztott átviteli sebesség | 2X RU/s kiosztott átviteli sebesség <br/><br/> Ennek a konfigurációs módnak kétszer kell megfelelnie az átviteli sebességnek, ha egyetlen régióhoz képest Availability Zones van, mert két régió van. |
 
 > [!NOTE]
 > Ha engedélyezni szeretné a rendelkezésre állási zónák támogatását egy többrégiós Azure Cosmos-fiókhoz, a fióknak engedélyezve kell lennie a több főkiszolgálós írásoknak
 
-A zóna redundancia engedélyezhető, ha új vagy meglévő Azure Cosmos-fiókokhoz ad hozzá régiót. Ha engedélyezni szeretné a zóna redundanciát az Azure Cosmos-fiókjában, állítsa `isZoneRedundant` be a `true` jelölőt egy adott helyre. Ezt a jelzőt a Locations (helyszínek) tulajdonságon belül állíthatja be. A következő PowerShell-kódrészlet például lehetővé teszi a zóna redundanciát a "Délkelet-ázsiai" régióban:
+A zóna redundancia engedélyezhető, ha új vagy meglévő Azure Cosmos-fiókokhoz ad hozzá régiót. Ha engedélyezni szeretné a zóna redundanciát az Azure Cosmos-fiókjában, állítsa be a `isZoneRedundant` jelölőt `true` egy adott helyre. Ezt a jelzőt a Locations (helyszínek) tulajdonságon belül állíthatja be. A következő PowerShell-kódrészlet például lehetővé teszi a zóna redundanciát a "Délkelet-ázsiai" régióban:
 
 ```powershell
 $locations = @(

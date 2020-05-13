@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: a6ea53e098a002e902d6ee6632f08dd7f2b63ca5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e5cb997bee271a1bf1c795598d0ddfda3373264
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811663"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197157"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – útmutató
 
@@ -40,7 +40,7 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 |**függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el**|A "csak HTTPS" hozzáférés engedélyezése a Function apps alkalmazásokhoz. A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.<br>(Kapcsolódó házirend: függvényalkalmazás csak HTTPS protokollon keresztül érhető el)|Közepes|**I**|Függvényalkalmazás|
 |**Az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni**|Engedélyezze a hálózati biztonsági csoportok számára a virtuális gépek hálózati hozzáférésének szabályozását.<br>(Kapcsolódó házirend: az internetre irányuló virtuális gépeket hálózati biztonsági csoportokkal kell védeni)|Magas/közepes|N|Virtuális gép|
 |**A virtuális gépen lévő IP-továbbítást le kell tiltani**|Tiltsa le az IP-továbbítást. Ha az IP-továbbítás engedélyezve van egy virtuális gép hálózati adapterén, a gép más célhelyekre irányuló forgalmat is fogadhat. Az IP-továbbítást ritkán kell végrehajtani (például ha a virtuális GÉPET hálózati virtuális készülékként használja), ezért ezt a hálózati biztonsági csapatnak kell áttekintenie.<br>(Kapcsolódó szabályzat: [előzetes verzió]: az IP-továbbítást a virtuális gépen le kell tiltani)|Közepes|N|Virtuális gép|
-|**Igény szerinti hálózati hozzáférés-vezérlést kell alkalmazni a virtuális gépeken**|Alkalmazzon igény szerinti (JIT) virtuálisgép-hozzáférés-vezérlést a kiválasztott portok elérésének végleges zárolásához, és engedélyezze, hogy a jogosult felhasználók csak korlátozott ideig nyissák meg őket a JIT használatával.<br>(Kapcsolódó házirend: az igény szerinti hálózati hozzáférés-vezérlést a virtuális gépeken kell alkalmazni)|Magasság|N|Virtuális gép|
+|**A virtuális gépek felügyeleti portjait az igény szerinti hálózati hozzáférés-vezérléssel kell védeni**|Alkalmazzon igény szerinti (JIT) virtuálisgép-hozzáférés-vezérlést a kiválasztott portok elérésének végleges zárolásához, és engedélyezze, hogy a jogosult felhasználók csak korlátozott ideig nyissák meg őket a JIT használatával.<br>(Kapcsolódó szabályzat: a virtuális gépek felügyeleti portjait az igény szerinti hálózati hozzáférés-vezérléssel kell védeni)|Magasság|N|Virtuális gép|
 |**A felügyeleti portokat be kell zárni a virtuális gépeken**|A felügyeleti portokhoz való hozzáférés korlátozása érdekében a virtuális gépek hálózati biztonsági csoportjának megerősítése.<br>(Kapcsolódó szabályzat: a felügyeleti portokat be kell zárni a virtuális gépeken)|Magasság|N|Virtuális gép|
 |**Engedélyezni kell a tárfiókokba történő biztonságos átvitelt**|Biztonságos átvitel engedélyezése a Storage-fiókokba. A biztonságos átvitel olyan lehetőség, amely arra kényszeríti a Storage-fiókot, hogy csak biztonságos kapcsolatokból (HTTPS) fogadja a kéréseket. A HTTPS használata biztosítja a hitelesítést a kiszolgáló és a szolgáltatás között, és védelmet biztosít a hálózati rétegbeli támadásoktól, például az embertől a középponttól, a lehallgatás és a munkamenet-eltérítéstől.<br>(Kapcsolódó házirend: engedélyezze a biztonságos átvitelt a Storage-fiókoknak)|Magasság|**I**|Tárfiók|
 |**Az alhálózatokat hálózati biztonsági csoporttal kell társítani**|Engedélyezze a hálózati biztonsági csoportok számára az alhálózatokban üzembe helyezett erőforrások hálózati hozzáférésének szabályozását.<br>(Kapcsolódó házirend: az alhálózatokat egy hálózati biztonsági csoporttal kell társítani.<br>Ez a házirend alapértelmezés szerint le van tiltva.)|Magas/közepes|N|Alhálózat|

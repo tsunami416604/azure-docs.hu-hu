@@ -6,12 +6,12 @@ author: timothymothra
 ms.author: tilee
 ms.date: 01/17/2020
 ms.reviewer: mbullwin
-ms.openlocfilehash: 25eda0ae2b0d873fe9850e5b886489a5f2590e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92c4ccf7246c4e763cbf92aee3c48398d79e0ecc
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410615"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125706"
 ---
 # <a name="connection-strings"></a>Kapcsolati sztringek
 
@@ -64,10 +64,10 @@ A kapcsolatok karakterlánca a kulcs-érték párokat tartalmazó, pontosvessző
 - `EndpointSuffix`(pl.: applicationinsights.azure.cn) A végpont utótagjának beállítása arra utasítja az SDK-t, amelyhez az Azure Cloud csatlakozik. Az SDK össze fogja állítani a végpont többi részét az egyes szolgáltatásokhoz.
 - Explicit végpontok.
   Bármely szolgáltatás explicit módon felülbírálható a kapcsolatok karakterláncában.
-   - `IngestionEndpoint`példáulhttps://dc.applicationinsights.azure.com)
-   - `LiveEndpoint`példáulhttps://live.applicationinsights.azure.com)
-   - `ProfilerEndpoint`példáulhttps://profiler.applicationinsights.azure.com)
-   - `SnapshotEndpoint`példáulhttps://snapshot.applicationinsights.azure.com)
+   - `IngestionEndpoint`(pl.: `https://dc.applicationinsights.azure.com` )
+   - `LiveEndpoint`(pl.: `https://live.applicationinsights.azure.com` )
+   - `ProfilerEndpoint`(pl.: `https://profiler.applicationinsights.azure.com` )
+   - `SnapshotEndpoint`(pl.: `https://snapshot.applicationinsights.azure.com` )
 
 #### <a name="endpoint-schema"></a>Végpont sémája
 
@@ -106,10 +106,10 @@ Ebben a példában csak a kialakítási kulcs van beállítva.
 - Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
 - Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
 - A regionális szolgáltatási URI-k az [SDK alapértelmezett értékein](https://github.com/microsoft/ApplicationInsights-dotnet/blob/e50d569cebf485e72e98f4a08a0bc0e30cdf42bc/BASE/src/Microsoft.ApplicationInsights/Extensibility/Implementation/Endpoints/Constants.cs#L6) alapulnak, és a nyilvános globális Azure-hoz csatlakoznak:
-   - Lenyeléshttps://dc.services.visualstudio.com/
-   - Élő metrikák:https://rt.services.visualstudio.com/
-   - Profilerhttps://agent.azureserviceprofiler.net/
-   - Hibakeresőhttps://agent.azureserviceprofiler.net/  
+   - Lenyelés`https://dc.services.visualstudio.com/`
+   - Élő metrikák:`https://rt.services.visualstudio.com/`
+   - Profiler`https://agent.azureserviceprofiler.net/`
+   - Hibakereső`https://agent.azureserviceprofiler.net/`
 
 
 
@@ -122,10 +122,10 @@ Ebben a példában ez a kapcsolatot megadó karakterlánc megadja a végpont ut�
 - Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
 - Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
 - A regionális szolgáltatási URI-k a megadott végponti utótagon alapulnak: 
-   - Lenyeléshttps://dc.ai.contoso.com
-   - Élő metrikák:https://live.ai.contoso.com
-   - Profilerhttps://profiler.ai.contoso.com 
-   - Hibakeresőhttps://snapshot.ai.contoso.com   
+   - Lenyelés`https://dc.ai.contoso.com`
+   - Élő metrikák:`https://live.ai.contoso.com`
+   - Profiler`https://profiler.ai.contoso.com`
+   - Hibakereső`https://snapshot.ai.contoso.com`  
 
 
 
@@ -138,10 +138,10 @@ Ebben a példában ez a hálózati karakterlánc explicit felülbírálásokat h
 - Az engedélyezési séma alapértelmezett értéke "rendszerállapotkulcsot" 
 - Instrumentation-kulcs: 00000000-0000-0000-0000-000000000000
 - A regionális szolgáltatási URI-k az explicit felülbírálási értékeken alapulnak: 
-   - Betöltés: https:\//Custom.com:111/
-   - Élő metrikák: https:\//Custom.com:222/
-   - Profiler: https:\//Custom.com:333/ 
-   - Hibakereső: https:\//Custom.com:444/   
+   - Lenyelés`https://custom.com:111/`
+   - Élő metrikák:`https://custom.com:222/`
+   - Profiler`https://custom.com:333/`
+   - Hibakereső`https://custom.com:444/`  
 
 
 ## <a name="how-to-set-a-connection-string"></a>A kapcsolódási karakterlánc beállítása

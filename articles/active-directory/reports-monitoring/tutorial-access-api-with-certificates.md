@@ -16,12 +16,13 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2808c8431a6b98b162920fb58a6e2ac0498d2055
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: a6699d7a117eee95ba635c8c94ed9b2955f21a7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081710"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196875"
 ---
 # <a name="tutorial-get-data-using-the-azure-active-directory-reporting-api-with-certificates"></a>Oktatóanyag: az adatlekérdezés a Azure Active Directory Reporting API és a tanúsítványok használatával
 
@@ -44,7 +45,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan használható egy tesztelési tan
     - a felhasználó, alkalmazáskulcsok és tanúsítványok jogkivonatainak elérését az ADAL használatával,
     - a lapokra bontott eredményeket kezelő Graph API-t.
 
-6. Ha először használja a modult a **install-MSCloudIdUtilsModule**futtatásával, akkor az **importálási modul PowerShell-** paranccsal importálhatja azt. A munkamenetnek a következő képernyőhöz hasonlóan kell ![kinéznie: Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
+6. Ha először használja a modult a **install-MSCloudIdUtilsModule**futtatásával, akkor az **importálási modul PowerShell-** paranccsal importálhatja azt. A munkamenetnek a következő képernyőhöz hasonlóan kell kinéznie: ![ Windows PowerShell](./media/tutorial-access-api-with-certificates/module-install.png)
   
 7. Tesztelési tanúsítvány létrehozásához használja a **New-SelfSignedCertificate PowerShell-** parancsmagot.
 

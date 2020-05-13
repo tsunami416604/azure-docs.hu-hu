@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 99a9e68a2e0c39364cc5105f230b00ffb90d867d
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 76a5e12eee7a325a73b3c17dba6c775b6984b89a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888798"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195910"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Log Analytics használata a diagnosztikai szolgáltatáshoz
 
@@ -124,9 +124,9 @@ Ha elkészült, a rendszer a diagnosztikai eseményeket a Log Analytics elküldi
 
 Log Analytics csak a közbenső állapotú jelentések a kapcsolódási tevékenységekhez:
 
-- Első lépések
-- Csatlakozva
-- Befejezve
+- Elindítva: amikor egy felhasználó kiválaszt és csatlakoztat egy alkalmazást vagy egy asztalt az Távoli asztal-ügyfélben.
+- Csatlakoztatva: Ha a felhasználó sikeresen csatlakozik ahhoz a virtuális géphez, amelyen az alkalmazást vagy az asztalt üzemelteti.
+- Befejezett: Ha a felhasználó vagy a kiszolgáló leválasztja azt a munkamenetet, amelyen a tevékenység lezajlott.
 
 ## <a name="example-queries"></a>Példák lekérdezésekre
 

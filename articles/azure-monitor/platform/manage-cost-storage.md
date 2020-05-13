@@ -11,15 +11,15 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/12/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: a2df89bc18ea5d0098ac5ebb0bc06b9df6728705
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ea289dbdf22f76c8ea716acf87b0b1a2da6ef0f9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993760"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196597"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
@@ -40,15 +40,15 @@ Az Log Analytics alapértelmezett díjszabása az adatmennyiség betöltését �
   
 Az utólagos elszámolású modellen kívül a Log Analytics **kapacitás-foglalási** csomagokkal rendelkezik, amelyek lehetővé teszik, hogy az utólagos elszámolású díjszabáshoz képest akár 25%-ot is mentsen. A kapacitás foglalásának díjszabása lehetővé teszi, hogy a foglalást 100 GB/nap után vásárolja meg. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A kapacitás foglalási szintjeinek 31 napos kötelezettségvállalási időszaka van. A kötelezettségvállalás időtartama alatt magasabb szintű kapacitást biztosító foglalási szintre válthat (amely a 31 napos kötelezettségvállalási időszakot újraindítja), de az utólagos elszámolású vagy az alacsonyabb kapacitású foglalási szintig nem léphet vissza a kötelezettségvállalási időszak végéig. A kapacitás foglalási szintjeinek számlázása napi rendszerességgel történik. [További](https://azure.microsoft.com/pricing/details/monitor/) információ a log Analytics utólagos elszámolású és a kapacitás foglalásának díjszabásáról. 
 
-Az adatmennyiség az összes díjszabási szinten az adatok karakterlánc-ábrázolásával lesz kiszámítva, ahogy a tárolásra készen áll. Az [összes adattípussal közös tulajdonságok](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nem szerepelnek az események méretének kiszámításakor, beleértve a `_ResourceId`következőket `_ItemId`: `_IsBillable` , `_BilledSize`és.
+Az adatmennyiség az összes díjszabási szinten az adatok karakterlánc-ábrázolásával lesz kiszámítva, ahogy a tárolásra készen áll. Az [összes adattípussal közös tulajdonságok](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nem szerepelnek az események méretének kiszámításakor, beleértve a következőket:, `_ResourceId` `_ItemId` `_IsBillable` és `_BilledSize` .
 
 Azt is vegye figyelembe, hogy egyes megoldások, például az [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/), az [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/) és a [Configuration Management](https://azure.microsoft.com/pricing/details/automation/) saját díjszabási modellel rendelkeznek. 
 
-### <a name="log-analytics-clusters"></a>Fürtök Log Analytics
+### <a name="log-analytics-dedicated-clusters"></a>Dedikált fürtök Log Analytics
 
-Log Analytics a fürtök egyetlen felügyelt Azure Adatkezelő-fürtbe tartozó munkaterületek gyűjteményei, amelyek olyan speciális forgatókönyveket támogatnak, mint például az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Log Analytics-fürtök csak a kapacitás foglalásának díjszabását támogatják, amely 1000 GB/nap, az utólagos elszámolású díjszabáshoz képest 25%-os kedvezménnyel. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A fürt kapacitásának foglalása a foglalási szint növelése után 31 napos kötelezettségvállalási időszakot tartalmaz. A kötelezettségvállalási időszak alatt a kapacitás foglalási szintje nem csökkenthető, de bármikor megnövelhető. További információ a [log Analytics-fürtök létrehozásáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) és [a munkaterületek társításáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource).  
+Log Analytics dedikált fürtök egyetlen felügyelt Azure Adatkezelő-fürtbe tartozó munkaterületek gyűjteményei, amelyek olyan speciális forgatókönyveket támogatnak, mint például az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys).  Log Analytics dedikált fürtök csak a kapacitás-foglalás díjszabási modelljét támogatják, amely 1000 GB/nap, az utólagos elszámolású díjszabáshoz képest 25%-os kedvezménnyel. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A fürt kapacitásának foglalása a foglalási szint növelése után 31 napos kötelezettségvállalási időszakot tartalmaz. A kötelezettségvállalási időszak alatt a kapacitás foglalási szintje nem csökkenthető, de bármikor megnövelhető. További információ a [log Analytics-fürtök létrehozásáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource) és [a munkaterületek társításáról](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#workspace-association-to-cluster-resource).  
 
-A fürt kapacitásának foglalási szintje a (z `Capacity` `Sku`) paraméterrel a (z) programozott módon Azure Resource Manager használatával van konfigurálva. A `Capacity` a GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben. [Itt](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)részletesen tájékozódhat. Ha a fürtnek 2000 GB/nap feletti foglalásra van szüksége, [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com)lépjen kapcsolatba velünk a következő címen:.
+A fürt kapacitásának foglalási szintje a (z) paraméterrel a (z) programozott módon Azure Resource Manager használatával van konfigurálva `Capacity` `Sku` . A a `Capacity` GB egységben van megadva, és 1000 GB/nap vagy több értékkel rendelkezhet a 100 GB/nap növekményekben. [Itt](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys#create-cluster-resource)részletesen tájékozódhat. Ha a fürtnek 2000 GB/nap feletti foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: [LAIngestionRate@microsoft.com](mailto:LAIngestionRate@microsoft.com) .
 
 Mivel a betöltött adatmennyiség számlázása a fürt szintjén történik, a fürthöz társított munkaterületek már nem rendelkeznek díjszabási szinttel. A rendszer összesíti a fürthöz társított egyes munkaterületekről betöltött adatmennyiségeket a fürt napi számlájának kiszámításához. Vegye figyelembe, hogy a [Azure Security Center](https://docs.microsoft.com/azure/security-center/) -tól származó csomópont-hozzárendelések a munkaterület szintjén lesznek alkalmazva az összesített adatoknak a fürt összes munkaterülete közötti összesítése előtt. Az adatmegőrzés továbbra is a munkaterület szintjén kerül számlázásra. Vegye figyelembe, hogy a fürt számlázása a fürt létrehozásakor kezdődik, függetlenül attól, hogy a munkaterületek hozzá lettek-e rendelve a fürthöz. 
 
@@ -88,7 +88,7 @@ A munkaterület Log Analytics díjszabási szintjének módosításához
 
 3. A becsült költségeknek az utolsó 31 nap használaton alapuló áttekintése után, ha úgy dönt, hogy megváltoztatja az árképzési szintet, kattintson a **kiválasztás**elemre.  
 
-[Az árképzési szintet Azure Resource Manager használatával is beállíthatja](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) a `sku` (`pricingTier` Azure Resource Manager sablonban) paraméterrel. 
+[Az árképzési szintet Azure Resource Manager használatával is beállíthatja](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) a `sku` ( `pricingTier` Azure Resource Manager sablonban) paraméterrel. 
 
 ## <a name="legacy-pricing-tiers"></a>Örökölt árképzési szintek
 
@@ -122,10 +122,12 @@ A munkaterület alapértelmezett megőrzésének beállításához
 
 A megőrzési idő csökkentése után a legrégebbi adatok eltávolítása előtt több napos türelmi időszakot is megtarthat. 
     
-A megőrzés a `retentionInDays` paraméter használatával is [beállítható Azure Resource Manageron keresztül](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) . Emellett, ha az adatmegőrzést 30 napra állítja be, a `immediatePurgeDataOn30Days` paraméter használatával azonnal törölheti a régebbi adatok törlését, ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a funkció csak Azure Resource Manageron keresztül érhető el. 
+A megőrzés a paraméter használatával is [beállítható Azure Resource Manageron keresztül](https://docs.microsoft.com/azure/azure-monitor/platform/template-workspace-configuration#configure-a-log-analytics-workspace) `retentionInDays` . Emellett, ha az adatmegőrzést 30 napra állítja be, a paraméter használatával azonnal törölheti a régebbi adatok törlését, `immediatePurgeDataOn30Days` ami a megfelelőséggel kapcsolatos forgatókönyvek esetében hasznos lehet. Ez a funkció csak Azure Resource Manageron keresztül érhető el. 
 
-Alapértelmezés szerint a rendszer két `Usage` adattípust (--és `AzureActivity` --) tart fenn a 90 napra, és ez a 90 nap megtartása esetén nem számítunk fel díjat. Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
 
+Alapértelmezés szerint a rendszer két adattípust (-- `Usage` és `AzureActivity` --) tart fenn a 90 napra, és ez a 90 nap megtartása esetén nem számítunk fel díjat. Ezek az adattípusok az adatfeldolgozási díjaktól is mentesek. 
+
+A munkaterületen alapuló Application Insights-erőforrások (,,,,,,,, és) adattípusai `AppAvailabilityResults` `AppBrowserTimings` `AppDependencies` alapértelmezés szerint `AppExceptions` `AppEvents` `AppMetrics` `AppPageViews` `AppPerformanceCounters` `AppRequests` `AppSystemEvents` `AppTraces` 90 napra is megmaradnak, és ez a 90 nap megtartása esetén nem számítunk fel díjat. A megőrzésük adattípusú funkció használatával állítható be. 
 
 
 ### <a name="retention-by-data-type"></a>Megőrzés adattípus szerint
@@ -162,7 +164,7 @@ Ha egy adott adattípus (ebben a példában SecurityEvent) megőrzését 730 nap
 
 Az érvényes értékek `retentionInDays` 30 és 730 között vannak.
 
-Az `Usage` és `AzureActivity` az adattípusok nem állíthatók be egyéni megőrzéssel. Ezek az alapértelmezett munkaterület-megőrzési vagy a 90 napos maximális értékkel lesznek végrehajtva. 
+Az `Usage` és az `AzureActivity` adattípusok nem állíthatók be egyéni megőrzéssel. Ezek az alapértelmezett munkaterület-megőrzési vagy a 90 napos maximális értékkel lesznek végrehajtva. 
 
 Egy nagyszerű eszköz, amellyel közvetlenül csatlakozhat Azure Resource Managerhoz az adattípusok megőrzésének beállításához az OSS-eszköz [ARMclient](https://github.com/projectkudu/ARMClient).  További információ a cikkek ARMclient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Íme egy példa a ARMClient használatával, amely a SecurityEvent-adatok 730 napos megőrzését állítja be:
 
@@ -253,7 +255,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Ezekben `union *` a lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a használati adattípus lekérdezése (lásd alább).
+> Ezekben a `union *` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a használati adattípus lekérdezése (lásd alább).
 
 ## <a name="understanding-ingested-data-volume"></a>A betöltött adatmennyiség ismertetése
 
@@ -261,7 +263,7 @@ A **használat és a becsült költségek** lapon az *adatfeldolgozás egy adott
 
 ### <a name="data-volume-for-specific-events"></a>Adott eseményekhez tartozó adatmennyiség
 
-Ha meg szeretné vizsgálni az egyes események betöltött adatainak méretét, lekérdezheti az adott táblázatot (ebben a példában `Event`), majd korlátozhatja a lekérdezést a fontos eseményekre (ebben a példában az 5145-es vagy a 5156-es azonosítójú esemény):
+Ha meg szeretné vizsgálni az egyes események betöltött adatainak méretét, lekérdezheti az adott táblázatot (ebben a példában `Event` ), majd korlátozhatja a lekérdezést a fontos eseményekre (ebben a példában az 5145-es vagy a 5156-es azonosítójú esemény):
 
 ```kusto
 Event
@@ -271,7 +273,7 @@ Event
 | summarize count(), Bytes=sum(_BilledSize) by EventID, bin(TimeGenerated, 1d)
 ``` 
 
-Vegye figyelembe, hogy `where IsBillable = true` a záradék kiszűri az adattípusokat bizonyos olyan megoldásokból, amelyekhez nincs betöltési díj. 
+Vegye figyelembe, hogy a záradék `where IsBillable = true` kiszűri az adattípusokat bizonyos olyan megoldásokból, amelyekhez nincs betöltési díj. 
 
 ### <a name="data-volume-by-solution"></a>Adatmennyiség megoldásonként
 
@@ -285,7 +287,7 @@ Usage
 | summarize BillableDataGB = sum(Quantity) / 1000. by bin(StartTime, 1d), Solution | render barchart
 ```
 
-A ( `TimeGenerated` ) záradéka csak annak biztosítására szolgál, hogy a Azure Portal lekérdezési élménye az alapértelmezett 24 órában is megtekinthető maradjon. A használati adatok típusának használatakor `StartTime` , `EndTime` valamint az eredmények megjelenítéséhez használt időgyűjtők. 
+A () záradéka `TimeGenerated` csak annak biztosítására szolgál, hogy a Azure Portal lekérdezési élménye az alapértelmezett 24 órában is megtekinthető maradjon. A használati adatok típusának használatakor, `StartTime` valamint `EndTime` az eredmények megjelenítéséhez használt időgyűjtők. 
 
 ### <a name="data-volume-by-type"></a>Adatmennyiség típus szerint
 
@@ -312,7 +314,7 @@ Usage
 
 ### <a name="data-volume-by-computer"></a>Adatmennyiség számítógépenként
 
-Az `Usage` adattípus nem tartalmaz információkat a számítógép szintjén. Ha szeretné megtekinteni a betöltött adat **méretét** a számítógépen, `_BilledSize` használja a [tulajdonságot](log-standard-properties.md#_billedsize), amely a méretet adja meg bájtban:
+Az `Usage` adattípus nem tartalmaz információkat a számítógép szintjén. Ha szeretné megtekinteni a betöltött adat **méretét** a számítógépen, használja a `_BilledSize` [tulajdonságot](log-standard-properties.md#_billedsize), amely a méretet adja meg bájtban:
 
 ```kusto
 union withsource = tt * 
@@ -335,8 +337,7 @@ union withsource = tt *
 ```
 
 > [!TIP]
-> Ezekben `union  *` a lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a lekérdezés a használati adattípuson történik.
-
+> Ezekben a `union  *` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) végrehajtáshoz. Ha **számítógépeken** nincs szükség az eredményekre, akkor a lekérdezés a használati adattípuson történik.
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>Adatmennyiség Azure-erőforrás, erőforráscsoport vagy előfizetés alapján
 
@@ -349,7 +350,7 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__beolvasott adatok `_ResourceId` **mérete** az alábbiak szerint elemezhető:
+Az Azure-ban üzemeltetett csomópontokból származó adatok esetében az __Azure-előfizetések által__beolvasott adatok **mérete** az alábbiak szerint elemezhető `_ResourceId` :
 
 ```kusto
 union withsource = tt * 
@@ -360,18 +361,21 @@ union withsource = tt *
 | summarize BillableDataBytes = sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-A `subscriptionId` ( `resourceGroup` z) értékre váltásakor megjelenik az Azure-erőforráscsoport által betöltött számlázható adatmennyiség. 
+A (z `subscriptionId` ) értékre váltásakor `resourceGroup` megjelenik az Azure-erőforráscsoport által betöltött számlázható adatmennyiség. 
 
 > [!TIP]
-> Ezekben `union  *` a lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) végrehajtáshoz. Ha nincs szüksége az eredményekre az előfizetés, a erőforrás-csoport vagy az erőforrás neve alapján, akkor a lekérdezés a használati adatok típusát adja meg.
+> Ezekben a `union  *` lekérdezésekben takarékosan használhatja az adattípusokat az [erőforrás-igényes](https://docs.microsoft.com/azure/azure-monitor/log-query/query-optimization#query-performance-pane) végrehajtáshoz. Ha nincs szüksége az eredményekre az előfizetés, a erőforrás-csoport vagy az erőforrás neve alapján, akkor a lekérdezés a használati adatok típusát adja meg.
 
 > [!WARNING]
 > A használati adattípus egyes mezői, miközben még mindig a séma része, elavultak, és az értékek már nem lesznek feltöltve. Ezek a **számítógépek** , valamint a betöltéssel kapcsolatos mezők (**TotalBatches**, **BatchesWithinSla**, **BatchesOutsideSla**, **BatchesCapped** és **AverageProcessingTimeMs**).
+
 
 ### <a name="querying-for-common-data-types"></a>Gyakori adattípusok lekérdezése
 
 Az adatforrások egy adott adattípussal való mélyebb feltárásához Íme néhány hasznos példa a lekérdezésekre:
 
++ **Munkaterület-alapú Application Insights** erőforrások
+  - [További információ](https://docs.microsoft.com/azure/azure-monitor/app/pricing#data-volume-for-workspace-based-application-insights-resources)
 + **Biztonsági** megoldás
   - `SecurityEvent | summarize AggregatedValue = count() by EventID`
 + **Naplókezelési** megoldás
@@ -463,9 +467,9 @@ Az, hogy az örökölt **csomópontok** díjszabási szintjéhez hozzáférésse
 
 Az értékelés megkönnyítése érdekében a következő lekérdezéssel javaslatot tehet az optimális díjszabási csomagra a munkaterület használati mintái alapján.  Ez a lekérdezés az elmúlt 7 napban egy munkaterületre betöltött figyelt csomópontokat és adatmennyiségeket vizsgálja, és minden nap esetében kiértékeli, hogy melyik árképzési csomag legyen optimális. A lekérdezés használatához meg kell adnia a
 
-1. azt jelzi, hogy a munkaterület használ- `workspaceHasSecurityCenter` e `true` Azure Security Center `false`a vagy a értékre való beállításával. 
+1. azt jelzi, hogy a munkaterület használ-e Azure Security Center a vagy a értékre való beállításával. `workspaceHasSecurityCenter` `true` `false` 
 2. frissítse az árakat, ha vannak meghatározott kedvezmények, és
-3. Itt adhatja meg, hogy hány napig kell visszakeresni és `daysToEvaluate`elemezni a beállítást. Ez akkor hasznos, ha a lekérdezésen túl sokáig próbálkozik a 7 napos adatmennyiség megkeresésével. 
+3. Itt adhatja meg, hogy hány napig kell visszakeresni és elemezni a beállítást `daysToEvaluate` . Ez akkor hasznos, ha a lekérdezésen túl sokáig próbálkozik a 7 napos adatmennyiség megkeresésével. 
 
 Az árképzési csomagra vonatkozó javaslat lekérdezése:
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: f6b6e261b5cdfee00a9346338b6eb5d7e1f2a2a0
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 8daa4d6c13cd40f28329f2ab4157f295cb092b8b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982105"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195700"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
@@ -75,11 +75,11 @@ Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások v
 - Csak a 2080 méretű ["Soft" és "Hard" RSA-kulcsok](../../key-vault/keys/about-keys.md) támogatottak, nincsenek más kulcsok vagy méretek.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni rendszerképekből létrehozott lemezeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani, és ugyanahhoz az előfizetéshez kell tartoznia.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított lemezekről létrehozott pillanatképeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani.
-- A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni lemezképek nem használhatók a megosztott lemezképek gyűjteményében.
 - Az ügyfél által felügyelt kulcsokhoz (Azure Key Vaultok, lemez titkosítási készletek, virtuális gépek, lemezek és Pillanatképek) kapcsolódó összes erőforrásnak ugyanabban az előfizetésben és régióban kell lennie.
 - Az ügyfél által felügyelt kulcsokkal titkosított lemezek, Pillanatképek és lemezképek nem helyezhetők át másik előfizetésbe.
 - Ha a Azure Portal használatával hozza létre a lemez titkosítási készletét, a pillanatképek jelenleg nem használhatók.
 - Az ügyfél által felügyelt kulcsokkal titkosított, kiszolgálóoldali titkosítást használó felügyelt lemezek nem titkosíthatók Azure Disk Encryption és fordítva
+- Az ügyfél által felügyelt kulcsok megosztott képtárakkal történő használatáról további információt az [előzetes verzió: az ügyfél által felügyelt kulcsok használata a lemezképek titkosításához](../image-version-encryption.md)című témakörben talál.
 
 ### <a name="powershell"></a>PowerShell
 

@@ -5,15 +5,13 @@ ms.assetid: b7151b57-09e5-4c77-a10c-375a262f17e5
 ms.topic: article
 ms.date: 04/15/2020
 ms.reviewer: mahender
-ms.custom:
-- seodec18
-- fasttrack-edit
-ms.openlocfilehash: a4ceed0d897f069a7895a3eb6b10c327566afbe5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, fasttrack-edit, has-adal-ref
+ms.openlocfilehash: f51a396e997a9e6392f3e86a6f77e581753d6ada
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457858"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196437"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Hitelesítés és engedélyezés Azure App Service és Azure Functions
 
@@ -50,9 +48,9 @@ A modul külön fut az alkalmazás kódjától, és az Alkalmazásbeállítások
 
 ### <a name="userapplication-claims"></a>Felhasználói/alkalmazási jogcímek
 
-Az összes nyelvi keretrendszer esetében a App Service a bejövő jogcímek (azaz egy hitelesített végfelhasználó vagy ügyfélalkalmazás) által a kód számára elérhető jogcímeket a kérések fejlécére szúrja be. A ASP.NET 4,6 alkalmazások esetében App Service a hitelesített felhasználó jogcímeivel tölti fel a [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) értéket, így a szabványos .net-kód mintát is használhatja, `[Authorize]` beleértve az attribútumot is. Hasonlóképpen, a PHP-alkalmazások esetében App Service feltölti `_SERVER['REMOTE_USER']` a változót. Java-alkalmazások esetén a jogcímek a [tomcat servletből érhetők el](containers/configure-language-java.md#authenticate-users-easy-auth).
+Az összes nyelvi keretrendszer esetében a App Service a bejövő jogcímek (azaz egy hitelesített végfelhasználó vagy ügyfélalkalmazás) által a kód számára elérhető jogcímeket a kérések fejlécére szúrja be. A ASP.NET 4,6 alkalmazások esetében App Service a hitelesített felhasználó jogcímeivel tölti fel a [ClaimsPrincipal. Current](/dotnet/api/system.security.claims.claimsprincipal.current) értéket, így a szabványos .net-kód mintát is használhatja, beleértve az `[Authorize]` attribútumot is. Hasonlóképpen, a PHP-alkalmazások esetében App Service feltölti a `_SERVER['REMOTE_USER']` változót. Java-alkalmazások esetén a jogcímek a [tomcat servletből érhetők el](containers/configure-language-java.md#authenticate-users-easy-auth).
 
-[Azure functions](../azure-functions/functions-overview.md) `ClaimsPrincipal.Current` esetén a .net-kód nem töltődik fel, de továbbra is megkeresheti a felhasználói jogcímeket a kérések fejlécében `ClaimsPrincipal` , vagy lekérheti az objektumot a kérelem környezetében, vagy akár egy kötési paraméteren keresztül is. További információért lásd: [az ügyfél-identitások használata](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
+[Azure functions](../azure-functions/functions-overview.md)esetén a `ClaimsPrincipal.Current` .net-kód nem töltődik fel, de továbbra is megkeresheti a felhasználói jogcímeket a kérések fejlécében, vagy lekérheti az `ClaimsPrincipal` objektumot a kérelem környezetében, vagy akár egy kötési paraméteren keresztül is. További információért lásd: [az ügyfél-identitások használata](../azure-functions/functions-bindings-http-webhook-trigger.md#working-with-client-identities) .
 
 További információ: hozzáférés a [felhasználói jogcímekhez](app-service-authentication-how-to.md#access-user-claims).
 
@@ -71,7 +69,7 @@ Ha nem kell jogkivonatokkal dolgoznia az alkalmazásban, akkor letilthatja a jog
 
 ### <a name="logging-and-tracing"></a>Naplózás és nyomkövetés
 
-Ha [engedélyezi az alkalmazások naplózását](troubleshoot-diagnostic-logs.md), a rendszer közvetlenül a naplófájlokban fogja látni a hitelesítési és engedélyezési nyomkövetéseket. Ha olyan hitelesítési hiba jelenik meg, amelyet nem várt, a meglévő alkalmazás-naplók alapján kényelmesen megkeresheti az összes adatot. Ha engedélyezi a [Sikertelen kérelmek nyomkövetését](troubleshoot-diagnostic-logs.md), láthatja, hogy pontosan milyen szerepet játszott a hitelesítési és engedélyezési modul egy sikertelen kérelemben. A nyomkövetési naplók között keresse meg a nevű `EasyAuthModule_32/64`modulra mutató hivatkozásokat. 
+Ha [engedélyezi az alkalmazások naplózását](troubleshoot-diagnostic-logs.md), a rendszer közvetlenül a naplófájlokban fogja látni a hitelesítési és engedélyezési nyomkövetéseket. Ha olyan hitelesítési hiba jelenik meg, amelyet nem várt, a meglévő alkalmazás-naplók alapján kényelmesen megkeresheti az összes adatot. Ha engedélyezi a [Sikertelen kérelmek nyomkövetését](troubleshoot-diagnostic-logs.md), láthatja, hogy pontosan milyen szerepet játszott a hitelesítési és engedélyezési modul egy sikertelen kérelemben. A nyomkövetési naplók között keresse meg a nevű modulra mutató hivatkozásokat `EasyAuthModule_32/64` . 
 
 ## <a name="identity-providers"></a>Identitásszolgáltatók
 
@@ -102,12 +100,12 @@ Az alábbi táblázat a hitelesítési folyamat lépéseit mutatja be.
 
 | Lépés | Szolgáltatói SDK nélkül | Szolgáltatói SDK-val |
 | - | - | - |
-| 1. Jelentkezzen be a felhasználóba | Átirányítja az ügyfelet a `/.auth/login/<provider>`következőre:. | Az ügyfél kódja közvetlenül a szolgáltató SDK-val aláírja a felhasználót, és hitelesítési jogkivonatot kap. További információt a szolgáltató dokumentációjában talál. |
-| 2. hitelesítés utáni | A szolgáltató átirányítja az `/.auth/login/<provider>/callback`ügyfelet a következőre:. | Az ügyfél kódja a `/.auth/login/<provider>` [szolgáltatótól kapott jogkivonatot](app-service-authentication-how-to.md#validate-tokens-from-providers) érvényesíti. |
+| 1. Jelentkezzen be a felhasználóba | Átirányítja az ügyfelet a következőre: `/.auth/login/<provider>` . | Az ügyfél kódja közvetlenül a szolgáltató SDK-val aláírja a felhasználót, és hitelesítési jogkivonatot kap. További információt a szolgáltató dokumentációjában talál. |
+| 2. hitelesítés utáni | A szolgáltató átirányítja az ügyfelet a következőre: `/.auth/login/<provider>/callback` . | Az ügyfél kódja a [szolgáltatótól kapott jogkivonatot](app-service-authentication-how-to.md#validate-tokens-from-providers) `/.auth/login/<provider>` érvényesíti. |
 | 3. hitelesített munkamenet létrehozása | App Service a hitelesített cookie-t adja hozzá válaszként. | App Service visszaadja a saját hitelesítési tokenjét az ügyfél kódjához. |
-| 4. hitelesített tartalom kiszolgálása | Az ügyfél hitelesítési cookie-t is tartalmaz a következő kérelmekben (a böngésző automatikusan kezeli). | Az ügyfél kódja a (Mobile Apps `X-ZUMO-AUTH` ügyféloldali SDK-k által automatikusan kezelt) fejlécben található hitelesítési tokent jeleníti meg. |
+| 4. hitelesített tartalom kiszolgálása | Az ügyfél hitelesítési cookie-t is tartalmaz a következő kérelmekben (a böngésző automatikusan kezeli). | Az ügyfél kódja a `X-ZUMO-AUTH` (Mobile apps ügyféloldali SDK-k által automatikusan kezelt) fejlécben található hitelesítési tokent jeleníti meg. |
 
-Az ügyféloldali böngészők esetében a App Service automatikusan irányíthatja az összes nem hitelesített `/.auth/login/<provider>`felhasználót. A felhasználók egy vagy több `/.auth/login/<provider>` hivatkozással is bejelentkezhetnek az alkalmazásba, ha az Ön által választott szolgáltatón keresztül jelentkeznek be.
+Az ügyféloldali böngészők esetében a App Service automatikusan irányíthatja az összes nem hitelesített felhasználót `/.auth/login/<provider>` . A felhasználók egy vagy több `/.auth/login/<provider>` hivatkozással is bejelentkezhetnek az alkalmazásba, ha az Ön által választott szolgáltatón keresztül jelentkeznek be.
 
 <a name="authorization"></a>
 
@@ -127,7 +125,7 @@ Ez a lehetőség nagyobb rugalmasságot biztosít a névtelen kérelmek kezelés
 
 ### <a name="allow-only-authenticated-requests"></a>Csak hitelesített kérelmek engedélyezése
 
-A beállítás a ** \<szolgáltató>bejelentkezni **. App Service átirányítja az összes névtelen kérelmet `/.auth/login/<provider>` a kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized`.
+A beállítás a ** \< szolgáltató>bejelentkezni **. App Service átirányítja az összes névtelen kérelmet `/.auth/login/<provider>` a kiválasztott szolgáltatóhoz. Ha a névtelen kérelem egy natív mobil alkalmazásból származik, a visszaadott válasz egy `HTTP 401 Unauthorized` .
 
 Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alkalmazásban. A felhasználó jogcímeinek vizsgálatával a finomabb engedélyezés, például a szerepkör-specifikus hitelesítés kezelhető (lásd: [hozzáférés a felhasználói jogcímekhez](app-service-authentication-how-to.md#access-user-claims)).
 
@@ -142,9 +140,9 @@ Ezzel a beállítással nem kell bármilyen hitelesítési kódot írnia az alka
 
 [Oktatóanyag: Azure App Service teljes körű hitelesítése és engedélyezése a felhasználók számára (Windows)](app-service-web-tutorial-auth-aad.md)  
 [Oktatóanyag: a felhasználók teljes körű hitelesítése és engedélyezése Azure App Service Linux rendszeren](containers/tutorial-auth-aad.md)  
-[A hitelesítés és az engedélyezés testreszabása app Service](app-service-authentication-how-to.md)
-[.net Core-integrációban az Azure AppService EasyAuth (harmadik fél)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth)
-a[.net Core-nal (harmadik fél) való használat Azure app Service hitelesítés](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
+[A hitelesítés és az engedélyezés testreszabása app Service](app-service-authentication-how-to.md) 
+ [Az Azure AppService EasyAuth .net Core-integrációja (harmadik fél)](https://github.com/MaximRouiller/MaximeRouiller.Azure.AppService.EasyAuth) 
+ [Azure app Service hitelesítés használata a .net Core-ban (harmadik fél)](https://github.com/kirkone/KK.AspNetCore.EasyAuthAuthentication)
 
 Szolgáltatóra vonatkozó útmutatók:
 

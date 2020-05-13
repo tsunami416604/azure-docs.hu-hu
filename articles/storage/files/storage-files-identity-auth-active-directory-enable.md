@@ -7,16 +7,16 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: rogarana
-ms.openlocfilehash: 6309219b31c22f1f1d090cc9de9931609e3423f7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: febb796a47b9f5e78906d513c115b62b35c7c7d5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792980"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196500"
 ---
 # <a name="enable-on-premises-active-directory-domain-services-authentication-over-smb-for-azure-file-shares"></a>Helyszíni Active Directory tartományi szolgáltatások hitelesítés engedélyezése SMB-en keresztül az Azure-fájlmegosztás esetében
 
-[Azure Files](storage-files-introduction.md) támogatja az identitás-alapú hitelesítést a Server Message Block (SMB) protokollon keresztül a következő két típusú tartományi szolgáltatáson keresztül: Azure Active Directory Domain Services (Azure AD DS) és a helyszíni Active Directory tartományi szolgáltatások (AD DS) (előzetes verzió). Ez a cikk az Azure-fájlmegosztás hitelesítésének Active Directory-tartomány szolgáltatásának az újonnan bevezetett (előzetes verzió) támogatását ismerteti. Ha szeretné engedélyezni az Azure AD DS (GA) hitelesítését az Azure-fájlmegosztás számára, tekintse [meg a tárgyat ismertető cikket](storage-files-identity-auth-active-directory-domain-service-enable.md).
+[Azure Files](storage-files-introduction.md)   támogatja a kiszolgálói üzenetblokk (SMB) szolgáltatáson keresztüli identitás-alapú hitelesítést a következő két típusú tartományi szolgáltatáson keresztül: Azure Active Directory Domain Services (Azure AD DS) és helyszíni Active Directory tartományi szolgáltatások (AD DS) (előzetes verzió). Ez a cikk az Azure-fájlmegosztás hitelesítésének Active Directory-tartomány szolgáltatásának az újonnan bevezetett (előzetes verzió) támogatását ismerteti. Ha szeretné engedélyezni az Azure AD DS (GA) hitelesítését az Azure-fájlmegosztás számára, tekintse [meg a tárgyat ismertető cikket](storage-files-identity-auth-active-directory-domain-service-enable.md).
 
 > [!NOTE]
 > Az Azure-fájlmegosztás csak az egyik tartományi szolgáltatás, Azure Active Directory tartományi szolgáltatás (Azure AD DS) vagy a helyszíni Active Directory tartományi szolgáltatások (AD DS) hitelesítését támogatja. 
@@ -95,7 +95,7 @@ Az alábbi ábra a teljes munkafolyamatot mutatja be, amely lehetővé teszi az 
 
 ## <a name="1-enable-ad-ds-authentication-for-your-account"></a>1 AD DS hitelesítés engedélyezése a fiókhoz 
 
-Az Azure-fájlmegosztás SMB-en keresztüli AD DS hitelesítésének engedélyezéséhez először regisztrálnia kell a Storage-fiókot a AD DS, majd be kell állítania a szükséges tartományi tulajdonságokat a Storage-fiókban. Ha a szolgáltatás engedélyezve van a Storage-fiókon, akkor az a fiók összes új és meglévő fájljára érvényes lesz. Töltse le a AzFilesHybrid PowerShell-modult, és használja `join-AzStorageAccountForAuth` a funkciót a funkció engedélyezéséhez. Az ebben a szakaszban található parancsfájlban megtalálhatja a végpontok közötti munkafolyamat részletes leírását. 
+Az Azure-fájlmegosztás SMB-en keresztüli AD DS hitelesítésének engedélyezéséhez először regisztrálnia kell a Storage-fiókot a AD DS, majd be kell állítania a szükséges tartományi tulajdonságokat a Storage-fiókban. Ha a szolgáltatás engedélyezve van a Storage-fiókon, akkor az a fiók összes új és meglévő fájljára érvényes lesz. Töltse le a AzFilesHybrid PowerShell-modult, és használja a `join-AzStorageAccountForAuth` funkciót a funkció engedélyezéséhez. Az ebben a szakaszban található parancsfájlban megtalálhatja a végpontok közötti munkafolyamat részletes leírását. 
 
 > [!IMPORTANT]
 > A `Join-AzStorageAccountForAuth` parancsmag módosításokat hajt végre az ad-környezetben. Olvassa el a következő magyarázatot, hogy jobban megértse, mit csinál, hogy megfelelő engedélyekkel rendelkezzen a parancs végrehajtásához, és hogy az alkalmazott módosítások összhangban legyenek a megfelelőségi és biztonsági szabályzatokkal. 
@@ -141,13 +141,13 @@ Select-AzSubscription -SubscriptionId $SubscriptionId
 
 # Register the target storage account with your active directory environment under the target OU (for example: specify the OU with Name as "UserAccounts" or DistinguishedName as "OU=UserAccounts,DC=CONTOSO,DC=COM"). 
 # You can use to this PowerShell cmdlet: Get-ADOrganizationalUnit to find the Name and DistinguishedName of your target OU. If you are using the OU Name, specify it with -OrganizationalUnitName as shown below. If you are using the OU DistinguishedName, you can set it with -OrganizationalUnitDistinguishedName. You can choose to provide one of the two names to specify the target OU.
-# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account, depends on the AD permission you have and preference. 
+# You can choose to create the identity that represents the storage account as either a Service Logon Account or Computer Account (default parameter value), depends on the AD permission you have and preference. 
 # You can run Get-Help Join-AzStorageAccountForAuth to find more details on this cmdlet.
 
 Join-AzStorageAccountForAuth `
         -ResourceGroupName $ResourceGroupName `
         -Name $StorageAccountName `
-        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" ` # Default set to "ComputerAccount" if this parameter is not provided
+        -DomainAccountType "<ComputerAccount|ServiceLogonAccount>" `
         -OrganizationalUnitName "<ou-name-here>" #You can also use -OrganizationalUnitDistinguishedName "<ou-distinguishedname-here>" instead. If you don't provide the OU name as an input parameter, the AD identity that represents the storage account will be created under the root directory.
 
 #You can run the Debug-AzStorageAccountAuth cmdlet to conduct a set of basic checks on your AD configuration with the logged on AD user. This cmdlet is supported on AzFilesHybrid v0.1.2+ version. For more details on the checks performed in this cmdlet, go to Azure Files FAQ.
@@ -166,7 +166,7 @@ Először a parancsfájl ellenőrzi a környezetet. Pontosan ellenőrzi, hogy te
 
 #### <a name="b-creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>b. Az AD-ben manuálisan létrehozott Storage-fiókot jelölő identitás létrehozása
 
-Ha manuálisan szeretné létrehozni a fiókot, hozzon létre egy új Kerberos-kulcsot a `New-AzStorageAccountKey -KeyName kerb1`Storage-fiókjához a használatával. Ezt követően használja a Kerberos-kulcsot a fiókjához tartozó jelszóként. Ez a kulcs csak a beállítás során használatos, és nem használható a Storage-fiókhoz tartozó vezérlési vagy adatsík műveletekhez.
+Ha manuálisan szeretné létrehozni a fiókot, hozzon létre egy új Kerberos-kulcsot a Storage-fiókjához a használatával `New-AzStorageAccountKey -KeyName kerb1` . Ezt követően használja a Kerberos-kulcsot a fiókjához tartozó jelszóként. Ez a kulcs csak a beállítás során használatos, és nem használható a Storage-fiókhoz tartozó vezérlési vagy adatsík műveletekhez.
 
 Ha ezzel a kulccsal rendelkezik, hozzon létre egy szolgáltatás-vagy számítógépfiókot a szervezeti egység alatt. Használja a következő specifikációt: SPN: "CIFS/a-Storage-Account-Name-itt. file. Core. Windows. net" password: Kerberos-kulcs a Storage-fiókhoz.
 
@@ -220,7 +220,7 @@ Mostantól sikeresen engedélyezte AD DS hitelesítést az SMB protokollon keres
 
 Ha regisztrálta AD DS a Storage-fiókját egy olyan szervezeti egységben, amely a jelszó lejárati idejét érvényesíti, akkor a jelszó maximális kora előtt el kell forgatni a jelszót. A AD DS fiók jelszavának frissítése sikertelen lesz az Azure-fájlmegosztás eléréséhez szükséges hitelesítési hibák miatt.  
 
-A jelszó elforgatásának elindításához futtassa `Update-AzStorageAccountADObjectPassword` a parancsot a AzFilesHybrid modulból. A parancsmag a Storage-fiók kulcsának elforgatásához hasonló műveleteket hajt végre. Beolvassa a Storage-fiók második Kerberos-kulcsát, és felhasználja a regisztrált fiók jelszavának frissítésére AD DSban. Ezután újralétrehozza a Storage-fiók cél Kerberos-kulcsát, és frissíti a regisztrált fiók jelszavát AD DSban. Ezt a parancsmagot egy helyszíni AD DS tartományhoz csatlakoztatott környezetben kell futtatnia.
+A jelszó elforgatásának elindításához futtassa a `Update-AzStorageAccountADObjectPassword` parancsot a AzFilesHybrid modulból. A parancsmag a tárfiókkulcs-változtatáshoz hasonló műveletet hajt végre. Beolvassa a Storage-fiók második Kerberos-kulcsát, és felhasználja a regisztrált fiók jelszavának frissítésére AD DSban. Ezután újralétrehozza a Storage-fiók cél Kerberos-kulcsát, és frissíti a regisztrált fiók jelszavát AD DSban. Ezt a parancsmagot egy helyszíni AD DS tartományhoz csatlakoztatott környezetben kell futtatnia.
 
 ```PowerShell
 # Update the password of the AD DS account registered for the storage account

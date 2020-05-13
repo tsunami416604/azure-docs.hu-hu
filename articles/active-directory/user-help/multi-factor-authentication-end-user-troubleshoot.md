@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 04/02/2020
 ms.author: curtand
 ms.reviewer: kexia
-ms.openlocfilehash: 3df79fb1e103ddfaafeb348641e675cd250f5858
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 555ba9a55a135bd38dcc46e1ff7a3d751083d47e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271692"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196416"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros ellenőrzéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
 
@@ -32,7 +32,7 @@ Vannak olyan gyakori kétfaktoros ellenőrzési problémák, amelyek gyakrabban 
 >[!Important]
 >Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti Azure AD-környezetét az [Azure ad dokumentációjában](https://docs.microsoft.com/azure/active-directory).
 >
->Ezt a tartalmat kizárólag munkahelyi vagy iskolai fiókjával való használatra szánjuk, amelyet a Szervezete (például: alain@contoso.com) biztosít. Ha problémák merülnek fel a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, azaz egy olyan fiókkal, amelyet saját maga állított be ( danielle@outlook.compéldául), tekintse [meg a kétfaktoros ellenőrzés bekapcsolását a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+>Ezt a tartalmat kizárólag munkahelyi vagy iskolai fiókjával való használatra szánjuk, amelyet a Szervezete (például: alain@contoso.com ) biztosít. Ha problémák merülnek fel a kétfaktoros ellenőrzéssel és a személyes Microsoft-fiókával, azaz egy olyan fiókkal, amelyet saját maga állított be (például danielle@outlook.com ), tekintse [meg a kétfaktoros ellenőrzés bekapcsolását a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
 ## <a name="i-dont-have-my-mobile-device-with-me"></a>Nekem nincs mobileszközom
 
@@ -99,9 +99,9 @@ Az alkalmazás jelszavai lecserélik a normál jelszót a régebbi asztali alkal
 
 ## <a name="i-cant-turn-two-factor-verification-off"></a>Nem kapcsolhatom ki a kétfaktoros ellenőrzést
 
-Ha a kétfaktoros ellenőrzést használja munkahelyi vagy iskolai fiókjával (például alain@contoso.com), az valószínűleg azt jelenti, hogy a szervezet úgy döntött, hogy ezt a hozzáadott biztonsági funkciót kell használnia. Mivel a szervezet úgy döntött, hogy ezt a funkciót kell használnia, nincs mód arra, hogy önállóan kikapcsolja. Ha azonban a kéttényezős ellenőrzést személyes fiókkal használja, alain@outlook.compéldául a szolgáltatás be-és kikapcsolását is lehetővé teszi. A személyes fiókok kétfaktoros ellenőrzésének vezérlésével kapcsolatos útmutatásért lásd: [kétfaktoros ellenőrzés bekapcsolása vagy kikapcsolása a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
+Ha a kétfaktoros ellenőrzést használja munkahelyi vagy iskolai fiókjával (például alain@contoso.com ), az valószínűleg azt jelenti, hogy a szervezet úgy döntött, hogy ezt a hozzáadott biztonsági funkciót kell használnia. Mivel a szervezet úgy döntött, hogy ezt a funkciót kell használnia, nincs mód arra, hogy önállóan kikapcsolja. Ha azonban a kéttényezős ellenőrzést személyes fiókkal használja, például a szolgáltatás be-és kikapcsolását alain@outlook.com is lehetővé teszi. A személyes fiókok kétfaktoros ellenőrzésének vezérlésével kapcsolatos útmutatásért lásd: [kétfaktoros ellenőrzés bekapcsolása vagy kikapcsolása a Microsoft-fiók](https://support.microsoft.com/help/4028586/microsoft-account-turning-two-step-verification-on-or-off).
 
-Ha nem tudja kikapcsolni a kétfaktoros ellenőrzést, akkor a szervezeti szinten alkalmazott biztonsági beállítások miatt is előfordulhat. További információ a biztonsági alapbeállításokról: [Mi a biztonsági defulta?](../fundamentals/concept-fundamentals-security-defaults.md)
+Ha nem tudja kikapcsolni a kétfaktoros ellenőrzést, akkor a szervezeti szinten alkalmazott biztonsági beállítások miatt is előfordulhat. További információ a biztonsági alapbeállításokról: [Mi a biztonsági alapértékek?](../fundamentals/concept-fundamentals-security-defaults.md)
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>Nem találok választ a problémára
 

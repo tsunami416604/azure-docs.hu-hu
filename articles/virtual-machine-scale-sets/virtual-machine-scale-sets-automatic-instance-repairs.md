@@ -2,20 +2,19 @@
 title: Azure-beli virtuálisgép-méretezési csoportokkal rendelkező automatikus példányok javítása
 description: Útmutató a méretezési csoportokban lévő virtuálisgép-példányok automatikus javítási házirendjének konfigurálásához
 author: avirishuv
-manager: vashan
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: vm
-ms.topic: conceptual
-ms.date: 02/28/2020
 ms.author: avverma
-ms.openlocfilehash: 8156c563573183e51e06650914117f8787922e93
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: availability
+ms.date: 02/28/2020
+ms.reviewer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 9e2b15eceff9bca4cee960fa462eb5148e3716dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603681"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197037"
 ---
 # <a name="automatic-instance-repairs-for-azure-virtual-machine-scale-sets"></a>Azure-beli virtuálisgép-méretezési csoportok automatikus példányának javítása
 
@@ -154,7 +153,7 @@ az vmss create \
   --generate-ssh-keys \
   --load-balancer <existingLoadBalancer> \
   --health-probe <existingHealthProbeUnderLoaderBalancer> \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 A fenti példa egy meglévő Load balancert és egy állapot-mintavételt használ az alkalmazások állapotának figyeléséhez. Ha inkább egy alkalmazás-állapotfigyelő bővítményt szeretne használni a figyeléshez, létrehozhat egy méretezési készletet, beállíthatja az alkalmazás állapotát, majd engedélyezheti az automatikus példány javítása házirendet az az *vmss Update*használatával, a következő szakaszban leírtak szerint.
@@ -217,7 +216,7 @@ az vmss update \
   --resource-group <myResourceGroup> \
   --name <myVMScaleSet> \
   --enable-automatic-repairs true \
-  --automatic-repairs-period 30
+  --automatic-repairs-grace-period 30
 ```
 
 ## <a name="viewing-and-updating-the-service-state-of-automatic-instance-repairs-policy"></a>Az automatikus példányok javítási szabályzatának szolgáltatási állapotának megtekintése és frissítése

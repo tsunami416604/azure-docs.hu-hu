@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: fe550bb4f5e63761bb645c9904816048584b1bca
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 9a7aa512c636f700cf9c6d990814d9367007c942
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733245"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125774"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windowsos virtuálisgép-méretezési csoport Azure Resource Manager-sablonjának használatával
 
@@ -238,8 +238,8 @@ Mentse és zárjunk be mindkét fájlt.
 A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:  
 
 1. Indítsa el a PowerShellt. 
-1. Jelentkezzen be az Azure `Login-AzAccount`-ba a használatával.
-1. Az előfizetések listájának lekérése a használatával `Get-AzSubscription`.
+1. Jelentkezzen be az Azure-ba a használatával `Login-AzAccount` .
+1. Az előfizetések listájának lekérése a használatával `Get-AzSubscription` .
 1. Állítsa be a létrehozni kívánt előfizetést, vagy frissítse a virtuális gépet: 
 
    ```powershell
@@ -252,7 +252,7 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
    ```
 
    > [!NOTE]  
-   > Ne felejtse el használni az egyéni metrikák számára engedélyezett Azure-régiót. Ne felejtse el használni az [Egyéni metrikák számára engedélyezett Azure-régiót](https://github.com/MicrosoftDocs/azure-docs-pr/blob/master/articles/azure-monitor/platform/metrics-custom-overview.md#supported-regions).
+   > Ne felejtse el használni az egyéni metrikák számára engedélyezett Azure-régiót. Ne felejtse el használni az [Egyéni metrikák számára engedélyezett Azure-régiót](./metrics-custom-overview.md#supported-regions).
  
 1. Futtassa a következő parancsokat a virtuális gép üzembe helyezéséhez:  
 
@@ -285,7 +285,7 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
 
 1. A névterek legördülő menüben válassza az **Azure. VM. Windows. Guest**lehetőséget. 
 
-1. A metrikák legördülő menüben válassza a **memória\%által véglegesített bájtok használatban**lehetőséget.  
+1. A metrikák legördülő menüben válassza a **memória \% által véglegesített bájtok használatban**lehetőséget.  
 
 Azt is megteheti, hogy a metrika dimenzióit használja egy adott virtuális géphez való diagramra, illetve a méretezési csoportba tartozó egyes virtuális gépek ábrázolására. 
 

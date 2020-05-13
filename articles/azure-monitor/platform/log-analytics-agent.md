@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 658543dc96f23fc86ea50f64d7a3265ba64150e7
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0a29ee1536c7c808fe7d15c0abe26f27042bc962
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982207"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196244"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](/azure/security-center/)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -115,11 +115,11 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
 >Ha olyan disztribúciót vagy verziót használ, amely jelenleg nem támogatott, és nem a támogatási modellhez igazodik, javasoljuk, hogy a tárházat elágazással lássa el, és tudomásul veszi, hogy a Microsoft támogatási szolgálata nem nyújt segítséget a villás ügynök verzióihoz.
 
 * Amazon Linux 2017,09 (x64)
-* CentOS Linux 6 (x86/x64) és 7 (x64)  
-* Oracle Linux 6 és 7 (x86/x64) 
-* Red Hat Enterprise Linux Server 6 (x86/x64) és 7 (x64)
-* Debian GNU/Linux 8 és 9 (x86/x64)
-* Ubuntu 14,04 LTS (x86/x64), 16,04 LTS (x86/x64) és 18,04 LTS (x64)
+* CentOS Linux 6 (x64) és 7 (x64)  
+* Oracle Linux 6 és 7 (x64) 
+* Red Hat Enterprise Linux Server 6 (x64), 7 (x64) és 8 (x64)
+* Debian GNU/Linux 8 és 9 (x64)
+* Ubuntu 14,04 LTS (x86/x64), 16,04 LTS (x64) és 18,04 LTS (x64)
 * SUSE Linux Enterprise Server 12 (x64) és 15 (x64)
 
 >[!NOTE]
@@ -201,7 +201,7 @@ A Linux-ügynök esetében a proxykiszolgáló a telepítés során vagy a [tele
 Például:`https://user01:password@proxy01.contoso.com:30443`
 
 > [!NOTE]
-> Ha a jelszóban speciális karaktereket (például\@"") használ, a rendszer proxy-csatlakozási hibát kap, mert az érték helytelenül van elemezve.  A probléma megkerüléséhez kódolja a jelszót az URL-címben egy eszköz, például a [URLDecode](https://www.urldecoder.org/)használatával.  
+> Ha a jelszóban speciális karaktereket (például " \@ ") használ, a rendszer proxy-csatlakozási hibát kap, mert az érték helytelenül van elemezve.  A probléma megkerüléséhez kódolja a jelszót az URL-címben egy eszköz, például a [URLDecode](https://www.urldecoder.org/)használatával.  
 
 
 

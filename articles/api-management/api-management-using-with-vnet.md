@@ -10,14 +10,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 04/27/2020
+ms.date: 05/11/2020
 ms.author: apimpm
-ms.openlocfilehash: cf65cd757655b496ceb87fa1ff8121ac6209d869
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 93f66f3c030b9845b58083a992e1e1f11aa37f9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203199"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196988"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -108,7 +108,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 <a name="required-ports"> </a> Ha egy API Management Service-példány egy VNET üzemel, a rendszer a következő táblázatban található portokat használja.
 
-| Forrás/cél port (ok) | Irány          | Átviteli protokoll |   [Szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) <br> Forrás/cél   | Cél (\*)                                                 | Virtual Network típusa |
+| Forrás/cél port (ok) | Irány          | Átviteli protokoll |   [Szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) <br> Forrás/cél   | Cél ( \* )                                                 | Virtual Network típusa |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | */[80], 443                  | Bejövő            | TCP                | INTERNET/VIRTUAL_NETWORK            | Ügyfél-kommunikáció API Management                      | Külső             |
 | */3443                     | Bejövő            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Felügyeleti végpont a Azure Portal és a PowerShell számára         | Külső & belső  |
@@ -136,22 +136,22 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
     | Azure-környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net (**új**)</li><li>prod.warmpath.msftcloudes.com (**elavultnak kell lennie**)</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3-black.prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3-black.prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3-red.prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3-red.prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, `East US 2` ahol a eastus2.Warm.ingestion.msftcloudes.com</li></ul> |
-    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod5.prod.microsoftmetrics.com</li></ul>                                                                                                                                                                                                                                                |
+    | Azure Public      | <ul><li>gcs.prod.monitoring.core.windows.net (**új**)</li><li>prod.warmpath.msftcloudes.com (**elavultnak kell lennie**)</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3-black.prod.metrics.microsoftmetrics.com (**új**)</li><li>prod3-black.prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3-red.prod.metrics.microsoftmetrics.com (**új**)</li><li>prod3-red.prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
+    | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
+    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.microsoftmetrics.com (**új**)</li><li>shoebox2.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod3.metrics.microsoftmetrics.com (**új**)</li><li>prod3.metrics.nsatc.net (**elavultnak kell lennie**)</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.metrics.microsoftmetrics.com</li><li>prod5-red.prod.metrics.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > A DNS-zónák felett lévő fürtök változása. a **nsatc.net** a **. microsoftmetrics.com** -re általában egy DNS-változás. A fürt IP-címe nem változik.
 
 + **Regionális szolgáltatás címkék**: a NSG-szabályok, amelyek engedélyezik a Storage, az SQL és a Event Hubs Service-címkék kimenő kapcsolatát, a API Management példányt tartalmazó régióhoz tartozó (például Storage. WestUS), az USA nyugati régiójában található API Management-példányhoz tartozó, az adott címkék regionális verzióit használhatják. A többrégiós környezetekben az egyes régiókban lévő NSG engedélyezni kell az adott régió és az elsődleges régió szolgáltatásbeli címkéi forgalmát.
 
-+ **SMTP-továbbító**: kimenő `smtpi-co1.msn.com`hálózati kapcsolat az SMTP-továbbítóhoz, amely a gazdagép, `smtpi-ch1.msn.com` `smtpi-db3.msn.com`a, `smtpi-sin.msn.com` és a`ies.global.microsoft.com`
++ **SMTP-továbbító**: kimenő hálózati kapcsolat az SMTP-továbbítóhoz, amely a gazdagép, a `smtpi-co1.msn.com` , `smtpi-ch1.msn.com` `smtpi-db3.msn.com` `smtpi-sin.msn.com` és a`ies.global.microsoft.com`
 
-+ **Fejlesztői portál CAPTCHA**: kimenő hálózati kapcsolat a fejlesztői portál CAPTCHA-vel, amely a gazdagépeken `client.hip.live.com` és a- `partner.hip.live.com`ben oldható fel.
++ **Fejlesztői portál CAPTCHA**: kimenő hálózati kapcsolat a fejlesztői portál CAPTCHA-vel, amely a gazdagépeken és a-ben oldható fel `client.hip.live.com` `partner.hip.live.com` .
 
-+ **Azure Portal diagnosztika**: ahhoz, hogy a API Management bővítmény egy Virtual Networkon belülről való használatakor lehetővé váljon a diagnosztikai naplók áramlása Azure Portal `dc.services.visualstudio.com` , a 443-as porton kimenő hozzáférésre van szükség. Ez segít a bővítmények használata során felmerülő problémák elhárításában.
++ **Azure Portal diagnosztika**: ahhoz, hogy a API Management bővítmény egy Virtual Networkon belülről való használatakor lehetővé váljon a diagnosztikai naplók áramlása Azure Portal, a 443-as porton kimenő hozzáférésre `dc.services.visualstudio.com` van szükség. Ez segít a bővítmények használata során felmerülő problémák elhárításában.
 
-+ **Azure Load Balancer**: a szolgáltatási címke `AZURE_LOAD_BALANCER` bejövő kérelmének engedélyezése nem követelmény az `Developer` SKU számára, mivel csak egy egységet helyezünk üzembe a számítási feladatokból. A [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) bejövő állapota azonban kritikusra vált `Premium`, ha a magasabb szintű SKU-ra, például a Load Balancer állapotának meghibásodása miatt nem sikerül üzembe helyezést végrehajtani.
++ **Azure Load Balancer**: a szolgáltatási címke bejövő kérelmének engedélyezése `AZURE_LOAD_BALANCER` nem követelmény az SKU számára `Developer` , mivel csak egy egységet helyezünk üzembe a számítási feladatokból. A [168.63.129.16](../virtual-network/what-is-ip-address-168-63-129-16.md) bejövő állapota azonban kritikusra vált, ha a magasabb szintű SKU-ra, például a `Premium` Load Balancer állapotának meghibásodása miatt nem sikerül üzembe helyezést végrehajtani.
 
 + A helyszíni **tűzfal felé irányuló forgalom kényszerítése az expressz útvonal vagy a hálózati virtuális berendezés használatával**: a közös ügyfél-konfiguráció a saját alapértelmezett útvonal (0.0.0.0/0) meghatározása, amely a API Management delegált alhálózatról a helyszíni tűzfalon vagy egy hálózati virtuális berendezésen keresztül áramlik át a forgalmat. Ez a forgalmi folyamat mindig megszakítja az Azure API Management kapcsolatát, mivel a kimenő forgalom vagy a helyszínen van letiltva, vagy a NAT-t olyan, a különböző Azure-végpontokkal már nem működő címekből álló halmazba kívánja felismerni. A megoldáshoz pár dolgot kell tennie:
 

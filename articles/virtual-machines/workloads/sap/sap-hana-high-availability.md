@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/22/2020
+ms.date: 05/11/2020
 ms.author: radeltch
-ms.openlocfilehash: e04b37d0c95f2176581c7d13f3641a13ecddfd8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 501d49feef877addd2f3e5364a06caf1d273ca83
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82101212"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196870"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SAP HANA magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server
 
@@ -112,7 +112,7 @@ A sablon üzembe helyezéséhez kövesse az alábbi lépéseket:
     - **Rendszerszintű rendelkezésre állás**: válassza a **Ha**lehetőséget.
     - **Rendszergazdai Felhasználónév és rendszergazdai jelszó**: új felhasználó jön létre, amely a gépre való bejelentkezéshez használható.
     - **Új vagy meglévő alhálózat**: meghatározza, hogy létre kell-e hozni egy új virtuális hálózatot és alhálózatot, vagy egy meglévő alhálózatot. Ha már van olyan virtuális hálózata, amely a helyszíni hálózathoz van csatlakoztatva, válassza a **meglévő**lehetőséget.
-    - **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint az **\</Subscriptions/\<előfizetés-azonosítója>/resourcegroups/\<erőforráscsoport neve>/Providers/Microsoft.Network/virtualnetworks/virtuális\<hálózat neve>/Subnets/alhálózat neve>**.
+    - **Alhálózati azonosító**: Ha a virtuális gépet egy olyan meglévő VNet szeretné telepíteni, amelyben egy alhálózat van megadva, a virtuális gépet hozzá kell rendelni, nevezze el az adott alhálózat azonosítóját. Az azonosító általában úgy néz ki, mint az **/Subscriptions/ \< előfizetés-azonosítója>/resourcegroups/ \< erőforráscsoport neve>/Providers/Microsoft.Network/virtualnetworks/ \< virtuális hálózat neve>/Subnets/ \< alhálózat neve>**.
 
 ### <a name="manual-deployment"></a>Kézi üzembe helyezés
 
@@ -277,10 +277,10 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    sudo vgcreate vg_hana_shared_<b>HN1</b> /dev/disk/azure/scsi1/lun3
    </code></pre>
 
-   Hozza létre a logikai köteteket. A `lvcreate` `-i` kapcsoló használata nélkül jön létre lineáris kötet. Javasoljuk, hogy hozzon létre egy csíkozott kötetet a jobb I/O-teljesítmény érdekében, és igazítsa a sávok méretét a SAP HANA virtuálisgép- [tároló konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)dokumentált értékekhez. Az `-i` argumentumnak a mögöttes fizikai kötetek számának kell lennie `-I` , az argumentum pedig a sáv mérete. Ebben a dokumentumban két fizikai kötet van használatban az adatkötethez, így a `-i` switch argumentum értéke **2**. Az adatkötet csíkozási mérete **256KiB**. A rendszer egy fizikai kötetet használ a naplózási kötethez `-i` , `-I` így a naplózási kötet parancsaihoz nem használhatók explicit módon a kapcsolók.  
+   Hozza létre a logikai köteteket. A kapcsoló használata nélkül jön létre lineáris kötet `lvcreate` `-i` . Javasoljuk, hogy hozzon létre egy csíkozott kötetet a jobb I/O-teljesítmény érdekében, és igazítsa a sávok méretét a SAP HANA virtuálisgép- [tároló konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)dokumentált értékekhez. Az `-i` argumentumnak a mögöttes fizikai kötetek számának kell lennie, az `-I` argumentum pedig a sáv mérete. Ebben a dokumentumban két fizikai kötet van használatban az adatkötethez, így a `-i` switch argumentum értéke **2**. Az adatkötet csíkozási mérete **256KiB**. A rendszer egy fizikai kötetet használ a naplózási kötethez, így `-i` `-I` a naplózási kötet parancsaihoz nem használhatók explicit módon a kapcsolók.  
 
    > [!IMPORTANT]
-   > Használja a `-i` kapcsolót, és állítsa be a mögöttes fizikai kötet számára, ha több fizikai kötetet használ minden adathoz, naplóhoz vagy megosztott kötethez. Csíkozott kötet `-I` létrehozásakor használja a kapcsolót a sáv méretének megadásához.  
+   > Használja a `-i` kapcsolót, és állítsa be a mögöttes fizikai kötet számára, ha több fizikai kötetet használ minden adathoz, naplóhoz vagy megosztott kötethez. `-I`Csíkozott kötet létrehozásakor használja a kapcsolót a sáv méretének megadásához.  
    > Lásd: SAP HANA virtuálisgép- [tárolási konfigurációk](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) az ajánlott tárolási konfigurációkhoz, beleértve a sávok méretét és a lemezek számát.  
 
    <pre><code>sudo lvcreate <b>-i 2</b> <b>-I 256</b> -l 100%FREE -n hana_data vg_hana_data_<b>HN1</b>
@@ -305,7 +305,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
    <pre><code>sudo vi /etc/fstab
    </code></pre>
 
-   Szúrja be a következő sort `/etc/fstab` a fájlba:      
+   Szúrja be a következő sort a `/etc/fstab` fájlba:      
 
    <pre><code>/dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_data_<b>HN1</b>-hana_data&gt;</b> /hana/data/<b>HN1</b> xfs  defaults,nofail  0  2
    /dev/disk/by-uuid/<b>&lt;UUID of /dev/mapper/vg_hana_log_<b>HN1</b>-hana_log&gt;</b> /hana/log/<b>HN1</b> xfs  defaults,nofail  0  2
@@ -407,14 +407,14 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
    Ha SAP HANA 2,0-as vagy MDC-t használ, hozzon létre egy bérlői adatbázist az SAP NetWeaver rendszer számára. Cserélje le az **NW1** -t az SAP-rendszere SID-azonosítójával.
 
-   Futtassa a következő parancsot <hanasid\>adm-ként:
+   Futtassa a következő parancsot <hanasid adm-ként \> :
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** a rendszerreplikáció konfigurálása az első csomóponton:
 
-   Az adatbázisok biztonsági mentése <hanasid\>adm-ként:
+   Az adatbázisok biztonsági mentése <hanasid adm-ként \> :
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -434,7 +434,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 1. **[2]** a rendszer replikációjának konfigurálása a második csomóponton:
     
-   Regisztrálja a második csomópontot a rendszerreplikáció elindításához. Futtassa a következő parancsot <hanasid\>adm-ként:
+   Regisztrálja a második csomópontot a rendszerreplikáció elindításához. Futtassa a következő parancsot <hanasid adm-ként \> :
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -481,7 +481,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 1. **[1]** konfigurálja a rendszer replikálását az első csomóponton.
 
-   Hozza létre az elsődleges helyet <hanasid\>adm-ként:
+   Hozza létre az elsődleges helyet <hanasid \> adm-ként:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -489,7 +489,7 @@ Az ebben a szakaszban szereplő lépések az alábbi előtagokat használják:
 
 1. **[2]** a rendszer replikálásának konfigurálása a másodlagos csomóponton.
 
-   Regisztrálja a másodlagos helyet <hanasid\>adm-ként:
+   Regisztrálja a másodlagos helyet <hanasid \> adm-ként:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -547,7 +547,8 @@ sudo crm configure primitive rsc_ip_<b>HN1</b>_HDB<b>03</b> ocf:heartbeat:IPaddr
   op monitor interval="10s" timeout="20s" \
   params ip="<b>10.0.0.13</b>"
 
-sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b>
+sudo crm configure primitive rsc_nc_<b>HN1</b>_HDB<b>03</b> azure-lb port=625<b>03</b> \
+  meta resource-stickiness=0
 
 sudo crm configure group g_ip_<b>HN1</b>_HDB<b>03</b> rsc_ip_<b>HN1</b>_HDB<b>03</b> rsc_nc_<b>HN1</b>_HDB<b>03</b>
 
@@ -610,7 +611,7 @@ A SAP HANA fő csomópontját a következő parancs végrehajtásával telepíth
 <pre><code>crm resource migrate msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-1</b>
 </code></pre>
 
-Ha be van `AUTOMATED_REGISTER="false"`állítva, a parancsok ezen sorozatának át kell telepítenie a SAP HANA fő csomópontot és a hn1-db-1 virtuális IP-címet tartalmazó csoportot.
+Ha be van állítva `AUTOMATED_REGISTER="false"` , a parancsok ezen sorozatának át kell telepítenie a SAP HANA fő csomópontot és a hn1-db-1 virtuális IP-címet tartalmazó csoportot.
 
 Az áttelepítés elvégzése után a crm_mon-r kimenet így néz ki
 
@@ -681,7 +682,7 @@ Az Azure vívó-ügynök beállításának teszteléséhez tiltsa le a hálózat
 A fürt konfigurációjától függően a virtuális gépnek újra kell indítania vagy leállítania a szolgáltatást.
 Ha a `stonith-action` beállítást kikapcsolva értékre állítja, a virtuális gép leáll, és a rendszer áttelepíti az erőforrásokat a futó virtuális gépre.
 
-A virtuális gép újraindítása után a SAP HANA erőforrás nem indul el másodlagosként, ha be van állítva `AUTOMATED_REGISTER="false"`. Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
+A virtuális gép újraindítása után a SAP HANA erőforrás nem indul el másodlagosként, ha be van állítva `AUTOMATED_REGISTER="false"` . Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
 
 <pre><code>su - <b>hn1</b>adm
 
@@ -714,12 +715,12 @@ A hn1-db-0 csomópontot újra kell indítani. Előfordulhat, hogy a pacemaker sz
 
 ### <a name="test-a-manual-failover"></a>Manuális feladatátvétel tesztelése
 
-A manuális feladatátvételt a hn1-db- `pacemaker` 0 csomóponton található szolgáltatás leállításával tesztelheti:
+A manuális feladatátvételt a `pacemaker` hn1-db-0 csomóponton található szolgáltatás leállításával tesztelheti:
 
 <pre><code>service pacemaker stop
 </code></pre>
 
-A feladatátvételt követően újra elindíthatja a szolgáltatást. Ha be van `AUTOMATED_REGISTER="false"`állítva, a hn1-db-0 csomópont SAP HANA erőforrása nem indul el másodlagosként. Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
+A feladatátvételt követően újra elindíthatja a szolgáltatást. Ha be van állítva `AUTOMATED_REGISTER="false"` , a hn1-db-0 csomópont SAP HANA erőforrása nem indul el másodlagosként. Ebben az esetben konfigurálja a HANA-példányt másodlagosként a következő parancs végrehajtásával:
 
 <pre><code>service pacemaker start
 su - <b>hn1</b>adm
@@ -759,7 +760,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Futtassa az alábbi parancsokat <hanasid\>adm-ként a hn1-db-0 csomóponton:
+   Futtassa az alábbi parancsokat <hanasid adm-ként \> a hn1-db-0 csomóponton:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -800,7 +801,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   Futtassa az alábbi parancsokat <hanasid\>adm-ként a következő csomóponton: hn1-db-1:
+   Futtassa az alábbi parancsokat <hanasid \> adm-ként a következő csomóponton: hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -841,7 +842,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Futtassa az alábbi parancsokat <hanasid\>adm-ként a hn1-db-0 csomóponton:
+   Futtassa az alábbi parancsokat <hanasid adm-ként \> a hn1-db-0 csomóponton:
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -882,7 +883,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-1
    </code></pre>
 
-   Futtassa az alábbi parancsokat <hanasid\>adm-ként a következő csomóponton: hn1-db-1:
+   Futtassa az alábbi parancsokat <hanasid \> adm-ként a következő csomóponton: hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -1025,7 +1026,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Futtassa az alábbi parancsokat <hanasid\>adm-ként a következő csomóponton: hn1-db-1:
+   Futtassa az alábbi parancsokat <hanasid \> adm-ként a következő csomóponton: hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1062,7 +1063,7 @@ Megjegyzés: az alábbi tesztek úgy lettek kialakítva, hogy sorban fussanak, �
       rsc_nc_HN1_HDB03   (ocf::heartbeat:azure-lb):      Started hn1-db-0
    </code></pre>
 
-   Futtassa az alábbi parancsokat <hanasid\>adm-ként a következő csomóponton: hn1-db-1:
+   Futtassa az alábbi parancsokat <hanasid \> adm-ként a következő csomóponton: hn1-db-1:
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>

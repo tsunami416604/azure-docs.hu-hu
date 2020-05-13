@@ -7,12 +7,12 @@ ms.date: 05/01/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: e20271e381f2e7023dca3c3382c9f329a5149a62
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: f4e0bbd546b770b9e81bb9142cdd97e3927db7bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872580"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195945"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>A Azurite Emulator használata helyi Azure Storage-fejlesztéshez és-teszteléshez (előzetes verzió)
 
@@ -70,7 +70,7 @@ A következő beállítások támogatottak:
 
 ## <a name="install-and-run-azurite-by-using-npm"></a>A Azurite telepítése és futtatása a NPM használatával
 
-Ehhez a telepítési módszerhez a [Node. js 8,0-es vagy újabb verziójára](https://nodejs.org) van szükség. A Node Package Manager (NPM) az összes Node. js-telepítésben található csomagkezelő eszköz. A Node. js telepítése után hajtsa végre `npm` a következő parancsot a Azurite telepítéséhez.
+Ehhez a telepítési módszerhez a [Node. js 8,0-es vagy újabb verziójára](https://nodejs.org) van szükség. A Node Package Manager (NPM) az összes Node. js-telepítésben található csomagkezelő eszköz. A Node. js telepítése után hajtsa végre a következő `npm` parancsot a Azurite telepítéséhez.
 
 ```console
 npm install -g azurite
@@ -97,7 +97,7 @@ docker run -p 10000:10000 -p 10001:10001 \
 
 **Munkaterület helyének meghatározása**:
 
-A következő példában a `-v c:/azurite:/data` paraméter a *c:/Azurite* adja meg a Azurite megőrzött adathelyként. A Docker-parancs futtatása előtt létre kell hozni a könyvtárat ( *c:/Azurite*).
+A következő példában a paraméter a `-v c:/azurite:/data` *c:/Azurite* adja meg a Azurite megőrzött adathelyként. A Docker-parancs futtatása előtt létre kell hozni a könyvtárat ( *c:/Azurite*).
 
 ```console
 docker run -p 10000:10000 -p 10001:10001 \
@@ -239,7 +239,7 @@ A használatban lévő port a Azurite indításakor jelenik meg.
 
 ### <a name="workspace-path"></a>Munkaterület elérési útja
 
-**Opcionális** – a Azurite a helyi lemezre menti az adattárolást a végrehajtás során. A `-l` vagy `--location` a kapcsoló használatával megadnia a munkaterület helyének elérési útját. Alapértelmezés szerint a rendszer az aktuális folyamat munkakönyvtárát fogja használni. Jegyezze fel az "l" kisbetűt.
+**Opcionális** – a Azurite a helyi lemezre menti az adattárolást a végrehajtás során. A `-l` vagy a `--location` kapcsoló használatával megadnia a munkaterület helyének elérési útját. Alapértelmezés szerint a rendszer az aktuális folyamat munkakönyvtárát fogja használni. Jegyezze fel az "l" kisbetűt.
 
 ```console
 azurite -l c:\azurite
@@ -248,7 +248,7 @@ azurite --location c:\azurite
 
 ### <a name="access-log"></a>Hozzáférési napló
 
-**Opcionális** – alapértelmezés szerint a hozzáférési napló a konzol ablakban jelenik meg. Tiltsa le a hozzáférési napló megjelenítését a vagy `-s` `--silent` a kapcsoló használatával.
+**Opcionális** – alapértelmezés szerint a hozzáférési napló a konzol ablakban jelenik meg. Tiltsa le a hozzáférési napló megjelenítését a vagy a `-s` `--silent` kapcsoló használatával.
 
 ```console
 azurite -s
@@ -256,7 +256,7 @@ azurite --silent
 ```
 ### <a name="debug-log"></a>Hibakeresési napló
 
-Nem **kötelező** – a hibakeresési napló részletes információkat tartalmaz minden kérelemről és a kivételek veremének nyomkövetéséről. A hibakeresési napló engedélyezéséhez adjon meg egy érvényes helyi elérési `-d` utat `--debug` a vagy kapcsoló számára.
+Nem **kötelező** – a hibakeresési napló részletes információkat tartalmaz minden kérelemről és a kivételek veremének nyomkövetéséről. A hibakeresési napló engedélyezéséhez adjon meg egy érvényes helyi elérési utat a `-d` vagy `--debug` kapcsoló számára.
 
 ```console
 azurite -d path/debug.log
@@ -265,7 +265,7 @@ azurite --debug path/debug.log
 
 ### <a name="loose-mode"></a>Kilazult mód
 
-**Opcionális** – alapértelmezés szerint a Azurite szigorú módot alkalmaz a nem támogatott kérelmek fejlécének és paramétereinek a blokkolására. Tiltsa le a szigorú módot a `-L` vagy `--loose` a kapcsoló használatával. Jegyezze fel az "L" tőkét.
+**Opcionális** – alapértelmezés szerint a Azurite szigorú módot alkalmaz a nem támogatott kérelmek fejlécének és paramétereinek a blokkolására. Tiltsa le a szigorú módot a `-L` vagy a `--loose` kapcsoló használatával. Jegyezze fel az "L" tőkét.
 
 ```console
 azurite -L
@@ -273,7 +273,7 @@ azurite --loose
 ```
 ### <a name="version"></a>Verzió
 
-Nem **kötelező** – a telepített Azurite verziószámát a `-v` vagy `--version` kapcsoló használatával jelenítheti meg.
+Nem **kötelező** – a telepített Azurite verziószámát a vagy kapcsoló használatával jelenítheti meg `-v` `--version` .
 
 ```console
 azurite -v
@@ -284,13 +284,13 @@ azurite --version
 
 **Opcionális** – alapértelmezés szerint a AZURITE a HTTP protokollt használja. Engedélyezze a HTTPS-módot egy Privacy Enhanced Mail (. PEM) vagy [személyes információcsere (. pfx)](https://docs.microsoft.com/windows-hardware/drivers/install/personal-information-exchange---pfx--files) tanúsítványfájl elérési útjának megadásával a `--cert` kapcsolóhoz.
 
-Ha `--cert` egy PEM-fájlhoz van megadva, meg kell adnia egy `--key` megfelelő kapcsolót.
+Ha `--cert` egy PEM-fájlhoz van megadva, meg kell adnia egy megfelelő `--key` kapcsolót.
 
 ```console
 azurite --cert path/server.pem --key path/key.pem
 ```
 
-Ha `--cert` egy pfx-fájlhoz van megadva, meg kell adnia egy `--pwd` megfelelő kapcsolót.
+Ha `--cert` egy pfx-fájlhoz van megadva, meg kell adnia egy megfelelő `--pwd` kapcsolót.
 
 ```console
 azurite --cert path/server.pfx --pwd pfxpassword
@@ -307,15 +307,15 @@ azurite --oauth basic --cert path/server.pem --key path/key.pem
 ```
 
 > [!NOTE]
-> A OAuth HTTPS-végpontot igényel. Győződjön meg arról, hogy engedélyezve `--cert` van-e a `--oauth` HTTPS a kapcsolóval együtt.
+> A OAuth HTTPS-végpontot igényel. Győződjön meg arról, hogy engedélyezve van-e a HTTPS a kapcsolóval `--cert` együtt `--oauth` .
 
-A Azurite az `basic` alapszintű hitelesítést támogatja a `--oauth` kapcsoló paraméterének megadásával. A Azurite alapszintű hitelesítést végez, például érvényesíti a bejövő tulajdonosi jogkivonatot, ellenőrzi a kiállítót, a célközönséget és a lejáratot. A Azurite nem fogja ellenőriznie a jogkivonat aláírását vagy engedélyeit.
+A Azurite az alapszintű hitelesítést támogatja a `basic` kapcsoló paraméterének megadásával `--oauth` . A Azurite alapszintű hitelesítést végez, például érvényesíti a bejövő tulajdonosi jogkivonatot, ellenőrzi a kiállítót, a célközönséget és a lejáratot. A Azurite nem fogja ellenőriznie a jogkivonat aláírását vagy engedélyeit.
 
 ## <a name="authorization-for-tools-and-sdks"></a>Eszközök és SDK-k engedélyezése
 
 Az Azure Storage SDK-k vagy eszközök, például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)bármely hitelesítési stratégia segítségével csatlakozhat a Azurite. Hitelesítés szükséges. A Azurite támogatja az OAuth, a megosztott kulcs és a közös hozzáférésű aláírások (SAS) engedélyezését. A Azurite támogatja a nyilvános tárolók névtelen elérését is.
 
-Ha az Azure SDK-kat használja, indítsa el a Azurite `--oauth basic and --cert --key/--pwd` a lehetőségekkel.
+Ha az Azure SDK-kat használja, indítsa el a Azurite a `--oauth basic and --cert --key/--pwd` lehetőségekkel.
 
 ### <a name="well-known-storage-account-and-key"></a>Jól ismert Storage-fiók és-kulcs
 
@@ -326,7 +326,7 @@ A Azurite ugyanazt a jól ismert fiókot és kulcsot fogadja el, amelyet a régi
 
 ### <a name="custom-storage-accounts-and-keys"></a>Egyéni Storage-fiókok és-kulcsok
 
-A Azurite a környezeti változó a következő formátumban való beállításával `AZURITE_ACCOUNTS` támogatja az egyéni Storage-fiókok nevét `account1:key1[:key2];account2:key1[:key2];...`és kulcsait:.
+A Azurite a környezeti változó a következő formátumban való beállításával támogatja az egyéni Storage-fiókok nevét és kulcsait `AZURITE_ACCOUNTS` : `account1:key1[:key2];account2:key1[:key2];...` .
 
 Használjon például egy olyan egyéni Storage-fiókot, amely rendelkezik egy kulccsal:
 
@@ -393,7 +393,7 @@ Ha csak a várólista-szolgáltatást szeretné használni, a HTTPS-kapcsolati k
 
 `DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;QueueEndpoint=https://127.0.0.1:10001/devstoreaccount1;`
 
-Ha az önaláírt tanúsítvány létrehozásához használt `dotnet dev-certs` , használja a következő kapcsolódási karakterláncot.
+Ha az `dotnet dev-certs` önaláírt tanúsítvány létrehozásához használt, használja a következő kapcsolódási karakterláncot.
 
 `DefaultEndpointsProtocol=https;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=https://localhost:10000/devstoreaccount1;QueueEndpoint=https://localhost:10001/devstoreaccount1;`
 
@@ -461,20 +461,22 @@ Storage Explorer használatával megtekintheti a Azurite tárolt adatfájlokat.
 
 Storage Explorer a következő lépésekkel csatlakozhat a Azurite-hez:
 
- 1. Válassza **a fiók hozzáadása** ikont
+ 1. Válassza a **fiókok kezelése** ikont
+ 1. Válassza **a fiók hozzáadása** lehetőséget.
  1. **Helyi emulátorhoz tartozó csatolás** kiválasztása
  1. Válassza a **tovább** lehetőséget
+ 1. A **megjelenítendő név** mező szerkesztése tetszőleges névre
  1. Kattintson a **Tovább gombra**
  1. Válassza a **kapcsolat** lehetőséget.
 
 #### <a name="connect-to-azurite-using-https"></a>Kapcsolódás Azurite HTTPS használatával
 
-Alapértelmezés szerint Storage Explorer nem nyit meg olyan HTTPS-végpontot, amely önaláírt tanúsítványt használ. Ha a Azurite-t HTTPS-kapcsolattal futtatja, valószínűleg önaláírt tanúsítványt használ. Storage Explorer az SSL-tanúsítványok **importálása az** -> **SSL-tanúsítványok** -> **importálása tanúsítványok** használatával párbeszédpanelt.
+Alapértelmezés szerint Storage Explorer nem nyit meg olyan HTTPS-végpontot, amely önaláírt tanúsítványt használ. Ha a Azurite-t HTTPS-kapcsolattal futtatja, valószínűleg önaláírt tanúsítványt használ. Storage Explorer az SSL-tanúsítványok **importálása az**  ->  **SSL-tanúsítványok**  ->  **importálása tanúsítványok** használatával párbeszédpanelt.
 
 ##### <a name="import-certificate-to-storage-explorer"></a>Tanúsítvány importálása a Storage Explorerba
 
 1. Keresse meg a tanúsítványt a helyi gépen.
-1. Az Storage Explorer-ban keresse **Edit** -> meg az**SSL-tanúsítványok** -> **importálása** és a tanúsítvány importálása című részt.
+1. Az Storage Explorer-ban keresse **meg az**  ->  **SSL-tanúsítványok**  ->  **importálása** és a tanúsítvány importálása című részt.
 
 Ha nem importál tanúsítványt, a következő hibaüzenet jelenik meg:
 
@@ -541,7 +543,7 @@ A Azurite az Azure Storage-hibák kezelésére szolgáló logikával van összha
 
 ### <a name="ra-grs"></a>RA-GRS
 
-A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a fiók nevének hozzáfűzésével `-secondary` nyissa meg a másodlagos helyet. Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
+A Azurite támogatja az olvasási hozzáférésű geo-redundáns replikálást (RA-GRS). A tárolási erőforrások esetében a fiók nevének hozzáfűzésével nyissa meg a másodlagos helyet `-secondary` . Például a következő címnek lehet a blobokhoz való hozzáférése a Azurite írásvédett másodlagos használatával:
 
 `http://127.0.0.1:10000/devstoreaccount1-secondary/mycontainer/myblob.txt`
 

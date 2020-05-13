@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45a248300cd61a0e57b9f35c8905d7c335069a27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 72c4c3da193a1f61280a13ff1e2fa9eea2ff4823
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80991279"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196406"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Az Azure-erőforrások felügyelt identitásait támogató szolgáltatások
 
@@ -71,6 +71,19 @@ Tekintse át az alábbi listát a felügyelt identitás konfigurálásához Azur
 - [Azure CLI](/azure/app-service/overview-managed-identity#using-the-azure-cli)
 - [Azure PowerShell](/azure/app-service/overview-managed-identity#using-azure-powershell)
 - [Azure Resource Manager sablon](/azure/app-service/overview-managed-identity#using-an-azure-resource-manager-template)
+
+
+### <a name="azure-kubernetes-service-aks"></a>Azure Kubernetes Service (AKS)
+
+| Felügyelt identitás típusa | Az összes általánosan elérhető<br>Globális Azure-régiók | Azure Government | Azure Germany | Azure China 21Vianet |
+| --- | :-: | :-: | :-: | :-: |
+| Rendszer hozzárendelve | ![Elérhető][check] | - | - | - | 
+| Felhasználó által hozzárendelt | ![Elérhető][check] | - | - | - |
+
+
+További információ: [felügyelt identitások használata az Azure Kubernetes szolgáltatásban](https://docs.microsoft.com/azure/aks/use-managed-identity).
+
+
 
 ### <a name="azure-blueprints"></a>Azure Blueprints
 

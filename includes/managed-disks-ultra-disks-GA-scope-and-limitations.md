@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a5e0e459800e7cb57672518597f3d04a74f53118
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f14a269478541eaa5852697a917afb3d771841a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81008636"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196951"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
 
@@ -22,23 +22,30 @@ A jelenleg csak az ultra-lemezek számára elérhető infrastruktúra-redundanci
 Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk tartozó rendelkezésre állási lehetőségeket:
 
 > [!NOTE]
-> Az ezekben a régiókban található egyes rendelkezésre állási zónák nem biztosítanak Ultra-lemezeket.
+> Ha az alábbi listán szereplő egyik régió nem rendelkezik a lemezre alkalmas rendelkezésre állási zónákkal, akkor az adott régióban lévő virtuális gépeket infrastruktúra-redundancia nélkül kell üzembe helyezni az ultra-lemez csatlakoztatása érdekében.
 
-|Régiók  |Nincs infrastruktúra-redundancia  |Rendelkezésre állási zónák  |
-|---------|---------|---------|
-|USA nyugati régiója     |Igen         |Nem         |
-|USA nyugati régiója, 2.    |Nem         |Igen         |
-|USA keleti régiója     |Nem         |Igen         |
-|USA 2. keleti régiója     |Nem         |Igen         |
-|Délkelet-Ázsia     |Nem         |Igen         |
-|Észak-Európa     |Nem         |Igen         |
-|Nyugat-Európa     |Nem         |Igen         |
-|Az Egyesült Királyság déli régiója     |Nem         |Igen         |
+|Régiók  |Az ultra-lemezeket támogató rendelkezésre állási zónák száma  |
+|---------|---------|
+|USA-beli államigazgatás – Virginia     |Nincs         |
+|USA déli középső régiója     |Nincs         |
+|USA középső régiója     |Három zóna         |
+|USA nyugati régiója     |Nincs         |
+|USA nyugati régiója, 2.    |Három zóna         |
+|USA keleti régiója     |Három zóna         |
+|USA 2. keleti régiója     |Két zóna         |
+|Délkelet-Ázsia     |Három zóna         |
+|Észak-Európa     |Három zóna          |
+|Nyugat-Európa     |Három zóna          |
+|Az Egyesült Királyság déli régiója     |Három zóna          |
+|Kelet-Japán     |Két zóna         |
+
+
 
 - Csak a következő virtuálisgép-sorozatokban támogatott:
-    - [ESv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - [DSv3](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)
-    - FSv2
+    - [ESv3](../articles/virtual-machines/ev3-esv3-series.md#esv3-series)
+    - [DSv3](../articles/virtual-machines/dv3-dsv3-series.md#dsv3-series)
+    - [FSv2](../articles/virtual-machines/fsv2-series.md)
+    - [LSv2](../articles/virtual-machines/lsv2-series.md)
     - [M](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
     - [Mv2](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md)
 - Nem minden virtuálisgép-méret érhető el minden olyan támogatott régióban, ahol az ultra Disks

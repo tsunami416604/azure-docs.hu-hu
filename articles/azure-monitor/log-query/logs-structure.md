@@ -5,19 +5,22 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/22/2019
-ms.openlocfilehash: b1463415a464fe1d7a7146cec20f2c17d7c8eb03
-ms.sourcegitcommit: 291b2972c7f28667dc58f66bbe9d9f7d11434ec1
+ms.date: 05/09/2020
+ms.openlocfilehash: 58724656dd407f09687b57d0ab034f3a1f808b76
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82738082"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196286"
 ---
 # <a name="structure-of-azure-monitor-logs"></a>Azure Monitor naplók szerkezete
 A Azure Monitor hatékony funkciója, hogy gyorsan betekintést nyerjen az adataiba a [log lekérdezés](log-query-overview.md) használatával. Hatékony és hasznos lekérdezések létrehozásához ismernie kell néhány olyan alapfogalmakat, mint például a keresett adatok, valamint a strukturált adatok. Ez a cikk az első lépésekhez szükséges alapvető fogalmakat ismerteti.
 
 ## <a name="overview"></a>Áttekintés
 Azure Monitor naplókban lévő adatLog Analytics-munkaterületen vagy egy Application Insights alkalmazásban van tárolva. Mindkettő az [Azure adatkezelő](/azure/data-explorer/) , ami azt jelenti, hogy hatékony adatmotort és lekérdezési nyelvet használ.
+
+> [!IMPORTANT]
+> Ha [munkaterületen alapuló Application Insights erőforrást](../app/create-workspace-resource.md)használ, a telemetria egy log Analytics munkaterületen tárolja az összes többi naplózási adattal. A táblák át lettek nevezve és át lettek strukturálva, de ugyanazok az adatok, mint a táblák a Application Insights alkalmazásban.
 
 A munkaterületeken és alkalmazásokban található adatkészletek táblázatokba vannak rendezve, amelyek mindegyike különböző típusú adattípusokat tárol, és saját tulajdonságokkal rendelkezik. A legtöbb [adatforrás](../platform/data-sources.md) egy log Analytics munkaterületen fogja írni a saját tábláiba, míg a Application Insights egy Application Insights alkalmazásban előre meghatározott táblákba ír. A naplók nagy rugalmasságot biztosítanak, így egyszerűen egyesítheti a több táblázat adatait, és akár egy erőforrás-lekérdezést is használhat több munkaterület tábláiból származó adatok összevonásához, illetve a munkaterület és az alkalmazásadatok összekapcsolására szolgáló lekérdezések írásához.
 
@@ -48,23 +51,26 @@ A létrehozott táblák részleteit az egyes adatforrások dokumentációja tart
 Tekintse meg a munkaterületen lévő információk elérését biztosító hozzáférés-vezérlési stratégiát és javaslatokat a [Azure monitor naplók üzembe helyezésének megtervezése](../platform/design-logs-deployment.md) című témakörben. A munkaterülethez való hozzáférés biztosítása mellett a [tábla szintű RBAC](../platform/manage-access.md#table-level-rbac)használatával korlátozhatja az egyes táblákhoz való hozzáférést.
 
 ## <a name="application-insights-application"></a>Application Insights alkalmazás
+
+> [!IMPORTANT]
+> Ha [munkaterületen alapuló Application Insights erőforrás-](../app/create-workspace-resource.md) telemetria használ, a rendszer egy log Analytics munkaterületen tárolja az összes többi naplózási adattal. A táblákat átnevezték és átalakították, de ugyanazokkal az adatokkal rendelkeznek, mint a klasszikus Application Insights-erőforrás táblái.
+
 Amikor Application Insightsban hoz létre alkalmazást, a rendszer automatikusan létrehoz egy megfelelő alkalmazást Azure Monitor-naplókból. Az adatok gyűjtéséhez nincs szükség konfigurációra, és az alkalmazás automatikusan írási adatokat (például oldalletöltések, kérések és kivételek) fog írni.
 
 A Log Analytics munkaterülettől eltérően egy Application Insights alkalmazásnak van egy rögzített készlete. Más adatforrások nem konfigurálhatók az alkalmazásba való íráshoz, így további táblák nem hozhatók létre. 
 
 | Tábla | Leírás | 
 |:---|:---|
-| availabilityResults   | A rendelkezésre állási tesztek összesített adatai.
-| browserTimings      |     Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő.
-| customEvents        | Az alkalmazás által létrehozott egyéni események.
-| customMetrics       | Az alkalmazás által létrehozott egyéni metrikák.
-| függőségek        | Az alkalmazástól a TrackDependency ()-n keresztül rögzített más összetevőkre (beleértve a külső összetevőket is), például a REST API, az adatbázisra vagy a fájlrendszerre irányuló hívásokat. 
-| kivételek            | Az alkalmazás-futtatókörnyezet által kiváltott kivételek rögzítik a kiszolgálóoldali és az ügyféloldali (böngészők) kivételeket is.
-| Oldalmegtekintések           | Adatok az egyes webhelyekről a böngésző információi között.
-| performanceCounters   | Az alkalmazást támogató számítási erőforrások teljesítményének mérései, például a Windows-teljesítményszámlálók.
-| kérelmek            | Az alkalmazás által fogadott kérelmek. Például egy külön kérési rekord kerül a naplóba minden olyan HTTP-kérelem esetében, amelyet a webalkalmazás fogad. 
-| nyomok                | A TrackTrace () segítségével rögzített, az alkalmazás kódjának/naplózási keretrendszerén keresztül kibocsátott részletes naplók (Nyomkövetések).
-
+| availabilityResults | A rendelkezésre állási tesztek összesített adatai. |
+| browserTimings      | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő. |
+| customEvents        | Az alkalmazás által létrehozott egyéni események. |
+| customMetrics       | Az alkalmazás által létrehozott egyéni metrikák. |
+| függőségek        | Az alkalmazástól a TrackDependency ()-n keresztül rögzített más összetevőkre (beleértve a külső összetevőket is), például a REST API, az adatbázisra vagy a fájlrendszerre irányuló hívásokat. |
+| kivételek          | Az alkalmazás-futtatókörnyezet által kiváltott kivételek rögzítik a kiszolgálóoldali és az ügyféloldali (böngészők) kivételeket is.|
+| Oldalmegtekintések           | Adatok az egyes webhelyekről a böngésző információi között. |
+| performanceCounters | Az alkalmazást támogató számítási erőforrások teljesítményének mérései, például a Windows-teljesítményszámlálók. |
+| kérelmek            | Az alkalmazás által fogadott kérelmek. Például egy külön kérési rekord kerül a naplóba minden olyan HTTP-kérelem esetében, amelyet a webalkalmazás fogad.  |
+| nyomok              | A TrackTrace () segítségével rögzített, az alkalmazás kódjának/naplózási keretrendszerén keresztül kibocsátott részletes naplók (Nyomkövetések). |
 
 Az alkalmazáshoz tartozó Log Analytics **séma** lapján megtekintheti az egyes táblák sémáját.
 

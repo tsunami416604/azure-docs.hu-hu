@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/05/2020
+ms.date: 05/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bb1dba32ed2e913268a9fc37f37ab8cec360c5de
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: eab9db77dee5420ddc5baa9f71bde98fc46ca3f6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858419"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196848"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -111,6 +111,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 05/11/2020: a SLES-on futó Azure-beli [virtuális gépek SAP HANA magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) megváltozása a netcat-erőforráshoz tartozó erőforrás-stickiion beállításához 
 - 05/05/2020: az [Azure Virtual Machines tervezésének és megvalósításának változásai az SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide) használatával kifejezve, hogy Gen2 üzemelő példányok elérhetők a Mv1 VM-család számára
 - 04/24/2020: SAP HANA az Azure-beli virtuális [gépek készenléti csomópontján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)belüli SAP HANA, a SLES-on futó ANF változásai az Azure-beli virtuális gépek készenléti csomópontjaival, a [RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)-vel való ANF, az Azure-beli virtuális gépek [magas rendelkezésre állása](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) a SLES ANF és [magas rendelkezésre állással](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files)
 - 04/22/2020: a SLES-on futó Azure-beli [virtuális gépek SAP HANA magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) megváltozása a meta attribútumnak `is-managed` az utasításokból való eltávolításához, ahogy az ütközik a fürtnek a karbantartási módba vagy kívülre helyezésével.
@@ -160,7 +161,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 - 01/17/2020: változás az [SAP munkaterhelés-konfigurációkban Azure Availability Zones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) segítségével, hogy az eljárásra mutasson, amely automatizálja a Availability Zones közötti késés mértékét.
 - 01/16/2020: a [SAP HANA (nagyméretű példányok) telepítésének és konfigurálásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation) módosítása az Azure-ban az operációsrendszer-kiadások HANA IaaS-hez való telepítéséhez
 - 01/16/2020: az [SAP NetWeaver magas rendelkezésre állásának változásai az Azure-beli virtuális gépeken a SLES multi-SID útmutatóban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) az SAP-rendszerekre vonatkozó utasítások hozzáadásához a sorba helyezni Server 2 Architecture (ENSA2) használatával
-- 01/10/2020: a [SAP HANA az Azure-beli virtuális gépek készenléti csomópontján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) belüli, a SLES-on Azure NetApp Files és az Azure-beli virtuális gépek készenléti csomópontján [SAP HANA kibővíthető, Azure NetApp Files on RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) , `nfs4_disable_idmapping` és a változtatások végrehajtásával kapcsolatos utasításokat adhat hozzá.
+- 01/10/2020: a [SAP HANA az Azure-beli virtuális gépek készenléti csomópontján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) belüli, a SLES-on Azure NetApp Files és az Azure-beli virtuális gépek készenléti csomópontján [SAP HANA kibővíthető, Azure NetApp Files on RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) , és a változtatások végrehajtásával kapcsolatos utasításokat adhat hozzá `nfs4_disable_idmapping` .
 - 01/10/2020: az SAP [NetWeaver magas rendelkezésre állásának változásai az Azure-beli virtuális gépeken a SLES-on Azure NetApp Files for SAP Applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files) és az [Azure Virtual Machines magas rendelkezésre állású SAP NetWeaver on RHEL, SAP-alkalmazások esetén pedig az Azure NetApp Files for SAP applications](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-rhel-netapp-files) a Azure NetApp Files nfsv4 névleképezője-kötetek csatlakoztatásához.
 - 12/23/2019: [magas rendelkezésre állású SAP NetWeaver kiadása az Azure-beli virtuális gépeken a SLES multi-SID útmutatójában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid)
 - 12/18/2019: az [Azure-beli virtuális gépek készenléti csomópontjaival SAP HANA kibővíthető, Azure NetApp Files a RHEL-on](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel)
@@ -170,16 +171,5 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 - 11/08/2019: a SUSE Linux Enterprise Server Azure-beli virtuális gépeken [SAP HANA magas rendelkezésre állásának](sap-hana-high-availability.md)változásai, [SAP HANA rendszerreplikáció beállítása az Azure Virtual Machines szolgáltatásban (VM)](sap-hana-high-availability-rhel.md), [Azure Virtual Machines magas rendelkezésre állás for SAP NetWeaver on SUSE Linux Enterprise Server for sap Applications](high-availability-guide-suse.md), [Azure Virtual Machines magas rendelkezésre állás for SAP netweaver on SUSE Linux Enterprise Server with Azure NetApp Files](high-availability-guide-suse-netapp-files.md), [azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver on Red Hat Enterprise Linux](high-availability-guide-rhel.md), [Azure Virtual Machines magas rendelkezésre állású](high-availability-guide-rhel-netapp-files.md)SAP NetWeaver on Red Hat Enterprise Linux Azure NetApp Files, magas rendelkezésre állás az NFS-en az Azure-beli [virtuális gépeken](high-availability-guide-suse-nfs.md)a SUSE Linux Enterprise Server-on, GlusterFS az Azure-beli [virtuális gépeken](high-availability-guide-rhel-glusterfs.md)  
 - 11/08/2019: az [SAP munkaterhelés tervezési és üzembe helyezési ellenőrzőlistájának](sap-deployment-checklist.md) változásai a titkosítási javaslatok tisztázásához  
 - 11/04/2019: változások az [Azure-beli SUSE Linux Enterprise Server pacemaker beállításakor](high-availability-guide-suse-pacemaker.md) a fürt közvetlen, egyedi küldési konfigurációval való létrehozásához  
-- 10/29/2019: a [Virtual Machines nyilvános végponti kapcsolatának kiadása az Azure standard Load Balancer az SAP magas rendelkezésre állási forgatókönyvekben való használatával](high-availability-guide-standard-load-balancer-outbound-connections.md)
-- 10/25/2019: változások a [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage) , és SAP HANA az Azure-beli virtuális gépek [készenléti csomópontjának kibővítésével az Azure NetApp Files on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) a/Hana/Shared-kötet NFS-protokolljának tisztázásához
-- 10/22/2019: az SAP [NetWeaver magas rendelkezésre állásának változása Azure-beli virtuális gépeken SUSE Linux Enterprise Server SAP-alkalmazásokhoz](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse) [magas rendelkezésre állás az azure-beli virtuális gépeken az SAP-alkalmazásokhoz Azure NetApp Files SAP-alkalmazások számára](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-netapp-files), magas [rendelkezésre állás az Azure-](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)beli virtuális SUSE Linux Enterprise Server gépeken a SUSE Linux Enterprise Server-on, az Azure-on [SUSE Linux Enterprise Server az](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)Azure-beli virtuális GÉPEKen az Azure-beli virtuálisgép- [LUW](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm)magas rendelkezésre állása és az Azure [-beli virtuális](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability) gépeken SUSE Linux Enterprise Server
-- A ANF szakasz és fejléc szakaszának módosítása [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-- 10/21/2019: az [Azure-beli virtuális gépek készenléti csomópontjaival SAP HANA kibővíthető, Azure NetApp Files a SLES-on](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)
-- 10/16/2019: hibás hivatkozások javítása a [biztonsági mentés és visszaállítás](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-backup-restore) során
-- 10/16/2019: módosítsa a minimális ajánlott operációs rendszert a SLES 12 SP3 verzióról a SLES 12 SP4-re az Azure-beli [virtuális gépeken, SUSE Linux Enterprise Server a pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms-guide-ha-ibm) használatával
-- 10/11/2019: a lemezes tárolás konfigurációjának változásai és a ANF bevezetése [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations-storage)
-- 10/01/2019: változás az [Azure Proximity-elhelyezési csoportok grafikájában az optimális hálózati késés érdekében az SAP-alkalmazásokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) , hogy világosabb legyen
-- 10/01/2019: változás az [Azure-ban SAP HANA infrastruktúra-konfigurációkban és-műveletekben](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations) a/Hana/Shared.-alapú, magasan elérhető NFS-megosztásra vonatkozó utasítások helyesbítéséhez 
-
 
 

@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 1af0161edb0f833cdd14d8157e6edd9644e21467
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aeee7558aeeb0c1a3de291abc66578d7d955d842
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100277"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196185"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>SQL Server példány áttelepítése Azure SQL Database felügyelt példányra
 
@@ -43,9 +43,7 @@ Az adatbázis-áttelepítési folyamat magas szinten a következőképpen néz k
 
 Először határozza meg, hogy a felügyelt példány kompatibilis-e az alkalmazás adatbázis-követelményeivel. A felügyelt példányok központi telepítésének lehetősége úgy lett kialakítva, hogy könnyen áthelyezhető áttelepítést biztosítson a SQL Server helyszíni vagy virtuális gépeken használó meglévő alkalmazások többsége számára. Előfordulhat azonban, hogy esetenként olyan szolgáltatásokat vagy képességeket igényel, amelyek még nem támogatottak, és a megkerülő megoldás megvalósításának díja túl magas.
 
-A [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) használatával észlelheti az adatbázis-funkciókat érintő lehetséges kompatibilitási problémákat Azure SQL Databaseeken. A DMA még nem támogatja a felügyelt példányok áttelepítési célhelyként való használatát, de javasoljuk, hogy az értékelést Azure SQL Database, és körültekintően tekintse át a jelentett szolgáltatás paritásának és kompatibilitási problémáinak listáját a termékdokumentációban. [Azure SQL Database](sql-database-features.md) tekintse meg, hogy vannak-e olyan blokkoló hibák a felügyelt példányokban, amelyek nem blokkolók a felügyelt példányokban, mert a letiltások nagy része, hogy a rendszer a felügyelt példányok miatt el tudta távolítani a Azure SQL Database áttelepítés Ilyenek például az olyan funkciók, mint például az adatbázisok közötti lekérdezések, az azonos példányon belüli adatbázis-tranzakciók, a más SQL-forrásokhoz csatolt kiszolgálók, a CLR, a globális Temp táblák, a példány-szintű nézetek, a Service Broker és a hasonlók a felügyelt példányokban.
-
-Ha vannak olyan jelentett blokkoló problémák, amelyeket a rendszer nem távolít el a felügyelt példányok központi telepítésével, előfordulhat, hogy egy másik lehetőséget kell figyelembe vennie, például [SQL Server az Azure Virtual Machines](https://azure.microsoft.com/services/virtual-machines/sql-server/)szolgáltatásban. Néhány példa:
+A [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) használatával észlelheti az adatbázis-funkciókat érintő lehetséges kompatibilitási problémákat Azure SQL Databaseeken. Ha valamilyen letiltási probléma merül fel, lehetséges, hogy egy másik lehetőséget kell figyelembe vennie, például az Azure-beli [virtuális gépeken való SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/). Néhány példa:
 
 - Ha közvetlen hozzáférésre van szüksége az operációs rendszerhez vagy a fájlrendszerhez, például ha külső gyártót vagy egyéni ügynököt szeretne telepíteni ugyanarra a virtuális gépre SQL Server.
 - Ha olyan funkciókkal rendelkezik, amelyek még nem támogatottak, például a FileStream/leválasztható, a bázisterület és a több példány tranzakciója.
@@ -53,6 +51,7 @@ Ha vannak olyan jelentett blokkoló problémák, amelyeket a rendszer nem távol
 - Ha a számítási követelmények sokkal alacsonyabbak, mint a felügyelt példányok (egy virtuális mag, például), és az adatbázis-konszolidáció nem elfogadható megoldás.
 
 Ha feloldotta az összes azonosított áttelepítési blokkot, és folytatja az áttelepítést a felügyelt példányra, vegye figyelembe, hogy egyes módosítások befolyásolhatják a munkaterhelés teljesítményét:
+
 - A kötelező teljes helyreállítási modell és a rendszeres automatikus biztonsági mentés ütemezése hatással lehet a számítási feladatok teljesítményére vagy a karbantartási/ETL-műveletekre, ha rendszeresen használ egyszerű/tömegesen naplózott modellt, vagy igény szerint állított le biztonsági mentést.
 - Különböző kiszolgálói vagy adatbázis-szintű konfigurációk, például nyomkövetési jelzők vagy kompatibilitási szintek
 - A használt új funkciók, például az átlátszó adatbázis-titkosítás (TDE) vagy az automatikus feladatátvételi csoportok befolyásolhatják a CPU-t és az IO-használatot.
@@ -181,7 +180,7 @@ Végezze el a paraméterek módosítását, vagy frissítse a szolgáltatási sz
 A felügyelt példányok számos speciális eszközt biztosítanak a figyeléshez és a hibaelhárításhoz, és ezeket érdemes használni a példány teljesítményének figyeléséhez. A következő paraméterek közül néhányat figyelnie kell:
 - A példány CPU-használata határozza meg, hogy az Ön által kiépített virtuális mag száma megfelelő-e a számítási feladatokhoz.
 - Page – várható élettartam a felügyelt példányon, hogy meghatározza a [szükséges további memóriát](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Do-you-need-more-memory-on-Azure-SQL-Managed-Instance/ba-p/563444).
-- A várakozási `INSTANCE_LOG_GOVERNOR` statisztikákhoz hasonló, vagy `PAGEIOLATCH` megtudhatja, hogy van-e a tároló IO-problémái, különösen általános célú szinten, ahol szükség lehet a fájlok előzetes lefoglalására a jobb IO-teljesítmény eléréséhez.
+- A várakozási statisztikákhoz hasonló `INSTANCE_LOG_GOVERNOR` `PAGEIOLATCH` , vagy megtudhatja, hogy van-e a tároló IO-problémái, különösen általános célú szinten, ahol szükség lehet a fájlok előzetes lefoglalására a jobb IO-teljesítmény eléréséhez.
 
 ## <a name="leverage-advanced-paas-features"></a>Speciális Pásti funkciók kihasználása
 

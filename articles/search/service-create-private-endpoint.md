@@ -7,25 +7,22 @@ author: mrcarter8
 ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: 2664b1abd4131cf1dca186c7b044e338bf1efa84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75945820"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125553"
 ---
-# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search-preview"></a>Hozzon létre egy privát végpontot biztonságos kapcsolódáshoz az Azure Cognitive Searchhoz (előzetes verzió)
+# <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Hozzon létre egy privát végpontot biztonságos kapcsolódáshoz az Azure Cognitive Search
 
-Ebben a cikkben a portál használatával hozzon létre egy új Azure Cognitive Search Service-példányt, amely nem érhető el nyilvános IP-címen keresztül. Ezután állítson be egy Azure-beli virtuális gépet ugyanabban a virtuális hálózatban, és használja azt a keresési szolgáltatás privát végponton keresztüli eléréséhez.
+Ebben a cikkben a Azure Portal használatával hozzon létre egy új Azure Cognitive Search Service-példányt, amely nem érhető el az interneten keresztül. Ezután konfiguráljon egy Azure-beli virtuális gépet ugyanabban a virtuális hálózatban, és használja azt a keresési szolgáltatás privát végponton keresztüli eléréséhez.
 
 > [!Important]
-> A privát végpontok támogatása az Azure Cognitive Search [számára korlátozott](https://aka.ms/SearchPrivateLinkRequestAccess) hozzáférésű előzetes verzióként érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlottak. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
->
-> Miután hozzáférést kapott az előzetes verzióhoz, a Azure Portal vagy a [felügyeleti REST API 2019-10-06-Preview verziójának](https://docs.microsoft.com/rest/api/searchmanagement/)használatával konfigurálhatja a szolgáltatáshoz tartozó privát végpontokat.
->   
+> Az Azure Cognitive Search privát végpontjának támogatása a Azure Portal vagy a 2020-03-13-es [verziójú felügyeleti REST API](https://docs.microsoft.com/rest/api/searchmanagement/)használatával konfigurálható. Ha a szolgáltatás végpontja privát, egyes portál-funkciók le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint adatait, de a portál hozzáférése az adatok indexeléséhez és a szolgáltatás különböző összetevőihez, például az index, az indexelő és a készségkészlet-definíciók biztonsági okokból korlátozottak.
 
-## <a name="why-use-private-endpoint-for-secure-access"></a>Miért érdemes privát végpontot használni a biztonságos hozzáféréshez?
+## <a name="why-use-a-private-endpoint-for-secure-access"></a>Miért érdemes privát végpontot használni a biztonságos hozzáféréshez?
 
 Az Azure Cognitive Search [magánhálózati végpontok](../private-link/private-endpoint-overview.md) lehetővé teszik, hogy egy virtuális hálózaton lévő ügyfél biztonságosan hozzáférhessen egy keresési indexben lévő adathoz egy [privát hivatkozáson](../private-link/private-link-overview.md)keresztül. A privát végpont egy IP-címet használ a keresési szolgáltatáshoz tartozó [virtuális hálózati címtartomány](../virtual-network/virtual-network-ip-addresses-overview-arm.md#private-ip-addresses) alapján. Az ügyfél és a keresési szolgáltatás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán található privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A privát hivatkozást támogató egyéb Pásti-szolgáltatások listájáért tekintse meg a termék dokumentációjának [rendelkezésre állási szakaszát](../private-link/private-link-overview.md#availability) .
 
@@ -35,47 +32,29 @@ A keresési szolgáltatás privát végpontjai a következőket teszik lehetőv�
 - Növelje a virtuális hálózat biztonságát azáltal, hogy letiltja a virtuális hálózat kiszűrése.
 - Biztonságosan csatlakozhat a keresési szolgáltatáshoz olyan helyszíni hálózatokról, amelyek VPN-vagy [Expressroute](../expressroute/expressroute-locations.md) [-](../vpn-gateway/vpn-gateway-about-vpngateways.md) kapcsolaton keresztül csatlakoznak a virtuális hálózathoz.
 
-> [!NOTE]
-> Az előzetes verzióban jelenleg bizonyos korlátozások vonatkoznak a következőkre:
-> * Csak **az alapszintű** keresési szolgáltatásokhoz érhető el. 
-> * Elérhető az USA 2. nyugati régiójában, az USA nyugati középső régiójában, az USA keleti régiójában, az USA déli középső régiójában, Kelet-Ausztrália és Délkelet-ausztráliai régióban.
-> * Ha a szolgáltatás végpontja privát, egyes portál-funkciók le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint adatait, de a portál hozzáférése az adatok indexeléséhez és a szolgáltatás különböző összetevőihez, például az index, az indexelő és a készségkészlet-definíciók biztonsági okokból korlátozottak.
-> * Ha a szolgáltatás végpontja privát, a [keresés REST API](https://docs.microsoft.com/rest/api/searchservice/) használatával kell feltöltenie a dokumentumokat az indexbe.
-> * A következő hivatkozásra kattintva megtekintheti a privát végpontok támogatási lehetőségét a Azure Portalban:https://portal.azure.com/?feature.enablePrivateEndpoints=true
-
-
-
-## <a name="request-access"></a>Hozzáférés kérése 
-
-Az előzetes verzióra való feliratkozáshoz kattintson a [hozzáférés kérése](https://aka.ms/SearchPrivateLinkRequestAccess) lehetőségre. Az űrlap adatokat kér az Ön, a vállalat és az általános hálózati topológiáról. Ha áttekintjük a kérést, további utasításokkal megerősítő e-mailt fog kapni.
-
 ## <a name="create-the-virtual-network"></a>A virtuális hálózat létrehozása
 
 Ebben a szakaszban létre fog hozni egy virtuális hálózatot és alhálózatot a keresési szolgáltatás privát végpontjának eléréséhez használni kívánt virtuális gép üzemeltetéséhez.
 
-1. A Azure Portal Kezdőlap lapon válassza az **erőforrás** > létrehozása**hálózatkezelés** > **virtuális hálózat**lehetőséget.
+1. A Azure Portal Kezdőlap lapon válassza az **erőforrás létrehozása**  >  **hálózatkezelés**  >  **virtuális hálózat**lehetőséget.
 
 1. A **virtuális hálózat létrehozása**lapon adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | *MyVirtualNetwork* megadása |
-    | Címtér | Adja meg a *10.1.0.0/16* értéket |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra** . |
-    | Hely | Válassza ki az **USA nyugati** régióját vagy bármely Ön által használt régiót|
-    | Alhálózat – név | *MySubnet* megadása |
-    | Alhálózat – címtartomány | Adja meg a *10.1.0.0/24* értéket |
+    | Name | *MyVirtualNetwork* megadása |
+    | Régió | Válassza ki a kívánt régiót |
     |||
 
-1. Hagyja a többi értéket alapértelmezettként, és válassza a **Létrehozás**lehetőséget.
-
+1. Hagyja meg az alapértelmezett értékeket a többi beállításnál. Kattintson a **felülvizsgálat + létrehozás** , majd a **Létrehozás** elemre.
 
 ## <a name="create-a-search-service-with-a-private-endpoint"></a>Keresési szolgáltatás létrehozása privát végponttal
 
 Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozni egy privát végponttal. 
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**webes** > **Azure-Cognitive Search**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **webes**  >  **Azure-Cognitive Search**lehetőséget.
 
 1. Az **új Search Service – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
@@ -86,8 +65,8 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
     | URL-cím | Adjon meg egy egyedi nevet. |
-    | Hely | Válassza ki azt a régiót, amelyet az előzetes verziójú szolgáltatáshoz való hozzáférés kérésekor adott meg. |
-    | Tarifacsomag | Válassza az **árképzési szint módosítása** lehetőséget, majd az **alapszintű**lehetőséget. Az előzetes verzióhoz ez a szintet kötelező megadni. |
+    | Hely | Válassza ki a kívánt régiót. |
+    | Tarifacsomag | Válassza az **árképzés módosítása** lehetőséget, és válassza ki a kívánt szolgáltatási szintet. (Az **ingyenes** szintet nem támogatja. **Alap** vagy magasabb értéknek kell lennie.) |
     |||
   
 1. Válassza a **Next (tovább): skála**lehetőséget.
@@ -105,7 +84,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     | Hely | Válassza az **USA nyugati**régiója lehetőséget.|
-    | Name (Név) | Adja meg a *myPrivateEndpoint*.  |
+    | Name | Adja meg a *myPrivateEndpoint*.  |
     | Cél alerőforrása | Hagyja meg az alapértelmezett **searchService**. |
     | **HÁLÓZATI** |  |
     | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
@@ -129,7 +108,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
-1. A Azure Portal képernyő bal felső részén válassza az **erőforrás** > létrehozása**számítási** > **virtuális gép**lehetőséget.
+1. A Azure Portal képernyő bal felső részén válassza az **erőforrás létrehozása**  >  **számítási**  >  **virtuális gép**lehetőséget.
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
@@ -193,7 +172,7 @@ Töltse le, majd kapcsolódjon a virtuális gép *myVm* a következőképpen:
     1. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
         > [!NOTE]
-        > Előfordulhat, hogy a virtuális gép létrehozásakor megadott hitelesítő adatok megadásához **több választási lehetőséget** > kell választania**egy másik fiók használatával**.
+        > Előfordulhat, hogy a **More choices**  >  virtuális gép létrehozásakor megadott hitelesítő adatok megadásához több választási lehetőséget kell választania**egy másik fiók használatával**.
 
 1. Kattintson az **OK** gombra.
 
@@ -206,7 +185,7 @@ Töltse le, majd kapcsolódjon a virtuális gép *myVm* a következőképpen:
 
 Ebben a szakaszban ellenőrzi, hogy a magánhálózati hozzáférés a keresési szolgáltatáshoz történik-e, és hogy a privát végpont használatával csatlakozik-e.
 
-Ha a keresési szolgáltatással folytatott összes interakciót igényli, a [keresési Rest APIt](https://docs.microsoft.com/rest/api/searchservice/)kell visszahívnia. Ez az előzetes verzió nem támogatja a portált és a .NET SDK-t.
+Ha a keresési szolgáltatás végpontja privát, egyes portál-funkciók le vannak tiltva. Megtekintheti és kezelheti a szolgáltatási szint beállításait, de a portál hozzáférése az indexhez és a szolgáltatás különböző egyéb összetevőihez, például az index, az indexelő és a készségkészlet-definíciók biztonsági okokból korlátozottak.
 
 1. A *myVM*távoli asztal nyissa meg a PowerShellt.
 
@@ -232,9 +211,9 @@ Ha a keresési szolgáltatással folytatott összes interakciót igényli, a [ke
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a privát végpont, a Search szolgáltatás és a virtuális gép használatával, törölje az erőforráscsoportot és a benne lévő összes erőforrást:
-1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup* lehetőséget a keresési eredmények közül. 
+1. Adja meg a *myResourceGroup*a   portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup*lehetőséget   a keresési eredmények közül. 
 1. Válassza az **Erőforráscsoport törlése** elemet. 
-1. Írja be a *myResourceGroup*  **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
+1. Írja be a *myResourceGroup*   **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 Ebben a cikkben létrehozott egy virtuális GÉPET egy virtuális hálózaton és egy keresési szolgáltatást egy privát végponttal. Az internetről csatlakozik a virtuális géphez, és biztonságosan kommunikál a keresési szolgáltatással a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint?](../private-link/private-endpoint-overview.md).

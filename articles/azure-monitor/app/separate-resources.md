@@ -1,18 +1,18 @@
 ---
-title: Telemetria elválasztása az Azure Application Insightsban
+title: A Application Insights üzembe helyezésének megtervezése – egy vagy több erőforrás?
 description: A különböző erőforrásokhoz való közvetlen telemetria fejlesztési, tesztelési és üzemi bélyegzők.
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.openlocfilehash: 92a1bb6cb0bb73ac67d38eeba5bd3cdafacf8b56
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.date: 05/11/2020
+ms.openlocfilehash: 6df6622cbba251c221533c3307dc194f08e871fb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562151"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125689"
 ---
-# <a name="separating-telemetry-from-development-test-and-production"></a>Telemetria elválasztása fejlesztési, tesztelési és éles környezetből
+# <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
 
-Ha egy webalkalmazás következő verzióját fejleszti, nem szeretné összekeverni a [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetria az új verzióról és a már kiadott verzióról. A félreértések elkerülése érdekében küldje el a telemetria különböző fejlesztési szakaszokból, hogy elkülönítse Application Insights erőforrásait, külön rendszerállapot-kulccsal (erőforráskulcsot). Annak érdekében, hogy könnyebb legyen módosítani a kialakítási kulcsot az egyik fázisról a másikra való váltáskor, hasznos lehet a rendszerállapotkulcsot beállítása kódban a konfigurációs fájl helyett. 
+Ha egy webalkalmazás következő verzióját fejleszti, nem szeretné összekeverni a [Application Insights](../../azure-monitor/app/app-insights-overview.md) telemetria az új verzióról és a már kiadott verzióról. A félreértések elkerülése érdekében küldje el a telemetria különböző fejlesztési szakaszokból, hogy elkülönítse Application Insights erőforrásait, külön rendszerállapot-kulccsal (erőforráskulcsot). Annak érdekében, hogy könnyebb legyen módosítani a kialakítási kulcsot az egyik fázisról a másikra való váltáskor, hasznos lehet a rendszerállapotkulcsot beállítása kódban a konfigurációs fájl helyett.
 
 (Ha a rendszer egy Azure Cloud Service-szolgáltatás, akkor [egy másik módszer a különálló erőforráskulcsot beállítására](../../azure-monitor/app/cloudservices.md).)
 
@@ -22,7 +22,7 @@ A webalkalmazás Application Insights figyelésének beállításakor egy Applic
 
 Minden Application Insights erőforráshoz elérhető metrikák tartoznak. Ha a teljesen különálló összetevők ugyanarra a Application Insights erőforrásra jelentenek jelentést, előfordulhat, hogy ezek a metrikák nem feltétlenül az irányítópulton/riasztáson alapulnak.
 
-### <a name="use-a-single-application-insights-resource"></a>Egyetlen Application Insights erőforrás használata
+### <a name="when-to-use-a-single-application-insights-resource"></a>Mikor kell egyetlen Application Insights erőforrást használni
 
 -   Együtt telepített alkalmazás-összetevők esetén. Általában egyetlen csapat fejleszti, és ugyanazokat a DevOps/ITOps felhasználók kezelik.
 -   Ha a fő teljesítménymutatók (KPI-k), például a válaszadási időtartamok, az irányítópulton található meghibásodási arányok és az ezekből származó hibák összevonására van lehetőség, alapértelmezés szerint (a Metrikaböngésző felhasználói felületén választhat a szerepkör neve alapján).
@@ -45,7 +45,7 @@ Annak érdekében, hogy könnyebb legyen módosítani a rendszerállapotkulcsot,
 
 Állítsa be a kulcsot egy inicializálási metódusban, például global.aspx.cs egy ASP.NET-szolgáltatásban:
 
-*C#*
+*C #*
 
     protected void Application_Start()
     {
@@ -93,7 +93,7 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
 
     `telemetryClient.Context.Component.Version = typeof(MyProject.MyClass).Assembly.GetName().Version;`
 * Ezt a sort egy [telemetria inicializáló](../../azure-monitor/app/api-custom-events-metrics.md#defaults) sorba csomagolva biztosíthatja, hogy az összes TelemetryClient-példány konzisztens legyen.
-* [ASP.NET] Állítsa be a verziót `BuildInfo.config`a alkalmazásban. A webmodul a BuildLabel csomópontból fogja kiválasztani a verziót. Adja meg ezt a fájlt a projektben, és ne feledje, hogy a másolás mindig tulajdonságot Megoldáskezelő.
+* [ASP.NET] Állítsa be a verziót a alkalmazásban `BuildInfo.config` . A webmodul a BuildLabel csomópontból fogja kiválasztani a verziót. Adja meg ezt a fájlt a projektben, és ne feledje, hogy a másolás mindig tulajdonságot Megoldáskezelő.
 
     ```XML
 
@@ -121,7 +121,7 @@ Az alkalmazás verzió tulajdonságának beállítása több különböző móds
 
     A Build címke helyőrzőt (AutoGen_...) tartalmaz a Visual Studióval való kiépítés során. Az MSBuild-sel azonban a megfelelő verziószámmal vannak feltöltve.
 
-    Ha engedélyezni szeretné, hogy az MSBuild verziószámokat hozzon létre `1.0.*` , állítsa be a verziót a AssemblyReference.cs-ben
+    Ha engedélyezni szeretné, hogy az MSBuild verziószámokat hozzon létre, állítsa be a verziót a `1.0.*` AssemblyReference.cs-ben
 
 ## <a name="version-and-release-tracking"></a>Verzió- és kiadáskövetés
 Az alkalmazásverzió nyomon követéséhez győződjön meg arról, hogy a Microsoft Build Engine folyamat létrehozza a `buildinfo.config` fájlt. A `.csproj` fájlban adja hozzá a következőket:  

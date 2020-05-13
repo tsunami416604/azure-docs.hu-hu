@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 54501e7e00ba8a28dd7cb421232b9a9587604338
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 6741c034351099f544c20749eb7c7a39e7932181
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82653138"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195133"
 ---
 # <a name="set-up-the-powershell-module-for-windows-virtual-desktop"></a>A PowerShell-modul beállítása a Windows rendszerű virtuális asztalhoz
 
@@ -46,7 +46,7 @@ Ezután futtassa a következő parancsmagot az Azure-hoz való kapcsolódáshoz:
 Connect-AzAccount
 ```
 
-Az Azure-fiókba való bejelentkezéshez a kapcsolódási parancsmag futtatásakor generált kód szükséges. A bejelentkezéshez nyissa meg <https://microsoft.com/devicelogin>a következőt:, írja be a kódot, majd jelentkezzen be az Azure-beli rendszergazdai hitelesítő adataival.
+Az Azure-fiókba való bejelentkezéshez a kapcsolódási parancsmag futtatásakor generált kód szükséges. A bejelentkezéshez nyissa meg a következőt: <https://microsoft.com/devicelogin> , írja be a kódot, majd jelentkezzen be az Azure-beli rendszergazdai hitelesítő adataival.
 
 ```powershell
 Account SubscriptionName TenantId Environment
@@ -63,7 +63,7 @@ Ez közvetlenül a rendszergazdai hitelesítő adataihoz tartozó előfizetésbe
 Ha módosítani szeretné az alapértelmezett előfizetést a bejelentkezés után, futtassa a következő parancsmagot:
 
 ```powershell
-Select-AzureSubscription -SubscriptionName <preferredsubscriptionname>
+Select-AzSubscription -SubscriptionName <preferredsubscriptionname>
 ```
 
 Amikor kiválasztja a használni kívánt új előfizetést, nem kell megadnia az előfizetés AZONOSÍTÓját a későbbiekben futtatott parancsmagokban. A következő parancsmag például az előfizetés-azonosító nélkül kérdez le egy adott munkamenet-gazdagépet:

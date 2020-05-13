@@ -8,12 +8,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 19eaaa1ac442a04799bfa8d8d495b9c7dd393e5a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 72a96e04d308dbb2774d5b8f8aa909ab81bebee3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928278"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195677"
 ---
 # <a name="global-transit-network-architecture-and-virtual-wan"></a>Globális átviteli hálózati architektúra és virtuális WAN
 
@@ -145,10 +145,10 @@ A VNet – VNet biztonságos továbbítás lehetővé teszi, hogy a virtuális h
 
 ### <a name="vnet-to-internet-or-third-party-security-service-i"></a>VNet vagy harmadik féltől származó biztonsági szolgáltatás (i)
 
-A VNet vagy harmadik féltől származó biztonságos tranzit lehetővé teszi, hogy a virtuális hálózatok a virtuális WAN-központban lévő Azure Firewall keresztül kapcsolódjon az internethez vagy egy támogatott harmadik féltől származó biztonsági szolgáltatáshoz.
+A VNet lehetővé teszi a virtuális hálózatok számára, hogy a virtuális WAN-központban lévő Azure Firewall keresztül kapcsolódjon az internethez. Az internetre irányuló, harmadik féltől származó biztonsági szolgáltatásokon keresztüli adatforgalom nem a Azure Firewallon keresztül áramlik. A vnet elérési útját a támogatott külső biztonsági szolgáltatással is konfigurálhatja a Azure Firewall Manager használatával.  
 
 ### <a name="branch-to-internet-or-third-party-security-service-j"></a>Ág – Internet vagy harmadik féltől származó biztonsági szolgáltatás (j)
-Az ág – Internet vagy harmadik féltől származó biztonságos továbbítás lehetővé teszi, hogy az ágak a virtuális WAN-központban Azure Firewall keresztül csatlakozhassanak az internethez vagy egy támogatott harmadik féltől származó biztonsági szolgáltatáshoz.
+Az ág – Internet lehetővé teszi, hogy az ágak az internethez kapcsolódjanak a virtuális WAN-központ Azure Firewallján keresztül. Az internetre irányuló, harmadik féltől származó biztonsági szolgáltatásokon keresztüli adatforgalom nem a Azure Firewallon keresztül áramlik. A Azure Firewall Manager használatával az ág – Internet elérési utat a támogatott külső biztonsági szolgáltatással is konfigurálhatja. 
 
 ### <a name="how-do-i-enable-default-route-00000-in-a-secured-virtual-hub"></a>Alapértelmezett útvonal (0.0.0.0/0) Hogyan engedélyezése biztonságos virtuális központban
 

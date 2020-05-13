@@ -1,21 +1,21 @@
 ---
-title: A Azure Cosmos DB figyelése Azure Monitorekkel Cosmos DB (előzetes verzió) | Microsoft Docs
+title: Azure Cosmos DB figyelése Azure Monitorekkel Cosmos DBhoz | Microsoft Docs
 description: Ez a cikk a Cosmos DB funkció Azure Monitor ismerteti, amely Cosmos DB tulajdonosokat biztosít a CosmosDB-fiókokkal kapcsolatos teljesítmény-és kihasználtsági problémák gyors megismeréséhez.
 ms.subservice: ''
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 10/27/2019
-ms.openlocfilehash: 9a900a2f2e950fe9b9846ebcc047d7c344284948
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 68b1b8c92b5119da400b0ada0fe792c855dd1f33
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250682"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195401"
 ---
-# <a name="explore-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB Azure Monitor megismerése (előzetes verzió)
+# <a name="explore-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor megismerése
 
-A Azure Cosmos DB (előzetes verzió) Azure Monitor az egységes interaktív felhasználói felület összes Azure Cosmos DB erőforrásának teljes teljesítményéről, hibáinak, kapacitásának és működési állapotának áttekintését nyújtja. Ez a cikk segítséget nyújt az új figyelési élmény előnyeinek megismeréséhez, valamint arról, hogy miként módosíthatja és igazíthatja a felhasználói élményt a szervezet egyedi igényeinek megfelelően.   
+A Azure Cosmos DB Azure Monitor az egységes interaktív felhasználói felület összes Azure Cosmos DB erőforrásának teljes teljesítményét, hibáit, kapacitását és működési állapotát jeleníti meg. Ez a cikk segítséget nyújt az új figyelési élmény előnyeinek megismeréséhez, valamint arról, hogy miként módosíthatja és igazíthatja a felhasználói élményt a szervezet egyedi igényeinek megfelelően.   
 
 ## <a name="introduction"></a>Introduction (Bevezetés)
 
@@ -44,7 +44,7 @@ Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és teljesítmén
 
     ![A "monitor" szót tartalmazó keresőmező és egy olyan legördülő lista, amely egy sebességmérő stílusú képpel rendelkező szolgáltatásokat mutat](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Válassza a **Cosmos db (előzetes verzió)** lehetőséget.
+3. Válassza a **Cosmos db**lehetőséget.
 
     ![Képernyőkép a Cosmos DB áttekintése munkafüzetről](./media/cosmosdb-insights-overview/cosmos-db.png)
 
@@ -92,7 +92,7 @@ Az áttekintő munkafüzethez hasonlóan az **előfizetés** oszlopban egy Azure
 
 Válassza a lap tetején a **műveletek** lehetőséget, majd megnyílik a munkafüzet sablonjának **műveletek** rész. Lehetővé teszi, hogy a kérések típusa szerinti bontásban megtekintse a kérelmeket. 
 
-Tehát az alábbi példában láthatja, hogy `eastus-billingint` az olvasási kérelmeket elsődlegesen fogadja, de kis számú upsert és a létrehozási kéréseket. Míg `westeurope-billingint` a kérelem szempontjából csak olvasható, legalább az elmúlt négy órában, hogy a munkafüzet aktuális hatóköre a Time Range paraméterén keresztül történjen.
+Tehát az alábbi példában láthatja, hogy `eastus-billingint` az olvasási kérelmeket elsődlegesen fogadja, de kis számú upsert és a létrehozási kéréseket. Míg a `westeurope-billingint` kérelem szempontjából csak olvasható, legalább az elmúlt négy órában, hogy a munkafüzet aktuális hatóköre a Time Range paraméterén keresztül történjen.
 
 ![Műveleti munkafüzet](./media/cosmosdb-insights-overview/operation.png) 
 
@@ -110,9 +110,9 @@ A munkafüzet összes legördülő nézetének kibontásához vagy összecsukás
 
 ![Munkafüzet kibontása ikon](./media/cosmosdb-insights-overview/expand.png)
 
-## <a name="customize-azure-monitor-for-azure-cosmos-db-preview"></a>Azure Cosmos DB Azure Monitor testreszabása (előzetes verzió)
+## <a name="customize-azure-monitor-for-azure-cosmos-db"></a>Azure Cosmos DB Azure Monitor testreszabása
 
-Mivel ez a felület Azure monitor munkafüzet-sablonokra épül, **testreszabhatja** > **a módosítást, és** **mentheti** a módosított verzió egy példányát egy egyéni munkafüzetbe. 
+Mivel ez a felület Azure monitor munkafüzet-sablonokra épül, **testreszabhatja**a  >  **Edit** módosítást, és **mentheti** a módosított verzió egy példányát egy egyéni munkafüzetbe. 
 
 ![Sáv testreszabása](./media/cosmosdb-insights-overview/customize.png)
 

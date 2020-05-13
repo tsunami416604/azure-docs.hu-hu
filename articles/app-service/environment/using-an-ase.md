@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre, tehet közzé és méretezheti a
 author: ccompy
 ms.assetid: a22450c4-9b8b-41d4-9568-c4646f4cf66b
 ms.topic: article
-ms.date: 3/26/2020
+ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4565580feeddc2df8f6ed3011302016bb39977b4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fd1ffc8636e11ca20bc32b4b6f600e03d923d8b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80586135"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125808"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
 
@@ -36,7 +36,7 @@ Ha nem rendelkezik beadással, a [létrehozásához kövesse az App Service Envi
 
 Alkalmazás létrehozása a kiegészítőben:
 
-1. Válassza **az erőforrás** > **létrehozása web és mobil** > **webalkalmazás**lehetőséget.
+1. Válassza **az erőforrás létrehozása**  >  **web és mobil**  >  **webalkalmazás**lehetőséget.
 
 1. Adja meg az alkalmazás nevét. Ha már kiválasztott egy App Service-csomagot a központhoz, az alkalmazás tartományneve a kiegészítő csomag tartománynevét tükrözi:
 
@@ -104,14 +104,14 @@ Az előtér-erőforrások a szolgáltatáshoz tartozó HTTP/HTTPS-végpont. Az a
 
 ## <a name="app-access"></a>Alkalmazás-hozzáférés
 
-Egy külső benyújtó esetében az alkalmazás létrehozásához használt tartomány utótagja a következő: *.&lt; asename&gt;. p.azurewebsites.net*. Ha a kiegészítő szolgáltató neve _külső-_ bemutató, és a _contoso_ nevű alkalmazást üzemelteti, akkor az alábbi URL-címeken érhető el:
+Egy külső benyújtó esetében az alkalmazás létrehozásához használt tartomány utótagja a következő: *. &lt; asename &gt; . p.azurewebsites.net*. Ha a kiegészítő szolgáltató neve _külső-_ bemutató, és a _contoso_ nevű alkalmazást üzemelteti, akkor az alábbi URL-címeken érhető el:
 
 - contoso.external-ase.p.azurewebsites.net
 - contoso.scm.external-ase.p.azurewebsites.net
 
 További információ a külső kiegészítő szolgáltatás létrehozásáról: [app Service Environment létrehozása][MakeExternalASE].
 
-Egy ILB-előkészítőben az alkalmazás létrehozásához használt tartomány utótagja a következő: *.&lt; asename&gt;. appserviceenvironment.net*. Ha a szolgáltató neve _ILB-kiegészítő_ , és a _contoso_ nevű alkalmazást üzemelteti, akkor az alábbi URL-címeken érhető el:
+Egy ILB-előkészítőben az alkalmazás létrehozásához használt tartomány utótagja a következő: *. &lt; asename &gt; . appserviceenvironment.net*. Ha a szolgáltató neve _ILB-kiegészítő_ , és a _contoso_ nevű alkalmazást üzemelteti, akkor az alábbi URL-címeken érhető el:
 
 - contoso.ilb-ase.appserviceenvironment.net
 - contoso.scm.ilb-ase.appserviceenvironment.net
@@ -122,19 +122,26 @@ Az SCM URL-cím a kudu-konzol eléréséhez, illetve az alkalmazás Web Deploy h
 
 ### <a name="dns-configuration"></a>DNS-konfiguráció 
 
-Ha külső beadást használ, a szolgáltatón keresztül készített alkalmazások regisztrálva vannak Azure DNSban. A ILB bevezetésével a saját DNS-t kell kezelnie. 
+Ha külső beadást használ, a szolgáltatón keresztül készített alkalmazások regisztrálva vannak Azure DNSban. Az alkalmazások nyilvánosan elérhetővé tételéhez nincs szükség további lépésekre. A ILB bevezetésével a saját DNS-t kell kezelnie. Ezt megteheti a saját DNS-kiszolgálójában vagy Azure DNS privát zónában.
 
-A DNS konfigurálása a ILB beadásával:
+A DNS konfigurálása a saját DNS-kiszolgálójában a ILB-alapú központtal:
 
-    create a zone for <ASE name>.appserviceenvironment.net
-    create an A record in that zone that points * to the ILB IP address
-    create an A record in that zone that points @ to the ILB IP address
-    create a zone in <ASE name>.appserviceenvironment.net named scm
-    create an A record in the scm zone that points * to the ILB IP address
+1. zóna létrehozása a <ASE name> . appserviceenvironment.net
+1. hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
+1. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
+1. zóna létrehozása a <ASE name> . appserviceenvironment.net, SCM néven
+1. hozzon létre egy olyan rekordot az SCM-zónában, amely * a ILB IP-címére mutat.
 
-A szolgáltatói alapértelmezett tartomány utótagjának DNS-beállításai nem korlátozzák, hogy az alkalmazások csak az adott nevek számára legyenek elérhetők. Egyéni tartománynevet az alkalmazások érvényesítése nélkül is beállíthat egy ILB-ben. Ha ezután létre szeretne hozni egy *contoso.net*nevű zónát, ezt megteheti, és rámutathat a ILB IP-címére. Az Egyéni tartománynév az alkalmazásra vonatkozó kérelmek esetében működik, de nem az SCM-helyhez. Az SCM-hely csak a * &lt;&gt;AppName. SCM-ben&lt; érhető el. asename&gt;. appserviceenvironment.net*. 
+A DNS konfigurálása Azure DNS privát zónában:
 
-A nevű zóna *.&lt; a&gt;asename. appserviceenvironment.net* globálisan egyedi. A 2019. május előtt az ügyfelek megadhatják a ILB beadásának tartományi utótagját. Ha a *. contoso.com* -t szeretné használni a tartománynév-utótaghoz, akkor ezt megteheti, és ez magában foglalja az SCM-helyet. A modellel kapcsolatos kihívások is megtalálhatók; az alapértelmezett SSL-tanúsítvány kezelése, az egyszeri bejelentkezés hiánya az SCM-hellyel, valamint a helyettesítő tanúsítvány használatára vonatkozó követelmény. A ILB-ben használt alapértelmezett tanúsítvány-frissítési folyamat megszakadt, és az alkalmazás újraindítását is okozta. Ezeknek a problémáknak a megoldásához a ILB-bevezetési viselkedés úgy módosult, hogy a szolgáltató neve és a Microsoft tulajdonában lévő utótag alapján egy tartományi utótagot használjon. A ILB-beli beváltási viselkedés változása csak a 2019 májusi ILB-ASE érinti. A meglévő ILB-ASE továbbra is kezelni kell a bevezetési és DNS-konfigurációjuk alapértelmezett tanúsítványát.
+1. hozzon létre egy appserviceenvironment.net nevű Azure DNS privát zónát <ASE name>
+1. hozzon létre egy olyan rekordot az adott zónában, amely * a ILB IP-címére mutat.
+1. hozzon létre egy olyan rekordot az adott zónában, amely a @-t a ILB IP-címére mutat.
+1. hozzon létre egy olyan rekordot az adott zónában, amely a *. SCM-t a ILB IP-címére mutat.
+
+A szolgáltatói alapértelmezett tartomány utótagjának DNS-beállításai nem korlátozzák, hogy az alkalmazások csak az adott nevek számára legyenek elérhetők. Egyéni tartománynevet az alkalmazások érvényesítése nélkül is beállíthat egy ILB-ben. Ha ezután létre szeretne hozni egy *contoso.net*nevű zónát, ezt megteheti, és rámutathat a ILB IP-címére. Az Egyéni tartománynév az alkalmazásra vonatkozó kérelmek esetében működik, de nem az SCM-helyhez. Az SCM-hely csak a * &lt; AppName &gt; . SCM &lt; -ben érhető el. asename &gt; . appserviceenvironment.net*. 
+
+A nevű zóna *. &lt; a asename &gt; . appserviceenvironment.net* globálisan egyedi. A 2019. május előtt az ügyfelek megadhatják a ILB beadásának tartományi utótagját. Ha a *. contoso.com* -t szeretné használni a tartománynév-utótaghoz, akkor ezt megteheti, és ez magában foglalja az SCM-helyet. A modellel kapcsolatos kihívások is megtalálhatók; az alapértelmezett SSL-tanúsítvány kezelése, az egyszeri bejelentkezés hiánya az SCM-hellyel, valamint a helyettesítő tanúsítvány használatára vonatkozó követelmény. A ILB-ben használt alapértelmezett tanúsítvány-frissítési folyamat megszakadt, és az alkalmazás újraindítását is okozta. Ezeknek a problémáknak a megoldásához a ILB-bevezetési viselkedés úgy módosult, hogy a szolgáltató neve és a Microsoft tulajdonában lévő utótag alapján egy tartományi utótagot használjon. A ILB-beli beváltási viselkedés változása csak a 2019 májusi ILB-ASE érinti. A meglévő ILB-ASE továbbra is kezelni kell a bevezetési és DNS-konfigurációjuk alapértelmezett tanúsítványát.
 
 ## <a name="publishing"></a>Közzététel
 
@@ -152,11 +159,11 @@ A ILB-kiegészítő szolgáltatással a közzétételi végpontok csak a ILB ér
 
 További változtatások nélkül az internetalapú CI-rendszerek (például a GitHub és az Azure DevOps) nem működnek a ILB-vel, mert a közzétételi végpont nem érhető el az interneten. Engedélyezheti a közzétételt az Azure DevOps származó ILB-előállítók számára, ha telepít egy saját üzemeltetésű kiadási ügynököt a virtuális hálózatban, amely tartalmazza a ILB-javítót. Azt is megteheti, hogy olyan CI-rendszer használatát is használja, amely lekéréses modellt, például Dropbox-t használ.
 
-Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés** > **alapjai** és a **Tulajdonságok**területen is).
+Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok**területen is).
 
 ## <a name="storage"></a>Storage
 
-A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban lévő App Service csomag alapértelmezés szerint 250 GB-os korlátot tartalmaz. Ha öt vagy több App Service-csomaggal rendelkezik, ügyeljen arra, hogy ne lépje túl a kisegítő lehetőség 1 TB-os korlátját. Ha egy App Service-csomagban több, mint az 250 GB-os korlátra van szüksége, forduljon az ügyfélszolgálathoz, és állítsa be a App Service-csomag korlátját legfeljebb 1 TB-ra. Ha a csomagra vonatkozó korlátot módosítják, akkor a kiegészítő csomagban található összes App Service-csomagra vonatkozóan továbbra is 1 TB korlát szerepel.
+A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 
 ## <a name="logging"></a>Naplózás
 
@@ -164,16 +171,16 @@ Integrálhatja a beAzure Monitort a beépítés az Azure Storage-ba, az Azure Ev
 
 | Helyzet | Üzenet |
 |---------|----------|
-| A Bea nem kifogástalan állapotú | A megadott beadási állapot nem kifogástalan, mert érvénytelen a virtuális hálózati konfiguráció. Ha a sérült állapot továbbra is fennáll, a rendszer felfüggeszti a bevezetés állapotát. Győződjön meg arról, hogy az itt definiált irányelvek követik: https://docs.microsoft.com/azure/app-service/environment/network-info. |
-| A bevezetési alhálózat csaknem el van szabadítva | A megadott beadási pont egy olyan alhálózaton van, amely szinte nem elegendő. {0} Fennmaradó címek vannak. A címek kimerítése után a kisegítő lehetőség nem méretezhető.  |
-| A Bea teljes példány korlátja közeledik | A megadott beadási szolgáltatás a teljes körű beadási korláthoz közeledik. Jelenleg a 201 {0} -példányok maximális számát tartalmazza app Service. |
-| A kiegészítő szolgáltatás nem tudja elérni a függőséget | A megadott beadási lehetőség nem érhető {0}el.  Győződjön meg arról, hogy az itt definiált irányelvek követik: https://docs.microsoft.com/azure/app-service/environment/network-info. |
+| A Bea nem kifogástalan állapotú | A megadott beadási állapot nem kifogástalan, mert érvénytelen a virtuális hálózati konfiguráció. Ha a sérült állapot továbbra is fennáll, a rendszer felfüggeszti a bevezetés állapotát. Győződjön meg arról, hogy az itt definiált irányelvek követik: https://docs.microsoft.com/azure/app-service/environment/network-info . |
+| A bevezetési alhálózat csaknem el van szabadítva | A megadott beadási pont egy olyan alhálózaton van, amely szinte nem elegendő. {0}Fennmaradó címek vannak. A címek kimerítése után a kisegítő lehetőség nem méretezhető.  |
+| A Bea teljes példány korlátja közeledik | A megadott beadási szolgáltatás a teljes körű beadási korláthoz közeledik. Jelenleg {0} a 201-példányok maximális számát tartalmazza app Service. |
+| A kiegészítő szolgáltatás nem tudja elérni a függőséget | A megadott beadási lehetőség nem érhető el {0} .  Győződjön meg arról, hogy az itt definiált irányelvek követik: https://docs.microsoft.com/azure/app-service/environment/network-info . |
 | A beépítés fel van függesztve | A megadott beadási szolgáltatás fel van függesztve. A bevonási felfüggesztés oka lehet a fiók hiánya vagy az érvénytelen virtuális hálózati konfiguráció. Oldja meg a kiváltó okot, és folytassa a beszállítást, hogy továbbra is kiszolgálja a forgalmat. |
 | A bevezető csomag frissítése megkezdődött | Megkezdődött a platform frissítése a megadott beadásra. Késések várhatók a skálázási műveletekben. |
 | A betöltési frissítés befejeződött | Befejeződött a platform frissítése a megadott beadási csomagra. |
-| A skálázási műveletek elkezdődtek | Egy App Service terv ({0}) megkezdte a skálázást. Kívánt állapot: {1} {2} feldolgozók.
-| A skálázási műveletek befejeződtek | Egy App Service terv ({0}) befejezte a skálázást. Jelenlegi állapot: {1} {2} feldolgozók. |
-| A skálázási műveletek sikertelenek voltak | Egy App Service-csomag{0}() méretezése nem sikerült. Jelenlegi állapot: {1} {2} feldolgozók. |
+| A skálázási műveletek elkezdődtek | Egy App Service terv ( {0} ) megkezdte a skálázást. Kívánt állapot: {1} {2} feldolgozók.
+| A skálázási műveletek befejeződtek | Egy App Service terv ( {0} ) befejezte a skálázást. Jelenlegi állapot: {1} {2} feldolgozók. |
+| A skálázási műveletek sikertelenek voltak | Egy App Service-csomag ( {0} ) méretezése nem sikerült. Jelenlegi állapot: {1} {2} feldolgozók. |
 
 A beléptetés beléptetésének engedélyezése:
 
@@ -200,16 +207,16 @@ Ha riasztást szeretne létrehozni a naplókban, kövesse a naplók [létrehozá
 
 ## <a name="upgrade-preference"></a>Frissítési beállítások
 
-Ha több ASE is rendelkezik, érdemes lehet néhány ASE frissíteni, mielőtt mások is. A **üzemeltetési Resource Manager** -objektumon belül megadhatja a **upgradePreference**értékét. A **upgradePreference** beállítását sablon, ARMClient vagy https://resources.azure.coma használatával lehet konfigurálni. A három lehetséges érték a következők:
+Ha több ASE is rendelkezik, érdemes lehet néhány ASE frissíteni, mielőtt mások is. A **üzemeltetési Resource Manager** -objektumon belül megadhatja a **upgradePreference**értékét. A **upgradePreference** beállítását sablon, ARMClient vagy a használatával lehet konfigurálni https://resources.azure.com . A három lehetséges érték a következők:
 
 - **Nincs**: az Azure a beadott kötegben nem fogja frissíteni a Bea-t. Ez az alapértelmezett érték.
 - **Korai**: a bevezetés a app Service frissítéseinek első felében lesz frissítve.
 - **Későn**: a bevezetés a app Service frissítéseinek második felében lesz frissítve.
 
-Ha használja https://resources.azure.com, kövesse az alábbi lépéseket a **upgradePreferences** értékének beállításához:
+Ha használja https://resources.azure.com , kövesse az alábbi lépéseket a **upgradePreferences** értékének beállításához:
 
 1. Lépjen a resources.azure.com webhelyre, és jelentkezzen be az Azure-fiókjával.
-1. Ugorjon végig az erőforrásokon\/\[\]\/az előfizetések előfizetés neve\]\/resourceGroups\/\/\[erőforráscsoport neve szolgáltatók\/Microsoft\/\[. Web\]hostingEnvironments.
+1. Ugorjon végig az erőforrásokon az előfizetések \/ \[ előfizetés neve \] \/ resourceGroups \/ \[ erőforráscsoport neve \] \/ szolgáltatók \/ Microsoft. Web \/ hostingEnvironments \/ \[ \] .
 1. Válassza a felül található **írás/írás** elemet.
 1. Válassza a **Szerkesztés** elemet.
 1. Állítsa be a **upgradePreference** a kívánt három érték egyikére.

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
-ms.openlocfilehash: 9bb8818d2bb91c14eafc272774e0b633c51e58e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617879"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196545"
 ---
 # <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
 
@@ -20,7 +20,7 @@ Az Azure-adatközpontok stabil, kis késleltetésű hálózati kapcsolatai eleng
 
 A hálózati követelmények pontos feltételei a konkrét használati esettől függenek, például a távoli jelenet gráfon végzett módosítások számával és gyakoriságával, valamint a megjelenített nézet bonyolultságával, de számos iránymutatással gondoskodhat arról, hogy a lehető legjobb élmény legyen:
 
-* Az internetkapcsolatnak legalább **50 MB/** s sebességű és **10 MB/s sebességű** , az Azure-beli távoli renderelés egyetlen felhasználói munkamenetére vonatkozó támogatásra van szüksége, feltéve, hogy nincs versengő forgalom a hálózaton. A jobb élmény érdekében ajánlott magasabb díjszabást javasolni. Ha több felhasználóval is rendelkezik ugyanazon a hálózaton, ezek a követelmények a megfelelő skálázással rendelkeznek.
+* Az internetkapcsolatnak legalább **40 MB/** s sebességű, illetve **5 MB/s sebességű** , az Azure távoli renderelés egyetlen felhasználói munkamenete számára szükséges támogatását kell támogatnia, feltéve, hogy nincs versengő forgalom a hálózaton. A jobb élmény érdekében ajánlott magasabb díjszabást javasolni. Ha több felhasználóval is rendelkezik ugyanazon a hálózaton, ezek a követelmények a megfelelő skálázással rendelkeznek.
 * Az **5 GHz-es Wi-Fi együttes** használata általában jobb eredményeket hoz létre, mint az 2,4 GHz-es Wi-Fi sávban, bár mindkettőnek működnie kell.
 * Ha a közelben más Wi-Fi-hálózatok vannak, ne használja ezeket a hálózatokat a Wi-Fi csatornákon. A hálózati ellenőrzési eszközök, például a [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) segítségével ellenőrizheti, hogy a Wi-Fi-hálózat által használt csatornák szabad-e a versengő forgalomtól.
 * Szigorúan **Kerülje a Wi-Fi repeaterek vagy a** LAN-over-vezetékes továbbítás használatát.
