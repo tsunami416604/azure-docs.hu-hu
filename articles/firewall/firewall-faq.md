@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 04/10/2020
+ms.date: 05/11/2020
 ms.author: victorh
-ms.openlocfilehash: ea94e452b463fffc1800e09fa1302abacdf015cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb065f10664f46578f84e59501d75d510ccb3c6a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383073"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201586"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -129,7 +129,7 @@ A Azure Firewall nem SNAT, ha a cél IP-cím egy [IANA RFC 1918-es](https://tool
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>A hálózati virtuális berendezésre kényszerített bújtatás/láncolás?
 
-A kényszerített bújtatás támogatott. További információ: [Azure Firewall kényszerített bújtatás (előzetes verzió)](forced-tunneling.md). 
+A kényszerített bújtatás támogatott. További információ: [Azure Firewall kényszerített bújtatás](forced-tunneling.md). 
 
 Azure Firewall közvetlen internetkapcsolattal kell rendelkeznie. Ha a AzureFirewallSubnet a BGP-n keresztül tanulja meg a helyszíni hálózat alapértelmezett útvonalát, akkor a közvetlen internetkapcsolat **fenntartása érdekében ezt** a 0.0.0.0/0 UDR kell felülbírálnia a **NextHopType** értékkel.
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 138e077f7b47fa9f38a4710db95eb7208cef78e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e27cf51d50b3094adca6ce8d3846ef358f78482
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78675322"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201533"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT hub-ban egy webalkalmazásban
 
@@ -141,7 +141,7 @@ set EventHubConsumerGroup=YourConsumerGroupName
 
 ## <a name="open-a-web-page-to-see-data-from-your-iot-hub"></a>Nyisson meg egy weblapot az IoT hub adatainak megjelenítéséhez
 
-Nyisson meg egy böngészőt a `http://localhost:3000`következőhöz:.
+Nyisson meg egy böngészőt a következőhöz: `http://localhost:3000` .
 
 Az eszköz **kiválasztása** listából válassza ki az eszközt, és tekintse meg az eszköz által az IoT hubhoz eljuttatott utolsó 50 hőmérséklet-és páratartalom-adatpontok egy futó ábráját.
 
@@ -165,16 +165,16 @@ Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe 
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Most hozzon létre egy webalkalmazást a App Service tervben. A `--deployment-local-git` paraméter lehetővé teszi a webalkalmazás kódjának feltöltését és üzembe helyezését a helyi gépen található git-adattárból. A webalkalmazás nevének globálisan egyedinek kell lennie, és kis-és nagybetűket, számokat és kötőjeleket tartalmazhat. Győződjön meg arról, hogy a (z) `--runtime` paraméterhez a csomópont 10,6-es vagy újabb verzióját használja, az Ön által használt Node. js-futtatókörnyezet verziójától függően. A `az webapp list-runtimes` parancs segítségével lekérheti a támogatott futtatókörnyezetek listáját.
+2. Most hozzon létre egy webalkalmazást a App Service tervben. A `--deployment-local-git` paraméter lehetővé teszi a webalkalmazás kódjának feltöltését és üzembe helyezését a helyi gépen található git-adattárból. A webalkalmazás nevének globálisan egyedinek kell lennie, és kis-és nagybetűket, számokat és kötőjeleket tartalmazhat. Győződjön meg arról, hogy a (z) paraméterhez a csomópont 10,6-es vagy újabb verzióját `--runtime` használja, az Ön által használt Node. js-futtatókörnyezet verziójától függően. A `az webapp list-runtimes` parancs segítségével lekérheti a támogatott futtatókörnyezetek listáját.
 
    ```azurecli-interactive
    az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
-3. Most adja meg az IoT hub kapcsolati karakterláncot és az Event hub fogyasztói csoportot megadó környezeti változók alkalmazás-beállításait. Az egyes beállítások a `-settings` paraméterben vannak elválasztva. Használja a IoT hub szolgáltatási kapcsolatok karakterláncát és az oktatóanyagban korábban létrehozott fogyasztói csoportot. Ne idézze az értékeket.
+3. Most adja meg az IoT hub kapcsolati karakterláncot és az Event hub fogyasztói csoportot megadó környezeti változók alkalmazás-beállításait. Az egyes beállítások a paraméterben vannak elválasztva `-settings` . Használja a IoT hub szolgáltatási kapcsolatok karakterláncát és az oktatóanyagban korábban létrehozott fogyasztói csoportot. Ne idézze az értékeket.
 
    ```azurecli-interactive
-   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString=<your IoT hub connection string>
+   az webapp config appsettings set -n <your web app name> -g <your resource group name> --settings EventHubConsumerGroup=<your consumer group> IotHubConnectionString="<your IoT hub connection string>"
    ```
 
 4. Engedélyezze a web Sockets protokollt a webalkalmazáshoz, és állítsa be úgy a webalkalmazást, hogy csak HTTPS-kérelmeket fogadjon (a HTTP-kérelmeket a rendszer a HTTPS-re irányítja át)
@@ -198,7 +198,7 @@ Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe 
    az webapp deployment source config-local-git -n <your web app name> -g <your resource group name>
    ```
 
-7. Adjon hozzá egy távolit a klónhoz, amely a App Service webalkalmazás git-tárházára hivatkozik. A \<git-klón\>URL-címéhez használja az előző lépésben visszaadott URL-címet. Futtassa a következő parancsot a parancsablakban.
+7. Adjon hozzá egy távolit a klónhoz, amely a App Service webalkalmazás git-tárházára hivatkozik. A \< git-klón URL-címéhez \> használja az előző lépésben visszaadott URL-címet. Futtassa a következő parancsot a parancsablakban.
 
    ```cmd
    git remote add webapp <Git clone URL>
@@ -251,9 +251,9 @@ Ha bármilyen probléma merül fel ezzel a mintával, próbálkozzon az alábbi 
 
 * A Azure Portalban nyissa meg a webalkalmazást. A bal oldali ablaktábla **figyelés** területén válassza a **app Service naplók**lehetőséget. Kapcsolja be az **alkalmazás naplózása (fájlrendszer)** beállítást be értékre, állítsa a hiba **szintet** , majd kattintson a **Mentés**gombra. Ezután nyissa meg a **naplózási adatfolyamot** (a **figyelés**alatt).
 
-* A Azure Portal webalkalmazásában a **fejlesztői eszközök** területen válassza ki a **konzolt** , és ellenőrizze a csomópont- `node -v` és `npm -v`NPM verzióit a és a segítségével.
+* A Azure Portal webalkalmazásában a **fejlesztői eszközök** területen válassza ki a **konzolt** , és ellenőrizze a csomópont-és NPM verzióit a és a segítségével `node -v` `npm -v` .
 
-* Ha a csomag nem talál hibát, lehetséges, hogy a lépéseket a sorrend szerint futtatta. Ha a hely telepítve van (a- `git push`vel), az App `npm install`Service fut, amely a csomópont aktuális verziója alapján fut. Ha később módosítja a konfigurációt, értelmetlen módosítást kell végeznie a kódban, és újra le kell küldenie.
+* Ha a csomag nem talál hibát, lehetséges, hogy a lépéseket a sorrend szerint futtatta. Ha a hely telepítve van (a `git push` -vel), az App Service fut `npm install` , amely a csomópont aktuális verziója alapján fut. Ha később módosítja a konfigurációt, értelmetlen módosítást kell végeznie a kódban, és újra le kell küldenie.
 
 ## <a name="next-steps"></a>További lépések
 

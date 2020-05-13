@@ -3,13 +3,13 @@ title: Fiók erőforrásainak kezelése a Batch Management .NET-kódtár haszná
 description: Azure Batch fiók-erőforrások létrehozása, törlése és módosítása a Batch Management .NET-könyvtárral.
 ms.topic: article
 ms.date: 04/24/2017
-ms.custom: seodec18
-ms.openlocfilehash: 69e3eb04352feff11ee50acab11328adb7900539
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, has-adal-ref
+ms.openlocfilehash: 3cb44b89cacd9e597766ca8df3e4826dfabdb2bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115992"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201633"
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>Batch-fiókok és kvóták kezelése a Batch Management ügyféloldali kódtáraval a .NET-hez
 
@@ -34,7 +34,7 @@ A Batch-fiókok létrehozásával, törlésével, a kulcskezelő szolgáltatáss
 ## <a name="create-and-delete-batch-accounts"></a>Batch-fiókok létrehozása és törlése
 Ahogy említettük, a Batch Management API egyik elsődleges funkciója a Batch-fiókok létrehozása és törlése egy Azure-régióban. Ehhez használja a [BatchManagementClient. Account. CreateAsync][net_create] és a [DeleteAsync][net_delete], illetve a szinkron társaikat.
 
-A következő kódrészlet létrehoz egy fiókot, beolvassa az újonnan létrehozott fiókot a Batch szolgáltatásból, majd törli azt. Ebben a kódrészletben és a cikk `batchManagementClient` többi részében a [BatchManagementClient][net_mgmt_client]teljes mértékben inicializált példánya.
+A következő kódrészlet létrehoz egy fiókot, beolvassa az újonnan létrehozott fiókot a Batch szolgáltatásból, majd törli azt. Ebben a kódrészletben és a cikk többi részében a `batchManagementClient` [BatchManagementClient][net_mgmt_client]teljes mértékben inicializált példánya.
 
 ```csharp
 // Create a new Batch account
@@ -113,10 +113,10 @@ Console.WriteLine("Accounts in {0}: {1}", region, accountsInRegion);
 Console.WriteLine("You can create {0} accounts in the {1} region.", quotaResponse.AccountQuota - accountsInRegion, region);
 ```
 
-A fenti `creds` kódrészletben a [TokenCloudCredentials][azure_tokencreds]egy példánya. Ha meg szeretné tekinteni az objektum létrehozásának példáját, tekintse meg a [AccountManagement][acct_mgmt_sample] -kód mintát a githubon.
+A fenti kódrészletben a `creds` [TokenCloudCredentials][azure_tokencreds]egy példánya. Ha meg szeretné tekinteni az objektum létrehozásának példáját, tekintse meg a [AccountManagement][acct_mgmt_sample] -kód mintát a githubon.
 
 ### <a name="check-a-batch-account-for-compute-resource-quotas"></a>Batch-fiók beadása számítási erőforrások kvótái számára
-A Batch-megoldás számítási erőforrásainak növelése előtt ellenőrizheti, hogy a lefoglalni kívánt erőforrások nem lépik túl a fiók kvótáit. Az alábbi kódrészletben kinyomtatjuk a nevű `mybatchaccount`batch-fiók kvótájának adatait. A saját alkalmazásban az ilyen információk segítségével meghatározhatja, hogy a fiók képes-e kezelni a létrehozandó további erőforrásokat.
+A Batch-megoldás számítási erőforrásainak növelése előtt ellenőrizheti, hogy a lefoglalni kívánt erőforrások nem lépik túl a fiók kvótáit. Az alábbi kódrészletben kinyomtatjuk a nevű batch-fiók kvótájának adatait `mybatchaccount` . A saját alkalmazásban az ilyen információk segítségével meghatározhatja, hogy a fiók képes-e kezelni a létrehozandó további erőforrásokat.
 
 ```csharp
 // First obtain the Batch account

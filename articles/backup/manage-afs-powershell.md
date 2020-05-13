@@ -3,19 +3,19 @@ title: Azure-fájlmegosztás biztonsági másolatainak kezelése a PowerShell-le
 description: Megtudhatja, hogyan kezelheti és figyelheti a PowerShell használatával a Azure Backup szolgáltatás által biztonsági mentés alatt lévő Azure-fájlmegosztást.
 ms.topic: conceptual
 ms.date: 1/27/2020
-ms.openlocfilehash: a9dc421db740963fc5cd11e868eb383694376ce1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6ee5fb92e4a66a9d6db66514f966c3650d3a4f13
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77083166"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201975"
 ---
 # <a name="manage-azure-file-share-backups-with-powershell"></a>Azure-fájlmegosztás biztonsági másolatainak kezelése a PowerShell-lel
 
 Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell az Azure Backup szolgáltatás által biztonsági mentés alatt álló Azure-fájlmegosztás felügyeletéhez és figyeléséhez.
 
 > [!WARNING]
-> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További részletekért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice---backup-item-identification-for-afs-backups) .
+> Ellenőrizze, hogy a PS verziója frissítve lett-e az AFS biztonsági mentések esetében az "az. Recoveryservices szolgáltatónál 2.6.0" minimális verziójára. További részletekért tekintse meg a módosítás követelményét [ismertető szakaszt](backup-azure-afs-automation.md#important-notice-backup-item-identification) .
 
 ## <a name="modify-the-protection-policy"></a>A védelmi szabályzat módosítása
 
