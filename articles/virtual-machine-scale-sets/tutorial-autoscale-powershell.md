@@ -2,18 +2,19 @@
 title: Oktatóanyag – méretezési csoport autoskálázása Azure PowerShell
 description: Ismerje meg, hogyan méretezhet automatikusan virtuálisgép-méretezési csoportokat az Azure PowerShell-lel a processzorterhelés növekedésének vagy csökkenésének megfelelően.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 03/27/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: b2451779119ab8fb6c1446631797ce32fd376146
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: autoscale
+ms.date: 03/27/2018
+ms.reviewer: avverma
+ms.custom: avverma
+ms.openlocfilehash: 3c8488fa794e2bfa4de7833cb4cd4756b5394263
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81008998"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201366"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: virtuálisgép-méretezési csoportok automatikus skálázása az Azure PowerShell-lel
 
@@ -180,7 +181,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (a minta parancsaiban alapértelmezés szerint az *azureuser* és a *\@P ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (a minta parancsaiban alapértelmezés szerint az *azureuser* és a *P \@ ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -189,7 +190,7 @@ mstsc /v 52.168.121.216:50001
 Miután bejelentkezett, indítsa el az Internet Explorert a tálcáról.
 
 - Kattintson az **OK** gombra *Az ajánlott biztonsági, adatvédelmi és kompatibilitási beállítások használata* üzenet elfogadásához
-- Írja *http://download.sysinternals.com/files/CPUSTRES.zip* be a címsorba.
+- Írja be *http://download.sysinternals.com/files/CPUSTRES.zip* a címsorba.
 - Mivel az Internet Explorer fokozott biztonsági beállításai engedélyezve vannak, **Hozzáadás** gombbal vegye fel a *http://download.sysinternals.com* tartományt a megbízható helyek listájára.
 - Ha a rendszer a fájl letöltésére kéri, kattintson a **Megnyitás** gombra, majd válassza ki és **futtassa** a *CPUSTRES.EXE* eszközt.
 

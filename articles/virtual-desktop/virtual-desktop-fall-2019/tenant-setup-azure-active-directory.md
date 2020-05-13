@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94128c69f227ceff51968354048ec6610e3d7c4c
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 8b08e8e4d6623277d1935fc85e302e8ce3c88eea
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614402"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124397"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop"></a>Oktatóanyag: bérlő létrehozása a Windows Virtual Desktopban
 
@@ -57,7 +57,7 @@ A szolgáltatás engedélyeinek megadása:
    >https://login.microsoftonline.com/{tenant}/adminconsent?client_id=5a0aa725-4958-4b0c-80a9-34562e23f3b7&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback
    >```
 
-2. Jelentkezzen be a Windows rendszerű virtuális asztal engedélyezési lapjára egy globális rendszergazdai fiókkal. Ha például a contoso szervezete volt, a fiókja lehet admin@contoso.com vagy. admin@contoso.onmicrosoft.com
+2. Jelentkezzen be a Windows rendszerű virtuális asztal engedélyezési lapjára egy globális rendszergazdai fiókkal. Ha például a contoso szervezete volt, a fiókja lehet admin@contoso.com vagy admin@contoso.onmicrosoft.com .
 3. Válassza ki az **Elfogadás** lehetőséget.
 4. Várjon egy percet, hogy az Azure AD jegyezze fel a beleegyező engedélyt.
 5. Nyisson meg egy böngészőt, és kezdje meg a rendszergazdai jogosultságokat a [Windows rendszerű virtuális asztali ügyfélalkalmazás](https://login.microsoftonline.com/common/adminconsent?client_id=fa4345a4-a730-4230-84a8-7d9651b86739&redirect_uri=https%3A%2F%2Frdweb.wvd.microsoft.com%2FRDWeb%2FConsentCallback)számára.
@@ -87,7 +87,7 @@ A TenantCreator-alkalmazás szerepkörének hozzárendeléséhez:
    ![Képernyőkép a "Windows Virtual Desktop" vállalati alkalmazás kezeléséhez hozzárendelt felhasználókról és csoportokról. A képernyőképen csak egy hozzárendelés látható, amely az "alapértelmezett hozzáférés" értékre mutat.](../media/tenant-default-access.png)
 4. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** lapon válassza a **felhasználók és csoportok** lehetőséget.
 5. Keressen egy olyan felhasználói fiókot, amely létrehozza a Windows rendszerű virtuális asztali bérlőt. Az egyszerűség kedvéért ez lehet a globális rendszergazdai fiók.
-   - Ha a (z) rendszerhez hasonló contosoadmin@live.com Microsoft contosoadmin@outlook.com-identitás-szolgáltatót használ, előfordulhat, hogy nem tud bejelentkezni a Windows virtuális asztalra. Azt javasoljuk, hogy használjon egy, a tartományra vonatkozó fiókot (például admin@contoso.com vagy admin@contoso.onmicrosoft.com inkább).
+   - Ha a (z) rendszerhez hasonló Microsoft-identitás-szolgáltatót használ contosoadmin@live.com contosoadmin@outlook.com , előfordulhat, hogy nem tud bejelentkezni a Windows virtuális asztalra. Azt javasoljuk, hogy használjon egy, a tartományra vonatkozó fiókot (például admin@contoso.com vagy admin@contoso.onmicrosoft.com inkább).
 
    ![Képernyőkép a "TenantCreator" felvenni kívánt felhasználó kiválasztásáról.](../media/tenant-assign-user.png)
    > [!NOTE]
@@ -145,13 +145,15 @@ Cserélje le a zárójelben lévő értékeket a szervezete és a bérlője szem
 New-RdsTenant -Name Contoso -AadTenantId 00000000-1111-2222-3333-444444444444 -AzureSubscriptionId 55555555-6666-7777-8888-999999999999
 ```
 
-Javasoljuk, hogy rendszergazdai hozzáférést rendeljen hozzá egy második felhasználóhoz abban az esetben, ha a fiókja kizárta magát, vagy ha a vakációra van szüksége, és szeretné, hogy valaki a bérlői rendszergazdaként működjön a távollétében. Ha rendszergazdai hozzáférést szeretne hozzárendelni egy második felhasználóhoz, futtassa a következő `<TenantName>` parancsmagot a és `<Upn>` a helyére a bérlő nevét és a második felhasználó egyszerű felhasználónevét.
+Javasoljuk, hogy rendszergazdai hozzáférést rendeljen hozzá egy második felhasználóhoz abban az esetben, ha a fiókja kizárta magát, vagy ha a vakációra van szüksége, és szeretné, hogy valaki a bérlői rendszergazdaként működjön a távollétében. Ha rendszergazdai hozzáférést szeretne hozzárendelni egy második felhasználóhoz, futtassa a következő parancsmagot a `<TenantName>` és a `<Upn>` helyére a bérlő nevét és a második felhasználó egyszerű felhasználónevét.
 
 ```powershell
 New-RdsRoleAssignment -TenantName <TenantName> -SignInName <Upn> -RoleDefinitionName "RDS Owner"
 ```
 
 ## <a name="next-steps"></a>További lépések
+
+Részletesebb útmutatóként tekintse meg a [Windows rendszerű virtuális asztali tanulási útvonalat](https://docs.microsoft.com/learn/paths/m365-wvd/).
 
 A bérlő létrehozása után létre kell hoznia egy egyszerű szolgáltatásnevet a Azure Active Directoryban, és hozzá kell rendelnie egy szerepkört a Windows rendszerű virtuális asztalon belül. Az egyszerű szolgáltatásnév lehetővé teszi a Windows rendszerű virtuális asztali Azure Marketplace-ajánlat sikeres üzembe helyezését egy gazda készlet létrehozásához. Ha többet szeretne megtudni a gazdagép-készletekről, folytassa a gazdagépek Windows rendszerű virtuális asztali gépen való létrehozásának oktatóanyagával.
 

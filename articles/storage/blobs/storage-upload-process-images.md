@@ -8,21 +8,21 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: mhopkins
 ms.reviewer: dineshm
-ms.openlocfilehash: e2ee959fb6fc7e8454919c71cfa20e2bb9055dfb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c475787eafde4ba847b292df57e4b0d18cfe5d0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81393849"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196056"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: képadatok feltöltése a felhőbe az Azure Storage szolgáltatással
 
 Ez az oktatóanyag egy sorozat első része. Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy olyan webalkalmazást, amely az Azure Blob Storage ügyféloldali kódtárat használja a lemezképek Storage-fiókba való feltöltéséhez. Ha elkészült, egy olyan webalkalmazás fog rendelkezni, amely az Azure Storage-ban tárolja és megjeleníti a lemezképeket.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 ![Rendszerkép-alkalmazás a .NET-ben](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
 ![Képresizer alkalmazás Node. js v10-ben](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
@@ -62,7 +62,7 @@ A minta feltölti a képeket egy Azure Storage-fiókban található blob-tárol�
 > [!IMPORTANT]
 > Az oktatóanyag 2. részében a blob Storage-Azure Event Gridt használja. Győződjön meg arról, hogy a Storage-fiókot egy olyan Azure-régióban hozza létre, amely támogatja a Event Grid. A támogatott régiók listáját lásd: Azure- [termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/?products=event-grid&regions=all).
 
-A következő parancsban cserélje le a saját globálisan egyedi nevét arra a blob Storage-fiókra, `<blob_storage_account>` amelyben a helyőrző látható.
+A következő parancsban cserélje le a saját globálisan egyedi nevét arra a blob Storage-fiókra, amelyben a `<blob_storage_account>` helyőrző látható.
 
 ```azurecli-interactive
 blobStorageAccount="<blob_storage_account>"
@@ -77,7 +77,7 @@ Az alkalmazás két tárolót használ a Blob Storage-fiókban. A tárolók haso
 
 Szerezze be a tárfiókkulcsot az [az storage account keys list](/cli/azure/storage/account/keys) parancs segítségével. Ezután ezt a kulcsot használva hozzon létre két tárolót az az [Storage Container Create](/cli/azure/storage/container) paranccsal.
 
-A *rendszerkép* - `off`tároló nyilvános hozzáférése a következőre van beállítva:. A *miniatűrök* tároló nyilvános hozzáférése a következőre `container`van beállítva:. A `container` nyilvános hozzáférés beállítás lehetővé teszi a felhasználóknak, hogy meglátogassák a weblapot a miniatűrök megtekintéséhez.
+A *rendszerkép* -tároló nyilvános hozzáférése a következőre van beállítva: `off` . A *miniatűrök* tároló nyilvános hozzáférése a következőre van beállítva: `container` . A `container` nyilvános hozzáférés beállítás lehetővé teszi a felhasználóknak, hogy meglátogassák a weblapot a miniatűrök megtekintéséhez.
 
 ```azurecli-interactive
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
@@ -111,7 +111,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 A webalkalmazás üzemeltetési területet biztosít a GitHub-minta tárházban üzembe helyezett minta alkalmazás kódjához. Az [ az webapp create](/cli/azure/webapp) paranccsal hozzon létre egy [webalkalmazást](../../app-service/overview.md) a `myAppServicePlan` App Service-csomagban.  
 
-A következő parancsban cserélje le `<web_app>` a parancsot egyedi névre. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha az `<web_app>` nem egyedi, a következő hibaüzenet jelenik meg: *A megadott `<web_app>` névvel már létezik webhely.* A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
+A következő parancsban cserélje le a parancsot `<web_app>` egyedi névre. Érvényes karakterek: `a-z`, `0-9` és `-`. Ha az `<web_app>` nem egyedi, a következő hibaüzenet jelenik meg: *A megadott `<web_app>` névvel már létezik webhely.* A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
 webapp="<web_app>"
@@ -121,7 +121,7 @@ az webapp create --name $webapp --resource-group myResourceGroup --plan myAppSer
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>Mintaalkalmazás üzembe helyezése a GitHub-adattárból
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
@@ -133,7 +133,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
   --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
 Az App Service több módszert is támogat tartalmak webalkalmazásba való üzembe helyezésére. Ebben az oktatóanyagban a webalkalmazást egy [nyilvános GitHub-mintaadattárból](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) telepítheti. Konfigurálja a GitHubról való telepítést a webalkalmazásba az [az webapp deployment source config](/cli/azure/webapp/deployment/source) parancs segítségével.
 
 ```azurecli-interactive
@@ -146,7 +146,7 @@ az webapp deployment source config --name $webapp --resource-group myResourceGro
 
 ## <a name="configure-web-app-settings"></a>A webalkalmazás beállításainak konfigurálása
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
 A minta webalkalmazás a [.net-hez készült Azure Storage API-kat](/dotnet/api/overview/azure/storage) használja a Képek feltöltéséhez. A Storage-fiók hitelesítő adatai a webalkalmazás alkalmazás-beállításainál vannak megadva. Adja hozzá az alkalmazás beállításait az üzembe helyezett alkalmazáshoz az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings) paranccsal.
 
@@ -158,7 +158,7 @@ az webapp config appsettings set --name $webapp --resource-group myResourceGroup
     AzureStorageConfig__AccountKey=$blobStorageAccountKey
 ```
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
 
 A minta-webalkalmazás az [Azure Storage ügyféloldali kódtár](https://github.com/Azure/azure-storage-js) segítségével kér a képfeltöltéshez használt hozzáférési jogkivonatokat. A Storage SDK által használt Storage-fiók hitelesítő adatai a webalkalmazás alkalmazás-beállításaiban vannak beállítva. Adja hozzá az alkalmazás beállításait az üzembe helyezett alkalmazáshoz az az [WebApp config appSettings set](/cli/azure/webapp/config/appsettings) paranccsal.
 
@@ -176,13 +176,13 @@ A webalkalmazás üzembe helyezése és konfigurálása után tesztelheti a rend
 
 A webalkalmazás teszteléséhez nyissa meg a közzétett alkalmazás URL-címét. A webalkalmazás alapértelmezett URL-címe `https://<web_app>.azurewebsites.net`.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 
 Válassza a **fényképek feltöltése** régiót egy fájl megadásához és feltöltéséhez, vagy húzzon egy fájlt a régióra. Sikeres feltöltés esetén a kép eltűnik. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük.
 
 ![Fényképek feltöltése a .NET-ben](media/storage-upload-process-images/figure1.png)
 
-A mintakód a `UploadFileToStorage` *Storagehelper.cs* fájl feladatát használja *a lemezképek tárolóba* való feltöltésére a Storage-fiókon belül a [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) metódus használatával. A következő mintakód tartalmazza a `UploadFileToStorage` műveletet.
+A mintakód a `UploadFileToStorage` *Storagehelper.cs* fájl feladatát használja *a lemezképek* tárolóba való feltöltésére a Storage-fiókon belül a [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) metódus használatával. A következő mintakód tartalmazza a `UploadFileToStorage` műveletet.
 
 ```csharp
 public static async Task<bool> UploadFileToStorage(Stream fileStream, string fileName,
@@ -218,7 +218,7 @@ Az előző feladatban használt osztályok és módszerek a következők:
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (karakterlánc, karakterlánc) konstruktor](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
 | [BlobClient](/dotnet/api/azure.storage.blobs.blobclient) | [UploadAsync](/dotnet/api/azure.storage.blobs.blobclient.uploadasync) |
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
 
 Válassza a **fájl** kiválasztása lehetőséget egy fájl kiválasztásához, majd kattintson a **rendszerkép feltöltése**elemre. A **létrehozott miniatűrök** szakasz üres marad, amíg a témakör későbbi szakaszában nem teszteljük. 
 
@@ -304,7 +304,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com). A bal oldali men�
 
 Ellenőrizze, hogy a kép megjelenik-e a tárolóban.
 
-![Képek tárolójának Azure Portal-listája](media/storage-upload-process-images/figure13.png)
+![Képek tárolójának Azure Portal listája](media/storage-upload-process-images/figure13.png)
 
 ## <a name="test-thumbnail-viewing"></a>Miniatűr megtekintésének tesztelése
 
@@ -316,10 +316,10 @@ Válasszon ki egy fájlt a fájl választóval, és válassza a **feltöltés**l
 
 Lépjen vissza az alkalmazásba és ellenőrizze, hogy a **thumbnails** tárolóba feltöltött kép látható-e.
 
-# <a name="net-v12-sdk"></a>[\.NET V12 SDK](#tab/dotnet)
+# <a name="net-v12"></a>[\.NET V12](#tab/dotnet)
 ![.NET-rendszerkép Resizer-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejs-v10-sdk"></a>[Node. js v10 SDK](#tab/nodejsv10)
+# <a name="nodejs-v10"></a>[Node. js v10](#tab/nodejsv10)
 ![Node. js v10 rendszerkép-alkalmazás új képpel megjelenítve](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---

@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: c645ab45711698e4a6f582678e2a850e15dea62a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82181596"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201331"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy szögletes egyoldalas alkalmazásból
 
@@ -81,7 +81,7 @@ Regisztrálja az **átirányítási URI** -értéket, **http://localhost:4200/**
 
 ## <a name="configure-the-application"></a>Az alkalmazás konfigurálása
 
-1. A *src/app* mappában szerkessze az *app. Module. TS* fájlt, `MSALModule` és `imports` adja hozzá a `isIE` következőt:
+1. A *src/app* mappában szerkessze az *app. Module. TS* fájlt, és adja hozzá a következőt `MSALModule` `imports` `isIE` :
 
     ```javascript
     const isIE = window.navigator.userAgent.indexOf('MSIE ') > -1 || window.navigator.userAgent.indexOf('Trident/') > -1;
@@ -126,9 +126,9 @@ Regisztrálja az **átirányítási URI** -értéket, **http://localhost:4200/**
     |Érték neve|Névjegy|
     |---------|---------|
     |Enter_the_Application_Id_Here|Az alkalmazás regisztrációjának **Áttekintés** lapján ez az **alkalmazás (ügyfél) azonosítójának** értéke. |
-    |Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz **https://login.microsoftonline.com**írja be a következőt:. Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
+    |Enter_the_Cloud_Instance_Id_Here|Ez az Azure-felhő példánya. A fő vagy a globális Azure-felhőhöz írja be a következőt: **https://login.microsoftonline.com** . Az országos felhők (például Kína) esetében lásd: [nemzeti felhők](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).|
     |Enter_the_Tenant_Info_Here| Állítsa be a következő lehetőségek egyikét: Ha az alkalmazás támogatja a *szervezeti címtárban lévő fiókokat*, cserélje le ezt az értéket a címtár (bérlő) vagy a bérlő nevére (például **contoso.microsoft.com**). Ha az alkalmazás *minden szervezeti címtárban támogatja a fiókokat*, cserélje le ezt az értéket **szervezetekkel**. Ha az alkalmazás *minden szervezeti címtárban és személyes Microsoft-fiókban is támogatja a fiókokat*, cserélje le ezt az értéket **közösre**. Ha *csak a személyes Microsoft-fiókok*támogatását szeretné korlátozni, cserélje le ezt az értéket a **fogyasztókkal**. |
-    |Enter_the_Redirect_Uri_Here|Cserélje le **http://localhost:4200**a-t.|
+    |Enter_the_Redirect_Uri_Here|Cserélje le a-t **http://localhost:4200** .|
 
     További információ az elérhető konfigurálható lehetőségekről: [ügyfélalkalmazások inicializálása](msal-js-initializing-client-applications.md).
 
@@ -138,7 +138,7 @@ Regisztrálja az **átirányítási URI** -értéket, **http://localhost:4200/**
     import { MsalModule, MsalInterceptor } from '@azure/msal-angular';
     ```
 
-3. Adja hozzá a következő importálási utasításokat a felső `src/app/app.component.ts`részhez:
+3. Adja hozzá a következő importálási utasításokat a felső részhez `src/app/app.component.ts` :
 
     ```javascript
     import { MsalService } from '@azure/msal-angular';
@@ -146,7 +146,7 @@ Regisztrálja az **átirányítási URI** -értéket, **http://localhost:4200/**
     ```
 ## <a name="sign-in-a-user"></a>Bejelentkezés felhasználóként
 
-Adja hozzá a következő kódot `AppComponent` a felhasználóhoz való bejelentkezéshez:
+Adja hozzá a következő kódot a `AppComponent` felhasználóhoz való bejelentkezéshez:
 
 ```javascript
 export class AppComponent implements OnInit {
@@ -169,15 +169,15 @@ export class AppComponent implements OnInit {
 ```
 
 > [!TIP]
-> Javasoljuk, hogy `loginRedirect` az Internet Explorer felhasználóit használja.
+> Javasoljuk `loginRedirect` , hogy az Internet Explorer felhasználóit használja.
 
 ## <a name="acquire-a-token"></a>Jogkivonat beszerzése
 
 ### <a name="angular-interceptor"></a>Szögletes Interceptor
 
-A MSAL olyan `Interceptor` osztályt biztosít, amely automatikusan lekéri azokat a kimenő kérelmeket, amelyek `http` a szögletes ügyfelet használják az ismert védett erőforrásokra.
+A MSAL olyan `Interceptor` osztályt biztosít, amely automatikusan lekéri azokat a kimenő kérelmeket, amelyek a szögletes `http` ügyfelet használják az ismert védett erőforrásokra.
 
-Először is adja meg `Interceptor` az osztályt szolgáltatóként az alkalmazáshoz:
+Először is adja `Interceptor` meg az osztályt szolgáltatóként az alkalmazáshoz:
 
 ```javascript
 import { MsalInterceptor, MsalModule } from "@azure/msal-angular";
@@ -195,7 +195,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 }
 ```
 
-Ezután adja meg a védett erőforrások leképezését a `MsalModule.forRoot()` következőre, `protectedResourceMap` és adja hozzá `consentScopes`a hatókört a következőhöz:
+Ezután adja meg a védett erőforrások leképezését a következőre, és adja hozzá a `MsalModule.forRoot()` `protectedResourceMap` hatókört a következőhöz `consentScopes` :
 
 ```javascript
 @NgModule({
@@ -244,11 +244,11 @@ getProfile() {
 ```
 
 ### <a name="acquiretokensilent-acquiretokenpopup-acquiretokenredirect"></a>acquireTokenSilent, acquireTokenPopup, acquireTokenRedirect
-A MSAL három módszert használ a tokenek beszerzésére: `acquireTokenRedirect`, `acquireTokenPopup`és `acquireTokenSilent`. Azt javasoljuk azonban, hogy a `MsalInterceptor` szögletes alkalmazások helyett az osztályt használja, ahogy az az előző szakaszban is látható.
+A MSAL három módszert használ a tokenek beszerzésére: `acquireTokenRedirect` , `acquireTokenPopup` és `acquireTokenSilent` . Azt javasoljuk azonban, hogy a `MsalInterceptor` szögletes alkalmazások helyett az osztályt használja, ahogy az az előző szakaszban is látható.
 
 #### <a name="get-a-user-token-silently"></a>Felhasználói jogkivonat csendes beszerzése
 
-A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. A `loginRedirect` vagy `loginPopup` a metódus első `acquireTokenSilent` futtatása után általában a védett erőforrások a későbbi hívásokban való eléréséhez használt jogkivonatok beszerzésére szolgál. A jogkivonatok kérése vagy megújítása csendesen történik.
+A `acquireTokenSilent` metódus felhasználói beavatkozás nélkül kezeli a tokenek beszerzését és megújítását. A `loginRedirect` vagy a `loginPopup` metódus első futtatása után `acquireTokenSilent` általában a védett erőforrások a későbbi hívásokban való eléréséhez használt jogkivonatok beszerzésére szolgál. A jogkivonatok kérése vagy megújítása csendesen történik.
 
 ```javascript
 const requestObj = {
@@ -268,7 +268,7 @@ Ebben a kódban az `scopes` API hozzáférési jogkivonatában visszaadott ható
 Például:
 
 * `["user.read"]`Microsoft Graph
-* `["<Application ID URL>/scope"]`egyéni webes API- `api://<Application ID>/access_as_user`khoz (azaz)
+* `["<Application ID URL>/scope"]`egyéni webes API-khoz (azaz `api://<Application ID>/access_as_user` )
 
 #### <a name="get-a-user-token-interactively"></a>Felhasználói jogkivonat interaktív lekérése
 
@@ -278,9 +278,9 @@ Előfordulhat, hogy a felhasználónak a Microsoft Identity platform-végponttal
 * Az alkalmazása olyan további erőforrás-hatókörökhöz kér hozzáférést, amelyeknek a felhasználónak hozzá kell járulnia.
 * Kétfaktoros hitelesítés szükséges.
 
-A legtöbb alkalmazás javasolt mintája először hívja `acquireTokenSilent` meg a-t, majd a kivételt, majd `acquireTokenPopup` a hívást `acquireTokenRedirect`(vagy) egy interaktív kérelem elindításához.
+A legtöbb alkalmazás javasolt mintája először hívja meg `acquireTokenSilent` a-t, majd a kivételt, majd a hívást `acquireTokenPopup` (vagy `acquireTokenRedirect` ) egy interaktív kérelem elindításához.
 
-Az `acquireTokenPopup` eredmények meghívása egy előugró bejelentkezési ablakban. Azt is `acquireTokenRedirect` megteheti, hogy átirányítja a felhasználókat a Microsoft Identity platform-végpontra. Ebben az ablakban a felhasználóknak meg kell erősíteniük a hitelesítő adataikat, meg kell adniuk a szükséges erőforrást, vagy el kell végezniük a kétfaktoros hitelesítést.
+Az eredmények meghívása `acquireTokenPopup` egy előugró bejelentkezési ablakban. Azt is megteheti, `acquireTokenRedirect` hogy átirányítja a felhasználókat a Microsoft Identity platform-végpontra. Ebben az ablakban a felhasználóknak meg kell erősíteniük a hitelesítő adataikat, meg kell adniuk a szükséges erőforrást, vagy el kell végezniük a kétfaktoros hitelesítést.
 
 ```javascript
   const requestObj = {
@@ -296,7 +296,7 @@ Az `acquireTokenPopup` eredmények meghívása egy előugró bejelentkezési abl
 ```
 
 > [!NOTE]
-> Ez a rövid útmutató `loginRedirect` a `acquireTokenRedirect` és a metódusokat a Microsoft Internet Explorer használatával használja az előugró ablakok Internet Explorer általi kezelésére vonatkozó [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) miatt.
+> Ez a rövid útmutató a `loginRedirect` és a `acquireTokenRedirect` metódusokat a Microsoft Internet Explorer használatával használja az előugró ablakok Internet Explorer általi kezelésére vonatkozó [ismert probléma](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) miatt.
 
 ## <a name="log-out"></a>Kijelentkezés
 
@@ -319,7 +319,7 @@ A következő témakörben talál példát arra, hogyan adhat hozzá felhasznál
     npm install
     npm start
     ```
-1. A böngészőben adja meg a **http://localhost:4200** vagy **http://localhost:{port}** a (z) értéket, ahol a *port* a webkiszolgáló által figyelt port.
+1. A böngészőben adja meg a vagy a (z **http://localhost:4200** **http://localhost:{port}** ) értéket, ahol a *port* a webkiszolgáló által figyelt port.
 
 
 ### <a name="provide-consent-for-application-access"></a>Adja meg az alkalmazás-hozzáférés beleegyezikét
@@ -343,7 +343,6 @@ Ha egy háttérbeli API-nak nincs szüksége hatókörre (nem ajánlott), a *cli
 
 ## <a name="next-steps"></a>További lépések
 
-Következő lépésként megtudhatja, hogyan jelentkezhet be a felhasználóba, és hogyan szerezheti be a tokeneket a szögletes oktatóanyagban:
+Ha most ismerkedik az identitás-és hozzáférés-kezeléssel, számos cikk segít a modern hitelesítési fogalmak megismerésében, a hitelesítés és az [Engedélyezés](authentication-vs-authorization.md)megkezdése előtt.
 
-> [!div class="nextstepaction"]
-> [Szögletes oktatóanyag](https://docs.microsoft.com/azure/active-directory/develop/tutorial-v2-angular)
+Ha a Microsoft Identity platformon mélyebbre szeretne ugrani egy egyoldalas alkalmazás-fejlesztésre, a többrészes [forgatókönyv: az egyoldalas alkalmazások](scenario-spa-overview.md) sorozata segítséget nyújt az első lépésekhez.

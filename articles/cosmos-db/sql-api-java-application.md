@@ -1,19 +1,19 @@
 ---
-title: 'Oktatóanyag: Java-alkalmazásfejlesztés oktatóanyag a Azure Cosmos DB használatával'
+title: 'Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával'
 description: 'Oktatóanyag: Ez a Java-webalkalmazás-oktatóanyag bemutatja, hogyan tárolhatja és érheti el az Azure websites szolgáltatásban tárolt Java-alkalmazás adatait a Azure Cosmos DB és az SQL API használatával.'
-author: tknandu
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: tutorial
 ms.date: 11/05/2019
-ms.author: ramkris
-ms.openlocfilehash: 2e38aeba198f875961024f8c25c7fb0123479f87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: anfeldma
+ms.openlocfilehash: fc8fb0e3c9ad35957291376691d5ed2c0484192a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80985269"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120189"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 
@@ -50,7 +50,7 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
 * [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/app-service-web-get-started-java.md)
 
-Ha először telepíti ezeket az eszközöket, a coreservlets.com webhelyen megtalálhatja a telepítési folyamat útmutatóját (angol nyelven) az alábbi cikk Quick Start (Gyors üzembe helyezés) szakaszában: [Tutorial: Installing TomCat7 and Using it with Eclipse](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) (Oktatóanyag: A Tomcat7 telepítése és használata az Eclipse-szel).
+Ha első alkalommal telepíti ezeket az eszközöket, a coreservlets.com végigvezeti a telepítési folyamat lépésein a gyors üzembe helyezési [útmutatóban: a TomCat7 telepítése és az Eclipse használatával](http://www.coreservlets.com/Apache-Tomcat-Tutorial/tomcat-7-with-eclipse.html) című cikk.
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a><a id="CreateDB"></a>1. lépés: Azure Cosmos DB-fiók létrehozása
 Először hozzon létre egy Azure Cosmos DB-fiókot. Ha már rendelkezik fiókkal vagy az oktatóanyagban az Azure Cosmos DB Emulatort használja, továbbléphet a [2. lépés: Új Java JSP-alkalmazás létrehozása](#CreateJSP) című lépésre.
@@ -98,7 +98,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
      
    ![Az SQL Java Application SDK telepítése](./media/sql-api-java-application/image13.png)
      
-   * Vagy adja hozzá a függőség XML-fájljának Group Id (Csoportazonosító) és Artifact Id (Összetevő-azonosító) szakaszát közvetlenül a pom.xml fájlhoz egy szövegszerkesztő segítségével:
+   * Vagy adja hozzá a függőségi XML-t a csoport AZONOSÍTÓjának és az összetevő-AZONOSÍTÓhoz közvetlenül a Pom. xml fájlhoz egy szövegszerkesztő használatával:
         ```xml
         <dependency>
             <groupId>com.microsoft.azure</groupId>
@@ -250,7 +250,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
    
             return gson.fromJson(todoItemDocument.toString(), TodoItem.class);
         }
-5. Az Azure Cosmos-adatbázisokhoz és-gyűjteményekhez hasonlóan a dokumentumokat is a saját hivatkozások is hivatkoznak. A következő segédfüggvény lehetővé teszi a dokumentumok az önhivatkozástól eltérő attribútum (pl. „id”) alapján történő lekérését:
+5. Az Azure Cosmos-adatbázisokhoz és-gyűjteményekhez hasonlóan a dokumentumokat is a saját hivatkozások is hivatkoznak. A következő segítő funkció lehetővé teszi, hogy a dokumentumokat egy másik attribútum (pl. "ID") alapján kérje le, nem pedig az önálló csatolást:
    
         private Document getDocumentById(String id) {
             // Retrieve the document using the DocumentClient.
@@ -265,7 +265,7 @@ Ehhez át kell konvertálnia a projektet Maven-projektté az alábbi lépések v
                 return null;
             }
         }
-6. Az 5. lépésben leírt segédmetódus segítségével lekérheti egy teendő JSON-dokumentumát annak azonosítója alapján, majd deszerializálhatja azt egy POJO-vá.
+6. Az 5. lépésben a segítő módszert használva TodoItem JSON-dokumentumot kérhet le azonosító alapján, majd deszerializálhatja azt egy POJO:
    
         @Override
         public TodoItem readTodoItem(String id) {

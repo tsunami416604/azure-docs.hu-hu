@@ -2,28 +2,28 @@
 title: Oktatóanyag – egyéni virtuálisgép-rendszerkép használata egy méretezési csoporton Azure PowerShell
 description: Megismerheti, hogyan hozhat létre egyéni virtuálisgép-rendszerképeket az Azure PowerShell használatával, amelyek használatával virtuálisgép-méretezési csoportokat helyezhet üzembe
 author: cynthn
-tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.subservice: imaging
 ms.topic: tutorial
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: 4b072991a86922fe2b4ba5be93b4c96841dc24af
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.custom: akjosh
+ms.openlocfilehash: 3f99b68de4bce37e7ba9ce6656cf401209e73105
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792768"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200925"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure PowerShell-lel
 
 Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
 
 > [!div class="checklist"]
-> * Megosztott Képtár létrehozása
+> * Shared Image Gallery létrehozása
 > * Rendszerkép-definíció létrehozása
-> * Rendszerkép-verzió létrehozása
+> * Rendszerképverzió létrehozása
 > * Méretezési készlet létrehozása rendszerképből 
 > * Képtár megosztása
 
@@ -39,7 +39,7 @@ Az oktatóanyagban található példa elvégzéséhez szüksége lesz egy meglé
 
 Az Azure Cloud Shell egy olyan ingyenes interaktív kezelőfelület, amelyet a jelen cikkben található lépések futtatására használhat. A fiókjával való használat érdekében a gyakran használt Azure-eszközök már előre telepítve és konfigurálva vannak rajta. 
 
-A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell). A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
+A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy kódblokk jobb felső sarkában. A Cloud Shell egy külön böngészőablakban is elindíthatja [https://shell.azure.com/powershell](https://shell.azure.com/powershell) . A **Copy** (másolás) gombra kattintva másolja és illessze be a kódot a Cloud Shellbe, majd nyomja le az Enter billentyűt a futtatáshoz.
 
 
 ## <a name="get-the-vm"></a>A virtuális gép beszerzése
@@ -98,7 +98,7 @@ $galleryImage = New-AzGalleryImageDefinition `
 ```
 
 
-## <a name="create-an-image-version"></a>Rendszerkép-verzió létrehozása
+## <a name="create-an-image-version"></a>Rendszerképverzió létrehozása
 
 Hozzon létre egy rendszerkép-verziót egy virtuális gépről a [New-AzGalleryImageVersion](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion)használatával. 
 
@@ -106,7 +106,7 @@ A képverzió megengedett karaktereinek száma számok és időszakok. A számok
 
 Ebben a példában a rendszerkép verziója a *1.0.0* , és a rendszer az *USA keleti* és *déli középső* régiójában lévő adatközpontokra replikálja. A célcsoportok replikáláshoz való kiválasztásakor meg kell adnia a *forrás* régiót a replikálás célhelye.
 
-A virtuális gépről származó rendszerkép-verzió létrehozásához használja `$vm.Id.ToString()` a következőt: `-Source`.
+A virtuális gépről származó rendszerkép-verzió létrehozásához használja a `$vm.Id.ToString()` következőt: `-Source` .
 
 ```azurepowershell-interactive
 $region1 = @{Name='South Central US';ReplicaCount=1}
@@ -228,7 +228,7 @@ A méretezési csoport erőforrásainak és virtuális gépeinek létrehozása �
 
 ## <a name="share-the-gallery"></a>A katalógus megosztása
 
-Javasoljuk, hogy a Képtár szintjén ossza meg a hozzáférést. Használjon e-mail-címet és a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) parancsmagot a felhasználó objektumazonosító beszerzéséhez, majd a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával adja meg nekik a katalógushoz való hozzáférést. Cserélje le a példában szereplő alinne_montes@contoso.com e-mailt a saját adataira.
+Javasoljuk, hogy a Képtár szintjén ossza meg a hozzáférést. Használjon e-mail-címet és a [Get-AzADUser](/powershell/module/az.resources/get-azaduser) parancsmagot a felhasználó objektumazonosító beszerzéséhez, majd a [New-AzRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment) használatával adja meg nekik a katalógushoz való hozzáférést. Cserélje le a példában szereplő e-mailt a alinne_montes@contoso.com saját adataira.
 
 ```azurepowershell-interactive
 # Get the object ID for the user
@@ -262,9 +262,9 @@ Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](https://docs.micros
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképet a méretezési csoportjai esetében az Azure PowerShell segítségével:
 
 > [!div class="checklist"]
-> * Megosztott Képtár létrehozása
+> * Shared Image Gallery létrehozása
 > * Rendszerkép-definíció létrehozása
-> * Rendszerkép-verzió létrehozása
+> * Rendszerképverzió létrehozása
 > * Méretezési készlet létrehozása rendszerképből 
 > * Képtár megosztása
 

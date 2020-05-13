@@ -15,151 +15,148 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b12bd8ba7998b924035a0946f9e32b88ce206e4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0c0c1cab94a6b83ca429fd640759bed8af0ae881
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79476501"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124856"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Oktatóanyag: Azure Active Directory integráció az elme Tools Toolkit használatával
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja az elme Tools Toolkitot Azure Active Directory (Azure AD) használatával.
-Az elme Tools eszközkészletének az Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
-* Megadhatja az Azure AD-t, aki hozzáfér az elme Tools eszközkészlethez.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az elme Tools Toolkitbe (egyszeri bejelentkezés) az Azure AD-fiókkal.
-* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
+Ezzel az integrációval a következőket teheti:
 
-Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)című témakört.
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+* Az elme Tools eszközkészlethez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek az elme Tools Toolkitbe (egyszeri bejelentkezés) az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti: a Azure Portal.
+
+Ha többet szeretne megtudni a szolgáltatott szoftver (SaaS) alkalmazás Azure AD-integrációval kapcsolatban, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)használatával című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az Azure AD-integráció az elme Tools Toolkit segítségével való konfigurálásához a következő elemek szükségesek:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* Az elme Tools Toolkit egyszeri bejelentkezést támogató előfizetése
+* Az elme Tools Toolkit-előfizetés engedélyezve van az egyszeri bejelentkezéssel (SSO).
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* Az elme Tools Toolkit támogatja az **SP** által KEZDEMÉNYEZett SSO-t
-* Az elme Tools Toolkit **csak időben támogatja a** felhasználók üzembe helyezését
-* Az elme-eszközök eszközkészlet konfigurálása után kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását is biztosítja. A munkamenet-vezérlő kiterjeszthető a feltételes hozzáférésből. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+* Az elme Tools Toolkit támogatja az SP által kezdeményezett egyszeri bejelentkezést.
+* Az elme Tools Toolkit az igény szerinti felhasználói üzembe helyezést is támogatja.
+* Az elme-eszközök eszközkészletének konfigurálása után kényszerítheti a munkamenet-vezérlést. Ez a vezérlő valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 
-## <a name="adding-mind-tools-toolkit-from-the-gallery"></a>Az elme Tools eszközkészletének hozzáadása a katalógusból
+## <a name="add-mind-tools-toolkit-from-the-gallery"></a>Az elme Tools eszközkészletének hozzáadása a katalógusból
 
 Az elme Tools Toolkit Azure AD-be való integrálásának konfigurálásához az elme Tools eszközkészletet kell hozzáadnia a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
-1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
-1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. A bal szélső navigációs ablaktáblán válassza ki a **Azure Active Directory** szolgáltatást.
+1. Lépjen a **vállalati alkalmazások**elemre, majd válassza a **minden alkalmazás**lehetőséget.
 1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
-1. A **Hozzáadás a** katalógusból szakaszban írja be a következőt: **elme Tools Toolkit** a keresőmezőbe.
-1. Válassza az **elme-eszközök eszközkészletet** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
+1. A **Hozzáadás a** katalógusból szakaszban adja meg az **elme Tools Toolkit** kifejezést a keresőmezőbe.
+1. Válassza az **elme Tools Toolkit** lehetőséget a keresési eredmények közül, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést az elme Tools Toolkit használatával konfigurálhatja és tesztelheti egy **B. Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó az IT-eszközök eszközkészletének kapcsolati kapcsolatát kell létrehoznia.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést az elme Tools Toolkit használatával konfigurálhatja és tesztelheti egy **B. Simon**nevű tesztelési felhasználó segítségével. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy összekapcsolt kapcsolatot az Azure AD-felhasználó és a kapcsolódó felhasználó az elme Tools eszközkészletben.
 
-Az Azure AD egyszeri bejelentkezés az elme Tools Toolkit használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés az elme Tools Toolkit használatával történő konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. Az **[elme Tools TOOLKIT SSO konfigurálása](#configure-mind-tools-toolkit-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[Create elme Tools Toolkit-teszt felhasználó](#create-mind-tools-toolkit-test-user)** – a "B. Simon", a felhasználók Azure ad-beli képviseletéhez kapcsolódó eszközök eszközkészlete.
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+1. **[Konfigurálja az Azure ad SSO](#configure-azure-ad-sso)** -t, hogy a felhasználók használhatják ezt a funkciót.
+    1. **[Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user)** az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[Állítsa be az elme Tools TOOLKIT SSO](#configure-mind-tools-toolkit-sso)** -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+    1. **[Hozzon létre egy elme Tools Toolkit-teszt felhasználót](#create-a-mind-tools-toolkit-test-user)** , hogy a B. Simon az elme Tools Toolkit tagja legyen. Ez a partner a felhasználó Azure AD-képviseletéhez van társítva.
+1. Ellenőrizze az **[SSO](#test-sso)** -t annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
-
-Az Azure AD egyszeri bejelentkezés az elme Tools Toolkit használatával történő konfigurálásához hajtsa végre a következő lépéseket:
+Ebben a szakaszban a következő lépéseket követve konfigurálja az Azure AD egyszeri bejelentkezést az elme Tools Toolkit segítségével:
 
 1. Az [Azure Portal](https://portal.azure.com/)az **elme Tools Toolkit** Application Integration oldalon válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
+    ![A kezelés szakasz egyszeri bejelentkezéssel kiemelve](common/select-sso.png)
 
-2. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** üzemmód lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
+1. Az egyszeri bejelentkezés **módszerének kiválasztása** párbeszédpanelen válassza az **SAML/ws-fed** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
 
-    ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
+    ![Az egyszeri bejelentkezési módszer kiválasztása párbeszédpanel, amely az SAML-ra van kijelölve](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
+    ![Az egyszeri bejelentkezés SAML-oldallal való beállítása az alapszintű SAML-konfigurációhoz tartozó ceruza ikonnal](common/edit-urls.png)
 
-4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
+1. Az **alapszintű SAML-konfiguráció** szakasz **bejelentkezési URL-címe** mezőjébe írja be a mintát tartalmazó URL-címet `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>` .
 
-    A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>`:.
+    > [!NOTE]
+    > A **bejelentkezési URL-cím** értéke nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot az [elme Tools Toolkit ügyfél-támogatási csapatával](mailto:support@goodpractice.com) .
 
-    > [!Note]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot az [emlékeztető eszközök eszközkészletének](mailto:support@goodpractice.com) ügyfélszolgálati csoportjával.
+1. Az **egyszeri bejelentkezés SAML-vel** lapon válassza az **SAML aláíró tanúsítvány** szakaszát. Az **összevonási metaadatok XML-fájljának**jobb oldalán válassza a **Letöltés** lehetőséget az XML-szöveg letöltéséhez, és mentse a számítógépre. Az XML-tartalom a kiválasztott beállításoktól függ.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+    ![Az SAML aláíró tanúsítvány szakasza az összevonási metaadatok XML-fájlja mellett Kiemelt letöltéssel](common/metadataxml.png)
 
-    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
+1. Az **elme-eszközök beállítása eszközkészlet** szakaszban másolja az alábbi URL-címek közül a kívántat.
 
-6. Az **elme-eszközök beállítása eszközkészlet** szakaszban másolja ki a megfelelő URL-címet (ka) t a követelmény szerint.
+    * **Bejelentkezési URL-cím**
 
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
+    * **Azure AD-azonosító**
 
-    a. Bejelentkezési URL
+    * **Kijelentkezési URL-cím**
 
-    b. Azure AD-azonosító
-
-    c. Kijelentkezési URL-cím
+    ![Az elme-eszközök eszközkészletének beállítása szakasz, a konfigurációs URL-címek kiemelve](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
+Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portalban:
 
-1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A Azure Portal bal szélső oldalán válassza a **Azure Active Directory**  >  **felhasználók**  >  **minden felhasználó**lehetőséget.
+1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
-   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőben adja meg a username@companydomain.extensionnevet. Például: `B.Simon@contoso.com`.
+   1. A név mezőbe írja be a **B. Simon** **nevet** .  
+   1. A **Felhasználónév** mezőbe írja be a **B. Simon@**_cégestartomány_**.** _bővítmény_. Például: B.Simon@contoso.com.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás**gombra.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést az elme Tools Toolkit elérésének biztosításával.
+Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentkezés használatát az elme Tools eszközkészlethez való hozzáférés megadásával.
 
-1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. A Azure Portal válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listában válassza az **elme-eszközök eszközkészletet**.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás áttekintés lapján lépjen a **kezelés** szakaszra, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
+   ![A kezelés szakaszban Kiemelt felhasználók és csoportok](common/users-groups-blade.png)
 
-1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
+1. Válassza a **felhasználó hozzáadása**elemet. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+   ![A felhasználók és csoportok ablak, a felhasználó hozzáadása kiemelve](common/add-assign-user.png)
 
-1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
-1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+1. A **felhasználók és csoportok** párbeszédpanelen válassza ki az **B. Simon** elemet a felhasználók listából. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából. Ezután kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen válassza a **hozzárendelés**lehetőséget.
 
 ## <a name="configure-mind-tools-toolkit-sso"></a>Az elme Tools Toolkit egyszeri bejelentkezésének konfigurálása
 
-Az egyszeri bejelentkezési **eszközök eszközkészletének** konfigurálásához el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portal az [elme Tools Toolkit támogatási csapatához](mailto:support@goodpractice.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az **elme Tools Toolkit** oldalán az egyszeri bejelentkezés konfigurálásához küldje el a letöltött **összevonási metaadatok XML-** szövegét és a korábban átmásolt URL-címeket az [elme Tools Toolkit támogatási csapatának](mailto:support@goodpractice.com). Ezt a beállítást úgy konfigurálja, hogy az SAML SSO-kapcsolatok mindkét oldalon megfelelően legyenek beállítva.
 
-### <a name="create-mind-tools-toolkit-test-user"></a>Az elme Tools eszközkészletének tesztelése felhasználó
+### <a name="create-a-mind-tools-toolkit-test-user"></a>Az elme Tools Toolkit-teszt felhasználójának létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználó jön létre az eszközök eszközkészletében. Az elme Tools Toolkit az **igény szerinti üzembe**helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik az elme Tools Toolkit-ben, akkor a rendszer létrehoz egy újat, amikor megpróbál hozzáférni az elme Tools eszközkészlethez.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre az elme Tools Toolkit-ben.
+
+Az elme Tools Toolkit az igény szerinti üzembe helyezést is támogatja, ami alapértelmezés szerint engedélyezve van. Ebben a szakaszban nem végezhető művelet. Ha egy felhasználó még nem létezik az elme Tools Toolkit-ben, akkor a rendszer létrehoz egy újat, amikor megpróbál hozzáférni az elme Tools eszközkészlethez.
 
 ### <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a saját alkalmazások portál használatával.
 
-Ha a hozzáférési panelen az elme Tools eszközkészlet csempére kattint, automatikusan be kell jelentkeznie az elme Tools eszközkészletbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Amikor kiválasztja a saját alkalmazások portálon az elme Tools Toolkit csempét, automatikusan bejelentkezik az elmés Tools eszközkészletbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a saját alkalmazások portálján: [Bevezetés a My apps portálra](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További források
+## <a name="additional-resources"></a>További háttéranyagok
 
-- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Oktatóanyagok az SaaS-alkalmazások integrálásához Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on)
 

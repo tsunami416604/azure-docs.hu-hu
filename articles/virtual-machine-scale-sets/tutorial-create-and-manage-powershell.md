@@ -2,18 +2,19 @@
 title: Oktatóanyag – Azure virtuálisgép-méretezési csoport létrehozása és kezelése
 description: Arra vonatkozó tudnivalók, hogyan használhatja a PowerShellt virtuálisgép-méretezési csoportok létrehozásához, valamint néhány olyan általános kezelési feladat elvégzéséhez, amilyen a példányok elindítása és leállítása, vagy a méretezési csoport kapacitásának módosítása.
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: tutorial
-ms.date: 05/18/2018
 ms.author: jushiman
-ms.custom: mvc
-ms.openlocfilehash: 938b4e64dd5b67488ae5d061f2ceb29ae4bb7f6e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: tutorial
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 05/18/2018
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 2e9c027a927d4aba9c174db8dfc5a72f0cc4f214
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81011239"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195179"
 ---
 # <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure PowerShell használatával
 
@@ -83,7 +84,7 @@ MYRESOURCEGROUP   myScaleSet_0   eastus Standard_DS1_v2          0         Succe
 MYRESOURCEGROUP   myScaleSet_1   eastus Standard_DS1_v2          1         Succeeded
 ```
 
-Egy adott virtuálisgép-példányra vonatkozó további információk megtekintéséhez adja hozzá `-InstanceId` a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)paramétert. A következő példa információkat tekint meg az *1*-es számú virtuálisgép-példányról:
+Egy adott virtuálisgép-példányra vonatkozó további információk megtekintéséhez adja hozzá a `-InstanceId` [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm)paramétert. A következő példa információkat tekint meg az *1*-es számú virtuálisgép-példányról:
 
 ```azurepowershell-interactive
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "1"
@@ -132,7 +133,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (alapértelmezés szerint a minta parancsaiban, az *azureuser* és a *\@P ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saját nyilvános IP-címét, valamint a kívánt VM-példány portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (alapértelmezés szerint a minta parancsaiban, az *azureuser* és a *P \@ ssw0rd!*). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa az *1* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -251,7 +252,7 @@ New-AzVmss `
 ## <a name="change-the-capacity-of-a-scale-set"></a>Méretezési csoport kapacitásának módosítása
 A méretezési csoport létrehozása során két virtuálisgép-példányt igényelt. A méretezési csoportban lévő virtuálisgép-példányok számának növeléséhez vagy csökkentéséhez manuálisan módosíthatja a kapacitást. A méretezési csoport létrehozza vagy eltávolítja a szükséges számú virtuálisgép-példányt, majd konfigurálja a terheléselosztót a forgalom elosztásához.
 
-Először hozzon létre egy méretezési csoport objektumot a [Get-AzVmss](/powershell/module/az.compute/get-azvmss)paranccsal, majd adja meg `sku.capacity`a új értékét. A kapacitás módosításának alkalmazásához használja az [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Az alábbi példa a méretezési csoportban lévő virtuálisgép-példányok számát *3*-ra állítja:
+Először hozzon létre egy méretezési csoport objektumot a [Get-AzVmss](/powershell/module/az.compute/get-azvmss)paranccsal, majd adja meg a új értékét `sku.capacity` . A kapacitás módosításának alkalmazásához használja az [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Az alábbi példa a méretezési csoportban lévő virtuálisgép-példányok számát *3*-ra állítja:
 
 ```azurepowershell-interactive
 # Get current scale set
