@@ -12,16 +12,16 @@ ms.workload: na
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: juliako
-ms.openlocfilehash: 8a9c1ba8e6316ea79941fbec1fbd339893afdb35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131203"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124584"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Azure Media Services Video Indexer kibocsátási megjegyzései
 
->Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` -cím másolásával és beillesztésével: az RSS-hírcsatorna-olvasóba.
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+Video+Indexer+release+notes%22&locale=en-us` az RSS-hírcsatorna-olvasóba.
 
 A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
 
@@ -34,9 +34,9 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 
 ### <a name="new-widget-parameters-capabilities"></a>Új widget-paraméterek képességei
 
-Az **adatáttekintési** widget új paramétereket tartalmaz: `language` és `control`.
+Az **adatáttekintési** widget új paramétereket tartalmaz: `language` és `control` .
 
-A **Player** widget új `locale` paraméterrel rendelkezik. A `locale` és `language` a paraméterek egyaránt vezérlik a lejátszó nyelvét.
+A **Player** widget új `locale` paraméterrel rendelkezik. `locale`A és `language` a paraméterek egyaránt vezérlik a lejátszó nyelvét.
 
 További információ: [widget-típusok](video-indexer-embed-widgets.md#widget-types) szakasz. 
 
@@ -53,12 +53,12 @@ További információ: [widget-típusok](video-indexer-embed-widgets.md#widget-t
     * [Get-accounts-Authorization](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-Authorization)
     * [Get-accounts-with-token](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Get-Accounts-With-Token)
  
-    A fiók objektumhoz tartozik `Url` egy mező, amely a [video Indexer webhely](https://www.videoindexer.ai/)helyét mutat.
-Fizetős fiókok esetén `Url` a mező jelenleg a nyilvános webhely helyett egy belső URL-címre mutat.
+    A fiók objektumhoz tartozik egy mező, amely a `Url` [video Indexer webhely](https://www.videoindexer.ai/)helyét mutat.
+Fizetős fiókok esetén a `Url` mező jelenleg a nyilvános webhely helyett egy belső URL-címre mutat.
 Az elkövetkező hetekben módosítani fogjuk, és a [video Indexer webhely](https://www.videoindexer.ai/) URL-címét adja vissza az összes fiókhoz (próbaverzió és fizetős).
 
     Ne használja a belső URL-címeket, a [video Indexer nyilvános API-kat](https://api-portal.videoindexer.ai/)kell használnia.
-* Ha Video Indexer URL-címeket ágyaz be az alkalmazásaiba, és az URL-címek nem a [video Indexer webhelyére](https://www.videoindexer.ai/) vagy a [video Indexer API-végpontra](https://api.videoindexer.ai) mutatnak, hanem inkább egy `https://wus2.videoindexer.ai`regionális végpontra (például:), akkor az URL-eket újra létrehozza.
+* Ha Video Indexer URL-címeket ágyaz be az alkalmazásaiba, és az URL-címek nem a [video Indexer webhelyére](https://www.videoindexer.ai/) vagy a video Indexer API-végpontra () mutatnak `https://api.videoindexer.ai` , hanem egy regionális végpontra (például: `https://wus2.videoindexer.ai` ), akkor az URL-eket újra létrehozza.
 
    Ezt a következők egyikével teheti meg:
 
@@ -73,7 +73,7 @@ Az elkövetkező hetekben módosítani fogjuk, és a [video Indexer webhely](htt
  
 ### <a name="custom-language-support-for-additional-languages"></a>Egyéni nyelvi támogatás további nyelvekhez
 
-A video Indexer mostantól támogatja az egyéni `ar-SY` nyelvi `en-UK`modelleket `en-AU` a, a és a (csak API-hoz).
+A Video Indexer mostantól támogatja az egyéni nyelvi modelleket a `ar-SY` , a `en-UK` és a `en-AU` (csak API-hoz).
  
 ### <a name="delete-account-timeframe-action-update"></a>Fiók időkeretének törlése művelet frissítése
 
@@ -127,7 +127,7 @@ A 409-as állapotkódot a rendszer most [Visszaindexeli a videóból](https://ap
  
 * Egyéni koreai nyelvi modellek támogatása
 
-    A video Indexer mostantól támogatja az egyéni nyelvi modelleket a Koreai (`ko-KR`) verzióban az API-ban és a portálon is. 
+    A video Indexer mostantól támogatja az egyéni nyelvi modelleket a Koreai ( `ko-KR` ) verzióban az API-ban és a portálon is. 
 * Beszéd – szöveg (STT) által támogatott új nyelvek
 
     Video Indexer API-k mostantól támogatják a STT-t az Arab levantei (AR-SY), az angol Egyesült királyságbeli dialektusban (en-GB) és az angol ausztráliai nyelvjárásban (en-AU).

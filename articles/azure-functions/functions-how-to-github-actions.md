@@ -3,14 +3,14 @@ title: A GitHub-műveletek használata a Azure Functions a kód frissítéseinek
 description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe Azure Functions-projekteket a GitHubon a GitHub-műveletek használatával.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: 54010269e5b61ebf28a29dd3165c4310f3472817
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878204"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122331"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Folyamatos teljesítés a GitHub-művelet használatával
 
@@ -18,7 +18,7 @@ A [GitHub-műveletek](https://github.com/features/actions) lehetővé teszi, hog
 
 A GitHub-műveletekben a [munkafolyamat](https://help.github.com/articles/about-github-actions#workflow) egy automatizált folyamat, amelyet a GitHub-tárházban határozhat meg. Ezzel a folyamattal megtudhatja, hogyan hozhat létre és helyezhet üzembe functions-projekteket a GitHubon. 
 
-A munkafolyamatot egy YAML-(. YML) fájl határozza meg `/.github/workflows/` a tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza. 
+A munkafolyamatot egy YAML-(. YML) fájl határozza meg a `/.github/workflows/` tárház elérési útjában. Ez a definíció a munkafolyamatot alkotó különböző lépéseket és paramétereket tartalmazza. 
 
 Azure Functions munkafolyamathoz a fájl három szakaszt tartalmaz: 
 
@@ -46,22 +46,24 @@ Ebben a példában az erőforrásban található helyőrzőket cserélje le az e
 
 ## <a name="download-the-publishing-profile"></a>A közzétételi profil letöltése
 
-A Function alkalmazás közzétételi profiljának letöltéséhez nyissa meg az alkalmazás **Áttekintés** lapját, és kattintson a **közzétételi profil beolvasása**lehetőségre.
+A Function alkalmazás közzétételi profiljának letöltése:
 
-   ![Közzétételi profil letöltése](media/functions-how-to-github-actions/get-publish-profile.png)
+1. Válassza ki a Function alkalmazás **Áttekintés** lapját, majd válassza a **közzétételi profil beolvasása**elemet.
 
-Másolja a fájl tartalmát.
+   :::image type="content" source="media/functions-how-to-github-actions/get-publish-profile.png" alt-text="Közzétételi profil letöltése":::
+
+1. Mentse és másolja a közzétételi beállítások fájljának tartalmát.
 
 ## <a name="configure-the-github-secret"></a>A GitHub-titok konfigurálása
 
-1. A [githubon](https://github.com)keresse meg a tárházat, és válassza a **Beállítások** > **titkok** > **új titok hozzáadása**elemet.
+1. A [githubon](https://github.com)keresse meg a tárházat, és válassza a **Beállítások**  >  **titkok**  >  **új titok hozzáadása**elemet.
 
-   ![Titkos kód hozzáadása](media/functions-how-to-github-actions/add-secret.png)
+   :::image type="content" source="media/functions-how-to-github-actions/add-secret.png" alt-text="Titkos kód hozzáadása":::
 
 1. Adjon hozzá egy új titkot.
 
-   * Ha az Azure CLI használatával létrehozott egyszerű szolgáltatást használja, `AZURE_CREDENTIALS` a **nevet**adja meg. Ezután illessze be a vágólapra másolt JSON-objektum kimenetét az **érték**mezőbe, majd válassza a **titkos kód hozzáadása**elemet.
-   * Ha közzétételi profilt használ, használja `SCM_CREDENTIALS` a **nevet**. Ezután használja a közzétételi profil fájljának tartalmát az **Érték mezőben**, majd válassza a **titkos kód hozzáadása**lehetőséget.
+   * Ha az Azure CLI használatával létrehozott egyszerű szolgáltatást használja, a `AZURE_CREDENTIALS` **nevet**adja meg. Ezután illessze be a vágólapra másolt JSON-objektum kimenetét az **érték**mezőbe, majd válassza a **titkos kód hozzáadása**elemet.
+   * Ha közzétételi profilt használ, használja `SCM_CREDENTIALS` a **nevet**. Ezután használja a közzétételi profil fájljának tartalmát az **Érték mezőben**, majd válassza a **titkos kód hozzáadása**elemet.
 
 A GitHub mostantól képes hitelesíteni az Azure-beli Function-alkalmazást.
 
@@ -71,7 +73,7 @@ A környezet beállítása a nyelvspecifikus közzétételi beállítás haszná
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-node` műveletet használja a környezet beállításához:
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet használja a `actions/setup-node` környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -86,7 +88,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setu
 
 # <a name="python"></a>[Python](#tab/python)
 
-Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-python` műveletet használja a környezet beállításához:
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet használja a `actions/setup-python` környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -101,7 +103,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setu
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-dotnet` műveletet használja a környezet beállításához:
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet használja a `actions/setup-dotnet` környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -116,7 +118,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setu
 
 # <a name="java"></a>[Java](#tab/java)
 
-Az alábbi példa bemutatja a munkafolyamat azon részét, amely a `actions/setup-java` műveletet használja a környezet beállításához:
+Az alábbi példa bemutatja a munkafolyamat azon részét, amely a műveletet használja a `actions/setup-java` környezet beállításához:
 
 ```yaml
     - name: 'Login via Azure CLI'
@@ -197,7 +199,7 @@ Az alábbi példa bemutatja a munkafolyamat azon részét, amely létrehozza a F
 
 ## <a name="deploy-the-function-app"></a>A függvényalkalmazás üzembe helyezése
 
-A kód a Function alkalmazásban való üzembe helyezéséhez a `Azure/functions-action` műveletet kell használnia. Ennek a műveletnek két paramétere van:
+A kód a Function alkalmazásban való üzembe helyezéséhez a műveletet kell használnia `Azure/functions-action` . Ennek a műveletnek két paramétere van:
 
 |Paraméter |Magyarázat  |
 |---------|---------|
@@ -205,7 +207,7 @@ A kód a Function alkalmazásban való üzembe helyezéséhez a `Azure/functions
 |_**tárolóhely neve**_ | Választható Annak a [telepítési tárolóhelynek](functions-deployment-slots.md) a neve, amelyre telepíteni kívánja a-t. A tárolóhelynek már definiálva kell lennie a Function alkalmazásban. |
 
 
-Az alábbi példa a `functions-action`következők 1. verzióját használja:
+Az alábbi példa a következők 1. verzióját használja `functions-action` :
 
 ```yaml
     - name: 'Run Azure Functions Action'
@@ -217,7 +219,7 @@ Az alábbi példa a `functions-action`következők 1. verzióját használja:
 
 ## <a name="next-steps"></a>További lépések
 
-Egy teljes munkafolyamat megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-mintákat](https://aka.ms/functions-actions-samples) tartalmazó `functionapp` , a névben található egyik fájlját a YAML. Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
+A teljes munkafolyamat. YAML fájl megtekintéséhez tekintse meg az [Azure GitHub-műveletek munkafolyamat-minták](https://aka.ms/functions-actions-samples) tárházában található, a névvel rendelkező fájlok egyikét `functionapp` . Ezek a minták kiindulási pontként használhatók a munkafolyamathoz.
 
 > [!div class="nextstepaction"]
 > [További információ a GitHub-műveletekről](https://help.github.com/en/articles/about-github-actions)

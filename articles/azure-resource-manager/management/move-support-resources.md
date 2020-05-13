@@ -3,12 +3,12 @@ title: Művelet támogatásának áthelyezése erőforrástípus szerint
 description: Felsorolja az új erőforráscsoporthoz vagy előfizetésbe áthelyezhető Azure-erőforrástípusok listáját.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 45450b21b1cd3236712043629f433c2c5fe20f80
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 81d545066ea6bcc1d3e2eecd884671324155d796
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900979"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124686"
 ---
 # <a name="move-operation-support-for-resources"></a>Erőforrás-áthelyezési műveletek támogatása
 Ez a cikk azt mutatja be, hogy az Azure-erőforrástípus támogatja-e az áthelyezési műveletet. Emellett az erőforrások áthelyezésekor megfontolandó speciális feltételekkel kapcsolatos információkat is tartalmaz.
@@ -418,8 +418,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tartománynevek | Igen | No |
-> | virtualmachines | Igen | No |
+> | tartománynevek | Igen | Nem |
+> | virtualmachines | Igen | Nem |
 
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
@@ -441,7 +441,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | storageaccounts | Igen | No |
+> | storageaccounts | Igen | Nem |
 
 > [!IMPORTANT]
 > Lásd: [klasszikus üzembe helyezési útmutató](./move-limitations/classic-model-move-limitations.md). A klasszikus üzembe helyezési erőforrások az adott forgatókönyvre jellemző művelettel helyezhetők át az előfizetések között.
@@ -771,10 +771,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | labcenters | Nem | Nem |
-> | Labs | Igen | No |
+> | Labs | Igen | Nem |
 > | Labs/környezetek | Igen | Igen |
 > | Labor/servicerunners | Igen | Igen |
-> | Labor/virtualmachines | Igen | No |
+> | Labor/virtualmachines | Igen | Nem |
 > | menetrend | Igen | Igen |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
@@ -1025,8 +1025,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- | ---------- |
 > | hostingenvironments | Nem | Nem |
 > | integrationaccounts | Igen | Igen |
-> | integrationserviceenvironments | Igen | No |
-> | integrationserviceenvironments/król | Igen | No |
+> | integrationserviceenvironments | Igen | Nem |
+> | integrationserviceenvironments/król | Igen | Nem |
 > | isolatedenvironments | Nem | Nem |
 > | munkafolyamatok | Igen | Igen |
 
@@ -1036,7 +1036,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | commitmentplans | Nem | Nem |
-> | WebServices | Igen | No |
+> | WebServices | Igen | Nem |
 > | munkaterületek | Igen | Igen |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft. MachineLearningCompute
@@ -1197,10 +1197,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | networkinterfaces | Igen | Igen |
 > | networkprofiles | Nem | Nem |
 > | networksecuritygroups | Igen | Igen |
-> | networkwatchers | Igen | No |
-> | networkwatchers / connectionmonitors | Igen | No |
-> | networkwatchers / flowlogs | Igen | No |
-> | networkwatchers / pingmeshes | Igen | No |
+> | networkwatchers | Igen | Nem |
+> | networkwatchers / connectionmonitors | Igen | Nem |
+> | networkwatchers / flowlogs | Igen | Nem |
+> | networkwatchers / pingmeshes | Igen | Nem |
 > | p2svpngateways | Nem | Nem |
 > | privatednszones | Igen | Igen |
 > | privatednszones / virtualnetworklinks | Igen | Igen |
@@ -1253,8 +1253,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 
 > [!IMPORTANT]
 > Ügyeljen arra, hogy az új előfizetésre való áttérés ne haladja meg az [előfizetési kvótákat](azure-subscription-service-limits.md#azure-monitor-limits).
-
-> [!IMPORTANT]
+> 
 > A csatolt Automation-fiókkal rendelkező munkaterületek nem helyezhetők át. Az áthelyezési művelet megkezdése előtt ne felejtse el összekapcsolni az Automation-fiókokat.   
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
@@ -1399,7 +1398,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | alkalmazások | Igen | No |
+> | alkalmazások | Igen | Nem |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
 
@@ -1677,8 +1676,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
 > | account | Nem | Nem |
-> | fiók/bővítmény | Igen | Igen |
-> | fiók/projekt | Igen | Igen |
+> | fiók/bővítmény | Nem | Nem |
+> | fiók/projekt | Nem | Nem |
 
 > [!IMPORTANT]
 > Az Azure DevOps-előfizetés módosításához tekintse meg [a számlázáshoz használt Azure-előfizetés módosítása](/azure/devops/organizations/billing/change-azure-subscription?toc=/azure/azure-resource-manager/toc.json)című témakört.
@@ -1705,15 +1704,15 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | fiókok | Igen | Igen |
-> | tervek | Igen | Igen |
+> | fiókok | Nem | Nem |
+> | tervek | Nem | Nem |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Erőforráscsoport | Előfizetés |
 > | ------------- | ----------- | ---------- |
-> | tanúsítványok | No | Igen |
+> | tanúsítványok | Nem | Igen |
 > | connectiongateways | Igen | Igen |
 > | kapcsolatok | Igen | Igen |
 > | customapis | Igen | Igen |

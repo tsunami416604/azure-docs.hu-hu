@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: e5b281d59245d8fbd32b18f4ac5fe577fc7ff309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78192914"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121252"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dinamikus adatmaszkolás a Azure SQL Database és az Azure szinapszis Analytics számára
 
@@ -44,7 +44,7 @@ A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, 
 
 | Maszkolási függvény | Maszkolási logika |
 | --- | --- |
-| **Alapértelmezett** |**Teljes maszkolás a kijelölt mezők adattípusainak megfelelően**<br/><br/>• Az XXXX vagy kevesebb XS használata, ha a mező mérete kisebb, mint 4 karakter a sztring adattípusok esetében (NCHAR, ntext, nvarchar).<br/>• Nulla értéket használhat a numerikus adattípusokhoz (bigint, bit, decimális, int, Money, numerikus, smallint, túlcsordulási, tinyint, float, Real).<br/>• Az 01-01-1900-as dátum/idő adattípusok (dátum, datetime2, datetime, DateTimeOffset, idő adattípusúra, Time) használata.<br/>• Az SQL Variant esetében az aktuális típus alapértelmezett értéke lesz használatban.<br/>• Az XML esetében a \<rendszer a dokumentum maszkolását/> használja.<br/>• Üres értéket használhat a speciális adattípusokhoz (timestamp-tábla, hierarchyid, GUID, Binary, képek, varbinary térbeli típusok). |
+| **Alapértelmezett** |**Teljes maszkolás a kijelölt mezők adattípusainak megfelelően**<br/><br/>• Az XXXX vagy kevesebb XS használata, ha a mező mérete kisebb, mint 4 karakter a sztring adattípusok esetében (NCHAR, ntext, nvarchar).<br/>• Nulla értéket használhat a numerikus adattípusokhoz (bigint, bit, decimális, int, Money, numerikus, smallint, túlcsordulási, tinyint, float, Real).<br/>• Az 01-01-1900-as dátum/idő adattípusok (dátum, datetime2, datetime, DateTimeOffset, idő adattípusúra, Time) használata.<br/>• Az SQL Variant esetében az aktuális típus alapértelmezett értéke lesz használatban.<br/>• Az XML esetében a rendszer a dokumentum \< maszkolását/> használja.<br/>• Üres értéket használhat a speciális adattípusokhoz (timestamp-tábla, hierarchyid, GUID, Binary, képek, varbinary térbeli típusok). |
 | **Hitelkártya** |**Maszkolási módszer, amely a kijelölt mezők utolsó négy számjegyét teszi elérhetővé** , és egy konstans karakterláncot hoz létre egy hitelkártya formájában.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-mail** |**Maszkolási módszer, amely az első betűt teszi elérhetővé, és lecseréli a tartományt a xxx.com** egy állandó karakterlánc-előtaggal e-mail-cím formájában.<br/><br/>aXX@XXXX.com |
 | **Véletlenszerű szám** |**Maszkolási módszer, amely** a kiválasztott határok és a tényleges adattípusok alapján véletlenszerűen generált számot hoz létre. Ha a kijelölt határok egyenlőek, akkor a maszkolási függvény állandó szám.<br/><br/>![Navigációs panel](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
@@ -58,8 +58,28 @@ A DDM-javaslatok motorja az adatbázis egyes mezőit potenciálisan bizalmas mez
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-powershell-cmdlets"></a>Dinamikus adatmaszkolás beállítása az adatbázishoz PowerShell-parancsmagok használatával
 
-Lásd: [Azure SQL Database parancsmagok](https://docs.microsoft.com/powershell/module/az.sql).
+### <a name="data-masking-policy"></a>Adatmaszkolási szabályzat
+
+- [Get-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingPolicy)
+- [Set-AzSqlDatabaseDataMaskingPolicy](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingPolicy)
+
+### <a name="data-masking-rules"></a>Adatmaszkolási szabályok
+
+- [Get-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Get-AzSqlDatabaseDataMaskingRule)
+- [Új – AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/New-AzSqlDatabaseDataMaskingRule)
+- [Remove-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Remove-AzSqlDatabaseDataMaskingRule)
+- [Set-AzSqlDatabaseDataMaskingRule](https://docs.microsoft.com/powershell/module/az.sql/Set-AzSqlDatabaseDataMaskingRule)
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Dinamikus adatmaszkolás beállítása az adatbázishoz REST API használatával
 
-Tekintse [meg Azure SQL Database műveleteit](https://docs.microsoft.com/rest/api/sql/).
+A REST API használatával programozott módon kezelheti az adatmaszkolási szabályzatot és a szabályokat. A közzétett REST API a következő műveleteket támogatja:
+
+### <a name="data-masking-policies"></a>Adatmaszkolási szabályzatok
+
+- [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): a megadott oszlop érzékenységi címkéjét hozza létre vagy frissíti.
+- Get: adatbázis-adatmaszkolási házirend [beolvasása](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get). 
+
+### <a name="data-masking-rules"></a>Adatmaszkolási szabályok
+
+- [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/datamaskingrules/createorupdate): adatbázis-adatmaszkolási szabály létrehozása vagy frissítése.
+- [Listázás adatbázis szerint](https://docs.microsoft.com/rest/api/sql/datamaskingrules/listbydatabase): lekéri az adatbázis-adatmaszkolási szabályok listáját.

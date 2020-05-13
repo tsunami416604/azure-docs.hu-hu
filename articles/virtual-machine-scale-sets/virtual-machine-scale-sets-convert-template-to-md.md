@@ -2,23 +2,24 @@
 title: Méretezési csoport sablonjának konvertálása felügyelt lemez használatához
 description: Azure Resource Manager virtuálisgép-méretezési csoport sablonjának átalakítása felügyelt lemezes méretezési csoport sablonba.
 keywords: virtuálisgép-méretezési csoportok
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: bc8c377a-8c3f-45b8-8b2d-acc2d6d0b1e8
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: disks
 ms.date: 5/18/2017
-ms.author: mimckitt
-ms.openlocfilehash: 79fafa8344312294f6df107b88c9b7c571af1969
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 85f8694a017c8de94d987c244994a24ad0929441
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81270655"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124890"
 ---
 # <a name="convert-a-scale-set-template-to-a-managed-disk-scale-set-template"></a>Méretezési csoport sablonjának átalakítása felügyelt lemezes méretezési csoport sablonba
 
-A felügyelt lemezeket nem használó méretezési csoport létrehozásához Resource Manager-sablonnal rendelkező ügyfelek módosíthatják azt a felügyelt lemez használatára. Ez a cikk bemutatja, hogyan használhatók a felügyelt lemezek, példaként egy lekéréses kérelem az Azure-beli [Gyorsindítás sablonokból](https://github.com/Azure/azure-quickstart-templates), egy közösségi adattár a Resource Manager-sablonokhoz. A teljes pull-kérést itt tekintheti [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998)meg:, és a diff vonatkozó részei alább találhatók, valamint magyarázatokkal:
+A felügyelt lemezeket nem használó méretezési csoport létrehozásához Resource Manager-sablonnal rendelkező ügyfelek módosíthatják azt a felügyelt lemez használatára. Ez a cikk bemutatja, hogyan használhatók a felügyelt lemezek, példaként egy lekéréses kérelem az Azure-beli [Gyorsindítás sablonokból](https://github.com/Azure/azure-quickstart-templates), egy közösségi adattár a Resource Manager-sablonokhoz. A teljes pull-kérést itt tekintheti meg: [https://github.com/Azure/azure-quickstart-templates/pull/2998](https://github.com/Azure/azure-quickstart-templates/pull/2998) , és a diff vonatkozó részei alább találhatók, valamint magyarázatokkal:
 
 ## <a name="making-the-os-disks-managed"></a>Az operációsrendszer-lemezek felügyelt állapotba állítása
 
@@ -85,7 +86,7 @@ A következő különbségekben a Storage-fiók erőforrása teljesen el lesz t�
        "location": "[resourceGroup().location]",
 ```
 
-A következő eltérések esetében láthatjuk, hogy a méretezési csoporttól a Storage-fiókokat létrehozó hurokra hivatkozó függő záradékot töröljük. A régi sablonban ez azt biztosítja, hogy a Storage-fiókok a méretezési csoport létrehozása előtt jöttek létre, de ez a záradék már nem szükséges a felügyelt lemezzel. A VHD-tárolók tulajdonságot is eltávolítja, az operációsrendszer-lemez neve tulajdonsággal együtt, mivel ezek a tulajdonságok a felügyelt lemez alapján automatikusan kezelhetők a motorháztető alatt. Ha prémium operációsrendszer `"managedDisk": { "storageAccountType": "Premium_LRS" }` -lemezeket szeretne, vegye fel a "osDisk" konfigurációba. A virtuális gép SKU-jának csak nagybetűs vagy kisbetűvel rendelkező virtuális gépek használhatják a prémium szintű lemezeket.
+A következő eltérések esetében láthatjuk, hogy a méretezési csoporttól a Storage-fiókokat létrehozó hurokra hivatkozó függő záradékot töröljük. A régi sablonban ez azt biztosítja, hogy a Storage-fiókok a méretezési csoport létrehozása előtt jöttek létre, de ez a záradék már nem szükséges a felügyelt lemezzel. A VHD-tárolók tulajdonságot is eltávolítja, az operációsrendszer-lemez neve tulajdonsággal együtt, mivel ezek a tulajdonságok a felügyelt lemez alapján automatikusan kezelhetők a motorháztető alatt. `"managedDisk": { "storageAccountType": "Premium_LRS" }`Ha prémium operációsrendszer-lemezeket szeretne, vegye fel a "osDisk" konfigurációba. A virtuális gép SKU-jának csak nagybetűs vagy kisbetűvel rendelkező virtuális gépek használhatják a prémium szintű lemezeket.
 
 ```diff
 @@ -183,7 +158,6 @@
@@ -131,7 +132,7 @@ A fenti módosításokkal a méretezési csoport felügyelt lemezeket használ a
 ]
 ```
 
-Ha ebben a `n` tömbben megadja a lemezeket, a méretezési csoport minden `n` virtuális gépe adatlemezeket kap. Ne feledje azonban, hogy ezek az adatlemezek nyers eszközök. Nincsenek formázva. Az ügyfél feladata a lemezek csatlakoztatása, particionálása és formázása a használatuk előtt. Opcionálisan megadhatja `"managedDisk": { "storageAccountType": "Premium_LRS" }` az egyes adatlemez-objektumokban is, így azt is megadhatja, hogy prémium szintű adatlemez legyen. A virtuális gép SKU-jának csak nagybetűs vagy kisbetűvel rendelkező virtuális gépek használhatják a prémium szintű lemezeket.
+Ha ebben a `n` tömbben megadja a lemezeket, a méretezési csoport minden virtuális gépe `n` adatlemezeket kap. Ne feledje azonban, hogy ezek az adatlemezek nyers eszközök. Nincsenek formázva. Az ügyfél feladata a lemezek csatlakoztatása, particionálása és formázása a használatuk előtt. Opcionálisan megadhatja `"managedDisk": { "storageAccountType": "Premium_LRS" }` az egyes adatlemez-objektumokban is, így azt is megadhatja, hogy prémium szintű adatlemez legyen. A virtuális gép SKU-jának csak nagybetűs vagy kisbetűvel rendelkező virtuális gépek használhatják a prémium szintű lemezeket.
 
 Ha többet szeretne megtudni a méretezési csoportokkal rendelkező adatlemezek használatáról, tekintse meg [ezt a cikket](./virtual-machine-scale-sets-attached-disks.md).
 

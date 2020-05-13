@@ -1,17 +1,17 @@
 ---
 title: Az idő konfigurálása és kezelése Azure Cosmos DB
 description: Megtudhatja, hogyan konfigurálhatja és kezelheti az időt egy tárolón és egy elemen a Azure Cosmos DB
-author: markjbrown
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 3019e9f78a51a991d5c6e96655f5dbae1f224620
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 11f5615d44cef4b6717dc9fe2004a64cf2f800ba
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869884"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124125"
 ---
 # <a name="configure-time-to-live-in-azure-cosmos-db"></a>Állítsa be az élettartamot Azure Cosmos DB
 
@@ -113,7 +113,7 @@ container = database.createContainerIfNotExists(containerProperties, 400).block(
 
 ## <a name="set-time-to-live-on-a-container-using-sdk"></a>Időtartam beállítása egy tárolón az SDK használatával
 
-Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia egy nullától eltérő pozitív számot, amely a másodpercben megadott időtartamot jelzi. A beállított TTL-érték alapján a tárolóban lévő összes elem törlődik az elem `_ts` utolsó módosításának időbélyegzője után.
+Ha meg szeretné adni az időt egy tárolón való működéshez, meg kell adnia egy nullától eltérő pozitív számot, amely a másodpercben megadott időtartamot jelzi. A beállított TTL-érték alapján a tárolóban lévő összes elem törlődik az elem utolsó módosításának időbélyegzője után `_ts` .
 
 ### <a name="net-sdk"></a><a id="dotnet-enable-withexpiry"></a>.NET SDK
 
@@ -195,7 +195,7 @@ async function createcontainerWithTTL(db: Database, containerDefinition: Contain
 
 A tárolók alapértelmezett élettartamának beállítása mellett beállíthatja, hogy az egyes elemek Mikor éljünk. Az elemszintű élettartam beállítása felülbírálja az adott tárolóban lévő elemek alapértelmezett ÉLETTARTAMát.
 
-* Egy elem ÉLETTARTAMának beállításához meg kell adnia egy nullától eltérő pozitív számot, amely azt jelzi, hogy a másodpercben az elem utolsó módosításának időbélyegzője után hány pontot kell lejárni `_ts`.
+* Egy elem ÉLETTARTAMának beállításához meg kell adnia egy nullától eltérő pozitív számot, amely azt jelzi, hogy a másodpercben az elem utolsó módosításának időbélyegzője után hány pontot kell lejárni `_ts` .
 
 * Ha az elem nem rendelkezik TTL mezővel, akkor alapértelmezés szerint a tárolóra beállított TTL-érték lesz érvényes az elemre.
 
@@ -218,7 +218,7 @@ A következő lépésekkel engedélyezheti az élettartamot egy elemen:
    * Válassza **a be lehetőséget (nincs alapértelmezett)** , vagy válassza **a** be lehetőséget, és állítsa be a TTL értéket. 
    * Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
-5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá `ttl` a tulajdonságot, és válassza a **frissítés**lehetőséget. 
+5. Ezután Navigáljon arra az elemre, amelyre az élettartamot szeretné beállítani, adja hozzá a `ttl` tulajdonságot, és válassza a **frissítés**lehetőséget. 
 
    ```json
    {
@@ -347,7 +347,7 @@ SalesOrder salesOrder = new SalesOrder(
 
 ## <a name="reset-time-to-live"></a>Élettartam visszaállítása
 
-Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával visszaállíthatja az élettartamot egy adott elemen. Az írási vagy frissítési művelet az aktuális időpontot állítja be `_ts` , a lejárati idő élettartama pedig újra elindul. Ha módosítani szeretné egy elem ÉLETTARTAMát, akkor a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
+Az elemre vonatkozó írási vagy frissítési művelet végrehajtásával visszaállíthatja az élettartamot egy adott elemen. Az írási vagy frissítési művelet az `_ts` aktuális időpontot állítja be, a lejárati idő élettartama pedig újra elindul. Ha módosítani szeretné egy elem ÉLETTARTAMát, akkor a mezőt ugyanúgy frissítheti, mint bármely más mezőt.
 
 ### <a name="net-sdk"></a><a id="dotnet-extend-ttl-item"></a>.NET SDK
 
@@ -496,7 +496,7 @@ container.getItem("SO05", new PartitionKey("CO18009186470")).read()
 
 ## <a name="disable-time-to-live"></a>Élettartam letiltása
 
-Ha le szeretné tiltani az időt egy tárolóban, és leállítja a háttérben futó folyamatot a lejárt elemek `DefaultTimeToLive` ellenőrzésével, a tárolóban lévő tulajdonságot törölni kell. A tulajdonság törlése eltér az-1 értéktől. Ha a-1 értékre állítja, a tárolóhoz hozzáadott új elemek örökre életbe kerülnek, de felülbírálhatja ezt az értéket a tároló adott elemein. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor sem, ha az előző alapértelmezett TTL-értéket explicit módon felülbírálták.
+Ha le szeretné tiltani az időt egy tárolóban, és leállítja a háttérben futó folyamatot a lejárt elemek ellenőrzésével, a `DefaultTimeToLive` tárolóban lévő tulajdonságot törölni kell. A tulajdonság törlése eltér az-1 értéktől. Ha a-1 értékre állítja, a tárolóhoz hozzáadott új elemek örökre életbe kerülnek, de felülbírálhatja ezt az értéket a tároló adott elemein. Ha eltávolítja a TTL tulajdonságot a tárolóból, az elemek soha nem járnak le, még akkor sem, ha az előző alapértelmezett TTL-értéket explicit módon felülbírálták.
 
 ### <a name="net-sdk"></a><a id="dotnet-disable-ttl"></a>.NET SDK
 

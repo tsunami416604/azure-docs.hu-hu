@@ -1,20 +1,20 @@
 ---
 title: Az Virtual Machine Scale Sets
 description: Az Virtual Machine Scale Setstel való autoskálázás hibáinak megoldása. Az észlelt jellemző problémák megismerése és a megoldásuk módja.
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c7d87b72-ee24-4e52-9377-a42f337f76fa
+author: avirishuv
+ms.author: avverma
+ms.topic: troubleshooting
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: windows
-ms.topic: conceptual
+ms.subservice: autoscale
 ms.date: 11/16/2017
-ms.author: mimckitt
-ms.openlocfilehash: 4bc5e66f5b0759bdb5fe34276369161200bd5442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviwer: jushiman
+ms.custom: avverma
+ms.openlocfilehash: 2ef50704d96cc51881594c778d1a4b109a1eae82
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273375"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125145"
 ---
 # <a name="troubleshooting-autoscale-with-virtual-machine-scale-sets"></a>Az automatikus méretezés hibaelhárítása a Virtual Machine Scale Sets használatával
 **Probléma** – a Azure Resource Manager a virtuálisgép-méretezési csoportok használatával létrehozott egy automatikus skálázási infrastruktúrát, például egy sablon üzembe helyezésével: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale – a méretezési szabályok definiálva vannak, és nagyszerűen működik, kivéve, ha a virtuális gépeken elhelyezett terhelések mennyisége nem automatikus méretezés.
@@ -40,13 +40,13 @@ Néhány megfontolandó szempont:
     Egyszerűen elvégezheti a hibákat, ezért olyan sablonnal kezdheti meg a munkát, amely a fentieknek megfelelően működik, és kis növekményes változtatásokat tesz elérhetővé. 
 * Be-vagy kibővítheti a manuális méretezést?
   
-    Próbálja meg újratelepíteni a virtuálisgép-méretezési csoport erőforrását egy másik "kapacitás" beállítással a virtuális gépek számának manuális módosításához. Példa erre a sablonra: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – előfordulhat, hogy a sablon szerkesztésével meg kell győződnie arról, hogy a méretezési csoport ugyanazt a virtuálisgép-méretet használja. Ha sikeresen megváltoztathatja a virtuális gépek számát manuálisan, akkor tudja, hogy a probléma el van különítve az autoscale-re.
+    Próbálja meg újratelepíteni a virtuálisgép-méretezési csoport erőforrását egy másik "kapacitás" beállítással a virtuális gépek számának manuális módosításához. Példa erre a sablonra: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing – Előfordulhat, hogy a sablon szerkesztésével meg kell győződnie arról, hogy a méretezési csoport ugyanazt a virtuálisgép-méretet használja. Ha sikeresen megváltoztathatja a virtuális gépek számát manuálisan, akkor tudja, hogy a probléma el van különítve az autoscale-re.
 * Keresse meg a Microsoft. számítás/virtualMachineScaleSet és a Microsoft. bepillantások erőforrásait a [Azure erőforrás-kezelő](https://resources.azure.com/)
   
     A Azure Erőforrás-kezelő egy nem megfelelő hibaelhárítási eszköz, amely a Azure Resource Manager erőforrásainak állapotát jeleníti meg. Kattintson az előfizetésre, és tekintse meg a hibaelhárítás alatt lévő erőforráscsoportot. A számítási erőforrás-szolgáltató területen tekintse meg a létrehozott virtuálisgép-méretezési készletet, és ellenőrizze a példány nézetet, amely megjeleníti a központi telepítés állapotát. Továbbá tekintse meg a virtuálisgép-méretezési csoport virtuális gépek példány nézetét is. Ezután nyissa meg a Microsoft. betekintési erőforrás-szolgáltatót, és ellenőrizze, hogy az autoskálázási szabályok megfelelőek-e.
 * A diagnosztikai bővítmény működik és kibocsátja a teljesítményadatokat?
   
-    **Frissítés:** Az Azure-alapú autoskálázás a gazdagépen alapuló metrikai folyamat használatára lett kibővítve, amely már nem igényel diagnosztikai bővítményt a telepítéshez. A következő néhány bekezdés már nem érvényes, ha egy automatikus skálázási alkalmazást hoz létre az új folyamat használatával. A gazdagép-folyamat használatára konvertált Azure-sablonok például itt érhetők el: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale. 
+    **Frissítés:** Az Azure-alapú autoskálázás a gazdagépen alapuló metrikai folyamat használatára lett kibővítve, amely már nem igényel diagnosztikai bővítményt a telepítéshez. A következő néhány bekezdés már nem érvényes, ha egy automatikus skálázási alkalmazást hoz létre az új folyamat használatával. A gazdagép-folyamat használatára konvertált Azure-sablonok például itt érhetők el: https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale . 
   
     A gazdagép-alapú metrikák használata az autoskálázáshoz a következő okok miatt jobb:
   

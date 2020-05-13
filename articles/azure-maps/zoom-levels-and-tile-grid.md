@@ -1,19 +1,19 @@
 ---
 title: Nagyítási szintek és csempék rácsa | Microsoft Azure térképek
 description: Ebben a cikkben megismerheti a nagyítási szinteket és a csempéket Microsoft Azure Maps-ben.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: d58c9f6940dceefdc25211f4540b34522aec935d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7dde6e1a77cebd1e88cc574d99e781ab55f0934
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530291"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123904"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 
@@ -140,12 +140,12 @@ Itt látható az 1. nagyítási szint nagyítási rácsa:
 
 ## <a name="quadkey-indices"></a>Quadkey indexek
 
-Egyes leképezési platformok olyan `quadkey` indexelési elnevezési konvenciót használnak, amely a következő csempe-koordinátákat egyesíti `quadtree` egy kulcsok `quadkeys` vagy rövid dimenzióval rendelkező egydimenziós karakterláncban. Mindegyik `quadkey` egyedi módon azonosít egy csempét egy adott részletességi szinten, és kulcsként használható a "B" általános adatbázis-indexekben. A Azure Maps SDK-k támogatják az elnevezési konvenciót használó `quadkey` csempe-rétegek átfedését az egyéb elnevezési konvenciók mellett, a [csempék hozzáadása rétegbeli](map-add-tile-layer.md) dokumentum dokumentációjában leírtaknak megfelelően.
+Egyes leképezési platformok olyan `quadkey` indexelési elnevezési konvenciót használnak, amely a következő csempe-koordinátákat egyesíti egy `quadtree` kulcsok vagy rövid dimenzióval rendelkező egydimenziós karakterláncban `quadkeys` . Mindegyik `quadkey` egyedi módon azonosít egy csempét egy adott részletességi szinten, és kulcsként használható a "B" általános adatbázis-indexekben. A Azure Maps SDK-k támogatják az elnevezési konvenciót használó csempe-rétegek átfedését az `quadkey` egyéb elnevezési konvenciók mellett, a [csempék hozzáadása rétegbeli](map-add-tile-layer.md) dokumentum dokumentációjában leírtaknak megfelelően.
 
 > [!NOTE]
 > Az `quadkeys` elnevezési konvenció csak egy vagy több nagyítási szint esetén működik. A Azure Maps SDK támogatja a 0. méretet, amely a teljes világ egyetlen Térkép csempéje. 
 
-A csempe koordinátáinak `quadkey`a értékre való átalakításához az Y és az X koordinátáinak bitei összekapcsolva lesznek, és az eredmény egy alap-4 számként lesz értelmezve (a vezető nullákkal megőrzött), és egy karakterlánccá konvertálva. Ha például a csempe XY koordinátáit (3, 5) a 3. szinten adja meg `quadkey` , a a következőképpen van meghatározva:
+A csempe koordinátáinak a értékre való átalakításához `quadkey` az Y és az X koordinátáinak bitei összekapcsolva lesznek, és az eredmény egy alap-4 számként lesz értelmezve (a vezető nullákkal megőrzött), és egy karakterlánccá konvertálva. Ha például a csempe XY koordinátáit (3, 5) a 3. szinten adja meg, a a `quadkey` következőképpen van meghatározva:
 
 ```
 tileX = 3 = 011 (base 2)
@@ -155,13 +155,13 @@ tileY = 5 = 1012 (base 2)
 quadkey = 100111 (base 2) = 213 (base 4) = "213"
 ```
 
-`Qquadkeys`több érdekes tulajdonsága van. Első lépésként a `quadkey` (számjegyek száma) a megfelelő csempe nagyítási szintjét egyenlővé kell tennie. Másodszor, a `quadkey` csempék a szülő csempével `quadkey` kezdődnek (az előző szinten található csempét tartalmazó csempe). Ahogy az alábbi példában is látható, a csempe 2 a 20 és 23 közötti csempe szülőjének:
+`Qquadkeys`több érdekes tulajdonsága van. Első lépésként a `quadkey` (számjegyek száma) a megfelelő csempe nagyítási szintjét egyenlővé kell tennie. Másodszor, a `quadkey` csempék a `quadkey` szülő csempével kezdődnek (az előző szinten található csempét tartalmazó csempe). Ahogy az alábbi példában is látható, a csempe 2 a 20 és 23 közötti csempe szülőjének:
 
 <center>
 
 ![Quadkey csempe piramis](media/zoom-levels-and-tile-grid/quadkey-tile-pyramid.png)</center>
 
-Végül `quadkeys` adjon meg egy egydimenziós index-kulcsot, amely általában megőrzi a csempék közelségét az XY térben. Ez azt jelenti, hogy két, az XY koordinátákat tartalmazó csempének általában viszonylag közel kell `quadkeys` lennie egymáshoz. Ez azért fontos, hogy optimalizálja az adatbázis teljesítményét, mivel a szomszédos csempéket gyakran kérik a csoportokban, és érdemes megtartani ezeket a csempéket ugyanarra a lemezre, hogy a lemezes olvasások számát csökkenteni lehessen.
+Végül `quadkeys` adjon meg egy egydimenziós index-kulcsot, amely általában megőrzi a csempék közelségét az XY térben. Ez azt jelenti, hogy két, az XY koordinátákat tartalmazó csempének általában viszonylag közel kell lennie `quadkeys` egymáshoz. Ez azért fontos, hogy optimalizálja az adatbázis teljesítményét, mivel a szomszédos csempéket gyakran kérik a csoportokban, és érdemes megtartani ezeket a csempéket ugyanarra a lemezre, hogy a lemezes olvasások számát csökkenteni lehessen.
 
 ## <a name="tile-math-source-code"></a>Csempe matematikai forráskódja
 

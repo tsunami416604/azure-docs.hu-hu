@@ -1,85 +1,78 @@
 ---
 title: BLOB Storage által aktivált függvény létrehozása az Azure-ban
-description: Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket az Azure Blob-tárolóba felvett elemek hívnak meg.
+description: A Azure Functions használatával hozzon létre egy kiszolgáló nélküli függvényt, amelyet a blob Storage-tárolóhoz hozzáadott elemek hív meg.
 ms.assetid: d6bff41c-a624-40c1-bbc7-80590df29ded
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: d3e90decad217afc1c8d9a43ef585fdfbeca5eb0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf6865d2756579f457dded90b247326d2eec137c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756545"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123123"
 ---
-# <a name="create-a-function-triggered-by-azure-blob-storage"></a>Azure Blob-tároló által aktivált függvény létrehozása
+# <a name="create-a-function-in-azure-thats-triggered-by-blob-storage"></a>BLOB Storage által aktivált függvény létrehozása az Azure-ban
 
-Ismerje meg, hogyan hozhat létre olyan függvényt, amelyet az Azure Blob-tárolóba történő fájlfeltöltés vagy az ott található fájlok frissítése aktivál.
-
-![Tekintse meg a naplókban található üzeneteket.](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
+Megtudhatja, hogyan hozhat létre egy olyan függvényt, amely akkor aktiválódik, ha a fájlokat blob Storage-tárolóba töltötték vagy frissítik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-+ A [Microsoft Azure Storage Explorer](https://storageexplorer.com/) letöltése és telepítése.
 + Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
 ## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![A függvényalkalmazás elkészült.](./media/functions-create-first-azure-function/function-app-create-success.png)
+Sikeresen létrehozta az új Function alkalmazást.
+
+:::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-create-success.png" alt-text="A függvényalkalmazás elkészült." border="true":::
 
 Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 <a name="create-function"></a>
 
-## <a name="create-a-blob-storage-triggered-function"></a>A blobtároló által aktivált függvény létrehozása
+## <a name="create-an-azure-blob-storage-triggered-function"></a>Azure Blob Storage által aktivált függvény létrehozása
 
-1. Bontsa ki a Function alkalmazást, **+** és kattintson a **függvények**elem melletti gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Válassza a **függvények**lehetőséget, majd válassza a **+ Hozzáadás** lehetőséget egy új függvény hozzáadásához.
 
-   ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-portal.png)
+   :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-quickstart-choose-template.png" alt-text="Válasszon egy függvény sablont a Azure Portal." border="true":::
 
-1. Válassza ki a **További sablonok**, majd a **Befejezés és sablonok megtekintése** lehetőséget.
-
-    ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/functions-create-storage-blob-triggered-function/add-first-function.png)
-
-1. A keresőmezőbe írja be a `blob` kifejezést, majd válassza ki a **Blobalapú eseményindító** sablont.
-
-1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure Storage-bővítmény és a Function alkalmazásban lévő függőségek telepítéséhez. A telepítést követően válassza a **Folytatás** gombot.
-
-    ![Kötési bővítmények telepítése](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal.png)
+1. Válassza ki az **Azure Blob Storage trigger** sablonját.
 
 1. Használja az ábra alatti táblázatban megadott beállításokat.
 
-    ![Hozza létre a blobtároló által aktivált függvényt.](./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-2.png" alt-text="A blob Storage által aktivált függvény neve és konfigurálása." border="true":::
 
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
-    | **Név** | Egyedi a függvényalkalmazásban | A blob által aktivált függvény neve. |
+    | **Új függvény** | Egyedi a függvényalkalmazásban | A blob által aktivált függvény neve. |
     | **Elérési út**   | samples-workitems/{name}    | A figyelt blobtárolóban található hely. A blob fájlneve a kötésben adható át a _name_ paraméterrel.  |
     | **Tárfiók kapcsolata** | AzureWebJobsStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |
 
-1. Kattintson a **Létrehozás** elemre a függvény létrehozásához.
+1. A függvény létrehozásához válassza a **create Function** elemet.
 
-Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **samples-workitems** tárolót.
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-create-blob-storage-trigger-portal-3.png" alt-text="Hozza létre a blobtároló által aktivált függvényt." border="true":::
+
+Ezután hozza létre a **Samples-workitems** tárolót.
 
 ## <a name="create-the-container"></a>A tároló létrehozása
 
-1. A függvényben kattintson az **Integráció** elemre, bontsa ki a **Dokumentáció** elemet, és másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz. Ha már csatlakozott a tárfiókjához, folytassa a 4. lépéssel.
+1. A függvényben az **Áttekintés** lapon válassza ki az erőforráscsoportot.
 
-    ![Kérje le a tárfiókhoz való csatlakozáshoz szükséges hitelesítő adatokat.](./media/functions-create-storage-blob-triggered-function/functions-storage-account-connection.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-resource-group.png" alt-text="Válassza ki az Azure Portal erőforráscsoportot." border="true":::
 
-1. Futtassa a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** gombra.
+1. Keresse meg és válassza ki az erőforráscsoport Storage-fiókját.
 
-    ![Futtassa a Storage Account Explorer eszközt.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-1.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-account-access.png" alt-text="Hozzáférés a Storage-fiókhoz." border="true":::
 
-1. Adja meg az 1. lépésben megállapított **Fiók neve** és **Fiók kulcsa** értéket, és kattintson a **Tovább**, majd a **Csatlakozás** gombra. 
+1. Válassza a **tárolók**, majd a **+ tároló**elemet. 
 
-    ![Adja meg a tároló hitelesítő adatait, és csatlakozzon.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-add-container.png" alt-text="Vegyen fel tárolót a Storage-fiókjába a Azure Portal." border="true":::
 
-1. Bontsa ki a csatolt Storage-fiók csomópontot, kattintson a jobb gombbal a blob- `samples-workitems` **tárolók**elemre, kattintson a blob- **tároló létrehozása**elemre, írja be a parancsot
+1. A **név** mezőbe írja be a következőt: `samples-workitems` , majd válassza a **Létrehozás**lehetőséget.
 
-    ![Hozzon létre egy tárolási üzenetsort.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-create-blob-container.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-name-blob-container.png" alt-text="Nevezze el a Storage-tárolót." border="true":::
 
 A blobtároló létrehozása után tesztelheti a függvényt úgy, hogy feltölt egy fájlt a tárolóba.
 
@@ -87,15 +80,23 @@ A blobtároló létrehozása után tesztelheti a függvényt úgy, hogy feltölt
 
 1. Lépjen vissza a Azure Portalba, és keresse meg a függvényt a lap alján található **naplók** kibontásával, és győződjön meg arról, hogy a naplózási adatfolyam nincs szüneteltetve.
 
-1. Storage Explorer bontsa ki a Storage-fiók, a **blob-tárolók**és a **minták – workitems**elemet. Kattintson a **Feltöltés**, majd a **Fájlok feltöltése...** elemre.
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-log-expander.png" alt-text="Bontsa ki a Azure Portal a naplót." border="true":::
 
-    ![Töltsön fel egy fájlt a blobtárolóba.](./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png)
+1. Egy különálló böngészőablakban nyissa meg az erőforráscsoportot a Azure Portalban, és válassza ki a Storage-fiókot.
 
-1. A **Fájlok feltöltése** párbeszédpanelen kattintson a **Fájlok** mezőre. Válasszon egy fájlt a helyi számítógépen, például egy képfájlt, jelölje ki, és kattintson a **Megnyitás**, majd a **Feltöltés** elemre.
+1. Válassza a **tárolók**lehetőséget, majd válassza ki a **Samples-workitems** tárolót.
+
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-container.png" alt-text="Nyissa meg a Samples-workitems tárolót a Azure Portal." border="true":::
+
+1. Válassza a **feltöltés**lehetőséget, majd válassza ki a mappa ikont a feltölteni kívánt fájl kiválasztásához.
+
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/functions-storage-manager-upload-file-blob.png" alt-text="Töltsön fel egy fájlt a blobtárolóba." border="true":::
+
+1. Tallózással keresse meg a fájlt a helyi számítógépen, például egy képfájlt, és válassza ki a fájlt. Válassza a **Megnyitás** , majd a **feltöltés**lehetőséget.
 
 1. Lépjen vissza a függvény naplóihoz, és győződjön meg arról, hogy megtörtént a blob olvasása.
 
-   ![Tekintse meg a naplókban található üzeneteket.](./media/functions-create-storage-blob-triggered-function/functions-blob-storage-trigger-view-logs.png)
+    :::image type="content" source="./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png" alt-text="Tekintse meg a naplókban található üzeneteket." border="true":::
 
     >[!NOTE]
     > Amikor a függvényalkalmazás az alapértelmezett használatalapú csomagban fut, előfordulhat, hogy akár több is perc is eltelik a blob hozzáadása vagy frissítése és a függvény aktiválása között. Ha kis késleltetésre van szüksége a blob által aktivált függvényekhez, célszerű App Service-csomagban futtatnia a függvényalkalmazást.

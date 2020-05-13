@@ -8,24 +8,24 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 05/08/2020
-ms.openlocfilehash: 98bb643e1a780754fcb3b9f4eb91d8f04dc4e90b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 9ce6df8491bf4ce7cbb0e12a08816e198f665beb
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996383"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124652"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
 
-Ismerkedjen meg a [Apache Hadoop](https://hadoop.apache.org/) környezeti összetevőkkel és verziókkal Microsoft Azure HDInsight és a Enterprise Security Package. Azt is megtudhatja, hogyan tekintheti meg a Hadoop összetevő-verzióit a HDInsight-ben.
+Ebben a cikkben megismerheti az Azure HDInsight és a Enterprise Security Package [Apache Hadoop](https://hadoop.apache.org/) környezeti összetevőit és verzióit. Azt is megtudhatja, hogyan tekintheti meg a Hadoop összetevő-verzióit a HDInsight-ben.
 
 ## <a name="apache-components-available-with-different-hdinsight-versions"></a>Különböző HDInsight-verziókkal elérhető Apache-összetevők
 
-Az Azure HDInsight több Hadoop-fürtöt is támogat, amelyek bármikor üzembe helyezhetők. 2017. április 4-én az Azure HDInsight által használt alapértelmezett fürt verziója 3,6.
+Az Azure HDInsight több Hadoop-fürtöt is támogat, amelyek bármikor üzembe helyezhetők. 2017. április 4-én az Azure HDInsight által használt alapértelmezett fürt verziója 3,6 volt.
 
-A HDInsight-fürtökhöz társított verziók az alábbi táblázatban láthatók:
+A HDInsight-fürtökhöz társított verziók az alábbi táblázatban láthatók.
 
-> [!NOTE]  
+> [!NOTE]
 > Előfordulhat, hogy a HDInsight szolgáltatás alapértelmezett verziója értesítés nélkül változhat. Ha a verzió-függőséggel rendelkezik, adja meg a HDInsight verzióját, amikor létrehozza a fürtöket a .NET SDK-val a Azure PowerShell és a klasszikus Azure CLI használatával.
 
 | Összetevő              | HDInsight 4.0 | HDInsight 3,6 (alapértelmezett)     |
@@ -45,49 +45,49 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Phoenix         | 5             | 4.7.0                       |
 | Apache Spark           | 2.3.1, 2,4    | 2.3.0, 2.2.0, 2.1.0         |
 | Apache Livy            | 0,5           | 0,4, 0,4, 0,3               |
-| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (lásd az alábbi megjegyzést) |
+| Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (lásd a megjegyzést.)   |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
 | Mono                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
-> A rendszer teljesítményével kapcsolatos megfontolások miatt a Kafka 0,10-es verziójának támogatása 2019 márciusában lejár.
+> A Kafka 0,10-es verziójának támogatása a rendszer teljesítményével kapcsolatos megfontolások miatt 2019 márciusában lejár.
 
 ## <a name="check-for-current-apache-component-version-information"></a>Az Apache összetevő aktuális verziójával kapcsolatos információk keresése
 
-A HDInsight-Hadoop társított környezet-összetevők verzióit a HDInsight frissítéseivel lehet megváltoztatni. A Hadoop-összetevők ellenőrzéséhez és a fürthöz használt verziók ellenőrzéséhez használja a Ambari REST API. A **GetComponentInformation** parancs adatokat kér le a szolgáltatás összetevőiről. Részletekért tekintse meg az [Apache Ambari dokumentációját](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
+A HDInsight-Hadoop társított környezet-összetevők verzióit a HDInsight frissítéseivel lehet megváltoztatni. A Hadoop-összetevők ellenőrzéséhez és a fürthöz használt verziók ellenőrzéséhez használja a Ambari REST API. A **GetComponentInformation** parancs adatokat kér le a szolgáltatás összetevőiről. További információt az [Apache Ambari dokumentációjában](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)talál.
 
 ### <a name="release-notes"></a>Kibocsátási megjegyzések
 
-A HDInsight legújabb verzióiban további kibocsátási megjegyzéseket a [HDInsight kibocsátási megjegyzései](hdinsight-release-notes.md) című témakörben talál.
+További kibocsátási megjegyzések a HDInsight legújabb verzióiban: [HDInsight kibocsátási megjegyzések](hdinsight-release-notes.md).
 
 ## <a name="supported-hdinsight-versions"></a>Támogatott HDInsight-verziók
 
 ### <a name="support-expiration-and-retirement-for-hdinsight-versions"></a>A HDInsight-verziók lejáratának és kivonulásának támogatása
 
-A **támogatás lejárata** azt jelenti, hogy a Microsoft többé nem nyújt támogatást a megadott HDInsight-verzióhoz. A továbbiakban nem lesz elérhető az Azure Portal a fürt létrehozásához. Ezek a verziók azonban továbbra is létrehozhatók az Azure CLI-vel vagy a különböző SDK-k használatával.
+A **támogatás lejárata** azt jelenti, hogy a Microsoft már nem nyújt támogatást az adott HDInsight-verzióhoz. És már nem érhető el a Azure Portal a fürt létrehozásához. Ezek a verziók az Azure CLI-vel vagy a különböző SDK-k használatával is létrehozhatók.
 
-**A HDInsight** -verziók kivonása azt jelenti, hogy a meglévő fürtök továbbra is futni fognak. Azonban a verzió új fürtök nem hozhatók létre semmilyen módon (beleértve a CLI-t és az SDK-kat is). Az egyéb vezérlési sík funkciók (például a manuális skálázás és az automatikus skálázás) a nyugdíjazás után is nem működnek. A támogatás nem érhető el a kivont verziókhoz.
+A **nyugdíjazás** azt jelenti, hogy egy HDInsight-verzió meglévő fürtjének futtatása továbbra is a következő:. Ezen verzió új fürtök nem hozhatók létre semmilyen módon, beleértve a CLI-t és az SDK-kat is. A vezérlési sík egyéb funkciói, például a manuális skálázás és az automatikus skálázás is előfordulhat, hogy a nyugdíjazás után nem működnek. A támogatás nem érhető el a kivont verziókhoz.
 
-A következő táblázat a HDInsight verzióját sorolja fel. A támogatási lejárati és a nyugdíjazási dátumok is megadhatók, ha ismertek.
+A következő táblázat a HDInsight verzióját sorolja fel. A támogatási lejárat és a nyugdíjazás dátuma is megadható, ha ismertek.
 
 ### <a name="available-versions"></a>Elérhető verziók
 
-A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek elérhetők a Azure Portal és egyéb központi telepítési módszerekben, például a PowerShell és a .NET SDK.
+Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azure Portalban, valamint más üzembe helyezési módszerekkel, például a PowerShell és a .NET SDK használatával.
 
 | HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |24, 2018. szeptember | | |Igen |Igen |
 | HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4. | December 31., 2020 |December 31., 2020 |Igen |Igen |
 
-A Spark 2,1, 2,2 & Kafka 1,0 támogatásának érvényessége 2020. június 30-án lejár.
+A Spark 2,1, 2,2 és Kafka 1,0 támogatásának érvényessége 2020. június 30-án jár le.
 
-> [!NOTE]  
-> A verzió támogatásának lejártakor előfordulhat, hogy nem érhető el a Microsoft Azure Portalon keresztül. A fürt verziói azonban továbbra is elérhetők a `Version` Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsában és a .net SDK-ban található paraméterrel, amíg meg nem történik a verzió kivonulási dátuma.
+> [!NOTE]
+> A verzió támogatásának lejárta után előfordulhat, hogy nem érhető el a Azure Portalon keresztül. A fürt verziója továbbra is elérhető a Windows PowerShell [New-AzHDInsightCluster](https://docs.microsoft.com/powershell/module/az.hdinsight/new-azhdinsightcluster) parancsában és a .net SDK-ban található **Version** paraméterrel, amíg meg nem történik a verzió kivonulási dátuma.
 
 ### <a name="retired-versions"></a>Kivont verziók
 
-A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek **nem** érhetők el a Azure Portalban.
+Ez a táblázat felsorolja azokat a HDInsight-verziókat, amelyek nem érhetők el a Azure Portalban.
 
 | HDInsight verziója | HDP verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
@@ -101,15 +101,15 @@ A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek **nem
 | HDInsight 2,1 |HDP 1,3 |Windows Server 2012 R2 |Október 28., 2013 |2014. május 12. |2015. május 31. |Igen |Nem |
 | HDInsight 1,6 |HDP 1,1 | |Október 28., 2013 |Április 26., 2014 |2015. május 31. |Nem |Nem |
 
-> [!NOTE]  
-> A HDInsight 2,1-es és újabb verzióiban a két fő csomóponttal rendelkező, magasan elérhető fürtök üzembe helyezése alapértelmezés szerint megtörténik. A HDInsight 1,6-es verziójú fürtök esetében nem érhetők el.
+> [!NOTE]
+> A HDInsight 2,1-es és újabb verzióiban a két fő csomóponttal rendelkező, magasan elérhető fürtök üzembe helyezése alapértelmezés szerint megtörténik. Nem érhetők el a 1,6-es verziójú HDInsight-fürtökhöz.
 
-## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>HDInsight-fürt verzióinak szolgáltatói szerződése
+## <a name="service-level-agreement-for-hdinsight-cluster-versions"></a>A HDInsight-fürt verzióira vonatkozó szolgáltatási szintű szerződés
 
-A szolgáltatói szerződés (SLA) _támogatási ablakként_van meghatározva. A támogatási ablak az a időszak, amelyet `Microsoft Customer Service and Support`a HDInsight-verzió támogat. Ha a verziónak átadott _támogatás lejárati dátuma_van, a HDInsight-fürt a támogatási ablakon kívül esik. A HDInsight X verziójának támogatása (újabb X + 1 verzió használata esetén) a későbbi:  
+A szolgáltatói szerződés _támogatási ablakként_van meghatározva. A támogatási időszak azt az időtartamot használja, ameddig a Microsoft ügyfélszolgálata és támogatása támogatja a HDInsight verzióját. Ha a verzió elérte a _támogatás lejárati dátumát_, a HDInsight-fürt a támogatási ablakon kívül esik. A HDInsight X verziójának támogatása (újabb X + 1 verzió után) a következő:
 
-- 1. képlet: 180 nap hozzáadása a HDInsight-fürt X verziójának kiadási dátumához.
-- 2. képlet: adja hozzá a 90 nappal azt a dátumot, amikor a HDInsight-fürt X + 1 verziója elérhetővé válik Azure Portalban.
+- **1. képlet:** Adja hozzá a 180 napot a HDInsight-fürt X verziójának kiadási dátumához.
+- **2. képlet:** Adja hozzá a 90 nappal azt a dátumot, amikor a HDInsight-fürt X + 1 verziója elérhetővé válik a Azure Portal.
 
 A lejárati _dátum_ az a dátum, amely után a fürt verziója nem hozható létre a HDInsight. 2017. július 31-ig nem lehet átméretezni egy HDInsight-fürtöt a kivonulási dátum után.
 

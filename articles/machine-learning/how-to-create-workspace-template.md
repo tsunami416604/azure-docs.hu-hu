@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 2a35b75d2896f6e04c68d7562ed9f5455006ae4d
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 568bcdcfd8ae50fff58964ecc74176b151db22a4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983261"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121320"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -85,201 +85,79 @@ Az alábbi példa bemutatja, hogyan hozhat létre egy munkaterületet három be�
 
 További információ: [titkosítás a REST](concept-enterprise-security.md#encryption-at-rest)-ben.
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "workspaceName": {
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the name of the Azure Machine Learning workspace."
-      }
-    },
-    "location": {
-      "type": "string",
-      "defaultValue": "southcentralus",
-      "allowedValues": [
-        "eastus",
-        "eastus2",
-        "southcentralus",
-        "southeastasia",
-        "westcentralus",
-        "westeurope",
-        "westus2"
-      ],
-      "metadata": {
-        "description": "Specifies the location for all resources."
-      }
-    },
-    "sku":{
-      "type": "string",
-      "defaultValue": "basic",
-      "allowedValues": [
-        "basic",
-        "enterprise"
-      ],
-      "metadata": {
-        "description": "Specifies the sku, also referred to as 'edition' of the Azure Machine Learning workspace."
-      }
-    },
-    "high_confidentiality":{
-      "type": "string",
-      "defaultValue": "false",
-      "allowedValues": [
-        "false",
-        "true"
-      ],
-      "metadata": {
-        "description": "Specifies that the Azure Machine Learning workspace holds highly confidential data."
-      }
-    },
-    "encryption_status":{
-      "type": "string",
-      "defaultValue": "Disabled",
-      "allowedValues": [
-        "Enabled",
-        "Disabled"
-      ],
-      "metadata": {
-        "description": "Specifies if the Azure Machine Learning workspace should be encrypted with the customer managed key."
-      }
-    },
-    "cmk_keyvault":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault Resource Manager ID."
-      }
-    },
-    "resource_cmk_uri":{
-      "type": "string",
-      "metadata": {
-        "description": "Specifies the customer managed keyvault key uri."
-      }
-    }
-  },
-  "variables": {
-    "storageAccountName": "[concat('sa',uniqueString(resourceGroup().id))]",
-    "storageAccountType": "Standard_LRS",
-    "keyVaultName": "[concat('kv',uniqueString(resourceGroup().id))]",
-    "tenantId": "[subscription().tenantId]",
-    "applicationInsightsName": "[concat('ai',uniqueString(resourceGroup().id))]",
-    "containerRegistryName": "[concat('cr',uniqueString(resourceGroup().id))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2018-07-01",
-      "name": "[variables('storageAccountName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[variables('storageAccountType')]"
-      },
-      "kind": "StorageV2",
-      "properties": {
-        "encryption": {
-          "services": {
-            "blob": {
-              "enabled": true
-            },
-            "file": {
-              "enabled": true
-            }
-          },
-          "keySource": "Microsoft.Storage"
-        },
-        "supportsHttpsTrafficOnly": true
-      }
-    },
-    {
-      "type": "Microsoft.KeyVault/vaults",
-      "apiVersion": "2018-02-14",
-      "name": "[variables('keyVaultName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "tenantId": "[variables('tenantId')]",
-        "sku": {
-          "name": "standard",
-          "family": "A"
-        },
-        "accessPolicies": []
-      }
-    },
-    {
-      "type": "Microsoft.Insights/components",
-      "apiVersion": "2015-05-01",
-      "name": "[variables('applicationInsightsName')]",
-      "location": "[if(or(equals(parameters('location'),'eastus2'),equals(parameters('location'),'westcentralus')),'southcentralus',parameters('location'))]",
-      "kind": "web",
-      "properties": {
-        "Application_Type": "web"
-      }
-    },
-    {
-      "type": "Microsoft.ContainerRegistry/registries",
-      "apiVersion": "2017-10-01",
-      "name": "[variables('containerRegistryName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "Standard"
-      },
-      "properties": {
-        "adminUserEnabled": true
-      }
-    },
-    {
-      "type": "Microsoft.MachineLearningServices/workspaces",
-      "apiVersion": "2020-01-01",
-      "name": "[parameters('workspaceName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
-        "[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",
-        "[resourceId('Microsoft.Insights/components', variables('applicationInsightsName'))]",
-        "[resourceId('Microsoft.ContainerRegistry/registries', variables('containerRegistryName'))]"
-      ],
-      "identity": {
-        "type": "systemAssigned"
-      },
-      "sku": {
-            "tier": "[parameters('sku')]",
-            "name": "[parameters('sku')]"
-      },
-      "properties": {
-        "friendlyName": "[parameters('workspaceName')]",
-        "keyVault": "[resourceId('Microsoft.KeyVault/vaults',variables('keyVaultName'))]",
-        "applicationInsights": "[resourceId('Microsoft.Insights/components',variables('applicationInsightsName'))]",
-        "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries',variables('containerRegistryName'))]",
-        "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts/',variables('storageAccountName'))]",
-         "encryption": {
-                "status": "[parameters('encryption_status')]",
-                "keyVaultProperties": {
-                    "keyVaultArmId": "[parameters('cmk_keyvault')]",
-                    "keyIdentifier": "[parameters('resource_cmk_uri')]"
-                  }
-            },
-        "hbiWorkspace": "[parameters('high_confidentiality')]"
-      }
-    }
-  ]
-}
-```
+> [!IMPORTANT]
+> A sablon használata előtt néhány speciális követelménynek meg kell felelnie az előfizetésnek:
+> * Az __Azure Machine learning__ alkalmazásnak az Azure-előfizetéséhez __közreműködőnek__ kell lennie.
+> * A titkosítási kulcsot tartalmazó meglévő Azure Key Vaultnak kell lennie.
+> * Olyan hozzáférési szabályzattal kell rendelkeznie a Azure Key Vaultban, amely a __Azure Cosmos db__ alkalmazáshoz való hozzáférés __megszerzését__, __becsomagolását__és __kicsomagolását__ engedélyezi.
+> * A Azure Key Vaultnak ugyanabban a régióban kell lennie, ahol létre kívánja hozni a Azure Machine Learning munkaterületet.
+> * Az előfizetésnek támogatnia kell az __ügyfél által felügyelt kulcsokat__ a Azure Cosmos DBhoz.
 
-A Key Vault AZONOSÍTÓjának és a sablonhoz szükséges kulcs URI-nak a beszerzéséhez használhatja az Azure CLI-t. A következő parancs lekéri a Key Vault azonosítót:
+__A Azure Machine learning alkalmazás közreműködőként való hozzáadásához__használja a következő parancsokat:
 
-```azurecli-interactive
-az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
-```
+1. Ha a parancssori felületről szeretne hitelesítést végezni az Azure-ban, használja a következő parancsot:
 
-A parancs a következőhöz hasonló értéket `"/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault"`ad vissza:.
+    ```azurecli-interactive
+    az login
+    ```
+    
+    [!INCLUDE [subscription-login](../../includes/machine-learning-cli-subscription.md)]
 
-Az ügyfél által felügyelt kulcs URI azonosítójának beszerzéséhez használja a következő parancsot:
+1. A Azure Machine Learning alkalmazás objektum-AZONOSÍTÓjának lekéréséhez használja a következő parancsot. Az egyes Azure-előfizetések esetében az érték különbözhet:
 
-```azurecli-interactive
-az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
-```
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Machine Learning" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
 
-A parancs a következőhöz hasonló értéket `"https://mykeyvault.vault.azure.net/keys/mykey/{guid}"`ad vissza:.
+    Ez a parancs az objektumazonosító értéket adja vissza, amely egy GUID azonosító.
+
+1. Az objektum-azonosító közreműködőként való hozzáadásához használja az alábbi parancsot. Cserélje le az `<object-ID>` elemet az előző lépésben szereplő GUID azonosítóra. A helyére írja `<subscription-ID>` be az Azure-előfizetés nevét vagy azonosítóját:
+
+    ```azurecli-interactive
+    az role assignment create --role 'Contributor' --assignee-object-id <object-ID> --subscription <subscription-ID>
+    ```
+
+__Ha kulcsot szeretne hozzáadni a Azure Key Vaulthoz__, használja a [kulcs, titkos kód vagy tanúsítvány hozzáadása](../key-vault/general/manage-with-cli2.md#adding-a-key-secret-or-certificate-to-the-key-vault) az Azure CLI-vel című cikkben található Key Vault- __Key Vault kezelőhöz__ című témakör információit.
+
+__Ha hozzáférési szabályzatot szeretne hozzáadni a Key vaulthoz, használja a következő parancsokat__:
+
+1. A Azure Cosmos DB alkalmazás objektum-AZONOSÍTÓjának lekéréséhez használja a következő parancsot. Az egyes Azure-előfizetések esetében az érték különbözhet:
+
+    ```azurecli-interactive
+    az ad sp list --display-name "Azure Cosmos DB" --query '[].[appDisplayName,objectId]' --output tsv
+    ```
+    
+    Ez a parancs az objektumazonosító értéket adja vissza, amely egy GUID azonosító.
+
+1. A házirend beállításához használja a következő parancsot. Cserélje le a helyére a `<keyvault-name>` meglévő Azure Key Vault nevét. Cserélje le `<object-ID>` az elemet az előző lépésben szereplő GUID azonosítóra:
+
+    ```azurecli-interactive
+    az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
+    ```
+
+Az __ügyfél által felügyelt kulcsok Azure Cosmos db való engedélyezéséhez__küldjön e-mailt az azurecosmosdbcmk@service.microsoft.com Azure-előfizetés azonosítójával. További információ: [az ügyfél által felügyelt kulcsok konfigurálása az Azure Cosmos-fiókhoz](..//cosmos-db/how-to-setup-cmk.md).
+
+__To get the values__ A `cmk_keyvault` sablonhoz szükséges (Key Vault) és a `resource_cmk_uri` (kulcs URI) paraméterek értékeinek lekéréséhez kövesse az alábbi lépéseket:
+
+1. A Key Vault-azonosító beszerzéséhez használja a következő parancsot:
+
+    ```azurecli-interactive
+    az keyvault show --name mykeyvault --resource-group myresourcegroup --query "id"
+    ```
+
+    A parancs a következőhöz hasonló értéket ad vissza: `/subscriptions/{subscription-guid}/resourceGroups/myresourcegroup/providers/Microsoft.KeyVault/vaults/mykeyvault` .
+
+1. Az ügyfél által felügyelt kulcs URI azonosítójának megszerzéséhez használja a következő parancsot:
+
+    ```azurecli-interactive
+    az keyvault key show --vault-name mykeyvault --name mykey --query "key.kid"
+    ```
+
+    A parancs a következőhöz hasonló értéket ad vissza: `https://mykeyvault.vault.azure.net/keys/mykey/{guid}` .
+
+__Példa sablonra__
+
+:::code language="json" source="~/quickstart-templates/201-machine-learning-encrypted-workspace/azuredeploy.json":::
 
 > [!IMPORTANT]
 > Miután létrehozta a munkaterületet, nem módosíthatja a bizalmas adatok, a titkosítás, a kulcstároló-azonosító vagy a kulcs-azonosítók beállításait. Az értékek módosításához új munkaterületet kell létrehoznia az új értékekkel.
@@ -298,7 +176,7 @@ További információ: [erőforrások központi telepítése egyéni sablonból]
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell használatával
 
-Ez a példa feltételezi, hogy mentette a sablont egy nevű `azuredeploy.json` fájlba az aktuális könyvtárban:
+Ez a példa feltételezi, hogy mentette a sablont egy nevű fájlba `azuredeploy.json` az aktuális könyvtárban:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -311,7 +189,7 @@ További információ: [erőforrások üzembe helyezése Resource Manager-sablon
 
 ## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
 
-Ez a példa feltételezi, hogy mentette a sablont egy nevű `azuredeploy.json` fájlba az aktuális könyvtárban:
+Ez a példa feltételezi, hogy mentette a sablont egy nevű fájlba `azuredeploy.json` az aktuális könyvtárban:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -340,13 +218,13 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
 
 * A sablont ne telepítse többször ugyanarra a paraméterekre. Vagy törölje a meglévő erőforrásokat, mielőtt a sablon használatával újra létrehozza őket.
 
-* Vizsgálja meg a Key Vault hozzáférési házirendeket, majd használja ezeket a házirendeket a sablon `accessPolicies` tulajdonságának beállításához. A hozzáférési szabályzatok megtekintéséhez használja az alábbi Azure CLI-parancsot:
+* Vizsgálja meg a Key Vault hozzáférési házirendeket, majd használja ezeket a házirendeket a `accessPolicies` sablon tulajdonságának beállításához. A hozzáférési szabályzatok megtekintéséhez használja az alábbi Azure CLI-parancsot:
 
     ```azurecli-interactive
     az keyvault show --name mykeyvault --resource-group myresourcegroup --query properties.accessPolicies
     ```
 
-    A sablon `accessPolicies` szakaszának használatával kapcsolatos további információkért tekintse meg a [AccessPolicyEntry objektum hivatkozását](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
+    A sablon szakaszának használatával kapcsolatos további információkért `accessPolicies` tekintse meg a [AccessPolicyEntry objektum hivatkozását](https://docs.microsoft.com/azure/templates/Microsoft.KeyVault/2018-02-14/vaults#AccessPolicyEntry).
 
 * Ellenőrizze, hogy a Key Vault erőforrás már létezik-e. Ha igen, ne hozza létre újra a sablonon keresztül. Ha például a meglévő Key Vault szeretné használni, ahelyett, hogy újat hozna létre, végezze el a következő módosításokat a sablonon:
 
@@ -381,7 +259,7 @@ A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
         },
         ```
 
-    * **Távolítsa el** a `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` sort `dependsOn` a munkaterület szakaszából. **Módosítsa** a munkaterület `keyVault` `properties` szakaszának bejegyzését is a `keyVaultId` paraméterre való hivatkozáshoz:
+    * **Távolítsa el** a `"[resourceId('Microsoft.KeyVault/vaults', variables('keyVaultName'))]",` sort a `dependsOn` munkaterület szakaszából. **Módosítsa** a `keyVault` munkaterület szakaszának bejegyzését is a `properties` paraméterre való hivatkozáshoz `keyVaultId` :
 
         ```json
         {

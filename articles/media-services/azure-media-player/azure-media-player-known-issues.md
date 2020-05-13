@@ -5,13 +5,13 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 ms.service: media-services
 ms.topic: reference
-ms.date: 04/20/2020
-ms.openlocfilehash: 250fd242e76f64002a6e55e7caf616ac201b593b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: 4d0d56dc4d6e7fa7765439e7387d67bb80a6ec9f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692259"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124635"
 ---
 # <a name="known-issues"></a>Ismert problémák #
 
@@ -41,6 +41,7 @@ Az aktuális kiadás a következő ismert problémákkal rendelkezik:
 
 - Előfordulhat, hogy a hirdetések behelyezése (igény szerint vagy élő) során problémákba ütközik, amikor egy ad-blokkoló van telepítve a böngészőben
 - Előfordulhat, hogy a mobileszközök problémákat tapasztalnak a hirdetések lejátszásakor.
+- A Azure Media Player jelenleg nem támogatja az MP4 Midroll-hirdetéseket.
 
 ## <a name="azurehtml5js"></a>AzureHtml5JS ##
 
@@ -62,7 +63,7 @@ Az aktuális kiadás a következő ismert problémákkal rendelkezik:
 
 - Hiányzó funkciók
 - Technikai és http-hibák (például 404 hálózati időtúllépés) esetén a lejátszó a többi technológiánál hosszabb időt vesz igénybe.
-- A Safari és a Firefox Mac-lejátszással való lejátszásához a `"http://` Silverlight `https://` explicit módon meghatározza vagy a forrást.
+- A Safari és a Firefox Mac-lejátszással való lejátszásához a Silverlight explicit módon meghatározza `"http://` vagy `https://` a forrást.
 - Ha egy API hiányzik ehhez a technológiához, akkor általában null értéket ad vissza.
 - Ha a felhasználó rendelkezik Flash-telepítéssel, de nem ad engedélyt a hely betöltésére, a végtelen spinning megjelenhet. Ennek az az oka, hogy a lejátszó úgy gondolja, hogy a beépülő modul telepítve van és elérhető, és azt hiszi, hogy a beépülő modul fut a tartalom A JavaScript-kód elküldése megtörtént, de a böngésző beállításai letiltották a beépülő modul futtatását, amíg a felhasználó el nem fogadja a beépülő modul engedélyezését. Ez az összes böngészőben megtörténhet.  
 

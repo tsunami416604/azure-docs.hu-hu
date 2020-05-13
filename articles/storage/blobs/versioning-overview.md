@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: fa28e07c28c36c03ab9e85d8436e3f1a2b36ad1c
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82993964"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123836"
 ---
 # <a name="blob-versioning-preview"></a>BLOB verziószámozása (előzetes verzió)
 
@@ -167,7 +167,7 @@ Az alábbi ábrán látható, hogy mi történik, amikor pillanatképet készít
 Az alábbi módszerek egyikével engedélyezheti a blob-verziókhoz való hozzáférést:
 
 - Szerepköralapú hozzáférés-vezérlés (RBAC) használatával engedélyeket adhat egy Azure Active Directory (Azure AD) rendszerbiztonsági tag számára. A Microsoft az Azure AD használatát javasolja a kiváló biztonság és a könnyű használat érdekében. További információ az Azure AD és a blob-műveletek használatáról: a Blobok [és várólisták hozzáférésének engedélyezése Azure Active Directory használatával](../common/storage-auth-aad.md).
-- Közös hozzáférésű aláírás (SAS) használatával a blob-verziókhoz való hozzáférés delegálására. Adja meg az aláírt erőforrástípus verziószámát `bv`, amely a blob verziószámát jelöli, hogy egy adott verzió műveleteihez hozzon létre egy sas-jogkivonatot. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md).
+- Közös hozzáférésű aláírás (SAS) használatával a blob-verziókhoz való hozzáférés delegálására. Adja meg az aláírt erőforrástípus verziószámát `bv` , amely a blob verziószámát jelöli, hogy egy adott verzió műveleteihez hozzon létre egy sas-jogkivonatot. A közös hozzáférésű aláírásokkal kapcsolatos további információkért lásd: [korlátozott hozzáférés engedélyezése az Azure Storage-erőforrásokhoz közös hozzáférésű aláírások (SAS) használatával](../common/storage-sas-overview.md).
 - A fiók-hozzáférési kulcsok használatával engedélyezheti a megosztott kulccsal rendelkező blob-verziók műveleteit. További információ: [Engedélyezés megosztott kulccsal](/rest/api/storageservices/authorize-with-shared-key).
 
 A blob verziószámozása úgy lett kialakítva, hogy az adatok véletlen vagy rosszindulatú törléssel védve legyenek. A védelem fokozása érdekében a Blobok verziójának törléséhez speciális engedélyek szükségesek. A következő szakaszok ismertetik a blob-verziók törléséhez szükséges engedélyeket.
@@ -183,7 +183,7 @@ Az alábbi táblázatban látható, hogy mely RBAC műveletek támogatják a Blo
 
 ### <a name="shared-access-signature-sas-parameters"></a>Közös hozzáférésű aláírás (SAS) paraméterei
 
-A blob verziójának aláírt erőforrása: `bv`. További információ: [Service sas létrehozása](/rest/api/storageservices/create-service-sas) vagy [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas).
+A blob verziójának aláírt erőforrása: `bv` . További információ: [Service sas létrehozása](/rest/api/storageservices/create-service-sas) vagy [felhasználói delegálási sas létrehozása](/rest/api/storageservices/create-user-delegation-sas).
 
 A következő táblázat a blob-verziók törléséhez szükséges engedélyeket mutatja be az SAS-ben.
 
@@ -224,9 +224,10 @@ A blob verziószámozási előzetes verziójának regisztrálásához a PowerShe
 A PowerShell-lel való regisztráláshoz hívja meg a [Get-AzProviderFeature](/powershell/module/az.resources/get-azproviderfeature) parancsot.
 
 ```powershell
+# Register for blob versioning (preview)
 Register-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
-    
+
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
@@ -308,7 +309,7 @@ A 3. forgatókönyvben a blob frissült, de a verzió nem. A 3. blokk lecserélv
 
 #### <a name="scenario-4"></a>4. példa
 
-A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók az alap blobban szereplő összes nyolc egyedi blokk &mdash; után, az előző verzióban pedig négyre lesz felszámítva. Ez a forgatókönyv akkor fordulhat elő, ha egy blobba helyezi a Put blob műveletet, mert az az alap blob teljes tartalmát lecseréli.
+A 4. forgatókönyvben az alap blob teljesen frissítve lett, és az eredeti blokk egyikét sem tartalmazza. Ennek eredményeképpen a fiók az alap blobban szereplő összes nyolc egyedi blokk után &mdash; , az előző verzióban pedig négyre lesz felszámítva. Ez a forgatókönyv akkor fordulhat elő, ha egy blobba helyezi a Put blob műveletet, mert az az alap blob teljes tartalmát lecseréli.
 
 ![Azure Storage-erőforrások](./media/versioning-overview/versions-billing-scenario-4.png)
 

@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan hozhat létre és kezelhet rendszercsomópont-k
 services: container-service
 ms.topic: article
 ms.date: 04/28/2020
-ms.openlocfilehash: 04322bdaa2e0e72c5fbdbadb07f2608ee360e1e3
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 85cc699d6ef8c632663775e91f2b5cad6ca7a7b6
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790558"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125247"
 ---
 # <a name="manage-system-node-pools-in-azure-kubernetes-service-aks"></a>Rendszercsomópont-készletek kezelése az Azure Kubernetes szolgáltatásban (ak)
 
@@ -50,6 +50,7 @@ A következő műveleteket hajthatja végre a Node Pools használatával:
 * Felhasználói csomópontok készletének törlése.
 * A rendszercsomópont-készleteket törölheti, ha rendelkezik egy másik rendszercsomópont-készlettel, hogy az AK-fürtön legyen a helyük.
 * Az AK-fürtök több rendszercsomópont-készlettel rendelkezhetnek, és legalább egy rendszercsomópont-készletet igényelnek.
+* Ha módosítani kívánja a meglévő csomópont-készletek különböző változtathatatlan beállításait, létrehozhat új csomópont-készleteket a helyükre. Az egyik példa egy új csomópont-készlet hozzáadása új maxPods-beállítással, és a régi csomópont-készlet törlése.
 
 ## <a name="create-a-new-aks-cluster-with-a-system-node-pool"></a>Új AK-fürt létrehozása rendszercsomópont-készlettel
 

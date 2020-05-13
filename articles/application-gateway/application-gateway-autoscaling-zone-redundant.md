@@ -7,12 +7,13 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/24/2020
 ms.author: victorh
-ms.openlocfilehash: 28a909c3b4011b55fb3fb67d9d64ab57a310cb86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 74af3d14512018abc216b288a27dc54ed806d8c9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207260"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125230"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-v2"></a>Automatikusan skálázó és zónaredundáns Application Gateway v2 
 
@@ -132,8 +133,16 @@ Teljes ár = $267,84 + $85,71 = $353,55
 
 A Application Gateway és a WAF két módban is konfigurálható:
 
-- Automatikus **skálázás** – ha engedélyezve van az automatikus skálázás, a Application Gateway és a WAF v2 SKU-ra vertikális fel-és leskálázás az alkalmazás-forgalmi követelmények alapján. Ez a mód jobb rugalmasságot biztosít az alkalmazás számára, és nem kell kitalálnia az Application Gateway-méretet vagy a példányszámot. Ez a mód lehetővé teszi a költségmegtakarítást úgy, hogy a várt maximális forgalmi terheléshez nem szükséges, hogy az átjáró kiosztott kapacitással fusson. Meg kell adnia a példányok minimális és opcionális maximális példányszámát. A minimális kapacitás biztosítja, hogy a Application Gateway és a WAF v2 ne érje el a megadott minimális példányszámot, még a forgalom hiányában is. Minden példány 10 további fenntartott kapacitási egységnek számít. A nulla nem jelent fenntartott kapacitást, és kizárólag az automatikus skálázást jelenti. Felhívjuk a figyelmét arra, hogy a további minimális példányok használata továbbra is biztosítja a szolgáltatás magas rendelkezésre állását, amely mindig rögzített áron érhető el. Megadhatja a példányok maximális számát is, ami garantálja, hogy a Application Gateway a megadott számú példányon túl nem méretezhető. Az átjáró által kiszolgált forgalom mennyiségét továbbra is számlázjuk. A példányok száma 0 és 125 között lehet. A példányok maximális számának alapértelmezett értéke 20, ha nincs megadva.
+- Automatikus **skálázás** – ha engedélyezve van az automatikus skálázás, a Application Gateway és a WAF v2 SKU-ra vertikális fel-és leskálázás az alkalmazás-forgalmi követelmények alapján. Ez a mód jobb rugalmasságot biztosít az alkalmazás számára, és nem kell kitalálnia az Application Gateway-méretet vagy a példányszámot. Ez a mód lehetővé teszi a költségmegtakarítást úgy, hogy a várt maximális forgalmi terheléshez nem szükséges, hogy az átjáró kiosztott kapacitással fusson. Meg kell adnia a példányok minimális és opcionális maximális példányszámát. A minimális kapacitás biztosítja, hogy a Application Gateway és a WAF v2 ne érje el a megadott minimális példányszámot, még a forgalom hiányában is. Az egyes példányok nagyjából 10 további fenntartott kapacitási egységnek felelnek meg. A nulla nem jelent fenntartott kapacitást, és kizárólag az automatikus skálázást jelenti. Megadhatja a példányok maximális számát is, ami garantálja, hogy a Application Gateway a megadott számú példányon túl nem méretezhető. Az átjáró által kiszolgált forgalom mennyisége csak a számlázás után történik meg. A példányok száma 0 és 125 között lehet. A példányok maximális számának alapértelmezett értéke 20, ha nincs megadva.
 - **Manuális** – választhatja azt a manuális módot is, amelyben az átjáró nem rendelkezik Automatikus méretezéssel. Ebben a módban, ha több forgalom van, mint amit a Application Gateway-vagy WAF tud kezelni, a forgalom elvesztését eredményezheti. A manuális mód megadása esetén kötelező megadni a példányszámot. A példányok száma 1 és 125 példány között lehet.
+
+## <a name="autoscaling-and-high-availability"></a>Automatikus skálázás és magas rendelkezésre állás
+
+Az Azure Application Gateway-átjárók mindig egy kiválóan elérhető módon vannak üzembe helyezve. A szolgáltatás több, konfiguráltként létrehozott példányból áll (ha az automatikus skálázás le van tiltva), vagy az alkalmazás terhelése miatt szükséges (ha az automatikus skálázás engedélyezve van). Vegye figyelembe, hogy a felhasználó szemszögéből nem feltétlenül látja el az egyes példányokat, hanem csak az Application Gateway szolgáltatás egészére. Ha egy adott példány problémába ütközik, és a működése leáll, az Azure Application Gateway transzparens módon létrehoz egy új példányt.
+
+Vegye figyelembe, hogy még akkor is, ha az automatikus skálázást nulla minimális példányokkal konfigurálja, a szolgáltatás továbbra is elérhető lesz, ami mindig a rögzített ár részét képezi.
+
+Egy új példány létrehozása azonban hosszabb időt is igénybe vehet (körülbelül hat vagy hét perc). Ezért ha nem szeretné megbirkózni ezzel az állásidővel, beállíthatja a minimális példányszámot (2), ideális esetben a rendelkezésre állási zónák támogatásával. Így a szokásos körülmények között legalább két példányban kell lennie az Azure-Application Gateway belül, így ha az egyik probléma a másikkal próbálkozik, akkor az új példány létrehozásakor megpróbál megbirkózni a forgalommal. Vegye figyelembe, hogy az Azure Application Gateway-példányok körülbelül 10 kapacitást tudnak támogatni, így attól függően, hogy mekkora forgalomra van szüksége, a minimális példány automatikus skálázási beállítását a 2 értéknél nagyobb értékre kell beállítania.
 
 ## <a name="feature-comparison-between-v1-sku-and-v2-sku"></a>Szolgáltatások összehasonlítása v1 SKU és v2 SKU között
 

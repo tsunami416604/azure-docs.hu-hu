@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 6637627d48df8f9b6126debc215aac9bceb76f6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1a214d39f958af36931192aad4561459ca0573
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80419543"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121345"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -31,10 +31,10 @@ A Function apps több módon is üzemeltethető:
 |                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium szintű csomag](functions-scale.md#premium-plan)|[App Service terv](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[Bejövő IP-korlátozások és privát webhely-hozzáférés](#inbound-ip-restrictions)|✅igen|✅igen|✅igen|✅igen|
-|[Virtuális hálózat integrációja](#virtual-network-integration)|❌No|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅igen|
-|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌No| ✅igen |✅igen|✅igen|
-|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌No|✅igen|✅igen|✅igen|
-|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌No| ✅igen|✅igen|✅igen|
+|[Virtuális hálózat integrációja](#virtual-network-integration)|❌Nem|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅igen|
+|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌Nem| ✅igen |✅igen|✅igen|
+|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌Nem|✅igen|✅igen|✅igen|
+|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌Nem| ✅igen|✅igen|✅igen|
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
 
@@ -50,7 +50,7 @@ További információ: [Azure app Service statikus hozzáférési korlátozások
 A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak magánhálózat, például egy Azure virtuális hálózat számára legyen elérhető.
 
 * A privát helyhez való hozzáférés a szolgáltatási végpontok konfigurálásakor a [prémium](./functions-premium-plan.md), a [fogyasztási](functions-scale.md#consumption-plan)és a [app Servicei](functions-scale.md#app-service-plan) csomagban érhető el.
-    * A szolgáltatási végpontok a **platform szolgáltatásai** > **hálózatkezelés** > **konfigurálása hozzáférési korlátozások** > megadása**szabály hozzáadása**alkalmazás alapján konfigurálhatók. A virtuális hálózatok mostantól szabálytípusként is kiválaszthatók.
+    * A szolgáltatási végpontok a **platform szolgáltatásai**  >  **hálózatkezelés**  >  **konfigurálása hozzáférési korlátozások megadása**  >  **szabály hozzáadása**alkalmazás alapján konfigurálhatók. A virtuális hálózatok mostantól szabálytípusként is kiválaszthatók.
     * További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
     * Ne feledje, hogy a szolgáltatási végpontok esetében a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a konfigurált Virtual Network Integration is.
 * A privát hely elérését egy belső terheléselosztó (ILB) használatára konfigurált App Service Environmenton belül is elérhető. További információ: [belső terheléselosztó létrehozása és használata app Service Environmentsal](../app-service/environment/create-ilb-ase.md).
@@ -102,9 +102,9 @@ Jelenleg a nem HTTP-trigger függvények a következő két módszer egyikével 
 
 ### <a name="premium-plan-with-virtual-network-triggers"></a>Prémium csomag virtuális hálózati eseményindítókkal
 
-A Prémium csomag futtatásakor a nem HTTP-trigger függvények a virtuális hálózaton belül futó szolgáltatásokhoz is csatlakoztathatók. Ehhez engedélyeznie kell a Virtual Network trigger támogatását a Function alkalmazás számára. A **virtuális hálózat triggerének támogatása** beállítás a [Azure Portal](https://portal.azure.com) a **Function app Settings**elem alatt található.
+A Prémium csomag futtatásakor a nem HTTP-trigger függvények a virtuális hálózaton belül futó szolgáltatásokhoz is csatlakoztathatók. Ehhez engedélyeznie kell a Virtual Network trigger támogatását a Function alkalmazás számára. A **virtuális hálózat triggerének támogatására** vonatkozó beállítás a [Azure Portal](https://portal.azure.com) **konfigurációs**  >  **függvény futtatókörnyezet-beállításai**területen található.
 
-![Virtuális hálózat váltógomb](media/functions-networking-options/virtual-network-trigger-toggle.png)
+:::image type="content" source="media/functions-networking-options/virtual-network-trigger-toggle.png" alt-text="VNETToggle":::
 
 A virtuális hálózati eseményindítókat a következő Azure CLI-parancs használatával is engedélyezheti:
 
@@ -146,7 +146,7 @@ További információt a [Hibrid kapcsolatok app Service dokumentációjában](.
 
 A kimenő IP-korlátozások prémium csomagokban, App Service csomagban vagy App Service Environment érhetők el. Konfigurálhatja a kimenő korlátozásokat arra a virtuális hálózatra, amelyen a App Service Environment telepítve van.
 
-Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező App Service tervben integrál egy függvényt, az alkalmazás alapértelmezés szerint továbbra is elvégezheti a kimenő hívásokat az internetre. Az Alkalmazásbeállítás `WEBSITE_VNET_ROUTE_ALL=1`hozzáadásával kényszeríti az összes kimenő forgalom küldését a virtuális hálózatba, ahol a hálózati biztonsági csoportra vonatkozó szabályok a forgalom korlátozására használhatók.
+Ha egy prémium szintű csomagban vagy egy virtuális hálózattal rendelkező App Service tervben integrál egy függvényt, az alkalmazás alapértelmezés szerint továbbra is elvégezheti a kimenő hívásokat az internetre. Az Alkalmazásbeállítás hozzáadásával `WEBSITE_VNET_ROUTE_ALL=1` kényszeríti az összes kimenő forgalom küldését a virtuális hálózatba, ahol a hálózati biztonsági csoportra vonatkozó szabályok a forgalom korlátozására használhatók.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

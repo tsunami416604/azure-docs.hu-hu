@@ -3,14 +3,14 @@ title: Function app-beállítások konfigurálása az Azure-ban
 description: Ismerje meg, hogyan konfigurálhatja az Azure Function app beállításait.
 ms.assetid: 81eb04f8-9a27-45bb-bf24-9ab6c30d205c
 ms.topic: conceptual
-ms.date: 08/14/2019
+ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 662a04dbcc39f3fa95b0098eb8fe556b18b3495b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79276945"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122297"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
 
@@ -27,9 +27,11 @@ Ez a cikk bemutatja, hogyan konfigurálhatja és kezelheti a függvények alkalm
 
 ## <a name="get-started-in-the-azure-portal"></a>Első lépések az Azure Portalon
 
-A kezdéshez nyissa meg a [Azure Portal] , és jelentkezzen be az Azure-fiókjába. A portál tetején a keresősávba írja be a függvényalkalmazás nevét, majd válassza ki a listáról. A Function alkalmazás kiválasztása után a következő oldal jelenik meg:
+1. A kezdéshez nyissa meg a [Azure Portal] , és jelentkezzen be az Azure-fiókjába. A portál felső részén található keresősáv mezőben adja meg a Function alkalmazás nevét, és válassza ki a listából. 
 
-![A Function app áttekintése a Azure Portal](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png)
+2. A bal oldali ablaktábla **Beállítások** területén válassza a **Konfigurálás**lehetőséget.
+
+    :::image type="content" source="./media/functions-how-to-use-azure-function-app-settings/azure-function-app-main.png" alt-text="A Function app áttekintése a Azure Portal":::
 
 A függvény alkalmazásának áttekintés oldaláról, különösen az **[Alkalmazásbeállítások](#settings)** és a **[platform funkcióinak](#platform-features)** kezeléséhez minden szükséges információt megtalálhat.
 
@@ -52,7 +54,7 @@ az functionapp config appsettings list --name <FUNCTION_APP_NAME> \
 --resource-group <RESOURCE_GROUP_NAME>
 ```
 
-A [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) parancs egy Alkalmazásbeállítás hozzáadására vagy frissítésére szolgál. A következő példa létrehoz egy beállítást egy nevű `CUSTOM_FUNCTION_APP_SETTING` kulccsal és egy értékkel: `12345`
+A [`az functionapp config appsettings set`](/cli/azure/functionapp/config/appsettings#az-functionapp-config-appsettings-set) parancs egy Alkalmazásbeállítás hozzáadására vagy frissítésére szolgál. A következő példa létrehoz egy beállítást egy nevű kulccsal `CUSTOM_FUNCTION_APP_SETTING` és egy értékkel `12345` :
 
 
 ```azurecli-interactive
@@ -69,9 +71,7 @@ Amikor helyileg fejleszt egy Function-alkalmazást, a local. Settings. JSON proj
 
 ## <a name="platform-features"></a>Platform-funkciók
 
-![Function app platform szolgáltatásai lap.](./media/functions-how-to-use-azure-function-app-settings/azure-function-app-features-tab.png)
-
-A Function apps a Azure App Service platformon fut, és karbantartja őket. Így a Function apps az Azure alapvető webes üzemeltetési platformjának legtöbb funkcióját elérheti. A **platform szolgáltatásai** lapon érheti el a app Service platform számos funkcióját, amelyet a Function apps alkalmazásban használhat. 
+A alkalmazásban futtatott Function apps-t a Azure App Service platform tartja karban. Így a Function apps az Azure alapvető webes üzemeltetési platformjának legtöbb funkcióját elérheti. A bal oldali panelen elérheti a App Service platform számos funkcióját, amelyeket használhat a Function apps alkalmazásban. 
 
 > [!NOTE]
 > Nem minden App Service funkció érhető el, ha egy Function alkalmazás fut a használati üzemeltetési csomagon.
@@ -87,7 +87,7 @@ A cikk további részében a következő, a függvények számára hasznos App S
 
 További információ a App Service beállítások használatáról: [Azure app Service beállításainak konfigurálása](../app-service/configure-common.md).
 
-### <a name="app-service-editor"></a><a name="editor"></a>App Service Editor
+### <a name="app-service-editor"></a><a name="editor"></a>App Service szerkesztő
 
 ![A App Service szerkesztő](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-appservice-editor.png)
 
@@ -116,7 +116,7 @@ Ha verziókövetés-megoldást használ a függvények kódjának fejlesztésér
 
 ### <a name="cross-origin-resource-sharing"></a><a name="cors"></a>Eltérő eredetű erőforrások megosztása
 
-A rosszindulatú programkódok végrehajtásának megakadályozása érdekében a modern böngészők letiltják a webalkalmazásokból érkező kéréseket egy különálló tartományban futó erőforrásoknak. A [több eredetű erőforrás-megosztás (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) lehetővé `Access-Control-Allow-Origin` teszi, hogy egy fejléc deklarálja, hogy mely eredetűek hívhatják meg a végpontokat a Function alkalmazásban.
+A rosszindulatú programkódok végrehajtásának megakadályozása érdekében a modern böngészők letiltják a webalkalmazásokból érkező kéréseket egy különálló tartományban futó erőforrásoknak. A [több eredetű erőforrás-megosztás (CORS)](https://developer.mozilla.org/docs/Web/HTTP/CORS) lehetővé teszi `Access-Control-Allow-Origin` , hogy egy fejléc deklarálja, hogy mely eredetűek hívhatják meg a végpontokat a Function alkalmazásban.
 
 #### <a name="portal"></a>Portál
 
@@ -124,7 +124,7 @@ Ha beállítja a Function alkalmazás számára **engedélyezett Origins** -list
 
 ![Function alkalmazás CORS-listájának konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-cors.png)
 
-Ha a helyettesítő karaktert`*`() használja, az összes többi tartományt figyelmen kívül hagyja a rendszer. 
+Ha a helyettesítő karaktert ( `*` ) használja, az összes többi tartományt figyelmen kívül hagyja a rendszer. 
 
 A [`az functionapp cors add`](/cli/azure/functionapp/cors#az-functionapp-cors-add) parancs használatával adjon hozzá egy tartományt az engedélyezett Origins listához. A következő példa hozzáadja a contoso.com tartományt:
 

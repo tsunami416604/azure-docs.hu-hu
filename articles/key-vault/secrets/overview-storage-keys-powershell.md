@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: f8c526148e37ba1b716aafd32dcc3f242358f1eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81427782"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121116"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
 
@@ -75,7 +75,7 @@ Set-AzContext -SubscriptionId <subscriptionId>
 
 ### <a name="set-variables"></a>Változók beállítása
 
-Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse <YourResourceGroupName>a <YourStorageAccountName>, és <YourKeyVaultName> helyőrzőket, és állítsa be $keyVaultSpAppId `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` a következőre: (az [egyszerű szolgáltatásnév alkalmazásban](#service-principal-application-id)megadott módon).
+Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse a <YourResourceGroupName> , <YourStorageAccountName> és <YourKeyVaultName> helyőrzőket, és állítsa be $keyVaultSpAppId a `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` következőre: (az [egyszerű szolgáltatásnév alkalmazásban](#service-principal-application-id)megadott módon).
 
 A Get [-AzContext](/powershell/module/az.accounts/get-azcontext?view=azps-2.6.0) és a [Get-AzStorageAccount](/powershell/module/az.storage/get-azstorageaccount?view=azps-2.6.0) parancsmagokkal is Azure PowerShell a felhasználói azonosítót és az Azure Storage-fiók környezetét fogjuk használni.
 
@@ -84,14 +84,18 @@ $resourceGroupName = <YourResourceGroupName>
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 $keyVaultSpAppId = "cfa8b339-82a2-471a-a3c9-0fc0be7a4093"
-$storageAccountKey = "key1"
+$storageAccountKey = "key1" #(key1 or key2 are allowed)
 
 # Get your User Id
 $userId = (Get-AzContext).Account.Id
 
 # Get a reference to your Azure storage account
 $storageAccount = Get-AzStorageAccount -ResourceGroupName $resourceGroupName -StorageAccountName $storageAccountName
+
 ```
+>[!Note]
+> A klasszikus Storage-fiókok esetében az "elsődleges" és a "másodlagos" érték használata $storageAccountKey <br>
+> Használja a "Get-AzResource-Name" ClassicStorageAccountName "-ResourceGroupName $resourceGroupName" helyet a klasszikus Storage-fiókhoz a következő helyett: of'Get-AzStorageAccount ".
 
 ### <a name="give-key-vault-access-to-your-storage-account"></a>Key Vault hozzáférés biztosítása a Storage-fiókhoz
 
@@ -160,7 +164,7 @@ Tags                :
 
 ### <a name="enable-key-regeneration"></a>Kulcs újragenerálásának engedélyezése
 
-Ha azt Key Vault szeretné, hogy a rendszer rendszeres időközönként újragenerálja a Storage-fiók kulcsait, akkor a Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) parancsmaggal állíthatja be a regenerációs időszakot. Ebben a példában a három napos újragenerálási időszakot állítjuk be. Három nap elteltével Key Vault újragenerálta a "key2", és az aktív kulcsot a "key2" értékről "key1"-re cseréli.
+Ha azt Key Vault szeretné, hogy a rendszer rendszeres időközönként újragenerálja a Storage-fiók kulcsait, akkor a Azure PowerShell [Add-AzKeyVaultManagedStorageAccount](/powershell/module/az.keyvault/add-azkeyvaultmanagedstorageaccount?view=azps-2.6.0) parancsmaggal állíthatja be a regenerációs időszakot. Ebben a példában a három napos újragenerálási időszakot állítjuk be. Három nap elteltével Key Vault újragenerálja a "key2"-t, és az aktív kulcsot a "key2" értékről a "key1" (a klasszikus Storage-fiókok elsődleges és másodlagos) helyére cseréli.
 
 ```azurepowershell-interactive
 $regenPeriod = [System.Timespan]::FromDays(3)
@@ -197,7 +201,7 @@ Az ebben a szakaszban szereplő parancsok a következő műveleteket hajtják v�
 - 
 ### <a name="set-variables"></a>Változók beállítása
 
-Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse <YourStorageAccountName> a <YourKeyVaultName> és a helyőrzőket.
+Először állítsa be az alábbi lépésekben a PowerShell-parancsmagok által használandó változókat. Ügyeljen arra, hogy frissítse a <YourStorageAccountName> és a <YourKeyVaultName> helyőrzőket.
 
 Az Azure Storage-fiók kontextusának beszerzéséhez az Azure PowerShell [New-AzStorageContext](/powershell/module/az.storage/new-azstoragecontext?view=azps-2.6.0) parancsmagokat is használjuk.
 
@@ -205,7 +209,7 @@ Az Azure Storage-fiók kontextusának beszerzéséhez az Azure PowerShell [New-A
 $storageAccountName = <YourStorageAccountName>
 $keyVaultName = <YourKeyVaultName>
 
-$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1
+$storageContext = New-AzStorageContext -StorageAccountName $storageAccountName -Protocol Https -StorageAccountKey Key1 #(or "Primary" for Classic Storage Account)
 ```
 
 ### <a name="create-a-shared-access-signature-token"></a>Közös hozzáférésű aláírási jogkivonat létrehozása

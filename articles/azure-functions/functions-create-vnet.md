@@ -3,15 +3,15 @@ title: Azure Functions integrálása Azure-beli virtuális hálózattal
 description: Lépésenkénti oktatóanyag, amely bemutatja, hogyan csatlakoztatható egy függvény egy Azure-beli virtuális hálózathoz
 author: alexkarcher-msft
 ms.topic: article
-ms.date: 5/03/2019
+ms.date: 4/23/2020
 ms.author: alkarche
 ms.reviewer: glenga
-ms.openlocfilehash: 0c70c69f547405eb8ebdcf6dcc6ae597db151e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1babfa188a29e79cb52cd14af19d552123345f1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75433215"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122668"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása Azure-beli virtuális hálózattal
 
@@ -50,7 +50,7 @@ A Function alkalmazást a jobb felső sarokban található rögzítés ikonra ka
 
 Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET, amely a WordPress-t futtatja egy virtuális hálózaton belül (a[WordPress LEMP7 Max Performance](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure) by Jetware). A WordPress virtuális gépeket a szolgáltatás alacsony díja és kényelme miatt használják. Ugyanez a forgatókönyv a virtuális hálózatok bármely erőforrásával, például a REST API-kkal, App Service környezetekkel és egyéb Azure-szolgáltatásokkal is működik. 
 
-1. A portálon válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, a keresőmezőbe írja be `WordPress LEMP7 Max Performance`a kifejezést, majd nyomja le az ENTER billentyűt.
+1. A portálon válassza az **+ erőforrás létrehozása** lehetőséget a bal oldali navigációs ablaktáblán, a keresőmezőbe írja be a kifejezést `WordPress LEMP7 Max Performance` , majd nyomja le az ENTER billentyűt.
 
 1. Válassza a **WordPress LEMP max teljesítmény** lehetőséget a keresési eredmények között. Válassza ki a **WordPress LEMP Max teljesítményének** a **szoftver csomagját** , és válassza a **Létrehozás**lehetőséget.
 
@@ -61,7 +61,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
     | Beállítás      | Ajánlott érték  | Leírás      |
     | ------------ | ---------------- | ---------------- |
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
-    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza `myResourceGroup`ki vagy a Function alkalmazással létrehozott erőforráscsoportot. A Function app, a WordPress VM és a üzemeltetési csomag azonos erőforráscsoport használatával megkönnyítheti az erőforrások törlését, ha ezzel az Oktatóanyaggal végzett. |
+    | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki `myResourceGroup` vagy a Function alkalmazással létrehozott erőforráscsoportot. A Function app, a WordPress VM és a üzemeltetési csomag azonos erőforráscsoport használatával könnyebben törölheti az erőforrásokat, amikor elkészült ezzel az Oktatóanyaggal. |
     | **Virtuális gép neve** | VNET – WordPress | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
     | **[Régió](https://azure.microsoft.com/regions/)** | Európa Nyugat-Európa | Válasszon egy Önhöz közeli régiót vagy a virtuális gépet elérő függvények közelében. |
     | **Méret** | B1s | Válassza a **méret módosítása** lehetőséget, majd válassza ki a B1s standard rendszerképet, amely 1 vCPU és 1 GB memóriát tartalmaz. |
@@ -100,17 +100,15 @@ Most már rendelkezik egy, a virtuális hálózaton belül üzembe helyezett Wor
 
 A virtuális hálózatban lévő virtuális gépeken futó WordPress-webhelyekhez mostantól csatlakozhat a Function alkalmazáshoz a virtuális hálózathoz.
 
-1. Az új függvény alkalmazásban válassza a **platform szolgáltatások** > **hálózatkezelés**lehetőséget.
-
-    ![A Function alkalmazásban válassza a hálózatkezelés lehetőséget.](./media/functions-create-vnet/networking-0.png)
+1. Az új függvény alkalmazásban válassza a bal oldali menü **hálózatkezelés** elemét.
 
 1. A **VNet-integráció**területen válassza **a kattintson ide a konfiguráláshoz**lehetőséget.
 
-    ![Hálózati szolgáltatás konfigurálásának állapota](./media/functions-create-vnet/Networking-1.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-0.png" alt-text="A Function alkalmazásban válassza a hálózatkezelés lehetőséget.":::
 
-1. A virtuális hálózat integrációja lapon válassza a **VNet hozzáadása (előzetes verzió)** lehetőséget.
+1. A **VNET-integráció** lapon válassza a **VNET hozzáadása**elemet.
 
-    ![A VNet-integráció előzetes verziójának hozzáadása](./media/functions-create-vnet/networking-2.png)
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="A VNet-integráció előzetes verziójának hozzáadása":::
 
 1. A **hálózati szolgáltatások állapota**területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
 
@@ -124,7 +122,7 @@ A virtuális hálózatban lévő virtuális gépeken futó WordPress-webhelyekhe
     | **Virtuális hálózati címterület** | 10.10.0.0/16 | Válassza ki ugyanazt a Címterület-blokkot, amelyet a WordPress-webhely használ. Csak egy címterület van definiálva. |
     | **Címtartomány** | 10.10.2.0/24   | Az alhálózat mérete korlátozza azon példányok számát, amelyeket a prémium szintű csomag funkciójának alkalmazásával fel lehet méretezni. Ez a példa egy `/24` alhálózatot használ, amely 254 elérhető gazdagép-címmel rendelkezik. Ez az alhálózat túl van kiépítve, de könnyen kiszámítható. |
 
-1. Az alhálózat hozzáadásához kattintson **az OK gombra** . Az VNet-integráció és a hálózati szolgáltatás állapota lapok bezárásával térjen vissza a Function app-oldalára.
+1. Az alhálózat hozzáadásához kattintson **az OK gombra** . Az **VNet-integráció** és a **hálózati szolgáltatás állapota** lapok bezárásával térjen vissza a Function app-oldalára.
 
 A Function alkalmazás mostantól elérheti azt a virtuális hálózatot, ahol a WordPress-webhely fut. Ezután a [Azure functions-proxyk](functions-proxies.md) használatával egy fájlt ad vissza a WordPress webhelyről.
 
@@ -132,15 +130,15 @@ A Function alkalmazás mostantól elérheti azt a virtuális hálózatot, ahol a
 
 Ha a VNet-integráció engedélyezve van, létrehozhat egy proxyt a Function alkalmazásban, hogy továbbítsa a kéréseket a virtuális hálózaton futó virtuális GÉPHEZ.
 
-1. A Function alkalmazásban válassza a **proxys** > **+** elemet, majd a rendszerkép alatti táblázatban adja meg a proxybeállításokat:
+1. A Function alkalmazásban válassza a bal oldali menü **proxyk** elemét, majd válassza a **Hozzáadás**lehetőséget. Használja az alábbi táblázatban található proxybeállítások közül a rendszerképet:
 
-    ![Proxybeállítások megadása](./media/functions-create-vnet/create-proxy.png)
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Proxybeállítások megadása":::
 
     | Beállítás  | Ajánlott érték  | Leírás      |
     | -------- | ---------------- | ---------------- |
     | **Név** | Üzem | A név tetszőleges érték lehet. A proxy azonosítására szolgál. |
     | **Útvonal sablonja** | /plant | Egy VM-erőforráshoz hozzárendelt útvonal. |
-    | **Háttér-URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje `<YOUR_VM_IP>` le a helyére a korábban létrehozott WordPress-virtuális gép IP-címét. Ez a leképezés egyetlen fájlt ad vissza a helyről. |
+    | **Háttér-URL** | http://<YOUR_VM_IP>/wp-content/themes/twentyseventeen/assets/images/header.jpg | Cserélje le a helyére `<YOUR_VM_IP>` a korábban létrehozott WordPress-virtuális gép IP-címét. Ez a leképezés egyetlen fájlt ad vissza a helyről. |
 
 1. Válassza a **Létrehozás** lehetőséget, hogy hozzáadja a proxyt a Function alkalmazáshoz.
 

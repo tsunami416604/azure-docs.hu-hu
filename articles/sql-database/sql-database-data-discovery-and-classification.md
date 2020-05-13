@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/21/2020
 tags: azure-synapse
-ms.openlocfilehash: f05b4d4fec99aaa2fb79da46e2167d883d1f15ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27989687934719be5f1d18b85d3ead92f28b3f60
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81766991"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123853"
 ---
 # <a name="data-discovery--classification-for-azure-sql-database-and-azure-synapse-analytics"></a>Adatfelderítési & besorolása Azure SQL Database és az Azure szinapszis Analyticshez
 
@@ -113,7 +113,7 @@ Az egész szervezetre kiterjedő házirend meghatározása után folytathatja az
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Bizalmas adatokhoz való hozzáférés naplózása
 
-Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. A [Azure SQL Database naplózása](sql-database-auditing.md) ki lett bővítve, hogy egy új mezőt tartalmazzon a `data_sensitivity_information`naplóban. Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Például:
+Az Information-Protection paradigma fontos aspektusa a bizalmas adatokhoz való hozzáférés figyelése. A [Azure SQL Database naplózása](sql-database-auditing.md) ki lett bővítve, hogy egy új mezőt tartalmazzon a naplóban `data_sensitivity_information` . Ez a mező a lekérdezés által visszaadott adatérzékeny besorolásokat (címkéket) naplózza. Például:
 
 ![Napló](./media/sql-data-discovery-and-classification/11_data_classification_audit_log.png)
 
@@ -152,18 +152,6 @@ A T-SQL osztályozási szolgáltatással való használatáról a következő hi
 - A besorolás eltávolítása egy vagy több oszlopból: az [érzékenység besorolásának eldobása](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
 - Az adatbázis összes besorolásának megtekintése: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
-### <a name="use-the-rest-api"></a>A REST API használata
-
-A REST API használatával programozott módon kezelheti a besorolásokat és a javaslatokat. A közzétett REST API a következő műveleteket támogatja:
-
-- [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): a megadott oszlop érzékenységi címkéjét hozza létre vagy frissíti.
-- [Delete (Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)): törli a megadott oszlop érzékenységi címkéjét.
-- [Javaslat letiltása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): a megadott oszlop érzékenységi javaslatainak letiltása.
-- [Javaslat engedélyezése](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): a megadott oszlopra vonatkozó érzékenységi javaslatokat tesz lehetővé. (A javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban.)
-- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): lekéri a megadott oszlop érzékenységi címkéjét.
-- [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): lekéri a megadott adatbázis aktuális érzékenységi címkéit.
-- Az [adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): lekéri a megadott adatbázis javasolt érzékenységi címkéit.
-
 ### <a name="use-powershell-cmdlets"></a>PowerShell-parancsmagok használata
 A PowerShell használatával kezelheti Azure SQL Database és felügyelt példányok besorolásait és javaslatait.
 
@@ -185,6 +173,17 @@ A PowerShell használatával kezelheti Azure SQL Database és felügyelt példá
 - [AzSqlInstanceDatabaseSensitivityRecommendation engedélyezése](https://docs.microsoft.com/powershell/module/az.sql/enable-azsqlinstancedatabasesensitivityrecommendation)
 - [AzSqlInstanceDatabaseSensitivityRecommendation letiltása](https://docs.microsoft.com/powershell/module/az.sql/disable-azsqlinstancedatabasesensitivityrecommendation)
 
+### <a name="use-the-rest-api"></a>A REST API használata
+
+A REST API használatával programozott módon kezelheti a besorolásokat és a javaslatokat. A közzétett REST API a következő műveleteket támogatja:
+
+- [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate): a megadott oszlop érzékenységi címkéjét hozza létre vagy frissíti.
+- [Delete (Törlés](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/delete)): törli a megadott oszlop érzékenységi címkéjét.
+- [Javaslat letiltása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/disablerecommendation): a megadott oszlop érzékenységi javaslatainak letiltása.
+- [Javaslat engedélyezése](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/enablerecommendation): a megadott oszlopra vonatkozó érzékenységi javaslatokat tesz lehetővé. (A javaslatok alapértelmezés szerint engedélyezve vannak az összes oszlopban.)
+- [Get](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/get): lekéri a megadott oszlop érzékenységi címkéjét.
+- [Aktuális adatbázis listázása](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listcurrentbydatabase): lekéri a megadott adatbázis aktuális érzékenységi címkéit.
+- Az [adatbázis által ajánlott lista](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/listrecommendedbydatabase): lekéri a megadott adatbázis javasolt érzékenységi címkéit.
 
 ## <a name="next-steps"></a><a id="next-steps"></a>További lépések
 

@@ -1,18 +1,20 @@
 ---
 title: Az Application Health bővítmény használata Azure-beli virtuálisgép-méretezési csoportokkal
 description: Ismerje meg, hogyan használható az alkalmazás állapota a virtuálisgép-méretezési csoportokon telepített alkalmazásai állapotának figyelésére.
-author: mimckitt
-tags: azure-resource-manager
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: extensions
 ms.date: 05/06/2020
-ms.author: mimckitt
-ms.openlocfilehash: 30f68d22a228e6de596e6999490ea7789ab21547
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 4710d03c4d5b2f2679a0d6b65f38ec584f9a056c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864368"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124108"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Az Application Health bővítmény használata virtuálisgép-méretezési csoportokkal
 Az alkalmazás állapotának figyelése fontos jel az üzemelő példány kezeléséhez és frissítéséhez. Az Azure virtuálisgép-méretezési csoportok támogatást nyújtanak a [működés közbeni](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) frissítésekhez, beleértve az [automatikus operációsrendszer-képek](virtual-machine-scale-sets-automatic-upgrade.md)frissítéseit is, amelyek az egyes példányok állapotának figyelésére támaszkodnak az üzembe helyezés frissítéséhez. Az állapotfigyelő szolgáltatással is figyelheti a méretezési csoport egyes példányainak alkalmazási állapotát, és elvégezheti a példányok javítását az [automatikus példányok javításával](virtual-machine-scale-sets-automatic-instance-repairs.md).
@@ -67,8 +69,8 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 | Name | Érték/példa | Adattípus
 | ---- | ---- | ----
 | protokoll | `http`vagy `https``tcp` | sztring |
-| port | Nem `http` kötelező, ha protokoll `https`vagy`tcp` | int |
-| requestPath | Kötelező, ha a `http` protokoll `https`értéke vagy, nem engedélyezett, ha a protokoll`tcp` | sztring |
+| port | Nem kötelező, ha protokoll `http` vagy `https``tcp` | int |
+| requestPath | Kötelező, ha a protokoll értéke `http` vagy `https` , nem engedélyezett, ha a protokoll`tcp` | sztring |
 
 ## <a name="deploy-the-application-health-extension"></a>Az alkalmazás állapot-kiterjesztésének üzembe helyezése
 Az alábbi példákban több módon is üzembe helyezheti az alkalmazás állapotának kiterjesztését a méretezési csoportokban.
@@ -97,13 +99,13 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
   }
 }
 ```
-Egy `PATCH` már telepített bővítmény szerkesztésére használható.
+`PATCH`Egy már telepített bővítmény szerkesztésére használható.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 Az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmaggal adja hozzá az alkalmazás-állapot bővítményt a méretezési csoport modellje definícióhoz.
 
-Az alábbi példa hozzáadja az alkalmazás `extensionProfile` -állapot bővítményt a Windows-alapú méretezési csoport méretezési csoport modelljéhez. A példa az új az PowerShell-modult használja.
+Az alábbi példa hozzáadja az alkalmazás-állapot bővítményt a `extensionProfile` Windows-alapú méretezési csoport méretezési csoport modelljéhez. A példa az új az PowerShell-modult használja.
 
 ```azurepowershell-interactive
 # Define the scale set variables

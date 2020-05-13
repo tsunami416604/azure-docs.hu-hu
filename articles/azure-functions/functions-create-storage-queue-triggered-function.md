@@ -1,26 +1,22 @@
 ---
 title: Üzenetsor-üzenetek által aktivált függvény létrehozása az Azure-ban
-description: Használja az Azure Functions szolgáltatást olyan kiszolgáló nélküli függvények létrehozására, amelyeket az Azure Storage üzenetsorába elküldött üzenetek hívnak meg.
+description: A Azure Functions használatával hozzon létre egy kiszolgáló nélküli függvényt, amelyet az Azure-ban egy üzenetsor számára elküldött üzenet hív meg.
 ms.assetid: 361da2a4-15d1-4903-bdc4-cc4b27fc3ff4
 ms.topic: how-to
 ms.date: 10/01/2018
 ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 98f0290aad9971bdb0c0b265d96e96d8ac34b99d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4c20579f2306b61741f3c6ab1549285271435a3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756518"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123344"
 ---
 # <a name="create-a-function-triggered-by-azure-queue-storage"></a>Azure Storage-üzenetsor által aktivált függvény létrehozása
 
 Megtudhatja, hogyan hozhat létre olyan függvényt, amely akkor aktiválódik, amikor üzeneteket küldenek egy Azure Storage-üzenetsorba.
 
-![Tekintse meg a naplókban található üzeneteket.](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
-
 ## <a name="prerequisites"></a>Előfeltételek
-
-- A [Microsoft Azure Storage Explorer](https://storageexplorer.com/) letöltése és telepítése.
 
 - Azure-előfizetés. Ha még nem rendelkezik ilyennel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
 
@@ -28,7 +24,7 @@ Megtudhatja, hogyan hozhat létre olyan függvényt, amely akkor aktiválódik, 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
-![A függvényalkalmazás elkészült.](./media/functions-create-first-azure-function/function-app-create-success.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-create-success.png" alt-text="A Function alkalmazás sikeresen létrejött.." border="true":::
 
 Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
@@ -36,23 +32,16 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 ## <a name="create-a-queue-triggered-function"></a>Üzenetsor által aktivált függvény létrehozása
 
-1. Bontsa ki a Function alkalmazást, **+** és kattintson a **függvények**elem melletti gombra. Ha ez az első függvény a függvényalkalmazásban, válassza a **Portálba épített**, majd a **Folytatás** lehetőséget. Ha nem ez az első, folytassa a harmadik lépéssel.
+1. Válassza a **függvények**lehetőséget, majd válassza a **+ Hozzáadás** lehetőséget egy új függvény hozzáadásához.
 
-   ![Függvények gyors létrehozásának oldala az Azure Portalon](./media/functions-create-storage-queue-triggered-function/function-app-quickstart-choose-portal.png)
+   :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-app-quickstart-choose-template.png" alt-text="Válasszon egy függvény sablont a Azure Portal." border="true":::
 
-1. Válassza ki a **További sablonok**, majd a **Befejezés és sablonok megtekintése** lehetőséget.
-
-    ![Függvények rövid útmutatója - további sablonok kiválasztása](./media/functions-create-storage-queue-triggered-function/add-first-function.png)
-
-1. A keresőmezőbe írja be a `queue` kifejezést, majd válassza ki a **Várólista-eseményindító** sablont.
-
-1. Ha a rendszer kéri, válassza a **telepítés** lehetőséget az Azure Storage-bővítmény és a Function alkalmazásban lévő függőségek telepítéséhez. A telepítést követően válassza a **Folytatás** gombot.
-
-    ![Kötési bővítmények telepítése](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png)
+1. Válassza ki az **Azure Queue Storage trigger** sablonját.
 
 1. Használja az ábra alatti táblázatban megadott beállításokat.
 
-    ![A tároló üzenetsora által aktivált függvény konfigurálása.](./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal.png" alt-text="A várólista-tároló által aktivált függvény neve és konfigurálása." border="true":::
+
 
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
@@ -60,45 +49,53 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | **Üzenetsor neve**   | myqueue-items    | A tárfiókhoz csatlakoztatni kívánt üzenetsor neve. |
     | **Tárfiók kapcsolata** | AzureWebJobsStorage | Választhatja a függvényalkalmazás által már használt tárfiókkapcsolatot, vagy létrehozhat egy újat.  |    
 
-1. Kattintson a **Létrehozás** elemre a függvény létrehozásához.
+1. A függvény létrehozásához válassza a **create Function** elemet.
 
-Ezután csatlakozzon az Azure Storage-fiókjához, és hozza létre a **myqueue-items** tárolót.
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-create-queue-storage-trigger-portal-3.png" alt-text="Hozza létre az üzenetsor-tároló által aktivált függvényt." border="true":::
+
+Ezután kapcsolódjon az Azure Storage-fiókjához, és hozza létre a **myqueue-elemek** tárolási várólistáját.
 
 ## <a name="create-the-queue"></a>Az üzenetsor létrehozása
 
-1. A függvényben kattintson az **Integráció** elemre, bontsa ki a **Dokumentáció** elemet, és másolja a **Fiók neve** és a **Fiók kulcsa** értéket. Ezekkel a hitelesítő adatokkal csatlakozhat a tárfiókhoz az Azure Storage Explorerben. Ha már csatlakozott a tárfiókjához, folytassa a 4. lépéssel.
+1. A függvényben az **Áttekintés** lapon válassza ki az erőforráscsoportot.
 
-    ![Kérje le a tárfiókhoz való csatlakozáshoz szükséges hitelesítő adatokat.](./media/functions-create-storage-queue-triggered-function/functions-storage-account-connection.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-resource-group.png" alt-text="Válassza ki az Azure Portal erőforráscsoportot." border="true":::
 
-1. Futtassa a [Microsoft Azure Storage Explorer](https://storageexplorer.com/) eszközt, kattintson a bal oldalon található csatlakozási ikonra, válassza a **Tárfiók nevének és kulcsának használata** lehetőséget, és kattintson a **Tovább** gombra.
+1. Keresse meg és válassza ki az erőforráscsoport Storage-fiókját.
 
-    ![Futtassa a Storage Account Explorer eszközt.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-1.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-account-access.png" alt-text="Hozzáférés a Storage-fiókhoz." border="true":::
 
-1. Adja meg az 1. lépésben megállapított **Fiók neve** és **Fiók kulcsa** értéket, és kattintson a **Tovább**, majd a **Csatlakozás** gombra.
+1. Válassza a **várólisták**lehetőséget, majd válassza a **+ üzenetsor**lehetőséget. 
 
-    ![Adja meg a tároló hitelesítő adatait, és csatlakozzon.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-connect-2.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-add-queue.png" alt-text="Vegyen fel egy várólistát a Storage-fiókjába a Azure Portal." border="true":::
 
-1. Bontsa ki a csatolt tárfiókot, kattintson a jobb gombbal az **Üzenetsorok** elemre, kattintson az **Üzenetsor létrehozása** elemre, írja be a `myqueue-items` értéket, és nyomja meg az Enter billentyűt.
+1. A **név** mezőbe írja be a következőt: `myqueue-items` , majd válassza a **Létrehozás**lehetőséget.
 
-    ![Hozzon létre egy tárolási üzenetsort.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-create-queue.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-name-queue.png" alt-text="Nevezze el a várólista Storage-tárolóját." border="true":::
 
 Az üzenetsor létrehozása után tesztelheti a függvényt úgy, hogy felvesz egy üzenetet az üzenetsorba.
 
 ## <a name="test-the-function"></a>A függvény tesztelése
 
-1. Térjen vissza az Azure Portalra, keresse meg a függvényt, bontsa ki a **Naplók** elemet a lap alján, és győződjön meg arról, hogy a naplózási adatfolyam nincs leállítva.
+1. Lépjen vissza a Azure Portalba, és keresse meg a függvényt a lap alján található **naplók** kibontásával, és győződjön meg arról, hogy a naplózási adatfolyam nincs szüneteltetve.
 
-1. A Storage Explorer bontsa ki a Storage-fiók, a **várólisták**és a **myqueue elemet**, majd kattintson az **üzenet hozzáadása**gombra.
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-queue-storage-log-expander.png" alt-text="Bontsa ki a Azure Portal a naplót." border="true":::
 
-    ![Vegyen fel egy üzenetet az üzenetsorba.](./media/functions-create-storage-queue-triggered-function/functions-storage-manager-add-message.png)
+1. Egy különálló böngészőablakban nyissa meg az erőforráscsoportot a Azure Portalban, és válassza ki a Storage-fiókot.
 
-1. Írja be a „Hello World!” üzenetet az **Üzenet szövege** mezőbe, és kattintson az **OK** gombra.
+1. Válassza a **várólisták**lehetőséget, majd válassza ki a **myqueue** tárolót.
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue.png" alt-text="Nyissa meg a myqueue-elemek várólistáját a Azure Portal." border="true":::
+
+1. Válassza az **üzenet hozzáadása**lehetőséget, és írja be a ""Helló világ!"alkalmazás!" kifejezést. az **üzenet szövege**. Kattintson az **OK** gombra.
+
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/functions-storage-queue-test.png" alt-text="Nyissa meg a myqueue-elemek várólistáját a Azure Portal." border="true":::
 
 1. Várjon néhány másodpercet, majd térjen vissza a függvény naplóihoz, és győződjön meg arról, hogy megtörtént az új üzenet olvasása az üzenetsorból.
 
-    ![Tekintse meg a naplókban található üzeneteket.](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    :::image type="content" source="./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png" alt-text="Tekintse meg a naplókban található üzeneteket." border="true":::
 
-1. Térjen vissza a Storage Explorerbe, kattintson a **Frissítés** elemre, és ellenőrizze, hogy megtörtént-e az üzenet feldolgozása, és hogy el lett-e távolítva az üzenetsorból.
+1. A Storage-várólistában kattintson a **frissítés** elemre, és ellenőrizze, hogy az üzenet feldolgozása megtörtént-e, és már nem szerepel-e a várólistán.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

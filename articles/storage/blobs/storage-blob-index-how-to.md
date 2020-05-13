@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: f4c9fab3caf1089b97265d93db7d945604a59fd3
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9ba151aa1ddc7f4b14d5f4ec7f1990e2fd760602
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82723011"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121235"
 ---
 # <a name="utilize-blob-index-tags-preview-to-manage-and-find-data-on-azure-blob-storage"></a>Az Azure Blob Storage-ban lévő blob-indexek (előzetes verzió) használatával kezelheti és keresheti meg az adatkeresést
 
@@ -182,7 +182,7 @@ static async Task BlobIndexTagsExample()
 
 # <a name="portal"></a>[Portál](#tab/azure-portal)
 
-A Azure Portalon belül a blob-index címkék szűrő automatikusan alkalmazza `@container` a paramétert a kiválasztott tároló hatókörére. Ha a teljes Storage-fiókban szeretné szűrni és megtalálni a címkézett adatait, használja a REST API, SDK-kat vagy eszközöket.
+A Azure Portalon belül a blob-index címkék szűrő automatikusan alkalmazza a `@container` paramétert a kiválasztott tároló hatókörére. Ha a teljes Storage-fiókban szeretné szűrni és megtalálni a címkézett adatait, használja a REST API, SDK-kat vagy eszközöket.
 
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a Storage-fiókját. 
 
@@ -204,6 +204,7 @@ static async Task FindBlobsByTagsExample()
       BlobContainerClient container1 = serviceClient.GetBlobContainerClient("mycontainer");
       BlobContainerClient container2 = serviceClient.GetBlobContainerClient("mycontainer2");
 
+      // Blob Index queries and selection
       String singleEqualityQuery = @"""Archive"" = 'false'";
       String andQuery = @"""Archive"" = 'false' AND ""Priority"" = '01'";
       String rangeQuery = @"""Date"" >= '2020-04-20' AND ""Date"" <= '2020-04-30'";
@@ -254,9 +255,9 @@ static async Task FindBlobsByTagsExample()
           Console.WriteLine("Find Blob by Tags query: " + queryToUse + Environment.NewLine);
 
           List<FilterBlobItem> blobs = new List<FilterBlobItem>();
-          foreach (Page<FilterBlobItem> page in serviceClient.FindBlobsByTags(queryToUse).AsPages())
+          await foreach (FilterBlobItem filterBlobItem in serviceClient.FindBlobsByTagsAsync(queryToUse))
           {
-              blobs.AddRange(page.Values);
+              blobs.Add(filterBlobItem);
           }
 
           foreach (var filteredBlob in blobs)
@@ -284,9 +285,9 @@ static async Task FindBlobsByTagsExample()
 
 3. Válassza a *szabály hozzáadása* lehetőséget, majd töltse ki a műveleti készlet űrlap mezőket.
 
-4. Válassza a szűrő beállítása lehetőséget a választható szűrő hozzáadásához az előtag egyeztetéséhez ![és a blob-index egyeztetéséhez blob-index címkézése az életciklus-felügyelethez](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
+4. Válassza a szűrő beállítása lehetőséget a választható szűrő hozzáadásához az előtag egyeztetéséhez és a blob-index egyeztetéséhez ![ blob-index címkézése az életciklus-felügyelethez](media/storage-blob-index-concepts/blob-index-match-lifecycle-filter-set.png)
 
-5. Válassza a **felülvizsgálat + Hozzáadás** elemet, és tekintse át a szabály beállításai ![életciklus-kezelési szabályt a blob index címkék szűrővel példa](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
+5. Válassza a **felülvizsgálat + Hozzáadás** elemet, és tekintse át a szabály beállításai ![ életciklus-kezelési szabályt a blob index címkék szűrővel példa](media/storage-blob-index-concepts/blob-index-lifecycle-management-example.png)
 
 6. Válassza a **Hozzáadás** lehetőséget az új szabály életciklus-kezelési házirendre való alkalmazásához
 

@@ -3,12 +3,12 @@ title: Gyakran ismételt kérdések az Azure Kubernetes szolgáltatásról (ak)
 description: Válaszok az Azure Kubernetes szolgáltatással (ak) kapcsolatos gyakori kérdésekre.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 112060e72f36bfe5d11a997fc4161e26c36259ff
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5ba776424462b3a8b586b1f90e83f409770e5597
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854239"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83123819"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Gyakori kérdések az Azure Kubernetes Service-szel (AKS) kapcsolatban
 
@@ -127,6 +127,8 @@ A Windows Server rendszerhez készült csomópont-támogatás olyan korlátozás
 
 ## <a name="does-aks-offer-a-service-level-agreement"></a>Biztosít-e az AK szolgáltatás szintű szerződést?
 
+Az AK lehetővé teszi, hogy 99,95%-os rendelkezésre állást érjen el az API-kiszolgáló számára [üzemidő SLA-val] [üzemidő-sla.md].
+
 Egy szolgáltatói szerződés (SLA) esetében a szolgáltató beleegyezik, hogy a szolgáltatás költségeiért visszatéríti az ügyfelet, ha a közzétett szolgáltatási szint nem teljesül. Mivel az AK ingyenes, díjmentesen vehetik igénybe a költségtérítést, így az AK nem rendelkezik formális SLA-val. Azonban az AK a Kubernetes API-kiszolgáló legalább 99,5%-os rendelkezésre állását igyekszik fenntartani.
 
 Fontos felismerni az AK szolgáltatás rendelkezésre állása közötti különbséget, amely a Kubernetes-vezérlési sík felhasználhatóságát és az Azure-Virtual Machines futó adott számítási feladatok rendelkezésre állását jelenti. Bár előfordulhat, hogy a vezérlő síkja nem érhető el, ha a vezérlő síkja nem áll készen, az Azure-beli virtuális gépeken futó fürtözött számítási feladatok továbbra is működhetnek. Az Azure-beli virtuális gépek díjköteles erőforrásokkal rendelkeznek, amelyeket pénzügyi SLA-val támogatnak. Az Azure-beli virtuális gépekre vonatkozó SLA-val kapcsolatos [További részletekért](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) és a rendelkezésre állás növelésével kapcsolatban itt talál további információt, például [Availability Zones][availability-zones].
@@ -173,7 +175,7 @@ Győződjön meg arról, hogy a szolgáltatásnév nem járt le.  Lásd: az [AK]
 
 ## <a name="can-i-use-the-virtual-machine-scale-set-apis-to-scale-manually"></a>Használhatom a virtuálisgép-méretezési csoport API-jait a manuális méretezéshez?
 
-Nem, a virtuálisgép-méretezési csoport API-jai nem támogatják a méretezési műveleteket. Használja az AK API-`az aks scale`kat ().
+Nem, a virtuálisgép-méretezési csoport API-jai nem támogatják a méretezési műveleteket. Használja az AK API-kat ( `az aks scale` ).
 
 ## <a name="can-i-use-virtual-machine-scale-sets-to-manually-scale-to-0-nodes"></a>Használhatom a virtuálisgép-méretezési csoportokat a 0 csomópontra való manuális méretezéshez?
 
@@ -209,6 +211,7 @@ Az AK nem felügyelt szolgáltatás, és a IaaS-erőforrások kezelése nem tám
 [bcdr-bestpractices]: ./operator-best-practices-multi-region.md#plan-for-multiregion-deployment
 [availability-zones]: ./availability-zones.md
 [az-regions]: ../availability-zones/az-region.md
+[üzemidő-SLA]./uptime-sla.mdd
 
 <!-- LINKS - external -->
 [aks-regions]: https://azure.microsoft.com/global-infrastructure/services/?products=kubernetes-service

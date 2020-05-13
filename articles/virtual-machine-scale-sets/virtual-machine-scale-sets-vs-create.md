@@ -1,21 +1,20 @@
 ---
 title: Virtuálisgép-méretezési csoport üzembe helyezése a Visual Studióval
 description: Virtual Machine Scale Sets üzembe helyezése a Visual Studióval és egy Resource Manager-sablonnal
-ms.custom: vs-azure, H1Hack27Feb2017
-ms.workload: azure-vs
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: visual-studio
 ms.date: 09/09/2019
-ms.author: mimckitt
-ms.openlocfilehash: adc91d5f4f79be8a85dfed7d10a882493f6427b0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 826dc1858984508e54e160675dd10f6dfad88af8
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273341"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124363"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Virtuálisgép-méretezési csoport létrehozása a Visual Studióval
 
@@ -65,7 +64,7 @@ A terheléselosztó lehetővé teszi, hogy a virtuálisgép-példányokhoz SSH (
 
 Helyezze üzembe a Azure Resource Manager sablont a virtuálisgép-méretezési csoport erőforrásának létrehozásához:
 
-1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza az**új** **telepítése** > lehetőséget.
+1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és **Deploy**válassza az  >  **új**telepítése lehetőséget.
 
     ![A projekt üzembe helyezése](media/virtual-machine-scale-sets-vs-create/deploy-new-project.png)
 
@@ -85,7 +84,7 @@ Helyezze üzembe a Azure Resource Manager sablont a virtuálisgép-méretezési 
 
 ## <a name="explore-your-virtual-machine-scale-set"></a>A virtuálisgép-méretezési csoport megismerése<a name="exploring-your-virtual-machine-scale-set"></a>
 
-Válassza a**Cloud Explorer** **megtekintése** > lehetőséget az új virtuálisgép-méretezési csoport megtekintéséhez. Ha szükséges, használja az **összes frissítése**parancsot.
+Válassza **View**  >  a**Cloud Explorer** megtekintése lehetőséget az új virtuálisgép-méretezési csoport megtekintéséhez. Ha szükséges, használja az **összes frissítése**parancsot.
 
 ![Cloud Explorer](media/virtual-machine-scale-sets-vs-create/cloud-explorer.png)
 

@@ -2,13 +2,13 @@
 title: Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 description: Ismerje meg, hogyan konfigurálhatja a Durable Functions automatikus Azure Event Grid közzétételét.
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: 671f7bd5221a936ea9dad0f0cece895bdbe9512f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/25/2020
+ms.openlocfilehash: c0106f3754e0cdcbf1f295fbe3f1b5def8dc3ca1
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535485"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124258"
 ---
 # <a name="durable-functions-publishing-to-azure-event-grid-preview"></a>Durable Functions Publishing to Azure Event Grid (előzetes verzió)
 
@@ -30,7 +30,7 @@ Az alábbiakban néhány olyan forgatókönyvet ismertetünk, amelyekben ez a fu
 
 ## <a name="create-a-custom-event-grid-topic"></a>Egyéni Event Grid-témakör létrehozása
 
-Hozzon létre egy Event Grid témakört az események Durable Functionsból való küldéséhez. Az alábbi utasítások bemutatják, hogyan hozhat létre egy témakört az Azure CLI használatával. Ezt a [PowerShell](../../event-grid/custom-event-quickstart-powershell.md) vagy [a Azure Portal](../../event-grid/custom-event-quickstart-portal.md)használatával is elvégezheti.
+Hozzon létre egy Event Grid témakört az események Durable Functionsból való küldéséhez. Az alábbi utasítások bemutatják, hogyan hozhat létre egy témakört az Azure CLI használatával. A témakört a [PowerShell](../../event-grid/custom-event-quickstart-powershell.md) vagy [a Azure Portal](../../event-grid/custom-event-quickstart-portal.md)használatával is létrehozhatja.
 
 ### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
@@ -50,13 +50,13 @@ az eventgrid topic create --name <topic_name> -l westus2 -g eventResourceGroup
 
 ## <a name="get-the-endpoint-and-key"></a>A végpont és a kulcs lekérése
 
-A témakör végpontjának beolvasása. Cserélje `<topic_name>` le a nevet a kiválasztott névre.
+A témakör végpontjának beolvasása. Cserélje le `<topic_name>` a nevet a kiválasztott névre.
 
 ```azurecli
 az eventgrid topic show --name <topic_name> -g eventResourceGroup --query "endpoint" --output tsv
 ```
 
-A témakör kulcsának beolvasása. Cserélje `<topic_name>` le a nevet a kiválasztott névre.
+A témakör kulcsának beolvasása. Cserélje le `<topic_name>` a nevet a kiválasztott névre.
 
 ```azurecli
 az eventgrid topic key list --name <topic_name> -g eventResourceGroup --query "key1" --output tsv
@@ -66,11 +66,11 @@ Most már küldhet eseményeket a témakörbe.
 
 ## <a name="configure-event-grid-publishing"></a>Event Grid közzétételének konfigurálása
 
-A Durable Functions-projektben keresse meg `host.json` a fájlt.
+A Durable Functions-projektben keresse meg a `host.json` fájlt.
 
 ### <a name="durable-functions-1x"></a>Durable Functions 1. x
 
-Adjon `eventGridTopicEndpoint` hozzá `eventGridKeySettingName` és egy `durableTask` tulajdonságot.
+Adjon hozzá `eventGridTopicEndpoint` és `eventGridKeySettingName` egy `durableTask` tulajdonságot.
 
 ```json
 {
@@ -83,7 +83,7 @@ Adjon `eventGridTopicEndpoint` hozzá `eventGridKeySettingName` és egy `durable
 
 ### <a name="durable-functions-2x"></a>Durable Functions 2. x
 
-Adjon hozzá `notifications` egy szakaszt a `durableTask` fájl tulajdonságához, és cserélje `<topic_name>` le a kifejezést a kiválasztott névre. Ha a `durableTask` vagy `extensions` a tulajdonságok nem léteznek, hozza létre őket a következő példához hasonló módon:
+Adjon hozzá egy `notifications` szakaszt a `durableTask` fájl tulajdonságához, és cserélje `<topic_name>` le a kifejezést a kiválasztott névre. Ha a `durableTask` vagy a `extensions` tulajdonság nem létezik, hozza létre őket a következő példához hasonlóan:
 
 ```json
 {
@@ -101,9 +101,9 @@ Adjon hozzá `notifications` egy szakaszt a `durableTask` fájl tulajdonságáho
 }
 ```
 
-A lehetséges Azure Event Grid konfigurációs tulajdonságok a [Host. JSON dokumentációjában](../functions-host-json.md#durabletask)találhatók. A `host.json` fájl konfigurálása után a Function alkalmazás életciklus-eseményeket küld a Event Grid témakörnek. Ez akkor működik, ha a Function alkalmazást helyileg és az Azure-ban futtatja.
+A lehetséges Azure Event Grid konfigurációs tulajdonságok a [Host. JSON dokumentációjában](../functions-host-json.md#durabletask)találhatók. A fájl konfigurálása után `host.json` a Function alkalmazás életciklus-eseményeket küld a Event Grid témakörnek. Ez a művelet akkor indul el, ha a Function alkalmazást helyileg és az Azure-ban futtatja.
 
-Adja meg a témakörben a függvényalkalmazás és `local.settings.json`a témakörhöz tartozó Alkalmazásbeállítások beállításait. A következő JSON egy minta a `local.settings.json` helyi hibakereséshez. Cserélje `<topic_key>` le a billentyűt a témakörre.  
+Adja meg a témakörben a függvényalkalmazás és a témakörhöz tartozó Alkalmazásbeállítások beállításait `local.settings.json` . A következő JSON egy minta a `local.settings.json` helyi hibakereséshez. Cserélje le `<topic_key>` a billentyűt a témakörre.  
 
 ```json
 {
@@ -116,9 +116,9 @@ Adja meg a témakörben a függvényalkalmazás és `local.settings.json`a téma
 }
 ```
 
-Ha a [Storage emulatort](../../storage/common/storage-use-emulator.md) (csak Windows) használja, ellenőrizze, hogy működik-e. A parancs végrehajtása előtt érdemes futtatni a `AzureStorageEmulator.exe clear all` parancsot.
+Ha a [Storage emulatort](../../storage/common/storage-use-emulator.md) használja (csak Windows), ellenőrizze, hogy működik-e. A `AzureStorageEmulator.exe clear all` parancs végrehajtása előtt érdemes futtatni a parancsot.
 
-Ha meglévő Azure Storage- `UseDevelopmentStorage=true` `local.settings.json` fiókot használ, a értékét cserélje le a kapcsolati karakterláncára.
+Ha meglévő Azure Storage-fiókot használ, cserélje le a `UseDevelopmentStorage=true` - `local.settings.json` t a kapcsolati karakterláncára.
 
 ## <a name="create-functions-that-listen-for-events"></a>Eseményeket figyelő függvények létrehozása
 
@@ -126,58 +126,71 @@ A Azure Portal használatával hozzon létre egy másik Function alkalmazást a 
 
 ### <a name="create-an-event-grid-trigger-function"></a>Event Grid trigger függvény létrehozása
 
-Hozzon létre egy függvényt az életciklus eseményeinek fogadásához. Válassza az **Egyéni függvény**lehetőséget.
+1. A Function alkalmazásban válassza a **függvények**, majd a **+ Hozzáadás** lehetőséget. 
 
-![Válassza az egyéni létrehozása funkciót.](./media/durable-functions-event-publishing/functions-portal.png)
+   :::image type="content" source="./media/durable-functions-event-publishing/function-add-function.png" alt-text="Adjon hozzá egy függvényt a Azure Portal." border="true":::
 
-Válassza ki Event Grid triggert, és válasszon nyelvet.
+1. Keresse meg **Event Grid**, majd válassza ki a **Azure Event Grid trigger** sablont. 
 
-![Válassza ki a Event Grid triggert.](./media/durable-functions-event-publishing/eventgrid-trigger.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-select-event-grid-trigger.png" alt-text="Válassza ki az Event Grid eseményindító sablont a Azure Portal." border="true":::
 
-Adja meg a függvény nevét, majd válassza a elemet `Create`.
+1. Nevezze el az új triggert, majd válassza a **create Function (függvény létrehozása**) lehetőséget.
 
-![Hozza létre a Event Grid triggert.](./media/durable-functions-event-publishing/eventgrid-trigger-creation.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/function-name-event-grid-trigger.png" alt-text="Nevezze el az Event Grid eseményindítót a Azure Portal." border="true":::
 
-A rendszer létrehoz egy függvényt a következő kóddal:
 
-# <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
+    A rendszer létrehoz egy függvényt a következő kóddal:
 
-```csharp
-#r "Newtonsoft.Json"
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Microsoft.Extensions.Logging;
+    # <a name="c-script"></a>[C#-parancsfájl](#tab/csharp-script)
 
-public static void Run(JObject eventGridEvent, ILogger log)
-{
-    log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
-}
-```
+    ```csharp
+    #r "Newtonsoft.Json"
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
+    using Microsoft.Extensions.Logging;
 
-# <a name="javascript"></a>[JavaScript](#tab/javascript)
+    public static void Run(JObject eventGridEvent, ILogger log)
+    {
+        log.LogInformation(eventGridEvent.ToString(Formatting.Indented));
+    }
+    ```
 
-```javascript
-module.exports = async function(context, eventGridEvent) {
-    context.log(typeof eventGridEvent);
-    context.log(eventGridEvent);
-}
-```
+   # <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+   ```javascript
+   module.exports = async function(context, eventGridEvent) {
+       context.log(typeof eventGridEvent);
+       context.log(eventGridEvent);
+   }
+   ```
 
 ---
 
-Válassza a(z) `Add Event Grid Subscription` lehetőséget. Ez a művelet egy Event Grid-előfizetést hoz létre a létrehozott Event Grid témakörhöz. További információ: [fogalmak a Azure Event Grid-ban](https://docs.microsoft.com/azure/event-grid/concepts)
+### <a name="add-an-event-grid-subscription"></a>Event Grid előfizetés hozzáadása
 
-![Válassza ki a Event Grid trigger hivatkozást.](./media/durable-functions-event-publishing/eventgrid-trigger-link.png)
+Mostantól hozzáadhat egy Event Grid-előfizetést a létrehozott Event Grid témakörhöz. További információkért tekintse [meg a Azure Event Grid fogalmak](https://docs.microsoft.com/azure/event-grid/concepts)című témakört.
 
-Válassza `Event Grid Topics` a **témakör típusa**lehetőséget. Válassza ki az Event Grid témakörhöz létrehozott erőforráscsoportot. Ezután válassza ki a Event Grid témakör példányát. Nyomja `Create`meg a gombot.
+1. Az új függvényben válassza az **integráció** , majd a **Event Grid trigger (eventGridEvent)** lehetőséget. 
 
-![Event Grid-előfizetés létrehozása.](./media/durable-functions-event-publishing/eventsubscription.png)
+    :::image type="content" source="./media/durable-functions-event-publishing/eventgrid-trigger-link.png" alt-text="Válassza ki a Event Grid trigger hivatkozást." border="true":::
+
+1. Válassza a **létrehozás Event Grid Leírás**lehetőséget.
+
+    :::image type="content" source="./media/durable-functions-event-publishing/create-event-grid-subscription.png" alt-text="Hozza létre a Event Grid-előfizetést." border="true":::
+
+1. Nevezze el az esemény-előfizetést, és válassza ki a **Event Grid témakörök** típust. 
+
+1. Válassza ki az előfizetést. Ezután válassza ki az Event Grid témakörhöz létrehozott erőforráscsoportot és erőforrást. 
+
+1. Kattintson a **Létrehozás** gombra.
+
+    :::image type="content" source="./media/durable-functions-event-publishing/event-grid-subscription-details.png" alt-text="Event Grid-előfizetés létrehozása." border="true":::
 
 Most már készen áll az életciklus-események fogadására.
 
 ## <a name="run-durable-functions-app-to-send-the-events"></a>Durable Functions alkalmazás futtatása az események elküldéséhez
 
-A korábban konfigurált Durable Functions-projektben indítsa el a hibakeresést a helyi gépen, és indítson el egy előkészítést. Az alkalmazás Durable Functions életciklus-eseményeket tesz közzé a Event Grid. Ellenőrizze, hogy a Event Grid elindítja-e a figyelő függvényt, amelyet a naplóinak a Azure Portalban való ellenőrzésével hozott létre.
+A korábban konfigurált Durable Functions-projektben indítsa el a hibakeresést a helyi gépen, és indítson el egy előkészítést. Az alkalmazás Durable Functions életciklus-eseményeket tesz közzé a Event Grid. Ellenőrizze, hogy a Event Grid elindítja-e az Ön által létrehozott figyelő-függvényt, ha ellenőrzi a naplókat a Azure Portalban.
 
 ```
 2019-04-20T09:28:21.041 [Info] Function started (Id=3301c3ef-625f-40ce-ad4c-9ba2916b162d)
@@ -224,7 +237,7 @@ A korábban konfigurált Durable Functions-projektben indítsa el a hibakeresés
 Az alábbi lista az életciklus-események sémáját mutatja be:
 
 * **`id`**: A Event Grid esemény egyedi azonosítója.
-* **`subject`**: Az esemény tárgyának elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`Ekkor:,, és `Terminated` `Running` `Completed` `Failed`  
+* **`subject`**: Az esemény tárgyának elérési útja. `durable/orchestrator/{orchestrationRuntimeStatus}`. `{orchestrationRuntimeStatus}`Ekkor:,, `Running` `Completed` `Failed` és `Terminated` .  
 * **`data`**: Durable Functions megadott paraméterek.
   * **`hubName`**: [TaskHub](durable-functions-task-hubs.md) neve.
   * **`functionName`**: A Orchestrator függvény neve.

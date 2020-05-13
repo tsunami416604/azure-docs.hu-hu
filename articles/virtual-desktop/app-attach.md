@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ec69a9906eabb4ce56f79b1b88c2b5f2440f84b1
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612469"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121065"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -41,7 +41,7 @@ Először be kell szereznie a MSIX alkalmazáshoz használni kívánt operáció
      >[!NOTE]
      >A Windows Insider portálhoz való hozzáféréshez a Windows Insider program tagjának kell lennie. Ha többet szeretne megtudni a Windows Insider programról, tekintse meg a [Windows Insider dokumentációját](/windows-insider/at-home/).
 
-2. Görgessen le a **Select Edition (kiadás kiválasztása** ) szakaszhoz, és válassza a **Windows 10 Insider Preview Enterprise (gyors) – build 19035** vagy újabb lehetőséget.
+2. Görgessen le a **Select Edition (kiadás kiválasztása** ) szakaszhoz, és válassza a **Windows 10 Insider Preview Enterprise (gyors) – build 19041** vagy újabb lehetőséget.
 
 3. Válassza a **megerősítés**lehetőséget, majd válassza ki a használni kívánt nyelvet, majd kattintson ismét a **Confirm (megerősítés** ) gombra.
     
@@ -73,6 +73,14 @@ rem Disable Windows Update:
 
 sc config wuauserv start=disabled
 ```
+
+Miután letiltotta az automatikus frissítéseket, engedélyeznie kell a Hyper-V-t, mert a halom-VHD parancsot fogja használni a kilépéshez és a virtuális merevlemez leválasztásához. 
+
+```powershell
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+```
+>[!NOTE]
+>Ehhez a változáshoz újra kell indítani a virtuális gépet.
 
 Ezután készítse elő az Azure-beli virtuális gép virtuális merevlemezét, és töltse fel az eredményül kapott VHD-lemezt az Azure-ba További információ: [Master VHD-lemezkép előkészítése és testreszabása](set-up-customize-master-image.md).
 
@@ -211,7 +219,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
 
 5.  Nyisson meg egy parancssort, és adja meg a **mountvol**parancsot. A parancs megjeleníti a kötetek listáját és a GUID azonosítókat. Másolja ki annak a kötetnek a GUID azonosítóját, amelyben a meghajtóbetűjel megegyezik azzal a meghajtóval, amellyel a virtuális merevlemezt csatlakoztatta a 2. lépésben.
 
-    Például a mountvol parancs kimenetében, ha a virtuális merevlemezt a C meghajtóhoz csatlakoztatta, a fenti `C:\`értéket át kell másolnia:
+    Például a mountvol parancs kimenetében, ha a virtuális merevlemezt a C meghajtóhoz csatlakoztatta, a fenti értéket át kell másolnia `C:\` :
 
     ```cmd
     Possible values for VolumeName along with current mount points are:
@@ -257,7 +265,7 @@ A PowerShell-parancsfájlok frissítése előtt ellenőrizze, hogy rendelkezik-e
 
     {
 
-    Mount-Diskimage -ImagePath $vhdSrc -NoDriveLetter -Access ReadOnly
+    Mount-VHD -Path $vhdSrc -NoDriveLetter -ReadOnly
 
     Write-Host ("Mounting of " + $vhdSrc + " was completed!") -BackgroundColor Green
 

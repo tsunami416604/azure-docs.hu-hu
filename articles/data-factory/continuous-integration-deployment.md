@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 87cb7c57aab048e1b7acf211d58c850a41afa5a2
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 54ff58735b6831bb45a9477360ffca3439d2f6b4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628223"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124720"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -88,7 +88,7 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
 
 1.  A **szakasz neve** mezőben adja meg a környezet nevét.
 
-1.  Válassza az összetevő **hozzáadása**lehetőséget, majd válassza ki a fejlesztői adatelőállítóval konfigurált git-tárházat. Válassza ki az adattár [közzétételi ágát](source-control.md#configure-publishing-settings) az **alapértelmezett ág**számára. Alapértelmezés szerint ez a közzétételi ág `adf_publish`. Az **alapértelmezett verziónál**válassza a **legutóbbi lehetőséget az alapértelmezett ág**lehetőségnél.
+1.  Válassza az összetevő **hozzáadása**lehetőséget, majd válassza ki a fejlesztői adatelőállítóval konfigurált git-tárházat. Válassza ki az adattár [közzétételi ágát](source-control.md#configure-publishing-settings) az **alapértelmezett ág**számára. Alapértelmezés szerint ez a közzétételi ág `adf_publish` . Az **alapértelmezett verziónál**válassza a **legutóbbi lehetőséget az alapértelmezett ág**lehetőségnél.
 
     ![Összetevő hozzáadása](media/continuous-integration-deployment/continuous-integration-image7.png)
 
@@ -104,9 +104,9 @@ Az alábbi útmutató egy olyan Azure-beli folyamat-kiadás beállításához ny
 
     d.  A **művelet** listában válassza az **erőforráscsoport létrehozása vagy frissítése**lehetőséget.
 
-    e.  Kattintson a három pont gombra (**...**) a **sablon** mező mellett. Tallózással keresse meg a beállított git-tárház közzétételi ágában létrehozott Azure Resource Manager sablont. Keresse meg a fájlt `ARMTemplateForFactory.json` az adf_publish <FactoryName> ág mappájába.
+    e.  Kattintson a három pont gombra (**...**) a **sablon** mező mellett. Tallózással keresse meg a beállított git-tárház közzétételi ágában létrehozott Azure Resource Manager sablont. Keresse meg a fájlt az `ARMTemplateForFactory.json` <FactoryName> adf_publish ág mappájába.
 
-    f.  Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt. Keresse meg a fájlt `ARMTemplateParametersForFactory.json` az adf_publish <FactoryName> ág mappájába.
+    f.  Válassza a **... lehetőséget.** a **sablon paramétereinek** mező mellett válassza ki a paramétereket tartalmazó fájlt. Keresse meg a fájlt az `ARMTemplateParametersForFactory.json` <FactoryName> adf_publish ág mappájába.
 
     g.  Válassza a **... lehetőséget.** a **felülírási sablon paraméterei** mező mellett adja meg a cél adatok előállítójának kívánt értékeit. Azure Key Vaultból származó hitelesítő adatok esetén adja meg a titkos kulcs nevét idézőjelek között. Ha például a titkos kód neve cred1, akkor adja meg a **"$ (cred1)"** értéket ehhez az értékhez.
 
@@ -228,14 +228,14 @@ Egy Resource Manager-sablon exportálásakor Data Factory beolvassa ezt a fájlt
 Az alábbiakban néhány útmutatást talál az egyéni paraméterek fájljának létrehozásakor: **ARM-template-Parameters-definition. JSON**. A fájl az egyes entitások típusának egy szakaszát tartalmazza: trigger, folyamat, társított szolgáltatás, adatkészlet, integrációs modul és adatfolyam.
 
 * Adja meg a tulajdonság elérési útját a megfelelő entitás típusa mezőben.
-* A tulajdonságnév beállítása `*` azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Kivételeket is megadhat ehhez a konfigurációhoz.
-* Egy tulajdonság értékének karakterláncként való megadása azt jelzi, hogy meg kívánja parametrizálja a tulajdonságot. Használja a formátumot `<action>:<name>:<stype>`.
+* A tulajdonságnév beállítása  `*` azt jelzi, hogy az összes tulajdonságot meg szeretné parametrizálja (csak az első szintre, nem rekurzív módon). Kivételeket is megadhat ehhez a konfigurációhoz.
+* Egy tulajdonság értékének karakterláncként való megadása azt jelzi, hogy meg kívánja parametrizálja a tulajdonságot. Használja a formátumot  `<action>:<name>:<stype>` .
    *  `<action>` a következő karakterek egyike lehet:
       * `=` azt jelenti, hogy az aktuális értéket a paraméter alapértelmezett értékeként tárolja.
       * `-` azt jelenti, hogy nem tartja meg a paraméter alapértelmezett értékét.
       * `|` a Azure Key Vault titkos kódokhoz vagy kulcsokhoz tartozó titkok esetében különleges eset.
-   * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték egy `-` karakterrel kezdődik, a név lerövidítve lesz. Például `AzureStorage1_properties_typeProperties_connectionString` lerövidítheti a következőt: `AzureStorage1_connectionString`.
-   * `<stype>` a paraméter típusa. Ha `<stype>` a értéke üres, az alapértelmezett típus `string`:. Támogatott értékek: `string`, `bool` `number` `object`,, és `securestring`.
+   * `<name>` a paraméter neve. Ha üres, akkor a tulajdonság nevét veszi fel. Ha az érték egy `-` karakterrel kezdődik, a név lerövidítve lesz. Például `AzureStorage1_properties_typeProperties_connectionString` lerövidítheti a következőt: `AzureStorage1_connectionString` .
+   * `<stype>` a paraméter típusa. Ha a  `<stype>`   értéke üres, az alapértelmezett típus: `string` . Támogatott értékek: `string` ,,, `bool` `number` `object` és `securestring` .
 * Egy tömb megadása a definíciós fájlban azt jelzi, hogy a sablonban szereplő egyező tulajdonság egy tömb. Data Factory a tömbben lévő összes objektumon megismétli a tömböt az Integration Runtime objektumában megadott definíció használatával. A második objektum, egy karakterlánc, a tulajdonság neve lesz, amely az egyes iterációk paraméterének neveként szerepel.
 * Egy definíció nem lehet egy adott erőforrás-példányra jellemző. Bármely definíció az adott típusú összes erőforrásra vonatkozik.
 * Alapértelmezés szerint az összes biztonságos karakterlánc, például a Key Vault titkos kódok, valamint a biztonságos karakterláncok, például a kapcsolati karakterláncok, kulcsok és tokenek paraméterei.
@@ -307,27 +307,27 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 
 #### <a name="pipelines"></a>Folyamatok
     
-* Az elérési út `activities/typeProperties/waitTimeInSeconds` bármely tulajdonsága paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
-* Hasonlóképpen, egy nevű `headers` tulajdonság (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
+* Az elérési út bármely tulajdonsága `activities/typeProperties/waitTimeInSeconds` paraméterrel van elfoglalva. A folyamatokban lévő minden olyan tevékenység, amelynek a neve `waitTimeInSeconds` (például a `Wait` tevékenység), egy alapértelmezett névvel van ellátva. A Resource Manager-sablonban azonban nem szerepel alapértelmezett érték. A Resource Manager üzembe helyezése során kötelezően megadandó adatok lesznek.
+* Hasonlóképpen, egy nevű tulajdonság `headers` (például egy `Web` tevékenység) paraméterének típusa `object` (JObject). Alapértelmezett értékkel rendelkezik, amely megegyezik a forrás-előállítóval megegyező értékkel.
 
 #### <a name="integrationruntimes"></a>IntegrationRuntimes
 
-* Az elérési út `typeProperties` alatti összes tulajdonság a megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és. `ssisProperties` Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
+* Az elérési út alatti összes tulajdonság a `typeProperties` megfelelő alapértelmezett értékekkel van ellátva. Például két tulajdonság van a `IntegrationRuntimes` típus tulajdonságainál: `computeProperties` és `ssisProperties` . Mindkét tulajdonság típusa a megfelelő alapértelmezett értékekkel és típusokkal (objektummal) jön létre.
 
 #### <a name="triggers"></a>Eseményindítók
 
-* A `typeProperties`rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency`, amely az alapértelmezett értékkel van megadva, és típusa`string`. Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency`.
-* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként `number`van paraméterként. A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix`. Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A `freq` tulajdonság azonban alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
+* A `typeProperties` rendszerben a két tulajdonság paraméteres. Az első a `maxConcurrency` , amely az alapértelmezett értékkel van megadva, és típusa `string` . Az alapértelmezett paraméter neve `<entityName>_properties_typeProperties_maxConcurrency` .
+* A `recurrence` tulajdonság paraméterrel is rendelkezik. Ebben az esetben az adott szinten lévő összes tulajdonságot karakterláncként kell megadni, alapértelmezett értékekkel és paraméterek nevével. Kivételt képez a `interval` tulajdonság, amely típusként van paraméterként `number` . A paraméter neve utótaggal van ellátva `<entityName>_properties_typeProperties_recurrence_triggerSuffix` . Hasonlóképpen, a `freq` tulajdonság egy karakterlánc, és karakterláncként van paraméterként. A tulajdonság azonban `freq` alapértelmezett érték nélkül van paraméterben. A név rövidítve és utótaggal van elnevezve. Például: `<entityName>_freq`.
 
 #### <a name="linkedservices"></a>LinkedServices
 
-* A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában az összes típusú `AzureDataLakeStore`társított szolgáltatás esetében egy adott sablon lesz alkalmazva. Minden más (a szolgáltatáson keresztül `*`) egy másik sablon lesz alkalmazva.
-* A `connectionString` tulajdonság `securestring` értéke paraméterként fog megjelenni. Nem rendelkezik alapértelmezett értékkel. Egy rövidített paraméter neve lesz, amely a (z) utótaggal van ellátva `connectionString`.
+* A társított szolgáltatások egyediek. Mivel a társított szolgáltatások és adatkészletek sokféle típusúak, a típus-specifikus testreszabást is megadhatja. Ebben a példában az összes típusú társított szolgáltatás esetében `AzureDataLakeStore` egy adott sablon lesz alkalmazva. Minden más (a szolgáltatáson keresztül `*` ) egy másik sablon lesz alkalmazva.
+* A `connectionString` tulajdonság értéke paraméterként fog megjelenni `securestring` . Nem rendelkezik alapértelmezett értékkel. Egy rövidített paraméter neve lesz, amely a (z) utótaggal van ellátva `connectionString` .
 * A tulajdonság `secretAccessKey` egy `AzureKeyVaultSecret` (például egy Amazon S3-beli társított szolgáltatás) esetében történik. Automatikusan Azure Key Vault titokként van konfigurálva, és a konfigurált kulcstartóból beolvasva. Saját maga is parametrizálja a kulcstartót.
 
 #### <a name="datasets"></a>Adathalmazok
 
-* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt explicit módon \*nem lehet konfigurálni. Az előző példában az összes adatkészlet-tulajdonság paraméterrel `typeProperties` van elfoglalva.
+* Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt explicit módon nem lehet konfigurálni \* . Az előző példában az összes adatkészlet-tulajdonság `typeProperties` paraméterrel van elfoglalva.
 
 ### <a name="default-parameterization-template"></a>Alapértelmezett paraméterezés-sablon
 
@@ -443,7 +443,7 @@ Alább látható az aktuális alapértelmezett paraméterezés-sablon. Ha csak n
 
 ### <a name="example-parameterizing-an-existing-azure-databricks-interactive-cluster-id"></a>Példa: parameterizing meglévő Azure Databricks interaktív fürt azonosítója
 
-Az alábbi példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapértelmezett paraméterezés-sablonhoz. Csak egy meglévő Azure Databricks interaktív Databricks szeretnénk hozzáadni egy társított szolgáltatáshoz a Parameters fájlhoz. Vegye figyelembe, hogy ez a fájl ugyanaz, mint az előző fájl, kivéve a `existingClusterId` tulajdonságok mezőjének hozzáadásával `Microsoft.DataFactory/factories/linkedServices`.
+Az alábbi példa bemutatja, hogyan adhat hozzá egyetlen értéket az alapértelmezett paraméterezés-sablonhoz. Csak egy meglévő Azure Databricks interaktív Databricks szeretnénk hozzáadni egy társított szolgáltatáshoz a Parameters fájlhoz. Vegye figyelembe, hogy ez a fájl ugyanaz, mint az előző fájl, kivéve a `existingClusterId` Tulajdonságok mezőjének hozzáadásával `Microsoft.DataFactory/factories/linkedServices` .
 
 ```json
 {
@@ -569,6 +569,26 @@ Ha a teljes Resource Manager-sablon helyett csatolt sablonokat kíván használn
 Ne felejtse el hozzáadni az Data Factory szkripteket a CI/CD-folyamathoz az üzembe helyezési feladat előtt és után.
 
 Ha nincs beállítva a git, a csatolt sablonokat az **ARM-sablonok** listájában, az **Exportálás ARM-sablon** használatával érheti el.
+
+## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>Azure-SSIS integrációs modulok kizárása CI/CD-ről
+
+Ha a fejlesztői gyár Azure-SSIS integrációs modulja van, akkor az alábbi forgatókönyvben kizárhatja az összes Azure-SSIS integrációs modult a CI/CD-folyamatból:
+
+- Azure-SSIS IR az infrastruktúra összetett, és az egyes környezetekben eltérő lehet.  
+- A Azure-SSIS IR beállítása manuálisan történik az azonos nevű környezetekben. Ellenkező esetben a közzététel sikertelen lesz, ha a tevékenység Azure-SSIS IRtól függ.
+
+Az Azure SSIS Integration Runtime kizárása:
+
+1. Ha nem létezik, vegyen fel egy publish_config. JSON fájlt a gyökérkönyvtárba az együttműködési ág mappájába.
+1. Adja hozzá az alábbi beállítást a publish_config. JSON fájlhoz: 
+
+```json
+{
+    " excludeIRs": "true"
+}
+```
+
+Az együttműködési ágban való közzétételkor a rendszer kizárja az Azure-SSIS integrációs modulokat a generált Resource Manager-sablonból.
 
 ## <a name="hotfix-production-branch"></a>Gyorsjavítások üzemi ága
 

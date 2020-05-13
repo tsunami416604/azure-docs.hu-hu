@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2020
 ms.author: spelluru
-ms.openlocfilehash: fa9dba62b3b58687ec6a2bfc29e8722f7016b679
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 14f66701d3a375807829493f866dcb91b131f2e5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284303"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121082"
 ---
 # <a name="configure-lab-accounts-in-azure-lab-services"></a>Tesztkörnyezet-fiókok konfigurálása Azure Lab Services 
 Azure Lab Services a labor-fiók a felügyelt labor típusok, például a tanterem Labs tárolója. A rendszergazda létrehoz egy Azure Lab Services, és hozzáférést biztosít a labor tulajdonosai számára, akik a fiókban létrehozhatnak laborokat. 
@@ -38,6 +38,9 @@ A következő eljárás a virtuális gépekhez tartozó címtartomány megadás�
 
 1. A **labor-fiók** lapon válassza a bal oldali menü **Labs-beállítások** elemét.
 2. A **címtartomány** mezőben határozza meg a laborban létrehozandó virtuális gépek címtartomány-tartományát. A címtartomány legyen az osztály nélküli tartományok közötti útválasztás (CIDR) jelölése (például: 10.20.0.0/23). A laborban található virtuális gépek ebben a címtartományból lesznek létrehozva.
+
+    > [!NOTE]
+    > A címtartomány tulajdonság csak akkor érvényes, ha a társ virtuális hálózat engedélyezve van a laborban. 
 3. Válassza az eszköztár **Save** (Mentés) elemét. 
 
     ![Címtartomány konfigurálása](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)

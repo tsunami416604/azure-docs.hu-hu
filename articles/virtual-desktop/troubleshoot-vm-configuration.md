@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: cada61f8fa1dfd163062ce22527f41e65291b3f8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1e4428fecdbb5d664111adc591812a5122bf2eda
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607248"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125114"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -87,7 +87,7 @@ A virtuális gépek üzembe helyezésének ajánlott módja a Azure Portal létr
 
 Kövesse ezeket az utasításokat az összetevők telepítésének megerősítéséhez és a hibaüzenetek ellenőrzéséhez.
 
-1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult** > **programok** > **programok és szolgáltatások**elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
+1. Ellenőrizze, hogy a két összetevő telepítve van-e a **Vezérlőpult**  >  **programok**  >  **programok és szolgáltatások**elemének ellenőrzésével. Ha a **Windows rendszerű virtuális asztali ügynök** és a **Windows rendszerű virtuális asztali ügynök rendszerindító betöltőprogramja** nem látható, akkor azok nincsenek telepítve a virtuális gépen.
 2. Nyissa meg a **fájlkezelőt** , és navigáljon a **C:\Windows\Temp\ScriptLog.log**. Ha a fájl hiányzik, az azt jelzi, hogy a két összetevőt telepítő PowerShell DSC nem tudott futni a megadott biztonsági környezetben.
 3. Ha a fájl **C:\Windows\Temp\ScriptLog.log** van, nyissa meg, és ellenőrizze a hibaüzeneteket.
 
@@ -234,7 +234,7 @@ A szervizelés futtatásához használt virtuális gépnek ugyanazon az alháló
 Az alábbi utasításokat követve futtassa a szervizelést ugyanarról az alhálózatról és tartományról:
 
 1. Kapcsolódjon a standard RDP protokoll (RDP) szolgáltatáshoz a virtuális géphez, ahonnan a javítást alkalmazni fogja.
-2. Töltse le a https://docs.microsoft.com/sysinternals/downloads/psexecPsExec a alkalmazásból.
+2. Töltse le a PsExec a alkalmazásból https://docs.microsoft.com/sysinternals/downloads/psexec .
 3. Bontsa ki a letöltött fájlt.
 4. Indítsa el a parancssort helyi rendszergazdaként.
 5. Navigáljon a mappához, ahol a PsExec ki lett csomagolva.
@@ -310,7 +310,7 @@ Ha ezeket az üzeneteket látja, ez azt jelenti, hogy a lemezképen nincsenek te
 
 ### <a name="disable-the-remote-desktop-licensing-mode-group-policy-setting"></a>A Távoli asztal licencelési mód csoportházirend-beállításának letiltása
 
-A csoportházirend-beállítás megadásával nyissa meg a csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok** > **Windows-összetevőkhöz** > **Távoli asztali szolgáltatások** > **Távoli asztal a munkamenet-gazdagép** > **licencelése** > **Beállítja a távoli asztal licencelési módját**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
+A csoportházirend-beállítás megadásával nyissa meg a csoportházirend-szerkesztőt a virtuális gépen, és navigáljon **Felügyeleti sablonok**  >  **Windows-összetevőkhöz**  >  **Távoli asztali szolgáltatások**  >  **Távoli asztal a munkamenet-gazdagép**  >  **licencelése**  >  **Beállítja a távoli asztal licencelési módját**. Ha a csoportházirend-beállítás **engedélyezve**van, módosítsa a szolgáltatást **Letiltva**értékre. Ha már le van tiltva, akkor hagyja a következőképpen:.
 
 >[!NOTE]
 >Ha a csoportházirendet a tartományon keresztül állítja be, tiltsa le ezt a beállítást a Windows 10 Enterprise több munkamenetet használó virtuális gépeket megcélozó házirendekben.
@@ -335,6 +335,12 @@ Ha a verziószáma a "1809" értéket adja meg, telepítse [a KB4516077 frissít
 ### <a name="version-1903"></a>1903-es verzió
 
 Telepítse újra a gazdagép operációs rendszerét a Windows 10 1903-es verziójú lemezképének legújabb verziójával az Azure Gallery-ből.
+
+## <a name="we-couldnt-connect-to-the-remote-pc-because-of-a-security-error"></a>Biztonsági hiba miatt nem sikerült csatlakozni a távoli számítógéphez
+
+Ha a felhasználók egy biztonsági hiba miatt nem sikerült csatlakozni a távoli számítógéphez, a következő hibaüzenet jelenik meg:. Ha ez továbbra is fennáll, kérje a rendszergazda vagy a technikai támogatás segítségét, "az alapértelmezett RDP-engedélyeket módosító meglévő házirendek érvényesítése. Egy házirend, amely a hiba megjelenését okozhatja a "bejelentkezés engedélyezése Távoli asztali szolgáltatások biztonsági házirendben".
+
+A szabályzattal kapcsolatos további információkért lásd: [bejelentkezés engedélyezése távoli asztali szolgáltatásokon](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,19 +1,20 @@
 ---
 title: Azure virtuálisgép-méretezési csoport módosítása
 description: Ismerje meg, hogyan módosítható és frissíthető egy Azure virtuálisgép-méretezési csoport a REST API-kkal, a Azure PowerShell és az Azure CLI-vel
-author: mimckitt
-tags: azure-resource-manager
-ms.assetid: e229664e-ee4e-4f12-9d2e-a4f456989e5d
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
+ms.subservice: management
 ms.date: 03/10/2020
-ms.author: mimckitt
-ms.openlocfilehash: af5998a4207521d49ea4fd7956256aa6c880e6e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: 9498babd9605c46d752c5fe1eb1b077f6d911351
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79476824"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121014"
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>Virtuálisgép-méretezési csoport módosítása
 
@@ -156,7 +157,7 @@ $ az vmss show --resource-group myResourceGroup --name myScaleSet
 }
 ```
 
-Ezek a tulajdonságok leírják a virtuálisgép-példányok konfigurációját egy méretezési csoporton belül, nem a méretezési csoport egészének konfigurációját. Például a méretezési csoport modelljének tulajdonsága van `overprovision` , míg a méretezési csoporton belüli virtuálisgép-példány modellje nem. Ez a különbség azért van így, mert a túlzott kiépítés a méretezési csoport egészére, nem pedig a méretezési csoportba tartozó egyes virtuálisgép-példányokra (a kiépítéssel kapcsolatos további információkért lásd a [méretezési csoportok kialakításával kapcsolatos szempontokat](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
+Ezek a tulajdonságok leírják a virtuálisgép-példányok konfigurációját egy méretezési csoporton belül, nem a méretezési csoport egészének konfigurációját. Például a méretezési csoport modelljének `overprovision` tulajdonsága van, míg a méretezési csoporton belüli virtuálisgép-példány modellje nem. Ez a különbség azért van így, mert a túlzott kiépítés a méretezési csoport egészére, nem pedig a méretezési csoportba tartozó egyes virtuálisgép-példányokra (a kiépítéssel kapcsolatos további információkért lásd a [méretezési csoportok kialakításával kapcsolatos szempontokat](virtual-machine-scale-sets-design-overview.md#overprovisioning)).
 
 
 ### <a name="the-scale-set-vm-instance-view"></a>A méretezési csoport virtuálisgép-példányának nézete
@@ -272,11 +273,11 @@ A globális méretezési csoport tulajdonságának frissítéséhez frissítenie
         az vmss update --remove {propertyPath} {indexToRemove}
         ```
 
-    - Ha korábban telepítette a méretezési csoportját a `az vmss create` paranccsal, akkor a méretezési `az vmss create` csoport frissítéséhez futtassa újra a parancsot. Győződjön meg arról, hogy a `az vmss create` parancs összes tulajdonsága megegyezik az előzővel, kivéve a módosítani kívánt tulajdonságokat.
+    - Ha korábban telepítette a méretezési csoportját a `az vmss create` paranccsal, akkor a `az vmss create` méretezési csoport frissítéséhez futtassa újra a parancsot. Győződjön meg arról, hogy a parancs összes tulajdonsága `az vmss create` megegyezik az előzővel, kivéve a módosítani kívánt tulajdonságokat.
 
 - Használhatja a [Resources.Azure.com](https://resources.azure.com) -t vagy az [Azure SDK](https://azure.microsoft.com/downloads/)-kat is.
 
-A méretezési csoport modelljének frissítése után az új konfiguráció a méretezési csoporton belül létrehozott összes új virtuális gépre érvényes lesz. A méretezési csoport meglévő virtuális gépei modelljeinek azonban továbbra is naprakésznek kell lennie a legújabb teljes méretezési csoport modelljével. Az egyes virtuális gépek modellje egy nevű `latestModelApplied` logikai tulajdonság, amely azt jelzi, hogy a virtuális gép naprakész-e a legújabb teljes méretezési csoport modelljével (`true` azt jelenti, hogy a virtuális gép naprakész a legújabb modellel).
+A méretezési csoport modelljének frissítése után az új konfiguráció a méretezési csoporton belül létrehozott összes új virtuális gépre érvényes lesz. A méretezési csoport meglévő virtuális gépei modelljeinek azonban továbbra is naprakésznek kell lennie a legújabb teljes méretezési csoport modelljével. Az egyes virtuális gépek modellje egy nevű logikai tulajdonság `latestModelApplied` , amely azt jelzi, hogy a virtuális gép naprakész-e a legújabb teljes méretezési csoport modelljével ( `true` azt jelenti, hogy a virtuális gép naprakész a legújabb modellel).
 
 
 ## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>Virtuális gépek naprakészen tartása a legújabb méretezési csoport modelljével

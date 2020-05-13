@@ -1,20 +1,20 @@
 ---
 title: Kezelő Térkép eseményei | Microsoft Azure térképek
 description: Ebből a cikkből megtudhatja, hogyan készíthet interaktív webes SDK-térképet térképi eseményekkel a Microsoft Azure Maps web SDK használatával.
-author: jinzh-azureiot
-ms.author: jinzh
+author: Philmea
+ms.author: philmea
 ms.date: 09/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: b97371d1b63ad4abfe1635e426df1449ab5f3f14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92108873d4a91c845f4a1f2685cf50942513510e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79534898"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124006"
 ---
 # <a name="interact-with-the-map"></a>A térképpel való interakció
 
@@ -26,7 +26,7 @@ Játsszon a lenti térképsel, és tekintse meg a jobb oldalon látható, a megf
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interakció a térképsel – egér eseményei' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>a Térkép – az egér eseményei</a> Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() alapján a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='600' scrolling='no' title='Interakció a térképsel – egér eseményei' src='//codepen.io/azuremaps/embed/bLZEWd/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>a Térkép – az egér eseményei</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alapján a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="interact-with-map-layers"></a>A Térkép rétegekkel való interakció
@@ -35,7 +35,7 @@ A következő kód kiemeli a kilőtt eseményt, amikor a szimbólum réteggel l�
 
 <br/>
 
-<iframe height='600' scrolling='no' title='Interakció a térképekkel – rétegbeli események' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) című témakört a <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Térkép – réteg eseményeivel</a> .
+<iframe height='600' scrolling='no' title='Interakció a térképekkel – rétegbeli események' src='//codepen.io/azuremaps/embed/bQRRPE/?height=600&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a CodePen-on Azure Maps () című témakört a <a href='https://codepen.io/azuremaps/pen/bQRRPE/'>Térkép – réteg eseményeivel</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 ## <a name="interact-with-html-marker"></a>Interakció a HTML-jelölővel
@@ -44,7 +44,7 @@ A következő kód hozzáadja a JavaScript-leképezési eseményeket egy HTML-je
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Interakció a Térkép-HTML-jelölő eseményeivel' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a <a href='https://codepen.io'>CodePen</a>-on Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) által a <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Térkép-HTML jelölő eseményeivel kommunikáló</a> tollat.
+<iframe height='500' scrolling='no' title='Interakció a Térkép-HTML-jelölő eseményeivel' src='//codepen.io/azuremaps/embed/VVzKJY/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a CodePen-on Azure Maps () által a <a href='https://codepen.io/azuremaps/pen/VVzKJY/'>Térkép-HTML jelölő eseményeivel kommunikáló</a> tollat <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>
 
 A következő táblázat felsorolja az összes támogatott leképezési osztály eseményét.
@@ -57,9 +57,9 @@ A következő táblázat felsorolja az összes támogatott leképezési osztály
 | `close`             | Akkor aktiválódik, ha a felugró ablak manuálisan vagy programozott módon van lezárva.|
 | `contextmenu`       | Akkor következik be, amikor rákattintanak az egér jobb oldali gombjára.|
 | `data`              | Az adatleképezések adatbetöltésekor vagy módosításakor következik be. |
-| `dataadded`         | Akkor aktiválódik, amikor alakzatokat adnak `DataSource`hozzá a-hoz.|
-| `dataremoved`       | A rendszer eltávolítja az alakzatokat a `DataSource`alkalmazásból.|
-| `datasourceupdated` | Az `DataSource` objektum frissítésekor felgyújtották.|
+| `dataadded`         | Akkor aktiválódik, amikor alakzatokat adnak hozzá a-hoz `DataSource` .|
+| `dataremoved`       | A rendszer eltávolítja az alakzatokat a alkalmazásból `DataSource` .|
+| `datasourceupdated` | Az objektum frissítésekor felgyújtották `DataSource` .|
 | `dblclick`          | Akkor következik be, amikor egy mutató eszköz kétszer kattint a térképen megjelenő ponton.|
 | `drag`              | A Térkép, az előugró ablak vagy a HTML-jelölő "húzás a serpenyőbe" művelete során ismételten felmerül.|
 | `dragend`           | Ha egy "húzás a serpenyőbe" művelet befejeződik, a Térkép, az előugró ablak vagy a HTML-jelölő jelenik meg.|
@@ -95,7 +95,7 @@ A következő táblázat felsorolja az összes támogatott leképezési osztály
 | `shapechanged`      | Egy alakzat objektum tulajdonságának módosításakor aktiválódik.|
 | `sourcedata`        | Akkor következik be, amikor a Térkép egyik forrása betöltődik vagy módosul, beleértve a forrás betöltéséhez vagy módosításához tartozó csempe betöltését. |
 | `sourceadded`       | Egy `DataSource` vagy `VectorTileSource` a térképhez való hozzáadásakor aktiválódik.|
-| `sourceremoved`     | A rendszer kilőtte a térképet, `DataSource` vagy `VectorTileSource` eltávolítják azt.|
+| `sourceremoved`     | A rendszer kilőtte a `DataSource` `VectorTileSource` térképet, vagy eltávolítják azt.|
 | `styledata`         | Akkor következik be, amikor a Térkép stílusa betöltődik vagy módosul.|
 | `styleimagemissing` | Akkor aktiválódik, amikor egy réteg megpróbál betölteni egy rendszerképet a nem létező rendszerképből. |
 | `tokenacquired`     | HRE hozzáférési jogkivonat beszerzése esetén.|

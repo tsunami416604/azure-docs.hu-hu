@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: dsindona
-ms.openlocfilehash: cee28c65b97d4ac163f78b746dc7be9ee210843c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e65f2041cdb2e25341bfd63783c70ec09c1216b5
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80280354"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83124703"
 ---
 # <a name="lead-management-instructions-for-table-storage"></a>A Table Storage szolgáltatással kapcsolatos érdeklődői kezelési utasítások
 
@@ -98,7 +98,7 @@ A következő lépésben csatlakozik a Storage-táblához, és beállítja a fel
 
    - **Szűrő lekérdezése**: Ha bejelöli ezt a mezőt, a **beolvasás időpontja** ikon megjelenik egy előugró ablakban. Ha a lekérdezés szűréséhez időbélyegként szeretné használni ezt az értéket, válassza az **elmúlt idő** lehetőséget. A következő függvényt is beillesztheti a mezőbe:
    
-      `CreatedTime Timestamp gt datetime'@{body('Get_past_time')}'` 
+      `CreatedTime Timestamp gt '@{body('Get_past_time')}'` 
 
      ![A szűrő lekérdezési funkciójának beállítása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -111,7 +111,7 @@ A következő lépésben csatlakozik a Storage-táblához, és beállítja a fel
      ![Feltétel vezérlőelem hozzáadása](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-action-condition-control.png)
 
 1. A **feltétel** ablakban válassza az **érték kiválasztása**lehetőséget, majd az előugró ablakban válassza a **kifejezés** lehetőséget.
-1. Illessze `length(body('Get_entities')?['value'])` be az ***FX*** mezőt. A függvény hozzáadásához kattintson **az OK gombra** . 
+1. Illessze be `length(body('Get_entities')?['value'])` az ***FX*** mezőt. A függvény hozzáadásához kattintson **az OK gombra** . 
 
 
 

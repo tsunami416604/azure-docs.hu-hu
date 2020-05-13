@@ -3,14 +3,14 @@ title: Azure Functions figyelése Azure Monitor naplókkal
 description: Megtudhatja, hogyan használhatja a Azure Monitor naplókat Azure Functions a függvények végrehajtásának figyelésére.
 author: craigshoemaker
 ms.topic: conceptual
-ms.date: 10/09/2019
+ms.date: 04/15/2020
 ms.author: cshoe
-ms.openlocfilehash: 13c72a1cf8a0dd4a1124e51b9ceee04ae04bf261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b21912de95ccba1d97d187922bfada4d9dc2c56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649874"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121633"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions figyelése Azure Monitor naplókkal
 
@@ -25,17 +25,23 @@ A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv
 
 ## <a name="setting-up"></a>Beállítás
 
-A **figyelés** szakaszban válassza a **diagnosztikai beállítások** elemet, majd kattintson a **diagnosztikai beállítás hozzáadása**elemre.
+1. A [Azure Portal](https://portal.azure.com)a Function alkalmazás **figyelés** szakaszában válassza a **diagnosztikai beállítások**lehetőséget, majd kattintson a **diagnosztikai beállítás hozzáadása**elemre.
 
-![Diagnosztikai beállítás hozzáadása](media/functions-monitor-log-analytics/diagnostic-settings-add.png)
+   :::image type="content" source="media/functions-monitor-log-analytics/diagnostic-settings-add.png" alt-text="Diagnosztikai beállítások kiválasztása":::
 
-A **diagnosztikai beállítások** lapon válassza a **Küldés log Analyticsba**lehetőséget, majd válassza ki a log Analytics munkaterületet. A **napló** területen válassza a **FunctionAppLogs**lehetőséget, ez a táblázat tartalmazza a kívánt naplókat.
+1. A **diagnosztika beállításai** oldalon, a **Kategória részletei** és a **napló**területen válassza a **FunctionAppLogs**lehetőséget.
 
-![Diagnosztikai beállítás hozzáadása](media/functions-monitor-log-analytics/choose-table.png)
+   A **FunctionAppLogs** tábla tartalmazza a kívánt naplókat.
+
+1. A **célhely részletei**területen válassza a **Küldés log Analyticsba**lehetőséget, majd válassza ki a **log Analytics munkaterületet**. 
+
+1. Adja meg a **diagnosztikai beállítások nevét**, majd kattintson a **Mentés**gombra.
+
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnosztikai beállítás hozzáadása":::
 
 ## <a name="user-generated-logs"></a>Felhasználó által generált naplók
 
-Egyéni naplók létrehozásához az adott nyelvtől függően használhatja az adott naplózási utasítást:
+Egyéni naplók létrehozásához használja az adott nyelvhez tartozó naplózási utasítást. Az alábbiakban a mintakód kódrészletek találhatók:
 
 
 # <a name="c"></a>[C #](#tab/csharp)
@@ -72,11 +78,19 @@ logging.info('My app logs here.')
 
 ## <a name="querying-the-logs"></a>Naplók lekérdezése
 
-A generált naplók lekérdezéséhez lépjen a Log Analytics munkaterületre, amelyet úgy konfigurált, hogy elküldje a függvény naplóit, és kattintson a **naplók**elemre.
+A generált naplók lekérdezése:
+ 
+1. A Function alkalmazásban válassza a **diagnosztikai beállítások**lehetőséget. 
 
-![Lekérdezési ablak az LA Workspace-ban](media/functions-monitor-log-analytics/querying.png)
+1. A **diagnosztikai beállítások** listából válassza ki azt a log Analytics munkaterületet, amelyet a függvény naplóinak küldéséhez konfigurált. 
 
-Azure Functions az összes naplót beírja a **FunctionAppLogs** táblába, íme néhány példa a lekérdezésekre.
+1. A **log Analytics munkaterület** lapon válassza a **naplók**lehetőséget.
+
+   Azure Functions az összes naplót a **FunctionAppLogs** táblába írja a **LogManagement**alatt. 
+
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Lekérdezési ablak Log Analytics munkaterületen":::
+
+Íme néhány példa a lekérdezésekre:
 
 ### <a name="all-logs"></a>Minden napló
 
@@ -87,7 +101,7 @@ FunctionAppLogs
 
 ```
 
-### <a name="a-specific-function-logs"></a>Egy adott függvény naplói
+### <a name="specific-function-logs"></a>Adott függvények naplói
 
 ```
 
@@ -108,6 +122,6 @@ FunctionAppLogs
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse át a [Azure functions áttekintését](functions-overview.md)
-- További információ a [Azure monitor naplókról](../azure-monitor/platform/data-platform-logs.md)
+- Tekintse át a [Azure functions áttekintését](functions-overview.md).
+- További információ a [Azure monitor naplókról](../azure-monitor/platform/data-platform-logs.md).
 - További információ a [lekérdezési nyelvről](../azure-monitor/log-query/get-started-queries.md).

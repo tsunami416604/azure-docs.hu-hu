@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 2c06fdba8f60243acf4e0fabd23df8b832c210db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c050eb38e47ce2ab9d11e5c92eb7bdd3ac8e572
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78301675"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83121694"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions a Kubernetes és a KEDA
 
@@ -28,11 +28,11 @@ A függvények a Kubernetes-fürtön való futtatásához telepítenie kell a KE
 
 ### <a name="installing-with-helm"></a>Telepítés a Helmtal
 
-A KEDA különböző módokon telepíthető bármely Kubernetes-fürtben, beleértve a Helm-t is.  Az üzembe helyezési lehetőségek dokumentálva vannak a [KEDA webhelyen](https://keda.sh/deploy/).
+A KEDA különböző módokon telepíthető bármely Kubernetes-fürtben, beleértve a Helm-t is.  Az üzembe helyezési lehetőségek dokumentálva vannak a [KEDA webhelyen](https://keda.sh/docs/deploy/).
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Function-alkalmazás üzembe helyezése a Kubernetes
 
-A KEDA-t futtató Kubernetes-fürtökön bármely Function alkalmazást üzembe helyezhet.  Mivel a függvények Docker-tárolóban futnak, a projekthez a `Dockerfile`szükséges.  Ha még nem rendelkezik ilyennel, hozzáadhat egy Docker az alábbi parancs futtatásával a functions projekt gyökerében:
+A KEDA-t futtató Kubernetes-fürtökön bármely Function alkalmazást üzembe helyezhet.  Mivel a függvények Docker-tárolóban futnak, a projekthez a szükséges `Dockerfile` .  Ha még nem rendelkezik ilyennel, hozzáadhat egy Docker az alábbi parancs futtatásával a functions projekt gyökerében:
 
 ```cli
 func init --docker-only
@@ -41,23 +41,23 @@ func init --docker-only
 A következő parancs futtatásával hozzon létre egy rendszerképet, és telepítse a függvényeket a Kubernetes:
 
 > [!NOTE]
-> A központi eszközök kihasználják a Docker CLI-t a lemezkép összeállításához és közzétételéhez. Győződjön meg arról, hogy a Docker már telepítve van, és csatlakoztatva `docker login`van a fiókjához a használatával.
+> A központi eszközök kihasználják a Docker CLI-t a lemezkép összeállításához és közzétételéhez. Győződjön meg arról, hogy a Docker már telepítve van, és csatlakoztatva van a fiókjához a használatával `docker login` .
 
 ```cli
 func kubernetes deploy --name <name-of-function-deployment> --registry <container-registry-username>
 ```
 
-> Cserélje `<name-of-function-deployment>` le a helyére a Function alkalmazás nevét.
+> Cserélje le a helyére `<name-of-function-deployment>` a Function alkalmazás nevét.
 
-Ez létrehoz egy Kubernetes `Deployment` -erőforrást `ScaledObject` , egy erőforrást, és `Secrets`a `local.settings.json` fájlból importált környezeti változókat is.
+Ez létrehoz egy Kubernetes `Deployment` -erőforrást, egy `ScaledObject` erőforrást, és a `Secrets` fájlból importált környezeti változókat is `local.settings.json` .
 
 ### <a name="deploying-a-function-app-from-a-private-registry"></a>Function-alkalmazás üzembe helyezése privát beállításjegyzékből
 
-A fenti folyamat privát kibocsátásiegység-forgalmi jegyzékekhez is használható.  Ha egy privát beállításjegyzékből húz le egy tárolót, a `--pull-secret` Kubernetes titkos kulcsra hivatkozó jelzőt is adja meg a futtatáskor. `func kubernetes deploy`
+A fenti folyamat privát kibocsátásiegység-forgalmi jegyzékekhez is használható.  Ha egy privát beállításjegyzékből húz le egy tárolót, a Kubernetes titkos kulcsra hivatkozó jelzőt is adja meg a `--pull-secret` futtatáskor `func kubernetes deploy` .
 
 ## <a name="removing-a-function-app-from-kubernetes"></a>Function-alkalmazás eltávolítása a Kubernetes-ből
 
-A telepítés után eltávolíthatja a függvényt a társított `Deployment`, `ScaledObject`a `Secrets` létrehozott elem eltávolításával.
+A telepítés után eltávolíthatja a függvényt a társított, a létrehozott elem eltávolításával `Deployment` `ScaledObject` `Secrets` .
 
 ```cli
 kubectl delete deploy <name-of-function-deployment>

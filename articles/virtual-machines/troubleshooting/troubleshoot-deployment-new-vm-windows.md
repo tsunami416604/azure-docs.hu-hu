@@ -3,7 +3,7 @@ title: A Windowsos virtuális gépek Azure-beli üzembe helyezésének hibája M
 description: A Resource Manager üzembe helyezésével kapcsolatos hibák elhárítása új Windowsos virtuális gép létrehozásakor az Azure-ban
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
-author: JiangChen79
+author: DavidCBerry13
 manager: gwallace
 editor: ''
 tags: top-support-issue, azure-resource-manager
@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 06/15/2018
-ms.author: cjiang
+ms.author: daberry
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0bc363b87a9f5b2f013c0bae75a07d79a3a7a830
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78db1ba0eaff0dce83ed13e9f20c3c5a5b96bf9c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981393"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120963"
 ---
 # <a name="troubleshoot-deployment-issues-when-creating-a-new-windows-vm-in-azure"></a>Új Windowsos virtuális gép Azure-beli létrehozásakor felmerülő üzembe helyezési problémák elhárítása
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -75,7 +75,7 @@ Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem 
 * Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 * Ha a kért virtuális gép mérete nem módosítható:
   * Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból.
-    Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** > *a rendelkezésre állási* > csoport**Virtual Machines** > *a virtuális gép* > **leállítása**elemre.
+    Kattintson az **erőforráscsoportok**  >  *az erőforráscsoport*  >  **erőforrásai**  >  *a rendelkezésre állási*csoport  >  **Virtual Machines**  >  *a virtuális gép*  >  **leállítása**elemre.
   * Az összes virtuális gép leállítása után hozza létre az új virtuális gépet a kívánt méretben.
   * Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az **Indítás**gombra.
 
