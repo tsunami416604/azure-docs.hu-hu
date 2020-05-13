@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: fb6092b7ccb3d1a4214f8d26119d9dc50b0ed317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81482066"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125757"
 ---
 # <a name="topic-filters-and-actions"></a>Témakörszűrők és -műveletek
 
@@ -29,7 +29,7 @@ A Service Bus három szűrési feltételt támogat:
 
 -   *Logikai szűrők* – a **TrueFilter** és a **FalseFilter** az összes érkező üzenetet (**igaz**) vagy egyetlen nem az elküldött üzenetet (**false**) sem okozhatja az előfizetés kiválasztásához.
 
--   *SQL-szűrők* – a **SqlFilter** egy SQL-szerű feltételes kifejezést tart fenn, amelyet a rendszer az elküldött üzenetek felhasználó által definiált tulajdonságai és a Rendszertulajdonságok alapján értékel ki a közvetítőn. Az összes rendszertulajdonságot előtaggal `sys.` kell ellátni a feltételes kifejezésben. A [szűrési feltételekhez tartozó SQL-nyelv részhalmaza](service-bus-messaging-sql-filter.md) a tulajdonságok (`EXISTS`), a Null érték (`IS NULL`), a logikai nem/és/vagy, a rokon operátorok, az egyszerű numerikus aritmetika és az `LIKE`egyszerű szöveges mintázatok meglétét vizsgálja.
+-   *SQL-szűrők* – a **SqlFilter** egy SQL-szerű feltételes kifejezést tart fenn, amelyet a rendszer az elküldött üzenetek felhasználó által definiált tulajdonságai és a Rendszertulajdonságok alapján értékel ki a közvetítőn. Az összes rendszertulajdonságot előtaggal kell ellátni `sys.` a feltételes kifejezésben. A [szűrési feltételekhez tartozó SQL-nyelv részhalmaza](service-bus-messaging-sql-filter.md) a tulajdonságok ( `EXISTS` ), a Null érték ( `IS NULL` ), a logikai nem/és/vagy, a rokon operátorok, az egyszerű numerikus aritmetika és az egyszerű szöveges mintázatok meglétét vizsgálja `LIKE` .
 
 -   *Korrelációs szűrők* – a **CorrelationFilter** olyan feltételekkel rendelkezik, amelyek egy vagy több érkező üzenet felhasználó-és rendszertulajdonságával egyeznek. Gyakori használat a **correlationId** tulajdonsággal való egyezés, de az alkalmazás az alábbi tulajdonságokkal is rendelkezhet:
 
@@ -71,8 +71,6 @@ Tekintse meg a következő mintákat:
 
 - [.NET – alapszintű küldési és fogadási útmutató szűrőkkel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET – témakör szűrők](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/javascript/advanced/topicFilters.js)
-- [Írja be a parancsfájlt](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/samples/typescript/src/advanced/topicFilters.ts)
 - [Azure Resource Manager sablon](https://docs.microsoft.com/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
 
 

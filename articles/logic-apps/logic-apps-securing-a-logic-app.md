@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: b00dae5c807cb8bec3b9e345c9b2af2c227139b7
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 7979d1288cd99f8e28a421663383a930e0346357
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901093"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199605"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -44,7 +44,7 @@ A logikai alkalmazás minden kérelem végpontja [közös hozzáférési aláír
 
 `https://<request-endpoint-URI>sp=<permissions>sv=<SAS-version>sig=<signature>`
 
-Minden URL-cím `sp`tartalmazza `sv`a, `sig` a és a lekérdezési paramétert a következő táblázatban leírtak szerint:
+Minden URL-cím tartalmazza a `sp` , a `sv` és a `sig` lekérdezési paramétert a következő táblázatban leírtak szerint:
 
 | Lekérdezési paraméter | Leírás |
 |-----------------|-------------|
@@ -81,7 +81,7 @@ Ha egy kérelem-alapú trigger végpontjának URL-címét megosztja más felekke
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-A törzsben adja meg a `NotAfter`tulajdonságot egy JSON-dátum karakterlánc használatával. Ez a tulajdonság egy visszahívási URL-címet ad vissza `NotAfter` , amely csak a dátumig és időpontig érvényes.
+A törzsben adja meg a `NotAfter` tulajdonságot egy JSON-dátum karakterlánc használatával. Ez a tulajdonság egy visszahívási URL-címet ad vissza, amely csak a `NotAfter` dátumig és időpontig érvényes.
 
 <a name="primary-secondary-key"></a>
 
@@ -93,7 +93,7 @@ A kérelem alapú trigger visszahívási URL-címeinek létrehozásakor vagy lis
 POST /subscriptions/<Azure-subscription-ID>/resourceGroups/<Azure-resource-group-name>/providers/Microsoft.Logic/workflows/<workflow-name>/triggers/<trigger-name>/listCallbackUrl?api-version=2016-06-01
 ```
 
-A törzsben adja meg a `KeyType` tulajdonságot a `Primary` következők `Secondary`egyikével: vagy. Ez a tulajdonság a megadott biztonsági kulcs által aláírt URL-címet adja vissza.
+A törzsben adja meg a `KeyType` tulajdonságot a következők egyikével: `Primary` vagy `Secondary` . Ez a tulajdonság a megadott biztonsági kulcs által aláírt URL-címet adja vissza.
 
 <a name="enable-oauth"></a>
 
@@ -103,7 +103,7 @@ Ha a logikai alkalmazás egy kérelem-triggerrel kezdődik, engedélyezheti [Azu
 
 * A logikai alkalmazás maximális számú engedélyezési házirendre van korlátozva. Az egyes engedélyezési házirendek maximális számú [jogcímet](../active-directory/develop/developer-glossary.md#claim)is tartalmaz. További információ: [Azure Logic apps korlátai és konfigurálása](../logic-apps/logic-apps-limits-and-config.md#authentication-limits).
 
-* Az engedélyezési házirendnek tartalmaznia kell legalább a **kiállítói** jogcímet, amely egy olyan értékkel `https://sts.windows.net/` rendelkezik, amely az Azure ad kiállítói azonosítójával kezdődik.
+* Az engedélyezési házirendnek tartalmaznia kell legalább a **kiállítói** jogcímet, amely egy olyan értékkel rendelkezik, amely `https://sts.windows.net/` Az Azure ad kiállítói azonosítójával kezdődik.
 
 * A logikai alkalmazás bejövő hívása csak egy engedélyezési sémát használhat, vagy az Azure AD OAuth vagy a [közös hozzáférésű aláírásokat (SAS)](#sas).
 
@@ -126,7 +126,7 @@ Az Azure AD-OAuth engedélyezéséhez kövesse az alábbi lépéseket egy vagy t
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
    | **Szabályzat neve** | Igen | Az engedélyezési házirendhez használni kívánt név |
-   | **Jogcímek** | Igen | A logikai alkalmazás által a bejövő hívásokból elfogadott jogcím-típusok és-értékek. Az elérhető jogcím-típusok a következők: <p><p>- **Kibocsátó** <br>- **Célközönség** <br>- **Tulajdonos** <br>- **JWT-azonosító** (JSON web token azonosító) <p><p>A **jogcímek** listájának minimálisan tartalmaznia kell a **kiállítói** jogcímet, amely egy olyan értékkel `https://sts.windows.net/` rendelkezik, amely az Azure ad kiállítói azonosítójával kezdődik. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is. |
+   | **Igénylések** | Igen | A logikai alkalmazás által a bejövő hívásokból elfogadott jogcím-típusok és-értékek. Az elérhető jogcím-típusok a következők: <p><p>- **Kibocsátó** <br>- **Célközönség** <br>- **Tulajdonos** <br>- **JWT-azonosító** (JSON web token azonosító) <p><p>A **jogcímek** listájának minimálisan tartalmaznia kell a **kiállítói** jogcímet, amely egy olyan értékkel rendelkezik, amely az `https://sts.windows.net/` Azure ad kiállítói azonosítójával kezdődik. További információ ezekről a jogcím-típusokról: [jogcímek az Azure ad biztonsági jogkivonatokban](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Megadhatja a saját jogcím típusát és értékét is. |
    |||
 
 1. Egy másik Jogcím hozzáadásához válasszon a következő lehetőségek közül:
@@ -196,7 +196,7 @@ A közös hozzáférésű aláírás (SAS) mellett érdemes lehet kifejezetten k
 
 1. A logikai alkalmazás menüjében, a **Beállítások**területen válassza a **munkafolyamat-beállítások**elemet.
 
-1. A **hozzáférés-vezérlési konfiguráció** > **engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
+1. A **hozzáférés-vezérlési konfiguráció**  >  **engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
 
 1. Az **Eseményindítók IP-címtartományok**területén válassza ki az eseményindító által elfogadott IP-címtartományt.
 
@@ -205,11 +205,11 @@ A közös hozzáférésű aláírás (SAS) mellett érdemes lehet kifejezetten k
 Ha azt szeretné, hogy a logikai alkalmazás csak beágyazott logikai alkalmazásként induljon el, az **engedélyezett bejövő IP-címek** listából válassza a **csak más Logic apps**lehetőséget. Ez a lehetőség üres tömböt ír a logikai alkalmazás erőforrásaiba. Így csak a Logic Apps szolgáltatástól érkező hívások (a szülő logikai alkalmazások) indíthatják el a beágyazott logikai alkalmazást.
 
 > [!NOTE]
-> Az IP-címektől függetlenül továbbra is futtathat olyan logikai alkalmazást, amely az Azure REST API vagy a API Management használatával `/triggers/<trigger-name>/run` futtatott kérelem-alapú triggerrel rendelkezik. Ebben a forgatókönyvben azonban továbbra is [hitelesítésre](../active-directory/develop/authentication-scenarios.md) van szükség az Azure REST API. Az összes esemény megjelenik az Azure naplóban. Ügyeljen rá, hogy ennek megfelelően állítsa be a hozzáférés-vezérlési házirendeket.
+> Az IP-címektől függetlenül továbbra is futtathat olyan logikai alkalmazást, amely `/triggers/<trigger-name>/run` Az Azure REST API vagy a API Management használatával futtatott kérelem-alapú triggerrel rendelkezik. Ebben a forgatókönyvben azonban továbbra is [hitelesítésre](../active-directory/develop/authentication-scenarios.md) van szükség az Azure REST API. Az összes esemény megjelenik az Azure naplóban. Ügyeljen rá, hogy ennek megfelelően állítsa be a hozzáférés-vezérlési házirendeket.
 
 #### <a name="restrict-inbound-ip-ranges-in-azure-resource-manager-template"></a>Bejövő IP-tartományok korlátozása Azure Resource Manager sablonban
 
-Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja az IP-tartományokat `accessControl` a logikai `triggers` alkalmazás erőforrás-definíciójának szakasza alapján, például:
+Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), az *x. x. x. x/x* vagy x. x *. x. x-x.* x. x. x formátumban is megadhatja az IP-tartományokat a `accessControl` szakasz és `triggers` a `actions` logikai alkalmazás erőforrás-definíciójának és szakaszának használatával, például:
 
 ```json
 {
@@ -227,20 +227,24 @@ Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzemb
          },
          "apiVersion": "2016-06-01",
          "properties": {
-            "definition": {<workflow-definition>},
-            "parameters": {},
+            "definition": {
+               <workflow-definition>
+            },
+            "parameters": {
+            },
             "accessControl": {
                "triggers": {
                   "allowedCallerIpAddresses": [
                      {
                         "addressRange": "192.168.12.0/23"
-                     },
-                     {
-                        "addressRange": "2001:0db8::/64"
                      }
                   ]
+               },
+               "actions": {
+                  "allowedCallerIpAddresses:" : []
                }
-            }
+            },
+            "endpointsConfiguration": {}
          }
       }
    ],
@@ -288,7 +292,7 @@ A logikai alkalmazás futtatási előzményeiben található bemenetekhez és ki
 
 ### <a name="restrict-access-by-ip-address-range"></a>IP-címtartomány általi hozzáférés korlátozása
 
-Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit úgy, hogy csak adott IP-címtartományok kérései megtekinthessék ezeket az adatokat. Ha például meg szeretné tiltani a bemenetek és kimenetek elérését, adja meg az IP-címtartományt `0.0.0.0-0.0.0.0`, például:. Csak egy rendszergazdai engedélyekkel rendelkező személy távolíthatja el ezt a korlátozást, amely lehetővé teszi, hogy "igény szerinti" hozzáférést biztosítson a logikai alkalmazás adataihoz. Megadhatja azokat az IP-tartományokat, amelyek a logikai alkalmazások telepítéséhez használt Azure Portal vagy egy Azure Resource Manager sablon alapján korlátozzák.
+Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és kimeneteit úgy, hogy csak adott IP-címtartományok kérései megtekinthessék ezeket az adatokat. Ha például meg szeretné tiltani a bemenetek és kimenetek elérését, adja meg az IP-címtartományt, például: `0.0.0.0-0.0.0.0` . Csak egy rendszergazdai engedélyekkel rendelkező személy távolíthatja el ezt a korlátozást, amely lehetővé teszi, hogy "igény szerinti" hozzáférést biztosítson a logikai alkalmazás adataihoz. Megadhatja azokat az IP-tartományokat, amelyek a logikai alkalmazások telepítéséhez használt Azure Portal vagy egy Azure Resource Manager sablon alapján korlátozzák.
 
 #### <a name="restrict-ip-ranges-in-azure-portal"></a>Azure Portal IP-tartományának korlátozása
 
@@ -296,7 +300,7 @@ Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és k
 
 1. A logikai alkalmazás menüjében, a **Beállítások**területen válassza a **munkafolyamat-beállítások**elemet.
 
-1. A **hozzáférés-vezérlési konfiguráció** > **engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
+1. A **hozzáférés-vezérlési konfiguráció**  >  **engedélyezett bejövő IP-címek**területen válassza az **adott IP-címtartományok**lehetőséget.
 
 1. A **tartalom IP-címtartományok**területén adja meg azokat az IP-címtartományt, amelyek hozzáférhetnek a tartalomhoz a bemenetek és a kimenetek között. 
 
@@ -304,7 +308,7 @@ Korlátozhatja a logikai alkalmazás futtatási előzményeinek bemeneteit és k
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Azure Resource Manager sablonban lévő IP-tartományok korlátozása
 
-Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja az IP-tartományokat `accessControl` a logikai `contents` alkalmazás erőforrás-definíciójának szakasza alapján, például:
+Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja az IP-tartományokat a `accessControl` `contents` logikai alkalmazás erőforrás-definíciójának szakasza alapján, például:
 
 ``` json
 {
@@ -385,7 +389,7 @@ Számos eseményindító és művelet rendelkezik olyan beállításokkal, amely
 
 #### <a name="secure-inputs-and-outputs-in-code-view"></a>Biztonságos bemenetek és kimenetek kód nézetben
 
-Az alapul szolgáló trigger vagy művelet definíciójában adja hozzá vagy frissítse `runtimeConfiguration.secureData.properties` a tömböt a következő értékek egyikével vagy mindkettővel:
+Az alapul szolgáló trigger vagy művelet definíciójában adja hozzá vagy frissítse a `runtimeConfiguration.secureData.properties` tömböt a következő értékek egyikével vagy mindkettővel:
 
 * `"inputs"`: A bemenetek védelme a futtatási előzményekben.
 * `"outputs"`: A kimenetek védelme a futtatási előzményekben.
@@ -448,7 +452,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 Ha különböző környezetekben végez üzembe helyezést, érdemes parameterizing a munkafolyamat-definícióban szereplő értékeket, amelyek az adott környezettől függően változnak. Így elkerülhetők a rögzített adatok egy [Azure Resource Manager sablonnal](../azure-resource-manager/templates/overview.md) a logikai alkalmazás üzembe helyezéséhez, a bizalmas adatok védelméhez a biztonságos paraméterek meghatározásával, valamint az adatoknak a [sablon paraméterei](../azure-resource-manager/templates/template-parameters.md) között külön bemenetként való továbbítása a [paraméter](../azure-resource-manager/templates/parameter-files.md)használatával.
 
-Ha például a HTTP-műveleteket [Azure Active Directory nyílt hitelesítéssel](#azure-active-directory-oauth-authentication) (Azure ad OAuth) hitelesíti, megadhatja és eltakarhatja azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. Ha ezeket a paramétereket a logikai alkalmazásban szeretné megadni, `parameters` használja a Logic apps munkafolyamat-definíciójának és Resource Manager-sablonjának szakaszát a telepítéshez. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek megadásához adja meg a paramétereket a vagy `securestring` `secureobject` a típus használatával, és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. A paraméter értékének futtatókörnyezetben való eléréséhez használja `@parameters('<parameter-name>')` a kifejezést a munkafolyamat-definícióban. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
+Ha például a HTTP-műveleteket [Azure Active Directory nyílt hitelesítéssel](#azure-active-directory-oauth-authentication) (Azure ad OAuth) hitelesíti, megadhatja és eltakarhatja azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. Ha ezeket a paramétereket a logikai alkalmazásban szeretné megadni, használja a `parameters` Logic apps munkafolyamat-definíciójának és Resource Manager-sablonjának szakaszát a telepítéshez. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek megadásához adja meg a paramétereket a vagy a típus használatával `securestring` , `secureobject` és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. A paraméter értékének futtatókörnyezetben való eléréséhez használja a `@parameters('<parameter-name>')` kifejezést a munkafolyamat-definícióban. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
 
 > [!NOTE]
 > Ha a kérelem fejlécében vagy törzsében paramétert használ, akkor ez a paraméter látható lesz a logikai alkalmazás futtatási előzményeinek és a kimenő HTTP-kérések megtekintésekor. Győződjön meg arról, hogy a tartalom-hozzáférési házirendeket is megfelelően állította be. A futtatási előzményekben lévő bemenetek és kimenetek elrejtéséhez is használhatja a [elhomályosítás](#obfuscate) lehetőséget. Az engedélyezési fejlécek soha nem láthatók bemeneteken vagy kimeneteken keresztül. Tehát ha van titok, a titkos kód nem kérhető le.
@@ -458,7 +462,7 @@ További információt a jelen témakör következő részeiben talál:
 * [Biztonságos paraméterek a munkafolyamat-definíciókban](#secure-parameters-workflow)
 * [A futtatási előzményekben tárolt adatvédelem a elhomályosítás használatával](#obfuscate)
 
-Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja a biztonságos [sablon paramétereit](../azure-resource-manager/templates/template-parameters.md), amelyek kiértékelése a telepítés `securestring` során `secureobject` a és a típus használatával történik. A sablon paramétereinek definiálásához használja a sablon legfelső szintű `parameters` szakaszát, amely külön és eltér a munkafolyamat-definíciók `parameters` szakaszából. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/templates/parameter-files.md).
+Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja a biztonságos [sablon paramétereit](../azure-resource-manager/templates/template-parameters.md), amelyek kiértékelése a telepítés során a és a típus használatával történik `securestring` `secureobject` . A sablon paramétereinek definiálásához használja a sablon legfelső szintű `parameters` szakaszát, amely külön és eltér a munkafolyamat-definíciók `parameters` szakaszából. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/templates/parameter-files.md).
 
 Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/general/overview.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információt az alábbi témakörökben talál:
 
@@ -469,7 +473,7 @@ Ha például a titkokat használja, megadhatja és használhatja a biztonságos 
 
 ### <a name="secure-parameters-in-workflow-definitions"></a>Biztonságos paraméterek a munkafolyamat-definíciókban
 
-A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok védelméhez használjon biztonságos paramétereket, hogy a logikai alkalmazás mentése után ne legyen látható az információ. Tegyük fel például, hogy egy HTTP-művelethez egyszerű hitelesítés szükséges, amely felhasználónevet és jelszót használ. A munkafolyamat-definícióban a `parameters` szakasz a `basicAuthPasswordParam` és `basicAuthUsernameParam` a paramétereket a `securestring` típus használatával határozza meg. A művelet definíciója ezeket a `authentication` paramétereket a szakaszon hivatkozik.
+A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok védelméhez használjon biztonságos paramétereket, hogy a logikai alkalmazás mentése után ne legyen látható az információ. Tegyük fel például, hogy egy HTTP-művelethez egyszerű hitelesítés szükséges, amely felhasználónevet és jelszót használ. A munkafolyamat-definícióban a `parameters` szakasz a `basicAuthPasswordParam` és a `basicAuthUsernameParam` paramétereket a típus használatával határozza meg `securestring` . A művelet definíciója ezeket a paramétereket a `authentication` szakaszon hivatkozik.
 
 ```json
 "definition": {
@@ -515,22 +519,22 @@ A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok vé
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Biztonságos paraméterek Azure Resource Manager-sablonokban
 
-A logikai alkalmazások [Resource Manager-sablonjai](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) több `parameters` szakaszt is tartalmaz. A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós `securestring` szinten `secureobject` a vagy a típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/general/overview.md) , és a [paraméter fájllal](../azure-resource-manager/templates/parameter-files.md) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: [bizalmas értékek átadása az üzembe helyezés során Azure Key Vault használatával](../azure-resource-manager/templates/key-vault-parameter.md).
+A logikai alkalmazások [Resource Manager-sablonjai](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) több szakaszt is tartalmaz `parameters` . A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós szinten a `securestring` vagy a `secureobject` típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/general/overview.md) , és a [paraméter fájllal](../azure-resource-manager/templates/parameter-files.md) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: [bizalmas értékek átadása az üzembe helyezés során Azure Key Vault használatával](../azure-resource-manager/templates/key-vault-parameter.md).
 
 További információ az alábbi `parameters` fejezetekről:
 
 * A sablon legfelső szintjén egy `parameters` szakasz határozza meg azokat az értékeket, amelyeket a sablon a *telepítéskor*használ. Ezek az értékek például tartalmazhatnak egy adott központi telepítési környezethez tartozó kapcsolódási karakterláncokat is. Ezeket az értékeket külön [paraméteres fájlban](../azure-resource-manager/templates/parameter-files.md)tárolhatja, így az értékek könnyebben módosíthatók.
 
-* A logikai alkalmazás erőforrás-definícióján belül, de a munkafolyamat-definíción `parameters` kívül egy szakasz a munkafolyamat-definíció paramétereinek értékeit határozza meg. Ebben a szakaszban ezeket az értékeket a sablon paramétereit hivatkozó sablon-kifejezések használatával rendelheti hozzá. Ezeket a kifejezéseket a rendszer kiértékeli a telepítéskor.
+* A logikai alkalmazás erőforrás-definícióján belül, de a munkafolyamat-definíción kívül egy `parameters` szakasz a munkafolyamat-definíció paramétereinek értékeit határozza meg. Ebben a szakaszban ezeket az értékeket a sablon paramétereit hivatkozó sablon-kifejezések használatával rendelheti hozzá. Ezeket a kifejezéseket a rendszer kiértékeli a telepítéskor.
 
 * A munkafolyamat-definícióban egy `parameters` szakasz határozza meg, hogy a logikai alkalmazás milyen paramétereket használ futásidőben. Ezeket a paramétereket a logikai alkalmazás munkafolyamatán belül hivatkozhat a munkafolyamat-definíciós kifejezések használatával, amelyek kiértékelése futásidőben történik.
 
-Ez a példa több, a `securestring` típust használó biztonságos paraméter-definícióval rendelkező sablont tartalmaz:
+Ez a példa több, a típust használó biztonságos paraméter-definícióval rendelkező sablont tartalmaz `securestring` :
 
 | Paraméter neve | Leírás |
 |----------------|-------------|
-| `TemplatePasswordParam` | A munkafolyamat-definíció `basicAuthPasswordParam` paraméterének átadott jelszót fogadó sablon-paraméter |
-| `TemplateUsernameParam` | A munkafolyamat-definíció `basicAuthUserNameParam` paraméterének átadandó felhasználónevet megadó sablon-paraméter |
+| `TemplatePasswordParam` | A munkafolyamat-definíció paraméterének átadott jelszót fogadó sablon-paraméter `basicAuthPasswordParam` |
+| `TemplateUsernameParam` | A munkafolyamat-definíció paraméterének átadandó felhasználónevet megadó sablon-paraméter `basicAuthUserNameParam` |
 | `basicAuthPasswordParam` | Egy munkafolyamat-definíciós paraméter, amely egy HTTP-műveletben fogadja el az alapszintű hitelesítéshez szükséges jelszót |
 | `basicAuthUserNameParam` | Munkafolyamat-definíciós paraméter, amely elfogadja a felhasználónevet az egyszerű hitelesítéshez egy HTTP-műveletben |
 |||
@@ -747,7 +751,7 @@ Ha az [ügyféltanúsítvány](../active-directory/authentication/active-directo
 |---------------------|-----------------|----------|-------|-------------|
 | **Hitelesítés** | `type` | Igen | **Ügyféltanúsítvány** <br>vagy <br>`ClientCertificate` | A TLS/SSL-Ügyféltanúsítványok esetében használandó hitelesítési típus <p><p>**Megjegyzés**: míg az önaláírt tanúsítványok támogatottak, a TLS/SSL-hez készült önaláírt tanúsítványok nem támogatottak. A HTTP-összekötő nem támogatja a köztes TLS/SSL-tanúsítványokat. |
 | **Pfx** | `pfx` | Igen | <*kódolt-pfx-file-Content*> | A Base64 kódolású tartalom egy személyes információcsere (PFX) fájlból <p><p>A PFX-fájl Base64 kódolású formátumba való átalakításához a következő lépéseket követve használhatja a PowerShellt: <p>1. mentse a tanúsítvány tartalmát egy változóba: <p>   `$pfx_cert = get-content 'c:\certificate.pfx' -Encoding Byte` <p>2. alakítsa át a tanúsítvány tartalmát a `ToBase64String()` függvény használatával, és mentse a tartalmat egy szövegfájlba: <p>   `[System.Convert]::ToBase64String($pfx_cert) | Out-File 'pfx-encoded-bytes.txt'` |
-| **Jelszó** | `password`| No | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó |
+| **Jelszó** | `password`| Nem | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó |
 |||||
 
 Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ez a példa a HTTP-művelet definíciója határozza meg a hitelesítést `type` , `ClientCertificate` és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékének lekéréséhez:
@@ -785,7 +789,7 @@ Kéréses eseményindítók esetén [Azure Active Directory nyílt hitelesítés
 | Tulajdonság (Designer) | Tulajdonság (JSON) | Kötelező | Érték | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
 | **Hitelesítés** | `type` | Igen | **Active Directory OAuth** <br>vagy <br>`ActiveDirectoryOAuth` | A használni kívánt hitelesítési típus. A Logic Apps jelenleg a [OAuth 2,0 protokollt](../active-directory/develop/v2-overview.md)követi. |
-| **Authority** | `authority` | No | <*URL-cím-a-Authority-token-kiállító*> | A hitelesítési jogkivonatot biztosító szolgáltató URL-címe. Alapértelmezés szerint ez az érték `https://login.windows.net`. |
+| **Authority** | `authority` | Nem | <*URL-cím-a-Authority-token-kiállító*> | A hitelesítési jogkivonatot biztosító szolgáltató URL-címe. Alapértelmezés szerint ez az érték `https://login.windows.net` . |
 | **Bérlő** | `tenant` | Igen | <*Bérlő azonosítója*> | Az Azure AD-bérlő bérlői azonosítója |
 | **Célközönség** | `audience` | Igen | <*erőforrás-engedélyezés*> | Az engedélyezéshez használni kívánt erőforrás, például:`https://management.core.windows.net/` |
 | **Ügyfél-azonosító** | `clientId` | Igen | <*ügyfél-azonosító*> | Az engedélyezést kérő alkalmazás ügyfél-azonosítója |
@@ -795,7 +799,7 @@ Kéréses eseményindítók esetén [Azure Active Directory nyílt hitelesítés
 | **Jelszó** | `password` | Igen, de csak a "tanúsítvány" hitelesítő adat típusa esetén | <*jelszó – pfx-fájl*> | A PFX-fájl eléréséhez használt jelszó |
 |||||
 
-Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ebben a példában a HTTP-művelet `type` definíciója `ActiveDirectoryOAuth`a hitelesítési típust `Secret`adja meg, a hitelesítő adat pedig a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékeinek lekéréséhez:
+Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ebben a példában a HTTP-művelet definíciója a hitelesítési típust adja meg, `type` `ActiveDirectoryOAuth` a hitelesítő adat pedig a `Secret` [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékeinek lekéréséhez:
 
 ```json
 "HTTP": {
@@ -842,7 +846,7 @@ A nyers hitelesítést támogató triggerben vagy műveletben a következő tula
 | **Érték** | `value` | Igen | <*engedélyezés – fejléc-érték*> | A hitelesítéshez használandó engedélyezési fejléc értéke |
 ||||||
 
-Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ez a példa a HTTP-művelet definíciója `Raw`határozza meg a hitelesítést `type` , és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékeinek lekéréséhez:
+Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ez a példa a HTTP-művelet definíciója határozza meg a hitelesítést `type` `Raw` , és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékeinek lekéréséhez:
 
 ```json
 "HTTP": {
@@ -875,7 +879,7 @@ Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resour
    |---------------------|-----------------|----------|-------|-------------|
    | **Hitelesítés** | `type` | Igen | **Felügyelt identitás** <br>vagy <br>`ManagedServiceIdentity` | A használni kívánt hitelesítési típus |
    | **Felügyelt identitás** | `identity` | Igen | * **Rendszerhez rendelt felügyelt identitás** <br>vagy <br>`SystemAssigned` <p><p>* <*felhasználó által hozzárendelt identitás-név*> | A használni kívánt felügyelt identitás |
-   | **Célközönség** | `audience` | Igen | <*cél – erőforrás-azonosító*> | Az elérni kívánt cél erőforráshoz tartozó erőforrás-azonosító. <p>Például az összes `https://storage.azure.com/` Storage-fiók esetében érvényes lesz a [hozzáférési tokenek](../active-directory/develop/access-tokens.md) hitelesítése. Megadhat azonban egy gyökérszintű szolgáltatás URL-címét is, például `https://fabrikamstorageaccount.blob.core.windows.net` egy adott Storage-fiókhoz. <p>**Megjegyzés**: Előfordulhat, hogy a **célközönség** tulajdonság egyes eseményindítókban vagy műveletekben el van rejtve. A tulajdonság láthatóvá tételéhez az triggerben vagy a műveletben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **célközönség**lehetőséget. <p><p>**Fontos**: Ügyeljen arra, hogy a célként megadott erőforrás-azonosító *pontosan EGYEZZEN* az Azure ad által várt értékkel, beleértve a szükséges záró perjeleket is. Így az `https://storage.azure.com/` összes Azure Blob Storage-fiók erőforrás-azonosítója záró perjelet igényel. Egy adott Storage-fiók erőforrás-azonosítója azonban nem igényel záró perjelet. Az erőforrás-azonosítók megkereséséhez tekintse meg az [Azure ad-t támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
+   | **Célközönség** | `audience` | Igen | <*cél – erőforrás-azonosító*> | Az elérni kívánt cél erőforráshoz tartozó erőforrás-azonosító. <p>Például `https://storage.azure.com/` az összes Storage-fiók esetében érvényes lesz a [hozzáférési tokenek](../active-directory/develop/access-tokens.md) hitelesítése. Megadhat azonban egy gyökérszintű szolgáltatás URL-címét is, például `https://fabrikamstorageaccount.blob.core.windows.net` egy adott Storage-fiókhoz. <p>**Megjegyzés**: Előfordulhat, hogy a **célközönség** tulajdonság egyes eseményindítókban vagy műveletekben el van rejtve. A tulajdonság láthatóvá tételéhez az triggerben vagy a műveletben nyissa meg az **új paraméter hozzáadása** listát, és válassza a **célközönség**lehetőséget. <p><p>**Fontos**: Ügyeljen arra, hogy a célként megadott erőforrás-azonosító *pontosan EGYEZZEN* az Azure ad által várt értékkel, beleértve a szükséges záró perjeleket is. Így az `https://storage.azure.com/` összes Azure Blob Storage-fiók erőforrás-azonosítója záró perjelet igényel. Egy adott Storage-fiók erőforrás-azonosítója azonban nem igényel záró perjelet. Az erőforrás-azonosítók megkereséséhez tekintse meg az [Azure ad-t támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication). |
    |||||
 
    Ha [biztonságos paramétereket](#secure-action-parameters) használ a bizalmas adatok kezelésére és védelmére, például egy [Azure Resource Manager sablonban az üzembe helyezés automatizálásához](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), használhat kifejezéseket a paraméterek értékének futtatásához futásidőben. Ez a példa a HTTP-művelet definíciója határozza meg a hitelesítést `type` , `ManagedServiceIdentity` és a [Parameters () függvényt](../logic-apps/workflow-definition-language-functions-reference.md#parameters) használja a paraméterek értékének lekéréséhez:

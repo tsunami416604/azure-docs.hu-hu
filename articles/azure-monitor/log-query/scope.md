@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/25/2019
-ms.openlocfilehash: 897eff62fcbab5996b6b9493bd825ae412aa4c3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 2840e5b8ff16d44f76aaafcf68264c65e4401ff7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249593"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199027"
 ---
 # <a name="log-query-scope-and-time-range-in-azure-monitor-log-analytics"></a>A lekérdezés hatókörének és időtartományának naplózása Azure Monitor Log Analytics
 Ha [a Azure Portal log Analyticsban](get-started-portal.md)futtat [naplózási lekérdezést](log-query-overview.md) , a lekérdezés által kiértékelt adatok halmaza a hatókörtől és a kiválasztott időtartománytól függ. Ez a cikk a hatókört és az időtartományt ismerteti, valamint azt, hogyan állíthatja be az egyes igényektől függően. Emellett leírja a különböző típusú hatókörök viselkedését is.
@@ -25,6 +25,9 @@ A hatókör mindig a Log Analytics ablak bal felső részén jelenik meg. Az iko
 ![Hatókör](media/scope/scope.png)
 
 A hatókört a Log Analytics elindításához használt módszer határozza meg, és bizonyos esetekben a hatókört a lehetőségre kattintva módosíthatja. A következő táblázat felsorolja a használt hatókör különböző típusait, valamint az egyes adatok különböző részleteit.
+
+> [!IMPORTANT]
+> Ha APM 2,1-et használ, akkor Application Insights az alkalmazásokat egy Log Analytics munkaterületen tárolja az összes többi naplózási adattal, és a Application Insights hatókör nem érhető el. Ha a Application Insights menüben kiválasztja a **naplók** lehetőséget, akkor az a **többi Azure-erőforrás** hatókörével megegyezőként működik, és csak az adott alkalmazásnak az Application Insights táblákban lévő adatok érhetők el.
 
 | Lekérdezési hatókör | A hatókörben lévő rekordok | Kiválasztás | Hatókör módosítása |
 |:---|:---|:---|:---|

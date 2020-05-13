@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/07/2020
-ms.openlocfilehash: c78d8d603b6686d382ec7edcccc24d5dacc4745a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2838051d8e75ffbe3b7ecc9fbc655f24b57199e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982224"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198685"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -20,10 +20,6 @@ Ez a cikk háttér-információkat és lépéseket tartalmaz az ügyfél által 
 Javasoljuk, hogy a konfiguráció előtt tekintse át [az alábbi korlátozásokat és korlátozásokat](#limitations-and-constraints) .
 
 ## <a name="disclaimers"></a>Felelősséget kizáró nyilatkozatok
-
-- Azure Monitor CMK egy korai hozzáférési szolgáltatás, és engedélyezve van a regisztrált előfizetések esetében.
-
-- Az ebben a cikkben ismertetett CMK üzembe helyezés éles környezetben történik, és ez a funkció a korai hozzáférési szolgáltatásként is támogatott.
 
 - A CMK képesség egy dedikált Log Analytics-fürtön érhető el, amely egy fizikai fürt és egy adattároló, amely akár napi 1 TB-ot küld az ügyfeleknek
 
@@ -42,7 +38,7 @@ Az elmúlt 14 napban betöltött adatok gyors gyorsítótárban (SSD-vel) is meg
 
 ## <a name="how-cmk-works-in-azure-monitor"></a>Hogyan működik a CMK Azure Monitor
 
-Azure Monitor a rendszer által hozzárendelt felügyelt identitást használja a Azure Key Vault elérésének biztosításához.A rendszer által hozzárendelt felügyelt identitás csak egyetlen Azure-erőforráshoz társítható. A dedikált Log Analytics-fürt identitása a fürt szintjén támogatott, és ez azt határozza meg, hogy a CMK képesség dedikált Log Analytics-fürtön legyen továbbítva. Ha több munkaterületen is támogatni szeretné a CMK, egy új Log Analytics *fürterőforrás* közbenső identitás-kapcsolatként működik a Key Vault és a log Analytics munkaterületek között. Ez a fogalom megőrzi a dedikált Log Analytics-fürt és a Log Analytics *fürterőforrás* közötti identitást, míg a társított munkaterületek adatai védve vannak a Key Vault kulccsal. A dedikált Log Analytics fürt tárterülete a *fürt* erőforrásához\'társított felügyelt identitást használja a Azure Key Vault Azure Active Directory használatával történő hitelesítéséhez és eléréséhez.
+Azure Monitor a rendszer által hozzárendelt felügyelt identitást használja a Azure Key Vault elérésének biztosításához.A rendszer által hozzárendelt felügyelt identitás csak egyetlen Azure-erőforráshoz társítható. A dedikált Log Analytics-fürt identitása a fürt szintjén támogatott, és ez azt határozza meg, hogy a CMK képesség dedikált Log Analytics-fürtön legyen továbbítva. Ha több munkaterületen is támogatni szeretné a CMK, egy új Log Analytics *fürterőforrás* közbenső identitás-kapcsolatként működik a Key Vault és a log Analytics munkaterületek között. Ez a fogalom megőrzi a dedikált Log Analytics-fürt és a Log Analytics *fürterőforrás* közötti identitást, míg a társított munkaterületek adatai védve vannak a Key Vault kulccsal. A dedikált Log Analytics fürt tárterülete a fürt erőforrásához társított felügyelt identitást használja a \' Azure Key Vault Azure Active Directory használatával történő hitelesítéséhez és eléréséhez. *Cluster*
 
 ![A CMK áttekintése](media/customer-managed-keys/cmk-overview-8bit.png)
 1.    Az ügyfél Key Vault.
@@ -72,7 +68,7 @@ A következő szabályok érvényesek:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-létesítési eljárás
 
-1. Előfizetés-engedélyezési lista – ez a korai hozzáférési szolgáltatáshoz szükséges
+1. Előfizetés-engedélyezési lista – annak biztosításához, hogy az Ön régiójában a dedikált Log Analytics-fürt számára biztosítható legyen a szükséges kapacitás, az előfizetést előzetesen ellenőrizni és engedélyezni kell
 2. Azure Key Vault létrehozása és a kulcs tárolása
 3. *Fürterőforrás* létrehozása
 5. Engedélyek megadása a Key Vault számára
@@ -173,7 +169,7 @@ Ezek a beállítások a CLI-n és a PowerShellen keresztül érhetők el:
 
 Ez az erőforrás köztes identitás-kapcsolatként használatos a Key Vault és az Log Analytics-munkaterületek között. Miután megkapta a megerősítést, hogy az előfizetések engedélyezve lettek, hozzon létre egy Log Analytics *fürterőforrás* azon a régión, ahol a munkaterületek találhatók.
 
-*Fürterőforrás* létrehozásakor meg kell adnia a *kapacitás foglalási* szintjét (SKU). A *kapacitás foglalási* szintje napi 1 000 és 2 000 GB között lehet, és később is frissíthető 100-os lépésekben. Ha napi 2 000 GB-nál nagyobb kapacitású foglalásra van szüksége, lépjen kapcsolatba LAIngestionRate@microsoft.comvelünk a következő címen:. [További információ](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
+*Fürterőforrás* létrehozásakor meg kell adnia a *kapacitás foglalási* szintjét (SKU). A *kapacitás foglalási* szintje napi 1 000 és 2 000 GB között lehet, és később is frissíthető 100-os lépésekben. Ha napi 2 000 GB-nál nagyobb kapacitású foglalásra van szüksége, lépjen kapcsolatba velünk a következő címen: LAIngestionRate@microsoft.com . [További információ](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-clusters)
     
 A *billingType* tulajdonság határozza meg a *fürterőforrás* és a hozzá tartozó adatforrások számlázási hozzárendelését:
 - *fürt* (alapértelmezett) – a számlázás a *fürterőforrás* üzemeltetéséhez használt előfizetéshez van hozzárendelve.
@@ -420,16 +416,17 @@ GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/
 
 ## <a name="cmk-kek-revocation"></a>CMK (KEK) visszavonás
 
-Az adataihoz való hozzáférés visszavonásához tiltsa le a kulcsot, vagy törölje a *fürt* erőforrás-hozzáférési szabályzatát a Key Vault. Azure Monitor a tárterület mindig egy órán belül betartja a legfontosabb engedélyek változásait, általában hamarabb, a tárterület pedig elérhetetlenné válik. A rendszer elveti a *fürterőforrás* -munkaterületekhez kapcsolódó összes adatot, és a lekérdezések sikertelenek lesznek. A korábban betöltött adatmennyiség nem érhető el Azure Monitor tárolóban, amíg a *fürterőforrás* , és a munkaterületek nem törlődnek. A nem elérhető adatokra az adatmegőrzési szabályzat vonatkozik, és a rendszer törli az adatmegőrzési időtartamot. 
+Az adataihoz való hozzáférés visszavonásához tiltsa le a kulcsot, vagy törölje a *fürt* erőforrás-hozzáférési szabályzatát a Key Vault. A dedikált Log Analytics fürt tárterülete mindig egy órán belül vagy hamarabb veszi figyelembe a legfontosabb engedélyek változásait, a tárterület pedig elérhetetlenné válik. A *fürterőforrás* -munkaterülethez társított összes adat eldobásra kerül, és a lekérdezések sikertelenek lesznek. A korábban betöltött adatmennyiség nem érhető el a tárolóban, mivel a *fürterőforrás* és a munkaterületek nem törlődnek. A nem elérhető adatokra az adatmegőrzési szabályzat vonatkozik, és a rendszer törli az adatmegőrzési időtartamot. 
 
-Az elmúlt 14 napban betöltött adatok gyors gyorsítótárban (SSD-vel) is megmaradnak a hatékony lekérdezési motor működéséhez. Ezek az adategységek a Microsoft kulcsaival együtt titkosítva maradnak a CMK konfigurációjától függetlenül, de a kulcs-visszavonási művelet során törlődnek, és elérhetetlenné válnak.
+Az elmúlt 14 napban betöltött adatok gyors gyorsítótárban (SSD-vel) is megmaradnak a hatékony lekérdezési motor működéséhez. Ez törölve lesz a kulcs-visszavonási művelet során, és elérhetetlenné válik.
 
-A tárterület rendszeres időközönként lekérdezi a Key Vault, hogy megpróbálja kibontani a titkosítási kulcsot, és ha a hozzáférés, az adatfeldolgozás és a lekérdezés 30 percen belül folytatódni fog.
+A Storage rendszeres időközönként lekérdezi a Key Vault a titkosítási kulcs kicsomagolásának és a hozzájuk való hozzáférésnek, valamint az adatfeldolgozás és a lekérdezés 30 percen belüli folytatásának megkísérlése érdekében.
 
 ## <a name="cmk-kek-rotation"></a>CMK (KEK) rotáció
 
-A CMK forgása megköveteli a *fürterőforrás* explicit frissítését a Azure Key Vault új kulcsának verziójával. Ha az új kulccsal szeretné frissíteni a Azure Monitort, kövesse a " *fürterőforrás* frissítése a kulcs-azonosító részleteivel" lépést. Ha Key Vaultban frissíti a kulcs verzióját, és nem frissíti az új kulcs-azonosító részleteit a *fürterőforrás* -ben, Azure monitor a tárterület továbbra is az előző kulcsot használja.
-Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művelet után, beleértve az elforgatás előtt és után betöltött adatot is, mivel az összes adatot titkosítja a fiók titkosítási kulcsa (AEK), míg a AEK már titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával.
+A CMK forgatásához explicit frissítés szükséges a *fürterőforrás* számára a Azure Key Vault új kulcsának verziójával. Kövesse a " *fürterőforrás* frissítése a kulcs-azonosító részleteivel" lépést. Ha nem frissíti az új kulcs-azonosító részleteit a *fürterőforrás* -ben, a dedikált log Analytics fürt tárterülete továbbra is az előző kulcsot használja.
+
+Az összes adatot továbbra is elérhetővé kell tenni a kulcsfontosságú rotációs művelet után, beleértve az elforgatás előtt és azt követően betöltött adatot is, mivel az adatforgalom mindig a fiók titkosítási kulcsával (AEK) van titkosítva, míg a AEK már titkosítva van az új kulcs titkosítási kulcs (KEK) verziójával Key Vaultban.
 
 ## <a name="limitations-and-constraints"></a>Korlátozások és megkötések
 
@@ -575,8 +572,7 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
 
 - **A *fürterőforrás* és az adatok helyreállítása** 
   
-  Az elmúlt 14 napban törölt *fürterőforrás* törlési állapotban van, és helyreállítható. Ezt a terméket jelenleg a termékcsoport manuálisan hajtja végre. A Microsoft-csatornát a helyreállítási kérelmekhez használhatja.
-
+  Az elmúlt 14 napban törölt *fürterőforrás* törlési állapotban van, és visszaállítható az adott adattal. Mivel az összes munkaterület hozzá van rendelve a *fürt* erőforrásához a törlés során, a CMK titkosítás helyreállítását követően újra társítania kell a munkaterületeket. A helyreállítási műveletet a termékcsoport jelenleg manuálisan hajtja végre. A Microsoft-csatornát a helyreállítási kérelmekhez használhatja.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 - Működés Key Vault rendelkezésre állással
@@ -595,3 +591,10 @@ Az összes adatot elérhetővé kell tenni a kulcsfontosságú rotációs művel
 - Ha a *fürterőforrás* létrehozásakor ütközési hiba lép fel, akkor előfordulhat, hogy az elmúlt 14 napban törölte a *fürterőforrás* -t, és ez egy nem megfelelő törlési időszak. A *fürterőforrás* neve a Soft-delete időszakban marad fenntartva, és nem hozhat létre ilyen nevű új fürtöt. A név akkor jelenik meg, ha a rendszer véglegesen törli a *fürt* erőforrását a helyreállított törlési időszak után.
 
 - Ha egy művelet végrehajtása közben frissíti a *fürterőforrás* -erőforrást, a művelet sikertelen lesz.
+
+- Ha nem sikerül telepíteni a *fürterőforrás* -t, ellenőrizze, hogy a Azure Key Vault, a *fürterőforrás*   és a társított log Analytics-munkaterületek ugyanabban a régióban találhatók-e. A lehet különböző előfizetésekben.
+
+- Ha Key Vaultban frissíti a kulcs verzióját, és nem frissíti az új kulcs-azonosító részleteit a *fürterőforrás* -ben, a log Analytics-fürt továbbra is az előző kulcsot fogja használni, és az adatai elérhetetlenné válnak. Frissítse az új kulcs-azonosító részleteit a *fürterőforrás* -ben az adatok feldolgozásának folytatásához és az adatok lekérdezési képességéhez.
+
+- Az ügyfél által felügyelt kulccsal kapcsolatos támogatásért és segítségért használja a Microsoft-partnereit.
+

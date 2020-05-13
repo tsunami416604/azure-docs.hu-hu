@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 03/19/2020
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: elisol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c7917b63b86e4d103061a902f74c368dfd6c123b
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bbfd0027f9de93ee939815853f5141044404c53
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160740"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199493"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B együttműködés meghívásának beváltása
 
@@ -41,10 +41,10 @@ Ha [a Azure Portal használatával](https://docs.microsoft.com/azure/active-dire
 A meghívót tartalmazó e-mailek alternatívájaként az alkalmazásra vagy a portálra mutató közvetlen hivatkozást is megadhat. Először hozzá kell adnia a vendég felhasználót a címtárhoz a [Azure Portal](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-add-guest-users-portal) vagy a [PowerShell](https://docs.microsoft.com/azure/active-directory/b2b/b2b-quickstart-invite-powershell)használatával. Ezután bármilyen [testreszabható módszert használhat az alkalmazások felhasználók számára történő központi telepítéséhez](https://docs.microsoft.com/azure/active-directory/manage-apps/end-user-experiences), beleértve a közvetlen bejelentkezési hivatkozásokat is. Ha egy vendég közvetlen hivatkozást használ a meghívó e-mail-címe helyett, a rendszer továbbra is az első belefoglalási élményt fogja követni.
 
 > [!IMPORTANT]
-> A közvetlen hivatkozásnak bérlő-specifikusnak kell lennie. Más szóval tartalmaznia kell egy bérlői azonosítót vagy egy ellenőrzött tartományt, hogy a vendég hitelesíthető legyen a bérlőben, ahol a megosztott alkalmazás található. Egy közös URL- https://myapps.microsoft.com cím, például nem fog működni a vendég számára, mert az átirányítja a saját bérlőre a hitelesítéshez. Íme néhány példa a bérlői környezettel kapcsolatos közvetlen hivatkozásokra:
- > - Alkalmazások hozzáférési panelje https://myapps.microsoft.com/?tenantid=&lt:; bérlő azonosítója&gt; 
- > - Az ellenőrzött tartományhoz tartozó alkalmazások hozzáférési panelje: https://myapps.microsoft.com/&lt; ellenőrzött tartomány&gt;
- > - Azure Portal: https://portal.azure.com/&lt; bérlő azonosítója&gt;
+> A közvetlen hivatkozásnak bérlő-specifikusnak kell lennie. Más szóval tartalmaznia kell egy bérlői azonosítót vagy egy ellenőrzött tartományt, hogy a vendég hitelesíthető legyen a bérlőben, ahol a megosztott alkalmazás található. Egy közös URL-cím, például https://myapps.microsoft.com nem fog működni a vendég számára, mert az átirányítja a saját bérlőre a hitelesítéshez. Íme néhány példa a bérlői környezettel kapcsolatos közvetlen hivatkozásokra:
+ > - Alkalmazások hozzáférési panelje: https://myapps.microsoft.com/?tenantid=&lt ; bérlő azonosítója&gt; 
+ > - Az ellenőrzött tartományhoz tartozó alkalmazások hozzáférési panelje: https://myapps.microsoft.com/&lt ; ellenőrzött tartomány&gt;
+ > - Azure Portal: https://portal.azure.com/&lt ; bérlő azonosítója&gt;
  > - Egyéni alkalmazás: lásd a [közvetlen bejelentkezési hivatkozás](../manage-apps/end-user-experiences.md#direct-sign-on-links) használatát ismertető témakört.
 
 Vannak olyan esetek, amikor a meghívó e-mail-címe közvetlen hivatkozáson keresztül ajánlott. Ha ezek a speciális esetek fontosak a szervezet számára, javasoljuk, hogy a meghívó e-mailt még elküldő metódusok használatával meghívja a felhasználókat:
@@ -99,7 +99,7 @@ Amikor egy vendég először jelentkezik be a partner szervezet erőforrásaihoz
 
    ![Az új használati feltételeket bemutató képernyőkép](media/redemption-experience/terms-of-use-accept.png) 
 
-   A következő témakörben megadhatja a [használati feltételeket](../governance/active-directory-tou.md) a**szervezeti kapcsolatok** >  **kezelése** > **használati feltételek**.
+   A használati [feltételeket](../governance/active-directory-tou.md) **szervezeti kapcsolatokban** (vagy **külső identitásokban**) is konfigurálhatja > **használati feltételek**.
 
 3. Ha másként nincs megadva, a rendszer átirányítja a vendéget az alkalmazások hozzáférési paneljére, amely felsorolja a vendég által elérhető alkalmazásokat.
 

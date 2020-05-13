@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: memildin
-ms.openlocfilehash: 056b9bdd46520790f3ffbd9aca56ad8555e23a3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b1edb0791e80a8503e5ecba3154d7b421206272c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189820"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198616"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
 A Security Center adatokat gyűjt az Azure-beli virtuális gépekről (VM), a virtuálisgép-méretezési csoportokról, a IaaS-tárolók és a nem Azure-beli (beleértve a helyszíni) számítógépekről a biztonsági rések és fenyegetések figyeléséhez. Az adatok gyűjtése a Log Analytics ügynök használatával történik, amely beolvassa a különböző biztonsággal kapcsolatos konfigurációkat és eseménynaplókat a gépről, és az adatokat a munkaterületre másolja az elemzéshez. Ilyenek például a következők: az operációs rendszer típusa és verziója, az operációs rendszer naplói (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is másolja a munkaterületre.
@@ -72,7 +72,7 @@ Security Center által létrehozott munkaterület kiválasztása:
 
 1. Kattintson a **Save** (Mentés) gombra.<br>
     Security Center létrehoz egy új erőforráscsoportot és egy alapértelmezett munkaterületet az adott földrajzi helyhez, és csatlakoztatja az ügynököt az adott munkaterülethez. A munkaterület és az erőforráscsoport elnevezési konvenciója a következő:<br>
-   **Munkaterület: Alapértelmezettmunkaterület-[előfizetés-azonosító]-[geo]<br> erőforráscsoport: DefaultResourceGroup-[geo]**
+   **Munkaterület: Alapértelmezettmunkaterület-[előfizetés-azonosító]-[geo] <br> erőforráscsoport: DefaultResourceGroup-[geo]**
 
    Ha egy előfizetés több földrajzi helyről származó virtuális gépeket tartalmaz, akkor Security Center több munkaterületet hoz létre. A rendszer több munkaterületet hoz létre az adatvédelmi szabályok fenntartása érdekében.
 1. Security Center automatikusan engedélyezi a Security Center megoldást a munkaterületen az előfizetéshez beállított díjszabási szinten. 
@@ -126,7 +126,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
     a.  A Security Center főmenüjében válassza a **díjszabás & beállítások**elemet.
      
     b.  Válassza ki azt a kívánt munkaterületet, amelyben csatlakozni kíván az ügynökhöz.
-        ![Válassza a][7] c munkaterület lehetőséget. Állítsa be az árképzési szintet.
+        ![Válassza a ][7] c munkaterület lehetőséget. Állítsa be az árképzési szintet.
         ![Árképzési szintek kiválasztása][9]
    
    >[!NOTE]
@@ -223,9 +223,8 @@ A biztonsági házirendben a beállítás kikapcsolásával bármikor kikapcsolh
 
 Ha az automatikus kiépítés le van tiltva (kikapcsolva), az alapértelmezett munkaterület-konfiguráció szakasz nem jelenik meg.
 
-Ha kikapcsolja az automatikus kiépítést, miután korábban volt a következő:
--   Az ügynökök nem lesznek kiépítve az új virtuális gépeken.
--   Security Center leállítja az adatok gyűjtését az alapértelmezett munkaterületről.
+Ha kikapcsolja az automatikus kiépítést, miután korábban az ügynökökön volt, az új virtuális gépeken nem lesz kiépítve.
+
  
 > [!NOTE]
 >  Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt azon Azure-beli virtuális gépekről, amelyeken az ügynök ki lett építve. További információ a OMS-bővítmény eltávolításáról: [Hogyan Security Center által telepített OMS-bővítmények eltávolítása](faq-data-collection-agents.md#remove-oms).

@@ -2,18 +2,19 @@
 title: Azure Virtual Machine Scale Sets – gyakori kérdések
 description: Választ kaphat az Azure-beli virtuálisgép-méretezési csoportokkal kapcsolatos leggyakrabban feltett kérdésekre.
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
-ms.service: virtual-machine-scale-sets
-ms.topic: conceptual
-ms.date: 05/24/2019
 ms.author: mimckitt
-ms.openlocfilehash: 0a5fcb3bb1ebf48eaa9cdce70800a4239c5fae03
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: faq
+ms.date: 05/24/2019
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: a3074fdd10ef960a1c0b58b973d57da14d888af4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611398"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200160"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
 
@@ -225,15 +226,15 @@ Linuxos virtuális gép létrehozásakor egyszerű szövegként is megadhat SSH 
 
 linuxConfiguration elem neve | Kötelező | Típus | Leírás
 --- | --- | --- | ---
-SSH | No | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
+SSH | Nem | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
 path | Igen | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
 alapértékek | Igen | Sztring | Base64 kódolású nyilvános SSH-kulcsot ad meg
 
 Példaként tekintse meg [a 101-VM-Sshkey GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)rövid útmutatójának sablonját.
 
-### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Ha ugyanazon kulcstartóból egynél több tanúsítvány hozzáadását követően futtatok `Update-AzVmss` , a következő üzenet jelenik meg:
+### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>Ha `Update-AzVmss` ugyanazon kulcstartóból egynél több tanúsítvány hozzáadását követően futtatok, a következő üzenet jelenik meg:
 
->Update-AzVmss: a titkos lista a/Subscriptions/\<saját előfizetés-azonosító>/resourcegroups/Internal-RG-dev/Providers/Microsoft.keyvault/Vaults/Internal-keyvault-dev ismétlődő példányait tartalmazza, ami nem engedélyezett.
+>Update-AzVmss: a titkos lista a/Subscriptions/ \< saját előfizetés-azonosító>/resourcegroups/Internal-RG-dev/Providers/Microsoft.keyvault/Vaults/Internal-keyvault-dev ismétlődő példányait tartalmazza, ami nem engedélyezett.
 
 Ez akkor fordulhat elő, ha ugyanazt a tárat próbálja újra felvenni a meglévő forrás-tárolóhoz tartozó új tár tanúsítványának használata helyett. A `Add-AzVmssSecret` parancs nem működik megfelelően, ha további titkos kulcsokat ad hozzá.
 
@@ -251,7 +252,7 @@ Az új virtuális gépeken nem lesz a régi tanúsítvány. Azonban a tanúsítv
 
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>Leküldhetem a tanúsítványokat a virtuálisgép-méretezési csoportba a jelszó megadása nélkül, ha a tanúsítvány a titkos tárolóban található?
 
-Parancsfájlokban nem szükséges a jelszavakhoz tartozó programkódok használata. Az üzembe helyezési parancsfájl futtatásához használt engedélyekkel dinamikusan lekérheti a jelszavakat. Ha olyan szkripttel rendelkezik, amely a titkos tároló kulcstárolóból helyez át egy tanúsítványt, a titkos `get certificate` tároló parancs a. pfx fájl jelszavát is megjeleníti.
+Parancsfájlokban nem szükséges a jelszavakhoz tartozó programkódok használata. Az üzembe helyezési parancsfájl futtatásához használt engedélyekkel dinamikusan lekérheti a jelszavakat. Ha olyan szkripttel rendelkezik, amely a titkos tároló kulcstárolóból helyez át egy tanúsítványt, a titkos tároló `get certificate` parancs a. pfx fájl jelszavát is megjeleníti.
 
 ### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>Hogyan működik az virtualMachineProfile. osProfile Secrets tulajdonsága a virtuálisgép-méretezési csoportokhoz? Miért van szükség a sourceVault értékre, ha meg kell adni a tanúsítvány abszolút URI azonosítóját a certificateUrl tulajdonsággal?
 
@@ -287,9 +288,9 @@ Ha alaphelyzetbe állítja a virtuális gépet, a rendszer törli a tanúsítvá
 
 ### <a name="what-happens-if-you-delete-a-certificate-from-the-key-vault"></a>Mi történik, ha töröl egy tanúsítványt a Key vaultból?
 
-Ha a titkos kulcsot törli a kulcstartóból, majd futtatja `stop deallocate` az összes virtuális gépre, majd újra elindítja őket, hiba lép fel. A hiba azért fordul elő, mert a CRP-nak le kell kérnie a titkos kulcsokat a Key vaultból, de nem. Ebben a forgatókönyvben törölheti a tanúsítványokat a virtuálisgép-méretezési csoport modelljéből.
+Ha a titkos kulcsot törli a kulcstartóból, majd futtatja az összes virtuális gépre, majd `stop deallocate` újra elindítja őket, hiba lép fel. A hiba azért fordul elő, mert a CRP-nak le kell kérnie a titkos kulcsokat a Key vaultból, de nem. Ebben a forgatókönyvben törölheti a tanúsítványokat a virtuálisgép-méretezési csoport modelljéből.
 
-A CRP-összetevő nem őrzi meg az ügyfelek titkos adatait. Ha a- `stop deallocate` t a virtuálisgép-méretezési csoport összes virtuális gépén futtatja, a rendszer törli a gyorsítótárat. Ebben a forgatókönyvben a titkos kulcsokat a Key vaultból kéri le a rendszer.
+A CRP-összetevő nem őrzi meg az ügyfelek titkos adatait. Ha `stop deallocate` a-t a virtuálisgép-méretezési csoport összes virtuális gépén futtatja, a rendszer törli a gyorsítótárat. Ebben a forgatókönyvben a titkos kulcsokat a Key vaultból kéri le a rendszer.
 
 Ez a probléma nem fordulhat elő, mert a titkos kulcs gyorsítótárazott másolata az Azure Service Fabric (az egyhálós bérlői modellben).
 
@@ -301,7 +302,7 @@ Ha létrehoz egy virtuális gépet, majd a Key vaultban frissíti a titkos kulcs
 
 ### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>A csapatom számos, a. cer nyilvános kulcsként terjesztett tanúsítvánnyal működik együtt. Mi az ajánlott módszer ezeknek a tanúsítványoknak a virtuálisgép-méretezési csoportokra való üzembe helyezéséhez?
 
-Ha a. cer nyilvános kulcsait egy virtuálisgép-méretezési csoportba kívánja telepíteni, létrehozhat egy. pfx fájlt, amely csak. cer fájlokat tartalmaz. Ehhez használja `X509ContentType = Pfx`a következőt:. Töltse be például a. cer fájlt X509certificate2)-objektumként a C# vagy a PowerShell használatával, majd hívja meg a metódust.
+Ha a. cer nyilvános kulcsait egy virtuálisgép-méretezési csoportba kívánja telepíteni, létrehozhat egy. pfx fájlt, amely csak. cer fájlokat tartalmaz. Ehhez használja a következőt: `X509ContentType = Pfx` . Töltse be például a. cer fájlt X509certificate2)-objektumként a C# vagy a PowerShell használatával, majd hívja meg a metódust.
 
 További információ: [x509. export metódus (X509ContentType, string)](https://msdn.microsoft.com/library/24ww6yzk(v=vs.110.aspx)).
 
@@ -359,7 +360,7 @@ $vmss=Remove-AzVmssExtension -VirtualMachineScaleSet $vmss -Name "extensionName"
 Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName" -VirtualMacineScaleSet $vmss
 ```
 
-A extensionName értéke megtalálható a ben `$vmss`.
+A extensionName értéke megtalálható a ben `$vmss` .
 
 ### <a name="is-there-a-virtual-machine-scale-set-template-example-that-integrates-with-azure-monitor-logs"></a>Van egy virtuálisgép-méretezési csoport sablonja, amely integrálható Azure Monitor naplókba?
 
@@ -638,7 +639,7 @@ A virtuálisgép-méretezési csoport új rendszerképre való frissítéséhez 
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>Használhatom a rendszerkép visszaállítása műveletet a virtuális gép alaphelyzetbe állításához a rendszerkép módosítása nélkül? (Azaz szeretnék alaphelyzetbe állítani egy virtuális gépet a gyári beállításokra új rendszerkép helyett.)
 
-Igen, a rerendszerkép művelettel a rendszerkép módosítása nélkül állíthatja alaphelyzetbe a virtuális gépet. Ha azonban a virtuálisgép `version = latest`-méretezési csoport egy platform-rendszerképre hivatkozik, a virtuális gép egy későbbi operációsrendszer-rendszerképre tud `reimage`frissíteni a hívásakor.
+Igen, a rerendszerkép művelettel a rendszerkép módosítása nélkül állíthatja alaphelyzetbe a virtuális gépet. Ha azonban a virtuálisgép-méretezési csoport egy platform-rendszerképre hivatkozik `version = latest` , a virtuális gép egy későbbi operációsrendszer-rendszerképre tud frissíteni a hívásakor `reimage` .
 
 ### <a name="is-it-possible-to-integrate-scale-sets-with-azure-monitor-logs"></a>Lehetséges a méretezési csoportok integrálása Azure Monitor naplókkal?
 
@@ -683,13 +684,13 @@ A rendszerindítási diagnosztika bekapcsolásához először hozzon létre egy 
 
 ### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>Hogyan lekérni az egyes virtuális gépekre vonatkozó információkat több hívás nélkül? Hogyan szerezhetem be a tartalék tartományt a virtuálisgép-méretezési csoportba tartozó 100-es virtuális gépek esetében?
 
-Ha az egyes virtuális gépekhez több hívás nélkül szeretne tulajdonságokat beolvasni, a `ListVMInstanceViews` REST API `GET` a következő erőforrás-URI-n keresztül hívhat meg:
+Ha az egyes virtuális gépekhez több hívás nélkül szeretne tulajdonságokat beolvasni, a `ListVMInstanceViews` REST API a következő erőforrás-URI-n keresztül hívhat `GET` meg:
 
 /Subscriptions/<subscription_id>/resourceGroups/<resource_group_name>/providers/Microsoft.Compute/virtualMachineScaleSets/<scaleset_name>/virtualMachines? $expand = instanceView&$select = instanceView
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>Különböző kiterjesztési argumentumok adhatók át a virtuálisgép-méretezési csoportokban lévő különböző virtuális gépekhez?
 
-Nem, a virtuálisgép-méretezési csoportokban nem lehet eltérő kiterjesztési argumentumokat átadni a különböző virtuális gépekhez. A bővítmények azonban a-on futó virtuális gép egyedi tulajdonságai alapján működhetnek, például a gép nevén. A bővítmények a http://169.254.169.254 példány metaadatainak lekérdezésével is lekérhetik a virtuális géppel kapcsolatos további információkat.
+Nem, a virtuálisgép-méretezési csoportokban nem lehet eltérő kiterjesztési argumentumokat átadni a különböző virtuális gépekhez. A bővítmények azonban a-on futó virtuális gép egyedi tulajdonságai alapján működhetnek, például a gép nevén. A bővítmények a példány metaadatainak lekérdezésével is lekérhetik a http://169.254.169.254 virtuális géppel kapcsolatos további információkat.
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>Miért van különbség a virtuálisgép-méretezési csoport virtuális gépek nevei és virtuálisgép-azonosítói között? Például: 0, 1, 3...
 
@@ -699,12 +700,12 @@ Ezt a tulajdonságot **hamis**értékre állíthatja. A kisméretű virtuálisg�
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>Mi a különbség a virtuálisgép-méretezési csoportokban lévő virtuális gépek törlése és a virtuális gép felszabadítása között? Mikor érdemes választani egyet a másikon?
 
-A virtuálisgép-méretezési csoportokban lévő virtuális gépek és a virtuális gép felszabadítása közötti fő különbség az, `deallocate` hogy nem törli a virtuális merevlemezeket (VHD-ket). A futtatáshoz `stop deallocate`tárolási költségek vannak társítva. A következő okok egyikére használhatja az egyiket vagy a másikat:
+A virtuálisgép-méretezési csoportokban lévő virtuális gépek és a virtuális gép felszabadítása közötti fő különbség az, hogy `deallocate` nem törli a virtuális merevlemezeket (VHD-ket). A futtatáshoz tárolási költségek vannak társítva `stop deallocate` . A következő okok egyikére használhatja az egyiket vagy a másikat:
 
 - Le szeretné állítani a számítási költségek kifizetését, de meg szeretné őrizni a virtuális gépek lemezes állapotát.
 - A virtuálisgép-méretezési csoport felskálázásához gyorsabban szeretné elindítani a virtuális gépek készletét.
   - Ezzel kapcsolatban előfordulhat, hogy létrehozta a saját autoskálázási motort, és gyorsabb, végpontok közötti méretezést szeretne.
-- Olyan virtuálisgép-méretezési csoporttal rendelkezik, amely egyenetlenül van elosztva a tartalék tartományok vagy a frissítési tartományok között. Ennek az lehet az oka, hogy szelektíven törölte a virtuális gépeket, vagy mert a túlzott kiépítése után törölték a virtuális gépeket. A `stop deallocate` Futtatás után `start` a virtuálisgép-méretezési csoport egyenletesen osztja el a virtuális gépeket a tartalék tartományok vagy a frissítési tartományok között.
+- Olyan virtuálisgép-méretezési csoporttal rendelkezik, amely egyenetlenül van elosztva a tartalék tartományok vagy a frissítési tartományok között. Ennek az lehet az oka, hogy szelektíven törölte a virtuális gépeket, vagy mert a túlzott kiépítése után törölték a virtuális gépeket. A Futtatás `stop deallocate` után a `start` virtuálisgép-méretezési csoport egyenletesen osztja el a virtuális gépeket a tartalék tartományok vagy a frissítési tartományok között.
 
 ### <a name="how-do-i-take-a-snapshot-of-a-virtual-machine-scale-set-instance"></a>Hogyan készítsen pillanatképet a virtuálisgép-méretezési csoport példányairól?
 Hozzon létre egy pillanatképet egy virtuálisgép-méretezési csoport egy példányáról.

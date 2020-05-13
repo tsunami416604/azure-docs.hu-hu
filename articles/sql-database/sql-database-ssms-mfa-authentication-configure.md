@@ -4,19 +4,19 @@ description: Ismerje meg, hogyan használható a többtényezős hitelesítés a
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: has-adal-ref
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 38d8eba5dd451c8e8709ce4d43aba107e5346bfc
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: e551ac54414cb3114a7d0905b1b2e59b0d16580a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82627364"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198552"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Többtényezős hitelesítés konfigurálása SQL Server Management Studio és az Azure AD-hez
 
@@ -38,7 +38,7 @@ A következő lépések bemutatják, hogyan csatlakozhat SQL Database vagy SAzur
 
 1. Az univerzális hitelesítés használatával történő kapcsolódáshoz a **Kapcsolódás a kiszolgálóhoz** párbeszédpanelen válassza a **Active Directory-Universal lehetőséget MFA-támogatással**. (Ha **Active Directory univerzális hitelesítést** látja, akkor nem a SSMS legújabb verziójával rendelkezik.)  
    ![1mfa – univerzális – kapcsolat][1]  
-2. Töltse ki a **Felhasználónév** mezőt a Azure Active Directory hitelesítő adataival a (z `user_name@domain.com`) formátumban.  
+2. Töltse ki a **Felhasználónév** mezőt a Azure Active Directory hitelesítő adataival a (z `user_name@domain.com` ) formátumban.  
    ![1mfa – univerzális – kapcsolat – felhasználó](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect-user.png)   
 3. Ha vendég felhasználóként csatlakozik, már nem kell végrehajtania az AD-tartománynév vagy a bérlői azonosító mezőt a vendég felhasználók számára, mert a SSMS 18. x vagy újabb automatikusan felismeri. További információkért lásd: az [univerzális hitelesítés SQL Database és az Azure szinapszis (SSMS-támogatás az MFA-hoz)](sql-database-ssms-mfa-authentication.md).
    ![MFA-No-bérlő-SSMS](./media/sql-database-ssms-mfa-auth/mfa-no-tenant-ssms.png)
@@ -46,7 +46,7 @@ A következő lépések bemutatják, hogyan csatlakozhat SQL Database vagy SAzur
    Ha azonban vendég felhasználóként csatlakozik a 17. x vagy régebbi SSMS használatával, kattintson a **Beállítások**elemre, majd a **kapcsolat tulajdonságai** párbeszédpanelen adja meg az **ad-tartománynév vagy a bérlői azonosító mező nevét** .
    ![MFA-bérlő – SSMS](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)
 
-4. A SQL Database és az Azure szinapszis esetében általában a **Beállítások** **párbeszédpanelen kell** megadnia az adatbázist. (Ha a csatlakoztatott felhasználó egy vendég felhasználó (azaz joe@outlook.com), jelölje be a jelölőnégyzetet, és adja hozzá az aktuális ad-tartománynevet vagy a bérlő azonosítóját a beállítások részeként. Lásd: [univerzális hitelesítés SQL Database és Azure szinapszis (SSMS-támogatás az MFA-hoz)](sql-database-ssms-mfa-authentication.md). Ezután kattintson a **Csatlakozás** gombra.  
+4. A SQL Database és az Azure szinapszis esetében általában a **Beállítások** **párbeszédpanelen kell** megadnia az adatbázist. (Ha a csatlakoztatott felhasználó egy vendég felhasználó (azaz joe@outlook.com ), jelölje be a jelölőnégyzetet, és adja hozzá az aktuális ad-tartománynevet vagy a bérlő azonosítóját a beállítások részeként. Lásd: [univerzális hitelesítés SQL Database és Azure szinapszis (SSMS-támogatás az MFA-hoz)](sql-database-ssms-mfa-authentication.md). Ezután kattintson a **Csatlakozás** gombra.  
 5. Amikor megjelenik a **Bejelentkezés a fiókba** párbeszédpanel, adja meg a Azure Active Directory identitásának fiókját és jelszavát. Nincs szükség jelszóra, ha a felhasználó az Azure AD-vel összevont tartomány tagja.  
    ![2mfa – bejelentkezés][2]  
 

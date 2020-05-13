@@ -8,16 +8,16 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: cherylmc
-ms.openlocfilehash: 15e44b9c048f167935fe8660228581e5bac0f43d
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 34b2282421b9c95ad99ad040cb11847a30d3b52c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006260"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200000"
 ---
 # <a name="sd-wan-connectivity-architecture-with-azure-virtual-wan"></a>SD-WAN kapcsolati architektúra az Azure Virtual WAN-ral
 
-Az Azure Virtual WAN egy hálózati szolgáltatás, amely számos felhőalapú és biztonsági szolgáltatást egyesít egyetlen operatív felületen. Ezek a szolgáltatások közé tartoznak az ág (helyek közötti VPN-en keresztül), a távoli felhasználó (pont – hely VPN), a magánhálózati (ExpressRoute) kapcsolat, valamint a felhőbe irányuló, a virtuális hálózatok, a VPN és a ExpressRoute közötti kapcsolat, az Útválasztás, a Azure Firewall és a privát kapcsolat titkosítása.
+Az Azure Virtual WAN egy hálózati szolgáltatás, amely számos felhőalapú és biztonsági szolgáltatást egyesít egyetlen operatív felületen. Ezen szolgáltatások közé tartoznak a telephelyek közötti VPN-kapcsolat, a távoli felhasználó (pont – hely VPN), a magánhálózati (ExpressRoute) kapcsolatok, a felhőn belüli tranzitív kapcsolat a virtuális hálózatok, a VPN és a ExpressRoute közötti kapcsolat, útválasztás, Azure Firewall és titkosítás a magánhálózati kapcsolathoz.
 
 Habár maga az Azure virtuális WAN egy szoftver által definiált WAN (SD-WAN), a helyszíni SD-WAN technológiák és szolgáltatások zökkenőmentes összekapcsolását is lehetővé teszi. Számos ilyen szolgáltatást a [virtuális WAN](virtual-wan-locations-partners.md) -ökoszisztéma és az Azure Networking felügyelt szolgáltatások [(MSP-partnerek)](../networking/networking-partners-msp.md)kínál. Azok a vállalatok, amelyek az SD-WAN-ra alakítják át a saját WAN-t, a saját SD-WAN és az Azure Virtual WAN összekapcsolásával is rendelkeznek. A vállalatok választhatnak a következő lehetőségek közül:
 
@@ -39,7 +39,7 @@ Az SD-WAN CPE továbbra is az a hely, ahol a forgalom optimalizálása és az el
 
 Ebben a modellben a valós idejű forgalmi mutatókon alapuló, a gyártótól származó tulajdonosi forgalom optimalizálása nem támogatott, mert a virtuális WAN-kapcsolat az IPsec protokollon keresztül történik, és az IPsec VPN a virtuális WAN VPN-átjárón leáll. Például a dinamikus elérési út a ág CPE-ben való kiválasztása a különböző hálózati csomagok más SD-WAN-csomóponttal való cseréje miatt valósítható meg, ezért a legjobb hivatkozás a különböző rangsorolt forgalomhoz való, dinamikusan a fiókirodában való használatra. Ez a funkció olyan területeken lehet hasznos, ahol a Last Mile Optimization (a legközelebbi Microsoft POP-hoz tartozó ág) megadása kötelező.
 
-A Virtual WAN használatával a felhasználók beszerezhetik az Azure Path Selection-t, amely házirend-alapú útvonal kiválasztása több ISP-kapcsolaton keresztül a fiókirodából a virtuális WAN VPN-átjárók között. A virtuális WAN lehetővé teszi több hivatkozás (elérési út) beállítását ugyanahhoz az SD-WAN ág CPE-hez, minden hivatkozás az SD-WAN CPE különböző nyilvános IP-felületén leáll. Az SD-WAN-szállítók kihasználhatják ezt a szolgáltatást, hogy kiválasszák az Azure-hoz legmegfelelőbb optimális útvonalat az ezen útvonalakra vonatkozó forgalmi szabályzatok alapján.
+A Virtual WAN használatával a felhasználók beszerezhetik az Azure Path Selection-t, amely házirend-alapú útvonal kiválasztása több ISP-kapcsolaton keresztül a fiókirodából a virtuális WAN VPN-átjárók között. A virtuális WAN lehetővé teszi több hivatkozás (elérési út) telepítését ugyanazon SD-WAN ág CPE-ből. az egyes hivatkozások az SD-WAN CPE egyedi nyilvános IP-címétől az Azure Virtual WAN VPN Gateway két különböző példányára mutató kettős bújtatási kapcsolatot jelentenek. Az SD-WAN-szállítók az Azure optimális elérési útját tudják megvalósítani, a szabályzatok által a CPE-hivatkozásokon beállított forgalmi házirendek alapján.
 
 ## <a name="indirect-interconnect-model"></a><a name="indirect"></a>Közvetett Interconnect-modell
 

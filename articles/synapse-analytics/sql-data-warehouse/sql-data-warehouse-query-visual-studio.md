@@ -11,19 +11,19 @@ ms.date: 08/15/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 174ee07e389e598fed6ed8487e60303fbce81f77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 444cb2c8378ad873beb61116c5c4387ad3c59761
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416049"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200343"
 ---
 # <a name="connect-to-azure-synapse-analytics-with-visual-studio-and-ssdt"></a>Kapcsolódás az Azure szinapszis Analyticshez a Visual Studióval és a SSDT
 > [!div class="op_single_selector"]
+> * [Azure Data Studio](../sql/get-started-azure-data-studio.md)
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
-> * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
 > * [Visual Studio](sql-data-warehouse-query-visual-studio.md)
-> * [Sqlcmd](../sql/get-started-connect-sqlcmd.md) 
+> * [sqlcmd](../sql/get-started-connect-sqlcmd.md) 
 > * [SSMS](sql-data-warehouse-query-ssms.md)
 > 
 > 
@@ -39,7 +39,7 @@ Ehhez az oktatóanyaghoz a következőkre lesz szüksége:
 
 ## <a name="1-connect-to-your-sql-pool"></a>1. kapcsolódás az SQL-készlethez
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
-2. SQL Server Object Explorer megnyitásához válassza a **nézet** > **SQL Server Object Explorer**lehetőséget.
+2. SQL Server Object Explorer megnyitásához válassza a **nézet**  >  **SQL Server Object Explorer**lehetőséget.
    
     ![SQL Server Object Explorer](./media/sql-data-warehouse-query-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
@@ -69,7 +69,7 @@ Most, hogy létrejött a kapcsolat az adatbázissal, ideje lefuttatni egy lekér
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. A lekérdezés futtatásához kattintson a zöld nyílra, vagy használja a következő `CTRL` + `SHIFT` + `E`billentyűparancsot:.
+4. A lekérdezés futtatásához kattintson a zöld nyílra, vagy használja a következő billentyűparancsot: `CTRL` + `SHIFT` + `E` .
    
     ![A lekérdezés futtatása](./media/sql-data-warehouse-query-visual-studio/run-query.png)
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.

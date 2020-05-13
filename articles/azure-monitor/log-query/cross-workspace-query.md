@@ -5,15 +5,18 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 06/05/2019
-ms.openlocfilehash: 4740034bd970f42833125fa43bfdf72f710ac147
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/01/2020
+ms.openlocfilehash: 83c33e6935de7c9ed9f1b2c9f97aa18dd6b10f01
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249606"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199908"
 ---
 # <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Erőforrás-naplózási lekérdezések végrehajtása Azure Monitor  
+
+> [!IMPORTANT]
+> Ha [munkaterületen alapuló Application Insights erőforrás-](../app/create-workspace-resource.md) telemetria használ, a rendszer egy log Analytics munkaterületen tárolja az összes többi naplózási adattal. A log () kifejezés használatával olyan lekérdezést írhat, amely több munkaterületen is tartalmaz alkalmazást. Ugyanazon a munkaterületen több alkalmazás esetében nincs szükség több munkaterület-lekérdezésre.
 
 Korábban a Azure Monitor használatával csak az aktuális munkaterületről elemezheti az adatait, és korlátozhatja az előfizetésben definiált több munkaterületre való lekérdezés lehetőségét.  Ezen kívül csak a webalapú alkalmazásból gyűjtött telemetria-elemeket keresheti meg Application Insights közvetlenül Application Insights vagy a Visual studióból. Ezzel a megoldással az operatív és az alkalmazásadatok natív elemzése is megtörtént.
 

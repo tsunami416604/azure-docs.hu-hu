@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: f41a15fb52698eaa17d6f76b991cbd31a56ba14f
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731973"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199738"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök automatikus méretezése
 
@@ -22,6 +22,11 @@ Az Azure HDInsight ingyenes automatikus méretezési funkciója a korábban beá
 ## <a name="how-it-works"></a>Működés
 
 Az automatikus méretezési funkció kétféle feltételt használ a skálázási események elindításához: a különböző fürt teljesítményének mérőszámai (úgynevezett *terheléses skálázás*) és az időalapú eseményindítók ( *ütemezett skálázás*) küszöbértékeit. A terhelésen alapuló skálázás megváltoztatja a fürtben lévő csomópontok számát a beállított tartományon belül, így biztosítva az optimális CPU-használatot, és csökkentheti a futtatási költségeket. Az ütemezett skálázás a fürt csomópontjainak számát a megadott dátummal és időpontokkal társított műveletek alapján módosítja.
+
+Az alábbi videó áttekintést nyújt azokról a kihívásokról, amelyekkel az autoscale megoldásokkal és a HDInsight-vel kapcsolatos költségek szabályozásával segít.
+
+
+> [!VIDEO https://www.youtube.com/embed/UlZcDGGFlZ0?WT.mc_id=dataexposed-c9-niner]
 
 ### <a name="choosing-load-based-or-schedule-based-scaling"></a>A Load-based vagy az Schedule-alapú skálázás kiválasztása
 
@@ -128,7 +133,7 @@ További információ a HDInsight-fürtök létrehozásáról a Azure Portal has
 
 #### <a name="load-based-autoscaling"></a>Load-alapú automatikus skálázás
 
-Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terheléses automatikus skálázásával, `autoscale` Ha hozzáad egy csomópontot a `computeProfile`  >  `workernode` szakaszhoz a tulajdonságok `minInstanceCount` segítségével, `maxInstanceCount` és az alábbi JSON-kódrészletben látható.
+Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terheléses automatikus skálázásával, ha hozzáad egy `autoscale` csomópontot a `computeProfile`  >  `workernode` szakaszhoz a tulajdonságok segítségével, `minInstanceCount` és az `maxInstanceCount` alábbi JSON-kódrészletben látható.
 
 ```json
 {
@@ -156,7 +161,7 @@ Létrehozhat egy HDInsight-fürtöt egy Azure Resource Manager-sablon terhelése
 
 #### <a name="schedule-based-autoscaling"></a>Ütemterv-alapú automatikus skálázás
 
-`autoscale` HDInsight-fürtöt úgy hozhat létre, hogy a szakaszhoz hozzáad egy csomópontot a `computeProfile`  >  `workernode` Azure Resource Manager-sablonhoz. A `autoscale` csomópont tartalmaz `recurrence` egy `timezone` - `schedule` t, amely leírja, hogy mikor kerül sor a módosításra.
+HDInsight-fürtöt úgy hozhat létre, `autoscale` hogy a `computeProfile`  >  szakaszhoz hozzáad egy csomópontot a Azure Resource Manager-sablonhoz `workernode` . A `autoscale` csomópont tartalmaz egy `recurrence` -t, `timezone` `schedule` amely leírja, hogy mikor kerül sor a módosításra.
 
 ```json
 {
@@ -202,7 +207,7 @@ Egy futó fürtön a REST API használatával engedélyezheti vagy letilthatja a
 https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{resourceGroup Name}/providers/Microsoft.HDInsight/clusters/{CLUSTERNAME}/roles/workernode/autoscale?api-version=2018-06-01-preview
 ```
 
-Használja a kérelem hasznos adatainak megfelelő paramétereket. Az alábbi JSON-adattartalom használatával engedélyezhető az autoskálázás. Az autoscale `{autoscale: null}` letiltásához használja a hasznos adatokat.
+Használja a kérelem hasznos adatainak megfelelő paramétereket. Az alábbi JSON-adattartalom használatával engedélyezhető az autoskálázás. Az `{autoscale: null}` autoscale letiltásához használja a hasznos adatokat.
 
 ```json
 { autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }

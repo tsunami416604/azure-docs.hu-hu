@@ -13,27 +13,25 @@ ms.workload: identity
 ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1be7ceb9b0560b87d0917fdb57b2c21e0b050db9
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d8851004c5d976961d96ca7d9f315780765fcde
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839096"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199564"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Erőforrás-szolgáltatói műveletek Azure Resource Manager
 
-Ebben a cikkben az egyes Azure Resource Manager-erőforrásszolgáltatókhoz elérhető műveletek listáját találja. Ezek a műveletek használhatók az [Azure egyéni szerepköreiben](custom-roles.md) az Azure-beli erőforrások részletes hozzáférés-vezérlésének biztosításához. A műveleti karakterláncok formátuma a `{Company}.{ProviderName}/{resourceType}/{action}`következő:. Az erőforrás-szolgáltatói névterek Azure-szolgáltatásokhoz való leképezésének listáját lásd: az [erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md).
+Ebben a cikkben az egyes Azure Resource Manager-erőforrásszolgáltatókhoz elérhető műveletek listáját találja. Ezek a műveletek használhatók az [Azure egyéni szerepköreiben](custom-roles.md) az Azure-beli erőforrások részletes hozzáférés-vezérlésének biztosításához. A műveleti karakterláncok formátuma a következő: `{Company}.{ProviderName}/{resourceType}/{action}` . Az erőforrás-szolgáltatói névterek Azure-szolgáltatásokhoz való leképezésének listáját lásd: az [erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md).
 
 Az erőforrás-szolgáltatói műveletek folyamatosan fejlődnek. A legújabb műveletek beszerzéséhez használja a [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) vagy [az az Provider Operation List műveletet](/cli/azure/provider/operation#az-provider-operation-list).
-
-[!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="microsoftaad"></a>Microsoft. HRE
 
 Azure-szolgáltatás: [Azure Active Directory Domain Services](../active-directory-domain-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. HRE/regisztráció/művelet | Tartományi szolgáltatás regisztrációjának törlése |
 > | Műveletek | Microsoft. HRE/regisztráció/művelet | Tartományi szolgáltatás regisztrálása |
@@ -55,7 +53,7 @@ Azure-szolgáltatás: [Azure Active Directory Domain Services](../active-directo
 Azure Active Directory
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | Műveletek | Microsoft. aadiam/diagnosticsettings/Write | Diagnosztikai beállítások írása |
@@ -90,7 +88,7 @@ Azure Active Directory
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. addons/regisztráció/művelet | A megadott előfizetés regisztrálása a Microsoft. addons szolgáltatásban |
 > |  | **Operations** |  |
@@ -107,7 +105,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Azure Active Directory](../active-directory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ADHybridHealthService/konfiguráció/művelet | A bérlő konfigurációjának frissítése. |
 > | Műveletek | Microsoft. ADHybridHealthService/szolgáltatások/művelet | Egy szolgáltatási példány frissítése a bérlőben. |
@@ -241,7 +239,7 @@ Azure-szolgáltatás: [Azure Active Directory](../active-directory/index.yml)
 Azure-szolgáltatás: [Azure Advisor](../advisor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Advisor/generateRecommendations/művelet | Javaslatok állapotának előállítása |
 > | Műveletek | Microsoft. Advisor/regisztráció/művelet | Regisztrálja a Microsoft Advisor előfizetését |
@@ -272,7 +270,7 @@ Azure-szolgáltatás: [Azure Advisor](../advisor/index.yml)
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. AlertsManagement/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft riasztások kezeléséhez |
 > |  | **actionRules** |  |
@@ -311,7 +309,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure Analysis Services](../analysis-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. AnalysisServices/regisztráció/művelet | Regisztrálja Analysis Services erőforrás-szolgáltatót. |
 > |  | **helyek** |  |
@@ -339,7 +337,7 @@ Azure-szolgáltatás: [Azure Analysis Services](../analysis-services/index.yml)
 Azure-szolgáltatás: [API Management](../api-management/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ApiManagement/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. ApiManagement erőforrás-szolgáltatónál |
 > | Műveletek | Microsoft. ApiManagement/regisztráció/művelet | A Microsoft. ApiManagement erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának megszüntetése |
@@ -637,7 +635,7 @@ Azure-szolgáltatás: [API Management](../api-management/index.yml)
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. AppConfiguration/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft-alkalmazás konfigurációjának használatához. |
 > |  | **checkNameAvailability** |  |
@@ -684,7 +682,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Authorization/elevateAccess/művelet | A hívónak felhasználói hozzáférésű rendszergazdai hozzáférést engedélyez a bérlői hatókörben |
 > |  | **classicAdministrators** |  |
@@ -738,7 +736,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 Azure-szolgáltatás: [automatizálás](../automation/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Automation/regisztráció/művelet | Az előfizetés regisztrálása Azure Automation |
 > |  | **automationAccounts** |  |
@@ -919,7 +917,7 @@ Azure-szolgáltatás: [automatizálás](../automation/index.yml)
 Azure-szolgáltatás: [Azure Active Directory B2C](../active-directory-b2c/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. AzureActiveDirectory/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. AzureActiveDirectory erőforrás-szolgáltatónál |
 > |  | **b2cDirectories** |  |
@@ -936,7 +934,7 @@ Azure-szolgáltatás: [Azure Active Directory B2C](../active-directory-b2c/index
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. AzureStack/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. AzureStack erőforrás-szolgáltatónál |
 > |  | **cloudManifestFiles** |  |
@@ -964,7 +962,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Batch](../batch/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. batch/regisztráció/művelet | Regisztrálja az előfizetést a Batch erőforrás-szolgáltató számára, és lehetővé teszi a Batch-fiókok létrehozását. |
 > | Műveletek | Microsoft. batch/regisztráció/művelet | A Batch erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése a Batch-fiókok létrehozásának megakadályozása érdekében |
@@ -1030,7 +1028,7 @@ Azure-szolgáltatás: [Batch](../batch/index.yml)
 Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Billing/validateAddress/művelet |  |
 > | Műveletek | Microsoft. számlázás/regisztráció/művelet |  |
@@ -1099,7 +1097,7 @@ Azure-szolgáltatás: [Cost Management + számlázás](../cost-management-billin
 Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. BingMaps/updateCommunicationPreference/művelet | A Microsoft. BingMaps tulajdonosának kommunikációs beállításait frissíti. |
 > | Műveletek | Microsoft. BingMaps/listCommunicationPreference/művelet | Lekéri a Microsoft. BingMaps tulajdonosának kommunikációs beállításait |
@@ -1118,7 +1116,7 @@ Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 Azure-szolgáltatás: [Azure Blockchain Service](../blockchain/workbench/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Blockchain/regisztráció/művelet | Regisztrálja az előfizetést a Blockchain erőforrás-szolgáltatóhoz. |
 > |  | **blockchainMembers** |  |
@@ -1149,7 +1147,7 @@ Azure-szolgáltatás: [Azure Blockchain Service](../blockchain/workbench/index.y
 Azure-szolgáltatás: [Azure-tervek](../governance/blueprints/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Blueprint/regisztráció/művelet | Regisztrálja az Azure-tervrajzok erőforrás-szolgáltatóját |
 > |  | **blueprintAssignments** |  |
@@ -1179,7 +1177,7 @@ Azure-szolgáltatás: [Azure-tervek](../governance/blueprints/index.yml)
 Azure-szolgáltatás: [Azure bot Service](https://docs.microsoft.com/azure/bot-service/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. BotService/checknameavailability/művelet | Egy robot nevének rendelkezésre állásának keresése |
 > | Műveletek | Microsoft. BotService/listauthserviceproviders/művelet | Hitelesítési szolgáltatók listázása |
@@ -1208,7 +1206,7 @@ Azure-szolgáltatás: [Azure bot Service](https://docs.microsoft.com/azure/bot-s
 Azure-szolgáltatás: [Azure cache for Redis](../azure-cache-for-redis/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. cache/checknameavailability/művelet | Ellenőrzi, hogy a név elérhető-e új Redis Cache |
 > | Műveletek | Microsoft. cache/regisztráció/művelet | Regisztrálja a Microsoft. cache erőforrás-szolgáltatót egy előfizetéssel |
@@ -1248,7 +1246,7 @@ Azure-szolgáltatás: [Azure cache for Redis](../azure-cache-for-redis/index.yml
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Capacity/calculateprice/művelet | A foglalás árának kiszámítása |
 > | Műveletek | Microsoft. Capacity/checkoffers/művelet | Előfizetési ajánlatok keresése |
@@ -1297,7 +1295,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. CDN/regisztráció/művelet | Regisztrálja az előfizetést a CDN erőforrás-szolgáltató számára, és lehetővé teszi a CDN-profilok létrehozását. |
 > | Műveletek | Microsoft. CDN/CheckNameAvailability/művelet |  |
@@ -1381,7 +1379,7 @@ Azure-szolgáltatás: [Content Delivery Network](../cdn/index.yml)
 Azure-szolgáltatás: [app Service tanúsítványok](../app-service/configure-ssl-certificate.md#import-an-app-service-certificate)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. CertificateRegistration/provisionGlobalAppServicePrincipalInUserTenant/művelet | Egyszerű szolgáltatásnév kiépítése a Service app számára |
 > | Műveletek | Microsoft. CertificateRegistration/validateCertificateRegistrationInformation/művelet | Tanúsítvány-megvásárlási objektum ellenőrzése az elküldése nélkül |
@@ -1410,7 +1408,7 @@ Azure-szolgáltatás: [app Service tanúsítványok](../app-service/configure-ss
 Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális gép
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ClassicCompute/regisztráció/művelet | Regisztrálás a klasszikus számítási feladatokba |
 > | Műveletek | Microsoft. ClassicCompute/checkDomainNameAvailability/művelet | Ellenőrzi egy adott tartománynév rendelkezésre állását. |
@@ -1584,7 +1582,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális gép
 Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális hálózata
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ClassicNetwork/regisztráció/művelet | Regisztrálás a klasszikus hálózatra |
 > |  | **expressroutecrossconnections** |  |
@@ -1691,7 +1689,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell virtuális hálózata
 Azure-szolgáltatás: klasszikus üzembe helyezési modell tárolója
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ClassicStorage/regisztráció/művelet | Regisztrálás a klasszikus tárolóba |
 > | Műveletek | Microsoft. ClassicStorage/checkStorageAccountAvailability/művelet | A Storage-fiók rendelkezésre állását ellenőrzi. |
@@ -1790,7 +1788,7 @@ Azure-szolgáltatás: klasszikus üzembe helyezési modell tárolója
 Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. CognitiveServices/regisztráció/művelet | Előfizetés-regisztrációs művelet |
 > | Műveletek | Microsoft. CognitiveServices/regisztráció/művelet | Cognitive Services-előfizetés regisztrálása |
@@ -2137,7 +2135,7 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 > | DataAction | Microsoft. CognitiveServices/fiókok/helyesírás/helyesírás/művelet | Helyesírás-ellenőrzési lekérdezés eredményének beolvasása a GET vagy a POST használatával. |
 > |  | **fiókok/TextAnalytics** |  |
 > | DataAction | Microsoft. CognitiveServices/accounts/TextAnalytics/languages/Action | Az API az észlelt nyelvet és egy 0 és 1 közötti numerikus pontszámot ad vissza. Az 1 értéknél közelebbi pontszámok 100%-os bizonyosságot jeleznek, hogy az azonosított nyelv igaz. Összesen 120 nyelv támogatott. |
-> | DataAction | Microsoft. CognitiveServices/fiókok/TextAnalytics/entitások/művelet | Az API egy adott dokumentum ismert entitások és általános névvel ellátott\"entitások \"(\"személy \"\",\" hely, szervezet stb.) listáját adja vissza egy adott dokumentumban. |
+> | DataAction | Microsoft. CognitiveServices/fiókok/TextAnalytics/entitások/művelet | Az API egy adott dokumentum ismert entitások és általános névvel ellátott entitások ( \" személy \" , \" hely \" , \" szervezet \" stb.) listáját adja vissza egy adott dokumentumban. |
 > | DataAction | Microsoft. CognitiveServices/fiókok/TextAnalytics/alkifejezések/művelet | Az API a bemeneti szövegben szereplő legfontosabb beszéd pontokat jelölő karakterláncok listáját adja vissza. |
 > | DataAction | Microsoft. CognitiveServices/accounts/TextAnalytics/hangulat/művelet | Az API egy 0 és 1 közötti számértéket ad vissza.<br>Az 1-hez közelebbi pontszám pozitív, míg a 0-hoz közelebbi pontszám negatív érzelmeket jelez.<br>A 0,5-es pontszám jelzi az érzelmek hiányát (például<br>egy factoid-utasítás). |
 > |  | **fiókok/VideoSearch** |  |
@@ -2154,7 +2152,7 @@ Azure-szolgáltatás: [Cognitive Services](../cognitive-services/index.yml)
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Commerce/regisztráció/művelet | Előfizetés regisztrálása a Microsoft Commerce UsageAggregate |
 > | Műveletek | Microsoft. Commerce/regisztráció/művelet | A Microsoft Commerce UsageAggregate-előfizetés regisztrációjának törlése |
@@ -2168,7 +2166,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Virtual Machines](../virtual-machines/index.yml), [Virtual Machine Scale sets](../virtual-machine-scale-sets/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. számítás/regisztrálás/művelet | Előfizetés regisztrálása a Microsoft. számítási erőforrás-szolgáltatónál |
 > | Műveletek | Microsoft. számítás/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. számítási erőforrás-szolgáltatónál |
@@ -2299,7 +2297,7 @@ Azure-szolgáltatás: [Virtual Machines](../virtual-machines/index.yml), [Virtua
 > | Műveletek | Microsoft. számítási/sharedVMImages/verziók/replikálás/művelet | Célrégiókba replikálása célként megadott régiókba |
 > |  | **SKUs** |  |
 > | Műveletek | Microsoft. számítás/SKU/READ | Az előfizetéshez elérhető Microsoft. számítási SKU-EK listájának beolvasása |
-> |  | **pillanatképek** |  |
+> |  | **Pillanatképek** |  |
 > | Műveletek | Microsoft. számítás/Pillanatképek/olvasás | Pillanatkép tulajdonságainak beolvasása |
 > | Műveletek | Microsoft. számítás/Pillanatképek/írás | Új pillanatkép létrehozása vagy meglévő frissítése |
 > | Műveletek | Microsoft. számítás/Pillanatképek/törlés | Pillanatkép törlése |
@@ -2408,7 +2406,7 @@ Azure-szolgáltatás: [Virtual Machines](../virtual-machines/index.yml), [Virtua
 Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. felhasználás/regisztráció/művelet | Regisztrálás a használati RP-be |
 > |  | **aggregatedcost** |  |
@@ -2466,7 +2464,7 @@ Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 Azure-szolgáltatás: [Container instances](../container-instances/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ContainerInstance/regisztráció/művelet | Regisztrálja az előfizetést a tároló példány erőforrás-szolgáltatója számára, és lehetővé teszi a tároló csoportok létrehozását. |
 > |  | **containerGroups** |  |
@@ -2509,7 +2507,7 @@ Azure-szolgáltatás: [Container instances](../container-instances/index.yml)
 Azure-szolgáltatás: [Container Registry](../container-registry/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ContainerRegistry/regisztráció/művelet | Regisztrálja az előfizetést a tároló-beállításjegyzék erőforrás-szolgáltatója számára, és lehetővé teszi a tároló-nyilvántartók létrehozását. |
 > |  | **checkNameAvailability** |  |
@@ -2627,7 +2625,7 @@ Azure-szolgáltatás: [Container Registry](../container-registry/index.yml)
 Azure-szolgáltatás: [Azure Kubernetes szolgáltatás (ak)](../aks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Tárolószolgáltatás/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. Tárolószolgáltatás erőforrás-szolgáltatónál |
 > | Műveletek | Microsoft. Tárolószolgáltatás/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. Tárolószolgáltatás erőforrás-szolgáltatóval |
@@ -2685,7 +2683,7 @@ Azure-szolgáltatás: [Azure Kubernetes szolgáltatás (ak)](../aks/index.yml)
 Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. CostManagement/lekérdezés/művelet | Használati adatok lekérdezése hatókör alapján. |
 > | Műveletek | Microsoft. CostManagement/jelentések/művelet | A használati adatok hatókör szerint ütemezhetnek jelentéseket. |
@@ -2749,7 +2747,7 @@ Azure-szolgáltatás: [Cost Management](../cost-management-billing/index.yml)
 Azure-szolgáltatás: [Azure Data Box](../databox-family/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DataBox/regisztráció/művelet | Szolgáltató regisztrálása a Microsoft. Databox |
 > | Műveletek | Microsoft. DataBox/regisztráció/művelet | A Microsoft. Databox szolgáltató regisztrációjának megszüntetése |
@@ -2780,7 +2778,7 @@ Azure-szolgáltatás: [Azure Data Box](../databox-family/index.md)
 Azure-szolgáltatás: [Azure stack Edge](../databox-online/azure-stack-edge-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **dataBoxEdgeDevices** |  |
 > | Műveletek | Microsoft. DataBoxEdge/dataBoxEdgeDevices/uploadCertificate/művelet | Tanúsítvány feltöltése az eszköz regisztrálásához |
@@ -2886,7 +2884,7 @@ Azure-szolgáltatás: [Azure stack Edge](../databox-online/azure-stack-edge-over
 Azure-szolgáltatás: [Azure Databricks](../azure-databricks/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Databricks/regisztráció/művelet | Regisztráljon a Databricks. |
 > |  | **helyek** |  |
@@ -2922,7 +2920,7 @@ Azure-szolgáltatás: [Azure Databricks](../azure-databricks/index.yml)
 Azure-szolgáltatás: [Data Catalog](../data-catalog/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DataCatalog/regisztráció/művelet | Az előfizetés regisztrálása Data Catalog erőforrás-szolgáltatóhoz |
 > | Műveletek | Microsoft. DataCatalog/regisztráció/művelet | Data Catalog erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése |
@@ -2944,7 +2942,7 @@ Azure-szolgáltatás: [Data Catalog](../data-catalog/index.yml)
 Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DataFactory/regisztráció/művelet | Regisztrálja az előfizetést a Data Factory erőforrás-szolgáltatóhoz. |
 > | Műveletek | Microsoft. DataFactory/regisztráció/művelet | A Data Factory erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése. |
@@ -3116,7 +3114,7 @@ Azure-szolgáltatás: [Data Factory](../data-factory/index.yml)
 Azure-szolgáltatás: [Data Lake Analytics](../data-lake-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DataLakeAnalytics/regisztráció/művelet | Regisztrálja az előfizetést a DataLakeAnalytics. |
 > |  | **számlák** |  |
@@ -3166,7 +3164,7 @@ Azure-szolgáltatás: [Data Lake Analytics](../data-lake-analytics/index.yml)
 Azure-szolgáltatás: [Azure Data Lake Store](../storage/blobs/data-lake-storage-introduction.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Data Lake Store/regisztráció/művelet | Regisztrálja az előfizetést a Data Lake Store. |
 > |  | **számlák** |  |
@@ -3213,7 +3211,7 @@ Azure-szolgáltatás: [Azure Data Lake Store](../storage/blobs/data-lake-storage
 Azure-szolgáltatás: [Azure Database Migration Service](../dms/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DataMigration/regisztráció/művelet | Az előfizetés regisztrálása a Azure Database Migration Service szolgáltatóval |
 > |  | **helyszínek/operationResults** |  |
@@ -3259,7 +3257,7 @@ Azure-szolgáltatás: [Azure Database Migration Service](../dms/index.yml)
 Azure-szolgáltatás: [Azure Database for MariaDB](../mariadb/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DBforMariaDB/regisztráció/művelet | MariaDB erőforrás-szolgáltató regisztrálása |
 > | Műveletek | Microsoft. DBforMariaDB/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
@@ -3368,7 +3366,7 @@ Azure-szolgáltatás: [Azure Database for MariaDB](../mariadb/index.yml)
 Azure-szolgáltatás: [Azure Database for MySQL](../mysql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DBforMySQL/regisztráció/művelet | MySQL erőforrás-szolgáltató regisztrálása |
 > | Műveletek | Microsoft. DBforMySQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
@@ -3477,7 +3475,7 @@ Azure-szolgáltatás: [Azure Database for MySQL](../mysql/index.yml)
 Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DBforPostgreSQL/regisztráció/művelet | A PostgreSQL erőforrás-szolgáltató regisztrálása |
 > | Műveletek | Microsoft. DBforPostgreSQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
@@ -3612,7 +3610,7 @@ Azure-szolgáltatás: [Azure Database for PostgreSQL](../postgresql/index.yml)
 Azure-szolgáltatás: [IoT hub](../iot-hub/index.yml), [IoT hub Device Provisioning Service](../iot-dps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Devices/regisztráció/művelet | Regisztrálja az előfizetést a IotHub erőforrás-szolgáltatóhoz, és lehetővé teszi a IotHub-erőforrások létrehozását |
 > | Műveletek | Microsoft. Devices/checkNameAvailability/Action | Ellenőrizze, hogy elérhető-e a IotHub neve |
@@ -3804,7 +3802,7 @@ Azure-szolgáltatás: [IoT hub](../iot-hub/index.yml), [IoT hub Device Provision
 Azure-szolgáltatás: [Azure dev Spaces](../dev-spaces/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DevSpaces/regisztráció/művelet | A Microsoft dev Spaces erőforrás-szolgáltató regisztrálása előfizetéssel |
 > |  | **tartományvezérlők** |  |
@@ -3824,7 +3822,7 @@ Azure-szolgáltatás: [Azure dev Spaces](../dev-spaces/index.yml)
 Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. segédösszetevője/regisztráció/művelet | Regisztrálja az előfizetést |
 > |  | **labCenters** |  |
@@ -3973,7 +3971,7 @@ Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 Azure-szolgáltatás: [Azure Cosmos db](../cosmos-db/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DocumentDB/regisztráció/művelet |  Regisztrálja a Microsoft DocumentDB erőforrás-szolgáltatót az előfizetéshez |
 > |  | **databaseAccountNames** |  |
@@ -4274,7 +4272,7 @@ Azure-szolgáltatás: [Azure Cosmos db](../cosmos-db/index.yml)
 Azure-szolgáltatás: [app Service](../app-service/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. DomainRegistration/generateSsoRequest/művelet | Kérelem létrehozása a tartomány-ellenőrzési központba való bejelentkezéshez. |
 > | Műveletek | Microsoft. DomainRegistration/validateDomainRegistrationInformation/művelet | Tartományi vásárlási objektum ellenőrzése a küldés nélkül |
@@ -4306,7 +4304,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml)
 Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. EventGrid/regisztráció/művelet | Regisztrálja az előfizetést a EventGrid erőforrás-szolgáltatóhoz. |
 > | Műveletek | Microsoft. EventGrid/regisztráció/művelet | A EventGrid erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése. |
@@ -4435,7 +4433,7 @@ Azure-szolgáltatás: [Event Grid](../event-grid/index.yml)
 Azure-szolgáltatás: [Event Hubs](../event-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. EventHub/checkNamespaceAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. Ez az API elavult. használja helyette a CheckNameAvailability. |
 > | Műveletek | Microsoft. EventHub/checkNameAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. |
@@ -4540,7 +4538,7 @@ Azure-szolgáltatás: [Event Hubs](../event-hubs/index.yml)
 Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. features/regisztráció/művelet | Egy előfizetés funkciójának regisztrálása. |
 > |  | **szolgáltatások** |  |
@@ -4557,7 +4555,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. GuestConfiguration/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft. GuestConfiguration erőforrás-szolgáltatóhoz. |
 > |  | **guestConfigurationAssignments** |  |
@@ -4574,7 +4572,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 Azure-szolgáltatás: [HDInsight](../hdinsight/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. HDInsight/regisztráció/művelet | Az előfizetéshez tartozó HDInsight erőforrás-szolgáltató regisztrálása |
 > | Műveletek | Microsoft. HDInsight/regisztráció/művelet | HDInsight erőforrás-szolgáltató regisztrációjának törlése az előfizetéshez |
@@ -4613,7 +4611,7 @@ Azure-szolgáltatás: [HDInsight](../hdinsight/index.yml)
 Azure-szolgáltatás: [Azure arc](../azure-arc/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. HybridCompute/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft. HybridCompute erőforrás-szolgáltatóhoz |
 > | Műveletek | Microsoft. HybridCompute/regisztráció/művelet | A Microsoft. HybridCompute erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése |
@@ -4636,7 +4634,7 @@ Azure-szolgáltatás: [Azure arc](../azure-arc/index.yml)
 Azure-szolgáltatás: [Azure import/export](../storage/common/storage-import-export-service.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ImportExport/regisztráció/művelet | Regisztrálja az előfizetést az importálási/exportálási erőforrás-szolgáltató számára, és lehetővé teszi az importálási/exportálási feladatok létrehozását. |
 > |  | **feladatok** |  |
@@ -4654,7 +4652,7 @@ Azure-szolgáltatás: [Azure import/export](../storage/common/storage-import-exp
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. elemzések/mérőszámok/művelet | Metrika művelet |
 > | Műveletek | Microsoft. elemzések/regisztráció/művelet | A Microsoft bepillantást nyújtó szolgáltató regisztrálása |
@@ -5191,7 +5189,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Microsoft monitoring – áttekintés
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | Műveletek | Microsoft. Intune/diagnosticsettings/írás | Diagnosztikai beállítások írása |
@@ -5205,7 +5203,7 @@ Microsoft monitoring – áttekintés
 Azure-szolgáltatás: [IoT Central](../iot-central/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. IoTCentral/checkNameAvailability/művelet | Ellenőrzi, hogy elérhető-e IoT Central alkalmazás neve |
 > | Műveletek | Microsoft. IoTCentral/checkSubdomainAvailability/művelet | Ellenőrzi, hogy elérhető-e IoT Central alkalmazás altartománya |
@@ -5223,7 +5221,7 @@ Azure-szolgáltatás: [IoT Central](../iot-central/index.yml)
 Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. IoTSpaces/regisztráció/művelet | A Microsoft. IoTSpaces Graph erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása az erőforrások létrehozásának engedélyezéséhez |
 > |  | **Graph** |  |
@@ -5236,7 +5234,7 @@ Azure-szolgáltatás: [Azure digitális Twins](../digital-twins/index.yml)
 Azure-szolgáltatás: [Key Vault](../key-vault/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. kulcstartó/regisztráció/művelet | Előfizetés regisztrálása |
 > | Műveletek | Microsoft. kulcstartó/regisztráció/művelet | Előfizetés regisztrációjának törlése |
@@ -5320,7 +5318,7 @@ Azure-szolgáltatás: [Key Vault](../key-vault/index.yml)
 Azure-szolgáltatás: [azure adatkezelő](/azure/data-explorer/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Kusto/regisztráció/művelet | Előfizetés-regisztrációs művelet |
 > | Műveletek | Microsoft. Kusto/regisztráció/művelet | Regisztrálja az előfizetést a Kusto erőforrás-szolgáltatón. |
@@ -5391,7 +5389,7 @@ Azure-szolgáltatás: [azure adatkezelő](/azure/data-explorer/)
 Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. LabServices/regisztráció/művelet | Regisztrálja az előfizetést |
 > |  | **labAccounts** |  |
@@ -5459,7 +5457,7 @@ Azure-szolgáltatás: [Azure Lab Services](../lab-services/index.yml)
 Azure-szolgáltatás: [Logic apps](../logic-apps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Logic/regisztráció/művelet | Regisztrálja a Microsoft. Logic erőforrás-szolgáltatót egy adott előfizetéshez. |
 > |  | **integrationAccounts** |  |
@@ -5611,7 +5609,7 @@ Azure-szolgáltatás: [Logic apps](../logic-apps/index.yml)
 Azure-szolgáltatás: [Machine learning Studio](../machine-learning/studio/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. MachineLearning/regisztráció/művelet | Regisztrálja az előfizetést a Machine learning webszolgáltatás erőforrás-szolgáltatója számára, és lehetővé teszi a webszolgáltatások létrehozását. |
 > | Műveletek | Microsoft. MachineLearning/webszolgáltatások/művelet | Regionális webszolgáltatás tulajdonságainak létrehozása a támogatott régiók számára |
@@ -5649,7 +5647,7 @@ Azure-szolgáltatás: [Machine learning Studio](../machine-learning/studio/index
 Azure-szolgáltatás: [Machine learning szolgáltatás](../machine-learning/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. MachineLearningServices/regisztráció/művelet | Regisztrálja az előfizetést a Machine Learning Services erőforrás-szolgáltatóhoz |
 > |  | **helyek** |  |
@@ -5801,7 +5799,7 @@ Azure-szolgáltatás: [Machine learning szolgáltatás](../machine-learning/inde
 Azure-szolgáltatás: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ManagedIdentity/regisztráció/művelet | Regisztrálja az előfizetést a felügyelt identitás erőforrás-szolgáltatója számára |
 > |  | **identitások** |  |
@@ -5819,7 +5817,7 @@ Azure-szolgáltatás: [felügyelt identitások az Azure-erőforrásokhoz](../act
 Azure-szolgáltatás: [Azure Lighthouse](../lighthouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ManagedServices/regisztráció/művelet | Regisztráljon a felügyelt szolgáltatásokra. |
 > | Műveletek | Microsoft. ManagedServices/regisztráció/művelet | A felügyelt szolgáltatások regisztrációjának törlése. |
@@ -5843,7 +5841,7 @@ Azure-szolgáltatás: [Azure Lighthouse](../lighthouse/index.yml)
 Azure-szolgáltatás: [Management groups](../governance/management-groups/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Management/checkNameAvailability/művelet | Ellenőrzi, hogy a felügyeleti csoport megadott neve érvényes-e és egyedi-e. |
 > | Műveletek | Microsoft. Management/getEntities/művelet | A hitelesített felhasználó összes entitásának (Management Groups, előfizetések stb.) listázása. |
@@ -5867,7 +5865,7 @@ Azure-szolgáltatás: [Management groups](../governance/management-groups/index.
 Azure-szolgáltatás: [Azure Maps](../azure-maps/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Maps/regisztráció/művelet | A szolgáltató regisztrálása |
 > |  | **számlák** |  |
@@ -5894,7 +5892,7 @@ Azure-szolgáltatás: [Azure Maps](../azure-maps/index.yml)
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Marketplace/regisztráció/művelet | Regisztrálja a Microsoft. Marketplace erőforrás-szolgáltatót az előfizetésben. |
 > | Műveletek | Microsoft. Marketplace/privateStores/művelet | Frissíti a PrivateStore. |
@@ -5919,7 +5917,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **ClassicDevServices** |  |
 > | Műveletek | Microsoft. MarketplaceApps/ClassicDevServices/READ | A GET művelet egy klasszikus fejlesztői szolgáltatáson keresztül történik. |
@@ -5935,7 +5933,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **megállapodások** |  |
 > | Műveletek | Microsoft. MarketplaceOrdering/szerződések/olvasás | Az adott előfizetéshez tartozó összes szerződés visszaküldése |
@@ -5954,7 +5952,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Media Services](../media-services/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Media/regisztráció/művelet | Regisztrálja az előfizetést a Media Services erőforrás-szolgáltatóhoz, és lehetővé teszi Media Services fiókok létrehozását |
 > | Műveletek | Microsoft. Media/regisztráció/művelet | A Media Services erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának törlése |
@@ -6087,7 +6085,7 @@ Azure-szolgáltatás: [Media Services](../media-services/index.yml)
 Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Migrálás/regisztráció/művelet | Előfizetés regisztrálása a Microsoftnál. erőforrás-szolgáltató átmigrálása |
 > |  | **assessmentprojects** |  |
@@ -6180,7 +6178,7 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 Azure-szolgáltatás: [Azure térbeli horgonyok](../spatial-anchors/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. MixedReality/regisztráció/művelet | Regisztrálja az előfizetést a vegyes valóság erőforrás-szolgáltatóhoz. |
 > |  | **remoteRenderingAccounts/szolgáltatók/Microsoft. bepillantások/metricDefinitions** |  |
@@ -6225,7 +6223,7 @@ Azure-szolgáltatás: [Azure térbeli horgonyok](../spatial-anchors/index.yml)
 Azure-szolgáltatás: [Azure NetApp Files](../azure-netapp-files/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. NetApp/regisztráció/művelet | Előfizetés-regisztrációs művelet |
 > | Műveletek | Microsoft. NetApp/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. NetApp erőforrás-szolgáltatóval |
@@ -6289,7 +6287,7 @@ Azure-szolgáltatás: [Azure NetApp Files](../azure-netapp-files/index.yml)
 Azure-szolgáltatás [: Virtual Network](../virtual-network/index.yml), [Load Balancer](../load-balancer/index.yml), [Application Gateway](../application-gateway/index.yml), [Azure DNS](../dns/index.yml), [ExpressRoute](../expressroute/index.yml), [VPN Gateway](../vpn-gateway/index.yml), [Traffic Manager](../traffic-manager/index.yml), [Network Watcher](../network-watcher/index.yml), [Azure Firewall](../firewall/index.yml) [Azure-előtérben szolgáltatás](../frontdoor/index.yml), [Azure Bastion](../bastion/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Network/regisztráció/művelet | Regisztrálja az előfizetést |
 > | Műveletek | Microsoft. Network/regisztráció/művelet | Előfizetés regisztrációjának törlése |
@@ -6989,7 +6987,7 @@ Azure-szolgáltatás [: Virtual Network](../virtual-network/index.yml), [Load Ba
 Azure-szolgáltatás: [Notification Hubs](../notification-hubs/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. NotificationHubs/regisztráció/művelet | Regisztrálja az előfizetést a NotificationHubs erőforrás-szolgáltatóhoz, és lehetővé teszi a névterek és NotificationHubs létrehozását |
 > | Műveletek | Microsoft. NotificationHubs/regisztráció/művelet | A NotificationHubs erőforrás-szolgáltatóhoz tartozó előfizetés regisztrációjának megszüntetése, és a névterek és NotificationHubs létrehozásának engedélyezése |
@@ -7031,7 +7029,7 @@ Azure-szolgáltatás: [Notification Hubs](../notification-hubs/index.yml)
 Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. OffAzure/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. OffAzure erőforrás-szolgáltatónál |
 > | Műveletek | Microsoft. OffAzure/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. OffAzure erőforrás-szolgáltatónál |
@@ -7303,7 +7301,7 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. OperationalInsights/regisztráció/művelet | Előfizetés regisztrálása erőforrás-szolgáltatóhoz. |
 > | Műveletek | Microsoft. operationalinsights/regisztráció/művelet | Rergisters az előfizetést. |
@@ -7971,7 +7969,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. OperationsManagement/regisztráció/művelet | Előfizetés regisztrálása erőforrás-szolgáltatóhoz. |
 > |  | **managementAssociations** |  |
@@ -7992,7 +7990,7 @@ Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. PolicyInsights/regisztráció/művelet | Regisztrálja a Microsoft Policy bepillantást biztosító erőforrás-szolgáltatót, és engedélyezi a műveleteket. |
 > | Műveletek | Microsoft. PolicyInsights/regisztráció/művelet | A Microsoft Policy-erőforrás-szolgáltató regisztrációjának törlése. |
@@ -8032,7 +8030,7 @@ Azure-szolgáltatás: [Azure Policy](../governance/policy/index.yml)
 Azure-szolgáltatás: [Azure Portal](../azure-portal/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Portal/regisztráció/művelet | Regisztráció a portálra |
 > |  | **konzolok** |  |
@@ -8053,7 +8051,7 @@ Azure-szolgáltatás: [Azure Portal](../azure-portal/index.yml)
 Azure-szolgáltatás: [Power bi Embedded](https://docs.microsoft.com/azure/power-bi-embedded/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. PowerBIDedicated/regisztráció/művelet | Regisztrálja Power BI dedikált erőforrás-szolgáltatót. |
 > |  | **kapacitások** |  |
@@ -8080,7 +8078,7 @@ Azure-szolgáltatás: [Power bi Embedded](https://docs.microsoft.com/azure/power
 Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Recoveryservices szolgáltatónál/regisztráció/művelet | Az adott erőforrás-szolgáltatóhoz tartozó előfizetés regisztrálása |
 > |  | **Helyek** |  |
@@ -8383,7 +8381,7 @@ Azure-szolgáltatás: [site Recovery](../site-recovery/index.yml)
 Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Relay/checkNamespaceAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. Ez az API elavult. használja helyette a CheckNameAvailability. |
 > | Műveletek | Microsoft. Relay/checkNameAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. |
@@ -8462,7 +8460,7 @@ Azure-szolgáltatás: [Azure Relay](../service-bus-relay/relay-what-is-it.md)
 Azure-szolgáltatás: [Azure Service Health](../service-health/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ResourceHealth/regisztráció/művelet | Regisztrálja az előfizetést a Microsoft ResourceHealth |
 > | Műveletek | Microsoft. ResourceHealth/regisztráció/művelet | A Microsoft ResourceHealth-előfizetés regisztrációjának törlése |
@@ -8495,7 +8493,7 @@ Azure-szolgáltatás: [Azure Service Health](../service-health/index.yml)
 Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Resources/checkResourceName/Action | Győződjön meg arról, hogy az erőforrás neve érvényes. |
 > | Műveletek | Microsoft. Resources/calculateTemplateHash/Action | Kiszámítja a megadott sablon kivonatát. |
@@ -8574,7 +8572,7 @@ Azure-szolgáltatás: [Azure Resource Manager](../azure-resource-manager/index.y
 Azure-szolgáltatás: [Scheduler](../scheduler/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **feladatgyűjtemények** |  |
 > | Műveletek | Microsoft. Scheduler/feladatgyűjtemények/olvasás | Webhelycsoport beolvasása |
@@ -8596,7 +8594,7 @@ Azure-szolgáltatás: [Scheduler](../scheduler/index.yml)
 Azure-szolgáltatás: [Azure Search](../search/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Search/regisztráció/művelet | Regisztrálja az előfizetést a keresési erőforrás-szolgáltatónál, és lehetővé teszi a keresési szolgáltatások létrehozását. |
 > | Műveletek | Microsoft. Search/checkNameAvailability/művelet | A szolgáltatás nevének rendelkezésre állását ellenőrzi. |
@@ -8625,7 +8623,7 @@ Azure-szolgáltatás: [Azure Search](../search/index.yml)
 Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Security/regisztráció/művelet | Az előfizetés regisztrálása Azure Security Center |
 > | Műveletek | Microsoft. Security/regisztráció/művelet | Az előfizetés regisztrációjának törlése Azure Security Center |
@@ -8732,7 +8730,7 @@ Azure-szolgáltatás: [Security Center](../security-center/index.yml)
 Microsoft monitoring – áttekintés
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **diagnosticsettings** |  |
 > | Műveletek | Microsoft. SecurityGraph/diagnosticsettings/Write | Diagnosztikai beállítások írása |
@@ -8746,7 +8744,7 @@ Microsoft monitoring – áttekintés
 Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. SecurityInsights/regisztráció/művelet | Az előfizetés regisztrálása az Azure Sentinel szolgáltatásban |
 > | Műveletek | Microsoft. SecurityInsights/regisztráció/művelet | Az előfizetés regisztrációjának törlése az Azure Sentinelből |
@@ -8808,7 +8806,7 @@ Azure-szolgáltatás: [Azure Sentinel](../sentinel/index.yml)
 Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ServiceBus/checkNamespaceAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. Ez az API elavult. használja helyette a CheckNameAvailability. |
 > | Műveletek | Microsoft. ServiceBus/checkNameAvailability/művelet | Ellenőrzi a névtér elérhetőségét a megadott előfizetésben. |
@@ -8929,7 +8927,7 @@ Azure-szolgáltatás: [Service Bus](../service-bus/index.md)
 Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. ServiceFabric/regisztráció/művelet | Bármilyen művelet regisztrálása |
 > |  | **fürtök** |  |
@@ -8978,7 +8976,7 @@ Azure-szolgáltatás: [Service Fabric](../service-fabric/index.yml)
 Azure-szolgáltatás: [Azure signaler szolgáltatás](../azure-signalr/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. SignalRService/regisztráció/művelet | Regisztrálja a Microsoft. SignalRService erőforrás-szolgáltatót egy előfizetéssel |
 > | Műveletek | Microsoft. SignalRService/regisztráció/művelet | A Microsoft. SignalRService erőforrás-szolgáltató regisztrációjának törlése előfizetéssel |
@@ -9028,7 +9026,7 @@ Azure-szolgáltatás: [Azure signaler szolgáltatás](../azure-signalr/index.yml
 Azure-szolgáltatás: [Azure Managed Applications](../azure-resource-manager/managed-applications/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Solutions/regisztráció/művelet | Regisztráljon a megoldásokra. |
 > | Műveletek | Microsoft. Solutions/regisztráció/művelet | A megoldások regisztrációjának törlése. |
@@ -9060,7 +9058,7 @@ Azure-szolgáltatás: [Azure Managed Applications](../azure-resource-manager/man
 Azure-szolgáltatás: [Azure SQL Database](../sql-database/index.yml), [SQL Data Warehouse](../sql-data-warehouse/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. SQL/checkNameAvailability/művelet | Győződjön meg arról, hogy az adott kiszolgálónév elérhető-e a világ egy adott előfizetéshez való kiépítés céljából. |
 > | Műveletek | Microsoft. SQL/regisztráció/művelet | Regisztrálja a Microsoft SQL Database erőforrás-szolgáltató előfizetését, és engedélyezi a Microsoft SQL-adatbázisok létrehozását. |
@@ -9704,7 +9702,7 @@ Azure-szolgáltatás: [Azure SQL Database](../sql-database/index.yml), [SQL Data
 Azure-szolgáltatás: [SQL Server az Azure-on Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. SqlVirtualMachine/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. SqlVirtualMachine erőforrás-szolgáltatóval |
 > | Műveletek | Microsoft. SqlVirtualMachine/regisztráció/művelet | Előfizetés regisztrációjának törlése a Microsoft. SqlVirtualMachine erőforrás-szolgáltatóval |
@@ -9738,7 +9736,7 @@ Azure-szolgáltatás: [SQL Server az Azure-on Virtual Machines](../virtual-machi
 Azure-szolgáltatás: [Storage](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Storage/regisztráció/művelet | Regisztrálja az előfizetést a tárolási erőforrás-szolgáltató számára, és lehetővé teszi a Storage-fiókok létrehozását. |
 > |  | **checknameavailability** |  |
@@ -9877,7 +9875,7 @@ Azure-szolgáltatás: [Storage](../storage/index.yml)
 Azure-szolgáltatás: [Storage](../storage/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. storagesync/regisztráció/művelet | Regisztrálja az előfizetést a Storage Sync Provider számára |
 > | Műveletek | Microsoft. storagesync/regisztráció/művelet | A Storage Sync Provider előfizetés regisztrációjának törlése |
@@ -9936,7 +9934,7 @@ Azure-szolgáltatás: [Storage](../storage/index.yml)
 Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. StorSimple/regisztráció/művelet | Szolgáltató regisztrálása a Microsoft. StorSimple |
 > |  | **kezelők** |  |
@@ -10201,7 +10199,7 @@ Azure-szolgáltatás: [StorSimple](../storsimple/index.yml)
 Azure-szolgáltatás: [stream Analytics](../stream-analytics/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. StreamAnalytics/regisztráció/művelet | Előfizetés regisztrálása Stream Analytics erőforrás-szolgáltatóval |
 > |  | **helyszínek/kvóták** |  |
@@ -10260,7 +10258,7 @@ Azure-szolgáltatás: [stream Analytics](../stream-analytics/index.yml)
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. előfizetés/CreateSubscription/művelet | Azure-előfizetés létrehozása |
 > | Műveletek | Microsoft. előfizetés/regisztráció/művelet | Előfizetés regisztrálása a Microsoft. előfizetés erőforrás-szolgáltatónál |
@@ -10275,7 +10273,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: Core
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft.Support/register/action | Regisztrálja a támogatási erőforrás-szolgáltatót |
 > | Műveletek | Microsoft. support/checkNameAvailability/művelet | Ellenőrzi, hogy a név érvényes-e, és nincs-e használatban az erőforrás típusaként |
@@ -10301,7 +10299,7 @@ Azure-szolgáltatás: Core
 Azure-szolgáltatás: [Time Series Insights](../time-series-insights/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. TimeSeriesInsights/regisztráció/művelet | Regisztrálja az előfizetést a Time Series Insights erőforrás-szolgáltatóhoz, és lehetővé teszi Time Series Insights környezetek létrehozását. |
 > |  | **környezetben** |  |
@@ -10328,7 +10326,7 @@ Azure-szolgáltatás: [Time Series Insights](../time-series-insights/index.yml)
 Azure-szolgáltatás: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. VisualStudio/regisztráció/művelet | Azure-előfizetés regisztrálása a Microsoft. VisualStudio-szolgáltatóval |
 > |  | **Fiók** |  |
@@ -10354,7 +10352,7 @@ Azure-szolgáltatás: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 Azure-szolgáltatás: [app Service](../app-service/index.yml), [függvények](../azure-functions/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > | Műveletek | Microsoft. Web/regisztráció/művelet | A Microsoft. web erőforrás-szolgáltató regisztrációjának törlése az előfizetéshez. |
 > | Műveletek | Microsoft. Web/érvényesítés/művelet | Érvényesít. |
@@ -11013,7 +11011,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [függvények](..
 Azure-szolgáltatás: [Azure monitor](../azure-monitor/index.yml)
 
 > [!div class="mx-tdCol2BreakAll"]
-> | Művelet típusa | Művelet | Description |
+> | Művelet típusa | Művelet | Leírás |
 > | --- | --- | --- |
 > |  | **összetevők** |  |
 > | Műveletek | Microsoft. WorkloadMonitor/összetevők/olvasás | Az erőforrás összetevőinek beolvasása |

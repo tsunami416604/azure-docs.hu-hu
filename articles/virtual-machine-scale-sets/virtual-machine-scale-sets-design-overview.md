@@ -3,19 +3,19 @@ title: Tervezési szempontok az Azure Virtual Machine Scale Sets
 description: Ismerje meg az Azure-Virtual Machine Scale Sets kialakításával kapcsolatos szempontokat. A méretezési készletek funkcióinak összehasonlítása virtuálisgép-funkciókkal.
 keywords: linuxos virtuális gép, virtuálisgép-méretezési csoportok
 author: mimckitt
-tags: azure-resource-manager
-ms.assetid: c27c6a59-a0ab-4117-a01b-42b049464ca1
-ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: vm-linux
-ms.topic: conceptual
-ms.date: 06/01/2017
 ms.author: mimckitt
-ms.openlocfilehash: 20f6cb08781c7c6aca7a4022e75a7be8640ef18a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.service: virtual-machine-scale-sets
+ms.subservice: management
+ms.date: 06/01/2017
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 0676a7d31d141e0c264119a54b77ec29a527374b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273766"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200196"
 ---
 # <a name="design-considerations-for-scale-sets"></a>Tervezési szempontok a méretezési csoportokhoz
 Ez a cikk a Virtual Machine Scale Sets kialakításával kapcsolatos szempontokat ismerteti. A Virtual Machine Scale Setsával kapcsolatos információkért tekintse meg a [Virtual Machine Scale sets áttekintését](virtual-machine-scale-sets-overview.md).
@@ -56,7 +56,7 @@ Az Azure Managed Disks nem definiált méretezési csoport a felhasználó álta
 ## <a name="overprovisioning"></a>Csúcsigények túlméretezéssel
 A méretezési csoportok jelenleg alapértelmezés szerint "túlzottan kiépíthető" virtuális gépek. Ha a túlépítés be van kapcsolva, a méretezési csoport ténylegesen több virtuális gépet indít el, mint amennyit kért, majd törli a további virtuális gépeket, ha a kért számú virtuális gép sikeresen kiépítve. A túlzott kiépítés javítja a sikeres üzembe helyezési arányt, és csökkenti a telepítési időt. A további virtuális gépekért nem számolunk fel díjat, és nem számítanak bele a kvóta korlátaiba.
 
-Míg a túlzott kiépítés javítja a sikeres kiépítést, az olyan alkalmazások zavaros viselkedését okozhatja, amelyek nem a további virtuális gépek kezelésére lettek kialakítva, és a rendszer eltűnnek. A túlterhelés kikapcsolásához ellenőrizze, hogy rendelkezik-e a következő karakterlánccal a sablonban: `"overprovision": "false"`. További részleteket a [méretezési csoport REST API dokumentációjában](/rest/api/virtualmachinescalesets/create-or-update-a-set)talál.
+Míg a túlzott kiépítés javítja a sikeres kiépítést, az olyan alkalmazások zavaros viselkedését okozhatja, amelyek nem a további virtuális gépek kezelésére lettek kialakítva, és a rendszer eltűnnek. A túlterhelés kikapcsolásához ellenőrizze, hogy rendelkezik-e a következő karakterlánccal a sablonban: `"overprovision": "false"` . További részleteket a [méretezési csoport REST API dokumentációjában](/rest/api/virtualmachinescalesets/create-or-update-a-set)talál.
 
 Ha a méretezési csoport felhasználó által felügyelt tárolót használ, és kikapcsolja a túlzott kiépítést, a Storage-fiókban több mint 20 virtuális gépet is használhat, de az IO-teljesítmény miatt nem ajánlott a 40-nál magasabban haladni. 
 

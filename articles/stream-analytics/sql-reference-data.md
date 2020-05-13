@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: aebb590d93b3fb26151f15c176a2941845cdd50c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6feca8cc87eadb2be5f43cafaa82195a18c3c75
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426503"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83200381"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Azure Stream Analytics feladatokhoz tartozó SQL Database hivatkozási adatainak használata
 
@@ -101,7 +101,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 2. Kattintson duplán a **megoldáskezelő**a **input. JSON** fájlra.
 
-3. Töltse ki a **stream Analytics bemeneti konfigurációját**. Válassza ki az adatbázis nevét, a kiszolgáló nevét, a frissítés típusát és a frissítési gyakoriságot. A frissítési gyakoriságot a formátumban `DD:HH:MM`kell megadni.
+3. Töltse ki a **stream Analytics bemeneti konfigurációját**. Válassza ki az adatbázis nevét, a kiszolgáló nevét, a frissítés típusát és a frissítési gyakoriságot. A frissítési gyakoriságot a formátumban kell megadni `DD:HH:MM` .
 
    ![Stream Analytics bemeneti konfiguráció a Visual Studióban](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
@@ -147,7 +147,7 @@ A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database idei
    ```
 2. A pillanatkép-lekérdezés szerzője. 
 
-   A ** \@snapshotTime** paraméter használatával utasítsa a stream Analytics futtatókörnyezetet az SQL Database ideiglenes táblából származó, a rendszeridőben érvényes hivatkozási adatok beszerzésére. Ha nem adja meg ezt a paramétert, akkor egy pontatlan alapszintű hivatkozási adat beszerzésére van szükség az órajel-eltérések miatt. Alább látható egy példa a teljes pillanatkép-lekérdezésre:
+   A ** \@ snapshotTime** paraméter használatával utasítsa a stream Analytics futtatókörnyezetet az SQL Database ideiglenes táblából származó, a rendszeridőben érvényes hivatkozási adatok beszerzésére. Ha nem adja meg ezt a paramétert, akkor egy pontatlan alapszintű hivatkozási adat beszerzésére van szükség az órajel-eltérések miatt. Alább látható egy példa a teljes pillanatkép-lekérdezésre:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,16 +156,16 @@ A különbözeti lekérdezés használatakor a rendszer [Azure SQL Database idei
  
 2. A különbözeti lekérdezés szerzője. 
    
-   Ez a lekérdezés lekérdezi az SQL-adatbázis összes olyan sorát, amelyet a rendszer a kezdési időpontban, ** \@a deltaStartTime**, valamint a befejezési idő ** \@deltaEndTime**belül beszúrt vagy törölt. A különbözeti lekérdezésnek a pillanatkép-lekérdezéssel megegyező oszlopokat, valamint az oszlop **_műveletét_** kell visszaadnia. Ez az oszlop határozza meg, hogy a sor be van-e beszúrva vagy törölve a ** \@deltaStartTime** és a ** \@deltaEndTime**között. Az eredményül kapott sorok **1** -ként vannak megjelölve, ha a rekordok be lettek helyezve, vagy **2** Ha törölve lettek. 
+   Ez a lekérdezés lekérdezi az SQL-adatbázis összes olyan sorát, amelyet a rendszer a kezdési időpontban, a ** \@ deltaStartTime**, valamint a befejezési idő ** \@ deltaEndTime**belül beszúrt vagy törölt. A különbözeti lekérdezésnek a pillanatkép-lekérdezéssel megegyező oszlopokat, valamint az oszlop **_műveletét_** kell visszaadnia. Ez az oszlop határozza meg, hogy a sor be van-e beszúrva vagy törölve a ** \@ deltaStartTime** és a ** \@ deltaEndTime**között. Az eredményül kapott sorok **1** -ként vannak megjelölve, ha a rekordok be lettek helyezve, vagy **2** Ha törölve lettek. A lekérdezésnek hozzá kell adnia egy **vízjelet** is a SQL Server oldalról, hogy a különbözeti időszak összes frissítése megfelelően rögzítve legyen. A **vízjel** nélküli különbözeti lekérdezés helytelen hivatkozási adatkészletet eredményezhet.  
 
    A frissített rekordok esetében az időbeli táblázat a beszúrási és törlési művelet rögzítésével végzi a könyvelést. A Stream Analytics futtatókörnyezet Ezután alkalmazza a különbözeti lekérdezés eredményét az előző pillanatképre, hogy a hivatkozási adatok naprakészek maradjanak. A különbözeti lekérdezés példája a következő:
 
    ```SQL
-      SELECT DeviceId, GroupDeviceId, Description, 1 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidFrom as watermark 1 as _operation_
       FROM dbo.DeviceTemporal
       WHERE ValidFrom BETWEEN @deltaStartTime AND @deltaEndTime   -- records inserted
       UNION
-      SELECT DeviceId, GroupDeviceId, Description, 2 as _operation_
+      SELECT DeviceId, GroupDeviceId, Description, ValidTo as watermark 2 as _operation_
       FROM dbo.DeviceHistory   -- table we created in step 1
       WHERE ValidTo BETWEEN @deltaStartTime AND @deltaEndTime     -- record deleted
    ```

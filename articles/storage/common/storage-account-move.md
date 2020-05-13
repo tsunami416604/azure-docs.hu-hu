@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: article
-ms.date: 09/27/2019
+ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: c8578c518ac45bea147790028c2904c7ce36fffb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f1c96d8336447b6ca2a4f55fefa9a061c38fa2
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459032"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198490"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Azure Storage-fiók áthelyezése másik régióba
 
@@ -55,7 +55,7 @@ Sablon exportálása Azure Portal használatával:
 
 2. Válassza a **minden erőforrás** lehetőséget, majd válassza ki a Storage-fiókját.
 
-3. Válassza > **Beállítások** > **Exportálás sablon**lehetőséget.
+3. Válassza > **Beállítások**  >  **Exportálás sablon**lehetőséget.
 
 4. Válassza a **Letöltés** lehetőséget a **sablon exportálása** panelen.
 
@@ -115,7 +115,7 @@ A sablon üzembe helyezése Azure Portal használatával:
 
 6. Válassza a **fájl betöltése**lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött **template. JSON** fájl betöltéséhez.
 
-7. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage- `mytargetaccount`fiók nevének alapértelmezett értékét állítja be értékre.
+7. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be értékre `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -137,13 +137,13 @@ A sablon üzembe helyezése Azure Portal használatával:
          "location": "centralus"
          }]          
     ```
-    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA** = **CentralUS**.
+    A régióbeli hely kódjának beszerzéséhez tekintse meg az [Azure-helyeket](https://azure.microsoft.com/global-infrastructure/locations/).  A régió kódja a régió neve szóközök nélkül, **Közép-USA**  =  **CentralUS**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 A sablon üzembe helyezése a PowerShell használatával:
 
-1. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage- `mytargetaccount`fiók nevének alapértelmezett értékét állítja be értékre.
+1. A **template. JSON** fájlban nevezze el a cél Storage-fiókot a Storage-fiók nevének alapértelmezett értékének megadásával. Ez a példa a Storage-fiók nevének alapértelmezett értékét állítja be értékre `mytargetaccount` .
     
     ```json
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
@@ -156,7 +156,7 @@ A sablon üzembe helyezése a PowerShell használatával:
     },
     ``` 
 
-2. Szerkessze a **Location (hely** ) tulajdonságot a **template. JSON** fájlban a célként megadott régióban. Ebben a példában a célként megadott régiót állítja be `eastus`.
+2. Szerkessze a **Location (hely** ) tulajdonságot a **template. JSON** fájlban a célként megadott régióban. Ebben a példában a célként megadott régiót állítja be `eastus` .
 
     ```json
     "resources": [{
@@ -232,25 +232,10 @@ A következő táblázat felsorolja ezeket a funkciókat, valamint útmutatást 
 
 ### <a name="move-data-to-the-new-storage-account"></a>Adatáthelyezés az új Storage-fiókba
 
-Az alábbi módokon helyezheti át az adatait.
+Az AzCopy az előnyben részesített eszköz, amellyel áthelyezheti az adatait. Teljesítményre optimalizált.  Az egyik módszer, hogy gyorsabb, az Adatmásolás közvetlenül a Storage-kiszolgálók között történik, így a AzCopy nem használja a számítógép hálózati sávszélességét. Használjon AzCopy a parancssorban vagy egy egyéni parancsfájl részeként. Lásd: Ismerkedés [a AzCopy szolgáltatással](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-: heavy_check_mark: **Azure Storage Explorer**
+A Azure Data Factory használatával is áthelyezheti az adatait. Intuitív felhasználói felületet biztosít. A Azure Data Factory használatához tekintse meg a következő hivatkozások bármelyikét:. 
 
-  Könnyen használható, és kisebb adatkészletekhez is alkalmas. Másolja a tárolókat és a fájlmegosztást, majd illessze be őket a célként megadott fiókba.
-
-  Lásd: [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/);
-
-: heavy_check_mark: **AzCopy**
-
-  Ez az előnyben részesített megközelítés. Teljesítményre optimalizált.  Az egyik módszer, hogy gyorsabb, az Adatmásolás közvetlenül a Storage-kiszolgálók között történik, így a AzCopy nem használja a számítógép hálózati sávszélességét. Használjon AzCopy a parancssorban vagy egy egyéni parancsfájl részeként.
-
-  Lásd: Ismerkedés [a AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-
-: heavy_check_mark: **Azure Data Factory** 
-
-  Ezt az eszközt csak akkor használja, ha olyan funkciókra van szüksége, amelyek nem támogatottak a AzCopy jelenlegi kiadásában. Például a AzCopy jelenlegi kiadásában a Blobok nem másolhatók olyan fiókok között, amelyek hierarchikus névtérrel rendelkeznek. Emellett a AzCopy nem őrzi meg a fájlok hozzáférés-vezérlési listáját vagy a fájl időbélyegét (például: létrehozás és módosítás időbélyegek). 
-
-  Tekintse meg az alábbi hivatkozásokat:
   - [Adatok másolása az Azure Blob Storage-ba vagy onnan az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage)
   - [Adatok másolása Azure Data Lake Storage Gen2 a Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-data-lake-storage)
   - [Adatok másolása az Azure File Storageba vagy az Azure Data Factory használatával](https://docs.microsoft.com/azure/data-factory/connector-azure-file-storage)

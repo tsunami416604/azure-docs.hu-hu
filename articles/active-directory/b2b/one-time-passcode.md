@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6d897bb983eb06baa4f1573f1f875eea8bb8afc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263373"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199487"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mail egyszeri jelszó-hitelesítés (előzetes verzió)
 
@@ -31,7 +31,7 @@ Ez a cikk azt ismerteti, hogyan engedélyezhető a levelezés egyszeri jelszavas
 Ez a funkció jelenleg előzetes verzióként érhető el (lásd az alábbi [előnézetet](#opting-in-to-the-preview) ). Az előnézet után a szolgáltatás alapértelmezés szerint be lesz kapcsolva az összes bérlőnél.
 
 > [!NOTE]
-> Egyszeri jelszóval rendelkező felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet `https://myapps.microsoft.com/?tenantid=<tenant id>` ( `https://portal.azure.com/<tenant id>`például vagy egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com`). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A vendég felhasználók jelenleg nem tudnak bejelentkezni a bérlői kontextus nélküli végpontok használatával. Ha például a, `https://myapps.microsoft.com` `https://portal.azure.com`vagy a csapatok közös végpontját használja, a rendszer hibát eredményez. 
+> Egyszeri jelszóval rendelkező felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>` egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` ). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A vendég felhasználók jelenleg nem tudnak bejelentkezni a bérlői kontextus nélküli végpontok használatával. Ha például `https://myapps.microsoft.com` `https://portal.azure.com` a, vagy a csapatok közös végpontját használja, a rendszer hibát eredményez. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Felhasználói élmény egyszeri jelszó vendég felhasználói számára
 Egyszeri PIN-kód-hitelesítéssel a vendég felhasználó a közvetlen hivatkozásra kattintva vagy a meghívó e-mailben is beválthatja a meghívót. Mindkét esetben egy üzenet jelenik meg a böngészőben, amely azt jelzi, hogy a rendszer elküld egy kódot a vendég felhasználói e-mail-címére. A vendég felhasználó kiválasztja a **küldési kódot**:
@@ -52,11 +52,11 @@ A vendég felhasználó hitelesítése megtörtént, és láthatja a megosztott 
 Ha egy vendég felhasználó bevált egy meghívót, vagy egy olyan erőforrásra mutató hivatkozást használ, amelyet megosztottak velük, akkor egyszeri jelszót kapnak, ha:
 - Nem rendelkezik Azure AD-fiókkal 
 - Nincs Microsoft-fiók 
-- A meghívó bérlő nem állított be Google- @gmail.com összevonást @googlemail.com a és a felhasználók számára 
+- A meghívó bérlő nem állított be Google-összevonást a @gmail.com és a @googlemail.com felhasználók számára 
 
 A meghívás időpontjában nincs jelezve, hogy a meghívott felhasználó egyszer használatos hitelesítő adatokat fog használni. Ha azonban a vendég felhasználó bejelentkezik, egyszeri jelszó-hitelesítés lesz a tartalék módszer, ha más hitelesítési módszer nem használható. 
 
-Megtekintheti azokat a vendég felhasználókat, akik a Azure Portal egyszer használatos PIN-kóddal hitelesítik magukat, **Azure Active Directory** > **szervezeti kapcsolatok** > **más szervezetek felhasználóit**.
+Megtekintheti azokat a vendég felhasználókat, akik a Azure Portal egyszer használatos PIN-kóddal hitelesítik magukat, **Azure Active Directory**  >  **felhasználókat**.
 
 ![Képernyőfelvétel: egyszeri jelszóval rendelkező felhasználó, amely az OTP forrás értékét tartalmazza](media/one-time-passcode/otp-users.png)
 
@@ -64,7 +64,7 @@ Megtekintheti azokat a vendég felhasználókat, akik a Azure Portal egyszer has
 > Amikor egy felhasználó egyszeri jelszót vált ki, és később beolvas egy MSA, egy Azure AD-fiókot vagy más összevont fiókot, a rendszer továbbra is egyszer használatba veszi a hitelesítő kódot. Ha frissíteni szeretné a hitelesítési módszert, törölheti a vendég felhasználói fiókját, és újból meghívhatja őket.
 
 ### <a name="example"></a>Példa
-A vendég alexdoe@gmail.com felhasználó meghívja a fabrikam-t, amely nem rendelkezik a Google Federation beállítással. Alex nem rendelkezik Microsoft-fiók. Egy egyszeri jelszót kapnak a hitelesítéshez.
+A vendég felhasználó alexdoe@gmail.com meghívja a fabrikam-t, amely nem rendelkezik a Google Federation beállítással. Alex nem rendelkezik Microsoft-fiók. Egy egyszeri jelszót kapnak a hitelesítéshez.
 
 ## <a name="opting-in-to-the-preview"></a>Az előnézet megválasztása 
 Eltarthat néhány percig, amíg a beavatkozás érvénybe lép. Ezt követően csak az újonnan meghívott felhasználók használhatnak egyszeri jelszavas hitelesítést. Azok a vendég felhasználók, akik korábban beváltottak egy meghívót, továbbra is ugyanazt a hitelesítési módszert használják.
@@ -72,8 +72,7 @@ Eltarthat néhány percig, amíg a beavatkozás érvénybe lép. Ezt követően 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Az Azure AD-portál használatának engedélyezése
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-3.  A **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
-4.  Válassza a **Beállítások**lehetőséget.
+3.  Válassza a **szervezeti kapcsolatok**  >  **beállításai** lehetőséget (vagy válassza ki a **külső identitások**  >  **külső együttműködési beállításokat**).
 5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza az **Igen**lehetőséget.
  
 ### <a name="to-opt-in-using-powershell"></a>A PowerShell használatának engedélyezése
@@ -139,8 +138,7 @@ Eltarthat néhány percig, amíg a letiltási művelet érvénybe lép. Ha kikap
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Az előnézet kikapcsolása az Azure AD-portál használatával
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-3.  A **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
-4.  Válassza a **Beállítások**lehetőséget.
+3.  Válassza a **szervezeti kapcsolatok**  >  **beállításai** lehetőséget (vagy válassza ki a **külső identitások**  >  **külső együttműködési beállításokat**).
 5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza a **nem**lehetőséget.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Az előnézet kikapcsolása a PowerShell használatával

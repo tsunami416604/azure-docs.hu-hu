@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 05/12/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 273fdb80475defb0576bcd29d1944c5f6c595cfc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 818528ae193209e23424998421ebe2fb0c2b24b3
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266506"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199378"
 ---
 # <a name="frequently-asked-questions-around-azure-active-directory-reports"></a>Gyakori kérdések Azure Active Directory jelentésekről
 
@@ -29,15 +29,15 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 ## <a name="getting-started"></a>Első lépések 
 
-**K: jelenleg a Endpoint API `https://graph.windows.net/<tenant-name>/reports/` -kat használva lehívhatja az Azure ad audit és az integrált alkalmazás-használati jelentéseket a jelentéskészítő rendszerbe programozott módon. Mire érdemes váltani?**
+**K: jelenleg a `https://graph.windows.net/<tenant-name>/reports/` Endpoint API-kat használva lehívhatja az Azure ad audit és az integrált alkalmazás-használati jelentéseket a jelentéskészítő rendszerbe programozott módon. Mire érdemes váltani?**
 
 **A:** Tekintse meg az [API-referenciát](https://developer.microsoft.com/graph/) , amelyből megtudhatja, hogyan [használhatja az API-kat a tevékenységek jelentésekhez való hozzáféréshez](concept-reporting-api.md). Ez a végpont két jelentést tartalmaz (**naplózási** és **bejelentkezési**), amelyek biztosítják a régi API-végponton kapott összes adathalmazt. Ez az új végpont olyan bejelentkezési jelentést is tartalmaz, amely az alkalmazás használatának, az eszköz használatának és a felhasználói bejelentkezési adatok beszerzésére használható prémium szintű Azure AD licenccel rendelkezik.
 
 ---
 
-**K: jelenleg a Endpoint API `https://graph.windows.net/<tenant-name>/reports/` -kat használva lehívhatják az Azure ad biztonsági jelentéseit (az észlelések bizonyos típusai, például a kiszivárgott hitelesítő adatok vagy a névtelen IP-címekről való bejelentkezések) a jelentéskészítési rendszerbe programozott módon. Mire érdemes váltani?**
+**K: jelenleg a `https://graph.windows.net/<tenant-name>/reports/` Endpoint API-kat használva lehívhatják az Azure ad biztonsági jelentéseit (az észlelések bizonyos típusai, például a kiszivárgott hitelesítő adatok vagy a névtelen IP-címekről való bejelentkezések) a jelentéskészítési rendszerbe programozott módon. Mire érdemes váltani?**
 
-**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/graph-get-started.md) -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)azonban a Microsoft Graph-t használja, amely a O365 vagy az Azure ad-hez hasonló API-k Microsoft-szabványa. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
+**A:** Az [Identity Protection kockázati észlelések API](../identity-protection/graph-get-started.md)   -val Microsoft Graph használatával férhet hozzá a biztonsági észlelésekhez. Ez az új formátum nagyobb rugalmasságot biztosít az adatlekérdezéshez, a speciális szűréssel, a mezők kiválasztásával és egyebekkel, valamint a kockázati észlelések egyetlen típusra történő egységesítésével, így könnyebben integrálható a SIEM és más adatgyűjtési eszközökbe. Mivel az adatformátumok eltérő formátumúak, nem helyettesíthet új lekérdezést a régi lekérdezésekhez. [Az új API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent)azonban a Microsoft Graph-t használja, amely a O365 vagy az Azure ad-hez hasonló API-k Microsoft-szabványa. Így a szükséges munka kiterjesztheti a jelenlegi Microsoft Graph beruházásait, vagy megkezdheti az áttérést az új standard platformra.
 
 ---
 
@@ -71,13 +71,7 @@ Ez a cikk a Azure Active Directory (Azure AD) jelentéskészítéssel kapcsolato
 
 **K: mi a tevékenységi naplók (auditálás és bejelentkezések) adatmegőrzési funkciója a Azure Portalban?** 
 
-**A:** A következő táblázat felsorolja a tevékenységek naplóinak adatmegőrzési időszakát. További információ: [adatmegőrzési szabályzatok az Azure ad-jelentésekhez](reference-reports-data-retention.md).
-
-| Jelentés                 | Azure AD Free | Prémium szintű Azure AD P1 | Prémium szintű Azure AD P2 |
-| :--                    | :--           | :--                 | :--                 |
-| Naplók             | 7 nap        | 30 nap             | 30 nap             |
-| Bejelentkezések               | N/A           | 30 nap             | 30 nap             |
-| Azure MFA-használat        | 30 nap       | 30 nap             | 30 nap             |
+**A:** További információ: [adatmegőrzési szabályzatok az Azure ad-jelentésekhez](reference-reports-data-retention.md).
 
 ---
 

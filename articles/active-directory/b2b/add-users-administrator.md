@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 11/12/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf2ca3bde0cfee97adee8bb875df1522e95b1f53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 752df34c263563cdb970cadb59f92f2811af378e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263503"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199513"
 ---
 # <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Active Directory B2B Collaboration-felhasználók hozzáadása a Azure Portal
 
@@ -42,9 +42,6 @@ Ha VÁLLALATKÖZI együttműködési felhasználókat szeretne hozzáadni a cím
 
    ![Azt mutatja, hogy az új vendég felhasználó hol van a felhasználói felületen](./media/add-users-administrator/new-guest-user-in-all-users.png) 
  
-   > [!NOTE]
-   > Az **új vendég felhasználói** lehetőség a **szervezeti kapcsolatok** oldalon is elérhető. **Azure Active Directory**a **kezelés**területen válassza a **szervezeti kapcsolatok**elemet.
-
 5. Az **új felhasználó** lapon válassza a **felhasználó meghívása** lehetőséget, majd adja hozzá a vendég felhasználó adatait. 
 
     > [!NOTE]
@@ -85,7 +82,7 @@ Ha VÁLLALATKÖZI együttműködéssel rendelkező felhasználókat szeretne fel
 
 1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com) Azure ad-rendszergazdaként.
 2. Keresse meg és válassza ki a **Azure Active Directory** bármely oldalon.
-3. A **kezelés**területen válassza a **vállalati alkalmazások** > **minden alkalmazás**lehetőséget.
+3. A **kezelés**területen válassza a **vállalati alkalmazások**  >  **minden alkalmazás**lehetőséget.
 4. Válassza ki azt az alkalmazást, amelyhez vendég felhasználókat szeretne felvenni.
 5. Az alkalmazás irányítópultján válassza az **összes felhasználó** lehetőséget a **felhasználók és csoportok** ablaktábla megnyitásához.
 

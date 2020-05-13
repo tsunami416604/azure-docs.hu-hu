@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 809fbe85a9783777d5dbef86357bd5a386bd6f81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: efb9e8b8abdcb442e2c5c4d8bfd1b2e1e60865ce
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261239"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197852"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
@@ -19,7 +19,7 @@ A Transport Layer Security (TLS) 1,2-es vagy újabb verziójának kizárólagos 
 
 Ennek a tevékenységnek a részeként a következő módosításokat hajtjuk végre az Azure cache Redis:
 
-* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót 1,2-re konfigurálja. (Ez a TLS 1,0 volt.) Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok. Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében. Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
+* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót 1,2-re (korábban TLS 1,0) konfiguráljuk.  Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok. Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében. Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
 * **2. fázis:** A TLS 1,0-es és 1,1-es verziójának támogatása nem áll le. A módosítás után az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
 
 Emellett a változás részeként eltávolítja a régebbi, nem biztonságos Cypher-csomagok támogatását.  A támogatott Cypher-csomagok a következőre lesznek korlátozva, ha a gyorsítótár a 1,2-es minimális TLS-verzióval van konfigurálva.
@@ -33,7 +33,7 @@ A módosítások érvénybe léptetésének dátuma:
 
 | Felhő               | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma      |
 |---------------------|--------------------|-------------------------|
-| Azure (globális)      |  2020. január 13.  | 2020. május 11. (bővített) |
+| Azure (globális)      |  2020. január 13.  | Május 11., 2020            |
 | Azure Government    |  Március 13., 2020    | Május 11., 2020            |
 | Azure Germany       |  Március 13., 2020    | Május 11., 2020            |
 | Azure China         |  Március 13., 2020    | Május 11., 2020            |

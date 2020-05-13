@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 04/11/2019
+ms.date: 05/11/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7fb10863334392b207c7cfd2172dc9260cf15e2d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f69069b0c62f1e96c16441e99fbadac45728743
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74272898"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199430"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégek meghívójának kezelése
 
@@ -36,11 +36,9 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
 ### <a name="to-configure-external-collaboration-settings"></a>A külső együttműködési beállítások konfigurálása:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) bérlői rendszergazdaként.
-2. Válassza ki **Azure Active Directory** > **Users** > felhasználó**felhasználói beállításait**.
-3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
-   > [!NOTE]
-   > A **külső együttműködési beállítások** a **szervezeti kapcsolatok** lapon is elérhetők. Azure Active Directory a **kezelés**alatt válassza a **szervezeti kapcsolatok** > **beállításai lehetőséget**.
-4. A **külső együttműködési beállítások** lapon válassza ki az engedélyezni kívánt házirendeket.
+2. Válassza a **Azure Active Directory**lehetőséget.
+3. Válassza a **szervezeti kapcsolatok**  >  **beállításai** lehetőséget (vagy válassza ki a **külső identitások**  >  **külső együttműködési beállításokat**).
+6. A **külső együttműködési beállítások** lapon válassza ki az engedélyezni kívánt házirendeket.
 
    ![Külső együttműködési beállítások](./media/delegate-invitations/control-who-to-invite.png)
 

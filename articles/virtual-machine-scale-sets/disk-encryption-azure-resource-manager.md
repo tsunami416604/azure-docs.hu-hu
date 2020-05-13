@@ -1,17 +1,20 @@
 ---
 title: Virtuálisgép-méretezési csoport létrehozása és titkosítása Azure Resource Manager-sablonokkal
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és titkosíthat virtuálisgép-méretezési készleteket Azure Resource Manager sablonok használatával
-author: msmbaldwin
-ms.author: mbaldwin
+author: ju-shim
+ms.author: jushiman
+ms.topic: how-to
 ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
+ms.subservice: disks
 ms.date: 10/10/2019
-ms.openlocfilehash: aeba9aee8dd10b1245fb0a1e1cc98a1951382c72
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: c2b49a7e7e14bfbefcca64133ff23fdfabe53e7b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72529999"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198426"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Virtuálisgép-méretezési csoportok titkosítása Azure Resource Manager
 

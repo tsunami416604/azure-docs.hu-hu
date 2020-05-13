@@ -1,25 +1,25 @@
 ---
-title: Azure Storage-szolgáltatások figyelése Azure Monitor a Storage szolgáltatásban (előzetes verzió) | Microsoft Docs
+title: Azure Storage-szolgáltatások figyelése Azure Monitor a Storage szolgáltatáshoz | Microsoft Docs
 description: Ez a cikk az Azure Storage-fiókokkal kapcsolatos teljesítmény-és kihasználtsági problémák gyors megismerését biztosító Storage-rendszergazdáknak szóló Azure Monitor ismerteti.
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 08/15/2019
-ms.openlocfilehash: 497ea5a27a56ed5f8192b694fac1c52c8bf57ca6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.date: 05/11/2020
+ms.openlocfilehash: b0fd0343e7a072c0da0a5af0fa2d39eb2284cb06
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691110"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199952"
 ---
-# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage-preview"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban (előzetes verzió)
+# <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>A Storage szolgáltatás figyelése Azure Monitor a Storage-ban
 
-A Azure Monitor for Storage (előzetes verzió) az Azure Storage-fiókok átfogó figyelését teszi lehetővé az Azure Storage-szolgáltatások teljesítményének, kapacitásának és rendelkezésre állásának egységes áttekintésével. A tárolási kapacitást és a teljesítményt kétféleképpen tekintheti meg, közvetlenül egy Storage-fiókból vagy nézetből megtekintheti Azure Monitor a Storage-fiókok különböző csoportjai között. 
+A Storage-Azure Monitor az Azure Storage-fiókok átfogó áttekintését nyújtja az Azure Storage-szolgáltatások teljesítményének, kapacitásának és rendelkezésre állásának egységes áttekintésével. A tárolási kapacitást és a teljesítményt kétféleképpen tekintheti meg, közvetlenül egy Storage-fiókból vagy nézetből megtekintheti Azure Monitor a Storage-fiókok különböző csoportjai között. 
 
-Ennek a cikknek a segítségével megismerheti a Storage-Azure Monitor (előzetes verzió) funkcióit, így a nagy mennyiségű tárolási fiókok állapotáról és teljesítményéről, valamint a késéssel, a szabályozással és a rendelkezésre állással kapcsolatos problémák diagnosztizálására is képes.
+Ennek a cikknek a segítségével megismerheti, hogy a tárolás Azure Monitor milyen élményt nyújt a Storage-fiókok nagy teljesítményű és teljesítményű, nagy kapacitású, a hozzáférési pontokra való összpontosítás, valamint a késés, a szabályozás és a rendelkezésre állási problémák diagnosztizálása.
 
-## <a name="introduction-to-azure-monitor-for-storage-preview"></a>A Storage Azure Monitor bemutatása (előzetes verzió)
+## <a name="introduction-to-azure-monitor-for-storage"></a>A Storage Azure Monitor bemutatása
 
 A tapasztalatok megismerése előtt meg kell ismernie, hogyan jeleníti meg és jeleníti meg az információkat. Akár közvetlenül egy Storage-fiókból, akár a Azure Monitorból választja ki a tárolási funkciót, a Storage Azure Monitor egységes felhasználói élményt nyújt. 
 
@@ -48,7 +48,7 @@ Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és rendelkezésr
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az **áttekintések** szakaszban válassza a **Storage-fiókok (előzetes verzió)** lehetőséget.
+2. Válassza a **figyelő** elemet a Azure Portal bal oldali paneljén, majd az **áttekintések** szakaszban válassza a **Storage-fiókok**lehetőséget.
 
     ![Több Storage-fiók nézet](./media/storage-insights-overview/multiple-storage-accounts-view-01.png)
 
@@ -92,7 +92,7 @@ Azure Monitor for VMs közvetlenül egy Storage-fiókból való elérése:
 
 1. A Azure Portal válassza a Storage-fiókok lehetőséget.
 
-2. A listából válassza ki a Storage-fiókot. A figyelés szakaszban válassza az áttekintések (előzetes verzió) lehetőséget.
+2. A listából válassza ki a Storage-fiókot. A figyelés szakaszban válassza az áttekintések lehetőséget.
 
     ![Kiválasztott Storage-fiók – Áttekintés lap](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
@@ -138,7 +138,7 @@ A többszörös előfizetés és a Storage-fiók **áttekintése** vagy **kapaci
 
 ![Munkafüzet-rács eredményeinek exportálása példa](./media/storage-insights-overview/workbook-export-example.png)
 
-## <a name="customize-azure-monitor-for-storage-preview"></a>Azure Monitor testreszabása tárolóhoz (előzetes verzió)
+## <a name="customize-azure-monitor-for-storage"></a>Azure Monitor testreszabása tárolóhoz
 
 Ez a szakasz azokat a gyakori forgatókönyveket ismerteti, amelyekkel a munkafüzet szerkeszthető az adatelemzési igények támogatásához:
 
@@ -155,7 +155,7 @@ A testreszabásokat egy egyéni munkafüzetbe menti a rendszer, hogy megakadály
 
 A több előfizetés és a Storage-fiók **áttekintését** , illetve a **kapacitás** -munkafüzetek hatókörét beállíthatja egy adott előfizetéshez vagy a Storage-fiókhoz minden futtatáskor, és végrehajthatja a következő lépéseket.
 
-1. Válassza a **figyelő** lehetőséget a portálon, majd válassza ki a **Storage-fiókok (előzetes verzió)** elemet a bal oldali ablaktáblán.
+1. Válassza a **figyelő** lehetőséget a portálon, majd a bal oldali ablaktáblán válassza a **Storage-fiókok** lehetőséget.
 
 2. Az **Áttekintés** munkafüzet parancssáv területén válassza a **Szerkesztés**lehetőséget.
 
@@ -176,7 +176,7 @@ A példánkban a több előfizetés és a Storage-fiók kapacitása munkafüzett
 
 Ugyanazokat a módosításokat hajthatja végre az előre elkészített **hibák**, a **teljesítmény**, a **rendelkezésre állási**és a **Kapacitási** munkafüzetek egyikén is.
 
-1. Válassza a **figyelő** lehetőséget a portálon, majd válassza ki a **Storage-fiókok (előzetes verzió)** elemet a bal oldali ablaktáblán.
+1. Válassza a **figyelő** lehetőséget a portálon, majd a bal oldali ablaktáblán válassza a **Storage-fiókok** lehetőséget.
 
 2. Válassza **ki a** kapacitást a kapacitás munkafüzetre való váltáshoz és a parancssorból válassza a **Szerkesztés** elemet a parancssorból.
 
@@ -210,7 +210,7 @@ Ebben a példában a Storage-fiók kapacitása munkafüzettel dolgozunk, és bem
 
 1. Válassza ki a **Storage-fiókokat** a portálon, majd válasszon ki egy Storage-fiókot a listából.
 
-2. A bal oldali ablaktáblán válassza az adatok **(előzetes verzió)** lehetőséget.
+2. A bal oldali ablaktáblában **válassza az eredmények elemet.**
 
 3. A munkafüzetben válassza a **rendelkezésre állás** lehetőséget a rendelkezésre állási munkafüzetre való áttéréshez, majd válassza a **Szerkesztés** lehetőséget a parancssáv mezőben. 
 
@@ -228,11 +228,11 @@ Ebben a példában a Storage-fiók kapacitása munkafüzettel dolgozunk, és bem
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ez a szakasz a Azure Monitor for Storage (előzetes verzió) használata során felmerülő gyakori problémák diagnosztizálását és hibaelhárítását ismerteti. Az alábbi lista segítségével megkeresheti az adott hibához kapcsolódó információkat.
+Ez a szakasz a Azure Monitor for Storage szolgáltatás használatakor felmerülő gyakori problémák diagnosztizálását és hibaelhárítását ismerteti. Az alábbi lista segítségével megkeresheti az adott hibához kapcsolódó információkat.
 
 ### <a name="resolving-performance-capacity-or-availability-issues"></a>Teljesítmény-, kapacitás-vagy rendelkezésre állási problémák megoldása
 
-A Azure Monitor for Storage (előzetes verzió) szolgáltatással azonosított tárterülettel kapcsolatos problémák elhárításához tekintse meg az Azure Storage [hibaelhárítási útmutatóját](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance).  
+Az Azure Monitor for Storage szolgáltatással azonosított tárterülettel kapcsolatos problémák elhárítása érdekében tekintse meg az Azure Storage [hibaelhárítási útmutatóját](../../storage/common/storage-monitoring-diagnosing-troubleshooting.md#troubleshooting-guidance).  
 
 ### <a name="why-can-i-only-see-200-storage-accounts"></a>Miért csak a 200 Storage-fiókokat láthatom?
 
@@ -311,8 +311,8 @@ Az irányítópultra rögzített munkafüzet vagy munkafüzet lépésének címe
 
 Ha módosítani szeretné a mentett munkafüzet egyik lépésének a nevét, válassza a lépés alatt található szerkesztés lehetőséget, majd válassza ki a kívánt sebességfokozatot a beállítások alján.
 
-![A munkafüzet alján található Szerkesztés gombra kattintva megnyithatja a beállítások beállításokat](./media/storage-insights-overview/fqa-edit.png)
-![a beállítások területen válassza ki az alsó sebességfokozatot, hogy módosítani tudja a lépés nevét](./media/storage-insights-overview/fqa-change-name.png)
+![A munkafüzet alján található Szerkesztés gombra kattintva megnyithatja a beállítások beállításokat a ](./media/storage-insights-overview/fqa-edit.png)
+ ![ Beállítások területen válassza ki az alsó sebességfokozatot, hogy módosítani tudja a lépés nevét](./media/storage-insights-overview/fqa-change-name.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,12 +11,13 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc1be4637d56d7205d50ebfc6f7d1d5d22e62edf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: has-adal-ref
+ms.openlocfilehash: 9dce9e2f63afc50e367d650f93f293b974d912e9
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617656"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199551"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő hálózati házirend-kiszolgáló infrastruktúra integrálása az Azure Multi-Factor Authenticationnel
 
@@ -76,15 +77,15 @@ A bővítmény telepítésekor szüksége lesz az Azure AD-bérlő címtár-AZON
 
 Az NPS-kiszolgálónak képesnek kell lennie kommunikálni a következő URL-címekkel a 80-es és a 443-es porton keresztül.
 
-- https:\//adnotifications.windowsazure.com
+- https: \/ /adnotifications.windowsazure.com
 - https:\//login.microsoftonline.com
-- https:\//credentials.Azure.com
+- https: \/ /credentials.Azure.com
 
 Emellett a következő URL-címekhez való kapcsolódás szükséges az [adapter megadott PowerShell-parancsfájl használatával](#run-the-powershell-script) történő végrehajtásához.
 
 - https:\//login.microsoftonline.com
-- https:\//provisioningapi.microsoftonline.com
-- https:\//aadcdn.msauth.net
+- https: \/ /provisioningapi.microsoftonline.com
+- https: \/ /aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>A környezet előkészítése
 
@@ -110,7 +111,7 @@ Attól függően, hogy melyik VPN-megoldást használja, a RADIUS-hitelesítési
 Lehetséges, hogy ez a lépés már készen áll a bérlőre, de érdemes megnéznie, hogy a Azure AD Connect nemrég szinkronizálta-e az adatbázisokat.
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
-2. **Azure Active Directory** > kiválasztása**Azure ad Connect**
+2. **Azure Active Directory**kiválasztása  >  **Azure ad Connect**
 3. Ellenőrizze, hogy a szinkronizálási állapot **engedélyezve** van-e, és hogy az utolsó szinkronizálás kevesebb mint egy órával ezelőtt történt-e.
 
 Ha új szinkronizálási kört kell kiindulnia, akkor [Azure ad Connect Sync: Scheduler](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler)utasításait.
@@ -172,7 +173,7 @@ Ha egy meglévő NPS-bővítmény frissítését végzi, a mögöttes kiszolgál
 
 ### <a name="run-the-powershell-script"></a>A PowerShell-parancsprogram futtatása
 
-A telepítő létrehoz egy PowerShell-parancsfájlt a következő `C:\Program Files\Microsoft\AzureMfa\Config` helyen: (ahol a C:\ a telepítési meghajtója). Ez a PowerShell-parancsfájl minden futtatáskor végrehajtja a következő műveleteket:
+A telepítő létrehoz egy PowerShell-parancsfájlt a következő helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ a telepítési meghajtója). Ez a PowerShell-parancsfájl minden futtatáskor végrehajtja a következő műveleteket:
 
 - Hozzon létre egy önaláírt tanúsítványt.
 - Rendelje hozzá a tanúsítvány nyilvános kulcsát az egyszerű szolgáltatásnév számára az Azure AD-ben.
@@ -200,7 +201,7 @@ Ismételje meg ezeket a lépéseket minden olyan további hálózati házirend-k
 Ha az előző számítógép-tanúsítvány lejárt, és új tanúsítvány lett létrehozva, törölje a lejárt tanúsítványokat. A lejárt tanúsítványok miatt a hálózati házirend-kiszolgáló bővítménnyel kapcsolatos problémák merülhetnek fel.
 
 > [!NOTE]
-> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN\<= TenantID\>, OU = Microsoft NPS bővítménynek**kell lennie. 
+> Ha saját tanúsítványokat használ a PowerShell-parancsfájllal történő tanúsítványok létrehozása helyett, akkor győződjön meg arról, hogy a hálózati házirend-kiszolgáló elnevezési konvencióhoz vannak igazítva. A tulajdonos nevének a **CN = \< TenantID \> , OU = Microsoft NPS bővítménynek**kell lennie. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>További lépések Microsoft Azure Government
 
@@ -223,9 +224,9 @@ Azure Government felhőt használó ügyfelek esetén a következő további kon
 
 A hálózati házirend-kiszolgáló bővítmény kiadási 1.0.1.32 a több tanúsítvány olvasása mostantól támogatott. Ezzel a képességgel a lejáratuk előtt megkönnyítheti a működés közbeni tanúsítványok frissítését. Ha a szervezete a hálózati házirend-kiszolgáló bővítmény korábbi verzióját futtatja, frissítsen a 1.0.1.32 vagy újabb verzióra.
 
-A `AzureMfaNpsExtnConfigSetup.ps1` szkript által létrehozott tanúsítványok 2 évig érvényesek. Az informatikai szervezeteknek meg kell figyelniük a lejárati tanúsítványokat. A hálózati házirend-kiszolgáló kiterjesztéséhez tartozó tanúsítványok a helyi számítógép tanúsítványtárolójában, a személyes és a parancsfájlhoz megadott bérlői AZONOSÍTÓra kerülnek.
+A szkript által létrehozott tanúsítványok `AzureMfaNpsExtnConfigSetup.ps1` 2 évig érvényesek. Az informatikai szervezeteknek meg kell figyelniük a lejárati tanúsítványokat. A hálózati házirend-kiszolgáló kiterjesztéséhez tartozó tanúsítványok a helyi számítógép tanúsítványtárolójában, a személyes és a parancsfájlhoz megadott bérlői AZONOSÍTÓra kerülnek.
 
-Ha egy tanúsítvány a lejárati dátumra közeledik, egy új tanúsítványt kell létrehozni a lecseréléséhez.  Ezt a folyamatot az `AzureMfaNpsExtnConfigSetup.ps1` újbóli futtatásával hajtja végre, és megtartja ugyanazt a bérlői azonosítót, amikor a rendszer kéri. Ezt a folyamatot meg kell ismételni a környezet minden NPS-kiszolgálóján.
+Ha egy tanúsítvány a lejárati dátumra közeledik, egy új tanúsítványt kell létrehozni a lecseréléséhez.  Ezt a folyamatot az újbóli futtatásával hajtja végre `AzureMfaNpsExtnConfigSetup.ps1` , és megtartja ugyanazt a bérlői azonosítót, amikor a rendszer kéri. Ezt a folyamatot meg kell ismételni a környezet minden NPS-kiszolgálóján.
 
 ## <a name="configure-your-nps-extension"></a>A hálózati házirend-kiszolgáló bővítményének konfigurálása
 
@@ -267,7 +268,7 @@ A következő szkripttel végezheti el az alapszintű állapot-ellenőrzési lé
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Hogyan ellenőrizze, hogy az ügyféltanúsítvány a várt módon van-e telepítve?
 
-Keresse meg a telepítő által a tanúsítvány-tárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a titkos kulcs rendelkezik-e a felhasználói **hálózati szolgáltatáshoz**megadott engedélyekkel. A tanúsítvány tulajdonosának neve ** \<CN tenantid\>, OU = Microsoft NPS bővítmény**
+Keresse meg a telepítő által a tanúsítvány-tárolóban létrehozott önaláírt tanúsítványt, és ellenőrizze, hogy a titkos kulcs rendelkezik-e a felhasználói **hálózati szolgáltatáshoz**megadott engedélyekkel. A tanúsítvány tulajdonosának neve **CN \< tenantid \> , OU = Microsoft NPS bővítmény**
 
 A *AzureMfaNpsExtnConfigSetup. ps1* parancsfájl által létrehozott önaláírt tanúsítványok érvényességi ideje két év is lehet. A tanúsítvány telepítésének ellenőrzésekor azt is ellenőriznie kell, hogy a tanúsítvány nem járt-e le.
 

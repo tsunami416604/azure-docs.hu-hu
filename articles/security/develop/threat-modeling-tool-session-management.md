@@ -15,12 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: b5ff9ab8e2fcc1bb3b72f56348a1c86dc173bafc
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: has-adal-ref
+ms.openlocfilehash: 7ddc8c3016487ce56bc1a54d74aa94064cef24e4
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203862"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83198867"
 ---
 # <a name="security-frame-session-management"></a>Biztonsági keret: munkamenet-kezelés
 | Termék/szolgáltatás | Cikk |
@@ -178,7 +179,7 @@ A beállítás akkor is érvényben van, ha a HTTP-t használja az alkalmazás e
 | **Alkalmazható technológiák** | Web Forms, MVC5 |
 | **Attribútumok**              | EnvironmentType – helyszíni |
 | **Referencia**              | N/A  |
-| **Lépéseket** | Ha a webalkalmazás a függő entitás, a identitásszolgáltató pedig az ADFS-kiszolgáló, akkor a FedAuth- `system.identityModel.services` token biztonságos attribútuma a requireSSL True értékre állításával konfigurálható a web. config fájlban:|
+| **Lépéseket** | Ha a webalkalmazás a függő entitás, a identitásszolgáltató pedig az ADFS-kiszolgáló, akkor a FedAuth-token biztonságos attribútuma a requireSSL True értékre állításával konfigurálható a `system.identityModel.services` web. config fájlban:|
 
 ### <a name="example"></a>Példa
 ```csharp
@@ -272,7 +273,7 @@ A következő konfiguráció a megfelelő konfigurációt jeleníti meg:
 | **Alkalmazható technológiák** | MVC5, MVC6 |
 | **Attribútumok**              | N/A  |
 | **Referencia**              | [XSRF/CSRF-megelőzés a ASP.NET MVC és weblapok esetében](https://www.asp.net/mvc/overview/security/xsrfcsrf-prevention-in-aspnet-mvc-and-web-pages) |
-| **Lépéseket** | CSRF és ASP.NET MVC-űrlapok – a `AntiForgeryToken` segítő metódus használata a nézetekben; Helyezzen be `Html.AntiForgeryToken()` egy űrlapot, például:|
+| **Lépéseket** | CSRF és ASP.NET MVC-űrlapok – a `AntiForgeryToken` segítő metódus használata a nézetekben `Html.AntiForgeryToken()` , például a következő formában:|
 
 ### <a name="example"></a>Példa
 ```csharp
@@ -302,7 +303,7 @@ public ViewResult SubmitUpdate()
 A következőket ellenőrző engedélyezési szűrő:
 * A bejövő kérelem __RequestVerificationToken nevű cookie-val rendelkezik.
 * A bejövő kérelem egy `Request.Form` __RequestVerificationToken nevű bejegyzést tartalmaz.
-* Ezek a cookie `Request.Form` -és értékek megegyeznek, feltételezve, hogy minden rendben van, a kérés a szokásos módon halad át. De ha nem, akkor az "egy szükséges hamisítási jogkivonat nem lett megadva vagy érvénytelen" üzenettel rendelkező engedélyezési hiba. 
+* Ezek a cookie-és `Request.Form` értékek megegyeznek, feltételezve, hogy minden rendben van, a kérés a szokásos módon halad át. De ha nem, akkor az "egy szükséges hamisítási jogkivonat nem lett megadva vagy érvénytelen" üzenettel rendelkező engedélyezési hiba. 
 
 ### <a name="example"></a>Példa
 Anti-CSRF és AJAX: az űrlap tokenje az AJAX-kérelmek esetében lehet probléma, mivel egy AJAX-kérelem JSON-adatküldést küldhet, nem pedig HTML-űrlapokat. Az egyik megoldás, ha egy egyéni HTTP-fejlécben küldi el a jogkivonatokat. A következő kód a borotva szintaxisát használja a tokenek létrehozásához, majd hozzáadja a jogkivonatokat egy AJAX-kérelemhez. 
@@ -546,7 +547,7 @@ public ViewResult SubmitUpdate()
 A következőket ellenőrző engedélyezési szűrő:
 * A bejövő kérelem __RequestVerificationToken nevű cookie-val rendelkezik.
 * A bejövő kérelem egy `Request.Form` __RequestVerificationToken nevű bejegyzést tartalmaz.
-* Ezek a cookie `Request.Form` -és értékek megegyeznek, feltételezve, hogy minden rendben van, a kérés a szokásos módon halad át. De ha nem, akkor az "egy szükséges hamisítási jogkivonat nem lett megadva vagy érvénytelen" üzenettel rendelkező engedélyezési hiba.
+* Ezek a cookie-és `Request.Form` értékek megegyeznek, feltételezve, hogy minden rendben van, a kérés a szokásos módon halad át. De ha nem, akkor az "egy szükséges hamisítási jogkivonat nem lett megadva vagy érvénytelen" üzenettel rendelkező engedélyezési hiba.
 
 | Cím                   | Részletek      |
 | ----------------------- | ------------ |
@@ -558,7 +559,7 @@ A következőket ellenőrző engedélyezési szűrő:
 | **Lépéseket** | Ha a webes API a OAuth 2,0-es verzióval védett, akkor az engedélyezési kérelem fejlécében egy tulajdonosi jogkivonatot vár, és csak akkor biztosít hozzáférést a kéréshez, ha a jogkivonat érvényes. A cookie-alapú hitelesítéstől eltérően a böngészők nem csatlakoztatják a kérelmekhez a tulajdonosi jogkivonatokat. A kérelmező ügyfélnek explicit módon csatolnia kell a tulajdonosi jogkivonatot a kérelem fejlécében. Ezért a OAuth 2,0-et használó ASP.NET webes API-k esetében a tulajdonosi jogkivonatok CSRF támadások elleni védekezésnek tekintendők. Vegye figyelembe, hogy ha az alkalmazás MVC része űrlapos hitelesítést használ (például cookie-kat használ), a hamisítási jogkivonatokat az MVC webalkalmazásnak kell használnia. |
 
 ### <a name="example"></a>Példa
-A webes API-t tájékoztatni kell, hogy csak a tulajdonosi jogkivonatokra támaszkodjon, nem pedig a cookie-kra. A `WebApiConfig.Register` metódus a következő konfigurációval végezhető el:
+A webes API-t tájékoztatni kell, hogy csak a tulajdonosi jogkivonatokra támaszkodjon, nem pedig a cookie-kra. A metódus a következő konfigurációval végezhető el `WebApiConfig.Register` :
 
 ```csharp
 config.SuppressDefaultHostAuthentication();
