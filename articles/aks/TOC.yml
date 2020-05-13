@@ -129,6 +129,8 @@
           href: scale-cluster.md
         - name: AKS-fürt frissítése
           href: upgrade-cluster.md
+        - name: Használati üzemidőre vonatkozó SLA
+          href: uptime-sla.md
         - name: Folyamatcsomópont operációsrendszer-frissítései
           href: node-updates-kured.md
         - name: AKS-fürt konfigurálása
@@ -231,7 +233,7 @@
         - name: Azure Active Directory-integráció engedélyezése
           items:
             - name: Az Azure AD integrálása (előzetes verzió)
-              href: azure-ad-v2.md
+              href: managed-aad.md
             - name: Az Azure parancssori felületének használata
               href: azure-ad-integration-cli.md
             - name: Az Azure Portal használata

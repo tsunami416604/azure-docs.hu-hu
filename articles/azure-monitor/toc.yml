@@ -239,9 +239,11 @@
             - name: Azure Functions
               displayname: 'functions, monitor functions, automation'
               href: ../azure-functions/functions-monitoring.md
-            - name: Kubernetes-alkalmazások
-              displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
-              href: app/kubernetes.md
+            - name: Azure Kubernetes Service
+              items:
+                - name: Kubernetes (elavult)
+                  displayname: 'aks, microservice, istio, service mesh, application monitoring, monitor kubernetes, monitor aks'
+                  href: app/kubernetes.md
             - name: Különálló – bármely környezet
               items:
                 - name: Java (előzetes verzió)
@@ -272,8 +274,10 @@
                       href: app/monitor-performance-live-website-now.md
                 - name: Java
                   href: app/java-on-premises.md
-        - name: Erőforrás létrehozása
+        - name: Erőforrás létrehozása (klasszikus)
           href: app/create-new-resource.md
+        - name: Erőforrás létrehozása (munkaterület-alapú)
+          href: app/create-workspace-resource.md
         - name: Alkalmazás irányítópultja
           displayname: 'dashboard, Application Insights dashboard'
           href: app/overview-dashboard.md
@@ -282,7 +286,7 @@
           href: app/app-map.md
         - name: Tranzakció diagnosztikája
           href: app/transaction-diagnostics.md
-          displayname: 'e2e, end-to-end, component, dependency, cross-compoent transaction, operation ID, dependencies'
+          displayname: 'e2e, end-to-end, component, dependency, cross-component transaction, operation ID, dependencies'
         - name: Rendelkezésre állás
           items:
             - name: URL-tesztek
@@ -526,8 +530,12 @@
               href: platform/resource-logs-blob-format.md
         - name: Adatok streamelése az Event Hubsra
           href: platform/stream-monitoring-data-event-hubs.md
+        - name: A Key Vault monitorozása
+          href: insights/key-vaults-insights-overview.md
         - name: Elemzés módosítása
           href: app/change-analysis.md
+        - name: Azure Cache for Redis (előzetes verzió)
+          href: insights/redis-cache-insights-overview.md
     - name: Virtuális gépek és a vendég operációs rendszer monitorozása
       items:
         - name: Azure-beli virtuális gépek monitorozása
@@ -1204,6 +1212,8 @@
               href: app/data-model-context.md
             - name: Integrálás az Azure Functionszel
               href: app/azure-functions-supported-features.md
+            - name: Munkaterület-alapú séma
+              href: app/apm-tables.md
     - name: Mérőszámok
       items:
         - name: Támogatott metrikák

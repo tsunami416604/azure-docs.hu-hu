@@ -557,6 +557,20 @@
       items:
         - name: A Beszédeszközök SDK kibocsátási megjegyzései
           href: devices-sdk-release-notes.md
+- name: Eszközök
+  items:
+    - name: SPX
+      items:
+        - name: Mi az az SPX?
+          href: spx-overview.md
+        - name: Az SPX alapjai
+          href: spx-basics.md
+    - name: Speech Studio
+      items:
+        - name: Mi az a Speech Studio?
+          href: 'https://speech.microsoft.com'
+        - name: Custom Commands-alkalmazás létrehozása a Speech Studióval
+          href: quickstart-custom-speech-commands-create-new.md
 - name: Migrálás
   items:
     - name: A Bing Speechből

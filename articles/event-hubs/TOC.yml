@@ -212,6 +212,8 @@
     - name: Hibaelhárítás
       items:
         - name: Hibaelhárítási útmutató
+          href: troubleshooting-guide.md
+        - name: .NET-kivételek
           href: event-hubs-messaging-exceptions.md
         - name: Resource Manager-kivételek
           href: resource-manager-exceptions.md

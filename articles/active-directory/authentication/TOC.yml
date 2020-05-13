@@ -15,7 +15,7 @@
       href: tutorial-enable-sspr-writeback.md
     - name: Tiltott jelszavak egyéni listáinak konfigurálása
       href: tutorial-configure-custom-password-protection.md
-    - name: Az Azure Identity Protection integrálása
+    - name: Kockázatalapú bejelentkezési védelem engedélyezése
       href: tutorial-risk-based-sspr-mfa.md
 - name: Alapelvek
   expanded: true

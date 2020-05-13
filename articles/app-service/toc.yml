@@ -200,6 +200,8 @@
           href: web-sites-monitor.md
         - name: Naplók engedélyezése
           href: troubleshoot-diagnostic-logs.md
+        - name: Erőforrás-események lekérése
+          href: get-resource-events.md
     - name: Alkalmazás kezelése
       items:
         - name: Az üzemeltetési csomag kezelése

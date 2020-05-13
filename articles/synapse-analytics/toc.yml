@@ -18,6 +18,8 @@
       href: quickstart-create-workspace.md
     - name: Az Azure Synapse Studio használata
       href: quickstart-synapse-studio.md
+    - name: Power BI-munkaterület csatolása
+      href: quickstart-power-bi.md
     - name: Készletek létrehozása
       items:
         - name: Apache Spark-notebook létrehozása webes eszközök használatával
@@ -30,6 +32,8 @@
       items:
         - name: COPY utasítás
           href: ./sql-data-warehouse/quickstart-bulk-load-copy-tsql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Synapse Studio
+          href: quickstart-load-studio-sql-pool.md
     - name: Az igény szerinti SQL használata
       href: quickstart-sql-on-demand.md
 - name: Oktatóanyagok
@@ -188,6 +192,8 @@
               href: ./spark/apache-spark-what-is-delta-lake.md
             - name: Az Apache Spark teljesítménye
               href: ./spark/apache-spark-performance.md
+            - name: Az Apache Spark automatikus skálázási viselkedése
+              href: ./spark/apache-spark-autoscale.md
         - name: Fejlesztés
           items:
             - name: Azure Synapse Studio-jegyzetfüzetek

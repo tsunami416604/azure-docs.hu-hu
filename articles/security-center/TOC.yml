@@ -12,6 +12,8 @@
           href: security-center-services.md
         - name: Azure PaaS-erőforrások funkciólefedettsége
           href: features-paas.md
+    - name: A Security Center újdonságai
+      href: release-notes.md
     - name: Biztonsági javaslatok
       href: recommendations-reference.md
     - name: Biztonsági riasztások és a szándékos törlési lánc
@@ -188,7 +190,9 @@
           href: faq-vms.md
         - name: Meglévő Azure Log Analytics-felhasználók
           href: faq-azure-monitor-logs.md
-    - name: Kibocsátási megjegyzések
+    - name: A Security Center újdonságainak archívuma
+      href: release-notes-archive.md
+    - name: Az Azure-ütemterv blogja
       href: 'https://azure.microsoft.com/updates/?product=security-center'
     - name: Funkciók és API kivezetése (2019. július)
       href: security-center-features-retirement-july2019.md

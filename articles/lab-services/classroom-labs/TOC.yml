@@ -22,6 +22,8 @@
   items:
     - name: Osztályterem-tesztkörnyezetek alapelvei
       href: classroom-labs-concepts.md
+    - name: Az osztályterem-tesztkörnyezetek architekturális alapjai
+      href: classroom-labs-fundamentals.md
     - name: Forgatókönyvek
       items:
         - name: Tesztkörnyezetek használata tanórák lebonyolításához
@@ -136,7 +138,7 @@
       href: 'https://azure.microsoft.com/updates/?product=lab-services'
     - name: Díjszabás
       href: 'https://azure.microsoft.com/pricing/details/lab-services/'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/questions/tagged/azure-lab-services'
+    - name: Műszaki közösségi fórum
+      href: 'https://techcommunity.microsoft.com/t5/azure-lab-services/bd-p/AzureLabServices'
     - name: Gyakori kérdések
       href: classroom-labs-faq.md

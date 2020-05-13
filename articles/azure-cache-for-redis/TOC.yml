@@ -7,18 +7,26 @@
 - name: Rövid útmutatók
   expanded: true
   items:
-    - name: ASP.NET-alkalmazás
-      href: cache-web-app-howto.md
-    - name: .NET Core-alkalmazás
-      href: cache-dotnet-core-quickstart.md
-    - name: .NET-alkalmazás
-      href: cache-dotnet-how-to-use-azure-redis-cache.md
-    - name: Java-alkalmazás
-      href: cache-java-get-started.md
-    - name: Node.js-alkalmazás
-      href: cache-nodejs-get-started.md
-    - name: Python-alkalmazás
-      href: cache-python-get-started.md
+    - name: Gyorsítótár létrehozása
+      items:
+        - name: 'Alapszintű, Standard és Prémium szint'
+          href: quickstart-create-redis.md
+        - name: Nagyvállalati szintek
+          href: quickstart-create-redis-enterprise.md
+    - name: Gyorsítótár használata
+      items:
+        - name: ASP.NET-alkalmazás
+          href: cache-web-app-howto.md
+        - name: .NET Core-alkalmazás
+          href: cache-dotnet-core-quickstart.md
+        - name: .NET-alkalmazás
+          href: cache-dotnet-how-to-use-azure-redis-cache.md
+        - name: Java-alkalmazás
+          href: cache-java-get-started.md
+        - name: Node.js-alkalmazás
+          href: cache-nodejs-get-started.md
+        - name: Python-alkalmazás
+          href: cache-python-get-started.md
 - name: Oktatóanyagok
   items:
     - name: A gyorsítótárazás és a ranglisták együttes használata

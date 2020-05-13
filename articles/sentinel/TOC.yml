@@ -94,11 +94,11 @@
                   items:
                     - name: Ellenőrzőpont
                       href: connect-checkpoint.md
-                    - name: Cisco
+                    - name: Cisco ASA
                       href: connect-cisco.md
                     - name: ExtraHop Reveal(x)
                       href: connect-extrahop.md
-                    - name: F5
+                    - name: F5 ASM
                       href: connect-f5.md
                     - name: Forcepoint-termékek
                       href: connect-forcepoint-casb-ngfw.md
@@ -118,8 +118,10 @@
           href: connect-threat-intelligence.md
         - name: Azure Stack rendszerű virtuális gépek csatlakoztatása
           href: connect-azure-stack.md
-    - name: Több bérlő (MSSP)
+    - name: Munkavégzés egyszerre több bérlővel (MSSP)
       href: multiple-tenants-service-providers.md
+    - name: Munkavégzés több munkaterület incidenseivel
+      href: multiple-workspace-view.md
     - name: Az ügyfél által kezelt kulcsok (CMK) beállítása
       href: customer-managed-keys.md
     - name: Incidens létrehozása riasztásból
@@ -145,3 +147,5 @@
       href: 'https://blogs.msdn.com/b/azuresecurity/'
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/regions/services/'
+    - name: Díjszabás
+      href: 'https://azure.microsoft.com/en-us/pricing/details/azure-sentinel/'

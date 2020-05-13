@@ -315,6 +315,8 @@
           href: search-security-overview.md
         - name: Privát végpont létrehozása
           href: service-create-private-endpoint.md
+        - name: IP-tűzfal konfigurálása
+          href: service-configure-firewall.md
         - name: Szolgáltatáskulcsok kezelése
           href: search-security-api-keys.md
         - name: Szerepköralapú rendszergazdai hozzáférés

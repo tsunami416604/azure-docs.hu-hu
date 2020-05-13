@@ -303,6 +303,113 @@
           href: ../windows/migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: GYIK
           href: migration-classic-resource-manager-faq.md
+    - name: Rendszerképek használata
+      displayName: 'SIG, AMI, image'
+      items:
+        - name: Megosztott rendszerkép-katalógusok
+          items:
+            - name: parancssori felület
+              items:
+                - name: Katalógus létrehozása
+                  href: ../shared-images-cli.md
+                - name: Rendszerkép létrehozása
+                  items:
+                    - name: Virtuális gépről
+                      href: ../image-version-vm-cli.md
+                    - name: Migrálás felügyelt rendszerképből
+                      href: ../image-version-managed-image-cli.md
+                    - name: Másolás másik katalógusból
+                      href: ../image-version-another-gallery-cli.md
+                - name: Virtuális gép létrehozása
+                  items:
+                    - name: Általánosított
+                      href: ../vm-generalized-image-version-cli.md
+                - name: Rendszerkép-erőforrások frissítése
+                  href: ../update-image-resources-cli.md
+                - name: Alkalmazásregisztráció megosztás céljából
+                  href: share-images-across-tenants.md
+            - name: PowerShell
+              items:
+                - name: Katalógus létrehozása
+                  href: ../shared-images-powershell.md
+                - name: Rendszerképverzió létrehozása
+                  items:
+                    - name: Virtuális gépről
+                      href: ../image-version-vm-powershell.md
+                    - name: Migrálás felügyelt rendszerképből
+                      href: ../image-version-managed-image-powershell.md
+                    - name: Másolás másik katalógusból
+                      href: ../image-version-another-gallery-powershell.md
+                - name: Virtuális gép létrehozása
+                  items:
+                    - name: Általánosított
+                      href: ../vm-generalized-image-version-powershell.md
+                    - name: Specializált
+                      href: ../vm-specialized-image-version-powershell.md
+                - name: Rendszerkép-erőforrások frissítése
+                  href: ../update-image-resources-powershell.md
+            - name: Portál
+              items:
+                - name: 'Katalógus, rendszerkép és virtuális gép létrehozása'
+                  href: shared-images-portal.md
+            - name: Resource Manager-sablonok
+              items:
+                - name: Shared Image Gallery létrehozása
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
+                - name: Rendszerkép-definíció létrehozása Shared Image Galleryben
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
+                - name: Rendszerképverzió létrehozása Shared Image Galleryben
+                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
+                - name: Virtuális gép létrehozása rendszerképverzióból
+                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
+            - name: Megosztott rendszerképek hibaelhárítása
+              href: troubleshooting-shared-images.md
+            - name: Ügyfelek által felügyelt kulcsok használata
+              displayName: 'SSE, CMK, encrypt'
+              href: ../image-version-encryption.md
+        - name: Rendszerképkészítő (előzetes verzió)
+          items:
+            - name: Áttekintés
+              href: image-builder-overview.md
+            - name: Az Azure parancssori felület használatával
+              href: image-builder.md
+            - name: ARM-sablon referenciája
+              href: image-builder-json.md
+              displayName: 'ARM,Resource Manager'
+            - name: Buildelés rendszerkép-katalógusokhoz
+              href: image-builder-gallery.md
+            - name: Meglévő rendszerkép frissítése
+              href: image-builder-gallery-update-image-version.md
+            - name: Hibaelhárítás
+              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
+        - name: Rendszerképek keresése és használata
+          href: cli-ps-findimage.md
+        - name: Egyéni kép létrehozása
+          items:
+            - name: Általános lépések
+              href: create-upload-generic.md
+            - name: Ubuntu
+              href: create-upload-ubuntu.md
+            - name: CentOS
+              href: create-upload-centos.md
+            - name: Red Hat
+              href: redhat-create-upload-vhd.md
+            - name: Debian
+              href: debian-create-upload-vhd.md
+            - name: SUSE
+              href: suse-create-upload-vhd.md
+            - name: Oracle Linux
+              href: oracle-create-upload-vhd.md
+            - name: OpenBSD
+              href: create-upload-openbsd.md
+            - name: FreeBSD
+              href: freebsd-intro-on-azure.md
+        - name: Virtuális gép rögzítése rendszerképben
+          href: capture-image.md
+        - name: Rendszerkép összeállítása a Packerrel
+          href: build-image-with-packer.md
+        - name: Meglévő lemez letöltése
+          href: download-vhd.md
     - name: Virtuális gépek védelme
       items:
         - name: Javaslatok
@@ -461,110 +568,6 @@
           href: ../../azure-monitor/platform/alerts-metric.md
         - name: Naplóriasztások létrehozása
           href: ../../azure-monitor/platform/alerts-log.md
-    - name: Rendszerképek használata
-      displayName: 'SIG, AMI, image'
-      items:
-        - name: Megosztott rendszerkép-katalógusok
-          items:
-            - name: parancssori felület
-              items:
-                - name: Katalógus létrehozása
-                  href: ../shared-images-cli.md
-                - name: Rendszerkép létrehozása
-                  items:
-                    - name: Virtuális gépről
-                      href: ../image-version-vm-cli.md
-                    - name: Migrálás felügyelt rendszerképből
-                      href: ../image-version-managed-image-cli.md
-                    - name: Másolás másik katalógusból
-                      href: ../image-version-another-gallery-cli.md
-                - name: Virtuális gép létrehozása
-                  items:
-                    - name: Általánosított
-                      href: ../vm-generalized-image-version-cli.md
-                - name: Rendszerkép-erőforrások frissítése
-                  href: ../update-image-resources-cli.md
-                - name: Alkalmazásregisztráció megosztás céljából
-                  href: share-images-across-tenants.md
-            - name: PowerShell
-              items:
-                - name: Katalógus létrehozása
-                  href: ../shared-images-powershell.md
-                - name: Rendszerképverzió létrehozása
-                  items:
-                    - name: Virtuális gépről
-                      href: ../image-version-vm-powershell.md
-                    - name: Migrálás felügyelt rendszerképből
-                      href: ../image-version-managed-image-powershell.md
-                    - name: Másolás másik katalógusból
-                      href: ../image-version-another-gallery-powershell.md
-                - name: Virtuális gép létrehozása
-                  items:
-                    - name: Általánosított
-                      href: ../vm-generalized-image-version-powershell.md
-                    - name: Specializált
-                      href: ../vm-specialized-image-version-powershell.md
-                - name: Rendszerkép-erőforrások frissítése
-                  href: ../update-image-resources-powershell.md
-            - name: Portál
-              items:
-                - name: 'Katalógus, rendszerkép és virtuális gép létrehozása'
-                  href: shared-images-portal.md
-            - name: Resource Manager-sablonok
-              items:
-                - name: Shared Image Gallery létrehozása
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-create/'
-                - name: Rendszerkép-definíció létrehozása Shared Image Galleryben
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-definition-create/'
-                - name: Rendszerképverzió létrehozása Shared Image Galleryben
-                  href: 'https://azure.microsoft.com/resources/templates/101-sig-image-version-create/'
-                - name: Virtuális gép létrehozása rendszerképverzióból
-                  href: 'https://azure.microsoft.com/resources/templates/101-vm-from-sig/'
-            - name: Megosztott rendszerképek hibaelhárítása
-              href: troubleshooting-shared-images.md
-        - name: Rendszerképkészítő (előzetes verzió)
-          items:
-            - name: Áttekintés
-              href: image-builder-overview.md
-            - name: Az Azure parancssori felület használatával
-              href: image-builder.md
-            - name: ARM-sablon referenciája
-              href: image-builder-json.md
-              displayName: 'ARM,Resource Manager'
-            - name: Buildelés rendszerkép-katalógusokhoz
-              href: image-builder-gallery.md
-            - name: Meglévő rendszerkép frissítése
-              href: image-builder-gallery-update-image-version.md
-            - name: Hibaelhárítás
-              href: 'https://github.com/danielsollondon/azvmimagebuilder/blob/master/troubleshootingaib.md'
-        - name: Rendszerképek keresése és használata
-          href: cli-ps-findimage.md
-        - name: Egyéni kép létrehozása
-          items:
-            - name: Általános lépések
-              href: create-upload-generic.md
-            - name: Ubuntu
-              href: create-upload-ubuntu.md
-            - name: CentOS
-              href: create-upload-centos.md
-            - name: Red Hat
-              href: redhat-create-upload-vhd.md
-            - name: Debian
-              href: debian-create-upload-vhd.md
-            - name: SUSE
-              href: suse-create-upload-vhd.md
-            - name: Oracle Linux
-              href: oracle-create-upload-vhd.md
-            - name: OpenBSD
-              href: create-upload-openbsd.md
-            - name: FreeBSD
-              href: freebsd-intro-on-azure.md
-        - name: Virtuális gép rögzítése rendszerképben
-          href: capture-image.md
-        - name: Rendszerkép összeállítása a Packerrel
-          href: build-image-with-packer.md
-        - name: Meglévő lemez letöltése
-          href: download-vhd.md
     - name: Rendelkezésre állás és méretezés
       items:
         - name: Automatikus méretezés

@@ -1018,7 +1018,7 @@
           href: how-to-use-change-feed-estimator.md
         - name: Migrálás a változáscsatorna feldolgozó kódtárából
           href: how-to-migrate-from-change-feed-library.md
-        - name: Java SQL-alkalmazás létrehozása változáscsatorna használatával
+        - name: Változáscsatorna – Async Java-példa
           href: create-sql-api-java-changefeed.md
     - name: Beépített elemzések az Apache Sparkkal
       items:
@@ -1080,6 +1080,8 @@
               href: monitor-server-side-latency.md
             - name: Kérelemegység-használat monitorozása
               href: monitor-request-unit-usage.md
+            - name: Normalizált kérelemegység-használat monitorozása
+              href: monitor-normalized-request-units.md
         - name: Az Azure Monitor-naplók használata
           items:
             - name: Monitorozás diagnosztikai naplók használatával

@@ -162,6 +162,8 @@
               href: snapshots-overview.md
             - name: Csatorna módosítása
               href: storage-blob-change-feed.md
+            - name: Adott időpontnak megfelelő helyreállítás
+              href: point-in-time-restore-overview.md
         - name: Hozzáférési és teljesítményszintek
           items:
             - name: Hozzáférési szintek
@@ -379,7 +381,7 @@
               href: storage-blob-immutability-policies-manage.md
         - name: Adatredundancia kezelése
           items:
-            - name: Az adatreplikálás módjának megváltoztatása
+            - name: Redundancia konfigurációjának módosítása
               href: ../common/redundancy-migration.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Magas rendelkezésre állású alkalmazások tervezése
               href: ../common/geo-redundant-design.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -393,6 +395,8 @@
               href: snapshots-manage-dotnet.md
             - name: Változáscsatorna-naplók feldolgozása
               href: storage-blob-change-feed-how-to.md
+            - name: Időponthoz kötött visszaállítás engedélyezése
+              href: point-in-time-restore-manage.md
         - name: Vészhelyreállítás kezelése
           items:
             - name: Az Utolsó szinkronizálás időpontja tulajdonság ellenőrzése
