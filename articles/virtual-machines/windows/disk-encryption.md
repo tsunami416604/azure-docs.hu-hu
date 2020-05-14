@@ -7,20 +7,23 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 8daa4d6c13cd40f28329f2ab4157f295cb092b8b
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4b693ef1eaf7c8dd1f2fd95116c24392ee9a9454
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195700"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402578"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
-Az Azure Managed Disks szolgáltatás alapértelmezés szerint automatikusan titkosítja az adatait, amikor a felhőbe tart. A kiszolgálóoldali titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. Az Azure Managed Disks szolgáltatásban tárolt adatforgalom transzparens módon, 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), az egyik legerősebb blokk titkosítási algoritmussal, valamint az FIPS 140-2-kompatibilis.
+Az Azure Managed Disks szolgáltatás alapértelmezés szerint automatikusan titkosítja az adatait, amikor a felhőbe tart. A kiszolgálóoldali titkosítás (SSE) védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében.
 
-A titkosítás nem befolyásolja a felügyelt lemezek teljesítményét. A titkosításhoz nem jár további díj.
+Az Azure Managed Disks szolgáltatásban tárolt adatforgalom transzparens módon, 256 bites [AES-titkosítással](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard), az egyik legerősebb blokk titkosítási algoritmussal, valamint az FIPS 140-2-kompatibilis. Az Azure Managed Disks mögöttes titkosítási modulokkal kapcsolatos további információkért lásd: a [kriptográfiai API: következő generáció](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
 
-Az Azure Managed Disks mögöttes titkosítási modulokkal kapcsolatos további információkért lásd: a [kriptográfiai API: következő generáció](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+A titkosítás nem befolyásolja a felügyelt lemezek teljesítményét, és a titkosításhoz nincs további díj. 
+
+> [!NOTE]
+> Az ideiglenes lemezek nem felügyelt lemezek, és nem az SSE titkosítással vannak titkosítva. További információ az ideiglenes lemezekről [: felügyelt lemezek – Áttekintés: lemezes szerepkörök](managed-disks-overview.md#disk-roles).
 
 ## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
 
@@ -283,7 +286,7 @@ $disk.Encryption.Type
 
 ## <a name="server-side-encryption-versus-azure-disk-encryption"></a>Kiszolgálóoldali titkosítás és az Azure Disk Encryption
 
-[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) kihasználja a Windows [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) szolgáltatását és a Linux [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) funkcióját, hogy a felügyelt lemezeket a vendég virtuális gépen lévő, az ügyfél által felügyelt kulcsokkal titkosítsa.  Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t, mivel lehetővé teszi a virtuális gépekhez tartozó operációsrendszer-típusok és-lemezképek használatát a Storage szolgáltatásban tárolt adattitkosítással.
+[Azure Disk Encryption](../../security/fundamentals/azure-disk-encryption-vms-vmss.md) a Windows [BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview) szolgáltatásával titkosítja a felügyelt lemezeket az ügyfél által felügyelt KULCSOKKAL a vendég virtuális gépen belül.  Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítás javítja az ADE-t, mivel lehetővé teszi a virtuális gépekhez tartozó operációsrendszer-típusok és-lemezképek használatát a Storage szolgáltatásban tárolt adattitkosítással.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -16,12 +16,12 @@ ms.author: kakern
 ms.reviewer: kakern
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c0b7070502059eee7f87e82812e06095e56d578
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: bf34f808e2c59e32990a83c817b98ee899e769ac
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582657"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402249"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>A termék neve és a szolgáltatási csomag azonosítója a licenceléshez
 
@@ -38,7 +38,8 @@ A licenceknek [a Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM
 
 | Terméknév | Karakterlánc-azonosító | GUID | Szolgáltatási csomagok foglalt | Szolgáltatási csomagok foglalt (felhasználóbarát nevek) |
 | --- | --- | --- |--- | --- |
-| hangkonferencia | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 |MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | Hangkonferencia (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
+| ALKALMAZÁS-CSATLAKOZÁSI IW | SPZA_IW |  8f0c5670-4e56-4892-b06d-91c085d7004f | SPZA (0bfc98ed-1dbc-4a97-b246-701754e48b17)<br/>EXCHANGE_S_FOUNDATION (113feb6c-3fe4-4440-bddc-54d774bf0318) | ALKALMAZÁS-csatlakozási (0bfc98ed-1dbc-4a97-b246-701754e48b17)<br/>EXCHANGE FOUNDATION (113feb6c-3fe4-4440-bddc-54d774bf0318) |
+| hangkonferencia | MCOMEETADV | 0c266dff-15dd-4b49-8397-2bb16070ed52 | MCOMEETADV (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) | Hangkonferencia (3e26ee1f-8a5f-4d52-aee2-b81ce45c8f40) |
 | ALAPSZINTŰ AZURE ACTIVE DIRECTORY  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) | Alapszintű MICROSOFT AZURE ACTIVE DIRECTORY (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe) |
 | PRÉMIUM P1 SZINTŰ AZURE ACTIVE DIRECTORY | AAD_PREMIUM   | 078d2b04-f1bd-4111-bbd4-b4b1b354cef4  | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>ADALLOM_S_DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0) | PRÉMIUM P1 szintű AZURE ACTIVE DIRECTORY (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>MICROSOFT AZURE MULTI-FACTOR AUTHENTICATION (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>CLOUD APP SECURITY DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9) |
 | PRÉMIUM P2 SZINTŰ AZURE ACTIVE DIRECTORY | AAD_PREMIUM_P2    | 84a661c4-e949-4bd2-a560-ed7766fcaf2b  | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>AAD_PREMIUM_P2 (eec0eb4f-6444-4f95-aba0-50c24d67f998)<br/>ADALLOM_S_DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0) | PRÉMIUM P1 szintű AZURE ACTIVE DIRECTORY (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>MICROSOFT AZURE MULTI-FACTOR AUTHENTICATION (8a256a2b-b617-496d-b51b-e76466e88db0)<br/>CLOUD APP SECURITY DISCOVERY (932ad362-64a8-4783-9106-97849a1a30b9)<br/>PRÉMIUM P2 szintű AZURE ACTIVE DIRECTORY (eec0eb4f-6444-4f95-aba0-50c24d67f998) |
@@ -130,7 +131,7 @@ A licenceknek [a Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>Olyan szolgáltatási csomagok, amelyek nem rendelhetők hozzá egyszerre
 
-Néhány termék olyan szolgáltatási csomagokat tartalmaz, amelyek egyszerre nem rendelhetők hozzá ugyanahhoz a felhasználóhoz. Ha például az *office 365 E1* és az *Office 365 E3* szerepel az Azure ad-szervezetben, és mindkét licencet ugyanazzal a felhasználóval próbálta hozzárendelni, a művelet meghiúsul. Ennek az az oka, hogy az E3-termék a következő szolgáltatási csomagokat tartalmazza, amelyek ütköznek az E1 társaikkal:
+Néhány termék olyan szolgáltatási csomagokat tartalmaz, amelyek egyszerre nem rendelhetők hozzá ugyanahhoz a felhasználóhoz. Ha például az *office 365 E1* és az *Office 365 E3* szerepel a bérlőben, és mindkét licencet ugyanazzal a felhasználóval próbálta hozzárendelni, a művelet sikertelen lesz. Ennek az az oka, hogy az E3-termék a következő szolgáltatási csomagokat tartalmazza, amelyek ütköznek az E1 társaikkal:
 
 -   A SharePoint Online (2. csomag) ütközik a SharePoint Online-val (1. csomag).
 -   Az Exchange Online (2. csomag) ütközik az Exchange Online-val (1. csomag).

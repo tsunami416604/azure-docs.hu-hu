@@ -7,12 +7,12 @@ author: zr-msft
 ms.topic: article
 ms.date: 09/27/2019
 ms.author: zarhoads
-ms.openlocfilehash: 3be60888d3d12d37650ad2cffc1911fb3b5e6682
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 14e80f6348772af77c5a53b1d5e9111c4ae8ba9b
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790677"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402067"
 ---
 # <a name="use-a-standard-sku-load-balancer-in-azure-kubernetes-service-aks"></a>Standard SKU Load Balancer használata az Azure Kubernetes Service-ben (ak)
 
@@ -38,7 +38,7 @@ Ha meglévő alhálózatot vagy erőforráscsoportot használ, az AK-fürt egysz
 
 Ha rendelkezik egy meglévő, alapszintű SKU-Load Balancer rendelkező fürttel, akkor fontos, hogy a rendszer az áttelepítés során vegye figyelembe, hogy mikor kell a standard SKU-Load Balancer használatával fürtöt használni.
 
-Tegyük fel például, hogy a fürtök áttelepítésére szolgáló kék/zöld központi telepítések `load-balancer-sku` egy gyakori eljárás, mivel a fürt típusa csak a fürt létrehozási ideje alatt definiálható. Az *alapszintű SKU* -terheléselosztó azonban olyan *alapszintű SKU* IP-címeket használ, amelyek nem kompatibilisek a *standard* SKU-beli Load balancerekkel, mivel *szabványos SKU* IP-címeket igényelnek. Amikor a fürtöket áttelepíti Load Balancer SKU-ra, egy kompatibilis IP-címmel rendelkező új IP-címet kell megadni.
+Tegyük fel például, hogy a fürtök áttelepítésére szolgáló kék/zöld központi telepítések egy gyakori eljárás, mivel a `load-balancer-sku` fürt típusa csak a fürt létrehozási ideje alatt definiálható. Az *alapszintű SKU* -terheléselosztó azonban olyan *alapszintű SKU* IP-címeket használ, amelyek nem kompatibilisek a *standard* SKU-beli Load balancerekkel, mivel *szabványos SKU* IP-címeket igényelnek. Amikor a fürtöket áttelepíti Load Balancer SKU-ra, egy kompatibilis IP-címmel rendelkező új IP-címet kell megadni.
 
 A fürtök áttelepítésével kapcsolatos további szempontokért tekintse meg a [dokumentációt az áttelepítési megfontolásokból](aks-migration.md) , és tekintse meg az áttelepítés során megfontolandó fontos témakörök listáját. Az alábbi korlátozások szintén fontos viselkedési különbségeket is figyelembe vesznek, ha standard SKU Load Balancert használ az AK-ban.
 
@@ -60,11 +60,11 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 Ha egy AK-fürtöt hoz létre, a rendszer alapértelmezés szerint a *standard* SKU Load balancert használja, amikor szolgáltatásokat futtat a fürtben. Az [Azure CLI][aks-quickstart-cli] -t használó rövid útmutató például telepíti a *standard* SKU Load balancert használó minta alkalmazást.
 
 > [!IMPORTANT]
-> A nyilvános IP-címek elkerülhetők a felhasználó által megadott útvonal (UDR) testreszabásával. Egy AK-fürt kimenő típusának megadása a UDR kihagyhatja az IP-kiépítés és a háttérbeli készlet beállítását az AK-hoz létrehozott Azure Load Balancer számára. Lásd: [fürtök beállítása `outboundType` a következőre: "userDefinedRouting"](egress-outboundtype.md).
+> A nyilvános IP-címek elkerülhetők a felhasználó által megadott útvonal (UDR) testreszabásával. Egy AK-fürt kimenő típusának megadása a UDR kihagyhatja az IP-kiépítés és a háttérbeli készlet beállítását az AK-hoz létrehozott Azure Load Balancer számára. Lásd: [fürtök beállítása a következőre: `outboundType` "userDefinedRouting"](egress-outboundtype.md).
 
 ## <a name="configure-the-load-balancer-to-be-internal"></a>A terheléselosztó belső beállítása
 
-Azt is beállíthatja, hogy a terheléselosztó belső legyen, és ne tegye közzé a nyilvános IP-címet. A terheléselosztó belsőként való konfigurálásához vegyen `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` fel jegyzetként a *terheléselosztó* szolgáltatásba. [Itt][internal-lb-yaml]láthat egy példát a YAML-jegyzékre, valamint további részleteket is megtudhat a belső terheléselosztó használatával kapcsolatban.
+Azt is beállíthatja, hogy a terheléselosztó belső legyen, és ne tegye közzé a nyilvános IP-címet. A terheléselosztó belsőként való konfigurálásához vegyen fel `service.beta.kubernetes.io/azure-load-balancer-internal: "true"` jegyzetként a *terheléselosztó* szolgáltatásba. [Itt][internal-lb-yaml]láthat egy példát a YAML-jegyzékre, valamint további részleteket is megtudhat a belső terheléselosztó használatával kapcsolatban.
 
 ## <a name="scale-the-number-of-managed-public-ips"></a>A felügyelt nyilvános IP-címek számának méretezése
 
@@ -81,7 +81,7 @@ az aks update \
 
 A fenti példa a felügyelt kimenő nyilvános IP-címek számát állítja be a *myResourceGroup*-ben található *myAKSCluster* - *fürt esetében.* 
 
-A terheléselosztó által *felügyelt-IP-Count* paraméterrel is beállíthatja a felügyelt kimenő nyilvános IP-címek kezdeti számát a fürt létrehozásakor a `--load-balancer-managed-outbound-ip-count` paraméter hozzáfűzésével és a kívánt értékre való beállításával. A felügyelt kimenő nyilvános IP-címek alapértelmezett száma 1.
+A terheléselosztó által *felügyelt-IP-Count* paraméterrel is beállíthatja a felügyelt kimenő nyilvános IP-címek kezdeti számát a fürt létrehozásakor a paraméter hozzáfűzésével `--load-balancer-managed-outbound-ip-count` és a kívánt értékre való beállításával. A felügyelt kimenő nyilvános IP-címek alapértelmezett száma 1.
 
 ## <a name="provide-your-own-public-ips-or-prefixes-for-egress"></a>Saját nyilvános IP-címek vagy előtagok megadása a kimenő forgalomhoz
 
@@ -89,12 +89,17 @@ A terheléselosztó által *felügyelt-IP-Count* paraméterrel is beállíthatja
 
 Több IP-cím vagy előtag megadásával több háttér-szolgáltatást is meghatározhat, ha az IP-címet egyetlen terheléselosztó objektum mögött definiálja. Az adott csomópontok kimenő végpontja attól függ, hogy milyen szolgáltatáshoz vannak társítva.
 
-> [!IMPORTANT]
-> *Szabványos* SKU nyilvános IP-címeket kell használnia a kimenő forgalomhoz a Load Balancer *standard* SKU-jának megfelelően. A nyilvános IP-címek SKU-jának ellenőrzéséhez használja az az [Network Public-IP show][az-network-public-ip-show] parancsot:
->
-> ```azurecli-interactive
-> az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
-> ```
+### <a name="pre-requisites-to-bring-your-own-ip-addresses-or-ip-prefixes"></a>Előfeltételek a saját IP-címeinek vagy IP-előtagjainak
+1. *Szabványos* SKU nyilvános IP-címeket kell használnia a kimenő forgalomhoz a Load Balancer *standard* SKU-jának megfelelően. A nyilvános IP-címek SKU-jának ellenőrzéséhez használja az az [Network Public-IP show][az-network-public-ip-show] parancsot:
+
+   ```azurecli-interactive
+   az network public-ip show --resource-group myResourceGroup --name myPublicIP --query sku.name -o tsv
+   ```
+ 1. A nyilvános IP-címeknek és az IP-ELŐTAGOKNAK ugyanabban a régióban kell lenniük, és ugyanannak az előfizetésnek kell szerepelniük, mint az AK-fürt.
+ 1. A nyilvános IP-címek és az IP-előtagok nem lehetnek olyan IP-címek, amelyeket az AK felügyelt IP-ként hozott létre. Győződjön meg arról, hogy az egyéni IP-címekként megadott IP-címek manuálisan lettek létrehozva, és nem az AK szolgáltatás.
+ 1. A nyilvános IP-címek és az IP-előtagok nem használhatók másik erőforrás vagy szolgáltatás számára.
+
+ ### <a name="define-your-own-public-ip-or-prefixes-on-an-existing-cluster"></a>Saját nyilvános IP-cím vagy előtag definiálása meglévő fürtön
 
 A nyilvános IP-címek azonosítóinak listázásához használja az az [Network Public-IP show][az-network-public-ip-show] parancsot.
 
@@ -131,9 +136,6 @@ az aks update \
     --name myAKSCluster \
     --load-balancer-outbound-ip-prefixes <publicIpPrefixId1>,<publicIpPrefixId2>
 ```
-
-> [!IMPORTANT]
-> A nyilvános IP-címeknek és az IP-ELŐTAGOKNAK ugyanabban a régióban kell lenniük, és ugyanannak az előfizetésnek kell szerepelniük, mint az AK-fürt. 
 
 ### <a name="define-your-own-public-ip-or-prefixes-at-cluster-create-time"></a>Saját nyilvános IP-cím vagy előtag definiálása a fürt létrehozási idején
 
@@ -222,7 +224,7 @@ Ha módosítja a terheléselosztó *– kimenő – portok* és a *terheléselos
 ### <a name="required-quota-for-customizing-allocatedoutboundports"></a>A allocatedOutboundPorts testreszabásához szükséges kvóta
 Elegendő kimenő IP-kapacitásra van szükség a csomópontok és a kívánt kimenő portok számától függően. A következő képlettel ellenőrizheti, hogy van-e elegendő kimenő IP-kapacitása: 
  
-*outboundIPs* \* 64 000 \> *nodeVMs* nodeVMs \* *desiredAllocatedOutboundPorts*.
+*outboundIPs* \* 64 000 \> *nodeVMs* \* *desiredAllocatedOutboundPorts*.
  
 Ha például 3 *nodeVMs*van, és 50 000 *desiredAllocatedOutboundPorts*, legalább 3 *outboundIPs*kell lennie. Javasoljuk, hogy a szükségesnél újabb kimenő IP-kapacitást építsen ki. Emellett a fürt automéretezőjét és a csomópont-készlet frissítésének lehetőségét is figyelembe kell vennie a kimenő IP-kapacitás kiszámításakor. A fürt autoskálázása esetében tekintse át az aktuális csomópontok darabszámát és a csomópontok maximális darabszámát, és használja a magasabb értéket. A frissítéshez az összes olyan csomópont-készlethez, amely lehetővé teszi a frissítését, egy további csomópontos virtuális gép számára.
  

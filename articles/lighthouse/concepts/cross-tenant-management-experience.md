@@ -1,14 +1,14 @@
 ---
 title: Bérlők közötti felügyeleti megoldások
 description: Az Azure-beli delegált erőforrás-kezelés lehetővé teszi a több-bérlős felügyeleti élményt.
-ms.date: 04/24/2020
+ms.date: 05/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 51cd464da417bfd1d6d4ff52e2a2595a7ce77fe6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: ad8fc7452a704a4a030e7a6eb45a5ba397912ef1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82201703"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402381"
 ---
 # <a name="cross-tenant-management-experiences"></a>Bérlők közötti felügyeleti megoldások
 
@@ -38,7 +38,7 @@ A Azure PowerShell [Get-AzSubscription parancsmag](https://docs.microsoft.com/po
 Hasonlóképpen, az Azure CLI-parancsok, például az [az Account List](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-list) a **HomeTenantId** és a **managedByTenants** attribútumot jelenítik meg.
 
 > [!TIP]
-> Ha nem látja ezeket az értékeket az Azure CLI használatakor, a következő lépésekkel `az account clear` `az login --identity`próbálja meg törölni a gyorsítótárat.
+> Ha nem látja ezeket az értékeket az Azure CLI használatakor, a következő lépésekkel próbálja meg törölni a gyorsítótárat `az account clear` `az login --identity` .
 
 Olyan API-kat is biztosítunk, amelyek kifejezetten az Azure-beli delegált erőforrás-kezelési feladatok végrehajtásához szükségesek. További információért lásd a **hivatkozási** szakaszt.
 
@@ -113,6 +113,7 @@ A legtöbb feladat és szolgáltatás a felügyelt bérlők delegált erőforrá
 
 - Azure Sentinel-erőforrások kezelése [az ügyfelek bérlői számára](../../sentinel/multiple-tenants-service-providers.md)
 - [Támadások követése és a biztonsági riasztások megtekintése több ügyfél bérlője között](https://techcommunity.microsoft.com/t5/azure-sentinel/using-azure-lighthouse-and-azure-sentinel-to-monitor-across/ba-p/1043899)
+- Több Sentinel-munkaterület közötti [incidensek megtekintése](../../sentinel/multiple-workspace-view.md) az ügyfél-bérlők között
 
 [Azure Service Health](../../service-health/index.yml):
 
@@ -138,7 +139,7 @@ Támogatási kérelmek:
 ## <a name="current-limitations"></a>Aktuális korlátozások
 Az összes forgatókönyv esetén vegye figyelembe a következő korlátozásokat:
 
-- Az Azure Resource Manager által kezelt kérelmeket az Azure-beli delegált erőforrás-kezelés használatával lehet elvégezni. A kérelmekhez tartozó műveleti URI-k `https://management.azure.com`a következővel kezdődnek:. Az Azure-beli delegált erőforrás-kezelés nem támogatja azonban az erőforrástípus egy példánya által kezelt kérelmeket (például a kulcstartó-titkok elérését vagy a tárolási adatok elérését). Ezeknek a kérelmeknek a műveleti URI-k jellemzően a példány egyedi címeivel kezdődnek, például: `https://myaccount.blob.core.windows.net` vagy `https://mykeyvault.vault.azure.net/`. Az utóbbi általában az adatműveletek, nem pedig a felügyeleti műveletek. 
+- Az Azure Resource Manager által kezelt kérelmeket az Azure-beli delegált erőforrás-kezelés használatával lehet elvégezni. A kérelmekhez tartozó műveleti URI-k a következővel kezdődnek: `https://management.azure.com` . Az Azure-beli delegált erőforrás-kezelés nem támogatja azonban az erőforrástípus egy példánya által kezelt kérelmeket (például a kulcstartó-titkok elérését vagy a tárolási adatok elérését). Ezeknek a kérelmeknek a műveleti URI-k jellemzően a példány egyedi címeivel kezdődnek, például: `https://myaccount.blob.core.windows.net` vagy `https://mykeyvault.vault.azure.net/` . Az utóbbi általában az adatműveletek, nem pedig a felügyeleti műveletek. 
 - A szerepkör-hozzárendeléseknek a szerepköralapú hozzáférés-vezérlés (RBAC) [beépített szerepköreit](../../role-based-access-control/built-in-roles.md)kell használniuk. Az Azure-beli delegált erőforrás-kezelés jelenleg minden beépített szerepkört támogat, kivéve a tulajdonost vagy a [DataActions](../../role-based-access-control/role-definitions.md#dataactions) engedéllyel rendelkező beépített szerepköröket. A felhasználói hozzáférés rendszergazdai szerepköre csak korlátozott használat esetén támogatott a [szerepkörök hozzárendeléséhez a felügyelt identitásokhoz](../how-to/deploy-policy-remediation.md#create-a-user-who-can-assign-roles-to-a-managed-identity-in-the-customer-tenant).  Az egyéni szerepkörök és a [klasszikus előfizetés-rendszergazdai szerepkörök](../../role-based-access-control/classic-administrators.md) nem támogatottak.
 - A Azure Databrickst használó előfizetések előállítása közben a bérlők kezelése szolgáltatásban lévő felhasználók jelenleg nem indíthatnak Azure Databricks-munkaterületeket a delegált előfizetéseken.
 - Míg az Azure-beli delegált erőforrás-kezeléshez az erőforrás-zárolással rendelkező előfizetések és erőforráscsoportok is bejelentkezhetnek, ezek a zárolások nem akadályozzák meg a felhasználók által végzett műveleteket a bérlők felügyeletében. A rendszer által felügyelt erőforrások, például az Azure által felügyelt alkalmazások vagy az Azure-tervrajzok (rendszer által hozzárendelt megtagadási hozzárendelések) által létrehozott [hozzárendelések megtagadása](../../role-based-access-control/deny-assignments.md) , hogy a bérlők ne tudják eljárni az adott erőforráson. Ugyanakkor az ügyfél bérlője jelenleg nem hozhat létre saját megtagadási hozzárendeléseket (felhasználó által hozzárendelt megtagadási hozzárendeléseket).

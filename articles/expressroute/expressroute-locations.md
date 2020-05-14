@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: d7af6bd0f36f5a1fc11acbd7906088d7d5c17d32
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f91ec2fb004ed3745afafd59f4e64e08c11f76a9
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996803"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402273"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -95,6 +95,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **China Telecom Global** |Támogatott |Támogatott |Hongkong, Hong Kong2 |
 | **Kínai Unicom globális** |Támogatott |Támogatott | Singapore2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Támogatott |Támogatott |Taipei |
+| **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** | Támogatott | Támogatott | Miami |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Támogatott |Támogatott |Chicago, Dallas, Montreal, Toronto, Vancouver, Washington, D.C. |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Chicago, Dublin, Frankfurt, London, London2, Newport, New York, Oszaka, Párizs, Szilícium-völgy, szilícium-Valley2, Szingapúr2, Tokió, Washington, D.C. |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Támogatott |Támogatott |Chicago, Szilícium-völgy, Washington, D.C. |
@@ -158,7 +159,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Támogatott |Támogatott |Melbourne, Sydney, Szingapúr |
 | **[Telus](https://www.telus.com)** |Támogatott |Támogatott |Montreal, Seattle, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Támogatott |Támogatott |Fokváros, Johannesburg |
-| **[IDŐ dotCom](https://www.time.com.my/enterprise/connectivity/cloud-interconnect)** | Támogatott | Támogatott | Kuala Lumpur |
+| **[IDŐ dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Támogatott | Támogatott | Kuala Lumpur |
 | **[Transtelco](https://transtelco.net/enterprise-services/)** |Támogatott |Támogatott |Dallas, Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Támogatott |Támogatott |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Támogatott |Támogatott |Amszterdam, Chicago, Dallas, Hongkong KKT, London, Mumbai, Szilícium-völgy, Szingapúr, Sydney, Tokió, Toronto, Washington, D.C. |

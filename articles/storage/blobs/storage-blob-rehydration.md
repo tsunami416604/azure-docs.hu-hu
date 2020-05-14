@@ -9,12 +9,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 82ea4ad23e3207f5641ade196f69595cd1e7b323
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1265d018997f9540e14e83ab15a44e78f4f86fb1
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684098"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402665"
 ---
 # <a name="rehydrate-blob-data-from-the-archive-tier"></a>BLOB-adatok rehidratálása az archív szintről
 
@@ -34,6 +34,9 @@ Míg a blob az archív hozzáférési szinten található, offline állapotba ke
 Ha nem szeretné kiszáradni az archív blobot, dönthet úgy, hogy [másolási blob](https://docs.microsoft.com/rest/api/storageservices/copy-blob) műveletet hajt végre. Az eredeti blob változatlan marad az archívumban, miközben új blob jön létre az online gyakori vagy ritka elérésű szinten, hogy működjön. A blob másolása műveletben az opcionális *x-MS-rehidratált-priority* tulajdonságot standard vagy magas értékre is állíthatja, hogy megadja, melyik prioritást kívánja létrehozni a blob-másolat létrehozásához.
 
 A Blobok archívumból való másolása a kiválasztott rehidratálás prioritástól függően órákig elvégezhető. A háttérben a **blob másolása** művelet beolvassa az archív forrás blobját, hogy létrehozzon egy új online blobot a kiválasztott célhelyen. Előfordulhat, hogy az új blob látható a Blobok listázásakor, de az adatok nem érhetők el, amíg a forrás archív blobból való olvasás be nem fejeződik, és az adatok bekerülnek az új online cél blobba. Az új blob független másolat, és minden módosítás vagy törlés nem befolyásolja a forrás archív blobot.
+
+> [!IMPORTANT]
+> Ne törölje a forrás blobot, amíg a másolat sikeresen el nem fejeződik a célhelyen. Ha a forrás blob törölve lesz, akkor előfordulhat, hogy a cél blobja nem fejeződik be, és üres. A másolási művelet állapotának meghatározásához ellenőrizze az *x-MS-Copy-status állapotot* .
 
 Az archív Blobok csak ugyanazon a Storage-fiókon belüli online célhelyekre másolhatók. Az archív Blobok másik archív blobba való másolása nem támogatott. A következő táblázat a CopyBlob képességeit mutatja be.
 
@@ -74,8 +77,8 @@ Az archiválási szinten lévő blobokat legalább 180 napig kell tárolni. Az a
 
 1. Kattintson a **Save (Mentés** ) gombra a lap alján.
 
-![A Storage-fiók](media/storage-tiers/blob-access-tier.png)
-![szintjeinek módosítása a rehidratálás állapotának ellenőrzését](media/storage-tiers/rehydrate-status.png)
+![A Storage-fiók szintjeinek módosítása a ](media/storage-tiers/blob-access-tier.png)
+ ![ rehidratálás állapotának ellenőrzését](media/storage-tiers/rehydrate-status.png)
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 Az alábbi PowerShell-parancsfájl segítségével módosíthatja az archív Blobok blob-szintjét. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$containerName` változót a tároló nevével kell inicializálni. A `$blobName` változót inicializálni kell a blob nevével. 
@@ -99,7 +102,7 @@ $blob.ICloudBlob.SetStandardBlobTier("Hot", “Standard”)
 ---
 
 ### <a name="copy-an-archive-blob-to-a-new-blob-with-an-online-tier"></a>Archív blob másolása egy új blobba egy online szinttel
-Az alábbi PowerShell-szkripttel másolhatja az archív blobokat egy új blobba ugyanazon a Storage-fiókon belül. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$srcContainerName` és `$destContainerName` a változókat a tároló nevével kell inicializálni. A `$srcBlobName` és `$destBlobName` változókat a blob nevével kell inicializálni. 
+Az alábbi PowerShell-szkripttel másolhatja az archív blobokat egy új blobba ugyanazon a Storage-fiókon belül. A `$rgName` változót inicializálni kell az erőforráscsoport nevével. A `$accountName` változót inicializálni kell a Storage-fiók nevével. A `$srcContainerName` és a `$destContainerName` változókat a tároló nevével kell inicializálni. A `$srcBlobName` és `$destBlobName` változókat a blob nevével kell inicializálni. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""

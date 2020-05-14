@@ -1,19 +1,19 @@
 ---
 title: Teljes szöveges keresés hozzáadása az Azure Blob Storage
 titleSuffix: Azure Cognitive Search
-description: Kinyerheti a tartalmat, és hozzáadhat struktúrát az Azure-blobokhoz, amikor teljes szöveges keresési indexet hoz létre az Azure kognitív keresése.
+description: Kinyerheti a tartalmat, és hozzáadhat struktúrát az Azure-blobokhoz az Azure kognitív keresés teljes szöveges keresési indexének létrehozásakor.
 manager: nitinme
 author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: af7d04bd74ada296b9f0e0f7c149c2a781cec579
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83308f42fb1f2ea3408b5c1a63d88d21a8e7830a
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73496493"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402086"
 ---
 # <a name="add-full-text-search-to-azure-blob-data-using-azure-cognitive-search"></a>Teljes szöveges keresés hozzáadása az Azure Blob-adataihoz az Azure Cognitive Search
 
@@ -59,8 +59,13 @@ A blob Indexer tárolón való futtatásával a következő tartalomtípusokból
 
 Egy gyakori forgatókönyv, amely megkönnyíti a tetszőleges tartalomtípusú Blobok rendezését, az egyéni metaadatok és a Rendszertulajdonságok indexelése az egyes blobokhoz. Így az összes blobra vonatkozó információ indexelve van, tekintet nélkül a keresési szolgáltatásban tárolt indexbe. Az új index használatával folytathatja az összes blob Storage-tartalom rendezését, szűrését és aspektusát.
 
+> [!NOTE]
+> A blob-index címkéi natív módon vannak indexelve a blob Storage szolgáltatásban, és elérhetők a lekérdezéshez. Ha a Blobok kulcs/érték attribútumai indexelést és szűrési képességeket igényelnek, a blob-index címkéit a metaadatok helyett ki kell használni.
+>
+> További információ a blob indexről: az [Azure Blob Storage adatainak kezelése és keresése blob indextel](../storage/blobs/storage-manage-find-blobs.md).
+
 ### <a name="indexing-json-blobs"></a>JSON-Blobok indexelése
-Az indexelő úgy konfigurálható, hogy kinyerje a JSON-t tartalmazó blobokban található strukturált tartalmat. Az indexelő képes beolvasni a JSON-blobokat, és elemezni a strukturált tartalmat egy keresési dokumentum megfelelő mezőiben. Az indexelő olyan blobokat is tartalmazhat, amelyek JSON-objektumok tömbjét tartalmazzák, és az egyes elemeket egy külön keresési dokumentumra képezik le. Az elemzési mód beállítható úgy, hogy az az indexelő által létrehozott JSON-objektum típusát is befolyásolja.
+Az indexelő úgy konfigurálható, hogy kinyerje a JSON-t tartalmazó blobokban található strukturált tartalmat. Az indexelő képes beolvasni a JSON-blobokat, és elemezni a strukturált tartalmat a keresési dokumentum megfelelő mezőiben. Az indexelő olyan blobokat is tartalmazhat, amelyek JSON-objektumok tömbjét tartalmazzák, és az egyes elemeket egy külön keresési dokumentumra képezik le. Az elemzési mód beállítható úgy, hogy az az indexelő által létrehozott JSON-objektum típusát is befolyásolja.
 
 ## <a name="search-blob-content-in-a-search-index"></a>A blob tartalmának keresése keresési indexben 
 

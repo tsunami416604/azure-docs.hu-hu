@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 03/19/2020
 ms.custom: azure-synapse
-ms.openlocfilehash: 6345d210e26747f921595039a2a3c8e11be11fda
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4f26fa00f78b8564e08b6352d4da31640b13f47f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80387631"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402683"
 ---
 # <a name="write-audit-to-a-storage-account-behind-vnet-and-firewall"></a>Naplózás írása a VNet és a tűzfal mögötti Storage-fiókba
 
@@ -38,7 +38,7 @@ Ahhoz, hogy a naplózás egy VNet vagy tűzfal mögötti Storage-fiókba írjon,
 > [!div class="checklist"]
 > * Általános célú v2-es Storage-fiók. Ha rendelkezik általános célú v1-vagy blob Storage-fiókkal, [frissítsen egy általános célú v2 Storage-fiókra](../storage/common/storage-account-upgrade.md). További információ: Storage- [fiókok típusai](../storage/common/storage-account-overview.md#types-of-storage-accounts).
 > * A Storage-fióknak ugyanazon az előfizetésen kell lennie, és a Azure SQL Database-kiszolgálóval megegyező helyen kell lennie. 
-> * Az Azure Storage-fiókhoz szükséges `Allow trusted Microsoft services to access this storage account`. Állítsa be ezt a Storage **-fiók tűzfalakon és virtuális hálózatokon**.
+> * Az Azure Storage-fiókhoz szükséges `Allow trusted Microsoft services to access this storage account` . Állítsa be ezt a Storage **-fiók tűzfalakon és virtuális hálózatokon**.
 > * Rendelkeznie kell `Microsoft.Authorization/roleAssignments/write` engedéllyel a kiválasztott Storage-fiókhoz. További információ: [Azure beépített szerepkörök](../role-based-access-control/built-in-roles.md).
 
 ## <a name="configure-in-azure-portal"></a>Konfigurálás az Azure Portalon
@@ -54,7 +54,7 @@ Kapcsolódjon [Azure Portal](https://portal.azure.com) az előfizetéséhez. Nav
   > [!NOTE]
   > Ha a kiválasztott Storage-fiók a VNet mögött található, a következő üzenet jelenik meg:
   >
-  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage: requires an Active Directory admin on the server; enables 'Allow trusted Microsoft services to access this storage account' on the storage account; and creates a server managed identity with 'storage blob data contributor' RBAC.`
+  >`You have selected a storage account that is behind a firewall or in a virtual network. Using this storage requires to enable 'Allow trusted Microsoft services to access this storage account' on the storage account and creates a server managed identity with 'storage blob data contributor' RBAC.`
   >
   >Ha nem látja ezt az üzenetet, a Storage-fiók nem egy VNet mögött található.
 

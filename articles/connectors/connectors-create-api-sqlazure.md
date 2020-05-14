@@ -3,16 +3,16 @@ title: Kapcsolódás SQL Server vagy Azure SQL Database
 description: A helyszínen vagy a felhőben található SQL-adatbázisok feladatainak automatizálása Azure Logic Apps használatával
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam; logicappspm
+ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 93b63d332f00c31a352c11e483fc3ce5cb45a922
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c32e17aaf83c233ad77bbbf607c30cc526253352
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74789195"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402599"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>SQL Server vagy Azure SQL Database munkafolyamatainak automatizálása Azure Logic Apps használatával
 
@@ -86,7 +86,7 @@ Azure Logic Apps a [művelet](../logic-apps/logic-apps-overview.md#logic-app-con
 
    ![Új lépés hozzáadása a logikai alkalmazáshoz](./media/connectors-create-api-sqlazure/select-new-step-logic-app.png)
 
-   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a megjelenő pluszjelet (**+**), majd válassza a **művelet hozzáadása**lehetőséget.
+   A meglévő lépések közötti művelet hozzáadásához vigye az egeret a csatlakozás nyíl fölé. Válassza ki a **+** megjelenő pluszjelet (), majd válassza a **művelet hozzáadása**lehetőséget.
 
 1. A **válasszon műveletet**területen a keresőmezőbe írja be szűrőként az "SQL Server" kifejezést. A műveletek listából válassza ki a kívánt SQL-műveletet.
 
@@ -129,6 +129,20 @@ Időnként úgy kell dolgoznia az eredményhalmazt, hogy az összekötő ne adja
   * [SQL-tördelés a tömeges adatátvitel Logic Apps](https://social.technet.microsoft.com/wiki/contents/articles/40060.sql-pagination-for-bulk-data-transfer-with-logic-apps.aspx)
 
   * [SELECT-ORDER BY záradék](https://docs.microsoft.com/sql/t-sql/queries/select-order-by-clause-transact-sql)
+
+### <a name="handle-dynamic-bulk-data"></a>Dinamikus tömeges adatmennyiség kezelése
+
+Időnként, ha a SQL Server-összekötőn tárolt eljárásra hív, a visszaadott kimenet dinamikus. Ebben az esetben kövesse az alábbi lépéseket:
+
+1. Nyissa meg **Logic apps Designer**alkalmazást.
+1. Futtasson egy tesztet a logikai alkalmazásban a kimeneti formátum megtekintéséhez. Másolja le a minta kimenetét.
+1. A tervezőben azon művelet alatt, ahol a tárolt eljárást hívja, válassza az **új lépés**lehetőséget.
+1. A **válasszon műveletet**területen keresse meg és válassza ki az [**elemzés JSON**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action) -műveletet.
+1. A **JSON-elemzés** műveletben válassza a **minta hasznos adatok használata a séma létrehozásához**lehetőséget.
+1. Az **írja be vagy illessze be a minta JSON-adattartalmat** ablakban illessze be a minta kimenetét, majd válassza a **kész**lehetőséget.
+1. Ha olyan hibaüzenetet kap, amely Logic Apps nem tud sémát előállítani, ellenőrizze, hogy a minta kimenetének szintaxisa helyesen van-e formázva. Ha továbbra sem tudja előállítani a sémát, manuálisan adjon meg egyet a **séma** mezőben.
+1. A tervező eszköztárán válassza a **Mentés**lehetőséget.
+1. A JSON-tartalom tulajdonságainak eléréséhez használja a dinamikus tartalmak listájában megjelenő adattokeneket a [ **JSON-elemzés** művelet](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action)alatt.
 
 ## <a name="connector-specific-details"></a>Összekötő-specifikus részletek
 

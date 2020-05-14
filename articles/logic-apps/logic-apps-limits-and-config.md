@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 807949d7ed0c68edd44fba95109f118e97c59b5a
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 1dfb1b43eadebbfc7128c5a2451668be8a99329f
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901247"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402537"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Információ az Azure Logic Apps korlátozásaival és konfigurálásával kapcsolatban
 
@@ -143,7 +143,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 | Name | Több-bérlős korlát | Integrációs szolgáltatás környezeti korlátja | Megjegyzések |
 |------|--------------------|---------------------------------------|-------|
-| Kimenő kérelem | 120 másodperc <br>(2 perc) | 240 másodperc <br>(4 perc) | A kimenő kérelmekre például a HTTP-eseményindítók által kezdeményezett hívások tartoznak. <p><p>**Tipp**: a hosszú ideig futó műveletekhez használjon [aszinkron lekérdezési mintát](../logic-apps/logic-apps-create-api-app.md#async-pattern) vagy egy [ciklusig](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). |
+| Kimenő kérelem | 120 másodperc <br>(2 perc) | 240 másodperc <br>(4 perc) | A kimenő kérelmekre például a HTTP-eseményindítók által kezdeményezett hívások tartoznak. <p><p>**Tipp**: a hosszú ideig futó műveletekhez használjon [aszinkron lekérdezési mintát](../logic-apps/logic-apps-create-api-app.md#async-pattern) vagy egy [ciklusig](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Ha egy másik logikai alkalmazást hív meg, amely egy [meghívásos végponttal](logic-apps-http-endpoint.md)rendelkezik, az időkorlát korlátozásához használhatja a beépített Azure Logic apps műveletet, amelyet a **beépített összekötő-** választóban talál. |
 | Bejövő kérelem | 120 másodperc <br>(2 perc) | 240 másodperc <br>(4 perc) | A bejövő kérésekre példák például a kérelem-eseményindítók és a webhook-eseményindítók által fogadott hívások. <p><p>**Megjegyzés**: ahhoz, hogy az eredeti hívó megkapja a választ, a válaszban szereplő összes lépésnek befejeznie kell a korláton belül, kivéve, ha egy másik logikai alkalmazást beágyazott munkafolyamatként hív meg. További információ: a [logikai alkalmazások hívása, triggere vagy beágyazása](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
@@ -161,7 +161,7 @@ Egyes összekötők aszinkron hívásokat végeznek, vagy figyelik a webhook-ké
 
 | Name | Megjegyzések |
 |------|-------|
-| Kifejezések kiértékelési korlátja | 131 072 karakter | A `@concat()`, `@base64()`a `@string()` kifejezés nem lehet hosszabb ennél a korlátnál. |
+| Kifejezések kiértékelési korlátja | 131 072 karakter | A `@concat()` , `@base64()` a `@string()` kifejezés nem lehet hosszabb ennél a korlátnál. |
 | Kérelem URL-karakterének korlátja | 16 384 karakter |
 |||
 

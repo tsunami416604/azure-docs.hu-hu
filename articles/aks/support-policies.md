@@ -6,12 +6,12 @@ author: jnoller
 ms.topic: article
 ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: a5d90106a85a61cbf499c4c08130392b922a45f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4146dd4988be93475dc4d2d0dade06b8738ad83
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593580"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402459"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -38,11 +38,6 @@ A Microsoft a következő összetevőket felügyeli és figyeli a vezérlés abl
 Az AK nem teljesen felügyelt fürt megoldás. Egyes összetevők, például a feldolgozó csomópontok *megosztott felelősséggel*rendelkeznek, ahol a felhasználóknak segíteniük kell az AK-fürt fenntartásában. Felhasználói bevitel szükséges, például a munkavégző csomópont operációs rendszer (OS) biztonsági javításának alkalmazásához.
 
 A szolgáltatások *kezelése* abban az értelemben történik, hogy a Microsoft és az AK-csoport üzembe helyezi, működteti és felelős a szolgáltatás rendelkezésre állásának és működésének biztosításáért. Az ügyfelek nem változtathatják meg ezeket a felügyelt összetevőket. A Microsoft korlátozza a testreszabást, hogy konzisztens és skálázható felhasználói élményt biztosítson. A teljes mértékben testreszabható megoldásért lásd: [AK-motor](https://github.com/Azure/aks-engine).
-
-> [!NOTE]
-> Az AK munkavégző csomópontok a Azure Portalban normál Azure IaaS-erőforrásokként jelennek meg. Ezeket a virtuális gépeket azonban egy egyéni Azure-erőforráscsoporthoz helyezik üzembe (az MC\\* előtaggal). Az AK munkavégző csomópontok módosíthatók. Például a Secure Shell (SSH) segítségével módosíthatja az AK feldolgozó csomópontokat a normál virtuális gépek módosításakor (azonban nem változtathatja meg az alapszintű rendszerképet, és előfordulhat, hogy a módosítások nem maradnak meg frissítés vagy újraindítás közben), és más Azure-erőforrásokat is csatolhat az AK munkavégző csomópontokhoz. Ha azonban a *sávon kívüli felügyeletet és a testreszabást* hajtja végre, az AK-fürt nem lesz támogatott. Kerülje a munkavégző csomópontok módosítását, kivéve, ha a Microsoft ügyfélszolgálata a módosítások elvégzésére utasítja.
-
-A fent meghatározott, nem támogatott műveletek kiadása, például az összes ügynök csomópontjának lefoglalása nem támogatott, a fürtöt nem támogatja. Az AK fenntartja a jogot arra, hogy archiválja azokat a vezérlési síkokat, amelyek a további 30 napnál nem hosszabb időszakra vonatkozó támogatási irányelvek alapján vannak konfigurálva. Az AK biztonsági mentéseket tart fenn a fürt etcd metaadataiban, és a fürt könnyen újra kiosztható. Ezt az újraosztást bármely PUT művelet kezdeményezheti, amely a fürtöt visszahelyezi a támogatásba, például frissítésre vagy méretezésre az Active Agent-csomópontokra.
 
 ## <a name="shared-responsibility"></a>Megosztott feladatkörök
 
@@ -104,8 +99,22 @@ A Microsoft nem indít automatikusan újraindítási munkavégző csomópontokat
 
 Az ügyfelek a Kubernetes-frissítések végrehajtásáért felelősek. Az Azure vezérlőpulton vagy az Azure CLI-n keresztül végezhetnek frissítéseket. Ez azokra a frissítésekre vonatkozik, amelyek a Kubernetes biztonsági vagy funkcionalitásbeli tökéletesítését tartalmazzák.
 
+#### <a name="user-customization-of-worker-nodes"></a>A munkavégző csomópontok felhasználói testreszabása
 > [!NOTE]
-> Mivel az AK egy *felügyelt szolgáltatás*, a végső céljai közé tartozik a javítások, a frissítések és a naplók felelősségének eltávolítása, hogy a szolgáltatások kezelése még teljesebb legyen és kikapcsolható legyen. Ahogy a szolgáltatás kapacitása a teljes körű felügyelet növekedésével nő, a jövőbeli kiadások kihagyhatnak bizonyos funkciókat (például a csomópontok újraindítását és az automatikus javítást).
+> Az AK munkavégző csomópontok a Azure Portalban normál Azure IaaS-erőforrásokként jelennek meg. Ezeket a virtuális gépeket azonban egy egyéni Azure-erőforráscsoporthoz helyezik üzembe (az MC * előtaggal \\ ). Az AK-beli feldolgozó csomópontok kibővítésére az alapkonfigurációjuk alapján van lehetősége. A Secure Shell (SSH) segítségével például úgy módosíthatja az AK-feldolgozó csomópontokat, hogy a szokásos virtuális gépeket módosítsák. Az alap operációsrendszer-rendszerkép azonban nem módosítható. Előfordulhat, hogy az egyéni módosítások nem tartanak fenn frissítést, méretezést, frissítést vagy újraindítást. A *sávon kívüli és az AK API-k hatókörén kívüli* változások **azonban**nem támogatottak. Kerülje a munkavégző csomópontok módosítását, kivéve, ha a Microsoft ügyfélszolgálata a módosítások elvégzésére utasítja.
+
+A fent meghatározott, nem támogatott műveletek kiadása, például az összes ügynök csomópontjának lefoglalása nem támogatott, a fürtöt nem támogatja. Az AK fenntartja a jogot arra, hogy archiválja azokat a vezérlési síkokat, amelyek a további 30 napnál nem hosszabb időszakra vonatkozó támogatási irányelvek alapján vannak konfigurálva. Az AK biztonsági mentéseket tart fenn a fürt etcd metaadataiban, és a fürt könnyen újra kiosztható. Ezt az újraosztást bármely PUT művelet kezdeményezheti, amely a fürtöt visszahelyezi a támogatásba, például frissítésre vagy méretezésre az Active Agent-csomópontokra.
+
+Az AK kezeli a munkavégző csomópontok életciklusát és műveleteit az ügyfelek nevében – a munkavégző csomópontokhoz társított IaaS-erőforrások módosítása **nem támogatott**. A nem támogatott műveletek egyik példája, hogy a VMSS-portálon vagy a VMSS API-n keresztül manuálisan módosítja a VMSS konfigurációit a virtuális gépek méretezési csoportjának testreszabásához.
+ 
+A munkaterhelés-specifikus konfigurációk vagy csomagok esetében az AK javasolja a [Kubernetes-daemonsets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/)használatát.
+
+A Kubernetes privilegizált daemonsets és az init-tárolók használata lehetővé teszi, hogy az ügyfelek a külső gyártótól származó szoftvereket hangolják/módosíthassák vagy telepítsenek a fürt feldolgozói Ilyen testreszabási példák például az egyéni biztonsági ellenőrzési szoftverek hozzáadása vagy a sysctl-beállítások frissítése.
+
+Habár ez egy ajánlott elérési út, ha a fenti követelmények érvényesek, az AK-mérnöki és-támogatás nem tud segítséget nyújtani a hibás/nem funkcionális módosítások hibaelhárításában vagy diagnosztizálásában, illetve azoknál, amelyek a csomópontot az ügyfelek által telepített daemonset elemet miatt elérhetetlenné teszik.
+
+> [!NOTE]
+> Az AK *felügyelt szolgáltatásként* olyan célokkal rendelkezik, mint például a javítások, a frissítések és a naplók felelősségének megszüntetése, hogy a szolgáltatások kezelése még teljesebb és kikapcsolt legyen. Ahogy a szolgáltatás kapacitása a teljes körű felügyelet növekedésével nő, a jövőbeli kiadások kihagyhatnak bizonyos funkciókat (például a csomópontok újraindítását és az automatikus javítást).
 
 ### <a name="security-issues-and-patching"></a>Biztonsági problémák és javítás
 
