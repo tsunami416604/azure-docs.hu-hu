@@ -3,19 +3,19 @@ title: Arc-adatai migrálása az előfizetések között – Face
 titleSuffix: Azure Cognitive Services
 description: Ebből az útmutatóból megtudhatja, hogyan telepíthet át tárolt arc-adatait egy arc-előfizetésből egy másikba.
 services: cognitive-services
-author: lewlu
+author: nitinme
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
-ms.author: lewlu
-ms.openlocfilehash: e5ca51da7322e4eab4ea364ec5da086a1068fa9a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: nitinme
+ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76169812"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83120810"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Az Arcfelismerés átmigrálása egy másik Face-előfizetésbe
 
@@ -62,7 +62,7 @@ Adja meg a forrás és a cél előfizetések előfizetési kulcsának értékeit
 
 ## <a name="prepare-a-persongroup-for-migration"></a>PersonGroup előkészítése az áttelepítéshez
 
-Szüksége lesz a forrás-előfizetéshez tartozó PersonGroup AZONOSÍTÓra, hogy áttelepítse a cél előfizetésre. A PersonGroup-objektumok listájának lekéréséhez használja a [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) metódust. Ezután töltse le a [PersonGroup. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) tulajdonságot. Ez a folyamat a PersonGroup-objektumok alapján eltérő módon néz ki. Ebben az útmutatóban a forrás PersonGroup- `personGroupId`azonosítóját tárolja a rendszer.
+Szüksége lesz a forrás-előfizetéshez tartozó PersonGroup AZONOSÍTÓra, hogy áttelepítse a cél előfizetésre. A PersonGroup-objektumok listájának lekéréséhez használja a [PersonGroupOperationsExtensions. ListAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperationsextensions.listasync?view=azure-dotnet) metódust. Ezután töltse le a [PersonGroup. PersonGroupId](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.persongroup.persongroupid?view=azure-dotnet#Microsoft_Azure_CognitiveServices_Vision_Face_Models_PersonGroup_PersonGroupId) tulajdonságot. Ez a folyamat a PersonGroup-objektumok alapján eltérő módon néz ki. Ebben az útmutatóban a forrás PersonGroup-AZONOSÍTÓját tárolja a rendszer `personGroupId` .
 
 > [!NOTE]
 > A [mintakód](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample) létrehoz és betanít egy új PersonGroup az áttelepíteni. A legtöbb esetben már rendelkeznie kell egy PersonGroup.
@@ -85,7 +85,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 
 ## <a name="retrieve-the-snapshot-id"></a>A Pillanatkép-azonosító lekérése
 
-A pillanatképek készítéséhez használt metódus aszinkron módon történik, ezért meg kell várnia a befejezését. Nem lehet megszakítani a pillanatképek műveleteit. Ebben a kódban a `WaitForOperation` metódus figyeli az aszinkron hívást. 100 MS-ban ellenőrzi az állapotot. A művelet befejezése után a `OperationLocation` mező elemzésével kérje le a művelet azonosítóját. 
+A pillanatképek készítéséhez használt metódus aszinkron módon történik, ezért meg kell várnia a befejezését. Nem lehet megszakítani a pillanatképek műveleteit. Ebben a kódban a `WaitForOperation` metódus figyeli az aszinkron hívást. 100 MS-ban ellenőrzi az állapotot. A művelet befejezése után a mező elemzésével kérje le a művelet AZONOSÍTÓját `OperationLocation` . 
 
 ```csharp
 var takeOperationId = Guid.Parse(takeSnapshotResult.OperationLocation.Split('/')[2]);
@@ -127,7 +127,7 @@ private static async Task<OperationStatus> WaitForOperation(IFaceClient client, 
 }
 ```
 
-A művelet állapotának megjelenítése `Succeeded`után szerezze be a PILLANATKÉP-azonosítót a visszaadott OperationStatus-példány `ResourceLocation` mezőjének elemzésével.
+A művelet állapotának megjelenítése után `Succeeded` szerezze be a pillanatkép-azonosítót a `ResourceLocation` visszaadott OperationStatus-példány mezőjének elemzésével.
 
 ```csharp
 var snapshotId = Guid.Parse(operationStatus.ResourceLocation.Split('/')[2]);
@@ -152,13 +152,13 @@ var applySnapshotResult = await FaceClientWestUS.Snapshot.ApplyAsync(snapshotId,
 > [!NOTE]
 > A pillanatkép-objektumok csak 48 óráig érvényesek. Csak akkor készítsen pillanatképet, ha később az adatok áttelepítésére kívánja használni.
 
-Egy pillanatkép-alkalmazási kérelem egy másik műveleti azonosítót ad vissza. Az azonosító beszerzéséhez elemezze `OperationLocation` a visszaadott applySnapshotResult-példány mezőjét. 
+Egy pillanatkép-alkalmazási kérelem egy másik műveleti azonosítót ad vissza. Az azonosító beszerzéséhez elemezze a `OperationLocation` visszaadott applySnapshotResult-példány mezőjét. 
 
 ```csharp
 var applyOperationId = Guid.Parse(applySnapshotResult.OperationLocation.Split('/')[2]);
 ```
 
-A pillanatkép-alkalmazás folyamata aszinkron módon is elvégezhető `WaitForOperation` , ezért várjon, amíg befejeződik.
+A pillanatkép-alkalmazás folyamata aszinkron módon is elvégezhető, ezért várjon, amíg `WaitForOperation` befejeződik.
 
 ```csharp
 operationStatus = await WaitForOperation(FaceClientWestUS, applyOperationId);
@@ -228,7 +228,7 @@ Miután befejezte az adatok áttelepítését, manuálisan törölje a pillanatk
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután tekintse meg a megfelelő API-dokumentációt, Fedezze fel a pillanatkép szolgáltatást használó minta alkalmazást, vagy kövesse az útmutató lépéseit az itt említett egyéb API-műveletek használatának megkezdéséhez:
 

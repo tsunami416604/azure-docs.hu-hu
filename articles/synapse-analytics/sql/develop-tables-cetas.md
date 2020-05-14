@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 71bc20680467d270436e28190bb49db5b9313ca0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3bf7ff668584a78fea6e2d787e96f36a20f12e37
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424026"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197628"
 ---
 # <a name="cetas-with-synapse-sql"></a>CETAS a szinapszis SQL-sel
 
@@ -77,6 +77,9 @@ Egy, a közös tábla kifejezésének (TÁBLAKIFEJEZÉSEK) elnevezésű ideiglen
 Válassza ki <select_criteria>
 
 Feltölti az új táblát egy SELECT utasítás eredményeivel. *select_criteria* a SELECT utasítás törzse, amely meghatározza, hogy az új táblába milyen adatok legyenek átmásolva. További információ a SELECT utasításokról: [Select (Transact-SQL)](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+
+> [!NOTE]
+> Az ORDER BY záradék nem támogatott a CETAS részének KIJELÖLÉSEkor.
 
 ## <a name="permissions"></a>Engedélyek
 
@@ -165,6 +168,6 @@ A következő adattípusok nem használhatók a CETAS kiválasztása részben:
 - túlcsordulási
 - uniqueidentifier
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Kipróbálhatja a [Spark-táblák](develop-storage-files-spark-tables.md)lekérdezését.

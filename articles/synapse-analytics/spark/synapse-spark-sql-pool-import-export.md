@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: f92c05476c9e85690fdeacade5463a43d0a4af42
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f562c195e90f2356568530b9b618ae9e6610fa56
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424292"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201461"
 ---
 # <a name="introduction"></a>Introduction (Bevezetés)
 
@@ -161,9 +161,36 @@ val scala_df = spark.sqlContext.sql ("select * from pysparkdftemptable")
 
 pysparkdftemptable.write.sqlanalytics("sqlpool.dbo.PySparkTable", Constants.INTERNAL)
 ```
+
 Hasonlóképpen, az olvasási forgatókönyvben olvassa el az adataikat a Scala használatával, majd írja be egy ideiglenes táblába, és használja a Spark SQL-et a PySpark-ben, hogy lekérdezze a temp táblát egy dataframe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="allowing-other-users-to-use-the-dw-connector-in-your-workspace"></a>A DW-összekötő használatának engedélyezése más felhasználók számára a munkaterületen
 
-- [SQL-készlet létrehozása]([Create a new Apache Spark pool for an Azure Synapse Analytics workspace](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
+Mások számára a hiányzó engedélyek módosításához a ADLS Gen2 Storage-fiókban a munkaterülethez csatlakoztatott Storage blob-adattulajdonost kell megadni. Ellenőrizze, hogy a felhasználó rendelkezik-e hozzáféréssel a munkaterülethez és a jegyzetfüzetek futtatásához szükséges engedélyekhez.
+
+### <a name="option-1"></a>1. lehetőség
+
+- A felhasználó tárolási blob-adatközreműködőinek/tulajdonosának tétele
+
+### <a name="option-2"></a>2. lehetőség
+
+- A következő ACL-eket kell megadnia a mappa struktúrájához:
+
+| Mappa | / | szinapszis | munkaterületek  | <workspacename> | sparkpools | <sparkpoolname>  | sparkpoolinstances  |
+|--|--|--|--|--|--|--|--|
+| Hozzáférési engedélyek |--X |--X |--X |--X |--X |--X |– WX |
+| Alapértelmezett engedélyek |---|---|---|---|---|---|---|
+
+- Az összes mappát le kell tudnia adni a "szinapszis" mappából, és a Azure Portal lefelé haladva. A root "/" mappa ACL-jéhez kövesse az alábbi utasításokat.
+
+- Csatlakozás a munkaterülethez csatlakoztatott Storage-fiókhoz Storage Explorer a HRE használatával
+- Válassza ki a fiókját, és adja meg a munkaterület ADLS Gen2 URL-címét és alapértelmezett fájlrendszerét
+- Ha megjelenik a felsorolt Storage-fiók, kattintson a jobb gombbal a Listázás munkaterületre, és válassza a "hozzáférés kezelése" lehetőséget.
+- Adja hozzá a felhasználót a/mappához a "végrehajtás" hozzáférési engedéllyel. Válassza az OK lehetőséget
+
+**Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja**
+
+## <a name="next-steps"></a>Következő lépések
+
+- [SQL-készlet létrehozása](../../synapse-analytics/quickstart-create-apache-spark-pool.md))
 - [Új Apache Spark-készlet létrehozása az Azure szinapszis Analytics-munkaterülethez](../../synapse-analytics/quickstart-create-apache-spark-pool.md) 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 0f5323193706fdd00739be6c71a4fe12cfedf21b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c6a151bdd3b437c6a01a949096604b3963489bd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424537"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195143"
 ---
 # <a name="create-and-use-views-in-sql-on-demand-preview-using-azure-synapse-analytics"></a>Nézetek létrehozása és használata igény szerinti SQL-ben (előzetes verzió) az Azure szinapszis Analytics használatával
 
@@ -22,17 +22,14 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre és használhat nézeteke
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Első lépésként tekintse át az alábbi cikkeket, és győződjön meg arról, hogy teljesítette az SQL igény szerinti nézeteinek létrehozásához és használatához szükséges előfeltételeket:
-
-- [Első beállítás](query-data-storage.md#first-time-setup)
-- [Előfeltételek](query-data-storage.md#prerequisites)
+Első lépésként létre kell hoznia egy adatbázist, amelyben létrejön a nézet, és inicializálnia kell az Azure Storage-ban való hitelesítéshez szükséges objektumokat a [telepítési parancsfájlnak](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) az adatbázison történő végrehajtásával. A cikkben szereplő összes lekérdezés végrehajtása a mintaadatbázis alapján történik.
 
 ## <a name="create-a-view"></a>Nézet létrehozása
 
 A nézetek ugyanúgy hozhatók létre, mint a rendszeres SQL Server nézetek létrehozásakor. Az alábbi lekérdezés olyan nézetet hoz létre, amely beolvassa a *populációs. csv* fájlt.
 
 > [!NOTE]
-> Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja. Ha nem hozott létre adatbázist, kérjük, olvassa el az [első alkalommal történő telepítést](query-data-storage.md#first-time-setup).
+> Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja.
 
 ```sql
 USE [mydbname];
@@ -57,6 +54,19 @@ WITH (
 ) AS [r];
 ```
 
+Az ebben a példában szereplő nézet az `OPENROWSET` alapul szolgáló fájlok abszolút elérési útját használó függvényt használja. Ha rendelkezik a `EXTERNAL DATA SOURCE` tároló gyökerének URL-címével, a és a `OPENROWSET` `DATA_SOURCE` relatív elérési út is használható:
+
+```
+CREATE VIEW TaxiView
+AS SELECT *, nyc.filepath(1) AS [year], nyc.filepath(2) AS [month]
+FROM
+    OPENROWSET(
+        BULK 'parquet/taxi/year=*/month=*/*.parquet',
+        DATA_SOURCE = 'sqlondemandstorage',
+        FORMAT='PARQUET'
+    ) AS nyc
+```
+
 ## <a name="use-a-view"></a>Nézet használata
 
 A lekérdezésekben a nézeteket ugyanúgy használhatja, mint SQL Server lekérdezésekben.
@@ -64,7 +74,7 @@ A lekérdezésekben a nézeteket ugyanúgy használhatja, mint SQL Server lekér
 A következő lekérdezés azt mutatja be, hogyan használja a [nézet létrehozása nézetben](#create-a-view)létrehozott *population_csv* nézetet. 2019 csökkenő sorrendben adja vissza az ország nevét.
 
 > [!NOTE]
-> Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja. Ha nem hozott létre adatbázist, kérjük, olvassa el az [első alkalommal történő telepítést](query-data-storage.md#first-time-setup).
+> Módosítsa a lekérdezés első sorát, azaz: [mydbname], így Ön a létrehozott adatbázist használja.
 
 ```sql
 USE [mydbname];
@@ -79,6 +89,6 @@ ORDER BY
     [population] DESC;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A különböző fájltípusok lekérdezésével kapcsolatos további információkért tekintse meg az [egyszerű CSV-fájl lekérdezése](query-single-csv-file.md), a [Parquet-fájlok lekérdezése](query-parquet-files.md)és a [JSON-fájlok lekérdezése](query-json-files.md) című cikket.

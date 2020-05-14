@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: curtand
-ms.openlocfilehash: 6ab1f7c97173021cc112a5f117469abd74ac954d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ea6f78d0d0856bb6a758a3168b6b86a1c962962b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062574"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201004"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Hitelesítő alkalmazás beállítása kétfaktoros ellenőrzési módszerként
 
@@ -29,7 +29,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Az Microsoft Authenticator alkalmazás beállítása értesítések küldéséhez
 
-1. A **további biztonsági ellenőrzés** **lapon válassza az** 1. **lépés: How to Contact You (útmutató)** lehetőséget.
+1. A [további biztonsági ellenőrzés lapon](https://account.activedirectory.windowsazure.com/proofup.aspx?proofup=1) **válassza az** **1. lépés: How to Contact You (útmutató)** lehetőséget.
 
 2. Válassza az **értesítések fogadása az ellenőrzéshez** lehetőséget, **hogy a hogyan szeretné használni a mobileszköz-alkalmazást** , majd válassza a **beállítás**lehetőséget.
 
@@ -109,7 +109,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 9. Válassza a **Done** (Kész) lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési módszer beállítása után további metódusokat adhat hozzá, kezelheti a beállításokat és az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 

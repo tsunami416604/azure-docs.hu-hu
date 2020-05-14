@@ -7,18 +7,18 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: c86d806c408c2e8226e632a0b15e1e8729c987f9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80131536"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202014"
 ---
 # <a name="azure-cognitive-services-security"></a>Azure Cognitive Services biztonság
 
-A biztonsági és az összes alkalmazás fejlesztésekor elsődleges prioritásnak kell tekinteni. A mesterséges intelligenciát használó alkalmazások kialakulásával a biztonság még ennél is fontosabb. Ebben a cikkben az Azure Cognitive Services Security különböző szempontjait ismertetjük, például a Transport Layer Security, a Authentication és a bizalmas adatok biztonságos konfigurálását.
+A biztonsági és az összes alkalmazás fejlesztésekor elsődleges prioritásnak kell tekinteni. A mesterséges intelligenciát használó alkalmazások kialakulásával a biztonság még ennél is fontosabb. Ebben a cikkben az Azure Cognitive Services Security különböző szempontjait ismertetjük, mint például a Transport Layer Security, a hitelesítés, a bizalmas adatok biztonságos konfigurálása, valamint az ügyfelek adatelérésének Ügyfélszéf.
 
 ## <a name="transport-layer-security-tls"></a>Transport Layer Security (TLS)
 
@@ -28,13 +28,13 @@ A HTTP-n keresztül elérhető összes Cognitive Services-végpont TLS 1,2. A k�
 * A HTTP-híváshoz használt nyelv (és platform) a kérelem részeként meg kell határoznia a TLS 1,2-as értéket.
   * A nyelvtől és a platformtól függően a TLS meghatározása implicit módon vagy explicit módon történik
 
-.NET-felhasználók esetén vegye figyelembe a <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott <span class="docon docon-navigate-external x-hidden-focus"> </span>eljárásokat </a>.
+.NET-felhasználók esetén vegye figyelembe a <a href="https://docs.microsoft.com/dotnet/framework/network-programming/tls" target="_blank">Transport Layer Security ajánlott <span class="docon docon-navigate-external x-hidden-focus"></span> eljárásokat </a>.
 
 ## <a name="authentication"></a>Hitelesítés
 
-A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. Több Cognitive Services ajánlat, beleértve a szerepköralapú hozzáférés-vezérlést (RBAC). A RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével kapcsolatos ünnepségek egyszerűsítésére. További részletek: [szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
+A hitelesítés megvitatásakor számos gyakori tévhit van. A hitelesítés és az engedélyezés gyakran zavaros egymás számára. Az identitás a biztonság egyik fő összetevője is. Az identitás egy <a href="https://en.wikipedia.org/wiki/Principal_(computer_security)" target="_blank">rendszerbiztonsági tag <span class="docon docon-navigate-external x-hidden-focus"></span> </a>információinak gyűjteménye. Az Identity Providers (identitásszolgáltató) hitelesítő szolgáltatásokhoz biztosít identitásokat. A hitelesítés a felhasználó identitásának ellenőrzése. Az engedélyezés az adott identitáshoz tartozó erőforrásokhoz való hozzáférési jogosultságok és jogosultságok meghatározása. Több Cognitive Services ajánlat, beleértve a szerepköralapú hozzáférés-vezérlést (RBAC). A RBAC felhasználható a rendszerbiztonsági tag manuális kezelésével kapcsolatos ünnepségek egyszerűsítésére. További részletek: [szerepköralapú hozzáférés-vezérlés az Azure-erőforrásokhoz](../role-based-access-control/overview.md).
 
-Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban<span class="docon docon-navigate-external x-hidden-focus"></span></a>.
+Az előfizetési kulcsokkal, a hozzáférési jogkivonatokkal és a Azure Active Directorysal (HRE) való hitelesítéssel kapcsolatos további információkért lásd: <a href="https://docs.microsoft.com/azure/cognitive-services/authentication" target="_blank">kérések hitelesítése az Azure Cognitive Servicesban <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ## <a name="environment-variables-and-application-configuration"></a>Környezeti változók és alkalmazás konfigurációja
 
@@ -48,7 +48,7 @@ A környezeti változók név-érték párok, amelyek egy adott környezetben t�
 
 ### <a name="set-environment-variable"></a>Környezeti változó beállítása
 
-A környezeti változók megadásához használja a következő parancsokat – ahol a `ENVIRONMENT_VARIABLE_KEY` a megnevezett kulcs, `value` és a környezeti változóban tárolt érték.
+A környezeti változók megadásához használja a következő parancsokat – ahol a a `ENVIRONMENT_VARIABLE_KEY` megnevezett kulcs, és a `value` környezeti változóban tárolt érték.
 
 # <a name="command-line"></a>[Parancssor](#tab/command-line)
 
@@ -108,11 +108,11 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 ### <a name="get-environment-variable"></a>Környezeti változó beolvasása
 
-Környezeti változó beszerzéséhez a memóriába kell beolvasni. A használt nyelvtől függően vegye figyelembe az alábbi kódrészleteket. Ezek a kódrészletek bemutatják, hogyan kérheti le `ENVIRONMENT_VARIABLE_KEY` a környezeti változót, és `value`hogyan rendelhet hozzá egy nevű változóhoz.
+Környezeti változó beszerzéséhez a memóriába kell beolvasni. A használt nyelvtől függően vegye figyelembe az alábbi kódrészleteket. Ezek a kódrészletek bemutatják, hogyan kérheti le a környezeti változót `ENVIRONMENT_VARIABLE_KEY` , és hogyan rendelhet hozzá egy nevű változóhoz `value` .
 
 # <a name="c"></a>[C #](#tab/csharp)
 
-További információ: <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+További információ: <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ```csharp
 using static System.Environment;
@@ -131,7 +131,7 @@ class Program
 
 # <a name="c"></a>[C++](#tab/cpp)
 
-További információ: <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+További információ: <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ```cpp
 #include <stdlib.h>
@@ -146,7 +146,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-További információ: <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+További információ: <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ```java
 import java.lang.*;
@@ -163,7 +163,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-További információ: <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+További információ: <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -173,7 +173,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-További információ: <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+További információ: <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ```python
 import os
@@ -184,7 +184,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-További információ: <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+További információ: <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -194,7 +194,22 @@ NSString* value =
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="customer-lockbox"></a>Ügyfélszéf
+
+[A Ügyfélszéf for Microsoft Azure](../security/fundamentals/customer-lockbox-overview.md) egy felületet biztosít az ügyfelek számára, hogy áttekintsék, jóváhagyják vagy elutasítsák az ügyféladatok hozzáférési kérelmeit. Ez olyan esetekben használatos, amikor egy Microsoft mérnöknek egy támogatási kérelem során hozzá kell férnie az ügyféladatok eléréséhez. További információ a Ügyfélszéf kérelmek elindításáról, nyomon követéséről és a későbbi felülvizsgálatok és auditálások tárolásáról: [Ügyfélszéf](../security/fundamentals/customer-lockbox-overview.md). 
+
+Ügyfélszéf érhető el ehhez a kognitív szolgáltatáshoz:
+
+* Fordító
+
+Language Understanding esetén a Microsoft Engineers nem fér hozzá a E0 SKU-ban lévő összes ügyfél-adatszolgáltatáshoz. Ha a E0 SKU használatára van lehetősége, töltse ki és küldje el a [Luis szolgáltatási kérelem űrlapját](https://aka.ms/cogsvc-cmk). Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a E0 SKU-val a LUIS-t, létre kell hoznia egy új Language Understanding-erőforrást a Azure Portal, és a E0 kell választania. A felhasználók nem fognak tudni frissíteni a F0 az új E0 SKU-ra.
+
+A beszédfelismerési szolgáltatás jelenleg nem támogatja a Ügyfélszéf. Az ügyféladatok azonban a BYOS használatával is tárolhatók, így a [Ügyfélszéfhoz](../security/fundamentals/customer-lockbox-overview.md)hasonló adatellenőrzéseket érhet el. Ne feledje, hogy a beszédfelismerési szolgáltatás adatmennyisége és feldolgozása abban a régióban történik, ahol a beszédfelismerési erőforrás létrejött. Ez a nyugalmi állapotban tárolt adatokra és a tranzitban tárolt adatokra is vonatkozik. A testreszabási funkciók, például a Custom Speech és az egyéni hang használatakor az összes ügyfél-adat átvitele, tárolása és feldolgozása ugyanabban a régióban történik, ahol a BYOS (ha használatban van) és a Speech Service-erőforrás található.
+
+> [!IMPORTANT]
+> A Microsoft **nem** használja fel az ügyféladatokat, hogy javítsa a beszédfelismerési modelljeit. Emellett, ha a végpont-naplózás le van tiltva, és nem használ testreszabást, akkor a rendszer nem tárolja az ügyféladatokat. 
+
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a különböző [Cognitive Servicesokkal](welcome.md)
 * További információ a [Cognitive Services Virtual Networks](cognitive-services-virtual-networks.md) szolgáltatásról

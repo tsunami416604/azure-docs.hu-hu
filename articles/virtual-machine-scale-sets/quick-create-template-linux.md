@@ -2,18 +2,19 @@
 title: Rövid útmutató – linuxos virtuálisgép-méretezési csoport létrehozása Azure Resource Manager sablonnal
 description: Ismerje meg, hogyan hozhat létre gyorsan Linux virtuálisgép-méretezési csoportot egy mintaalkalmazást üzembe helyező és automatikus méretezési szabályokat konfiguráló Azure Resource Manager-sablonnal
 author: ju-shim
-tags: azure-resource-manager
-ms.service: virtual-machine-scale-sets
-ms.topic: quickstart
-ms.custom: mvc,subject-armqs
-ms.date: 03/27/2020
 ms.author: jushiman
-ms.openlocfilehash: 4c0bac943be996c02436824334bd79a270f9a2e2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: quickstart
+ms.service: virtual-machine-scale-sets
+ms.subservice: linux
+ms.date: 03/27/2020
+ms.reviewer: mimckitt
+ms.custom: mimckitt
+ms.openlocfilehash: f51bfa012c62e7acdd0aa2cd16279ec68702a72c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010460"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83117327"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-resource-manager-template"></a>Gyors útmutató: linuxos virtuálisgép-méretezési csoport létrehozása Azure Resource Manager sablonnal
 
@@ -25,7 +26,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Nincs.
+Nincsenek.
 
 ## <a name="create-a-scale-set"></a>Méretezési csoport létrehozása
 
@@ -52,7 +53,7 @@ A kiemelt rész a méretezési csoport erőforrás-definíciója. Méretezési c
 | Tulajdonság                     | A tulajdonság leírása                                  | Példa sablonérték                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | type                         | A létrehozandó Azure-erőforrástípus                            | Microsoft.Compute/virtualMachineScaleSets |
-| név                         | A méretezési csoport neve                                       | myScaleSet                                |
+| name                         | A méretezési csoport neve                                       | myScaleSet                                |
 | location                     | A méretezési csoport létrehozásának helye                     | USA keleti régiója                                   |
 | sku.name                     | A méretezési csoport egyes példányainak virtuálisgép-mérete                  | Standard_A1                               |
 | sku.capacity                 | Az először létrehozandó virtuálisgép-példányok száma           | 2                                         |
@@ -76,7 +77,7 @@ A méretezési csoport teszteléséhez telepítsen egy alapszintű webalkalmazá
 
 A sablon az egyéni szkriptek bővítményét használja a [Bottle](https://bottlepy.org/docs/dev/), a Python webes keretrendszer és egy egyszerű http-kiszolgáló telepítéséhez.
 
-Két parancsfájl van definiálva a **fileUris** - *installserver.sh*és a *workserver.py*. A rendszer letölti ezeket a fájlokat a *commandToExecute* githubról `bash installserver.sh` , majd a commandToExecute futtatja az alkalmazás telepítését és konfigurálását.
+Két parancsfájl van definiálva a **fileUris**  -  *installserver.sh*és a *workserver.py*. A rendszer letölti ezeket a fájlokat a GitHubról, majd a *commandToExecute* futtatja `bash installserver.sh` az alkalmazás telepítését és konfigurálását.
 
 ### <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -108,7 +109,7 @@ az network public-ip list \
     --query [*].ipAddress -o tsv
 ```
 
-Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben a következő formátumban *: http:\//publicIpAddress: 9000/do_work*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
+Adja meg a terheléselosztó nyilvános IP-címét egy webböngészőben a következő formátumban *: http: \/ /publicIpAddress: 9000/do_work*. A terheléselosztó az egyik virtuálisgép-példányra terjeszti a forgalmat, ahogy az a következő példában látható:
 
 ![Alapértelmezett weboldal az NGINX-ben](media/virtual-machine-scale-sets-create-template/running-python-app.png)
 
@@ -120,7 +121,7 @@ Ha már nincs rájuk szükség, az [az group delete](/cli/azure/group) paranccsa
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útbemutatóban egy Linux rendszerű méretezési csoportot hoztunk létre egy Azure-sablonnal, valamint az egyéni szkriptbővítménnyel egy alapszintű Python-webkiszolgálót telepítettünk a VM-példányokon. Ha bővebb információra van szüksége, lépjen tovább az Azure-beli virtuálisgép-méretezési csoportok létrehozásáról és kezeléséről szóló oktatóanyagra.
 

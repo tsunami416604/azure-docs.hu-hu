@@ -2,19 +2,19 @@
 title: Rövid útmutató – munkaterület létrehozása
 description: Hozzon létre egy Azure szinapszis Analytics-munkaterületet az útmutató lépéseit követve.
 services: synapse-analytics
-author: malvenko
+author: pimorano
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: josels
+ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 49bd251b7f76a844a0d3fd1b1a09f7e15c5e7ddb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0bf58348d91c23db9bcc016ff6d71ce2b3804ced
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792207"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201053"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Rövid útmutató: Azure szinapszis Analytics-munkaterület létrehozása (előzetes verzió)
 
@@ -35,7 +35,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 1. A Microsoft Azure keresési ablaktáblán adja meg a **szinapszis munkaterületet** , majd válassza ki ezt a szolgáltatást.
 ![Azure Portal keresési sáv az Azure szinapszis-munkaterületek beírásával.](media/quickstart-create-synapse-workspace/workspace-search.png)
 2. A **szinapszis munkaterületek** lapon kattintson a **+ Hozzáadás**gombra.
-![Parancs az új Azure szinapszis-munkaterület kiemeléséhez. ](media/quickstart-create-synapse-workspace/create-workspace-02.png).
+![Parancs az új Azure szinapszis-munkaterület kiemeléséhez.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
 3. Töltse ki az **Azure szinapszis-munkaterület** űrlapot a következő információkkal:
 
     | Beállítás | Ajánlott érték | Leírás |
@@ -47,7 +47,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
     | **2. generációs Data Lake Storage** | Fiók`storage account name` </br> Fájlrendszer:`root file system to use` | Megadja az elsődleges tárolóként használandó ADLS Gen2 Storage-fiók nevét és a használni kívánt fájlrendszert.|
     ||||
 
-    ![Munkaterület-kiépítési folyamat – alapismeretek lap.](media/quickstart-create-synapse-workspace/create-workspace-03.png).
+    ![Munkaterület-kiépítési folyamat – alapismeretek lap.](media/quickstart-create-synapse-workspace/create-workspace-03.png)
 
     A Storage-fiók az alábbiak közül választható ki:
     - Az előfizetésben elérhető ADLS Gen2 fiókok listája
@@ -60,8 +60,8 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/)
 
 4. Választható Módosítsa a **Biztonság + hálózatkezelés alapértelmezett beállítások** lapját:
 5. Választható Adjon hozzá címkéket a **címkék** lapon.
-6. Az **Összefoglalás** lapon a szükséges érvényesítések futnak, hogy a munkaterület sikeresen létrehozható legyen. Ha az ellenőrzés sikeres, nyomja meg a munkaterület kiépítési folyamatának **létrehozása** ![– megerősítés lapot](media/quickstart-create-synapse-workspace/create-workspace-05.png).
-7. Miután az erőforrás-létesítési folyamat sikeresen befejeződik, megjelenik egy bejegyzés a létrehozott munkaterülethez a szinapszis-munkaterületek listájában. ![Az újonnan kiosztott munkaterületet megjelenítő szinapszis-munkaterületek listázása.](media/quickstart-create-synapse-workspace/create-workspace-07.png).
+6. Az **Összefoglalás** lapon a szükséges érvényesítések futnak, hogy a munkaterület sikeresen létrehozható legyen. Ha az ellenőrzés sikeres, nyomja meg **Create** a ![ munkaterület kiépítési folyamatának létrehozása – megerősítés lapot.](media/quickstart-create-synapse-workspace/create-workspace-05.png)
+7. Miután az erőforrás-létesítési folyamat sikeresen befejeződik, megjelenik egy bejegyzés a létrehozott munkaterülethez a szinapszis-munkaterületek listájában. ![Az újonnan kiosztott munkaterületet megjelenítő szinapszis-munkaterületek listázása.](media/quickstart-create-synapse-workspace/create-workspace-07.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -80,6 +80,6 @@ Ha törölni szeretné az Azure szinapszis munkaterületet, hajtsa végre a köv
  ![Az Azure szinapszis munkaterületének áttekintése – munkaterület megerősítő párbeszédpanelének törlése.](media/quickstart-create-synapse-workspace/create-workspace-11.png)
 1. Ha a folyamat sikeresen befejeződik, az Azure szinapszis munkaterület többé nem jelenik meg a munkaterületek listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezután [LÉTREHOZHAT SQL-készleteket](quickstart-create-sql-pool.md) , vagy [létrehozhat Apache Spark készleteket](quickstart-create-apache-spark-pool.md) az adatok elemzésének és vizsgálatának megkezdéséhez.

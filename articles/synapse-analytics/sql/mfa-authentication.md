@@ -8,12 +8,13 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8e8f17f54f52aef6f552b7c211aa8f0e498b94df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: a1f6548a83736cfb0e519559fd22e16d4527ae0b
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424922"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83197665"
 ---
 # <a name="using-multi-factor-aad-authentication-with-synapse-sql-ssms-support-for-mfa"></a>A multi-Factor HRE hitelesítés használata a szinapszis SQL használatával (SSMS-támogatás az MFA-hoz)
 
@@ -56,7 +57,7 @@ A vendég felhasználók a más Azure-hirdetéseket, például a outlook.com, a 
 
 Az univerzális hitelesítés használatával hitelesíteni kívánt felhasználóknak meg kell adniuk az Azure AD-tartománynevet vagy a bérlői azonosítót. Ez a paraméter az aktuális Azure AD-tartománynevet/bérlői azonosítót jelöli, amelyhez az Azure-kiszolgáló társítva van. 
 
-Ha például az Azure Server társítva van az Azure AD- `contosotest.onmicrosoft.com` tartományhoz `joe@contosodev.onmicrosoft.com` , ahol a felhasználó az Azure ad-tartományból `contosodev.onmicrosoft.com`importált felhasználóként fut, a felhasználó hitelesítéséhez szükséges tartománynév `contosotest.onmicrosoft.com`. 
+Ha például az Azure Server társítva van az Azure AD-tartományhoz `contosotest.onmicrosoft.com` , ahol a felhasználó az `joe@contosodev.onmicrosoft.com` Azure ad-tartományból importált felhasználóként fut `contosodev.onmicrosoft.com` , a felhasználó hitelesítéséhez szükséges tartománynév `contosotest.onmicrosoft.com` . 
 
 Ha a felhasználó az Azure AD-hez társított natív felhasználó, és nem MSA-fiók, nincs szükség tartománynévre vagy bérlői AZONOSÍTÓra. 
 
@@ -71,15 +72,15 @@ Ha a SSMS 18. x vagy újabb verzióját futtatja, akkor az AD-tartománynév vag
    ![MFA-bérlő – SSMS](./media/mfa-authentication/mfa-no-tenant-ssms.png)
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD Business – üzleti támogatás   
-Az Azure ad B2B-forgatókönyvek vendég felhasználói számára támogatott Azure AD-felhasználók (lásd: [Mi az az Azure B2B-együttműködés](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a szinapszis SQL-hez való kapcsolódáshoz csak az aktuális Azure ad-ben létrehozott csoport tagjainak részeként, és az adott adatbázisban lévő Transact-SQL `CREATE USER` -utasítás használatával van leképezve manuálisan. 
+Az Azure ad B2B-forgatókönyvek vendég felhasználói számára támogatott Azure AD-felhasználók (lásd: [Mi az az Azure B2B-együttműködés](../../active-directory/b2b/what-is-b2b.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) a szinapszis SQL-hez való kapcsolódáshoz csak az aktuális Azure ad-ben létrehozott csoport tagjainak részeként, és az adott adatbázisban lévő Transact-SQL-utasítás használatával van leképezve manuálisan `CREATE USER` . 
 
-Ha `steve@gmail.com` `contosotest` például MEGhívja az Azure ad-t (az Azure ad-tartománnyal `contosotest.onmicrosoft.com`), egy Azure ad-csoportot, például `usergroup` a `steve@gmail.com` tagot tartalmazó Azure ad-ben kell létrehoznia. Ezután ezt a csoportot egy Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` -utasítás végrehajtásával létre kell hozni egy adott adatbázishoz (azaz MyDatabase) az Azure ad SQL-rendszergazda vagy az Azure ad dbo. 
+Ha például `steve@gmail.com` meghívja az Azure ad-t `contosotest` (az Azure ad-tartománnyal `contosotest.onmicrosoft.com` ), egy Azure ad-csoportot, például a `usergroup` tagot tartalmazó Azure ad-ben kell létrehoznia `steve@gmail.com` . Ezután ezt a csoportot egy Transact-SQL-utasítás végrehajtásával létre kell hozni egy adott adatbázishoz (azaz MyDatabase) az Azure AD SQL-rendszergazda vagy az Azure AD DBO `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` . 
 
-Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com` bejelentkezhet a SSMS-hitelesítési `MyDatabase` lehetőség `Active Directory – Universal with MFA support`használatára. 
+Az adatbázis-felhasználó létrehozása után a felhasználó `steve@gmail.com` bejelentkezhet a `MyDatabase` SSMS-hitelesítési lehetőség használatára `Active Directory – Universal with MFA support` . 
 
 Alapértelmezés szerint a csoporthoz csak a kapcsolódási engedély és minden további adathozzáférés szükséges, amelyet a szokásos módon kell megadni. 
 
-Vegye figyelembe, `steve@gmail.com` hogy a felhasználónak, mint vendég felhasználónak be kell jelölnie a jelölőnégyzetet `contosotest.onmicrosoft.com` , és fel kell vennie az ad-tartománynevet a SSMS- **kapcsolatok tulajdonságai** párbeszédpanelen. Az **Active Directory Domain Name vagy a bérlői azonosító** lehetőség csak az univerzális és MFA-kapcsolatok esetén támogatott, ellenkező esetben szürkén jelenik meg.
+Vegye figyelembe, hogy a felhasználónak `steve@gmail.com` , mint vendég felhasználónak be kell jelölnie a jelölőnégyzetet, és fel kell vennie az ad-tartománynevet a `contosotest.onmicrosoft.com` SSMS- **kapcsolatok tulajdonságai** párbeszédpanelen. Az **Active Directory Domain Name vagy a bérlői azonosító** lehetőség csak az univerzális és MFA-kapcsolatok esetén támogatott, ellenkező esetben szürkén jelenik meg.
 
 ## <a name="universal-authentication-limitations-for-synapse-sql"></a>Általános hitelesítési korlátozások a szinapszis SQL-hez
 
@@ -91,6 +92,6 @@ Vegye figyelembe, `steve@gmail.com` hogy a felhasználónak, mint vendég felhas
 - Az univerzális hitelesítéshez nincs szükség további szoftverre Active Directory, kivéve, ha a SSMS támogatott verzióját kell használnia.  
 - Az univerzális hitelesítés Active Directory-hitelesítési tár (ADAL) verziója frissítve lett a legújabb ADAL. dll 3.13.9 elérhető verzióra. Lásd: [Active Directory-hitelesítési tár 3.14.1](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Kapcsolódás a SZINAPSZIS sqlhoz SQL Server Management Studio](get-started-ssms.md) cikkel. 
 

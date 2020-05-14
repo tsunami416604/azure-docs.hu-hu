@@ -6,21 +6,23 @@ author: julieMSFT
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4d13d15fe950c89687acfca355d4ed183756536a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0405644af24eb277aa47db64348c9a217cf72239
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81423977"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195960"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
 
 A külső tábla a Hadoop, az Azure Storage blob vagy a Azure Data Lake Storageban található adatforrásra mutat. A külső táblákból adatok olvashatók be a fájlokból, vagy adatok írhatók az Azure Storage-ban lévő fájlokba. A szinapszis SQL használatával külső táblákat használhat az SQL-készletbe vagy az SQL on-demand (előzetes verzió) szolgáltatásba való adatolvasásra és-írásra.
 
-## <a name="external-tables-in-sql-pool"></a>Külső táblák az SQL-készletben
+## <a name="external-tables-in-synapse-sql"></a>Külső táblák a szinapszis SQL-ben
+
+### <a name="sql-pool"></a>[SQL-készlet](#tab/sql-pool)
 
 Az SQL-készletben külső táblákat is használhat a következőhöz:
 
@@ -29,7 +31,7 @@ Az SQL-készletben külső táblákat is használhat a következőhöz:
 
 Ha a [CREATE TABLE as Select](../sql-data-warehouse/sql-data-warehouse-develop-ctas.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) utasítással együtt használja, a külső táblából való kijelöléssel az adatok importálása az SQL-készletben található táblába történik. A [copy utasításban](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)a külső táblák az adatok betöltéséhez is hasznosak. A betöltési oktatóanyagért lásd: az [Azure Blob Storageból történő adatok betöltésének alapja](../sql-data-warehouse/load-data-from-azure-blob-storage-using-polybase.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 
-## <a name="external-tables-in-sql-on-demand-preview"></a>Külső táblák az SQL on-demand (előzetes verzió)
+### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-ondemand)
 
 Az SQL igény szerinti használatához egy külső táblát kell használnia a következőhöz:
 
@@ -42,24 +44,54 @@ A következő lépések végrehajtásával hozhat létre külső táblákat az S
 2. CREATE EXTERNAL FILE FORMAT
 3. KÜLSŐ TÁBLA LÉTREHOZÁSA
 
+---
+
+### <a name="security"></a>Biztonság
+
+A felhasználónak engedéllyel kell rendelkeznie `SELECT` a külső táblán az adatolvasáshoz.
+Külső tábla, amely az Azure Storage mögöttes hozzáférését az adatforrásban definiált adatbázis-hatókörű hitelesítő adatok használatával az alábbi szabályok alapján éri el:
+- A hitelesítő adatok nélküli adatforrás lehetővé teszi, hogy a külső táblák hozzáférhessenek az Azure Storage-ban nyilvánosan elérhető fájlokhoz.
+- Az adatforrás rendelkezhet olyan hitelesítő adatokkal, amelyek lehetővé teszik, hogy a külső táblák csak az Azure Storage- [ban található fájlokat](develop-storage-files-storage-access-control.md#examples)férhessenek hozzá az SAS-jogkivonat vagy a munkaterület által felügyelt identitás használatával
+
+> [!IMPORTANT]
+> Az SQL-készletben a creadential nélküli adatforrás lehetővé teszi, hogy az Azure AD-felhasználó hozzáférjen a tárolási fájlokhoz az Azure AD-identitással. Az SQL on-demand szolgáltatásban létre kell hoznia egy adatforrást adatbázis-hatókörű hitelesítő adatokkal, amelyek `IDENTITY='User Identity'` tulajdonsággal rendelkeznek – [példák itt](develop-storage-files-storage-access-control.md#examples)láthatók.
+
 ## <a name="create-external-data-source"></a>KÜLSŐ ADATFORRÁS LÉTREHOZÁSA
 
 A külső adatforrások a Storage-fiókokhoz való kapcsolódáshoz használatosak. A teljes dokumentációt [itt](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)találja.
 
-## <a name="syntax-for-create-external-data-source"></a>KÜLSŐ ADATFORRÁS létrehozásának szintaxisa
+### <a name="syntax-for-create-external-data-source"></a>KÜLSŐ ADATFORRÁS létrehozásának szintaxisa
+
+#### <a name="sql-pool"></a>[SQL-készlet](#tab/sql-pool)
 
 ```syntaxsql
 CREATE EXTERNAL DATA SOURCE <data_source_name>
 WITH
-(    LOCATION         = '<prefix>://<path>' )
+(    LOCATION         = '<prefix>://<path>'
+     [, CREDENTIAL = <database scoped credential> ]
+     , TYPE = HADOOP
+)
 [;]
 ```
 
-## <a name="arguments-for-create-external-data-source"></a>A külső ADATFORRÁS LÉTREHOZÁSához szükséges argumentumok
+#### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-ondemand)
+
+```syntaxsql
+CREATE EXTERNAL DATA SOURCE <data_source_name>
+WITH
+(    LOCATION         = '<prefix>://<path>'
+     [, CREDENTIAL = <database scoped credential> ]
+)
+[;]
+```
+---
+
+### <a name="arguments-for-create-external-data-source"></a>A külső ADATFORRÁS LÉTREHOZÁSához szükséges argumentumok
 
 data_source_name – megadja az adatforrás felhasználó által definiált nevét. A névnek egyedinek kell lennie az adatbázison belül.
 
-LOCATION = `'<prefix>://<path>'` – megadja a kapcsolati protokollt és a külső adatforrás elérési útját. Az elérési út tartalmazhat egy tárolót a formájában `'<prefix>://<path>/container'`, valamint egy mappát is `'<prefix>://<path>/container/folder'`.
+#### <a name="location"></a>Hely
+LOCATION = `'<prefix>://<path>'` – Megadja a kapcsolati protokollt és a külső adatforrás elérési útját. Az elérési út tartalmazhat egy tárolót a formájában `'<prefix>://<path>/container'` , valamint egy mappát is `'<prefix>://<path>/container/folder'` .
 
 | Külső adatforrás        | Hely előtagja | Hely elérési útja                                         |
 | --------------------------- | --------------- | ----------------------------------------------------- |
@@ -67,7 +99,17 @@ LOCATION = `'<prefix>://<path>'` – megadja a kapcsolati protokollt és a küls
 | 1. generációs Azure Data Lake Store | `adl`           | `<storage_account>.azuredatalake.net`                 |
 | 2. generációs Azure Data Lake Store | `abfs[s]`       | `<container>@<storage_account>.dfs.core.windows.net`  |
 
-## <a name="example-for-create-external-data-source"></a>Példa külső ADATFORRÁS létrehozására
+#### <a name="credential"></a>Hitelesítő adat
+HITELESÍTŐADAT = `<database scoped credential>` opcionális hitelesítő adat, amely az Azure Storage-ban való hitelesítéshez használatos. A hitelesítő adatok nélküli külső adatforrás hozzáférhet a nyilvános Storage-fiókhoz. A hitelesítő adatok nélküli külső adatforrások az SQL-készletben is használhatják a hívókat az Azure AD-identitással a tárolóban lévő fájlok eléréséhez. A hitelesítő adatokkal rendelkező külső adatforrás a hitelesítő adatok használatával fér hozzá a fájlokhoz.
+- Az SQL-készletben az adatbázis-hatókörű hitelesítő adatok egyéni alkalmazás-identitást, munkaterület által felügyelt identitást vagy SAK kulcsot adhatnak meg. 
+- Az SQL on-demand szolgáltatásban az adatbázishoz kötődő hitelesítő adatok megadhatják a hívó Azure AD-identitását, a munkaterület felügyelt identitását vagy az SAS-kulcsot. 
+
+#### <a name="type"></a>TÍPUS
+TYPE = `HADOOP` kötelező beállítás az SQL-készletben, és annak megadása, hogy a rendszer az alapul szolgáló fájlok eléréséhez használja a Base-technológiát. Ez a paraméter nem használható a beépített natív olvasót használó SQL on-demand szolgáltatásban.
+
+### <a name="example-for-create-external-data-source"></a>Példa külső ADATFORRÁS létrehozására
+
+#### <a name="sql-pool"></a>[SQL-készlet](#tab/sql-pool)
 
 Az alábbi példa egy külső adatforrást hoz létre Azure Data Lake Gen2 a New York-i adatkészletre mutat:
 
@@ -81,13 +123,37 @@ WITH
   ) ;
 ```
 
+#### <a name="sql-on-demand"></a>[Igény szerinti SQL](#tab/sql-ondemand)
+
+Az alábbi példa egy külső adatforrást hoz létre Azure Data Lake Gen2, amely SAS-hitelesítő adatokkal érhető el:
+
+```sql
+CREATE DATABASE SCOPED CREDENTIAL [sqlondemand]
+WITH IDENTITY='SHARED ACCESS SIGNATURE',  
+SECRET = 'sv=2018-03-28&ss=bf&srt=sco&sp=rl&st=2019-10-14T12%3A10%3A25Z&se=2061-12-31T12%3A10%3A00Z&sig=KlSU2ullCscyTS0An0nozEpo4tO5JAgGBvw%2FJX2lguw%3D'
+GO
+
+CREATE EXTERNAL DATA SOURCE SqlOnDemandDemo WITH (
+    LOCATION = 'https://sqlondemandstorage.blob.core.windows.net',
+    CREDENTIAL = sqlondemand
+);
+```
+
+Az alábbi példa egy külső adatforrást hoz létre Azure Data Lake Gen2, amely a nyilvánosan elérhető New York-beli adatkészletre mutat:
+
+```sql
+CREATE EXTERNAL DATA SOURCE YellowTaxi
+WITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/nyctlc/yellow/')
+```
+---
+
 ## <a name="create-external-file-format"></a>CREATE EXTERNAL FILE FORMAT
 
 Létrehoz egy külső fájlformátum-objektumot, amely meghatározza az Azure Blob Storage vagy Azure Data Lake Storage tárolt külső adatforrásokat. Külső fájlformátum létrehozása előfeltétel egy külső tábla létrehozásához. A teljes dokumentáció [itt](/sql/t-sql/statements/create-external-file-format-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)található.
 
 Külső fájlformátum létrehozásával megadhatja a külső tábla által hivatkozott adatok tényleges elrendezését.
 
-## <a name="syntax-for-create-external-file-format"></a>KÜLSŐ FÁJLFORMÁTUM létrehozásának szintaxisa
+### <a name="syntax-for-create-external-file-format"></a>KÜLSŐ FÁJLFORMÁTUM létrehozásának szintaxisa
 
 ```syntaxsql
 -- Create an external file format for PARQUET files.  
@@ -103,6 +169,7 @@ WITH (
 CREATE EXTERNAL FILE FORMAT file_format_name  
 WITH (  
     FORMAT_TYPE = DELIMITEDTEXT  
+    [ , DATA_COMPRESSION = 'org.apache.hadoop.io.compress.GzipCodec' ]
     [ , FORMAT_OPTIONS ( <format_options> [ ,...n  ] ) ]  
     );  
 
@@ -116,7 +183,7 @@ WITH (
 }
 ```
 
-## <a name="arguments-for-create-external-file-format"></a>Argumentumok külső FÁJLFORMÁTUM LÉTREHOZÁSához
+### <a name="arguments-for-create-external-file-format"></a>Argumentumok külső FÁJLFORMÁTUM LÉTREHOZÁSához
 
 file_format_name – a külső fájlformátum nevét adja meg.
 
@@ -155,14 +222,20 @@ FALSE – az összes hiányzó értéket tárolja NULL értékként. A tagolt sz
 
 Encoding = {' UTF8 ' | "UTF16"} – az SQL on-demand képes az UTF8 és a UTF16 kódolású tagolt szövegfájlok olvasására.
 
-DATA_COMPRESSION = *data_compression_method* – ez az argumentum határozza meg a külső adattömörítési módszert. Külső táblákból való olvasáskor figyelmen kívül hagyja a rendszer. Csak külső táblákba való íráskor használatos a [CETAS](develop-tables-cetas.md)használatával.
+DATA_COMPRESSION = *data_compression_method* – ez az argumentum határozza meg a külső adattömörítési módszert. 
 
 A PARQUEt fájlformátum típusa a következő tömörítési módszereket támogatja:
 
 - DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. GzipCodec '
 - DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. SnappyCodec '
 
-## <a name="example-for-create-external-file-format"></a>Példa külső FÁJLFORMÁTUM létrehozására
+A parketta külső tábláiból való olvasáskor a rendszer figyelmen kívül hagyja ezt az argumentumot, de külső táblákba való íráskor használja a [CETAS](develop-tables-cetas.md)használatával.
+
+A DELIMITEDTEXT fájlformátum típusa a következő tömörítési módszert támogatja:
+
+- DATA_COMPRESSION = ' org. Apache. Hadoop. IO. compress. GzipCodec '
+
+### <a name="example-for-create-external-file-format"></a>Példa külső FÁJLFORMÁTUM létrehozására
 
 Az alábbi példa külső fájlformátumot hoz létre a népszámlálási fájlokhoz:
 
@@ -179,9 +252,9 @@ WITH
 
 A CREATE EXTERNAL TABLE parancs létrehoz egy külső táblázatot a szinapszis SQL számára az Azure-Blob Storage vagy Azure Data Lake Storage tárolt adateléréshez. 
 
-## <a name="syntax-for-create-external-table"></a>KÜLSŐ tábla LÉTREHOZÁSi szintaxisa
+### <a name="syntax-for-create-external-table"></a>KÜLSŐ tábla LÉTREHOZÁSi szintaxisa
 
-```syntaxsql
+```sql
 CREATE EXTERNAL TABLE { database_name.schema_name.table_name | schema_name.table_name | table_name }
     ( <column_definition> [ ,...n ] )  
     WITH (
@@ -196,7 +269,7 @@ column_name <data_type>
     [ COLLATE collation_name ]
 ```
 
-## <a name="arguments-create-external-table"></a>Argumentumok külső tábla létrehozása
+### <a name="arguments-create-external-table"></a>Argumentumok külső tábla létrehozása
 
 *{database_name. schema_name. table_name | schema_name. table_name | table_name}*
 
@@ -228,11 +301,11 @@ DATA_SOURCE = *external_data_source_name* – megadja a külső adatforrás nev�
 
 FILE_FORMAT = *external_file_format_name* – annak a külső fájlformátum-objektumnak a nevét adja meg, amely a külső adattípust és a tömörítési módszert tárolja. Külső fájlformátum létrehozásához használja a [create External File Format (külső fájlformátum létrehozása) formátumot](#create-external-file-format).
 
-## <a name="permissions-create-external-table"></a>Engedélyek külső tábla létrehozása
+### <a name="permissions-create-external-table"></a>Engedélyek külső tábla létrehozása
 
 Egy külső táblából való kiválasztáshoz megfelelő hitelesítő adatokra van szükség a listához és az olvasási engedélyekhez.
 
-## <a name="example-create-external-table"></a>Példa külső tábla létrehozására
+### <a name="example-create-external-table"></a>Példa külső tábla létrehozására
 
 A következő példa egy külső táblát hoz létre. Az első sort adja vissza:
 
@@ -262,7 +335,7 @@ SELECT TOP 1 * FROM census_external_table
 
 A Data Lake feltárási képességek használatával létrehozhat és lekérdezheti az SQL Pool vagy az SQL on-demand használatával létrehozott külső táblákat egy egyszerű, jobb gombbal a fájlra kattintva.
 
-## <a name="prerequisites"></a>Előfeltételek
+### <a name="prerequisites"></a>Előfeltételek
 
 - A munkaterülethez hozzáféréssel kell rendelkeznie legalább a Storage blob adatközreműködői ARM hozzáférési szerepkörrel a ADLS Gen2 fiókhoz
 
@@ -291,6 +364,6 @@ A külső tábla most létrejön, a külső tábla tartalmának későbbi feltá
 > [!div class="mx-imgBorder"]
 >![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti a [Spark-táblák](develop-storage-files-spark-tables.md)lekérdezését.

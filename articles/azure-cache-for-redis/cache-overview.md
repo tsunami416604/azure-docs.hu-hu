@@ -5,21 +5,21 @@ author: yegu-ms
 ms.author: yegu
 ms.service: cache
 ms.topic: overview
-ms.date: 03/11/2020
-ms.openlocfilehash: cd4e7c8e2693c25f3fc092fb53874a97cfd62434
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/12/2020
+ms.openlocfilehash: 09a7a28716e437bab71c7386bd332712a4d192dd
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113204"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83196379"
 ---
-# <a name="azure-cache-for-redis-description"></a>Az Azure Cache for Redis ismertetése
+# <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 
-A Redis készült Azure cache memóriában tárolt adattárakat biztosít a nyílt forráskódú szoftverek [Redis](https://redis.io/)alapján. Gyorsítótárként való használat esetén a Redis javítja a háttérbeli adattárakban nagy mértékben támaszkodó rendszerek teljesítményét és méretezhetőségét. A teljesítmény javítása a gyakran használt adatoknak az alkalmazáshoz közel található gyors tárterületre másolásával történik. Az Azure cache for Redis esetében ez a gyors tárterület a memóriában található, nem pedig a lemezről egy adatbázisból.
+A Redis készült Azure cache memóriában tárolt adattárakat biztosít a nyílt forráskódú szoftverek [Redis](https://redis.io/)alapján. Gyorsítótárként való használat esetén a Redis javítja a háttérbeli adattárakon erősen támaszkodó rendszerek teljesítményét és méretezhetőségét. A teljesítmény javítása a gyakran használt adatoknak az alkalmazáshoz közel található gyors tárterületre másolásával történik. Az Azure cache for Redis esetében ez a gyors tárterület a memóriában található, nem pedig a lemezről egy adatbázisból.
 
-A Redis készült Azure cache memóriában tárolt adatstruktúra-tárolóként, elosztott, nem összehasonlítható adatbázisként és egy Message brokerként is használható. A Redis-motor kis késésének és nagy átviteli sebességének köszönhetően javul az alkalmazás teljesítménye.
+Az Azure cache for Redis használható elosztott adatgyorsítótárként, egy munkamenet-tárolóban és egy üzenetkezelőben. A Redis-motor kis késésének és nagy átviteli sebességének köszönhetően javul az alkalmazás teljesítménye.
 
-Az Azure cache for Redis hozzáférést biztosít egy biztonságos, dedikált Redis cache-hez. A Redis készült Azure cache-t a Microsoft felügyeli, amely az Azure-on belül fut, és az Azure-on belüli és kívüli alkalmazások számára is elérhető. Emellett az Azure Redis for cache a lemez nélküli replikáció stratégiáját is alkalmazza, így fokozza a kompatibilitást a fizetési kártya iparágával.
+Az Azure cache for Redis hozzáférést biztosít egy biztonságos, dedikált Redis cache-hez. A szolgáltatást a Microsoft felügyeli, amely az Azure-ban üzemel, és az Azure-on belüli és kívüli alkalmazások számára is elérhető.
 
 ## <a name="using-azure-cache-for-redis"></a>Az Azure cache használata a Redis
 
@@ -66,7 +66,7 @@ Az [Azure cache for Redis díjszabási](https://azure.microsoft.com/pricing/deta
 | [Georeplikáció](cache-how-to-geo-replication.md) |✔|-|-|
 | [Újraindítás](cache-administration.md#reboot) |✔|✔|✔|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [ASP.net-webalkalmazás](cache-web-app-howto.md) – rövid útmutató Hozzon létre egy egyszerű ASP.NET-webalkalmazást, amely egy Azure cache-t használ a Redis.
 * [.Net](cache-dotnet-how-to-use-azure-redis-cache.md) gyors útmutató Hozzon létre egy .NET-alkalmazást, amely egy Azure cache-t használ a Redis.

@@ -8,12 +8,13 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6304077a26f5c0ecb91e1ec4936bd79b3d839d95
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: has-adal-ref
+ms.openlocfilehash: 1da5bd7020304c67bd9f9058612f47d528611a9e
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79471217"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83195333"
 ---
 # <a name="quickstart-create-an-ios-app-with-azure-spatial-anchors-in-either-swift-or-objective-c"></a>Gyors útmutató: iOS-alkalmazás létrehozása Azure térbeli Horgonyokkal Swift vagy Objective-C nyelven
 
@@ -34,9 +35,9 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az
 
 - A <a href="https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12" target="_blank">Xcode</a> és a <a href="https://cocoapods.org" target="_blank">CocoaPods</a> legújabb verziójával rendelkező, a fejlesztőknek készült MacOS-es gép.
 - Git telepítése a HomeBrew használatával:
-  1. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`. 
+  1. Adja meg a következő parancsot a terminál egyetlen sorában: `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"` . 
   1. Futtassa a következőket: `brew install git` és `brew install git-lfs`.
-  1. Frissítse a git-konfigurációját `git lfs install` (az aktuális felhasználó esetében) `git lfs install --system` vagy (a teljes rendszer esetében).
+  1. Frissítse a git-konfigurációját `git lfs install` (az aktuális felhasználó esetében) vagy `git lfs install --system` (a teljes rendszer esetében).
 - A fejlesztők által engedélyezett <a href="https://developer.apple.com/documentation/arkit/verifying_device_support_and_user_permission" target="_blank">ARKit-kompatibilis</a> IOS-eszköz.
 
 [!INCLUDE [Create Spatial Anchors resource](../../../includes/spatial-anchors-get-started-create-resource.md)]
@@ -69,7 +70,7 @@ cd ./iOS/Objective-C/
 
 Futtassa `pod install --repo-update` a parancsot a CocoaPods telepítéséhez a projekthez.
 
-Most nyissa `.xcworkspace` meg a Xcode.
+Most nyissa meg a `.xcworkspace` Xcode.
 
 > [!NOTE]
 > Tekintse meg a hibaelhárítási lépéseket [itt](#cocoapods-issues-on-macos-catalina-1015) , ha a MacOS Catalina (10,15) verzióra történő frissítés után CocoaPod problémák léptek fel.
@@ -96,17 +97,17 @@ A következő lépés az alkalmazás konfigurálása a fiók azonosítójának �
 
 Nyissa meg a következő fájlt: `iOS/Swift/SampleSwift/ViewControllers/BaseViewController.swift`.
 
-Keresse meg `spatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `spatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fiókot a fiók kulcsára.
 
-Keresse meg `spatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `spatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
 # <a name="objective-c"></a>[Objective-C](#tab/openproject-objc)
 
 Nyissa meg a következő fájlt: `iOS/Objective-C/SampleObjC/BaseViewController.m`.
 
-Keresse meg `SpatialAnchorsAccountKey` a mezőt, `Set me` és cserélje le a fiókot a fiók kulcsára.
+Keresse meg a `SpatialAnchorsAccountKey` mezőt, és cserélje le a `Set me` fiókot a fiók kulcsára.
 
-Keresse meg `SpatialAnchorsAccountId` a mezőt, `Set me` és cserélje le a azonosítót a fiókazonosító értékre.
+Keresse meg a `SpatialAnchorsAccountId` mezőt, és cserélje le a azonosítót `Set me` a fiókazonosító értékre.
 
 ---
 
@@ -121,7 +122,7 @@ Válassza **a létrehozás lehetőséget, majd futtassa az aktuális sémát**.
 ![Üzembe helyezés és Futtatás](./media/get-started-ios/deploy-run.png)
 
 > [!NOTE]
-> Ha `library not found for -lPods-SampleObjC` hibaüzenet jelenik meg, akkor a `.xcodeproj` `.xcworkspace`fájl helyett valószínűleg megnyithatja a fájlt. Nyissa `.xcworkspace` meg a t, és próbálkozzon újra.
+> Ha hibaüzenet jelenik meg `library not found for -lPods-SampleObjC` , akkor a fájl helyett valószínűleg megnyithatja a `.xcodeproj` fájlt `.xcworkspace` . Nyissa meg a t `.xcworkspace` , és próbálkozzon újra.
 
 A Xcode-ben állítsa le az alkalmazást a **Leállítás**gomb megnyomásával.
 
@@ -129,7 +130,7 @@ A Xcode-ben állítsa le az alkalmazást a **Leállítás**gomb megnyomásával.
 
 ### <a name="cocoapods-issues-on-macos-catalina-1015"></a>CocoaPods kapcsolatos problémák macOS Catalinaen (10,15)
 
-Ha nemrég frissítette a macOS Catalina (10,15) alkalmazást, és előzőleg telepítette a CocoaPods-t, előfordulhat, hogy a CocoaPods sérült állapotban van, és nem `.xcworkspace` tudja megfelelően konfigurálni a hüvelyeket és a Project fájlokat. A probléma megoldásához a következő parancsok futtatásával újra kell telepítenie a CocoaPods:
+Ha nemrég frissítette a macOS Catalina (10,15) alkalmazást, és előzőleg telepítette a CocoaPods-t, előfordulhat, hogy a CocoaPods sérült állapotban van, és nem tudja megfelelően konfigurálni a hüvelyeket és a `.xcworkspace` Project fájlokat. A probléma megoldásához a következő parancsok futtatásával újra kell telepítenie a CocoaPods:
 
 ```shell
 brew update
@@ -139,7 +140,7 @@ brew link --overwrite cocoapods
 
 ### <a name="app-crashes-when-deploying-to-ios-1031-from-a-personal-provisioning-profiledeveloper-account"></a>Az alkalmazás összeomlik, amikor egy személyes létesítési profilból/fejlesztői fiókból telepít iOS-10.3.1 
 
-Ha IOS-alapú 10.3.1 helyez üzembe egy személyes létesítési profilból/fejlesztői fiókból, a következő hibaüzenet jelenhet meg: `Library not loaded: @rpath/ADAL...`. 
+Ha IOS-alapú 10.3.1 helyez üzembe egy személyes létesítési profilból/fejlesztői fiókból, a következő hibaüzenet jelenhet meg: `Library not loaded: @rpath/ADAL...` . 
 
 A probléma megoldásához:
 

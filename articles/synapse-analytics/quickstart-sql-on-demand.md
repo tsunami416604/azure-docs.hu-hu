@@ -9,18 +9,18 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43f361fbaf4ab0462af0a720d7711f219134a165
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 9cb90ba81f6399d7b0e238d673c2d956911bd004
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692172"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83201036"
 ---
 # <a name="quickstart-using-sql-on-demand"></a>Gyors útmutató: SQL igény szerinti használata
 
-A szinapszis SQL on-demand (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az Azure Storage-ban elhelyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat az SQL igény szerinti használatával.
+A szinapszis SQL on-demand (előzetes verzió) egy kiszolgáló nélküli lekérdezési szolgáltatás, amely lehetővé teszi, hogy SQL-lekérdezéseket futtasson az Azure Storage-ban elhelyezett fájlokon. Ebből a rövid útmutatóból megtudhatja, hogyan kérdezheti le a különböző típusú fájlokat az SQL igény szerinti használatával. A támogatott formátumok a [OpenRowset](sql/develop-openrowset.md)-ben vannak felsorolva.
 
-A következő fájltípusok támogatottak: JSON, CSV, Apache Parquet
+Ez a rövid útmutató a következő lekérdezéseket mutatja be: CSV, Apache Parquet és JSON-fájlok.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -54,7 +54,7 @@ Saját adatbázis létrehozása bemutató céljára. Ezt az adatbázist fogja ha
 > Az adatbázisokat csak a metaadatok megtekintésére használják, a tényleges adatok esetében nem.
 >Jegyezze fel az adatbázis nevét, amelyet később a gyors útmutatóban használhat.
 
-Használja a következő lekérdezést, amely `mydbname` a választott névre változik:
+Használja a következő lekérdezést, amely a `mydbname` választott névre változik:
 
 ```sql
 CREATE DATABASE mydbname
@@ -123,7 +123,7 @@ További példákat a [CSV-fájl lekérdezése](sql/query-single-csv-file.md)cí
 Az alábbi példa a Parquet-fájlok lekérdezésének automatikus séma-következtetéseit mutatja be. A 2017 szeptemberében visszaadja a sorok számát a séma meghatározása nélkül.
 
 > [!NOTE]
-> A Parquet-fájlok olvasásakor nem `OPENROWSET WITH` kell megadnia az oszlopok a záradékban. Ebben az esetben az SQL on-demand metaadatokat használ a Parquet fájlban, és az oszlopokat név szerint köti össze.
+> A Parquet-fájlok olvasásakor nem kell megadnia az oszlopok a `OPENROWSET WITH` záradékban. Ebben az esetben az SQL on-demand metaadatokat használ a Parquet fájlban, és az oszlopokat név szerint köti össze.
 
 ```sql
 SELECT COUNT_BIG(*)
@@ -184,7 +184,7 @@ WHERE
 > [!IMPORTANT]
 > A teljes JSON-fájlt egysoros/oszlopként olvasjuk. Így a FIELDTERMINATOR, a FIELDQUOTE és a ROWTERMINATOR a 0x0b értékre van állítva, mert nem várjuk, hogy megkeresjük a fájlban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll a folytatásra a következő cikkekkel:
 
