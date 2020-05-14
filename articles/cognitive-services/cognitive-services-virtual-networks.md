@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 0988c8154c63bb408493edf3243078e625c80d53
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79371222"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83202074"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatok konfigurálása
 
@@ -55,7 +55,7 @@ Az alább felsorolt Cognitive Services virtuális hálózatok támogatása az *U
 
 Az alább felsorolt Cognitive Services virtuális hálózati támogatása az *USA középső – euap*, az USA *déli középső*régiója, az USA *keleti*régiója, az *USA 2. nyugati*régiója, valamint a *globális*és a *US gov Virginia* Azure-régiók esetében van korlátozva.
 > [!div class="checklist"]
-> * [Fordítói szöveg](./translator/index.yml)
+> * [Fordítói szöveg](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 A fenti szolgáltatásokhoz tartozó virtuális hálózati szolgáltatás-végpontok támogatása mellett Cognitive Services a kimenő hálózati szabályok konfigurálásához is támogatja a szolgáltatási címkéket. A CognitiveServicesManagement szolgáltatás címkéje a következő szolgáltatásokat tartalmazza.
@@ -339,12 +339,12 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
 
 Cognitive Services erőforrásokat úgy konfigurálhatja, hogy engedélyezze a hozzáférést a megadott nyilvános internetes IP-címtartományok számára. Ez a konfiguráció hozzáférést biztosít bizonyos szolgáltatásokhoz és helyszíni hálózatokhoz, és hatékonyan blokkolja az általános internetes forgalmat.
 
-Adja meg az engedélyezett internetes címtartományt az űrlapon `16.17.18.0/24` [CIDR-jelöléssel](https://tools.ietf.org/html/rfc4632) vagy egyéni IP- `16.17.18.19`címekként, például:.
+Adja meg az engedélyezett internetes címtartományt az űrlapon [CIDR-jelöléssel](https://tools.ietf.org/html/rfc4632) `16.17.18.0/24` vagy egyéni IP-címekként, például: `16.17.18.19` .
 
    > [!Tip]
    > A "/31" vagy a "/32" előtaggal rendelkező kisméretű címtartományok nem támogatottak. Ezeket a tartományokat egyedi IP-cím szabályokkal kell konfigurálni.
 
-Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózatok olyan címeket tartalmaznak, amelyek `10.*`a `172.16.*`  -  `172.31.*`, a `192.168.*`és a rendszertől kezdődnek.
+Az IP-hálózati szabályok csak a **nyilvános internetes** IP-címek esetében engedélyezettek. A magánhálózati hálózatok számára fenntartott IP-címtartományok (az [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3)-ben meghatározottak szerint) nem engedélyezettek az IP-szabályokban. A magánhálózatok olyan címeket tartalmaznak, amelyek a, a és a rendszertől kezdődnek `10.*` `172.16.*`  -  `172.31.*` `192.168.*` .
 
    > [!NOTE]
    > Az IP-hálózati szabályok nem befolyásolják a Cognitive Services erőforrással azonos Azure-régióból származó kérelmeket. A [virtuális hálózati szabályok](#grant-access-from-a-virtual-network) használatával engedélyezze az azonos régiókra vonatkozó kérelmeket.
@@ -369,11 +369,11 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
 
 1. Győződjön meg arról, hogy a **kijelölt hálózatokból**való hozzáférés engedélyezését választotta.
 
-1. Ha hozzáférést szeretne biztosítani egy internetes IP-tartományhoz, adja meg az IP-címet vagy címtartományt ( [CIDR formátumban](https://tools.ietf.org/html/rfc4632)) a **tűzfal** > **címtartomány alatt.** Csak érvényes nyilvános IP-címet (nem fenntartott) fogad el a rendszer.
+1. Ha hozzáférést szeretne biztosítani egy internetes IP-tartományhoz, adja meg az IP-címet vagy címtartományt ( [CIDR formátumban](https://tools.ietf.org/html/rfc4632)) a **tűzfal**  >  **címtartomány alatt**. Csak érvényes nyilvános IP-címet (nem fenntartott) fogad el a rendszer.
 
    ![IP-címtartomány hozzáadása](media/vnet/virtual-network-add-ip-range.png)
 
-1. IP-hálózati szabály eltávolításához válassza a címtartomány melletti <span class="docon docon-delete x-hidden-focus"></span> Kuka ikont.
+1. IP-hálózati szabály eltávolításához válassza a <span class="docon docon-delete x-hidden-focus"></span> címtartomány melletti Kuka ikont.
 
    ![IP-címtartomány törlése](media/vnet/virtual-network-delete-ip-range.png)
 
@@ -485,7 +485,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
 > [!IMPORTANT]
 > Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](welcome.md)
 * További információ az [Azure Virtual Network Service-végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md)

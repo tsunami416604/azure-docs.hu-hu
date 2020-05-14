@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan csatlakoztathatja a Azure Functionst egy Azure 
 ms.date: 02/07/2020
 ms.topic: quickstart
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c32f98fc1b3de98592f8e7ceb43c17aa8a9049f7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bb5db5858a65759c6cf20789da9cb5bfca761b1c
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673470"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83125841"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-visual-studio-code"></a>Azure Functions összekötése az Azure Storage-ba a Visual Studio Code használatával
 
@@ -17,7 +17,7 @@ ms.locfileid: "80673470"
 
 Ez a cikk bemutatja, hogyan használható a Visual Studio Code az előző rövid útmutató [cikkében](functions-create-first-function-vs-code.md) létrehozott függvény Azure Storage-ba való összekapcsolásához. Az ehhez a függvényhez hozzáadott kimeneti kötés adatokat ír a HTTP-kérelemből egy Azure üzenetsor-tárolási várólistán lévő üzenetbe. 
 
-A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A könnyebb kezelhetőség érdekében használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű `AzureWebJobsStorage`alkalmazás-beállításban van tárolva.  
+A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelyet a függvények a kötött szolgáltatás eléréséhez használnak. A könnyebb kezelhetőség érdekében használja a Function alkalmazással létrehozott Storage-fiókot. A fiókhoz való kapcsolódás már egy nevű alkalmazás-beállításban van tárolva `AzureWebJobsStorage` .  
 
 ## <a name="configure-your-local-environment"></a>A helyi környezet konfigurálása
 
@@ -33,20 +33,20 @@ A cikk elindítása előtt a következő követelményeknek kell megfelelnie:
 
 * Hajtsa végre a [Visual Studio Code](functions-create-first-function-vs-code.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
 
-Ez a cikk azt feltételezi, hogy már be van jelentkezve az Azure-előfizetésbe a Visual Studio Code-ból. A parancs futtatásával `Azure: Sign In` a parancssorból is bejelentkezhet. 
+Ez a cikk azt feltételezi, hogy már bejelentkezett az Azure-előfizetésbe a Visual Studio Code-ból. `Azure: Sign In`A parancs futtatásával a parancssorból is bejelentkezhet. 
 
 ## <a name="download-the-function-app-settings"></a>A függvény alkalmazás beállításainak letöltése
 
 Az [előző](functions-create-first-function-vs-code.md)rövid útmutatóban létrehozott egy Function alkalmazást az Azure-ban a szükséges Storage-fiókkal együtt. A fiókhoz tartozó kapcsolatok karakterlánca biztonságosan tárolódik az Azure-beli alkalmazás beállításaiban. Ebben a cikkben egy fiókba írja az üzeneteket egy tárolási várólistába. Ha a funkciót helyileg futtatja, a Storage-fiókhoz való csatlakozáshoz le kell töltenie az Alkalmazásbeállítások a local. Settings. JSON fájlra. 
 
-1. Nyomja le az F1 billentyűt a parancs palettájának megnyitásához, majd keresse meg és `Azure Functions: Download Remote Settings....`futtassa a parancsot. 
+1. Nyomja le az F1 billentyűt a parancs palettájának megnyitásához, majd keresse meg és futtassa a parancsot `Azure Functions: Download Remote Settings....` . 
 
 1. Válassza ki az előző cikkben létrehozott Function alkalmazást. A meglévő helyi beállítások felülírásához válassza az **Igen** lehetőséget. 
 
     > [!IMPORTANT]  
     > Mivel titkokat tartalmaz, a local. Settings. JSON fájl soha nem lesz közzétéve, és ki van zárva a verziókövetés alól.
 
-1. Másolja ki az `AzureWebJobsStorage`értéket, amely a Storage-fiókhoz tartozó kapcsolatok karakterlánc-értékének kulcsa. Ezzel a kapcsolattal ellenőrizheti, hogy a kimeneti kötés a várt módon működik-e.
+1. Másolja ki az értéket `AzureWebJobsStorage` , amely a Storage-fiókhoz tartozó kapcsolatok karakterlánc-értékének kulcsa. Ezzel a kapcsolattal ellenőrizheti, hogy a kimeneti kötés a várt módon működik-e.
 
 ## <a name="register-binding-extensions"></a>Kötési bővítmények regisztrálása
 
@@ -56,7 +56,7 @@ Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatás
 
 A projekt a [bővítmények](functions-bindings-register.md#extension-bundles)használatára lett konfigurálva, amely automatikusan telepíti a bővítmények előre meghatározott készletét. 
 
-A bővítményi csomagok engedélyezve vannak a projekt gyökérkönyvtárában lévő Host. JSON fájlban, amely a következőhöz hasonlóan néz ki:
+A bővítmény-csomagok használata engedélyezve van a gazdagép. JSON fájlban a projekt gyökérkönyvtárában, amely a következőképpen jelenik meg:
 
 :::code language="json" source="~/functions-quickstart-java/functions-add-output-binding-storage-queue/host.json":::
 
@@ -76,7 +76,7 @@ Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
-A functions esetében minden típusú kötéshez a `direction`, `type`, és a Function `name` . JSON fájlban definiált egyedi azonosító szükséges. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
+A functions esetében minden típusú kötéshez a `direction` , `type` , és a `name` function. JSON fájlban definiált egyedi azonosító szükséges. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-java"
 
@@ -98,7 +98,7 @@ A functions esetében minden típusú kötéshez a `direction`, `type`, és a Fu
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
-A kötés meghatározása után a kötést használhatja `name` a függvény aláírása attribútumként való eléréséhez. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
+A kötés meghatározása után a `name` kötést használhatja a függvény aláírása attribútumként való eléréséhez. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
 
 ::: zone pivot="programming-language-javascript"  
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
@@ -172,7 +172,7 @@ Miután sikeresen bejelentkezett a fiókjába, megjelenik a fiókjához társít
 
 ### <a name="examine-the-output-queue"></a>A kimeneti üzenetsor vizsgálata
 
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és `Azure Storage: Open in Storage Explorer` futtassa a parancsot, és válassza ki a Storage-fiók nevét. A Storage-fiók a Azure Storage Explorerban nyílik meg.  
+1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához, majd keresse meg és futtassa a parancsot, `Azure Storage: Open in Storage Explorer` és válassza ki a Storage-fiók nevét. A Storage-fiók a Azure Storage Explorerban nyílik meg.  
 
 1. Bontsa ki az **Üzenetsorok** csomópontot, majd válassza ki az **outqueue** nevű üzenetsort. 
 
@@ -186,11 +186,11 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 ## <a name="redeploy-and-verify-the-updated-app"></a>A frissített alkalmazás újbóli üzembe helyezése és ellenőrzése
 
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki `Azure Functions: Deploy to function app...`a következőt:.
+1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki a következőt: `Azure Functions: Deploy to function app...` .
 
 1. Válassza ki az első cikkben létrehozott Function alkalmazást. Mivel a projekt ugyanarra az alkalmazásba való újbóli üzembe helyezését végzi, válassza a **telepítés** lehetőséget a fájlok felülírásával kapcsolatos figyelmeztetés elvetéséhez.
 
-1. Az üzembe helyezés befejezése után a cURL vagy egy böngésző használatával tesztelheti az újratelepített függvényt. Ahogy korábban is, fűzze hozzá a `&name=<yourname>` lekérdezési karakterláncot az URL-címhez, az alábbi példában látható módon:
+1. Az üzembe helyezés befejezése után a cURL vagy egy böngésző használatával tesztelheti az újratelepített függvényt. Ahogy korábban is, fűzze hozzá a lekérdezési karakterláncot `&name=<yourname>` az URL-címhez, az alábbi példában látható módon:
 
     ```bash
     curl https://myfunctionapp.azurewebsites.net/api/httptrigger?code=cCr8sAxfBiow548FBDLS1....&name=<yourname>
@@ -200,13 +200,13 @@ Itt az ideje, hogy újra közzé lehessen tenni a frissített Function alkalmaz�
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az *erőforrások* kifejezés az Azure-ban például függvényalkalmazásokra, függvényekre vagy tárfiókokra utal. Az erőforrások *erőforráscsoportokba* vannak csoportosítva, és az adott csoport törlésével a benne lévő összes erőforrás törölhető.
+Az Azure-ban az *erőforrások* a Function apps, a functions, a Storage-fiókok és így tovább. *Erőforráscsoportokba*vannak csoportosítva, és a csoport törlésével törölheti a csoport összes elemét.
 
 E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának állapotától](https://azure.microsoft.com/account/) és a [szolgáltatási díjszabástól](https://azure.microsoft.com/pricing/) függően lehetséges, hogy az erőforrások használata díjköteles. Ha már nincs szüksége ezekre az erőforrásokra, a következőképpen törölheti őket:
 
 [!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények a Visual Studio Code használatával történő fejlesztéséről:
 

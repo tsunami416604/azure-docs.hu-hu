@@ -1,22 +1,22 @@
 ---
 title: 'Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és tehet közzé HTTP-triggeres Azure-függvényeket a Visual Studio használatával.
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre és tehet közzé egy HTTP-trigger Azure-függvényt a Visual Studio használatával.
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: e58414fa94a4ef54eb2f288b2cd636c10611460d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81308931"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83122748"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rövid útmutató: az első függvény létrehozása az Azure-ban a Visual Studióval
 
 Azure Functions lehetővé teszi a kód kiszolgáló nélküli környezetben való futtatását anélkül, hogy először létre kellene hoznia egy virtuális gépet, vagy közzé kellene tennie egy webalkalmazást.
 
-Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Visual Studio 2019-et a "Hello World" HTTP által aktivált C# Function-alkalmazás helyi létrehozásához és teszteléséhez, amelyet aztán közzétehet az Azure-ban. 
+Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a Visual Studio 2019-et a "Hello World" HTTP-trigger C#-függvény alkalmazásának helyi létrehozására és tesztelésére, amelyet aztán közzétehet az Azure-ban. 
 
 ![A függvény által visszaadott localhost válasz a böngészőben](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
 
@@ -34,11 +34,11 @@ Ha nem rendelkezik [Azure-előfizetéssel](../guides/developer/azure-developer-g
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A `FunctionName` Method attribútum a függvény nevét állítja be, amely alapértelmezés szerint a ( `Function1`z). Az `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
+A Visual Studio létrehoz egy projektet és egy osztályt, amely tartalmazza a HTTP trigger függvény típusának szabványos kódját. A `FunctionName` Method attribútum a függvény nevét állítja be, amely alapértelmezés szerint a (z `Function1` ). Az `HttpTrigger` attribútum azt adja meg, hogy a függvényt egy HTTP-kérelem indítja el. A sablonkód elküld egy HTTP-választ, amely tartalmaz egy értéket a kérelem szövegtörzséből vagy a lekérdezési sztringből.
 
 A megfelelő attribútumok a metódushoz való alkalmazásával kiterjesztheti a függvény képességeit a bemeneti és kimeneti kötésekkel. További információkért lásd az [Azure Functions C#-fejlesztői referenciaanyagának](functions-dotnet-class-library.md)[Eseményindítók és kötések](functions-dotnet-class-library.md#triggers-and-bindings) szakaszát.
 
-Most, hogy már létrehozott egy függvényprojektet és egy HTTP-eseményindítóval aktivált függvényt, tesztelheti a helyi számítógépen.
+Most, hogy létrehozta a függvény projektjét és egy HTTP trigger függvényt, tesztelheti a helyi számítógépen.
 
 ## <a name="run-the-function-locally"></a>Függvény helyi futtatása
 
@@ -56,9 +56,9 @@ A projekt közzététele előtt rendelkeznie kell egy Function alkalmazással az
 
 ## <a name="test-your-function-in-azure"></a>A függvény tesztelése az Azure-ban
 
-1. Másolja a Function alkalmazás alap URL-címét a profil **közzététele** lapról. Cserélje le `localhost:port` a függvény helyi teszteléséhez használt URL-cím részét az új alap URL-címmel. Fűzze hozzá a lekérdezési karakterláncot `?name=<YOUR_NAME>` ehhez az URL-címhez, és futtassa a kérést.
+1. Másolja a Function alkalmazás alap URL-címét a profil **közzététele** lapról. Cserélje le a `localhost:port` függvény helyi teszteléséhez használt URL-cím részét az új alap URL-címmel. Fűzze hozzá a lekérdezési karakterláncot `?name=<YOUR_NAME>` Ehhez az URL-címhez, és futtassa a kérést.
 
-    A HTTP-triggert használó függvényt meghívó URL-cím formátuma a következő:
+    A HTTP-trigger függvényt meghívó URL-cím formátuma a következő:
 
     `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
 
@@ -70,9 +70,9 @@ A projekt közzététele előtt rendelkeznie kell egy Function alkalmazással az
 
 [!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban a Visual studiót használta egy C#-függvény alkalmazás létrehozásához és közzétételéhez az Azure-ban egy egyszerű HTTP-triggert használó függvény használatával. 
+Ebben a rövid útmutatóban a Visual studiót használta egy C#-függvény alkalmazás létrehozásához és közzétételéhez az Azure-ban egy egyszerű HTTP trigger függvénnyel. 
 
 A következő cikkből megtudhatja, hogyan adhat hozzá Azure Storage-üzenetsor-kötést a függvényhez:
 > [!div class="nextstepaction"]
