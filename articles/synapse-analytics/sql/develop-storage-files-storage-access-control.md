@@ -9,41 +9,33 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 6ebf23720d1d323b66671c6770ab2121c9091920
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7d73b3a1a7c3b2ab290d85d88aa24108d9e7a605
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197694"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83401985"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
 
 Az igény szerinti SQL-lekérdezés közvetlenül az Azure Storage-ból olvassa be a fájlokat. Az Azure Storage-beli fájlok eléréséhez szükséges engedélyek két szinten vannak szabályozva:
-- **Tárolási szint** – a felhasználónak engedéllyel kell rendelkeznie a mögöttes tárolási fájlok eléréséhez. A tároló rendszergazdájának engedélyeznie kell az Azure AD rendszerbiztonsági tag számára a fájlok olvasását/írását, vagy a tároló eléréséhez használni kívánt SAS-kulcs létrehozását.
-- **SQL-szolgáltatási szint** – a felhasználónak `ADMINISTER BULK ADMIN` engedéllyel kell rendelkeznie a végrehajtáshoz `OPENROWSET` , és engedélyt kell adnia a tároló elérésére használt hitelesítő adatok használatára is.
+- **Tárolási szint** – a felhasználónak engedéllyel kell rendelkeznie a mögöttes tárolási fájlok eléréséhez. A tároló rendszergazdájának engedélyeznie kell az Azure AD-rendszerbiztonsági tag számára a fájlok olvasását/írását, vagy a tároló eléréséhez használni kívánt SAS-kulcs létrehozását.
+- **SQL-szolgáltatási szint** – a felhasználónak engedéllyel kell rendelkeznie az `SELECT` adatok [külső táblából](develop-tables-external-tables.md) való beolvasásához vagy `ADMINISTER BULK ADMIN` a végrehajtáshoz szükséges engedélyekhez, `OPENROWSET` valamint a tároló elérésére használt hitelesítő adatok használatára is.
 
 Ez a cikk ismerteti a használható hitelesítő adatok típusait, valamint azt, hogy az SQL és az Azure AD-felhasználók hogyan használják a hitelesítő adatokat.
 
 ## <a name="supported-storage-authorization-types"></a>Támogatott tárolási engedélyezési típusok
 
-Egy SQL igény szerinti erőforrásba bejelentkezett felhasználónak jogosultnak kell lennie az Azure Storage-ban tárolt fájlok elérésére és lekérdezésére. Három engedélyezési típus támogatott:
+Egy SQL igény szerinti erőforrásba bejelentkezett felhasználónak jogosultnak kell lennie az Azure Storage-ban tárolt fájlok elérésére és lekérdezésére, ha a fájlok nem nyilvánosan elérhetők. Három engedélyezési típus támogatott:
 
-- [Közös hozzáférésű jogosultságkód](#shared-access-signature)
-- [Felügyelt identitás](#managed-identity)
-- [Felhasználói identitás](#user-identity)
+- [Felhasználói identitás](?tabs=user-identity)
+- [Közös hozzáférésű jogosultságkód](?tabs=shared-access-signature)
+- [Felügyelt identitás](?tabs=managed-identity)
 
 > [!NOTE]
 > A munkaterületek létrehozásakor az [Azure ad pass-through](#force-azure-ad-pass-through) az alapértelmezett viselkedés. Ha ezt használja, nem szükséges hitelesítő adatokat létrehoznia minden olyan Storage-fiókhoz, amely az Azure AD-bejelentkezések használatával érhető el. [Ezt a viselkedést letilthatja](#disable-forcing-azure-ad-pass-through).
 
-Az alábbi táblázatban az elérhető engedélyezési típusok találhatók:
-
-| Engedélyezés típusa                    | *SQL-felhasználó*    | *Azure AD-felhasználó*     |
-| ------------------------------------- | ------------- | -----------    |
-| [SAS](#shared-access-signature)       | Támogatott     | Támogatott      |
-| [Felügyelt identitás](#managed-identity) | Nem támogatott | Támogatott      |
-| [Felhasználói identitás](#user-identity)       | Nem támogatott | Támogatott      |
-
-### <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
+### <a name="shared-access-signature"></a>[Közös hozzáférésű jogosultságkód](#tab/shared-access-signature)
 
 A **közös hozzáférésű aláírás (SAS)** delegált hozzáférést biztosít a Storage-fiók erőforrásaihoz. Az SAS használatával az ügyfelek a fiók kulcsainak megosztása nélkül biztosíthatnak hozzáférést a Storage-fiók erőforrásaihoz. Az SAS részletesen szabályozza a hozzáférést az olyan ügyfelek számára, akik SAS-val rendelkeznek, beleértve az érvényességi időt, a megadott engedélyeket, az elfogadható IP-címtartományt és az elfogadható protokollt (https/http).
 
@@ -53,6 +45,8 @@ SAS-token beszerzéséhez lépjen a **Azure Portal-> Storage-fiókhoz – > köz
 > SAS-token létrehozásakor a jogkivonat elején szerepel egy kérdőjel ("?"). Ha az SQL-ben igény szerint szeretné használni a tokent, el kell távolítania a kérdőjelet ("?") a hitelesítő adatok létrehozásakor. Például:
 >
 > SAS-jogkivonat:? SV = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = HTTPS&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
+
+Az SAS-token használatával történő hozzáférés engedélyezéséhez adatbázis-hatókörű vagy kiszolgáló-hatókörű hitelesítő adatokat kell létrehoznia.
 
 ### <a name="user-identity"></a>Felhasználói identitás
 
@@ -103,36 +97,21 @@ A **felügyelt identitást** MSI-ként is nevezzük. Azure Active Directory (Azu
 
 Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia a felügyelt identitásnak az adatok eléréséhez. A felügyelt identitásra vonatkozó engedélyek megadásának módja ugyanúgy történik, mint bármely más Azure AD-felhasználó számára.
 
-## <a name="credentials"></a>Hitelesítő adatok
+### <a name="anonymous-access"></a>Anonymous access
 
-Az Azure Storage-ban található fájlok lekérdezéséhez az SQL igény szerinti végpontjának a hitelesítési adatokat tartalmazó hitelesítő adatokra van szüksége. A hitelesítő adatok két típusát használják:
-- A kiszolgálói szintű HITELESÍTő adatok a függvény használatával végrehajtott ad hoc lekérdezésekhez használatosak `OPENROWSET` . A hitelesítő adatok nevének egyeznie kell a tároló URL-címével.
-- Az adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok külső táblákhoz használatosak. A külső tábla `DATA SOURCE` arra a hitelesítő adatokra hivatkozik, amelyet a tároló elérésére kell használni.
+A [névtelen hozzáférést engedélyező](/azure/storage/blobs/storage-manage-access-to-resources.md)Azure Storage-fiókokban elhelyezett, nyilvánosan elérhető fájlokat is elérheti.
 
-A hitelesítő adatok a [create hitelesítő adatok létrehozása](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)paranccsal adhatók hozzá. Meg kell adnia a HITELESÍTŐADAT-név argumentumot. A fájlnak meg kell egyeznie az elérési út vagy a tárolóban lévő összes elérési út részével (lásd alább).
+---
 
-> [!NOTE]
-> A FOR KRIPTOGRÁFIAi szolgáltató argumentuma nem támogatott.
+### <a name="supported-authorization-types-for-databases-users"></a>Támogatott engedélyezési típusok az adatbázisok felhasználói számára
 
-Az összes támogatott engedélyezési típus esetében a hitelesítő adatok egy fiókra vagy egy tárolóra mutatnak.
+Az alábbi táblázatban az elérhető engedélyezési típusok találhatók:
 
-A kiszolgáló szintű HITELESÍTő adatok nevének meg kell egyeznie a Storage-fiók (és opcionálisan tároló) teljes elérési útjával a következő formátumban:`<prefix>://<storage_account_path>/<storage_path>`
-
-| Külső adatforrás       | Előtag | Storage-fiók elérési útja                                |
-| -------------------------- | ------ | --------------------------------------------------- |
-| Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
-| 1. generációs Azure Data Lake Storage | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
-| 2. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
-
-
-> [!NOTE]
-> Speciális kiszolgálói szintű HITELESÍTő ADATOKkal rendelkezik `UserIdentity` , amelyek [kényszerítik az Azure ad átmenő továbbítását](#force-azure-ad-pass-through).
-
-Ha engedélyezni szeretné a felhasználó számára a hitelesítő adatok létrehozását vagy eldobását, a rendszergazda engedélyezheti vagy megtagadhatja a hitelesítő adatok MÓDOSÍTÁSát a felhasználó számára:
-
-```sql
-GRANT ALTER ANY CREDENTIAL TO [user_name];
-```
+| Engedélyezés típusa                    | *SQL-felhasználó*    | *Azure AD-felhasználó*     |
+| ------------------------------------- | ------------- | -----------    |
+| [Felhasználói identitás](?tabs=user-identity#supported-storage-authorization-types)       | Nem támogatott | Támogatott      |
+| [SAS](?tabs=shared-access-signature#supported-storage-authorization-types)       | Támogatott     | Támogatott      |
+| [Felügyelt identitás](?tabs=managed-identity#supported-storage-authorization-types) | Nem támogatott | Támogatott      |
 
 ### <a name="supported-storages-and-authorization-types"></a>Támogatott tárolók és engedélyezési típusok
 
@@ -144,10 +123,23 @@ Az engedélyezési és az Azure Storage-típusok következő kombinációit hasz
 | *Felügyelt identitás* | Támogatott      | Támogatott        | Támogatott     |
 | *Felhasználói identitás*    | Támogatott      | Támogatott        | Támogatott     |
 
+## <a name="credentials"></a>Hitelesítő adatok
+
+Az Azure Storage-ban található fájlok lekérdezéséhez az SQL igény szerinti végpontjának a hitelesítési adatokat tartalmazó hitelesítő adatokra van szüksége. A hitelesítő adatok két típusát használják:
+- A kiszolgálói szintű HITELESÍTő adatok a függvény használatával végrehajtott ad hoc lekérdezésekhez használatosak `OPENROWSET` . A hitelesítő adatok nevének egyeznie kell a tároló URL-címével.
+- Az adatbázis-HATÓKÖRrel rendelkező hitelesítő adatok külső táblákhoz használatosak. A külső tábla `DATA SOURCE` arra a hitelesítő adatokra hivatkozik, amelyet a tároló elérésére kell használni.
+
+Ha engedélyezni szeretné a felhasználó számára a hitelesítő adatok létrehozását vagy eldobását, a rendszergazda ENGEDÉLYEZheti vagy megtagadhatja a hitelesítő adatok MÓDOSÍTÁSát a felhasználó számára:
+
+```sql
+GRANT ALTER ANY CREDENTIAL TO [user_name];
+```
+
+A külső tárolóhoz hozzáférő adatbázis-felhasználóknak engedéllyel kell rendelkezniük a hitelesítő adatok használatához.
 
 ### <a name="grant-permissions-to-use-credential"></a>Engedélyek megadása a hitelesítő adatok használatához
 
-A hitelesítő adatok használatához a felhasználóknak HIVATKOZÁSokra van szükségük egy adott hitelesítő adathoz. Ha egy specific_user storage_credentialra vonatkozó HIVATKOZÁSokat szeretne megadni, hajtsa végre a következőt:
+A hitelesítő adatok használatához a felhasználónak engedéllyel kell rendelkeznie `REFERENCES` egy adott hitelesítő adathoz. Ha engedélyt szeretne adni egy `REFERENCES` specific_user storage_credentialére, hajtsa végre a következőt:
 
 ```sql
 GRANT REFERENCES ON CREDENTIAL::[storage_credential] TO [specific_user];
@@ -159,15 +151,29 @@ A zökkenőmentes Azure AD átmenő élmény biztosítása érdekében a felhasz
 GRANT REFERENCES ON CREDENTIAL::[UserIdentity] TO [public];
 ```
 
-### <a name="examples"></a>Példák
+## <a name="server-scoped-credential"></a>Kiszolgáló – hatókörön belüli hitelesítő adatok
 
-Az [engedélyezési típustól](#supported-storage-authorization-types)függően létrehozhat hitelesítő adatokat az alábbi T-SQL szintaxis használatával.
-- A kiszolgáló hatókörű hitelesítő adatait akkor használja a rendszer, ha az SQL-bejelentkezési hívások `OPENROWSET` funkciója nem `DATA_SOURCE` a fájlok egyes Storage-fiókokban való olvasásával történik. A kiszolgáló-hatókörű hitelesítő adatok nevének **meg kell** egyeznie az Azure Storage URL-címével.
-- Adatbázis-hatókörű hitelesítő adatokat akkor kell használni, ha bármelyik résztvevő meghívja `OPENROWSET` a `DATA_SOURCE` nyilvános fájlokhoz nem hozzáférő külső táblából származó adatokat, vagy kiválasztja azokat. Az adatbázis-hatókörrel rendelkező hitelesítő adatnak nem kell megegyeznie a Storage-fiók nevével, mert explicit módon fogja használni az adatforrásban, amely meghatározza a tárterület helyét.
+A kiszolgáló hatókörű hitelesítő adatait akkor használja a rendszer, ha az SQL-bejelentkezési hívások `OPENROWSET` funkciója nem `DATA_SOURCE` a fájlok egyes Storage-fiókokban való olvasásával történik. A kiszolgáló-hatókörű hitelesítő adatok nevének **meg kell** egyeznie az Azure Storage URL-címével. A hitelesítő adatok a [create hitelesítő adatok létrehozása](/sql/t-sql/statements/create-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)paranccsal adhatók hozzá. Meg kell adnia a HITELESÍTŐADAT-név argumentumot. A fájlnak meg kell egyeznie az elérési út vagy a tárolóban lévő összes elérési út részével (lásd alább).
 
-**Kiszolgáló – hatókörrel rendelkező hitelesítő adatok közös hozzáférési aláírással Blob Storage**
+> [!NOTE]
+> A FOR KRIPTOGRÁFIAi szolgáltató argumentuma nem támogatott.
 
-A következő szkript létrehoz egy kiszolgálói szintű hitelesítő adatot, amely az Azure Storage-ban az SAS-token használatával fér hozzá bármely fájlhoz. Ennek a hitelesítő adatnak a létrehozásával engedélyezheti az olyan SQL-rendszerbiztonsági tag számára, amely végrehajtja `OPENROWSET` a függvényt az SAS-kulccsal védett fájlok olvasásához az Azure Storage-ban a hitelesítő adatok
+A kiszolgáló szintű HITELESÍTő adatok nevének meg kell egyeznie a Storage-fiók (és opcionálisan tároló) teljes elérési útjával a következő formátumban: `<prefix>://<storage_account_path>/<storage_path>` . A Storage-fiók elérési útját a következő táblázat ismerteti:
+
+| Külső adatforrás       | Előtag | Storage-fiók elérési útja                                |
+| -------------------------- | ------ | --------------------------------------------------- |
+| Azure Blob Storage         | https  | <storage_account>. blob.core.windows.net             |
+| 1. generációs Azure Data Lake Storage | https  | <storage_account>. azuredatalakestore.net/webhdfs/v1 |
+| 2. generációs Azure Data Lake Storage | https  | <storage_account>. dfs.core.windows.net              |
+
+> [!NOTE]
+> Speciális kiszolgálói szintű HITELESÍTő ADATOKkal rendelkezik `UserIdentity` , amelyek [kényszerítik az Azure ad átmenő továbbítását](?tabs=user-identity#force-azure-ad-pass-through).
+
+A kiszolgáló-hatókörű hitelesítő adatok lehetővé teszik az Azure Storage elérését a következő hitelesítési típusok használatával:
+
+### <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
+
+A következő parancsfájl egy kiszolgálói szintű hitelesítő adatot hoz létre, amelyet a függvények használhatnak az `OPENROWSET` Azure Storage-beli fájlok sas-token használatával való eléréséhez. Ennek a hitelesítő adatnak a létrehozásával engedélyezheti az olyan SQL-rendszerbiztonsági tag számára, amely végrehajtja `OPENROWSET` a függvényt az SAS-kulccsal védett fájlok olvasásához az Azure Storage-ban a hitelesítő adatok
 
 Az Exchange <*mystorageaccountname*> a tényleges Storage-fiók nevével, és <*mystorageaccountcontainername*> a tároló tényleges nevével:
 
@@ -178,9 +184,27 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 GO
 ```
 
-**Kiszolgáló – hatókörön belüli hitelesítő adatok, amelyek lehetővé teszik a nyilvános tárolóhoz való hozzáférést**
+### <a name="user-identity"></a>Felhasználói identitás
 
-A következő szkript létrehoz egy kiszolgálói szintű hitelesítő adatot, amely a nyilvánosan elérhető Azure Storage-ban található bármely fájl elérésére használható. Ennek a hitelesítő adatnak a létrehozásával engedélyezheti, hogy az SQL-rendszerbiztonsági tag végrehajtsa a `OPENROWSET` függvényt az Azure Storage-ban található, a hitelesítő adatok neve nevű nyilvános
+A következő parancsfájl egy kiszolgálói szintű hitelesítő adatot hoz létre, amely lehetővé teszi, hogy a felhasználó megszemélyesítse az Azure AD-identitást.
+
+```sql
+CREATE CREDENTIAL [UserIdentity]
+WITH IDENTITY = 'User Identity';
+```
+
+### <a name="managed-identity"></a>Felügyelt identitás
+
+A következő szkript létrehoz egy kiszolgálói szintű hitelesítő adatot, amelyet a `OPENROWSET` függvény az Azure Storage-ban található összes fájl elérésére használhat a munkaterület által felügyelt identitás használatával.
+
+```sql
+CREATE CREDENTIAL [https://<mystorageaccountname>.blob.core.windows.net/<mystorageaccountcontainername>]
+WITH IDENTITY='Managed Identity'
+```
+
+### <a name="public-access"></a>Nyilvános hozzáférés
+
+A következő szkript létrehoz egy kiszolgálói szintű hitelesítő adatot, amelyet a függvények használhatnak a `OPENROWSET` nyilvánosan elérhető Azure Storage-on található fájlok eléréséhez. Ennek a hitelesítő adatnak a létrehozásával engedélyezheti, hogy az SQL-rendszerbiztonsági tag végrehajtsa a `OPENROWSET` függvényt az Azure Storage-ban található, a hitelesítő adatok neve nevű nyilvános
 
 Az Exchange <*mystorageaccountname*> kell rendelkeznie a tényleges Storage-fiók nevével, és <*mystorageaccountcontainername*> a tároló tényleges nevével:
 
@@ -190,8 +214,15 @@ WITH IDENTITY='SHARED ACCESS SIGNATURE'
 , SECRET = '';
 GO
 ```
+---
 
-**Adatbázis – hatókörrel rendelkező hitelesítő adatok SAS-jogkivonattal**
+## <a name="database-scoped-credential"></a>Adatbázis – hatókörrel rendelkező hitelesítő adatok
+
+Adatbázis-hatókörű hitelesítő adatokat akkor kell használni, ha bármelyik résztvevő meghívja `OPENROWSET` a `DATA_SOURCE` nyilvános fájlokhoz nem hozzáférő [külső táblából](develop-tables-external-tables.md) származó adatokat, vagy kiválasztja azokat. Az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatoknak nem kell megegyezniük a Storage-fiók nevével, mert explicit módon lesz használva a Storage helyét meghatározó adatforrásban.
+
+Az adatbázis-hatókörrel rendelkező hitelesítő adatok lehetővé teszik az Azure Storage elérését a következő hitelesítési típusok használatával:
+
+### <a name="shared-access-signature"></a>Közös hozzáférésű jogosultságkód
 
 A következő szkript létrehoz egy hitelesítő adatot, amely a hitelesítő adatokban megadott SAS-jogkivonat használatával fér hozzá a fájlokhoz a tárolóban.
 
@@ -201,9 +232,9 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2018-03-28&ss=bfqt&srt=s
 GO
 ```
 
-**Adatbázis – hatókörrel rendelkező hitelesítő adatok az Azure AD-identitással**
+### <a name="azure-ad-identity"></a>Azure AD-identitás
 
-A következő szkript létrehoz egy hitelesítő adatot, amelyet a külső táblák és függvények használnak a `OPENROWSET` saját Azure ad-identitásával való hozzáféréshez szükséges hitelesítő adatok használatával.
+A következő szkript létrehoz egy adatbázis-hatókörű hitelesítő adatot, amelyet a [külső tábla](develop-tables-external-tables.md) és az olyan függvények használnak, `OPENROWSET` amelyek hitelesítő adatokkal férnek hozzá a Storage-fájlokhoz saját Azure ad-identitásuk használatával.
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [AzureAD]
@@ -211,9 +242,9 @@ WITH IDENTITY = 'User Identity';
 GO
 ```
 
-**Adatbázis – hatókörrel rendelkező hitelesítő adat felügyelt identitással**
+### <a name="managed-identity"></a>Felügyelt identitás
 
-A következő szkript létrehoz egy hitelesítő adatokat, amelyekkel megszemélyesítheti a jelenlegi Azure AD-felhasználót a szolgáltatás felügyelt identitásával. 
+Az alábbi szkript egy adatbázis-hatókörű hitelesítő adatot hoz létre, amellyel megszemélyesítheti a jelenlegi Azure AD-felhasználót a szolgáltatás felügyelt identitásával. 
 
 ```sql
 CREATE DATABASE SCOPED CREDENTIAL [SynapseIdentity]
@@ -221,7 +252,92 @@ WITH IDENTITY = 'Managed Identity';
 GO
 ```
 
-Az adatbázis-hatókörrel rendelkező hitelesítő adatnak nem kell megegyeznie a Storage-fiók nevével, mert explicit módon fogja használni az adatforrásban, amely meghatározza a tárterület helyét.
+Az adatbázishoz tartozó hatókörrel rendelkező hitelesítő adatoknak nem kell megegyezniük a Storage-fiók nevével, mert explicit módon lesz használva a Storage helyét meghatározó adatforrásban.
+
+### <a name="public-access"></a>[Nyilvános hozzáférés](#tab/public-access)
+
+Az adatbázis-hatókörrel rendelkező hitelesítő adatok nem szükségesek a nyilvánosan elérhető fájlokhoz való hozzáférés engedélyezéséhez. [Adatbázis-hatókörű hitelesítő adatok nélküli adatforrás](develop-tables-external-tables.md?tabs=sql-ondemand#example-for-create-external-data-source) létrehozása az Azure Storage-ban nyilvánosan elérhető fájlok eléréséhez.
+
+---
+
+Az adatbázishoz kötődő hitelesítő adatok külső adatforrásokban vannak használatban annak megadásához, hogy milyen hitelesítési módszert fog használni a tároló eléréséhez:
+
+```sql
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples',
+          CREDENTIAL = <name of database scoped credential> 
+)
+```
+
+## <a name="examples"></a>Példák
+
+**Nyilvánosan elérhető adatforrás elérése**
+
+A következő szkripttel hozhat létre olyan táblázatot, amely hozzáfér a nyilvánosan elérhető adatforráshoz.
+
+```sql
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+GO
+CREATE EXTERNAL DATA SOURCE publicData
+WITH (    LOCATION   = 'https://****.blob.core.windows.net/public-access' )
+GO
+
+CREATE EXTERNAL TABLE dbo.userPublicData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
+WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [publicData], FILE_FORMAT = [SynapseParquetFormat] )
+```
+
+Az adatbázis-felhasználó az adatforrásból származó fájlok tartalmát elolvashatja az adatforrásra hivatkozó külső tábla vagy [OpenRowset](develop-openrowset.md) függvény használatával:
+
+```sql
+SELECT TOP 10 * FROM dbo.userPublicData;
+GO
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+GO
+```
+
+**Adatforrások elérése a hitelesítő adatok használatával**
+
+Módosítsa a következő parancsfájlt egy olyan külső tábla létrehozásához, amely az Azure Storage-t az SAS-token, a felhasználó Azure AD-identitása vagy a munkaterület felügyelt identitása használatával éri el.
+
+```sql
+-- Create master key in databases with some password (one-off per database)
+CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'Y*********0'
+GO
+
+-- Create databases scoped credential that use User Identity, Managed Identity, or SAS. User needs to create only database-scoped credentials that should be used to access data source:
+
+CREATE DATABASE SCOPED CREDENTIAL MyIdentity WITH IDENTITY = 'User Identity'
+GO
+CREATE DATABASE SCOPED CREDENTIAL WorkspaceIdentity WITH IDENTITY = 'Managed Identity'
+GO
+CREATE DATABASE SCOPED CREDENTIAL SasCredential WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'sv=2019-10-1********ZVsTOL0ltEGhf54N8KhDCRfLRI%3D'
+
+-- Create data source that one of the credentials above, external file format, and external tables that reference this data source and file format:
+
+CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] WITH ( FORMAT_TYPE = PARQUET)
+GO
+
+CREATE EXTERNAL DATA SOURCE mysample
+WITH (    LOCATION   = 'https://*******.blob.core.windows.net/samples'
+-- Uncomment one of these options depending on authentication method that you want to use to access data source:
+--,CREDENTIAL = MyIdentity 
+--,CREDENTIAL = WorkspaceIdentity 
+--,CREDENTIAL = SasCredential 
+)
+
+CREATE EXTERNAL TABLE dbo.userData ( [id] int, [first_name] varchar(8000), [last_name] varchar(8000) )
+WITH ( LOCATION = 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FILE_FORMAT = [SynapseParquetFormat] )
+
+```
+
+Az adatbázis-felhasználó az adatforrásból származó fájlok tartalmát elolvashatja az adatforrásra hivatkozó [külső tábla](develop-tables-external-tables.md) vagy [OpenRowset](develop-openrowset.md) függvény használatával:
+
+```sql
+SELECT TOP 10 * FROM dbo.userdata;
+GO
+SELECT TOP 10 * FROM OPENROWSET(BULK 'parquet/user-data/*.parquet', DATA_SOURCE = [mysample], FORMAT=PARQUET) as rows;
+GO
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

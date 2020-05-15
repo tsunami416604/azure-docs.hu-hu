@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 05/12/2020
-ms.openlocfilehash: f3eee85c600d40b3997a0e6dff6a9b218242feb4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3df6cb1afe8a6249eadbbd3f61619e66be2d2478
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83204717"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402487"
 ---
 # <a name="quickstart-create-an-enterprise-tier-cache-preview"></a>Gyors útmutató: vállalati szintű gyorsítótár létrehozása (előzetes verzió)
 
@@ -20,7 +20,7 @@ Az Azure cache for Redis vállalati szintjei teljes mértékben integrált és f
 * Vállalat, amely felejtő memóriát használ a virtuális gépeken az adattároláshoz
 * A vállalati SSD, amely illékony és nem felejtő memóriát (NVMe) használ az adattároláshoz.
 
-Nincs az előzetes verzióhoz való csatlakozás díja. Ha érdekli, regisztráljon az [Azure piactéren](https://aka.ms/redispreviewsignup/) . Nagyon korlátozott számú résztvevővel rendelkezünk, és nem garantáljuk, hogy elfogadja az előzetes verziót.
+Nincs az előzetes verzióhoz való csatlakozás díja. Ha érdekli az [Azure Marketplace](https://aka.ms/redispreviewsignup/) -en, **vegye fel velünk a kapcsolatot** . Nagyon korlátozott számú résztvevővel rendelkezünk, és nem garantáljuk, hogy elfogadja az előzetes verziót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -40,7 +40,7 @@ Mielőtt elkezdené, szüksége lesz egy Azure-előfizetésre. Ha még nem rende
    
 1. Az **új Redis cache** lapon adja meg az új gyorsítótár beállításait.
    
-   | Beállítás      | Ajánlott érték  | Leírás |
+   | Beállítás      | Ajánlott érték  | Description |
    | ------------ |  ------- | -------------------------------------------------- |
    | **Előfizetés** | Legördülő menüből válassza ki az előfizetését. | Az előfizetés, amely alatt létre kell hoznia ezt az új Azure cache-t a Redis-példányhoz. | 
    | **Erőforráscsoport** | Legördülő listából válassza ki az erőforráscsoportot, vagy válassza az **új létrehozása** elemet, és adjon meg egy új erőforráscsoport-nevet. | Azon erőforráscsoport neve, amelyben létre szeretné hozni a gyorsítótárat és az egyéb erőforrásokat. Az összes alkalmazás-erőforrás egy erőforráscsoporthoz való elhelyezésével könnyedén kezelheti és törölheti azokat. | 

@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: abb61afab3391f9a53ada4881cb186aa9fae3187
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 49c1a29547195ad8557550ba1bc0cb80fae40ad8
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005915"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402633"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Hozzáférés-vezérlési házirenddel Key Vault hitelesítés megadása
 
@@ -60,13 +60,13 @@ Az alkalmazások objectId a társított egyszerű szolgáltatásnak felel meg. A
 
 Az alkalmazások objectId kétféleképpen szerezhetők be.  Az első az, hogy regisztrálja az alkalmazást Azure Active Directory. Ehhez kövesse az [alkalmazás regisztrálása a Microsoft Identity platformon](../../active-directory/develop/quickstart-register-app.md)című útmutató lépéseit. A regisztráció befejezésekor a objectID "Application (ügyfél-) AZONOSÍTÓként" jelenik meg.
 
-A második egy egyszerű szolgáltatásnév létrehozása egy terminál-ablakban. Az Azure CLI-vel használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot, és adjon meg egy egyedi szolgáltatásnév nevet az-n jelzőhöz a "http://&lt;My-Unique-Service-elven-name&gt;" formátumban.
+A második egy egyszerű szolgáltatásnév létrehozása egy terminál-ablakban. Az Azure CLI-vel használja az az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancsot, és adjon meg egy egyedi szolgáltatásnév nevet az-n jelzőhöz a "http:// &lt; My-Unique-Service-elven-Name" formátumban &gt; .
 
 ```azurecli-interactive
 az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
 ```
 
-A objectId a kimenetben jelenik meg `clientID`.
+A objectId a kimenetben jelenik meg `clientID` .
 
 A Azure PowerShell használatával használja a [New-AzADServicePrincipal](/powershell/module/Az.Resources/New-AzADServicePrincipal?view=azps-2.7.0) parancsmagot.
 
@@ -75,13 +75,13 @@ A Azure PowerShell használatával használja a [New-AzADServicePrincipal](/powe
 New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
 ```
 
-A objectId a kimenetben `Id` (nem `ApplicationId`) jelenik meg.
+A objectId a kimenetben `Id` (nem) jelenik meg `ApplicationId` .
 
 #### <a name="azure-ad-groups"></a>Azure AD-csoportok
 
 Hozzáadhat több alkalmazást és felhasználót egy Azure AD-csoporthoz, majd a csoport számára hozzáférést adhat a kulcstartóhoz.  További részletekért tekintse meg a [tagok létrehozása és hozzáadása egy Azure ad-csoporthoz](#creating-and-adding-members-to-an-azure-ad-group) szakaszt alább.
 
-Az Azure parancssori felülettel rendelkező Azure AD-csoportok objectId az az [ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) parancs használatával keresheti meg. A szervezetben esetlegesen felhasználható csoportok nagy száma miatt a `--display-name` paraméterhez is meg kell adnia egy keresési karakterláncot.
+Az Azure parancssori felülettel rendelkező Azure AD-csoportok objectId az az [ad Group List](/cli/azure/ad/group?view=azure-cli-latest#az-ad-group-list) parancs használatával keresheti meg. A szervezetben esetlegesen felhasználható csoportok nagy száma miatt a paraméterhez is meg kell adnia egy keresési karakterláncot `--display-name` .
 
 ```azurecli-interactive
 az ad group list --display-name <search-string>
@@ -100,7 +100,7 @@ Ha Azure PowerShell használatával szeretné megkeresni egy Azure AD-csoport ob
 Get-AzADGroup -SearchString <search-string>
 ```
 
-A kimenetben a objectId a következőképpen `Id`jelenik meg:
+A kimenetben a objectId a következőképpen jelenik meg `Id` :
 
 ```console
 ...
@@ -109,13 +109,13 @@ Id                    : 1cef38c4-388c-45a9-b5ae-3d88375e166a
 ```
 
 > [!WARNING]
-> Az Azure ad-csoportok nem támogatják a felügyelt identitásokat. Csak a szolgáltatás és a felhasználói rendszerbiztonsági tag támogatott.
+> A felügyelt identitásokkal rendelkező Azure AD-csoportok a token frissítéséhez és a 8hr szükségesek.
 
 #### <a name="users"></a>Felhasználók
 
 Egyéni felhasználót is hozzáadhat a Key Vault hozzáférés-vezérlési házirendjéhez. **Ezt nem javasoljuk.** Ehelyett javasoljuk, hogy felhasználókat adjon hozzá egy Azure AD-csoporthoz, és adja hozzá a csoportot a szabályzatokhoz.
 
-Ha azonban az Azure CLI-vel szeretne felhasználókat megkeresni, használja az az [ad User show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) parancsot, és adja át a felhasználók e- `--id` mail-címét a paraméternek.
+Ha azonban az Azure CLI-vel szeretne felhasználókat megkeresni, használja az az [ad User show](/cli/azure/ad/user?view=azure-cli-latest#az-ad-user-show) parancsot, és adja át a felhasználók e-mail-címét a `--id` paraméternek.
 
 
 ```azurecli-interactive
@@ -131,13 +131,13 @@ A rendszer visszaadja a felhasználó objectId a kimenetben:
   ...
 ```
 
-Azure PowerShellt használó felhasználó kereséséhez használja a [Get-AzADUser](/powershell/module/az.resources/get-azaduser?view=azps-2.7.0) parancsmagot, és adja át a felhasználóknak az e `-UserPrincipalName` -mail-címet a paraméternek.
+Azure PowerShellt használó felhasználó kereséséhez használja a [Get-AzADUser](/powershell/module/az.resources/get-azaduser?view=azps-2.7.0) parancsmagot, és adja át a felhasználóknak az e-mail-címet a `-UserPrincipalName` paraméternek.
 
 ```azurepowershell-interactive
  Get-AzAdUser -UserPrincipalName <email-address-of-user>
 ```
 
-A rendszer a felhasználó objectId adja vissza a kimenetben `Id`.
+A rendszer a felhasználó objectId adja vissza a kimenetben `Id` .
 
 ```console
 ...
@@ -189,13 +189,13 @@ Mindkét esetben jegyezze fel az újonnan létrehozott csoportok GroupId, ahogy 
 
 ### <a name="find-the-objectids-of-your-applications-and-users"></a>Az alkalmazások és a felhasználók objectIds megkeresése
 
-Az alkalmazások objectIds az az [ad SP List](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) paranccsal, a `--show-mine` paraméterrel KERESHETI meg az Azure CLI használatával.
+Az alkalmazások objectIds az az [ad SP List](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-list) paranccsal, a paraméterrel keresheti meg az Azure CLI használatával `--show-mine` .
 
 ```azurecli-interactive
 az ad sp list --show-mine
 ```
 
-A [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) parancsmaggal megkeresheti az Azure PowerShell alkalmazások objectIds, és átadva a keresési karakterláncot `-SearchString` a paraméternek.
+A [Get-AzADServicePrincipal](/powershell/module/az.resources/get-azadserviceprincipal?view=azps-2.7.0) parancsmaggal megkeresheti az Azure PowerShell alkalmazások objectIds, és átadva a keresési karakterláncot a `-SearchString` paraméternek.
 
 ```azurepowershell-interactive
 Get-AzADServicePrincipal -SearchString <search-string>
@@ -207,14 +207,14 @@ A felhasználók objectIds megkereséséhez kövesse a fenti [felhasználók](#u
 
 Most adja hozzá a objectIds az újonnan létrehozott Azure AD-csoporthoz.
 
-Az Azure CLI-vel használja az az [ad Group tag Add (Hozzáadás](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add)) lehetőséget a objectId `--member-id` a paraméterhez való átadásával.
+Az Azure CLI-vel használja az az [ad Group tag Add (Hozzáadás](/cli/azure/ad/group/member?view=azure-cli-latest#az-ad-group-member-add)) lehetőséget a objectId a `--member-id` paraméterhez való átadásával.
 
 
 ```azurecli-interactive
 az ad group member add -g <groupId> --member-id <objectId>
 ```
 
-A Azure PowerShell használatával használja az [Add-AzADGroupMember](/powershell/module/az.resources/add-azadgroupmember?view=azps-2.7.0) parancsmagot, és adja át a `-MemberObjectId` objectId a paraméternek.
+A Azure PowerShell használatával használja az [Add-AzADGroupMember](/powershell/module/az.resources/add-azadgroupmember?view=azps-2.7.0) parancsmagot, és adja át a objectId a `-MemberObjectId` paraméternek.
 
 ```azurepowershell-interactive
 Add-AzADGroupMember -TargetGroupObjectId <groupId> -MemberObjectId <objectId> 
@@ -226,7 +226,7 @@ Végül adja meg az AD-csoport engedélyeit a kulcstartónak az Azure CLI az Key
 
 Az alkalmazásnak szüksége van legalább egy, a Key vaulthoz hozzárendelt identitás-és hozzáférés-kezelési (IAM) szerepkörre is. Ellenkező esetben nem fog tudni bejelentkezni, és nem lesz megfelelő jogosultsága az előfizetéshez való hozzáféréshez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Key Vault biztonság: identitás-és hozzáférés-kezelés](overview-security.md#identity-and-access-management)
 - [App Service felügyelt identitással rendelkező Key Vault hitelesítés megadása](managed-identity.md)

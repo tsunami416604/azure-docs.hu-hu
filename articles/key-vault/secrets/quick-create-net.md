@@ -7,12 +7,12 @@ ms.date: 03/12/2020
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: 46ffcfbe382a974b2e8cf465f35bf9eff77dbb7e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 355ca9b5a96367bbe84fb8abf998f13032dc004a
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983176"
+ms.lasthandoff: 05/14/2020
+ms.locfileid: "83402522"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v4"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v4)
 
@@ -26,21 +26,21 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
-[API-referenciák dokumentációs](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet) | [könyvtárának forráskód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [-csomagja (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
+[API-referenciák dokumentációja](/dotnet/api/azure.security.keyvault.secrets?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Security.KeyVault.Secrets/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-* A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/2.1).
+* A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/overview)
 
-Ez a rövid útmutató feltételezi, `dotnet`hogy futtatja, az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t és a Windows-parancsokat egy Windows-terminálon (például a [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), a [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)vagy a [Azure Cloud Shell](https://shell.azure.com/)).
+Ez a rövid útmutató feltételezi, hogy futtatja `dotnet` , az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)-t és a Windows-parancsokat egy Windows-terminálon (például a [PowerShell Core](/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-6), a [Windows PowerShell](/powershell/scripting/install/installing-windows-powershell?view=powershell-6)vagy a [Azure Cloud Shell](https://shell.azure.com/)).
 
 ## <a name="setting-up"></a>Beállítás
 
 ### <a name="create-new-net-console-app"></a>Új .NET Console-alkalmazás létrehozása
 
-A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, a nevű `key-vault-console-app`.net-konzol alkalmazást.
+A konzol ablakban a `dotnet new` parancs használatával hozzon létre egy új, a nevű .net-konzol alkalmazást `key-vault-console-app` .
 
 ```console
 dotnet new console -n key-vault-console-app
@@ -97,7 +97,7 @@ New-AzKeyVault -Name <your-unique-keyvault-name> -ResourceGroupName myResourceGr
 
 A felhőalapú .NET-alkalmazások hitelesítésének legegyszerűbb módja a felügyelt identitás; a részletekért tekintse meg a [app Service felügyelt identitás használata a Azure Key Vault eléréséhez](../general/managed-identity.md) című témakört. 
 
-Az egyszerűség kedvéért azonban ez a rövid útmutató egy .NET-konzolos alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. A szolgáltatási elv egyedi nevet igényel a "http://&lt;My-Unique-Service-elven-name&gt;" formátumban.
+Az egyszerűség kedvéért azonban ez a rövid útmutató egy .NET-konzolos alkalmazást hoz létre, amely egy egyszerű szolgáltatásnév és egy hozzáférés-vezérlési házirend használatát igényli. A szolgáltatási elv egyedi nevet igényel a "http:// &lt; My-Unique-Service-elven-name &gt; " formátumban.
 
 Hozzon létre egy szolgáltatási elvet az Azure CLI az [ad SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) parancs használatával:
 
@@ -158,9 +158,9 @@ Set-AzKeyVaultAccessPolicy -VaultName <your-unique-keyvault-name> -ServicePrinci
 
 #### <a name="set-environmental-variables"></a>Környezeti változók beállítása
 
-Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`és. `AZURE_TENANT_ID` használja ezeket a változókat az clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben feljegyzett.
+Az alkalmazás DefaultAzureCredential metódusa három környezeti változóra támaszkodik: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` és `AZURE_TENANT_ID` . használja ezeket a változókat az clientId, a clientSecret és a tenantId értékre, amelyet az [egyszerű szolgáltatásnév létrehozása](#create-a-service-principal) lépésben feljegyzett.
 
-A Key Vault nevét is mentenie kell egy nevű `KEY_VAULT_NAME`környezeti változóként.
+A Key Vault nevét is mentenie kell egy nevű környezeti változóként `KEY_VAULT_NAME` .
 
 ```console
 setx AZURE_CLIENT_ID <your-clientID>
@@ -172,7 +172,7 @@ setx AZURE_TENANT_ID <your-tenantId>
 setx KEY_VAULT_NAME <your-key-vault-name>
 ````
 
-Minden alkalommal, amikor `setx`meghívja a-t, a "sikeres: megadott érték mentése" választ kell kapnia.
+Minden alkalommal, amikor meghívja `setx` a-t, a "sikeres: megadott érték mentése" választ kell kapnia.
 
 ```shell
 AZURE_CLIENT_ID=<your-clientID>
@@ -188,7 +188,7 @@ KEY_VAULT_NAME=<your-key-vault-name>
 
 A .NET-hez készült Azure Key Vault ügyféloldali kódtára lehetővé teszi a kulcsok és a kapcsolódó eszközök, például tanúsítványok és titkos kódok kezelését. Az alábbi kódrészletek megmutatják, hogyan hozhat létre egy ügyfelet, hogyan állíthat be titkos kulcsot, beolvashat egy titkos kulcsot, és törölhet egy titkos kulcsot.
 
-A teljes konzol alkalmazás a következő címen https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-appérhető el:.
+A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app .
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -200,7 +200,7 @@ Adja hozzá a következő irányelveket a kód elejéhez:
 
 ### <a name="authenticate-and-create-a-client"></a>Ügyfél hitelesítése és létrehozása
 
-A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van kibontva, a "https://\<your-key-Vault-name\>. Vault.Azure.net" formátumban.
+A Key Vault hitelesítése és a Key Vault-ügyfél létrehozása a fenti [környezeti változók beállítása](#set-environmental-variables) című lépés környezeti változóktól függ. A kulcstartó neve a Key Vault URI-ra van kibontva, a "https:// \< your-key-Vault-name \> . Vault.Azure.net" formátumban.
 
 [!code-csharp[Directives](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=authenticate)]
 
@@ -226,7 +226,7 @@ Most már lekérheti a korábban beállított értéket az [ügyféllel. GetSecr
 
 [!code-csharp[Get secret](~/samples-key-vault-dotnet-quickstart/key-vault-console-app/Program.cs?name=getsecret)]
 
-A titkos kód most már mentve van `secret.Value`.
+A titkos kód most már mentve van `secret.Value` .
 
 ### <a name="delete-a-secret"></a>Titkos kulcs törlése
 
@@ -308,7 +308,7 @@ namespace key_vault_console_app
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy titkos kulcsot, és lekérte a titkos kulcsot. Tekintse [meg a teljes konzol alkalmazást a githubon](https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app).
 
