@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: overview
-ms.openlocfilehash: d84a0190e13d7bb7664e8792e0047338fe4bf5e2
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 04f90292b74593dece5f7e54268907e184fd084c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982691"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592763"
 ---
 # <a name="what-is-custom-translator"></a>Mi a Custom Translator?
 
@@ -24,17 +24,17 @@ Az [Egyéni fordítóval](https://portal.customtranslator.azure.ai) létrehozott
 
 Az egyéni Translator több mint három tucat nyelvet támogat, és közvetlenül a NMT elérhető nyelvekhez nyújt térképeket. A teljes listát lásd: [Microsoft Translator languages](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
-## <a name="features"></a>Szolgáltatások
+## <a name="features"></a>Funkciók
 
 Az egyéni Translator különböző funkciókat biztosít az egyéni fordítási rendszerek létrehozásához, majd ezt követően azt is elérheti.
 
-|Szolgáltatás  |Leírás  |
+|Funkció  |Leírás  |
 |---------|---------|
 |[A neurális gépi fordítási technológia kihasználása](https://www.microsoft.com/translator/blog/2016/11/15/microsoft-translator-launching-neural-network-based-translations-for-all-its-speech-languages/)     |  Fejlessze a fordítást az egyéni fordító által biztosított neurális gépi fordítással (NMT).       |
 |[Az üzleti terminológiát ismerő rendszerek létrehozása](what-are-parallel-documents.md)     |  A párhuzamos dokumentumok segítségével testre szabhatja és felépítheti a fordítási rendszereket, és megismerheti a saját üzleti és iparági terminológiáját.       |
 |[Modellek készítése szótár használatával](what-is-dictionary.md)     |   Ha nem rendelkezik betanítási adatkészlettel, a modelleket csak a szótárakból álló adattal lehet betanítani.       |
 |[Együttműködés másokkal](how-to-manage-settings.md#share-your-workspace)     |   Együttműködik a csapatával, és megoszthatja a munkáját a különböző személyekkel.     |
-|[Hozzáférés az egyéni fordítási modellhez](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Az egyéni fordítási modellt a meglévő alkalmazások/programok a Microsoft Translator Text API v3 segítségével érhetik el.       |
+|[Hozzáférés az egyéni fordítási modellhez](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)     |  Az egyéni fordítási modellt a meglévő alkalmazások/programok bármikor elérhetővé teheti a Translator v3-on keresztül.       |
 
 ## <a name="get-better-translations"></a>Jobb fordítások
 
@@ -54,11 +54,11 @@ A biztonságos [Egyéni Translator](https://portal.customtranslator.azure.ai) po
 
 Az [Egyéni fordító](https://portal.customtranslator.azure.ai) programozott módon is elérhető egy dedikált API-n keresztül (jelenleg előzetes [verzióban](https://custom-api.cognitive.microsofttranslator.com/swagger/) érhető el). Az API lehetővé teszi, hogy a felhasználók a saját alkalmazáson vagy webszolgáltatáson keresztül rendszeresen kezeljék a képzések létrehozását vagy frissítését.
 
-A tartalmak fordítására szolgáló egyéni modell használatának díja a felhasználó Translator Text API díjszabási szintjétől függ. A díjszabási csomag részleteiért tekintse meg a Cognitive Services [Translator Text API díjszabási lapját](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .
+A tartalmak fordítására szolgáló egyéni modell használatának díja a felhasználó Translator díjszabási szintjétől függ. A díjszabási csomagra vonatkozó részletekért tekintse meg a Cognitive Services [Translator díjszabási weboldalát](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/) .
 
 ## <a name="securely-translate-anytime-anywhere-on-all-your-apps-and-services"></a>Biztonságosan lefordítható bármikor, bárhol az alkalmazásokon és szolgáltatásokon
 
-Az egyéni rendszerek zökkenőmentesen érhetők el és integrálhatók bármilyen termék-vagy üzleti munkafolyamatba, illetve bármely eszközön a Microsoft Translator Text API a szabványos REST-technológián keresztül.
+Az egyéni rendszerek zökkenőmentesen érhetők el és integrálhatók bármilyen termék-vagy üzleti munkafolyamatba, illetve bármilyen eszközön a fordítón keresztül a szabványos REST-technológián keresztül.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,7 +1,7 @@
 ---
-title: Vissza N-legjobb fordítások – Translator Text
+title: Vissza N-Best translations-Translator
 titleSuffix: Azure Cognitive Services
-description: N-legjobb fordítások visszaadása a Translator Text API használatával.
+description: N-legjobb fordítások visszaküldése a Translator használatával.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
-ms.openlocfilehash: eff25877165ac365e0af77651147fcdd1eebe294
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837242"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592678"
 ---
 # <a name="how-to-return-n-best-translations"></a>N – legjobb fordítások visszaküldése
 
 > [!NOTE]
-> Ez a metódus elavult. A Translator Text API 3.0-s verziójában nem érhető el.
+> Ez a metódus elavult. A fordító V 3.0-s verziójában nem érhető el.
 
-A Microsoft Translator API GetTranslations () és GetTranslationsArray () metódusa egy opcionális logikai jelzőt ("IncludeMultipleMTAlternatives") tartalmaz.
+A fordító GetTranslations () és GetTranslationsArray () metódusa egy opcionális logikai jelzőt ("IncludeMultipleMTAlternatives") tartalmaz.
 A metódus olyan maxTranslations alternatívákat ad vissza, amelyekben a Delta a Translator Engine N-Best listájából származik.
 
 Az aláírás:

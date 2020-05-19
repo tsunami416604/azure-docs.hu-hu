@@ -1,7 +1,7 @@
 ---
-title: Szöveg átalakítása – Translator Text API
+title: Szöveg átalakítása – Translator
 titleSuffix: Azure Cognitive Services
-description: Szöveg átalakítása a Translator Text API használatával.
+description: Szöveg átalakítása a fordító használatával.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,17 +10,17 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 533f09b09b7f5899833669b5f0ad4ffa5efa3a43
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba8cf9a25a12ecc261845477c4e32a86f585906e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "68594909"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592202"
 ---
 # <a name="how-to-use-the-transformtext-method"></a>Az TransformText metódus használata
 
 > [!NOTE]
-> Ez a metódus elavult. A Translator Text API 3.0-s verziójában nem érhető el.
+> Ez a metódus elavult. A fordító V 3.0-s verziójában nem érhető el.
 
 A TransformText metódus a közösségi média szöveges normalizáló funkciója, amely a bemenet normalizált formáját adja vissza. A metódus a gépi fordítás vagy más olyan alkalmazások előfeldolgozási lépéseként használható, amelyek olyan tiszta bemeneti szöveget várnak, amely nem szerepel általában a közösségi médiában vagy a felhasználó által létrehozott tartalomban. A függvény jelenleg csak angol nyelvű bemenettel működik.
 
@@ -35,7 +35,7 @@ A metódus egy REST-alapú szolgáltatás, amely a GET over HTTP-t használja. A
 | category | Nem **kötelező** A fordítás kategóriáját vagy tartományát tartalmazó karakterlánc. Ez a paraméter csak az alapértelmezett **általános**beállítást támogatja.|
 | mondatot | **Kötelező megadni** A kijavítani kívánt mondat. |
 
-## <a name="return-value"></a>Visszatérítési érték
+## <a name="return-value"></a>Visszatérési érték
 
 A visszatérési érték megadja az átalakított mondatot.
 

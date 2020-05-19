@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2f69069b0c62f1e96c16441e99fbadac45728743
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199430"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591284"
 ---
 # <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Külső B2B-együttműködés engedélyezése és a vendégek meghívójának kezelése
 
@@ -37,7 +37,7 @@ Alapértelmezés szerint az összes felhasználó, köztük a vendégek is megh�
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) bérlői rendszergazdaként.
 2. Válassza a **Azure Active Directory**lehetőséget.
-3. Válassza a **szervezeti kapcsolatok**  >  **beállításai** lehetőséget (vagy válassza ki a **külső identitások**  >  **külső együttműködési beállításokat**).
+3. Külső **identitások**  >  **külső együttműködési beállítások**kiválasztása.
 6. A **külső együttműködési beállítások** lapon válassza ki az engedélyezni kívánt házirendeket.
 
    ![Külső együttműködési beállítások](./media/delegate-invitations/control-who-to-invite.png)

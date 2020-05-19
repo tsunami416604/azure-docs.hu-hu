@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: a Text-Translator Text API fordításához, elkészítéséhez és elemzéséhez használandó lombik-alkalmazás létrehozása'
+title: 'Oktatóanyag: a Text Translator fordításához, elkészítéséhez és elemzéséhez használandó lombik-alkalmazás létrehozása'
 titleSuffix: Azure Cognitive Services
 description: Ebben az oktatóanyagban egy lombik-alapú webalkalmazást fog létrehozni szöveg fordításához, a hangulat elemzéséhez és a lefordított szövegeknek a beszédbe fordításához.
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 5034dafa015054e9e9d0804088f345929815b974
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 955476eefc7575edb90634ce305bbebdf62e2371
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397936"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592355"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>Oktatóanyag: lombik-alkalmazás létrehozása az Azure Cognitive Services
 
@@ -27,7 +27,7 @@ Az oktatóanyag a következőket ismerteti:
 > * Azure-előfizetési kulcsok beszerzése
 > * A fejlesztési környezet beállítása és a függőségek telepítése
 > * Lombik-alkalmazás létrehozása
-> * Szöveg lefordítása a Translator Text API használatával
+> * A fordító használata szöveg fordításához
 > * A Text Analytics használatával elemezheti a bemeneti szöveg és a fordítások pozitív/negatív hangulatát
 > * Lefordított szöveg átalakítása szintetizált beszédre a Speech Services használatával
 > * A lombik alkalmazás helyi futtatása
@@ -52,16 +52,16 @@ Tekintsük át az oktatóanyaghoz szükséges szoftvereket és előfizetési kul
 * [Git-eszközök](https://git-scm.com/downloads)
 * IDE-vagy szövegszerkesztő, például a [Visual Studio Code](https://code.visualstudio.com/) vagy az [Atom](https://atom.io/)  
 * [Chrome](https://www.google.com/chrome/browser/) vagy [Firefox](https://www.mozilla.org/firefox)
-* Egy **Translator Text** előfizetési kulcs (vegye figyelembe, hogy a régió kiválasztásához nem szükséges.)
+* **Fordítói** előfizetési kulcs (vegye figyelembe, hogy a régió kiválasztásához nem szükséges.)
 * **Text Analytics** előfizetési kulcs az **USA nyugati** régiójában.
 * Egy **Speech Services** -előfizetési kulcs az **USA nyugati** régiójában.
 
 ## <a name="create-an-account-and-subscribe-to-resources"></a>Hozzon létre egy fiókot, és fizessen elő az erőforrásokra
 
 Ahogy korábban említettük, három előfizetési kulcsra lesz szüksége ehhez az oktatóanyaghoz. Ez azt jelenti, hogy létre kell hoznia egy erőforrást az Azure-fiókjában a következőkhöz:
-* Fordítói szöveg
-* Szövegelemzés
-* Beszédszolgáltatások
+* Translator
+* Text Analytics
+* Beszédfelismerési szolgáltatások
 
 Erőforrások létrehozásához használja [a Cognitive Services fiók létrehozása a Azure Portalban](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) című témakört.
 
@@ -87,7 +87,7 @@ A lombik-Webalkalmazás létrehozása előtt létre kell hoznia egy munkakönyvt
 
 ### <a name="create-and-activate-your-virtual-environment-with-virtualenv"></a>Virtuális környezet létrehozása és aktiválása a`virtualenv`
 
-Hozzunk létre egy virtuális környezetet a lombik-alkalmazáshoz `virtualenv`a használatával. A virtuális környezet használatával gondoskodhat arról, hogy tiszta környezetet biztosítson a működéséhez.
+Hozzunk létre egy virtuális környezetet a lombik-alkalmazáshoz a használatával `virtualenv` . A virtuális környezet használatával gondoskodhat arról, hogy tiszta környezetet biztosítson a működéséhez.
 
 1. A munkakönyvtárában futtassa ezt a parancsot egy virtuális környezet létrehozásához: **MacOS/Linux:**
    ```
@@ -110,9 +110,9 @@ Hozzunk létre egy virtuális környezetet a lombik-alkalmazáshoz `virtualenv`a
    | | Parancssor | `venv\Scripts\activate.bat` |
    | | PowerShell | `venv\Scripts\Activate.ps1` |
 
-   A parancs futtatása után a parancssori vagy a terminál-munkamenetnek a `venv`következővel kell megjelennie:.
+   A parancs futtatása után a parancssori vagy a terminál-munkamenetnek a következővel kell megjelennie: `venv` .
 
-3. A munkamenetet bármikor inaktiválhatja úgy, hogy beírja a következőt a parancssorba vagy `deactivate`a terminálba:.
+3. A munkamenetet bármikor inaktiválhatja úgy, hogy beírja a következőt a parancssorba vagy a terminálba: `deactivate` .
 
 > [!NOTE]
 > A Python kiterjedt dokumentációval rendelkezik a virtuális környezetek létrehozásához és kezeléséhez: [virtualenv](https://virtualenv.pypa.io/en/latest/).
@@ -162,7 +162,7 @@ Ebben a szakaszban egy olyan barebone lombik-alkalmazást fog létrehozni, amely
 
 ### <a name="what-is-a-flask-route"></a>Mi az a lombik-útvonal?
 
-Lássunk egy percet, hogy beszéljünk az "[útvonalakról](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route)". Az Útválasztás egy adott függvény URL-címének kötésére szolgál. A lombik Route dekoratőr használatával regisztrálja a függvényeket adott URL-címekre. Ha például egy felhasználó a webalkalmazás gyökerére (`/`) navigál, `index.html` a rendszer megjeleníti.  
+Lássunk egy percet, hogy beszéljünk az "[útvonalakról](http://flask.pocoo.org/docs/1.0/api/#flask.Flask.route)". Az Útválasztás egy adott függvény URL-címének kötésére szolgál. A lombik Route dekoratőr használatával regisztrálja a függvényeket adott URL-címekre. Ha például egy felhasználó a webalkalmazás gyökerére () navigál `/` , a `index.html` rendszer megjeleníti.  
 
 ```python
 @app.route('/')
@@ -178,13 +178,13 @@ def about():
     return render_template('about.html')
 ```
 
-Ez a kód biztosítja, hogy amikor egy felhasználó navigál `http://your-web-app.com/about` a `about.html` fájl megjelenítéséhez,
+Ez a kód biztosítja, hogy amikor egy felhasználó navigál a `http://your-web-app.com/about` `about.html` fájl megjelenítéséhez,
 
 Habár ezek a minták bemutatják, hogyan lehet HTML-lapokat megjeleníteni egy felhasználó számára, az útvonalak az API-k meghívására is használhatók gomb lenyomásakor, vagy tetszőleges számú művelet elvégzése anélkül, hogy el kellene érni a kezdőlapot. Ez a művelet akkor jelenik meg, ha útvonalakat hoz létre a fordításhoz, a hangulathoz és a beszédfelismeréshez.
 
 ### <a name="get-started"></a>Bevezetés
 
-1. Nyissa meg a projektet az IDE-ben, majd hozzon létre egy nevű `app.py` fájlt a munkakönyvtár gyökerében. Ezután másolja be `app.py` a kódot a következőre, és mentse:
+1. Nyissa meg a projektet az IDE-ben, majd hozzon létre egy nevű fájlt `app.py` a munkakönyvtár gyökerében. Ezután másolja be a kódot a következőre, `app.py` és mentse:
 
    ```python
    from flask import Flask, render_template, url_for, jsonify, request
@@ -197,9 +197,9 @@ Habár ezek a minták bemutatják, hogyan lehet HTML-lapokat megjeleníteni egy 
        return render_template('index.html')
    ```
 
-   Ez a kódrészlet azt jelzi, hogy az `index.html` alkalmazás minden alkalommal megjelenik, amikor a felhasználó a webalkalmazás gyökerére`/`navigál ().
+   Ez a kódrészlet azt jelzi, hogy az alkalmazás `index.html` minden alkalommal megjelenik, amikor a felhasználó a webalkalmazás gyökerére navigál ( `/` ).
 
-2. Ezután hozzuk létre a webes alkalmazás előtér-szolgáltatását. Hozzon létre egy `index.html` nevű fájlt `templates` a címtárban. Ezután másolja be a kódot `templates/index.html`a alkalmazásba.
+2. Ezután hozzuk létre a webes alkalmazás előtér-szolgáltatását. Hozzon létre egy nevű fájlt `index.html` a `templates` címtárban. Ezután másolja be a kódot a alkalmazásba `templates/index.html` .
 
    ```html
    <!doctype html>
@@ -245,17 +245,17 @@ Habár ezek a minták bemutatják, hogyan lehet HTML-lapokat megjeleníteni egy 
 
 Most, hogy már van egy ötlete arról, hogyan működik egy egyszerű lombik alkalmazás, lássuk:
 
-* Néhány Python írása a Translator Text API meghívására és válasz visszaküldésére
+* Néhány Python írása a fordító meghívására és válasz visszaküldésére
 * Lombik-útvonal létrehozása a Python-kód meghívásához
 * A HTML-fájl frissítése egy olyan résszel, amely szövegbeviteli és fordítási, nyelvi választó és fordítási gomb
 * JavaScript írása, amely lehetővé teszi a felhasználók számára, hogy a HTML-ből használhassák a lombik alkalmazását
 
-### <a name="call-the-translator-text-api"></a>A Translator Text API meghívása
+### <a name="call-the-translator"></a>A fordító meghívása
 
-Az első szükséges, hogy egy függvényt írjon a Translator Text API meghívásához. Ez a függvény két argumentumot fogad `text_input` : `language_output`és. Ezt a függvényt akkor hívja meg a rendszer, amikor egy felhasználó megnyomja az alkalmazás fordítási gombját. A HTML-ben a szöveg terület lesz elküldve `text_input`, a HTML-ben pedig a nyelv kiválasztási értéke lesz `language_output`.
+Az első szükséges, hogy egy függvényt írjon a fordító meghívásához. Ez a függvény két argumentumot fogad: `text_input` és `language_output` . Ezt a függvényt akkor hívja meg a rendszer, amikor egy felhasználó megnyomja az alkalmazás fordítási gombját. A HTML-ben a szöveg terület lesz elküldve `text_input` , a HTML-ben pedig a nyelv kiválasztási értéke lesz `language_output` .
 
-1. Kezdjük azzal, hogy létrehozunk egy nevű `translate.py` fájlt a munkakönyvtár gyökerében.
-2. Ezután adja hozzá ezt a kódot `translate.py`a következőhöz:. Ez a függvény két argumentumot `text_input` vesz `language_output`igénybe: és.
+1. Kezdjük azzal, hogy létrehozunk egy nevű fájlt `translate.py` a munkakönyvtár gyökerében.
+2. Ezután adja hozzá ezt a kódot a következőhöz: `translate.py` . Ez a függvény két argumentumot vesz igénybe: `text_input` és `language_output` .
    ```python
    import os, requests, uuid, json
 
@@ -288,26 +288,26 @@ Az első szükséges, hogy egy függvényt írjon a Translator Text API meghív�
        response = requests.post(constructed_url, headers=headers, json=body)
        return response.json()
    ```
-3. Adja hozzá Translator Text előfizetési kulcsát, és mentse.
+3. Adja hozzá a Translator előfizetés kulcsát, és mentse.
 
 ### <a name="add-a-route-to-apppy"></a>Útvonal hozzáadása a következőhöz`app.py`
 
-Ezután létre kell hoznia egy útvonalat a lombik alkalmazásban, amely meghívja `translate.py`a-t. Ez az útvonal akkor lesz meghívva, amikor egy felhasználó megnyomja az alkalmazás fordítás gombját.
+Ezután létre kell hoznia egy útvonalat a lombik alkalmazásban, amely meghívja a-t `translate.py` . Ez az útvonal akkor lesz meghívva, amikor egy felhasználó megnyomja az alkalmazás fordítás gombját.
 
-Ehhez az alkalmazáshoz az útvonal fogadja `POST` a kérelmeket. Ennek az az oka, hogy a függvény lefordítja a szöveget, és a fordításhoz egy kimeneti nyelvet vár.
+Ehhez az alkalmazáshoz az útvonal fogadja a `POST` kérelmeket. Ennek az az oka, hogy a függvény lefordítja a szöveget, és a fordításhoz egy kimeneti nyelvet vár.
 
-A lombik segítő függvények segítséget nyújtanak az egyes kérések elemzéséhez és kezeléséhez. A megadott kódban a `get_json()` `POST` kérelem JSON-ként adja vissza az adatait. Ezután a `data['text']` és `data['to']`a használatával a szöveges és a kimeneti nyelvi értékeket adja `get_translation()` át a függvénynek `translate.py`. Az utolsó lépés a válasz JSON-ként való visszaküldése, mivel ezeket az adattartalmat a webalkalmazásban kell megjeleníteni.
+A lombik segítő függvények segítséget nyújtanak az egyes kérések elemzéséhez és kezeléséhez. A megadott kódban a `get_json()` kérelem JSON-ként adja vissza az adatait `POST` . Ezután `data['text']` a és `data['to']` a használatával a szöveges és a kimeneti nyelvi értékeket adja át a `get_translation()` függvénynek `translate.py` . Az utolsó lépés a válasz JSON-ként való visszaküldése, mivel ezeket az adattartalmat a webalkalmazásban kell megjeleníteni.
 
 A következő részekben ezt a folyamatot fogja megismételni, ahogy az adatelemzési és-beszédfelismerési útvonalakat hoz létre.
 
-1. Nyissa meg `app.py` és keresse meg az importálási utasítást `app.py` a tetején, és adja hozzá a következő sort:
+1. Nyissa meg `app.py` és keresse meg az importálási utasítást a tetején, `app.py` és adja hozzá a következő sort:
 
    ```python
    import translate
    ```
-   A lombik-alkalmazás most már a által elérhető módszert `translate.py`is használhatja.
+   A lombik-alkalmazás most már a által elérhető módszert is használhatja `translate.py` .
 
-2. Másolja ezt a kódot a végére `app.py` , és mentse a következőt:
+2. Másolja ezt a kódot a végére, és mentse a következőt `app.py` :
 
    ```python
    @app.route('/translate-text', methods=['POST'])
@@ -329,7 +329,7 @@ Most, hogy van egy függvény a szöveg fordításához, és egy útvonal a lomb
 * Egy írásvédett szövegmezőt biztosít, ahol a fordítási kimenet megjelenik.
 * Az oktatóanyagban később a fájlhoz felvenni kívánt, a hangulat elemzéséhez és a Speech szintézishez használt helyőrzőket tartalmazza.
 
-Frissítsen `index.html`.
+Frissítsen `index.html` .
 
 1. Nyissa meg `index.html` a következő kódot, és keresse meg a megjegyzéseket:
    ```html
@@ -412,14 +412,14 @@ A következő lépés a JavaScript írása. Ez a híd a HTML és a lombik útvon
 
 ### <a name="create-mainjs"></a>Létrehozása`main.js`  
 
-A `main.js` fájl a HTML-és a lombik-útvonal közötti híd. Az alkalmazás a jQuery, Ajax és XMLHttpRequest kombinációját fogja használni a tartalom megjelenítéséhez, és kéréseket tesz `POST` a lombik-útvonalakhoz.
+A `main.js` fájl a HTML-és a lombik-útvonal közötti híd. Az alkalmazás a jQuery, Ajax és XMLHttpRequest kombinációját fogja használni a tartalom megjelenítéséhez, és `POST` kéréseket tesz a lombik-útvonalakhoz.
 
-Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a szövegmező tartalmát és a Nyelvi választót a rendszer a változóhoz rendeli hozzá, majd a kérelemben a következőre `translate-text`küldi át:.
+Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a szövegmező tartalmát és a Nyelvi választót a rendszer a változóhoz rendeli hozzá, majd a kérelemben a következőre küldi át: `translate-text` .
 
 A kód ezután megismétli a választ, és frissíti a HTML-t a fordítás, az észlelt nyelv és a megbízhatósági pontszám alapján.
 
-1. Az IDE-ből hozzon létre egy `main.js` nevű fájlt `static/scripts` a címtárban.
-2. A kód másolása a `static/scripts/main.js`következőbe:
+1. Az IDE-ből hozzon létre egy nevű fájlt `main.js` a `static/scripts` címtárban.
+2. A kód másolása a következőbe `static/scripts/main.js` :
    ```javascript
    //Initiate jQuery on load.
    $(function() {
@@ -485,10 +485,10 @@ Ebben a szakaszban néhány dolgot kell tennie:
 
 ### <a name="call-the-text-analytics-api"></a>Szövegelemzési API hívása
 
-Írjon egy függvényt a Text Analytics API meghívásához. A függvény négy argumentumot fogad: `input_text`, `input_language` `output_text`, és `output_language`. Ezt a függvényt akkor hívja meg a rendszer, amikor egy felhasználó megnyomja az alkalmazásban az érzelmi elemzés futtatása gombot. A felhasználó által a szövegmezőből és a nyelvi választóból biztosított adatok, valamint az észlelt nyelv és a fordítási kimenet minden kérelem esetében elérhető. A válasz objektum a forrás és a fordítás hangulati pontszámait tartalmazza. A következő részekben írni fog néhány JavaScriptet, hogy elemezze a választ, és használja azt az alkalmazásban. Egyelőre a Text Analytics API hívására koncentrálunk.
+Írjon egy függvényt a Text Analytics API meghívásához. A függvény négy argumentumot fogad: `input_text` , `input_language` , `output_text` és `output_language` . Ezt a függvényt akkor hívja meg a rendszer, amikor egy felhasználó megnyomja az alkalmazásban az érzelmi elemzés futtatása gombot. A felhasználó által a szövegmezőből és a nyelvi választóból biztosított adatok, valamint az észlelt nyelv és a fordítási kimenet minden kérelem esetében elérhető. A válasz objektum a forrás és a fordítás hangulati pontszámait tartalmazza. A következő részekben írni fog néhány JavaScriptet, hogy elemezze a választ, és használja azt az alkalmazásban. Egyelőre a Text Analytics API hívására koncentrálunk.
 
-1. Hozzon létre egy nevű `sentiment.py` fájlt a munkakönyvtár gyökerében.
-2. Ezután adja hozzá ezt a kódot `sentiment.py`a következőhöz:.
+1. Hozzon létre egy nevű fájlt `sentiment.py` a munkakönyvtár gyökerében.
+2. Ezután adja hozzá ezt a kódot a következőhöz: `sentiment.py` .
    ```python
    import os, requests, uuid, json
 
@@ -534,16 +534,16 @@ Ebben a szakaszban néhány dolgot kell tennie:
 
 ### <a name="add-a-route-to-apppy"></a>Útvonal hozzáadása a következőhöz`app.py`
 
-Hozzon létre egy útvonalat a lombik alkalmazásban, amely `sentiment.py`meghívja a-t. Ez az útvonal akkor lesz meghívva, amikor egy felhasználó megnyomja az alkalmazásban az érzelmi elemzés futtatása gombot. A fordítási útvonalhoz hasonlóan ez az útvonal fogadja `POST` a kéréseket, mivel a függvény argumentumokat vár.
+Hozzon létre egy útvonalat a lombik alkalmazásban, amely meghívja a-t `sentiment.py` . Ez az útvonal akkor lesz meghívva, amikor egy felhasználó megnyomja az alkalmazásban az érzelmi elemzés futtatása gombot. A fordítási útvonalhoz hasonlóan ez az útvonal fogadja a `POST` kéréseket, mivel a függvény argumentumokat vár.
 
-1. Nyissa meg `app.py` és keresse meg az importálási utasítást `app.py` a tetején, és frissítse a következőt:
+1. Nyissa meg `app.py` és keresse meg az importálási utasítást a tetején, és frissítse a következőt `app.py` :
 
    ```python
    import translate, sentiment
    ```
-   A lombik-alkalmazás most már a által elérhető módszert `sentiment.py`is használhatja.
+   A lombik-alkalmazás most már a által elérhető módszert is használhatja `sentiment.py` .
 
-2. Másolja ezt a kódot a végére `app.py` , és mentse a következőt:
+2. Másolja ezt a kódot a végére, és mentse a következőt `app.py` :
    ```python
    @app.route('/sentiment-analysis', methods=['POST'])
    def sentiment_analysis():
@@ -583,13 +583,13 @@ Most, hogy már rendelkezik egy, a hangulat-elemzés futtatására szolgáló f�
 
 ### <a name="update-mainjs"></a>A `main.js` frissítése
 
-Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a szövegmező tartalmát és a Nyelvi választót a rendszer a változókhoz rendeli hozzá, majd az `sentiment-analysis` útvonalra irányuló kérésben továbbítja azokat.
+Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a szövegmező tartalmát és a Nyelvi választót a rendszer a változókhoz rendeli hozzá, majd az útvonalra irányuló kérésben továbbítja azokat `sentiment-analysis` .
 
 A kód ezután megismétli a választ, és frissíti a HTML-t az érzelmi pontszámokkal.
 
-1. Az IDE-ből hozzon létre egy `main.js` nevű fájlt `static` a címtárban.
+1. Az IDE-ből hozzon létre egy nevű fájlt `main.js` a `static` címtárban.
 
-2. A kód másolása a `static/scripts/main.js`következőbe:
+2. A kód másolása a következőbe `static/scripts/main.js` :
    ```javascript
    //Run sentinment analysis on input and translation.
    $("#sentiment-analysis").on("click", function(e) {
@@ -669,11 +669,11 @@ Ebben a szakaszban néhány dolgot kell tennie:
 
 ### <a name="call-the-text-to-speech-api"></a>A szöveg és a beszéd közötti API meghívása
 
-Írjunk egy függvényt szöveg-beszéd átalakításra. Ez a függvény két argumentumot fogad `input_text` : `voice_font`és. Ezt a függvényt akkor hívja meg a rendszer, amikor egy felhasználó megnyomja az alkalmazás szöveg-beszéd konvertálása gombját. `input_text`a szöveg `voice_font` lefordítására irányuló hívás által visszaadott fordítási kimenet a HTML-ben a hangbetűkészletek választójának értéke.
+Írjunk egy függvényt szöveg-beszéd átalakításra. Ez a függvény két argumentumot fogad: `input_text` és `voice_font` . Ezt a függvényt akkor hívja meg a rendszer, amikor egy felhasználó megnyomja az alkalmazás szöveg-beszéd konvertálása gombját. `input_text`a szöveg lefordítására irányuló hívás által visszaadott fordítási kimenet a `voice_font` HTML-ben a hangbetűkészletek választójának értéke.
 
-1. Hozzon létre egy nevű `synthesize.py` fájlt a munkakönyvtár gyökerében.
+1. Hozzon létre egy nevű fájlt `synthesize.py` a munkakönyvtár gyökerében.
 
-2. Ezután adja hozzá ezt a kódot `synthesize.py`a következőhöz:.
+2. Ezután adja hozzá ezt a kódot a következőhöz: `synthesize.py` .
    ```Python
    import os, requests, time
    from xml.etree import ElementTree
@@ -728,16 +728,16 @@ Ebben a szakaszban néhány dolgot kell tennie:
 
 ### <a name="add-a-route-to-apppy"></a>Útvonal hozzáadása a következőhöz`app.py`
 
-Hozzon létre egy útvonalat a lombik alkalmazásban, amely `synthesize.py`meghívja a-t. Ez az útvonal akkor lesz meghívva, amikor egy felhasználó megnyomja az alkalmazás szöveg-beszéd konvertálása gombját. A fordítási és a hangulati elemzési útvonalakhoz hasonlóan ez az útvonal fogadja `POST` a kéréseket, mivel a függvény két argumentumot vár: a szintetizált szöveg és a lejátszás hangbetűkészlete.
+Hozzon létre egy útvonalat a lombik alkalmazásban, amely meghívja a-t `synthesize.py` . Ez az útvonal akkor lesz meghívva, amikor egy felhasználó megnyomja az alkalmazás szöveg-beszéd konvertálása gombját. A fordítási és a hangulati elemzési útvonalakhoz hasonlóan ez az útvonal fogadja a `POST` kéréseket, mivel a függvény két argumentumot vár: a szintetizált szöveg és a lejátszás hangbetűkészlete.
 
-1. Nyissa meg `app.py` és keresse meg az importálási utasítást `app.py` a tetején, és frissítse a következőt:
+1. Nyissa meg `app.py` és keresse meg az importálási utasítást a tetején, és frissítse a következőt `app.py` :
 
    ```python
    import translate, sentiment, synthesize
    ```
-   A lombik-alkalmazás most már a által elérhető módszert `synthesize.py`is használhatja.
+   A lombik-alkalmazás most már a által elérhető módszert is használhatja `synthesize.py` .
 
-2. Másolja ezt a kódot a végére `app.py` , és mentse a következőt:
+2. Másolja ezt a kódot a végére, és mentse a következőt `app.py` :
 
    ```Python
    @app.route('/text-to-speech', methods=['POST'])
@@ -836,12 +836,12 @@ Most, hogy már van egy függvénye szöveg-beszéd átalakításra, és egy út
 
 ### <a name="update-mainjs"></a>A `main.js` frissítése
 
-Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a fordítást és a hangbetűkészletet rendeli hozzá a rendszer a változóhoz, majd az `text-to-speech` útvonalra irányuló kérésben továbbítja azokat.
+Az alábbi kódban a HTML-ből származó tartalmat használjuk a lombik útvonalára vonatkozó kérelem létrehozásához. Pontosabban a fordítást és a hangbetűkészletet rendeli hozzá a rendszer a változóhoz, majd az útvonalra irányuló kérésben továbbítja azokat `text-to-speech` .
 
 A kód ezután megismétli a választ, és frissíti a HTML-t az érzelmi pontszámokkal.
 
-1. Az IDE-ből hozzon létre egy `main.js` nevű fájlt `static` a címtárban.
-2. A kód másolása a `static/scripts/main.js`következőbe:
+1. Az IDE-ből hozzon létre egy nevű fájlt `main.js` a `static` címtárban.
+2. A kód másolása a következőbe `static/scripts/main.js` :
    ```javascript
    // Convert text-to-speech
    $("#text-to-speech").on("click", function(e) {
@@ -873,7 +873,7 @@ A kód ezután megismétli a választ, és frissíti a HTML-t az érzelmi pontsz
    });
    // Code for automatic language selection goes here.
    ```
-3. Már majdnem kész. Az utolsó teendő, hogy egy kód `main.js` hozzáadásával automatikusan kijelöl egy hangbetűkészletet a fordításhoz kiválasztott nyelv alapján. Kód hozzáadása a `main.js`következőhöz:
+3. Már majdnem kész. Az utolsó teendő, hogy egy kód hozzáadásával `main.js` automatikusan kijelöl egy hangbetűkészletet a fordításhoz kiválasztott nyelv alapján. Kód hozzáadása a következőhöz `main.js` :
    ```javascript
    // Automatic voice font selection based on translation output.
    $('select[id="select-language"]').change(function(e) {
@@ -961,6 +961,6 @@ A projekt forráskódja elérhető a [githubon](https://github.com/MicrosoftTran
 
 ## <a name="next-steps"></a>További lépések
 
-* [Translator Text API-referencia](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
+* [Fordítói dokumentáció](https://docs.microsoft.com/azure/cognitive-services/Translator/reference/v3-0-reference)
 * [Text Analytics API-referencia](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
 * [Szöveg – beszéd API-hivatkozás](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-text-to-speech)

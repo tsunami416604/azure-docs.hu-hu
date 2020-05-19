@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1ca4ff3ed35371fe7454c242da8c9107badc659
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6a1a743f313ca4159ce4ef03413a94ec25bb8fae
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199529"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591233"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
 
@@ -90,7 +90,7 @@ Most be kell állítania a Google ügyfél-azonosítót és az ügyfél titkát,
 
 #### <a name="to-configure-google-federation-in-the-azure-ad-portal"></a>A Google Federation konfigurálása az Azure AD-portálon 
 1. Lépjen a [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok** (vagy **külső identitások**) lehetőséget.
+2. Válassza a **külső identitások**lehetőséget.
 3. Válassza a **minden identitás szolgáltató**lehetőséget, majd kattintson a **Google** gombra.
 4. Adjon meg egy nevet. Ezután adja meg a korábban beszerzett ügyfél-azonosítót és az ügyfél-titkot. Kattintson a **Mentés** gombra. 
 
@@ -112,7 +112,7 @@ A Google összevonási telepítőt törölheti. Ha így tesz, a Google vendég f
  
 ### <a name="to-delete-google-federation-in-the-azure-ad-portal"></a>A Google Federation törlése az Azure AD-portálon: 
 1. Lépjen a [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok** (vagy **külső identitások**) lehetőséget.
+2. Válassza a **külső identitások**lehetőséget.
 3. Válassza ki **az összes identitás szolgáltatót**.
 4. A **Google** sorban válassza a helyi menüt (**...**), majd válassza a **Törlés**lehetőséget. 
    

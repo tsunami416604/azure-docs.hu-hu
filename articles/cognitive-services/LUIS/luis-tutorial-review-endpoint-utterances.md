@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban a Luis nem biztos, hogy a Luis HTTP-végpo
 services: cognitive-services
 ms.topic: tutorial
 ms.date: 04/01/2020
-ms.openlocfilehash: 307c18d3326cb1a64b884463a571985a015834ed
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 32d43b36910c8fbfd60463f4062b6a00b9272fdb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548729"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592576"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban a Luis HTTPS-végponton keresztül fogadott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejlesztheti az alkalmazás-előrejelzéseket, hogy a LUIS nem biztos benne. Tekintse át a végpontok hosszúságú kimondott szöveg az ütemezett LUIS-karbantartás rendszeres részeként.
@@ -22,7 +22,7 @@ Ez a felülvizsgálati folyamat lehetővé teszi a LUIS számára az alkalmazás
 
 A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavíthatja a kimondott szöveg előrejelzett szándékát.
 
-**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Az oktatóanyag a következőket ismerteti:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -33,11 +33,11 @@ A végponti kimondott szövegek áttekintésével ellenőrizheti vagy kijavítha
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="import-example-app"></a>Alkalmazás importálása – példa
+## <a name="download-json-file-for-app"></a>Alkalmazáshoz tartozó JSON-fájl letöltése
 
-Egy alkalmazás importálásához kövesse az alábbi lépéseket.
+Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
 
-1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
+## <a name="import-json-file-for-app"></a>JSON-fájl importálása az alkalmazáshoz
 
 [!INCLUDE [Import app steps](includes/import-app-steps.md)]
 
@@ -80,9 +80,9 @@ Tekintse át a végpont hosszúságú kimondott szöveg a megfelelően igazítot
     > [!div class="mx-imgBorder"]
     > ![A bal oldali navigációs menüben található Végponti kimondott szövegek áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)
 
-    Ez a Kimondás `I'm looking for a job with Natural Language Processing`nem megfelelő szándékú.
+    Ez a Kimondás `I'm looking for a job with Natural Language Processing` nem megfelelő szándékú.
 
-1.  A Kimondás igazításához a teljes sorban válassza ki a megfelelő **igazított szándékot** `GetJobInformation`. A jelölőnégyzet bejelölésével adja hozzá a megváltozott kiírást az alkalmazáshoz.
+1.  A Kimondás igazításához a teljes sorban válassza ki a megfelelő **igazított szándékot** `GetJobInformation` . A jelölőnégyzet bejelölésével adja hozzá a megváltozott kiírást az alkalmazáshoz.
 
     > [!div class="mx-imgBorder"]
     > ![A bal oldali navigációs menüben található Végponti kimondott szövegek áttekintése gomb képernyőképe](./media/luis-tutorial-review-endpoint-utterances/select-correct-aligned-intent-for-endpoint-utterance.png)
@@ -101,7 +101,7 @@ Ha ellenőrizni szeretné, hogy a megfelelően igazított példa hosszúságú k
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Lépjen az URL-cím végére a címsorban, és cserélje le a `Are there any natural language processing jobs in my department right now?` _YOUR_QUERY_HEREt_ a következőre:.
+1. Lépjen az URL-cím végére a címsorban, és cserélje le a _YOUR_QUERY_HEREt_ a következőre: `Are there any natural language processing jobs in my department right now?` .
 
    ```json
     {
@@ -215,7 +215,7 @@ Felmerülhet a kérdés, hogy miért ne adhatna hozzá további példaként szol
 ## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Miért szerepel a felső szándék a kimondott szövegek listáján?
 Néhány végponti kimondott szöveg magas előrejelzési pontszámmal szerepel az áttekintési listán. Ezeknek a kimondott szövegeknek az áttekintésére és ellenőrzésére ugyanúgy szükség van. Azért szerepelnek a listán, mert a következő legnagyobb pontszámú szándék a legfelső szándék pontszámához túl közeli pontszámmal rendelkezik. Körülbelül 15%-os különbséget szeretne az első két szándék között.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 

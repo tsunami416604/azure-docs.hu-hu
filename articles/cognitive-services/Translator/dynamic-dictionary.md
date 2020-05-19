@@ -1,7 +1,7 @@
 ---
-title: Dinamikus szótár – Translator Text API
+title: Dinamikus szótár – Translator
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk az Azure Cognitive Services Translator Text API dinamikus szótár funkciójának használatát ismerteti.
+description: Ez a cikk az Azure Cognitive Services Translator dinamikus szótár funkciójának használatát ismerteti.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,25 +10,25 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: 944bca8644da6127e73af04eb75d01697cd34399
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3ef881efc417a6c3816a92d9af7d77bba74355aa
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446716"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592542"
 ---
 # <a name="how-to-use-a-dynamic-dictionary"></a>Dinamikus szótár használata
 
 Ha már tudja, hogy milyen fordítást szeretne alkalmazni egy szóhoz vagy kifejezésre, a kérelemben megjelölheti azt. A dinamikus szótár csak olyan összetett nevek esetén biztonságos, mint a nevek és a termékek neve.
 
-**Szintaxis:**
+**Szintaxis**
 
 <msTrans: szótár fordítása = "kifejezés fordítása" >mondat</msTrans: szótár>
 
 **Követelmények**
 
-* A `From` és `To` a nyelvnek angol és egy másik támogatott nyelvet kell tartalmaznia. 
-* Az automatikus észlelés funkció `From` használata helyett az API-fordítási kérelemben szerepelnie kell a paraméternek. 
+* A `From` és a `To` nyelvnek angol és egy másik támogatott nyelvet kell tartalmaznia. 
+* Az `From` automatikus észlelés funkció használata helyett az API-fordítási kérelemben szerepelnie kell a paraméternek. 
 
 **Példa: en-de:**
 
@@ -38,4 +38,4 @@ Cél kimenete:`Das Wort "wordomatic" ist ein Wörterbucheintrag.`
 
 Ez a funkció ugyanúgy működik, mint a HTML-módban és anélkül.
 
-Használja a szolgáltatást takarékosan. A fordítás testreszabásának jobb módja az egyéni fordító használata. Az egyéni fordító a kontextus és statisztikai valószínűségek teljes körű kihasználását teszi lehetővé. Ha olyan képzési adatait is létrehozhat, amelyek kontextusban mutatják be a munkát vagy kifejezést, sokkal jobb eredményeket érhet el. Az egyéni fordítóval kapcsolatos további információkért tekintse [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator)meg a következő témakört:.
+Használja a szolgáltatást takarékosan. A fordítás testreszabásának jobb módja az egyéni fordító használata. Az egyéni fordító a kontextus és statisztikai valószínűségek teljes körű kihasználását teszi lehetővé. Ha olyan képzési adatait is létrehozhat, amelyek kontextusban mutatják be a munkát vagy kifejezést, sokkal jobb eredményeket érhet el. Az egyéni fordítóval kapcsolatos további információkért tekintse meg a következő témakört: [https://aka.ms/CustomTranslator](https://aka.ms/CustomTranslator) .

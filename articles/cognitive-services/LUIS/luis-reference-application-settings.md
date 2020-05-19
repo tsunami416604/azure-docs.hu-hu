@@ -2,34 +2,29 @@
 title: Alkalmazásbeállítások – LUIS
 description: Az Azure Cognitive Services Language Understanding-alkalmazások beállításai az alkalmazásban és a portálon vannak tárolva.
 ms.topic: reference
-ms.date: 04/14/2020
-ms.openlocfilehash: 9e17736cd6ff5074a6eab76a6cf5bdb8acedc185
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 7b545e0959a43520b7d643ef8c0658a1e1a3b295
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382202"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590985"
 ---
-# <a name="application-settings"></a>Alkalmazásbeállítások
+# <a name="app-and-version-settings"></a>Alkalmazás-és verzió-beállítások
 
-Ezeket az Alkalmazásbeállítások az [exportált](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) alkalmazásban tárolódnak, és a REST API-kkal [frissülnek](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) . Az alkalmazás verziójának beállításainak módosítása visszaállítja az alkalmazás betanítási állapotát a képzetlen értékre.
+Ezek a beállítások az [exportált](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) alkalmazásban tárolódnak, és a REST API-kkal vagy a Luis-portálon frissülnek.
 
-A Mellékjelek és a központozás [fogalmának](luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) megismerése.
+Az alkalmazás verziójának beállításainak módosítása visszaállítja az alkalmazás betanítási állapotát a képzetlen értékre.
 
-|Beállítás|Alapértelmezett érték|Megjegyzések|
-|--|--|--|
-|NormalizePunctuation|True (Igaz)|Eltávolítja a központozást.|
-|NormalizeDiacritics|True (Igaz)|Eltávolítja a mellékjeleket.|
+[!INCLUDE [App and version settings](includes/app-version-settings.md)]
+
+
+A szöveges referenciák és példák a következők:
+
+* [Központozási](#punctuation-normalization)
+* [Mellékjelek](#diacritics-normalization)
 
 ## <a name="diacritics-normalization"></a>Mellékjelek normalizálása
-
-A `settings` paraméterben kapcsolja be a mellékjeleket a Luis JSON-alkalmazás fájljába.
-
-```JSON
-"settings": [
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
 
 Az alábbi hosszúságú kimondott szöveg bemutatják, hogyan befolyásolják a Mellékjelek a hosszúságú kimondott szöveg:
 
@@ -133,16 +128,7 @@ Ide tartozik a spanyol és a kanadai mexikói is.
 |`ü`|`u`|
 |`ñ`|`u`|
 
-
 ## <a name="punctuation-normalization"></a>Központozás normalizálása
-
-A `settings` (z) paraméterben bekapcsolhatja az írásjelek kikapcsolását a Luis JSON-alkalmazás fájljába.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"}
-]
-```
 
 A következő hosszúságú kimondott szöveg szemléltetik, hogy a központozás milyen hatással van a hosszúságú kimondott szöveg:
 
@@ -153,7 +139,7 @@ A következő hosszúságú kimondott szöveg szemléltetik, hogy a központozá
 
 ### <a name="punctuation-removed"></a>Írásjel eltávolítva
 
-A következő írásjelek törlődnek `NormalizePunctuation` a tulajdonság értéke TRUE (igaz).
+A következő írásjelek törlődnek a `NormalizePunctuation` tulajdonság értéke TRUE (igaz).
 
 |Központozási|
 |--|

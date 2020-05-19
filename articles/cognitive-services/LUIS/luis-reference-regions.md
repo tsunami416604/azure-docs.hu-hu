@@ -3,12 +3,12 @@ title: Közzétételi régiók & végpontok – LUIS
 description: A Azure Portalban megadott régió ugyanaz, ahol a LUIS-alkalmazást közzé fogja tenni, és egy végponti URL-cím jön létre ugyanahhoz a régióhoz.
 ms.topic: reference
 ms.date: 11/19/2019
-ms.openlocfilehash: a7709d15a51637772d7a4775cd71c307dc21c52b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 680887ecda0843bf770c62a4b9a4d88305ea9e73
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292088"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590910"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>Régiók és a hozzájuk tartozó kulcsok létrehozása és közzététele
 
@@ -21,9 +21,9 @@ A régió alapján három LUIS authoring portál található. A létrehozást é
 
 |LUIS|Szerzői régió|Azure-régió neve|
 |--|--|--|
-|[www.luis.ai][www.luis.ai] <br>[preview.luis.ai](https://preview.luis.ai)|Egyesült Államok<br>nem Európa<br>nem Ausztrália| `westus`|
-|[au.luis.ai][au.luis.ai] <br>[preview.au.luis.ai](https://preview.au.luis.ai)|Ausztrália| `australiaeast`|
-|[eu.luis.ai][eu.luis.ai] <br>[preview.eu.luis.ai](https://preview.eu.luis.ai)|Európa|`westeurope`|
+|[www.luis.ai][www.luis.ai] <br>[previous.luis.ai](https://previous.luis.ai)|Egyesült Államok<br>nem Európa<br>nem Ausztrália| `westus`|
+|[au.luis.ai][au.luis.ai] <br>[previous.au.luis.ai](https://previous.au.luis.ai)|Ausztrália| `australiaeast`|
+|[eu.luis.ai][eu.luis.ai] <br>[previous.eu.luis.ai](https://previous.eu.luis.ai)|Európa|`westeurope`|
 
 A szerzői régiók [párosított feladatátvételi régiókkal](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)rendelkeznek.
 
@@ -41,11 +41,11 @@ A nyilvános alkalmazások minden régióban közzé vannak téve, hogy a régi�
 
 Az authoring region alkalmazást csak a megfelelő közzétételi régióban lehet közzétenni. Ha az alkalmazás jelenleg nem megfelelő authoring régióban van, exportálja az alkalmazást, és importálja a közzétételi régiójának megfelelő szerzői régióba.
 
-A on https://www.luis.ai létrehozott Luis-alkalmazások közzétehető az összes végponton, kivéve az [Európai](#publishing-to-europe) és [ausztráliai](#publishing-to-australia) régiókat.
+A on létrehozott LUIS https://www.luis.ai -alkalmazások közzétehető az összes végponton, kivéve az [Európai](#publishing-to-europe) és [ausztráliai](#publishing-to-australia) régiókat.
 
 ## <a name="publishing-to-europe"></a>Közzététel Európába
 
-Az európai régiókban való közzétételhez https://eu.luis.ai csak a Luis-alkalmazásokat kell létrehoznia. Ha az Európa régió egyik kulcsával próbál meg máshol közzétenni, a LUIS figyelmeztető üzenetet jelenít meg. Ehelyett használja https://eu.luis.aia parancsot. A [https://eu.luis.ai][eu.luis.ai] -ben létrehozott Luis-alkalmazások nem lesznek automatikusan migrálva más régiókba. Exportálja, majd importálja a LUIS alkalmazást a Migrálás érdekében.
+Az európai régiókban való közzétételhez csak a LUIS-alkalmazásokat kell létrehoznia https://eu.luis.ai . Ha az Európa régió egyik kulcsával próbál meg máshol közzétenni, a LUIS figyelmeztető üzenetet jelenít meg. Ehelyett használja a parancsot https://eu.luis.ai . A-ben létrehozott LUIS [https://eu.luis.ai][eu.luis.ai] -alkalmazások nem lesznek automatikusan migrálva más régiókba. Exportálja, majd importálja a LUIS alkalmazást a Migrálás érdekében.
 
 ## <a name="europe-publishing-regions"></a>Európa közzétételi régiói
 
@@ -58,7 +58,7 @@ Az európai régiókban való közzétételhez https://eu.luis.ai csak a Luis-al
 
 ## <a name="publishing-to-australia"></a>Közzététel Ausztráliában
 
-Az ausztráliai régiókban való közzétételhez https://au.luis.ai csak a Luis-alkalmazásokat kell létrehoznia. Ha egy, az ausztráliai régió egyik kulcsát használva próbál meg mást közzétenni, a LUIS figyelmeztető üzenetet jelenít meg. Ehelyett használja https://au.luis.aia parancsot. A [https://au.luis.ai][au.luis.ai] -ben létrehozott Luis-alkalmazások nem lesznek automatikusan migrálva más régiókba. Exportálja, majd importálja a LUIS alkalmazást a Migrálás érdekében.
+Az ausztráliai régiókban való közzétételhez csak a LUIS-alkalmazásokat kell létrehoznia https://au.luis.ai . Ha egy, az ausztráliai régió egyik kulcsát használva próbál meg mást közzétenni, a LUIS figyelmeztető üzenetet jelenít meg. Ehelyett használja a parancsot https://au.luis.ai . A-ben létrehozott LUIS [https://au.luis.ai][au.luis.ai] -alkalmazások nem lesznek automatikusan migrálva más régiókba. Exportálja, majd importálja a LUIS alkalmazást a Migrálás érdekében.
 
 ## <a name="australia-publishing-regions"></a>Ausztráliai közzétételi régiók
 
@@ -68,7 +68,7 @@ Az ausztráliai régiókban való közzétételhez https://au.luis.ai csak a Lui
 
 ## <a name="publishing-to-other-regions"></a>Közzététel más régiókban
 
-A többi régióban való közzétételhez [https://www.luis.ai](https://www.luis.ai) csak a Luis-alkalmazásokat kell létrehoznia.
+A többi régióban való közzétételhez csak a LUIS-alkalmazásokat kell létrehoznia [https://www.luis.ai](https://www.luis.ai) .
 
 ## <a name="other-publishing-regions"></a>Egyéb közzétételi régiók
 

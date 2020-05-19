@@ -1,7 +1,7 @@
 ---
-title: Mi a Translator Text API? – Translator Text API
+title: Mi a fordító? -Translator
 titlesuffix: Azure Cognitive Services
-description: A Translator Text API az alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba való integrálásával többnyelvű felhasználói felületeket hozhat létre.
+description: A fordítót integrálhatja alkalmazásaiba, webhelyeire, eszközeibe és egyéb megoldásaiba a többnyelvű felhasználói élmény biztosítása érdekében.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -11,24 +11,24 @@ ms.topic: overview
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.custom: seodec18
-ms.openlocfilehash: f6b55163440b25bf69c76e9b1217c439b0884d5d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e4a1f2d778fb2b811d4c38dd26956e2eab51258a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78331042"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592661"
 ---
-# <a name="what-is-the-translator-text-api"></a>Mi a Translator Text API?
+# <a name="what-is-the-translator"></a>Mi a fordító?
 
-A Translator Text API könnyedén integrálható az alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi többnyelvű felhasználói felületek hozzáadását [több mint 60 nyelven](languages.md), és bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
+A fordító egyszerűen integrálható alkalmazásaiba, webhelyeire, eszközeibe és megoldásaiba. Lehetővé teszi többnyelvű felhasználói felületek hozzáadását [több mint 60 nyelven](languages.md), és bármely hardverplatformon és bármely operációs rendszerrel használható szöveg-szöveg vektorú nyelvi fordítások végrehajtásához.
 
-A Translator Text API a felhőalapú gépi tanulási és mesterséges intelligenciára épülő algoritmusokat biztosító, a fejlesztési projektekben készen használható Azure [Cognitive Services API](https://docs.microsoft.com/azure/?pivot=products&panel=ai)-gyűjtemény részét képezi.
+A fordító a gépi tanulási és AI-algoritmusok [Azure Cognitive Services](https://docs.microsoft.com/azure/?pivot=products&panel=ai) -gyűjteményének része a felhőben, és könnyen fogyasztható a fejlesztési projektekben.
 
 ## <a name="about-microsoft-translator"></a>A Microsoft Translator ismertetése
 
-A Microsoft Translator egy felhőalapú gépi fordítási szolgáltatás. A fő szolgáltatás a Translator Text API, amely a Microsoft számos termékét és szolgáltatását szolgálja ki, és amelyeket világszerte vállalkozások ezrei használnak alkalmazásaikban és munkafolyamataikban, hogy tartalmaikat a globális közönség elé tárják.
+A Translator egy felhőalapú gépi fordítási szolgáltatás. A fő szolgáltatás a fordító, amely számos Microsoft-terméket és-szolgáltatást biztosít, és világszerte több ezer vállalat használja az alkalmazásaikban és munkafolyamataiban, ami lehetővé teszi, hogy a tartalom globális közönség számára is elérhető legyen.
 
-A Translator Text API által kiszolgált beszédfordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/) szolgáltatáson keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban.A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
+A fordító által működtetett beszéd fordítás a [Microsoft Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/)-en keresztül is elérhető. Egyesíti a Translator Speech API és a Custom Speech Service funkcióit egy egységes és teljes mértékben testreszabható szolgáltatásban.A Speech Service leváltja a Translator Speech API-t, amely 2019. október 15-től kezdve visszavonunk.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -46,9 +46,9 @@ További információ [az NMT működéséről](https://www.microsoft.com/en-us/
 
 ## <a name="language-customization"></a>Nyelvi testreszabás
 
-Az alap Microsoft Translator szolgáltatás kiterjesztéseként a Custom Translator a Translator Text API-val együtt alkalmazva segít testre szabni a neurális fordítási rendszert, illetve feljavítani a fordításokat a fejlesztő egyedi terminológiájával és stílusával.
+A Microsoft Translator szolgáltatás alapszintű, egyéni fordítója a fordítóval együttműködve segíti a neurális fordítói rendszer testreszabását és az adott terminológia és stílus fordításának javítását.
 
-A Custom Translator használatával olyan fordítási rendszereket állíthat össze, amelyek kezelik a vállalkozásában vagy az iparágban alkalmazott terminológiát. A testre szabott fordítási rendszer ezután könnyen integrálható a meglévő alkalmazásaiba, munkafolyamataiba és webhelyeibe több eszköztípuson is, a rendes Microsoft Translator Text API-n keresztül, a „category” (kategória) paraméter használatával.
+A Custom Translator használatával olyan fordítási rendszereket állíthat össze, amelyek kezelik a vállalkozásában vagy az iparágban alkalmazott terminológiát. A testreszabott fordítási rendszer ezután egyszerűen integrálható a meglévő alkalmazásaiba, munkafolyamataiba és webhelyeibe, a normál fordítón keresztül, a kategória paraméter használatával.
 
 További információk [a nyelvi testreszabásról](customization.md).
 

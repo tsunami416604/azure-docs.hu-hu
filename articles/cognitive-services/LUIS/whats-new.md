@@ -1,20 +1,33 @@
 ---
 title: Újdonságok – Language Understanding (LUIS)
 description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Language Understanding APIával kapcsolatos hírekkel.
-ms.topic: conceptual
-ms.date: 02/11/2020
-ms.openlocfilehash: 8e3b6f729f69866cdb797cdfd1887de4f5e2be05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: overview
+ms.date: 05/08/2020
+ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097727"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592797"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
-Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
+Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátási megjegyzések, videók, blogbejegyzések és más típusú információk. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="may-2020---build"></a>Május 2020 – Build
+
+* Megjelent **általánosan elérhetőként** (GA):
+    * [Language Understanding tároló](luis-container-howto.md)
+    * A [jelenlegi portálra](https://www.luis.ai)előléptetett betekintő portál a [korábbi](https://previous.luis.ai) portál továbbra is elérhető
+    * Új gép – megtanult entitások létrehozásának és címkézésének élménye
+    * Összetett és egyszerű entitások [frissítése](migrate-from-composite-entity.md) gépi megtanult entitásokra
+    * A Word-változatok normalizálása támogatásának [beállítása](how-to-application-settings-portal.md)
+* Előzetes verziójú API-változások
+    * 7. x alkalmazás-séma beágyazott gépi megismert entitásokhoz
+    * [Migrálás a szükséges szolgáltatásba](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+
 
 ### <a name="march-2020"></a>2020. március
 
@@ -26,7 +39,7 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
 
 * Továbbfejlesztett fejlesztői hatékonyság
     * Az [előrejelzési végpont v3](luis-migration-api-v3.md)verziójának általános elérhetősége.
-    * Alkalmazások importálása és exportálása a. lu ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) formátummal. Ez kikövezi a hatékony CI/CD-folyamat módját.
+    * Alkalmazások importálása és exportálása `.lu` ([LUDown](https://github.com/microsoft/botbuilder-tools/tree/master/packages/Ludown)) formátummal. Ez kikövezi a hatékony CI/CD-folyamat módját.
 * Nyelvi bővítés
     * Az [arab és a hindi](luis-language-support.md) nyilvános előzetes verzióban érhető el.
 * Előre összeállított modellek

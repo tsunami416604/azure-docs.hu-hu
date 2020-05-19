@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: a34af2ef779a41c19d4bfb831360948af1a66724
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 548cacfb76aba9093a59a5c87525d038558bf353
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115047"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592627"
 ---
 # <a name="classroom-labs-concepts"></a>Osztályterem-tesztkörnyezetek alapelvei
 
@@ -26,13 +26,13 @@ A következő lista a Key Lab Services alapfogalmait és definícióit tartalmaz
 
 ## <a name="quota"></a>Kvóta
 
-A kvóta az az időkorlátja (órában), ameddig a tanár beállíthatja, hogy a tanulók laboratóriumi virtuális gépet használjanak. A beállítás értéke 0 vagy adott számú óra lehet. Ha a kvóta 0 értékű, a tanulók csak akkor használhatják a virtuális gépet, ha egy ütemterv fut, vagy amikor egy tanár manuálisan bekapcsolja a tanuló virtuális gépét.  
+A kvóta azt az időkorlátot adja meg (órában), ameddig a pedagógus beállíthatja, hogy a tanulók laboratóriumi virtuális gépet használjanak. A beállítás értéke 0 vagy adott számú óra lehet. Ha a kvóta 0 értékű, a tanulók csak akkor használhatják a virtuális gépet, ha egy ütemterv fut, vagy amikor a pedagógus manuálisan bekapcsolja a virtuális gépet a tanuló számára.  
 
-A kvóta órája akkor számít, ha a tanuló saját maga indítja el a laboratóriumi virtuális gépet.  Ha egy tanár manuálisan indítja el a labor virtuális gépet egy tanuló számára, a rendszer nem használja az adott diákra vonatkozó kvóta-időt.
+A kvóta órája akkor számít, ha a tanuló saját maga indítja el a laboratóriumi virtuális gépet.  Ha egy oktató manuálisan indítja el a labor virtuális gépet egy tanuló számára, a rendszer nem használja az adott diákra vonatkozó kvóta-időt.
 
 ## <a name="schedules"></a>Ütemezések
 
-Az ütemtervek azt az időpontot jelentik, amelyet a tanár létrehozhat az osztály számára, így a tanuló virtuális gépek az osztály idejére elérhetők.  Az ütemtervek lehetnek egyszeri vagy ismétlődőek.  A kvóta órája nem használatos az ütemterv futtatásakor.
+Az ütemtervek azon időpontok, amelyeket a pedagógus létrehozhat az osztály számára, így a tanuló virtuális gépek az osztály idejére elérhetők.  Az ütemtervek lehetnek egyszeri vagy ismétlődőek.  A kvóta órája nem használatos az ütemterv futtatásakor.
 
 Az ütemtervek három típusa létezik: standard, csak indítás és leállítás.
 
@@ -56,7 +56,7 @@ Ez a cikk az Azure Lab Services különböző felhasználói profiljait ismertet
 - Felügyeli és konfigurálja a szabályzatokat minden tesztkörnyezetre vonatkozóan.
 - Engedélyeket ad a vállalatban dolgozó személyeknek tesztkörnyezet létrehozására a tesztkörnyezetfiókban.
 
-### <a name="professor"></a>Professzor
+### <a name="educator"></a>Oktató
 
 A tesztkörnyezetfiókban lévő osztálytermi tesztkörnyezeteket általában olyan felhasználók hozzák létre, mint a tanárok vagy az online oktatók. Az oktató az alábbi feladatokat hajtja végre:
 
@@ -66,7 +66,7 @@ A tesztkörnyezetfiókban lévő osztálytermi tesztkörnyezeteket általában o
 - Meghatározza, hogy ki férhet hozzá a tesztkörnyezethez.
 - Elküldi a hallgatóknak a tesztkörnyezetre mutató regisztrációs hivatkozást.
 
-### <a name="student"></a>Hallgató
+### <a name="student"></a>Tanuló
 
 A hallgató az alábbi feladatokat hajtja végre:
 

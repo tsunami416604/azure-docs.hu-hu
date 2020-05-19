@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 166ec4db2a2891d25a1e80526f8c1bd9770f9eef
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b3a9c95233c2016dc35f4fcade3e2634e121d252
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77592220"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591777"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
 Ebben az oktatóanyagban megtanulhatja, hogyan állíthat be egy diákok által használható virtuális gépekkel rendelkező osztályterem-tesztkörnyezetet.  
@@ -37,9 +37,9 @@ Ebben az oktatóanyagban egy labort állít be az osztályhoz tartozó virtuáli
 
 A Azure Lab Services használata esetén a tipikus munkafolyamat:
 
-1. A labor-fiók létrehozója más felhasználókat is felvesz a **labor létrehozói** szerepkörbe. Például a Lab-fiók létrehozója/rendszergazdája felveszi a professzorokat a **labor létrehozói** szerepkörbe, hogy a laborokat a saját osztályaik számára is létrehozzák. 
-2. Ezután a professzorok létrehozzák a laborokat a virtuális gépekkel a saját osztályaik számára, és regisztrációs hivatkozásokat küldenek a tanulók számára az osztályban. 
-3. A tanulók a professzorok által a laborba való regisztráláshoz használt regisztrációs hivatkozást használják. Ha regisztrálva vannak, a laborokban használhatnak virtuális gépeket az osztály munkahelyi és otthoni működéséhez. 
+1. A labor-fiók létrehozója más felhasználókat is felvesz a **labor létrehozói** szerepkörbe. Például a labor-fiók létrehozója/rendszergazdája felveszi az oktatókat a **labor létrehozói** szerepkörbe, hogy a laborokat a saját osztályaik számára is létrehozzák. 
+2. Ezután a pedagógusok létrehozhatnak virtuális gépeket a saját osztályaik számára, és regisztrációs hivatkozásokat küldhetnek a tanulóknak az osztályban. 
+3. A tanulók az oktatóktól kapott regisztrációs hivatkozást használják a laborba való regisztrációhoz. Ha regisztrálva vannak, a laborokban használhatnak virtuális gépeket az osztály munkahelyi és otthoni működéséhez. 
 
 ## <a name="create-a-classroom-lab"></a>Osztályterem-tesztkörnyezet létrehozása
 Ebben a lépésben létrehoz egy labort az osztályhoz az Azure-ban. 
@@ -151,7 +151,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 1. A **Meghívás küldése e-mailben** lapon adjon meg egy opcionális üzenetet, majd válassza a **Küldés**lehetőséget. Az e-mail automatikusan tartalmazza a regisztrációs hivatkozást. Ezt a regisztrációs hivatkozást a következő parancs kiválasztásával érheti el: **... (három pont)** az eszköztáron és a **regisztrációs hivatkozáson**. 
 
     ![Regisztrációs hivatkozás küldése e-mailben](../media/tutorial-setup-classroom-lab/send-email.png)
-4. A **meghívás** állapota megjelenik a **felhasználók** listájában. Az állapotnak a **Küldés** gombra kell váltania, majd el kell **küldenie a &lt;&gt;dátumot**. 
+4. A **meghívás** állapota megjelenik a **felhasználók** listájában. Az állapotnak a **Küldés** gombra kell váltania, majd el kell **küldenie a &lt; dátumot &gt; **. 
 
     A tanulók osztályhoz való hozzáadásával és a labor használatának felügyeletével kapcsolatos további információkért lásd: [a tanulói használat konfigurálása](how-to-configure-student-usage.md).
 

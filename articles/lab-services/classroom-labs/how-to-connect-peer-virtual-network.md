@@ -1,6 +1,6 @@
 ---
 title: Kapcsolódás a Azure Lab Services társ hálózatához | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztatható a labor-hálózat egy másik hálózathoz társként. Például összekapcsolhatja a helyszíni iskolai vagy egyetemi hálózatot a labor virtuális hálózatával az Azure-ban.
+description: Ismerje meg, hogyan csatlakoztatható a labor-hálózat egy másik hálózathoz társként. Például összekapcsolhatja a helyszíni szervezeti vagy egyetemi hálózatot a labor virtuális hálózatával az Azure-ban.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 8d8f2c747a4bc0ab2119c92e61188e3c57f2b212
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 556a32a111149fe5ade3b11fee9c732c935de289
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118362"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592015"
 ---
 # <a name="connect-your-labs-network-with-a-peer-virtual-network-in-azure-lab-services"></a>A labor hálózatának összekötése egy társ virtuális hálózattal Azure Lab Services
 
@@ -46,11 +46,16 @@ Az új [labor-fiók létrehozása](tutorial-setup-lab-account.md)során kiválas
 
 ### <a name="address-range"></a>Címtartomány
 
-Emellett lehetőség van arra is, hogy **címtartományt** biztosítson a Labs virtuális gépei számára.  A **címtartomány** tulajdonság csak akkor érvényes, ha a **társ virtuális hálózat** engedélyezve van a laborban.  Ha a címtartomány meg van adni, a rendszer a labor fiókban található laborok alatt lévő összes virtuális gépet létrehozza az adott címtartományból. A címtartomány CIDR (például 10.20.0.0/20) kell legyen, és ne legyen átfedésben a meglévő címtartományok.  Címtartomány megadásakor fontos meggondolni a létrehozandó *laborok* számát, és biztosítania kell a címtartomány megadását. A labor-szolgáltatások legfeljebb 512 virtuális gépet feltételeznek laborban.  Egy "/23" nevű IP-címtartomány például csak egy labort hozhat létre.  A (z) "/21" tartománya négy labor létrehozását teszi lehetővé.
+Emellett lehetőség van arra is, hogy **címtartományt** biztosítson a Labs virtuális gépei számára.  A **címtartomány** tulajdonság csak akkor érvényes, ha a tesztkörnyezetben engedélyezve van egy **társ virtuális hálózat** . Ha a címtartomány meg van adni, a rendszer a labor fiókban található laborok alatt lévő összes virtuális gépet létrehozza az adott címtartományból. A címtartomány legyen CIDR (például 10.20.0.0/20), és ne legyen átfedésben a meglévő címtartományok.  Címtartomány megadásakor fontos meggondolni a létrehozandó *laborok* számát, és biztosítania kell a címtartomány megadását. A labor-szolgáltatások legfeljebb 512 virtuális gépet feltételeznek laborban.  Egy "/23" nevű IP-címtartomány például csak egy labort hozhat létre.  A (z) "/21" tartománya négy labor létrehozását teszi lehetővé.
 
 Ha nincs megadva a **címtartomány** , a labor Services az Azure által megadott alapértelmezett címtartományt fogja használni, amikor létrehozza a virtuális hálózatot a virtuális hálózattal.  A tartomány gyakran hasonló, mint 10. x. 0.0/16.  Ez az IP-címtartomány átfedését eredményezheti, ezért ügyeljen arra, hogy adjon meg egy címtartományt a tesztkörnyezet beállításai között, vagy ellenőrizze, hogy a virtuális hálózat milyen címtartományt használ.
 
-## <a name="configure-after-the-lab-is-created"></a>Konfigurálás a tesztkörnyezet létrehozása után
+> [!NOTE]
+> A labor létrehozása sikertelen lehet, ha a labor-fiók egy virtuális hálózathoz van hozzárendelve, de az IP-címtartomány túl keskeny. Kifogyhat a címtartomány, ha túl sok labor van a labor-fiókban (az egyes laborok 512-es címeket használnak). 
+> 
+> Ha a tesztkörnyezet létrehozása sikertelen, forduljon a labor-fiók tulajdonosához/rendszergazdájához, és kérje a címtartomány növelését. A rendszergazda növelheti a címtartományt a [virtuális gépekhez tartozó címtartomány megadása a labor-fiókban](#specify-an-address-range-for-vms-in-the-lab-account) című szakaszban említett lépések alapján. 
+
+## <a name="configure-after-the-lab-account-is-created"></a>Konfigurálás a labor-fiók létrehozása után
 
 Ugyanezt a tulajdonságot engedélyezheti a **labor-fiók** lap **Labs-konfiguráció** lapján, ha nem állított be egy társ hálózatot a labor-fiók létrehozásakor. Az erre a beállításra végzett módosítás csak a módosítás után létrehozott laborokra vonatkozik. Ahogy a képen is látható, a labor fiókban engedélyezheti vagy letilthatja a Labs **társ virtuális hálózatát** .
 
@@ -60,6 +65,21 @@ Ha kijelöl egy virtuális hálózatot a **társ virtuális hálózat** mezőhö
 
 > [!IMPORTANT]
 > A társ virtuális hálózat beállítás csak a módosítás után létrehozott laborokra vonatkozik, nem a meglévő Labs-re.
+
+
+## <a name="specify-an-address-range-for-vms-in-the-lab-account"></a>Címtartomány megadása a virtuális gépek számára a labor-fiókban
+A következő eljárás a virtuális gépekhez tartozó címtartomány megadásának lépéseit írja le a laborban. Ha frissíti a korábban megadott tartományt, a módosított címtartomány csak a módosítás után létrehozott virtuális gépekre vonatkozik. 
+
+Íme néhány korlátozás a címtartomány megadásához, amelyet érdemes szem előtt tartani. 
+
+- Az előtagnak kisebbnek vagy egyenlőnek kell lennie, mint 23. 
+- Ha egy virtuális hálózat a labor-fiókhoz van társítva, a megadott címtartomány nem lehet átfedésben a társ virtuális hálózatból származó címtartományból.
+
+1. A **labor-fiók** lapon válassza a bal oldali menü **Labs-beállítások** elemét.
+2. A **címtartomány** mezőben határozza meg a laborban létrehozandó virtuális gépek címtartomány-tartományát. A címtartomány legyen az osztály nélküli tartományok közötti útválasztás (CIDR) jelölése (például: 10.20.0.0/23). A laborban található virtuális gépek ebben a címtartományból lesznek létrehozva.
+3. Válassza az eszköztár **Save** (Mentés) elemét. 
+
+    ![Címtartomány konfigurálása](../media/how-to-manage-lab-accounts/labs-configuration-page-address-range.png)
 
 ## <a name="next-steps"></a>További lépések
 

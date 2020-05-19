@@ -9,12 +9,12 @@ ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d1b5ea9a9f78bc8a83159a34026d58d7a8cc89b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 96106882c1c43c322afbf6517209621557de9d25
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78944271"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592066"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Oktatóanyag: Adatok tárolása a peremhálózaton SQL Server-adatbázisokkal
 
@@ -24,7 +24,7 @@ Az Azure IoT Edge és az SQL Server segítségével adatokat tárolhat és kér
 
 A jelen cikk az SQL Server-adatbázisok IoT Edge-eszközön történő üzembe helyezésének utasításait tartalmazza. Az IoT Edge-eszközön futó Azure Functions-függvények elvégzik a bejövő adatok rendszerezését, majd elküldik azokat az adatbázisnak. A cikkben szereplő lépések a tárolókban üzemeltetett egyéb adatbázisokra (például MySQL vagy PostgreSQL) is alkalmazhatók.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -41,7 +41,7 @@ Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktató
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * Egy [Azure IoT Edge rendszert futtató amd64 Linux-eszköz](quickstart-linux.md).
-  * Az ARM-eszközök (például a málna PiS) nem futhatnak SQL Server. Ha az SQL-t egy ARM-eszközön szeretné használni, regisztráljon a [Azure SQL Database Edge](https://azure.microsoft.com/services/sql-database-edge/) előzetes verzióban való kipróbálásához.
+  * Az ARM-eszközök (például a málna PiS) nem futhatnak SQL Server. Ha az SQL-t egy ARM-eszközön szeretné használni, regisztráljon az [Azure SQL Edge](https://azure.microsoft.com/services/azure-sql-edge/) előzetes verziójának kipróbálásához.
 * Egy tároló-beállításjegyzék, például [Azure Container Registry](https://docs.microsoft.com/azure/container-registry/).
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
@@ -61,7 +61,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge függvényt a
 
 1. Nyissa meg a Visual Studio Code-ot.
 
-2. Nyissa meg a vs Code parancs-palettát a**parancs-paletta** **megtekintése** > lehetőség kiválasztásával.
+2. Nyissa meg a vs Code parancs- **View**palettát a  >  **parancs-paletta**megtekintése lehetőség kiválasztásával.
 
 3. A parancskatalógusban írja be és futtassa az **Azure IoT Edge: New IoT Edge solution** (Azure IoT Edge: új IoT Edge-megoldás) parancsot. A parancskatalógusban adja meg az alábbi információkat a megoldás létrehozásához:
 
@@ -71,7 +71,7 @@ A következő lépések bemutatják, hogyan hozhat létre IoT Edge függvényt a
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, például **SqlSolution**, vagy fogadja el az alapértelmezett értéket. |
    | Select module template (Modulsablon kiválasztása) | Válassza a **Azure functions – C#** elemet. |
    | Provide a module name (Modulnév megadása) | A modulnak adja az **sqlFunction** nevet. |
-   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A végső karakterlánc a következőhöz \<hasonló\>: beállításjegyzék neve. azurecr.IO/sqlfunction. |
+   | Provide Docker image repository for the module (Docker-rendszerkép adattárának megadása a modulhoz) | Egy rendszerképadattár a tárolóregisztrációs adatbázis nevét és a tárolórendszerkép nevét tartalmazza. A tárolórendszerkép előre fel van töltve az előző lépésből. Cserélje le a **localhost:5000** értéket az Azure-beli tárolóregisztrációs adatbázis bejelentkezési kiszolgálójának értékére. A bejelentkezési kiszolgálót a tárolóregisztrációs adatbázis Áttekintés lapján kérheti le az Azure Portalon. <br><br>A végső karakterlánc a következőhöz hasonló: \< beállításjegyzék neve \> . azurecr.IO/sqlfunction. |
 
    A VS Code-ablak betölti az IoT Edge-megoldás munkaterületét.
 
@@ -93,7 +93,7 @@ A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközö
 
 ### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-1. A vs Code Explorerben nyissa meg a **modulok** > **sqlFunction** > **sqlFunction.cs**.
+1. A vs Code Explorerben nyissa meg a **modulok**  >  **sqlFunction**  >  **sqlFunction.cs**.
 
 2. Cserélje le a fájl teljes tartalmát a következő kódra:
 
@@ -184,7 +184,7 @@ A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközö
    }
    ```
 
-3. Az 35. sorban cserélje le a karakterlánc ** \<SQL-\> kapcsolatok sztringjét** a következő sztringre. Az **adatforrás** tulajdonság a SQL Server tárolóra hivatkozik, amely még nem létezik. A következő szakaszban létre kell hoznia az **SQL** néven.
+3. Az 35. sorban cserélje le a karakterlánc ** \< SQL- \> kapcsolatok sztringjét** a következő sztringre. Az **adatforrás** tulajdonság a SQL Server tárolóra hivatkozik, amely még nem létezik. A következő szakaszban létre kell hoznia az **SQL** néven.
 
    ```csharp
    Data Source=tcp:sql,1433;Initial Catalog=MeasurementsDB;User Id=SA;Password=Strong!Passw0rd;TrustServerCertificate=False;Connection Timeout=30;
@@ -206,7 +206,7 @@ A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközö
 
 Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modulokat az [üzembehelyezési jegyzékfájl](module-composition.md) határozza meg. Az előző szakaszban létrehozott egy testreszabott Function modult, de a SQL Server modul már fel van építve és elérhető az Azure piactéren. Utasítsa az IoT Edge-futtatókörnyezetet ennek belefoglalására, majd végezze el a konfigurálást az eszközön.
 
-1. A Visual Studio Code-ban nyissa meg a parancssort a**parancs paletta** **megtekintése** > lehetőség kiválasztásával.
+1. A Visual Studio Code-ban nyissa meg a parancssort a **View**  >  **parancs paletta**megtekintése lehetőség kiválasztásával.
 
 2. Írja be a parancsot a parancssorba, és futtassa a következő parancsot **Azure IoT Edge: IoT Edge modul hozzáadása**. Az új modul hozzáadásához a parancssorban adja meg a következő információkat:
 
@@ -234,7 +234,7 @@ Az IoT Edge-futtatókörnyezet által az IoT Edge-eszközön telepítendő modul
 
 Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáadott egy másik modult az üzembehelyezési jegyzéksablonfájlhoz. A SQL Server modult nyilvánosan a Microsoft üzemelteti, de a functions modulban kell tárolóba helyezése a kódot. Ebben a szakaszban felépíti a megoldást, létrehozza a sqlFunction modulhoz tartozó tároló lemezképeket, és leküldi a lemezképet a tároló-beállításjegyzékbe.
 
-1. A Visual Studio Code-ban nyissa meg az integrált terminált a**terminál** **megtekintése** > lehetőség kiválasztásával.  
+1. A Visual Studio Code-ban nyissa meg az integrált terminált a terminál **megtekintése**lehetőség kiválasztásával  >  **Terminal**.  
 
 1. Jelentkezzen be a tárolóregisztrációs adatbázisba a Visual Studio Code felületén, hogy le tudja küldeni a rendszerképeket a regisztrációs adatbázisba. Használja ugyanazt a Azure Container Registry (ACR) hitelesítő adatokat, amelyeket a. env fájlhoz adott hozzá. Az integrált terminálon írja be a következő parancsot:
 
@@ -246,7 +246,7 @@ Az előző szakaszokban egyetlen modullal hozott létre megoldást, majd hozzáa
 
 1. A VS Code Explorerben kattintson a jobb gombbal a **deployment.template.json** fájlra, és válassza a **Build and Push IoT Edge solution** (IoT Edge-megoldás összeállítása és leküldése) lehetőséget.
 
-Amikor közli a Visual Studio Code-ot a megoldás felépítésével, először a központi telepítési sablonban található információkat veszi fel, és létrehoz egy Deployment. JSON fájlt egy **config**nevű új mappában. Ezután két parancsot futtat az integrált terminálban: `docker build` és. `docker push` A Build parancs létrehozza a kódot, és függvénykódokat a modult. Ezután a leküldéses parancs leküldi a kódot a tároló beállításjegyzékbe, amelyet a megoldás inicializálása során adott meg.
+Amikor közli a Visual Studio Code-ot a megoldás felépítésével, először a központi telepítési sablonban található információkat veszi fel, és létrehoz egy Deployment. JSON fájlt egy **config**nevű új mappában. Ezután két parancsot futtat az integrált terminálban: `docker build` és `docker push` . A Build parancs létrehozza a kódot, és függvénykódokat a modult. Ezután a leküldéses parancs leküldi a kódot a tároló beállításjegyzékbe, amelyet a megoldás inicializálása során adott meg.
 
 Ellenőrizheti, hogy a sqlFunction modul sikeresen leküldve a tároló-beállításjegyzékbe. A Azure Portal navigáljon a tároló-beállításjegyzékhez. Válassza ki a **Tárházak** lehetőséget, és keresse meg a **sqlFunction**. A másik két modul, a SimulatedTemperatureSensor és az SQL nem lesz leküldve a tároló-beállításjegyzékbe, mert a Tárházak már a Microsoft-jegyzékekben vannak.
 
@@ -319,7 +319,7 @@ Futtassa a következő parancsot az SQL-parancssori eszközből a formázott tá
 
    ![A helyi adatbázis tartalmának megtekintése](./media/tutorial-store-data-sql-server/view-data.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 

@@ -1,7 +1,7 @@
 ---
-title: Nyelvi támogatás – Translator Text API
+title: Nyelvi támogatás – Translator
 titleSuffix: Azure Cognitive Services
-description: A Translator Text API a következő nyelveket támogatja szöveg-szöveg fordításához neurális gépi fordítás (NMT) használatával.
+description: Cognitive Services Translator a következő nyelveket támogatja szöveg-szöveg fordításához neurális gépi fordítás (NMT) használatával.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,32 +10,32 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 0ecde5acb7dc57ed9e5802c1589d5813a9206643
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15c11a5b94b80a96c520696c45f3eec5c48b7b48
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81684832"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592729"
 ---
-# <a name="language-and-region-support-for-the-translator-text-api"></a>A Translator Text API nyelvi és területi támogatása
+# <a name="language-and-region-support-for-translator"></a>Nyelvi és területi támogatás fordítóknak
 
-A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordításához. A neurális gépi fordítás (NMT) a kiváló minőségű, mesterséges intelligenciát használó gépi fordítások új szabványa, amely a Translator Text API v3-as verziójában érhető el, amikor egy neurális rendszer elérhető.
+A fordító a következő nyelveket támogatja szöveg szöveggé fordításához. A neurális gépi fordítás (NMT) az új szabvány a kiváló minőségű, mesterséges intelligenciát használó gépi fordításokhoz, és az alapszintű Translator v3 használatával érhető el, amikor egy neurális rendszer elérhető.
 
 [További információ a gépi fordítás működéséről](https://www.microsoft.com/translator/mt.aspx)
 
 ## <a name="translation"></a>Fordítás
 
-**V2 Translator API**
+**V2 Translator**
 
 > [!NOTE]
 > A v2 2018. április 30-ig elavult. Telepítse át az alkalmazásait a v3-ra, hogy kihasználhassa a kizárólag a v3 verzióban elérhető új funkciókat.
 
 * Csak statisztikai: nincs elérhető neurális rendszer ehhez a nyelvhez.
 * Neurális elérhető: egy neurális rendszer áll rendelkezésre. Használja a paramétert `category=generalnn` a neurális rendszerek eléréséhez.
-* Neurális alapértékek: a neurális az alapértelmezett fordítási rendszer. A paraméter `category=smt` használatával férhet hozzá a statisztikai rendszerhez a Microsoft Translator hub használatával.
+* Neurális alapértékek: a neurális az alapértelmezett fordítási rendszer. A paraméter használatával `category=smt` férhet hozzá a statisztikai rendszerhez a Microsoft Translator hub használatával.
 * Csak neurális: csak neurális fordítás érhető el.
 
-**V3 Translator API** A v3 Translator API alapértelmezés szerint a neurális, a statisztikai rendszerek pedig csak akkor érhetők el, ha nem létezik neurális rendszer.
+**V3 Translator** A v3 Translator alapértelmezett és statisztikai rendszerek csak akkor érhetők el, ha nem létezik neurális rendszer.
 
 > [!NOTE]
 > Jelenleg a neurális nyelvek egy részhalmaza érhető el az egyéni fordítóban, és fokozatosan adunk hozzá továbbikat. [Az egyéni fordítóban jelenleg elérhető nyelvek megtekintése](#customization).
@@ -116,7 +116,7 @@ A Translator Text API az alábbi nyelveket támogatja szöveg szöveggé fordít
 |Yucatec Maya|  `yua`   |   Statisztikai|
 
 > [!NOTE]
-> `pt` A `pt-br`nyelvkód alapértelmezett értéke, Portugál (Brazília).
+> A Nyelvkód `pt` alapértelmezett értéke `pt-br` , Portugál (Brazília).
 
 ## <a name="transliteration"></a>Átbetűzésű
 
@@ -204,12 +204,12 @@ A szótár a következő nyelveket támogatja angol nyelven vagy angol nyelven a
 
 ## <a name="detect"></a>Észlelés
 
-Translator Text API észleli a fordításhoz és az íráshoz elérhető összes nyelvet.
+A Translator a fordításhoz és az íráshoz elérhető összes nyelvet észleli.
 
 
-## <a name="access-the-translator-text-api-language-list-programmatically"></a>Programozott módon érheti el a Translator Text API nyelvi listáját
+## <a name="access-the-translator-language-list-programmatically"></a>Programozott módon férhet hozzá a Translator Language listához
 
-A támogatott nyelvek listáját a languages metódussal kérheti le a Translator Text API v 3.0-s verziójában. A listát a szolgáltatás, a Nyelvkód, valamint az angol nyelvű és más támogatott nyelven is megtekintheti. Ezt a listát a Microsoft Translator Service automatikusan frissíti, mivel a rendszer új nyelveket tesz elérhetővé.
+Lekérheti a Translator v 3.0 által támogatott nyelvek listáját a languages metódus használatával. A listát a szolgáltatás, a Nyelvkód, valamint az angol nyelvű és más támogatott nyelven is megtekintheti. Ezt a listát a Microsoft Translator Service automatikusan frissíti, mivel a rendszer új nyelveket tesz elérhetővé.
 
 [Nyelvek megtekintése – útmutató – dokumentáció](reference/v3-0-languages.md)
 
@@ -269,6 +269,6 @@ Az [Egyéni Translator](https://aka.ms/CustomTranslator)használatával a követ
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>A lista elérése a Microsoft Translator webhelyén
 
-A nyelvek gyors áttekintéséhez a Microsoft Translator webhelyén a Translator Text és a Speech API-k által támogatott összes nyelv látható. Ez a lista nem tartalmazza a fejlesztői adatokat, például a nyelvi kódokat.
+A Microsoft Translator webhelyén gyorsan megtekintheti a nyelveket, és a fordító és a beszédfelismerés API-k által támogatott összes nyelvet megjeleníti. Ez a lista nem tartalmazza a fejlesztői adatokat, például a nyelvi kódokat.
 
 [A nyelvek listája](https://www.microsoft.com/translator/languages.aspx)

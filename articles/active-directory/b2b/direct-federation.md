@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 12d87c12b84130d404eaf203fd6013f6924020f5
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 299b0a677e7ca7bea9481d94ecf98c993af0a6ed
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199451"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591216"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 |     |
@@ -146,7 +146,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Közvetlen összevonás konfigurálása az Azure AD-portálon
 
 1. Lépjen a [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok**  >  **minden Identity Provider** (vagy **külső identitások**  >  **minden identitás szolgáltató**) lehetőséget.
+2. Válassza ki a **külső identitások**  >  **összes identitás-szolgáltatóját**.
 3. Válassza ki a elemet, majd válassza az **Új SAML/ws-fed identitásszolgáltató**elemet.
 
     ![Új SAML-vagy WS-fed-identitásszolgáltató hozzáadását bemutató gomb](media/direct-federation/new-saml-wsfed-idp.png)
@@ -194,7 +194,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Hogyan a közvetlen összevonási kapcsolat szerkesztését?
 
 1. Lépjen a [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok** (vagy **külső identitások**) lehetőséget.
+2. Válassza a **külső identitások**lehetőséget.
 3. **Az összes Identity Provider** kijelölése
 4. Az **SAML/ws-fed identitás-szolgáltatók**területen válassza ki a szolgáltatót.
 5. Az identitás-szolgáltató részletei ablaktáblán frissítse az értékeket.
@@ -205,7 +205,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 Törölheti a közvetlen összevonási telepítést. Ha így tesz, a meghívónak már beváltott felhasználók nem fognak tudni bejelentkezni. Ha azonban ismét hozzáférést ad az erőforrásokhoz, törölje őket a címtárból, és hívja fel őket. Az Azure AD-portálon lévő közvetlen összevonás eltávolítása az identitás-szolgáltatóval:
 
 1. Lépjen a [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
-2. Válassza a **szervezeti kapcsolatok** (vagy **külső identitások**) lehetőséget.
+2. Válassza a **külső identitások**lehetőséget.
 3. Válassza ki **az összes identitás szolgáltatót**.
 4. Válassza ki az identitás-szolgáltatót, majd válassza a **Törlés**lehetőséget. 
 5. A törlés megerősítéséhez válassza az **Igen** lehetőséget. 

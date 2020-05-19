@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7ce011a34aed39429884dc03285a0848776ac008
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006066"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591981"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -28,7 +28,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
 - Szinapszis-szerepkörök – ezek a szerepkörök egyediek a szinapszisok számára, és nem az Azure szerepkörein alapulnak. A szerepkörök közül három:
   - Szinapszis-munkaterület rendszergazdája
   - Szinapszis SQL-rendszergazda
-  - Szinapszis Spark-rendszergazda
+  - Az Azure szinapszis Analytics-rendszergazda Apache Spark
 - Azure Data Lake Storage Gen 2 (ADLSGEN2) adathozzáférés-vezérlése.
 - A szinapszis SQL és a Spark adatbázisok hozzáférés-vezérlése
 
@@ -48,11 +48,11 @@ Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséh
 
 Hozza létre és töltse fel a munkaterület három biztonsági csoportját:
 
-- **WS1\_WSAdmins** – azon felhasználók számára, akiknek teljes körű vezérlésre van szükségük a munkaterületen
-- **WS1\_SparkAdmins** – azoknak a felhasználóknak, akik a munkaterület Spark-szempontjainak teljes körű vezérlését szeretnék végezni
-- **WS1\_SQLAdmins** – azon felhasználók számára, akiknek teljes körű vezérlésre van SZÜKSÉGük a munkaterület SQL-szempontjai felett
-- **WS1\_-WSAdmins** hozzáadása a **WS1\_SQLAdmins**
-- **WS1\_-WSAdmins** hozzáadása a **WS1\_SparkAdmins**
+- **WS1 \_ WSAdmins** – azoknak a felhasználóknak, akiknek teljes körű felügyeletet kell végezniük a munkaterület felett
+- **WS1 \_ SparkAdmins** – azoknak a felhasználóknak, akik a munkaterület Spark-szempontjainak teljes körű felügyeletét szeretnék
+- **WS1 \_ SQLAdmins** – a munkaterület SQL-szempontjait teljes körű vezérlést igénylő felhasználók számára
+- **WS1- \_ WSAdmins** hozzáadása a **WS1 \_ SQLAdmins**
+- **WS1- \_ WSAdmins** hozzáadása a **WS1 \_ SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>2. lépés: a Data Lake Storage Gen2-fiók előkészítése
 
@@ -65,9 +65,9 @@ A tárterülettel kapcsolatos információk azonosítása:
 
 - A Azure Portal használatával rendelje hozzá a biztonsági csoportokat a következő szerepkörökhöz a CNT1
 
-  - **\_WS1-WSAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
-  - **\_WS1-SparkAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
-  - **\_WS1-SQLAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
+  - **WS1- \_ WSAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
+  - **WS1- \_ SparkAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
+  - **WS1- \_ SQLAdmins** társítása a **tárolási blob adatközreműködői** szerepkörhöz
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>3. lépés: a szinapszis-munkaterület létrehozása és konfigurálása
 
@@ -77,10 +77,10 @@ A Azure Portal hozzon létre egy szinapszis-munkaterületet:
 - STG1 kiválasztása a Storage-fiókhoz
 - Válassza a CNT1 lehetőséget a tárolóhoz, amelyet "fájlrendszerként" használ.
 - WS1 megnyitása a szinapszis Studióban
-- Válassza a **kezelés** > **Access Control** a biztonsági csoportok társítása a következő szinapszis-szerepkörökhöz lehetőséget.
-  - **WS1\_-WSAdmins** társítása a szinapszis-munkaterület rendszergazdái számára
-  - **WS1\_-SparkAdmins** kiosztása az szinapszis Spark-rendszergazdáknak
-  - **WS1\_-SQLAdmins** kiosztása a szinapszis SQL-rendszergazdáknak
+- Válassza a **kezelés**  >  **Access Control** a biztonsági csoportok társítása a következő szinapszis-szerepkörökhöz lehetőséget.
+  - **WS1- \_ WSAdmins** társítása a szinapszis-munkaterület rendszergazdái számára
+  - **WS1- \_ SparkAdmins** kiosztása az szinapszis Spark-rendszergazdáknak
+  - **WS1- \_ SQLAdmins** kiosztása a szinapszis SQL-rendszergazdáknak
 
 ## <a name="step-4-configuring-data-lake-storage-gen2-for-use-by-synapse-workspace"></a>4. lépés: a Data Lake Storage Gen2 konfigurálása a szinapszis munkaterület általi használatra
 
@@ -91,14 +91,14 @@ A szinapszis munkaterületnek hozzá kell férnie a STG1 és a CNT1, hogy képes
 - Navigáljon a CNT1
 - Győződjön meg arról, hogy a WS1 MSI-fájlja (Managed Service Identity) hozzá van rendelve a **Storage blob adatközreműködői** szerepkörhöz a CNT1
   - Ha nem látja a hozzárendelést, rendelje hozzá.
-  - Az MSI neve megegyezik a munkaterülettel. Ebben az esetben a &quot;WS1&quot;lenne.
+  - Az MSI neve megegyezik a munkaterülettel. Ebben az esetben a &quot; WS1 lenne &quot; .
 
 ## <a name="step-5-configure-admin-access-for-sql-pools"></a>5. lépés: rendszergazdai hozzáférés konfigurálása SQL-készletekhez
 
 - A Azure Portal megnyitása
 - Navigáljon a WS1
 - A **Beállítások**területen kattintson az **SQL Active Directory-rendszergazda** lehetőségre.
-- Kattintson a **rendszergazda beállítása** elemre\_, és válassza a WS1 SQLAdmins
+- Kattintson a **rendszergazda beállítása** elemre, és válassza a WS1 \_ SQLAdmins
 
 ## <a name="step-6-maintaining-access-control"></a>6. lépés: hozzáférés-vezérlés fenntartása
 
@@ -119,7 +119,7 @@ Az egyes szerepkörökben lévő felhasználóknak a következő lépéseket kel
 | 3 | Spark-készlet létrehozása | IGEN [1] | IGEN [1] | NO  |
 | 4 | A Parquet-fájl beolvasása jegyzetfüzettel | IGEN | IGEN | NO |
 | 5 | Hozzon létre egy folyamatot a jegyzetfüzetből, és indítsa el a folyamatot most | IGEN | NO | NO |
-| 6 | Hozzon létre egy SQL-készletet, és futtasson egy SQL-parancsfájlt, például válassza az &quot;1 elemet&quot; | IGEN [1] | NO | IGEN [1] |
+| 6 | Hozzon létre egy SQL-készletet, és futtasson egy SQL-parancsfájlt, például &quot; válassza az 1 elemet&quot; | IGEN [1] | NO | IGEN [1] |
 
 > [!NOTE]
 > [1] SQL-vagy Spark-készletek létrehozásához a felhasználónak legalább közreműködő szerepkörrel kell rendelkeznie a szinapszis munkaterületen.

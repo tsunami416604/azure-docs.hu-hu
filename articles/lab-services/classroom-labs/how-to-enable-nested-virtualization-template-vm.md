@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 3c954c4689281838ea8c61c932cdcc3b74bac442
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7831e554fcca20134d5cf8608481ff0c82eb8a0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82184673"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591998"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services
 
-Jelenleg a Azure Lab Services lehetővé teszi egy sablonban lévő virtuális gép beállítását egy laborban, és az egyes felhasználók számára egyetlen másolatot készíthet. Ha Ön olyan professzor, amely hálózatkezelési, biztonsági vagy informatikai osztályokat tanít, előfordulhat, hogy minden tanulót egy olyan környezettel kell megadnia, amelyben több virtuális gép kommunikálhat egymással egy hálózaton keresztül.
+Jelenleg a Azure Lab Services lehetővé teszi egy sablonban lévő virtuális gép beállítását egy laborban, és az egyes felhasználók számára egyetlen másolatot készíthet. Ha Ön pedagógusa a hálózatkezelés, a biztonság vagy az informatikai osztályok számára, előfordulhat, hogy minden tanulót egy olyan környezettel kell megadnia, amelyben több virtuális gép kommunikálhat egymással egy hálózaton keresztül.
 
 A beágyazott virtualizálás lehetővé teszi, hogy több virtuális gépre kiterjedő környezetet hozzon létre a labor sablonjának virtuális gépén. A sablon közzétételével minden felhasználó számára elérhetővé válik a laborban egy virtuális gép, amelyben több virtuális gép van beállítva.  Ez a cikk bemutatja, hogyan állíthatja be a beágyazott virtualizálás szolgáltatást egy Azure Lab Services található sablonos gépen.
 

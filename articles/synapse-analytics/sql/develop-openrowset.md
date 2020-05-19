@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: c4b0c5277fb826780ff0c103f011c26049282672
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4ec6e18aa4fa741ba784e68ccf9b5f87ad654eba
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201482"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591420"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Igény szerinti SQL-OPENROWSET használata (előzetes verzió)
 
@@ -48,7 +48,7 @@ Ezzel a módszerrel gyorsan és egyszerűen elolvashatja a fájlok tartalmát el
     Ezzel a beállítással konfigurálhatja a Storage-fiók helyét az adatforrásban, és megadhatja a tároló eléréséhez használandó hitelesítési módszert. 
     
     > [!IMPORTANT]
-    > `OPENROWSET``DATA_SOURCE`a nem biztosít gyors és egyszerű módszert a tárolási fájlok eléréséhez, de korlátozott hitelesítési lehetőségeket kínál. Az Azure AD-rendszerbiztonsági tag például csak az [Azure ad-identitásuk](develop-storage-files-storage-access-control.md#user-identity) használatával férhet hozzá a fájlokhoz, és nem fér hozzá a nyilvánosan elérhető fájlokhoz. Ha nagyobb teljesítményű hitelesítési beállításokra van szüksége, használja `DATA_SOURCE` a kapcsolót, és adja meg a tárhely eléréséhez használni kívánt hitelesítő adatokat.
+    > `OPENROWSET``DATA_SOURCE`a nem biztosít gyors és egyszerű módszert a tárolási fájlok eléréséhez, de korlátozott hitelesítési lehetőségeket kínál. Az Azure AD-rendszerbiztonsági tag például csak az [Azure ad-identitásuk](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) használatával férhet hozzá a fájlokhoz, és nem fér hozzá a nyilvánosan elérhető fájlokhoz. Ha nagyobb teljesítményű hitelesítési beállításokra van szüksége, használja `DATA_SOURCE` a kapcsolót, és adja meg a tárhely eléréséhez használni kívánt hitelesítő adatokat.
 
 ## <a name="security"></a>Biztonság
 
@@ -58,9 +58,9 @@ A tároló rendszergazdájának engedélyeznie kell a felhasználók számára, 
 
 `OPENROWSET`a következő szabályok segítségével határozhatja meg, hogyan hitelesíthető a tárolóban:
 - A-ben `OPENROWSET` `DATA_SOURCE` a hitelesítési mechanizmus a hívó típusától függ.
-  - A HRE-bejelentkezések csak a saját [Azure ad-identitásuk](develop-storage-files-storage-access-control.md#user-identity) használatával férhetnek hozzá a fájlokhoz, ha az Azure Storage lehetővé teszi, hogy az Azure ad-felhasználó hozzáférjen a mögöttes fájlokhoz (például ha a hívó rendelkezik Storage Reader engedéllyel a tárolóban), és ha [engedélyezi az Azure ad áteresztő HITELESÍTÉST](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) a szinapszis SQL-szolgáltatásban.
+  - A HRE-bejelentkezések csak a saját [Azure ad-identitásuk](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) használatával férhetnek hozzá a fájlokhoz, ha az Azure Storage lehetővé teszi, hogy az Azure ad-felhasználó hozzáférjen a mögöttes fájlokhoz (például ha a hívó rendelkezik Storage Reader engedéllyel a tárolóban), és ha [engedélyezi az Azure ad áteresztő HITELESÍTÉST](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) a szinapszis SQL-szolgáltatásban.
   - Az SQL-bejelentkezések `OPENROWSET` nem `DATA_SOURCE` férnek hozzá a nyilvánosan elérhető fájlokhoz, az SAS-jogkivonattal vagy a szinapszis munkaterület felügyelt identitásával védett fájlokat is használhatnak. [Létre kell hoznia egy kiszolgáló-hatókörű hitelesítő adatot](develop-storage-files-storage-access-control.md#examples) a tárolási fájlok elérésének engedélyezéséhez. 
-- A `OPENROWSET` és a `DATA_SOURCE` hitelesítési mechanizmus a hivatkozott adatforráshoz rendelt adatbázis-hatókörű hitelesítő adatokban van definiálva. Ez a beállítás lehetővé teszi a nyilvánosan elérhető tárolók elérését, vagy az SAS-token, a munkaterület felügyelt identitása vagy [a hívó Azure ad-identitása](develop-storage-files-storage-access-control.md#user-identity) (ha a hívó az Azure ad rendszerbiztonsági tag) használatával fér hozzá a tárolóhoz. Ha a `DATA_SOURCE` nem nyilvános Azure Storage-ra hivatkozik, létre kell [hoznia adatbázis-hatókörű hitelesítő adatokat](develop-storage-files-storage-access-control.md#examples) , és hivatkoznia kell rá a `DATA SOURCE` tároló fájlokhoz való hozzáférés engedélyezéséhez.
+- A-ben `OPENROWSET` `DATA_SOURCE` a hitelesítési mechanizmus a hivatkozott adatforráshoz rendelt adatbázis-hatókörű hitelesítő adatokban van definiálva. Ez a beállítás lehetővé teszi a nyilvánosan elérhető tárolók elérését, vagy az SAS-token, a munkaterület felügyelt identitása vagy [a hívó Azure ad-identitása](develop-storage-files-storage-access-control.md?tabs=user-identity#) (ha a hívó az Azure ad rendszerbiztonsági tag) használatával fér hozzá a tárolóhoz. Ha a `DATA_SOURCE` nem nyilvános Azure Storage-ra hivatkozik, létre kell [hoznia adatbázis-hatókörű hitelesítő adatokat](develop-storage-files-storage-access-control.md#examples) , és hivatkoznia kell rá a `DATA SOURCE` tároló fájlokhoz való hozzáférés engedélyezéséhez.
 
 A hívónak engedéllyel kell rendelkeznie `REFERENCES` a hitelesítő adatok tárolásához való használatához.
 
@@ -240,6 +240,6 @@ Ha hibaüzenetet kap arról, hogy a fájlok nem szerepelhetnek a felsorolásban,
 - Ha SQL-bejelentkezést használ, olyan [kiszolgálói hatókörű hitelesítő adatokat kell létrehoznia, amelyek engedélyezik a hozzáférést a nyilvános tárolóhoz](develop-storage-files-storage-access-control.md#examples).
 - Ha Azure AD-rendszerbiztonsági tag használatával fér hozzá a nyilvános tárolóhoz, létre kell [hoznia egy kiszolgáló-hatókörű hitelesítő adatot, amely engedélyezi a hozzáférést a nyilvános tárolóhoz](develop-storage-files-storage-access-control.md#examples) , és letiltja az [Azure ad átadó hitelesítését](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példákért tekintse meg a [lekérdezési adattárolási](query-data-storage.md) útmutató című témakört, amelyből megtudhatja, hogyan használható a OpenRowset a [CSV](query-single-csv-file.md)-, a [parketta](query-parquet-files.md)-és a [JSON](query-json-files.md) -fájlformátumok olvasásához Azt is megtudhatja, hogyan mentheti a lekérdezés eredményeit az Azure Storage-ba a [CETAS](develop-tables-cetas.md)használatával.

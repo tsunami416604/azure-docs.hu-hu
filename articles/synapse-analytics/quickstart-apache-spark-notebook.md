@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Apache Spark jegyzetfüzet létrehozása'
+title: 'Rövid útmutató: Apache Spark létrehozása az Azure szinapszis Analytics notebookhoz'
 description: Ez a rövid útmutató azt ismerteti, hogyan használható a webes eszközök Apache Spark készlet (előzetes verzió) létrehozásához az Azure szinapszis Analyticsben, és hogyan futtathat egy Spark SQL-lekérdezést.
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: quickstart
 ms.date: 04/15/2020
-ms.openlocfilehash: 47235ca0e420e0de9f6c4beb070e0b75b72e7549
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 9e8a539421a76b6f94f10d559ad0086c9d87abf4
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82786668"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592950"
 ---
 # <a name="quickstart-create-an-apache-spark-pool-preview-in-azure-synapse-analytics-using-web-tools"></a>Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával
 
@@ -49,7 +49,7 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
 4. A **Tulajdonságok** ablakban adja meg a jegyzetfüzet nevét.
 5. Az eszköztáron kattintson a **Közzététel**elemre.
 6. Ha a munkaterületen csak egy Apache Spark készlet található, akkor alapértelmezés szerint ki van választva. A legördülő listából válassza ki a megfelelő Apache Spark készletet, ha nincs kiválasztva.
-7. Kattintson a **kód hozzáadása**gombra. Az alapértelmezett nyelv: `Pyspark`. A Pyspark és a Spark SQL kombinációját fogja használni, ezért az alapértelmezett választás a megfelelő.
+7. Kattintson a **kód hozzáadása**gombra. Az alapértelmezett nyelv: `Pyspark` . A Pyspark és a Spark SQL kombinációját fogja használni, ezért az alapértelmezett választás a megfelelő.
 8. Ezután hozzon létre egy egyszerű Spark DataFrame objektumot a kezeléshez. Ebben az esetben a kód alapján hozza létre. Három sor és három oszlop található:
 
    ```python
@@ -79,7 +79,7 @@ A notebook egy interaktív környezet, amely különböző programozási nyelvek
      demo_df.write.parquet('abfss://<<TheNameOfAStorageAccountFileSystem>>@<<TheNameOfAStorageAccount>>.dfs.core.windows.net/demodata/demo_df', mode='overwrite')
     ```
 
-    Ha a Storage Explorert használja, lehetséges, hogy a fentiekben használt két különböző módszer hatását is láthatja. Ha nincs megadva fájlrendszer, a rendszer az alapértelmezett értéket használja, ebben az esetben `default>user>trusted-service-user>demo_df`. A rendszer menti az adatfájlokat a megadott fájlrendszer helyére.
+    Ha a Storage Explorert használja, lehetséges, hogy a fentiekben használt két különböző módszer hatását is láthatja. Ha nincs megadva fájlrendszer, a rendszer az alapértelmezett értéket használja, ebben az esetben `default>user>trusted-service-user>demo_df` . A rendszer menti az adatfájlokat a megadott fájlrendszer helyére.
 
     Figyelje meg, hogy a "CSV" és a "parketta" formátumokban az írási műveletek számos particionált fájllal jönnek létre.
 
@@ -98,7 +98,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
    SHOW TABLES
    ```
 
-   Ha az Azure szinapszis Apache Spark készlettel rendelkező jegyzetfüzetet használ, olyan beállításkészletet `sqlContext` kap, amelyet a Spark SQL használatával lekérdezések futtatására használhat. `%%sql`azt jelzi, hogy a jegyzetfüzet az `sqlContext` előre beállított használatával futtatja a lekérdezést. A lekérdezés lekérdezi az első 10 sort egy olyan rendszertáblából, amely alapértelmezés szerint az összes Azure szinapszis Apache Spark készlethez tartozik.
+   Ha az Azure szinapszis Apache Spark készlettel rendelkező jegyzetfüzetet használ, olyan beállításkészletet kap, `sqlContext` amelyet a Spark SQL használatával lekérdezések futtatására használhat. `%%sql`azt jelzi, hogy a jegyzetfüzet az előre beállított használatával `sqlContext` futtatja a lekérdezést. A lekérdezés lekérdezi az első 10 sort egy olyan rendszertáblából, amely alapértelmezés szerint az összes Azure szinapszis Apache Spark készlethez tartozik.
 
 2. Futtasson egy másik lekérdezést a `demo_df` adatainak megtekintéséhez.
 
@@ -119,7 +119,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 6. Az X tengely oszlop mezőjében válassza az "állapot" lehetőséget.
 7. Az Y tengely oszlop mezőjében válassza a "fizetés" lehetőséget.
 8. Az **Összesítés** mezőben válassza az "AVG" lehetőséget.
-9. Kattintson az **Alkalmaz** gombra.
+9. Kattintson az **Alkalmaz** elemre.
 
    ![Diagram kimenete az Azure szinapszis Sparkban](./media/quickstart-apache-spark-notebook/spark-get-started-query-chart-output.png "Diagram kimenete az Azure szinapszis Sparkban")
 
@@ -131,7 +131,7 @@ A Structured Query Language (SQL) a leggyakoribb és legszélesebb körben haszn
 
 11. A korábban végrehajtott cellák mindegyike lehetőséget kapott az **Előzmények kiszolgáló** és a **figyelés**megugrására. A hivatkozásokra kattintva a felhasználói élmény különböző részeire juthat.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Az Azure szinapszis Azure Data Lake Storage tárolja az adatait. Biztonságosan engedélyezheti a Spark-példányok leállítását, ha az nincs használatban. Az Azure szinapszis Apache Spark-készletért kell fizetnie, ha az fut, még akkor is, ha nincs használatban. A készlet díjai többször is meghaladják a tárterület díját. Ezért a gazdasági értelemben a Spark-példányok leállítására van szükség, amikor nincsenek használatban.
 

@@ -8,22 +8,22 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: a2f907384326aa887c12c293feb8c988f42bbaf1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210513"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591964"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Az Azure szinapszis Analytics Apache Spark-készletek automatikus méretezése
 
-Az Azure szinapszis Spark-készlet automatikus méretezési funkciója automatikusan méretezi a fürtben lévő csomópontok számát. Új Azure szinapszis Spark-készlet létrehozása során a csomópontok minimális és maximális száma beállítható az autoscale kiválasztásakor. Az automatikus skálázás ezután figyeli a terhelés erőforrás-követelményeit, és a csomópontok számát felfelé vagy lefelé méretezi. Ehhez a szolgáltatáshoz nem számítunk fel további díjat.
+Az Azure szinapszis Analytics-készlet automatikus méretezési funkciójának Apache Spark automatikusan méretezi a fürtben lévő csomópontok számát. Az Azure szinapszis Analytics-készlethez készült új Apache Spark létrehozása során a csomópontok minimális és maximális száma beállítható az autoscale kiválasztásakor. Az automatikus skálázás ezután figyeli a terhelés erőforrás-követelményeit, és a csomópontok számát felfelé vagy lefelé méretezi. Ehhez a szolgáltatáshoz nem számítunk fel további díjat.
 
 ## <a name="metrics-monitoring"></a>Metrikák figyelése
 
 Az autoscale folyamatosan figyeli a Spark-példányt, és a következő metrikákat gyűjti:
 
-|Metrika|Leírás|
+|Metric|Leírás|
 |---|---|
 |Függőben lévő CPU összesen|Az összes függőben lévő csomópont végrehajtásának megkezdéséhez szükséges magok teljes száma.|
 |Függőben lévő memória összesen|Az összes függőben lévő csomópont végrehajtásának megkezdéséhez szükséges teljes memória (MB).|

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ff464936025a20cb6925adc7ef6eb44c2fe1f0e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8479c00ed2129d5726421f576e1fffdb4506fb4b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78933811"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592474"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Virtuális gépek készleteinek létrehozása és kezelése 
 Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan végezheti el a következő feladatokat:
 ## <a name="update-the-lab-capacity"></a>A tesztkörnyezet kapacitásának frissítése
 A labor kapacitásának növeléséhez vagy csökkentéséhez (a laborban található virtuális gépek száma) hajtsa végre a következő lépéseket:
 
-1. A **virtuális gép készlete** lapon válassza a **labor kapacitása: &lt;számú&gt; gép**lehetőséget.
+1. A **virtuális gép készlete** lapon válassza a **labor kapacitása: &lt; számú &gt; gép**lehetőséget.
 2. Adja meg a laborban használni kívánt **virtuális gépek új számát** . Ennek a számnak nagyobbnak vagy egyenlőnek kell lennie a laborban regisztrált felhasználók számával. 
 3. Ezután válassza a **Mentés**lehetőséget. 
 
@@ -74,14 +74,14 @@ A **virtuális gép (ek) alaphelyzetbe állítása** párbeszédpanelen válassz
 
 
 ## <a name="set-password-for-vms"></a>Virtuális gépek jelszavának beállítása
-A labor tulajdonosa (tanár) beállíthatja/alaphelyzetbe állíthatja a virtuális gépek jelszavát a labor létrehozásakor (labor létrehozása varázsló) vagy a labor létrehozása után a **sablon** lapon. 
+A labor tulajdonosa (pedagógus) beállíthatja/alaphelyzetbe állíthatja a virtuális gépek jelszavát a labor létrehozásakor (labor létrehozása varázsló) vagy a labor létrehozása után a **sablon** lapon. 
 
 ### <a name="set-password-at-the-time-of-lab-creation"></a>Jelszó beállítása a labor létrehozásakor
-A labor tulajdonosa (tanár) a labor létrehozása varázsló **virtuális gép hitelesítő adatai** lapján állíthatja be a virtuális gépek jelszavát a laborban.
+A labor tulajdonosa (pedagógus) beállíthatja a virtuális gépek jelszavát a labor létrehozási varázsló **virtuális gép hitelesítő adatok** lapján.
 
 ![Új tesztkörnyezet ablak](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
 
-Ha engedélyezi vagy letiltja az **azonos jelszó használata az összes virtuális gép számára** beállítást ezen az oldalon, a tanár dönthet úgy, hogy ugyanazt a jelszót használja a tesztkörnyezetben lévő összes virtuális géphez, vagy lehetővé teszi a tanulók számára a virtuális gépek jelszavának beállítását. Alapértelmezés szerint ez a beállítás az Ubuntu kivételével minden Windows-és Linux operációsrendszer-lemezkép esetében engedélyezve van. Ha ez a beállítás le van tiltva, a diákoknak meg kell adnia egy jelszót, amikor első alkalommal próbálnak csatlakozni a virtuális géphez. 
+Ha engedélyezi vagy letiltja az **azonos jelszó használata az összes virtuális gép számára** beállítást ezen az oldalon, a pedagógus dönthet úgy, hogy ugyanazt a jelszót használja a tesztkörnyezetben lévő összes virtuális géphez, vagy lehetővé teszi a tanulók számára a virtuális gépek jelszavának beállítását. Alapértelmezés szerint ez a beállítás az Ubuntu kivételével minden Windows-és Linux operációsrendszer-lemezkép esetében engedélyezve van. Ha ez a beállítás le van tiltva, a diákoknak meg kell adnia egy jelszót, amikor első alkalommal próbálnak csatlakozni a virtuális géphez. 
 
 ### <a name="reset-password-later"></a>Jelszó alaphelyzetbe állítása később
 
@@ -91,7 +91,7 @@ Ha engedélyezi vagy letiltja az **azonos jelszó használata az összes virtuá
     ![Jelszó beállítása párbeszédpanel](../media/how-to-set-virtual-machine-passwords/set-password.png)
 
 ## <a name="connect-to-student-vms"></a>Kapcsolódás tanulói virtuális gépekhez
-A labor Creator (oktató/professzor) a következő feltételek teljesülése esetén tud csatlakozni a tanuló virtuális géphez: 
+Ha a következő feltételek teljesülnek, a tesztkörnyezet létrehozója (pedagógus) tud csatlakozni a tanuló virtuális géphez: 
 
 - A tesztkörnyezet létrehozásakor a **virtuális gépekhez ugyanazt a jelszót kell használni**
 - A virtuális gép fut 
@@ -101,7 +101,7 @@ A labor Creator (oktató/professzor) a következő feltételek teljesülése ese
 ![Kapcsolódás tanulói virtuális géphez gomb](../media/how-to-set-virtual-machine-passwords/connect-student-vm.png)
 
 > [!NOTE]
-> Ha a professzor elindítja a virtuális gépet, és csatlakozik hozzá, a tanulói kvóta nincs hatással. 
+> Ha a pedagógus elindítja a virtuális gépet, és csatlakozik hozzá, a tanulói kvóta nincs hatással. 
 
 ## <a name="export-list-of-virtual-machines-to-a-csv-file"></a>Virtuális gépek listájának exportálása CSV-fájlba
 

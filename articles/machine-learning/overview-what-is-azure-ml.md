@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
-ms.openlocfilehash: b8dbbb2810277bef20cb3b9b47a63deeea3e0ff9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b97bae252b25c9ae2891506f08fc4955f84c1eb6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241611"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593018"
 ---
 # <a name="what-is-azure-machine-learning"></a>Mi az Azure Machine Learning?
 
@@ -23,7 +23,7 @@ Azure Machine Learning bármilyen gépi tanuláshoz használható, klasszikus ml
 
 Indítsa el a képzést a helyi gépen, majd bővítse a felhőt. 
 
-A szolgáltatás a népszerű, nyílt forráskódú eszközökkel, például a PyTorch, a TensorFlow és a scikit-Learn eszközzel is együttműködik.
+A szolgáltatás emellett együttműködik a népszerű mély tanulási és megerősítő nyílt forráskódú eszközökkel, például a PyTorch, a TensorFlow, a scikit-Learn és a Ray RLlib. 
 
 > [!VIDEO https://channel9.msdn.com/Events/Connect/Microsoft-Connect--2018/D240/player]
 
@@ -48,9 +48,11 @@ Azure Machine Learning biztosítja a gépi tanulási munkafolyamataihoz szüksé
 
 + [Visual Studio Code-bővítmény](tutorial-setup-vscode-extension.md)
 
-+ [Machine learning parancssori felület](reference-azure-machine-learning-cli.md)
++ [Machine learning CLI](reference-azure-machine-learning-cli.md)
 
 + Nyílt forráskódú keretrendszerek, mint például a PyTorch, a TensorFlow és a scikit – Learn és sok más
+
++ [Megerősítő tanulás](how-to-use-reinforcement-learning.md) a Ray RLlib
 
 A [MLflow használatával nyomon követheti a metrikákat, és üzembe helyezheti a modelleket](how-to-use-mlflow.md) vagy a Kubeflow, így teljes [körű munkafolyamat-folyamatokat hozhat létre](https://www.kubeflow.org/docs/azure/).
 

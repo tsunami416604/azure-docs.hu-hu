@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: faae149cc6cfe9140f7e6908f5eb92d3031ef6d8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690824"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592185"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)
 
@@ -22,16 +22,7 @@ ms.locfileid: "82690824"
 
 **K: mi érhető el?**
 
-**A:** a [tárolók támogatása az Azure Cognitive Services](../cognitive-services-container-support.md) lehetővé teszi a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . A tárolók támogatása jelenleg előzetes verzióban érhető el az Azure Cognitive Services egy részhalmaza számára, beleértve a következő részeit:
-
-> [!div class="checklist"]
-> * [Anomaly Detector][ad-containers]
-> * [Számítógépes látástechnológia][cv-containers]
-> * [Arcfelismerés][fa-containers]
-> * [Form Recognizer][fr-containers]
-> * [Language Understanding (LUIS)][lu-containers]
-> * [Speech Service API][sp-containers]
-> * [Szövegelemzés][ta-containers]
+**A:** Az Azure Cognitive Services tárolók lehetővé teszik a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . Egyes tárolók elérhető [előzetes](../cognitive-services-gating-process.md)verzióként érhetők el, amelyekhez szükség lehet az alkalmazás elérésére. Más tárolók nyilvánosan elérhetők az előzetes verzióként, vagy általánosan elérhetők. A tárolók teljes listáját és azok rendelkezésre állását az Azure-beli [tároló-támogatásban találja Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) cikkben. 
 
 **K: van különbség a Cognitive Services felhő és a tárolók között?**
 
@@ -62,7 +53,7 @@ Sajnos a Cognitive Services tárolók natív módon *nem* támogatottak a szuver
 
 **K: Hogyan frissülnek a tárolók a legújabb verzióra?**
 
-**A:** Az ügyfelek választhatnak, hogy mikor szeretnék frissíteni az üzembe helyezett tárolókat. A tárolók szabványos [Docker](https://docs.docker.com/engine/reference/commandline/tag/) `latest` -címkékkel lesznek megjelölve, például a legújabb verzió jelzésére. Azt javasoljuk ügyfeleinknek, hogy a felszabadított tárolók legújabb verzióját használják fel, a pénztár [Azure Container Registry webhookot](../../container-registry/container-registry-webhook.md) , amelyből megtudhatja, hogyan kérhet értesítést a lemezkép frissítésekor.
+**A:** Az ügyfelek választhatnak, hogy mikor szeretnék frissíteni az üzembe helyezett tárolókat. A tárolók szabványos [Docker-címkékkel](https://docs.docker.com/engine/reference/commandline/tag/) lesznek megjelölve, például `latest` a legújabb verzió jelzésére. Azt javasoljuk ügyfeleinknek, hogy a felszabadított tárolók legújabb verzióját használják fel, a pénztár [Azure Container Registry webhookot](../../container-registry/container-registry-webhook.md) , amelyből megtudhatja, hogyan kérhet értesítést a lemezkép frissítésekor.
  
 **K: milyen verziók lesznek támogatottak?**
 
@@ -80,7 +71,7 @@ Sajnos a Cognitive Services tárolók natív módon *nem* támogatottak a szuver
 
 **K: kompatibilisek ezek a tárolók a OpenShift-mel?** 
 
-A tárolókat nem teszteljük OpenShift, de általában Cognitive Services tárolókat a Docker-rendszerképeket támogató bármely platformon kell futtatni. Ha a OpenShift-t `root-user`használja, javasoljuk, hogy futtassa a tárolókat.
+A tárolókat nem teszteljük OpenShift, de általában Cognitive Services tárolókat a Docker-rendszerképeket támogató bármely platformon kell futtatni. Ha a OpenShift-t használja, javasoljuk, hogy futtassa a tárolókat `root-user` .
 
 **K: Hogyan a termékkel kapcsolatos visszajelzéseket és a szolgáltatásokra vonatkozó ajánlásokat?**
 
@@ -111,13 +102,13 @@ Tekintse át az alábbi címkéket az igényeihez igazodó lehetséges kérdése
 
 **A:** Az ügyfeleknek a Cognitive Services felhőhöz hasonlóan kell fizetniük. A tárolókat úgy kell konfigurálni, hogy mérési adatküldési adatként küldjenek az Azure-ba, és ennek megfelelően a tranzakciók számlázása is megtörténik. Az üzemeltetett és a helyszíni szolgáltatásokban használt erőforrások egyetlen kvótához lesznek hozzáadva, többszintű díjszabással, mindkét használattal számolva. További részletekért tekintse meg a megfelelő ajánlat díjszabási lapját.
 
-* [Anomaly Detector][ad-containers-billing]
-* [Számítógépes látástechnológia][cv-containers-billing]
-* [Arcfelismerés][fa-containers-billing]
+* [Anomáliadetektor][ad-containers-billing]
+* [Computer Vision][cv-containers-billing]
+* [Face][fa-containers-billing]
 * [Form Recognizer][fr-containers-billing]
 * [Language Understanding (LUIS)][lu-containers-billing]
 * [Speech Service API][sp-containers-billing]
-* [Szövegelemzés][ta-containers-billing]
+* [Text Analytics][ta-containers-billing]
 
 > [!IMPORTANT]
 > Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat a Microsoftnak.
@@ -138,13 +129,13 @@ Tekintse át az alábbi címkéket az igényeihez igazodó lehetséges kérdése
 
 **A:** Cognitive Services tárolók olyan x64-alapú tárolók, amelyek az x64-es Linux Docker-tárolókat támogató kompatibilis Linux-csomópontokat, virtuális gépeket és peremhálózati eszközöket futtathatnak. Minden processzor processzort igényelnek. Az egyes tárolók minimális és ajánlott konfigurációi a következőkben érhetők el:
 
-* [Anomaly Detector][ad-containers-recommendations]
-* [Számítógépes látástechnológia][cv-containers-recommendations]
-* [Arcfelismerés][fa-containers-recommendations]
+* [Anomáliadetektor][ad-containers-recommendations]
+* [Computer Vision][cv-containers-recommendations]
+* [Face][fa-containers-recommendations]
 * [Form Recognizer][fr-containers-recommendations]
 * [Language Understanding (LUIS)][lu-containers-recommendations]
 * [Speech Service API][sp-containers-recommendations]
-* [Szövegelemzés][ta-containers-recommendations]
+* [Text Analytics][ta-containers-recommendations]
  
 **K: jelenleg a Windows támogatja a tárolókat?**
 

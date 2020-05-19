@@ -2,13 +2,13 @@
 title: Jó példa hosszúságú kimondott szöveg – LUIS
 description: A beszédelem az a felhasználói bemenet, amelyet az alkalmazásnak értelmeznie kell. Gyűjtse be azokat a kifejezéseket, amelyeket a felhasználók meg fognak adni. Olyan hosszúságú kimondott szöveg adjon meg, amelyek ugyanazt a dolgot jelentik, de a szó hosszában és a Word elhelyezésekor máshogy vannak kiépítve.
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: d851082a4ec4a003619826eeffd4f4b856a67824
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/04/2020
+ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382289"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592865"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
@@ -68,11 +68,27 @@ LUIS olyan hatékony modelleket épít be a hosszúságú kimondott szöveg, ame
 
 ## <a name="utterance-normalization"></a>Kimondás normalizálása
 
-A kizáró normalizálás az a folyamat, amelynek során figyelmen kívül hagyja a központozás és a Mellékjelek hatásait a képzés és az előrejelzés során. Az [Alkalmazásbeállítások](luis-reference-application-settings.md) segítségével szabályozhatja, hogy a kihasználatlan normalizálás milyen hatással legyen a teljes következtetésekre.
+A kizáró normalizálás az a folyamat, amelynek során figyelmen kívül hagyja a különböző típusú szövegeket, például a központozás és a Mellékjelek hatását a képzés és az előrejelzés során.
 
-## <a name="utterance-normalization-for-diacritics-and-punctuation"></a>Mellékjelek és írásjelek teljes normalizálása
+Alapértelmezés szerint a teljes normalizálás beállításai ki vannak kapcsolva. Ezek a beállítások többek között:
 
-A teljes normalizálás az alkalmazás létrehozásakor vagy importálásakor van meghatározva, mert az alkalmazás JSON-fájljának beállítása. Alapértelmezés szerint a teljes normalizálás beállításai ki vannak kapcsolva.
+* Word-űrlapok
+* Mellékjelek
+* Központozási
+
+Ha bekapcsolja a normalizálás beállítást, a **teszt** ablaktáblán a pontszámok, a Batch-tesztek és a végpont-lekérdezések a normalizálás beállítás összes hosszúságú kimondott szöveg változnak.
+
+Ha a LUIS-portálon egy verziót klónozott, a verzió beállításai továbbra is az új klónozott verzióra kerülnek.
+
+A verzió beállításait a LUIS portálon, a **kezelés** szakaszban, az **Alkalmazásbeállítások** lapon, vagy a [frissítési verzió beállításai API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings)-n keresztül állíthatja be. További információ ezekről a normalizálás változásairól a [hivatkozásban](luis-reference-application-settings.md).
+
+### <a name="word-forms"></a>Word-űrlapok
+
+A **Word-űrlapok** normalizálása figyelmen kívül hagyja a gyökéren túlmutató szavak különbségeit. Például a szavak, a `run` `running` és a `runs` változás a művelet idő függvényében.
+
+<a name="utterance-normalization-for-diacritics-and-punctuation"></a>
+
+### <a name="diacritics"></a>Mellékjelek
 
 A Mellékjelek a szövegben lévő jelek vagy jelek, például:
 
@@ -80,24 +96,8 @@ A Mellékjelek a szövegben lévő jelek vagy jelek, például:
 İ ı Ş Ğ ş ğ ö ü
 ```
 
-Ha az alkalmazás bekapcsolja a normalizálás bekapcsolását, a pontszámok a **teszt** ablaktáblában, a Batch-tesztek és a végpont-lekérdezések minden hosszúságú kimondott szöveg a mellékjeleket vagy írásjeleket használva változnak.
-
-A `settings` (z) paraméterben bekapcsolhatja a Mellékjelek vagy írásjelek teljes normalizálása beállítást a Luis JSON-alkalmazás fájljába.
-
-```JSON
-"settings": [
-    {"name": "NormalizePunctuation", "value": "true"},
-    {"name": "NormalizeDiacritics", "value": "true"}
-]
-```
-
-A **központozás** normalizálása azt jelenti, hogy a modellek betanítása előtt és a végponti lekérdezések megkezdése előtt az írásjelek el lesznek távolítva a hosszúságú kimondott szöveg.
-
-A **mellékjelek** normalizálása a hosszúságú kimondott szöveg lévő mellékjeleket normál karakterekkel helyettesíti. Például: `Je parle français` lesz `Je parle francais`.
-
-A normalizálás nem azt jelenti, hogy a hosszúságú kimondott szöveg vagy az előrejelzési válaszokat nem fogja látni a központozás és a Mellékjelek, csupán azt, hogy a képzés és az előrejelzés során figyelmen kívül lesz hagyva.
-
 ### <a name="punctuation-marks"></a>Központozás jelei
+A **központozás** normalizálása azt jelenti, hogy a modellek betanítása előtt és a végponti lekérdezések megkezdése előtt az írásjelek el lesznek távolítva a hosszúságú kimondott szöveg.
 
 A központozás egy különálló jogkivonat a LUIS-ben. Egy teljes időszakot, amely a végén található pontot és egy teljes időszakot tartalmaz, és nem tartalmaz két különálló hosszúságú kimondott szöveg, és két különböző előrejelzést kaphat.
 
@@ -109,12 +109,14 @@ Ha a központozás nem rendelkezik konkrét jelentéssel az ügyfélalkalmazás 
 
 ### <a name="ignoring-words-and-punctuation"></a>Szavak és írásjelek figyelmen kívül hagyása
 
-Ha nem szeretné figyelmen kívül hagyni a konkrét szavakat vagy írásjeleket a mintázatokban, használjon [mintázatot](luis-concept-patterns.md#pattern-syntax) a szögletes zárójelek szintaxisának `[]` _figyelmen kívül_ hagyásával.
+Ha nem szeretné figyelmen kívül hagyni a konkrét szavakat vagy írásjeleket a mintázatokban, használjon [mintázatot](luis-concept-patterns.md#pattern-syntax) a szögletes zárójelek szintaxisának _figyelmen kívül_ hagyásával `[]` .
 
-## <a name="training-utterances"></a>Hosszúságú kimondott szöveg betanítása
+<a name="training-utterances"></a>
+
+## <a name="training-with-all-utterances"></a>Képzés minden hosszúságú kimondott szöveg
 
 A képzés általában nem determinisztikus: a Kimondás előrejelzése némileg változhat a verziók és az alkalmazások között.
-A nem determinisztikus-képzések eltávolításához frissítse a [Version Settings](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API- `UseAllTrainingData` t a név/érték párokkal, és használja az összes betanítási adatforrást.
+A nem determinisztikus-képzések eltávolításához frissítse a [Version Settings](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API-t a `UseAllTrainingData` név/érték párokkal, és használja az összes betanítási adatforrást.
 
 ## <a name="testing-utterances"></a>Hosszúságú kimondott szöveg tesztelése
 
@@ -139,7 +141,7 @@ A következő hosszúságú kimondott szöveg a szó `fair` egy homográfia. A h
 |Milyen megyei vásárok történnek a Seattle területén ezen a nyáron?|
 |A Seattle felülvizsgálati vásár jelenlegi minősítése?|
 
-Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse `fair` , címkézze meg a szót az első szövegben, de ne a másodikban.
+Ha azt szeretné, hogy az esemény entitása az összes eseményt megkeresse, címkézze meg a szót az első szövegben `fair` , de ne a másodikban.
 
 
 ## <a name="next-steps"></a>További lépések

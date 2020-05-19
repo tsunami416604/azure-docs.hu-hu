@@ -2,19 +2,19 @@
 title: 'Oktatóanyag: minták – LUIS'
 description: Használjon mintázatokat a szándékok és az entitások előrejelzésének növeléséhez, miközben kevesebb példát hosszúságú kimondott szöveg ebben az oktatóanyagban. A minta sablon-kiírási példaként van megadva, amely az entitások és a figyelmen kívül hagyható szöveg azonosítására szolgáló szintaxist tartalmaz.
 ms.topic: tutorial
-ms.date: 04/14/2020
-ms.openlocfilehash: 826334fafd04a6357f529b1dc07408ff1c15ce5c
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/07/2020
+ms.openlocfilehash: c9bbd521d49d669e8ebd18b29bda9f2add8f7739
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380771"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592916"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Oktatóanyag: általános minta sablon-megadási formátumok hozzáadása az előrejelzések tökéletesítéséhez
 
 Ebben az oktatóanyagban mintákat használ a szándékok és az entitások előrejelzésének növeléséhez, ami lehetővé teszi, hogy kevesebb példát hosszúságú kimondott szöveg. A minta egy leképezéshez rendelt sablon-Kimondás, amely az entitások és a figyelmen kívül hagyható szöveg azonosítására szolgáló szintaxist tartalmaz.
 
-**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Az oktatóanyag a következőket ismerteti:**
 
 > [!div class="checklist"]
 > * Minta létrehozása
@@ -41,9 +41,10 @@ Ehhez a következő lépések szükségesek:
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json?raw=true).
 
-1. Importálja a JSON-t egy új alkalmazásba az [előnézeti Luis-portálon](https://preview.luis.ai). A **saját alkalmazások** lapon válassza az **+ új alkalmazás a beszélgetéshez**lehetőséget, majd válassza az **Importálás JSON-ként**lehetőséget. Válassza ki az előző lépésben letöltött fájlt.
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
+1. Importálja a JSON-t egy új alkalmazásba a [Luis portálra](https://www.luis.ai). A **saját alkalmazások** lapon válassza az **+ új alkalmazás a beszélgetéshez**lehetőséget, majd válassza az **Importálás JSON-ként**lehetőséget. Válassza ki az előző lépésben letöltött fájlt.
 
-1. A **kezelés** szakasz **verziók** lapján válassza ki az aktív verziót, majd válassza a **klónozás**elemet. Nevezze el a klónozott verziót `patterns`. A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
+1. A **kezelés** szakasz **verziók** lapján válassza ki az aktív verziót, majd válassza a **klónozás**elemet. Nevezze el a klónozott verziót `patterns` . A klónozás nagyszerű mód, hogy kísérletezhessen a különböző LUIS-funkciókkal anélkül, hogy az az eredeti verzióra hatással lenne. Mivel a verzió neve az URL-útvonal részét képezi, a név nem tartalmazhat olyan karaktert, amely URL-címben nem érvényes.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Új szándékok és a hozzájuk tartozó kimondott szövegek létrehozása
 
@@ -99,7 +100,7 @@ A két cél a kezelőt vagy a felettes közvetlen jelentéseit keresi a teljes s
 
 1. [!INCLUDE [LUIS How to get endpoint first step](includes/howto-get-endpoint.md)]
 
-1. Lépjen az URL-cím végére a címsorban, és cserélje _YOUR_QUERY_HERE_ le a YOUR_QUERY_HERE `Who is the boss of Jill Jones?`a következőre:.
+1. Lépjen az URL-cím végére a címsorban, és cserélje le a _YOUR_QUERY_HERE_ a következőre: `Who is the boss of Jill Jones?` .
 
     ```json
     {
@@ -214,7 +215,7 @@ A szándék sablonként szolgáló kimondott szövegeinek példái a következő
 |`Who does {Employee} report to[?]`|felcserélhetők`{Employee}`<br>figyelmen kívül`[?]`|
 |`Who reports to {Employee}[?]`|felcserélhetők`{Employee}`<br>figyelmen kívül`[?]`|
 
-Az `{Employee}` szintaxis jelöli az entitás helyét a kimondottszöveg-sablonban, továbbá azonosítja az entitást is. A választható szintaxis, `[?]`a jelölők szavai vagy a nem kötelező [írásjelek](luis-reference-application-settings.md#punctuation-normalization) . A LUIS egyezteti a kimondott szöveget, kihagyva a szögletes zárójelek közötti elhagyható szövegeket.
+Az `{Employee}` szintaxis jelöli az entitás helyét a kimondottszöveg-sablonban, továbbá azonosítja az entitást is. A választható szintaxis, a `[?]` jelölők szavai vagy a nem kötelező [írásjelek](luis-reference-application-settings.md#punctuation-normalization) . A LUIS egyezteti a kimondott szöveget, kihagyva a szögletes zárójelek közötti elhagyható szövegeket.
 
 A szintaxis úgy tűnik, hogy a reguláris kifejezés nem reguláris kifejezés. Csak a kapcsos (`{}`) és a szögletes (`[]`) zárójelek használata támogatott a szintaxisban. Ezek legfeljebb két szinten ágyazhatók be.
 
@@ -365,7 +366,7 @@ Példák kimondott szövegekre:
 |OrgChart-Manager|`Who will be Jill Jones manager in a month?`|
 |OrgChart-Manager|`Who will be Jill Jones manager on March 3?`|
 
-A példák mindegyikében szerepel egy igeidő (`was`, `is` vagy `will be`) és egy dátum (`March 3`, `now` vagy `in a month`), amelyeket a LUIS-nak megfelelően kell tudnia előrejelezni. Figyelje meg `in` , hogy a tábla utolsó két példája majdnem ugyanazt a szöveget használja, a `on`és a kivételével.
+A példák mindegyikében szerepel egy igeidő (`was`, `is` vagy `will be`) és egy dátum (`March 3`, `now` vagy `in a month`), amelyeket a LUIS-nak megfelelően kell tudnia előrejelezni. Figyelje meg, hogy a tábla utolsó két példája majdnem ugyanazt a szöveget használja, a és a kivételével `in` `on` .
 
 Példa a sablon hosszúságú kimondott szöveg, amely a következő opcionális információkat engedélyezi:
 
@@ -424,7 +425,7 @@ A megadott minták használata:
 
 Az előző sablon hosszúságú kimondott szöveg közül több nagyon közel van. A **csoport** `()` és a **OR** `|` szintaxis használatával csökkentse a sablon hosszúságú kimondott szöveg.
 
-A következő két minta egyetlen mintával kombinálható a csoport `()` és a `|` szintaxis használatával.
+A következő két minta egyetlen mintával kombinálható a csoport és a `()` szintaxis használatával `|` .
 
 |Szándék|Kimondottszöveg-példák elhagyható szövegelemekkel és előre összeállított entitásokkal|
 |--|--|
@@ -435,9 +436,9 @@ Az új sablon kimondása a következőket eredményezi:
 
 `who ( was | is | will be ) {Employee}['s] manager [([in]|[on]){datetimeV2}?]`.
 
-Ez egy **csoportot** használ a szükséges műveleti idő körül, és a `in` választható `on` , **illetve egy vagy** több közötti adatcsatornával.
+Ez egy **csoportot** használ a szükséges műveleti idő körül, és a választható `in` , `on` **illetve egy vagy** több közötti adatcsatornával.
 
-1. A **minták** lapon válassza a **szervezeti diagram – kezelő** szűrőt. Szűkítse a listát a keresésével `manager`.
+1. A **minták** lapon válassza a **szervezeti diagram – kezelő** szűrőt. Szűkítse a listát a keresésével `manager` .
 
 1. Tartsa meg a sablon teljes verziójának egy verzióját (a következő lépésben való szerkesztéshez), és törölje a többi változatot.
 
@@ -464,37 +465,11 @@ A további mintázat szintaxisának használatával csökkentheti az alkalmazás
 
 ### <a name="use-the-utterance-beginning-and-ending-anchors"></a>A kezdő és záró horgonyok használata
 
-A minta szintaxisa egy kalap elejének és végének kiírási horgonyának szintaxisát tartalmazza `^`. A kezdő és a záró kilépési horgonyok együtt használhatók a nagyon konkrét és valószínűleg literál kifejezésekre, vagy a cél szándékok külön történő használatára.
+A minta szintaxisa egy kalap elejének és végének kiírási horgonyának szintaxisát tartalmazza `^` . A kezdő és a záró kilépési horgonyok együtt használhatók a nagyon konkrét és valószínűleg literál kifejezésekre, vagy a cél szándékok külön történő használatára.
 
 ## <a name="using-patternany-entity"></a>Minta. bármely entitás használata
 
-A pattern.any entitás lehetővé teszi szabad formátumú adatok keresését olyankor, amikor az entitás szövegezése nehézzé teszi az entitás végének a kimondott szöveg fennmaradó részétől való elkülönítését.
-
-Ez az Emberierőforrások-alkalmazás segítséget nyújt az alkalmazottaknak a vállalati űrlapok keresésében.
-
-|Kimondott szöveg|
-|--|
-|Hol található a **HRF-123456**?|
-|Ki a szerzője ennek: **HRF-123234**?|
-|A **HRF-456098** űrlap francia nyelven lett közzétéve?|
-
-Ugyanakkor minden űrlapnak két neve van: egyrészt az előző táblázatban használt formázott neve, másrészt egy könnyebb elnevezése, mint például `Request relocation from employee new to the company 2018 version 5`.
-
-A könnyebb űrlapnévvel rendelkező kimondott szöveg a következőképpen néz ki:
-
-|Kimondott szöveg|
-|--|
-|Hol található a **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|
-|Ki a szerzője ennek: **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió**?|
-|A **2018-ban a vállalathoz került alkalmazott áthelyezési kérelme, 5. verzió** űrlap francia nyelven lett közzétéve?|
-
-A változó hosszúságú szöveg olyan szavakat tartalmaz, amelyek megnehezítik a LUIS szolgáltatás számára az entitás végének meghatározását. A Pattern.any entitás mintában való használata lehetővé teszi az űrlapnév elejének és végének megadását, így a LUIS helyesen nyeri ki az űrlapnevet.
-
-|Példa kimondott sablonszövegre|
-|--|
-|Hol található a {FormName}[?]|
-|Ki a szerzője ennek: {FormName}[?]|
-|A {FormName} űrlap francia nyelven lett közzétéve[?]|
+[!INCLUDE [Pattern.any entity - concepts](./includes/pattern-any-entity.md)]
 
 ### <a name="add-example-utterances-with-patternany"></a>Példaként adja hozzá a hosszúságú kimondott szöveg mintát. any
 
@@ -518,7 +493,7 @@ A Pattern.any entitás változó hosszúságú entitások kinyerését végzi. E
 
 1. Válassza az **Entities** (Entitások) elemet a bal oldali navigációs sávon.
 
-1. Válassza a **+ Létrehozás**lehetőséget, írja `FormName`be a nevet, és válassza a **minta. any** típust. Kattintson a **Létrehozás** gombra.
+1. Válassza a **+ Létrehozás**lehetőséget, írja be a nevet `FormName` , és válassza a **minta. any** típust. Kattintson a **Létrehozás** gombra.
 
 ### <a name="add-a-pattern-that-uses-the-patternany"></a>A Pattern.any entitást használó minta hozzáadása
 
@@ -558,7 +533,7 @@ Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelel�
 
 Ez az oktatóanyag olyan mintákat vett fel, amelyek segítségével a LUIS előre jelezheti a szándékot, és nem kell további példát hosszúságú kimondott szöveg hozzá. Az entitások és az elhagyható szövegek megjelölésével a LUIS szélesebb körben képes alkalmazni a mintát a kimondott szövegekre.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 

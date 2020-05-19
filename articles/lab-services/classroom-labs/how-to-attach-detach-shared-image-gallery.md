@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2020
 ms.author: spelluru
-ms.openlocfilehash: ce79674462f82e05cc07e9e470cb82ff8e47f672
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aef5cd13742c0265851f5ba2918d557b4e1026d0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118481"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592644"
 ---
 # <a name="attach-or-detach-a-shared-image-gallery-in-azure-lab-services"></a>Megosztott képgyűjtemény csatolása vagy leválasztása Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan csatolhat vagy leválaszthatja a megosztott képgyűjteményt egy labor-fiókhoz. 
@@ -83,7 +83,7 @@ A következő eljárás azt mutatja be, hogyan csatolhat egy meglévő megosztot
     
     Ebben a példában még nincsenek lemezképek a megosztott rendszerkép-katalógusban.
 
-    Azure Lab Services identitást a rendszer a laborhoz csatolt megosztott Képtár közreműködőiként adja hozzá. Lehetővé teszi a tanárok és a rendszergazda számára a virtuálisgép-lemezképek mentését a megosztott lemezképek gyűjteményében. Az ebben a labor-fiókban létrehozott összes labor hozzáfér a csatolt megosztott képtárhoz. 
+    Azure Lab Services identitást a rendszer a laborhoz csatolt megosztott Képtár közreműködőiként adja hozzá. Lehetővé teszi, hogy a pedagógusok/IT-rendszergazdák a virtuális gépek lemezképeit a megosztott rendszerkép-katalógusba mentse. Az ebben a labor-fiókban létrehozott összes labor hozzáfér a csatolt megosztott képtárhoz. 
 
     A csatolt megosztott képtárban lévő összes rendszerkép alapértelmezés szerint engedélyezve van. A kijelölt lemezképek engedélyezéséhez vagy letiltásához jelölje ki őket a listában, és a **kijelölt lemezképek engedélyezése** vagy a **kijelölt képek letiltása** gomb használatával. 
 

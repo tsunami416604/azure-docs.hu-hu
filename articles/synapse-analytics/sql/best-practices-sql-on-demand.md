@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: a1a33404982b16e458e97aaf9959ff5dd52d1cce
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198879"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592933"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -86,7 +86,7 @@ EXEC sp_describe_first_result_set N'
 
 Itt látható az eredményhalmaz.
 
-|is_hidden|column_ordinal|név|system_type_name|max_length|
+|is_hidden|column_ordinal|name|system_type_name|max_length|
 |----------------|---------------------|----------|--------------------|-------------------||
 |0|1|vendor_id|varchar (8000)|8000|
 |0|2|pickup_datetime|datetime2 (7)|8|
@@ -119,7 +119,7 @@ További információért olvassa el a [filename](develop-storage-files-overview
 > A filepath és a fileinfo függvények a megfelelő adattípusokhoz való továbbításának eredménye mindig. Ha karakteres adattípusokat használ, ügyeljen arra, hogy a megfelelő hossz legyen használatban.
 
 > [!NOTE]
-> A Partition eliminációs, a filepath és a fileinfo szolgáltatáshoz használt függvények jelenleg nem támogatottak a szinapszis Spark-ban létrehozott minden egyes tábla számára automatikusan létrehozott külső táblák esetében.
+> A partíció-eltávolításhoz, a filepath és a fileinfo használt függvények jelenleg nem támogatottak az Azure szinapszis Analytics szolgáltatásban Apache Spark által létrehozott táblákon kívüli, az egyes táblákhoz automatikusan létrehozott külső táblák esetében.
 
 Ha a tárolt adatok nincsenek particionálva, érdemes particionálni, hogy ezek a függvények a fájlokra irányuló lekérdezések optimalizálására legyenek optimalizálva. Ha a [particionált Spark-táblákat](develop-storage-files-spark-tables.md) SQL-igény alapján kérdezi le, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 

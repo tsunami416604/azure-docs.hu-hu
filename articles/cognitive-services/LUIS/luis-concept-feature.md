@@ -1,90 +1,147 @@
 ---
 title: Funkciók – LUIS
-titleSuffix: Azure Cognitive Services
 description: Adjon hozzá funkciókat a nyelvi modellhez, hogy javaslatokat nyújtson a címkével vagy osztályozással ellátott bemenetek felismeréséhez.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.custom: seodec18
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/03/2019
-ms.author: diberry
-ms.openlocfilehash: 5b8257e24cf52d01be8065d97db17fd685aa316d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81531898"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591896"
 ---
-# <a name="machine-learned-features"></a>Gépi megtanult funkciók
+# <a name="machine-learning-ml-features"></a>Gépi tanulás (ML) funkciói
 
-A gépi tanulásban a _funkció_ egy olyan megkülönböztető tulajdonság vagy adatattribútum, amelyet a rendszer a & megismerésével megfigyel. A Language Understanding (LUIS) egy funkció leírja és ismerteti a szándékait és entitásait illető jelentős jelentőséget.
+A gépi tanulásban a **funkció**   a rendszer által megfigyelt adattípusok megkülönböztető tulajdonságai vagy adatattribútuma.
 
-A [Luis-portálon](https://preview.luis.ai)a funkciók _leírók_ , mert a szándék vagy az entitás _leírására_ szolgálnak.
+A Machine learning-funkciók lehetővé teszik a LUIS számára, hogy hol találják meg a koncepciót megkülönböztető dolgokat. Arra utalnak, hogy LUIS használható, de nem rögzített szabályok.  Ezeket a mutatókat a címkékkel együtt használva keresheti meg az adatgyűjtést.
 
-## <a name="features-_descriptors_-in-language-understanding"></a>Szolgáltatások (_leírók_) Language Understanding
+ A LUIS támogatja a kifejezések listáját, és más entitásokat is használ a szolgáltatásként:
+* Kifejezés-lista funkció
+* Modell (szándék vagy entitás) szolgáltatásként
 
-A funkciók, más néven leírók, leírják a Language Understanding azonosítására szolgáló hosszúságú kimondott szöveg. Funkciók:
+A funkciókat a séma kialakításának szükséges részévé kell tekinteni.
 
-* Kifejezések listája a szándékok vagy entitások szolgáltatásként
-* Entitások szolgáltatásként a szándékok vagy az entitások számára
+## <a name="a-phrase-list-for-a-particular-concept"></a>Egy adott fogalomhoz tartozó kifejezések listája
 
-A funkciókat a séma szükséges részeként kell figyelembe venni a modell kibontásához.
+A kifejezések listája egy adott fogalom beágyazására szolgáló szavak vagy kifejezések listája.
 
-## <a name="what-is-a-phrase-list"></a>A kifejezések listája
+A kifejezések listájának hozzáadásakor a következőképpen állíthatja be a szolgáltatást:
+* **[Globális](#global-features)**. A globális funkció a teljes alkalmazásra vonatkozik.
 
-A kifejezés lista a szavak, kifejezések, számok vagy más karakterek listája, amelyek segítenek azonosítani az azonosítani kívánt koncepciót. A lista megkülönbözteti a kis-és nagybetűket.
+### <a name="when-to-use-a-phrase-list"></a>Mikor kell használni a kifejezések listáját
 
-## <a name="when-to-use-a-phrase-list"></a>Mikor kell használni a kifejezések listáját
-
-A kifejezést tartalmazó listával LUIS a kontextust és az általánosításokat úgy tekinti meg, hogy azonosítsa a hasonló elemeket, de nem pontos szöveges egyezést. Ha a LUIS-alkalmazásnak képesnek kell lennie az új elemek általánosítására és azonosítására, használjon kifejezéseket tartalmazó listát.
-
-Ha szeretné tudni, hogy az új példányok felismerhetők legyenek, például egy olyan értekezlet-ütemező, amelynek fel kell ismernie az új névjegyek nevét, vagy egy olyan leltározási alkalmazást, amely új termékeket ismer fel, kezdjen egy géppel megtanult entitással. Ezután hozzon létre egy olyan kifejezést, amely segít a LUIS hasonló jelentéssel rendelkező szavak megkeresésében. Ez a kifejezési lista a LUIS-t a példák felismerésére szolgáló további jelentőséggel bír a szavak értékének megadásával.
-
-A kifejezések listája hasonló a tartományhoz tartozó szókincshez, amely segít a szándékok és az entitások megismerésének javításában.
-
-## <a name="considerations-when-using-a-phrase-list"></a>Szempontok kifejezések listájának használatakor
-
-Alapértelmezés szerint a rendszer az alkalmazás összes modelljére alkalmazza a kifejezések listáját. Ez a kifejezés felsorolja az összes szándékot és entitást. A dekomponálás esetében a kifejezések listáját csak azokra a modellekre kell alkalmazni, amelyekre a szükséges.
-
-Ha létrehoz egy kifejezés listát (alapértelmezés szerint globálisan létrehozva), akkor később egy adott modellre alkalmazza azt leíróként (funkcióként), akkor azt a rendszer eltávolítja a többi modellből. Ez az Eltávolítás a modellhez tartozó kifejezési listához ad hozzá fontosságot, amely segít a modellben elérhető pontosság javításában.
-
-A `enabledForAllModels` jelző a modell hatókörét SZABÁLYOZZA az API-ban.
-
-<a name="how-to-use-phrase-lists"></a>
+Ha a LUIS-alkalmazásnak képesnek kell lennie általánosítani és azonosítani a fogalom új elemeit, használjon egy kifejezés listát. A kifejezések listája hasonló a tartományhoz tartozó szókincshez, amely segít a szándékok és az entitások megismerésének javításában.
 
 ### <a name="how-to-use-a-phrase-list"></a>Kifejezések listájának használata
 
-[Hozzon létre egy mondatot](luis-how-to-add-features.md) , ha a szándék vagy az entitás olyan szavakat vagy kifejezéseket tartalmaz, amelyek fontosak például a következők:
+A kifejezést tartalmazó listával LUIS a kontextust és az általánosításokat úgy tekinti meg, hogy azonosítsa a hasonló elemeket, de nem pontos szöveges egyezést.
 
-* iparági feltételek
-* szleng
-* rövidítéseket
-* vállalatra jellemző nyelv
-* más nyelvről származó, de gyakran az alkalmazásban használt nyelv
-* a példában szereplő hosszúságú kimondott szöveg és kifejezések
+A kifejezések listájának használatának lépései:
+* Indítás géppel megtanult entitással
+    * Példa kimondott szövegek hozzáadása
+    * Címke egy géppel megtanult entitással
+* Kifejezések listájának hozzáadása
+    * Szavak hozzáadása hasonló jelentéssel – ne **adjon hozzá** minden lehetséges szót vagy kifejezést. Ehelyett adjon hozzá néhány szót vagy kifejezést egyszerre, majd végezze el az újratanítást és a közzétételt.
+    * Javasolt szavak áttekintése és hozzáadása
 
-Ne **adjon hozzá** minden lehetséges szót vagy kifejezést. Ehelyett adjon hozzá néhány szót vagy kifejezést egyszerre, majd végezze el az újratanítást és a közzétételt. Ahogy a lista az idő múlásával növekszik, előfordulhat, hogy néhány kifejezésnek számos formája van (szinonimák). Ezeket egy másik listára bontja.
+### <a name="a-typical-scenario-for-a-phrase-list"></a>Egy kifejezés listára jellemző forgatókönyv
 
+A kifejezések listájának egy tipikus forgatókönyve az adott ötlethez kapcsolódó szavak kiemelése.
+
+Olyan szavakra, amelyeknek szüksége lehet egy kifejezésre, hogy a jelentőségük felgyorsítsa az orvosi feltételeket. A feltételek konkrét fizikai, kémiai, terápiás vagy absztrakt jelentésekkel rendelkezhetnek. LUIS nem fogja tudni, hogy a feltételek nem fontosak a tárgy tartománya számára kifejezési lista nélkül.
+
+Ha ki szeretné bontani az orvosi feltételeket:
+* Először hozzon létre például hosszúságú kimondott szöveg és címkézett orvosi kifejezéseket a hosszúságú kimondott szöveg belül.
+* Ezután hozzon létre egy kifejezéseket tartalmazó listát a tárgy tartományon belüli kifejezésekre vonatkozó példákkal. A kifejezések listájának tartalmaznia kell a ténylegesen felcímkézett kifejezést és más, ugyanezen fogalmakat leíró kifejezéseket.
+* Adja hozzá a kifejezés listát ahhoz a entitáshoz vagy alentitáshoz, amely kibontja a kifejezés listában használt fogalmat. A leggyakoribb forgatókönyv egy géppel megtanult entitás összetevője (gyermeke). Ha a kifejezések listáját az összes leképezésben vagy entitásban alkalmazni kell, akkor a kifejezések listáját a globális kifejezés listaként kell megjelölnie. A `enabledForAllModels` jelző a modell hatókörét szabályozza az API-ban.
+
+<a name="how-to-use-phrase-lists"></a>
+<a name="how-to-use-a-phrase-lists"></a>
 <a name="phrase-lists-help-identify-simple-exchangeable-entities"></a>
 
-## <a name="when-to-use-an-entity-as-a-feature"></a>Ha egy entitást szolgáltatásként kíván használni
+## <a name="a-model-as-a-feature-helps-another-model"></a>A modell mint szolgáltatás segít egy másik modellben
 
-Az entitások a szándék vagy az entitás szintjén vehetők fel szolgáltatásként.
+Hozzáadhat egy modellt (szándék vagy entitás) egy másik modell (cél vagy entitás) szolgáltatásként. Egy meglévő szándék vagy entitás szolgáltatásként való hozzáadásával egy jól definiált fogalmat adhat hozzá a címkével ellátott példákkal.
 
-### <a name="entity-as-a-feature-to-an-intent"></a>Entitás szolgáltatásként egy szándék
+A modell szolgáltatásként való hozzáadásakor a következőképpen állíthatja be a szolgáltatást:
+* **[Kötelező megadni](#required-features)**. Meg kell találni egy szükséges szolgáltatást ahhoz, hogy a modellt vissza lehessen adni az előrejelzési végpontból.
+* **[Globális](#global-features)**. A globális funkció a teljes alkalmazásra vonatkozik.
 
-Adja hozzá az entitást leíróként (szolgáltatásként), ha az adott entitás észlelése jelentős a szándék szempontjából.
+### <a name="when-to-use-an-entity-as-a-feature-to-an-intent"></a>Ha egy entitást szolgáltatásként kíván használni egy szándékhoz
 
-Ha például a cél egy járat foglalása, és az entitás a jegyekkel kapcsolatos információk (például a munkaállomások száma, a forrás és a célhely), akkor a Ticket Information (jegy) információval rendelkező entitásnak hozzá kell adnia súlyozást a könyv repülési szándékának előrejelzéséhez.
+Vegyen fel egy entitást szolgáltatásként, ha az adott entitás észlelése jelentős a szándék szempontjából.
 
-### <a name="entity-as-a-feature-to-another-entity"></a>Entitás szolgáltatásként egy másik entitáshoz
+Ha például a cél egy járat foglalása, `BookFlight` és az entitás a jegy információi (például a munkahelyek száma, a forrás és a célhely), akkor a jegy információs entitásának megkeresésével jelentős súlyt kell adni a szándék előrejelzéséhez `BookFlight` .
+
+### <a name="when-to-use-an-entity-as-a-feature-to-another-entity"></a>Az entitás szolgáltatásként való használata egy másik entitáshoz
 
 Egy entitást (A) a szolgáltatásként egy másik entitáshoz (B) kell hozzáadni, ha az adott entitás (A) észlelése jelentős az entitás (B) előrejelzéséhez.
 
-Ha például a rendszer az utca címe entitást (A) észleli, akkor az utca címe (A) a szállítási címek entitásának (B) kiszámításához hozzáadja a súlyozást az előrejelzéshez.
+Ha például az n szállítási címek entitása egy utcai címet tartalmazó alentitást foglalt, akkor az utca címe alentitása jelentős súlyozást biztosít a szállítási címek entitásának előrejelzéséhez.
+
+* Szállítási címe (gépi megtanult entitás)
+    * Utca száma (alentitás)
+    * Utca címe (alentitás)
+    * Város (alentitás)
+    * Állam vagy megye (alentitás)
+    * Ország (alentitás)
+    * Irányítószám (alentitás)
+
+## <a name="required-features"></a>Szükséges szolgáltatások
+
+Meg kell találni egy szükséges szolgáltatást ahhoz, hogy a modellt vissza lehessen adni az előrejelzési végpontból. Használjon kötelező szolgáltatást, ha tudja, hogy a bejövő adatainak meg kell egyezniük a szolgáltatással.
+
+**Egy kötelező szolgáltatás nem gépi megtanult entitást használ**:
+* Reguláriskifejezés-entitás
+* Listaentitás
+* Előre elkészített entitás
+
+Milyen hasznos funkciókat kell megadnia a kötelezően? Ha biztos abban, hogy a modell az adataiban található, a szolgáltatást szükség szerint állítsa be. Egy szükséges szolgáltatás nem ad vissza semmit, ha nem található.
+
+Folytassa a szállítási címek példáját:
+* Szállítási címe (gépi megtanult entitás)
+    * Utca száma (alentitás)
+    * Utca címe (alentitás)
+    * Utca neve (alentitás)
+    * Város (alentitás)
+    * Állam vagy megye (alentitás)
+    * Ország (alentitás)
+    * Irányítószám (alentitás)
+
+### <a name="required-feature-using-prebuilt-entities"></a>Kötelező funkció előre elkészített entitások használatával
+
+A város, az állam és az ország általában egy lezárt listát jelenít meg, ami azt jelenti, hogy az idő múlásával nem változnak. Ezek az entitások rendelkezhetnek a megfelelő ajánlott funkciókkal, és ezek a funkciók kötelezőként jelölhetők meg. Ez azt jelenti, hogy a teljes szállítási címet nem adja vissza a rendszer nem találja a szükséges szolgáltatásokat tartalmazó entitásokat.
+
+Mi a helyzet abban az esetben, ha a város, az állam vagy az ország teljes mértékben szerepel, de olyan helyen vagy szlengben, amelyet LUIS nem vár? Ha szeretne valamilyen utólagos feldolgozást végezni, hogy segítsen megoldani az entitást, mivel a LUIS alacsony megbízhatósági pontszáma miatt nem kell megjelölnie a szolgáltatást.
+
+Egy másik példa a szállítási címnek egy szükséges szolgáltatására, hogy az utca egy szükséges [előre elkészített](luis-reference-prebuilt-entities.md) szám legyen. Ez lehetővé teszi, hogy a felhasználó "1 Microsoft Way" vagy "egy Microsoft Way" értéket adjon meg. Mindkettő az utcai szám alentitáshoz tartozó "1" értékre lesz feloldva.
+
+### <a name="required-feature-using-list-entities"></a>Kötelező szolgáltatás a lista entitások használatával
+
+A [lista entitások](reference-entity-list.md) a kanonikus nevek listáját használják a szinonimákkal együtt. Szükség esetén, ha a kihagyás nem tartalmazza a kanonikus nevet vagy a szinonimát, az entitás nem kerül vissza az előrejelzési végpont részeként.
+
+Ha továbbra is a szállítási címet szeretné megállapítani, tegyük fel, hogy a vállalat csak korlátozott számú országba szállít. Létrehozhat egy list entitást, amely többféle módon hivatkozhat az országra. Ha a LUIS nem talál pontos egyezést a kiírás szövegében, akkor az adott entitás (amely a lista entitás szükséges funkciójával rendelkezik) nem jelenik meg az előrejelzésben.
+
+|Kanonikus név|Szinonimák|
+|--|--|
+|Egyesült Államok|Egyesült Államok<br>U. S. A<br>USA<br>USA<br>0|
+
+Az ügyfélalkalmazás, például a csevegési robot felteheti a kérdést, így az ügyfél megérti, hogy az ország kiválasztása korlátozott és _kötelező_.
+
+### <a name="required-feature-using-regular-expression-entities"></a>Reguláris kifejezési entitásokat használó kötelező funkció
+
+A kötelező szolgáltatásként használt [reguláris kifejezési entitások](reference-entity-regular-expression.md) gazdag szöveg-egyeztetési képességeket biztosítanak.
+
+Ha folytatja a szállítási címet, létrehozhat egy reguláris kifejezést, amely rögzíti az országbeli postai kódok szintaxisának szabályait.
+
+## <a name="global-features"></a>Globális funkciók
+
+Habár a leggyakoribb a funkció alkalmazása egy adott modellre, a szolgáltatás **globális szolgáltatásként** is konfigurálható a teljes alkalmazásra való alkalmazáshoz.
+
+A globális szolgáltatás leggyakoribb felhasználási célja, hogy további szókincset (például más nyelvből származó szavakat) adjon hozzá az alkalmazáshoz. Ha az ügyfelek az elsődleges nyelvet használják, de az is előfordulhat, hogy egy adott kifejezésen belül más nyelvet kíván használni, hozzáadhat egy olyan funkciót, amely a másodlagos nyelvből származó szavakat tartalmaz.
+
+Mivel a felhasználónak a második nyelvet kell használnia bármilyen szándékon vagy entitáson, hozzá kell adni egy kifejezési listához a globális szolgáltatásként konfigurált kifejezési listával.
 
 ## <a name="best-practices"></a>Ajánlott eljárások
 Ismerje meg az [ajánlott eljárásokat](luis-concept-best-practices.md).

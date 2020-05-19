@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: 82efa70b30e829cfedd0b1fa7a21fd06949aa6d5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e859ac18276d10960a5a8488a6051252d90e0fcd
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80744143"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591046"
 ---
 # <a name="language-and-region-support-for-luis"></a>A LUIS nyelv és régió támogatása
 
@@ -24,7 +24,7 @@ A LUIS számos funkcióval rendelkezik a szolgáltatáson belül. Nem minden szo
 
 ## <a name="multi-language-luis-apps"></a>Többnyelvű LUIS-alkalmazások
 
-Ha több nyelvű LUIS-ügyfélalkalmazás, például Csevegőrobot van szüksége, néhány lehetőség közül választhat. Ha a LUIS támogatja az összes nyelvet, minden nyelvhez fejleszt egy LUIS-alkalmazást. Minden LUIS-alkalmazás egyedi alkalmazás-AZONOSÍTÓval és végponti naplóval rendelkezik. Ha nem támogatja a nyelvi megértést a LUIS nyelvhez, a [Microsoft Translator API](../Translator/translator-info-overview.md) -val lefordíthatja a teljes változatot egy támogatott nyelvre, beküldheti a kitekintést a Luis-végpontba, és megkaphatja az eredményül kapott pontszámokat.
+Ha több nyelvű LUIS-ügyfélalkalmazás, például Csevegőrobot van szüksége, néhány lehetőség közül választhat. Ha a LUIS támogatja az összes nyelvet, minden nyelvhez fejleszt egy LUIS-alkalmazást. Minden LUIS-alkalmazás egyedi alkalmazás-AZONOSÍTÓval és végponti naplóval rendelkezik. Ha nem támogatja a nyelvi megértést a LUIS nyelvhez, a [Translator szolgáltatással](../Translator/translator-info-overview.md) lefordíthatja a teljes változatot egy támogatott nyelvre, elküldheti a kitekintést a Luis-végpontba, és megkaphatja az eredményül kapott pontszámokat.
 
 ## <a name="languages-supported"></a>Támogatott nyelvek
 
@@ -74,7 +74,7 @@ Tekintse meg a beszédfelismerés [által támogatott nyelvek](../speech-service
 A támogatott nyelvek és állapotok listáját a Bing Spell Check [támogatott nyelvek](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/bing-spell-check-supported-languages) című részben tekintheti meg.
 
 ## <a name="rare-or-foreign-words-in-an-application"></a>Ritka vagy idegen szavak egy alkalmazásban
-A `en-us` kulturális kultúrában Luis megtanulja a legtöbb angol szót megkülönböztetni, beleértve a szlenget is. A `zh-cn` kulturális kultúrában Luis megtanulja a legtöbb kínai karakter megkülönböztetését. Ha ritka szót `en-us` vagy karaktert használ a alkalmazásban `zh-cn`, és láthatja, hogy Luis úgy tűnik, hogy nem tudja megkülönböztetni ezt a szót vagy karaktert, felveheti ezt a szót vagy karaktert egy [kifejezés-lista szolgáltatásba](luis-how-to-add-features.md). Például az alkalmazás kultúráján kívüli szavak – azaz idegen szavak – egy kifejezés-lista szolgáltatásba kerülnek.
+A `en-us` kulturális kultúrában Luis megtanulja a legtöbb angol szót megkülönböztetni, beleértve a szlenget is. A `zh-cn` kulturális kultúrában Luis megtanulja a legtöbb kínai karakter megkülönböztetését. Ha ritka szót vagy karaktert használ a alkalmazásban `en-us` `zh-cn` , és láthatja, hogy Luis úgy tűnik, hogy nem tudja megkülönböztetni ezt a szót vagy karaktert, felveheti ezt a szót vagy karaktert egy [kifejezés-lista szolgáltatásba](luis-how-to-add-features.md). Például az alkalmazás kultúráján kívüli szavak – azaz idegen szavak – egy kifejezés-lista szolgáltatásba kerülnek.
 
 <!--This phrase list should be marked non-interchangeable, to indicate that the set of rare words forms a class that LUIS should learn to recognize, but they are not synonyms or interchangeable with each other.-->
 
@@ -113,10 +113,10 @@ A következő kultúrákban egyéni tokenizer verziók szerepelnek:
 
 |Kulturális környezet|Verzió|Cél|
 |--|--|--|
-|Német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép `Ich fahre einen krankenwagen` fel, a rendszer a `Ich fahre einen kranken wagen`következőre vált:. A `kranken` és `wagen` a különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
-|Német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó Kimondás lép `Ich fahre einen krankenwagen` fel, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |
-|Holland<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép `Ik ga naar de kleuterschool` fel, a rendszer a `Ik ga naar de kleuter school`következőre vált:. A `kleuter` és `school` a különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
-|Holland<br>`de-de`|1.0.1|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó Kimondás lép `Ik ga naar de kleuterschool` fel, akkor egyetlen token marad. Így `kleuterschool` egyetlen entitásként van megjelölve. |
+|Német<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép fel, a rendszer a következőre `Ich fahre einen krankenwagen` vált: `Ich fahre einen kranken wagen` . A `kranken` és a `wagen` különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
+|Német<br>`de-de`|1.0.2|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó `Ich fahre einen krankenwagen` Kimondás lép fel, akkor egyetlen token marad. Így `krankenwagen` egyetlen entitásként van megjelölve. |
+|Holland<br>`de-de`|1.0.0|A szavakat Tokenizes egy gépi tanuláson alapuló tokenizer, amely az összetett szavakat egyetlen összetevőjére próbálja bontani.<br>Ha a felhasználó Kimondás lép fel, a rendszer a következőre `Ik ga naar de kleuterschool` vált: `Ik ga naar de kleuter school` . A `kleuter` és a `school` különböző entitások egymástól függetlenül történő megjelölésének engedélyezése.|
+|Holland<br>`de-de`|1.0.1|Tokenizes a szavakat a szóközök felosztásával.<br> Ha egy felhasználó `Ik ga naar de kleuterschool` Kimondás lép fel, akkor egyetlen token marad. Így `kleuterschool` egyetlen entitásként van megjelölve. |
 
 
 ### <a name="migrating-between-tokenizer-versions"></a>Áttelepítés tokenizer-verziók között

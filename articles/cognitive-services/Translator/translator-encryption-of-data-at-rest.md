@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 44bb223dbc944be1b8769aa2572f1b88b916528b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 82b294cbda6e9d4b4cfa5ec560d802c8e5c6c51c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372237"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590893"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Inaktív adatok Translator-titkosítása
 
@@ -41,7 +41,7 @@ Lehetősége van arra is, hogy az előfizetését a saját kulcsaival kezelje. A
 
 Az alábbi lépéseket követve engedélyezheti az ügyfél által felügyelt kulcsokat a fordító számára:
 
-1. Hozza létre az új regionális Translator Text vagy regionális Cognitive Services erőforrást. Ez nem fog működni globális erőforrással.
+1. Hozza létre új regionális fordítóját vagy regionális Cognitive Services erőforrását. Ez nem fog működni globális erőforrással.
 2. Felügyelt identitás engedélyezése a Azure Portalban, és az ügyfél által felügyelt legfontosabb információk hozzáadása.
 3. Hozzon létre egy új munkaterületet az egyéni fordítóban, és rendelje hozzá az előfizetési adatokat.
 

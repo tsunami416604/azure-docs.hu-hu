@@ -1,7 +1,7 @@
 ---
-title: Translator Text API észlelési módszer
+title: Fordítói észlelési módszer
 titleSuffix: Azure Cognitive Services
-description: Azonosítsa egy szöveg nyelvét az Azure Cognitive Services Translator Text API észlelési metódussal.
+description: Azonosítsa egy szöveg nyelvét az Azure Cognitive Services Translator Detect metódussal.
 services: cognitive-services
 author: swmachan
 manager: nitinme
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
-ms.openlocfilehash: 370f3b14c12fc05f181d6497b7069bbf1cf3c9cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: adfd91a3f82a83f6bb5e076247f1539029d5a04e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73837298"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592287"
 ---
-# <a name="translator-text-api-30-detect"></a>Translator Text API 3,0: észlelés
+# <a name="translator-30-detect"></a>Translator 3,0: észlelés
 
 Egy szöveg nyelvét azonosítja.
 
-## <a name="request-url"></a>Kérés URL-címe
+## <a name="request-url"></a>URL-cím kérése
 
-`POST` Kérelem küldése a következőnek:
+Kérelem küldése `POST` a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
@@ -38,7 +38,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
   <th>Leírás</th>
   <tr>
     <td>api-verzió</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`a számnak kell lennie.</td>
+    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie `3.0` .</td>
   </tr>
 </table> 
 
@@ -53,7 +53,7 @@ A kérelem fejlécei a következők:
   </tr>
   <tr>
     <td>Content-Type</td>
-    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a `application/json`következők:.</td>
+    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json` .</td>
   </tr>
   <tr>
     <td>Content-Length</td>
@@ -61,13 +61,13 @@ A kérelem fejlécei a következők:
   </tr>
   <tr>
     <td>X – ClientTraceId</td>
-    <td>Nem *kötelező*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Vegye figyelembe, hogy kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési `ClientTraceId`azonosító a nevű lekérdezési paraméter használatával.</td>
+    <td>Nem *kötelező*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Vegye figyelembe, hogy kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító a nevű lekérdezési paraméter használatával `ClientTraceId` .</td>
   </tr>
 </table> 
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű `Text`JSON-objektum. A `Text` nyelvfelismerés a tulajdonság értékére lesz alkalmazva. A mintául szolgáló kérelem törzse így néz ki:
+A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON-objektum `Text` . A nyelvfelismerés a tulajdonság értékére lesz alkalmazva `Text` . A mintául szolgáló kérelem törzse így néz ki:
 
 ```json
 [
@@ -93,7 +93,7 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
   * `isTransliterationSupported`: Egy logikai érték, amely akkor igaz, ha az észlelt nyelv az írásos nyelvek egyike.
   
-  * `alternatives`: Más lehetséges nyelvek tömbje. A tömb minden eleme egy másik objektum, amely ugyanazokat a tulajdonságokat tartalmazza: `language`, `score` `isTranslationSupported` és `isTransliterationSupported`.
+  * `alternatives`: Más lehetséges nyelvek tömbje. A tömb minden eleme egy másik objektum, amely ugyanazokat a tulajdonságokat tartalmazza: `language` , `score` `isTranslationSupported` és `isTransliterationSupported` .
 
 Példa JSON-válaszra:
 
@@ -142,7 +142,7 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   <th>Leírás</th>
   <tr>
     <td>200</td>
-    <td>Siker.</td>
+    <td>Sikeres művelet.</td>
   </tr>
   <tr>
     <td>400</td>
@@ -162,15 +162,15 @@ A kérelem által visszaadott lehetséges HTTP-állapotkódok a következők:
   </tr>
   <tr>
     <td>500</td>
-    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
+    <td>Váratlan hiba történt. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécből `X-RequestId` és az ügyfél azonosítója a kérelem fejlécében `X-ClientTraceId` .</td>
   </tr>
   <tr>
     <td>503</td>
-    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója `X-RequestId`a válasz fejlécből és az ügyfél `X-ClientTraceId`azonosítója a kérelem fejlécében.</td>
+    <td>A kiszolgáló átmenetileg nem érhető el. Próbálja megismételni a kérelmet. Ha a hiba továbbra is fennáll, jelentse a következőt: a hiba dátuma és időpontja, a kérelem azonosítója a válasz fejlécből `X-RequestId` és az ügyfél azonosítója a kérelem fejlécében `X-ClientTraceId` .</td>
   </tr>
 </table> 
 
-Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Text API hivatkozási oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
+Ha hiba történik, a kérés JSON-hibaüzenetet is ad vissza. A hibakód egy 6 számjegyből álló szám, amely a 3 számjegyből álló HTTP-állapotkódot kombinálja, majd egy 3 számjegyű számot, amely további kategorizálja a hibát. Gyakori hibakódok a [v3 Translator Reference oldalon](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors)találhatók. 
 
 ## <a name="examples"></a>Példák
 

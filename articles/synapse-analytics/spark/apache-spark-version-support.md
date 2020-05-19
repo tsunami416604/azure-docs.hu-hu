@@ -1,5 +1,5 @@
 ---
-title: A szinapszis Spark verziójának támogatása
+title: Apache Spark az Azure szinapszis Analytics verziójának támogatásához
 description: A Spark, a Scala, a Python támogatott verziói
 services: synapse-analytics
 author: euangMS
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 77f7ed5787a723b54fef38d12812b825e2c08813
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 77b838db2f39b0de1e209715432697f1f006029c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429238"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591573"
 ---
 # <a name="supported-language-and-runtime-versions-for-apache-spark-and-dependent-components"></a>A Apache Spark és a függő összetevők támogatott nyelvi és futtatókörnyezeti verziói  
 
@@ -42,11 +42,11 @@ Az Azure szinapszis Apache Spark része a .NET Core 3,0
 
 ## <a name="net-support-for-apache-spark"></a>.NET-támogatás Apache Spark
 
-Az Azure szinapszis .NET-támogatást tartalmaz Apache Spark 0.5.0
+Az Azure szinapszis .NET-támogatást tartalmaz Apache Spark 0.11.0
 
 ## <a name="delta-lake"></a>Delta Lake
 
-A szinapszis Analytics támogatja a Delta Lake 0.5.0
+A szinapszis Analytics támogatja a Delta Lake 0.6.0
 
 ## <a name="python-version"></a>Python-verzió
 

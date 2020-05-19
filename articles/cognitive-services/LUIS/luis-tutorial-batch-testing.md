@@ -2,13 +2,13 @@
 title: 'Oktatóanyag: a Batch tesztelése a hibák kereséséhez – LUIS'
 description: Ez az oktatóanyag azt mutatja be, hogyan használható a Batch Testing a Language Understanding (LUIS) alkalmazás minőségének ellenőrzéséhez.
 ms.topic: tutorial
-ms.date: 03/02/2020
-ms.openlocfilehash: c276f0b52f83937fbe3b6fd9e0b7c1a66f665095
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/07/2020
+ms.openlocfilehash: c823cbd854c28ab356dd9968e6f8f1a12b6421be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78250463"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592593"
 ---
 # <a name="tutorial-batch-test-data-sets"></a>Oktatóanyag: batch test adatkészletek
 
@@ -24,7 +24,7 @@ A Batch-tesztelésre vonatkozó követelmények:
 
 Ha az oktatóanyagtól eltérő *alkalmazást használ, ne használja az* alkalmazáshoz már hozzáadott hosszúságú kimondott szöveg.
 
-**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Az oktatóanyag a következőket ismerteti:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
@@ -37,11 +37,13 @@ Ha az oktatóanyagtól eltérő *alkalmazást használ, ne használja az* alkalm
 
 ## <a name="import-example-app"></a>Alkalmazás importálása – példa
 
-Importáljon egy olyan alkalmazást, amely pizzás sorrendet (például `1 pepperoni pizza on thin crust`) vesz igénybe.
+Importáljon egy olyan alkalmazást, amely pizzás sorrendet (például) vesz igénybe `1 pepperoni pizza on thin crust` .
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-with-machine-learned-entity.json?raw=true).
 
-1. A [Luis-portál előzetes](https://preview.luis.ai/)verziójának használatával importálja a JSON-t egy új alkalmazásba, nevezze el az alkalmazást `Pizza app`.
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
+1. Importálja a JSON-t egy új alkalmazásba, nevezze el az alkalmazást `Pizza app` .
+
 
 1. A navigáció jobb felső sarkában válassza a **vonat** lehetőséget az alkalmazás betanításához.
 
@@ -74,7 +76,7 @@ A JSON-példa tartalmaz egy címkével ellátott entitást, amely bemutatja, hog
 
 4. Válassza ki a fájl helyét `pizza-with-machine-learned-entity-test.json` .
 
-5. Nevezze el az `pizza test` adatkészletet, majd válassza a **kész**lehetőséget.
+5. Nevezze el az adatkészletet `pizza test` , majd válassza a **kész**lehetőséget.
 
     > [!div class="mx-imgBorder"]
     > ![Fájl kiválasztása](./media/luis-tutorial-batch-testing/import-dataset-modal.png)
@@ -136,7 +138,7 @@ Ebből az oktatóanyagból megtudhatta, hogyan futtathat egy tesztet, és hogyan
     * További pozitív példa hosszúságú kimondott szöveg hozzáadása
     * Példa hosszúságú kimondott szöveg egyenlegének áttekintése a leképezések között
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [LUIS How to clean up resources](./includes/cleanup-resources-preview-portal.md)]
 

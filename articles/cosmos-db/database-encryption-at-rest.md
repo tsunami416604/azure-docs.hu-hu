@@ -5,20 +5,20 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/23/2019
+ms.date: 05/19/2020
 ms.custom: seodec18
-ms.openlocfilehash: db20388b5277e000ffe7055e9840742d6af7788e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 541c6f4a6c728844524af794f5e2063f4e352cce
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062606"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592134"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adatok titkosítása az Azure Cosmos DB-ben 
 
 A inaktív adatok titkosítása olyan kifejezés, amely általában a nem felejtő tárolóeszközökön, például SSD-meghajtókon és merevlemez-meghajtókon (HDD-k) lévő adatok titkosítására utal. A Cosmos DB az elsődleges adatbázisait az SSD-meghajtókon tárolja. Az adathordozó mellékleteit és biztonsági másolatait az Azure Blob Storage tárolja, amelyet általában a HDD-k készítenek. A inaktív adatok titkosítása Cosmos DB esetén az összes adatbázisa, adathordozó-melléklete és biztonsági mentése titkosítva van. Az adatok most már titkosítva vannak az átvitelben (a hálózaton keresztül) és a nyugalmi állapotban (nem felejtő tárolóban), így teljes körű titkosítást biztosítanak.
 
-A Cosmos DB nagyon könnyen használható. Mivel a Cosmos DBban tárolt összes felhasználói adatok titkosítva vannak, és a átvitel során nem kell semmilyen műveletet végrehajtania. A másik lehetőség az, hogy a titkosítás nyugalmi állapotban van, alapértelmezés szerint "on". Nincsenek olyan vezérlők, amelyekkel ki-vagy bekapcsolhatja. A Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut. Ezt a funkciót a [rendelkezésre állási és teljesítménybeli SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)-kat továbbra is teljesítjük.
+A Azure Cosmos DB nagyon könnyen használható. Mivel a Azure Cosmos DBban tárolt összes felhasználói adatok titkosítva vannak, és a átvitel során nem kell semmilyen műveletet végrehajtania. A másik lehetőség az, hogy a titkosítás nyugalmi állapotban van, alapértelmezés szerint "on". Nincsenek olyan vezérlők, amelyekkel ki-vagy bekapcsolhatja. A Azure Cosmos DB AES-256 titkosítást használ minden olyan régióban, ahol a fiók fut. Ezt a funkciót a [rendelkezésre állási és teljesítménybeli SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db)-kat továbbra is teljesítjük. Az Azure Cosmos-fiókban tárolt adatai automatikusan és zökkenőmentesen titkosítva vannak a Microsoft által kezelt kulcsokkal (szolgáltatás által felügyelt kulcsok). Lehetőség van arra is, hogy egy második titkosítási réteget adjon hozzá a saját kulcsaihoz az [ügyfél által felügyelt kulcsok](how-to-setup-cmk.md) című cikkben leírtak szerint.
 
 ## <a name="implementation-of-encryption-at-rest-for-azure-cosmos-db"></a>Inaktív titkosítás megvalósítása Azure Cosmos DB
 
@@ -59,5 +59,6 @@ A: az emulátor egy önálló fejlesztési/tesztelési eszköz, és nem használ
 
 ## <a name="next-steps"></a>További lépések
 
-A Cosmos DB biztonság és a legújabb Újdonságok áttekintését lásd: az [Azure Cosmos Database biztonsága](database-security.md).
-További információ a Microsoft-tanúsítványokról: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/).
+* Kiválaszthatja, hogy egy második titkosítási réteget is hozzáadhat a saját kulcsaihoz, és további információt az [ügyfél által felügyelt kulcsok](how-to-setup-cmk.md) című cikkben talál.
+* A Cosmos DB biztonság és a legújabb Újdonságok áttekintését lásd: az [Azure Cosmos Database biztonsága](database-security.md).
+* További információ a Microsoft-tanúsítványokról: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/support/trust-center/).

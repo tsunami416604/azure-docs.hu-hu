@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/07/2020
 ms.author: spelluru
-ms.openlocfilehash: cb645b5adfcd937758a950eaf596bc60e4d55f3f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 11cb0d995537b8979c3727bf508045c6e31fc208
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115149"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592610"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
 Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
@@ -28,8 +28,8 @@ Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kap
 ### <a name="is-the-quota-per-user-or-per-week-or-per-entire-duration-of-the-lab"></a>Felhasználónként vagy hetente, vagy a labor teljes időtartama alatt a kvóta? 
 A laborhoz beállított kvóta minden tanuló számára a labor teljes időtartamára vonatkozik. A [virtuális gépek ütemezett futási ideje](how-to-create-schedules.md) nem számít bele a felhasználó számára kiosztott kvótába. A kvóta az ütemezett órákon kívüli időre szól, amelyet a tanuló a virtuális gépeken tölt.  A kvótákkal kapcsolatos további információkért lásd: [kvóták beállítása a felhasználók](how-to-configure-student-usage.md#set-quotas-for-users)számára.
 
-### <a name="if-professor-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Ha a professzor bekapcsol egy tanuló virtuális gépet, akkor ez befolyásolja a tanulói kvótát? 
-Nem. Nem. Amikor a professzor bekapcsolja a tanuló virtuális gépet, nem befolyásolja a tanuló számára kiosztott kvótát. 
+### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Ha a pedagógus bekapcsol egy tanuló virtuális gépet, akkor ez befolyásolja a tanulói kvótát? 
+Nem. Nem. Amikor a pedagógus bekapcsolja a tanuló virtuális gépet, nem befolyásolja a tanuló számára kiosztott kvótát. 
 
 ## <a name="schedules"></a>Ütemezések
 

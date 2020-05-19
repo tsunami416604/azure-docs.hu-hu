@@ -2,16 +2,16 @@
 title: Gyakori kérdések (GYIK) – LUIS
 description: Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 3c7e191ab64d30ddb64f1c3ff4e31b9c20c87b5c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3a30dd1c55d1ee4314e5a9a2f14ffe832994c467
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101110"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592848"
 ---
-# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding gyakori kérdések (GYIK)
+# <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding – Gyakori kérdések (GYIK)
 
 Ez a cikk a Language Understanding (LUIS) kapcsolatos gyakori kérdésekre adott válaszokat tartalmazza.
 
@@ -66,7 +66,7 @@ Ha egy LUIS-alkalmazást másik Azure-előfizetésre szeretne továbbítani, exp
 
 ### <a name="a-prebuilt-entity-is-tagged-in-an-example-utterance-instead-of-my-custom-entity-how-do-i-fix-this"></a>Egy előre összeépített entitás egy példaként való kiírással van megjelölve az egyéni entitás helyett. Hogyan javítsa ezt?
 
-A LUIS-portálon megcímkézheti a pontos entitáshoz tartozó szöveget, amelyet szeretne kinyerni. Ha a LUIS-portál nem jeleníti meg a megfelelő entitások előrejelzését, előfordulhat, hogy további hosszúságú kimondott szöveg kell hozzáadnia, és fel kell címkéznie az entitást a szövegen belül, vagy hozzá kell adnia egy leírót (például egy funkciót).
+A LUIS-portálon megcímkézheti a pontos entitáshoz tartozó szöveget, amelyet szeretne kinyerni. Ha a LUIS-portál nem jeleníti meg a megfelelő entitások előrejelzését, előfordulhat, hogy további hosszúságú kimondott szöveg kell hozzáadnia, és fel kell címkéznie az entitást a szövegben, vagy hozzá kell adnia egy szolgáltatást.
 
 ### <a name="i-tried-to-import-an-app-or-version-file-but-i-got-an-error-what-happened"></a>Megpróbáltam importálni egy alkalmazást vagy verziót, de hiba történt?
 
@@ -189,7 +189,7 @@ Tekintse meg [a vonatot az összes adattal](luis-how-to-train.md#train-with-all-
 ## <a name="app-publishing"></a>Alkalmazások közzététele
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Mi a bérlő azonosítója a "kulcs hozzáadása az alkalmazáshoz" ablakban?
-Az Azure-ban a bérlő a szolgáltatáshoz társított ügyfelet vagy szervezetet jelöli. A **címtár-azonosító** mezőben keresse meg a bérlő azonosítóját a Azure Portal **Azure Active Directory** > a**Tulajdonságok****kezelése** > lehetőség kiválasztásával.
+Az Azure-ban a bérlő a szolgáltatáshoz társított ügyfelet vagy szervezetet jelöli. A **címtár-azonosító** mezőben keresse meg a bérlő azonosítóját a Azure Portal **Azure Active Directory**a  >  **Manage**  >  **Tulajdonságok**kezelése lehetőség kiválasztásával.
 
 ![Bérlő azonosítója a Azure Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -226,7 +226,7 @@ A szerzői kulcsok a [szerzői műveletek elvégzése](luis-migration-authoring.
 Alapértelmezés szerint a LUIS-alkalmazás a felhasználóktól hosszúságú kimondott szöveg naplózza. A felhasználók által a LUIS-alkalmazásba küldött hosszúságú kimondott szöveg letöltéséhez lépjen a **saját alkalmazások**elemre, és válassza ki az alkalmazást. A környezetfüggő eszköztáron válassza a **végponti naplók exportálása**lehetőséget. A napló vesszővel tagolt (CSV) fájlként van formázva.
 
 ### <a name="how-can-i-disable-the-logging-of-utterances"></a>Hogyan lehet letiltani a hosszúságú kimondott szöveg naplózását?
-Kikapcsolhatja a felhasználói hosszúságú kimondott szöveg naplózását a végpont URL `log=false` -címének beállításával, amelyet az ÜGYFÉLALKALMAZÁS a Luis lekérdezésére használ. A naplózás kikapcsolása azonban letiltja a LUIS-alkalmazás hosszúságú kimondott szöveg, vagy javíthatja az [aktív tanuláson](luis-concept-review-endpoint-utterances.md#what-is-active-learning)alapuló teljesítményt. Ha adatvédelmi okokból `log=false` állítja be az adatokat, nem töltheti le a felhasználói hosszúságú kimondott szöveg származó rekordokat a Luis-ból, vagy a hosszúságú kimondott szöveg használatával javíthatja az alkalmazását.
+Kikapcsolhatja a felhasználói hosszúságú kimondott szöveg naplózását `log=false` a végpont URL-címének beállításával, amelyet az ügyfélalkalmazás a Luis lekérdezésére használ. A naplózás kikapcsolása azonban letiltja a LUIS-alkalmazás hosszúságú kimondott szöveg, vagy javíthatja az [aktív tanuláson](luis-concept-review-endpoint-utterances.md#what-is-active-learning)alapuló teljesítményt. Ha adatvédelmi okokból állítja be az `log=false` adatokat, nem töltheti le a felhasználói hosszúságú kimondott szöveg származó rekordokat a Luis-ból, vagy a hosszúságú kimondott szöveg használatával javíthatja az alkalmazását.
 
 A naplózás a hosszúságú kimondott szöveg egyetlen tárolója.
 
@@ -271,7 +271,7 @@ A Luis- [végponttal](luis-get-started-create-app.md#query-the-v2-api-prediction
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Probléma megoldása Azure Bot Service
 
-Ha a Azure Bot Service használja, és a probléma az, hogy a **webes csevegésben** a teszt `Sorry, my bot code is having an issue`visszaadja, ellenőrizze a naplókat:
+Ha a Azure Bot Service használja, és a probléma az, hogy a **webes csevegésben a teszt** visszaadja `Sorry, my bot code is having an issue` , ellenőrizze a naplókat:
 
 1. A robot Azure Portal a robot **kezelése** szakaszban válassza a **Létrehozás**lehetőséget.
 1. Nyissa meg az online Kódszerkesztő alkalmazást.

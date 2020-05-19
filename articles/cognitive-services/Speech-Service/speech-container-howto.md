@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 04/29/2020
+ms.date: 05/05/2020
 ms.author: aahi
-ms.openlocfilehash: efca7eceae74416945c568268edfe0b13a21861a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: dc11d9d7dfa7ededa19e11c9e1bc38e1eaaec93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856425"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591020"
 ---
 # <a name="install-and-run-speech-service-containers-preview"></a>Beszédfelismerő szolgáltatás tárolóinak telepítése és futtatása (előzetes verzió)
 
@@ -26,14 +26,14 @@ A beszédfelismerési tárolók lehetővé teszik, hogy az ügyfelek olyan besz�
 > [!IMPORTANT]
 > Az összes beszédfelismerési tároló jelenleg egy [nyilvános "GateD" előzetes](../cognitive-services-container-support.md#public-gated-preview-container-registry-containerpreviewazurecrio)verzió részeként érhető el. Bejelentést kell készíteni, amikor a beszédfelismerési tárolók az általánosan elérhetővé vált (GA).
 
-| Függvény | Szolgáltatások | Legújabb |
+| Függvény | Funkciók | Legújabb |
 |--|--|--|
 | Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.2.0 |
 | Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.2.0 |
 | Szövegfelolvasás | A szöveget természetes hangú beszédre konvertálja egyszerű szöveges bevitelsel vagy beszéd szintézis Markup Language (SSML) nyelvvel. | 1.3.0 |
 | Egyéni szöveg – beszéd | Ha egyéni modellt használ az [Egyéni hangportálról](https://aka.ms/custom-voice-portal), a szövegeket természetes hangú beszédre alakítja egyszerű szöveges bevitel vagy beszédfelismerési leíró nyelv (SSML) használatával. | 1.3.0 |
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -42,12 +42,12 @@ A Speech containers használata előtt a következő előfeltételek szükséges
 | Kötelező | Cél |
 |--|--|
 | Docker-motor | A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br> |
-| A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a `docker` tárolók lemezképéről, valamint az alapszintű parancsokról. |
+| A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról. |
 | Beszédfelismerési erőforrás | A tárolók használatához a következőket kell tennie:<br><br>Egy Azure _Speech_ -erőforrás a társított API-kulcs és végpont URI-azonosító lekéréséhez. Mindkét érték elérhető a Azure Portal **beszédének** áttekintése és a kulcsok oldalain. Mindkettő szükséges a tároló elindításához.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont |
 
 ## <a name="request-access-to-the-container-registry"></a>Hozzáférés kérése a tároló beállításjegyzékéhez
 
-Töltse ki és küldje el a [Cognitive Services Speech containers kérelem űrlapját](https://aka.ms/speechcontainerspreview/) , hogy hozzáférést Kérjen a tárolóhoz. 
+Töltse ki és küldje el a [Cognitive Services tárolók kérelem űrlapját](https://aka.ms/cognitivegate) , hogy hozzáférést Kérjen a tárolóhoz.
 
 [!INCLUDE [Request access to the container registry](../../../includes/cognitive-services-containers-request-access-only.md)]
 
@@ -101,7 +101,7 @@ Az alábbi táblázat az egyes beszédfelismerési tárolók minimális és ajá
 
 * Minden mag legalább 2,6 gigahertz (GHz) vagy gyorsabb lehet.
 
-Az alap és a memória a `--cpus` `docker run` parancs `--memory` részeként használt és beállításoknak felel meg.
+Az alap és a memória a `--cpus` `--memory` parancs részeként használt és beállításoknak felel meg `docker run` .
 
 > [!NOTE]
 > A minimális és ajánlott a Docker korlátain kívüli, *nem* pedig a gazdagép erőforrásai. Például a beszéd-szöveg típusú tárolók a nagyméretű nyelvi modell részei, és azt *javasoljuk* , hogy a teljes fájl elfér a memóriában, ami egy további 4-6 GB. A tárolók első futtatása hosszabb időt is igénybe vehet, mivel a modellek a memóriába kerülnek.
@@ -155,7 +155,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-t
 
 #### <a name="speech-to-text-locales"></a>Beszéd – szöveg területi beállítások
 
-A (z) `latest` kivételével az összes címke a következő formátumban van, és megkülönbözteti a kis-és nagybetűket:
+A (z) kivételével az összes címke `latest` a következő formátumban van, és megkülönbözteti a kis-és nagybetűket:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<prerelease>
@@ -180,7 +180,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-spee
 ```
 
 > [!NOTE]
-> A `locale` és `voice` az egyéni beszédfelismerési tárolókat a tároló által betöltött egyéni modell határozza meg.
+> A `locale` és az `voice` Egyéni beszédfelismerési tárolókat a tároló által betöltött egyéni modell határozza meg.
 
 # <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
 
@@ -193,11 +193,11 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-text-to-spe
 ```
 
 > [!IMPORTANT]
-> A `latest` címke lekéri a `en-US` területi beállításokat és `jessarus` a hangot. További területi beállítások: [szöveg – beszéd területi beállítások](#text-to-speech-locales).
+> A `latest` címke lekéri a `en-US` területi beállításokat és a `jessarus` hangot. További területi beállítások: [szöveg – beszéd területi beállítások](#text-to-speech-locales).
 
 #### <a name="text-to-speech-locales"></a>Szöveg – beszéd területi beállítások
 
-A (z) `latest` kivételével az összes címke a következő formátumban van, és megkülönbözteti a kis-és nagybetűket:
+A (z) kivételével az összes címke `latest` a következő formátumban van, és megkülönbözteti a kis-és nagybetűket:
 
 ```
 <major>.<minor>.<patch>-<platform>-<locale>-<voice>-<prerelease>
@@ -212,7 +212,7 @@ A következő címke egy példa a formátumra:
 A **szöveg-beszéd** típusú tároló összes támogatott területi beállítása és a hozzájuk tartozó hangok esetében lásd: [szöveg – beszéd képcímkék](../containers/container-image-tags.md#text-to-speech).
 
 > [!IMPORTANT]
-> *Szabványos szöveg-beszéd http-* bejegyzés létrehozásakor a [Speech szintézis MARKUP Language (SSML)](speech-synthesis-markup.md) üzenetéhez `voice` `name` attribútummal rendelkező elem szükséges. Az érték a megfelelő tároló területi beállítása és hangja, más néven ["rövid név"](language-support.md#standard-voices). A `latest` címke neve például a következő lesz: `en-US-JessaRUS`.
+> *Szabványos szöveg-beszéd http-* bejegyzés létrehozásakor a [Speech szintézis MARKUP Language (SSML)](speech-synthesis-markup.md) üzenetéhez `voice` attribútummal rendelkező elem szükséges `name` . Az érték a megfelelő tároló területi beállítása és hangja, más néven ["rövid név"](language-support.md#standard-voices). A címke neve például a következő lesz: `latest` `en-US-JessaRUS` .
 
 # <a name="custom-text-to-speech"></a>[Egyéni szöveg – beszéd](#tab/ctts)
 
@@ -225,7 +225,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-custom-text
 ```
 
 > [!NOTE]
-> A `locale` és `voice` az egyéni beszédfelismerési tárolókat a tároló által betöltött egyéni modell határozza meg.
+> A `locale` és az `voice` Egyéni beszédfelismerési tárolókat a tároló által betöltött egyéni modell határozza meg.
 
 ***
 
@@ -238,7 +238,7 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
-A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A `{Endpoint_URI}` és `{API_Key}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört. A [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` parancshoz további példák is elérhetők.
+A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{Endpoint_URI}` `{API_Key}` . A [examples](speech-container-configuration.md#example-docker-run-commands) `docker run` parancshoz további példák is elérhetők.
 
 # <a name="speech-to-text"></a>[Diktálás](#tab/stt)
 
@@ -302,7 +302,7 @@ A tároló futtatásához az egyéni beszédfelismerési **modell azonosítója*
 
 ![Egyéni beszédfelismerési oldal](media/custom-speech/custom-speech-model-training.png)
 
-Szerezze be a `ModelId` `docker run` parancs paraméteréhez ARGUMENTUMként használandó **modell azonosítóját** .
+Szerezze be a parancs paraméteréhez argumentumként használandó **modell azonosítóját** `ModelId` `docker run` .
 <br>
 
 ![Egyéni beszédfelismerési modell részletei](media/custom-speech/custom-speech-model-details.png)
@@ -335,7 +335,7 @@ A parancs a következőket hajtja végre:
 * Betölti a *Custom Speech-szöveg* modellt a Volume bemeneti csatlakoztatásból, például *C:\CustomSpeech*.
 * Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
 * Letölti az adott modellt `ModelId` (ha nem található a kötet csatlakoztatása).
-* Ha az egyéni modell korábban le lett töltve, `ModelId` a figyelmen kívül lesz hagyva.
+* Ha az egyéni modell korábban le lett töltve, a `ModelId` figyelmen kívül lesz hagyva.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
 
 # <a name="text-to-speech"></a>[Szövegfelolvasás](#tab/tts)
@@ -364,7 +364,7 @@ Az *egyéni szöveg – beszéd* tároló egy egyéni hangmodellen alapul. Az eg
 
 ![Egyéni hang betanítása lap](media/custom-voice/custom-voice-model-training.png)
 
-Szerezze be a Docker Run parancs `ModelId` paraméterének argumentumként használandó **modell azonosítóját** .
+Szerezze be a Docker Run parancs paraméterének argumentumként használandó **modell azonosítóját** `ModelId` .
 <br>
 
 ![Egyéni hangmodell részletei](media/custom-voice/custom-voice-model-details.png)
@@ -397,20 +397,20 @@ A parancs a következőket hajtja végre:
 * Betölti az *egyéni szöveg-beszéd* modellt a kötet bemeneti csatlakoztatásáról, például *C:\CustomVoice*.
 * Elérhetővé teszi a 5000-es TCP-portot, és egy pszeudo-TTY-t foglal le a tárolóhoz.
 * Letölti az adott modellt `ModelId` (ha nem található a kötet csatlakoztatása).
-* Ha az egyéni modell korábban le lett töltve, `ModelId` a figyelmen kívül lesz hagyva.
+* Ha az egyéni modell korábban le lett töltve, a `ModelId` figyelmen kívül lesz hagyva.
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.
 
 ***
 
 > [!IMPORTANT]
-> A `Eula`tároló `Billing`futtatásához `ApiKey` meg kell adni a, a és a beállításokat. Ellenkező esetben a tároló nem indul el.  További információ: [számlázás](#billing).
+> A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
 
 ## <a name="query-the-containers-prediction-endpoint"></a>A tároló előrejelzési végpontjának lekérdezése
 
 > [!NOTE]
 > Ha több tárolót futtat, használjon egyedi portszámot.
 
-| Containers | SDK-gazda URL-címe | Protocol (Protokoll) |
+| Containers | SDK-gazda URL-címe | Protokoll |
 |--|--|--|
 | Beszéd – szöveg és Custom Speech – szöveg | `ws://localhost:5000` | WS |
 | Szöveg – beszéd és egyéni szöveg – beszéd | `http://localhost:5000` | HTTP |
@@ -425,7 +425,7 @@ Ha megadták a Text Analytics API hitelesítő adatait [a tárolóhoz](#analyze-
 
 # <a name="simple-format"></a>[Egyszerű formátum](#tab/simple-format)
 
-Ha úgy szeretné beállítani a beszédfelismerési ügyfelet, hogy egyszerű `"Sentiment"` formátumot használjon, adja `Simple.Extensions`hozzá a értéket a értékhez. Ha ki szeretne választani egy adott Text Analytics modell verzióját, a `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` tulajdonság konfigurációjában cserélje le a elemet.
+Ha úgy szeretné beállítani a beszédfelismerési ügyfelet, hogy egyszerű formátumot használjon, adja hozzá a `"Sentiment"` értéket a értékhez `Simple.Extensions` . Ha ki szeretne választani egy adott Text Analytics modell verzióját, `'latest'` a tulajdonság konfigurációjában cserélje le a elemet `speechcontext-phraseDetection.sentimentAnalysis.modelversion` .
 
 ```python
 speech_config.set_service_property(
@@ -459,7 +459,7 @@ speech_config.set_service_property(
 
 # <a name="detailed-format"></a>[Részletes formátum](#tab/detailed-format)
 
-Ha úgy szeretné beállítani a beszédfelismerési ügyfelet, hogy egy `"Sentiment"` részletes formátumot használjon, `Detailed.Extensions`adja `Detailed.Options`hozzá a értéket a, a vagy mindkettő értékhez. Ha ki szeretne választani egy adott Text Analytics modell verzióját, a `'latest'` `speechcontext-phraseDetection.sentimentAnalysis.modelversion` tulajdonság konfigurációjában cserélje le a elemet.
+Ha úgy szeretné beállítani a beszédfelismerési ügyfelet, hogy egy részletes formátumot használjon, adja hozzá a `"Sentiment"` értéket a `Detailed.Extensions` , a `Detailed.Options` vagy mindkettő értékhez. Ha ki szeretne választani egy adott Text Analytics modell verzióját, `'latest'` a tulajdonság konfigurációjában cserélje le a elemet `speechcontext-phraseDetection.sentimentAnalysis.modelversion` .
 
 ```python
 speech_config.set_service_property(
@@ -479,7 +479,7 @@ speech_config.set_service_property(
 )
 ```
 
-`Detailed.Extensions`a válasz legfelső rétegében biztosítja a hangulati eredményt. `Detailed.Options`a válasz rétegében `NBest` adja meg az eredményt. Külön vagy együtt is használhatók.
+`Detailed.Extensions`a válasz legfelső rétegében biztosítja a hangulati eredményt. `Detailed.Options`a válasz rétegében adja meg az eredményt `NBest` . Külön vagy együtt is használhatók.
 
 ```json
 {
@@ -524,7 +524,7 @@ speech_config.set_service_property(
 
 ---
 
-Ha szeretné teljesen letiltani a hangulat elemzését, `false` adjon hozzá `sentimentanalysis.enabled`egy értéket a következőhöz:.
+Ha szeretné teljesen letiltani a hangulat elemzését, adjon hozzá egy értéket a következőhöz: `false` `sentimentanalysis.enabled` .
 
 ```python
 speech_config.set_service_property(

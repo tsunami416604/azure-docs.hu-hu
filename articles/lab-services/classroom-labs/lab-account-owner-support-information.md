@@ -3,15 +3,15 @@ title: Azure Lab Services – támogatási információk beállítása (labor-fi
 description: Azt ismerteti, hogyan állíthatja be a labor-fiók tulajdonosa a támogatási kapcsolattartási adatokat. A labor-készítők és a labor-felhasználók megtekinthetik és használhatják a segítségét.
 author: spelluru
 ms.author: spelluru
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: how-to
 ms.service: lab-services
-ms.openlocfilehash: f387e6b8832d8e7144b8338a3fc887b6b27db789
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07a37a4b87b7efe1fc3f3c08824da01e83cbb660
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109341"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83592406"
 ---
 # <a name="set-up-support-information-lab-account-owner-in-azure-lab-services"></a>Támogatási információk beállítása (labor-fiók tulajdonosa Azure Lab Services)
 Ez a cikk azt ismerteti, hogy Ön (a labor-fiók tulajdonosaként) milyen támogatási információkat adhat meg a labor-készítők (oktatók) és a labor felhasználói (tanulók) számára, hogy segítséget kérjenek, ha a labor-fiók vagy a labor használatával bármilyen technikai problémába ütköznek. 

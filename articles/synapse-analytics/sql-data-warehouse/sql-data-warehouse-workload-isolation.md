@@ -11,20 +11,20 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 5d81dc1f4da6e952061496fa348d0f8e87b00b81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30429653c024c669d273c45d12236afa8cdbb83
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742974"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591505"
 ---
-# <a name="azure-synapse-analytics-workload-group-isolation-preview"></a>Az Azure szinapszis Analytics munkaterhelési csoport elkülönítése (előzetes verzió)
+# <a name="azure-synapse-analytics-workload-group-isolation"></a>Az Azure szinapszis Analytics munkaterhelési csoport elkülönítése
 
 Ez a cikk azt ismerteti, hogyan használhatók a munkaterhelés-csoportok a munkaterhelés elkülönítésének konfigurálásához, erőforrások tárolásához és futásidejű szabályok alkalmazásához a lekérdezés végrehajtásához.
 
 ## <a name="workload-groups"></a>Munkaterhelés-csoportok
 
-A munkaterhelési csoportok egy adott kérelemhez tartozó tárolók, amelyek alapján a számítási feladatok kezelése, beleértve a munkaterhelés elkülönítését, egy rendszeren van konfigurálva.  A munkaterhelés-csoportok a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxis használatával hozhatók létre.  Az egyszerű munkaterhelés-kezelési konfiguráció képes az adatterhelések és a felhasználói lekérdezések kezelésére.  Egy nevű `wgDataLoads` munkaterhelés-csoport például meghatározza a rendszerbe betöltött adatok számítási feladatait. Emellett a nevű `wgUserQueries` munkaterhelés-csoport munkaterhelési szempontokat is meghatároz azon felhasználók számára, akik lekérdezéseket futtatnak a rendszerből származó adatok olvasásához.
+A munkaterhelési csoportok egy adott kérelemhez tartozó tárolók, amelyek alapján a számítási feladatok kezelése, beleértve a munkaterhelés elkülönítését, egy rendszeren van konfigurálva.  A munkaterhelés-csoportok a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxis használatával hozhatók létre.  Az egyszerű munkaterhelés-kezelési konfiguráció képes az adatterhelések és a felhasználói lekérdezések kezelésére.  Egy nevű munkaterhelés-csoport például `wgDataLoads` meghatározza a rendszerbe betöltött adatok számítási feladatait. Emellett a nevű munkaterhelés-csoport `wgUserQueries` munkaterhelési szempontokat is meghatároz azon felhasználók számára, akik lekérdezéseket futtatnak a rendszerből származó adatok olvasásához.
 
 A következő szakaszokban bemutatjuk, hogy a munkaterhelési csoportok hogyan határozzák meg az elkülönítést, a tárolást, a kérelem erőforrás-definícióját és a végrehajtási szabályok betartásának lehetőségét.
 
@@ -32,9 +32,9 @@ A következő szakaszokban bemutatjuk, hogy a munkaterhelési csoportok hogyan h
 
 A számítási feladatok elkülönítése azt jelenti, hogy az erőforrások kizárólag a munkaterhelés-csoportok számára vannak fenntartva.  A számítási feladatok elkülönítése úgy érhető el, hogy a MIN_PERCENTAGE_RESOURCE paramétert nullánál nagyobb értékre konfigurálja a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxisban.  A szűk SLA-kat betartó folyamatos végrehajtást igénylő számítási feladatokhoz az elkülönítés biztosítja, hogy az erőforrások mindig elérhetők legyenek a munkaterhelés csoport számára.
 
-A számítási feladatok elkülönítésének implicit beállítása implicit módon meghatároz egy garantált párhuzamossági szintet. Egy 30%-os és 2% `MIN_PERCENTAGE_RESOURCE` -os értékre beállított `REQUEST_MIN_RESOURCE_GRANT_PERCENT` munkaterhelés-csoport például 15 egyidejűséget garantál.  A párhuzamosság szintje garantált, mert az erőforrások 15-2%-os tárolóhelye mindig a munkaterhelés-csoporton belül van lefoglalva (függetlenül `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` attól, hogy a konfiguráció milyen módon van konfigurálva).  Ha `REQUEST_MAX_RESOURCE_GRANT_PERCENT` a értéke nagyobb `REQUEST_MIN_RESOURCE_GRANT_PERCENT` , `CAP_PERCENTAGE_RESOURCE` mint a és `MIN_PERCENTAGE_RESOURCE` a nagyobb, mint a további erőforrások hozzáadása.  Ha `REQUEST_MAX_RESOURCE_GRANT_PERCENT` a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` és a `CAP_PERCENTAGE_RESOURCE` értéke nagyobb, mint `MIN_PERCENTAGE_RESOURCE`a, a további Egyidejűség is lehetséges.  Vegye figyelembe az alábbi módszert a garantált Egyidejűség meghatározásához:
+A számítási feladatok elkülönítésének implicit beállítása implicit módon meghatároz egy garantált párhuzamossági szintet. Egy 30%-os és 2%-os értékre beállított munkaterhelés-csoport például `MIN_PERCENTAGE_RESOURCE` `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 15 egyidejűséget garantál.  A párhuzamosság szintje garantált, mert az erőforrások 15-2%-os tárolóhelye mindig a munkaterhelés-csoporton belül van lefoglalva (függetlenül attól, hogy a konfiguráció milyen módon `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` van konfigurálva).  Ha `REQUEST_MAX_RESOURCE_GRANT_PERCENT` a értéke nagyobb, mint `REQUEST_MIN_RESOURCE_GRANT_PERCENT` a és a nagyobb, `CAP_PERCENTAGE_RESOURCE` mint a `MIN_PERCENTAGE_RESOURCE` További erőforrások hozzáadása.  Ha `REQUEST_MAX_RESOURCE_GRANT_PERCENT` `REQUEST_MIN_RESOURCE_GRANT_PERCENT` a és a értéke `CAP_PERCENTAGE_RESOURCE` nagyobb, mint a `MIN_PERCENTAGE_RESOURCE` , a további Egyidejűség is lehetséges.  Vegye figyelembe az alábbi módszert a garantált Egyidejűség meghatározásához:
 
-[Garantált Egyidejűség] = [`MIN_PERCENTAGE_RESOURCE`]/[]`REQUEST_MIN_RESOURCE_GRANT_PERCENT`
+[Garantált Egyidejűség] = [ `MIN_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
 > A min_percentage_resourcehoz meghatározott szolgáltatási szint minimálisan életképes értékekkel rendelkezik.  További információ: a további részletek a [hatályos értékekben](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest#effective-values) találhatók.
@@ -54,7 +54,7 @@ A munkaterhelés-tárolás a munkaterhelés-csoport által felhasználható erő
 
 A munkaterhelés-tárolás konfigurálása implicit módon meghatározza a maximális párhuzamossági szintet.  Ha egy CAP_PERCENTAGE_RESOURCE 60%-ra van beállítva, és egy REQUEST_MIN_RESOURCE_GRANT_PERCENT 1%-ra van beállítva, a munkaterhelés-csoport számára legfeljebb 60-párhuzamossági szint adható meg.  Vegye figyelembe az alábbi módszert a maximális párhuzamosság meghatározásához:
 
-[Egyidejűség maximális száma] = [`CAP_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
+[Egyidejűség maximális száma] = [ `CAP_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
 > A munkaterhelési csoport tényleges CAP_PERCENTAGE_RESOURCEa nem éri el a 100%-ot, ha a munkaterhelési csoportok a nullánál nagyobb mértékben jönnek létre MIN_PERCENTAGE_RESOURCE.  Lásd: [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
@@ -75,13 +75,13 @@ Ha a REQUEST_MAX_RESOURCE_GRANT_PERCENTt a REQUEST_MIN_RESOURCE_GRANT_PERCENTná
 
 ## <a name="execution-rules"></a>Végrehajtási szabályok
 
-Az alkalmi jelentéskészítési rendszerekben az ügyfelek véletlenül olyan elszabaduló lekérdezéseket futtathatnak, amelyek jelentősen befolyásolhatják mások termelékenységét.  A rendszeradminisztrátorok arra kényszerülnek, hogy időt szabadítanak fel a rendszererőforrások felszabadítására szolgáló Runaway lekérdezésekkel.  A munkaterhelés-csoportok lehetőséget nyújtanak a lekérdezés-végrehajtási időtúllépési szabály konfigurálására a megadott értéket meghaladó lekérdezések megszakításához.  A szabály úgy van konfigurálva, hogy `QUERY_EXECUTION_TIMEOUT_SEC` beállítja a paramétert a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxisban.
+Az alkalmi jelentéskészítési rendszerekben az ügyfelek véletlenül olyan elszabaduló lekérdezéseket futtathatnak, amelyek jelentősen befolyásolhatják mások termelékenységét.  A rendszeradminisztrátorok arra kényszerülnek, hogy időt szabadítanak fel a rendszererőforrások felszabadítására szolgáló Runaway lekérdezésekkel.  A munkaterhelés-csoportok lehetőséget nyújtanak a lekérdezés-végrehajtási időtúllépési szabály konfigurálására a megadott értéket meghaladó lekérdezések megszakításához.  A szabály úgy van konfigurálva, hogy beállítja a `QUERY_EXECUTION_TIMEOUT_SEC` paramétert a [MUNKATERHELÉS-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxisban.
 
 ## <a name="shared-pool-resources"></a>Megosztott készlet erőforrásai
 
 A megosztott készlet erőforrásai az erőforrások elkülönítésére nincsenek konfigurálva.  A MIN_PERCENTAGE_RESOURCE nulla értékkel rendelkező munkaterhelési csoportok kihasználják a megosztott készletben lévő erőforrásokat a kérelmek végrehajtásához.  A munkaterhelési csoportok CAP_PERCENTAGE_RESOURCE nagyobb, mint MIN_PERCENTAGE_RESOURCE a megosztott erőforrásokat is használták.  A megosztott készletben elérhető erőforrások mennyisége a következőképpen számítható ki.
 
-[Megosztott készlet] = 100 – [az összes `MIN_PERCENTAGE_RESOURCE` munkaterhelési csoport teljes összege]
+[Megosztott készlet] = 100 – [az `MIN_PERCENTAGE_RESOURCE` összes munkaterhelési csoport teljes összege]
 
 A megosztott készlet erőforrásaihoz való hozzáférés [fontossági](sql-data-warehouse-workload-importance.md) arányban van kiosztva.  Az azonos fontossági szintű kérelmek a megosztott készlet erőforrásait az első és az első kimenő érték alapján érik el.
 

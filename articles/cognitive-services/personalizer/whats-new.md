@@ -8,20 +8,26 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 04/23/2020
 ms.author: diberry
-ms.openlocfilehash: 21e1be094716ac1d43e1f4458b41e855315d1779
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 21669a214ff1646a8f331cbe2871b7d8c756f22f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82192986"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83591760"
 ---
 # <a name="whats-new-in-personalizer"></a>A személyre szabás újdonságai
 
 Ismerje meg a szolgáltatás újdonságait. Ezek az elemek tartalmazhatnak kibocsátási megjegyzéseket, videókat, blogbejegyzéseket és más típusú információkat. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="may-2020---build-conference"></a>Május 2020 – Build konferencia
+
+A **nyilvános előzetes**verzióban a következők érhetők el:
+
+ * Tanulói [mód](concept-apprentice-mode.md) tanulási viselkedésként.
 
 ### <a name="march-2020"></a>2020. március
 
