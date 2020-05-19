@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.custom: seodec18
-ms.openlocfilehash: fc5d2b8f7673488169ee3ae393efcb74ef0a27a2
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fd49d11061a345b396d300c2356645a2acd5b4c0
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996452"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588122"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ További információ a [kísérletek elküldéséről](#submit) a cikk végén.
 
 A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít.  Ez az osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak. Javasoljuk, hogy használjon egy kalkulátort a betanításhoz, mert automatikusan létrehozza a beágyazott objektumokat, például egy környezet-vagy RunConfiguration-objektumot. Ha nagyobb mértékben szeretné vezérelni ezeket az objektumokat, és megadja, hogy milyen csomagokat szeretne telepíteni a kísérlet futtatásához, kövesse az [alábbi lépéseket](#amlcompute) , hogy elküldje a betanítási kísérleteket egy RunConfiguration objektum használatával egy Azure Machine learning számításban.
 
-A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
+Azure Machine Learning adott becslések biztosít a [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), a [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py), a [chainer](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)és a [Ray RLlib](how-to-use-reinforcement-learning.md)számára.
 
 További információ: ML- [modellek betanítása a becslések](how-to-train-ml-models.md).
 
@@ -182,7 +182,7 @@ Az Azure HDInsight egy népszerű platform a Big-adatelemzéshez. A platform Apa
 
     A fürt létrehozásakor meg kell adnia egy SSH-felhasználónevet és-jelszót. Jegyezze fel ezeket az értékeket, mert szüksége lesz rájuk a HDInsight számítási célként való használatához.
     
-    A fürt létrehozása után kapcsolódjon hozzá az állomásnév \<clustername>-SSH.azurehdinsight.net, ahol \<a clustername> a fürthöz megadott név. 
+    A fürt létrehozása után kapcsolódjon hozzá az állomásnév \< clustername>-SSH.azurehdinsight.net, ahol a \< clustername> a fürthöz megadott név. 
 
 1. **Csatolás**: Ha egy HDInsight-fürtöt számítási célként kíván csatolni, meg kell adnia a HDInsight-fürt erőforrás-azonosítóját, felhasználónevét és jelszavát. A HDInsight-fürt erőforrás-azonosítója az előfizetés-azonosító, az erőforráscsoport neve és a HDInsight-fürt neve alapján hozható létre a következő karakterlánc-formátum használatával:`/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.HDInsight/clusters/<cluster_name>`
 
@@ -393,7 +393,7 @@ Ugyanezt a kísérletet másik számítási célra is futtathatja, ha más futta
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=amlcompute_submit)]
 
 > [!TIP]
-> Ez a példa alapértelmezés szerint csak a számítási cél egy csomópontját használja a betanításhoz. Ha egynél több csomópontot szeretne használni, állítsa `node_count` a futtatási konfigurációt a kívánt számú csomópontra. A következő kód például beállítja a négy tanításhoz használt csomópontok számát:
+> Ez a példa alapértelmezés szerint csak a számítási cél egy csomópontját használja a betanításhoz. Ha egynél több csomópontot szeretne használni, állítsa a `node_count` futtatási konfigurációt a kívánt számú csomópontra. A következő kód például beállítja a négy tanításhoz használt csomópontok számát:
 >
 > ```python
 > src.run_config.node_count = 4
@@ -401,7 +401,7 @@ Ugyanezt a kísérletet másik számítási célra is futtathatja, ha más futta
 
 Vagy a következőket teheti:
 
-* A kísérletet egy `Estimator` olyan objektummal küldje el, amely az [ml modellek becslések-vel való betanítását](how-to-train-ml-models.md)mutatja.
+* A kísérletet egy olyan objektummal küldje el, amely `Estimator` az [ml modellek becslések-vel való betanítását](how-to-train-ml-models.md)mutatja.
 * HyperDrive-Futtatás küldése a [hiperparaméter finomhangolásához](how-to-tune-hyperparameters.md).
 * Kísérlet küldése a [vs Code bővítmény](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)használatával.
 
@@ -409,7 +409,7 @@ További információkért tekintse meg a [ScriptRunConfig](https://docs.microso
 
 ## <a name="create-run-configuration-and-submit-run-using-azure-machine-learning-cli"></a>Futtatási konfiguráció létrehozása és futtatásának elküldése Azure Machine Learning CLI használatával
 
-Használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t és a [Machine learning CLI-bővítményt](reference-azure-machine-learning-cli.md) a futtatási konfigurációk létrehozásához és a különböző számítási célokból való beküldéséhez. Az alábbi példák azt feltételezik, hogy van egy meglévő Azure Machine Learning-munkaterület, és bejelentkezett az Azure `az login` -ba a CLI paranccsal. 
+Használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) -t és a [Machine learning CLI-bővítményt](reference-azure-machine-learning-cli.md) a futtatási konfigurációk létrehozásához és a különböző számítási célokból való beküldéséhez. Az alábbi példák azt feltételezik, hogy van egy meglévő Azure Machine Learning-munkaterület, és bejelentkezett az Azure-ba a `az login` CLI paranccsal. 
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)] 
 
@@ -421,7 +421,7 @@ A futtatási konfiguráció létrehozásának legegyszerűbb módja a Machine le
 az ml folder attach
 ```
 
-Ez a parancs létrehoz egy `.azureml` almappát, amely tartalmazza a sablon futtatására szolgáló konfigurációs fájlokat a különböző számítási célokhoz. Ezen fájlok másolásával és szerkesztésével testreszabhatja a konfigurációt, például a Python-csomagok hozzáadásához vagy a Docker-beállítások módosításához.  
+Ez a parancs létrehoz egy almappát `.azureml` , amely tartalmazza a sablon futtatására szolgáló konfigurációs fájlokat a különböző számítási célokhoz. Ezen fájlok másolásával és szerkesztésével testreszabhatja a konfigurációt, például a Python-csomagok hozzáadásához vagy a Docker-beállítások módosításához.  
 
 ### <a name="structure-of-run-configuration-file"></a>A futtatási konfigurációs fájl szerkezete
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 8a567dbbd8c5e752b8d9294623a5f4d3f37e5a05
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 93a37f6ab7d9b916368d469d660ac8ac38399b52
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906806"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586732"
 ---
 [!INCLUDE [Prerequisites](prerequisites-java.md)]
 
@@ -24,7 +24,7 @@ mkdir length-sentence-sample
 cd length-sentence-sample
 ```
 
-Ezután egy Gradle-projektet fog inicializálni. Ez a parancs a Gradle nélkülözhetetlen Build-fájljait hozza létre, ami a `build.gradle.kts`legfontosabb: a, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához. Futtassa ezt a parancsot a munkakönyvtárból:
+Ezután egy Gradle-projektet fog inicializálni. Ez a parancs a Gradle nélkülözhetetlen Build-fájljait hozza létre, ami a legfontosabb `build.gradle.kts` : a, amelyet futásidőben használ az alkalmazás létrehozásához és konfigurálásához. Futtassa ezt a parancsot a munkakönyvtárból:
 
 ```console
 gradle init --type basic
@@ -34,7 +34,7 @@ Amikor a rendszer rákérdez a **DSL**kiválasztására, válassza a **Kotlin**l
 
 ## <a name="configure-the-build-file"></a>A Build fájl konfigurálása
 
-Keresse `build.gradle.kts` meg és nyissa meg kedvenc ide-vagy szövegszerkesztővel. Ezután másolja a következő Build-konfigurációba:
+Keresse meg `build.gradle.kts` és nyissa meg kedvenc ide-vagy szövegszerkesztővel. Ezután másolja a következő Build-konfigurációba:
 
 ```
 plugins {
@@ -63,7 +63,7 @@ Hozzon létre egy mappát a minta alkalmazáshoz. A munkakönyvtárból futtassa
 mkdir -p src/main/java
 ```
 
-Ezután a mappában hozzon létre egy nevű `BreakSentence.java`fájlt.
+Ezután a mappában hozzon létre egy nevű fájlt `BreakSentence.java` .
 
 ## <a name="import-required-libraries"></a>Szükséges kódtárak importálása
 
@@ -88,18 +88,18 @@ public class BreakSentence {
 }
 ```
 
-Adja hozzá ezeket a sorokat `BreakSentence` a osztályhoz. Először is az előfizetési kulcsot és a végpontot olvassa a rendszer környezeti változókból. Ezt követően láthatja, hogy a `api-version`használatával együtt megadhatja a szövegbeviteli nyelvet. Ebben a példában ez az angol.
+Adja hozzá ezeket a sorokat a `BreakSentence` osztályhoz. Először is az előfizetési kulcsot és a végpontot olvassa a rendszer környezeti változókból. Ezt követően láthatja, hogy a használatával együtt megadhatja `api-version` a szövegbeviteli nyelvet. Ebben a példában ez az angol.
 
 ```java
 private static String subscriptionKey = System.getenv("TRANSLATOR_TEXT_SUBSCRIPTION_KEY");
 private static String endpoint = System.getenv("TRANSLATOR_TEXT_ENDPOINT");
 String url = endpoint + "/breaksentence?api-version=3.0&language=en";
 ```
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek is szerepelnie kell `Ocp-Apim-Subscription-Region` . [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="create-a-client-and-build-a-request"></a>Ügyfél létrehozása és kérelem készítése
 
-Adja hozzá ezt a sort `BreakSentence` a osztályhoz a következő `OkHttpClient`létrehozásához:
+Adja hozzá ezt a sort a `BreakSentence` osztályhoz a következő létrehozásához `OkHttpClient` :
 
 ```java
 // Instantiates the OkHttpClient.
@@ -125,7 +125,7 @@ public String Post() throws IOException {
 
 ## <a name="create-a-function-to-parse-the-response"></a>Függvény létrehozása a válasz elemzéséhez
 
-Ez az egyszerű függvény elemzi és prettifies a Translator Text szolgáltatás JSON-válaszát.
+Ez az egyszerű függvény elemzi és prettifies a Translator szolgáltatástól érkező JSON-választ.
 
 ```java
 // This function prettifies the json response.
@@ -189,7 +189,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
 > [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

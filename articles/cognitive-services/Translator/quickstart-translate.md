@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: szöveg lefordítása – Translator Text'
+title: 'Gyors útmutató: szöveg fordítása – Translator'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban megtanulhatja szöveg fordítását a Translator Text API használatával.
+description: Ebben a rövid útmutatóban megtanulhatja a szöveg fordítását a fordító használatával.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: 3be05a6c4005b79a3fcde6a71e663f5f70d4d61e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e8f0f3ff1b34701d45b0138a3c11795520c30a2f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525175"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586629"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-translate-text"></a>Gyors útmutató: szöveg fordítása a Translator Text API használatával
+# <a name="quickstart-use-the-translator-to-translate-text"></a>Gyors útmutató: szöveg fordítása a fordító használatával
 
-Ebből a rövid útmutatóból megtudhatja, hogyan fordítható le egy szöveges karakterlánc angolról német, olasz, Japán és thai nyelvre a Translator Text REST API használatával.
+Ebből a rövid útmutatóból megtudhatja, hogyan fordítható le egy szöveges karakterlánc Angolról németre, olaszra, Japánra és Thaira a Translator REST API használatával.
 
-Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account), amely tartalmaz egy Translator Text-erőforrást. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
+Ehhez a rövid útmutatóhoz egy fordítói erőforrással rendelkező [Azure Cognitive Services-fiókra](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) van szükség. Ha nincs fiókja, használhatja az ingyenes [próbaidőszakot](https://azure.microsoft.com/try/cognitive-services/) egy előfizetői azonosító beszerzéséhez.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/translate-csharp.md)]
@@ -44,7 +44,7 @@ Ehhez a rövid útmutatóhoz szükség van egy [Azure Cognitive Services-fiókra
 [!INCLUDE [Python quickstart](includes/translate-python.md)]
 ::: zone-end
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Szöveg átírása](quickstart-transliterate.md)
 * [A beviteli nyelv azonosítása](quickstart-detect.md)

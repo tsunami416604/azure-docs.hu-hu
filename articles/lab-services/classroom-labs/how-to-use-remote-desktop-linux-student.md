@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2019
 ms.author: spelluru
-ms.openlocfilehash: 0f45af2730b05998fc82212c63778c89bb16b6ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ccad0698ea6560dd183cacc71f5f3a644e8220c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73585067"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588105"
 ---
 # <a name="use-remote-desktop-for-linux-virtual-machines-in-a-classroom-lab-of-azure-lab-services"></a>A távoli asztal használata Linux rendszerű virtuális gépekhez a Azure Lab Services tantermi laborjában
 Ez a cikk bemutatja, hogyan csatlakozhatnak a tanulók a Linux rendszerű virtuális gépekhez (VM) a laborban RDP/SSH használatával. 
@@ -29,9 +29,9 @@ Az oktatónak engedélyeznie kell a távoli asztali kapcsolat funkciót ahhoz, h
 > A **Távoli asztali kapcsolat** engedélyezése csak a Linux rendszerű gépeken futó **RDP** -portot nyitja meg. Az oktató csatlakozhat a Linux rendszerű géphez az SSH-val az első alkalommal, és telepítheti az RDP-és GUI-csomagokat, így a későbbiekben RDP-kapcsolaton keresztül csatlakozhat a Linux rendszerű géphez. 
 
 ## <a name="connect-to-the-student-vm"></a>Kapcsolódás a tanuló virtuális géphez
-A tanulók a Linux rendszerű virtuális gépekre is RDP-t, miután a labor tulajdonosa (tanár/professzor) **közzéteszi** a virtuális gépet a GÉPEN telepített RDP-és GUI-csomagokkal. A lépések a következők: 
+A diákok RDP-t telepíthetnek a linuxos virtuális gépekre, miután a labor tulajdonosa (pedagógus) **közzéteszi** a virtuális gépet a GÉPEN telepített RDP-és GUI-csomagokkal. A lépések a következők: 
 
-1. Ha egy tanuló közvetlenül a Labs-portálra jelentkezik be`https://labs.azure.com`() vagy egy regisztrációs hivatkozás használatával (`https://labs.azure.com/register/<registrationCode>`), akkor a tanuló által elérhetővé tett laborok csempéje megjelenik. 
+1. Ha egy tanuló közvetlenül a Labs-portálra jelentkezik be ( `https://labs.azure.com` ) vagy egy regisztrációs hivatkozás használatával ( `https://labs.azure.com/register/<registrationCode>` ), akkor a tanuló által elérhetővé tett laborok csempéje megjelenik. 
 2. A csempén állítsa be a gombot a virtuális gép elindításához, ha leállított állapotban van. 
 3. Kattintson a **Csatlakozás** gombra. Két lehetőség jelenik meg a virtuális géphez való kapcsolódáshoz: **SSH** és **Távoli asztal**.
 

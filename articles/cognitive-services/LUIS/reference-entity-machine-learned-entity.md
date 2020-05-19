@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 12/30/2019
+ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: aac4ba3ec63d425cac782f5db65bba923d24ed71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75551998"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585589"
 ---
 # <a name="machine-learned-entity"></a>Gépi tanulással létrejött entitás
 
@@ -38,7 +38,7 @@ Példák kimondott szövegekre:
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-Mivel a géppel megtanult entitások számos alösszetevővel rendelkezhetnek korlátozásokkal és leírókkal, ez csak egy példa. Tekintse át az entitás által visszaadott útmutatót.
+Mivel a géppel megtanult entitások számos alentitással rendelkezhetnek a szükséges funkciókkal, ez csak egy példa. Tekintse át az entitás által visszaadott útmutatót.
 
 Vegye figyelembe a lekérdezést:
 

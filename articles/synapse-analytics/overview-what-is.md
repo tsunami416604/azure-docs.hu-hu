@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 65f6c6627093358f8cbc66055bb9b16561f7c610
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5c458b1c04a7f3be1a43d725591426e619286b7d
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424663"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587875"
 ---
 # <a name="what-is-azure-synapse-analytics-workspaces-preview"></a>Mi az Azure szinapszis Analytics (munkaterületek előzetes verziója)?
 
@@ -24,11 +24,11 @@ Napjainkban a vállalati elemzések nagy léptékű, bármilyen típusú, nyers,
 
 Az ehhez hasonló megoldások nehezen hozhatók létre, konfigurálhatók, biztonságosak és karbantarthatók, ami késlelteti az intelligens betekintés gyors kinyerését.
 
-Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely az adattárházak és a Big Data elemzési rendszerek teljes skálájának, valamint az adattárházak és a elemzésének időpontját is felgyorsítja. Egyesíti a nagyvállalati adattárházban használt **SQL** -technológiákat, a Big Data elemzésekben használt **Spark** -technológiákat, valamint a tevékenységek és az adatáthelyezési **folyamatokat** . 
+Az **Azure szinapszis** egy integrált elemzési szolgáltatás, amely az adattárházak és a Big Data elemzési rendszerek teljes skálájának, valamint az adattárházak és a elemzésének időpontját is felgyorsítja. Egyesíti a nagyvállalati adattárházban használt **SQL** -technológiákat, a Big Data elemzésekben használt **Spark** -technológiákat, valamint a tevékenységek és az adatáthelyezési **folyamatokat** .
 
 Az Azure szinapszis egy webes natív **Studio** felhasználói felülettel rendelkezik, amely egyetlen élményt és modellt biztosít a felügyelethez, a monitorozáshoz, a kódoláshoz és a biztonsághoz.
 
-Az Azure szinapszis a legegyszerűbb és leggyorsabb módszert kínálja a vállalatok számára, hogy bármilyen méretű adatelemzést gyűjtsenek az adatokról, amelyek a legismertebbek. Mélyen integrálva van **Power bi** lehetővé teszi, hogy az adatmérnökök olyan elemzési megoldásokat építsenek, amelyek teljes körűen működnek az üzleti intelligencia biztosításához. 
+Az Azure szinapszis a legegyszerűbb és leggyorsabb módszert kínálja a vállalatok számára, hogy bármilyen méretű adatelemzést gyűjtsenek az adatokról, amelyek a legismertebbek. Mélyen integrálva van **Power bi** lehetővé teszi, hogy az adatmérnökök olyan elemzési megoldásokat építsenek, amelyek teljes körűen működnek az üzleti intelligencia biztosításához.
 
 Az Azure szinapszis emellett a **AzureML**beépített támogatásával lehetővé teszi a prediktív modell kialakítását és a fejlett elemzést a gépi tanulással.
 
@@ -44,14 +44,14 @@ Az Azure szinapszis emellett a **AzureML**beépített támogatásával lehetőv�
 
 ### <a name="industry-standard-apache-spark"></a>Iparági szabványnak megfelelő Apache Spark
 
-A **szinapszis Spark** mélyen és zökkenőmentesen integrálható Apache Spark – az adatelőkészítési, adattervezési, ETL-és gépi tanuláshoz használt legnépszerűbb nyílt forráskódú Big Data motor.
+Az **Azure szinapszis Apache Sparke** mélyen és zökkenőmentesen integrálható Apache Spark-a legnépszerűbb nyílt forráskódú Big Data motor, amely adatelőkészítési, adattervezési, ETL-és gépi tanulási szolgáltatásokhoz használatos.
 
 * SparkML-algoritmusokat és AzureML-integrációt biztosító ML-modellek a Linux Foundation Delta Lake beépített támogatásával Apache Spark 2,4.
 * Egyszerűsített erőforrás-modell, amely felszabadul, hogy aggódnia kell a fürtök kezelésével kapcsolatban.
 * Gyors Spark indítási és agresszív automatikus skálázás.
 * A .NET for Spark beépített támogatása lehetővé teszi, hogy egy Spark-alkalmazásban újra felhasználhassa a C#-szaktudást és a meglévő .NET-kódot.
 
-### <a name="interop-of-sql-and-spark-on-your-data-lake"></a>Az SQL és a Spark együttműködése a Data Lake
+### <a name="interop-of-sql-and-apache-spark-on-your-data-lake"></a>Az SQL és a Apache Spark együttműködése a Data Lake
 
 Az Azure szinapszis eltávolítja a hagyományos technológiai korlátokat az SQL és a Spark együttes használata között. Az igények és a szaktudás alapján zökkenőmentesen összekeverheti és összehasonlíthatja azokat.
 
@@ -75,7 +75,7 @@ Az Azure szinapszis egyetlen lehetőséget biztosít a vállalatok számára az 
 * Részletes hozzáférés-vezérlés az adatkapcsolaton és a kódban
 * Egyetlen irányítópult az erőforrások, a használat és a felhasználók figyeléséhez az SQL és a Spark között
 
-### <a name="synapse-studio"></a>Szinapszis Studio
+### <a name="synapse-studio"></a>Synapse Studio
 
 A **szinapszis Studio** az a webes felület, amely az adatmérnökökkel együtt mindent összekapcsol, és lehetővé teszi számukra, hogy a teljes megoldás létrehozásához szükséges összes feladatnak egy helyen legyenek.
 

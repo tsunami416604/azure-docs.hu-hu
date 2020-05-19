@@ -9,19 +9,19 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 2fa90a8099778bf37ce8534e968a2b1b4345c2d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5705e5f29bc851d615f91d902fd505a69b5cfd12
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75446782"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586995"
 ---
 # <a name="migrate-hub-workspace-and-projects-to-custom-translator"></a>Központi munkaterület és projektek áttelepíthetők az egyéni Fordítóba
 
 A [Microsoft Translator hub](https://hub.microsofttranslator.com/) -munkaterületét és-projektjeit egyszerűen áttelepítheti egyéni fordítóba. Az áttelepítés a Microsoft hub-ból kezdeményezhető egy munkaterület vagy projekt kiválasztásával, majd a munkaterületek egyéni fordítóban való kiválasztásával, majd az átvinni kívánt képzések kiválasztásával. Az áttelepítés megkezdése után a kiválasztott képzési beállítások az összes vonatkozó dokumentummal lesznek átadva. A központilag telepített modellek betanítva vannak, és a befejezést követően is üzembe helyezhetők.
 
 Ezeket a műveleteket az áttelepítés során hajtja végre a rendszer:
-* Az összes dokumentum és projekt-definíció neve a "hub_" hozzáadásával lesz átadva a névnek. Az automatikusan generált tesztelési és hangolási adathub_systemtune_\<ModelID> vagy hub_systemtest_\<ModelID> lesznek elnevezve.
+* Az összes dokumentum és projekt-definíció neve a "hub_" hozzáadásával lesz átadva a névnek. Az automatikusan generált tesztelési és hangolási adathub_systemtune_ \< modelid> vagy hub_systemtest_ modelid> lesznek elnevezve \< .
 * A központilag telepített állapotban lévő, a Migrálás során bekövetkezett képzések automatikusan betanítva lesznek a hub betanításának dokumentumaival. Ez a képzés nem lesz felszámítva az előfizetésre. Ha az automatikus központi telepítés be van jelölve az áttelepítéshez, a rendszer a betanított modellt a befejezés után telepíti. A rendszer a rendszeres üzemeltetési díjakat alkalmazza.
 * Az üzembe helyezett állapotban nem lévő áttelepített Betanítások az áttelepített vázlat állapotba kerülnek. Ebben az állapotban lehetősége lesz az áttelepített definícióval rendelkező modellek betanítására, de a normál betanítási díjak is érvényesek lesznek.
 * A központi képzésből áttelepített BLEU-pontszám a modell TrainingDetails oldalán található a "Bleu pontszám az MT hub-ban" című szakaszban.
@@ -141,9 +141,9 @@ Ez a táblázat a Microsoft Translator hub és az egyéni fordító funkcióit h
 
 ## <a name="new-languages"></a>Új nyelvek
 
-Ha Ön egy Közösség vagy szervezet, amely a Microsoft Translator új nyelvi rendszerének létrehozásán dolgozik, további információkért [custommt@microsoft.com](mailto:custommt@microsoft.com) tekintse meg a következőt:.
+Ha Ön egy Közösség vagy szervezet, amely a Microsoft Translator új nyelvi rendszerének létrehozásán dolgozik, további információkért tekintse meg a [custommt@microsoft.com](mailto:custommt@microsoft.com) következőt:.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Modell betanítása](how-to-train-model.md).
-- Az üzembe helyezett egyéni fordítási modell használatának megkezdése a [Microsoft Translator Text API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)segítségével.
+- Az üzembe helyezett egyéni fordítási modell használatának megkezdése [Translator v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl)-n keresztül.

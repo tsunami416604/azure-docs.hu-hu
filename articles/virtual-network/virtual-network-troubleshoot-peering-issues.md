@@ -15,15 +15,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
-ms.openlocfilehash: 20580edb84a8c983c2342e6a5904c75a0986a3d7
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801569"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587731"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
-<p class="alert is-flex is-primary"><span class="has-padding-left-medium has-padding-top-extra-small"><a class="button is-primary" href="https://azurevirtualsupportagent.services.microsoft.com?content=457b3ba7-7ac5-93be-981c-677553ad39dd" target='_blank'>Start</a></span><span class="has-padding-small">A virtuális ügynök használatával gyorsan megoldhatja a problémát, ha <b>automatizált diagnosztikát futtat.</b> </span> <span class="has-padding-small"> <a href="https://privacy.microsoft.com/privacystatement" target='_blank'> <sub>Privacy Statement</sub> Adatvédelmi <div align="right">nyilatkozat</div></a></span></p>
 
 Ez a hibaelhárítási útmutató a legtöbb [virtuális hálózati](virtual-network-peering-overview.md) társítási probléma megoldásához nyújt segítséget.
 
@@ -96,14 +95,14 @@ A NVA-eszközök beállításával és útválasztásával kapcsolatos segítsé
 
 A globális virtuális hálózati kapcsolaton keresztüli átvitel mostantól támogatott. A kapcsolódás nem működik a globális virtuális hálózati kapcsolaton keresztül a következő erőforrásokhoz:
 
-* Alapszintű ILB SKU mögötti virtuális gépek
+* Alapszintű ILB-termékváltozat mögötti virtuális gépek
 * Redis cache (alapszintű ILB SKU-t használ)
 * Application Gateway (alapszintű ILB SKU-t használ)
 * Méretezési csoportok (alapszintű ILB SKU-t használ)
-* Service Fabric-fürtök (alapszintű ILB SKU-t használ)
+* Service Fabric-fürtök (alapszintű ILB-termékváltozatot használnak)
 * SQL Server always on (alapszintű ILB SKU-t használ)
 * App Service Environment (alapszintű ILB SKU-t használ)
-* API Management (alapszintű ILB SKU-t használ)
+* API Management (alapszintű ILB-termékváltozatot használ)
 * Azure AD DS (alapszintű ILB SKU-t használ)
 
 Ha többet szeretne megtudni a globálisan megjelenő követelményekről és a korlátozásokról, tekintse meg a [virtuális hálózat](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints)társítása című témakört.
@@ -136,14 +135,14 @@ A probléma megoldásához:
    > [!Note]
    > Nem lehet csatlakozni a következő típusú erőforrásokhoz a globális virtuális hálózati kapcsolaton keresztül (a különböző régiókban található virtuális hálózatok esetében):
    >
-   > * Alapszintű ILB SKU mögötti virtuális gépek
+   > * Alapszintű ILB-termékváltozat mögötti virtuális gépek
    > * Redis cache (alapszintű ILB SKU-t használ)
    > * Application Gateway (alapszintű ILB SKU-t használ)
    > * Méretezési csoportok (alapszintű ILB SKU-t használ)
-   > * Service Fabric-fürtök (alapszintű ILB SKU-t használ)
+   > * Service Fabric-fürtök (alapszintű ILB-termékváltozatot használnak)
    > * SQL Server always on (alapszintű ILB SKU-t használ)
    > * App Service Environment (alapszintű ILB SKU-t használ)
-   > * API Management (alapszintű ILB SKU-t használ)
+   > * API Management (alapszintű ILB-termékváltozatot használ)
    > * Azure AD DS (alapszintű ILB SKU-t használ)
 
 További információért lásd a globális társítás [követelményeit és korlátozásait](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
@@ -197,14 +196,14 @@ További információ: a [szolgáltatás láncolása](https://docs.microsoft.com
 
 A globális virtuális hálózati kapcsolaton keresztüli átvitel mostantól támogatott. A kapcsolat nem működik a globális virtuális hálózati kapcsolatok esetében a következő erőforrásokhoz:
 
-* Alapszintű ILB SKU mögötti virtuális gépek
+* Alapszintű ILB-termékváltozat mögötti virtuális gépek
 * Redis cache (alapszintű ILB SKU-t használ)
 * Application Gateway (alapszintű ILB SKU-t használ)
 * Méretezési csoportok (alapszintű ILB SKU-t használ)
-* Service Fabric-fürtök (alapszintű ILB SKU-t használ)
+* Service Fabric-fürtök (alapszintű ILB-termékváltozatot használnak)
 * SQL Server always on (alapszintű ILB SKU-t használ)
 * App Service Environment (alapszintű ILB SKU-t használ)
-* API Management (alapszintű ILB SKU-t használ)
+* API Management (alapszintű ILB-termékváltozatot használ)
 * Azure AD DS (alapszintű ILB SKU-t használ)
 
 További információért lásd a globális és a [különböző VPN-topológiák](https://blogs.msdn.microsoft.com/igorpag/2016/02/11/hubspoke-daisy-chain-and-full-mesh-vnet-topologies-in-azure-arm-v2/) [követelményeit és korlátozásait](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview#requirements-and-constraints) .
@@ -217,14 +216,14 @@ A probléma megoldásához:
 1. A webalkalmazásban válassza a **hálózatkezelés**, majd a **VNet-integráció**elemet.
 1. Ellenőrizze, hogy látható-e a távoli virtuális hálózat. Adja meg manuálisan a távoli virtuális hálózati címtartomány (**szinkronizált hálózat** és **útvonalak hozzáadása**).
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [Alkalmazás integrálása Azure-beli virtuális hálózattal](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Tudnivalók a pont–hely VPN-útválasztásról](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Virtuális hálózati társ-beállítási konfigurációs hibaüzenet hibáinak megoldása 
 
-### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>A jelenlegi `<TENANT ID>` bérlő nem jogosult a csatolt előfizetés elérésére
+### <a name="current-tenant-tenant-id-isnt-authorized-to-access-linked-subscription"></a>A jelenlegi bérlő `<TENANT ID>` nem jogosult a csatolt előfizetés elérésére
 
 A probléma megoldásához tekintse meg a [peering-Azure CLI létrehozása](https://docs.microsoft.com/azure/virtual-network/create-peering-different-subscriptions#cli)című témakört.
 
@@ -238,12 +237,12 @@ A probléma megoldásához konfigurálja a **Azure Databricks**alatt a virtuáli
 
 ### <a name="the-remote-virtual-network-lacks-a-gateway"></a>A távoli virtuális hálózat nem rendelkezik átjáróval
 
-Ez a probléma akkor fordul elő, ha különböző bérlők és később konfigurálni `Use Remote Gateways`kívánt egyenrangú virtuális hálózatok vannak. A Azure Portal korlátozása, hogy nem tudja ellenőrizni a virtuális hálózati átjárók jelenlétét egy másik bérlő virtuális hálózatában.
+Ez a probléma akkor fordul elő, ha különböző bérlők és később konfigurálni kívánt egyenrangú virtuális hálózatok vannak `Use Remote Gateways` . A Azure Portal korlátozása, hogy nem tudja ellenőrizni a virtuális hálózati átjárók jelenlétét egy másik bérlő virtuális hálózatában.
 
 A probléma két módon oldható meg:
 
- * Törölje a társításokat, és aktiválja `Use Remote Gateways` a lehetőséget, amikor új társítást hoz létre.
- * Az engedélyezéshez `Use Remote Gateways`használja a PowerShellt vagy a CLI-t a Azure Portal helyett.
+ * Törölje a társításokat, és aktiválja a `Use Remote Gateways` lehetőséget, amikor új társítást hoz létre.
+ * Az engedélyezéshez használja a PowerShellt vagy a CLI-t a Azure Portal helyett `Use Remote Gateways` .
 
 ## <a name="next-steps"></a>További lépések
 

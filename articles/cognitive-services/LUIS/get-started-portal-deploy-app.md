@@ -2,13 +2,13 @@
 title: 'Gyors útmutató: alkalmazás üzembe helyezése a LUIS-portálon'
 description: Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe egy alkalmazást az előrejelzési végpontok erőforrásának létrehozásával, az erőforrás hozzárendelésével, a képzéssel és az alkalmazás közzétételével.
 ms.topic: quickstart
-ms.date: 04/06/2020
-ms.openlocfilehash: aaf86766c2357c5382b78cd4a35fd4b159e5c0f3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/06/2020
+ms.openlocfilehash: 9b22f1eda822b5354f0b434a04c2ea03e4c0ff2a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756300"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585074"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
 
@@ -30,7 +30,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan helyezhet üzembe egy alkalma
 
 Minden alkalommal, amikor új szerzői vagy lekérdezési előrejelzési erőforrást hoz létre a LUIS számára, hozzá kell rendelnie az erőforrást a LUIS alkalmazáshoz. A hozzárendelés után ezt a lépést csak akkor kell végrehajtania, ha új erőforrást hoz létre. Létrehozhat egy új erőforrást az alkalmazás régiói kibontásához, vagy nagyobb számú előrejelzési lekérdezés támogatásához.
 
-1. Jelentkezzen be a [Luis-portálra](https://preview.luis.ai) , és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai) , és válassza ki a **myEnglishApp** alkalmazást az alkalmazások listából.
 
 1. Válassza a **kezelés** lehetőséget a jobb felső menüben, majd válassza az **Azure-erőforrások**lehetőséget.
 
@@ -44,10 +44,10 @@ Minden alkalommal, amikor új szerzői vagy lekérdezési előrejelzési erőfor
 
 1. Hajtsa végre ugyanezen lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
 
-1. Keresse meg az új sort a táblában az új előrejelzési erőforráshoz, és másolja a végpont URL-címét. A rendszer megfelelően van kiépítve `HTTP GET` , hogy a Luis API-végpontra irányuló kérést hozzon létre egy előrejelzéshez.
+1. Keresse meg az új sort a táblában az új előrejelzési erőforráshoz, és másolja a végpont URL-címét. A rendszer megfelelően van kiépítve, hogy `HTTP GET` a Luis API-végpontra irányuló kérést hozzon létre egy előrejelzéshez.
 
 > [!TIP]
-> Ha a LUIS-alkalmazás fejlesztéséhez aktív tanulást szeretne használni, válassza a **lekérdezési paraméterek módosítása** lehetőséget, majd a **naplók mentése**lehetőséget. Ez a művelet megváltoztatja a példa URL-címét `log=true` a querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
+> Ha a LUIS-alkalmazás fejlesztéséhez aktív tanulást szeretne használni, válassza a **lekérdezési paraméterek módosítása** lehetőséget, majd a **naplók mentése**lehetőséget. Ez a művelet megváltoztatja a példa URL-címét a `log=true` querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
@@ -59,7 +59,7 @@ Minden alkalommal, amikor új szerzői vagy lekérdezési előrejelzési erőfor
 
 ## <a name="prediction-endpoint-request"></a>Előrejelzési végpont kérése
 
-A betekintő portálon, `query=` az URL végén, ahol a felhasználóhoz tartozó kifejezés a Get kérelemhez lesz hozzáfűzve. A `query=`(z) után adja meg ugyanazt a felhasználói kiírást, amelyet az előző rövid útmutató végén használ:
+A portálon, az `query=` URL végén, ahol a felhasználóhoz tartozó kifejezés a Get kérelemhez lesz hozzáfűzve. A ( `query=` z) után adja meg ugyanazt a felhasználói kiírást, amelyet az előző rövid útmutató végén használ:
 
 ```Is there a form named hrf-234098```
 
@@ -111,7 +111,7 @@ Ha ugyanezt az információt szeretné megtekinteni a teszt ablaktáblán, közz
 
 [![Az alkalmazás aktuális szerkesztésének és közzétett verziójának összehasonlítása](./media/get-started-portal-deploy-app/compare-test-pane.png)](./media/get-started-portal-deploy-app/compare-test-pane.png#lightbox)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha elkészült a rövid útmutatóval, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Jelölje be az alkalmazás jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 

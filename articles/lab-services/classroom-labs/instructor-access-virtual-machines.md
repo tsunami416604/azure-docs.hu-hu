@@ -1,6 +1,6 @@
 ---
-title: A Azure Lab Servicesban lévő virtuális gépekhez való hozzáférés oktatója
-description: Ez a cikk bemutatja, hogyan érhetik el az oktatók a tanulói virtuális gépeket az oktató nézetből. Egy tanítási asszisztens például egy osztály oktatója, de más osztályok tanulója is.
+title: A Azure Lab Services virtuális gépekhez való hozzáférés oktatója
+description: Ez a cikk bemutatja, hogyan férhetnek hozzá az oktatók a tanulói virtuális gépekhez a pedagógus nézetből. Egy tanítási asszisztens például lehet egy oktató az egyik osztályhoz, de egy tanuló más osztályokhoz.
 services: lab-services
 documentationcenter: na
 author: spelluru
@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: c048a2f159784a5bd38f185af29cec314b31824f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 449ff8aafd6dec1e9c0ff16dc407155949fd1313
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641939"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586167"
 ---
-# <a name="access-virtual-machines-as-a-student-from-the-instructor-view"></a>Virtuális gépek elérése tanulóként az oktató nézetből
-Ez a cikk bemutatja, hogyan érhetik el az oktatók a virtuális gépeket tanulóként részt vevő osztályokba. 
+# <a name="access-virtual-machines-as-a-student-from-the-educator-view"></a>Virtuális gépek elérése tanulóként a pedagógus nézetből
+Ez a cikk bemutatja, hogyan érhetik el a pedagógusok a virtuális gépeket tanulóként részt vevő osztályokhoz. 
 
-Itt talál egy olyan forgatókönyvet, amelyben ez a funkció segít. Az oktatási asszisztens az egyik osztály oktatója, de más osztályok tanulói. A Teaching Instructor pedig az oktatók nézetből szeretné megtekinteni és elérni a tanuló virtuális gépeket, amelyek a saját laborokat jelenítik meg. 
+Itt talál egy olyan forgatókönyvet, amelyben ez a funkció segít. A tanítási asszisztens egy oktató, de más osztályok tanulói. Az oktatási asszisztens pedig a tanuló virtuális gépeket a pedagógus nézetből szeretné megtekinteni és elérni, amely a saját laborokat mutatja. 
 
-## <a name="access-vms-from-instructor-view"></a>Virtuális gépek elérése az oktató nézetből
+## <a name="access-vms-from-educator-view"></a>Virtuális gépek elérése a pedagógus nézetből
 
 1. Jelentkezzen be a [Azure Lab Services webhelyére](https://labs.azure.com). Láthatja a saját laboratóriumait. Ezek a laborok olyan laborok, amelyeket Ön hozott létre saját maga vagy a rendszergazda által a tulajdonosként hozzárendelt laborokban. További információ: [további tulajdonosok hozzáadása meglévő laborhoz](how-to-add-user-lab-owner.md)
 2. Ha tanulóként részt vevő osztályokba kíván hozzáférni a virtuális gépekhez, válassza a számítógép ikont a jobb felső sarokban. Győződjön meg arról, hogy az Ön által tanulóként elérhető virtuális gépek jelennek meg. A következő példában a felhasználó a Python Lab tanítási asszisztense, de a Java Lab tanulója. Így a felhasználó a Java laborból látja a virtuális gépet a legördülő listából. A felhasználó elindíthatja a virtuális gépet, és csatlakozhat hozzá. 

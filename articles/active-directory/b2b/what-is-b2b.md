@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: overview
-ms.date: 02/12/2020
+ms.date: 05/19/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 167c7f7aa3dbf967575c0ee8905821fb9d3f77ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0effb6bb6e3d3f80775a3cee1ad8a63013a78805
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80050729"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585824"
 ---
 # <a name="what-is-guest-user-access-in-azure-active-directory-b2b"></a>Mi az vendég hozzáférés az Azure Active Directory B2B-ben?
 
@@ -88,6 +88,19 @@ Külső partnereit saját szervezete igényeinek megfelelően vegye fel.
 
 - A [külső felhasználók hozzáférését kezelő](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-external-users#how-access-works-for-external-users)házirendek konfigurálásához használja az [Azure ad-jogosultságok kezelését](https://docs.microsoft.com/azure/active-directory/governance/entitlement-management-overview) .
 - A [B2B együttműködés Meghívási API-jai](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) segítségével testre szabhatja a bevezetési élményeket.
+
+## <a name="integrate-with-identity-providers"></a>Integráció az identitás-szolgáltatókkal
+
+Az Azure AD olyan külső identitás-szolgáltatókat támogat, mint például a Facebook, a Microsoft-fiókok, a Google vagy a vállalati identitás-szolgáltatók. Beállíthatja az összevonási szolgáltatást az identitás-szolgáltatókkal, így a külső felhasználók bejelentkezhetnek meglévő közösségi vagy vállalati fiókjaikkal ahelyett, hogy új fiókot hozna létre az alkalmazáshoz. További információ a külső identitások identitás-szolgáltatókkal kapcsolatban.
+
+![Az Identity Providers oldalt ábrázoló képernyőfelvétel](media/what-is-b2b/identity-providers.png)
+
+
+## <a name="create-a-self-service-sign-up-user-flow-preview"></a>Önkiszolgáló bejelentkezési felhasználói folyamat létrehozása (előzetes verzió)
+
+Az önkiszolgáló regisztrációs felhasználói folyamattal létrehozhat egy regisztrációs élményt azon külső felhasználók számára, akik szeretnének hozzáférni az alkalmazásokhoz. A regisztrálási folyamat részeként különböző közösségi vagy vállalati identitás-szolgáltatók beállításait is megadhatja, és adatokat gyűjthet a felhasználóról. Ismerje meg az önkiszolgáló regisztrációt és a beállítását.
+
+![A felhasználói folyamatok lapját ábrázoló képernyőfelvétel](media/what-is-b2b/self-service-sign-up-user-flow-overview.png)
 
 ## <a name="next-steps"></a>További lépések
 

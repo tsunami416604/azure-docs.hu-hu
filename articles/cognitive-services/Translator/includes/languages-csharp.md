@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: a7715577936b0e95392f2d561e4b492b20c9dbf5
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4dbf9dddd46e38ae9b8cec3288bdacccb1ef1c78
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906948"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586868"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -24,7 +24,7 @@ dotnet new console -o languages-sample
 cd languages-sample
 ```
 
-Az első parancs két dolgot mutat be. Létrehoz egy új .NET-konzol alkalmazást, és létrehoz egy nevű `languages-sample`könyvtárat. A második parancs a projekt könyvtárára változik.
+Az első parancs két dolgot mutat be. Létrehoz egy új .NET-konzol alkalmazást, és létrehoz egy nevű könyvtárat `languages-sample` . A második parancs a projekt könyvtárára változik.
 
 Ezután telepítenie kell a Json.Net. A projekt címtárában futtassa a következőt:
 
@@ -34,7 +34,7 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 ## <a name="add-required-namespaces-to-your-project"></a>Szükséges névterek hozzáadása a projekthez
 
-A `dotnet new console` korábban létrehozott parancs egy projektet hozott létre, beleértve a `Program.cs`következőket:. Ez a fájl az alkalmazás kódjának elhelyezése. Nyissa meg `Program.cs`, és cserélje le a meglévő using utasításokat. Ezek az utasítások biztosítják, hogy hozzáférjen a minta alkalmazás létrehozásához és futtatásához szükséges összes típushoz.
+A `dotnet new console` korábban létrehozott parancs egy projektet hozott létre, beleértve a következőket: `Program.cs` . Ez a fájl az alkalmazás kódjának elhelyezése. Nyissa meg `Program.cs` , és cserélje le a meglévő using utasításokat. Ezek az utasítások biztosítják, hogy hozzáférjen a minta alkalmazás létrehozásához és futtatásához szükséges összes típushoz.
 
 ```csharp
 using System;
@@ -62,7 +62,7 @@ static Program()
 
 ## <a name="create-a-function-to-get-a-list-of-languages"></a>Függvény létrehozása a nyelvek listájának lekéréséhez
 
-A `Program` osztályban hozzon létre egy nevű `GetLanguages`függvényt. Ez az osztály a nyelvek erőforrásának meghívásához használt kódot és a konzolon kinyomtatja az eredményt.
+A `Program` osztályban hozzon létre egy nevű függvényt `GetLanguages` . Ez az osztály a nyelvek erőforrásának meghívásához használt kódot és a konzolon kinyomtatja az eredményt.
 
 ```csharp
 static void GetLanguages()
@@ -76,7 +76,7 @@ static void GetLanguages()
 
 ## <a name="set-the-route"></a>Az útvonal beállítása
 
-Adja hozzá ezeket a sorokat `GetLanguages` a függvényhez.
+Adja hozzá ezeket a sorokat a `GetLanguages` függvényhez.
 
 ```csharp
 string route = "/languages?api-version=3.0";
@@ -84,7 +84,7 @@ string route = "/languages?api-version=3.0";
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Az ügyfél példányának létrehozása és kérelem elkészítése
 
-Ezek a sorok a `HttpClient` és a `HttpRequestMessage`következőket hozzanak létre:
+Ezek a sorok a `HttpClient` és a következőket hozzanak létre `HttpRequestMessage` :
 
 ```csharp
 using (var client = new HttpClient())
@@ -96,7 +96,7 @@ using (var request = new HttpRequestMessage())
 
 ## <a name="construct-the-request-and-print-the-response"></a>A kérelem kiépítése és a válasz nyomtatása
 
-A a `HttpRequestMessage` következőkön belül fog megjelenni:
+A a következőkön belül fog megjelenni `HttpRequestMessage` :
 
 * A HTTP-metódus deklarálása
 * A kérelem URI-ja felépítése
@@ -104,7 +104,7 @@ A a `HttpRequestMessage` következőkön belül fog megjelenni:
 * Aszinkron kérelem létrehozása
 * A válasz megjelenítése
 
-Adja hozzá ezt a kódot `HttpRequestMessage`a következőhöz:
+Adja hozzá ezt a kódot a következőhöz `HttpRequestMessage` :
 
 ```csharp
 // Set the method to GET
@@ -119,7 +119,7 @@ Console.WriteLine(PrettyPrint(jsonResponse));
 Console.WriteLine("Press any key to continue.");
 ```
 
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek is szerepelnie kell `Ocp-Apim-Subscription-Region` . [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 Ha ki szeretné nyomtatni a választ a "Pretty Print" (válasz formázása) értékre, vegye fel ezt a függvényt a program osztályba:
 
@@ -132,7 +132,7 @@ static string PrettyPrint(string s)
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés a `GetLanguages()` `Main` függvény hívása. Keresse `static void Main(string[] args)` meg és adja hozzá a következő sorokat:
+Az utolsó lépés a függvény hívása `GetLanguages()` `Main` . Keresse meg `static void Main(string[] args)` és adja hozzá a következő sorokat:
 
 ```csharp
 GetLanguages();
@@ -235,13 +235,13 @@ Keresse meg az ország/régió rövidítést ebben a [listában](https://docs.mi
 }
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
 > [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

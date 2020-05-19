@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 12/09/2019
 ms.author: swmachan
 ms.topic: quickstart
-ms.openlocfilehash: a22ae3b4b11a4eac7da147cf3ad896bbad435448
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: c86a387e66cce914f9d0b92793893b0cba08e7bc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80370161"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587093"
 ---
 # <a name="quickstart-build-deploy-and-use-a-custom-model-for-translation"></a>Gyors útmutató: egyéni modell összeállítása, üzembe helyezése és használata fordításhoz
 
@@ -24,23 +24,23 @@ Ez a cikk részletes útmutatást nyújt a fordítási rendszer egyéni fordít�
 
 1. Az [Egyéni Translator](https://portal.customtranslator.azure.ai) portál használatához szüksége lesz egy [Microsoft-fiók](https://signup.live.com) vagy [Azure ad-fiókra](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-whatis) (az Azure-ban üzemeltetett szervezeti fiókra) a bejelentkezéshez.
 
-2. Előfizetés a Translator Text API a Azure Portal keresztül. Az egyéni fordítóban a munkaterülethez társítandó Translator Text API előfizetési kulcsra lesz szüksége. Tekintse [meg, hogyan regisztrálhat a Translator Text APIra](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
+2. A fordító előfizetése a Azure Portalon keresztül. Az egyéni fordítóban a munkaterülethez való hozzárendeléshez szüksége lesz a Translator előfizetési kulcsra. Lásd: [regisztráció a translatorre](https://docs.microsoft.com/azure/cognitive-services/translator/translator-text-how-to-signup).
 
 3. Ha mindkét fentivel rendelkezik, jelentkezzen be az [Egyéni Translator](https://portal.customtranslator.azure.ai) portálra munkaterületek, projektek, fájlok feltöltése és modellek létrehozása/üzembe helyezése létrehozásához.
 
 ## <a name="create-a-workspace"></a>Munkaterület létrehozása
 
-Ha először felhasználó, a rendszer felkéri, hogy fogadja el a használati feltételeket, hozzon létre egy munkaterületet, és társítsa a munkaterületet a Microsoft Translator Text API-előfizetéssel.
+Ha először felhasználó, akkor a rendszer felkéri, hogy fogadja el a használati feltételeket, hozzon létre egy munkaterületet, és társítsa a munkaterületet fordítói előfizetéssel.
 
-![](media/quickstart/terms-of-service.png)
-![](media/quickstart/create-workspace-1.png)
-![](media/quickstart/create-workspace-2.png)
-![Munkaterület létrehozása](media/quickstart/create-workspace-3.png)
-munkaterület létrehozás munkaterület létrehozása munkaterület létrehozás munkaterületének létrehozása munkaterület létrehozás munkaterületének létrehozása![](media/quickstart/create-workspace-4.png)
-![](media/quickstart/create-workspace-5.png)
-![](media/quickstart/create-workspace-6.png)
+![Munkaterület létrehozása munkaterület létrehozás munkaterület létrehozása munkaterület létrehozás munkaterületének létrehozása munkaterület létrehozás munkaterületének létrehozása ](media/quickstart/terms-of-service.png)
+ ![ ](media/quickstart/create-workspace-1.png)
+ ![ ](media/quickstart/create-workspace-2.png)
+ ![ ](media/quickstart/create-workspace-3.png)
+ ![ ](media/quickstart/create-workspace-4.png)
+ ![ ](media/quickstart/create-workspace-5.png)
+ ![](media/quickstart/create-workspace-6.png)
 
-Az egyéni Translator Portalon való későbbi látogatások alkalmával navigáljon a beállítások oldalra, ahol kezelheti a munkaterületet, több munkaterületet hozhat létre, társíthatja a Microsoft Translator Text API előfizetési kulcsát a munkaterületekhez, hozzáadhat közös tulajdonosokat és módosíthatja az előfizetési kulcsot.
+Az egyéni Translator Portalon való későbbi látogatások alkalmával navigáljon a beállítások oldalra, ahol kezelheti a munkaterületet, több munkaterületet hozhat létre, társíthatja a fordítói előfizetési kulcsot a munkaterületekhez, hozzáadhat közös tulajdonosokat és módosíthatja az előfizetési kulcsot.
 
 ## <a name="create-a-project"></a>Projekt létrehozása
 
@@ -83,7 +83,7 @@ Ha készen áll a betanított modell üzembe helyezésére, kattintson az "üzem
 
 ## <a name="use-a-deployed-model"></a>Üzembe helyezett modell használata
 
-Az üzembe helyezett modellek a Microsoft Translator [text API v3-as verzióján keresztül érhetők el a Kategóriakód megadásával](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). A Translator Text APIról további információt az [API-referenciát](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) ismertető weblapon találhat.
+Az üzembe helyezett modellek a Microsoft Translator [text API v3-as verzióján keresztül érhetők el a Kategóriakód megadásával](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl). A fordítóval kapcsolatos további információkért tekintse meg az [API-referenciát](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference) ismertető weblapon.
 
 ## <a name="next-steps"></a>További lépések
 

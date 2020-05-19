@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 64a934196bb964561f36b9d95a2467b149847225
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 77242ab35416fb24a3a815e7137280e5f3698c30
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906725"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586627"
 ---
 [!INCLUDE [Prerequisites](prerequisites-csharp.md)]
 
@@ -24,7 +24,7 @@ dotnet new console -o translate-sample
 cd translate-sample
 ```
 
-Az első parancs két dolgot mutat be. Létrehoz egy új .NET-konzol alkalmazást, és létrehoz egy nevű `translate-sample`könyvtárat. A második parancs a projekt könyvtárára változik.
+Az első parancs két dolgot mutat be. Létrehoz egy új .NET-konzol alkalmazást, és létrehoz egy nevű könyvtárat `translate-sample` . A második parancs a projekt könyvtárára változik.
 
 Ezután telepítenie kell a Json.Net. A projekt címtárában futtassa a következőt:
 
@@ -36,7 +36,7 @@ dotnet add package Newtonsoft.Json --version 11.0.2
 
 Ehhez a rövid útmutatóhoz C# 7,1 vagy újabb verzió szükséges. A projekt C#-verziója többféleképpen módosítható. Ebben az útmutatóban bemutatjuk, hogyan módosíthatja a `translate-sample.csproj` fájlt. Az összes elérhető lehetőség, például a nyelv módosítása a Visual Studióban: [válassza a C# nyelvi verzióját](https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version).
 
-Nyissa meg a projektet, `translate-sample.csproj`majd nyissa meg a t. Győződjön meg arról `LangVersion` , hogy a értéke 7,1 vagy újabb. Ha nincs a nyelvi verzióhoz tartozó tulajdonságérték, adja hozzá a következő sorokat:
+Nyissa meg a projektet, majd nyissa meg a t `translate-sample.csproj` . Győződjön meg arról, hogy a értéke `LangVersion` 7,1 vagy újabb. Ha nincs a nyelvi verzióhoz tartozó tulajdonságérték, adja hozzá a következő sorokat:
 
 ```xml
 <PropertyGroup>
@@ -46,7 +46,7 @@ Nyissa meg a projektet, `translate-sample.csproj`majd nyissa meg a t. Győződj�
 
 ## <a name="add-required-namespaces-to-your-project"></a>Szükséges névterek hozzáadása a projekthez
 
-A `dotnet new console` korábban létrehozott parancs egy projektet hozott létre, beleértve a `Program.cs`következőket:. Ez a fájl az alkalmazás kódjának elhelyezése. Nyissa meg `Program.cs`, és cserélje le a meglévő using utasításokat. Ezek az utasítások biztosítják, hogy hozzáférjen a minta alkalmazás létrehozásához és futtatásához szükséges összes típushoz.
+A `dotnet new console` korábban létrehozott parancs egy projektet hozott létre, beleértve a következőket: `Program.cs` . Ez a fájl az alkalmazás kódjának elhelyezése. Nyissa meg `Program.cs` , és cserélje le a meglévő using utasításokat. Ezek az utasítások biztosítják, hogy hozzáférjen a minta alkalmazás létrehozásához és futtatásához szükséges összes típushoz.
 
 ```csharp
 using System;
@@ -59,11 +59,11 @@ using Newtonsoft.Json;
 
 ## <a name="create-classes-for-the-json-response"></a>Osztályok létrehozása a JSON-válaszhoz
 
-Ezután olyan osztályokat fogunk létrehozni, amelyek a Translator Text API által visszaadott JSON-válasz deszerializálása során használatosak.
+Ezután létrehozunk egy olyan osztályt, amelyet a fordító által visszaadott JSON-válasz deszerializálása során használunk.
 
 ```csharp
 /// <summary>
-/// The C# classes that represents the JSON returned by the Translator Text API.
+/// The C# classes that represents the JSON returned by the Translator.
 /// </summary>
 public class TranslationResult
 {
@@ -132,11 +132,11 @@ static Program()
 
 ## <a name="create-a-function-to-translate-text"></a>Függvény létrehozása szöveg fordításához
 
-A `Program` osztályban hozzon létre egy nevű `TranslateTextRequest()`aszinkron függvényt. Ez a függvény négy argumentumot `subscriptionKey`vesz `host`igénybe `route`: `inputText`,, és.
+A `Program` osztályban hozzon létre egy nevű aszinkron függvényt `TranslateTextRequest()` . Ez a függvény négy argumentumot vesz igénybe: `subscriptionKey` ,, `host` `route` és `inputText` .
 
 ```csharp
 // This sample requires C# 7.1 or later for async/await.
-// Async call to the Translator Text API
+// Async call to the Translator
 static public async Task TranslateTextRequest(string subscriptionKey, string endpoint, string route, string inputText)
 {
   /*
@@ -148,7 +148,7 @@ static public async Task TranslateTextRequest(string subscriptionKey, string end
 
 ## <a name="serialize-the-translation-request"></a>A fordítási kérelem szerializálása
 
-Ezután létre kell hoznia és szerializálnia kell a lefordítani kívánt szöveget tartalmazó JSON-objektumot. Ne feledje, hogy több objektumot is átadhat a `body`alkalmazásban.
+Ezután létre kell hoznia és szerializálnia kell a lefordítani kívánt szöveget tartalmazó JSON-objektumot. Ne feledje, hogy több objektumot is átadhat a alkalmazásban `body` .
 
 ```csharp
 object[] body = new object[] { new { Text = inputText } };
@@ -157,7 +157,7 @@ var requestBody = JsonConvert.SerializeObject(body);
 
 ## <a name="instantiate-the-client-and-make-a-request"></a>Az ügyfél példányának létrehozása és kérelem elkészítése
 
-Ezek a sorok a `HttpClient` és a `HttpRequestMessage`következőket hozzanak létre:
+Ezek a sorok a `HttpClient` és a következőket hozzanak létre `HttpRequestMessage` :
 
 ```csharp
 using (var client = new HttpClient())
@@ -169,7 +169,7 @@ using (var request = new HttpRequestMessage())
 
 ## <a name="construct-the-request-and-print-the-response"></a>A kérelem kiépítése és a válasz nyomtatása
 
-A a `HttpRequestMessage` következőkön belül fog megjelenni:
+A a következőkön belül fog megjelenni `HttpRequestMessage` :
 
 * A HTTP-metódus deklarálása
 * A kérelem URI-ja felépítése
@@ -178,7 +178,7 @@ A a `HttpRequestMessage` következőkön belül fog megjelenni:
 * Aszinkron kérelem létrehozása
 * A korábban létrehozott osztályok használatával nyomtassa ki a választ
 
-Adja hozzá ezt a kódot `HttpRequestMessage`a következőhöz:
+Adja hozzá ezt a kódot a következőhöz `HttpRequestMessage` :
 
 ```csharp
 // Build the request.
@@ -208,11 +208,11 @@ foreach (TranslationResult o in deserializedOutput)
 }
 ```
 
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek is szerepelnie kell `Ocp-Apim-Subscription-Region` . [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Az utolsó lépés a `TranslateTextRequest()` `Main` függvény hívása. Ebben a`de`példában a német (), az olasz (`it`), a japán (`ja`) és a thai (`th`) fordítást használjuk. Keresse `static void Main(string[] args)` meg és cserélje le a következő kódra:
+Az utolsó lépés a függvény hívása `TranslateTextRequest()` `Main` . Ebben a példában a német (), az `de` olasz ( `it` ), a japán ( `ja` ) és a thai () fordítást használjuk `th` . Keresse meg `static void Main(string[] args)` és cserélje le a következő kódra:
 
 ```csharp
 static async Task Main(string[] args)
@@ -232,7 +232,7 @@ static async Task Main(string[] args)
 }
 ```
 
-Megfigyelheti, hogy `Main`a-ben Ön `subscriptionKey`deklarálja `endpoint`, és `route`. Emellett a felhasználónak kell megadnia a bemenetet, `Console.Readline()` és hozzá kell `textToTranslate`rendelnie az értéket.
+Megfigyelheti, hogy a-ben `Main` Ön deklarálja, `subscriptionKey` `endpoint` és `route` . Emellett a felhasználónak kell megadnia a bemenetet, `Console.Readline()` és hozzá kell rendelnie az értéket `textToTranslate` .
 
 ## <a name="run-the-sample-app"></a>Mintaalkalmazás futtatása
 
@@ -287,13 +287,13 @@ Ez az üzenet a nyers JSON-ből készült, amely így fog kinézni:
 ]
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ügyeljen arra, hogy eltávolítsa a mintául szolgáló alkalmazás forráskódjának bizalmas adatait, például az előfizetési kulcsokat.
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
 > [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

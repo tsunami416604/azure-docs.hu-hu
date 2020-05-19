@@ -2,13 +2,13 @@
 title: Terminológia – személyre szabás
 description: A személyre szabás szakkifejezéseket használ a megerősítő tanulásban. Ezeket a feltételeket a Azure Portal és az API-k használják.
 ms.topic: conceptual
-ms.date: 02/18/2020
-ms.openlocfilehash: f75437c5afd5d3fd7f7570079be410d3db1ca8db
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/23/2020
+ms.openlocfilehash: 3f819ff3305a7c7302eb56c83b98340946613a92
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77624274"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586303"
 ---
 # <a name="terminology"></a>Terminológia
 
@@ -19,6 +19,15 @@ A személyre szabás szakkifejezéseket használ a megerősítő tanulásban. Ez
 * **Tanulási hurok**: létrehozhat egy _tanulási ciklust_használó, személyre szabott erőforrást az alkalmazás minden olyan részéhez, amely kihasználhatja a személyre szabást. Ha több felhasználói felülettel rendelkezik, hozzon létre egy hurkot mindegyikhez.
 
 * **Modell**: a személyre szabott modell rögzíti a felhasználói viselkedéssel kapcsolatos összes információt, betanítási adatok beszerzését a rangsorba és a jutalmazási hívásokba küldött argumentumok kombinációjával, valamint a tanulási szabályzat által meghatározott tanítási viselkedéssel.
+
+* **Online mód**: az alapértelmezett [tanulási viselkedés](#learning-behavior) a személyre szabott tanulási ciklusban, amely a gépi tanulás segítségével hozza létre a modellt, amely előre megjósolja a tartalom **legfelső szintű műveletét** .
+
+* **Gyakornoki mód**: olyan [tanulási viselkedés](#learning-behavior) , amely segít a személyre szabott modell betanításában az alkalmazások eredményeinek és műveleteinek befolyásolása nélkül.
+
+## <a name="learning-behavior"></a>Tanulási viselkedés:
+
+* **Online mód**: a legjobb művelet visszaadása. A modell a legjobb művelettel válaszol a rangsorban megjelenő hívásokra, és a jutalmazási hívásokat fogja használni a kiválasztás időbeli megismeréséhez és tökéletesítéséhez.
+* **[Gyakornoki mód](concept-apprentice-mode.md)**: Tanuljon gyakornokként. A modell a meglévő rendszer működésének megfigyelésével fog megjelenni. A rangsorban megjelenő hívások mindig az alkalmazás **alapértelmezett műveletét** (alapterv) adják vissza.
 
 ## <a name="personalizer-configuration"></a>Személyre szabott konfiguráció
 
@@ -63,8 +72,21 @@ A személyre szabott beállítás a [Azure Portal](https://portal.azure.com).
 
 * **Jutalom**: azt méri, hogy a felhasználó hogyan válaszolt a Rank API által visszaadott jutalom műveleti azonosítóra 0 és 1 közötti pontszámként. A 0 – 1 értéket az üzleti logikája állítja be, attól függően, hogy a választás miként segítette a személyre szabás üzleti céljainak megvalósítását. A tanulási ciklus nem tárolja ezt a jutalmat egyéni felhasználói előzményekként.
 
-## <a name="offline-evaluations"></a>Offline értékelések
+## <a name="evaluations"></a>Értékelések
 
-* **Értékelés**: a hurok adatai alapján az offline kiértékelés meghatározza a hurok legjobb tanulási szabályzatát.
+### <a name="offline-evaluations"></a>Offline értékelések
+
+* **Értékelés**: a kapcsolat nélküli kiértékelés meghatározza az alkalmazás adatai alapján a hurok legjobb tanulási szabályzatát.
 
 * **Tanulási szabályzat**: a személyre szabott modelleket minden eseményre kiterjedően olyan paraméterek határozzák meg, amelyek befolyásolják a gépi tanulási algoritmus működését. Az új tanulási hurok egy alapértelmezett **képzési szabályzattal**kezdődik, amely mérsékelt teljesítményt eredményezhet. Az [értékelések](concepts-offline-evaluation.md)futtatásakor a személyre szabott új tanulási szabályzatokat hozhat létre, amelyek kifejezetten a hurok használati eseteire vannak optimalizálva. A személyre szabás a kiértékelés során generált minden egyes hurokhoz optimalizált házirendekkel jelentősen jobban teljesít. A tanulási szabályzat a Azure Portal személyre szabott erőforrásának **modell-és tanulási beállításaiban** található _tanulási beállítások_ nevű.
+
+### <a name="apprentice-mode-evaluations"></a>Gyakornoki mód értékelése
+
+A gyakornoki mód a következő **értékelési mérőszámokat**biztosítja:
+* **Alapterv – átlagos jutalom**: az alkalmazás alapértelmezett alapértéke (alapterv).
+* **Személyre szabás – átlagos jutalom**: a teljes jutalom személyre szabásának átlaga valószínűleg elérte ezt.
+* **Átlagos működés közbeni jutalom**: az alapkonfiguráció és a személyre szabott jutalom aránya – normalizálva a legutóbbi 1000 eseményekre.
+
+## <a name="next-steps"></a>További lépések
+
+* Az [etika és a felelősségteljes használat](ethics-responsible-use.md) megismerése

@@ -1,21 +1,14 @@
 ---
 title: Reguláris kifejezés típusú entitás – LUIS
-titleSuffix: Azure Cognitive Services
 description: A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja az esetet, és figyelmen kívül hagyja a kulturális változatot.  A reguláris kifejezések egyeztetése a karakter szintjén, nem pedig a jogkivonat szintjén történik.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
-ms.author: diberry
-ms.openlocfilehash: b9da76a80183f353a74d43e667bf6c9219eb6c05
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 90260fca10fc087225f6b1286e9fa2dd6d17c836
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74841217"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585606"
 ---
 # <a name="regular-expression-entity"></a>Reguláriskifejezés-entitás
 
@@ -32,13 +25,13 @@ A reguláris kifejezés a legjobb a nyers szövegekhez. Figyelmen kívül hagyja
 
 ## <a name="usage-considerations"></a>Használati megfontolások
 
-A reguláris kifejezések nem egyeznek meg a vártnál. Ilyen például a `one` és `two`a numerikus szó egyeztetése. Ilyen például a következő regex, amely megfelel a számnak `one` a többi számmal együtt:
+A reguláris kifejezések nem egyeznek meg a vártnál. Ilyen például a és a numerikus szó egyeztetése `one` `two` . Ilyen például a következő regex, amely megfelel a számnak a `one` többi számmal együtt:
 
 ```javascript
 (plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*
 ```
 
-Ez a regex kifejezés minden olyan szót tartalmaz, amely ezekkel a számokkal `phone`végződik, például:. A probléma megoldása érdekében győződjön meg arról, hogy a regex-egyezések figyelembe veszik a Word határait. A jelen példában a Word-határok használatára szolgáló regex a következő regexben van használatban:
+Ez a regex kifejezés minden olyan szót tartalmaz, amely ezekkel a számokkal végződik, például: `phone` . A probléma megoldása érdekében győződjön meg arról, hogy a regex-egyezések figyelembe veszik a Word határait. A jelen példában a Word-határok használatára szolgáló regex a következő regexben van használatban:
 
 ```javascript
 \b(plus )?(zero|one|two|three|four|five|six|seven|eight|nine)(\s+(zero|one|two|three|four|five|six|seven|eight|nine))*\b
@@ -46,7 +39,7 @@ Ez a regex kifejezés minden olyan szót tartalmaz, amely ezekkel a számokkal `
 
 ### <a name="example-json"></a>Példa JSON-ra
 
-Ha a `kb[0-9]{6}`használatakor a reguláris kifejezés entitásának definícióját használja, a következő JSON-válasz egy példa az eredményül kapott reguláris kifejezés entitásokra a lekérdezéshez:
+Ha a használatakor a `kb[0-9]{6}` reguláris kifejezés entitásának definícióját használja, a következő JSON-válasz egy példa az eredményül kapott reguláris kifejezés entitásokra a lekérdezéshez:
 
 `When was kb123456 published?`:
 
@@ -106,4 +99,7 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az [oktatóanyagban](tutorial-regex-entity.md)hozzon létre egy alkalmazást a konzisztens formátumú adatok kinyeréséhez a **reguláris kifejezés** entitás használatával.
+További információ az entitásokról:
+
+* [Alapelvek](luis-concept-entity-types.md)
+* [Létrehozás módja](luis-how-to-add-entities.md)

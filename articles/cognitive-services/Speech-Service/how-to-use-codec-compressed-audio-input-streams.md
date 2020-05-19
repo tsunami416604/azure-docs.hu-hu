@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: amishu
 zone_pivot_groups: programming-languages-set-twelve
-ms.openlocfilehash: bd6b500a823bde654da4442704b75451806d6a46
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 13cb35ffa650661da2855787279c4bdc37126ac9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80637276"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585019"
 ---
 # <a name="use-codec-compressed-audio-input-with-the-speech-sdk"></a>A codec tömörített hangbemenetének használata a Speech SDK-val
 
-A Speech Service SDK **tömörített hangbemeneti stream** API lehetővé teszi a tömörített hang továbbítását a beszédfelismerési szolgáltatásba vagy `PullStream` a `PushStream`vagy a használatával.
+A Speech Service SDK **tömörített hangbemeneti stream** API lehetővé teszi a tömörített hang továbbítását a beszédfelismerési szolgáltatásba vagy a vagy a használatával `PullStream` `PushStream` .
 
-A streaming tömörített bemeneti hang jelenleg a C#, a C++, a Java on Windows (UWP-alkalmazások nem támogatott) és a Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 8, CentOS 8) esetében támogatott. A Java az iOS platformon is támogatja az Android és Objective-C nyelveken.
+A streaming tömörített bemeneti hang jelenleg a C#, a C++, a Java on Windows (UWP-alkalmazások nem támogatott) és a Linux (Ubuntu 16,04, Ubuntu 18,04, Debian 9, RHEL 7/8, CentOS 7/8) esetében támogatott. A Java az iOS platformon is támogatja az Android és Objective-C nyelveken.
 * A Speech SDK 1.10.0 vagy újabb verziójára van szükség a RHEL 8 és a CentOS 8 esetében
 * A Windows rendszerhez a Speech SDK 1.11.0 vagy újabb verziója szükséges.
 

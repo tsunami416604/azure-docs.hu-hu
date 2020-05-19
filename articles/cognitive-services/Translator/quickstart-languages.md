@@ -1,7 +1,7 @@
 ---
-title: 'Gyors útmutató: a támogatott nyelvek listájának beolvasása – Translator Text API'
+title: 'Gyors útmutató: a támogatott nyelvek listájának lekérése – Translator'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban a fordítás, az írás és a szótárak által támogatott nyelvek listáját kapja meg a Translator Text API használatával.
+description: Ebben a rövid útmutatóban a fordító segítségével lefordíthatja a fordítási, az írott és a szótári kereséshez támogatott nyelvek listáját.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 02/10/2020
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-one
-ms.openlocfilehash: d992fcec6071ea9883f2db61d6c54f41a9615867
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bfb8b9d81496d10601bf6e6cfeb26d18b57e3eca
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77525141"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586870"
 ---
-# <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages"></a>Gyors útmutató: a Translator Text API használatával lekérheti a támogatott nyelvek listáját
+# <a name="quickstart-use-the-translator-to-get-a-list-of-supported-languages"></a>Rövid útmutató: a támogatott nyelvek listájának lekérése a Translator használatával
 
-Ebben a rövid útmutatóban a fordítás, az írás és a szótárak által támogatott nyelvek listáját kapja meg a Translator Text API használatával.
+Ebben a rövid útmutatóban a fordító segítségével lefordíthatja a fordítási, az írott és a szótári kereséshez támogatott nyelvek listáját.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [C# quickstart](includes/languages-csharp.md)]
@@ -42,7 +42,7 @@ Ebben a rövid útmutatóban a fordítás, az írás és a szótárak által tá
 [!INCLUDE [Python quickstart](includes/languages-python.md)]
 ::: zone-end
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Szöveg lefordítása](quickstart-translate.md)
 * [Szöveg átírása](quickstart-transliterate.md)

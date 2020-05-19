@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 08/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 2ead85da805bb33247ca54bea51cccc57b0e4e94
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 4b1ba4baa424a39a7f3433c2f2045f607712aa25
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69906757"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586630"
 ---
 [!INCLUDE [Prerequisites](prerequisites-go.md)]
 
@@ -35,7 +35,7 @@ import (
 
 ## <a name="create-the-main-function"></a>A fő függvény létrehozása
 
-Ez a minta megpróbálja beolvasni a Translator Text előfizetési kulcsot és a végpontot ezekből `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` a `TRANSLATOR_TEXT_ENDPOINT`környezeti változókból: és. Ha nem ismeri a környezeti változókat, beállíthatja `subscriptionKey` és `endpoint` karakterláncként is megadhatja a feltételes utasításokat, és megjegyzéseket fűzhet hozzájuk.
+Ez a minta megkísérli beolvasni a fordítói előfizetési kulcsot és a végpontot ezekből a környezeti változókból: `TRANSLATOR_TEXT_SUBSCRIPTION_KEY` és `TRANSLATOR_TEXT_ENDPOINT` . Ha nem ismeri a környezeti változókat, beállíthatja és karakterláncként is megadhatja `subscriptionKey` `endpoint` a feltételes utasításokat, és megjegyzéseket fűzhet hozzájuk.
 
 Másolja a projektbe a következő kódot:
 
@@ -67,7 +67,7 @@ func main() {
 
 ## <a name="create-a-function-to-translate-text"></a>Függvény létrehozása szöveg fordításához
 
-Hozzunk létre egy függvényt a szöveg fordításához. Ez a függvény egyetlen argumentumot, a Translator Text előfizetési kulcsot fogja megtenni.
+Hozzunk létre egy függvényt a szöveg fordításához. Ez a függvény egyetlen argumentumot, a fordító előfizetési kulcsát fogja végrehajtani.
 
 ```go
 func translate(subscriptionKey string, uri string) {
@@ -78,7 +78,7 @@ func translate(subscriptionKey string, uri string) {
 }
 ```
 
-Ezután hozzon létre egy URL-címet. Az URL-cím a és `Parse()` `Query()` a metódusok használatával készült. Figyelje meg, hogy a paramétereket a metódussal `Add()` együtt adja hozzá a rendszer. Ebben a példában Angolról németre és olaszra végez fordítást: `de` és. `it`
+Ezután hozzon létre egy URL-címet. Az URL-cím a `Parse()` és a `Query()` metódusok használatával készült. Figyelje meg, hogy a paramétereket a metódussal együtt adja hozzá a rendszer `Add()` . Ebben a példában Angolról németre és olaszra végez fordítást: `de` és `it` .
 
 Másolja ezt a kódot a `translate` függvénybe.
 
@@ -92,11 +92,11 @@ u.RawQuery = q.Encode()
 ```
 
 >[!NOTE]
-> A végpontokkal, az útvonalakkal és a kérelemparaméterekkel kapcsolatos további információért lásd: [Translator Text API 3.0: Translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
+> További információ a végpontokról, az útvonalakról és a kérelmek paramétereivel kapcsolatban [: Translator 3,0: translate](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate).
 
 ## <a name="create-a-struct-for-your-request-body"></a>Struct létrehozása a kérés törzséhez
 
-Ezután hozzon létre egy névtelen struktúrát a kérelem törzse számára, és kódolja `json.Marshal()`JSON-ként a következővel:. Adja hozzá ezt a kódot `translate` a függvényhez.
+Ezután hozzon létre egy névtelen struktúrát a kérelem törzse számára, és kódolja JSON-ként a következővel: `json.Marshal()` . Adja hozzá ezt a kódot a `translate` függvényhez.
 
 ```go
 // Create an anonymous struct for your request body and encode it to JSON
@@ -110,7 +110,7 @@ b, _ := json.Marshal(body)
 
 ## <a name="build-the-request"></a>A kérelem felépítése
 
-Most, hogy kódolta a kérés törzsét JSON-ként, felépítheti a POST-kérést, és meghívhatja a Translator Text API.
+Most, hogy már kódolta a kérés törzsét JSON-ként, felépítheti a POST-kérelmét, és meghívhatja a fordítót.
 
 ```go
 // Build the HTTP POST request
@@ -122,18 +122,18 @@ if err != nil {
 req.Header.Add("Ocp-Apim-Subscription-Key", subscriptionKey)
 req.Header.Add("Content-Type", "application/json")
 
-// Call the Translator Text API
+// Call the Translator
 res, err := http.DefaultClient.Do(req)
 if err != nil {
     log.Fatal(err)
 }
 ```
 
-Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek `Ocp-Apim-Subscription-Region` is szerepelnie kell. [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
+Ha Cognitive Services több szolgáltatásra kiterjedő előfizetést használ, akkor a kérés paramétereinek is szerepelnie kell `Ocp-Apim-Subscription-Region` . [További információ a többszolgáltatásos előfizetés hitelesítéséről](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 
 ## <a name="handle-and-print-the-response"></a>A válasz kezelése és nyomtatása
 
-Adja hozzá ezt a kódot `translate` a függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
+Adja hozzá ezt a kódot a `translate` függvényhez a JSON-válasz dekódolásához, majd formázza és nyomtassa ki az eredményt.
 
 ```go
 // Decode the JSON response
@@ -148,7 +148,7 @@ fmt.Printf("%s\n", prettyJSON)
 
 ## <a name="put-it-all-together"></a>Az alkalmazás összeállítása
 
-Ezzel összeállított egy egyszerű programot, amely meghívja a Translator Text API-t, és visszaad egy JSON-választ. Most itt az ideje, hogy futtassa a programot:
+Ez egy egyszerű program, amely meghívja a fordítót, és egy JSON-választ ad vissza. Most itt az ideje, hogy futtassa a programot:
 
 ```console
 go run translate-text.go
@@ -183,7 +183,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse meg az API-referenciát, amely mindent megtudhat a Translator Text API.
+Tekintse meg az API-referenciát, amely mindent megtudhat a fordítóval.
 
 > [!div class="nextstepaction"]
 > [API-referenciák](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference)

@@ -3,12 +3,12 @@ title: Mi a Personalizer?
 description: A személyre szabás egy felhőalapú API-szolgáltatás, amely lehetővé teszi a felhasználók számára a legjobb felhasználói élmény kiválasztását, a valós idejű viselkedésük megismerését.
 ms.topic: overview
 ms.date: 04/20/2020
-ms.openlocfilehash: 3ae425479d764c0a6bf6c63bdd54a964c48af8b6
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cf046ada21c4920ea9e3853668a5928b2ca9f33a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687261"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83586218"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -70,17 +70,24 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 ## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Az ügyfélalkalmazás személyre szabásának megtervezése és implementálása
 
 1. [Tervezze](concepts-features.md) meg és tervezze meg a tartalmat, a **_műveleteket_** és a **_környezetet_**. Határozza meg **_a jutalmas pontszámhoz_** tartozó jutalmazási algoritmust.
-1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) 1 tanulási ciklusnak minősül. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
-1. Személyre szabás hozzáadása a webhelyhez vagy a tartalmi rendszeren:
+1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) egy tanulási ciklusnak tekintendő. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
+
+    |Erőforrás típusa| Cél|
+    |--|--|
+    |[Gyakornoki mód](concept-apprentice-mode.md)`E0`|A személyre szabott modell betanítása anélkül, hogy ez hatással lenne a meglévő alkalmazásra, majd telepítse az online tanulási viselkedést éles környezetbe|
+    |Standard`S0`|Online tanulási viselkedés éles környezetben|
+    |Ingyenes`F0`| Az online tanulási viselkedés kipróbálása nem éles környezetben|
+
+1. Személyre szabás hozzáadása az alkalmazáshoz, webhelyhez vagy rendszeren:
     1. Az alkalmazásban, a webhelyen vagy a rendszeren testreszabhatja a személyre szabási **hívást,** hogy meghatározza a legjobb, egyetlen _tartalmi_ elemet, mielőtt a tartalom megjelenik a felhasználó számára.
     1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_a felhasználónak.
-    1. Alkalmazzon _algoritmust_ a felhasználó működésével kapcsolatos adatok gyűjtésére a **jutalom** pontszámának megállapításához, például:
+    1. Az _üzleti logikát_ alkalmazva gyűjtheti össze a felhasználó működésével kapcsolatos információkat a **jutalom** pontszámának meghatározásához, például:
 
-        |Viselkedés|Számított jutalom pontszáma|
-        |--|--|
-        |A felhasználó a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója) választotta|**1**|
-        |A felhasználó által kiválasztott egyéb tartalom|**0**|
-        |A felhasználó szüneteltetve, a nem határozott módon görgetve, mielőtt kiválasztja a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója)|**0,5**|
+    |Viselkedés|Számított jutalom pontszáma|
+    |--|--|
+    |A felhasználó a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója) választotta|**1**|
+    |A felhasználó által kiválasztott egyéb tartalom|**0**|
+    |A felhasználó szüneteltetve, a nem határozott módon görgetve, mielőtt kiválasztja a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója)|**0,5**|
 
     1. **Jutalom-hívás küldése** 0 és 1 közötti jutalom pontszámának megadásához
         * A tartalom megjelenítése után azonnal

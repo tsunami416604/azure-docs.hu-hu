@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: spelluru
-ms.openlocfilehash: 126a6f2f26d8eaaf6ea1a85f029e56bc8f4432f3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 7a60f761e4ee575e3196bb1ccd3baa42f27221f8
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996763"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588173"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése Azure Lab Services 
 Ez a cikk a tantermi laborok létrehozását és törlését ismerteti. Azt is bemutatja, hogyan tekintheti meg az összes osztályterem Labs-t egy labor-fiókban. 
@@ -54,14 +54,14 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
         > Jegyezze fel a felhasználónevet és a jelszót, mert többször nem fognak megjelenni.
     3. Ha azt szeretné, hogy a diákok saját jelszavukat állítsanak be, tiltsa le **ugyanazt a jelszót az összes virtuális gép** beállításnál. Ez a lépés **nem kötelező**. 
 
-        A tanár dönthet úgy, hogy ugyanazt a jelszót használja a laborban lévő összes virtuális géphez, vagy lehetővé teszi a tanulók számára a virtuális gépek jelszavának beállítását. Alapértelmezés szerint ez a beállítás az Ubuntu kivételével minden Windows-és Linux-lemezkép esetében engedélyezve van. Ha az **Ubuntu** virtuális gépet választja, akkor ez a beállítás le van tiltva, így a tanulóknak először be kell állítania egy jelszót, amikor első alkalommal jelentkeznek be.  
+        A pedagógus dönthet úgy, hogy ugyanazt a jelszót használja a laborban lévő összes virtuális géphez, vagy lehetővé teszi a tanulók számára a virtuális gépek jelszavának beállítását. Alapértelmezés szerint ez a beállítás az Ubuntu kivételével minden Windows-és Linux-lemezkép esetében engedélyezve van. Ha az **Ubuntu** virtuális gépet választja, akkor ez a beállítás le van tiltva, így a tanulóknak először be kell állítania egy jelszót, amikor első alkalommal jelentkeznek be.  
 
         ![Új tesztkörnyezet ablak](../media/tutorial-setup-classroom-lab/virtual-machine-credentials.png)
     4. Ezután válassza a **tovább** lehetőséget a **virtuális gép hitelesítő adatai** lapon. 
 5. A **labor-házirendek** oldalon hajtsa végre a következő lépéseket:
     1. Adja meg az egyes felhasználók számára kiosztott órák számát (az**egyes felhasználók kvótáját**) a laborhoz tartozó ütemezett időpontban kívül. 
     2. A **virtuális gépek automatikus leállításához** válassza ki, hogy szeretné-e automatikusan leállítani a virtuális gépet a felhasználó leválasztásakor. Azt is megadhatja, hogy a virtuális gép mennyi ideig várjon, amíg a felhasználó újra csatlakozik, mielőtt automatikusan leáll. További információ: a [virtuális gépek automatikus leállításának engedélyezése a kapcsolat bontásakor](how-to-enable-shutdown-disconnect.md).
-    3. Ezután válassza a **Befejezés**lehetőséget. 
+    3. Ezután válassza a **Befejezés** gombot. 
 
         ![Kvóta az egyes felhasználók számára](../media/tutorial-setup-classroom-lab/quota-for-each-user.png)
     
@@ -103,7 +103,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 | ---- | ----- | --- | ----------- | 
 | Kicsi | 2 | 3,5 GB | Ez a méret a legmegfelelőbb a parancssorhoz, a webböngésző megnyitásához, az alacsony forgalmú webkiszolgálók, a kis és közepes adatbázisok eléréséhez. |
 | Közepes | 4 | 7 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. | 
-| Közepes (beágyazott virtualizálás) | 4 | 16 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. <p>Ezt a méretet olyan helyzetekben lehet használni, ahol minden tanulónak több virtuális gépre van szüksége. A tanárok beágyazott virtualizálás használatával állíthatnak be néhány kis méretű beágyazott virtuális gépet a virtuális gépen belül. </p> |
+| Közepes (beágyazott virtualizálás) | 4 | 16 GB | Ez a méret a legmegfelelőbb a kapcsolatok adatbázisaihoz, a memóriában történő gyorsítótárazáshoz és az elemzésekhez. Ez a méret támogatja a beágyazott virtualizálás szolgáltatást is. <p>Ezt a méretet olyan helyzetekben lehet használni, ahol minden tanulónak több virtuális gépre van szüksége. Az oktatók a beágyazott virtualizálás használatával állíthatnak be néhány kis méretű beágyazott virtuális gépet a virtuális gépen belül. </p> |
 | Kis GPU (számítás) | 6 | 56 GB | <p>Ez a méret a legjobb megoldás a nagy számítási igényű és hálózati igényű alkalmazások, például a mesterséges intelligencia és a Deep learning-alkalmazások számára.</p><p>Azure Lab Services automatikusan telepíti és konfigurálja a szükséges GPU-illesztőprogramokat, amikor GPU-rendszerképekkel rendelkező labort hoz létre. </p> | 
 | Kis GPU (vizualizáció) | 6 | 56 GB | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. | 
 | Nagy | 8 | 16 GB | Ez a méret a gyorsabb processzorokat, nagyobb teljesítményű helyi lemezeket, nagyméretű adatbázisokat és nagyméretű memória-gyorsítótárat igénylő alkalmazások számára ajánlott. |

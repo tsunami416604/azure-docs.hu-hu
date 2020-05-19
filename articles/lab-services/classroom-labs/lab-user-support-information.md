@@ -1,17 +1,17 @@
 ---
 title: Azure Lab Services – támogatási információk megtekintése (labor felhasználó)
-description: Ez a cikk azt ismerteti, hogy a tesztkörnyezet felhasználói vagy oktatói hogyan tekinthetik meg a támogatási információkat, amelyek segítségével segítséget kérhet.
+description: Ez a cikk azt ismerteti, hogy a tesztkörnyezet felhasználói vagy oktatói hogyan tekinthetik meg a támogatási információkat, amelyeket használhat, hogy segítséget kapjon.
 author: spelluru
 ms.author: spelluru
 ms.date: 02/14/2020
 ms.topic: how-to
 ms.service: lab-services
-ms.openlocfilehash: bd92d53e09774183edadff0f949820f8feec6180
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45cfc327f8534336ba2d9fb404a50e9bd530dccb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109250"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585555"
 ---
 # <a name="view-support-information-lab-user-in-azure-lab-services"></a>Támogatási információk megtekintése (tesztkörnyezet felhasználójának Azure Lab Services)
 Ez a cikk azt ismerteti, hogyan tekintheti meg a következő támogatási információkat (a tesztkörnyezet felhasználója):

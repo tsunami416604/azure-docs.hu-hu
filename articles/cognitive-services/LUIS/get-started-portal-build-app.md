@@ -2,13 +2,13 @@
 title: 'Rövid útmutató: új alkalmazás létrehozása a LUIS portálon'
 description: Ebben a rövid útmutatóban létrehoz egy alkalmazás, szándékok és entitások alaprészeit, valamint teszteli a minta-kisegítő lehetőséget a LUIS-portálon.
 ms.topic: quickstart
-ms.date: 04/14/2020
-ms.openlocfilehash: 2d601646c43c0f0d99dc6934cf1f1c960e0b0f79
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: b2ab2ec0fa5398ae8a69906aee25ef44ad5db3c9
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81382573"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585219"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Rövid útmutató: új alkalmazás létrehozása a LUIS portálon
 
@@ -18,25 +18,25 @@ Ebben a rövid útmutatóban egy új alkalmazást hoz létre a LUIS portálon. E
 
 ## <a name="create-an-app"></a>Alkalmazás létrehozása
 
-1. A helyi eszköztáron válassza az **+ új alkalmazás** lehetőséget, majd válassza az **új alkalmazás a beszélgetéshez**lehetőséget.
+1. A helyi eszköztáron válassza az **+ új alkalmazás** lehetőséget, majd válassza az **+ új alkalmazás lehetőséget a beszélgetéshez** .
 
     > [!div class="mx-imgBorder"]
-    > [![Új alkalmazás létrehozása a LUIS Portalon](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
+    > [![Képernyőkép az új alkalmazás létrehozásáról a LUIS Portalon](./media/create-app-in-portal.png)](./media/create-app-in-portal.png#lightbox)
 
 1. Az előugró ablakban konfigurálja az alkalmazást a következő beállításokkal, majd válassza a **kész**lehetőséget.
 
    |Beállítás neve| Érték | Cél|
    |--|--|--|
-   |Name (Név)|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>kötelező|
+   |Name|`myEnglishApp`|Egyedi LUIS-alkalmazás neve<br>kötelező|
    |Kulturális környezet|**angol**|A felhasználók hosszúságú kimondott szöveg nyelve, **en-us**<br>kötelező|
    |Leírás (nem kötelező)|`App made with LUIS Portal`|Az alkalmazás leírása<br>választható|
    |Előrejelzési erőforrás (nem kötelező) |-  |Ne válassza a lehetőséget. A LUIS egy alapszintű kulcsot biztosít a szerzői műveletek és a 1 000-es előrejelzési végpontokra vonatkozó kérések használatához. |
 
-   ![Adja meg az új alkalmazás beállításait](./media/get-started-portal-build-app/create-new-app-settings.png)
+   ![Képernyőkép az új Alkalmazásbeállítások megadásáról](./media/get-started-portal-build-app/create-new-app-settings.png)
 
 ## <a name="create-intents"></a>Szándékok létrehozása
 
-A LUIS-alkalmazás létrehozása után szándékait kell létrehoznia. A szándékok segítségével kategorizálhatja a felhasználókat. Előfordulhat például, hogy egy emberi erőforrás alkalmazásnak két funkciója van. Az emberek segítése:
+A LUIS-alkalmazás létrehozása után szándékait kell létrehoznia. A leképezések lehetővé teszik szöveg besorolását a felhasználóktól. Előfordulhat például, hogy egy emberi erőforrás alkalmazásnak két funkciója van. Az emberek segítése:
 
  1. Feladatok keresése és alkalmazása
  1. A feladatokra alkalmazandó űrlapok keresése
@@ -52,9 +52,9 @@ A leképezések létrehozásához hajtsa végre a következő lépéseket:
 
 1. Az alkalmazás létrehozása után a **Build** szakasz **szándékok** lapján található. Kattintson a **Létrehozás** gombra.
 
-   [![Új leképezés létrehozásához válassza a létrehozás lehetőséget.](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
+   [![Képernyőkép: a Létrehozás gombra kattintva hozzon létre új leképezést](./media/get-started-portal-build-app/create-new-intent-button.png)](./media/get-started-portal-build-app/create-new-intent-button.png#lightbox)
 
-1. Adja meg a leképezés nevét, `FindForm`majd kattintson a **kész**gombra.
+1. Adja meg a leképezés nevét, `FindForm` majd kattintson a **kész**gombra.
 
 ## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
 
@@ -63,27 +63,27 @@ A leképezések létrehozása után példaként adja hozzá a hosszúságú kimo
 Ebben a példában az alkalmazás `FindForm` célja, például a hosszúságú kimondott szöveg fogja tartalmazni az űrlapot. Az ügyfélalkalmazás számára szükséges, hogy megfeleljen a felhasználó kérelmének, ezért fontos, hogy belefoglalja azt a teljességbe.
 
 > [!div class="mx-imgBorder"]
-> [![Adja meg például a FindForm szándék hosszúságú kimondott szöveg](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
+> [![Képernyőkép a FindForm szándékának példás hosszúságú kimondott szöveg](./media/get-started-portal-build-app/add-example-utterance.png)](./media/get-started-portal-build-app/add-example-utterance.png#lightbox)
 
 Adja hozzá a következő 15 példa hosszúságú kimondott szöveg a `FindForm` szándékhoz.
 
 |#|Példák kimondott szövegekre|
 |--|--|
-|1|HRF keresése – 123456|
-|2|Hol található a HRF-234591 típusú emberi erőforrás?|
-|3|HRF-345623, hol van|
-|4|Lehetséges a HRF-345794 küldése|
-|5|Szükség van-e a HRF-234695-re a belső feladatokra való jelentkezéshez?|
-|6|Tudnia kell, hogy a felettesem a HRF-234091-es feladatokhoz való jelentkezést kéri.|
-|7|Hová küldhetek HRF-234918? Kapok e-mailben kapott választ?|
-|8|HRF-234555|
-|9|Mikor frissítették a HRF-234987 frissítést?|
-|10|Használhatom a HRF-876345 formanyomtatványt a mérnöki pozíciókra való jelentkezéshez|
-|11|A HRF-765234 új verziója lett elküldve a nyitott igényléshez?|
-|12|Használhatok HRF-234234 nemzetközi feladatokhoz?|
-|13|HRF-234598 – helyesírási hiba|
-|14|a HRF-234567 új követelmények szerint lesz módosítva|
-|15|HRF-123456, HRF-123123, HRF-234567|
+|1|`Looking for hrf-123456`|
+|2|`Where is the human resources form hrf-234591?`|
+|3|`hrf-345623, where is it`|
+|4|`Is it possible to send me hrf-345794`|
+|5|`Do I need hrf-234695 to apply for an internal job?`|
+|6|`Does my manager need to know I'm applying for a job with hrf-234091`|
+|7|`Where do I send hrf-234918? Do I get an email response it was received?`|
+|8|`hrf-234555`|
+|9|`When was hrf-234987 updated?`|
+|10|`Do I use form hrf-876345 to apply for engineering positions`|
+|11|`Was a new version of hrf-765234 submitted for my open req?`|
+|12|`Do I use hrf-234234 for international jobs?`|
+|13|`hrf-234598 spelling mistake`|
+|14|`will hrf-234567 be edited for new requirements`|
+|15|`hrf-123456, hrf-123123, hrf-234567`|
 
 Ez a példa a hosszúságú kimondott szöveg a következő módokon változhat:
 
@@ -96,20 +96,21 @@ Ez a példa a hosszúságú kimondott szöveg a következő módokon változhat:
 
 ## <a name="create-a-regular-expression-entity"></a>Reguláris kifejezés entitásának létrehozása
 
-Ha vissza szeretné állítani az űrlap számát a futásidejű előrejelzési válaszban, az űrlapot entitásként kell megjelölni. Mivel az űrlap-szám szövege erősen strukturált, egy reguláris kifejezéssel rendelkező entitás használatával jelölheti meg. Hozza létre az entitást a következő lépésekkel:
+Ha vissza szeretné állítani az űrlap számát a futásidejű előrejelzési válaszban, az űrlap számát entitásként kell kinyerni. Mivel az űrlap-szám szövege nagyon strukturált, reguláris kifejezési entitást használhat. Hozza létre a reguláris kifejezés entitását a következő lépésekkel:
 
 1. Válassza az **entitások** lehetőséget a bal oldali menüben.
 
 1. Válassza a **Létrehozás** lehetőséget az **entitások** lapon.
 
-1. Adja meg a `Human Resources Form Number`nevet, válassza ki a **regex** entitás típusát, majd kattintson a **tovább**gombra.
+1. Adja meg a nevet `FormNumber` , válassza ki a **regex** entitás típusát.
 
-   ![Reguláris kifejezés entitásának létrehozása](./media/get-started-portal-build-app/create-regular-expression-entity.png)
+1. Adja meg a reguláris kifejezést a `hrf-[0-9]{6}` **regex** mezőben. Ez a bejegyzés megegyezik a literális karakterekkel, `hrf-` és lehetővé teszi pontosan hat számjegy használatát, majd válassza a **Létrehozás**lehetőséget.
 
-1. Adja meg a reguláris kifejezés (**regex**) kifejezését `hrf-[0-9]{6}`. Ez a bejegyzés megegyezik a literális `hrf-`karakterekkel, és lehetővé teszi pontosan 6 számjegy használatát, majd válassza a **Létrehozás**lehetőséget.
+    > [!div class="mx-imgBorder"]
+    > ![A reguláris kifejezés entitás létrehozásának képernyőképe](./media/get-started-portal-build-app/create-regular-expression-entity.png)
 
-   ![Adja meg az entitás reguláris kifejezését](./media/get-started-portal-build-app/create-regular-expression-entity-with-expression.png)
 
+    Ez az entitás Kinyer minden olyan szöveget, amely megfelel a reguláris kifejezésnek bármelyik szándékban.
 
 ## <a name="add-example-utterances-to-the-none-intent"></a>Példa hosszúságú kimondott szöveg hozzáadása a none szándékhoz
 
@@ -123,11 +124,10 @@ A **nincs** leképezési példa hosszúságú kimondott szöveg az ügyfélalkal
 
    |Nincs leképezési példa hosszúságú kimondott szöveg|
    |--|
-   |Az ugató kutyák idegesítőek|
-   |Rendeljen nekem egy pizzát|
-   |Pingvinek az óceánban|
+   |`Barking dogs are annoying`|
+   |`Penguins in the ocean`|
 
-   Ebben az alkalmazásban a példa hosszúságú kimondott szöveg a tartományon kívül esnek. Ha a tartomány tartalmazza az állatokat, az élelmiszereket vagy az óceánt, akkor a **none (nincs** ) cél hosszúságú kimondott szöveg eltérő példát kell használnia.
+   Ebben az alkalmazásban a példa hosszúságú kimondott szöveg a tartományon kívül esnek. Ha a tartománya állatokat vagy az óceánt is tartalmazza, akkor a **none (nincs** ) cél hosszúságú kimondott szöveg eltérő példát kell használnia.
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 
@@ -140,7 +140,7 @@ A **nincs** leképezési példa hosszúságú kimondott szöveg az ügyfélalkal
    Az entitás meg van jelölve, ahol megjelenik a példában szereplő hosszúságú kimondott szöveg. Ha az entitás neve helyett az eredeti szöveget szeretné látni, váltson az **entitások nézetre** az eszköztárból.
 
    > [!div class="mx-imgBorder"]
-   > [![Az összes példa entitásokkal jelölt hosszúságú kimondott szöveg](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
+   > [![Képernyőkép az entitásokkal jelölt összes példa hosszúságú kimondott szöveg](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png)](./media/get-started-portal-build-app/all-example-utterances-marked-with-entities.png#lightbox)
 
 ## <a name="test-your-new-app-with-the-interactive-test-pane"></a>Tesztelje az új alkalmazást az interaktív teszt panel segítségével
 
@@ -155,11 +155,11 @@ A LUIS-portál interaktív **teszt** paneljén ellenőrizheti, hogy az entitás 
     Válassza a **vizsgálat** lehetőséget az entitások előrejelzésének megtekintéséhez.
 
    > [!div class="mx-imgBorder"]
-   > ![Új kifejezés tesztelése a teszt ablaktáblán](./media/get-started-portal-build-app/test-new-utterance.png)
+   > ![Képernyőkép: az új kifejezés tesztelése a teszt ablaktáblán](./media/get-started-portal-build-app/test-new-utterance.png)
 
-   A felső előre jelzett szándék megfelelően **FindForm** , több mint 90%-os megbízhatósággal (0,977). A **Human Resources Form számú** entitást hrf-234098 értékkel extraháljuk.
+   A felső előre jelzett szándék megfelelően **FindForm** , több mint 90%-os megbízhatósággal (0,977). A **FormNumber** entitás a hrf-234098 értékkel van kinyerve.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha ezzel a rövid útmutatóval végzett, és nem a következő rövid útmutatóra vált, válassza a **saját alkalmazások** lehetőséget a felső navigációs menüből. Ezután jelölje be az alkalmazás bal oldali jelölőnégyzetét a listából, majd válassza a **Törlés** lehetőséget a lista fölötti helyi eszköztáron.
 

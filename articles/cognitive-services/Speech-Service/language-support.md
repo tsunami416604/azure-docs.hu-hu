@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 0b6fea381bd6b4aa8ad3e7061e6f632176c41033
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3fe1b999fbdc03157778a1329e05e8c342183528
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82113833"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587374"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -24,7 +24,7 @@ A nyelvi támogatás a beszédfelismerési szolgáltatás működésének függv
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a hang-és emberi címkével ellátott átiratok vagy a kapcsolódó szövegek feltöltésével: mondatok. A kiejtés testreszabása jelenleg csak a és `en-US` `de-DE`a esetében érhető el. További információ a testreszabásról [itt](how-to-custom-speech.md).
+A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a hang-és emberi címkével ellátott átiratok vagy a kapcsolódó szövegek feltöltésével: mondatok. A kiejtés testreszabása jelenleg csak a és a esetében érhető el `en-US` `de-DE` . További információ a testreszabásról [itt](how-to-custom-speech.md).
 
 <!--
 To get the AM and ML bits:
@@ -41,7 +41,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-EG` | Arab (Egyiptom)                    | Igen       | Nyelvi modell                                    |
 | `ar-KW` | Arab (Kuvait)                   | Igen       | Nem                                                |
 | `ar-QA` | Arab (Katar)                    | Igen       | Nem                                                |
-| `ar-SA` | Arab (Szaúd-Arábiai)             | Igen       | Nem                                                |
+| `ar-SA` | Arab (Szaúd-Arábia)             | Igen       | Nem                                                |
 | `ar-SY` | Arab (Szíria)                    | Igen       | Nyelvi modell                                    |
 | `ca-ES` | Katalán                           | Igen       | Nyelvi modell                                    |
 | `da-DK` | Dán (Dánia)                  | Igen       | Nyelvi modell                                    |
@@ -80,7 +80,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 
 ## <a name="text-to-speech"></a>Szövegfelolvasás
 
-A Microsoft Speech SDK és a REST API-k egyaránt támogatják ezeket a hangokat, amelyek mindegyike egy adott nyelvet és dialektust támogat, amelyet a területi beállítás azonosít.
+A Microsoft Speech SDK és a REST API-k egyaránt támogatják ezeket a hangokat, amelyek mindegyike egy adott nyelvet és dialektust támogat, amelyet a területi beállítás azonosít. Az egyes régiókban vagy végpontokban támogatott nyelvek és hangok teljes listáját a [Voices/List API](rest-text-to-speech.md#get-a-list-of-voices)-n keresztül is elérheti. 
 
 > [!IMPORTANT]
 > A díjszabás a standard, az egyéni és a neurális hangok esetében is változhat. További információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) oldalt.
@@ -93,124 +93,139 @@ A neurális hangokat felhasználhatja az csevegőrobotok-és hangsegédekkel val
 
 További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
-| Területi beállítás  | Nyelv            | Nem | Teljes szolgáltatásnév-hozzárendelés                                               | Rövid hang neve        |
-|---------|---------------------|--------|-------------------------------------------------------------------------|-------------------------|
-| `de-DE` | Német (Németország)    | Nő | "Microsoft Server Speech Text to Speech Voice (de-DE, KatjaNeural)"     | "de-DE-KatjaNeural"     |
-| `en-US` | Angol (US)        | Nő | "Microsoft Server Speech Text to Speech hang (en-US, AriaNeural)"      | "en-US-AriaNeural"      |
-| `en-US` | Angol (US)        | Férfi   | "Microsoft Server Speech Text to Speech hang (en-US, GuyNeural)"       | "en-US-GuyNeural"       |
-| `it-IT` | Olasz (Olaszország)     | Nő | "Microsoft Server Speech Text to Speech hang (IT-IT, ElsaNeural)"      | "IT-IT-ElsaNeural"      |
-| `pt-BR` | Portugál (Brazília) | Nő | "Microsoft Server Speech Text to Speech Voice (PT-BR, FranciscaNeural)" | "PT-BR-FranciscaNeural" |
-| `zh-CN` | Kínai (mandarin, egyszerűsített)  | Nő | "Microsoft Server Speech Text to Speech Voice (zh-CN, XiaoxiaoNeural)"  | "zh-CN-XiaoxiaoNeural"  |
+|Területi beállítás  | Nyelv            | Nem | Hang neve  | Bi-nyelvi támogatás | Stílus támogatása |
+|--|--|--|--|--|--|
+| `de-DE` | Német (Németország)    | Nő | "de-DE-KatjaNeural" | Igen. Angol (US) | Általános kérdések |
+| `en-AU` | Angol (Ausztrália) | Nő |  "en-AU-NatashaNeural" | Nem | Általános kérdések |
+| `en-CA` | Angol (Kanada)    | Nő |  "en-CA-ClaraNeural"| Nem | Általános kérdések |
+| `en-GB` | Angol (Egyesült Királyság)        | Nő |  "en-GB-LibbyNeural"| Nem | Általános kérdések |
+|  |      | Nő |  "en-GB-MiaNeural" | Nem | Általános kérdések |
+| `en-US` | Angol (US)        | Nő |  "en-US-AriaNeural"| Nem | Általános, több hangstílus érhető el |
+|  |      | Férfi   | "en-US-GuyNeural" | Nem | Általános kérdések |
+| `es-ES` | Spanyol (Spanyolország)     | Nő |  "es-ES-ElviraNeural"| Igen. Angol (US) | Általános kérdések |
+| `es-MX` | Spanyol (Mexikó)    | Nő |  "es-MX-DaliaNeural" | Igen. Angol (US) | Általános kérdések |
+| `fr-CA` | Francia (Kanada)     | Nő |  "fr-CA-SylvieNeural" | Igen. Angol (US) | Általános kérdések |
+| `fr-FR` | Francia (Franciaország)     | Nő | "fr-FR-DeniseNeural"  | Igen. Angol (US) | Általános kérdések |
+| `it-IT` | Olasz (Olaszország)     | Nő |  "IT-IT-ElsaNeural"  | Igen. Angol (US) | Általános kérdések |
+| `ja-JP` | Japán            | Nő |  "ja-JP-NanamiNeural" | Igen. Angol (US) | Általános kérdések |
+| `ko-KR` | Koreai              | Nő |  "ko-KR-SunHiNeural" | Igen. Angol (US) | Általános kérdések |
+| `nb-NO` | Norvég           | Nő | "NB-NO-IselinNeural" | Nem | Általános kérdések |
+| `pt-BR` | Portugál (Brazília) | Nő |  "PT-BR-FranciscaNeural" | Nem | Általános kérdések |
+| `tr-TR` | Török             | Nő | "TR-TR-EmelNeural" | Nem | Általános kérdések |
+| `zh-CN` | Kínai (mandarin, egyszerűsített)  | Nő |  "zh-CN-XiaoxiaoNeural"  | Igen. Angol (US) | Általános, több hangstílus érhető el |
+|  |  | Nő |  "zh-CN-XiaoyouNeural"  | Igen. Angol (US) | A szövegegység elbeszéléséhez optimalizált, gyerek hang |
+|  |  | Férfi |  "zh-CN-YunyangNeural"  | Igen. Angol (US) | A hírek olvasására optimalizált, több hangstílus érhető el |
+|  |  | Férfi |  "zh-CN-YunyeNeural"  | Nem | A történet elbeszéléséhez optimalizált |
 
 > [!IMPORTANT]
-> A `en-US-JessaNeural` hang a következőre `en-US-AriaNeural`változott:. Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
+> A hang a következőre `en-US-JessaNeural` változott: `en-US-AriaNeural` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
 
 Ha szeretné megtudni, hogyan konfigurálhatja és módosíthatja a neurális hangokat, tekintse meg a [Speech szintézis Markup Language](speech-synthesis-markup.md#adjust-speaking-styles)című témakört.
 
 > [!TIP]
-> A beszédfelismerési kérelmekben a teljes szolgáltatásnév-hozzárendelést vagy a rövid hangnevet használhatja.
+> Továbbra is használhatja a teljes szolgáltatásnév leképezését (például "Microsoft Server Speech Text to Speech Voice (en-US, AriaNeural)") a beszédfelismerési kérelmekben.
 
 ### <a name="standard-voices"></a>Standard hangok
 
 Több mint 75 standard hang érhető el több mint 45 nyelven és területi beállításban, amely lehetővé teszi szöveg konvertálását a szintetizált beszédbe. További információ a regionális elérhetőségről: [régiók](regions.md#standard-and-neural-voices).
 
-| Területi beállítás | Nyelv | Nem | Teljes szolgáltatásnév-hozzárendelés | Rövid név |
-|--|--|--|--|--|
-| <sup>1</sup>`ar-EG` | Arab (Egyiptom) | Nő | "Microsoft Server Speech Text to Speech hang (AR-EG, a és a (z))" | "AR-EG-a (z)" |
-| `ar-SA` | Arab (Szaúd-Arábiai) | Férfi | "Microsoft Server Speech Text to Speech hang (AR-SA, Naayf)" | "AR-SA-Naayf" |
-| `bg-BG` | Bolgár | Férfi | "Microsoft Server Speech Text to Speech Voice (BG-BG, Ivan)" | "BG-BG-Ivan" |
-| `ca-ES` | Katalán (Spanyolország) | Nő | "Microsoft Server Speech Text to Speech Voice (CA-ES, HerenaRUS)" | "CA-ES-HerenaRUS" |
-| `cs-CZ` | Cseh | Férfi | "Microsoft Server Speech Text to Speech hang (CS-CZ, Jakub)" | "CS-CZ-Jakub" |
-| `da-DK` | Dán | Nő | "Microsoft Server Speech Text to Speech Voice (da-DK, HelleRUS)" | "da-DK-HelleRUS" |
-| `de-AT` | Német (Ausztria) | Férfi | "Microsoft Server Speech Text to Speech Voice (de-AT, Michael)" | "de-AT-Michael" |
-| `de-CH` | Német (Svájc) | Férfi | "Microsoft Server Speech Text to Speech hang (de-CH, Karsten)" | "de-CH-Karsten" |
-| `de-DE` | Német (Németország) | Nő | "Microsoft Server Speech Text to Speech Voice (de-DE, Hedda)" | "de-DE-Hedda" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech Voice (de-DE, HeddaRUS)" | "de-DE-HeddaRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech Voice (de-DE, Stefan, Apollo)" | "de-DE-Stefan-Apollo" |
-| `el-GR` | Görög | Férfi | "Microsoft Server Speech Text to Speech Voice (el-GR, Stefanos)" | "el-GR-Stefanos" |
-| `en-AU` | Angol (Ausztrália) | Nő | "Microsoft Server Speech Text to Speech hang (en-AU, Catherine)" | "en-AU-Catherine" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (en-AU, HayleyRUS)" | "en-AU-HayleyRUS" |
-| `en-CA` | Angol (Kanada) | Nő | "Microsoft Server Speech Text to Speech hang (en-CA, Linda)" | "en-CA-Linda" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (en-CA, HeatherRUS)" | "en-CA-HeatherRUS" |
-| `en-GB` | Angol (Egyesült Királyság) | Nő | "Microsoft Server Speech Text to Speech hang (en-GB, Susan, Apollo)" | "en-GB-Susan-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (en-GB, HazelRUS)" | "en-GB-HazelRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (en-GB, George, Apollo)" | "en-GB-George-Apollo" |
-| `en-IE` | Angol (Írország) | Férfi | "Microsoft Server Speech Text to Speech hang (en-IE, Sean)" | "en-IE-Sean" |
-| `en-IN` | Angol (India) | Nő | "Microsoft Server Speech Text to Speech hang (en-IN, Heera, Apollo)" | "en-IN-Heera-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (en-IN, PriyaRUS)" | "en-IN-PriyaRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (en-IN, Ravi, Apollo)" | "en-IN-fosztogatás – Apollo" |
-| `en-US` | Angol (US) | Nő | "Microsoft Server Speech Text to Speech hang (en-US, ZiraRUS)" | "en-US-ZiraRUS" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (en-US, AriaRUS)" | "en-US-AriaRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (en-US, BenjaminRUS)" | "en-US-BenjaminRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (en-US, Guy24kRUS)" | "en-US-Guy24kRUS" |
-| `es-ES` | Spanyol (Spanyolország) | Nő | "Microsoft Server Speech Text to Speech hang (es-ES, Laura, Apollo)" | "es-ES-Laura-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (es-ES, HelenaRUS)" | "es-ES-HelenaRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (es-ES, Pablo, Apollo)" | "es-ES-Pablo-Apollo" |
-| `es-MX` | Spanyol (Mexikó) | Nő | "Microsoft Server Speech Text to Speech Voice (es-MX, HildaRUS)" | "es-MX-HildaRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (es-MX, Raul, Apollo)" | "es-MX-Raul-Apollo" |
-| `fi-FI` | Finn | Nő | "Microsoft Server Speech Text to Speech hang (fi-FI, HeidiRUS)" | "fi-FI-HeidiRUS" |
-| `fr-CA` | Francia (Kanada) | Nő | "Microsoft Server Speech Text to Speech Voice (FR-CA, Caroline)" | "fr-CA-Caroline" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech Voice (FR-CA, HarmonieRUS)" | "fr-CA-HarmonieRUS" |
-| `fr-CH` | Francia (Svájc) | Férfi | "Microsoft Server Speech Text to Speech hang (FR-CH, Guillaume)" | "fr-CH-Guillaume" |
-| `fr-FR` | Francia (Franciaország) | Nő | "Microsoft Server Speech Text to Speech hang (FR-FR, Julie, Apollo)" | "fr-FR-Julie-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech Voice (FR-FR, HortenseRUS)" | "fr-FR-HortenseRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech Voice (FR-FR, Paul, Apollo)" | "fr-FR-Paul-Apollo" |
-| `he-IL` | Héber (Izrael) | Férfi | "Microsoft Server Speech Text to Speech hang (IT-IL, Asaf)" | "ő-IL-Asaf" |
-| `hi-IN` | Hindi (India) | Nő | "Microsoft Server Speech Text to Speech hang (Hi-IN, kovacs, Apollo)" | "Hi-IN-Sánta-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (Hi-IN, kovacs)" | "Hi-IN-kovacs" |
-|  |  | Férfi | "A Microsoft Server Speech Text to speech hangja (Hi-in, vérképzés)" | "Hi-IN-alapképzés" |
-| `hr-HR` | Horvát | Férfi | "Microsoft Server Speech Text to Speech hang (HR-HR, Matej)" | "HR-HR-Mate" |
-| `hu-HU` | Magyar | Férfi | "Microsoft Server Speech Text to Speech hang (hu-HU, Szabolcs)" | "hu-HU-Szabolcs" |
-| `id-ID` | Indonéz | Férfi | "Microsoft Server Speech Text to Speech Voice (ID-ID, Andika)" | "id-ID-Andika" |
-| `it-IT` | Olasz | Férfi | "Microsoft Server Speech Text to Speech hang (IT-IT, Cosimo, Apollo)" | "IT-IT-Cosimo-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (IT-IT, LuciaRUS)" | "IT-IT-LuciaRUS" |
-| `ja-JP` | Japán | Nő | "Microsoft Server Speech Text to Speech hang (ja-JP, Ayumi, Apollo)" | "ja-JP-Ayumi-Apollo" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (ja-JP, Ichiro, Apollo)" | "ja-JP-Ichiro-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (ja-JP, HarukaRUS)" | "ja-JP-HarukaRUS" |
-| `ko-KR` | Koreai | Nő | "Microsoft Server Speech Text to Speech Voice (ko-KR, HeamiRUS)" | "ko-KR-HeamiRUS" |
-| `ms-MY` | Maláj | Férfi | "Microsoft Server Speech Text to Speech hang (MS-MY, AIMA)" | "MS-MY-Susanna" |
-| `nb-NO` | Norvég | Nő | "Microsoft Server Speech Text to Speech hang (NB-NO, HuldaRUS)" | "NB-NO-HuldaRUS" |
-| `nl-NL` | Holland | Nő | "Microsoft Server Speech Text to Speech Voice (NL-NL, HannaRUS)" | "NL-NL-HannaRUS" |
-| `pl-PL` | Lengyel | Nő | "Microsoft Server Speech Text to Speech Voice (pl-PL. PaulinaRUS)" | "pl-PL-PaulinaRUS" |
-| `pt-BR` | Portugál (Brazília) | Nő | "Microsoft Server Speech Text to Speech Voice (PT-BR, HeloisaRUS)" | "PT-BR-HeloisaRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech Voice (PT-BR, Daniel, Apollo)" | "PT-BR-Daniel-Apollo" |
-| `pt-PT` | Portugál (Portugália) | Nő | "Microsoft Server Speech Text to Speech Voice (PT-PT, HeliaRUS)" | "PT-PT-HeliaRUS" |
-| `ro-RO` | Román | Férfi | "Microsoft Server Speech Text to Speech hang (RO-RO, Andrej)" | "RO-RO-Andrej" |
-| `ru-RU` | Orosz | Nő | "Microsoft Server Speech Text to Speech hang (ru-RU, Irina, Apollo)" | "ru-RU-Irina-Apollo" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (ru-RU, Pavel, Apollo)" | "ru-RU-Pavel-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (ru-RU, EkaterinaRUS)" | ru-RU-EkaterinaRUS |
-| `sk-SK` | Szlovák | Férfi | "Microsoft Server Speech Text to Speech Voice (SK-SK, Filip)" | "SK-SK-Filip" |
-| `sl-SI` | Szlovén | Férfi | "Microsoft Server Speech Text to Speech Voice (SL-SI, Ladó)" | "SL-SI-Ladó" |
-| `sv-SE` | Svéd | Nő | "Microsoft Server Speech Text to Speech Voice (SV-SE, HedvigRUS)" | "SV-SE-HedvigRUS" |
-| `ta-IN` | Tamil (India) | Férfi | "Microsoft Server Speech Text to Speech hang (TA-IN, Valluvar)" | "TA-IN-Valluvar" |
-| `te-IN` | Telugu (India) | Nő | "Microsoft Server Speech Text to Speech hang (te-IN, chiton)" | "saját |
-| `th-TH` | Thai | Férfi | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)" | "th-TH-Pattara" |
-| `tr-TR` | Török (Törökország) | Nő | "Microsoft Server Speech Text to Speech hang (TR-TR, SedaRUS)" | "TR-TR-SedaRUS" |
-| `vi-VN` | Vietnami | Férfi | "Microsoft Server Speech Text to Speech Voice (VI – VN, an)" | "VI-VN-an" |
-| `zh-CN` | Kínai (mandarin, egyszerűsített) | Nő | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech Voice (zh-CN, Kangkang, Apollo)" | "zh-CN-Kangkang-Apollo" |
-| `zh-HK` | Kínai (kantoni, hagyományos) | Nő | "Microsoft Server Speech Text to Speech hang (ZH-HK, Tracy, Apollo)" | "ZH-HK-Tracy-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech Voice (ZH-HK, TracyRUS)" | "ZH-HK-TracyRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (ZH-HK, Danny, Apollo)" | "ZH-HK-Danny-Apollo" |
-| `zh-TW` | Kínai (tajvani mandarin) | Nő | "Microsoft Server Speech Text to Speech hang (zh-TW, Yating, Apollo)" | "zh-TW-Yating-Apollo" |
-|  |  | Nő | "Microsoft Server Speech Text to Speech hang (zh-TW, HanHanRUS)" | "zh-TW-HanHanRUS" |
-|  |  | Férfi | "Microsoft Server Speech Text to Speech hang (zh-TW, Zhiwei, Apollo)" | "zh-TW-Zhiwei-Apollo" |
+| Területi beállítás | Nyelv | Nem | Hang neve |
+|--|--|--|--|
+| <sup>1</sup>`ar-EG` | Arab (Egyiptom) | Nő | "AR-EG-a (z)" |
+| `ar-SA` | Arab (Szaúd-Arábia) | Férfi | "AR-SA-Naayf" |
+| `bg-BG` | Bolgár | Férfi |  "BG-BG-Ivan" |
+| `ca-ES` | Katalán (Spanyolország) | Nő |  "CA-ES-HerenaRUS" |
+| `cs-CZ` | Cseh | Férfi | "CS-CZ-Jakub" |
+| `da-DK` | Dán | Nő |  "da-DK-HelleRUS" |
+| `de-AT` | Német (Ausztria) | Férfi | "de-AT-Michael" |
+| `de-CH` | Német (Svájc) | Férfi |  "de-CH-Karsten" |
+| `de-DE` | Német (Németország) | Nő |  "de-DE-Hedda" |
+|  |  | Nő | "de-DE-HeddaRUS" |
+|  |  | Férfi |  "de-DE-Stefan-Apollo" |
+| `el-GR` | Görög | Férfi | "el-GR-Stefanos" |
+| `en-AU` | Angol (Ausztrália) | Nő |  "en-AU-Catherine" |
+|  |  | Nő |  "en-AU-HayleyRUS" |
+| `en-CA` | Angol (Kanada) | Nő |  "en-CA-Linda" |
+|  |  | Nő |  "en-CA-HeatherRUS" |
+| `en-GB` | Angol (Egyesült Királyság) | Nő |  "en-GB-Susan-Apollo" |
+|  |  | Nő |  "en-GB-HazelRUS" |
+|  |  | Férfi |  "en-GB-George-Apollo" |
+| `en-IE` | Angol (Írország) | Férfi | "en-IE-Sean" |
+| `en-IN` | Angol (India) | Nő | "en-IN-Heera-Apollo" |
+|  |  | Nő |  "en-IN-PriyaRUS" |
+|  |  | Férfi |  "en-IN-fosztogatás – Apollo" |
+| `en-US` | Angol (US) | Nő |  "en-US-ZiraRUS" |
+|  |  | Nő | "en-US-AriaRUS" |
+|  |  | Férfi | "en-US-BenjaminRUS" |
+|  |  | Férfi |  "en-US-Guy24kRUS" |
+| `es-ES` | Spanyol (Spanyolország) | Nő |  "es-ES-Laura-Apollo" |
+|  |  | Nő | "es-ES-HelenaRUS" |
+|  |  | Férfi | "es-ES-Pablo-Apollo" |
+| `es-MX` | Spanyol (Mexikó) | Nő |  "es-MX-HildaRUS" |
+|  |  | Férfi | "es-MX-Raul-Apollo" |
+| `fi-FI` | Finn | Nő | "fi-FI-HeidiRUS" |
+| `fr-CA` | Francia (Kanada) | Nő | "fr-CA-Caroline" |
+|  |  | Nő | "fr-CA-HarmonieRUS" |
+| `fr-CH` | Francia (Svájc) | Férfi | "fr-CH-Guillaume" |
+| `fr-FR` | Francia (Franciaország) | Nő |  "fr-FR-Julie-Apollo" |
+|  |  | Nő |"fr-FR-HortenseRUS" |
+|  |  | Férfi |  "fr-FR-Paul-Apollo" |
+| `he-IL` | Héber (Izrael) | Férfi |  "ő-IL-Asaf" |
+| `hi-IN` | Hindi (India) | Nő | "Hi-IN-Sánta-Apollo" |
+|  |  | Nő |  "Hi-IN-kovacs" |
+|  |  | Férfi |  "Hi-IN-alapképzés" |
+| `hr-HR` | Horvát | Férfi | "HR-HR-Mate" |
+| `hu-HU` | Magyar | Férfi |  "hu-HU-Szabolcs" |
+| `id-ID` | Indonéz | Férfi | "id-ID-Andika" |
+| `it-IT` | Olasz | Férfi |  "IT-IT-Cosimo-Apollo" |
+|  |  | Nő |  "IT-IT-LuciaRUS" |
+| `ja-JP` | Japán | Nő |  "ja-JP-Ayumi-Apollo" |
+|  |  | Férfi | "ja-JP-Ichiro-Apollo" |
+|  |  | Nő |  "ja-JP-HarukaRUS" |
+| `ko-KR` | Koreai | Nő | "ko-KR-HeamiRUS" |
+| `ms-MY` | Maláj | Férfi |  "MS-MY-Susanna" |
+| `nb-NO` | Norvég | Nő |  "NB-NO-HuldaRUS" |
+| `nl-NL` | Holland | Nő |  "NL-NL-HannaRUS" |
+| `pl-PL` | Lengyel | Nő |  "pl-PL-PaulinaRUS" |
+| `pt-BR` | Portugál (Brazília) | Nő | "PT-BR-HeloisaRUS" |
+|  |  | Férfi |  "PT-BR-Daniel-Apollo" |
+| `pt-PT` | Portugál (Portugália) | Nő | "PT-PT-HeliaRUS" |
+| `ro-RO` | Román | Férfi | "RO-RO-Andrej" |
+| `ru-RU` | Orosz | Nő |  "ru-RU-Irina-Apollo" |
+|  |  | Férfi | "ru-RU-Pavel-Apollo" |
+|  |  | Nő |  ru-RU-EkaterinaRUS |
+| `sk-SK` | Szlovák | Férfi | "SK-SK-Filip" |
+| `sl-SI` | Szlovén | Férfi |  "SL-SI-Ladó" |
+| `sv-SE` | Svéd | Nő | "SV-SE-HedvigRUS" |
+| `ta-IN` | Tamil (India) | Férfi |  "TA-IN-Valluvar" |
+| `te-IN` | Telugu (India) | Nő |  "saját |
+| `th-TH` | Thai | Férfi |  "th-TH-Pattara" |
+| `tr-TR` | Török (Törökország) | Nő | "TR-TR-SedaRUS" |
+| `vi-VN` | Vietnami | Férfi |  "VI-VN-an" |
+| `zh-CN` | Kínai (mandarin, egyszerűsített) | Nő |  "zh-CN-HuihuiRUS" |
+|  |  | Nő | "zh-CN-Yaoyao-Apollo" |
+|  |  | Férfi | "zh-CN-Kangkang-Apollo" |
+| `zh-HK` | Kínai (kantoni, hagyományos) | Nő |  "ZH-HK-Tracy-Apollo" |
+|  |  | Nő | "ZH-HK-TracyRUS" |
+|  |  | Férfi |  "ZH-HK-Danny-Apollo" |
+| `zh-TW` | Kínai (tajvani mandarin) | Nő |  "zh-TW-Yating-Apollo" |
+|  |  | Nő | "zh-TW-HanHanRUS" |
+|  |  | Férfi |  "zh-TW-Zhiwei-Apollo" |
 
 **1** *AR – például a modern szabvány Arab (MSA) használatát támogatja.*
 
 > [!IMPORTANT]
-> A `en-US-Jessa` hang a következőre `en-US-Aria`változott:. Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
+> A hang a következőre `en-US-Jessa` változott: `en-US-Aria` . Ha korábban a "Jessa" kifejezést használta, váltson át az "aria" kifejezésre.
 
 > [!TIP]
-> A beszédfelismerési kérelmekben a teljes szolgáltatásnév-hozzárendelést vagy a rövid hangnevet használhatja.
+> Továbbra is használhatja a teljes szolgáltatásnév leképezését (például "Microsoft Server Speech Text to Speech Voice (en-US, AriaRUS)") a beszédfelismerési kérelmekben.
 
 ### <a name="customization"></a>Testreszabás
 
-A `de-DE` `en-GB` `en-IN` `zh-CN`,, `fr-FR`,,,,, és a hangalapú Testreszabás elérhető. `en-US` `es-MX` `it-IT` `pt-BR` Válassza ki a megfelelő területi beállítást, amely megfelel az egyéni hangmodell betanításához szükséges betanítási adattípusoknak. Ha például a rögzítési adatként angol nyelven beszél angolul, válassza a lehetőséget `en-GB`.
+A,,,,,,, és a hangalapú Testreszabás elérhető `de-DE` `en-GB` `en-IN` `en-US` `es-MX` `fr-FR` `it-IT` `pt-BR` `zh-CN` . Válassza ki a megfelelő területi beállítást, amely megfelel az egyéni hangmodell betanításához szükséges betanítási adattípusoknak. Ha például a rögzítési adatként angol nyelven beszél angolul, válassza a lehetőséget `en-GB` .
 
 > [!NOTE]
-> Az egyéni hangon nem támogatjuk a BI-nyelvi Modelles képzést, kivéve a kínai – angol nyelveken. Válassza a "kínai angol nyelvű kétnyelvű" lehetőséget, ha olyan kínai hangvételt szeretne betanítani, amely angolul is tud beszélni. A hangképzés az összes területi beállításban egy 2000 + hosszúságú kimondott szöveg adatkészlettel kezdődik, kivéve a `en-US` és `zh-CN` az, ahol bármilyen méretű betanítási adatmennyiséget használhat.
+> Az egyéni hangon nem támogatjuk a BI-nyelvi Modelles képzést, kivéve a kínai – angol nyelveken. Válassza a "kínai angol nyelvű kétnyelvű" lehetőséget, ha olyan kínai hangvételt szeretne betanítani, amely angolul is tud beszélni. A hangképzés az összes területi beállításban egy 2000 + hosszúságú kimondott szöveg adatkészlettel kezdődik, kivéve a `en-US` és az, `zh-CN` ahol bármilyen méretű betanítási adatmennyiséget használhat.
 
 ## <a name="speech-translation"></a>Beszédfordítás
 

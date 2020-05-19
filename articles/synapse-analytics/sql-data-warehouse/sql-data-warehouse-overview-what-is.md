@@ -10,19 +10,18 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 27e6c7beb8c88a29b90b30e0c77e35e493f2480a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5c6580d4fe7431c942ec4886b9dafc6148635b18
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690905"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585368"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure szinapszis Analytics (korábban SQL DW)?
 
 > [!NOTE] 
-> Próbálja ki a legújabb Azure szinapszis-funkciókat, például a munkaterületeket, a Sparkot, az SQL-t igény szerint, és az integrált szinapszis Studio-élményt, [Ha hozzáférést kér az Azure szinapszishoz (munkaterületek előzetes verzió)](https://aka.ms/synapsepreview). 
->
 >Ismerje meg az [Azure szinapszis (munkaterületek előzetes verzió) dokumentációját](../overview-what-is.md).
+>
 
 Az Azure szinapszis egy elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big adatelemzést. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához.
 
@@ -30,12 +29,10 @@ Az Azure szinapszis négy összetevőből áll:
 
 - Szinapszis SQL: teljes T-SQL-alapú elemzés – általánosan elérhető
   - SQL-készlet (fizetés/DWU kiépítve)
-  - Igény szerinti SQL-szolgáltatás (fizetés/TB feldolgozott) – (előzetes verzió)
+  - Igény szerinti SQL-használat (fizetés TB-onként) (előzetes verzió)
 - Spark: mélyen integrált Apache Spark (előzetes verzió)
 - Szinapszis-folyamatok: hibrid Adatintegráció (előzetes verzió)
-- Studio: egyesített felhasználói élmény.  (Előzetes verzió)
-
-
+- Studio: egyesített felhasználói élmény. (előzetes verzió)
 
 ## <a name="synapse-sql-pool-in-azure-synapse"></a>Szinapszis SQL-készlet az Azure Szinapszisban
 

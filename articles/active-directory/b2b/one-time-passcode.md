@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ac743a82405524efc16e16be015b61b9390bd05d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 520f42956a1e096893935b6b7844d67060958829
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199487"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585919"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mail egyszeri jelszó-hitelesítés (előzetes verzió)
 
@@ -72,7 +72,7 @@ Eltarthat néhány percig, amíg a beavatkozás érvénybe lép. Ezt követően 
 ### <a name="to-opt-in-using-the-azure-ad-portal"></a>Az Azure AD-portál használatának engedélyezése
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-3.  Válassza a **szervezeti kapcsolatok**  >  **beállításai** lehetőséget (vagy válassza ki a **külső identitások**  >  **külső együttműködési beállításokat**).
+3.  Külső **identitások**  >  **külső együttműködési beállítások**kiválasztása.
 5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza az **Igen**lehetőséget.
  
 ### <a name="to-opt-in-using-powershell"></a>A PowerShell használatának engedélyezése
@@ -138,7 +138,7 @@ Eltarthat néhány percig, amíg a letiltási művelet érvénybe lép. Ha kikap
 ### <a name="to-turn-off-the-preview-using-the-azure-ad-portal"></a>Az előnézet kikapcsolása az Azure AD-portál használatával
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
-3.  Válassza a **szervezeti kapcsolatok**  >  **beállításai** lehetőséget (vagy válassza ki a **külső identitások**  >  **külső együttműködési beállításokat**).
+3.  Külső **identitások**  >  **külső együttműködési beállítások**kiválasztása.
 5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza a **nem**lehetőséget.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Az előnézet kikapcsolása a PowerShell használatával

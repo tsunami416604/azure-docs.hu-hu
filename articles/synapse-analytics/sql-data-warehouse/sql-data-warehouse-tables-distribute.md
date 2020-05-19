@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 04255fb6fdf83e7249fad01c75425943b580393c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 599514f6e7b97208194fc4c1660712f4d5e0c4cb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80742870"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83585351"
 ---
 # <a name="guidance-for-designing-distributed-tables-in-synapse-sql-pool"></a>Útmutató elosztott táblák kialakításához a szinapszis SQL-készletben
 
@@ -92,11 +92,11 @@ WITH
 ;
 ```
 
-A terjesztési oszlop kiválasztása fontos tervezési döntés, mivel az oszlopban szereplő értékek határozzák meg a sorok elosztásának módját. A legjobb választás több tényezőtől függ, és általában kompromisszumokat is magában foglal. Ha azonban az első alkalommal nem választja ki a legjobb oszlopot, akkor a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) használatával hozza létre újra a táblát egy másik terjesztési oszloppal.
+A terjesztési oszlopban tárolt adatforgalom frissítve lehet. A terjesztési oszlopban lévő adatfrissítések adatshuffle-művelethez vezethetnek.
 
-### <a name="choose-a-distribution-column-that-does-not-require-updates"></a>Olyan terjesztési oszlopot válasszon, amely nem igényel frissítést
+A terjesztési oszlop kiválasztása fontos tervezési döntés, mivel az oszlopban szereplő értékek határozzák meg a sorok elosztásának módját. A legjobb választás több tényezőtől függ, és általában kompromisszumokat is magában foglal. A terjesztési oszlop kiválasztása után nem módosítható.  
 
-A terjesztési oszlop nem frissíthető, kivéve, ha törli a sort, és beszúr egy új sort a frissített értékekkel. Ezért válasszon ki egy statikus értékeket tartalmazó oszlopot.
+Ha az első alkalommal nem választotta ki a legjobb oszlopot, használhatja a [CREATE TABLE as Select (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) parancsot a tábla újbóli létrehozásához egy másik terjesztési oszloppal.
 
 ### <a name="choose-a-distribution-column-with-data-that-distributes-evenly"></a>Válasszon ki egy olyan terjesztési oszlopot, amely egyenletesen osztja el az adatelosztást
 
@@ -117,7 +117,7 @@ A lekérdezési eredmények helyes lekérdezéséhez az adatok az egyik számít
 
 Az adatáthelyezés minimalizálásához válasszon ki egy terjesztési oszlopot:
 
-- A `JOIN` `GROUP BY`, `DISTINCT` `HAVING` ,, és záradékokban van használatban. `OVER` Ha két nagy egyedkapcsolat-táblázat gyakran csatlakozik egymáshoz, a lekérdezés teljesítménye javul, ha mindkét táblát az egyik illesztési oszlopon osztja el.  Ha egy tábla nem használatos az illesztésekben, érdemes lehet a táblát olyan oszlopra terjeszteni, amely gyakran szerepel `GROUP BY` a záradékban.
+- A,, `JOIN` , `GROUP BY` `DISTINCT` `OVER` és `HAVING` záradékokban van használatban. Ha két nagy egyedkapcsolat-táblázat gyakran csatlakozik egymáshoz, a lekérdezés teljesítménye javul, ha mindkét táblát az egyik illesztési oszlopon osztja el.  Ha egy tábla nem használatos az illesztésekben, érdemes lehet a táblát olyan oszlopra terjeszteni, amely gyakran szerepel a `GROUP BY` záradékban.
 - *Nem* használatos a `WHERE` záradékokban. Ez leszűkítheti a lekérdezést úgy, hogy az ne fusson az összes disztribúción.
 - *Nem* dátum típusú oszlop. WHERE záradékok gyakran dátum szerint vannak szűrve.  Ebben az esetben az összes feldolgozás csak néhány disztribúción futhat.
 
@@ -169,7 +169,7 @@ Az adatáthelyezés elkerülése a csatlakozás során:
 - Az illesztésben részt vevő táblákat kivonattal kell elosztani az illesztésben részt vevő oszlopok **egyikén** .
 - Az illesztési oszlopok adattípusának egyeznie kell mindkét tábla között.
 - Az oszlopokat egyenrangú operátorral kell csatlakoztatni.
-- Az illesztés típusa nem lehet a következő `CROSS JOIN`:.
+- Az illesztés típusa nem lehet a következő: `CROSS JOIN` .
 
 Ha szeretné megtudni, hogy a lekérdezések adatáthelyezést tapasztalnak-e, tekintse meg a lekérdezési tervet.  
 

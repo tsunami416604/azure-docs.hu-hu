@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: f90ada6b6cd1760b3b779010625f252533fa611d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fe2c0eed2d476d01dffd22a61dd431140f26c475
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219510"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83587236"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
@@ -29,11 +29,11 @@ A beállítások lap elérése:
 
 ## <a name="associating-microsoft-translator-subscription"></a>Microsoft Translator-előfizetés társítása
 
-A munkaterülethez társított Microsoft Translator Text API előfizetési kulccsal kell rendelkeznie a modellek betanításához vagy üzembe helyezéséhez.
+A modellek betanításához vagy üzembe helyezéséhez a munkaterülethez társított Translator előfizetési kulccsal kell rendelkeznie.
 
 Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
-1. Fizessen elő a Microsoft Translator Text APIra. Ez a cikk bemutatja, hogyan fizethet elő a Microsoft Translator Text APIra.
+1. Fizessen elő a fordítóra. Ez a cikk bemutatja, hogyan fizethet elő a fordítóra.
 2. Jegyezze fel a fordítói előfizetés kulcsát. A Key1 vagy a Key2 egyike elfogadható.
 3. Váltson vissza az egyéni Translator portálra.
 
