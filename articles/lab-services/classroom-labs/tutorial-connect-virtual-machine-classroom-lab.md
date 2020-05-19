@@ -1,6 +1,6 @@
 ---
 title: Hozzáférés egy osztályterem-tesztkörnyezethez az Azure Lab Services szolgáltatásban | Microsoft Docs
-description: Ebben az oktatóanyagban megtanulhatja, hogyan férhet hozzá egy tanár által létrehozott osztályterem-tesztkörnyezetben lévő virtuális gépekhez.
+description: Ebben az oktatóanyagban egy oktató által beállított tantermi laborban érheti el a virtuális gépeket.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 936cd9d7a7adb4a99f8437a70e9c6de4d1331d67
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d2d40c007a06bad09748b14394da46c50c80dc19
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116644"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589448"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>Oktatóanyag: Hozzáférés egy osztályterem-tesztkörnyezethez az Azure Lab Services szolgáltatásban
 Ebben az oktatóanyagban a diákok megtanulnak csatlakozni egy osztályterem-tesztkörnyezet virtuális gépéhez (VM). 
@@ -33,7 +33,7 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
 ## <a name="register-to-the-lab"></a>Regisztráció a laborba
 
-1. Keresse fel a **regisztrációs URL-címet**, amelyet a tanártól/oktatótól kapott. A regisztráció befejezése után nem szükséges a regisztrációs URL-cím használata. Ehelyett használja az URL-címet: [https://labs.azure.com](https://labs.azure.com) . Az Internet Explorer 11 még nem támogatott. 
+1. Navigáljon a pedagógustól kapott **regisztrációs URL-címre** . A regisztráció befejezése után nem szükséges a regisztrációs URL-cím használata. Ehelyett használja az URL-címet: [https://labs.azure.com](https://labs.azure.com) . Az Internet Explorer 11 még nem támogatott. 
 
     ![Regisztráció a laborba](../media/tutorial-connect-vm-in-classroom-lab/register-lab.png)
 1. A regisztráció elvégzéséhez jelentkezzen be a szolgáltatásba az iskolai fiókjával. 
@@ -68,11 +68,11 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 
     ![Kapcsolódás egy virtuális géphez](../media/tutorial-connect-vm-in-classroom-lab/connect-vm.png)
 2. Hajtsa végre az alábbi lépések egyikét: 
-    1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja az oktató/professzor által a gépre való bejelentkezéshez kapott **felhasználónevet** és **jelszót** . 
+    1. **Windows rendszerű** virtuális gépek esetén mentse az **RDP** -fájlt a merevlemezre. Nyissa meg az RDP-fájlt a virtuális géphez való kapcsolódáshoz. Használja a pedagógustól kapott **felhasználónevet** és **jelszót** , hogy bejelentkezzen a gépre. 
     3. **Linux** rendszerű virtuális gépek esetén az **SSH** vagy az **RDP** (ha engedélyezve van) használatával csatlakozhat hozzájuk. További információ: [Távoli asztali kapcsolat engedélyezése Linux rendszerű gépekhez](how-to-enable-remote-desktop-linux.md). 
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban megtanult hozzáférni egy osztályterem-tesztkörnyezethez az oktatótól/tanártól kapott regisztrációs hivatkozás használatával.
+Ebben az oktatóanyagban egy osztályterem laborhoz fér hozzá, amely a pedagógustól kapott regisztrációs hivatkozással érhető el.
 
 A labor tulajdonosaként szeretné megtekinteni, hogy ki regisztrált a laborban, és nyomon követheti a virtuális gépek használatát. Folytassa a következő oktatóanyaggal, amelyből megtudhatja, hogyan követheti nyomon a labor használatát:
 

@@ -10,16 +10,24 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 02/28/2020
 ms.author: pafarley
-ms.openlocfilehash: 82e9c9a6dd8dc18f186a21e72a1a3d205094b707
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: bed9424fd7e7dfcb03610fb9d7796cefc5b016be
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155188"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589091"
 ---
 # <a name="whats-new-in-computer-vision"></a>A Computer Vision újdonságai
 
-Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
+Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. Könyvjelző ezen az oldalon naprakészen tarthatja a szolgáltatást.
+
+## <a name="may-2020"></a>2020. május
+Computer Vision API v 3.0 általánosan elérhető, az [OLVASÁSI API](concept-recognizing-text.md)frissítéseivel:
+
+* Angol, holland, francia, német, olasz, portugál és spanyol nyelven történő támogatás
+* Javított pontosság
+* Minden kinyert szó megbízhatósági pontszáma
+* Új kimeneti formátum
 
 ## <a name="march-2020"></a>2020. március
 
@@ -30,10 +38,10 @@ Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videó
 ### <a name="read-api-30-preview"></a>Az API 3,0 előzetes verziójának beolvasása
 
 Most lehetősége van arra, hogy az olvasási API 3,0-es verzióját használja a nyomtatott vagy a kézírásos szöveg kinyeréséhez a képekből. A korábbi verziókhoz képest a 3,0 a következőket biztosítja:
-* javított pontosság
-* új kimeneti formátum
-* minden kinyert szó megbízhatósági pontszáma
-* a spanyol és az angol nyelv támogatása a további nyelvi paraméterrel
+* Javított pontosság
+* Új kimeneti formátum
+* Minden kinyert szó megbízhatósági pontszáma
+* A spanyol és az angol nyelv támogatása a további nyelvi paraméterrel
 
 A 3,0 API használatának megkezdéséhez kövesse a [kinyerési szöveg](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3) rövid útmutatóját.
 

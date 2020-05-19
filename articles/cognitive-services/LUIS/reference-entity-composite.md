@@ -8,22 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: reference
-ms.date: 09/29/2019
+ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: a5a1ad467074ee0aa55d14d50ae153ac68304e6f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bac37e91933d16f36f2d8917760968122a4f5619
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71695165"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588904"
 ---
-# <a name="composite-entity"></a>Összetett entitás 
+# <a name="composite-entity"></a>Összetett entitás
 
-Az összetett entitások más entitásokból állnak, mint például az előre összeépített entitások, az egyszerű, a reguláris kifejezések és a listázási entitások. A különálló entitások egész entitást alkotnak. 
+Az összetett entitások más entitásokból állnak, mint például az előre összeépített entitások, az egyszerű, a reguláris kifejezések és a listázási entitások. A különálló entitások egész entitást alkotnak.
+
+> [!CAUTION]
+> Ez az entitás **elavult**. Telepítse át a [gépet megtanult entitásba](reference-entity-machine-learned-entity.md).
 
 **Ez az entitás jó illeszkedést biztosít az adattartalomhoz:**
 
-* Kapcsolódnak egymáshoz. 
+* Kapcsolódnak egymáshoz.
 * Kapcsolódik egymáshoz a kimondott szövegkörnyezetben.
 * Többféle típusú entitást használhat.
 * Az ügyfélalkalmazás adategységként kell csoportosítani és feldolgoznia.
@@ -33,17 +36,17 @@ Az összetett entitások más entitásokból állnak, mint például az előre �
 
 ## <a name="example-json"></a>Példa JSON-ra
 
-Vegye fontolóra az előre elkészített `number` és `Location::ToLocation` a következő kifejezéssel rendelkező összetett entitást:
+Vegye fontolóra az előre elkészített `number` és a következő kifejezéssel rendelkező összetett entitást `Location::ToLocation` :
 
 `book 2 tickets to cairo`
 
-Figyelje meg `2`, hogy a szám és `cairo`a ToLocation olyan szavakat tartalmaz, amelyek nem részei egyetlen entitásnak sem. A [Luis](luis-reference-regions.md) webhely címkével ellátott kifejezésében használt zöld aláhúzás egy összetett entitást jelöl.
+Figyelje meg, hogy a `2` szám és a `cairo` ToLocation olyan szavakat tartalmaz, amelyek nem részei egyetlen entitásnak sem. A [Luis](luis-reference-regions.md) webhely címkével ellátott kifejezésében használt zöld aláhúzás egy összetett entitást jelöl.
 
 ![Összetett entitás](./media/luis-concept-data-extraction/composite-entity.png)
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
-Az összetett entitások egy tömbben lesznek visszaadva, és a kompoziton belüli összes `compositeEntities` entitás `entities` a tömbben is megjelenik:
+Az összetett entitások egy tömbben lesznek visszaadva `compositeEntities` , és a kompoziton belüli összes entitás a `entities` tömbben is megjelenik:
 
 ```JSON
   "entities": [
@@ -87,7 +90,7 @@ Az összetett entitások egy tömbben lesznek visszaadva, és a kompoziton belü
       ]
     }
   ]
-```    
+```
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
@@ -169,7 +172,7 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 }
 ```
 
-* * * 
+* * *
 
 
 |Adatobjektum|Entitás neve|Érték|
@@ -179,4 +182,7 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az [oktatóanyagban](luis-tutorial-composite-entity.md)egy **összetett entitást** ad hozzá, amellyel a különböző típusú kinyert adatmennyiségeket egyetlen tartalmazó entitásba csomagolhatja. Az ügyfélalkalmazások az adatok árukapcsolásával egyszerűen kigyűjthetik a kapcsolódó adatok különböző adattípusokban való kinyerését.
+További információ az entitásokról:
+
+* [Alapelvek](luis-concept-entity-types.md)
+* [Létrehozás módja](luis-how-to-add-entities.md)

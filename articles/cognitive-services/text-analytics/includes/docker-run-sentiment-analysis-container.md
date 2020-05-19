@@ -7,19 +7,19 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: e67f65d252be0ea638d3b5fa241d9413e76f1a98
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 253c391b222c757a367bd5cd39939052cc697b00
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80877051"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588391"
 ---
-A *Hangulatelemzés* tároló futtatásához hajtsa végre a `docker run` következő parancsot.
+A *Hangulatelemzés v3* tároló futtatásához hajtsa végre a következő `docker run` parancsot.
 
 ```bash
-docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
+docker run --rm -it -p 5000:5000 --memory 8g --cpus 1 \
 mcr.microsoft.com/azure-cognitive-services/sentiment \
 Eula=accept \
 Billing={ENDPOINT_URI} \
@@ -29,6 +29,6 @@ ApiKey={API_KEY}
 A parancs a következőket hajtja végre:
 
 * *Hangulatelemzés* tárolót futtat a tároló rendszerképből
-* Egy CPU mag és 4 gigabájt (GB) memóriát foglal le
+* Egy CPU mag és 8 gigabájt (GB) memóriát foglal le.
 * Elérhetővé teszi a 5000-es TCP-portot, és kiosztja a tárolóhoz tartozó pszeudo-TTY-t
 * A automatikusan eltávolítja a tárolót a kilépés után. A tároló rendszerképe továbbra is elérhető a gazdaszámítógépen.

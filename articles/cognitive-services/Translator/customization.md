@@ -1,5 +1,5 @@
 ---
-title: Fordítás testreszabása – Translator Text API
+title: Fordítás testreszabása – Translator
 titleSuffix: Azure Cognitive Services
 description: A Microsoft Translator hub használatával saját gépi fordítási rendszereket hozhat létre a kívánt terminológiával és stílussal.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 06/04/2019
 ms.author: swmachan
-ms.openlocfilehash: be9c06d45da4d83c26f82343c9cb7b19ba19b4ae
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c1928f9aa2c2b011e1cf54b4ef6cfc5cb8251904
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71257627"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588649"
 ---
 # <a name="customize-your-text-translations"></a>A szöveges fordítások testreszabása
 
-A Microsoft Custom Translator a Microsoft Translator Service funkciója, amely lehetővé teszi a felhasználók számára, hogy testre szabják a Microsoft Translator speciális neurális gépi fordítását, ha a Translator Text API (csak 3. verzió) használatával fordítja le a szöveget.
+Az egyéni Translator a Translator Service funkciója, amely lehetővé teszi, hogy a felhasználók testre szabják a Microsoft Translator speciális neurális gépi fordítását a fordítók fordításakor (csak a 3. verzióban).
 
 A funkció a beszédfelismerési fordítás testreszabására is használható [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/)használata esetén.
 
@@ -33,7 +33,7 @@ A korábban lefordított dokumentumok (szórólapok, weblapok, dokumentációk s
 
 A rendszer emellett a dokumentum szintjén párhuzamosan megjelenő olyan adattípusokat is elfogadja, amelyek még nem igazodnak a mondatok szintjéhez. Ha a felhasználók több nyelven is hozzáférnek ugyanahhoz a tartalomhoz, de a különálló dokumentumok egyéni fordítója automatikusan meg tudja feleltetni a mondatokat a dokumentumok között.  A rendszerek a párhuzamos betanítási adatgyűjtést a fordítások tökéletesítése érdekében akár mindkét nyelven is használhatják.
 
-A testreszabott rendszer ezután a Microsoft Translator Text API rendszeres hívásával érhető el a category paraméter használatával.
+A testreszabott rendszer ezután a Translator paraméter használatával, a fordító rendszeres hívásával érhető el.
 
 A megfelelő típusú és mennyiségű betanítási adat miatt nem ritka, hogy 5 és 10 közötti nyereséget vár, vagy akár több BLEU-pontot is a fordítási minőséghez egyéni Translator használatával.
 
@@ -59,7 +59,7 @@ Az elérhető adatok alapján történő Testreszabás különböző szintjeirő
 ## <a name="collaborative-translations-framework"></a>Együttműködésen alapuló fordítási keretrendszer
 
 > [!NOTE]
-> A 2018. február 1-től a AddTranslation () és a AddTranslationArray () már nem használható a Translator Text API 2.0-s verzióban. Ezek a metódusok sikertelenek lesznek, és semmi sem íródik. A Translator Text API V 3.0 nem támogatja ezeket a metódusokat.
+> A 2018. február 1-től a AddTranslation () és a AddTranslationArray () már nem használható a Translator v 2.0-s verziójával. Ezek a metódusok sikertelenek lesznek, és semmi sem íródik. A Translator v 3.0 nem támogatja ezeket a metódusokat.
 
 ## <a name="next-steps"></a>További lépések
 

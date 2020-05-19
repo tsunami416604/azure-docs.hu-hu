@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: a szándékok előrejelzése – LUIS'
-description: Ebben az oktatóanyagban hozzon létre egy egyéni alkalmazást, amely előrejelzést készít a felhasználó szándékáról. Ez az alkalmazás a legegyszerűbb típusú LUIS-alkalmazás, mert a kimondott szövegből nem nyer ki különféle adatelemeket, például e-mail-címeket vagy dátumokat.
+description: Hozzon létre egy egyéni alkalmazást, amely előrejelzést készít egy felhasználó szándékáról az oktatóanyag teljes szövege alapján.
 ms.topic: tutorial
-ms.date: 03/24/2020
-ms.openlocfilehash: c58c96f717de77c065d7f844928714eb4fb3e4db
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/05/2020
+ms.openlocfilehash: c76273d7c180928d25be70e0abd7abf26c90b44a
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80286744"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588944"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
 
 Ebben az oktatóanyagban egy egyéni alkalmazást hoz létre, amely megjósolja a felhasználó szándékát a Kimondás (szöveg) alapján.
 
-**Eben az oktatóanyagban az alábbiakkal fog megismerkedni:**
+**Az oktatóanyag a következőket ismerteti:**
 
 > [!div class="checklist"]
 > * Új alkalmazás létrehozása
@@ -37,7 +37,7 @@ Ezek különféle **szándékokként** vannak csoportosítva.
 |`ModifyOrder`|Határozza meg a felhasználó pizzájának sorrendjét.|
 |`Greeting`|Kezdje el a bot-beszélgetést.|
 |`ConfirmOrder`|A pizza-sorrend megerősítése.|
-|`None`|Annak megállapítása, hogy a felhasználó kér-e valamit, ha az alkalmazás nem válaszol. Ez a szándék az alkalmazások létrehozásának részeként van megadva, és nem törölhető. |
+|`None`|Annak megállapítása, hogy a felhasználó kér-e valamit, a LUIS-alkalmazás nem válaszol. Ez a szándék az alkalmazások létrehozásának részeként van megadva, és nem törölhető. |
 
 ## <a name="create-a-new-app"></a>Új alkalmazás létrehozása
 
@@ -49,7 +49,7 @@ A rendszer a felhasználói hosszúságú kimondott szöveg a természetes nyelv
 
 A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhasználói hosszúságú kimondott szöveg.
 
-1. A létrehozás **szakaszban a** **szándékok** lapon válassza a **+ Létrehozás** lehetőséget egy új leképezés létrehozásához. Adja meg az új leképezés nevét, `OrderPizza`majd válassza a **kész**lehetőséget.
+1. A létrehozás **szakaszban a** **szándékok** lapon válassza a **+ Létrehozás** lehetőséget egy új leképezés létrehozásához. Adja meg az új leképezés nevét, `OrderPizza` majd válassza a **kész**lehetőséget.
 
     A `OrderPizza` szándék azt jelzi, hogy egy felhasználó szeretne-e pizzát rendelni.
 
@@ -64,15 +64,16 @@ A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhaszn
     |`i need 2 large cheese pizzas 6 large pepperoni pizzas and 1 large supreme pizza`|
     |`Order a pizza for me`|
 
-    ![Példa kimondott szövegek hozzáadása](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép: példa hosszúságú kimondott szöveg hozzáadása a LUIS-portálon a szándék oldalon](media/tutorial-intents-only/add-example-utterances-for-pizza-order.png)
 
-    Ha _például hosszúságú kimondott szöveg_-t ad meg, a Luis megtanítja, hogy milyen típusú hosszúságú kimondott szöveg kell előre jelezni.
+    Ha _például hosszúságú kimondott szöveg_-t ad meg, a Luis megtanítja, hogy milyen típusú hosszúságú kimondott szöveg kell előre jelezni. Ezek pozitív példák. Az összes többi szándékban lévő hosszúságú kimondott szöveg a rendszer negatív példákként kezeli ezt a szándékot.
 
     [!INCLUDE [Do not use too few utterances](includes/do-not-use-too-few-utterances.md)]
 
 ## <a name="create-remaining-intents"></a>Hátralévő leképezések létrehozása
 
-1. Hozza létre `Greeting` a szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a cél annak megállapítása, hogy egy felhasználó elkezd-e új pizza Order beszélgetést.
+1. Hozza létre a `Greeting` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a cél annak megállapítása, hogy egy felhasználó elkezd-e új pizza Order beszélgetést.
 
     |`Greeting`Példa hosszúságú kimondott szöveg|
     |--|
@@ -82,7 +83,7 @@ A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhaszn
     |`Start`|
     |`Begin`|
 
-1. Hozza létre `Confirm` a szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a szándék annak megállapítására, hogy a felhasználó megrendelése megtörtént-e, és elfogadja-e a rendelés részleteit.
+1. Hozza létre a `Confirm` szándékot, és adja hozzá a következő példa hosszúságú kimondott szöveg. Ez a szándék annak megállapítására, hogy a felhasználó megrendelése megtörtént-e, és elfogadja-e a rendelés részleteit.
 
     |`Confirm`Példa hosszúságú kimondott szöveg|
     |--|
@@ -178,6 +179,8 @@ A Kimondás besorolásához a szándéknak példákat kell besorolnia a felhaszn
 
 ## <a name="client-application-next-steps"></a>Ügyfél – alkalmazás következő lépései
 
+Ez az oktatóanyag létrehozta a LUIS-alkalmazást, létrehozta a leképezéseket, felvette például az egyes szándékok hosszúságú kimondott szöveg, felvettük egy példát a hosszúságú kimondott szöveg, a kitanított, közzétett és tesztelt végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései.
+
 Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kéréssel. A LUIS nem ad választ a felhasználók kimondott szövegeire, csak azonosítja a természetes nyelven kért információ típusát. A beszélgetés utáni nyomon követést az ügyfélalkalmazás, például egy Azure bot nyújtja.
 
 
@@ -193,8 +196,6 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 
 
 ## <a name="next-steps"></a>További lépések
-
-Ez az oktatóanyag létrehozta a LUIS-alkalmazást, létrehozta a leképezéseket, felvette például az egyes szándékok hosszúságú kimondott szöveg, felvettük egy példát a hosszúságú kimondott szöveg, a kitanított, közzétett és tesztelt végponton. Ezek a LUIS-modellek létrehozásának alapvető lépései.
 
 > [!div class="nextstepaction"]
 > [Felbomló entitás hozzáadása az alkalmazáshoz](tutorial-machine-learned-entity.md)

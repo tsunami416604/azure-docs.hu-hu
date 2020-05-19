@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: 108e5ebfa34db711af4ff33cbf4fbba897b8947d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73647696"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590638"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services egyéni tartománynevei
 
@@ -51,7 +51,7 @@ Igen. Az egyéni altartománynevek használata nem változtatja meg a Cognitive 
 
 ## <a name="what-are-the-requirements-for-a-custom-subdomain-name"></a>Milyen követelmények vonatkoznak az egyéni altartomány nevére?
 
-Az erőforrás egyedi altartományának neve egyéni. A név csak alfanumerikus karaktereket és `-` karaktert tartalmazhat. az értéknek 2 és 64 karakter közöttinek kell lennie, és nem `-`végződhet a végződéssel.
+Az erőforrás egyedi altartományának neve egyéni. A név csak alfanumerikus karaktereket és karaktert tartalmazhat, `-` és hossza csak 2 és 64 karakter közötti lehet, és nem végződhet a karakterrel `-` .
 
 ## <a name="can-i-change-a-custom-domain-name"></a>Módosíthatom az egyéni tartománynevet?
 
@@ -66,11 +66,11 @@ Minden egyéni altartománynév egyedi, ezért a Cognitive Services erőforrásh
 Igen. Az Azure Cognitive Services erőforrásaival használható regionális végpontok listája.
 
 > [!NOTE]
-> A Translator Text API és a Bing Search API-k globális végpontokat használ.
+> A Translator Service és a Bing Search API-k globális végpontokat használnak.
 
 | Végpont típusa | Régió | Végpont |
 |---------------|--------|----------|
-| Nyilvános | Globális (Translator Text & Bing) | `https://api.cognitive.microsoft.com` |
+| Nyilvános | Globális (Translator & Bing) | `https://api.cognitive.microsoft.com` |
 | | Kelet-Ausztrália | `https://australiaeast.api.cognitive.microsoft.com` |
 | | Dél-Brazília | `https://brazilsouth.api.cognitive.microsoft.com` |
 | | Közép-Kanada | `https://canadacentral.api.cognitive.microsoft.com` |
@@ -96,7 +96,7 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | Kína | Kelet-Kína 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Észak-Kína | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
 * [Mi a Cognitive Services?](Welcome.md)
 * [Hitelesítés](authentication.md)

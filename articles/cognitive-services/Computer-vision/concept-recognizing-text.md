@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: c829579f3ad9922c8c621b6dbfa966b69a2497d1
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 5d0a9771e5b999028996676ea72f8def3c5d63cf
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690814"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589856"
 ---
 # <a name="recognize-printed-and-handwritten-text"></a>Nyomtatott és kézzel írt szöveg felismerése
 
@@ -26,10 +26,9 @@ Computer Vision számos olyan szolgáltatást biztosít, amely a képeken megjel
 
 Az olvasási API a legújabb felismerési modellek használatával észleli a képek szöveges tartalmát, és átalakítja az azonosított szöveget egy géppel olvasható, a gép számára olvasható adatfolyamba. Ez a szöveg-nagy méretű képekre (például a digitálisan ellenőrzött dokumentumokra) és a sok vizuális zajjal rendelkező képekre van optimalizálva. Meghatározza, hogy melyik felismerési modellt kell használni az egyes szövegekhez, valamint a nyomtatott és a kézzel írott szöveggel is alátámasztott képeket. Az olvasási API aszinkron módon hajtható végre, mert a nagyobb dokumentumok több percet is igénybe vehetnek.
 
-Az olvasási művelet megőrzi a felismert szavak eredeti sorát a kimenetében. Az egyes sorokhoz tartozik egy határolókeret koordinátái, és a sorban lévő minden szó saját koordinátákkal is rendelkezik. Ha egy szót alacsony megbízhatósággal ismertek fel, akkor az adatokat is továbbítjuk. További információért tekintse meg az [API 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) -s verzióra hivatkozó dokumentációt, vagy [olvassa el az API v 3.0 előzetes verziójának dokumentációját](https://go.microsoft.com/fwlink/?linkid=2118322) .
+Az olvasási művelet megőrzi a felismert szavak eredeti sorát a kimenetében. Az egyes sorokhoz tartozik egy határolókeret koordinátái, és a sorban lévő minden szó saját koordinátákkal is rendelkezik. Ha egy szót alacsony megbízhatósággal ismertek fel, akkor az adatokat is továbbítjuk. További információért tekintse meg az [API 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/2afb498089f74080d7ef85eb) -s verzióra hivatkozó dokumentációt, vagy [olvassa el az API v 3.0](https://aka.ms/computer-vision-v3-ref) -s verziójának dokumentációját.
 
-> [!NOTE]
-> Ez a funkció csak az angol és a spanyol (v 3.0 előzetes verzió) szövegben érhető el.
+Az olvasási művelet angol, spanyol, német, francia, olasz, portugál és holland nyelven is felismerheti a szöveget.
 
 ### <a name="image-requirements"></a>A rendszerképre vonatkozó követelmények
 

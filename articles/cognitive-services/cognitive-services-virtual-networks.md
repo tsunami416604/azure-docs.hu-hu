@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: dapine
-ms.openlocfilehash: 96108053e6b68a71532d1cf25f8a352b3e0e5ca7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202074"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588339"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatok konfigurálása
 
@@ -42,35 +42,35 @@ A hálózati szabályok érvénybe léptetése az Azure Cognitive Services össz
 Az alább felsorolt Cognitive Services virtuális hálózatok támogatása az *USA középső – euap*, az USA *déli középső*régiója, az USA *keleti*régiója, az *USA 2. nyugati*régiója, *Észak-Európa*, *Dél-Afrika*, *Nyugat-európa*, Közép- *India*, *Kelet-Ausztrália*, *USA nyugati*régiója és *US gov Virginia* Azure-régiók számára korlátozódik. Ha a szolgáltatási ajánlat nem szerepel a listán, a virtuális hálózatok nem támogatottak.
 
 > [!div class="checklist"]
-> * [Anomaly Detector](./anomaly-detector/index.yml)
-> * [Számítógépes látástechnológia](./computer-vision/index.yml)
-> * [Tartalommoderátor](./content-moderator/index.yml)
+> * [Anomáliadetektor](./anomaly-detector/index.yml)
+> * [Computer Vision](./computer-vision/index.yml)
+> * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
-> * [Arcfelismerés](./face/index.yml)
+> * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
-> * [Szövegelemzés](./text-analytics/index.yml)
+> * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
 
 Az alább felsorolt Cognitive Services virtuális hálózati támogatása az *USA középső – euap*, az USA *déli középső*régiója, az USA *keleti*régiója, az *USA 2. nyugati*régiója, valamint a *globális*és a *US gov Virginia* Azure-régiók esetében van korlátozva.
 > [!div class="checklist"]
-> * [Fordítói szöveg](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
+> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
 A fenti szolgáltatásokhoz tartozó virtuális hálózati szolgáltatás-végpontok támogatása mellett Cognitive Services a kimenő hálózati szabályok konfigurálásához is támogatja a szolgáltatási címkéket. A CognitiveServicesManagement szolgáltatás címkéje a következő szolgáltatásokat tartalmazza.
 > [!div class="checklist"]
-> * [Anomaly Detector](./anomaly-detector/index.yml)
-> * [Számítógépes látástechnológia](./computer-vision/index.yml)
-> * [Tartalommoderátor](./content-moderator/index.yml)
+> * [Anomáliadetektor](./anomaly-detector/index.yml)
+> * [Computer Vision](./computer-vision/index.yml)
+> * [Content Moderator](./content-moderator/index.yml)
 > * [Custom Vision](./custom-vision-service/index.yml)
-> * [Arcfelismerés](./face/index.yml)
+> * [Face](./face/index.yml)
 > * [Form Recognizer](./form-recognizer/index.yml)
 > * [LUIS](./luis/index.yml)
 > * [Personalizer](./personalizer/index.yml)
-> * [Szövegelemzés](./text-analytics/index.yml)
+> * [Text Analytics](./text-analytics/index.yml)
 > * [QnA Maker](./qnamaker/index.yml)
-> * [Fordítói szöveg](./translator/index.yml)
+> * [Translator](./translator/index.yml)
 > * [Beszédszolgáltatás](./speech-service/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Az alapértelmezett hálózati hozzáférési szabály módosítása
@@ -335,7 +335,7 @@ Cognitive Services erőforrások virtuális hálózati szabályait a Azure Porta
 > [!IMPORTANT]
 > Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
-## <a name="grant-access-from-an-internet-ip-range"></a>Hozzáférés biztosítása internetes IP-címtartomány alapján
+## <a name="grant-access-from-an-internet-ip-range"></a>Hozzáférés biztosítása internetes IP-címtartományról
 
 Cognitive Services erőforrásokat úgy konfigurálhatja, hogy engedélyezze a hozzáférést a megadott nyilvános internetes IP-címtartományok számára. Ez a konfiguráció hozzáférést biztosít bizonyos szolgáltatásokhoz és helyszíni hálózatokhoz, és hatékonyan blokkolja az általános internetes forgalmat.
 
@@ -485,7 +485,7 @@ A Azure Portal, a PowerShell vagy az Azure CLI segítségével kezelheti Cogniti
 > [!IMPORTANT]
 > Ügyeljen arra, hogy [az alapértelmezett szabályt](#change-the-default-network-access-rule) a **Megtagadás**értékre állítsa, vagy a hálózati szabályok nem lépnek érvénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](welcome.md)
 * További információ az [Azure Virtual Network Service-végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md)

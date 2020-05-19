@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 02/10/2020
+ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: dba6a4c07691f3d7ec88d8b889e68d6ac7116f07
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1823d9df8824c9a0bf1ee30a9900ca118625fd9e
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79239447"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589431"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Oktatóanyag: Tesztkörnyezetfiók beállítása az Azure Lab Services szolgáltatással
 Az Azure Lab Services szolgáltatásban a tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének felügyeletéhez. A tesztkörnyezetfiókban engedélyeket adhat másoknak a tesztkörnyezetek létrehozására, és szabályzatokat állíthat be, amelyek a tesztkörnyezetfiók alá tartozó összes tesztkörnyezetben érvényesek. Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre labor-fiókot. 
@@ -30,13 +30,13 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 > * Tesztkörnyezetfiók létrehozása
 > * Felhasználó hozzáadása a Tesztkörnyezet-létrehozó szerepkörhöz
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="create-a-lab-account"></a>Tesztkörnyezetfiók létrehozása
 A következő lépések bemutatják, hogyan használhatja az Azure Portalt tesztkörnyezetfiók létrehozására az Azure Lab Services szolgáltatásban. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza ki a **DevOps** **kategóriából**. Ezután válassza a **labor Services**elemet. Ha a Star (`*`) lehetőséget választja a **labor Services**mellett, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **Lab szolgáltatások** lehetőséget a **Kedvencek**alatt.
+2. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben. Válassza ki a **DevOps** **kategóriából**. Ezután válassza a **labor Services**elemet. Ha a Star () lehetőséget választja a `*` **labor Services**mellett, a rendszer hozzáadja a bal oldali menü **Kedvencek** szakaszához. A következő időponttól kezdve válassza a **Lab szolgáltatások** lehetőséget a **Kedvencek**alatt.
 
     ![Minden szolgáltatás – > labor Services](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
 3. A **labor Services** lapon kattintson a **Hozzáadás** elemre az eszköztáron, vagy válassza a **labor-fiók létrehozása** gombot az oldalon. 
@@ -75,7 +75,7 @@ A felhasználónak **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkezn
 
 
 ## <a name="next-steps"></a>További lépések
-Ebben az oktatóanyagban létrehozott egy tesztkörnyezetfiókot. Ha szeretne többet megtudni arról, hogyan hozhat létre egy tantermi labort professzorként, folytassa a következő oktatóanyaggal:
+Ebben az oktatóanyagban létrehozott egy tesztkörnyezetfiókot. Ha szeretne többet megtudni arról, hogyan hozhat létre tantermi labort oktatóként, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]
 > [Osztályterem-tesztkörnyezet beállítása](tutorial-setup-classroom-lab.md)

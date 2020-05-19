@@ -2,13 +2,13 @@
 title: Entitás típusának listázása – LUIS
 description: Az entitások listája a kapcsolódó szavak rögzített, lezárt készletét jelöli a szinonimákkal együtt. A LUIS nem észlel további értékeket a List entitások számára. Az ajánlott funkció használatával megtekintheti az új szavakra vonatkozó javaslatokat az aktuális lista alapján.
 ms.topic: reference
-ms.date: 03/12/2020
-ms.openlocfilehash: 273fabae38f6682cfaaffcdcc19e62adc41b7a47
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/14/2020
+ms.openlocfilehash: 339fb832ef4af069b6f040c5264426002189f93f
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82097574"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83588887"
 ---
 # <a name="list-entity"></a>Listaentitás
 
@@ -52,7 +52,7 @@ Egy lista entitás nem gépi megtanult. Ez egy pontos szöveges egyezés. LUIS a
 
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
-Tegyük fel, hogy az alkalmazás rendelkezik `Cities`egy nevű listával, amely lehetővé teszi a városi nevek (például a Sea-Tac), a repülőtéri kód (Sea), a irányítószám (98101) és a telefonos körzetszám (206) változatának módosítását.
+Tegyük fel, hogy az alkalmazás rendelkezik egy nevű listával, `Cities` amely lehetővé teszi a városi nevek (például a Sea-Tac), a repülőtéri kód (Sea), a irányítószám (98101) és a telefonos körzetszám (206) változatának módosítását.
 
 |Listaelem|Elemek szinonimái|
 |---|---|
@@ -61,7 +61,7 @@ Tegyük fel, hogy az alkalmazás rendelkezik `Cities`egy nevű listával, amely 
 
 `book 2 tickets to paris`
 
-Az előző részletben a Word `paris` a `Cities` lista entitás részeként van leképezve a párizsi elemre. A lista entitás megegyezik az elem normalizált nevével és az elem szinonimákkal.
+Az előző részletben a Word a `paris` lista entitás részeként van leképezve a párizsi elemre `Cities` . A lista entitás megegyezik az elem normalizált nevével és az elem szinonimákkal.
 
 #### <a name="v2-prediction-endpoint-response"></a>[V2 előrejelzési végpont válasza](#tab/V2)
 
@@ -132,4 +132,7 @@ Ez a JSON, ha `verbose=true` be van állítva a lekérdezési karakterláncban:
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből az [oktatóanyagból](tutorial-list-entity.md)megtudhatja, hogyan használhatja a **lista entitást** az ismert elemek listájának pontos egyezésének kinyeréséhez.
+További információ az entitásokról:
+
+* [Alapelvek](luis-concept-entity-types.md)
+* [Létrehozás módja](luis-how-to-add-entities.md)

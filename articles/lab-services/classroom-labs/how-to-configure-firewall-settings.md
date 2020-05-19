@@ -3,15 +3,15 @@ title: Az Azure Lab Services tűzfalbeállításai
 description: Megtudhatja, hogyan határozhatja meg a tesztkörnyezetben a virtuális gépek nyilvános IP-címét és portszámát, hogy információkat lehessen hozzáadni a tűzfalszabályok számára.
 author: emaher
 ms.author: enewman
-ms.date: 02/14/2020
+ms.date: 05/15/2020
 ms.topic: article
 ms.service: lab-services
-ms.openlocfilehash: fbd45af0c9b94f04fdaad9d9b5c8214a91a8db91
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dcb8c0d5304f052dbe7f14386425ce67ae3b79a6
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77443455"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589533"
 ---
 # <a name="firewall-settings-for-azure-lab-services"></a>Az Azure Lab Services tűzfalbeállításai
 
@@ -24,7 +24,7 @@ Mindegyik labor egyetlen nyilvános IP-címet és több portot használ.  Az ös
 
 ## <a name="find-public-ip-for-a-lab"></a>Nyilvános IP-cím keresése laborhoz
 
-Az egyes laborok nyilvános IP-címei a labor Services Lab-fiók **minden Labs** lapján találhatók.  Az **összes Labs** -oldal megkeresésének módjával kapcsolatban lásd: a [Labs felügyelete labor-fiókban](how-to-manage-lab-accounts.md#view-and-manage-labs-in-the-lab-account).  
+Az egyes laborok nyilvános IP-címei a labor Services Lab-fiók **minden Labs** lapján találhatók.  Az **összes Labs** -lap megkeresésének módjával kapcsolatban lásd: [Labs megtekintése labor-fiókban](manage-labs.md#view-labs-in-a-lab-account).  
 
 > [!div class="mx-imgBorder"]
 > ![Minden Labs-lap](../media/how-to-configure-firewall-settings/all-labs-properties.png)

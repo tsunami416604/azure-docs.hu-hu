@@ -6,42 +6,68 @@ manager: nitinme
 description: Két tábla, amely az összes kognitív szolgáltatási ajánlat tároló-nyilvántartásait, tárházait és képneveit jelképezi.
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/01/2020
+ms.date: 04/24/2020
 ms.author: aahi
-ms.openlocfilehash: a854a090af908da691e9b26f5b0714c6560fc0ba
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9025e016725a966061c557f16b610d8897c04c11
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80876826"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590663"
 ---
 ### <a name="container-repositories-and-images"></a>Tárolók és lemezképek
 
-Az alábbi táblázatok az Azure Cognitive Services által kínált elérhető tároló-lemezképek listáját tartalmazzák. Az összes rendelkezésre álló tároló-rendszerkép nevének és a rendelkezésre álló címkék teljes listájáért tekintse meg [Cognitive Services tároló képcímkéi](../container-image-tags.md)című témakört. Jelenleg nincsenek általánosan elérhető Cognitive Services tárolók (GA). Addig is, amíg a további bejelentések nem történnek – a tárolók *nyilvános* , nem lezárt vagy *nyilvános előzetes*verzióként érhetők el.
+Az alábbi táblázatok az Azure Cognitive Services által kínált elérhető tároló-lemezképek listáját tartalmazzák. Az összes rendelkezésre álló tároló-rendszerkép nevének és a rendelkezésre álló címkék teljes listájáért tekintse meg [Cognitive Services tároló képcímkéi](../container-image-tags.md)című témakört. 
 
- - *Nyilvános ungated*: a tárolók nyilvánosan elérhetők kapuzás mechanizmus nélkül.
- - *Nyilvános*megnyitható előzetes verzió: a tárolók nyilvánosan elérhetők, de először formális kérelemre van szükség a tároló-beállításjegyzék eléréséhez.
+#### <a name="generally-available"></a>Általánosan elérhető 
 
-#### <a name="public-ungated-container-registry-mcrmicrosoftcom"></a>Nyilvános "ungated" (tároló-beállításjegyzék `mcr.microsoft.com`:)
+A Microsoft Container Registry (MCR) a Cognitive Services összes általánosan elérhető tárolóját szindikátusba helyezi. A tárolók közvetlenül a [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)-ból is elérhetők.
 
-A Microsoft Container Registry (MCR) a Cognitive Services összes nyilvánosan elérhető "nem kihelyezett" tárolóját szindikátusba helyezi. A tárolók közvetlenül a [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)-ból is elérhetők.
+#### <a name="luis"></a>[LUIS](#tab/luis)
+
+| LUIS-tároló | Container Registry/adattár/rendszerkép neve |
+|--|--|
+| LUIS | `mcr.microsoft.com/azure-cognitive-services/luis` |
+
+További információt a [Luis-tárolók futtatása és telepítése](../../LUIS/luis-container-howto.md) című témakörben talál.
+
+#### <a name="text-analytics"></a>[Text Analytics](#tab/text-analytics)
+
+| Text Analytics tároló | Container Registry/adattár/rendszerkép neve |
+|--|--|
+| Hangulatelemzés v3 (angol) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-en` |
+| Hangulatelemzés v3 (spanyol) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-es` |
+| Hangulatelemzés v3 (francia) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-fr` |
+| Hangulatelemzés v3 (olasz) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-it` |
+| Hangulatelemzés v3 (német) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-de` |
+| Hangulatelemzés v3 (kínai – egyszerűsített) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zh` |
+| Hangulatelemzés v3 (kínai – hagyományos) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-zht` |
+| Hangulatelemzés v3 (Japán) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-ja` |
+| Hangulatelemzés v3 (portugál) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-pt` |
+| Hangulatelemzés v3 (holland) | `mcr.microsoft.com/azure-cognitive-services/sentiment:3.0-nl` |
+
+További információért lásd: [text Analytics tárolók futtatása és telepítése](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) .
+
+---
+
+#### <a name="public-ungated-preview-container-registry-mcrmicrosoftcom"></a>Nyilvános "ungated" előzetes verzió (Container Registry: `mcr.microsoft.com` )
+
+A következő előnézeti tárolók nyilvánosan elérhetők. A Microsoft Container Registry (MCR) az összes nyilvánosan elérhető, nem kihelyezett tárolót a Cognitive Services számára. A tárolók közvetlenül a [Docker hub](https://hub.docker.com/_/microsoft-azure-cognitive-services)-ból is elérhetők.
 
 | Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|
-| [LUIS](../../LUIS/luis-container-howto.md) | LUIS | `mcr.microsoft.com/azure-cogni'ive-services/luis` |
-| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
-| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
-| [Szövegelemzés](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Hangulatelemzés | `mcr.microsoft.com/azure-cognitive-services/sentiment` |
+| [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Kulcskifejezések kinyerése | `mcr.microsoft.com/azure-cognitive-services/keyphrase` |
+| [Text Analytics](../../text-analytics/how-tos/text-analytics-how-to-install-containers.md) | Nyelvfelismerés | `mcr.microsoft.com/azure-cognitive-services/language` |
+| [Anomália detektor](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomáliadetektor | `mcr.microsoft.com/azure-cognitive-services/anomaly-detector` |
 
-#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Nyilvános "lezárt" előzetes verzió (Container `containerpreview.azurecr.io`Registry:)
+#### <a name="public-gated-preview-container-registry-containerpreviewazurecrio"></a>Nyilvános "lezárt" előzetes verzió (Container Registry: `containerpreview.azurecr.io` )
 
-A tároló előzetes verziójának beállításjegyzéke az összes nyilvánosan elérhető "GateD" tárolót tárolja Cognitive Services számára. Ezeknek a tárolóknak formális kérelemre van szükségük ahhoz, hogy hozzáférjenek a tároló beállításjegyzékén keresztül.
+A rendszer a tároló előnézetének beállításjegyzékében tárolja a következő lezárt előzetes tárolókat, és hozzáférést igényel az alkalmazáshoz. További információért lásd [Cognitive Services kapuzás folyamatát](../../cognitive-services-gating-process.md) .
 
 | Szolgáltatás | Tároló | Container Registry/adattár/rendszerkép neve |
 |--|--|--|
-| [Anomália detektor](../../anomaly-detector/anomaly-detector-container-howto.md) | Anomaly Detector | `containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector` |
-| [Számítógépes látástechnológia](../../Computer-vision/computer-vision-how-to-install-containers.md) | Olvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
-| [Arcfelismerés](../../face/face-how-to-install-containers.md) | Arcfelismerés | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
+| [Computer Vision](../../Computer-vision/computer-vision-how-to-install-containers.md) | Olvasás | `containerpreview.azurecr.io/microsoft/cognitive-services-read` |
+| [Face](../../face/face-how-to-install-containers.md) | Face | `containerpreview.azurecr.io/microsoft/cognitive-services-face` |
 | [Űrlap-felismerő](https://go.microsoft.com/fwlink/?linkid=2083826&clcid=0x409) | Form Recognizer | `containerpreview.azurecr.io/microsoft/cognitive-services-form-recognizer` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=stt) | Diktálás | `containerpreview.azurecr.io/microsoft/cognitive-services-speech-to-text` |
 | [Speech Service API](../../speech-service/speech-container-howto.md?tab=cstt) | Custom Speech – szöveg | `containerpreview.azurecr.io/microsoft/cognitive-services-custom-speech-to-text` |

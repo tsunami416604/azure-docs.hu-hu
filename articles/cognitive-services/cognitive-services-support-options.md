@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 00e966dbee6c1993256a94d734bcc6261aea00af
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0bf4750d5db5961ff8c572c3aa52cc06faf697c1
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81258428"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83590536"
 ---
 # <a name="azure-cognitive-services-support-and-feedback-options"></a>Azure Cognitive Services támogatás és visszajelzési lehetőségek
 
@@ -79,11 +79,11 @@ Az Azure-blogon elérhető új kiadásokkal vagy Hírekkel kapcsolatos informác
 A Cognitive Services kibocsátási megjegyzések frissülnek, mivel az új kiadások elérhetővé válnak. A megjegyzések az új funkciókkal, javításokkal és hibajavításokkal kapcsolatos információkat tartalmaznak.
 
  - [Custom Vision](custom-vision-service/release-notes.md)
- - [Arcfelismerés](face/releasenotes.md)
+ - [Face](face/releasenotes.md)
  - [Language Understanding (LUIS)](LUIS/whats-new.md)
  - [Beszédfelismerési szolgáltatások](speech-service/releasenotes.md)
  - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)
- - [Szövegelemzés](text-analytics/whats-new.md)
+ - [Text Analytics](text-analytics/whats-new.md)
  - [Video Indexer](../media-services/video-indexer/release-notes.md)
 
 ### <a name="azure-blog"></a>Azure blog
@@ -118,10 +118,10 @@ A Reddit egy Közösség által vezérelt vitafórum-webhely, amely az [Azure Co
 
 | Szolgáltatás                       | Cognitive Services UserVoice URL-címe |
 |-------------------------------|---------------|
-| Anomaly Detector              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
+| Anomáliadetektor              | https://cognitive.uservoice.com/forums/912196-anomaly-detector |
 | Bing szolgáltatások                 | https://cognitive.uservoice.com/forums/555907-bing-search |
-| Számítógépes látástechnológia               | https://cognitive.uservoice.com/forums/430309-computer-vision |
-| Tartalommoderátor             | https://cognitive.uservoice.com/forums/559960-content-moderator |
+| Computer Vision               | https://cognitive.uservoice.com/forums/430309-computer-vision |
+| Content Moderator             | https://cognitive.uservoice.com/forums/559960-content-moderator |
 | Custom Vision                 | https://cognitive.uservoice.com/forums/598141-custom-vision-service |
 | Arcfelismerés                          | https://cognitive.uservoice.com/forums/430315-face |
 | Form Recognizer               | https://cognitive.uservoice.com/forums/921556-form-recognizer |
@@ -129,10 +129,10 @@ A Reddit egy Közösség által vezérelt vitafórum-webhely, amely az [Azure Co
 | Language Understanding (LUIS) | https://cognitive.uservoice.com/forums/551524-luis |
 | Personalizer                  | https://cognitive.uservoice.com/forums/921562-personalizer |
 | QnA Maker                     | https://cognitive.uservoice.com/forums/578689-qna-maker |
-| Beszédszolgáltatások               | https://cognitive.uservoice.com/forums/912208-speech-service |
+| Beszédfelismerési szolgáltatások               | https://cognitive.uservoice.com/forums/912208-speech-service |
 | Custom Speech                 | https://cognitive.uservoice.com/forums/555934-custom-speech-service |
-| Szövegelemzés                | https://cognitive.uservoice.com/forums/555922-text-analytics |
-| Fordítói szöveg               | https://cognitive.uservoice.com/forums/558796-translator |
+| Text Analytics                | https://cognitive.uservoice.com/forums/555922-text-analytics |
+| Translator               | https://cognitive.uservoice.com/forums/558796-translator |
 | Video Indexer                 | https://cognitive.uservoice.com/forums/598144-video-indexer |
 
 ## <a name="report-bugs"></a>Hibák jelentése

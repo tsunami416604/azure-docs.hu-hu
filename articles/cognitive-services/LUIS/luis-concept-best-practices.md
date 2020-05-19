@@ -2,14 +2,14 @@
 title: Ajánlott eljárások a LUIS-alkalmazás létrehozásához
 description: Ismerje meg az ajánlott eljárásokat a LUIS-alkalmazás modelljéből származó legjobb eredmények eléréséhez.
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 525d450084723a53ae090319d9ebf3f68d63beee
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382392"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83589805"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Ajánlott eljárások a Language Understanding (LUIS) alkalmazások létrehozásához
 A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási folyamatot:
@@ -31,11 +31,11 @@ A következő lista a LUIS-alkalmazásokra vonatkozó ajánlott eljárásokat ta
 
 |Ajánlott|Nem ajánlott|
 |--|--|
-|[Különböző leképezések definiálása](#do-define-distinct-intents)<br>[Descripters hozzáadása a szándékokhoz](#do-add-descriptors-to-intents) |[Számos példa hosszúságú kimondott szöveg hozzáadása a leképezésekhez](#dont-add-many-example-utterances-to-intents)<br>[Néhány vagy egyszerű entitás használata](#dont-use-few-or-simple-entities) |
+|[Különböző leképezések definiálása](#do-define-distinct-intents)<br>[Funkciók hozzáadása a szándékokhoz](#do-add-features-to-intents) |[Számos példa hosszúságú kimondott szöveg hozzáadása a leképezésekhez](#dont-add-many-example-utterances-to-intents)<br>[Néhány vagy egyszerű entitás használata](#dont-use-few-or-simple-entities) |
 |[Keressen egy édes helyet a túl általános és az egyes szándékok között](#do-find-sweet-spot-for-intents)|[A LUIS használata képzési platformként](#dont-use-luis-as-a-training-platform)|
 |[Az alkalmazás iteratív létrehozása verziókkal](#do-build-your-app-iteratively-with-versions)<br>[Entitások létrehozása a modell elbomlásához](#do-build-for-model-decomposition)|[Több, azonos formátumú hosszúságú kimondott szöveg hozzáadása, figyelmen kívül hagyva más formátumok](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Mintázatok hozzáadása a későbbi ismétlésekben](#do-add-patterns-in-later-iterations)|[A leképezések és entitások definíciójának összekeverése](#dont-mix-the-definition-of-intents-and-entities)|
-|A [hosszúságú kimondott szöveg egyensúlyt kell kiosztania az összes](#balance-your-utterances-across-all-intents) szándékon, kivéve a none szándékot.<br>[Példa hosszúságú kimondott szöveg hozzáadása nincs szándékhoz](#do-add-example-utterances-to-none-intent)|[Leírók létrehozása az összes lehetséges értékkel](#dont-create-descriptors-with-all-the-possible-values)|
+|A [hosszúságú kimondott szöveg egyensúlyt kell kiosztania az összes](#balance-your-utterances-across-all-intents) szándékon, kivéve a none szándékot.<br>[Példa hosszúságú kimondott szöveg hozzáadása nincs szándékhoz](#do-add-example-utterances-to-none-intent)|[A kifejezések listáját minden lehetséges értékkel létrehozhatja](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Az aktív tanulásra vonatkozó javaslati funkció kihasználása](#do-leverage-the-suggest-feature-for-active-learning)|[Túl sok mintázat hozzáadása](#dont-add-many-patterns)|
 |[Az alkalmazás teljesítményének figyelése batch-teszteléssel](#do-monitor-the-performance-of-your-app)|[Betanítás és közzététel minden egyes példa Kimondás esetén](#dont-train-and-publish-with-every-single-example-utterance)|
 
@@ -51,11 +51,11 @@ Vegye figyelembe a következő példa hosszúságú kimondott szöveg:
 |Repülőjáratok lefoglalása|
 |Szállodai foglalás|
 
-`Book a flight`és `Book a hotel` ugyanazt a szókincset használja `book a `. Ez a formátum ugyanaz, mint a különböző szavakat `flight` és `hotel` a kinyert entitásokat.
+`Book a flight`és `Book a hotel` ugyanazt a szókincset használja `book a ` . Ez a formátum ugyanaz, mint a különböző szavakat `flight` és a `hotel` kinyert entitásokat.
 
-## <a name="do-add-descriptors-to-intents"></a>Adja hozzá a leírókat a szándékokhoz
+## <a name="do-add-features-to-intents"></a>Szolgáltatások hozzáadása a szándékokhoz
 
-A descripters súgója egy szándék szolgáltatásait ismerteti. A leíró lehet olyan szavak felsorolása, amelyek jelentősek az adott szándék szempontjából, vagy olyan entitások, amelyek jelentősek erre a célra.
+A szolgáltatások a szándék fogalmait írják le. A szolgáltatás lehet olyan szavak listája, amelyek jelentősek az adott szándék szempontjából, vagy olyan entitások, amelyek jelentősek erre a célra.
 
 ## <a name="do-find-sweet-spot-for-intents"></a>A cél az édes hely keresése
 A LUIS előrejelzési adatai alapján állapítsa meg, hogy a szándékok átfedésben vannak-e. Az átfedésben lévő leképezések megzavarják a LUIS-t. Ennek az az oka, hogy a legfelső pontozási szándék túl van közelebb egy másik szándékhoz. Mivel a LUIS nem ugyanazt az elérési utat használja, mint az egyes időpontokban az adatképzések, az átfedésben lévő szándék a képzés első vagy második lépésének esélye. Azt szeretné, hogy a teljes pontszám az egyes céloknál távolabb legyen, így ez a flip/flop nem fog történni. A szándékok megfelelő megkülönböztetésének minden alkalommal a várt felső szándékot kell eredményeznie.
@@ -73,17 +73,22 @@ A modell kibontása a következőket jellemző folyamattal rendelkezik:
 * **szándék** létrehozása ügyfél-alkalmazás felhasználói szándékai alapján
 * 15-30-es példa hosszúságú kimondott szöveg hozzáadása a valós felhasználói bevitel alapján
 * a legfelső szintű adatelemzési koncepció megjelölése példaként
-* az adatkoncepció felosztása alösszetevőkbe
-* descripters (szolgáltatások) hozzáadása alösszetevőkhöz
-* leíró (szolgáltatások) hozzáadása a szándékhoz
+* az adatkoncepció felosztása alentitásokra
+* szolgáltatások hozzáadása alentitásokhoz
+* funkciók hozzáadása a szándékokhoz
 
 Miután létrehozta a szándékot, és hozzáadta például a hosszúságú kimondott szöveg-t, az alábbi példa az entitások lebomlását ismerteti.
 
-Első lépésként azonosítsa a kinyerni kívánt teljes adatfogalmakat. Ez a gép által megtanult entitás. Ezután bontsa ki a kifejezést a részébe. Ide tartozik az alösszetevők (entitások) azonosítása, valamint a leírók és a megkötések.
+Első lépésként azonosítsa a kinyerni kívánt teljes adatfogalmakat. Ez a gép által megtanult entitás. Ezután bontsa ki a kifejezést a részébe. Ide tartozik az alentitások és a funkciók azonosítása is.
 
-Ha például egy címeket szeretne kinyerni, a rendszer meghívja `Address`a legfontosabb géppel megismert entitást. A cím létrehozásakor azonosítsa a hozzá tartozó alösszetevők némelyikét, például a házszámot, a várost, az állapotot és az irányítószámot.
+Ha például egy címeket szeretne kinyerni, a rendszer meghívja a legfontosabb géppel megismert entitást `Address` . A cím létrehozásakor azonosítsa az alentitások egy részét, például a házszámot, a várost, az állapotot és az irányítószámot.
 
-Folytassa ezen elemek kibontását azáltal, hogy **korlátozza** a postai kódot egy reguláris kifejezésre. Az utcanév kibontása az utca egy részébe (egy előre elkészített szám használatával), egy utcanév és egy utca típusa. Az utca típusát **leíró** listával (például Avenue, Circle, Road és Lane) lehet leírni.
+Az elemek kibontásának folytatásához a következőket kell tennie:
+* A postai kód kötelező funkciójának hozzáadása reguláris kifejezési entitásként.
+* Az utca címe részekbe való bontása:
+    * Egy előre összeépített számú entitás kötelező funkciójával rendelkező **utca száma** .
+    * Az **utca neve**.
+    * Egy **utcanév-típus** , amely egy lista entitás kötelező funkciójával rendelkezik, beleértve az Avenue, a Circle, a Road és a Lane kifejezéseket.
 
 A v3 authoring API lehetővé teszi a modellek lebomlását.
 
@@ -145,9 +150,9 @@ Hozzon létre egy szándékot bármilyen művelethez, amelyet a robotja végreha
 
 Egy olyan robot esetében, amely légitársasági repülőjáratokat fog foglalni, hozzon létre egy **BookFlight** szándékot. Ne hozzon létre szándékot minden egyes légitársasághoz vagy célhoz. Ezeket az [adategységeket entitásként](luis-concept-entity-types.md) használhatja, és megjelölheti őket a példában szereplő hosszúságú kimondott szöveg.
 
-## <a name="dont-create-descriptors-with-all-the-possible-values"></a>Ne hozzon létre leírókat az összes lehetséges értékkel
+## <a name="dont-create-phrase-lists-with-all-the-possible-values"></a>Ne hozzon létre a kifejezések listáját az összes lehetséges értékkel
 
-Adjon meg néhány példát a leíró [kifejezések listájában](luis-concept-feature.md) , de ne minden szót. LUIS általánosítja és figyelembe veszi a kontextust.
+Adjon meg néhány példát a [kifejezések listájában](luis-concept-feature.md) , de ne minden szót vagy kifejezést. LUIS általánosítja és figyelembe veszi a kontextust.
 
 ## <a name="dont-add-many-patterns"></a>Ne adjon hozzá sok mintázatot
 
