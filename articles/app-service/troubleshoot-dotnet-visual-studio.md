@@ -66,7 +66,7 @@ A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvénye
     Ha olyan app Management-feladatot szeretne végrehajtani, amely ebben az ablakban nem hajtható végre, kattintson a **Megnyitás itt felügyeleti portál** lehetőségre egy böngészőablaknak a Azure Portal való megnyitásához.
 
 ## <a name="access-app-files-in-server-explorer"></a><a name="remoteview"></a>Alkalmazások fájljainak elérése a Server Explorerben
-Általában a web. config fájlban a `customErrors` jelölővel rendelkező webes projektet telepít `On` `RemoteOnly`, amely azt jelenti, hogy nem kap hasznos hibaüzenetet, ha valami hiba lép fel. Sok hiba esetén az alábbihoz hasonló oldal jelenik meg:
+Általában a `customErrors` web. config fájlban a jelölővel rendelkező webes projektet telepít `On` `RemoteOnly` , amely azt jelenti, hogy nem kap hasznos hibaüzenetet, ha valami hiba lép fel. Sok hiba esetén az alábbihoz hasonló oldal jelenik meg:
 
 **Kiszolgálóhiba a következő alkalmazásban: "/".**
 
@@ -151,7 +151,7 @@ Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NE
 
     A Visual Studio leáll a törésponton, és a kód az Azure-ban fut, nem pedig a helyi számítógépen.
 
-1. Vigye az egérmutatót a `currentTime` változó fölé a Time érték megjelenítéséhez.
+1. Vigye az egérmutatót a változó fölé a `currentTime` Time érték megjelenítéséhez.
 
     ![Változó megtekintése az Azure-ban futó hibakeresési módban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugviewinwa.png)
 
@@ -176,7 +176,7 @@ A távoli hibakeresés csak a folyamatos webjobs-feladatok esetében működik. 
 
 2. A ContosoAdsWebJob projektben nyissa meg a *functions.cs*.
 
-3. [Állítsa be a töréspontot](https://docs.microsoft.com/visualstudio/debugger/) a `GnerateThumbnail` metódus első utasítására.
+3. [Állítsa be a töréspontot](https://docs.microsoft.com/visualstudio/debugger/) a metódus első utasítására `GnerateThumbnail` .
 
     ![Töréspont beállítása](./media/web-sites-dotnet-troubleshoot-visual-studio/wjbreakpoint.png)
 
@@ -200,7 +200,7 @@ A távoli hibakeresés csak a folyamatos webjobs-feladatok esetében működik. 
 
     Az ad létrehozásával létrejön egy üzenetsor-üzenet, amelyet a Webjobs és a feldolgozott. Amikor a webjobs SDK meghívja a függvényt a várólista-üzenet feldolgozására, a kód eléri a töréspontot.
 
-10. Amikor a hibakereső megszakítja a töréspontot, megvizsgálhatja és módosíthatja a változók értékeit, miközben a program futtatja a felhőt. A következő ábrán a hibakereső a `GenerateThumbnail` metódusnak átadott blobInfo objektum tartalmát jeleníti meg.
+10. Amikor a hibakereső megszakítja a töréspontot, megvizsgálhatja és módosíthatja a változók értékeit, miközben a program futtatja a felhőt. A következő ábrán a hibakereső a metódusnak átadott blobInfo objektum tartalmát jeleníti meg `GenerateThumbnail` .
 
      ![blobInfo objektum a hibakeresőben](./media/web-sites-dotnet-troubleshoot-visual-studio/blobinfo.png)
 
@@ -218,7 +218,7 @@ A távoli hibakeresés csak a folyamatos webjobs-feladatok esetében működik. 
 
      ![Kattintson a ContosoAdsWebJob](./media/web-sites-dotnet-troubleshoot-visual-studio/clickcaw.png)
 
-     Az irányítópulton látható, `GenerateThumbnail` hogy a függvény nemrég lett végrehajtva.
+     Az irányítópulton látható, hogy a `GenerateThumbnail` függvény nemrég lett végrehajtva.
 
      (Amikor legközelebb rákattint az **irányítópult megtekintése**lehetőségre, nem kell bejelentkeznie, és a böngésző közvetlenül a webjobs lapjára lép.)
 
@@ -233,7 +233,7 @@ Ha a függvény [naplókat írt](https://github.com/Azure/azure-webjobs-sdk/wiki
 * Az éles környezetben való futtatás hibakeresési módban nem ajánlott. Ha az éles alkalmazás nem méretezhető több kiszolgálópéldány számára, a hibakeresés megakadályozza, hogy a webkiszolgáló válaszoljon más kérelmekre. Ha több webkiszolgáló-példánya is van, a hibakeresőhöz való csatoláskor véletlenszerű példányt kap, és nem biztosíthatja, hogy a következő böngésző-kérelmek ugyanarra a példányra lépjenek. Azt is megteheti, hogy a hibakeresési buildet általában nem helyezi üzembe éles környezetben, és a fordítói optimalizálások nem tudták megmutatni, hogy mi történik sorban a forráskódban. Az éles környezetben felmerülő problémák elhárításához a legjobb erőforrás az alkalmazás-nyomkövetés és a webkiszolgáló-naplók.
 * A távoli hibakeresés során Kerülje a töréspontok hosszú leállását. Az Azure egy olyan folyamatot kezel, amely egy nem válaszoló folyamatnál hosszabb ideig leállt, és leállítja azt.
 * A hibakeresés során a kiszolgáló adatokat küld a Visual Studiónak, ami hatással lehet a sávszélességre. A sávszélesség díjszabásával kapcsolatos információkért lásd: az [Azure díjszabása](https://azure.microsoft.com/pricing/calculator/).
-* Győződjön meg arról, `debug` hogy a `compilation` *web. config* fájlban lévő elem attribútuma igaz értékre van állítva. A hibakeresési Build konfigurációjának közzétételekor alapértelmezés szerint igaz értékre van állítva.
+* Győződjön meg arról, hogy a `debug` `compilation` *web. config* fájlban lévő elem attribútuma igaz értékre van állítva. A hibakeresési Build konfigurációjának közzétételekor alapértelmezés szerint igaz értékre van állítva.
 
     ```xml
     <system.web>
@@ -271,7 +271,7 @@ Ebben a szakaszban a következő feladatokat hajtja végre:
 További információ az alkalmazások naplóinak a webjobs-ben való létrehozásáról: az [Azure üzenetsor-tárolás használata a Webjobs SDK használatával – naplók írása](https://github.com/Azure/azure-webjobs-sdk/wiki). A naplók megtekintésének és az Azure-ban tárolt adatok szabályozásának az alábbi lépései a webjobs által létrehozott alkalmazási naplókra is érvényesek.
 
 ### <a name="add-tracing-statements-to-the-application"></a>Nyomkövetési utasítások hozzáadása az alkalmazáshoz
-1. Nyissa meg a *Controllers\HomeController.cs*, `Index`és `About`cserélje le `Contact` a,, és metódusokat a következő kódra `Trace` az utasítások és `using` a utasítások `System.Diagnostics`hozzáadásához:
+1. Nyissa meg a *Controllers\HomeController.cs*, és cserélje le a `Index` , `About` , és `Contact` metódusokat a következő kódra az `Trace` utasítások és a utasítások hozzáadásához `using` `System.Diagnostics` :
 
     ```csharp
     public ActionResult Index()
@@ -302,17 +302,17 @@ További információ az alkalmazások naplóinak a webjobs-ben való létrehoz�
     }        
     ```
 
-1. Adjon hozzá `using System.Diagnostics;` egy utasítást a fájl elejéhez.
+1. Adjon hozzá egy `using System.Diagnostics;` utasítást a fájl elejéhez.
 
 ### <a name="view-the-tracing-output-locally"></a>A nyomkövetési kimenet helyi megtekintése
 1. Az alkalmazás hibakeresési módban való futtatásához nyomja le az F5 billentyűt.
 
-    Az alapértelmezett nyomkövetési figyelő a **kimeneti** ablakba írja az összes nyomkövetési kimenetet, valamint más hibakeresési kimenetet is. A következő ábrán a `Index` metódushoz hozzáadott nyomkövetési utasítások kimenete látható.
+    Az alapértelmezett nyomkövetési figyelő a **kimeneti** ablakba írja az összes nyomkövetési kimenetet, valamint más hibakeresési kimenetet is. A következő ábrán a metódushoz hozzáadott nyomkövetési utasítások kimenete látható `Index` .
 
     ![Nyomkövetés a hibakeresési ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-debugtracing.png)
 
     A következő lépések bemutatják, hogyan tekintheti meg a nyomkövetési kimenetet egy weblapon a hibakeresési módban való fordítás nélkül.
-1. Nyissa meg az alkalmazás Web. config fájlját (amely a projekt mappájában található), `<system.diagnostics>` és adjon hozzá egy elemet a fájl végén közvetlenül a záró `</configuration>` elem előtt:
+1. Nyissa meg az alkalmazás Web. config fájlját (amely a projekt mappájában található), és adjon hozzá egy `<system.diagnostics>` elemet a fájl végén közvetlenül a záró `</configuration>` elem előtt:
 
     ``` xml
     <system.diagnostics>
@@ -329,7 +329,7 @@ További információ az alkalmazások naplóinak a webjobs-ben való létrehoz�
     </system.diagnostics>
     ```
 
-A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintését `/trace.axd`.
+A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintését `/trace.axd` .
 1. Vegyen fel egy <a href="https://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">nyomkövetési elemet</a> `<system.web>` a web. config fájlban, például a következő példában:
 
     ``` xml
@@ -337,20 +337,20 @@ A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintés�
     ```
 
 1. Az alkalmazás futtatásához nyomja le a Ctrl+F5 billentyűkombinációt.
-1. A böngészőablak címsorában adja hozzá a *trace. axd* címet az URL-címhez, majd nyomja le az ENTER billentyűt (az URL- `http://localhost:53370/trace.axd`cím hasonló).
+1. A böngészőablak címsorában adja hozzá a *trace. axd* címet az URL-címhez, majd nyomja le az ENTER billentyűt (az URL-cím hasonló `http://localhost:53370/trace.axd` ).
 1. Az **alkalmazás-nyomkövetés** lapon kattintson a **részletek megtekintése** elemre az első sorban (ne a BrowserLink sor).
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
 
-    Megjelenik a **kérelem részletei** lap, és a **nyomkövetési adatok** szakaszban a `Index` metódushoz hozzáadott nyomkövetési utasítások kimenete látható.
+    Megjelenik a **kérelem részletei** lap, és a **nyomkövetési adatok** szakaszban a metódushoz hozzáadott nyomkövetési utasítások kimenete látható `Index` .
 
     ![Trace. axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png)
 
-    Alapértelmezés `trace.axd` szerint csak helyileg érhető el. Ha azt szeretné, hogy elérhető legyen egy távoli alkalmazásból, akkor a *web. config* fájlban lévő `localOnly="false"` `trace` elemhez hozzáadhatja azt a következő példában látható módon:
+    Alapértelmezés szerint `trace.axd` csak helyileg érhető el. Ha azt szeretné, hogy elérhető legyen egy távoli alkalmazásból, akkor `localOnly="false"` `trace` a *web. config* fájlban lévő elemhez hozzáadhatja azt a következő példában látható módon:
 
         <trace enabled="true" writeToDiagnosticsTrace="true" localOnly="false" mostRecent="true" pageOutput="false" />
 
-    Az éles alkalmazásokban való engedélyezés `trace.axd` azonban biztonsági okokból nem ajánlott. A következő részekben könnyebben beolvashatja a nyomkövetési naplókat egy App Service alkalmazásban.
+    Az `trace.axd` éles alkalmazásokban való engedélyezés azonban biztonsági okokból nem ajánlott. A következő részekben könnyebben beolvashatja a nyomkövetési naplókat egy App Service alkalmazásban.
 
 ### <a name="view-the-tracing-output-in-azure"></a>A nyomkövetés kimenetének megtekintése az Azure-ban
 1. **Megoldáskezelő**kattintson a jobb gombbal a webes projektre, majd kattintson a **Közzététel**elemre.
@@ -366,7 +366,7 @@ A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintés�
     ![Folyamatos átviteli naplók megtekintése a helyi menüben](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
 4. Az alkalmazás kezdőlapját megjelenítő böngészőablakban kattintson a **kapcsolat**elemre.
 
-    Néhány másodpercen belül a `Contact` metódushoz hozzáadott hiba szintű nyomkövetés kimenete megjelenik a **kimeneti** ablakban.
+    Néhány másodpercen belül a metódushoz hozzáadott hiba szintű nyomkövetés kimenete megjelenik `Contact` a **kimeneti** ablakban.
 
     ![Hibák nyomon követése a kimeneti ablakban](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-errortrace.png)
 
@@ -440,7 +440,7 @@ A részletes naplófájlok további információkat nyújtanak a hibakódot ered
 
     ![Az összes napló figyelése](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorall.png)
 
-4. A böngészőablakban vegyen fel egy további karaktert az URL-címre, hogy 404-as hibát okozzon (például: `http://localhost:53370/Home/Contactx`), majd nyomja le az ENTER billentyűt.
+4. A böngészőablakban vegyen fel egy további karaktert az URL-címre, hogy 404-as hibát okozzon (például: `http://localhost:53370/Home/Contactx` ), majd nyomja le az ENTER billentyűt.
 
     Néhány másodperc elteltével a részletes hibanapló a Visual Studio **kimeneti** ablakában jelenik meg.
 
@@ -669,7 +669,7 @@ Nincsenek alapos és naprakész bevezetések az interneten elérhető ASP.NET-ny
 
 A hibák naplózása érdekében a saját nyomkövetési kód megírásának alternatívája egy nyílt forráskódú naplózási keretrendszer használata, például a [ELMAH](https://nuget.org/packages/elmah/). További információ: [Scott Jancsi blog-bejegyzései a ELMAH](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx).
 
-Emellett nem kell ASP.NET vagy `System.Diagnostics` nyomkövetést használnia az Azure-ból származó adatfolyam-naplók beszerzéséhez. A App Service app streaming log szolgáltatás a *naplófájlok* mappában található bármely *. txt*, *. html*vagy *. log* fájlt továbbítja. Ezért létrehozhat egy saját naplózási rendszer, amely az alkalmazás fájlrendszerére ír, és a fájlt a rendszer automatikusan továbbítja és letölti. Mindössze annyit kell tennie, hogy írási programkódot hoz létre, amely létrehozza a fájlokat a *d:\home\logfiles* mappában.
+Emellett nem kell ASP.NET vagy nyomkövetést használnia `System.Diagnostics` Az Azure-ból származó adatfolyam-naplók beszerzéséhez. A App Service app streaming log szolgáltatás a *naplófájlok* mappában található bármely *. txt*, *. html*vagy *. log* fájlt továbbítja. Ezért létrehozhat egy saját naplózási rendszer, amely az alkalmazás fájlrendszerére ír, és a fájlt a rendszer automatikusan továbbítja és letölti. Mindössze annyit kell tennie, hogy írási programkódot hoz létre, amely létrehozza a fájlokat a *d:\home\logfiles* mappában.
 
 ### <a name="analyzing-web-server-logs"></a>Webkiszolgáló-naplók elemzése
 A webkiszolgáló-naplók elemzésével kapcsolatos további információkért tekintse meg a következő forrásokat:

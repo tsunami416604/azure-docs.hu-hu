@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 69ff58d6cdabe49000b00afecfc6b4ad1a3f2daa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a7e0cb41f32a60e4f00cb60cc3c86e40ab926785
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76841846"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82735130"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Oktatóanyag: hozzon létre egy iOS-alkalmazást, amely egy fényképből származó tartalommal (Swift) indít el egy lebilincselő olvasót
 
@@ -22,9 +22,9 @@ A teljes [olvasó](https://www.onenote.com/learningtools) egy olyan, integrálta
 
 A [Computer Vision Cognitive Services Read API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) észleli a képek szöveges tartalmát a Microsoft legújabb felismerési modelljeivel, és átalakítja a azonosított szöveget egy géppel olvasható karakteres adatfolyamba.
 
-Ebben az oktatóanyagban egy iOS-alkalmazást hoz létre a semmiből, és integrálja az olvasási API-t, valamint a magával ragadó olvasót az olvasói SDK használatával. Ebben az oktatóanyagban egy teljes körű működő minta érhető [el.](https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/samples/picture-to-immersive-reader-swift)
+Ebben az oktatóanyagban egy iOS-alkalmazást hoz létre a semmiből, és integrálja az olvasási API-t, valamint a magával ragadó olvasót az olvasói SDK használatával. Ebben az oktatóanyagban egy teljes körű működő minta érhető [el.](https://github.com/microsoft/immersive-reader-sdk/tree/master/js/samples/ios)
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,20 +45,20 @@ Válassza az **Egynézetes alkalmazás**lehetőséget.
 ## <a name="get-the-sdk-cocoapod"></a>Az SDK-CocoaPod beszerzése
 A részletes olvasói SDK a CocoaPods-on keresztül a legkönnyebben használható. Telepítés a Cocoapods-on keresztül:
 1. A [CocoaPods telepítése](http://guides.cocoapods.org/using/getting-started.html) – kövesse az első lépéseket ismertető útmutatót a CocoaPods telepítéséhez.
-2. Hozzon létre egy Cocoapods `pod init` a Xcode projekt gyökérkönyvtárában való futtatásával.
-3.  A hozzáadásával `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'`adja hozzá a CocoaPod a cocoapods. A Cocoapods a következőhöz hasonlóan kell kinéznie a cél nevével, a kép és a-olvasó-Swift közötti váltáshoz:
+2. Hozzon létre egy Cocoapods a `pod init` Xcode projekt gyökérkönyvtárában való futtatásával.
+3.  A hozzáadásával adja hozzá a CocoaPod a Cocoapods `pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'` . A Cocoapods a következőhöz hasonlóan kell kinéznie a cél nevével, a kép és a-olvasó-Swift közötti váltáshoz:
  ```ruby
   platform :ios, '9.0'
 
   target 'picture-to-immersive-reader-swift' do
   use_frameworks!
   # Pods for picture-to-immersive-reader-swift
-  pod 'immersive-reader-sdk', :path => 'https://github.com/microsoft/immersive-reader-sdk/tree/master/iOS/immersive-reader-sdk'
+  pod 'immersive-reader-sdk', :git => 'https://github.com/microsoft/immersive-reader-sdk.git'
   end
 ```
-4. A terminálban, a Xcode-projekt könyvtárában futtassa a parancsot `pod install` a magától elolvasó SDK-Pod telepítéséhez.
-5. Adja `import immersive_reader_sdk` hozzá az összes olyan fájlhoz, amelyre hivatkozni kell az SDK-ra.
-6. Győződjön meg arról, hogy megnyitja a projektet `.xcworkspace` a fájl megnyitásával `.xcodeproj` , nem pedig a fájllal.
+4. A terminálban, a Xcode-projekt könyvtárában futtassa a parancsot a `pod install` magától elolvasó SDK-Pod telepítéséhez.
+5. Adja hozzá az `import immersive_reader_sdk` összes olyan fájlhoz, amelyre hivatkozni kell az SDK-ra.
+6. Győződjön meg arról, hogy megnyitja a projektet a fájl megnyitásával `.xcworkspace` , nem pedig a `.xcodeproj` fájllal.
 
 ## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD-hitelesítési jogkivonat beszerzése
 

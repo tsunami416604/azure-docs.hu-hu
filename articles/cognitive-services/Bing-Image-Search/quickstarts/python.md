@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 6287b9b8e6129fd62a896e5ac1fcca29febbf01a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: af3620770a4b608e162368c2432575d36e11e19f
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478538"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118900"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-python"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search REST API és a Python használatával
 
-Ezzel a rövid útmutatóval megkezdheti a keresési kérések küldését a Bing Image Search API. Ez a Python-alkalmazás keresési lekérdezést küld az API-nak, és megjeleníti az eredményekben szereplő első rendszerkép URL-címét. Habár ez az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ebből a rövid útmutatóból megtudhatja, hogyan küldhet keresési kéréseket a Bing Image Search API. Ez a Python-alkalmazás keresési lekérdezést küld az API-nak, és megjeleníti az eredményekben szereplő első rendszerkép URL-címét. Bár az alkalmazás Pythonban íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
-Ezt a példát futtathatja Jupyter-notebookként a [MyBinderen](https://mybinder.org), az indítás Binder-jelvényére kattintva.
+Ha ezt a példát Jupyter jegyzetfüzetként szeretné futtatni a [MyBinder](https://mybinder.org), válassza az indítási kötés jelvényét:
 
 [![Iratgyűjtő](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingImageSearchAPI.ipynb)
 
@@ -40,7 +40,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a következő modulokat. Hozzon létre egy változót az előfizetési kulcshoz, a keresési végponthoz és a keresési kifejezéshez. `search_url`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
+1. Hozzon létre egy új Python-fájlt a kedvenc IDE vagy szerkesztőben, és importálja a következő modulokat. Hozzon létre egy változót az előfizetési kulcshoz, a keresési végponthoz és a keresési kifejezéshez. A (z) esetében `search_url` a globális végpontot használhatja a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot is.
 
     ```python
     import requests
@@ -53,7 +53,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     search_term = "puppies"
     ```
 
-2. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez egy szótár létrehozásával, és adja hozzá a kulcsot értékként. 
+2. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez egy szótár létrehozásával, és adja hozzá a kulcsot értékként. 
 
     ```python
     headers = {"Ocp-Apim-Subscription-Key" : subscription_key}
@@ -61,13 +61,13 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="create-and-send-a-search-request"></a>Keresési kérelem létrehozása és küldése
 
-1. Hozzon létre egy szótárt a keresési kérelem paramétereinek. Adja hozzá a keresési kifejezést a `q` paraméterhez. A nyilvános tartományban található rendszerképek `license` kereséséhez használja a "Public" paramétert. A csak a fényképek kereséséhez `imageType` használja a "Photo" kifejezést.
+1. Hozzon létre egy szótárt a keresési kérelem paramétereinek. Adja hozzá a keresési kifejezést a `q` paraméterhez. A paramétert úgy állítsa be `license` `public` , hogy a nyilvános tartományban lévő lemezképeket keressen. Állítsa a `imageType` to `photo` (a) lehetőséget a csak a fényképek kereséséhez.
 
     ```python
     params  = {"q": search_term, "license": "public", "imageType": "photo"}
     ```
 
-2. A Bing Image Search API `requests` meghívásához használja a könyvtárat. Adja hozzá a fejlécet és a paramétereket a kérelemhez, és adja vissza a választ JSON-objektumként. Az URL-címek beolvasása több miniatűr lemezképhez `thumbnailUrl` a válasz mezőjéből.
+2. A `requests` Bing Image Search API meghívásához használja a könyvtárat. Adja hozzá a fejlécet és a paramétereket a kérelemhez, és adja vissza a választ JSON-objektumként. Az URL-címek beolvasása több miniatűr lemezképhez a válasz `thumbnailUrl` mezőjéből.
 
     ```python
     response = requests.get(search_url, headers=headers, params=params)
@@ -82,7 +82,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 2. Ismételje meg az ábra sorait és oszlopait, és a PIL-függvénytár `Image.open()` metódusának használatával adja hozzá a kép miniatűrjét az egyes területekhez. 
 
-3. `plt.show()` A segítségével rajzolja meg az ábrát, és jelenítse meg a képeket.
+3. A segítségével `plt.show()` rajzolja meg az ábrát, és jelenítse meg a képeket.
 
     ```python
     f, axes = plt.subplots(4, 4)
@@ -151,7 +151,7 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
 * [Mi az a Bing Image Search API?](../overview.md)  
-* A Bing Search API-k [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) . 
-* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [A Bing Search API-k díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/). 
+* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api). 
+* Az [Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services).
+* [Bing Image Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

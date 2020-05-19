@@ -155,7 +155,7 @@ function tradePlayers(playerId1, playerId2) {
 
 ### <a name="bounded-execution-within-stored-procedures"></a><a id="bounded-execution"></a>Kötött végrehajtás a tárolt eljárásokon belül
 
-Az alábbi példa egy olyan tárolt eljárást mutat be, amely tömegesen importál elemeket egy Azure Cosmos-tárolóba. A tárolt eljárás kezeli a korlátos végrehajtást, ha ellenőrzi a logikai `createDocument`visszatérési értéket a ból, majd a tárolt eljárás minden egyes meghívásakor beszúrt elemek számát használja a kötegek közötti előrehaladás nyomon követéséhez és folytatásához.
+Az alábbi példa egy olyan tárolt eljárást mutat be, amely tömegesen importál elemeket egy Azure Cosmos-tárolóba. A tárolt eljárás kezeli a korlátos végrehajtást, ha ellenőrzi a logikai visszatérési értéket a ból `createDocument` , majd a tárolt eljárás minden egyes meghívásakor beszúrt elemek számát használja a kötegek közötti előrehaladás nyomon követéséhez és folytatásához.
 
 ```javascript
 function bulkImport(items) {
@@ -287,7 +287,7 @@ function validateToDoItemTimestamp() {
 
 Az előzetes eseményindítóknak nem lehetnek bemeneti paramétereik. A triggerben található kérelem objektum a művelethez társított kérelem üzenetének kezelésére szolgál. Az előző példában a pre-trigger fut egy Azure Cosmos-elem létrehozásakor, és a kérelem üzenet törzse tartalmazza a JSON formátumban létrehozandó tételt.
 
-Ha a triggerek regisztrálva vannak, megadhatja azokat a műveleteket, amelyeket futtathat a használatával. Ezt a triggert egy `TriggerOperation` értékkel kell létrehozni `TriggerOperation.Create`, ami azt jelenti, hogy az triggert egy csere műveletben használja, ahogy az a következő kódban nem engedélyezett.
+Ha a triggerek regisztrálva vannak, megadhatja azokat a műveleteket, amelyeket futtathat a használatával. Ezt a triggert egy `TriggerOperation` értékkel kell létrehozni `TriggerOperation.Create` , ami azt jelenti, hogy az triggert egy csere műveletben használja, ahogy az a következő kódban nem engedélyezett.
 
 A pre-triggerek regisztrálásával és meghívásával kapcsolatos Példákért lásd: [Pre-triggers](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers) és [trigger utáni](how-to-use-stored-procedures-triggers-udfs.md#post-triggers) cikkek. 
 
@@ -366,7 +366,7 @@ A felhasználó által definiált függvények regisztrálásával és használa
 
 ## <a name="logging"></a>Naplózás 
 
-Tárolt eljárás, eseményindítók vagy felhasználó által definiált függvények használatakor a `console.log()` parancs használatával naplózhatja a lépéseket. Ez a parancs egy karakterláncot fog összpontosítani a hibakereséshez, ha `EnableScriptLogging` a értéke TRUE (igaz), ahogy az alábbi példában is látható:
+Tárolt eljárás, eseményindítók vagy felhasználó által definiált függvények használatakor a parancs használatával naplózhatja a lépéseket `console.log()` . Ez a parancs egy karakterláncot fog összpontosítani a hibakereséshez, ha a `EnableScriptLogging` értéke TRUE (igaz), ahogy az alábbi példában is látható:
 
 ```javascript
 var response = await client.ExecuteStoredProcedureAsync(

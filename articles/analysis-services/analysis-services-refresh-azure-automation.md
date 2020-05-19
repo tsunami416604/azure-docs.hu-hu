@@ -101,7 +101,7 @@ Ezt a következőképpen lehet konfigurálni:
  
     ![Ütemterv létrehozása](./media/analysis-services-refresh-azure-automation/14.png)
 
-2. Kattintson az **ütemezett** > **új ütemterv létrehozása**lehetőségre, majd adja meg a részleteket.
+2. Kattintson az **ütemezett**  >  **új ütemterv létrehozása**lehetőségre, majd adja meg a részleteket.
 
     ![Ütemterv konfigurálása](./media/analysis-services-refresh-azure-automation/15.png)
 
@@ -147,7 +147,7 @@ A **törzs** egy JSON-dokumentum, amely a következő tulajdonságokat tartalmaz
 |Tulajdonság  |Érték  |
 |---------|---------|
 |**AnalysisServicesDatabase**     |Az Azure Analysis Services adatbázis neve <br/> Példa: AdventureWorksDB         |
-|**AnalysisServicesServer**     |A Azure Analysis Services-kiszolgáló neve. <br/> Például: https:\//westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/         |
+|**AnalysisServicesServer**     |A Azure Analysis Services-kiszolgáló neve. <br/> Például: https: \/ /westus.asazure.Windows.net/Servers/MyServer/models/AdventureWorks/         |
 |**DatabaseRefreshType**     |A végrehajtandó frissítés típusa. <br/> Példa: Full         |
 
 Példa JSON-törzsre:
@@ -175,7 +175,7 @@ Egy statikus nyilvános IP-címmel rendelkező Azure-beli virtuális gép Azure 
 >
 >A hibrid feldolgozók Azure Automation konfigurálásával kapcsolatos további információkért lásd: [hibrid Runbook Worker telepítése](../automation/automation-hybrid-runbook-worker.md#hybrid-runbook-worker-installation).
 
-A hibrid feldolgozók konfigurálása után hozzon létre egy webhookot a következő szakaszban leírtak szerint: [Data Factory használata](#consume-with-data-factory).  Az egyetlen különbség, hogy a webhook konfigurálásakor kiválasztja a**hibrid** feldolgozó **futtatása** > lehetőséget.
+A hibrid feldolgozók konfigurálása után hozzon létre egy webhookot a következő szakaszban leírtak szerint: [Data Factory használata](#consume-with-data-factory).  Az egyetlen különbség, hogy a **Run on**  >  webhook konfigurálásakor kiválasztja a**hibrid** feldolgozó futtatása lehetőséget.
 
 Példa a hibrid feldolgozót használó webhookra:
 

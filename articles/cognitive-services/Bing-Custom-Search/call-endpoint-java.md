@@ -8,32 +8,32 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 02c86e5a4c1a04b98ebba73653980e8e5e00f645
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 7c9f713d50e31557999c9127cd219bfe9b3a8c82
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238891"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199851"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-java"></a>Rövid útmutató: az Bing Custom Search-végpont meghívása a Javával
 
-Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérelmezését. Habár ez az alkalmazás Java nyelven íródott, a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
+Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a Bing Custom Search-példány keresési eredményeit. Bár ez az alkalmazás Java nyelven íródott, a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingCustomSearchv7.java).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
+- Egy Bing Custom Search példány. További információ: gyors útmutató [: az első Bing Custom Search példány létrehozása](quick-start.md).
 
-- A legújabb [Java Development Kit](https://www.oracle.com/technetwork/java/javase/downloads/index.html)  
+- A legújabb [Java-fejlesztői csomag](https://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-- A [Gson-kódtár](https://github.com/google/gson)
+- A [Gson könyvtár](https://github.com/google/gson).
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében, és importálja az alábbi kódtárakat.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat:
 
     ```java
     import java.io.InputStream;
@@ -50,7 +50,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     import com.google.gson.JsonParser;
     ```
 
-2. Hozzon létre egy `CustomSrchJava`nevű osztályt, és hozzon létre változókat az előfizetési kulcs, az egyéni keresési végpont és a keresési példány egyéni konfigurációs azonosítója alapján. Használhatja az alábbi globális végpontot, vagy az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontot.
+2. Hozzon létre egy nevű osztályt `CustomSrchJava` , majd hozzon létre változókat az előfizetési kulcs, az egyéni keresési végpont és a keresési példány egyéni konfigurációs azonosítója alapján. Használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
     ```java
     public class CustomSrchJava {
         static String host = "https://api.cognitive.microsoft.com";
@@ -61,7 +61,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     ...
     ```
 
-3. Hozzon létre egy `SearchResults` másik, nevű osztályt, amely tartalmazza a Bing Custom Search-példány válaszát.
+3. Hozzon létre egy másik, nevű osztályt `SearchResults` , amely tartalmazza a Bing Custom Search-példány válaszát.
 
     ```csharp
     class SearchResults{
@@ -74,7 +74,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     }
     ```
 
-4. Hozzon létre egy `prettify()` nevű függvényt, hogy FORMÁZZA a JSON-választ a Bing Custom Search API.
+4. Hozzon létre egy nevű függvényt `prettify()` , hogy formázza a JSON-választ a Bing Custom Search API.
 
     ```java
         // pretty-printer for JSON; uses GSON parser to parse and re-serialize
@@ -88,7 +88,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
 
 ## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása 
 
-1. Hozzon létre egy `SearchWeb()` nevű függvényt, amely egy kérelmet `SearchResults` küld, és visszaad egy objektumot. Hozza létre a kérelem URL-címét az egyéni konfigurációs azonosító, a lekérdezés és a végpont adatainak kombinálásával. Adja hozzá az előfizetési kulcsot `Ocp-Apim-Subscription-Key` a fejléchez.
+1. Hozzon létre egy nevű függvényt `SearchWeb()` , amely egy kérelmet küld, és visszaad egy `SearchResults` objektumot. Hozza létre a kérelem URL-címét az egyéni konfigurációs azonosító, a lekérdezés és a végpont adatainak kombinálásával. Adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```java
     public class CustomSrchJava {
@@ -101,7 +101,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     ...
     ```
 
-2. Hozzon létre egy streamet, és tárolja a `SearchResults` JSON-választ egy objektumban.
+2. Hozzon létre egy streamet, és tárolja a JSON-választ egy `SearchResults` objektumban.
 
     ```java
     public class CustomSrchJava {
@@ -120,7 +120,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
         }
     ```
 
-3. Az alkalmazás fő metódusában hívja `SearchWeb()` meg a keresési kifejezést, 
+3. A JSON-válasz nyomtatása.
 
     ```java
     System.out.println("\nJSON Response:\n");

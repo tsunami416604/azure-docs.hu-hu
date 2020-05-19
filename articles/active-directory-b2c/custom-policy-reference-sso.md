@@ -22,7 +22,7 @@ ms.locfileid: "82926119"
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Az [egyszeri bejelentkezési (SSO) munkamenet](session-overview.md) -kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a rendszer a lépéshez társított technikai profilt kérdezi `UseTechnicalProfileForSessionManagement` le. Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
+Az [egyszeri bejelentkezési (SSO) munkamenet](session-overview.md) -kezelés ugyanazt a szemantikai kapcsolatot használja, mint bármely más technikai profil az egyéni házirendekben. Egy előkészítési lépés végrehajtásakor a rendszer a lépéshez társított technikai profilt kérdezi le `UseTechnicalProfileForSessionManagement` . Ha van ilyen, a rendszer ellenőrzi a hivatkozott SSO munkamenet-szolgáltatót, hogy a felhasználó munkamenet-résztvevő-e. Ha igen, az SSO-munkamenet-szolgáltató a munkamenet újrafeltöltésére szolgál. Hasonlóképpen, ha egy előkészítési lépés végrehajtása befejeződött, a szolgáltató a munkamenetben lévő információk tárolására szolgál, ha meg van adva egy egyszeri bejelentkezéses munkamenet-szolgáltató.
 
 Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 
@@ -37,7 +37,7 @@ Azure AD B2C több SSO munkamenet-szolgáltatót definiált:
 
 
 
-Az `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` egyszeri bejelentkezéses felügyeleti osztályok egy technikai profil eleme alapján vannak megadva.
+Az egyszeri bejelentkezéses felügyeleti osztályok `<UseTechnicalProfileForSessionManagement ReferenceId="{ID}" />` egy technikai profil eleme alapján vannak megadva.
 
 ## <a name="input-claims"></a>Bemeneti jogcímek
 
@@ -45,11 +45,11 @@ Az `InputClaims` elem üres vagy hiányzik.
 
 ## <a name="persisted-claims"></a>Megőrzött jogcímek
 
-Azokat a jogcímeket, amelyeket vissza kell adni az alkalmazásnak, vagy a későbbi lépésekben az előfeltételeket kell használni, a munkamenetben kell tárolni, vagy a felhasználó profiljából kell kibővíteni a címtárban. A megőrzött jogcímek használata biztosítja, hogy a hitelesítési útvonalak ne legyenek sikertelenek a hiányzó jogcímek esetében. Ha jogcímeket szeretne felvenni a munkamenetbe, használja a technikai profil `<PersistedClaims>` elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához.
+Azokat a jogcímeket, amelyeket vissza kell adni az alkalmazásnak, vagy a későbbi lépésekben az előfeltételeket kell használni, a munkamenetben kell tárolni, vagy a felhasználó profiljából kell kibővíteni a címtárban. A megőrzött jogcímek használata biztosítja, hogy a hitelesítési útvonalak ne legyenek sikertelenek a hiányzó jogcímek esetében. Ha jogcímeket szeretne felvenni a munkamenetbe, használja a `<PersistedClaims>` technikai profil elemét. Ha a szolgáltató a munkamenet újrafeltöltésére szolgál, a rendszer hozzáadja a megőrzött jogcímeket a jogcímek táskához.
 
 ## <a name="output-claims"></a>Kimeneti jogcímek
 
-A `<OutputClaims>` a jogcímek munkamenetből való beolvasására szolgál.
+A a `<OutputClaims>` jogcímek munkamenetből való beolvasására szolgál.
 
 ## <a name="session-providers"></a>Munkamenet-szolgáltatók
 
@@ -87,7 +87,7 @@ Ezt a szolgáltatót a jogcímek egy munkamenetben való tárolására lehet has
 ```
 
 
-A következő `SM-MFA` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa`. Ez a technikai profil a multi-Factor Authentication munkamenetet kezeli.
+A következő `SM-MFA` technikai profil szerepel az [egyéni házirend-indító csomagban](custom-policy-get-started.md#custom-policy-starter-pack) `SocialAndLocalAccountsWithMfa` . Ez a technikai profil a multi-Factor Authentication munkamenetet kezeli.
 
 ```XML
 <TechnicalProfile Id="SM-MFA">
@@ -138,7 +138,7 @@ Ez a szolgáltató a OAuth2 vagy OpenId Connect függő entitás és Azure AD B2
 
 ### <a name="samlssosessionprovider"></a>SamlSSOSessionProvider
 
-Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, `RegisterServiceProviders` akkor `false`a értékének a következőnek kell lennie:. A SAML `SM-Saml-idp` - [identitás szolgáltatójának műszaki profilja](saml-identity-provider-technical-profile.md)a következő technikai profilt használja.
+Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a függő entitás alkalmazása vagy egy összevont SAML-szolgáltató között. Ha az SSO-szolgáltatót használja az SAML-identitás szolgáltatói munkamenetének tárolására, akkor a értékének a következőnek kell `RegisterServiceProviders` lennie: `false` . A `SM-Saml-idp` [SAML-identitás szolgáltatójának műszaki profilja](saml-identity-provider-technical-profile.md)a következő technikai profilt használja.
 
 ```XML
 <TechnicalProfile Id="SM-Saml-idp">
@@ -150,7 +150,7 @@ Ez a szolgáltató az Azure AD B2C SAML-munkamenetek felügyeletére szolgál a 
 </TechnicalProfile>
 ```
 
-A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén a `RegisterServiceProviders` értékének a következőnek kell lennie:. `true` Az SAML-munkamenet kijelentkezéséhez a `SessionIndex` és `NameID` a Befejezés szükséges.
+A B2C SAML-munkamenet tárolására szolgáló szolgáltató használata esetén a értékének a következőnek `RegisterServiceProviders` kell lennie: `true` . Az SAML-munkamenet kijelentkezéséhez a `SessionIndex` és a `NameID` Befejezés szükséges.
 
 Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-profile.md) a következő műszaki profilt használja
 
@@ -166,7 +166,7 @@ Az `SM-Saml-issuer` [SAML kiállítói műszaki profil](saml-issuer-technical-pr
 | Attribútum | Kötelező | Leírás|
 | --- | --- | --- |
 | IncludeSessionIndex | Nem | Jelenleg nincs használatban, figyelmen kívül hagyható.|
-| RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false`.|
+| RegisterServiceProviders | Nem | Azt jelzi, hogy a szolgáltatónak regisztrálnia kell az összes olyan SAML-szolgáltatót, amely kiállított egy állítást. Lehetséges értékek: `true` (alapértelmezett) vagy `false` .|
 
 
 ## <a name="next-steps"></a>További lépések

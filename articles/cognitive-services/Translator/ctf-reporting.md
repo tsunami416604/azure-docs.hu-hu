@@ -1,5 +1,5 @@
 ---
-title: Kollaboratív fordítási keretrendszer (CTF) jelentése – Translator Text API
+title: Kollaboratív fordítási keretrendszer (CTF) jelentéskészítés – Translator
 titleSuffix: Azure Cognitive Services
 description: Az együttműködési célú fordítási keretrendszer (CTF) jelentéskészítésének használata.
 services: cognitive-services
@@ -10,19 +10,19 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: swmachan
-ms.openlocfilehash: 0c099584642de1939df5e1e7d9785006e8d25235
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 1bf6fefbe7d2ea3fccc393f4445fceec44ed4117
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732342"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584671"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>A Collaborative Translation Framework (CTF) jelentéskészítés használata
 
 > [!NOTE]
-> Ez a metódus elavult. A Translator Text API 3.0-s verziójában nem érhető el.
+> Ez a metódus elavult. Nem érhető el a Translator V 3.0-s verziójában.
 > 
-> A korábban a Translator Text API V 2.0-s verziójában már elérhető együttműködési fordítási keretrendszer (csoportmunka) a 2018. február 1-től elavult. A AddTranslation és a AddTranslationArray függvények lehetővé teszik a felhasználók számára, hogy az együttműködési fordítási keretrendszeren keresztül engedélyezzék a javítást. 2018. január 31-ig ez a két függvény nem fogadta el az új mondatok beküldését, és a felhasználók hibaüzenetet kapnak. Ezek a függvények ki lettek vonva, és nem lesznek lecserélve.
+> A korábban a V 2.0-s verzióhoz elérhető együttműködési fordítási keretrendszer (CTF) 2018 február 1-től elavult. A AddTranslation és a AddTranslationArray függvények lehetővé teszik a felhasználók számára, hogy az együttműködési fordítási keretrendszeren keresztül engedélyezzék a javítást. 2018. január 31-ig ez a két függvény nem fogadta el az új mondatok beküldését, és a felhasználók hibaüzenetet kapnak. Ezek a függvények ki lettek vonva, és nem lesznek lecserélve.
 
 Az együttműködési célú fordítási keretrendszer (CTF) jelentéskészítési API visszaadja a statisztikát és a tényleges tartalmat a CTF-tárolóban. Ez az API különbözik a GetTranslations () metódustól, mert:
 * A lefordított tartalmat és a teljes darabszámot adja vissza kizárólag a fiókjából (appId vagy Azure Marketplace-fiók).
@@ -30,11 +30,10 @@ Az együttműködési célú fordítási keretrendszer (CTF) jelentéskészíté
 * A nem ad vissza automatikus fordítást (gépi fordítás).
 
 ## <a name="endpoint"></a>Végpont
-A CTF jelentési API végpontjahttps://api.microsofttranslator.com/v2/beta/ctfreporting.svc
-
+A CTF jelentési API végpontja https://api.microsofttranslator.com/v2/beta/ctfreporting.svc .
 
 ## <a name="methods"></a>Metódusok
-| Name (Név) |    Leírás|
+| Name | Leírás|
 |:---|:---|
 | GetUserTranslationCounts metódus | A felhasználó által létrehozott fordítások számának beolvasása. |
 | GetUserTranslations metódus | A felhasználó által létrehozott fordítások beolvasása. |
@@ -108,14 +107,14 @@ Az eredményhalmaz a **UserTranslationCount**tömbjét tartalmazza. Minden UserT
 | Kivétel | Üzenet | Feltételek |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | A "**maxDateUtc**" paraméternek nagyobbnak vagy egyenlőnek kell lennie, mint "**minDateUtc**".| A **maxDateUtc** paraméter értéke kisebb, mint a **minDateUtc**paraméter értéke.|
-| TranslateApiException | Az IP-cím meghaladja a kvótát.| <ul><li>A kérések száma percenként elérte a korlátot.</li><li>A kérelem mérete 10000 karakternél továbbra is korlátozott.</li><li>Az óránkénti és a napi kvóta korlátozza a Microsoft Translator API által elfogadott karakterek számát.</li></ul>|
+| TranslateApiException | Az IP-cím meghaladja a kvótát.| <ul><li>A kérések száma percenként elérte a korlátot.</li><li>A kérelem mérete 10000 karakternél továbbra is korlátozott.</li><li>Az óránkénti és a napi kvóta korlátozza a fordító által elfogadott karakterek számát.</li></ul>|
 | TranslateApiException | A AppId a kvóta felett van.| Az alkalmazás azonosítója túllépte az óránkénti vagy a napi kvótát.|
 
 > [!NOTE]
 > A kvóta úgy módosul, hogy a szolgáltatás minden felhasználója számára igazságos legyen.
 
 **Példák a GitHib**
-* [C #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)
 
 ## <a name="getusertranslations-method"></a>GetUserTranslations metódus
@@ -181,12 +180,12 @@ Az eredményhalmaz a **UserTranslation**tömbjét tartalmazza. Minden UserTransl
 | Kivétel | Üzenet | Feltételek |
 |:---|:---|:---|
 | ArgumentOutOfRangeException | A "**maxDateUtc**" paraméternek nagyobbnak vagy egyenlőnek kell lennie, mint "**minDateUtc**".| A **maxDateUtc** paraméter értéke kisebb, mint a **minDateUtc**paraméter értéke.|
-| TranslateApiException | Az IP-cím meghaladja a kvótát.| <ul><li>A kérések száma percenként elérte a korlátot.</li><li>A kérelem mérete 10000 karakternél továbbra is korlátozott.</li><li>Az óránkénti és a napi kvóta korlátozza a Microsoft Translator API által elfogadott karakterek számát.</li></ul>|
+| TranslateApiException | Az IP-cím meghaladja a kvótát.| <ul><li>A kérések száma percenként elérte a korlátot.</li><li>A kérelem mérete 10000 karakternél továbbra is korlátozott.</li><li>Az óránkénti és a napi kvóta korlátozza a fordító által elfogadott karakterek számát.</li></ul>|
 | TranslateApiException | A AppId a kvóta felett van.| Az alkalmazás azonosítója túllépte az óránkénti vagy a napi kvótát.|
 
 > [!NOTE]
 > A kvóta úgy módosul, hogy a szolgáltatás minden felhasználója számára igazságos legyen.
 
 **Példák a GitHib**
-* [C #](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
+* [C#](https://github.com/MicrosoftTranslator/CustomTranslator-API-CSharp)
 * [PHP](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-PHP)

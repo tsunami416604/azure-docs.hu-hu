@@ -59,7 +59,7 @@ Amikor Application Insightsban hoz létre alkalmazást, a rendszer automatikusan
 
 A Log Analytics munkaterülettől eltérően egy Application Insights alkalmazásnak van egy rögzített készlete. Más adatforrások nem konfigurálhatók az alkalmazásba való íráshoz, így további táblák nem hozhatók létre. 
 
-| Tábla | Leírás | 
+| Táblázat | Leírás | 
 |:---|:---|
 | availabilityResults | A rendelkezésre állási tesztek összesített adatai. |
 | browserTimings      | Az ügyfél teljesítményére vonatkozó adat, például a bejövő adat feldolgozásához szükséges idő. |

@@ -72,7 +72,7 @@ Válassza ki a **hibák** elemet az oldal tetején, és megnyílik a munkafüzet
 
 ![Képernyőfelvétel a HTTP-kérelem típusa szerinti bontásban fellépő hibákról](./media/cosmosdb-insights-overview/failures.png)
 
-| Kód      |  Leírás       | 
+| Code      |  Leírás       | 
 |-----------|:--------------------|
 | `200 OK`  | A következő REST-műveletek egyike sikeres volt: </br>– Erőforrás lekérése. </br> -Erőforrásra kerül. </br> – KÖZZÉTÉTEL egy erőforráson. </br> – KÖZZÉTÉTEL a tárolt eljárási erőforráson a tárolt eljárás végrehajtásához.|
 | `201 Created` | Az erőforrás-létrehozás utáni művelet sikeres. |

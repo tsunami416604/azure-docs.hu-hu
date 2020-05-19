@@ -30,7 +30,7 @@ Az Azure Marketplace-ajánlatok típusai az alábbi táblázatban találhatók.
 
 | **Ajánlat típusa**    | **Leírás**  |
 | :------------------- | :-------------------|
-| [**Virtual machines (Virtuális gépek)**](./marketplace-virtual-machines.md) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
+| [**Virtuális gépek**](./marketplace-virtual-machines.md) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
 | [**Megoldássablonok**](./marketplace-solution-templates.md) | Használja a megoldás sablont (más néven Azure-alkalmazás), ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen kívül. A megoldási sablonok számos különböző Azure-erőforrást alkalmazhatnak, többek között a virtuális gépeket is beleértve.  |
 | [**Felügyelt alkalmazások**](./marketplace-managed-apps.md) | Használja az Azure-alkalmazást: felügyelt alkalmazás-ajánlat típusa, ha a következő feltételek szükségesek: <br> <ul> <li> Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. </li> <li>Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje. </li> <ul> |
 | [**SaaS-alkalmazás**](./partner-center-portal/create-new-saas-offer.md) | A SaaS app Offer típus használatával engedélyezheti az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldását. |

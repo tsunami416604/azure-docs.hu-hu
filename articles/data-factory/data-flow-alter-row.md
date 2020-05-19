@@ -29,12 +29,12 @@ Az Alter sor átalakítások csak adatbázis-vagy CosmosDB-tárolókban működn
 
 ## <a name="specify-a-default-row-policy"></a>Alapértelmezett sor szabályzatának meghatározása
 
-Hozzon létre egy Alter sort átalakítást, és határozzon meg egy feltételt tartalmazó sort `true()`. Minden olyan sor meg lesz jelölve, amely nem felel meg a korábban definiált kifejezéseknek. Alapértelmezés szerint minden olyan sor meg lesz jelölve, amely nem felel meg a `Insert`feltételes kifejezéseknek.
+Hozzon létre egy Alter sort átalakítást, és határozzon meg egy feltételt tartalmazó sort `true()` . Minden olyan sor meg lesz jelölve, amely nem felel meg a korábban definiált kifejezéseknek. Alapértelmezés szerint minden olyan sor meg lesz jelölve, amely nem felel meg a feltételes kifejezéseknek `Insert` .
 
 ![Módosítási sor házirendje](media/data-flow/alter-row4.png "Módosítási sor házirendje")
 
 > [!NOTE]
-> Az összes sor egyetlen házirenddel való megjelöléséhez létrehozhat egy feltételt az adott szabályzathoz, és a `true()`feltételt is megadhatja.
+> Az összes sor egyetlen házirenddel való megjelöléséhez létrehozhat egy feltételt az adott szabályzathoz, és a feltételt is megadhatja `true()` .
 
 ## <a name="view-policies-in-data-preview"></a>Szabályzatok megtekintése az adatelőnézetben
 
@@ -67,7 +67,7 @@ A következő módszerekkel oldható meg:
 
 1. Nyissa meg a fogadó átalakítási beállításokat, és állítsa be a "kihagyás a kulcsok oszlopainak" beállítást. Ezzel a beállítással megadhatja, hogy az ADF ne írja meg a leképezés kulcsaként kiválasztott oszlopot.
 
-2. Ha a kulcs oszlop nem az a oszlop, amely a problémát okozza az identitás oszlopaiban, akkor használhatja a fogadó átalakítás előtti SQL-beállítást: ```SET IDENTITY_INSERT tbl_content ON```. Ezt követően kapcsolja ki a feldolgozás utáni SQL-tulajdonságot: ```SET IDENTITY_INSERT tbl_content OFF```.
+2. Ha a kulcs oszlop nem az a oszlop, amely a problémát okozza az identitás oszlopaiban, akkor használhatja a fogadó átalakítás előtti SQL-beállítást: ```SET IDENTITY_INSERT tbl_content ON``` . Ezt követően kapcsolja ki a feldolgozás utáni SQL-tulajdonságot: ```SET IDENTITY_INSERT tbl_content OFF``` .
 
 3. Mind az identitás, mind a terjesztési oszlop esetében átválthatja a logikát a Upsert-ről egy külön frissítési feltételre és egy külön beszúrási feltételre egy feltételes felosztású átalakítás használatával. Így beállíthatja a leképezést a frissítési útvonalon, hogy figyelmen kívül hagyja a kulcs oszlopának leképezését.
 
@@ -87,7 +87,7 @@ A következő módszerekkel oldható meg:
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy nevű `CleanData` módosítási sor átalakítása, amely egy bejövő adatfolyamot `SpecifyUpsertConditions` vesz igénybe, és három módosítási sor feltételt hoz létre. Az előző átalakítás során a rendszer kiszámítja a nevű `alterRowCondition` oszlopot, amely meghatározza, hogy a rendszer beszúrja, frissíti vagy törli-e a sort az adatbázisban. Ha az oszlop értéke olyan karakterlánc-értékkel rendelkezik, amely megfelel az Alter Row szabálynak, akkor azt a rendszer hozzárendeli a szabályzathoz.
+Az alábbi példa egy nevű módosítási sor átalakítása `CleanData` , amely egy bejövő adatfolyamot vesz igénybe, `SpecifyUpsertConditions` és három módosítási sor feltételt hoz létre. Az előző átalakítás során a `alterRowCondition` rendszer kiszámítja a nevű oszlopot, amely meghatározza, hogy a rendszer beszúrja, frissíti vagy törli-e a sort az adatbázisban. Ha az oszlop értéke olyan karakterlánc-értékkel rendelkezik, amely megfelel az Alter Row szabálynak, akkor azt a rendszer hozzárendeli a szabályzathoz.
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 

@@ -9,19 +9,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 03/31/2020
+ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: seodec2018, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 979bd034b2f4d3665de64fe8ffdb33efc7a370cb
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 1613b21658e3ecf89cfe895462258ec5b8b93c6d
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478582"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83118985"
 ---
-# <a name="quickstart-search-for-images-with-the-bing-image-search-api-an-azure-cognitive-service"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search API, egy Azure kognitív szolgáltatással 
+# <a name="quickstart-search-for-images-with-the-bing-image-search-api-and-java"></a>Gyors útmutató: rendszerképek keresése a Bing Image Search API és a Javával 
 
-Ezzel a rövid útmutatóval keresési kéréseket küldhet az Azure Cognitive Services Bing Image Search API. Ez a Java-alkalmazás keresési lekérdezést küld az API-nak, és megjeleníti az eredményekben szereplő első rendszerkép URL-címét. Habár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
+Ebből a rövid útmutatóból megtudhatja, hogyan küldhet keresési kéréseket az Azure Cognitive Services Bing Image Search API. Ez a Java-alkalmazás keresési lekérdezést küld az API-nak, és megjeleníti az eredményekben szereplő első rendszerkép URL-címét. Bár ez az alkalmazás Java nyelven íródott, az API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel.
 
 A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elérhető a [GitHubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7Quickstart.java).
 
@@ -35,7 +35,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="create-and-initialize-a-project"></a>Projekt létrehozása és inicializálása
 
-1. Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesztőjében, és importálja az alábbi kódtárakat.
+1. Hozzon létre egy új Java-projektet a kedvenc IDE vagy szerkesztőben, és importálja a következő könyvtárakat:
 
     ```java
     import java.net.*;
@@ -48,7 +48,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     import com.google.gson.JsonParser;
     ```
 
-2. Hozza létre az API-végpont, az előfizetési kulcsot és a kerőkifejezést. `host`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
+2. Hozza létre az API-végpont, az előfizetési kulcsot és a kerőkifejezést. A (z) esetében `host` a globális végpontot használhatja a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot is.
 
     ```java
     static String subscriptionKey = "enter key here";
@@ -59,7 +59,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="construct-the-search-request-and-query"></a>A keresési kérelem és a lekérdezés összeállítása
 
-1. Az előző lépés változóit használva formázza a keresési URL-címet az API-kérelemhez. A keresési kifejezésnek URL-kódolással kell rendelkeznie, mielőtt hozzáfűzi a kéréshez.
+Az előző lépésben szereplő változók használatával formázhatja az API-kérelem keresési URL-címét. URL – a keresési kifejezés kódolása, mielőtt hozzáfűzi a kéréshez.
 
     ```java
     // construct the search request URL (in the form of endpoint + query string)
@@ -70,7 +70,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="receive-and-process-the-json-response"></a>A JSON-válasz fogadása és feldolgozása
 
-1. A Bing Image Search API-tól érkező JSON-válasz fogadása és az eredményobjektum összeállítása.
+1. Fogadja a JSON-választ a Bing Image Search API és létrehozza az eredmény objektumot.
 
     ```java
     // receive JSON body
@@ -79,7 +79,8 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     // construct result object for return
     SearchResults results = new SearchResults(new HashMap<String, String>(), response);
     ```
-2. Válassza külön a Bing-specifikus HTTP-fejléceket a JSON-törzstől
+2. Válassza el a Binggel kapcsolatos HTTP-fejléceket a JSON-törzstől.
+
     ```java
     // extract Bing-related HTTP headers
     Map<String, List<String>> headers = connection.getHeaderFields();
@@ -91,7 +92,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     }
     ```
 
-3. Zárja le az adatfolyamot, és elemezze a választ. Szerezze meg a visszaadott keresési eredmények teljes számát és az első képeredmény miniatűrképének URL-címét.
+3. Zárja le az adatfolyamot, és elemezze a választ. Szerezze be a visszaadott keresési eredmények teljes számát és a miniatűr URL-címét az első képeredményhez.
 
     ```java
     stream.close();
@@ -158,11 +159,11 @@ A Bing Image Search API válaszai JSON formátumban érkeznek vissza. A mintavá
 > [!div class="nextstepaction"]
 > [Egyoldalas alkalmazás-oktatóanyag a Bing Image Search használatához](../tutorial-bing-image-search-single-page-app.md)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>További információ
 
-* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
-* A Bing Search API-k [díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) . 
-* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-* [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Mi az a Bing Image Search API?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Próbáljon ki egy online interaktív bemutatót](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/).
+* [A Bing Search API-k díjszabása](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/).
+* [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api).
+* Az [Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services).
+* [Bing Image Search API hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference).

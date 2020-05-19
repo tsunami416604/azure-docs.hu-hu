@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: cde505e4c95de9b9693a0e9d260d7fa84f3e905b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75531479"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584620"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services és gépi tanulás
 
@@ -91,12 +91,12 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 
 |Kognitív szolgáltatás|Nincs szükség betanítási adatgyűjtésre|Megadhat egy vagy több betanítási adatkészletet|Valós idejű vagy közel valós idejű adatgyűjtés|
 |--|--|--|--|
-|[Anomaly Detector](./Anomaly-Detector/overview.md)|x|x|x|
+|[Anomáliadetektor](./Anomaly-Detector/overview.md)|x|x|x|
 |Bing kereső |x|||
-|[Számítógépes látástechnológia](./Computer-vision/Home.md)|x|||
-|[Tartalommoderátor](./Content-Moderator/overview.md)|x||x|
+|[Computer Vision](./Computer-vision/Home.md)|x|||
+|[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Arcfelismerés](./Face/Overview.md)|x|x||
+|[Face](./Face/Overview.md)|x|x||
 |[Form Recognizer](./form-recognizer/overview.md)||x||
 |[Modern olvasó](./immersive-reader/overview.md)|x|||
 |[Ink Recognizer](./Ink-recognizer/overview.md)|x|x||
@@ -106,10 +106,10 @@ A következő adattípusok kategorizálják az egyes szolgáltatásokat, amelyek
 |[Beszélő felismerő](./speaker-recognition/home.md)||x||
 |[Beszédfelismerési szöveg – beszéd (TTS)](speech-service/text-to-speech.md)|x|x||
 |[Beszéd-beszéd – szöveg (STT)](speech-service/speech-to-text.md)|x|x||
-|[Beszédfordítás](speech-service/speech-translation.md)|x|||
-|[Szövegelemzés](./text-analytics/overview.md)|x|||
-|[Fordítói szöveg](./translator/translator-info-overview.md)|x|||
-|[Translator Text – egyéni fordító](./translator/custom-translator/overview.md)||x||
+|[Speech Translation](speech-service/speech-translation.md)|x|||
+|[Text Analytics](./text-analytics/overview.md)|x|||
+|[Translator](./translator/translator-info-overview.md)|x|||
+|[Translator-Custom Translator](./translator/custom-translator/overview.md)||x||
 
 * A megszemélyesítő csak a szolgáltatás által gyűjtött betanítási adatokat igényli (valós időben működik) a szabályzat és az adatok kiértékeléséhez. A személyre szabott beállításhoz nincs szükség nagyméretű korábbi adatkészletekre a kezdeti vagy a kötegelt képzéshez. 
 

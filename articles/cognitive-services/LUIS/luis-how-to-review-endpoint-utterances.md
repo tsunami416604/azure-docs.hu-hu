@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/27/2020
+ms.date: 05/07/2020
 ms.author: diberry
-ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c976d3b74badc4eeb5978af352fe425089f2fbfb
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219851"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584966"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>A LUIS-alkalmazás fejlesztése a végpontok hosszúságú kimondott szöveg áttekintésével
 
 A megfelelő előrejelzésekhez tartozó végpont hosszúságú kimondott szöveg áttekintését [aktív tanulási](luis-concept-review-endpoint-utterances.md)folyamatnak nevezzük. Az aktív tanulás rögzíti a végponti lekérdezéseket, és kiválasztja a felhasználó végpontjának hosszúságú kimondott szöveg, hogy az nem biztos benne. Ezeket a hosszúságú kimondott szöveg áttekintve kiválaszthatja a szándékot, és megjelölheti az entitásokat ezen olvasási-globális hosszúságú kimondott szöveg. Fogadja el ezeket a módosításokat a hosszúságú kimondott szöveg, majd végezze el a betanítást és a közzétételt. A LUIS ezután pontosabban azonosítja a hosszúságú kimondott szöveg.
-
-[!INCLUDE [Uses preview portal](includes/uses-portal-preview.md)]
 
 ## <a name="enable-active-learning"></a>Aktív tanulás engedélyezése
 
@@ -30,7 +28,8 @@ Az aktív tanulás engedélyezéséhez naplóznia kell a felhasználói lekérde
 
 A LUIS portál használatával hozza létre a megfelelő végpont-lekérdezést.
 
-1. A [Luis-portálon](https://preview.luis.ai/)válassza ki az alkalmazást az alkalmazások listájából.
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
+1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
 1. Lépjen a **kezelés** szakaszra, majd válassza az **Azure-erőforrások**lehetőséget.
 1. A hozzárendelt előrejelzési erőforráshoz válassza a **lekérdezési paraméterek módosítása**lehetőséget.
 
@@ -42,7 +41,7 @@ A LUIS portál használatával hozza létre a megfelelő végpont-lekérdezést.
     > [!div class="mx-imgBorder"]
     > ![A LUIS Portal használatával mentheti a naplókat, amelyek az aktív tanuláshoz szükségesek.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
 
-     Ez a művelet megváltoztatja a példa URL-címét `log=true` a querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
+     Ez a művelet megváltoztatja a példa URL-címét a `log=true` querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>A hosszúságú kimondott szöveg igazításához megfelelő leképezési előrejelzések
 
@@ -60,7 +59,7 @@ Ha elfogadja ezt a szándékot, jelölje be a pipa. Ha nem fogadja el a javaslat
 
 Minden Kimondás törölhető a felülvizsgálati listáról. A törlés után nem jelenik meg többé a listában. Ez akkor is igaz, ha a felhasználó ugyanazt a Kimondás alatt áll, mint a végpont.
 
-Ha nem biztos abban, hogy törölni kell a kilépést, vagy helyezze át a none (nincs) értékre, vagy hozzon létre egy új `miscellaneous` szándékot, például az értéket, és helyezze át a teljes értéket az adott szándékba.
+Ha nem biztos abban, hogy törölni kell a kilépést, vagy helyezze át a none (nincs) értékre, vagy hozzon létre egy új szándékot, például az értéket, `miscellaneous` és helyezze át a teljes értéket az adott szándékba.
 
 ## <a name="disable-active-learning"></a>Aktív tanulás letiltása
 

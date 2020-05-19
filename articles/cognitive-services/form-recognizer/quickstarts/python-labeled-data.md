@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 02/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 36ded3bd85cd7acdffbfe46b9e931a811994fa30
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0fa6785b2c4029dc5eb3f0397b1144616be357fe
+ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81531100"
+ms.lasthandoff: 04/30/2020
+ms.locfileid: "82594168"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST API a Python használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -63,7 +63,7 @@ Ahhoz, hogy a szolgáltatás figyelembe vegye a címkével ellátott betanítás
 
 1. Hívja meg az **[elemzés elrendezés](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/AnalyzeLayoutAsync)** API-t az olvasási elrendezés tárolójában a bemeneti fájllal a kérelem törzsének részeként. Mentse a válasz **műveleti helye** fejlécében található azonosítót.
 1. Hívja meg az elemzési **[elrendezés eredményének beolvasása](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/GetAnalyzeLayoutResult)** API-t az előző lépés műveleti azonosítójának használatával.
-1. Kérje le a választ, és írja a tartalmat egy fájlba. Minden forrás űrlap esetében a megfelelő OCR-fájlnak tartalmaznia kell az eredeti fájlnevet a következővel: `.ocr.json`. Az OCR JSON-kimenetének a következő formátumúnak kell lennie. Tekintse meg a [minta OCR-fájlját](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) a teljes példaként. 
+1. Kérje le a választ, és írja a tartalmat egy fájlba. Minden forrás űrlap esetében a megfelelő OCR-fájlnak tartalmaznia kell az eredeti fájlnevet a következővel: `.ocr.json` . Az OCR JSON-kimenetének a következő formátumúnak kell lennie. Tekintse meg a [minta OCR-fájlját](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.ocr.json) a teljes példaként. 
 
     ```json
     {
@@ -118,9 +118,9 @@ Ahhoz, hogy a szolgáltatás figyelembe vegye a címkével ellátott betanítás
 
 A címkézett fájlok olyan kulcs-érték társításokat tartalmaznak, amelyeket a felhasználó kézzel írt be. A címkével ellátott adatképzéshez szükségesek, de nem minden forrásfájl számára szükséges a megfelelő címkefájl. A címkék nélküli forrásfájlok általános betanítási dokumentumként lesznek kezelve. A megbízható képzéshez öt vagy több címkézett fájlt ajánlunk.
 
-A címkefájl létrehozásakor megadhatja, hogy az egyes régiók&mdash;pontosan milyen értékekkel rendelkeznek a dokumentumban. Ez a képzés még nagyobb pontosságot eredményez. A régiók formátuma nyolc értékből áll, amelyek megfelelnek a négy X, Y koordinátáknak: felülről balra, jobb felső sarok, jobb alsó és bal alsó. A koordináta-értékek nulla és egy, a lap méretei közé vannak méretezve.
+A címkefájl létrehozásakor megadhatja, hogy &mdash; az egyes régiók pontosan milyen értékekkel rendelkeznek a dokumentumban. Ez a képzés még nagyobb pontosságot eredményez. A régiók formátuma nyolc értékből áll, amelyek megfelelnek a négy X, Y koordinátáknak: felülről balra, jobb felső sarok, jobb alsó és bal alsó. A koordináta-értékek nulla és egy, a lap méretei közé vannak méretezve.
 
-Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet fűzi hozzá a következőhöz: `.labels.json`. A címkefájl formátuma a következő lehet:. Tekintse meg a [minta címkefájl](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) teljes példáját.
+Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet fűzi hozzá a következőhöz: `.labels.json` . A címkefájl formátuma a következő lehet:. Tekintse meg a [minta címkefájl](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/curl/form-recognizer/Invoice_1.pdf.labels.json) teljes példáját.
 
 ```json
 {
@@ -195,9 +195,9 @@ Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet f
 
 Ha címkével ellátott adattal szeretne betanítani egy modellt, a következő Python-kód futtatásával hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-preview/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
-1. Cserélje `<Endpoint>` le az értékét az űrlap-felismerő erőforrás végponti URL-címére.
-1. Cserélje `<SAS URL>` le az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
-1. A `<Blob folder name>` helyére írja be annak a mappának a nevét a blob-tárolóban, ahol a bemeneti adatok találhatók. Ha az adatok a gyökérben vannak, hagyja üresen, és távolítsa el `"prefix"` a MEZŐT a HTTP-kérelem törzsében.
+1. Cserélje le az értékét `<Endpoint>` az űrlap-felismerő erőforrás végponti URL-címére.
+1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. A helyére írja `<Blob folder name>` be annak a mappának a nevét a blob-tárolóban, ahol a bemeneti adatok találhatók. Ha az adatok a gyökérben vannak, hagyja üresen, és távolítsa el a `"prefix"` mezőt a HTTP-kérelem törzsében.
 
 ```python
 ########### Python Form Recognizer Labeled Async Train #############
@@ -274,7 +274,7 @@ while n_try < n_tries:
 print("Train operation did not complete within the allocated time.")
 ```
 
-A betanítási folyamat befejeztével a következőhöz hasonló JSON `201 (Success)` -tartalommal kapcsolatos választ kap. A válasz lerövidítve lett az egyszerűség kedvéért.
+A betanítási folyamat befejeztével a `201 (Success)` következőhöz hasonló JSON-tartalommal kapcsolatos választ kap. A válasz lerövidítve lett az egyszerűség kedvéért.
 
 ```json
 { 
@@ -346,7 +346,7 @@ Másolja az `"modelId"` értéket a következő lépésekben való használatra.
 
 [!INCLUDE [analyze forms](../includes/python-custom-analyze.md)]
 
-Ha a folyamat befejeződött, a JSON-tartalommal `202 (Success)` kapcsolatos választ a következő formátumban fogja kapni. A válasz lerövidítve lett az egyszerűség kedvéért. A fő kulcs/érték társítások a `"documentResults"` csomóponton találhatók. Az elrendezési API eredményei (a dokumentumban lévő szöveg tartalma és pozíciói) a `"readResults"` csomóponton vannak.
+Ha a folyamat befejeződött, a `202 (Success)` JSON-tartalommal kapcsolatos választ a következő formátumban fogja kapni. A válasz lerövidítve lett az egyszerűség kedvéért. A fő kulcs/érték társítások a `"documentResults"` csomóponton találhatók. Az elrendezési API eredményei (a dokumentumban lévő szöveg tartalma és pozíciói) a `"readResults"` csomóponton vannak.
 
 ```json
 { 
@@ -486,11 +486,8 @@ Ha a folyamat befejeződött, a JSON-tartalommal `202 (Success)` kapcsolatos vá
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/15/words/0"
-                }
-              ],
-              "fieldName":"total"
+                "#/analyzeResult/readResults/0/lines/15/words/0"
+              ]
             },
             "invoice #":{ 
               "type":"string",
@@ -509,11 +506,8 @@ Ha a folyamat befejeződött, a JSON-tartalommal `202 (Success)` kapcsolatos vá
               "page":1,
               "confidence":1,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/12/words/0"
-                }
-              ],
-              "fieldName":"invoice #"
+                "#/analyzeResult/readResults/0/lines/12/words/0"
+              ]
             },
             "vat":{ 
               "type":"string",
@@ -532,11 +526,8 @@ Ha a folyamat befejeződött, a JSON-tartalommal `202 (Success)` kapcsolatos vá
               "page":1,
               "confidence":0.9839357733726502,
               "elements":[ 
-                { 
-                  "$ref":"#/analyzeResult/readResults/0/lines/16/words/0"
-                }
-              ],
-              "fieldName":"vat"
+                "#/analyzeResult/readResults/0/lines/16/words/0"
+              ]
             },
             ...
           }
@@ -551,7 +542,7 @@ Ha a folyamat befejeződött, a JSON-tartalommal `202 (Success)` kapcsolatos vá
 
 ## <a name="improve-results"></a>Az eredmények javítása
 
-Vizsgálja meg `"confidence"` az egyes kulcsok/értékek eredményének értékét a `"documentResults"` csomópont alatt. Érdemes megtekinteni a `"readResults"` csomópontban található megbízhatósági pontszámokat is, amelyek az elrendezési műveletnek felelnek meg. Az elrendezés eredményének megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.
+Vizsgálja `"confidence"` meg az egyes kulcsok/értékek eredményének értékét a `"documentResults"` csomópont alatt. Érdemes megtekinteni a csomópontban található megbízhatósági pontszámokat is `"readResults"` , amelyek az elrendezési műveletnek felelnek meg. Az elrendezés eredményének megbízhatósága nem befolyásolja a kulcs/érték kinyerési eredményeinek megbízhatóságát, ezért mindkettőt ellenőriznie kell.
 * Ha az elrendezési művelet megbízhatósági pontszáma alacsony, próbálja meg javítani a bemeneti dokumentumok minőségét (lásd a [bemeneti követelményeket](../overview.md#input-requirements)).
 * Ha a kulcs/érték kibontási műveletének megbízhatósági pontszáma alacsony, ügyeljen arra, hogy az elemzett dokumentumok ugyanolyan típusúak legyenek, mint a betanítási készletben használt dokumentumok. Ha a betanítási készlet dokumentumaiban változások vannak kialakítva, érdemes lehet különböző mappákba bontani őket, és minden egyes változathoz egy modellt betanítani.
 

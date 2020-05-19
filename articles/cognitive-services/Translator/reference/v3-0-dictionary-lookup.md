@@ -1,5 +1,5 @@
 ---
-title: Translator Text API szótár keresési metódusa
+title: Fordítói szótár keresési metódusa
 titleSuffix: Azure Cognitive Services
 description: A szótári keresési módszer alternatív fordításokat biztosít egy szó és néhány köznyelvi kifejezés esetében.
 services: cognitive-services
@@ -10,20 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b2d111f22b8ef36b20b93b65ff1ea6f7b52ea8f7
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76548951"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584739"
 ---
-# <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3,0: szótár keresése
+# <a name="translator-30-dictionary-lookup"></a>Translator 3,0: szótár keresése
 
 Alternatív fordításokat biztosít egy szóhoz és néhány köznyelvi-kifejezéshez. A fordítások egy része a beszédnek, valamint a háttér-fordítások listáját tartalmazza. A háttér-fordítások lehetővé teszik a felhasználók számára, hogy megértsék a fordítást a kontextusban. A [példában szereplő szótári](./v3-0-dictionary-examples.md) művelet további részletezést tesz lehetővé az egyes fordítási párok példáinak megjelenítéséhez.
 
-## <a name="request-url"></a>Kérés URL-címe
+## <a name="request-url"></a>URL-cím kérése
 
-`POST` Kérelem küldése a következőnek:
+Kérelem küldése `POST` a következőnek:
 
 ```HTTP
 https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
@@ -36,8 +36,8 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 | Lekérdezési paraméter  | Leírás |
 | ------ | ----------- |
 | api-verzió <img width=200/>   | **Kötelező paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek szerepelnie kell`3.0` |
-| a | **Kötelező paraméter**.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a `dictionary` hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie. |
-| erre:   | **Kötelező paraméter**.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a `dictionary` hatókörben szereplő [támogatott nyelvek](v3-0-languages.md) egyikének kell lennie. |
+| a | **Kötelező paraméter**.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie `dictionary` . |
+| erre:   | **Kötelező paraméter**.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a hatókörben szereplő [támogatott nyelvek](v3-0-languages.md) egyikének kell lennie `dictionary` . |
 
 
 A kérelem fejlécei a következők:
@@ -45,13 +45,13 @@ A kérelem fejlécei a következők:
 | Fejlécek  | Leírás |
 | ------ | ----------- |
 | Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
-| Content-Type | **Kötelező kérelem fejléce**<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a `application/json`következők:. |
+| Content-Type | **Kötelező kérelem fejléce**<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json` . |
 | Content-Length   | **Kötelező kérelem fejléce**<br/>A kérelem törzsének hossza |
-| X – ClientTraceId   | Nem **kötelező**.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító a `ClientTraceId`nevű lekérdezési paraméter használatával. |
+| X – ClientTraceId   | Nem **kötelező**.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Kihagyhatja ezt a fejlécet, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító a nevű lekérdezési paraméter használatával `ClientTraceId` . |
 
 ## <a name="request-body"></a>A kérés törzse
 
-A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű `Text`JSON-objektum, amely a keresett kifejezést jelöli.
+A kérelem törzse egy JSON-tömb. Minden tömb elem egy nevű JSON `Text` -objektum, amely a keresett kifejezést jelöli.
 
 ```json
 [
@@ -76,7 +76,7 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
     * `normalizedTarget`: Egy karakterlánc, amely a kifejezés normalizált formáját adja a célként megadott nyelven. Ez az érték a [keresési példákban](./v3-0-dictionary-examples.md)bemenetként használható.
 
-    * `displayTarget`: Egy karakterlánc, amely a célként megadott nyelven és a végfelhasználók számára legmegfelelőbb formában jeleníti meg a kifejezést. Általában ez a kifejezés csak a `normalizedTarget` nagybetűktől függ. Például a "Juan" kifejezésnek megfelelő főnév a következő lesz `normalizedTarget = "juan"` : `displayTarget = "Juan"`és.
+    * `displayTarget`: Egy karakterlánc, amely a célként megadott nyelven és a végfelhasználók számára legmegfelelőbb formában jeleníti meg a kifejezést. Általában ez a kifejezés csak a `normalizedTarget` nagybetűktől függ. Például a "Juan" kifejezésnek megfelelő főnév a következő lesz: `normalizedTarget = "juan"` és `displayTarget = "Juan"` .
 
     * `posTag`: Ez a kifejezés egy beszédfelismerési címkével társítja ezt a kifejezést.
 
@@ -99,13 +99,13 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
     * `prefixWord`: Egy karakterlánc, amely a szót a fordítás előtagjaként jeleníti meg. Jelenleg ez a nemek között megjelenő, a nem megfelelő nyelveket meghatározó névmások. Például a "Mosca" spanyol szó előtagja "La", mivel a "Mosca" egy spanyol nőnemű főnév. Ez csak a fordítástól függ, és nem a forráson. Ha nincs előtag, az üres karakterlánc lesz.
     
-    * `backTranslations`: A cél "Back translations" listája. Például a cél által lefordítható forrás szavak. A lista garantálja, hogy tartalmazza a kért forrás szót (például ha a forrásként felkeresett szó "fly", akkor a "fly" a `backTranslations` listában jelenik meg). Azonban nem garantált, hogy az első helyen legyen, és gyakran nem. A `backTranslations` lista minden eleme a következő tulajdonságok által leírt objektum:
+    * `backTranslations`: A cél "Back translations" listája. Például a cél által lefordítható forrás szavak. A lista garantálja, hogy tartalmazza a kért forrás szót (például ha a forrásként felkeresett szó "fly", akkor a "fly" a listában jelenik meg `backTranslations` ). Azonban nem garantált, hogy az első helyen legyen, és gyakran nem. A lista minden eleme `backTranslations` a következő tulajdonságok által leírt objektum:
 
         * `normalizedText`: Egy olyan karakterlánc, amely a cél visszafordítására szolgáló forrás kifejezés normalizált formáját adja. Ez az érték a [keresési példákban](./v3-0-dictionary-examples.md)bemenetként használható.        
 
         * `displayText`: Egy olyan karakterlánc, amely a cél háttér-fordítását adja meg a végfelhasználók számára legmegfelelőbb formában.
 
-        * `numExamples`: Egy egész szám, amely a fordítási pár számára elérhető példák számát jelöli. A tényleges példákat a [keresési példákhoz](./v3-0-dictionary-examples.md)külön hívással kell beolvasni. A szám általában egy UX-ben való megjelenítés megkönnyítésére szolgál. Egy felhasználói felület például hozzáadhat egy hiperhivatkozást a háttér-fordításhoz, ha a példák száma nagyobb nullánál, és a háttér-fordítást egyszerű szövegként jeleníti meg, ha nincsenek példák. Vegye figyelembe, hogy a [keresési példák](./v3-0-dictionary-examples.md) által visszaadott példák száma nem lehet kisebb `numExamples`, mert további szűrést alkalmazhat menet közben a "hibás" példák eltávolításához.
+        * `numExamples`: Egy egész szám, amely a fordítási pár számára elérhető példák számát jelöli. A tényleges példákat a [keresési példákhoz](./v3-0-dictionary-examples.md)külön hívással kell beolvasni. A szám általában egy UX-ben való megjelenítés megkönnyítésére szolgál. Egy felhasználói felület például hozzáadhat egy hiperhivatkozást a háttér-fordításhoz, ha a példák száma nagyobb nullánál, és a háttér-fordítást egyszerű szövegként jeleníti meg, ha nincsenek példák. Vegye figyelembe, hogy a [keresési példák](./v3-0-dictionary-examples.md) által visszaadott példák száma nem lehet kisebb `numExamples` , mert további szűrést alkalmazhat menet közben a "hibás" példák eltávolításához.
         
         * `frequencyCount`: Egy egész szám, amely az adatfordítási pár gyakoriságát jelöli. Ennek a mezőnek a fő célja, hogy olyan felhasználói felületet biztosítson, amely lehetővé teszi a háttér-fordítások rendezését, így a leggyakoribb kifejezések az elsők.
 
@@ -114,7 +114,7 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
 ## <a name="examples"></a>Példák
 
-Ebből a példából megtudhatja, hogyan lehet megkeresni az `fly` alternatív fordításokat spanyol nyelven az angol kifejezéssel.
+Ebből a példából megtudhatja, hogyan lehet megkeresni az alternatív fordításokat spanyol nyelven az angol kifejezéssel `fly` .
 
 ```curl
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -167,7 +167,7 @@ Ez a példa azt mutatja be, hogy mi történik, ha a keresett kifejezés nem lé
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"
 ```
 
-Mivel a kifejezés nem található a szótárban, a válasz törzse üres `translations` listát tartalmaz.
+Mivel a kifejezés nem található a szótárban, a válasz törzse üres listát tartalmaz `translations` .
 
 ```
 [

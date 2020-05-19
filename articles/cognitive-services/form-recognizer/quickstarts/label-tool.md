@@ -9,18 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 6330a77f5971348c3f63fdaa7602ebba9ddf45ec
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: ac4cacd8233935362ed155dab22a66459ed9126d
+ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186339"
+ms.lasthandoff: 05/01/2020
+ms.locfileid: "82691339"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Űrlap-felismerő modell betanítása címkékkel a minta feliratozási eszköz használatával
 
 Ebben a rövid útmutatóban az űrlap-felismerő REST API és a minta feliratozási eszköz használatával végezheti el a manuálisan címkézett adattípusú egyéni modell betanítását. A szolgáltatással kapcsolatos további információkért tekintse meg az Áttekintés a [címkékkel](../overview.md#train-with-labels) foglalkozó szakaszát.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Docker-tároló beállításához kövesse az alábbi lépéseket. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).
 
 > [!TIP]
-> Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz egy reakciós + Redux használatával létrehozott webalkalmazás, amely írógéppel van írva. További részletekért lásd: [OCR űrlap címkézése eszköz](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application).
+> Az OCR űrlap címkéző eszköze nyílt forráskódú projektként is elérhető a GitHubon. Az eszköz a reakciós + Redux használatával létrehozott, írógéppel használható webalkalmazás. További információért vagy a közreműködés megismeréséhez tekintse meg az [OCR űrlap feliratozási eszközének](https://github.com/microsoft/OCR-Form-Tools/blob/master/README.md#run-as-web-application) tárházát. Az eszköz online kipróbálásához lépjen a [FOTT webhelyére](https://fott.azurewebsites.net/).   
 
 1. Először telepítse a Docker-t egy gazdagépre. Ez az útmutató bemutatja, hogyan használható a helyi számítógép gazdagépként. Ha Docker-üzemeltetési szolgáltatást szeretne használni az Azure-ban, tekintse meg a [minta címkézési eszköz üzembe helyezése](../deploy-label-tool.md) útmutató című témakört. 
 
@@ -52,11 +52,11 @@ A minta címkéző eszköz futtatásához a Docker-motort fogja használni. A Do
    * [macOS](https://docs.docker.com/docker-for-mac/)
    * [Linux](https://docs.docker.com/install/)
 
-1. Szerezze be a minta címkéző eszköz tárolóját `docker pull` a paranccsal.
+1. Szerezze be a minta címkéző eszköz tárolóját a `docker pull` paranccsal.
     ```
     docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool
     ```
-1. Most már készen áll a tároló futtatására `docker run`a használatával.
+1. Most már készen áll a tároló futtatására a használatával `docker run` .
     ```
     docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool eula=accept
     ```
@@ -75,7 +75,7 @@ Először győződjön meg arról, hogy az összes betanítási dokumentum form�
 Engedélyezze a CORS a Storage-fiókban. Válassza ki a Storage-fiókját a Azure Portalban, és kattintson a bal oldali ablaktábla **CORS** fülére. Az alsó sorban adja meg a következő értékeket. Ezután kattintson a felső **Mentés** gombra.
 
 * Engedélyezett Origins = * 
-* Engedélyezett metódusok \[= összes kijelölése\]
+* Engedélyezett metódusok = \[ összes kijelölése\]
 * Engedélyezett fejlécek = *
 * Elérhető fejlécek = * 
 * Max Age = 200
@@ -95,7 +95,7 @@ Töltse ki a mezőket a következő értékekkel:
 
 * **Megjelenítendő név** – a kapcsolatok megjelenítendő neve.
 * **Leírás** – a projekt leírása.
-* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A szolgáltatás használatának elkezdése után állítsa be a lejárati időt. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési**és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`tartalmaznia:.
+* **Sas URL-cím** – az Azure Blob Storage tároló megosztott hozzáférés-aláírási (SAS) URL-címe. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. A szolgáltatás használatának elkezdése után állítsa be a lejárati időt. Győződjön meg arról, hogy az **olvasási**, **írási**, **törlési**és **listázási** engedélyek be vannak jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
 
 ![A minta-címkéző eszköz csatlakoztatási beállításai](../media/label-tool/connections.png)
 
@@ -130,7 +130,7 @@ Kattintson az OCR futtatása elemre a bal oldali ablaktábla **összes fájlján
 Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat a szöveges elemekre, amelyeket fel szeretne ismerni a modellből.
 
 1. Először a címkék szerkesztő paneljén hozza létre az azonosítani kívánt címkéket.
-   1. Kattintson **+** ide új címke létrehozásához.
+   1. Kattintson ide **+** új címke létrehozásához.
    1. Adja meg a címke nevét.
    1. Nyomja le az ENTER billentyűt a címke mentéséhez.
 1. A fő szerkesztőben kattintson és húzással jelöljön ki egy vagy több szót a Kiemelt szöveges elemek közül.
@@ -141,7 +141,7 @@ Ezután létre kell hoznia címkéket (címkéket), és alkalmaznia kell azokat 
     > * Az egyes címkék csak egyszer alkalmazhatók oldalanként. Ha egy érték többször is megjelenik ugyanazon az űrlapon, hozzon létre különböző címkéket az egyes példányokhoz. Például: "számla # 1", "számla # 2" és így tovább.
     > * A címkék nem terjedhetnek át a lapokra.
     > * Az űrlapon megjelenő címkézett értékek ne próbáljon két részre osztani egy értéket két különböző címkével. Például egy cím mezőt egyetlen címkével kell megcímkézni, még akkor is, ha több sort is felölel.
-    > * A címkézett mezőkben&mdash;ne szerepeljenek kulcsok, csak az értékek.
+    > * A címkézett mezőkben ne szerepeljenek kulcsok, &mdash; csak az értékek.
     > * A tábla adatokat automatikusan kell észlelni, és a végső kimeneti JSON-fájlban lesznek elérhetők. Ha azonban a modell nem ismeri fel az összes tábla adatait, manuálisan is címkézheti ezeket a mezőket. Címkézze fel a tábla minden celláját egy másik címkével. Ha az űrlapok különböző számú sort tartalmazó táblázatokkal rendelkeznek, ügyeljen arra, hogy legalább egy űrlapot címkével lássa el a lehető legnagyobb táblázattal.
 
 ![A minta-címkéző eszköz főszerkesztő ablaka](../media/label-tool/main-editor.png)
@@ -157,11 +157,11 @@ Opcionálisan megadhatja az egyes címkék várt adattípusát. Nyissa meg a cí
 
 A következő típusú értékek és változatok jelenleg támogatottak:
 * `string`
-    * alapértelmezett, `no-whitespaces`,`alphanumeric`
+    * alapértelmezett, `no-whitespaces` ,`alphanumeric`
 * `number`
     * alapértelmezett`currency`
 * `date` 
-    * alapértelmezett, `dmy`, `mdy`,`ymd`
+    * alapértelmezett, `dmy` , `mdy` ,`ymd`
 * `time`
 * `integer`
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
 ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 05/18/2020
 ms.locfileid: "82609901"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
@@ -36,8 +36,8 @@ Az alkalmazás és a hitelesítés beállításakor kövesse az alábbi ajánlot
 > Az **expressz** beállítás a kormányzati felhők esetében nem érhető el.
 
 1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
-2. A bal oldali navigációs sávon válassza**a** **hitelesítés/engedélyezés** > lehetőséget.
-3. Válassza a **Azure Active Directory** > **expressz**lehetőséget.
+2. A bal oldali navigációs sávon válassza **a hitelesítés/engedélyezés**lehetőséget  >  **On**.
+3. Válassza a **Azure Active Directory**  >  **expressz**lehetőséget.
 
    Ha inkább egy meglévő alkalmazás-regisztrációt szeretne választani:
 
@@ -73,14 +73,14 @@ A App Service alkalmazás konfigurálásakor a következő információkra lesz 
 Hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be a [Azure Portalba], keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást. Jegyezze fel az alkalmazás **URL-címét**. Ezzel konfigurálja a Azure Active Directory alkalmazás regisztrációját.
-1. Válassza **Azure Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
+1. Válassza **Azure Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 1. Az **alkalmazás regisztrálása** lapon adja meg az alkalmazás regisztrációjának **nevét** .
-1. Az **átirányítási URI**- **Web** ban válassza a `<app-url>/.auth/login/aad/callback`webes és típus lehetőséget. Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. Az **átirányítási URI**-ban válassza a **webes** és típus lehetőséget `<app-url>/.auth/login/aad/callback` . Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 1. Kattintson a **Létrehozás** gombra.
 1. Az alkalmazás regisztrációjának létrehozása után másolja az **alkalmazás (ügyfél) azonosítóját** és a **címtár (bérlő) azonosítóját** később.
-1. Válassza a **Hitelesítés** lehetőséget. Az **implicit támogatás**lehetőségnél engedélyezze az **azonosító jogkivonatokat** az OpenID Connect felhasználói bejelentkezések app Serviceból való engedélyezéséhez.
+1. Válassza a **hitelesítés**lehetőséget. Az **implicit támogatás**lehetőségnél engedélyezze az **azonosító jogkivonatokat** az OpenID Connect felhasználói bejelentkezések app Serviceból való engedélyezéséhez.
 1. Választható Válassza a **branding**elemet. A **Kezdőlap URL-címe**mezőben adja meg app Service alkalmazásának URL-címét, majd válassza a **Mentés**lehetőséget.
-1. Válasszon ki **egy API** > -**készletet**. Egybérlős alkalmazás esetén illessze be a App Service alkalmazás URL-címét, majd válassza a **Mentés** és a több-bérlős alkalmazás lehetőséget, illessze be az URL-címet, amely a bérlő által ellenőrzött tartományok egyikén alapul, majd válassza a **Mentés**lehetőséget.
+1. Válasszon ki **egy API**-  >  **készletet**. Egybérlős alkalmazás esetén illessze be a App Service alkalmazás URL-címét, majd válassza a **Mentés** és a több-bérlős alkalmazás lehetőséget, illessze be az URL-címet, amely a bérlő által ellenőrzött tartományok egyikén alapul, majd válassza a **Mentés**lehetőséget.
 
    > [!NOTE]
    > Ez az érték az alkalmazás regisztrációs **azonosítójának URI** azonosítója. Ha a webalkalmazásnak hozzáférést kell biztosítania egy Felhőbeli API-hoz, akkor a felhő App Service erőforrásának konfigurálásakor a webalkalmazás **alkalmazás-azonosító URI-ja** szükséges. Ezt például akkor használhatja, ha azt szeretné, hogy a Cloud Service explicit módon engedélyezze a hozzáférést a webalkalmazáshoz.
@@ -89,13 +89,13 @@ Hajtsa végre a következő lépéseket:
    1. A **hatókör neve**mezőbe írja be a *user_impersonation*.
    1. A szövegmezőben adja meg a belefoglalni kívánt hatókör nevét és leírását, amelyet a felhasználók a beleegyező lapon láthatnak. Írja be például a következőt: *hozzáférés az alkalmazáshoz*.
    1. Válassza a **hatókör hozzáadása**elemet.
-1. Választható Az ügyfél titkos kulcsának létrehozásához válassza a **tanúsítványok & Secrets** > **új ügyfél titkos** > **hozzáadása**elemet. Másolja a lapon látható ügyfél titkos kulcs értékét. Nem jelenik meg újra.
+1. Választható Az ügyfél titkos kulcsának létrehozásához válassza a **tanúsítványok & Secrets**  >  **új ügyfél titkos**  >  **hozzáadása**elemet. Másolja a lapon látható ügyfél titkos kulcs értékét. Nem jelenik meg újra.
 1. Választható Több **Válasz URL-cím**hozzáadásához válassza a **hitelesítés**lehetőséget.
 
 ### <a name="enable-azure-active-directory-in-your-app-service-app"></a><a name="secrets"> </a>Azure Active Directory engedélyezése a app Service alkalmazásban
 
 1. A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza ki az alkalmazást.
-1. A bal oldali ablaktábla **Beállítások**területén válassza**a** **hitelesítés/engedélyezés** > lehetőséget.
+1. A bal oldali ablaktábla **Beállítások**területén válassza a **hitelesítés/engedélyezés**lehetőséget  >  **On**.
 1. Választható Alapértelmezés szerint a App Service hitelesítés lehetővé teszi a nem hitelesített hozzáférést az alkalmazáshoz. A felhasználói hitelesítés érvénybe léptetéséhez állítsa be a **műveletet, ha a kérelem nem hitelesítve van** a **Azure Active Directoryba való bejelentkezéshez**.
 1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
 1. **Felügyeleti módban**válassza a **speciális** lehetőséget, és konfigurálja app Service hitelesítést az alábbi táblázatnak megfelelően:
@@ -103,7 +103,7 @@ Hajtsa végre a következő lépéseket:
     |Mező|Leírás|
     |-|-|
     |Ügyfél-azonosító| Használja az **alkalmazás regisztrációjának alkalmazás-(ügyfél-) azonosítóját** . |
-    |Kiállító URL-címe| Használja `<authentication-endpoint>/<tenant-id>/v2.0`és cserélje le * \<a hitelesítési* végpontot>a felhőalapú környezet (például "https://login.microsoft.com" globális Azure-hoz) [hitelesítési végpontján](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) , valamint a * \<bérlői azonosító>* helyére az alkalmazás regisztrációját tartalmazó **címtár-(bérlői) azonosítót** . Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. A `/v2.0` szakasz elhagyható az HRE v1-t használó alkalmazások esetében. |
+    |Kiállító URL-címe| Használja `<authentication-endpoint>/<tenant-id>/v2.0` és cserélje le a hitelesítési végpontot * \<>* a felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontján](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) , valamint a https://login.microsoft.com * \< bérlői azonosító>* helyére az alkalmazás regisztrációját tartalmazó **címtár-(bérlői) azonosítót** . Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. A `/v2.0` szakasz elhagyható az HRE v1-t használó alkalmazások esetében. |
     |Ügyfél titka (nem kötelező)| Használja az alkalmazás regisztrációjában létrehozott ügyfél-titkos kulcsot.|
     |Engedélyezett jogkivonat-célközönségek| Ha ez egy Felhőbeli vagy kiszolgálóalkalmazás-alkalmazás, és engedélyezni szeretné a hitelesítési jogkivonatokat egy webalkalmazásból, adja hozzá a webalkalmazás **alkalmazás-azonosító URI-ját** itt. A konfigurált **ügyfél** -azonosító *mindig* implicit módon engedélyezett célközönségnek tekintendő. |
 
@@ -115,15 +115,15 @@ Most már készen áll a Azure Active Directory használatára a App Service alk
 
 A natív ügyfelek regisztrálása lehetővé teszi a webes API-nak az alkalmazásban üzemeltetett hitelesítését egy ügyféloldali kódtár, például a **Active Directory-hitelesítési tár**használatával.
 
-1. A [Azure Portal]válassza a **Active Directory** > **Alkalmazásregisztrációk** > **új regisztráció**lehetőséget.
+1. A [Azure Portal]válassza a **Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
 1. Az **alkalmazás regisztrálása** lapon adja meg az alkalmazás regisztrációjának **nevét** .
-1. Az **átirányítási URI**-ban válassza a **nyilvános ügyfél (mobil & asztal)** lehetőséget `<app-url>/.auth/login/aad/callback`, és írja be az URL-címet. Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
+1. Az **átirányítási URI**-ban válassza a **nyilvános ügyfél (mobil & asztal)** lehetőséget, és írja be az URL-címet `<app-url>/.auth/login/aad/callback` . Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`.
 
     > [!NOTE]
     > Microsoft Store alkalmazás esetén használja a [csomag biztonsági azonosítóját](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) URI-ként.
 1. Kattintson a **Létrehozás** gombra.
 1. Az alkalmazás regisztrációjának létrehozása után másolja az **Application (ügyfél) azonosító**értékét.
-1. Válassza **az API-engedélyek** > **Hozzáadás engedély** > **saját API**-k lehetőséget.
+1. Válassza az **API-engedélyek**  >  **Hozzáadás engedély**  >  **saját API**-k lehetőséget.
 1. Válassza ki a korábban létrehozott App Service alkalmazás regisztrációját. Ha nem látja az alkalmazás regisztrációját, győződjön meg arról, hogy felvette a **user_impersonation** hatókört az [alkalmazás regisztrációjának létrehozása az Azure ad-ben a app Service alkalmazáshoz](#register).
 1. Válassza a **user_impersonation**lehetőséget, majd kattintson az **engedélyek hozzáadása**lehetőségre.
 

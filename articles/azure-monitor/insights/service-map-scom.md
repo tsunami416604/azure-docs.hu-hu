@@ -106,7 +106,7 @@ A Service Map mappa négy csomóponttal rendelkezik:
 
 ## <a name="edit-or-delete-the-workspace"></a>Munkaterület szerkesztése vagy törlése
 
-A konfigurált munkaterületet szerkesztheti vagy törölheti a **Service Map áttekintés** paneljén (**felügyeleti** ablaktábla > **Operations Management Suite** > **Service Map**).
+A konfigurált munkaterületet szerkesztheti vagy törölheti a **Service Map áttekintés** paneljén (**felügyeleti** ablaktábla > **Operations Management Suite**  >  **Service Map**).
 
 > [!NOTE]
 > Az [Operations Management Suite a log Analytics részét képező szolgáltatások gyűjteménye volt](../terminology.md#april-2018---retirement-of-operations-management-suite-brand) , amely már [Azure monitor](../overview.md)része.

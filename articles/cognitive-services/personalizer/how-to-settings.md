@@ -2,13 +2,13 @@
 title: A Personalizer konfigurálása
 description: A szolgáltatás konfigurációja magában foglalja, hogy a szolgáltatás hogyan kezeli a jutalmakat, milyen gyakran vizsgálja a szolgáltatás, milyen gyakran történik a modell újratanítása és mennyi az adattárolás.
 ms.topic: conceptual
-ms.date: 02/19/2020
-ms.openlocfilehash: ac31a9f907defeb44dbd4748a4395d3aec34d30c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 04/29/2020
+ms.openlocfilehash: 8df851c70650f3d59efc4c7507ce4b1c8a00fbe3
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219356"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83584654"
 ---
 # <a name="configure-personalizer-learning-loop"></a>Személyre szabott tanulási hurok konfigurálása
 
@@ -18,6 +18,23 @@ Konfigurálja a tanulási ciklust a **konfiguráció** lapon a személyre szabot
 
 <a name="configure-service-settings-in-the-azure-portal"></a>
 <a name="configure-reward-settings-for-the-feedback-loop-based-on-use-case"></a>
+
+## <a name="planning-configuration-changes"></a>Konfiguráció módosításainak megtervezése
+
+Mivel egyes konfigurációs változások [alaphelyzetbe állítják a modellt](#settings-that-include-resetting-the-model), meg kell terveznie a konfiguráció módosításait.
+
+Ha [gyakornoki módot](concept-apprentice-mode.md)kíván használni, mindenképpen tekintse át a személyre szabott konfigurációt, mielőtt a Apprentice módra vált.
+
+<a name="clear-data-for-your-learning-loop"></a>
+
+## <a name="settings-that-include-resetting-the-model"></a>A modell alaphelyzetbe állítását tartalmazó beállítások
+
+Az alábbi műveletek elindítják a modell átképzését az elmúlt két nap során rendelkezésre álló adatmennyiség használatával.
+
+* Jutalom
+* Feltárás
+
+Az összes adatai [törléséhez](how-to-manage-model.md) használja a **modell és tanulási beállítások** lapot.
 
 ## <a name="configure-rewards-for-the-feedback-loop"></a>Jutalmak konfigurálása a visszajelzési hurokhoz
 
@@ -66,16 +83,7 @@ Az érték módosítása után válassza a **Mentés**lehetőséget.
 
 Az érték módosítása után válassza a **Mentés**lehetőséget.
 
-<a name="clear-data-for-your-learning-loop"></a>
 
-## <a name="settings-that-include-resetting-the-model"></a>A modell alaphelyzetbe állítását tartalmazó beállítások
-
-Az alábbi műveletek közé tartozik a modell azonnali átképzése az elmúlt 2 nap során.
-
-* Jutalom
-* Feltárás
-
-Az összes adatai [törléséhez](how-to-manage-model.md) használja a * * modell és tanulási beállítások * * lapot.
 
 ## <a name="next-steps"></a>További lépések
 

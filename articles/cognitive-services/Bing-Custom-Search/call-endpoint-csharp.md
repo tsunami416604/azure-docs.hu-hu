@@ -8,36 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: quickstart
-ms.date: 03/24/2020
+ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: 7ea8b272871e681bd9caacf8cf1a84eb91d8849d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: e1084c1962db3c04b951245361da80bee098329a
+ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238911"
+ms.lasthandoff: 05/12/2020
+ms.locfileid: "83199820"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Gyors útmutató: az Bing Custom Search-végpont meghívása C használatával # 
 
-Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresési eredményeinek kérelmezését. Az alkalmazás C# nyelven íródott, a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs)található.
+Ebből a rövid útmutatóból megtudhatja, hogyan kérheti le a Bing Custom Search-példány keresési eredményeit. Bár ez az alkalmazás C# nyelven íródott, a Bing Custom Search API egy REST-alapú webszolgáltatás, amely kompatibilis a legtöbb programozási nyelvvel. A minta forráskódja elérhető a [githubon](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Bing Custom Search példány. További információért tekintse [meg a rövid útmutató: az első Bing Custom Search példány létrehozása](quick-start.md) című témakört.
-- Microsoft [.net Core](https://www.microsoft.com/net/download/core)
-- A [Visual Studio 2019-es vagy újabb](https://www.visualstudio.com/downloads/) verziójának bármely kiadása
-- Linux/MacOS rendszer esetében az alkalmazás a [Monóval](https://www.mono-project.com/) futtatható.
-- A [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) NuGet-csomag. 
-    - **Megoldáskezelő** a Visual Studióban kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése** menüpontot a menüből. Telepítse az `Microsoft.Azure.CognitiveServices.Search.CustomSearch` csomagot. A NuGet Custom Search csomag telepítésekor a következő szerelvények is települnek:
-        - Microsoft.Rest.ClientRuntime
-        - Microsoft.Rest.ClientRuntime.Azure
-        - Newtonsoft.Json
+- Egy Bing Custom Search példány. További információ: gyors útmutató [: az első Bing Custom Search példány létrehozása](quick-start.md).
+- [Microsoft .net mag](https://www.microsoft.com/net/download/core).
+- A [Visual Studio 2019 vagy újabb](https://www.visualstudio.com/downloads/)verziójának bármely kiadása.
+- Ha Linux/MacOS rendszert használ, akkor az alkalmazás a [mono](https://www.mono-project.com/)használatával futtatható.
+- A [Bing Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/2.0.0) NuGet-csomag. 
+
+   A csomag telepítése a Visual Studióban: 
+     1. Kattintson a jobb gombbal a projektre **megoldáskezelő**, majd válassza a **NuGet-csomagok kezelése**lehetőséget. 
+     2. Keresse meg és válassza ki a *Microsoft. Azure. CognitiveServices. Search. CustomSearch*, majd telepítse a csomagot.
+
+   A Bing Custom Search NuGet csomag telepítésekor a Visual Studio a következő csomagokat is telepíti:
+     - **Microsoft.Rest.ClientRuntime**
+     - **Microsoft. Rest. ClientRuntime. Azure**
+     - **Newtonsoft.Json**
+
 
 [!INCLUDE [cognitive-services-bing-custom-search-prerequisites](../../../includes/cognitive-services-bing-custom-search-signup-requirements.md)]
 
 ## <a name="create-and-initialize-the-application"></a>Az alkalmazás létrehozása és inicializálása
 
-1. Hozzon létre egy új C# konzolos alkalmazást a Visual Studióban. Ez után adja hozzá a projekthez az alábbi csomagokat.
+1. Hozzon létre egy új C# konzolos alkalmazást a Visual Studióban. Ezután adja hozzá a következő csomagokat a projekthez:
 
     ```csharp
     using System;
@@ -46,7 +52,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     using Newtonsoft.Json;
     ```
 
-2. Hozza létre a következő osztályokat a Bing Custom Search API által visszaadott keresési eredmények tárolásához.
+2. Hozza létre a következő osztályokat a Bing Custom Search API által visszaadott keresési eredmények tárolásához:
 
     ```csharp
     public class BingCustomSearchResponse {        
@@ -70,7 +76,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     }
     ```
 
-3. A projekt fő metódusában hozzon létre változókat a Bing Custom Search API előfizetési kulcs, a keresési példány egyéni konfigurációs azonosítója és egy keresési kifejezés alapján.
+3. A projekt fő metódusában hozza létre a következő változókat a Bing Custom Search API előfizetési kulcs, a keresési példány egyéni konfigurációs azonosítója és a keresési kifejezés alapján:
 
     ```csharp
     var subscriptionKey = "YOUR-SUBSCRIPTION-KEY";
@@ -78,7 +84,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     var searchTerm = args.Length > 0 ? args[0]:"microsoft";
     ```
 
-4. Hozza létre a kérelem URL-címét úgy, hogy hozzáfűzi `q=` a keresési kifejezést a lekérdezési paraméterhez, a keresési példány `customconfig=`egyéni konfigurációs azonosítóját pedig a következőre:. a paramétereket a `&` karakterrel válassza el. `url`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portal.
+4. Hozza létre a kérelem URL-címét úgy, hogy hozzáfűzi a keresési kifejezést a `q=` lekérdezési paraméterhez, a keresési példány egyéni konfigurációs azonosítóját pedig a `customconfig=` paraméterhez. Válassza el a paramétereket egy jellel ( `&` ). A `url` változó értékeként használhatja a globális végpontot a következő kódban, vagy használhatja az erőforráshoz tartozó Azure Portalban megjelenő [Egyéni altartomány](../../cognitive-services/cognitive-services-custom-subdomains.md) -végpontot.
 
     ```csharp
     var url = "https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?" +
@@ -88,7 +94,7 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
 
 ## <a name="send-and-receive-a-search-request"></a>Keresési kérelem küldése és fogadása 
 
-1. Hozzon létre egy kérelem-ügyfelet, és adja hozzá `Ocp-Apim-Subscription-Key` az előfizetési kulcsot a fejléchez.
+1. Hozzon létre egy kérelem-ügyfelet, és adja hozzá az előfizetési kulcsot a `Ocp-Apim-Subscription-Key` fejléchez.
 
     ```csharp
     var client = new HttpClient();
@@ -102,9 +108,9 @@ Ezzel a rövid útmutatóval megkezdheti a Bing Custom Search-példány keresés
     var responseContent = httpResponseMessage.Content.ReadAsStringAsync().Result;
     BingCustomSearchResponse response = JsonConvert.DeserializeObject<BingCustomSearchResponse>(responseContent);
     ```
-   ## <a name="process-and-view-the-results"></a>Dolgozza fel és tekintse meg az eredményeket
+## <a name="process-and-view-the-results"></a>Dolgozza fel és tekintse meg az eredményeket
 
-3. Az egyes keresési eredményekkel kapcsolatos információk megjelenítéséhez, beleértve annak nevét, URL-címét és a weblap utolsó bejárásának dátumát, ismételje meg a választ.
+- Az egyes keresési eredményekkel kapcsolatos információk megjelenítéséhez, beleértve annak nevét, URL-címét és a weblap utolsó bejárásának dátumát, ismételje meg a választ.
 
     ```csharp
     for(int i = 0; i < response.webPages.value.Length; i++) {                

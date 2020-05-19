@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: a09b79992f669c296fe0a674179fde5f38e8fc8a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
-ms.translationtype: HT
+ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
+ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82149381"
+ms.lasthandoff: 04/29/2020
+ms.locfileid: "82587829"
 ---
 Ismerkedés a Face ügyféloldali függvénytárával a Go-ban. Az alábbi lépéseket követve telepítheti a könyvtárat, és kipróbálhatja a példákat az alapszintű feladatokhoz. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -26,7 +26,7 @@ A következőhöz való ugráshoz használja a Face Service ügyféloldali függ
 * [Arc azonosítása](#identify-a-face)
 * [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
 
-[Útmutató a dokumentáció](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face) | [könyvtár forráskódjának](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face) | [SDK-letöltéséhez](https://github.com/Azure/azure-sdk-for-go)
+[Dokumentáció](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [SDK letöltése](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -81,7 +81,7 @@ A környezeti változó hozzáadását követően futtassa a `source ~/.bashrc` 
 
 #### <a name="macos"></a>[macOS](#tab/unix)
 
-Szerkessze `.bash_profile`a t, és adja hozzá a környezeti változót:
+Szerkessze a t `.bash_profile` , és adja hozzá a környezeti változót:
 
 ```bash
 export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
@@ -93,7 +93,7 @@ A környezeti változó hozzáadását követően futtassa a `source .bash_profi
 
 ### <a name="create-a-go-project-directory"></a>Go-projekt könyvtárának létrehozása
 
-A konzol ablakban (cmd, PowerShell, Terminal, bash) hozzon létre egy új munkaterületet a go-projekt `my-app`számára, és keresse meg a nevet.
+A konzol ablakban (cmd, PowerShell, Terminal, bash) hozzon létre egy új munkaterületet a go-projekt számára, `my-app` és keresse meg a nevet.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -102,19 +102,19 @@ cd my-app
 
 A munkaterület három mappát fog tartalmazni:
 
-* **src** – ez a könyvtár a forráskódot és a csomagokat fogja tartalmazni. A `go get` paranccsal telepített csomagok ebben a mappában lesznek.
-* **pkg** – ez a könyvtár tartalmazni fogja a lefordított go Package objektumokat. Ezek a `.a` fájlok mindegyike rendelkezik bővítménnyel.
-* **bin** – ez a könyvtár fogja tartalmazni a futtatásakor `go install`létrehozott bináris végrehajtható fájlokat.
+* **src** – ez a könyvtár a forráskódot és a csomagokat fogja tartalmazni. A paranccsal telepített csomagok ebben `go get` a mappában lesznek.
+* **pkg** – ez a könyvtár tartalmazni fogja a lefordított go Package objektumokat. Ezek a fájlok mindegyike rendelkezik `.a` bővítménnyel.
+* **bin** – ez a könyvtár fogja tartalmazni a futtatásakor létrehozott bináris végrehajtható fájlokat `go install` .
 
 > [!TIP]
-> Ha többet szeretne megtudni a go-munkaterület struktúrájáról, tekintse meg a [Go Language dokumentációját](https://golang.org/doc/code.html#Workspaces). Ez az útmutató a és `$GOPATH` `$GOROOT`a beállításával kapcsolatos információkat tartalmaz.
+> Ha többet szeretne megtudni a go-munkaterület struktúrájáról, tekintse meg a [Go Language dokumentációját](https://golang.org/doc/code.html#Workspaces). Ez az útmutató a és a beállításával kapcsolatos információkat tartalmaz `$GOPATH` `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>Az ügyféloldali kódtár telepítése a Go-hoz
 
 Ezután telepítse az ügyféloldali kódtárat a Go-hoz:
 
 ```bash
-go get -u https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
+go get -u github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face
 ```
 
 vagy ha a DEP-t használja a tárházon belül, futtassa a következőket:
@@ -125,14 +125,14 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Go-alkalmazás létrehozása
 
-Következő lépésként hozzon létre egy **src** fájlt a ( `sample-app.go`z) nevű src könyvtárban:
+Következő lépésként hozzon létre egy fájlt a (z) nevű **src** könyvtárban `sample-app.go` :
 
 ```bash
 cd src
 touch sample-app.go
 ```
 
-Nyissa meg `sample-app.go` az előnyben részesített ide-vagy szövegszerkesztőben. Ezután adja hozzá a csomag nevét, és importálja a következő könyvtárakat:
+Nyissa meg az `sample-app.go` előnyben részesített ide-vagy szövegszerkesztőben. Ezután adja hozzá a csomag nevét, és importálja a következő könyvtárakat:
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_imports)]
 
@@ -142,7 +142,7 @@ Ezt követően megkezdheti a kód hozzáadását a különböző Face Service-m�
 
 A következő osztályok és felületek kezelik a Face Service go ügyféloldali függvénytárának főbb funkcióit.
 
-|Name (Név)|Leírás|
+|Name|Leírás|
 |---|---|
 |[BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#BaseClient) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
 |[Ügyfél](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
@@ -166,7 +166,7 @@ Ezek a kódrészletek bemutatják, hogyan végezheti el az alapszintű feladatok
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
 > [!NOTE] 
-> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az arc kulcsához `FACE_ENDPOINT` és a végponthoz, illetve a nevet `FACE_SUBSCRIPTION_KEY` .
+> Ez a rövid útmutató azt feltételezi, hogy [létrehozott egy környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) az arc kulcsához és a végponthoz, illetve a nevet `FACE_SUBSCRIPTION_KEY` `FACE_ENDPOINT` .
 
 Hozzon létre egy **fő** függvényt, és adja hozzá a következő kódot egy ügyfél létrehozásához a végponttal és a kulccsal. Hozzon létre egy **[CognitiveServicesAuthorizer](https://godoc.org/github.com/Azure/go-autorest/autorest#CognitiveServicesAuthorizer)** objektumot a kulccsal, és használja azt a végponttal egy **[ügyfél](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#Client)** -objektum létrehozásához. Ez a kód egy környezeti objektumot is létrehoz, amely az ügyfélalkalmazások létrehozásához szükséges. Emellett olyan távoli helyet is meghatároz, ahol a rövid útmutatóban szereplő néhány minta lemezkép található.
 
@@ -214,9 +214,9 @@ A következő kód a megfeleltetés részleteit jeleníti meg a konzolon.
 
 ## <a name="create-and-train-a-person-group"></a>Személy csoport létrehozása és betanítása
 
-Ennek a forgatókönyvnek a végrehajtásához a következő képeket kell mentenie a projekt gyökérkönyvtárában: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+Ennek a forgatókönyvnek a végrehajtásához a következő képeket kell mentenie a projekt gyökérkönyvtárában: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
-A rendszerkép ezen csoportja három különböző személynek megfelelő egyoldalas rendszerképeket tartalmaz. A kód három PersonGroup- **személyt** határoz meg, és társítja azokat a (, `woman` `man`, és `child`) kezdetű képfájlokhoz.
+A rendszerkép ezen csoportja három különböző személynek megfelelő egyoldalas rendszerképeket tartalmaz. A kód három PersonGroup- **személyt** határoz meg, és társítja azokat a (, `woman` `man` , és) kezdetű képfájlokhoz `child` .
 
 ### <a name="create-persongroup"></a>PersonGroup létrehozása
 
@@ -251,7 +251,7 @@ A következő kód több képpel rendelkező képet helyez el, és megkeresi az 
 
 ### <a name="get-a-test-image"></a>Tesztelési rendszerkép beolvasása
 
-A következő kód a projekt gyökerében található, amely egy _test-Image-person-Group. jpg_ képet keres, és betölti a program memóriájában. Ezt a lemezképet ugyanabban a tárházban találja, mint a [személyek létrehozása és betanítása csoportban](#create-and-train-a-person-group)használt rendszerképek: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
+A következő kód a projekt gyökerében található, amely egy _test-Image-person-Group. jpg_ képet keres, és betölti a program memóriájában. Ezt a lemezképet ugyanabban a tárházban találja, mint a [személyek létrehozása és betanítása csoportban](#create-and-train-a-person-group)használt rendszerképek: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -345,15 +345,15 @@ Ismételje meg az azonosító lekérdezését egészen addig, amíg a művelet b
 
 Miután elvégezte ezeket a lépéseket, elérheti a Face adatok szerkezeteit az új (cél) előfizetésből.
 
-## <a name="run-the-application"></a>Az alkalmazás futtatása
+## <a name="run-the-application"></a>Alkalmazás futtatása
 
-Futtassa a go alkalmazást a paranccsal `go run [arguments]` az alkalmazás könyvtárából.
+Futtassa a go alkalmazást a `go run [arguments]` paranccsal az alkalmazás könyvtárából.
 
 ```bash
 go run sample-app.go
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 

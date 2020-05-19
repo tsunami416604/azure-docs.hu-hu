@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: ac7609d49631fb2ed16fa129f8dc4099cc166247
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d94f557ddd946d20020825e2bbb6babbd67d3af3
+ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769874"
+ms.lasthandoff: 05/03/2020
+ms.locfileid: "82734331"
 ---
 # <a name="tutorial-use-custom-vision-with-an-iot-device-to-report-visual-states"></a>Oktatóanyag: Custom Vision használata IoT-eszközzel a vizualizációs állapotok jelentéséhez
 
@@ -31,7 +31,7 @@ Ez az oktatóanyag a következőket mutatja be:
 > * Az alkalmazás használatával betaníthatja Custom Vision projektjét.
 > * Az alkalmazás segítségével valós időben lehet új képeket kipróbálni, és elküldeni az eredményeket az Azure-ba.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +62,7 @@ A következő fájlok kezelik az alkalmazás fő funkcióit.
 | [MainPage.xaml.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/MainPage.xaml.cs) | Ez a kód a XAML felhasználói felületének viselkedését szabályozza. Az állapot gép feldolgozási kódját tartalmazza.|
 | [CustomVision\CustomVisionServiceWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionServiceWrapper.cs) | Ez az osztály olyan burkoló, amely kezeli a Custom Vision Service integrációját.|
 | [CustomVision\CustomVisionONNXModel.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/CustomVision/CustomVisionONNXModel.cs) | Ez az osztály olyan burkoló, amely kezeli a Windows ML-vel való integrációt a ONNX-modell betöltéséhez és a képek pontozásához.|
-| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IotHubWrapper.cs) | Ez az osztály olyan burkoló, amely az IoT Hub való integrációt kezeli az Azure-ba való pontozási eredmények feltöltéséhez.|
+| [IoTHub\IotHubWrapper.cs](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates/blob/master/IoTVisualAlerts/IoTHub/IoTHubWrapper.cs) | Ez az osztály olyan burkoló, amely az IoT Hub való integrációt kezeli az Azure-ba való pontozási eredmények feltöltéséhez.|
 
 ## <a name="set-up-the-visual-alerts-app"></a>A Visual riasztások alkalmazás beállítása
 
@@ -76,7 +76,7 @@ Kövesse az alábbi lépéseket, hogy lekérje a IoT vizuális riasztások alkal
     1. Frissítse a `targetCVSProjectGuid` változót a használni kívánt Custom Vision-projekt megfelelő azonosítójával. 
 1. A IoT Hub erőforrás beállítása:
     1. A _IoTHub\IotHubWrapper.cs_ -parancsfájlban frissítse a `s_connectionString` változót az eszközéhez tartozó megfelelő kapcsolattípus-karakterláncra. 
-    1. A Azure Portal töltse be IoT Hub példányát, kattintson a **IoT** alatt található eszközök **elemre**, válassza ki a kívánt eszközt (vagy hozzon létre egyet, ha szükséges), és keresse meg a kapcsolatok karakterláncát az **elsődleges kapcsolatok karakterlánca**alatt. A karakterlánc a IoT Hub nevét, az eszköz AZONOSÍTÓját és a közös elérési kulcsot fogja tartalmazni; a formátuma a következő: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}`.
+    1. A Azure Portal töltse be IoT Hub példányát, kattintson a **IoT** alatt található eszközök **elemre**, válassza ki a kívánt eszközt (vagy hozzon létre egyet, ha szükséges), és keresse meg a kapcsolatok karakterláncát az **elsődleges kapcsolatok karakterlánca**alatt. A karakterlánc a IoT Hub nevét, az eszköz AZONOSÍTÓját és a közös elérési kulcsot fogja tartalmazni; a formátuma a következő: `{your iot hub name}.azure-devices.net;DeviceId={your device id};SharedAccessKey={your access key}` .
 
 ## <a name="run-the-app"></a>Az alkalmazás futtatása
 
@@ -90,9 +90,9 @@ Amikor első alkalommal futtatja az alkalmazást, az nem ismeri a vizualizáció
 
 Modell beállításához az alkalmazást be kell állítania a **betanítási képek** állapotba. Hajtsa végre az alábbi lépések egyikét:
 * Ha számítógépen futtatja az alkalmazást, használja a felhasználói felület jobb felső sarkában található gombot.
-* Ha az alkalmazást egy IoT-eszközön futtatja, hívja meg `EnterLearningMode` a metódust az eszközön a IoT hubon keresztül. A Azure Portal IoT Hub menüjében, illetve a [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)eszközzel meghívhatja azt az eszközön.
+* Ha az alkalmazást egy IoT-eszközön futtatja, hívja `EnterLearningMode` meg a metódust az eszközön a IoT hubon keresztül. A Azure Portal IoT Hub menüjében, illetve a [IoT Hub Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp)eszközzel meghívhatja azt az eszközön.
  
-Amikor az alkalmazás belép a **betanítási képek rögzítése** állapotba, a másodpercenként két képet fog rögzíteni, amíg el nem éri a megcélzott lemezképek számát. Alapértelmezés szerint a cél 30 kép, de ezt a paramétert úgy állíthatja be, hogy a kívánt számot a `EnterLearningMode` IoT hub metódus argumentumaként adja meg. 
+Amikor az alkalmazás belép a **betanítási képek rögzítése** állapotba, a másodpercenként két képet fog rögzíteni, amíg el nem éri a megcélzott lemezképek számát. Alapértelmezés szerint a cél 30 kép, de ezt a paramétert úgy állíthatja be, hogy a kívánt számot a IoT Hub metódus argumentumaként adja meg `EnterLearningMode` . 
 
 Az alkalmazás lemezképek rögzítése közben ki kell tenni a kamerát a felderíteni kívánt vizualizációs állapotok típusaira (például egy üres helyiségre, egy személyt tartalmazó helyiségre, egy üres asztalra, egy játék teherautóval rendelkező asztalra stb.).
 
@@ -116,19 +116,19 @@ A folyamat megismétlése saját forgatókönyv esetén:
 
 Miután az alkalmazás letölti a betanított modellt, a rendszer átvált a **pontozási** állapotba, és a kamerából folytonos hurokban indítja el a képek pontozását.
 
-Az alkalmazás minden rögzített képhez megjeleníti a képernyő felső címkéjét. Ha nem ismeri fel a vizualizáció állapotát, a rendszer nem jeleníti meg a **találatokat**. Az alkalmazás emellett elküldi ezeket az üzeneteket a IoT Hubnak, és ha a rendszer egy osztályt észlel, az üzenet tartalmazni fogja a címkét, a megbízhatósági pontot és `detectedClassAlert`egy nevű tulajdonságot, IoT hub amelyet a tulajdonságok alapján a gyors üzenetküldést végző ügyfelek is használhatnak.
+Az alkalmazás minden rögzített képhez megjeleníti a képernyő felső címkéjét. Ha nem ismeri fel a vizualizáció állapotát, a rendszer nem jeleníti meg a **találatokat**. Az alkalmazás emellett elküldi ezeket az üzeneteket a IoT Hubnak, és ha a rendszer egy osztályt észlel, az üzenet tartalmazni fogja a címkét, a megbízhatósági pontot és egy nevű tulajdonságot `detectedClassAlert` , IoT hub amelyet a tulajdonságok alapján a gyors üzenetküldést végző ügyfelek is használhatnak.
 
 Emellett a minta egy [Sense hat-függvénytárat](https://github.com/emmellsoft/RPi.SenseHat) használ annak észlelésére, hogy mikor fut egy olyan, a málna PI-ban, amely Sense hat egységet használ, így kimenetként jelenítheti meg, ha az összes megjelenítõ lámpát vörösre állítja, amikor az egy osztályt észlel, és üresen hagyja, ha nem észlel semmit.
 
 ## <a name="reuse-the-app"></a>Az alkalmazás újrafelhasználása
 
-Ha vissza szeretné állítani az alkalmazást az eredeti állapotába, kattintson a felhasználói felület jobb felső sarkában lévő gombra, vagy a metódus `DeleteCurrentModel` meghívásával a IoT hub.
+Ha vissza szeretné állítani az alkalmazást az eredeti állapotába, kattintson a felhasználói felület jobb felső sarkában lévő gombra, vagy a metódus meghívásával a `DeleteCurrentModel` IoT hub.
 
-Bármikor megismételheti a betanítási lemezképek feltöltésének lépését a jobb felső szintű felhasználói felület gombra kattintva, vagy `EnterLearningMode` meghívja a metódust.
+Bármikor megismételheti a betanítási lemezképek feltöltésének lépését a jobb felső szintű felhasználói felület gombra kattintva, vagy meghívja a `EnterLearningMode` metódust.
 
-Ha az alkalmazást egy eszközön futtatja, és újra le kell kérnie az IP-címet (például távoli kapcsolat létesítéséhez a [Windows IoT távoli ügyfélen](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)keresztül), akkor a `GetIpAddress` metódust IoT hub használatával hívhatja meg.
+Ha az alkalmazást egy eszközön futtatja, és újra le kell kérnie az IP-címet (például távoli kapcsolat létesítéséhez a [Windows IoT távoli ügyfélen](https://www.microsoft.com/p/windows-iot-remote-client/9nblggh5mnxz#activetab=pivot:overviewtab)keresztül), akkor a metódust IoT hub használatával hívhatja meg `GetIpAddress` .
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Törölje a Custom Vision projektet, ha már nem szeretné karbantartani. A [Custom Vision webhelyén](https://customvision.ai)navigáljon a **projektekhez** , és válassza ki a szemetet az új projekt alatt.
 
