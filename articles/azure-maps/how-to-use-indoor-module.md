@@ -1,0 +1,255 @@
+---
+title: A Azure Maps Indoor Maps modul használata
+description: Megtudhatja, hogyan használhatja az Microsoft Azure Maps beltéri térképek modult a térképek megjelenítéséhez a modul JavaScript-kódtárainak beágyazásával.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 05/18/2020
+ms.topic: conceptual
+ms.service: azure-maps
+services: azure-maps
+manager: philmea
+ms.openlocfilehash: 9b2a47cde4d79671aada7c280c2bffd9bb8fe759
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.translationtype: MT
+ms.contentlocale: hu-HU
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83596973"
+---
+# <a name="use-the-azure-maps-indoor-maps-module"></a>A Azure Maps Indoor Maps modul használata
+
+A Azure Maps web SDK tartalmazza a *Azure Maps beltéri* modult. A *Azure Maps beltéri* modul lehetővé teszi a Azure Maps creatorben létrehozott beltéri leképezések megjelenítését.
+
+## <a name="prerequisites"></a>Előfeltételek
+
+1. [Azure Maps fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)
+2. [Létrehozó erőforrás létrehozása](how-to-manage-creator.md)
+3. [Szerezzen be egy elsődleges előfizetési kulcsot](quick-demo-map-app.md#get-the-primary-key-for-your-account), más néven az elsődleges kulcsot vagy az előfizetési kulcsot.
+4. A `tilesetId` és a a beszerzése `statesetId` a [beltéri térképek létrehozásával foglalkozó oktatóanyag](tutorial-creator-indoor-maps.md)elvégzésével.
+ Ezeket az azonosítókat kell használnia a beltéri leképezések megjelenítéséhez a Azure Maps Indoor Maps modullal.
+
+## <a name="embed-the-indoor-maps-module"></a>A beltéri térképek modul beágyazása
+
+A *Azure Maps beltéri* modult kétféleképpen telepítheti és ágyazhatja be.
+
+Ha a *Azure Maps beltéri* modul globálisan üzemeltetett Azure Content Delivery Network verzióját szeretné használni, a `<head>` HTML-fájl elemében a következő JavaScript-és stíluslap-hivatkozásokra kell hivatkoznia:
+
+  ```html
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+  ```
+
+ Vagy letöltheti a *Azure Maps beltéri* modult is. A *Azure Maps beltéri* modul tartalmaz egy ügyféloldali kódtárat a Azure Maps szolgáltatások eléréséhez. Az alábbi lépéseket követve telepítheti és betöltheti a *beltéri* modult a webalkalmazásba.  
+  
+  1. Töltse le az [Azure-Maps-Indoor csomagot](https://www.npmjs.com/package/azure-maps-indoor).
+  
+  2. Telepítse a NPM csomagot. Győződjön meg arról, hogy rendszergazdai jogosultságokat használ a konzolon:
+
+      ```powershell
+        >npm install azure-maps-control
+        >npm install azure-maps-indoor
+      ```
+
+  3. A HTML-fájl elemében a *Azure Maps beltéri* modul JavaScript-és stíluslapjának hivatkozása `<head>` :
+
+      ```html
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      ```
+
+## <a name="instantiate-the-map-object"></a>A Térkép objektumának példánya
+
+Először hozzon létre egy *Térkép objektumot*. A *map objektum* a következő lépésben lesz használva a *Indoor Manager* -objektum létrehozásához.  Az alábbi kód bemutatja, hogyan hozhatja létre a *Térkép objektumot*:
+
+```javascript
+  const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+
+  const map = new atlas.Map("map-id", {
+    //use your facility's location
+    center: [-122.13315, 47.63637],
+    //or, you can use bounds: [#,#,#,#] and replace # with your map's bounds
+    style: "blank",
+    subscriptionKey,
+    zoom: 19,
+  });
+```
+
+## <a name="instantiate-the-indoor-manager"></a>A Indoor Manager példányának példányai
+
+A csempék beltéri tilesets és térképes stílusának betöltéséhez a *beltéri kezelőt*kell létrehoznia. Hozza létre a *Indoor Managert* a *Térkép objektum* és a megfelelő hozzáadásával `tilesetId` . Ha támogatni szeretné a [dinamikus leképezések stílusát](indoor-map-dynamic-styling.md), meg kell adnia a következőt: `statesetId` . A `statesetId` változó neve megkülönbözteti a kis-és nagybetűket. A kódnak a JavaScripthez hasonlóan kell lennie.
+
+```javascript
+const tilesetId = "";
+const statesetId = "";
+
+const indoorManager = new atlas.indoor.IndoorManager(map, {
+    tilesetId: "<tilesetId>",
+    statesetId: "<statesetId>" // Optional
+});
+```
+
+Az Ön által megadott állapotadatok lekérdezésének engedélyezéséhez meg kell adnia a `statesetId` és a hívást `indoorManager.setDynamicStyling(true)` . Az állapotadatok lekérdezése lehetővé teszi dinamikus tulajdonságok *vagy állapotok*állapotának dinamikus frissítését. Például egy olyan szolgáltatás, mint a szoba, a dinamikus tulajdonság (*állapot*) nevű lehet `occupancy` . Előfordulhat, hogy az alkalmazás a vizualizáción belüli változást tükröző *állapotra* vonatkozó módosításokat kíván lekérdezni. Az alábbi kód bemutatja, hogyan engedélyezheti az állapot-lekérdezéseket:
+
+```javascript
+
+const tilesetId = "";
+const statesetId = "";
+
+const indoorManager = new atlas.indoor.IndoorManager(map, {
+    tilesetId: "<tilesetId>",
+    statesetId: "<statesetId>" // Optional
+});
+
+if (statesetId.length > 0) {
+    indoorManager.setDynamicStyling(true);
+}
+
+```
+
+## <a name="indoor-level-picker-control"></a>Beltéri szintű választó vezérlése
+
+ A *beltéri szintű választó* vezérlőelem lehetővé teszi a megjelenített Térkép szintjének módosítását. A beltéri *szintű választó* vezérlését a *beltéri Manager*használatával is inicializálhatja. Itt látható a szint Control választó inicializálására szolgáló kód:
+
+```javascript
+const levelControl = new atlas.control.LevelControl({ position: "top-right" });
+indoorManager.setOptions({ levelControl });
+```
+
+## <a name="indoor-events"></a>Beltéri események
+
+ A *Azure Maps beltéri* modul támogatja az objektum-események *leképezését* . A *Térkép objektum* eseményeinek figyelői meghívásakor megtörténik a szint vagy a létesítmény megváltozása. Ha egy szint vagy egy létesítmény megváltozásakor kódot szeretne futtatni, helyezze a kódot az esemény-figyelőbe. Az alábbi kód azt mutatja be, hogyan adhatók hozzá esemény-figyelők a *Térkép objektumhoz*.
+
+```javascript
+map.events.add("levelchanged", indoorManager, (eventData) => {
+
+    //code that you want to run after a level has been changed
+    console.log("The level has changed: ", eventData);
+
+});
+map.events.add("facilitychanged", indoorManager, (eventData) => {
+
+    //code that you want to run after a facility has been changed
+    console.log("The facility has changed: ", eventData);
+});
+```
+
+A `eventData` változó a vagy az eseményt meghívó szintre vagy lehetőségre vonatkozó információkat tárol `levelchanged` `facilitychanged` . Ha egy szint megváltozik, az `eventData` objektum a `facilityId` , az új és az `levelNumber` egyéb metaadatokat fogja tartalmazni. A létesítmény változásakor az `eventData` objektum az új `facilityId` , az új `levelNumber` és az egyéb metaadatokat fogja tartalmazni.
+
+## <a name="example-use-the-indoor-maps-module"></a>Példa: a beltéri térképek modul használata
+
+Ebből a példából megtudhatja, hogyan használhatja a *Azure Maps beltéri* modult a webalkalmazásban. Bár a példa korlátozott a hatókörben, ismerteti a *Azure Maps beltéri* modul használatának megkezdéséhez szükséges alapismereteket. A teljes HTML-kód a következő lépések alá esik.
+
+1. A *Azure Maps beltéri* modul telepítéséhez használja az Azure Content Delivery Network [lehetőséget](#embed-the-indoor-maps-module) .
+
+2. Új HTML-fájl létrehozása
+
+3. A HTML-fejlécben hivatkozzon a *Azure Maps beltéri* modul JavaScript-és stíluslap-stílusára.
+
+4. *Leképezési objektum*inicializálása. A *map objektum* a következő beállításokat támogatja:
+    - `Subscription key`a Azure Maps elsődleges előfizetési kulcs.
+    - `center`meghatározza a beltéri Térkép középpontjának földrajzi szélességét és hosszúságát. Adjon meg egy értéket, `center` Ha nem kíván értéket megadni a következőhöz: `bounds` . A formátumnak a következőképpen kell megjelennie `center` : [-122,13315, 47,63637].
+    - `bounds`az a legkisebb téglalap alakú alakzat, amely a tileset térképi adatleképezési adattárat foglalja magában. Állítsa be a értéket, `bounds` Ha nem kíván értéket beállítani `center` . A Térkép határai a [tileset List API](https://docs.microsoft.com/rest/api/maps/tileset/listpreview)meghívásával találhatók meg. A tileset-lista API a () értéket adja vissza `bbox` , amelyet elemezni és hozzárendelni lehet a következőhöz: `bounds` . A formátumnak a következőképpen kell megjelennie `bounds` : [#, #, #, #].
+    - `style`lehetővé teszi a háttér színének megadását. Fehér háttér megjelenítéséhez adja meg `style` az "üres" értéket.
+    - `zoom`lehetővé teszi a Térkép minimális és maximális nagyítási szintjeinek megadását.
+
+5. Ezután hozza létre a *Indoor Manager* modult. Rendelje hozzá a *Azure Maps beltéri* `tilesetId` és opcionálisan adja hozzá a elemet `statesetId` .
+
+6. Hozza létre a *beltéri szintű választó* vezérlőt.
+
+7. *Leképezési objektumhoz* tartozó esemény-figyelők hozzáadása.  
+
+A fájlnak most az alábbi HTML-hez hasonlóan kell kinéznie.
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width, user-scalable=no" />
+      <title>Indoor Maps App</title>
+       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      <style>
+        html,
+        body {
+          width: 100%;
+          height: 100%;
+          padding: 0;
+          margin: 0;
+        }
+
+        #map-id {
+          width: 100%;
+          height: 100%;
+        }
+      </style>
+    </head>
+
+    <body>
+      <div id="map-id"></div>
+      <script>
+        const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+        const tilesetId = "<your tilesetId>";
+        const statesetId = "<your statesetId>";
+
+        const map = new atlas.Map("map-id", {
+          //use your facility's location
+          center: [-122.13315, 47.63637],
+          //or, you can use bounds: [ # , # , # , # ] and replace # with your Map bounds
+          style: "blank",
+          subscriptionKey,
+          zoom: 19,
+        });
+
+        const levelControl = new atlas.control.LevelControl({
+          position: "top-right",
+        });
+
+        const indoorManager = new atlas.indoor.IndoorManager(map, {
+          levelControl, //level picker
+          tilesetId,
+          statesetId, //optional
+        });
+
+        if (statesetId.length > 0) {
+          indoorManager.setDynamicStyling(true);
+        }
+
+        map.events.add("levelchanged", indoorManager, (eventData) => {
+          //put code that runs after a level has been changed
+          console.log("The level has changed:", eventData);
+        });
+
+        map.events.add("facilitychanged", indoorManager, (eventData) => {
+          //put code that runs after a facility has been changed
+          console.log("The facility has changed:", eventData);
+        });
+      </script>
+    </body>
+  </html>
+  ```
+
+Ha szeretné megtekinteni a beltéri térképet, töltse be azt egy webböngészőbe. Az alábbi képen láthatóhoz hasonlónak kell lennie. Ha a lépcsőház funkcióra kattint, a *szint választó* megjelenik a jobb felső sarokban.
+
+  ![beltéri Térkép képe](media/how-to-use-indoor-module/indoor-map-graphic.png)
+
+## <a name="next-steps"></a>További lépések
+
+Olvassa el a *Azure Maps beltéri* modulhoz kapcsolódó API-kat:
+
+> [!div class="nextstepaction"]
+> [A rajzolási csomagra vonatkozó követelmények](drawing-requirements.md)
+
+>[!div class="nextstepaction"]
+> [A beltéri térképek létrehozója](creator-indoor-maps.md)
+
+További információ a térképhez tartozó további információk hozzáadásáról:
+
+> [!div class="nextstepaction"]
+> [Beltéri térképek dinamikus stílusa](indoor-map-dynamic-styling.md)
+
+> [!div class="nextstepaction"]
+> [Kódminták](https://docs.microsoft.com/samples/browse/?products=azure-maps)

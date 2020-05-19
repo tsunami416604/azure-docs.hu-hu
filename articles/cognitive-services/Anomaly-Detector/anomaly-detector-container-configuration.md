@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/07/2020
 ms.author: aahi
-ms.openlocfilehash: 569499002c5e047d7030575342790e9a074b9404
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 29e790959e941abc133f95297dc09c951152a503
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80875180"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593307"
 ---
 # <a name="configure-anomaly-detector-containers"></a>Anomáliadetektor-tárolók konfigurálása
 
@@ -37,11 +37,11 @@ Ez a tároló a következő konfigurációs beállításokat tartalmaz:
 |Nem|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
 
 > [!IMPORTANT]
-> A [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting)a és [`Eula`](#eula-setting) a beállításokat együtt használják, és mindhárom esetben érvényes értékeket kell megadnia. Ellenkező esetben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](anomaly-detector-container-howto.md#billing).
+> A [`ApiKey`](#apikey-configuration-setting) , a [`Billing`](#billing-configuration-setting) és a [`Eula`](#eula-setting) beállítások együtt használhatók, és mindhárom esetben érvényes értékeket kell megadnia, máskülönben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](anomaly-detector-container-howto.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>ApiKey konfigurációs beállítás
 
-A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a [`Billing`](#billing-configuration-setting) konfigurációs beállításhoz megadott _anomália-detektor_ erőforráshoz.
+A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a konfigurációs beállításhoz megadott _anomália-detektor_ erőforráshoz [`Billing`](#billing-configuration-setting) .
 
 Ez a beállítás a következő helyen érhető el:
 
@@ -59,7 +59,7 @@ Ez a beállítás a következő helyen érhető el:
 
 * Azure Portal: **anomália-detektor** áttekintése, címkézve`Endpoint`
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Kötelező| Name | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](anomaly-detector-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -88,29 +88,29 @@ Az anomáliák Kiderítő tárolói nem használnak bemeneti vagy kimeneti csatl
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](anomaly-detector-container-howto.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Optional| Name (Név) | Adattípus | Leírás |
+|Választható| Name | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | Az anomália detektor tárolói nem használják ezt.|
-|Optional| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa Docker-futtatási parancsokra 
 
 Az alábbi példák a konfigurációs beállítások segítségével szemléltetik a parancsok írását és használatát `docker run` .  A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](anomaly-detector-container-howto.md#stop-the-container) .
 
-* **Vonal-folytatási karakter**: a következő szakaszban lévő Docker-parancsok a hátsó perjelet `\`használják, mint a bash-rendszerhéj vonalának folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. Például a Windows vonal folytatási karaktere egy kalap `^`. Cserélje le a vissza perjelet a kalapra. 
+* **Vonal-folytatási karakter**: a következő szakaszban lévő Docker-parancsok a hátsó perjelet használják `\` , mint a bash-rendszerhéj vonalának folytatási karaktere. Cserélje le vagy távolítsa el a gazdagép operációs rendszerének követelményei alapján. Például a Windows vonal folytatási karaktere egy kalap `^` . Cserélje le a vissza perjelet a kalapra. 
 * **Argumentumok sorrendje**: ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 
-Cserélje le a zárójelben `{}`lévő értéket a saját értékeire:
+Cserélje le a zárójelben lévő értéket a `{}` saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-| **{API_KEY}** | Az `Anomaly Detector` erőforrás Endpoint kulcsa az Azure `Anomaly Detector` Keys oldalon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{API_KEY}** | Az erőforrás Endpoint kulcsa az `Anomaly Detector` Azure `Anomaly Detector` Keys oldalon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `Anomaly Detector` Áttekintés oldalán.| Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](anomaly-detector-container-howto.md#gathering-required-parameters) ismertető témakört. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> A `Eula`tároló `Billing`futtatásához `ApiKey` meg kell adni a, a és a beállításokat. Ellenkező esetben a tároló nem indul el.  További információ: [számlázás](anomaly-detector-container-howto.md#billing).
+> A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](anomaly-detector-container-howto.md#billing).
 > A ApiKey értéke az Azure-beli anomáliák Detektorának erőforrás-kulcsai oldalának **kulcsa** . 
 
 ## <a name="anomaly-detector-container-docker-examples"></a>Anomáliák detektor Container Docker-példák
@@ -121,7 +121,7 @@ A következő Docker-példák az anomália detektor tárolóhoz tartoznak.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} \
   ApiKey={API_KEY} 
@@ -131,7 +131,7 @@ A következő Docker-példák az anomália detektor tárolóhoz tartoznak.
 
   ```Docker
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
-  containerpreview.azurecr.io/microsoft/cognitive-services-anomaly-detector \
+  mcr.microsoft.com/azure-cognitive-services/anomaly-detector \
   Eula=accept \
   Billing={ENDPOINT_URI} ApiKey={API_KEY} \
   Logging:Console:LogLevel:Default=Information

@@ -2,13 +2,13 @@
 title: Korlátok – LUIS
 description: Ez a cikk az Azure Cognitive Services Language Understanding (LUIS) ismert korlátait tartalmazza. LUIS több korlátozási területtel rendelkezik. A modell korlátozza a LUIS-ben lévő leképezéseket, entitásokat és szolgáltatásokat. Kvóta korlátai a kulcs típusa alapján. A billentyűzet kombinációja a LUIS webhelyet vezérli.
 ms.topic: reference
-ms.date: 04/02/2020
-ms.openlocfilehash: 0a734091ad2c9812f079d77c97c22872717aa7c9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/06/2020
+ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82103591"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593239"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
 LUIS több korlátozási területtel rendelkezik. Az első a [modell korlátja](#model-limits), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határértékek harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van.
@@ -28,8 +28,8 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | Külső entitások | Nincs korlát |
 | [Leképezések][intents]|500/alkalmazás: 499 egyéni szándék, és a szükséges _none_ szándék.<br>A [küldő-alapú](https://aka.ms/dispatch-tool) alkalmazás megfelelő 500 elküldési forrással rendelkezik.|
 | [Listaentitások](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. A Canonical neve * alapértelmezett karakter max. A szinonimák értékeinek hossza nem korlátozza a korlátot. |
-| [Gépi megtanult entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alösszetevők akár 5 szintre is ágyazhatók.|
-|Modell szolgáltatásként| Egy adott modellhez a leíróként (funkcióként) használható modellek maximális száma 10 modell. Egy adott modellhez tartozó leíróként (funkcióként) használt kifejezések maximális száma 10 kifejezés típusú listának.|
+| [Gépi megtanult entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alentitások akár 5 szintre is ágyazhatók.|
+|Modell szolgáltatásként| Egy adott modell funkcióként használható modelljeinek maximális száma 10 modell. Egy adott modellhez funkcióként használt kifejezések listájának maximális száma 10 kifejezéses felsorolás.|
 | [Előnézet – dinamikus lista entitásai](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
 | [Minták](luis-concept-patterns.md)|500 minta alkalmazásként.<br>A minta maximális hossza 400 karakter.<br>3 minta. minden entitás/minta<br>Legfeljebb 2 beágyazott opcionális szöveg a mintában|
 | [Minta. any](./luis-concept-entity-types.md)|100/alkalmazás, 3 minta. bármely entitás/minta |
@@ -40,7 +40,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | [Kimondott szöveg][utterances] | 500 karakter|
 | [Beszédmódok][utterances] | 15 000/alkalmazás – a hosszúságú kimondott szöveg száma nem korlátozható a szándék alapján|
 | [Verziók](luis-concept-version.md)| 100 verzió/alkalmazás |
-| [Verzió neve][luis-how-to-manage-versions] | 10 karakter az alfanumerikus és a pont (.) értékre korlátozva |
+| [Verzió neve][luis-how-to-manage-versions] | 128 karakter |
 
 * Az alapértelmezett karakter Max 50 karakter.
 
@@ -48,18 +48,14 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 
 ## <a name="name-uniqueness"></a>Név egyedisége
 
-Használja az alábbi elnevezési egyediségi szabályokat.
+Az objektumok nevének egyedinek kell lennie, ha az azonos szint más objektumaihoz hasonlít.
 
-A következőnek egyedinek kell lennie a LUIS-alkalmazásban:
-
-* verzió neve
-* szándék
-* entitás
-* roles
-
-A következőnek egyedinek kell lennie az alkalmazott hatókörön belül:
-
-* kifejezések listája
+|Objektumok|Korlátozások|
+|--|--|
+|Szándék, entitás|Az összes leképezésnek és az entitás nevének egyedinek kell lennie az alkalmazás egy verziójában.|
+|ML entitás-összetevők|A gép által megtanult entitás-összetevőknek (gyermek entitásoknak) egyedinek kell lenniük az adott entitáson belül ugyanazon a szinten lévő összetevőkhöz.|
+|Funkciók | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
+|Entitásszerepkörök|Az entitás vagy entitás összetevő összes szerepkörének egyedinek kell lennie, ha ugyanazon az entitás szintjén (szülő, gyermek, unoka stb.) vannak.|
 
 ## <a name="object-naming"></a>Objektum elnevezése
 
@@ -78,7 +74,7 @@ A nyelv értelmezése külön erőforrásokkal, egy típussal és egy típussal 
 
 ### <a name="authoring-resource-limits"></a>Erőforrás-korlátok létrehozása
 
-Használja a _típust_ `LUIS.Authoring`, ha a Azure Portal erőforrásait szűri. LUIS korlátozza az Azure authoring Resource 500 alkalmazásait.
+Használja a _típust_, `LUIS.Authoring` Ha a Azure Portal erőforrásait szűri. LUIS korlátozza az Azure authoring Resource 500 alkalmazásait.
 
 |Erőforrás létrehozása|Szerzői TPS|
 |--|--|
@@ -91,7 +87,7 @@ Használja a _típust_ `LUIS.Authoring`, ha a Azure Portal erőforrásait szűri
 
 ### <a name="query-prediction-resource-limits"></a>Lekérdezés-előrejelzési erőforrások korlátai
 
-Használja a _típust_ `LUIS`, ha a Azure Portal erőforrásait szűri. A-futtatókörnyezetben használt LUIS lekérdezés-előrejelzési végpont erőforrás csak végponti lekérdezések esetén érvényes.
+Használja a _típust_, `LUIS` Ha a Azure Portal erőforrásait szűri. A-futtatókörnyezetben használt LUIS lekérdezés-előrejelzési végpont erőforrás csak végponti lekérdezések esetén érvényes.
 
 |Lekérdezés-előrejelzési erőforrás|TPS lekérdezése|
 |--|--|
