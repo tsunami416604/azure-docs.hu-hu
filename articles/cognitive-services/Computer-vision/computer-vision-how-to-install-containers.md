@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/05/2020
 ms.author: aahi
 ms.custom: seodec18
-ms.openlocfilehash: 5f36c429041a8182551d1f077f0a1229f520e8c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 838b759f6b175b478dcd9b0559784975b5d24f70
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80879343"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83593332"
 ---
 # <a name="install-and-run-read-containers-preview"></a>Olvasási tárolók telepítése és futtatása (előzetes verzió)
 
@@ -24,7 +24,7 @@ A tárolók lehetővé teszik a Computer Vision API-k futtatását a saját kör
 
 Egyetlen Docker-tároló, *olvasás*, Computer Vision érhető el. Az *olvasási* tároló lehetővé teszi a *nyomtatott szövegek* észlelését és kinyerését különböző felületek és hátterek, például nyugták, plakátok és névjegykártyák képeiből. Az *olvasási* tároló emellett a *kézzel írt szövegeket* is észleli a képekben, és PDF-, TIFF-és többoldalas fájlok támogatását teszi lehetővé. További információ az API-k [olvasása](concept-recognizing-text.md#read-api) dokumentációban található.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -33,7 +33,7 @@ A tárolók használata előtt meg kell felelnie a következő előfeltételekne
 |Kötelező|Cél|
 |--|--|
 |Docker-motor| A Docker-motornak telepítve kell lennie a [gazdagépen](#the-host-computer). A Docker csomagokat biztosít a Docker-környezet konfigurálásához [macOS](https://docs.docker.com/docker-for-mac/), [Windows](https://docs.docker.com/docker-for-windows/) és [Linux](https://docs.docker.com/engine/installation/#supported-platforms) rendszereken. A Docker és a tárolók alapszintű ismertetéséért lásd a [Docker felhasználói útmutatóját](https://docs.docker.com/engine/docker-overview/).<br><br> A Docker-t úgy kell konfigurálni, hogy lehetővé tegye a tárolók számára az Azure-ba való kapcsolódást és a számlázási információk küldését. <br><br> **Windows rendszeren a**Docker-t is konfigurálni kell a Linux-tárolók támogatásához.<br><br>|
-|A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a `docker` tárolók lemezképéről, valamint az alapszintű parancsokról.| 
+|A Docker ismerete | Alapvető ismeretekkel kell rendelkeznie a Docker-fogalmakról, például a kibocsátásiegység-forgalmi jegyzékekről, a adattárakról, a tárolók és a tárolók lemezképéről, valamint az alapszintű `docker` parancsokról.| 
 |Erőforrás Computer Vision |A tároló használatához a következőket kell tennie:<br><br>Egy Azure **Computer Vision** erőforrás és a hozzá tartozó API-kulcs a végpont URI-ja. Mindkét érték elérhető az erőforrás áttekintés és kulcsok oldalain, és a tároló indításához szükséges.<br><br>**{API_KEY}**: a **kulcsok** oldalon található két elérhető erőforrás-kulcs egyike<br><br>**{ENDPOINT_URI}**: az **Áttekintés** lapon megadott végpont|
 
 ## <a name="request-access-to-the-private-container-registry"></a>Hozzáférés kérése a Private Container registryhez
@@ -87,9 +87,9 @@ Miután a tároló a [gazdagépen](#the-host-computer)található, a következő
 
 ## <a name="run-the-container-with-docker-run"></a>A tároló futtatása a`docker run`
 
-A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A `{ENDPOINT_URI}` és `{API_KEY}` értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört.
+A tároló futtatásához használja a [Docker Run](https://docs.docker.com/engine/reference/commandline/run/) parancsot. A és értékek beszerzésével kapcsolatos részletekért tekintse meg a [szükséges paraméterek összegyűjtését](#gathering-required-parameters) ismertető témakört `{ENDPOINT_URI}` `{API_KEY}` .
 
-[Examples](computer-vision-resource-container-config.md#example-docker-run-commands) A `docker run` parancs például elérhető.
+[Examples](computer-vision-resource-container-config.md#example-docker-run-commands) A parancs például `docker run` elérhető.
 
 ```bash
 docker run --rm -it -p 5000:5000 --memory 16g --cpus 8 \
@@ -109,7 +109,7 @@ A parancs a következőket hajtja végre:
 További [példák](./computer-vision-resource-container-config.md#example-docker-run-commands) a `docker run` parancsra. 
 
 > [!IMPORTANT]
-> A `Eula`tároló `Billing`futtatásához `ApiKey` meg kell adni a, a és a beállításokat. Ellenkező esetben a tároló nem indul el.  További információ: [számlázás](#billing).
+> A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el.  További információ: [számlázás](#billing).
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -121,13 +121,13 @@ További [példák](./computer-vision-resource-container-config.md#example-docke
 
 A tároló REST-alapú lekérdezés-előrejelzési végpont API-kat biztosít. 
 
-A tároló API `http://localhost:5000`-k esetében használja a gazdagépet.
+A tároló API-k esetében használja a gazdagépet `http://localhost:5000` .
 
 ### <a name="asynchronous-read"></a>Aszinkron olvasás
 
-A koncerten a `POST /vision/v2.0/read/core/asyncBatchAnalyze` és `GET /vision/v2.0/read/operations/{operationId}` a műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan `operationId` értéket ad vissza, amely a HTTP Get kérelem termékazonosító szolgál.
+A `POST /vision/v2.0/read/core/asyncBatchAnalyze` koncerten a és a `GET /vision/v2.0/read/operations/{operationId}` műveletek használatával aszinkron módon olvashat egy rendszerképet, hasonlóan ahhoz, ahogyan a Computer Vision szolgáltatás a megfelelő Rest-műveleteket használja. Az aszinkron POST metódus olyan értéket ad vissza, `operationId` amely a HTTP Get kérelem termékazonosító szolgál.
 
-A hencegő felhasználói felületen válassza a `asyncBatchAnalyze` elemet a böngészőben való kibontáshoz. Ezután válassza a **kipróbálom** > a**fájl**elemet. Ebben a példában a következő képet fogjuk használni:
+A hencegő felhasználói felületen válassza a elemet a `asyncBatchAnalyze` böngészőben való kibontáshoz. Ezután válassza a **kipróbálom**a  >  **fájl**elemet. Ebben a példában a következő képet fogjuk használni:
 
 ![tabulátorok és szóközök](media/tabs-vs-spaces.png)
 
@@ -140,7 +140,7 @@ Az aszinkron POST sikeres futtatása után egy **HTTP 202** állapotkódot ad vi
  server: Kestrel
 ```
 
-A `operation-location` a teljes URL-cím, amely egy HTTP Get használatával érhető el. Itt látható az előző rendszerképből származó `operation-location` URL-cím végrehajtásának JSON-válasza:
+A a `operation-location` teljes URL-cím, amely egy HTTP Get használatával érhető el. Itt látható az `operation-location` előző rendszerképből származó URL-cím végrehajtásának JSON-válasza:
 
 ```json
 {
@@ -186,7 +186,7 @@ A `operation-location` a teljes URL-cím, amely egy HTTP Get használatával ér
 
 ### <a name="synchronous-read"></a>Szinkron olvasás
 
-A műveletet a `POST /vision/v2.0/read/core/Analyze` rendszerképek szinkron beolvasására is használhatja. Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-választ kell visszaadnia. Ez alól az egyetlen kivétel, ha hiba történik. Ha hiba történik, a rendszer a következő JSON-t adja vissza:
+A `POST /vision/v2.0/read/core/Analyze` műveletet a rendszerképek szinkron beolvasására is használhatja. Ha a képet a teljes egészében beolvasják, akkor az API-nak csak egy JSON-választ kell visszaadnia. Ez alól az egyetlen kivétel, ha hiba történik. Ha hiba történik, a rendszer a következő JSON-t adja vissza:
 
 ```json
 {
@@ -194,7 +194,7 @@ A műveletet a `POST /vision/v2.0/read/core/Analyze` rendszerképek szinkron beo
 }
 ```
 
-A JSON-válasz objektuma ugyanazzal az objektum-gráfmal rendelkezik, mint az aszinkron verzió. Ha Ön JavaScript-felhasználó, és meg szeretné adni a biztonságot, a következő típusokat használhatja a JSON-válasz `AnalyzeResult` objektumként való elküldéséhez.
+A JSON-válasz objektuma ugyanazzal az objektum-gráfmal rendelkezik, mint az aszinkron verzió. Ha Ön JavaScript-felhasználó, és meg szeretné adni a biztonságot, a következő típusokat használhatja a JSON-válasz objektumként való elküldéséhez `AnalyzeResult` .
 
 ```typescript
 export interface AnalyzeResult {
