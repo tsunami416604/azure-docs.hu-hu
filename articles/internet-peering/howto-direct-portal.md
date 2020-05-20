@@ -3,21 +3,21 @@ title: Közvetlen társ létrehozása vagy módosítása a Azure Portal használ
 titleSuffix: Azure
 description: Közvetlen társ létrehozása vagy módosítása a Azure Portal használatával
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: dcd6aaf584691005dd071a7aba5958070f598978
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/19/2020
+ms.author: derekol
+ms.openlocfilehash: 59b9079b500817c31586c0a566082a867d7e7f41
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681068"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684001"
 ---
 # <a name="create-or-modify-a-direct-peering-by-using-the-azure-portal"></a>Közvetlen társ létrehozása vagy módosítása a Azure Portal használatával
 
-Ez a cikk azt ismerteti, hogyan hozható létre a Microsoft Direct peering a Azure Portal használatával. Ez a cikk azt is bemutatja, hogyan ellenőrizhető az erőforrás állapota, hogyan frissíthető vagy törölhető és kiépíthető.
+Ez a cikk azt ismerteti, hogyan hozható létre a Microsoft Direct peering egy internetszolgáltató vagy internetes Exchange-szolgáltató számára a Azure Portal használatával. Ez a cikk azt is bemutatja, hogyan ellenőrizhető az erőforrás állapota, hogyan frissíthető vagy törölhető, illetve kiépíthető.
 
 Ha szeretné, ezt az útmutatót az Azure [PowerShell](howto-direct-powershell.md)használatával végezheti el.
 
@@ -32,10 +32,35 @@ Ha szeretné, ezt az útmutatót az Azure [PowerShell](howto-direct-powershell.m
 
 ### <a name="create-a-direct-peering"></a><a name=create></a>Közvetlen társ létrehozása
 
-Hozzon létre egy **új társ-** létrehozási kérést a társítási erőforrás használatával.
+Internet-szolgáltatóként vagy internetes Exchange-szolgáltatóként létrehozhat egy új, közvetlen társítási kérést [egy társ létrehozásával]( https://go.microsoft.com/fwlink/?linkid=2129593).
 
-#### <a name="launch-resource-and-configure-basic-settings"></a>Erőforrás elindítása és alapszintű beállítások konfigurálása
-[!INCLUDE [direct-peering-basic](./includes/direct-portal-basic.md)]
+1. A társítás **létrehozása** oldalon az **alapok** lapon adja meg az itt látható mezőket:
+
+
+    ![A Peering Service regisztrálása](./media/setup-basics-tab.png)
+
+2. Válassza ki az Azure-előfizetését.
+
+3. Az erőforráscsoport esetében választhat egy meglévő erőforráscsoportot a legördülő listából, vagy létrehozhat egy új csoportot az új létrehozása lehetőség kiválasztásával. Ehhez a példához hozzunk létre egy új erőforráscsoportot.
+
+4. A név megegyezik az erőforrás nevével, és bármi lehet, amit választ.
+
+5. A régió automatikusan ki van választva, ha a meglévő erőforráscsoportot választotta. Ha úgy döntött, hogy új erőforráscsoportot hoz létre, ki kell választania azt az Azure-régiót, ahol az erőforrást tárolni szeretné.
+
+    >[!NOTE]
+    > Az a régió, ahol az erőforráscsoport található, független attól a helytől, ahol a Microsofttal kívánja létrehozni a kapcsolatot. Az ajánlott eljárás azonban az, hogy a legközelebb eső Azure-régiókban található erőforráscsoportok között szervezzen egyenrangú erőforrásokat. Például a Ashburn-ben való társítások esetén létrehozhat egy erőforráscsoportot az USA keleti régiójában vagy a Kelet-RÉGIÓJA.
+
+6. Válassza ki az ASN-t a **PeerASN** mezőben.
+
+    >[!IMPORTANT]
+    >A rendszer csak a jóváhagyott ValidationState rendelkező ASN-ket választhatja, mielőtt elküld egy kérést. Ha most elküldte a PeerAsn kérelmet, várjon 12 órát, vagy ha az ASN-társítást jóvá szeretné hagyni. Ha a kiválasztott ASN-hitelesítés függőben van, hibaüzenet jelenik meg. Ha nem látja a kiválasztható ASN-t, ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva. Ha igen, ellenőrizze, hogy már létrehozott-e PeerAsn az **[Azure-előfizetéshez való társítási peer ASN](https://go.microsoft.com/fwlink/?linkid=2129592)** használatával.
+
+7. Válassza a **Next (tovább): konfigurálás** a folytatáshoz lehetőséget.
+
+
+
+    ![A Peering Service regisztrálása](./media/setup-direct-basics-filled-tab.png)
+
 
 #### <a name="configure-connections-and-submit"></a>Kapcsolatok konfigurálása és küldés
 [!INCLUDE [direct-peering-configuration](./includes/direct-portal-configuration.md)]
@@ -54,6 +79,6 @@ Hozzon létre egy **új társ-** létrehozási kérést a társítási erőforr�
 * [Exchange-társ létrehozása vagy módosítása a portál használatával](howto-exchange-portal.md)
 * [Örökölt Exchange-társ átalakítása Azure-erőforrásra a portál használatával](howto-legacy-exchange-portal.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 További információ: [internetes peering GYIK](faqs.md).

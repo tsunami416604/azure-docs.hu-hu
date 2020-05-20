@@ -8,14 +8,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 8be5dac2d1d5e8a5a3ceafff6b51b2d89e03993f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fa7e2321d61721e370ef6b5924dc6f820dd1f724
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593281"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685287"
 ---
 # <a name="add-entities-to-extract-data"></a>Entitások hozzáadása az adatok kinyeréséhez
 
@@ -25,24 +25,28 @@ Az entitás egy szót vagy kifejezést jelöl a kinyerni kívánt szövegen bel�
 
 ## <a name="plan-entities-then-create-and-label"></a>Entitások megtervezése, majd létrehozás és címkézés
 
-A géppel megtanult entitások létrehozhatók a példa hosszúságú kimondott szöveg, vagy az **entitások** lapról hozhatók létre.
+a gépi tanulási entitások a példa hosszúságú kimondott szöveg hozhatók létre, vagy az **entitások** lapról hozhatók létre.
 
-Általánosságban elmondható, hogy az entitások megtervezésével időt kell fordítani ahhoz, hogy egy géppel megtanult entitást hozzanak létre a portálon. Ezután hozza létre a gép által megtanult entitást a példából az alentitások és az időpontokban jól ismert funkciók részletes adataival. A [dekomponálható entitás oktatóanyaga](tutorial-machine-learned-entity.md) bemutatja, hogyan használhatja ezt a módszert.
+Általánosságban az ajánlott eljárás az, hogy időt kell fordítani az entitások megtervezésére, mielőtt a portálon gépi tanulási entitást hozna létre. Ezután hozza létre a gépi tanulási entitást a példából, és az alentitások és a szolgáltatásokban jól ismert funkciókkal. A [dekomponálható entitás oktatóanyaga](tutorial-machine-learned-entity.md) bemutatja, hogyan használhatja ezt a módszert.
 
 Az entitások megtervezésének részeként tudnia kell, hogy szöveg-egyeztetési entitásokra van szüksége (például előre összeépített entitások, reguláris kifejezésű entitások vagy lista entitások). Ezeket az **entitások** lapon hozhatja létre, mielőtt a címkét példaként hosszúságú kimondott szöveg.
 
-Címkézéskor felcímkézheti az egyes entitásokat, majd felépítheti azt egy szülő géppel megtanult entitásba. Vagy elindíthat egy szülő géppel megtanult entitást, és elvégezheti a gyermek entitások kibontását.
+Címkézéskor felcímkézheti az egyes entitásokat, majd felépítheti azt egy fölérendelt gépi tanulási entitásba. Vagy elindíthat egy szülő gépi tanulással rendelkező entitást, és elvégezheti a gyermek entitások kibontását.
 
 > [!TIP]
 >Címkézse az összes olyan szót, amely egy entitást jelezhet, még akkor is, ha a szavakat nem használják az ügyfélalkalmazás kibontásakor.
 
-## <a name="creating-an-entity-before-or-with-labeling"></a>Entitás létrehozása a címkézés előtt vagy után
+## <a name="when-to-create-an-entity"></a>Mikor hozzon létre egy entitást
 
-Az alábbi táblázat segítségével megtudhatja, hogy mely entitások hozzanak létre vagy adjon hozzá minden entitást az alkalmazáshoz.
+Az entitások megtervezése után létre kell hoznia a gépi tanulási entitásokat és alentitásokat. Ehhez szükség lehet előre összeépített entitások hozzáadására vagy szöveggel egyező entitások hozzáadására a gépi tanulási entitások szolgáltatásainak biztosításához. Ezeket mind a címkézés előtt el kell végezni.
+
+A példa hosszúságú kimondott szöveg címkézésének megkezdése után létrehozhat Machine Learn entitásokat vagy kiterjesztheti a List entitásokat.
+
+Az alábbi táblázat segítségével megismerheti, hogy az egyes entitások hogyan hozhatók létre vagy adhatók hozzá az alkalmazáshoz.
 
 |Entitástípus|Hol hozható létre entitás a LUIS-portálon|
 |--|--|
-|Gépi tanulással létrejött entitás|Entitások vagy leképezés részletei|
+|gépi tanulási entitás|Entitások vagy leképezés részletei|
 |Listaentitás|Entitások vagy leképezés részletei|
 |Reguláriskifejezés-entitás|Entitások|
 |Pattern.any entitás|Entitások|
@@ -51,27 +55,11 @@ Az alábbi táblázat segítségével megtudhatja, hogy mely entitások hozzanak
 
 **Az entitások lapon** hozhatja létre az összes entitást, vagy létrehozhat néhány entitást az entitás címkévé való címkézésének részeként a **leképezés részletei** lapon. Csak egy entitást lehet _címkével ellátni_ a **leképezés részletei** lapról.
 
-## <a name="create-a-machine-learned-entity"></a>Gépi megtanult entitás létrehozása
 
-[!INCLUDE [Create and label entities in machine-learned tutorial](includes/decomposable-tutorial-links.md)]
 
-## <a name="create-a-text-matching-entity"></a>Szöveggel egyező entitás létrehozása
+## <a name="how-to-create-a-new-custom-entity"></a>Új egyéni entitás létrehozása
 
-A Text-Matching entitások használata számos módszert kínál az adatok kinyerésére:
-
-|Szöveggel egyező entitások|Cél|
-|--|--|
-|[Listaentitás](reference-entity-list.md)|kanonikus nevek listája a szinonimákkal együtt alternatív űrlapokként|
-|Reguláriskifejezés-entitás|szöveg egyeztetése reguláris kifejezéssel rendelkező entitás használatával|
-|[Előre elkészített entitás](luis-reference-prebuilt-entities.md)|közös adattípusok (például szám, e-mail, dátum) egyeztetése|
-|Előre elkészített tartományi entitás|egyezés a kijelölt tárgyi tartományok használatával|
-|[Minta. any](reference-entity-pattern-any.md)| a környező szöveggel könnyen összetéveszthető entitások egyeztetése|
-
-Az előre elkészített entitások egyéni betanítási adatmennyiség nélkül működnek. A többi entitásnak szüksége van az ügyfél-betanítási adatok (például a lista entitás elemei) vagy egy kifejezés (például egy reguláris kifejezés vagy minta) megadására.
-
-<a name="add-list-entities"></a>
-
-### <a name="how-to-create-a-new-custom-entity"></a>Új egyéni entitás létrehozása
+Ez a folyamat a gépi megtanult entitások, az entitások listázása és a reguláris kifejezés entitások esetében működik.
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
@@ -79,7 +67,50 @@ Az előre elkészített entitások egyéni betanítási adatmennyiség nélkül 
 1. Válassza a **+ Létrehozás**lehetőséget, majd válassza ki az entitás típusát.
 1. Folytassa az entitás konfigurálását, majd válassza a **Létrehozás** lehetőséget, ha elkészült.
 
-### <a name="add-list-entities-for-exact-matches"></a>Lista entitások hozzáadása a pontos egyezésekhez
+## <a name="create-a-machine-learned-entity"></a>Gép megtanult entitásának létrehozása
+
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
+1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
+1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, és válassza a **gép megtanulta**lehetőséget, majd válassza a lehetőséget. Alentitások hozzáadásához válassza a **struktúra hozzáadása**elemet. Kattintson a **Létrehozás** gombra.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a gép megtanult entitásának létrehozásáról.](media/add-entities/machine-learned-entity-with-structure.png)
+
+1. Az **alentitások hozzáadása**területen vegyen fel egy alentitást a **+** szülő entitás sorára kattintva.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép az alentitások hozzáadásáról.](media/add-entities/machine-learned-entity-with-subentities.png)
+
+1. Válassza a **Létrehozás** lehetőséget a létrehozási folyamat befejezéséhez.
+
+## <a name="add-a-feature-to-a-machine-learned-entity"></a>Szolgáltatás hozzáadása egy géppel megtanult entitáshoz
+
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
+1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza ki a gépet megtanult entitást.
+1. A funkció hozzáadásához válassza a **+ Hozzáadás funkciót** az entitás vagy az alentitás sorban.
+1. Válassza ki a meglévő entitások és kifejezések listáját.
+1. Ha az entitást csak akkor kell kinyerni, ha a szolgáltatás megtalálható, válassza ki a csillagot a `*` szolgáltatáshoz.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőfelvétel a szolgáltatás entitáshoz való hozzáadásáról.](media/add-entities/machine-learned-entity-schema-with-features.png)
+
+## <a name="create-a-regular-expression-entity"></a>Reguláris kifejezés entitásának létrehozása
+
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
+1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
+1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
+
+1. Az **entitás típusának létrehozása** párbeszédpanelen adja meg az entitás nevét, és válassza a **regex**lehetőséget, írja be a reguláris kifejezést a **regex** mezőbe, és válassza a **Létrehozás**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a reguláris kifejezés entitás létrehozásáról.](media/add-entities/add-regular-expression-entity.png)
+
+
+<a name="add-list-entities"></a>
+
+## <a name="create-a-list-entity"></a>Lista entitás létrehozása
 
 A lista entitások rögzített, lezárt kapcsolódó szavakat jelölnek. Amíg a szerző megváltoztathatja a listát, a LUIS nem fogja növelni vagy csökkenteni a listát. Egy meglévő List entitást is importálhat, ha az [Entity. JSON formátumot](reference-entity-list.md#example-json-to-import-into-list-entity)használja.
 
@@ -88,7 +119,7 @@ A következő lista a kanonikus nevet és a szinonimákat mutatja be.
 |Szín listaelem neve|Szín – szinonimák|
 |--|--|
 |Vörös|Crimson, Blood, Apple, Fire-Engine|
-|Kék|égbolt, Azure, kobalt|
+|Kék|égbolt, kobalt|
 |Zöld|Kelly, lime|
 
 A List entitás létrehozásához kövesse az eljárást. A lista entitás létrehozása után nem kell megadnia például a hosszúságú kimondott szöveg. A listaelemek és a szinonimák pontos szöveggel egyeznek meg.
@@ -138,47 +169,38 @@ Ebben az eljárásban hozzáadhat `origin` és `destination` szerepköröket egy
     A szerepkör hozzá lett adva az előre összeépített entitáshoz, de az adott entitást használó egyik hosszúságú kimondott szöveg sincs hozzájuk adva.
 
 ### <a name="label-text-with-a-role-in-an-example-utterance"></a>Egy példa Kimondás szerepkörrel rendelkező szöveg felirata
+
+> [!TIP]
+> A szerepköröket lecserélheti egy gépi tanulási entitás alentitásával.
+
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
 1. Ugrás a szándék részletei lapra, amely a szerepkört használó hosszúságú kimondott szöveg tartalmaz.
-1. Ha címkével szeretne felcímkézni a szerepkört, válassza ki az entitás címkéjét (szöveg alatti folytonos vonal), majd a legördülő listából válassza ki a **Megtekintés az entitások palettán** lehetőséget.
+1. Ha címkével szeretne felcímkézni a szerepkört, válassza ki az entitás címkéjét (szöveg alatti folytonos vonal), majd a legördülő listából válassza ki a **Megtekintés az entitásban ablaktáblát** .
 
     > [!div class="mx-imgBorder"]
-    > ![Képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/how-to-add-entities/select-text-label-with-entity-palette-for-role.png)
+    > ![Képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/add-entities/view-in-entity-pane.png)
 
     Az entitás paletta a jobb oldalon jelenik meg.
 
 1. Válassza ki az entitást, majd lépjen a paletta aljára, és válassza ki a szerepkört.
 
     > [!div class="mx-imgBorder"]
-    > ![Képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/how-to-add-entities/select-role-from-entity-palette-entity-inspector.png)
+    > ![Képernyőkép a nézet kiválasztásáról az Entity paletta-ban](media/add-entities/select-role-in-entity-palette.png)
 
 <a name="add-pattern-any-entities"></a>
+<a name="add-a-patternany-entity"></a>
+<a name="create-a-pattern-from-an-utterance"></a>
 
-## <a name="add-a-patternany-entity"></a>Minta hozzáadása bármely entitáshoz
+## <a name="create-a-patternany-entity"></a>Minta létrehozása bármely entitáshoz
 
-[Minta. az](luis-concept-entity-types.md) entitások csak [mintákban](luis-how-to-model-intent-pattern.md)érvényesek, nem pedig a "példa hosszúságú kimondott szöveg". Ez a típusú entitás segítséget nyújt a LUIS számára, hogy megkeresse a különböző hosszúságú és a Word által választott entitások végét. Mivel ez az entitás egy mintában van használatban, LUIS tudja, hogy az entitás vége a teljes sablonban van-e.
+A **minta. minden** entitás csak [mintázatokkal](luis-how-to-model-intent-pattern.md)érhető el.
 
-### <a name="steps-to-create-a-patternany-entity"></a>A minta létrehozásának lépései. bármely entitás
-1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
-1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
-1. A **build (létrehozás** ) szakaszban válassza az **entitások** lehetőséget a bal oldali panelen, majd válassza a **+ Létrehozás**elemet.
-
-1. Az **entitás típusának kiválasztása** párbeszédpanelen adja meg az entitás nevét a **név** mezőben, majd válassza a minta lehetőséget **. bármely** **típusnál** válassza a **Létrehozás**lehetőséget.
-
-    Miután [létrehozta a mintázatot](luis-how-to-model-intent-pattern.md) az entitás használatával, az entitást egy kombinált géppel megismert és szöveggel egyező algoritmussal kell kibontani.
-
-### <a name="create-a-pattern-template-utterance-to-use-patternany-entity"></a>Minta sablonhoz való Kimondás létrehozása mintaként. bármely entitás
-
-A minta. bármely entitás használatához vegyen fel egy mintát a **minták** lapra, az **alkalmazás javítása** szakaszban, a megfelelő kapcsos zárójel szintaxissal, például: `Where is **{HumanResourcesFormTitle}** on the server?` .
-
-Ha azt tapasztalja, hogy a Pattern.any entitást tartalmazó minta nem megfelelően vonja ki az entitásokat, egy [explicit lista](reference-pattern-syntax.md#explicit-lists) megoldhatja a problémát.
 
 ## <a name="do-not-change-entity-type"></a>Entitás típusának módosítása
 
 LUIS nem teszi lehetővé az entitás típusának módosítását, mert nem tudja, mit kell hozzáadni vagy eltávolítani az entitás létrehozásához. A típus módosításához jobb, ha a megfelelő típusú új entitást kis mértékben eltérő névvel hozza létre. Az entitás létrehozása után minden egyes Kimondás után távolítsa el a régi címkével ellátott entitás nevét, és adja hozzá az új entitás nevét. Ha az összes hosszúságú kimondott szöveg újracímkézték, törölje a régi entitást.
 
-<a name="create-a-pattern-from-an-utterance"></a>
 
 ## <a name="next-steps"></a>További lépések
 

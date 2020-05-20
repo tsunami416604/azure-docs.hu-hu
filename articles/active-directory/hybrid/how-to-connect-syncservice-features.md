@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/25/2018
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3f6b698922440c6e3e9b488cca93ca8d98d9c59
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b23c2b81d281f787914e32818d768d2d531537f4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80983075"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682225"
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Az Azure AD Connect szinkronizálási szolgáltatás jellemzői
 
@@ -34,12 +34,12 @@ Ez a témakör azt ismerteti, hogyan működik a **Azure ad Connect szinkronizá
 
 Ezeket a beállításokat a [Windows PowerShell Azure Active Directory modulja](https://aka.ms/aadposh)konfigurálja. Töltse le és telepítse a Azure AD Connecttól függetlenül. A jelen témakörben ismertetett parancsmagok bevezetése a [2016 márciusi kiadásban történt (build 9031,1)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1). Ha nem rendelkezik a jelen témakörben ismertetett parancsmagokkal, vagy nem ugyanazt az eredményt hozza létre, akkor győződjön meg arról, hogy a legújabb verziót futtatja.
 
-Az Azure AD-címtár konfigurációjának megtekintéséhez futtassa `Get-MsolDirSyncFeatures`a következőt:.  
+Az Azure AD-címtár konfigurációjának megtekintéséhez futtassa a következőt: `Get-MsolDirSyncFeatures` .  
 ![Get-MsolDirSyncFeatures eredmény](./media/how-to-connect-syncservice-features/getmsoldirsyncfeatures.png)
 
 Ezen beállítások közül sokat csak Azure AD Connect módosíthat.
 
-A következő beállításokat állíthatja be `Set-MsolDirSyncFeature`:
+A következő beállításokat állíthatja be `Set-MsolDirSyncFeature` :
 
 | DirSyncFeature | Megjegyzés |
 | --- | --- |
@@ -53,16 +53,16 @@ Miután engedélyezte a szolgáltatást, nem lehet újra letiltani.
 > 
 > 
 
-A következő beállításokat a Azure AD Connect konfigurálja, és a nem módosítható `Set-MsolDirSyncFeature`:
+A következő beállításokat a Azure AD Connect konfigurálja, és a nem módosítható `Set-MsolDirSyncFeature` :
 
 | DirSyncFeature | Megjegyzés |
 | --- | --- |
 | DeviceWriteback |[Azure AD Connect: az eszköz visszaírási engedélyezése](how-to-connect-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect Sync: címtárszolgáltatás-bővítmények](how-to-connect-sync-feature-directory-extensions.md) |
-| [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Lehetővé teszi egy attribútum karanténba helyezését, ha egy másik objektum duplikálása helyett a teljes objektumot nem sikerül az exportálás során. |
+| [DuplicateProxyAddressResiliency <br/> DuplicateUPNResiliency](#duplicate-attribute-resiliency) |Lehetővé teszi egy attribútum karanténba helyezését, ha egy másik objektum duplikálása helyett a teljes objektumot nem sikerül az exportálás során. |
 | Jelszókivonat szinkronizálása |[Jelszó-kivonatolási szinkronizálás megvalósítása Azure AD Connect szinkronizálással](how-to-connect-password-hash-synchronization.md) |
 |Átmenő hitelesítés|[Felhasználói bejelentkezés az Azure Active Directory átmenő hitelesítésével](how-to-connect-pta.md)|
-| UnifiedGroupWriteback |[Előzetes verzió: csoport visszaírási](how-to-connect-preview.md#group-writeback) |
+| UnifiedGroupWriteback |Group writeback (Csoportvisszaíró)|
 | UserWriteback |Jelenleg nem támogatott. |
 
 ## <a name="duplicate-attribute-resiliency"></a>Ismétlődő attribútum rugalmassága

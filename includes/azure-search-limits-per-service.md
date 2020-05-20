@@ -5,28 +5,26 @@ services: search
 author: HeidiSteen
 ms.service: cognitive-search
 ms.topic: include
-ms.date: 05/06/2019
+ms.date: 05/11/2020
 ms.author: heidist
 ms.custom: include file
-ms.openlocfilehash: 179f525b7b6a7e51889b14b66df6c537ca56bd75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5c8129434ddb4eec2dd25a3f123f28b4db221b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80272851"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682609"
 ---
-A tárterületet a lemezterület korlátozza, vagy az indexek, dokumentumok vagy más magas szintű erőforrások *maximális számának* korlátozásával, attól függően, hogy melyik következik be először. A következő táblázat a dokumentumok tárolási korlátait tartalmazza. Az indexek, dokumentumok és egyéb objektumok maximális korlátaihoz lásd: [erőforrások korlátozása](../articles/search/search-limits-quotas-capacity.md#index-limits).
+A keresési szolgáltatást a lemezterület korlátozza, vagy az indexek vagy indexelő maximális számának korlátozásával, attól függően, hogy melyik következik be először. A következő táblázat a dokumentumok tárolási korlátait tartalmazza. Az objektumok maximális korlátaihoz lásd: [erőforrások korlátozása](../articles/search/search-limits-quotas-capacity.md#index-limits).
 
-| Erőforrás | Ingyenes | <sup>1</sup> . alapszintű | S1 | S2 | S3 | S3&nbsp;HD<sup>2</sup> | L1 | L2 |
+| Erőforrás | Ingyenes | <sup>1</sup> . alapszintű | S1 | S2 | S3 | S3 &nbsp; HD | L1 | L2 |
 | -------- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Szolgáltatói szerződés (SLA)<sup>3</sup>  |Nem |Igen |Igen |Igen |Igen |Igen |Igen |Igen |
+| Szolgáltatói szerződés (SLA)<sup>2</sup>  |Nem |Igen |Igen |Igen |Igen |Igen |Igen |Igen |
 | Tárterület partíciónként |50 MB |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
 | Partíciók szolgáltatásonként |N/A |1 |12 |12 |12 |3 |12 |12 |
 | Partíció mérete |N/A |2 GB |25 GB |100 GB |200 GB |200 GB |1 TB |2 TB |
 | Replikák |N/A |3 |12 |12 |12 |12 |12 |12 |
 
-<sup>1</sup> az alapszintű partíció egy rögzített partíciót tartalmaz. Ezen a szinten további keresési egységek vannak használatban több replika kiosztásához a lekérdezési feladatok megnövekedéséhez.
+<sup>1</sup> az alapszintű partíció egy rögzített partíciót tartalmaz. További keresési egységek is felhasználhatók a nagyobb lekérdezési kötetek replikáinak hozzáadására.
 
-<sup>2</sup> az S3 HD rögzített korlátja három partíció, ami alacsonyabb, mint az S3 partíciós korlátja. Azért alacsonyabb a partíciókorlát, mert az S3 HD esetében az indexek száma jelentősen magasabb. Ha szolgáltatási korlátok vonatkoznak a számítási erőforrásokra (tárolás és feldolgozás) és a tartalomra (indexek és dokumentumok) is, a rendszer először a tartalmi korlátot éri el.
-
-<sup>3</sup> a dedikált erőforrásokon lévő számlázható szolgáltatások esetében 3 szolgáltatói szerződés is rendelkezésre áll. Az ingyenes szolgáltatások és az előzetes verziójú funkciók nem rendelkeznek SLA-val. Számlázható szolgáltatások esetén a SLA-kat akkor kell végrehajtani, ha elegendő redundancia van kiépítve a szolgáltatáshoz. Legalább két replika szükséges a lekérdezés (olvasási) SLA-hoz. Három vagy több replika szükséges a lekérdezéshez és az indexeléshez (írási/olvasási) SLA-hoz. A partíciók száma nem SLA-megfontolás. 
+<sup>2</sup> a szolgáltatói szerződések a dedikált erőforrásokon lévő számlázható szolgáltatások esetében érvényesek. Az ingyenes szolgáltatások és az előzetes verziójú funkciók nem rendelkeznek SLA-val. Számlázható szolgáltatások esetén a SLA-kat akkor kell végrehajtani, ha elegendő redundancia van kiépítve a szolgáltatáshoz. Legalább két replika szükséges a lekérdezés (olvasási) SLA-hoz. Három vagy több replika szükséges a lekérdezéshez és az indexeléshez (írási/olvasási) SLA-hoz. A partíciók száma nem SLA-megfontolás. 

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 7c843b45b5a398aaaa1aab66f80961560477cf18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 794c88556fb69aae11c582afd03f548480469e34
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128067"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684711"
 ---
 # <a name="collect-telemetry-data-for-search-traffic-analytics"></a>Telemetria-adatok gyűjtése a keresési forgalom elemzéséhez
 
@@ -48,7 +48,7 @@ Ha Application Insights erőforrással rendelkezik, az alkalmazás regisztrálá
 
 A Visual Studio-projektek egyes típusaihoz tartozó parancsikonok az alábbi lépésekben láthatók. Létrehoz egy erőforrást, és mindössze néhány kattintással regisztrálja az alkalmazást.
 
-1. A Visual Studio és a ASP.net fejlesztéséhez nyissa meg a megoldást, és válassza a **projekt** > **Hozzáadás Application Insights telemetria**lehetőséget.
+1. A Visual Studio és a ASP.net fejlesztéséhez nyissa meg a megoldást, és válassza a **projekt**  >  **Hozzáadás Application Insights telemetria**lehetőséget.
 
 1. Kattintson az első **lépések**elemre.
 
@@ -236,4 +236,4 @@ A keresési alkalmazás hatékony és átgondolt adatainak beszerzése a keresé
 
 A [Application Insightsról](https://docs.microsoft.com/azure/azure-monitor/app/app-insights-overview) további információt talál, és megtekintheti a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/application-insights/) , ahol további információkat találhat a különböző szolgáltatási szintjeiről.
 
-További információ a csodálatos jelentések létrehozásáról. A részletekért tekintse meg [a Power bi Desktop első lépéseit](https://powerbi.microsoft.com/documentation/powerbi-desktop-getting-started/) ismertető témakört.
+További információ a csodálatos jelentések létrehozásáról. A részletekért tekintse meg [a Power bi Desktop első lépéseit](https://docs.microsoft.com/power-bi/fundamentals/desktop-getting-started) ismertető témakört.

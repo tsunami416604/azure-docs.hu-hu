@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 4b02039c86f43e6bebed58dfff475816f09a3da1
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 00cf806bf6575fd96af435abf8d0b3dd8734338a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890145"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679656"
 ---
 # <a name="similarity-and-scoring-in-azure-cognitive-search"></a>Hasonlóság és pontozás az Azure Cognitive Search
 
@@ -25,10 +25,10 @@ A keresési pontszám kiszámítása az adatok és a lekérdezés statisztikai t
 
 A keresési pontszám értékei megismételhetők egy eredményhalmaz során. Ha több találat azonos keresési pontszámmal rendelkezik, az azonos pontszámú elemek sorrendje nincs definiálva, és nem stabil. Futtassa újra a lekérdezést, és előfordulhat, hogy az elemek eltolási pozíciója látható, különösen akkor, ha az ingyenes szolgáltatást vagy egy számlázható szolgáltatást több replikával használ. Az azonos pontszámú két elem esetében nincs garancia arra, hogy az egyik első megjelenjen.
 
-Ha meg szeretné szüntetni a döntetlent az ismétlődő pontszámok között, hozzáadhat egy **$OrderBy** záradékot az első sorrend szerint a pontszám szerint, majd egy másik rendezhető mező szerint `$orderby=search.score() desc,Rating desc`(például:). További információ: [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
+Ha meg szeretné szüntetni a döntetlent az ismétlődő pontszámok között, hozzáadhat egy **$OrderBy** záradékot az első sorrend szerint a pontszám szerint, majd egy másik rendezhető mező szerint (például: `$orderby=search.score() desc,Rating desc` ). További információ: [$OrderBy](https://docs.microsoft.com/azure/search/search-query-odata-orderby).
 
 > [!NOTE]
-> A `@search.score = 1.00` egy nem pontszámmal ellátható vagy nem rangsorolt eredményhalmaz. A pontszám egységes az összes eredményben. A nem pontozásos eredmények akkor fordulnak elő, ha a lekérdezési űrlap nem intelligens keresés, helyettesítő karakter vagy regex lekérdezés, vagy egy **$Filter** kifejezés. 
+> A egy nem `@search.score = 1.00` pontszámmal ellátható vagy nem rangsorolt eredményhalmaz. A pontszám egységes az összes eredményben. A nem pontozásos eredmények akkor fordulnak elő, ha a lekérdezési űrlap nem intelligens keresés, helyettesítő karakter vagy regex lekérdezés, vagy egy **$Filter** kifejezés. 
 
 ## <a name="scoring-profiles"></a>Pontozási profilok
 
@@ -36,7 +36,9 @@ Egyéni *pontozási profil*definiálásával testre szabhatja a különböző me
 
 A pontozási profil az index definíciójának részét képezi, amely a súlyozott mezőkből, függvényekből és paraméterekből áll. A definiálásával kapcsolatos további információkért lásd: [pontozási profilok](index-add-scoring-profiles.md).
 
-## <a name="scoring-statistics"></a>Pontozási statisztika
+<a name="scoring-statistics"></a>
+
+## <a name="scoring-statistics-and-sticky-sessions-preview"></a>Pontozási statisztika és Sticky Sessions (előzetes verzió)
 
 A méretezhetőség érdekében az Azure Cognitive Search horizontálisan osztja el az egyes indexeket egy horizontális Felskálázási folyamaton keresztül, ami azt jelenti, hogy az index részei fizikailag elkülönítve vannak.
 
@@ -45,13 +47,21 @@ Alapértelmezés szerint a rendszer a dokumentum pontszámát a szegmensen *bel�
 Ha az összes szegmens statisztikai tulajdonságai alapján szeretné kiszámítani a pontszámot, ezt a *scoringStatistics = Global* [lekérdezési paraméterként](https://docs.microsoft.com/rest/api/searchservice/search-documents) való hozzáadásával teheti meg (vagy a *"scoringStatistics": "Global"* értéket adja hozzá a [lekérdezési kérelem](https://docs.microsoft.com/rest/api/searchservice/search-documents)törzsének paraméteréhez).
 
 ```http
-GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global
+GET https://[service name].search.windows.net/indexes/[index name]/docs?scoringStatistics=global&api-version=2019-05-06-Preview&search=[search term]
   Content-Type: application/json
-  api-key: [admin key]  
+  api-key: [admin or query key]  
 ```
+A scoringStatistics használatával biztosítható, hogy az azonos replika összes szegmense ugyanazt az eredményt adja. Ez azt jelentette, hogy a különböző replikák némileg eltérőek lehetnek egymástól, mivel mindig frissülnek az index legutóbbi változásaival. Bizonyos esetekben előfordulhat, hogy a felhasználók több konzisztens eredményt kapnak a "lekérdezési munkamenet" során. Ilyen esetekben a lekérdezések részeként is megadható `sessionId` . Az egy egyedi `sessionId` karakterlánc, amelyet a rendszer egy egyedi felhasználói munkamenetre való hivatkozással hoz létre.
+
+```http
+GET https://[service name].search.windows.net/indexes/[index name]/docs?sessionId=[string]&api-version=2019-05-06-Preview&search=[search term]
+  Content-Type: application/json
+  api-key: [admin or query key]  
+```
+Ha ugyanezt használja, a rendszer a `sessionId` legjobb erőfeszítést kísérli meg ugyanarra a replikára, és a felhasználók által megjelenő eredmények konzisztenciájának növelését fogja látni. 
 
 > [!NOTE]
-> A `scoringStatistics` paraméterhez rendszergazdai API-kulcs szükséges.
+> Ha ismételten ugyanazt az értéket használja, a `sessionId` megzavarhatja a kérelmek terheléselosztását a replikák között, és negatív hatással lehet a keresési szolgáltatás teljesítményére. A munkamenet-azonosítóval használt érték nem kezdődhet "_" karakterrel.
 
 ## <a name="similarity-ranking-algorithms"></a>Hasonlósági rangsorolási algoritmusok
 

@@ -3,16 +3,16 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: d7b19fd11e6784a188a18f6a613eef5ff4f77764
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aaa0d47b540a1c3eacd9efebda84f22b83529a28
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82105641"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680989"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
-Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. Emellett egy fórumbejegyzésben is feltehet kérdéseket az Azure Backup szolgáltatással kapcsolatban a [vitafórumon](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
+Ez a cikk az Azure Files biztonsági mentésével kapcsolatos általános kérdéseket válaszol meg. Egyes válaszokban részletes információkat tartalmazó cikkekre mutató hivatkozások találhatók. A Azure Backup szolgáltatással kapcsolatos kérdéseket is felteheti a [Microsoft Q&a Azure Backup](https://docs.microsoft.com/answers/topics/azure-backup.html).
 
 A cikk szakaszainak gyors áttekintéséhez használja **A cikk tartalma** terület hivatkozásait a jobb oldalon.
 
@@ -80,9 +80,80 @@ A Azure Backup által készített Pillanatképek a portálon, a PowerShellben va
 
 A maximális megőrzéssel kapcsolatos részletekért tekintse meg a [támogatási mátrixot](azure-file-share-support-matrix.md) . Azure Backup valós idejű számítást végez a pillanatképek számának megadásával, amikor a biztonsági mentési szabályzatot konfigurálja a megőrzési értékekhez. Amint a megadott adatmegőrzési értékeknek megfelelő Pillanatképek száma meghaladja az 200-as értéket, a portál egy figyelmeztetést jelenít meg, amely a megőrzési értékek módosítására kéri. Így nem lépi túl a Azure Files által támogatott Pillanatképek maximális számát az adott időpontban.
 
-### <a name="what-happens-when-i-change-the-backup-policy-for-an-azure-file-share"></a>Mi történik, ha módosítom az Azure-fájlmegosztáshoz tartozó biztonsági mentési szabályzatot?
+### <a name="what-is-the-impact-on-existing-recovery-points-and-snapshots-when-i-modify-the-backup-policy-for-an-azure-file-share-to-switch-from-daily-policy-to-gfs-policy"></a>Milyen hatással van a meglévő helyreállítási pontokra és pillanatképekre, amikor módosítom egy Azure-fájlmegosztás biztonsági mentési szabályzatát, hogy a "napi szabályzat" értékről "GFS Policy"-re váltson?
 
-Amikor új házirendet alkalmaznak a fájlmegosztáso(ko)n, az új szabályzat ütemezése és megőrzése érvényes. Ha növeli a megőrzési időtartamot, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időtartamot, a helyreállítási pontok a következő tisztítási feladat során törlendőként lesznek megjelölve.
+Ha módosítja a napi biztonsági mentési szabályzatot a GFS házirendre (hetente/havonta/évenkénti megőrzéssel), a viselkedés a következő:
+
+- **Megőrzés**: Ha a szabályzat módosításának részeként hetente/havonta/évenkénti megőrzést vesz fel, az ütemezett biztonsági mentés részeként létrehozott jövőbeli helyreállítási pontok az új szabályzatnak megfelelően lesznek címkézve. A meglévő helyreállítási pontok továbbra is napi helyreállítási pontokként jelennek meg, így nem lesznek hetente/havonta/évente megjelölve.
+
+- **Pillanatképek és helyreállítási pontok karbantartása**:
+
+  - Ha a napi megőrzés kibővül, a meglévő helyreállítási pontok lejárati dátuma az új szabályzatban konfigurált napi megőrzési értéknek megfelelően frissül.
+  - Ha csökkenti a napi adatmegőrzést, a meglévő helyreállítási pontok és Pillanatképek törlésre vannak megjelölve a következő karbantartási futtatási feladatokban az új szabályzatban konfigurált napi megőrzési értéknek megfelelően, majd törölve.
+
+Íme egy példa arra, hogyan működik ez:
+
+#### <a name="existing-policy-p1"></a>Meglévő házirend [P1]
+
+|Adatmegőrzés típusa |Ütemezés |Megőrzés  |
+|---------|---------|---------|
+|Napi    |    Minden nap 20:00-kor    |  100 nap       |
+
+#### <a name="new-policy-modified-p1"></a>Új szabályzat [módosított P1]
+
+| Adatmegőrzés típusa | Ütemezés                       | Megőrzés |
+| -------------- | ------------------------------ | --------- |
+| Napi          | Minden nap 21:00 órakor              | 50 nap   |
+| Heti         | Vasárnap, 21:00 órakor              | 3 hét   |
+| Havonta        | Az utolsó hétfőn, 9 ÓRAKOR         | 1 hónap   |
+| Éves         | Januártól harmadik vasárnap, 21:00-kor | 4 év   |
+
+#### <a name="impact"></a>Hatás
+
+1. A meglévő helyreállítási pontok lejárati dátuma az új szabályzat napi adatmegőrzési értékének megfelelően lesz módosítva: ez 50 nap. Így a 50 napnál régebbi helyreállítási pontok törlésre lesznek megjelölve.
+
+2. A meglévő helyreállítási pontok nem lesznek hetente/havonta/évente megjelölve az új szabályzat alapján.
+
+3. Az új ütemezések szerint az összes jövőbeli biztonsági mentés a következő ütemezés szerint fog megjelenni: 9 ÓRAKOR.
+
+4. A jövőbeli helyreállítási pontok lejárati dátuma az új házirenddel lesz igazítva.
+
+>[!NOTE]
+>A házirend módosításai csak az ütemezett biztonsági mentési feladatok futtatásának részeként létrehozott helyreállítási pontokat érintik. Igény szerinti biztonsági mentés esetén a megőrzési időt a biztonsági mentés időpontjában megadott **megőrzési** érték határozza meg.
+
+### <a name="what-is-the-impact-on-existing-recovery-points-when-i-modify-an-existing-gfs-policy"></a>Milyen hatással van a meglévő helyreállítási pontokra a meglévő GFS-szabályzatok módosításakor?
+
+Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jövőbeli biztonsági mentés a módosított szabályzatban konfigurált ütemezésnek megfelelően lesz végrehajtva.  Az összes meglévő helyreállítási pont megőrzése a beállított új megőrzési értékek szerint igazodik. Így ha a megőrzést kiterjesztik, a meglévő helyreállítási pontok az új szabályzatnak megfelelően megmaradnak. Ha csökkenti a megőrzési időt, a rendszer a következő karbantartási feladatokban törli a tisztítást, majd törölve lesz.
+
+Íme egy példa arra, hogyan működik ez:
+
+#### <a name="existing-policy-p2"></a>Meglévő házirend [P2]
+
+| Adatmegőrzés típusa | Ütemezés           | Megőrzés |
+| -------------- | ------------------ | --------- |
+| Napi          | Minden nap 20:00-kor | 50 nap   |
+| Heti         | Hétfő: 20:00  | 3 hét   |
+
+#### <a name="new-policy-modified-p2"></a>Új szabályzat [módosított P2]
+
+| Adatmegőrzés típusa | Ütemezés               | Megőrzés |
+| -------------- | ---------------------- | --------- |
+| Napi          | Minden nap 21:00 órakor     | 10 nap   |
+| Heti         | Hétfőn, 21:00 órakor      | 2 hét   |
+| Havonta        | Az utolsó hétfőn, 9 ÓRAKOR | 2 hónap  |
+
+#### <a name="impact-of-change"></a>A változás hatása
+
+1. A meglévő napi helyreállítási pontok lejárati dátuma az új napi adatmegőrzési érték szerint lesz igazítva, amely 10 nap. Így minden 10 napnál régebbi helyreállítási pont törölve lesz.
+
+2. A meglévő heti helyreállítási pontok lejárati dátuma az új heti adatmegőrzési érték szerint lesz igazítva, amely két hét. Így a két hétnél régebbi heti helyreállítási pontok törölve lesznek.
+
+3. A havi helyreállítási pontok csak a jövőbeli biztonsági mentések részeként jönnek létre az új házirend-konfiguráció alapján.
+
+4. A jövőbeli helyreállítási pontok lejárati dátuma az új házirenddel lesz igazítva.
+
+>[!NOTE]
+>A házirend módosítása csak az ütemezett biztonsági mentés részeként létrehozott helyreállítási pontokra lesz hatással. Igény szerinti biztonsági mentések esetén a megőrzési időtartamot a biztonsági mentés során megadott **megőrzési** érték határozza meg.
 
 ## <a name="next-steps"></a>További lépések
 

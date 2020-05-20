@@ -3,12 +3,12 @@ title: Hozzáférés korlátozása szolgáltatás-végpont használatával
 description: Azure Container Registry-hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: da5ab67d6658d8760565353e2a690c53d862d0ed
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982581"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685053"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Tároló-beállításjegyzékhez való hozzáférés korlátozása egy Azure-beli virtuális hálózat szolgáltatási végpontjának használatával
 
@@ -19,7 +19,7 @@ Ez a cikk bemutatja, hogyan konfigurálható egy tároló beállításjegyzék-s
 > [!IMPORTANT]
 > A Azure Container Registry mostantól támogatja az [Azure Private-hivatkozást](container-registry-private-link.md), amely lehetővé teszi, hogy a virtuális hálózatról származó magánhálózati végpontok egy beállításjegyzékbe kerüljenek. A magánhálózati végpontok a virtuális hálózaton belül, magánhálózati IP-címek használatával érhetők el. Javasoljuk, hogy a legtöbb hálózati forgatókönyvben ne használjon privát végpontokat a szolgáltatási végpontok helyett.
 
-A beállításjegyzék-szolgáltatási végpontok konfigurálása a **Premium** Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry rétegek](container-registry-skus.md).
+A beállításjegyzék-szolgáltatási végpontok konfigurálása a **Premium** Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
@@ -32,7 +32,7 @@ A beállításjegyzék-szolgáltatási végpontok konfigurálása a **Premium** 
 
 * A cikkben szereplő Azure CLI-lépések használatához az Azure CLI 2.0.58 vagy újabb verziójára van szükség. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium SKU szükséges), és küldjön `hello-world` le egy mintát, például a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t. 
+* Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium szintű csomag szükséges), és küldjön le egy minta képet, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t. 
 
 * Ha egy másik Azure-előfizetésben lévő szolgáltatás-végponttal szeretné korlátozni a beállításjegyzék-hozzáférést, regisztrálja az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Például:
 
@@ -132,7 +132,7 @@ docker pull mycontainerregistry.azurecr.io/hello-world:v1
 
 A Docker sikeresen lekéri a rendszerképet a virtuális gépre.
 
-Ez a példa azt mutatja be, hogy a magánhálózati hozzáférési szabály használatával férhet hozzá a Private Container registryhez. A beállításjegyzék azonban nem érhető el olyan bejelentkezési gazdagépről, amelyhez nincs konfigurálva hálózati hozzáférési szabály. Ha a `az acr login` parancs vagy `docker login` parancs használatával próbál bejelentkezni egy másik gazdagépről, a kimenet a következőhöz hasonló:
+Ez a példa azt mutatja be, hogy a magánhálózati hozzáférési szabály használatával férhet hozzá a Private Container registryhez. A beállításjegyzék azonban nem érhető el olyan bejelentkezési gazdagépről, amelyhez nincs konfigurálva hálózati hozzáférési szabály. Ha a parancs vagy parancs használatával próbál bejelentkezni egy másik gazdagépről `az acr login` `docker login` , a kimenet a következőhöz hasonló:
 
 ```Console
 Error response from daemon: login attempt to https://xxxxxxx.azurecr.io/v2/ failed with status: 403 Forbidden
@@ -170,7 +170,7 @@ Helyettesítse be a beállításjegyzék nevét a következő az [ACR Update][az
 az acr update --name myContainerRegistry --default-action Allow
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha az összes Azure-erőforrást ugyanabban az erőforráscsoporthoz hozta létre, és már nincs rájuk szükség, akkor az erőforrásokat egyetlen [az Group delete](/cli/azure/group) paranccsal törölheti:
 

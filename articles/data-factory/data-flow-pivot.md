@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: a58444f81f60b48f9c2c76f13257a6a2431158a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a0084c3e8185f615e7ac2a2b8c212f1ebf022c08
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686435"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683304"
 ---
 # <a name="pivot-transformation-in-mapping-data-flow"></a>Kimutatás-átalakítás a leképezési adatfolyamban
 
@@ -21,13 +21,13 @@ ms.locfileid: "81686435"
 
 A pivot transzformáció használatával több oszlopot hozhat létre egyetlen oszlop egyedi soraiból. A pivot egy aggregációs átalakítás, ahol kiválaszthatja a Group By Columns és az [összesítő függvények](data-flow-expression-functions.md#aggregate-functions)használatával létrehozott pivot oszlopokat.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 A pivot-átalakításhoz három különböző bemenet szükséges: csoportosítás oszlopok szerint, a pivot kulcsa, valamint a felváltott oszlopok előállítása
 
 ### <a name="group-by"></a>Csoportosítási szempont
 
-![Csoportosítás beállítások szerint](media/data-flow/pivot2.png "[Csoportosítási lehetőségek")
+![Csoportosítás beállítások szerint](media/data-flow/pivot2.png "Csoportosítás beállítások szerint")
 
 Válassza ki, hogy mely oszlopok legyenek összesítve az elforgatott oszlopok felett. A kimeneti adatok egyetlen sorba csoportosítják az összes sort az azonos csoportba tartozó értékek alapján. A kimutatott oszlopban végzett összesítés az egyes csoportokon keresztül történik.
 
@@ -63,7 +63,7 @@ Az alábbi Súgó ábrán látható, hogy a különböző pivot-összetevők hog
 
 Ha nem ad meg értéket a pivot kulcs konfigurációjában, a rendszer futási időben dinamikusan létrehozza a tagolt oszlopokat. A felforgatott oszlopok száma megegyezik az egyedi pivot kulcs értékeinek számával, szorozva a pivot oszlopainak számával. Mivel ez lehet változó szám, az UX nem jeleníti meg az oszlop metaadatait az **ellenőrzés** lapon, és nem lesz oszlop-propagálás. Ezeknek [az oszlopoknak](concepts-data-flow-column-pattern.md) az átalakításához használja az adatfolyamatok leképezési funkcióit. 
 
-Ha meghatározott pivot-kulcs értékek vannak megadva, a rendszer a tagolt oszlopokat a metaadatokban jeleníti meg. e az oszlopnevek a vizsgálat és a fogadó leképezésében lesznek elérhetők.
+Ha meghatározott pivot-kulcs értékek vannak megadva, a rendszer a kimutatásban szereplő oszlopokat a metaadatokban fogja megjeleníteni. Az oszlopok nevei a vizsgálat és a fogadó leképezésében lesznek elérhetők.
 
 ### <a name="generate-metadata-from-drifted-columns"></a>Metaadatok előállítása az elsodródott oszlopokból
 
@@ -73,7 +73,7 @@ A pivot a sorok értékei alapján dinamikusan generálja az új oszlopnevek nev
 
 ### <a name="sinking-pivoted-columns"></a>Elforgatott oszlopok
 
-Bár a csuklós oszlopok dinamikusak, továbbra is beírhatók a célhely adattárba. Engedélyezze a **séma drift használatát** a fogadó beállításaiban. Ez lehetővé teszi, hogy olyan oszlopokat írjon, amelyek nem szerepelnek a metaadatokban. az oszlop metaadatai, de a séma-drift beállítás lehetővé teszi az adatok kirakodását.
+Bár a csuklós oszlopok dinamikusak, továbbra is beírhatók a célhely adattárba. Engedélyezze a **séma drift használatát** a fogadó beállításaiban. Ez lehetővé teszi, hogy olyan oszlopokat írjon, amelyek nem szerepelnek a metaadatokban. Az új dinamikus nevek nem jelennek meg az oszlop metaadataiban, de a séma drift beállítás lehetővé teszi az adatok kirakodását.
 
 ### <a name="rejoin-original-fields"></a>Eredeti mezők újracsatlakoztatása
 

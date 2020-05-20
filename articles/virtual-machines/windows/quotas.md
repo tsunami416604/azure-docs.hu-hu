@@ -8,18 +8,19 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: cynthn
-ms.openlocfilehash: 13d9153d1bf6776b7d3d71c4a85c18d8529188b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6640640248854d91078203012a01d8865845702a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097880"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680933"
 ---
 # <a name="virtual-machine-vcpu-quotas"></a>Virtuális gépek vCPU-kvótái
 
 A virtuális gépekhez és a virtuálisgép-méretezési csoportokhoz tartozó vCPU-kvóták minden egyes előfizetéshez két rétegben vannak rendezve. Az első réteg a teljes regionális vCPU, a második pedig a virtuális gépek különböző méretű, például a D sorozatú vCPU. Amikor új virtuális gépet telepít, a virtuális gép vCPU nem lépheti túl a virtuális gép vCPU-kvótáját vagy a teljes regionális vCPU-kvótát. Ha túllépi a kvótákat, a virtuális gép üzembe helyezése nem lesz engedélyezett. A régión belül a virtuális gépek teljes száma is rendelkezik kvótával. Az egyes kvóták részletei a [Azure Portal](https://portal.azure.com) **előfizetés** lapjának **használat + kvóták** szakaszában láthatók, vagy az értékeket a PowerShell használatával kérdezheti le.
 
-   
+> [!NOTE]
+> A kvóta kiszámításának alapja a lefoglalt és a visszafoglalt magok teljes száma. Ha további magokra van szüksége, [igényeljen kvótát](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request) , vagy törölje azokat a virtuális gépeket, amelyekre már nincs szükség. 
  
 ## <a name="check-usage"></a>Használat ellenőrzése
 

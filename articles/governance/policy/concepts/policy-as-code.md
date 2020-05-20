@@ -1,14 +1,14 @@
 ---
 title: Szabályzat tervezése kódmunkafolyamatokként
 description: Megtudhatja, hogyan tervezhet munkafolyamatokat a Azure Policy-definíciók kódként való üzembe helyezéséhez és az erőforrások automatikus ellenőrzéséhez.
-ms.date: 11/04/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fd77fdd4011c3e1e83f8dfa9f30045bb72881c25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187732"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684273"
 ---
 # <a name="design-policy-as-code-workflows"></a>Szabályzat tervezése kódmunkafolyamatokként
 
@@ -17,7 +17,7 @@ Ahogy halad a felhő irányításával, érdemes áttérnie az egyes szabályzat
 - Infrastruktúra mint kód: a környezeteket definiáló tartalom kezelésének gyakorlata, a Resource Manager-sablonoktól kezdve minden, ami forráskódként Azure Policy definíciókat az Azure-tervezetekhez.
 - DevOps: a felhasználók, a folyamatok és a termékek Uniója, amelyek lehetővé teszik az értékek folyamatos teljesítését a végfelhasználók számára.
 
-A szabályzat mint kód az ötletek kombinációja. Lényegében megtarthatja a házirend-definíciókat a verziókövetés és a változtatások megváltozása után, tesztelheti és érvényesítheti a változást. Ez azonban nem lehet olyan mértékben, hogy a szabályzatok a kód-vagy DevOps is betartsák az infrastruktúrát.
+A szabályzat mint kód az ötletek kombinációja. Lényegében tartsa meg a házirend-definíciókat a forrás vezérlőelemben, és valahányszor változás történik, tesztelje és ellenőrizze a változást. Ez azonban nem lehet olyan mértékben, hogy a szabályzatok a kód-vagy DevOps is betartsák az infrastruktúrát.
 
 Az érvényesítési lépésnek más folyamatos integrációs vagy folyamatos üzembe helyezési munkafolyamatok összetevőjének is kell lennie. Ilyenek például az alkalmazás-környezet vagy a virtuális infrastruktúra üzembe helyezése. A létrehozási és a telepítési folyamat korai összetevőjének Azure Policy érvényesítésével az alkalmazás-és műveleti csapatok felderítik, hogy a módosítások nem jelentenek-e panaszt, jóval azelőtt, hogy túl későn történnek, és éles környezetben próbálnak üzembe helyezni.
 
@@ -29,7 +29,7 @@ A szabályzatok javasolt általános munkafolyamata a következő ábrának megf
 
 ### <a name="create-and-update-policy-definitions"></a>Szabályzat-definíciók létrehozása és frissítése
 
-A szabályzat-definíciók JSON használatával jönnek létre, és a forrás vezérlőelemben tárolódnak. Minden szabályzat saját fájlokat tartalmaz, például a paramétereket, a szabályokat és a környezeti paramétereket, amelyeket ugyanabban a mappában kell tárolni. A következő struktúra ajánlott módszer a házirend-definíciók megtartására a verziókövetés során.
+A szabályzat-definíciók JSON használatával jönnek létre, és a forrás vezérlőelemben tárolódnak. Minden szabályzatnak saját fájljai vannak, például a paraméterek, a szabályok és a környezeti paraméterek, amelyeket ugyanabban a mappában kell tárolni. A következő struktúra ajánlott módszer a házirend-definíciók megtartására a verziókövetés során.
 
 ```text
 .
@@ -90,7 +90,7 @@ Miután az Automation megtette az újonnan létrehozott vagy frissített szabál
 A hozzárendelésnek _letiltott_ [enforcementMode](./assignment-structure.md#enforcement-mode) kell használnia, hogy az erőforrások létrehozása és frissítései ne legyenek letiltva, de a meglévő erőforrásokat a rendszer továbbra is naplózza a frissített szabályzat-definíciónak megfelelően. Még a enforcementMode esetében is ajánlott, hogy a hozzárendelési hatókör vagy egy erőforráscsoport, vagy egy olyan előfizetés, amely kifejezetten a házirendek érvényesítésére szolgál.
 
 > [!NOTE]
-> Míg a kényszerítési mód hasznos, nem helyettesíti a házirend-definíciók alapos tesztelését különféle feltételek mellett. A házirend-definíciót meg kell `PUT` vizsgálni `PATCH` , és REST API hívásokat, megfelelőségi és nem megfelelő erőforrásokat, valamint a peremhálózati eseteket, például az erőforrásból hiányzó tulajdonságot.
+> Míg a kényszerítési mód hasznos, nem helyettesíti a házirend-definíciók alapos tesztelését különféle feltételek mellett. A házirend-definíciót meg kell vizsgálni, `PUT` és `PATCH` REST API hívásokat, megfelelőségi és nem megfelelő erőforrásokat, valamint a peremhálózati eseteket, például az erőforrásból hiányzó tulajdonságot.
 
 A hozzárendelés üzembe helyezését követően a házirend-SDK használatával [lekérheti az új hozzárendelés megfelelőségi adatait](../how-to/get-compliance-data.md) . A házirendek és hozzárendelések teszteléséhez használt környezetnek megfelelő és nem megfelelő erőforrásokkal kell rendelkeznie. A kód helyes egységének teszteléséhez hasonlóan szeretné tesztelni, hogy az erőforrások a várt módon működnek-e, és hogy nem rendelkezik-e hamis pozitív vagy hamis negatív értékekkel. Ha csak a vártnál teszteli és érvényesíti a műveletet, előfordulhat, hogy a szabályzat váratlanul és azonosítatlan hatással van. További információ: [új Azure Policy definíció hatásának kiértékelése](./evaluate-impact.md).
 
@@ -99,7 +99,7 @@ A hozzárendelés üzembe helyezését követően a házirend-SDK használatáva
 Ha a hozzárendelés ellenőrzése megfelel az elvárásoknak, a következő lépés a szervizelés ellenőrzése.
 A [deployIfNotExists](./effects.md#deployifnotexists) vagy [módosítást](./effects.md#modify) használó házirendek szervizelési feladatba kapcsolhatók, és nem megfelelő állapotból is kiállíthatók az erőforrások.
 
-Ennek első lépéseként adja meg a szabályzat-definícióban definiált szerepkör-hozzárendelést. Ez a szerepkör-hozzárendelés biztosítja a házirend-hozzárendelési felügyelt identitásnak megfelelő jogosultságokat ahhoz, hogy a szükséges módosításokat elvégezze az erőforrásnak.
+Az erőforrások szervizelését első lépése, hogy megadja a szabályzat-definícióban definiált szerepkör-hozzárendelést. Ez a szerepkör-hozzárendelés biztosítja a házirend-hozzárendelési felügyelt identitásnak megfelelő jogosultságokat ahhoz, hogy a szükséges módosításokat elvégezze az erőforrásnak.
 
 Ha a szabályzat-hozzárendelés megfelelő jogosultságokkal rendelkezik, a házirend-SDK használatával aktiválhat egy szervizelési feladatot egy olyan erőforrás-készleten, amelyről ismert, hogy nem megfelelő. A továbblépés előtt három tesztet kell végrehajtani ezekkel a Szervizelési feladatokkal:
 
@@ -111,7 +111,7 @@ A frissített szabályzat kiértékelési eredményeinek és a környezetnek a t
 
 ### <a name="update-to-enforced-assignments"></a>A kényszerített hozzárendelések frissítése
 
-Az összes ellenőrzési kapu befejezése után frissítse a hozzárendelést az engedélyezett **enforcementMode** használatára _enabled_. Ezt a változást kezdetben ugyanabban a környezetben kell elvégezni, mint a termeléstől. Miután a környezet a várt módon működik, a módosítást úgy kell kialakítani, hogy az a következő környezetbe kerüljön, és így tovább, amíg a házirend üzembe nem kerül a termelési erőforrásokra.
+Az összes ellenőrzési kapu befejezése után frissítse a hozzárendelést az engedélyezett **enforcementMode** használatára _enabled_. Azt javasoljuk, hogy a módosítást kezdetben ugyanabban a környezetben végezze el, mint a termeléstől. Miután a környezet a várt módon működik, a módosítást hatókörbe kell helyezni, hogy az a következő környezetbe kerüljön, és így tovább, amíg a házirend üzembe nem kerül a termelési erőforrásokra.
 
 ## <a name="process-integrated-evaluations"></a>Integrált értékelések feldolgozása
 

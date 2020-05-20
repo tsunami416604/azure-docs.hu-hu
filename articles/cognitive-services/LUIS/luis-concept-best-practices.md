@@ -2,14 +2,14 @@
 title: Ajánlott eljárások a LUIS-alkalmazás létrehozásához
 description: Ismerje meg az ajánlott eljárásokat a LUIS-alkalmazás modelljéből származó legjobb eredmények eléréséhez.
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 43ca033c98d9997aecaf919b994a89d4e618d49b
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9c22256f6fac3647108b7078b774338d7f22d29a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589805"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683754"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Ajánlott eljárások a Language Understanding (LUIS) alkalmazások létrehozásához
 A LUIS-alkalmazás létrehozásához használja az alkalmazás-létrehozási folyamatot:
@@ -31,13 +31,27 @@ A következő lista a LUIS-alkalmazásokra vonatkozó ajánlott eljárásokat ta
 
 |Ajánlott|Nem ajánlott|
 |--|--|
-|[Különböző leképezések definiálása](#do-define-distinct-intents)<br>[Funkciók hozzáadása a szándékokhoz](#do-add-features-to-intents) |[Számos példa hosszúságú kimondott szöveg hozzáadása a leképezésekhez](#dont-add-many-example-utterances-to-intents)<br>[Néhány vagy egyszerű entitás használata](#dont-use-few-or-simple-entities) |
+|[A séma megtervezése](#do-plan-your-schema)|[Létrehozás és közzététel terv nélkül](#dont-publish-too-quickly)|
+|[Különböző leképezések definiálása](#do-define-distinct-intents)<br>[Funkciók hozzáadása a szándékokhoz](#do-add-features-to-intents)<br>
+[Gépi megtanult entitások használata](#do-use-machine-learned-entities) |[Számos példa hosszúságú kimondott szöveg hozzáadása a leképezésekhez](#dont-add-many-example-utterances-to-intents)<br>[Néhány vagy egyszerű entitás használata](#dont-use-few-or-simple-entities) |
 |[Keressen egy édes helyet a túl általános és az egyes szándékok között](#do-find-sweet-spot-for-intents)|[A LUIS használata képzési platformként](#dont-use-luis-as-a-training-platform)|
 |[Az alkalmazás iteratív létrehozása verziókkal](#do-build-your-app-iteratively-with-versions)<br>[Entitások létrehozása a modell elbomlásához](#do-build-for-model-decomposition)|[Több, azonos formátumú hosszúságú kimondott szöveg hozzáadása, figyelmen kívül hagyva más formátumok](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
 |[Mintázatok hozzáadása a későbbi ismétlésekben](#do-add-patterns-in-later-iterations)|[A leképezések és entitások definíciójának összekeverése](#dont-mix-the-definition-of-intents-and-entities)|
 |A [hosszúságú kimondott szöveg egyensúlyt kell kiosztania az összes](#balance-your-utterances-across-all-intents) szándékon, kivéve a none szándékot.<br>[Példa hosszúságú kimondott szöveg hozzáadása nincs szándékhoz](#do-add-example-utterances-to-none-intent)|[A kifejezések listáját minden lehetséges értékkel létrehozhatja](#dont-create-phrase-lists-with-all-the-possible-values)|
 |[Az aktív tanulásra vonatkozó javaslati funkció kihasználása](#do-leverage-the-suggest-feature-for-active-learning)|[Túl sok mintázat hozzáadása](#dont-add-many-patterns)|
 |[Az alkalmazás teljesítményének figyelése batch-teszteléssel](#do-monitor-the-performance-of-your-app)|[Betanítás és közzététel minden egyes példa Kimondás esetén](#dont-train-and-publish-with-every-single-example-utterance)|
+
+## <a name="do-plan-your-schema"></a>Tervezze meg a sémát
+
+Az alkalmazás sémájának létrehozása előtt meg kell határoznia, hogy mit és hol kívánja használni az alkalmazást. Minél alaposabban és pontosabban megtervezi az alkalmazását, annál jobb lesz az alkalmazása.
+
+* Kutatási megcélzó felhasználók
+* Végpontok közötti personák meghatározása az alkalmazás hangjának, avatárjának, a probléma kezelése (proaktív, reaktív)
+* Azonosítsa a felhasználói interakciókat (szöveg, beszéd), amelyek segítségével a csatornákon keresztül átadhatja a meglévő megoldásokat, vagy létrehozhat egy új megoldást ehhez az alkalmazáshoz
+* Végpontok közötti felhasználói út
+    * Mire számíthat az alkalmazás, és nem? * Milyen prioritásai vannak?
+    * Mik a fő felhasználási esetek?
+* Adatgyűjtés – az adatok gyűjtésével és előkészítésével [kapcsolatos tudnivalók](data-collection.md)
 
 ## <a name="do-define-distinct-intents"></a>Eltérő leképezések definiálása
 Győződjön meg arról, hogy az egyes szándékok szókincse csak erre a célra szolgál, és ne legyen átfedésben más szándékkal. Ha például olyan alkalmazást szeretne használni, amely az utazási szabályokat, például a légitársasági repülőjáratokat és a szállodákat kezeli, dönthet úgy, hogy ezeket a témaköröket külön szándékként vagy azonos szándékkal látja el a részletekben lévő konkrét adategységekhez.
@@ -60,6 +74,14 @@ A szolgáltatások a szándék fogalmait írják le. A szolgáltatás lehet olya
 ## <a name="do-find-sweet-spot-for-intents"></a>A cél az édes hely keresése
 A LUIS előrejelzési adatai alapján állapítsa meg, hogy a szándékok átfedésben vannak-e. Az átfedésben lévő leképezések megzavarják a LUIS-t. Ennek az az oka, hogy a legfelső pontozási szándék túl van közelebb egy másik szándékhoz. Mivel a LUIS nem ugyanazt az elérési utat használja, mint az egyes időpontokban az adatképzések, az átfedésben lévő szándék a képzés első vagy második lépésének esélye. Azt szeretné, hogy a teljes pontszám az egyes céloknál távolabb legyen, így ez a flip/flop nem fog történni. A szándékok megfelelő megkülönböztetésének minden alkalommal a várt felső szándékot kell eredményeznie.
 
+## <a name="do-use-machine-learned-entities"></a>Gépi megtanult entitások használata
+
+A gépi megtanult entitások az alkalmazásra vannak szabva, és a címkézést kötelezővé kell tenniük. Ha nem használ gépi megtanult entitásokat, lehetséges, hogy nem megfelelő eszközt használ.
+
+A gépi megtanult entitások más entitásokat is használhatnak szolgáltatásként. Ezek az entitások lehetnek olyan egyéni entitások, mint például a reguláris kifejezési entitások vagy a lista entitások, vagy az előre elkészített entitások szolgáltatásként is használhatók.
+
+Ismerkedjen meg a [hatékony gépi megtanult entitásokkal](luis-concept-entity-types.md#effective-machine-learned-entities).
+
 <a name="#do-build-the-app-iteratively"></a>
 
 ## <a name="do-build-your-app-iteratively-with-versions"></a>Készítse el az alkalmazás iteratív a verziókkal
@@ -79,9 +101,9 @@ A modell kibontása a következőket jellemző folyamattal rendelkezik:
 
 Miután létrehozta a szándékot, és hozzáadta például a hosszúságú kimondott szöveg-t, az alábbi példa az entitások lebomlását ismerteti.
 
-Első lépésként azonosítsa a kinyerni kívánt teljes adatfogalmakat. Ez a gép által megtanult entitás. Ezután bontsa ki a kifejezést a részébe. Ide tartozik az alentitások és a funkciók azonosítása is.
+Első lépésként azonosítsa a kinyerni kívánt teljes adatfogalmakat. Ez a gépi tanulási entitás. Ezután bontsa ki a kifejezést a részébe. Ide tartozik az alentitások és a funkciók azonosítása is.
 
-Ha például egy címeket szeretne kinyerni, a rendszer meghívja a legfontosabb géppel megismert entitást `Address` . A cím létrehozásakor azonosítsa az alentitások egy részét, például a házszámot, a várost, az állapotot és az irányítószámot.
+Ha például szeretne kinyerni egy-egy címeket, a legfontosabb gépi tanulási entitás hívható `Address` . A cím létrehozásakor azonosítsa az alentitások egy részét, például a házszámot, a várost, az állapotot és az irányítószámot.
 
 Az elemek kibontásának folytatásához a következőket kell tennie:
 * A postai kód kötelező funkciójának hozzáadása reguláris kifejezési entitásként.
@@ -122,13 +144,21 @@ Figyelje meg az előrejelzés pontosságát egy [Batch-tesztkörnyezet](luis-con
 
 Tartsa meg a [hosszúságú kimondott szöveg](luis-concept-utterance.md) vagy a végpont hosszúságú kimondott szöveg nem használt különálló hosszúságú kimondott szöveg. Tartsa meg az alkalmazás fejlesztését a tesztkörnyezet számára. Állítsa be a tesztet úgy, hogy az tükrözze a valós felhasználói hosszúságú kimondott szöveg. Ezzel a tesztelési készlettel értékelheti ki az alkalmazás minden egyes iterációját vagy verzióját.
 
+## <a name="dont-publish-too-quickly"></a>Túl gyorsan nem tesz közzé
+
+Ha túl gyorsan teszi közzé az alkalmazást, a [megfelelő tervezés](#do-plan-your-schema)nélkül több problémát is okozhat, például:
+
+* Az alkalmazás nem fog működni a tényleges helyzetben a teljesítmény elfogadható szintjén.
+* A séma (szándékok és entitások) nem megfelelő, és ha a sémát követően fejlesztett ki ügyfélalkalmazás-logikát, előfordulhat, hogy újra kell írnia az előzményekből. Ez váratlan késéseket és a projektre vonatkozó további költségeket okozhatja.
+* A modellhez hozzáadott hosszúságú kimondott szöveg torzítást okozhat a példaként szolgáló, nehezen hibakeresésre és azonosításra alkalmas értékhez. Emellett a kétértelműség megnehezíti az egyes sémák véglegesítését követően.
+
 ## <a name="dont-add-many-example-utterances-to-intents"></a>Ne adjon hozzá számos példa hosszúságú kimondott szöveg a leképezésekhez
 
 Az alkalmazás közzététele után csak a fejlesztési életciklus folyamatában hosszúságú kimondott szöveg adhat hozzá az aktív tanulásból. Ha a hosszúságú kimondott szöveg túl hasonlóak, vegyen fel egy mintát.
 
 ## <a name="dont-use-few-or-simple-entities"></a>Ne használjon néhány vagy egyszerű entitást
 
-Az entitások az kinyeréshez és előrejelzéshez készültek. Fontos, hogy az egyes szándékok géppel megtanult entitásokat adjanak meg, amelyek leírják a szándékban lévő adatkészleteket. Ez segíti a LUIS előrejelzését abban az esetben is, ha az ügyfélalkalmazás nem kell a kibontott entitást használnia.
+Az entitások az kinyeréshez és előrejelzéshez készültek. Fontos, hogy az egyes szándékok olyan gépi tanulási entitásokkal rendelkezzenek, amelyek a szándékban lévő adatelemzést írják le. Ez segíti a LUIS előrejelzését abban az esetben is, ha az ügyfélalkalmazás nem kell a kibontott entitást használnia.
 
 ## <a name="dont-use-luis-as-a-training-platform"></a>Ne használja a LUIS-t képzési platformként
 

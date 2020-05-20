@@ -3,14 +3,14 @@ title: Az Azure Service Fabric parancssori felület használatának első lépé
 description: Ez a dokumentum ismerteti az Azure Service Fabric parancssori felület használatát. Megtudhatja, hogyan csatlakozhat fürtökhöz, és hogyan kezelheti alkalmazásait.
 author: jeffj6123
 ms.topic: conceptual
-ms.date: 1/16/2020
+ms.date: 5/19/2020
 ms.author: jejarry
-ms.openlocfilehash: 46c5e1ed0a1d0db100c3415c40f59d46f62b21f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b3714f8401def9bed68e4b0845d025734a480cb3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258940"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681805"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric parancssori felület
 
@@ -30,7 +30,8 @@ A Service Fabric parancssori felület a Service Fabric SDK legfrissebb futtatók
 
 | Parancssori felület verziója   | támogatott futtatókörnyezet-verzió |
 |---------------|---------------------------|
-| Legújabb (~ = 9)  | Legújabb (~ = 7)              |
+| Legújabb (~ = 10) | Legújabb (~ = 7,1)            |
+| 9.0.0         | 7.1                       |
 | 8.0.0         | 6.5                       |
 | 7.1.0         | 6.4                       |
 | 6.0.0         | 6.3                       |

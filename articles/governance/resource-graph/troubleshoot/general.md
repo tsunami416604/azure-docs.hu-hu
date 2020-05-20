@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a különböző SDK-k hibáit, miközben Azure-erőforrásokat kérdez le az Azure Resource Graph használatával.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f881db4f75bcee8c13221717596442ac29a4b1ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b3758e52641bc27341c5da0ced9e811263c02b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74303901"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683233"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Hibák elhárítása az Azure Resource Graph használatával
 
@@ -19,6 +19,25 @@ Az Azure-erőforrások Azure Resource Graph-ban való lekérdezése során hibá
 A legtöbb hiba az Azure Resource Graph-lekérdezés futtatásakor felmerülő probléma eredménye. Ha egy lekérdezés meghiúsul, az SDK részletesen ismerteti a sikertelen lekérdezés részleteit. Ez az információ azt jelzi, hogy a probléma kijavítható, és egy későbbi lekérdezés sikeres lehet.
 
 ## <a name="general-errors"></a>Általános hibák
+
+### <a name="scenario-throttled-requests"></a><a name="throttled"></a>Forgatókönyv: szabályozott kérelmek
+
+#### <a name="issue"></a>Probléma
+
+Azok az ügyfelek, amelyek nagy vagy gyakori erőforrás-lekérdezéseket igényelnek, szabályozva vannak.
+
+#### <a name="cause"></a>Ok
+
+Az Azure Resource Graph az egyes felhasználók számára egy adott időtartományon alapuló kvóta-számot foglal le. A felhasználók például legfeljebb 15 lekérdezést küldhetnek minden 5 másodperces ablakban a szabályozás nélkül. A kvóta értékét számos tényező határozza meg, és a változás változhat. További információ: [szabályozás az Azure Resource Graph-ban](../overview.md#throttling).
+
+#### <a name="resolution"></a>Megoldás:
+
+Több módszer is létezik a szabályozott kérelmek kezelésére:
+
+- [Lekérdezések csoportosítása](../concepts/guidance-for-throttled-requests.md#grouping-queries)
+- [Lekérdezések eltolása](../concepts/guidance-for-throttled-requests.md#staggering-queries)
+- [Lekérdezés párhuzamosan](../concepts/guidance-for-throttled-requests.md#query-in-parallel)
+- [Tördelés](../concepts/guidance-for-throttled-requests.md#pagination)
 
 ### <a name="scenario-too-many-subscriptions"></a><a name="toomanysubscription"></a>Forgatókönyv: túl sok előfizetés
 
@@ -79,7 +98,7 @@ Azok az ügyfelek, akik explicit módon átadják egy Azure Resource Graph-leké
 
 #### <a name="cause"></a>Ok
 
-Ha az ügyfél nem rendelkezik olvasási engedéllyel az összes megadott előfizetéshez, a rendszer a megfelelő biztonsági jogosultságok hiánya miatt megtagadja a kérelmet.
+Ha az ügyfél nem rendelkezik olvasási engedéllyel az összes megadott előfizetéshez, a rendszer megtagadja a kérést a megfelelő biztonsági jogosultságok hiánya miatt.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -90,5 +109,5 @@ Vegyen fel legalább egy előfizetést az előfizetések listájában, amelyet a
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 - Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-- Az Azure [@AzureSupport](https://twitter.com/azuresupport) -Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
+- Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal csatlakozhat a felhasználói élmény fokozásához: válaszok, támogatás és szakértők.
 - Ha további segítségre van szüksége, egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

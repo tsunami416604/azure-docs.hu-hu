@@ -3,12 +3,12 @@ title: Szószedet – LUIS
 description: A Szószedet a LUIS API szolgáltatással való munka során felmerülő feltételeket ismerteti.
 ms.topic: reference
 ms.date: 05/08/2020
-ms.openlocfilehash: eb823e65acc55dd9d739b31e506ad27f6af9095a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1513099decc21a7d219bfcb84563619640028550
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589669"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681618"
 ---
 # <a name="language-understanding-glossary-of-common-vocabulary-and-concepts"></a>Nyelvi ismeretek a gyakori szószedetekről és fogalmakról
 A Language Understanding (LUIS) Szószedet a LUIS szolgáltatással való munka során felmerülő feltételeket ismerteti.
@@ -139,9 +139,9 @@ Az entitás séma az a struktúra, amelyet a gép megtanult entitásai alentitá
 
 ### <a name="entitys-subentity"></a>Entitás alentitása
 
-Az alentitások egy géppel megtanult entitás alárendelt entitásai.
+Az alentitások egy gépi tanulási entitás alárendelt entitásai.
 
-### <a name="non-machine-learned-entity"></a>Nem gépi megtanult entitás
+### <a name="non-machine-learning-entity"></a>Nem gépi tanulási entitás
 
 Az adatok kinyeréséhez megfelelő szöveget használó entitás:
 * Listaentitás
@@ -164,7 +164,7 @@ Előre összeépített [entitáshoz](#prebuilt-entity) tartozó előre felépít
 
 A gépi tanulásban a funkció olyan jellemző, amely segít a modellnek egy adott fogalom felismerésében. Ez egy olyan tipp, amelyet a LUIS használhat, de nem kemény szabályt.
 
-Ezt a kifejezést **[gépi megtanult szolgáltatásnak](luis-concept-feature.md)** is nevezzük.
+Ezt a kifejezést **[gépi tanulási szolgáltatásnak](luis-concept-feature.md)** is nevezzük.
 
 Ezeket a mutatókat a címkékkel együtt használva megtudhatja, hogyan jósolhatja meg az új információkat. A LUIS támogatja a kifejezések listáját és más modellek használatát is.
 
@@ -199,6 +199,10 @@ A (gépi megtanult) modell egy olyan függvény, amely előrejelzést készít a
 ## <a name="normalized-value"></a>Normalizált érték
 
 Értékeket adhat hozzá a [listához](#list-entity) tartozó entitásokhoz. Ezeknek az értékeknek a listája egy vagy több szinonimát tartalmazhat. A válaszban csak a normalizált érték lesz visszaadva.
+
+## <a name="overfitting"></a>Túlillesztés
+
+Ha a modell rögzítése az adott példákon történik, és nem képes jól általánosítani.
 
 ## <a name="owner"></a>Tulajdonos
 
@@ -260,7 +264,7 @@ A LUIS kvóta az Azure-előfizetési szintek korlátozása. A LUIS-kvótát a m�
 
 ## <a name="schema"></a>Séma
 
-A séma tartalmazza a szándékait és entitásait, valamint az alentitásokat. A sémát kezdetben az idő múlásával megismétlik. A séma nem tartalmaz Alkalmazásbeállítások, funkciók vagy példa hosszúságú kimondott szöveg. 
+A séma tartalmazza a szándékait és entitásait, valamint az alentitásokat. A sémát kezdetben az idő múlásával megismétlik. A séma nem tartalmaz Alkalmazásbeállítások, funkciók vagy példa hosszúságú kimondott szöveg.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 Az érzelmek elemzése a [text Analytics](../text-analytics/overview.md)által biztosított hosszúságú kimondott szöveg pozitív vagy negatív értékeit biztosítja.

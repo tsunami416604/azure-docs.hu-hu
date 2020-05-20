@@ -3,18 +3,20 @@ title: A címkézetlen jegyzékfájlok megőrzésére szolgáló szabályzat
 description: Megtudhatja, hogyan engedélyezheti az adatmegőrzési szabályzatot az Azure Container registryben a címkézetlen jegyzékfájlok meghatározott időszak után történő automatikus törléséhez.
 ms.topic: article
 ms.date: 10/02/2019
-ms.openlocfilehash: 912616b6ab95cdff91e70477c7d6de476ccfdfa7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dda85934bb10cf16fd90381539b892df4f5445c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74454811"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683457"
 ---
 # <a name="set-a-retention-policy-for-untagged-manifests"></a>Adatmegőrzési szabályzat beállítása a címkézetlen jegyzékekhez
 
-Azure Container Registry lehetővé teszi az *adatmegőrzési szabályzat* beállítását olyan tárolt képjegyzékek esetében, amelyek nem rendelkeznek társított címkékkel (*címkézett jegyzékfájlokkal*). Ha egy adatmegőrzési szabály engedélyezve van, a beállításjegyzékben lévő címkézetlen jegyzékfájlok automatikusan törlődnek a megadott számú nap elteltével. Ez a szolgáltatás megakadályozza, hogy a beállításjegyzék nem szükséges összetevőkkel töltse fel a szolgáltatást, és segít a tárolási költségek megtakarításában. Ha a `delete-enabled` címkézetlen jegyzékfájl attribútuma a értékre van `false`állítva, a jegyzékfájl nem törölhető, és a megőrzési szabály nem érvényes.
+Azure Container Registry lehetővé teszi az *adatmegőrzési szabályzat* beállítását olyan tárolt képjegyzékek esetében, amelyek nem rendelkeznek társított címkékkel (*címkézett jegyzékfájlokkal*). Ha egy adatmegőrzési szabály engedélyezve van, a beállításjegyzékben lévő címkézetlen jegyzékfájlok automatikusan törlődnek a megadott számú nap elteltével. Ez a szolgáltatás megakadályozza, hogy a beállításjegyzék nem szükséges összetevőkkel töltse fel a szolgáltatást, és segít a tárolási költségek megtakarításában. Ha a `delete-enabled` címkézetlen jegyzékfájl attribútuma a értékre van állítva `false` , a jegyzékfájl nem törölhető, és a megőrzési szabály nem érvényes.
 
 Az Azure CLI Azure Cloud Shell vagy helyi telepítése segítségével futtathatja a jelen cikkben szereplő példákat. Ha helyileg szeretné használni, a 2.0.74 vagy újabb verziót kötelező megadni. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
+
+Az adatmegőrzési szabályzat a **prémium** szintű tároló-nyilvántartások egyik funkciója. További információ a beállításjegyzék szolgáltatási szintjeiről: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
@@ -24,7 +26,6 @@ Az Azure CLI Azure Cloud Shell vagy helyi telepítése segítségével futtathat
 
 ## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
 
-* Csak a **prémium** szintű tároló-beállításjegyzék állítható be adatmegőrzési házirenddel. További információ a beállításjegyzék szolgáltatási szintjeiről: [Azure Container Registry SKU](container-registry-skus.md)-ban.
 * Csak a címkézetlen jegyzékek adatmegőrzési szabályzata állítható be.
 * Az adatmegőrzési szabály jelenleg csak azokra a jegyzékfájlokra vonatkozik, amelyeket a szabályzat engedélyezése *után* címkéztek. A beállításjegyzékben meglévő címkézetlen jegyzékek nem vonatkoznak a szabályzatra. Meglévő címkézetlen jegyzékfájlok törléséhez tekintse meg a példák a [tároló lemezképének törlése a Azure Container Registry](container-registry-delete.md)-ben című témakört.
 
@@ -73,7 +74,7 @@ Ha meg szeretné tekinteni a beállításjegyzékben beállított adatmegőrzés
 az acr config retention show --registry myregistry
 ```
 
-Ha le szeretne tiltani egy adatmegőrzési szabályt egy beállításjegyzékben, futtassa az az [ACR config megőrzési frissítés][az-acr-config-retention-update] parancsot, és állítsa be `--status disabled`a következőt:
+Ha le szeretne tiltani egy adatmegőrzési szabályt egy beállításjegyzékben, futtassa az az [ACR config megőrzési frissítés][az-acr-config-retention-update] parancsot, és állítsa be a következőt `--status disabled` :
 
 ```azurecli
 az acr config retention update --registry myregistry --status disabled --type UntaggedManifests

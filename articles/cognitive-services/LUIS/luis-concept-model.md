@@ -3,12 +3,12 @@ title: Tervezés modellekből – LUIS
 description: A Language Understanding számos típusú modellt biztosít. Egyes modellek több módon is használhatók.
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 933588f96570e931cdc627aaae82bee1037bbdaa
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbb1f0d43b2a3fd2e8a2dff2201a09622ecaf977
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591879"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683937"
 ---
 # <a name="design-with-intent-and-entity-models"></a>Tervezés a szándék és az entitás modelljeivel
 
@@ -36,9 +36,9 @@ A következő Kimondás **pozitív példa** a `OrderBook` szándékra és **nega
 
 ## <a name="entities-extract-data"></a>Az entitások kinyerik az adatok
 
-Az entitás a kinyert adatok adategységét jelöli. A géppel megtanult entitások olyan legfelső szintű entitások, amelyek alentitásokat is tartalmaznak, amelyek a géppel megtanult entitások is.
+Az entitás a kinyert adatok adategységét jelöli. A gépi tanulási entitások olyan legfelső szintű entitások, amelyek alentitásokat tartalmaznak, amelyek szintén gépi tanulási entitások.
 
-Egy gép által megtanult entitás például egy repülőjegy-jegy rendelése. Ez egy tranzakció, amely sok kisebb adategységgel rendelkezik, mint például a dátum, az idő, az ülőhelyek száma, az ülés típusa, például az első osztály vagy az edző, a forrás helye, a célhely és az étkezési lehetőség.
+Egy gépi tanulási entitás például egy repülőjegy rendelése. Ez egy tranzakció, amely sok kisebb adategységgel rendelkezik, mint például a dátum, az idő, az ülőhelyek száma, az ülés típusa, például az első osztály vagy az edző, a forrás helye, a célhely és az étkezési lehetőség.
 
 ## <a name="intents-versus-entities"></a>Leképezések versus entitások
 
@@ -65,11 +65,11 @@ A modell elbomlása a következő részekből áll:
 
 * [leképezések](#intents-classify-utterances)
     * [szolgáltatások](#features)
-* [gépi megtanult entitások](reference-entity-machine-learned-entity.md)
-    * alentitások (a géppel megtanult entitások is)
+* [gépi tanulással rendelkező entitások](reference-entity-machine-learned-entity.md)
+    * alentitások (a gépi tanulási entitások is)
         * [szolgáltatások](#features)
             * [kifejezések listája](luis-concept-feature.md)
-            * [nem gépi megtanult entitások](luis-concept-feature.md) , mint például a [reguláris kifejezések](reference-entity-regular-expression.md), a [felsorolások](reference-entity-list.md)és az előre [elkészített entitások](luis-reference-prebuilt-entities.md)
+            * [nem gépi tanulási entitások](luis-concept-feature.md) , például [reguláris kifejezések](reference-entity-regular-expression.md), [felsorolások](reference-entity-list.md)és [előre összeépített entitások](luis-reference-prebuilt-entities.md)
 
 <a name="entities-extract-data"></a>
 <a name="machine-learned-entities"></a>

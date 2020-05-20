@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: dda292909b7b90579666cd83d460fc4051c9456c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7cedc19c1b2a19fb26677a9426300d19c5396bd4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598128"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682734"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -248,10 +248,10 @@ SELECT DATE_BUCKET(week,(SELECT top 1 CustomerKey FROM dbo.DimCustomer where Geo
   
 #### <a name="specifying-numeric-expressions-and-scalar-system-functions-as-number-and-date"></a>Numerikus kifejezések és skaláris rendszerfüggvények meghatározása számként és dátumként
 
-Ez a példa egy numerikus kifejezést (- `(10/2))` és skaláris System functions ( `SYSDATETIME` ) használ a *szám* és a *dátum*argumentumként.
+Ez a példa egy numerikus kifejezést ((10/2)) és egy skaláris rendszerfüggvényt (SYSDATETIME) használ a szám és a dátum argumentumként.
   
 ```sql
-SELECT Date_Bucket(week,-(10/2), SYSDATETIME());
+SELECT Date_Bucket(week,(10/2), SYSDATETIME());
 ```
 
 #### <a name="specifying-an-aggregate-window-function-as-number"></a>Összesítő ablak függvényének meghatározása számként
@@ -269,6 +269,6 @@ order by DateBucket
 GO  
 ``` 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [&#40;Transact-SQL-&#41;elküldése és konvertálása](/sql/t-sql/functions/cast-and-convert-transact-sql/)

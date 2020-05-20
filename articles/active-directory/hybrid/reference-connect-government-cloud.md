@@ -11,12 +11,12 @@ ms.date: 04/14/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acdc99ca50255bd9b75828f0a051f364c5218471
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 217cf8822fcd8ef515ac9ce2dacdac3682e5fd12
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115489"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680167"
 ---
 # <a name="hybrid-identity-considerations-for-the-azure-government-cloud"></a>Hibrid identitási megfontolások a Azure Government felhőhöz
 
@@ -41,7 +41,7 @@ Az átmenő hitelesítési ügynök üzembe helyezése előtt ellenőrizze, hogy
 |URL-cím |Használatuk módja|
 |-----|-----|
 |&#42;. msappproxy.us</br>&#42;.servicebus.usgovcloudapi.net|Az ügynök ezeket az URL-címeket használja az Azure AD Cloud Service-vel való kommunikációhoz. |
-|mscrl.microsoft.us:80 </br>crl.microsoft.us:80 </br>ocsp.msocsp.us:80 </br>www.microsoft.us:80| Az ügynök ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez.|
+|`mscrl.microsoft.us:80` </br>`crl.microsoft.us:80` </br>`ocsp.msocsp.us:80` </br>`www.microsoft.us:80`| Az ügynök ezeket az URL-címeket használja a tanúsítványok ellenőrzéséhez.|
 |login.windows.us </br>secure.aadcdn.microsoftonline-p.com </br>&#42;. microsoftonline.us </br>&#42;. microsoftonline-p.us </br>&#42;. msauth.net </br>&#42;. msauthimages.net </br>&#42;. msecnd.net</br>&#42;. msftauth.net </br>&#42;. msftauthimages.net</br>&#42;. phonefactor.net </br>enterpriseregistration.windows.net</br>management.azure.com </br>policykeyservice.dc.ad.msft.net</br>ctdl.windowsupdate.us:80| Az ügynök ezeket az URL-címeket használja a regisztrációs folyamat során.
 
 ### <a name="install-the-agent-for-the-azure-government-cloud"></a>A Azure Government-felhő ügynökének telepítése
@@ -76,7 +76,7 @@ Ha a bejelentkezési módszere átmenő hitelesítést használ, nincs szükség
 
 ### <a name="roll-out-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés
 
-Az Azure AD zökkenőmentes egyszeri bejelentkezését fokozatosan elvégezheti a felhasználók számára az alábbi utasítások használatával. Első lépésként adja hozzá az Azure AD URL-címét az [https://autologon.microsoft.us](https://autologon.microsoft.us) összes vagy a kiválasztott felhasználó intranetes zónájának beállításaihoz a Active Directory csoportházirend használatával.
+Az Azure AD zökkenőmentes egyszeri bejelentkezését fokozatosan elvégezheti a felhasználók számára az alábbi utasítások használatával. Első lépésként adja hozzá az Azure AD URL-címét az `https://autologon.microsoft.us` összes vagy a kiválasztott felhasználó intranetes zónájának beállításaihoz a Active Directory csoportházirend használatával.
 
 Az intranetes zóna házirend-beállításának engedélyezéséhez **parancsfájlon keresztül is engedélyeznie kell a frissítések állapotjelző sávján keresztül csoportházirend**.
 
@@ -89,16 +89,16 @@ A Mozilla Firefox nem használ automatikusan Kerberos-hitelesítést. Az alábbi
 1. Futtassa a Firefox programot, és írja be a **about: config**parancsot   a címsorba. Zárja be az esetlegesen megjelenő értesítéseket.
 1. Keressen rá a **Network. Negotiate – auth. megbízható – URI-** k   beállításra. Ez a beállítás felsorolja a Firefox által a Kerberos-hitelesítéshez megbízhatóként használt helyeket.
 1. Kattintson a jobb gombbal a preferencia nevére, majd válassza a **módosítás**menüpontot.
-1. Írja be  [**https://autologon.microsoft.us**](https://autologon.microsoft.us**)   a mezőt a mezőbe.
+1. Írja be `https://autologon.microsoft.us` a mezőt a mezőbe.
 1. Kattintson **az OK gombra**   , majd nyissa meg újra a böngészőt.
 
 ### <a name="microsoft-edge-based-on-chromium-all-platforms"></a>Microsoft Edge a Chromium alapján (minden platform)
 
-Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateAllowlist`   vagy `AuthServerAllowlist`   házirend-beállításokat, ügyeljen arra, hogy hozzáadja az Azure ad URL-címét [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateAllowlist`   vagy `AuthServerAllowlist`   házirend-beállításokat, ügyeljen arra, hogy hozzáadja az Azure ad URL-címét `https://autologon.microsoft.us` .
 
 ### <a name="google-chrome-all-platforms"></a>Google Chrome (minden platform)
 
-Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateWhitelist`   vagy `AuthServerWhitelist`   házirend-beállításokat, ügyeljen arra, hogy hozzáadja az Azure ad URL-címét [https://autologon.microsoft.us](https://autologon.microsoft.us) .
+Ha felülbírálta a környezetben lévő  `AuthNegotiateDelegateWhitelist`   vagy `AuthServerWhitelist`   házirend-beállításokat, ügyeljen arra, hogy hozzáadja az Azure ad URL-címét `https://autologon.microsoft.us` .
 
 ## <a name="next-steps"></a>További lépések
 

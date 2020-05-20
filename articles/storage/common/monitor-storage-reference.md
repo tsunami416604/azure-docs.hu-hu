@@ -8,12 +8,13 @@ ms.topic: reference
 ms.date: 05/01/2020
 ms.author: normesta
 ms.subservice: logs
-ms.openlocfilehash: 7ba66441a87e3e02483ae27400f9900d2d052af4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: monitoring
+ms.openlocfilehash: e9abb2ded5465d4b245f4c9bcfab921444d41fa2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118158"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684923"
 ---
 # <a name="azure-storage-monitoring-data-reference"></a>Az Azure Storage figyelési adatreferenciája
 
@@ -31,13 +32,13 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="account-level"></a>Fiók szintje
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | UsedCapacity | A Storage-fiók által használt tárterület mennyisége. Standard szintű tárfiókok esetében ez a blob, a tábla, a fájl és a várólista által használt kapacitás összege. Prémium szintű és Blob Storage-fiókok esetében a BlobCapacity értékével azonos. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 
 #### <a name="blob-storage"></a>Blob Storage
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | BlobCapacity | A Storage-fiókban használt BLOB Storage teljes száma. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 <br/> Méretek: **BlobType**és **BlobTier** ([definíció](#metrics-dimensions)) |
 | BlobCount    | A Storage-fiókban tárolt blob-objektumok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 <br/> Méretek: **BlobType**és **BlobTier** ([definíció](#metrics-dimensions)) |
@@ -46,7 +47,7 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="table-storage"></a>Table Storage
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | TableCapacity | A Storage-fiók által használt Table Storage mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 | TableCount   | A Storage-fiókban lévő táblák száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
@@ -54,7 +55,7 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="queue-storage"></a>Queue Storage
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | QueueCapacity | A Storage-fiók által használt üzenetsor-tároló mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 | QueueCount   | A Storage-fiókban lévő várólisták száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
@@ -62,7 +63,7 @@ Az Azure Storage a következő kapacitási mérőszámokat biztosítja Azure Mon
 
 #### <a name="file-storage"></a>File Storage
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | FileCapacity | A Storage-fiók által használt file Storage mennyisége. <br/><br/> Egység: bájtok <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
 | FileCount   | A Storage-fiókban található fájlok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: átlag <br/> Érték példa: 1024 |
@@ -74,7 +75,7 @@ A tranzakciós metrikák az Azure Storage-ból Azure Monitorba történő minden
 
 Az Azure Storage a következő tranzakciós mérőszámokat biztosítja Azure Monitorban.
 
-| Metrika | Leírás |
+| Metric | Leírás |
 | ------------------- | ----------------- |
 | Tranzakciók | Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és sikertelen kérések, valamint a hibára futott kérések számát tartalmazza. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Alkalmazandó méretek: ResponseType, GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions))<br/> Érték példa: 1024 |
 | Bejövő forgalom | A bejövő adatok mennyisége. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja. <br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Alkalmazandó méretek: GeoType, ApiName és hitelesítés ([definíció](#metrics-dimensions)) <br/> Érték példa: 1024 |
@@ -89,7 +90,7 @@ Az Azure Storage a következő tranzakciós mérőszámokat biztosítja Azure Mo
 
 Az Azure Storage a Azure Monitor metrikáinak következő dimenzióit támogatja.
 
-| Dimenzió neve | Leírás |
+| Dimenzió neve | Description |
 | ------------------- | ----------------- |
 | **BlobType** | A blob típusa csak a blob-metrikák esetében. A támogatott értékek a következők: **BlockBlob**, **PageBlob**és **Azure Data Lake Storage**. A hozzáfűző blobot a BlockBlob tartalmazza. |
 | **BlobTier** | Az Azure Storage különböző hozzáférési szinteket kínál, amelyek lehetővé teszik a blob-objektumok-adattárolást a legköltséghatékonyabb módon. További információ az [Azure Storage blob-szintjéről](../blobs/storage-blob-storage-tiers.md). A támogatott értékek a következők: <br/> <li>**Gyors**: gyors elérésű szint</li> <li>**Cool**: lassú szint</li> <li>**Archive**: archiválási szint</li> <li>**Premium**: prémium szint a blob blokkhoz</li> <li>**P4/P6/P10/P15/P20/P30/P40/P50/P60**: szintű prémium oldal blob</li> <li>**Standard**: a standard oldal blobjának típusa</li> <li>Nem **rétegű**: az általános célú v1-es Storage-fiók típusa</li> |
@@ -127,22 +128,22 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 }
 ```
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:---|
-|**idő** | Az az egyezményes világidő (UTC), amikor a kérést a tároló fogadta. Például: `2018/11/08 21:09:36.6900118`.|
+|**idő** | Az az egyezményes világidő (UTC), amikor a kérést a tároló fogadta. Példa: `2018/11/08 21:09:36.6900118`.|
 |**resourceId** | A Storage-fiók erőforrás-azonosítója. Például:`/subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/`<br>`myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/storageAccounts/blobServices/default`|
 |**Kategória** | A kért művelet kategóriája. Például: `StorageRead` , `StorageWrite` , vagy `StorageDelete` .|
 |**operationName** | A végrehajtott REST-művelet típusa. <br> A műveletek teljes listáját lásd: [Storage Analytics naplózott műveletek és állapotüzenetek témakör](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). |
-|**operationVersion** | A tárolási szolgáltatás azon verziója, amely a kérelem végrehajtásakor lett megadva. Ez egyenértékű az **x-MS-Version** fejléc értékével. Például: `2017-04-17`.|
-|**sémaverzióval** | A napló séma-verziója. Például: `1.0`.|
+|**operationVersion** | A tárolási szolgáltatás azon verziója, amely a kérelem végrehajtásakor lett megadva. Ez egyenértékű az **x-MS-Version** fejléc értékével. Példa: `2017-04-17`.|
+|**sémaverzióval** | A napló séma-verziója. Példa: `1.0`.|
 |**statusCode** | A kérelem HTTP-állapotkódot. Ha a kérés megszakad, lehet, hogy ez az érték értéke `Unknown` . <br> Például:`206` |
 |**statusText** | A kért művelet állapota.  Az állapotüzenetek teljes listáját lásd: [Storage Analytics naplózott műveletek és állapotüzenetek témakör](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages). Az 2017-04-17-es és újabb verziókban az állapotjelző üzenet `ClientOtherError` nincs használatban. Ehelyett ez a mező hibakódot tartalmaz. Például:`SASSuccess`  |
-|**durationMs** | A kért művelet végrehajtásához szükséges teljes idő ezredmásodpercben kifejezve. Ide tartozik a beérkező kérelem olvasásának ideje, valamint a válasz küldése a kérelmezőnek. Például: `12`.|
-|**callerIpAddress** | A kérelmező IP-címe, beleértve a portszámot is. Például: `192.100.0.102:4362`. |
-|**correlationId** | A naplók erőforrások közötti összekapcsolásához használt azonosító. Például: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
-|**helyen** | A Storage-fiók helye. Például: `North Europe`. |
+|**durationMs** | A kért művelet végrehajtásához szükséges teljes idő ezredmásodpercben kifejezve. Ide tartozik a beérkező kérelem olvasásának ideje, valamint a válasz küldése a kérelmezőnek. Példa: `12`.|
+|**callerIpAddress** | A kérelmező IP-címe, beleértve a portszámot is. Példa: `192.100.0.102:4362`. |
+|**correlationId** | A naplók erőforrások közötti összekapcsolásához használt azonosító. Példa: `b99ba45e-a01e-0042-4ea6-772bbb000000`. |
+|**helyen** | A Storage-fiók helye. Példa: `North Europe`. |
 |**protokoll**|A műveletben használt protokoll. Például: `HTTP` ,, `HTTPS` `SMB` , vagy`NFS`|
-| **URI** | A kért egységes erőforrás-azonosító. Például: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
+| **URI** | A kért egységes erőforrás-azonosító. Példa: `http://myaccountname.blob.core.windows.net/cont1/blobname?timeout=10`. |
 
 ### <a name="fields-that-describe-how-the-operation-was-authenticated"></a>A művelet hitelesítésének módját leíró mezők
 
@@ -175,21 +176,21 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 
 ```
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:---|
 |**identitás/típus** | A kérelem elvégzéséhez használt hitelesítés típusa. Például: `OAuth` ,, `SAS Key` `Account Key` , vagy`Anonymous` |
 |**identitás/tokenHash**|Ez a mező csak belső használatra van fenntartva. |
 |**engedélyezés/művelet** | A kérelemhez rendelt művelet. Például:`Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read` |
-|**engedélyezés/roleAssignmentId** | A szerepkör-hozzárendelés azonosítója. Például: `4e2521b7-13be-4363-aeda-111111111111`.|
-|**engedélyezés/roleDefinitionId** | A szerepkör-definíció azonosítója. Például: `ba92f5b4-2d11-453d-a403-111111111111"`.|
-|**rendszerbiztonsági tag/azonosító** | A rendszerbiztonsági tag azonosítója. Például: `a4711f3a-254f-4cfb-8a2d-111111111111`.|
-|**rendszerbiztonsági tag/típus** | A rendszerbiztonsági tag típusa. Például: `ServicePrincipal`. |
-|**kérelmező/appID** | A kérelmezőként használt Open Authorization-(OAuth-) alkalmazás azonosítója. <br> Például: `d3f7d5fe-e64a-4e4e-871d-333333333333`.|
-|**kérelmező/célközönség** | A kérelem OAuth célközönsége. Például: `https://storage.azure.com`. |
-|**kérelmező/objectId** | A kérelmező OAuth-objektumának azonosítója. Kerberos-hitelesítés esetén a a Kerberos által hitelesített felhasználó objektumazonosítót jelöli. Például: `0e0bf547-55e5-465c-91b7-2873712b249c`. |
-|**kérelmező/tenantId** | Az identitás OAuth-bérlő azonosítója. Például: `72f988bf-86f1-41af-91ab-222222222222`.|
-|**kérelmező/tokenIssuer** | Az OAuth jogkivonat kiállítója. Például: `https://sts.windows.net/72f988bf-86f1-41af-91ab-222222222222/`.|
-|**kérelmező/UPN** | A kérelmező egyszerű felhasználóneve (UPN). Például: `someone@contoso.com`. |
+|**engedélyezés/roleAssignmentId** | A szerepkör-hozzárendelés azonosítója. Példa: `4e2521b7-13be-4363-aeda-111111111111`.|
+|**engedélyezés/roleDefinitionId** | A szerepkör-definíció azonosítója. Példa: `ba92f5b4-2d11-453d-a403-111111111111"`.|
+|**rendszerbiztonsági tag/azonosító** | A rendszerbiztonsági tag azonosítója. Példa: `a4711f3a-254f-4cfb-8a2d-111111111111`.|
+|**rendszerbiztonsági tag/típus** | A rendszerbiztonsági tag típusa. Példa: `ServicePrincipal`. |
+|**kérelmező/appID** | A kérelmezőként használt Open Authorization-(OAuth-) alkalmazás azonosítója. <br> Példa: `d3f7d5fe-e64a-4e4e-871d-333333333333`.|
+|**kérelmező/célközönség** | A kérelem OAuth célközönsége. Példa: `https://storage.azure.com`. |
+|**kérelmező/objectId** | A kérelmező OAuth-objektumának azonosítója. Kerberos-hitelesítés esetén a a Kerberos által hitelesített felhasználó objektumazonosítót jelöli. Példa: `0e0bf547-55e5-465c-91b7-2873712b249c`. |
+|**kérelmező/tenantId** | Az identitás OAuth-bérlő azonosítója. Példa: `72f988bf-86f1-41af-91ab-222222222222`.|
+|**kérelmező/tokenIssuer** | Az OAuth jogkivonat kiállítója. Példa: `https://sts.windows.net/72f988bf-86f1-41af-91ab-222222222222/`.|
+|**kérelmező/UPN** | A kérelmező egyszerű felhasználóneve (UPN). Példa: `someone@contoso.com`. |
 |**kérelmező/Felhasználónév** | Ez a mező csak belső használatra van fenntartva.|
 
 ### <a name="fields-that-describe-the-service"></a>A szolgáltatást leíró mezők
@@ -230,27 +231,27 @@ A következő táblázat felsorolja az Azure Storage-beli erőforrás-naplók tu
 }
 ```
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:---|
-|**accountName** | A Storage-fiók neve. Például: `mystorageaccount`.  |
-|**requestUrl** | A kért URL-cím. Például: `http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10`.|
-|**userAgentHeader** | A **felhasználói ügynök fejlécének** értéke idézőjelek között. Például: `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)`.|
-|**referrerHeader** | A **hivatkozó** fejléc értéke. Például: `http://contoso.com/about.html`.|
-|**ügyfélkérelem** | A kérelem **x-MS-Client-Request-ID** fejlécének értéke. Például: `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`. |
-|**ETAG** | A visszaadott objektum ETag azonosítója az idézőjelek között. Például: `0x8D101F7E4B662C4`.  |
-|**serverLatencyMs** | A kért művelet végrehajtásához szükséges ezredmásodpercben kifejezett teljes idő. Ez az érték nem tartalmazza a hálózati késést (a bejövő kérelem beolvasásának idejét és a válasz küldését a kérelmezőnek). Például: `22`. |
+|**accountName** | A Storage-fiók neve. Példa: `mystorageaccount`.  |
+|**requestUrl** | A kért URL-cím. Példa: `http://mystorageaccount.blob.core.windows.net/cont1/blobname?timeout=10`.|
+|**userAgentHeader** | A **felhasználói ügynök fejlécének** értéke idézőjelek között. Példa: `WA-Storage/6.2.0 (.NET CLR 4.0.30319.42000; Win32NT 6.2.9200.0)`.|
+|**referrerHeader** | A **hivatkozó** fejléc értéke. Példa: `http://contoso.com/about.html`.|
+|**ügyfélkérelem** | A kérelem **x-MS-Client-Request-ID** fejlécének értéke. Példa: `360b66a6-ad4f-4c4a-84a4-0ad7cb44f7a6`. |
+|**ETAG** | A visszaadott objektum ETag azonosítója az idézőjelek között. Példa: `0x8D101F7E4B662C4`.  |
+|**serverLatencyMs** | A kért művelet végrehajtásához szükséges ezredmásodpercben kifejezett teljes idő. Ez az érték nem tartalmazza a hálózati késést (a bejövő kérelem beolvasásának idejét és a válasz küldését a kérelmezőnek). Példa: `22`. |
 |**serviceType** | A kérelemhez társított szolgáltatás. Például: `blob` ,, `table` `files` , vagy `queue` . |
-|**operationCount** | A kérelemben érintett összes naplózott művelet száma. Ez a szám a indexével kezdődik `0` . Egyes kérelmeknél több műveletre van szükség, például egy blob másolására irányuló kérelemre. A legtöbb kérelem csak egy műveletet hajt végre. Például: `1`. |
-|**requestHeaderSize** | A kérelem fejlécének mérete bájtban kifejezve. Például: `578`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet. |
-|**requestBodySize** | A tárolási szolgáltatás által beolvasott kérési csomagok mérete bájtban kifejezve. <br> Például: `0`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet.  |
-|**responseHeaderSize** | A válasz fejlécének mérete bájtban kifejezve. Például: `216`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet.  |
-|**responseBodySize** | A tárolási szolgáltatás által írt válasz csomagok mérete bájtban megadva. Ha egy kérelem sikertelen, ez az érték üres is lehet. Például: `216`.  |
-|**requestMd5** | A kérelemben a **Content-MD5** fejléc vagy az **x-MS-Content-MD5** fejléc értéke. Az ebben a mezőben megadott MD5 kivonatoló érték a kérelemben szereplő tartalmat jelöli. Például: `788815fd0198be0d275ad329cafd1830`. <br>Ez a mező üres lehet.  |
-|**serverMd5** | A tárolási szolgáltatás által kiszámított MD5-kivonat értéke. Például: `3228b3cf1069a5489b298446321f8521`. <br>Ez a mező üres lehet.  |
-|**lastModifiedTime** | A visszaadott objektum utolsó módosításának időpontja (LMT).  Például: `Tuesday, 09-Aug-11 21:13:26 GMT`. <br>Ez a mező üres olyan műveletekhez, amelyek több objektumot adhatnak vissza. |
-|**conditionsUsed** | A feltételt képviselő kulcs-érték párok pontosvesszővel tagolt listája. A feltételek a következők lehetnek: <li> If-Modified-Since <li> Ha – nem módosítva – óta <li> If-Match <li> If-None-Match  <br> Például: `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`. |
+|**operationCount** | A kérelemben érintett összes naplózott művelet száma. Ez a szám a indexével kezdődik `0` . Egyes kérelmeknél több műveletre van szükség, például egy blob másolására irányuló kérelemre. A legtöbb kérelem csak egy műveletet hajt végre. Példa: `1`. |
+|**requestHeaderSize** | A kérelem fejlécének mérete bájtban kifejezve. Példa: `578`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet. |
+|**requestBodySize** | A tárolási szolgáltatás által beolvasott kérési csomagok mérete bájtban kifejezve. <br> Példa: `0`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet.  |
+|**responseHeaderSize** | A válasz fejlécének mérete bájtban kifejezve. Példa: `216`. <br>Ha egy kérelem sikertelen, ez az érték üres is lehet.  |
+|**responseBodySize** | A tárolási szolgáltatás által írt válasz csomagok mérete bájtban megadva. Ha egy kérelem sikertelen, ez az érték üres is lehet. Példa: `216`.  |
+|**requestMd5** | A kérelemben a **Content-MD5** fejléc vagy az **x-MS-Content-MD5** fejléc értéke. Az ebben a mezőben megadott MD5 kivonatoló érték a kérelemben szereplő tartalmat jelöli. Példa: `788815fd0198be0d275ad329cafd1830`. <br>Ez a mező üres lehet.  |
+|**serverMd5** | A tárolási szolgáltatás által kiszámított MD5-kivonat értéke. Példa: `3228b3cf1069a5489b298446321f8521`. <br>Ez a mező üres lehet.  |
+|**lastModifiedTime** | A visszaadott objektum utolsó módosításának időpontja (LMT).  Példa: `Tuesday, 09-Aug-11 21:13:26 GMT`. <br>Ez a mező üres olyan műveletekhez, amelyek több objektumot adhatnak vissza. |
+|**conditionsUsed** | A feltételt képviselő kulcs-érték párok pontosvesszővel tagolt listája. A feltételek a következők lehetnek: <li> If-Modified-Since <li> Ha – nem módosítva – óta <li> If-Match <li> If-None-Match  <br> Példa: `If-Modified-Since=Friday, 05-Aug-11 19:11:54 GMT`. |
 |**contentLengthHeader** | A tárolási szolgáltatásnak továbbított kérelem Content-Length fejlécének értéke. Ha a kérelem sikeres volt, ez az érték egyenlő a requestBodySize. Ha egy kérelem sikertelen, az érték nem lehet egyenlő a requestBodySize, vagy üres is lehet. |
-|**tlsVersion** | A kérelem összekapcsolásakor használt TLS-verzió. Például: `TLS 1.2`. |
+|**tlsVersion** | A kérelem összekapcsolásakor használt TLS-verzió. Példa: `TLS 1.2`. |
 |**smbTreeConnectID** | A kiszolgáló-üzenetblokk (SMB) **treeConnectId** a fa csatlakozási idején lett létrehozva. Például:`0x3` |
 |**smbPersistentHandleID** | Állandó leíró azonosító egy olyan SMB2-LÉTREHOZÁSi kérelemből, amely túléli a hálózat újrakapcsolását.  Az [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 hivatkozik **SMB2_FILEID. Állandó**. Például:`0x6003f` |
 |**smbVolatileHandleID** | A SMB2-LÉTREHOZÁSi kérelem által a hálózat újrakapcsolásakor újrahasznosított ideiglenes leíró azonosítója.  Az [MS-SMB2](https://docs.microsoft.com/openspecs/windows_protocols/ms-smb2/f1d9b40d-e335-45fc-9d0b-199a31ede4c3) 2.2.14.1 hivatkozik **SMB2_FILEID. Változékony**. Például:`0xFFFFFFFF00000065` |

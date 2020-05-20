@@ -9,13 +9,13 @@ ms.topic: conceptual
 author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
-ms.date: 03/24/2020
-ms.openlocfilehash: 57ca594dd067d15009de5e3abf7276fae48720d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: f259d423f465d93031c3a72855fd7aac4e320573
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80238663"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684965"
 ---
 # <a name="accelerated-database-recovery"></a>Gyorsított adatbázis-helyreállítás
 
@@ -33,7 +33,7 @@ A **gyorsított adatbázis-helyreállítás (ADR)** egy SQL Database Engine-szol
 
   Az ADR-sel a tranzakciós naplót a rendszer agresszív módon csonkolja, még akkor is, ha aktív, hosszan futó tranzakciókat is használ, ami megakadályozza, hogy az IT-csoport ne legyen nagyobb a szabályozásban.
 
-## <a name="the-current-database-recovery-process"></a>Az adatbázis jelenlegi helyreállítási folyamata
+## <a name="standard-database-recovery-process"></a>Szabványos adatbázis-helyreállítási folyamat
 
 Az adatbázis-helyreállítás SQL Server az [Aries](https://people.eecs.berkeley.edu/~brewer/cs262/Aries.pdf) helyreállítási modellt követi, és három szakaszból áll, amelyek az alábbi ábrán láthatók, és részletesebben a diagramot követve jelennek meg.
 
@@ -95,7 +95,7 @@ Az ADR négy fő összetevője a következők:
 
 - **Megőrzött verzió tárolója (PVS)**
 
-  A megőrzött verzió tárolója egy új SQL Database Engine-mechanizmus, amely a hagyományos `tempdb` verziójú tároló helyett maga az adatbázisában előállított sorok verzióinak megőrzését is megőrzi. A PVS lehetővé teszi az erőforrások elkülönítését, valamint javítja az olvasható formátumú másodlagos zónák rendelkezésre állását.
+  A megőrzött verzió tárolója egy új SQL Database Engine-mechanizmus, amely a hagyományos verziójú tároló helyett maga az adatbázisában előállított sorok verzióinak megőrzését is megőrzi `tempdb` . A PVS lehetővé teszi az erőforrások elkülönítését, valamint javítja az olvasható formátumú másodlagos zónák rendelkezésre állását.
 
 - **Logikai visszaállítása**
 

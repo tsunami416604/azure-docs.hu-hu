@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: def92071496716f90b24158a50e4a5233e93c994
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdacee476fbc25154fe225700730f1b8f7f872ec
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81677989"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682279"
 ---
 # <a name="application-types-for-microsoft-identity-platform"></a>A Microsoft Identity platform alkalmazás-típusai
 
@@ -25,7 +25,7 @@ A Microsoft Identity platform (v 2.0) végpontja támogatja a különböző mode
 
 ## <a name="the-basics"></a>Az alapok
 
-Regisztrálnia kell minden olyan alkalmazást, amely a Microsoft Identity platform-végpontot használja az új [Alkalmazásregisztrációk portálon](https://go.microsoft.com/fwlink/?linkid=2083908). Az alkalmazás regisztrációs folyamata összegyűjti és hozzárendeli ezeket az értékeket az alkalmazáshoz:
+Regisztrálnia kell minden olyan alkalmazást, amely a Microsoft Identity platform-végpontot használja a Azure Portal [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908). Az alkalmazás regisztrációs folyamata összegyűjti és hozzárendeli ezeket az értékeket az alkalmazáshoz:
 
 * Egy **alkalmazás-(ügyfél-) azonosító** , amely egyedileg azonosítja az alkalmazást
 * Egy **átirányítási URI** , amely a válaszok visszairányítására használható az alkalmazásba
@@ -42,13 +42,19 @@ https://login.microsoftonline.com/common/oauth2/v2.0/token
 
 ## <a name="single-page-apps-javascript"></a>Egyoldalas alkalmazások (JavaScript)
 
-Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás előtérrel, amely elsősorban JavaScript nyelven íródott. Ez gyakran egy olyan keretrendszer használatával van írva, mint a szögletes, a reakciós vagy a Vue. A Microsoft Identity platform végpontja a [OAuth 2,0 implicit folyamat](v2-oauth2-implicit-grant-flow.md)használatával támogatja ezeket az alkalmazásokat.
+Számos modern alkalmazás rendelkezik egy egyoldalas alkalmazás-előtérrel, amely elsősorban a JavaScriptben íródott, gyakran olyan keretrendszerrel, mint a szögletes, a reakciós vagy a Vue. A Microsoft Identity platform végpontja támogatja ezeket az alkalmazásokat az [OAuth 2,0 engedélyezési kód folyamatával](v2-oauth2-auth-code-flow.md).
 
-Ebben a folyamatban az alkalmazás jogkivonatokat kap közvetlenül a Microsoft Identity platform engedélyezés végponttól, kiszolgáló és kiszolgáló közötti csere nélkül. Az összes hitelesítési logika és munkamenet-kezelés teljes egészében a JavaScript-ügyfélen történik, és nem kell külön oldalt átirányítani.
+Ebben a folyamatban az alkalmazás egy kódot kap a Microsoft Identity platform `authorize` végponttól, és visszaváltja a tokenekhez, és frissíti a jogkivonatokat a helyek közötti webes kérelmek használatával. A frissítési jogkivonat 24 óránként lejár, és az alkalmazásnak egy másik kódot kell igényelnie.
 
-![Az implicit hitelesítési folyamat megjelenítése](./media/v2-app-types/convergence-scenarios-implicit.svg)
+![A SPA-alkalmazások kódjának folyamatábrája](media/v2-oauth-auth-code-spa/active-directory-oauth-code-spa.png)
 
-Ha ezt a forgatókönyvet működés közben szeretné látni, próbálja ki a [Microsoft Identity platform első lépések](v2-overview.md#getting-started) szakaszának egyoldalas alkalmazás kódjának mintáit.
+Ha szeretné megtekinteni ezt a forgatókönyvet működés közben, tekintse meg az [oktatóanyagot: Jelentkezzen be a felhasználókba, és hívja meg a Microsoft Graph API-t egy JavaScript Spa-beli hitelesítési kód használatával](tutorial-v2-javascript-auth-code.md).
+
+### <a name="authorization-code-flow-vs-implicit-flow"></a>Engedélyezési kód folyamatábrája és implicit folyamata
+
+A OAuth 2,0-es verziójának többsége esetében az [implicit folyamat](v2-oauth2-implicit-grant-flow.md) az ajánlott módszer az egylapos alkalmazások létrehozására. A [harmadik féltől származó cookie-k](reference-third-party-cookies-spas.md) eltávolításával, valamint az implicit folyamat körüli biztonsági vonatkozásokkal járó [nagyobb odafigyeléssel](https://tools.ietf.org/html/draft-ietf-oauth-security-topics-14) a rendszer áthelyezte az egyoldalas alkalmazások engedélyezési kódjának folyamatát.
+
+Az alkalmazás Safariban és más adatvédelmi böngészőkben való kompatibilitásának biztosításához már nem javasoljuk az implicit folyamat használatát, ehelyett javasoljuk az engedélyezési kód áramlását.
 
 ## <a name="web-apps"></a>Webalkalmazások
 
@@ -77,7 +83,8 @@ A felhasználó identitását úgy ellenőrizheti, hogy az azonosító tokent a 
 
 Ha ezt a forgatókönyvet működés közben szeretné látni, próbálja ki a webalkalmazás bejelentkezési kódjának mintáit a [Microsoft Identity platform első lépések](v2-overview.md#getting-started) szakaszában.
 
-Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló alkalmazásnak hozzá kell férnie egy másik webszolgáltatáshoz, például egy REST API. Ebben az esetben a webkiszolgáló alkalmazás egy kombinált OpenID Connect és OAuth 2,0 flow-t alkalmaz a [OAuth 2,0 engedélyezési kód folyamatával](active-directory-v2-protocols.md). További információ erről a forgatókönyvről: [Ismerkedés a Web Apps szolgáltatással és a webes API-](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)kkal.
+Az egyszerű bejelentkezés mellett előfordulhat, hogy egy webkiszolgáló alkalmazásnak hozzá kell férnie egy másik webszolgáltatáshoz, például egy REST API. Ebben az esetben a webkiszolgáló alkalmazás egy kombinált OpenID Connect és OAuth 2,0 flow-t alkalmaz a [OAuth 2,0 engedélyezési kód folyamatával](v2-oauth2-auth-code-flow.md). További információ erről a forgatókönyvről: [Ismerkedés a Web Apps szolgáltatással és a webes API-](active-directory-v2-devquickstarts-webapp-webapi-dotnet.md)kkal.
+
 
 ## <a name="web-apis"></a>Webes API-k
 
@@ -115,8 +122,12 @@ Ebben a folyamatban az alkalmazás egy engedélyezési kódot kap a Microsoft Id
 
 A hosszan futó folyamatokkal rendelkező vagy a felhasználóval való interakció nélkül működő alkalmazások esetében is szükség van a biztonságos erőforrásokhoz, például a webes API-khoz való hozzáférésre. Ezek az alkalmazások a felhasználó delegált identitása helyett az alkalmazás identitását használva hitelesíthetők és lekérhetik a jogkivonatokat a OAuth 2,0 ügyfél-hitelesítő adatokkal. Az alkalmazás identitását az ügyfél titkos kódjával vagy tanúsítványával igazolhatja. További információ: [.net Core Daemon Console Application a Microsoft Identity platform használatával](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2).
 
-Ebben a folyamatban az alkalmazás közvetlenül a végpontot használja a `/token` hozzáférés eléréséhez:
+Ebben a folyamatban az alkalmazás közvetlenül a `/token` végpontot használja a hozzáférés eléréséhez:
 
 ![A démon-alkalmazás hitelesítési folyamatát mutatja](./media/v2-app-types/convergence-scenarios-daemon.svg)
 
 Daemon-alkalmazás létrehozásához tekintse meg az [ügyfél hitelesítő adatait tartalmazó dokumentációt](v2-oauth2-client-creds-grant-flow.md), vagy próbálkozzon egy [.net-minta alkalmazással](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+
+## <a name="next-steps"></a>További lépések
+
+Most, hogy már ismeri a Microsoft Identity platform által támogatott típusú alkalmazásokat, ismerkedjen meg a [OAuth 2,0 és az OpenID Connecttel](active-directory-v2-protocols.md) , hogy megértse a különböző forgatókönyvekben használt protokoll-összetevőket.

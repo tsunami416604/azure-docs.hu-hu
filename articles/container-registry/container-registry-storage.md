@@ -3,12 +3,12 @@ title: Tároló rendszerképének tárolója
 description: A Docker-tárolók lemezképeit Azure Container Registry tárolja, beleértve a biztonságot, a redundanciát és a kapacitást.
 ms.topic: article
 ms.date: 03/21/2018
-ms.openlocfilehash: f66c3dd95edfe5035c46857cb6f9aa59d8a6a0e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b738556e5a4f764cd47c72d964ee188d1344b336
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456209"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683399"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Tároló képtárolója Azure Container Registry
 
@@ -46,7 +46,7 @@ A díjszabással kapcsolatos részletes információkért tekintse meg a [Azure 
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a különböző Azure Container Registry SKU-ról (alapszintű, standard, prémium): [Azure Container Registry SKU](container-registry-skus.md).
+Az alapszintű, a standard és a Premium Container-jegyzékekkel kapcsolatos további információkért lásd: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
 
 <!-- IMAGES -->
 

@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae0632fbc3208befe197c15ffdbf2d9a4e7b2d7a
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82926476"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680221"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
 Ez a szolgáltatás a Build [1.1.105.0 (2016. február) jelent](reference-connect-version-history.md#111050)meg.  Ez a szolgáltatás a [build 1.1.561](reference-connect-version-history.md#115610) lett frissítve, és mostantól támogatja azokat a további forgatókönyveket, amelyek korábban nem támogatottak.
@@ -35,7 +35,7 @@ Az automatikus frissítés alapértelmezés szerint engedélyezve van a követke
 * Az Active Directory-fiók az az alapértelmezett MSOL_-fiók, amelyet az expressz beállítások és az rSync használatával hoztak létre.
 * Kevesebb mint 100 000 objektum található a metaverse-ben.
 
-Az automatikus frissítés aktuális állapotát a PowerShell-parancsmaggal `Get-ADSyncAutoUpgrade`lehet megtekinteni. A következő állapotokkal rendelkezik:
+Az automatikus frissítés aktuális állapotát a PowerShell-parancsmaggal lehet megtekinteni `Get-ADSyncAutoUpgrade` . A következő állapotokkal rendelkezik:
 
 | Állapot | Megjegyzés |
 | --- | --- |
@@ -43,7 +43,7 @@ Az automatikus frissítés aktuális állapotát a PowerShell-parancsmaggal `Get
 | Felfüggesztve |Csak a rendszeren állítható be. A rendszer **jelenleg nem** jogosult automatikus frissítések fogadására. |
 | Letiltva |Az automatikus frissítés le van tiltva. |
 
-Az **engedélyezett** és a **letiltott** érték közötti `Set-ADSyncAutoUpgrade`váltás a következővel:. Csak a rendszeren kell beállítani a **felfüggesztett**állapotot.  A 1.1.750.0 előtt a set-ADSyncAutoUpgrade parancsmag letiltja az automatikus frissítést, ha az automatikus frissítés állapota felfüggesztve értékre lett állítva. Ez a funkció mostantól megváltozott, így nem blokkolja az autoupgrade funkciót.
+Az **engedélyezett** és a **letiltott** érték közötti váltás a következővel: `Set-ADSyncAutoUpgrade` . Csak a rendszeren kell beállítani a **felfüggesztett**állapotot.  A 1.1.750.0 előtt a set-ADSyncAutoUpgrade parancsmag letiltja az automatikus frissítést, ha az automatikus frissítés állapota felfüggesztve értékre lett állítva. Ez a funkció mostantól megváltozott, így nem blokkolja az autoupgrade funkciót.
 
 Az automatikus frissítés a Azure AD Connect Healtht használja a frissítési infrastruktúrához. Az automatikus frissítés működéséhez győződjön meg arról, hogy megnyitotta az URL-címeket a proxykiszolgálóhoz **Azure ad Connect Health** az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)dokumentációjában leírtaknak megfelelően.
 
@@ -55,7 +55,7 @@ Ha a kapcsolódási példány nem a várt módon frissül, kövesse az alábbi l
 
 Először is ne várja meg az automatikus frissítést, hogy az első nap új verziót szabadítson fel. A frissítés megkezdése előtt szándékos véletlenszerűség történt, ezért ne legyen riasztás, ha a telepítés nem azonnal frissül.
 
-Ha úgy gondolja, hogy valami nem megfelelő, először `Get-ADSyncAutoUpgrade` futtassa a parancsot, hogy az automatikus frissítés engedélyezve legyen.
+Ha úgy gondolja, hogy valami nem megfelelő, először futtassa a parancsot, `Get-ADSyncAutoUpgrade` hogy az automatikus frissítés engedélyezve legyen.
 
 Ezután győződjön meg arról, hogy megnyitotta a szükséges URL-címeket a proxyban vagy a tűzfalban. Az automatikus frissítés a Azure AD Connect Health használja az [Áttekintés](#overview)című témakörben leírtak szerint. Ha proxyt használ, győződjön meg róla, hogy az állapot [proxykiszolgáló](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)használatára van konfigurálva. Tesztelje az Azure AD-vel való [rendszerállapot-kapcsolatot](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) is.
 
@@ -67,7 +67,7 @@ Most már láthatja az automatikus frissítés állapotával kapcsolatos esemén
 
 Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az állapotról.
 
-| Eredmény-kód előtagja | Leírás |
+| Eredmény-kód előtagja | Description |
 | --- | --- |
 | Sikeres |A telepítés frissítése sikeresen megtörtént. |
 | UpgradeAborted |Egy ideiglenes feltétel leállította a frissítést. Újból próbálkozik újra, és a várt érték az, hogy később sikeres lesz. |
@@ -75,7 +75,7 @@ Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az á
 
 Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, de az eredményről tájékoztató üzenetnek Egyértelműnek kell lennie a problémával kapcsolatban.
 
-| Eredmény üzenet | Leírás |
+| Eredmény üzenet | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Nem lehet írni a beállításjegyzékbe. |
@@ -92,7 +92,7 @@ Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, 
 | UpgradeNotSupportedAdfsSignInMethod | A bejelentkezési módszerként az ADFS-t választotta. |
 | UpgradeNotSupportedCustomizedSyncRules |Saját egyéni szabályokat adott hozzá a konfigurációhoz. |
 | UpgradeNotSupportedDeviceWritebackEnabled |Engedélyezte az [eszköz visszaírási](how-to-connect-device-writeback.md) funkcióját. |
-| UpgradeNotSupportedGroupWritebackEnabled |Engedélyezte a [csoport visszaírási](how-to-connect-preview.md#group-writeback) funkcióját. |
+| UpgradeNotSupportedGroupWritebackEnabled |Engedélyezte a csoport visszaírási funkcióját. |
 | UpgradeNotSupportedInvalidPersistedState |A telepítés nem expressz beállítások vagy az rSync frissítése. |
 | UpgradeNotSupportedMetaverseSizeExceeeded |A metaverse több mint 100 000 objektumot tartalmaz. |
 | UpgradeNotSupportedMultiForestSetup |Több erdőhöz csatlakozik. Az expressz beállítás csak egyetlen erdőhöz csatlakozik. |

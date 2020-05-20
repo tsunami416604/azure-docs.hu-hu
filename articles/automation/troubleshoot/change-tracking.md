@@ -1,6 +1,6 @@
 ---
-title: A Change Tracking és a leltárral kapcsolatos problémák elhárítása
-description: Megtudhatja, hogyan lehet elhárítani a Azure Automation Change Tracking és a leltározási megoldással kapcsolatos problémákat.
+title: A Azure Automation Change Tracking és a leltárral kapcsolatos problémák elhárítása
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a problémákat a Azure Automation Change Tracking és a leltár szolgáltatással kapcsolatos problémák megoldásában.
 services: automation
 ms.service: automation
 ms.subservice: change-inventory-management
@@ -9,19 +9,16 @@ ms.author: magoedte
 ms.date: 01/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4f230cd0965d58f690d333cd62f2c7c1d499e8d1
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 3fe28ba0871009785b1bb8b263b42f453c2918be
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582146"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684864"
 ---
 # <a name="troubleshoot-change-tracking-and-inventory-issues"></a>A Change Tracking és a leltárral kapcsolatos problémák elhárítása
 
-Ez a cikk ismerteti, hogyan lehet elhárítani a Azure Automation Change Tracking és a leltárral kapcsolatos problémákat.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
+Ez a cikk a Azure Automation Change Tracking és a leltárral kapcsolatos problémák elhárítását és megoldását ismerteti. A Change Tracking és a leltárral kapcsolatos általános információkért lásd: [change Tracking és leltár – áttekintés](../change-tracking.md).
 
 ## <a name="windows"></a>Windows
 
@@ -29,7 +26,7 @@ Ez a cikk ismerteti, hogyan lehet elhárítani a Azure Automation Change Trackin
 
 #### <a name="issue"></a>Probléma
 
-Nem jelenik meg Change Tracking és leltározási eredmény a bekészített Windows-gépekhez.
+A szolgáltatáshoz engedélyezett Windows rendszerű gépekhez nem jelenik meg Change Tracking és leltározási eredmény.
 
 #### <a name="cause"></a>Ok
 
@@ -38,7 +35,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 * A Windows rendszerhez készült Azure Log Analytics-ügynök nem fut.
 * A rendszer blokkolja az Automation-fiókkal való kommunikációt.
 * A Change Tracking és a leltár felügyeleti csomagjai nem tölthetők le.
-* Előfordulhat, hogy a bevezetésben lévő virtuális gép olyan klónozott gépről származik, amely nem volt Sysprep használatával létrehozott a Windows rendszerhez telepített Log Analytics ügynökkel.
+* Előfordulhat, hogy az engedélyezni kívánt virtuális gép olyan klónozott gépről származik, amely nem készült rendszer-előkészítő rendszerrel (Sysprep), és a Windows Log Analytics ügynöke telepítve van.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -54,7 +51,7 @@ net start healthservice
 Ha továbbra is segítségre van szüksége, diagnosztikai információkat gyűjthet, és kapcsolatba léphet a támogatási szolgálattal.
 
 > [!NOTE]
-> A Log Analytics ügynök alapértelmezés szerint engedélyezi a hibák nyomkövetését. Az előző példában szereplő részletes hibaüzenetek engedélyezéséhez használja a `VER` paramétert. Az információk követéséhez használja `INF` a következőt: `StartTracing.cmd`.
+> A Log Analytics ügynök alapértelmezés szerint engedélyezi a hibák nyomkövetését. Az előző példában szereplő részletes hibaüzenetek engedélyezéséhez használja a `VER` paramétert. Az információk követéséhez használja a következőt: `INF` `StartTracing.cmd` .
 
 ##### <a name="log-analytics-agent-for-windows-not-running"></a>Log Analytics ügynök nem fut a Windows rendszerben
 
@@ -62,9 +59,9 @@ Ellenőrizze, hogy a Windows rendszerhez készült Log Analytics ügynök (**Hea
 
 ##### <a name="communication-to-automation-account-blocked"></a>Az Automation-fiókkal folytatott kommunikáció blokkolva
 
-Ellenőrizze Eseménynapló a gépen, és keresse meg azokat az eseményeket, amelyekben szó `changetracking` van bennük.
+Ellenőrizze Eseménynapló a gépen, és keresse meg azokat az eseményeket, amelyekben szó van `changetracking` bennük.
 
-A Change Tracking és a leltár működéséhez engedélyezni kívánt címekkel és portokkal kapcsolatos információkért lásd: [erőforrások automatizálása az adatközpontban vagy a felhőben hibrid Runbook-feldolgozók használatával](../automation-hybrid-runbook-worker.md#network-planning).
+A Change Tracking és a leltár működéséhez engedélyezni kívánt címekkel és portokkal kapcsolatos további tudnivalókért lásd: [hálózati tervezés](../automation-hybrid-runbook-worker.md#network-planning).
 
 ##### <a name="management-packs-not-downloaded"></a>Nem letöltött felügyeleti csomagok
 
@@ -84,7 +81,7 @@ Klónozott rendszerkép használata esetén először a rendszerképet, majd a W
 
 #### <a name="issue"></a>Probléma
 
-Nem jelennek meg a megoldásba bekészített linuxos gépek Change Tracking és leltározási eredményei. 
+A szolgáltatáshoz engedélyezett Linux rendszerű gépekhez nem jelennek meg Change Tracking és leltározási eredmények. 
 
 #### <a name="cause"></a>Ok
 A probléma lehetséges okai a következők:
@@ -111,16 +108,16 @@ A probléma további hibaelhárítását lásd [: probléma: nem jelenik meg Lin
 
 ##### <a name="log-analytics-agent-for-linux-not-configured-correctly"></a>A Linux-ügynök nem megfelelően van konfigurálva Log Analytics
 
-Előfordulhat, hogy a Linux rendszerhez készült Log Analytics-ügynök nem megfelelően van konfigurálva a log és a parancssori kimeneti gyűjteményhez a OMS log Collector eszközzel. Lásd: a [környezet változásainak követése a Change Tracking és a leltár megoldással](../change-tracking.md).
+Előfordulhat, hogy a Linux rendszerhez készült Log Analytics-ügynök nem megfelelően van konfigurálva a log és a parancssori kimeneti gyűjteményhez a OMS log Collector eszközzel. Lásd: [change Tracking és leltár – áttekintés](../change-tracking.md).
 
 ##### <a name="fim-conflicts"></a>FIM-ütközések
 
-Előfordulhat, hogy a Azure Security Center FIM-funkciója helytelenül ellenőrzi a Linux-fájlok integritását. Ellenőrizze, hogy a FIM működik-e, és megfelelően van-e konfigurálva a Linux-fájlok figyeléséhez. Lásd: a [környezet változásainak követése a Change Tracking és a leltár megoldással](../change-tracking.md).
+Előfordulhat, hogy a Azure Security Center FIM-funkciója helytelenül ellenőrzi a Linux-fájlok integritását. Ellenőrizze, hogy a FIM működik-e, és megfelelően van-e konfigurálva a Linux-fájlok figyeléséhez. Lásd: [change Tracking és leltár – áttekintés](../change-tracking.md).
 
 ## <a name="next-steps"></a>További lépések
 
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport)a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
+* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.

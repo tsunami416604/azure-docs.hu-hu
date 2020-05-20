@@ -8,20 +8,20 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/08/2020
+ms.date: 05/19/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jesakowi
-ms.openlocfilehash: d050efe1224e2783cdad52a12c842f7abe44b7af
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 73a96f295d5dfa74130927e5096e9278a0e348e8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597701"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682424"
 ---
 # <a name="publisher-verification-preview"></a>Közzétevő ellenőrzése (előzetes verzió)
 
-A kiadói ellenőrzés (előzetes verzió) segít a rendszergazdáknak és a végfelhasználóknak megérteni az alkalmazások fejlesztőinek a Microsoft Identity platformmal való integrálásának eredetiségét. Más szóval, a közzétevő egy ismert forrás vagy egy rossz színész, amely a jól ismert közzétevőt fedi le? Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan [Microsoft Partner Network](https://partner.microsoft.com/membership) -fiókkal, amely befejezte az [ellenőrzési](/partner-center/verification-responses) folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával. 
+A kiadói ellenőrzés (előzetes verzió) segít a rendszergazdáknak és a végfelhasználóknak megérteni az alkalmazások fejlesztőinek a Microsoft Identity platformmal való integrálásának eredetiségét. Ha az alkalmazás közzétevőként van megjelölve, az azt jelenti, hogy a közzétevő ellenőrizte az identitását egy olyan [Microsoft Partner Network](https://partner.microsoft.com/membership) -fiókkal, amely befejezte az [ellenőrzési](/partner-center/verification-responses) folyamatot, és társította ezt az MPN-fiókot az alkalmazás regisztrálásával. 
 
 Egy kék "ellenőrzött" jelvény jelenik meg az Azure AD-hozzájárulási kérdésben és a többi képernyőn: ![ beleegyezés kérése](./media/publisher-verification-overview/consent-prompt.png)
 

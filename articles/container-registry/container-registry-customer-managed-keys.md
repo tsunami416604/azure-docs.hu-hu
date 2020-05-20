@@ -4,12 +4,12 @@ description: Ismerje meg az Azure Container Registry titkosítását, valamint a
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: d9cd10401e7f645a8edd269184a56dc27544a8c8
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927316"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683484"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Beállításjegyzék titkosítása az ügyfél által felügyelt kulccsal
 
@@ -17,7 +17,7 @@ Ha lemezképeket és egyéb összetevőket tárol egy Azure Container registrybe
 
 Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosítást a [Azure Key Vault](../key-vault/general/overview.md)integrációja támogatja. Létrehozhat saját titkosítási kulcsokat, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat a kulcsok létrehozásához. A Azure Key Vault használatával is naplózhatja a kulcshasználat.
 
-Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry SKU](container-registry-skus.md)-i.
+Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten érhető el. További információ a beállításjegyzék szolgáltatási szintjeiről és korlátairól: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
 
    
 ## <a name="things-to-know"></a>Tudnivalók
@@ -33,7 +33,7 @@ A cikkben szereplő Azure CLI-lépések használatához az Azure CLI-es vagy új
 
 ## <a name="enable-customer-managed-key---cli"></a>Ügyfél által felügyelt kulcs engedélyezése – parancssori felület
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Szükség esetén futtassa az az [Group Create][az-group-create] parancsot egy erőforráscsoport létrehozásához a kulcstartó, a tároló-beállításjegyzék és az egyéb szükséges erőforrások létrehozásához.
 
@@ -51,7 +51,7 @@ az identity create \
   --name <managed-identity-name> 
 ```
 
-A parancs kimenetében jegyezze fel a következő értékeket: `id` és. `principalId` Ezekre az értékekre szüksége lesz a beállításjegyzék hozzáférésének a Key vaulthoz való konfigurálásának későbbi lépéseiben.
+A parancs kimenetében jegyezze fel a következő értékeket: `id` és `principalId` . Ezekre az értékekre szüksége lesz a beállításjegyzék hozzáférésének a Key vaulthoz való konfigurálásának későbbi lépéseiben.
 
 ```JSON
 {
@@ -111,7 +111,7 @@ az keyvault key create \
   --vault-name <key-vault-name>
 ```
 
-A parancs kimenetében jegyezze fel a kulcs AZONOSÍTÓját `kid`. Ezt az azonosítót a következő lépésben kell használni:
+A parancs kimenetében jegyezze fel a kulcs AZONOSÍTÓját `kid` . Ezt az azonosítót a következő lépésben kell használni:
 
 ```JSON
 [...]
@@ -200,7 +200,7 @@ Ha az ügyfél által felügyelt kulcshoz kulcstartót hoz létre, az **alapok**
 Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhessen.
 
 1. Navigáljon a kulcstartóhoz.
-1. Válassza a **Beállítások** > **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása**lehetőséget.
+1. Válassza a **Beállítások**  >  **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása**lehetőséget.
 1. Válassza a **kulcs engedélyei**lehetőséget, majd a **beolvasás**, a **kicsomagolás** **és a**kicsomagolási kulcs elemet.
 1. Válassza a **rendszerbiztonsági tag** kiválasztása lehetőséget, és válassza ki a felhasználó által hozzárendelt felügyelt identitás erőforrásának nevét.  
 1. Válassza a **Hozzáadás**, majd a **Mentés**lehetőséget.
@@ -210,14 +210,14 @@ Konfiguráljon egy házirendet a Key vaulthoz, hogy az identitás hozzáférhess
 ### <a name="create-key"></a>Kulcs létrehozása
 
 1. Navigáljon a kulcstartóhoz.
-1. Válassza a **Beállítások** > **kulcsok**elemet.
+1. Válassza a **Beállítások**  >  **kulcsok**elemet.
 1. Válassza a **+ Létrehozás/importálás** lehetőséget, és adjon meg egy egyedi nevet a kulcshoz.
 1. Fogadja el a többi alapértelmezett értéket, és válassza a **Létrehozás**lehetőséget.
 1. A létrehozás után válassza ki a kulcsot, és jegyezze fel az aktuális kulcs verzióját.
 
 ### <a name="create-azure-container-registry"></a>Azure Container Registry létrehozása
 
-1. Válassza **az erőforrás** > **létrehozása tárolók** > **Container Registry**elemet.
+1. Válassza **az erőforrás létrehozása**  >  **tárolók**  >  **Container Registry**elemet.
 1. Az **alapvető beállítások** lapon válasszon ki vagy hozzon létre egy erőforráscsoportot, és adjon meg egy beállításjegyzék-nevet. Az **SKU**területen válassza a **prémium**lehetőséget.
 1. A **titkosítás** lap **ügyfél által felügyelt kulcs**területén válassza az **engedélyezve**lehetőséget.
 1. Az **identitás**területen válassza ki a létrehozott felügyelt identitást.
@@ -234,7 +234,7 @@ Ha szeretné megtekinteni a beállításjegyzék titkosítási állapotát a por
 
 Egy Resource Manager-sablonnal is létrehozhat egy beállításjegyzéket, és engedélyezheti a titkosítást az ügyfél által felügyelt kulccsal. 
 
-A következő sablon létrehoz egy új tároló-beállításjegyzéket és egy felhasználó által hozzárendelt felügyelt identitást. Másolja az alábbi tartalmat egy új fájlba, és mentse a fájlt egy olyan fájlnév használatával `CMKtemplate.json`, mint például.
+A következő sablon létrehoz egy új tároló-beállításjegyzéket és egy felhasználó által hozzárendelt felügyelt identitást. Másolja az alábbi tartalmat egy új fájlba, és mentse a fájlt egy olyan fájlnév használatával, mint például `CMKtemplate.json` .
 
 ```JSON
 {
@@ -418,7 +418,7 @@ A beállításjegyzék **titkosítási** beállításaival frissítheti az ügyf
 Például egy új kulcs verziójának létrehozásához és konfigurálásához:
 
 1. A portálon navigáljon a beállításjegyzékhez. 
-1. A **Beállítások**területen válassza a **titkosítási** > **kulcs módosítása**elemet.
+1. A **Beállítások**területen válassza a **titkosítási**  >  **kulcs módosítása**elemet.
 1. Válassza a **kulcs kiválasztása** lehetőséget.
     
     ![Kulcs elforgatása a Azure Portalban](./media/container-registry-customer-managed-keys/rotate-key.png)
@@ -448,14 +448,14 @@ A beállításjegyzék rendszerhez rendelt felügyelt identitását beállíthat
 A beállításjegyzék rendszerhez rendelt identitásának engedélyezése a portálon:
 
 1. A portálon navigáljon a beállításjegyzékhez. 
-1. Válassza a **Beállítások** >  **identitás**lehetőséget.
+1. Válassza a **Beállítások**  >   **identitás**lehetőséget.
 1. A **rendszer által hozzárendelve**beállításnál állítsa be **a**következőt: **állapot** . Kattintson a **Mentés** gombra.
 1. Másolja az identitás **objektum-azonosítóját** .
 
 Az identitás hozzáférésének biztosítása a kulcstartóhoz:
 
 1. Navigáljon a kulcstartóhoz.
-1. Válassza a **Beállítások** > **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása**lehetőséget.
+1. Válassza a **Beállítások**  >  **hozzáférési szabályzatok > + hozzáférési házirend hozzáadása**lehetőséget.
 1. Válassza a **kulcs engedélyei**lehetőséget, majd a **beolvasás**, a **kicsomagolás** **és a**kicsomagolási kulcs elemet.
 1. Válassza a **rendszerbiztonsági tag kiválasztása** lehetőséget, és keresse meg a rendszer által hozzárendelt felügyelt identitáshoz tartozó objektumazonosítót, vagy a beállításjegyzék nevét.  
 1. Válassza a **Hozzáadás**, majd a **Mentés**lehetőséget.
@@ -463,7 +463,7 @@ Az identitás hozzáférésének biztosítása a kulcstartóhoz:
 A beállításjegyzék titkosítási beállításainak frissítése a személyazonosság használatára:
 
 1. A portálon navigáljon a beállításjegyzékhez. 
-1. A **Beállítások**területen válassza a **titkosítási** > **kulcs módosítása**elemet.
+1. A **Beállítások**területen válassza a **titkosítási**  >  **kulcs módosítása**elemet.
 1. Az **identitás**területen válassza ki a **rendszer által hozzárendelt**elemet, majd kattintson a **Mentés**gombra.
 
 ### <a name="key-vault-firewall"></a>Key Vault tűzfal

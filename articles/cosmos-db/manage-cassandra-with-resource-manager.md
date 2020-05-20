@@ -4,14 +4,14 @@ description: Azure Cosmos DB-Cassandra API létrehozásához és konfigurálás�
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: f16dec74b15f4945b54fe1423835fd8f5c8d96f1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 630c965eadf17e21c75e1bd180fec4496df830e2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791272"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684824"
 ---
 # <a name="manage-azure-cosmos-db-cassandra-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Cassandra API erőforrások kezelése Azure Resource Manager sablonok használatával
 
@@ -33,13 +33,13 @@ Az alábbi Azure Cosmos DB-erőforrások létrehozásához másolja a következ�
 
 Ez a sablon két régióban hoz létre egy Azure Cosmos-fiókot, amely a konzisztencia és a feladatátvétel lehetőségeit tartalmazza, és egy szóköz és egy tábla van konfigurálva az automatikusan méretezhető átviteli sebességhez. Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
 
-[![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autosscale%2Fazuredeploy.json)
+[![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-cassandra-autoscale%2Fazuredeploy.json)
 
 :::code language="json" source="~/quickstart-templates/101-cosmosdb-cassandra-autoscale/azuredeploy.json":::
 
 <a id="create-manual"></a>
 
-## <a name="azure-cosmos-account-for-cassandra-with-standard-manual-provisioned-throughput"></a>Azure Cosmos-fiók a Cassandra standard (manuális) kiépített átviteli sebességgel
+## <a name="azure-cosmos-account-for-cassandra-with-standard-provisioned-throughput"></a>Azure Cosmos-fiók a Cassandra standard kiosztott átviteli sebességgel
 
 Ez a sablon két régióban hoz létre egy Azure Cosmos-fiókot, amely a konzisztencia és a feladatátvétel beállításait tartalmazza, és a szabványos átviteli sebességhez a szóköz és a tábla van konfigurálva. Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
 

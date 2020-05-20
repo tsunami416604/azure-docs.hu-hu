@@ -7,21 +7,21 @@ author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: how-to
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 71858755fe31823d4d7ef8623b915db851530116
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 081f512fd421bf46a86f3789eadd75e178e1b6f5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72755238"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685308"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Videotartalom elemzése a kifogásolt anyagokhoz C-ben #
 
 Ez a cikk a .NET-hez készült [Content MODERATOR SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) -val való ismerkedéshez nyújt segítséget és példákat a videó tartalmának felnőtt vagy zamatos tartalomra való vizsgálatához.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) . 
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F). 
 
 ## <a name="prerequisites"></a>Előfeltételek
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
@@ -40,7 +40,7 @@ Navigáljon az új AMS-előfizetéshez a Azure Portal, és válassza az **API-ho
 
 Az **Azure ad alkalmazás** szakaszban válassza az **új létrehozása** elemet, és nevezze el az új Azure ad-alkalmazás regisztrációját (például "VideoModADApp"). Kattintson a **Save (Mentés** ) gombra, és várjon néhány percet, amíg az alkalmazás konfigurálva van. Ezután meg kell jelennie az új alkalmazás regisztrálásának az oldal **Azure ad-alkalmazás** szakaszában.
 
-Válassza ki az alkalmazás regisztrációját, és kattintson az alatta lévő **alkalmazás kezelése** gombra. Jegyezze fel az **alkalmazás azonosító** mezőjében szereplő értéket; erre később szüksége lesz. Válassza a **Beállítások** > **kulcsok**lehetőséget, és adja meg az új kulcs leírását (például "VideoModKey"). Kattintson a **Mentés**gombra, és figyelje meg az új kulcs értékét. Másolja ezt a karakterláncot, és mentse biztonságos helyre.
+Válassza ki az alkalmazás regisztrációját, és kattintson az alatta lévő **alkalmazás kezelése** gombra. Jegyezze fel az **alkalmazás azonosító** mezőjében szereplő értéket; erre később szüksége lesz. Válassza a **Beállítások**  >  **kulcsok**lehetőséget, és adja meg az új kulcs leírását (például "VideoModKey"). Kattintson a **Mentés**gombra, és figyelje meg az új kulcs értékét. Másolja ezt a karakterláncot, és mentse biztonságos helyre.
 
 A fenti folyamat alaposabb áttekintése: az [Azure ad-hitelesítés első lépései](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 
@@ -83,7 +83,7 @@ using System.Collections.Generic;
 
 ### <a name="set-up-resource-references"></a>Erőforrás-hivatkozások beállítása
 
-Adja hozzá a következő statikus mezőket a **program** osztályhoz a _program.cs_-ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és `CLIENT_SECRET` az adott alkalmazáshoz létrehozott "VideoModKey" értéke.
+Adja hozzá a következő statikus mezőket a **program** osztályhoz a _program.cs_-ben. Ezek a mezők az AMS-előfizetéshez való csatlakozáshoz szükséges információkat rendelkeznek. Töltse ki azokat a következő lépésekben kapott értékekkel. Vegye figyelembe `CLIENT_ID` , hogy az Azure ad-alkalmazás **azonosító** értéke, és az `CLIENT_SECRET` adott alkalmazáshoz létrehozott "VideoModKey" értéke.
 
 ```csharp
 // declare constants and globals

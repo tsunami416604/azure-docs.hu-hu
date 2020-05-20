@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 999177f821b98adfa015520252bd3323d0892533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 018fb457840e9ffe382ec1ed54df582ecfec8e49
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275177"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682855"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Felügyeleti megoldás fájljának létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -61,9 +61,9 @@ Alább látható egy minta paraméter.
 
 A következő táblázat a paraméter attribútumait ismerteti.
 
-| Attribútum | Leírás |
+| Attribútum | Description |
 |:--- |:--- |
-| type |A paraméter adattípusa. A felhasználó számára megjelenített beviteli vezérlő az adattípustól függ.<br><br>bool – legördülő lista<br>karakterlánc – szövegmező<br>int-Text Box<br>SecureString – jelszó mező<br> |
+| típus |A paraméter adattípusa. A felhasználó számára megjelenített beviteli vezérlő az adattípustól függ.<br><br>bool – legördülő lista<br>karakterlánc – szövegmező<br>int-Text Box<br>SecureString – jelszó mező<br> |
 | category |A paraméter nem kötelező kategóriája.  Az azonos kategóriába tartozó paraméterek együtt vannak csoportosítva. |
 | control |További funkciók a karakterlánc-paraméterekhez.<br><br>datetime – datetime típusú vezérlő jelenik meg.<br>GUID – a GUID azonosító automatikusan létrejön, és a paraméter nem jelenik meg. |
 | leírás |A paraméter leírását nem kötelező megadni.  A paraméter melletti információs buborékban jelenik meg. |
@@ -76,7 +76,7 @@ Az alábbi táblázat az összes felügyeleti megoldás szabványos paraméterei
 >
 >
 
-| Paraméter | Típus | Leírás |
+| Paraméter | Típus | Description |
 |:--- |:--- |:--- |
 | accountName |sztring |Azure Automation fiók neve. |
 | pricingTier |sztring |A Log Analytics munkaterület és Azure Automation fiók díjszabási szintje. |
@@ -161,7 +161,7 @@ Az [erőforrások](../../azure-resource-manager/templates/template-syntax.md#res
 A **dependsOn** elem egy másik erőforrás [függőségét](../../azure-resource-manager/templates/define-resource-dependency.md) határozza meg.  Ha a megoldás telepítve van, a rendszer nem hozza létre az erőforrást, amíg az összes függőségét nem hozták létre.  Előfordulhat például, hogy a megoldás [elindít egy runbook](solutions-resources-automation.md#runbooks) , ha a [feladatot erőforrással](solutions-resources-automation.md#automation-jobs)telepíti.  A runbook erőforrástól függ, hogy a runbook létrejött-e a feladatokhoz.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics munkaterület és Automation-fiók
-A felügyeleti megoldásokhoz [log Analytics munkaterületre](../../azure-monitor/platform/manage-access.md) van szükség, hogy a runbookok és a kapcsolódó erőforrásokat tartalmazó nézeteket és [Automation-fiókot](../../automation/automation-security-overview.md#automation-account-overview) tartalmazzon.  Ezeknek elérhetőnek kell lenniük a megoldás erőforrásainak létrehozása előtt, és a megoldásban nem kell őket meghatározni.  A felhasználónak [meg kell adnia egy munkaterületet és fiókot](solutions.md#log-analytics-workspace-and-automation-account) a megoldás telepítésekor, de a szerzőnek a következő szempontokat kell figyelembe vennie.
+A felügyeleti megoldásokhoz [log Analytics munkaterületre](../../azure-monitor/platform/manage-access.md) van szükség, hogy a runbookok és a kapcsolódó erőforrásokat tartalmazó nézeteket és [Automation-fiókot](../../automation/automation-security-overview.md) tartalmazzon.  Ezeknek elérhetőnek kell lenniük a megoldás erőforrásainak létrehozása előtt, és a megoldásban nem kell őket meghatározni.  A felhasználónak [meg kell adnia egy munkaterületet és fiókot](solutions.md#log-analytics-workspace-and-automation-account) a megoldás telepítésekor, de a szerzőnek a következő szempontokat kell figyelembe vennie.
 
 
 ## <a name="solution-resource"></a>Megoldás erőforrása
@@ -204,9 +204,9 @@ A megoldás erőforrásának a megoldás létrehozása [előtt meg kell egyeznie
 ### <a name="properties"></a>Tulajdonságok
 A megoldás erőforrásának tulajdonságai a következő táblázatban láthatók.  Ez magában foglalja a megoldás által hivatkozott és a megoldásban foglalt erőforrásokat, amely meghatározza, hogy az erőforrás hogyan legyen felügyelve a megoldás telepítése után.  A megoldásban szereplő összes erőforrásnak szerepelnie kell a **referencedResources** vagy a **containedResources** tulajdonságban.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
-| workspaceResourceId |Az log Analytics munkaterület azonosítója az űrlap * \<erőforráscsoport-azonosítójában>\</Providers/Microsoft.operationalinsights/workspaces/-munkaterület neve\>*. |
+| workspaceResourceId |Az Log Analytics munkaterület azonosítója az űrlap erőforráscsoport- * \< azonosítójában>/Providers/Microsoft.operationalinsights/workspaces/- \< munkaterület neve \> *. |
 | referencedResources |Azon erőforrások listája, amelyeket nem szabad eltávolítani a megoldás eltávolításakor. |
 | containedResources |Azon erőforrások listája, amelyeket el kell távolítani a megoldás eltávolításakor. |
 
@@ -215,9 +215,9 @@ A fenti példa egy runbook, egy ütemtervet és egy nézetet tartalmazó megold�
 ### <a name="plan"></a>Felkészülés
 A megoldás erőforrásának **csomag** entitása a következő táblázatban található tulajdonságokkal rendelkezik.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
-| név |A megoldás neve. |
+| name |A megoldás neve. |
 | version |A megoldásnak a szerző által meghatározott verziója. |
 | product |Egyedi karakterlánc a megoldás azonosításához. |
 | közzétevő |A megoldás közzétevője. |

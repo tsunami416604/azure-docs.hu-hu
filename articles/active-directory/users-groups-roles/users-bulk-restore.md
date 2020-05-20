@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11f35c7615135f5aa6c63d5d05898d139df61d0d
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 1db23bb1176a41b4b9bac548b737fbd13fbe82c4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203298"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685260"
 ---
 # <a name="bulk-restore-deleted-users-in-azure-active-directory"></a>Törölt felhasználók tömeges visszaállítása Azure Active Directory
 
@@ -35,7 +35,7 @@ Töltse le és töltse ki a CSV-sablont, hogy az Azure AD-felhasználók tömege
 A letöltött CSV-sablon sorai a következők:
 
 - **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
-- **Oszlopfejlécek**: az oszlopfejlécek &lt; *Item name* &gt; formátuma a (z) [PropertyName] &lt;elemnév *kötelező vagy üres*&gt;. Például: `Object ID [objectId] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
+- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt; *Item name* &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Object ID [objectId] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz.
 - **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
 
 ### <a name="additional-guidance"></a>További útmutatás
@@ -48,14 +48,14 @@ A letöltött CSV-sablon sorai a következők:
 ## <a name="to-bulk-restore-users"></a>Felhasználók tömeges visszaállítása
 
 1. [Jelentkezzen be az Azure ad-szervezetbe](https://aad.portal.azure.com) egy olyan fiókkal, amely felhasználói rendszergazda az Azure ad-szervezetben.
-1. Az Azure ad-ben válassza a **felhasználók** > **törölve**lehetőséget.
+1. Az Azure ad-ben válassza a **felhasználók**  >  **törölve**lehetőséget.
 1. A **törölt felhasználók** lapon a **tömeges visszaállítás** elemre kattintva töltse fel a visszaállítani kívánt felhasználók tulajdonságaihoz tartozó érvényes CSV-fájlt.
 
-   ![A törölt felhasználók lapon válassza a tömeges visszaállítás parancsot.](./media/users-bulk-restore/bulk-restore.png)
+    ![A törölt felhasználók lapon válassza a tömeges visszaállítás parancsot.](./media/users-bulk-restore/bulk-restore.png)
 
 1. Nyissa meg a CSV-sablont, és adjon hozzá egy sort minden visszaállítani kívánt felhasználóhoz. Az egyetlen szükséges érték a **ObjectId**. Ezután mentse a fájlt.
 
-   ![Válassza ki azt a helyi CSV-fájlt, amelyben fel szeretné sorolni a hozzáadni kívánt felhasználókat](./media/users-bulk-restore/upload-button.png)
+    :::image type="content" source="./media/users-bulk-restore/upload-button.png" alt-text="Válassza ki azt a helyi CSV-fájlt, amelyben fel szeretné sorolni a hozzáadni kívánt felhasználókat":::
 
 1. A **tömeges visszaállítás** lapon a CSV- **fájl feltöltése**területen keresse meg a fájlt. Ha kijelöli a fájlt, majd a **Küldés**gombra kattint, a CSV-fájl érvényesítése elindul.
 1. A fájl tartalmának ellenőrzésekor a **fájl feltöltése sikeresen**megtörténik. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.

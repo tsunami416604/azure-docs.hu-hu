@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 03/10/2020
+ms.date: 05/19/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b0d8228586c0e20e4314331339aa2f2c46a38c9a
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: aa3096f43952c047620b310412b27c434fc5fb06
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792156"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682604"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA Azure-beli virtuális gépek tárkonfigurációi
 
@@ -55,6 +55,9 @@ A helyszíni világban ritkán kell foglalkoznia az I/O-alrendszerekkel és kép
 - Az írási tevékenység engedélyezése legalább 250 MB/s **/Hana/Data** 16 mb és 64 MB I/O méret esetén
 
 Mivel az adatbázis-kezelő rendszerekben az alacsony tárolási késés kritikus fontosságú, még az adatbázis-kezelői rendszerek, például a SAP HANA esetében is, az adatmemóriában marad. A tárolóban a kritikus elérési út általában az adatbázis-kezelő rendszerek tranzakciónapló-írásai körébe esik. Az összeomlás utáni helyreállítást követően azonban az olyan műveletek, mint például a visszaállítási pontok írása vagy a memóriában tárolt adatok betöltése is kritikus lehet. Ezért a **/Hana/Data** -és **/Hana/log** -kötetek esetében **kötelező** az Azure Premium-lemezek kihasználása. Az SAP által igénybe venni kívánt **/Hana/log** és **/Hana/Data** minimális átviteli sebességének elérése érdekében a MDADM vagy az LVM használatával több Azure Premium Storage-lemezre kell létrehoznia a RAID 0-ot. A RAID-kötetek pedig **/Hana/Data** -és **/Hana/log** -kötetekként használhatók. 
+
+> [!IMPORTANT]
+>A/Data, a/log és a/Shared három SAP HANA fájlrendszer nem helyezhető el alapértelmezett vagy gyökérszintű kötet-csoportba.  Javasoljuk, hogy kövesse a Linux-szállítók útmutatását, amely általában különálló mennyiségi csoportok létrehozása a/Data, a/log és a/Shared.
 
 **Javaslat: a RAID 0 csíkozási méretei a következők:**
 
@@ -107,7 +110,7 @@ A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben k
 
 **Javaslat: az éles környezetekben javasolt konfigurációk a következőképpen néznek ki:**
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /hana/data | /hana/log | /hana/shared | /root-kötet | /usr/sap | Hana/Backup |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /hana/data | /hana/log | /hana/shared | /root-kötet | /usr/sap | Hana/Backup |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | M32ts | 192 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
 | M32ls | 256 GiB | 500 MB/s | 3 x P20 | 2 x P20 | 1 x P20 | 1 x P6 | 1 x P6 |1 x P20 |
@@ -149,7 +152,7 @@ Az alábbi táblázat azon virtuálisgép-típusok konfigurációját mutatja be
 
 A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /Hana/Data és/Hana/log<br /> az LVM vagy a MDADM szalagos | /hana/shared | /root-kötet | /usr/sap | Hana/Backup |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data és/Hana/log<br /> az LVM vagy a MDADM szalagos | /hana/shared | /root-kötet | /usr/sap | Hana/Backup |
 | --- | --- | --- | --- | --- | --- | --- | -- |
 | DS14v2 | 112 GiB | 768 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
 | E16v3 | 128 GiB | 384 MB/s | 3 x P20 | 1 x E20 | 1 x E6 | 1 x E6 | 1 x E15 |
@@ -199,7 +202,7 @@ Ebben a konfigurációban a/Hana/Data és a/Hana/log kötetek külön maradnak. 
 
 A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /Hana/Data-kötet | /Hana/Data I/O-átviteli sebesség | /Hana/Data IOPS | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data-kötet | /Hana/Data I/O-átviteli sebesség | /Hana/Data IOPS | /Hana/log-kötet | /Hana/log I/O-átviteli sebesség | /Hana/log IOPS |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
 | E64s_v3 | 432 GiB | 1 200 MB/s | 600 GB | 700 MBps | 7500 | 512 GB | 500 MBps  | 2000 |
 | M32ts | 192 GiB | 500 MB/s | 250 GB | 400 MBps | 7500 | 256 GB | 250 MBps  | 2000 |
@@ -224,7 +227,7 @@ Ebben a konfigurációban a/Hana/Data és a/Hana/log kötetek ugyanazon a lemeze
 
 A javaslatok gyakran meghaladják az SAP minimális követelményeit a cikkben korábban leírtak szerint. A felsorolt javaslatok az SAP méretével kapcsolatos javaslatok és a különböző virtuálisgép-típusok által biztosított maximális tárolási teljesítmény közötti kompromisszumok.
 
-| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Átviteli sebesség | /Hana/Data és/log kötete | /Hana/Data és a napló I/O-átviteli sebessége | /Hana/Data és log IOPS |
+| Virtuális gép termékváltozata | RAM | Legfeljebb VM I/O<br /> Teljesítmény | /Hana/Data és/log kötete | /Hana/Data és a napló I/O-átviteli sebessége | /Hana/Data és log IOPS |
 | --- | --- | --- | --- | --- | --- |
 | E64s_v3 | 432 GiB | 1 200 MB/s | 1 200 GB | 1 200 MBps | 9 500 | 
 | M32ts | 192 GiB | 500 MB/s | 512 GB | 400 MBps | 9 500 | 
@@ -258,13 +261,13 @@ Az SAP NetWeaver és SAP HANA Azure NetApp Filesének megfontolása során vegye
 - Azure NetApp Files az [exportálási szabályzatot](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-configure-export-policy): szabályozhatja az engedélyezett ügyfeleket, a hozzáférési típust (olvasási&írás, csak olvasható stb.). 
 - Azure NetApp Files a szolgáltatás még nem ismeri a zónát. Jelenleg Azure NetApp Files funkció nincs telepítve az Azure-régió összes rendelkezésre állási zónájában. Vegye figyelembe, hogy egyes Azure-régiókban lehetséges a késés következményei.  
 - Fontos, hogy az Azure NetApp-tároló közelében üzembe helyezett virtuális gépek alacsony késéssel rendelkezzenek. 
-- A <b>SID</b>adm felhasználói azonosítójának és a virtuális gépekhez `sapsys` tartozó csoport azonosítójának meg kell egyeznie Azure NetApp Filesban található konfigurációval. 
+- A <b>SID</b>adm felhasználói azonosítójának és a virtuális gépekhez tartozó csoport azonosítójának `sapsys` meg kell egyeznie Azure NetApp Filesban található konfigurációval. 
 
 > [!IMPORTANT]
 > SAP HANA munkaterhelések esetében a kis késleltetés kritikus fontosságú. A Microsoft képviselőjével együttműködve biztosíthatja, hogy a virtuális gépek és a Azure NetApp Files kötetek központi telepítése közel legyen.  
 
 > [!IMPORTANT]
-> Ha eltérés van a <b>SID</b>adm felhasználói azonosítója és a virtuális gép és az Azure NetApp- `sapsys` konfiguráció közötti csoportazonosító között, akkor az Azure NetApp-köteteken található, a virtuális gépekhez csatlakoztatott fájlok engedélyei a következőként jelennek meg: `nobody`. Győződjön meg arról `sapsys`, hogy a megfelelő felhasználói azonosítót adta meg a <b>SID</b>adm számára, illetve a csoport azonosítóját, amikor [egy új rendszer](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) bekerül a Azure NetApp Filesba.
+> Ha eltérés van a <b>SID</b>adm felhasználói azonosítója és a `sapsys` virtuális gép és az Azure NetApp-konfiguráció közötti csoportazonosító között, akkor az Azure NetApp-köteteken található, a virtuális gépekhez csatlakoztatott fájlok engedélyei a következőként jelennek meg: `nobody` . Győződjön meg arról, hogy a megfelelő felhasználói azonosítót adta meg a <b>SID</b>adm számára, illetve a csoport azonosítóját `sapsys` , amikor [egy új rendszer](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxjSlHBUxkJBjmARn57skvdUQlJaV0ZBOE1PUkhOVk40WjZZQVJXRzI2RC4u) bekerül a Azure NetApp Filesba.
 
 ### <a name="sizing-for-hana-database-on-azure-netapp-files"></a>HANA-adatbázis méretezése Azure NetApp Files
 
@@ -283,7 +286,7 @@ A [Azure NetApp Files átviteli sebességre vonatkozó határértékek](https://
 > [!IMPORTANT]
 > Az egyetlen NFS-köteten üzembe helyezett kapacitástól függetlenül az átviteli sebesség várhatóan a virtuális gép egy fogyasztója által kihasználható 1,2 – 1,4 GB/s sávszélességű sávszélességet eredményez. Ennek a ANF-ajánlat és a kapcsolódó Linux-munkamenetek az NFS-re vonatkozó korlátai mögötti architektúrájának kell megfelelnie. A teljesítmény-és átviteli sebesség a cikk [teljesítményének teljesítményteszt-tesztelési eredményei a Azure NetApp Files esetében](https://docs.microsoft.com/azure/azure-netapp-files/performance-benchmarks-linux) egy megosztott NFS-köteten lettek elvégezve, több ügyfél virtuális géppel és több munkamenet eredményeként. Ez a forgatókönyv különbözik az SAP-ben mérhető forgatókönyvtől. Az átviteli sebességet egyetlen virtuális gépről egy NFS-kötetre mérjük. ANF-on üzemeltetve.
 
-Az adatokhoz és a naplóhoz `/hana/shared`tartozó minimális teljesítménybeli követelmények teljesítése érdekében az ajánlott méretek az alábbihoz hasonlóak:
+Az adatokhoz és a naplóhoz tartozó minimális teljesítménybeli követelmények teljesítése érdekében az `/hana/shared` ajánlott méretek az alábbihoz hasonlóak:
 
 | Kötet | Méret<br /> Premium Storagei szintű | Méret<br /> Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- |
@@ -298,7 +301,7 @@ Az adatokhoz és a naplóhoz `/hana/shared`tartozó minimális teljesítménybel
 Ezért érdemes lehet a ANF-kötetek hasonló átviteli sebességét üzembe helyezni az ultra Disk Storage-ban felsoroltak szerint. Azt is vegye figyelembe, hogy a kötetek mérete a különböző virtuálisgép-SKU-lemezeken a már megadottnál is elérhető.
 
 > [!TIP]
-> A Azure NetApp Files kötetek átméretezése dinamikusan, a kötetek szükségessége `unmount` nélkül, a virtuális gépek leállításával vagy a SAP HANA leállításával végezhető el. Ez lehetővé teszi a rugalmasságot, hogy megfeleljen az alkalmazás elvárásainak és a várhatóan nem várt átviteli igényeknek.
+> A Azure NetApp Files kötetek átméretezése dinamikusan, a kötetek szükségessége nélkül, a virtuális gépek leállításával `unmount` vagy a SAP HANA leállításával végezhető el. Ez lehetővé teszi a rugalmasságot, hogy megfeleljen az alkalmazás elvárásainak és a várhatóan nem várt átviteli igényeknek.
 
 A ANF szolgáltatásban üzemeltetett, a készenléti csomóponttal rendelkező SAP HANA kibővített konfiguráció üzembe helyezéséről szóló dokumentáció az [Azure-beli virtuális gépek készenléti csomópontján SAP HANA kibővítve, az Azure NetApp Files on SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse)használatával érhető el.
 

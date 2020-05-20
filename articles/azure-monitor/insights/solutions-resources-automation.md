@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 05/24/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ef9f27546e9db95d5a41769e1b5bc7bc0c2f851
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3b1b134afbc4a13d7888281a82609d444cee377
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77663062"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682871"
 ---
 # <a name="adding-azure-automation-resources-to-a-management-solution-preview"></a>Azure Automation erőforrások hozzáadása felügyeleti megoldáshoz (előzetes verzió)
 > [!NOTE]
@@ -33,7 +33,7 @@ Ez a cikk azt feltételezi, hogy már ismeri a következő információkat.
 - [Resource Manager-sablonok](../../azure-resource-manager/templates/template-syntax.md) készítése
 
 ## <a name="automation-account"></a>Automation-fiók
-Azure Automation összes erőforrása egy [Automation-fiókban](../../automation/automation-security-overview.md#automation-account-overview)található.  Az [log Analytics munkaterület és az Automation-fiók]( solutions.md#log-analytics-workspace-and-automation-account) című témakörben leírtak szerint az Automation-fiók nem szerepel a felügyeleti megoldásban, de a megoldás telepítése előtt léteznie kell.  Ha nem érhető el, a megoldás telepítése sikertelen lesz.
+Azure Automation összes erőforrása egy [Automation-fiókban](../../automation/automation-security-overview.md)található.  Az [log Analytics munkaterület és az Automation-fiók]( solutions.md#log-analytics-workspace-and-automation-account) című témakörben leírtak szerint az Automation-fiók nem szerepel a felügyeleti megoldásban, de a megoldás telepítése előtt léteznie kell.  Ha nem érhető el, a megoldás telepítése sikertelen lesz.
 
 Az egyes Automation-erőforrások neve tartalmazza az Automation-fiók nevét.  Ezt a megoldásban a **accountName** paraméterrel végezheti el, mint a runbook-erőforrás következő példájában.
 
@@ -68,7 +68,7 @@ A megoldás által használt összes runbookok tartalmaznia kell a megoldás fá
 
 A runbookok tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | Kötelező runbooktype értéke |Megadja a runbook típusát. <br><br> Parancsfájl – PowerShell-parancsfájl <br>PowerShell – PowerShell-munkafolyamat <br> GraphPowerShell – grafikus PowerShell-parancsfájl runbook <br> GraphPowerShellWorkflow – grafikus PowerShell-munkafolyamat runbook |
 | logProgress |Meghatározza, hogy a runbook kell-e létrehozni az [előrehaladási rekordokat](../../automation/automation-runbook-output-and-messages.md) . |
@@ -104,7 +104,7 @@ A feladatok erőforrásai a **Microsoft. Automation/automationAccounts/Jobs** t�
 
 Az Automation-feladatok tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | runbook |Egyetlen Name entitás, amely az runbook nevét adja meg. |
 | paraméterek |A runbook által igényelt paraméterek értékének entitása. |
@@ -135,7 +135,7 @@ A feladathoz tartozó erőforrás nevének olyan GUID-azonosítót kell tartalma
 
 A tanúsítványok erőforrásainak tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | Base64value tulajdonsága |A tanúsítvány alap 64-értéke. |
 | ujjlenyomat |A Tanúsítvány ujjlenyomata. |
@@ -162,7 +162,7 @@ A tanúsítványok erőforrásainak tulajdonságait az alábbi táblázat ismert
 
 A hitelesítőadat-erőforrások tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | userName (Felhasználónév) |A hitelesítő adat felhasználóneve. |
 | jelszó |A hitelesítő adat jelszava. |
@@ -190,7 +190,7 @@ A hitelesítőadat-erőforrások tulajdonságait az alábbi táblázat ismerteti
 
 Az ütemezett erőforrások tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | leírás |Az ütemterv leírását nem kötelező megadni. |
 | startTime |Meghatározza az ütemterv kezdő időpontját DateTime objektumként. Karakterláncot adhat meg, ha egy érvényes DateTime értékre konvertálható. |
@@ -233,7 +233,7 @@ A feladatütemezés erőforrásai egy runbook és egy ütemezett műveletet kapc
 
 A feladatütemezés tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | ütemterv neve |Egyetlen **Name** entitás az ütemterv nevével. |
 | runbook neve  |Egyetlen **Name** entitás a runbook nevével.  |
@@ -260,24 +260,24 @@ A feladatütemezés tulajdonságait az alábbi táblázat ismerteti.
 
 A változó erőforrások tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | leírás | A változó leírását nem kötelező megadni. |
 | isEncrypted | Megadja, hogy a változó titkosítva legyen-e. |
-| type | Ennek a tulajdonságnak jelenleg nincs hatása.  A változó adattípusa a kezdeti érték alapján lesz meghatározva. |
+| típus | Ennek a tulajdonságnak jelenleg nincs hatása.  A változó adattípusa a kezdeti érték alapján lesz meghatározva. |
 | érték | A változó értéke. |
 
 > [!NOTE]
 > A **Type** tulajdonság jelenleg nem befolyásolja a létrehozandó változót.  A változó adattípusa az érték alapján lesz meghatározva.  
 
-Ha a változóhoz a kezdeti értéket állítja be, akkor azt megfelelő adattípusként kell konfigurálni.  Az alábbi táblázat a különböző adattípusokat és azok szintaxisát tartalmazza.  Vegye figyelembe, hogy a JSON-értékeket mindig idézőjelek közé kell tenni az idézőjelek között lévő speciális karakterekkel.  Például egy karakterlánc értékét a karakterlánc körüli idézőjelek határozzák meg (az Escape-karakterrel (\\)), míg egy numerikus értéket egy idézőjelek között kell megadni.
+Ha a változóhoz a kezdeti értéket állítja be, akkor azt megfelelő adattípusként kell konfigurálni.  Az alábbi táblázat a különböző adattípusokat és azok szintaxisát tartalmazza.  Vegye figyelembe, hogy a JSON-értékeket mindig idézőjelek közé kell tenni az idézőjelek között lévő speciális karakterekkel.  Például egy karakterlánc értékét a karakterlánc körüli idézőjelek határozzák meg (az Escape-karakterrel ( \\ )), míg egy numerikus értéket egy idézőjelek között kell megadni.
 
 | Adattípus | Leírás | Példa | Feloldás |
 |:--|:--|:--|:--|
-| sztring   | Érték befoglalása idézőjelek közé.  | "\"Helló\"világ" | "Helló világ" |
+| sztring   | Érték befoglalása idézőjelek közé.  | " \" Helló világ \" " | "Helló világ" |
 | numerikus  | Numerikus érték szimpla idézőjelekkel.| "64" | 64 |
 | logikai  | **igaz** vagy **hamis** idézőjelek között.  Vegye figyelembe, hogy ennek az értéknek kisbetűsnek kell lennie. | igaz | igaz |
-| dátum/idő | Szerializált dátumérték.<br>Az ConvertTo-JSON parancsmagot a PowerShellben használhatja egy adott dátumhoz tartozó érték létrehozásához.<br>Példa: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | "\\/Date (1495656897378)\\/" | 2017-05-24 13:14:57 |
+| dátum/idő | Szerializált dátumérték.<br>Az ConvertTo-JSON parancsmagot a PowerShellben használhatja egy adott dátumhoz tartozó érték létrehozásához.<br>Példa: Get-date "5/24/2017 13:14:57" \| ConvertTo-JSON | " \\ /Date (1495656897378) \\ /" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>Modulok
 A felügyeleti megoldásnak nem kell megadnia a runbookok által használt [globális modulokat](../../automation/automation-integration-modules.md) , mivel azok mindig elérhetők lesznek az Automation-fiókban.  Meg kell adnia egy erőforrást a runbookok által használt bármely más modulhoz.
@@ -300,7 +300,7 @@ Az [integrációs modulok](../../automation/automation-integration-modules.md) r
 
 A modul erőforrásainak tulajdonságait az alábbi táblázat ismerteti.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 |:--- |:--- |
 | contentLink |Megadja a modul tartalmát. <br><br>URI – URI a modul tartalmához.  Ez egy. ps1-fájl a PowerShell és a parancsfájl runbookok, valamint egy gráf runbook exportált grafikus runbook-fájlja.  <br> a modul verziója a saját nyomon követéséhez. |
 

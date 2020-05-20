@@ -5,12 +5,12 @@ services: azure-monitor
 ms.topic: reference
 ms.date: 03/30/2020
 ms.subservice: metrics
-ms.openlocfilehash: 6be8cb1b7e74301d16a1174f5ca2b774334dac3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91fc2c4525ee622064520b0098087d54158bbe9e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422111"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680689"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
 
@@ -24,7 +24,10 @@ A Azure Monitor-háttér bonyolult jellemzői miatt nem minden metrika exportál
 
 ## <a name="change-to-behavior-for-nulls-and-zero-values"></a>Váltás a NULLák és a nulla értékek viselkedésére 
  
-A diagnosztikai beállítások használatával exportálható platform-metrikák esetében van néhány mérőszám, amelynek Azure Monitor a "0" értéket "NULL" értékre értelmezi. Ez némi zavart okozott a Real "0s" (erőforrás által kibocsátott) és az "0s" (nulls) értelmezése között. Hamarosan változik a változás, és a diagnosztikai beállításokon keresztül exportált platform-metrikák többé nem exportálják a "0s"-et, kivéve, ha az alapul szolgáló erőforrás valóban kiadta azokat. A módosítást a rendszer 2020. április 1-től ütemezte, de a COVID-19 miatti elsőbbségi eltolódások miatt késleltetve lett. 
+A diagnosztikai beállítások használatával exportálható platform-metrikák esetében van néhány mérőszám, amelynek Azure Monitor a "0" értéket "NULL" értékre értelmezi. Ez némi zavart okozott a Real "0s" (erőforrás által kibocsátott) és az "0s" (nulls) értelmezése között. Hamarosan változik a változás, és a diagnosztikai beállításokon keresztül exportált platform-metrikák többé nem exportálják a "0s"-et, kivéve, ha az alapul szolgáló erőforrás valóban kiadta azokat. 
+
+> [!CAUTION]
+> A fent ismertetett viselkedés változása a 2020. június 1-jén történik.
 
 Ne feledje:
 
@@ -41,7 +44,7 @@ A tábla a következő oszlopokat tartalmazza.
 - Exportálható diagnosztikai beállításokkal? 
 - NULL/0 eredményezte 
 - ResourceType 
-- Metrika 
+- Metric 
 - MetricDisplayName
 - Unit (Egység) 
 - AggregationType
@@ -51,7 +54,7 @@ A tábla a következő oszlopokat tartalmazza.
 > Az alábbi táblázat a lenti vízszintes görgetősávot tartalmazhatja. Ha úgy véli, hogy hiányzik az információ, ellenőrizze, hogy a görgetősáv a bal oldalon van-e.  
 
 
-| Exportálható diagnosztikai beállításokkal?  | Már NULLák is vannak kibocsátva |  ResourceType  |  Metrika  |  MetricDisplayName  |  Unit (Egység)  |  AggregationType | 
+| Exportálható diagnosztikai beállításokkal?  | Már NULLák is vannak kibocsátva |  ResourceType  |  Metric  |  MetricDisplayName  |  Unit (Egység)  |  AggregationType | 
 |---|---| ---- | ----- | ------ | ---- | ---- | 
 | Igen * * * *  | Nem |  Microsoft. AnalysisServices/kiszolgálók  |  CleanerCurrentPrice  |  Memória: tisztító – aktuális ár  |  Darabszám  |  Átlag | 
 | Igen * * * *  | Nem |  Microsoft. AnalysisServices/kiszolgálók  |  CleanerMemoryNonshrinkable  |  Memória: nem csökkenthető a tisztább memória  |  Bájt  |  Átlag | 
@@ -217,7 +220,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cachehits8  |  Gyorsítótárbeli találatok (szilánk 8)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cachehits9  |  Gyorsítótárbeli találatok (szilánk 9)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheLatency  |  Gyorsítótár késési másodpercek (előzetes verzió)  |  Darabszám  |  Átlag | 
-| **Igen**  | Nem |  Microsoft. cache/Redis  |  cachemisses  |  Gyorsítótár-lemaradás  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft. cache/Redis  |  cachemisses  |  Gyorsítótár-tévesztések  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cachemisses0  |  Gyorsítótár-kihagyás (0. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cachemisses1  |  Gyorsítótár-lemaradás (1. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cachemisses2  |  Gyorsítótár-lemaradás (2. szegmens)  |  Darabszám  |  Összesen | 
@@ -239,7 +242,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheRead7  |  Gyorsítótár olvasása (szegmens 7)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheRead8  |  Gyorsítótár olvasása (szilánk 8)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheRead9  |  Gyorsítótár olvasása (szegmens 9)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite  |  Gyorsítótár írása  |  BytesPerSecond  |  Maximum | 
+| **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite  |  Gyorsítótár-írás  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite0  |  Gyorsítótár-írás (0. szegmens)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite1  |  Gyorsítótár-írás (1. szegmens)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite2  |  Gyorsítótár-írás (2. szegmens)  |  BytesPerSecond  |  Maximum | 
@@ -250,7 +253,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite7  |  Gyorsítótár-írás (szegmens 7)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite8  |  Gyorsítótár-írás (szegmens 8)  |  BytesPerSecond  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  cacheWrite9  |  Gyorsítótár-írás (szegmens 9)  |  BytesPerSecond  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. cache/Redis  |  connectedclients  |  Csatlakozott ügyfelek  |  Darabszám  |  Maximum | 
+| **Igen**  | Nem |  Microsoft. cache/Redis  |  connectedclients  |  Csatlakoztatott ügyfelek  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  connectedclients0  |  Csatlakoztatott ügyfelek (0. szegmens)  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  connectedclients1  |  Csatlakoztatott ügyfelek (1. szegmens)  |  Darabszám  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  connectedclients2  |  Csatlakoztatott ügyfelek (2. szegmens)  |  Darabszám  |  Maximum | 
@@ -284,7 +287,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  expiredkeys7  |  Lejárt kulcsok (7. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  expiredkeys8  |  Lejárt kulcsok (szilánk 8)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  expiredkeys9  |  Lejárt kulcsok (szilánk 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. cache/Redis  |  getcommands  |  Kap  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft. cache/Redis  |  getcommands  |  Lekérések  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  getcommands0  |  Beolvasás (0. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  getcommands1  |  Beolvasás (1. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  getcommands2  |  Beolvasás (2. szegmens)  |  Darabszám  |  Összesen | 
@@ -328,7 +331,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  serverLoad7  |  Kiszolgáló terhelése (7. szegmens)  |  Százalék  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  serverLoad8  |  Kiszolgáló betöltése (szegmens 8)  |  Százalék  |  Maximum | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  serverLoad9  |  Kiszolgáló terhelése (szegmens 9)  |  Százalék  |  Maximum | 
-| **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands  |  Halmazok  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands  |  Készletek  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands0  |  Készletek (0. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands1  |  Készletek (1. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands2  |  Készletek (2. szegmens)  |  Darabszám  |  Összesen | 
@@ -339,7 +342,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands7  |  Készletek (szegmens 7)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands8  |  Készletek (szilánk 8)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  setcommands9  |  Készletek (szilánk 9)  |  Darabszám  |  Összesen | 
-| **Igen**  | Nem |  Microsoft. cache/Redis  |  totalcommandsprocessed  |  Összes művelet  |  Darabszám  |  Összesen | 
+| **Igen**  | Nem |  Microsoft. cache/Redis  |  totalcommandsprocessed  |  Műveletek összesen  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  totalcommandsprocessed0  |  Összes művelet (0. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  totalcommandsprocessed1  |  Összes művelet (1. szegmens)  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. cache/Redis  |  totalcommandsprocessed2  |  Összes művelet (2. szegmens)  |  Darabszám  |  Összesen | 
@@ -755,7 +758,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | **Igen** |  Microsoft. Devices/provisioningServices  |  AttestationAttempts  |  Igazolási kísérletek  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft. Devices/provisioningServices  |  DeviceAssignments  |  Hozzárendelt eszközök  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft. Devices/provisioningServices  |  RegistrationAttempts  |  Regisztrációs kísérletek  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Rendelkezésre álló tár  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  AvailableStorage  |  Rendelkezésre álló tárhely  |  Bájt  |  Összesen | 
 | Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  CassandraConnectionClosures  |  Cassandra-kapcsolatok bezárása  |  Darabszám  |  Összesen | 
 | Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequestCharges  |  Cassandra-kérelmek díjai  |  Darabszám  |  Összesen | 
 | Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  CassandraRequests  |  Cassandra-kérelmek  |  Darabszám  |  Darabszám | 
@@ -763,7 +766,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  DeleteVirtualNetwork  |  DeleteVirtualNetwork  |  Darabszám  |  Darabszám | 
 | Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  DocumentCount  |  Dokumentumok száma  |  Darabszám  |  Összesen | 
 | Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  DocumentQuota  |  Dokumentum kvótája  |  Bájt  |  Összesen | 
-| Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  IndexUsage  |  Indexelés használata  |  Bájt  |  Összesen | 
+| Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  IndexUsage  |  Indexhasználat  |  Bájt  |  Összesen | 
 | Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  MetadataRequests  |  Metaadat-kérelmek  |  Darabszám  |  Darabszám | 
 | **Igen**  | **Igen** |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequestCharge  |  Mongo-kérelem díja  |  Darabszám  |  Összesen | 
 | **Igen**  | **Igen** |  Microsoft. DocumentDB/databaseAccounts  |  MongoRequests  |  Mongo kérelmek  |  Darabszám  |  Darabszám | 
@@ -777,8 +780,8 @@ A tábla a következő oszlopokat tartalmazza.
 | Nem  | Nem |  Microsoft. DocumentDB/databaseAccounts  |  ServiceAvailability  |  Szolgáltatás rendelkezésre állása  |  Százalék  |  Átlag | 
 | **Igen**  | **Igen** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequests  |  Összes kérelem  |  Darabszám  |  Darabszám | 
 | **Igen**  | **Igen** |  Microsoft. DocumentDB/databaseAccounts  |  TotalRequestUnits  |  Kérelmek összes egysége  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  FailureCount  |  Hibásak száma  |  Darabszám  |  Darabszám | 
-| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  SuccessCount  |  Sikeres műveletek száma  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  FailureCount  |  Hibák száma  |  Darabszám  |  Darabszám | 
+| Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  SuccessCount  |  Sikeresek száma  |  Darabszám  |  Darabszám | 
 | Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  SuccessLatency  |  Sikeres késés  |  Ezredmásodpercben  |  Átlag | 
 | Nem  | Nem |  Microsoft. EnterpriseKnowledgeGraph/szolgáltatások  |  TransactionCount  |  Tranzakciók száma  |  Darabszám  |  Darabszám | 
 | **Igen**  | **Igen** |  Microsoft. EventGrid/tartományok  |  DeadLetteredCount  |  Kézbesítetlen levelek eseményei  |  Darabszám  |  Összesen | 
@@ -1069,7 +1072,7 @@ A tábla a következő oszlopokat tartalmazza.
 | **Igen**  | Nem |  Microsoft. Network/applicationGateways  |  HealthyHostCount  |  Kifogástalan állapotú gazdagépek száma  |  Darabszám  |  Átlag | 
 | **Igen**  | Nem |  Microsoft. Network/applicationGateways  |  MatchedCount  |  Webalkalmazási tűzfal teljes szabályának eloszlása  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. Network/applicationGateways  |  ResponseStatus  |  Válasz állapota  |  Darabszám  |  Összesen | 
-| Nem  | Nem |  Microsoft. Network/applicationGateways  |  Átviteli sebesség  |  Átviteli sebesség  |  BytesPerSecond  |  Átlag | 
+| Nem  | Nem |  Microsoft. Network/applicationGateways  |  Teljesítmény  |  Teljesítmény  |  BytesPerSecond  |  Átlag | 
 | **Igen**  | Nem |  Microsoft. Network/applicationGateways  |  TlsProtocol  |  Ügyfél TLS protokoll  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. Network/applicationGateways  |  TotalRequests  |  Összes kérelem  |  Darabszám  |  Összesen | 
 | **Igen**  | Nem |  Microsoft. Network/applicationGateways  |  UnhealthyHostCount  |  Nem kifogástalan állapotú gazdagépek száma  |  Darabszám  |  Átlag | 

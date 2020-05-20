@@ -2,17 +2,17 @@
 title: Jó példa hosszúságú kimondott szöveg – LUIS
 description: A beszédelem az a felhasználói bemenet, amelyet az alkalmazásnak értelmeznie kell. Gyűjtse be azokat a kifejezéseket, amelyeket a felhasználók meg fognak adni. Olyan hosszúságú kimondott szöveg adjon meg, amelyek ugyanazt a dolgot jelentik, de a szó hosszában és a Word elhelyezésekor máshogy vannak kiépítve.
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 184038ff2758fbe7c5834682c82c082ef6661234
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: 6a17416183762893432841c27124ec6a0f8a289d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592865"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685271"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>Ismerje meg, hogy a LUIS-alkalmazás milyen jó hosszúságú kimondott szöveg
 
-A **hosszúságú kimondott szöveg** olyan adatokat kapnak a felhasználótól, akiket az alkalmazásnak kell értelmezni. A LUIS betanításához, hogy kinyerje a szándékait és az entitásokat, fontos, hogy az egyes szándékok különböző példáit hosszúságú kimondott szöveg. Az aktív tanulás, illetve az új hosszúságú kimondott szöveg való folyamatos betanítás folyamata elengedhetetlen a géppel megszerzett intelligenciához, amelyet a LUIS biztosít.
+A **hosszúságú kimondott szöveg** olyan adatokat kapnak a felhasználótól, akiket az alkalmazásnak kell értelmezni. A LUIS betanításához, hogy kinyerje a szándékait és az entitásokat, fontos, hogy az egyes szándékok különböző példáit hosszúságú kimondott szöveg. Az aktív tanulás, illetve az új hosszúságú kimondott szöveg való folyamatos betanítás folyamata elengedhetetlen a gépi tanulási intelligenciához, amelyet a LUIS biztosít.
 
 Gyűjtse össze azokat a hosszúságú kimondott szöveg, amelyeket a felhasználók meg fognak adni. Vegyen fel hosszúságú kimondott szöveg, ami ugyanazt jelenti, de különböző módokon vannak kiépítve:
 
@@ -84,7 +84,7 @@ A verzió beállításait a LUIS portálon, a **kezelés** szakaszban, az **Alka
 
 ### <a name="word-forms"></a>Word-űrlapok
 
-A **Word-űrlapok** normalizálása figyelmen kívül hagyja a gyökéren túlmutató szavak különbségeit. Például a szavak, a `run` `running` és a `runs` változás a művelet idő függvényében.
+A **Word-űrlapok** normalizálása figyelmen kívül hagyja a gyökéren túlmutató szavak különbségeit.
 
 <a name="utterance-normalization-for-diacritics-and-punctuation"></a>
 

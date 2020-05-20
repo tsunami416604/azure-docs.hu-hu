@@ -4,19 +4,19 @@ description: Entitásokat hozhat létre a Language Understanding (LUIS) alkalmaz
 ms.topic: reference
 ms.date: 04/14/2020
 ms.author: diberry
-ms.openlocfilehash: 1665f1ef8a868b011e9e4de8562aeda9edef5ce2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a0139cf5ef424288c41c436fb63313494404f841
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585572"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684546"
 ---
 # <a name="pattern-syntax"></a>Minta szintaxisa
 
 A minta szintaxisa egy kiírás sablonja. A sablonnak tartalmaznia kell azokat a szavakat és entitásokat, amelyeket szeretne egyeztetni, valamint a figyelmen kívül hagyni kívánt szavakat és [írásjeleket](luis-reference-application-settings.md#punctuation-normalization) . **Nem** reguláris kifejezés.
 
 > [!CAUTION]
-> A minták csak a gépi megtanult entitások szüleit, nem alentitásokat tartalmaznak.
+> A minták csak a gépi tanulási entitások szülei, nem alentitások.
 
 A mintákban lévő entitásokat kapcsos zárójelek veszik körül `{}` . A minták tartalmazhatnak entitásokat és szerepkörökkel rendelkező entitásokat. [Minta. a bármely](luis-concept-entity-types.md#patternany-entity) entitás csak mintázatokban használható.
 

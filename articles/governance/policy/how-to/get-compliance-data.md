@@ -1,14 +1,14 @@
 ---
 title: Szabályzatok megfelelőségi állapotának beolvasása
 description: Azure Policy értékelések és hatások határozzák meg a megfelelőséget. Ismerje meg, hogyan kérheti le Azure-erőforrásai megfelelőségi adatait.
-ms.date: 02/01/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d4d9c530a7f9c4683f522a08a30e23437d1774cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c75f078cb80d5e2dbc00a69817d223d4818d55b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194006"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684521"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Azure-erőforrások megfelelőségi információk beolvasása
 
@@ -26,7 +26,7 @@ Mielőtt megvizsgáljuk a megfelelőségi jelentés módszereit, nézzük meg, h
 
 ## <a name="evaluation-triggers"></a>Próbaverziós eseményindítók
 
-A befejezett kiértékelési ciklusok eredményei az erőforrás- `Microsoft.PolicyInsights` szolgáltatón keresztül `PolicyStates` és `PolicyEvents` a műveletekben érhetők el. Az Azure Policy-információk REST API működésével kapcsolatos további információkért tekintse meg az [Azure Policy](/rest/api/policy-insights/)elemzése című témakört.
+A befejezett kiértékelési ciklusok eredményei az erőforrás- `Microsoft.PolicyInsights` szolgáltatón keresztül `PolicyStates` és a `PolicyEvents` műveletekben érhetők el. Az Azure Policy-információk REST API működésével kapcsolatos további információkért tekintse meg az [Azure Policy](/rest/api/policy-insights/)elemzése című témakört.
 
 A hozzárendelt szabályzatok és kezdeményezések értékelése a különböző események eredményeképpen történik:
 
@@ -36,7 +36,7 @@ A hozzárendelt szabályzatok és kezdeményezések értékelése a különböz�
 
 - Egy erőforrást egy, a Resource Managerrel, REST-vel, Azure CLI-vel vagy Azure PowerShell-vel való hozzárendeléssel rendelkező hatókörre telepítenek. Ebben az esetben az egyes erőforrásokra vonatkozó hatás esemény (Hozzáfűzés, naplózás, megtagadás, üzembe helyezés) és a megfelelő állapotadatok elérhetővé válnak a Portálon és az SDK-k körülbelül 15 perccel később. Ez az esemény nem okoz más erőforrások kiértékelését.
 
-- Szabványos megfelelőség kiértékelési ciklusa. 24 óránként egyszer automatikusan újraértékeli a hozzárendeléseket. Számos erőforrás nagyméretű házirendje vagy kezdeményezése hosszabb időt vehet igénybe, így a kiértékelési ciklus befejezése után nincs előre definiált várakozás. A befejezést követően a frissített megfelelőségi eredmények elérhetők a Portálon és az SDK-ban.
+- Szabványos megfelelőség kiértékelési ciklusa. 24 óránként egyszer automatikusan újraértékeli a hozzárendeléseket. Számos erőforrás nagyméretű házirendje vagy kezdeményezése időt vehet igénybe, így a próbaverzió befejezését követően nincs előre definiált várakozási idő. A befejezést követően a frissített megfelelőségi eredmények elérhetők a Portálon és az SDK-ban.
 
 - A [vendég-konfiguráció](../concepts/guest-configuration.md) erőforrás-szolgáltatóját egy felügyelt erőforrás megfelelőségi részleteivel frissíti.
 
@@ -44,7 +44,41 @@ A hozzárendelt szabályzatok és kezdeményezések értékelése a különböz�
 
 ### <a name="on-demand-evaluation-scan"></a>Igény szerinti értékelési vizsgálat
 
-Egy előfizetéshez vagy egy erőforráscsoporthoz tartozó értékelési vizsgálat elindítható a REST API hívásával. Ez a vizsgálat egy aszinkron folyamat. Így a vizsgálat elindításához szükséges REST-végpont nem várja meg, amíg a vizsgálat nem fejeződik be a válaszadáshoz. Ehelyett egy URI-t biztosít a kért értékelés állapotának lekérdezéséhez.
+Egy előfizetéshez vagy egy erőforráscsoporthoz tartozó próbaverziós vizsgálat elindítható Azure PowerShell vagy a REST API hívásával. Ez a vizsgálat egy aszinkron folyamat.
+
+#### <a name="on-demand-evaluation-scan---azure-powershell"></a>Igény szerinti értékelés vizsgálata – Azure PowerShell
+
+A megfelelőségi vizsgálat a [Start-AzPolicyComplianceScan](/powershell/module/az.policyinsights/start-azpolicycompliancescan) parancsmaggal indul el.
+
+Alapértelmezés szerint `Start-AzPolicyComplianceScan` a elindítja az aktuális előfizetésben lévő összes erőforrás értékelését. Egy adott erőforráscsoport értékelésének elindításához használja a **ResourceGroupName** paramétert. Az alábbi példa a _MyRG_ erőforráscsoport aktuális előfizetésében elindítja a megfelelőségi vizsgálatot:
+
+```azurepowershell-interactive
+Start-AzPolicyComplianceScan -ResourceGroupName MyRG
+```
+
+Az eredmények kimenetének megadását, illetve a háttérben futtatott [feladatok](/powershell/module/microsoft.powershell.core/about/about_jobs)futtatása előtt PowerShell-várakozást is kérhet az aszinkron hívás befejezéséhez. Ha a háttérben a megfelelőségi vizsgálat futtatásához PowerShell-feladatot szeretne használni, használja az **AsJob** paramétert, és állítsa az értéket egy objektumra, például `$job` a következő példában:
+
+```azurepowershell-interactive
+$job = Start-AzPolicyComplianceScan -AsJob
+```
+
+A feladatok állapotát az objektum ellenőrzésével ellenőrizheti `$job` . A feladattípus típusa a következő: `Microsoft.Azure.Commands.Common.AzureLongRunningJob` . `Get-Member`Az objektum használatával `$job` megtekintheti a rendelkezésre álló tulajdonságokat és metódusokat.
+
+Amíg a megfelelőségi vizsgálat fut, az `$job` objektum kimenete az alábbi eredményeket ellenőrzi:
+
+```azurepowershell-interactive
+$job
+
+Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
+--     ----            -------------   -----         -----------     --------             -------
+2      Long Running O… AzureLongRunni… Running       True            localhost            Start-AzPolicyCompliance…
+```
+
+Ha a megfelelőségi vizsgálat befejeződik, az **állapot** tulajdonság a _befejezett_értékre változik.
+
+#### <a name="on-demand-evaluation-scan---rest"></a>Igény szerinti értékelés vizsgálata – REST
+
+Aszinkron folyamatként a vizsgálat elindításához szükséges REST-végpont nem várja meg, amíg a vizsgálat nem fejeződik be a válaszadáshoz. Ehelyett egy URI-t biztosít a kért értékelés állapotának lekérdezéséhez.
 
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
@@ -56,22 +90,22 @@ A vizsgálat támogatja az előfizetésben vagy egy erőforráscsoporthoz lévő
 - Előfizetés
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 - Erőforráscsoport
 
   ```http
-  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2018-07-01-preview
+  POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{YourRG}/providers/Microsoft.PolicyInsights/policyStates/latest/triggerEvaluation?api-version=2019-10-01
   ```
 
 A hívás **202 elfogadott** állapotot ad vissza. A válasz fejlécében szereplő **hely** tulajdonsága a következő formátumú:
 
 ```http
-https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
+https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2019-10-01
 ```
 
-`{ResourceContainerGUID}`statikusan jön létre a kért hatókörhöz. Ha egy hatókör már igény szerinti vizsgálatot futtat, az új vizsgálat nem indul el. Ehelyett az új kérelem ugyanazt `{ResourceContainerGUID}` a **Location** URI-t kapja meg az állapothoz. Egy REST API **Get** parancs a **Location** URI-hoz egy **202** -as értéket ad vissza, miközben a kiértékelés folyamatban van. Az értékelési vizsgálat befejezését követően **200 OK** állapotot ad vissza. A befejezett vizsgálat törzse egy JSON-válasz a (z) állapottal:
+`{ResourceContainerGUID}`statikusan jön létre a kért hatókörhöz. Ha egy hatókör már igény szerinti vizsgálatot futtat, az új vizsgálat nem indul el. Ehelyett az új kérelem ugyanazt a `{ResourceContainerGUID}` **Location** URI-t kapja meg az állapothoz. Egy REST API **Get** parancs a **Location** URI-hoz egy **202** -as értéket ad vissza, miközben a kiértékelés folyamatban van. Az értékelési vizsgálat befejezését követően **200 OK** állapotot ad vissza. A befejezett vizsgálat törzse egy JSON-válasz a (z) állapottal:
 
 ```json
 {
@@ -269,7 +303,7 @@ A házirend-események lekérdezésével kapcsolatos további információkért 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
 A Azure Policy Azure PowerShell modulja a PowerShell-galéria az az [. PolicyInsights](https://www.powershellgallery.com/packages/Az.PolicyInsights)néven érhető el.
-A PowerShellGet használatával telepítheti a modult a `Install-Module -Name Az.PolicyInsights` használatával (ellenőrizze, hogy a legújabb [Azure PowerShell](/powershell/azure/install-az-ps) van-e telepítve):
+A PowerShellGet használatával telepítheti a modult a használatával (ellenőrizze, `Install-Module -Name Az.PolicyInsights` hogy a legújabb [Azure PowerShell](/powershell/azure/install-az-ps) van-e telepítve):
 
 ```azurepowershell-interactive
 # Install from PowerShell Gallery via PowerShellGet
@@ -383,7 +417,7 @@ TenantId                   : {tenantId}
 PrincipalOid               : {principalOid}
 ```
 
-A **PrincipalOid** mező használatával egy adott felhasználó beolvasható a Azure PowerShell parancsmaggal `Get-AzADUser`. Cserélje le a **{principalOid}** helyére az előző példából kapott választ.
+A **PrincipalOid** mező használatával egy adott felhasználó beolvasható a Azure PowerShell parancsmaggal `Get-AzADUser` . Cserélje le a **{principalOid}** helyére az előző példából kapott választ.
 
 ```azurepowershell-interactive
 PS> (Get-AzADUser -ObjectId {principalOid}).DisplayName
@@ -392,7 +426,7 @@ Trent Baker
 
 ## <a name="azure-monitor-logs"></a>Azure Monitor-naplók
 
-Ha az előfizetéshez kötött `AzureActivity` [Activity log Analytics megoldásból](../../../azure-monitor/platform/activity-log-collect.md) származó `AzureActivity` [log Analytics munkaterülettel](../../../log-analytics/log-analytics-overview.md) rendelkezik, a kiértékelési ciklusból az egyszerű Kusto lekérdezések és a tábla használatával is megtekintheti a nem megfelelőségi eredményeket. Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
+Ha [Log Analytics workspace](../../../log-analytics/log-analytics-overview.md) `AzureActivity` az előfizetéshez kötött [Activity Log Analytics megoldásból](../../../azure-monitor/platform/activity-log-collect.md) származó log Analytics munkaterülettel rendelkezik, a kiértékelési ciklusból az egyszerű Kusto lekérdezések és a tábla használatával is megtekintheti a nem megfelelőségi eredményeket `AzureActivity` . Azure Monitor naplók részleteivel a riasztások úgy konfigurálhatók, hogy megfigyeljék a nem megfelelőséget.
 
 :::image type="content" source="../media/getting-compliance-data/compliance-loganalytics.png" alt-text="Megfelelőség Azure Policy Azure Monitor naplók használatával" border="false":::
 

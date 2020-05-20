@@ -1,14 +1,14 @@
 ---
 title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
-ms.date: 04/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 395c70309ceca6e38f9f62522d80fb588821b886
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182582"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684239"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -115,11 +115,11 @@ Előfordulhat, hogy nem fér hozzá közvetlenül a virtuális géphez, de jelen
 
 A szabályzat megfelelőségi részleteinek megtekintéséhez kövesse a fenti szakasz lépéseit.
 
-A **megfelelőség részletei** ablaktáblán kattintson az **utolsó kiértékelt erőforrás**hivatkozásra.
+A megfelelőség részletei ablaktáblán kattintson az **utolsó kiértékelt erőforrás**hivatkozásra.
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-auditifnotexists-compliance.png" alt-text="AuditIfNotExists-definíció részleteinek megtekintése" border="false":::
 
-A **vendég-hozzárendelés** lap megjeleníti az összes elérhető megfelelőségi részletet. A nézet minden sora a gépen belül végrehajtott értékelést jelképezi. Az **OK** oszlopban egy olyan kifejezés látható, amely leírja, hogy a vendég-hozzárendelés miért _nem megfelelő_ . Ha például a jelszóházirend naplózása, az **OK** oszlopban az egyes beállítások aktuális értéke is megjelenik.
+A **vendég-hozzárendelés** lap megjeleníti az összes elérhető megfelelőségi részletet. A nézet minden sora a gépen belül végrehajtott értékelést jelképezi. Az **OK** oszlopban megjelenik egy kifejezés, amely leírja, hogy a vendég-hozzárendelés miért _nem megfelelő_. Ha például a jelszóházirend naplózása, az **OK** oszlopban az egyes beállítások aktuális értéke is megjelenik.
 
 :::image type="content" source="../media/determine-non-compliance/guestconfig-compliance-details.png" alt-text="Megfelelőségi részletek megtekintése" border="false":::
 

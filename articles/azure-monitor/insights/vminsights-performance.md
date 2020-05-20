@@ -5,17 +5,23 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/15/2019
-ms.openlocfilehash: a50ba39777e6a9d3d609e584c0c7d872f2a65f35
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/31/2020
+ms.openlocfilehash: 1ea6d09609d1b7b3f7ba7297a040447d1fc24756
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283718"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684396"
 ---
 # <a name="how-to-chart-performance-with-azure-monitor-for-vms"></a>A teljesítmény diagram Azure Monitor for VMs
 
 Azure Monitor for VMs olyan teljesítménymutatókat tartalmaz, amelyek több fő teljesítménymutatót (KPI-ket) céloznak meg, amelyek segítségével meghatározhatja, hogy a virtuális gép milyen jól van végrehajtva. A diagramok egy adott időszakon belül jelenítik meg az erőforrás-használatot, így azonosíthatja a szűk keresztmetszeteket, a rendellenességeket, vagy átválthat az egyes gépekre mutató perspektívára, hogy megtekintse az erőforrás-kihasználtságot a kiválasztott metrika alapján. Noha a teljesítmény kezelése során számos szempontot figyelembe kell venni, Azure Monitor for VMs figyeli a processzorral, a memóriával, a hálózati adapterrel és a lemez kihasználtságával kapcsolatos fő operációsrendszer-teljesítménymutatókat. A teljesítmény kiegészíti az állapotfigyelő funkciót, és segít a lehetséges rendszerösszetevő-meghibásodást jelző problémák megoldásában, a hatékonyság növelését és optimalizálását, illetve a kapacitás tervezésének támogatását.  
+
+## <a name="limitations"></a>Korlátozások
+A következő a teljesítményadatok korlátozásai a Azure Monitor for VMs.
+
+- A Red Hat Linux (RHEL) 6-os verzióját futtató virtuális gépek számára nem érhető **el a rendelkezésre álló memória** . Ezt a metrikát a 3,14-es kernel- [verzióban](http://www.man7.org/linux/man-pages/man1/free.1.html)bevezetett **MemAvailable** számítjuk ki.
+- A metrikák csak a Linux rendszerű virtuális gépeken lévő adatlemezek esetében érhetők el, az EXT fájlrendszert (EXT2, EXT3, EXT4) használva.
 
 ## <a name="multi-vm-perspective-from-azure-monitor"></a>Több virtuális gépre kiterjedő perspektíva Azure Monitor
 

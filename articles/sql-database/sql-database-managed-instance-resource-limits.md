@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b2871ec87e4d7f337c26b3ff3de83c1c3c88aea2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49a9355d0e5653ac453493a1808ab95136410d19
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80365387"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680474"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>A felügyelt példányok erőforrás-korlátainak áttekintése Azure SQL Database
 
@@ -63,7 +63,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 > [!Important]
 > A üzletileg kritikus Service-réteg további beépített példányt (másodlagos replikát) tartalmaz, amelyek csak olvasható számítási feladatokhoz használhatók. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikus/jelentéskészítési lekérdezéseket, akkor a rendszer kétszer virtuális mag és memóriát is biztosít ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodpercen belül elmarad az elsődleges példány mögött, ezért olyan jelentéskészítési/elemzési számítási feladatok kiszervezésére lett kialakítva, amelyek nem igényelnek pontos aktuális állapotot. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
 
-| **Szolgáltatás** | **általános célú** | **üzletileg kritikus** |
+| **Funkció** | **általános célú** | **üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*A csak olvasható lekérdezések esetében azonos számú virtuális mag van hozzárendelve. |
 | Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
@@ -81,6 +81,7 @@ A felügyelt példány két szolgáltatási szintet tartalmaz: [általános cél
 | Memóriában tárolt OLTP | Nem támogatott | Elérhető, [a méret a virtuális mag számától függ](#in-memory-oltp-available-space) . |
 | Munkamenetek maximális száma | 30000 | 30000 |
 | [Írásvédett replikák](sql-database-read-scale-out.md) | 0 | 1 (az ár tartalmazza) |
+| Számítási elkülönítés | Gen5<br/>– 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|Gen5<br/>– 60, 64, 80 virtuális mag esetén támogatott<br/>-más méretek esetében nem támogatott<br/><br/>Az Gen4 nem támogatott az elavultság miatt|
 
 > [!NOTE]
 > - A **jelenleg elérhető példányok tárolási mérete** a fenntartott példányok méretének és a felhasznált tárolóhelynek a különbsége.

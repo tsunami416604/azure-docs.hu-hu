@@ -2,13 +2,13 @@
 title: Entity types – LUIS
 description: Egy entitás kinyeri az adatait a felhasználótól az előrejelzési futtatókörnyezetben. Egy _opcionális_, másodlagos cél a szándék vagy más entitások előrejelzésének növelése az entitás szolgáltatásként való használatával.
 ms.topic: conceptual
-ms.date: 04/30/2020
-ms.openlocfilehash: 9d8afd5a660b3af5556256835486e984d7d657bc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585640"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682172"
 ---
 # <a name="extract-data-with-entities"></a>Adatok kinyerése entitásokkal
 
@@ -16,11 +16,11 @@ Egy entitás kinyeri az adatait a felhasználótól az előrejelzési futtatók�
 
 Többféle típusú entitás létezik:
 
-* [Gépi tanulással létrejött entitás](reference-entity-machine-learned-entity.md)
-* Nem gépi használatú – a szükséges [szolgáltatásként használt funkció](luis-concept-feature.md) – a szöveges egyezések, a minták egyezései vagy az előre elkészített entitások észlelése
+* [gépi tanulási entitás](reference-entity-machine-learned-entity.md) – ez az elsődleges entitás. Más entitások használata előtt meg kell terveznie a sémát az entitás típusával.
+* A nem gépi tanulás kötelező [funkcióként](luis-concept-feature.md) használható – a szöveges egyezések, a minták egyezései vagy az előre elkészített entitások észlelése
 * [Minta. any](#patternany-entity) – a szabad formátumú szöveg kibontása, például a könyv címeinek [mintából](reference-entity-pattern-any.md) való kinyerése
 
-A géppel megtanult entitások az kinyerési lehetőségek széles skáláját biztosítják. A nem gépi megtanult entitások szöveg-egyeztetés szerint működnek, és a gép által megtanult entitás vagy szándék [szükséges funkciójaként](#design-entities-for-decomposition) használatosak.
+a gépi tanulási entitások az kinyerési lehetőségek széles skáláját biztosítják. A nem gépi tanulást használó entitások szöveges egyeztetés szerint működnek, és a gépi tanulási entitások vagy szándékok [kötelező funkciójaként](#design-entities-for-decomposition) használatosak.
 
 ## <a name="entities-represent-data"></a>Az entitások az adathalmazokat jelölik
 
@@ -51,18 +51,26 @@ Vegye figyelembe a következő négy hosszúságú kimondott szöveg:
 |--|--|--|--|
 |Súgó|segítség|-|Nincs kibontva.|
 |Küldés valami|sendSomething|-|Nincs kibontva. A modell nem rendelkezik a kinyeréséhez szükséges funkcióval `something` , és nincs megadva címzett.|
-|Bob a present küldése|sendSomething|`Bob`, `present`|A modell kibontása az `Bob` előre elkészített entitás kötelező funkciójának hozzáadásával `personName` . A rendszer egy géppel megtanult entitást használ a kinyeréséhez `present` .|
-|Bob a csokoládét tartalmazó doboz elküldése|sendSomething|`Bob`, `box of chocolates`|A két fontos adatot `Bob` és a-t a `box of chocolates` géppel megtanult entitások kinyerték.|
+|Bob a present küldése|sendSomething|`Bob`, `present`|A modell kibontása az `Bob` előre elkészített entitás kötelező funkciójának hozzáadásával `personName` . A rendszer gépi tanulási entitást használ a kinyeréséhez `present` .|
+|Bob a csokoládét tartalmazó doboz elküldése|sendSomething|`Bob`, `box of chocolates`|A két fontos adatot, `Bob` a pedig a `box of chocolates` gépi tanulási entitások kinyerték.|
 
 ## <a name="design-entities-for-decomposition"></a>Entitások megtervezése a dekompozícióhoz
 
-A géppel megtanult entitások lehetővé teszik az alkalmazás sémájának megtervezését a dekompozícióhoz, a nagyméretű koncepciók alentitásokra való feltörését.
+a gépi tanulással rendelkező entitások lehetővé teszik az alkalmazás sémájának megtervezését a dekompozícióhoz, és a nagyméretű koncepciók alentitásokra való feltörését.
 
 A kiépítésének megtervezése lehetővé teszi a LUIS számára, hogy a nagymértékű entitás-feloldást adja vissza az ügyfélalkalmazás számára. Ez lehetővé teszi, hogy az ügyfélalkalmazás az üzleti szabályokra koncentráljon, és az adatfelbontást a LUIS-re bízza.
 
-A gép által megtanult entitás-eseményindítók a példa hosszúságú kimondott szöveg keresztül megszerzett kontextus alapján.
+A gépi tanulási entitás eseményindítói a példa hosszúságú kimondott szöveg keresztül megszerzett kontextus alapján.
 
-A [**géppel megtanult entitások**](tutorial-machine-learned-entity.md) a legfelső szintű kivonók. Az alentitások a géppel megtanult entitások alárendelt entitásai.
+a [**gépi tanulási entitások**](tutorial-machine-learned-entity.md) a legfelső szintű kivonók. Az alentitások a gépi tanulási entitások alárendelt entitásai.
+
+## <a name="effective-machine-learned-entities"></a>Hatékony gépi megtanult entitások
+
+A gépi megtanult entitások hatékony felépítése:
+
+* A címkézésnek konzisztensnek kell lennie a leképezések között. Ebbe beletartozik még a hosszúságú kimondott szöveg is, **amelyet az adott** entitást nem tartalmazó szándékban adhat meg. Ellenkező esetben a modell nem fogja tudni hatékonyan meghatározni a sorozatot.
+* Ha van olyan gép, amely alentitásokkal rendelkezik, győződjön meg arról, hogy az entitás és az alentitások különböző megrendelései és változatai jelennek meg a címkézett hosszúságú kimondott szöveg. A címkével ellátott példa hosszúságú kimondott szöveg tartalmaznia kell az összes érvényes űrlapot, és tartalmaznia kell azokat az entitásokat, amelyek megjelentek és hiányoznak, és a megjelölésen belül is megtalálhatók.
+* Kerülje az entitások egy nagyon rögzített készlethez való túlillesztését. Ha a modell nem jól általánosít, akkor a rendszer akkor is **megtörténik,** ha a gépi tanulási modellek gyakori problémát jelentenek. Ez azt jelenti, hogy az alkalmazás nem fog megfelelően működni az új adatmennyiségen. Viszont a címkével ellátott példa hosszúságú kimondott szöveg eltérőnek kell lennie, így az alkalmazás képes általánosítani az Ön által megadott példákon túl. A modell megváltozásakor a különböző alentitásoknak is változónak kell lennie, hogy csak a bemutatott példák helyett inkább a koncepciót gondolják.
 
 <a name="composite-entity"></a>
 <a name="list-entity"></a>
@@ -73,7 +81,7 @@ A [**géppel megtanult entitások**](tutorial-machine-learned-entity.md) a legfe
 
 ## <a name="types-of-entities"></a>Az entitások típusai
 
-A szülő alentitásának egy géppel megtanult entitásnak kell lennie. Az alentitások nem gépi megtanult entitást használhatnak [szolgáltatásként](luis-concept-feature.md).
+A szülő alentitásának gépi tanulási entitásnak kell lennie. Az alentitások nem gépi tanulást használó entitásokat is használhatnak [szolgáltatásként](luis-concept-feature.md).
 
 Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítésük alapján.
 
@@ -85,6 +93,15 @@ Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítés
 |[**Prebuilt**](luis-reference-prebuilt-entities.md)|Már betanítva bizonyos típusú adatok, például URL-cím vagy e-mailek kinyerésére. Ezen előre összeépített entitások némelyike a nyílt forráskódú [felismerők – Text](https://github.com/Microsoft/Recognizers-Text) projektben van meghatározva. Ha az adott kulturális környezet vagy entitás jelenleg nem támogatott, akkor hozzájárul a projekthez.|
 |[**Reguláris kifejezés**](reference-entity-regular-expression.md)|Reguláris kifejezést használ a **pontos szöveges egyeztetéshez**.|
 
+
+## <a name="extraction-versus-resolution"></a>Extrakció és feloldás
+
+Az entitások adatok kinyerése, amikor az adatok megjelennek a teljes tartalomban. Az entitások nem módosítják vagy oldják fel az adatfeldolgozást. Az entitás nem biztosít semmilyen felbontást, ha a szöveg érvényes érték az entitás számára, vagy nem.
+
+Lehetőség van a kivonás feloldására is, de tisztában kell lennie azzal, hogy az alkalmazás képes a variációk és a hibák elleni védekezésre.
+
+Az entitások listázása és a reguláris kifejezés (szöveges megfeleltetésű) entitások [kötelező funkciókként](luis-concept-feature.md#required-features) használhatók egy alentitáshoz, és szűrőként viselkednek a kinyerésben. Ezt körültekintően kell használni, mivel nem akadályozza meg, hogy az alkalmazás előre megjósolja a képességét.
+
 ## <a name="extracting-contextually-related-data"></a>Kontextussal kapcsolatos adatok kinyerése
 
 A Kimondás egy olyan entitás két vagy több előfordulását is tartalmazhatja, amelyben az információ jelentése a teljes kontextuson belüli kontextuson alapul. Ilyen például a két földrajzi hellyel, a forrással és a rendeltetéssel rendelkező repülés foglalásának kimondása.
@@ -93,7 +110,7 @@ A Kimondás egy olyan entitás két vagy több előfordulását is tartalmazhatj
 
 A két helyet úgy kell kinyerni, hogy az ügyfél-alkalmazás tudja az egyes helyek típusát, hogy elvégezze a jegy megvásárlását.
 
-A forrás és a cél kinyeréséhez hozzon létre két alentitást a Ticket Order Machine által megismert entitás részeként. Mindegyik alentitáshoz hozzon létre egy szükséges szolgáltatást, amely geographyV2 használ.
+A forrás és a cél kinyeréséhez hozzon létre két alentitást a Ticket Order Machine-learning entitás részeként. Mindegyik alentitáshoz hozzon létre egy szükséges szolgáltatást, amely geographyV2 használ.
 
 <a name="using-component-constraints-to-help-define-entity"></a>
 <a name="using-subentity-constraints-to-help-define-entity"></a>
@@ -124,5 +141,5 @@ Ismerje meg a jó [hosszúságú kimondott szöveg](luis-concept-utterance.md)ka
 
 Az entitások LUIS-alkalmazáshoz való hozzáadásával kapcsolatos további tudnivalókért tekintse meg az [entitások hozzáadása](luis-how-to-add-entities.md) című témakört.
 
-Lásd [: oktatóanyag: strukturált adatok kinyerése a felhasználóktól a Language Understanding (Luis) géppel megismert entitások](tutorial-machine-learned-entity.md) alapján, amelyből megtudhatja, hogyan kinyerheti a strukturált adatokból való kinyerését a géppel megtanult entitás használatával.
+Tekintse meg az [oktatóanyag: strukturált adatok kinyerése a felhasználóktól a Language Understanding (Luis) gépi tanulási entitásokkal](tutorial-machine-learned-entity.md) című témakört, amelyből megtudhatja, hogyan lehet kinyerni a strukturált adatok kinyerését a gépi tanulási entitás használatával.
 

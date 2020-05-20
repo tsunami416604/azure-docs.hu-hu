@@ -4,14 +4,14 @@ description: Azure Cosmos DB Gremlin API létrehozásához és konfigurálásáh
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/30/2020
+ms.date: 05/19/2020
 ms.author: mjbrown
-ms.openlocfilehash: defeec2317f47e9d79245cbde0ef81c8a3543bfb
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0f807213d68e2731e784198f8ce968cdea9b3957
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791238"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684816"
 ---
 # <a name="manage-azure-cosmos-db-gremlin-api-resources-using-azure-resource-manager-templates"></a>Azure Cosmos DB Gremlin API-erőforrások kezelése Azure Resource Manager-sablonok használatával
 
@@ -31,9 +31,7 @@ Az alábbi Azure Cosmos DB-erőforrások létrehozásához másolja a következ�
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-autoscale-provisioned-throughput"></a>Azure Cosmos DB fiók a Gremlin az autoscale kiépített átviteli sebességgel
 
-Ez a sablon létrehoz egy Azure Cosmos-fiókot a Gremlin API-hoz egy adatbázissal és gráfmal, amely automatikusan méretezhető átviteli sebességgel rendelkezik.
-
-Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
+Ez a sablon létrehoz egy Azure Cosmos-fiókot a Gremlin API-hoz egy adatbázissal és gráfmal, amely automatikusan méretezhető átviteli sebességgel rendelkezik. Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
 
 [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin-autoscale%2Fazuredeploy.json)
 
@@ -43,9 +41,7 @@ Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsi
 
 ## <a name="azure-cosmos-db-account-for-gremlin-with-standard-provisioned-throughput"></a>Azure Cosmos DB fiók a Gremlin standard kiosztott átviteli sebességgel
 
-Ez a sablon létrehoz egy Azure Cosmos-fiókot a Gremlin API-hoz egy olyan adatbázissal és gráfmal, amely standard (manuális) átviteli sebességgel rendelkezik.
-
-Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
+Ez a sablon létrehoz egy Azure Cosmos-fiókot a Gremlin API-hoz egy olyan adatbázissal és gráfmal, amely standard (manuális) átviteli sebességgel rendelkezik. Ez a sablon egykattintásos üzembe helyezésre is használható az Azure Gyorsindítás sablonok katalógusból.
 
 [![Üzembe helyezés az Azure-ban](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-cosmosdb-gremlin%2Fazuredeploy.json)
 

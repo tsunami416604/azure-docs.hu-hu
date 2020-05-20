@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/05/2020
+ms.date: 05/19/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: 568bcdcfd8ae50fff58964ecc74176b151db22a4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: eae10b7ae8cd14fd120e969c39c05a8ba2525003
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121320"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681548"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Munkaterületek létrehozása Azure Machine Learninghez Azure Resource Manager sablon használatával
 
@@ -91,7 +91,6 @@ További információ: [titkosítás a REST](concept-enterprise-security.md#encr
 > * A titkosítási kulcsot tartalmazó meglévő Azure Key Vaultnak kell lennie.
 > * Olyan hozzáférési szabályzattal kell rendelkeznie a Azure Key Vaultban, amely a __Azure Cosmos db__ alkalmazáshoz való hozzáférés __megszerzését__, __becsomagolását__és __kicsomagolását__ engedélyezi.
 > * A Azure Key Vaultnak ugyanabban a régióban kell lennie, ahol létre kívánja hozni a Azure Machine Learning munkaterületet.
-> * Az előfizetésnek támogatnia kell az __ügyfél által felügyelt kulcsokat__ a Azure Cosmos DBhoz.
 
 __A Azure Machine learning alkalmazás közreműködőként való hozzáadásához__használja a következő parancsokat:
 
@@ -134,8 +133,6 @@ __Ha hozzáférési szabályzatot szeretne hozzáadni a Key vaulthoz, használja
     ```azurecli-interactive
     az keyvault set-policy --name <keyvault-name> --object-id <object-ID> --key-permissions get unwrapKey wrapKey
     ```
-
-Az __ügyfél által felügyelt kulcsok Azure Cosmos db való engedélyezéséhez__küldjön e-mailt az azurecosmosdbcmk@service.microsoft.com Azure-előfizetés azonosítójával. További információ: [az ügyfél által felügyelt kulcsok konfigurálása az Azure Cosmos-fiókhoz](..//cosmos-db/how-to-setup-cmk.md).
 
 __To get the values__ A `cmk_keyvault` sablonhoz szükséges (Key Vault) és a `resource_cmk_uri` (kulcs URI) paraméterek értékeinek lekéréséhez kövesse az alábbi lépéseket:
 

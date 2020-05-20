@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 6e5e54f7bf61d933240403ff952c1aa6e162958f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5d7274712f3e7f5b16dc5be28d0ad47cfefba9fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597358"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685151"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Mi az Azure SQL Edge (előzetes verzió)?
 
@@ -33,7 +33,7 @@ Az Azure SQL Edge az Azure piactéren érhető el, és [Azure IoT Edge](../iot-e
 
 ## <a name="editions-of-sql-edge"></a>Az SQL Edge kiadása
 
-Az SQL Edge három különböző kiadással vagy szoftver csomaggal érhető el. Ezek a kiadások azonos szolgáltatáskészlet-készlettel rendelkeznek, és csak a használati jogosultságuk, valamint az általuk támogatott CPU-/memória-mennyiség tekintetében térnek el egymástól.
+Az SQL Edge két különböző kiadással vagy szoftver csomaggal érhető el. Ezek a kiadások azonos szolgáltatáskészlet-készlettel rendelkeznek, és csak a használati jogosultságuk, valamint az általuk támogatott CPU-/memória-mennyiség tekintetében térnek el egymástól.
 
    |**Terv**  |**Leírás**  |
    |---------|---------|

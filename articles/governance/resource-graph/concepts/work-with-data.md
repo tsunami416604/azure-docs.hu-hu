@@ -3,12 +3,12 @@ title: Nagy méretű adathalmazok kezelése
 description: Megtudhatja, hogyan kérheti le, formázhatja, lapozhatja és kihagyhatja a nagyméretű adatkészletek rekordjait az Azure Resource Graph használata közben.
 ms.date: 03/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: be15a6234935627ca748276e6330c50c3ee5a775
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4b45a28a5dbd2ebc233bcf9a6808cb7d7cd6d8c8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064742"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681067"
 ---
 # <a name="working-with-large-azure-resource-data-sets"></a>Nagyméretű Azure-beli erőforrás-adatkészletek használata
 
@@ -21,7 +21,7 @@ A lekérdezések magas gyakorisággal történő kezelésével kapcsolatos útmu
 Alapértelmezés szerint az erőforrás-gráf korlátozza a lekérdezéseket, hogy csak **100** rekordokat adjanak vissza. Ez a vezérlő védi a felhasználót és a szolgáltatást olyan véletlen lekérdezésektől, amelyek nagy adatkészleteket eredményezhetnek. Ez az esemény leggyakrabban akkor fordul elő, amikor az ügyfél a lekérdezésekkel kísérletezik, és az adott igényeknek megfelelő módon keresi és szűri az erőforrásokat. Ez a vezérlő más, mint a [felső](/azure/kusto/query/topoperator) vagy [Az Azure adatkezelő](/azure/kusto/query/limitoperator) nyelvi operátorok használatának korlátozása az eredmények korlátozásához.
 
 > [!NOTE]
-> **Első**használata esetén ajánlott az eredményeket legalább egy, a `asc` (z) vagy `desc`értékű oszlop szerint rendelni. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
+> **Első**használata esetén ajánlott az eredményeket legalább egy, a (z) vagy értékű oszlop szerint `asc` rendelni `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
 
 Az alapértelmezett korlát felülbírálható az erőforrás-Gráftal való interakció minden módszerén keresztül. Az alábbi példák bemutatják, hogyan módosíthatja az adathalmaz méretének korlátját a _200_értékre:
 
@@ -37,14 +37,17 @@ A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/reso
 
 A _legszigorúbb_ vezérlő fog nyerni. Ha például a lekérdezés a **felső** vagy a **korlátot** használja, és az **elsőnél**több rekordot fog eredményezni, akkor a visszaadott maximális rekordok megegyeznek az **elsővel**. Hasonlóképpen, ha a **felső** vagy a **korlát** kisebb, mint az **első**, a visszaadott rekord a **felső** vagy a **korlát**által konfigurált kisebb érték lesz.
 
-Az **első** jelenleg a maximálisan engedélyezett _5000_-as értékkel rendelkezik.
+Az **első** jelenleg a maximálisan engedélyezett _5000_-as értékkel rendelkezik, amelyet a [lapozófájlok](#paging-results) az _1000_ -as számú rekordok elérésével érnek el egyszerre.
+
+> [!IMPORTANT]
+> Ha az **első** úgy van beállítva, hogy nagyobb legyen, mint _1000_ rekord, a lekérdezésnek az **azonosító** **mezőt kell megadnia** ahhoz, hogy a tördelés működjön. Ha hiányzik a lekérdezésből, a válasz nem fog [lapozni](#paging-results) , és az eredmények _1000_ rekordra korlátozódnak.
 
 ## <a name="skipping-records"></a>Rekordok kihagyása
 
 A nagyméretű adatkészletek használatának következő lehetősége a **kihagyás** vezérlőelem. Ez a vezérlő lehetővé teszi, hogy a lekérdezés átugorjon vagy kihagyja a megadott számú rekordot, mielőtt visszaadná az eredményeket. A **skip (kihagyás** ) olyan lekérdezések esetében hasznos, amelyek értelmes módon jelenítik meg az eredményeket. Ha a szükséges eredmények a visszaadott adathalmaz végén találhatók, akkor hatékonyabb, ha más rendezési konfigurációt használ, és az eredményeket az adathalmaz elejéről kéri le.
 
 > [!NOTE]
-> Ha a **kihagyást**használja, azt javasoljuk, hogy az eredményeket legalább egy, a vagy `asc` `desc`a oszlop alapján rendelje. Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
+> Ha a **kihagyást**használja, azt javasoljuk, hogy az eredményeket legalább egy, a vagy a oszlop alapján rendelje `asc` `desc` . Rendezés nélkül a visszaadott eredmények véletlenszerűek, és nem ismételhetők.
 
 Az alábbi példák azt mutatják be, hogyan lehet kihagyni az első _10_ rekordot, amely a lekérdezés eredményét eredményezi, ehelyett a visszaadott eredményhalmaz 11. rekorddal való megadásával:
 
@@ -63,7 +66,7 @@ A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/reso
 Ha egy eredményhalmaz kisebb készletekre való bontására van szükség a feldolgozáshoz, vagy mert egy eredményhalmaz túllépi az engedélyezett maximális _1000_ -as értéket, használja a lapozást. A [REST API](/rest/api/azureresourcegraph/resourcegraph(2018-09-01-preview)/resources/resources) **QueryResponse** a következő értékeket adja meg: **resultTruncated** és **$skipToken**.
 a **resultTruncated** egy logikai érték, amely tájékoztatja a fogyasztót, ha a válaszban nem ad vissza további rekordokat. Ez az állapot akkor is azonosítható, ha a **Count** tulajdonság kisebb, mint a **totalRecords** tulajdonság. a **totalRecords** határozza meg, hogy hány rekord felel meg a lekérdezésnek.
 
- a **resultTruncated** akkor **igaz** , ha a lapozás le van tiltva vagy nem lehetséges `id` , mert nincs oszlop, vagy ha kevesebb erőforrás érhető el, mint a lekérdezés. Ha a **resultTruncated** értéke **igaz**, a **$skipToken** tulajdonság nincs beállítva.
+ a **resultTruncated** akkor **igaz** , ha a lapozás le van tiltva vagy nem lehetséges, mert nincs `id` oszlop, vagy ha kevesebb erőforrás érhető el, mint a lekérdezés. Ha a **resultTruncated** értéke **igaz**, a **$skipToken** tulajdonság nincs beállítva.
 
 Az alábbi példák bemutatják, hogyan **hagyhatja** ki az első 3000 rekordot, és visszaküldheti az **első** 1000-rekordokat, miután az Azure CLI-vel és Azure PowerShelltel kihagyta a bejegyzéseket
 
@@ -84,7 +87,7 @@ Példaként tekintse meg a [következő oldal lekérdezését](/rest/api/azurere
 
 A Resource Graph-lekérdezések eredményei két formátumban, _tábla_ -és _ObjectArray_érhetők el. A formátum a **resultFormat** paraméterrel van konfigurálva a kérési beállítások részeként. A **resultFormat**alapértelmezett értéke a _táblázat_ formátuma.
 
-Az Azure CLI-ből származó eredmények alapértelmezés szerint a JSON-ben vannak megadva. Az Azure PowerShell alapértelmezés szerint **pscustomobject formájában kapja** , de a `ConvertTo-Json` PARANCSMAG használatával gyorsan átalakíthatók JSON-ra. Más SDK-k esetén a lekérdezés eredményei konfigurálhatók úgy, hogy kiállítsák a _ObjectArray_ formátumot.
+Az Azure CLI-ből származó eredmények alapértelmezés szerint a JSON-ben vannak megadva. Az Azure PowerShell alapértelmezés szerint **pscustomobject formájában kapja** , de a parancsmag használatával gyorsan átalakíthatók JSON-ra `ConvertTo-Json` . Más SDK-k esetén a lekérdezés eredményei konfigurálhatók úgy, hogy kiállítsák a _ObjectArray_ formátumot.
 
 ### <a name="format---table"></a>Táblázat formázása
 

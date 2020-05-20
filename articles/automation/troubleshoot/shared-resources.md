@@ -1,6 +1,6 @@
 ---
-title: Azure Automation megosztott erőforrásainak hibáinak megoldása
-description: Megtudhatja, hogyan lehet elhárítani a Azure Automation megosztott erőforrásokkal kapcsolatos problémákat.
+title: A megosztott erőforrásokkal kapcsolatos problémák elhárítása Azure Automation
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation megosztott erőforrásokkal kapcsolatos problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,19 +8,16 @@ ms.date: 03/12/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: c59e8ec67777a9cfebc12508b197e1237a61df4a
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 5b87a98ed38e3af315789adffc11824f2522b802
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864198"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680885"
 ---
-# <a name="troubleshoot-shared-resources-in-azure-automation"></a>Azure Automation megosztott erőforrásainak hibáinak megoldása
+# <a name="troubleshoot-shared-resource-issues"></a>Megosztott erőforrásokkal kapcsolatos problémák elhárítása
 
-Ez a cikk a Azure Automation [megosztott erőforrásainak](../automation-intro.md#shared-resources) használatakor esetlegesen felmerülő problémák megoldásait ismerteti.
-
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Továbbra is használhatja a AzureRM modult a jelen időben. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
+Ez a cikk a Azure Automation [megosztott erőforrásainak](../automation-intro.md#shared-resources) használatakor felmerülő problémákat ismerteti.
 
 ## <a name="modules"></a>Modulok
 
@@ -98,9 +95,9 @@ Ebben a runbook az alapértelmezett beállítás azt határozza meg, hogy hány 
 Nem gyakori, hogy az összes AzureRM vagy az az modulra ugyanarra az Automation-fiókra van szükség. Csak a szükséges modulokat kell importálnia.
 
 > [!NOTE]
-> Ne importálja a `Az.Automation` teljes `AzureRM.Automation` vagy a modult, amely az összes befoglalt modult importálja.
+> Ne importálja a teljes `Az.Automation` vagy a `AzureRM.Automation` modult, amely az összes befoglalt modult importálja.
 
-Ha a frissítési folyamat felfüggeszti a műveletet, `SimultaneousModuleImportJobCount` adja hozzá a paramétert a **Update-AzureModules. ps1** parancsfájlhoz, és adjon meg egy alacsonyabb értéket, mint az alapértelmezett 10. Ha ezt a logikát alkalmazza, próbálja meg 3 vagy 5 értékkel kezdeni. `SimultaneousModuleImportJobCount`az az **Update-AutomationAzureModulesForAccount** System runbook paraméter, amely az Azure-modulok frissítésére szolgál. Ha ezt a beállítást választja, a frissítési folyamat tovább fut, de nagyobb eséllyel fejeződik be. A következő példa a paramétert mutatja be, és hová helyezi a runbook:
+Ha a frissítési folyamat felfüggeszti a műveletet, adja hozzá a `SimultaneousModuleImportJobCount` paramétert a **Update-AzureModules. ps1** parancsfájlhoz, és adjon meg egy alacsonyabb értéket, mint az alapértelmezett 10. Ha ezt a logikát alkalmazza, próbálja meg 3 vagy 5 értékkel kezdeni. `SimultaneousModuleImportJobCount`az az **Update-AutomationAzureModulesForAccount** System runbook paraméter, amely az Azure-modulok frissítésére szolgál. Ha ezt a beállítást választja, a frissítési folyamat tovább fut, de nagyobb eséllyel fejeződik be. A következő példa a paramétert mutatja be, és hová helyezi a runbook:
 
  ```powershell
          $Body = @"
@@ -170,6 +167,6 @@ Connect-AzAccount -ServicePrincipal -Tenant $connection.TenantID `
 Ha ez a cikk nem oldja meg a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport). Ez a hivatalos Microsoft Azure fiók az Azure-Közösség megfelelő erőforrásokhoz való csatlakoztatásához: válaszok, támogatás és szakértők.
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) . Ez a hivatalos Microsoft Azure fiók az Azure-Közösség megfelelő erőforrásokhoz való csatlakoztatásához: válaszok, támogatás és szakértők.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.
 

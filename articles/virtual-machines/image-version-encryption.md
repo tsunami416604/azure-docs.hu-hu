@@ -7,16 +7,16 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: cynthn
-ms.openlocfilehash: aeacfdc07e5349dfce45b209da1d78bddf870f33
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3d55efb15454f0b1dfe5ac1101a8a53eb1c9aa8f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83269580"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683952"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
 
-A katalógus lemezképeit felügyelt lemezként tárolja a rendszer, így azok automatikusan titkosítva lesznek a kiszolgálóoldali titkosítással. A kiszolgálóoldali titkosítás 256 bites [AES-titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ, amely az egyik legerősebb blokk titkosítási algoritmus, és az FIPS 140-2-kompatibilis. Az Azure Managed Disks mögöttes titkosítási modulokkal kapcsolatos további információkért lásd: a [kriptográfiai API: következő generáció](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)
+A katalógus lemezképeit felügyelt lemezként tárolja a rendszer, így azok automatikusan titkosítva lesznek a kiszolgálóoldali titkosítással. A kiszolgálóoldali titkosítás 256 bites [AES-titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ, amely az egyik legerősebb blokk titkosítási algoritmus, és az FIPS 140-2-kompatibilis. Az Azure Managed Disks mögöttes titkosítási modulokkal kapcsolatos további információkért lásd: a [kriptográfiai API: következő generáció](/windows/desktop/seccng/cng-portal)
 
 Használhatja a platform által felügyelt kulcsokat a lemezképek titkosításához, vagy a titkosítást saját kulcsok használatával is kezelheti. Ha úgy dönt, hogy a titkosítást a saját kulcsaival kezeli, megadhat egy *ügyfél által felügyelt kulcsot* , amelyet a lemezképek összes lemezének titkosítására és visszafejtésére használhat. 
 
@@ -24,7 +24,7 @@ Az ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosí
 
 Ha az ügyfél által felügyelt kulcsokat szeretné használni a rendszerképekhez, először egy Azure Key Vaultra van szüksége. Ezután létrehoz egy lemezes titkosítási készletet. A rendszer ezt követően a lemez titkosítási készletét használja a lemezkép-verziók létrehozásakor.
 
-A lemezes titkosítási készletek létrehozásával és használatával kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys).
+A lemezes titkosítási készletek létrehozásával és használatával kapcsolatos további információkért lásd: [ügyfél által felügyelt kulcsok](./windows/disk-encryption.md#customer-managed-keys).
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -72,7 +72,7 @@ Ha nem ad vissza `Registered` , a következő paranccsal regisztrálhatók a szo
 Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-Ha meg szeretné adni egy lemez titkosítását a lemezkép verziójához, használja a [New-AzGalleryImageDefinition](https://docs.microsoft.com/powershell/module/az.compute/new-azgalleryimageversion) `-TargetRegion` paramétert. 
+Ha meg szeretné adni egy lemez titkosítását a lemezkép verziójához, használja a [New-AzGalleryImageDefinition](/powershell/module/az.compute/new-azgalleryimageversion) `-TargetRegion` paramétert. 
 
 ```azurepowershell-interactive
 
@@ -194,4 +194,4 @@ Létrehozhat egy virtuális gépet egy megosztott rendszerkép-gyűjteményből,
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a [kiszolgálóoldali lemezes titkosításról](/windows/disk-encryption.md)).
+További információ a [kiszolgálóoldali lemezek titkosításáról](./windows/disk-encryption.md).

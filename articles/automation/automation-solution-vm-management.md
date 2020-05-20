@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: f7e30fd0d53af7ee61d919b56e9ffcd1f1b6bd36
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 760c56ad6179a7bf94f19e004e2fbbece3908198
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82207598"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683506"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Virtuális gépek indítása/leállítása munkaidőn kívüli megoldás esetén Azure Automation
 
@@ -102,37 +102,37 @@ A következő táblázat felsorolja azokat a runbookok, amelyeket a megoldás te
 > [!IMPORTANT]
 > Ne futtasson közvetlenül olyan runbook, amelynek a **gyermeke** hozzá van fűzve a nevéhez.
 
-Az összes szülő runbookok tartalmazza `WhatIf` a paramétert. Ha igaz értékre van állítva, a paraméter támogatja a runbook által a paraméter nélkül futtatott pontos viselkedést, és ellenőrzi, hogy a megfelelő virtuális gépek célozva vannak-e. A runbook csak akkor hajtja végre a definiált műveleteit, ha a `WhatIf` paraméter értéke hamis.
+Az összes szülő runbookok tartalmazza a `WhatIf` paramétert. Ha igaz értékre van állítva, a paraméter támogatja a runbook által a paraméter nélkül futtatott pontos viselkedést, és ellenőrzi, hogy a megfelelő virtuális gépek célozva vannak-e. A runbook csak akkor hajtja végre a definiált műveleteit, ha a `WhatIf` paraméter értéke hamis.
 
-|Forgatókönyv | Paraméterek | Leírás|
+|Forgatókönyv | Paraméterek | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Meghívva a szülő runbook. Ez a runbook a riasztásokat erőforrás-alapon hozza létre az automatikus leállítási forgatókönyvhöz.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true vagy FALSE  | Létrehozza vagy frissíti az Azure riasztási szabályokat a célként megadott előfizetésben vagy erőforráscsoportok virtuális gépeken. <br> `VMList`a a virtuális gépek vesszővel tagolt listája. Például: `vm1, vm2, vm3`.<br> `WhatIf`lehetővé teszi a runbook logika érvényesítését a végrehajtás nélkül.|
-|AutoStop_Disable | None | Letiltja az automatikus leállítási riasztásokat és az alapértelmezett ütemtervet.|
+|AutoStop_Disable | Nincs | Letiltja az automatikus leállítási riasztásokat és az alapértelmezett ütemtervet.|
 |AutoStop_VM_Child | WebHookData | Meghívva a szülő runbook. A riasztási szabályok meghívja ezt a runbook egy klasszikus virtuális gép leállításához.|
 |AutoStop_VM_Child_ARM | WebHookData |Meghívva a szülő runbook. A riasztási szabályok meghívja ezt a runbook egy virtuális gép leállítására.  |
 |ScheduledStartStop_Base_Classic | Felhőszolgáltatásneve<br> Művelet: indítás vagy leállítás<br> VMList  | Elvégzi a művelet indítását vagy leállítását a klasszikus virtuálisgép-csoportban Cloud Services alapján. |
 |ScheduledStartStop_Child | VMName <br> Művelet: indítás vagy leállítás <br> ResourceGroupName | Meghívva a szülő runbook. Végrehajt egy indítási vagy leállítási műveletet az ütemezett leállítás előtt.|
 |ScheduledStartStop_Child_Classic | VMName<br> Művelet: indítás vagy leállítás<br> ResourceGroupName | Meghívva a szülő runbook. Indítási vagy leállítási műveletet hajt végre a klasszikus virtuális gépek ütemezett leállításakor. |
-|ScheduledStartStop_Parent | Művelet: indítás vagy leállítás <br>VMList <br> WhatIf: true vagy FALSE | Elindítja vagy leállítja az előfizetésben lévő összes virtuális gépet. Szerkessze a `External_Start_ResourceGroupNames` változókat, és `External_Stop_ResourceGroupNames` csak ezekre a célcsoportokra legyen végrehajtva. Az egyes virtuális gépeket a `External_ExcludeVMNames` változó frissítésével is kizárhatja.|
-|SequencedStartStop_Parent | Művelet: indítás vagy leállítás <br> WhatIf: true vagy FALSE<br>VMList| A **sequencestart** és a **sequencestop** nevű címkéket hoz létre minden olyan virtuális gépen, amelynél le kívánja állítani az indítási/leállítási tevékenységet. A címkék nevei megkülönböztetik a kis-és nagybetűket. A címke értékének pozitív egész számnak (1, 2, 3) kell lennie, amely megfelel az elindítani vagy leállítani kívánt sorrendnek. <br>**Megjegyzés**: a virtuális gépeknek a (z) `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames`, és `External_ExcludeVMNames` változóban definiált erőforráscsoport-csoportokon belül kell lenniük. A megfelelő címkékkel kell rendelkezniük a műveletek életbe léptetéséhez.|
+|ScheduledStartStop_Parent | Művelet: indítás vagy leállítás <br>VMList <br> WhatIf: true vagy FALSE | Elindítja vagy leállítja az előfizetésben lévő összes virtuális gépet. Szerkessze a változókat `External_Start_ResourceGroupNames` , és `External_Stop_ResourceGroupNames` csak ezekre a célcsoportokra legyen végrehajtva. Az egyes virtuális gépeket a változó frissítésével is kizárhatja `External_ExcludeVMNames` .|
+|SequencedStartStop_Parent | Művelet: indítás vagy leállítás <br> WhatIf: true vagy FALSE<br>VMList| A **sequencestart** és a **sequencestop** nevű címkéket hoz létre minden olyan virtuális gépen, amelynél le kívánja állítani az indítási/leállítási tevékenységet. A címkék nevei megkülönböztetik a kis-és nagybetűket. A címke értékének pozitív egész számnak (1, 2, 3) kell lennie, amely megfelel az elindítani vagy leállítani kívánt sorrendnek. <br>**Megjegyzés**: a virtuális gépeknek a (z `External_Start_ResourceGroupNames` ), `External_Stop_ResourceGroupNames` , és változóban definiált erőforráscsoport-csoportokon belül kell lenniük `External_ExcludeVMNames` . A megfelelő címkékkel kell rendelkezniük a műveletek életbe léptetéséhez.|
 
 ### <a name="variables"></a>Változók
 
-A következő táblázat felsorolja az Automation-fiókban létrehozott változókat. Csak az előtaggal rendelkező `External`változók módosítása. Az `Internal` előrögzített változók módosítása nem kívánt hatásokat okoz.
+A következő táblázat felsorolja az Automation-fiókban létrehozott változókat. Csak az előtaggal rendelkező változók módosítása `External` . Az előrögzített változók módosítása nem `Internal` kívánt hatásokat okoz.
 
 > [!NOTE]
 > A virtuális gép nevének és az erőforráscsoport korlátozásai nagyrészt a változó méretének köszönhető. Lásd: [változó eszközök Azure Automationban](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
-|Változó | Leírás|
+|Változó | Description|
 |---------|------------|
-|External_AutoStop_Condition | Egy riasztás elindítása előtt a feltétel konfigurálásához szükséges feltételes operátor. `GreaterThan`Elfogadható értékek `GreaterThanOrEqual` `LessThan`:,, és `LessThanOrEqual`.|
+|External_AutoStop_Condition | Egy riasztás elindítása előtt a feltétel konfigurálásához szükséges feltételes operátor. Elfogadható értékek:,, `GreaterThan` `GreaterThanOrEqual` `LessThan` és `LessThanOrEqual` .|
 |External_AutoStop_Description | A virtuális gép leállítására vonatkozó riasztás, ha a CPU-hányad meghaladja a küszöbértéket.|
 |External_AutoStop_Frequency | A szabály kiértékelésének gyakorisága Ez a paraméter TimeSpan formátumban fogadja a bemenetet. A lehetséges értékek 5 perc és 6 óra között vannak. |
 |External_AutoStop_MetricName | Annak a teljesítménymutatónak a neve, amelyhez az Azure-riasztási szabályt konfigurálni kell.|
 |External_AutoStop_Severity | A metrikai riasztás súlyossága, amely 0 és 4 között lehet. |
-|External_AutoStop_Threshold | A változóban `External_AutoStop_MetricName`megadott Azure riasztási szabály küszöbértéke. A százalékos értékek 1-től 100-ig terjedhetnek.|
-|External_AutoStop_TimeAggregationOperator | A kiválasztott ablak méretére alkalmazott időösszesítési operátor a feltétel kiértékeléséhez. Elfogadható értékek `Average` `Minimum` `Maximum`:,,, és `Last` `Total`|
+|External_AutoStop_Threshold | A változóban megadott Azure riasztási szabály küszöbértéke `External_AutoStop_MetricName` . A százalékos értékek 1-től 100-ig terjedhetnek.|
+|External_AutoStop_TimeAggregationOperator | A kiválasztott ablak méretére alkalmazott időösszesítési operátor a feltétel kiértékeléséhez. Elfogadható értékek:,,, `Average` `Minimum` `Maximum` `Total` és `Last` .|
 |External_AutoStop_TimeWindow | Annak az ablaknak a mérete, amely alatt az Azure elemzi a kiválasztott mérőszámokat a riasztások aktiválásához. Ez a paraméter TimeSpan formátumban fogadja a bemenetet. A lehetséges értékek 5 perc és 6 óra között vannak.|
 |External_EnableClassicVMs| Az érték azt határozza meg, hogy a klasszikus virtuális gépeket a megoldás célozza-e. Az alapértelmezett érték TRUE (igaz). Ezt a változót állítsa hamis értékre Azure Cloud Solution Provider (CSP) előfizetésekhez. A klasszikus virtuális gépek [klasszikus futtató fiókot](automation-create-standalone-account.md#create-a-classic-run-as-account)igényelnek.|
 |External_ExcludeVMNames | A kizárni kívánt virtuálisgép-nevek vesszővel tagolt listája, amely 140 virtuális GÉPRE korlátozódik. Ha több mint 140 virtuális gépet ad hozzá a listához, előfordulhat, hogy a kizárni kívánt virtuális gépeket véletlenül elindítják vagy leállították.|
@@ -146,9 +146,9 @@ A következő táblázat felsorolja az Automation-fiókban létrehozott változ�
 |Internal_ResourceGroupName | Az Automation-fiók erőforráscsoport-neve.|
 
 >[!NOTE]
->A változó `External_WaitTimeForVMRetryInSeconds`esetében az alapértelmezett érték 600 és 2100 között frissült. 
+>A változó esetében `External_WaitTimeForVMRetryInSeconds` az alapértelmezett érték 600 és 2100 között frissült. 
 
-Minden forgatókönyvben a virtuális gépek `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames`megcélzásához `External_ExcludeVMNames` szükséges változók, valamint a **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**és **ScheduledStartStop_Parent** runbookok vesszővel elválasztott virtuálisgép-listája szerepel. Ez azt eredményezi, hogy a virtuális gépeknek meg kell egyezniük a cél erőforráscsoporthoz az indítási és leállítási műveletek elvégzéséhez. A logika a Azure Policyhoz hasonlóan működik, amelyekben megcélozhatja az előfizetést vagy az erőforráscsoportot, valamint az újonnan létrehozott virtuális gépek által örökölt műveleteket is. Ezzel a módszerrel elkerülhető, hogy minden virtuális gép esetében külön ütemtervet kell fenntartani, és a felügyelet megkezdődik, és a méretezési folyamat leáll.
+Minden forgatókönyvben a `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` `External_ExcludeVMNames` virtuális gépek megcélzásához szükséges változók, valamint a **AutoStop_CreateAlert_Parent**, **SequencedStartStop_Parent**és **ScheduledStartStop_Parent** runbookok vesszővel elválasztott virtuálisgép-listája szerepel. Ez azt eredményezi, hogy a virtuális gépeknek meg kell egyezniük a cél erőforráscsoporthoz az indítási és leállítási műveletek elvégzéséhez. A logika a Azure Policyhoz hasonlóan működik, amelyekben megcélozhatja az előfizetést vagy az erőforráscsoportot, valamint az újonnan létrehozott virtuális gépek által örökölt műveleteket is. Ezzel a módszerrel elkerülhető, hogy minden virtuális gép esetében külön ütemtervet kell fenntartani, és a felügyelet megkezdődik, és a méretezési folyamat leáll.
 
 ### <a name="schedules"></a>Ütemezések
 
@@ -156,13 +156,13 @@ A következő táblázat az Automation-fiókban létrehozott alapértelmezett ü
 
 Ne engedélyezze az összes ütemtervet, mert ez az átfedésben lévő ütemezett műveleteket is létrehozhatja. Érdemes eldönteni, hogy mely optimalizálásokat kívánja elvégezni, és ennek megfelelően módosítania kell azokat. További magyarázatért tekintse meg az Áttekintés szakaszban található példákat.
 
-|Ütemterv neve | Frequency | Leírás|
+|Ütemterv neve | Gyakoriság | Description|
 |--- | --- | ---|
-|Schedule_AutoStop_CreateAlert_Parent | 8 óránként | A **AutoStop_CreateAlert_Parent** runbook 8 óránként futtatja, ami viszont leállítja a virtuálisgép-alapú értékeket `External_Start_ResourceGroupNames`, `External_Stop_ResourceGroupNames`és `External_ExcludeVMNames` változókat. Másik lehetőségként megadhatja a virtuális gépek vesszővel tagolt listáját a `VMList` paraméter használatával.|
-|Scheduled_StopVM | Felhasználó által definiált, napi | A **ScheduledStopStart_Parent** runbook `Stop` minden nap paraméterével futtatja a megadott időpontban.A automatikusan leállítja az összes olyan virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak.A kapcsolódó ütemezett ütemezés engedélyezése **– StartVM**.|
-|Scheduled_StartVM | Felhasználó által definiált, napi | A **ScheduledStopStart_Parent** runbook a megadott időpontban `Start` minden nap paraméter értékével futtatja. A automatikusan elindítja az összes olyan virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak.A kapcsolódó ütemezett ütemezés engedélyezése **– StopVM**.|
-|Sorozatos – StopVM | 1:00 AM (UTC), minden pénteken | A **Sequenced_StopStop_Parent** runbook a megadott időpontban `Stop` minden pénteken található paraméter értékkel futtatja.A szekvenciálisan (növekvő) leállítja az összes virtuális gépet a megfelelő változók által definiált **SequenceStop** címkével. További információ a címkézési értékekről és az adategység változókról: [runbookok](#runbooks).Engedélyezze a kapcsolódó ütemezéseket, a **Sequenced-StartVM**.|
-|Sorozatos – StartVM | 1:00 PM (UTC), minden hétfőn | A **SequencedStopStart_Parent** runbook a megadott időponthoz tartozó `Start` minden hétfőn lévő paraméter értékével futtatja. A szekvenciálisan (csökkenő) elindítja az összes virtuális gépet a megfelelő változók által meghatározott **SequenceStart** . További információ a címkék értékeiről és a változó eszközökről: [runbookok](#runbooks). Engedélyezze a kapcsolódó ütemezéseket, a **Sequenced-StopVM**.
+|Schedule_AutoStop_CreateAlert_Parent | 8 óránként | A **AutoStop_CreateAlert_Parent** runbook 8 óránként futtatja, ami viszont leállítja a virtuálisgép-alapú értékeket `External_Start_ResourceGroupNames` , `External_Stop_ResourceGroupNames` és `External_ExcludeVMNames` változókat. Másik lehetőségként megadhatja a virtuális gépek vesszővel tagolt listáját a `VMList` paraméter használatával.|
+|Scheduled_StopVM | Felhasználó által definiált, napi | A **ScheduledStopStart_Parent** runbook minden nap paraméterével futtatja `Stop` a megadott időpontban.A automatikusan leállítja az összes olyan virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak.A kapcsolódó ütemezett ütemezés engedélyezése **– StartVM**.|
+|Scheduled_StartVM | Felhasználó által definiált, napi | A **ScheduledStopStart_Parent** runbook a `Start` megadott időpontban minden nap paraméter értékével futtatja. A automatikusan elindítja az összes olyan virtuális gépet, amely megfelel a változó eszközök által meghatározott szabályoknak.A kapcsolódó ütemezett ütemezés engedélyezése **– StopVM**.|
+|Sorozatos – StopVM | 1:00 AM (UTC), minden pénteken | A **Sequenced_StopStop_Parent** runbook a `Stop` megadott időpontban minden pénteken található paraméter értékkel futtatja.A szekvenciálisan (növekvő) leállítja az összes virtuális gépet a megfelelő változók által definiált **SequenceStop** címkével. További információ a címkézési értékekről és az adategység változókról: [runbookok](#runbooks).Engedélyezze a kapcsolódó ütemezéseket, a **Sequenced-StartVM**.|
+|Sorozatos – StartVM | 1:00 PM (UTC), minden hétfőn | A **SequencedStopStart_Parent** runbook a `Start` megadott időponthoz tartozó minden hétfőn lévő paraméter értékével futtatja. A szekvenciálisan (csökkenő) elindítja az összes virtuális gépet a megfelelő változók által meghatározott **SequenceStart** . További információ a címkék értékeiről és a változó eszközökről: [runbookok](#runbooks). Engedélyezze a kapcsolódó ütemezéseket, a **Sequenced-StopVM**.
 
 ## <a name="use-of-the-solution-with-classic-vms"></a>A megoldás használata klasszikus virtuális gépekkel
 
@@ -173,7 +173,7 @@ A megoldás klasszikus virtuális gépekkel való használatához klasszikus fut
 Ha a Cloud Service-ben több mint 20 virtuális gép van, a következő javaslatok közül választhat:
 
 * Hozzon létre több ütemtervet a szülő runbook **ScheduledStartStop_Parent** és ütemezzen 20 virtuális gépet. 
-* Az ütemterv tulajdonságainál a `VMList` paraméter használatával vesszővel tagolt listaként adhatja meg a virtuális gépek nevét. 
+* Az ütemterv tulajdonságainál a paraméter használatával `VMList` vesszővel tagolt listaként adhatja meg a virtuális gépek nevét. 
 
 Ellenkező esetben, ha a megoldás automatizálási feladata több mint három órát futtat, átmenetileg törlődik, vagy leállt a [méltányos megosztási](automation-runbook-execution.md#fair-share) korláton belül.
 
@@ -199,11 +199,11 @@ A megoldás kiválasztásakor megjelenik a **Start-Stop-VM [Workspace]** megold�
 
 A munkarekordok további elemzését a fánk csempére kattintva végezheti el. A megoldás irányítópultján a feladatok előzményei és az előre definiált naplók keresési lekérdezések láthatók. Váltson a log Analytics speciális portálra a keresési lekérdezések alapján történő kereséshez.
 
-## <a name="update-the-solution"></a>A megoldás frissítése
+## <a name="update-the-feature"></a>A szolgáltatás frissítése
 
-Ha már telepítette a megoldás egy korábbi verzióját, a frissített kiadás telepítése előtt törölje azt a fiókból. Kövesse a [megoldás eltávolításához](#remove-the-solution) szükséges lépéseket, majd kövesse a lépéseket a [megoldás üzembe helyezéséhez](automation-solution-vm-management-enable.md).
+Ha már telepítette a megoldás egy korábbi verzióját, a frissített kiadás telepítése előtt törölje azt a fiókból. Kövesse a [megoldás eltávolításához](#remove-the-feature) szükséges lépéseket, majd kövesse a lépéseket a [megoldás üzembe helyezéséhez](automation-solution-vm-management-enable.md).
 
-## <a name="remove-the-solution"></a>A megoldás eltávolítása
+## <a name="remove-the-feature"></a>A szolgáltatás eltávolítása
 
 Ha már nincs szüksége a megoldás használatára, törölheti az Automation-fiókból. A megoldás törlése csak a runbookok távolítja el. Nem törli a megoldás hozzáadásakor létrehozott ütemterveket és változókat. Ezeket az eszközöket manuálisan távolíthatja el, ha nem használja azokat más runbookok.
 

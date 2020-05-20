@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 10/03/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6071e6553fb1275fea63a37b4897aef2685bd509
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23508535c1853cd056bb162c254cda5f7f86d7fe
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253766"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681749"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: fiókok és engedélyek
 
@@ -141,7 +141,7 @@ Emellett meg kell adni a szükséges engedélyeket is. A telepítővarázsló ne
 
 A szükséges engedélyek a választható funkcióktól függenek. Ha több tartománnyal rendelkezik, az engedélyeket az erdő összes tartományához meg kell adni. Ha nem engedélyezi ezen funkciók bármelyikét, az alapértelmezett **tartományi felhasználói** engedélyek elegendőek.
 
-| Szolgáltatás | Engedélyek |
+| Funkció | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyek a tervezési fogalmakban dokumentált ms-DS-ConsistencyGuid attribútumhoz [– MS-DS-ConsistencyGuid használata sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszó kivonatának szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |
@@ -149,9 +149,9 @@ A szükséges engedélyek a választható funkcióktól függenek. Ha több tart
 | Exchange-levelezés nyilvános mappája |Olvasási engedélyek a nyilvános mappák Exchange- [levelezés nyilvános mappájában](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) dokumentált attribútumokhoz. | 
 | Jelszóvisszaíró |Írási engedélyek a felhasználók [jelszavas kezelésének megkezdése](../authentication/howto-sspr-writeback.md) című dokumentumban ismertetett attribútumokhoz. |
 | Eszközvisszaíró |A PowerShell-parancsfájllal megadott engedélyek a [Device visszaírási](how-to-connect-device-writeback.md)című cikkben leírtak szerint. |
-| Group writeback (Csoportvisszaíró) |Lehetővé teszi, hogy az **Office 365-csoportokat** egy olyan erdőhöz visszaírási, amelyen telepítve van az Exchange.  További információ: [Group visszaírási](how-to-connect-preview.md#group-writeback).|
+| Group writeback (Csoportvisszaíró) |Lehetővé teszi, hogy az **Office 365-csoportokat** egy olyan erdőhöz visszaírási, amelyen telepítve van az Exchange.|
 
-## <a name="upgrade"></a>Frissítés
+## <a name="upgrade"></a>Upgrade
 Ha a Azure AD Connect egyik verziójáról egy új kiadásra frissít, a következő engedélyek szükségesek:
 
 >[!IMPORTANT]
@@ -175,7 +175,7 @@ Ha egyéni beállításokat használ, akkor a telepítés megkezdése előtt Ön
 ### <a name="adsync-service-account"></a>ADSync-szolgáltatásfiók
 A szinkronizálási szolgáltatás más fiókokban is futhat. Egy **virtuális szolgáltatásfiók** (VSA), egy **csoportosan felügyelt szolgáltatásfiók** (gMSA/önállóan felügyelt szolgáltatásfiókot) vagy egy normál felhasználói fiók használatával futtatható. A támogatott beállítások a csatlakozás április 2017-os verziójával módosultak, amikor új telepítést végez. Ha Azure AD Connect korábbi kiadásáról frissít, ezek a további beállítások nem érhetők el.
 
-| Fiók típusa | Telepítési lehetőség | Leírás |
+| Fiók típusa | Telepítési lehetőség | Description |
 | --- | --- | --- |
 | [Virtual Service-fiók](#virtual-service-account) | Express és Custom, 2017 április és újabb | Ez a beállítás az összes expressz telepítéshez használatos, a tartományvezérlőn lévő telepítések kivételével. Egyéni esetén ez az alapértelmezett beállítás, kivéve, ha egy másik lehetőség van használatban. |
 | [Csoportosan felügyelt szolgáltatásfiók](#group-managed-service-account) | Custom, 2017 április és újabb | Ha távoli SQL Servert használ, javasoljuk, hogy egy csoportosan felügyelt szolgáltatásfiókot használjon. |

@@ -12,38 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 05/15/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 396e1d9e6ad474d053ca803218d55396c073845d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79261280"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680181"
 ---
 # <a name="more-details-about-features-in-preview"></a>További információ az előzetes verzió szolgáltatásairól
 Ez a témakör a jelenleg előzetes verzióban elérhető szolgáltatások használatát ismerteti.
 
-## <a name="group-writeback"></a>Group writeback (Csoportvisszaíró)
-A választható funkciókban a Group visszaírási beállítás lehetővé teszi, hogy az **Office 365-csoportokat** egy olyan erdőhöz visszaírási, amelyen telepítve van az Exchange. Ez egy olyan csoport, amely mindig a felhőben van elsajátítva. Ha helyszíni Exchange-kiszolgálóval rendelkezik, akkor a helyszíni Exchange-postaládával rendelkező felhasználók a csoportokból küldhetnek és fogadhatnak e-maileket.
+## <a name="azure-ad-connect-sync-v2-endpoint-api-public-preview"></a>Azure AD Connect Sync v2 Endpoint API (nyilvános előzetes verzió) 
 
-További információt az Office 365-csoportokról és azok használatáról [itt](https://aka.ms/O365g)találhat.
-
-Az Office 365-csoportok terjesztési csoportként jelennek meg a helyszíni AD DSban. Az új csoport típusának felismeréséhez a helyszíni Exchange-kiszolgálónak az Exchange 2013 8. kumulatív frissítésének (a 2015. márciusi kiadásban) vagy az Exchange 2016-nek kell lennie.
-
-**Megjegyzések az előzetes verzióban**
-
-* A címjegyzék attribútum jelenleg nincs feltöltve az előzetes verzióban. Ezen attribútum nélkül a csoport nem látható a GAL-ben. Az attribútum feltöltésének legegyszerűbb módja az Exchange PowerShell-parancsmag `update-recipient`használata.
-* Csak az Exchange-sémával rendelkező erdők érvényes célok a csoportokhoz. Ha nem észlelt Exchange-t, a csoport visszaírási nem lehet engedélyezni.
-* Jelenleg csak egyerdős Exchange-szervezet üzemelő példányok támogatottak. Ha több helyszíni Exchange-szervezettel is rendelkezik, akkor az ilyen csoportok számára helyszíni GALSync-megoldásra van szükség, hogy megjelenjenek a többi erdőben.
-* A csoport visszaírási funkciója nem kezeli a biztonsági csoportokat és a terjesztési csoportokat.
-
-> [!NOTE]
-> A csoport visszaírási prémium szintű Azure AD-előfizetésre van szükség.
-> 
->
+Üzembe helyezettünk egy új végpontot (API-t) a Azure AD Connect számára, amely a szinkronizációs szolgáltatás működésének teljesítményét javítja Azure Active Directoryre. Az új v2-végpont kihasználása az Azure AD-ba való exportálás és importálás során észrevehető teljesítménybeli nyereséget tapasztal. Ez az új végpont a legfeljebb 250k taggal rendelkező csoportok szinkronizálását is támogatja. Ennek a végpontnak a használata lehetővé teszi a O365 egyesített csoportok visszaírását, maximális tagsági korlát nélkül a helyszíni Active Directoryra, ha a csoport visszaírási engedélyezve van.   További információ: [Azure ad Connect Sync v2 ENDPOINT API (nyilvános előzetes verzió)](how-to-connect-sync-endpoint-api-v2.md).
 
 ## <a name="user-writeback"></a>Felhasználói visszaírási
 > [!IMPORTANT]

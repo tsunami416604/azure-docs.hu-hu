@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: cc994875e39410ecf01417c4d08248d5bc7d034a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0545be9ebe067a62b398c6c89b79a8484f0b48d4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589822"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683117"
 ---
 # <a name="iterative-app-design-for-luis"></a>A LUIS-hoz készült iterációs alkalmazás kialakítása
 
@@ -115,7 +115,7 @@ Egy verzió is exportálható az alkalmazás vagy a verzió szintjén is. Az egy
 
 Az exportált fájl **nem** tartalmazza a következőket:
 
-* A géppel megtanult információk, mert az alkalmazás a importálása után újra be lett tanítva
+* a gépi tanulással kapcsolatos információk, mivel az alkalmazás a importálása után újra be lett tanítva
 * Közreműködői információ
 
 A LUIS-alkalmazás sémájának biztonsági mentéséhez exportáljon egy verziót a [Luis portálról](https://www.luis.ai/applications).

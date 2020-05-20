@@ -1,6 +1,6 @@
 ---
-title: A Microsoft Azure Automation esetének megnyitásakor begyűjtött adatok | Microsoft Docs
-description: Ez a cikk néhány olyan információt ismertet, amelyet össze kell gyűjtenie, mielőtt megnyit egy esetet a Azure Automation Microsoft Azure-támogatással.
+title: A Microsoft Azure Automation esetében az eset megnyitásakor begyűjtött adatok | Microsoft Docs
+description: Ez a cikk ismerteti azokat az információkat, amelyeket össze kell gyűjteni, mielőtt megnyitná a Azure Automation Microsoft Azure támogatással rendelkező esetet.
 services: virtual-machines-windows, azure-resource-manager
 documentationcenter: ''
 author: v-miegge
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 09/23/2019
 ms.author: v-miegge
-ms.openlocfilehash: e1d5d791a58f301991819b41757b9021f6e30fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d2f97d0b889186324aef9613847e3eddbfe1eb02
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81679403"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684845"
 ---
-# <a name="data-to-collect-when-you-open-a-case-for-microsoft-azure-automation"></a>Összegyűjtendő adatok egy Microsoft Azure Automation-eset megnyitásakor
+# <a name="data-to-collect-when-opening-a-case-for-microsoft-azure-automation"></a>Az Microsoft Azure Automation esetében az eset megnyitásakor begyűjtött adatok
 
 Ez a cikk néhány olyan információt ismertet, amelyet össze kell gyűjtenie, mielőtt megnyit egy esetet a Azure Automation Microsoft Azure-támogatással. Ez az információ nem szükséges az eset megnyitásához. Ugyanakkor a Microsoft segítséget nyújthat a probléma gyorsabb megoldásában. Emellett előfordulhat, hogy a támogatási mérnök ezt az adatkérést az eset megnyitása után is megkéri.
 
@@ -92,5 +92,5 @@ Az [alapszintű adatelemeken](#basic-data)kívül az alábbi adatokat is össze 
 Ha további segítségre van szüksége:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Az Azure [@AzureSupport](https://twitter.com/azuresupport)-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal való csatlakozással javíthatja az ügyfelek élményét: válaszokat, támogatást és szakértőket.
+* Az [@AzureSupport](https://twitter.com/azuresupport) Azure-Közösség a megfelelő erőforrásokhoz való csatlakoztatásával, a hivatalos Microsoft Azure fiókkal való csatlakozással javíthatja az ügyfelek élményét: válaszokat, támogatást és szakértőket.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

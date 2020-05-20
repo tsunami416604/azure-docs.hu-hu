@@ -1,14 +1,14 @@
 ---
 title: Szerzői szabályzatok a tömb tulajdonságaihoz az erőforrásokon
 description: Megismerheti a tömb paramétereinek és a tömb nyelvi kifejezéseknek a használatát, kiértékelheti a [*] aliast, és hozzáfűzheti az elemeket Azure Policy definíciós szabályokkal.
-ms.date: 11/26/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 991d159f6444133d902382bc9ca43bc2acd201e2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3d30f76d555386e5ab8041a0b8cc82b5b60e28e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280663"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684256"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Az Azure-erőforrások tömb tulajdonságainak szerzői szabályzatai
 
@@ -103,8 +103,8 @@ Ha ezt a sztringet az egyes SDK-kal szeretné használni, használja a következ
 
 ### <a name="array-conditions"></a>Tömb feltételei
 
-A (z) `in` és a ( `notIn`z) paraméterrel a (z) és a (z**type** ) rendszerhez használható szabályra _array_
- [vonatkozó szabályok](../concepts/definition-structure.md#conditions) érvényesek. Példaként a következő házirend-definíciót `equals` használja:
+A (z) és a _array_(z) paraméterrel a (z) és a (z) rendszerhez használható [szabályra vonatkozó szabályok](../concepts/definition-structure.md#conditions) érvényesek 
+ **type** `in` `notIn` . Példaként a következő házirend-definíciót használja `equals` :
 
 ```json
 {
@@ -136,14 +136,14 @@ A házirend-definíciónak a Azure Portalon keresztüli létrehozására tett k�
 
 - "A (z) {GUID} szabályzatot érvényesítési hibák miatt nem lehetett paraméterbe állítani. Ellenőrizze, hogy a házirend-paraméterek megfelelően vannak-e megadva. A belső kivétel "a nyelv kifejezésének" [parameters (' allowedLocations ')] típusának "Array" típusúnak kell lennie, a várt típus a "string". "
 
-A feltétel **type** `equals` várt típusa _karakterlánc_. Mivel a **allowedLocations** **típus** _tömbként_van definiálva, a házirend-végrehajtó kiértékeli a nyelvi kifejezést, és eldönti a hibát. A `in` és `notIn` a feltétel esetében a házirend-motor a Language kifejezésben a **típus** _tömböt_ várja. A hibaüzenet megoldásához váltson `equals` a `in` vagy `notIn`a értékre.
+A feltétel várt **típusa** `equals` _karakterlánc_. Mivel a **allowedLocations** **típus** _tömbként_van definiálva, a házirend-végrehajtó kiértékeli a nyelvi kifejezést, és eldönti a hibát. A `in` és a `notIn` feltétel esetében a házirend-motor a Language kifejezésben a **típus** _tömböt_ várja. A hibaüzenet megoldásához váltson `equals` a vagy a értékre `in` `notIn` .
 
 ### <a name="evaluating-the--alias"></a>[*] Alias kiértékelése
 
-A nevükhöz ** \[ \* ** csatolt aliasok azt jelzik, hogy a **típus** _tömb_. A teljes tömb ** \[ \* ** értékének kiértékelése helyett lehetővé teszi a tömb egyes elemeinek egyenkénti kiértékelését, a logikai és a köztük lévő elemeket. Az elemek kiértékelésének három szabványos forgatókönyve hasznos a következőben: _none_, _any_, vagy _minden_ elem egyezés. Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
+**\[\*\]** A nevükhöz csatolt aliasok azt jelzik, **type** hogy a típus _tömb_. A teljes tömb értékének kiértékelése helyett lehetővé **\[\*\]** teszi a tömb egyes elemeinek egyenkénti kiértékelését, a logikai és a köztük lévő elemeket. Az elemek kiértékelésének három szabványos forgatókönyve hasznos a következőben: _none_, _any_, vagy _minden_ elem egyezés. Összetett forgatókönyvek esetén használja a [darabszámot](../concepts/definition-structure.md#count).
 
 A **házirend-végrehajtó** elindítja a **hatást** , és csak akkor, ha az **IF** -szabály igaz értéket ad vissza.
-Ez a tény fontos, hogy tisztában legyen azzal, hogyan ** \[ \* ** értékeli ki a tömb egyes elemeit.
+Ez a tény fontos, hogy tisztában legyen azzal, hogyan **\[\*\]** értékeli ki a tömb egyes elemeit.
 
 Az alábbi forgatókönyv-táblázathoz tartozó példa házirend-szabály:
 
@@ -179,7 +179,7 @@ A **ipRules** tömb az alábbi forgatókönyv-táblázat esetében a következő
 ]
 ```
 
-Az alábbi példában szereplő összes feltételnél cserélje le `<field>` a `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`következőt:.
+Az alábbi példában szereplő összes feltételnél cserélje le a következőt: `<field>` `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"` .
 
 A következő eredmények a feltétel és a példaként megadott házirend-szabály kombinációjának eredményei, valamint a fenti meglévő értékek tömbje:
 
@@ -196,10 +196,10 @@ A következő eredmények a feltétel és a példaként megadott házirend-szab�
 
 ## <a name="the-append-effect-and-arrays"></a>A hozzáfűzési effektus és tömbök
 
-A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, ** \[ \* ** hogy a **részletek. mező** alias-e vagy sem.
+A [hozzáfűzési effektus](../concepts/effects.md#append) eltérő lehet attól függően, hogy a **részletek. mező** **\[\*\]** alias-e vagy sem.
 
-- Ha nem ** \[ \* ** alias, a Hozzáfűzés a teljes tömböt helyettesíti a **Value** tulajdonsággal.
-- Alias esetén a Hozzáfűzés hozzáadja az Value tulajdonságot a meglévő tömbhöz, vagy létrehozza az új tömböt. **value** ** \[ \* **
+- Ha nem **\[\*\]** alias, a Hozzáfűzés a teljes tömböt helyettesíti a **Value** tulajdonsággal.
+- **\[\*\]** Alias esetén a Hozzáfűzés hozzáadja az **Value** tulajdonságot a meglévő tömbhöz, vagy létrehozza az új tömböt.
 
 További információ: [hozzáfűzési példák](../concepts/effects.md#append-examples).
 

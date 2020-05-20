@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 03/17/2020
+ms.date: 05/13/2020
 ms.custom: seoapril2019, seodec18
-ms.openlocfilehash: e70401bbaa97920163f3c7e76e32b9b9be2f5e72
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 49c23774fe16c24ba90daa02cdda1688b79b12d3
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871469"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683042"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -34,7 +34,7 @@ A Machine learning-modell munkafolyamata általában az alábbi sorozatot követ
 
 1. **Csomag** – a megfelelő Futtatás után regisztrálja a megőrzött modellt a **modell beállításjegyzékében**.
 
-1. **Ellenőrizze** - az aktuális és a korábbi futtatásokból származó naplózott metrikák**kísérletét** . Ha a mérőszámok nem jelzik a kívánt eredményt, lépjen vissza az 1. lépéshez, és ismételje meg a parancsfájlokat.
+1. **Ellenőrzés**  -  A naplózott metrikák **kísérletének lekérdezése** a jelenlegi és a korábbi futtatásokból. Ha a mérőszámok nem jelzik a kívánt eredményt, lépjen vissza az 1. lépéshez, és ismételje meg a parancsfájlokat.
 
 1. **Üzembe helyezés** – a modellt használó pontozási szkript fejlesztése és **a modell üzembe helyezése** **webszolgáltatásként** az Azure-ban vagy egy **IoT Edge eszközön**.
 
@@ -48,7 +48,7 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 + Az r- [Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)-val bármely r-környezetben dolgozhat a szolgáltatással.
 + A gépi tanulási tevékenységek automatizálása a [Azure Machine learning parancssori](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)felülettel.
 + A [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit kód írása nélkül.
-
++ A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
 
 > [!NOTE]
 > Bár ez a cikk az Azure Machine Learning által használt feltételeket és fogalmakat határozza meg, nem határozza meg az Azure platformra vonatkozó feltételeket és fogalmakat. További információ az Azure platform terminológiáról: [Microsoft Azure Szószedet](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology).
@@ -58,7 +58,7 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 * [Tevékenység](#activities)
 * [Munkaterület](#workspaces)
     * [Kísérletek](#experiments)
-        * [Futtassa a következőt:](#runs) 
+        * [Futtatás](#runs) 
             * [Konfiguráció futtatása](#run-configurations)
             * [Pillanatkép](#snapshots)
             * [Git-követés](#github-tracking-and-integration)
@@ -182,7 +182,7 @@ A kisegítő lehetőségek a népszerű keretrendszerekkel való modellezéséne
 
 A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
 
-További információkért tekintse át a következő cikkeket:
+További információért tekintse át a következő cikkeket:
 
 * [Ml modellek betanítása a becslések](how-to-train-ml-models.md).
 * [A Pytorch mély tanulási modelljeinek Kiképzése Azure Machine learning](how-to-train-pytorch.md).
@@ -222,7 +222,7 @@ További információ a [számítási példányokról](concept-compute-instance.
 
 **Azure Machine learning adatkészletek** (előzetes verzió) segítségével könnyebben férhet hozzá az adataihoz, és dolgozhat velük. Az adathalmazok különböző forgatókönyvekben, például a modell betanítása és a folyamat létrehozása során kezelik az adatokat. Az Azure Machine Learning SDK használatával elérheti a mögöttes tárolót, feltárhatja az adatokat, és kezelheti a különböző adatkészlet-definíciók életciklusát.
 
-Az adatkészletek olyan módszereket biztosítanak, amelyekkel az adatokat népszerű formátumokban `to_pandas_dataframe()`, például a vagy a használatával `from_delimited_files()` dolgozhatják fel.
+Az adatkészletek olyan módszereket biztosítanak, amelyekkel az adatokat népszerű formátumokban, például a vagy a használatával dolgozhatják fel `from_delimited_files()` `to_pandas_dataframe()` .
 
 További információ: [Azure Machine learning adatkészletek létrehozása és regisztrálása](how-to-create-register-datasets.md).  Az adatkészletek használatával kapcsolatos további példákért tekintse meg a [minta jegyzetfüzeteket](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/work-with-data/datasets-tutorial).
 

@@ -1,24 +1,24 @@
 ---
-title: Migrálás v3 gépen – megtanult entitás
-description: A v3 authoring egy új entitást, a géppel megtanult entitást biztosít, valamint lehetővé teszi a kapcsolatok hozzáadását a géppel megismert entitáshoz és az alkalmazás egyéb szerveihez vagy funkcióihoz.
+title: Migrálás v3 gépi tanulási entitásba
+description: A v3 authoring egy új entitást biztosít, a gépi tanulási entitást, valamint lehetővé teszi a kapcsolatok hozzáadását a gépi tanulási entitáshoz, valamint az alkalmazás egyéb entitásait vagy funkcióit.
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: 79fbe261f597f55ca6caff468d4d5c154a273c42
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: aaa5472f25a5eca5ceadf979c57a83874ce4cb6e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593222"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684589"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrálás v3 authoring entitásba
 
-A v3 authoring egy új entitást, a géppel megtanult entitást biztosít, valamint lehetővé teszi a kapcsolatok hozzáadását a géppel megismert entitáshoz és az alkalmazás egyéb szerveihez vagy funkcióihoz.
+A v3 authoring egy új entitást biztosít, a gépi tanulási entitást, valamint lehetővé teszi a kapcsolatok hozzáadását a gépi tanulási entitáshoz, valamint az alkalmazás egyéb entitásait vagy funkcióit.
 
 ## <a name="entities-are-decomposable-in-v3"></a>Az entitások kiállíthatók a v3-as verzióban
 
-A v3 authoring API-kkal létrehozott entitások az [API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) -k vagy a portál használatával hozhatók létre, és a szülővel és gyermekekkel rendelkező rétegzett entitásokat is létrehozhatnak. A szülő ismert, hogy a gép **által megtanult entitás** , a gyermekeket pedig a Machine known Entity **alentitásának** nevezzük.
+A v3 authoring API-kkal létrehozott entitások az [API](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview) -k vagy a portál használatával hozhatók létre, és a szülővel és gyermekekkel rendelkező rétegzett entitásokat is létrehozhatnak. A szülő ismert, hogy a gépi **tanulási entitás** , a gyermekeket pedig a gép megtanult entitásának **alentitásának** nevezzük.
 
-Minden alentitás egy géppel megtanult entitás, de a funkciók további konfigurációs beállításaival is rendelkezik.
+Mindegyik alentitás egy gépi tanulási entitás is, de a funkciók további konfigurációs beállításai is elérhetők.
 
 * A **szükséges szolgáltatások** olyan szabályok, amelyek garantálják, hogy az entitások kinyerve legyenek, amikor egy szolgáltatás megfelel. Ezt a szabályt a kötelező funkció határozza meg a modellhez:
     * [Előre elkészített entitás](luis-reference-prebuilt-entities.md)
@@ -54,36 +54,36 @@ Az áttelepítés során vegye figyelembe a következőket az áttelepítési te
     * Entitások
         * Hierarchikus entitás
         * Összetett entitás
-    * Szerepkörök – a szerepköröket csak gépi megtanult (szülő) entitásra lehet alkalmazni. A szerepkörök nem alkalmazhatók alentitásokra
+    * Szerepkörök – a szerepkörök csak gépi tanulási (szülő) entitásra alkalmazhatók. A szerepkörök nem alkalmazhatók alentitásokra
     * A hierarchikus és összetett entitásokat használó batch-tesztek és-minták
 
-Ha megtervezi az áttelepítési tervet, hagyjon időt arra, hogy áttekintse a gép által megismert utolsó entitásokat, miután az összes hierarchikus és összetett entitás át lett telepítve. Míg az egyenes áttelepítés működni fog, miután elvégezte a módosítást, és áttekinti a Batch-teszt eredményeit, és előrejelzési JSON-t, a több egységesített JSON-t úgy is megteheti, hogy az ügyféloldali alkalmazáshoz tartozó végső adatokat különbözőképpen rendezi. Ez hasonló a kód újrabontásához, és ugyanazzal a felülvizsgálati folyamattal kell kezelni, mint a szervezet.
+Az áttelepítési terv tervezésekor hagyjon időt az utolsó gépi tanulási entitások áttekintésére, miután az összes hierarchikus és összetett entitás át lett telepítve. Míg az egyenes áttelepítés működni fog, miután elvégezte a módosítást, és áttekinti a Batch-teszt eredményeit, és előrejelzési JSON-t, a több egységesített JSON-t úgy is megteheti, hogy az ügyféloldali alkalmazáshoz tartozó végső adatokat különbözőképpen rendezi. Ez hasonló a kód újrabontásához, és ugyanazzal a felülvizsgálati folyamattal kell kezelni, mint a szervezet.
 
 Ha nem rendelkezik batch-tesztekkel a v2-modellhez, és az áttelepítés részeként áttelepíti a Batch-teszteket a v3-modellre, nem fogja tudni ellenőrizni, hogy az áttelepítés milyen hatással lesz a végpont-előrejelzés eredményeire.
 
 ## <a name="migrating-from-v2-entities"></a>Áttelepítés v2 entitásokból
 
-Ahogy elkezdi a v3 authoring modelre való áttérést, érdemes megfontolnia, hogyan helyezheti át a gépi megtanult entitást, valamint annak alentitásait és szolgáltatásait.
+Ahogy elkezdi a v3 authoring modelre való áttérést, érdemes megfontolnia, hogyan váltson át a gépi tanulási entitásra és az alentitásokra és szolgáltatásokra.
 
 A következő táblázat azt ismerteti, hogy mely entitásoknak kell áttérniük a v2-ből egy v3-es entitás kialakítására.
 
 |V2 szerzői entitás típusa|V3 szerzői entitás típusa|Példa|
 |--|--|--|
 |Összetett entitás|Gépi megtanult entitás|[tudj meg többet](#migrate-v2-composite-entity)|
-|Hierarchikus entitás|Gépi megtanult entitás szerepköre|[tudj meg többet](#migrate-v2-hierarchical-entity)|
+|Hierarchikus entitás|gépi tanulási entitás szerepköre|[tudj meg többet](#migrate-v2-hierarchical-entity)|
 
 ## <a name="migrate-v2-composite-entity"></a>V2 összetett entitás migrálása
 
-A v2 kompozit minden gyermekének szerepelnie kell a v3 számítógép által megismert entitás alentitásával. Ha az összetett gyermek egy előre elkészített, reguláris kifejezés vagy egy lista entitás, ezt kötelező funkcióként kell alkalmazni az alentitáson.
+A v2 kompozit minden gyermekének szerepelnie kell a v3 gépi tanulási entitás alentitásával. Ha az összetett gyermek egy előre elkészített, reguláris kifejezés vagy egy lista entitás, ezt kötelező funkcióként kell alkalmazni az alentitáson.
 
-Összetett entitások gépi megtanult entitásba való áttelepítésének tervezésekor megfontolandó szempontok:
+Összetett entitás gépi tanulási entitásba való áttelepítésének tervezésekor megfontolandó szempontok:
 * A gyermek entitások nem használhatók mintázatban
 * A gyermek entitások már nincsenek megosztva
 * A gyermek entitásokat címkével kell ellátni, ha nem gépi megismertnek használták
 
 ### <a name="existing-features"></a>Meglévő szolgáltatások
 
-Az összetett entitásban található szavak növelésére használt kifejezések listáját a rendszer a gépi megtanult (szülő) entitás, az alentitás (gyermek) entitás vagy a szándék (ha a kifejezés lista csak egy szándékra vonatkozik) szolgáltatásként alkalmazza. Tervezze meg a funkció hozzáadását az entitáshoz, ahol a legjelentősebb lendületet kell adnia. Ne adja hozzá a szolgáltatást általános módon a gépi megtanult (szülő) entitáshoz, ha az nagyobb mértékben növeli az alentitások (gyermek) előrejelzését.
+Az összetett entitásban található szavak növelésére használt kifejezések listáját a Machine learning (szülő) entitás, az alentitás (gyermek) entitás vagy a szándék (ha a kifejezés lista csak egy szándékra vonatkozik) szolgáltatásként kell alkalmazni. Tervezze meg a funkció hozzáadását az entitáshoz, ahol a legjelentősebb lendületet kell adnia. Ne adja hozzá a szolgáltatást általános módon a gépi tanulási (szülő) entitáshoz, ha az nagyobb mértékben növeli az alentitások (gyermek) előrejelzését.
 
 ### <a name="new-features"></a>Új funkciók
 
@@ -106,7 +106,7 @@ Az alábbi táblázat az áttelepítést mutatja be:
 
 |V2 modellek|V3 modellek|
 |--|--|
-|Szülő-összetevő nevű entitás`Order`|Szülő – géppel megtanult entitás, nevű`Order`|
+|Szülő-összetevő nevű entitás`Order`|Szülő-gépi tanulás nevű entitás`Order`|
 |Gyermek előre elkészített datetimeV2|* Az előre elkészített entitás migrálása új alkalmazásba.<br>* A kötelező funkció hozzáadása a szülőhöz előre elkészített datetimeV2.|
 |Gyermek-lista entitás a feltöltésekhez|* A List entitás migrálása új alkalmazásba.<br>* Ezt követően adjon hozzá egy kötelező szolgáltatást a szülőhöz a lista entitáshoz.|
 
@@ -116,7 +116,7 @@ Az alábbi táblázat az áttelepítést mutatja be:
 A v2-authoring szolgáltatásban egy hierarchikus entitás lett megadva a LUIS-ben meglévő szerepkörök előtt. Mindkettő ugyanazt a célt szolgálja, hogy a környezet használata alapján kinyerje az entitásokat. Ha hierarchikus entitásokkal rendelkezik, a szerepköröket egyszerű entitásként tekintheti meg.
 
 A v3 létrehozásakor:
-* A rendszer a gépi megtanult (szülő) entitáson is alkalmazhat szerepkört.
+* A szerepkör alkalmazható a gépi tanulás (szülő) entitásra.
 * Egy szerepkör nem alkalmazható alentitásokra.
 
 Ez az entitás csak példaként szolgál. A saját entitások áttelepítése más szempontokat is igényelhet.
@@ -132,7 +132,7 @@ Az alábbi táblázat az áttelepítést mutatja be:
 
 |V2 modellek|V3 modellek|
 |--|--|
-|Szülő-összetevő nevű entitás`Order`|Szülő – géppel megtanult entitás, nevű`Order`|
+|Szülő-összetevő nevű entitás`Order`|Szülő-gépi tanulás nevű entitás`Order`|
 |Gyermek-hierarchikus entitás eredeti és utolsó pizza-feltöltéssel|* Adja hozzá a szerepkört `Order` az egyes feltöltésekhez.|
 
 ## <a name="api-change-constraint-replaced-with-required-feature"></a>Az API-módosítási megkötés lecserélve a szükséges szolgáltatással

@@ -7,13 +7,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/23/2020
-ms.openlocfilehash: 672fecc7487a73909efa5b4247f4889bb47b7b7e
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 05/15/2020
+ms.openlocfilehash: 59c7a34e975a53226b032827feae436202c8fa30
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594321"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683318"
 ---
 # <a name="lookup-transformation-in-mapping-data-flow"></a>Keresési átalakítás a leképezési adatfolyamban
 
@@ -41,13 +41,19 @@ A keresési átalakítás csak az esélyegyenlőségi egyezéseket támogatja. H
 
 Mindkét stream összes oszlopa szerepel a kimeneti adatok között. Ismétlődő vagy nem kívánt oszlopok eldobásához vegyen fel egy [Select transzformációt](data-flow-select.md) a keresési transzformáció után. Az oszlopok elhelyezhetők vagy átnevezhető egy fogadó átalakításban.
 
+### <a name="non-equi-joins"></a>Nem összekapcsolható illesztések
+
+Ha feltételes operátort szeretne használni, például nem egyenlő (! =) vagy nagyobb, mint (>) a keresési feltételekben, módosítsa a kezelő legördülő listát a két oszlop között. A nem megfelelő illesztésekhez szükséges, hogy a két stream közül legalább az egyiket a **rögzített** szórás használatával lehessen közvetíteni az **optimalizálás** lapon.
+
+![Nem-extrák keresése](media/data-flow/non-equi-lookup.png "Nem-extrák keresése")
+
 ## <a name="analyzing-matched-rows"></a>Egyező sorok elemzése
 
-A keresési transzformáció után a függvény `isMatch()` használatával megtekintheti, hogy az adott sorokhoz tartozó keresés megfelel-e az egyes soroknak.
+A keresési transzformáció után a függvény használatával `isMatch()` megtekintheti, hogy az adott sorokhoz tartozó keresés megfelel-e az egyes soroknak.
 
 ![Keresési minta](media/data-flow/lookup111.png "Keresési minta")
 
-Erre a mintára példa a feltételes felosztású átalakítás használata a `isMatch()` függvényre való felosztásra. A fenti példában az egyező sorok a felső streamen haladnak át, a nem egyező sorok pedig az ```NoMatch``` adatfolyamon keresztül áramlanak.
+Erre a mintára példa a feltételes felosztású átalakítás használata a függvényre való felosztásra `isMatch()` . A fenti példában az egyező sorok a felső streamen haladnak át, a nem egyező sorok pedig az ```NoMatch``` adatfolyamon keresztül áramlanak.
 
 ## <a name="testing-lookup-conditions"></a>Keresési feltételek tesztelése
 
@@ -92,4 +98,4 @@ SQLProducts, DimProd lookup(ProductID == ProductKey,
 További lépések
 
 * A [JOIN](data-flow-join.md) és a [meglévő](data-flow-exists.md) átalakítások egyszerre több stream-bemenetet is igénybe vehetik
-* [Feltételes felosztású átalakítás](data-flow-conditional-split.md) ```isMatch()``` használata a paranccsal a sorok felosztása a megfeleltetés és a nem egyező értékek alapján
+* [Feltételes felosztású átalakítás](data-flow-conditional-split.md) használata a paranccsal a ```isMatch()``` sorok felosztása a megfeleltetés és a nem egyező értékek alapján

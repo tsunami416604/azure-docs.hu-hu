@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: ryanwi
 ms.reviewer: jeedes
-ms.openlocfilehash: 90f4d22ba782fd71460595f69a52e70be87a3047
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8d998d40b9920ccbdaf0079c32a0feb84bba87b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80883253"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680265"
 ---
 # <a name="add-a-multitenant-application-to-the-azure-ad-application-gallery"></a>Több-bérlős alkalmazás hozzáadása az Azure AD Application Galleryhez
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Mi az Azure AD Application Gallery?
 
-A Azure Active Directory (Azure AD) egy felhőalapú identitás-szolgáltatás. Az [Azure ad-alkalmazás](https://azure.microsoft.com/marketplace/active-directory/all/) katalógusa az Azure Marketplace App Store-ban található, ahol az összes alkalmazás-összekötő közzé van téve az egyszeri bejelentkezéshez és a felhasználók üzembe helyezéséhez. Az Azure AD-t identitás-szolgáltatóként használó ügyfeleink megtalálják az itt közzétett különböző SaaS-alkalmazás-összekötőket. A rendszergazdák hozzáadhatnak összekötőket az alkalmazás-katalógusból, majd konfigurálhatják és használhatják az összekötőket az egyszeri bejelentkezéshez és az üzembe helyezéshez. Az Azure AD az összes jelentősebb összevonási protokollt támogatja, beleértve az SAML 2,0, az OpenID Connect, a OAuth és a WS-fed használatát az egyszeri bejelentkezéshez. 
+A Azure Active Directory (Azure AD) egy felhőalapú identitás-szolgáltatás. Az [Azure ad-alkalmazás](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) katalógusa az Azure Marketplace App Store-ban található, ahol az összes alkalmazás-összekötő közzé van téve az egyszeri bejelentkezéshez és a felhasználók üzembe helyezéséhez. Az Azure AD-t identitás-szolgáltatóként használó ügyfeleink megtalálják az itt közzétett különböző SaaS-alkalmazás-összekötőket. A rendszergazdák hozzáadhatnak összekötőket az alkalmazás-katalógusból, majd konfigurálhatják és használhatják az összekötőket az egyszeri bejelentkezéshez és az üzembe helyezéshez. Az Azure AD az összes jelentősebb összevonási protokollt támogatja, beleértve az SAML 2,0, az OpenID Connect, a OAuth és a WS-fed használatát az egyszeri bejelentkezéshez. 
 
 ## <a name="if-your-application-supports-saml-or-openidconnect"></a>Ha az alkalmazás támogatja az SAML-t vagy a OpenIDConnect-t
 Ha rendelkezik egy több-bérlős alkalmazással, amelyet az Azure AD-alkalmazás-katalógusban szeretne felvenni, először győződjön meg arról, hogy az alkalmazás támogatja a következő egyszeri bejelentkezési technológiák egyikét:

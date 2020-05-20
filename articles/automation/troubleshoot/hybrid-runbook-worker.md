@@ -1,6 +1,6 @@
 ---
-title: A hibrid Runbook-feldolgozók hibaelhárítása Azure Automation
-description: Ez a cikk a hibrid Runbook-feldolgozók Azure Automation hibaelhárításához nyújt információt.
+title: A hibrid Runbook-feldolgozói problémák elhárítása Azure Automation
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémákat.
 services: automation
 ms.service: automation
 ms.subservice: ''
@@ -9,21 +9,18 @@ ms.author: magoedte
 ms.date: 11/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d734c910cc966cfd83f1e1c7f9cbd728643fbc4
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 28b6b09c679e37ca4ecd901371e65bffb27ecba4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836512"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680999"
 ---
-# <a name="troubleshoot-hybrid-runbook-workers"></a>Hibrid Runbook-feldolgozók hibáinak megoldása
+# <a name="troubleshoot-hybrid-runbook-worker-issues"></a>Hibrid Runbook-feldolgozói problémák elhárítása
 
-Ez a cikk a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos hibák elhárításával kapcsolatos információkat tartalmaz.
+Ez a cikk a Azure Automation Hybrid Runbook-feldolgozókkal kapcsolatos problémák elhárításával és megoldásával kapcsolatos információkat tartalmaz. Általános információk: a [hibrid Runbook Worker áttekintése](../automation-hybrid-runbook-worker.md).
 
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). A Azure Automation fiókjában a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
-
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 
 A hibrid Runbook-feldolgozó attól függ, hogy az ügynök kommunikál-e a Azure Automation fiókjával a feldolgozó regisztrálásához, a Runbook-feladatok fogadásához és a jelentés állapotához. Windows esetén ez az ügynök a Windows Log Analytics ügynöke. Linux esetén ez az Log Analytics-ügynök Linux rendszerhez.
 
@@ -55,7 +52,7 @@ A hibrid Runbook-feldolgozót futtató számítógépeknek meg kell felelniük a
 
 Győződjön meg arról, hogy a hibrid Runbook Worker szolgáltatás futtatására szolgáló számítógép megfelel a minimális hardverkövetelmények követelményeinek. Ha igen, figyelje a CPU-t és a memóriát a hibrid Runbook-munkavégző folyamatok és a Windows teljesítménye közötti korreláció megállapítása érdekében. A memória vagy a CPU nyomása az erőforrások frissítésének szükségességét jelezheti. Kiválaszthat egy másik számítási erőforrást is, amely támogatja a minimális követelményeket és a méretezést, ha a munkaterhelési igények azt jelzik, hogy növelésre van szükség.
 
-A leírást `Win32 Process Exited with code [4294967295]`a megfelelő eseményhez tartozó **Microsoft-SMA** eseménynaplóban találja. Ennek a hibának az az oka, hogy nem konfigurálta a hitelesítést a runbookok, vagy megadta a hibrid Runbook Worker csoport futtató hitelesítő adatait. Tekintse át a runbook engedélyeit a [hibrid runbook-feldolgozón futó runbookok](../automation-hrw-run-runbooks.md) , és ellenőrizze, hogy helyesen konfigurálta-e a hitelesítést a runbookok.
+A leírást a megfelelő eseményhez tartozó **Microsoft-SMA** eseménynaplóban találja `Win32 Process Exited with code [4294967295]` . Ennek a hibának az az oka, hogy nem konfigurálta a hitelesítést a runbookok, vagy megadta a hibrid Runbook Worker csoport futtató hitelesítő adatait. Tekintse át a runbook engedélyeit a [hibrid runbook-feldolgozón futó runbookok](../automation-hrw-run-runbooks.md) , és ellenőrizze, hogy helyesen konfigurálta-e a hitelesítést a runbookok.
 
 ### <a name="scenario-event-15011-in-the-hybrid-runbook-worker"></a><a name="cannot-connect-signalr"></a>Forgatókönyv: 15011-es esemény a hibrid Runbook-feldolgozóban
 
@@ -73,7 +70,7 @@ A hibrid Runbook-feldolgozó a 15011-as eseményt kapja, ami azt jelzi, hogy a l
 
 #### <a name="cause"></a>Ok
 
-A hibrid Runbook-feldolgozó nem lett megfelelően konfigurálva az automatikus telepítési megoldáshoz. Ez a megoldás egy olyan részt tartalmaz, amely összekapcsolja a virtuális gépet a Log Analytics munkaterülettel. A PowerShell-parancsfájl az előfizetésben található munkaterületet keresi a megadott névvel. Ebben az esetben a Log Analytics munkaterület egy másik előfizetésben található. A parancsfájl nem találja a munkaterületet, és megpróbál létrehozni egyet, de a név már használatban van. Ennek eredményeképpen a telepítés meghiúsul.
+A hibrid Runbook-feldolgozó nem lett megfelelően konfigurálva a szolgáltatás automatikus telepítéséhez, például Update Management. Az üzemelő példány egy olyan részt tartalmaz, amely összekapcsolja a virtuális gépet a Log Analytics munkaterülettel. A PowerShell-parancsfájl az előfizetésben található munkaterületet keresi a megadott névvel. Ebben az esetben a Log Analytics munkaterület egy másik előfizetésben található. A parancsfájl nem találja a munkaterületet, és megpróbál létrehozni egyet, de a név már használatban van. Ennek eredményeképpen a telepítés meghiúsul.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -134,7 +131,7 @@ A feldolgozó kezdeti regisztrációs fázisa meghiúsul, és a következő hiba
 A következő problémák lehetséges okai:
 
 * Az ügynök beállításaiban nem szerepel a munkaterület-azonosító vagy a munkaterület kulcsa (elsődleges). 
-* A hibrid Runbook Worker nem tudja letölteni a konfigurációt, ami miatt a fiók összekapcsolási hibát okoz. Ha az Azure lehetővé teszi a megoldások használatát, csak bizonyos régiókat támogat a Log Analytics munkaterület és az Automation-fiók összekapcsolásához. Az is lehetséges, hogy helytelen dátum vagy idő van beállítva a számítógépen. Ha az idő plusz vagy mínusz 15 perc az aktuális időponttól, a bevezetés sikertelen lesz.
+* A hibrid Runbook Worker nem tudja letölteni a konfigurációt, ami miatt a fiók összekapcsolási hibát okoz. Ha az Azure lehetővé teszi a gépek funkcióinak használatát, csak bizonyos régiókat támogat, amelyekkel összekapcsolhat egy Log Analytics munkaterületet és egy Automation-fiókot. Az is lehetséges, hogy helytelen dátum vagy idő van beállítva a számítógépen. Ha az idő +/-15 perc az aktuális időponttól, a szolgáltatások telepítése sikertelen lesz.
 
 #### <a name="resolution"></a>Megoldás:
 
@@ -167,7 +164,7 @@ A Linux rendszerhez készült Log Analytics-ügynök **nxautomationuser** -fiók
 
 * Ellenőrizze a **nxautomationuser** -fiók konfigurációját a **sudoers** fájlban. Lásd: [Runbookok futtatása hibrid Runbook-feldolgozón](../automation-hrw-run-runbooks.md).
 
-### <a name="scenario-the-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>Forgatókönyv: a Linux Log Analytics ügynöke nem fut
+### <a name="scenario-log-analytics-agent-for-linux-isnt-running"></a><a name="oms-agent-not-running"></a>Forgatókönyv: Log Analytics Linux-ügynök nem fut
 
 #### <a name="issue"></a>Probléma
 
@@ -179,7 +176,7 @@ Ha az ügynök nem fut, megakadályozza, hogy a Linux Hybrid Runbook Worker komm
 
 #### <a name="resolution"></a>Megoldás:
 
- Ellenőrizze, hogy fut-e az ügynök a `ps -ef | grep python`parancs beírásával. Az alábbihoz hasonló kimenetnek kell megjelennie. A Python folyamatai a **nxautomation** felhasználói fiókkal. Ha a Update Management vagy Azure Automation megoldás nincs engedélyezve, a következő folyamatok egyike sem fut.
+ Ellenőrizze, hogy fut-e az ügynök a parancs beírásával `ps -ef | grep python` . Az alábbihoz hasonló kimenetnek kell megjelennie. A Python folyamatai a **nxautomation** felhasználói fiókkal. Ha a Azure Automation funkció nincs engedélyezve, a következő folyamatok egyike sem fut.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>
@@ -190,14 +187,14 @@ nxautom+   8595      1  0 14:45 ?        00:00:02 python /opt/microsoft/omsconfi
 A következő lista azokat a folyamatokat mutatja be, amelyek a Linux hibrid Runbook-feldolgozók számára lettek elindítva. Ezek mind a/var/opt/Microsoft/omsagent/State/automationworker/könyvtárban találhatók.
 
 * **OMS. conf**: a Worker Manager folyamata. Közvetlenül a DSC-ből indult el.
-* **Worker. conf**: az automatikusan regisztrált hibrid feldolgozói folyamat. A Worker Manager indította el. Ezt a folyamatot a Update Management használja, és átlátható a felhasználó számára. Ez a folyamat nem jelenik meg, ha a Update Management megoldás nincs engedélyezve a számítógépen.
-* **DIY/Worker. conf**: a DIY hibrid feldolgozói folyamat. A DIY hibrid feldolgozói folyamat a hibrid Runbook-feldolgozón futtatott felhasználói runbookok végrehajtására szolgál. Ez csak az automatikusan regisztrált hibrid munkavégző folyamattól tér el a legfontosabb részletességgel, amelyet más konfigurációt használ. Ez a folyamat nem jelenik meg, ha a Azure Automation megoldás le van tiltva, és a DIY Linux Hybrid Worker nincs regisztrálva.
+* **Worker. conf**: az automatikusan regisztrált hibrid feldolgozói folyamat. A Worker Manager indította el. Ezt a folyamatot a Update Management használja, és átlátható a felhasználó számára. Ez a folyamat nem jelenik meg, ha a Update Management nincs engedélyezve a számítógépen.
+* **DIY/Worker. conf**: a DIY hibrid feldolgozói folyamat. A DIY hibrid feldolgozói folyamat a hibrid Runbook-feldolgozón futtatott felhasználói runbookok végrehajtására szolgál. Ez csak az automatikusan regisztrált hibrid munkavégző folyamattól tér el a legfontosabb részletességgel, amelyet más konfigurációt használ. Ez a folyamat nem jelenik meg, ha Azure Automation le van tiltva, és a DIY Linux Hybrid Worker nincs regisztrálva.
 
-Ha az ügynök nem fut, futtassa a következő parancsot a szolgáltatás elindításához `sudo /opt/microsoft/omsagent/bin/service_control restart`:.
+Ha az ügynök nem fut, futtassa a következő parancsot a szolgáltatás elindításához: `sudo /opt/microsoft/omsagent/bin/service_control restart` .
 
 ### <a name="scenario-the-specified-class-doesnt-exist"></a><a name="class-does-not-exist"></a>Forgatókönyv: a megadott osztály nem létezik
 
-Ha a `The specified class does not exist..` **/var/opt/Microsoft/omsconfig/omsconfig.log**hibaüzenet jelenik meg, akkor a Linux log Analytics-ügynökének frissítése szükséges. A következő parancs futtatásával telepítse újra az ügynököt.
+Ha a/var/opt/Microsoft/omsconfig/omsconfig.log hibaüzenet jelenik meg `The specified class does not exist..` , **/var/opt/microsoft/omsconfig/omsconfig.log**akkor a Linux log Analytics-ügynökének frissítése szükséges. A következő parancs futtatásával telepítse újra az ügynököt.
 
 ```bash
 wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <WorkspaceID> -s <WorkspaceKey>
@@ -219,13 +216,13 @@ Ha a Windows-szolgáltatás Log Analytics nem fut, a hibrid Runbook-feldolgozó 
 
 #### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy az ügynök fut, ehhez írja be a következő `Get-Service healthservice`parancsot a PowerShellben:. Ha a szolgáltatás leáll, írja be a következő parancsot a PowerShellben a szolgáltatás elindításához: `Start-Service healthservice`.
+Győződjön meg arról, hogy az ügynök fut, ehhez írja be a következő parancsot a PowerShellben: `Get-Service healthservice` . Ha a szolgáltatás leáll, írja be a következő parancsot a PowerShellben a szolgáltatás elindításához: `Start-Service healthservice` .
 
 ### <a name="scenario-event-4502-in-the-operations-manager-log"></a><a name="event-4502"></a>Forgatókönyv: 4502-es esemény a Operations Manager naplóban
 
 #### <a name="issue"></a>Probléma
 
-Az **Application and Services Logs\Operations-kezelő** eseménynaplójában a 4502-as és a következő leírást tartalmazó `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` üzenet jelenik meg:<br>`The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.`
+Az **Application and Services Logs\Operations-kezelő** eseménynaplójában a 4502-as és `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` a következő leírást tartalmazó üzenet jelenik meg:<br>`The certificate presented by the service \<wsid\>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Please contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.`
 
 #### <a name="cause"></a>Ok
 
@@ -233,7 +230,7 @@ Ezt a problémát az okozhatja, hogy a proxy vagy a hálózati tűzfal blokkolja
 
 #### <a name="resolution"></a>Megoldás:
 
-A naplók tárolása helyileg történik minden hibrid feldolgozón a következő helyen: C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Ellenőrizheti, hogy van-e figyelmeztetési vagy hibaüzenet az **alkalmazás-és Logs\Microsoft-SMA\Operations** , valamint az **alkalmazás és a szolgáltatások Logs\Operations-kezelő** eseménynaplójában. Ezek a naplók olyan kapcsolatot vagy más típusú problémát jeleznek, amely hatással van a szerepkör bevezetésére a Azure Automation, vagy a normál működés során felmerülő hiba. Ha további segítségre van a Log Analytics ügynökkel kapcsolatos problémák elhárításához, olvassa el [a log Analytics Windows-ügynökkel kapcsolatos problémák elhárítása](../../azure-monitor/platform/agent-windows-troubleshoot.md)című témakört.
+A naplók tárolása helyileg történik minden hibrid feldolgozón a következő helyen: C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes. Ellenőrizheti, hogy van-e figyelmeztetési vagy hibaüzenet az **alkalmazás-és Logs\Microsoft-SMA\Operations** , valamint az **alkalmazás és a szolgáltatások Logs\Operations-kezelő** eseménynaplójában. Ezek a naplók olyan kapcsolatot vagy más típusú problémát jeleznek, amely hatással van a szerepkör Azure Automationre való engedélyezésére vagy a normál műveletek során felmerülő problémákra. Ha további segítségre van a Log Analytics ügynökkel kapcsolatos problémák elhárításához, olvassa el [a log Analytics Windows-ügynökkel kapcsolatos problémák elhárítása](../../azure-monitor/platform/agent-windows-troubleshoot.md)című témakört.
 
 A hibrid feldolgozók a [Runbook kimenetét és üzeneteit](../automation-runbook-output-and-messages.md) ugyanúgy küldik el Azure Automationnak, mint a felhőben futó Runbook-feladatok kimenetének és üzeneteinek küldése. A részletes és a folyamat-adatfolyamokat ugyanúgy engedélyezheti, mint a runbookok.
 
@@ -312,7 +309,7 @@ Ezt a problémát akkor lehet okozni, ha a gép már regisztrálva van egy mási
 
 #### <a name="resolution"></a>Megoldás:
 
-A probléma megoldásához távolítsa el a következő beállításkulcsot, indítsa `HealthService`újra, majd próbálja `Add-HybridRunbookWorker` megismételni a parancsmagot.
+A probléma megoldásához távolítsa el a következő beállításkulcsot, indítsa újra `HealthService` , majd próbálja megismételni a `Add-HybridRunbookWorker` parancsmagot.
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 
@@ -321,5 +318,5 @@ A probléma megoldásához távolítsa el a következő beállításkulcsot, ind
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport)a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
+* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.

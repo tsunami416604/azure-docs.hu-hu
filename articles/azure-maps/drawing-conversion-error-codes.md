@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 0d73d0b395547c281a2dbbe6a6ac5e8dc6dfd849
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d79c42f3bdf84efcdf2187741ac270087be05272
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598898"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682006"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Átalakítási hibák és figyelmeztetések rajzolása
 
-A [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/data/conversion) lehetővé teszi a feltöltött rajzok leképezési adatként való átalakítását. A rajzolási csomagoknak meg kell felelniük a [rajzolási csomagok követelményeinek](drawing-requirements.md). Ha egy vagy több követelmény nem teljesül, az átalakítási szolgáltatás hibákat vagy figyelmeztetéseket ad vissza. Ez a cikk az átalakítási hibát és a figyelmeztetési kódokat sorolja fel, és javaslatokat tesz a megoldására. Emellett néhány példát is tartalmaz a rajzok számára, amelyek hatására az átalakítási szolgáltatás visszaadja ezeket a kódokat.
+A [Azure Maps konverziós szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) lehetővé teszi a feltöltött rajzok leképezési adatként való átalakítását. A rajzolási csomagoknak meg kell felelniük a [rajzolási csomagok követelményeinek](drawing-requirements.md). Ha egy vagy több követelmény nem teljesül, az átalakítási szolgáltatás hibákat vagy figyelmeztetéseket ad vissza. Ez a cikk az átalakítási hibát és a figyelmeztetési kódokat sorolja fel, és javaslatokat tesz a megoldására. Emellett néhány példát is tartalmaz a rajzok számára, amelyek hatására az átalakítási szolgáltatás visszaadja ezeket a kódokat.
 
 Az átalakítási szolgáltatás akkor fog sikerülni, ha van valamilyen konverziós figyelmeztetés. Javasoljuk azonban, hogy tekintse át és oldja fel az összes figyelmeztetést. Egy figyelmeztetés a konverzió egy részét figyelmen kívül hagyta vagy automatikusan rögzítették. A figyelmeztetések feloldása hibát okozhat az utóbbi folyamatokban.
 
@@ -73,7 +73,7 @@ A **unsupportedFeatureRepresentation** figyelmeztetés akkor fordul elő, ha a r
 
 Az alábbi képen egy nem támogatott entitás típusa jelenik meg többsoros szöveges objektumként egy felirat rétegben.
   
-![Példa többsoros szöveges objektumra a címke rétegén](./media/drawing-conversion-error-codes/multiline.png)
+![Példa többsoros szöveges objektumra a címke rétegén](./media/drawing-conversion-error-codes/multi-line.png)
 
 #### <a name="how-to-fix-unsupportedfeaturerepresentation"></a>*A unsupportedFeatureRepresentation javítása*
 
@@ -494,7 +494,7 @@ Az alábbi képen egy vertikális behatolási terület látható, amely nem fedi
 
 Az alábbi képen egy vertikális behatolási hely látható, amely átfedésben van egy szomszédos szinten lévő több vertikális bevezetési résszel.
 
-![Példa függőleges behatolásra 2](./media/drawing-conversion-error-codes/vrt.png)
+![Példa függőleges behatolásra 2](./media/drawing-conversion-error-codes/vrt-1.png)
 
 #### <a name="how-to-fix-verticalpenetrationerror"></a>A verticalPenetrationError javítása
 

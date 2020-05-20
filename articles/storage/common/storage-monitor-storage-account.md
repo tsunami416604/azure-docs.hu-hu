@@ -8,12 +8,13 @@ ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 43955950b2fc0544b149c67e3f8df7ca905fafed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 6f53d5ec2d73c9edbb7e24c24107b2a6d6deb167
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79268287"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684677"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Tárfiók monitorozása az Azure Portalon
 
@@ -111,10 +112,10 @@ Riasztásokat hozhat létre, amelyekkel értesítést kaphat, ha elérte a táro
 Bármelyik Storage-fiókhoz hozzáadhat Azure Storage metrikai diagramokat a portál irányítópultján.
 
 1. Válassza az **irányítópult szerkesztése** lehetőséget az irányítópult megtekintésekor a [Azure Portal](https://portal.azure.com).
-1. A csempe- **gyűjteményben**válassza a **csempék keresése** > **típus**szerint lehetőséget.
-1. Válassza a **típus** > **Storage-fiókok**lehetőséget.
+1. A csempe- **gyűjteményben**válassza a **csempék keresése**  >  **típus**szerint lehetőséget.
+1. Válassza a **típus**  >  **Storage-fiókok**lehetőséget.
 1. Az **erőforrások**területen válassza ki azt a Storage-fiókot, amelynek metrikáit hozzá szeretné adni az irányítópulthoz.
-1. Válassza ki a **Kategóriák** > **figyelése**elemet.
+1. Válassza ki a **Kategóriák**  >  **figyelése**elemet.
 1. Húzza a diagram csempét az Irányítópultra a megjelenő mérőszámhoz. Ismételje meg az összes olyan mérőszámot, amelyet meg szeretne jeleníteni az irányítópulton. A következő ábrán a "Blobok – összes kérelem" diagram ki van emelve példaként, de az irányítópulton az összes diagram elérhetővé válik.
 
    ![Csempe-gyűjtemény Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)

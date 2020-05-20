@@ -1,18 +1,18 @@
 ---
-title: Update Management a Azure Automation
-description: Ez a cikk a Windows és Linux rendszerű gépek frissítéseit kezelő Update Management funkciót ismerteti.
+title: Azure Automation Update Management áttekintése
+description: A Windows és Linux rendszerű gépek frissítéseit kezelő Update Management funkció áttekintése
 services: automation
 ms.subservice: update-management
 ms.date: 05/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca5d8c35aea06143e058aade473282a038212605
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: d3a3a19673ecb6edb82f0512f318298865c8ed24
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872167"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681289"
 ---
-# <a name="update-management-in-azure-automation"></a>Update Management a Azure Automation
+# <a name="update-management-overview"></a>A frissítéskezelés áttekintése
 
 Az Azure-ban, a helyszíni környezetekben és más felhőalapú környezetekben lévő Windows-és Linux-gépek operációsrendszer-frissítéseinek kezeléséhez Update Managementt használhat Azure Automation. Gyorsan felbecsülheti az összes ügynökön elérhető frissítések állapotát, és kezelheti a kiszolgálók szükséges frissítéseinek telepítésének folyamatát.
 
@@ -83,7 +83,7 @@ A következő táblázat felsorolja a frissítési felmérések támogatott oper
 |---------|---------|
 |Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 || 
 |Windows Server 2008 R2 (RTM és SP1 standard)| Update Management csak az ehhez az operációs rendszerhez tartozó értékeléseket támogatja. A javítások nem támogatottak, mert a [hibrid Runbook](automation-windows-hrw-install.md) -feldolgozó nem támogatott a Windows Server 2008 R2 rendszerben. |
-|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A besoroláson alapuló javításokhoz `yum` olyan biztonsági adatforrásokat kell visszaadnia, amelyeket a CentOS nem tartalmaz a RTM kiadásokban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](automation-view-update-assessments.md#linux-2)rendszeren.          |
+|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz. A besoroláson alapuló javításokhoz olyan `yum` biztonsági adatforrásokat kell visszaadnia, amelyeket a CentOS nem tartalmaz a RTM kiadásokban. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](automation-view-update-assessments.md#linux-2)rendszeren.          |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.        |
 |Ubuntu 14,04 LTS, 16,04 LTS és 18,04 (x86/x64)      |A Linux-ügynököknek hozzáférésre van szükségük egy frissítési tárházhoz.         |
@@ -153,7 +153,7 @@ Ha a Operations Manager felügyeleti csoport [egy log Analytics munkaterülethez
 * Frissítéstelepítő felügyeleti csomag
 
 > [!NOTE]
-> Ha van olyan Operations Manager 1807 vagy 2019 felügyeleti csoport, amely egy Log Analytics munkaterülethez van csatlakoztatva, és a felügyeleti csoportban a naplózási adatok gyűjtéséhez konfigurált ügynökök vannak konfigurálva `IsAutoRegistrationEnabled` , akkor a paramétert felül kell bírálni a **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** szabályban.
+> Ha van olyan Operations Manager 1807 vagy 2019 felügyeleti csoport, amely egy Log Analytics munkaterülethez van csatlakoztatva, és a felügyeleti csoportban a naplózási adatok gyűjtéséhez konfigurált ügynökök vannak konfigurálva, akkor a paramétert felül kell bírálni a `IsAutoRegistrationEnabled` **Microsoft. IntelligencePacks. AzureAutomation. HybridAgent. init** szabályban.
 
 A felügyeleti csomagok frissítéseivel kapcsolatos további információkért lásd: [Operations Manager Összekötése Azure monitor naplókhoz](../azure-monitor/platform/om-agents.md).
 
@@ -166,7 +166,7 @@ A felügyeleti csomagok frissítéseivel kapcsolatos további információkért 
 
 A következő táblázat ismerteti a Update Management által támogatott csatlakoztatott forrásokat:
 
-| Csatlakoztatott forrás | Támogatott | Leírás |
+| Csatlakoztatott forrás | Támogatott | Description |
 | --- | --- | --- |
 | Windows-ügynökök |Igen |Update Management adatokat gyűjt a Windows-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését. |
 | Linux-ügynökök |Igen |Update Management adatokat gyűjt a Linux-ügynököktől a rendszerfrissítésekről, majd elindítja a szükséges frissítések telepítését a támogatott disztribúciók esetében. |
@@ -207,7 +207,7 @@ Az internet-hozzáféréssel nem rendelkező számítógépek konfigurálásáho
 
 A következő táblázat azokat a besorolásokat határozza meg, amelyeket Update Management támogat a Windows-frissítésekhez. 
 
-|Osztályozás  |Leírás  |
+|Osztályozás  |Description  |
 |---------|---------|
 |Kritikus frissítések     | Egy adott problémára vonatkozó frissítés, amely kritikus, nem biztonsággal kapcsolatos hibára vonatkozik.        |
 |Biztonsági frissítések     | Egy termékre vonatkozó, biztonsággal kapcsolatos probléma frissítése.        |
@@ -220,7 +220,7 @@ A következő táblázat azokat a besorolásokat határozza meg, amelyeket Updat
 
 A következő táblázat a Linux-frissítések támogatott besorolásait határozza meg.
 
-|Osztályozás  |Leírás  |
+|Osztályozás  |Description  |
 |---------|---------|
 |Kritikus vagy biztonsági frissítések     | Adott probléma vagy termékspecifikus, biztonsággal kapcsolatos probléma frissítései.         |
 |Egyéb frissítések     | Minden egyéb olyan frissítés, amely nem kritikus jellegű, vagy amelyek nem biztonsági frissítések.        |

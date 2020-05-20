@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 5e0043ebba1a317dcc6798d6be74aac051d97012
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597925"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685173"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Stream Analytics-feladatok létrehozása az Azure SQL Edge-ben (előzetes verzió) 
 
@@ -22,6 +22,9 @@ Ez a cikk azt ismerteti, hogyan lehet T-SQL streaming-feladatot létrehozni az A
 
 1. Külső stream bemeneti és kimeneti objektumainak létrehozása
 2. A folyamatos átviteli feladatok létrehozásának részeként adja meg a folyamatos átviteli feladatok lekérdezését.
+
+> [!NOTE]
+> Az Azure SQL Edge-ben a T-SQL streaming funkció engedélyezéséhez engedélyezze a TF 11515-as indítási lehetőséget, vagy használja a [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) parancsot. További információ a nyomkövetési jelzők MSSQL. conf fájl használatával történő engedélyezéséről: [Konfigurálás az MSSQL. conf fájllal](configure.md#configure-using-mssqlconf-file). Ez a követelmény el lesz távolítva az Azure SQL Edge (előzetes verzió) jövőbeli frissítéseiben.
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Külső stream bemeneti és kimeneti objektumának konfigurálása
 
@@ -39,7 +42,7 @@ Emellett az SQL Edge (vagy SQL Server, Azure SQL) kimeneti adatfolyamként való
 
 Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-bemenetként és-kimenetként.
 
-| Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
+| Adatforrás típusa | Input (Bemenet) | Kimenet | Description |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | I | I | Az adatforrást az adatfolyamok Azure IoT Edge hubhoz való olvasására és írására. Azure IoT Edge hubhoz vonatkozó további információkért lásd: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
 | SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. A SQL Database lehet helyi SQL Edge-adatbázis vagy távoli SQL Server vagy Azure SQL Database|

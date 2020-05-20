@@ -3,12 +3,12 @@ title: Webhookok a beállításjegyzékbeli műveletekre való reagáláshoz
 description: Ismerje meg, hogyan indíthat el eseményeket a webhookok használatával, amikor leküldéses vagy lekéréses műveletek történnek a beállításjegyzékbeli adattárakban.
 ms.topic: article
 ms.date: 05/24/2019
-ms.openlocfilehash: 5e6fd2d9f4c7727365a8e2fe3893aafebfeb7bd4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3d0a12b6e742b0209cbb746a70686423f2fb5627
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74454376"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685033"
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhookok használata
 
@@ -18,7 +18,7 @@ A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Regist
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure Container Registry – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t. Az [Azure Container Registry SKU](container-registry-skus.md) -ban különböző webhookok kvótái vannak.
+* Azure Container Registry – Létrehozhat egy tároló-beállításjegyzéket Azure-előfizetésében. Használja például a [Azure Portal](container-registry-get-started-portal.md) vagy az [Azure CLI](container-registry-get-started-azure-cli.md)-t. A [Azure Container Registry szolgáltatási szintjei](container-registry-skus.md) eltérő webhook-kvótával rendelkeznek.
 * A Docker parancssori felülete – Ha szeretné helyi számítógépét Docker-gazdagépként beállítani és elérni a Docker parancssori felületének parancsait, telepítse a [Docker Engine-t](https://docs.docker.com/engine/installation/).
 
 ## <a name="create-webhook---azure-portal"></a>Webhook létrehozása – Azure Portal
@@ -29,14 +29,14 @@ A webhook-kérelmekkel kapcsolatos részletekért lásd: [Azure Container Regist
 1. A webhook eszköztárban válassza a **Hozzáadás** lehetőséget.
 1. Fejezze be a *webhook létrehozása* űrlapot a következő információkkal:
 
-| Érték | Leírás |
+| Érték | Description |
 |---|---|
 | Webhook neve | A webhookhoz adni kívánt név. Csak betűket és számokat tartalmazhat, és 5-50 karakter hosszúnak kell lennie. |
 | Hely | [Földrajzilag replikált](container-registry-geo-replication.md) beállításjegyzék esetén a beállításjegyzék-replika Azure-régióját kell megadnia. 
 | Szolgáltatás URI-ja | Az az URI, amelyben a webhooknak POST-értesítéseket kell küldenie. |
 | Egyéni fejlécek | A POST kérelemmel együtt átadni kívánt fejlécek. A "Key: Value" formátumúnak kell lenniük. |
 | Trigger műveletek | A webhookot kiváltó műveletek. A műveletek közé tartozik a képek leküldése, a rendszerkép törlése, a Helm chart push, a Helm diagram törlése és a képek karanténba helyezése. Kiválaszthat egy vagy több műveletet a webhook elindításához. |
-| status | A webhook állapota a létrehozásuk után. Alapértelmezés szerint engedélyezve van. |
+| Állapot | A webhook állapota a létrehozásuk után. Alapértelmezés szerint engedélyezve van. |
 | Hatókör | A webhook működésének hatóköre. Ha nincs megadva, a hatókör a beállításjegyzékben található összes eseményre kiterjed. Megadható egy adattárhoz vagy egy címkéhez "adattár: tag" vagy "adattár: *" formátumban a tárházban található összes címkéhez. |
 
 Példa webhook-űrlapra:

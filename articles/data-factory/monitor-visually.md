@@ -9,13 +9,13 @@ ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/19/2018
-ms.openlocfilehash: 40b1b8d040c4b3ea76372920f88551fba35c5f26
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 01a4cd172b699cef009197d1fce1d5bae62f2925
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81419442"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680613"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuális monitorozás Azure Data Factory
 
@@ -36,7 +36,7 @@ Az alapértelmezett figyelési nézet a folyamat futtatásának listáját tarta
 | Futtatás indítása | A folyamat futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
 | Aktiválta: | A folyamatot elindító trigger neve |
-| status | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva**vagy **várólistán** lévő |
+| Állapot | **Sikertelen**, **sikeres**, **folyamatban**, **megszakítva**vagy **várólistán** lévő |
 | Széljegyzetek | Egy folyamathoz társított szűrhető Címkék  |
 | Paraméterek | A folyamat futtatásának paraméterei (név/érték párok) |
 | Hiba | Ha a folyamat nem sikerült, a futtatási hiba |
@@ -59,7 +59,7 @@ Ha a tevékenységek futtatását szeretné megtekinteni az egyes folyamatokhoz,
 | Műveletek | Ikonok, amelyekkel megtekintheti a JSON bemeneti adatait, a JSON kimeneti adatait vagy a tevékenységekre vonatkozó részletes figyelési tapasztalatokat | 
 | Futtatás indítása | A tevékenység futtatásának kezdési dátuma és időpontja (hh/nn/éééé, óó: PP: SS AM/PM) |
 | Időtartam | Futtatás időtartama (óó: PP: SS) |
-| status | **Sikertelen**, **sikeres**, **folyamatban**vagy **megszakítva** |
+| Állapot | **Sikertelen**, **sikeres**, **folyamatban**vagy **megszakítva** |
 | Integration Runtime | Integration Runtime a tevékenység futtatása |
 | Felhasználói tulajdonságok | A tevékenység felhasználó által definiált tulajdonságai |
 | Hiba | Ha a tevékenység nem sikerült, a futtatási hiba |
@@ -132,6 +132,21 @@ Egy adott folyamat futtatásához is megtekintheti az újrafuttatási előzmény
 
 ![Folyamat futtatási előzményeinek megtekintése](media/monitor-visually/rerun-history-image2.png)
 
+## <a name="monitor-consumption"></a>Használat figyelése
+
+A folyamat által használt erőforrásokat a Futtatás elem melletti fogyasztás ikonra kattintva tekintheti meg. 
+
+![Használat figyelése](media/monitor-visually/monitor-consumption-1.png)
+
+Az ikonra kattintva megnyithatja az adott folyamat által használt erőforrások felhasználási jelentését. 
+
+![Használat figyelése](media/monitor-visually/monitor-consumption-2.png)
+
+Ezeket az értékeket az [Azure díjszabási calcula. hat folyamat futtatása során lehet csatlakoztatni. További információ a Azure Data Factory díjszabásáról: a [díjszabás ismertetése](pricing-concepts.md).
+
+> [!NOTE]
+> A díjszabási számológép által visszaadott értékek becslést tartalmaznak. Nem tükrözi azt a pontos összeget, amelyet a Azure Data Factory számláz majd 
+
 ## <a name="gantt-views"></a>Gantt-nézetek
 
 Gantt-nézetek használatával gyorsan megjelenítheti a folyamatokat és a tevékenységek futtatását.
@@ -153,7 +168,7 @@ Válassza ki az **információs** ikont a bal alsó sarokban. Ezután válassza 
 
 ## <a name="alerts"></a>Riasztások
 
-Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A kezdéshez válassza a riasztások **figyelése** > **& mérőszámok** lehetőséget a Data Factory figyelése lapon.
+Data Factory a támogatott mérőszámokra vonatkozó riasztásokat is kiemelheti. A **Monitor**  >  kezdéshez válassza a**riasztások figyelése & mérőszámok** lehetőséget a Data Factory figyelése lapon.
 
 ![A adatgyár-figyelő lapja](media/monitor-visually/alerts01.png)
 

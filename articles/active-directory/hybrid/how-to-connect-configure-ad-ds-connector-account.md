@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/29/2019
+ms.date: 05/18/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb80c3a94e63a886e4a16c0b8fa445b2a8a34e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c69a700c9bcaa018bcfc1b1e6e01e166ef2d43bf
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72515816"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680231"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: AD DS-összekötő fiók engedélyeinek konfigurálása 
 
@@ -32,7 +32,7 @@ Azure AD Connect expressz telepítéshez egy automatikusan létrehozott fiók (M
 ### <a name="permissions-summary"></a>Engedélyek összegzése 
 Az alábbi táblázat az AD-objektumokhoz szükséges engedélyek összegzését tartalmazza: 
 
-| Szolgáltatás | Engedélyek |
+| Funkció | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Olvasási és írási engedélyek a tervezési fogalmakban dokumentált ms-DS-ConsistencyGuid attribútumhoz [– MS-DS-ConsistencyGuid as SourceAnchor használatával](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszó kivonatának szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |
@@ -40,7 +40,7 @@ Az alábbi táblázat az AD-objektumokhoz szükséges engedélyek összegzését
 | Exchange-levelezés nyilvános mappája |Olvasási engedélyek a nyilvános mappák Exchange- [levelezés nyilvános mappájában](reference-connect-sync-attributes-synchronized.md#exchange-mail-public-folder) dokumentált attribútumokhoz. | 
 | Jelszóvisszaíró |Olvasási és írási engedélyek a felhasználók [jelszavas kezelésének megkezdése](../authentication/howto-sspr-writeback.md) című dokumentumban ismertetett attribútumokhoz. |
 | Eszközvisszaíró |Olvasási és írási engedélyek a Device [visszaírási](how-to-connect-device-writeback.md)-ben dokumentált eszközök objektumaihoz és tárolóhoz. |
-| Group writeback (Csoportvisszaíró) |Csoport objektumok olvasása, létrehozása, frissítése és törlése a szinkronizált **Office 365-csoportokhoz**.  További információ: [Group visszaírási](how-to-connect-preview.md#group-writeback).|
+| Group writeback (Csoportvisszaíró) |Csoport objektumok olvasása, létrehozása, frissítése és törlése a szinkronizált **Office 365-csoportokhoz**.|
 
 ## <a name="using-the-adsyncconfig-powershell-module"></a>A ADSyncConfig PowerShell-modul használata 
 A ADSyncConfig modulhoz a [AD DS Távoli kiszolgálófelügyelet eszközei (RSAT) szükséges,](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) mivel az AD DS PowerShell-modultól és-eszközöktől függ. Az RSAT AD DS telepítéséhez nyisson meg egy Windows PowerShell-ablakot a "Futtatás rendszergazdaként" és a végrehajtás: 
@@ -81,15 +81,15 @@ Vagy
 Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <ADAccountDN>
 ```
 
-Ügyeljen rá, `<ADAccountName>` `<ADDomainName>` hogy a és `<ADAccountDN>` a megfelelő értékekkel helyettesítse a környezetét.
+Ügyeljen rá, hogy `<ADAccountName>` `<ADDomainName>` a és `<ADAccountDN>` a megfelelő értékekkel helyettesítse a környezetét.
 
-Ha nem szeretné módosítani a AdminSDHolder tároló engedélyeit, használja a kapcsolót `-SkipAdminSdHolders`. 
+Ha nem szeretné módosítani a AdminSDHolder tároló engedélyeit, használja a kapcsolót `-SkipAdminSdHolders` . 
 
 Alapértelmezés szerint az összes beállított engedély-parancsmag megpróbálja beállítani AD DS engedélyeket az erdő minden tartományának gyökerére, ami azt jelenti, hogy a PowerShell-munkamenetet futtató felhasználónak tartományi rendszergazdai jogosultságokra van szüksége az erdő minden tartományához.  Ennek a követelménynek a miatt ajánlott a vállalati rendszergazda használata az erdő gyökeréből. Ha a Azure AD Connect üzemelő példány több AD DS összekötővel rendelkezik, akkor minden olyan erdőben futtatnia kell ugyanazt a parancsmagot, amely AD DS-összekötővel rendelkezik. 
 
-Az engedélyeket egy adott szervezeti egységen vagy AD DS objektumon is megadhatja a `-ADobjectDN` paraméterrel, majd annak a célként megadott objektumnak a DN-nevével, amelyen az engedélyeket be szeretné állítani. Target ADobjectDN használata esetén a parancsmag csak az objektumra vonatkozó engedélyeket állítja be, nem pedig a tartományi gyökér-vagy AdminSDHolder-tárolón. Ez a paraméter akkor lehet hasznos, ha olyan szervezeti egységekkel vagy AD DS objektumokkal rendelkezik, amelyek engedélyeinek öröklése le van tiltva (lásd: AD DS objektumok megkeresése az engedélyek öröklésével letiltva 
+Az engedélyeket egy adott szervezeti egységen vagy AD DS objektumon is megadhatja a paraméterrel `-ADobjectDN` , majd annak a célként megadott objektumnak a DN-nevével, amelyen az engedélyeket be szeretné állítani. Target ADobjectDN használata esetén a parancsmag csak az objektumra vonatkozó engedélyeket állítja be, nem pedig a tartományi gyökér-vagy AdminSDHolder-tárolón. Ez a paraméter akkor lehet hasznos, ha olyan szervezeti egységekkel vagy AD DS objektumokkal rendelkezik, amelyek engedélyeinek öröklése le van tiltva (lásd: AD DS objektumok megkeresése az engedélyek öröklésével letiltva 
 
-Ezen általános paraméterek alól kivételek a `Set-ADSyncRestrictedPermissions` parancsmagok, amelyek az AD DS-összekötő fiók engedélyeinek beállítására szolgálnak, és `Set-ADSyncPasswordHashSyncPermissions` a parancsmag a jelszó-kivonat szinkronizálásához szükséges engedélyek csak a tartomány gyökerére van beállítva, ezért ez a parancsmag nem tartalmazza `-ObjectDN` a `-SkipAdminSdHolders` vagy a paramétereket.
+Ezen általános paraméterek alól kivételek a `Set-ADSyncRestrictedPermissions` parancsmagok, amelyek az AD DS-összekötő fiók engedélyeinek beállítására szolgálnak, és a `Set-ADSyncPasswordHashSyncPermissions` parancsmag a jelszó-kivonat szinkronizálásához szükséges engedélyek csak a tartomány gyökerére van beállítva, ezért ez a parancsmag nem tartalmazza a `-ObjectDN` vagy a `-SkipAdminSdHolders` paramétereket.
 
 ### <a name="determine-your-ad-ds-connector-account"></a>Az AD DS-összekötő fiókjának meghatározása 
 Ha a Azure AD Connect már telepítve van, és szeretné megtekinteni, hogy mi az a Azure AD Connect által jelenleg használt AD DS Connector-fiók, akkor a következő parancsmagot hajthatja végre: 
@@ -103,7 +103,7 @@ Ha szeretné megtekinteni, hogy van-e olyan AD DS objektum, amelynél az örökl
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' 
 ```
-Alapértelmezés szerint ez a parancsmag csak a letiltott örökléssel rendelkező szervezeti egységeket fogja keresni, de a `-ObjectClass` paraméterben más AD DS objektumosztály is megadható, vagy a "*" minden objektumosztály esetében a következőt használhatja: 
+Alapértelmezés szerint ez a parancsmag csak a letiltott örökléssel rendelkező szervezeti egységeket fogja keresni, de a paraméterben más AD DS objektumosztály is megadható, `-ObjectClass` vagy a "*" minden objektumosztály esetében a következőt használhatja: 
 
 ``` powershell
 Get-ADSyncObjectsWithInheritanceDisabled -SearchBase '<DistinguishedName>' -ObjectClass * 
@@ -136,7 +136,7 @@ Set-ADSyncBasicReadPermissions -ADConnectorAccountDN <String> [-ADobjectDN <Stri
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
  
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség| 
+|Típus |Name |Hozzáférés |Érvényesség| 
 |-----|-----|-----|-----|
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása |Leszármazott eszköz objektumai| 
 |Engedélyezés |AD DS-összekötő fiókja|Az összes tulajdonság olvasása |Leszármazott InetOrgPerson objektumok| 
@@ -148,7 +148,7 @@ Ez a parancsmag a következő engedélyeket fogja beállítani:
 
  
 ### <a name="configure-ms-ds-consistency-guid-permissions"></a>MS-DS-konzisztencia – GUID engedélyek konfigurálása 
-Ha az MS-DS-konzisztencia-GUID attribútumot használja a forrás-horgonyként (más néven "az Azure kezelése a forrás-horgonyt a számomra" beállítással), akkor a következő futtatásával állíthatja be a AD DS-összekötő fiók engedélyeit: 
+Ha az MS-DS-konzisztencia-GUID attribútumot használja a forrásként szolgáló horgonyként (más néven "a forrás-horgony kezelése a számomra" beállítással), futtassa a következőt: AD DS 
 
 ``` powershell
 Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountName <String> -ADConnectorAccountDomain <String> [-SkipAdminSdHolders] [<CommonParameters>] 
@@ -162,7 +162,7 @@ Set-ADSyncMsDsConsistencyGuidPermissions -ADConnectorAccountDN <String> [-ADobje
 
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség|
+|Típus |Name |Hozzáférés |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés|AD DS-összekötő fiókja|Olvasási/írási tulajdonság|Leszármazott felhasználói objektumok|
 
@@ -182,7 +182,7 @@ Set-ADSyncPasswordHashSyncPermissions -ADConnectorAccountDN <String> [<CommonPar
 
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség|
+|Típus |Name |Hozzáférés |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Címtárbeli módosítások replikálása |Csak ez az objektum (tartományi gyökér)| 
 |Engedélyezés |AD DS-összekötő fiókja |A címtár összes módosításának replikálása |Csak ez az objektum (tartományi gyökér)| 
@@ -202,7 +202,7 @@ Set-ADSyncPasswordWritebackPermissions -ADConnectorAccountDN <String> [-ADobject
 ```
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség|
+|Típus |Name |Hozzáférés |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Jelszó alaphelyzetbe állítása |Leszármazott felhasználói objektumok| 
 |Engedélyezés |AD DS-összekötő fiókja |Írási tulajdonság lockoutTime |Leszármazott felhasználói objektumok| 
@@ -222,7 +222,7 @@ Set-ADSyncUnifiedGroupWritebackPermissions -ADConnectorAccountDN <String> [-ADob
  
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség|
+|Típus |Name |Hozzáférés |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Általános olvasási/írási |Az objektumtípus-csoport és alobjektumok összes attribútuma| 
 |Engedélyezés |AD DS-összekötő fiókja |Gyermekobjektum létrehozása/törlése |Az objektumtípus-csoport és alobjektumok összes attribútuma| 
@@ -245,7 +245,7 @@ Set-ADSyncExchangeHybridPermissions -ADConnectorAccountDN <String> [-ADobjectDN 
 Ez a parancsmag a következő engedélyeket fogja beállítani:  
  
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség|
+|Típus |Name |Hozzáférés |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása/írása |Leszármazott felhasználói objektumok| 
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása/írása |Leszármazott InetOrgPerson objektumok| 
@@ -267,7 +267,7 @@ Set-ADSyncExchangeMailPublicFolderPermissions -ADConnectorAccountDN <String> [-A
 ```
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség|
+|Típus |Name |Hozzáférés |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |AD DS-összekötő fiókja |Az összes tulajdonság olvasása |Leszármazott PublicFolder objektumok| 
 
@@ -292,7 +292,7 @@ Set-ADSyncRestrictedPermissions -ADConnectorAccountDN'CN=ADConnectorAccount,CN=U
 
 Ez a parancsmag a következő engedélyeket fogja beállítani: 
 
-|Típus |Name (Név) |Hozzáférés |Érvényesség|
+|Típus |Name |Hozzáférés |Érvényesség|
 |-----|-----|-----|-----| 
 |Engedélyezés |RENDSZER |Teljes hozzáférés |Ez az objektum 
 |Engedélyezés |Vállalati rendszergazdák |Teljes hozzáférés |Ez az objektum 

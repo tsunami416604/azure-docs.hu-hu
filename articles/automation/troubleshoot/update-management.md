@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítási Azure Automation Update Management
-description: Megtudhatja, hogyan lehet elhárítani és elhárítani a Update Management megoldással kapcsolatos problémákat Azure Automationban.
+title: Azure Automation Update Management problémák elhárítása
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Update Managementekkel kapcsolatos problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,28 +8,25 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f936b62349a534e6193a3c628c66c49d1a58b681
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 64df2e0f17322f8e650ede9d4453d90c36252135
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790830"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680024"
 ---
-# <a name="troubleshoot-issues-with-the-update-management-solution"></a>A Update Management megoldással kapcsolatos problémák elhárítása
+# <a name="troubleshoot-update-management-issues"></a>Update Management problémák elhárítása
 
-Ez a cikk a Update Management-megoldás használatakor esetlegesen futtatott problémákat ismerteti. A hibrid Runbook-feldolgozó ügynöknek van egy ügynök-hibakeresője a mögöttes probléma meghatározásához. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [Windows Update Agent problémáinak elhárítása](update-agent-issues.md) és a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues-linux.md)című témakört. Más bevezetési problémák esetén lásd: a megoldás előkészítésének [hibaelhárítása](onboarding.md).
-
->[!NOTE]
->Ha a megoldás virtuális gépen (VM) való bevezetésével kapcsolatos problémákat tapasztal, tekintse meg a helyi számítógép **alkalmazás-és szolgáltatások naplójának** **Operations Manager** naplóját. Keresse meg a 4502-as AZONOSÍTÓJÚ eseményt és a benne `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent`található esemény részleteit.
+Ez a cikk azokat a problémákat ismerteti, amelyekkel a Update Management funkciónak a gépeken való telepítésekor futhat. A hibrid Runbook-feldolgozó ügynöknek van egy ügynök-hibakeresője a mögöttes probléma meghatározásához. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [Windows Update Agent problémáinak elhárítása](update-agent-issues.md) és a [Linux frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues-linux.md)című témakört. A szolgáltatással kapcsolatos egyéb problémák esetén lásd: a [funkciók üzembe helyezésével kapcsolatos problémák elhárítása](onboarding.md).
 
 >[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
+>Ha a virtuális gépeken Update Management telepítésekor problémákba lép, tekintse meg a helyi számítógép **alkalmazás-és szolgáltatások naplói** területén található **Operations Manager** naplót. Keresse meg a 4502-as AZONOSÍTÓJÚ eseményt és a benne található esemény részleteit `Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent` .
 
 ## <a name="scenario-you-receive-the-error-failed-to-enable-the-update-solution"></a>Forgatókönyv: a "nem sikerült engedélyezni a frissítési megoldást" hibaüzenet jelenik meg
 
 ### <a name="issue"></a>Probléma
 
-Ha az Automation-fiókban megpróbálja engedélyezni a Update Management megoldást, a következő hibaüzenet jelenik meg:
+Ha az Automation-fiókban próbál Update Management engedélyezni, a következő hibaüzenet jelenik meg:
 
 ```error
 Error details: Failed to enable the Update solution
@@ -41,9 +38,9 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * Lehetséges, hogy nem megfelelően van konfigurálva a hálózati tűzfalra vonatkozó követelmények a Log Analytics ügynökhöz. Ez a helyzet arra vezethet, hogy az ügynök meghibásodik a DNS URL-címeinek feloldásakor.
 
-* A megoldások célzása helytelenül van konfigurálva, és a gép nem fogadja a várt frissítéseket.
+* A Update Management célzás helytelenül van konfigurálva, és a gép nem fogadja a várt frissítéseket.
 
-* Azt is megfigyelheti, hogy a gép a `Non-compliant` **megfelelőség**alatt látható állapotot jeleníti meg. Ugyanakkor az **Agent Desktop Analytics** az ügynököt a következőként jelenti `Disconnected`:.
+* Azt is megfigyelheti, hogy a gép a megfelelőség alatt látható állapotot jeleníti meg `Non-compliant` . **Compliance** Ugyanakkor az **Agent Desktop Analytics** az ügynököt a következőként jelenti: `Disconnected` .
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -53,9 +50,9 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * A [hálózati konfiguráció](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) lehetőségre kattintva megismerheti, hogy mely címeket és portokat kell engedélyezni a log Analytics-ügynök működéséhez.
 
-* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek legyenek konfigurálva a megoldáshoz. Ha a gép megjelenik a munkaterületen, de nem a * * Update Management portálon, be kell állítania a hatókör-konfigurációt a gépek célzásához. A hatókör-konfigurációval kapcsolatos további tudnivalókért tekintse meg [a munkaterületen lévő számítógépeket](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)ismertető témakört.
+* A hatókör-konfigurációs problémák keresése. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. Ha a gép megjelenik a munkaterületen, de nem a Update Management-portálon, akkor a hatókör-konfigurációt úgy kell beállítania, hogy a gépeket célozza meg. A hatókör-konfigurációval kapcsolatos további tudnivalókért lásd: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
 
-* Távolítsa el a munkavégző konfigurációt a [Windows Hybrid Runbook Worker eltávolítása](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) vagy [a Linux Hybrid Runbook Worker eltávolítása](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)című témakör lépéseit követve. 
+* Távolítsa el a munkavégző konfigurációt a [hibrid Runbook-feldolgozó eltávolítása helyszíni Windows-számítógépről](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) vagy a [hibrid Runbook-](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker)feldolgozó eltávolítása egy helyszíni Linux-számítógépről című témakör lépéseit követve. 
 
 ## <a name="scenario-superseded-update-indicated-as-missing-in-update-management"></a>Forgatókönyv: hiányzóként jelzett, felülírt frissítés Update Management
 
@@ -69,7 +66,7 @@ A felülírt frissítések nem megfelelően vannak jelezve, hogy ne legyenek alk
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha a felváltott frissítés 100%-os lesz, a frissítés jóváhagyási állapotát a következőre kell módosítani `Declined`:. Az összes frissítés jóváhagyási állapotának módosítása:
+Ha a felváltott frissítés 100%-os lesz, a frissítés jóváhagyási állapotát a következőre kell módosítani: `Declined` . Az összes frissítés jóváhagyási állapotának módosítása:
 
 1. Az Automation-fiókban válassza a **Update Management** lehetőséget a gép állapotának megtekintéséhez. Lásd: [frissítési felmérések megtekintése](../manage-update-multi.md#view-an-update-assessment).
 
@@ -93,7 +90,7 @@ Ha a felváltott frissítés 100%-os lesz, a frissítés jóváhagyási állapot
 
 A gépek a következő tünetekkel rendelkeznek:
 
-* A gép a `Not configured` virtuális gép Update Management nézetét jeleníti meg.
+* A gép `Not configured` a virtuális gép Update Management nézetét jeleníti meg.
 
 * A gépek hiányoznak a Azure Automation fiókjának Update Management nézetéről.
 
@@ -122,9 +119,9 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
 
 4. Ha nem látja a gépet a lekérdezés eredményei között, a közelmúltban nem volt bejelölve. Valószínűleg van egy helyi konfigurációs probléma, és újra kell [telepítenie az ügynököt](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows). 
 
-5. Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) határozza meg, hogy mely gépek vannak konfigurálva a megoldáshoz. 
+5. Ha a gép megjelenik a lekérdezés eredményei között, ellenőrizze a hatókör-konfigurációs problémákat. A [hatókör-konfiguráció](../automation-onboard-solutions-from-automation-account.md#scope-configuration) meghatározza, hogy mely gépek vannak konfigurálva a Update Managementhoz. 
 
-6. Ha a gép megjelenik a munkaterületen, de nem Update Managementban, akkor a hatókör-konfigurációt úgy kell konfigurálnia, hogy az a gépet célozza meg. Ennek megismeréséhez tekintse meg [a munkaterületen található gépek](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace)előkészítését ismertető témakört.
+6. Ha a gép megjelenik a munkaterületen, de nem Update Managementban, akkor a hatókör-konfigurációt úgy kell konfigurálnia, hogy az a gépet célozza meg. Ennek módjáról a következő témakörben talál további információt: [gépek engedélyezése a munkaterületen](../automation-onboard-solutions-from-automation-account.md#onboard-machines-in-the-workspace).
 
 7. A munkaterületen futtassa ezt a lekérdezést.
 
@@ -134,7 +131,7 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
    | sort by TimeGenerated desc
    ```
 
-8. Ha ezt az `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` eredményt kapja, elérte a munkaterületen definiált kvótát, amely leállította az adatok mentését. A munkaterületen válassza az **adatmennyiség-kezelés** a **használat és a becsült költségek**lehetőséget, majd módosítsa vagy távolítsa el a kvótát.
+8. Ha ezt `Data collection stopped due to daily limit of free data reached. Ingestion status = OverQuota` az eredményt kapja, elérte a munkaterületen definiált kvótát, amely leállította az adatok mentését. A munkaterületen válassza az **adatmennyiség-kezelés** a **használat és a becsült költségek**lehetőséget, majd módosítsa vagy távolítsa el a kvótát.
 
 9. Ha a probléma továbbra is megoldatlan, kövesse a [Windows Hybrid Runbook Worker telepítése](../automation-windows-hrw-install.md) a hibrid feldolgozó Windows rendszerre való újratelepítésének lépéseit. Linux esetén kövesse a [Linux Hybrid Runbook Worker üzembe helyezése](../automation-linux-hrw-install.md)című témakör lépéseit.
 
@@ -142,7 +139,7 @@ Ezt a problémát a helyi konfigurációs problémák vagy a nem megfelelően ko
 
 ### <a name="issue"></a>Probléma
 
-Ha az Automation-fiókban található megoldásokkal dolgozik, a következő hiba történik:
+Ha az Automation-fiókban dolgozik a szolgáltatás központi telepítésével, a következő hiba történik:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions
@@ -281,11 +278,11 @@ A gépek az ARG-lekérdezés eredményeiben jelennek meg, de még mindig nem jel
 
 7. Ismételje meg a fenti lépéseket minden olyan gépen, amely nem jelenik meg az előzetes verzióban.
 
-## <a name="scenario-components-for-update-management-solution-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Forgatókönyv: a Update Management megoldáshoz tartozó összetevők engedélyezve vannak, míg a virtuális gép továbbra is konfigurálva van
+## <a name="scenario-update-management-components-enabled-while-vm-continues-to-show-as-being-configured"></a><a name="components-enabled-not-working"></a>Forgatókönyv: Update Management az összetevők engedélyezve vannak, míg a virtuális gép továbbra is konfigurálva van
 
 ### <a name="issue"></a>Probléma
 
-A következő üzenetet a virtuális gépen 15 perccel a bevezetést követően továbbra is megtekintheti:
+A telepítés megkezdése után 15 perccel továbbra is a következő üzenet jelenik meg egy virtuális gépen:
 
 ```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
@@ -299,7 +296,7 @@ Ez a hiba a következő okok miatt fordulhat elő:
 
 * A számítógép neve eltérő forrásoldali számítógép-azonosítóval rendelkezik. Ez a forgatókönyv akkor fordul elő, ha egy adott számítógépnévvel rendelkező virtuális gépet különböző erőforráscsoportok hoznak létre, és az előfizetés azonos logisztikai ügynök munkaterületére jelent jelentést.
 
-* Előfordulhat, hogy az előkészítés alatt álló virtuálisgép-rendszerkép olyan klónozott gépről származik, amely nem lett előkészítve a rendszer-előkészítővel (Sysprep), és a Windows Log Analytics ügynöke telepítve van.
+* Előfordulhat, hogy az üzembe helyezett virtuálisgép-lemezkép olyan klónozott gépről származik, amely nem lett előkészítve a rendszer-előkészítési szolgáltatással (Sysprep), és a Windows Log Analytics ügynöke telepítve van.
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -319,11 +316,11 @@ Nyissa meg a [hálózat megtervezése](../automation-update-management.md#ports)
 
 Nevezze át a virtuális gépeket, hogy a környezetében egyedi nevek legyenek.
 
-#### <a name="onboarded-image-from-cloned-machine"></a>Bekészített rendszerkép klónozott gépről
+#### <a name="deployed-image-from-cloned-machine"></a>Központilag telepített lemezkép klónozott gépről
 
 Ha klónozott képet használ, a különböző számítógépnevek ugyanazzal a forrásoldali számítógép-AZONOSÍTÓval rendelkeznek. Ebben az esetben:
 
-1. A Log Analytics munkaterületen távolítsa el a virtuális gépet a `MicrosoftDefaultScopeConfig-Updates` hatókör-konfiguráció mentett keresésével, ha az megjelenik. A mentett keresések a munkaterület **általános** területén találhatók.
+1. A Log Analytics munkaterületen távolítsa el a virtuális gépet a hatókör-konfiguráció mentett keresésével, `MicrosoftDefaultScopeConfig-Updates` Ha az megjelenik. A mentett keresések a munkaterület **általános** területén találhatók.
 
 2. Futtassa a következő parancsmagot.
 
@@ -331,9 +328,9 @@ Ha klónozott képet használ, a különböző számítógépnevek ugyanazzal a 
     Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force
     ```
 
-3. Az `Restart-Service HealthService` állapotfigyelő szolgáltatás újraindításához futtassa a parancsot. A művelet újból létrehozza a kulcsot, és létrehoz egy új UUID-t.
+3. `Restart-Service HealthService`Az állapotfigyelő szolgáltatás újraindításához futtassa a parancsot. A művelet újból létrehozza a kulcsot, és létrehoz egy új UUID-t.
 
-4. Ha ez a megközelítés nem működik, először futtassa a Sysprept a rendszerképen, majd telepítse az MMA-t.
+4. Ha ez a megközelítés nem működik, először futtassa a sysprept a rendszerképen, majd telepítse az MMA-t.
 
 ## <a name="scenario-you-receive-a-linked-subscription-error-when-you-create-an-update-deployment-for-machines-in-another-azure-tenant"></a><a name="multi-tenant"></a>Forgatókönyv: egy másik Azure-bérlőben lévő gépekhez tartozó frissítési központi telepítés létrehozásakor a rendszer csatolt előfizetési hibát kap
 
@@ -405,13 +402,13 @@ Ha alkalmazható, használjon [dinamikus csoportokat](../automation-update-manag
 2. Ha a gép nem létezik, szerkessze az üzemelő példányt, és távolítsa el a gépet.
 3. Tekintse meg a [hálózati tervezés](../automation-update-management.md#ports) szakaszt a Update Managementhoz szükséges portok és címek listájának megtekintéséhez, majd ellenőrizze, hogy a gép megfelel-e a követelményeknek.
 4. Ellenőrizze a hibrid Runbook-feldolgozóval való kapcsolatot a hibrid Runbook Worker Agent-hibakereső használatával. A hibaelhárítással kapcsolatos további tudnivalókért tekintse meg a [frissítési ügynökkel kapcsolatos problémák elhárítása](update-agent-issues.md)című témakört.
-5. Futtassa a következő lekérdezést a Log Analyticsban azon gépek megkereséséhez, amelyekben a forrás számítógép azonosítója megváltozott. Keressen olyan számítógépeket, amelyek azonos `Computer` értékkel rendelkeznek, `SourceComputerId` de eltérő értékkel rendelkeznek.
+5. Futtassa a következő lekérdezést a Log Analyticsban azon gépek megkereséséhez, amelyekben a forrás számítógép azonosítója megváltozott. Keressen olyan számítógépeket, amelyek azonos `Computer` értékkel rendelkeznek, de eltérő `SourceComputerId` értékkel rendelkeznek.
 
    ```kusto
    Heartbeat | where TimeGenerated > ago(30d) | distinct SourceComputerId, Computer, ComputerIP
    ```
 
-6. Miután megtalálta az érintett gépeket, szerkessze az ezeket a gépeket tároló frissítési központi telepítéseket, majd távolítsa `SourceComputerId` el és olvassa el őket, hogy a megfelelő értéket tükrözze.
+6. Miután megtalálta az érintett gépeket, szerkessze az ezeket a gépeket tároló frissítési központi telepítéseket, majd távolítsa el és olvassa el őket, hogy `SourceComputerId` a megfelelő értéket tükrözze.
 
 ## <a name="scenario-updates-are-installed-without-a-deployment"></a><a name="updates-nodeployment"></a>Forgatókönyv: a frissítések központi telepítés nélkül települnek
 
@@ -425,9 +422,9 @@ Windows rendszeren a frissítések automatikusan települnek, amint elérhetők.
 
 ### <a name="resolution"></a>Megoldás:
 
-A `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` beállításkulcs alapértelmezett értéke 4: `auto download and install`.
+A `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU` beállításkulcs alapértelmezett értéke 4: `auto download and install` .
 
-Update Management ügyfelek esetében javasoljuk, hogy a kulcs beállítását 3: `auto download but do not auto install`.
+Update Management ügyfelek esetében javasoljuk, hogy a kulcs beállítását 3: `auto download but do not auto install` .
 
 További információ: az [Automatikus frissítések konfigurálása](https://docs.microsoft.com/windows/deployment/update/waas-wu-settings#configure-automatic-updates).
 
@@ -443,7 +440,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 ### <a name="cause"></a>Ok
 
-A gép már bekerült a Update Management egy másik munkaterületére.
+A gép már telepítve van a Update Management egy másik munkaterületére.
 
 ### <a name="resolution"></a>Megoldás:
 
@@ -534,7 +531,7 @@ Ezt a problémát gyakran a hálózati konfiguráció és a tűzfal okozta probl
   * Ha a gépek Windows Updatehoz vannak konfigurálva, győződjön meg arról, hogy elérheti a [http/proxy szolgáltatással kapcsolatos problémákban](/windows/deployment/update/windows-update-troubleshooting#issues-related-to-httpproxy)leírt végpontokat.
   * Ha a gépek Windows Server Update Services (WSUS) használatára vannak konfigurálva, győződjön meg arról, hogy elérheti a [WUServer beállításkulcs](/windows/deployment/update/waas-wu-settings)által konfigurált WSUS-kiszolgálót.
 
-Ha megjelenik egy HRESULT, kattintson duplán a pirosban megjelenő kivételre a teljes kivétel üzenet megjelenítéséhez. Tekintse át a következő táblázatot a lehetséges megoldásokhoz vagy ajánlott műveletekhez.
+Ha megjelenik egy HRESULT, kattintson duplán a pirosban megjelenő kivételre a teljes kivétel üzenet megjelenítéséhez. Tekintse át a következő táblázatot a lehetséges megoldásokról vagy a javasolt műveletekről.
 
 |Kivétel  |Megoldás vagy művelet  |
 |---------|---------|
@@ -542,11 +539,11 @@ Ha megjelenik egy HRESULT, kattintson duplán a pirosban megjelenő kivételre a
 |`0x8024402C`</br>`0x8024401C`</br>`0x8024402F`      | Ezek hálózati kapcsolati problémákat jeleznek. Győződjön meg arról, hogy a számítógépének van hálózati kapcsolata Update Managementhoz. A szükséges portok és címek listájának megtekintéséhez tekintse meg a [hálózati tervezés](../automation-update-management.md#ports) szakaszt.        |
 |`0x8024001E`| A frissítési művelet nem fejeződött be, mert a szolgáltatás vagy a rendszer leállítása megtörtént.|
 |`0x8024002E`| Windows Update szolgáltatás le van tiltva.|
-|`0x8024402C`     | Ha WSUS-kiszolgálót használ, győződjön meg arról, hogy a beállításjegyzék `WUServer` -kulcs `WUStatusServer` értéke a `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` megfelelő WSUS-kiszolgáló, illetve a beállításkulcs alatt van megadva.        |
+|`0x8024402C`     | Ha WSUS-kiszolgálót használ, győződjön meg arról, hogy a beállításjegyzék `WUServer` -kulcs értéke a megfelelő WSUS-kiszolgáló, illetve a beállításkulcs `WUStatusServer` alatt van `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` megadva.        |
 |`0x80072EE2`|Hálózati kapcsolati probléma vagy probléma történt a konfigurált WSUS-kiszolgálóval való kommunikáció során. Ellenőrizze a WSUS beállításait, és ellenőrizze, hogy a szolgáltatás elérhető-e az ügyfélről.|
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | Ellenőrizze, hogy a Windows Update szolgáltatás (wuauserv) fut-e, és nincs-e letiltva.        |
 |`0x80070005`| A hozzáférés-megtagadási hibát a következők egyike okozhatja:<br> Fertőzött számítógép<br> A Windows Update beállítások nincsenek megfelelően konfigurálva<br> Fájl engedélyével kapcsolatos hiba a%WinDir%\SoftwareDistribution mappában<br> Nincs elég szabad lemezterület a rendszermeghajtón (C:).
-|Bármely más általános kivétel     | Futtasson keresést az interneten a lehetséges megoldásokért, és működjön együtt a helyi informatikai támogatással.         |
+|Bármely más általános kivétel     | Futtasson keresést az interneten a lehetséges megoldásokhoz, és működjön együtt a helyi informatikai támogatással.         |
 
 A **%windir%\WindowsUpdate.log** -fájl áttekintése segíthet a lehetséges okok meghatározásában is. További információ a napló beolvasásáról: [a windowsupdate. log fájl olvasása](https://support.microsoft.com/help/902093/how-to-read-the-windowsupdate-log-file).
 
@@ -591,7 +588,7 @@ Ha a frissítések helyileg futnak, próbálja meg eltávolítani és újratelep
 
 Ez általában akkor fordul elő, ha a számítógépek WSUS-vagy Microsoft-végponttól érkező frissítések beszerzésére vannak konfigurálva, Configuration Manager azonban a WSUS és a Configuration Manager nem hagyta jóvá a frissítéseket.
 
-Annak ellenőrzéséhez, hogy a gépek konfigurálva vannak-e a WSUS-hez és a SCCM- `UseWUServer` hez, a [jelen cikk beállításjegyzékének szerkesztésével megtekintheti az automatikus frissítések konfigurálása szakaszban](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)található beállításkulcsokat.
+Annak ellenőrzéséhez, hogy a gépek konfigurálva vannak-e a WSUS-hez és a SCCM-hez, a `UseWUServer` [jelen cikk beállításjegyzékének szerkesztésével megtekintheti az automatikus frissítések konfigurálása szakaszban](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)található beállításkulcsokat.
 
 Ha a WSUS nem jóváhagyja a frissítéseket, azok nincsenek telepítve. A nem jóváhagyott frissítéseket a Log Analytics a következő lekérdezés futtatásával tekintheti meg.
 
@@ -616,5 +613,5 @@ A KB2267602 a [Windows Defender definíciófrissítése](https://www.microsoft.c
 Ha nem látja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz.
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport)a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében.
+* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a **támogatás kérése**lehetőséget.

@@ -1,6 +1,6 @@
 ---
-title: Azure Automation felügyeleti megoldások bevezetésének hibaelhárítása
-description: Ismerje meg, hogyan lehet elhárítani a Azure Automation megoldás bevezetésével kapcsolatos hibákat.
+title: A szolgáltatások központi telepítésével kapcsolatos problémák elhárítása Azure Automation
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation szolgáltatások telepítésekor felmerülő problémákat.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,16 +8,16 @@ ms.date: 05/22/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 371094ecba5168fd32a7af9fb81a71eb722efc91
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 27b93e77e7b813e73496d15c4003e999daff10d5
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82836529"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681279"
 ---
-# <a name="troubleshoot-solution-onboarding"></a>Megoldások előkészítésének megoldása
+# <a name="troubleshoot-feature-deployment-issues"></a>A szolgáltatás központi telepítésével kapcsolatos problémák elhárítása
 
-A Azure Automation Update Management megoldás vagy a Change Tracking és a leltár megoldás bevezetéséhez hibaüzenetek jelenhetnek meg. Ez a cikk az esetlegesen előforduló különböző hibákat és azok megoldását ismerteti.
+A Azure Automation Update Management funkció, illetve a virtuális gépek Change Tracking és leltár szolgáltatásának telepítésekor hibaüzenetek jelenhetnek meg. Ez a cikk az esetlegesen előforduló hibákat és azok megoldását ismerteti.
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -39,7 +39,7 @@ Törölje a csomópont regisztrációját Azure Automation állapot-konfiguráci
 
 #### <a name="issue"></a>Probléma
 
-Ha olyan proxy-megoldáson keresztül csatlakozik, amely leállítja a HTTPS-forgalmat, majd újratitkosítja a forgalmat egy új tanúsítvánnyal, a szolgáltatás nem teszi lehetővé a kapcsolat használatát.
+Ha olyan proxyn keresztül csatlakozik, amely megszakítja a HTTPS-forgalmat, majd újratitkosítja a forgalmat egy új tanúsítvánnyal, a szolgáltatás nem teszi lehetővé a kapcsolat használatát.
 
 #### <a name="cause"></a>Ok
 
@@ -51,11 +51,11 @@ Ehhez a hibához jelenleg nincs Áthidaló megoldás.
 
 ## <a name="general-errors"></a>Általános hibák
 
-### <a name="scenario-onboarding-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Forgatókönyv: a bevezetés sikertelen a következő üzenettel: "a megoldás nem engedélyezhető"
+### <a name="scenario-feature-deployment-fails-with-the-message-the-solution-cannot-be-enabled"></a><a name="missing-write-permissions"></a>Forgatókönyv: a szolgáltatások központi telepítése a "a megoldás nem engedélyezhető" üzenettel meghiúsul.
 
 #### <a name="issue"></a>Probléma
 
-A következő üzenetek egyike jelenik meg, amikor megkísérli bevezetni egy virtuális gépet egy megoldásba:
+A következő üzenetek egyike jelenik meg, amikor megpróbál engedélyezni egy szolgáltatást egy virtuális gépen:
 
 ```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
@@ -71,13 +71,13 @@ Ezt a hibát a virtuális gép vagy munkaterület, illetve a felhasználó szám
 
 #### <a name="resolution"></a>Megoldás:
 
-Győződjön meg arról, hogy megfelelő [engedélyekkel](../automation-role-based-access-control.md#onboarding-permissions)rendelkezik a gépek bevezetéséhez, majd próbálkozzon újra a megoldás bevezetésével. Ha a hibaüzenet jelenik meg `The solution cannot be enabled on this VM because the permission to read the workspace is missing`, ellenőrizze, hogy rendelkezik-e `Microsoft.OperationalInsights/workspaces/read` engedéllyel ahhoz, hogy a virtuális gép be legyen-e telepítve a munkaterületre.
+Győződjön meg arról, hogy a [szolgáltatás központi telepítési engedélyei](../automation-role-based-access-control.md#onboarding-permissions)megfelelőek, majd próbálja meg újra telepíteni a szolgáltatást. Ha a hibaüzenet jelenik meg `The solution cannot be enabled on this VM because the permission to read the workspace is missing` , ellenőrizze, hogy rendelkezik-e engedéllyel ahhoz, hogy `Microsoft.OperationalInsights/workspaces/read` a virtuális gép engedélyezve legyen-e a munkaterületen.
 
-### <a name="scenario-onboarding-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Forgatókönyv: az előkészítés sikertelen a következő üzenettel: "nem sikerült konfigurálni az Automation-fiókot a diagnosztikai naplózáshoz"
+### <a name="scenario-feature-deployment-fails-with-the-message-failed-to-configure-automation-account-for-diagnostic-logging"></a><a name="diagnostic-logging"></a>Forgatókönyv: a szolgáltatások központi telepítése nem sikerül, a "nem sikerült konfigurálni az Automation-fiókot a diagnosztikai naplózáshoz" üzenet jelenik meg.
 
 #### <a name="issue"></a>Probléma
 
-A következő üzenet jelenik meg, amikor kísérletet tesz a virtuális gép egy megoldásba való bevezetésére:
+A következő üzenet jelenik meg, amikor megpróbál engedélyezni egy szolgáltatást egy virtuális gépen:
 
 ```error
 Failed to configure automation account for diagnostic logging
@@ -89,13 +89,13 @@ Ez a hiba akkor okozható, ha a díjszabási csomag nem egyezik az előfizetés 
 
 #### <a name="resolution"></a>Megoldás:
 
-Hozza létre manuálisan a Log Analytics munkaterületet, és ismételje meg a bevezetési folyamatot a létrehozott munkaterület kiválasztásához.
+Hozza létre manuálisan a Log Analytics munkaterületet, és ismételje meg a szolgáltatás központi telepítési folyamatát a létrehozott munkaterület kiválasztásához.
 
 ### <a name="scenario-computergroupqueryformaterror"></a><a name="computer-group-query-format-error"></a>Forgatókönyv: ComputerGroupQueryFormatError
 
 #### <a name="issue"></a>Probléma
 
-Ez a hibakód azt jelenti, hogy a mentett keresés számítógépcsoport-lekérdezés, amely a megoldás céljára szolgál, nem megfelelően van formázva. 
+Ez a hibakód azt jelenti, hogy a mentett keresés számítógépcsoport-lekérdezés a szolgáltatás megcélzásához nem megfelelően van formázva. 
 
 #### <a name="cause"></a>Ok
 
@@ -103,7 +103,7 @@ Lehetséges, hogy módosította a lekérdezést, vagy megváltoztatta a rendszer
 
 #### <a name="resolution"></a>Megoldás:
 
-Törölheti a megoldás lekérdezését, majd újból elvégezheti a megoldás előkészítését, amely újból létrehozza a lekérdezést. A lekérdezés a munkaterület **mentett keresések**területén található. A lekérdezés neve **MicrosoftDefaultComputerGroup**, a lekérdezés kategóriája pedig a társított megoldás neve. Ha több megoldás is engedélyezve van, a **MicrosoftDefaultComputerGroup** -lekérdezés többször is megjeleníti a **mentett keresések**alatt.
+Törölheti a szolgáltatás lekérdezését, majd ismét engedélyezheti a szolgáltatást, amely újból létrehozza a lekérdezést. A lekérdezés a munkaterület **mentett keresések**területén található. A lekérdezés neve **MicrosoftDefaultComputerGroup**, a lekérdezés kategóriája pedig a társított szolgáltatás neve. Ha több funkció is engedélyezve van, a **MicrosoftDefaultComputerGroup** -lekérdezés többször is megjeleníti a **mentett keresések**alatt.
 
 ### <a name="scenario-policyviolation"></a><a name="policy-violation"></a>Forgatókönyv: PolicyViolation
 
@@ -117,10 +117,10 @@ Egy házirend megakadályozza a művelet befejezését.
 
 #### <a name="resolution"></a>Megoldás:
 
-A megoldás sikeres üzembe helyezéséhez meg kell fontolnia a jelzett házirend módosítását. Mivel számos különböző típusú szabályzat definiálható, a szükséges módosítások a megsértett házirendtől függenek. Ha például egy olyan erőforráscsoport-házirend van meghatározva, amely megtagadja az egyes foglalt erőforrások tartalmának módosítására vonatkozó engedélyt, a következő javítások közül választhat:
+A szolgáltatás sikeres üzembe helyezéséhez meg kell fontolnia a jelzett házirend módosítását. Mivel számos különböző típusú szabályzat definiálható, a szükséges módosítások a megsértett házirendtől függenek. Ha például egy olyan erőforráscsoport-házirend van meghatározva, amely megtagadja az egyes foglalt erőforrások tartalmának módosítására vonatkozó engedélyt, a következő javítások közül választhat:
 
 * Távolítsa el a szabályzatot teljes egészében.
-* Próbálja meg egy másik erőforráscsoporthoz bevezetni a megoldást.
+* Próbálja meg engedélyezni a szolgáltatást egy másik erőforráscsoporthoz.
 * A szabályzatot egy adott erőforrásra, például egy Automation-fiókra kell átcélozni.
 * Módosítsa azon erőforrások készletét, amelyeknek a szabályzata el van tiltva.
 
@@ -138,26 +138,26 @@ The link cannot be updated or deleted because it is linked to Update Management 
 
 #### <a name="cause"></a>Ok
 
-Ez a hiba akkor fordul elő, ha a Log Analytics munkaterületen olyan megoldások vannak aktívak, amelyek az Automation-fióktól függenek, és Log Analytics a munkaterület csatolva van.
+Ez a hiba akkor fordul elő, ha továbbra is aktív funkciók vannak a Log Analytics munkaterületen, amely az Automation-fióktól függ, és Log Analytics a munkaterület csatolva van.
 
 ### <a name="resolution"></a>Megoldás:
 
-Ha ezeket használja, távolítsa el a következő megoldásokat a munkaterületről:
+Ha ezeket használja, távolítsa el a munkaterület következő funkcióinak erőforrásait:
 
 * Frissítéskezelés
 * Change Tracking és Inventory
 * Virtuális gépek indítása és leállítása munkaidőn kívül
 
-A megoldások eltávolítása után megszüntetheti a munkaterület összekapcsolását. Fontos, hogy a munkaterületről és az Automation-fiókból minden meglévő összetevőt megtisztítsuk a fenti megoldásokból:
+A szolgáltatás erőforrásainak eltávolítása után megszüntetheti a munkaterület összekapcsolását. Fontos, hogy a munkaterületről és az Automation-fiókból törölje a meglévő összetevőkből származó összes összetevőt:
 
 * Update Management esetén távolítsa el az Automation-fiókból a **frissítési központi telepítéseket (ütemterveket)** .
-* Start/Stop VMS During off-hours esetén távolítsa el a megoldás-összetevők zárolásait az Automation-fiókban a **Beállítások** > **zárolása**alatt. További információ: [a Start/Stop VMS During off-hours megoldás eltávolítása](../automation-solution-vm-management.md#remove-the-solution).
+* Start/Stop VMS During off-hours esetén távolítsa el az Automation-fiókban lévő funkció-összetevők zárolásait a **Beállítások**  >  **zárolása**alatt. További információ: [a szolgáltatás eltávolítása](../automation-solution-vm-management.md#remove-the-feature).
 
 ## <a name="log-analytics-for-windows-extension-failures"></a><a name="mma-extension-failures"></a>A Windows-bővítményekkel kapcsolatos hibák Log Analytics
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-A Windows-bővítmény Log Analytics ügynökének telepítése különböző okok miatt sikertelen lehet. A következő szakasz azokat a bevezetési problémákat ismerteti, amelyek meghibásodást okozhatnak a Windows-bővítmény Log Analytics ügynökének telepítésekor.
+A Windows-bővítmény Log Analytics ügynökének telepítése különböző okok miatt sikertelen lehet. A következő szakasz ismerteti a szolgáltatások központi telepítésével kapcsolatos problémákat, amelyek a Windows-ügynök Log Analytics ügynökének telepítése során hibákhoz vezethetnek.
 
 >[!NOTE]
 >A Windows rendszerhez készült Log Analytics ügynök a Microsoft monitoring Agent (MMA) számára jelenleg Azure Automation használt név.
@@ -245,5 +245,5 @@ Ha a virtuális gép alacsonyabb terhelés alatt van, próbálja meg telepíteni
 Ha itt nem találja a problémát, vagy nem tudja elhárítani a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport)a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
+* A szolgáltatással való együttműködéshez [@AzureSupport](https://twitter.com/azuresupport) a hivatalos Microsoft Azure fiók a felhasználói élmény javítása érdekében. Az Azure-támogatás a válaszokat, támogatást és szakértőket az Azure-Közösséggel köti össze.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.

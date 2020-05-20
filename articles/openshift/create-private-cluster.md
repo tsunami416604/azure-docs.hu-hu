@@ -8,12 +8,12 @@ author: ms-jasondel
 ms.author: jasondel
 keywords: ARO, openshift, az ARO, Red Hat, CLI
 ms.custom: mvc
-ms.openlocfilehash: cfc28577f089ef22457e9f66ff08106969a5a4b2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 581587382c3bfd03ed329672e5c6ca065554d1c7
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857391"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681435"
 ---
 # <a name="create-an-azure-red-hat-openshift-4-private-cluster"></a>Azure Red Hat OpenShift 4 privát fürt létrehozása
 
@@ -30,7 +30,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 ### <a name="install-the-az-aro-extension"></a>Az "az ARO" bővítmény telepítése
 A `az aro` bővítmény lehetővé teszi, hogy közvetlenül a parancssorból az Azure CLI használatával hozza létre, elérje és törölje az Azure Red Hat OpenShift-fürtöket.
 
-A `az aro` bővítmény telepítéséhez futtassa a következő parancsot.
+A bővítmény telepítéséhez futtassa a következő parancsot `az aro` .
 
 ```azurecli-interactive
 az extension add -n aro --index https://az.aroapp.io/stable
@@ -75,9 +75,9 @@ A Red Hat pull Secret lehetővé teszi, hogy a fürt hozzáférjen a Red Hat Con
 
 2. **Kattintson a lekérési titok letöltése elemre.**
 
-Tartsa meg a `pull-secret.txt` mentett fájlt biztonságos helyen – a rendszer minden egyes fürt létrehozásakor használni fogja.
+Tartsa meg a mentett `pull-secret.txt` fájlt biztonságos helyen – a rendszer minden egyes fürt létrehozásakor használni fogja.
 
-A `az aro create` parancs futtatásakor a (z) `--pull-secret @pull-secret.txt` paraméter használatával hivatkozhat a lekéréses titkos kulcsra. Futtassa `az aro create` azt a könyvtárat, ahová a `pull-secret.txt` fájlt mentette. Ellenkező esetben cserélje `@pull-secret.txt` le `@<path-to-my-pull-secret-file`a-t a kifejezésre.
+A parancs futtatásakor a (z `az aro create` ) paraméter használatával hivatkozhat a lekéréses titkos kulcsra `--pull-secret @pull-secret.txt` . Futtassa `az aro create` azt a könyvtárat, ahová a fájlt mentette `pull-secret.txt` . Ellenkező esetben cserélje le `@pull-secret.txt` a-t a kifejezésre `@<path-to-my-pull-secret-file` .
 
 Ha átmásolja a lekéréses titkot, vagy más parancsfájlokban hivatkozik rá, a lekéréses titkot érvényes JSON-karakterláncként kell formázni.
 
@@ -194,21 +194,23 @@ az aro create \
   --name $CLUSTER \
   --vnet aro-vnet \
   --master-subnet master-subnet \
-  --worker-subnet worker-subnet
+  --worker-subnet worker-subnet \
+  --apiserver-visibility Private \
+  --ingress-visibility Private
   # --domain foo.example.com # [OPTIONAL] custom domain
   # --pull-secret @pull-secret.txt # [OPTIONAL]
 ```
 
-A parancs végrehajtása után `az aro create` az általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
+A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
 >[!IMPORTANT]
-> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io`helyett egy URL-címen lesz elérhető.
+> Ha úgy dönt, hogy egyéni tartományt ad meg, például **foo.example.com**, a OpenShift-konzol a beépített tartomány helyett egy URL-címen lesz elérhető `https://console-openshift-console.apps.foo.example.com` `https://console-openshift-console.apps.<random>.<location>.aroapp.io` .
 >
-> Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io`.  Ha az egyéni DNS lehetőséget választja, akkor a fürthöz való csatlakozás után a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) az API-kiszolgáló bejövő vezérlője és [Egyéni hitelesítésszolgáltatója](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)számára.
+> Alapértelmezés szerint a OpenShift önaláírt tanúsítványokat használ a által létrehozott összes útvonalhoz `*.apps.<random>.<location>.aroapp.io` .  Ha az egyéni DNS lehetőséget választja, akkor a fürthöz való csatlakozás után a OpenShift dokumentációjában [be kell állítania egy egyéni hitelesítésszolgáltatót](https://docs.openshift.com/container-platform/4.3/authentication/certificates/replacing-default-ingress-certificate.html) az API-kiszolgáló bejövő vezérlője és [Egyéni hitelesítésszolgáltatója](https://docs.openshift.com/container-platform/4.3/authentication/certificates/api-server.html)számára.
 
 ## <a name="connect-to-the-private-cluster"></a>Kapcsolódás a privát fürthöz
 
-A `kubeadmin` felhasználó segítségével bejelentkezhet a fürtbe.  Futtassa a következő parancsot a `kubeadmin` felhasználó jelszavának megkereséséhez.
+A felhasználó segítségével bejelentkezhet a fürtbe `kubeadmin` .  Futtassa a következő parancsot a felhasználó jelszavának megkereséséhez `kubeadmin` .
 
 ```azurecli-interactive
 az aro list-credentials \
@@ -216,7 +218,7 @@ az aro list-credentials \
   --resource-group $RESOURCEGROUP
 ```
 
-Az alábbi példa kimenetében látható, hogy a jelszó `kubeadminPassword`a következő lesz:.
+Az alábbi példa kimenetében látható, hogy a jelszó a következő lesz: `kubeadminPassword` .
 
 ```json
 {
@@ -237,7 +239,7 @@ A fürt konzoljának URL-címét a következő parancs futtatásával érheti el
 >[!IMPORTANT]
 > Egy privát Azure Red Hat OpenShift-fürthöz való kapcsolódáshoz a következő lépést kell elvégeznie egy olyan gazdagépen, amely vagy a létrehozott Virtual Network vagy egy olyan Virtual Network, amely a fürtnek a Virtual Network való üzembe helyezéséhez [van társítva](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
 
-Indítsa el a konzol URL-címét egy böngészőben, és `kubeadmin` jelentkezzen be a hitelesítő adatok használatával.
+Indítsa el a konzol URL-címét egy böngészőben, és jelentkezzen be a `kubeadmin` hitelesítő adatok használatával.
 
 ![Azure Red Hat OpenShift bejelentkezési képernyő](media/aro4-login.png)
 
@@ -247,7 +249,7 @@ Ha bejelentkezett a OpenShift webkonzolba, kattintson a következőre **?** a jo
 
 ![Azure Red Hat OpenShift bejelentkezési képernyő](media/aro4-download-cli.png)
 
-A parancssori felület legújabb kiadását is letöltheti a gépre <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/>.
+A parancssori felület legújabb kiadását is letöltheti a gépre <https://mirror.openshift.com/pub/openshift-v4/clients/ocp/latest/> .
 
 ## <a name="connect-using-the-openshift-cli"></a>Kapcsolat a OpenShift CLI használatával
 
@@ -260,7 +262,7 @@ apiServer=$(az aro show -g $RESOURCEGROUP -n $CLUSTER --query apiserverProfile.u
 >[!IMPORTANT]
 > Egy privát Azure Red Hat OpenShift-fürthöz való kapcsolódáshoz a következő lépést kell elvégeznie egy olyan gazdagépen, amely vagy a létrehozott Virtual Network vagy egy olyan Virtual Network, amely a fürtnek a Virtual Network való üzembe helyezéséhez [van társítva](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) .
 
-Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. Cserélje le ** \<a kubeadmin Password>** az imént beolvasott jelszóra.
+Jelentkezzen be a OpenShift-fürt API-kiszolgálójára a következő parancs használatával. Cserélje le a ** \< kubeadmin Password>** az imént beolvasott jelszóra.
 
 ```azurecli-interactive
 oc login $apiServer -u kubeadmin -p <kubeadmin password>

@@ -8,12 +8,13 @@ ms.date: 09/23/2019
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 0bbffacc0a8c47950b8637e826d1d5db9fbdb234
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: monitoring
+ms.openlocfilehash: 71f2acfc7c1d227d89f96f753572f4631f4cad65
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605069"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684657"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -29,7 +30,7 @@ Az alkalmazások sikeres kezeléséhez proaktív módon kell figyelnie őket, é
 
 Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a teljes [körű hibaelhárítás az Azure Storage-metrikák és-naplózás, a AzCopy és a Message Analyzer használatával](../storage-e2e-troubleshooting.md)című részben találja.
 
-* [Introduction (Bevezetés)]
+* [Bevezetés]
   * [Az útmutató rendszerezése]
 * [A tárolási szolgáltatás figyelése]
   * [Figyelési szolgáltatás állapota]
@@ -75,7 +76,7 @@ Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a 
   * [4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez]
   * [5. függelék: az Azure DevOps Application Insights figyelése]
 
-## <a name="introduction"></a><a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a><a name="introduction"></a>Bevezetés
 Ez az útmutató bemutatja, hogyan használhatók olyan szolgáltatások, mint például az Azure Storage Analytics, az ügyféloldali naplózás az Azure Storage ügyféloldali Kódtáraban, valamint más, harmadik féltől származó eszközök az Azure Storage-hoz kapcsolódó problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 
 ![][1]
@@ -359,7 +360,7 @@ A Storage szolgáltatás csak a sikeres kérések metrikai **AverageE2ELatency**
 #### <a name="investigating-client-performance-issues"></a>Az ügyfél teljesítményével kapcsolatos problémák kivizsgálása
 Az ügyfélnek a lassú válaszadás lehetséges okai a következők lehetnek: korlátozott számú elérhető kapcsolat vagy szál, illetve kevés erőforrás, például CPU-, memória-vagy hálózati sávszélesség. Előfordulhat, hogy a probléma megoldásához módosítania kell az ügyfél kódját, hogy hatékonyabb legyen (például aszinkron hívásokat használ a tárolási szolgáltatáshoz), vagy egy nagyobb virtuális gép (több maggal és több memóriával) használatával.
 
-A tábla-és üzenetsor-szolgáltatások esetében a Nyéki algoritmus magas **AverageE2ELatency** eredményezhet a **averageserverlatency értéket mutatnak**képest: további információért lásd a [nyár utáni algoritmust, amely nem csupán a kis kérések elérésére szolgál](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/06/25/nagle-s-algorithm-is-not-friendly-towards-small-requests.aspx). A **System.net** -névtér **ServicePointManager** osztályának használatával letilthatja a Nyéki algoritmust a kódban. Ezt csak akkor hajtsa végre, ha az alkalmazásban meghívja a Table vagy a üzenetsor-szolgáltatást, mivel ez nem befolyásolja a már megnyitott kapcsolatokat. A következő példa egy feldolgozói szerepkör **Application_Start** metódusára mutat.
+A tábla-és üzenetsor-szolgáltatások esetében a Nyéki algoritmus magas **AverageE2ELatency** eredményezhet a **averageserverlatency értéket mutatnak**képest: további információért lásd a [nyár utáni algoritmust, amely nem csupán a kis kérések elérésére szolgál](https://docs.microsoft.com/archive/blogs/windowsazurestorage/nagles-algorithm-is-not-friendly-towards-small-requests). A **System.net** -névtér **ServicePointManager** osztályának használatával letilthatja a Nyéki algoritmust a kódban. Ezt csak akkor hajtsa végre, ha az alkalmazásban meghívja a Table vagy a üzenetsor-szolgáltatást, mivel ez nem befolyásolja a már megnyitott kapcsolatokat. A következő példa egy feldolgozói szerepkör **Application_Start** metódusára mutat.
 
 ```csharp
 var storageAccount = CloudStorageAccount.Parse(connStr);
@@ -516,24 +517,24 @@ Naplóbejegyzések:
 
 | Kérelemazonosító | Művelet szövege |
 | --- | --- |
-| 07b26a5d-... |Szinkron kérelem indítása a `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`következőhöz:. |
+| 07b26a5d-... |Szinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = HEAD.............. x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: kedd, 03 jún 2014 10:33:11 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
 | 07b26a5d-... |Várakozás a válaszra. |
-| 07b26a5d-... |Válasz érkezett. Állapotkód = 200, kérelem azonosítója = eeead849-... Content-MD5 =, ETag = &quot;0x8D14D2DC63D059B&quot;. |
+| 07b26a5d-... |Válasz érkezett. Állapotkód = 200, kérelem azonosítója = eeead849-... Content-MD5 =, ETag = &quot; 0x8D14D2DC63D059B &quot; . |
 | 07b26a5d-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | 07b26a5d-... |Válasz törzsének letöltése. |
 | 07b26a5d-... |A művelet sikeresen befejeződött. |
-| 07b26a5d-... |Szinkron kérelem indítása a `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`következőhöz:. |
+| 07b26a5d-... |Szinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | 07b26a5d-... |StringToSign = DELETE......... x-MS-Client-Request-ID: 07b26a5d-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
 | 07b26a5d-... |Várakozás a válaszra. |
 | 07b26a5d-... |Válasz érkezett. Állapotkód = 202, kérelem azonosítója = 6ab2a4cf-..., Content-MD5 =, ETag =. |
 | 07b26a5d-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | 07b26a5d-... |Válasz törzsének letöltése. |
 | 07b26a5d-... |A művelet sikeresen befejeződött. |
-| e2d06d78-... |Aszinkron kérelem indítása a `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`következőhöz:.</td> |
+| e2d06d78-... |Aszinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` .</td> |
 | e2d06d78-... |StringToSign = HEAD.............. x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
 | e2d06d78-... |Várakozás a válaszra. |
-| de8b1c3c-... |Szinkron kérelem indítása a `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt`következőhöz:. |
+| de8b1c3c-... |Szinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer/blobCreated.txt` . |
 | de8b1c3c-... |StringToSign = PUT... 64. qCmF + TQLPhq/YYK50mP9ZQ = =........ x-MS-blob-Type: BlockBlob. x-MS-Client-Request-ID: de8b1c3c-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer/blobCreated. txt. |
 | de8b1c3c-... |A kérések adatbevitelének előkészítése. |
 | e2d06d78-... |Kivétel történt a válaszra való várakozás közben: a távoli kiszolgáló a következő hibát adta vissza: (404) nem található.. |
@@ -541,7 +542,7 @@ Naplóbejegyzések:
 | e2d06d78-... |A válasz fejlécei sikeresen feldolgozva, a művelet többi részével folytatva. |
 | e2d06d78-... |Válasz törzsének letöltése. |
 | e2d06d78-... |A művelet sikeresen befejeződött. |
-| e2d06d78-... |Aszinkron kérelem indítása a `https://domemaildist.blob.core.windows.net/azuremmblobcontainer`következőhöz:. |
+| e2d06d78-... |Aszinkron kérelem indítása a következőhöz: `https://domemaildist.blob.core.windows.net/azuremmblobcontainer` . |
 | e2d06d78-... |StringToSign = PUT... 0......... x-MS-Client-Request-ID: e2d06d78-.... x-MS-Date: kedd, 03 jún 2014 10:33:12 GMT. x-MS-Version: 2014-02-14./domemaildist/azuremmblobcontainer. RESTYPE: tároló. |
 | e2d06d78-... |Várakozás a válaszra. |
 | de8b1c3c-... |Kérelemre vonatkozó adatírás. |
@@ -562,16 +563,16 @@ Ha az ügyfélalkalmazás olyan SAS-kulcsot próbál használni, amely nem tarta
 
 A következő táblázat a tárolási naplózási naplófájlban található példa kiszolgálóoldali naplófájlt jeleníti meg:
 
-| Name (Név) | Érték |
+| Name | Érték |
 | --- | --- |
 | Kérelem kezdési ideje | 2014-05-30T06:17:48.4473697 Z |
-| Művelet típusa     | GetBlobProperties            |
+| Művelettípus     | GetBlobProperties            |
 | Kérelem állapota     | SASAuthorizationError        |
 | HTTP-állapotkód   | 404                            |
 | Hitelesítés típusa| Sas                          |
 | Szolgáltatás típusa       | Blob                         |
-| Kérés URL-címe         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
-| &nbsp;                 |   ? SV = 2014-02-14&SR = c&si = mypolicy&SIG = XXXXX&;API-Version = 2014-02-14 |
+| URL-cím kérése         | `https://domemaildist.blob.core.windows.net/azureimblobcontainer/blobCreatedViaSAS.txt` |
+| &nbsp;                 |   ? SV = 2014-02-14&SR = c&si = mypolicy&SIG = XXXXX &; API-Version = 2014-02-14 |
 | Kérelem AZONOSÍTÓjának fejléce  | a1f348d5-8032-4912-93ef-b393e5252a3b |
 | Ügyfélkérelem azonosítója  | 2d064953-8436-4ee0-aa0c-65cb874f7929 |
 
@@ -821,7 +822,7 @@ Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekints
 * [Storage Analytics-napló formátuma](/rest/api/storageservices/storage-analytics-log-format)
 
 <!--Anchors-->
-[Introduction (Bevezetés)]: #introduction
+[Bevezetés]: #introduction
 [Az útmutató rendszerezése]: #how-this-guide-is-organized
 
 [A tárolási szolgáltatás figyelése]: #monitoring-your-storage-service

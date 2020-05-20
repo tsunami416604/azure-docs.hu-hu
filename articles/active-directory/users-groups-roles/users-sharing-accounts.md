@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 987c3ee7c90eb0bb793b96eb2771efbb258f16a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37935d229f62028e074f92bb6f8b70b9eebd87dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77565502"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685200"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Fiókok megosztása az Azure AD-vel
 
@@ -62,13 +62,13 @@ A fiókok megosztását engedélyező Azure AD-funkciók a következők:
 * [Alkalmazás-használati irányítópult/jelentések](../active-directory-passwords-get-insights.md)
 * Végfelhasználói hozzáférési portálok
 * [Alkalmazásproxy](../manage-apps/application-proxy.md)
-* [Active Directory piactér](https://azure.microsoft.com/marketplace/active-directory/all/)
+* [Active Directory piactér](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory)
 
 ## <a name="sharing-an-account"></a>Fiók megosztása
 
 Ha az Azure AD-t egy fiók megosztására szeretné használni, a következőket kell tennie:
 
-* Alkalmazás- [Képtár](https://azure.microsoft.com/marketplace/active-directory/) vagy [egyéni alkalmazás](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/) hozzáadása
+* Alkalmazás- [Képtár](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) vagy [egyéni alkalmazás](https://cloudblogs.microsoft.com/enterprisemobility/2015/06/17/bring-your-own-app-with-azure-ad-self-service-saml-configuration-now-in-preview/) hozzáadása
 * Az alkalmazás konfigurálása a jelszó-egyszeri bejelentkezéshez (SSO)
 * Használjon [csoportos hozzárendelést](groups-saasapps.md) , és válassza a megosztott hitelesítő adatok megadására szolgáló lehetőséget.
 

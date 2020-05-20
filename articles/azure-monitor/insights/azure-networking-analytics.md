@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/21/2018
-ms.openlocfilehash: 1045f86db5e1a9ed1979a266937974045e401e27
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1084be9a63e023257326de824ea200dcc1be74d9
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275567"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684648"
 ---
 # <a name="azure-networking-monitoring-solutions-in-azure-monitor"></a>Azure hálózatkezelési figyelési megoldások Azure Monitor
 
@@ -150,7 +150,7 @@ Hálózati biztonsági csoportok esetén a következő naplók támogatottak:
 ### <a name="install-and-configure-the-solution"></a>A megoldás telepítése és konfigurálása
 Az Azure Networking Analytics megoldás telepítéséhez és konfigurálásához kövesse az alábbi utasításokat:
 
-1. Engedélyezze az Azure hálózati biztonsági csoport analitikai megoldását az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureNSGAnalyticsOMS?tab=Overview) -en, vagy használja a [Azure monitor-megoldások hozzáadása a Solutions Gallery](../../azure-monitor/insights/solutions.md)használatával című témakörben ismertetett eljárást.
+1. Engedélyezze az Azure hálózati biztonsági csoport analitikai megoldását a [Solutions Gallery Azure monitor-megoldások hozzáadása](../../azure-monitor/insights/solutions.md)című témakörben ismertetett eljárással.
 2. Engedélyezze a diagnosztikai naplózást a figyelni kívánt [hálózati biztonsági csoport](../../virtual-network/virtual-network-nsg-manage-log.md) erőforrásaihoz.
 
 ### <a name="enable-azure-network-security-group-diagnostics-in-the-portal"></a>Az Azure hálózati biztonsági csoport diagnosztika engedélyezése a portálon
@@ -218,8 +218,8 @@ A frissített megoldások használata:
      | NetworkApplicationgateways &#124;, ahol OperationName = = "ApplicationGatewayPerformance" | AzureDiagnostics &#124;, ahol ResourceType = = "APPLICATIONGATEWAYS" és OperationName = = "ApplicationGatewayPerformance" |
      | NetworkSecuritygroups | AzureDiagnostics &#124;, ahol ResourceType = = "NETWORKSECURITYGROUPS" |
 
-   + Minden olyan mezőnél, amely a névben \_s \_, d vagy \_g utótaggal rendelkezik, módosítsa az első karaktert a kisbetű értékre.
-   + Minden olyan mezőnél, amelynél a \_név utótagja szerepel, az adat a beágyazott mezők nevei alapján egyedi mezőkbe van bontva.
+   + Minden olyan mezőnél, amely \_ \_ a névben s, d vagy g utótaggal rendelkezik \_ , módosítsa az első karaktert a kisbetű értékre.
+   + Minden olyan mezőnél, amelynél a \_ név utótagja szerepel, az adat a beágyazott mezők nevei alapján egyedi mezőkbe van bontva.
 4. Távolítsa el az *Azure Networking Analytics (elavult)* megoldást.
    + Ha a PowerShellt használja, használja a`Set-AzureOperationalInsightsIntelligencePack -ResourceGroupName <resource group that the workspace is in> -WorkspaceName <name of the log analytics workspace> -IntelligencePackName "AzureNetwork" -Enabled $false`
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 3839fb325b1ed0c052f7a4e8955e9a9fda51fc5f
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 291dbdd874e3d657ff171d7e08ea6a1ee7e5999f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569653"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683099"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge-hez és Azure Data Box Gateway
 
@@ -27,9 +27,9 @@ Ez a cikk Azure Stack Edge-re vonatkozik, és Azure Data Box Gateway mindkettőt
 Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
 1. Nyissa meg az Azure Stack Edge-vagy Data Box Gateway-sorrendet. Navigáljon a **támogatás + hibaelhárítás** szakaszhoz, majd válassza az **új támogatási kérelem**lehetőséget.
-   
+
 2. Az **új támogatási kérelemben**az **alapok** lapon végezze el a következő lépéseket:
-    
+
     1. A **probléma típusa** legördülő listából válassza a **technikai**lehetőséget.
     2. Válassza ki az **Előfizetést**.
     3. A **szolgáltatás**alatt keresse meg **a saját szolgáltatások**szolgáltatást. A legördülő listából válassza az **Azure stack Edge és a Data Box Gateway**lehetőséget.
@@ -42,7 +42,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
         ![Alapvető beállítások](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. A **részletek** lapon hajtsa végre a következő lépéseket:
-    
+
     1. Adja meg a probléma kezdő dátumát és időpontját.
     2. Adja meg a probléma **leírását** .
     3. A **fájl feltöltése**lapon válassza a mappa ikont a feltölteni kívánt fájlok tallózásához.
@@ -67,16 +67,16 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
 Ez az információ csak Azure Stack eszközre vonatkozik. A hardveres problémák jelentésének folyamata a következő:
 
-1. Hardveres probléma esetén nyisson meg egy támogatási jegyet a Azure Portal. A **probléma típusa**területen válassza a **Azure stack hardver**lehetőséget. Válassza ki a **probléma altípusát** **hardverhibaként**. 
+1. Hardveres probléma esetén nyisson meg egy támogatási jegyet a Azure Portal. A **probléma típusa**területen válassza a **Azure stack hardver**lehetőséget. Válassza ki a **probléma altípusát** **hardverhibaként**.
 
     ![Hardveres probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-hardware-issue-1.png)
 
-    Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb kapcsolatba lép Önnel, hogy folytassa a kérést. 
+    Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb kapcsolatba lép Önnel, hogy folytassa a kérést.
 
-2. Ha Microsoft ügyfélszolgálata megállapítja, hogy ez egy hardveres probléma, akkor a következő műveletek egyike történik: 
+2. Ha Microsoft ügyfélszolgálata megállapítja, hogy ez egy hardveres probléma, akkor a következő műveletek egyike történik:
 
-    - A rendszer elküldje egy mező típusú helyettesítő egységet a meghibásodott hardver részhez. Jelenleg a tápegység csak az egyetlen támogatott cserélhető egység. 
-    - Bármely más rész meghibásodása esetén a Microsoft teljes rendszercserét (FSR) vagy egy eszköz cseréjét végez.
+    * A rendszer elküldje egy mező típusú helyettesítő egységet a meghibásodott hardver részhez. Jelenleg a tápegységek és a merevlemezek az egyetlen támogatott FRUs.
+    * A következő munkanapon belül csak a FRUs lesznek lecserélve, minden más esetben teljes rendszer-cserét (FSR) kell leszállítani.
 
 3. Ha a támogatási jegyet a helyi idő szerint (hétfőtől péntekig) 4:30 óráig emelik ki, akkor a helyszíni technikus a következő munkanapon elküldi azt a helyet, amely egy cserélhető eszköz vagy teljes eszköz cseréjét hajt végre.
 
@@ -84,11 +84,11 @@ Ez az információ csak Azure Stack eszközre vonatkozik. A hardveres problémá
 
 A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon.
 
-#### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
+### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
 1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás**menüpontot.
 
-    ![Támogatási kérelmek kezelése](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)   
+    ![Támogatási kérelmek kezelése](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-manage-support-request-1.png)
 
 2. A **Súgó és támogatás**szolgáltatásban megjelenik a **legújabb támogatási kérelmek** táblázatos listája.
 
@@ -96,7 +96,6 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-   
 ## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan lehet [elhárítani az Azure stack Edge-vel kapcsolatos problémákat](azure-stack-edge-troubleshoot.md).

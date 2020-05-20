@@ -12,16 +12,18 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92fbd254f223e2c7eb70a4e86bb7e904294395e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8ff291592efc73415cce74ff666117851bb53e8a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597708"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681018"
 ---
 # <a name="add-facebook-as-an-identity-provider-for-external-identities"></a>Facebook hozzáadása identitás-szolgáltatóként külső identitásokhoz
 
 Hozzáadhat Facebook-t önkiszolgáló bejelentkezési felhasználói folyamatokhoz (előzetes verzió), így a felhasználók saját Facebook-fiókjaikat is bejelentkezhetnek az alkalmazásaiba. Ahhoz, hogy a felhasználók bejelentkezzenek a Facebook használatával, először engedélyeznie kell az [önkiszolgáló regisztrációt](self-service-sign-up-user-flow.md) a bérlő számára. Miután hozzáadta a Facebookot identitás-szolgáltatóként, állítson be egy felhasználói folyamatot az alkalmazáshoz, és válassza a Facebook lehetőséget a bejelentkezési lehetőségek közül.
+> [!NOTE]
+> A felhasználók csak a Facebook-fiókjaikat használhatják az önkiszolgáló bejelentkezési és felhasználói folyamatokat használó alkalmazásokban való regisztrációhoz. A felhasználók nem hívhatják meg és nem válthatják be a meghívót Facebook-fiók használatával.
 
 ## <a name="create-an-app-in-the-facebook-developers-console"></a>Alkalmazás létrehozása a Facebook Fejlesztői konzolon
 
@@ -53,7 +55,9 @@ Facebook-fiók [identitás-szolgáltatóként](identity-providers.md)való haszn
 18. Annak érdekében, hogy a Facebook-alkalmazás elérhető legyen az Azure AD-ben, válassza ki a lap jobb felső sarkában található állapotjelzőt, és kapcsolja be **, hogy az** alkalmazás nyilvános legyen, majd válassza a **váltás mód**lehetőséget. Ezen a ponton az állapotnak a **fejlesztéstől** az **élő**értékre kell váltania.
     
 ## <a name="configure-a-facebook-account-as-an-identity-provider"></a>Facebook-fiók konfigurálása identitás-szolgáltatóként
+Most be kell állítania a Facebook ügyfél-azonosítót és az ügyfél titkát, vagy megadhatja azt az Azure AD portálon vagy a PowerShell használatával. A Facebook-konfigurációt tesztelheti úgy, hogy az önkiszolgáló regisztrációt engedélyező alkalmazás felhasználói folyamatán keresztül regisztrál.
 
+### <a name="to-configure-facebook-federation-in-the-azure-ad-portal"></a>A Facebook-összevonás konfigurálása az Azure AD-portálon
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) az Azure ad-bérlő globális rendszergazdájaként.
 2. Az **Azure-szolgáltatások**területen válassza a **Azure Active Directory**lehetőséget.
 3. A bal oldali menüben válassza a **külső identitások**lehetőséget.
@@ -64,8 +68,38 @@ Facebook-fiók [identitás-szolgáltatóként](identity-providers.md)való haszn
    ![A közösségi identitás-szolgáltató hozzáadása lapot ábrázoló képernyőfelvétel](media/facebook-federation/add-social-identity-provider-page.png)
 
 7. Kattintson a **Mentés** gombra.
+### <a name="to-configure-facebook-federation-by-using-powershell"></a>A Facebook-összevonás konfigurálása a PowerShell használatával
+1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját.
+2. Futtassa a következő parancsot: `Connect-AzureAD` .
+3. A bejelentkezési kérésben jelentkezzen be a felügyelt globális rendszergazdai fiókkal.  
+4. Futtassa az alábbi parancsot: 
+   
+   `New-AzureADMSIdentityProvider -Type Facebook -Name Facebook -ClientId [Client ID] -ClientSecret [Client secret]`
+ 
+   > [!NOTE]
+   > Használja az ügyfél-azonosítót és az ügyfél titkos kulcsát a fentiekben létrehozott alkalmazásból a Facebook Fejlesztői konzolon. További információt a [New-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/new-azureadmsidentityprovider?view=azureadps-2.0-preview) című cikkben talál. 
+
+## <a name="how-do-i-remove-facebook-federation"></a>Hogyan eltávolítja a Facebook-összevonást?
+A Facebook-összevonási telepítőt törölheti. Ha így tesz, a felhasználói folyamatokon keresztül regisztrált felhasználók Facebook-fiókjai többé nem fognak tudni bejelentkezni. 
+
+### <a name="to-delete-facebook-federation-in-the-azure-ad-portal"></a>Facebook-összevonás törlése az Azure AD-portálon: 
+1. Lépjen a [Azure Portal](https://portal.azure.com). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+2. Válassza a **külső identitások**lehetőséget.
+3. Válassza ki **az összes identitás szolgáltatót**.
+4. A **Facebook** -vonalon válassza a helyi menüt (**...**), majd válassza a **Törlés**lehetőséget. 
+5. A törlés megerősítéséhez válassza az **Igen** lehetőséget.
+
+### <a name="to-delete-facebook-federation-by-using-powershell"></a>Facebook-összevonás törlése a PowerShell használatával: 
+1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját.
+2. Futtassa az `Connect-AzureAD` parancsot.  
+4. A bejelentkezési kérésben jelentkezzen be a felügyelt globális rendszergazdai fiókkal.  
+5. Írja be a következő parancsot:
+
+    `Remove-AzureADMSIdentityProvider -Id Facebook-OAUTH`
+
+   > [!NOTE]
+   > További információ: [Remove-AzureADMSIdentityProvider](https://docs.microsoft.com/powershell/module/azuread/Remove-AzureADMSIdentityProvider?view=azureadps-2.0-preview). 
 
 ## <a name="next-steps"></a>További lépések
 
-- [Külső felhasználók meghívása együttműködésre](add-users-administrator.md)
 - [Önkiszolgáló regisztráció hozzáadása egy alkalmazáshoz](self-service-sign-up-user-flow.md)

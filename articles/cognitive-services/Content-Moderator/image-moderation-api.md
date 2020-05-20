@@ -10,16 +10,16 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 36777208dc8ac179f1aaf345c374a33001e3f8bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dd6228ea50968c98c5ba151b8af9a0c2fa829582
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81404270"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684066"
 ---
 # <a name="learn-image-moderation-concepts"></a>A képek moderálásával kapcsolatos fogalmak megismerése
 
-A felnőtteknek és a zamatos tartalomnak az Content Moderator géppel támogatott lemezkép-moderálási és [a hurok-áttekintő eszköz](Review-Tool-User-Guide/human-in-the-loop.md) használatával mérsékelt képeket használhat. Képek beolvasása szöveges tartalomhoz és a szöveg kinyerése és az arcok észlelése. A képeket megtekintheti az egyéni listán, és további műveleteket hajthat végre.
+A felnőtteknek és a zamatos tartalmaknak a Content Moderator géppel támogatott lemezkép-moderálását és [felülvizsgálati eszközét](Review-Tool-User-Guide/human-in-the-loop.md) használva mérsékelt képeket használhat. Képek beolvasása szöveges tartalomhoz és a szöveg kinyerése és az arcok észlelése. A képeket megtekintheti az egyéni listán, és további műveleteket hajthat végre.
 
 ## <a name="evaluating-for-adult-and-racy-content"></a>A felnőtt és a zamatos tartalom kiértékelése
 
@@ -147,4 +147,4 @@ Példa kivonatra:
 
 ## <a name="next-steps"></a>További lépések
 
-Tesztelje a [rendszerkép moderálási API-konzolját](try-image-api.md) , és használja a REST API-kód mintáit. Tekintse meg a [.net SDK](dotnet-sdk-quickstart.md) rövid útmutatójának képmoderálás szakaszát is, ha ismeri a Visual studiót és a C#-ot.
+Tesztelje a [rendszerkép moderálási API-konzolját](try-image-api.md) , és használja a REST API-kód mintáit. Tekintse meg az [értékeléseket, a munkafolyamatokat és a feladatokat](./review-api.md) , amelyekből megtudhatja, hogyan állíthatja be az emberi felülvizsgálatokat.

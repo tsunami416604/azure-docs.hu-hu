@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 05/19/2020
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 5d73ba8f21fe7731fb751d42a8497ff8e1ebba7d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0cc0cd7233d0c16cae8389fcddd50a16cf96bd2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81383629"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683641"
 ---
 # <a name="convert-resource-classes-to-workload-groups"></a>Erőforrás-osztályok átalakítása munkaterhelés-csoportokra
 
@@ -27,7 +27,7 @@ A munkaterhelés-csoportok olyan mechanizmust biztosítanak, amely elkülöníti
 
 ## <a name="understanding-the-existing-resource-class-configuration"></a>A meglévő erőforrás-osztály konfigurációjának ismertetése
 
-A munkaterhelési csoportokhoz `REQUEST_MIN_RESOURCE_GRANT_PERCENT` a (z) nevű paramétert kell megadni, amely meghatározza, hogy a rendszer hány összesített rendszererőforrást igényel.  Az erőforrás-hozzárendelés erőforrás- [osztályok](resource-classes-for-workload-management.md#what-are-resource-classes) számára a párhuzamossági bővítőhelyek kiosztásával történik.  A következőhöz `REQUEST_MIN_RESOURCE_GRANT_PERCENT`használandó érték meghatározásához használja a sys. dm_workload_management_workload_groups_stats <link tbd> DMV-t.  Az alábbi lekérdezési lekérdezés például egy értéket ad vissza, amely a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` paraméterhez használható a staticrc40-hoz hasonló munkaterhelési csoport létrehozásához.
+A munkaterhelési csoportokhoz a (z) nevű paramétert kell `REQUEST_MIN_RESOURCE_GRANT_PERCENT` megadni, amely meghatározza, hogy a rendszer hány összesített rendszererőforrást igényel.  Az erőforrás-hozzárendelés erőforrás- [osztályok](resource-classes-for-workload-management.md#what-are-resource-classes) számára a párhuzamossági bővítőhelyek kiosztásával történik.  A következőhöz használandó érték meghatározásához `REQUEST_MIN_RESOURCE_GRANT_PERCENT` használja a sys. dm_workload_management_workload_groups_stats DMV-t <link tbd> .  Az alábbi lekérdezési lekérdezés például egy értéket ad vissza, amely a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` paraméterhez használható a staticrc40-hoz hasonló munkaterhelési csoport létrehozásához.
 
 ```sql
 SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant_percent
@@ -38,13 +38,13 @@ SELECT Request_min_resource_grant_percent = Effective_request_min_resource_grant
 > [!NOTE]
 > A munkaterhelés-csoportok a teljes rendszererőforrások százalékos arányán alapulnak.  
 
-Mivel a munkaterhelés-csoportok a teljes rendszererőforrások százalékos arányán alapulnak, a vertikális fel-és leskálázás során a rendszer a statikus erőforrás-osztályokhoz lefoglalt erőforrások százalékos arányát a rendszererőforrások teljes változásaihoz viszonyítva határozza meg.  A DW1000c staticrc40 például a teljes rendszererőforrások 9,6%-át foglalja le.  A DW2000c 19,2%-os foglalást foglal le.  Ez a modell hasonló, ha a párhuzamosságot szeretné bővíteni, és több erőforrást szeretne lefoglalni egy kérésre.
+Mivel a munkaterhelés-csoportok a teljes rendszererőforrások százalékos arányán alapulnak, a vertikális fel-és leskálázás során a rendszer a statikus erőforrás-osztályokhoz lefoglalt erőforrások százalékos arányát a rendszererőforrások teljes változásaihoz viszonyítva határozza meg.  A DW1000c staticrc40 például a teljes rendszererőforrások 19,2%-át foglalja le.  A DW2000c 9,6%-os foglalást foglal le.  Ez a modell hasonló, ha a párhuzamosságot szeretné bővíteni, és több erőforrást szeretne lefoglalni egy kérésre.
 
 ## <a name="create-workload-group"></a>Munkaterhelés-csoport létrehozása
 
-Az ismertnél `REQUEST_MIN_RESOURCE_GRANT_PERCENT`a MUNKATERHELÉS-csoport <link> létrehozása szintaxissal hozhatja létre a munkaterhelés csoportot.  Megadhat egy `MIN_PERCENTAGE_RESOURCE` nullánál nagyobb értéket is, ha el szeretné különíteni a munkaterhelés-csoport erőforrásait.  Azt is megteheti, hogy `CAP_PERCENTAGE_RESOURCE` a munkaterhelési csoport által felhasznált erőforrások mennyiségének korlátozásához a 100-nál kisebb értéket is megadhat.  
+Az ismertnél a munkaterhelés `REQUEST_MIN_RESOURCE_GRANT_PERCENT` -csoport létrehozása <link> szintaxissal hozhatja létre a munkaterhelés csoportot.  Megadhat egy `MIN_PERCENTAGE_RESOURCE` nullánál nagyobb értéket is, ha el szeretné különíteni a munkaterhelés-csoport erőforrásait.  Azt is megteheti, `CAP_PERCENTAGE_RESOURCE` hogy a munkaterhelési csoport által felhasznált erőforrások mennyiségének korlátozásához a 100-nál kisebb értéket is megadhat.  
 
-Az alábbi példa azt állítja `MIN_PERCENTAGE_RESOURCE` be, hogy a rendszer a rendszererőforrások 9,6 `wgDataLoads` %-át felhasználja, és garantálja, hogy az egyik lekérdezés minden alkalommal képes lesz futni.  Emellett a `CAP_PERCENTAGE_RESOURCE` 38,4% értékre van állítva, és a számítási feladatnak négy egyidejű kérésre van korlátozva.  Ha a paramétert 3600-ra állítja, a `QUERY_EXECUTION_TIMEOUT_SEC` rendszer minden olyan lekérdezést automatikusan megszakít, amely 1 óránál hosszabb ideig fut.
+Az alábbi példa azt állítja be, hogy a rendszer a rendszererőforrások 9,6%-át felhasználja, `MIN_PERCENTAGE_RESOURCE` `wgDataLoads` és garantálja, hogy az egyik lekérdezés minden alkalommal képes lesz futni.  Emellett a `CAP_PERCENTAGE_RESOURCE` 38,4% értékre van állítva, és a számítási feladatnak négy egyidejű kérésre van korlátozva.  `QUERY_EXECUTION_TIMEOUT_SEC`Ha a paramétert 3600-ra állítja, a rendszer minden olyan lekérdezést automatikusan megszakít, amely 1 óránál hosszabb ideig fut.
 
 ```sql
 CREATE WORKLOAD GROUP wgDataLoads WITH  
@@ -57,9 +57,9 @@ CREATE WORKLOAD GROUP wgDataLoads WITH
 ## <a name="create-the-classifier"></a>Az osztályozó létrehozása
 
 Korábban a lekérdezéseknek az erőforrás-osztályokra való leképezése [sp_addrolemembertel](resource-classes-for-workload-management.md#change-a-users-resource-class)történt.  Ha ugyanazokat a funkciókat és leképezési kérelmeket szeretné elérni a munkaterhelés-csoportokhoz, használja a [munkaterhelés-osztályozó létrehozása](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxist.  A sp_addrolemember használata csak akkor engedélyezett, ha egy bejelentkezési azonosító alapján leképezi az erőforrásokat egy kérelemre.  Az osztályozó a bejelentkezés mellett további lehetőségeket is biztosít, például a következőket:
-    - label
+    - címke
     - munkamenet
-    - Az alábbi példa arra az esetre, ha `AdfLogin` a bejelentkezéshez olyan lekérdezéseket rendel, amelyeken a [beállítás felirata](sql-data-warehouse-develop-label.md) is be van állítva a fent létrehozott munkaterhelés `factloads` -csoportra. `wgDataLoads`
+    - Az alábbi példa arra az esetre, ha a bejelentkezéshez olyan lekérdezéseket rendel, `AdfLogin` amelyeken a [beállítás felirata](sql-data-warehouse-develop-label.md) is be van állítva `factloads` a fent létrehozott munkaterhelés-csoportra `wgDataLoads` .
 
 ```sql
 CREATE WORKLOAD CLASSIFIER wcDataLoads WITH  

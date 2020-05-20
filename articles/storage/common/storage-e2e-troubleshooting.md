@@ -9,12 +9,13 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 8dc3c629830019a6c207c18f1783559e89512172
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: monitoring
+ms.openlocfilehash: 9b4accd14785aedee06850d5a79dc9835086306a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610972"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680372"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Átfogó hibaelhárítás Azure Storage-metrikák és -naplózás, az AzCopy és a Message Analyzer használatával
 
@@ -85,7 +86,7 @@ Ebben az oktatóanyagban az üzenetsor használatával három különböző típ
 
 ### <a name="configure-server-side-logging-and-metrics"></a>Kiszolgálóoldali naplózás és metrikák konfigurálása
 
-Először is be kell állítania az Azure Storage naplózását és mérőszámait, hogy az adatok a szolgáltatás oldaláról elemezzenek. A naplózást és a mérőszámokat többféleképpen is konfigurálhatja – a [Azure Portal](https://portal.azure.com)a PowerShell használatával vagy programozott módon. A naplózás és a metrikák konfigurálásával kapcsolatos részletekért lásd a [metrikák engedélyezése](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal) és a [naplózás engedélyezése](storage-analytics-logging.md#enable-storage-logging) című témakört.
+Először is be kell állítania az Azure Storage naplózását és mérőszámait, hogy az adatok a szolgáltatás oldaláról elemezzenek. A naplózást és a mérőszámokat többféleképpen is konfigurálhatja – a [Azure Portal](https://portal.azure.com)a PowerShell használatával vagy programozott módon. A naplózás és a metrikák konfigurálásával kapcsolatos részletekért lásd a [metrikák engedélyezése](storage-analytics-metrics.md#enable-metrics-by-using-the-azure-portal) és a [naplózás engedélyezése](storage-analytics-logging.md#enable-storage-logging) című témakört.
 
 ### <a name="configure-net-client-side-logging"></a>.NET ügyféloldali naplózás konfigurálása
 
@@ -141,9 +142,9 @@ A metrikák diagramjainak hozzáadásával és testreszabásával kapcsolatos to
 
 ## <a name="use-azcopy-to-copy-server-logs-to-a-local-directory"></a>A AzCopy használata a kiszolgálói naplók helyi könyvtárba másolásához
 
-Az Azure Storage a kiszolgáló naplójának adatait a blobokra írja, míg a metrikák a táblákba íródnak. A log Blobok a Storage-fiók jól `$logs` ismert tárolójában érhetők el. A naplófájlok neve hierarchikusan van elnevezve év, hónap, nap és óra szerint, így könnyen megtalálhatja a vizsgálni kívánt időtartományt. Például a `storagesample` fiókban a 01/02/2015-es naplófájlok tárolója, 8-9 am, a következő: `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`. A tárolóban található egyedi Blobok egymás után, a következővel `000000.log`kezdődnek:.
+Az Azure Storage a kiszolgáló naplójának adatait a blobokra írja, míg a metrikák a táblákba íródnak. A log Blobok a Storage-fiók jól ismert `$logs` tárolójában érhetők el. A naplófájlok neve hierarchikusan van elnevezve év, hónap, nap és óra szerint, így könnyen megtalálhatja a vizsgálni kívánt időtartományt. Például a `storagesample` fiókban a 01/02/2015-es naplófájlok tárolója, 8-9 am, a következő: `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800` . A tárolóban található egyedi Blobok egymás után, a következővel kezdődnek: `000000.log` .
 
-A AzCopy parancssori eszköz használatával letöltheti ezeket a kiszolgálóoldali naplófájlokat a helyi gépen a kívánt helyre. A következő parancs használatával például letöltheti a naplófájlokat a 2015 január 2-án megtartott blob-műveletekhez a mappára `C:\Temp\Logs\Server`; Cserélje `<storageaccountname>` le a nevet a Storage-fiók nevére:
+A AzCopy parancssori eszköz használatával letöltheti ezeket a kiszolgálóoldali naplófájlokat a helyi gépen a kívánt helyre. A következő parancs használatával például letöltheti a naplófájlokat a 2015 január 2. és a (z) mappához tartozó blob-műveletekhez, a `C:\Temp\Logs\Server` helyére pedig `<storageaccountname>` a Storage-fiók nevét használhatja:
 
 ```azcopy
 azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
@@ -211,7 +212,7 @@ Az alábbi szakaszok azt ismertetik, hogyan használhatók az előre konfigurál
 
 Az üzenetsor tárolási eszközei közé tartoznak az Azure Storage View elrendezések, amelyek előre konfigurált nézetek, amelyek segítségével a különböző forgatókönyvekhez hasznos csoportosításokkal és oszlopokkal jeleníthetők meg az adatok. Létrehozhat egyéni nézet-elrendezéseket is, és mentheti újra.
 
-Az alábbi képen látható az **elrendezés megtekintése** menü, amely a nézet **elrendezése** elemre kattintva érhető el az eszköztár menüszalagján. Az Azure Storage-elrendezések megtekintése az **Azure Storage** csomópont alatt, a menüben van csoportosítva. A keresőmezőbe rákereshet `Azure Storage` úgy, hogy csak az Azure Storage View elrendezéseket szűrje. Azt is megteheti, hogy kijelöli a csillagot a nézet elrendezés mellett, hogy kedvencként jelenjen meg, és megjeleníti azt a menü tetején.
+Az alábbi képen látható az **elrendezés megtekintése** menü, amely a nézet **elrendezése** elemre kattintva érhető el az eszköztár menüszalagján. Az Azure Storage-elrendezések megtekintése az **Azure Storage** csomópont alatt, a menüben van csoportosítva. A keresőmezőbe rákereshet úgy, `Azure Storage` hogy csak az Azure Storage View elrendezéseket szűrje. Azt is megteheti, hogy kijelöli a csillagot a nézet elrendezés mellett, hogy kedvencként jelenjen meg, és megjeleníti azt a menü tetején.
 
 ![Elrendezési menü megtekintése](./media/storage-e2e-troubleshooting/view-layout-menu.png)
 
@@ -267,7 +268,7 @@ A szűrő alkalmazása után láthatja, hogy az ügyfél naplójában szereplő 
 A tárolási eszközök olyan előre definiált szűrőket tartalmaznak, amelyekkel leszűkítheti a naplózott adatok körét, és megkeresheti a keresett hibákat vagy trendeket. Ezután két előre definiált szűrőt fogunk alkalmazni: az egyiket, amely a kiszolgáló és a hálózat nyomkövetési naplóit a 404-es hibákra szűri, és egy adott időtartományon belül szűri az adathalmazt.
 
 1. Jelenítse meg a szűrő megjelenítése ablakot, ha még nem jelenik meg. Az eszköztár menüszalagján válassza ki az **eszköz Windows**, majd a **szűrő megtekintése**lehetőséget.
-2. A szűrő megtekintése ablakban válassza a **könyvtár**lehetőséget, és keresse meg `Azure Storage` az Azure Storage-szűrőket. Válassza ki az **összes naplóban az 404 (nem található) üzenetek**szűrőjét.
+2. A szűrő megtekintése ablakban válassza a **könyvtár**lehetőséget, és keresse meg `Azure Storage` Az Azure Storage-szűrőket. Válassza ki az **összes naplóban az 404 (nem található) üzenetek**szűrőjét.
 3. Jelenítse meg újra a **könyvtár** menüt, és keresse meg és válassza ki a **globális időszűrőt**.
 4. Szerkessze a szűrőben látható időbélyegeket a megtekinteni kívánt tartományhoz. Ezzel a megoldással szűkíthető az elemezni kívánt adattartomány.
 5. A szűrőnek az alábbi példához hasonlóan kell megjelennie. Az **alkalmaz** gombra kattintva alkalmazza a szűrőt az Analysis gridre.
@@ -311,14 +312,14 @@ Most, hogy már ismeri az üzenetsor elemzését a naplózási adatai elemzésé
 | Váratlan késések az üzenetek várólistán való kézbesítése során |A AzureStorageClientDotNetV4. Description a következőt tartalmazza: "újrapróbálkozási sikertelen művelet". |Ügyfél |
 | HTTP-növekedés a Percentthrottlingerror értéket mutatnak |HTTP. Response. StatusCode = = 500 &#124;&#124; HTTP. Response. StatusCode = = 503 |Network (Hálózat) |
 | Növekedés a Percenttimeouterror értéket mutatnak |HTTP. Response. StatusCode = = 500 |Network (Hálózat) |
-| Növekedés a Percenttimeouterror értéket mutatnak (összes) |* StatusCode = = 500 |Összes |
+| Növekedés a Percenttimeouterror értéket mutatnak (összes) |* StatusCode = = 500 |Mind |
 | Növekedés a Percentnetworkerror értéket mutatnak |AzureStorageClientDotNetV4. EventLogEntry. Level < 2 |Ügyfél |
 | HTTP 403 (Tiltott) hibaüzenetek |HTTP. Response. StatusCode = = 403 |Network (Hálózat) |
 | HTTP 404 (Nem található) hibaüzenetek |HTTP. Response. StatusCode = = 404 |Network (Hálózat) |
-| 404 (mind) |* StatusCode = = 404 |Összes |
+| 404 (mind) |* StatusCode = = 404 |Mind |
 | Egy közös hozzáférésű jogosultságkód (SAS) engedélyezési problémája |AzureStorageLog. RequestStatus = = "SASAuthorizationError" |Network (Hálózat) |
 | HTTP 409 (Ütközés) hibaüzenetek |HTTP. Response. StatusCode = = 409 |Network (Hálózat) |
-| 409 (mind) |* StatusCode = = 409 |Összes |
+| 409 (mind) |* StatusCode = = 409 |Mind |
 | Az alacsony PercentSuccess-vagy elemzési naplóbejegyzések olyan műveletekkel rendelkeznek, amelyek tranzakciós állapota ClientOtherErrors |AzureStorageLog. RequestStatus = = "ClientOtherError" |Kiszolgáló |
 | Nyéki figyelmeztetés |((AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS) > (AzureStorageLog. ServerLatencyMS * 1,5)) és (AzureStorageLog. RequestPacketSize <1460) és (AzureStorageLog. EndToEndLatencyMS-AzureStorageLog. ServerLatencyMS >= 200) |Kiszolgáló |
 | A kiszolgáló és a hálózati naplók tartománya |#Timestamp >= 2014-10-20T16:36:38 és #Timestamp <= 2014-10-20T16:36:39 |Kiszolgáló, hálózat |

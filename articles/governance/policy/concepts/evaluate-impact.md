@@ -1,14 +1,14 @@
 ---
 title: Új Azure Policy definíció hatásának kiértékelése
 description: Ismerkedjen meg az új házirend-definíció Azure-környezetbe való bevezetésének folyamatával.
-ms.date: 09/23/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 394f87c0328bce46d4c7177a336a7861991ad0e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9844e8435452b388c934c5969898fe01d23fb47
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187749"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684299"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Új Azure Policy definíció hatásának kiértékelése
 
@@ -33,8 +33,7 @@ Emiatt a házirend-definícióknak szigorúan meghatározottnak kell lenniük, �
 
 ## <a name="audit-existing-resources"></a>Meglévő erőforrások naplózása
 
-Mielőtt új vagy frissített erőforrásokat szeretne felügyelni az új szabályzat-definícióval, érdemes megtekinteni, hogyan értékeli ki a meglévő erőforrások (például egy tesztelési erőforráscsoport) korlátozott részhalmazát. A szabályzat-hozzárendelésben_letiltott_ [kényszerítési mód](./assignment-structure.md#enforcement-mode)
-(DoNotEnforce) használatával megakadályozhatja [, hogy a rendszer](./effects.md) kiváltsa az aktiválási vagy a tevékenységi naplóbejegyzések létrehozását.
+Mielőtt új vagy frissített erőforrásokat szeretne felügyelni az új szabályzat-definícióval, érdemes megtekinteni, hogyan értékeli ki a meglévő erőforrások (például egy tesztelési erőforráscsoport) korlátozott részhalmazát. A szabályzat-hozzárendelésben _letiltott_ [kényszerítési mód](./assignment-structure.md#enforcement-mode) (DoNotEnforce) használatával megakadályozhatja [, hogy a rendszer](./effects.md) kiváltsa az aktiválási vagy a tevékenységi naplóbejegyzések létrehozását.
 
 Ez a lépés lehetőséget ad arra, hogy kiértékelje a meglévő erőforrásokra vonatkozó új szabályzat megfelelőségi eredményeit anélkül, hogy ez hatással lenne a munkahelyi folyamatra. Győződjön meg arról, hogy a megfelelő erőforrások nem megfelelőként vannak megjelölve (_hamis pozitív_), és hogy az összes várhatóan meg nem felelő erőforrás helyesen van megjelölve.
 Miután az erőforrások kezdeti részhalmaza ellenőrzi a várt módon, lassan bontsa ki a kiértékelést az összes meglévő erőforrásra.

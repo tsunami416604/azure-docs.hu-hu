@@ -2,13 +2,13 @@
 title: Funkciók – LUIS
 description: Adjon hozzá funkciókat a nyelvi modellhez, hogy javaslatokat nyújtson a címkével vagy osztályozással ellátott bemenetek felismeréséhez.
 ms.topic: conceptual
-ms.date: 04/23/2020
-ms.openlocfilehash: 906876e39eb7ff31c2e6b954d1514d8afc50bf3a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/14/2020
+ms.openlocfilehash: e0fd4470c9e1c2a56562b3783010ff1ef87ff466
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591896"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682160"
 ---
 # <a name="machine-learning-ml-features"></a>Gépi tanulás (ML) funkciói
 
@@ -38,9 +38,9 @@ Ha a LUIS-alkalmazásnak képesnek kell lennie általánosítani és azonosítan
 A kifejezést tartalmazó listával LUIS a kontextust és az általánosításokat úgy tekinti meg, hogy azonosítsa a hasonló elemeket, de nem pontos szöveges egyezést.
 
 A kifejezések listájának használatának lépései:
-* Indítás géppel megtanult entitással
+* Indítás gépi tanulással rendelkező entitással
     * Példa kimondott szövegek hozzáadása
-    * Címke egy géppel megtanult entitással
+    * Címke gépi tanulási entitással
 * Kifejezések listájának hozzáadása
     * Szavak hozzáadása hasonló jelentéssel – ne **adjon hozzá** minden lehetséges szót vagy kifejezést. Ehelyett adjon hozzá néhány szót vagy kifejezést egyszerre, majd végezze el az újratanítást és a közzétételt.
     * Javasolt szavak áttekintése és hozzáadása
@@ -54,7 +54,7 @@ Olyan szavakra, amelyeknek szüksége lehet egy kifejezésre, hogy a jelentősé
 Ha ki szeretné bontani az orvosi feltételeket:
 * Először hozzon létre például hosszúságú kimondott szöveg és címkézett orvosi kifejezéseket a hosszúságú kimondott szöveg belül.
 * Ezután hozzon létre egy kifejezéseket tartalmazó listát a tárgy tartományon belüli kifejezésekre vonatkozó példákkal. A kifejezések listájának tartalmaznia kell a ténylegesen felcímkézett kifejezést és más, ugyanezen fogalmakat leíró kifejezéseket.
-* Adja hozzá a kifejezés listát ahhoz a entitáshoz vagy alentitáshoz, amely kibontja a kifejezés listában használt fogalmat. A leggyakoribb forgatókönyv egy géppel megtanult entitás összetevője (gyermeke). Ha a kifejezések listáját az összes leképezésben vagy entitásban alkalmazni kell, akkor a kifejezések listáját a globális kifejezés listaként kell megjelölnie. A `enabledForAllModels` jelző a modell hatókörét szabályozza az API-ban.
+* Adja hozzá a kifejezés listát ahhoz a entitáshoz vagy alentitáshoz, amely kibontja a kifejezés listában használt fogalmat. A leggyakoribb forgatókönyv a gépi tanulási entitások egyik összetevője (gyermeke). Ha a kifejezések listáját az összes leképezésben vagy entitásban alkalmazni kell, akkor a kifejezések listáját a globális kifejezés listaként kell megjelölnie. A `enabledForAllModels` jelző a modell hatókörét szabályozza az API-ban.
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>
@@ -88,9 +88,21 @@ Ha például az n szállítási címek entitása egy utcai címet tartalmazó al
     * Ország (alentitás)
     * Irányítószám (alentitás)
 
+## <a name="nested-subentities-with-features"></a>Beágyazott alentitások funkciókkal
+
+Egy gépi megtanult alentitás jelzi, hogy a szülő entitásnak van-e egy másik alentitása vagy a felső entitása. Az alentitások értéke szolgáltatásként viselkedik a szülője számára.
+
+Az alentitások tartalmazhatnak egy kifejezési listát is, valamint egy modellt (egy másik entitást) a szolgáltatásként.
+
+Ha az alentitásban szerepel egy kifejezés lista, ez növeli a koncepció szókincsét, de nem ad hozzá semmilyen információt az előrejelzés JSON-válaszához.
+
+Ha az alentitás egy másik entitás szolgáltatásával rendelkezik, a JSON-válasz tartalmazza a másik entitás kinyert értékeit.
+
 ## <a name="required-features"></a>Szükséges szolgáltatások
 
 Meg kell találni egy szükséges szolgáltatást ahhoz, hogy a modellt vissza lehessen adni az előrejelzési végpontból. Használjon kötelező szolgáltatást, ha tudja, hogy a bejövő adatainak meg kell egyezniük a szolgáltatással.
+
+Ha a kiírás szövege nem egyezik meg a szükséges funkcióval, nem lesz kibontva.
 
 **Egy kötelező szolgáltatás nem gépi megtanult entitást használ**:
 * Reguláriskifejezés-entitás

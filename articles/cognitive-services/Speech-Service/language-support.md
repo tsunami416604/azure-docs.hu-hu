@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 3fe1b999fbdc03157778a1329e05e8c342183528
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 28c5c1258c0733cd23f7c4ad3c901360461d5bdc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587374"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682135"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Beszédfelismerési szolgáltatás nyelvi és hangalapú támogatása
 
@@ -24,7 +24,7 @@ A nyelvi támogatás a beszédfelismerési szolgáltatás működésének függv
 
 ## <a name="speech-to-text"></a>Diktálás
 
-A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a hang-és emberi címkével ellátott átiratok vagy a kapcsolódó szövegek feltöltésével: mondatok. A kiejtés testreszabása jelenleg csak a és a esetében érhető el `en-US` `de-DE` . További információ a testreszabásról [itt](how-to-custom-speech.md).
+A Microsoft Speech SDK és a REST API egyaránt a következő nyelveket támogatja (területi beállítások). A pontosság javítása érdekében a testreszabást a nyelvek egy részhalmaza számára ajánljuk a hang-és emberi címkével ellátott átiratok vagy a kapcsolódó szövegek feltöltésével: mondatok. A kiejtés testreszabása a kapcsolódó szöveg feltöltésével érhető el: kiejtés. További információ a testreszabásról [itt](how-to-custom-speech.md).
 
 <!--
 To get the AM and ML bits:
@@ -39,7 +39,9 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 | `ar-AE` | Arab (UAE)                      | Igen       | Nem                                                |
 | `ar-BH` | Arab (Bahrein), modern standard | Igen       | Nyelvi modell                                    |
 | `ar-EG` | Arab (Egyiptom)                    | Igen       | Nyelvi modell                                    |
+| `ar-IL` | Arab (Izrael)                   | Igen       | Nem                                                |
 | `ar-KW` | Arab (Kuvait)                   | Igen       | Nem                                                |
+| `ar-PS` | Arab (Palesztina)                | Igen       | Nem                                                |
 | `ar-QA` | Arab (Katar)                    | Igen       | Nem                                                |
 | `ar-SA` | Arab (Szaúd-Arábia)             | Igen       | Nem                                                |
 | `ar-SY` | Arab (Szíria)                    | Igen       | Nyelvi modell                                    |

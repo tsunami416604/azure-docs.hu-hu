@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 2694e0c1536064267faad10517ae58d0709ad1c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62b3445ba841a87f04dbe8c867411814b849be07
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231764"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682442"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
 Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használható felhőalapú fájlrendszere. Az Azure-fájlmegosztások zökkenőmentesen használhatóak Windowson és Windows Serveren. Ebben a cikkben az Azure-fájlmegosztások Windowson és Windows Serveren való használatának szempontjairól olvashat.
@@ -80,7 +80,7 @@ Azure-fájlmegosztásokat az Azure-beli virtuális gépeken vagy helyszínen fut
 ## <a name="using-an-azure-file-share-with-windows"></a>Az Azure-fájlmegosztások használata Windowson
 Az Azure-fájlmegosztások Windowson való használatához csatlakoztatnia kell azokat, azaz hozzájuk kell rendelnie egy meghajtó betűjelét vagy egy csatlakoztatási pont elérési útját, vagy pedig az [UNC-útvonalukon](https://msdn.microsoft.com/library/windows/desktop/aa365247.aspx) keresztül érheti el azokat. 
 
-Ellentétben más, például a Windows Serveren, Linux Samba Serveren vagy NAS-eszközön szolgáltatott SMB-megosztásokkal, az Azure-fájlmegosztások jelenleg nem támogatják a Kerberos-hitelesítést az Active Directory (AD) vagy Azure Active Directory (AAD) identitás használatával, a funkció megvalósítása ugyanakkor [folyamatban van](https://feedback.azure.com/forums/217298-storage/suggestions/6078420-acl-s-for-azurefiles). Ehelyett az Azure-fájlmegosztás annak a tárfióknak a tárfiókkulcsával érhető el, amelyik tartalmazza az Azure-fájlmegosztást. A Storage-fiók kulcsa a Storage-fiókhoz tartozó rendszergazdai kulcs, beleértve a megosztott fájlmegosztás összes fájljának és mappájának rendszergazdai engedélyeit, valamint a Storage-fiókban található összes fájlmegosztást és egyéb tárolási erőforrást (Blobok, várólisták, táblák stb.). Ha ez nem elegendő a számítási feladatokhoz, az [Azure File Sync](storage-sync-files-planning.md) megoldhatja a Kerberos-hitelesítés és az ACL-támogatás hiányát, amíg az AAD-alapú Kerberos-hitelesítés és az ACL-támogatás nyilvánosan elérhetővé nem válik.
+Ez a cikk a Storage-fiók kulcsát használja a fájlmegosztás eléréséhez. A Storage-fiók kulcsa a Storage-fiókhoz tartozó rendszergazdai kulcs, beleértve a megosztott fájlmegosztás összes fájljának és mappájának rendszergazdai engedélyeit, valamint a Storage-fiókban található összes fájlmegosztást és egyéb tárolási erőforrást (Blobok, várólisták, táblák stb.). Ha ez nem elegendő a munkaterheléshez, [Azure file Sync](storage-sync-files-planning.md) lehet használni, vagy az [SMB protokollon alapuló identitás-alapú hitelesítést](storage-files-active-directory-overview.md)is használhat.
 
 Az SMB-fájlmegosztást váró üzletági (LOB) alkalmazások Azure-ba való áthelyezése esetén gyakori megoldás az Azure-fájlmegosztások használata a dedikált Windows-fájlkiszolgálók Azure-beli virtuális gépeken történő futtatása helyett. Az üzletági alkalmazások egy Azure-fájlmegosztás használatára való sikeres migrálása érdekében fontos figyelembe venni, hogy számos üzletági alkalmazás, egy korlátozott rendszerengedélyekkel rendelkező dedikált szolgáltatásfiók környezetében fut a virtuális gép rendszergazdai fiókja helyett. Ezért győződjön meg róla, hogy az Azure-fájlmegosztáshoz szükséges hitelesítő adatokat a szolgáltatásfiók helyett a rendszergazdai fiókon keresztül csatlakoztatja/menti.
 
@@ -186,7 +186,7 @@ Remove-PSDrive -Name <desired-drive-letter>
     
     ![A Hálózati meghajtó csatlakoztatása legördülő menü képernyőképe](./media/storage-how-to-use-files-windows/1_MountOnWindows10.png)
 
-1. Válassza ki a meghajtóbetűjelet, és adja meg az UNC elérési utat, `<storageAccountName>.file.core.windows.net/<fileShareName>`az UNC elérési út formátuma. Például: `anexampleaccountname.file.core.windows.net/example-share-name`.
+1. Válassza ki a meghajtóbetűjelet, és adja meg az UNC elérési utat, az UNC elérési út formátuma `<storageAccountName>.file.core.windows.net/<fileShareName>` . Példa: `anexampleaccountname.file.core.windows.net/example-share-name`.
     
     ![A Hálózati meghajtó csatlakoztatása párbeszédpanel képernyőképe](./media/storage-how-to-use-files-windows/2_MountOnWindows10.png)
 
@@ -300,5 +300,5 @@ Miután létrehozta a beállításkulcsot, indítsa újra a kiszolgálót az SMB
 ## <a name="next-steps"></a>További lépések
 Az alábbi hivatkozások további információkat tartalmaznak az Azure Filesról:
 - [Az Azure Files üzembe helyezésének megtervezése](storage-files-planning.md)
-- [GYIK](../storage-files-faq.md)
+- [Gyakori kérdések](../storage-files-faq.md)
 - [Hibaelhárítás a Windows rendszerben](storage-troubleshoot-windows-file-connection-problems.md)      

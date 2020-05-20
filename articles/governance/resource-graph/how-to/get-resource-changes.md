@@ -1,14 +1,14 @@
 ---
 title: Erőforrás-módosítások lekérése
 description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megváltozását, lekérni a módosított tulajdonságok listáját, és kiértékelni a különbségeket.
-ms.date: 10/09/2019
+ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 9504ac77fc4a3b03434912cc65284e2001df6e03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53148f302d82a7563520036f327406ca4a86040
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74873029"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681056"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
 
@@ -40,8 +40,8 @@ Az erőforrás változásának első lépése, hogy megkeresse az adott erőforr
 
 A **resourceChanges** végpont a következő paramétereket fogadja el a kérelem törzsében:
 
-- **resourceId** \[szükséges\]: az Azure-erőforrás, amely a módosításokat keresi.
-- **interval** \[szükséges\]intervallum: egy olyan tulajdonság, amely _kezdési_ és _befejezési_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
+- **resourceId** \[ kötelező \] : az Azure-erőforrás, amely a módosításokat keresi.
+- **intervallum** \[ kötelező \] : egy olyan tulajdonság, amely _kezdő_ és _befejező_ dátummal rendelkezik, hogy mikor érdemes megkeresni egy változási eseményt a **Zulu Time Zone (Z)** használatával.
 - **fetchPropertyChanges** (nem kötelező): logikai tulajdonság, amely meghatározza, hogy a válasz objektum tartalmazza-e a tulajdonságok változásait.
 
 Példa a kérelem törzsére:
@@ -289,3 +289,4 @@ Az eredmények összehasonlításához használja a **resourceChanges** **Change
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).
+- A lekérdezések magas gyakorisággal történő kezelésével kapcsolatos útmutatásért lásd: [útmutató a szabályozott kérelmekhez](../concepts/guidance-for-throttled-requests.md).

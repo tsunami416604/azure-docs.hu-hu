@@ -1,6 +1,6 @@
 ---
-title: Azure Automation fiók hibaelhárítása
-description: Útmutató az Azure-fiókkal kapcsolatos problémák elhárításához és megoldásához.
+title: A fiókkal kapcsolatos problémák elhárítása Azure Automation
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a problémákat egy Azure-fiókkal.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -8,22 +8,22 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 6a7defdaa9b4b0f0b3580a3ac6b1a0487434a97c
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: bebc89514da7f28015da5cb145ae50bf3fccdb6a
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864130"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680079"
 ---
-# <a name="troubleshoot-an-azure-automation-account"></a>Azure Automation fiók hibáinak megoldása
+# <a name="troubleshoot-azure-automation-account-issues"></a>A fiókkal kapcsolatos problémák elhárítása Azure Automation
 
-Ez a cikk a Azure Automation-fiók használatakor felmerülő problémák megoldásait ismerteti. Az Automation-fiókokkal kapcsolatos általános információkért lásd: [Azure-fiók létrehozása](../automation-quickstart-create-account.md).
+Ez a cikk a Azure Automation-fiók használatakor felmerülő problémák megoldásait ismerteti. Az Automation-fiókokkal kapcsolatos általános információkért lásd: [Azure Automation fiók hitelesítésének áttekintése](../automation-security-overview.md).
 
 ## <a name="scenario-unable-to-register-automation-resource-provider-for-subscriptions"></a><a name="rp-register"></a>Forgatókönyv: nem sikerült regisztrálni az Automation erőforrás-szolgáltatót az előfizetésekhez
 
 ### <a name="issue"></a>Probléma
 
-Ha az Automation-fiókban felügyeleti megoldásokkal dolgozik, a következő hibaüzenet jelenik meg:
+Ha például az Automation-fiókban Update Management, a felügyeleti funkciókkal dolgozik, a következő hibaüzenet jelenik meg:
 
 ```error
 Error details: Unable to register Automation Resource Provider for subscriptions:
@@ -52,5 +52,5 @@ Az Automation erőforrás-szolgáltató regisztrálásához kövesse az alábbi 
 Ha ez a cikk nem oldja meg a problémát, próbálja ki a következő csatornák egyikét a további támogatáshoz:
 
 * Választ kaphat az Azure-szakértőktől az [Azure-fórumokon](https://azure.microsoft.com/support/forums/).
-* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport). Ez a hivatalos Microsoft Azure fiók az Azure-Közösség megfelelő erőforrásokhoz való csatlakoztatásához: válaszok, támogatás és szakértők.
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) . Ez a hivatalos Microsoft Azure fiók az Azure-Közösség megfelelő erőforrásokhoz való csatlakoztatásához: válaszok, támogatás és szakértők.
 * Azure-támogatási incidens küldése. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/), és válassza a **támogatás kérése**lehetőséget.

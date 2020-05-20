@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3f3f06bd5a9b6a78b45a63de0684b580e662075b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 88e9cdfa8ea4554a44ddfc25cde2b0eb2aed7a57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81256518"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682706"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Az adatelemzési projektek platformja és eszközei
 
@@ -49,7 +49,7 @@ Ide tartozik a **ml és AI-eszközök** is, például a xgboost, a mxnet és a V
 
 Jelenleg a DSVM a **Windows** és a **Linux CentOS** operációs rendszerekben érhető el. Válassza ki a DSVM méretét (a CPU-magok számát és a memória mennyiségét) azon adatelemzési projektek igényei alapján, amelyeket végre szeretne hajtani. 
 
-A DSVM Windows-kiadásával kapcsolatos további információkért lásd: [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) az Azure piactéren. A DSVM Linux-kiadását lásd: [linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
+A DSVM Windows-kiadásával kapcsolatos további információkért lásd: [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-win-2019) az Azure piactéren. A DSVM Linux-kiadását lásd: [linux Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804).
 
 Ha szeretné megtudni, hogyan hajthat végre a közös adatelemzési feladatokat a DSVM hatékonyan, tekintse meg [az adatelemzési virtuális gépen 10 dolgot](../data-science-virtual-machine/vm-do-ten-things.md) .
 
@@ -136,7 +136,7 @@ Ha Linux (CentOS) gépeket használ a git-parancsok futtatásához, hozzá kell 
 
 1. Másolja a teljes SSH-kulcsot, beleértve az *SSH-RSA-* t. 
 1. Jelentkezzen be az Azure DevOps-szolgáltatásaiba. 
-1. Kattintson a lap jobb felső sarkában található **<nevére\> ** , majd a **Biztonság**elemre. 
+1. Kattintson a lap jobb felső sarkában található **<nevére \> ** , majd a **Biztonság**elemre. 
     
    ![Kattintson a nevére, majd a Biztonság elemre.](./media/platforms-and-tools/resources-2-user-setting.png)
 

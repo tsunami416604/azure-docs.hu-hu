@@ -1,14 +1,14 @@
 ---
 title: Útmutatás szabályozott kérésekhez
 description: Megtudhatja, hogyan csoportosíthat, lépcsőzetesen, oldalszámozást és lekérdezéseket végezhet párhuzamosan, hogy elkerülje az Azure Resource Graph által szabályozott kérelmeket.
-ms.date: 12/02/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: fbd4bec715b187bcc643fe32b8452b0e062e7713
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbcd438f1eda4edd30deef41542beeae6d746dc2
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259850"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682064"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
 
@@ -23,17 +23,17 @@ Ez a cikk az Azure Resource Graph lekérdezések létrehozásával kapcsolatos n
 
 ## <a name="understand-throttling-headers"></a>Szabályozási fejlécek ismertetése
 
-Az Azure Resource Graph az egyes felhasználók számára időintervallum alapján foglal le kvóta-számot. A felhasználók például legfeljebb 15 lekérdezést küldhetnek minden 5 másodperces ablakban a szabályozás nélkül. A kvóta értékét számos tényező határozza meg, és a változás változhat.
+Az Azure Resource Graph az egyes felhasználók számára egy adott időtartományon alapuló kvóta-számot foglal le. A felhasználók például legfeljebb 15 lekérdezést küldhetnek minden 5 másodperces ablakban a szabályozás nélkül. A kvóta értékét számos tényező határozza meg, és a változás változhat.
 
 Az Azure Resource Graph minden lekérdezési válaszban két szabályozási fejlécet hoz létre:
 
 - `x-ms-user-quota-remaining`(int): a felhasználó fennmaradó erőforrás-kvótája. Ez az érték leképezi a lekérdezések darabszámát.
 - `x-ms-user-quota-resets-after`(óó: PP: mm): az időtartam, amíg a felhasználó kvótájának felhasználását vissza nem állítja.
 
-Ha szeretné bemutatni, hogyan működnek a fejlécek, nézzük meg egy lekérdezési választ, amely a `x-ms-user-quota-remaining: 10` és `x-ms-user-quota-resets-after: 00:00:03`a fejlécét és értékeit is tartalmazta.
+Ha szeretné bemutatni, hogyan működnek a fejlécek, nézzük meg egy lekérdezési választ, amely a és a fejlécét és értékeit is tartalmazta `x-ms-user-quota-remaining: 10` `x-ms-user-quota-resets-after: 00:00:03` .
 
 - A következő 3 másodpercen belül legfeljebb 10 lekérdezés lehet elküldve a szabályozás nélkül.
-- `x-ms-user-quota-remaining` 3 másodpercen belül a és a értékeket `x-ms-user-quota-resets-after` a és a értékre `00:00:05` állítja vissza `15` a rendszer.
+- 3 másodpercen belül a és a értékeket a és a értékre `x-ms-user-quota-remaining` `x-ms-user-quota-resets-after` állítja vissza a rendszer `15` `00:00:05` .
 
 Ha szeretné megtekinteni, hogyan használhatja a fejléceket a lekérdezési kérelmek _leállítási_ , tekintse meg [párhuzamosan a lekérdezésben](#query-in-parallel)szereplő mintát.
 
@@ -228,14 +228,14 @@ Mivel az Azure Resource Graph egyetlen lekérdezési válaszban legfeljebb 1000 
 
 ## <a name="still-get-throttled"></a>Továbbra is szabályozható?
 
-Ha a fenti javaslatok gyakorlása után is szabályozza a szabályozást, lépjen kapcsolatba a csapatával [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com)a következő címen:.
+Ha a fenti javaslatok gyakorlása után is szabályozza a szabályozást, lépjen kapcsolatba a csapatával a következő címen: [resourcegraphsupport@microsoft.com](mailto:resourcegraphsupport@microsoft.com) .
 
 Adja meg a következő adatokat:
 
 - A speciális használati eset és az üzleti illesztőprogram magasabb szabályozási korlátot igényel.
 - Hány erőforráshoz férhet hozzá? Hányat ad vissza egyetlen lekérdezésből?
 - Milyen típusú erőforrások érdeklik?
-- Mi a lekérdezési minta? X lekérdezés/Y másodperc stb.
+- Mi a lekérdezési minta? X lekérdezés/Y másodpercenként, és így tovább.
 
 ## <a name="next-steps"></a>További lépések
 

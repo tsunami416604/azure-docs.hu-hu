@@ -3,14 +3,14 @@ title: Regisztrációs adatbázis georeplikálása
 description: Ismerkedjen meg a földrajzilag replikált Azure Container Registry létrehozásával és kezelésével, amely lehetővé teszi, hogy a beállításjegyzék több régiót is kiszolgáljon több főkiszolgálós regionális replikával.
 author: stevelas
 ms.topic: article
-ms.date: 08/16/2019
+ms.date: 05/11/2020
 ms.author: stevelas
-ms.openlocfilehash: d238de30e458261a11c941c03ac127c732ca8d3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea5e3dffaafb691a667bad3ef0014389e1604e27
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74456440"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682787"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Geo-replikálás Azure Container Registry
 
@@ -63,11 +63,11 @@ A Azure Container Registry geo-replikációs funkciójának használatával ezek
 
 A földrajzi replikálás konfigurálása olyan egyszerű, mintha a térképen a régiók elemre kattintana. A Geo-replikációt olyan eszközökkel is kezelheti, mint az az [ACR Replication](/cli/azure/acr/replication) parancsok az Azure CLI-ben, vagy egy [Azure Resource Manager-sablonnal](https://github.com/Azure/azure-quickstart-templates/tree/master/101-container-registry-geo-replication)történő földrajzi replikáláshoz engedélyezett beállításjegyzéket helyezhet üzembe.
 
-A Geo-replikáció csak a [prémium szintű kibocsátásiegység-forgalmi jegyzékek](container-registry-skus.md) egyik funkciója. Ha a beállításjegyzék még nem prémium szintű, az alapszintű és a standard csomagról prémiumra válthat a [Azure Portalban](https://portal.azure.com):
+A Geo-replikáció a prémium szintű [kibocsátásiegység-forgalmi jegyzékek](container-registry-skus.md)egyik funkciója. Ha a beállításjegyzék még nem prémium szintű, az alapszintű és a standard csomagról prémiumra válthat a [Azure Portalban](https://portal.azure.com):
 
-![SKU-i váltás a Azure Portalban](media/container-registry-skus/update-registry-sku.png)
+![A szolgáltatási szintek váltásának Azure Portal](media/container-registry-skus/update-registry-sku.png)
 
-A prémium szintű beállításjegyzék geo-replikációjának konfigurálásához jelentkezzen be a Azure Portalba https://portal.azure.coma következő címen:.
+A prémium szintű beállításjegyzék geo-replikációjának konfigurálásához jelentkezzen be a Azure Portalba a következő címen: https://portal.azure.com .
 
 Navigáljon a Azure Container Registryhoz, és válassza a **replikálások**lehetőséget:
 
@@ -92,9 +92,11 @@ Az ACR megkezdi a lemezképek szinkronizálását a konfigurált replikák köz�
 ## <a name="considerations-for-using-a-geo-replicated-registry"></a>A földrajzilag replikált beállításjegyzék használatának szempontjai
 
 * A földrajzilag replikált beállításjegyzék minden régiója független a beállítás után. Azure Container Registry SLA-kat az egyes földrajzilag replikált régiókban alkalmazza.
-* Amikor leküldi vagy lekéri a képeket egy földrajzilag replikált beállításjegyzékből, az Azure Traffic Manager a háttérben elküldi a kérést az Önhöz legközelebb eső régióban található beállításjegyzékbe.
+* Amikor leküldi vagy lekéri a képeket egy földrajzilag replikált beállításjegyzékből, az Azure Traffic Manager a háttérben elküldi a kérést az Ön számára legközelebb eső régióban található beállításjegyzékbe a hálózati késés szempontjából.
 * Miután leküldte a rendszerképet vagy a címkét a legközelebbi régióra, időbe telik, amíg a Azure Container Registry replikálja a jegyzékeket és a rétegeket a többi, Ön által választott régióba. A nagyobb méretű képek replikálásához hosszabb időt is igénybe kell venni, mint a kisebbek. A rendszer a képeket és címkéket szinkronizálja a replikációs régiók között egy végleges konzisztencia-modellel.
-* Ha olyan munkafolyamatokat szeretne kezelni, amelyek egy földrajzilag replikált leküldéses frissítéstől függenek, javasoljuk, hogy konfigurálja úgy a [webhookokat](container-registry-webhook.md) , hogy válaszoljanak a leküldéses eseményekre. A regionális webhookok a földrajzilag replikált beállításjegyzékben állíthatók be, hogy nyomon kövessék a leküldéses eseményeket a földrajzilag replikált régiókban.
+* A földrajzilag replikált beállításjegyzék leküldéses frissítéseitől függő munkafolyamatok kezeléséhez javasoljuk, hogy a [webhookokat](container-registry-webhook.md) úgy konfigurálja, hogy válaszoljanak a leküldéses eseményekre. A regionális webhookok a földrajzilag replikált beállításjegyzékben állíthatók be, hogy nyomon kövessék a leküldéses eseményeket a földrajzilag replikált régiókban.
+* A tartalmi rétegeket jelképező Blobok kiszolgálásához az Azure-tárolók adatvégpontokat használnak. Engedélyezheti a beállításjegyzékhez tartozó [dedikált adatvégpontokat](container-registry-firewall-access-rules.md#enable-dedicated-data-endpoints-preview) a beállításjegyzék földrajzilag replikált régióiban. Ezek a végpontok lehetővé teszik a szűk hatókörű tűzfal-hozzáférési szabályok konfigurálását.
+* Ha [privát](container-registry-private-link.md) végpontokat használ a beállításjegyzékhez egy virtuális hálózaton, a földrajzilag replikált régiók dedikált adatvégpontja alapértelmezés szerint engedélyezve van. 
 
 ## <a name="delete-a-replica"></a>Replika törlése
 
@@ -105,12 +107,15 @@ Replika törlése a Azure Portalban:
 1. Navigáljon a Azure Container Registry, és válassza a **replikációk**lehetőséget.
 1. Jelölje ki a replika nevét, majd válassza a **Törlés**lehetőséget. Erősítse meg, hogy törölni kívánja a replikát.
 
-> [!NOTE]
-> A beállításjegyzék-replikát nem törölheti a beállításjegyzék *otthoni régiójában* , azaz azt a helyet, ahol létrehozta a beállításjegyzéket. A Kezdőlap replikát csak a beállításjegyzék törlésével lehet törölni.
+Az USA keleti régiójában az *myregistry* -replika törléséhez az Azure CLI használatával:
+
+```azurecli
+az acr replication delete --name eastus --registry myregistry
+```
 
 ## <a name="geo-replication-pricing"></a>Geo-replikáció díjszabása
 
-A Geo-replikáció a Azure Container Registry [Premium SKU](container-registry-skus.md) egyik funkciója. Ha a beállításjegyzéket a kívánt régióba replikálja, az egyes régiók esetében prémium szintű regisztrációs díjat kell fizetnie.
+A Geo-replikáció a Azure Container Registry [prémium szintű szolgáltatási](container-registry-skus.md) szintjének egyik funkciója. Ha a beállításjegyzéket a kívánt régióba replikálja, az egyes régiók esetében prémium szintű regisztrációs díjat kell fizetnie.
 
 Az előző példában a contoso két regisztrációs adatbázisba konszolidált egyet, és replikákat ad hozzá az USA keleti régiója, Közép-Kanada és Nyugat-Európa között. A contoso havonta négy alkalommal fizet, további konfiguráció vagy felügyelet nélkül. Minden régió most lekéri a lemezképeket helyileg, a teljesítmény javítása, a megbízhatóság és az USA nyugati régiója és az USA keleti régiója között elérkező költségek nélkül.
 

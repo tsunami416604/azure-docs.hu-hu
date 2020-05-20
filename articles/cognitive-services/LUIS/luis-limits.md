@@ -3,12 +3,12 @@ title: Korlátok – LUIS
 description: Ez a cikk az Azure Cognitive Services Language Understanding (LUIS) ismert korlátait tartalmazza. LUIS több korlátozási területtel rendelkezik. A modell korlátozza a LUIS-ben lévő leképezéseket, entitásokat és szolgáltatásokat. Kvóta korlátai a kulcs típusa alapján. A billentyűzet kombinációja a LUIS webhelyet vezérli.
 ms.topic: reference
 ms.date: 05/06/2020
-ms.openlocfilehash: 71f6126cbf9615d7f808f098202f29094a913982
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d4a6162758fab7e5c9592b98974620bbf06ba978
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83593239"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684601"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
 LUIS több korlátozási területtel rendelkezik. Az első a [modell korlátja](#model-limits), amely a Luis szándékait, entitásait és szolgáltatásait vezérli. A második régió a kulcs típusa alapján [korlátozza a kvótákat](#key-limits) . A határértékek harmadik területe a LUIS webhely vezérlésére szolgáló [billentyűkombináció](#keyboard-controls) . A negyedik terület az a [régió](luis-reference-regions.md) , amely a Luis authoring webhelye és a Luis [Endpoint](luis-glossary.md#endpoint) API-k között van.
@@ -28,7 +28,7 @@ Ha az alkalmazása meghaladja a LUIS-modell korlátait, érdemes lehet [Luis kü
 | Külső entitások | Nincs korlát |
 | [Leképezések][intents]|500/alkalmazás: 499 egyéni szándék, és a szükséges _none_ szándék.<br>A [küldő-alapú](https://aka.ms/dispatch-tool) alkalmazás megfelelő 500 elküldési forrással rendelkezik.|
 | [Listaentitások](./luis-concept-entity-types.md) | Szülő: 50, gyermek: 20 000 elem. A Canonical neve * alapértelmezett karakter max. A szinonimák értékeinek hossza nem korlátozza a korlátot. |
-| [Gépi megtanult entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alentitások akár 5 szintre is ágyazhatók.|
+| [gépi tanulási entitások + szerepkörök](./luis-concept-entity-types.md):<br> összetett<br>egyszerű<br>entitás szerepköre|Legfeljebb 100 szülő entitás vagy 330 entitás, amely a felhasználó által elsőként megjelenő korlátot korlátozza. A szerepkör entitásként számít a korlát szempontjából. Ilyen például egy egyszerű entitást tartalmazó kompozit, amely 2 szerepkörrel rendelkezik: 1 kompozit + 1 egyszerű + 2 szerepkör = 4 az 330 entitások közül.<br>Az alentitások akár 5 szintre is ágyazhatók.|
 |Modell szolgáltatásként| Egy adott modell funkcióként használható modelljeinek maximális száma 10 modell. Egy adott modellhez funkcióként használt kifejezések listájának maximális száma 10 kifejezéses felsorolás.|
 | [Előnézet – dinamikus lista entitásai](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 a ~ 1k/Query előrejelzési végpontra vonatkozó kérelem listája|
 | [Minták](luis-concept-patterns.md)|500 minta alkalmazásként.<br>A minta maximális hossza 400 karakter.<br>3 minta. minden entitás/minta<br>Legfeljebb 2 beágyazott opcionális szöveg a mintában|
@@ -53,7 +53,7 @@ Az objektumok nevének egyedinek kell lennie, ha az azonos szint más objektumai
 |Objektumok|Korlátozások|
 |--|--|
 |Szándék, entitás|Az összes leképezésnek és az entitás nevének egyedinek kell lennie az alkalmazás egy verziójában.|
-|ML entitás-összetevők|A gép által megtanult entitás-összetevőknek (gyermek entitásoknak) egyedinek kell lenniük az adott entitáson belül ugyanazon a szinten lévő összetevőkhöz.|
+|ML entitás-összetevők|Az adott entitáson belül minden gépi tanulási entitás-összetevőnek (gyermek entitásnak) egyedinek kell lennie az azonos szinten lévő összetevőkhöz.|
 |Funkciók | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
 |Entitásszerepkörök|Az entitás vagy entitás összetevő összes szerepkörének egyedinek kell lennie, ha ugyanazon az entitás szintjén (szülő, gyermek, unoka stb.) vannak.|
 
@@ -106,7 +106,7 @@ A [beszédfelismerési funkció](../speech-service/how-to-recognize-intents-from
 
 ## <a name="keyboard-controls"></a>Billentyűzet vezérlőelem
 
-|Billentyűzet bemenete | Leírás |
+|Billentyűzet bemenete | Description |
 |--|--|
 |Vezérlő + E|a jogkivonatok és entitások közötti váltás a hosszúságú kimondott szöveg listán|
 

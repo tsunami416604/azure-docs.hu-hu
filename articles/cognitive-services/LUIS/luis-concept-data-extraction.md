@@ -4,17 +4,17 @@ description: Adatok kinyerése a teljes szövegből szándékok és entitások a
 author: diberry
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: 3b6b09fd1066a9caa745cddf30d76e2843c3f56c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 35f015691b15c6451a66509671c7dc2fc72f38e4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589720"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682186"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése a teljes szövegből szándékok és entitások alapján
 A LUIS lehetővé teszi a felhasználók természetes nyelvi hosszúságú kimondott szöveg származó információk beszerzését. Az adatok kinyerése oly módon történik, hogy egy program, egy alkalmazás vagy egy csevegési bot is felhasználja a műveletet. A következő részekben megismerheti, hogy a rendszer milyen adatokhoz adja vissza a leképezéseket és entitásokat a JSON-példákkal.
 
-A kinyerni kívánt legnehezebb adatok a géppel megtanult adatok, mert nem pontos szöveges egyezés. A gépi megtanult [entitások](luis-concept-entity-types.md) kinyerésének a [létrehozási ciklus](luis-concept-app-iteration.md) részét kell képeznie, amíg biztos abban, hogy megkapja a várt adatmennyiséget.
+A kinyerni kívánt legnehezebb adatok a gépi tanulási adatok, mert nem pontos szöveges egyezés. A gépi tanulási [entitások](luis-concept-entity-types.md) kinyerésének a [létrehozási ciklus](luis-concept-app-iteration.md) részét kell képeznie, amíg biztos abban, hogy megkapja a várt adatmennyiséget.
 
 ## <a name="data-location-and-key-usage"></a>Adatok helye és kulcshasználat
 LUIS a közzétett [végponton](luis-glossary.md#endpoint)kinyeri az adatokból a felhasználó teljes kivonását. A **https-kérés** (post vagy Get) tartalmazza a kiválasztást, valamint néhány opcionális konfigurációt, például átmeneti vagy éles környezeteket.
@@ -245,7 +245,7 @@ Néhány alkalmazásnak képesnek kell lennie új és újonnan megjelenő nevek,
 
 ## <a name="patternany-entity-data"></a>Minta. az entitások összes adathalmaza
 
-[Minta.](reference-entity-pattern-any.md) a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik. A mintában használt entitásnak a minta alkalmazásához szükségesnek kell lennie. 
+[Minta.](reference-entity-pattern-any.md) a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik. A mintában használt entitásnak a minta alkalmazásához szükségesnek kell lennie.
 
 ## <a name="sentiment-analysis"></a>Hangulatelemzés
 Ha a visszajelzések elemzése a [Közzététel](luis-how-to-publish-app.md#sentiment-analysis)során van konfigurálva, a Luis JSON-válasz tartalmazza a hangulat elemzését. További információ az [text Analytics](https://docs.microsoft.com/azure/cognitive-services/text-analytics/) dokumentációjában található érzelmek elemzéséről.

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: e9ad7c52af20762633c710b39a64fbebf0cf6213
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a5ebd9b05b2dea9e04d4c9745c13d692ea88fcb8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220049"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680423"
 ---
 # <a name="batch-testing-with-1000-utterances-in-luis-portal"></a>Batch-tesztelés a 1000 hosszúságú kimondott szöveg a LUIS portálon
 
@@ -24,7 +24,7 @@ A Batch-tesztelés ellenőrzi, hogy aktív-e a betanított verzió, és megméri
 
 ## <a name="group-data-for-batch-test"></a>A Batch-teszthez tartozó adatcsoportosítási szolgáltatás
 
-Fontos, hogy a Batch-teszteléshez használt hosszúságú kimondott szöveg Újdonságok legyenek a LUIS-ben. Ha rendelkezik hosszúságú kimondott szöveg, ossza fel a hosszúságú kimondott szöveg három csoportba: példa a hosszúságú kimondott szöveg hozzáadására, a közzétett végponttól kapott hosszúságú kimondott szöveg, valamint a LUIS-teszt betanítása után használt hosszúságú kimondott szöveg. 
+Fontos, hogy a Batch-teszteléshez használt hosszúságú kimondott szöveg Újdonságok legyenek a LUIS-ben. Ha rendelkezik hosszúságú kimondott szöveg, ossza fel a hosszúságú kimondott szöveg három csoportba: példa a hosszúságú kimondott szöveg hozzáadására, a közzétett végponttól kapott hosszúságú kimondott szöveg, valamint a LUIS-teszt betanítása után használt hosszúságú kimondott szöveg.
 
 ## <a name="a-data-set-of-utterances"></a>Hosszúságú kimondott szöveg adathalmaza
 
@@ -35,7 +35,7 @@ A Batch-teszteléshez elküldheti az *adatkészletként*ismert hosszúságú kim
 |* Nincs duplikált hosszúságú kimondott szöveg|
 |1000 hosszúságú kimondott szöveg vagy kevesebb|
 
-* A duplikált elemek pontos karakterlánc-egyezéseknek tekintendők, és nem felelnek meg először a jogkivonatnak. 
+* A duplikált elemek pontos karakterlánc-egyezéseknek tekintendők, és nem felelnek meg először a jogkivonatnak.
 
 ## <a name="entities-allowed-in-batch-tests"></a>A Batch-tesztekben engedélyezett entitások
 
@@ -46,7 +46,7 @@ A modellben lévő összes egyéni entitás megjelenik a Batch test entitások s
 
 ## <a name="batch-file-format"></a>Batch-fájlformátum
 
-A batch-fájl hosszúságú kimondott szöveg áll. Minden egyes Kimondás esetén a várt szándékú előrejelzéssel együtt kell szerepelnie az észlelni kívánt, [géppel megtanult entitásoknak](luis-concept-entity-types.md#types-of-entities) . 
+A batch-fájl hosszúságú kimondott szöveg áll. Minden Kimondás esetén a várt szándékú előrejelzésnek és a várhatóan észlelt [gépi tanulási entitásoknak](luis-concept-entity-types.md#types-of-entities) is szerepelniük kell.
 
 ## <a name="batch-syntax-template-for-intents-with-entities"></a>Batch-szintaxis sablon az entitásokkal való leképezéshez
 
@@ -57,7 +57,7 @@ A batch-fájl elindításához használja a következő sablont:
   {
     "text": "example utterance goes here",
     "intent": "intent name goes here",
-    "entities": 
+    "entities":
     [
         {
             "entity": "entity name 1 goes here",
@@ -74,7 +74,7 @@ A batch-fájl elindításához használja a következő sablont:
 ]
 ```
 
-A batch-fájl a **startPos** és a **endPos** tulajdonság használatával jegyezze fel az entitások elejét és végét. Az értékek nulla-alapúak, és nem kezdődhetnek és nem végződhet szóközre. Ez eltér a lekérdezési naplóktól, amelyek a startIndex és a endIndex tulajdonságokat használják. 
+A batch-fájl a **startPos** és a **endPos** tulajdonság használatával jegyezze fel az entitások elejét és végét. Az értékek nulla-alapúak, és nem kezdődhetnek és nem végződhet szóközre. Ez eltér a lekérdezési naplóktól, amelyek a startIndex és a endIndex tulajdonságokat használják.
 
 [!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
@@ -92,12 +92,12 @@ A következő sablonnal elindíthatja a batch-fájlt entitások nélkül:
 ]
 ```
 
-Ha nem szeretne entitásokat tesztelni, foglalja bele a `entities` tulajdonságot, és állítsa üres tömbként az értéket `[]`.
+Ha nem szeretne entitásokat tesztelni, foglalja bele a `entities` tulajdonságot, és állítsa üres tömbként az értéket `[]` .
 
 
 ## <a name="common-errors-importing-a-batch"></a>A kötegek importálása során előforduló gyakori hibák
 
-Gyakori hibák a következők: 
+Gyakori hibák a következők:
 
 > * Több mint 1 000 hosszúságú kimondott szöveg
 > * Olyan teljes JSON-objektum, amely nem rendelkezik entitások tulajdonsággal. A tulajdonság lehet üres tömb.
@@ -112,7 +112,7 @@ LUIS az egyes adathalmazok utolsó tesztelésének állapotát követi nyomon. E
 
 ## <a name="batch-test-results"></a>A Batch-tesztek eredményei
 
-A Batch-teszt eredménye egy pontdiagram. Ez a gráf a Batch-fájlban található hosszúságú kimondott szöveg és az aktuális modell előre jelzett szándékának és entitásának 4 irányú összehasonlítása. 
+A Batch-teszt eredménye egy pontdiagram. Ez a gráf a Batch-fájlban található hosszúságú kimondott szöveg és az aktuális modell előre jelzett szándékának és entitásának 4 irányú összehasonlítása.
 
 A **hamis pozitív** és **hamis negatív** szakaszban lévő adatpontok olyan hibákat jeleznek, amelyeket meg kell vizsgálni. Ha az összes adatpont a **valódi pozitív** és **igaz negatív** szakaszban van, akkor az alkalmazás pontossága tökéletes ezen az adathalmazon.
 
@@ -124,13 +124,13 @@ Ez a diagram segít megtalálni az hosszúságú kimondott szöveg, hogy a LUIS 
 
 ## <a name="errors-in-the-results"></a>Hibák az eredményekben
 
-A Batch-tesztben szereplő hibák azokat a leképezéseket jelzik, amelyek nem a Batch-fájlban feljegyzett módon vannak jelezve. A hibák a diagram két piros részében szerepelnek. 
+A Batch-tesztben szereplő hibák azokat a leképezéseket jelzik, amelyek nem a Batch-fájlban feljegyzett módon vannak jelezve. A hibák a diagram két piros részében szerepelnek.
 
-A hamis pozitív szakasz azt jelzi, hogy egy Kimondás egy szándéknak vagy entitásnak felel meg, ha nem lenne. A hamis negatív érték azt jelzi, hogy a kizáró érték nem egyezik meg a szándékkal vagy az entitással. 
+A hamis pozitív szakasz azt jelzi, hogy egy Kimondás egy szándéknak vagy entitásnak felel meg, ha nem lenne. A hamis negatív érték azt jelzi, hogy a kizáró érték nem egyezik meg a szándékkal vagy az entitással.
 
 ## <a name="fixing-batch-errors"></a>Batch-hibák javítása
 
-Ha hibák léptek fel a Batch-tesztelésben, hozzáadhat további hosszúságú kimondott szöveg egy szándékhoz, és/vagy megcímkézheti a további hosszúságú kimondott szöveg az entitással, hogy segítsen a LUIS számára a szándékok közötti diszkriminációban. Ha hozzáadta a hosszúságú kimondott szöveg-t, és címkézte őket, és továbbra is előrejelzési hibákat kap a Batch-tesztelésben, érdemes lehet egy, a tartományra jellemző szókincsgel kiegészíteni egy [kifejezés-lista](luis-concept-feature.md) szolgáltatást, amely segítséget nyújt a Luis számára. 
+Ha hibák léptek fel a Batch-tesztelésben, hozzáadhat további hosszúságú kimondott szöveg egy szándékhoz, és/vagy megcímkézheti a további hosszúságú kimondott szöveg az entitással, hogy segítsen a LUIS számára a szándékok közötti diszkriminációban. Ha hozzáadta a hosszúságú kimondott szöveg-t, és címkézte őket, és továbbra is előrejelzési hibákat kap a Batch-tesztelésben, érdemes lehet egy, a tartományra jellemző szókincsgel kiegészíteni egy [kifejezés-lista](luis-concept-feature.md) szolgáltatást, amely segítséget nyújt a Luis számára.
 
 ## <a name="next-steps"></a>További lépések
 

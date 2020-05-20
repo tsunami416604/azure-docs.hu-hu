@@ -1,7 +1,7 @@
 ---
 title: Egyszerű entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
-description: Az egyszerű entitások a gépi megtanult környezet egyetlen koncepcióját írják le. Ha egyszerű entitást használ az eredmények javítására, vegyen fel egy kifejezést tartalmazó listát.
+description: Egy egyszerű entitás a gépi tanulási környezet egyetlen koncepcióját ismerteti. Ha egyszerű entitást használ az eredmények javítására, vegyen fel egy kifejezést tartalmazó listát.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 8b92aa6057c81ec9442372c5b85918cb92196d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1b5754be3c9941101a53f332841ace93caf9acdd
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74894762"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684559"
 ---
 # <a name="simple-entity"></a>Egyszerű entitás
 
-Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat ismertetnek, és a gép által megtanult környezetből származnak. Mivel az egyszerű entitások általában nevek, például a cégnevek, a terméknév vagy más kategóriájú nevek, akkor adjon meg egy [kifejezési listát](luis-concept-feature.md) , ha egyszerű entitást használ a használt nevek jelzésének növelésére.
+Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat ismertetnek, és a gépi tanulási környezetből tanulnak. Mivel az egyszerű entitások általában nevek, például a cégnevek, a terméknév vagy más kategóriájú nevek, akkor adjon meg egy [kifejezési listát](luis-concept-feature.md) , ha egyszerű entitást használ a használt nevek jelzésének növelésére.
 
 **Az entitás jól illeszkedik, ha:**
 
@@ -31,7 +31,7 @@ Az egyszerű entitások olyan általános entitások, amelyek egyetlen fogalmat 
 
 `Bob Jones wants 3 meatball pho`
 
-Az előző lemondás során `Bob Jones` egyszerű `Customer` entitásként van megjelölve.
+Az előző lemondás során `Bob Jones` egyszerű entitásként van megjelölve `Customer` .
 
 A végpont által visszaadott adatok között szerepel az entitás neve, a felderített szöveg a Kimondás után, a felderített szöveg helye és a pontszám:
 

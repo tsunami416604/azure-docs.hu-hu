@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5a7f64ead6d2e19242950002feed1cd1491dbacc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a49661ca8776f04d98cc04bbe7a07b8c388f91ee
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598765"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681661"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>A Creator használata beltéri térképek létrehozásához
 
@@ -57,7 +57,7 @@ Az adatfeltöltő API egy hosszú ideig futó tranzakció, amely megvalósítja 
 
 4. A **fejlécek** lapon a kulcs értékét kell megadnia `Content-Type` . A rajzolási csomag egy tömörített mappa, ezért használja az `application/octet-stream` értéket. A **törzs** lapon válassza a **bináris**elemet. Kattintson a **fájl kiválasztása** lehetőségre, és válasszon egy rajzfájl-csomagot.
 
-     ![adatkezelés](./media/tutorial-creator-indoor-maps/enter-content-type.png)
+     ![adatkezelés](./media/tutorial-creator-indoor-maps/enter-content-type-dialog.png)
 
 5. Kattintson a kék **Küldés** gombra, és várjon, amíg a rendszer feldolgozza a kérést. A kérés befejeződése után lépjen a válasz **fejlécek** lapjára. Másolja a **hely** kulcsának értékét, amely a `status URL` .
 

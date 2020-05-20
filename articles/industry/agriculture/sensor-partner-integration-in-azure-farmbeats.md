@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 3431576acbb01a0cc3a5f372460b28be05bf7ce7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37a387b93f1c6b3796b66993405787cf43990bc4
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437466"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684016"
 ---
 # <a name="sensor-partner-integration"></a>Érzékelői partner integrációja
 
@@ -64,22 +64,27 @@ headers = {"Authorization": "Bearer " + access_token, …} 
 A következő Python-kód megadja a hozzáférési jogkivonatot, amely a következő API-hívásokhoz használható a FarmBeats.
 
 ```python
-import azure 
+import requests
+import json
+import msal
 
-from azure.common.credentials import ServicePrincipalCredentials 
-import adal 
-#FarmBeats API Endpoint 
-ENDPOINT = "https://<yourdatahub>.azurewebsites.net" [Azure website](https://<yourdatahub>.azurewebsites.net)
-CLIENT_ID = "<Your Client ID>"   
-CLIENT_SECRET = "<Your Client Secret>"   
-TENANT_ID = "<Your Tenant ID>" 
-AUTHORITY_HOST = 'https://login.microsoftonline.com' 
-AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID 
-#Authenticating with the credentials 
-context = adal.AuthenticationContext(AUTHORITY) 
-token_response = context.acquire_token_with_client_credentials(ENDPOINT, CLIENT_ID, CLIENT_SECRET) 
-#Should get an access token here 
-access_token = token_response.get('accessToken') 
+# Your service principal App ID
+CLIENT_ID = "<CLIENT_ID>"
+# Your service principal password
+CLIENT_SECRET = "<CLIENT_SECRET>"
+# Tenant ID for your Azure subscription
+TENANT_ID = "<TENANT_ID>"
+
+AUTHORITY_HOST = 'https://login.microsoftonline.com'
+AUTHORITY = AUTHORITY_HOST + '/' + TENANT_ID
+
+ENDPOINT = "https://<yourfarmbeatswebsitename-api>.azurewebsites.net"
+SCOPE = ENDPOINT + "/.default"
+
+context = msal.ConfidentialClientApplication(CLIENT_ID, authority=AUTHORITY, client_credential=CLIENT_SECRET)
+token_response = context.acquire_token_for_client(SCOPE)
+# We should get an access token here
+access_token = token_response.get('access_token')
 ```
 
 
@@ -90,13 +95,13 @@ Itt láthatja a leggyakoribb kérelmek fejléceit, amelyeket meg kell adni, amik
 
 **Fejléc** | **Leírás és példa**
 --- | ---
-Content-Type | A kérelem formátuma (Content-Type: Application<format>/). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
+Content-Type | A kérelem formátuma (Content-Type: Application/ <format> ). A FarmBeats Datahub API-k formátuma a JSON. Content-Type: Application/JSON
 Engedélyezés | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos <hozzáférés-token>
 Elfogadás | A válasz formátuma. A FarmBeats Datahub API-k formátuma a JSON. Elfogadás: alkalmazás/JSON
 
 **API-kérelmek**
 
-REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, vagy PUT) metódust, az API szolgáltatás URL-címét, a Uniform Resource Identifier (URI) egy erőforráshoz a lekérdezéshez, az adatküldés frissítéséhez vagy törléséhez, valamint egy vagy több HTTP-kérelem fejlécéhez. Az API-szolgáltatás URL-címe az Ön által megadott API-végpont. Íme egy példa: https://\<yourdatahub-websites-Name>. azurewebsites.net
+REST API kérelem elvégzéséhez kombinálja a HTTP-(GET, POST, vagy PUT) metódust, az API szolgáltatás URL-címét, a Uniform Resource Identifier (URI) egy erőforráshoz a lekérdezéshez, az adatküldés frissítéséhez vagy törléséhez, valamint egy vagy több HTTP-kérelem fejlécéhez. Az API-szolgáltatás URL-címe az Ön által megadott API-végpont. Íme egy példa: https:// \< yourdatahub-websites-name>. azurewebsites.net
 
 Igény szerint a lekérdezési paramétereket is megadhatja a szűréshez, korlátozhatja az adatok méretét, és rendezheti a válaszokat.
 
@@ -132,8 +137,8 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Gyártó  | A gyártó neve |
   ProductCode  | Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800. |
   Portok  | A port neve és típusa, amely digitális vagy analóg.  |
-  Name (Név)  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
-  Leírás  | Adjon meg egy értelmes leírást a modellről. |
+  Name  | Az erőforrást azonosító név. Például a modell neve vagy a terméknév. |
+  Description  | Adjon meg egy értelmes leírást a modellről. |
   Tulajdonságok  | További tulajdonságok a gyártótól. |
   **Eszköz** |  |
   DeviceModelId  |A társított eszköz-modell azonosítója. |
@@ -141,8 +146,8 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   ReportingInterval |Jelentéskészítési időköz (másodperc). |
   Hely    |Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben). |
   ParentDeviceId | Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Ha például egy csomópont átjáróhoz csatlakozik, a csomópont parentDeviceID van. |
-  Name (Név)  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
-  Leírás  | Adjon meg egy értelmes leírást.  |
+  Name  | Az erőforrást azonosító név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens az eszköz nevével az erőforráspartner oldalán. Ha az eszköz neve felhasználó által definiálva van az eszköz partner oldalán, a felhasználó által definiált nevet is propagálni kell a FarmBeats.  |
+  Description  | Adjon meg egy értelmes leírást.  |
   Tulajdonságok  |További tulajdonságok a gyártótól.  |
   **SensorModel** |  |
   Típus (analóg, digitális)  |Említi az analóg vagy a digitális érzékelőt.|
@@ -155,8 +160,8 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   SensorMeasures > AggregationType  | Egyik sem, átlagos, maximális, minimum vagy StandardDeviation.
   SensorMeasures > mélység  | Az érzékelő mélysége centiméterben. Például a nedvesség 10 cm-es méretének mérése a terepen.
   SensorMeasures > leírása  | Adjon meg egy értelmes leírást a mérésről.
-  Name (Név)  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
-  Leírás  | Adjon meg egy értelmes leírást a modellről.
+  Name  | Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
+  Description  | Adjon meg egy értelmes leírást a modellről.
   Tulajdonságok  | További tulajdonságok a gyártótól.
   **Érzékelő**  |  |
   HardwareId  | A gyártó által beállított érzékelő egyedi azonosítója.
@@ -164,8 +169,8 @@ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszi
   Hely  | Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).
   Port > neve  |Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel.
   DeviceId  | Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.
-  Name (Név)  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
-  Leírás  | Adjon meg egy értelmes leírást.
+  Name  | Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.
+  Description  | Adjon meg egy értelmes leírást.
   Tulajdonságok  | További tulajdonságok a gyártótól.
 
  Az egyes objektumokra és azok tulajdonságaira vonatkozó információkért lásd: [hencegés](https://aka.ms/FarmBeatsDatahubSwagger).

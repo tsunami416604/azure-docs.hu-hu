@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75912151"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683957"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Társ ASN társítása Azure-előfizetéshez a portál használatával
 
@@ -55,22 +55,8 @@ Regisztráljon az előfizetésben az alábbi lépésekkel: Ha nem hajtja végre 
     > ![A regisztráció befejeződött](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn létrehozása
-Létrehozhat egy új PeerAsn-erőforrást, amely az Azure-előfizetéssel rendelkező autonóm rendszerbeli szám (ASN) társítására használható. Egy előfizetéshez több ASN is hozzárendelhet, ehhez létre kell hoznia egy **PeerAsn** a társítandó ASN-hez.
+Internetszolgáltatóként vagy internetes Exchange-szolgáltatóként létrehozhat egy új PeerAsn-erőforrást egy autonóm rendszerszám (ASN) Azure-előfizetéssel való társításához. Az előfizetéshez több ASN is hozzárendelhet, ehhez navigáljon a [PeerASN hozzárendelése lapra](https://go.microsoft.com/fwlink/?linkid=2129592) a hozzárendelni kívánt ASN-hez.
 
-1. Kattintson > **az** **erőforrás létrehozása**elemre.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn keresése](./media/peerasn-seeall.png)
-
-1. Keresse meg a *PeerAsn* a keresőmezőbe, és nyomja le az *ENTER billentyűt* a billentyűzeten. Az eredmények között kattintson a **PeerAsn** erőforrás elemre.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn elindítása](./media/peerasn-launch.png)
-
-1. A **PeerAsn** elindítása után kattintson a **Létrehozás**gombra.
-
-    > [!div class="mx-imgBorder"]
-    > ![PeerAsn létrehozása](./media/peerasn-create.png)
 
 1. A társ-visszavonási ASN-oldal **társítása** az **alapok** lapon töltse ki a mezőket az alább látható módon.
 
@@ -116,6 +102,6 @@ A PeerAsn törlése jelenleg nem támogatott. Ha törölnie kell a PeerAsn, ford
 * [Exchange-társ létrehozása vagy módosítása a portál használatával](howto-exchange-portal.md)
 * [Örökölt Exchange-társviszony konvertálása Azure-erőforrássá a portál használatával](howto-legacy-exchange-portal.md)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 További információért látogasson el az internetes kereséssel kapcsolatos [Gyakori kérdések](faqs.md) oldalra.

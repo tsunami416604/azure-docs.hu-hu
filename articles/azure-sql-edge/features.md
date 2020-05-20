@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7d33c2bef1cd0f7bfab4ec3c09f16c049881d1cd
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597386"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684368"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Az Azure SQL Edge támogatott funkciói (előzetes verzió) 
 
@@ -34,7 +34,7 @@ Az Azure SQL Edge két különböző kiadással vagy szoftver csomaggal érhető
 
 ## <a name="operating-system"></a>Operációs rendszer
 
-Az Azure SQL Edge-tárolók jelenleg Ubuntun (16,04 és 18,04) alapulnak, és csak az Ubuntu 16,04-ot és 18,04-et futtató Docker-gazdagépeken futnak. Az Azure SQL Edge más operációs rendszerű gazdagépeken is futtatható, például a Linux vagy a Windows egyéb disztribúciói (a Docker CE vagy a Docker EE használatával), azonban ezeket a konfigurációkat a Microsoft nem teszteli alaposan.
+Az Azure SQL Edge-tárolók jelenleg Ubuntu 16,04-alapúak, és csak olyan Docker-gazdagépeken futnak, amelyek Ubuntu 16,04 (ajánlott) vagy Ubuntu 18,04 rendszert futtatnak. Az Azure SQL Edge más operációs rendszerű gazdagépeken is futtatható, például a Linux vagy a Windows egyéb disztribúciói (a Docker CE vagy a Docker EE használatával), azonban ezeket a konfigurációkat a Microsoft nem teszteli alaposan.
 
 Az Azure SQL Edge jelenleg csak a Azure IoT Edgeon keresztül történő üzembe helyezéshez támogatott. A Azure IoT Edge támogatott rendszereiről a [Azure IoT Edge támogatott rendszerek](https://docs.microsoft.com/azure/iot-edge/support)című témakörben olvashat bővebben.
 

@@ -1,6 +1,6 @@
 ---
-title: A Linux frissítési ügynökkel kapcsolatos problémák elhárítása Azure Automation Update Management
-description: Megtudhatja, hogyan oldhatja fel a Linux Windows Update agenttel kapcsolatos problémákat a Update Management megoldás használatával.
+title: A Linux frissítési ügynökkel kapcsolatos problémák elhárítása Azure Automation
+description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Linux Windows Update agenttel kapcsolatos problémákat a Update Management-ben.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: a4082ddfd8c092a6f9223a0894f21bc734b6efb6
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: f1351b29a0102a374b75d832687d66c3b5572c75
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997018"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680871"
 ---
 # <a name="troubleshoot-linux-update-agent-issues"></a>A Linux frissítési ügynökkel kapcsolatos problémák elhárítása
 
@@ -22,7 +22,7 @@ Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifog�
 
 * Készen áll: a hibrid Runbook-feldolgozó üzembe lett helyezve, és legalább egy órával ezelőtt volt látható.
 * Leválasztva: a hibrid Runbook Worker üzembe helyezése egy órával ezelőtt történt, és utoljára volt látható.
-* Nincs konfigurálva: a hibrid Runbook-feldolgozó nem található vagy nem fejeződött be.
+* Nincs konfigurálva: a hibrid Runbook Worker nem található vagy nem fejeződött be a központi telepítés.
 
 > [!NOTE]
 > A Azure Portal megjelenítése és a gép aktuális állapota között enyhe késés adható meg.
@@ -70,7 +70,7 @@ Ez az ellenőrzési funkció biztosítja, hogy a Linux rendszerhez készült Log
 
 ### <a name="log-analytics-agent-status"></a>Log Analytics ügynök állapota
 
-Ez az ellenőrzési funkció biztosítja, hogy a Linux Log Analytics ügynöke fusson. Ha az ügynök nem fut, akkor a következő parancs futtatásával próbálja meg újraindítani. Az ügynök hibaelhárításával kapcsolatos további információkért lásd: [Linux Hybrid Runbook Worker hibaelhárítás](hybrid-runbook-worker.md#linux).
+Ez az ellenőrzési funkció biztosítja, hogy a Linux Log Analytics ügynöke fusson. Ha az ügynök nem fut, akkor a következő parancs futtatásával próbálja meg újraindítani. Az ügynök hibaelhárításával kapcsolatos további információkért lásd: [Linux – a hibrid Runbook-feldolgozói problémák elhárítása](hybrid-runbook-worker.md#linux).
 
 ```bash
 sudo /opt/microsoft/omsagent/bin/service_control restart
@@ -84,7 +84,7 @@ Ez az érték határozza meg, hogy az ügynök több munkaterületnek jelent-e j
 
 Ez az ellenőrzés ellenőrzi, hogy a Linux Log Analytics-ügynöke a hibrid Runbook Worker csomaggal rendelkezik-e. Ez a csomag a Update Management működéséhez szükséges. További információ: [log Analytics Linux-ügynök nem fut](hybrid-runbook-worker.md#oms-agent-not-running).
 
-Update Management letölti a hibrid Runbook Worker csomagokat az operatív végpontból. Ezért ha a hibrid Runbook-feldolgozó nem fut, és az [operatív végpont](#operations-endpoint) meghibásodik, a frissítés sikertelen lehet.
+Update Management letölti a hibrid Runbook Worker csomagokat az operatív végpontból. Ezért ha a hibrid Runbook-feldolgozó nem fut, és az [Operations Endpoint](#operations-endpoint) ellenőrzés meghiúsul, a frissítés sikertelen lehet.
 
 ### <a name="hybrid-runbook-worker-status"></a>Hibrid Runbook Worker állapota
 
@@ -184,4 +184,4 @@ Passed: TCP test for {ods.systemcenteradvisor.com} (port 443) succeeded
 
 ## <a name="next-steps"></a>További lépések
 
-A hibrid Runbook-feldolgozókkal kapcsolatos további problémák elhárításához lásd: [hibrid Runbook-feldolgozók hibaelhárítása](hybrid-runbook-worker.md).
+A [hibrid Runbook-feldolgozói problémák elhárítása](hybrid-runbook-worker.md).

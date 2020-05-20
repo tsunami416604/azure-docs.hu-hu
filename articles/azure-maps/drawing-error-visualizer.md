@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: e1b5b16d5522285f2d028303f3295cc1fb740330
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01d131833f36c1b46eea1b9c08339b067fb9e937
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598814"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681956"
 ---
 # <a name="using-the-azure-maps-drawing-error-visualizer"></a>A Azure Maps rajzolási hiba láthatóvá tesző használata
 
-A felderített rajzolási hiba egy önálló webalkalmazás, amely megjeleníti a [rajzi csomagok figyelmeztetéseit és](drawing-conversion-error-codes.md) az átalakítási folyamat során észlelt hibákat. A nem lapozható webalkalmazás egy statikus oldalból áll, amelyet az internethez való csatlakozás nélkül használhat.  A hibák és figyelmeztetések a [rajzolási csomag követelményeinek](drawing-requirements.md)megfelelően történő kijavításához a hiba láthatóvá tételét használhatja. A [Azure Maps átalakítási API](https://docs.microsoft.com/rest/api/maps/data/conversion) csak akkor ad vissza választ, ha a hiba észlelésekor csak a hiba észlelhető.
+A felderített rajzolási hiba egy önálló webalkalmazás, amely megjeleníti a [rajzi csomagok figyelmeztetéseit és](drawing-conversion-error-codes.md) az átalakítási folyamat során észlelt hibákat. A nem lapozható webalkalmazás egy statikus oldalból áll, amelyet az internethez való csatlakozás nélkül használhat.  A hibák és figyelmeztetések a [rajzolási csomag követelményeinek](drawing-requirements.md)megfelelően történő kijavításához a hiba láthatóvá tételét használhatja. A [Azure Maps átalakítási API](https://docs.microsoft.com/rest/api/maps/conversion) csak akkor ad vissza választ, ha a hiba észlelésekor csak a hiba észlelhető.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -90,7 +90,7 @@ A _ConversionWarningsAndErrors. JSON_ fájl betöltése után megjelenik a rajzo
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a [rajzfájl megfelel a követelményeknek](drawing-requirements.md), a [Azure Maps adatkészlet szolgáltatással](https://docs.microsoft.com/rest/api/maps/data/conversion) átalakíthatja a rajzi csomagot egy adatkészletbe. Ezután használhatja a beltéri térképek webes modult az alkalmazás fejlesztéséhez. További információért olvassa el a következő cikkeket:
+Ha a [rajzfájl megfelel a követelményeknek](drawing-requirements.md), a [Azure Maps adatkészlet szolgáltatással](https://docs.microsoft.com/rest/api/maps/conversion) átalakíthatja a rajzi csomagot egy adatkészletbe. Ezután használhatja a beltéri térképek webes modult az alkalmazás fejlesztéséhez. További információért olvassa el a következő cikkeket:
 
 > [!div class="nextstepaction"]
 > [Rajzolási konvertálási hibakódok](drawing-conversion-error-codes.md)

@@ -1,17 +1,17 @@
 ---
 title: Azure Automation runbookok figyelése metrikus riasztásokkal
-description: Ez a cikk végigvezeti a monitorozási Azure Automation runbookok a metrikák alapján
+description: Ez a cikk azt ismerteti, hogyan figyelheti a runbookok a mérőszámok alapján.
 services: automation
 ms.date: 11/01/2018
 ms.topic: article
-ms.openlocfilehash: f288029bb35fe4e3c71db37a1de265edbcd913b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0d30e3d18ecb279e26731346bca7bb7c12943cb
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81310542"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685406"
 ---
-# <a name="monitoring-runbooks-with-metric-alerts"></a>Runbookok figyelése metrikus riasztásokkal
+# <a name="monitor-runbooks-with-metric-alerts"></a>Runbookok monitorozása metrikariasztásokkal
 
 Ebből a cikkből megtudhatja, hogyan hozhat létre riasztásokat a runbookok befejezési állapota alapján.
 
@@ -31,7 +31,7 @@ A Azure Portal navigáljon az Automation-fiókjához. A **figyelés**területen 
 
 2. A **jel logikai beállítása** oldalon megadhatja a riasztást kiváltó logikát. A korábbi gráfban két dimenziót, a **Runbook nevét** és **állapotát**mutatjuk be. A méretek az eredmények szűrésére szolgáló metrika különböző tulajdonságai. A **Runbook neve**mezőben válassza ki azt a Runbook, amelyről riasztást szeretne kapni, vagy hagyja üresen a riasztást az összes runbookok. Az **állapot**beállításnál válasszon ki egy állapotot a figyelni kívánt legördülő listából. A legördülő listában megjelenő runbook neve és állapota csak az elmúlt héten futtatott feladatokhoz használható.
 
-   Ha olyan állapotra vagy runbook szeretne riasztást kapni, amely nem jelenik meg a legördülő listában **\+** , kattintson a dimenzió melletti elemre. Ez a művelet egy olyan párbeszédpanelt nyit meg, amely lehetővé teszi egy egyéni érték megadását, amely az adott dimenzióhoz még nem lett kibocsátva a közelmúltban. Ha olyan értéket ad meg, amely nem létezik olyan tulajdonsághoz, amelyet a riasztás nem indít el.
+   Ha olyan állapotra vagy runbook szeretne riasztást kapni, amely nem jelenik meg a legördülő listában, kattintson a **\+** dimenzió melletti elemre. Ez a művelet egy olyan párbeszédpanelt nyit meg, amely lehetővé teszi egy egyéni érték megadását, amely az adott dimenzióhoz még nem lett kibocsátva a közelmúltban. Ha olyan értéket ad meg, amely nem létezik olyan tulajdonsághoz, amelyet a riasztás nem indít el.
 
    > [!NOTE]
    > Ha nem alkalmaz nevet a **RunbookName** -dimenzióhoz, ha vannak olyan runbookok, amelyek megfelelnek az állapot feltételeinek, ami magában foglalja a rejtett rendszer runbookok, riasztást fog kapni.
@@ -67,7 +67,7 @@ A Azure Portal navigáljon az Automation-fiókjához. A **figyelés**területen 
 > [!NOTE]
 > E-mail-cím műveleti csoportba való felvételekor a rendszer értesítő e-mailt küld, amely megadja, hogy a cím hozzá lett adva egy műveleti csoporthoz.
 
-## <a name="notification"></a>Értesítés
+## <a name="receive-notification"></a>Értesítés fogadása
 
 Ha a riasztási feltételek teljesülnek, a műveleti csoport futtatja a megadott műveletet. Ebben a cikkben egy e-mailt küldünk. Az alábbi képen egy példa látható a riasztás elindítása után kapott e-mailekre:
 

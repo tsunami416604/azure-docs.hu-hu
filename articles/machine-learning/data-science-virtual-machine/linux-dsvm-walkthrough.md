@@ -9,12 +9,12 @@ author: vijetajo
 ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 04/02/2020
-ms.openlocfilehash: 38088503fee016651a8c1c9a1f57ad4bbe102456
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dec9d7d6f4676c3550bb6c0be79e25d907e5b3da
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257147"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682474"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-in-azure"></a>Adatelemzés Linux-Data Science Virtual Machine az Azure-ban
 
@@ -29,9 +29,9 @@ Ebben az útmutatóban elemezzük a [spambase](https://archive.ics.uci.edu/ml/da
 A Linux-DSVM használatához a következő előfeltételek szükségesek:
 
 * **Azure-előfizetés**. Azure-előfizetés beszerzéséhez tekintse [meg még ma az ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/free/)című témakört.
-* [**Linux Data Science Virtual Machine**](https://azure.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). A virtuális gép kiépítésével kapcsolatos további információkért lásd: [a linuxos Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
+* [**Linux Data Science Virtual Machine**](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). A virtuális gép kiépítésével kapcsolatos további információkért lásd: [a linuxos Data Science Virtual Machine kiépítése](linux-dsvm-intro.md).
 * A [**X2Go**](https://wiki.x2go.org/doku.php) egy nyílt Xfce-munkamenettel telepítette a számítógépre. További információ: [a X2Go-ügyfél telepítése és konfigurálása](linux-dsvm-intro.md#x2go).
-* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt. `about:config` [További információ](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A `mousewheel.enable_pixel_scrolling` `False`beállítást is érdemes megfontolni. [További információ](https://support.mozilla.org/questions/981140).
+* Ha gördülékenyebb görgetést kíván, a DSVM Firefox böngészőben kapcsolja be a `gfx.xrender.enabled` jelölőt `about:config` . [További információk](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/). A beállítást is érdemes megfontolni `mousewheel.enable_pixel_scrolling` `False` . [További információk](https://support.mozilla.org/questions/981140).
 * **Azure Machine learning fiók**. Ha még nem rendelkezik ilyennel, regisztráljon egy új fiókot a [Azure Machine learning kezdőlapján](https://azure.microsoft.com/free/services/machine-learning//).
 
 ## <a name="download-the-spambase-dataset"></a>A spambase adatkészlet letöltése
@@ -64,11 +64,11 @@ mv headers spambaseHeaders.data
 
 Az adatkészlet többféle statisztikai adattípussal rendelkezik az egyes e-mailekhez:
 
-* Az olyan oszlopok, mint a **\_\_Word freq Word** , az e-mailben szereplő *szavak százalékos*arányát jelölik. Ha például a **Word\_freq\_make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
-* Oszlopok, például *a char* **\_freq\_char** az e-mailben szereplő összes karakter százalékos arányát jelzi.
-* **a\_tőke\_futtatásának leghosszabb hossza\_** a nagybetűk sorozatának leghosszabb hosszúsága.
-* **a\_tőke\_futtatásának\_átlagos** hossza a nagybetűk összes sorozatának átlagos hossza.
-* **a\_tőke\_futtatásának\_hossza összesen** érték a nagybetűk összes sorozatának teljes hosszát adja meg.
+* Az olyan oszlopok, mint a **Word \_ freq \_ _Word_ ** , az e-mailben szereplő *szavak százalékos*arányát jelölik. Ha például a **Word \_ freq \_ make** értéke **1**, akkor az e-mailben szereplő összes szó 1%- *a.*
+* Oszlopok, például *a char* ** \_ freq \_ _char_ ** az e-mailben szereplő összes karakter százalékos arányát jelzi.
+* a **tőke \_ futtatásának \_ \_ leghosszabb hossza** a nagybetűk sorozatának leghosszabb hosszúsága.
+* a **tőke \_ futtatásának \_ \_ átlagos** hossza a nagybetűk összes sorozatának átlagos hossza.
+* a **tőke \_ futtatásának \_ hossza \_ összesen** érték a nagybetűk összes sorozatának teljes hosszát adja meg.
 * a **Levélszemét** azt jelzi, hogy az e-mail levélszemétnek minősül-e (1 = levélszemét, 0 = nem levélszemét).
 
 ## <a name="explore-the-dataset-by-using-r-open"></a>Az adatkészlet megismerése az R Open használatával
@@ -313,10 +313,10 @@ predictSpam.service(1, 1, 1)
 
 ### <a name="jupyterhub"></a>JupyterHub
 
-A DSVM anaconda-eloszlása egy Jupyter Notebook, egy többplatformos környezettel rendelkezik a Python, az R vagy a Julia-kód és-elemzés megosztásához. A Jupyter Notebook a JupyterHub keresztül érhető el. A bejelentkezéshez használja a helyi Linux-felhasználónevet és-jelszót a\<https://DSVM DNS-neve vagy\>IP-címe: 8000/. A JupyterHub összes konfigurációs fájlja megtalálható a/etc/jupyterhub.
+A DSVM anaconda-eloszlása egy Jupyter Notebook, egy többplatformos környezettel rendelkezik a Python, az R vagy a Julia-kód és-elemzés megosztásához. A Jupyter Notebook a JupyterHub keresztül érhető el. A bejelentkezéshez használja a helyi Linux-felhasználónevet és-jelszót a https:// \< DSVM DNS-neve vagy IP-címe \> : 8000/. A JupyterHub összes konfigurációs fájlja megtalálható a/etc/jupyterhub.
 
 > [!NOTE]
-> Ha a Python Package Managert (a `pip` paranccsal) szeretné használni a jelenlegi kernel egyik Jupyter Notebookjában, használja ezt a parancsot a Code (kód) cellában:
+> Ha a Python Package Managert (a paranccsal) szeretné használni a `pip` jelenlegi kernel egyik Jupyter Notebookjában, használja ezt a parancsot a Code (kód) cellában:
 >
 >   ```Python
 >    import sys
@@ -368,7 +368,7 @@ Az adatkészlet betöltése és konfigurálása:
 Az adatelemzés:
 
 1. Kattintson a **Tallózás** fülre.
-1. Ha szeretné megtekinteni a változó típusokkal és néhány összefoglaló statisztikával kapcsolatos információkat, válassza az **Összefoglalás** > **végrehajtás**lehetőséget.
+1. Ha szeretné megtekinteni a változó típusokkal és néhány összefoglaló statisztikával kapcsolatos információkat, válassza az **Összefoglalás**  >  **végrehajtás**lehetőséget.
 1. Ha meg szeretné tekinteni az egyes változókkal kapcsolatos egyéb statisztikai adatokat, válassza a további lehetőségek, például a **Leírás** vagy az **alapvető**beállítások lehetőséget.
 
 A **Tallózás** lapon éleslátó ábrákat is létrehozhat. Az adathisztogram ábrázolása:
@@ -421,7 +421,7 @@ A Rattle hasznos funkciója, hogy több gépi tanulási módszert is futtathat, 
 Amikor elkészült a modellek létrehozásával, a **napló** lapon megtekintheti a csörgő által a munkamenet során futtatott R-kódot. Válassza az **Exportálás** gombot a mentéshez.
 
 > [!NOTE]
-> A csörgő jelenlegi kiadása hibát tartalmaz. Ha módosítani szeretné a parancsfájlt, vagy a használatával szeretné később megismételni a lépéseket, **#** be kell szúrnia egy karaktert a napló exportálása előtt.. *.* a napló szövegében.
+> A csörgő jelenlegi kiadása hibát tartalmaz. Ha módosítani szeretné a parancsfájlt, vagy a használatával szeretné később megismételni a lépéseket, be kell szúrnia egy karaktert a napló **#** *exportálása* előtt... a napló szövegében.
 
 ### <a name="postgresql-and-squirrel-sql"></a>PostgreSQL és mókus SQL
 
@@ -492,28 +492,28 @@ Most Ismerkedjen meg az adataival, és futtasson néhány lekérdezést a mókus
 
 Első lépésként nyissa meg a mókus SQL **alkalmazást az alkalmazások** menüben. Az illesztőprogram beállítása:
 
-1. Válassza a **Windows** > -**illesztőprogramok megtekintése**lehetőséget.
+1. Válassza a **Windows**-  >  **illesztőprogramok megtekintése**lehetőséget.
 1. Kattintson a jobb gombbal a **PostgreSQL** elemre, és válassza az **illesztőprogram módosítása**lehetőséget.
-1. Válassza a **további osztály elérési útja** > **Hozzáadás**lehetőséget.
+1. Válassza a **további osztály elérési útja**  >  **Hozzáadás**lehetőséget.
 1. A **fájlnév**mezőben adja meg a **/usr/share/Java/jdbcdrivers/PostgreSQL-9.4.1208.jre6.jar**nevet.
 1. Válassza az **Open** (Megnyitás) elemet.
 1. Válassza az **illesztőprogramok listázása**lehetőséget. Az **Osztálynév**mezőben válassza a **org. PostgreSQL. Driver**elemet, majd kattintson **az OK gombra**.
 
 A helyi kiszolgálóhoz való kapcsolódás beállítása:
 
-1. Válassza a **Windows** > **View aliasok lehetőséget.**
-1. Az új **+** alias létrehozásához kattintson a gombra. Az új alias neve mezőbe írja be a **Levélszemét-adatbázist**. 
+1. Válassza a **Windows**  >  **View aliasok lehetőséget.**
+1. Az **+** új alias létrehozásához kattintson a gombra. Az új alias neve mezőbe írja be a **Levélszemét-adatbázist**. 
 1. Az **illesztőprogram**esetében válassza a **PostgreSQL**lehetőséget.
 1. Állítsa be az URL-címet a **JDBC: PostgreSQL://localhost/spam**értékre.
 1. Adja meg a felhasználónevét és a jelszavát.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 1. A **kapcsolódási** ablak megnyitásához kattintson duplán a **Levélszemét-adatbázis** aliasára.
 1. Kattintson a **Csatlakozás** gombra.
 
 Lekérdezések futtatása:
 
 1. Válassza az **SQL** lapot.
-1. Az **SQL** lap tetején található lekérdezés mezőben adjon meg egy alapszintű lekérdezést, például: `SELECT * from data;`.
+1. Az **SQL** lap tetején található lekérdezés mezőben adjon meg egy alapszintű lekérdezést, például: `SELECT * from data;` .
 1. A lekérdezés futtatásához nyomja le a CTRL + ENTER billentyűkombinációt. Alapértelmezés szerint a mókus SQL a lekérdezés első 100 sorát adja vissza.
 
 Az adatelemzéshez számos további lekérdezés is futtatható. Hogyan változik például *a szó* gyakorisága a levélszemét és a sonka között?

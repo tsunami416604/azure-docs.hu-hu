@@ -8,17 +8,16 @@ ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.topic: reference
 ms.workload: identity
-ms.date: 04/23/2020
+ms.date: 05/07/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.custom: has-adal-ref
-ms.openlocfilehash: bc3c572aeb72328bc4708d27052756623ccd7701
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7b75f03afc587d9616997b1df48b9c5c5166cb89
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200979"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681717"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Az Azure AD Connect verziókiadásai
 A Azure Active Directory (Azure AD) csapata rendszeresen frissíti Azure AD Connect új szolgáltatásokkal és funkciókkal. Nem minden kiegészítés alkalmazható minden célközönségre.
@@ -55,10 +54,12 @@ Nem minden Azure AD Connect-kiadás lesz elérhető az automatikus frissítéshe
 05/07/2020: kiadva a letöltéshez
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
-- Kijavított egy hibát, amelyben a nem kiválasztott tartományok helytelenül lettek kiválasztva a varázsló felhasználói felületéről.
-- Javítva lett egy probléma a ADSyncConfig PowerShell-modulban, ahol az összes set-ADSync * permissions parancsmagban használt DSACLS parancs meghívása a következő hibák valamelyikét okozhatja:
-     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
-     - `GrantAcls : No GUID Found for computer …`
+Ez a gyorsjavítás olyan hibát javít, amelyben a nem kiválasztott tartományok helytelenül lettek kiválasztva a varázsló felhasználói felületéről, ha csak az unoka-tárolók lettek kiválasztva.
+
+
+>[!NOTE]
+>Ez a verzió az új Azure AD Connect Sync v2 Endpoint API használatához szükséges.  További információ: [Azure ad Connect Sync v2 ENDPOINT API (nyilvános előzetes verzió)](how-to-connect-sync-endpoint-api-v2.md).
+
 
 ## <a name="15290"></a>1.5.29.0
 
@@ -82,7 +83,10 @@ Ez a gyorsjavítás-Build javít egy problémát a build 1.5.20.0, ha klónozott
 04/09/2020: kiadva a letöltéshez
 
 ### <a name="fixed-issues"></a>Hibák kijavítva:
-Ez a gyorsjavítás kijavítja a build 1.5.18.0 kapcsolatos problémát, ha engedélyezte a csoportos szűrés funkciót, és az mS-DS-ConsistencyGuid-t használja forrásként.
+- Ez a gyorsjavítás kijavítja a build 1.5.18.0 kapcsolatos problémát, ha engedélyezte a csoportos szűrés funkciót, és az mS-DS-ConsistencyGuid-t használja forrásként.
+- Javítva lett egy probléma a ADSyncConfig PowerShell-modulban, ahol az összes set-ADSync * permissions parancsmagban használt DSACLS parancs meghívása a következő hibák valamelyikét okozhatja:
+     - `GrantAclsNoInheritance : The parameter is incorrect.   The command failed to complete successfully.`
+     - `GrantAcls : No GUID Found for computer …`
 
 > [!IMPORTANT]
 > Ha klónozott a alkalmazást az **ad-Group csatlakozás** szinkronizálási szabályból, és nem klónozotta a-t az **ad-Group Common** Sync szabályból, és nem tervezi a verziófrissítést, hajtsa végre a következő lépéseket a frissítés részeként:
@@ -117,7 +121,6 @@ Ez a gyorsjavítás kijavítja a build 1.5.18.0 kapcsolatos problémát, ha enge
 - Az Azure Active Directory szinkronizációs fiók létrehozásával kapcsolatos probléma kijavítva, ahol a címtárszolgáltatások vagy PHS engedélyezése sikertelen lehet, mert a rendszer nem propagálta a fiókot az összes szolgáltatás-replikán a használat megkísérlése előtt. 
 - Kijavított egy hibát a szinkronizálási hibák tömörítése segédprogramban, amely nem megfelelően kezeli a helyettesítő karaktereket. 
 - Kijavított egy hibát az automatikus frissítésben, amely elhagyta a kiszolgálót az ütemező felfüggesztett állapotában. 
-- Kijavított egy hibát a tartomány/OU szűrési lapon, amely egy tartomány futtatási profiljait távolítja el úgy, hogy csak részben bővíti a tartományfa-t, anélkül, hogy módosítani kellene.
 
 ## <a name="14380"></a>1.4.38.0
 ### <a name="release-status"></a>Kiadás állapota
@@ -1337,7 +1340,6 @@ A név Azure AD-szinkronizálóról Azure AD Connectra módosult.
 **Új előzetes verziójú funkciók:**
 
 * [Felhasználói visszaírási](how-to-connect-preview.md#user-writeback)
-* [Group writeback (Csoportvisszaíró)](how-to-connect-preview.md#group-writeback)
 * [Eszközvisszaíró](how-to-connect-device-writeback.md)
 * [Címtárbővítmények](how-to-connect-preview.md)
 

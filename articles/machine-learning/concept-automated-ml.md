@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: ce51a1b25453a5bbacbd268b37f2bd21cfe37fea
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: f328b86d07a997ea761b4381f1d6a2f8a1dae269
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983465"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683079"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Mi az a gépi tanulás (AutoML)?
 
@@ -46,7 +46,7 @@ A besoroláshoz hasonlóan a regressziós feladatok is közösen felügyelt tanu
 
 Eltér a besorolástól, ahol az előre jelzett kimeneti értékek kategorikusak, a regressziós modellek előre jelezik a numerikus kimeneti értékeket a független előrejelzők alapján. A regresszió során a cél az, hogy segítsen a független prediktív változók közötti kapcsolat kialakításában azzal, hogy megbecsüli, hogyan befolyásolja a többi változó. Például az autó árát a (z), a gáz kilométer, a biztonsági minősítés stb. jellemzői alapján. További információ: a [regressziós példa a gépi tanulás](tutorial-auto-train-models.md)automatizálására.
 
-A Python-jegyzetfüzetek előrejelzéseit a regressziós és automatizált gépi tanulásra vonatkozó példákban tekintheti meg: [CPU teljesítményének előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb), 
+A Python-jegyzetfüzetek előrejelzéseit a regressziós és automatizált gépi tanulásra vonatkozó példákban tekintheti meg: [CPU teljesítményének előrejelzése](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb), 
 
 ### <a name="time-series-forecasting"></a>Idősorozat-előrejelzés
 
@@ -93,7 +93,7 @@ A következő ábra ezt a folyamatot szemlélteti.
 ![Automatizált gépi tanulás](./media/concept-automated-ml/automl-concept-diagram2.png)
 
 
-Megvizsgálhatja a naplózott futtatási adatokat is, amelyek a Futtatás során összegyűjtött [mérőszámokat tartalmazzák](how-to-understand-automated-ml.md) . A betanítási kísérlet egy Python szerializált objektumot`.pkl` (fájlt) hoz létre, amely tartalmazza a modellt és az adatfeldolgozást.
+Megvizsgálhatja a naplózott futtatási adatokat is, amelyek a Futtatás során összegyűjtött [mérőszámokat tartalmazzák](how-to-understand-automated-ml.md) . A betanítási kísérlet egy Python szerializált objektumot ( `.pkl` fájlt) hoz létre, amely tartalmazza a modellt és az adatfeldolgozást.
 
 A modell létrehozása automatizálható, és azt is [megtudhatja, milyen fontos vagy releváns funkciók vannak](how-to-configure-auto-train.md#explain) a generált modellekhez.
 
@@ -110,9 +110,9 @@ Minden automatizált gépi tanulási kísérlet során az adatai az alapértelme
 
 ### <a name="automatic-preprocessing-standard"></a>Automatikus előfeldolgozás (standard)
 
-Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek.  A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre.
+Az automatizált gépi tanulási kísérletek során az adatok automatikusan méretezhetők vagy normalizálva vannak, hogy az algoritmusok jól elvégezhetők legyenek.  A modellek betanítása során a rendszer az alábbi skálázási vagy normalizáló technikák egyikét alkalmazza az egyes modellekre. Ismerje meg, hogyan segít a autoML a modellekben a [túlzottan illeszkedő és kiegyensúlyozatlan adatértékek megelőzésében](concept-manage-ml-pitfalls.md) .
 
-|&nbsp;&Méretezés&nbsp;normalizálása| Leírás |
+|Méretezés &nbsp; & &nbsp; normalizálása| Description |
 | ------------- | ------------- |
 | [StandardScaleWrapper](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html)  | Szabványosítási funkciók az átlag és a skálázás egységbeli eltérésének eltávolításával  |
 | [MinMaxScalar](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html)  | Az egyes szolgáltatások méretezésével átalakítja a szolgáltatásokat az adott oszlop minimális és maximális értékével  |
@@ -128,7 +128,7 @@ További speciális előfeldolgozási és featurization is elérhetők, példáu
 
 + Azure Machine Learning Studio: engedélyezze az **automatikus featurization** a **további konfiguráció megtekintése** szakaszban [ezekkel a lépésekkel](how-to-use-automated-ml-for-ml-models.md#create-and-run-experiment).
 
-+ Python SDK: az `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` [ `AutoMLConfig` osztály](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)megadása. 
++ Python SDK: `"feauturization": 'auto' / 'off' / 'FeaturizationConfig'` az [ `AutoMLConfig` osztály](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig)megadása. 
 
 
 
@@ -168,7 +168,7 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 
  További funkciók érhetők el a távoli számítás használatakor, az alábbi táblázatban látható módon. Ezen funkciók némelyike csak vállalati munkaterületeken érhető el.
 
-| Szolgáltatás                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
+| Funkció                                                    | Remote | Helyi | Igényel <br>Vállalati munkaterület |
 |------------------------------------------------------------|--------|-------|-------------------------------|
 | Adatfolyam (nagy adatátviteli támogatás, akár 100 GB-ig)          | ✓      |       | ✓                             |
 | DNN – BERT-alapú szöveges featurization és-képzés             | ✓      |       | ✓                             |
@@ -186,8 +186,19 @@ Vegye figyelembe ezeket az előnyeit és hátrányait a helyi és a távoli hasz
 | A kísérlet adatainak és metrikáinak regisztrálása és megjelenítése a felhasználói felületen | ✓      | ✓     |                               |
 | Az adatguardrails                                            | ✓      | ✓     |                               |
 
+## <a name="many-models"></a>Számos modell 
 
-## <a name="automated-ml-in-azure-machine-learning"></a>Automatizált ML Azure Machine Learning
+A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi, hogy a gépi tanulási modellek több száz vagy akár ezres betanításához, üzemeltetéséhez és felügyeletéhez automatizált ml-t használjon.
+
+Például az __egyes példányok vagy egyedi__ modellek létrehozása a következő helyzetekben lehet jobb eredményekhez vezethet:
+
+* Az egyes tárolók értékesítésének előrejelzése
+* Prediktív karbantartás több száz olajos kutak esetében
+* Egyéni felhasználói élmény testreszabása.
+
+További információkért lásd a GitHubon a [különböző modellek megoldás-gyorsító](https://aka.ms/many-models) című témakört.
+
+## <a name="automl-in-azure-machine-learning"></a>AutoML Azure Machine Learning
 
 A Azure Machine Learning két felületet biztosít az automatikus ML-vel való munkavégzéshez
 

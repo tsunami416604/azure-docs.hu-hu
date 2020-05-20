@@ -15,12 +15,12 @@ ms.date: 05/04/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: b5ba4b84fcd9c1722e8ab2f4031ec1551357e406
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0a574ba281a037a06ddda1981ae6fa35b905bca1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869997"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683661"
 ---
 # <a name="azure-built-in-roles"></a>Azure beépített szerepkörök
 
@@ -28,13 +28,13 @@ Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) s
 
 Ez a cikk az Azure beépített szerepköreit sorolja fel, amelyek folyamatosan fejlődnek. A legújabb szerepkörök beszerzéséhez használja a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) vagy [az az role definition List](/cli/azure/role/definition#az-role-definition-list)lehetőséget. Ha Azure Active Directory (Azure AD) rendszergazdai szerepköreit keresi, tekintse meg a [rendszergazdai szerepkör engedélyeit a Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
-## <a name="all"></a>Összes
+## <a name="all"></a>Mind
 
-Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörök egyedi AZONOSÍTÓját tartalmazza. Válassza ki a szerepkör nevét a (z) `Actions`, `NotActions`, `DataActions`, és `NotDataActions` minden szerepkör listájának megtekintéséhez. További információ ezekről a műveletekről és azokról a kezelési és adatsíkokról: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
+Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörök egyedi AZONOSÍTÓját tartalmazza. Válassza ki a szerepkör nevét a (z),,, `Actions` `NotActions` `DataActions` és `NotDataActions` minden szerepkör listájának megtekintéséhez. További információ ezekről a műveletekről és azokról a kezelési és adatsíkokról: az [Azure szerepkör-definíciók ismertetése](role-definitions.md).
 
 
 > [!div class="mx-tableFixed"]
-> | Beépített szerepkör | Leírás | ID (Azonosító) |
+> | Beépített szerepkör | Description | ID |
 > | --- | --- | --- |
 > | **Általános** |  |  |
 > | [Közreműködő](#contributor) | Lehetővé teszi az összes funkció kezelését, kivéve az erőforrásokhoz való hozzáférés biztosítását. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -114,7 +114,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [HDInsight tartományi szolgáltatások közreműködője](#hdinsight-domain-services-contributor) | Elolvashatja, létrehozhatja, módosíthatja és törölheti a HDInsight kapcsolatos tartományi szolgáltatásokat Enterprise Security Package | 8d8d5a11-05d3-4bda-a417-a08778121c7c |
 > | [Log Analytics közreműködő](#log-analytics-contributor) | Log Analytics közreműködő képes olvasni az összes figyelési és szerkesztési beállítást. A figyelési beállítások szerkesztése magában foglalja a virtuálisgép-bővítmény virtuális gépekhez való hozzáadását. a Storage-fiók kulcsainak beolvasása az Azure Storage-ból származó naplók gyűjtésének konfigurálásához; Automation-fiókok létrehozása és konfigurálása; megoldások hozzáadása; és az Azure Diagnostics konfigurálása az összes Azure-erőforráshoz. | 92aaf0da-9dab-42b6-94a3-d43ce8d16293 |
 > | [Log Analytics olvasó](#log-analytics-reader) | Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adatait, valamint megtekintheti a figyelési beállításokat, beleértve az Azure Diagnostics konfigurációjának megtekintését az összes Azure-erőforráson. | 73c42c96-874c-492b-b04d-ab87d138a893 |
-> | **Blokklánc** |  |  |
+> | **Blockchain** |  |  |
 > | [Blockchain-hozzáférés (előzetes verzió)](#blockchain-member-node-access-preview) | Engedélyezi a hozzáférést a Blockchain-tagok csomópontjaihoz | 31a002a1-acaf-453e-8a5b-297c9ca1ea24 |
 > | **AI és gépi tanulás** |  |  |
 > | [Cognitive Services közreműködő](#cognitive-services-contributor) | Lehetővé teszi Cognitive Services kulcsainak létrehozását, olvasását, frissítését, törlését és kezelését. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
@@ -173,6 +173,7 @@ Az alábbi táblázat egy rövid leírást és az egyes beépített szerepkörö
 > | [Blueprint operátor](#blueprint-operator) | Meglévő közzétett tervrajzokat is hozzárendelhet, de nem hozhat létre új tervrajzokat. Vegye figyelembe, hogy ez csak akkor működik, ha a hozzárendelés felhasználó által hozzárendelt felügyelt identitással lett végrehajtva. | 437d2ced-4a38-4302-8479-ed2bcb43d090 |
 > | [Cost Management közreműködő](#cost-management-contributor) | Megtekintheti a költségeket és kezelheti a költségek konfigurációját (pl. költségvetés, exportálás) | 434105ed-43f6-45c7-a02f-909b2ba83430 |
 > | [Cost Management olvasó](#cost-management-reader) | Megtekintheti a költségeket és a konfigurációt (például a költségvetést, az exportot) | 72fafb9e-0641-4937-9268 – a91bfd8191a3 |
+> | [Hierarchia-beállítások rendszergazdája](#hierarchy-settings-administrator) | Lehetővé teszi a felhasználóknak a hierarchia beállításainak szerkesztését és törlését | 350f8d15-c687-4448-8ae1-157740a3936d |
 > | [Felügyelt alkalmazás közreműködői szerepköre](#managed-application-contributor-role) | Lehetővé teszi a felügyelt alkalmazások erőforrásainak létrehozását. | 641177b8-a67a-45b9-a033-47bc880bb21e |
 > | [Felügyelt alkalmazás operátori szerepköre](#managed-application-operator-role) | Lehetővé teszi műveletek olvasását és végrehajtását a felügyelt alkalmazás erőforrásain | c7393b34-138c-406f-901b-d8cf2b17e6ae |
 > | [Felügyelt alkalmazások olvasója](#managed-applications-reader) | Lehetővé teszi az erőforrások olvasását egy felügyelt alkalmazásban, valamint a JIT-hozzáférés kérését. | b9331d33-8a36-4f8c-b097-4f54124fdb44 |
@@ -2540,7 +2541,7 @@ Azure Storage-várólisták és üzenetsor-üzenetek olvasása és listázása. 
 }
 ```
 
-## <a name="web"></a>Web
+## <a name="web"></a>Webes
 
 
 ### <a name="azure-maps-data-reader"></a>Adatolvasó Azure Maps
@@ -4202,7 +4203,7 @@ Log Analytics olvasó megtekintheti és megkeresheti az összes figyelési adata
 }
 ```
 
-## <a name="blockchain"></a>Blokklánc
+## <a name="blockchain"></a>Blockchain
 
 
 ### <a name="blockchain-member-node-access-preview"></a>Blockchain-hozzáférés (előzetes verzió)
@@ -7012,6 +7013,48 @@ Megtekintheti a költségeket és a konfigurációt (például a költségvetés
     }
   ],
   "roleName": "Cost Management Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="hierarchy-settings-administrator"></a>Hierarchia-beállítások rendszergazdája
+
+Lehetővé teszi a felhasználóknak a hierarchia beállításainak szerkesztését és törlését
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Műveletek** |  |
+> | Microsoft. Management/managementGroups/beállítások/írás | A felügyeleti csoport hierarchiájának beállításait hozza létre vagy frissíti. |
+> | Microsoft. Management/managementGroups/Settings/delete | Törli a felügyeleti csoport hierarchiájának beállításait. |
+> | **NotActions** |  |
+> | *nincs* |  |
+> | **DataActions** |  |
+> | *nincs* |  |
+> | **NotDataActions** |  |
+> | *nincs* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows users to edit and delete Hierarchy Settings",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/350f8d15-c687-4448-8ae1-157740a3936d",
+  "name": "350f8d15-c687-4448-8ae1-157740a3936d",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Management/managementGroups/settings/write",
+        "Microsoft.Management/managementGroups/settings/delete"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Hierarchy Settings Administrator",
   "roleType": "BuiltInRole",
   "type": "Microsoft.Authorization/roleDefinitions"
 }

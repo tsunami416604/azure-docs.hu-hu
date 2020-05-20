@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 05/18/2020
 ms.author: pafarley
-ms.openlocfilehash: 41e88dd5a08de485f770559959843ba3b54e590f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f41330836edab647f379eb43130c078c46cce53
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81274010"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685063"
 ---
 # <a name="learn-text-moderation-concepts"></a>A szöveg moderálásával kapcsolatos fogalmak megismerése
 
-Használjon Content Moderator gépi támogatású szöveg-moderálást és [emberi felülvizsgálati](Review-Tool-User-Guide/human-in-the-loop.md) képességeket a szöveges tartalomhoz.
+A szöveges tartalom elemzéséhez használja a Content Moderator szövegének moderálási modelljeit.
 
-Házirendjei és küszöbértékei függvényében Ön blokkolhatja, jóváhagyhatja vagy véleményezheti a tartalmat. Ezzel kibővítheti a környezetek emberi moderálását, ahol a partnerek, az alkalmazottak és a felhasználók szöveges tartalmat hoznak. Ilyen környezetnek minősülnek a csevegőszobák, a vitafórumok, a csevegőrobotok, az e-kereskedelmi katalógusok és a dokumentumok. 
+Megtilthatja, jóváhagyhatja vagy áttekintheti a tartalmakat a szabályzatok és a küszöbértékek alapján (lásd: [értékelések, munkafolyamatok és feladatok,](./review-api.md) amelyekből megtudhatja, hogyan állíthatja be az emberi felülvizsgálatokat). A szöveges moderálási modellek segítségével kibővítheti az olyan környezetek emberi moderálását, ahol a partnerek, az alkalmazottak és a felhasználók szöveges tartalmat hoznak. Ilyen környezetnek minősülnek a csevegőszobák, a vitafórumok, a csevegőrobotok, az e-kereskedelmi katalógusok és a dokumentumok. 
 
 A szolgáltatástól érkező válaszban az alábbi információk szerepelnek:
 
@@ -34,7 +34,7 @@ A szolgáltatástól érkező válaszban az alábbi információk szerepelnek:
 
 ## <a name="profanity"></a>Trágár kifejezések
 
-Ha az API bármely [támogatott nyelven](Text-Moderation-API-Languages.md)észleli a profán kifejezéseket, a válasz tartalmazza ezeket a kifejezéseket. A válasz az eredeti szöveg helyét (`Index`) is tartalmazza. A `ListId` következő PÉLDÁBAN szereplő JSON az [Egyéni kifejezési listában](try-terms-list-api.md) található kifejezésekre vonatkozik, ha vannak ilyenek.
+Ha az API bármely [támogatott nyelven](Text-Moderation-API-Languages.md)észleli a profán kifejezéseket, a válasz tartalmazza ezeket a kifejezéseket. A válasz `Index` az eredeti szöveg helyét () is tartalmazza. A `ListId` következő példában szereplő JSON az [Egyéni kifejezési listában](try-terms-list-api.md) található kifejezésekre vonatkozik, ha vannak ilyenek.
 
     "Terms": [
     {
@@ -45,7 +45,7 @@ Ha az API bármely [támogatott nyelven](Text-Moderation-API-Languages.md)észle
     }
 
 > [!NOTE]
-> A **Language** paraméterhez rendelje `eng` hozzá, vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
+> A **Language** paraméterhez rendelje hozzá, `eng` vagy hagyja üresen, hogy megjelenjen a gép által támogatott **besorolási** válasz (előzetes verzió funkció). **Ez a funkció csak az angol nyelvet támogatja**.
 >
 > A **trágár kifejezések** észleléséhez használja a cikkben felsorolt támogatott nyelvek [ISO 639-3 kódját](http://www-01.sil.org/iso639-3/codes.asp) , vagy hagyja üresen.
 
@@ -155,4 +155,4 @@ A Content Moderator egy [kifejezés-lista API](https://westus.dev.cognitive.micr
 
 ## <a name="next-steps"></a>További lépések
 
-Tesztelje a [text moderációs API-konzolt](try-text-api.md) , és használja a REST API-kód mintáit. Ha ismeri a Visual studiót és a C#-t, tekintse meg a [.net SDK](dotnet-sdk-quickstart.md) -útmutató Text moderációs szakaszát is.
+Tesztelje az API-kat a [text moderációs API-konzollal](try-text-api.md). Tekintse meg az [értékeléseket, a munkafolyamatokat és a feladatokat](./review-api.md) , amelyekből megtudhatja, hogyan állíthatja be az emberi felülvizsgálatokat.

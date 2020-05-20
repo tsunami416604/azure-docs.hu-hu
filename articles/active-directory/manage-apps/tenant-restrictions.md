@@ -15,12 +15,12 @@ ms.date: 03/28/2019
 ms.author: mimart
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ecd49b340810f92727f0fc98f84031c8cbf68179
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481177"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680136"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>A bérlői korlátozások használata a SaaS-Felhőbeli alkalmazásokhoz való hozzáférés kezelésére
 
@@ -30,7 +30,7 @@ A kihíváshoz tartozó Azure Active Directory (Azure AD) megoldás a bérlői k
 
 A bérlői korlátozásokkal a szervezetek meghatározhatják azon bérlők listáját, amelyekhez a felhasználók hozzáférhetnek. Az Azure AD ezt követően csak az engedélyezett bérlők számára biztosít hozzáférést.
 
-Ez a cikk az Office 365 bérlői korlátozásait ismerteti, de a szolgáltatásnak működnie kell minden olyan SaaS Cloud-alkalmazással, amely modern hitelesítési protokollokat használ az Azure AD-vel az egyszeri bejelentkezéshez. Ha SaaS-alkalmazásokat használ az Office 365 által használt bérlőtől eltérő Azure AD-Bérlővel, győződjön meg arról, hogy az összes szükséges bérlő engedélyezett. A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azure.microsoft.com/marketplace/active-directory/).
+Ez a cikk az Office 365 bérlői korlátozásait ismerteti, de a szolgáltatásnak működnie kell minden olyan SaaS Cloud-alkalmazással, amely modern hitelesítési protokollokat használ az Azure AD-vel az egyszeri bejelentkezéshez. Ha SaaS-alkalmazásokat használ az Office 365 által használt bérlőtől eltérő Azure AD-Bérlővel, győződjön meg arról, hogy az összes szükséges bérlő engedélyezett. A SaaS Cloud apps szolgáltatással kapcsolatos további információkért tekintse meg a [Active Directory piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory).
 
 ## <a name="how-it-works"></a>Működés
 
@@ -68,13 +68,13 @@ A következő konfiguráció szükséges a bérlői korlátozások a proxy-infra
 
 - Ez a funkció az Office 365-előfizetések részét képezi, de ha bérlői korlátozásokkal szeretné szabályozni a más SaaS-alkalmazásokhoz való hozzáférést, akkor prémium szintű Azure AD 1 licenc szükséges.
 
-#### <a name="configuration"></a>Configuration
+#### <a name="configuration"></a>Konfiguráció
 
 A login.microsoftonline.com, login.microsoft.com és login.windows.net minden bejövő kérelméhez helyezzen be két HTTP-fejlécet: *korlátozza a hozzáférés-bérlők* és a *hozzáférés-kontextus*korlátozását.
 
 A fejléceknek tartalmazniuk kell a következő elemeket:
 
-- A *hozzáférés és a bérlők korlátozásához*használja az \<engedélyezett bérlői lista\>értékét, amely a felhasználók számára elérhetővé tenni kívánt bérlők vesszővel tagolt listája. A Bérlővel regisztrált bármely tartomány felhasználható a bérlő azonosítására ezen a listán. Például a contoso és a fabrikam bérlők elérésének engedélyezéséhez a név/érték párok a következőképpen néznek ki: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- A *hozzáférés és a bérlők korlátozásához*használja az \< engedélyezett bérlői lista értékét \> , amely a felhasználók számára elérhetővé tenni kívánt bérlők vesszővel tagolt listája. A Bérlővel regisztrált bármely tartomány felhasználható a bérlő azonosítására ezen a listán. Például a contoso és a fabrikam bérlők elérésének engedélyezéséhez a név/érték párok a következőképpen néznek ki: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - A *korlátozás-hozzáférés-kontextushoz*használjon egy egyedi CÍMTÁR-azonosító értékét, amely deklarálja, hogy melyik bérlő állítja be a bérlői korlátozásokat. Ha például a contoso-t a bérlői korlátozási szabályzatot beállító bérlőként szeretné deklarálni, a név/érték párok a következőképpen néznek ki: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -155,7 +155,7 @@ A Hegedűs egy ingyenes webes hibakeresési proxy, amely a HTTP/HTTPS-forgalom r
 
    1. A Hegedűs webes hibakereső eszközében válassza a **szabályok** menüt, és válassza a **szabályok testreszabása...** lehetőséget. a CustomRules-fájl megnyitásához.
 
-   2. Adja hozzá a következő sorokat a `OnBeforeRequest` függvény elejéhez. Cserélje \<le a\> bérlői tartományt a Bérlővel regisztrált tartománnyal (például: `contoso.onmicrosoft.com`). Cserélje \<le a\> címtár-azonosítót a bérlő Azure ad GUID-azonosítójával.
+   2. Adja hozzá a következő sorokat a függvény elejéhez `OnBeforeRequest` . Cserélje le a \< bérlői tartományt a \> Bérlővel regisztrált tartománnyal (például: `contoso.onmicrosoft.com` ). Cserélje le \< a címtár-azonosítót \> a bérlő Azure ad GUID-azonosítójával.
 
       ```JScript.NET
       if (

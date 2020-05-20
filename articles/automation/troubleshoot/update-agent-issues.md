@@ -1,6 +1,6 @@
 ---
-title: A Windows Update Agent problémáinak elhárítása Azure Automation Update Management
-description: Útmutató a Windows Update agenttel kapcsolatos hibák elhárításához és megoldásához a Update Management megoldás használatával.
+title: A Windows Update agenttel kapcsolatos problémák elhárítása Azure Automation
+description: Ez a cikk azt ismerteti, hogyan lehet a Windows Update agenttel kapcsolatos hibákat elhárítani és megoldani a Update Management során.
 services: automation
 author: mgoedtel
 ms.author: magoedte
@@ -9,20 +9,20 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e9af9c6472f49ebccd36e8d73688636c98918ff1
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: ff996227e23836bf85cc3885d9184ae6d7d6c61d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996442"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680826"
 ---
 # <a name="troubleshoot-windows-update-agent-issues"></a>A Windows Update Agent problémáinak elhárítása
 
-Számos oka lehet annak, hogy a gép miért nem jelenik meg készenléti (kifogástalan) állapotban a Update Managementban. A probléma okának megállapításához a Windows Hybrid Runbook Worker Agent állapotát is megtekintheti. A következő három készültségi állapotú gép:
+Számos oka lehet annak, hogy a gép a Update Management üzembe helyezése során nem jelenik meg készként (kifogástalan). A probléma okának megállapításához a Windows Hybrid Runbook Worker Agent állapotát is megtekintheti. A következő három készültségi állapotú gép:
 
 * Készen áll: a hibrid Runbook-feldolgozó üzembe lett helyezve, és legalább egy órával ezelőtt volt látható.
 * Leválasztva: a hibrid Runbook Worker üzembe helyezése egy órával ezelőtt történt, és utoljára volt látható.
-* Nincs konfigurálva: a hibrid Runbook-feldolgozó nem található vagy nem fejeződött be.
+* Nincs konfigurálva: a hibrid Runbook Worker nem található, vagy nem fejeződött be a telepítés.
 
 > [!NOTE]
 > A Azure Portal megjelenítése és a gép aktuális állapota között enyhe késés adható meg.
@@ -34,7 +34,7 @@ Ez a cikk azt ismerteti, hogyan futtathatja az Azure-gépek hibakeresőjét a Az
 
 ## <a name="start-the-troubleshooter"></a>A hibakereső elindítása
 
-Az Azure-gépek esetében az ügynök frissítése lapon a portálon a **frissítés ügynök felkészültsége** oszlopban található **hibakeresés** hivatkozásra kattintva indíthatja el a frissítési ügynök hibakeresése lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépek hibáinak megoldásához tekintse meg az [Offline utasításokat](#troubleshoot-offline) .
+Az Azure-gépek esetében az ügynök frissítése lapon a portálon a **frissítés ügynök felkészültsége** oszlopban található **hibakeresés** hivatkozásra kattintva indíthatja el a frissítési ügynök hibakeresése lapot. A nem Azure-beli gépek esetében a hivatkozás a jelen cikkre mutat. A nem Azure-beli gépekkel kapcsolatos hibák megoldásához tekintse meg a [kapcsolat nélküli hibakeresést](#troubleshoot-offline) .
 
 ![A virtuális gépek Update Management listájának képernyőképe](../media/update-agent-issues/vm-list.png)
 
@@ -89,7 +89,7 @@ A proxy és a tűzfal konfigurációjának lehetővé kell tennie, hogy a hibrid
 
 ### <a name="monitoring-agent-service-status"></a>Figyelési ügynök szolgáltatásának állapota
 
-Ez az érték határozza meg, hogy a Windows-`healthservice`ügynök () fut-e a gépen a log Analytics. Ha többet szeretne megtudni a szolgáltatás hibaelhárításáról, tekintse meg [a log Analytics ügynök a Windows rendszerhez nem fut](hybrid-runbook-worker.md#mma-not-running).
+Ez az érték határozza meg, hogy a Windows-ügynök ( `healthservice` ) fut-e a gépen a log Analytics. Ha többet szeretne megtudni a szolgáltatás hibaelhárításáról, tekintse meg [a log Analytics ügynök a Windows rendszerhez nem fut](hybrid-runbook-worker.md#mma-not-running).
 
 A Windows Log Analytics ügynökének újratelepítéséhez tekintse meg [a Windows rendszerhez készült ügynök telepítése](../../azure-monitor/learn/quick-collect-windows-computer.md#install-the-agent-for-windows)című témakört.
 
@@ -110,7 +110,7 @@ A kriptográfiai mappa hozzáférés-ellenőrzését határozza meg, hogy a hely
 
 ## <a name="troubleshoot-offline"></a><a name="troubleshoot-offline"></a>Offline hibák
 
-A hibakeresést a hibrid Runbook-feldolgozón offline módon futtathatja a parancsfájl helyi futtatásával. Szerezze be a következő szkriptet a PowerShell-galéria: [hibakeresés – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). A parancsfájl futtatásához a WMF 4,0-es vagy újabb verziójára van szükség. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
+A hibakeresést a hibrid Runbook-feldolgozón offline módon, a parancsfájl helyi futtatásával használhatja. Szerezze be a következő szkriptet a PowerShell-galéria: [hibakeresés – WindowsUpdateAgentRegistration](https://www.powershellgallery.com/packages/Troubleshoot-WindowsUpdateAgentRegistration). A parancsfájl futtatásához a WMF 4,0-es vagy újabb verziójára van szükség. A PowerShell legújabb verziójának letöltéséhez lásd: a [PowerShell különböző verzióinak telepítése](https://docs.microsoft.com/powershell/scripting/install/installing-powershell).
 
 A szkript kimenete a következő példához hasonlóan néz ki:
 
@@ -208,4 +208,4 @@ CheckResultMessageArguments : {}
 
 ## <a name="next-steps"></a>További lépések
 
-[Hibrid Runbook-feldolgozók hibáinak megoldása](hybrid-runbook-worker.md)
+A [hibrid Runbook-feldolgozói problémák elhárítása](hybrid-runbook-worker.md).

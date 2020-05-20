@@ -1,6 +1,6 @@
 ---
 title: Ütemtervek kezelése Azure Automation
-description: Megtudhatja, hogyan hozhat létre és kezelhet egy ütemtervet a Azure Automationban, hogy automatikusan elindítson egy runbook egy adott időpontban vagy ismétlődő ütemterv szerint.
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre és dolgozhat ütemtervet Azure Automation.
 services: automation
 ms.service: automation
 ms.subservice: shared-capabilities
@@ -9,28 +9,28 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4cd6d4236b95a17f404df13e8b50daf989cf6072
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: c644333fd49c4e54a54d00e7fb033c6d4bdc158b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82652112"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83685334"
 ---
 # <a name="manage-schedules-in-azure-automation"></a>Ütemtervek kezelése Azure Automation
 
 Ahhoz, hogy egy runbook egy adott időpontban kezdődjön Azure Automation, egy vagy több ütemtervhez kell csatolni. Az ütemterv beállítható úgy, hogy egyszer vagy ismétlődően, óránként vagy napi szinten fusson a Azure Portal runbookok. Azt is megteheti, hogy hetente, havonta vagy a hónap adott napjain, vagy a hónap adott napján van-e beütemezhetve. Egy runbook több ütemezéssel is összekapcsolható, és egy ütemezéshez több runbook is kapcsolódhat.
 
 > [!NOTE]
-> Az ütemtervek jelenleg nem támogatják Azure Automation DSC-konfigurációkat.
+> Azure Automation támogatja a nyári időszámítást, és megfelelő módon ütemezhet az automatizálási műveletekhez.
 
->[!NOTE]
->A cikk frissítve lett az Azure PowerShell új Az moduljának használatával. Dönthet úgy is, hogy az AzureRM modult használja, amely továbbra is megkapja a hibajavításokat, legalább 2020 decemberéig. Ha többet is meg szeretne tudni az új Az modul és az AzureRM kompatibilitásáról, olvassa el [az Azure PowerShell új Az moduljának ismertetését](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
+> [!NOTE]
+> Az ütemtervek jelenleg nincsenek engedélyezve Azure Automation DSC-konfigurációkhoz.
 
 ## <a name="powershell-cmdlets-used-to-access-schedules"></a>Az ütemtervekhez való hozzáféréshez használt PowerShell-parancsmagok
 
 Az alábbi táblázatban található parancsmagok automatizálási ütemterveket hoznak létre és kezelhetnek a PowerShell használatával. Az az [modulok](modules.md#az-modules)részét képezik. 
 
-| Parancsmagok | Leírás |
+| Parancsmagok | Description |
 |:--- |:--- |
 | [Get-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Get-AzAutomationSchedule?view=azps-3.7.0) |Lekéri az ütemtervet. |
 | [Get-AzAutomationScheduledRunbook](https://docs.microsoft.com/powershell/module/az.automation/get-azautomationscheduledrunbook?view=azps-3.7.0) |Ütemezett runbookok beolvasása. |
@@ -164,7 +164,7 @@ Ha letilt egy ütemtervet, az ahhoz társított összes runbook már nem fut az 
 
 ### <a name="disable-a-schedule-with-powershell"></a>Ütemterv letiltása a PowerShell-lel
 
-A [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) parancsmag használatával módosíthatja a meglévő ütemtervek tulajdonságait. Az ütemterv letiltásához a paraméternél a `IsEnabled` FALSE értéket kell megadnia.
+A [set-AzAutomationSchedule](https://docs.microsoft.com/powershell/module/Az.Automation/Set-AzAutomationSchedule?view=azps-3.7.0) parancsmag használatával módosíthatja a meglévő ütemtervek tulajdonságait. Az ütemterv letiltásához a paraméternél a FALSE értéket kell megadnia `IsEnabled` .
 
 Az alábbi példa bemutatja, hogyan tilthatja le egy runbook ütemezett használatát egy Azure Resource Manager parancsmag használatával.
 
@@ -187,7 +187,7 @@ Ha készen áll az ütemtervek eltávolítására, használhatja a Azure Portal 
 
 ### <a name="remove-a-schedule-with-powershell"></a>Ütemterv eltávolítása a PowerShell-lel
 
-Meglévő ütemterv törléséhez `Remove-AzAutomationSchedule` használhatja a parancsmagot az alábbi ábrán látható módon. 
+`Remove-AzAutomationSchedule`Meglévő ütemterv törléséhez használhatja a parancsmagot az alábbi ábrán látható módon. 
 
 ```azurepowershell-interactive
 $automationAccountName = "MyAutomationAccount"

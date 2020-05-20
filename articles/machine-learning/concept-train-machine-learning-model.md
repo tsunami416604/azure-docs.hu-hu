@@ -8,13 +8,13 @@ author: Blackmist
 ms.author: larryfr
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/05/2020
-ms.openlocfilehash: 593ca5d63245ed664b5f63373d1d651129055544
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/13/2020
+ms.openlocfilehash: 99e2c878443b9a4256eec495429dbe57a88557d0
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592389"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683011"
 ---
 # <a name="train-models-with-azure-machine-learning"></a>Modellek betanítása Azure Machine Learning
 
@@ -22,7 +22,7 @@ A Azure Machine Learning számos lehetőséget kínál a modellek betanításár
 
 + [Pythonhoz készült Azure Machine learning SDK](#python-sdk): a Python SDK számos módszert kínál a különböző képességekkel rendelkező modellek betanításához.
 
-    | Betanítási módszer | Leírás |
+    | Betanítási módszer | Description |
     | ----- | ----- |
     | [Konfiguráció futtatása](#run-configuration) | A **modellek betanításának általános módja** egy képzési parancsfájl használata és a konfiguráció futtatása. A futtatási konfiguráció biztosítja a modell betanításához használt képzési környezet konfigurálásához szükséges információkat. Elvégezheti a futtatási konfigurációt, a betanítási szkriptet és a számítási célt (a képzési környezetet) és a betanítási feladatot. |
     | [Automatizált gépi tanulás](#automated-machine-learning) | Az automatizált gépi tanulás lehetővé teszi a **modellek széles körű adatelemzési és programozási ismeretek nélküli tanítását**. Az adatelemzési és-programozási hátterű felhasználók számára lehetővé teszi az idő és az erőforrások megtakarítását az algoritmus kiválasztásának és a hiperparaméter hangolásának automatizálásával. Az automatizált gépi tanulás használatakor nem kell aggódnia a futtatási konfiguráció definiálásával kapcsolatban. |
@@ -111,6 +111,18 @@ A Designer lehetővé teszi a modellek betanítását egy fogd és vidd felület
 + [Besorolás: forgalom előrejelzése, szolgáltatóváltást és értékesítés](how-to-designer-sample-classification-churn.md)
 + [Besorolás egyéni R-parancsfájllal: repülési késések előrejelzése](how-to-designer-sample-classification-flight-delay.md)
 + [Szöveg besorolása: wikipedia SP 500 adatkészlet](how-to-designer-sample-text-classification.md)
+
+## <a name="many-models-solution-accelerator"></a>Számos modell megoldás-gyorsító
+
+A [számos Modelles megoldás-gyorsító](https://aka.ms/many-models) (előzetes verzió) a Azure Machine Learningra épít, és lehetővé teszi több száz vagy akár több ezer gépi tanulási modell betanítását, üzemeltetését és felügyeletét.
+
+Például az __egyes példányok vagy egyedi__ modellek létrehozása a következő helyzetekben lehet jobb eredményekhez vezethet:
+
+* Az egyes tárolók értékesítésének előrejelzése
+* Prediktív karbantartás több száz olajos kutak esetében
+* Egyéni felhasználói élmény testreszabása.
+
+További információkért lásd a GitHubon a [különböző modellek megoldás-gyorsító](https://aka.ms/many-models) című témakört.
 
 ## <a name="cli"></a>parancssori felület
 

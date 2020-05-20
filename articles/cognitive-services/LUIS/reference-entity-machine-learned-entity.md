@@ -1,7 +1,7 @@
 ---
-title: Gépi megtanult entitás típusa – LUIS
+title: Gépi tanulási entitás típusa – LUIS
 titleSuffix: Azure Cognitive Services
-description: A géppel megtanult entitás a LUIS-alkalmazások létrehozásának előnyben részesített entitása.
+description: A gépi tanulási entitás az előnyben részesített entitás a LUIS-alkalmazások létrehozásához.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 04/30/2020
 ms.author: diberry
-ms.openlocfilehash: 5f663379939f24d16fb63e8e5b002fe088a2d9f8
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ddaf5c921f92aeaefd8a8b0cb13602bc70a4dd5d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585589"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684574"
 ---
-# <a name="machine-learned-entity"></a>Gépi tanulással létrejött entitás
+# <a name="machine-learning-entity"></a>Gépi tanulási entitás
 
-A géppel megtanult entitás a LUIS-alkalmazások létrehozásának előnyben részesített entitása.
+A gépi tanulási entitás az előnyben részesített entitás a LUIS-alkalmazások létrehozásához.
 
 
 ## <a name="example-json"></a>Példa JSON-ra
@@ -38,7 +38,7 @@ Példák kimondott szövegekre:
 
 #### <a name="v3-prediction-endpoint-response"></a>[V3 előrejelzési végpont válasza](#tab/V3)
 
-Mivel a géppel megtanult entitások számos alentitással rendelkezhetnek a szükséges funkciókkal, ez csak egy példa. Tekintse át az entitás által visszaadott útmutatót.
+Mivel a gépi tanulási entitások számos alentitást tartalmazhatnak a szükséges funkciókkal, ez csak egy példa. Tekintse át az entitás által visszaadott útmutatót.
 
 Vegye figyelembe a lekérdezést:
 
@@ -348,6 +348,6 @@ Ez az entitás nem érhető el a v2 előrejelzési futtatókörnyezetben.
 
 ## <a name="next-steps"></a>További lépések
 
-További információ a géppel megtanult entitásról, beleértve az [oktatóanyagot](tutorial-machine-learned-entity.md), [fogalmakat](luis-concept-entity-types.md#design-entities-for-decomposition)és [útmutatókat](luis-how-to-add-entities.md#create-a-machine-learned-entity).
+További információ a gépi tanulással foglalkozó entitásról, beleértve az [oktatóanyagot](tutorial-machine-learned-entity.md), [fogalmakat](luis-concept-entity-types.md#design-entities-for-decomposition)és [útmutatókat](luis-how-to-add-entities.md#create-a-machine-learned-entity).
 
 Ismerje meg a [List](reference-entity-list.md) entitást és a [reguláris kifejezés](reference-entity-regular-expression.md) entitást.

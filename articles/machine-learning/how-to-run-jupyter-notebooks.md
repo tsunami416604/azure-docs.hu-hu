@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/21/2020
-ms.openlocfilehash: 67da2cb31d59838bb3ad2b964530d85d8be9be4c
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 96e37afd8bf7d59eef4a4c0c831f535faa36d34d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783655"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681440"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace"></a>Jupyter-jegyzetfüzetek futtatása a munkaterületen
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Ismerje meg, hogyan teheti meg:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree) .
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://aka.ms/AMLFree).
 * Machine Learning munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).
 
 ## <a name="create-notebooks"></a><a name="create"></a>Jegyzetfüzetek létrehozása
@@ -62,7 +62,7 @@ A munkaterület tartalmaz egy jegyzetfüzeteket tartalmazó **minta** mappát, a
 
 Példaként tekintse [meg az első ml-kísérlet létrehozását ismertető oktatóanyagot](tutorial-1st-experiment-sdk-setup.md#azure).
 
-### <a name="a-nameterminal-use-files-from-git-and-version-my-files"></a><a name="terminal">Fájlok használata a git és a saját fájlok verziójában
+### <a name="use-files-from-git-and-version-my-files"></a><a name="terminal"></a>Fájlok használata a git és a saját fájlok verziójában
 
 Az összes git-műveletet egy terminál-ablak használatával érheti el. A rendszer az összes git-fájlt és-mappát a munkaterület fájlrendszerében fogja tárolni.
 
@@ -101,7 +101,7 @@ A Jupyter vagy a JupyterLab a jegyzetfüzet eszköztáráról is elindíthatja. 
 
 ### <a name="useful-keyboard-shortcuts"></a>Hasznos billentyűparancsok
 
-|Billentyűzet  |Műveletek  |
+|Billentyűzet  |Művelet  |
 |---------|---------|
 |SHIFT + ENTER     |  Cella futtatása       |
 |CTRL + M (Windows)     |  A lapfülek alátöltésének engedélyezése/letiltása a jegyzetfüzetben.       |
@@ -123,7 +123,7 @@ A következő módokon *törölheti* a **felhasználói fájlok** jegyzetfüzete
 
 Egy kísérlet jegyzetfüzetből való futtatásához először egy futó [számítási példányhoz](concept-compute-instance.md)kell csatlakoznia. Ha nem rendelkezik számítási példánnyal, az alábbi lépésekkel hozhat létre egyet: 
 
-1. Válassza **+** ki a jegyzetfüzet eszköztárát. 
+1. Válassza ki **+** a jegyzetfüzet eszköztárát. 
 2. Nevezze el a számítást, és válassza ki a **virtuális gép méretét**. 
 3. Kattintson a **Létrehozás** gombra.
 4. A számítási példány automatikusan csatlakozik a jegyzetfüzethez, és most már futtathatja a cellákat.
@@ -140,14 +140,14 @@ A notebook eszköztár lehetővé teszi, hogy megváltoztassa a környezetet, am
 
 Ezek a műveletek nem változtatják meg a jegyzetfüzet állapotát vagy a jegyzetfüzetben lévő változók értékeit:
 
-|Műveletek  |Eredmény  |
+|Művelet  |Eredmény  |
 |---------|---------| --------|
 |A kernel leállítása     |  Leállítja a futó cellákat. A cella futtatása automatikusan újraindítja a rendszermagot. |
 |Navigáljon egy másik munkaterület szakaszhoz     |     A futó cellák le vannak állítva. |
 
 Ezek a műveletek alaphelyzetbe állítják a jegyzetfüzet állapotát, és a jegyzetfüzetben lévő összes változót visszaállítják.
 
-|Műveletek  |Eredmény  |
+|Művelet  |Eredmény  |
 |---------|---------| --------|
 | A kernel módosítása | A jegyzetfüzet új kernelt használ |
 | Számítás váltása    |     A jegyzetfüzet automatikusan az új számítást használja. |
@@ -161,7 +161,7 @@ A jegyzetfüzet automatikusan megkeresi a csatlakoztatott számítási példány
 
 1. A jegyzetfüzet eszköztárán válassza a [**terminál megnyitása**](#terminal) lehetőséget.
 1. Hozzon létre egy új környezetet a terminálablak használatával.
-1. Aktiválja a környezetet.  Például a létrehozása `newenv`után:
+1. Aktiválja a környezetet.  Például a létrehozása után `newenv` :
 
     ```shell
     source activate newenv
@@ -174,7 +174,7 @@ A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wi
 
 A **számítási** legördülő lista melletti kijelző megjeleníti az állapotát.  Az állapot a legördülő menüben is látható.  
 
-|Color |Számítási állapot |
+|Szín |Számítási állapot |
 |---------|---------| 
 | Zöld | A számítás fut |
 | Vörös |A számítás nem sikerült | 
@@ -184,7 +184,7 @@ A **számítási** legördülő lista melletti kijelző megjeleníti az állapot
 
 A **kernel** legördülő lista melletti kijelző megjeleníti az állapotát.
 
-|Color |Kernel állapota |
+|Szín |Kernel állapota |
 |---------|---------|
 |  Zöld |Kernel csatlakoztatva, tétlen, foglalt|
 |  Szürke |A kernel nincs csatlakoztatva |

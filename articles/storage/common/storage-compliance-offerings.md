@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2018
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: 1ad41b0b7391236a15b7c1be7d42ed81aaf5b51a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f711d0dbc2df2a5ab102b520fb0d166a459383c1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "61483434"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83684449"
 ---
 # <a name="azure-storage-compliance-offerings"></a>Azure Storage-megfelelőségi ajánlatok
 
@@ -37,7 +37,7 @@ A megfelelőségi ajánlatokat alább találja az Azure Storage-ban, hogy a szol
 ## <a name="us-government"></a>Egyesült Államok – Államigazgatás
 
 * [DoD DISA L2, L4, L5](https://www.microsoft.com/trustcenter/compliance/disa)
-* [DoE 10 CFR rész 810](https://aka.ms/AzureCompliance)
+* [DoE 10 CFR Part 810](https://aka.ms/AzureCompliance)
 * [EAR (az USA export-felügyeleti szabályai)](https://aka.ms/AzureCompliance)
 * [FDA CFR-cím 21. rész](https://aka.ms/AzureCompliance)
 * [FedRAMP](https://www.microsoft.com/trustcenter/compliance/fedramp)
@@ -51,8 +51,8 @@ A megfelelőségi ajánlatokat alább találja az Azure Storage-ban, hogy a szol
 * [23 NYCRR rész 500](https://www.microsoft.com/trustcenter/compliance/NYCRR)
 * [APRA (Ausztrália)](https://aka.ms/AzureCompliance)
 * [CDSA](https://www.microsoft.com/trustcenter/compliance/cdsa)
-* [DPP (EGYESÜLT KIRÁLYSÁG)](https://aka.ms/AzureCompliance)
-* [TÉNY (EGYESÜLT KIRÁLYSÁG)](https://www.microsoft.com/trustcenter/compliance/fact)
+* [DPP (Egyesült Királyság)](https://aka.ms/AzureCompliance)
+* [FACT (Egyesült Királyság)](https://www.microsoft.com/trustcenter/compliance/fact)
 * [FCA (EGYESÜLT KIRÁLYSÁG)](https://aka.ms/AzureCompliance)
 * [FFIEC](https://www.microsoft.com/trustcenter/compliance/FFIEC)
 * [FISC (Japán)](https://www.microsoft.com/trustcenter/compliance/fisc)
@@ -62,11 +62,10 @@ A megfelelőségi ajánlatokat alább találja az Azure Storage-ban, hogy a szol
 * [HITRUST](https://www.microsoft.com/trustcenter/Compliance/HITRUST)
 * [MARS – E](https://www.microsoft.com/trustcenter/compliance/mars-e)
 * [MAS + ABS (Szingapúr)](https://aka.ms/AzureCompliance)
-* [Maa](https://www.microsoft.com/trustcenter/compliance/mpaa)
+* [MPAA](https://www.microsoft.com/trustcenter/compliance/mpaa)
 * [NEN-7510 (Hollandia)](https://www.microsoft.com/trustcenter/compliance/nen-7510)
-* [NHS IG Toolkit (Egyesült Királyság)](https://www.microsoft.com/trustcenter/Compliance/NHS)
 * [PCI DSS](https://www.microsoft.com/trustcenter/compliance/pci)
-* [Megosztott értékelések](https://aka.ms/AzureCompliance)
+* [Shared Assessments](https://aka.ms/AzureCompliance)
 * [SOX](https://www.microsoft.com/trustcenter/compliance/SOX)
 
 ## <a name="regional"></a>Regionális
@@ -79,15 +78,15 @@ A megfelelőségi ajánlatokat alább találja az Azure Storage-ban, hogy a szol
 * [ENISA IAF (EU)](https://aka.ms/AzureCompliance)
 * [ENS (Spanyolország)](https://www.microsoft.com/trustcenter/compliance/spainens)
 * [EU-modell-záradékok](https://www.microsoft.com/trustcenter/compliance/eu-model-clauses)
-* [EU–USA Privacy Shield](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
+* [EU – U. S. Privacy Shield](https://privacy.microsoft.com/en-US/microsoft-eu-us-privacy-shield)
 * [GB 18030 (Kína)](https://www.trustcenter.cn/compliance/default.html#GB18030)
 * [GDPR (EU)](https://www.microsoft.com/trustcenter/privacy/gdpr)
 * [IT Grundschutz munkafüzet (Németország)](https://www.microsoft.com/TrustCenter/Compliance/IT-Grundschutz)
 * [LOPD (Spanyolország)](https://aka.ms/AzureCompliance)
 * [MTCS (Szingapúr)](https://www.microsoft.com/trustcenter/compliance/mtcs)
-* [Saját szám (Japán)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
+* [My Number (Japán)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#my_number)
 * [NZ CC Framework (Új-Zéland)](https://www.microsoft.com/trustcenter/compliance/nzcc)
-* [PASF (EGYESÜLT KIRÁLYSÁG)](https://aka.ms/AzureCompliance)
+* [PASF (Egyesült Királyság)](https://aka.ms/AzureCompliance)
 * [PDPA (Argentína)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#argentina)
 * [VEZETÉKES (Kanada)](https://www.microsoft.com/trustcenter/privacy/we-set-and-adhere-to-stringent-standards#canadian_privacy_laws)
 * [TRUCS (Kína)](https://www.trustcenter.cn/compliance/default.html#TCS)

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7dfc7b680c6b7d6b2a3641b25c0f82665143bde1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597421"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681238"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Az Azure SQL Edge üzembe helyezése (előzetes verzió) 
 
@@ -119,4 +119,4 @@ Ebben a rövid útmutatóban egy SQL Edge-modult telepített egy IoT Edge eszkö
 ## <a name="next-steps"></a>Következő lépések
 
 - [Machine learning és mesterséges intelligencia a ONNX az SQL Edge-ben](onnx-overview.md).
-- Végpontok közötti IoT-megoldás létrehozása az SQL Edge használatával IoT Edge segítségével.
+- [Végpontok közötti IoT-megoldás létrehozása az SQL Edge használatával IoT Edge segítségével](tutorial-deploy-azure-resources.md).

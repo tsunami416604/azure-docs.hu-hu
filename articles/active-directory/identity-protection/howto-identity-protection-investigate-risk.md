@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5191f05752c177aa29d121abe9d1aa29fde265a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23105a78e2ba34cf6a45f749ebfdd6b034ebf0dc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253480"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680158"
 ---
 # <a name="how-to-investigate-risk"></a>Útmutató: a kockázat vizsgálata
 
@@ -26,7 +26,7 @@ Mindhárom jelentés lehetővé teszi az események letöltését a alkalmazásb
 
 A szervezetek kihasználhatják a Microsoft Graph API-integrációját, hogy más forrásokkal összesítsék az adatokat, és ez a szervezet számára is elérhető.
 
-A három jelentés a **Azure Portal** > **Azure Active Directory** > **biztonsági**szolgáltatásban található.
+A három jelentés a **Azure Portal**  >  **Azure Active Directory**  >  **biztonsági**szolgáltatásban található.
 
 ## <a name="navigating-the-reports"></a>Navigálás a jelentésekben
 
@@ -74,6 +74,9 @@ A rendszergazdák ezután dönthetnek úgy, hogy műveleteket hajtanak végre ez
 
 - Bejelentkezési kompromisszum megerősítése
 - Biztonságos bejelentkezés megerősítése
+
+> [!NOTE] 
+> Az Identity Protection kiértékeli az összes hitelesítési folyamat kockázatát, függetlenül attól, hogy az interaktív vagy nem interaktív. A bejelentkezési jelentés azonban csak az interaktív bejelentkezéseket jeleníti meg. Előfordulhat, hogy a nem interaktív bejelentkezésekhez tartozó kockázatos bejelentkezések jelennek meg, de a bejelentkezés nem jelenik meg az Azure AD bejelentkezési jelentéseiben.
 
 ## <a name="risk-detections"></a>Kockázatészlelések
 

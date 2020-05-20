@@ -2,13 +2,13 @@
 title: Erőforrások zárolása a módosítások megakadályozása érdekében
 description: Megakadályozhatja, hogy a felhasználók a kritikus Azure-erőforrások frissítését vagy törlését az összes felhasználó és szerepkör zárolásának alkalmazásával.
 ms.topic: conceptual
-ms.date: 02/07/2020
-ms.openlocfilehash: 70fb189adb634b7ac24afe7cc8b94738117da5ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/19/2020
+ms.openlocfilehash: 6bd595e3c676c8521470a1f5a00fe782e83dc840
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274007"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683739"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
@@ -25,17 +25,23 @@ A felügyeleti zárolás a szerepköralapú hozzáférés-vezérléssel szemben 
 
 A Resource Manager zárolásai csak a felügyeleti síkon történő műveletekre érvényesek, ezek pedig a `https://management.azure.com` címre küldött műveletek. A zárolások nem korlátozzák, hogy az erőforrások hogyan végzik saját funkcióikat. Az erőforrás változásai korlátozva vannak, de az erőforrás működése nincs korlátozva. Egy SQL Database írásvédett zárolása például megakadályozza az adatbázis törlését vagy módosítását. Nem akadályozza meg azonban az adatok létrehozását, frissítését és törlését az adatbázison belül. Az adattranzakciók engedélyezve vannak, mert ezek a műveletek nem lesznek elküldve a `https://management.azure.com` webhelyre.
 
-A **readonly** utasítás alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. Az **írásvédett** zárolás az erőforrásra vagy az erőforrást tartalmazó erőforráscsoporthoz is alkalmazható. Az **írásvédett** zárolás által blokkolt műveletekkel kapcsolatos gyakori példák a következők:
+## <a name="considerations-before-applying-locks"></a>Szempontok a zárolások alkalmazása előtt
 
-* A Storage-fiók **írásvédett** zárolása megakadályozza, hogy minden felhasználó a kulcsokat listázza. A kulcsok listázásának művelete POST kérelmen keresztül történik, mert a visszaadott kulcsok írási műveletekkel elérhetők.
+A zárolások alkalmazása váratlan eredményekhez vezethet, mert egyes olyan műveletek, amelyek látszólag nem módosítják az erőforrást, ténylegesen megkövetelik a zárolás által letiltott műveleteket. Néhány gyakori példa a zárolások által blokkolt műveletekre:
 
-* Egy App Service erőforrás **írásvédett** zárolása megakadályozza, hogy a Visual Studio Server Explorer megjelenítse az erőforrás fájljait, mert az interakció írási hozzáférést igényel.
+* A **Storage-fiók** írásvédett zárolása megakadályozza, hogy minden felhasználó hozzáférjen a kulcsokhoz. A kulcsok listázásának művelete POST kérelmen keresztül történik, mert a visszaadott kulcsok írási műveletekkel elérhetők.
 
-* Egy olyan erőforráscsoport **írásvédett** zárolása, amely egy virtuális gépet tartalmaz, megakadályozza, hogy minden felhasználó elindítsa vagy újraindítsa a virtuális gépet. Ezeknek a műveleteknek POST kérelemre van szükségük.
+* Egy **app Service** erőforrás írásvédett zárolása megakadályozza, hogy a Visual Studio Server Explorer megjelenítse az erőforráshoz tartozó fájlokat, mert az interakcióhoz írási hozzáférés szükséges.
+
+* Egy olyan **erőforráscsoport** írásvédett zárolása, amely egy **virtuális gépet** tartalmaz, megakadályozza, hogy minden felhasználó elindítsa vagy újraindítsa a virtuális gépet. Ezeknek a műveleteknek POST kérelemre van szükségük.
+
+* Az **előfizetés** írásvédett zárolása megakadályozza, hogy a **Azure Advisor** megfelelően működjön. Az Advisor nem tudja tárolni a lekérdezések eredményét.
+
+* A **Azure Backup szolgáltatás** által létrehozott **erőforráscsoport** nem törölhető zárolása miatt a biztonsági mentések sikertelenek lesznek. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. Zárolt állapotban a Backup szolgáltatás nem tudja törölni a visszaállítási pontokat. További információk: [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](../../backup/backup-azure-vm-backup-faq.md).
 
 ## <a name="who-can-create-or-delete-locks"></a>Kik hozhatnak létre vagy törölhetnek zárolásokat
 
-Felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/*` vagy `Microsoft.Authorization/locks/*` a műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
+Felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/*` vagy a `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
 ## <a name="managed-applications-and-locks"></a>Felügyelt alkalmazások és zárolások
 
@@ -56,10 +62,6 @@ Figyelje meg, hogy a szolgáltatás tartalmaz egy hivatkozást egy **felügyelt 
 A szolgáltatás összes elemének törléséhez, beleértve a zárolt infrastruktúra erőforráscsoportot is, válassza a **Törlés** lehetőséget a szolgáltatáshoz.
 
 ![Szolgáltatás törlése](./media/lock-resources/delete-service.png)
-
-## <a name="azure-backups-and-locks"></a>Azure-beli biztonsági másolatok és zárolások
-
-Ha zárolja Azure Backup szolgáltatás által létrehozott erőforráscsoportot, a biztonsági mentések sikertelenek lesznek. A szolgáltatás legfeljebb 18 visszaállítási pontot támogat. **CanNotDelete** zárolás esetén a Backup szolgáltatás nem tudja törölni a visszaállítási pontokat. További információk: [Gyakori kérdések – Azure-beli virtuális gépek biztonsági mentése](../../backup/backup-azure-vm-backup-faq.md).
 
 ## <a name="portal"></a>Portál
 
