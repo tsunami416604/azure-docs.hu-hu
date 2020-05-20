@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: 887f15deed74330cf132e0574d166c074d2c7cad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9becb574594672c1cf91e610b4c13f91c91aa14f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685713"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659517"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -50,6 +50,16 @@ Kapcsolat létesítése a következő lehetőségek egyikének használatával:
 #### <a name="allow-the-azure-datacenter-ip-ranges"></a>Az Azure-adatközpont IP-tartományának engedélyezése
 
 Ez a beállítás engedélyezi a letöltött fájl [IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653) . Hálózati biztonsági csoport (NSG) eléréséhez használja a set-AzureNetworkSecurityRule parancsmagot. Ha a biztonságos címzettek listája csak a régióra jellemző IP-címeket tartalmazza, akkor a hitelesítés engedélyezéséhez is frissítenie kell a biztonságos címzettek listáját a Azure Active Directory (Azure AD) szolgáltatás címkével.
+
+Azt is megteheti, hogy a következő teljes tartománynevek elérését is lehetővé teszi a szükséges kapcsolatok létrehozásához:
+
+* `*.<datacentercode>.backup.windowsazure.com`<br>
+(Lásd az adatközpont-kódokat [itt](https://download.microsoft.com/download/1/2/6/126a410b-0e06-45ed-b2df-84f353034fa1/AzureRegionCodesList.docx))
+
+* `login.windows.net`
+* `*.blob.core.windows.net`
+* `*.queue.core.windows.net`
+
 
 #### <a name="allow-access-using-nsg-tags"></a>Hozzáférés engedélyezése NSG-címkék használatával
 
@@ -119,7 +129,7 @@ Az alias nem támogatott karakterekhez érhető el, de a rendszer elkerüli a ha
 
 [!INCLUDE [How to create a Recovery Services vault](../../includes/backup-create-rs-vault.md)]
 
-## <a name="discover-sql-server-databases"></a>SQL Server adatbázisok felderítése
+## <a name="discover-sql-server-databases"></a>SQL Server-adatbázisok
 
 Virtuális gépen futó adatbázisok felderítése:
 
@@ -135,7 +145,7 @@ Virtuális gépen futó adatbázisok felderítése:
 
     ![SQL Server kiválasztása az Azure-beli virtuális gépen a biztonsági mentéshez](./media/backup-azure-sql-database/choose-sql-database-backup-goal.png)
 
-5. A **biztonsági mentési cél** > a**virtuális gépek**területen lévő adatbázisok felderítése területen válassza a **felderítés indítása** lehetőséget, ha nem védett virtuális gépeket szeretne keresni az előfizetésben. A keresés eltarthat egy ideig, az előfizetésben nem védett virtuális gépek számától függően.
+5. A **biztonsági mentési cél**a  >  **virtuális gépek**területen lévő adatbázisok felderítése területen válassza a **felderítés indítása** lehetőséget, ha nem védett virtuális gépeket szeretne keresni az előfizetésben. A keresés eltarthat egy ideig, az előfizetésben nem védett virtuális gépek számától függően.
 
    * A nem védett virtuális gépeknek a felderítés után meg kell jelennie a listában a név és az erőforráscsoport alapján.
    * Ha egy virtuális gép nem szerepel a várt módon, tekintse meg, hogy már van-e biztonsági másolat egy tárolóban.
@@ -162,7 +172,7 @@ Virtuális gépen futó adatbázisok felderítése:
 
 ## <a name="configure-backup"></a>Biztonsági mentés konfigurálása  
 
-1. A **biztonsági mentés célja** > **2. lépés: a biztonsági mentés konfigurálása**lapon válassza a **biztonsági mentés konfigurálása**elemet.
+1. A **biztonsági mentés célja**  >  **2. lépés: a biztonsági mentés konfigurálása**lapon válassza a **biztonsági mentés konfigurálása**elemet.
 
    ![Válassza a biztonsági mentés konfigurálása lehetőséget.](./media/backup-azure-sql-database/backup-goal-configure-backup.png)
 
@@ -214,7 +224,7 @@ A biztonsági mentési szabályzat meghatározza, hogy mikor készüljön bizton
 
 Biztonsági mentési szabályzat létrehozásához:
 
-1. A tárolóban válassza a **biztonsági mentési szabályzatok** > **Hozzáadás**lehetőséget.
+1. A tárolóban válassza a **biztonsági mentési szabályzatok**  >  **Hozzáadás**lehetőséget.
 2. A **Hozzáadás**területen válassza a SQL Server lehetőséget az **Azure-beli virtuális gépen** a szabályzat típusának meghatározásához.
 
    ![Válassza ki az új biztonsági mentési szabályzathoz tartozó szabályzat típusát](./media/backup-azure-sql-database/policy-type-details.png)
@@ -242,8 +252,8 @@ Biztonsági mentési szabályzat létrehozásához:
 6. A **teljes biztonsági mentési szabályzat** menüben kattintson az **OK** gombra a beállítások elfogadásához.
 7. A különbözeti biztonsági mentési szabályzat hozzáadásához válassza a **különbözeti biztonsági mentés**lehetőséget.
 
-   ![A megőrzési időtartam](./media/backup-azure-sql-database/retention-range-interval.png)
-   ![beállításai között nyissa meg a különbözeti biztonsági mentési házirend menüt](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
+   ![A megőrzési időtartam beállításai között ](./media/backup-azure-sql-database/retention-range-interval.png)
+    ![ nyissa meg a különbözeti biztonsági mentési házirend menüt](./media/backup-azure-sql-database/backup-policy-menu-choices.png)
 
 8. A **különbözeti biztonsági mentési házirendben**válassza az **Engedélyezés** lehetőséget a gyakoriság és a megőrzési vezérlők megnyitásához.
 

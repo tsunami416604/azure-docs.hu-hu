@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 6520f106011b632da2725f456aeb278c7748ddc9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 01514847dcd38842d70c4caef2e38df9df3f620a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79459310"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652077"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -82,6 +82,13 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | Helytelenül vannak megadva a háttérbeli paraméterek az Azure Backup szolgáltatáshoz |
 | **Javasolt művelet** | Ellenőrizze, hogy a következő (backint) paraméterek be vannak-e állítva:<br/>\*[catalog_backup_using_backint: true]<br/>\*[enable_accumulated_catalog_backup: FALSE]<br/>\*[parallel_data_backup_backint_channels: 1]<br/>\*[log_backup_timeout_s: 900)]<br/>\*[backint_response_timeout: 7200]<br/>Ha backint paraméterek találhatók a GAZDAGÉPen, távolítsa el őket. Ha a paraméterek nem találhatók meg a GAZDAGÉP szintjén, de az adatbázis szintjén manuálisan lettek módosítva, állítsa azokat a megfelelő értékekre a korábban leírtak szerint. Vagy futtassa a [védelem leállítása és a biztonsági mentési adatok megőrzése](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#stop-protection-for-an-sap-hana-database) a Azure Portal, majd válassza a **biztonsági mentés folytatása**lehetőséget. |
+
+### <a name="usererrorincompatiblesrctargetsystemsforrestore"></a>UserErrorIncompatibleSrcTargetSystemsForRestore
+
+|Hibaüzenet  |A visszaállításhoz használt forrás-és célhelyek nem kompatibilisek  |
+|---------|---------|
+|Lehetséges okok   | A visszaállításra kijelölt forrás-és célként használt rendszerek nem kompatibilisek        |
+|Javasolt művelet   |   Győződjön meg arról, hogy a visszaállítási forgatókönyv nem szerepel a lehetséges inkompatibilis visszatárolások következő listáján: <br><br>   **1. eset:** A SYSTEMDB nem nevezhető át a visszaállítás során.  <br><br> **2. eset:** Forrás-SDC és cél-MDC: a forrásadatbázis nem állítható vissza SYSTEMDB vagy bérlői adatbázisként a célhelyen. <br><br> **3. eset:** Forrás-MDC és cél-SDC: a forrásadatbázis (SYSTEMDB vagy bérlői adatbázis) nem állítható vissza a célhelyre. <br><br>  További információkért tekintse meg az [SAP support kezdőpanel](https://launchpad.support.sap.com)1642148-es megjegyzését. |
 
 ## <a name="restore-checks"></a>Visszaállítási ellenőrzések
 

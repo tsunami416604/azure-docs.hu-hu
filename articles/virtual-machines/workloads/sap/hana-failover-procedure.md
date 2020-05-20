@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 04/22/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f3b37a6336c578ed25d8ab9553bc1ea9c79872f
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6454903a7c37da30e317e29c126109b39b14efbc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117207"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660580"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>Vészhelyreállítási feladatátvételi eljárás
 
@@ -39,7 +39,7 @@ A legújabb replikált tárolási Pillanatképek visszaállításához kövesse 
 Ha több SAP HANA példány feladatátvételét szeretné végrehajtani, futtassa többször a azure_hana_dr_failover parancsot. Ha szükséges, adja meg a feladatátvételhez és visszaállításhoz használni kívánt SAP HANA SID-t. 
 
 
-A DR feladatátvételt is tesztelheti a tényleges replikációs kapcsolat befolyásolása nélkül. A feladatátvételi teszt végrehajtásához kövesse az Azure-beli [SAP HANA Microsoft Snapshot-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)"teszt elvégzése azure_hana_test_dr_failover" című szakaszának lépéseit. 
+A DR feladatátvételt is tesztelheti a tényleges replikációs kapcsolat befolyásolása nélkül. A feladatátvételi teszt végrehajtásához kövesse az Azure-beli [SAP HANA Microsoft Snapshot-eszközök](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)"teszt elvégzése azure_hana_test_dr_failover" című szakaszának lépéseit. 
 
 >[!IMPORTANT]
 >Ne *futtasson* üzemi tranzakciókat a Dr-helyen a **feladatátvétel tesztelésének**folyamatán keresztül létrehozott példányon. A parancs azure_hana_test_dr_failover olyan kötetek készletét hozza létre, amelyek nem rendelkeznek kapcsolattal az elsődleges hellyel. Ennek eredményeképpen az elsődleges helyhez való szinkronizálás *nem* lehetséges. 
@@ -117,7 +117,7 @@ Kövesse az alábbi lépéseket:
 
 A tárolási replikálási folyamat állapotának figyeléséhez futtassa a parancsfájlt `azure_hana_replication_status` . Ezt a parancsot a vész-helyreállítási helyen futó egységből kell futtatni, hogy az a várt módon működjön. A parancs működése függetlenül attól, hogy aktív-e a replikáció. A parancs a bérlő minden HANA nagyméretű példánya esetében futtatható a vész-helyreállítási helyen. Nem használható a rendszerindító kötet részleteinek beszerzéséhez. 
 
-A paranccsal és a kimenetével kapcsolatos további információkért tekintse meg a "DR replikáció állapotának beolvasása – azure_hana_replication_status" című részt a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.2/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.2.1.pdf)-ban.
+A paranccsal és a kimenetével kapcsolatos további információkért tekintse meg a "DR replikáció állapotának beolvasása – azure_hana_replication_status" című részt a [Microsoft Snapshot Tools for SAP HANA on Azure](https://github.com/Azure/hana-large-instances-self-service-scripts/blob/master/snapshot_tools_v4.3/Microsoft%20Snapshot%20Tools%20for%20SAP%20HANA%20on%20Azure%20v4.3.pdf)-ban.
 
 
 ## <a name="next-steps"></a>További lépések

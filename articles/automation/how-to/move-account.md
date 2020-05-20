@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bfb2f2d1d0f6a0d11784847344cd3dbcafdb0959
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 5ba3ff2cc98e505486de9cf2337fe19024f97c62
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900997"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680457"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation-fiók áthelyezése másik előfizetésre
 
@@ -22,29 +22,26 @@ Azure Automation lehetővé teszi egyes erőforrások áthelyezését egy új er
 
 Az Automation-fiók az egyik áthelyezhető erőforrás. Ebből a cikkből megtudhatja, hogyan helyezheti át az Automation-fiókokat egy másik erőforrásba vagy előfizetésbe. Az Automation-fiók áthelyezésének magas szintű lépései a következők:
 
-1. Távolítsa el a megoldásait.
+1. Tiltsa le a szolgáltatásait.
 2. Munkaterület leválasztása.
 3. Helyezze át az Automation-fiókot.
 4. Törölje, majd hozza létre újra a futtató fiókokat.
-5. Engedélyezze újra a megoldásokat.
+5. Engedélyezze újra a szolgáltatásokat.
 
->[!NOTE]
->Ebben a cikkben a Azure PowerShell az Module paranccsal dolgozhat. Továbbra is használhatja a AzureRM modult. Az az modul és a AzureRM kompatibilitásával kapcsolatos további információkért lásd: [az új Azure PowerShell bemutatása az Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-3.5.0). Az az modul telepítési útmutatója a hibrid Runbook-feldolgozón: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.5.0). Az Automation-fiók esetében a modulokat a legújabb verzióra frissítheti a [Azure Automation Azure PowerShell moduljainak frissítésével](../automation-update-azure-modules.md).
+## <a name="disable-features"></a>Szolgáltatások letiltása
 
-## <a name="remove-solutions"></a>Megoldások eltávolítása
-
-A munkaterület Automation-fiókból való leválasztásához el kell távolítania ezeket a megoldásokat a munkaterületről:
+A munkaterület Automation-fiókból való leválasztásához le kell tiltania a funkció erőforrásait a munkaterületen:
 
 - Change Tracking és Inventory
 - Frissítéskezelés
 - Virtuális gépek indítása és leállítása munkaidőn kívül
 
 1. Keresse meg az erőforráscsoportot az Azure Portalon.
-2. Keresse meg az egyes megoldásokat, majd válassza a **Törlés** lehetőséget az **erőforrások törlése** lapon.
+2. Keresse meg az egyes szolgáltatások elemet, majd válassza a **Törlés** lehetőséget az erőforrások törlése lapon.
 
-    ![Képernyőkép a megoldások törléséről a Azure Portal](../media/move-account/delete-solutions.png)
+    ![Képernyőfelvétel a szolgáltatás erőforrásainak törléséről a Azure Portal](../media/move-account/delete-solutions.png)
 
-Ha szeretné, törölheti a megoldásokat a [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) parancsmag használatával:
+Ha szeretné, törölheti az erőforrásokat a [Remove-AzResource](https://docs.microsoft.com/powershell/module/Az.Resources/Remove-AzResource?view=azps-3.7.0) parancsmag használatával:
 
 ```azurepowershell-interactive
 $workspaceName = <myWorkspaceName>
@@ -54,15 +51,15 @@ Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -Reso
 Remove-AzResource -ResourceType 'Microsoft.OperationsManagement/solutions' -ResourceName "Start-Stop-VM($workspaceName)" -ResourceGroupName $resourceGroupName
 ```
 
-### <a name="remove-alert-rules-for-the-startstop-vms-during-off-hours-solution"></a>A "virtuális gépek indítása/leállítása a munkaidőn kívül" megoldás riasztási szabályainak eltávolítása
+### <a name="remove-alert-rules-for-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours riasztási szabályainak eltávolítása
 
-Ehhez a megoldáshoz el kell távolítania a megoldás által létrehozott riasztási szabályokat is.
+Start/Stop VMs during off-hours esetén el kell távolítania a szolgáltatás által létrehozott riasztási szabályokat is.
 
-1. A Azure Portal nyissa meg az erőforráscsoportot, és válassza a **figyelési** > **riasztások** > **kezelése riasztási szabályokat**.
+1. A Azure Portal nyissa meg az erőforráscsoportot, és válassza a **figyelési**  >  **riasztások**  >  **kezelése riasztási szabályokat**.
 
    ![Képernyőkép a riasztások oldaláról, amely a riasztási szabályok kezelése lehetőséget mutatja](../media/move-account/alert-rules.png)
 
-2. A **szabályok** lapon az adott erőforráscsoporthoz konfigurált riasztások listája látható. A megoldás a következő szabályokat hozza létre:
+2. A szabályok lapon az adott erőforráscsoporthoz konfigurált riasztások listája látható. A szolgáltatás létrehozza ezeket a szabályokat:
 
     * AutoStop_VM_Child
     * ScheduledStartStop_Parent
@@ -70,12 +67,12 @@ Ehhez a megoldáshoz el kell távolítania a megoldás által létrehozott riasz
 
 3. Egyszerre válassza ki a szabályokat, majd a **Törlés** gombra kattintva távolítsa el őket.
 
-    ![Képernyőkép a szabályok lapról, amely a kijelölt szabályok törlésének megerősítését kéri](../media/move-account/delete-rules.png)
+    ![Képernyőfelvétel a szabályokról lap a kijelölt szabályok törlésének megerősítését kéri](../media/move-account/delete-rules.png)
 
     > [!NOTE]
-    > Ha nem lát riasztási szabályt a **szabályok** lapon, a letiltott riasztások megjelenítéséhez módosítsa az **állapot** mezőt **Letiltva** értékre. Lehetséges, hogy letiltotta őket.
+    > Ha nem lát riasztási szabályt a szabályok lapon, a letiltott riasztások megjelenítéséhez módosítsa az **állapot** mezőt **Letiltva** értékre. 
 
-4. Ha eltávolítja a riasztási szabályokat, el kell távolítania a "virtuális gépek indítása/leállítása a munkaidőn kívül" megoldás értesítéseiben létrehozott műveleti csoportot. A Azure Portal válassza a**riasztások** >  **figyelése** > **műveleti csoportok kezelése**lehetőséget.
+4. A riasztási szabályok eltávolításakor el kell távolítania Start/Stop VMs during off-hours értesítésekhez létrehozott műveleti csoportot. A Azure Portal válassza a riasztások **figyelése**  >  **Alerts**  >  **műveleti csoportok kezelése**lehetőséget.
 
 5. Válassza a **StartStop_VM_Notification**lehetőséget. 
 
@@ -93,7 +90,7 @@ Remove-AzActionGroup -ResourceGroupName <myResourceGroup> -Name StartStop_VM_Not
 
 Most már leválaszthatja a munkaterületet:
 
-1. A Azure Portal válassza az **Automation-fiókhoz** > **kapcsolódó erőforrások** > **csatolt munkaterület**elemet. 
+1. A Azure Portal válassza az **Automation-fiókhoz**  >  **kapcsolódó erőforrások**  >  **csatolt munkaterület**elemet. 
 
 2. Válassza a **munkaterület** megszüntetése lehetőséget a munkaterület Automation-fiókból való leválasztásához.
 
@@ -103,7 +100,7 @@ Most már leválaszthatja a munkaterületet:
 
 Most már áthelyezheti az Automation-fiókját és a runbookok is. 
 
-1. A Azure Portal tallózással keresse meg az Automation-fiókja erőforrás-csoportját. Válassza az áthelyezés**másik előfizetésre**lehetőséget. **Move** > 
+1. A Azure Portal tallózással keresse meg az Automation-fiókja erőforrás-csoportját. Válassza **Move**  >  **az áthelyezés másik előfizetésre**lehetőséget.
 
     ![Képernyőkép az erőforráscsoport oldaláról, áthelyezés másik előfizetésre](../media/move-account/move-resources.png)
 
@@ -120,31 +117,31 @@ A [futtató fiókok](../manage-runas-account.md) az Azure-erőforrásokkal való
 2. Törölje a futtató fiókokat egy időben, a **Tulajdonságok** lapon a **Törlés** lehetőség kiválasztásával. 
 
     > [!NOTE]
-    > Ha nem rendelkezik a futtató fiókok létrehozásához vagy megtekintéséhez szükséges engedélyekkel, tekintse meg a következő üzenetet `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` : további információért lásd a [futtató fiókok konfigurálásához szükséges engedélyeket](../manage-runas-account.md#permissions).
+    > Ha nem rendelkezik a futtató fiókok létrehozásához vagy megtekintéséhez szükséges engedélyekkel, tekintse meg a következő üzenetet: `You do not have permissions to create an Azure Run As account (service principal) and grant the Contributor role to the service principal.` További információért lásd a [futtató fiókok konfigurálásához szükséges engedélyeket](../manage-runas-account.md#permissions).
 
 3. Miután törölte a futtató fiókokat, válassza a **Létrehozás** az Azure-beli **futtató fiókban**lehetőséget. 
 
-4. Az Azure-beli **futtató fiók hozzáadása** lapon válassza a **Létrehozás** lehetőséget a futtató fiók és az egyszerű szolgáltatásnév létrehozásához. 
+4. Az Azure-beli futtató fiók hozzáadása lapon válassza a **Létrehozás** lehetőséget a futtató fiók és az egyszerű szolgáltatásnév létrehozásához. 
 
 5. Ismételje meg a fenti lépéseket a klasszikus Azure-beli futtató fiókkal.
 
-## <a name="enable-solutions"></a>Megoldások engedélyezése
+## <a name="enable-features"></a>Szolgáltatások engedélyezése
 
-A futtató fiókok újbóli létrehozása után újra engedélyeznie kell azokat a megoldásokat, amelyeket az áthelyezés előtt eltávolítottak: 
+Miután újra létrehozta a futtató fiókokat, újra engedélyeznie kell az áthelyezés előtt letiltott szolgáltatásokat: 
 
-1. A "Change Tracking és leltár" megoldás bekapcsolásához válassza a **change Tracking és a leltár** elemet az Automation-fiókban. Válassza ki az áthelyezett Log Analytics munkaterületet, majd válassza az **Engedélyezés**lehetőséget.
+1. A Change Tracking és a leltár bekapcsolásához válassza a **change Tracking és a leltár** elemet az Automation-fiókban. Válassza ki az áthelyezett Log Analytics munkaterületet, majd válassza az **Engedélyezés**lehetőséget.
 
-2. Ismételje meg az 1. lépést a "Update Management" megoldás esetében.
+2. Ismételje meg az 1. lépést Update Management esetén.
 
-    ![Képernyőkép az áthelyezett Automation-fiókban lévő megoldások ismételt engedélyezéséről](../media/move-account/reenable-solutions.png)
+    ![Az áthelyezett Automation-fiókban található szolgáltatások ismételt engedélyezését bemutató képernyőkép](../media/move-account/reenable-solutions.png)
 
-3. A megoldásokkal bekészített gépek a meglévő Log Analytics munkaterület csatlakoztatásakor láthatók. A "virtuális gépek indítása és leállítása a munkaidőn kívül" megoldás bekapcsolásához újra kell telepítenie a megoldást. A **kapcsolódó erőforrások**területen válassza > a **virtuális gépek indítása/leállítása**további**információk és a megoldás** > **létrehozásának** engedélyezése lehetőséget a telepítés elindításához.
+3. A szolgáltatásokkal engedélyezett gépek a meglévő Log Analytics munkaterület csatlakoztatásakor láthatók. A Start/Stop VMs during off-hours funkció bekapcsolásához újra engedélyeznie kell azt. A **kapcsolódó erőforrások**területen válassza a **virtuális gépek indítása/leállítása**további  >  **információk és a megoldás**létrehozásának engedélyezése lehetőséget a  >  **Create** telepítés elindításához.
 
-4. A **megoldás hozzáadása** lapon válassza ki a log Analytics-munkaterületet és az Automation-fiókot.
+4. A megoldás hozzáadása lapon válassza ki a Log Analytics-munkaterületet és az Automation-fiókot.
 
     ![Képernyőfelvétel a megoldás hozzáadása menüről](../media/move-account/add-solution-vm.png)
 
-5. Konfigurálja a megoldást a [virtuális gépek indítása/leállítása a Azure Automation munkaidőn kívüli megoldásban](../automation-solution-vm-management.md)című témakörben leírtak szerint.
+5. Konfigurálja a szolgáltatást a [Start/Stop VMS During off-hours áttekintése](../automation-solution-vm-management.md)című témakörben leírtak szerint.
 
 ## <a name="verify-the-move"></a>Az áthelyezés ellenőrzése
 

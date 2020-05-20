@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 11/15/2018
-ms.openlocfilehash: 7d94e53abbe8f4d2953729aa2363c3906ce94f74
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2018
+ms.openlocfilehash: 5fb9e48a6d6a0b95b61478a7877e9b46dd8963e9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670219"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649394"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
 
@@ -21,15 +21,12 @@ Ha egy másik lekérdezéssel rendelkező naplózási lekérdezést szeretne has
 
 A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyticstel rendelkező függvényt, majd adja meg az adatokat a következő táblázatban.
 
-| Beállítás | Leírás |
+| Beállítás | Description |
 |:---|:---|
-| Name (Név)           | A lekérdezés megjelenített neve a **query Explorerben**. |
+| Name           | A lekérdezés megjelenített neve a **query Explorerben**. |
 | Mentés másként        | Függvény |
 | Függvény aliasa | A függvény más lekérdezésekben való használatának rövid neve. A nem tartalmazhat szóközt, és egyedinek kell lennie. |
 | Kategória       | A **lekérdezési Explorerben**mentett lekérdezések és függvények rendszerezésének kategóriája. |
-
-> [!NOTE]
-> Azure Monitor függvény nem tartalmazhat másik függvényt.
 
 
 

@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.custom: hdinsightactive
-ms.date: 01/01/2020
-ms.openlocfilehash: 011ef4f192bbae12be7d2464d5b0526f584821a6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 04/14/2020
+ms.openlocfilehash: 40d49d156b76db5e02ec48defbb82ed60819c478
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75638850"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651109"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A WebHCattől kapott hibák megértése és megoldása HDInsightban
 
@@ -43,7 +43,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 | Ok | Megoldás: |
 | --- | --- |
-| Túllépte a percenkénti Webhcaten által kiszolgált maximális egyidejű kéréseket (alapértelmezett érték: 20). |Csökkentse a munkaterhelést, és győződjön meg arról, hogy nem küldi el az egyidejű kérések maximális számát, vagy növelje az `templeton.exec.max-procs`egyidejű kérések korlátját a módosítással. További információ: [konfiguráció módosítása](#modifying-configuration) |
+| Túllépte a percenkénti Webhcaten által kiszolgált maximális egyidejű kéréseket (alapértelmezett érték: 20). |Csökkentse a munkaterhelést, és győződjön meg arról, hogy nem küldi el az egyidejű kérések maximális számát, vagy növelje az egyidejű kérések korlátját a módosítással `templeton.exec.max-procs` . További információ: [konfiguráció módosítása](#modifying-configuration) |
 
 ## <a name="server-unavailable"></a>A kiszolgáló nem érhető el
 
@@ -59,7 +59,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 | Ok | Megoldás: |
 | --- | --- |
-| A feladatok részleteit tisztábban megtisztították |A feladatok előzményeinek alapértelmezett megőrzési ideje 7 nap. Az alapértelmezett megőrzési időtartam módosítható `mapreduce.jobhistory.max-age-ms`. További információ: [konfiguráció módosítása](#modifying-configuration) |
+| A feladatok részleteit tisztábban megtisztították |A feladatok előzményeinek alapértelmezett megőrzési ideje 7 nap. Az alapértelmezett megőrzési időtartam módosítható `mapreduce.jobhistory.max-age-ms` . További információ: [konfiguráció módosítása](#modifying-configuration) |
 | A feladatot egy feladatátvétel miatt meggyilkolták |Feladat beküldésének újrapróbálása legfeljebb két percig |
 | A rendszer érvénytelen AZONOSÍTÓJÚ feladatot használt |Ellenőrizze, hogy helyes-e a feladatokhoz tartozó azonosító |
 
@@ -70,10 +70,20 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 | Ok | Megoldás: |
 | --- | --- |
 | A belső adatgyűjtési folyamat a Webhcaten folyamaton belül következik be |Várjon, amíg befejeződik a Webhcaten-szolgáltatás begyűjtése vagy újraindítása |
-| Időtúllépés a erőforráskezelő szolgáltatás válaszára való várakozáskor. Ez a hiba akkor fordulhat elő, ha az aktív alkalmazások száma a beállított maximális értékre kerül (alapértelmezett 10 000). |Várjon, amíg a jelenleg futó feladatok befejeződik, vagy növelje az egyidejű feladat `yarn.scheduler.capacity.maximum-applications`korlátját módosítással. További információ: a [konfiguráció módosítása](#modifying-configuration) szakasz. |
-| Az összes feladat beolvasására tett kísérlet a [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívással, míg `Fields` a értéke`*` |Ne kérje le *az összes* feladatot. Ehelyett `jobid` a feladatokhoz csak bizonyos feladat-azonosítónál nagyobb részleteket kér le. Vagy ne használja`Fields` |
+| Időtúllépés a erőforráskezelő szolgáltatás válaszára való várakozáskor. Ez a hiba akkor fordulhat elő, ha az aktív alkalmazások száma a beállított maximális értékre kerül (alapértelmezett 10 000). |Várjon, amíg a jelenleg futó feladatok befejeződik, vagy növelje az egyidejű feladat korlátját módosítással `yarn.scheduler.capacity.maximum-applications` . További információ: a [konfiguráció módosítása](#modifying-configuration) szakasz. |
+| Az összes feladat beolvasására tett kísérlet a [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívással `Fields` , míg a értéke`*` |Ne kérje le *az összes* feladatot. Ehelyett `jobid` a feladatokhoz csak bizonyos feladat-azonosítónál nagyobb részleteket kér le. Vagy ne használja`Fields` |
 | A Webhcaten szolgáltatás nem érhető el a Átjárócsomóponthoz feladatátvétel során |Várjon két percet, és ismételje meg a műveletet. |
 | Több mint 500 függőben lévő feladat van elküldve a Webhcaten-on keresztül |Várjon, amíg a jelenleg függőben lévő feladatok befejeződtek a további feladatok elküldése előtt |
+
+## <a name="next-steps"></a>További lépések
+
+Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
+
+* Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
+
+* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
 
 [maximum-applications]: https://docs.cloudera.com/HDPDocuments/HDP2/HDP-2.1.3/bk_system-admin-guide/content/setting_application_limits.html
 [max-procs]: https://cwiki.apache.org/confluence/display/Hive/WebHCat+Configure#WebHCatConfigure-WebHCatConfiguration

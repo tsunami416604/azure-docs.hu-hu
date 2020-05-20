@@ -9,20 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: bfef7eae7158a05b09a3534e8fb44335333d8cf1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4d3535d419b0f99491795b3920fdd295e3128299
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73904359"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654023"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>Batch-tesztelés példaként megadott hosszúságú kimondott szöveg
 
- A Batch Testing egy átfogó teszt a jelenlegi betanított modellen a teljesítményének méréséhez a LUIS-ben. A Batch-teszteléshez használt adatkészletek nem tartalmazhatnak példaként megadott hosszúságú kimondott szöveg az előrejelzési futtatókörnyezet végpontján kapott szándékokban vagy hosszúságú kimondott szöveg. 
-
-[!INCLUDE [Waiting for LUIS portal refresh](./includes/wait-v3-upgrade.md)]
+ A Batch Testing egy átfogó teszt a jelenlegi betanított modellen a teljesítményének méréséhez a LUIS-ben. A Batch-teszteléshez használt adatkészletek nem tartalmazhatnak példaként megadott hosszúságú kimondott szöveg az előrejelzési futtatókörnyezet végpontján kapott szándékokban vagy hosszúságú kimondott szöveg.
 
 <a name="batch-testing"></a>
 
@@ -36,7 +34,7 @@ ms.locfileid: "73904359"
 
     Az importálási hibák jelentése a böngésző tetején található piros értesítési sávon történik. Ha egy importálás hibákat tartalmaz, a rendszer nem hoz létre adatkészletet. További információ: [gyakori hibák](luis-concept-batch-test.md#common-errors-importing-a-batch).
 
-3. Az **adatkészlet neve** mezőben adja meg az adatkészlet fájljának nevét. Az adatkészlet-fájl a **hosszúságú kimondott szöveg tömbjét tartalmazza,** beleértve a *címkézett szándékot* és az *entitásokat*. Tekintse át a [példaként szolgáló batch-fájlt](luis-concept-batch-test.md#batch-file-format) szintaxisként. 
+3. Az **adatkészlet neve** mezőben adja meg az adatkészlet fájljának nevét. Az adatkészlet-fájl a **hosszúságú kimondott szöveg tömbjét tartalmazza,** beleértve a *címkézett szándékot* és az *entitásokat*. Tekintse át a [példaként szolgáló batch-fájlt](luis-concept-batch-test.md#batch-file-format) szintaxisként.
 
 4. Válassza a **Done** (Kész) lehetőséget. Az adatkészlet fájlja hozzá van adva.
 
@@ -44,13 +42,12 @@ ms.locfileid: "73904359"
 
 Az adatkészlet futtatásához, átnevezéséhez, exportálásához vagy törléséhez használja az adatkészlet sor végén lévő három pont (***..***.) gombot.
 
-![Adatkészlet műveletei](./media/luis-how-to-batch-test/batch-testing-options.png)
+> [!div class="mx-imgBorder"]
+> ![Képernyőfelvétel a Batch-tesztek listájáról a lehetőségekkel](./media/luis-how-to-batch-test/batch-testing-options.png)
 
 ## <a name="run-a-batch-test-on-your-trained-app"></a>Batch-teszt futtatása a betanított alkalmazáson
 
-A teszt futtatásához válassza ki az adatkészlet nevét. Ha a teszt befejeződött, ez a sor az adatkészlet tesztelési eredményét jeleníti meg.
-
-![Batch-teszt eredménye](./media/luis-how-to-batch-test/run-test.png)
+A teszt futtatásához válassza ki az adatkészlet nevét, majd válassza a **Futtatás** lehetőséget a környezetfüggő eszköztáron. Ha a teszt befejeződött, ez a sor az adatkészlet tesztelési eredményét jeleníti meg.
 
 A letölthető adatkészlet ugyanaz a fájl, amelyet a Batch-teszteléshez töltöttek fel.
 
@@ -62,23 +59,21 @@ A letölthető adatkészlet ugyanaz a fájl, amelyet a Batch-teszteléshez tölt
 
 <a name="access-batch-test-result-details-in-a-visualized-view"></a>
 
-## <a name="view-batch-test-results"></a>A Batch-tesztek eredményeinek megtekintése 
+## <a name="view-batch-test-results"></a>A Batch-tesztek eredményeinek megtekintése
 
 A Batch-tesztek eredményeinek áttekintéséhez válassza az **eredmények megtekintése**lehetőséget.
 
-![A Batch-tesztek eredményei](./media/luis-how-to-batch-test/run-test-results.png)
-
-<a name="filter-chart-results-by-intent-or-entity"></a>  
+<a name="filter-chart-results-by-intent-or-entity"></a>
 
 ## <a name="filter-chart-results"></a>Diagram eredményeinek szűrése
 
-Ha egy adott szándék vagy entitás alapján szeretné szűrni a diagramot, válassza ki a szándékot vagy az entitást a jobb oldali szűrés panelen. Az adatpontok és a terjesztési frissítésük a diagramon a választott módon történik. 
- 
-![Vizualizációs batch-teszt eredménye](./media/luis-how-to-batch-test/filter-by-entity.png) 
+Ha egy adott szándék vagy entitás alapján szeretné szűrni a diagramot, válassza ki a szándékot vagy az entitást a jobb oldali szűrés panelen. Az adatpontok és a terjesztési frissítésük a diagramon a választott módon történik.
+
+![Vizualizációs batch-teszt eredménye](./media/luis-how-to-batch-test/filter-by-entity.png)
 
 ## <a name="view-single-point-utterance-data"></a>Egypontos Kimondás-adatelemek megtekintése
 
-A diagramon vigye az egérmutatót egy adatpontra, és tekintse meg az előrejelzésének bizonyossági pontszámát. A lap alján található hosszúságú kimondott szöveg listában válasszon ki egy adatpontot a megfelelő kifejezés beolvasásához. 
+A diagramon vigye az egérmutatót egy adatpontra, és tekintse meg az előrejelzésének bizonyossági pontszámát. A lap alján található hosszúságú kimondott szöveg listában válasszon ki egy adatpontot a megfelelő kifejezés beolvasásához.
 
 ![Kijelölt Kimondás](./media/luis-how-to-batch-test/selected-utterance.png)
 
@@ -88,13 +83,13 @@ A diagramon vigye az egérmutatót egy adatpontra, és tekintse meg az előrejel
 
 ## <a name="view-section-data"></a>Szakaszra vonatkozó adatnézet
 
-A négy szakaszból álló diagramon válassza ki a szakasz nevét, például a **hamis pozitív értéket** a diagram jobb felső sarkában. A diagram alatt az adott szakaszban található összes hosszúságú kimondott szöveg megjelenik a diagram alatt a listában. 
+A négy szakaszból álló diagramon válassza ki a szakasz nevét, például a **hamis pozitív értéket** a diagram jobb felső sarkában. A diagram alatt az adott szakaszban található összes hosszúságú kimondott szöveg megjelenik a diagram alatt a listában.
 
 ![Kijelölt hosszúságú kimondott szöveg szakasz szerint](./media/luis-how-to-batch-test/selected-utterances-by-section.png)
 
-Ebben az előző képen a Kimondás `switch on` a TurnAllOn szándékkal van megjelölve, de a nincs szándék előrejelzését kapta. Ez azt jelzi, hogy a TurnAllOn szándéknak több példát kell hosszúságú kimondott szöveg a várható előrejelzés elvégzéséhez. 
+Ebben az előző képen a Kimondás a `switch on` TurnAllOn szándékkal van megjelölve, de a nincs szándék előrejelzését kapta. Ez azt jelzi, hogy a TurnAllOn szándéknak több példát kell hosszúságú kimondott szöveg a várható előrejelzés elvégzéséhez.
 
-A diagram két része piros színnel jelöli azt a hosszúságú kimondott szöveg, amely nem felel meg a várt előrejelzésnek. Ezek azt jelzik, hosszúságú kimondott szöveg, hogy a LUIS több betanításra van szüksége. 
+A diagram két része piros színnel jelöli azt a hosszúságú kimondott szöveg, amely nem felel meg a várt előrejelzésnek. Ezek azt jelzik, hosszúságú kimondott szöveg, hogy a LUIS több betanításra van szüksége.
 
 A diagram két része zöld színnel egyezik a várt előrejelzéssel.
 
@@ -102,9 +97,9 @@ A diagram két része zöld színnel egyezik a várt előrejelzéssel.
 
 ## <a name="next-steps"></a>További lépések
 
-Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás teljesítményét. 
+Ha a tesztelés azt jelzi, hogy a LUIS-alkalmazás nem ismeri fel a megfelelő szándékokat és entitásokat, a további hosszúságú kimondott szöveg címkézésével vagy funkciók hozzáadásával javíthatja a LUIS-alkalmazás teljesítményét.
 
-* [Címke javasolt hosszúságú kimondott szöveg a LUIS-vel](luis-how-to-review-endpoint-utterances.md) 
-* [Szolgáltatások használata a LUIS-alkalmazás teljesítményének növeléséhez](luis-how-to-add-features.md) 
+* [Címke javasolt hosszúságú kimondott szöveg a LUIS-vel](luis-how-to-review-endpoint-utterances.md)
+* [Szolgáltatások használata a LUIS-alkalmazás teljesítményének növeléséhez](luis-how-to-add-features.md)
 * [A Batch tesztelésének megismerése az Oktatóanyaggal](luis-tutorial-batch-testing.md)
 * A [Batch tesztelési koncepcióinak megismerése](luis-concept-batch-test.md).

@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: ce4e4d11ead41ee8cc4a4bd1d85f1fbad2af4b07
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dca9babff198fc780e54df6e89149f2c4c8157bf
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982530"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677701"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-java-sdk-v4"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Java SDK v4-hez
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982530"
 > 
 
 > [!IMPORTANT]  
-> A cikkben szereplő teljesítménnyel kapcsolatos tippek csak Azure Cosmos DB Java SDK v4-re vonatkoznak. További információkért tekintse meg a Azure Cosmos DB Java SDK v4 kibocsátási megjegyzéseit, a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos)és a Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatóját](troubleshoot-java-sdk-v4-sql.md) . Ha jelenleg a v4-nél régebbi verziót használ, tekintse meg a következőt: [migrálás Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -re – útmutató a v4-re való frissítéshez.
+> A cikkben szereplő teljesítménnyel kapcsolatos tippek csak Azure Cosmos DB Java SDK v4-re vonatkoznak. További információkért tekintse meg a Azure Cosmos DB Java SDK v4 [kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos)és a Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatóját](troubleshoot-java-sdk-v4-sql.md) . Ha jelenleg a v4-nél régebbi verziót használ, tekintse meg a következőt: [migrálás Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -re – útmutató a v4-re való frissítéshez.
 >
 
 A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezhető a garantált késés és az átviteli sebesség tekintetében. Nem kell megváltoztatnia a jelentős architektúrát, vagy összetett kódot kell írnia az adatbázis méretezéséhez Azure Cosmos DB. A fel-és leskálázás olyan egyszerű, mint egyetlen API-hívás vagy egy SDK-metódus hívása. Mivel azonban a Azure Cosmos DB hálózati hívásokkal érhetők el, ügyféloldali optimalizálási lehetőségek érhetők el, ha Azure Cosmos DB Java SDK v4-t használ a maximális teljesítmény eléréséhez.
@@ -92,7 +92,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     ![A Azure Cosmos DB-kapcsolatok házirendjének ábrája](./media/performance-tips/same-region.png)
 
-    Egy többrégiós Azure Cosmos DB fiókkal kommunikáló alkalmazásnak az [előnyben részesített helyeket]() kell konfigurálnia, hogy a kérések közös elhelyezésű régióba lépjenek.
+    Egy többrégiós Azure Cosmos DB fiókkal kommunikáló alkalmazásnak az [előnyben részesített helyeket](tutorial-global-distribution-sql-api.md#preferred-locations) kell konfigurálnia, hogy a kérések közös elhelyezésű régióba lépjenek.
 
 * **Az alacsonyabb késés érdekében engedélyezze a gyorsított hálózatkezelést az Azure-beli virtuális gépen.**
 
@@ -133,7 +133,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
     
     A földrajzi létrehozásakor közös elhelyezés nagyobb és konzisztens átviteli sebességet biztosíthat a szinkronizálási API használatakor (lásd: [azonos Azure-régióban lévő rézvezetékes végezhet-ügyfelek teljesítménye](#collocate-clients)), de még nem várható, hogy túllépi az aszinkron API-k számára elérhető átviteli sebességet.
 
-    Előfordulhat, hogy egyes felhasználók nem ismerik a [Project reaktort](https://projectreactor.io/), az Azure Cosmos db Java SDK v4 aszinkron API megvalósításához használt reaktív Streams keretrendszert. Ha ez aggodalomra ad okot, javasoljuk, hogy olvassa el a bevezető [reaktor minta útmutatóját](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) , és tekintse meg a [reaktív programozás bevezetését](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) , hogy megismerkedjen. Ha már használta a Azure Cosmos DBT egy aszinkron felülettel, és a használt SDK Azure Cosmos db aszinkron Java SDK v2-ben, akkor lehet, hogy már ismeri az [újraactivex-](http://reactivex.io/)/[RxJava](https://github.com/ReactiveX/RxJava) , de nem biztos benne, hogy mi változott a projekt-reaktorban. Ebben az esetben tekintse át a [Reactor vs. RxJava útmutatót](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) , és ismerkedjen meg a következővel:.
+    Előfordulhat, hogy egyes felhasználók nem ismerik a [Project reaktort](https://projectreactor.io/), az Azure Cosmos db Java SDK v4 aszinkron API megvalósításához használt reaktív Streams keretrendszert. Ha ez aggodalomra ad okot, javasoljuk, hogy olvassa el a bevezető [reaktor minta útmutatóját](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) , és tekintse meg a [reaktív programozás bevezetését](https://tech.io/playgrounds/929/reactive-programming-with-reactor-3/Intro) , hogy megismerkedjen. Ha már használta a Azure Cosmos DBT egy aszinkron felülettel, és a használt SDK Azure Cosmos db aszinkron Java SDK v2-ben, akkor lehet, hogy már ismeri az [újraactivex-](http://reactivex.io/) / [RxJava](https://github.com/ReactiveX/RxJava) , de nem biztos benne, hogy mi változott a projekt-reaktorban. Ebben az esetben tekintse át a [Reactor vs. RxJava útmutatót](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) , és ismerkedjen meg a következővel:.
 
     A következő kódrészletek bemutatják, hogyan inicializálhatja Azure Cosmos DB ügyfelet az aszinkron API-vagy szinkronizálási API-művelethez:
 
@@ -278,7 +278,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
         });
     ```
 
-    A munkája típusától függően a megfelelő meglévő reaktor-ütemező használatával kell használnia a munkát. Itt [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html)olvashat.
+    A munkája típusától függően a megfelelő meglévő reaktor-ütemező használatával kell használnia a munkát. Itt olvashat [``Schedulers``](https://projectreactor.io/docs/core/release/api/reactor/core/scheduler/Schedulers.html) .
 
     A Azure Cosmos DB Java SDK v4-es verziójának részletes ismertetését a [githubon futó Azure SDK for Java monorepo Cosmos db könyvtárában](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos/azure-cosmos)tekintheti meg.
 
@@ -292,7 +292,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     * ***A nettó naplózás letiltása***
 
-        A további CPU-költségek elkerülése érdekében a többfunkciós kódtár naplózása beszédes, és ki kell kapcsolni (a bejelentkezés a konfigurációban nem lehet elég). Ha nem hibakeresési módban van, tiltsa le a nettó naplózást. Tehát ha a log4j használatával távolítja el a további CPU ``org.apache.log4j.Category.callAppenders()`` -költségeket a (z) rendszerből, adja hozzá a következő sort a kód számára:
+        A további CPU-költségek elkerülése érdekében a többfunkciós kódtár naplózása beszédes, és ki kell kapcsolni (a bejelentkezés a konfigurációban nem lehet elég). Ha nem hibakeresési módban van, tiltsa le a nettó naplózást. Tehát ha a log4j használatával távolítja el a további CPU-költségeket a (z) ``org.apache.log4j.Category.callAppenders()`` rendszerből, adja hozzá a következő sort a kód számára:
 
         ```java
         org.apache.log4j.Logger.getLogger("io.netty").setLevel(org.apache.log4j.Level.OFF);
@@ -393,7 +393,7 @@ További részletekért tekintse meg a Windows és a [Linux](https://docs.micros
 
     A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
-    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet a műveletek által felhasznált kérelmek mennyiségének méréséhez. Az egyenértékű RequestCharge tulajdonságot a ResourceResponse\<T> vagy a FeedResponse\<t>ban is megtekintheti.
+    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) fejlécet a műveletek által felhasznált kérelmek mennyiségének méréséhez. Az egyenértékű RequestCharge tulajdonságot a ResourceResponse \< T> vagy a FeedResponse \< t>ban is megtekintheti.
 
     #### <a name="async"></a>[Aszinkron](#tab/api-async)
 

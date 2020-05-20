@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: 57de7f1e7c37fec66cda666d3f144e52849a026f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d9c6062e7106f764058d6c96c6f730d235b2ef0c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399983"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673033"
 ---
 A macOS-re való fejlesztéskor három beszédfelismerési SDK érhető el.
 
@@ -18,7 +18,7 @@ A macOS-re való fejlesztéskor három beszédfelismerési SDK érhető el.
 - A Python Speech SDK PyPI modulként érhető el
 
 > [!TIP]
-> A Swift Objective-C Speech SDK használatával kapcsolatos részletekért lásd: az <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Objective-c importálása Swift <span class="docon docon-navigate-external x-hidden-focus"> </span>-be </a>.
+> A Swift Objective-C Speech SDK használatával kapcsolatos részletekért lásd: az <a href="https://developer.apple.com/documentation/swift/imported_c_and_objective-c_apis/importing_objective-c_into_swift" target="_blank">Objective-c importálása Swift <span class="docon docon-navigate-external x-hidden-focus"></span> -be </a>.
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
 
@@ -28,7 +28,7 @@ A macOS-re való fejlesztéskor három beszédfelismerési SDK érhető el.
 
 :::row:::
     :::column span="3":::
-        A MacOS CocoaPod csomag letölthető és használható a <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (vagy újabb) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> integrált fejlesztési környezettel (ide). Először <a href="https://aka.ms/csspeech/macosbinary" target="_blank">töltse le a bináris CocoaPod <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>. Bontsa ki a pod-t ugyanabban a címtárban a kívánt használatra *Podfile* , hozzon létre `pod` egy cocoapods `target`, és sorolja fel a következőt:.
+        A macOS CocoaPod csomag letölthető és használható a <a href="https://apps.apple.com/us/app/xcode/id497799835" target="_blank">Xcode 9.4.1 (vagy újabb) <span class="docon docon-navigate-external x-hidden-focus"></span> </a> integrált fejlesztési környezettel (ide). Először <a href="https://aka.ms/csspeech/macosbinary" target="_blank">töltse le a bináris CocoaPod <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. Bontsa ki a pod-t ugyanabban a címtárban a kívánt használatra, hozzon létre egy *cocoapods* , és sorolja fel a következőt: `pod` `target` .
     :::column-end:::
     :::column:::
         <br>
@@ -43,7 +43,7 @@ platform :ios, '9.3'
 use_frameworks!
 
 target 'MyApp' do
-  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.11.0'
+  pod 'MicrosoftCognitiveServicesSpeech', '~> 1.12.0'
 end
 ```
 
@@ -51,7 +51,7 @@ end
 
 :::row:::
     :::column span="3":::
-        A Xamarin. Mac a teljes macOS SDK for .NET-fejlesztők számára teszi lehetővé natív Mac-alkalmazások kiépítését a C# használatával. További információ: <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin. Mac <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+        A Xamarin. Mac a teljes macOS SDK for .NET-fejlesztők számára teszi lehetővé natív Mac-alkalmazások kiépítését a C# használatával. További információ: <a href="https://docs.microsoft.com/xamarin/mac/" target="_blank">Xamarin. Mac <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
     :::column-end:::
     :::column:::
         <br>
@@ -69,7 +69,7 @@ end
 
 ---
 
-#### <a name="additional-resources"></a>További háttéranyagok
+#### <a name="additional-resources"></a>További források
 
 - <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/objectivec/macos" target="_blank">macOS Speech SDK gyors üzembe helyezési célkitűzés – C forráskód<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 - <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/swift/macos" target="_blank">macOS Speech SDK gyors útmutató Swift-forráskódja<span class="docon docon-navigate-external x-hidden-focus"></span></a>

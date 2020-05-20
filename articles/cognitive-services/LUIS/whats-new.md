@@ -2,13 +2,13 @@
 title: Újdonságok – Language Understanding (LUIS)
 description: Ez a cikk rendszeresen frissül az Azure Cognitive Services Language Understanding APIával kapcsolatos hírekkel.
 ms.topic: overview
-ms.date: 05/08/2020
-ms.openlocfilehash: d7ef989d04132dedc79d2408b7083b57d8c926b0
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/19/2020
+ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592797"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675954"
 ---
 # <a name="whats-new-in-language-understanding"></a>A Language Understanding újdonságai
 
@@ -21,12 +21,18 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
 * Megjelent **általánosan elérhetőként** (GA):
     * [Language Understanding tároló](luis-container-howto.md)
     * A [jelenlegi portálra](https://www.luis.ai)előléptetett betekintő portál a [korábbi](https://previous.luis.ai) portál továbbra is elérhető
-    * Új gép – megtanult entitások létrehozásának és címkézésének élménye
-    * Összetett és egyszerű entitások [frissítése](migrate-from-composite-entity.md) gépi megtanult entitásokra
+    * Új gépi tanulási entitás létrehozása és címkézése
+    * Összetett és egyszerű entitások közötti [frissítési folyamat](migrate-from-composite-entity.md) gépi tanulási entitásokra
     * A Word-változatok normalizálása támogatásának [beállítása](how-to-application-settings-portal.md)
 * Előzetes verziójú API-változások
-    * 7. x alkalmazás-séma beágyazott gépi megismert entitásokhoz
+    * 7. x alkalmazás-séma beágyazott gépi tanulási entitásokhoz
     * [Migrálás a szükséges szolgáltatásba](luis-migration-authoring-entities.md#api-change-constraint-replaced-with-required-feature)
+* Új erőforrások fejlesztők számára
+    * [Folyamatos integrációs eszközök](developer-reference-resource.md#continuous-integration-tools)
+    * Workshop – gyakorlati tanácsok a [ _természetes Language Understanding_ (NLU) a Luis használatával](developer-reference-resource.md#workshops)
+* [Ügyfél által felügyelt kulcsok](luis-encryption-of-data-at-rest.md) – a saját kulcs használatával titkosíthatja a Luis-ben használt összes adathalmazt
+* [AI show](https://channel9.msdn.com/Shows/AI-Show/New-Features-in-Language-Understanding) (videó) – a Luis új funkcióinak megtekintése
+
 
 
 ### <a name="march-2020"></a>2020. március
@@ -48,13 +54,13 @@ Ismerje meg a szolgáltatás újdonságait. Ezek közé tartoznak a kibocsátás
     * Olasz előre [összeépített entitások](luis-reference-prebuilt-entities.md#italian-entity-support) – az életkor, a pénznem, a dimenzió, a szám és a százalékos felbontás a v2-től módosult.
 * Továbbfejlesztett felhasználói élmény a [preview.Luis.ai-portálon](https://preview.luis.ai) – az összetett modellek kiépítése és hibakeresése érdekében feldolgozatlan címkézési élmény. Próbálja ki a betekintő portál oktatóanyagokat:
     * [Csak szándékok](tutorial-intents-only.md)
-    * [Felismert gépi megtanult entitás](tutorial-machine-learned-entity.md)
+    * [Felbomló gépi tanulási entitás](tutorial-machine-learned-entity.md)
 * Előzetes nyelvi ismeretek – a [kifinomult nyelvi modellek fejlesztése](luis-concept-entity-types.md) kevesebb erőfeszítéssel.
 * Megadhatja a gépi tanulási funkciókat a modell szintjén, és engedélyezheti a modellek más modellekhez való használatát, például az entitások szolgáltatásként való használatát a szándékok és más entitások számára.
 * Új, kibővített [korlátok](luis-limits.md) – a kifejezések listájának és az összes kifejezésnek, valamint az új modellnek a funkció korlátainál nagyobb maximális száma
 * Kinyerheti az adatokat a szövegből a mély hierarchia struktúrájának formátumában, így hatékonyabban fejlesztheti a beszélgetési alkalmazásokat.
 
-    ![gépi megtanult entitás képe](./media/whats-new/deep-entity-extraction-example.png)
+    ![gépi tanulási entitás képe](./media/whats-new/deep-entity-extraction-example.png)
 
 ### <a name="september-3-2019"></a>Szeptember 3., 2019
 

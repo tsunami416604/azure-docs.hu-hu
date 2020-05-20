@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: b020cbd15ba17609b7a476ccda9b1e814405341e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d594f3cf556fe311e0b7400a23fd61d0336fe5f1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858777"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651131"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Gyakori kérdések az Azure Storage migrálásával kapcsolatban
 
@@ -263,11 +263,11 @@ Más személyek számára a tárolási erőforrásokhoz való hozzáférés bizt
 
 -   Ha a Microsoft Azure Storage parancssorból fér hozzá a AzCopy-hoz, írja be a következőt: **AzCopy**. A parancssor a AzCopy együtt települ.
 
--   Ha telepítette a 32 bites verziót, a következő helyen található: **% ProgramFiles (x86\\)% Microsoft SDK\\-k\\Azure AzCopy**.
+-   Ha telepítette a 32 bites verziót, a következő helyen található: **% ProgramFiles (x86)% \\ Microsoft SDK-k \\ Azure \\ AzCopy**.
 
--   Ha telepítette a 64 bites verziót, a következő helyen található: **% ProgramFiles%\\Microsoft\\SDK-k\\Azure AzCopy**.
+-   Ha telepítette a 64 bites verziót, a következő helyen található: **% ProgramFiles% \\ Microsoft SDK-k \\ Azure \\ AzCopy**.
 
-**Hogyan használhat egy HTTPS-alapú egyéni tartományt a saját Storage-fiókommal? Például Hogyan tehetem meg a "https:\//mystorageaccountname.blob.Core.Windows.net/images/image.gif" kifejezést "https:\//www.contoso.com/images/image.gif" néven?**
+**Hogyan használhat egy HTTPS-alapú egyéni tartományt a saját Storage-fiókommal? Például Hogyan tehetem meg a "https: \/ /mystorageaccountname.blob.Core.Windows.net/images/image.gif" kifejezést "https: \/ /www.contoso.com/images/image.gif" néven?**
 
 A TLS/SSL jelenleg nem támogatott az egyéni tartományokkal rendelkező Storage-fiókok esetében.
 A nem HTTPS-alapú egyéni tartományokat azonban használhatja. További információ: [Egyéni tartománynév beállítása a blob Storage-végponthoz](../blobs/storage-custom-domain-name.md).
@@ -290,7 +290,7 @@ A redundáns tárterület eléréséhez olvasási hozzáférésű geo-redundáns
 
     - **AzCopy**: Hozzáfűzés **– másodlagos** a Storage-fiók neve az URL-címben a másodlagos végpont eléréséhez. Például:  
 
-      https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
+      `https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd`
 
     - **Sas-jogkivonat**: a végpontról származó adatok eléréséhez használjon sas-tokent. További információ: [közös hozzáférésű aláírások használata](storage-sas-overview.md).
 

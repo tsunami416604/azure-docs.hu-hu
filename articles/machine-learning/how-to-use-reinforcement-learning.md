@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
-ms.openlocfilehash: b0a596ee4c576ff98be302b15a86a8758b11ce25
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 01e7e6c84be13db839338928f8086bcceb2ea169
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598590"
+ms.locfileid: "83654419"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Megerősítő tanulás (előzetes verzió) Azure Machine Learning
 
@@ -49,7 +49,7 @@ Futtassa ezt a kódot az alábbi környezetek egyikében. Javasoljuk, hogy prób
  - Saját Jupyter Notebook-kiszolgáló
 
     - Telepítse a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py)-t.
-    - Telepítse a [Azure Machine learning RL SDK](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py&branch=harnvirdebug)-t:`pip install --upgrade azureml-contrib-reinforcementlearning`
+    - Telepítse a [Azure Machine learning RL SDK](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/?view=azure-ml-py)-t:`pip install --upgrade azureml-contrib-reinforcementlearning`
     - Hozzon létre egy [munkaterület-konfigurációs fájlt](how-to-configure-environment.md#workspace).
     - Futtassa a virtuális hálózat [beállítása jegyzetfüzetet](https://aka.ms/azure-rl-env-setup) az elosztott megerősítési tanuláshoz használt hálózati portok megnyitásához.
 
@@ -210,7 +210,7 @@ else:
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Megerősítő tanulási kalkulátor létrehozása
 
-Ebből a szakaszból megtudhatja, hogyan küldhet betanítási feladatot a Azure Machine Learningba a [ReinforcementLearningEstimator](https://review.docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py&branch=harnvirdebug) használatával.
+Ebből a szakaszból megtudhatja, hogyan küldhet betanítási feladatot a Azure Machine Learningba a [ReinforcementLearningEstimator](https://docs.microsoft.com/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?view=azure-ml-py) használatával.
 
 Azure Machine Learning a kalkulátor osztályokat használja a futtatási konfigurációs adatok beágyazásához. Így egyszerűen megadhatja, hogyan konfigurálhat egy parancsfájl-végrehajtást. További információ a Azure Machine Learning kalkulátor mintáról: [modellek betanítása a becslések használatával](how-to-train-ml-models.md).
 

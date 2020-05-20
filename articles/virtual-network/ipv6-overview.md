@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 312e9db594983f85372285bdff415a2d5dc76ed3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c175a1575a4efbdc2294412e3743e201d8c4bb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984010"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653300"
 ---
 # <a name="what-is-ipv6-for-azure-virtual-network"></a>Mi az az IPv6 for Azure Virtual Network?
 
@@ -40,7 +40,7 @@ IPv6 az Azure VNET előnyei:
 - Hosszú távú, stabil Azure-alapú virtuális gépek közötti IPv6-kapcsolaton alapul.
 - Alapértelmezés szerint biztonságos, mivel az internethez való IPv6-kapcsolat csak akkor áll fenn, ha explicit módon megkéri azt a központi telepítésben.
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 Az IPv6 for Azure VNet a következő képességeket tartalmazza:
 
@@ -58,6 +58,7 @@ Az IPv6 for Azure VNet a következő képességeket tartalmazza:
     - Nem kötelező több előtér-konfiguráció, amely lehetővé teszi, hogy egyetlen terheléselosztó több IPv6 nyilvános IP-címet használjon – ugyanezt a frontend-protokollt és portot újra felhasználhatja a frontend-címek között.
     - A választható IPv6-portok újra felhasználhatók a háttérbeli példányokon a terheléselosztási szabályok *lebegőpontos IP-* funkciójának használatával 
     - Megjegyzés: a terheléselosztás semmilyen protokoll fordítását nem hajtja végre (NAT64 nélkül). 
+    - Megjegyzés: az IPv6 csak az Azure-beli virtuális gépeken lévő elsődleges hálózati adapter (NIC) esetében állítható be. 
 - [Standard IPv6 belső Load Balancer](ipv6-dual-stack-standard-internal-load-balancer-powershell.md) támogatás rugalmas többrétegű alkalmazások létrehozásához az Azure virtuális hálózatok-n belül.   
 - Alapszintű IPv6 nyilvános Load Balancer támogatása az örökölt központi telepítésekkel való kompatibilitáshoz
 - A [fenntartott IPv6 nyilvános IP-címek és címtartományok](ipv6-public-ip-address-prefix.md) stabil és kiszámítható IPv6-címeket biztosítanak, amelyek megkönnyítik az Azure által üzemeltetett alkalmazások engedélyezését vállalata és ügyfelei számára.
@@ -73,10 +74,14 @@ Az IPv6 for Azure VNET egy alapszintű szolgáltatáskészlet, amely lehetővé 
 
 ## <a name="limitations"></a>Korlátozások
 Az Azure Virtual Network jelenlegi IPv6-kiadása a következő korlátozásokkal rendelkezik:
-- Az Azure Virtual Network IPv6 az összes globális Azure kereskedelmi régióban elérhető az összes üzembe helyezési módszer használatával.  Az USA kormányzati felhőbe történő üzembe helyezése átmenetileg csak az ARM (JSON) sablon, a parancssori felület (CLI) és a PowerShell.  Az Egyesült államokbeli kormányzati felhő portálon az IPv6-támogatás hamarosan elérhető lesz.  
+- Az Azure Virtual Network IPv6 az összes globális Azure kereskedelmi és USA-beli kormányzati régióban elérhető az összes üzembe helyezési módszer használatával.  
 - A ExpressRoute-átjárók csak IPv4-alapú forgalomhoz használhatók olyan VNET, amelyeken engedélyezve van az IPv6.  Az IPv6-alapú forgalom támogatása az ütemtervünk szerint történik.   
 - A VPN-átjárók nem használhatók olyan VNET, amelyeken engedélyezve van az IPv6, vagy közvetlenül, vagy a "UseRemoteGateway".
 - Az Azure platform (ak stb.) nem támogatja az IPv6-alapú kommunikációt a tárolók esetében.  
+- Az IPv6 csak az Azure-beli virtuális gépek elsődleges hálózati adapteréhez (NIC) állítható be. A másodlagos hálózati adapterek felé irányuló IPv6-forgalom terheléselosztása nem támogatott.    
+- Az csak IPv6 Virtual Machines vagy Virtual Machines méretezési csoportok nem támogatottak, minden hálózati adapternek tartalmaznia kell legalább egy IPv4 IP-konfigurációt. 
+- IPv6 meglévő IPv4-környezetekhez való hozzáadásakor az IPv6-tartományokat nem lehet felvenni egy meglévő erőforrás-navigációs hivatkozásokkal rendelkező VNET.  
+- A Forward DNS for IPv6 támogatja az Azure nyilvános DNS-t, de a fordított DNS még nem támogatott.   
 
 ## <a name="pricing"></a>Díjszabás
 

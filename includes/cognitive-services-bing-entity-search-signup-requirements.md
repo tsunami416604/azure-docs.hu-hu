@@ -3,27 +3,27 @@ author: aahill
 ms.author: aahi
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 12/11/2019
-ms.openlocfilehash: 53c3c332f215d41d474bcf0eb3763a60e72619d0
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/08/2020
+ms.openlocfilehash: 748f6dea8f6d057274c8e6c9f04690be05218f0c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75383943"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650175"
 ---
 ## <a name="create-an-azure-resource"></a>Azure-erőforrás létrehozása
 
-A Bing Entity Search API használatának megkezdéséhez hozzon létre egyet az alábbi Azure-erőforrások egyikével.
+Kezdje el használni a Bing Entity Search API az alábbi Azure-erőforrások egyikének létrehozásával.
 
-* [Próbaverziós erőforrás létrehozása](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api):
-    * Nincs szükség Azure-előfizetésre.
-    * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
+### <a name="trial-resource"></a>[Próbaverziós erőforrás](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
+   * Nincs szükség Azure-előfizetésre.
+   * Hét napig ingyenesen használható. A regisztrációt követően a próbaverziós kulcs és a végpont elérhető az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
 
-* [Bing Entity Search erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch):
-    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
-    * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
-    * Bing Entity Search a [Bing Search v7-erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)fizetős szintjein is elérhető.
+### <a name="bing-entity-search-resource"></a>[Erőforrás Bing Entity Search](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingEntitySearch)
+   * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+   * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
+   * Bing Entity Search a [Bing Search v7-erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7)fizetős szintjein is elérhető.
     
-* [Több szolgáltatásból álló erőforrás létrehozása](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
-    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.
+### <a name="multi-service-resource"></a>[Több szolgáltatásból álló erőforrás](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne)
+   * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
+   * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.

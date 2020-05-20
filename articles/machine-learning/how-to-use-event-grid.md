@@ -1,7 +1,7 @@
 ---
 title: Események elindítása ML-munkafolyamatokban
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan indíthat eseményvezérelt alkalmazásokat, folyamatokat vagy CI/CD-munkafolyamatokat Azure Machine Learning események alapján, hogy leegyszerűsítse a ML-életciklusát.
+description: Eseményvezérelt alkalmazások, folyamatok vagy CI/CD gépi tanulási munkafolyamatok beállítása Azure Machine Learningban.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,14 +10,14 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 03/11/2020
-ms.openlocfilehash: 236cc46bb6f9e5ed95e4a49068ac41ae77a736f5
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 79bea443ea576ba0c17c1a8150c305d7cd2320ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982870"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655800"
 ---
-# <a name="trigger-event-driven-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Eseményvezérelt alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
+# <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Alkalmazások, folyamatok vagy CI/CD-munkafolyamatok elindítása Azure Machine Learning események alapján (előzetes verzió)
 
 Ebből a cikkből megtudhatja, hogyan állíthat be eseményvezérelt alkalmazásokat, folyamatokat vagy CI/CD-munkafolyamatokat Azure Machine Learning események alapján, például a sikertelen értesítési e-mailek vagy a ML-folyamatok futtatását, ha a [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/)bizonyos feltételeket észlel. 
 
@@ -47,7 +47,7 @@ További információ az eseményforrás és az eseménykezelők használatáró
 
 A Azure Machine Learning a gépi tanulási életciklus különböző pontjain biztosít eseményeket: 
 
-| Eseménytípus | Leírás |
+| Eseménytípus | Description |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Gépi tanulási kísérlet futtatásának befejeződése után következik be |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Akkor következik be, amikor egy Machine learning-modell van regisztrálva a munkaterületen |
@@ -85,7 +85,7 @@ A Azure Machine Learning eseményekre vonatkozó előfizetéseket szerepköralap
 
 + **Speciális szűrés**: a Azure Event Grid a közzétett esemény sémája alapján is támogatja a speciális szűrést. Azure Machine Learning az esemény-séma részletei megtalálhatók a [Azure Machine Learning Azure Event Grid esemény sémájában](../event-grid/event-schema-machine-learning.md).  Néhány példaként használható speciális szűrés:
 
-  `Microsoft.MachineLearningServices.ModelRegistered` Esemény esetén a modell címke értékének szűréséhez:
+  `Microsoft.MachineLearningServices.ModelRegistered`Esemény esetén a modell címke értékének szűréséhez:
 
   ```
   --advanced-filter data.ModelTags.key1 StringIn ('value1')

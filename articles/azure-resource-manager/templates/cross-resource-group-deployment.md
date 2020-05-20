@@ -2,120 +2,36 @@
 title: Erőforrások telepítése több előfizetés & erőforráscsoporthoz
 description: Bemutatja, hogyan célozhat meg több Azure-előfizetést és erőforráscsoportot az üzembe helyezés során.
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: 70868f5a3598c26ffff81f0ad3536a6c5c0a7e53
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 2ef68dcb933075833c323d973b023cdaee61bd2f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79460347"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650638"
 ---
-# <a name="deploy-azure-resources-to-more-than-one-subscription-or-resource-group"></a>Azure-erőforrások üzembe helyezése több előfizetéshez vagy erőforráscsoporthoz
+# <a name="deploy-azure-resources-across-subscriptions-or-resource-groups"></a>Azure-erőforrások üzembe helyezése előfizetések vagy erőforráscsoportok között
 
-A sablonban lévő összes erőforrást általában egyetlen [erőforráscsoporthoz](../management/overview.md)kell telepíteni. Vannak azonban olyan forgatókönyvek, amelyekben különböző erőforrás-készleteket kíván üzembe helyezni, de más erőforráscsoportokbe vagy előfizetésbe helyezi őket. Előfordulhat például, hogy a Azure Site Recovery biztonsági mentési virtuális gépet külön erőforráscsoport és hely számára szeretné telepíteni. A Resource Manager lehetővé teszi beágyazott sablonok használatát több előfizetés és erőforráscsoport megcélzásához.
+A Resource Manager lehetővé teszi, hogy egyetlen üzemelő példányban egynél több erőforráscsoporthoz telepítsen. A beágyazott sablonok segítségével megadhatja a telepítési műveletben szereplő erőforráscsoporthoz eltérő erőforráscsoportokat. Az erőforráscsoportok különböző előfizetésekben találhatók.
 
 > [!NOTE]
-> Egyetlen üzemelő példányban csak öt erőforráscsoport helyezhető üzembe. Ez a korlátozás általában azt jelenti, hogy egy, a szülő sablonhoz megadott erőforráscsoport, valamint a beágyazott vagy csatolt központi telepítések legfeljebb négy erőforráscsoport számára telepíthető. Ha azonban a fölérendelt sablon csak beágyazott vagy csatolt sablonokat tartalmaz, és nem helyezi üzembe az erőforrásokat, akkor akár öt erőforráscsoportot is tartalmazhat beágyazott vagy csatolt központi telepítések esetén.
+> Egyetlen üzemelő példányban **800-erőforráscsoportok** is üzembe helyezhetők. Ez a korlátozás általában azt jelenti, hogy egy, a szülő sablonhoz megadott erőforráscsoport, valamint a beágyazott vagy csatolt központi telepítések legfeljebb 799 erőforráscsoporthoz telepíthetők. Ha azonban a fölérendelt sablon csak beágyazott vagy csatolt sablonokat tartalmaz, és nem helyezi üzembe semmilyen erőforrást, akkor akár 800 erőforráscsoportot is felvehet beágyazott vagy csatolt központi telepítésekben.
 
 ## <a name="specify-subscription-and-resource-group"></a>Előfizetés és erőforráscsoport meghatározása
 
-Ha másik erőforráscsoportot vagy előfizetést szeretne megcélozni, használjon [beágyazott vagy csatolt sablont](linked-templates.md). Az `Microsoft.Resources/deployments` erőforrástípus a `subscriptionId` és `resourceGroup`a paramétereit tartalmazza, amelyek lehetővé teszik az előfizetés és az erőforráscsoport megadását a beágyazott telepítéshez. Ha nem határozza meg az előfizetés-azonosítót vagy az erőforráscsoportot, a rendszer az előfizetést és az erőforráscsoportot használja a fölérendelt sablonból. Az összes erőforráscsoport léteznie kell az üzemelő példány futtatása előtt.
+Egy olyan erőforráscsoport célzásához, amely nem azonos a fölérendelt sablon nevével, használjon [beágyazott vagy csatolt sablont](linked-templates.md). A központi telepítési erőforrástípus mezőben adja meg az előfizetés-azonosító és az erőforráscsoport azon értékeit, amelyekre a beágyazott sablont telepíteni szeretné.
 
-A sablon telepítéséhez használt fióknak engedéllyel kell rendelkeznie a megadott előfizetés-AZONOSÍTÓhoz való központi telepítéshez. Ha a megadott előfizetés egy másik Azure Active Directory-bérlőn létezik, a [vendég felhasználókat hozzá kell adnia egy másik címtárból](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json" range="38-43" highlight="5-6":::
 
-Másik erőforráscsoport és előfizetés megadásához használja a következőt:
+Ha nem határozza meg az előfizetés-azonosítót vagy az erőforráscsoportot, a rendszer az előfizetést és az erőforráscsoportot használja a fölérendelt sablonból. Az összes erőforráscsoport léteznie kell az üzemelő példány futtatása előtt.
 
-```json
-"resources": [
-  {
-    "apiVersion": "2017-05-10",
-    "name": "nestedTemplate",
-    "type": "Microsoft.Resources/deployments",
-    "resourceGroup": "[parameters('secondResourceGroup')]",
-    "subscriptionId": "[parameters('secondSubscriptionID')]",
-    ...
-  }
-]
-```
+A sablont telepítő fióknak engedéllyel kell rendelkeznie a megadott előfizetés-AZONOSÍTÓhoz való üzembe helyezéshez. Ha a megadott előfizetés egy másik Azure Active Directory-bérlőn létezik, a [vendég felhasználókat hozzá kell adnia egy másik címtárból](../../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).
 
-Ha az erőforráscsoportok ugyanahhoz az előfizetéshez tartoznak, akkor eltávolíthatja a **subscriptionId** értéket.
+A következő példa két Storage-fiókot telepít. A rendszer az első Storage-fiókot telepíti a telepítési műveletben megadott erőforráscsoporthoz. A második Storage-fiók a (z) és a (z) paraméterben megadott erőforráscsoporthoz van telepítve `secondResourceGroup` `secondSubscriptionID` :
 
-A következő példa két Storage-fiókot telepít. Az első Storage-fiókot a rendszer az üzembe helyezés során megadott erőforráscsoporthoz telepíti. A második Storage-fiók a (z) `secondResourceGroup` és `secondSubscriptionID` a (z) paraméterben megadott erőforráscsoporthoz van telepítve:
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crosssubscription.json":::
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "storagePrefix": {
-      "type": "string",
-      "maxLength": 11
-    },
-    "secondResourceGroup": {
-      "type": "string"
-    },
-    "secondSubscriptionID": {
-      "type": "string",
-      "defaultValue": ""
-    },
-    "secondStorageLocation": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]"
-    }
-  },
-  "variables": {
-    "firstStorageName": "[concat(parameters('storagePrefix'), uniqueString(resourceGroup().id))]",
-    "secondStorageName": "[concat(parameters('storagePrefix'), uniqueString(parameters('secondSubscriptionID'), parameters('secondResourceGroup')))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "2017-06-01",
-      "name": "[variables('firstStorageName')]",
-      "location": "[resourceGroup().location]",
-      "sku":{
-        "name": "Standard_LRS"
-      },
-      "kind": "Storage",
-      "properties": {
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "nestedTemplate",
-      "resourceGroup": "[parameters('secondResourceGroup')]",
-      "subscriptionId": "[parameters('secondSubscriptionID')]",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          {
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2017-06-01",
-            "name": "[variables('secondStorageName')]",
-            "location": "[parameters('secondStorageLocation')]",
-            "sku":{
-              "name": "Standard_LRS"
-            },
-            "kind": "Storage",
-            "properties": {
-            }
-          }
-          ]
-      },
-      "parameters": {}
-      }
-    }
-  ]
-}
-```
-
-Ha olyan erőforráscsoport `resourceGroup` nevét állítja be, amely nem létezik, akkor a telepítés sikertelen lesz.
+Ha `resourceGroup` olyan erőforráscsoport nevét állítja be, amely nem létezik, akkor a telepítés sikertelen lesz.
 
 Az előző sablon teszteléséhez és az eredmények megtekintéséhez használja a PowerShell vagy az Azure CLI-t.
 
@@ -205,7 +121,7 @@ az deployment group create \
 
 ## <a name="use-functions"></a>Függvények használata
 
-A [resourceGroup ()](template-functions-resource.md#resourcegroup) és az [előfizetés ()](template-functions-resource.md#subscription) függvények a sablon megadásának módjától függően eltérő módon oldhatók fel. Ha külső sablonra hivatkozik, a függvények mindig a sablon hatókörére lesznek feloldva. Ha sablonon belül ágyaz be egy sablont, a `expressionEvaluationOptions` (z) tulajdonság használatával megadhatja, hogy a függvények feloldhatók-e az erőforráscsoport és a fölérendelt sablon vagy a beágyazott sablon előfizetése között. Állítsa a tulajdonságot `inner` úgy, hogy feloldja a beágyazott sablon hatókörét. Állítsa a tulajdonságot `outer` úgy, hogy feloldja a fölérendelt sablon hatókörét.
+A [resourceGroup ()](template-functions-resource.md#resourcegroup) és az [előfizetés ()](template-functions-resource.md#subscription) függvények a sablon megadásának módjától függően eltérő módon oldhatók fel. Ha külső sablonra hivatkozik, a függvények mindig a sablon hatókörére lesznek feloldva. Ha sablonon belül ágyaz be egy sablont, a (z `expressionEvaluationOptions` ) tulajdonság használatával megadhatja, hogy a függvények feloldhatók-e az erőforráscsoport és a fölérendelt sablon vagy a beágyazott sablon előfizetése között. Állítsa a tulajdonságot úgy, `inner` hogy feloldja a beágyazott sablon hatókörét. Állítsa a tulajdonságot úgy, `outer` hogy feloldja a fölérendelt sablon hatókörét.
 
 Az alábbi táblázat azt mutatja, hogy a függvények feloldhatók-e a szülő vagy a beágyazott erőforráscsoport és előfizetés esetében.
 
@@ -221,99 +137,7 @@ A következő [példában a sablon](https://github.com/Azure/azure-docs-json-sam
 * beágyazott sablon belső hatókörrel
 * csatolt sablon
 
-```json
-{
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "variables": {},
-  "resources": [
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "defaultScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "innerScopeTemplate",
-      "resourceGroup": "inlineGroup",
-      "properties": {
-      "expressionEvaluationOptions": {
-          "scope": "inner"
-      },
-      "mode": "Incremental",
-      "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-          "contentVersion": "1.0.0.0",
-          "parameters": {},
-          "variables": {},
-          "resources": [
-          ],
-          "outputs": {
-          "resourceGroupOutput": {
-            "type": "string",
-            "value": "[resourceGroup().name]"
-          }
-          }
-      },
-      "parameters": {}
-      }
-    },
-    {
-      "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2017-05-10",
-      "name": "linkedTemplate",
-      "resourceGroup": "linkedGroup",
-      "properties": {
-      "mode": "Incremental",
-      "templateLink": {
-          "contentVersion": "1.0.0.0",
-          "uri": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/resourceGroupName.json"
-      },
-      "parameters": {}
-      }
-    }
-  ],
-  "outputs": {
-    "parentRG": {
-      "type": "string",
-      "value": "[concat('Parent resource group is ', resourceGroup().name)]"
-    },
-    "defaultScopeRG": {
-      "type": "string",
-      "value": "[concat('Default scope resource group is ', reference('defaultScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "innerScopeRG": {
-      "type": "string",
-      "value": "[concat('Inner scope resource group is ', reference('innerScopeTemplate').outputs.resourceGroupOutput.value)]"
-    },
-    "linkedRG": {
-      "type": "string",
-      "value": "[concat('Linked resource group is ', reference('linkedTemplate').outputs.resourceGroupOutput.value)]"
-    }
-  }
-}
-```
+:::code language="json" source="~/resourcemanager-templates/azure-resource-manager/crossresourcegroupproperties.json":::
 
 Az előző sablon teszteléséhez és az eredmények megtekintéséhez használja a PowerShell vagy az Azure CLI-t.
 

@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/07/2020
+ms.date: 05/12/2020
 ms.author: radeltch
-ms.openlocfilehash: 4fd01764c183098a8bd78d502eea7ab173fa22cc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a89c848f5c6e57aba01c7156cdc61f9e69c30d0b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80293919"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660171"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
@@ -154,7 +154,7 @@ Az architektúra így néz ki:
 4. Hozzon létre Azure Firewall szabályt, hogy engedélyezze a kimenő kapcsolatokat a megadott nyilvános végpontok számára. A példa bemutatja, hogyan engedélyezheti az Azure Management API nyilvános végpontjának elérését.  
    1. Válassza a szabályok, hálózati szabályok gyűjtése, majd a hálózati szabálygyűjtemény hozzáadása elemet.  
    1. Név: **MyOutboundRule**, adja meg a prioritást, válassza a művelet **engedélyezése lehetőséget**.  
-   1. Szolgáltatás: név **ToAzureAPI**.  Protokoll: válassza **a bármelyik**lehetőséget. Forrás címe: adja meg az alhálózat tartományát, ahol a virtuális gépek és a standard Load Balancer telepítve vannak a következő példányhoz: **11.97.0.0/24**. Célport: írja be <b>*</b>a (z) értéket.  
+   1. Szolgáltatás: név **ToAzureAPI**.  Protokoll: válassza **a bármelyik**lehetőséget. Forrás címe: adja meg az alhálózat tartományát, ahol a virtuális gépek és a standard Load Balancer telepítve vannak a következő példányhoz: **11.97.0.0/24**. Célport: írja be a (z <b>*</b> ) értéket.  
    1. Mentés
    1. Ha továbbra is a Azure Firewall elhelyezni, válassza az Áttekintés lehetőséget. Jegyezze fel a Azure Firewall magánhálózati IP-címét.  
 5. Útvonal létrehozása a Azure Firewallhoz  
@@ -162,7 +162,7 @@ Az architektúra így néz ki:
    1. Adja meg a MyRouteTable nevet, válassza az előfizetés, az erőforráscsoport és a hely lehetőséget (a virtuális hálózat és a tűzfal helyének megfelelő).  
    1. Mentés  
 
-   A tűzfalszabály a következőhöz hasonlóan néz ![ki: kimenő kapcsolatok Azure Firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
+   A tűzfalszabály a következőhöz hasonlóan néz ki: ![ Kimenő kapcsolatok Azure Firewall](./media/high-availability-guide-standard-load-balancer/high-availability-guide-standard-load-balancer-firewall-rule.png)
 
 6. Hozzon létre felhasználó által megadott útvonalat a virtuális gépek alhálózatáról a **MyAzureFirewall**magánhálózati IP-címére.
    1. Ahogy az útválasztási táblázatban van elhelyezve, kattintson az útvonalak elemre. Válassza a Hozzáadás lehetőséget. 
@@ -176,7 +176,7 @@ A proxy használatával engedélyezheti a pacemaker-hívásokat az Azure felügy
 ### <a name="important-considerations"></a>Fontos szempontok
 
   - Ha már van vállalati proxy, a kimenő hívásokat átirányíthatja a nyilvános végponti pontokra. A nyilvános végpontok felé irányuló kimenő hívások a vállalati ellenőrzési ponton haladnak át.  
-  - Győződjön meg arról, hogy a proxy konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val:`https://management.azure.com`  
+  - Győződjön meg arról, hogy a proxy konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val: `https://management.azure.com``https://login.microsoftonline.com`  
   - Ellenőrizze, hogy van-e útvonal a virtuális gépekről a proxyra  
   - A proxy csak a HTTP/HTTPS-hívásokat fogja kezelni. Ha a nyilvános végpontnak a különböző protokollok (például az RFC) felé irányuló kimenő hívásokat is el kell végeznie, alternatív megoldásra lesz szükség.  
   - A proxy megoldásnak nagyon széles körben elérhetőnek kell lennie a pacemaker-fürt instabilitásának elkerülése érdekében  
@@ -219,6 +219,10 @@ Ha engedélyezni szeretné, hogy a pacemaker kommunikáljon az Azure felügyelet
      # Take the cluster out of maintenance mode
      sudo pcs property set maintenance-mode=false
      ```
+
+## <a name="other-solutions"></a>Egyéb megoldások
+
+Ha a kimenő forgalom harmadik féltől származó tűzfalon keresztül van átirányítva, győződjön meg arról, hogy a tűzfal konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val: `https://management.azure.com` és `https://login.microsoftonline.com` .  
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: mjbrown
-ms.openlocfilehash: 4249f1e9f2bf9fcb235644bb211065db460c936e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 0e7a2e9e5feb848971c4858415510f98a7bdaf78
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869896"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655349"
 ---
-# <a name="provision-throughput-on-an-azure-cosmos-container"></a>Átviteli sebesség kiépítése Azure Cosmos-tárolón
+# <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Standard (manuális) átviteli sebesség kiépítése egy Azure Cosmos-tárolón
 
-Ez a cikk azt ismerteti, hogyan lehet átviteli sebességet kiépíteni egy tárolón (gyűjtemény, gráf vagy tábla) Azure Cosmos DBban. Az átviteli sebességet egyetlen tárolón is kiépítheti, vagy az [átviteli sebességet kiépítheti egy adatbázisba](how-to-provision-database-throughput.md) , és megoszthatja azt az adatbázisban lévő tárolók között. Az átviteli sebességet Azure Portal, Azure CLI vagy Azure Cosmos DB SDK-k használatával is kiépítheti egy tárolóba.
+Ez a cikk azt ismerteti, hogyan lehet szabványos (manuális) átviteli sebességet kiépíteni egy tárolón (gyűjtemény, gráf vagy tábla) Azure Cosmos DB. Az átviteli sebességet egyetlen tárolón is kiépítheti, vagy az [átviteli sebességet kiépítheti egy adatbázisba](how-to-provision-database-throughput.md) , és megoszthatja azt az adatbázisban lévő tárolók között. Az átviteli sebességet Azure Portal, Azure CLI vagy Azure Cosmos DB SDK-k használatával is kiépítheti egy tárolóba.
 
 ## <a name="azure-portal"></a>Azure Portal
 
@@ -27,9 +27,9 @@ Ez a cikk azt ismerteti, hogyan lehet átviteli sebességet kiépíteni egy tár
 
    * Jelezze, hogy új adatbázist hoz létre, vagy egy meglévőt használ.
    * Adja meg a tároló (vagy a tábla vagy a gráf) AZONOSÍTÓját.
-   * Adja meg a partíciós kulcs értékét (például `/userid`:).
+   * Adja meg a partíciós kulcs értékét (például: `/userid` ).
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Kattintson az **OK** gombra.
+   * Válassza az **OK** lehetőséget.
 
     ![Képernyőkép a Adatkezelőről, új gyűjtemény kiemelve](./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png)
 
@@ -41,7 +41,7 @@ Tároló létrehozása dedikált átviteli sebességgel:
 * [Tároló létrehozása a PowerShell használatával](manage-with-powershell.md#create-container)
 
 > [!Note]
-> Ha a MongoDB Azure Cosmos DB API-val konfigurált Azure Cosmos-fiókban lévő tárolón való kiépítési átviteli sebességre van konfigurálva `/myShardKey` , használja a (z) partíciót a partíciós kulcs elérési útjára. Ha az átviteli sebességet egy Cassandra API konfigurált Azure Cosmos-fiókban lévő tárolóban szeretné kiépíteni, `/myPrimaryKey` használja a partíciós kulcs elérési útját.
+> Ha a MongoDB Azure Cosmos DB API-val konfigurált Azure Cosmos-fiókban lévő tárolón való kiépítési átviteli sebességre van konfigurálva, használja a `/myShardKey` (z) partíciót a partíciós kulcs elérési útjára. Ha az átviteli sebességet egy Cassandra API konfigurált Azure Cosmos-fiókban lévő tárolóban szeretné kiépíteni, használja `/myPrimaryKey` a partíciós kulcs elérési útját.
 
 ## <a name="net-sdk"></a>.NET SDK
 
@@ -123,5 +123,6 @@ session.Execute("ALTER TABLE myKeySpace.myTable WITH cosmosdb_provisioned_throug
 
 A következő cikkekből megtudhatja, hogyan lehet kiépíteni az átviteli sebességet a Azure Cosmos DBban:
 
-* [Adatátviteli kapacitás kiépítése egy adatbázison](how-to-provision-database-throughput.md)
+* [A standard (manuális) átviteli sebesség kiépítése egy adatbázison](how-to-provision-database-throughput.md)
+* [Az autoskálázási teljesítmény kiépítése egy adatbázison](how-to-provision-autoscale-throughput.md)
 * [Kérelemegységek és átviteli sebesség az Azure Cosmos DB-ben](request-units.md)

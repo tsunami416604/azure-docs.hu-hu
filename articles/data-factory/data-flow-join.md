@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/02/2020
-ms.openlocfilehash: 9b720470ac406ed0730e6243262dcf33d2df169a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/15/2020
+ms.openlocfilehash: f95f35fe0d17afdeec864674d3360fc3b172cad1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233421"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683363"
 ---
 # <a name="join-transformation-in-mapping-data-flow"></a>Az átalakítás összekapcsolása a leképezési adatfolyamban
 
@@ -50,18 +50,24 @@ A Cross JOIN egy feltétel alapján a két stream termékeit adja vissza. Ha oly
 
 Ezt az illesztési típust nem megfelelő illesztésekhez és ```OR``` feltételekhez is használhatja.
 
-Ha explicit módon szeretne létrehozni egy teljes Descartes-szorzatot, használja a két független adatfolyamban található származtatott oszlop-átalakítást, mielőtt a JOIN (szintetikus) kulcsot létre szeretne hozni az egyeztetéshez. Hozzon létre például egy új oszlopot a származtatott oszlopban az egyes streamek ```SyntheticKey``` nevű adatfolyamban, és ```1```állítsa be egyenlő értékre. Ezután használja ```a.SyntheticKey == b.SyntheticKey``` az egyéni illesztési kifejezést.
+Ha explicit módon szeretne létrehozni egy teljes Descartes-szorzatot, használja a két független adatfolyamban található származtatott oszlop-átalakítást, mielőtt a JOIN (szintetikus) kulcsot létre szeretne hozni az egyeztetéshez. Hozzon létre például egy új oszlopot a származtatott oszlopban az egyes streamek nevű adatfolyamban, ```SyntheticKey``` és állítsa be egyenlő értékre ```1``` . Ezután használja az ```a.SyntheticKey == b.SyntheticKey``` Egyéni illesztési kifejezést.
 
 > [!NOTE]
 > Ügyeljen arra, hogy a bal és a jobb oldali kapcsolat mindegyik oldaláról legalább egy oszlopot tartalmazzon egy egyéni kereszt-illesztésben. Az egymáshoz tartozó oszlopok helyett a statikus értékekkel való összekapcsolások végrehajtása a teljes adatkészlet teljes vizsgálatát eredményezi, így az adatfolyamatok nem tudnak megfelelően elvégezni.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>Konfiguráció
 
 1. Válassza ki, hogy melyik adatfolyamot kívánja csatlakoztatni a **megfelelő stream** legördülő menüben.
 1. Válassza ki az **illesztés típusát**
 1. Válassza ki, hogy mely kulcs oszlopokat szeretné összekapcsolni a csatlakozás feltételéhez. Alapértelmezés szerint az adatforgalom az egyes adatfolyamok egy oszlopa között keresi az egyenlőséget. Számított érték alapján történő összehasonlításhoz vigye az egérmutatót az oszlop legördülő menüjére, és válassza a **számított oszlop**lehetőséget.
 
 ![Csatlakozás az átalakításhoz](media/data-flow/join.png "Csatlakozás")
+
+### <a name="non-equi-joins"></a>Nem összekapcsolható illesztések
+
+Ha feltételes operátort szeretne használni, például nem egyenlő (! =) vagy nagyobb, mint (>) az illesztési feltételekben, módosítsa a kezelő legördülő listát a két oszlop között. A nem megfelelő illesztésekhez szükséges, hogy a két stream közül legalább az egyiket a **rögzített** szórás használatával lehessen közvetíteni az **optimalizálás** lapon.
+
+![Nem illesztések csatlakoztatása](media/data-flow/non-equi-join.png "Nem illesztések csatlakoztatása")
 
 ## <a name="optimizing-join-performance"></a>Az illesztési teljesítmény optimalizálása
 
@@ -98,7 +104,7 @@ Az adatelőnézetsel rendelkező illesztési átalakítások hibakeresési módb
 
 ### <a name="inner-join-example"></a>Példa belső illesztésre
 
-Az alábbi példa egy nevű `JoinMatchedData` összekapcsolási átalakítás, amely a `TripData` Stream és a `TripFare`jobb oldali streamet veszi át.  Az illesztési feltétel az a `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` kifejezés, amely igaz értéket `hack_license`ad `medallion`vissza `vendor_id`, ha `pickup_datetime` a,, és oszlopok az egyes adatfolyam-egyezésekben szerepelnek. A `joinType` : `'inner'`. Csak a bal oldali adatfolyamban engedélyezzük a szórást `broadcast` , `'left'`így az értéke.
+Az alábbi példa egy nevű összekapcsolási átalakítás, `JoinMatchedData` amely a stream `TripData` és a jobb oldali streamet veszi át `TripFare` .  Az illesztési feltétel az a kifejezés, `hack_license == { hack_license} && TripData@medallion == TripFare@medallion && vendor_id == { vendor_id} && pickup_datetime == { pickup_datetime}` amely igaz értéket ad vissza, ha a `hack_license` ,, `medallion` `vendor_id` és `pickup_datetime` oszlopok az egyes adatfolyam-egyezésekben szerepelnek. A `joinType` : `'inner'` . Csak a bal oldali adatfolyamban engedélyezzük a szórást, így az `broadcast` értéke `'left'` .
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 
@@ -120,7 +126,7 @@ TripData, TripFare
 
 ### <a name="custom-cross-join-example"></a>Példa az egyéni keresztbe való csatlakozásra
 
-Az alábbi példa egy nevű `JoiningColumns` összekapcsolási átalakítás, amely a `LeftStream` Stream és a `RightStream`jobb oldali streamet veszi át. Ez az átalakítás két adatfolyamot vesz igénybe, és összekapcsolja az összes olyan sort, ahol az oszlop `leftstreamcolumn` nagyobb az oszlopnál `rightstreamcolumn`. A `joinType` : `cross`. A szórás nincs engedélyezve `broadcast` érték `'none'`.
+Az alábbi példa egy nevű összekapcsolási átalakítás, `JoiningColumns` amely a stream `LeftStream` és a jobb oldali streamet veszi át `RightStream` . Ez az átalakítás két adatfolyamot vesz igénybe, és összekapcsolja az összes olyan sort, ahol `leftstreamcolumn` az oszlop nagyobb az oszlopnál `rightstreamcolumn` . A `joinType` : `cross` . A szórás nincs engedélyezve `broadcast` érték `'none'` .
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 

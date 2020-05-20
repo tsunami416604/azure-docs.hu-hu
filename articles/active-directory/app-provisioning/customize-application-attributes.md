@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
-ms.openlocfilehash: 4abfdd94c57064c86e533234d78f774c45ba8e4a
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 9697bc2abd147a501466ba134f96512fe15173c0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593862"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639048"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -108,7 +108,7 @@ Az attribútumok listájának testreszabását támogató alkalmazások és rend
 - Salesforce
 - ServiceNow
 - Workday
-- Azure Active Directory ([Microsoft Graph REST API 1.0-s verzió referenciája](https://docs.microsoft.com/graph/api/overview?view=graph-rest-1.0) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
+- Azure Active Directory (az[Azure AD Graph API alapértelmezett attribútumai](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity) és az egyéni címtárszolgáltatás-bővítmények támogatottak)
 - Az [SCIM 2,0](https://tools.ietf.org/html/rfc7643)-et támogató alkalmazások, ahol az [alapsémában](https://tools.ietf.org/html/rfc7643) definiált attribútumokat fel kell venni
 
 > [!NOTE]

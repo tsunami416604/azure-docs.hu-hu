@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: eb287b812c477b2e472c48d7bd8f44574a398bac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 83f80f893620a225c928be2ad7ad1679b3a9c465
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681570"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652230"
 ---
 # <a name="configure-the-model-conversion"></a>A modellátalakítás konfigurálása
 
@@ -18,7 +18,7 @@ Ez a fejezet a modell átalakításának lehetőségeit dokumentálja.
 
 ## <a name="settings-file"></a>Beállítási fájl
 
-Ha egy nevű `ConversionSettings.json` fájl megtalálható a bemeneti tárolóban a bemeneti modell mellett, akkor a rendszer a modell átalakítási folyamatának további konfigurációját használja.
+Ha egy nevű fájl `ConversionSettings.json` megtalálható a bemeneti tárolóban a bemeneti modell mellett, akkor a rendszer a modell átalakítási folyamatának további konfigurációját használja.
 
 A fájl tartalmának meg kell felelnie a következő JSON-sémának:
 
@@ -39,6 +39,7 @@ A fájl tartalmának meg kell felelnie a következő JSON-sémának:
         "generateCollisionMesh" : { "type" : "boolean", "default" : true },
         "unlitMaterials" : { "type" : "boolean", "default" : false },
         "fbxAssumeMetallic" : { "type" : "boolean", "default" : true },
+        "deduplicateMaterials" : { "type" : "boolean", "default" : true },
         "axis" : {
             "type" : "array",
             "items" : {
@@ -53,7 +54,7 @@ A fájl tartalmának meg kell felelnie a következő JSON-sémának:
 }
 ```
 
-Lehetséges például `ConversionSettings.json` , hogy a fájl:
+Lehetséges például, `ConversionSettings.json` hogy a fájl:
 
 ```json
 {
@@ -79,6 +80,10 @@ Ha ez nem a kívánt viselkedés, a paramétert "SingleSided" értékre kell be�
 
 * `material-override`– Ez a paraméter lehetővé teszi, hogy az anyagok feldolgozása az [átalakítás során testreszabható](override-materials.md)legyen.
 
+### <a name="material-de-duplication"></a>Anyag – ismétlődés
+
+* `deduplicateMaterials`– Ezzel a paraméterrel engedélyezheti vagy letilthatja az olyan anyagok automatikus ismétlődését, amelyek ugyanazokat a tulajdonságokat és textúrákat használják. A Duplikálás az anyagi Felülbírálások feldolgozása után következik be. Alapértelmezés szerint engedélyezve van.
+
 ### <a name="color-space-parameters"></a>Színtér paraméterei
 
 A renderelési motor a színértékeket a lineáris térben várja.
@@ -88,7 +93,7 @@ Ha a modell a gamma szóköz használatával van definiálva, akkor ezeket a be�
 * `gammaToLinearVertex`– A csúcspontok színeinek konvertálása a gamma-területről a lineáris helyre
 
 > [!NOTE]
-> FBX- `true` fájlok esetén ezek a beállítások alapértelmezés szerint vannak beállítva. Az összes többi fájltípus esetében az alapértelmezett érték a `false`következő:.
+> FBX-fájlok esetén ezek a beállítások `true` alapértelmezés szerint vannak beállítva. Az összes többi fájltípus esetében az alapértelmezett érték a következő: `false` .
 
 ### <a name="scene-parameters"></a>Jelenet paraméterei
 
@@ -104,11 +109,11 @@ A `static` mód exportálja a teljes jelenet gráfot, de az ebben a gráfban tal
 A `none` mód a legalacsonyabb futtatókörnyezettel rendelkezik, és valamivel jobb betöltési időt is igénybe venni. Az önálló objektumok vizsgálata és átalakítása ebben a módban nem lehetséges. A használati esetek például olyan photogrammetry modellek, amelyeken nem szerepelnek az értelmes Scene gráfok az első helyen.
 
 > [!TIP]
-> Számos alkalmazás több modellt is betölt. Az egyes modellekhez tartozó konverziós paramétereket a használatuk módjától függően érdemes optimalizálni. Ha például egy autó modelljét szeretné megjeleníteni a felhasználó számára, és részletesen megvizsgálja azt, akkor a `dynamic` módot kell konvertálnia. Ha azonban azt is szeretné, hogy az autó egy show Room-környezetben legyen elhelyezve, a modell a `sceneGraphMode` készlet és a `static` beállítás között `none`is konvertálható.
+> Számos alkalmazás több modellt is betölt. Az egyes modellekhez tartozó konverziós paramétereket a használatuk módjától függően érdemes optimalizálni. Ha például egy autó modelljét szeretné megjeleníteni a felhasználó számára, és részletesen megvizsgálja azt, akkor a módot kell konvertálnia `dynamic` . Ha azonban azt is szeretné, hogy az autó egy show Room-környezetben legyen elhelyezve, a modell a készlet és a beállítás között is konvertálható `sceneGraphMode` `static` `none` .
 
 ### <a name="physics-parameters"></a>Fizikai paraméterek
 
-* `generateCollisionMesh`– Ha a modellen a [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md) támogatásra van szüksége, ezt a beállítást engedélyezni kell. A legrosszabb esetben az ütközési háló létrehozása megduplázhatja az átalakítási időt. Az ütközési hálókkal rendelkező modellek a betöltéshez és a `dynamic` Scene Graph használatakor hosszabb időt is igénybe vehetik. Az optimális teljesítmény érdekében tiltsa le ezt a beállítást minden olyan modellen, amelyen nincs szükség térbeli lekérdezésekre.
+* `generateCollisionMesh`– Ha a modellen a [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md) támogatásra van szüksége, ezt a beállítást engedélyezni kell. A legrosszabb esetben az ütközési háló létrehozása megduplázhatja az átalakítási időt. Az ütközési hálókkal rendelkező modellek a betöltéshez és a Scene Graph használatakor hosszabb időt is igénybe vehetik `dynamic` . Az optimális teljesítmény érdekében tiltsa le ezt a beállítást minden olyan modellen, amelyen nincs szükség térbeli lekérdezésekre.
 
 ### <a name="unlit-materials"></a>Kivilágított anyagok
 
@@ -116,11 +121,11 @@ A `none` mód a legalacsonyabb futtatókörnyezettel rendelkezik, és valamivel 
 
 ### <a name="converting-from-older-fbx-formats-with-a-phong-material-model"></a>Konvertálás régebbi FBX-formátumokból
 
-* `fbxAssumeMetallic`– A FBX-formátum régebbi verziói az anyagokat egy, egy vagy több anyagot tartalmazó modell használatával határozzák meg. Az átalakítási folyamatnak azt a következtetést kell kimutatnia, hogy ezek az anyagok hogyan képezik le a megjelenítő [pbr-modelljét](../../overview/features/pbr-materials.md). Ez általában jól működik, de a kétértelműség akkor merülhet fel, ha egy anyag nem tartalmaz textúrákat, nagy fényvisszaverődési értékeket és nem szürke albedó-színt. Ebben a körülmények között a konverziónak választania kell a nagy teljesítményű értékek rangsorolása, a nagy mértékben tükröző fémes anyagok meghatározásával, ahol a albedó színe megszűnik, vagy rangsorolja a albedó színét, ami a fényes színes műanyaghoz hasonló. Alapértelmezés szerint az átalakítási folyamat azt feltételezi, hogy a nagyon fényvisszaverődési értékek fémes anyagokat jelentenek azokban az esetekben, ahol a kétértelműség vonatkozik. Ez a paraméter `false` beállítható úgy, hogy átváltson a másikra.
+* `fbxAssumeMetallic`– A FBX-formátum régebbi verziói az anyagokat egy, egy vagy több anyagot tartalmazó modell használatával határozzák meg. Az átalakítási folyamatnak azt a következtetést kell kimutatnia, hogy ezek az anyagok hogyan képezik le a megjelenítő [pbr-modelljét](../../overview/features/pbr-materials.md). Ez általában jól működik, de a kétértelműség akkor merülhet fel, ha egy anyag nem tartalmaz textúrákat, nagy fényvisszaverődési értékeket és nem szürke albedó-színt. Ebben a körülmények között a konverziónak választania kell a nagy teljesítményű értékek rangsorolása, a nagy mértékben tükröző fémes anyagok meghatározásával, ahol a albedó színe megszűnik, vagy rangsorolja a albedó színét, ami a fényes színes műanyaghoz hasonló. Alapértelmezés szerint az átalakítási folyamat azt feltételezi, hogy a nagyon fényvisszaverődési értékek fémes anyagokat jelentenek azokban az esetekben, ahol a kétértelműség vonatkozik. Ez a paraméter beállítható úgy, hogy `false` átváltson a másikra.
 
 ### <a name="coordinate-system-overriding"></a>Koordinátarendszer-felülbírálás
 
-* `axis`– A koordináta rendszeregység – vektorok felülbírálása. Az `["+x", "+y", "+z"]`alapértelmezett értékek:. Elméletileg a FBX formátuma tartalmaz egy fejlécet, ahol ezek a vektorok definiálva vannak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátuma rögzített koordináta-rendszereket is meghatároz. A gyakorlatban bizonyos adategységek helytelen információval rendelkeznek a fejlécben, vagy egy másik koordináta-rendszeregyezménnyel lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszerek felülbírálását a kompenzálása érdekében. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z-tengelyt és az y tengelyt, és megtartja a koordináta-rendszer kézhasználat az Y tengely irányának invertálása mellett.
+* `axis`– A koordináta rendszeregység – vektorok felülbírálása. Az alapértelmezett értékek: `["+x", "+y", "+z"]` . Elméletileg a FBX formátuma tartalmaz egy fejlécet, ahol ezek a vektorok definiálva vannak, és a konverzió ezt az információt használja a jelenet átalakításához. A glTF formátuma rögzített koordináta-rendszereket is meghatároz. A gyakorlatban bizonyos adategységek helytelen információval rendelkeznek a fejlécben, vagy egy másik koordináta-rendszeregyezménnyel lettek mentve. Ez a beállítás lehetővé teszi a koordináta-rendszerek felülbírálását a kompenzálása érdekében. Például: `"axis" : ["+x", "+z", "-y"]` kicseréli a Z-tengelyt és az y tengelyt, és megtartja a koordináta-rendszer kézhasználat az Y tengely irányának invertálása mellett.
 
 ### <a name="vertex-format"></a>Csúcspont formátuma
 
@@ -134,7 +139,7 @@ Ezek a módosítások lehetségesek:
 * Az adott adatfolyamok explicit módon szerepelhetnek vagy zárhatók ki.
 * Az adatfolyamok pontossága csökkenthető a memória helyigényének csökkentése érdekében.
 
-A `.json` fájl `vertex` következő szakasza nem kötelező. Minden explicit módon megadott résznél az átalakítási szolgáltatás visszaáll az alapértelmezett értékre.
+A `vertex` fájl következő szakasza `.json` nem kötelező. Minden explicit módon megadott résznél az átalakítási szolgáltatás visszaáll az alapértelmezett értékre.
 
 ```json
 {
@@ -152,7 +157,7 @@ A `.json` fájl `vertex` következő szakasza nem kötelező. Minden explicit m�
     ...
 ```
 
-Ha az összetevőt arra `NONE`kényszeríti, hogy a kimeneti rácsvonal nem rendelkezik a megfelelő streamtel.
+Ha az összetevőt arra kényszeríti `NONE` , hogy a kimeneti rácsvonal nem rendelkezik a megfelelő streamtel.
 
 #### <a name="component-formats-per-vertex-stream"></a>Összetevő-formátumok/Vertex Stream
 
@@ -173,7 +178,7 @@ Ezek a formátumok a megfelelő összetevők esetében engedélyezettek:
 
 A formátumok memória-lábnyomai a következők:
 
-| Formátum | Leírás | Bájt/csúcspont |
+| Formátum | Description | Bájt/csúcspont |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|két összetevő teljes lebegőpontos pontossága|8
 |16_16_FLOAT|két összetevős fél lebegőpontos pontossága|4
@@ -185,18 +190,18 @@ A formátumok memória-lábnyomai a következők:
 #### <a name="best-practices-for-component-format-changes"></a>Ajánlott eljárások az összetevő formátumának változásaihoz
 
 * `position`: Ritkán fordul elő, hogy a kisebb pontosság elegendő. a **16_16_16_16_FLOAT** a nagy méretű modellek esetében is bevezeti a észlelhető kvantálási összetevőket.
-* `normal`, `tangent`, `binormal`: Általában ezek az értékek együtt változnak. Ha a normál kvantálást eredményező, észrevehetően megvilágított összetevők nem indokolják meg a pontosság növelését. Bizonyos esetekben azonban ezek az összetevők a **none**értékre állíthatók:
-  * `normal`, `tangent`és `binormal` csak akkor szükséges, ha a modellben legalább egy anyagot meg kell világítani. Az ARR-ben ez a helyzet akkor, ha egy [pbr-anyagot](../../overview/features/pbr-materials.md) bármikor használ a modellben.
+* `normal`, `tangent` , `binormal` : Általában ezek az értékek együtt változnak. Ha a normál kvantálást eredményező, észrevehetően megvilágított összetevők nem indokolják meg a pontosság növelését. Bizonyos esetekben azonban ezek az összetevők a **none**értékre állíthatók:
+  * `normal`, `tangent` és `binormal` csak akkor szükséges, ha a modellben legalább egy anyagot meg kell világítani. Az ARR-ben ez a helyzet akkor, ha egy [pbr-anyagot](../../overview/features/pbr-materials.md) bármikor használ a modellben.
   * `tangent`és `binormal` csak akkor szükséges, ha a megvilágított anyagok bármelyike normál Térkép textúrát használ.
-* `texcoord0`: `texcoord1` A textúra koordinátái használhatnak kisebb pontosságot (**16_16_FLOAT**), ha az értékek a `[0; 1]` tartományon maradnak, és ha a kezelt textúrák maximális mérete 2048 x 2048 képpont. Ha túllépi a korlátokat, a textúra-leképezés minősége is csökkenni fog.
+* `texcoord0``texcoord1`: A textúra koordinátái használhatnak kisebb pontosságot (**16_16_FLOAT**), ha az értékek a tartományon maradnak, `[0; 1]` és ha a kezelt textúrák maximális mérete 2048 x 2048 képpont. Ha túllépi a korlátokat, a textúra-leképezés minősége is csökkenni fog.
 
 #### <a name="example"></a>Példa
 
 Tegyük fel, hogy van egy photogrammetry-modellje, amely a textúrákba besütött világítással rendelkezik. Minden, ami a modell megjelenítéséhez szükséges, a csúcsponti pozíciók és a textúra koordinátái.
 
-Alapértelmezés szerint a konvertálónak feltételezni kell, hogy egy modellben a pbr-anyagokat egy időben szeretné használni, így Ön is `normal`létrehozhatja `tangent`, `binormal` és felhasználhatja azokat. Következésképpen a vertex `position` memóriahasználat (12 bájt) + `texcoord0` (8 bájt) + `normal` (4 bájt `tangent` `binormal` ) + (4 bájt) + (4 bájt) = 32 bájt. Az ilyen típusú nagyobb modellek egyszerűen több millió csúcsponttal rendelkezhetnek, ami a több gigabájt memóriát is igénybe vehet. Ilyen nagy mennyiségű adat befolyásolja a teljesítményt, és előfordulhat, hogy elfogyott a memória.
+Alapértelmezés szerint a konvertálónak feltételezni kell, hogy egy modellben a pbr-anyagokat egy időben szeretné használni, így Ön is létrehozhatja, és felhasználhatja `normal` `tangent` `binormal` azokat. Következésképpen a vertex memóriahasználat `position` (12 bájt) + `texcoord0` (8 bájt) + (4 bájt) + (4 bájt) + ( `normal` 4 bájt `tangent` `binormal` ) = 32 bájt. Az ilyen típusú nagyobb modellek egyszerűen több millió csúcsponttal rendelkezhetnek, ami a több gigabájt memóriát is igénybe vehet. Ilyen nagy mennyiségű adat befolyásolja a teljesítményt, és előfordulhat, hogy elfogyott a memória.
 
-Tudván, hogy soha nem szükséges a modell dinamikus megvilágítása, és tudván, hogy az összes `[0; 1]` textúra koordinátái a tartományon `normal`belül `tangent`vannak, `binormal` beállíthatja, és a `NONE` (z) és a (z) és a (z), a és a (z), és `texcoord0` a (`16_16_FLOAT`z) A (többek között) Mesh-adat kivágása lehetővé teszi a nagyobb modellek betöltését és a teljesítmény növelését.
+Tudván, hogy soha nem szükséges a modell dinamikus megvilágítása, és tudván, hogy az összes textúra koordinátái a tartományon belül vannak, beállíthatja, `[0; 1]` `normal` `tangent` és `binormal` a `NONE` (z) és a (z) és a `texcoord0` (z), a és a (z), és a (z `16_16_FLOAT` ) A (többek között) Mesh-adat kivágása lehetővé teszi a nagyobb modellek betöltését és a teljesítmény növelését.
 
 ## <a name="typical-use-cases"></a>Jellemző használati esetek
 
@@ -206,7 +211,7 @@ Vannak bizonyos használati esetek, amelyek adott optimalizálásokra érvényes
 
 ### <a name="use-case-architectural-visualization--large-outdoor-maps"></a>Használati eset: építészeti vizualizáció/nagyméretű kültéri térképek
 
-* Ezek a típusú jelenetek általában statikusak, ami azt jelenti, hogy nincs szükségük mozgó részekre. Ennek megfelelően a `sceneGraphMode` állítható be `static` vagy akár akár is `none`, ami javítja a futtatókörnyezet teljesítményét. A `static` módban a jelenet legfelső szintű csomópontja továbbra is áthelyezhető, elforgatható és méretezhető, például dinamikusan válthat a 1:1 skála (első személy nézet) és a tábla felső nézete között.
+* Ezek a típusú jelenetek általában statikusak, ami azt jelenti, hogy nincs szükségük mozgó részekre. Ennek megfelelően a állítható be `sceneGraphMode` `static` vagy akár akár is `none` , ami javítja a futtatókörnyezet teljesítményét. A `static` módban a jelenet legfelső szintű csomópontja továbbra is áthelyezhető, elforgatható és méretezhető, például dinamikusan válthat a 1:1 skála (első személy nézet) és a tábla felső nézete között.
 
 * Ha a körüli részeket át kell helyeznie, ez általában azt is jelenti, hogy támogatásra van szüksége a raycasts vagy más [térbeli lekérdezésekhez](../../overview/features/spatial-queries.md), így az első helyen kiválaszthatja ezeket a részeket. Ha azonban nem kívánja áthelyezni a körülötte lévőket, valószínűleg nem kell a térbeli lekérdezésekben részt vennie, és így ki is kapcsolhatja a `generateCollisionMesh` jelzőt. Ez a kapcsoló jelentős hatással van az átalakítási időpontokra, a betöltési időpontokra, valamint az egyes kereteken belüli frissítési költségekre is.
 
@@ -214,18 +219,18 @@ Vannak bizonyos használati esetek, amelyek adott optimalizálásokra érvényes
 
 ### <a name="use-case-photogrammetry-models"></a>Használati eset: photogrammetry-modellek
 
-A photogrammetry-modellek renderelése esetén általában nincs szükség a jelenet gráfra, így beállíthatja a `sceneGraphMode` - `none`t. Mivel ezek a modellek ritkán tartalmaznak egy összetett színtér-diagramot, amely a következővel kezdődik, a lehetőség hatásának jelentéktelennek kell lennie, mégis.
+A photogrammetry-modellek renderelése esetén általában nincs szükség a jelenet gráfra, így beállíthatja a `sceneGraphMode` -t `none` . Mivel ezek a modellek ritkán tartalmaznak egy összetett színtér-diagramot, amely a következővel kezdődik, a lehetőség hatásának jelentéktelennek kell lennie, mégis.
 
 Mivel a megvilágítás már besütött a textúrákba, nem szükséges dinamikus megvilágítás. Ezért:
 
-* Állítsa be `unlitMaterials` a jelölőt úgy `true` , hogy az összes anyagot kivilágítatlan [színanyagokba](../../overview/features/color-materials.md)kapcsolja.
+* Állítsa be a `unlitMaterials` jelölőt úgy, hogy az `true` összes anyagot kivilágítatlan [színanyagokba](../../overview/features/color-materials.md)kapcsolja.
 * Szüntesse meg a nem szükséges adatok csúcspont-formátumból való eltávolítását. Lásd a fenti [példát](#example) .
 
 ### <a name="use-case-visualization-of-compact-machines-etc"></a>Használati eset: kompakt gépek megjelenítése stb.
 
 Ezekben a használati esetekben a modellek gyakran nagyon nagy részletességgel rendelkeznek egy kis köteten belül. A megjelenítő nagy mértékben van optimalizálva az ilyen esetek kezelésére. Az előző használati esetben említett optimalizálások többsége azonban itt nem érvényes:
 
-* Az egyes részeknek kijelölhető és mozgathatónak kell `sceneGraphMode` lenniük, így a `dynamic`kötelezően meg kell maradnia.
+* Az egyes részeknek kijelölhető és mozgathatónak kell lenniük, így a `sceneGraphMode` kötelezően meg kell maradnia `dynamic` .
 * A Ray-öntvények általában az alkalmazás szerves részét képezik, ezért az ütközési hálókat kell létrehozni.
 * A kivágott síkok jobban kitűnnek a `opaqueMaterialDefaultSidedness` jelzővel.
 

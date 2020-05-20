@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/18/2020
 ms.author: diberry
-ms.openlocfilehash: fc9f44739cd57eb46179ff17eba1d4f73d968799
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 3b9466bf52b3650216408a8f0906f3208dfae42d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585623"
+ms.locfileid: "83653912"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>Új LUIS-alkalmazás létrehozása a LUIS portálon
 A LUIS-alkalmazások többféleképpen is létrehozhatók. Luis-alkalmazást a LUIS-portálon vagy a LUIS authoring [API](developer-reference-resource.md)-kon keresztül hozhat létre.
@@ -45,10 +45,10 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
 
 ## <a name="create-new-app-in-luis"></a>Új alkalmazás létrehozása a LUIS-ban
 
-1. A **saját alkalmazások** oldalon válassza ki az előfizetését, és **hozzon létre**egy erőforrást, majd a + létrehozás elemet. Ha ingyenes próbaverziós kulcsot használ, Ismerje meg, hogyan [hozhat létre authoring-erőforrásokat](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
+1. A **saját alkalmazások** oldalon válassza ki az **előfizetését**, és **hozzon létre**egy **erőforrást** , majd a + létrehozás elemet. Ha ingyenes próbaverziós kulcsot használ, Ismerje meg, hogyan [hozhat létre authoring-erőforrásokat](luis-how-to-azure-subscription.md#create-resources-in-the-azure-portal).
 
-    ![LUIS-alkalmazások listája](./media/create-app-in-portal.png)
-
+> [!div class="mx-imgBorder"]
+> ![LUIS-alkalmazások listája](./media/create-app-in-portal.png)
 
 1. A párbeszédpanelen adja meg az alkalmazás nevét, például: `Pizza Tutorial` .
 
@@ -64,7 +64,7 @@ Több módon is létrehozhat egy új alkalmazást a szerzői API-kkal:
     > [!div class="mx-imgBorder"]
     > ![Olyan leképezések listája, amelyekhez nincs megadva példa hosszúságú kimondott szöveg.](media/pizza-tutorial-new-app-empty-intent-list.png)
 
-## <a name="other-actions-available"></a>Egyéb elérhető műveletek
+## <a name="other-actions-available-on-my-apps-page"></a>Az alkalmazások oldalon elérhető egyéb műveletek
 
 A környezeti eszköztár más műveleteket is tartalmaz:
 

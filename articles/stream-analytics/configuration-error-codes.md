@@ -6,28 +6,16 @@ author: mamccrea
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.service: stream-analytics
-ms.openlocfilehash: 9951a6ddfbd1c562184e2b7e02a9da98f7d94b12
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5aa15ae4a234a56a172a0166070c32be4f822910
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598065"
+ms.locfileid: "83650073"
 ---
 # <a name="azure-stream-analytics-configuration-error-codes"></a>Azure Stream Analytics konfigurációs hibakódok
 
 A tevékenységek naplóit és erőforrás-naplóit használhatja a nem várt viselkedések hibakereséséhez a Azure Stream Analytics feladatból. Ez a cikk felsorolja az összes konfigurációs hibakód leírását. A konfigurációs hibák a feladatok konfigurációjával, illetve a bemeneti és kimeneti konfigurációkhoz kapcsolódnak.
-
-## <a name="kafkainvalidpermission"></a>KafkaInvalidPermission
-
-* **OK**: a stream Analytics feladatnak nincs megfelelő engedélye bizonyos műveletek végrehajtásához.
-
-## <a name="kafkainvalidconfiguration"></a>KafkaInvalidConfiguration
-
-* **OK**: a Kafka-adapter bizonyos beállításai érvénytelenek.
-
-## <a name="kafkainvalidtimestamptype"></a>KafkaInvalidTimestampType
-
-* **OK**: a Kafka által használt időbélyeg-típus érvénytelen.
 
 ## <a name="eventhubunauthorizedaccess"></a>EventHubUnauthorizedAccess
 

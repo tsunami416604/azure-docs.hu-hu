@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: cf7d418d8bca8f690acf29ba701fdc54ced1ca6c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 1277af2e8f9de575fbe51ea0f43bbcfd2812e610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561998"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653642"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Önálló fürt biztonságossá tétele Windows rendszeren X. 509 tanúsítványok használatával
 Ez a cikk az önálló Windows-fürt különböző csomópontjai közötti kommunikáció biztonságossá tételét ismerteti. Azt is leírja, hogyan lehet hitelesíteni azokat az ügyfeleket, amelyek X. 509 tanúsítványokkal csatlakoznak ehhez a fürthöz. A hitelesítés biztosítja, hogy csak a jogosult felhasználók férhessenek hozzá a fürthöz és az üzembe helyezett alkalmazásokhoz, valamint a felügyeleti feladatok elvégzéséhez. A fürt létrehozásakor engedélyezni kell a tanúsítvány biztonságát a fürtön.  
@@ -248,12 +248,24 @@ Ha kiállítói tárolókat használ, a kiállítói tanúsítvány átváltás�
 ## <a name="acquire-the-x509-certificates"></a>Az X. 509 tanúsítványok beolvasása
 A fürtön belüli kommunikáció biztonságossá tételéhez először be kell szereznie az X. 509 tanúsítványokat a fürtcsomópontok számára. Emellett a fürthöz tartozó, engedélyezett gépekhez/felhasználókhoz való kapcsolódás korlátozásához be kell szereznie és telepítenie kell az ügyfélgépek tanúsítványait.
 
-Éles számítási feladatokat futtató fürtök esetén a fürt biztonságossá tételéhez használjon [hitelesítésszolgáltató (CA)](https://en.wikipedia.org/wiki/Certificate_authority)által aláírt X. 509 tanúsítványt. A tanúsítványok beszerzésével kapcsolatos további információkért lásd: a [Tanúsítvány beszerzése](https://msdn.microsoft.com/library/aa702761.aspx).
+Éles számítási feladatokat futtató fürtök esetén a fürt biztonságossá tételéhez használjon [hitelesítésszolgáltató (CA)](https://en.wikipedia.org/wiki/Certificate_authority)által aláírt X. 509 tanúsítványt. A tanúsítványok beszerzésével kapcsolatos további információkért lásd: a [Tanúsítvány beszerzése](https://msdn.microsoft.com/library/aa702761.aspx). 
+
+A tanúsítvány megfelelő működéséhez számos tulajdonság szükséges:
+
+* A tanúsítvány szolgáltatójának a **Microsoft Enhanced RSA és AES titkosítási szolgáltatónak** kell lennie
+
+* RSA-kulcs létrehozásakor győződjön meg arról, hogy a kulcs **2048 bit**.
+
+* A kulcshasználati bővítmény értéke **digitális aláírás, kulcs titkosítási (a0)**
+
+* A kibővített kulcshasználat bővítmény a **kiszolgálói hitelesítés** (OID: 1.3.6.1.5.5.7.3.1) és az **ügyfél-hitelesítés** (OID: 1.3.6.1.5.5.7.3.2) értékeit használja.
 
 A tesztelési célra használt fürtök esetében dönthet úgy, hogy önaláírt tanúsítványt használ.
 
+További kérdésekért forduljon a [Gyakori kérdések a tanúsítványokhoz](https://docs.microsoft.com/azure/service-fabric/cluster-security-certificate-management#troubleshooting-and-frequently-asked-questions).
+
 ## <a name="optional-create-a-self-signed-certificate"></a>Nem kötelező: önaláírt tanúsítvány létrehozása
-Egy olyan önaláírt tanúsítvány létrehozásának egyik módja, amely megfelelően biztonságossá tehető, ha a C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. CertSetup. ps1 parancsfájlt használja az Service Fabric SDK mappában. A fájl szerkesztésével módosíthatja a tanúsítvány alapértelmezett nevét. (A CN = ServiceFabricDevClusterCert érték megkeresése.) Futtassa ezt a parancsfájlt a `.\CertSetup.ps1 -Install`következőként:.
+Egy olyan önaláírt tanúsítvány létrehozásának egyik módja, amely megfelelően biztonságossá tehető, ha a C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\Secure. CertSetup. ps1 parancsfájlt használja az Service Fabric SDK mappában. A fájl szerkesztésével módosíthatja a tanúsítvány alapértelmezett nevét. (A CN = ServiceFabricDevClusterCert érték megkeresése.) Futtassa ezt a parancsfájlt a következőként: `.\CertSetup.ps1 -Install` .
 
 Ezután exportálja a tanúsítványt egy védett jelszóval rendelkező. pfx fájlba. Először kérje le a tanúsítvány ujjlenyomatát. 
 1. A **Start** menüben futtassa a **számítógép-tanúsítványok kezelése**elemet. 
@@ -292,7 +304,7 @@ A tanúsítványok használata után telepítheti őket a fürtcsomópontokon. A
     $PfxFilePath ="C:\mypfx.pfx"
     Import-PfxCertificate -Exportable -CertStoreLocation Cert:\LocalMachine\My -FilePath $PfxFilePath -Password (ConvertTo-SecureString -String $pswd -AsPlainText -Force)
     ```
-3. Most állítsa be a tanúsítvány hozzáférés-vezérlését úgy, hogy a hálózati szolgáltatás fiókja alatt futó Service Fabric folyamat a következő parancsfájl futtatásával is használható legyen. Adja meg a szolgáltatás fiókja tanúsítványának és **hálózati szolgáltatásának** ujjlenyomatát. Győződjön meg arról, hogy a tanúsítvány ACL-jei helyesek, ha megnyitja a tanúsítvány **megkezdése** > **a számítógép-tanúsítványok kezelése** és a**titkos kulcsok kezelése** **minden feladat** > számára.
+3. Most állítsa be a tanúsítvány hozzáférés-vezérlését úgy, hogy a hálózati szolgáltatás fiókja alatt futó Service Fabric folyamat a következő parancsfájl futtatásával is használható legyen. Adja meg a szolgáltatás fiókja tanúsítványának és **hálózati szolgáltatásának** ujjlenyomatát. Győződjön meg arról, hogy a tanúsítvány ACL-jei helyesek, ha megnyitja a tanúsítvány **megkezdése**a  >  **számítógép-tanúsítványok kezelése** és a **All Tasks**  >  **titkos kulcsok kezelése**minden feladat számára.
    
     ```powershell
     param
@@ -355,7 +367,7 @@ A fürt eltávolításához kapcsolódjon ahhoz a fürthöz, amelyen a Service F
 ```
 
 > [!NOTE]
-> A tanúsítvány helytelen konfigurációja miatt előfordulhat, hogy a fürt nem jön létre az üzembe helyezés során. A biztonsági problémák önálló diagnosztizálásához tekintse meg a Eseménynapló Group **Applications and Services** > (**Microsoft-Service Fabric**) naplókat.
+> A tanúsítvány helytelen konfigurációja miatt előfordulhat, hogy a fürt nem jön létre az üzembe helyezés során. A biztonsági problémák önálló diagnosztizálásához tekintse meg a Eseménynapló Group **Applications and Services**(  >  **Microsoft-Service Fabric**) naplókat.
 > 
 > 
 

@@ -5,86 +5,143 @@ author: deborahc
 ms.author: dech
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
-ms.openlocfilehash: fa4c2708f34a377a17914c7e6e5abdd709cbb5b1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/10/2020
+ms.openlocfilehash: b398f739189232f39a2fee06fc6e6ff0d53348f0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791782"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656610"
 ---
 # <a name="frequently-asked-questions-about-autoscale-provisioned-throughput-in-azure-cosmos-db"></a>Gyakori kérdések a kiosztott átviteli sebességről Azure Cosmos DB
 
-Az automatikus méretezés kiépített átviteli sebességével a Azure Cosmos DB automatikusan kezeli és méretezi a tároló vagy az adatbázis használatát a használat alapján. Ez a cikk az autoskálázással kapcsolatos gyakori kérdésekre ad választ.
+Az automatikus méretezés kiépített átviteli sebessége révén a Azure Cosmos DB automatikusan kezeli és méretezi az adatbázis vagy tároló RU/s-adatait a használat alapján. Ez a cikk az autoskálázással kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="frequently-asked-questions"></a>Gyakori kérdések
+
+### <a name="what-is-the-difference-between-autopilot-and-autoscale-in-azure-cosmos-db"></a>Mi a különbség az "Autopilot" és az "autoscale" között a Azure Cosmos DBban?
+Az "autoscale" vagy az "autoscale kiépített átviteli sebesség" a szolgáltatás frissített neve, korábbi nevén "Autopilot". Az autoscale jelenlegi kiadásával új funkciókkal bővült, beleértve az egyéni maximális RU/s és programozott támogatás beállításának lehetőségét is. 
+
+### <a name="what-happens-to-databases-or-containers-created-in-the-previous-autopilot-tier-model"></a>Mi történik az előző Autopilot-modellben létrehozott adatbázisokkal vagy tárolókkal?
+Az előző rétegű modellel létrehozott erőforrásokat a rendszer automatikusan támogatja az új automatikus méretezési egyéni RU/s modell esetében. A rétegek felső határa lesz az új maximális RU/s, amely ugyanazt a méretezési tartományt eredményezi. 
+
+Ha például korábban a 400 és 4000 RU/s közötti skálázási szintet választotta, az adatbázis vagy a tároló mostantól a 4000 RU/s értékkel rendelkező maximális RU/s-ként jelenik meg, amely a 400 és a 4000 RU/s közötti skálán látható. Itt módosíthatja a maximális RU/s értéket egy egyéni értékre, hogy megfeleljen a munkaterhelésnek. 
+
+### <a name="how-quickly-will-autoscale-scale-up-and-down-based-on-spikes-in-traffic"></a>Milyen gyorsan méretezhető a vertikális felskálázás a forgalomban lévő tüskék alapján?
+Az autoskálázással a rendszer a `T` `0.1 * Tmax` Bejövő forgalom alapján a és a tartományon belüli átviteli SEBESSÉGET (ru/s) méretezi `Tmax` . Mivel a skálázás automatikus és azonnali, bármikor felhasználható a késleltetés nélküli kiépítés `Tmax` . 
+
+### <a name="how-do-i-determine-what-rus-the-system-is-currently-scaled-to"></a>Hogyan meghatározni, hogy a rendszer milyen RU/s-ra van méretezve?
+[Azure monitor metrikák](how-to-choose-offer.md#measure-and-monitor-your-usage) használatával figyelheti a kiépített autoscale Max ru/s-t és az aktuális átviteli SEBESSÉGET (ru/s) a rendszerre. 
+
+### <a name="what-is-the-pricing-for-autoscale"></a>Mi az az autoscale díjszabása?
+Minden órában a legmagasabb átviteli sebességért kell fizetni, amelyet a `T` rendszer az órán belül felskálázással végez. Ha az erőforrás nem kapott kérelmeket az óra során, vagy nem lépték túl a skálázást `0.1 * Tmax` , akkor a minimumért kell fizetnie `0.1 * Tmax` . A részletekért tekintse meg a Azure Cosmos DB [díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) . 
+
+### <a name="how-does-autoscale-show-up-on-my-bill"></a>Hogyan jelenik meg az autoscale a számlán?
+Az egyfő szintű fiókok esetében az automatikus skálázási sebesség 100 RU/s esetén 1,5 x a standard (manuális) kiépített átviteli sebesség. A számlán látni fogja a meglévő standard kiosztott átviteli sebességet. A mérő mennyiségét a 1,5-es számmal megszorozza. Ha például a legmagasabb RU/s a rendszer egy órán belül, 6000 RU/s értékre van méretezve, akkor az adott órára a mérőszámban 60 * 1,5 = 90 egység lesz.
+
+A több főkiszolgálós fiókok esetében a 100 RU/s automatikus skálázási sebessége megegyezik a standard (manuális) kiépített több főkiszolgálós átviteli sebességgel. A számlán látni fogja a meglévő több főkiszolgálós fogyasztásmérőt. Mivel a díjszabások azonosak, ha az autoscale-t használja, ugyanazt a mennyiséget fogja látni, mint a standard átviteli sebességgel.
+
+### <a name="does-autoscale-work-with-reserved-capacity"></a>Működik az autoskálázás a fenntartott kapacitással?
+Igen. Ha az egyszeres főkiszolgáló számára fenntartott kapacitást vásárol, az autoskálázási erőforrások foglalási kedvezményét a rendszer 1,5 * arányban alkalmazza az [adott régió aránya](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md#reservation-discount-per-region)alapján. 
+
+A több főkiszolgálós foglalási kapacitás ugyanúgy működik, mint az automatikus skálázás és a standard (manuális) kiépített átviteli sebesség. [Azure Cosmos db fenntartott kapacitás](cosmos-db-reserved-capacity.md)
+
+### <a name="does-autoscale-work-with-free-tier"></a>Működik az autoscale ingyenes szintje?
+Igen. Az ingyenes szinten az adatátviteli sebességet használhatja egy tárolón. A megosztott átviteli sebességű adatbázisok egyéni maximális RU/s-vel való támogatása még nem érhető el. Megtudhatja [, hogy az ingyenes szintű számlázás hogyan működik az autoscale szolgáltatással](understand-your-bill.md#billing-examples-with-free-tier-accounts).
 
 ### <a name="is-autoscale-supported-for-all-apis"></a>Támogatott-e az összes API-t használó autoskálázás?
 Igen, az autoscale minden API esetében támogatott: Core (SQL), Gremlin, Table, Cassandra és API a MongoDB-hez.
 
 ### <a name="is-autoscale-supported-for-multi-master-accounts"></a>Támogatott-e a több főkiszolgálós fiókok esetében az autoscale?
-Igen, a több főkiszolgálós fiókok esetében az autoskálázás is támogatott. A Max RU/s a Cosmos-fiókhoz hozzáadott minden régióban elérhető. 
+Igen. A maximális RU/s a Azure Cosmos DB-fiókhoz hozzáadott minden régióban elérhető. 
 
-### <a name="what-is-the-pricing-for-autoscale-"></a>Mi az az autoscale díjszabása?
-A részletekért tekintse meg a Azure Cosmos DB [díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) . 
+### <a name="how-do-i-enable-autoscale-on-new-databases-or-containers"></a>Hogyan engedélyezi az autoskálázást az új adatbázisokon vagy tárolókban?
+Tekintse meg ezt a cikket az [autoskálázás engedélyezéséhez](how-to-provision-autoscale-throughput.md).
 
-### <a name="how-do-i-enable-autoscale-for-my-containers-or-databases"></a>Hogyan engedélyezi a saját tárolók vagy adatbázisok autoskálázását?
-Az autoskálázás engedélyezhető a Azure Portal használatával létrehozott új tárolókban és adatbázisokban.
+### <a name="can-i-enable-autoscale-on-an-existing-database-or-a-container"></a>Engedélyezhető az autoskálázás egy meglévő adatbázison vagy tárolón?
+Igen. Igény szerint válthat az automatikus méretezés és a normál (manuális) kiosztott átviteli sebesség között is. Jelenleg az összes API esetében csak a [Azure Portal](how-to-provision-autoscale-throughput.md#enable-autoscale-on-existing-database-or-container) használhatja ezeket a műveleteket.
 
-### <a name="is-there-cli-or-sdk-support-to-create-containers-or-databases-with-autoscale-provisioned-throughput"></a>Van CLI-vagy SDK-támogatás tárolók vagy adatbázisok létrehozásához az autoscale kiépített átviteli sebességgel?
-Jelenleg csak olyan erőforrásokat hozhat létre, amelyek az Azure Portalból származó, az autoscale kiosztott átviteli sebességgel rendelkeznek. A CLI és az SDK támogatása még nem érhető el.
+### <a name="how-does-the-migration-between-autoscale-and-standard-manual-provisioned-throughput-work"></a>Hogyan működik az áttelepítés az automatikus méretezés és a standard (manuális) kiépített átviteli sebesség között?
+Elméletileg az átviteli sebesség típusának módosítása kétfázisú folyamat. Először küld egy kérést, amely megváltoztatja az átviteli sebesség beállításait az automatikus méretezés vagy a manuális kiosztott átviteli sebesség használatára. A rendszer mindkét esetben automatikusan meghatározza és beállítja a kezdeti RU/s értéket az aktuális átviteli sebesség és a tárterület alapján. Ebben a lépésben a rendszer nem fogadja el a felhasználó által megadott RU/s értéket. Ezután a frissítés befejeződése után [módosíthatja az ru/s](#can-i-change-the-max-rus-on-the-database-or-container) -t, hogy megfeleljen a számítási feladatnak. 
 
-### <a name="can-i-enable-autoscale-on-an-existing-container-or-a-database"></a>Engedélyezhető az autoskálázás egy meglévő tárolón vagy adatbázison?
-Jelenleg az új tárolók és adatbázisok esetében engedélyezheti az autoskálázást a létrehozásuk során. Az autoskálázás meglévő tárolók és adatbázisok számára történő engedélyezésének támogatása még nem érhető el. A meglévő tárolókat áttelepítheti egy új tárolóba [Azure Data Factory](../data-factory/connector-azure-cosmos-db.md) vagy a [módosítási hírcsatorna](change-feed.md)használatával. 
+**Áttelepítés standard (manuális) kiépített átviteli sebességről automatikus méretezésre**
 
-### <a name="can-i-turn-off-autoscale-on-a-container-or-database"></a>Kikapcsolhatom az autoskálázást egy tárolón vagy adatbázison?
-Igen, kikapcsolhatja az automatikus skálázást, ha átvált a "standard (manuális)" lehetőségre a kiépített átviteli sebességre. Az aktuális kiadásban, miután az autoskálázásról a standard kiosztott átviteli sebességre vált, nem engedélyezheti újra az autoskálázást ugyanarra az erőforrásra. 
+Tároló esetén a következő képlettel becsülje meg a kezdeti autoskálázási Max RU/s: ``MAX(4000, current manual provisioned RU/s, maximum RU/s ever provisioned / 10, storage in GB * 100)`` , a legközelebbi 1000 ru/s értékre kerekítve. A tényleges kezdeti automatikus méretezési Max RU/s a fiók konfigurációjától függően változhat.
+
+Példa #1: tegyük fel, hogy rendelkezik egy, a 10 000 RU/s manuális kiosztott átviteli sebességgel és 25 GB tárhellyel rendelkező tárolóval. Ha engedélyezi az autoskálázást, a kezdeti autoskálázási Max RU/s a következő lesz: 10 000 RU/s, amely a 1000-10 000 RU/s-ben lesz méretezhető. 
+
+Példa #2: tegyük fel, hogy rendelkezik egy, a 50 000 RU/s manuális kiosztott átviteli sebességgel és 2500 GB tárhellyel rendelkező tárolóval. Ha engedélyezi az autoskálázást, a kezdeti autoskálázási Max RU/s a következő lesz: 250 000 RU/s, amely a 25 000-250 000 RU/s-ben lesz méretezhető. 
+
+**Áttelepítés automatikus méretezésről standard (manuális) kiépített átviteli sebességre**
+
+A kezdeti manuális kiépített átviteli sebesség az aktuális automatikus méretezési maximális RU/s értékkel egyenlő lesz. 
+
+Példa: tegyük fel, hogy rendelkezik egy, a 20 000 RU/s értékkel rendelkező, max. számú (2000 – 20 000 Ha a manuális kiosztott átviteli sebesség használatát frissíti, a kezdeti átviteli sebesség 20 000 RU/s lesz. 
+
+### <a name="is-there-azure-cli-or-powershell-support-to-manage-databases-or-containers-with-autoscale"></a>Létezik Azure CLI vagy PowerShell-támogatás az adatbázisok vagy tárolók autoskálázással való kezeléséhez?
+Jelenleg csak az Azure Portal, a .NET v3 SDK, a Java v4 SDK és a Azure Resource Manager használatával hozhat létre és kezelhet erőforrásokat az autoscale paranccsal. Az Azure CLI, a PowerShell és más SDK-k támogatása még nem érhető el.
 
 ### <a name="is-autoscale-supported-for-shared-throughput-databases"></a>Támogatott-e a megosztott átviteli sebességű adatbázisok esetében a méretezés?
 Igen, az autoskálázás támogatott a megosztott átviteli sebességű adatbázisok esetében. A szolgáltatás engedélyezéséhez válassza az autoskálázás lehetőséget, és az adatbázis létrehozásakor a **kapacitás kiépítése** beállítást. 
 
-### <a name="what-is-the-number-of-allowed-collections-per-shared-throughput-database-when-autoscale-is-enabled"></a>Mennyibe kerül az engedélyezett gyűjtemények száma egy megosztott átviteli sebességű adatbázisban, ha engedélyezve van az autoskálázás?
-A megosztott átviteli sebességű adatbázisok esetében, amelyeken engedélyezve van az autoskálázás, az engedélyezett gyűjtemények száma a következő: MIN (25, Max RU/s, adatbázis/1000). Ha például az adatbázis maximális átviteli sebessége 20 000 RU/s, az adatbázis MIN. (25, 20 000 RU/s/1000) = 20 gyűjtemény lehet. 
-
+### <a name="what-is-the-number-of-allowed-containers-per-shared-throughput-database-when-autoscale-is-enabled"></a>Mennyibe kerül az engedélyezett tárolók száma egy megosztott átviteli sebességű adatbázisban, ha engedélyezve van az autoskálázás?
+Azure Cosmos DB legfeljebb 25 tárolót kényszerít ki egy megosztott átviteli sebességű adatbázisban, amely az Automatikus méretezéssel vagy a standard (manuális) átviteli sebességgel rendelkező adatbázisokra vonatkozik. 
 
 ### <a name="what-is-the-storage-limit-associated-with-each-max-rus-option"></a>Mekkora a maximális RU/s beállításhoz tartozó tárolási korlát?  
 Az egyes maximális RU/s-k tárolási korlátja GB-ban: az adatbázis vagy a tároló/100 maximális száma. Ha például a maximális RU/s értéke 20 000 RU/s, az erőforrás képes támogatni a 200 GB tárterületet. A rendelkezésre álló maximális RU/s-és tárolási lehetőségekért lásd az [autoskálázási korlátokat](provision-throughput-autoscale.md#autoscale-limits) ismertető cikket. 
 
 ### <a name="what-happens-if-i-exceed-the-storage-limit-associated-with-my-max-throughput"></a>Mi történik, ha túllépem a maximális átviteli sebességhez kapcsolódó tárolási korlátot?
-Ha túllépte az adatbázis vagy tároló maximális átviteli sebességével kapcsolatos tárolási korlátot, Azure Cosmos DB automatikusan növeli a maximális átviteli sebességet a következő legmagasabb szintre, amely támogatja a tárterületet. Tegyük fel például, hogy egy adatbázis vagy tároló a 4000 RU/s Max átviteli sebesség beállítással van kiépítve, amelynek tárolási korlátja 50 GB. Ha az erőforrás tárterülete 100 GB-ra nő, az adatbázis vagy tároló maximális RU/s értéke automatikusan 20 000 RU/s lesz, ami akár 200 GB-ot is képes támogatni. 
+Ha túllépte az adatbázis vagy tároló maximális átviteli sebességéhez tartozó tárolási korlátot, Azure Cosmos DB automatikusan növeli a maximális átviteli sebességet a következő legmagasabb RU/s értékre, amely képes támogatni az adott szintű tárterületet.
 
-### <a name="how-quickly-will-autoscale-up-and-down-based-on-spikes-in-traffic"></a>Milyen gyorsan fel-és leskálázást kell végezni a forgalomban lévő tüskék alapján?
-Az autoscale használatával a bejövő forgalom alapján azonnal, a minimális és a maximális RU/s-korláton belül, vagy akár lefelé is méretezheti az RU/s-t. A számlázás 1 órás részletességgel történik, ahol a legmagasabb RU/s díjat számítjuk fel egy adott órában.
+Ha például a 50 000 RU/s max. RU/s értékkel kezdődik (a 5000-50 000 RU/s-ig terjedő skála), akár 500 GB-nyi adat tárolására is képes. Ha túllépi a 500 GB-ot – például a Storage mostantól 600 GB, az új maximális RU/s érték 60 000 RU/s (a 6000-60 000 RU/s-k közötti skálán).
 
-### <a name="can-i-specify-a-custom-max-throughput-rus-value-for-autoscale"></a>Megadhatok egyéni maximális átviteli sebesség (RU/s) értéket az autoscale esetében?
-Jelenleg [négy lehetőség](provision-throughput-autoscale.md#autoscale-limits) közül választhat a maximális átviteli sebesség (ru/s) közül.
+### <a name="can-i-change-the-max-rus-on-the-database-or-container"></a>Módosíthatom a maximális RU/mp-t az adatbázison vagy a tárolón? 
+Igen. Tekintse meg ezt a [cikket](how-to-provision-autoscale-throughput.md) a maximális ru/mp módosításához. Ha a maximális RU/s értéket módosítja a kért értéktől függően, ez lehet egy aszinkron művelet, amely eltarthat egy ideig (akár 4-6 óra is lehet, attól függően, hogy milyen RU/s van kiválasztva)
 
-### <a name="can-i-increase-the-max-rus-move-to-a-higher-tier-on-the-database-or-container"></a>Növelhető a maximális RU/s (magasabb szintűre való áttérés) az adatbázison vagy a tárolón? 
-Igen. A tárolóhoz tartozó **méretezési & beállítások** lehetőségnél vagy az adatbázis **méretezési** lehetőségén kiválaszthat egy magasabb maximális ru/mp-t az autoskálázáshoz. Ez egy aszinkron méretezési művelet, amely eltarthat egy ideig (általában 4-6 óra, attól függően, hogy milyen RU/s van kiválasztva), mivel a szolgáltatás több erőforrást nyújt a nagyobb méret támogatásához. 
+#### <a name="increasing-the-max-rus"></a>A maximális RU/s növelése
+Ha a maximális ru/mp növelésére vonatkozó kérést küld, attól függően, hogy a maximális ru/s `Tmax` érték van kiválasztva, a szolgáltatás több erőforrást is kiépít, hogy támogassa a magasabb maximális ru/mp-t. Habár ez történik, a meglévő számítási feladatokat és műveleteket nem érinti a rendszer. A rendszer továbbra is átméretezi az adatbázist vagy a tárolót az előzőtől `0.1*Tmax` `Tmax` egészen addig, amíg az új méretezési tartomány fel `0.1*Tmax_new` `Tmax_new` nem áll.
 
-### <a name="can-i-reduce-the-max-rus-move-to-a-lower-tier-on-the-database-or-container"></a>Csökkenthető a maximális RU/s (egy alacsonyabb szintűre) az adatbázison vagy a tárolón?
-Igen. Ha az adatbázis vagy a tároló jelenlegi tárterülete nem éri el a maximális ru/s szintet, amelyet le szeretne méretezni, csökkentheti a maximális RU/s [értéket](#what-is-the-storage-limit-associated-with-each-max-rus-option) az adott szintjére. Ha például a 20 000 RU/s értéket választotta a maximális RU/s értékként, akkor a maximális RU/s-t 4000 RU/s-ra méretezheti, ha kevesebb, mint 50 GB tárhellyel rendelkezik (a 4000 RU/s-hoz társított tárolási korlát).
+#### <a name="lowering-the-max-rus"></a>A maximális RU/mp csökkentése
+Ha csökkenti a maximális RU/s értéket, a minimális érték a következőre állítható:, a `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)` legközelebbi 1000 ru/s értékre kerekítve. 
+
+Példa #1: tegyük fel, hogy rendelkezik egy, a 20 000 RU/s maximális RU/s értékkel rendelkező, autoskálázási tárolóval (2000-20 000 RU/s) és 50 GB tárhellyel. A legalacsonyabb, minimális értékre állíthatja a maximális RU/s értéket: MAX (4000, 20 000/10, **50 * 100**) = 5000 ru/s (skála a 500-5000 ru/s között).
+
+Példa #2: tegyük fel, hogy rendelkezik egy, a 100 000 RU/s és 100 GB méretű maximális RU/s értékkel rendelkező autoskálázási tárolóval. Mostantól legfeljebb 150 000 RU/s méretig méretezheti a maximális RU/s-t (a 15 000-150 000 RU/s közötti skálán). A legalacsonyabb, minimális érték, amellyel most már beállíthatja a maximális RU/s értéket: MAX (4000, **150 000/10**, 100 * 100) = 15 000 ru/s (skála a 1500-15 000 ru/s között). 
+
+Megosztott átviteli sebességű adatbázis esetén, ha csökkenti a maximális RU/s értéket, a minimális érték a következőre állítható be: `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))` , a legközelebbi 1000 ru/s értékre kerekítve.  
+
+A fenti képletek és példák a minimális automatikus méretezési (RU/s) értékre vonatkoznak, és nem különböznek a `0.1 * Tmax` rendszer által automatikusan átadott `Tmax` tartománytól. Függetlenül attól, hogy mi a maximális RU/s, a rendszer mindig a és a közötti méretet fogja méretezni `0.1 * Tmax` `Tmax` . 
+
+### <a name="how-does-ttl-work-with-autoscale"></a>Hogyan működik az élettartam az autoscaletel?
+Az automatikus skálázással a TTL-műveletek nincsenek hatással az RU/s méretezésére. A TTL miatt felhasznált összes RUs nem része az autoscale tároló számlázott RU/s-nek. 
+
+Tegyük fel például, hogy rendelkezik egy, a 400 – 4000 RU/s méretű autoscale tárolóval:
+- 1. óra: T = 0: a tároló nem rendelkezik használattal (TTL-vagy munkaterhelés-kérelmek nélkül). A számlázható RU/s értéke 400 RU/s.
+- 1. óra: T = 1: a TTL engedélyezve van.
+- 1. óra: T = 2: a tároló elindítja a kérelmeket, amelyek 1 másodperc alatt használják a 1000 RU-T. Emellett a 200-es számú, TTL értékű TTL-értéket is meg kell történnie. A számlázható RU/s még mindig 1000 RU/s. Függetlenül attól, hogy mikor történik a TTLs, a rendszer nem befolyásolja az automatikus skálázási méretezési logikát.
 
 ### <a name="what-is-the-mapping-between-the-max-rus-and-physical-partitions"></a>Mi a különbség a maximális RU/s és a fizikai partíciók között?
-Amikor először kiválasztja a maximális RU/s-t, Azure Cosmos DB a következőt fogja kiépíteni: Max RU/s/10 000 RU/s = # fizikai partíciók. Az egyes [fizikai partíciók](partition-data.md#physical-partitions) legfeljebb 10 000 ru/s és 50 GB tárterületet tudnak támogatni. Mivel a tárterület mérete növekszik, Azure Cosmos DB automatikusan felosztja a partíciókat, hogy további fizikai partíciókat adjon hozzá a tárterület növekedésének kezeléséhez, vagy növelje a maximális RU/s szintet, ha a tárterület [meghaladja a társított korlátot](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
+Amikor először kiválasztja a maximális RU/s-t, Azure Cosmos DB a következőt fogja kiépíteni: Max RU/s/10 000 RU/s = # fizikai partíciók. Minden [fizikai partíció](partition-data.md#physical-partitions) legfeljebb 10 000 ru/s és 50 GB tárterületet tud támogatni. Mivel a tárterület mérete növekszik, Azure Cosmos DB automatikusan felosztja a partíciókat, hogy további fizikai partíciókat adjon hozzá a tárterület növeléséhez, vagy növelje a maximális RU/s értéket, ha [a tárterület meghaladja a társított korlátot](#what-is-the-storage-limit-associated-with-each-max-rus-option). 
 
 Az adatbázis vagy tároló maximális RU/s értéke egyenletesen oszlik el az összes fizikai partíció között. Tehát a teljes átviteli sebesség egyetlen fizikai partíción is méretezhető a következőre: az adatbázis vagy tároló/# fizikai partíciók maximális száma (RU/s). 
 
 ### <a name="what-happens-if-incoming-requests-exceed-the-max-rus-of-the-database-or-container"></a>Mi történik, ha a bejövő kérelmek túllépik az adatbázis vagy a tároló maximális RU/s értékeit?
-Ha a teljes felhasznált RU/s érték meghaladja a tároló vagy az adatbázis maximum RU/mp-t, a maximális RU/mp-t meghaladó kérések szabályozva lesznek, és egy 429 állapotkódot adnak vissza. A 100%-os normalizált kihasználtságot eredményező kérések is szabályozva lesznek. A normalizált kihasználtság az összes fizikai partíción az RU/s kihasználtság maximális értékeként van definiálva. Tegyük fel például, hogy a maximális átviteli sebesség 20 000 RU/s, és két fizikai partíció, P_1 és P_2 van, amelyek mindegyike 10 000 RU/s-ra méretezhető. Egy adott másodpercben, ha P_1 6000 RUs-t használ, és P_2 8000 RUs, a normalizált kihasználtság MAX (6000 RU/10 000 RU, 8000 RU/10 000 RU) = 0,8.
+Ha a teljes felhasznált RU/s érték meghaladja az adatbázis vagy tároló maximális RU/mp-számát, a rendszer lekéri a maximális RU/s értéket, és egy 429 állapotkódot ad vissza. A 100%-os normalizált kihasználtságot eredményező kérések is szabályozva lesznek. A normalizált kihasználtság az összes fizikai partíción az RU/s kihasználtság maximális értékeként van definiálva. Tegyük fel például, hogy a maximális átviteli sebesség 20 000 RU/s, és két fizikai partíció, P_1 és P_2 van, amelyek mindegyike 10 000 RU/s-ra méretezhető. Egy adott másodpercben, ha P_1 6000 RUs-t használ, és P_2 8000 RUs, a normalizált kihasználtság MAX (6000 RU/10 000 RU, 8000 RU/10 000 RU) = 0,8.
 
 > [!NOTE]
 > Az Azure Cosmos DB ügyféloldali SDK-k és adatimportálási eszközök (Azure Data Factory, tömeges végrehajtó kódtár) automatikusan újrapróbálkoznak a 429s, így az alkalmi 429s is rendben vannak. A tartósan nagy mennyiségű 429s arra utalhat, hogy emelnie kell a maximális RU/mp-t, vagy a particionálási stratégiát egy [gyors partícióra](#autoscale-rate-limiting)vonatkozóan át kell tekintenie.
 
 ### <a name="is-it-still-possible-to-see-429s-throttlingrate-limiting-when-autoscale-is-enabled"></a><a id="autoscale-rate-limiting"></a>Továbbra is látható a 429s (szabályozás/arány korlátozása), ha engedélyezve van az autoskálázás? 
-Igen. A 429s két forgatókönyvben is megtekinthető. Először is, ha a teljes felhasznált RU/s érték meghaladja a tároló vagy az adatbázis maximum RU/mp-t, a szolgáltatás ennek megfelelően szabályozza a kérelmeket. 
+Igen. A 429s két forgatókönyvben is megtekinthető. Először is, ha a teljes felhasznált RU/s meghaladja az adatbázis vagy tároló maximális RU/s értékeit, a szolgáltatás ennek megfelelően szabályozza a kérelmeket. 
 
 Másodszor, ha van egy gyakori partíció, azaz egy logikai partíciós kulcs értéke, amely aránytalanul nagyobb mennyiségű kérést tartalmaz a többi partíciós kulcs értékeihez képest, lehetséges, hogy a mögöttes fizikai partíció túllépi az RU/s költségvetést. Ajánlott eljárásként a gyakori partíciók elkerülése érdekében [válasszon egy jó partíciós kulcsot](partitioning-overview.md#choose-partitionkey) , amely a tárterület és az átviteli sebesség egyenletes eloszlását eredményezi. 
 
 Ha például az 20 000 RU/s maximális átviteli sebesség lehetőséget választja, és 200 GB tárhellyel rendelkezik, és négy fizikai partícióval rendelkezik, az egyes fizikai partíciók akár 5000 RU/s-ra is felméretezhetők. Ha egy adott logikai partíción egy gyors partíció található, akkor a 429s jelenik meg, ha a mögöttes fizikai partíció mérete meghaladja az 5000 RU/s-t, azaz meghaladja az 100%-os normalizált kihasználtságot.
 
+
 ## <a name="next-steps"></a>További lépések
 
-* Megtudhatja, hogyan [engedélyezheti az Azure Cosmos-tárolón vagy-adatbázison az autoskálázást](provision-throughput-autoscale.md#create-db-container-autoscale).
-* Ismerje meg, hogy milyen [előnyökkel jár a kiépített átviteli sebesség az autoskálázással ](provision-throughput-autoscale.md#autoscale-benefits).
+* Ismerje meg, hogyan [engedélyezhető az Azure Cosmos db-adatbázis vagy-tárolók autoskálázása](how-to-provision-autoscale-throughput.md).
+* Ismerje meg, hogy milyen [előnyökkel jár a kiépített átviteli sebesség az autoskálázással](provision-throughput-autoscale.md#benefits-of-autoscale).
 * További információ a [logikai és a fizikai partíciókhoz](partition-data.md).
+                        

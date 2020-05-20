@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 05/12/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b7536704d68e96429d715705a0518410db399a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112320"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644155"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrálás felhőalapú hitelesítésre előkészített bevezetéssel (előzetes verzió)
 
@@ -38,8 +38,8 @@ A funkció áttekintéséhez tekintse meg ezt a "Azure Active Directory: mi a sz
 -   Van egy Azure Active Directory (Azure AD) bérlő összevont tartománnyal.
 
 -   Úgy döntött, hogy két lehetőség közül választhat:
-    - **Jelszó-***kivonat szinkronizálása (szinkronizálás)* + –*zökkenőmentes egyszeri bejelentkezés (SSO)*  - 
-    - **B** - lehetőség*átmenő hitelesítés* + –*zökkenőmentes egyszeri bejelentkezés*
+    - " **A**  -  " lehetőség *jelszó kivonatának szinkronizálása (szinkronizálás)*  +  *zökkenőmentes egyszeri bejelentkezés (SSO)*
+    - **B**  -  . lehetőség *átmenő hitelesítés*  +  *zökkenőmentes egyszeri bejelentkezés*
     
     Habár a *zökkenőmentes egyszeri bejelentkezés* nem kötelező, javasoljuk, hogy a tartományhoz csatlakoztatott számítógépeket futtató felhasználók számára is csendes bejelentkezési élményt biztosítson a vállalati hálózaton belül.
 
@@ -51,6 +51,7 @@ A funkció áttekintéséhez tekintse meg ezt a "Azure Active Directory: mi a sz
 
 -   A *zökkenőmentes egyszeri bejelentkezés* engedélyezéséhez egy adott Active Directory erdőben tartományi rendszergazdának kell lennie.
 
+
 ## <a name="supported-scenarios"></a>Támogatott esetek
 
 A szakaszos bevezetéshez a következő forgatókönyvek támogatottak. A szolgáltatás csak a következőhöz használható:
@@ -58,6 +59,7 @@ A szakaszos bevezetéshez a következő forgatókönyvek támogatottak. A szolg�
 - Azok a felhasználók, akik az Azure AD-hez Azure AD Connect használatával lettek kiépítve. Ez nem vonatkozik a csak felhőalapú felhasználókra.
 
 - Felhasználói bejelentkezési forgalom a böngészőkben és a *modern hitelesítési* ügyfeleken. Az örökölt hitelesítést használó alkalmazások vagy felhőalapú szolgáltatások visszaesik az összevont hitelesítési folyamatokra. Előfordulhat például, hogy a modern hitelesítéssel rendelkező Exchange Online vagy az Outlook 2010, amely nem támogatja a modern hitelesítést.
+- A csoport mérete jelenleg 50 000 felhasználóra korlátozódik.  Ha a csoportok mérete nagyobb, mint 50 000 felhasználó, akkor azt javasoljuk, hogy ezt a csoportot több csoportra ossza fel a szakaszos bevezetéshez.
 
 ## <a name="unsupported-scenarios"></a>Nem támogatott forgatókönyvek
 
@@ -78,6 +80,9 @@ A következő forgatókönyvek nem támogatottak a szakaszos bevezetésnél:
 
 - Amikor először ad hozzá egy biztonsági csoportot az előkészített bevezetéshez, a rendszer 200-re korlátozza a felhasználóktól, hogy elkerülje az UX időtúllépését. A csoport hozzáadása után további felhasználókat is hozzáadhat közvetlenül hozzá, ha szükséges.
 
+>[!NOTE]
+> Mivel a bérlői végpontok nem küldenek bejelentkezési tippeket, a szakaszos bevezetéshez nem használhatók.  Az SAML-alkalmazások a bérlői végpontokat használják, és nem támogatják az előkészített bevezetést is.
+
 ## <a name="get-started-with-staged-rollout"></a>Ismerkedés a lépcsőzetes bevezetéssel
 
 Ha tesztelni szeretné a *jelszó-kivonatolási szinkronizálást* a szakaszos bevezetéssel, kövesse a következő szakaszban ismertetett lépéseket.
@@ -86,7 +91,7 @@ További információ a használni kívánt PowerShell-parancsmagokról: [Azure 
 
 ## <a name="pre-work-for-password-hash-sync"></a>A jelszó-kivonat szinkronizálásának előzetes munkája
 
-1. Engedélyezze a *jelszó-kivonatok szinkronizálását* a Azure ad Connect [választható szolgáltatások](how-to-connect-install-custom.md#optional-features) lapján. 
+1. Engedélyezze a *jelszó-kivonatok szinkronizálását*   a Azure ad Connect [választható szolgáltatások](how-to-connect-install-custom.md#optional-features)   lapján. 
 
    ![Képernyőkép a "választható szolgáltatások" lapról Azure Active Directory Connect](media/how-to-connect-staged-rollout/sr1.png)
 
@@ -112,27 +117,27 @@ Javasoljuk, hogy engedélyezze a *zökkenőmentes egyszeri bejelentkezést* a be
 
 ## <a name="pre-work-for-seamless-sso"></a>A zökkenőmentes egyszeri bejelentkezéshez szükséges előzetes munka
 
-Engedélyezze a *zökkenőmentes egyszeri bejelentkezést* az Active Directory erdőkön a PowerShell használatával. Ha egynél több Active Directory erdővel rendelkezik, minden egyes erdőhöz engedélyezze azt. A  *zökkenőmentes egyszeri bejelentkezés* csak olyan felhasználók számára aktiválódik, akik a szakaszos bevezetésre vannak kiválasztva. Nem érinti a meglévő összevonási beállításokat.
+Engedélyezze a *zökkenőmentes egyszeri bejelentkezést*   az Active Directory erdőkön a PowerShell használatával. Ha egynél több Active Directory erdővel rendelkezik, minden egyes erdőhöz engedélyezze azt. A  *zökkenőmentes egyszeri bejelentkezés* csak olyan felhasználók számára aktiválódik, akik a szakaszos bevezetésre vannak kiválasztva. Nem érinti a meglévő összevonási beállításokat.
 
 Az alábbi lépésekkel engedélyezheti a *zökkenőmentes egyszeri bejelentkezést* :
 
 1. Jelentkezzen be Azure AD Connect kiszolgálóra.
 
-2. Nyissa meg a *(z\\)% ProgramFiles% Microsoft Azure Active Directory Connect* mappát.
+2. Nyissa meg a *(z)% ProgramFiles% \\ Microsoft Azure Active Directory Connect*   mappát.
 
 3. Importálja a *zökkenőmentes SSO* PowerShell-modult a következő parancs futtatásával: 
 
    `Import-Module .\AzureADSSO.psd1`
 
-4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja `New-AzureADSSOAuthenticationContext`meg a t. Ez a parancs egy olyan ablaktáblát nyit meg, amelyen megadhatja a bérlő globális rendszergazdai hitelesítő adatait.
+4. Futtassa a PowerShellt rendszergazdaként. A PowerShellben hívja meg a t  `New-AzureADSSOAuthenticationContext` . Ez a parancs egy olyan ablaktáblát nyit meg, amelyen megadhatja a bérlő globális rendszergazdai hitelesítő adatait.
 
-5. Hívás `Get-AzureADSSOStatus | ConvertFrom-Json`. Ez a parancs Active Directory erdők listáját jeleníti meg (lásd a "tartományok" listáját), amelyen a funkció engedélyezve van. Alapértelmezés szerint a a bérlő szintjén hamis értékre van állítva.
+5. Hívás  `Get-AzureADSSOStatus | ConvertFrom-Json` . Ez a parancs Active Directory erdők listáját jeleníti meg (lásd a "tartományok" listáját), amelyen a funkció engedélyezve van. Alapértelmezés szerint a a bérlő szintjén hamis értékre van állítva.
 
    ![Példa a Windows PowerShell kimenetére](./media/how-to-connect-staged-rollout/sr3.png)
 
-6. Hívás `$creds = Get-Credential`. A parancssorba írja be a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
+6. Hívás  `$creds = Get-Credential` . A parancssorba írja be a kívánt Active Directory erdő tartományi rendszergazdai hitelesítő adatait.
 
-7. Hívás `Enable-AzureADSSOForest -OnPremCredentials $creds`. Ez a parancs létrehoz egy AZUREADSSOACC számítógépfiókot a helyszíni tartományvezérlőről a *zökkenőmentes egyszeri bejelentkezéshez*szükséges Active Directory erdőhöz.
+7. Hívás `Enable-AzureADSSOForest -OnPremCredentials $creds` . Ez a parancs létrehoz egy AZUREADSSOACC számítógépfiókot a helyszíni tartományvezérlőről a *zökkenőmentes egyszeri bejelentkezéshez*szükséges Active Directory erdőhöz.
 
 8. A *zökkenőmentes egyszeri bejelentkezéshez* az intranet zónában URL-címek szükségesek. Ha ezeket az URL-címeket Csoportházirendek használatával szeretné telepíteni, tekintse [meg a rövid útmutató: Azure ad zökkenőmentes egyszeri bejelentkezés](how-to-connect-sso-quick-start.md#step-3-roll-out-the-feature)című témakört.
 
@@ -146,9 +151,9 @@ Egy adott szolgáltatás (*átmenő hitelesítés*, *jelszó-kivonatoló szinkro
 
 A következő lehetőségek közül választhat:
 
-- **Jelszó-***kivonatok szinkronizálása* + *zökkenőmentes SSO-val*  - 
-- **B** - lehetőség*átmenő hitelesítés* + –*zökkenőmentes egyszeri bejelentkezés*
-- **A** - *jelszó-kivonatoló szinkronizálás* + *átmenő hitelesítésének* + *zökkenőmentes SSO* -je nem támogatott
+- " **A**  -  " lehetőség *jelszó kivonatának szinkronizálása*  +  *zökkenőmentes egyszeri bejelentkezés*
+- **B**  -  . lehetőség *átmenő hitelesítés*  +  *zökkenőmentes egyszeri bejelentkezés*
+- **Nem támogatott**  -  *jelszó kivonatának szinkronizálása*  +  *átmenő hitelesítés*  +  *zökkenőmentes egyszeri bejelentkezés*
 
 Tegye a következőket:
 

@@ -5,16 +5,16 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: a40c64910260a2d63a529d25e1089fb618fcec1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b82d415d5e0cf18250123f3483e196aa040285dd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81113494"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656819"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
-Ez a cikk az Azure FarmBeats kapcsolatos gyakori problémák megoldásait ismerteti. További segítségért forduljon a [támogatási fórumhoz](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) , vagy küldjön nekünk farmbeatssupport@microsoft.come-mailt a következő címen:.
+Ez a cikk az Azure FarmBeats kapcsolatos gyakori problémák megoldásait ismerteti. További segítségért forduljon a [támogatási fórumhoz](https://social.msdn.microsoft.com/Forums/home?forum=ProjectFarmBeats) , vagy küldjön nekünk e-mailt a következő címen: farmbeatssupport@microsoft.com .
 
 > [!NOTE]
   > Ha áprilisban telepítette a FarmBeats, és a feladatok nem üres hibaüzenettel rendelkeznek, előfordulhat, hogy a telepítéshez nem rendeltek le batch-kvótát a kritikus állapotú és biztonsági szervezetek támogatásának rangsorolásához. További információért lásd [itt](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) . A feladatok sikeres futtatásához le kell kérnie a virtuális gépek lefoglalását a Batch-fiókba.
@@ -88,11 +88,11 @@ A naplók letöltésének megismeréséhez lépjen a ["naplók manuális gyűjt�
       "sensordata": [
         {
           "timestamp": "< timestamp in ISO 8601 format >",
-          "<sensor measure name (as defined in the Sensor Model)>":"<value>"
+          "<sensor measure name (as defined in the Sensor Model)>":<value>
         },
         {
           "timestamp": "<timestamp in ISO 8601 format>",
-          "<sensor measure name (as defined in the Sensor Model)>": "<value>"
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
         }
       ]
     }
@@ -105,12 +105,12 @@ A naplók letöltésének megismeréséhez lépjen a ["naplók manuális gyűjt�
 **Javító művelet**
 
 1. A Datahub hencegés területen lépjen a partner API-ra.
-2. Válassza a **Letöltés** > **kipróbálható** > **végrehajtás**lehetőséget.
+2. Válassza a **Letöltés**  >  **kipróbálható**  >  **végrehajtás**lehetőséget.
 
 > [!NOTE]
 > Annak az érzékelő-partnernek a partner-azonosítója, amelyre kíváncsi.
 
-3. Térjen vissza a partner API-hoz, és válassza a **beolvasás/\<azonosító>** elemet.
+3. Térjen vissza a partner API-hoz, és válassza a **beolvasás/ \< azonosító>** elemet.
 4. Adja meg a partner AZONOSÍTÓját a 3. lépésben, majd válassza a **végrehajtás**lehetőséget.
 
    Az API-válasznak tartalmaznia kell a Event Hubs-kapcsolatok karakterláncát.
@@ -205,7 +205,7 @@ Ha már engedélyezte a hozzáférést, és ezzel a hibával szembesül, próbá
 
     1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     2. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
-    3. Válassza a Storage-fiók Storage * * * * *** >** > tárolók**Batch-PREP-Files** > **to_vm** > **config. ini**
+    3. Válassza a Storage-fiók Storage * * * * *** > tárolók**  >  **Batch-PREP-Files**  >  **to_vm**  >  **config. ini**
     4. **Szerkesztés** kiválasztása
     5. A Felhasználónév frissítése a sentinel_account szakaszban
 
@@ -250,7 +250,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 ### <a name="sentinel-maximum-number-of-connections-reached"></a>Sentinel: elérte a kapcsolatok maximális számát
 
-**Sikertelen feladatok üzenete**: "a (\<z)" username> "felhasználó által elért két egyidejű folyamat maximális száma."
+**Sikertelen feladatok üzenete**: "a (z)" username> "felhasználó által elért két egyidejű folyamat maximális száma \< ."
 
 **Jelentés**: Ha egy feladat meghiúsul, mert a kapcsolatok maximális száma elérte a kapcsolatot, a rendszer ugyanazt a Sentinel-fiókot használja több feladatban.
 
@@ -261,7 +261,7 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 ### <a name="sentinel-server-refused-connection"></a>Sentinel-kiszolgáló: visszautasított kapcsolatok
 
-**Sikertelen feladatok üzenete**: "a kiszolgáló visszautasította a következőt: http://172.30.175.69:8983/solr/dhus."
+**Sikertelen feladatok üzenete**: "a kiszolgáló visszautasította a következőt: http://172.30.175.69:8983/solr/dhus ."
 
 **Javító művelet**: Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karbantartási tevékenység történik.
 
@@ -287,9 +287,9 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A **keresőmezőbe** keresse meg a FarmBeats Datahub erőforráscsoportot.
-3. Az **erőforráscsoport** irányítópultján keresse meg a *datahublogs\* * Storage-fiókot. Például: *datahublogsmvxmq*.  
+3. Az **erőforráscsoport** irányítópultján keresse meg a *datahublogs \* * Storage-fiókot. Például: *datahublogsmvxmq*.  
 4. A **Name (név** ) oszlopban válassza ki a Storage-fiókot a **Storage-fiók** irányítópultjának megtekintéséhez.
-5. A **\* datahubblogs** ablaktáblán válassza a **Megnyitás az Explorerben** lehetőséget az **Open Azure Storage Explorer** alkalmazás megtekintéséhez.
+5. A ** \* datahubblogs** ablaktáblán válassza a **Megnyitás az explorerben** lehetőséget az **Open Azure Storage Explorer** alkalmazás megtekintéséhez.
 6. A bal oldali panelen válassza a **blob-tárolók**lehetőséget, majd válassza ki a Azure Data Factory naplók vagy **appinsights** app Service naplókhoz tartozó **feladatokhoz** tartozó naplókat.
 7. Válassza a **Letöltés** lehetőséget, majd töltse le a naplókat a számítógép egy helyi mappájába.
 
@@ -299,9 +299,9 @@ Ez a probléma akkor fordulhat elő, ha a Sentinel-kiszolgálón bármilyen karb
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 2. A **keresőmezőbe** keresse meg a FarmBeats-gyorsító erőforráscsoportot.
-3. Az **erőforráscsoport** irányítópultján keressen rá a *Storage\* * Storage-fiókra. Például: *storagedop4k\**.
+3. Az **erőforráscsoport** irányítópultján keressen rá a *Storage \* * Storage-fiókra. Például: *storagedop4k \* *.
 4. A **Storage-fiók** irányítópultjának megtekintéséhez válassza ki a Storage-fiókot a **Name (név** ) oszlopban.
-5. A **tároló\* ** ablaktáblán válassza a **Megnyitás az Explorerben** lehetőséget a Azure Storage Explorer alkalmazás megnyitásához.
+5. A **tároló \* ** ablaktáblán válassza a **Megnyitás az Explorerben** lehetőséget a Azure Storage Explorer alkalmazás megnyitásához.
 6. A bal oldali panelen válassza a **blob-tárolók**lehetőséget, majd válassza ki a Azure Data Factory naplók vagy **appinsights** app Service naplókhoz tartozó **feladatokhoz** tartozó naplókat.
 7. Válassza a **Letöltés** lehetőséget, majd töltse le a naplókat a számítógép egy helyi mappájába.
 

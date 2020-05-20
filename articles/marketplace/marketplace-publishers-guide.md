@@ -1,22 +1,22 @@
 ---
-title: Kereskedelmi piactér – közzétételi útmutató
-description: Az alkalmazások és szolgáltatások közzétevői számára készült kereskedelmi piactér áttekintése.
+title: Microsoft kereskedelmi piactér – közzétételi útmutató
+description: A Microsoft partnereinek a kereskedelmi piactér áttekintése, akik a Microsoft AppSource és az Azure Marketplace-en szeretnének közzétenni ajánlatokat.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/12/2020
 ms.author: dsindona
-ms.openlocfilehash: c41a24ecb3e12618ac8cfcdfb756a33114f0f8a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 03921a5bf5635ee001f78ca67e4ac24839bd03c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261992"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657853"
 ---
 # <a name="commercial-marketplace-publishing-guide"></a>Kereskedelmi piactér – közzétételi útmutató
 
-A piactér-közzétételi útmutató úgy lett kialakítva, hogy segítse az új és a meglévő közzétevők számára, hogyan használhatja a kirakatokat az [Azure piactéren](https://azuremarketplace.microsoft.com) , és [Microsoft AppSource](https://appsource.microsoft.com) a Microsofttal közösen fejlesztheti üzleti partnereit az alkalmazások és szolgáltatások listázásával.
+Ez a közzétételi útmutató úgy lett kialakítva, hogy segítse az új és a meglévő közzétevők számára, hogy miként listázhatja az alkalmazásokat és szolgáltatásokat a kereskedelmi piactéren, az [Azure Marketplace](https://azuremarketplace.microsoft.com) -en és a [Microsoft AppSourceon](https://appsource.microsoft.com), hogy a Microsofttal együttműködve fejlessze vállalkozását.
 
 >[!Note]
 >A piactér az Azure Marketplace-re és a AppSource is vonatkozik.  További információért tekintse meg az [egyik piactéren, két kirakatban](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace) .
@@ -30,7 +30,7 @@ Ez az útmutató a következő témákat tárgyalja:
 
 Ez az útmutató technikai és üzleti információkat is tartalmaz az alkalmazások és szolgáltatások listázásához szükséges lépésekről. A tartalomjegyzék segítségével az útmutató különböző részeire léphet, és közvetlenül a legfontosabb témakörökbe léphet.
 
-Ha kérdése van az Azure Marketplace-ről és a AppSource, küldjön nekünk egy üzenetet a**Marketplace** **bevezetését** > ismertető szakaszban. A Marketplace kiadó bevezetési csapata örömmel segít! 
+Ha kérdése van az Azure Marketplace-ről és a AppSource, küldjön nekünk egy üzenetet a Marketplace **bevezetését**ismertető szakaszban  >  **Marketplace Onboarding**. A Marketplace kiadó bevezetési csapata örömmel segít! 
 
 ## <a name="benefits-of-participating-in-the-marketplace"></a>A piactéren való részvétel előnyei 
 

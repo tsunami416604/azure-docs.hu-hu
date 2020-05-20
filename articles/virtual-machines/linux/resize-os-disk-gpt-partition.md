@@ -1,6 +1,6 @@
 ---
-title: OPERÁCIÓSRENDSZER-lemez átméretezése GPT-partícióval | Microsoft Docs
-description: Ez a cikk útmutatást nyújt az operációsrendszer-lemezek GPT-partícióval való átméretezéséhez.
+title: GPT-partícióval rendelkező operációsrendszer-lemez átméretezése | Microsoft Docs
+description: Ez a cikk a GPT-partícióval rendelkező operációsrendszer-lemezek átméretezésére vonatkozó utasításokat tartalmazza.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,27 +14,27 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: f863233f0a34271841cc8e973f9aa3ca9416ceeb
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 7c408e8e29b3f9ac423a6104c40242f11f93a171
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858989"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651087"
 ---
-# <a name="resize-an-os-disk-with-a-gpt-partition"></a>OPERÁCIÓSRENDSZER-lemez átméretezése GPT-partícióval
+# <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>GPT-partícióval rendelkező operációsrendszer-lemez átméretezése
 
 > [!NOTE]
-> Ez a forgatókönyv csak a GPT partícióval rendelkező operációsrendszer-lemezre vonatkozik.
+> Ez a forgatókönyv csak a GUID partíciós tábla (GPT) partícióval rendelkező operációsrendszer-lemezekre vonatkozik.
 
-Ez a cikk azt ismerteti, hogyan növelhető az operációsrendszer-lemez mérete egy GPT-partícióval Linuxon.
+Ez a cikk azt ismerteti, hogyan növelhető egy olyan operációsrendszer-lemez mérete, amely egy Linux rendszerű GPT-partícióval rendelkezik. 
 
 ## <a name="identify-whether-the-os-disk-has-an-mbr-or-gpt-partition"></a>Annak megállapítása, hogy az operációsrendszer-lemez rendelkezik-e MBR-vagy GPT-partícióval
 
-Az elválasztott **paranccsal** azonosíthatja, hogy a lemezpartíció a fő rendszertöltő rekord (MBR) partícióval vagy egy GUID partíciós tábla (GPT) partícióval lett-e létrehozva.
+Az elválasztott **paranccsal** azonosíthatja, hogy a lemezpartíció egy fő rendszertöltő REKORDDAL (MBR) vagy egy GPT-partícióval lett-e létrehozva.
 
 ### <a name="mbr-partition"></a>MBR-partíció
 
-A következő kimenetben a **partíciós tábla** az **MSDOS**értékét jeleníti meg, amely egy **MBR** -partíciót azonosít.
+A következő kimenetben a **partíciós tábla** az **MSDOS**értékét jeleníti meg. Ez az érték azonosítja az MBR-partíciót.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -50,7 +50,7 @@ Number  Start   End     Size    Type     File system  Flags
 
 ### <a name="gpt-partition"></a>GPT-partíció
 
-A következő kimenetben a **partíciós tábla** a **GPT**értékét jeleníti meg, amely a GPT-partíciót azonosítja.
+A következő kimenetben a **partíciós tábla** a **GPT**értékét jeleníti meg. Ez az érték azonosítja a GPT-partíciót.
 
 ```
 [user@myvm ~]# parted -l /dev/sda
@@ -74,18 +74,18 @@ Ha a virtuális gép (VM) GPT-partícióval rendelkezik az operációsrendszer-l
 Az alábbi utasítások a Linux által támogatott disztribúciók esetében érvényesek.
 
 > [!NOTE]
-> Mielőtt továbblépne, készítsen biztonsági másolatot a virtuális gépről, vagy készítsen pillanatképet az operációsrendszer-lemezről.
+> A folytatás előtt készítsen biztonsági másolatot a virtuális gépről, vagy készítsen pillanatképet az operációsrendszer-lemezről.
 
-### <a name="ubuntu-16x-and-18x"></a>Ubuntu 16. x és 18. x
+### <a name="ubuntu"></a>Ubuntu
 
 Az operációsrendszer-lemez méretének növeléséhez Ubuntu 16. x és 18. x esetén:
 
 1. Állítsa le a virtuális gépet.
-1. Növelje a OSDisk méretét a portálon.
+1. Növelje az operációsrendszer-lemez méretét a portálon.
 1. Indítsa újra a virtuális gépet, majd jelentkezzen be a virtuális gépre **root** felhasználóként.
-1. A OSDisk ekkor megnövelt fájlrendszerbeli méretet fog megjeleníteni.
+1. Győződjön meg arról, hogy az operációsrendszer-lemez megnövelt fájlrendszerbeli mérettel rendelkezik.
 
-Ahogy az az alábbi példában is látható, az operációsrendszer-lemez átméretezi a portálról a 100 GB-ra **/** , mivel a jelenleg csatlakoztatott **/dev/sda1** -fájlrendszer az 97 GB-ot jeleníti meg.
+Ahogy az az alábbi példában is látható, az operációsrendszer-lemez átméretezi a portálról a 100 GB-ra. A jelenleg csatlakoztatott **/dev/sda1** -fájlrendszer **/** 97 GB-ot jelenít meg.
 
 ```
 user@myvm:~# df -Th
@@ -102,17 +102,17 @@ tmpfs          tmpfs      65M     0   65M   0% /run/user/1000
 user@myvm:~#
 ```
 
-### <a name="suse-12-sp4suse-sles-12-for-sap-suse-sles-15-and-suse-sles-15-for-sap"></a>SUSE 12 SP4, SUSE SLES 12 for SAP, SUSE SLES 15 és SUSE SLES 15 for SAP
+### <a name="suse"></a>SUSE
 
-Az operációsrendszer-lemez méretének növeléséhez a SUSE 12 SP4, SUSE SLES 15 és SUSE SLES 15 for SAP esetén:
+Az operációsrendszer-lemez méretének növeléséhez a SUSE 12 SP4, SUSE SLES 12 for SAP, SUSE SLES 15 és SUSE SLES 15 for SAP:
 
 1. Állítsa le a virtuális gépet.
-1. Növelje a OSDisk méretét a portálon.
+1. Növelje az operációsrendszer-lemez méretét a portálon.
 1. Indítsa újra a virtuális gépet.
 
 Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
 
-   1. A következő parancs használatával érheti el a virtuális gépet **root felhasználóként** :
+   1. A következő parancs használatával érheti el a virtuális gépet **root** felhasználóként:
    
       `#sudo su`
 
@@ -124,11 +124,11 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
 
       `#sgdisk -e /dev/sda`
 
-   1. Méretezze át a partíciót anélkül, hogy törölné a következő parancs használatával. Az átnevezett parancs **resizepart** nevű kapcsolóval rendelkezik, **hogy a partíció** törlése nélkül átméretezi a partíciót. A 4. számú resizepart azt jelzi, hogy a negyedik (4th) partíció átméretezése megtörténjen.
+   1. Méretezze át a partíciót anélkül, hogy törölné a következő parancs használatával. Az átnevezett parancs **resizepart** nevű kapcsolóval rendelkezik, **hogy a partíció** törlése nélkül átméretezi a partíciót. A 4. számú **resizepart** azt jelzi, hogy a negyedik partíció átméretezése megtörténjen.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
 
-   1. A `#lsblk` parancs futtatásával győződjön meg arról, hogy a partíció növelése megtörtént-e.
+   1. Futtassa a **#lsblk** parancsot, és győződjön meg arról, hogy a partíció növelése megtörtént-e.
 
       A következő kimenet azt mutatja, hogy a **/dev/sda4** partíció mérete 98,5 GB-ra van méretezve.
 
@@ -143,7 +143,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       └─sdb1   8:17   0   20G  0 part /mnt/resource
       ```
       
-   1. Azonosítsa a OSDisk található fájlrendszer típusát a következő parancs használatával:
+   1. Azonosítsa az operációsrendszer-lemezen lévő fájlrendszer típusát a következő parancs használatával:
 
       `blkid`
 
@@ -208,17 +208,19 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       user@myvm:~ #
       ```
 
-Ahogy az előző példában is látható, megnőtt a OSDisk fájlrendszerének mérete.
+Az előző példában láthatjuk, hogy az operációsrendszer-lemez fájlrendszerének mérete megnőtt.
 
-### <a name="rhel-7x-with-lvm"></a>RHEL 7. x és LVM
+### <a name="rhel"></a>RHEL
+
+Az operációsrendszer-lemez méretének növeléséhez az RHEL 7. x és az LVM használatával:
 
 1. Állítsa le a virtuális gépet.
-1. Növelje a OSDisk méretét a portálon.
+1. Növelje az operációsrendszer-lemez méretét a portálon.
 1. Indítsa el a virtuális gépet.
 
 Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
 
-   1. A következő parancs használatával érheti el a virtuális gépet **root felhasználóként** :
+   1. A következő parancs használatával érheti el a virtuális gépet **root** felhasználóként:
    
       `#sudo su`
 
@@ -230,7 +232,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
 
       `#sgdisk -e /dev/sda`
 
-   1. Méretezze át a partíciót anélkül, hogy törölné a következő parancs használatával. Az átnevezett parancs **resizepart** nevű kapcsolóval rendelkezik, **hogy a partíció** törlése nélkül átméretezi a partíciót. A 4. számú resizepart azt jelzi, hogy a negyedik (4th) partíció átméretezése megtörténjen.
+   1. Méretezze át a partíciót anélkül, hogy törölné a következő parancs használatával. Az átnevezett parancs **resizepart** nevű kapcsolóval rendelkezik, **hogy a partíció** törlése nélkül átméretezi a partíciót. A 4. számú **resizepart** azt jelzi, hogy a negyedik partíció átméretezése megtörténjen.
 
       `#parted -s /dev/sda "resizepart 4 -1" quit`
     
@@ -259,7 +261,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       └─sdb1              8:17   0   50G  0 part /mnt/resource
       ```
 
-   1. A **fizikai kötet (PV)** átméretezéséhez használja a következő parancsot:
+   1. A fizikai kötet (PV) átméretezéséhez használja a következő parancsot:
 
       `#pvresize /dev/sda4`
 
@@ -275,7 +277,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       /dev/sda4  rootvg lvm2 a--  <99.02g <74.02g
       ```
 
-   1. A következő példában `/dev/mapper/rootvg-rootlv` a rendszer a következő parancs használatával átméretezi a 2 GB-ot a 12GB-re (a 10 GB-os növekedésre), amely a fájlrendszert is átméretezi:
+   1. A következő példában a **/dev/Mapper/rootvg-rootlv** 2 GB-ról 12 GB-ra (a 10 GB-os növekedésre) átméretezi a következő parancs segítségével. A parancs átméretezi a fájlrendszert is.
 
       `#lvresize -r -L +10G /dev/mapper/rootvg-rootlv`
 
@@ -297,7 +299,7 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       data blocks changed from 524288 to 3145728
       ```
          
-   1. Ellenőrizze, `/dev/mapper/rootvg-rootlv` hogy megnövelte-e a fájlrendszer méretét, vagy sem a következő parancs használatával:
+   1. A következő parancs használatával ellenőrizze, hogy a **/dev/Mapper/rootvg-rootlv** rendelkezik-e a fájlrendszer megnövekedett méretével:
 
       `#df -Th /`
 
@@ -310,9 +312,9 @@ Ha a virtuális gép újraindult, hajtsa végre a következő lépéseket:
       [user@myvm ~]#
       ```
 
-      > [!NOTE]
-      > Ha ugyanezt az eljárást szeretné használni az egyéb logikai kötetek átméretezéséhez, módosítsa az **lv** nevet a 7. lépésben
+   > [!NOTE]
+   > Ha ugyanezt az eljárást szeretné használni az egyéb logikai kötetek átméretezéséhez, módosítsa a 7. lépésben szereplő **lv** -nevet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Lemez átméretezése](expand-disks.md)

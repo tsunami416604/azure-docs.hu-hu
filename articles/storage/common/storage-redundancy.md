@@ -10,12 +10,12 @@ ms.date: 05/11/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 65d898112396755bb2518cade0ac94c21bc52685
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117716"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83681337"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-redundancia
 
@@ -138,24 +138,42 @@ A **Legutóbbi szinkronizálási idő** tulajdonság értékét a Azure PowerShe
 
 ## <a name="summary-of-redundancy-options"></a>Redundancia-beállítások összefoglalása
 
-Az alábbi táblázat azt mutatja be, hogy milyen tartós és elérhető az adatai egy adott helyzetben, attól függően, hogy milyen típusú redundancia van érvényben a Storage-fiókhoz:
+A következő szakaszban található táblázatok összefoglalják az Azure Storage-ban elérhető redundancia-beállításokat
 
-| Forgatókönyv                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+### <a name="durability-and-availability-parameters"></a>Tartóssági és rendelkezésre állási paraméterek
+
+Az alábbi táblázat az egyes redundancia-beállítások főbb paramétereit ismerteti:
+
+| Paraméter                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Az adatközpontban lévő csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                  |
-| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen                                  | Igen                                  |
-| Az egész régióra kiterjedő leállás következik be                                                                                     | Nem                              | Nem                               | Igen                                  | Igen                                  |
-| Olvasási hozzáférés a másodlagos régióban lévő adateléréshez, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
 | Objektumok tartóssága az adott évben<sup>1</sup>                                          | legalább 99,999999999% (11 9) | legalább 99,9999999999% (12 9) | legalább 99.99999999999999% (16 9) | legalább 99.99999999999999% (16 9) |
-| Támogatott Storage-fiók típusai<sup>2</sup>                                                                   | GPv2, GPv1, BlockBlobStorage, BlobStorage, FileStorage                | GPv2, BlockBlobStorage, FileStorage                             | GPv2, GPv1, BlobStorage                     | GPv2                     |
 | Rendelkezésre állási SLA az olvasási kérelmekhez<sup>1</sup>  | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) a GRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GRS | Legalább 99,9% (99% a lassú elérési szinthez) a GZRS<br /><br />Legalább 99,99% (99,9% a lassú elérési szinthez) az RA-GZRS |
 | Az írási kérelmek rendelkezésre állási SLA-ja<sup>1</sup>  | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) | Legalább 99,9% (99% a lassú elérési szinthez) |
 
 <sup>1</sup> az Azure Storage szolgáltatás tartósságának és rendelkezésre állásának garantálása érdekében az [Azure Storage SLA](https://azure.microsoft.com/support/legal/sla/storage/)-ban talál további információt.
 
-<sup>2</sup> a Storage-fiókok típusaival kapcsolatos információkért lásd: a [Storage-fiók áttekintése](storage-account-overview.md).
+### <a name="durability-and-availability-by-outage-scenario"></a>Tartósság és rendelkezésre állás leállás esetén
 
-A rendszer az összes típusú Storage-fiókhoz tartozó összes adatmennyiséget a Storage-fiók redundancia beállításának megfelelően másolja. Az objektumok, például a Blobok, a Blobok, a Blobok, a várólisták, a táblák és a fájlok másolása történik. A rendszer átmásolja az összes szintet, beleértve az archiválási szintet is. A blob-rétegekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
+Az alábbi táblázat azt jelzi, hogy az adatai tartósak-e, és elérhetőek-e az adott forgatókönyvben, attól függően, hogy milyen típusú redundancia van érvényben a Storage-fiókhoz:
+
+| Kimaradási forgatókönyv                                                                                                 | LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Az adatközpontban lévő csomópont elérhetetlenné válik                                                                 | Igen                             | Igen                              | Igen                                  | Igen                                 |
+| Egy teljes adatközpont (Zona vagy nem zónák) elérhetetlenné válik                                           | Nem                              | Igen                              | Igen<sup>1</sup>                                  | Igen                                  |
+| Az elsődleges régióban az egész régióra kiterjedő leállás következik be                                                                                     | Nem                              | Nem                               | Igen<sup>1</sup>                                  | Igen<sup>1</sup>                                  |
+| A másodlagos régióhoz való olvasási hozzáférés akkor érhető el, ha az elsődleges régió elérhetetlenné válik | Nem                              | Nem                               | Igen (az RA-GRS-vel)                                   | Igen (az RA-GZRS-vel)                                 |
+
+<sup>1</sup> a fiók feladatátvétele szükséges az írási rendelkezésre állás visszaállításához, ha az elsődleges régió elérhetetlenné válik. További információkért lásd a vész [-helyreállítási és a Storage-fiók feladatátvételét](storage-disaster-recovery-guidance.md)ismertető témakört.
+
+### <a name="supported-storage-account-types"></a>Támogatott Storage-fiókok típusai
+
+A következő táblázat bemutatja, hogy az egyes típusú Storage-fiókok milyen redundancia-beállításokat támogatnak. A Storage-fiókok típusairól a [Storage-fiók áttekintése](storage-account-overview.md)című témakörben olvashat bővebben.
+
+| LRS                             | ZRS                              | GRS/RA-GRS                                  | GZRS/RA-GZRS                              |
+| :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
+| Általános célú v2<br /> Általános célú v1<br /> BLOB Storage letiltása<br /> Blob Storage<br /> File Storage                | Általános célú v2<br /> BLOB Storage letiltása<br /> File Storage                             | Általános célú v2<br /> Általános célú v1<br /> Blob Storage                     | Általános célú v2                     |
+
+Az összes Storage-fiókra vonatkozó összes adattal a rendszer a Storage-fiók redundancia beállításának megfelelően másolja. Az objektumok, például a Blobok, a Blobok, a Blobok, a várólisták, a táblák és a fájlok másolása történik. A rendszer átmásolja az összes szintet, beleértve az archiválási szintet is. A blob-rétegekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyors, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
 
 Az egyes redundancia-lehetőségek díjszabásáról az [Azure Storage díjszabását](https://azure.microsoft.com/pricing/details/storage/)ismertető cikk nyújt tájékoztatást.
 

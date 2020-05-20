@@ -4,13 +4,13 @@ description: Ismerkedjen meg az új Azure Monitor Application Insights munkater�
 author: mrbullwinkle
 ms.author: mbullwin
 ms.topic: conceptual
-ms.date: 12/02/2019
-ms.openlocfilehash: 65c2220bd3e9ea93e562b256e84796aed9046d00
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/18/2020
+ms.openlocfilehash: e66ae6aa0b9b7e309fbd6fcc3699cb873a266bbe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83211407"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647892"
 ---
 # <a name="workspace-based-application-insights-resources-preview"></a>Munkaterület-alapú Application Insights erőforrások (előzetes verzió)
 
@@ -40,9 +40,7 @@ A kék hivatkozás szövegére kattintva megtekintheti a társított Log Analyti
 
 ## <a name="copy-the-connection-string"></a>A kapcsolati sztring másolása
 
-A [kapcsolódási karakterlánc]() azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
-
-![Kattintson és másolja a kialakítási kulcsot](./media/create-new-resource/instrumentation-key.png)
+A [kapcsolódási karakterlánc](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) azonosítja azt az erőforrást, amelyhez hozzá szeretné rendelni a telemetria-adatait. Azt is lehetővé teszi, hogy módosítsa az erőforrás által a telemetria célként használt végpontokat. A kapcsolódási karakterláncot át kell másolnia, és hozzá kell adnia az alkalmazás kódjához vagy egy környezeti változóhoz.
 
 ## <a name="monitoring-configuration"></a>Figyelési konfiguráció
 
@@ -192,6 +190,10 @@ A `New-AzApplicationInsights` PowerShell-parancs jelenleg nem támogatja a munka
 A munkaterület-alapú Application Insights erőforrás létrehozása után módosíthatja a társított Log Analytics munkaterületet.
 
 A Application Insights erőforrás ablaktáblán válassza a **Tulajdonságok**  >  **változás munkaterület**  >  **log Analytics munkaterületek** lehetőséget.
+
+## <a name="export-telemetry"></a>Telemetria exportálása
+
+A örökölt folyamatos exportálás funkció nem támogatott a munkaterület-alapú erőforrások esetében. Ehelyett válassza a **diagnosztikai beállítások**  >  **Hozzáadás diagnosztikai beállítás** lehetőséget a Application Insights erőforráson belül. Kiválaszthatja az összes táblát vagy a táblák egy részhalmazát, hogy archiválja a Storage-fiókba, vagy egy Azure Event hub-ba továbbítson.
 
 ## <a name="next-steps"></a>További lépések
 

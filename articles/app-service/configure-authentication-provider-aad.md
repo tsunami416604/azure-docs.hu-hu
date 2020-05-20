@@ -5,12 +5,12 @@ ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.topic: article
 ms.date: 04/14/2020
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: 60a5d50b511fc9db02daa9b7e74eedfe40eeb7a5
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: c03a7b89fee188d8a22cfb8ddcd73920ce43f43a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/18/2020
-ms.locfileid: "82609901"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649152"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-azure-ad-login"></a>App Service vagy Azure Functions alkalmazás konfigurálása az Azure AD-bejelentkezés használatára
 
@@ -100,7 +100,7 @@ Hajtsa végre a következő lépéseket:
 1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget.
 1. **Felügyeleti módban**válassza a **speciális** lehetőséget, és konfigurálja app Service hitelesítést az alábbi táblázatnak megfelelően:
 
-    |Mező|Leírás|
+    |Mező|Description|
     |-|-|
     |Ügyfél-azonosító| Használja az **alkalmazás regisztrációjának alkalmazás-(ügyfél-) azonosítóját** . |
     |Kiállító URL-címe| Használja `<authentication-endpoint>/<tenant-id>/v2.0` és cserélje le a hitelesítési végpontot * \<>* a felhőalapú környezet (például "" globális Azure-hoz) [hitelesítési végpontján](../active-directory/develop/authentication-national-cloud.md#azure-ad-authentication-endpoints) , valamint a https://login.microsoft.com * \< bérlői azonosító>* helyére az alkalmazás regisztrációját tartalmazó **címtár-(bérlői) azonosítót** . Ez az érték a felhasználók megfelelő Azure AD-bérlőre való átirányítására, valamint a megfelelő metaadatok letöltésére szolgál a megfelelő jogkivonat-aláíró kulcsok és jogkivonat-kiállítói jogcím értékének meghatározásához. A `/v2.0` szakasz elhagyható az HRE v1-t használó alkalmazások esetében. |
@@ -125,9 +125,34 @@ A natív ügyfelek regisztrálása lehetővé teszi a webes API-nak az alkalmaz�
 1. Az alkalmazás regisztrációjának létrehozása után másolja az **Application (ügyfél) azonosító**értékét.
 1. Válassza az **API-engedélyek**  >  **Hozzáadás engedély**  >  **saját API**-k lehetőséget.
 1. Válassza ki a korábban létrehozott App Service alkalmazás regisztrációját. Ha nem látja az alkalmazás regisztrációját, győződjön meg arról, hogy felvette a **user_impersonation** hatókört az [alkalmazás regisztrációjának létrehozása az Azure ad-ben a app Service alkalmazáshoz](#register).
-1. Válassza a **user_impersonation**lehetőséget, majd kattintson az **engedélyek hozzáadása**lehetőségre.
+1. A **delegált engedélyek**területen válassza a **user_impersonation**lehetőséget, majd válassza az **engedélyek hozzáadása**elemet.
 
 Ezzel konfigurált egy natív ügyfélalkalmazás-alkalmazást, amely egy felhasználó nevében fér hozzá a App Service alkalmazáshoz.
+
+## <a name="configure-a-daemon-client-application-for-service-to-service-calls"></a>Daemon-ügyfélalkalmazás konfigurálása a szolgáltatások közötti hívásokhoz
+
+Az alkalmazás képes jogkivonatot beszerezni egy olyan webes API meghívásához, amelyet saját maga (nem a felhasználó nevében) üzemeltet a App Service vagy a Function alkalmazásban. Ez a forgatókönyv olyan nem interaktív Daemon-alkalmazások esetében hasznos, amelyek bejelentkezett felhasználó nélkül végeznek feladatokat. A standard OAuth 2,0 ügyfél- [hitelesítő adatok](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md) engedélyezését használja.
+
+1. A [Azure Portal]válassza a **Active Directory**  >  **Alkalmazásregisztrációk**  >  **új regisztráció**lehetőséget.
+1. Az **alkalmazás regisztrálása** lapon adja meg a démon-alkalmazás regisztrációjának **nevét** .
+1. Egy démon alkalmazás esetében nincs szükség átirányítási URI-ra, hogy az üres legyen.
+1. Kattintson a **Létrehozás** gombra.
+1. Az alkalmazás regisztrációjának létrehozása után másolja az **Application (ügyfél) azonosító**értékét.
+1. Válassza a **tanúsítványok & Secrets**  >  **új ügyfél titkos**  >  **hozzáadása**elemet. Másolja a lapon látható ügyfél titkos kulcs értékét. Nem jelenik meg újra.
+
+Mostantól [kérhet hozzáférési tokent az ügyfél-azonosító és az ügyfél titkos kulcsa](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) alapján, ha a `resource` paramétert a célalkalmazás **alkalmazás-azonosító URI azonosítójával** állítja be. Az eredményül kapott hozzáférési jogkivonatot ezután a standard [OAuth 2,0 engedélyezési fejléc](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#use-the-access-token-to-access-the-secured-resource)használatával lehet megtekinteni a célalkalmazás számára, és app Service hitelesítés/engedélyezés ellenőrzi, majd a tokent a szokásos módon fogja használni, hogy a hívó (ebben az esetben az alkalmazás nem felhasználó) legyen hitelesítve.
+
+Ez lehetővé teszi, hogy az Azure AD-bérlő _bármely_ ügyfélalkalmazás egy hozzáférési jogkivonatot kérjen, és hitelesítse magát a célalkalmazás számára. Ha azt is szeretné kényszeríteni, hogy csak bizonyos ügyfélalkalmazások engedélyezzék az _engedélyezést_ , néhány további konfigurációt is végre kell hajtania.
+
+1. [Definiáljon egy alkalmazás-szerepkört](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md) a védelemmel ellátni kívánt app Service vagy Function alkalmazást jelölő alkalmazás-regisztráció jegyzékfájljában.
+1. Az engedélyezni kívánt ügyfelet képviselő alkalmazás-regisztrációnál válassza az API- **engedélyek**  >  **Hozzáadás engedély**  >  **saját API**-k lehetőséget.
+1. Válassza ki a korábban létrehozott alkalmazás-regisztrációt. Ha nem látja az alkalmazás regisztrációját, győződjön meg róla, hogy [hozzáadta az alkalmazás-szerepkört](../active-directory/develop/howto-add-app-roles-in-azure-ad-apps.md).
+1. Az **alkalmazás engedélyei**területen válassza ki a korábban létrehozott alkalmazás-szerepkört, majd kattintson az **engedélyek hozzáadása**lehetőségre.
+1. Győződjön meg arról, hogy a **rendszergazdai jóváhagyás megadása** lehetőségre kattintva engedélyezi az ügyfélalkalmazás számára az engedély kérését.
+1. Az előző forgatókönyvhöz hasonlóan (a Szerepkörök hozzáadása előtt) mostantól [kérhet hozzáférési jogkivonatot](../active-directory/azuread-dev/v1-oauth2-client-creds-grant-flow.md#first-case-access-token-request-with-a-shared-secret) ugyanarra a célra `resource` , és a hozzáférési jogkivonat tartalmazni fogja `roles` az ügyfélalkalmazás számára jóváhagyott alkalmazás-szerepköröket tartalmazó jogcímet.
+1. A cél App Service vagy a Function app Code-ban ellenőrizheti, hogy a várt szerepkörök szerepelnek-e a jogkivonatban (ezt az App Service hitelesítés/engedélyezés nem végzi el). További információ: hozzáférés a [felhasználói jogcímekhez](app-service-authentication-how-to.md#access-user-claims).
+
+Ezzel konfigurált egy Daemon ügyfélalkalmazás-alkalmazást, amely a saját identitásával fér hozzá a App Service alkalmazáshoz.
 
 ## <a name="next-steps"></a><a name="related-content"> </a>További lépések
 

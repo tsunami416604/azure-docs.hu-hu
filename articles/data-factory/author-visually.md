@@ -9,13 +9,13 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
-ms.date: 12/19/2019
-ms.openlocfilehash: e7de92878dac72470c0b65d1cf18c1a2d526a0bb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: bf0aeb3b73f2b12e723269a792d67d7f6185894f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418490"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674567"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Visual authoring in Azure Data Factory
 
@@ -34,6 +34,14 @@ A **szerzői műveletek vászon**megnyitásához kattintson a ceruza ikonra.
 Itt hozza létre a gyárat alkotó folyamatokat, tevékenységeket, adatkészleteket, társított szolgáltatásokat, adatfolyamatokat, eseményindítókat és integrációs modulokat. A folyamat létrehozásához a szerzői műveletek vászon használatával megtudhatja, hogyan másolhat egy folyamatot a [másolási tevékenység használatával](tutorial-copy-data-portal.md). 
 
 Az alapértelmezett vizualizáció-létrehozási élmény közvetlenül a Data Factory szolgáltatással működik. Az Azure Repos git vagy GitHub integrációja is támogatott, hogy lehetővé váljon a verziókövetés és az együttműködés a saját adatfeldolgozó-folyamatokban. Ha többet szeretne megtudni a szerzői műveletek közötti különbségekről, tekintse meg a [Azure Data Factory a verziókövetés](source-control.md)című témakört.
+
+### <a name="properties-pane"></a>Tulajdonságok panel
+
+A legfelső szintű erőforrások, például folyamatok, adatkészletek és adatfolyamatok esetében a magas szintű tulajdonságok a vászon jobb oldalán található Tulajdonságok ablaktáblán szerkeszthetők. A Tulajdonságok ablaktábla olyan tulajdonságokat tartalmaz, mint például a név, a leírás, a jegyzetek és más magas szintű tulajdonságok. Az alerőforrások (például a folyamat tevékenységei és az adatfolyam-TRANSZFORMÁCIÓK) a vászon alján található panel használatával szerkeszthetők. 
+
+![Szerzői vászon](media/author-visually/properties-pane.png)
+
+A Tulajdonságok ablaktábla alapértelmezés szerint csak az erőforrás-létrehozáskor lesz megnyitva. A szerkesztéshez kattintson a vászon jobb felső sarkában található Tulajdonságok ablaktábla ikonra.
 
 ## <a name="expressions-and-functions"></a>Kifejezések és függvények
 

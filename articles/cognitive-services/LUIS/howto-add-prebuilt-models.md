@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 653882db4b62d7731123faf7b177da44dbd74e3f
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: abf149d621d283744a71e08ea4ac2199a1994d57
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584994"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83680951"
 ---
 # <a name="add-prebuilt-models-for-common-usage-scenarios"></a>Előre összeépített modellek hozzáadása általános használati forgatókönyvekhez
 
@@ -40,7 +40,7 @@ A LUIS előre elkészített modelleket tartalmaz, amelyekkel gyorsan hozzáadhat
 
 1. A **leképezések** lapon válassza az **előre felépített tartományhoz rendelés hozzáadása** lehetőséget a leképezési lista fölötti eszköztárból.
 
-1. Válassza ki a **segédprogramokat.** a felugró párbeszédpanelen törölje a szándékot.
+1. Válasszon ki egy leképezést az előugró párbeszédpanelről.
 
     > [!div class="mx-imgBorder"]
     > ![Előre összeépített leképezés hozzáadása](./media/luis-prebuilt-domains/add-prebuilt-domain-intents.png)
@@ -61,13 +61,24 @@ A LUIS előre elkészített modelleket tartalmaz, amelyekkel gyorsan hozzáadhat
 
 1. Válassza a **Done** (Kész) lehetőséget. Az entitás hozzáadása után nem kell betanítania az alkalmazást.
 
+## <a name="add-a-prebuilt-domain-entity"></a>Előre elkészített tartományi entitás hozzáadása
+1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
+1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
+1. Válassza ki a bal oldali **entitásokat** .
+
+1. Az **entitások** lapon válassza az **előre elkészített tartomány entitás hozzáadása**elemet.
+
+1. Az **előre elkészített tartományi modellek hozzáadása** párbeszédpanelen válassza ki az előre elkészített tartomány entitást.
+
+1. Válassza a **Done** (Kész) lehetőséget. Az entitás hozzáadása után nem kell betanítania az alkalmazást.
+
 ## <a name="publish-to-view-prebuilt-model-from-prediction-endpoint"></a>Közzététel az előre elkészített modell előrejelzési végpontból való megtekintéséhez
 
 Egy előre elkészített modell értékének a legegyszerűbb módja a közzétett végpontról történő lekérdezés.
 
 ## <a name="entities-containing-a-prebuilt-entity-token"></a>Előre elkészített entitási jogkivonatot tartalmazó entitások
 
-Ha olyan géppel megtanult entitással rendelkezik, amely egy előre elkészített entitás kötelező funkcióját igényli, vegyen fel egy alösszetevőt a géppel megismert entitásba, majd adja hozzá az előre elkészített entitás _kötelező_ funkcióját.
+Ha olyan gépi tanulási entitással rendelkezik, amely egy előre elkészített entitás kötelező funkcióját igényli, vegyen fel egy alentitást a gépi tanulási entitásba, majd adja hozzá az előre elkészített entitás _kötelező_ funkcióját.
 
 ## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]

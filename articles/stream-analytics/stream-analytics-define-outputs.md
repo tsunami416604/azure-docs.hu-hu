@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/8/2020
-ms.openlocfilehash: d1eda3671b52a1e4bbae9af2d97010657880c383
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c4790585d089ab287260f74001a8aa3f1cb7e5f7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585402"
+ms.locfileid: "83647501"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>A Azure Stream Analytics kimenetének megismerése
 
@@ -33,7 +33,7 @@ Stream Analytics Azure Data Lake Storage kimenete jelenleg nem érhető el az Az
 
 A következő táblázat felsorolja a tulajdonságok nevét és a hozzájuk tartozó leírásokat a Data Lake Storage 1. generációs kimenetének konfigurálásához.   
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének Data Lake Storeba való irányítására szolgál. |
 | Előfizetés | Az Azure Data Lake Storage-fiókot tartalmazó előfizetés. |
@@ -55,7 +55,7 @@ A [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) a ter
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírását SQL Database kimenet létrehozásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely a lekérdezésekben a lekérdezés kimenetének az adatbázisba való irányításához használatos. |
 | Adatbázis | Annak az adatbázisnak a neve, ahová a kimenetet küldi. |
@@ -80,11 +80,11 @@ Azure Stream Analytics feladatok kimenete az Azure szinapszis Analytics egy SQL-
 
 Az SQL-készlet táblának léteznie kell ahhoz, hogy kimenetként hozzá lehessen adni a Stream Analytics feladatokhoz. A tábla sémájának meg kell egyeznie a feladatok kimenetében szereplő mezőkkel és típusokkal. 
 
-Ha az Azure Szinapszisot kimenetként szeretné használni, győződjön meg arról, hogy a Storage-fiók konfigurálva van. Navigáljon a Storage-fiók beállításaihoz a Storage-fiók konfigurálásához. Csak a táblákat támogató Storage-fiókok engedélyezettek: általános célú v2 és általános célú v1.   
+Ha az Azure Szinapszisot kimenetként szeretné használni, győződjön meg arról, hogy a Storage-fiók konfigurálva van. Navigáljon a Storage-fiók beállításaihoz a Storage-fiók konfigurálásához. Csak a táblákat támogató Storage-fiókok engedélyezettek: általános célú v2 és általános célú v1. Csak a standard szintű csomag kiválasztása. A prémium szint nem támogatott.   
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírásait az am Azure szinapszis Analytics kimenetének létrehozásához.
 
-|Tulajdonság neve|Leírás|
+|Tulajdonság neve|Description|
 |-|-|
 |Kimeneti alias |Egy rövid név, amely a lekérdezésekben a lekérdezés kimenetének az adatbázisba való irányításához használatos. |
 |Adatbázis |Annak az SQL-készletnek a neve, ahová a kimenetet küldi. |
@@ -101,7 +101,7 @@ Az Azure Blob Storage költséghatékony és méretezhető megoldást kínál na
 
 A következő táblázat felsorolja a tulajdonságok nevét, valamint a Blobok vagy ADLS Gen2 kimenetek létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve       | Leírás                                                                      |
+| Tulajdonság neve       | Description                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------|
 | Kimeneti alias        | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a blob-tárolóba történő irányítására szolgál. |
 | Tárfiók     | Annak a Storage-fióknak a neve, ahová a kimenetet küldi.               |
@@ -134,7 +134,7 @@ Az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) szolgál
 
 Az Event hubokból kimenetként kell konfigurálnia az adatfolyamokat.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias | Egy rövid név, amelyet a lekérdezések a lekérdezés kimenetének az Event hub-ba történő irányításához használnak. |
 | Eseményközpont-névtér | Az üzenetküldési entitások készletének tárolója. Új Event hub létrehozásakor létrehozott egy Event hub-névteret is. |
@@ -156,7 +156,7 @@ Stream Analytics Power BI kimenete jelenleg nem érhető el az Azure China 21Via
 
 A következő táblázat felsorolja a tulajdonságok nevét és leírásait a Power BI kimenetének konfigurálásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Adjon meg egy rövid nevet, amelyet a lekérdezésekben használ a lekérdezés kimenetének a Power BI kimenetre való irányításához. |
 | Csoport munkaterülete |Ha az adatmegosztást más Power BI felhasználókkal szeretné engedélyezni, válassza ki a csoportokat a Power BI-fiókban, vagy válassza **a saját munkaterület** lehetőséget, ha nem szeretne írni egy csoportba. Egy meglévő csoport frissítéséhez a Power BI hitelesítés megújítása szükséges. |
@@ -207,7 +207,7 @@ Az [Azure Table Storage](../storage/common/storage-introduction.md) kiválóan e
 
 A következő táblázat felsorolja a tulajdonságok nevét és a táblázat kimenetének létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amelyet a lekérdezések a lekérdezés kimenetének a táblázatos tárolóba való irányításához használnak. |
 | Tárfiók |Annak a Storage-fióknak a neve, ahová a kimenetet küldi. |
@@ -225,7 +225,7 @@ A [1,2-es kompatibilitási szinten](stream-analytics-compatibility-level.md)Azur
 
 A következő táblázat felsorolja a tulajdonságok nevét és a várólista kimenetének létrehozásához szükséges leírásokat.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a Service Bus üzenetsor felé történő irányítására szolgál. |
 | Service Bus névtér |Az üzenetküldési entitások készletének tárolója. |
@@ -246,7 +246,7 @@ Service Bus Queues egy-az-egyhez kommunikációs módszert biztosít a küldő �
 
 A következő táblázat a tulajdonságok nevét és leírásait sorolja fel Service Bus témakör kimenetének létrehozásához.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias |Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének a Service Bus témakörbe való irányítására szolgál. |
 | Service Bus névtér |Az üzenetküldési entitások készletének tárolója. Új Event hub létrehozásakor létrehozott egy Service Bus névteret is. |
@@ -272,7 +272,7 @@ Stream Analytics Azure Cosmos DB kimenete jelenleg nem érhető el az Azure Chin
 
 Az alábbi táblázat a Azure Cosmos DB kimenet létrehozásának tulajdonságait ismerteti.
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Kimeneti alias | Az Stream Analytics-lekérdezésben ezt a kimenetet meghívó alias. |
 | Sink (Fogadó) | Azure Cosmos DB. |
@@ -290,7 +290,7 @@ Stream Analytics Azure Functions kimenete jelenleg nem érhető el az Azure Chin
 
 A Azure Stream Analytics HTTP-eseményindítók használatával hívja meg Azure Functions. A Azure Functions kimeneti adapter a következő konfigurálható tulajdonságokkal érhető el:
 
-| Tulajdonság neve | Leírás |
+| Tulajdonság neve | Description |
 | --- | --- |
 | Függvényalkalmazás |A Azure Functions alkalmazás neve. |
 | Függvény |A függvény neve a Azure Functions alkalmazásban. |

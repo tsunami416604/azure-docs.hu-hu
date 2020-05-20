@@ -5,33 +5,24 @@ keywords: Azure app Service, webalkalmazás, mobil alkalmazás, API-alkalmazás,
 ms.topic: article
 ms.date: 08/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: 8a098b1924bf7c2866f6afd7452b8dd3b93f3109
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a4d3518c3325eff2b3c3db111babb9e784d5e31
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535655"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649028"
 ---
 # <a name="security-in-azure-app-service"></a>Biztonság a Azure App Service
 
 Ez a cikk bemutatja, hogyan segíti a [Azure app Service](overview.md) a webalkalmazások, a Mobile App back end, az API-alkalmazás és a [Function-alkalmazás](/azure/azure-functions/)biztonságossá tételét. Azt is bemutatja, hogyan lehet tovább biztonságossá tenni az alkalmazást a beépített App Service funkciókkal.
 
-A App Service platform-összetevői, beleértve az Azure-beli virtuális gépeket, a tárhelyet, a hálózati kapcsolatokat, a webes keretrendszereket, a felügyeleti és integrációs funkciókat, aktívan biztosítva és megerősítve. App Service a folyamatos megfelelőség ellenőrzése folyamatosan történik, hogy megbizonyosodjon róla, hogy:
-
-- Az alkalmazás erőforrásai a többi ügyfél [Azure-erőforrásaitól védve vannak](https://github.com/projectkudu/kudu/wiki/Azure-Web-App-sandbox) .
-- A virtuálisgép [-példányok és a futásidejű szoftverek rendszeresen frissülnek](overview-patch-os-runtime.md) az újonnan felderített biztonsági rések kezeléséhez. 
-- Az alkalmazás és az egyéb Azure-erőforrások (például a [SQL Database](https://azure.microsoft.com/services/sql-database/)) közötti titkok (például a kapcsolati karakterláncok) az Azure-ban maradnak, és nem kereszteznek semmilyen hálózati határt. A titkos kulcsokat a rendszer mindig titkosítja tároláskor.
-- A App Service kapcsolati funkciói (például a [hibrid kapcsolat](app-service-hybrid-connections.md)) közötti kommunikáció titkosítva van. 
-- A távoli felügyeleti eszközökkel (például Azure PowerShellokkal, Azure CLI-vel, Azure SDK-kkal, REST API-kkal) létesített kapcsolatok mindegyike titkosítva van.
-- a 24 órás veszélyforrások kezelése megvédi az infrastruktúrát és a platformot a kártevők, az elosztott szolgáltatásmegtagadási (DDoS), a személyes környezet (MITM) és más fenyegetések ellen.
-
-További információ az infrastruktúra és a platform biztonságáról az Azure-ban: [Azure biztonsági és adatkezelési központ](https://azure.microsoft.com/overview/trusted-cloud/).
+[!INCLUDE [app-service-security-intro](../../includes/app-service-security-intro.md)]
 
 Az alábbi fejezetek azt mutatják be, hogyan lehet tovább védelemmel ellátni App Service alkalmazást a fenyegetésektől.
 
 ## <a name="https-and-certificates"></a>HTTPS és tanúsítványok
 
-A App Service segítségével biztonságossá teheti az alkalmazásokat a [https](https://wikipedia.org/wiki/HTTPS)használatával. Az alkalmazás létrehozásakor az alapértelmezett tartományneve (\<APP_NAME>. azurewebsites.net) már elérhető a HTTPS protokoll használatával. Ha [Egyéni tartományt állít be az alkalmazáshoz](app-service-web-tutorial-custom-domain.md), akkor azt is biztonságossá kell tennie [egy TLS-/SSL-tanúsítvánnyal](configure-ssl-bindings.md) , hogy az ügyféloldali böngészők biztonságos HTTPS-kapcsolatot tegyenek lehetővé az egyéni tartományhoz. A App Service számos különböző típusú tanúsítványt támogat:
+A App Service segítségével biztonságossá teheti az alkalmazásokat a [https](https://wikipedia.org/wiki/HTTPS)használatával. Az alkalmazás létrehozásakor az alapértelmezett tartományneve ( \< app_name>. azurewebsites.net) már elérhető a HTTPS protokoll használatával. Ha [Egyéni tartományt állít be az alkalmazáshoz](app-service-web-tutorial-custom-domain.md), akkor azt is biztonságossá kell tennie [egy TLS-/SSL-tanúsítvánnyal](configure-ssl-bindings.md) , hogy az ügyféloldali böngészők biztonságos HTTPS-kapcsolatot tegyenek lehetővé az egyéni tartományhoz. A App Service számos különböző típusú tanúsítványt támogat:
 
 - Felügyelt tanúsítvány Ingyenes App Service
 - Tanúsítvány App Service
@@ -52,7 +43,7 @@ A App Service az FTP-t és a FTPS is támogatja a fájlok telepítéséhez. A FT
 
 Alapértelmezés szerint a App Service alkalmazás az internetről érkező összes IP-címről fogad kérelmeket, de az IP-címek kis részhalmazára korlátozhatja a hozzáférést. A Windows App Service lehetővé teszi az alkalmazás elérésére jogosult IP-címek listájának megadását. Az engedélyezett lista tartalmazhat egyedi IP-címeket vagy egy alhálózati maszk által meghatározott IP-címtartományt. További információ: [Azure app Service statikus IP-korlátozások](app-service-ip-restrictions.md).
 
-A Windows App Service esetében a _web. config_fájl konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonsági \<dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
+A Windows App Service esetében a _web. config_fájl konfigurálásával dinamikusan is korlátozhatja az IP-címeket. További információ: [dinamikus IP-biztonsági \< dynamicIpSecurity>](https://docs.microsoft.com/iis/configuration/system.webServer/security/dynamicIpSecurity/).
 
 ## <a name="client-authentication-and-authorization"></a>Ügyfél-hitelesítés és engedélyezés
 

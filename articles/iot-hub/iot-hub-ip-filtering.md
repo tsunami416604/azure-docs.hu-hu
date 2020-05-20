@@ -5,14 +5,14 @@ author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/22/2017
+ms.date: 05/12/2020
 ms.author: robinsh
-ms.openlocfilehash: b1550254e969e96fbc83c4c344189d414a8fa8d3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 74ee9506d7b21e5f0654c8a46976b4d5c63b5197
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995505"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649374"
 ---
 # <a name="use-ip-filters"></a>IP-szűrők használata
 
@@ -28,9 +28,12 @@ A IoT Hub végpontok bizonyos IP-címekhez való letiltásához két konkrét ha
 
 ## <a name="how-filter-rules-are-applied"></a>A szűrési szabályok alkalmazása
 
-Az IP-szűrési szabályok a IoT Hub szolgáltatási szinten lesznek alkalmazva. Ezért az IP-szűrési szabályok az eszközök és a háttérbeli alkalmazások összes kapcsolatára érvényesek bármely támogatott protokoll használatával.
+Az IP-szűrési szabályok a IoT Hub szolgáltatási szinten lesznek alkalmazva. Ezért az IP-szűrési szabályok az eszközök és a háttérbeli alkalmazások összes kapcsolatára érvényesek bármely támogatott protokoll használatával. Azonban az ügyfelek közvetlenül a [beépített Event hub-kompatibilis végpontról](iot-hub-devguide-messages-read-builtin.md) (nem a IoT hub kapcsolati karakterláncon keresztül) olvassák az IP-szűrési szabályokat. 
 
-Minden olyan IP-címről érkező kapcsolódási kísérlet, amely megfelel az IoT hub elutasító IP-szabályának, a rendszer jogosulatlanul 401 állapotkódot és leírást kap. A válaszüzenet nem említi az IP-szabályt.
+Minden olyan IP-címről érkező kapcsolódási kísérlet, amely megfelel az IoT hub elutasító IP-szabályának, a rendszer jogosulatlanul 401 állapotkódot és leírást kap. A válaszüzenet nem említi az IP-szabályt. Az IP-címek elutasítása megakadályozhatja, hogy más Azure-szolgáltatások, például az Azure Stream Analytics, az Azure Virtual Machines vagy a Azure Portal Device Explorer a IoT hub használatával.
+
+> [!NOTE]
+> Ha Azure Stream Analytics (ASA) protokollt kell használnia egy olyan IoT-hubhoz érkező üzenetek olvasásához, amelyeken engedélyezve van az IP-szűrő, akkor az IoT hub Event hub-kompatibilis nevét és végpontját használva manuálisan adhat hozzá [Event Hubs stream-bemenetet](../stream-analytics/stream-analytics-define-inputs.md#stream-data-from-event-hubs) az ASA-ban.
 
 ## <a name="default-setting"></a>Alapértelmezett beállítás
 
@@ -48,7 +51,7 @@ Az **IP-szűrési szabály hozzáadása**lehetőség kiválasztását követően
 
 ![Az IP-szűrési szabály hozzáadása lehetőség kiválasztását követően](./media/iot-hub-ip-filtering/ip-filter-after-selecting-add.png)
 
-* Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` a rendszer fogadja el.
+* Adja meg az IP-szűrési szabály **nevét** . Ennek egyedi, kis-és nagybetűket nem megkülönböztető, alfanumerikus sztringnek kell lennie legfeljebb 128 karakter hosszú lehet. Csak az ASCII 7 bites alfanumerikus karaktereket és a `{'-', ':', '/', '\', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '''}` rendszer fogadja el.
 
 * Adjon meg egyetlen IPv4-címet vagy IP-címet a CIDR-jelölésben. Például a CIDR 192.168.100.0/22 jelölése 1024 a 192.168.100.0 és a 192.168.103.255 közötti IPv4-címeket jelöli.
 
@@ -61,12 +64,6 @@ A mezők kitöltése után kattintson a **Mentés** gombra a szabály mentéséh
 A **Hozzáadás** lehetőség le van tiltva, amikor eléri a legfeljebb 10 IP-szűrési szabályt.
 
 Meglévő szabály szerkesztéséhez válassza ki a módosítani kívánt adatait, végezze el a módosítást, majd válassza a **Mentés** lehetőséget a Szerkesztés mentéséhez.
-
-> [!NOTE]
-> Az IP-címek elutasítása megakadályozhatja, hogy más Azure-szolgáltatások (például a Azure Stream Analytics, az Azure Virtual Machines vagy a portálon lévő Device Explorer) az IoT hub használatával legyenek kommunikálva.
-
-> [!WARNING]
-> Ha Azure Stream Analytics (ASA) használatával olvas be üzeneteket egy olyan IoT-hubhoz, amelyen engedélyezve van az IP-szűrés, akkor az IoT hub Event hub-kompatibilis nevét és végpontját használva manuálisan adhat hozzá [Event Hubs stream-bemenetet](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-inputs#stream-data-from-event-hubs) az ASA-ban.
 
 ## <a name="delete-an-ip-filter-rule"></a>IP-szűrési szabály törlése
 
@@ -84,7 +81,7 @@ A IoT Hub aktuális IP-szűrőinek lekéréséhez futtassa a következőt:
 az resource show -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs
 ```
 
-Ez egy JSON-objektumot ad vissza, amelyben a meglévő IP-szűrők a `properties.ipFilterRules` kulcs alatt vannak felsorolva:
+Ez egy JSON-objektumot ad vissza, amelyben a meglévő IP-szűrők a kulcs alatt vannak felsorolva `properties.ipFilterRules` :
 
 ```json
 {
@@ -120,7 +117,7 @@ A IoT Hub meglévő IP-szűrőjének eltávolításához futtassa a következőt
 az resource update -n <iothubName> -g <resourceGroupName> --resource-type Microsoft.Devices/IotHubs --add properties.ipFilterRules <ipFilterIndexToRemove>
 ```
 
-Vegye figyelembe `<ipFilterIndexToRemove>` , hogy az IP-szűrők sorrendjét meg kell egyeznie `properties.ipFilterRules`a IoT hub.
+Vegye figyelembe, hogy az `<ipFilterIndexToRemove>` IP-szűrők sorrendjét meg kell egyeznie a IoT hub `properties.ipFilterRules` .
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>IP-szűrők beolvasása és frissítése Azure PowerShell használatával
 
@@ -150,7 +147,7 @@ $iothubResource | Set-AzResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>IP-szűrési szabályok frissítése a REST használatával
 
-A IoT Hub IP-szűrőjét az Azure erőforrás-szolgáltató REST-végpontjának használatával is lekérheti és módosíthatja. Lásd `properties.ipFilterRules` : a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
+A IoT Hub IP-szűrőjét az Azure erőforrás-szolgáltató REST-végpontjának használatával is lekérheti és módosíthatja. Lásd: `properties.ipFilterRules` a [createorupdate metódusban](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
 
 ## <a name="ip-filter-rule-evaluation"></a>IP-szűrési szabály kiértékelése
 

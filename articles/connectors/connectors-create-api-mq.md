@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: ChristopherHouser
 ms.author: chrishou
-ms.reviewer: valthom, logicappspm
+ms.reviewer: valthom, estfan, logicappspm
 ms.topic: article
-ms.date: 03/31/2020
+ms.date: 05/14/2020
 tags: connectors
-ms.openlocfilehash: 737c5b90b216156ca08346f4a64fd0b421ad6c19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 17143257fcb6b9c71bb56e1f4c4958dce503c234
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80410272"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652463"
 ---
 # <a name="connect-to-an-ibm-mq-server-from-azure-logic-apps"></a>Kapcsolódás IBM MQ-kiszolgálóhoz Azure Logic Apps
 
@@ -33,6 +33,7 @@ Itt láthatók a hivatalosan támogatott IBM WebSphere MQ-verziók:
   * MQ 7,5
   * MQ 8,0
   * MQ 9,0
+  * MQ 9,1
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -88,10 +89,10 @@ Ha a logikai alkalmazás megpróbál csatlakozni a helyszíni MQ-kiszolgálóhoz
 
   1. Azon a számítógépen, amelyen a helyszíni adatátjáró szolgáltatás fut, nyissa meg a Start menüt, keresse meg és válassza a **felhasználói tanúsítványok kezelése**elemet.
 
-  1. A Windows hitelesítésszolgáltató eszköz megnyitása után nyissa meg a **tanúsítványok – helyi számítógép** >  **megbízható legfelső szintű hitelesítésszolgáltatók** mappáját, és telepítse a tanúsítványt.
+  1. A Windows hitelesítésszolgáltató eszköz megnyitása után nyissa meg a **tanúsítványok – helyi számítógép**  >   **megbízható legfelső szintű hitelesítésszolgáltatók** mappáját, és telepítse a tanúsítványt.
 
      > [!IMPORTANT]
-     > Ügyeljen arra, hogy a tanúsítványokat a **tanúsítványok – helyi számítógép** > **megbízható legfelső szintű hitelesítésszolgáltatók** tárolójába telepítse.
+     > Ügyeljen arra, hogy a tanúsítványokat a **tanúsítványok – helyi számítógép**  >  **megbízható legfelső szintű hitelesítésszolgáltatók** tárolójába telepítse.
 
 * Az MQ-kiszolgáló megköveteli az SSL-kapcsolatokhoz használni kívánt titkosítási specifikáció megadását. A .NET-beli SsLStream azonban nem teszi lehetővé a titkosítási specifikációk megadását. A korlátozás megkerüléséhez módosítsa az MQ-kiszolgáló konfigurációját úgy, hogy az megfeleljen az összekötő által az SSL-egyeztetésben elküldött csomag első titkosítási specifikációjának.
 
@@ -101,7 +102,7 @@ Ha a logikai alkalmazás megpróbál csatlakozni a helyszíni MQ-kiszolgálóhoz
 
 1. A logikai alkalmazás trigger vagy más művelet területén válassza az **új lépés**lehetőséget.
 
-1. A keresőmezőbe írja be `mq`a kifejezést, majd válassza ki a **tallózási üzenet** műveletet.
+1. A keresőmezőbe írja be a kifejezést `mq` , majd válassza ki a **tallózási üzenet** műveletet.
 
    ![Az "üzenet tallózása" művelet kiválasztása](media/connectors-create-api-mq/browse-message.png)
 
@@ -109,7 +110,7 @@ Ha a logikai alkalmazás megpróbál csatlakozni a helyszíni MQ-kiszolgálóhoz
 
 1. A kapcsolat létrehozása után állítsa be a **tallózási üzenet** műveletének tulajdonságait:
 
-   | Tulajdonság | Leírás |
+   | Tulajdonság | Description |
    |----------|-------------|
    | **Várólista** | Ha eltér a kapcsolatban megadott sorból, adja meg a várólistát. |
    | **MessageID**, **correlationId**, **GroupID**és egyéb tulajdonságok | A különböző MQ-üzenet tulajdonságain alapuló üzenet keresése |

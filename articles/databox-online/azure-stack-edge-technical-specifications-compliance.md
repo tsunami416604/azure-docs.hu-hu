@@ -8,16 +8,16 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 054f1449d6f06225633bf0647cac93ca42f2b59b
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 5a4ac2342ca36d83d1a579851c090c4713814c8d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929009"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652035"
 ---
 # <a name="azure-stack-edge-technical-specifications"></a>Azure Stack Edge műszaki specifikációi
 
-Az Microsoft Azure Stack Edge-eszköz hardveres összetevői megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozási előírásoknak. A műszaki specifikációk a tápegységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le. 
+Az Microsoft Azure Stack Edge-eszköz hardveres összetevői megfelelnek a jelen cikkben ismertetett technikai előírásoknak és szabályozási előírásoknak. A műszaki specifikációk a tápegységek (PSUs), a tárolókapacitás, a bekerítések és a környezeti szabványok leírását írják le.
 
 ## <a name="compute-memory-specifications"></a>Számítási, memória-specifikációk
 
@@ -28,15 +28,13 @@ Az Azure Stack Edge-eszköz a következő specifikációkkal rendelkezik a szám
 | CPU    | 2 X 10 mag CPU                     |
 | Memory (Memória)              | 128 GB RAM                  |
 
-
 ## <a name="fpga-specifications"></a>FPGA-specifikációk
 
-A rendszer minden olyan Azure Stack peremhálózati eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely lehetővé teszi Machine Learning (ML) forgatókönyvek használatát. 
+A rendszer minden olyan Azure Stack peremhálózati eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely lehetővé teszi Machine Learning (ML) forgatókönyvek használatát.
 
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
-
+| FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).|
 
 ## <a name="power-supply-unit-specifications"></a>Tápegység-egységek specifikációi
 
@@ -45,9 +43,14 @@ Az Azure Stack Edge-eszközön két 100-240 V-os tápegység (PSUs) áll a nagy 
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximális kimeneti teljesítmény    | 750 W                     |
-| Frequency               | 50/60 Hz                   |
+| Gyakoriság               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
 | Gyors csatlakoztatás           | Igen                        |
+
+### <a name="azure-stack-edge-power-cord-specifications-by-region"></a>A Azure Stack Edge tápkábelének specifikációi régiónként
+
+Az Azure Stack Edge-eszköznek szüksége van egy olyan tápkábelre, amely az Azure-régiótól függően változhat.
+Az összes támogatott tápkábel műszaki specifikációjának megtekintéséhez tekintse meg a következő témakört: [Azure stack Edge tápkábel-specifikációk régiónként](azure-stack-edge-technical-specifications-power-cords-regional.md).
 
 <!--## Power consumption statistics
 
@@ -57,7 +60,7 @@ The following table lists the typical power consumption data (actual values may 
 
 Az Azure Stack Edge-eszköz 6 hálózati adapterrel rendelkezik, a PORT1-PORT6.
 
-| Specifikáció           | Leírás                 |
+| Specifikáció           | Description                 |
 |-------------------------|----------------------------|
 |  Hálózati illesztők    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
 
@@ -133,7 +136,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    Energia             |    A bizottsági rendelet (EU) nem. 617/2013                                                                                                                                                                                        |
 |    RoHS           |    EN 50581:2012                                                                                                                                                                                        |
 
-
 ### <a name="operating-temperature-de-rating-specifications"></a>Üzemeltetési hőmérséklet – de-minősítési specifikációk
 
 |     Működési hőmérséklet – de-minősítés     |     Környezeti hőmérséklet tartománya                                                         |
@@ -141,7 +143,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    Akár 35 °C-ig (95 °C)                       |    A maximális hőmérsékletet 1 °C/300 m (1 °F/547 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    35 °C – 40 °C (95 °f – 104 °F)            |    A maximális hőmérsékletet 1 °C/175 m (1 °F/319 Ft) csökkenti 950 m felett (3 117 Ft).    |
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
-
 
 ## <a name="next-steps"></a>További lépések
 

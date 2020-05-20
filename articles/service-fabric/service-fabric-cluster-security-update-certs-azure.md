@@ -3,17 +3,17 @@ title: Tanúsítványok kezelése Azure Service Fabric-fürtben
 description: Útmutatás új tanúsítványok hozzáadásához, az átváltási tanúsítványhoz és a tanúsítvány eltávolításához egy Service Fabric-fürtön.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: a3c92e1b39261af32085e4d9b6cb2462d5c0eb64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43e9c95e0fb8484f7b24c5a0c409d3aa6a68eabc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75458347"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658392"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Tanúsítványok hozzáadása és törlése Service Fabric-fürtön az Azure-ban
 Javasoljuk, hogy ismerkedjen meg a Service Fabric X. 509 tanúsítványokkal, és Ismerje meg a [fürt biztonsági forgatókönyveit](service-fabric-cluster-security.md). A folytatás előtt meg kell ismernie, hogy mi a fürt tanúsítványa, és mire használható.
 
-Az Azure Service Fabric SDK alapértelmezett tanúsítvány-betöltési viselkedése a következő lejárati dátummal rendelkező meghatározott tanúsítvány üzembe helyezése és használata. az elsődleges vagy másodlagos konfigurációs definíciótól függetlenül. A klasszikus viselkedésre való visszatérés nem ajánlott speciális művelet, és a `Fabric.Code` konfigurációban a "UseSecondaryIfNewer" paraméter értékének FALSE értéket kell beállítania.
+Az Azure Service Fabric SDK alapértelmezett tanúsítvány-betöltési viselkedése a következő lejárati dátummal rendelkező meghatározott tanúsítvány üzembe helyezése és használata. az elsődleges vagy másodlagos konfigurációs definíciótól függetlenül. A klasszikus viselkedésre való visszatérés nem ajánlott speciális művelet, és a konfigurációban a "UseSecondaryIfNewer" paraméter értékének FALSE értéket kell beállítania `Fabric.Code` .
 
 A Service Fabric lehetővé teszi két fürtcsomópont, egy elsődleges és egy másodlagos beállítás megadását, ha a fürt létrehozása során konfigurálja a tanúsítvány biztonságát, az Ügyféltanúsítványok mellett. Tekintse át az [Azure-fürtök portálon keresztüli létrehozását](service-fabric-cluster-creation-via-portal.md) , vagy hozzon létre [egy Azure-fürtöt Azure Resource Manager segítségével](service-fabric-cluster-creation-via-arm.md) a létrehozási idő beállításával kapcsolatos részletekért. Ha csak egy fürtöt ad meg a létrehozás ideje alatt, akkor az elsődleges tanúsítványként lesz használva. A fürt létrehozása után hozzáadhat egy új tanúsítványt másodlagosként.
 
@@ -35,9 +35,7 @@ A nem használt fürt biztonsági tanúsítványának eltávolításához navig�
 
 Ha a cél az elsődlegesként megjelölt tanúsítvány eltávolítása, akkor egy másodlagos tanúsítványt kell telepítenie egy lejárati dátummal, amely az elsődleges tanúsítványhoz képest tovább tart, és lehetővé teszi az automatikus átváltási viselkedést; az automatikus rollover befejeződése után törölje az elsődleges tanúsítványt.
 
-## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Másodlagos tanúsítvány hozzáadása a Resource Manager PowerShell használatával
-> [!TIP]
-> Az [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmaggal most már jobb és egyszerűbb módon adhat hozzá másodlagos tanúsítványokat. Nem kell követnie a szakasz további lépéseit.  Emellett nincs szüksége arra a sablonra, amelyet eredetileg a fürt létrehozásához és üzembe helyezéséhez használt a [Add-AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) parancsmag használatakor.
+## <a name="add-a-secondary-certificate-using-azure-resource-manager"></a>Másodlagos tanúsítvány hozzáadása a Azure Resource Manager használatával
 
 Ezek a lépések feltételezik, hogy tisztában van azzal, hogy a Resource Manager hogyan működik, és legalább egy Service Fabric-fürtöt üzembe helyezett egy Resource Manager-sablon használatával, és a sablont, amelyet a fürt kézi beállításához használt. Azt is feltételezi, hogy a JSON-t használja.
 

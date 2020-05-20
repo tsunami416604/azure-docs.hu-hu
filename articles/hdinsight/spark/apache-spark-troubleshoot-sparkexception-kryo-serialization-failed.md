@@ -1,18 +1,18 @@
 ---
 title: A JDBC/ODBC & Apache takarékossági keretrendszerrel kapcsolatos problémák – Azure HDInsight
 description: Nem sikerült letölteni a nagyméretű adatkészleteket a JDBC/ODBC és az Apache takarékosság szoftver-keretrendszer használatával az Azure HDInsight
-ms.service: hdinsight
-ms.topic: troubleshooting
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.date: 07/29/2019
-ms.openlocfilehash: 23693dcae2f361b88440ec88ca39fd8ed229d85a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.service: hdinsight
+ms.topic: troubleshooting
+ms.date: 05/14/2020
+ms.openlocfilehash: a8dcd6ae844810213ed6706002cdb9a31de94f60
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75894261"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653585"
 ---
 # <a name="unable-to-download-large-data-sets-using-jdbcodbc-and-apache-thrift-software-framework-in-hdinsight"></a>Nem sikerült letölteni a nagyméretű adatkészleteket a HDInsight-ben a JDBC/ODBC és az Apache takarékosság szoftver-keretrendszer használatával
 
@@ -29,11 +29,14 @@ Buffer overflow. Available: 0, required: 36518. To avoid this, increase spark.kr
 
 ## <a name="cause"></a>Ok
 
-Ezt a kivételt a szerializálási folyamat okozta, hogy a megengedettnél több pufferméret legyen felhasználva. A Spark 2.0.0-ben a `org.apache.spark.serializer.KryoSerializer` osztály az objektumok szerializálásához használatos, amikor az adatelérés az Apache takarékosság szoftver-keretrendszeren keresztül történik. Egy másik osztályt használ a hálózaton keresztül küldendő vagy szerializált formában gyorsítótárazott adathoz.
+Ezt a kivételt a szerializálási folyamat okozta, hogy a megengedettnél több pufferméret legyen felhasználva. A Spark 2.0.0-ben a osztály az `org.apache.spark.serializer.KryoSerializer` objektumok szerializálásához használatos, amikor az adatelérés az Apache takarékosság szoftver-keretrendszeren keresztül történik. Egy másik osztályt használ a hálózaton keresztül küldendő vagy szerializált formában gyorsítótárazott adathoz.
 
 ## <a name="resolution"></a>Megoldás:
 
-Növelje meg `Kryoserializer` a puffer értékét. Adjon hozzá egy nevű `spark.kryoserializer.buffer.max` kulcsot, és állítsa `2048` be a spark2 config `Custom spark2-thrift-sparkconf`alatt.
+Növelje meg a `Kryoserializer` puffer értékét. Adjon hozzá egy nevű kulcsot, `spark.kryoserializer.buffer.max` és állítsa be a `2047` spark2 config alatt `Custom spark2-thrift-sparkconf` . Indítsa újra az összes érintett összetevőt.
+
+> [!IMPORTANT]
+> A értékének `spark.kryoserializer.buffer.max` 2048-nál kisebbnek kell lennie. A tört értékek nem támogatottak.
 
 ## <a name="next-steps"></a>További lépések
 

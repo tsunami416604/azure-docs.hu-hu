@@ -1,22 +1,22 @@
 ---
 title: Másolási tevékenység hibatűrése az Azure Data Factoryban
-description: A nem kompatibilis sorok kihagyásával megtudhatja, hogyan adhat hozzá hibatűrést Azure Data Factory másolási tevékenységhez.
+description: Ismerje meg, hogyan adhat hozzá hibatűrést a Azure Data Factory másolásához a nem kompatibilis információk kiugrásával.
 services: data-factory
 documentationcenter: ''
 author: dearandyxu
-manager: anandsub
+manager: ''
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/26/2018
 ms.author: yexu
-ms.openlocfilehash: 766520fe44047eee76029adf8ee1683c7b8008a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a44703aabc35131cf040892999409173638437a7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417861"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658773"
 ---
 #  <a name="fault-tolerance-of-copy-activity-in-azure-data-factory"></a>Másolási tevékenység hibatűrése az Azure Data Factoryban
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -25,13 +25,111 @@ ms.locfileid: "81417861"
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-A Azure Data Factory másolási tevékenysége két módszert kínál a nem kompatibilis sorok kezelésére, amikor Adatmásolást végez a forrás-és fogadó adattárolók között:
+Amikor Adatmásolást végez a forrásról a célhelyre, Azure Data Factory másolási tevékenység bizonyos szintű hibatűrést biztosít, hogy megakadályozza az adatáthelyezési hibák megszakadását. Tegyük fel például, hogy több millió sort másol a forrásról a célhelyre, ahol a céladatbázis egy elsődleges kulcsát hozta létre, de a forrásadatbázis nem rendelkezik meghatározott elsődleges kulcsokkal. Ha a duplikált sorokat a forrásról a célhelyre másolja, akkor a célként megadott adatbázis PK-megsértési hibáját fogja érinteni. A másolási tevékenység jelenleg két módszert kínál az ilyen hibák kezelésére: 
+- A másolási tevékenységet a hiba előfordulását követően is megszakíthatja. 
+- Továbbra is másolhatja a többit, ha engedélyezi a hibatűrést a nem kompatibilis adatok kihagyásához. Például ugorja át a duplikált sort ebben az esetben. A kihagyott adatok a másolási tevékenységen belüli munkamenet-napló engedélyezésével is bejelentkezhetnek. 
 
-- A másolási tevékenység megszakítható, ha nem kompatibilis adat észlelhető (alapértelmezett viselkedés).
-- Az összes adattal folytathatja a hibatűrés hozzáadásával és a nem kompatibilis adatsorok kihagyásával. Emellett naplózhatja a nem kompatibilis sorokat az Azure Blob Storage-ban vagy a Azure Data Lake Storeban. Ezután megvizsgálhatja a naplót, hogy megismerje a hiba okát, javítsa ki az adatforráson lévő információkat, majd próbálja megismételni a másolási tevékenységet.
+## <a name="copying-binary-files"></a>Bináris fájlok másolása 
 
-## <a name="supported-scenarios"></a>Támogatott esetek
-A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem kompatibilis adatok észlelésére, kihagyására és naplózására alkalmasak:
+Az ADF a következő hibatűrési forgatókönyveket támogatja a bináris fájlok másolásakor. Dönthet úgy is, hogy megszakítja a másolási tevékenységet, vagy folytatja a REST másolását a következő helyzetekben:
+
+1. Az ADF által másolandó fájlokat a többi alkalmazás is törli.
+2. Egyes mappák vagy fájlok nem engedélyezik az ADF elérését, mert a fájlok vagy mappák ACL-jei magasabb jogosultsági szint szükségesek, mint az ADF-ben konfigurált kapcsolati adatok.
+3. Egy vagy több fájl nem ellenőrzi, hogy konzisztens-e a forrás-és a cél tárolóban, ha engedélyezi az adatkonzisztencia-ellenőrzés beállítást az ADF-ben.
+
+### <a name="configuration"></a>Konfiguráció 
+Ha bináris fájlokat másol a Storage Stores között, a következő módon engedélyezheti a hibatűrést: 
+
+```json
+"typeProperties": { 
+    "source": { 
+        "type": "BinarySource", 
+        "storeSettings": { 
+            "type": "AzureDataLakeStoreReadSettings", 
+            "recursive": true 
+            } 
+    }, 
+    "sink": { 
+        "type": "BinarySink", 
+        "storeSettings": { 
+            "type": "AzureDataLakeStoreWriteSettings" 
+        } 
+    }, 
+    "skipErrorFile": { 
+        "fileMissing": true, 
+        "fileForbidden": true, 
+        "dataInconsistency": true 
+    }, 
+    "validateDataConsistency": true, 
+    "logStorageSettings": { 
+        "linkedServiceName": { 
+            "referenceName": "ADLSGen2", 
+            "type": "LinkedServiceReference" 
+            }, 
+        "path": "sessionlog/" 
+     } 
+} 
+```
+Tulajdonság | Description | Megengedett értékek | Kötelező
+-------- | ----------- | -------------- | -------- 
+skipErrorFile | Az adatáthelyezés során kihagyni kívánt hibák típusait meghatározó tulajdonságok csoportja. | | Nem
+fileMissing | A skipErrorFile tulajdonság táska egyik kulcs-érték párja határozza meg, hogy szeretné-e kihagyni a fájlokat, amelyeket más alkalmazások törölnek, amikor az ADF-et időközben másolja. <br/> -True (igaz): a többi alkalmazás által törölt fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a fájlok törlése a forrás-áruházból történik az adatáthelyezés közepén. <br/>Ügyeljen arra, hogy ez a tulajdonság a True (igaz) értékre van beállítva. | True (alapértelmezett) <br/>False (Hamis) | Nem
+fileForbidden | A skipErrorFile tulajdonság táska egyik kulcs-érték párokkal határozható meg, hogy ki szeretné-e hagyni az adott fájlokat, ha a fájlok vagy mappák ACL-jei magasabb jogosultsági szintet igényelnek, mint az ADF-ben konfigurált kapcsolatok. <br/> -True (igaz): a fájlok kihagyásával szeretné átmásolni a többit. <br/> -False (hamis): a másolási tevékenységet a mappák vagy fájlok engedélyeinek lekérése után szeretné megszakítani. | True (Igaz) <br/>False (alapértelmezett) | Nem
+dataInconsistency | A skipErrorFile tulajdonság táska egyik kulcs-érték párja, amely meghatározza, hogy ki szeretné-e hagyni a forrás-és a cél-tároló közötti inkonzisztens adatmennyiséget. <br/> -True (igaz): az inkonzisztens adatok kihagyásával szeretné átmásolni a REST-et. <br/> -False (hamis): a másolási tevékenységet szeretné megszakítani, ha a rendszer inkonzisztens adathalmazt talált. <br/>Ügyeljen arra, hogy ez a tulajdonság csak akkor érvényes, ha a validateDataConsistency értéke TRUE (igaz). | True (Igaz) <br/>False (alapértelmezett) | Nem
+logStorageSettings  | A kihagyott objektumok nevének naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása a munkamenet naplófájljainak tárolására. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | Nem
+path | A naplófájlok elérési útja. | A naplófájlok tárolásához használt elérési út megadása. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
+
+### <a name="monitoring"></a>Figyelés 
+
+#### <a name="output-from-copy-activity"></a>Kimenet a másolási tevékenységből
+Lekérheti az olvasási, írásos és kihagyott fájlok számát az egyes másolási tevékenységek kimenetén keresztül. 
+
+```json
+"output": {
+            "dataRead": 695,
+            "dataWritten": 186,
+            "filesRead": 3,  
+            "filesWritten": 1, 
+            "filesSkipped": 2, 
+            "throughput": 297,
+            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "dataConsistencyVerification": 
+           { 
+                "VerificationResult": "Verified", 
+                "InconsistentData": "Skipped" 
+           } 
+        }
+
+```
+
+#### <a name="session-log-from-copy-activity"></a>Munkamenet-napló a másolási tevékenységből
+
+Ha úgy konfigurálja, hogy naplózza a kihagyott fájlneveket, a naplófájlt a következő elérési úton találja: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].csv` . 
+
+A naplófájloknak a CSV-fájloknak kell lenniük. A naplófájl sémája a következő:
+
+Oszlop | Description 
+-------- | -----------  
+Időbélyeg | A fájl időbélyege, amikor az ADF kihagyja a fájlt.
+Szint | Az adott tétel naplózási szintje. A fájl kihagyása esetén a rendszer figyelmeztetési szinten jeleníti meg az elemeket.
+OperationName | Az ADF másolási tevékenységének működési viselkedése minden fájlban. A kihagyni kívánt fájl megadásához "FileSkip" lesz.
+OperationItem | A kihagyni kívánt fájlnevek.
+Üzenet | További információ a fájl kihagyásának okának szemléltetéséhez.
+
+A naplófájl példája a következő: 
+```
+Timestamp,Level,OperationName,OperationItem,Message 
+2020-03-24 05:35:41.0209942,Warning,FileSkip,"bigfile.csv","File is skipped after read 322961408 bytes: ErrorCode=UserErrorSourceBlobNotExist,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=The required Blob is missing. ContainerName: https://transferserviceonebox.blob.core.windows.net/skipfaultyfile, path: bigfile.csv.,Source=Microsoft.DataTransfer.ClientLibrary,'." 
+2020-03-24 05:38:41.2595989,Warning,FileSkip,"3_nopermission.txt","File is skipped after read 0 bytes: ErrorCode=AdlsGen2OperationFailed,'Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=ADLS Gen2 operation failed for: Operation returned an invalid status code 'Forbidden'. Account: 'adlsgen2perfsource'. FileSystem: 'skipfaultyfilesforbidden'. Path: '3_nopermission.txt'. ErrorCode: 'AuthorizationPermissionMismatch'. Message: 'This request is not authorized to perform this operation using this permission.'. RequestId: '35089f5d-101f-008c-489e-01cce4000000'..,Source=Microsoft.DataTransfer.ClientLibrary,''Type=Microsoft.DataTransfer.Common.Shared.HybridDeliveryException,Message=Operation returned an invalid status code 'Forbidden',Source=,''Type=Microsoft.Azure.Storage.Data.Models.ErrorSchemaException,Message='Type=Microsoft.Azure.Storage.Data.Models.ErrorSchemaException,Message=Operation returned an invalid status code 'Forbidden',Source=Microsoft.DataTransfer.ClientLibrary,',Source=Microsoft.DataTransfer.ClientLibrary,'." 
+```
+A fenti naplóból látható, hogy a bigfile. csv fájl ki lett hagyva, mert egy másik alkalmazás törölte ezt a fájlt az ADF másolásakor. És a 3_nopermission. txt fájlt a rendszer kihagyta, mert az ADF nem fér hozzá az engedélyekkel kapcsolatos probléma miatt.
+
+
+## <a name="copying-tabular-data"></a>Táblázatos adatok másolása 
+
+### <a name="supported-scenarios"></a>Támogatott esetek
+A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem kompatibilis táblázatos adatok észlelésére, kihagyására és naplózására alkalmasak:
 
 - Nem **kompatibilis a forrás adattípusa és a fogadó natív típusa között**. 
 
@@ -50,7 +148,81 @@ A másolási tevékenység három olyan forgatókönyvet támogat, amelyek nem k
 >- Ez a funkció nem érvényes, ha a másolási tevékenység úgy van konfigurálva, hogy meghívja az [Amazon vöröseltolódásának eltávolítását](connector-amazon-redshift.md#use-unload-to-copy-data-from-amazon-redshift).
 >- Ez a funkció nem érvényes, ha a másolási tevékenység konfigurálva van egy tárolt eljárás meghívására [egy SQL-](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#invoke-a-stored-procedure-from-a-sql-sink)fogadóból.
 
-## <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
+A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok másolási tevékenységbe való kihagyásának konfigurálásához:
+
+```json
+"typeProperties": { 
+    "source": { 
+        "type": "AzureSqlSource" 
+    }, 
+    "sink": { 
+        "type": "AzureSqlSink" 
+    }, 
+    "enableSkipIncompatibleRow": true, 
+    "logStorageSettings": { 
+    "linkedServiceName": { 
+        "referenceName": "ADLSGen2", 
+        "type": "LinkedServiceReference" 
+        }, 
+    "path": "sessionlog/" 
+    } 
+}, 
+```
+
+Tulajdonság | Description | Megengedett értékek | Kötelező
+-------- | ----------- | -------------- | -------- 
+enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | True (Igaz)<br/>False (alapértelmezett) | Nem
+logStorageSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
+linkedServiceName | Az [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureBlobStorage` vagy `AzureBlobFS` típusú társított szolgáltatás neve, amely a naplófájl tárolására használt példányra hivatkozik. | Nem
+path | A kihagyott sorokat tartalmazó naplófájlok elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
+
+### <a name="monitor-skipped-rows"></a>A kihagyott sorok figyelése
+A másolási tevékenység futtatása után a másolási tevékenység kimenetében a kihagyott sorok száma látható:
+
+```json
+"output": {
+            "dataRead": 95,
+            "dataWritten": 186,
+            "rowsCopied": 9,
+            "rowsSkipped": 2,
+            "copyDuration": 16,
+            "throughput": 0.01,
+            "logPath": "https://myblobstorage.blob.core.windows.net//myfolder/a84bf8d4-233f-4216-8cb5-45962831cd1b/",
+            "errors": []
+        },
+
+```
+
+Ha úgy konfigurálja, hogy naplózza a nem kompatibilis sorokat, a naplófájlt a következő elérési útról tekintheti meg: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/copyactivity-logs/[copy-activity-name]/[copy-activity-run-id]/[auto-generated-GUID].csv` . 
+
+A naplófájlok a CSV-fájlok lesznek. A naplófájl sémája a következő:
+
+Oszlop | Description 
+-------- | -----------  
+Időbélyeg | A nem kompatibilis sorok kihagyása az ADF-ben
+Szint | Az adott tétel naplózási szintje. A figyelmeztetési szinten jelenik meg, ha ez az érték a kihagyott sorokat mutatja
+OperationName | Az ADF másolási tevékenységének műveleti viselkedése az egyes sorokon. A "TabularRowSkip" lesz annak a meghatározása, hogy az adott inkompatibilis sor ki lett hagyva.
+OperationItem | A kihagyott sorok a forrás adattárból.
+Üzenet | További információ az adott sor inkompatibilitásának okának szemléltetéséhez.
+
+
+A naplófájl tartalmának példája a következő:
+
+```
+Timestamp, Level, OperationName, OperationItem, Message
+2020-02-26 06:22:32.2586581, Warning, TabularRowSkip, """data1"", ""data2"", ""data3""," "Column 'Prop_2' contains an invalid value 'data3'. Cannot convert 'data3' to type 'DateTime'." 
+2020-02-26 06:22:33.2586351, Warning, TabularRowSkip, """data4"", ""data5"", ""data6"",", "Violation of PRIMARY KEY constraint 'PK_tblintstrdatetimewithpk'. Cannot insert duplicate key in object 'dbo.tblintstrdatetimewithpk'. The duplicate key value is (data4)." 
+```
+
+A fenti minta naplófájlban egy "Data1, data2, data3" nevű sort is kihagyott, mert a forrásról a célhelyre történő átalakítási probléma típusú. Egy másik, "data4, data5, data6" sor lett kihagyva, mert a rendszer PK-megsértési problémát okozott a forrás és a cél tároló között. 
+
+
+## <a name="copying-tabular-data-legacy"></a>Táblázatos adatok másolása (örökölt):
+
+A következő az örökölt módszer, amely lehetővé teszi a hibatűrést a táblázatos adatok másolásához. Ha új folyamatot vagy tevékenységet hoz létre, javasoljuk, hogy [innen](#copying-tabular-data) induljon el.
+
+### <a name="configuration"></a>Konfiguráció
 A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok másolási tevékenységbe való kihagyásának konfigurálásához:
 
 ```json
@@ -72,14 +244,14 @@ A következő példa egy JSON-definíciót biztosít a nem kompatibilis sorok m�
 }
 ```
 
-Tulajdonság | Leírás | Megengedett értékek | Kötelező
+Tulajdonság | Description | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | -------- 
 enableSkipIncompatibleRow | Meghatározza, hogy a nem kompatibilis sorok kihagyása a másolás során vagy sem. | True (Igaz)<br/>False (alapértelmezett) | Nem
 redirectIncompatibleRowSettings | A nem kompatibilis sorok naplózásához megadható tulajdonságok csoportja. | &nbsp; | Nem
 linkedServiceName | Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Store](connector-azure-data-lake-store.md#linked-service-properties) társított szolgáltatása, amely a kihagyott sorokat tartalmazó naplót tárolja. | Egy `AzureStorage` vagy `AzureDataLakeStore` típusú társított szolgáltatás neve, amely arra a példányra hivatkozik, amelyet a naplófájl tárolására kíván használni. | Nem
 path | A kihagyott sorokat tartalmazó naplófájl elérési útja. | Itt adhatja meg a nem kompatibilis adatfájlok naplózásához használni kívánt elérési utat. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem
 
-## <a name="monitor-skipped-rows"></a>A kihagyott sorok figyelése
+### <a name="monitor-skipped-rows"></a>A kihagyott sorok figyelése
 A másolási tevékenység futtatása után a másolási tevékenység kimenetében a kihagyott sorok száma látható:
 
 ```json
@@ -95,7 +267,7 @@ A másolási tevékenység futtatása után a másolási tevékenység kimeneté
         },
 
 ```
-Ha úgy konfigurálja, hogy naplózza a nem kompatibilis sorokat, a naplófájl ezen az elérési úton található `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv`:. 
+Ha úgy konfigurálja, hogy naplózza a nem kompatibilis sorokat, a naplófájl ezen az elérési úton található: `https://[your-blob-account].blob.core.windows.net/[path-if-configured]/[copy-activity-run-id]/[auto-generated-GUID].csv` . 
 
 A naplófájlok csak a CSV-fájlok lehetnek. Ha szükséges, a kihagyott eredeti adatértékek vesszővel elválasztott oszlopként lesznek naplózva. A naplófájlban az eredeti forrásadatok további két oszlopát ("ErrorCode" és "ErrorMessage") is hozzáadjuk, ahol megtekintheti az inkompatibilitás kiváltó okát. A ErrorCode és a ErrorMessage idézőjelek alapján történik. 
 

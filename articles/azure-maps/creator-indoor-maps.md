@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 34a1495d1a14e35bc5a94bfc01f4034c6fd6de72
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fb0293c66662c86723c31baebeed42dd42d33413
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598394"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677810"
 ---
 # <a name="creator-for-indoor-maps"></a>A beltéri térképek létrehozója
 
@@ -35,7 +35,7 @@ Egy rajzfájl feltöltéséhez használja a [Azure Maps Adatfeltöltő API](http
 
 ## <a name="convert-a-drawing-package"></a>Rajzfájl konvertálása
 
-A [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/data/conversion) egy feltöltött rajzobjektumot helyez át a beltéri térképi adategységbe. A konverziós szolgáltatás a csomagot is ellenőrzi. Az érvényesítési problémák két típusba sorolhatók: hibák és figyelmeztetések. Ha bármilyen hiba észlelhető, az átalakítási folyamat sikertelen lesz. Ha a rendszer figyelmeztetések észlelését észleli, az átalakítás sikeres lesz. Javasoljuk azonban, hogy tekintse át és oldja fel az összes figyelmeztetést. A figyelmeztetés azt jelenti, hogy az átalakítás egy részét figyelmen kívül hagyták vagy automatikusan rögzítették. A figyelmeztetések feloldása hibát okozhat az utóbbi folyamatokban. További információ: a [csomagra vonatkozó figyelmeztetések és hibák kirajzolása](drawing-conversion-error-codes.md).
+A [Azure Maps átalakítási szolgáltatás](https://docs.microsoft.com/rest/api/maps/conversion) egy feltöltött rajzobjektumot helyez át a beltéri térképi adategységbe. A konverziós szolgáltatás a csomagot is ellenőrzi. Az érvényesítési problémák két típusba sorolhatók: hibák és figyelmeztetések. Ha bármilyen hiba észlelhető, az átalakítási folyamat sikertelen lesz. Ha a rendszer figyelmeztetések észlelését észleli, az átalakítás sikeres lesz. Javasoljuk azonban, hogy tekintse át és oldja fel az összes figyelmeztetést. A figyelmeztetés azt jelenti, hogy az átalakítás egy részét figyelmen kívül hagyták vagy automatikusan rögzítették. A figyelmeztetések feloldása hibát okozhat az utóbbi folyamatokban. További információ: a [csomagra vonatkozó figyelmeztetések és hibák kirajzolása](drawing-conversion-error-codes.md).
 
 Ha hiba történik, az átalakítási szolgáltatás hivatkozást biztosít a [Azure Maps rajzolási hibákra](drawing-error-visualizer.md) , amely az önálló webalkalmazást jeleníti meg. A rajzolási hiba láthatóvá tételével megvizsgálhatja az átalakítási folyamat során felmerülő [rajzi csomagok figyelmeztetéseit és hibáit](drawing-conversion-error-codes.md) . A hibák kijavítása után megpróbálkozhat a csomag feltöltésével és átalakításával.
 

@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/19/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b7d8fbddc86c0d05d7b0d4ce46cb06c5fc92a2cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56c25ce417a17024843de1b9b16f57740de1e9fc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78188117"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636977"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Bejelentkezés beállítása Microsoft-fiók egyéni házirendek használatával Azure Active Directory B2C
 
@@ -27,9 +27,9 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a bejelentkezést egy Micr
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](custom-policy-get-started.md).
-- Ha még nem rendelkezik Microsoft-fiókval, hozzon létre egyet [https://www.live.com/](https://www.live.com/)a következő helyen:.
+- Ha még nem rendelkezik Microsoft-fiókval, hozzon létre egyet a következő helyen: [https://www.live.com/](https://www.live.com/) .
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
 Ha engedélyezni szeretné a bejelentkezést a Microsoft-fiók felhasználók számára, regisztrálnia kell egy alkalmazást az Azure AD-bérlőn belül. Az Azure AD-bérlő nem azonos a Azure AD B2C Bérlővel.
 
@@ -38,8 +38,8 @@ Ha engedélyezni szeretné a bejelentkezést a Microsoft-fiók felhasználók sz
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Alkalmazásregisztrációk**.
 1. Válassza az **új regisztráció**lehetőséget.
 1. Adja meg az alkalmazás **nevét** . Például: *MSAapp1*.
-1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget a szervezeti címtárban és a személyes Microsoft-fiókokban (például Skype, Xbox, Outlook.com)**.
-1. Az **átirányítási URI (nem kötelező)** területen válassza a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` **web** lehetőséget, és írja be a szövegmezőbe. Cserélje `your-tenant-name` le a helyére a Azure ad B2C bérlő nevét.
+1. A **támogatott fióktípus**területen válassza a **fiókok lehetőséget bármely szervezeti címtárban (bármely Azure ad-címtár-több-bérlős) és a személyes Microsoft-fiókokat (például Skype, Xbox)**.
+1. Az **átirányítási URI (nem kötelező)** területen válassza a **web** lehetőséget, és írja be `https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/oauth2/authresp` a szövegmezőbe. Cserélje le a helyére a `<tenant-name>` Azure ad B2C bérlő nevét.
 1. **Regisztráció** kiválasztása
 1. Jegyezze fel az alkalmazás – Áttekintés lapon megjelenő **alkalmazást (ügyfél-azonosítót)** . Erre akkor van szükség, amikor egy későbbi szakaszban konfigurálja a jogcím-szolgáltatót.
 1. **Tanúsítványok kiválasztása & Secrets**
@@ -49,7 +49,7 @@ Ha engedélyezni szeretné a bejelentkezést a Microsoft-fiók felhasználók sz
 
 ## <a name="configuring-optional-claims"></a>Választható jogcímek konfigurálása
 
-Ha a és `family_name` `given_name` a jogcímeket az Azure ad-től szeretné beszerezni, az alkalmazáshoz a Azure Portal felhasználói felületén vagy az alkalmazás-jegyzékfájlban konfigurálhat választható jogcímeket is. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](../active-directory/develop/active-directory-optional-claims.md).
+Ha a `family_name` és a `given_name` jogcímeket az Azure ad-től szeretné beszerezni, az alkalmazáshoz a Azure Portal felhasználói felületén vagy az alkalmazás-jegyzékfájlban konfigurálhat választható jogcímeket is. További információkért lásd: [opcionális jogcímek megadása az Azure ad-alkalmazáshoz](../active-directory/develop/active-directory-optional-claims.md).
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Keresse meg és válassza ki az **Azure Active Directoryt**.
 1. A **kezelés** szakaszban válassza a **Alkalmazásregisztrációk**lehetőséget.
@@ -69,10 +69,10 @@ Most, hogy létrehozta az alkalmazást az Azure AD-bérlőben, az alkalmazás ü
 1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
 1. Az Áttekintés lapon válassza az **identitási élmény keretrendszert**.
 1. Válassza a **szabályzat kulcsok** lehetőséget, majd kattintson a **Hozzáadás**gombra.
-1. A **Beállítások**területen válassza `Manual`a lehetőséget.
-1. Adja meg a szabályzat kulcsának **nevét** . Például: `MSASecret`. A rendszer `B2C_1A_` automatikusan hozzáadja az előtagot a kulcs nevéhez.
+1. A **Beállítások**területen válassza a lehetőséget `Manual` .
+1. Adja meg a szabályzat kulcsának **nevét** . Például: `MSASecret`. A rendszer automatikusan hozzáadja az előtagot a `B2C_1A_` kulcs nevéhez.
 1. A **Secret (titkos kulcs**) mezőben adja meg az előző szakaszban rögzített ügyfél-titkos kulcsot.
-1. A **kulcshasználat**beállításnál válassza `Signature`a elemet.
+1. A **kulcshasználat**beállításnál válassza a elemet `Signature` .
 1. Kattintson a **Létrehozás**gombra.
 
 ## <a name="add-a-claims-provider"></a>Jogcím-szolgáltató hozzáadása
@@ -148,7 +148,7 @@ Ha nem jelenik meg hibaüzenet a portálon, folytassa a következő szakasszal.
 Ekkor beállította az identitás-szolgáltatót, de még nem érhető el a regisztrációs vagy bejelentkezési képernyőkön. Ha elérhetővé szeretné tenni, hozzon létre egy másolatot egy meglévő sablon felhasználói utazásról, majd módosítsa úgy, hogy az a Microsoft-fiók identitás-szolgáltatóval is rendelkezik.
 
 1. Nyissa meg a *TrustFrameworkBase. XML* fájlt az alapszintű csomagból.
-1. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"`.
+1. A **UserJourney** elem teljes tartalmának megkeresése és másolása `Id="SignUpOrSignIn"` .
 1. Nyissa meg a *TrustFrameworkExtensions. xml fájlt* , és keresse meg a **UserJourneys** elemet. Ha az elem nem létezik, vegyen fel egyet.
 1. Illessze be a **UserJourney** elem teljes tartalmát, amelyet a **UserJourneys** elem gyermekeiként másolt.
 1. Nevezze át a felhasználói út AZONOSÍTÓját. Például: `SignUpSignInMSA`.
@@ -158,7 +158,7 @@ Ekkor beállította az identitás-szolgáltatót, de még nem érhető el a regi
 A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezési képernyőn lévő Identity Provider gombhoz. Ha egy Microsoft-fiók **ClaimsProviderSelection** elemet ad hozzá, egy új gomb jelenik meg, amikor a felhasználó az oldalon landol.
 
 1. A *TrustFrameworkExtensions. XML* fájlban keresse meg a **OrchestrationStep** elemet, amely az `Order="1"` Ön által létrehozott felhasználói útra vonatkozik.
-1. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `MicrosoftAccountExchange`:
+1. A **ClaimsProviderSelects**területen adja hozzá a következő elemet. Állítsa a **TargetClaimsExchangeId** értékét egy megfelelő értékre, például `MicrosoftAccountExchange` :
 
     ```XML
     <ClaimsProviderSelection TargetClaimsExchangeId="MicrosoftAccountExchange" />
@@ -168,14 +168,14 @@ A **ClaimsProviderSelection** elem hasonló a bejelentkezési vagy bejelentkezé
 
 Most, hogy van egy gomb a helyén, össze kell kapcsolni egy művelettel. A művelet, ebben az esetben a Azure AD B2C, hogy kommunikáljon egy Microsoft-fiók a jogkivonat fogadásához.
 
-1. Keresse meg **OrchestrationStep** a felhasználói útra `Order="2"` kiterjedő OrchestrationStep.
+1. Keresse meg a felhasználói útra kiterjedő **OrchestrationStep** `Order="2"` .
 1. Adja hozzá a következő **ClaimsExchange** elemet, és győződjön meg arról, hogy ugyanazt az értéket használja a **TargetClaimsExchangeId**használt azonosítóhoz:
 
     ```xml
     <ClaimsExchange Id="MicrosoftAccountExchange" TechnicalProfileReferenceId="MSA-OIDC" />
     ```
 
-    Frissítse a **TechnicalProfileReferenceId** értékét, hogy megegyezzen a korábban `Id` hozzáadott jogcím-szolgáltató **kivonatjogcím** elemében szereplő értékkel. Például: `MSA-OIDC`.
+    Frissítse a **TechnicalProfileReferenceId** értékét, hogy megegyezzen a `Id` korábban hozzáadott jogcím-szolgáltató **kivonatjogcím** elemében szereplő értékkel. Például: `MSA-OIDC`.
 
 1. Mentse a *TrustFrameworkExtensions. XML* fájlt, és töltse fel újra az ellenőrzéshez.
 
@@ -197,7 +197,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
 1. Győződjön meg arról, hogy az előző szakaszban létrehozott Azure AD B2C alkalmazás (vagy az előfeltételek (például *webapp1* vagy *testapp1*) kitöltése be van jelölve az **alkalmazás kiválasztása** mezőben, majd tesztelje a **Futtatás most**lehetőségre kattintva.
 1. Válassza a **Microsoft-fiók** gombot, és jelentkezzen be.
 
-    Ha a bejelentkezési művelet sikeres, a rendszer átirányítja a dekódolású `jwt.ms` tokent, amely a következőhöz hasonlóan jelenik meg:
+    Ha a bejelentkezési művelet sikeres, a rendszer átirányítja a `jwt.ms` dekódolású tokent, amely a következőhöz hasonlóan jelenik meg:
 
     ```json
     {
@@ -208,7 +208,7 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
       "exp": 1562365200,
       "nbf": 1562361600,
       "ver": "1.0",
-      "iss": "https://your-b2c-tenant.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
+      "iss": "https://<tenant-name>.b2clogin.com/10000000-0000-0000-0000-000000000000/v2.0/",
       "sub": "20000000-0000-0000-0000-000000000000",
       "aud": "30000000-0000-0000-0000-000000000000",
       "acr": "b2c_1a_signupsigninmsa",

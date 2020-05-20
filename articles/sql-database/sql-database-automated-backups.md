@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 7cbe0015eeb9b46cd72496a220ce7f7d094cb61d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: dd5ca3c52364813a9aabe3db821c4f7e094fa637
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83198561"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634132"
 ---
 # <a name="automated-backups"></a>Automatikus biztonsági mentések
 
@@ -91,7 +91,7 @@ Azok a biztonsági másolatok, amelyek a megőrzési időszak előtt történnek
 Azure SQL Database a teljes adatmegőrzési biztonsági mentési tárterületet összesítő értékként számítja ki. Ezt az értéket óránként jelenteni kell az Azure számlázási folyamatnak, amelynek feladata az óránkénti használat összesítése az egyes hónapok végén kiszámított felhasználás kiszámításához. Az adatbázis eldobása után a felhasználás a biztonsági mentések kora értékre csökken. Ha a biztonsági másolatok régebbiek lesznek a megőrzési időtartamnál, a számlázás leáll.
 
    > [!IMPORTANT]
-   > Az adatbázisok biztonsági másolatait a rendszer megőrzi a megadott megőrzési időtartamra, még akkor is, ha az adatbázis el lett dobva. Az adatbázisok eldobása és újbóli létrehozása közben a tárolási és a számítási költségek is megváltozhatnak, így növelheti a biztonsági másolatok tárolási költségeit, mivel a Microsoft minden egyes eldobott adatbázis esetében megőrzi a biztonsági mentést a megadott megőrzési időtartamra (amely legalább 7 nap) az egyes eldobott adatbázisok esetében.
+   > Az adatbázisok biztonsági másolatait a rendszer megőrzi a megadott megőrzési időtartamra, még akkor is, ha az adatbázis el lett dobva. Az adatbázisok eldobása és újbóli létrehozása közben a tárolási és a számítási költségek is menthetők, így növelheti a biztonsági másolatok tárolási költségeit, mivel a Microsoft minden eldobott adatbázis esetében megőrzi a biztonsági mentést az egyes eldobott adatbázisok számára.
 
 ### <a name="monitor-consumption"></a>Használat figyelése
 
@@ -149,6 +149,9 @@ Ha a biztonsági mentéseket a maximális megőrzési időtartamnál hosszabb id
 
 > [!IMPORTANT]
 > Ha törli az SQL-adatbázisokat futtató Azure SQL Servert, a kiszolgálóhoz tartozó összes rugalmas adatbázis-készlet és adatbázis is törlődik. Nem állíthatók helyre. A törölt kiszolgálók nem állíthatók vissza. Ha azonban hosszú távú adatmegőrzést konfigurált, a LTR-adatbázisok biztonsági másolatait nem törli a rendszer, és ezek az adatbázisok visszaállíthatók.
+
+> [!NOTE]
+> A PITR minimális biztonsági mentési megőrzése, amely egyetlen, készletezett adatbázishoz és felügyelt isntances is konfigurálható Azure Portal 7 nap alatt. A PITR biztonsági mentések minimális száma 1 nap lehet a felügyelt példányok esetében, csak a PowerShell használatával, mint az. SQL Module v 2.6.0 vagy újabb.
 
 ## <a name="encrypted-backups"></a>Titkosított biztonsági másolatok
 

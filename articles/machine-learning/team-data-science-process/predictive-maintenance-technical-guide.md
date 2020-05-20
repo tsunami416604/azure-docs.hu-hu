@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 0542106f70e96b6c2f63e8ca03d2532de191d365
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6452a826cfb6f7ceb65e6e89cdd42d683ee463b1
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79477170"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682720"
 ---
 # <a name="technical-guide-to-the-solution-template-for-predictive-maintenance-in-aerospace"></a>Technikai útmutató a repülőgépipari prediktív karbantartás megoldási sablonja számára
 
@@ -91,7 +91,7 @@ A repülőgépipari megoldás sablonjának prediktív karbantartásához a Azure
 A Azure Stream Analytics lekérdezés a következő címen érhető el:
 
 * Kapcsolódás a Azure Portalhoz
-* A ![stream Analytics feladatok megkeresése stream Analytics](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) ikon, amelyet a megoldás telepítésekor generáltak (*például* **maintenancesa02asapbi** és **maintenancesa02asablob** a prediktív karbantartási megoldáshoz)
+* A Stream Analytics feladatok megkeresése ![ stream Analytics ikon ](./media/predictive-maintenance-technical-guide/icon-stream-analytics.png) , amelyet a megoldás telepítésekor generáltak (*például* **maintenancesa02asapbi** és **maintenancesa02asablob** a prediktív karbantartási megoldáshoz)
 * Kiválasztásával
   
   * ***Bemenetek*** a lekérdezés bemenetének megtekintéséhez
@@ -113,7 +113,7 @@ Ez a szakasz a [Azure Data Factoryban](https://azure.microsoft.com/documentation
 
 ![Azure Data Factory](./media/predictive-maintenance-technical-guide/azure-data-factory.png)
 
-A gyár két folyamata tartalmazza az adatparticionálásra és-összesítésre használt [kaptár](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -parancsfájlokat. Ha ezt megjegyezte, a parancsfájlok a telepítés során létrehozott [Azure Storage](https://azure.microsoft.com/services/storage/) -fiókban találhatók. A helyük a következő:\\\\maintenancesascript\\\\script\\ \\ kaptár (vagy https://[a megoldás neve]. blob. Core. Windows. net/maintenancesascript).
+A gyár két folyamata tartalmazza az adatparticionálásra és-összesítésre használt [kaptár](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) -parancsfájlokat. Ha ezt megjegyezte, a parancsfájlok a telepítés során létrehozott [Azure Storage](https://azure.microsoft.com/services/storage/) -fiókban találhatók. A helyük a következő: maintenancesascript \\ \\ script \\ \\ kaptár \\ \\ (vagy https://[a megoldás neve]. blob. Core. Windows. net/maintenancesascript).
 
 A [Azure stream Analytics](#azure-stream-analytics-1) lekérdezésekhez hasonlóan a [struktúra](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) parancsfájljai is implicit ismerettel rendelkeznek a bejövő adatformátummal kapcsolatban, és az adatformátuma alapján kell módosítani.
 
@@ -142,7 +142,7 @@ Az ehhez a megoldási sablonhoz használt [Azure Machine learning](https://azure
 Az adatgenerátor elindítása után a folyamat megkezdi a dehidratálás megkezdését, és a megoldás különböző összetevői elkezdik a műveletet az adatelőállító által kiadott parancsok követésével. A folyamat két módon figyelhető.
 
 * Az egyik Stream Analytics feladat a nyers bejövő adatot a blob Storage-ba írja. Ha a megoldás Blob Storage elemére kattint a képernyőn, akkor sikeresen üzembe helyezte a megoldást, majd a jobb oldali panelen kattintson a Megnyitás gombra, a rendszer elvégzi a [Azure Portal](https://portal.azure.com/). Ha van, kattintson a Blobok elemre. A következő panelen megtekintheti a tárolók listáját. Kattintson a **maintenancesadata**elemre. A következő panelen a **rawdata** mappa található. A rawdata mappában olyan mappák találhatók, mint például az Hour = 17 és az Hour = 18. Ezeknek a mappáknak a jelenléte azt jelzi, hogy a rendszer nyers adatmennyiséget generál a számítógépen, és a blob Storage-ban tárolja őket. Ezekben a mappákban a CSV-fájlok véges méretben kell megjelenniük a MEGABÁJTban.
-* A folyamat utolsó lépése az adatok írása (például a gépi tanulásból származó előrejelzések) SQL Databaseba. Előfordulhat, hogy legfeljebb három órát kell várnia, hogy az adott információ megjelenjen a SQL Databaseban. A SQL Databaseban rendelkezésre álló adatmennyiség figyelésének egyik módja a [Azure Portal](https://portal.azure.com/). A bal oldali panelen keresse meg az SQL ![-adatbázisok](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) SQL-ikont, és kattintson rá. Ezután keresse meg az adatbázis **pmaintenancedb** , és kattintson rá. A lenti következő lapon kattintson a kezelés elemre.
+* A folyamat utolsó lépése az adatok írása (például a gépi tanulásból származó előrejelzések) SQL Databaseba. Előfordulhat, hogy legfeljebb három órát kell várnia, hogy az adott információ megjelenjen a SQL Databaseban. A SQL Databaseban rendelkezésre álló adatmennyiség figyelésének egyik módja a [Azure Portal](https://portal.azure.com/). A bal oldali panelen keresse meg az SQL ![ -adatbázisok SQL-ikont, ](./media/predictive-maintenance-technical-guide/icon-SQL-databases.png) és kattintson rá. Ezután keresse meg az adatbázis **pmaintenancedb** , és kattintson rá. A lenti következő lapon kattintson a kezelés elemre.
    
     ![Kezelés ikon](./media/predictive-maintenance-technical-guide/icon-manage.png)
    
@@ -159,7 +159,7 @@ Power BI egy Azure SQL Databasehoz csatlakozik az adatforrásként, ahol a rends
 
 Megjegyzés: 
 1.    A megoldás üzembe helyezése után az előrejelzés az adatbázisban 3 órán belül megjelenik. A generátor letöltésével kapott pbix-fájl tartalmaz néhány magot, hogy azonnal létre lehessen hozni a Power BI irányítópultot. 
-2.    Ebben a lépésben az ingyenes szoftver [Power bi asztal](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)letöltésére és telepítésére vonatkozó előfeltétel.
+2.    Ebben a lépésben az ingyenes szoftver [Power bi asztal](https://docs.microsoft.com/power-bi/fundamentals/desktop-get-the-desktop)letöltésére és telepítésére vonatkozó előfeltétel.
 
 A következő lépések bemutatják, hogyan csatlakoztatható a pbix-fájl a megoldás üzembe helyezésének időpontjában (például előrejelzési eredmények) tartalmazó SQL Database a vizualizációhoz.
 
@@ -169,29 +169,29 @@ A következő lépések bemutatják, hogyan csatlakoztatható a pbix-fájl a meg
    
    * A megoldási sablon diagramjának **"Azure SQL Database"** után a zöldre vált, kattintson rá, majd kattintson a **Megnyitás**gombra.
    * Ekkor megjelenik egy új böngésző lap/ablak, amely megjeleníti a Azure Portal lapot. Kattintson a bal oldali panelen található **erőforráscsoportok** elemre.
-   * Válassza ki a megoldás üzembe helyezéséhez használt előfizetést, majd válassza a **"YourSolutionName\_ResourceGroup"** lehetőséget.
-   * Az új kiugró panelen kattintson az ![SQL Icon](./media/predictive-maintenance-technical-guide/icon-sql.png) ikonra az adatbázis eléréséhez. Az adatbázis neve az ikon mellett található (például **"pmaintenancedb"**), az **adatbázis-kiszolgáló neve** pedig a kiszolgálónév tulajdonság alatt jelenik meg, és a **YourSolutionName.database.Windows.net**hasonlónak kell lennie.
+   * Válassza ki a megoldás üzembe helyezéséhez használt előfizetést, majd válassza a **"YourSolutionName \_ ResourceGroup"** lehetőséget.
+   * Az új kiugró panelen kattintson az ![ SQL Icon ikonra az ](./media/predictive-maintenance-technical-guide/icon-sql.png) adatbázis eléréséhez. Az adatbázis neve az ikon mellett található (például **"pmaintenancedb"**), az **adatbázis-kiszolgáló neve** pedig a kiszolgálónév tulajdonság alatt jelenik meg, és a **YourSolutionName.database.Windows.net**hasonlónak kell lennie.
    * Az adatbázis **felhasználóneve** és **jelszava** megegyezik a megoldás üzembe helyezése során korábban rögzített felhasználónévvel és jelszóval.
 2. Frissítse a hideg Path jelentési fájl adatforrását Power BI Desktop.
    
-   * Kattintson duplán a **PowerBI\\PredictiveMaintenanceAerospace. pbix** fájlra abban a mappában, ahova letöltötte és kicsomagolta a létrehozó fájlt. Ha a fájl megnyitásakor figyelmeztető üzenet jelenik meg, akkor hagyja figyelmen kívül őket. A fájl tetején kattintson a **"lekérdezések szerkesztése"** elemre.
+   * Kattintson duplán a **PowerBI \\ PredictiveMaintenanceAerospace. pbix** fájlra abban a mappában, ahova letöltötte és kicsomagolta a létrehozó fájlt. Ha a fájl megnyitásakor figyelmeztető üzenet jelenik meg, akkor hagyja figyelmen kívül őket. A fájl tetején kattintson a **"lekérdezések szerkesztése"** elemre.
      
      ![Lekérdezések szerkesztése](./media/predictive-maintenance-technical-guide/edit-queries.png)
-   * Két tábla, **RemainingUsefulLife** és **PMResult**jelenik meg. Válassza ki az első táblázatot, ![és kattintson a](./media/predictive-maintenance-technical-guide/icon-query-settings.png) " **forrás"** elem melletti **'APPLIED STEPS'** lekérdezési beállítások ikonra a jobb oldali **"lekérdezés beállításai"** panelen. A megjelenő figyelmeztető üzenetek figyelmen kívül hagyása.
+   * Két tábla, **RemainingUsefulLife** és **PMResult**jelenik meg. Válassza ki az első táblázatot, és kattintson a " ![ ](./media/predictive-maintenance-technical-guide/icon-query-settings.png) **forrás"** elem melletti **'APPLIED STEPS'** lekérdezési beállítások ikonra a jobb oldali **"lekérdezés beállításai"** panelen. A megjelenő figyelmeztető üzenetek figyelmen kívül hagyása.
    * A kiugró ablakban cserélje le a **"kiszolgáló"** és az **"adatbázis"** elemet a saját kiszolgáló-és adatbázis-neveire, majd kattintson **az OK**gombra. A kiszolgáló neve mezőben adja meg a 1433-as portot (**YourSolutionName.database.Windows.net, 1433**). Hagyja meg az adatbázis mezőt **pmaintenancedb**. A képernyőn megjelenő figyelmeztető üzenetek figyelmen kívül hagyása.
    * A következő kiugró ablakban két lehetőség jelenik meg a bal oldali ablaktáblán (**Windows** és **adatbázis**). Kattintson az **adatbázis**elemre, töltse ki a **"username"** és a **"password"** (a megoldás első telepítésekor megadott felhasználónevet és jelszót, és hozzon létre egy Azure SQL Database). A ***válassza ki, hogy melyik szinten szeretné alkalmazni ezeket a beállításokat***, és jelölje be az adatbázis-szint beállítást. Ezután kattintson a **"kapcsolat"** gombra.
-   * Kattintson a második táblázatra, **PMResult** kattintson ![](./media/predictive-maintenance-technical-guide/icon-navigation.png) a " **forrás"** elemre **a jobb** oldali **"lekérdezés beállításai"** panelen, majd frissítse a kiszolgáló és az adatbázis nevét a fenti lépésekkel, majd kattintson az OK gombra.
+   * Kattintson a második táblázatra, **PMResult** kattintson a "forrás" elemre a ![ ](./media/predictive-maintenance-technical-guide/icon-navigation.png) jobb **'APPLIED STEPS'** oldali **"lekérdezés beállításai"** panelen, majd frissítse a kiszolgáló és az adatbázis nevét a fenti lépésekkel **'Source'** , majd kattintson az OK gombra.
    * Miután visszatért az előző oldalra, zárjuk be az ablakot. Üzenet jelenik meg – kattintson az **alkalmaz**gombra. Végül kattintson a Save ( **Mentés** ) gombra a módosítások mentéséhez. Az Power BI-fájl már létrejött a Kapcsolódás a kiszolgálóhoz. Ha a vizualizációk üresek, ügyeljen rá, hogy a jelmagyarázatok jobb felső sarkában található radír ikonra kattintva törölje a vizualizációk kiválasztott elemeit. Használja a refresh (frissítés) gombot a vizualizációk új adatainak megjelenítéséhez. Kezdetben csak a vizualizációk adatai jelennek meg, mivel a rendszer 3 óránként frissíti az adatelőállítót. 3 óra elteltével a vizualizációkban szereplő új előrejelzések jelennek meg, amikor frissíti az adatait.
 3. Választható Tegye közzé a hűtőházi útvonal irányítópultját, hogy [Power bi online állapotba](https://www.powerbi.com/). Ehhez a lépéshez Power BI fiókra (vagy Office 365-fiókra) van szükség.
    
    * Kattintson a **Közzététel** gombra, és néhány másodperccel később megjelenik egy ablak, amely a "közzététel a Power bi sikerhez!" lehetőséget jeleníti meg. zöld pipa jelzi. Kattintson az alábbi hivatkozásra "a PredictiveMaintenanceAerospace. pbix megnyitása a Power BIban" elemre. Részletes utasításokért tekintse meg [a Power bi Desktop közzétételét](https://support.powerbi.com/knowledgebase/articles/461278-publish-from-power-bi-desktop)ismertető témakört.
    * Új irányítópult létrehozásához: kattintson a **+** bal oldali ablaktábla **irányítópultok** területén található jelre. Adja meg az új irányítópult "prediktív karbantartási bemutató" nevét.
-   * Miután megnyitotta a jelentést, ![kattintson a](./media/predictive-maintenance-technical-guide/icon-pin.png) rögzítés ikonra az összes vizualizáció rögzítéséhez az irányítópulton. Részletes utasításokért lásd: [csempe rögzítése Power bi irányítópulton egy jelentésből](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
+   * Miután megnyitotta a jelentést, kattintson a ![ rögzítés ikonra az ](./media/predictive-maintenance-technical-guide/icon-pin.png) összes vizualizáció rögzítéséhez az irányítópulton. Részletes utasításokért lásd: [csempe rögzítése Power bi irányítópulton egy jelentésből](https://support.powerbi.com/knowledgebase/articles/430323-pin-a-tile-to-a-power-bi-dashboard-from-a-report).
      Lépjen az irányítópult lapra, és állítsa be a vizualizációk méretét és helyét, és szerkessze a címét. A csempék szerkesztésével kapcsolatos részletes utasításokért lásd: [csempe szerkesztése – átméretezés, áthelyezés, átnevezés, rögzítés, törlés, hivatkozás hozzáadása](https://powerbi.microsoft.com/documentation/powerbi-service-edit-a-tile-in-a-dashboard/#rename). Az alábbi példa egy olyan irányítópultot mutat be, amely a rögzített elérésű elérésiút-vizualizációkat jeleníti meg.  Attól függően, hogy mennyi ideig futtatja az adatgenerátort, a vizualizációk számai eltérőek lehetnek.
      <br/>
      ![Végső nézet](./media/predictive-maintenance-technical-guide/final-view.png)
      <br/>
-   * Az adat frissítésének megadásához vigye az egérmutatót a **PredictiveMaintenanceAerospace** adatkészletre ![, kattintson](./media/predictive-maintenance-technical-guide/icon-elipsis.png) a három pontot ábrázoló ikonra, majd válassza az **ütemezett frissítés**lehetőséget.
+   * Az adat frissítésének megadásához vigye az egérmutatót a **PredictiveMaintenanceAerospace** adatkészletre, kattintson a ![ három pontot ábrázoló ikonra, ](./media/predictive-maintenance-technical-guide/icon-elipsis.png) majd válassza az **ütemezett frissítés**lehetőséget.
      <br/>
      > [!NOTE]
      > Ha figyelmeztető üzenet jelenik meg, kattintson a **hitelesítő adatok szerkesztése** lehetőségre, és győződjön meg arról, hogy az adatbázis hitelesítő adatai ugyanazok, mint az 1. lépésben leírt módon.
@@ -222,7 +222,7 @@ A következő lépések bemutatják, hogyan jelenítheti meg Stream Analytics-fe
    * Kattintson a bal oldali panel adatkészletek szakaszának adatkészlet **aircraftmonitor** elemére.
    * Kattintson a **vonal diagram** ikonjára.
    * Kattintson a **feldolgozott** gombra a **mezők** ablaktáblán, hogy az a "tengely" alatt látható legyen a **vizualizációk** ablaktáblán.
-   * Kattintson a "S11" és a\_"S11-riasztás" elemre, hogy mindkettő megjelenjen az "értékek" alatt. Kattintson a **S11** és a **S11\_riasztás**melletti kis nyílra, és módosítsa az "összeg" kifejezést az "átlag" értékre.
+   * Kattintson a "S11" és a "S11-riasztás" elemre, \_ hogy mindkettő megjelenjen az "értékek" alatt. Kattintson a **S11** és a **S11 \_ riasztás**melletti kis nyílra, és módosítsa az "összeg" kifejezést az "átlag" értékre.
    * Kattintson a **Save (Mentés** ) gombra a lap tetején, és nevezze el a "aircraftmonitor" jelentést. A "aircraftmonitor" nevű jelentés a bal oldali **navigátor** ablaktáblájának **jelentések** szakaszában jelenik meg.
    * Kattintson a **rögzítési vizualizáció** ikonra a diagram jobb felső sarkában. Az irányítópultok kiválasztásához a "rögzítés az irányítópulton" ablak jelenhet meg. Válassza a "prediktív karbantartási bemutató" lehetőséget, majd kattintson a "PIN-kód" elemre.
    * Vigye az egérmutatót erre a csempére az irányítópulton, kattintson a jobb felső sarokban található "szerkesztés" ikonra, hogy megváltoztassa a címét: "az érzékelő 11. küszöbértéke és a 48,26-es küszöb", az alcím pedig "a flotta átlaga az idő múlásával".

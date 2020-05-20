@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/11/2020
-ms.openlocfilehash: 471ccddd31fd6c9f332bdaa8ea76b7bda25ac191
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.date: 05/15/2020
+ms.openlocfilehash: df3e107b111161284c697aa8f619eed96443a893
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83117784"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651843"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -96,6 +96,11 @@ Számos erőforrás-szolgáltató automatikusan regisztrálva van, de előfordul
 
 ### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Miért nem kapok hibaüzenetet a Log Analytics virtuális gépről való megnyitásakor? 
 A virtuális gépek naplófájljainak megtekintéséhez olvasási engedéllyel kell rendelkeznie a virtuálisgép-naplókat tároló munkaterületekhez. Ezekben az esetekben a rendszergazdának Önnek kell megadnia Önnek az Azure-beli engedélyeket.
+
+## <a name="metrics"></a>Mérőszámok
+
+### <a name="why-are-metrics-from-the-guest-os-of-my-azure-virtual-machine-not-showing-up-in-metrics-explorer"></a>Miért nem jelenik meg az Azure-beli virtuális gép vendég operációs rendszerének mérőszámai a mérőszámok Explorerben?
+A [platform metrikáit](insights/monitor-azure-resource.md#monitoring-data) automatikusan gyűjti az Azure-erőforrások. Némi konfigurációt kell végrehajtania, ha a virtuális gép vendég operációs rendszerének mérőszámait gyűjti. Windows rendszerű virtuális gépek esetén telepítse a diagnosztikai bővítményt, és konfigurálja a Azure Monitor-gyűjtőt a [Windows Azure Diagnostics bővítmény (wad) telepítése és konfigurálása](platform/diagnostics-extension-windows-install.md)című cikkben leírtak szerint. Linux rendszeren telepítse a következő témakörben ismertetett módon: a [InfluxData-Graf ügynökkel a Linux rendszerű virtuális gépek egyéni metrikáinak gyűjtése](platform/collect-custom-metrics-linux-telegraf.md)című részében leírtak szerint.
 
 ## <a name="alerts"></a>Riasztások
 
@@ -508,6 +513,10 @@ A legtöbb Application Insights adat 5 perces késéssel rendelkezik. Egyes adat
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor tárolókhoz
 
 Ez a Microsoft gyakori kérdések listája a Azure Monitor for containers szolgáltatással kapcsolatos gyakori kérdésekre mutat. Ha további kérdései vannak a megoldással kapcsolatban, látogasson el a [vitafórumra](https://feedback.azure.com/forums/34192--general-feedback) , és tegye fel kérdéseit. Ha egy kérdést gyakran megkérdeznek, azt a cikkhez adja hozzá, hogy gyorsan és könnyen elérhető legyen.
+
+### <a name="health-feature-is-in-private-preview"></a>A Health funkció privát előzetes verzióban érhető el
+
+Azt tervezzük, hogy egy sor módosítást teszünk elérhetővé a funkciók hozzáadásához és a visszajelzések elvégzéséhez. Az állapotfigyelő szolgáltatás a 2020-es év végén egy privát előzetes verzióra vált, és további információért tekintse át az alábbi [Azure Updates közleményt](https://azure.microsoft.com/updates/ci-health-limited-preview/).
 
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Mit jelent a *többi folyamat* a csomópont nézet alatt?
 

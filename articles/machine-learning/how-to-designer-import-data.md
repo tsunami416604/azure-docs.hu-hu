@@ -5,16 +5,17 @@ description: Ismerje meg, hogyan importálhatja adatait Azure Machine Learning d
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 01/16/2020
-ms.openlocfilehash: 1ad7677607d625f673546a6ea29ea58b80a8d1b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: 2b42f8f9dfe6ef2993b4615f0e4584874beabb28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546757"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644567"
 ---
 # <a name="import-your-data-into-azure-machine-learning-designer-preview"></a>Az adatai importálása Azure Machine Learning designerbe (előzetes verzió)
 
@@ -35,13 +36,13 @@ Bármely tervező modul kimenetét adatkészletként is regisztrálhatja.
 
 1. Válassza ki azt a modult, amely a regisztrálni kívánt adatokat kiírja.
 
-1. A Tulajdonságok panelen válassza a **kimenetek** > **regisztrálása adatkészletet**.
+1. A Tulajdonságok panelen válassza a **kimenetek**  >  **regisztrálása adatkészletet**.
 
     ![Az adatkészlet regisztrálása lehetőségre való váltást bemutató képernyőkép](media/how-to-designer-import-data/register-dataset-designer.png)
 
 ### <a name="use-a-dataset"></a>Adatkészlet használata
 
-A regisztrált adatkészletek a modul palettáján **, az** > **adathalmazok adatkészletek**területen találhatók. Adatkészlet használatához húzza azt a folyamat vászonra. Ezután kapcsolja össze az adatkészlet kimeneti portját a paletta más moduljaival.
+A regisztrált adatkészletek a modul palettáján **, az**  >  **adathalmazok adatkészletek**területen találhatók. Adatkészlet használatához húzza azt a folyamat vászonra. Ezután kapcsolja össze az adatkészlet kimeneti portját a paletta más moduljaival.
 
 ![A mentett adatkészletek helyét bemutató képernyőkép a tervező palettán](media/how-to-designer-import-data/use-datasets-designer.png)
 

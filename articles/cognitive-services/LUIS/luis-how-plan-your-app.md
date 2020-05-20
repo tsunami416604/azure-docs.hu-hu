@@ -2,13 +2,13 @@
 title: Az alkalmazás megtervezése – LUIS
 description: Körvonalazza a releváns alkalmazás-leképezéseket és entitásokat, majd hozza létre az alkalmazási terveket Language Understanding intelligens szolgáltatásokban (LUIS).
 ms.topic: conceptual
-ms.date: 04/14/2020
-ms.openlocfilehash: dfed27a05973a2ea2e9a97eaa1c233b847b33d87
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/14/2020
+ms.openlocfilehash: 3463078309978ae34918f27a9d75c1dabd59ae66
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382309"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654112"
 ---
 # <a name="plan-your-luis-app-schema-with-subject-domain-and-data-extraction"></a>A LUIS-alkalmazás sémájának megtervezése a tulajdonos tartomány és az adatkiemelés alapján
 
@@ -25,14 +25,14 @@ A LUIS-alkalmazások a tárgy tartomány körül vannak központosítva. Előfor
 
 Gondoljon az alkalmazás feladatához fontos [szándékokra](luis-concept-intent.md) .
 
-Tegyük fel például, hogy egy utazási alkalmazás példája egy repülés lefoglalására és az időjárási adatok ellenőrzésére a felhasználó célhelyén. Megadhatja a `BookFlight` műveletek `GetWeather` és a leképezéseket.
+Tegyük fel például, hogy egy utazási alkalmazás példája egy repülés lefoglalására és az időjárási adatok ellenőrzésére a felhasználó célhelyén. Megadhatja a `BookFlight` műveletek és a `GetWeather` leképezéseket.
 
-A további funkciókat tartalmazó összetettebb alkalmazásokban több szándék áll rendelkezésére, és körültekintően kell meghatároznia azokat, hogy a szándékok ne legyenek túl konkrétak. Előfordulhat például, `BookFlight` hogy külön leképezéseket kell létrehoznia, de `BookInternationalFlight` `BookDomesticFlight` túl hasonló lehet. `BookHotel`
+A további funkciókat tartalmazó összetettebb alkalmazásokban több szándék áll rendelkezésére, és körültekintően kell meghatároznia azokat, hogy a szándékok ne legyenek túl konkrétak. Előfordulhat például, `BookFlight` `BookHotel` hogy külön leképezéseket kell létrehoznia, de `BookInternationalFlight` `BookDomesticFlight` túl hasonló lehet.
 
 > [!NOTE]
 > Az ajánlott eljárás az, hogy csak annyi szándékot használjon, amennyire az alkalmazás funkcióinak elvégzéséhez szükség van. Ha túl sok leképezést határoz meg, akkor a LUIS a hosszúságú kimondott szöveg helyes besorolása érdekében nehezebbé válik. Ha túl kevést ad meg, előfordulhat, hogy az általános átfedésben van.
 
-Ha nincs szüksége az általános felhasználói szándék azonosítására, vegye fel az összes példa felhasználói hosszúságú kimondott szöveg a `None` szándékba. Ha az alkalmazás egyre nagyobb szándékot igényel, később is létrehozhatja őket.
+Ha nincs szüksége az általános felhasználói szándék azonosítására, vegye fel az összes példa felhasználói hosszúságú kimondott szöveg a szándékba `None` . Ha az alkalmazás egyre nagyobb szándékot igényel, később is létrehozhatja őket.
 
 ## <a name="create-example-utterances-for-each-intent"></a>Példa hosszúságú kimondott szöveg létrehozása az egyes szándékokhoz
 
@@ -48,6 +48,30 @@ Az alkalmazásban használni kívánt entitások meghatározásakor vegye figyel
 
 > [!TIP]
 > A LUIS [előre összeépített entitásokat](luis-prebuilt-entities.md) kínál a gyakori, társalgási felhasználói forgatókönyvekhez. Érdemes lehet előre elkészített entitásokat használni az alkalmazásfejlesztés kiindulási pontként.
+
+## <a name="resolution-with-intent-or-entity"></a>Feloldás a szándékkal vagy az entitással?
+
+Sok esetben – különösen a természetes beszélgetésekkel való munka esetén – a felhasználók olyan teljes kiosztást biztosítanak, amely több függvényt vagy szándékot is tartalmazhat. Ennek a megoldásnak az általános szabálya, hogy tisztában legyen azzal, hogy a kimenet ábrázolása mindkét szándékban és entitásban végezhető el. Ezt a leképezhető az ügyfélalkalmazás műveleteire kell korlátozni, és nem szükséges a szándéka.
+
+Az **int-ENT-Ties** azt a koncepciót jelenti, hogy a műveletek (amelyek általában a szándékok szerint vannak értelmezve) a kimenet JSON-ban is szerepelhetnek, és ezen az űrlapon hivatkoznak rá az adott művelethez. A _tagadás_ egy gyakori használat, amely a teljes kinyeréshez a szándékot és az entitást használja.
+
+Vegye figyelembe a következő két hosszúságú kimondott szöveg, amelyek nagyon közel vannak a Word Choice-hoz, de különböző eredményekkel rendelkeznek:
+
+|Kimondott szöveg|
+|--|
+|`Please schedule my flight from Cairo to Seattle`|
+|`Cancel my flight from Cairo to Seattle`|
+
+Ahelyett, hogy két külön szándékot kellene létrehoznia, hozzon létre egyetlen szándékot egy `FlightAction` Machine learning-entitással. A Machine learning-entitásnak ki kell bontania a művelet részleteit az ütemezés és a megszakítási kérelem, valamint a forrás vagy a célhely esetében is.
+
+Az `FlightAction` entitás a Machine learning-entitás és alentitások következő suedo lesz strukturálva:
+
+* FlightAction
+    * Művelet
+    * Forrás
+    * Cél
+
+Az alentitások hozzáadási funkcióinak kibontásának elősegítése érdekében. A funkciók a felhasználói hosszúságú kimondott szöveg és az előrejelzési válaszban visszaadott értékek alapján lesznek kiválasztva.
 
 ## <a name="next-steps"></a>További lépések
 

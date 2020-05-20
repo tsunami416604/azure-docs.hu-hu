@@ -6,13 +6,13 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 31b9d4d57e38adcd079082a4f32770c4cbc8fbb3
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.date: 05/13/2020
+ms.openlocfilehash: 4b3a2ed71845b8848c9cb0ac5002e0c69a170410
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82736200"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642313"
 ---
 # <a name="marketplace-metering-service-authentication-strategies"></a>Marketplace-mérési szolgáltatás hitelesítési stratégiái
 
@@ -44,9 +44,9 @@ További információ ezekről a jogkivonatokról: [Azure Active Directory hozz�
 
 #### <a name="http-method"></a>HTTP-metódus
 
-**POST**
+**UTÁNI**
 
-#### <a name="request-url"></a>*Kérés URL-címe*
+#### <a name="request-url"></a>*URL-cím kérése*
 
 **`https://login.microsoftonline.com/*{tenantId}*/oauth2/token`**
 
@@ -112,13 +112,13 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
 
 1. Győződjön meg arról, hogy a felügyelt identitás konfigurálva van a metódusok egyikének használatával:
     * [Azure Portal felhasználói felület](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm)
-    * [parancssori felület](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
+    * [CLI](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-cli-windows-vm)
     * [PowerShell](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm)
-    * [Azure Resource Manager-sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
+    * [Azure Resource Manager sablon](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm)
     * [REST](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-rest-vm#system-assigned-managed-identity)
     * [Azure SDK-k](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-sdk-windows-vm)
 
-1. Szerezzen be egy hozzáférési jogkivonatot a piactér-mérési`20e940b3-4c77-4b0b-9a53-9e16a1b010a7`szolgáltatásalkalmazás azonosítójának () a rendszeridentitás, az RDP és a virtuális gép között, nyissa meg a PowerShell-konzolt, és futtassa az alábbi parancsot
+1. Szerezzen be egy hozzáférési jogkivonatot a piactér-mérési szolgáltatásalkalmazás AZONOSÍTÓjának ( `20e940b3-4c77-4b0b-9a53-9e16a1b010a7` ) a rendszeridentitás, az RDP és a virtuális gép között, nyissa meg a PowerShell-konzolt, és futtassa az alábbi parancsot
 
     ```powershell
     # curl is an alias to Web-Invoke PowerShell command
@@ -141,7 +141,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
     $managedappId = $resourceGroupInfo.managedBy 
     ```
 
-1. A piactér-mérési szolgáltatásnak a (z) `resourceID`és `resourceUsageId` egy felügyelt alkalmazás használatát kell jelentenie.
+1. A piactér-mérési szolgáltatásnak a (z `resourceID` ) és egy `resourceUsageId` felügyelt alkalmazás használatát kell jelentenie.
 
     ```powershell
     # Get resourceUsageId from the managed app
@@ -151,7 +151,7 @@ Az alábbi lépéseket követve például Windows rendszerű virtuális gép has
     $resourceUsageId = $ManagedApp.properties.billingDetails.resourceUsageId
     ```
 
-1. Használja a [piactér-mérési szolgáltatás API](https://review.docs.microsoft.com/azure/marketplace/partner-center-portal/marketplace-metering-service-apis?branch=pr-en-us-101847) -ját a használat kibocsátása érdekében.
+1. Használja a [piactér-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -ját a használat kibocsátása érdekében.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 8989acc6d21a3c53be9d97c74ed7fbf03ba54819
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46d00df4970a7268c9856de6d7c090f2deffc7ea
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76773685"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654517"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Ismerkedés a tartalom igény szerinti kézbesítésével a REST használatával  
 
@@ -89,11 +89,11 @@ A Media Services szolgáltatásban a digitális fájlok feltöltése egy adategy
 
 Az eszközök létrehozásakor szükséges értékek egyike az eszköz létrehozási beállításai. A **Options** tulajdonság egy enumerálási érték, amely leírja az eszköz által létrehozható titkosítási beállításokat. Érvényes érték az alábbi listából származó értékek egyike, nem a lista értékeinek kombinációja:
 
-* **Nincs** = **0** – a rendszer nem használ titkosítást. Ha ezt a beállítást használja, a tartalmat a rendszer nem védi az átvitelben vagy a tárolás során.
+* **Nincs**  =  **0** – a rendszer nem használ titkosítást. Ha ezt a beállítást használja, a tartalmat a rendszer nem védi az átvitelben vagy a tárolás során.
     Ha egy MP4-fájlt progresszív letöltés útján tervez továbbítani, használja ezt a lehetőséget.
-* **StorageEncrypted** = **1** . StorageEncrypted – titkosítja a tartalmakat az AES-256 bites titkosítás használatával helyileg, majd feltölti az Azure Storage-ba, ahol a tárolása titkosított állapotban van. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
-* **CommonEncryptionProtected** = **2** . CommonEncryptionProtected – ezt a lehetőséget akkor használja, ha olyan tartalmat tölt fel, amely már titkosítva van, és Common encryption vagy PlayReady DRM-mel védett (például a PlayReady DRM-mel védett Smooth streaming).
-* **EnvelopeEncryptionProtected** = **4** . EnvelopeEncryptionProtected – ezt a beállítást akkor használja, ha AES-titkosítással titkosított HLS tölt fel. A fájlokat kódolni és titkosítani kell az átalakító-kezelővel.
+* **StorageEncrypted**  =  **1** – titkosítja a tartalmakat helyileg AES-256 bites titkosítással, majd feltölti az Azure Storage-ba, ahol a tárolása titkosított állapotban van. A Storage-titkosítással védett adategységek titkosítása a kódolás előtt automatikusan fel lesz oldva, és egy titkosított fájlrendszerbe kerülnek; az új kimeneti adategységként való újbóli feltöltés előtt pedig lehetőség van az újbóli titkosításukra. A Storage-titkosítás elsősorban akkor hasznos, ha a kiváló minőségű bemeneti médiafájljait erős titkosítással szeretné védeni a lemezen való tároláskor.
+* **CommonEncryptionProtected**  =  **2** – ezt a lehetőséget akkor használja, ha olyan tartalmat tölt fel, amely már titkosítva van, és Common encryption vagy PlayReady DRM-mel védett (például a PlayReady DRM-mel védett Smooth streaming).
+* **EnvelopeEncryptionProtected**  =  **4** – ezt a beállítást akkor használja, ha AES-titkosítással titkosított HLS tölt fel. A fájlokat kódolni és titkosítani kell az átalakító-kezelővel.
 
 ### <a name="create-an-asset"></a>Eszköz létrehozása
 Az eszköz a Media Servicesban található objektumok különböző típusaihoz vagy csoportjaihoz tartozó tároló, beleértve a videó, a hang, a képek, a miniatűr gyűjtemények, a szöveges számok és a kódolt feliratok fájljait. A REST APIban az adategység létrehozásához POST-kérést kell küldenie Media Services és az objektumra vonatkozó összes tulajdonságot a kérelem törzsében kell elhelyezni.
@@ -573,7 +573,7 @@ A feladatokra vonatkozó kérések néhány fontos Tudnivaló:
 >
 
 * A InputMediaAssets egy vagy több olyan eszközre mutat, amelyet a Media Services hozott létre. A OutputMediaAssets a rendszer hozza létre. Nem hivatkoznak meglévő eszközre.
-* A OutputMediaAssets a assetName attribútum használatával nevezhető el. Ha ez az attribútum nem található, akkor a OutputMediaAsset neve megegyezik az `<outputAsset>` elem belső szöveges értékével, vagy a feladatnév értékének vagy a feladattípus értékének (abban az esetben, ha nincs megadva a Name tulajdonság) utótagja. Ha például a assetName értéket állítja be a "Sample" értékre, akkor a OutputMediaAsset Name tulajdonság értéke "Sample". Ha azonban nem adott meg értéket a assetName számára, de a feladatot "NewJob" értékre állította be, akkor a OutputMediaAsset neve "JobOutputAsset (Value) _NewJob" lesz.
+* A OutputMediaAssets a assetName attribútum használatával nevezhető el. Ha ez az attribútum nem található, akkor a OutputMediaAsset neve megegyezik az elem belső szöveges értékével, vagy a feladatnév értékének `<outputAsset>` vagy a feladattípus értékének (abban az esetben, ha nincs megadva a Name tulajdonság) utótagja. Ha például a assetName értéket állítja be a "Sample" értékre, akkor a OutputMediaAsset Name tulajdonság értéke "Sample". Ha azonban nem adott meg értéket a assetName számára, de a feladatot "NewJob" értékre állította be, akkor a OutputMediaAsset neve "JobOutputAsset (Value) _NewJob" lesz.
 
     Az alábbi példa bemutatja, hogyan állíthatja be a assetName attribútumot:
 
@@ -817,7 +817,7 @@ A visszaadott **elérési út** tulajdonság a sas URL-címet tartalmazza.
 Miután beállította a AccessPolicy és a lokátort, letöltheti a fájlokat az Azure Storage REST API-kon keresztül.  
 
 > [!NOTE]
-> Fel kell vennie annak a fájlnak a fájlnevét, amelyet le szeretne tölteni az előző szakaszban fogadott lokátor **path** értékre. Például: https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Fel kell vennie annak a fájlnak a fájlnevét, amelyet le szeretne tölteni az előző szakaszban fogadott lokátor **path** értékre. Például `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4` ? . . .
 
 További információ az Azure Storage-Blobok használatáról: [blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 

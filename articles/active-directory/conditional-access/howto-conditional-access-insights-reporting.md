@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4113328a5de02c36b7285c837bd5314d11e526b
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 0c4feeca1cbe7eb88aace811829e4d9c2db5f38e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690410"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83641601"
 ---
 # <a name="conditional-access-insights-and-reporting"></a>Feltételes hozzáférési ismeretek és jelentéskészítés
 
@@ -36,9 +36,6 @@ A következő szerepkörök hozzáférhetnek az információhoz és a jelentésk
 
 A felhasználóknak az alábbi Log Analytics munkaterület-szerepkörök egyikére is szükségük van:  
 
-- Olvasó 
-- Figyelő olvasó 
-- Log Analytics olvasó 
 - Közreműködő  
 - Tulajdonos 
 
@@ -54,7 +51,7 @@ Ha nem integrálta az Azure AD-naplókat Azure Monitor naplókkal, akkor a munka
 Az adatfelismerések és a jelentéskészítési munkafüzet elérése:  
 
 1. Jelentkezzen be az **Azure Portalra**.
-1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférési** > **ismereteket és jelentéskészítést**.
+1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **feltételes hozzáférési**  >  **ismereteket és jelentéskészítést**.
 
 ### <a name="get-started-select-parameters"></a>Első lépések: paraméterek kiválasztása 
 
@@ -112,11 +109,11 @@ Ha a bejelentkezések mennyisége meghaladja Log Analytics lekérdezési kapacit
 
 ### <a name="can-i-save-my-parameter-selections"></a>Menthetem a paraméter-beállításokat?  
 
-A paraméterek kijelölését a munkafüzet tetején is mentheti, ha a**munkafüzetek** > **feltételes hozzáférési elemzéseket és jelentéskészítést** **Azure Active Directory** > . Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. 
+A paraméterek kijelölését a munkafüzet tetején is mentheti, ha a **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési elemzéseket és jelentéskészítést**Azure Active Directory. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. 
 
 ### <a name="can-i-edit-and-customize-the-workbook-with-additional-queries"></a>Szerkeszthetem és testre is szabhatom a munkafüzetet további lekérdezésekkel? 
 
-A munkafüzetet szerkesztheti és testreszabhatja úgy, hogy **Azure Active Directory** > **munkafüzetek** > **feltételes hozzáférési információit és jelentéseit**. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. A lekérdezések szerkesztésének megkezdéséhez kattintson a **Szerkesztés** gombra a munkafüzet tetején.  
+A munkafüzetet szerkesztheti és testreszabhatja úgy, hogy **Azure Active Directory**  >  **munkafüzetek**  >  **feltételes hozzáférési információit és jelentéseit**. Itt megtalálhatja a munkafüzet sablonját, ahol szerkesztheti a munkafüzetet, és menthet egy másolatot a munkaterületre, beleértve a paraméterek kiválasztását is a **saját jelentések** vagy a **megosztott jelentések**területen. A lekérdezések szerkesztésének megkezdéséhez kattintson a **Szerkesztés** gombra a munkafüzet tetején.  
  
 ## <a name="next-steps"></a>További lépések
 

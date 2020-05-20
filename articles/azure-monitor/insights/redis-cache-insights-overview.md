@@ -1,116 +1,157 @@
 ---
 title: Azure Monitor az Azure cache for Redis (előzetes verzió) | Microsoft Docs
-description: Ez a cikk a Redis Cache funkció Azure Monitor ismerteti, amely az Azure cache-t biztosítja a Redis-tulajdonosok számára a teljesítmény-és kihasználtsági problémák gyors megismerése érdekében.
+description: Ez a cikk a Azure Redis Cache funkció Azure Monitor ismerteti, amely a gyorsítótár-tulajdonosokat a teljesítmény-és kihasználtsági problémák gyors megismerésével biztosítja.
 ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/07/2020
-ms.openlocfilehash: af32459ffcb50c9f1cfdc59d2c8d355d3551e230
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a6a8499a13e5c14869f9c9063528cea4ee82f419
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210973"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650433"
 ---
 # <a name="explore-azure-monitor-for-azure-cache-for-redis-preview"></a>Ismerkedés az Azure cache Azure Monitor Redis (előzetes verzió)
 
-A Redis (előzetes verzió) Azure cache-hez készült Azure Monitor a teljes körű interaktív felhasználói élményben tekinti át az összes Azure-gyorsítótár teljesítményének, hibáinak, kapacitásának és működési állapotának áttekintését. Ez a cikk segítséget nyújt az új figyelési élmény előnyeinek megismeréséhez, valamint arról, hogy miként módosíthatja és igazíthatja a felhasználói élményt a szervezet egyedi igényeinek megfelelően.
+Az Azure cache for Redis (előzetes verzió) Redis Azure Monitor-erőforrásaihoz tartozó összes Azure-gyorsítótárhoz a következő egységes, interaktív nézetet nyújtja:
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+- Teljes teljesítmény
+- Hibák
+- Kapacitás
+- Működési állapot
 
-A tapasztalatok megismerése előtt meg kell ismernie, hogyan jeleníti meg és jeleníti meg az információkat.
+Ez a cikk segít megérteni az új figyelési élmény előnyeit. Azt is bemutatja, hogyan lehet módosítani és alkalmazkodni a felhasználói élményhez, hogy illeszkedjenek a szervezet egyedi igényeihez.
+
+## <a name="introduction"></a>Bevezetés
+
+A felhasználói élmény megkezdése előtt tisztában kell lennie azzal, hogy az Azure cache Azure Monitor for Redis vizuálisan hogyan jeleníti meg az információkat.
 
 A következőket biztosítja:
 
-* Az Azure cache **méretezési perspektívája** , hogy az összes előfizetése egyetlen helyen Redis az erőforrásokat, a szelektív hatókört csak azokra az előfizetésekre és erőforrásokra lehet kiértékelni, amelyeket érdekel.
+- Az Azure cache **méretezési perspektívája** a Redis-erőforrások egyetlen helyen az összes előfizetésben. A hatókört csak a kiértékelni kívánt előfizetésekre és erőforrásokra szűkítheti.
 
-* Egy adott Azure cache részletes **elemzését** Redis-erőforráshoz, amely segít a problémák diagnosztizálásában, illetve a kategóriánkénti kihasználtság, a hibák, a kapacitás és a műveletek részletes elemzésének elvégzésében. Az egyik lehetőség kiválasztásával részletesen áttekintheti a releváns adatokat.  
+- Egy adott Azure cache részletes **elemzése** a Redis-erőforráshoz. Diagnosztizálhatja a problémákat, és megtekintheti a kihasználtság, a hibák, a kapacitás és a műveletek részletes elemzését. Ezen kategóriák bármelyikét kiválasztva részletesen megtekintheti a kapcsolódó információkat.  
 
-* **Testreszabható** – ez a felület Azure monitor munkafüzet-sablonokra épül, így módosíthatja, hogy milyen mérőszámok jelenjenek meg, módosíthatók vagy állíthatók be a határértékekhez igazodó küszöbértékek, majd egy egyéni munkafüzetbe menthetők. A munkafüzetek diagramjai ezután rögzíthetők az Azure-irányítópultokon.  
+- Ennek a élménynek a **testre szabása** Azure monitor munkafüzet-sablonokból épül fel. Az élmény lehetővé teszi a mérőszámok megjelenítését és módosítását, illetve a határértékekhez igazított küszöbértékek beállítását. Mentheti a módosításokat egy egyéni munkafüzetben, majd rögzítheti a munkafüzet-diagramokat az Azure-irányítópultokon.
 
-Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan, a rendszer alapértelmezés szerint a Redis-hez tartozó Azure cache-t gyűjti.
+- Ennek a élménynek a **testre szabása** Azure monitor munkafüzet-sablonokból épül fel. Az élmény lehetővé teszi, hogy megváltoztassa a megjelenített mérőszámokat, illetve hogy módosítsa vagy állítsa be a határértékekhez igazított küszöbértékeket. Mentheti a módosításokat egy egyéni munkafüzetben, majd rögzítheti a munkafüzet-diagramokat az Azure-irányítópultokon.
+
+Ez a funkció nem igényli, hogy bármit engedélyezzen vagy konfiguráljan. A rendszer alapértelmezés szerint gyűjti össze az Azure cache-t a Redis-adatokhoz.
 
 >[!NOTE]
->A szolgáltatáshoz való hozzáférés díjmentes, és a [Azure monitor díjszabása](https://azure.microsoft.com/pricing/details/monitor/) lapon leírtak szerint csak az Ön által konfigurált vagy engedélyezett Azure monitor alapvető funkciókért kell fizetnie.
+>A szolgáltatáshoz való hozzáférés díjmentes. Csak az Ön által megadott vagy engedélyezett Azure Monitor alapvető funkciókért kell fizetnie, a [Azure monitor díjszabását ismertető](https://azure.microsoft.com/pricing/details/monitor/) oldalon leírtak szerint.
 
 ## <a name="view-utilization-and-performance-metrics-for-azure-cache-for-redis"></a>Az Azure cache kihasználtsági és teljesítmény-metrikáinak megtekintése a Redis-hez
 
-Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és teljesítményét az összes előfizetésében, hajtsa végre a következő lépéseket.
+Ha szeretné megtekinteni a Storage-fiókok kihasználtságát és teljesítményét az összes előfizetésében, hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. Keressen rá a **figyelőre** , és válassza a **figyelő**lehetőséget.
+1. Keresse meg a **figyelőt**, és válassza a **figyelő**lehetőséget.
 
-    ![A "monitor" szót tartalmazó keresőmező és egy olyan legördülő lista, amely egy sebességmérő stílusú képpel rendelkező szolgáltatásokat mutat](./media/cosmosdb-insights-overview/search-monitor.png)
+    ![A "figyelő" szót tartalmazó keresőmező és a szolgáltatások keresési eredménye, amely a "monitor" karaktert mutatja egy sebességmérő szimbólummal](./media/cosmosdb-insights-overview/search-monitor.png)
 
-3. Válassza ki **Az Azure cache Redis (előzetes verzió)** lehetőséget.
-
-Ha ez a lehetőség nem jelenik meg, kattintson a **továbbiak** lehetőségre, és válassza **Az Azure cache lehetőséget a Redis**.
+1. Válassza ki **Az Azure cache Redis (előzetes verzió)** lehetőséget. Ha ez a beállítás nincs jelen, válassza a **további**  >  **Azure cache Redis**lehetőséget.
 
 ### <a name="overview"></a>Áttekintés
 
 Az **Áttekintés**során a táblázat a Redis-metrikák interaktív Azure cache-t jeleníti meg. Az eredményeket az alábbi legördülő listából kiválasztott beállítások alapján szűrheti:
 
-* **Előfizetések** – csak az Azure cache-t használó előfizetések jelennek meg a Redis-erőforráshoz.  
+- **Előfizetések**: csak az Azure cache-t használó előfizetések jelennek meg a Redis-erőforráshoz.  
 
-* **Azure cache for Redis** – kiválaszthatja az összes, egy részhalmazt vagy egy Azure-gyorsítótárat a Redis-erőforráshoz.
+- **Azure cache for Redis**: kiválaszthatja az összes, egy részhalmazt vagy egyetlen Azure cache-t a Redis-erőforráshoz.
 
-* **Időtartomány** – alapértelmezés szerint az utolsó 4 órányi információt jeleníti meg a megfelelő beállítások alapján.
+- **Időtartomány**: alapértelmezés szerint a tábla az utolsó négy órányi információt jeleníti meg a megfelelő beállítások alapján.
 
-A legördülő lista alatti számláló csempe a kijelölt előfizetésekben a Redis-erőforrások Azure-gyorsítótárának teljes számát összesíti. A munkafüzet oszlopaihoz feltételes színkódolás vagy intenzitástérképei van a tranzakciós metrikák jelentéséhez. A legmélyebb szín a legmagasabb és a világosabb szín a legalacsonyabb értékeken alapul.
+A legördülő lista alatt található egy számláló csempe. A csempén a kiválasztott előfizetések Redis erőforrásaihoz tartozó Azure cache teljes száma látható. A munkafüzet oszlopaihoz tartozó feltételes színkódok vagy Heat Maps jelentés tranzakciós metrikái. A legmélyebb szín a legmagasabb értéket jelöli. A világosabb színek alacsonyabb értékeket jelentenek.
 
-A Redis-erőforrások Azure-gyorsítótára melletti legördülő menü kiválasztásával megjelenítheti a teljesítménymutatók részletezését az egyes erőforrások szintjén:
+A Redis-erőforrások Azure-gyorsítótára melletti legördülő lista kiválasztásával a teljesítménymutatók részletezése az egyes erőforrások szintjén.
 
 ![Képernyőkép az áttekintő felületről](./media/redis-cache-insights-overview/overview.png)
 
-Ha a kék színnel jelölt Redis-erőforráshoz tartozó Azure cache elemet választja, a rendszer a társított fiók alapértelmezett **áttekintését** fogja igénybe venni. Ez a,,,,,,, `Used Memory` `Used Memory Percentage` `Server Load` `Server Load Timeline` `CPU` `Connected Clients` `Cache Misses` `Errors (Max)` .
+Ha a kék színnel jelölt Redis-erőforráshoz az Azure cache elemet választja, akkor a társított fiókhoz tartozó alapértelmezett **áttekintési** táblázat jelenik meg. Ezeket az oszlopokat jeleníti meg:
+
+- **Felhasznált memória**
+- **Felhasznált memória százalékos aránya**
+- **Kiszolgáló terhelése**
+- **Kiszolgáló terhelése – idővonal**
+- **CPU**
+- **Csatlakoztatott ügyfelek**
+- **Gyorsítótár-tévesztések**
+- **Hibák (max.)**
 
 ### <a name="operations"></a>Műveletek
 
-Válassza a lap tetején a **műveletek** lehetőséget, majd megnyílik a munkafüzet sablonjának **műveletek** rész. Ez azt mutatja,,,, `Total Operations` `Total Operations Timeline` `Operations Per Second` `Gets` `Sets` .
+Amikor kiválasztja a **műveletek** elemet a lap tetején, megnyílik a munkafüzet sablonjának **műveleti** táblázata. Ezeket az oszlopokat jeleníti meg:
 
-![Képernyőkép az áttekintő felületről](./media/redis-cache-insights-overview/operations.png)
+- **Műveletek összesen**
+- **Műveletek összesen – idővonal**
+- **Műveletek száma másodpercenként**
+- **Lekérések**
+- **Készletek**
+
+![Képernyőkép az üzemeltetési élményről](./media/redis-cache-insights-overview/operations.png)
 
 ### <a name="usage"></a>Használat
 
-A lap tetején kattintson a **használat** elemre, és megnyílik a munkafüzet sablonjának **használati** része. Ez azt mutatja,,,, `Cache Read` `Cache Read Timeline` `CacheWrite` `CacheHits` `Cache Misses` .
+Amikor kiválasztja a **használat** lehetőséget az oldal tetején, megnyílik a munkafüzet sablonjának **használati** táblázata. Ezeket az oszlopokat jeleníti meg:
 
-![Képernyőkép az áttekintő felületről](./media/redis-cache-insights-overview/usage.png)
+- **Gyorsítótár-olvasás**
+- **Gyorsítótár-olvasás – idővonal**
+- **Gyorsítótár-írás**
+- **Gyorsítótár-találatok**
+- **Gyorsítótár-tévesztések**
 
-Válassza ki a **hibák** elemet az oldal tetején, és megnyílik a munkafüzet sablonjának **hibák** szakasza. Ez a,,,,,,, `Total Errors` `Failover/Errors` `UnresponsiveClient/Errors` `RDB/Errors` `AOF/Errors` `Export/Errors` `Dataloss/Errors` `Import/Errors` .
+![Képernyőkép a használati élményről](./media/redis-cache-insights-overview/usage.png)
 
-![Képernyőfelvétel a HTTP-kérelem típusa szerinti bontásban fellépő hibákról](./media/redis-cache-insights-overview/failures.png)
+### <a name="failures"></a>Hibák
+
+Ha a lap tetején a **hibák** lehetőséget választja, megnyílik a munkafüzet sablonjának **hibák** táblázata. Ezeket az oszlopokat jeleníti meg:
+
+- **Összes hiba**
+- **Feladatátvétel/hibák**
+- **UnresponsiveClient/hibák**
+- **RDB/hibák**
+- **AOF/hibák**
+- **Exportálás/hibák**
+- **Dataloss/hibák**
+- **Importálás/hibák**
+
+![Képernyőfelvétel a HTTP-kérelem típusa szerinti bontásban előforduló hibákról](./media/redis-cache-insights-overview/failures.png)
 
 ### <a name="metric-definitions"></a>Metrika-definíciók
 
-Az ezeket a munkafüzeteket alkotó metrika-definíciók teljes listáját az [elérhető metrikák és jelentéskészítési időközök című cikkben](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)tekintheti meg.
+A munkafüzeteket alkotó metrika-definíciók teljes listáját az [elérhető metrikák és jelentéskészítési időközök című cikkben](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-monitor#available-metrics-and-reporting-intervals)tekintheti meg.
 
 ## <a name="pin-export-and-expand"></a>PIN-kód, exportálás és Kibontás
 
-A metrikus szakaszok bármelyikét rögzítheti egy [Azure-irányítópultra](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards) , ha a szakasz jobb felső sarkában található gombostű ikonra kattint.
+Ha a metrikai szakaszt egy [Azure-irányítópultra](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards)szeretné rögzíteni, válassza a gombostű szimbólumot a szakasz jobb felső részén.
 
-![Metrikus szakasz rögzítése az irányítópulton – példa](./media/cosmosdb-insights-overview/pin.png)
+![A gombostű szimbólummal jelölt metrikai szakasz](./media/cosmosdb-insights-overview/pin.png)
 
-Az Excel formátumba való exportáláshoz kattintson a gombostű ikon bal oldalán található lefelé mutató nyíl ikonra.
+Az Excel-formátumba való exportáláshoz kattintson a gombostű szimbólum bal oldalán lévő lefelé mutató nyíl szimbólumra.
 
-![Munkafüzet exportálása ikon](./media/cosmosdb-insights-overview/export.png)
+![Kiemelt exportálási munkafüzet szimbóluma](./media/cosmosdb-insights-overview/export.png)
 
-A munkafüzet összes legördülő nézetének kibontásához vagy összecsukásához válassza az Exportálás ikon bal oldalán található Kibontás ikont:
+Egy munkafüzet összes nézetének kibontásához vagy összecsukásához válassza az Exportálás szimbólumtól balra található kibontási szimbólumot.
 
-![Munkafüzet kibontása ikon](./media/cosmosdb-insights-overview/expand.png)
+![Kiemelt kibontott munkafüzet szimbóluma](./media/cosmosdb-insights-overview/expand.png)
 
 ## <a name="customize-azure-monitor-for-azure-cache-for-redis-preview"></a>Az Azure cache Azure Monitor testreszabása a Redis (előzetes verzió)
 
-Mivel ez a felület Azure monitor munkafüzet-sablonokra épül, **testreszabhatja**a  >  **Edit** módosítást, és **mentheti** a módosított verzió egy példányát egy egyéni munkafüzetbe. 
+Mivel ez a felület Azure monitor munkafüzet-sablonokon alapul, kiválaszthatja a **Customize**  >  **szerkesztési**  >  **Mentés** testreszabása lehetőséget, hogy a módosított verzió másolatát egy egyéni munkafüzetbe mentse.
 
-![Sáv testreszabása](./media/cosmosdb-insights-overview/customize.png)
+![A Kiemelt testreszabást tartalmazó parancssáv](./media/cosmosdb-insights-overview/customize.png)
 
-A munkafüzetek egy erőforráscsoporthoz lesznek mentve, vagy az Ön számára magánjellegű **saját jelentések** szakaszban, vagy a **megosztott jelentések** szakaszban, amely mindenki számára elérhető az erőforráscsoporthoz való hozzáféréssel. Az Egyéni munkafüzet mentése után nyissa meg a munkafüzet-katalógust, és indítsa el.
+A munkafüzetek a **saját jelentések** szakaszban vagy a **megosztott jelentések** szakaszban található erőforráscsoporthoz lesznek mentve. **Saját jelentések** csak Ön számára érhető el. A **megosztott jelentések** mindenki számára elérhetők az erőforráscsoporthoz való hozzáféréssel.
 
-![A munkafüzet-katalógus indítása a parancssáv alapján](./media/cosmosdb-insights-overview/gallery.png)
+Az Egyéni munkafüzet mentése után nyissa meg a munkafüzet-katalógust.
+
+![Egy, a katalógust kiemelő parancssáv](./media/cosmosdb-insights-overview/gallery.png)
 
 ## <a name="next-steps"></a>További lépések
 
-* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása automatizált riasztások beállításához a problémák észlelése érdekében.
+* A [metrikai riasztások](../platform/alerts-metric.md) és a [szolgáltatás állapotára vonatkozó értesítések](../../service-health/alerts-activity-log-service-notifications.md) konfigurálása a problémák észlelését segítő automatizált riasztások beállításához.
 
-* Ismerkedjen meg a forgatókönyvekkel, amelyek támogatják az új és a meglévő jelentések testreszabását, valamint az [interaktív jelentések Azure monitor-munkafüzetekkel való létrehozását](../app/usage-workbooks.md)ismertető áttekintést.
+* Megismerheti a munkafüzetek által támogatott forgatókönyveket, a jelentések készítését és testreszabását, valamint az [interaktív jelentések létrehozásával Azure monitor munkafüzetek](../app/usage-workbooks.md)használatával történő áttekintésével.

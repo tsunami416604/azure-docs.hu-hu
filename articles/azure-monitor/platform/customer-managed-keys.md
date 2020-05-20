@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/13/2020
-ms.openlocfilehash: 71a28d4a0b69b117039f998891e082740e4269a2
-ms.sourcegitcommit: 90d2d95f2ae972046b1cb13d9956d6668756a02e
+ms.openlocfilehash: aec093d829964c770f59ec7bd328fabdd56e6e86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/14/2020
-ms.locfileid: "83402565"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654845"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor ügyfél által felügyelt kulcs 
 
@@ -21,7 +21,7 @@ Javasoljuk, hogy a konfiguráció előtt tekintse át [az alábbi korlátozások
 
 ## <a name="disclaimers"></a>Felelősséget kizáró nyilatkozatok
 
-A CMK képesség dedikált Log Analytics-fürtökön van továbbítva. A [log Analytics-fürtök díjszabási modellje](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) a 1000 GB/nap szinten kezdődő kapacitási foglalásokat használja.
+A CMK képesség dedikált Log Analytics-fürtökön van továbbítva. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, meg kell adnia az előfizetés előzetes engedélyezési feltételeit. Használja a Microsoft-kapcsolattartóját az előfizetés engedélyezési listájának beszerzéséhez.
 
 ## <a name="customer-managed-key-cmk-overview"></a>Ügyfél által felügyelt kulcs (CMK) áttekintése
 
@@ -30,6 +30,8 @@ A titkosítás inaktív https://docs.microsoft.com/azure/security/fundamentals/e
 Azure Monitor biztosítja, hogy az összes adatok titkosítva legyenek az Azure által felügyelt kulcsok használatával. A Azure Monitor emellett lehetőséget biztosít az adattitkosításra, amely a saját [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview) tárolja a saját kulcsát, és a tárolók segítségével a rendszer által hozzárendelt [felügyelt identitás](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)-   hitelesítéssel fér hozzá. Ez a kulcs lehet [szoftveres vagy hardveres HSM-védelemmel ellátott](https://docs.microsoft.com/azure/key-vault/key-vault-overview). 
 
 Azure Monitor a titkosítás használata azonos az [Azure Storage-titkosítás](https://docs.microsoft.com/azure/storage/common/storage-service-encryption#about-azure-storage-encryption)   működésének módjával.
+
+A CMK képesség dedikált Log Analytics-fürtökön van továbbítva. A [log Analytics-fürtök díjszabási modellje](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters) a 1000 GB/nap szinten kezdődő kapacitási foglalásokat használja.
 
 Az elmúlt 14 napban betöltött adatok a hatékony lekérdezési motor működéséhez a gyors gyorsítótárban (SSD-alapú) is megmaradnak. Ezek az adatforgalom a Microsoft kulcsaival együtt titkosítva marad, függetlenül a CMK-konfigurációtól, az SSD-adatforgalom pedig a [kulcs visszavonását](#cmk-kek-revocation)követi. Dolgozunk, hogy a CMK-mel titkosított SSD-adatforgalom a 2020-as második fele legyen.
 
@@ -67,7 +69,7 @@ A következő szabályok érvényesek:
 
 ## <a name="cmk-provisioning-procedure"></a>CMK-létesítési eljárás
 
-1. Előfizetés-engedélyezési lista – annak biztosításához, hogy az Ön régiójában rendelkezésre áll a szükséges kapacitás a Log Analytics-fürt kiépítéséhez, az előfizetést előzetesen ellenőrizni és engedélyezni kell
+1. Előfizetés-engedélyezési lista – a CMK képesség dedikált Log Analytics-fürtökön van továbbítva. Annak ellenőrzéséhez, hogy rendelkezik-e a szükséges kapacitással a régiójában, meg kell adnia az előfizetés előzetes engedélyezési feltételeit. Az előfizetés engedélyezési listájának beszerzése a Microsoft-névjegy használatával
 2. Azure Key Vault létrehozása és a kulcs tárolása
 3. *Fürterőforrás* létrehozása
 5. Engedélyek megadása a Key Vault számára
@@ -270,7 +272,7 @@ Ha szeretné frissíteni a *fürterőforrás* adatait a Key Vault *kulcs-azonos�
 
 Frissítse a *fürterőforrás* KeyVaultProperties a kulcs-azonosító részleteivel.
 
-**Frissítés**
+**Frissítése**
 
 Ez a Resource Manager-kérelem aszinkron művelet a kulcs-azonosító részleteinek frissítésekor, miközben a kapacitás értékének frissítésekor szinkronban van.
 
@@ -595,5 +597,5 @@ Az összes adatot továbbra is elérhetővé kell tenni a kulcsfontosságú rot�
 
 - Ha Key Vaultban frissíti a kulcs verzióját, és nem frissíti az új kulcs-azonosító részleteit a *fürterőforrás* -ben, a log Analytics-fürt továbbra is az előző kulcsot fogja használni, és az adatai elérhetetlenné válnak. Frissítse az új kulcs-azonosító részleteit a *fürterőforrás* -ben az adatok feldolgozásának folytatásához és az adatok lekérdezési képességéhez.
 
-- Az ügyfél által felügyelt kulccsal kapcsolatos támogatásért és segítségért használja a Microsoft-partnereit.
+- Az ügyfél által felügyelt kulccsal kapcsolatos támogatásért és segítségért vegye fel velünk a kapcsolatot a Microsoft-kapcsolattartóval.
 

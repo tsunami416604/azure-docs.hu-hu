@@ -7,12 +7,12 @@ ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: 54085d602246d38adb970ed02f451241ca7ba19d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e8dbe2021c5700fe0223ff7ce246ac54f2abbd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726399"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650297"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>BLOB Storage használata az iOS-ből
 
@@ -62,14 +62,14 @@ A könyvtár használatához a következőkre lesz szüksége:
 A könyvtár használatának másik módja a keretrendszer manuális felépítése:
 
 1. Először töltse le vagy klónozott [Azure-Storage-iOS](https://github.com/azure/azure-storage-ios)-tárházat.
-2. Lépjen be az *Azure-Storage-iOS* -> *lib* -> *Azure Storage ügyféloldali kódtáraba*, `AZSClient.xcodeproj` és nyissa meg a Xcode.
+2. Lépjen be az *Azure-Storage-iOS*  ->  *lib*  ->  *Azure Storage ügyféloldali kódtáraba*, és nyissa meg `AZSClient.xcodeproj` a Xcode.
 3. A Xcode bal felső részén módosítsa az aktív sémát az "Azure Storage ügyféloldali kódtár" elemről a "Framework" értékre.
 4. Hozza létre a projektet (⌘ + B). Ekkor létrejön egy `AZSClient.framework` fájl az asztalon.
 
 Ezután importálhatja a keretrendszer fájlját az alkalmazásba a következő módon:
 
 1. Hozzon létre egy új projektet, vagy nyissa meg a meglévő projektet a Xcode-ben.
-2. Húzza a `AZSClient.framework` t a Xcode Project-Navigátorba.
+2. Húzza a t a `AZSClient.framework` Xcode Project-Navigátorba.
 3. Szükség esetén válassza az *elemek másolása*lehetőséget, majd kattintson a *Befejezés*gombra.
 4. Kattintson a projektre a bal oldali navigációs sávon, és kattintson a projekt-szerkesztő tetején található *általános* fülre.
 5. A *csatolt keretrendszerek és kódtárak* szakaszban kattintson a Hozzáadás gombra (+).
@@ -82,9 +82,9 @@ Ezután importálhatja a keretrendszer fájlját az alkalmazásba a következő 
 #import <AZSClient/AZSClient.h>
 ```
 
-Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és importálnia \<kell a AZSClient/AZSClient. h-t> ott:
+Ha Swift-t használ, létre kell hoznia egy áthidaló fejlécet, és importálnia kell a \< AZSClient/AZSClient. h-t> ott:
 
-1. Hozzon létre egy `Bridging-Header.h`header fájlt, és adja hozzá a fenti importálási utasítást.
+1. Hozzon létre egy header fájlt `Bridging-Header.h` , és adja hozzá a fenti importálási utasítást.
 2. Lépjen a *létrehozási beállítások* lapra, és keressen rá az *Objective-C áthidaló fejlécre*.
 3. Kattintson duplán a *Objective-C áthidaló fejléc* mezőjére, és adja hozzá a fejléc elérési útját:`ProjectName/Bridging-Header.h`
 4. Hozza létre a projektet (⌘ + B) annak ellenőrzéséhez, hogy az áthidaló fejlécet a Xcode választotta-e ki.
@@ -220,7 +220,7 @@ A blokk Blobok NSString való feltöltése mellett a NSData, a NSInputStream vag
 
 Az alábbi példa bemutatja, hogyan listázhatja ki a tárolóban lévő összes blobot. A művelet végrehajtásakor a következő paramétereket kell szem előtt tartva:
 
-- **continuationtoken argumentumot használja** – a folytatási token azt jelöli, hogy a listázási művelet mikor induljon el. Ha nem ad meg jogkivonatot, a rendszer az elejéről listázza a blobokat. Tetszőleges számú blobot lehet kilistázni, nullától akár legfeljebb egy készletig. Még akkor is, ha ez a metódus nulla `results.continuationToken` eredményt ad vissza, ha az nem üres, akkor a szolgáltatásban további Blobok jelenhetnek meg, amelyek nem szerepelnek a felsorolásban.
+- **continuationtoken argumentumot használja** – a folytatási token azt jelöli, hogy a listázási művelet mikor induljon el. Ha nem ad meg jogkivonatot, a rendszer az elejéről listázza a blobokat. Tetszőleges számú blobot lehet kilistázni, nullától akár legfeljebb egy készletig. Még akkor is, ha ez a metódus nulla eredményt ad vissza, ha `results.continuationToken` az nem üres, akkor a szolgáltatásban további Blobok jelenhetnek meg, amelyek nem szerepelnek a felsorolásban.
 - **előtag** – megadhatja a Blobok listázásához használandó előtagot. Csak a jelen előtaggal kezdődő Blobok jelennek meg.
 - **useflatbloblisting paraméterét** – ahogy azt a [tárolók elnevezése és a hivatkozó tárolók és Blobok](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) szakaszban is említettük, bár a blob Service egy egyszerű tárolási séma, a Blobok elérésiút-információkkal történő elnevezésével létrehozható egy virtuális hierarchia. A nem lapos felsorolás azonban jelenleg nem támogatott. Ez a funkció hamarosan elérhető lesz. Egyelőre ez az érték **Igen**.
 - **blobListingDetails** – megadhatja, hogy mely elemek szerepeljenek a Blobok listázásakor
@@ -392,7 +392,7 @@ Most, hogy megismerte, hogyan használhatja a Blob Storaget iOS-ről, az alábbi
 - [Azure Storage ügyféloldali kódtár iOS rendszerhez](https://github.com/azure/azure-storage-ios)
 - [Az Azure Storage iOS dokumentációja](https://azure.github.io/azure-storage-ios/)
 - [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355.aspx)
-- [Az Azure Storage csapat blogja](https://blogs.msdn.com/b/windowsazurestorage)
+- [Az Azure Storage csapat blogja](https://docs.microsoft.com/archive/blogs/windowsazurestorage/)
 
 Ha kérdése van a könyvtárral kapcsolatban, küldje el az [MSDN Azure-fórumát](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) vagy [stack overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files).
 Ha az Azure Storage szolgáltatásra vonatkozó javaslatokkal rendelkezik, tegye közzé az [Azure Storage visszajelzéseit](https://feedback.azure.com/forums/217298-storage/).

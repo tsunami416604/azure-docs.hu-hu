@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 03/17/2020
-ms.openlocfilehash: 2cb53d0c88d8c29da2bd8bf52d6536555d56c76e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/05/2020
+ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283939"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654376"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Azure-beli virtuális gépek figyelése Azure Monitor
 Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure-beli virtuális gépek monitorozási adatainak gyűjtésére és elemzésére az állapotuk fenntartása érdekében. A virtuális gépeket a rendelkezésre állás és a teljesítmény figyelésére használhatja Azure Monitor mint bármely [más Azure-erőforrást](monitor-azure-resource.md), de ezek más erőforrásokkal is egyediek, mivel a vendég operációs és a rendszer, valamint a rajta futó munkaterhelések figyelésére is szükség van. 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure-beli virt
 ## <a name="differences-from-other-azure-resources"></a>Más Azure-erőforrásoktól származó különbségek
 Az [Azure-erőforrások Azure monitor való figyelése](monitor-azure-resource.md) az Azure-erőforrások által generált figyelési információkat ismerteti, valamint azt, hogy miként használhatók a Azure monitor funkciói az adatelemzéshez és a riasztáshoz. Az Azure-beli virtuális gépekről az alábbi eltérésekkel gyűjthet és helyezhet el adatokat:
 
-- A [platform metrikáit](../platform/data-platform-metrics.md) a rendszer automatikusan gyűjti a virtuális gépekhez, de csak a [virtuális gép gazdagépe](#monitoring-data)számára. Ahhoz, hogy a vendég operációs rendszer teljesítményadatokat gyűjtsön, egy ügynökre van szüksége. 
+-  A [platform metrikáit](../platform/data-platform-metrics.md) a rendszer automatikusan gyűjti a virtuális gépekhez, de csak a [virtuális gép gazdagépe](#monitoring-data)számára. Ahhoz, hogy a vendég operációs rendszer teljesítményadatokat gyűjtsön, egy ügynökre van szüksége. 
 - A virtuális gépek nem hoznak olyan [erőforrás-naplókat](../platform/platform-logs-overview.md) , amelyek betekintést nyújtanak az Azure-erőforráson belül végrehajtott műveletekre. Ügynök használatával gyűjti be a naplózási adatokat a vendég operációs rendszerből.
 - Létrehozhat [diagnosztikai beállításokat](../platform/diagnostic-settings.md) a virtuális gépek számára a platform metrikáinak más célhelyekre, például a Storage és az Event hubokba való küldéséhez, de ezek a diagnosztikai beállítások nem konfigurálhatók a Azure Portal. 
 
@@ -121,7 +121,6 @@ az monitor diagnostic-settings create \
 --resource /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm \
 --metrics '[{"category": "AllMetrics","enabled": true}]' \
 --workspace /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace
-
 ```
 
 ## <a name="monitoring-in-the-azure-portal"></a>Figyelés a Azure Portal 
@@ -133,7 +132,7 @@ Miután konfigurálta a figyelési adatok gyűjtését egy virtuális géphez, t
 
 ![Figyelés a Azure Portal](media/monitor-vm-azure/monitor-menu.png)
 
-| Menüpont | Leírás |
+| Menüpont | Description |
 |:---|:---|
 | Áttekintés | Megjeleníti a virtuális gép gazdagépének [platform metrikáit](../platform/data-platform-metrics.md) . Kattintson egy gráfra, hogy működjön együtt ezekkel az adatokkal a [mérőszámok Explorerben](../platform/metrics-getting-started.md). |
 | Tevékenységnapló | Az aktuális virtuális gép számára szűrt [tevékenység-naplóbejegyzések](../platform/activity-log-view.md) . |
@@ -149,12 +148,13 @@ Miután konfigurálta a figyelési adatok gyűjtését egy virtuális géphez, t
 ## <a name="analyzing-metric-data"></a>Metrikus adatok elemzése
 A metrikák a virtuális gép menüjéből **való megnyitásával** elemezheti a metrikákat a virtuális gépekhez. Az eszköz használatával kapcsolatos részletekért lásd: az [Azure Metrikaböngésző használatának első lépései](../platform/metrics-getting-started.md) . 
 
-A virtuális gépek két névteret használnak a metrikák számára:
+A virtuális gépek három névteret használnak a metrikák számára:
 
-| Névtér | Leírás |
-|:---|:---|
-| Virtuálisgép-gazda | Az összes Azure-beli virtuális gép számára automatikusan összegyűjtött gazdagép-metrikák. A metrikák részletes listája a [Microsoft. számítás/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). |
-| Virtuális gép vendége | A vendég operációs rendszer metrikái olyan virtuális gépekről gyűjtöttek, amelyeken telepítve van a diagnosztikai bővítmény, és a Azure Monitor fogadónak való küldésre van konfigurálva. |
+| Névtér | Description | Követelmény |
+|:---|:---|:---|
+| Virtuálisgép-gazda | Az összes Azure-beli virtuális gép számára automatikusan összegyűjtött gazdagép-metrikák. A metrikák részletes listája a [Microsoft. számítás/virtualMachines](../platform/metrics-supported.md#microsoftcomputevirtualmachines). | Automatikusan összegyűjtött konfiguráció nélkül. |
+| Vendég (klasszikus) | A vendég operációs rendszerek és az alkalmazások teljesítményének korlátozott készlete. Elérhető a metrikák Explorerben, de nem más Azure Monitor-funkciók, például a metrikus riasztások.  | A [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) telepítve van. Az adatok beolvasása az Azure Storage-ból történik.  |
+| Virtuális gép vendége | A vendég operációs rendszer és az alkalmazás teljesítményére vonatkozó adatok a metrikák használatával minden Azure Monitor szolgáltatás számára elérhetők. | Windows esetén a Azure Monitor fogadóval telepített [diagnosztikai bővítmény](../platform/diagnostics-extension-overview.md) engedélyezve van. A Linux, a- [Graf ügynök telepítve van](../platform/collect-custom-metrics-linux-telegraf.md). |
 
 ![Mérőszámok](media/monitor-vm-azure/metrics.png)
 

@@ -3,12 +3,12 @@ title: A munkaterhelések biztonsági mentésének Azure Backup Server használa
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: dd506668f9d75523ff7494bccb2979bf0785990d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a442cb094f87852c9d4f781d378f5886f3a4a42
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273409"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652132"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -40,6 +40,9 @@ Azure Backup Server örökli a munkaterhelés biztonsági mentési funkcióinak 
 ## <a name="choose-an-installation-platform"></a>Telepítési platform kiválasztása
 
 A Azure Backup Server működésének első lépése a Windows Server beállítása. A kiszolgáló lehet az Azure-ban vagy a helyszínen is.
+
+* A helyszíni munkaterhelések elleni védelem érdekében a MABS-kiszolgálónak a helyszínen kell elhelyezkednie.
+* Az Azure-beli virtuális gépeken futó munkaterhelések elleni védelem érdekében a MABS-kiszolgálónak Azure-beli virtuális gépen kell futnia az Azure-ban.
 
 ### <a name="using-a-server-in-azure"></a>Kiszolgáló használata az Azure-ban
 
@@ -183,9 +186,9 @@ Ha a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet, hogy 
 
     Az SSRS konfigurálásához használja a következő értékeket:
     * Szolgáltatásfiók: a "beépített fiók használata" hálózati szolgáltatásnak kell lennie
-    * Webszolgáltatás URL-címe: a virtuális könyvtárnak ReportServer_\<SQLInstanceName kell lennie>
-    * Adatbázis: a DatabaseName reportserver $\<SQLInstanceName>
-    * Webes portál URL-címe: a "virtuális könyvtár"\<Reports_ SQLInstanceName kell lennie>
+    * Webszolgáltatás URL-címe: a virtuális könyvtárnak ReportServer_ SQLInstanceName kell lennie \<>
+    * Adatbázis: a DatabaseName reportserver $ \< SQLInstanceName>
+    * Webes portál URL-címe: a "virtuális könyvtár" Reports_ SQLInstanceName kell lennie \<>
 
     [További](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) információ az SSRS-konfigurációról.
 
@@ -237,7 +240,7 @@ A MABS a System Center Data Protection Manager védelmi ügynököt használja. 
 
 Az alábbi szakaszok azt ismertetik, hogyan lehet frissíteni az ügyfélszámítógépek védelmi ügynökeit.
 
-1. A biztonsági mentési kiszolgáló felügyeleti konzol válassza a **felügyeleti** > **ügynökök**lehetőséget.
+1. A biztonsági mentési kiszolgáló felügyeleti konzol válassza a **felügyeleti**  >  **ügynökök**lehetőséget.
 
 2. A Megjelenítés ablaktáblán válassza ki azokat az ügyfélszámítógépeket, amelyeknek frissíteni kívánja a védelmi ügynököt.
 
@@ -280,7 +283,7 @@ Az alábbi lépéseket követve kell áthelyeznie a MABS egy új kiszolgálóra,
 
 ## <a name="network-connectivity"></a>Hálózati kapcsolat
 
-Azure Backup Server a termék sikeres működéséhez kapcsolódnia kell a Azure Backup szolgáltatáshoz. Annak ellenőrzéséhez, hogy a számítógép rendelkezik-e az Azure- ```Get-DPMCloudConnection``` kapcsolattal, használja a parancsmagot a Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete igaz, akkor a kapcsolat létezik, máskülönben nincs kapcsolat.
+Azure Backup Server a termék sikeres működéséhez kapcsolódnia kell a Azure Backup szolgáltatáshoz. Annak ellenőrzéséhez, hogy a számítógép rendelkezik-e az Azure-kapcsolattal, használja a ```Get-DPMCloudConnection``` parancsmagot a Azure Backup Server PowerShell-konzolon. Ha a parancsmag kimenete igaz, akkor a kapcsolat létezik, máskülönben nincs kapcsolat.
 
 Ugyanakkor az Azure-előfizetésnek kifogástalan állapotban kell lennie. Az előfizetés állapotának megállapításához és a kezeléséhez jelentkezzen be az [előfizetési portálra](https://account.windowsazure.com/Subscriptions).
 
@@ -350,7 +353,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. A biztonsági mentéseket az üzemi kiszolgálók újraindítása nélkül kell folytatni.
-5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információ](backup-mabs-add-storage.md).
+5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információk](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

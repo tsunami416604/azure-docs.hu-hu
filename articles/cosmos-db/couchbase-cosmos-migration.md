@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 02/11/2020
 ms.author: mansha
 author: manishmsfte
-ms.openlocfilehash: 9713d963978e34ad874dc032676a6e1f14e4657c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248860ad6963fcd04526f0d94e52d6a6181463c5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210943"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657341"
 ---
 # <a name="migrate-from-couchbase-to-azure-cosmos-db-sql-api"></a>Migrálás a CouchBase-ből Azure Cosmos DB SQL API-ba
 
@@ -161,7 +161,7 @@ A következő kódrészletek a szifilisz-műveletekhez használhatók:
 
 ### <a name="insert-and-update-operations"></a>Műveletek beszúrása és frissítése
 
-Ahol a *_repo* a tárház objektuma, a *doc* pedig a POJO osztály objektuma. A használatával `.save` beszúrhat vagy upsert (ha megtalálható a megadott azonosítójú dokumentum). A következő kódrészlet bemutatja, hogyan szúrhat be vagy frissíthet egy doc-objektumot:
+Ahol a *_repo* a tárház objektuma, a *doc* pedig a POJO osztály objektuma. `.save`A használatával beszúrhat vagy upsert (ha megtalálható a megadott azonosítójú dokumentum). A következő kódrészlet bemutatja, hogyan szúrhat be vagy frissíthet egy doc-objektumot:
 
 ```_repo.save(doc);```
 
@@ -186,7 +186,7 @@ A N1QL lekérdezések a lekérdezéseknek a Couchbase való definiálásának m�
 
 |N1QL-lekérdezés | Azure CosmosDB-lekérdezés|
 |-------------------|-------------------|
-|Válassza a META`TravelDocument`(). ID azonosítót, `TravelDocument`. * elemet `TravelDocument` , `_type` ahol = "com. xx. xx. xx. xxx. xxx. xxxx" és az ország = "India", a vízumok pedig minden m. type = = "Multi-Entry" és m. Country in ["India", Bhután "] Order ` Validity` by desc limit 25 eltolás 0   | Válassza a c elemet. azonosító, c – c csatlakozás m-ben c. Country = "India", ahol c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" és c. ország = "India" és m. type = "Multi-Entry" és m. Country IN ("India", "Bhután") ORDER BY c |
+|Válassza a META ( `TravelDocument` ). ID azonosítót, `TravelDocument` . * elemet, `TravelDocument` ahol `_type` = "com. xx. xx. xx. xxx. xxx. xxxx" és az ország = "India", a vízumok pedig minden m. type = = "Multi-Entry" és m. Country in ["India", Bhután "] Order by ` Validity` desc limit 25 eltolás 0   | Válassza a c elemet. azonosító, c – c csatlakozás m-ben c. Country = "India", ahol c. _type = "com. xx. xx. xx. xxx. xxx. xxxx" és c. ország = "India" és m. type = "Multi-Entry" és m. Country IN ("India", "Bhután") ORDER BY c |
 
 A N1QL-lekérdezésekben a következő változások láthatók:
 
@@ -211,7 +211,7 @@ Használja az aszinkron Java SDK-t a következő lépésekkel:
    </dependency>
    ```
 
-1. Az alábbi példában látható módon hozzon létre egy `ConnectionBuilder` Azure Cosmos DBhoz tartozó kapcsolatok objektumát a metódus használatával. Ügyeljen arra, hogy a deklarációt a beanbe helyezze, hogy a következő kód csak egyszer legyen végrehajtva:
+1. Az alábbi példában látható módon hozzon létre egy Azure Cosmos DBhoz tartozó kapcsolatok objektumát a `ConnectionBuilder` metódus használatával. Ügyeljen arra, hogy a deklarációt a beanbe helyezze, hogy a következő kód csak egyszer legyen végrehajtva:
 
    ```java
    ConnectionPolicy cp=new ConnectionPolicy();
@@ -314,46 +314,30 @@ Ez egy egyszerű számítási feladat, amelyben lekérdezések helyett keresési
     
    ```json
    {
-       "indexingMode": "consistent",
-       "includedPaths": 
-       [
-           {
-            "path": "/*",
-            "indexes": 
-             [
-                {
-                  "kind": "Range",
-                  "dataType": "Number"
-                },
-                {
-                  "kind": "Range",
-                  "dataType": "String"
-                },
-                {
-                   "kind": "Spatial",
-                   "dataType": "Point"
-                }
-             ]
-          }
-       ],
-       "excludedPaths": 
-       [
-         {
-             "path": "/path/to/single/excluded/property/?"
-         },
-         {
-             "path": "/path/to/root/of/multiple/excluded/properties/*"
-         }
-      ]
-   }
+    "indexingMode": "consistent",
+    "automatic": true,
+    "includedPaths": [
+        {
+            "path": "/*"
+        }
+    ],
+    "excludedPaths": [
+        {
+            "path": "/\"_etag\"/?"
+        }
+    ]
+    }
    ````
 
    Cserélje le a fenti indexelési házirendet a következő szabályzatra:
 
    ```json
    {
-       "indexingMode": "none"
-   }
+    "indexingMode": "none",
+    "automatic": false,
+    "includedPaths": [],
+    "excludedPaths": []
+    }
    ```
 
 1. A kapcsolódási objektum létrehozásához használja az alábbi kódrészletet. A kapcsolódási objektum ( @Bean vagy statikusra kell helyezni):

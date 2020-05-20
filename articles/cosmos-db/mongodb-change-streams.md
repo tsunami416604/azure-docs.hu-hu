@@ -1,32 +1,32 @@
 ---
 title: Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
-description: Megtudhatja, hogyan használhatja az adatváltozásokat az Azure Cosmos DB API-MongoDB az adatváltozások beszerzéséhez.
-author: timsander1
+description: Megtudhatja, hogyan használhatja a MongoDB n Azure Cosmos DB API-ját az adatain végrehajtott módosítások beszerzéséhez.
+author: srchi
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 03/30/2020
-ms.author: tisande
-ms.openlocfilehash: 7a6060448175530ada5ba95ceda470056a7be002
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.date: 11/16/2019
+ms.author: srchi
+ms.openlocfilehash: cc6b74a56d2a538d35e324090832e6c7e03e609f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872141"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647302"
 ---
 # <a name="change-streams-in-azure-cosmos-dbs-api-for-mongodb"></a>Adatfolyamok módosítása Azure Cosmos DB API-MongoDB
 
 A Azure Cosmos DB API-MongoDB való [adatcsatorna](change-feed.md) -támogatás módosítása a Streams API-t használva érhető el. Az adatfolyamok módosítása API használatával az alkalmazások beszerezhetik a gyűjteményen vagy az egyetlen szegmensben lévő elemeken végrehajtott módosításokat. Később további műveleteket is végrehajthat az eredmények alapján. A gyűjtemény elemeinek módosításait a rendszer a módosítási idő sorrendjében rögzíti, és a rendezési sorrendet a rendszer a szegmens kulcsa szerint biztosítja.
 
-> [!NOTE]
-> Az adatfolyamok módosításának használatához hozza létre a fiókot a Azure Cosmos DB API-MongoDB vagy egy újabb verziójának 3,6-es verziójával. Ha az adatfolyam módosítása példát egy korábbi verzióra futtatja, akkor előfordulhat, hogy `Unrecognized pipeline stage name: $changeStream` a hibaüzenet jelenik meg.
+[!NOTE]
+Az adatfolyamok módosításának használatához hozza létre a fiókot a Azure Cosmos DB API-MongoDB vagy egy újabb verziójának 3,6-es verziójával. Ha az adatfolyam módosítása példát egy korábbi verzióra futtatja, akkor előfordulhat, hogy a hibaüzenet jelenik meg `Unrecognized pipeline stage name: $changeStream` .
 
 ## <a name="current-limitations"></a>Aktuális korlátozások
 
 A Change streamek használatakor a következő korlátozások érvényesek:
 
-* A `operationType` és `updateDescription` a tulajdonságok még nem támogatottak a kimeneti dokumentumban.
-* A `insert`, `update`a és `replace` az Operations típusok jelenleg támogatottak. 
+* A `operationType` és a `updateDescription` Tulajdonságok még nem támogatottak a kimeneti dokumentumban.
+* A `insert` , a `update` és az `replace` Operations típusok jelenleg támogatottak. 
 * A törlési művelet vagy más esemény még nem támogatott.
 
 A korlátozások miatt a $match szakasz, a $project szakasz és a fullDocument lehetőségek szükségesek, ahogy az előző példákban is látható.
@@ -39,11 +39,11 @@ A Change streamek használatakor a következő hibakódok és üzenetek támogat
 
 * **Http-hibakód 16500** – ha a Change stream szabályozása megtörtént, üres lapot ad vissza.
 
-* **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a `operationType Invalidate` hiba helyett, a rendszer a `NamespaceNotFound` hibát adja vissza.
+* **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a hiba helyett, `operationType Invalidate` a `NamespaceNotFound` rendszer a hibát adja vissza.
 
 ## <a name="examples"></a>Példák
 
-Az alábbi példa azt szemlélteti, hogyan lehet módosítani a gyűjtemény összes elemének változásait. Ez a példa létrehoz egy kurzort, amellyel megtekintheti a beszúrt, frissített vagy lecserélt elemeket. A `$match` változtatási `$project` adatfolyamok beszerzéséhez a szakasz, a szakasz és `fullDocument` a beállítás szükséges. A módosítási streameket használó törlési műveletek figyelése jelenleg nem támogatott. Megkerülő megoldásként hozzáadhat egy lágy jelölőt a törölt elemekhez. Hozzáadhat például egy attribútumot a "törölt" nevű elemhez. Ha törölni szeretné az elemeket, beállíthatja a "törölt" értéket, `true` és beállíthatja az élettartamot az elemnél. Mivel a "törölt" érték `true` frissítése frissül, ez a változás látható lesz a változási adatfolyamban.
+Az alábbi példa azt szemlélteti, hogyan lehet módosítani a gyűjtemény összes elemének változásait. Ez a példa létrehoz egy kurzort, amellyel megtekintheti a beszúrt, frissített vagy lecserélt elemeket. A `$match` `$project` `fullDocument` változtatási adatfolyamok beszerzéséhez a szakasz, a szakasz és a beállítás szükséges. A módosítási streameket használó törlési műveletek figyelése jelenleg nem támogatott. Megkerülő megoldásként hozzáadhat egy lágy jelölőt a törölt elemekhez. Hozzáadhat például egy attribútumot a "törölt" nevű elemhez. Ha törölni szeretné az elemeket, beállíthatja a "törölt" `true` értéket, és beállíthatja az élettartamot az elemnél. Mivel a "törölt" érték frissítése frissül `true` , ez a változás látható lesz a változási adatfolyamban.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
@@ -61,7 +61,7 @@ while (!cursor.isExhausted()) {
     }
 }
 ```
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 var pipeline = new EmptyPipelineDefinition<ChangeStreamDocument<BsonDocument>>()
@@ -89,8 +89,8 @@ Az alábbi példa azt szemlélteti, hogyan lehet módosítani az elemeket egyetl
 ```javascript
 var cursor = db.coll.watch(
     [
-        {
-            $match: {
+        { 
+            $match: { 
                 $and: [
                     { "fullDocument.a": 1 }, 
                     { "operationType": { $in: ["insert", "update", "replace"] } }
@@ -102,6 +102,23 @@ var cursor = db.coll.watch(
     { fullDocument: "updateLookup" });
 
 ```
+
+## <a name="current-limitations"></a>Aktuális korlátozások
+
+A Change streamek használatakor a következő korlátozások érvényesek:
+
+* A `operationType` és a `updateDescription` Tulajdonságok még nem támogatottak a kimeneti dokumentumban.
+* A `insert` , a `update` és az `replace` Operations típusok jelenleg támogatottak. A törlési művelet vagy más esemény még nem támogatott.
+
+A korlátozások miatt a $match szakasz, a $project szakasz és a fullDocument lehetőségek szükségesek, ahogy az előző példákban is látható.
+
+## <a name="error-handling"></a>Hibakezelés
+
+A Change streamek használatakor a következő hibakódok és üzenetek támogatottak:
+
+* **Http-hibakód 429** – ha a Change stream szabályozása megtörtént, üres lapot ad vissza.
+
+* **NamespaceNotFound (OperationType-érvénytelenítés)** – ha nem létező gyűjteményen futtatja a Change streamet, vagy ha a gyűjtemény el van dobva, a `NamespaceNotFound` rendszer hibát ad vissza. Mivel a `operationType` tulajdonság nem adható vissza a kimeneti dokumentumban a hiba helyett, `operationType Invalidate` a `NamespaceNotFound` rendszer a hibát adja vissza.
 
 ## <a name="next-steps"></a>További lépések
 

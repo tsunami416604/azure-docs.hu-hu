@@ -3,12 +3,12 @@ title: Azure Migrate-berendezés
 description: Áttekintést nyújt a kiszolgálók értékeléséhez és áttelepítéséhez használt Azure Migrate készülékről.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 439f6d9c80a0b93f071d30d580facc4604cabbac
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: bd5686b30b07c0f7fb8961f8d1f71035cb2688a4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780334"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656430"
 ---
 # <a name="azure-migrate-appliance"></a>Azure Migrate-berendezés
 
@@ -47,7 +47,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Támogatott központi telepítés** | Üzembe helyezés VMware virtuális gépen a petesejtek sablonnal.<br/><br/> Üzembe helyezés VMware-alapú virtuális gépként vagy fizikai gépen PowerShell-telepítési parancsfájl használatával.
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felderítési korlátok** | A készülékek akár 10 000 VMware virtuális gépet is felfedezhetnek vCenter Serveron.<br/> Egy berendezés egyetlen vCenter Serverhoz tud csatlakozni.
-**PETESEJT-sablon** | Letöltés a portálról vagy https://aka.ms/migrate/appliance/vmwarea-ból.<br/><br/> A letöltési méret 11,2 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
+**PETESEJT-sablon** | Letöltés a portálról vagy a-ból https://aka.ms/migrate/appliance/vmware .<br/><br/> A letöltési méret 11,2 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 **PowerShell-parancsprogram** | Parancsfájl [letöltése](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
 **Szoftver/hardver** |  A készüléknek a gépen kell futnia a Windows Server 2016, 32-GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolás és egy külső virtuális kapcsoló alapján.<br/> A berendezéshez közvetlenül vagy proxyn keresztül kell internet-hozzáférést igényelni.<br/><br/> Ha a készüléket VMware virtuális gépen futtatja, elegendő erőforrásra van szüksége a vCenter Server egy olyan virtuális gép lefoglalásához, amely megfelel a követelményeknek.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek. 
 **VMware-követelmények** | Ha a készüléket VMware virtuális gépként telepíti, akkor azt egy 5,5-es vagy újabb verziót futtató ESXi-gazdagépre kell telepíteni.<br/><br/> vCenter Server fut 5,5, 6,0, 6,5 vagy 6,7.
@@ -67,7 +67,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Támogatott központi telepítés** | Hyper-V virtuális gépként történő üzembe helyezése VHD-sablonnal.<br/><br/> Telepítsen Hyper-V virtuális gépet vagy fizikai gépet PowerShell telepítési parancsfájl használatával.
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felderítési korlátok** | Egy készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/> Egy készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
-**VHD-sablon** | Tömörített mappa, beleértve a VHD-t. Letöltés a portálról vagy https://aka.ms/migrate/appliance/hyperva-ból.<br/><br/> A letöltés mérete 10 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
+**VHD-sablon** | Tömörített mappa, beleértve a VHD-t. Letöltés a portálról vagy a-ból https://aka.ms/migrate/appliance/hyperv .<br/><br/> A letöltés mérete 10 GB.<br/><br/> A letöltött Appliance-sablon egy Windows Server 2016 próbaverziós licenccel rendelkezik, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
 **PowerShell-parancsprogram** | Parancsfájl [letöltése](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> 
 **Szoftver/hardver***   |  A készüléknek a gépen kell futnia a Windows Server 2016, 32-GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolás és egy külső virtuális kapcsoló alapján.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a készüléket Hyper-V virtuális gépként futtatja, elegendő erőforrásra van szüksége a Hyper-V-gazdagépen, hogy 16 GB RAM-ot, 8 vCPU, körülbelül 80 GB tárterületet és külső kapcsolót foglaljon le a készülék virtuális géphez.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek. 
 **Hyper-V követelmények** | Ha a készüléket a VHD sablonnal telepíti, a Azure Migrate által biztosított készülék virtuális gépe a Hyper-V VM 5,0-es verziója.<br/><br/> A Hyper-V-gazdagépen Windows Server 2012 R2 vagy újabb rendszernek kell futnia. 
@@ -84,7 +84,7 @@ A következő táblázat összefoglalja a VMware Azure Migrate készülékre von
 **Támogatott központi telepítés** | Telepítsen dedikált fizikai gépet vagy virtuális gépet egy PowerShell telepítési parancsfájl használatával. A szkript letölthető a portálról.
 **Projekt-támogatás** |  Egy készülék egyetlen projekthez is társítható. <br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> 
 **Felderítési korlátok** | A berendezések akár 250 fizikai kiszolgálót is felfedezhetnek.
-**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller. ps1) egy tömörített mappában a portálról. [További információ](tutorial-assess-physical.md#set-up-the-appliance). Másik megoldásként [közvetlenül is letöltheti](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> A letöltési méret 59,7 MB.
+**PowerShell-parancsprogram** | Töltse le a szkriptet (AzureMigrateInstaller. ps1) egy tömörített mappában a portálról. [További információk](tutorial-assess-physical.md#set-up-the-appliance). Másik megoldásként [közvetlenül is letöltheti](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> A letöltési méret 59,7 MB.
 **Szoftver/hardver** |  A készüléknek a gépen kell futnia a Windows Server 2016, 32-GB RAM, 8 vCPU, körülbelül 80 GB lemezes tárolás és egy külső virtuális kapcsoló alapján.<br/> A készüléknek statikus vagy dinamikus IP-címnek kell lennie, és közvetlenül vagy proxyn keresztül kell internet-hozzáférést biztosítania.<br/><br/> Ha a készüléket fizikai gépen futtatja, győződjön meg arról, hogy a Windows Server 2016 rendszert futtat, és megfelel a hardverkövetelmények követelményeinek.<br/> A készülék futtatása a Windows Server 2019 rendszerű gépen nem támogatott.
 **Kivonat értéke** | [Ellenőrizze](deploy-appliance-script.md#verify-file-security) a PowerShell-parancsfájl kivonatának értékeit.
 
@@ -98,7 +98,7 @@ Az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
 
 ### <a name="public-cloud-urls"></a>Nyilvános Felhőbeli URL-címek
 
-**URL** | **Részletek**  
+**URL-cím** | **Részletek**  
 --- | --- |
 *.portal.azure.com  | Lépjen az Azure Portalra.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com | Jelentkezzen be az Azure-előfizetésbe.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Letöltés engedélyezése a Microsoft letölt
 
 ### <a name="government-cloud-urls"></a>Kormányzati Felhőbeli URL-címek
 
-**URL** | **Részletek**  
+**URL-cím** | **Részletek**  
 --- | --- |
 *. portal.azure.us  | Lépjen az Azure Portalra.
 graph.windows.net | Jelentkezzen be az Azure-előfizetésbe.
@@ -222,7 +222,7 @@ Távoli port | netstat
 Távoli IP-cím | netstat
 TCP-kapcsolatok állapota | netstat
 Folyamatazonosító | netstat
-Nem. aktív kapcsolatok | netstat
+Aktív kapcsolatok száma | netstat
 
 #### <a name="process-data"></a>Adatok feldolgozása
 Itt láthatók azok az adatok, amelyeket a készülék az ügynök nélküli függőségek elemzéséhez engedélyezett összes virtuális gépről gyűjt. Ezek az adatküldés az Azure-ba történik.
@@ -244,7 +244,7 @@ Helyi IP-cím | netstat
 Távoli port | netstat 
 Távoli IP-cím | netstat 
 TCP-kapcsolatok állapota | netstat 
-Nem. aktív kapcsolatok | netstat
+Aktív kapcsolatok száma | netstat
 Folyamatazonosító  | netstat 
 Folyamatnév | PS
 Folyamat argumentumai | PS
@@ -338,19 +338,19 @@ Itt látható a Linux-kiszolgálói metaadatok teljes listája, amelyet a kész�
 **ADATOK** | **LINUX** 
 --- | --- 
 FQDN | cat/proc/sys/kernel/hostname, állomásnév-f
-Processzor magjainak száma |  /proc/cpuinfo \| awk "/^ processzor/{Print $3}" \| WC-l
+Processzor magjainak száma |  /proc/cpuinfo \| awk "/^ processzor/{print $3}" \| WC-l
 Lefoglalt memória | cat/proc/meminfo \| grep MemTotal \| awk "{printf"%. 0f ", $2/1024}"
 BIOS sorozatszáma | lshw \| grep "Serial:" \| Head-N1 \| awk "{Print $2}" <br/> /usr/sbin/dmidecode-t 1 \| grep "Serial" \| awk "{$1 =" "; $2 =" "; Print}"
 BIOS GUID | Cat/sys/Class/DMI/ID/product_uuid
 Rendszerindítás típusa | [-d/sys/firmware/EFI]  && echo EFI \| \| echo BIOS
 Operációs rendszer neve/verziója | Ezeket a fájlokat az operációs rendszer verziójához és nevéhez is elérjük:<br/><br/> /etc/os-release<br/> /usr/lib/os-release <br/> /etc/enterprise-release <br/> /etc/redhat-release<br/> /etc/oracle-release<br/>  /etc/SuSE-release<br/>  /etc/lsb-release  <br/> /etc/debian_version
 Operációs rendszer architektúrája | Uname – m
-Lemezek száma | fdisk-l \| egrep "Disk. * Bytes \| " awk "{Print $2} \| " cut-F1-d ":"
+Lemezek száma | fdisk-l \| egrep "Disk. * Bytes" \| awk "{Print $2}" \| Cut-F1-d ":"
 Rendszerindító lemez | DF/boot \| sed-n 2p \| awk {Print $1}
-Lemezméret | fdisk-l \| egrep ' Disk. * bájtok \| ' egrep $Disk \| : awk ' {Print $5} '
-Hálózati adapterek listája | IP-o-4 cím a \| (z) {Print $2} awk megjelenítése
-Hálózati adapter IP-címe | IP-cím megjelenítése \| $NIC grep \| inet awk ' {Print $2} \| ' Cut-F1-d "/" 
-Hálózati adapter MAC-címe | IP-cím megjelenítése \| $NIC grep \| -éter awk ({print $2})
+Lemezméret | fdisk-l \| egrep ' Disk. * bájtok ' \| egrep $Disk: \| awk ' {Print $5} '
+Hálózati adapterek listája | IP-o-4 cím a \| (z) {print $2} awk megjelenítése
+Hálózati adapter IP-címe | IP-cím megjelenítése $nic \| grep inet \| awk ' {Print $2} ' \| Cut-F1-d "/" 
+Hálózati adapter MAC-címe | IP-cím megjelenítése $nic \| grep-éter \| awk ({print $2})
 
 ### <a name="windows-performance-data"></a>Windows-teljesítményadatok
 
@@ -377,7 +377,7 @@ Memóriahasználat | ingyenes \| grep mem \| awk {Print $3/$ 2 * 100,0}
 Hálózati adapterek száma | lshw-Class hálózati \| grep ETH [0-60] \| WC-l
 Fogadott adatmennyiség/NIC | Cat/sys/Class/net/ETH $ NIC/Statistics/rx_bytes
 Továbbított adatok száma hálózati adapteren | Cat/sys/Class/net/ETH $ NIC/Statistics/tx_bytes
-Lemezek száma | fdisk-l \| egrep "Disk. * Bytes \| " awk "{Print $2} \| " cut-F1-d ":"
+Lemezek száma | fdisk-l \| egrep "Disk. * Bytes" \| awk "{Print $2}" \| Cut-F1-d ":"
 Lemez adatai | cat/proc/diskstats
 
 
@@ -410,7 +410,7 @@ A beállításkulcs törlése:
 A berendezés Configuration Manager bekapcsolásához a felderítés befejezése után:
 
 1. A készülék számítógépén nyissa meg a készüléket Configuration Manager.
-2. A **Appliance Services** > **Azure Migrate-összetevők automatikus frissítése ki van kapcsolva**, kattintson az automatikus frissítés bekapcsolásához.
+2. A **Appliance Services**  >  **Azure Migrate-összetevők automatikus frissítése ki van kapcsolva**, kattintson az automatikus frissítés bekapcsolásához.
 
     ![Automatikus frissítések bekapcsolása](./media/migrate-appliance/turn-on.png)
 
@@ -419,7 +419,7 @@ A berendezés Configuration Manager bekapcsolásához a felderítés befejezése
 Az alábbi módszerek bármelyikével ellenőrizhető a Appliance Services-verzió:
 
 - A berendezés Configuration Manager a felderítés befejezése után.
-- A készülék számítógépén, a Vezérlőpult**programok és szolgáltatások** **paneljén** > .
+- A készülék számítógépén, a **Vezérlőpult**  >  **programok és szolgáltatások**paneljén.
 
 A készülék Configuration Managerának beadásához:
 
@@ -430,7 +430,7 @@ A készülék Configuration Managerának beadásához:
 
 A Vezérlőpulton való ellenőrzéshez:
 
-1. A készüléken kattintson a **Start** > **Vezérlőpult** > **programok és szolgáltatások** indítása elemére.
+1. A készüléken kattintson a **Start**  >  **Vezérlőpult**  >  **programok és szolgáltatások** indítása elemére.
 2. A listában keresse meg a berendezés-szolgáltatások verzióját.
 
     ![A Vezérlőpult verziójának ellenőrzése](./media/migrate-appliance/programs-features.png)
@@ -443,16 +443,16 @@ Ha valamelyik összetevőnél régebbi verziót futtat, akkor el kell távolíta
 2.  A letöltés után nyissa meg a LatestComponents. JSON fájlt a Jegyzettömbben.
 3. Keresse meg a legújabb szolgáltatási verziót a fájlban, és a letöltési hivatkozást. Például:
 
-    "Név": "ASRMigrationWebApp", "DownloadLink": "https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi", "version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
+    "Név": "ASRMigrationWebApp", "DownloadLink": " https://download.microsoft.com/download/f/3/4/f34b2eb9-cc8d-4978-9ffb-17321ad9b7ed/MicrosoftAzureApplianceConfigurationManager.msi ", "version": "6.0.211.2", "Md5Hash": "e00a742acc35e78a64a6a81e75469b84"
 
 4.  Töltse le egy elavult szolgáltatás legújabb verzióját a fájl letöltési hivatkozásával.
 5. A letöltés után futtassa a következő parancsot egy rendszergazdai parancsablakban a letöltött MSI integritásának ellenőrzéséhez.
 
-    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Például: C:\>certutil-HASHFILE C:\Users\public\downloads\MicrosoftAzureApplianceConfigurationManager.msi MD5
+    ``` C:\>Get-FileHash -Path <file_location> -Algorithm [Hashing Algorithm] ```Például: C: \> Certutil-HashFile C:\USERS\PUBLIC\DOWNLOADS\MICROSOFTAZUREAPPLIANCECONFIGURATIONMANAGER.msi MD5
 
 5. Győződjön meg arról, hogy a parancs kimenete megfelel a szolgáltatáshoz tartozó kivonatoló érték bejegyzésének (például a fenti MD5-kivonat értéke).
 6. Most futtassa az MSI-t a szolgáltatás telepítéséhez. Ez egy csendes telepítés, és a telepítés befejezése után bezárul.
-7. A telepítés befejezése után keresse meg a szolgáltatás verziószámát a Vezérlőpult**programok és szolgáltatások** **paneljén** > . A szolgáltatási verziót most frissíteni kell a JSON-fájlban látható legújabb verzióra.
+7. A telepítés befejezése után keresse meg a szolgáltatás verziószámát a **Vezérlőpult**  >  **programok és szolgáltatások**paneljén. A szolgáltatási verziót most frissíteni kell a JSON-fájlban látható legújabb verzióra.
 
 
 

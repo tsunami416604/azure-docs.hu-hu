@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 04/03/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: affdbfba125b7e9b3f3fe250a56af30e9efe816e
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.date: 04/03/2020
+ms.openlocfilehash: 9b5771197c3e2de109af1a3b3475ab28fcbd6453
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611006"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647762"
 ---
 # <a name="interact-with-apache-kafka-clusters-in-azure-hdinsight-using-a-rest-proxy"></a>Az Azure HDInsight Apache Kafka-fürtök használata REST-proxy használatával
 
@@ -56,6 +56,8 @@ A REST proxy-végponti kérelmek esetében az ügyfélalkalmazások OAuth jogkiv
 
 ## <a name="create-a-kafka-cluster-with-rest-proxy-enabled"></a>Kafka-fürt létrehozása REST proxyval engedélyezve
 
+Az alábbi lépések a Azure Portal használják. Az Azure CLI használatával kapcsolatos példáért lásd: [Apache KAFKA Rest-proxy fürt létrehozása az Azure CLI használatával](tutorial-cli-rest-proxy.md).
+
 1. A Kafka-fürt létrehozási munkafolyamata alatt, a **Biztonság és hálózatkezelés** lapon jelölje be a **Kafka Rest-proxy engedélyezése** lehetőséget.
 
      ![A Kafka REST-proxy engedélyezése és a biztonsági csoport kiválasztása](./media/rest-proxy/azure-portal-cluster-security-networking-kafka-rest.png)
@@ -75,10 +77,10 @@ A REST proxy-végponti kérelmek esetében az ügyfélalkalmazások OAuth jogkiv
 A következő Python-kóddal használhatja a Kafka-fürt REST-proxyját. A kód minta használatához kövesse az alábbi lépéseket:
 
 1. Mentse a mintakód egy olyan gépen, amelyen telepítve van a Python.
-1. Telepítse a szükséges Python-függőségeket `pip3 install msal`a végrehajtásával.
+1. Telepítse a szükséges Python-függőségeket a végrehajtásával `pip3 install msal` .
 1. Módosítsa a kód szakasz **ezeket a tulajdonságokat konfigurálja** , és frissítse a környezet következő tulajdonságait:
 
-    |Tulajdonság |Leírás |
+    |Tulajdonság |Description |
     |---|---|
     |Bérlőazonosító|Az Azure-bérlő, ahol az előfizetése van.|
     |Ügyfél-azonosító|A biztonsági csoportban regisztrált alkalmazás azonosítója.|
@@ -92,7 +94,7 @@ Ez a kód a következő műveleteket hajtja végre:
 1. OAuth-token beolvasása az Azure AD-ből.
 1. Bemutatja, hogyan lehet kérést készíteni a Kafka REST proxyra.
 
-A Python OAuth-jogkivonatok beszerzésével kapcsolatos további információkért lásd: [Python AuthenticationContext osztály](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). Előfordulhat, `topics` hogy a Kafka Rest-proxyn keresztül nem létrehozott vagy törölt késések is megjelennek. Ez a késés a gyorsítótár frissítése miatt fordul elő.
+A Python OAuth-jogkivonatok beszerzésével kapcsolatos további információkért lásd: [Python AuthenticationContext osztály](https://docs.microsoft.com/python/api/adal/adal.authentication_context.authenticationcontext?view=azure-python). Előfordulhat, `topics` hogy a KAFKA Rest-proxyn keresztül nem létrehozott vagy törölt késések is megjelennek. Ez a késés a gyorsítótár frissítése miatt fordul elő.
 
 ```python
 #Required python packages

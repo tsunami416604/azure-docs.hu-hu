@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/01/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 207f4aecfb57480293c138c95ed6e8f6562bbc7b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c6956c38d15213d84b43b24784d2bb2b3a1963f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529164"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638574"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -30,7 +30,7 @@ Azure Active Directory B2C (Azure AD B2C) esetében az erőforrás-tulajdonos je
 
 Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](custom-policy-get-started.md).
 
-## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
+## <a name="register-an-application"></a>Alkalmazás regisztrálása
 
 [!INCLUDE [active-directory-b2c-appreg-ropc](../../includes/active-directory-b2c-appreg-ropc.md)]
 
@@ -86,7 +86,7 @@ Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az
     </ClaimsTransformations>
     ```
 
-4. Keresse meg azt a **ClaimsProvider** `Local Account SignIn` -elemet, amely a **DisplayName** paraméterrel rendelkezik, és adja hozzá a következő technikai profilt:
+4. Keresse meg azt a **ClaimsProvider** -elemet, amely a **DisplayName** paraméterrel rendelkezik, `Local Account SignIn` és adja hozzá a következő technikai profilt:
 
     ```XML
     <TechnicalProfile Id="ResourceOwnerPasswordCredentials-OAUTH2">
@@ -227,7 +227,7 @@ Következő lépésként frissítse a függő entitás fájlját, amely kezdemé
 
 1. Készítsen másolatot a *SignUpOrSignin. XML* fájlról a munkakönyvtárban, és nevezze át *ROPC_Auth. XML*fájlba.
 2. Nyissa meg az új fájlt, és módosítsa a **PolicyId** attribútum értékét a **TrustFrameworkPolicy** egyedi értékre. A házirend-azonosító a szabályzat neve. Például **B2C_1A_ROPC_Auth**.
-3. Módosítsa a **DefaultUserJourney** **ReferenceId** attribútum értékét a következőre: `ResourceOwnerPasswordCredentials`.
+3. Módosítsa a **DefaultUserJourney** **ReferenceId** attribútum értékét a következőre: `ResourceOwnerPasswordCredentials` .
 4. Módosítsa a **OutputClaims** elemet úgy, hogy csak a következő jogcímeket tartalmazza:
 
     ```XML
@@ -246,10 +246,10 @@ Következő lépésként frissítse a függő entitás fájlját, amely kezdemé
 
 Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazását, és tekintse át a szabályzat hibakeresésére adott választ. A POST kérelem törzsének a következő információk alapján hozhat létre egy hívást:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Cserélje `your-tenant-name` le a helyére a Azure ad B2C bérlő nevét.
-- A `B2C_1A_ROPC_Auth` helyére írja be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
+- Cserélje le a helyére `<tenant-name>` a Azure ad B2C bérlő nevét.
+- A helyére írja `B2C_1A_ROPC_Auth` be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
 
 | Kulcs | Érték |
 | --- | ----- |
@@ -260,16 +260,16 @@ Egy API-hívás létrehozásához használja kedvenc API-fejlesztési alkalmazá
 | client_id | `application-id` |
 | response_type | token id_token |
 
-- Cserélje `user-account` le a nevet a bérlő felhasználói fiókjának nevére.
-- Cserélje `password1` le a-t a felhasználói fiók jelszavára.
-- Cserélje `application-id` le az elemet az alkalmazás-azonosítóra a *ROPC_Auth_app* regisztrációban.
+- Cserélje le a `user-account` nevet a bérlő felhasználói fiókjának nevére.
+- Cserélje le a- `password1` t a felhasználói fiók jelszavára.
+- Cserélje le az `application-id` elemet az alkalmazás-azonosítóra a *ROPC_Auth_app* regisztrációban.
 - A *Offline_access* megadása nem kötelező, ha frissítési tokent szeretne kapni.
 
 A tényleges POST-kérelem a következő példához hasonlóan néz ki:
 
 ```HTTPS
-POST /yourtenant.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
-Host: yourtenant.b2clogin.com
+POST /<tenant-name>.onmicrosoft.com/oauth2/v2.0/token?B2C_1_ROPC_Auth HTTP/1.1
+Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
 username=contosouser.outlook.com.ws&password=Passxword1&grant_type=password&scope=openid+bef22d56-552f-4a5b-b90a-1988a7d634ce+offline_access&client_id=bef22d56-552f-4a5b-b90a-1988a7d634ce&response_type=token+id_token
@@ -291,10 +291,10 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 
 Állítson össze egy POST hívást, amely az itt láthatóhoz hasonló. Használja a következő táblázatban szereplő információkat a kérelem törzse:
 
-`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
+`https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1_ROPC_Auth/oauth2/v2.0/token`
 
-- Cserélje `your-tenant-name` le a helyére a Azure ad B2C bérlő nevét.
-- A `B2C_1A_ROPC_Auth` helyére írja be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
+- Cserélje le a helyére `<tenant-name>` a Azure ad B2C bérlő nevét.
+- A helyére írja `B2C_1A_ROPC_Auth` be az erőforrás-tulajdonosi jelszó hitelesítő adatainak teljes nevét.
 
 | Kulcs | Érték |
 | --- | ----- |
@@ -304,8 +304,8 @@ Az offline-hozzáférés sikeres válasza a következő példához hasonlóan n�
 | erőforrás | `application-id` |
 | refresh_token | `refresh-token` |
 
-- Cserélje `application-id` le az elemet az alkalmazás-azonosítóra a *ROPC_Auth_app* regisztrációban.
-- Cserélje `refresh-token` le az értékét az előző válaszban visszaküldött **refresh_tokenra** .
+- Cserélje le az `application-id` elemet az alkalmazás-azonosítóra a *ROPC_Auth_app* regisztrációban.
+- Cserélje le az értékét az `refresh-token` előző válaszban visszaküldött **refresh_tokenra** .
 
 A sikeres válasz a következő példához hasonlít:
 

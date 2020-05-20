@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6316165ba08d055be1186995e2fe2ad5a0079fb7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78f7c8eb363d791b7109aebced668c1e0a952274
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330724"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636097"
 ---
 # <a name="walkthrough-add-rest-api-claims-exchanges-to-custom-policies-in-azure-active-directory-b2c"></a>Forgatókönyv: REST API-jogcímek hozzáadása egyéni házirendekhez Azure Active Directory B2C
 
@@ -34,7 +34,7 @@ Az interakciót érvényesítő technikai profilként is megtervezheti. Ez akkor
 
 ## <a name="prepare-a-rest-api-endpoint"></a>REST API végpont előkészítése
 
-Ehhez a bemutatóhoz rendelkeznie kell egy REST API, amely ellenőrzi, hogy a felhasználó Azure AD B2C objectId regisztrálva van-e a háttérrendszer-szolgáltatásban. Ha regisztrálva van, a REST API a felhasználói fiók egyenlegét adja vissza. Ellenkező esetben a REST API regisztrálja az új fiókot a címtárban, és visszaadja a `50.00`kezdő egyenleget.
+Ehhez a bemutatóhoz rendelkeznie kell egy REST API, amely ellenőrzi, hogy a felhasználó Azure AD B2C objectId regisztrálva van-e a háttérrendszer-szolgáltatásban. Ha regisztrálva van, a REST API a felhasználói fiók egyenlegét adja vissza. Ellenkező esetben a REST API regisztrálja az új fiókot a címtárban, és visszaadja a kezdő egyenleget `50.00` .
 
 A következő JSON-kód azt mutatja be, Azure AD B2C az REST API végpontnak küldi el azokat. 
 
@@ -59,7 +59,7 @@ A REST API végpont beállítása kívül esik a jelen cikk hatókörén. Létre
 
 A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárolást biztosít. A jogcímeket a [jogcímek sémája](claimsschema.md) szakaszon belül deklarálhatja. 
 
-1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Keresse meg a [ClaimsSchema](claimsschema.md) elemet. Ha az elem nem létezik, adja hozzá.
 1. Adja hozzá a következő jogcímeket a **ClaimsSchema** elemhez.  
@@ -109,19 +109,19 @@ A [Rest-es technikai profil](restful-technical-profile.md) támogatást nyújt a
 </ClaimsProvider>
 ```
 
-Ebben a példában a `userLanguage` a rendszer ELKÜLDI a REST szolgáltatásnak `lang` a JSON-adattartalommal. A `userLanguage` jogcím értéke az aktuális felhasználói nyelvi azonosítót tartalmazza. További információ: jogcím- [feloldó](claim-resolver-overview.md).
+Ebben a példában a a `userLanguage` rendszer elküldi a REST szolgáltatásnak a `lang` JSON-adattartalommal. A `userLanguage` jogcím értéke az aktuális felhasználói nyelvi azonosítót tartalmazza. További információ: jogcím- [feloldó](claim-resolver-overview.md).
 
-A fenti `AuthenticationType` megjegyzések és `AllowInsecureAuthInProduction` az éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez lásd: [biztonságos REST API](secure-rest-api.md).
+A fenti megjegyzések `AuthenticationType` és az `AllowInsecureAuthInProduction` éles környezetbe való áttéréskor végrehajtott módosítások megadása. A REST API-k éles környezetben történő biztonságossá tételéhez lásd: [biztonságos REST API](secure-rest-api.md).
 
 ## <a name="add-an-orchestration-step"></a>Előkészítési lépés hozzáadása
 
 A [felhasználói utazások](userjourneys.md) olyan explicit elérési utakat határoznak meg, amelyeken keresztül a szabályzat lehetővé teszi, hogy a függő entitások egy felhasználó számára megfelelő jogcímeket szerezzenek. A felhasználói út olyan összehangoló sorozatot jelöl, amelyet egy sikeres tranzakcióhoz kell követni. Felvehet vagy kivonja az előkészítési lépéseket. Ebben az esetben egy új előkészítési lépést fog hozzáadni, amely az alkalmazásnak a REST API hívásával történő regisztráció vagy bejelentkezés után a felhasználó által megadott információk kiegészítésére szolgál.
 
-1. Nyissa meg a szabályzat alapfájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
+1. Nyissa meg a szabályzat alapfájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> .
 1. Keresse meg az `<UserJourneys>` elemet. Másolja a teljes elemet, majd törölje.
-1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
-1. Illessze be `<UserJourneys>` a into the Extensions (kiterjesztések) fájlba `<ClaimsProviders>` a elem bezárását követően.
-1. Keresse meg `<UserJourney Id="SignUpOrSignIn">`a t, és adja hozzá az alábbi előkészítési lépést az utolsó előtt.
+1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
+1. Illessze be a `<UserJourneys>` into the Extensions (kiterjesztések) fájlba a elem bezárását követően `<ClaimsProviders>` .
+1. Keresse meg a t `<UserJourney Id="SignUpOrSignIn">` , és adja hozzá az alábbi előkészítési lépést az utolsó előtt.
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -131,7 +131,7 @@ A [felhasználói utazások](userjourneys.md) olyan explicit elérési utakat ha
     </OrchestrationStep>
     ```
 
-1. Az utolsó előkészítési lépés újrabontása a `Order` to értékre `8`való módosításával. Az utolsó két előkészítési lépésnek a következőhöz hasonlóan kell kinéznie:
+1. Az utolsó előkészítési lépés újrabontása a `Order` to értékre való módosításával `8` . Az utolsó két előkészítési lépésnek a következőhöz hasonlóan kell kinéznie:
 
     ```XML
     <OrchestrationStep Order="7" Type="ClaimsExchange">
@@ -148,7 +148,7 @@ A [felhasználói utazások](userjourneys.md) olyan explicit elérési utakat ha
 
 ## <a name="include-a-claim-in-the-token"></a>Jogcím belefoglalása a jogkivonatba 
 
-Ha vissza szeretné `balance` állítani a jogcímet a függő entitás alkalmazásához, adjon hozzá egy kimeneti <em> `SocialAndLocalAccounts/` </em> jogcímet a fájlhoz. A kimeneti jogcímek hozzáadásával a rendszer a jogkivonatot sikeres felhasználói út után kiállítja a jogkivonatba, és a rendszer elküldi az alkalmazásnak. Módosítsa a technikai profil elemet a függő entitás szakaszban a kimeneti jogcímként `balance` való hozzáadáshoz.
+Ha vissza szeretné `balance` állítani a jogcímet a függő entitás alkalmazásához, adjon hozzá egy kimeneti jogcímet a <em>`SocialAndLocalAccounts/`**`SignUpOrSignIn.xml`**</em> fájlhoz. A kimeneti jogcímek hozzáadásával a rendszer a jogkivonatot sikeres felhasználói út után kiállítja a jogkivonatba, és a rendszer elküldi az alkalmazásnak. Módosítsa a technikai profil elemet a függő entitás szakaszban a `balance` kimeneti jogcímként való hozzáadáshoz.
  
 ```xml
 <RelyingParty>
@@ -209,9 +209,6 @@ Mentse a módosított fájlokat: *TrustFrameworkBase. XML*és *TrustFrameworkExt
   ...
 }
 ```
-
-## <a name="next-steps"></a>További lépések
-
 
 ## <a name="next-steps"></a>További lépések
 

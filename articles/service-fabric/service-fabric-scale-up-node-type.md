@@ -3,12 +3,12 @@ title: Azure Service Fabric csomópont-típus vertikális felskálázása
 description: Megtudhatja, hogyan méretezheti Service Fabric fürtöt egy virtuálisgép-méretezési csoport hozzáadásával.
 ms.topic: article
 ms.date: 02/13/2019
-ms.openlocfilehash: 4dbb9e4fbfeb27c5b8b13f70207888cf37bbb0e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5ea4f37a6c088c6f738ef05db8b5b295982c27fe
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80998931"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674223"
 ---
 # <a name="scale-up-a-service-fabric-cluster-primary-node-type"></a>Service Fabric-fürt elsődleges csomóponttípusának vertikális felskálázása
 Ez a cikk azt ismerteti, hogyan lehet a virtuális gépek erőforrásainak növelésével bővíteni egy Service Fabric-fürt elsődleges csomópontjának típusát. A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. Egy fürt részét képező gépet vagy virtuális gépet csomópontnak nevezzük. A virtuálisgép-méretezési csoportok egy Azure-beli számítási erőforrás, amely készletként telepíti és felügyeli a virtuális gépek gyűjteményét. Az Azure-fürtben definiált összes csomópont-típus [külön méretezési csoportként van beállítva](service-fabric-cluster-nodetypes.md). Ezután mindegyik csomópont-típust külön lehet kezelni. Service Fabric-fürt létrehozása után függőlegesen méretezheti a fürt csomópontjának típusát (módosítsa a csomópontok erőforrásait), vagy frissítse a csomópont típusú virtuális gépek operációs rendszerét.  A fürtöt bármikor méretezheti, még akkor is, ha a munkaterhelések futnak a fürtön.  A fürt skálázása esetén az alkalmazások is automatikusan méretezhetők.
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan lehet a virtuális gépek erőforrásainak növe
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Az elsődleges csomópont típusú virtuális gépek méretének és operációs rendszerének frissítése
+## <a name="process-to-upgrade-the-size-and-operating-system-of-the-primary-node-type-vms"></a>Az elsődleges csomópont típusú virtuális gépek méretének és operációs rendszerének frissítésére szolgáló folyamat
 Az alábbi folyamat a virtuális gépek méretének és operációs rendszerének frissítését írja le.  A frissítés után az elsődleges csomópont típusú virtuális gépek szabványos D4_V2 és a Windows Server 2016 Datacenter tárolókkal futnak.
 
 > [!WARNING]
@@ -41,43 +41,126 @@ Az alábbi folyamat a virtuális gépek méretének és operációs rendszeréne
 10. Távolítsa el a csomópontok csomópontjának állapotát a fürtből.  Ha a régi méretezési csoport tartóssági szintje ezüst vagy arany volt, ezt a lépést a rendszer automatikusan végrehajtja.
 11. Ha egy előző lépésben telepítette az állapot-nyilvántartó alkalmazást, ellenőrizze, hogy az alkalmazás működőképes-e.
 
+## <a name="set-up-the-test-cluster"></a>A tesztelési fürt beállítása
+
+Először töltse le az oktatóanyaghoz szükséges két készletet, a [sablont]() és a [paramétereket]() , valamint a [sablon]() és [Paraméterek]()után.
+
+Ezután jelentkezzen be az Azure-fiókjába.
+
 ```powershell
-# Variables.
-$groupname = "sfupgradetestgroup"
-$clusterloc="southcentralus"  
-$subscriptionID="<your subscription ID>"
-
 # sign in to your Azure account and select your subscription
-Login-AzAccount -SubscriptionId $subscriptionID 
+Login-AzAccount -SubscriptionId "<your subscription ID>"
+```
 
-# Create a new resource group for your deployment and give it a name and a location.
-New-AzResourceGroup -Name $groupname -Location $clusterloc
+Ez az oktatóanyag végigvezeti az önaláírt tanúsítványok létrehozásának forgatókönyvén. Ha Azure Key Vault meglévő tanúsítványt szeretne használni, ugorja át az alábbi lépést, és [egy meglévő tanúsítvány használatával hajtsa végre a fürt üzembe helyezéséhez](https://docs.microsoft.com/azure/service-fabric/upgrade-managed-disks#use-an-existing-certificate-to-deploy-the-cluster)szükséges lépéseket.
 
-# Deploy the two node type cluster.
-New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-2ScaleSets.parameters.json" `
-    -TemplateFile "C:\temp\cluster\Deploy-2NodeTypes-2ScaleSets.json" -Verbose
+### <a name="generate-a-self-signed-certificate-and-deploy-the-cluster"></a>Önaláírt tanúsítvány létrehozása és a fürt üzembe helyezése
 
-# Connect to the cluster and check the cluster health.
-$ClusterName= "sfupgradetest.southcentralus.cloudapp.azure.com:19000"
-$thumb="F361720F4BD5449F6F083DDE99DC51A86985B25B"
+Először rendelje hozzá az Service Fabric-fürt üzembe helyezéséhez szükséges változókat. Módosítsa a, a, a és a értékét az `resourceGroupName` `certSubjectName` `parameterFilePath` `templateFilePath` adott fiókhoz és környezethez:
 
-Connect-ServiceFabricCluster -ConnectionEndpoint $ClusterName -KeepAliveIntervalInSec 10 `
+```powershell
+# Assign deployment variables
+$resourceGroupName = "sftestupgradegroup"
+$certOutputFolder = "c:\certificates"
+$certPassword = "Password!1" | ConvertTo-SecureString -AsPlainText -Force
+$certSubjectName = "sftestupgrade.southcentralus.cloudapp.azure.com"
+$templateFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.json"
+$parameterFilePath = "C:\Deploy-2NodeTypes-2ScaleSets.parameters.json"
+```
+
+> [!NOTE]
+> A parancs futtatása előtt győződjön meg arról, hogy a `certOutputFolder` hely létezik a helyi gépen, mielőtt új Service Fabric fürtöt szeretne üzembe helyezni.
+
+Ezután nyissa meg a *Deploy-2NodeTypes-2ScaleSets. Parameters. JSON* fájlt, és módosítsa a és a értékét a `clusterName` `dnsName` PowerShellben megadott dinamikus értékekre, és mentse a módosításokat.
+
+Ezután telepítse a Service Fabric test-fürtöt:
+
+```powershell
+# Deploy the initial test cluster
+New-AzServiceFabricCluster `
+    -ResourceGroupName $resourceGroupName `
+    -CertificateOutputFolder $certOutputFolder `
+    -CertificatePassword $certPassword `
+    -CertificateSubjectName $certSubjectName `
+    -TemplateFile $templateFilePath `
+    -ParameterFile $parameterFilePath
+```
+
+Miután az üzembe helyezés befejeződött, keresse meg a *. pfx* -fájlt a `$certPfx` helyi gépen, és importálja a tanúsítványtárolóba:
+
+```powershell
+cd c:\certificates
+$certPfx = ".\sftestupgradegroup20200312121003.pfx"
+
+Import-PfxCertificate `
+     -FilePath $certPfx `
+     -CertStoreLocation Cert:\CurrentUser\My `
+     -Password (ConvertTo-SecureString Password!1 -AsPlainText -Force)
+```
+
+A művelet visszaküldi a tanúsítvány ujjlenyomatát, amelyet az új fürthöz való kapcsolódáshoz fog használni, és megtekintheti annak állapotát.
+
+### <a name="connect-to-the-new-cluster-and-check-health-status"></a>Kapcsolódás az új fürthöz és az állapot állapotának ellenõrzése
+
+Kapcsolódjon a fürthöz, és ellenőrizze, hogy minden csomópontja kifogástalan állapotú-e (cserélje `clusterName` `thumb` le a fürt változóit):
+
+```powershell
+# Connect to the cluster
+$clusterName = "sftestupgrade.southcentralus.cloudapp.azure.com:19000"
+$thumb = "BB796AA33BD9767E7DA27FE5182CF8FDEE714A70"
+
+Connect-ServiceFabricCluster `
+    -ConnectionEndpoint $clusterName `
+    -KeepAliveIntervalInSec 10 `
     -X509Credential `
     -ServerCertThumbprint $thumb  `
     -FindType FindByThumbprint `
     -FindValue $thumb `
     -StoreLocation CurrentUser `
-    -StoreName My 
+    -StoreName My
 
+# Check cluster health
 Get-ServiceFabricClusterHealth
+```
 
-# Deploy a new scale set into the primary node type.  Create a new load balancer and public IP address for the new scale set.
-New-AzResourceGroupDeployment -ResourceGroupName $groupname -TemplateParameterFile "C:\temp\cluster\Deploy-2NodeTypes-3ScaleSets.parameters.json" `
-    -TemplateFile "C:\temp\cluster\Deploy-2NodeTypes-3ScaleSets.json" -Verbose
+Készen áll a frissítési eljárás megkezdésére.
 
-# Check the cluster health again. All 15 nodes should be healthy.
+## <a name="upgrade-the-primary-node-type-vms"></a>Az elsődleges csomópont típusú virtuális gépek frissítése
+
+Miután eldöntötte, hogy frissítette az elsődleges csomópont típusú virtuális gépeket, vegyen fel egy új méretezési csoportot az elsődleges csomópont típusára úgy, hogy az elsődleges csomópont típusa most két méretezési csoporttal rendelkezik. A szükséges módosítások megjelenítéséhez minta- [sablon](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.json) és [Parameters](https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/nodetype-upgrade/Deploy-2NodeTypes-3ScaleSets.parameters.json) fájlok vannak megadva. Az új méretezési csoport virtuális gépei a standard szintű D4_V2 és a Windows Server 2016 Datacenter és a tárolók futtatása. Az új méretezési csoporttal új terheléselosztó és nyilvános IP-cím is hozzá lesz adva. 
+
+A sablonban található új méretezési csoport megkereséséhez keresse meg a vmNodeType2Name paraméter által megnevezett "Microsoft. számítási/virtualMachineScaleSets" erőforrást. Az új méretezési csoport hozzá lesz adva az elsődleges csomópont-típushoz a Properties->virtualMachineProfile->extensionProfile->Extensions->Properties->Settings->nodeTypeRef-beállítás használatával.
+
+### <a name="deploy-the-updated-template"></a>A frissített sablon üzembe helyezése
+
+Módosítsa a `parameterFilePath` és `templateFilePath` szükség szerint, majd futtassa a következő parancsot:
+
+```powershell
+# Deploy the new scale set into the primary node type along with a new load balancer and public IP
+$templateFilePath = "C:\Deploy-2NodeTypes-3ScaleSets.json"
+$parameterFilePath = "C:\Deploy-2NodeTypes-3ScaleSets.parameters.json"
+
+New-AzResourceGroupDeployment `
+    -ResourceGroupName $resourceGroupName `
+    -TemplateFile $templateFilePath `
+    -TemplateParameterFile $parameterFilePath `
+    -CertificateThumbprint $thumb `
+    -CertificateUrlValue $certUrlValue `
+    -SourceVaultValue $sourceVaultValue `
+    -Verbose
+```
+
+Az üzembe helyezés befejeztével Ellenőrizze újra a fürt állapotát, és győződjön meg arról, hogy az összes csomópont (az eredeti és az új méretezési csoporton) kifogástalan állapotú.
+
+```powershell
 Get-ServiceFabricClusterHealth
+```
 
+## <a name="migrate-nodes-to-the-new-scale-set"></a>Csomópontok migrálása az új méretezési csoportba
+
+Most már készen áll az eredeti méretezési csoport csomópontjainak letiltására. Mivel ezek a csomópontok le lesznek tiltva, a rendszerszolgáltatások és a vetőmag-csomópontok átkerülnek az új méretezési csoport virtuális gépei felé, mert az elsődleges csomópont-típusként is meg van jelölve.
+
+```powershell
 # Disable the nodes in the original scale set.
 $nodeNames = @("_NTvm1_0","_NTvm1_1","_NTvm1_2","_NTvm1_3","_NTvm1_4")
 
@@ -85,36 +168,36 @@ Write-Host "Disabling nodes..."
 foreach($name in $nodeNames){
     Disable-ServiceFabricNode -NodeName $name -Intent RemoveNode -Force
 }
+```
 
-Write-Host "Checking node status..."
-foreach($name in $nodeNames){
- 
-    $state = Get-ServiceFabricNode -NodeName $name 
+A Service Fabric Explorer segítségével figyelheti a magok áttelepítését az új méretezési csoportba, és az eredeti méretezési csoport csomópontjainak a *letiltott* állapotba való *letiltásának* folyamatát.
 
-    $loopTimeout = 50
+> [!NOTE]
+> Eltarthat egy ideig, amíg az eredeti méretezési csoport összes csomópontján el nem végzi a letiltási műveletet. Az adatkonzisztencia garantálása érdekében egyszerre csak egy mag-csomópont módosítható. Minden egyes mag-csomópont változásához szükség van egy fürt frissítésére; így a magok csomópontjának cseréje két fürt frissítését igényli (egyet a csomópontok hozzáadásához és eltávolításához). A példában szereplő öt mag-csomópont frissítése tíz fürt frissítését eredményezi.
 
-    do{
-        Start-Sleep 5
-        $loopTimeout -= 1
-        $state = Get-ServiceFabricNode -NodeName $name
-        Write-Host "$name state: " $state.NodeDeactivationInfo.Status
-    }
+## <a name="remove-the-original-scale-set"></a>Az eredeti méretezési csoport eltávolítása
 
-    while (($state.NodeDeactivationInfo.Status -ne "Completed") -and ($loopTimeout -ne 0))
-    
+A letiltási művelet befejezése után távolítsa el a méretezési csoportját.
 
-    if ($state.NodeStatus -ne [System.Fabric.Query.NodeStatus]::Disabled)
-    {
-        Write-Error "$name node deactivation failed with state" $state.NodeStatus
-        exit
-    }
-}
+```powershell
+# Remove the original scale set
+$scaleSetName = "NTvm1"
 
-# Remove the scale set
-$scaleSetName="NTvm1"
-Remove-AzVmss -ResourceGroupName $groupname -VMScaleSetName $scaleSetName -Force
+Remove-AzVmss `
+    -ResourceGroupName $resourceGroupName `
+    -VMScaleSetName $scaleSetName `
+    -Force
+
 Write-Host "Removed scale set $scaleSetName"
+```
 
+Service Fabric Explorer az eltávolított csomópontok (és így a *fürt állapota*) mostantól *hibás* állapotban jelennek meg.
+
+## <a name="remove-the-old-load-balancer-and-update-dns-settings"></a>A régi Load Balancer eltávolítása és a DNS-beállítások frissítése
+
+Most már eltávolíthatja a régi elsődleges csomópont-típushoz kapcsolódó erőforrásokat, a terheléselosztó és a régi nyilvános IP-címektől kezdve. 
+
+```powershell
 $lbname="LB-sfupgradetest-NTvm1"
 $oldPublicIpName="PublicIP-LB-FE-0"
 $newPublicIpName="PublicIP-LB-FE-2"
@@ -131,16 +214,28 @@ Remove-AzLoadBalancer -Name $lbname -ResourceGroupName $groupname -Force
 
 # Remove the old public IP
 Remove-AzPublicIpAddress -Name $oldPublicIpName -ResourceGroupName $groupname -Force
+```
 
+Ezután frissítjük az új nyilvános IP-cím DNS-beállításait a régi elsődleges csomópont típusú nyilvános IP-címek beállításainak tükrözéséhez.
+
+```powershell
 # Replace DNS settings of Public IP address related to new Primary Node Type with DNS settings of Public IP address related to old Primary Node Type
 $PublicIP = Get-AzPublicIpAddress -Name $newPublicIpName  -ResourceGroupName $groupname
 $PublicIP.DnsSettings.DomainNameLabel = $primaryDNSName
 $PublicIP.DnsSettings.Fqdn = $primaryDNSFqdn
 Set-AzPublicIpAddress -PublicIpAddress $PublicIP
+```
 
+További információ a fürt állapotáról
+
+```powershell
 # Check the cluster health
 Get-ServiceFabricClusterHealth
+```
 
+Végül távolítsa el az egyes kapcsolódó csomópontok csomópont-állapotát. Ha a régi méretezési csoport tartóssági szintje ezüst vagy arany, akkor ez automatikusan megtörténik.
+
+```powershell
 # Remove node state for the deleted nodes.
 foreach($name in $nodeNames){
     # Remove the node from the cluster
@@ -148,6 +243,8 @@ foreach($name in $nodeNames){
     Write-Host "Removed node state for node $name"
 }
 ```
+
+A fürt elsődleges csomópontjának típusa már frissítve lett. Ellenőrizze, hogy a telepített alkalmazások megfelelően működnek-e, és hogy a fürt állapota rendben van-e.
 
 ## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [adhat hozzá csomópont-típust fürthöz](virtual-machine-scale-set-scale-node-type-scale-out.md)

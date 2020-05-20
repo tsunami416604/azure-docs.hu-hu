@@ -6,14 +6,14 @@ ms.service: storage
 ms.topic: conceptual
 ms.author: normesta
 ms.reviewer: dineshm
-ms.date: 05/29/2019
+ms.date: 05/14/2020
 ms.subservice: blobs
-ms.openlocfilehash: 57ba59288cbf65c1ef588302965d480ee357ea4d
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 6a007525f8402bb163195b623173d665f9721bff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779977"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648502"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Statikus webhely üzemeltetése az Azure Storage-ban
 
@@ -50,24 +50,24 @@ A következő eszközök bármelyikével feltöltheti a tartalmakat a **$web** t
 
 ## <a name="viewing-content"></a>Tartalom megtekintése
 
-A felhasználók a webhely nyilvános URL-címének használatával tekinthetik meg a tartalmak böngészőből való megtekintését. Az URL-címet a Azure Portal, az Azure CLI vagy a PowerShell használatával keresheti meg. Ezt a táblázatot útmutatóként használhatja.
-
-|Eszköz| Útmutatás |
-|----|----|
-|**Azure Portal** | [A webhely URL-címének megkeresése a Azure Portal használatával](storage-blob-static-website-how-to.md#portal-find-url) |
-|**Azure CLI** | [A webhely URL-címének megkeresése az Azure CLI használatával](storage-blob-static-website-how-to.md#cli-find-url) |
-|**Azure PowerShell-modul** | [A webhely URL-címének megkeresése a PowerShell használatával](storage-blob-static-website-how-to.md#powershell-find-url) |
-
-A hely URL-címe tartalmaz egy regionális kódot. Például az URL- `https://contosoblobaccount.z22.web.core.windows.net/` cím regionális kódot `z22`tartalmaz.
-
-Habár a kódnak az URL-címben kell maradnia, csak belső használatra szolgál, és semmilyen más módon nem kell ezt a kódot használnia.
-
-A statikus webhelyek üzemeltetésének engedélyezésekor megadott index-dokumentum akkor jelenik meg, amikor a felhasználók megnyitják a helyet, és nem határoznak meg `https://contosoblobaccount.z22.web.core.windows.net`konkrét fájlt (például:).  
+A felhasználók a webhely nyilvános URL-címének használatával tekinthetik meg a tartalmak böngészőből való megtekintését. Az URL-címet a Azure Portal, az Azure CLI vagy a PowerShell használatával keresheti meg. Tekintse [meg a webhely URL-címét](storage-blob-static-website-how-to.md#portal-find-url).
 
 Ha a kiszolgáló 404 hibát ad vissza, és nem adott meg hibaüzenetet a webhely engedélyezésekor, akkor a rendszer az alapértelmezett 404 lapot adja vissza a felhasználónak.
 
 > [!NOTE]
 > A statikus webhely nem támogatja a [CORS](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) .
+
+### <a name="regional-codes"></a>Regionális kódok
+
+A hely URL-címe tartalmaz egy regionális kódot. Például az URL-cím `https://contosoblobaccount.z22.web.core.windows.net/` regionális kódot tartalmaz `z22` .
+
+Habár a kódnak az URL-címben kell maradnia, csak belső használatra szolgál, és semmilyen más módon nem kell ezt a kódot használnia.
+
+A statikus webhelyek üzemeltetésének engedélyezésekor megadott index-dokumentum akkor jelenik meg, amikor a felhasználók megnyitják a helyet, és nem határoznak meg konkrét fájlt (például: `https://contosoblobaccount.z22.web.core.windows.net` ).  
+
+### <a name="secondary-endpoints"></a>Másodlagos végpontok
+
+Ha [a redundanciát egy másodlagos régióban](../common/storage-redundancy.md#redundancy-in-a-secondary-region)állítja be, akkor a webhely tartalmát másodlagos végpont használatával is elérheti. Mivel az adatreplikációt a másodlagos régiókba aszinkron módon replikálja a rendszer, a másodlagos végponton elérhető fájlok nem mindig szinkronban vannak az elsődleges végponton elérhető fájlokkal. 
 
 ## <a name="impact-of-the-setting-the-public-access-level-of-the-web-container"></a>A webes tároló nyilvános hozzáférési szintjének beállításának hatása
 
@@ -79,9 +79,9 @@ Az alábbi képernyőfelvételen a Azure Portal nyilvános hozzáférési szintj
 
 Noha a rendszer nem érinti az elsődleges statikus webhely végpontját, a nyilvános hozzáférési szint módosítása hatással van az elsődleges blob Service-végpontra.
 
-Ha például módosítja a **$web** tároló nyilvános hozzáférési szintjét **(nincs névtelen hozzáférés)** a **blobhoz (névtelen olvasási hozzáférés csak Blobok esetén)**, akkor az elsődleges statikus webhely végpontjának `https://contosoblobaccount.z22.web.core.windows.net/index.html` való nyilvános hozzáférés szintje nem változik.
+Ha például módosítja a **$web** tároló nyilvános hozzáférési szintjét **(nincs névtelen hozzáférés)** a **blobhoz (névtelen olvasási hozzáférés csak Blobok esetén)**, akkor az elsődleges statikus webhely végpontjának való nyilvános hozzáférés szintje `https://contosoblobaccount.z22.web.core.windows.net/index.html` nem változik.
 
-Az elsődleges blob Service-végponthoz `https://contosoblobaccount.blob.core.windows.net/$web/index.html` való nyilvános hozzáférés azonban magánjellegűről nyilvánosra változik. Most a felhasználók megnyithatja a fájlt a két végpont egyikével.
+Az elsődleges blob Service-végponthoz való nyilvános hozzáférés azonban `https://contosoblobaccount.blob.core.windows.net/$web/index.html` magánjellegűről nyilvánosra változik. Most a felhasználók megnyithatja a fájlt a két végpont egyikével.
 
 ## <a name="mapping-a-custom-domain-to-a-static-website-url"></a>Egyéni tartomány leképezése statikus webhely URL-címére
 

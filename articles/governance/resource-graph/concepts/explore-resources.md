@@ -1,14 +1,14 @@
 ---
 title: Az Azure-erőforrások áttekintése
 description: Ismerje meg, hogyan használhatja az erőforrás-diagram lekérdezési nyelvét, és hogyan derítheti fel, hogyan kapcsolódnak egymáshoz.
-ms.date: 10/18/2019
+ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0c191915b8c558d80ffef554ef758a35157e035c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33bf457a57f7e62b9c99471bcb7676f62046f61d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76156981"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654485"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Az Azure-erőforrások felfedezése a Resource Graph használatával
 
@@ -37,7 +37,7 @@ Search-AzGraph -Query "Resources | where type =~ 'Microsoft.Compute/virtualMachi
 ```
 
 > [!NOTE]
-> A Azure PowerShell `Search-AzGraph` parancsmag alapértelmezés szerint egy **pscustomobject formájában kapja** ad vissza. Ahhoz, hogy a kimenet ugyanúgy nézzen ki, mint amit az Azure CLI ad vissza `ConvertTo-Json` , a rendszer a parancsmagot használja. A **mélység** alapértelmezett értéke _2_. A _100_ értékre állításával az összes visszaadott szintet át kell alakítani.
+> A Azure PowerShell `Search-AzGraph` parancsmag alapértelmezés szerint egy **pscustomobject formájában kapja** ad vissza. Ahhoz, hogy a kimenet ugyanúgy nézzen ki, mint amit az Azure CLI ad vissza, a `ConvertTo-Json` rendszer a parancsmagot használja. A **mélység** alapértelmezett értéke _2_. A _100_ értékre állításával az összes visszaadott szintet át kell alakítani.
 
 A JSON-eredmények a következő példához hasonló módon vannak strukturálva:
 

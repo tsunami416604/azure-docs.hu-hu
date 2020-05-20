@@ -11,21 +11,23 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/16/2020
+ms.date: 05/12/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: e70eedcfcdf548965b79e4a48a3a8bfa643f0396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687434"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660560"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Oracle Application Solutions Microsoft Azure és Oracle Cloud Infrastructure integrációja
 
 A Microsoft és az Oracle partneri kapcsolatban állt a kis késleltetésű, nagy átviteli sebességű, Felhőbeli kapcsolattal, így kihasználhatja mindkét felhő közül a legjobbat. 
 
 Ezzel a Felhőbeli kapcsolattal particionálhat többrétegű alkalmazást az adatbázis rétegének az Oracle Cloud Infrastructure (OCI) szolgáltatásban való futtatásához, valamint az alkalmazáshoz és a Microsoft Azure egyéb szintjeihez is. Az élmény hasonló a teljes megoldási verem egyetlen felhőben való futtatásához. 
+
+Ha szeretné futtatni a middleware-t, beleértve a WebLogic-kiszolgálót, az Azure-infrastruktúrán, de az Oracle-adatbázist a OCI-en belül futtatja, tekintse meg a [Weblogic Server Azure-alkalmazások](oracle-weblogic.md)című részt.
 
 Ha az Oracle-megoldások teljes egészében Azure-infrastruktúrán való üzembe helyezését érdekli, tekintse meg az [Oracle virtuálisgép-rendszerképek és azok üzembe helyezése Microsoft Azure](oracle-vm-solutions.md).
 
@@ -44,18 +46,18 @@ A több felhőalapú konfigurációban futtatható alkalmazások a következők:
 * Oracle kereskedelmi alkalmazások
 * Oracle Hyperion pénzügyi felügyelet
 
-A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mutatja be. Az egyszerűség kedvéért a diagram csak az alkalmazási szintet és az adatszinteket jeleníti meg. Az alkalmazás-architektúrától függően a megoldás további csomagokat is tartalmazhat, például egy webes réteget az Azure-ban. További információt a következő részekben talál.
+A következő ábra a csatlakoztatott megoldás magas szintű áttekintését mutatja be. Az egyszerűség kedvéért a diagram csak az alkalmazási szintet és az adatszinteket jeleníti meg. Az alkalmazás-architektúrától függően a megoldás további csomagokat is tartalmazhat, például egy WebLogic-fürtöt vagy webes réteget az Azure-ban. További információt a következő részekben talál.
 
 ![Az Azure OCI-megoldás áttekintése](media/oracle-oci-overview/crosscloud.png)
 
 ## <a name="region-availability"></a>Régió elérhetősége 
 
 A Felhőbeli kapcsolat a következő régiókra korlátozódik:
-* Azure USA keleti régiója (eastus) & OCI Ashburn (USA keleti régiója)
-* Azure Egyesült Királyság déli régiója (uksouth) & OCI London (Egyesült Királyság déli régiója)
-* Azure Canada Central (canadacentral) & OCI Toronto (Délkelet-Kanada)
-* Azure West Europe (westeurope) & OCI Amsterdam (Hollandia északnyugati régiója)
-* Azure Kelet-Japán (japaneast) & OCI Tokyo (Kelet-Japán)
+* Azure USA keleti régiója (EastUS) & OCI Ashburn, VA (USA keleti régiója)
+* Azure Egyesült Királyság déli régiója (UKSouth) & OCI London (Egyesült Királyság déli régiója)
+* Azure Canada Central (CanadaCentral) & OCI Toronto (Délkelet-Kanada)
+* Azure West Europe (WestEurope) & OCI Amsterdam (Hollandia északnyugati régiója)
+* Azure Kelet-Japán (JapanEast) & OCI Tokyo (Kelet-Japán)
 
 ## <a name="networking"></a>Hálózat
 
@@ -70,10 +72,12 @@ A ExpressRoute és a FastConnect használatával az ügyfelek az Azure-beli virt
 A hálózati biztonság a vállalati alkalmazások egyik kulcsfontosságú összetevője, amely a több felhőalapú megoldás központi eleme. A ExpressRoute és a FastConnect feletti forgalom egy magánhálózaton halad át. Ez a konfiguráció lehetővé teszi az Azure-beli virtuális hálózatok és az Oracle-alapú virtuális felhőalapú hálózatok közötti biztonságos kommunikációt. Nem kell megadnia nyilvános IP-címet az Azure-beli virtuális gépekhez. Ehhez hasonlóan nincs szüksége Internet-átjáróra a OCI-ben. Minden kommunikáció a gépek magánhálózati IP-címén keresztül történik.
 
 Emellett [biztonsági listát](https://docs.cloud.oracle.com/iaas/Content/Network/Concepts/securitylists.htm) is BEÁLLÍTHAT a OCI virtuális felhőalapú hálózati és biztonsági szabályaihoz (az Azure [hálózati biztonsági csoportjaihoz](../../../virtual-network/security-overview.md)csatolva). Ezekkel a szabályokkal szabályozhatja a virtuális hálózatokban lévő gépek közötti forgalmat. A hálózati biztonsági szabályok a gép szintjén, az alhálózat szintjén és a virtuális hálózat szintjén is hozzáadhatók.
+
+A [Weblogic Server Azure-alkalmazások](oracle-weblogic.md) mindegyike létrehoz egy hálózati biztonsági csoportot előre konfigurálva, hogy együttműködjön a Weblogic-kiszolgáló portjának konfigurációjáról.
  
 ## <a name="identity"></a>Identitás
 
-Az identitás a Microsoft és az Oracle közötti partnerség egyik legfontosabb pillére. Jelentős munka történt az [Oracle Identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) [Azure Active Directory](../../../active-directory/index.yml) (Azure ad) szolgáltatással való integrálásához. Az Azure AD a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Segítségével a felhasználók bejelentkezhetnek, és különböző erőforrásokhoz férhetnek hozzá. Az Azure AD lehetővé teszi a felhasználók és az engedélyeik kezelését is.
+Az identitás a Microsoft és az Oracle közötti partnerség egyik legfontosabb pillére. Jelentős munka történt az [Oracle Identity Cloud Service](https://docs.oracle.com/en/cloud/paas/identity-cloud/index.html) (IDCS) [Azure Active Directory](../../../active-directory/index.yml) (Azure ad) szolgáltatással való integrálásához. Az Azure AD a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. A felhasználók bejelentkezhetnek, és hozzáférhetnek a különböző erőforrásokhoz az Azure AD súgójának használatával. Az Azure AD lehetővé teszi a felhasználók és az engedélyeik kezelését is.
 
 Jelenleg ez az integráció lehetővé teszi, hogy egyetlen központi helyen kezelje a Azure Active Directory. Az Azure AD szinkronizálja a címtárban bekövetkezett változásokat a megfelelő Oracle-címtárral, és az egyszeri bejelentkezést használja a felhőalapú Oracle-megoldásokhoz.
 

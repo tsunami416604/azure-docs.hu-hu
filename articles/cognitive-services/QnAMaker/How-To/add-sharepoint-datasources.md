@@ -3,12 +3,12 @@ title: SharePoint-fájlok – QnA Maker
 description: Biztonságos SharePoint-adatforrásokat adhat hozzá a tudásbázishoz, hogy a tudásbázist a Active Directory által védett kérdésekkel és válaszokkal gazdagítsa.
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 6f05079e39c8afb001bd4ba09d68f435c18efad5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 93f17e79834b412ce0babf220ba13649ae07718c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80294881"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660312"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>Biztonságos SharePoint-adatforrás hozzáadása a tudásbázishoz
 
@@ -27,12 +27,12 @@ Ha a QnA Maker Tudásbázis-kezelő nem a Active Directory Manager, akkor a foly
 
 A SharePoint-webhelyekről minden QnA Maker által támogatott [fájltípust](../Concepts/content-types.md) hozzáadhat a tudásbázishoz. Előfordulhat, hogy [engedélyeket](#permissions) kell megadnia, ha a fájl erőforrása védett.
 
-1. A könyvtár és a SharePoint-webhely között válassza ki a fájl három pont menüjét `...`.
+1. A könyvtár és a SharePoint-webhely között válassza ki a fájl három pont menüjét `...` .
 1. Másolja a fájl URL-címét.
 
    ![A SharePoint-fájl URL-címének lekéréséhez válassza ki a fájl három pont menüjét, majd másolja az URL-címet.](../media/add-sharepoint-datasources/get-sharepoint-file-url.png)
 
-1. A QnA Maker portál **Beállítások** lapján [adja hozzá az URL-címet](manage-knowledge-bases.md#edit-knowledge-base) a tudásbázishoz.
+1. A QnA Maker portál **Beállítások** lapján adja hozzá az URL-címet a tudásbázishoz.
 
 ### <a name="images-with-sharepoint-files"></a>Képek SharePoint-fájlokkal
 
@@ -44,7 +44,7 @@ Adja hozzá a képet a következő Markdown szintaxissal:
 ![Explanation or description of image](URL of public image)
 ```
 
-A szögletes zárójelben `[]`lévő szöveg, amely ismerteti a képet. A zárójelben `()`lévő URL-cím a közvetlen hivatkozás a képre.
+A szögletes zárójelben lévő szöveg, amely `[]` ismerteti a képet. A zárójelben lévő URL-cím a `()` közvetlen hivatkozás a képre.
 
 Ha teszteli a QnA pár az interaktív teszt panelen, a QnA Maker portálon megjelenik a rendszerkép a Markdown szövege helyett. Ez ellenőrzi, hogy a rendszerkép nyilvánosan lekérhető-e az ügyfél-alkalmazásból.
 
@@ -113,7 +113,7 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. A Active Directory Manager bejelentkezik a Azure Portalba, és megnyitja a **[vállalati alkalmazásokat](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps)**.
 
-1. Keresse meg `QnAMakerPortalSharePoint` a válassza ki a QnA Maker alkalmazást.
+1. Keresse meg a `QnAMakerPortalSharePoint` válassza ki a QnA Maker alkalmazást.
 
     [![QnAMakerPortalSharePoint keresése a vállalati alkalmazások listájában](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 

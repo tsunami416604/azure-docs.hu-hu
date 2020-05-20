@@ -1,22 +1,22 @@
 ---
 title: A Azure Stream Analytics időközbeni kezelési értelmezése
-description: Megtudhatja, hogyan működik az idő a kezelés Azure Stream Analyticsban, mint például a legjobb kezdési idő kiválasztása, a késői és korai események kezelése, valamint az időkezelési mérőszámok.
+description: Megtudhatja, hogyan választhatja ki a legjobb kezdési időt, kezelheti a késői és korai eseményeket, valamint a Azure Stream Analytics időközbeni kezelési mérőszámait.
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 03/05/2018
-ms.openlocfilehash: 55537fb923b26de4e02be35fdb817dee147584d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.openlocfilehash: 0830a8b552283b5b39fa78c505ed177d1959989f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81115121"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83640038"
 ---
 # <a name="understand-time-handling-in-azure-stream-analytics"></a>A Azure Stream Analytics időközbeni kezelési értelmezése
 
-Ebben a cikkben azt mutatjuk be, hogyan lehet tervezési döntéseket hozni a gyakorlati idő kezelésére a Azure Stream Analytics szolgáltatásban. Az időigényes tervezési döntések szorosan kapcsolódnak az események rendezési tényezőinek.
+Ebből a cikkből megtudhatja, hogyan alakíthat ki tervezési döntéseket a Azure Stream Analytics feladatok során felmerülő gyakorlati problémák megoldásához. Az időigényes tervezési döntések szorosan kapcsolódnak az események rendezési tényezőinek.
 
 ## <a name="background-time-concepts"></a>Háttérbeli időbeli fogalmak
 
@@ -28,75 +28,77 @@ A vitafórum jobb megjelenítéséhez hozzon létre néhány háttér-fogalmat:
 
 - **Vízjel**: egy esemény időjelölője, amely azt jelzi, hogy a rendszer milyen eseményeket ingressed a streaming processzornak. A vízjelek lehetővé teszik, hogy a rendszer egyértelmű előrehaladást jelezzen az események betöltéséhez. A streamek jellegéből adódóan a bejövő esemény adatai soha nem állnak le, így a vízjelek jelzik, hogy az adatfolyam egy bizonyos pontjára mutat.
 
-   A vízjel fogalma fontos. A vízjelek lehetővé teszik a Stream Analytics annak meghatározását, hogy a rendszer mikor hozhat létre teljes, helyes és ismételhető eredményeket, amelyeket nem kell visszavonni. A feldolgozás a kiszámítható és megismételhető garantált módon valósítható meg. Ha például egy bizonyos hibakezelés feltételéhez újra kell számolni, a vízjelek biztonságos kezdési és befejezési pontok.
+   A vízjel fogalma fontos. A vízjelek lehetővé teszik a Stream Analytics annak meghatározását, hogy a rendszer mikor hozhat létre teljes, helyes és ismételhető eredményeket, amelyeket nem kell visszavonni. A feldolgozás kiszámítható és ismételhető módon végezhető el. Ha például egy bizonyos hibakezelés feltételéhez újra kell számolni, a vízjelek biztonságos kezdési és befejezési pontok.
 
-A témához tartozó további forrásokért lásd: Tyler Akidau blog-bejegyzéseinek [streaming 101](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101) és [streaming 102](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102).
+A témával kapcsolatos további forrásokért lásd: Tyler Akidau blog-bejegyzéseinek [streaming 101](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-101) és [streaming 102](https://www.oreilly.com/ideas/the-world-beyond-batch-streaming-102).
 
-## <a name="choosing-the-best-starting-time"></a>A legjobb kezdési idő kiválasztása
+## <a name="choose-the-best-starting-time"></a>A legjobb kezdési időpont kiválasztása
 
-Stream Analytics két lehetőséget biztosít a felhasználóknak a kiválogatási esemény időpontjára:
+Stream Analytics két lehetőséget biztosít a felhasználóknak az események kiválasztására: a megérkezési időt és az alkalmazás időpontját.
 
-1. **Érkezés időpontja**  
+### <a name="arrival-time"></a>Érkezés időpontja
 
-   Ha az esemény eléri a forrást, az érkezési idő a bemeneti forráshoz van rendelve. Az érkezési időt a **EventEnqueuedUtcTime** tulajdonsággal érheti el Event Hubs bemenetek, a **IoTHub. EnqueuedTime** tulajdonsága IoT hubhoz, és a **BlobProperties. LastModified** tulajdonság használata a blob-bevitelhez.
+Ha az esemény eléri a forrást, az érkezési idő a bemeneti forráshoz van rendelve. Az érkezési időt a **EventEnqueuedUtcTime** tulajdonsággal érheti el Event Hubs bemenetre, a IoT hub bemenethez tartozó **IoTHub. EnqueuedTime** tulajdonságot, valamint a blob bemenet **BlobProperties. LastModified** tulajdonságát.
 
-   Az érkezési idő használata az alapértelmezett viselkedés, és az adatarchiválási forgatókönyvekhez legjobban használható, ahol nincs szükség időbeli logikára.
+A rendszer alapértelmezés szerint használja az érkezési időt, és a legjobban olyan adatarchiválási forgatókönyvekhez használható, ahol nincs szükség időbeli logikára.
 
-2. **Alkalmazás időpontja** (más néven esemény időpontja)
+### <a name="application-time-also-named-event-time"></a>Alkalmazás időpontja (más néven esemény időpontja)
 
-   A rendszer az esemény létrehozásakor rendeli hozzá az alkalmazási időt, és az esemény hasznos adatának részét képezi. Az események alkalmazási idő szerinti feldolgozásához használja a Select lekérdezés **timestamp by** záradékát. Ha a **timestamp by** záradék hiányzik, az események az érkezési idő szerint lesznek feldolgozva.
+A rendszer az esemény létrehozásakor rendeli hozzá az alkalmazási időt, és az esemény hasznos adatának részét képezi. Az események alkalmazási idő szerinti feldolgozásához használja a SELECT lekérdezés **timestamp by** záradékát. Ha a **timestamp by** hiányzik, az események az érkezési idő szerint lesznek feldolgozva.
 
-   Fontos, hogy egy időbélyeget használjon a hasznos adatokhoz, amikor időbeli logikát vesznek fel. Így a rendszer a forrásrendszer vagy a hálózat késéseit is figyelembe veheti.
+Fontos, hogy a tartalom időbélyegét használja, amikor időbeli logikát vesznek fel a forrásrendszer vagy a hálózat késései miatt. Az eseményekhez rendelt idő a rendszeren érhető el [. IDŐBÉLYEG](https://docs.microsoft.com/stream-analytics-query/system-timestamp-stream-analytics).
 
 ## <a name="how-time-progresses-in-azure-stream-analytics"></a>A Azure Stream Analytics folyamatának időpontja
 
-Az alkalmazás időpontjának használatakor az idő előrehaladtával a bejövő eseményektől függ. Az adatfolyam-feldolgozó rendszer számára nehéz megállapítani, hogy nincsenek-e események, vagy ha az események késleltetve vannak. Ezért Azure Stream Analytics heurisztikus vízjeleket generál a következő módokon az egyes bemeneti partíciók esetében:
+Az alkalmazás időpontjának használatakor az idő előrehaladtával a bejövő események alapján történik. Az adatfolyam-feldolgozó rendszer számára nehéz megállapítani, hogy nincsenek-e események, vagy ha az események késleltetve vannak. Ezért Azure Stream Analytics heurisztikus vízjeleket generál a következő módokon az egyes bemeneti partíciók esetében:
 
-1. Ha bármilyen bejövő esemény van, akkor a vízjel az a legnagyobb esemény, ameddig a rendszer eddig levonva a megrendelésen kívüli tolerancia ablak méretét.
+* Ha bármilyen bejövő esemény van, akkor a vízjelek a legnagyobb esemény időpontja, Stream Analytics eddig levonva a sorrendi tűréshatárok ablakának méretét.
 
-2. Ha nincs beérkező esemény, a vízjel a jelenlegi becsült beérkezési idő (a jelenetek virtuális gép mögött eltelt idő, amely az eseményeket az utolsó alkalommal egy bemeneti eseménynek tekinti, valamint a bemeneti esemény érkezési idejét) mínusz a késői érkezési tolerancia ablak.
+* Ha nincs beérkező esemény, a vízjel a jelenlegi becsült érkezési idő mínusz a késői érkezési tolerancia ablaka. A becsült érkezési idő az az idő, amely az utolsó alkalommal egy bemeneti eseményt észlelt, valamint a bemeneti esemény érkezési idejét.
 
-   Az érkezési időt csak a becsült érték alapján lehet megbecsülni, mert a valós idejű beérkezési idő a bemeneti esemény-közvetítőn, például a Event Hubs, nem pedig az eseményeket feldolgozó Azure Stream Analytics virtuális gép.
+   Az érkezési idő csak becsült érték, mert a valós idejű érkezési idő a bemeneti esemény-közvetítőn, például a Event Hubs, illetve az eseményeket feldolgozó Azure Stream Analytics virtuális gépen jön létre.
 
-A kialakítás két további célt szolgál a vízjelek generálásán kívül:
+A kialakítás két további célt szolgál a vízjelek generálásához képest:
 
 1. A rendszer időben hozza létre az eredményeket a bejövő események vagy azok nélkül.
 
    Megadhatja, hogy milyen időben szeretné megjeleníteni a kimenet eredményét. A Azure Portal a Stream Analytics feladatokhoz tartozó **esemény rendezése** lapon beállíthatja a nem **megrendelési események** beállítást. Ha beállítja ezt a beállítást, vegye figyelembe az időkorlátot az esemény-adatfolyamon kívüli megrendelési események tűréshatárával.
 
-   A késői beérkezési tolerancia ablak fontos a vízjelek létrehozásában, még a bejövő események hiányában is. Időnként előfordulhat, hogy egy olyan időszak van, amelyben nem érkeznek bejövő események, például ha egy esemény bemeneti adatfolyama ritka. Ezt a problémát súlyosbítja több partíció használata a bemeneti esemény-átvitelszervezőben.
+   A késői beérkezési tolerancia ablak szükséges a vízjelek létrehozásához, még a bejövő események hiányában is. Időnként előfordulhat, hogy egy olyan időszak, amelyben nem érkeznek bejövő események, például ha egy esemény bemeneti adatfolyama ritka. Ezt a problémát súlyosbítja több partíció használata a bemeneti esemény-átvitelszervezőben.
 
    A késői beérkezési tolerancia nélküli adatfolyam-feldolgozási rendszerek késleltetett kimenetekkel rendelkezhetnek, ha a bemeneti adatok ritkaak, és több partíciót használnak.
 
 2. A rendszerviselkedésnek ismételhetőnek kell lennie. Az ismételhetőség a streaming adatfeldolgozó rendszer fontos tulajdonsága.
 
-   A vízjel az érkezési idő és az alkalmazás időpontjából származik. Mindkettő megmarad az Event brokerben, így ismételhető. Abban az esetben, ha az érkezési időt az események hiánya miatt kell megbecsülni, Azure Stream Analytics a naplók a Visszajátszási idő becsült megérkezési idejét a sikertelen helyreállítás érdekében.
+   A vízjel az érkezési idő és az alkalmazás időpontjából származik. Mindkettő megmarad az Event brokerben, így ismételhető. Ha az események hiánya miatt megbecsülik az érkezési időt, Azure Stream Analytics a naplók a visszajátszáskor várhatóan megismételhető időt a sikertelen helyreállítás során.
 
-Figyelje meg, hogy amikor az esemény időpontjában az **érkezési időt** választja, nem kell konfigurálnia a megrendelésen kívüli toleranciát és a késői érkezési toleranciát. Mivel az **érkezési idő** garantált, hogy a bemeneti monoton módon egyre növekszik, Azure stream Analytics egyszerűen figyelmen kívül hagyja a konfigurációkat.
+Ha úgy dönt, hogy az esemény időpontjának megfelelően használja az **érkezési időt** , nem kell konfigurálnia a megrendelésen kívüli toleranciát és a késői beérkezés tűréshatárát. Mivel az **érkezési idő** garantáltan növekszik a bemeneti esemény-átvitelszervezőben, Azure stream Analytics egyszerűen figyelmen kívül hagyja a konfigurációkat.
 
 ## <a name="late-arriving-events"></a>Későn érkező események
 
 A késői érkezési tolerancia ablakának definíciója szerint minden bejövő eseménynél Azure Stream Analytics összehasonlítja az **esemény időpontját** az **érkezési idővel**. Ha az esemény időpontja kívül esik a tolerancia ablakon, beállíthatja, hogy a rendszer eldobja az eseményt, vagy állítsa be az esemény időpontját a tűréshatáron belülre.
 
-Vegye figyelembe, hogy a küszöbértékek generálása után a szolgáltatás képes lehet olyan eseményeket fogadni, amelyekben az esemény ideje alacsonyabb a vízjelnél. Beállíthatja, hogy a szolgáltatás **eldobja** ezeket az eseményeket, vagy **állítsa be** az esemény időpontját a vízjel értékre.
+A küszöbértékek generálása után a szolgáltatás olyan eseményeket fogadhat, amelyekben a vízjelnél kisebb esemény van. Beállíthatja, hogy a szolgáltatás **eldobja** ezeket az eseményeket, vagy **állítsa be** az esemény időpontját a vízjel értékre.
 
-A beállítás részeként az esemény **System. timestamp** beállítása az új értékre van állítva, de maga az **esemény** időmezője nem módosul. Ez a beállítás az egyetlen olyan helyzet, amikor az esemény **System. időbélyega** eltérő lehet az esemény időmezőjében szereplő értéktől, és váratlan eredményeket eredményezhet.
+A beállítás részeként az esemény **System. timestamp** beállítása az új értékre van állítva, de maga az **esemény** időmezője nem módosul. Ez a beállítás az egyetlen olyan helyzet, amikor az esemény **System. időbélyega** eltérő lehet az esemény időmezőjében szereplő értéktől, és nem várt eredményeket eredményez.
 
-## <a name="handling-time-variation-with-substreams"></a>Az idő variációja alstreamekkel
+## <a name="handle-time-variation-with-substreams"></a>Az idő variációjának kezelése alstreamekkel
 
-Az itt leírt heurisztikus vízjel-létrehozási mechanizmus jól működik a legtöbb esetben, amikor az idő többnyire szinkronizálva van a különböző esemény-küldők között. A valós életben azonban különösen sok IoT forgatókönyv esetén a rendszer kis mértékben szabályozza az esemény-küldők óráját. Az esemény-küldők a mezőben lévő összes típusú eszköz lehetnek, például a hardver és a szoftver különböző verzióiban.
+A leírtak szerint a heurisztikus vízjel létrehozási mechanizmusa jól működik a legtöbb esetben, amikor az idő többnyire szinkronizálva van a különböző esemény-küldők között. A valós életben azonban különösen sok IoT forgatókönyv esetén a rendszer kis mértékben szabályozza az esemény-küldők óráját. Az esemény-küldők a mezőben lévő összes típusú eszköz lehetnek, például a hardver és a szoftver különböző verzióiban.
 
-Ahelyett, hogy a vízjel globálisan a bemeneti partíció összes eseményére felhasználja a küszöbértéket, Stream Analytics az alstreamek nevű másik mechanizmussal segíti Önt. A feladatban alstreameket is használhat, ha olyan feladatot tartalmazó lekérdezést ír, amely a [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) záradékot és **a kulcsszót**használja. Az ALStream kijelöléséhez adjon meg egy kulcs oszlopnevet az **over** kulcsszó után, például a `deviceid`, hogy a rendszer az adott oszlop alapján alkalmazza az időszabályzatokat. Mindegyik ALStream saját független vízjelet kap. Ez a mechanizmus hasznos lehet az időigényes kimenet létrehozásához, amikor nagy órajel-eltéréseket vagy hálózati késéseket tapasztal az események küldői között.
+Ahelyett, hogy egy bemeneti partíció összes eseményének globális vízjelét kellene használnia, Stream Analytics rendelkezik egy **ALStream**nevű másik mechanizmussal. A feladatban alstreameket is használhat, ha olyan feladatot tartalmazó lekérdezést ír, amely a [**timestamp by**](/stream-analytics-query/timestamp-by-azure-stream-analytics) záradékot és **a kulcsszót**használja. Az ALStream kijelöléséhez adjon meg egy kulcs oszlopnevet az **over** kulcsszó után, például a, hogy a `deviceid` rendszer az adott oszlop alapján alkalmazza az időszabályzatokat. Mindegyik ALStream saját független vízjelet kap. Ez a mechanizmus hasznos lehet az időigényes kimenet létrehozásához, amikor nagy órajel-eltéréseket vagy hálózati késéseket tapasztal az események küldői között.
 
-Az alstreamek Azure Stream Analytics által biztosított egyedi megoldás, amelyet más adatfolyam-feldolgozási rendszerek nem kínálnak. A Stream Analytics a késői beérkezés tolerancia ablakát alkalmazza a bejövő eseményekre, amikor alstreamek vannak használatban. Az alapértelmezett beállítás (5 másodperc) valószínűleg túl kicsi az eltérő időbélyegzővel rendelkező eszközök esetében. Javasoljuk, hogy 5 percen belül kezdjen el, és végezze el a módosításokat az eszköz órájának döntési mintája alapján.
+Az alstreamek Azure Stream Analytics által biztosított egyedi megoldás, amelyet más adatfolyam-feldolgozási rendszerek nem kínálnak.
+
+Alstreamek használatakor a Stream Analytics a késői beérkezés tolerancia ablakát alkalmazza a bejövő eseményekre. A késői beérkezés tűréshatára határozza meg azt a maximális mennyiséget, amellyel a különböző alstreamek egymástól eltérőek lehetnek. Ha például az 1. eszköz az 1. időbélyegzőn, a 2. eszköz pedig a 2. időbélyegzőn, akkor a legfeljebb késői megérkezési tűréshatár az időbélyeg 2 mínusz időbélyeg 1. Az alapértelmezett beállítás 5 másodperc, és valószínűleg túl kicsi az olyan eszközök esetében, amelyek eltérő időbélyegzővel rendelkeznek. Javasoljuk, hogy 5 percen belül kezdjen el, és végezze el a módosításokat az eszköz órájának döntési mintája szerint.
 
 ## <a name="early-arriving-events"></a>Korán érkező események
 
-Előfordulhat, hogy észrevette egy másik, korai érkezési időszakra vonatkozó fogalmat, amely a késői érkezési tolerancia ablakának ellenkezőjére hasonlít. Ez az ablak 5 percen belül megoldódott, és egy másik célt szolgál a késői érkezéstől kezdve.
+Előfordulhat, hogy észrevette egy másik, korai érkezési időszakra vonatkozó fogalmat, amely a késői érkezési tolerancia ablakának ellenkezőjére hasonlít. Ez az ablak 5 percen belül megoldódott, és a késői érkezési tolerancia ablaktól eltérő célt szolgál.
 
-Mivel Azure Stream Analytics garantálja, hogy mindig a teljes eredményt hozza létre, csak a feladathoz tartozó első kimeneti **időpontot adhatja meg,** nem pedig a bemeneti időpontot. A befejezési idő megadása kötelező, hogy a teljes ablak feldolgozása megtörténjen, nem csupán az ablak közepétől.
+Mivel Azure Stream Analytics garantálja a teljes eredményeket, csak a feladathoz tartozó első kimeneti **időpontot adhatja meg,** nem pedig a bemeneti időpontot. A befejezési idő megadása kötelező, hogy a teljes ablak feldolgozása megtörténjen, nem csupán az ablak közepétől.
 
-Stream Analytics ezután a lekérdezési specifikációból származtatja a kezdési időt. Mivel azonban a bemeneti események közvetítőjét csak az érkezési idő indexeli, a rendszernek le kell fordítania a kezdési esemény időpontját az érkezési időre. A rendszer megkezdheti az események feldolgozását az adott pontról a bemeneti esemény-átvitelszervezőben. A korai érkezési időszakra vonatkozó korláttal a fordítás egyszerű. Ez a kezdő esemény időpontja mínusz az 5 perces korán érkező ablak. Ez a számítás azt is jelenti, hogy a rendszer minden olyan eseményt elveszít, amely 5 percet vesz igénybe az ealier, mint az érkezési időpontnál.
+Stream Analytics a lekérdezési specifikációból származtatja a kezdési időt. Mivel azonban a bemeneti események közvetítőjét csak az érkezési idő indexeli, a rendszernek le kell fordítania a kezdési esemény időpontját az érkezési időre. A rendszer megkezdheti az események feldolgozását az adott pontról a bemeneti esemény-átvitelszervezőben. A korai érkezési időszakra vonatkozó korláttal a fordítás egyszerű: az esemény időpontjának megkezdése mínusz az 5 perces korán érkező ablak. Ez a számítás azt is jelenti, hogy a rendszer minden olyan eseményt elveszít, amely 5 perccel az érkezési időpontnál korábbi. Az események eldobásakor a [korai bemeneti események mérőszáma](stream-analytics-monitoring.md) növekszik.
 
 Ez a koncepció annak biztosítására szolgál, hogy a feldolgozás megismételhető legyen, függetlenül attól, hogy hol kezdi a kimenetet. Ilyen mechanizmus nélkül nem lehet garantálni az ismételhetőséget, hiszen számos más streaming-rendszer is igénybe veszik.
 
@@ -122,13 +124,13 @@ Stream Analytics feladatok több **rendezési** lehetőséggel rendelkeznek. A k
 
 5. A **System. timestamp** érték eltér az **esemény időpontja** mezőben megadott időponttól.
 
-   Az előzőekben leírtaknak megfelelően a rendszer a megrendelésen kívüli tolerancia vagy a késői beérkezés tűréshatára alapján állítja be az esemény időpontját. Az esemény **System. timestamp** értéke módosítva van, de nem az **esemény időpontja** mező.
+   Az előzőekben leírtaknak megfelelően a rendszer a megrendelésen kívüli tolerancia vagy a késői beérkezés tűréshatára alapján állítja be az esemény időpontját. Az esemény **System. timestamp** értéke módosítva van, de nem az **esemény időpontja** mező. Ezzel azonosítható, hogy mely eseményeknél módosulnak az időbélyegek. Ha a rendszer a tűréshatárok egyike miatt megváltoztatta az időbélyeget, általában ugyanazok.
 
 ## <a name="metrics-to-observe"></a>A figyelni kívánt mérőszámok
 
 A [stream Analytics feladatok mérőszámai](stream-analytics-monitoring.md)segítségével megfigyelheti az események rendezésének időbeli tűréshatárait. A következő metrikák szükségesek:
 
-|Metrika  | Leírás  |
+|Metric  | Leírás  |
 |---------|---------|
 | **Megrendelésen kívüli események** | Azt jelzi, hogy hány esemény érkezett el a megadott sorrendben, és amelyek el lettek dobva, vagy egy beállított időbélyeg lett megadva. Ezt a metrikát közvetlenül érinti a Azure Portalban lévő feladathoz tartozó **esemény** - **megrendelési események** beállításának beállítása. |
 | **Késői bemeneti események** | Azt jelzi, hogy hány esemény érkezik a forrástól. Ez a metrika olyan eseményeket tartalmaz, amelyek el lettek dobva, vagy az időbélyege módosult. Ezt a metrikát közvetlenül érinti a Azure Portalban a feladathoz tartozó **esemény rendezési** lapján a **késői beállításban megjelenő események** konfigurációja. |
@@ -159,9 +161,7 @@ Számos más erőforrás-korlátozás is előfordulhat, amely miatt a folyamatos
 
 ## <a name="output-event-frequency"></a>Kimeneti események gyakorisága
 
-A Azure Stream Analytics a vízjel előrehaladását használja az egyetlen triggerként a kimeneti események előállításához. Mivel a vízjel bemeneti adatokból származik, a rendszer a sikertelen helyreállítás és a felhasználó által kezdeményezett újrafeldolgozás során ismételhető.
-
-[Ablakos összesítések](stream-analytics-window-functions.md)használatakor a szolgáltatás csak a Windows végén hozza létre a kimeneteket. Bizonyos esetekben előfordulhat, hogy a felhasználók a Windowsból generált részleges összesítéseket szeretnének látni. A részleges összesítések jelenleg nem támogatottak Azure Stream Analyticsban.
+A Azure Stream Analytics a vízjel előrehaladását használja az egyetlen triggerként a kimeneti események előállításához. Mivel a vízjel bemeneti adatokból származik, a rendszer a sikertelen helyreállítás és a felhasználó által kezdeményezett újrafeldolgozás során ismételhető. [Ablakos összesítések](stream-analytics-window-functions.md)használatakor a szolgáltatás csak a Windows végén hozza létre a kimeneteket. Bizonyos esetekben előfordulhat, hogy a felhasználók a Windowsból generált részleges összesítéseket szeretnének látni. A részleges összesítések jelenleg nem támogatottak Azure Stream Analyticsban.
 
 Más streaming-megoldásokban a kimeneti események különböző kiváltó pontokon, a külső körülményektől függően lehetnek lényegesek. Bizonyos megoldások esetében előfordulhat, hogy egy adott időablak kimeneti eseményei többször is létrehozhatók. Ahogy a bemeneti értékek finomítva vannak, az összesített eredmények pontosabbak lesznek. Az eseményeket az első alkalommal lehet meggondolni, és az idő múlásával módosították. Ha például egy adott eszköz kapcsolat nélküli állapotban van a hálózatról, a rendszer egy becsült értéket is felhasználhat. A későbbiekben Ugyanez az eszköz csatlakozik a hálózatra. Ezután a tényleges esemény adatai szerepelhetnek a bemeneti adatfolyamban. Az időablak feldolgozásának kimenete pontosabb kimenetet eredményez.
 

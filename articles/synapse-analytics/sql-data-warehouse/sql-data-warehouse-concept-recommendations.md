@@ -11,18 +11,18 @@ ms.date: 04/30/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 546945d70554adbb28f19a3153faa67495e55f04
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 17b8ce04cb5029d1bea11344617bf65718ca579c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607749"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653023"
 ---
 # <a name="synapse-sql-recommendations"></a>Szinapszis SQL-javaslatok
 
 Ez a cikk a Azure Advisor által kiszolgált szinapszis SQL-ajánlásokat ismerteti.  
 
-Az SQL Analytics ajánlásokat biztosít az adattárház számítási feladatainak teljesítményre való következetes optimalizálása érdekében. A javaslatok szorosan integrálva vannak a [Azure Advisorekkel](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , így közvetlenül a [Azure Portalon](https://aka.ms/Azureadvisor)belül biztosíthatja az ajánlott eljárásokat. Az SQL Analytics az aktív számítási feladatok telemetria és felületi javaslatait napi szinten gyűjti. A támogatott javaslatok alább láthatók a javasolt műveletek alkalmazásával együtt.
+A szinapszis SQL javaslatokat tesz arra vonatkozóan, hogy az adattárház számítási feladatait következetesen optimalizálták a teljesítmény érdekében. A javaslatok szorosan integrálva vannak a [Azure Advisorekkel](../../advisor/advisor-performance-recommendations.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) , így közvetlenül a [Azure Portalon](https://aka.ms/Azureadvisor)belül biztosíthatja az ajánlott eljárásokat. A szinapszis SQL napi ütemben gyűjti az aktív számítási feladatra vonatkozó telemetria és felületek javaslatait. A támogatott javaslatok alább láthatók a javasolt műveletek alkalmazásával együtt.
 
 [A javaslatait](https://aka.ms/Azureadvisor) még ma is megtekintheti! 
 

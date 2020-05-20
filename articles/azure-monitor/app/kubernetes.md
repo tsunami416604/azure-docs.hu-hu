@@ -5,18 +5,18 @@ ms.topic: conceptual
 author: tokaplan
 ms.author: alkaplan
 ms.date: 04/25/2019
-ms.openlocfilehash: c3b2b4e8868b73e22706c684d94371fe37885b9a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 95c7205116808650c09f8b6fdd24844d9c0a6dbe
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119246"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647880"
 ---
 # <a name="zero-instrumentation-application-monitoring-for-kubernetes-hosted-applications-with-istio---deprecated"></a>Zero Instrumentation-alkalmazás figyelése Kubernetes által üzemeltetett alkalmazásokhoz Istio-elavult
 
 > [!IMPORTANT]
 > Ez a funkció jelenleg elavult, és a továbbiakban nem lesz támogatott a 2020. augusztus 1-től.
-> A jelenleg javasolt verzió csak a [Java önálló ügynökön keresztüli használatával](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)működik.
+> Jelenleg a kód nélküli figyelés csak a [Java önálló ügynökön keresztül](https://docs.microsoft.com/azure/azure-monitor/app/java-in-process-agent)engedélyezhető. Más nyelvek esetében az SDK-k segítségével figyelheti az alkalmazásokat az AK-ban: [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core), [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net), [Node. js](https://docs.microsoft.com/azure/azure-monitor/app/nodejs), [JavaScript](https://docs.microsoft.com/azure/azure-monitor/app/javascript)és [Python](https://docs.microsoft.com/azure/azure-monitor/app/opencensus-python).
 
 A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Kubernetes-fürtön, így biztosítva a Box-alkalmazások figyelését bármely Kubernetes üzemeltetett alkalmazáshoz. Az alapértelmezett alkalmazás-betekintési funkciókkal (például az [alkalmazás-hozzárendeléssel](../../azure-monitor/app/app-map.md) ) a függőségek modellezéséhez [élő metrikastream](../../azure-monitor/app/live-stream.md) a valós idejű figyeléshez, az [alapértelmezett irányítópulttal](../../azure-monitor/app/overview-dashboard.md), [metrikus Explorerrel](../../azure-monitor/platform/metrics-getting-started.md)és [munkafüzetekhez](../../azure-monitor/app/usage-workbooks.md)tartozó hatékony vizualizációkkal. Ezzel a funkcióval a felhasználók a kiválasztott Kubernetes-névtérben lévő összes Kubernetes-munkafolyamaton belül érhetik el a szűk keresztmetszeteket és a meghibásodási pontokat. Ha a meglévő Service Mesh-beruházásokat a Istio hasonló technológiákkal szeretné kihasználni, Azure Monitor az alkalmazás kódjának módosítása nélkül lehetővé teszi az automatikus műszeres alkalmazások figyelését.
 
@@ -30,7 +30,7 @@ A Azure Monitor mostantól kihasználja a Service Mesh Tech szolgáltatást a Ku
 - [Alkalmazás-betekintési erőforrás](create-new-resource.md)
 - Rendelkeznie kell egy szolgáltatás hálóval. Ha a fürtön nincs telepítve a Istio, megtudhatja, hogyan [telepítheti és használhatja a Istio az Azure Kubernetes Service-ben](https://docs.microsoft.com/azure/aks/istio-install).
 
-## <a name="capabilities"></a>Funkciók
+## <a name="capabilities"></a>Képességek
 
 A Kubernetes által üzemeltetett alkalmazások nulla rendszerállapot-figyelési szolgáltatásával a következőket használhatja:
 

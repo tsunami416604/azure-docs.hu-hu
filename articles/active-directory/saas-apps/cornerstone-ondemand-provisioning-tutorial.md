@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6212e74ecbf8327d3939138de2e92868f29b0f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b6aaed8d56bb254e5a6385c770f97b5238a5747b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77058424"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647442"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés sarokköve OnDemand konfigurálása
 
@@ -39,7 +39,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy rendelkezik a k
 * A OnDemand sarokköve felhasználói fiók rendszergazdai jogosultságokkal rendelkezik.
 
 > [!NOTE]
-> Az Azure AD kiépítési integrációja a [OnDemand Web Service](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_-_Summary_of_Web_Services_v20151106.pdf)-re támaszkodik. Ez a szolgáltatás a sarokköve OnDemand csapatok számára érhető el.
+> Az Azure AD kiépítési integrációja a [OnDemand Web Service](https://www.cornerstoneondemand.com/)-re támaszkodik. Ez a szolgáltatás a sarokköve OnDemand csapatok számára érhető el.
 
 ## <a name="add-cornerstone-ondemand-from-the-azure-marketplace"></a>Sarokköve OnDemand hozzáadása az Azure Marketplace-ről
 
@@ -81,7 +81,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
 Az Azure AD-ben az alábbi lépések végrehajtásával konfigurálhatja az automatikus felhasználói üzembe helyezést a sarokkövei OnDemand.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások** > **minden alkalmazás** > **sarokköve OnDemand**elemet.
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). Válassza a **vállalati alkalmazások**  >  **minden alkalmazás**  >  **sarokköve OnDemand**elemet.
 
     ![Vállalati alkalmazások panel](common/enterprise-applications.png)
 
@@ -103,7 +103,7 @@ Az Azure AD-ben az alábbi lépések végrehajtásával konfigurálhatja az auto
 
     * A **rendszergazdai jelszó** mezőbe írja be a rendszergazdai felhasználónévnek megfelelő jelszót.
 
-    * A **tartomány** mezőben adja meg a OnDemand-bérlő webszolgáltatásának URL-címét. Például a szolgáltatás a (z) helyen `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx`található, a contoso esetében pedig a `https://ws-contoso.csod.com/feed30/clientdataservice.asmx`tartomány. A webszolgáltatás URL-címének beolvasásával kapcsolatos további információkért tekintse meg [ezt a PDF-fájlt](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
+    * A **tartomány** mezőben adja meg a OnDemand-bérlő webszolgáltatásának URL-címét. Például a szolgáltatás a (z) helyen található `https://ws-[corpname].csod.com/feed30/clientdataservice.asmx` , a contoso esetében pedig a `https://ws-contoso.csod.com/feed30/clientdataservice.asmx` tartomány. A webszolgáltatás URL-címének beolvasásával kapcsolatos további információkért tekintse meg [ezt a PDF-fájlt](https://help.csod.com/help/csod_0/Content/Resources/Documents/WebServices/CSOD_Web_Services_-_User-OU_Technical_Specification_v20160222.pdf).
 
 6. Miután kitöltötte az 5. lépésben látható mezőket, válassza a **kapcsolat tesztelése** lehetőséget, és győződjön meg róla, hogy az Azure ad képes csatlakozni a sarokköve OnDemand. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a sarokköve OnDemand-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -153,7 +153,7 @@ A sarokköve OnDemand **position** attribútum olyan értéket vár, amely megfe
 
 ![A OnDemand-létesítési pozíciók sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/PostionId.png)
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

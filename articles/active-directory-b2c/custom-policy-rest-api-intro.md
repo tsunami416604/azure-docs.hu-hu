@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/23/2020
+ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6a6cc8e5931f3e29c242f51a6e062441953228ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80337414"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636989"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>REST API jogcímek cseréjének integrálása a Azure AD B2C egyéni szabályzatba
 
@@ -162,7 +162,7 @@ A REST technikai profilban érdemes lehet elküldeni az aktuális munkamenet nye
 
 ## <a name="handling-error-messages"></a>Hibaüzenetek kezelési üzenetei
 
-Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például: "a felhasználó nem található a CRM rendszerben." Hiba esetén a REST API HTTP 409 hibaüzenetet ad vissza (ütközési válasz állapotkód). További információkért tekintse meg a [Rest műszaki profilt](https://identitydivision.visualstudio.com/defaultcollection/Identity%20CXP/_git/GTP?path=%2Fyoelh%2Fdocs%2Frest-api%2Frestful-technical-profile.md&version=GBmaster&anchor=returning-error-message).
+Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például: "a felhasználó nem található a CRM rendszerben." Hiba esetén a REST API HTTP 409 hibaüzenetet ad vissza (ütközési válasz állapotkód). További információkért tekintse meg a [Rest műszaki profilt](restful-technical-profile.md#returning-error-message).
 
 Ez csak akkor érhető el, ha egy REST API technikai profilt hív meg egy érvényesítési technikai profilból. Ez lehetővé teszi a felhasználó számára, hogy kijavítsa az adatokat az oldalon, és a lap beküldése után ismét futtassa az ellenőrzést.
 

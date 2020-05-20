@@ -5,16 +5,17 @@ description: Ismerje meg, hogyan alakíthatja át az adatátalakítást a Python
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
-ms.openlocfilehash: a2bd9845cd29c7d139e2042f39b4697847639207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455791"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644471"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>Python-kód végrehajtása a Azure Machine Learning Designerben
 
@@ -47,7 +48,7 @@ Ez a cikk a minta adatkészletet, az **Automobile Price-adatokat (RAW)** haszná
     ![Adatkészletek csatlakoztatása](media/how-to-designer-python/connect-dataset.png)
         
 
-1. Jegyezze fel, hogy melyik bemeneti portot használja. A tervező a bal oldali bemeneti portot a változóhoz `dataset1` és a középső bemeneti porthoz rendeli. `dataset2` 
+1. Jegyezze fel, hogy melyik bemeneti portot használja. A tervező a bal oldali bemeneti portot a változóhoz `dataset1` és a középső bemeneti porthoz rendeli `dataset2` . 
 
 A bemeneti modulok nem kötelezőek, mivel közvetlenül a **Python-szkript végrehajtása** modulban létrehozhat vagy importálhat adatokat.
 
@@ -74,7 +75,7 @@ Ebben a példában a pandák használatával két oszlopot egyesítünk a szemé
     
     ![Python-folyamat végrehajtása](media/how-to-designer-python/execute-python-pipeline.png)
 
-    A belépési pont parancsfájljának tartalmaznia kell `azureml_main`a függvényt. A **Python parancsfájl** -modul végrehajtása két bemeneti portra van leképezve.
+    A belépési pont parancsfájljának tartalmaznia kell a függvényt `azureml_main` . A **Python parancsfájl** -modul végrehajtása két bemeneti portra van leképezve.
 
     A visszatérési értéknek pandák Dataframe kell lennie. Modul kimenetként legfeljebb két dataframes adhat vissza.
     

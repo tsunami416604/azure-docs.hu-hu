@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 10/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: eacdfe8211c97e75b6609f5e11b681f84ae55846
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5afa5b5620532865233e38ccb5889b37b2100854
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472084"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648538"
 ---
 # <a name="develop-with-media-services-v3-apis"></a>Fejlesztés Media Services V3 API-kkal
 
@@ -54,7 +54,7 @@ A következő ábrán a számok kronológiai sorrendben jelenítik meg a kérelm
    * A REST Media Services erőforrás-URI-ja.
    * Azure AD-alkalmazás értékei: az ügyfél-azonosító és az ügyfél titka.
 
-   Az összes szükséges érték beszerzéséhez tekintse meg [a Azure Media Services API Azure CLI-vel való elérését](access-api-cli-how-to.md)ismertető témakört.
+   Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](access-api-cli-how-to.md)-hoz.
 
 2. Az Azure AD hozzáférési jogkivonatot a középső szinten küldik el.
 4. A középső szintű kérelem küldése az Azure Media REST API az Azure AD-jogkivonattal.
@@ -84,7 +84,7 @@ Az eszközön belüli fájlok/Blobok nevének a [blob neve](https://docs.microso
 
 ## <a name="long-running-operations"></a>Hosszan futó műveletek
 
-A Azure Media Services `x-ms-long-running-operation` [hencegő fájlokban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) megjelölt műveletek hosszú ideig futó műveletek. 
+A `x-ms-long-running-operation` Azure Media Services [hencegő fájlokban](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json) megjelölt műveletek hosszú ideig futó műveletek. 
 
 Az aszinkron Azure-műveletek nyomon követésével kapcsolatos részletekért lásd: [aszinkron műveletek](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation).
 
@@ -136,7 +136,7 @@ Egy adott élő esemény vagy bármely hozzá tartozó élő kimenet esetében c
 
 A [Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) a Windows-ügyfelek számára elérhető eszköz, akik a Media Servicesről szeretnének többet megtudni. A AMSE egy WinForms/C#-alkalmazás, amely feltölti, letölti, kódolja, továbbítja a VOD-t és az élő tartalmakat Media Services. A AMSE eszköz olyan ügyfelek számára készült, akik kód írása nélkül szeretnék tesztelni Media Services. A AMSE-kód olyan ügyfelek számára biztosít erőforrásként, akik Media Serviceskal szeretnének fejleszteni.
 
-A AMSE egy nyílt forráskódú projekt, amely a Közösség által biztosított támogatással kapcsolatos https://github.com/Azure/Azure-Media-Services-Explorer/issues). A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy opencode@microsoft.com forduljon más kérdésekhez vagy megjegyzésekhez.
+A AMSE egy nyílt forráskódú projekt, amely a Közösség által biztosított támogatással kapcsolatos https://github.com/Azure/Azure-Media-Services-Explorer/issues) . A projekt a Microsoft nyílt forráskódú projekteket szabályozó etikai kódexe, a [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) hatálya alá esik. További információkért tekintse meg a [viselkedési szabályzatot](https://opensource.microsoft.com/codeofconduct/faq/) , vagy forduljon opencode@microsoft.com más kérdésekhez vagy megjegyzésekhez.
 
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
 
@@ -148,7 +148,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 ## <a name="see-also"></a>Lásd még
 
-[Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
+Az összes szükséges érték beszerzéséhez tekintse meg a következőt: [hozzáférés Azure Media Services API](access-api-cli-how-to.md)-hoz.
 
 ## <a name="next-steps"></a>További lépések
 

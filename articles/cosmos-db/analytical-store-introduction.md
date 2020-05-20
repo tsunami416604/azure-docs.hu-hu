@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: srchi
-ms.openlocfilehash: c78a7d26100d3c3454cd96e2ac79e1767e5efcdb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f00acf3580130d85d6eaeaee4d52eb748d20aa7b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597218"
+ms.locfileid: "83656632"
 ---
 # <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Mi a Azure Cosmos DB Analytical Store (előzetes verzió)?
 
@@ -48,7 +48,7 @@ Ha például az operatív táblák formátuma a következő:
 
 A sor tároló a fenti, soronként szerializált, soros formában megőrzött adatmennyiséget tárolja a lemezen. Ez a formátum lehetővé teszi a gyorsabb tranzakciós olvasási, írási és működési lekérdezéseket, például a "a Product1 vonatkozó információk visszaadása". Mivel azonban az adatkészlet nagy mértékben növekszik, és ha összetett analitikai lekérdezéseket szeretne futtatni az adaton, költséges lehet. Ha például a "berendezés" kategóriába tartozó termék értékesítési trendjeit szeretné lekérni különböző üzleti egységeken és hónapokon keresztül, akkor összetett lekérdezést kell futtatnia. Az adathalmaz nagyméretű vizsgálata költséges lehet a kiépített átviteli sebesség szempontjából, és hatással lehet a valós idejű alkalmazásokat és szolgáltatásokat használó tranzakciós számítási feladatok teljesítményére is.
 
-Az analitikus tároló, amely egy oszlopos tároló, jobban illeszkedik az ilyen lekérdezésekhez, mert hasonló adatmezőket szerializál, és csökkentette a lemez IOPS.
+Az analitikus tároló, amely egy oszlopos tároló, alkalmasabb az ilyen lekérdezésekhez, mert hasonló adatmezőket szerializál, és csökkenti a lemez IOPS.
 
 Az alábbi képen a tranzakciós sor tárolója és az analitikai oszlop tárolója látható Azure Cosmos DBban:
 

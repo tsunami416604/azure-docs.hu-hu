@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 31ad373b1544fc601a9c37e05e324a9c1dfb3f73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e3a38b9a02894eafd3ef6df657680d2e2a58a7e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183779"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83638393"
 ---
 # <a name="sign-in-using-an-android-application-in-azure-active-directory-b2c"></a>Bejelentkezés Android-alkalmazással Azure Active Directory B2C
 
@@ -65,17 +65,17 @@ A minta a [AppAuth](https://openid.github.io/AppAuth-Android/)által megadott mi
 > A AppAuth az Android API 16 (Jellybean) és újabb verzióit támogatja. Javasoljuk, hogy a 23. és újabb API-t használja.
 >
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
 
 A Azure AD B2Choz való kommunikáció konfigurálásához adja meg a felderítési URI-t, vagy adja meg az engedélyezési végpontot és a jogkivonat-végpont URI-JÁT is. Mindkét esetben a következő információkra lesz szüksége:
 
 * Bérlő azonosítója (pl. contoso.onmicrosoft.com)
-* Felhasználói folyamat neve (pl. B2C\_1\_SignUpIn)
+* Felhasználói folyamat neve (pl. B2C \_ 1 \_ SignUpIn)
 
-Ha úgy dönt, hogy automatikusan felderíti az engedélyezési és jogkivonat-végponti URI-ket, le kell kérnie az adatokat a felderítési URI-ból. A felderítési URI a bérlői\_azonosító és a szabályzat\_nevének a következő URL-címben való lecserélésével hozható létre:
+Ha úgy dönt, hogy automatikusan felderíti az engedélyezési és jogkivonat-végponti URI-ket, le kell kérnie az adatokat a felderítési URI-ból. A felderítési URI a `<tenant-id>` és a következő URL-címben való lecserélése után hozható létre `<policy-name>` :
 
 ```java
-String mDiscoveryURI = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/v2.0/.well-known/openid-configuration?p=<Policy_Name>";
+String mDiscoveryURI = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/v2.0/.well-known/openid-configuration";
 ```
 
 Ezután megvásárolhatja az engedélyezési és jogkivonat-végponti URI-ket, és létrehozhat egy AuthorizationServiceConfiguration-objektumot a következő parancs futtatásával:
@@ -99,12 +99,12 @@ AuthorizationServiceConfiguration.fetchFromIssuer(
   });
 ```
 
-Ahelyett, hogy a felderítést az engedélyezési és jogkivonat-végponti URI-k beszerzéséhez használja, explicit módon megadhatja azokat\_a\_bérlői azonosító és a szabályzat nevének a következő URL-címben való lecserélésével:
+Ahelyett, hogy a felderítést az engedélyezési és jogkivonat-végponti URI-k beszerzéséhez használja, explicit módon megadhatja azokat az `<tenant-id>` `<policy-name>` alábbi URL-címekre:
 
 ```java
-String mAuthEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/authorize?p=<Policy_Name>";
+String mAuthEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/authorize";
 
-String mTokenEndpoint = "https://<Tenant_name>.b2clogin.com/<Tenant_ID>/oauth2/v2.0/token?p=<Policy_Name>";
+String mTokenEndpoint = "https://<tenant-name>.b2clogin.com/<tenant-id>/<policy-name>/oauth2/v2.0/token";
 ```
 
 Futtassa a következő kódot a AuthorizationServiceConfiguration objektum létrehozásához:

@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: dd199bc0245ab1daa090f88b1e92216c714042ee
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: 68310f504e94e50be9fbd4ce49055a4b318ab5d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82864445"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659504"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -27,7 +27,7 @@ Ez a szakasz az Azure-beli virtuális gép biztonsági mentési műveletének hi
   * Annak érdekében, hogy a pillanatképek kiterjesztésével kapcsolatos hibák ne legyenek elérhetők, [távolítsa el a bővítményeket a kényszerített újratöltéshez](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)
 * Győződjön meg arról, hogy a virtuális gép rendelkezik internetkapcsolattal.
   * Győződjön meg arról, hogy egy másik biztonsági mentési szolgáltatás nem fut.
-* A `Services.msc`verzióban ellenőrizze, hogy **fut**-e a **Windows Azure Guest Agent ügynök** szolgáltatás. Ha a **Windows Azure Guest Agent ügynök** szolgáltatás hiányzik, telepítse az [Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)tárolóban.
+* A verzióban `Services.msc` ellenőrizze, hogy **fut**-e a **Windows Azure Guest Agent ügynök** szolgáltatás. Ha a **Windows Azure Guest Agent ügynök** szolgáltatás hiányzik, telepítse az [Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#install-the-vm-agent)tárolóban.
 * Az **Eseménynapló** tartalmazhat olyan biztonsági mentési hibákat, amelyek más biztonsági mentési termékekből származnak, például a Windows Server biztonsági másolatból, és nem az Azure Backup miatt. A következő lépések végrehajtásával megállapíthatja, hogy a probléma Azure Backup-e:
   * Ha hiba történt egy bejegyzés **biztonsági mentésével** kapcsolatban az eseményforrás vagy az üzenet esetében, ellenőrizze, hogy az Azure IaaS virtuális gépek biztonsági másolatai sikeresek voltak-e, és hogy egy visszaállítási pont lett-e létrehozva a kívánt pillanatkép-típussal.
   * Ha Azure Backup működik, akkor a probléma valószínűleg egy másik biztonsági mentési megoldás.
@@ -93,7 +93,7 @@ A biztonsági mentési művelet a Windows Service **com+** rendszeralkalmazás h
 Hibakód: ExtensionFailedVssWriterInBadState <br/>
 Hibaüzenet: a pillanatkép-művelet meghiúsult, mert a VSS-írók rossz állapotban voltak.
 
-Indítsa újra a VSS-írókat, amelyek helytelen állapotban vannak. Egy rendszergazda jogú parancssorból futtassa ```vssadmin list writers```a parancsot. A kimenet tartalmazza az összes VSS-írót és azok állapotát. Minden olyan VSS-író esetében, amely nem **[1] stabil**, a VSS-író újraindításához futtassa a következő parancsokat egy emelt szintű parancssorból:
+Indítsa újra a VSS-írókat, amelyek helytelen állapotban vannak. Egy rendszergazda jogú parancssorból futtassa a parancsot ```vssadmin list writers``` . A kimenet tartalmazza az összes VSS-írót és azok állapotát. Minden olyan VSS-író esetében, amely nem **[1] stabil**, a VSS-író újraindításához futtassa a következő parancsokat egy emelt szintű parancssorból:
 
 * ```net stop serviceName```
 * ```net start serviceName```
@@ -134,7 +134,7 @@ Ha a **következő** címtárban az alapértelmezetttől eltérő engedélyek je
 2. Törölje az összes olyan tanúsítványt, ahol a **kiadás** a klasszikus üzemi modell vagy a **Windows Azure-beli CRP-tanúsítvány generátora**:
 
    * [Nyisson meg tanúsítványokat egy helyi számítógép-konzolon](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-view-certificates-with-the-mmc-snap-in).
-   * A **személyes** > **tanúsítványok**területen törölje az összes olyan tanúsítványt, amely **számára a kiadás** a klasszikus üzemi modell vagy a **Windows Azure CRP-tanúsítvány generátora**.
+   * A **személyes**  >  **tanúsítványok**területen törölje az összes olyan tanúsítványt, amely **számára a kiadás** a klasszikus üzemi modell vagy a **Windows Azure CRP-tanúsítvány generátora**.
 3. Virtuális gép biztonsági mentési feladatainak elindítása.
 
 ## <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>A ExtensionStuckInDeletionState-bővítmény állapota nem támogatja a biztonsági mentési műveletet
@@ -145,7 +145,7 @@ Hibaüzenet: a bővítmény állapota nem támogatja a biztonsági mentési műv
 A biztonsági mentési művelet nem sikerült, mert inkonzisztens állapotú a biztonsági mentési bővítmény. A probléma megoldásához kövesse az alábbi lépéseket:
 
 * Ellenőrizze, hogy a vendégügynök telepítve van-e és működik-e
-* A Azure Portal lépjen a **virtuális gép** > **minden beállítás** > **bővítmények** elemre.
+* A Azure Portal lépjen a **virtuális gép**  >  **minden beállítás**  >  **bővítmények** elemre.
 * Válassza ki a VmSnapshot vagy a VmSnapshotLinux nevű biztonsági mentési bővítményt, és kattintson az **Eltávolítás** elemre
 * A biztonsági mentési bővítmény törlését követően próbálja megismételni a biztonsági mentési műveletet.
 * Ez a biztonsági mentési művelet a kívánt állapotban fogja telepíteni az új bővítményt
@@ -197,7 +197,7 @@ Ez gondoskodik róla, hogy a pillanatképek a gazdagépen keresztül készüljen
 | **Hibakód**: VmNotInDesirableState <br/> **Hibaüzenet**: a virtuális gép nincs olyan állapotban, amely lehetővé teszi a biztonsági mentéseket. |<ul><li>Ha a virtuális gép átmeneti állapotban van a **Futtatás** és a **Leállítás**között, várjon, amíg az állapot megváltozhat. Ezután aktiválja a biztonsági mentési feladatot. <li> Ha a virtuális gép Linux rendszerű virtuális gép, és a fokozott biztonságú Linux kernel-modult használja, zárja ki az Azure Linux-ügynök elérési útját a biztonsági szabályzatból, és győződjön meg arról, hogy a biztonsági **/var/lib/waagent** telepítve van.  |
 | A virtuálisgép-ügynök nincs jelen a virtuális gépen: <br>Telepítse az előfeltételt és a virtuálisgép-ügynököt. Ezután indítsa újra a műveletet. |További információ a [VM-ügynök telepítéséről és a virtuálisgép-ügynök telepítésének ellenőrzéséről](#vm-agent). |
 | **Hibakód**: ExtensionSnapshotFailedNoSecureNetwork <br/> **Hibaüzenet**: a pillanatkép-művelet sikertelen volt, mert nem sikerült létrehozni a biztonságos hálózati kommunikációs csatornát. | <ol><li> Nyissa meg a Beállításszerkesztőt a **Regedit. exe** futtatásával emelt szintű módban. <li> Azonosítsa a rendszeren lévő .NET-keretrendszer összes verzióját. A **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft**beállításkulcs hierarchiájában jelennek meg. <li> A beállításkulcsban található minden egyes .NET-keretrendszerhez adja hozzá a következő kulcsot: <br> **Alatt "= DWORD: 00000001**. </ol>|
-| **Hibakód**: ExtensionVCRedistInstallationFailure <br/> **Hibaüzenet**: a pillanatkép-művelet sikertelen volt, mert a Visual C++ újraterjeszthető csomagjának telepítése sikertelen volt a visual Studio 2012-ben. | Navigáljon a C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion, és telepítse a vcredist2013_x64.<br/>Győződjön meg arról, hogy a beállításjegyzék-kulcs értéke, amely lehetővé teszi, hogy a szolgáltatás telepítése a megfelelő értékre legyen állítva. Ez azt eredményezi, hogy a **kezdő** értéket **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** **3** értékre, nem pedig **4**értékre állítja. <br><br>Ha továbbra is problémái vannak a telepítéssel, indítsa újra a telepítési szolgáltatást az msiexec **/UNREGISTER** , majd az **msiexec/Register** egy rendszergazda jogú parancssorból való futtatásával.  |
+| **Hibakód**: ExtensionVCRedistInstallationFailure <br/> **Hibaüzenet**: a pillanatkép-művelet sikertelen volt, mert a Visual C++ újraterjeszthető csomagjának telepítése sikertelen volt a visual Studio 2012-ben. | <li> Navigáljon a `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion` vcredist2013_x64ra, és telepítse a következőt:.<br/>Győződjön meg arról, hogy a beállításjegyzék-kulcs értéke, amely lehetővé teszi, hogy a szolgáltatás telepítése a megfelelő értékre legyen állítva. Ez azt eredményezi, hogy a **kezdő** értéket **HKEY_LOCAL_MACHINE \system\currentcontrolset\services\msiserver** **3** értékre, nem pedig **4**értékre állítja. <br><br>Ha továbbra is problémái vannak a telepítéssel, indítsa újra a telepítési szolgáltatást az msiexec **/UNREGISTER** , majd az **msiexec/Register** egy rendszergazda jogú parancssorból való futtatásával. <br><br><li> Ellenőrizze az eseménynaplót, és győződjön meg arról, hogy a hozzáféréshez kapcsolódó problémák merültek fel. Például: *termék: Microsoft Visual C++ 2013 x64 minimális futtatókörnyezet – 12.0.21005 – hiba 1401. nem sikerült létrehozni a kulcsot: Software\Classes.  5. rendszerhiba.  Ellenőrizze, hogy van-e megfelelő engedélye a kulcs eléréséhez, vagy forduljon a technikai tanácsadási csoporthoz.* <br><br> Győződjön meg arról, hogy a rendszergazda vagy a felhasználói fiók rendelkezik a megfelelő engedélyekkel a beállításkulcs **HKEY_LOCAL_MACHINE \software\classes**való frissítéséhez. Adja meg a megfelelő engedélyeket, és indítsa újra a Windows Azure Guest Agent ügynököt.<br><br> <li> Ha víruskereső termékek vannak érvényben, győződjön meg arról, hogy a megfelelő kizárási szabályokkal rendelkeznek a telepítés engedélyezéséhez.    |
 | **Hibakód**: UserErrorRequestDisallowedByPolicy <BR> **Hibaüzenet**: érvénytelen házirend van konfigurálva a virtuális gépen, amely megakadályozza a pillanatkép-műveletet. | Ha van olyan Azure Policy, amely [a környezetében található címkéket szabályozza](https://docs.microsoft.com/azure/governance/policy/tutorials/govern-tags), érdemes lehet a szabályzatot egy [megtagadási hatásról](https://docs.microsoft.com/azure/governance/policy/concepts/effects#deny) [módosítani](https://docs.microsoft.com/azure/governance/policy/concepts/effects#modify), vagy a [Azure Backup által igényelt elnevezési séma](https://docs.microsoft.com/azure/backup/backup-during-vm-creation#azure-backup-resource-group-for-virtual-machines)alapján manuálisan létrehozni az erőforráscsoportot.
 
 ## <a name="jobs"></a>Feladatok

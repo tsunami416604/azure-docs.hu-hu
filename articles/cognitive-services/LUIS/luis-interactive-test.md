@@ -2,13 +2,13 @@
 title: Alkalmazás tesztelése a LUIS Portalon
 description: A Language Understanding (LUIS) használatával folyamatosan dolgozhat az alkalmazáson, és javíthatja annak nyelvi megismerését.
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: cb4559e6d3582a337cbc32ef986bec5db5940ef9
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.date: 05/17/2020
+ms.openlocfilehash: 3608bb17b6d1ea8c9095fa54324993a9e40355b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591862"
+ms.locfileid: "83653873"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>A LUIS-alkalmazás tesztelése a LUIS-portálon
 
@@ -44,7 +44,7 @@ A teszt kimondása nem egyezhet meg pontosan az alkalmazás egyik hosszúságú 
 
     ![Az interaktív tesztelés a helytelen szándékot azonosítja](./media/luis-how-to-interactive-test/test-weather-1.png)
 
-## <a name="inspect-score"></a>Pontszám vizsgálata
+## <a name="inspect-the-prediction"></a>Az előrejelzés vizsgálata
 
 A teszt eredményének részleteit a **vizsgálat panelen** tekintheti meg.
 
@@ -52,23 +52,21 @@ A teszt eredményének részleteit a **vizsgálat panelen** tekintheti meg.
 
     ![A vizsgálati eredmények további részleteinek megtekintéséhez kattintson a vizsgálat gombra.](./media/luis-how-to-interactive-test/inspect.png)
 
-1. Megjelenik a **vizsgálat** panel. A panel tartalmazza a leggyakoribb pontozási szándékot, valamint az azonosított entitásokat. A panel a kiválasztott kifejezés eredményét jeleníti meg.
+1. Megjelenik a **vizsgálat** panel. A panel tartalmazza a leggyakoribb pontozási szándékot, valamint az azonosított entitásokat. A panel a kiválasztott kifejezés előrejelzését jeleníti meg.
 
-    ![A panel tartalmazza a leggyakoribb pontozási szándékot, valamint az azonosított entitásokat. A panel a kiválasztott kifejezés eredményét jeleníti meg.](./media/luis-how-to-interactive-test/inspect-panel.png)
+## <a name="add-to-example-utterances"></a>Hozzáadás példa hosszúságú kimondott szöveg
 
-## <a name="correct-top-scoring-intent"></a>Legjobb pontozási szándék javítása
+A vizsgálat panelen a Hozzáadás a következőhöz: **például hosszúságú kimondott szöveg**lehetőség kiválasztásával adhatja hozzá a teszt teljes célját.
 
-1. Ha a felső pontozási szándék helytelen, kattintson a **Szerkesztés** gombra.
+## <a name="disable-required-features"></a>Szükséges szolgáltatások letiltása
 
-1.  A legördülő listában válassza ki a megfelelő szándékot a teljes beállításhoz.
+Ezzel a kapcsolóval megtekintheti, hogy mi a jóslat, ha az entitás funkciójának megadása nem volt szükséges.
 
-    ![Helyes leképezés kiválasztása](./media/luis-how-to-interactive-test/intent-select.png)
+Ezzel a kapcsolóval meghatározhatja, hogy a betanított alkalmazás megfelelően előre megjósolja-e az entitásokat a szükséges funkciók alapján. Előfordulhat, hogy a betanított alkalmazás megjósolhatja, hogy a gép megtanulta-e a nem megfelelő címkét például a hosszúságú kimondott szöveg, vagy a szükséges szolgáltatás nem felel meg a szövegnek.
 
 ## <a name="view-sentiment-results"></a>A hangulat eredményeinek megtekintése
 
 Ha a találatok elemzése a **[közzétételi](luis-how-to-publish-app.md#enable-sentiment-analysis)** oldalon van konfigurálva, a teszt eredményei közé tartozik a teljes **kiértékelésben** talált hangulat.
-
-![A teszt ablaktábla és a hangulat elemzésének képe](./media/luis-how-to-interactive-test/sentiment.png)
 
 ## <a name="correct-matched-patterns-intent"></a>Megfelelő egyezésű minta szándéka
 

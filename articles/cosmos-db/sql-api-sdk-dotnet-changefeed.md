@@ -1,19 +1,19 @@
 ---
 title: Azure Cosmos DB .NET Change feed Processor API, SDK kibocsátási megjegyzései
 description: Ismerkedjen meg a Change feed Processor API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a .NET Change feed Processor SDK egyes verzióiban végrehajtott módosításokat.
-author: ealsur
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 01/30/2019
-ms.author: maquaran
-ms.openlocfilehash: 5820778d46f5701b82bb289192350a9e13739d37
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: e39cef33d8d402b6e04c6b9952cae21848e02424
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80619443"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660425"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change feed Processor SDK: letöltési és kibocsátási megjegyzések
 
@@ -23,8 +23,9 @@ ms.locfileid: "80619443"
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -47,22 +48,22 @@ ms.locfileid: "80619443"
 ### <a name="v2-builds"></a>v2 – buildek
 
 ### <a name="230"></a><a name="2.3.0"/>2.3.0
-* Új metódus `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` és a hozzá tartozó nyilvános felület `ICheckpointPartitionProcessorFactory`lett hozzáadva. Ez lehetővé teszi az `IPartitionProcessor` interfész megvalósítását a beépített ellenőrzőpont-mechanizmus használatára. Az új gyár hasonló a meglévőhöz `IPartitionProcessorFactory`, azzal a különbséggel `Create` , hogy a metódus `ILeaseCheckpointer` is a paramétert is alkalmazza.
-* Ugyanahhoz `ChangeFeedProcessorBuilder` a példányhoz csak a két módszer `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory`egyikét lehet használni.
+* Új metódus és a `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` hozzá tartozó nyilvános felület lett hozzáadva `ICheckpointPartitionProcessorFactory` . Ez lehetővé teszi az interfész megvalósítását a `IPartitionProcessor` beépített ellenőrzőpont-mechanizmus használatára. Az új gyár hasonló a meglévőhöz `IPartitionProcessorFactory` , azzal a különbséggel, hogy a `Create` metódus is a `ILeaseCheckpointer` paramétert is alkalmazza.
+* Ugyanahhoz a példányhoz csak a két módszer egyikét lehet `ChangeFeedProcessorBuilder.WithPartitionProcessorFactory` `ChangeFeedProcessorBuilder.WithCheckpointPartitionProcessorFactory` használni `ChangeFeedProcessorBuilder` .
 
 ### <a name="228"></a><a name="2.2.8"/>2.2.8
 * A stabilitás és a diagnosztizálás fejlesztése:
-  * Az olvasási változási csatorna hosszú idő alatt történő észlelésének támogatása. Ha hosszabb időt vesz igénybe, mint a `ChangeFeedProcessorOptions.ChangeFeedTimeout` tulajdonság által megadott érték, a következő lépéseket kell elvégeznie:
+  * Az olvasási változási csatorna hosszú idő alatt történő észlelésének támogatása. Ha hosszabb időt vesz igénybe, mint a tulajdonság által megadott érték `ChangeFeedProcessorOptions.ChangeFeedTimeout` , a következő lépéseket kell elvégeznie:
     * Megszakadt a módosítási hírcsatorna olvasási művelete a problémás partíción.
     * A hírcsatorna-feldolgozó példány módosítása elveszíti a problémás bérlet tulajdonjogát. Az eldobott bérlet a következő címbérleti beolvasási lépés során lesz felhasználva, amelyet az azonos vagy eltérő módosítási hírcsatorna-feldolgozó példány hajt végre. Így a változási hírcsatorna olvasása megkezdődik.
     * Probléma jelent meg az állapotfigyelő szolgáltatásban. Az alapértelmezett egészségügyi figyelő az összes jelentett problémát a nyomkövetési naplóba küldi.
-  * Új nyilvános tulajdonság hozzáadva: `ChangeFeedProcessorOptions.ChangeFeedTimeout`. Ennek a tulajdonságnak az alapértelmezett értéke 10 perc.
-  * Új nyilvános enumerálási érték lett hozzáadva: `Monitoring.MonitoredOperation.ReadChangeFeed`. Ha a értéke értékre `HealthMonitoringRecord.Operation` van állítva `Monitoring.MonitoredOperation.ReadChangeFeed`, akkor az állapot azt jelzi, hogy a változási csatorna olvasási kapcsolatban van.
+  * Új nyilvános tulajdonság hozzáadva: `ChangeFeedProcessorOptions.ChangeFeedTimeout` . Ennek a tulajdonságnak az alapértelmezett értéke 10 perc.
+  * Új nyilvános enumerálási érték lett hozzáadva: `Monitoring.MonitoredOperation.ReadChangeFeed` . Ha a értéke értékre `HealthMonitoringRecord.Operation` van állítva `Monitoring.MonitoredOperation.ReadChangeFeed` , akkor az állapot azt jelzi, hogy a változási csatorna olvasási kapcsolatban van.
 
 ### <a name="227"></a><a name="2.2.7"/>2.2.7
 * Jobb terheléselosztási stratégia, ha az összes bérlet beolvasása hosszabb időt vesz igénybe, mint a bérlet lejárati időtartama, például hálózati problémák miatt:
   * Ebben a forgatókönyvben olyan terheléselosztási algoritmust használ, amely hamisan megfontolni a bérletek lejártként való megadását, ami az aktív tulajdonosoktól érkező bérletek lopását Ez a sok bérlet szükségtelen újrakiegyensúlyozását eredményezheti.
-  * Ez a probléma ebben a kiadásban kerül megjavításra azáltal, hogy az újrapróbálkozások elkerülésével megtörténik a lejárt bérlet beszerzése, amely nem változott, és posponing a lejárt bérlet beszerzését a következő terheléselosztási iterációra.
+  * Ez a probléma ebben a kiadásban kerül megjavításra azáltal, hogy az újrapróbálkozások elkerülésével megtörténik a lejárt bérlet beszerzése, amely nem változott, és elhalasztotta a lejárt bérlet beszerzését a következő terheléselosztási iterációra
 
 ### <a name="226"></a><a name="2.2.6"/>2.2.6
 * A megfigyelői kivételek jobb kezelése.
@@ -96,7 +97,7 @@ ms.locfileid: "80619443"
 * Kisebb diagnosztika fejlesztése.
 
 ### <a name="210"></a><a name="2.1.0"/>2.1.0
-* Új API hozzáadása, feladat&lt;IReadOnlyList&lt;RemainingPartitionWork&gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Ez az egyes partíciók becsült munkájának lekérésére használható.
+* Új API hozzáadása, feladat &lt; IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). Ez az egyes partíciók becsült munkájának lekérésére használható.
 * A támogatja a Microsoft. Azure. DocumentDB SDK 2,0-es verziója. A Microsoft. Azure. DocumentDB 2,0-es vagy újabb verziójára van szükség.
 
 ### <a name="206"></a><a name="2.0.6"/>clickstream
@@ -158,7 +159,7 @@ ms.locfileid: "80619443"
 * Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1,21-es vagy újabb verziójával.
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
-* A .NET Standard 2,0 támogatásának támogatása. A csomag mostantól `netstandard2.0` támogatja `net451` és a keretrendszer monikereit.
+* A .NET Standard 2,0 támogatásának támogatása. A csomag mostantól támogatja `netstandard2.0` és a `net451` keretrendszer monikereit.
 * Kompatibilis az [SQL .net SDK](sql-api-sdk-dotnet.md) 1.17.0 és újabb verzióival.
 * Kompatibilis az [SQL .net Core SDK](sql-api-sdk-dotnet-core.md) 1.5.1-es és újabb verzióival.
 

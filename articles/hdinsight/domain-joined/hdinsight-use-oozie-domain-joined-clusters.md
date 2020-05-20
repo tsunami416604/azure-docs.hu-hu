@@ -6,16 +6,16 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seodec18
-ms.date: 12/09/2019
-ms.openlocfilehash: 9ef54707f7fac3dd1328e29f6d05f62c1dee2561
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seodec18,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: 36c04480c46cea904b072c659c5c2642a28e1f27
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78194903"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647576"
 ---
-# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Apache Oozie futtatása a HDInsight Hadoop-fürtökben Enterprise Security Package
+# <a name="run-apache-oozie-in-azure-hdinsight-clusters-with-enterprise-security-package"></a>Apache Oozie futtatása az Azure HDInsight-fürtökben Enterprise Security Package
 
 Az Apache Oozie egy munkafolyamat-és koordinációs rendszer, amely Apache Hadoop feladatokat kezel. A Oozie integrálva van a Hadoop-verembe, és a következő feladatokat támogatja:
 
@@ -43,7 +43,7 @@ A Secure Shell (SSH) szolgáltatással kapcsolatos további információkért l�
     ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
     ```
 
-1. A sikeres Kerberos-hitelesítés ellenőrzéséhez használja `klist` az parancsot. Ha nem, használja `kinit` a parancsot a Kerberos-hitelesítés elindításához.
+1. A sikeres Kerberos-hitelesítés ellenőrzéséhez használja az `klist` parancsot. Ha nem, használja `kinit` a parancsot a Kerberos-hitelesítés elindításához.
 
 1. Jelentkezzen be a HDInsight-átjáróba a Azure Data Lake Storage eléréséhez szükséges OAuth-token regisztrálásához:
 
@@ -67,9 +67,9 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
    hdfs dfs -put examples /user/<DomainUser>/
    ```
 
-   Cserélje `DomainUser` le a nevet a tartomány felhasználónevére.
-   Cserélje `DomainUserPath` le a helyére a tartományi felhasználó kezdőkönyvtárának elérési útját.
-   Cserélje `ClusterVersion` le a-t a fürt adatplatformjának verziójára.
+   Cserélje le `DomainUser` a nevet a tartomány felhasználónevére.
+   Cserélje le a helyére a `DomainUserPath` tartományi felhasználó kezdőkönyvtárának elérési útját.
+   Cserélje le `ClusterVersion` a-t a fürt adatplatformjának verziójára.
 
 2. Új fájl létrehozásához és szerkesztéséhez használja az alábbi utasítást:
 
@@ -176,7 +176,7 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
     </workflow-app>
     ```
 
-4. Cserélje `clustername` le a nevet a fürt nevére.
+4. Cserélje le a `clustername` nevet a fürt nevére.
 
 5. A fájl mentéséhez válassza a **CTRL + X billentyűkombinációt**. Adja meg az **Y**értéket. Ezután kattintson az **ENTER**gombra.
 
@@ -194,15 +194,15 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
 
      - A kaptár-kiszolgáló 2 és a kaptár Server 1 műveletek futtatnak egy lekérdezést a HDInsight által biztosított minta struktúra-táblán.
 
-     A kaptár-műveletek a hitelesítő adatok szakaszban meghatározott hitelesítő adatokat használják a hitelesítéshez a művelet `cred` elemben található kulcsszó használatával.
+     A kaptár-műveletek a hitelesítő adatok szakaszban meghatározott hitelesítő adatokat használják a hitelesítéshez a `cred` művelet elemben található kulcsszó használatával.
 
-6. A következő parancs használatával másolja a `workflow.xml` fájlt a következőre: `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`
+6. A következő parancs használatával másolja a fájlt a következőre `workflow.xml` `/user/<domainuser>/examples/apps/map-reduce/workflow.xml` :
 
     ```bash
     hdfs dfs -put workflow.xml /user/<domainuser>/examples/apps/map-reduce/workflow.xml
     ```
 
-7. Cserélje `domainuser` le a nevet a tartomány felhasználónevére.
+7. Cserélje le a `domainuser` nevet a tartomány felhasználónevére.
 
 ## <a name="define-the-properties-file-for-the-oozie-job"></a>A Oozie-feladatokhoz tartozó tulajdonságok fájljának megadása
 
@@ -230,11 +230,11 @@ A Oozie munkafolyamat-definíciókat Apache Hadoop Process Definition Language (
    hiveOutputDirectory2=${nameNode}/user/${user.name}/hiveresult2
    ```
 
-   - Akkor használja `adl://home` az URI- `nameNode` t a tulajdonsághoz, ha Azure Data Lake Storage Gen1 elsődleges fürtös tárolóként. Ha Azure-Blob Storage használ, ezt módosítsa a `wasb://home`következőre:. Ha Azure Data Lake Storage Gen2 használ, akkor módosítsa a következőt: `abfs://home`.
-   - Cserélje `domainuser` le a nevet a tartomány felhasználónevére.  
-   - Cserélje `ClusterShortName` le a helyére a fürt rövid nevét. Ha például a fürt neve https:// *[example link]* sechadoopcontoso.azurehdisnight.net, a a `clustershortname` fürt első hat karaktere: **sechad**.  
-   - Cserélje `jdbcurlvalue` le a elemet a struktúra KONFIGURÁCIÓJÁNAK JDBC URL-címére. Ilyen például a JDBC: hive2://headnodehost: 10001/; transportMode = http.
-   - A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, `Y`írja be a következőt:, majd válassza az **ENTER**billentyűt.
+   - Akkor használja az `adl://home` URI- `nameNode` t a tulajdonsághoz, ha Azure Data Lake Storage Gen1 elsődleges fürtös tárolóként. Ha Azure-Blob Storage használ, váltson a következőre: `wasb://home` . Ha Azure Data Lake Storage Gen2 használ, váltson a következőre: `abfs://home` .
+   - Cserélje le a `domainuser` nevet a tartomány felhasználónevére.  
+   - Cserélje le a helyére `ClusterShortName` a fürt rövid nevét. Ha például a fürt neve https:// *[example link]* sechadoopcontoso.azurehdisnight.net, a a `clustershortname` fürt első hat karaktere: **sechad**.  
+   - Cserélje le a `jdbcurlvalue` elemet a struktúra konfigurációjának JDBC URL-címére. Ilyen például a JDBC: hive2://headnodehost: 10001/; transportMode = http.
+   - A fájl mentéséhez válassza a CTRL + X billentyűkombinációt, írja be a következőt: `Y` , majd válassza az **ENTER**billentyűt.
 
    Ennek a tulajdonságnak a Oozie-feladatok futtatásakor helyileg jelen kell lennie.
 
@@ -331,7 +331,7 @@ A (2) struktúra-kiszolgáló két művelete a Oozie a felhasználó műveletét
 
 ## <a name="configure-user-authorization-in-oozie"></a>Felhasználói hitelesítés konfigurálása a Oozie-ben
 
-A Oozie önmagában olyan felhasználói engedélyezési konfigurációval rendelkezik, amely letilthatja a felhasználók számára más felhasználói feladatok leállítását vagy törlését. A konfiguráció engedélyezéséhez állítsa be a `oozie.service.AuthorizationService.security.enabled` következőt: `true`. 
+A Oozie önmagában olyan felhasználói engedélyezési konfigurációval rendelkezik, amely letilthatja a felhasználók számára más felhasználói feladatok leállítását vagy törlését. A konfiguráció engedélyezéséhez állítsa be a következőt: `oozie.service.AuthorizationService.security.enabled` `true` . 
 
 További információ: az [Apache Oozie telepítése és konfigurálása](https://oozie.apache.org/docs/3.2.0-incubating/AG_Install.html).
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/17/2019
 ms.author: joelpell
-ms.openlocfilehash: cd15df2a7074463789bcf4a2d4de3c41bd012bbb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a093303efe63a051e8e2ff9824a35228e44e1aa
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100549"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652602"
 ---
 # <a name="optimize-performance-on-the-lsv2-series-virtual-machines"></a>A Lsv2-sorozatú virtuális gépek teljesítményének optimalizálása
 
@@ -21,7 +21,7 @@ A Lsv2 sorozatú virtuális gépek számos olyan munkaterhelést támogatnak, am
 
 A Lsv2 sorozatú Virtual Machines (VM-EK) kialakítása maximalizálja az AMD EPYC™ 7551 processzort, hogy a lehető legjobb teljesítményt nyújtsa a processzor, a memória, a NVMe-eszközök és a virtuális gépek között. A hardveres teljesítmény maximalizálása mellett a Lsv2 sorozatú virtuális gépek úgy vannak kialakítva, hogy a Windows-és Linux-operációs rendszerek igényeivel működjenek a hardver és a szoftver jobb teljesítményének növelése érdekében.
 
-A szoftver és a hardver finomhangolása a [Windows Server 2019 Datacenter](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview)optimalizált verzióját eredményezte, amely az Azure Marketplace-en 2018 jelent meg, amely támogatja a maximális teljesítményt a NVMe-eszközökön a Lsv2 sorozatú virtuális gépeken.
+A szoftver és a hardver finomhangolása a [Windows Server 2019 Datacenter](https://www.microsoft.com/cloud-platform/windows-server-pricing)optimalizált verzióját eredményezte, amely az Azure Marketplace-en 2018 jelent meg, amely támogatja a maximális teljesítményt a NVMe-eszközökön a Lsv2 sorozatú virtuális gépeken.
 
 Ez a cikk tippeket és javaslatokat tartalmaz, amelyekkel biztosíthatja, hogy a munkaterhelések és az alkalmazások a virtuális gépek számára tervezett maximális teljesítményt érjenek el. Az ezen a lapon található információk folyamatosan frissülnek, mivel az Azure piactéren egyre több Lsv2 optimalizált rendszerkép kerül be.
 

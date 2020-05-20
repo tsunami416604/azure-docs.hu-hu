@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 2b62ee971c2cff84f60bad1be4304631513fed22
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9384b974463c963cc130e7ca0d4a9ee815a92e53
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82186322"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647723"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>Az Azure Cosmos DB számláinak ismertetése
 
@@ -97,7 +97,7 @@ Bármikor hozzáadhat vagy eltávolíthat Azure-régiókat a világ bármely pon
 
 Tegyük fel, hogy rendelkezik egy Azure Cosmos-tárolóval az USA nyugati régiójában. A tároló a következővel jön létre: 10 000 RU/s, és ebben a hónapban 1 TB adat tárolására kerül. Tegyük fel, hogy három régiót (az USA keleti régiója, Észak-Európa és Kelet-Ázsia) vesz fel az Azure Cosmos-fiókjába, amelyek mindegyike azonos tárterülettel és átviteli sebességgel rendelkezik. A teljes havi számla a következő lesz (feltéve, hogy havonta 30 nap van megadva). A számla a következőképpen alakul: 
 
-|**Elem** |**Használat (hónap)** |**Rate (Egységár)** |**Havi költség** |
+|**Item** |**Használat (hónap)** |**Rate (Egységár)** |**Havi költség** |
 |---------|---------|---------|-------|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz      | 10K RU/s * 24 * 30    |$0,008/100 RU/s/óra   |$576|
 |Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia       | 3 * 10K RU/mp * 24 * 30    |$0,008/100 RU/s/óra  |$1 728|
@@ -111,7 +111,7 @@ Tegyük fel, hogy rendelkezik egy Azure Cosmos-tárolóval az USA nyugati régi�
 
 Tegyük fel, hogy létrehoz egy Azure Cosmos-tárolót az USA nyugati régiójában. A tároló a következővel jön létre: 10 000 RU/s, és ebben a hónapban 1 TB adat tárolására kerül. Tegyük fel, hogy három régiót vesz fel (az USA keleti régiója, Észak-Európa és Kelet-Ázsia), amelyek mindegyike azonos tárterülettel és átviteli sebességgel rendelkezik, és szeretné írni a tárolókat az Azure Cosmos-fiókhoz társított összes régióban. A havi számla összegét a következő módon számítjuk fel:
 
-|**Elem** |**Használat (hónap)**|**Rate (Egységár)** |**Havi költség** |
+|**Item** |**Használat (hónap)**|**Rate (Egységár)** |**Havi költség** |
 |---------|---------|---------|-------|
 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (az összes régió írható)       | 10K RU/s * 24 * 30    |$0,016/100 RU/s/óra    |$1 152 |
 |Adatátviteli számla 3 további régióhoz – az USA keleti régiója, Észak-Európa és Kelet-Ázsia (minden régió írható)        | (3 + 1) * 10K RU/mp * 24 * 30    |$0,016/100 RU/s/óra   |$4 608 |
@@ -181,7 +181,7 @@ Az alábbi ábrán látható, hogy a teljes kiépített átviteli sebesség vál
 
 A teljes havi számla (feltéve, hogy a havi 30 nap/720 óra) a következőképpen lesz kiszámítva:
 
-|**Óra**  |**RU/s** |**Elem** |**Használat (óránként)** |**Költségek** |
+|**Óra**  |**RU/s** |**Item** |**Használat (óránként)** |**Költségek** |
 |---------|---------|---------|-------|-------|
 |[0-100] |D1:10K <br/>D2:30K <br/>C1:20000 |Adatátviteli számla az USA nyugati régiójában lévő tárolóhoz (az összes régió írható)  | `D1: 10K RU/sec/100 * $0.016 * 100 hours = $160` <br/>`D2: 30 K RU/sec/100 * $0.016 * 100 hours = $480` <br/>`C1: 20 K RU/sec/100 *$0.016 * 100 hours = $320` |$960  |
 | | |Átviteli sebesség 2 további régióban: USA keleti régiója, Észak-Európa (az összes régió írható)  |`(2 + 1) * (60 K RU/sec /100 * $0.016) * 100 hours = $2,880`  |$2 880  |
@@ -208,8 +208,8 @@ A Azure Cosmos DB ingyenes csomaggal az első 400 RU/s és 5 GB tárterületet i
 - Most tegyük fel, hogy ugyanabban a fiókban egy másik adatbázist vagy tárolót adunk hozzá, 1000 RU/s-t és 10 GB tárterületet.
 - A számla mostantól a 1000 RU/s és 10 GB tárterület díját is megjeleníti. 
 
-### <a name="billing-example---container-or-database-with-autoscale-throughput"></a>Számlázási példa – tároló vagy adatbázis az autoscale átviteli sebességgel
-- Tegyük fel, hogy egy ingyenes szintű fiókban létrehozunk egy adatbázist vagy egy tárolót, amely engedélyezve van, és a maximális RU/s 4000 RU/s. Ez az erőforrás automatikusan 400 RU/s-4000 RU/s között lesz. 
+### <a name="billing-example---container-with-autoscale-throughput"></a>Számlázási példa – tároló az autoscale átviteli sebességgel
+- Tegyük fel, hogy egy ingyenes szintű fiókban létrehozunk egy olyan tárolót, amely engedélyezve van, és legfeljebb 4000 RU/s. Ez az erőforrás automatikusan 400 RU/s-4000 RU/s között lesz. 
 - Tegyük fel, hogy 1 – óra 10 órában az erőforrás legalább 400 RU/s. A 11. órában az erőforrás akár 1000 RU/s értékre is méretezhető, majd az órán belül 400 RU/s-ra.
 - Az 1 – 10 órában az átviteli sebességért $0 díjat számítunk fel, mivel a 400 RU/s-t az ingyenes szintek fedezik. 
 - A 11. órában érvényes 1000 RU/s-400 RU/s = 600 RU/s lesz számlázva, mivel ez a legmagasabb RU/s az órában. Ez a 6 egység 100 RU/s lesz az óra számára, így az óra teljes átviteli költsége 6 egység * $0,012 = $0,072 lesz. 
@@ -246,7 +246,7 @@ Vegyünk egy másik példát, amelyben a hónap végéig proaktívan kell megbec
 
 |**Átviteli sebesség** | | | |
 |----|----|----|----|
-|Művelettípus| Kérelmek/másodperc| AVG. RU/kérelem| RUs szükséges|
+|Művelet típusa| Kérelmek/másodperc| AVG. RU/kérelem| RUs szükséges|
 |Írás| 100 | 5 | 500|
 |Olvasás| 400| 1| 400|
 

@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépeken lévő SAP HANA adatbázisok biztonsági m
 description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az Azure-beli virtuális gépeken futó SAP HANA adatbázisok felügyeletére és figyelésére vonatkozó általános feladatokat.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: 89fd7f23163d301817e767771257d9bc6f4ed526
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c810a049fafcbce6d4c840557b101e5226343ab7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480062"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660147"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
@@ -64,17 +64,25 @@ A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az ig
 1. A tároló menüjében kattintson a **biztonsági másolati elemek elemre**.
 2. A **biztonsági másolati elemek**területen válassza ki a SAP HANA adatbázist futtató virtuális gépet, majd kattintson a **biztonsági mentés**elemre.
 3. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezt követően kattintson az **OK** gombra.
-4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok** > **folyamatban**vannak. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
+4. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. Az adatbázis méretétől függően a kezdeti biztonsági mentés hosszabb időt is igénybe vehet.
 
 ### <a name="hana-native-client-integration"></a>HANA natív ügyfél-integráció
 
-A HANA natív ügyfelek bármelyikéről indított igény szerinti teljes biztonsági mentések teljes biztonsági mentésként jelennek meg a **biztonsági mentési elemek** lapon.
+#### <a name="backup"></a>Backup
+
+A HANA-beli natív ügyfelektől ( **Backint**) indított, igény szerinti biztonsági mentések a biztonsági mentési **elemek** lapon jelennek meg a biztonsági mentési listán.
 
 ![Legutóbbi biztonsági másolatok futtatása](./media/sap-hana-db-manage/last-backups.png)
 
-Ezek az alkalmi teljes biztonsági másolatok is megjelennek a visszaállítási pontok listájában.
+Ezeket a biztonsági másolatokat a **biztonsági mentési feladatok** lapról is [nyomon követheti](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) .
+
+Ezek az igény szerinti biztonsági másolatok a visszaállítási pontok listájában is megjelennek.
 
 ![Visszaállítási pontok listája](./media/sap-hana-db-manage/list-restore-points.png)
+
+#### <a name="restore"></a>Visszaállítás
+
+A HANA Native-ügyfelektől ( **Backint**használatával) indított visszaállítások a **biztonsági mentési feladatok** lapról is [megfigyelhetők](https://docs.microsoft.com/azure/backup/sap-hana-db-manage#monitor-manual-backup-jobs-in-the-portal) .
 
 ### <a name="run-sap-hana-native-client-backup-on-a-database-with-azure-backup-enabled"></a>Natív ügyfél biztonsági mentésének futtatása az Azure Backup szolgáltatást használó adatbázison SAP HANA
 
@@ -82,7 +90,7 @@ Ha helyi biztonsági mentést szeretne készíteni (a HANA Studio/cockpit haszn�
 
 1. Várjon, amíg befejeződik az adatbázis teljes vagy naplózott biztonsági mentése. Az állapot ellenõrzése SAP HANA Studio/pilótafülkében.
 2. Tiltsa le a naplók biztonsági mentését, és állítsa a biztonsági mentési katalógust a fájlrendszerre a megfelelő adatbázishoz.
-3. Ehhez kattintson duplán a **systemdb** > -**konfiguráció** > elemre, majd**válassza az adatbázis** > **-szűrő (napló)** lehetőséget.
+3. Ehhez kattintson duplán a **systemdb**-konfiguráció elemre, majd  >  **Configuration**  >  **válassza az adatbázis**  >  **-szűrő (napló)** lehetőséget.
 4. A **enable_auto_log_backup** beállítása **nem**értékre.
 5. **Log_backup_using_backint** beállítása **hamis**értékre.
 6. Igény szerint készítsen teljes biztonsági mentést az adatbázisról.

@@ -5,16 +5,17 @@ description: Megtudhatja, hogyan alakíthat át adatokat Azure Machine Learning 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: how-to
+ms.topic: conceptual
 author: peterclu
 ms.author: peterlu
 ms.date: 05/04/2020
-ms.openlocfilehash: 5296ac54cab403ef78b3e8bd32fe5ebe6ea43119
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.custom: designer
+ms.openlocfilehash: 718023424834ffca7a026dc5b3d35b8fb11fe633
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82842876"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83644301"
 ---
 # <a name="transform-data-in-azure-machine-learning-designer-preview"></a>Az adatátalakítás Azure Machine Learning Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -71,7 +72,7 @@ Ebben a szakaszban az [Adatfelosztási modul](algorithm-module-reference/split-d
 
 1. A vászontól jobbra található modul részletei ablaktáblán állítsa be a **felosztási módot** **reguláris kifejezésre**.
 
-1. Adja meg a **reguláris kifejezést**: `\"native-country" United-States`.
+1. Adja meg a **reguláris kifejezést**: `\"native-country" United-States` .
 
     A **reguláris kifejezés** mód egyetlen oszlopot tesztel egy értékhez. További információ az adatfelosztási modulról: a kapcsolódó [algoritmus moduljának hivatkozási lapja](algorithm-module-reference/split-data.md).
 
@@ -111,7 +112,7 @@ Most, hogy a folyamat az adat felosztására van beállítva, meg kell adnia, ho
     > [!NOTE]
     > Ez a cikk azt feltételezi, hogy van hozzáférése az aktuális Azure Machine Learning munkaterülethez regisztrált adattárhoz. Az adattár beállításával kapcsolatos utasításokért lásd: [Kapcsolódás az Azure Storage Serviceshez](how-to-access-data.md#azure-machine-learning-studio).
 
-    Ha nincs adattára, létrehozhat egyet. Ez a cikk például az adatkészletek mentését fogja menteni a munkaterülethez társított alapértelmezett blob Storage-fiókba. Az adatkészleteket egy új mappában fogja `azureml` menteni a tárolóba `data`.
+    Ha nincs adattára, létrehozhat egyet. Ez a cikk például az adatkészletek mentését fogja menteni a munkaterülethez társított alapértelmezett blob Storage-fiókba. Az adatkészleteket `azureml` egy új mappában fogja menteni a tárolóba `data` .
 
 1.  Válassza ki az **adatexportálási** modult az **osztott** adatmodul *jobb*szélső portjához csatlakoztatva.
 
@@ -125,9 +126,9 @@ Most, hogy a folyamat az adat felosztására van beállítva, meg kell adnia, ho
 
     **Fájl formátuma**: CSV
 
-1. Erősítse meg, hogy az **adatexportálási** modul a **felosztott** adatmennyiség bal oldali portjához **csatlakozik.** `/data/us-income`
+1. Erősítse meg, hogy az **adatexportálási** **modul a** **felosztott** adatmennyiség bal oldali portjához csatlakozik `/data/us-income` .
 
-1. Erősítse meg, hogy a megfelelő porthoz csatlakoztatott **adatexportálási** modul **elérési útja** `/data/non-us-income`.
+1. Erősítse meg, hogy a megfelelő porthoz csatlakoztatott **adatexportálási** modul **elérési útja** `/data/non-us-income` .
 
     A folyamatnak és a beállításoknak így kell kinéznie:
     
@@ -155,15 +156,15 @@ A folyamat futásának befejeződése után megtekintheti az eredményeket, ha a
 
 1. A vászon jobb oldalán található modul részletei ablaktáblán válassza a **kimenetek + naplók**lehetőséget. 
 
-1. Válassza a vizualizáció ikon ![megjelenítése ikont](media/how-to-designer-transform-data/visualize-icon.png) az **eredmények DataSet1 elemet**mellett. 
+1. Válassza a vizualizáció ikon ![ megjelenítése ikont az ](media/how-to-designer-transform-data/visualize-icon.png) **eredmények DataSet1 elemet**mellett. 
 
 1. Ellenőrizze, hogy a "natív ország" oszlop csak az "Egyesült Államok" értéket tartalmazza-e.
 
-1. Válassza a vizualizáció ikon ![megjelenítése ikont](media/how-to-designer-transform-data/visualize-icon.png) az **eredmények dataset2**mellett. 
+1. Válassza a vizualizáció ikon ![ megjelenítése ikont az ](media/how-to-designer-transform-data/visualize-icon.png) **eredmények dataset2**mellett. 
 
 1. Ellenőrizze, hogy a "natív ország" oszlop nem tartalmazza-e az "Egyesült Államok" értéket.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ugorja át ezt a szakaszt, ha továbbra is az útmutató 2. részében kívánja folytatni a [modellek újratanítását Azure Machine learning Designer](how-to-retrain-designer.md)használatával.
 

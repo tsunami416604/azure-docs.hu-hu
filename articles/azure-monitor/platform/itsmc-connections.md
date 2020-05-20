@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
-ms.date: 05/24/2018
-ms.openlocfilehash: 0773492c3042a6f8c906aa6ba1bc3c76ea8c0d8f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/12/2020
+ms.openlocfilehash: c09d8d9fd2ef22aeaf791ae44d877a87033318cc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870595"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655921"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM-termékek és-szolgáltatások összekötése IT-szolgáltatásmenedzsmenti csatoló
 Ez a cikk azt ismerteti, hogyan konfigurálható a ITSM terméke/szolgáltatása és a IT-szolgáltatásmenedzsmenti csatoló (ITSMC) közötti kapcsolat a munkaelemek központilag felügyelhető Log Analyticsban. További információ a ITSMC: [Áttekintés](../../azure-monitor/platform/itsmc-overview.md).
@@ -88,7 +88,7 @@ A helyszíni Service Manager Azure-beli ITSMC való összekapcsolásához a Micr
 A Service Manager ITSM-webalkalmazásának beállításához tegye a következőket:
 
 - **Telepítse a webalkalmazást** – telepítse a webalkalmazást, állítsa be a tulajdonságokat, és végezze el a hitelesítést az Azure ad szolgáltatásban. A webalkalmazást a Microsoft által biztosított [automatikus parancsfájl](../../azure-monitor/platform/itsmc-service-manager-script.md) használatával helyezheti üzembe.
-- **A hibrid kapcsolatok** - [konfigurálása manuálisan](#configure-the-hybrid-connection).
+- **A hibrid kapcsolatok konfigurálása**  -  [Konfigurálja manuálisan a](#configure-the-hybrid-connection)-t.
 
 #### <a name="deploy-the-web-app"></a>A webalkalmazás üzembe helyezése
 Az automatizált [parancsfájllal](../../azure-monitor/platform/itsmc-service-manager-script.md) telepítse a webalkalmazást, állítsa be a tulajdonságokat, és végezze el a hitelesítést az Azure ad-vel.
@@ -108,8 +108,8 @@ Mentse az értékeket, amikor ITSMC-vel létesített kapcsolatokat hoz létre.
 
 **A webalkalmazás telepítésének megkeresése**
 
-1. Lépjen **Azure Portal** > **erőforrásokhoz**.
-2. Válassza ki a webalkalmazást, majd kattintson a **Beállítások** > **alkalmazás beállításai**elemre.
+1. Lépjen **Azure Portal**  >  **erőforrásokhoz**.
+2. Válassza ki a webalkalmazást, majd kattintson a **Beállítások**  >  **alkalmazás beállításai**elemre.
 3. Erősítse meg az alkalmazás parancsfájl használatával történő üzembe helyezésének időpontjában megadott Service Manager-példány adatait.
 
 ### <a name="configure-the-hybrid-connection"></a>A hibrid kapcsolatok konfigurálása
@@ -117,7 +117,7 @@ Mentse az értékeket, amikor ITSMC-vel létesített kapcsolatokat hoz létre.
 A következő eljárással konfigurálhatja a hibrid kapcsolatot, amely összekapcsolja a Service Manager példányt a ITSMC az Azure-ban.
 
 1. Keresse meg az Service Manager webalkalmazást az **Azure-erőforrások**területen.
-2. Kattintson a **Beállítások** > **hálózatkezelés**elemre.
+2. Kattintson a **Beállítások**  >  **hálózatkezelés**elemre.
 3. A **hibrid kapcsolatok**alatt kattintson **a hibrid kapcsolatok végpontok konfigurálása**elemre.
 
     ![Hibrid kapcsolat hálózatkezelése](media/itsmc-connections/itsmc-hybrid-connection-networking-and-end-points.png)
@@ -201,10 +201,12 @@ A **ServiceNow-rendszergazdáknak a következőket kell tenniük a ServiceNow-p�
 > A végén kattintson a frissítés gombra.
 > 2) **Javasoljuk, hogy hozzon létre egy belső eljárást annak biztosítására, hogy a kapcsolat életben maradjon:** A jogkivonat frissítésének élettartama alapján. Győződjön meg arról, hogy a következő műveletek végrehajtása a korábbi frissítési jogkivonat várható lejárati ideje (néhány nappal azelőtt, hogy a frissítési jogkivonat élettartama lejár):
 >
->>  1) [ITSM-összekötő konfigurálásának manuális szinkronizálási folyamatának befejezése](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
- >> 2) Vonja vissza a régi frissítési tokent, mivel a régi kulcsok biztonsági okokból való megőrzése nem ajánlott. A ServiceNow panelen keresse meg a rendszer OAuth, mint a tokenek kezelése lehetőséget. A OAuth neve és a lejárati dátum szerint válassza ki a régi tokent a listából. Kattintson a hozzáférés visszavonása, majd a visszavonás lehetőségre.
+> 1. [ITSM-összekötő konfigurálásának manuális szinkronizálási folyamatának befejezése](https://docs.microsoft.com/azure/azure-monitor/platform/itsmc-resync-servicenow)
+> 2. Vonja vissza a régi frissítési tokent, mivel a régi kulcsok biztonsági okokból való megőrzése nem ajánlott. A ServiceNow panelen keresse meg a rendszer OAuth, mint a tokenek kezelése lehetőséget. A OAuth neve és a lejárati dátum szerint válassza ki a régi tokent a listából.
+> ![A SNOW System OAuth definíciója](media/itsmc-connections/snow-system-oauth.png)
+> 3. Kattintson a hozzáférés visszavonása, majd a visszavonás lehetőségre.
 
-- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információ](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
+- Telepítse a Microsoft Log Analytics Integration (ServiceNow app) felhasználói alkalmazását. [További információk](https://store.servicenow.com/sn_appstore_store.do#!/store/application/ab0265b2dbd53200d36cdc50cf961980/1.0.1 ).
 - Integrációs felhasználói szerepkör létrehozása a telepített felhasználói alkalmazáshoz. Az integrációs felhasználói szerepkör létrehozásával kapcsolatos információkat [itt](#create-integration-user-role-in-servicenow-app)találja.
 
 ### <a name="connection-procedure"></a>**Csatlakoztatási eljárás**
@@ -398,8 +400,8 @@ További információ: [ITSM-munkaelemek létrehozása az Azure-riasztásokból]
 Az ügyfél-azonosító/-kulcs Cherwell való létrehozásához kövesse az alábbi eljárást:
 
 1. Jelentkezzen be a Cherwell-példányba rendszergazdaként.
-2. Kattintson a **Biztonság** > **szerkesztése REST API ügyfél beállításai**elemre.
-3. Válassza az **új ügyfél** > -**titkos kulcs**létrehozása lehetőséget.
+2. Kattintson a **Biztonság**  >  **szerkesztése REST API ügyfél beállításai**elemre.
+3. Válassza az **új ügyfél**-  >  **titkos kulcs**létrehozása lehetőséget.
 
     ![Cherwell-felhasználói azonosító](media/itsmc-connections/itsmc-cherwell-client-id.png)
 

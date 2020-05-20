@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: diberry
-ms.openlocfilehash: 86f4eab266aabccd25e1269e1942e535f6af5436
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6d8088f537c4148f780c5f250eda3dcd5198f67f
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591836"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83683915"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>A minták az előrejelzési pontosságot javítják
 A minták úgy vannak kialakítva, hogy javítsák a pontosságot, ha több hosszúságú kimondott szöveg nagyon hasonló.  A minta lehetővé teszi, hogy nagyobb pontosságot szerezzen egy szándékhoz anélkül, hogy sok további hosszúságú kimondott szöveg lenne.
@@ -36,16 +36,16 @@ Ha egy alkalmazás 10 – 20 hosszúságú kimondott szöveg tartalmaz, különb
 A minták a következő helyzeteket oldják meg:
 
 * A cél pontszáma alacsony
-* A megfelelő szándék nem a legfelső pontszám, hanem a legfelső pontszámhoz közeledik. 
+* A megfelelő szándék nem a legfelső pontszám, hanem a legfelső pontszámhoz közeledik.
 
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>A minták nem garantálják a szándékot
 A minták előrejelzési technológiák kombinációját használják. A sablonhoz való Kimondás szándékának beállítása a mintázatban nem garantálja a szándék-előrejelzést, de ez egy erős jel.
 
 <a name="patterns-do-not-improve-entity-detection"/></a>
 
-## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>A minták nem javítják a géppel megtanult entitások észlelését
+## <a name="patterns-do-not-improve-machine-learning-entity-detection"></a>A minták nem javítják a gépi tanulási entitások észlelését
 
-A mintázat elsődleges célja, hogy segítse a szándékok és a szerepkörök előrejelzését. A _minta. minden_ entitás a szabad formátumú entitások kinyerésére szolgál. Míg a minták entitásokat használnak, a minta nem segít felderíteni a géppel megtanult entitásokat.
+A mintázat elsődleges célja, hogy segítse a szándékok és a szerepkörök előrejelzését. A _minta. minden_ entitás a szabad formátumú entitások kinyerésére szolgál. Míg a minták entitásokat használnak, a minta nem segít a gépi tanulási entitások észlelésében.
 
 Ne várja meg a továbbfejlesztett entitások előrejelzését, ha több hosszúságú kimondott szöveg összecsuk egyetlen mintára. Az egyszerű entitások a hosszúságú kimondott szöveg hozzáadásához vagy a listához tartozó entitások használata más, mint a minta nem fog tüzet használni.
 
@@ -59,7 +59,7 @@ Mivel a hosszúságú kimondott szöveg-hez elég példa, a LUIS a minták nélk
 A rendszer a mintázatot először a mintában lévő entitások észlelése alapján rendezi, majd ellenőrzi a minta többi szövegét és sorrendjét. Az entitásokat a minta alapján kell megfeleltetni. A minta a token szintjén, nem pedig a karakter szintjén lesz alkalmazva.
 
 ## <a name="pattern-only-apps"></a>Csak minta alkalmazások
-Olyan alkalmazásokat hozhat létre, amelyek nem rendelkeznek példa hosszúságú kimondott szöveg, feltéve, hogy az egyes szándékok esetében minta van. Csak minta alkalmazás esetében a minta nem tartalmazhat géppel megtanult entitásokat, mert ezek a hosszúságú kimondott szöveg példaként szükségesek.
+Olyan alkalmazásokat hozhat létre, amelyek nem rendelkeznek példa hosszúságú kimondott szöveg, feltéve, hogy az egyes szándékok esetében minta van. Csak minta alkalmazás esetében a minta nem tartalmazhat gépi tanulásra vonatkozó entitásokat, mert ezekhez például hosszúságú kimondott szöveg szükséges.
 
 ## <a name="patternany-entity"></a>Pattern.any entitás
 

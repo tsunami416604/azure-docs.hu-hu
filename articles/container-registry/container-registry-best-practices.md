@@ -3,12 +3,12 @@ title: Ajánlott eljárások a beállításjegyzék használatához
 description: Az ajánlott eljárások követésével megismerkedhet az Azure Container Registry leghatékonyabb használatával.
 ms.topic: article
 ms.date: 09/27/2018
-ms.openlocfilehash: 233d84b8bfa6f3d8c800e76032ef74a643db11ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc84fb8cb98f58e28570095370d55a7358ce3a99
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247071"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83682682"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Az Azure Container Registry ajánlott eljárásai
 
@@ -33,7 +33,7 @@ A georeplikáció használatának megismeréséhez tekintse meg háromrészes ú
 
 Az adattárnévterek használatával engedélyezheti egyetlen regisztrációs adatbázis megosztását több csoporttal a szervezeten belül. A regisztrációs adatbázisok több környezeten és csoporton keresztül is megoszthatók. Az Azure Container Registry támogatja a beágyazott névtereket, amelyekkel elkülöníthetők a csoportok.
 
-Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati szintű, `aspnetcore`például a-ben használt rendszerképek a legfelső szintű névtérbe kerülnek, míg a termékek és a marketing csoportok által birtokolt tároló lemezképek saját névtereket használnak.
+Vegyük példaként a következő tárolórendszerkép-címkéket. A vállalati szintű, például a-ben használt rendszerképek `aspnetcore` a legfelső szintű névtérbe kerülnek, míg a termékek és a marketing csoportok által birtokolt tároló lemezképek saját névtereket használnak.
 
 - *contoso.azurecr.io/aspnetcore:2.0*
 - *contoso.azurecr.io/products/widget/web:1*
@@ -53,13 +53,13 @@ Azure tárolóregisztrációs adatbázissal való hitelesítéskor két fő forg
 | Típus | Példaforgatókönyv | Javasolt módszer |
 |---|---|---|
 | Egyéni identitás | Egy fejlesztő rendszerképeket hív le a saját számítógépére, vagy helyez át onnan. | [az acr login](/cli/azure/acr?view=azure-cli-latest#az-acr-login) |
-| Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Egyszerű szolgáltatásnév](container-registry-authentication.md#service-principal) |
+| Távfelügyelt/szolgáltatásos identitás | Buildelési és üzembe helyezési folyamatok, amelyekben a felhasználó nem vesz közvetlenül részt. | [Szolgáltatásnév](container-registry-authentication.md#service-principal) |
 
 Az Azure Container Registry-vel kapcsolatos részletes információk: [Hitelesítés Azure tárolóregisztrációs adatbázissal](container-registry-authentication.md).
 
 ## <a name="manage-registry-size"></a>Regisztrációs adatbázis méretének kezelése
 
-A [tárolóregisztrációs adatbázis egyes termékváltozatainak][container-registry-skus] tárolási korlátai szándékaink szerint a tipikus forgatókönyvekhez igazodnak: **Alapszintű** az induláshoz, **Standard** az üzemi alkalmazások többségéhez és **Prémium** a nagy kapacitású teljesítményhez és a [georeplikációhoz][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
+Az egyes [tárolók beállításjegyzék-szolgáltatási szintjeinek][container-registry-skus] tárolási korlátozásai egy tipikus forgatókönyvhöz igazodnak: **alapszintű** , első lépések, **standard** az üzemi alkalmazások többsége számára, és **prémium** szintű teljesítmény és [földrajzi replikálás][container-registry-geo-replication]. A regisztrációs adatbázis élettartama során érdemes felügyelnie annak méretét a nem használt tartalmak törlésével.
 
 Használja az Azure CLI-parancsot az [ACR show-][az-acr-show-usage] use paranccsal a beállításjegyzék aktuális méretének megjelenítéséhez:
 
@@ -86,7 +86,7 @@ A képadatok beállításjegyzékből való törlésével kapcsolatos részletek
 
 ## <a name="next-steps"></a>További lépések
 
-Az Azure Container Registry több szinten, azaz termékváltozatban érhető el, melyek különféle képességeket biztosítanak. Részletek az elérhető termékváltozatokról: [Az Azure Container Registry termékváltozatai](container-registry-skus.md).
+Azure Container Registry több szinten is elérhető, amelyek mindegyike különböző képességeket biztosít. Az elérhető szolgáltatási szintek részletes ismertetését lásd: [Azure Container Registry szolgáltatási szintek](container-registry-skus.md).
 
 <!-- IMAGES -->
 [delete-repository-portal]: ./media/container-registry-best-practices/delete-repository-portal.png

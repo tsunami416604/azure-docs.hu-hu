@@ -2,13 +2,13 @@
 title: Tudásbázis szerkesztése – QnA Maker
 description: A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élményt biztosítson a Tudásbázis tartalmának kezeléséhez.
 ms.topic: conceptual
-ms.date: 04/06/2020
-ms.openlocfilehash: 3cf5dcedd4d2cfa82fda002b71abca1e5bea4b18
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/19/2020
+ms.openlocfilehash: 018e733dda06b7785b0a87ea3e08009967213134
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756721"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650806"
 ---
 # <a name="edit-qna-pairs-in-your-knowledge-base"></a>QnA-párok szerkesztése a Tudásbázisban
 
@@ -16,21 +16,68 @@ A QnA Maker lehetővé teszi, hogy egy könnyen használható szerkesztési élm
 
 A QnA párokat egy adatforrásból, például egy fájlból vagy URL-címről, vagy szerkesztői forrásként kell hozzáadni. A szerkesztői forrás azt jelzi, hogy a QnA pár kézzel lett hozzáadva a QnA-portálhoz. Az összes QnA-pár szerkesztésre elérhető.
 
+<a name="add-an-editorial-qna-set"></a>
+
 ## <a name="add-an-editorial-qna-pair"></a>Szerkesztői QnA pár hozzáadása
+
 1. Jelentkezzen be a [QnA-portálra](https://www.qnamaker.ai/), majd válassza ki azt a tudásbázist, amelyhez hozzá szeretné adni a QnA-párosítást.
 1. A Tudásbázis **Szerkesztés** lapján válassza a **QnA-pár hozzáadása** lehetőséget egy új QnA-pár hozzáadásához.
 
-1. Az új QnA-pár sorban adja hozzá a szükséges **kérdések** és **válaszok** mezőket. A többi mező megadása nem kötelező. Az összes mező bármikor módosítható.
+    > [!div class="mx-imgBorder"]
+    > ![QnA pár hozzáadása](../media/qnamaker-how-to-edit-kb/add-qnapair.png)
 
-1. Szükség esetén **alternatív megfogalmazást**is hozzáadhat. Az alternatív megfogalmazás a kérdés bármilyen formája, amely jelentősen eltér az eredeti kérdéstől, de ugyanazt a választ kell biztosítania.
+1. Az új QnA-pár sorban adja hozzá a szükséges kérdések és válaszok mezőket. A többi mező megadása nem kötelező. Az összes mező bármikor módosítható.
+
+1. Szükség esetén **[alternatív megfogalmazást](../Quickstarts/add-question-metadata-portal.md#add-additional-alternatively-phrased-questions)** is hozzáadhat. Az alternatív megfogalmazás a kérdés bármilyen formája, amely jelentősen eltér az eredeti kérdéstől, de ugyanazt a választ kell biztosítania.
 
     Ha a Tudásbázis közzé van téve, és az [aktív tanulás](use-active-learning.md) be van kapcsolva, a QnA Maker összegyűjti az Ön által elfogadott alternatív megfogalmazás-beállításokat. Ezek a beállítások az előrejelzés pontosságának növeléséhez vannak kiválasztva.
 
-1. Szükség esetén **metaadatokat**is hozzáadhat. A metaadatok megtekintéséhez válassza a helyi menü **beállítások megtekintése** elemét. A metaadatok olyan szűrőket biztosítanak a válaszokhoz, amelyeket az ügyfélalkalmazás, például egy csevegési robot biztosít.
+1. Szükség esetén **[metaadatokat](../Quickstarts/add-question-metadata-portal.md#add-metadata-to-filter-the-answers)** is hozzáadhat. A metaadatok megtekintéséhez válassza a helyi menü **beállítások megtekintése** elemét. A metaadatok olyan szűrőket biztosítanak a válaszokhoz, amelyeket az ügyfélalkalmazás, például egy csevegési robot biztosít.
 
-1. Igény szerint hozzáadhat **követő utasításokat**is. A követő kérések további beszélgetési útvonalakat biztosítanak az ügyfélalkalmazás számára a felhasználónak való megjelenítéshez.
+1. Igény szerint hozzáadhat **[követő utasításokat](multiturn-conversation.md)** is. A követő kérések további beszélgetési útvonalakat biztosítanak az ügyfélalkalmazás számára a felhasználónak való megjelenítéshez.
 
 1. Válassza a **Mentés és a betanítás** lehetőséget az új QnA-párokat tartalmazó előrejelzések megjelenítéséhez.
+
+## <a name="rich-text-editing-for-answer"></a>Rich Text formátumú szerkesztés a válaszhoz
+
+A válasz szövegének gazdag szöveges szerkesztése lehetővé teszi, hogy egy egyszerű eszköztáron Markdown a stílusát.
+
+1. Válassza ki a válasz szövegmezőjét, a Rich Text szerkesztő eszköztár a QnA pár sorában jelenik meg.
+
+    > [!div class="mx-imgBorder"]
+    > ![Képernyőkép a Rich Text Szerkesztőről, amely egy QnA-sor kérdését és válaszát jelöli.](../media/qnamaker-how-to-edit-kb/rich-text-control-qna-pair-row.png)
+
+    A válaszban már megjelenő szöveg helyesen jelenik meg, amikor a felhasználó egy robottól fogja látni.
+
+1. Szerkessze a szöveget. A Rich Text szerkesztési eszköztáron válassza a tulajdonságok formázása lehetőséget, vagy a váltás funkció használatával váltson a Markdown szintaxisra.
+
+    > [!div class="mx-imgBorder"]
+    > ![A Rich Text szerkesztővel szövegeket írhat és formázhat, és a Mentés másként Markdown is elvégezheti.](../media/qnamaker-how-to-edit-kb/rich-text-display-image.png)
+
+    |Rich Text Editor-funkciók|Billentyűparancsok|
+    |--|--|
+    |Váltás a Rich Text szerkesztő és a Markdown között. `</>`|CTRL+M|
+    |Félkövér. **B**|CTR és LB|
+    |Dőlt, dőlt betűvel jelezve ** _I_**|CTRL+I|
+    |Rendezetlen listák||
+    |Rendezett lista||
+    |Bekezdés stílusa||
+    |Rendszerkép – nyilvános URL-címről elérhető rendszerkép hozzáadása.|CTRL + G|
+    |Hivatkozás hozzáadása nyilvánosan elérhető URL-címhez.|CTRL + K|
+    |Hangulatjel – Hozzáadás a hangulatjelek közül kiválasztva.|CTRL + E|
+    |Speciális menü – Visszavonás|CTRL+Z|
+    |Speciális menü – újra|CTRL+Y|
+
+1. Adjon hozzá egy képet a válaszhoz a Rich Text eszköztár rendszerkép ikonjának használatával. A helyszíni szerkesztőnek szüksége van a nyilvánosan elérhető rendszerkép URL-címére és a képhez tartozó helyettesítő szövegre.
+
+
+    > [!div class="mx-imgBorder"]
+    > ![A Rich Text Editor használatával adjon hozzá egy nyilvánosan elérhető rendszerképet és annak helyettesítő szövegét.](../media/qnamaker-how-to-edit-kb/add-image-url-alternate-text.png)
+
+1. Adja meg az URL-címre mutató hivatkozást a válaszban szereplő szöveg kiválasztásával, majd válassza a hivatkozás ikont az eszköztáron, vagy válassza a hivatkozás ikont az eszköztáron, majd írja be az új szöveget és az URL-címet.
+
+    > [!div class="mx-imgBorder"]
+    > ![A Rich Text Editor használatával adjon hozzá egy nyilvánosan elérhető rendszerképet és annak helyettesítő szövegét.](../media/qnamaker-how-to-edit-kb/add-link-to-answer-rich-text-editor.png)
 
 ## <a name="edit-a-qna-pair"></a>QnA pár szerkesztése
 
@@ -70,6 +117,12 @@ Adja hozzá a metaadatokat úgy, hogy először kiválasztja a **megtekintési b
 A módosítások elvesztésének elkerülése érdekében időnként válassza a **Mentés és a betanítás** lehetőséget.
 
 ![Metaadatok hozzáadása](../media/qnamaker-how-to-edit-kb/add-metadata.png)
+
+## <a name="when-to-use-rich-text-editing-versus-markdown"></a>Mikor kell használni a Rich Text szerkesztési és a Markdown
+
+A válaszok [gazdag szövegű szerkesztése](#add-an-editorial-qna-set) lehetővé teszi, hogy a szerzőként egy formázási eszköztár használatával gyorsan kiválassza és formázza a szöveget.
+
+A [Markdown](../reference-markdown-format.md) jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/CD-folyamat vagy a [Batch-tesztelés](../Quickstarts/batch-testing.md)részeként importálandó tudásbázisok létrehozásához.
 
 ## <a name="next-steps"></a>További lépések
 

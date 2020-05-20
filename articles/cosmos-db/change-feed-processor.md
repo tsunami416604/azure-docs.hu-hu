@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/13/2020
 ms.reviewer: sngun
-ms.openlocfilehash: aa9b090627b6f27a54b67c361b45b6f99e3a6338
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 584fc48aad6a64f8df54088e6dbfd990e8e112e8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982377"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655300"
 ---
 # <a name="change-feed-processor-in-azure-cosmos-db"></a>A változáscsatorna feldolgozója az Azure Cosmos DB-ben
 
@@ -39,7 +39,7 @@ Ha szeretné jobban megismerni, hogy a változási hírcsatorna processzorának 
 
 ## <a name="implementing-the-change-feed-processor"></a>A változási csatorna processzorának implementálása
 
-A belépési pont mindig a figyelt tároló, amely egy `Container` meghívott `GetChangeFeedProcessorBuilder`példányból áll:
+A belépési pont mindig a figyelt tároló, amely egy `Container` meghívott példányból áll `GetChangeFeedProcessorBuilder` :
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=DefineProcessor)]
 
@@ -50,9 +50,9 @@ Egy delegált példa:
 
 [!code-csharp[Main](~/samples-cosmosdb-dotnet-change-feed-processor/src/Program.cs?name=Delegate)]
 
-Végül meghatároz egy nevet ehhez a processzor `WithInstanceName` -példányhoz a és a használatával, amely a bérlet állapotának fenntartására szolgáló tároló. `WithLeaseContainer`
+Végül meghatároz egy nevet ehhez a processzor-példányhoz a `WithInstanceName` és a használatával, amely a bérlet állapotának fenntartására szolgáló tároló `WithLeaseContainer` .
 
-A `Build` hívással megadhatja a processzor azon példányát, amelyet `StartAsync`elindíthat a hívásával.
+A hívással megadhatja `Build` a processzor azon példányát, amelyet elindíthat a hívásával `StartAsync` .
 
 ## <a name="processing-life-cycle"></a>Életciklus feldolgozása
 
@@ -71,15 +71,21 @@ Ha meg szeretné akadályozni, hogy a Change feed processzora "ragadt" állapotb
 
 Emellett a váltás a hírcsatorna- [kalkulátor](how-to-use-change-feed-estimator.md) használatával című cikk segítségével figyelheti a változási csatornához tartozó példányok állapotát, ahogy beolvasták a változási csatornát. A figyelésen kívül, ha a Change feed processzora "ragadt" állapotba kerül, és folyamatosan próbálkozik ugyanazzal a módosítással, akkor azt is megtudhatja, hogy a változási csatorna processzora a rendelkezésre álló erőforrások, például a processzor, a memória és a hálózati sávszélesség miatt marad-e hátra.
 
+## <a name="deployment-unit"></a>Üzembe helyezési egység
+
+Egyetlen módosítási hírcsatorna-feldolgozó egység egy vagy több példányból áll, amelyek azonos `processorName` és címbérleti tároló-konfigurációval rendelkeznek. Több üzembe helyezési egység is megadható, amelyek mindegyike különböző üzleti folyamattal rendelkezik a változásokhoz és minden központi telepítési egységhez, amely egy vagy több példányból áll. 
+
+Előfordulhat például, hogy egy olyan központi telepítési egységgel rendelkezik, amely egy külső API-t indít el bármikor, ha megváltozik a tárolóban. Egy másik telepítési egység valós időben helyezheti át az adatátvitelt, valahányszor módosul a változás. Ha a figyelt tárolóban változás történik, az összes üzembe helyezési egység értesítést kap.
+
 ## <a name="dynamic-scaling"></a>Dinamikus méretezés
 
-Ahogy az a bevezetésben is említettük, a változási hírcsatorna processzora több példányon is eloszthatja a számítási kapacitást. Az alkalmazás több példányát is üzembe helyezheti az adatmódosítási folyamattal, és kihasználhatja, az egyetlen kulcsfontosságú követelmény a következő:
+Ahogy korábban említettük, egy üzembe helyezési egységen belül egy vagy több példány is megadható. A központi telepítési egységen belüli számítási eloszlás kihasználása érdekében az egyetlen kulcsfontosságú követelmény a következő:
 
 1. Minden példánynak ugyanazzal a bérlet-tároló konfigurációval kell rendelkeznie.
-1. Minden példánynak ugyanazzal a munkafolyamat-névvel kell rendelkeznie.
-1. Minden példánynak más példánynév (`WithInstanceName`) névvel kell rendelkeznie.
+1. Minden példánynak azonosnak kell lennie `processorName` .
+1. Minden példánynak más példánynév () névvel kell rendelkeznie `WithInstanceName` .
 
-Ha ezt a három feltételt alkalmazza, akkor a módosítási hírcsatorna processzora egyenlő terjesztési algoritmussal osztja szét a bérleti tároló összes bérletét az összes futó példányon és a integrálással számításon keresztül. Egy bérlet csak egy példány tulajdonosa lehet egy adott időpontban, így a példányok maximális száma megegyezik a bérletek számával.
+Ha ezt a három feltételt alkalmazza, akkor a módosítási hírcsatorna processzora egyenlő terjesztési algoritmussal osztja el a bérleti tároló összes bérletét az adott üzembe helyezési egység összes futó példánya és a integrálással számítási szolgáltatás között. Egy bérlet csak egy példány tulajdonosa lehet egy adott időpontban, így a példányok maximális száma megegyezik a bérletek számával.
 
 A példányok száma növelhető és csökkenthető, és a módosítási hírcsatorna processzora a megfelelő újraterjesztéssel dinamikusan módosítja a terhelést.
 
@@ -100,7 +106,7 @@ A felszámított RUs díja, mivel a Cosmos-tárolókban lévő és kívüli adat
 A következő cikkekben további tudnivalókat olvashat a hírcsatorna-feldolgozó szolgáltatással kapcsolatos változásokról:
 
 * [A hírcsatorna változásának áttekintése](change-feed.md)
-* [Hírcsatorna-lekérési modell módosítása](change-feed-pull-model.md)
+* [Változáscsatorna lekérési modellje](change-feed-pull-model.md)
 * [Áttelepítés a Change feed Processor Library webhelyről](how-to-migrate-from-change-feed-library.md)
 * [A változáscsatorna-becslő használata](how-to-use-change-feed-estimator.md)
 * [Változáscsatorna-feldolgozó indításának időpontja](how-to-configure-change-feed-start-time.md)

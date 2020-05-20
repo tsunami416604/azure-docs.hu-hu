@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 11/04/2019
-ms.openlocfilehash: fef3f0347d963b8a7d5fe2f1ca771293e9c3d2a9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb2fbcda7f30db24b876a66df22071f14df74814
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475497"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653249"
 ---
 # <a name="how-to-define-a-machine-learning-task"></a>Gépi tanulási feladat definiálása 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -56,7 +56,7 @@ Osztályozás | Regresszió | Idősoros előrejelzés
 ### <a name="set-the-task-type"></a>A feladat típusának beállítása
 Az automatikus ML-kísérletek feladattípusát az SDK-val vagy a Azure Machine Learning Studióval is beállíthatja.
 
-A kísérlet `task` típusának megadásához használja a `AutoMLConfig` konstruktor paraméterét.
+A `task` `AutoMLConfig` kísérlet típusának megadásához használja a konstruktor paraméterét.
 
 ```python
 from azureml.train.automl import AutoMLConfig
@@ -77,5 +77,5 @@ A feladatot a Azure Machine Learning Studióban állíthatja be az automatikus M
 + További információ a Azure Machine Learning [automatizált ml](concept-automated-ml.md) -ről.
 + További információ az [idősorozat-előrejelzési modell automatikus képzéséről](how-to-auto-train-forecast.md) Azure Machine learning
 + Próbálja ki az [automatizált Machine learning besorolási](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb) oktatóanyagot.
-+ Próbálja ki az [automatizált Machine learning regressziós](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-hardware-performance-explanation-and-featurization/auto-ml-regression-hardware-performance-explanation-and-featurization.ipynb) minta jegyzetfüzetet.
++ Próbálja ki az [automatizált Machine learning regressziós](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/regression-explanation-featurization/auto-ml-regression-explanation-featurization.ipynb) minta jegyzetfüzetet.
 
