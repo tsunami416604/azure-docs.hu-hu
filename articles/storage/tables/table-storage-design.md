@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 8df639eea757c374554fa19e57c43cef79308e98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dba3a6f3ebd7b6675e6d0d90d98a45625ad04ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255144"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656913"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Méretezhető és nagy teljesítményű táblák tervezése
 
@@ -98,7 +98,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 </td>
 </tr>
 <tr>
-<td>Értékesítés</td>
+<td>Sales</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -132,7 +132,7 @@ A fiók neve, a tábla neve és a **PartitionKey** együtt azonosítja azt a tá
 
 A Table service egy vagy több teljes partíciót, a szolgáltatás pedig a csomópontok közötti dinamikusan terheléselosztást végez. Ha egy csomópont terhelés alatt van, a Table szolgáltatás *feloszthatja* az adott csomópont által kiszolgált partíciók tartományát különböző csomópontokra. Ha a forgalom alá esik, a szolgáltatás *egyesítheti* a partíciók tartományait a csendes csomópontokból egyetlen csomópontra.  
 
-További információ a Table service belső adatairól, valamint arról, hogy a szolgáltatás hogyan kezelje a partíciókat, a papír [Microsoft Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia mellett](https://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx).  
+További információ a Table service belső adatairól, valamint arról, hogy a szolgáltatás hogyan kezelje a partíciókat, a papír [Microsoft Azure Storage: magas rendelkezésre állású felhőalapú tárolási szolgáltatás erős konzisztencia mellett](https://docs.microsoft.com/archive/blogs/windowsazurestorage/sosp-paper-windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency).  
 
 ## <a name="entity-group-transactions"></a>Entitás-csoport tranzakciói
 Az Table serviceban az Entity Transactions (EGTs) az egyetlen beépített mechanizmus, amellyel több entitáson végezheti el az Atomic-frissítéseket. A EGTs néha *Batch-tranzakcióknak*is nevezzük. A EGTs csak ugyanabban a partícióban tárolt entitásokban működhetnek (azaz ugyanazon a partíciós kulccsal osztoznak egy adott táblában). Így bármikor megkövetelheti, hogy az atomi tranzakciós viselkedés több entitásban is legyen, gondoskodnia kell arról, hogy ezek az entitások ugyanabban a partícióban legyenek. Ez gyakran indokolja, hogy több entitást is tartson ugyanabban a táblában (és partícióban), és ne használjon több táblát a különböző típusú entitásokhoz. Egyetlen EGT legfeljebb 100 entitáson működhet.  Ha több párhuzamos EGTs küld a feldolgozáshoz, akkor fontos, hogy a EGTs ne működjenek olyan entitásokon, amelyek a EGTs-ben közösek. Ellenkező esetben a feldolgozás késleltethető lehet.

@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: e4d578596471153e4fc0e37d3ca093685326ecc7
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 0e45e832def4073f22a160b95447afb1b10ef77a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791765"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657388"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -37,10 +37,11 @@ Miután létrehozta az előfizetéséhez tartozó Azure Cosmos-fiókot, a fiókb
 > Ha többet szeretne megtudni a tárolási vagy átviteli sebességre vonatkozó magasabb korlátot igénylő munkaterhelések kezelésével kapcsolatos ajánlott eljárásokról, olvassa el [a szintetikus partíciós kulcs létrehozása](synthetic-partition-keys.md)című témakört.
 >
 
-A Cosmos-tárolónak (vagy a megosztott átviteli sebesség adatbázisának) legalább 400 RUs-nek kell lennie. Ahogy a tároló növekszik, a minimálisan támogatott átviteli sebesség az alábbi tényezőktől függ:
+A Cosmos-tárolónak (vagy a megosztott átviteli sebességű adatbázisnak) legalább 400 RU/s-nek kell lennie. Ahogy a tároló növekszik, a minimálisan támogatott átviteli sebesség az alábbi tényezőktől függ:
 
-* A tárolón megadható minimális átviteli sebesség a tárolón kiépített maximális átviteli sebességtől függ. Ha például az átviteli sebesség a 10000 RUs értékre lett növelve, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 1000 RUs
-* A megosztott átviteli sebességű adatbázis minimális átviteli sebessége a megosztott átviteli sebességű adatbázisban korábban létrehozott tárolók teljes számától függ, amelyet a rendszer az 100 RUs/tárolón mért. Ha például öt tárolót hozott létre egy megosztott átviteli sebességű adatbázison belül, az átviteli sebességnek legalább 500 RUs-nek kell lennie
+* A tárolón már üzembe helyezett maximális átviteli sebesség. Ha például az átviteli sebesség 50 000 RU/s értékre nőtt, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 500 RU/s
+* Az aktuális tárterület GB-ban a tárolóban. Ha például a tároló 100 GB tárhellyel rendelkezik, akkor a lehető legalacsonyabb kiépített átviteli sebesség a következő lesz: 1000 RU/s
+* A megosztott átviteli sebességű adatbázis minimális átviteli sebessége a megosztott átviteli sebességű adatbázisban korábban létrehozott tárolók teljes számától függ, a tárolók esetében 100 RU/s. Ha például öt tárolót hozott létre egy megosztott átviteli sebességű adatbázison belül, az átviteli sebességnek legalább 500 RU/s-nek kell lennie
 
 A tárolók vagy adatbázisok aktuális és minimális átviteli sebessége a Azure Portal vagy az SDK-k alapján kérhető le. További információkért lásd: [átviteli sebesség tárolók és adatbázisok](set-throughput.md)számára. 
 
@@ -104,7 +105,7 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 | --- | --- |
 | Elemek maximális mérete | 2 MB (UTF-8 a JSON-ábrázolás hossza) |
 | Partíciós kulcs értékének maximális hossza | 2048 bájt |
-| Azonosító érték maximális hossza | 1023 bájt |
+| AZONOSÍTÓ érték maximális hossza | 1023 bájt |
 | Tulajdonságok maximális száma cikkenként | Nincs gyakorlati korlát |
 | Maximális beágyazási mélység | Nincs gyakorlati korlát |
 | Tulajdonságnév maximális hossza | Nincs gyakorlati korlát |
@@ -140,7 +141,16 @@ Cosmos DB támogatja az eseményindítók végrehajtását az írás során. A s
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Az autoscale kiépített átviteli sebességre vonatkozó korlátok
 
-Az átviteli sebességre és a tárterületre vonatkozó korlátozásokat az autoscale ( [autoscale) című cikkben](provision-throughput-autoscale.md#autoscale-limits) tekintheti meg.
+Az adatátviteli és a tárolási korlátokkal kapcsolatos részletesebb magyarázatért tekintse meg az [autoskálázási](provision-throughput-autoscale.md#autoscale-limits) cikket és a [gyakori kérdéseket](autoscale-faq.md#lowering-the-max-rus) .
+
+| Erőforrás | Alapértelmezett korlát |
+| --- | --- |
+| Maximális RU/s a (z) rendszeren át lehet méretezni |  `Tmax`, a felhasználó által beállított autoscale Max RU/s|
+| A (z) rendszeren minimálisan méretezhető RU/s | `0.1 * Tmax`|
+| Aktuális RU/s a rendszer méretezése  |  `0.1*Tmax <= T <= Tmax`, használat alapján|
+| Minimális számlázható RU/s óránként| `0.1 * Tmax` <br></br>A számlázás óránként történik, ahol a legmagasabb RU/s számlázása a rendszer által az órában, vagy akár `0.1*Tmax` magasabb is. |
+| A tárolóhoz tartozó minimum RU/s-k minimális méretezése  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100)`a legközelebbi 1000 RU/s értékre kerekítve |
+| Az adatbázis minimálisan megengedett maximális száma (RU/s)  |  `MAX(4000, highest max RU/s ever provisioned / 10, current storage in GB * 100,  4000 + (MAX(Container count - 25, 0) * 1000))`, a legközelebbi 1000 RU/s értékre kerekítve. <br></br>Vegye figyelembe, hogy ha az adatbázisa 25-nél több tárolóval rendelkezik, a (z) rendszeren további tárolóként 1000 RU/s értékkel növekszik a minimálisan megengedett maximális érték (RU/s). Ha például 30 tárolóval rendelkezik, a legfeljebb 9000 RU/s értékkel állítható be a legalacsonyabb méretezési sebesség (900-9000 RU/s).
 
 ## <a name="sql-query-limits"></a>SQL-lekérdezés korlátai
 
@@ -187,7 +197,7 @@ A következő táblázat felsorolja az ingyenes próbaverzióra vonatkozó [kipr
 
 Próbálja ki, Cosmos DB támogatja a globális terjesztést csak az USA középső, Észak-és Délkelet-ázsiai régiójában. Nem hozhatók létre Azure-támogatási jegyek az Azure Cosmos DB-fiókok kipróbálásához. Azonban támogatást biztosítanak a meglévő támogatási csomagokkal rendelkező előfizetőknek.
 
-## <a name="free-tier-account-limits"></a>Ingyenes szintű fiókok korlátai
+## <a name="free-tier-account-limits"></a>Ingyenes szintű fiókok korlátozásai
 A következő táblázat felsorolja az [ingyenes szintű fiókok Azure Cosmos db](optimize-dev-test.md#azure-cosmos-db-free-tier) korlátozásait.
 
 | Erőforrás | Alapértelmezett korlát |

@@ -3,12 +3,12 @@ title: Az Azure Backup támogatási mátrixa
 description: Összefoglalja a Azure Backup szolgáltatás támogatási beállításait és korlátozásait.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: cc817c1833c4c9aedcbc5fa111de694fab715c43
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: faf7abf23d196b389531803c519368b5d474aeb3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801263"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659380"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Azure Backup támogatási mátrixa
 
@@ -28,7 +28,7 @@ A Azure Backup Recovery Services-tárolókat használ a biztonsági másolatok e
 
 A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerteti:
 
-**Szolgáltatás** | **Részletek**
+**Funkció** | **Részletek**
 --- | ---
 **Tárolók az előfizetésben** | Akár 500 Recovery Services-tároló egyetlen előfizetésben.
 **Tárolóban lévő gépek** | Akár 1 000 Azure-beli virtuális gép egyetlen tárolóban.<br/><br/> Akár 50 MABS-kiszolgáló is regisztrálható egyetlen tárolóban.
@@ -43,7 +43,7 @@ A következő táblázat a Recovery Services-tárolók szolgáltatásait ismerte
 
 A következő mi támogatott, ha biztonsági mentést szeretne készíteni a helyszíni gépekről:
 
-**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
+**Gép** | **A biztonsági mentés** | **Hely** | **Funkciók**
 --- | --- | --- | ---
 **Windows rendszerű gép közvetlen biztonsági mentése a MARS-ügynökkel** | Fájlok, mappák, rendszerállapot | Biztonsági mentés Recovery Services-tárolóba. | Napi három alkalommal történő biztonsági mentés<br/><br/> Nincs alkalmazás-kompatibilis biztonsági másolat<br/><br/> Fájl, mappa, kötet visszaállítása
 **A Linux-gép közvetlen biztonsági mentése a MARS-ügynökkel** | A biztonsági mentés nem támogatott
@@ -56,14 +56,14 @@ A következő mi támogatott, ha biztonsági mentést szeretne készíteni a hel
 
 **Korlát** | **Részletek**
 --- | ---
-**Azure-beli VM-adatlemezek** | Legfeljebb 16 <br> Ha regisztrálni szeretne a virtuális gépek korlátozott előzetes verziójára 16 + lemezzel (akár 32 lemezre), írjon hozzánk a következő helyen:AskAzureBackupTeam@microsoft.com
+**Azure-beli VM-adatlemezek** | Tekintse [meg az Azure virtuális gépek biztonsági mentésének támogatási mátrixát](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Azure-beli virtuális gép adatlemezének mérete** | Az egyes lemezek mérete legfeljebb 32 TB lehet, és a virtuális gép összes lemezének maximális 256 TB-os kombinációja.
 
 ### <a name="azure-vm-backup-options"></a>Azure virtuális gépek biztonsági mentési lehetőségei
 
 Ha az Azure-beli virtuális gépek biztonsági mentését kívánja végezni, a következők támogatottak:
 
-**Gép** | **A biztonsági mentés** | **Hely** | **Szolgáltatások**
+**Gép** | **A biztonsági mentés** | **Hely** | **Funkciók**
 --- | --- | --- | ---
 **Azure virtuális gépek biztonsági mentése virtuálisgép-bővítmény használatával** | Teljes virtuális gép | Biztonsági mentés a tárba. | A bővítmény akkor lett telepítve, ha engedélyezi a virtuális gép biztonsági mentését.<br/><br/> Naponta egyszer készít biztonsági mentést.<br/><br/> App-Aware Backup a Windows rendszerű virtuális gépekhez; fájl-konzisztens biztonsági mentés Linux rendszerű virtuális gépekhez. A Linux rendszerű gépekhez egyéni parancsfájlok használatával is konfigurálhatja az alkalmazások konzisztenciáját.<br/><br/> Virtuális gép vagy lemez visszaállítása.<br/><br/> Nem lehet biztonsági mentést készíteni egy Azure-beli virtuális gépről egy helyszíni helyre.
 **Azure virtuális gépek biztonsági mentése a MARS-ügynök használatával** | Fájlok, mappák, rendszerállapot | Biztonsági mentés a tárba. | Naponta három alkalommal készíthet biztonsági másolatot.<br/><br/> Ha a teljes virtuális gép helyett adott fájlokról vagy mappákról szeretne biztonsági másolatot készíteni, a MARS-ügynök a virtuálisgép-bővítmény mellett is futhat.
@@ -152,9 +152,9 @@ Azure Backup hozzáadta a régiók közötti visszaállítási szolgáltatást a
 | Biztonságimásolat-kezelés típusa | Támogatott                                                    | Támogatott régiók |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Azure VM               | Igen.   Támogatott a 4 TB-nál kisebb lemezzel rendelkező titkosított virtuális gépek és virtuális gépek esetében | Minden Azure-beli nyilvános régió.  |
-| MARS-ügynök/helyszíni | No                                                           | N/A               |
-| SQL/SAP HANA          | No                                                           | N/A               |
-| AFS                    | No                                                           | N/A               |
+| MARS-ügynök/helyszíni | Nem                                                           | N/A               |
+| SQL/SAP HANA          | Nem                                                           | N/A               |
+| AFS                    | Nem                                                           | N/A               |
 
 ## <a name="next-steps"></a>További lépések
 

@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: A Beszédfelismerés dokumentációja
-summary: A beszédfelismerési szolgáltatásból, más néven beszédfelismerésből származó beszéd – szöveg lehetővé teszi a hangadatfolyamok szövegbe való valós idejű és kötegelt átírását.
+summary: A beszédfelismerési szolgáltatásból, más néven beszédfelismerésből származó beszéd – szöveg lehetővé teszi a hangadatfolyamok szövegbe való valós idejű és kötegelt átírását. A további szöveges bevitel lehetővé teszi, hogy valós idejű kiejtési értékelést is biztosítson, és a hangsugárzók visszajelzését adja a hangvételről.
 metadata:
   title: Beszédfelismerési dokumentáció – oktatóanyagok és API-referenciák – Azure Cognitive Services | Microsoft Docs
   titleSuffix: Azure Cognitive Services
@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: f496ba72f4f649a3ed5146f0b74caf3d8110adf9
-  ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+  ms.openlocfilehash: be34def3c7aacc5419071028a3d3085fe69103fa
+  ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
   ms.translationtype: MT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 05/12/2020
-  ms.locfileid: "83201918"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83653479"
 landingContent:
 - title: A beszéd – szöveg
   linkLists:
@@ -38,6 +38,8 @@ landingContent:
       url: quickstarts/speech-to-text-from-file.md
     - text: Blobtárolóban tárolt beszéd felismerése
       url: quickstarts/from-blob.md
+    - text: Kiejtési értékelés a hivatkozás bemenetével
+      url: rest-speech-to-text.md#pronunciation-assessment-parameters
 - title: Fejlesztés a beszéd és a szöveg között
   linkLists:
   - linkListType: how-to-guide
@@ -62,7 +64,7 @@ landingContent:
       url: how-to-custom-speech-train-model.md
     - text: Ember által címkézett átiratok létrehozása
       url: how-to-custom-speech-human-labeled-transcriptions.md
-- title: Referencia
+- title: Hivatkozások
   linkLists:
   - linkListType: reference
     links:

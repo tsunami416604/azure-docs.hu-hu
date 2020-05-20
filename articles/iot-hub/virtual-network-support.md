@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/12/2020
 ms.author: jlian
-ms.openlocfilehash: c0d01ae6507864373a79282476846d6f96adf83b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 61d24ac9f99a7c7b2b4d9ca6f3fd7b0a338341b8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231441"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652362"
 ---
 # <a name="iot-hub-support-for-virtual-networks"></a>IoT Hub virtuális hálózatok támogatása
 
@@ -22,7 +22,7 @@ Ez a cikk bemutatja az VNET-kapcsolati mintát, és azt ismerteti, hogyan állí
 > A cikkben ismertetett IoT Hub szolgáltatások jelenleg a [felügyelt szolgáltatás identitásával létrehozott](#create-an-iot-hub-with-managed-service-identity) IoT hubok számára érhetők el a következő régiókban: USA keleti régiója, az USA déli középső régiója és az USA 2. nyugati régiója.
 
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Alapértelmezés szerint az IoT Hub állomásnév egy nyilvános végpontra mutat, amely nyilvánosan irányítható IP-címmel rendelkezik az interneten keresztül. Ahogy az alábbi ábrán is látható, ez a IoT Hub nyilvános végpont a különböző ügyfelek tulajdonában lévő hubok között van megosztva, és a IoT-eszközök széles körű hálózatokon, valamint a helyszíni hálózatokon keresztül is elérhetők.
 
@@ -46,10 +46,7 @@ Ez a cikk azt ismerteti, hogyan valósíthatók meg ezek a célok a IoT Hub val�
 
 ## <a name="ingress-connectivity-to-iot-hub-using-private-endpoints"></a>Csatlakozás IoT Hub magánhálózati végpontok használatával
 
-A privát végpontok egy olyan magánhálózati IP-cím, amely az Azure-erőforrások elérhetőségét biztosító, az ügyfél tulajdonában lévő VNET van lefoglalva. Ha saját végpontot használ az IoT hub számára, lehetővé teszi a VNET-ben működő szolgáltatások elérését IoT Hub anélkül, hogy forgalmat kellene elküldeni IoT Hub nyilvános végpontjának. Hasonlóképpen, a helyszíni üzemeltetésű eszközök a [virtuális magánhálózati (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy a [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privát kapcsolatok használatával is VNET az Azure-ban, és később a saját IoT hub (saját végpontján keresztül). Ennek eredményeképpen azok az ügyfelek, akik szeretnék korlátozni az IoT hub nyilvános végpontokhoz való kapcsolódást (vagy esetleg teljesen letiltják a szolgáltatást), az [IoT hub tűzfalszabályok](./iot-hub-ip-filtering.md) használatával érhetik el ezt a célt, miközben a magánhálózati végponttal megőrzik a kapcsolatot a hubhoz.
-
-> [!NOTE]
-> Ennek a beállításnak a fő témája a helyszíni hálózaton belüli eszközök. Ez a beállítás nem ajánlott a nagy kiterjedésű hálózatban üzembe helyezett eszközök esetében.
+A privát végpontok egy olyan magánhálózati IP-cím, amely az Azure-erőforrások elérhetőségét biztosító, az ügyfél tulajdonában lévő VNET van lefoglalva. Ha saját végpontot használ az IoT hub számára, lehetővé teszi a VNET-ben működő szolgáltatások elérését IoT Hub anélkül, hogy forgalmat kellene elküldeni IoT Hub nyilvános végpontjának. Hasonlóképpen, a helyszíni üzemeltetésű eszközök a [virtuális magánhálózati (VPN)](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) vagy a [ExpressRoute](https://azure.microsoft.com/services/expressroute/) privát kapcsolatok használatával is VNET az Azure-ban, és később a saját IoT hub (saját végpontján keresztül). Ennek eredményeképpen azok az ügyfelek, akik szeretnék korlátozni az IoT hub nyilvános végpontokhoz való kapcsolódást (vagy esetleg teljesen letiltják a kikapcsolást), az [IoT hub IP-szűrő](./iot-hub-ip-filtering.md) használatával és az Útválasztás konfigurálásával érhetik el ezt a célt, [Ha nem küldenek semmilyen adatnak a beépített végpontnak](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Ez a megközelítés megtartja a kapcsolatot a saját hubhoz az eszközök privát végpontjának használatával. Ennek a beállításnak a fő témája a helyszíni hálózaton belüli eszközök. Ez a beállítás nem ajánlott a nagy kiterjedésű hálózatban üzembe helyezett eszközök esetében.
 
 ![IoT Hub nyilvános végpont](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -95,8 +92,19 @@ Privát végpont beállításához kövesse az alábbi lépéseket:
 
 6. Kattintson a **Tovább gombra: címkék**, és opcionálisan adja meg az erőforráshoz tartozó címkéket.
 
-7. A privát végpont erőforrás létrehozásához kattintson a **felülvizsgálat + létrehozás** lehetőségre.
+7. A privát kapcsolati erőforrás létrehozásához kattintson a **felülvizsgálat + létrehozás** elemre.
 
+### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>A beépített Event hub-kompatibilis végpont nem támogatja a privát végponton keresztüli hozzáférést
+
+A [beépített Event hub-kompatibilis végpont](iot-hub-devguide-messages-read-builtin.md) nem támogatja a privát végponton keresztüli hozzáférést. Ha be van állítva, az IoT hub privát végpontja csak a bejövő kapcsolatokhoz használható. A beépített Event hub-kompatibilis végpontról származó adatok felhasználása csak a nyilvános interneten végezhető el. 
+
+A IoT Hub [IP-szűrője](iot-hub-ip-filtering.md) nem szabályozza a nyilvános hozzáférést a beépített végponthoz. Az IoT hub nyilvános hálózati hozzáférésének teljes blokkolásához a következőket kell tennie: 
+
+1. Magánhálózati végpont-hozzáférés konfigurálása IoT Hubhoz
+1. Nyilvános hálózati hozzáférés kikapcsolása IP-szűrő használatával az összes IP-cím letiltásához
+1. Kapcsolja ki a beépített Event hub-végpontot úgy, [hogy az Útválasztás beállításával nem küldi el az adatküldést](iot-hub-devguide-messages-d2c.md)
+1. A [tartalék útvonal](iot-hub-devguide-messages-d2c.md#fallback-route) kikapcsolása
+1. A kilépések konfigurálása más Azure-erőforrásokhoz az Azure-beli [első felek megbízható szolgáltatásainak](#egress-connectivity-from-iot-hub-to-other-azure-resources) használatával
 
 ### <a name="pricing-private-endpoints"></a>Díjszabás (privát végpontok)
 
@@ -196,7 +204,7 @@ A felügyelt szolgáltatás identitása erőforrás-kiépítési időszakban ren
 }
 ```
 
-`name`Az erőforráshoz `location` `SKU.name` `SKU.tier`tartozó értékek helyettesítése után az Azure CLI használatával telepítheti az erőforrást egy meglévő erőforráscsoporthoz a következő használatával:
+Az erőforráshoz tartozó értékek helyettesítése után `name` `location` `SKU.name` `SKU.tier` Az Azure CLI használatával telepítheti az erőforrást egy meglévő erőforráscsoporthoz a következő használatával:
 
 ```azurecli-interactive
 az deployment group create --name <deployment-name> --resource-group <resource-group-name> --template-file <template-file.json>
@@ -297,7 +305,7 @@ Ehhez a funkcióhoz IoT Hub kapcsolat szükséges a Storage-fiókhoz. Ha tűzfal
 
 3. Navigáljon a Storage-fiók **tűzfalak és virtuális hálózatok** lapjára, és engedélyezze a **hozzáférés engedélyezése a kiválasztott hálózatokból** lehetőséget. A **kivételek** listájában jelölje be a **megbízható Microsoft-szolgáltatások elérésének engedélyezése a Storage-fiók**számára jelölőnégyzetet. Kattintson a **Mentés** gombra.
 
-Mostantól használhatja az Azure IoT-REST API az [importálási exportálási feladatok létrehozásához](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatos információkért. Vegye figyelembe, hogy a kérés törzsében `storageAuthenticationType="identityBased"` kell megadnia a- `inputBlobContainerUri="https://..."` t `outputBlobContainerUri="https://..."` , és a-t és a-t kell használnia a Storage-fiók bemeneti és kimeneti URL-címével.
+Mostantól használhatja az Azure IoT-REST API az [importálási exportálási feladatok létrehozásához](https://docs.microsoft.com/rest/api/iothub/service/jobclient/getimportexportjobs) a tömeges importálási/exportálási funkciók használatával kapcsolatos információkért. Vegye figyelembe, hogy a kérés törzsében kell megadnia a-t, és `storageAuthenticationType="identityBased"` a-t és a-t kell használnia a `inputBlobContainerUri="https://..."` Storage- `outputBlobContainerUri="https://..."` fiók bemeneti és kimeneti URL-címével.
 
 
 Az Azure IoT Hub SDK a szolgáltatás-ügyfél beállításjegyzék-kezelőjében is támogatja ezt a funkciót. A következő kódrészletből megtudhatja, hogyan kezdeményezzen importálási feladatot vagy exportálási feladatot a C# SDK használatával.
@@ -319,9 +327,9 @@ await registryManager.ExportDevicesAsync(
 
 Ha az Azure IoT SDK-k ezen régióra korlátozott verzióját szeretné használni a C#, a Java és a Node. js virtuális hálózati támogatásával:
 
-1. Hozzon létre egy nevű `EnableStorageIdentity` környezeti változót, és `1`állítsa be a értékét a következőre:.
+1. Hozzon létre egy nevű környezeti változót `EnableStorageIdentity` , és állítsa be a értékét a következőre: `1` .
 
-2. Az SDK letöltése: [Java](https://aka.ms/vnetjavasdk) | [C#](https://aka.ms/vnetcsharpsdk) | [Node. js](https://aka.ms/vnetnodesdk)
+2. Az SDK letöltése: [Java](https://aka.ms/vnetjavasdk)  |  [C#](https://aka.ms/vnetcsharpsdk)  |  [Node. js](https://aka.ms/vnetnodesdk)
  
 A Python esetében töltse le a korlátozott verziót a GitHubról.
 

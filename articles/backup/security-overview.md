@@ -3,12 +3,12 @@ title: A biztonsági funkciók áttekintése
 description: Ismerkedjen meg Azure Backup biztonsági képességekkel, amelyek segítenek a biztonsági másolatok adatainak védelmében és a vállalat biztonsági igényeinek kielégítésében.
 ms.topic: conceptual
 ms.date: 03/12/2020
-ms.openlocfilehash: 688573b571c6ce4473f06d4c194795a38a33244b
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 178518f9f04a789f3cb634797cab650e24864337
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82743654"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653801"
 ---
 # <a name="overview-of-security-features-in-azure-backup"></a>A Azure Backup biztonsági funkcióinak áttekintése
 
@@ -40,8 +40,7 @@ Az Azure-beli virtuális gépekről készült biztonsági mentéshez a virtuáli
 
 Mostantól [privát végpontokat](https://docs.microsoft.com/azure/private-link/private-endpoint-overview) is használhat az adatok biztonságos biztonsági mentésére a virtuális hálózaton belüli kiszolgálókról a Recovery Services-tárolóba. A privát végpont egy IP-címet használ a tár VNET, így nem kell kiadnia a virtuális hálózatokat a nyilvános IP-címekhez. Az Azure-beli virtuális gépeken futó SQL-és SAP HANA-adatbázisok biztonsági mentésére és visszaállítására privát végpontok használhatók. A MARS-ügynököt használó helyszíni kiszolgálókhoz is használható.
 
->[!NOTE]
-> Ez a szolgáltatás jelenleg korlátozott rendelkezésre állású. Kérjük, töltse ki [ezt a kérdőívet](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0H3_nezt2RNkpBCUTbWEapUQk5EQ1QxRzVOWDNDS1Y1Q0xLTkdLQ0U0RC4u) , és küldjön [nekünk e-mailt](mailto:azbackupnetsec@microsoft.com) , ha Azure Backup privát végpontokat szeretne használni. A funkció használatának lehetősége a Azure Backup szolgáltatás jóváhagyását képezi.
+További információ a Azure Backup privát végpontokról [itt](https://docs.microsoft.com/azure/backup/private-endpoints)olvasható.
 
 ## <a name="encryption-of-data-in-transit-and-at-rest"></a>Az átvitel és a nyugalmi állapotban lévő adatok titkosítása
 

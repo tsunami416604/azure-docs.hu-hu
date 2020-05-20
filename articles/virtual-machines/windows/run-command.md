@@ -8,18 +8,18 @@ ms.author: robreed
 ms.date: 04/26/2019
 ms.topic: how-to
 manager: carmonm
-ms.openlocfilehash: f4e318281da5cd704d9fbf13c96cbec0a2d1b1b6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6fbe66d8fbbb92c7fb668cc565da8446d97ab0a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82143783"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653610"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-by-using-run-command"></a>PowerShell-parancsfájlok futtatása a Windows rendszerű virtuális gépen a Futtatás parancs használatával
 
 A futtatási parancs funkció a virtuális gép (VM) ügynököt használja PowerShell-parancsfájlok futtatására egy Azure Windows rendszerű virtuális gépen. Ezeket a parancsfájlokat használhatja az általános gépekhez vagy az alkalmazások kezeléséhez. Segítségükkel gyorsan diagnosztizálhatja és elháríthatja a virtuális gépek hozzáférési és hálózati problémáit, és visszaállíthatja a virtuális gépet jó állapotba.
 
- 
+
 
 ## <a name="benefits"></a>Előnyök
 
@@ -45,7 +45,7 @@ A futtatási parancs használatakor a következő korlátozások érvényesek:
 
 ## <a name="available-commands"></a>Elérhető parancsok
 
-Ez a táblázat a Windows rendszerű virtuális gépekhez elérhető parancsok listáját jeleníti meg. A **RunPowerShellScript** parancs használatával bármilyen egyéni parancsfájlt futtathat, amelyet szeretne. Ha az Azure CLI vagy a PowerShell használatával futtat egy parancsot, a `--command-id` vagy `-CommandId` paraméterhez megadott értéknek az alábbi felsorolt értékek egyikének kell lennie. Ha olyan értéket ad meg, amely nem elérhető parancs, a következő hibaüzenet jelenik meg:
+Ez a táblázat a Windows rendszerű virtuális gépekhez elérhető parancsok listáját jeleníti meg. A **RunPowerShellScript** parancs használatával bármilyen egyéni parancsfájlt futtathat, amelyet szeretne. Ha az Azure CLI vagy a PowerShell használatával futtat egy parancsot, a vagy paraméterhez megadott értéknek az `--command-id` `-CommandId` alábbi felsorolt értékek egyikének kell lennie. Ha olyan értéket ad meg, amely nem elérhető parancs, a következő hibaüzenet jelenik meg:
 
 ```error
 The entity was not found in this Azure location
@@ -94,7 +94,7 @@ A parancs kiválasztása után válassza a **Futtatás** parancsot a szkript fut
 
 ## <a name="powershell"></a>PowerShell
 
-Az alábbi példa a [meghívó-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) parancsmag használatával futtat PowerShell-parancsfájlt egy Azure-beli virtuális gépen. A parancsmag arra vár, hogy a `-ScriptPath` paraméterben hivatkozott parancsfájl helyi legyen, ahol a parancsmag fut.
+Az alábbi példa a [meghívó-AzVMRunCommand](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) parancsmag használatával futtat PowerShell-parancsfájlt egy Azure-beli virtuális gépen. A parancsmag arra vár, `-ScriptPath` hogy a paraméterben hivatkozott parancsfájl helyi legyen, ahol a parancsmag fut.
 
 ```azurepowershell-interactive
 Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' -CommandId 'RunPowerShellScript' -ScriptPath '<pathToScript>' -Parameter @{"arg1" = "var1";"arg2" = "var2"}
@@ -102,9 +102,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>A futtatási parancshoz való hozzáférés korlátozása
 
-A futtatási parancsok listázása vagy a parancs részleteinek megjelenítéséhez `Microsoft.Compute/locations/runCommands/read` az előfizetés szintjén kell engedélyt adni. Ez az engedély a beépített [olvasói](../../role-based-access-control/built-in-roles.md#reader) szerepkörhöz és a magasabb szintekhez tartozik.
+A futtatási parancsok listázása vagy a parancs részleteinek megjelenítéséhez `Microsoft.Compute/locations/runCommands/read` engedély szükséges. Ez az engedély a beépített [olvasói](../../role-based-access-control/built-in-roles.md#reader) szerepkörhöz és a magasabb szintekhez tartozik.
 
-A parancs futtatásához az `Microsoft.Compute/virtualMachines/runCommand/action` előfizetés szintjén kell engedélyt adni. Ez az engedély a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepköre és a magasabb szinten van.
+A parancs futtatásához `Microsoft.Compute/virtualMachines/runCommand/action` engedély szükséges. Ez az engedély a [virtuális gép közreműködői](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor) szerepköre és a magasabb szinten van.
 
 Használhatja a [beépített szerepkörök](../../role-based-access-control/built-in-roles.md) egyikét, vagy létrehozhat egy [Egyéni szerepkört](../../role-based-access-control/custom-roles.md) a futtatási parancs használatához.
 

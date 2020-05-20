@@ -11,22 +11,22 @@ ms.date: 04/09/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: d38c0df45da3a751a456846813543a4ce5de98eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c09e9d9f93ead6f894c954f647ebe33918cf41d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416220"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653020"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-synapse-analytics"></a>Erőforrás-kihasználtság és lekérdezési tevékenységek figyelése az Azure szinapszis Analyticsben
 
-Az Azure szinapszis Analytics a Azure Portalon belül gazdag monitorozási lehetőségeket biztosít az adattárház-számítási feladatokra vonatkozóan. Az Azure Portal az ajánlott eszköz az adattárház figyelésére, mivel konfigurálható megőrzési időt, riasztásokat, javaslatokat és testreszabható diagramokat és irányítópultokat biztosít a metrikák és naplók számára. A portál lehetővé teszi az integrációt más Azure monitoring-szolgáltatásokkal, például a Azure Monitor (naplókkal) a log Analytics segítségével, amely átfogó figyelési élményt nyújt a nem csupán az adattárházhoz, hanem a teljes Azure Analytics-platformot is, amely integrált figyelési élményt biztosít. Ez a dokumentáció ismerteti, hogy milyen figyelési funkciók érhetők el az elemzési platform SQL Analytics szolgáltatással való optimalizálásához és kezeléséhez.
+Az Azure szinapszis Analytics a Azure Portalon belül gazdag monitorozási lehetőségeket biztosít az adattárház-számítási feladatokra vonatkozóan. Az Azure Portal az ajánlott eszköz az adattárház figyelésére, mivel konfigurálható megőrzési időt, riasztásokat, javaslatokat és testreszabható diagramokat és irányítópultokat biztosít a metrikák és naplók számára. A portál lehetővé teszi az integrációt más Azure monitoring-szolgáltatásokkal, például a Azure Monitor (naplókkal) a log Analytics segítségével, amely átfogó figyelési élményt nyújt a nem csupán az adattárházhoz, hanem a teljes Azure Analytics-platformot is, amely integrált figyelési élményt biztosít. Ez a dokumentáció ismerteti, hogy milyen figyelési funkciók érhetők el az elemzési platformnak a szinapszis SQL-vel való optimalizálásához és kezeléséhez.
 
 ## <a name="resource-utilization"></a>Erőforrás-használat
 
-A következő metrikák érhetők el az SQL Analytics Azure Portal. Ezek a metrikák [Azure monitoron](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)keresztül vannak felszínben.
+A következő mérőszámok érhetők el a szinapszis SQL-Azure Portalban. Ezek a metrikák [Azure monitoron](../../azure-monitor/platform/data-collection.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#metrics)keresztül vannak felszínben.
 
-| Metrika neve             | Leírás                                                  | Aggregáció típusa |
+| Metrika neve             | Description                                                  | Aggregáció típusa |
 | ----------------------- | ------------------------------------------------------------ | ---------------- |
 | Processzorhasználat (%)          | CPU-kihasználtság az adatraktár összes csomópontja között      | AVG, min, Max    |
 | Adat IO kihasználtsága (%)      | I/o-kihasználtság az adatraktár összes csomópontja között       | AVG, min, Max    |
@@ -54,13 +54,13 @@ A metrikák megtekintésekor megfontolandó szempontok és riasztások beállít
 
 ## <a name="query-activity"></a>Lekérdezési tevékenység
 
-Az SQL Analytics T-SQL használatával történő figyelése során a szolgáltatás a dinamikus felügyeleti nézetek (DMV-EK) készletét biztosítja. Ezek a nézetek akkor hasznosak, ha aktívan hibaelhárítást végez, és azonosítja a teljesítménnyel kapcsolatos szűk keresztmetszeteket.
+Programozási élmény a szinapszis SQL T-SQL-n keresztül történő figyelése során a szolgáltatás a dinamikus felügyeleti nézetek (DMV-EK) készletét nyújtja. Ezek a nézetek akkor hasznosak, ha aktívan hibaelhárítást végez, és azonosítja a teljesítménnyel kapcsolatos szűk keresztmetszeteket.
 
 A szinapszis SQL-re vonatkozó DMV listájának megtekintéséhez tekintse meg ezt a [dokumentációt](../sql/reference-tsql-system-views.md#sql-pool-dynamic-management-views-dmvs). 
 
 ## <a name="metrics-and-diagnostics-logging"></a>Metrikák és diagnosztikai naplózás 
 
-Mindkét metrika és napló exportálható Azure Monitorba, pontosabban a [Azure monitor naplózó](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőt, és a [naplózási lekérdezésekkel](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programozott módon férhet hozzá. Az SQL Analytics naplózási késése körülbelül 10-15 percet vesz igénybe. A késést befolyásoló tényezőkkel kapcsolatos további információkért látogasson el a következő dokumentációra.
+Mindkét metrika és napló exportálható Azure Monitorba, pontosabban a [Azure monitor naplózó](../../azure-monitor/log-query/log-query-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) összetevőt, és a [naplózási lekérdezésekkel](../../azure-monitor/log-query/get-started-portal.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)programozott módon férhet hozzá. A szinapszis SQL-naplózási késése körülbelül 10-15 percet vesz igénybe. A késést befolyásoló tényezőkkel kapcsolatos további információkért látogasson el a következő dokumentációra.
 
 ## <a name="next-steps"></a>További lépések
 

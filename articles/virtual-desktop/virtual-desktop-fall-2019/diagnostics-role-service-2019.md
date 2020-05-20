@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e529144198d0c635e74955e98d47dd46ac4fb733
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615148"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657247"
 ---
 # <a name="identify-and-diagnose-issues"></a>Problémák azonosítása és diagnosztizálása
 
@@ -36,7 +36,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 
 ## <a name="diagnose-issues-with-powershell"></a>Problémák diagnosztizálása a PowerShell-lel
 
-A Windows rendszerű virtuális asztali diagnosztika csak egy PowerShell-parancsmagot használ, de számos opcionális paramétert tartalmaz, amelyek segítenek a problémák szűkítéséhez és elkülönítésében. A következő részben azokat a parancsmagokat sorolja fel, amelyeket a problémák diagnosztizálásához futtathat. A legtöbb szűrő együtt is alkalmazható. A zárójelben `<tenantName>`felsorolt értékeket (például) az adott helyzetre érvényes értékekkel kell helyettesíteni.
+A Windows rendszerű virtuális asztali diagnosztika csak egy PowerShell-parancsmagot használ, de számos opcionális paramétert tartalmaz, amelyek segítenek a problémák szűkítéséhez és elkülönítésében. A következő részben azokat a parancsmagokat sorolja fel, amelyeket a problémák diagnosztizálásához futtathat. A legtöbb szűrő együtt is alkalmazható. A zárójelben felsorolt értékeket (például `<tenantName>` ) az adott helyzetre érvényes értékekkel kell helyettesíteni.
 
 >[!IMPORTANT]
 >A diagnosztikai funkció az egyfelhasználós hibaelhárításhoz használható. A PowerShellt használó összes lekérdezésnek tartalmaznia kell a *-username* vagy a *-tevékenységazonosító* paramétert. A figyelési képességekhez használja a Log Analytics. A diagnosztikai adatok munkaterületre való küldésével kapcsolatos további információkért tekintse meg [a log Analytics használata a diagnosztikai szolgáltatáshoz](diagnostics-log-analytics-2019.md) című témakört. 
@@ -139,6 +139,7 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 
 |Numerikus kód|Hibakód|Javasolt megoldás|
 |---|---|---|
+|1322|ConnectionFailedNoMappingOfSIDinAD|A felhasználó nem tagja Azure Active Directorynak. A hozzáadásához kövesse a [Active Directory felügyeleti központ](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) útmutatását.|
 |3|UnauthorizedAccess|A rendszergazdai PowerShell-parancsmag futtatására megkísérelt felhasználó nem jogosult erre vagy a Felhasználónév elírására.|
 |1000|TenantNotFound|A megadott bérlő neve nem egyezik a meglévő bérlők nevével. Tekintse át a bérlő nevét az elírásokhoz, és próbálkozzon újra.|
 |1006|TenantCannotBeRemovedHasSessionHostPools|A bérlőt nem lehet törölni, amíg objektumokat tartalmaz. Először törölje a munkamenet-gazdagép készleteit, majd próbálkozzon újra.|
@@ -160,6 +161,7 @@ A következő táblázat azokat a gyakori hibákat sorolja fel, amelyeket a rend
 
 |Numerikus kód|Hibakód|Javasolt megoldás|
 |---|---|---|
+|– 2147467259|ConnectionFailedAdErrorNoSuchMember|A felhasználó nem tagja Azure Active Directorynak. A hozzáadásához kövesse a [Active Directory felügyeleti központ](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) útmutatását.|
 |– 2147467259|ConnectionFailedAdTrustedRelationshipFailure|A munkamenet-gazdagép nem megfelelően van csatlakoztatva a Active Directoryhoz.|
 |– 2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|A kapcsolatok sikertelenek voltak, mert a munkamenet-gazdagép nem érhető el. Keresse meg a munkamenet-gazdagép állapotát.|
 |– 2146233088|ConnectionFailedClientDisconnect|Ha gyakran látja ezt a hibát, győződjön meg arról, hogy a felhasználó számítógépe csatlakozik a hálózathoz.|

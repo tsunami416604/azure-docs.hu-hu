@@ -1,28 +1,28 @@
 ---
-title: Piactéri ajánlatok és szolgáltatások közzétételi feltételei | Azure piactér
-description: Ez a cikk azt ismerteti, hogyan lehet az Azure Marketplace-en való közzétevővé válni.
+title: Az Azure Marketplace ajánlat és szolgáltatás listázási követelményei
+description: Ez a cikk az Azure Marketplace-en elérhető új ajánlatok és szolgáltatások listázásával kapcsolatos követelményeket és irányelveket ismerteti.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: ca40e8e00cb72d6ecc3246ad7aef3b3bac4fbedd
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 0c7352ce95edf7c6ec5fad9fe658e01a66d88573
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160477"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657930"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace listázási irányelvei
 
-Ez a dokumentum az Azure Marketplace-en listázható új ajánlatok és szolgáltatások követelményeit és irányelveit tartalmazza.
+Ez a cikk ismerteti az Azure Marketplace-en elérhető új ajánlatok és szolgáltatások listázásának követelményeit és irányelveit.
 
-Minden ajánlatnak meg kell felelnie az "összes ajánlatra vonatkozó követelmények" szakaszban felsorolt követelményeknek.
+Minden ajánlatnak meg kell felelnie az [összes ajánlatra vonatkozó felsorolási követelményekben](#listing-requirements-for-all-offers) felsorolt követelményeknek.
 
 A speciális listaelemekhez további követelmények és ellenőrzőlisták tartoznak, beleértve a következőket: 
 * [Próbaverziós ajánlatra vonatkozó követelmények](#trial-offer-requirements)
-* [SaaS-alkalmazásokra vonatkozó követelmények](#saas-app-requirements)
+* [SaaS-alkalmazásokra vonatkozó követelmények](#saas-application-requirements)
 * [A Container-ajánlat követelményei](#container-offer-requirements)
 * [A tanácsadási ajánlat követelményei](#consulting-offer-requirements)
 
@@ -37,7 +37,7 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 | 5 | Kategóriák és iparágak | <ul><li>A kategóriák megfelelnek a megoldás ajánlatának képességeinek.</li><li>Ne terjesszen olyan kategóriákra, amelyeken a megoldás nem fér el.</li><li>Az optimális iparág vagy az összes kiválasztott iparág (ha nem az optimális iparágak). | <ul><li>Legfeljebb 3 kategória.</li><li>Legfeljebb 3 iparág. |
 | 6 | Képek | <ul><li>Nincs szükség rendszerképre, de ha meg van adni, nagy felbontású képként kell megjeleníteni.</li><li>A rendszerképekre vonatkozó követelmények a Cloud Partner Portal (CPP) és itt láthatók.</li><li>A képernyőképen látható szöveg olvasható, a rendszerkép pedig egyértelmű. | A megoldási ajánlat könnyen értelmezhető egy pillantással. |
 | 7 | Videók | <ul><li>Nincs szükség videóra, de ha meg van adni, hiba nélkül kell visszajátszania.</li><li>Ha meg van adni, előfordulhat, hogy nem hivatkozik a versenytárs vállalatokra, *kivéve* , ha egy áttelepítési megoldást mutat be. |<ul><li>Ideális esetben a hossz 3 perc vagy több.</li><li>A megoldási ajánlat könnyen értelmezhető a videotartalom használatával.</li><li>A megoldás képességeinek bemutatóját biztosítja. |
-| 8 | Lista állapota (művelet meghívása) | <ul><li>A címkét a következő típusok egyikének kell megadnia: <ul><li>*Kapcsolatfelvétel*</li><li>*Trial*/*Test Drive* *Get Trial Now*/*Start Trial*Próbaverzió lekérése – próbaverzió kipróbálása/</li><li>*Buy Now*/*Azonnali* vásárlás</li></ul></ul> | Az ügyfél könnyen megismerheti a következő lépéseket: <ol><li>Próbálja ki a próbaverziót.</li><li>Vásároljon most.</li><li>Vegye fel a kapcsolatot e-mailben vagy telefonszámon, hogy intézkedik a megvalósíthatósági igazolásról (POC), az értékelésről vagy a tájékoztatásról.</li></ol> | 
+| 8 | Lista állapota (művelet meghívása) | <ul><li>A címkét a következő típusok egyikének kell megadnia: <ul><li>*Kapcsolatfelvétel*</li><li>*Próbaverzió* / *Próbaverzió letöltése* / *Próbaverzió indítása* / *Tesztelési meghajtó*</li><li>*Vásárlás most* / Letöltés *most*</li></ul></ul> | Az ügyfél könnyen megismerheti a következő lépéseket: <ol><li>Próbálja ki a próbaverziót.</li><li>Vásároljon most.</li><li>Vegye fel a kapcsolatot e-mailben vagy telefonszámon, hogy intézkedik a megvalósíthatósági igazolásról (POC), az értékelésről vagy a tájékoztatásról.</li></ol> | 
 | 9 | Megoldás díjszabása | A megoldás díjszabási lapjának/részleteinek kell lennie, és a díjszabásnak a partneri megoldás ajánlatának helyi pénznemében kell lennie. | A vásárlói beállítások megadásához több számlázási lehetőség is rendelkezésre áll. |    
 | 10 | Részletek | Az alján található hivatkozások (a Leírás alatt, nem az Azure Marketplace hivatkozásai a bal oldalon) a megoldással kapcsolatos további információkhoz vezethetnek, és nyilvánosan elérhetők és megfelelően jelennek meg. |    Adott elemekre mutató hivatkozások (például a partner webhelyén található spec-lapok) és nem csak a partner kezdőlapja. | 
 | 11 | Megoldás támogatása és Súgó | Hivatkozás a következők legalább egyikére: <ul><li>Telefonszámok</li><li>E-mail-támogatás</li><li>Csevegési ügynökök</li><li>Közösségi fórumok |<ul><li>Az összes támogatási módszer szerepel a felsorolásban.</li><li>A fizetős támogatás díjmentesen használható a *próbaidőszak* vagy a *tesztelési* időszak alatt. | 
@@ -53,7 +53,7 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 
 ---
 
-## <a name="saas-app-requirements"></a>SaaS-alkalmazásokra vonatkozó követelmények
+## <a name="saas-application-requirements"></a>SaaS-alkalmazásokra vonatkozó követelmények
 
 |  | Elem listázása | Alapkövetelmény | Optimális követelmény | 
 |:--- |:--- |:--- |:--- |
@@ -62,7 +62,7 @@ A speciális listaelemekhez további követelmények és ellenőrzőlisták tart
 | 3 | Tesztelési meghajtó | Válassza az *Igen* vagy a *Nem* lehetőséget. | Az ügyfél könnyen megismerheti a következő lépéseket: <ol><li>Próbálja ki a próbaverziót.</li><li>Vásároljon most.</li><li>Kapcsolatfelvétel e-mailben vagy telefonszámon a POC, az értékelés vagy a tájékoztatás megszervezéséhez.</li></ol> |
 | 4 | Kirakat részletei: ajánlat összegzése | Megjelenik az alkalmazás keresési oldalán, és legfeljebb 100 karakterből állhat. | |
 | 5 | Kirakat részletei: iparágak | Iparágak (max. 2): válassza ki azokat az iparágakat, amelyekhez az alkalmazás a legmegfelelőbb és alkalmazható. | |
-| 6 | Ajánlat leírása | <ul><li>Az egyszerű HTML használata megengedett, \<beleértve a p \<>, az \<em>, \<az UL> \<, a Li>, az ol> és a fejléc címkéit. Legfeljebb 3000 karakter.</li><li>2-3 bekezdést tartalmaz.</li><li>A megoldási ajánlat könnyen értelmezhető egy pillantással.</li><li>A Leírás átfogó, és rögzíti a célközönséget, a felhasználói típust, valamint azt, hogy miért fontos (az érték kiosztása).</li><li>A bekezdés narratív formája, rövid mondatokkal, amelyek könnyen megérthetők. | <ul><li>A célként megadott iparág (ha van ilyen).</li><li>A megfelelő stílus formázása minden bekezdéssel együtt, amely egyetlen mondattal vagy kifejezéssel összegzi az alábbi tartalmakat, és szükség esetén felsorolásjeles pontokat használ, hogy kiemelje a legfontosabb előnyöket. A cél az, hogy az olvasó megértse az ajánlatot egy könnyen megtekinthető formátumban, és nem kell a bekezdéseket beolvasnia.</li><li>Az egyes bekezdések között térköz van. Például egy autós brosúra beolvasása. Ez azt mutatja, hogy átfogó, és az ajánlat leírása egyszerűen, technikai szakzsargon nélkül történik. | 
+| 6 | Ajánlat leírása | <ul><li>Az egyszerű HTML használata megengedett, beleértve a \< p>, az \< em>, az \< ul>, a \< Li>, az \< ol> és a fejléc címkéit. Legfeljebb 3000 karakter.</li><li>2-3 bekezdést tartalmaz.</li><li>A megoldási ajánlat könnyen értelmezhető egy pillantással.</li><li>A Leírás átfogó, és rögzíti a célközönséget, a felhasználói típust, valamint azt, hogy miért fontos (az érték kiosztása).</li><li>A bekezdés narratív formája, rövid mondatokkal, amelyek könnyen megérthetők. | <ul><li>A célként megadott iparág (ha van ilyen).</li><li>A megfelelő stílus formázása minden bekezdéssel együtt, amely egyetlen mondattal vagy kifejezéssel összegzi az alábbi tartalmakat, és szükség esetén felsorolásjeles pontokat használ, hogy kiemelje a legfontosabb előnyöket. A cél az, hogy az olvasó megértse az ajánlatot egy könnyen megtekinthető formátumban, és nem kell a bekezdéseket beolvasnia.</li><li>Az egyes bekezdések között térköz van. Például egy autós brosúra beolvasása. Ez azt mutatja, hogy átfogó, és az ajánlat leírása egyszerűen, technikai szakzsargon nélkül történik. | 
 | 7 | Marketing-összetevők | A logók helyesen jelennek meg. | <ul><li>Az embléma egy "Hero-képet" tartalmaz, amely a Azure Portal nagy formátumú képe.</li><li>Emblémák: kicsi (48 &#215; 48 képpont) és nagyméretű (216 &#215; 216 képpont) szükséges.</li><li>A [Hero-rendszerképekre vonatkozó követelmények](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-new-azure-apps-offer).</li><li>Képernyőfelvétel (max. 5): a CPP használatához PNG-kép szükséges, 1280 &#215; 720 képpont felbontással. |
 | 8 | Kategóriák és iparágak | <ul><li>A kategóriák megfelelnek a megoldás-ajánlati lehetőségeknek.</li><li>Válasszon ki legalább egy elemet az előugró ablakban.</li><li>Ne terjesszen olyan kategóriákra, amelyeken a megoldás nem fér el.</li><li>Az optimális iparág vagy az összes kiválasztott iparág (ha nem az optimális iparágak). | Legfeljebb 3 kategória van kiválasztva, ha van ilyen. |
 | 9 | Érdeklődők kezelése | Válassza ki a rendszer helyét, ahol az érdeklődőket tárolni fogja. Lásd: [ügyfél-érdeklődők beszerzése](./partner-center-portal/commercial-marketplace-get-customer-leads.md) a CRM-rendszer összekapcsolásához. |  |

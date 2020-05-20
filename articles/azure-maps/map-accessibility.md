@@ -8,12 +8,12 @@ ms.date: 12/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 5fa9e159fa0ac76ce8c585936059fb7f3151c7c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23f52e48c6a435678a01569d25e0072d9c8a3e28
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79473319"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648574"
 ---
 # <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
 
@@ -28,6 +28,7 @@ A Azure Maps web SDK a következő számos kisegítő lehetőséggel rendelkezik
 - A képernyőolvasók leírása a Térkép mozgatásakor és amikor a felhasználó egy vezérlőelemre vagy előugró ablakra fókuszál.
 - Egér, érintés és billentyűzet támogatása.
 - Elérhető színkontrasztos támogatás az úthálózati Térkép stílusaként.
+- Kontrasztos támogatás.
 
 Az összes Microsoft-termékre vonatkozó teljes körű hozzáférhetőségi részletek [itt](https://cloudblogs.microsoft.com/industry-blog/government/2018/09/11/accessibility-conformance-reports/)találhatók. Keressen rá a "Azure Maps web" kifejezésre, hogy megkeresse a Azure Maps web SDK-hoz tartozó dokumentumot. 
 
@@ -41,10 +42,10 @@ A Térkép több különböző módon nagyítható, megpárolt, elforgatható é
 - Egér használatával a térkép nagyításához görgessen a görgőre.
 - Érintőképernyőn keresztül a térképre koppintva két ujjal és csípjük össze a nagyítást, illetve az ujjak kinagyítását, illetve a nagyítást egymás mellett.
 - Egy érintőképernyő használatával dupla koppintással nagyíthatja a térképet egy szint nagyításához.
-- A térképre koncentrálva a pluszjelet (`+`) vagy az EQUAL (`=`) jelet használja egy szint nagyításához.
-- A térképre koncentrálva a mínuszjel, kötőjel (`-`) vagy aláhúzás (`_`) használatával nagyíthatja ki az egyik szintet.
+- A térképre koncentrálva a pluszjelet ( `+` ) vagy az EQUAL () jelet használja `=` egy szint nagyításához.
+- A térképre koncentrálva a mínuszjel, kötőjel ( `-` ) vagy aláhúzás ( `_` ) használatával nagyíthatja ki az egyik szintet.
 - A nagyítás vezérlőelemet egérrel, érintéssel vagy billentyűzettel vagy a kulcsok beírásával használhatja.
-- Nyomja le és tartsa `Shift` nyomva a gombot, és nyomja le a bal oldali egérgombot a térképen, és húzza a diagramot a térkép nagyításához.
+- Nyomja le és tartsa nyomva a `Shift` gombot, és nyomja le a bal oldali egérgombot a térképen, és húzza a diagramot a térkép nagyításához.
 
 **A Térkép pásztázása**
 
@@ -76,7 +77,7 @@ Nem minden fejlesztő szeretné, hogy az összes lehetséges Térkép stílusa e
 - A Térkép vezérlőelem nem figyeli az eszköz kontrasztos üzemmódját. Ha az eszköz mód megváltozik, a Térkép nem fog megjelenni. Így a felhasználónak újra kell töltenie a térképet az oldal frissítésével.
 - Ha a rendszer nagy kontrasztot észlel, a Térkép stílusa automatikusan magas kontrasztra vált, és az összes beépített vezérlő nagy kontrasztú stílust fog használni. Például a ZoomControl, a PitchControl, a CompassControl, a StyleControl és az egyéb beépített vezérlők nagy kontrasztú stílust fognak használni.
 - Kétféle kontrasztos, világos és sötét. Ha a leképezési vezérlők a kontrasztos megjelenítést is észlelik, akkor a Térkép viselkedése ennek megfelelően módosul. Ha a fény, akkor a grayscale_light Térkép stílusa betöltődik. Ha a típus nem észlelhető vagy sötét, akkor a rendszer betölti a high_contrast_dark stílust.
-- Ha egyéni vezérlőket hoz létre, érdemes tudni, hogy a beépített vezérlők nagy kontrasztú stílust használnak-e. A fejlesztők hozzáadhatnak egy CSS-osztályt a Térkép-tárolóhoz a div-ben az ellenõrzéshez. A hozzáadott CSS `high-contrast-dark` -osztályok a és `high-contrast-light`a. A JavaScript használatának vizsgálatához használja a következőt:
+- Ha egyéni vezérlőket hoz létre, érdemes tudni, hogy a beépített vezérlők nagy kontrasztú stílust használnak-e. A fejlesztők hozzáadhatnak egy CSS-osztályt a Térkép-tárolóhoz a div-ben az ellenõrzéshez. A hozzáadott CSS-osztályok a és a `high-contrast-dark` `high-contrast-light` . A JavaScript használatának vizsgálatához használja a következőt:
 
 ```javascript
 map.getMapContainer().classList.contains("high-contrast-dark")
@@ -92,7 +93,7 @@ map.getMapContainer().classList.contains("high-contrast-light")
 
 A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térkép használatát. Ezek a billentyűparancsok akkor működnek, ha a Térkép fókuszban van.
 
-| Kulcs      | Műveletek                            |
+| Kulcs      | Művelet                            |
 |----------|-----------------------------------|
 | `Tab` | Navigáljon a térképen a vezérlők és az előugró ablakok között. |
 | `ESC` | Mozgassa a fókuszt a Térkép bármely eleméről a legfelső szintű Térkép elemre. |
@@ -105,15 +106,15 @@ A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térk
 | `Shift`+ lefelé mutató nyíl | A térképi szurok csökkentése 10 fokkal |
 | `Shift`+ jobbra mutató nyíl | A Térkép 15 fokos elforgatása jobbra |
 | `Shift`+ balra mutató nyíl | A Térkép 15 fokos elforgatása balra |
-| Pluszjel (`+`) és <sup>*</sup>egyenlőségjel ()`=` | Nagyítás |
-| Mínusz jel, kötőjel (`-`) vagy <sup>*</sup>aláhúzás (`_`) | Kicsinyítés | 
+| Pluszjel ( `+` ) és egyenlőségjel <sup>*</sup> ( `=` ) | Nagyítás |
+| Mínusz jel, kötőjel ( `-` ) vagy <sup>*</sup> aláhúzás ( `_` ) | Kicsinyítés | 
 | `Shift`+ egérrel húzza a térképet a terület rajzolásához | Terület nagyítása |
 
 <sup>*</sup>Ezek a billentyűparancsok általában ugyanazt a kulcsot használják a billentyűzeten. Ezek a parancsikonok a felhasználói élmény javításához lettek hozzáadva. Emellett nem számít, hogy a felhasználó használja-e a SHIFT billentyűt, vagy sem ezekhez a parancsikonokhoz.
 
 ## <a name="screen-reader-support"></a>Képernyőolvasó-támogatás
 
-A felhasználók a billentyűzettel is megkereshetik a térképet. Ha egy képernyőolvasó fut, a Térkép értesíti a felhasználót, hogy az állapota megváltozik. Például a felhasználók értesítést kapnak a Térkép változásairól, amikor a Térkép megpárol vagy kicsinyítve van. Alapértelmezés szerint a Térkép egyszerűsített leírásokat tartalmaz, amelyek kizárja a Térkép középpontjának nagyítási szintjét és koordinátáit. A felhasználó a billentyűzet rövid kivágásával `Ctrl`  +  `Shift`  +  `D`válthat a leírások részletességi szintjére.
+A felhasználók a billentyűzettel is megkereshetik a térképet. Ha egy képernyőolvasó fut, a Térkép értesíti a felhasználót, hogy az állapota megváltozik. Például a felhasználók értesítést kapnak a Térkép változásairól, amikor a Térkép megpárol vagy kicsinyítve van. Alapértelmezés szerint a Térkép egyszerűsített leírásokat tartalmaz, amelyek kizárja a Térkép középpontjának nagyítási szintjét és koordinátáit. A felhasználó a billentyűzet rövid kivágásával válthat a leírások részletességi szintjére `Ctrl`  +  `Shift`  +  `D` .
 
 Az alaptérképre helyezett további információknak megfelelő szöveges információval kell rendelkezniük a képernyőolvasó felhasználói számára. Ha szükséges, ügyeljen arra, hogy az [elérhető Rich Internet-alkalmazásokat (ARIA)](https://www.w3.org/WAI/standards-guidelines/aria/), az ALT és a title attribútumokat adja hozzá. 
 
@@ -125,7 +126,7 @@ A következő példa egy szimbólum réteget használ a Térkép érdeklődési 
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Elérhető alkalmazás létrehozása' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg, hogy a toll <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>elérhetővé teszi-e</a> a Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) alkalmazást a <a href='https://codepen.io'>CodePen</a>. </iframe>
+<iframe height='500' scrolling='no' title='Elérhető alkalmazás létrehozása' src='//codepen.io/azuremaps/embed/ZoVyZQ/?height=504&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg, hogy a toll <a href='https://codepen.io/azuremaps/pen/ZoVyZQ/'>elérhetővé teszi-e</a> a Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) alkalmazást a <a href='https://codepen.io'>CodePen</a>. </iframe>
 
 <br/>
 

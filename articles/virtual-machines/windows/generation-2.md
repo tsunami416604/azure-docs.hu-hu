@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 02/11/2020
 ms.author: jushiman
-ms.openlocfilehash: bf690ad3ad38632834a92c4a743b1cb584beaf65
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 9c16cd4143bc07bf5f3b1d00b890dc54bd5ea318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838824"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659876"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2. generációs virtuális gépek támogatása az Azure-ban
 
@@ -78,9 +78,9 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 ### <a name="generation-1-vs-generation-2-features"></a>1. generációs, 2. generációs funkciók
 
-| Szolgáltatás | 1. generációs | 2. generációs |
+| Funkció | 1. generációs | 2. generációs |
 |---------|--------------|--------------|
-| Boot             | PCAT                      | UEFI                               |
+| Indítás             | PCAT                      | UEFI                               |
 | Lemezvezérlő-vezérlők | IDE                       | SCSI                               |
 | A virtuális gépek mérete         | Minden VM-méret | Csak a Premium Storage-t támogató virtuális gépek |
 
@@ -122,16 +122,10 @@ Az alábbi lépéseket követve hozhat létre 2. generációs (Gen2) virtuális 
 
 A PowerShell használatával is létrehozhatja a virtuális gépet úgy, hogy közvetlenül az 1. generációs vagy 2. generációs SKU-ra hivatkozik.
 
-Például a következő PowerShell-parancsmaggal kérheti le az `WindowsServer` ajánlatban szereplő SKU-ket.
+Például a következő PowerShell-parancsmaggal kérheti le az ajánlatban szereplő SKU-ket `WindowsServer` .
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
-```
-
-Azt is megteheti, hogy az Azure CLI használatával megtekintheti a **kiadó**által megjelenített 2. generációs képeket.
-
-```azurecli
-az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Ha operációs rendszert futtató virtuális gépet hoz létre a Windows Server 2012-es verziójával, akkor az 1. generáció (BIOS) vagy a 2. generációs (UEFI) VM SKU lesz kiválasztva, amely a következőképpen néz ki:
@@ -142,6 +136,14 @@ Ha operációs rendszert futtató virtuális gépet hoz létre a Windows Server 
 ```
 
 A támogatott Piactéri rendszerképek aktuális listáját a [szolgáltatások és képességek](#features-and-capabilities) című szakaszban találja.
+
+#### <a name="azure-cli"></a>Azure CLI
+
+Azt is megteheti, hogy az Azure CLI használatával megtekintheti a **kiadó**által megjelenített 2. generációs képeket.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
+```
 
 ### <a name="managed-image-or-managed-disk"></a>Felügyelt lemezkép vagy felügyelt lemez
 

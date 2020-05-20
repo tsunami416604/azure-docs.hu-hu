@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f17d04d94546f31c5613fa9944c7399ea7db10ae
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 061805896203615d7673a006059080e9c4246863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83006046"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657206"
 ---
 # <a name="connect-with-the-web-client"></a>Kapcsolódás a webügyféllel
 
@@ -42,10 +42,10 @@ Habár minden HTML5-kompatibilis böngészőnek működnie kell, a következő o
 
 ## <a name="access-remote-resources-feed"></a>Távoli erőforrások hírcsatornájának elérése
 
-Egy böngészőben nyissa meg a [Windows rendszerű virtuális asztali webes ügyfelet](https://rdweb.wvd.microsoft.com/arm/webclient) , és jelentkezzen be a felhasználói fiókjával.
+Egy böngészőben nyissa meg a Windows rendszerű virtuális asztali webes ügyfélprogram Azure Resource Manager-integrált verzióját, <https://rdweb.wvd.microsoft.com/arm/webclient> és jelentkezzen be a felhasználói fiókjával.
 
 >[!NOTE]
->Ha a Windows rendszerű virtuális asztal 2019-as verzióját használja, a [jelen cikkben](./virtual-desktop-fall-2019/connect-web-2019.md) található webes ügyfél hivatkozásra kattintva csatlakozhat az erőforrásokhoz.
+>Ha a Windows rendszerű virtuális 2019 asztalt Azure Resource Manager integráció nélkül használja, az erőforrásokhoz való kapcsolódáshoz kapcsolódjon <https://rdweb.wvd.microsoft.com/webclient> .
 
 >[!NOTE]
 >Ha már bejelentkezett egy másik Azure Active Directory fiókkal, mint amelyet a Windowsos virtuális asztalhoz kíván használni, akkor ki kell jelentkeznie, vagy egy privát böngészőablakot kell használnia.

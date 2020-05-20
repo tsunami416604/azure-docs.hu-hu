@@ -2,20 +2,20 @@
 title: A Kubernetes-fürt állapotának figyelése az Azure Monitor for containers szolgáltatással | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan tekintheti meg és elemezheti az AK-beli és a nem ak-beli fürtök állapotát a Azure Monitor for containers használatával.
 ms.topic: conceptual
-ms.date: 12/01/2019
-ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/18/2020
+ms.openlocfilehash: 94fdb6388134eae326ed5a8e46fbd3d13f8da2d5
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76843990"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649571"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>A Kubernetes-fürt állapotának megértése a tárolók Azure Monitorével
 
 A tárolók Azure Monitorával figyeli és jelenti a felügyelt infrastruktúra összetevőinek, valamint a Azure Monitor által a tárolók által támogatott Kubernetes-fürtökön futó összes csomópontnak az állapotát. Ez a felület a fürt állapotának kiszámításához és a [több fürtre vonatkozó nézeten](container-insights-analyze.md#multi-cluster-view-from-azure-monitor)jelentett állapotához is kiterjed, ahol most már megtudhatja, hogy a fürt egy vagy több csomópontja rendelkezik-e erőforrás-korlátozással, vagy egy csomópont vagy pod nem érhető el, amely hatással lehet egy futó alkalmazásra a fürtben, a kurátori mérőszámok alapján.
 
 >[!NOTE]
->Az állapot szolgáltatás jelenleg nyilvános előzetes verzióban érhető el.
+>Az állapotfigyelő szolgáltatás a 2020. június végén egy privát előzetes verzióra vált. További információkért tekintse át a következő [Azure Updates közleményt](https://azure.microsoft.com/updates/ci-health-limited-preview/).
 >
 
 További információ a tárolók Azure Monitorének engedélyezéséről: [Azure monitor a tárolók számára](container-insights-onboard.md).
@@ -23,7 +23,7 @@ További információ a tárolók Azure Monitorének engedélyezéséről: [Azur
 >[!NOTE]
 >Az AK-alapú motor-fürtök támogatásához ellenőrizze, hogy az megfelel-e a következőknek:
 >- A [Helm-ügyfél](https://helm.sh/docs/using_helm/)legújabb verzióját használja.
->- A tároló ügynök verziója a *Microsoft/OMS: ciprod11012019*. Az ügynök frissítését lásd: az [ügynök frissítése a Kubernetes-fürtön](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
+>- A tároló ügynök verziója a *Microsoft/OMS: ciprod11012019*. Az ügynök frissítését lásd: az [ügynök frissítése a Kubernetes-fürtön](container-insights-manage-agent.md#how-to-upgrade-the-azure-monitor-for-containers-agent).
 >
 
 ## <a name="overview"></a>Áttekintés

@@ -3,12 +3,12 @@ title: A Azure Functions tárolási szempontjai
 description: Ismerje meg a Azure Functions tárolási követelményeit és a tárolt adat titkosítását.
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.openlocfilehash: 48ff2dedd997cccb76b13acdadc895504f656ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 324516240d09a5443908cbffec514e4caba2b604
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80984163"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648793"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>A Azure Functions tárolási szempontjai
 
@@ -53,21 +53,19 @@ Több Function-alkalmazás is lehetséges, hogy problémák nélkül megoszthatj
 
 ## <a name="storage-data-encryption"></a>Storage-adattitkosítás
 
-Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. További információ: az [Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
-
-Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat a blobok és a fájlok titkosításához. Ezeknek a kulcsoknak jelen kell lenniük a Azure Key Vaultban ahhoz, hogy a függvények hozzáférhessenek a Storage-fiókhoz. További információ: [az ügyfél által felügyelt kulcsok konfigurálása Azure Key Vault használatával a Azure Portal használatával](../storage/common/storage-encryption-keys-portal.md).  
+[!INCLUDE [functions-storage-encryption](../../includes/functions-storage-encryption.md)]
 
 ## <a name="mount-file-shares-linux"></a>Csatlakoztatási fájlmegosztás (Linux)
 
 Meglévő Azure Files-megosztásokat csatlakoztathat a Linux Function-alkalmazásaihoz. Ha egy megosztást csatlakoztat a linuxos Function-alkalmazáshoz, használhatja a meglévő gépi tanulási modelleket és a függvények más adatait. A [`az webapp config storage-account add`](/cli/azure/webapp/config/storage-account#az-webapp-config-storage-account-add) parancs használatával meglévő megosztásokat csatlakoztathat a Linux-függvény alkalmazásához. 
 
-Ebben a parancsban `share-name` a létező Azure Files megosztás neve, és `custom-id` bármely olyan karakterlánc lehet, amely egyedileg definiálja a megosztást a Function alkalmazáshoz való csatlakoztatáskor. `mount-path` Emellett az az elérési út, amelyből a megosztás elérhető a Function alkalmazásban. `mount-path`formátumúnak `/dir-name`kell lennie, és nem kezdődhet a- `/home`vel.
+Ebben a parancsban a `share-name` létező Azure Files megosztás neve, és `custom-id` bármely olyan karakterlánc lehet, amely egyedileg definiálja a megosztást a Function alkalmazáshoz való csatlakoztatáskor. Emellett az az `mount-path` elérési út, amelyből a megosztás elérhető a Function alkalmazásban. `mount-path`formátumúnak kell lennie `/dir-name` , és nem kezdődhet a-vel `/home` .
 
 Teljes példaként tekintse meg a Python- [függvény létrehozása és a Azure Files megosztás csatlakoztatása](scripts/functions-cli-mount-files-storage-linux.md)című témakörben található parancsfájlokat. 
 
-Jelenleg csak a `storage-type` `AzureFiles` a támogatott. Csak öt megosztást lehet csatlakoztatni egy adott Function alkalmazáshoz. A fájlmegosztás csatlakoztatása növelheti a hideg kezdési időt legalább 200 300ms, vagy akár több is, ha a Storage-fiók egy másik régióban található.
+Jelenleg csak a a `storage-type` `AzureFiles` támogatott. Csak öt megosztást lehet csatlakoztatni egy adott Function alkalmazáshoz. A fájlmegosztás csatlakoztatása növelheti a hideg kezdési időt legalább 200 300ms, vagy akár több is, ha a Storage-fiók egy másik régióban található.
 
-A csatlakoztatott megosztás a `mount-path` megadott függvény kódjában érhető el. Ha `mount-path` például a (z `/path/to/mount`), a cél könyvtárat a fájlrendszer API-jai segítségével érheti el, ahogy az a következő Python-példában látható:
+A csatlakoztatott megosztás a megadott függvény kódjában érhető el `mount-path` . Ha például a (z `mount-path` ) `/path/to/mount` , a cél könyvtárat a fájlrendszer API-jai segítségével érheti el, ahogy az a következő Python-példában látható:
 
 ```python
 import os

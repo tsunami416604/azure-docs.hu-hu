@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: b342c4319064bd00681c914585e541ab0bc3e17e
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 954562f3f88276b5aef7dbd4e2237d180a4c2e40
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83585657"
+ms.locfileid: "83653942"
 ---
 # <a name="publish-your-active-trained-app-to-a-staging-or-production-endpoint"></a>Aktív, betanított alkalmazás közzététele átmeneti vagy éles végponton
 
@@ -57,7 +57,7 @@ Ha például egy, a [www.Luis.ai](https://www.luis.ai)-on létrehozott alkalmaz�
 Miután kiválasztotta a tárolóhelyet, konfigurálja a közzétételi beállításokat a következőhöz:
 
 * Hangulatelemzés
-* Helyesírás-javítás – v2 előrejelzési végpont
+* [Helyesírás-javítás](luis-tutorial-bing-spellcheck.md) – v2 előrejelzési végpont
 * Beszéd alapozó
 
 A közzététel után ezek a beállítások a **kezelés** szakasz **közzétételi beállítások** lapján érhetők el. A beállításokat minden közzététel lehetőséggel módosíthatja. Ha megszakít egy közzétételt, a közzététel során végrehajtott módosítások is megszakadnak.
@@ -78,7 +78,7 @@ Nem kell megadnia Text Analytics kulcsot, és a szolgáltatáshoz nem tartozik s
 
 Az érzelmi adatmennyiség egy 1 és 0 közötti pontszám, amely az adatmennyiség pozitív (közelebbről 1) vagy negatív (közelebbről 0) hangulatát jelzi. A, a, a és a a `positive` `neutral` `negative` által támogatott kulturális környezet. Jelenleg csak az angol támogatja a hangulati címkéket.
 
-A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-concept-data-extraction.md#sentiment-analysis) talál további információt.
+A JSON-végponti válaszról a [hangulat elemzése című témakörben](luis-reference-prebuilt-sentiment.md) talál további információt.
 
 ## <a name="spelling-correction"></a>Helyesírás-javítás
 

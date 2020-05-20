@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
-ms.openlocfilehash: 76f920ad6aae68defb567a7a6623d1ffd488af5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1191c01ce3f62f34c351cefd29a5e40aa68bfd3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80874857"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658394"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megakadályozhatja a túlilleszkedő és a kiegyensúlyozatlan adatkezelést
 
@@ -31,7 +31,7 @@ Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolód
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
-| C# | 99.9% | 45% |
+| C | 99.9% | 45% |
 
 Az **a**modellt figyelembe véve gyakori tévhit, hogy ha a láthatatlan adatokon a teszt pontossága alacsonyabb, mint a betanítási pontosság, a modell túl van szerelve. A teszt pontosságának azonban mindig kisebbnek kell lennie, mint a kiképzés pontossága, és a túlzottan illeszkedő és a megfelelő illeszkedéshez való különbségtétel nem *sokkal* kevésbé pontos. 
 
@@ -58,17 +58,17 @@ Az automatikus ML-ben a fenti első három elem az Ön által **megvalósított 
 
 A **több adat** használata a legegyszerűbb és a lehető legjobb módszer a túlzott méretezés megelőzésére, és a hozzáadott bónusz általában növeli a pontosságot. Ha több adathalmazt használ, a modell nehezebbé válik a pontos mintázatok memorizálása érdekében, és olyan megoldások elérésére kényszerül, amelyek rugalmasabbak a további feltételek kielégítéséhez. Fontos továbbá a **statisztikai torzulások**felismerése is, hogy a betanítási adatai ne tartalmazzanak olyan elszigetelt mintákat, amelyek nem léteznek az élő előrejelzési adataiban. Ez a forgatókönyv nehezen oldható meg, mert előfordulhat, hogy nem lehet túlságosan összekapcsolni a vonat-és a tesztelési készletek között, de az élő tesztelési adathoz képest előfordulhat, hogy túl is illik.
 
-A célzott szivárgás egy hasonló probléma, ahol előfordulhat, hogy nem jelenik meg a betanítási és a tesztelési készletek közötti túlterhelés, hanem az előrejelzési időpontban jelenik meg. A cél szivárgás akkor fordul elő, ha a "Cheats" modell a betanítás során olyan információhoz fér hozzá, amelyeknek általában nem kell előrejelzési időpontban lennie. Ha például a probléma a hétfő alapján várhatóan megjósolható, hogy Mennyibe kerül az áru díja, de az egyik funkció, amely véletlenül a csütörtöki adatokból származik, a modellnek nem lesz előrejelzési ideje, mert nem látja a jövőben. A cél szivárgás egyszerű tévedés, de gyakran a probléma szokatlanul nagy pontossága jellemzi. Ha a készlet árának előrejelzését és a modell 95%-os pontosságú betanítását kísérli meg, akkor valószínű, hogy valahol a funkciók között kell elszivárogni.
+A **célzott szivárgás** egy hasonló probléma, ahol előfordulhat, hogy nem jelenik meg a betanítási és a tesztelési készletek közötti túlterhelés, hanem az előrejelzési időpontban jelenik meg. A cél szivárgás akkor fordul elő, ha a "Cheats" modell a betanítás során olyan információhoz fér hozzá, amelyeknek általában nem kell előrejelzési időpontban lennie. Ha például a probléma a hétfő alapján várhatóan megjósolható, hogy Mennyibe kerül az áru díja, de az egyik funkció, amely véletlenül a csütörtöki adatokból származik, a modellnek nem lesz előrejelzési ideje, mert nem látja a jövőben. A cél szivárgás egyszerű tévedés, de gyakran a probléma szokatlanul nagy pontossága jellemzi. Ha a készlet árának előrejelzését és a modell 95%-os pontosságú betanítását kísérli meg, akkor valószínű, hogy valahol a funkciók között kell elszivárogni.
 
-A funkciók eltávolítása a túlzottan illeszkedő megoldásokkal is segíthet, mivel megakadályozza, hogy a modell túl sok mezőt használjon a konkrét minták memorizálása érdekében, ami rugalmasabb lehet. A mennyiségi mérés nehéz lehet, de ha eltávolíthatja a funkciókat, és megtarthatja ugyanazt a pontosságot, valószínűleg rugalmasabban tette a modellt, és csökkentette a túlzott méretezés kockázatát.
+A **funkciók eltávolítása** a túlzottan illeszkedő megoldásokkal is segíthet, mivel megakadályozza, hogy a modell túl sok mezőt használjon a konkrét minták memorizálása érdekében, ami rugalmasabb lehet. A mennyiségi mérés nehéz lehet, de ha eltávolíthatja a funkciókat, és megtarthatja ugyanazt a pontosságot, valószínűleg rugalmasabban tette a modellt, és csökkentette a túlzott méretezés kockázatát.
 
 ### <a name="best-practices-automated-ml-implements"></a>Ajánlott eljárások automatizált ML-eszközökhöz
 
-A regularizációs egy költséghatékony funkció minimalizálása a komplex és a túlzottan felszerelt modellek szankcionálására. A regularizációs függvények különböző típusai vannak, de általánosságban mind a modellnek, valamint az eltérésnek és a bonyolultságnak a büntetése. Az automatikus ML az L1 (lasszó), az L2 (Ridge) és a ElasticNet (L1 és L2) kombinációt használja különböző kombinációkban különböző modell-hiperparaméter beállításokkal, amelyek szabályozzák a terhelést. Egyszerű feltételek esetén az automatikus ML változó a modell szabályozása és a legjobb eredmény kiválasztásával változhat.
+A **regularizációs** egy költséghatékony funkció minimalizálása a komplex és a túlzottan felszerelt modellek szankcionálására. A regularizációs függvények különböző típusai vannak, de általánosságban mind a modellnek, valamint az eltérésnek és a bonyolultságnak a büntetése. Az automatikus ML az L1 (lasszó), az L2 (Ridge) és a ElasticNet (L1 és L2) kombinációt használja különböző kombinációkban különböző modell-hiperparaméter beállításokkal, amelyek szabályozzák a terhelést. Egyszerű feltételek esetén az automatikus ML változó a modell szabályozása és a legjobb eredmény kiválasztásával változhat.
 
-Az automatikus ML emellett explicit módon meggátolja a modell bonyolultságának korlátozását, hogy megakadályozza a túlzott méretezést. A legtöbb esetben ez a megvalósítás kifejezetten a döntési fa-vagy erdő-algoritmusokhoz tartozik, ahol az egyes faszerkezetek maximális mélysége korlátozott, és az erdőben vagy az Ensemble-technikákban felhasznált fák teljes száma korlátozott.
+Az automatikus ML emellett explicit módon meggátolja a **modell bonyolultságának korlátozását** , hogy megakadályozza a túlzott méretezést. A legtöbb esetben ez a megvalósítás kifejezetten a döntési fa-vagy erdő-algoritmusokhoz tartozik, ahol az egyes faszerkezetek maximális mélysége korlátozott, és az erdőben vagy az Ensemble-technikákban felhasznált fák teljes száma korlátozott.
 
-A többszörös ellenőrzés (CV) a teljes betanítási adat több részhalmazának betanítása, valamint az egyes alkészleteken található modellek képzésének folyamata. Az elképzelés az, hogy egy modell "szerencsés" lehet, és nagy pontossággal rendelkezik egy részhalmazsal, de a modell számos részhalmazának használatával nem éri el ezt a nagy pontosságot minden alkalommal. Az önéletrajz használatakor meg kell adnia egy érvényesítési Holdout adatkészletet, meg kell adnia az önéletrajz betöltését (az alkészletek számát) és az automatikus ML-t, majd a modell betanításával és a hiperparaméterek beállítása finomhangolásával csökkentheti az ellenőrzési csoport hibáját Az egyik CV-dobás túl nagy méretű lehet, de a sok közül többen is csökkenti annak a valószínűségét, hogy a végső modellje túlterhelt. A kompromisszum az, hogy az önéletrajz hosszabb időt és így nagyobb költségeket eredményez, mivel a modell betanítása helyett egyszer betanítjuk az egyes *n* CV-alkészletekre. 
+A többszörös **ellenőrzés (CV)** a teljes betanítási adat több részhalmazának betanítása, valamint az egyes alkészleteken található modellek képzésének folyamata. Az elképzelés az, hogy egy modell "szerencsés" lehet, és nagy pontossággal rendelkezik egy részhalmazsal, de a modell számos részhalmazának használatával nem éri el ezt a nagy pontosságot minden alkalommal. Az önéletrajz használatakor meg kell adnia egy érvényesítési Holdout adatkészletet, meg kell adnia az önéletrajz betöltését (az alkészletek számát) és az automatikus ML-t, majd a modell betanításával és a hiperparaméterek beállítása finomhangolásával csökkentheti az ellenőrzési csoport hibáját Az egyik CV-dobás túl nagy méretű lehet, de a sok közül többen is csökkenti annak a valószínűségét, hogy a végső modellje túlterhelt. A kompromisszum az, hogy az önéletrajz hosszabb időt és így nagyobb költségeket eredményez, mivel a modell betanítása helyett egyszer betanítjuk az egyes *n* CV-alkészletekre. 
 
 > [!NOTE]
 > Alapértelmezés szerint nincs engedélyezve a kereszt-ellenőrzés. az automatikus ML-beállításokban kell konfigurálni. A többszörös ellenőrzés konfigurálása és az érvényesítési adatkészletek megadása után azonban a folyamat automatizálható. Lásd: 
@@ -83,7 +83,7 @@ Mivel a besorolási algoritmusokat általában pontossággal értékelik ki, a m
 
 Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
 
-Diagram| Leírás
+Diagram| Description
 ---|---
 [Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
 [Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 

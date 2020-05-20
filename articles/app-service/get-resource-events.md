@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan szerezhet be erőforrás-eseményeket tevékeny
 ms.topic: article
 ms.date: 04/24/2020
 ms.author: msangapu
-ms.openlocfilehash: 1fd283f95823a67319dc467a3a1d6251193182da
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 7075e3eacc85198e22a9aa0e53f67a22416b2678
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124737"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649073"
 ---
 # <a name="get-resource-events-in-azure-app-service"></a>Erőforrás-események beolvasása a Azure App Serviceban
 
@@ -41,29 +41,7 @@ Míg a tevékenység-naplók felhasználó-alapúak, új [Event Grid](https://do
 
 Vagy az Event Gridet a Logic Appsszel együtt használhatja tetszőleges helyen, kód írása nélkül végzett adatfeldolgozásra. Az Event Grid összeköti az adatforrásokat az eseménykezelőkkel. Az Event Grid használatával például azonnal aktiválható egy képelemzést futtató, kiszolgáló nélküli függvény, amikor egy új fénykép kerül egy Blob Storage-tárolóba.
 
-### <a name="supported-event-types"></a>Támogatott események típusai
-| Eseménytípus |Leírás|
-| -----------| ------------- |
-| Microsoft. Web/Sites | WebApp |
-| BackupOperationCompleted |A WebApp biztonsági mentése sikeresen befejeződött|
-| BackupOperationFailed | A WebApp biztonsági mentése nem sikerült|
-| RestoreOperationStarted |A biztonsági másolatból való visszaállítás megkezdődött|
-| RestoreOperationCompleted |A biztonsági másolat visszaállítása sikeresen befejeződött|
-| RestoreOperationFailed |Nem sikerült visszaállítani a biztonsági mentést|
-| SlotSwapStarted |A tárolóhelyek felcserélése megkezdődött|
-| SlotSwapCompleted |A tárolóhely cseréje sikeresen befejeződött|
-| SlotSwapFailed |Nem sikerült a tárolóhely cseréje|
-| SlotSwapWithPreviewStarted |Megkezdődött a tárolóhelyek felcserélése az előzetes verzióra|
-| SlotSwapWithPreviewCancelled |Az előzetes verzióval való swap-csere nem sikerült|
-| AppUpdated | |
-| Restarted | A WebApp újra lett indítva |
-| Leállítva | A WebApp le lett állítva |
-| ChangedAppSettings | A WebApp alkalmazás beállításai módosultak |
-| - | - |
-| Microsoft. Web/kiszolgálófarmok | (App Service terv) |
-| AspUpdated | Az App Service-csomag frissítése megtörtént. Az Event objektum a módosított tulajdonságok részleteit tartalmazza. |
-| Méretezheti felfelé vagy lefelé | Az App Service-csomag vertikálisan fel-vagy leskálázásra került. Az Event objektum a példányszámot tartalmazza.|
-
+[Azure App Service események tulajdonságainak és sémájának megtekintése.](https://docs.microsoft.com/azure/event-grid/event-schema-app-service)
 
 ## <a name="next-steps"></a><a name="nextsteps"></a>További lépések
 * [Naplók lekérdezése Azure Monitor](../azure-monitor/log-query/log-query-overview.md)

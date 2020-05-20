@@ -6,21 +6,16 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0403edadd491609c2c88d5b5ac6980d97163f8d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299005"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652255"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Azure Active Directory használata a MySQL-sel való hitelesítéshez
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhatja Azure Active Directory hozzáférését Azure Database for MySQL és hogyan csatlakozhat Azure AD-jogkivonat használatával.
-
-> [!IMPORTANT]
-> A Azure Database for MySQL Azure AD-hitelesítése jelenleg nyilvános előzetes verzióban érhető el.
-> Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik.
-> További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Az Azure AD-rendszergazda felhasználó beállítása
 
@@ -73,7 +68,7 @@ Ezzel a paranccsal megnyílik egy böngészőablak az Azure AD-hitelesítés lap
 
 > [!NOTE]
 > Ezen lépések végrehajtásához Azure Cloud Shell is használhatja.
-> Vegye figyelembe, hogy amikor az Azure AD hozzáférési jogkivonatot a Azure Cloud Shell beolvassa, explicit módon meg `az login` kell hívnia, majd újra be kell jelentkeznie (a külön ablakban a kóddal). A bejelentkezés után a parancs `get-access-token` a várt módon fog működni.
+> Vegye figyelembe, hogy amikor az Azure AD hozzáférési jogkivonatot a Azure Cloud Shell beolvassa, explicit módon meg kell hívnia `az login` , majd újra be kell jelentkeznie (a külön ablakban a kóddal). A bejelentkezés után a `get-access-token` parancs a várt módon fog működni.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>2. lépés: az Azure AD hozzáférési jogkivonatának beolvasása
 
@@ -136,9 +131,9 @@ Most már hitelesítette a MySQL-kiszolgálót az Azure AD-hitelesítés haszná
 
 Ha Azure AD-felhasználót szeretne hozzáadni a Azure Database for MySQL-adatbázishoz, hajtsa végre a következő lépéseket a csatlakozás után (lásd: a kapcsolódási útmutató későbbi szakasza):
 
-1. Először győződjön meg arról, hogy az `<user>@yourtenant.onmicrosoft.com` Azure ad-felhasználó érvényes felhasználó az Azure ad-bérlőben.
+1. Először győződjön meg arról, hogy az Azure AD `<user>@yourtenant.onmicrosoft.com` -felhasználó érvényes felhasználó az Azure ad-bérlőben.
 2. Jelentkezzen be az Azure Database for MySQL-példányba az Azure AD-rendszergazda felhasználóként.
-3. Felhasználó `<user>@yourtenant.onmicrosoft.com` létrehozása Azure Database for MySQLban.
+3. Felhasználó létrehozása `<user>@yourtenant.onmicrosoft.com` Azure Database for MySQLban.
 
 **Például**
 
@@ -200,7 +195,7 @@ A legtöbb illesztőprogram támogatott, azonban győződjön meg arról, hogy a
 * Perl
   * DBD:: MySQL: támogatott
   * NET:: MySQL: nem támogatott
-* Indítás
+* Go
   * Go-SQL-illesztőprogram: támogatott, Hozzáadás `?tls=true&allowCleartextPasswords=true` a kapcsolódási karakterlánchoz
 
 ## <a name="next-steps"></a>További lépések

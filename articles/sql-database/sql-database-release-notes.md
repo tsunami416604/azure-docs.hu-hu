@@ -1,5 +1,5 @@
 ---
-title: Kibocsátási megjegyzések
+title: Release Notes (Kibocsátási megjegyzések)
 description: Ismerje meg a Azure SQL Database szolgáltatás új szolgáltatásait és funkcióit, valamint a Azure SQL Database dokumentációját
 services: sql-database
 author: stevestein
@@ -7,14 +7,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/04/2020
+ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 2d89320b4e5237017b51d19495c60c03ce6288f7
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3e5069c779cee0700bff6b2236f3cd36547fd623
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838484"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659602"
 ---
 # <a name="sql-database-release-notes"></a>SQL Database kibocsátási megjegyzések
 
@@ -24,7 +24,7 @@ Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető SQL Database-szo
 
 ### <a name="single-database"></a>[Önálló adatbázis](#tab/single-database)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | Új Fsv2 és M-sorozatú hardveres generációk| További információ: [Hardware Generations](sql-database-service-tiers-vcore.md#hardware-generations).|
 | Gyorsított adatbázis-helyreállítás önálló adatbázisokkal és rugalmas készletekkel | További információ: [gyorsított adatbázis-helyreállítás](sql-database-accelerated-database-recovery.md).|
@@ -43,7 +43,7 @@ Ez a cikk a jelenleg nyilvános előzetes verzióban elérhető SQL Database-szo
 
 ### <a name="managed-instance"></a>[Felügyelt példány](#tab/managed-instance)
 
-| Szolgáltatás | Részletek |
+| Funkció | Részletek |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Példánykészletek</a> | A kisebb SQL-példányok felhőbe való áttelepíthető kényelmes és költséghatékony módszer. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Példány szintű Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a> | Hozzon létre kiszolgálói szintű bejelentkezéseket <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">a külső szolgáltatói utasítás Create login</a> parancsával. |
@@ -76,8 +76,9 @@ A következő funkciók engedélyezve vannak a felügyelt példány üzembe hely
 
 ### <a name="known-issues"></a>Ismert problémák
 
-|Probléma  |Felderített dátum  |status  |Feloldás dátuma  |
+|Probléma  |Felderített dátum  |Állapot  |Feloldás dátuma  |
 |---------|---------|---------|---------|
+|[A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet](#restoring-manual-backup-without-checksum-might-fail)|2020. május|Megkerülő megoldás| |
 |[Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|2020. május|Automatikusan lecsökkentve| |
 |[A felügyelt példányra nem vonatkozik az erőforráscsoport engedélyei](#permissions-on-resource-group-not-applied-to-managed-instance)|Feb 2020|Megkerülő megoldás| |
 |[Feladatátvételi csoportok manuális feladatátvételének korlátozása a portálon keresztül](#limitation-of-manual-failover-via-portal-for-failover-groups)|Jan 2020|Megkerülő megoldás| |
@@ -103,6 +104,12 @@ A következő funkciók engedélyezve vannak a felügyelt példány üzembe hely
 |Az adott időponthoz tartozó adatbázis-visszaállítás üzletileg kritikus rétegről általános célú szintjére nem lesz sikeres, ha a forrásadatbázis memóriában tárolt OLTP objektumokat tartalmaz.| |Feloldva|TOT 2019|
 |Database Mail funkció külső (nem Azure-beli) levelezési kiszolgálókkal biztonságos kapcsolatok használatával| |Feloldva|TOT 2019|
 |A felügyelt példányok nem támogatják a foglalt adatbázisokat.| |Feloldva|Augusztus 2019|
+
+### <a name="restoring-manual-backup-without-checksum-might-fail"></a>A manuális biztonsági mentés ELLENŐRZŐÖSSZEG nélküli visszaállítása sikertelen lehet
+
+Bizonyos körülmények között a felügyelt példányon az ELLENŐRZŐÖSSZEG nélkül létrehozott adatbázisok manuális biztonsági mentését nem lehet visszaállítani. Ilyen esetben próbálja meg újra visszaállítani a biztonsági mentést, amíg a művelet nem sikerült.
+
+**Megkerülő megoldás**: manuális biztonsági mentést készíthet a felügyelt példányon tárolt adatbázisokról az ellenőrzőösszeg engedélyezésével.
 
 ### <a name="agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs"></a>Az ügynök nem válaszol a meglévő feladatok módosítása, letiltása vagy engedélyezése esetén
 
@@ -148,13 +155,13 @@ GRANT EXECUTE ON master.dbo.xp_sqlagent_notify TO [login_name]
 
 ### <a name="wrong-error-returned-while-trying-to-remove-a-file-that-is-not-empty"></a>Helytelen hiba történt a nem üres fájl eltávolítására tett kísérlet során.
 
-SQL Server/felügyelt példány nem [engedi, hogy a felhasználó eldobjon egy nem üres fájlt](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Ha nem üres adatfájlt próbál meg eltávolítani az utasítás használatával `ALTER DATABASE REMOVE FILE` , a rendszer nem `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` küldi el azonnal a hibát. A felügyelt példány továbbra is megpróbálja eldobni a fájlt, és a 30min követően `Internal server error`a művelet sikertelen lesz.
+SQL Server/felügyelt példány nem [engedi, hogy a felhasználó eldobjon egy nem üres fájlt](/sql/relational-databases/databases/delete-data-or-log-files-from-a-database#Prerequisites). Ha nem üres adatfájlt próbál meg eltávolítani `ALTER DATABASE REMOVE FILE` az utasítás használatával, a `Msg 5042 – The file '<file_name>' cannot be removed because it is not empty` rendszer nem küldi el azonnal a hibát. A felügyelt példány továbbra is megpróbálja eldobni a fájlt, és a 30min követően a művelet sikertelen lesz `Internal server error` .
 
-**Áthidaló megoldás**: távolítsa el a fájl tartalmát `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` a parancs használatával. Ha ez az egyetlen fájl a fájlcsoportja, akkor törölnie kell az ehhez a fájlcsoportja tartozó táblából vagy partícióból származó adatait a fájl zsugorítása előtt, és opcionálisan be kell töltenie ezeket az adatok egy másik táblába/partícióba.
+**Áthidaló megoldás**: távolítsa el a fájl tartalmát a `DBCC SHRINKFILE (N'<file_name>', EMPTYFILE)` parancs használatával. Ha ez az egyetlen fájl a fájlcsoportja, akkor törölnie kell az ehhez a fájlcsoportja tartozó táblából vagy partícióból származó adatait a fájl zsugorítása előtt, és opcionálisan be kell töltenie ezeket az adatok egy másik táblába/partícióba.
 
 ### <a name="change-service-tier-and-create-instance-operations-are-blocked-by-ongoing-database-restore"></a>A szolgáltatási szintek módosítása és a példány-létrehozási műveletek blokkolva vannak az adatbázis-visszaállítás folyamatban
 
-A `RESTORE` folyamatos utasítás, az adatáttelepítési szolgáltatás áttelepítési folyamata és a beépített idővisszaállítási funkció letiltja a meglévő példány frissítési vagy átméretezését, valamint új példányok létrehozását, amíg a visszaállítási folyamat be nem fejeződik. A visszaállítási folyamat letiltja ezeket a műveleteket a felügyelt példányokon és példány-készleteken ugyanabban az alhálózatban, ahol a visszaállítási folyamat fut. A példányok példányai nem érintettek. A szolgáltatási réteg műveleteinek létrehozása vagy módosítása nem fog sikerülni vagy időtúllépés – a visszaállítási folyamat befejeződése vagy megszakítása után folytatódni fog.
+`RESTORE`A folyamatos utasítás, az adatáttelepítési szolgáltatás áttelepítési folyamata és a beépített idővisszaállítási funkció letiltja a meglévő példány frissítési vagy átméretezését, valamint új példányok létrehozását, amíg a visszaállítási folyamat be nem fejeződik. A visszaállítási folyamat letiltja ezeket a műveleteket a felügyelt példányokon és példány-készleteken ugyanabban az alhálózatban, ahol a visszaállítási folyamat fut. A példányok példányai nem érintettek. A szolgáltatási réteg műveleteinek létrehozása vagy módosítása nem fog sikerülni vagy időtúllépés – a visszaállítási folyamat befejeződése vagy megszakítása után folytatódni fog.
 
 **Áthidaló megoldás**: Várjon, amíg a visszaállítási folyamat befejeződik, vagy szakítsa meg a visszaállítási folyamatot, ha a Service-réteg létrehozása vagy frissítése magasabb prioritással rendelkezik.
 
@@ -162,19 +169,19 @@ A `RESTORE` folyamatos utasítás, az adatáttelepítési szolgáltatás áttele
 
 [Resource Governor](/sql/relational-databases/resource-governor/resource-governor) funkció, amely lehetővé teszi a felhasználói munkaterheléshez rendelt erőforrások korlátozását, előfordulhat, hogy a feladatátvétel vagy a felhasználó által kezdeményezett változás miatt helytelenül osztályoz bizonyos felhasználói munkaterheléseket (például a maximális virtuális mag vagy a példányok maximális tárolási méretének módosítása).
 
-**Megkerülő megoldás**: időnként vagy az SQL-ügynök feladatának részeként futtassa `ALTER RESOURCE GOVERNOR RECONFIGURE` az SQL-feladatot, amikor a példány elindul, ha [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)használ.
+**Megkerülő megoldás**: `ALTER RESOURCE GOVERNOR RECONFIGURE` időnként vagy az SQL-ügynök feladatának részeként futtassa az SQL-feladatot, amikor a példány elindul, ha [Resource Governor](/sql/relational-databases/resource-governor/resource-governor)használ.
 
 ### <a name="cross-database-service-broker-dialogs-must-be-re-initialized-after-service-tier-upgrade"></a>A szolgáltatási réteg frissítése után újra kell inicializálni a több adatbázis Service Broker párbeszédpaneleit.
 
-Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhetővé az üzeneteket más adatbázisokban lévő szolgáltatásoknak a szolgáltatási réteg módosítása után. Az üzenetek **nem vesznek** el, és a küldő várólistáján találhatók. A felügyelt példányban a virtuális mag vagy a példány tárolási méretének változása miatt `service_broke_guid` a [sys. Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) nézetet fogja megváltoztatni az összes adatbázisra vonatkozóan. A `DIALOG` más adatbázisban található Service Broker szolgáltatásra HIVATKOZÓ [BEGIN Dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) utasítással létrehozott minden egyes létrehozott üzenet nem fog üzeneteket kézbesíteni a célként megadott szolgáltatásnak.
+Az adatbázisok közötti Service Broker párbeszédpanelek nem teszik elérhetővé az üzeneteket más adatbázisokban lévő szolgáltatásoknak a szolgáltatási réteg módosítása után. Az üzenetek **nem vesznek** el, és a küldő várólistáján találhatók. A felügyelt példányban a virtuális mag vagy a példány tárolási méretének változása miatt a `service_broke_guid` [sys. Databases](/sql/relational-databases/system-catalog-views/sys-databases-transact-sql) nézetet fogja megváltoztatni az összes adatbázisra vonatkozóan. A `DIALOG` más adatbázisban található Service Broker szolgáltatásra hivatkozó [BEGIN Dialog](/sql/t-sql/statements/begin-dialog-conversation-transact-sql) utasítással létrehozott minden egyes létrehozott üzenet nem fog üzeneteket kézbesíteni a célként megadott szolgáltatásnak.
 
 **Áthidaló megoldás:** Állítson le minden olyan tevékenységet, amely több adatbázison Service Broker párbeszédet használ a szolgáltatási réteg frissítése előtt, majd újra inicializálja őket. Ha a szolgáltatási szintek változása után még nem elérhető üzenetek vannak, olvassa el a forrás-üzenetsor üzeneteit, és küldje el újra a cél várólistára.
 
 ### <a name="impersonification-of-azure-ad-login-types-is-not-supported"></a>Az Azure AD bejelentkezési típusok megszemélyesítése nem támogatott
 
-A következő HRE- `EXECUTE AS USER` rendszerbiztonsági tag vagy `EXECUTE AS LOGIN` a használatával történő megszemélyesítés nem támogatott:
--    Alias HRE-felhasználók. Ebben az esetben `15517`a következő hibaüzenetet adja vissza.
-- HRE-bejelentkezések és felhasználók HRE-alkalmazások vagy egyszerű szolgáltatások alapján. Ebben az esetben `15517` a következő hibákat adja vissza: `15406`és.
+A `EXECUTE AS USER` `EXECUTE AS LOGIN` következő HRE-rendszerbiztonsági tag vagy a használatával történő megszemélyesítés nem támogatott:
+-    Alias HRE-felhasználók. Ebben az esetben a következő hibaüzenetet adja vissza `15517` .
+- HRE-bejelentkezések és felhasználók HRE-alkalmazások vagy egyszerű szolgáltatások alapján. Ebben az esetben a következő hibákat adja vissza: `15517` és `15406` .
 
 ### <a name="query-parameter-not-supported-in-sp_send_db_mail"></a>@querya paraméter nem támogatott sp_send_db_mail
 
@@ -190,17 +197,17 @@ SQL Server Data Tools nem támogatja teljes mértékben az Azure Active Director
 
 ### <a name="temporary-database-is-used-during-restore-operation"></a>A VISSZAÁLLÍTÁSi művelet során a rendszer ideiglenes adatbázist használ
 
-Ha egy adatbázist felügyelt példányon állít vissza, a visszaállítási szolgáltatás először egy üres adatbázist hoz létre a kívánt névvel a példányon a név lefoglalásához. Némi idő elteltével ez az adatbázis el lesz dobva, és a rendszer elindítja a tényleges adatbázis visszaállítását. A *visszaállítási* állapotban lévő adatbázis neve helyett véletlenszerű GUID-értékkel fog rendelkezni. Az ideiglenes név az `RESTORE` utasításban megadott kívánt névre változik a visszaállítási folyamat befejeződése után. A kezdeti fázisban a felhasználó hozzáférhet az üres adatbázishoz, és akár táblákat is létrehozhat, vagy betöltheti az adatbázist. Ezt az ideiglenes adatbázist a rendszer elveti, ha a visszaállítási szolgáltatás elindítja a második fázist.
+Ha egy adatbázist felügyelt példányon állít vissza, a visszaállítási szolgáltatás először egy üres adatbázist hoz létre a kívánt névvel a példányon a név lefoglalásához. Némi idő elteltével ez az adatbázis el lesz dobva, és a rendszer elindítja a tényleges adatbázis visszaállítását. A *visszaállítási* állapotban lévő adatbázis neve helyett véletlenszerű GUID-értékkel fog rendelkezni. Az ideiglenes név az utasításban megadott kívánt névre változik a `RESTORE` visszaállítási folyamat befejeződése után. A kezdeti fázisban a felhasználó hozzáférhet az üres adatbázishoz, és akár táblákat is létrehozhat, vagy betöltheti az adatbázist. Ezt az ideiglenes adatbázist a rendszer elveti, ha a visszaállítási szolgáltatás elindítja a második fázist.
 
 **Megkerülő megoldás**: ne nyissa meg a visszaállítani kívánt adatbázist, amíg nem látja, hogy a visszaállítás befejeződött.
 
 ### <a name="tempdb-structure-and-content-is-re-created"></a>A TEMPDB szerkezete és tartalma újra létrejön
 
-Az `tempdb` adatbázis mindig 12 adatfájlra van bontva, és a fájl szerkezete nem módosítható. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá `tempdb`a következőhöz:. `Tempdb`a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a folyamatban `tempdb` lévő módosításokat nem őrzi meg a rendszer.
+Az `tempdb` adatbázis mindig 12 adatfájlra van bontva, és a fájl szerkezete nem módosítható. A fájlok maximális mérete nem módosítható, és az új fájlok nem adhatók hozzá a következőhöz: `tempdb` . `Tempdb`a rendszer mindig üres adatbázisként hozza létre újra, amikor a példány elindul vagy feladatátvételt végez, és a folyamatban lévő módosításokat `tempdb` nem őrzi meg a rendszer.
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>Kis méretű adatbázisfájlok esetén a tárterület nagyobb
 
-`CREATE DATABASE`a `ALTER DATABASE ADD FILE`, és `RESTORE DATABASE` az utasítások sikertelenek lehetnek, mert a példány elérheti az Azure Storage-korlátot.
+`CREATE DATABASE`a, `ALTER DATABASE ADD FILE` és `RESTORE DATABASE` az utasítások sikertelenek lehetnek, mert a példány elérheti az Azure Storage-korlátot.
 
 Az egyes általános célú felügyelt példányok esetében akár 35 TB tárterület is rendelkezésre áll az Azure Premium lemezterület számára. Minden adatbázisfájl külön fizikai lemezre kerül. A lemezek mérete 128 GB, 256 GB, 512 GB, 1 TB vagy 4 TB lehet. A lemez nem használt lemezterülete nem számít fel díjat, de az Azure Premium-lemezek teljes mérete nem haladhatja meg a 35 TB-ot. Bizonyos esetekben előfordulhat, hogy egy felügyelt példány, amely nem igényel 8 TB-ot, a belső töredezettség miatt túllépheti a 35 TB-os Azure-korlátot a tárterületen.
 

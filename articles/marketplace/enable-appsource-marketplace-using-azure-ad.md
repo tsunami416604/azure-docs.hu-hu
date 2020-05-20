@@ -1,26 +1,26 @@
 ---
-title: Microsoft AppSource és az Azure Marketplace listázásának engedélyezése Azure Active Directory használatával | Azure
-description: Az Azure Marketplace-en és a AppSource az alkalmazások és szolgáltatások közzétevői számára való Azure Active Directory használatával engedélyezheti a listaelemek típusát.
+title: A Microsoft kereskedelmi Marketplace-ajánlatának integrálása a Azure Active Directory
+description: A Azure Active Directory használatával hitelesítheti Microsoft AppSource és az Azure Marketplace ajánlatait.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 324f8def5ddafb15156a31fe5addabadcee6f115
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 17cbfe92744ad96f2b5651b7e2f47a6443337068
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160613"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658048"
 ---
-# <a name="enable-an-appsource-and-marketplace-listing-by-using-azure-active-directory"></a>AppSource- és Marketplace-termékoldal engedélyezése az Azure Active Directory használatával
+# <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>A kereskedelmi Marketplace-lista integrálása a Azure Active Directory
 
- Azure Active Directory (Azure AD) egy felhőalapú identitás-szolgáltatás, amely lehetővé teszi a hitelesítést egy Microsoft-fiók. Az Azure AD az iparági szabványoknak megfelelő keretrendszereket használ. [További információ a Azure Active Directoryról](https://azure.microsoft.com/services/active-directory).
+ Ez a cikk a kereskedelmi piactérek Azure Active Directory (Azure AD) szolgáltatással való integrálásának követelményeit ismerteti. Az Azure AD egy felhőalapú identitás-szolgáltatás, amely az iparági szabványnak megfelelő keretrendszereket használ a Microsoft-fiók való hitelesítés engedélyezéséhez. [További információ a Azure Active Directoryról](https://azure.microsoft.com/services/active-directory).
 
 ## <a name="azure-ad-benefits"></a>Az Azure AD előnyei
 
-A Microsoft AppSource és az Azure Marketplace ügyfelei a terméken belüli tapasztalatokat használják a listázási katalógusok kereséséhez. Ezeknek a műveleteknek a használatához a felhasználóknak be kell jelentkezniük a termékbe. Az Azure AD-integráció a következő előnyöket biztosítja:
+A Microsoft AppSource és az Azure Marketplace ügyfelei a terméken belüli tapasztalatokat használják a kirakati katalógusok kereséséhez. Ezeknek a műveleteknek a használatához a felhasználóknak be kell jelentkezniük a termékbe. Az Azure AD-integráció a következő előnyöket biztosítja:
 
 - Gyorsabb engagement és optimalizált felhasználói élmény
 - Egyszeri bejelentkezés (SSO) több millió vállalati felhasználó számára
@@ -29,7 +29,7 @@ A Microsoft AppSource és az Azure Marketplace ügyfelei a terméken belüli tap
 
 ## <a name="offers-that-require-azure-ad"></a>Az Azure AD-t igénylő ajánlatok
 
-A AppSource és az Azure Marketplace különböző [listázási lehetőségei és típusai](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) eltérő követelményekkel rendelkeznek az Azure ad megvalósításához. A részletekért tekintse meg az alábbi táblázatot:
+A különböző kereskedelmi Piactéri [lehetőségek és az ajánlattételi típusok](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type) különböző követelményekkel rendelkeznek az Azure ad megvalósításához. További részleteket a következő táblázatban talál.
 
 | **Ajánlat típusa**    | **Azure AD SSO szükséges?**  |  |   |  |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|

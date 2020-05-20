@@ -1,18 +1,18 @@
 ---
-title: A közzétételi lehetőség meghatározása a Microsoft kereskedelmi piactér kirakatokban
-description: Ez a cikk a jogosultsági feltételeket és a közzétételi követelményeket ismerteti azoknak a partnereknek, akik az alkalmazások Microsoft AppSource és az Azure Marketplace-en való közzétételét szeretnék megismerni.
+title: A közzétételi lehetőség meghatározása – Microsoft kereskedelmi piactér
+description: Ez a cikk az ajánlatok Microsoft AppSource és az Azure Marketplace-en való közzétételének támogathatósági feltételeit és követelményeit ismerteti.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: e91ca0334276dbe9118eb0e40d042f598e8b3c0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92a24a59038eb74a6a2f6a738005ff8aadf35ff0
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415739"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658059"
 ---
 # <a name="determine-your-publishing-option"></a>A közzétételi beállítások meghatározása
 

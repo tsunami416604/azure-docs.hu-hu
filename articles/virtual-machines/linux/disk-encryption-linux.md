@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 74a4c13197863d0d41e183826cafd64976b44431
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 7f1352205f3c2821a50bd39358d960ca71134a95
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792581"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657448"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-forgatókönyvek Linux rendszerű virtuális gépekhez
 
@@ -195,10 +195,10 @@ Az Azure-ban a [Resource Manager-sablonnal](https://github.com/Azure/azure-quick
 
 Az alábbi táblázat a meglévő vagy futó virtuális gépek Resource Manager-sablonjának paramétereit sorolja fel:
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 | --- | --- |
 | vmName | A titkosítási műveletet futtató virtuális gép neve. |
-| keyVaultName | Annak a kulcstárolónak a neve, amelyre a titkosítási kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs `az keyvault list --resource-group "MyKeyVaultResourceGroupName"`használatával kérheti le.|
+| keyVaultName | Annak a kulcstárolónak a neve, amelyre a titkosítási kulcsot fel kell tölteni. A parancsmag `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` vagy az Azure CLI-parancs használatával kérheti le `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` .|
 | keyVaultResourceGroup | A kulcstárolót tartalmazó erőforráscsoport neve. |
 |  keyEncryptionKeyURL | A titkosítási kulcs titkosításához használt kulcs titkosítási kulcsának URL-címe. Ez a paraméter nem kötelező, ha a UseExistingKek legördülő listában a **nokek** lehetőséget választja. Ha a UseExistingKek legördülő listában a **KEK** elemet választja, meg kell adnia a _keyEncryptionKeyURL_ értéket. |
 | volumeType | A titkosítási művelet végrehajtásához használt kötet típusa. Az érvényes értékek az _operációs rendszer_, _az adatok_és _az összes_. 
@@ -218,7 +218,7 @@ A **EncryptFormatAll** paraméter csökkenti a Linux-adatlemezek titkosításán
  >Ha ezt a paramétert a titkosítási beállítások frissítésekor állítja be, akkor a tényleges titkosítás előtt újraindítást eredményezhet. Ebben az esetben el kell távolítania azt a lemezt is, amelyet nem kíván formázni az fstab-fájlból. Hasonlóképpen, a titkosítási művelet megkezdése előtt adja hozzá a titkosítani kívánt partíciót az fstab-fájlhoz. 
 
 ### <a name="encryptformatall-criteria"></a>EncryptFormatAll feltételek
-A (z) paraméter minden partíciót megnyit, és titkosítja őket, ha az alábbi feltételek **mindegyike** teljesül: 
+A (z) paraméter minden partíciót megnyit, és titkosítja őket, ha az alábbi feltételek **mindegyike** teljesül:
 - Nem root/OS/rendszerindító partíció
 - Még nincs titkosítva
 - Nem egy BEK-kötet
@@ -258,36 +258,50 @@ Set-AzVMDiskEncryptionExtension -ResourceGroupName $VMRGName -VMName $vmName -Di
 ### <a name="use-the-encryptformatall-parameter-with-logical-volume-manager-lvm"></a>A EncryptFormatAll paraméter használata a logikai kötet-kezelővel (LVM) 
 Javasoljuk, hogy legyen egy LVM-on-Crypt beállítás. Az alábbi példákban cserélje le az eszköz-elérési utat és a csatolási a használati esetre. Ezt a telepítést a következőképpen teheti meg:
 
-- Adja hozzá a virtuális gépet alkotó adatlemezeket.
-- Formázza, csatlakoztassa és adja hozzá ezeket a lemezeket az fstab-fájlhoz.
+1.  Adja hozzá a virtuális gépet alkotó adatlemezeket.
 
-    1. Válasszon egy partíciós szabványt, hozzon létre egy partíciót, amely a teljes meghajtót felöleli, majd formázza a partíciót. Az Azure által generált symlink-ket itt fogjuk használni. A symlink-EK használata elkerüli az eszközök nevének változásával kapcsolatos problémákat. További információt az [eszközök neveivel kapcsolatos problémák elhárítása](troubleshoot-device-names-problems.md) című cikkben talál.
-    
-         ```azurepowershell-interactive
-         parted /dev/disk/azure/scsi1/lun0 mklabel gpt
-         parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
-         
-         mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
-         ```
-    
-    1. Csatlakoztassa a lemezeket.
-         
-         `mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint`
-    
-    1. Hozzáadás az fstab-hoz.
-         
-        `echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab`
-    
-    1. Futtassa a set-AzVMDiskEncryptionExtension PowerShell-parancsmagot a-EncryptFormatAll használatával a lemezek titkosításához.
+1. Formázza, csatlakoztassa és adja hozzá ezeket a lemezeket az fstab-fájlhoz.
 
-       ```azurepowershell-interactive
-       $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
-           
-       Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri  -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data
-       ```
+1. Válasszon egy partíciós szabványt, hozzon létre egy partíciót, amely a teljes meghajtót felöleli, majd formázza a partíciót. Az Azure által generált symlink-ket itt fogjuk használni. A symlink-EK használata elkerüli az eszközök nevének változásával kapcsolatos problémákat. További információt az [eszközök neveivel kapcsolatos problémák elhárítása](troubleshoot-device-names-problems.md) című cikkben talál.
+    
+    ```bash
+    parted /dev/disk/azure/scsi1/lun0 mklabel gpt
+    parted -a opt /dev/disk/azure/scsi1/lun0 mkpart primary ext4 0% 100%
+    
+    mkfs -t ext4 /dev/disk/azure/scsi1/lun0-part1
+    ```
 
-    1. Az LVM beállítása az új lemezek felett. Figyelje meg, hogy a titkosított meghajtók zárolása a virtuális gép elindítása után megtörtént. Ezért az LVM csatlakoztatását is el kell halasztani.
+1. A lemezek csatlakoztatása:
 
+    ```bash
+    mount /dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint
+    ````
+    
+    Hozzáadás az fstab-fájlhoz:
+
+    ```bash
+    echo "/dev/disk/azure/scsi1/lun0-part1 /mnt/mountpoint ext4 defaults,nofail 0 2" >> /etc/fstab
+    ```
+    
+1. Futtassa a Azure PowerShell [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension?view=azps-3.8.0) parancsmagot a-EncryptFormatAll használatával a lemezek titkosításához.
+
+    ```azurepowershell-interactive
+    $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
+    
+    Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data
+    ```
+
+    Ha a kulcs titkosítási kulcsát (KEK) kívánja használni, adja át a KEK URI-JÁT és a kulcstartó ResourceID a-KeyEncryptionKeyUrl és a-KeyEncryptionKeyVaultId paraméterekbe:
+
+    ```azurepowershell-interactive
+    $KeyVault = Get-AzKeyVault -VaultName "MySecureVault" -ResourceGroupName "MySecureGroup"
+    $KEKKeyVault = Get-AzKeyVault -VaultName "MyKEKVault" -ResourceGroupName "MySecureGroup"
+    $KEK = Get-AzKeyVaultKey -VaultName "myKEKVault" -KeyName "myKEKName"
+    
+    Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl $KeyVault.VaultUri -DiskEncryptionKeyVaultId $KeyVault.ResourceId -EncryptFormatAll -SkipVmBackup -VolumeType Data -KeyEncryptionKeyUrl $$KEK.id -KeyEncryptionKeyVaultId $KEKKeyVault.ResourceId
+    ```
+
+1. Az LVM beállítása az új lemezek felett. Figyelje meg, hogy a titkosított meghajtók zárolása a virtuális gép elindítása után megtörtént. Ezért az LVM csatlakoztatását is el kell halasztani.
 
 ## <a name="new-vms-created-from-customer-encrypted-vhd-and-encryption-keys"></a>Az ügyfél által titkosított VHD-és titkosítási kulcsokból létrehozott új virtuális gépek
 Ebben az esetben PowerShell-parancsmagokkal vagy CLI-parancsokkal engedélyezheti a titkosítást. 

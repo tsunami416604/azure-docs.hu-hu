@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1b9a1771ad498fa3fb9b8294adb8a6556a00863a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02050745e7c8a9aa05d3f2de63a4bc5f1ebf8318
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82190418"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654774"
 ---
 # <a name="azure-security-baseline-for-azure-database-for-mysql"></a>Azure Database for MySQL Azure biztonsági alapterve
 
@@ -573,7 +573,7 @@ Az ügyfelek adatvédelem az Azure-ban:https://docs.microsoft.com/azure/security
 
 **Útmutató**: a Azure Database for MySQL szolgáltatás az FIPS 140-2 ellenőrzött titkosítási modult használja a REST-alapú adattárolási titkosításhoz. Az adatokat, beleértve a biztonsági másolatokat, a lemezeken titkosítva, a lekérdezések futtatásakor létrehozott ideiglenes fájlok kivételével. A szolgáltatás az Azure Storage-titkosításban található AES 256 bites titkosítást használja, és a kulcsokat a rendszer felügyeli. A tárolótitkosítás mindig be van kapcsolva, és nem tiltható le.
 
-Az ügyfél által felügyelt kulcsokkal rendelkező adatok titkosítása Azure Database for MySQL lehetővé teszi saját kulcs (BYOK) használatát a REST-alapú adatvédelem érdekében. Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon a következőhöz:
+Az Azure Database for MySQL ügyfél által felügyelt kulcsokkal történő titkosítása lehetővé teszi a saját kulcs használatát (BYOK) az inaktív adatok védelméhez. Jelenleg a funkció használatához hozzáférést kell kérnie. Ehhez forduljon a következőhöz:
 
 AskAzureDBforMySQL@service.microsoft.com
 
@@ -902,7 +902,7 @@ Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:https
 
 ### <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
-**Útmutató**: a Azure Database for MySQL-példány támogatja az adatbázisok elérését Azure Active Directory hitelesítést (előzetes verzióban).  A Azure Database for MySQL példány létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. Ennek a rendszergazdának a segítségével további adatbázis-felhasználók hozhatók létre.  
+**Útmutató**: a Azure Database for MySQL-példány támogatja az adatbázisok elérését Azure Active Directory hitelesítéshez.  A Azure Database for MySQL példány létrehozásakor meg kell adnia egy rendszergazdai felhasználó hitelesítő adatait. Ennek a rendszergazdának a segítségével további adatbázis-felhasználók hozhatók létre.  
 
 Az Azure Virtual Machines vagy a Azure App Serviceon futó webalkalmazások esetében a Azure Database for MySQL példányok eléréséhez használja a Managed Service Identityt a Azure Key Vault-példány hitelesítő adatainak tárolására és lekérésére. Győződjön meg arról, Key Vault a Soft delete engedélyezve van.
 

@@ -6,14 +6,14 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 05/10/2020
+ms.date: 05/12/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 0e6e243ceb73ca2a1180e59ba6c6b4095ed6069a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 082689dba5fdfa8505f2293223e76f2164b0df14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116713"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655293"
 ---
 # <a name="change-feed-pull-model-in-azure-cosmos-db"></a>A hírcsatorna lekérési modelljének módosítása Azure Cosmos DB
 
@@ -40,10 +40,10 @@ Az alábbi példa egy `FeedIterator` , a értéket visszaadó beszerzését szem
 FeedIterator iteratorWithStreams = container.GetChangeFeedStreamIterator();
 ```
 
-A használatával `FeedIterator` könnyedén feldolgozhatja a teljes tároló változási csatornáját a saját tempójában. Például:
+A használatával `FeedIterator` könnyedén feldolgozhatja a teljes tároló változási csatornáját a saját tempójában. Íme egy példa:
 
 ```csharp
-FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForTheEntireContainer= container.GetChangeFeedIterator<User>(new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForTheEntireContainer.HasMoreResults)
 {
@@ -61,7 +61,7 @@ while (iteratorForTheEntireContainer.HasMoreResults)
 Bizonyos esetekben előfordulhat, hogy csak egy adott partíciós kulcs módosításait szeretné feldolgozni. Beszerezhet egy `FeedIterator` adott partíciós kulcsot, és feldolgozhatja a módosításokat ugyanúgy, mint a teljes tárolóban:
 
 ```csharp
-FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorForThePartitionKey = container.GetChangeFeedIterator<User>(new PartitionKey("myPartitionKeyValueToRead"), new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 
 while (iteratorForThePartitionKey.HasMoreResults)
 {
@@ -98,7 +98,7 @@ Abban az esetben, ha a FeedRanges-t szeretné használni, rendelkeznie kell egy 
 1. gép:
 
 ```csharp
-FeedIterator<User> iteratorA = container.GetChangeFeedIterator<Person>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
+FeedIterator<User> iteratorA = container.GetChangeFeedIterator<User>(ranges[0], new ChangeFeedRequestOptions{StartTime = DateTime.MinValue});
 while (iteratorA.HasMoreResults)
 {
    FeedResponse<User> users = await iteratorA.ReadNextAsync();
@@ -149,6 +149,8 @@ while (iterator.HasMoreResults)
 FeedIterator<User> iteratorThatResumesFromLastPoint = container.GetChangeFeedIterator<User>(continuation);
 ```
 
+Amíg a Cosmos-tároló továbbra is létezik, a FeedIterator folytatási tokenje soha nem jár le.
+
 ## <a name="comparing-with-change-feed-processor"></a>Összehasonlítás a csatorna változása folyamattal
 
 Számos forgatókönyv képes feldolgozni a változási csatornát a [változási csatorna](change-feed-processor.md) vagy a lekéréses modell használatával. A lekéréses modell folytatási jogkivonatai és a változási hírcsatorna-feldolgozó címbérleti tárolója "Könyvjelzők" is a legutóbbi feldolgozott elemhez (vagy köteghez) a változási hírcsatornában.
@@ -156,9 +158,9 @@ A folytatási tokeneket azonban nem lehet címbérleti tárolóra konvertálni (
 
 Az alábbi helyzetekben érdemes megfontolni a lekéréses modell használatát:
 
-- A változási hírcsatornában lévő meglévő információk egyszeri olvasását szeretné elvégezni
-- Csak egy adott partíciós kulcs módosításait szeretné beolvasni
-- Nem szeretne leküldéses modellt használni, és a módosítási csatornát saját tempójában szeretné felhasználni
+- Egy adott partíciós kulcs változásainak olvasása
+- Annak szabályozása, hogy az ügyfél milyen tempóban kapja meg a feldolgozás változásait
+- A változási hírcsatornában található meglévő információk egyszeri olvasása (például az adatáttelepítés elvégzéséhez)
 
 Íme néhány lényeges különbség a változási hírcsatorna-feldolgozó és a lekérési modell között:
 
@@ -169,7 +171,7 @@ Az alábbi helyzetekben érdemes megfontolni a lekéréses modell használatát:
 | A jövőbeli változások lekérdezése | Automatikusan ellenőrzi a módosításokat a felhasználó által megadott érték alapján`WithPollInterval` | Kézi |
 | A teljes tároló változásainak feldolgozása | Igen, és automatikusan párhuzamosan, több szálon/gépen, ugyanarról a tárolóból| Igen, és manuálisan párhuzamosan a FeedTokens használatával |
 | Csak egyetlen partíciós kulcs változásainak feldolgozása | Nem támogatott | Igen|
-| Támogatási szint | Általánosan elérhető | Előzetes verzió |
+| Támogatási szint | Általánosan elérhető | Előnézet |
 
 ## <a name="next-steps"></a>További lépések
 

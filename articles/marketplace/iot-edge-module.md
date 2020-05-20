@@ -1,26 +1,26 @@
 ---
-title: Azure Marketplace IoT Edge-modulok
-description: Az IoT Edge modul az Azure Marketplace-en kínálja az alkalmazások és szolgáltatások közzétevőit.
+title: Azure Marketplace IoT Edge modul ajánlatok
+description: Tudnivalók az Azure Marketplace-en elérhető IoT Edge-modulok közzétételéről.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: dsindona
-ms.openlocfilehash: 762d9947046f159e992f09211bfcd76ff8d6712e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 49f86a79eb5358d27c15d93004db396436c3e680
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81684335"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657956"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
 
-Az Azure Cloud a [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformot támogatja.  Ez a platform lehetővé teszi a felhasználók számára, hogy közvetlenül a IoT-eszközökön futtassák a Felhőbeli számítási feladatokat.  Az IoT Edge-modulok offline számítási feladatokat futtathatnak, és helyileg is végezhetik az adatelemzést. Ez az ajánlat típusa segít a sávszélesség megtakarításában, a helyi és bizalmas adatok védelmében, és alacsony késésű válaszidőt biztosít.  Ezzel a lehetőséggel kihasználhatja ezeket az előre elkészített számítási feladatokat. Eddig csak néhány, a Microsofttól származó, első féltől származó megoldás érhető el.  Az időt és az erőforrásokat a saját egyéni IoT-megoldásainak kiépítése során kellett befektetni.
+A [Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/) platformot Microsoft Azure támogatja.  Ez a platform lehetővé teszi a felhasználók számára, hogy közvetlenül a IoT-eszközökön futtassák a Felhőbeli számítási feladatokat.  Az IoT Edge-modulok offline számítási feladatokat futtathatnak, és helyileg is végezhetik az adatelemzést. Ez az ajánlat típusa segít a sávszélesség megtakarításában, a helyi és bizalmas adatok védelmében, és alacsony késésű válaszidőt biztosít.  Ezzel a lehetőséggel kihasználhatja ezeket az előre elkészített számítási feladatokat. Eddig csak néhány, a Microsofttól származó, első féltől származó megoldás érhető el.  Az időt és az erőforrásokat a saját egyéni IoT-megoldásainak kiépítése során kellett befektetni.
 
-Az [Azure Marketplace IoT Edge moduljainak](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)bevezetésével most már egyetlen célhelyünk van a kiadók számára, hogy elérhetővé tegye és eladják megoldásait a IoT-közönség számára. A IoT-fejlesztők végső soron megtalálhatják és megvásárolhatják a megoldás-fejlesztés felgyorsításához szükséges képességeket.  
+[Az Azure Marketplace IoT Edge moduljaival](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1)most már egyetlen célhelyet kínálunk a kiadók számára, hogy elérhetővé tegye és eladják megoldásait a IoT-közönség számára. A IoT-fejlesztők végső soron megtalálhatják és megvásárolhatják a megoldás-fejlesztés felgyorsításához szükséges képességeket.  
 
-## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>A IoT Edge-modulok főbb előnyei az Azure Marketplace-en:
+## <a name="key-benefits-of-iot-edge-modules-in-azure-marketplace"></a>A IoT Edge-modulok főbb előnyei az Azure Marketplace-en
 
 | **Közzétevők számára**    | **Ügyfelek számára (IoT-fejlesztők)**  |
 | :------------------- | :-------------------|

@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: f75e5c856e05cc5ce53598849a7cb11ed059827a
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 5c227c6ab24d6b71445354d1b17d238e80bf6313
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82838858"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655845"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption Linux rendszerű virtuális gépekhez 
 
@@ -56,7 +56,7 @@ A Azure Disk Encryption az [Azure által támogatott Linux-disztribúciók](endo
 
 Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a Azure Disk Encryption; a támogatottak közül csak a következő disztribúciók és verziók támogatják a Azure Disk Encryption:
 
-| Közzétevő | Ajánlat | SKU | URN | Titkosításhoz támogatott kötet típusa |
+| Publisher | Ajánlat | SKU | URN | Titkosításhoz támogatott kötet típusa |
 | --- | --- |--- | --- |
 | Canonical | Ubuntu | 18,04 – LTS | Canonical: UbuntuServer: 18.04-LTS: legújabb | Operációs rendszer és az adatlemez |
 | Canonical | Ubuntu 18.04 | 18,04 – NAPONTA – LTS | Canonical: UbuntuServer: 18.04-DAILY-LTS: legújabb | Operációs rendszer és az adatlemez |
@@ -96,20 +96,30 @@ Az Azure által nem támogatott Linux Server-disztribúciók nem támogatják a 
 
 Azure Disk Encryption megköveteli, hogy a dm-crypt és a VFAT modulok jelen legyenek a rendszeren. A VFAT eltávolítása vagy letiltása az alapértelmezett rendszerképből megakadályozza, hogy a rendszer beolvassa a kulcs kötetét, és beszerezze a lemezek zárolásának feloldásához szükséges kulcsot a későbbi újraindítások során. A VFAT modul rendszerből való eltávolítására szolgáló rendszer-megerősítési lépések nem kompatibilisek a Azure Disk Encryptionokkal. 
 
-A titkosítás engedélyezése előtt a titkosítani kívánt adatlemezeknek megfelelően szerepelniük kell a/etc/fstab. Használjon állandó blokkbeli eszköznév ehhez a bejegyzéshez, mert a "/dev/sdX" formátumban található eszköznév nem lehet arra támaszkodni, hogy ugyanahhoz a lemezhez legyen társítva az újraindítások között, különösen a titkosítás alkalmazása után. További információ erről a viselkedésről: Linux rendszerű [virtuális gép eszköz nevének módosítása](troubleshoot-device-names-problems.md)
+A titkosítás engedélyezése előtt a titkosítani kívánt adatlemezeknek megfelelően szerepelniük kell a/etc/fstab. Bejegyzések létrehozásakor használja a "sikertelen" lehetőséget, és válassza ki az állandó blokk eszköz nevét (ahogy az "/dev/sdX" formátumban nem lehet ugyanahhoz a lemezhez hozzárendelni az újraindítások között, különösen a titkosítás után, a viselkedésről részletesebben lásd: Linux rendszerű [virtuális gép eszköz nevének módosítása](troubleshoot-device-names-problems.md)).
 
 Győződjön meg arról, hogy az/etc/fstab-beállítások megfelelően vannak konfigurálva a csatlakoztatáshoz. Ezen beállítások konfigurálásához futtassa a Mount-a parancsot, vagy indítsa újra a virtuális gépet, és aktiválja az újracsatlakoztatást. Ha a művelet befejeződött, ellenőrizze a lsblk parancs kimenetét annak ellenőrzéséhez, hogy a meghajtó továbbra is csatlakoztatva van-e. 
+
 - Ha az/etc/fstab fájl nem csatlakoztatja megfelelően a meghajtót a titkosítás engedélyezése előtt, Azure Disk Encryption nem fogja tudni megfelelően csatlakoztatni.
 - A Azure Disk Encryption folyamat a csatlakoztatási adatokat az/etc/fstab és a saját konfigurációs fájljába helyezi át a titkosítási folyamat részeként. Ne felébressze, hogy az adatmeghajtó titkosításának befejeződése után nem kell megtekinteni az/etc/fstabből hiányzó bejegyzést.
 - A titkosítás megkezdése előtt mindenképpen állítsa le az összes olyan szolgáltatást és folyamatot, amely a csatlakoztatott adatlemezekre írhat, és tiltsa le őket, hogy újraindítás után ne induljon el automatikusan. Ezek megtarthatják a fájlok megnyitását ezeken a partíciókon, így megakadályozva a titkosítási eljárás újracsatlakoztatását, ami hibát okoz a titkosításban. 
 - Az újraindítás után időt vesz igénybe a Azure Disk Encryption folyamat az újonnan titkosított lemezek csatlakoztatására. Újraindítás után nem lesznek azonnal elérhetők. A folyamatnak időre van szüksége az indításhoz, a zárolás feloldásához és a titkosított meghajtók csatlakoztatásához, mielőtt más folyamatok számára elérhetővé válik. Ez a folyamat a rendszerjellemzőktől függően több mint egy percet is igénybe vehet a rendszerindítás után.
 
-Az adatlemezek csatlakoztatásához és a szükséges/etc/fstab bejegyzések létrehozásához használható parancsok például a [Azure Disk Encryption előfeltételek CLI-szkriptben](https://github.com/ejarvi/ade-cli-getting-started) (244-248-es sorok) és a [Azure Disk Encryption előfeltételek PowerShell-szkriptben](https://github.com/Azure/azure-powershell/tree/master/src/Compute/Compute/Extension/AzureDiskEncryption/Scripts)találhatók. 
+Íme egy példa az adatlemezek csatlakoztatásához és a szükséges/etc/fstab bejegyzések létrehozásához használt parancsokra:
 
+```bash
+UUID0="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun0)"
+UUID1="$(blkid -s UUID -o value /dev/disk/azure/scsi1/lun1)"
+mkdir /data0
+mkdir /data1
+echo "UUID=$UUID0 /data0 ext4 defaults,nofail 0 0" >>/etc/fstab
+echo "UUID=$UUID1 /data1 ext4 defaults,nofail 0 0" >>/etc/fstab
+mount -a
+```
 ## <a name="networking-requirements"></a>Hálózati követelmények
 
 A Azure Disk Encryption funkció engedélyezéséhez a Linux rendszerű virtuális gépeknek meg kell felelniük a hálózati végpont következő konfigurációs követelményeinek:
-  - Ahhoz, hogy jogkivonatot kapjon a kulcstartóhoz való kapcsolódáshoz, a linuxos virtuális gépnek képesnek kell lennie csatlakozni \[egy\]Azure Active Directory végponthoz, a login.microsoftonline.com.
+  - Ahhoz, hogy jogkivonatot kapjon a kulcstartóhoz való kapcsolódáshoz, a linuxos virtuális gépnek képesnek kell lennie csatlakozni egy Azure Active Directory végponthoz, a \[ login.microsoftonline.com \] .
   - A titkosítási kulcsok a kulcstartóba való írásához a linuxos virtuális gépnek csatlakoznia kell a Key Vault-végponthoz.
   - A linuxos virtuális gépnek képesnek kell lennie csatlakozni egy Azure Storage-végponthoz, amely az Azure-bővítmény adattárát és a VHD-fájlokat tároló Azure Storage-fiókot üzemelteti.
   -  Ha a biztonsági házirend korlátozza az Azure-beli virtuális gépekről az internetre való hozzáférést, az előző URI-t megoldhatja, és konfigurálhat egy adott szabályt, hogy engedélyezze a kimenő kapcsolatot az IP-címekkel. További információ: [Azure Key Vault tűzfal mögött](../../key-vault/general/access-behind-firewall.md).  
@@ -123,7 +133,7 @@ További információ: [Key Vault létrehozása és konfigurálása Azure Disk E
 ## <a name="terminology"></a>Terminológia
 Az alábbi táblázat az Azure Disk Encryption dokumentációjában használt általános kifejezéseket ismerteti:
 
-| Terminológia | Meghatározás |
+| Terminológia | Definíció |
 | --- | --- |
 | Azure Key Vault | Key Vault egy kriptográfiai, kulcskezelő szolgáltatás, amely a szövetségi Information Processing Standards (FIPS) ellenőrzött hardveres biztonsági modulokon alapul. Ezek a szabványok segítenek megvédeni a titkosítási kulcsokat és a bizalmas titkokat. További információkért tekintse meg a [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) dokumentációját, és [hozzon létre és konfiguráljon egy Key vaultot a Azure Disk Encryptionhoz](disk-encryption-key-vault.md). |
 | Azure CLI | [Az Azure CLI](/cli/azure/install-azure-cli) az Azure-erőforrások parancssorból történő kezelésére és felügyeletére van optimalizálva.|

@@ -8,13 +8,12 @@ ms.author: pmorgan
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.custom: has-adal-ref
-ms.openlocfilehash: c2800dc361eb274eeef706556e09731da079ccab
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611755"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653373"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Hitelesítés és engedélyezés az Azure térbeli horgonyokhoz
 
@@ -46,7 +45,7 @@ A rendszer két kulcsot tesz elérhetővé, amelyek egyszerre érvényesek a té
 
 Az SDK beépített támogatást nyújt a fiókok kulcsaival történő hitelesítéshez; egyszerűen be kell állítania a AccountKey tulajdonságot a cloudSession objektumon.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccountKey = @"MyAccountKey";
@@ -99,7 +98,7 @@ Azure Active Directory felhasználókat célzó alkalmazások esetén az ajánlo
     1.  Az alkalmazás regisztrálása az Azure AD-ben **natív alkalmazásként**. A regisztrálás részeként meg kell határoznia, hogy az alkalmazás több-bérlős vagy sem, és megadja az alkalmazáshoz engedélyezett átirányítási URL-címeket.
         1.  Váltson az **API-engedélyek** lapra
         2.  Válassza **az engedély hozzáadása** lehetőséget
-            1.  Válassza a **vegyes valóság erőforrás-szolgáltató** elemet **a saját szervezet által használt API** -k alatt
+            1.  Válassza a **Microsoft Mixed Reality** elemet **a saját szervezet által használt API** -k alatt.
             2.  **Delegált engedélyek** kiválasztása
             3.  Jelölje be a **mixedreality. bejelentkezési** jelölőnégyzetet a **mixedreality** alatt
             4.  Válassza az **engedélyek hozzáadása** lehetőséget
@@ -112,16 +111,16 @@ Azure Active Directory felhasználókat célzó alkalmazások esetén az ajánlo
             2.  A **Select (kiválasztás** ) mezőben adja meg azon felhasználók, csoportok és/vagy alkalmazások nevét, amelyekhez hozzáférést szeretne rendelni.
             3.  Kattintson a **Mentés** gombra.
 2. A kódban:
-    1.  Ügyeljen arra, hogy a saját Azure AD-alkalmazásának **alkalmazás-azonosítóját** és **átirányítási URI-ját** használja az **ügyfél-azonosító** és a **RedirectUri** paraméterként a ADAL-ben.
+    1.  Ügyeljen arra, hogy a saját Azure AD-alkalmazásának **alkalmazás-azonosítóját** és **átirányítási URI-ját** használja az **ügyfél-azonosító** és a **RedirectUri** paraméterként a MSAL-ben.
     2.  Adja meg a bérlő adatait:
         1.  Ha az alkalmazás **csak a saját szervezetet**támogatja, cserélje le ezt az értéket a **bérlői azonosító** vagy a **bérlő nevére** (például contoso.microsoft.com).
         2.  Ha az alkalmazás **bármely szervezeti címtárban támogatja a fiókokat**, cserélje le ezt az értéket **szervezetekkel**
         3.  Ha az alkalmazás támogatja az **összes Microsoft-fiók felhasználót**, cserélje le ezt az értéket **közösre**
-    3.  A jogkivonat-kérelemben állítsa be az **erőforrást** a következőrehttps://sts.mixedreality.azure.com: "". Ez az "erőforrás" arra utal az Azure AD-ra, hogy az alkalmazás jogkivonatot kér az Azure térbeli horgonyok szolgáltatáshoz.
+    3.  A jogkivonat-kérelemben állítsa a **hatókört** a következőre: " https://sts.mixedreality.azure.com//.default ". Ez a hatókör jelzi az Azure AD számára, hogy az alkalmazás jogkivonatot kér a vegyes valóság biztonsági jogkivonat-szolgáltatás (STS) számára.
 
 Ezzel az alkalmazásnak képesnek kell lennie az Azure AD-token MSAL való beszerzésére; beállíthatja, hogy az Azure AD-jogkivonat **authenticationToken** legyen a felhőalapú munkamenet-konfigurációs objektumon.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AuthenticationToken = @"MyAuthenticationToken";
@@ -185,16 +184,16 @@ Az Azure AD hozzáférési jogkivonatot a MSAL- [könyvtár](../../active-direct
         2.  A **Select (kiválasztás** ) mezőben adja meg a létrehozott alkalmazás (ok) nevét, és amelyhez hozzáférést szeretne hozzárendelni. Ha azt szeretné, hogy az alkalmazás felhasználói különböző szerepkörökkel rendelkezzenek a térbeli horgonyok fiókjában, több alkalmazást kell regisztrálnia az Azure AD-ben, és hozzá kell rendelnie egy külön szerepkörhöz. Ezután implementálja az engedélyezési logikát, hogy a megfelelő szerepkört használja a felhasználók számára.
     3.  Kattintson a **Mentés** gombra.
 2.  A kódban (Megjegyzés: a GitHubon található szolgáltatási mintát használhatja):
-    1.  Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-ját használja az ügyfél-azonosító, a titkos kulcs és a RedirectUri paraméterként a ADAL
-    2.  Adja meg a bérlő AZONOSÍTÓját a saját AAAzure, és adja hozzá a bérlő AZONOSÍTÓját a ADAL-ben található Authority paraméterben.
-    3.  A jogkivonat-kérelemben állítsa be az **erőforrást** a következőre: "https://sts.mixedreality.azure.com"
+    1.  Ügyeljen arra, hogy a saját Azure AD-alkalmazásának alkalmazás-AZONOSÍTÓját, az alkalmazás titkos kulcsát és átirányítási URI-ját használja az ügyfél-azonosító, a titkos kulcs és a RedirectUri paraméterként a MSAL
+    2.  Állítsa a bérlői azonosítót saját Azure-beli bérlői AZONOSÍTÓra a MSAL-ben a Authority paraméterben.
+    3.  A jogkivonat-kérelemben állítsa be a **hatókört** a következőre: " https://sts.mixedreality.azure.com//.default "
 
 Ezzel a háttér-szolgáltatás lekérheti az Azure AD-tokent. Ezután egy MR-tokenre cserélheti azt, amelyet vissza fog térni az ügyfélnek. A MR-tokenek lekéréséhez egy Azure AD-tokent kell használni REST-hívással. Íme egy példa a hívásra:
 
 ```
-GET https://mrc-auth-prod.trafficmanager.net/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
+GET https://sts.mixedreality.azure.com/Accounts/35d830cb-f062-4062-9792-d6316039df56/token HTTP/1.1
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1Ni<truncated>FL8Hq5aaOqZQnJr1koaQ
-Host: mrc-auth-prod.trafficmanager.net
+Host: sts.mixedreality.azure.com
 Connection: Keep-Alive
 
 HTTP/1.1 200 OK
@@ -206,13 +205,13 @@ MS-CV: 05JLqWeKFkWpbdY944yl7A.0
 {"AccessToken":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2MzYyMTk5ZTI2NjQxOGU4ZjE3MThlM2IyMThjZTIxIiwidHlwIjoiSldUIn0.eyJqdGkiOiJmMGFiNWIyMy0wMmUxLTQ1MTQtOWEzNC0xNzkzMTA1NTc4NzAiLCJjYWkiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJ0aWQiOiIwMDAwMDAwMC0wMDAwLTAwMDAtMDAwMC0wMDAwMDAwMDAwMDAiLCJhaWQiOiIzNWQ4MzBjYi1mMDYyLTQwNjItOTc5Mi1kNjMxNjAzOWRmNTYiLCJhYW8iOi0xLCJhcHIiOiJlYXN0dXMyIiwicmlkIjoiL3N1YnNjcmlwdGlvbnMvNzIzOTdlN2EtNzA4NC00ODJhLTg3MzktNjM5Y2RmNTMxNTI0L3Jlc291cmNlR3JvdXBzL3NhbXBsZV9yZXNvdXJjZV9ncm91cC9wcm92aWRlcnMvTWljcm9zb2Z0Lk1peGVkUmVhbGl0eS9TcGF0aWFsQW5jaG9yc0FjY291bnRzL2RlbW9fYWNjb3VudCIsIm5iZiI6MTU0NDU0NzkwMywiZXhwIjoxNTQ0NjM0MzAzLCJpYXQiOjE1NDQ1NDc5MDMsImlzcyI6Imh0dHBzOi8vbXJjLWF1dGgtcHJvZC50cmFmZmljbWFuYWdlci5uZXQvIiwiYXVkIjoiaHR0cHM6Ly9tcmMtYW5jaG9yLXByb2QudHJhZmZpY21hbmFnZXIubmV0LyJ9.BFdyCX9UJj0i4W3OudmNUiuaGgVrlPasNM-5VqXdNAExD8acFJnHdvSf6uLiVvPiQwY1atYyPbOnLYhEbIcxNX-YAfZ-xyxCKYb3g_dbxU2w8nX3zDz_X3XqLL8Uha-rkapKbnNgxq4GjM-EBMCill2Svluf9crDmO-SmJbxqIaWzLmlUufQMWg_r8JG7RLseK6ntUDRyDgkF4ex515l2RWqQx7cw874raKgUO4qlx0cpBAB8cRtGHC-3fA7rZPM7UQQpm-BC3suXqRgROTzrKqfn_g-qTW4jAKBIXYG7iDefV2rGMRgem06YH_bDnpkgUa1UgJRRTckkBuLkO2FvA"}
 ```
 
-Ahol az engedélyezési fejléc a következőképpen van formázva:`Bearer <accoundId>:<accountKey>`
+Ahol az engedélyezési fejléc a következőképpen van formázva:`Bearer <Azure_AD_token>`
 
 A válasz pedig az MR tokent tartalmazza egyszerű szövegben.
 
 Ekkor a rendszer visszaküldi az MR tokent az ügyfélnek. Az ügyfélalkalmazás ezután a Felhőbeli munkamenet-konfigurációban állíthatja be hozzáférési jogkivonatként.
 
-# <a name="c"></a>[C #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```csharp
 this.cloudSession.Configuration.AccessToken = @"MyAccessToken";

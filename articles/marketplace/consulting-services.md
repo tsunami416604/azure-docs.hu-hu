@@ -1,29 +1,28 @@
 ---
-title: Microsoft AppSource és az Azure Marketplace Consulting Services
-description: Ez a cikk a Microsoft AppSource és az Azure Marketplace-en elérhető új tanácsadási ajánlatok támogathatósági feltételeit és közzétételi követelményeit ismerteti.
-services: Marketplace, Compute, Storage, Networking, Blockchain, Security
+title: Tanácsadási szolgáltatások a Microsoft kereskedelmi piactéren
+description: Ez a cikk a Microsoft AppSource és az Azure Marketplace-en elérhető új tanácsadási szolgáltatási ajánlatok támogathatósági feltételeit és közzétételi követelményeit ismerteti.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: e5f22a681a9a5cbed4eceea2f70faa1cb21c07bc
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: fc0a82617346f60b90de34b379b4a0a114faf804
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994844"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658082"
 ---
-# <a name="consulting-services-for-microsoft-appsource-and-azure-marketplace"></a>Tanácsadási szolgáltatások Microsoft AppSource és az Azure Marketplace-en
+# <a name="consulting-service-offers"></a>Tanácsadási szolgáltatás ajánlatok
 
-A Microsoft AppSource és az Azure Marketplace tanácsadási szolgáltatásai lehetővé tehetik a Microsoft rendszerintegrátori partnerei számára, hogy az Azure-t támogató és kibővítő szolgáltatásokkal csatlakozzanak ügyfeleiknek. Ezek a tanácsadási szolgáltatások segítenek az ügyfeleknek az üzleti célkitűzéseket és célokat szolgáló üzleti megoldások értékelésében, értékelésében és üzembe helyezésében.  
+Ez a cikk ismerteti az új tanácsadói szolgáltatásoknak a kereskedelmi piactéren való közzétételének támogathatósági feltételeit és követelményeit. A tanácsadási szolgáltatás ajánlatok lehetővé tehetik a Microsoft rendszerintegrátori partnerei számára, hogy az Azure-t támogató és kiterjesztő szolgáltatásokkal csatlakozzanak ügyfeleiknek. Ezek a tanácsadási szolgáltatások segítenek az ügyfeleknek az üzleti célkitűzéseket és célokat szolgáló üzleti megoldások értékelésében, értékelésében és üzembe helyezésében.  
 
 A tanácsadási szolgáltatás ajánlata az ügyfél-specifikus engagement. A kiadók meghatározhatják a lista típusát, hatókörét, időtartamát és árképzési struktúráját (rögzített árú vagy ingyenes). Az ajánlatok meghatározott napirendet biztosítanak az ügyfelek számára a termékekhez. Az érdeklődők a partnerek CRM-rendszereinek értesítésén keresztül érkeznek, és a partnerek az 48 órán belül válaszolnak az ügyfeleknek.
 
 ## <a name="compare-consulting-services"></a>Tanácsadási szolgáltatások összehasonlítása
 
-A Piactéri kirakatok a célközönségek és a felhőalapú termékek összehangolása révén segítenek az ügyfeleknek megtalálni a szükséges igényeket. Az egyes kirakatok speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. A következő táblázat összefoglalja ezeket a lehetőségeket:
+A kereskedelmi piactéren kirakatok, Microsoft AppSourceek és az Azure Marketplace a célközönségek és a felhőalapú termékek összehangolva segítik az ügyfelek számára a szükséges igények megtalálását. Az egyes kirakatok speciális közzétételi lehetőségeket biztosítanak a közzétételi befektetések maximalizálása érdekében. A következő táblázat összefoglalja ezeket a lehetőségeket:
 
 |         |Azure Piactér  |Microsoft AppSource |
 |---------|---------|---------|
@@ -96,14 +95,6 @@ A rendszerintegrátor partnerei a következő 21 országhoz/régióhoz küldhetn
 
 Először [regisztrálja](https://partner.microsoft.com/dashboard/account/v3/enrollment/introduction/partnership) a vállalati adatokat a piactéren. A regisztrációs követelmények teljes listáját itt tekintheti meg: [közzétevő a piactéren](https://docs.microsoft.com/azure/marketplace/become-publisher). 
 
-<!---
-**What to expect after registration**
-The Onboarding Team will reach out in 1 to 3 business days with a welcome email, which will include your Cloud Partner Portal sign-in information. [Cloud Partner Portal](https://cloudpartner.azure.com) is the offer listing portal where publishers submit listing information and submissions.
-
->[!Note]
->Partners need to register only once to become a publisher. After you become a publisher and receive your welcome email and Partner Center sign-in information, you don't need to re-register to publish different listing types.
---->
-
 ## <a name="prepare-your-publishing-artifacts"></a>A közzétételi összetevők előkészítése
 A regisztráció előtt megkezdheti a tartalom gyűjtését és előkészítését, amely segít a listán a szolgáltatás és a megoldás értékének megjelölése a cél ügyfelének. 
 
@@ -171,7 +162,7 @@ Miután a Content felülvizsgálati csapat áttekinti az ajánlat leírásait é
 
 |Csomag típusa  |Kötelező |Ajánlott  |
 |---------|---------|---------|
-|**Értékelés**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen feladatait várhatja el.      |    Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.     |
+|**Assessment**    |   Részletes menetrendet tartalmaz a többnapos vagy a többhetes értékelésekhez, és megfogalmazhatja, hogy az ügyfél milyen feladatait várhatja el.      |    Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.     |
 |**Eligazítás**    |   Az ügyfél által várhatóan felhasználható adatok kihangsúlyozása. Ne feledje, hogy a *tájékoztatót* személyesen kell megadni. Ha virtuális szolgáltatást biztosít, válasszon egy másik ajánlat típust.    |  Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.       |
 |**Megvalósítás**    |  Részletes menetrendet tartalmaz a többnapos vagy a többhetes implementációk számára, és megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfél számára.       |    Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.     |
 |**A koncepció igazolása**    |    Megfogalmazhatja, hogy milyen mérnöki változások, technikai összetevők vagy egyéb összetevők várhatók az ügyfelek számára az engagement eredményeinek megfelelően.     | Optimalizálja ajánlatait a legnépszerűbb SEO-kulcsszavakkal.        |
@@ -181,12 +172,12 @@ Miután a Content felülvizsgálati csapat áttekinti az ajánlat leírásait é
 A partner Centerben a [Markdown](/contribute/markdown-reference)használatával is hozzáadhat formázást a listához, amely megkönnyíti a lengyel nyelv hozzáadását a listához.
 
 Íme néhány Markdown Tipp:
-* *Dőlt* formázás esetén adjon hozzá egy csillag (\*) karaktert szóköz nélkül a szó vagy a szavak egy sorozatának elején és végén (például: \*Content * (tartalom formázása) a szó *tartalomként*való formázásához). Az *ajánlat összegzésének* formázása dőlt betűvel.
+* *Dőlt* formázás esetén adjon hozzá egy csillag ( \* ) karaktert szóköz nélkül a szó vagy a szavak egy sorozatának elején és végén (például: \* Content * (tartalom formázása) a szó *tartalomként*való formázásához). Az *ajánlat összegzésének* formázása dőlt betűvel.
 * Sortörés beszúrása kettőspont után (:) Listajeles vagy számozott lista bevezetéséhez.
-* Listajeles lista létrehozásához írjon be egy csillag (\*) karaktert, amelyet egy szóköz követ, minden egyes felsorolásjeles elemnél (például \*[space] első tartalom).
-* Fejlécek létrehozásához írjon be egy vagy több pound jelet (\#), majd szóközzel (például # # # [space] Agenda/végtermékek).
+* Listajeles lista létrehozásához írjon be egy csillag () karaktert, \* amelyet egy szóköz követ, minden egyes felsorolásjeles elemnél (például \* [space] első tartalom).
+* Fejlécek létrehozásához írjon be egy vagy több pound jelet ( \# ), majd szóközzel (például # # # [space] Agenda/végtermékek).
 * Minden címsor után adjon hozzá sortörést.
-* **Félkövér** formázáshoz adjon hozzá egy dupla csillagot\*\*() szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például \* \*írja be a tartalmat\* \* a Word **tartalmának**formázásához).
+* **Félkövér** formázáshoz adjon hozzá egy dupla csillagot ( \* \* ) szóköz nélkül egy szó vagy egy sorozat elejéhez és végéhez (például írja be a \* \* tartalmat a \* \* Word **tartalmának**formázásához).
 
 ## <a name="next-steps"></a>További lépések
 

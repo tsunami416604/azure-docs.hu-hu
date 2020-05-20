@@ -5,14 +5,14 @@ description: Megtudhatja, hogyan exportálhat adatfeliratokat a Azure Machine Le
 author: nibaccam
 ms.author: nibaccam
 ms.service: machine-learning
-ms.topic: how-to
-ms.date: 01/21/2020
-ms.openlocfilehash: 5138109de3f80d405ce95b605714b511480563f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: conceptual
+ms.date: 05/14/2020
+ms.openlocfilehash: 657b1dbb169d80a3e5563dd1a4fa52eac2278aae
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76549488"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655765"
 ---
 # <a name="create-and-explore-azure-machine-learning-dataset-with-labels"></a>Azure Machine Learning adatkészlet létrehozása és feltárása címkékkel
 
@@ -50,7 +50,7 @@ Betöltheti a címkével ellátott adatkészleteket egy Panda dataframe vagy Tor
 
 ### <a name="pandas-dataframe"></a>Panda dataframe
 
-A címkével ellátott adatkészleteket egy Panda dataframe is betöltheti [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) a `azureml-contrib-dataset` osztály metódusával. Telepítse az osztályt a következő rendszerhéj-paranccsal: 
+A címkével ellátott adatkészleteket egy Panda dataframe is betöltheti a [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) osztály metódusával `azureml-contrib-dataset` . Telepítse az osztályt a következő rendszerhéj-paranccsal: 
 
 ```shell
 pip install azureml-contrib-dataset
@@ -78,7 +78,7 @@ imgplot = plt.imshow(img)
 
 ### <a name="torchvision-datasets"></a>Torchvision adatkészletek
 
-Címkézett adatkészleteket is betölthet a Torchvision adatkészletbe a [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) metódussal `azureml-contrib-dataset` a osztályból is. Ennek a módszernek a használatához telepítenie kell a [PyTorch](https://pytorch.org/) . 
+Címkézett adatkészleteket is betölthet a Torchvision adatkészletbe a [to_torchvision ()](https://docs.microsoft.com/python/api/azureml-contrib-dataset/azureml.contrib.dataset.tabulardataset?view=azure-ml-py#to-torchvision--) metódussal a `azureml-contrib-dataset` osztályból is. Ennek a módszernek a használatához telepítenie kell a [PyTorch](https://pytorch.org/) . 
 
 ```python
 from torchvision.transforms import functional as F

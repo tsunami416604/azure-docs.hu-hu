@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 94ec85ae658ca6012cd1f1594b431d12bb73013d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 3f54c296575b256339f4c22708c06e3579720e00
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121065"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647797"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -194,7 +194,7 @@ Ha az alkalmazás olyan tanúsítványt használ, amely nem nyilvánosan megbíz
 A MSIX-alkalmazás csatolása négy különböző fázist tartalmaz, amelyeket a következő sorrendben kell végrehajtani:
 
 1. Fázis
-2. Regisztráljon
+2. Regisztráció
 3. Képes
 4. Kilépés
 
@@ -460,4 +460,4 @@ catch [Exception]
 
 Ez a funkció jelenleg nem támogatott, de kérdéseket tehet fel a Közösségnek a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 
-A Windows rendszerű virtuális asztali [visszajelzési központban](https://aka.ms/MRSFeedbackHub)is elhagyhatja a visszajelzést, vagy a MSIX alkalmazás és csomagolás eszközre vonatkozó visszajelzéseket a [MSIX alkalmazás csatolása a visszajelzési központban](https://aka.ms/msixappattachfeedback) és a [MSIX-csomagoló eszköz visszajelzési központja](https://aka.ms/msixtoolfeedback).
+A Windows rendszerű virtuális asztalok visszajelzéseit a [Windows Virtual Desktop visszajelzési központja](https://support.microsoft.com/help/4021566/windows-10-send-feedback-to-microsoft-with-feedback-hub-app)is elhagyhatja.

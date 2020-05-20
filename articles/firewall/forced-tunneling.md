@@ -5,18 +5,18 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 463bccb29d59f06e7381d7d7123946029223a93a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: cf0af93d95c5af56be6168bc8e4f79d3005e2ec2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199717"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649599"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Kényszerített bújtatás Azure Firewall
 
-A Azure Firewall konfigurálható úgy, hogy az összes internetes forgalmat a következő ugrásra irányítsa, ahelyett, hogy közvetlenül az internethez kellene jutnia. Előfordulhat például, hogy egy helyszíni peremhálózati tűzfallal vagy más hálózati virtuális berendezéssel (NVA) szeretné feldolgozni a hálózati forgalmat az internetre való továbbítás előtt.
+Amikor új Azure Firewall konfigurál, az összes internetes forgalmat átirányíthatja egy kijelölt következő ugrásra ahelyett, hogy közvetlenül az internethez kellene csatlakoznia. Előfordulhat például, hogy egy helyszíni peremhálózati tűzfallal vagy más hálózati virtuális berendezéssel (NVA) szeretné feldolgozni a hálózati forgalmat az internetre való továbbítás előtt. A kényszerített bújtatáshoz azonban nem konfigurálhat meglévő tűzfalat.
 
 Alapértelmezés szerint a kényszerített bújtatás nem engedélyezett a Azure Firewallon annak biztosítása érdekében, hogy az összes kimenő Azure-függősége teljesül. A felhasználó által megadott route-(UDR-) konfigurációk a *AzureFirewallSubnet* , amelyek alapértelmezett útvonala nem közvetlenül az internetre van letiltva.
 

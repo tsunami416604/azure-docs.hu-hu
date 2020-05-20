@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 03f5b0124f95465c4a5da5043364a2f5816dae62
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a36ac44fa861b902bfcc370472a2a87e036e5de6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685750"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654993"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure szolgáltatásban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -97,7 +97,7 @@ Ha az alkalmazásnak automatikusan kell létrehoznia a jelszavakat, ügyeljen ar
 
 ### <a name="validate-file-uploads"></a>Fájlfeltöltés ellenőrzése
 
-Ha az [alkalmazás lehetővé teszi a fájlfeltöltés használatát](https://www.owasp.org/index.php/Unrestricted_File_Upload), vegye figyelembe a kockázatos tevékenységhez szükséges óvintézkedéseket. A sok támadás első lépéseként egy rosszindulatú kód beszerzése egy támadás alatt álló rendszerbe. A fájlfeltöltés használatával a támadó elvégezheti ezt. A OWASP olyan megoldásokat kínál a fájlok érvényesítéséhez, amelyek biztosítják, hogy a feltöltött fájl biztonságos legyen.
+Ha az [alkalmazás lehetővé teszi a fájlfeltöltés használatát](https://owasp.org/www-community/vulnerabilities/Unrestricted_File_Upload), vegye figyelembe a kockázatos tevékenységhez szükséges óvintézkedéseket. A sok támadás első lépéseként egy rosszindulatú kód beszerzése egy támadás alatt álló rendszerbe. A fájlfeltöltés használatával a támadó elvégezheti ezt. A OWASP olyan megoldásokat kínál a fájlok érvényesítéséhez, amelyek biztosítják, hogy a feltöltött fájl biztonságos legyen.
 
 A kártevők elleni védelem segítségével azonosíthatja és eltávolíthatja a vírusokat, kémprogramokat és egyéb kártevő szoftvereket. Telepítheti a [Microsoft antimalware](../fundamentals/antimalware.md) -t vagy egy Microsoft-partner Endpoint Protection-megoldását ([Trend Micro](https://www.trendmicro.com/azure/), [Broadcom](https://www.broadcom.com/products), [McAfee](https://www.mcafee.com/us/products.aspx), [Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)és [Endpoint Protection](https://docs.microsoft.com/configmgr/protect/deploy-use/endpoint-protection)).
 

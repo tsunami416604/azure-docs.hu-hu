@@ -1,6 +1,6 @@
 ---
 title: Földrajzi katasztrófa-helyreállítás – Azure Event Hubs | Microsoft Docs
-description: Földrajzi régiók használata a feladatátvételhez és az Azure-beli vész-helyreállítás elvégzéséhez Event Hubs
+description: A földrajzi régiók használata a feladatátvételhez és a vész-helyreállítási műveletek végrehajtásához az Azure-ban Event Hubs
 services: event-hubs
 documentationcenter: ''
 author: ShubhaVijayasarathy
@@ -11,26 +11,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.custom: seodec18
-ms.date: 12/06/2018
+ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: 2c42637dda9d1a413c0521ea2d7565a63ca58e81
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 47e3a27ba9c0b7995f45f38ae4e19941cb4f8c01
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858284"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659718"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure Event Hubs – geo-vész-helyreállítás 
-
-Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban [rendelkezésre állási zónák](../availability-zones/az-overview.md) ) a tapasztalatok leállását tapasztalják, kritikus fontosságú, hogy az adatfeldolgozás továbbra is egy másik régióban vagy adatközpontban működjön. Így a *geo-* vész-helyreállítás és a *geo-replikáció* minden vállalat számára fontos funkció. Az Azure Event Hubs a Geo-vész-helyreállítást és a Geo-replikációt is támogatja a névtér szintjén. 
+Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban [rendelkezésre állási zónák](../availability-zones/az-overview.md) ) a tapasztalatok leállását tapasztalják, kritikus fontosságú, hogy az adatfeldolgozás egy másik régióban vagy adatközpontban is működjön. Így a *geo-* vész-helyreállítás és a *geo-replikáció* minden vállalat számára fontos funkció. Az Azure Event Hubs a Geo-vész-helyreállítást és a Geo-replikációt is támogatja a névtér szintjén. 
 
 > [!NOTE]
 > A földrajzi katasztrófa utáni helyreállítási funkció csak a [standard és a dedikált SKU](https://azure.microsoft.com/pricing/details/event-hubs/)esetében érhető el.  
 
 ## <a name="outages-and-disasters"></a>Kimaradások és katasztrófák
 
-Fontos megjegyezni az "kimaradások" és a "katasztrófák" közötti különbséget. A *leállás* az Azure Event Hubs ideiglenes nem érhető el, és hatással lehet a szolgáltatás egyes összetevőire, például az üzenetküldési tárolóra vagy akár a teljes adatközpontra is. A probléma javítása után azonban Event Hubs újra elérhetővé válik. A leállás általában nem okoz üzenetet vagy más adatvesztést. Ilyen kimaradás például áramkimaradás lehet az adatközpontban. Bizonyos kimaradások átmeneti vagy hálózati problémák miatt csak rövid kapcsolódási veszteségek. 
+Fontos megjegyezni az "kimaradások" és a "katasztrófák" közötti különbséget. A **leállás** az Azure Event Hubs ideiglenes nem érhető el, és hatással lehet a szolgáltatás egyes összetevőire, például az üzenetküldési tárolóra vagy akár a teljes adatközpontra is. A probléma javítása után azonban Event Hubs újra elérhetővé válik. A leállás általában nem okoz üzenetet vagy más adatvesztést. Ilyen kimaradás például áramkimaradás lehet az adatközpontban. Bizonyos kimaradások átmeneti vagy hálózati problémák miatt csak rövid kapcsolatok elvesztését okozják. 
 
 A *katasztrófa* a Event Hubs-fürt, az Azure-régió vagy az adatközpont állandó vagy hosszú távú elvesztéseként van meghatározva. Előfordulhat, hogy a régió vagy az adatközpont újra elérhetővé válik, vagy akár órákig, akár napokig nem. Ilyen katasztrófák például a tűz, az árvíz vagy a földrengés. Az állandó vészhelyzet miatt előfordulhat, hogy bizonyos üzenetek, események vagy egyéb adatvesztést okoznak. Azonban a legtöbb esetben nem lehet adatvesztés, és az adatközpont biztonsági mentése után az üzenetek nem állíthatók helyre.
 
@@ -46,9 +44,9 @@ A cikk a következő kifejezéseket használja:
 
 -  *Alias*: az Ön által beállított vész-helyreállítási konfiguráció neve. Az alias egyetlen stabil teljes tartománynevet (FQDN) tartalmazó adatkarakterláncot biztosít. Az alkalmazások ezt az alias kapcsolati karakterláncot használják a névtérhez való kapcsolódáshoz. 
 
--  *Elsődleges/másodlagos névtér*: az aliasnak megfelelő névterek. Az elsődleges névtér "aktív", és fogadja az üzeneteket (ez lehet egy meglévő vagy egy új névtér). A másodlagos névtér "passzív", és nem fogad üzeneteket. A kettő közötti metaadatok szinkronban vannak, így mindkét alkalmazás kód vagy kapcsolati karakterlánc módosítása nélkül is zökkenőmentesen fogadhat üzeneteket. Annak biztosítása érdekében, hogy csak az aktív névtér kapjon üzeneteket, az aliast kell használnia. 
+-  *Elsődleges/másodlagos névtér*: az aliasnak megfelelő névterek. Az elsődleges névtér "aktív", és fogadja az üzeneteket (lehet meglévő vagy új névtér is). A másodlagos névtér "passzív", és nem fogad üzeneteket. A kettő közötti metaadatok szinkronban vannak, így mindkét alkalmazás kód vagy kapcsolati karakterlánc módosítása nélkül is zökkenőmentesen fogadhat üzeneteket. Annak biztosítása érdekében, hogy csak az aktív névtér kapjon üzeneteket, az aliast kell használnia. 
 
--  *Metaadatok*: olyan entitások, mint az Event hubok és a fogyasztói csoportok; a névtérhez társított szolgáltatás tulajdonságai. Vegye figyelembe, hogy csak az entitások és azok beállításai lesznek automatikusan replikálva. Az üzenetek és az események nem replikálódnak. 
+-  *Metaadatok*: olyan entitások, mint az Event hubok és a fogyasztói csoportok; a névtérhez társított szolgáltatás tulajdonságai. A rendszer csak az entitásokat és azok beállításait replikálja automatikusan. Az üzenetek és események nem replikálódnak. 
 
 -  *Feladatátvétel*: a másodlagos névtér aktiválása folyamatban van.
 
@@ -60,7 +58,7 @@ Az elsődleges és a másodlagos névterek következő kombinációi támogatott
 | Standard | Standard | Igen | 
 | Standard | Dedikált | Igen | 
 | Dedikált | Dedikált | Igen | 
-| Dedikált | Standard | No | 
+| Dedikált | Standard | Nem | 
 
 > [!NOTE]
 > Ugyanahhoz a dedikált fürthöz tartozó névtereket nem lehet párosítani. A különálló fürtökben található névtereket is párosíthatja. 
@@ -73,7 +71,7 @@ A következő szakasz áttekintést nyújt a feladatátvételi folyamatról, és
 
 ### <a name="setup"></a>Telepítés
 
-Először hozzon létre vagy használjon egy meglévő elsődleges névteret, és egy új másodlagos névteret, és párosítsa a kettőt. Ez a párosítás egy aliast ad meg, amely a kapcsolódáshoz használható. Mivel aliast használ, nem kell módosítania a kapcsolódási karakterláncokat. Csak új névterek adhatók hozzá a feladatátvételi párosításhoz. Végezetül vegyen fel némi figyelést, hogy ellenőrizze, szükség van-e feladatátvételre. A legtöbb esetben a szolgáltatás a nagyméretű ökoszisztémák egyik része, így az automatikus feladatátvétel ritkán lehetséges, mivel a feladatátvételt a többi alrendszerrel vagy infrastruktúrával szinkronizálva kell végrehajtani.
+Először hozzon létre vagy használjon egy meglévő elsődleges névteret, és egy új másodlagos névteret, és párosítsa a kettőt. Ez a párosítás egy aliast ad meg, amely a kapcsolódáshoz használható. Mivel aliast használ, nem kell módosítania a kapcsolódási karakterláncokat. Csak új névterek adhatók hozzá a feladatátvételi párosításhoz. Végezetül vegyen fel némi figyelést, hogy ellenőrizze, szükség van-e feladatátvételre. A legtöbb esetben a szolgáltatás egy nagyméretű ökoszisztéma egyik része, így az automatikus feladatátvétel ritkán lehetséges, mivel a feladatátvételt a többi alrendszerrel vagy infrastruktúrával szinkronizálva kell végrehajtani.
 
 ### <a name="example"></a>Példa
 
@@ -85,7 +83,7 @@ A feladatátvételt a figyelési rendszerekkel vagy a testreszabott figyelési m
 
 Ha elindítja a feladatátvételt, két lépés szükséges:
 
-1. Ha egy másik leállás következik be, újra kell tudnia tenni a feladatátvételt. Ezért állítson be egy másik passzív névteret, és frissítse a párosítást. 
+1. Ha egy másik leállás következik be, azt szeretné, hogy újra lehessen adni a feladatátvételt. Ezért állítson be egy másik passzív névteret, és frissítse a párosítást. 
 
 2. A korábbi elsődleges névtérből származó üzenetek lekérése, ha ismét elérhetővé válik. Ezt követően használja ezt a névteret a normál üzenetküldéshez a Geo-helyreállítási beállításon kívül, vagy törölje a régi elsődleges névteret.
 
@@ -110,7 +108,7 @@ A [githubon található minta](https://github.com/Azure/azure-event-hubs/tree/ma
 
 Vegye figyelembe a következő szempontokat, hogy ne feledje a jelen kiadást:
 
-1. A tervezés szerint Event Hubs geo-vész-helyreállítás nem replikálja az adatait, ezért nem használhatja fel az elsődleges Event hub régi eltolási értékét a másodlagos esemény központján. Javasoljuk, hogy az Event receivert a következők egyikével indítsa újra:
+1. A tervezés szerint Event Hubs geo-vész-helyreállítás nem replikálja az adatait, ezért nem használhatja fel az elsődleges Event hub régi eltolási értékét a másodlagos esemény központján. Javasoljuk, hogy a következő módszerek egyikével indítsa újra az esemény-fogadót:
 
 - *EventPosition. FromStart ()* – ha szeretné beolvasni az összes adatközpontot a másodlagos esemény központján.
 - *EventPosition. FromEnd ()* – ha szeretné beolvasni az összes új adatforrást a másodlagos esemény központhoz való kapcsolódáskor.
@@ -135,6 +133,42 @@ A Availability Zones csak az új névtereken engedélyezheti, a Azure Portal has
 
 ![3][]
 
+## <a name="private-endpoints"></a>Privát végpontok
+Ez a szakasz további szempontokat tartalmaz, ha a Geo-vész-helyreállítást privát végpontokat használó névterekkel használja. Ha többet szeretne megtudni a privát végpontok Event Hubs használatával történő használatáról, tekintse meg a [privát végpontok konfigurálása](private-link-service.md)című témakört.
+
+### <a name="new-pairings"></a>Új párosítások
+Ha egy privát végponttal rendelkező elsődleges névtér és egy privát végpont nélküli másodlagos névtér között próbál létrehozni egy párosítást, akkor a párosítás sikertelen lesz. A párosítás csak akkor lesz sikeres, ha az elsődleges és a másodlagos névterek magánhálózati végpontokkal is rendelkeznek. Azt javasoljuk, hogy ugyanazokat a konfigurációkat használja az elsődleges és másodlagos névtereken, valamint azokon a virtuális hálózatokon, amelyeken a magánhálózati végpontok létre lettek hozva.  
+
+> [!NOTE]
+> Ha az elsődleges névteret privát végponttal és másodlagos névtérrel próbálja párosítani, az ellenőrzési folyamat csak azt ellenőrzi, hogy létezik-e privát végpont a másodlagos névtérben. Nem vizsgálja, hogy a végpont működik-e, vagy a feladatátvétel után fog működni. Az Ön felelőssége annak biztosítása, hogy a titkos végponttal rendelkező másodlagos névtér a feladatátvételt követően is a várt módon működjön.
+>
+> Annak ellenőrzéséhez, hogy a magánhálózati végpontok konfigurációja azonos-e az elsődleges és a másodlagos névterekben, küldjön egy olvasási kérelmet (például: [Event hub beszerzése](/rest/api/eventhub/get-event-hub)) a másodlagos névtérnek a virtuális hálózaton kívülről, és ellenőrizze, hogy hibaüzenetet kap-e a szolgáltatástól.
+
+### <a name="existing-pairings"></a>Meglévő párosítások
+Ha az elsődleges és a másodlagos névtér közötti párosítás már létezik, akkor az elsődleges névtéren a magánhálózati végpont létrehozása sikertelen lesz. A megoldáshoz először hozzon létre egy privát végpontot a másodlagos névtérben, majd hozzon létre egyet az elsődleges névtérhez.
+
+> [!NOTE]
+> Noha a másodlagos névtérhez csak olvasási hozzáférést engedélyezünk, a magánhálózati végpontok konfigurációjának frissítései engedélyezve vannak. 
+
+### <a name="recommended-configuration"></a>Ajánlott konfiguráció
+Ha az alkalmazáshoz és Event Hubs névterekhez vész-helyreállítási konfigurációt hoz létre, akkor az elsődleges és a másodlagos Event Hubs névterekhez egyaránt létre kell hoznia privát végpontokat az alkalmazás elsődleges és másodlagos példányait üzemeltető virtuális hálózatokon. 
+
+Tegyük fel, hogy két virtuális hálózattal rendelkezik: VNET-1, VNET-2 és ezek az elsődleges és másodlagos névterek: EventHubs-Namespace1-Primary, EventHubs-Namespace2-másodlagos. A következő lépéseket kell elvégeznie: 
+
+- A EventHubs-Namespace1-Primary-ben hozzon létre két privát végpontot, amely a VNET-1 és a VNET-2 alhálózatokat használja.
+- EventHubs – Namespace2 – másodlagos, hozzon létre két privát végpontot, amelyek ugyanazt az alhálózatot használják, mint a VNET-1 és a VNET-2 
+
+![Magánhálózati végpontok és virtuális hálózatok](./media/event-hubs-geo-dr/private-endpoints-virtual-networks.png)
+
+Ennek a megközelítésnek az az előnye, hogy a feladatátvétel a Event Hubs névtértől független alkalmazási rétegben történhet. Vegyük példaként a következő forgatókönyveket: 
+
+**Csak alkalmazáson belüli feladatátvétel:** Itt az alkalmazás nem létezik a VNET-1 helyen, de a VNET-2 értékre lép. Mivel a magánhálózati végpontok mind a VNET-1, mind a VNET-2 esetében mind az elsődleges, mind a másodlagos névtér esetében konfigurálva vannak, az alkalmazás csak működni fog. 
+
+**Event Hubs csak névtér feladatátvétele**: itt újra, mivel mindkét magánhálózati végpont mind az elsődleges, mind a másodlagos névterek esetében mindkét virtuális hálózaton konfigurálva van, az alkalmazás csak működni fog. 
+
+> [!NOTE]
+> A virtuális hálózatok földrajzi katasztrófa utáni helyreállításával kapcsolatos útmutatásért lásd: [Virtual Network – üzletmenet folytonossága](../virtual-network/virtual-network-disaster-recovery-guidance.md).
+ 
 ## <a name="next-steps"></a>További lépések
 
 * A [githubon található minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/GeoDRClient) egy egyszerű munkafolyamaton keresztül megy át, amely egy geo-párosítást hoz létre, és feladatátvételt kezdeményez a vész-helyreállítási forgatókönyvek esetében.

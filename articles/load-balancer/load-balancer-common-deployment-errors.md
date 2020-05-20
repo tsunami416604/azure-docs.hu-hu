@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: 26b4232832589827a09774eb0106c25e5c446eb1
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791085"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658641"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Az Azure üzembe helyezésével kapcsolatos gyakori hibák elhárítása Azure Load Balancer
 
@@ -34,7 +34,8 @@ Ez a cikk néhány gyakori Azure Load Balancer telepítési hibát ismertet, és
 |CannotUseInactiveHealthProbe| Nem használhat olyan mintavételt, amelyet a virtuálisgép-méretezési csoport állapotára konfigurált szabályok nem használnak. Győződjön meg arról, hogy a beállított mintavétel aktívan használatban van. |
 |VMScaleSetCannotUseMultipleLoadBalancersOfSameType| Ugyanahhoz a típushoz (belső, nyilvános) nem tartozhat több terheléselosztó. Legfeljebb egy belső és egy nyilvános Load Balancer lehet. |
 |VMScaleSetCannotReferenceLoadbalancerWhenLargeScaleOrCrossAZ | Az alapszintű Load Balancer nem támogatott a több elhelyezést biztosító virtuálisgép-méretezési csoportokban vagy a rendelkezésre állási zóna virtuálisgép-méretezési csoportjában. Ehelyett használja a standard Load Balancer. |
-|ResourceDeploymentFailure| Ha a terheléselosztó meghibásodott állapotban van, kövesse az alábbi lépéseket a sikertelen állapot visszaállításához:<ol><li>Nyissa https://resources.azure.commeg a t, és jelentkezzen be a Azure Portal hitelesítő adataival.</li><li>Válassza az **írás/írás**lehetőséget.</li><li>A bal oldalon bontsa ki az **előfizetések**elemet, majd bontsa ki az előfizetést a frissítéshez Load Balancer.</li><li>Bontsa ki a **ResourceGroups**csomópontot, majd bontsa ki az erőforráscsoportot a frissítéshez Load Balancer.</li><li>Válassza a **Microsoft. Network** > **LoadBalancers**lehetőséget, majd válassza ki a frissíteni kívánt Load Balancer **LoadBalancer_1**.</li><li>A **LoadBalancer_1**megjelenítése lapon válassza a**Szerkesztés** **beolvasása** > elemet.</li><li>A **ProvisioningState** értékének frissítése **sikertelen volt** **.**</li><li>Válassza a **PUT** lehetőséget.</li></ol>|
+|MarketplacePurchaseEligibilityFailed | Váltson a megfelelő rendszergazdai fiókra, hogy engedélyezze a vásárlást, mert az előfizetés EA-előfizetés. Erről [itt](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase) olvashat bővebben. |
+|ResourceDeploymentFailure| Ha a terheléselosztó meghibásodott állapotban van, kövesse az alábbi lépéseket a sikertelen állapot visszaállításához:<ol><li>Nyissa meg a t https://resources.azure.com , és jelentkezzen be a Azure Portal hitelesítő adataival.</li><li>Válassza az **írás/írás**lehetőséget.</li><li>A bal oldalon bontsa ki az **előfizetések**elemet, majd bontsa ki az előfizetést a frissítéshez Load Balancer.</li><li>Bontsa ki a **ResourceGroups**csomópontot, majd bontsa ki az erőforráscsoportot a frissítéshez Load Balancer.</li><li>Válassza a **Microsoft. Network**  >  **LoadBalancers**lehetőséget, majd válassza ki a frissíteni kívánt Load Balancer **LoadBalancer_1**.</li><li>A **LoadBalancer_1**megjelenítése lapon válassza a Szerkesztés **beolvasása**elemet  >  **Edit**.</li><li>A **ProvisioningState** értékének frissítése **sikertelen volt** **.**</li><li>Válassza a **PUT** lehetőséget.</li></ol>|
 |  |  |
 
 ## <a name="next-steps"></a>További lépések

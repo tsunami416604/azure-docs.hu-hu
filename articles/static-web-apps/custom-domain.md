@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 10d3e3674aef901ad35dfb6d0b9fd13715aace55
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597610"
+ms.locfileid: "83655236"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Egyéni tartomány beállítása az Azure statikus Web Apps előzetes verziójában
 
@@ -80,7 +80,7 @@ Egy CNAME rekord egy tartományt képez le egy másikra. CNAME rekord használat
 
 1. Kattintson az **Érvényesítés** gombra.
 
-Most, hogy az egyéni tartomány konfigurálva van, több óráig is eltarthat, amíg a DNS-szolgáltató propagálni tudja a globális változásokat. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg a tartomány egyéni tartományát `www` , beleértve a elemet, válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás**lehetőséget.
+Most, hogy az egyéni tartomány konfigurálva van, több óráig is eltarthat, amíg a DNS-szolgáltató propagálni tudja a globális változásokat. A propagálás állapotát a [dnspropagation.net](https://dnspropagation.net)címen tekintheti meg. Adja meg az egyéni tartományt, beleértve a `www` elemet, válassza ki a CNAME elemet a legördülő menüből, és válassza az **Indítás**lehetőséget.
 
 Ha a DNS-módosítások feltöltve lettek, a webhely a statikus webalkalmazás automatikusan generált URL-címét (például _Random-Name-123456789c.azurestaticapps.net_) adja vissza.
 
@@ -92,7 +92,7 @@ Noha az előzetes verzióban nem érhető el a gyökértartomány támogatása f
 
 ## <a name="map-a-wildcard-domain"></a>Helyettesítő karaktert tartalmazó tartomány hozzárendelése
 
-Néha azt szeretné, hogy az altartományba eljuttatott összes forgalom egy másik tartományba legyen irányítva. Gyakori példa az összes altartomány-forgalom leképezése `www.example.com` . Így, még akkor is, ha valaki típust `ww.example.com` használ `www.example.com` , a rendszer elküldi a kérést `www.example.com` .
+Néha azt szeretné, hogy az altartományba eljuttatott összes forgalom egy másik tartományba legyen irányítva. Gyakori példa az összes altartomány-forgalom leképezése `www.example.com` . Így, még akkor is, ha valaki típust `w.example.com` használ `www.example.com` , a rendszer elküldi a kérést `www.example.com` .
 
 ### <a name="configure-dns-provider"></a>DNS-szolgáltató konfigurálása
 

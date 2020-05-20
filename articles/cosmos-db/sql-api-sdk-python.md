@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL Python API, SDK &-erőforrások'
 description: Ismerkedjen meg az SQL Python API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és a Azure Cosmos DB Python SDK egyes verzióiban végrehajtott módosításokat.
-author: SnehaGunda
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: python
 ms.topic: reference
-ms.date: 11/29/2018
-ms.author: sngun
-ms.openlocfilehash: b81a3921ec11d589dadbdebd698ab9ad67d7649c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: ce74a7b02b9c450e07402d96a1aaba2a4b704788
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982905"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650714"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982905"
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -125,7 +126,7 @@ ms.locfileid: "80982905"
 
 ### <a name="120"></a><a name="1.2.0"/>1.2.0
 * A térinformatikai index támogatása.
-* Érvényesíti az összes erőforrás azonosító tulajdonságát. Az erőforrások azonosítói nem tartalmazhatnak szóközt,/, \, #, karakter vagy véget.
+* Érvényesíti az összes erőforrás azonosító tulajdonságát. Az erőforrások azonosítói nem tartalmazhatnak szóközt,/, #, \, karakter vagy véget.
 * Hozzáadja az új "index átalakítási folyamat" fejlécet a ResourceResponse.
 
 ### <a name="110"></a><a name="1.1.0"/>1.1.0

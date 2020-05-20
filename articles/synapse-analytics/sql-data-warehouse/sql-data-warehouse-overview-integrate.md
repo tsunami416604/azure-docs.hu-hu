@@ -11,16 +11,16 @@ ms.date: 04/17/2018
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2f6e091b6e0285bea5fef9e4d0be40faec936c6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 469fdf19f8c5fa511070f2d809d06829578c2131
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80633144"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653725"
 ---
-# <a name="integrate-other-services-with-a-sql-analytics-data-warehouse"></a>Más szolgáltatások integrálása SQL Analytics-adattárházba
+# <a name="integrate-other-services-with-a-synapse-sql-pool-data-warehouse"></a>Más szolgáltatások integrálása egy szinapszis SQL-készlettel (adattárház)
 
-Az Azure szinapszis Analyticsen belüli SQL Analytics funkció lehetővé teszi a felhasználók számára az Azure számos más szolgáltatásának integrálását. Az SQL Analytics használatával létrehozhat egy adattárházat az SQL-készlet erőforrásán keresztül, amely több további szolgáltatást is használhat, amelyek némelyike többek között a következőkre használható:
+Az Azure szinapszis Analyticsben az SQL Pool funkció lehetővé teszi a felhasználók számára az Azure számos más szolgáltatásának integrálását. A szinapszis SQL használatával létrehozhat egy adattárházat az SQL-készlet erőforrásán keresztül, amely több további szolgáltatást is használhat, amelyek némelyike többek között a következőkre használható:
 
 * Power BI
 * Azure Data Factory
@@ -31,9 +31,9 @@ Az Azure-beli integrációs szolgáltatásokkal kapcsolatos további informáci�
 
 ## <a name="power-bi"></a>Power BI
 
-Az Power BI integráció lehetővé teszi az adatraktár számítási teljesítményének összevonását a Power BI dinamikus jelentéskészítésével és vizualizációval. Power BI integráció jelenleg a következőket tartalmazza:
+Az Power BI integráció lehetővé teszi az adatraktár számítási teljesítményének összevonását a Power BI dinamikus jelentéskészítésével és vizualizációval. A Power BI-integráció jelenleg a következőket tartalmazza:
 
-* **Közvetlen**kapcsolat: az SQL-készlettel kiépített adattárházak logikai pushdown való fejlettebb kapcsolata. A pushdown gyorsabb elemzést tesz lehetővé nagyobb méretekben.
+* **Közvetlen**kapcsolat: az SQL-készlettel kiépített adattárházak logikai pushdown való fejlettebb kapcsolata. A leküldés gyorsabb elemzést biztosít, nagyobb léptékben.
 * **Megnyitás a Power BIban**: a "Megnyitás Power bi" gomb a példányok információit átadja a Power BInak a kapcsolódás egyszerűsített módjaként.
 
 További információ: Integration [with Power bi](sql-data-warehouse-get-started-visualize-with-power-bi.md), vagy a [Power bi dokumentációja](https://powerbi.microsoft.com/blog/exploring-azure-sql-data-warehouse-with-power-bi/).

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79efe3cef82a166ca6b56dea5cb07f15a5325083
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60640378"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650325"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Dinamikus DNS használata a gazdagépek regisztrálásához a saját DNS-kiszolgálón
 
@@ -33,9 +33,9 @@ A tartományhoz nem csatlakoztatott Windows-ügyfelek megkísérlik a nem bizton
 A tartományhoz csatlakoztatott Windows-ügyfelek a biztonságos DDNS használatával regisztrálják az IP-címüket a tartományvezérlőhöz. A tartományhoz való csatlakozás folyamata beállítja az elsődleges DNS-utótagot az ügyfélen, és létrehozza és karbantartja a megbízhatósági kapcsolatot.
 
 ## <a name="linux-clients"></a>Linux-ügyfelek
-A Linux-ügyfelek általában nem regisztrálják magukat a DNS-kiszolgálóval indításkor, feltételezik, hogy a DHCP-kiszolgáló végzi. Az Azure DHCP-kiszolgálói nem rendelkeznek a rekordok a DNS-kiszolgálón való regisztrálásához szükséges hitelesítő adatokkal. A DDNS-frissítések elküldéséhez használhat egy nevű `nsupdate`eszközt is, amely a kötési csomagban található. Mivel a DDNS protokoll szabványosítva van, akkor is használhatja `nsupdate` , ha nem használ kötést a DNS-kiszolgálón.
+A Linux-ügyfelek általában nem regisztrálják magukat a DNS-kiszolgálóval indításkor, feltételezik, hogy a DHCP-kiszolgáló végzi. Az Azure DHCP-kiszolgálói nem rendelkeznek a rekordok a DNS-kiszolgálón való regisztrálásához szükséges hitelesítő adatokkal. A DDNS-frissítések elküldéséhez használhat egy nevű eszközt is `nsupdate` , amely a kötési csomagban található. Mivel a DDNS protokoll szabványosítva van, akkor is használhatja, ha `nsupdate` nem használ kötést a DNS-kiszolgálón.
 
-A DHCP-ügyfél által biztosított hookokat a DNS-kiszolgáló hostname bejegyzésének létrehozására és karbantartására használhatja. A DHCP-ciklus során az ügyfél végrehajtja a parancsfájlokat a */etc/DHCP/dhclient-Exit-Hooks.d/*-ben. A hookok segítségével regisztrálja az új IP-címet a használatával `nsupdate`. Például:
+A DHCP-ügyfél által biztosított hookokat a DNS-kiszolgáló hostname bejegyzésének létrehozására és karbantartására használhatja. A DHCP-ciklus során az ügyfél végrehajtja a parancsfájlokat a */etc/DHCP/dhclient-Exit-Hooks.d/*-ben. A hookok segítségével regisztrálja az új IP-címet a használatával `nsupdate` . Például:
 
 ```bash
 #!/bin/sh
@@ -61,11 +61,11 @@ then
 fi
 ```
 
-A `nsupdate` parancs használatával biztonságos DDNS-frissítéseket is végrehajthat. Ha például egy kötési DNS-kiszolgálót használ, egy nyilvános titkos kulcspár jön [létre](http://linux.yyz.us/nsupdate/). A DNS-kiszolgáló a kulcs nyilvános részével van [konfigurálva](http://linux.yyz.us/dns/ddns-server.html) , hogy ellenőrizni tudja a kérelem aláírását. Ahhoz `nsupdate`, hogy a kulcspár elérhető legyen a számára, `-k` használja a lehetőséget a DDNS frissítési kérelem aláírásához.
+A `nsupdate` parancs használatával biztonságos DDNS-frissítéseket is végrehajthat. Ha például egy kötési DNS-kiszolgálót használ, egy nyilvános titkos kulcspár jön létre ( `http://linux.yyz.us/nsupdate/` ). A DNS-kiszolgáló konfigurálva van ( `http://linux.yyz.us/dns/ddns-server.html` ) a kulcs nyilvános részével, hogy ellenőrizni tudja a kérelem aláírását. Ahhoz, hogy a kulcspár elérhető legyen a számára `nsupdate` , használja a `-k` lehetőséget a DDNS frissítési kérelem aláírásához.
 
-Ha Windows DNS-kiszolgálót használ, Kerberos-hitelesítést használhat a `-g` paraméterrel a alkalmazásban `nsupdate`, de a Windows-verziójában nem érhető el. `nsupdate` A Kerberos használatához a használatával `kinit` töltse be a hitelesítő adatokat. Például betöltheti a hitelesítő adatokat egy [keytab kiterjesztésű-fájlból](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), `nsupdate -g` majd felveszi a hitelesítő adatokat a gyorsítótárból.
+Ha Windows DNS-kiszolgálót használ, Kerberos-hitelesítést használhat a paraméterrel a alkalmazásban `-g` `nsupdate` , de a Windows-verziójában nem érhető el `nsupdate` . A Kerberos használatához a használatával `kinit` töltse be a hitelesítő adatokat. Például betöltheti a hitelesítő adatokat egy [keytab kiterjesztésű-fájlból](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html)), majd `nsupdate -g` felveszi a hitelesítő adatokat a gyorsítótárból.
 
-Ha szükséges, DNS-keresési utótagot adhat hozzá a virtuális gépekhez. A DNS-utótag a */etc/resolv.conf* fájlban van megadva. A legtöbb Linux-disztribúció automatikusan kezeli a fájl tartalmát, így általában nem szerkesztheti. A DHCP-ügyfél `supersede` parancsának használatával azonban felülbírálhatja az utótagot. Az utótag felülbírálásához adja hozzá a következő sort a */etc/DHCP/dhclient.conf* -fájlhoz:
+Ha szükséges, DNS-keresési utótagot adhat hozzá a virtuális gépekhez. A DNS-utótag a */etc/resolv.conf* fájlban van megadva. A legtöbb Linux-disztribúció automatikusan kezeli a fájl tartalmát, így általában nem szerkesztheti. A DHCP-ügyfél parancsának használatával azonban felülbírálhatja az utótagot `supersede` . Az utótag felülbírálásához adja hozzá a következő sort a */etc/DHCP/dhclient.conf* -fájlhoz:
 
 ```
 supersede domain-name <required-dns-suffix>;

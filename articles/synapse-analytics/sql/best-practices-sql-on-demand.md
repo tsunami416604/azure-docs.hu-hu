@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86678365d1510199247e8a1aaa48ec844d07de32
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592933"
+ms.locfileid: "83650391"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -68,7 +68,7 @@ A lekérdezésben használt adattípusok hatással vannak a teljesítményre. Jo
 
 ## <a name="check-inferred-data-types"></a>Késleltetett adattípusok keresése
 
-A [séma-következtetés](query-parquet-files.md#automatic-schema-inference) segít gyorsan írni a lekérdezéseket, és az adatelemzést a sémafájl ismerete nélkül. Ez a kényelem a kikövetkeztetett adattípusok esetében a ténylegesnél nagyobb költséggel jár. Ez akkor történik meg, ha nem áll rendelkezésre elegendő információ a forrásfájlok számára a megfelelő adattípus használata érdekében. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban, és az SQL igény szerint varchar (8000) értéket kell kikövetkeztetni. 
+A [séma-következtetés](query-parquet-files.md#automatic-schema-inference) segít gyorsan írni a lekérdezéseket, és az adatelemzést a sémafájl ismerete nélkül. Ez a kényelem a kikövetkeztetett adattípusok esetében a ténylegesnél nagyobb költségekkel jár. Akkor következik be, ha nincs elegendő információ a forrásfájlok számára a megfelelő adattípus használatáról. A Parquet-fájlok például nem tartalmaznak metaadatokat a karakteres oszlopok maximális hosszával kapcsolatban, és az SQL igény szerint varchar (8000) értékűre következtetnek. 
 
 A lekérdezés eredményül kapott adattípusait [sp_describe_first_results_set](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-describe-first-result-set-transact-sql?view=sql-server-ver15)használatával tekintheti meg.
 
@@ -92,7 +92,7 @@ Itt látható az eredményhalmaz.
 |0|2|pickup_datetime|datetime2 (7)|8|
 |0|3|passenger_count|int|4|
 
-Ha már tudjuk, hogy a lekérdezéshez következtetett adattípusok is megadhatók a megfelelő adattípusok:
+Ha a lekérdezéshez következtetett adattípusokat ismerünk, megadhatjuk a megfelelő adattípusokat:
 
 ```sql  
 SELECT
@@ -143,4 +143,4 @@ Ha jobb teljesítményre van szüksége, próbálja ki az SAS hitelesítő adata
 
 ## <a name="next-steps"></a>További lépések
 
-Tekintse át a gyakori problémákkal és megoldásokkal kapcsolatos [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha SQL-készlet helyett SQL-készlettel dolgozik, tekintse meg az [ajánlott eljárásokat az SQL-készlethez](best-practices-sql-pool.md) című cikkben a konkrét útmutatásért.
+Tekintse át a gyakori problémákkal és megoldásokkal kapcsolatos [hibaelhárítási](../sql-data-warehouse/sql-data-warehouse-troubleshoot.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) cikket. Ha SQL-készlet helyett SQL-készlettel dolgozik, tekintse meg az [ajánlott eljárásokat az SQL-készlethez](best-practices-sql-pool.md) című cikket a konkrét útmutatásért.

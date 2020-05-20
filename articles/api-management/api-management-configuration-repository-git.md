@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/12/2019
 ms.author: apimpm
-ms.openlocfilehash: f948d813ddb4d493b455a4922818e38ac3fd6eaa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c1a9f3e76622523dde03cc2a639cce33227dff5f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259170"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649218"
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Az API Management-szolgáltatáskonfiguráció mentése és konfigurálása a Git használatával
 
@@ -31,7 +31,7 @@ A következő ábra áttekintést nyújt az API Management-szolgáltatási péld
 
 ![Git-konfigurálás][api-management-git-configure]
 
-Ha a Azure Portal, a PowerShell-parancsmagok vagy a REST API használatával módosítja a szolgáltatást, a szolgáltatás konfigurációs adatbázisát a `https://{name}.management.azure-api.net` végpont használatával felügyeli, ahogy az a diagram jobb oldalán látható. A diagram bal oldalán látható, hogyan kezelheti a szolgáltatás konfigurációját a git-és git-tárház használatával, amely a szolgáltatásában található `https://{name}.scm.azure-api.net`.
+Ha a Azure Portal, a PowerShell-parancsmagok vagy a REST API használatával módosítja a szolgáltatást, a szolgáltatás konfigurációs adatbázisát a végpont használatával felügyeli `https://{name}.management.azure-api.net` , ahogy az a diagram jobb oldalán látható. A diagram bal oldalán látható, hogyan kezelheti a szolgáltatás konfigurációját a git-és git-tárház használatával, amely a szolgáltatásában található `https://{name}.scm.azure-api.net` .
 
 Az alábbi lépések áttekintést nyújtanak a API Management Service-példánynak a git használatával történő kezeléséről.
 
@@ -118,7 +118,7 @@ Ha módosítja a API Management Service-példányát a Azure Portal vagy a REST 
 git pull
 ```
 
-A futtatása `git pull` előtt győződjön meg arról, hogy a helyi tárház mappájában van. Ha most fejezte be a `git clone` parancsot, akkor a könyvtárat a következőhöz hasonló parancs futtatásával kell módosítania a tárházra.
+A futtatása előtt `git pull` Győződjön meg arról, hogy a helyi tárház mappájában van. Ha most fejezte be a `git clone` parancsot, akkor a könyvtárat a következőhöz hasonló parancs futtatásával kell módosítania a tárházra.
 
 ```
 cd {name}.scm.azure-api.net/
@@ -148,7 +148,7 @@ A műveletnek a REST API használatával történő végrehajtásával kapcsolat
 
 A helyi git-tárházban található fájlok és mappák tartalmazzák a szolgáltatási példány konfigurációs adatait.
 
-| Elem | Leírás |
+| Item | Description |
 | --- | --- |
 | gyökérszintű API – felügyeleti mappa |A szolgáltatás példányának legfelső szintű konfigurációját tartalmazza |
 | API-k mappa |Az API-k konfigurációját tartalmazza a szolgáltatási példányban. |
@@ -174,7 +174,7 @@ Ezeket a fájlokat létrehozhatja, törölheti, szerkesztheti és felügyelheti 
 >
 > * [Felhasználók](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/user)
 > * [Előfizetések](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/subscription)
-> * [Megnevezett értékek](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/property)
+> * Névvel ellátott értékek
 > * A fejlesztői portál más entitásai, mint a stílusok
 >
 
@@ -198,7 +198,7 @@ A gyökérmappa `api-management` tartalmaz egy `configuration.json` fájlt, amel
 }
 ```
 
-Az első négy beállítás (`RegistrationEnabled`, `UserRegistrationTerms` `UserRegistrationTermsEnabled`, és `UserRegistrationTermsConsentRequired`) a **Biztonság** szakasz **identitások** lapján a következő beállításokra mutat.
+Az első négy beállítás ( `RegistrationEnabled` , `UserRegistrationTerms` , `UserRegistrationTermsEnabled` és `UserRegistrationTermsConsentRequired` ) a **Biztonság** szakasz **identitások** lapján a következő beállításokra mutat.
 
 | Identitás beállítása | Maps to |
 | --- | --- |
@@ -208,7 +208,7 @@ Az első négy beállítás (`RegistrationEnabled`, `UserRegistrationTerms` `Use
 | UserRegistrationTermsConsentRequired |**Beleegyezikés megkövetelése** jelölőnégyzet |
 | RequireUserSigninEnabled |**Névtelen felhasználók átirányítása a bejelentkezési oldalra** jelölőnégyzet |
 
-A következő négy beállítás (`DelegationEnabled`, `DelegationUrl`, `DelegatedSubscriptionEnabled`és `DelegationValidationKey`) a **Biztonság** szakaszban található **delegálás** lapon a következő beállításokkal képezhető le.
+A következő négy beállítás ( `DelegationEnabled` , `DelegationUrl` , `DelegatedSubscriptionEnabled` és `DelegationValidationKey` ) a **Biztonság** szakaszban található **delegálás** lapon a következő beállításokkal képezhető le.
 
 | Delegálási beállítás | Maps to |
 | --- | --- |
@@ -217,14 +217,14 @@ A következő négy beállítás (`DelegationEnabled`, `DelegationUrl`, `Delegat
 | DelegatedSubscriptionEnabled |**Termék-előfizetés delegálása** jelölőnégyzet |
 | DelegationValidationKey |**Ellenőrzési kulcs delegálása** szövegmező |
 
-Az utolsó beállítás, `$ref-policy`amely a szolgáltatás példányának globális házirend-utasítások fájlját képezi le.
+Az utolsó beállítás, `$ref-policy` amely a szolgáltatás példányának globális házirend-utasítások fájlját képezi le.
 
 ### <a name="apis-folder"></a>API-k mappa
 A `apis` mappa a szolgáltatási példányban található minden API-hoz tartalmaz egy mappát, amely a következő elemeket tartalmazza.
 
-* `apis\<api name>\configuration.json`– Ez az API konfigurációja, és a háttér-szolgáltatás URL-címével és műveleteivel kapcsolatos információkat tartalmaz. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha a [megadott API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) `export=true` `application/json` formátummal való meghívása megtörtént.
-* `apis\<api name>\api.description.html`– Ez az API leírása, és az API- `description` [entitás](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)tulajdonságának felel meg.
-* `apis\<api name>\operations\`– Ez a mappa `<operation name>.description.html` olyan fájlokat tartalmaz, amelyek az API-műveletekhez vannak leképezve. Minden fájl tartalmazza az API-ban lévő egyetlen művelet leírását, amely a REST API `description` [művelet entitásának](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) tulajdonságára van leképezve.
+* `apis\<api name>\configuration.json`– Ez az API konfigurációja, és a háttér-szolgáltatás URL-címével és műveleteivel kapcsolatos információkat tartalmaz. Ez ugyanaz az információ, amelyet a rendszer akkor ad vissza, ha a [megadott API](https://docs.microsoft.com/rest/api/apimanagement/2019-12-01/apis/get) formátummal való meghívása megtörtént `export=true` `application/json` .
+* `apis\<api name>\api.description.html`– Ez az API leírása, és az `description` [API-entitás](https://docs.microsoft.com/java/api/com.microsoft.azure.storage.table.entityproperty)tulajdonságának felel meg.
+* `apis\<api name>\operations\`– Ez a mappa olyan `<operation name>.description.html` fájlokat tartalmaz, amelyek az API-műveletekhez vannak leképezve. Minden fájl tartalmazza az API-ban lévő egyetlen művelet leírását, amely a `description` REST API [művelet entitásának](https://docs.microsoft.com/rest/api/visualstudio/operations/list#operationproperties) tulajdonságára van leképezve.
 
 ### <a name="groups-folder"></a>csoportok mappa
 A `groups` mappa a szolgáltatási példányban definiált egyes csoportok mappáját tartalmazza.
@@ -237,14 +237,14 @@ A `policies` mappa tartalmazza a szolgáltatási példány szabályzatának utas
 
 * `policies\global.xml`– a szolgáltatási példány globális hatókörében meghatározott szabályzatokat tartalmaz.
 * `policies\apis\<api name>\`– Ha az API-hatókörben vannak definiálva szabályzatok, azok ebben a mappában találhatók.
-* `policies\apis\<api name>\<operation name>\`mappa – ha a műveleti hatókörben definiált szabályzatok vannak megadva, azok a mappában `<operation name>.xml` találhatók, amelyek az egyes műveletek házirend-utasításait képezik le.
+* `policies\apis\<api name>\<operation name>\`mappa – ha a műveleti hatókörben definiált szabályzatok vannak megadva, azok a mappában találhatók, `<operation name>.xml` amelyek az egyes műveletek házirend-utasításait képezik le.
 * `policies\products\`– Ha a termék hatókörében meghatározott szabályzatok vannak meghatározva, akkor ebben a mappában találhatók, amely `<product name>.xml` az egyes termékekhez tartozó házirend-utasításokhoz hozzárendelt fájlokat tartalmazza.
 
 ### <a name="portalstyles-folder"></a>portalStyles mappa
 A `portalStyles` mappa konfigurációs és stíluslapokat tartalmaz a szolgáltatási példány fejlesztői portáljának testreszabásához.
 
 * `portalStyles\configuration.json`-a fejlesztői portál által használt stíluslapok nevét tartalmazza.
-* `portalStyles\<style name>.css`– minden `<style name>.css` fájl tartalmazza a fejlesztői portál stílusait (`Preview.css` és `Production.css` alapértelmezés szerint).
+* `portalStyles\<style name>.css`– minden `<style name>.css` fájl tartalmazza a fejlesztői portál stílusait ( `Preview.css` és `Production.css` alapértelmezés szerint).
 
 ### <a name="products-folder"></a>termékek mappa
 A `products` mappa tartalmazza a szolgáltatási példányban definiált egyes termékek mappáját.

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 7e5cb997bee271a1bf1c795598d0ddfda3373264
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f48a54f2f220d83720d4a3233e2fb97a9efa64ff
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197157"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654673"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Biztonsági javaslatok – útmutató
 
@@ -64,9 +64,9 @@ A biztonságos pontszám a befejezett Security Center javaslatok számán alapul
 
 |Ajánlás|Leírás & kapcsolódó szabályzat|Severity|Gyors javítás engedélyezve? ([További információ](https://docs.microsoft.com/azure/security-center/security-center-remediate-recommendations#recommendations-with-quick-fix-remediation))|Erőforrás típusa|
 |----|----|----|----|----|
-|**A webalkalmazás csak HTTPS protokollon keresztül érhető el**|A webalkalmazások hozzáférésének korlátozása csak HTTPS protokollon keresztül.<br>(Kapcsolódó szabályzat:)|Közepes|N|App Service|
-|**függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el**|Csak HTTPS-kapcsolaton keresztül korlátozza a függvények elérését.<br>(Kapcsolódó szabályzat:)|Közepes|N|App Service|
-|**Az API-alkalmazás csak HTTPS protokollon keresztül érhető el**|A API Apps hozzáférésének korlátozása csak HTTPS protokollon keresztül.<br>(Kapcsolódó szabályzat:)|Közepes|N|App Service|
+|**A webalkalmazás csak HTTPS protokollon keresztül érhető el**|A "csak HTTPS" hozzáférés engedélyezése a webes alkalmazásokhoz. A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.<br>(Kapcsolódó házirend: a webalkalmazásnak csak HTTPS protokollon keresztül elérhetőnek kell lennie)|Közepes|**I**|App Service|
+|**függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el**|A "csak HTTPS" hozzáférés engedélyezése a Function apps alkalmazásokhoz. A HTTPS használata biztosítja a kiszolgálók/szolgáltatások hitelesítését, és védelmet biztosít a hálózati réteg-lehallgatási támadásoktól érkező adatforgalomban.<br>(Kapcsolódó házirend: függvényalkalmazás csak HTTPS protokollon keresztül érhető el)|Közepes|**I**|App Service|
+|**Az API-alkalmazás csak HTTPS protokollon keresztül érhető el**|A API Apps hozzáférésének korlátozása csak HTTPS protokollon keresztül.<br>(Kapcsolódó szabályzat: az API-alkalmazás csak HTTPS protokollon keresztül érhető el)|Közepes|N|App Service|
 |**A távoli hibakeresést ki kell kapcsolni a webalkalmazásokhoz**|Ha már nincs szüksége rá, kapcsolja ki a webes alkalmazások hibakeresését. A távoli hibakereséshez a bejövő portok megnyitására van szükség egy webalkalmazásban.<br>(Kapcsolódó házirend: a távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz)|Alacsony|**I**|App Service|
 |**A távoli hibakeresést ki kell kapcsolni függvényalkalmazás**|Ha már nincs szüksége a használatra, kapcsolja ki a hibakeresést függvényalkalmazás. A távoli hibakereséshez a bejövő portokat függvényalkalmazás kell megnyitni.<br>(Kapcsolódó házirend: a távoli hibakeresést ki kell kapcsolni függvényalkalmazás)|Alacsony|**I**|App Service|
 |**A távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz**|Ha már nincs szüksége a használatra, kapcsolja ki a hibakeresést az API-alkalmazáshoz. A távoli hibakereséshez bejövő portokat kell megnyitni egy API-alkalmazásban.<br>(Kapcsolódó házirend: a távoli hibakeresést ki kell kapcsolni az API-alkalmazáshoz)|Alacsony|**I**|App Service|

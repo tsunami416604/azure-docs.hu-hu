@@ -8,12 +8,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2017
 ms.author: kyliel
-ms.openlocfilehash: 9b78c0d93b57a3e3f4963088d0b93f121f57483c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eeeb60cc41f96edbf8733468ca0cfd18d2939af7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945110"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652541"
 ---
 # <a name="how-to-use-freebsds-packet-filter-to-create-a-secure-firewall-in-azure"></a>Biztonságos tűzfal létrehozása az Azure-ban a FreeBSD csomagszűrő használatával
 Ez a cikk bemutatja, hogyan helyezhet üzembe egy NAT-tűzfalat a FreeBSD Packer-szűrő segítségével Azure Resource Manager sablon használatával a gyakori webkiszolgálói forgatókönyvhöz.
@@ -28,13 +28,13 @@ A Azure Resource Manager sablon egy olyan FreeBSD-alapú virtuális gépet áll�
 ![pf_topology](./media/freebsd-pf-nat/pf_topology.jpg)
     
 ### <a name="deploy-through-azure-cli"></a>Üzembe helyezés az Azure CLI-n keresztül
-Az az [login](/cli/azure/reference-index)használatával telepítenie kell a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és be kell jelentkeznie egy Azure-fiókba. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy erőforráscsoport- `myResourceGroup` nevet a `West US` helyen.
+Az az [login](/cli/azure/reference-index)használatával telepítenie kell a legújabb [Azure CLI](/cli/azure/install-az-cli2) -t, és be kell jelentkeznie egy Azure-fiókba. Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. A következő példában létrehozunk egy erőforráscsoport `myResourceGroup` -nevet a `West US` helyen.
 
 ```azurecli
 az group create --name myResourceGroup --location westus
 ```
 
-Ezután telepítse a [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup) sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Töltse le az [azuredeploy. Parameters. JSON](https://github.com/Azure/azure-quickstart-templates/blob/master/pf-freebsd-setup/azuredeploy.parameters.json) fájlt ugyanazon az elérési úton, és adja meg a `adminPassword`saját `networkPrefix`erőforrás- `domainNamePrefix`értékeit, például,, és. 
+Ezután telepítse a PF-FreeBSD-Setup sablont az [az Group Deployment Create](/cli/azure/group/deployment)paranccsal. Töltse le az azuredeploy. Parameters. JSON fájlt ugyanazon az elérési úton, és adja meg a saját erőforrás-értékeit, például,, `adminPassword` `networkPrefix` és `domainNamePrefix` . 
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeploymentName \
@@ -42,14 +42,14 @@ az group deployment create --resource-group myResourceGroup --name myDeploymentN
     --parameters '@azuredeploy.parameters.json' --verbose
 ```
 
-Körülbelül öt perc elteltével a következő információkat kapja: `"provisioningState": "Succeeded"`. Ezt követően SSH-t használhat a frontend VM (NAT) vagy az Nginx webkiszolgáló eléréséhez egy böngészőben a virtuális gép (NAT) nyilvános IP-címét vagy teljes tartománynevét használva. Az alábbi példa felsorolja az `myResourceGroup` erőforráscsoport felületi virtuális GÉPHEZ (NAT) HOZZÁRENDELT teljes tartománynevet és nyilvános IP-címet. 
+Körülbelül öt perc elteltével a következő információkat kapja: `"provisioningState": "Succeeded"` . Ezt követően SSH-t használhat a frontend VM (NAT) vagy az Nginx webkiszolgáló eléréséhez egy böngészőben a virtuális gép (NAT) nyilvános IP-címét vagy teljes tartománynevét használva. Az alábbi példa felsorolja az erőforráscsoport felületi virtuális géphez (NAT) hozzárendelt teljes tartománynevet és nyilvános IP-címet `myResourceGroup` . 
 
 ```azurecli
 az network public-ip list --resource-group myResourceGroup
 ```
     
 ## <a name="next-steps"></a>További lépések
-Be szeretné állítani saját NAT-adatait az Azure-ban? Nyílt forráskódú, ingyenes, de hatékony? Ezt követően a PF jó választás. A " [PF-FreeBSD-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/pf-freebsd-setup)" sablon használatával mindössze öt percet kell beállítania a NAT-tűzfal ciklikus időszeleteléses terheléselosztással történő beállításához az Azure-beli FreeBSD PF használatával a gyakori webkiszolgálói forgatókönyvhöz. 
+Be szeretné állítani saját NAT-adatait az Azure-ban? Nyílt forráskódú, ingyenes, de hatékony? Ezt követően a PF jó választás. A "PF-FreeBSD-Setup" sablon használatával mindössze öt percet kell beállítania a NAT-tűzfal ciklikus időszeleteléses terheléselosztással történő beállításához az Azure-beli FreeBSD PF használatával a gyakori webkiszolgálói forgatókönyvhöz. 
 
 Ha szeretné megismerni a FreeBSD Azure-beli ajánlatát, tekintse meg az Azure-beli [FreeBSD bemutatása](freebsd-intro-on-azure.md)című témakört.
 

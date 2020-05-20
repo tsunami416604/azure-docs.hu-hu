@@ -1,5 +1,5 @@
 ---
-title: Kereskedelmi Piactéri Transact-képességek
+title: Microsoft kereskedelmi piactér – Transact-képességek
 description: Ez a cikk a kereskedelmi Piactéri Transact lehetőség díjszabását, számlázását, számlázását és kifizetési szempontjait ismerteti.
 author: dsindona
 ms.service: marketplace
@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 4aeae69dd50e8c233a1903f6f2c7bd7795b8d7b9
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ce1c134c1940abecd7ecc6329b48802e02e74dc9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857221"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657906"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Kereskedelmi Piactéri Transact-képességek
 
@@ -70,7 +70,7 @@ A Microsoft lehetővé teszi, hogy az ügyfelek a Microsoft kereskedelmi piacté
 
 A Transact Publishing forgatókönyvek esetében 30 vagy 90 napig ingyenesen elérhetővé teheti a szoftverlicenc-t. Ez a diszkont képesség nem tartalmazza az Azure-infrastruktúra használatának költségeit a partneri megoldás használatával.
 
-### <a name="private-offers"></a>Privát ajánlatok
+### <a name="private-offers"></a>Személyes ajánlatok
 
 Az ajánlati típusok és a számlázási modellek használata mellett egy ajánlat értékesítésére is lehetősége van, és az egyeztetett, az ügylet-specifikus díjszabással vagy az egyéni konfigurációkkal is elvégezheti a tranzakciót. Mind a három Transact közzétételi lehetőség támogatja a privát ajánlatokat.
 

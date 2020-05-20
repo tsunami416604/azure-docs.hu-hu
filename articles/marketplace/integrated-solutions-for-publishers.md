@@ -1,22 +1,22 @@
 ---
-title: Integrált megoldások – Azure Marketplace
-description: Integrált megoldások az Azure Marketplace-en és Microsoft AppSource
+title: Integrált megoldás közzététele – Microsoft kereskedelmi piactér
+description: Ismerje meg az integrált megoldások Microsoft AppSource és az Azure Marketplace-en való közzétételének követelményeit és lépéseit.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: 835aa0192dc37032a76bf3863dc1a4ac0109bb22
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: f0a3ea3aebeb9c96d7ccfba9c883ae208d93a44e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160562"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657973"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
-Egy csomagban található, integrált megoldás egy szolgáltatási partner üzembe helyezésével és támogatásával ötvözi a szoftvergyártók pont-megoldási technológiáit. A szolgáltatási partner a Microsoft AppSource vagy az Azure Marketplace [tanácsadói szolgáltatásként](./consulting-services.md)sorolja fel az ajánlatot.
+Ez a cikk az integrált megoldás kereskedelmi piactéren való közzétételének általános folyamatát és követelményeit ismerteti. Egy csomagban található, integrált megoldás egy szolgáltatási partner üzembe helyezésével és támogatásával ötvözi a szoftvergyártók pont-megoldási technológiáit. A szolgáltatási partner a Microsoft AppSource vagy az Azure Marketplace [tanácsadói szolgáltatásként](./consulting-services.md)sorolja fel az ajánlatot.
 
 Az integrált megoldások célja, hogy egy adott vásárlói igényt vagy forgatókönyvet foglalkozzon. A szolgáltatók az iparági kihívások vagy a fájdalom pontok megismerésével kezdődnek. Ezután integrálják a két vagy több legjobb technológiát, hogy egységes és ismételhető üzembe helyezési élményt hozzanak létre az ügyfelek számára. A szolgáltatók gyorsan elérhetik az ügyfeleket. Az ügyfél számára egyetlen kapcsolódási pontot biztosítanak, amely biztosítja a megfelelő testreszabási, tanácsadási és megoldási támogatást. Az eredmény egy integrált megoldás, beleértve a technológiát és a szolgáltatásokat.
 
@@ -65,7 +65,7 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
     * Ügyfelek megcélzása
     * Érték kiosztása
     * Díjszabás
-    * Licencek
+    * Licencelés
     * használati feltételei
     * Támogatási megközelítés
     * Marketing tevékenységek

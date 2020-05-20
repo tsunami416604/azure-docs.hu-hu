@@ -12,16 +12,16 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: ed8dd902ac490b4e6a0f172029bf3ffa1d44acee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86cd3d2f7675ca5111c29be278c9433ec7f66945
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81251843"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653048"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analytics szolgáltatásban
 
-Ismerje meg, hogyan hitelesítheti az Azure Szinapszisban az SQL Analytics szolgáltatást Azure Active Directory (HRE) vagy SQL Server hitelesítés használatával.
+Megtudhatja, hogyan hitelesítheti magát a szinapszis SQL-ben az Azure Szinapszisban Azure Active Directory (HRE) vagy SQL Server hitelesítés használatával.
 
 SQL-készlethez való kapcsolódáshoz hitelesítő adatokat kell megadnia hitelesítési célokra. A kapcsolat létrehozásakor a rendszer bizonyos kapcsolatbeállításokat a lekérdezési munkamenet létrehozásának részeként konfigurál.  
 
@@ -80,7 +80,7 @@ Jelenleg Azure Active Directory felhasználók nem jelennek meg a SSDT-Object Ex
 
 ### <a name="find-the-details"></a>A részletek megkeresése
 
-* A Azure Active Directory hitelesítés konfigurálásának és használatának lépései közel azonosak az Azure szinapszis-beli Azure SQL Database és SQL-elemzések esetében. A Azure Active Directory-hitelesítés használatával hajtsa végre a következő témakör részletes lépéseit: [csatlakozás SQL Database vagy SQL-készlethez](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+* A Azure Active Directory hitelesítés konfigurálásának és használatának lépései közel azonosak az Azure-beli Azure SQL Database és a szinapszis SQL-ben. A Azure Active Directory-hitelesítés használatával hajtsa végre a következő témakör részletes lépéseit: [csatlakozás SQL Database vagy SQL-készlethez](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 * Hozzon létre egyéni adatbázis-szerepköröket, és adja hozzá a felhasználókat a szerepkörökhöz. Ezután adjon meg részletes engedélyeket a szerepkörökhöz. További információ: [első lépések az adatbázismotor engedélyeivel](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>További lépések

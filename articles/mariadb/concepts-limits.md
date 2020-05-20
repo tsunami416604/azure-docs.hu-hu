@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 4/1/2020
-ms.openlocfilehash: 18f227c1888e0565eebb640fa61ced56dc994865
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632339"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653134"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>A Azure Database for MariaDB korlátozásai
 A következő szakaszok ismertetik a kapacitást, a tárolási motor támogatását, a jogosultságok támogatását, az adatmanipulációs nyilatkozatok támogatását és az adatbázis-szolgáltatás működési korlátait.
@@ -150,7 +150,13 @@ A paraméterrel kapcsolatos további információkért tekintse meg a [MariaDB d
 
 ### <a name="time_zone"></a>time_zone
 
-Az időzóna-táblázatok úgy tölthetők fel, hogy `mysql.az_load_timezone` meghívja a tárolt eljárást egy eszközről, például a MySQL-parancssorból vagy a MySQL Workbenchből. A tárolt eljárás meghívásához és a globális vagy munkamenet szintű időzónák beállításához tekintse meg a [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) vagy az [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) -cikkeket.
+Az időzóna-táblázatok úgy tölthetők fel, hogy meghívja a `mysql.az_load_timezone` tárolt eljárást egy eszközről, például a MySQL-parancssorból vagy a MySQL Workbenchből. A tárolt eljárás meghívásához és a globális vagy munkamenet szintű időzónák beállításához tekintse meg a [Azure Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) vagy az [Azure CLI](howto-configure-server-parameters-cli.md#working-with-the-time-zone-parameter) -cikkeket.
+
+### <a name="innodb_file_per_table"></a>innodb_file_per_table
+
+A MariaDB a tábla létrehozása során megadott konfiguráció alapján különböző tablespaces-ben tárolja a InnoDB táblát. A [System tablespace](https://mariadb.com/kb/en/innodb-system-tablespaces/) a InnoDB adatszótárának tárolóhelye. A [file-by-Table tablespace](https://mariadb.com/kb/en/innodb-file-per-table-tablespaces/) egyetlen InnoDB-táblához tartalmaz adatmennyiséget és indexeket, és a fájlrendszerben tárolja a saját adatfájljában. Ezt a viselkedést a `innodb_file_per_table` Server paraméter vezérli. A `innodb_file_per_table` beállítás `OFF` hatására a InnoDB táblákat hozhat létre a System tablespaceben. Ellenkező esetben a InnoDB táblákat hoz létre a fájl-/táblázatos tablespaces-ben.
+
+A Azure Database for MariaDB a legnagyobb **1 TB**-ot támogatja egyetlen adatfájlban. Ha az adatbázis mérete meghaladja az 1 TB-ot, hozzon létre egy táblázatot [innodb_file_per_table](https://mariadb.com/kb/en/innodb-system-variables/#innodb_file_per_table) tablespace-ban. Ha 1 TB-nál nagyobb méretű tábla van, akkor a partíciós táblát kell használnia.
 
 ## <a name="storage-engine-support"></a>A Storage Engine támogatása
 
@@ -168,12 +174,12 @@ Az időzóna-táblázatok úgy tölthetők fel, hogy `mysql.az_load_timezone` me
 ### <a name="unsupported"></a>Nem támogatott
 - DBA-szerepkör: számos kiszolgáló-paraméter és-beállítás akaratlanul csökkentheti a kiszolgáló teljesítményét, vagy megtagadja az adatbázis-kezelők által nyújtott savas tulajdonságokat. A szolgáltatás integritásának és az SLA-nak a termék szintjén történő fenntartása érdekében ez a szolgáltatás nem teszi elérhetővé a DBA-szerepkört. Az alapértelmezett felhasználói fiók, amely új adatbázis-példány létrehozásakor jön létre, lehetővé teszi, hogy a felhasználó a felügyelt adatbázis-példányban a DDL-és DML-utasítások többségét elvégezze.
 - SZUPER jogosultság: a hasonló [Super jogosultság](https://mariadb.com/kb/en/library/grant/#global-privileges) is korlátozott.
-- Leszűkítés: a létrehozáshoz és a korlátozásához Super jogosultságok szükségesek. Ha biztonsági másolat használatával importálja az adatimportálást, távolítsa el `CREATE DEFINER` manuálisan `--skip-definer` a parancsokat, vagy használja a parancsot a mysqldump végrehajtásakor.
+- Leszűkítés: a létrehozáshoz és a korlátozásához Super jogosultságok szükségesek. Ha biztonsági másolat használatával importálja az adatimportálást, távolítsa el `CREATE DEFINER` manuálisan a parancsokat, vagy használja a `--skip-definer` parancsot a mysqldump végrehajtásakor.
 
 ## <a name="data-manipulation-statement-support"></a>Az adatkezelési utasítás támogatása
 
 ### <a name="supported"></a>Támogatott
-- `LOAD DATA INFILE`támogatott, de a paramétert meg kell adni, és egy UNC elérési útra kell irányítani (az `[LOCAL]` Azure Storage csatlakoztatva van az SMB protokollon keresztül).
+- `LOAD DATA INFILE`támogatott, de a `[LOCAL]` paramétert meg kell adni, és egy UNC elérési útra kell irányítani (az Azure Storage csatlakoztatva van az SMB protokollon keresztül).
 
 ### <a name="unsupported"></a>Nem támogatott
 - `SELECT ... INTO OUTFILE`
@@ -201,7 +207,7 @@ Az időzóna-táblázatok úgy tölthetők fel, hogy `mysql.az_load_timezone` me
 - Tekintse meg [a díjszabási](concepts-pricing-tiers.md) szinten a tárterületre vonatkozó korlátozásokat.
 
 ## <a name="current-known-issues"></a>Aktuális ismert problémák
-- A MariaDB-kiszolgálópéldány a kiszolgáló nem megfelelő verzióját jeleníti meg a kapcsolatok létrehozása után. A megfelelő kiszolgálópéldány-motor verziójának lekéréséhez használja `select version();` a parancsot.
+- A MariaDB-kiszolgálópéldány a kiszolgáló nem megfelelő verzióját jeleníti meg a kapcsolatok létrehozása után. A megfelelő kiszolgálópéldány-motor verziójának lekéréséhez használja a `select version();` parancsot.
 
 ## <a name="next-steps"></a>További lépések
 - [Az egyes szolgáltatási szinteknél elérhető szolgáltatások](concepts-pricing-tiers.md)

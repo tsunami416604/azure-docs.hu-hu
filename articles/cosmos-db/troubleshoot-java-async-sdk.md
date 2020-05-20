@@ -3,18 +3,18 @@ title: Azure Cosmos DB aszinkron Java SDK v2 diagnosztizálása és megoldása
 description: Használjon olyan szolgáltatásokat, mint az ügyféloldali naplózás és más külső eszközök az aszinkron Java SDK v2-ben Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 04fa8d65ffb822fcd37f6da1bf3074a4e6a1d088
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 10ad2fa3eb03254894c51fff66389ec3a8da4c38
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982615"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651893"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>A Azure Cosmos DB aszinkron Java SDK v2 és az SQL API-fiókok használata esetén felmerülő problémák elhárítása
 
@@ -25,7 +25,7 @@ ms.locfileid: "82982615"
 > 
 
 > [!IMPORTANT]
-> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra Azure Cosmos DB Java SDK v4 használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Frissítse a projektet [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) -re, majd olvassa el a Azure Cosmos db Java SDK v4 [hibaelhárítási útmutatót](troubleshoot-java-sdk-v4-sql.md). A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
 >
 > Ez a cikk csak Azure Cosmos DB aszinkron Java SDK v2-re vonatkozó hibaelhárítást ismerteti. További információért tekintse meg a Azure Cosmos DB aszinkron Java SDK v2 [kibocsátási megjegyzéseit](sql-api-sdk-async-java.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) és a [teljesítménnyel kapcsolatos tippeket](performance-tips-async-java.md) .
 >
@@ -83,7 +83,7 @@ Kövesse a [gazdagépen a kapcsolatok korlátját](#connection-limit-on-host)is.
 
 #### <a name="http-proxy"></a>HTTP-proxy
 
-Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK `ConnectionPolicy`-ban konfigurált kapcsolatok számát.
+Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK-ban konfigurált kapcsolatok számát `ConnectionPolicy` .
 Ellenkező esetben a csatlakoztatási problémákkal szembesül.
 
 #### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Érvénytelen kódolási minta: a nettó i/o-szál blokkolása
@@ -156,7 +156,7 @@ A megkerülő megoldással módosíthatja a szálat, amelyen időt vesz igénybe
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = rx.schedulers.Schedulers.from(ex);
 ```
-Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a `customScheduler` által az `.observeOn(customScheduler)` API-val megadott feldolgozónak állítsa be.
+Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a által az API-val megadott feldolgozónak állítsa be `customScheduler` `.observeOn(customScheduler)` .
 
 ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-applycustomscheduler"></a>Aszinkron Java SDK v2 (Maven com. microsoft. Azure:: Azure-cosmosdb)
 
@@ -170,7 +170,7 @@ createObservable
             // ...
         );
 ```
-A használatával `observeOn(customScheduler)`felszabadítja a nettó i/o-szálat, és átválthat az egyéni ütemező által biztosított saját egyéni szálra. Ez a módosítás megoldja a problémát. Többé nem jelenik meg `io.netty.handler.timeout.ReadTimeoutException` a hiba.
+A használatával `observeOn(customScheduler)` felszabadítja a nettó i/o-szálat, és átválthat az egyéni ütemező által biztosított saját egyéni szálra. Ez a módosítás megoldja a problémát. Többé nem jelenik meg a `io.netty.handler.timeout.ReadTimeoutException` hiba.
 
 ### <a name="connection-pool-exhausted-issue"></a>A csatlakozókábel kimerült hibája
 
@@ -258,7 +258,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 További információkért lásd a [sfl4j naplózási kézikönyvét](https://www.slf4j.org/manual.html).
 
 ## <a name="os-network-statistics"></a><a name="netstats"></a>Operációs rendszer hálózati statisztikája
-A netstat parancs futtatásával megtudhatja, hogy hány kapcsolat van olyan állapotban, mint `ESTABLISHED` a `CLOSE_WAIT`és a.
+A netstat parancs futtatásával megtudhatja, hogy hány kapcsolat van olyan állapotban, mint a `ESTABLISHED` és a `CLOSE_WAIT` .
 
 Linux rendszeren a következő parancsot futtathatja.
 ```bash

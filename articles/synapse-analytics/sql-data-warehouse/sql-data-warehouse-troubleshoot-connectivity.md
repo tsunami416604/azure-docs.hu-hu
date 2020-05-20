@@ -11,46 +11,46 @@ ms.date: 03/27/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: d69c8dd28b946df3fff500c31c7cdefa4767c0c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4fbfb65a609742105056fa7fb849f84579245cb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81408190"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650499"
 ---
-# <a name="troubleshooting-connectivity-issues"></a>Kapcsolati problémák hibaelhárítása
+# <a name="troubleshooting-connectivity-issues-in-synapse-sql-pool"></a>A szinapszis SQL-készlet kapcsolódási problémáinak elhárítása
 
-Ez a cikk az SQL Analytics-adatbázishoz való csatlakozás általános hibaelhárítási módszereit sorolja fel.
+Ez a cikk az SQL Pool-adatbázishoz való csatlakozással kapcsolatos gyakori hibaelhárítási technikákat sorolja fel.
 
 ## <a name="check-service-availability"></a>Szolgáltatás rendelkezésre állásának keresése
 
-Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal keresse meg azt a szinapszis SQL-készletet, amelyhez csatlakozni próbál. A bal oldali tartalomjegyzék panelen kattintson a **problémák diagnosztizálása és megoldása**elemre.
+Ellenőrizze, hogy elérhető-e a szolgáltatás. A Azure Portal nyissa meg a csatlakoztatni kívánt SQL-készletet. A bal oldali tartalomjegyzék panelen kattintson a **problémák diagnosztizálása és megoldása**elemre.
 
 ![Erőforrás állapotának kiválasztása](./media/sql-data-warehouse-troubleshoot-connectivity/diagnostics-link.png)
 
-A szinapszis SQL-készlet állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetőként**jelenik meg, tekintse meg a további lépéseket.
+Az SQL-készlet állapota itt jelenik meg. Ha a szolgáltatás nem **elérhetőként**jelenik meg, tekintse meg a további lépéseket.
 
 ![Elérhető szolgáltatás](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health.png)
 
-Ha az erőforrás állapota azt mutatja, hogy a szinapszis SQL Pool-példánya szüneteltetve van vagy méretezést végez, a példány folytatásához kövesse az útmutatást.
+Ha az erőforrás állapota azt mutatja, hogy az SQL Pool-példány szüneteltetve van vagy méretezést végez, kövesse az útmutatást a példány folytatásához.
 
-![A szolgáltatás szüneteltette a Resource Health](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) további információit itt találja.
+![A szolgáltatás szüneteltette ](./media/sql-data-warehouse-troubleshoot-connectivity/resource-health-pausing.png) a Resource Health további információit itt találja.
 
 ## <a name="check-for-paused-or-scaling-operation"></a>Szüneteltetett vagy skálázási művelet keresése
 
-A portálon ellenőrizze, hogy a szinapszis SQL Pool-példánya szüneteltetve van-e vagy sem.
+Ellenőrizze a portálon, hogy az SQL Pool-példány szüneteltetve van-e, illetve hogy van-e skálázás.
 
 ![Szolgáltatás szüneteltetve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-paused.png)
 
-Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. A szinapszis SQL-készletének portálján *tekintse*meg a választott karbantartási ütemtervet.
+Ha úgy látja, hogy a szolgáltatás szüneteltetve van vagy méretezést végez, ellenőrizze, hogy nem a karbantartási ütemterv alatt van-e. Az SQL-készlet *áttekintését*bemutató portálon láthatja a választott karbantartási ütemtervet.
 
 ![Az Áttekintés karbantartási ütemterve](./media/sql-data-warehouse-troubleshoot-connectivity/overview-maintance-schedule.png)
 
-Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem ütemezett esemény-e. Az SQL Analytics-példány folytatásához kövesse az [alábbi lépéseket](pause-and-resume-compute-portal.md).
+Ellenkező esetben kérdezze meg a rendszergazdát, hogy a karbantartás nem ütemezett esemény-e. Az SQL Pool-példány folytatásához kövesse az [alábbi lépéseket](pause-and-resume-compute-portal.md).
 
 ## <a name="check-your-firewall-settings"></a>A tűzfalbeállítások ellenőrzése
 
-Az SQL Analytics-adatbázis a 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfal-konfigurációkról további információt [itt](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)találhat.
+Az SQL-készlet adatbázisa a 1433-as porton keresztül kommunikál.Ha vállalati hálózaton belülről próbál csatlakozni, elképzelhető, hogy a hálózati tűzfal nem engedélyezi a kimenő forgalmat az 1433-as porton keresztül. Ebben az esetben nem tud csatlakozni az Azure SQL-adatbáziskiszolgálóhoz, ha az informatikai részleg nem nyitja meg az 1433-as portot. A tűzfal-konfigurációkról további információt [itt](../../sql-database/sql-database-firewall-configure.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#create-and-manage-ip-firewall-rules)találhat.
 
 ## <a name="check-your-vnetservice-endpoint-settings"></a>A Vnet/szolgáltatásvégpont beállításainak ellenőrzése
 
@@ -60,7 +60,7 @@ Ha a 40914-es és a 40615-es hibákat kapja, tekintse meg [itt a hiba leírása 
 
 ### <a name="software"></a>Szoftverek
 
-Győződjön meg arról, hogy a legújabb eszközöket használja a szinapszis SQL-készlethez való kapcsolódáshoz:
+Győződjön meg arról, hogy a legújabb eszközöket használja az SQL-készlethez való kapcsolódáshoz:
 
 - SSMS
 - Azure Data Studio
@@ -105,7 +105,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 
 ## <a name="intermittent-connection-issues"></a>Időszakos kapcsolódási problémák
 
-Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Előfordulhat, hogy további erőforrásokhoz is szükség lehet a szinapszis SQL-készlet vertikális felskálázására.
+Ellenőrizze, hogy nagy terhelés alatt áll-e a kiszolgáló, sok várólistára helyezett kéréssel. Előfordulhat, hogy további erőforrásokhoz is szükség van az SQL-készlet vertikális felskálázására.
 
 ## <a name="common-error-messages"></a>Gyakori hibaüzenetek
 

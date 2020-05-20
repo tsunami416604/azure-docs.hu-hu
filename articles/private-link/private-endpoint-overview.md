@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: c0cf8a91ee1dbdd70f1b911dba24fb69ee7bc0e3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 429a342fcc5dd69e1ae8d0be5611e908e216b2d1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744391"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659688"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
 
@@ -22,7 +22,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
  A privát végpontok a következő tulajdonságokat határozzák meg: 
 
 
-|Tulajdonság  |Leírás |
+|Tulajdonság  |Description |
 |---------|---------|
 |Name    |    Az erőforráscsoporthoz tartozó egyedi név.      |
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
@@ -35,7 +35,9 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 Íme néhány fontos adat a privát végpontokról: 
 - A privát végpont lehetővé teszi, hogy az azonos VNet, regionálisan egymással virtuális hálózatok, globálisan összekapcsolt virtuális hálózatok és helyszíni kapcsolaton keresztüli kapcsolatot létesítsen a [VPN](https://azure.microsoft.com/services/vpn-gateway/) -t vagy [expressz útvonalat](https://azure.microsoft.com/services/expressroute/) és szolgáltatásokat használó privát kapcsolaton keresztül.
  
-- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy írásvédett hálózati adaptert. Az illesztőhöz egy magánhálózati IP-cím van hozzárendelve az alhálózatból, amely leképezi a magánhálózati kapcsolat erőforrását.
+- A hálózati kapcsolatokat csak a privát végponthoz csatlakozó ügyfelek indíthatják el, a szolgáltatók nem rendelkeznek útválasztási konfigurációval, hogy kapcsolatokat kezdeményezzenek a szolgáltatás felhasználói számára. A kapcsolatok csak egyetlen irányban hozhatók létre.
+
+- Privát végpont létrehozásakor a rendszer az erőforrás életciklusához is létrehoz egy írásvédett hálózati adaptert. A csatoló dinamikusan magánhálózati IP-címeket kap az alhálózatból, amely leképezi a magánhálózati kapcsolat erőforrását. a magánhálózati IP-cím értéke változatlan marad a magánhálózati végpont teljes életciklusa során.
  
 - A magánhálózati végpontot a virtuális hálózattal megegyező régióban kell telepíteni. 
  
@@ -83,7 +85,7 @@ A munkaterhelések teljes mértékben lezárhatók a nyilvános végpontokhoz va
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Hozzáférés egy privát kapcsolati erőforráshoz jóváhagyási munkafolyamat használatával 
 A következő kapcsolat-jóváhagyási módszerekkel csatlakozhat egy privát kapcsolati erőforráshoz:
-- A **rendszer automatikusan** jóváhagyja, ha a saját vagy engedéllyel rendelkezik az adott privát kapcsolati erőforráshoz. A szükséges engedély a privát kapcsolat erőforrástípus alapján, a következő formátumban: Microsoft. \<Szolgáltató>/<resource_type>/privateendpointconnectionapproval/Action
+- A **rendszer automatikusan** jóváhagyja, ha a saját vagy engedéllyel rendelkezik az adott privát kapcsolati erőforráshoz. A szükséges engedély a privát kapcsolat erőforrástípus alapján, a következő formátumban: Microsoft. \< Szolgáltató>/<resource_type>/privateEndpointConnectionApproval/action
 - **Manuális** kérés, ha nem rendelkezik a szükséges engedélyekkel, és hozzáférést szeretne kérni. A rendszer elindít egy jóváhagyási munkafolyamatot. A privát végpont és a következő privátvégpont-kapcsolat „Függőben” állapotban jön létre. A privát hivatkozás erőforrásának tulajdonosa felelős a kapcsolat jóváhagyásáért. A jóváhagyást követően a magánhálózati végpont engedélyezve van a forgalom normál módon történő elküldéséhez, ahogy az a következő jóváhagyási munkafolyamat-diagramon is látható.  
 
 ![munkafolyamat-jóváhagyás](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -115,7 +117,7 @@ A privát végpontok számára a DNS konfigurálásával kapcsolatos ajánlott e
 A következő táblázat tartalmazza a privát végpontok használatakor felismert korlátozások listáját: 
 
 
-|Korlátozás |Leírás |Kezelés  |
+|Korlátozás |Description |Kezelés  |
 |---------|---------|---------|
 |A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók        |
 

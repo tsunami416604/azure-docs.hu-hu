@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: dd867d4aa9a9ef5ed73e78a46826a8cd5239039b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23ede806b627ad0f77e325ab391d37347f4bb29f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744235"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650444"
 ---
 # <a name="what-is-workload-management"></a>Mi az a számítási feladatok kezelése?
 
@@ -38,13 +38,13 @@ Az adatraktár teljesítménybeli kapacitását az [adatraktár-egységek](what-
 
 ## <a name="workload-management-concepts"></a>Munkaterhelés-kezelési fogalmak
 
-A múltban az Azure-beli SQL-elemzések esetében a lekérdezési teljesítményt az [erőforrás-osztályokon](resource-classes-for-workload-management.md)keresztül felügyelte.  Erőforrás-osztályok, amelyek lehetővé teszik a memória hozzárendelését a szerepkör-tagság alapján a lekérdezésekhez.  Az erőforrás-osztályok elsődleges kihívása, hogy a konfigurálása után nem volt irányítás vagy a munkaterhelés szabályozása.  
+A múltban az Azure-beli szinapszis SQL esetében az [erőforrás-osztályokon](resource-classes-for-workload-management.md)keresztül felügyelte a lekérdezési teljesítményt.  Erőforrás-osztályok, amelyek lehetővé teszik a memória hozzárendelését a szerepkör-tagság alapján a lekérdezésekhez.  Az erőforrás-osztályok elsődleges kihívása, hogy a konfigurálása után nem volt irányítás vagy a munkaterhelés szabályozása.  
 
 Például egy ad-hoc felhasználói szerepkör tagságának megadása lehetővé teszi, hogy a felhasználó a rendszeren lévő memória 100%-át használja fel a smallrc.  Az erőforrás-osztályok esetében az erőforrások nem foglalhatók le és biztosíthatók a kritikus fontosságú számítási feladatok számára.
 
-A szinapszis SQL Pool munkaterhelés-kezelése az Azure Szinapszisban három magas szintű fogalomból áll: a számítási [feladatok besorolása](sql-data-warehouse-workload-classification.md), a számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md) és a számítási [feladatok elkülönítése](sql-data-warehouse-workload-isolation.md).  Ezek a képességek részletesebben szabályozzák, hogy a számítási feladatok hogyan használják a rendszererőforrásokat.
+A szinapszis SQL Pool munkaterhelés-kezelése az Azure Szinapszisban három magas szintű fogalomból áll: a számítási [feladatok besorolása](sql-data-warehouse-workload-classification.md), a számítási [feladatok fontossága](sql-data-warehouse-workload-importance.md)és a számítási [feladatok elkülönítése](sql-data-warehouse-workload-isolation.md).  Ezek a képességek részletesebben szabályozzák, hogy a számítási feladatok hogyan használják a rendszererőforrásokat.
 
-A számítási feladatok besorolása egy kérelem munkaterhelési csoportba való hozzárendelésének és a fontossági szintek beállításának a fogalma.  Ez a hozzárendelés a [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)használatával történt a szerepkör-tagságon keresztül.  Ez mostantól a [munkaterhelés létrehozása CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)keresztül végezhető el.  A besorolási képesség több lehetőséget kínál, mint például a címkék, a munkamenetek és az idő a kérelmek besorolásához.
+A számítási feladatok besorolása egy kérelem munkaterhelési csoportba való hozzárendelésének és a fontossági szintek beállításának a fogalma.  Ez a hozzárendelés a [sp_addrolemember](resource-classes-for-workload-management.md#change-a-users-resource-class)használatával történt a szerepkör-tagságon keresztül.  Ez a művelet mostantól a [create MUNKATERHELÉS CLASSIFER](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)használatával végezhető el.  A besorolási képesség több lehetőséget kínál, mint például a címkék, a munkamenetek és az idő a kérelmek besorolásához.
 
 A számítási feladatok fontossága befolyásolja a kérések erőforrásokhoz való hozzáférésének sorrendjét.  A forgalmas rendszerekben a nagyobb fontosságú kérések először férnek hozzá az erőforrásokhoz.  A fontosság a zárolásokhoz való rendezett hozzáférés biztosítását is lehetővé teszi.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: 0a29ee1536c7c808fe7d15c0abe26f27042bc962
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e60fa73af9bd33c22f8489520b683f244dc46302
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196244"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655950"
 ---
 # <a name="log-analytics-agent-overview"></a>Log Analytics-ügynök áttekintése
 Az Azure Log Analytics Agent a Felhőbeli, a helyszíni gépeken és a [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/)által felügyelt virtuális gépek teljes körű felügyeletére lett kifejlesztve. A Windows-és Linux-ügynökök különböző forrásokból származó összegyűjtött adatokat küldenek a Log Analytics munkaterületre Azure Monitor, valamint a figyelési megoldásban meghatározott egyedi naplókat vagy metrikákat. A Log Analytics ügynök az Azure Monitor, például a [Azure monitor for VMS](../insights/vminsights-enable-overview.md), a [Azure Security Center](/azure/security-center/)és a [Azure Automation](../../automation/automation-intro.md)által nyújtott bepillantást és egyéb szolgáltatásokat is támogatja.
@@ -39,7 +39,7 @@ Log Analytics ügynöknek nincs díja, de a betöltött adatokért díjat szám�
 ## <a name="data-collected"></a>Összegyűjtött adatok
 A következő táblázat felsorolja azokat az adattípusokat, amelyekkel a Log Analytics munkaterületek összegyűjthetők az összes csatlakoztatott ügynökből. Tekintse meg a [Azure monitor által figyelt adatokat?](../monitor-reference.md) az elemzések, megoldások és egyéb olyan megoldások listáját, amelyek a log Analytics-ügynököt használják más típusú adatok gyűjtésére.
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | [Windows-eseménynaplók](data-sources-windows-events.md) | A Windows eseménynaplózási rendszernek eljuttatott információk. |
 | [Rendszernapló](data-sources-syslog.md)                     | A Linux-eseménynaplózási rendszernek eljuttatott információk. |
@@ -70,7 +70,7 @@ Ha System Center Operations Manager 2012 R2 vagy újabb verziót használ:
 
 Több módszerrel is telepítheti a Log Analytics-ügynököt, és a saját igényeinek megfelelően Azure Monitor csatlakozhat a számítógéphez. Az alábbi táblázat az egyes módszereket ismerteti, amelyekkel meghatározhatja, hogy melyik működik a legjobban a szervezetében.
 
-|Forrás | Módszer | Leírás|
+|Forrás | Metódus | Description|
 |-------|-------------|-------------|
 |Azure VM| [Manuálisan a Azure Portal](../../azure-monitor/learn/quick-collect-azurevm.md?toc=/azure/azure-monitor/toc.json) | A Log Analytics munkaterületről telepítendő virtuális gépek meghatározása. |
 | | Log Analytics virtuálisgép-bővítmény Windows vagy [Linux](../../virtual-machines/extensions/oms-linux.md) [rendszerhez](../../virtual-machines/extensions/oms-windows.md) az Azure CLI használatával vagy egy Azure Resource Manager sablonnal | A bővítmény telepíti a Log Analytics ügynököt az Azure Virtual Machines szolgáltatásban, és egy meglévő Azure Monitor-munkaterületre regisztrálja őket. |
@@ -91,7 +91,7 @@ A Windows-ügynök a Windows operációs rendszer következő verzióit támogat
 * Windows Server 2016, 1709-es és 1803-es verzió
 * Windows Server 2012, 2012 R2
 * Windows Server 2008 SP2 (x64), 2008 R2
-* Windows 10 Enterprise és Pro
+* Windows 10 Enterprise (több munkamenetet is beleértve) és Pro
 * Windows 8 Enterprise és Pro 
 * Windows 7 SP1
 
@@ -130,7 +130,7 @@ A 2018 augusztusa után kiadott verzióktól kezdve a következő módosítások
 
 A következő táblázat a támogatott Linux-disztribúciók számára szükséges csomagokat mutatja be, amelyekre az ügynököt telepíteni fogja.
 
-|Szükséges csomag |Leírás |Minimális verzió |
+|Szükséges csomag |Description |Minimális verzió |
 |-----------------|------------|----------------|
 |Glibc |    GNU C könyvtár | 2.5-12 
 |Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
@@ -190,9 +190,9 @@ A Linux-ügynök esetében a proxykiszolgáló a telepítés során vagy a [tele
 > [!NOTE]
 > Ha a proxykiszolgáló nem igényli a hitelesítést, a Linux-ügynöknek továbbra is meg kell adnia egy pszeudo-felhasználót vagy jelszót. Ez lehet bármilyen Felhasználónév vagy jelszó.
 
-|Tulajdonság| Leírás |
+|Tulajdonság| Description |
 |--------|-------------|
-|Protocol (Protokoll) | https |
+|Protokoll | https |
 |felhasználó! | Opcionális Felhasználónév a proxy hitelesítéséhez |
 |jelszó | Opcionális jelszó a proxy hitelesítéséhez |
 |proxyhost | A proxykiszolgáló/Log Analytics átjáró címe vagy teljes tartományneve |

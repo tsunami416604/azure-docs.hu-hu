@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/11/2020
+ms.date: 05/15/2020
 ms.author: memildin
-ms.openlocfilehash: bfe1e5d6a0c4171a262b36387f02be356fb1d72d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: f71bffd1db023ece19071bb8f71ec49a855e828b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83210895"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654660"
 ---
 # <a name="whats-new-in-azure-security-center"></a>A Azure Security Center újdonságai
 
@@ -31,6 +31,36 @@ Ez az oldal rendszeresen frissül, ezért gyakran újra felkeresik. Ha hat hóna
 
 
 ## <a name="may-2020"></a>2020. május
+
+
+### <a name="alert-suppression-rules-preview"></a>Riasztás-elnyomási szabályok (előzetes verzió)
+
+Ez az új funkció (jelenleg előzetes verzióban érhető el) segít csökkenteni a riasztások fáradtságát. Szabályok használatával automatikusan elrejtheti azokat a riasztásokat, amelyek ismerten ártalmatlanok vagy a szervezeten belüli szokásos tevékenységekkel kapcsolatosak. Ez lehetővé teszi, hogy a leginkább releváns fenyegetésekre koncentráljon. 
+
+Az engedélyezett letiltási szabályoknak megfelelő riasztások továbbra is létrejönnek, de az állapotukat a rendszer elutasítja. Megtekintheti az állapotot a Azure Portalban, vagy hozzáférhet a Security Center biztonsági riasztásokhoz.
+
+A mellőzési szabályok határozzák meg azokat a feltételeket, amelyeknek a riasztásait automatikusan el kell utasítani. Általában letiltási szabályt kell használnia a következőkhöz:
+
+- hamis pozitívként azonosított riasztások letiltása
+
+- a túl gyakran kiváltott riasztások mellőzése
+
+[További információ a riasztások Azure Security Center fenyegetés elleni védelemből való letiltásáról](alerts-suppression-rules.md).
+
+
+### <a name="virtual-machine-vulnerability-assessment-is-now-generally-available"></a>A virtuális gépek sebezhetőségi felmérése mostantól általánosan elérhető
+
+A Security Center standard szintű csomagja mostantól egy beépített sebezhetőségi felmérést is tartalmaz a virtuális gépekhez, felár nélkül. Ezt a bővítményt a Qualys működteti, de az eredményeket közvetlenül visszaküldi Security Centerra. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető.
+
+Az új megoldás segítségével folyamatosan ellenőrizheti a virtuális gépeket, és megtalálhatja a biztonsági réseket, és bemutathatja az eredményeket a Security Centerban. 
+
+A megoldás üzembe helyezéséhez használja az új biztonsági javaslatot:
+
+"A beépített sebezhetőségi felmérési megoldás engedélyezése a virtuális gépeken (Qualys-alapú)"
+
+[További információk](built-in-vulnerability-assessment.md).
+
+
 
 ### <a name="changes-to-just-in-time-jit-virtual-machine-vm-access"></a>Az igény szerinti (JIT) virtuális gépekhez való hozzáférés módosításai
 
@@ -67,22 +97,40 @@ A biztonsági vezérlők – és ez a váltás – az új biztonsági pontszám 
 További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
 
 
-### <a name="account-security-recommendations-moved-to-security-best-practices-security-control"></a>A fiók biztonsági javaslatai átkerültek az "ajánlott biztonsági eljárások" biztonsági szabályozásba
+### <a name="expanded-security-control-implement-security-best-practices"></a>Kibővített biztonsági szabályozás – az ajánlott biztonsági eljárások megvalósítása 
 
-A fokozott biztonságú pontszámmal bevezetett biztonsági vezérlők egyike az "ajánlott biztonsági eljárások". Ha egy javaslat ebben a vezérlőben van, az nem érinti a biztonságos pontszámot. 
+A fokozott biztonságú pontszámmal bevezetett biztonsági vezérlők egyike az "ajánlott biztonsági eljárások megvalósítása". Ha egy javaslat ebben a vezérlőben van, az nem érinti a biztonságos pontszámot. 
 
 Ezzel a frissítéssel három javaslatot helyeztek el azokról a vezérlőkről, amelyekben eredetileg elhelyezték őket, és az ajánlott eljárások szabályozásával. Azért tettük ezt a lépést, mert azt állapítottuk meg, hogy a három javaslat kockázata alacsonyabb, mint eredetileg gondolták.
 
-A javaslatok a következők:
+Emellett két új javaslat is be lett vezetve, és hozzá lett adva a vezérlőhöz.
 
-- Az MFA-t engedélyezni kell az előfizetés olvasási engedéllyel rendelkező fiókjain (eredetileg az "MFA engedélyezése" vezérlőben)
-- Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből (eredetileg a "hozzáférés és engedélyek kezelése" vezérlőben)
-- Az előfizetéshez legfeljebb 3 tulajdonost kell kijelölni (eredetileg a "hozzáférés és engedélyek kezelése" vezérlőben)
+Az áthelyezett három javaslat a következőket tartalmazza:
+
+- Az **MFA-t engedélyezni kell az előfizetés olvasási engedéllyel rendelkező fiókjain** (eredetileg az "MFA engedélyezése" vezérlőben)
+- Az **olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből** (eredetileg a "hozzáférés és engedélyek kezelése" vezérlőben)
+- Az **előfizetéshez legfeljebb 3 tulajdonost kell kijelölni** (eredetileg a "hozzáférés és engedélyek kezelése" vezérlőben)
+
+A vezérlőhöz hozzáadott két új javaslat a következő:
+
+- **[Előzetes verzió] a vendég konfigurációs ügynöknek telepítve kell lennie** – [Azure Policy vendég konfigurációjának](https://docs.microsoft.com/azure/governance/policy/concepts/guest-configuration) használatával a virtuális gépeken belül láthatóságot biztosít a kiszolgáló és az alkalmazás beállításai számára (csak Windows).
+
+- **[Előzetes verzió] a Windows kiaknázási őr engedélyezve kell legyen** – a Windows Defender Exploit Guard kihasználja a Azure Policy vendég konfigurációs ügynököt. A kiaknázási Gárda négy összetevőből áll, amelyek célja, hogy zárolják az eszközöket a különböző támadási vektorok és a kártevők elleni támadásokban leggyakrabban használt viselkedések blokkolásával, miközben lehetővé teszik a vállalatok számára a biztonsági kockázatok és a termelékenységi követelmények kiegyensúlyozását (csak Windows).
+
+További információ a Windows Defender Exploit Guard-védelemről a biztonsági [rés kiaknázására szolgáló szabályzat létrehozása és üzembe helyezése című](https://docs.microsoft.com/mem/configmgr/protect/deploy-use/create-deploy-exploit-guard-policy)témakörben.
 
 További információ a biztonsági ellenőrzésekről a [Azure Security Center továbbfejlesztett biztonságos pontszám (előzetes verzió)](secure-score-security-controls.md)című témakörben.
 
 
-### <a name="custom-policies-with-custom-metadata-generally-available"></a>Az egyéni metaadatokkal rendelkező egyéni házirendek általánosan elérhetők
+
+
+
+
+
+
+
+
+### <a name="custom-policies-with-custom-metadata-are-now-generally-available"></a>Az egyéni metaadatokkal rendelkező egyéni szabályzatok már általánosan elérhetők
 
 Az egyéni szabályzatok mostantól a Security Center javaslatok, a biztonságos pontszám és a szabályozási megfelelőségi szabványok irányítópultjának részét képezik. Ez a funkció mostantól általánosan elérhető, és lehetővé teszi a szervezet biztonsági értékelésének kiterjesztését Security Center. 
 
@@ -95,7 +143,7 @@ Most hozzáadjuk az egyéni ajánlási metaadatok szerkesztésének lehetőség�
 
 ## <a name="april-2020"></a>2020. április
 
-### <a name="dynamic-compliance-packages-now-generally-available"></a>A dinamikus megfelelőségi csomagok már általánosan elérhetők
+### <a name="dynamic-compliance-packages-are-now-generally-available"></a>A dinamikus megfelelőségi csomagok már általánosan elérhetők
 
 A Azure Security Center szabályozási megfelelőségi irányítópult mostantól tartalmazza a **dinamikus megfelelőségi csomagokat** (mostantól általánosan elérhető) a további iparági és szabályozási szabványok nyomon követéséhez.
 
@@ -197,7 +245,7 @@ Ezek a javaslatok többé nem jelennek meg a javaslatok Security Center listáj�
 
 ## <a name="february-2020"></a>2020. február
 
-### <a name="fileless-attack-detection-for-linux-is-now-in-preview"></a>A Linux-alapú támadási észlelés már előzetes verzióban érhető el
+### <a name="fileless-attack-detection-for-linux-preview"></a>Fájl alapú támadás észlelése Linux rendszerhez (előzetes verzió)
 
 Mivel a támadók egyre nagyobb mértékben alkalmaznak legrejtettebb módszereket az észlelés elkerülésére, Azure Security Center a Windows rendszereken kívül kiterjeszti a fájl-alapú támadási észlelést Linux rendszeren. A szoftveres biztonsági réseket rosszindulatú támadások okozják, a kártékony hasznos adatokat a jóindulatú rendszerfolyamatok szúrják be, és elrejtik a memóriában. Ezek a technikák:
 
@@ -209,7 +257,7 @@ Ennek a fenyegetésnek a ellensúlyozására a 2018-es, a Windows rendszerhez k�
 
 ## <a name="january-2020"></a>2020. január
 
-### <a name="enhanced-secure-score"></a>Bővített biztonságos pontszám
+### <a name="enhanced-secure-score-preview"></a>Bővített biztonságos pontszám (előzetes verzió)
 
 A Azure Security Center biztonságos pontszám funkciójának továbbfejlesztett verziója már előzetes verzióban érhető el. Ebben a verzióban a több javaslat olyan biztonsági vezérlőkbe van csoportosítva, amelyek jobban tükrözik a sebezhető támadási felületet (például a felügyeleti portokhoz való hozzáférés korlátozása).
 

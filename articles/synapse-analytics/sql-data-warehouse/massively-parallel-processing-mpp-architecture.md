@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: d204477818ce2733d9f6d1e3dcc7455018456bcb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d57f02b9aff56c83aa1c12bd441df2863f6d6fa7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80884832"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658483"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure szinapszis Analytics (korábban SQL DW) architektúrája
 
@@ -23,7 +23,7 @@ Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti 
 
  Az Azure szinapszis négy összetevőből áll:
 
-- SQL Analytics: teljes T-SQL-alapú elemzés
+- Szinapszis SQL: teljes T-SQL-alapú elemzés
 
   - SQL-készlet (fizetés/DWU kiépítve) – általánosan elérhető
   - Igény szerinti SQL-szolgáltatás (fizetés/TB feldolgozott) – (előzetes verzió)
@@ -39,7 +39,7 @@ A [SZINAPSZIS SQL](sql-data-warehouse-overview-what-is.md#synapse-sql-pool-in-az
 
 ![A Synapse SQL architektúrája](./media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Az SQL Analytics node-alapú architektúrát használ. Az alkalmazások a T-SQL-parancsokat egy vezérlő csomóponthoz csatlakoznak, amely az SQL Analytics egyszeri belépési pontja. A vezérlő csomópont az MPP motort futtatja, amely optimalizálja a párhuzamos feldolgozáshoz szükséges lekérdezéseket, majd a műveleteket a számítási csomópontokra továbbítja a munkájukat párhuzamosan.
+A szinapszis SQL egy node-alapú architektúrát használ. Az alkalmazások a T-SQL-parancsokat egy vezérlő csomóponthoz csatlakoznak, amely a szinapszis SQL beléptetésének egyetlen pontja. A vezérlő csomópont az MPP motort futtatja, amely optimalizálja a párhuzamos feldolgozáshoz szükséges lekérdezéseket, majd a műveleteket a számítási csomópontokra továbbítja a munkájukat párhuzamosan.
 
 A számítási csomópontok az összes felhasználói adatot az Microsoft Azure Storage-ban tárolják, és futtatják a párhuzamos lekérdezéseket. Az adatáthelyezési szolgáltatás (DMS) egy rendszerszintű belső szolgáltatás, amely szükség szerint áthelyezi az adatokat a csomópontok között a lekérdezések párhuzamos futtatásához és pontos eredmények visszaadásához.
 
@@ -74,7 +74,7 @@ Az adatátviteli szolgáltatás (DMS) az adatátviteli technológia, amely koord
 
 ## <a name="distributions"></a>Disztribúciók
 
-A elosztás a tárolás és az elosztott adatokon futtatott párhuzamos lekérdezések feldolgozásának alapegysége. Ha az SQL Analytics egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésre van osztva.
+A elosztás a tárolás és az elosztott adatokon futtatott párhuzamos lekérdezések feldolgozásának alapegysége. Ha a szinapszis SQL egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésekre oszlik.
 
 Az 60-es kisebb lekérdezések az egyik adateloszláson futnak. Minden számítási csomópont egy vagy több 60-disztribúciót kezel. A maximális számítási erőforrásokkal rendelkező SQL-készletekhez számítási csomópontok egyetlen eloszlással rendelkeznek. A minimális számítási erőforrásokkal rendelkező SQL-készletek egy számítási csomóponton lévő összes disztribúcióval rendelkeznek.  
 
@@ -120,5 +120,5 @@ Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre
 - [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 - [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
 - [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
-- [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
+- [Stack Overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 - [Twitter](https://twitter.com/hashtag/SQLDW)

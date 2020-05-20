@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 02/03/2020
 ms.author: brendm
-ms.openlocfilehash: 16cee333d52765755b732c4de4dd8a6e092a130d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0b630c746932696d51455653a6e6db8869f04863
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731185"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657146"
 ---
 # <a name="prepare-a-java-spring-application-for-deployment-in-azure-spring-cloud"></a>Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez
 
@@ -129,11 +129,24 @@ A Spring boot 2,2-es verziójában adja hozzá a következő függőséget az al
 </dependency>
 ```
 
-## <a name="other-required-dependencies"></a>Egyéb szükséges függőségek
+## <a name="other-recommended-dependencies-to-enable-azure-spring-cloud-features"></a>Egyéb ajánlott függőségek az Azure Spring Cloud funkcióinak engedélyezéséhez
 
-Az Azure Spring Cloud beépített funkcióinak engedélyezéséhez az alkalmazásnak a következő függőségeket kell tartalmaznia. Ez az integráció biztosítja, hogy az alkalmazás helyesen konfigurálja az egyes összetevőket.
+Annak érdekében, hogy az Azure Spring Cloud beépített funkciói a szolgáltatás-beállításjegyzékből az elosztott nyomkövetésre legyenek kialakítva, a következő függőségeket is meg kell adnia az alkalmazásban. Ezen függőségek némelyikét elhúzhatja, ha nincs szüksége a megfelelő szolgáltatásokra az adott alkalmazásokhoz.
 
-### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient jegyzet
+### <a name="service-registry"></a>Szolgáltatás beállításjegyzéke
+
+A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának használatához az `spring-cloud-starter-netflix-eureka-client` itt látható módon vegye fel a függőséget a Pom. XML fájlba:
+
+```xml
+    <dependency>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    </dependency>
+```
+
+A szolgáltatás beállításjegyzék-kiszolgálójának végpontját a rendszer automatikusan környezeti változóként adja meg az alkalmazásban. Az alkalmazások regisztrálhatják magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást is.
+
+#### <a name="enablediscoveryclient-annotation"></a>EnableDiscoveryClient jegyzet
 
 Adja hozzá a következő megjegyzést az alkalmazás forráskódja számára.
 ```java
@@ -159,22 +172,9 @@ public class GatewayApplication {
 }
 ```
 
-### <a name="service-registry-dependency"></a>Szolgáltatás beállításjegyzékbeli függősége
+### <a name="distributed-configuration"></a>Elosztott konfiguráció
 
-A felügyelt Azure szolgáltatás beállításjegyzék-szolgáltatásának használatához az `spring-cloud-starter-netflix-eureka-client` itt látható módon vegye fel a függőséget a Pom. XML fájlba:
-
-```xml
-    <dependency>
-        <groupId>org.springframework.cloud</groupId>
-        <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-    </dependency>
-```
-
-A szolgáltatás beállításjegyzék-kiszolgálójának végpontját a rendszer automatikusan környezeti változóként adja meg az alkalmazásban. Az alkalmazások regisztrálhatják magukat a szolgáltatás beállításjegyzék-kiszolgálójával, és felfedezhetik a többi függő szolgáltatást is.
-
-### <a name="distributed-configuration-dependency"></a>Elosztott konfiguráció függősége
-
-Az elosztott konfiguráció engedélyezéséhez vegye fel a `spring-cloud-config-client` következő függőséget a Pom. xml fájl függőségek szakaszába:
+Az elosztott konfiguráció engedélyezéséhez vegye fel a következő `spring-cloud-config-client` függőséget a Pom. xml fájl függőségek szakaszába:
 
 ```xml
 <dependency>
@@ -184,11 +184,11 @@ Az elosztott konfiguráció engedélyezéséhez vegye fel a `spring-cloud-config
 ```
 
 > [!WARNING]
-> Ne adja `spring.cloud.config.enabled=false` meg a bootstrap konfigurációját. Ellenkező esetben az alkalmazás nem működik a konfigurációs kiszolgálóval.
+> Ne adja meg a `spring.cloud.config.enabled=false` bootstrap konfigurációját. Ellenkező esetben az alkalmazás nem működik a konfigurációs kiszolgálóval.
 
-### <a name="metrics-dependency"></a>Metrikák függősége
+### <a name="metrics"></a>Mérőszámok
 
-Vegye fel `spring-boot-starter-actuator` a függőséget a Pom. xml fájl függőségek szakaszába, ahogy az itt látható:
+Vegye fel a függőséget a `spring-boot-starter-actuator` Pom. xml fájl függőségek szakaszába, ahogy az itt látható:
 
 ```xml
 <dependency>
@@ -199,9 +199,9 @@ Vegye fel `spring-boot-starter-actuator` a függőséget a Pom. xml fájl függ�
 
  A metrikák rendszeres időközönként a JMX-végpontokról vannak leképezve. A metrikákat a Azure Portal használatával jelenítheti meg.
 
-### <a name="distributed-tracing-dependency"></a>Elosztott nyomkövetési függőség
+### <a name="distributed-tracing"></a>Elosztott nyomkövetés
 
-A következő `spring-cloud-starter-sleuth` és `spring-cloud-starter-zipkin` Függőségek belefoglalása a Pom. xml fájl függőségek szakaszába:
+A következő és Függőségek belefoglalása a `spring-cloud-starter-sleuth` `spring-cloud-starter-zipkin` Pom. xml fájl függőségek szakaszába:
 
 ```xml
 <dependency>

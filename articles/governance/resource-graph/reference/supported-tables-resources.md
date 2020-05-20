@@ -1,14 +1,14 @@
 ---
 title: Támogatott Resource Manager-erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Resource Manager-erőforrástípusok listáját.
-ms.date: 04/29/2020
+ms.date: 05/16/2020
 ms.topic: reference
-ms.openlocfilehash: 0ab079bcd1e7e8558d754a413068ca9f0ae276c6
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 61b4865f695fbee7bd425429fde03bc7161043db
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594253"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655872"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -23,6 +23,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 ## <a name="alertsmanagementresources"></a>alertsmanagementresources
 
 - Microsoft. alertsmanagement/riasztások
+
+## <a name="healthresources"></a>healthresources
+
+- Microsoft. resourcehealth/események
 
 ## <a name="maintenanceresources"></a>maintenanceresources
 
@@ -67,6 +71,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Automation/automationaccounts/konfigurációk
 - Microsoft. Automation/automationaccounts/runbookok
 - Microsoft. autonomoussystems/munkaterületek
+- Microsoft. AVS/privateclouds
 - Microsoft. azconfig/configurationstores
 - Microsoft. azureactivedirectory/b2cdirectories
 - Microsoft. azuredata/datacontrollers
@@ -74,6 +79,8 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. azuredata/postgresinstances
 - Microsoft. azuredata/sqlbigdataclusters
 - Microsoft. azuredata/sqlinstances
+- Microsoft. azuredata/sqlmanagedinstances
+- Microsoft. azuredata/sqlserverinstances
 - Microsoft. azuredata/sqlserverregistrations
 - Microsoft. azurestack/regisztrációk
 - Microsoft. azurestackhci/fürtök
@@ -92,6 +99,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. blockchain/figyelők
 - Microsoft. botservice/botservices
 - Microsoft. cache/Redis
+- Microsoft. cache/redisenterprise
 - Microsoft. CDN/cdnwebapplicationfirewallpolicies
 - Microsoft. CDN/profilok
 - Microsoft. CDN/profilok/végpontok
@@ -126,8 +134,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. számítási/sharedvmimages/verziók
 - Microsoft. számítás/Pillanatképek
 - Microsoft. számítás/sshpublickeys
+- Microsoft. számítás/swiftlets
 - Microsoft. számítás/virtualmachines
 - Microsoft. számítás/virtualmachines/bővítmények
+- Microsoft. számítás/virtualmachines/runcommands
 - Microsoft. számítás/virtualmachinescalesets
 - Microsoft. containerinstance/containergroups
 - Microsoft. containerregistry/nyilvántartók
@@ -213,6 +223,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Hydra/összetevők
 - Microsoft. Hydra/networkscopes
 - Microsoft. importexport/feladatok
+- Microsoft. industrydatalifecycle/derivedmodels
 - Microsoft. bepillantások/actiongroups
 - Microsoft. bepillantások/activitylogalerts
 - Microsoft. bepillantások/alertrules
@@ -362,6 +373,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. resourcegraph/lekérdezések
 - Microsoft. Resources/deploymentscripts
 - Microsoft. Resources/templatespecs
+- Microsoft. Resources/templatespecs/Versions
 - Microsoft. SaaS/alkalmazások
 - Microsoft. Scheduler/feladatgyűjtemények
 - Microsoft. Search/searchservices
@@ -377,6 +389,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. servicefabricmesh/hálózatok
 - Microsoft. servicefabricmesh/Secrets
 - Microsoft. servicefabricmesh/kötetek
+- Microsoft. serviceshub/összekötők
 - Microsoft. signalrservice/szignáló
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/készülékek

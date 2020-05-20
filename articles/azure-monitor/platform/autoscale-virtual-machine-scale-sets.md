@@ -1,15 +1,20 @@
 ---
 title: Speciális autoskálázás az Azure Virtual Machines
-description: A Resource Managert és VM Scale Sets több szabályt és profilt használ, amelyek e-maileket küldenek, és a méretezési műveletekkel meghívják a webhook URL-
+description: A Resource Managerrel és a virtuálisgép-méretezési csoportokkal több szabályt és profilt használ, amelyek e-maileket küldenek, és felhívhatják a webhook URL-címeit
+author: mimckitt
+ms.author: mimckitt
 ms.topic: conceptual
-ms.date: 02/22/2016
+ms.service: virtual-machine-scale-sets
 ms.subservice: autoscale
-ms.openlocfilehash: e22806ff94ce2eb830bb6918bfc7f80e5ad3ba0a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 02/22/2016
+ms.reviewer: jushiman
+ms.custom: mimckitt
+ms.openlocfilehash: 65182ce16b8785a3a0e497b3ed8003fa9e7b67bc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75364220"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655429"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Speciális automatikus méretezési konfiguráció a Resource Manager-sablonokkal VM Scale Sets
 A Virtual Machine Scale Sets méretezési és kibővíthető teljesítmény-metrikai küszöbértékek, ismétlődő ütemterv vagy egy adott dátum alapján. A méretezési műveletekhez e-mail-és webhook-értesítéseket is konfigurálhat. Ez a forgatókönyv egy virtuálisgép-méretezési csoport Resource Manager-sablonnal történő konfigurálásának példáját mutatja be.
@@ -31,7 +36,7 @@ Ebben az útmutatóban a méretezési csoportokra vonatkozóan a [Azure erőforr
 
 3. Mostantól további profilokat és szabályokat adhat hozzá az ütemterv vagy a speciális követelmények alapján. Létrehozunk egy három profillal rendelkező autoskálázási beállítást. Az autoscale-profilok és-szabályok megértéséhez tekintse át az [ajánlott eljárások az autoscale](autoscale-best-practices.md)-ben című témakört.  
 
-    | Profilok & szabályok | Leírás |
+    | Profilok & szabályok | Description |
     |--- | --- |
     | **Profil** |**Teljesítmény/metrika-alapú** |
     | Szabály |Service Bus üzenetsor-üzenetek száma > x |

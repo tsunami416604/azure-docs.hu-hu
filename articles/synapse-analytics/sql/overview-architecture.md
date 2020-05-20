@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 570e84b3a545736aad6983c7f0d8c0f0296ca589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d073bc82b3a9e42e443caa5d3e7855fd4eb5b98b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431812"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658914"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure szinapszis SQL-architektúra 
 
@@ -117,4 +117,4 @@ Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszl�
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg az [SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy megkezdheti az [SQL igény szerinti használatát](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 
+Most, hogy már ismeri a szinapszis SQL-t, ismerkedjen meg az [SQL-készlet gyors létrehozásával](../quickstart-create-sql-pool-portal.md) és a [mintaadatok betöltésével](../sql-data-warehouse/sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md) (./SQL-Data-Warehouse-Load-Sample-Databases.MD). Vagy megkezdheti az [SQL igény szerinti használatát](../quickstart-sql-on-demand.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. 

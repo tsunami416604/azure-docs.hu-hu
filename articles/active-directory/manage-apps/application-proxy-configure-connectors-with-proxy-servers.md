@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0aafb971ca1ce812a68045f7d0c0c2ab7f532133
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28915967dc7697c08b2bbd7118f7e2377418045d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80877388"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647243"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
 
@@ -115,9 +115,9 @@ A következő URL-címek elérésének engedélyezése:
 | --- | --- |
 | \*. msappproxy.net<br>\*. servicebus.windows.net | Kommunikáció az összekötő és az alkalmazásproxy Cloud Service között |
 | mscrl.microsoft.com:80<br>crl.microsoft.com:80<br>ocsp.msocsp.com:80<br>www.microsoft.com:80 | Az összekötő ezeket az URL-eket használja a tanúsítványok ellenőrzéséhez |
-| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com<br>*. microsoftonline-p.com<br>*. msauth.net<br>*. msauthimages.net<br>*. msecnd.net<br>*. msftauth.net<br>*. msftauthimages.net<br>*. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
+| login.windows.net<br>secure.aadcdn.microsoftonline-p.com<br>*. microsoftonline.com <br> *. microsoftonline-p.com<br>*. msauth.net <br> *. msauthimages.net<br>*. msecnd.net <br> *. msftauth.net<br>*. msftauthimages.net <br> *. phonefactor.net<br>enterpriseregistration.windows.net<br>management.azure.com<br>policykeyservice.dc.ad.msft.net<br>ctdl.windowsupdate.com:80 | Az összekötő ezeket az URL-címeket használja a regisztrációs folyamat során. |
 
-Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfigurálását, akkor engedélyezheti \*a. msappproxy.net \*és a. servicebus.Windows.net kapcsolatait. Ha nem, engedélyeznie kell az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653)való hozzáférést. Az IP-címtartományok hetente frissülnek.
+Ha a tűzfal vagy a proxy lehetővé teszi a DNS engedélyezési listája konfigurálását, akkor engedélyezheti a \* . msappproxy.net és a \* . servicebus.Windows.net kapcsolatait. Ha nem, engedélyeznie kell az [Azure Datacenter IP-tartományokhoz](https://www.microsoft.com/download/details.aspx?id=41653)való hozzáférést. Az IP-címtartományok hetente frissülnek.
 
 Ha a teljes tartománynév nem engedélyezhető, és az IP-címtartományok megadására van szükség, használja a következő beállításokat:
 
@@ -144,12 +144,12 @@ Egyes környezetekben a háttérbeli alkalmazás felé irányuló kommunikáció
 Ennek engedélyezéséhez kövesse a következő lépéseket:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>1. lépés: adja hozzá a szükséges beállításazonosító értékét a kiszolgálóhoz
-1. Ha engedélyezni szeretné az alapértelmezett proxy használatát, adja hozzá a következő beállításértéket ( `UseDefaultProxyForBackendRequests = 1` DWORD) a "HKEY_LOCAL_MACHINE \Software\microsoft\microsoft HRE app proxy Connector" mappában található összekötő-konfigurációs beállításkulcs-kulcshoz.
+1. Ha engedélyezni szeretné az alapértelmezett proxy használatát, adja hozzá a következő beállításértéket (DWORD) `UseDefaultProxyForBackendRequests = 1` a "HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT HRE app proxy Connector" mappában található összekötő-konfigurációs beállításkulcs-kulcshoz.
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>2. lépés: a proxykiszolgáló manuális konfigurálása a netsh parancs használatával
 1.  Engedélyezze, hogy a csoportházirend legyen a számítógép proxybeállításait. Ez a következő címen található: Computer Computer \ Windows-összetevők \ Internet Explorer. Ezt úgy kell beállítani, hogy ezt a házirendet ne kelljen felhasználónkénti értékre beállítani.
-2.  Futtassa `gpupdate /force` a parancsot a kiszolgálón, vagy indítsa újra a kiszolgálót, és győződjön meg arról, hogy a frissített csoportházirend-beállításokat használja.
-3.  Nyisson meg egy rendszergazda jogú parancssort rendszergazdai jogosultságokkal `control inetcpl.cpl`, és írja be a parancsot.
+2.  Futtassa a parancsot a `gpupdate /force` kiszolgálón, vagy indítsa újra a kiszolgálót, és győződjön meg arról, hogy a frissített csoportházirend-beállításokat használja.
+3.  Nyisson meg egy rendszergazda jogú parancssort rendszergazdai jogosultságokkal, és írja be a parancsot `control inetcpl.cpl` .
 4.  Konfigurálja a szükséges proxybeállításokat. 
 
 Ezek a beállítások teszik, hogy az összekötő ugyanazt a továbbítási proxyt használja az Azure-hoz és a háttérbeli alkalmazáshoz való kommunikációhoz. Ha az összekötő és az Azure közötti kommunikációhoz nem szükséges továbbító proxy vagy más továbbítási proxy, a ApplicationProxyConnectorService. exe. config fájl módosításával a kimenő proxyk megkerülése vagy a kimenő proxykiszolgáló használata című részben leírtak szerint állíthatja be ezt.
@@ -162,7 +162,7 @@ Most látnia kell a proxyn keresztül áramló összes forgalmat. Ha problémák
 
 Az összekötők kapcsolódási problémáinak azonosítására és elhárítására a legjobb módszer, ha az összekötő szolgáltatás elindítása közben hálózati rögzítést végez. Íme néhány gyors tipp a hálózati nyomkövetés rögzítéséről és szűréséről.
 
-Az Ön által választott figyelési eszközt használhatja. A cikk értelmében a Microsoft Message Analyzert használtuk. [Letöltheti a Microsofttól](https://www.microsoft.com/download/details.aspx?id=44226).
+Az Ön által választott figyelési eszközt használhatja. A cikk értelmében a Microsoft Message Analyzert használtuk.
 
 Az alábbi példák az üzenetsor-kezelőre vonatkoznak, de az alapelvek bármely Analysis Tool eszközre alkalmazhatók.
 
@@ -185,7 +185,7 @@ A kezdeti hibaelhárításhoz hajtsa végre a következő lépéseket:
 
 Ha az alkalmazásproxy-összekötőt úgy konfigurálta, hogy kihagyja a proxykiszolgálót, és közvetlenül kapcsolódjon az alkalmazásproxy szolgáltatáshoz, akkor a sikertelen TCP-kapcsolódási kísérletek hálózati rögzítését kell megkeresnie.
 
-A próbálkozások azonosításához használja az üzenetsor-elemző szűrőt. Írja `property.TCPSynRetransmit` be a szűrőt a szűrő mezőbe, és kattintson az **alkalmaz**gombra.
+A próbálkozások azonosításához használja az üzenetsor-elemző szűrőt. Írja be `property.TCPSynRetransmit` a szűrőt a szűrő mezőbe, és kattintson az **alkalmaz**gombra.
 
 Egy SYN-csomag az első, TCP-kapcsolat létesítéséhez küldött csomag. Ha a csomag nem ad vissza választ, a rendszer újrapróbálkozik a SYN-vel. Az előző szűrő használatával megtekintheti az újraküldött SYNs. Ezután megtekintheti, hogy ezek a SYNs megfelelnek-e az összekötővel kapcsolatos adatforgalomnak.
 
@@ -195,7 +195,7 @@ Ha arra számít, hogy az összekötő közvetlen kapcsolattal csatlakozik az Az
 
 Ha az alkalmazásproxy-összekötő forgalmát úgy konfigurálta, hogy a proxykiszolgálót átugorja, a sikertelen HTTPS-kapcsolatokat szeretné keresni a proxyhoz.
 
-Ha szűrni szeretné a kapcsolódási kísérletek hálózati rögzítését, `(https.Request or https.Response) and tcp.port==8080` írja be az üzenet-elemző szűrőt, és cserélje le a 8080-et a proxy Service-portra. Válassza az **alkalmaz** lehetőséget a szűrő eredményeinek megtekintéséhez.
+Ha szűrni szeretné a kapcsolódási kísérletek hálózati rögzítését, írja be az `(https.Request or https.Response) and tcp.port==8080` üzenet-elemző szűrőt, és cserélje le a 8080-et a proxy Service-portra. Válassza az **alkalmaz** lehetőséget a szűrő eredményeinek megtekintéséhez.
 
 Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válaszokat jeleníti meg. A proxykiszolgáló kommunikációját bemutató csatlakozási kérelmeket keresi. A művelet sikeressége után egy HTTP OK (200) választ kap.
 

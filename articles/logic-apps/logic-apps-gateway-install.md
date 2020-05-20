@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: arthii, logicappspm
 ms.topic: article
-ms.date: 12/05/2019
-ms.openlocfilehash: f2f8b9f207993c49201d03d3d1fed3c5800e8780
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/15/2020
+ms.openlocfilehash: 6624cd0ff70ab359f4af36ca2f1f107d8f0b5fd9
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80673817"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659276"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Helyszíni adatátjáró telepítése az Azure Logic Appshez
 
@@ -37,10 +37,10 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
     > [!NOTE]
     > Egy átjárót és egy Azure Gateway-erőforrást is összekapcsolhat egymással. Ugyanahhoz az átjáróhoz tartozó telepítést nem lehet több Azure-fiókhoz vagy Azure Gateway-erőforráshoz kapcsolni. Az Azure-fiókok azonban több átjáró-telepítéshez és Azure Gateway-erőforrásokhoz is csatolhatók. Helyszíni trigger vagy művelet esetén választhat a különböző Azure-előfizetések közül, majd kiválaszthat egy társított átjáró-erőforrást.
 
-  * Be kell jelentkeznie munkahelyi fiókkal vagy iskolai fiókkal, más néven *szervezeti* fiókkal, amely a következőképpen néz ki: `username@contoso.com`. Nem használhat Azure B2B-(vendég-) fiókokat vagy személyes Microsoft-fiókokat, például @hotmail.com vagy @outlook.com.
+  * Be kell jelentkeznie munkahelyi fiókkal vagy iskolai fiókkal, más néven *szervezeti* fiókkal, amely a következőképpen néz ki: `username@contoso.com` . Nem használhat Azure B2B-(vendég-) fiókokat vagy személyes Microsoft-fiókokat, például @hotmail.com vagy @outlook.com .
 
     > [!TIP]
-    > Ha regisztrált az Office 365-ajánlatra, és nem adta meg a munkahelyi e-mail-címét, előfordulhat `username@domain.onmicrosoft.com`, hogy a címe hasonlít. A fiókját egy Azure Active Directory (Azure AD) bérlőn belül tárolja a rendszer. A legtöbb esetben az Azure AD-fiókhoz tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
+    > Ha regisztrált az Office 365-ajánlatra, és nem adta meg a munkahelyi e-mail-címét, előfordulhat, hogy a címe hasonlít `username@domain.onmicrosoft.com` . A fiókját egy Azure Active Directory (Azure AD) bérlőn belül tárolja a rendszer. A legtöbb esetben az Azure AD-fiókhoz tartozó egyszerű felhasználónév (UPN) megegyezik az e-mail-címével.
     >
     > Ha egy Microsoft-fiókhoz csatolt [Visual Studio standard-előfizetést](https://visualstudio.microsoft.com/vs/pricing/) szeretne használni, először [hozzon létre egy bérlőt az Azure ad-ben](../active-directory/develop/quickstart-create-new-tenant.md) , vagy használja az alapértelmezett könyvtárat. Adjon hozzá egy jelszót tartalmazó felhasználót a címtárhoz, majd adja meg a felhasználónak az Azure-előfizetését. Ezt a felhasználónevet és jelszót használva az átjáró telepítése közben is bejelentkezhet.
 
@@ -68,13 +68,15 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
     > [!TIP]
     > A késés csökkentése érdekében az átjárót a lehető legközelebb az adatforráshoz vagy ugyanazon a számítógépen telepítheti, feltéve, hogy rendelkezik a megfelelő engedélyekkel.
 
-  * Telepítse az átjárót olyan számítógépre, amely vezetékes hálózaton található, az internethez csatlakozik, mindig be van kapcsolva, és nem alvó állapotba kerül. Ellenkező esetben az átjáró nem futtatható, és a teljesítmény a vezeték nélküli hálózaton keresztül csökkenhet.
+  * Telepítse az átjárót egy olyan helyi számítógépre, amely vezetékes hálózaton található, az internethez csatlakoztatva, mindig be van kapcsolva, és nem alvó állapotba kerül. Ellenkező esetben az átjáró nem futtatható, és a teljesítmény a vezeték nélküli hálózaton keresztül csökkenhet.
 
   * Windows-hitelesítés használata esetén győződjön meg arról, hogy az átjárót olyan számítógépre telepíti, amely az adatforrásokkal megegyező Active Directory-környezet tagja.
 
   * Az átjáró telepítéséhez kiválasztott régió ugyanaz a hely, amelyet később a logikai alkalmazáshoz tartozó Azure Gateway-erőforrás létrehozásakor ki kell választania. Alapértelmezés szerint ez a régió megegyezik az Azure-fiókját kezelő Azure AD-Bérlővel. A helyet azonban megváltoztathatja az átjáró telepítése közben is.
 
-  * Ha az átjáró telepítését a legújabb verzióra frissíti, először távolítsa el az aktuális átjárót a tisztább élmény érdekében.
+  * Ha frissíti az átjáró telepítését, először távolítsa el az aktuális átjárót a tisztább élmény érdekében.
+
+    Ajánlott eljárásként ellenőrizze, hogy támogatott verziót használ-e. A Microsoft minden hónapban új frissítést bocsát ki a helyszíni adatátjáróhoz, és jelenleg csak a helyszíni adatátjáró utolsó hat kiadását támogatja. Ha az Ön által használt verzióval kapcsolatos problémákat tapasztal, próbálkozzon a [legújabb verzióra való frissítéssel](https://aka.ms/on-premises-data-gateway-installer) , mert a probléma feloldható a legújabb verzióban.
 
   * Az átjárónak két módja van: a standard mód és a személyes mód, amely csak a Power BIre vonatkozik. Ugyanazon a számítógépen nem lehet egynél több olyan átjáró, amely ugyanazon a módban fut.
 
@@ -96,7 +98,7 @@ Ez a cikk bemutatja, hogyan töltheti le, telepítheti és állíthatja be a hel
 
    Az átjáró telepítése csak egy Azure-fiókra hivatkozhat.
 
-1. Jelölje be az **új átjáró regisztrálása ezen a számítógépen** > **jelölőnégyzetet.** Ez a lépés regisztrálja az átjáró telepítését az [átjáró Cloud Service](#gateway-cloud-service)-ben.
+1. Jelölje be az **új átjáró regisztrálása ezen a számítógépen**  >  **jelölőnégyzetet**. Ez a lépés regisztrálja az átjáró telepítését az [átjáró Cloud Service](#gateway-cloud-service)-ben.
 
    ![Átjáró regisztrálása helyi számítógépen](./media/logic-apps-gateway-install/register-gateway-local-computer.png)
 
@@ -162,15 +164,15 @@ Miután beállította az elsődleges átjárót, amikor egy másik átjárót te
 
 Ha módosítania kell az átjáró helyét, helyezze át az átjáró telepítését egy új számítógépre, állítson helyre egy sérült átjárót, vagy vegyen fel egy meglévő átjáró tulajdonjogát, szüksége lesz az átjáró telepítésekor megadott helyreállítási kulcsra.
 
-1. Futtassa az átjáró telepítőjét azon a számítógépen, amelyen a meglévő átjáró található. Ha nem rendelkezik a legújabb átjáró-telepítővel, [töltse le az átjáró legújabb verzióját](https://aka.ms/on-premises-data-gateway-installer).
+> [!NOTE]
+> Mielőtt visszaállítja az átjárót azon a számítógépen, amelyen az eredeti átjáró telepítve van, először el kell távolítania az átjárót az adott számítógépen. Ez a művelet leválasztja az eredeti átjárót.
+> Ha bármely felhőalapú szolgáltatáshoz eltávolít vagy töröl egy átjáró-fürtöt, akkor a fürt nem állítható vissza.
 
-   > [!NOTE]
-   > Mielőtt visszaállítja az átjárót azon a számítógépen, amelyen az eredeti átjáró telepítve van, először el kell távolítania az átjárót az adott számítógépen. Ez a művelet leválasztja az eredeti átjárót.
-   > Ha bármely felhőalapú szolgáltatáshoz eltávolít vagy töröl egy átjáró-fürtöt, akkor a fürt nem állítható vissza.
+1. Futtassa az átjáró telepítőjét azon a számítógépen, amelyen a meglévő átjáró található.
 
 1. A telepítő megnyitása után jelentkezzen be ugyanazzal az Azure-fiókkal, amelyet az átjáró telepítéséhez használt.
 
-1. Válassza a >  **meglévő átjáró áttelepíteni, visszaállítása vagy átvétele****lehetőséget, például**:
+1. Válassza a **meglévő átjáró áttelepíteni, visszaállítása vagy átvétele**lehetőséget  >  **Next**, például:
 
    ![Válassza a "meglévő átjáró migrálása, visszaállítása vagy átvétele" lehetőséget.](./media/logic-apps-gateway-install/migrate-recover-take-over-gateway.png)
 
@@ -236,7 +238,7 @@ A Microsoft Cloud Services az [Azure ad](../active-directory/fundamentals/active
 
 ### <a name="what-is-my-upn"></a>Mi az UPN?
 
-Ha nem tartományi rendszergazda, akkor előfordulhat, hogy nem ismeri az egyszerű felhasználónevet. A fiók UPN-értékének megkereséséhez futtassa `whoami /upn` a parancsot a munkaállomásról. Bár az eredmény egy e-mail-címre hasonlít, az eredmény a helyi tartományi fiók UPN-je.
+Ha nem tartományi rendszergazda, akkor előfordulhat, hogy nem ismeri az egyszerű felhasználónevet. A fiók UPN-értékének megkereséséhez futtassa a `whoami /upn` parancsot a munkaállomásról. Bár az eredmény egy e-mail-címre hasonlít, az eredmény a helyi tartományi fiók UPN-je.
 
 ### <a name="synchronize-an-on-premises-active-directory-with-azure-ad"></a>Helyszíni Active Directory szinkronizálása az Azure AD-vel
 
@@ -259,9 +261,7 @@ Az alábbi módokon lehet megfelelni a helyszíni Active Directory-fiókoknak az
 
 ## <a name="faq-and-troubleshooting"></a>Gyakori kérdések és hibaelhárítás
 
-További információt az alábbi témakörökben talál:
-
-* [Helyszíni adatátjáró – gyakori kérdések](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
+* [Helyszíni adatátjáró – GYIK](https://docs.microsoft.com/data-integration/gateway/service-gateway-onprem-faq)
 * [A helyszíni adatátjáró hibaelhárítása](https://docs.microsoft.com/data-integration/gateway/service-gateway-tshoot)
 * [Átjáró teljesítményének monitorozása és optimalizálása](https://docs.microsoft.com/data-integration/gateway/service-gateway-performance)
 

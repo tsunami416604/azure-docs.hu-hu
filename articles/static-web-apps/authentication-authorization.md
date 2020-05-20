@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: cb6b99351a5cb995d87b482b7e707a3913fd86f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 1ac1df402c25c0f6e5f07ce8d9631c01c0fa504c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597624"
+ms.locfileid: "83655251"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Hitelesítés és engedélyezés az Azure statikus Web Apps előzetes verziójában
 
@@ -118,7 +118,7 @@ https://identity.azurestaticapps.net/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 Ahhoz, hogy a platform ne szolgáltassa ezeket az információkat az egyes alkalmazásokra vonatkozó jövőbeli kérésekről, küldje el a kérelmet a következő URL-címre:
 
 ```url
-https://<WEB_APP_DOMAIN_NAME>/identity/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
+https://<WEB_APP_DOMAIN_NAME>/.auth/purge/<AUTHENTICATION_PROVIDER_NAME>
 ```
 
 ## <a name="system-folder"></a>Rendszermappa
@@ -154,6 +154,11 @@ Egy [útvonal-szabály](routes.md) használatával leképezheti az alapértelmez
 }
 ```
 
+### <a name="post-login-redirect"></a>Bejelentkezés utáni átirányítás
+
+Ha azt szeretné, hogy a felhasználó a bejelentkezés után egy adott oldalra térjen vissza, adjon meg egy URL-címet a `post_login_redirect_uri` lekérdezési karakterlánc paraméterben.
+
+
 ## <a name="logout"></a>Kijelentkezés
 
 Az `/.auth/logout` útvonal naplózza a felhasználókat a webhelyről. Hozzáadhat egy hivatkozást a webhely navigáláshoz, amely lehetővé teszi a felhasználó számára az alábbi példában látható módon való kijelentkezést.
@@ -170,6 +175,10 @@ Egy [útvonal-szabály](routes.md) segítségével rövid útvonalat (például 
   "serve": "/.auth/logout"
 }
 ```
+
+### <a name="post-logout-redirect"></a>Kilépés utáni átirányítás
+
+Ha azt szeretné, hogy a felhasználó a kijelentkezés után egy adott lapra térjen vissza, adjon meg egy URL-címet a `post_logout_redirect_uri` lekérdezési karakterlánc paraméterben.
 
 ## <a name="block-an-authorization-provider"></a>Engedélyezési szolgáltató letiltása
 

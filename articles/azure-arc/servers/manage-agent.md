@@ -6,14 +6,14 @@ ms.service: azure-arc
 ms.subservice: azure-arc-servers
 author: mgoedtel
 ms.author: magoedte
-ms.date: 04/29/2020
+ms.date: 05/18/2020
 ms.topic: conceptual
-ms.openlocfilehash: 685c56c7ef270acb416d4b76c6aceb8553e9a07f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 965e59f9c51cc41d4e5a8e8931b5c2f62c260599
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581705"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648104"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>A csatlakoztatott gép ügynökének kezelése és karbantartása
 
@@ -28,11 +28,19 @@ A Windows és a Linux rendszerhez készült Azure-beli csatlakoztatott gépi üg
 | Windows | Manuálisan<br> Windows Update |
 | Ubuntu | [Apt](https://help.ubuntu.com/lts/serverguide/apt.html) |
 | SUSE Linux Enterprise Server | [Zypper](https://en.opensuse.org/SDB:Zypper_usage_11.3) |
-| RedHat Enterprise, Amazon, CentOS Linux | [yum használatával](https://wiki.centos.org/PackageManagement/Yum) | 
+| RedHat Enterprise, Amazon, CentOS Linux | [yum használatával](https://wiki.centos.org/PackageManagement/Yum) |
 
 ### <a name="windows-agent"></a>Windows-ügynök
 
-Ha a Windows rendszerű gépen lévő ügynököt a legújabb verzióra szeretné frissíteni, az ügynök elérhető a Microsoft Updateból, és a meglévő szoftverfrissítés-kezelési folyamattal is üzembe helyezhető. A parancssorból, parancsfájlból vagy más automatizálási megoldásból, illetve a felhasználói felület varázslóból is futtatható manuálisan is `AzureConnectedMachine.msi`. 
+A Windows rendszerhez készült csatlakoztatott számítógép-ügynök frissítési csomagja a következő helyről érhető el:
+
+* Microsoft Update
+
+* [Microsoft Update katalógus](https://www.catalog.update.microsoft.com/Home.aspx)
+
+* [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) a Microsoft letöltőközpontból.
+
+Az ügynök a szoftverfrissítési felügyeleti folyamat támogatásának számos módszerét követően frissíthető. A Microsoft Updatetól való beszerzésen kívül a parancssorból, egy parancsfájlból vagy más automatizálási megoldásból, illetve a végrehajtásával a felhasználói felület varázslóból manuálisan is letöltheti és futtathatja a parancsot `AzureConnectedMachine.msi` .
 
 > [!NOTE]
 > * Az ügynök frissítéséhez *rendszergazdai* engedélyekkel kell rendelkeznie.
@@ -52,7 +60,7 @@ A telepítővarázsló felfedi, hogy létezik-e korábbi verzió, és hogy autom
 
 1. Jelentkezzen be a számítógépre egy rendszergazdai jogosultságokkal rendelkező fiókkal.
 
-2. Ha csendesen szeretné frissíteni az ügynököt, és létre kell hoznia `C:\Support\Logs` egy telepítési naplófájlt a mappában, futtassa a következő parancsot.
+2. Ha csendesen szeretné frissíteni az ügynököt, és létre kell hoznia egy telepítési naplófájlt a `C:\Support\Logs` mappában, futtassa a következő parancsot.
 
     ```dos
     msiexec.exe /i AzureConnectedMachineAgent.msi /qn /l*v "C:\Support\Logs\Azcmagentupgradesetup.log"
@@ -60,7 +68,9 @@ A telepítővarázsló felfedi, hogy létezik-e korábbi verzió, és hogy autom
 
 ### <a name="linux-agent"></a>Linux-ügynök
 
-Ha egy Linux rendszerű gépen szeretné frissíteni az ügynököt a legújabb verzióra, két parancsot kell magában foglalnia. Egy parancs a helyi csomag indexének frissítésére a Tárházak legújabb elérhető csomagjainak listájával, valamint egy parancs a helyi csomag frissítéséhez. 
+Ha egy Linux rendszerű gépen szeretné frissíteni az ügynököt a legújabb verzióra, két parancsot kell magában foglalnia. Egy parancs a helyi csomag indexének frissítésére a Tárházak legújabb elérhető csomagjainak listájával, valamint egy parancs a helyi csomag frissítéséhez.
+
+A legújabb ügynök-csomagot letöltheti a Microsoft [Package adattárból](https://packages.microsoft.com/).
 
 > [!NOTE]
 > Az ügynök frissítéséhez *rendszergazdai* jogosultságokkal vagy olyan fiókkal kell rendelkeznie, amely a sudo használatával emelt szintű jogokkal rendelkezik.
@@ -95,7 +105,7 @@ Az [apt](https://help.ubuntu.com/lts/serverguide/apt.html) parancs műveleteit, 
     yum update
     ```
 
-A [yum](https://access.redhat.com/articles/yum-cheat-sheet) parancs műveleteit – például a csomagok telepítését és eltávolítását – a rendszer naplózza `/var/log/yum.log` a naplófájlba. 
+A [yum](https://access.redhat.com/articles/yum-cheat-sheet) parancs műveleteit – például a csomagok telepítését és eltávolítását – a rendszer naplózza a `/var/log/yum.log` naplófájlba. 
 
 #### <a name="upgrade-suse-linux-enterprise"></a>SUSE Linux Enterprise frissítése
 
@@ -111,7 +121,7 @@ A [yum](https://access.redhat.com/articles/yum-cheat-sheet) parancs műveleteit 
     zypper update
     ```
 
-A [Zypper](https://en.opensuse.org/Portal:Zypper) parancs műveleteit, például a csomagok telepítését és eltávolítását, a rendszer naplózza `/var/log/zypper.log` a naplófájlban. 
+A [Zypper](https://en.opensuse.org/Portal:Zypper) parancs műveleteit, például a csomagok telepítését és eltávolítását, a rendszer naplózza a `/var/log/zypper.log` naplófájlban. 
 
 ## <a name="about-the-azcmagent-tool"></a>Tudnivalók a Azcmagent eszközről
 
@@ -127,7 +137,7 @@ A Azcmagent eszköz (Azcmagent. exe) segítségével konfigurálhatja az Azure a
 
 * **-h vagy--help** – megjeleníti az elérhető parancssori paramétereket
 
-    Ha például meg szeretné tekinteni az **újrakapcsolódási** paraméter részletes súgóját, `azcmagent reconnect -h`írja be a következőt:. 
+    Ha például meg szeretné tekinteni az **újrakapcsolódási** paraméter részletes súgóját, írja be a következőt: `azcmagent reconnect -h` . 
 
 * **-v vagy--verbose** – részletes naplózás engedélyezése
 
@@ -135,7 +145,7 @@ A **csatlakozást**, a **leválasztást**és az **újracsatlakozást** manuális
 
 ### <a name="connect"></a>Kapcsolódás
 
-Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet az Azure-ban hozza létre. Az erőforrás a megadott előfizetésben és erőforráscsoporthoz van megadva, és a gép adatait a `--location` beállítás által megadott Azure-régióban tárolja a rendszer. Ha nincs megadva, az alapértelmezett erőforrás neve a gép állomásneve.
+Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet az Azure-ban hozza létre. Az erőforrás a megadott előfizetésben és erőforráscsoporthoz van megadva, és a gép adatait a beállítás által megadott Azure-régióban tárolja a rendszer `--location` . Ha nincs megadva, az alapértelmezett erőforrás neve a gép állomásneve.
 
 A rendszer a gép rendszerszintű identitásához tartozó tanúsítványt letölti és helyileg tárolja. A lépés elvégzése után az Azure Connected Machine Metadata Service és a vendég konfigurációs ügynök megkezdi a szinkronizálást az Azure arc for Servers (előzetes verzió) szolgáltatással.
 
@@ -153,7 +163,7 @@ Ha a rendszergazda jogú bejelentkezett hitelesítő adataival szeretne csatlako
 
 ### <a name="disconnect"></a>Leválasztás
 
-Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet jelképezi az Azure-ban. Nem törli az ügynököt a gépről, ezt külön lépésként kell elvégezni. Ha a gép le van választva, ha újra szeretné regisztrálni az Azure arc for Servers szolgáltatásban (előzetes verzió), `azcmagent connect` akkor az Azure-ban létrehoz egy új erőforrást.
+Ez a paraméter egy olyan erőforrást határoz meg Azure Resource Manager, amely a gépet jelképezi az Azure-ban. Nem törli az ügynököt a gépről, ezt külön lépésként kell elvégezni. Ha a gép le van választva, ha újra szeretné regisztrálni az Azure arc for Servers szolgáltatásban (előzetes verzió), akkor az `azcmagent connect` Azure-ban létrehoz egy új erőforrást.
 
 Az egyszerű szolgáltatásnév használatával történő leválasztáshoz futtassa a következő parancsot:
 
@@ -171,7 +181,7 @@ Az emelt szintű bejelentkezett hitelesítő adatokkal (interaktív) való levá
 
 Ez a paraméter újracsatlakoztatja a már regisztrált vagy csatlakoztatott gépet az Azure arc for Servers (előzetes verzió) szolgáltatáshoz. Erre akkor lehet szükség, ha a gép ki van kapcsolva legalább 45 nappal, hogy a tanúsítványa lejár. Ez a paraméter a megadott hitelesítési beállítások használatával kéri le az új hitelesítő adatokat, amelyek megfelelnek a gépet jelképező Azure Resource Manager erőforrásnak.
 
-Ehhez a parancshoz magasabb jogosultságok szükségesek, mint az Azure-beli [csatlakoztatott gép](overview.md#required-permissions) bevezetési szerepköre.
+Ehhez a parancshoz magasabb jogosultságok szükségesek, mint az Azure-beli [csatlakoztatott gép](agent-overview.md#required-permissions) bevezetési szerepköre.
 
 Az egyszerű szolgáltatásnév használatával történő újrakapcsolódáshoz futtassa a következő parancsot:
 
@@ -206,11 +216,11 @@ A következő módszerek mindegyike eltávolítja az ügynököt, de nem távol�
 
 #### <a name="uninstall-from-the-command-line"></a>Eltávolítás a parancssorból
 
-Ha manuálisan szeretné eltávolítani az ügynököt a parancssorból, vagy automatikus metódust (például egy parancsfájlt) szeretne használni, használja az alábbi példát. Először le kell kérnie a termékkód beolvasását, amely az alkalmazáscsomag elsődleges azonosítója, az operációs rendszerből. Az Eltávolítás az msiexec. exe parancssor használatával történik `msiexec /x {Product Code}`.
-    
+Ha manuálisan szeretné eltávolítani az ügynököt a parancssorból, vagy automatikus metódust (például egy parancsfájlt) szeretne használni, használja az alábbi példát. Először le kell kérnie a termékkód beolvasását, amely az alkalmazáscsomag elsődleges azonosítója, az operációs rendszerből. Az Eltávolítás az msiexec. exe parancssor használatával történik `msiexec /x {Product Code}` .
+
 1. Nyissa meg a beállításszerkesztőt.
 
-2. A beállításkulcs `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall`szakaszban keresse meg és másolja a termékkód GUID azonosítóját.
+2. A beállításkulcs szakaszban `HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\Uninstall` Keresse meg és másolja a termékkód GUID azonosítóját.
 
 3. Ezután az alábbi példákkal távolíthatja el az ügynököt az msiexec használatával:
 

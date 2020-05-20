@@ -11,19 +11,19 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: f26aafc771998ea73d1a4f97f0e960a94f6775c3
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82626717"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654503"
 ---
-# <a name="load-data-from-azure-data-lake-storage-for-sql-analytics"></a>Adatok betöltése Azure Data Lake Storageból SQL-elemzéshez
+# <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Adatok betöltése a Azure Data Lake Storageról a szinapszis SQL-hez
 
 Ez az útmutató azt ismerteti, hogyan tölthetők be a Azure Data Lake Storageból származó adatok az alapszintű külső táblák használatával. Bár a Data Lake Storage tárolt adatain is futtathatók az ad hoc lekérdezések, javasoljuk, hogy a legjobb teljesítmény érdekében importálja az adatforrást.
 
 > [!NOTE]  
-> A betöltés alternatívájaként a [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jelenleg nyilvános előzetes verzióban érhető el.  A MÁSOLÁSi utasítás a legnagyobb rugalmasságot biztosítja. Ha visszajelzést szeretne küldeni a COPY utasításról, küldjön egy e-mailt a következő terjesztési sqldwcopypreview@service.microsoft.comlistára:.
+> A betöltés alternatívájaként a [másolási utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) jelenleg nyilvános előzetes verzióban érhető el.  A MÁSOLÁSi utasítás a legnagyobb rugalmasságot biztosítja. Ha visszajelzést szeretne küldeni a COPY utasításról, küldjön egy e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
 >
 > [!div class="checklist"]
 >
@@ -218,7 +218,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 
 A legjobb, ha egy terhelés után azonnal létrehoz egy egyoszlopos statisztikát. Néhány statisztikai lehetőség is rendelkezésre áll. Ha például egyoszlopos statisztikát hoz létre minden egyes oszlophoz, akkor hosszú időt vehet igénybe az összes statisztika újraépítéséhez. Ha tudja, hogy bizonyos oszlopok nem szerepelnek a lekérdezési predikátumokban, kihagyhatja ezeket az oszlopokat a statisztikák létrehozásával.
 
-Ha úgy dönt, hogy egyoszlopos statisztikát hoz létre minden táblázat minden oszlopához, használhatja a [statisztikai](sql-data-warehouse-tables-statistics.md) cikk tárolt eljárás `prc_sqldw_create_stats` kódja mintáját.
+Ha úgy dönt, hogy egyoszlopos statisztikát hoz létre minden táblázat minden oszlopához, használhatja a statisztikai cikk tárolt eljárás kódja mintáját `prc_sqldw_create_stats` . [statistics](sql-data-warehouse-tables-statistics.md)
 
 Az alábbi példa jó kiindulási pont a statisztikák létrehozásához. Egyoszlopos statisztikát hoz létre a dimenzió tábla minden egyes oszlopán, valamint a táblák egyes összekapcsolási oszlopaiban. Később is hozzáadhat egy vagy több oszlopos statisztikát más táblák oszlopaihoz.
 

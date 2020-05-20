@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 284cf3792b85ce38b190290111aa70a51084d4f6
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 1d312417017676d0b0bc53e3e16e229e45f1aa17
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82614849"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659415"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>Gazdagépcsoport létrehozása a PowerShell-lel
 
@@ -66,7 +66,7 @@ Több módon is létrehozhat egy virtuális gépet:
 
 - [Virtuális gép létrehozása Azure Gallery-rendszerképből](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
 - [Virtuális gép létrehozása felügyelt rendszerképből](../../virtual-machines/windows/create-vm-generalized-managed.md)
-- [Virtuális gép létrehozása nem felügyelt rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image.md)
+- [Virtuális gép létrehozása nem felügyelt rendszerképből](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 >[!NOTE]
 >Ha a Windows 7 operációs rendszert futtató virtuális gépet a gazdagép operációs rendszereként telepíti, a létrehozási és a telepítési folyamat némileg eltérő lesz. További részletek: Windows 7 rendszerű virtuális [gépek üzembe helyezése Windows rendszerű virtuális asztalon](deploy-windows-7-virtual-machine.md).

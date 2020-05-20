@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 220e73536a892e798139ca54913e09e097c22432
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c08adca17948aceb54b937526dacebbaa13a0530
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191940"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655181"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
@@ -104,7 +104,7 @@ A példák a fürt fő csomópontjának [SSH-kapcsolatain](./hdinsight-hadoop-li
 
 #### <a name="creating-a-hive-table"></a>Struktúra-tábla létrehozása
 
-A szemléltető célokra három fájl helye látható. A tényleges végrehajtáshoz csak az `LOCATION` egyik bejegyzést használja.
+A szemléltető célokra három fájl helye látható. A tényleges végrehajtáshoz csak az egyik bejegyzést használja `LOCATION` .
 
 ```hql
 DROP TABLE myTable;
@@ -138,11 +138,11 @@ A Microsoft az alábbi eszközöket biztosítja az Azure Storage-hoz való együ
 
 * A konfigurált alapértelmezett tároló teljes elérési útjának azonosításához keresse meg a következőt:
 
-    **HDFS** > a**konfigurációkat** , `fs.defaultFS` majd írja be a szűrőt a beviteli mezőbe.
+    **HDFS**  >  Adja meg a **konfigurációt** , majd írja be `fs.defaultFS` a szűrőt a beviteli mezőbe.
 
 * Annak vizsgálatához, hogy a wasb-tároló másodlagos tárolóként van-e konfigurálva, keresse meg a következőt:
 
-    **HDFS** > a**konfigurációkat** , `blob.core.windows.net` majd írja be a szűrőt a beviteli mezőbe.
+    **HDFS**  >  Adja meg a **konfigurációt** , majd írja be `blob.core.windows.net` a szűrőt a beviteli mezőbe.
 
 Az elérési út Ambari REST API használatával történő beszerzéséhez tekintse meg [az alapértelmezett tároló lekérése](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)című témakört.
 
@@ -158,7 +158,7 @@ Az alapértelmezett Blob-tároló a fürtre jellemző információkat, például
 
 ## <a name="use-additional-storage-accounts"></a>További tárfiókok használata
 
-HDInsight-fürt létrehozásakor meg kell adnia azt az Azure Storage-fiókot, amelyet a fürthöz társítani kívánja. Emellett további Storage-fiókokat is hozzáadhat ugyanahhoz az Azure-előfizetéshez vagy különböző Azure-előfizetésekhez a létrehozási folyamat során. Vagy a fürt létrehozása után. Útmutatás további tárfiókok hozzáadásához: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+HDInsight-fürt létrehozásakor meg kell adnia azt az Azure Storage-fiókot, amelyet a fürthöz társítani kívánja. Emellett további Storage-fiókokat is hozzáadhat ugyanahhoz az Azure-előfizetéshez vagy különböző Azure-előfizetésekhez a létrehozási folyamat során vagy a fürt létrehozása után. Útmutatás további tárfiókok hozzáadásához: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!WARNING]  
 > A rendszer nem támogatja további tárfiókok használatát a HDInsight-fürtön kívül eső helyeken.

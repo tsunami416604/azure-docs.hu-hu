@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: 8551e17ddd71e76aca0c85b9768f564ae0e5f049
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a45dc39f5a0795684aba278391e04f6af3f7b55
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681843"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659681"
 ---
 # <a name="materials"></a>Anyagok
 
@@ -35,9 +35,13 @@ A [Rácsvonalak](meshes.md) egy vagy több alhálóval rendelkeznek. Mindegyik a
 
 Ha közvetlenül a Mesh erőforráson módosít egy anyagot, ez a változás a rácsvonal összes példányát érinti. A MeshComponent módosítása azonban csak az egyik rácsvonal-példányt érinti. A legmegfelelőbb módszer a kívánt viselkedéstől függ, de a MeshComponent módosítása a gyakoribb megközelítés.
 
+## <a name="material-de-duplication"></a>Anyag – ismétlődés
+
+A konverzió során több, azonos tulajdonságokkal és textúrákkal rendelkező anyag is automatikusan duplikálható egyetlen anyagba. Ezt a funkciót letilthatja az [átalakítási beállításokban](../how-tos/conversion/configure-model-conversion.md), de a legjobb teljesítmény érdekében javasoljuk, hogy hagyja.
+
 ## <a name="material-classes"></a>Anyagelszámolású osztályok
 
-Az API által biztosított összes anyag az alaposztályból `Material`származik. A típusuk közvetlenül a következő módon `Material.MaterialSubType` kérdezhető le:
+Az API által biztosított összes anyag az alaposztályból származik `Material` . A típusuk közvetlenül a következő módon kérdezhető le `Material.MaterialSubType` :
 
 ``` cs
 void SetMaterialColorToGreen(Material material)

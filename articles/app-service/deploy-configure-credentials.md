@@ -5,19 +5,17 @@ ms.topic: article
 ms.date: 08/14/2019
 ms.reviewer: byvinyal
 ms.custom: seodec18
-ms.openlocfilehash: a9d875e2c3899fa91b9cc41c0ee3b5a93ec5b8c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6f7c2422e043da6df498fe81da938576687b916
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266077"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649116"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Központi telepítési hitelesítő adatok konfigurálása Azure App Servicehoz
 A [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) kétféle hitelesítő adatot támogat a [helyi git üzembe helyezéséhez](deploy-local-git.md) és az [FTP/S](deploy-ftp.md)környezethez. Ezek a hitelesítő adatok nem egyeznek meg az Azure-előfizetés hitelesítő adataival.
 
-* **Felhasználói szintű hitelesítő adatok**: a teljes Azure-fiókhoz tartozó hitelesítő adatok egy halmaza. Felhasználható arra, hogy a App Service bármely olyan alkalmazáshoz, amely az Azure-fiókhoz való hozzáféréshez szükséges. Ez az alapértelmezett beállítás, amely a portál grafikus felhasználói felületén található (például az alkalmazás [erőforrás-oldalának](../azure-resource-manager/management/manage-resources-portal.md#manage-resources) **áttekintése** és **tulajdonságai** ). Ha a felhasználó szerepköralapú Access Control (RBAC) vagy a rendszergazdai jogosultságok használatával kap hozzáférést az alkalmazásokhoz, a felhasználó a hozzáférés visszavonása előtt saját felhasználói szintű hitelesítő adatait használhatja. Ne ossza meg ezeket a hitelesítő adatokat más Azure-felhasználókkal.
-
-* **Alkalmazás szintű hitelesítő adatok**: az egyes alkalmazásokhoz tartozó hitelesítő adatok egy halmaza. Ezt csak az alkalmazásra lehet használni. Az egyes alkalmazások hitelesítő adatai automatikusan létrejönnek az alkalmazás létrehozásakor. Nem konfigurálhatók manuálisan, de bármikor visszaállíthatók. Ahhoz, hogy a felhasználók hozzáférést kapjanak az alkalmazás szintű hitelesítő adatokhoz a (RBAC) használatával, a felhasználónak közreműködőnek vagy magasabbnak kell lennie az alkalmazásban (beleértve a webhely közreműködői beépített szerepkörét). Az olvasók számára nem engedélyezett a közzététel, és nem férhetnek hozzá ezekhez a hitelesítő adatokhoz.
+[!INCLUDE [app-service-deploy-credentials](../../includes/app-service-deploy-credentials.md)]
 
 ## <a name="configure-user-level-credentials"></a><a name="userscope"></a>Felhasználói szintű hitelesítő adatok konfigurálása
 
@@ -25,7 +23,7 @@ A felhasználói szintű hitelesítő adatokat bármely alkalmazás [erőforrás
 
 ### <a name="in-the-cloud-shell"></a>A Cloud Shell
 
-Ha a [Cloud Shell](https://shell.azure.com)szeretné konfigurálni a központi telepítési felhasználót, futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) parancsot. Cserélje \<le a Felhasználónév \<> és a jelszó> egy üzembe helyezési felhasználónévvel és jelszóval. 
+Ha a [Cloud Shell](https://shell.azure.com)szeretné konfigurálni a központi telepítési felhasználót, futtassa az az [WebApp Deployment User set](/cli/azure/webapp/deployment/user?view=azure-cli-latest#az-webapp-deployment-user-set) parancsot. Cserélje le \< a felhasználónév> és \< a jelszó> egy üzembe helyezési felhasználónévvel és jelszóval. 
 
 - A felhasználónévnek egyedinek kell lennie az Azure-ban, a helyi git-leküldések esetében pedig nem tartalmazhatja a "@" szimbólumot. 
 - A jelszónak legalább nyolc karakterből kell állnia, és a következő három elem közül kettőnek kell lennie: betűk, számok és szimbólumok. 
@@ -34,17 +32,17 @@ Ha a [Cloud Shell](https://shell.azure.com)szeretné konfigurálni a központi t
 az webapp deployment user set --user-name <username> --password <password>
 ```
 
-A JSON-kimenet a jelszót jeleníti meg `null`. `'Conflict'. Details: 409` hibaüzenet esetén változtassa meg a felhasználónevet. `'Bad Request'. Details: 400` hibaüzenet esetén használjon erősebb jelszót. 
+A JSON-kimenet a jelszót jeleníti meg `null` . `'Conflict'. Details: 409` hibaüzenet esetén változtassa meg a felhasználónevet. `'Bad Request'. Details: 400` hibaüzenet esetén használjon erősebb jelszót. 
 
 ### <a name="in-the-portal"></a>A portálon
 
 A Azure Portalben legalább egy alkalmazásnak rendelkeznie kell a központi telepítési hitelesítő adatok lap eléréséhez. Felhasználói szintű hitelesítő adatok konfigurálása:
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **app Services** > **\<any_app>**  >  **központi telepítési központ** > **FTP** > -**irányítópult**elemet.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **app Services**  >  ** \< any_app>**  >  **központi telepítési központ**  >  **FTP**-  >  **irányítópult**elemet.
 
     ![](./media/app-service-deployment-credentials/access-no-git.png)
 
-    Ha már konfigurálta a git-telepítést, válassza a **app Services** > **&lt;any_app>**  >  **központi telepítési központ** > **FTP/hitelesítő adatokat**.
+    Ha már konfigurálta a git-telepítést, válassza a **app Services**  >  ** &lt; any_app>**  >  **központi telepítési központ**  >  **FTP/hitelesítő adatokat**.
 
     ![](./media/app-service-deployment-credentials/access-with-git.png)
 
@@ -70,7 +68,7 @@ Mivel a felhasználói szintű hitelesítő adatok a felhasználóhoz kapcsolód
 ## <a name="get-and-reset-app-level-credentials"></a><a name="appscope"></a>Alkalmazás szintű hitelesítő adatok beolvasása és alaphelyzetbe állítása
 Az alkalmazás szintű hitelesítő adatok beszerzése:
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **app Services** > **&lt;any_app>**  >  **központi telepítési központ** > **FTP/hitelesítő adatok**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **app Services**  >  ** &lt; any_app>**  >  **központi telepítési központ**  >  **FTP/hitelesítő adatok**lehetőséget.
 
 2. Válassza ki az **alkalmazás hitelesítő adatait**, és a **Másolás** hivatkozásra kattintva másolja a felhasználónevet vagy a jelszót.
 

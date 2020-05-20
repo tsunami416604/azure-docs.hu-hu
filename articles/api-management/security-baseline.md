@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: aa59a37f3a4413c92a483746ed4a08c363ab8457
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: de3f553fd001b06d56663f63402da2489f35877d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796524"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649170"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>API Management Azure biztonsági alapterve
 
@@ -1070,9 +1070,9 @@ A API Management szolgáltatás biztonsági mentési és visszaállítási funkc
 
 * [Vészhelyreállítás a biztonsági mentés és visszaállítás használatával az Azure API Managementben](https://docs.microsoft.com/azure/api-management/api-management-howto-disaster-recovery-backup-restore#calling-the-backup-and-restore-operations)
 
-* [A API Management biztonsági mentési művelet meghívása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/backup)
+* [A API Management biztonsági mentési művelet meghívása](/rest/api/apimanagement/2019-12-01/apimanagementservice/backup)
 
-* [A API Management visszaállítási műveletének meghívása](https://docs.microsoft.com/rest/api/apimanagement/2019-01-01/apimanagementservice/restore)
+* [A API Management visszaállítási műveletének meghívása](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
 **Azure Security Center figyelés**: nem alkalmazható
 

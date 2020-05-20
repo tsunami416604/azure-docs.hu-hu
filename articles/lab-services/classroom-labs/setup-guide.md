@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/18/2020
+ms.date: 05/19/2020
 ms.author: spelluru
-ms.openlocfilehash: e00b6dd5af1cb489aee9e8b4c9f3337eb02e4b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c2ea38dfa799239adde158506e1359fb84adcc4
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878102"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650534"
 ---
 # <a name="classroom-lab-setup-guide"></a>A tanterem Lab telepítési útmutatója
 
@@ -127,7 +127,12 @@ Miután megértette az osztály laborjának követelményeit, készen áll a be�
    - [Automatikus leállítás engedélyezése a kapcsolat bontásakor](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-shutdown-disconnect)
 
         > [!NOTE]
-        > Az ütemtervek, a kvóták és az automatikus leállítás nem vonatkozik a sablon virtuális gépre. Ennek eredményeképpen gondoskodnia kell arról, hogy a sablon virtuális gépe le legyen állítva, ha nincs használatban. Ellenkező esetben továbbra is költségek merülnek fel. Emellett a tesztkörnyezet létrehozásakor alapértelmezés szerint automatikusan elindul a sablon virtuális gépe. Győződjön meg arról, hogy azonnal befejezi a tesztkörnyezet beállítását, és állítsa le a sablon virtuális gépet.
+        > Az ütemtervek és a kvóták nem érvényesek a sablon virtuális gépre, de az automatikus leállítási beállítások érvényesek. 
+        > 
+        > Labor létrehozásakor a rendszer létrehozza a sablon virtuális gépet, de az nem indult el. Elindíthatja, csatlakozhat hozzá, és telepítheti az előfeltételként szükséges szoftvereket a laborhoz, majd közzéteheti azt. Amikor közzéteszi a sablon virtuális gépet, az automatikusan leáll, ha még nem tette meg. 
+        > 
+        > A sablon virtuális gépei a futtatáskor **költségekkel** járnak, ezért győződjön meg arról, hogy a sablon virtuális gépe leáll, ha nincs szükség a futtatására. 
+
 
 1. **Használja az irányítópultot.** Útmutatásért lásd: [a tesztkörnyezet irányítópultjának használata](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 

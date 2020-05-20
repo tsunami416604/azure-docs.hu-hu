@@ -9,18 +9,18 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 05/28/2020
 ms.author: juliako
-ms.openlocfilehash: b4849b4fbfdbaece46f5669f4c242e864b1ca533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769756"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647639"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>A Azure Media Services v3 kibocsátási megjegyzései
 
->Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` -cím másolásával és beillesztésével: az RSS-hírcsatorna-olvasóba.
+>Értesítést kaphat arról, hogy mikor kell újra megkeresni ezt az oldalt a frissítésekhez az URL-cím másolásával és beillesztésével: `https://docs.microsoft.com/api/search/rss?search=%22Azure+Media+Services+v3+release+notes%22&locale=en-us` az RSS-hírcsatorna-olvasóba.
 
 A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő információkat tartalmazza:
 
@@ -35,6 +35,10 @@ A legújabb fejleményekkel naprakészen tarthatja a cikket, amely a következő
 > A [Azure Portal](https://portal.azure.com/) a v3 [élő események](live-events-outputs-concept.md)kezelésére, a v3- [eszközök](assets-concept.md)megtekintésére, az API-k elérésére vonatkozó információk beszerzésére használható. Az összes többi felügyeleti feladathoz (például átalakításokhoz és feladatokhoz) használja a [REST API](https://aka.ms/ams-v3-rest-ref), a [CLI](https://aka.ms/ams-v3-cli-ref)vagy az egyik támogatott [SDK](media-services-apis-overview.md#sdks)-t.
 
 További információ: [áttelepítési útmutató Media Services v2-ről v3-re való áttéréshez](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="may-2020"></a>2020. május
+
+A Azure Media Services mostantól általánosan elérhető a következő régiókban: "Észak-Németország", "Középnyugat-Németország", "Észak-Svájc" és "Nyugat-Svájc". Az ügyfelek a Azure Portal használatával telepíthetik Media Servicesokat ezeken a régiókban.
 
 ## <a name="april-2020"></a>2020. április
 
@@ -59,9 +63,9 @@ Az élő és a videó igény szerinti folyamatos átviteléhez a CDN támogatás
 
 |HTTP-fejléc|Értékek|Küldő|Fogadó|Cél|
 | ---- | ---- | ---- | ---- | ----- |
-|CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |Tartalomkézbesítési hálózat (CDN)|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
-|CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|Tartalomkézbesítési hálózat (CDN)|A CDN elérési útjának biztosítása|
-|CDN – forrás – assziszt – prefektus – kérelem|1 (kirendelési kérelem) vagy 0 (normál kérelem)|Tartalomkézbesítési hálózat (CDN)|Forrás|A CDN kérelmének jelzése|
+|CDN-Origin-Assist-prefektus-enabled | 1 (alapértelmezett) vagy 0 |CDN|Forrás|Annak jelzése, hogy a CDN engedélyezve van-e|
+|CDN-Origin-Assist-prefektus-Path| Példa: <br/>Töredékek (videó = 1400000000, Format = mpd-Time-CMAF)|Forrás|CDN|A CDN elérési útjának biztosítása|
+|CDN – forrás – assziszt – prefektus – kérelem|1 (kirendelési kérelem) vagy 0 (normál kérelem)|CDN|Forrás|A CDN kérelmének jelzése|
 
 A következő lépésekkel tekintheti meg a fejléc-Exchange működés közbeni részét:
 
@@ -245,30 +249,30 @@ A CLI 2,0 modul már elérhető a [Azure Media Services v3 GA](https://docs.micr
 #### <a name="asset-commands"></a>Eszköz parancsai
 
 - ```--storage-account```és ```--container``` argumentumok hozzáadva.
-- A parancs hozzáadta a lejárati idő (most + 23H) és az ```az ams asset get-sas-url``` engedélyek (olvasás) alapértelmezett értékeit.
+- A parancs hozzáadta a lejárati idő (most + 23H) és az engedélyek (olvasás) alapértelmezett értékeit ```az ams asset get-sas-url``` .
 
 #### <a name="job-commands"></a>Feladatok parancsai
 
 - ```--correlation-data```és ```--label``` argumentumok hozzáadva
-- ```--output-asset-names```átnevezve: ```--output-assets```. Mostantól fogadja a "assetName = label" formátumú adategységek szóközzel tagolt listáját. Címkét nem tartalmazó adategység küldése a következőhöz hasonló: "assetName =".
+- ```--output-asset-names```átnevezve: ```--output-assets``` . Mostantól fogadja a "assetName = label" formátumú adategységek szóközzel tagolt listáját. Címkét nem tartalmazó adategység küldése a következőhöz hasonló: "assetName =".
 
 #### <a name="streaming-locator-commands"></a>Adatfolyam-kereső parancsai
 
-- ```az ams streaming locator```az ```az ams streaming-locator```alapparancs le lett cserélve.
+- ```az ams streaming locator```az alapparancs le lett cserélve ```az ams streaming-locator``` .
 - ```--streaming-locator-id```és ```--alternative-media-id support``` argumentumok hozzáadva.
 - ```--content-keys argument```az argumentum frissítve.
-- ```--content-policy-name```átnevezve: ```--content-key-policy-name```.
+- ```--content-policy-name```átnevezve: ```--content-key-policy-name``` .
 
 #### <a name="streaming-policy-commands"></a>Streaming Policy parancsok
 
-- ```az ams streaming policy```az ```az ams streaming-policy```alapparancs le lett cserélve.
-- A titkosítási paraméterek támogatják ```az ams streaming-policy create``` a hozzáadását.
+- ```az ams streaming policy```az alapparancs le lett cserélve ```az ams streaming-policy``` .
+- A titkosítási paraméterek támogatják a ```az ams streaming-policy create``` hozzáadását.
 
 #### <a name="transform-commands"></a>Átalakítási parancsok
 
-- ```--preset-names```argumentum lecserélve ```--preset```. Mostantól egyszerre csak 1 kimenetet vagy beállításkészletet állíthat be (további futtatáshoz ```az ams transform output add```). Emellett egyéni StandardEncoderPreset is beállíthat az egyéni JSON elérési útjának átadásával.
+- ```--preset-names```argumentum lecserélve ```--preset``` . Mostantól egyszerre csak 1 kimenetet vagy beállításkészletet állíthat be (további futtatáshoz ```az ams transform output add``` ). Emellett egyéni StandardEncoderPreset is beállíthat az egyéni JSON elérési útjának átadásával.
 - ```az ams transform output remove```a kimeneti index eltávolításának átadásával végezhető el.
-- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumentumok ```az ams transform create``` hozzáadva ```az ams transform output add``` a és parancsokhoz.
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract```argumentumok hozzáadva a ```az ams transform create``` és ```az ams transform output add``` parancsokhoz.
 
 ## <a name="october-2018---ga"></a>Október 2018 – GA
 

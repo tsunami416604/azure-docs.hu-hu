@@ -8,23 +8,23 @@ manager: nitinme
 ms.custom: seodec18
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/07/2020
+ms.date: 05/17/2020
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: b2cb7494ae3d26fa14bef906b8f5222b9dbc70e1
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f282bb0a80226afeb314aac4e8669634327f81d2
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584970"
+ms.locfileid: "83654059"
 ---
 # <a name="add-intents-to-determine-user-intention-of-utterances"></a>Leképezések hozzáadása a hosszúságú kimondott szöveg felhasználói szándékának meghatározásához
 
 Vegyen fel [leképezéseket](luis-concept-intent.md) a Luis-alkalmazásba, hogy azonosítsa az azonos szándékú kérdések vagy parancsok csoportjait.
 
-A leképezéseket a rendszer a felső navigációs sáv **Build** szakasza, majd a bal oldali panel **szándékai**alapján kezeli.
+A LUIS-portálon a leképezések a felső navigációs sáv **Build** szakaszán, majd a bal oldali panel **céljainak**megfelelően kezelhetők.
 
-## <a name="add-intent"></a>Szándék hozzáadása
+## <a name="add-an-intent-to-your-app"></a>Szándék hozzáadása az alkalmazáshoz
 
 1. Jelentkezzen be a [Luis-portálra](https://www.luis.ai), és válassza ki az **előfizetését** és a **szerzői erőforrást** , hogy megtekintse az adott szerzői erőforráshoz rendelt alkalmazásokat.
 1. Nyissa meg az alkalmazást úgy, hogy kiválasztja a nevét a **saját alkalmazások** oldalon.
@@ -34,7 +34,7 @@ A leképezéseket a rendszer a felső navigációs sáv **Build** szakasza, majd
     > [!div class="mx-imgBorder"]
     > ![Leképezés hozzáadása](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
 
-    A szándéknak például hosszúságú kimondott szöveg kell lennie.
+    A szándéknak [például hosszúságú kimondott szöveg](luis-concept-utterance.md) kell lennie ahhoz, hogy előre hosszúságú kimondott szöveg a közzétett előrejelzési végponton.
 
 ## <a name="add-an-example-utterance"></a>Példa Kimondás hozzáadása
 
@@ -51,16 +51,16 @@ Például a hosszúságú kimondott szöveg a felhasználói kérdések és para
 
 ## <a name="intent-prediction-errors"></a>Szándék-előrejelzési hibák
 
-A szándékok egyik példájának kimondása a szándék előrejelzési hibája, amely a példa szerinti kifejezés és a képzés során meghatározott szándék között van.
+A rendszer következtetési előrejelzési hibát határoz meg, ha a rendszer nem Jósolja meg a szándékot a kiképzett alkalmazással.
 
-A részletes előrejelzési hibák és a kijavításuk megkereséséhez használja a helytelen és a nem egyértelmű **szűrési** beállításokat a **részletes**nézet **nézet** beállításával együtt.
+1. A teljes előrejelzési hibák és a kijavításuk megkereséséhez használja a helytelen és a nem egyértelmű **szűrési** beállításokat.
 
-![A teljes előrejelzési hibák és a kijavításuk megkereséséhez használja a Filter (szűrő) beállítást.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
+    > [!div class="mx-imgBorder"]
+    > ![A teljes előrejelzési hibák és a kijavításuk megkereséséhez használja a Filter (szűrő) beállítást.](./media/luis-how-to-add-intents/find-intent-prediction-errors.png)
 
-Ha a szűrők és a nézet alkalmazva van, és vannak például hosszúságú kimondott szöveg hibák, a példaként szolgáló lista a hosszúságú kimondott szöveg és a problémákat jeleníti meg.
+1. Ha meg szeretné jeleníteni a pontszám értékét a megjelenő Részletek lapon, válassza a **Részletek megjelenítése pontok megjelenítése** lehetőséget a **nézet** beállításai menüből.
 
-> [!div class="mx-imgBorder"]
-> ![! [Ha a szűrők és a nézet alkalmazva van, és vannak például hosszúságú kimondott szöveg hibák, a példában a teljes lista a hosszúságú kimondott szöveg és a problémákat mutatja.] (./media/luis-how-to-add-intents/find-errors-in-utterances.png)](./media/luis-how-to-add-intents/find-errors-in-utterances.png#lightbox)
+    Ha a szűrők és a nézet alkalmazva van, és vannak például hosszúságú kimondott szöveg hibák, a példaként szolgáló lista a hosszúságú kimondott szöveg és a problémákat jeleníti meg.
 
 Az egyes sorok az aktuális képzés előrejelzési pontszámát jelenítik meg a példához, a legközelebbi rivális pontszámát, amely a két pontszám különbsége.
 

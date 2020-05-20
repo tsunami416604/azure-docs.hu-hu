@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 02/10/2020
 ms.author: alsin
-ms.openlocfilehash: 779bb88d15ea6c52f4399f17223b89916e22653d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b901c0d77b5bd550e7e98434cf1cba2a61e6bdb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267013"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656484"
 ---
 # <a name="azure-serial-console"></a>Azure soros konzol
 
@@ -66,6 +66,10 @@ A soros konzol a méretezési csoport minden példányán elérhető a virtuáli
   1. A **támogatás + hibaelhárítás** szakaszban válassza a **Serial Console**lehetőséget. Megnyílik egy új ablaktábla a soros konzollal, és elindítja a kapcsolatát.
 
      ![Linuxos virtuálisgép-méretezési csoport soros konzolja](./media/virtual-machines-serial-console/vmss-start-console.gif)
+
+
+### <a name="tls-12-in-serial-console"></a>TLS 1,2 a soros konzolon
+A soros konzol a TLS 1,2 végpontok közötti kapcsolatot használja a szolgáltatáson belüli összes kommunikáció biztonságossá tételéhez. A soros konzol egy felhasználó által felügyelt rendszerindítási diagnosztikai fióktól függ, és a TLS 1,2-et külön kell konfigurálni a Storage-fiókhoz. Erre [itt](https://docs.microsoft.com/azure/storage/common/storage-security-tls)talál útmutatást.
 
 ## <a name="advanced-uses-for-serial-console"></a>A soros konzol speciális felhasználási módjai
 A konzolhoz való hozzáféréstől eltekintve a következőhöz is használhatja az Azure soros konzolt:

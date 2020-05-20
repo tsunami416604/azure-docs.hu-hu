@@ -1,5 +1,5 @@
 ---
-title: Mi az Azure Machine Learning számítási példány?
+title: Mi az az Azure Machine Learning számítási példány?
 titleSuffix: Azure Machine Learning
 description: Ismerkedjen meg a Azure Machine Learning számítási példányával, amely egy teljes körűen felügyelt felhőalapú munkaállomás.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 280851b2fea0b8100a7d0f8ec8105109a41c8c83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7afbfcc7830374c07850d1f634eb5e29fb459597
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283926"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654915"
 ---
-# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az Azure Machine Learning számítási példány?
+# <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az az Azure Machine Learning számítási példány?
 
 A Azure Machine Learning számítási példány (előzetes verzió) egy teljes körűen felügyelt felhőalapú munkaállomás az adatszakértők számára. 
 
@@ -35,7 +35,7 @@ A számítási példány egy teljes körűen felügyelt felhőalapú munkaállom
 |----|----|
 |Termelékenység|Az adatszakértők a modelleket integrált jegyzetfüzetekkel és a böngészőben a következő eszközökkel hozhatják létre és helyezhetik üzembe:<br/>– Jupyter<br/>- JupyterLab<br/>– RStudio|
 |Felügyelt & biztonságos|Csökkentse a biztonsági lábnyomot, és adja hozzá a vállalati biztonsági követelményeknek való megfelelést. A számítási példányok robusztus felügyeleti házirendeket és biztonságos hálózati konfigurációkat biztosítanak, például:<br/><br/>– Automatikus kiépítés Resource Manager-sablonokból vagy Azure Machine Learning SDK-ból<br/>- [Szerepköralapú hozzáférés-vezérlés (RBAC)](/azure/role-based-access-control/overview)<br/>- [Virtuális hálózatok támogatása](how-to-enable-virtual-network.md#compute-instance)<br/>– SSH-szabályzat az SSH-hozzáférés engedélyezéséhez vagy letiltásához|
-|Előre konfigurált&nbsp;vagy&nbsp;ml|Időt takaríthat meg a telepítési feladatokban előre konfigurált és naprakész ML-csomagokkal, mély tanulási keretrendszerekkel, GPU-illesztővel.|
+|Előre konfigurált &nbsp; vagy &nbsp; ml|Időt takaríthat meg a telepítési feladatokban előre konfigurált és naprakész ML-csomagokkal, mély tanulási keretrendszerekkel, GPU-illesztővel.|
 |Teljes mértékben testreszabható|Az Azure-beli virtuálisgép-típusok széles körű támogatása, beleértve a GPU-ket és a megőrzött alacsony szintű testreszabásokat, például a csomagok és illesztőprogramok telepítésének speciális forgatókönyveit. |
 
 ## <a name="tools-and-environments"></a><a name="contents"></a>Eszközök és környezetek
@@ -51,7 +51,6 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Intel MPI-könyvtár||
 |Azure CLI ||
 |Azure Machine Learning minták ||
-|Azure Machine Learning EDAT motor ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
@@ -68,9 +67,8 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Anaconda Python||
 |Jupyter és-bővítmények||
 |Jupyterlab és-bővítmények||
-|Visual Studio Code ||
 [Pythonhoz készült Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)</br>PyPI|`azureml-sdk[notebooks,contrib,automl,explain]`</br>`azureml-contrib-datadrift`</br>`azureml-telemetry`</br>`azureml-tensorboard`</br>`azureml-contrib-opendatasets`</br>`azureml-opendatasets`</br>`azureml-contrib-reinforcementlearning`</br>`azureml-mlflow`</br>`azureml-contrib-interpret` |
-|Egyéb PyPI-csomagok|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
+|Egyéb PyPI-csomagok|`jupytext`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-csomagok|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep learning-csomagok|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
 |ONNX-csomagok|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|

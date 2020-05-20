@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 11/25/2019
-ms.openlocfilehash: 84b72a71ed2de910bce44b0c3f3309782f096680
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bf63d5c8cb46fd791508af40dcefd7b39d4ba9de
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77581837"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652025"
 ---
 # <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Jupyter-jegyzetfüzetek használata biztonsági fenyegetések vadászatához
 
@@ -60,7 +60,7 @@ Az Azure Sentinelből közvetlenül is futtathat egy jegyzetfüzetet, vagy az ö
 
 ## <a name="run-a-notebook-from-azure-sentinel"></a>Jegyzetfüzet futtatása az Azure Sentinelből
  
-1. A Azure Portal navigáljon az **Azure Sentinel** > **Threat Management** > **noteszgépekhez**, ahol láthatja az Azure Sentinel által biztosított jegyzetfüzeteket. 
+1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Threat Management**  >  **noteszgépekhez**, ahol láthatja az Azure Sentinel által biztosított jegyzetfüzeteket. 
 
 2. Válassza az egyéni jegyzetfüzetek lehetőséget a leírások, a szükséges adattípusok és az adatforrások olvasásához. Például:
     
@@ -73,7 +73,7 @@ Az Azure Sentinelből közvetlenül is futtathat egy jegyzetfüzetet, vagy az ö
 
 Ez az eljárás létrehoz egy Azure Notebooks projektet az Ön számára, amely tartalmazza az Azure Sentinel-jegyzetfüzeteket. Ezután futtathatja a jegyzetfüzeteket, vagy módosíthatja azokat, majd futtathatja őket.
 
-1. A Azure Portal navigáljon az **Azure Sentinel** > **Threat Management** > **jegyzetfüzetekhez** , majd válassza a parancssorból a **jegyzetfüzetek klónozása** elemet:
+1. A Azure Portal navigáljon az **Azure Sentinel**  >  **Threat Management**  >  **jegyzetfüzetekhez** , majd válassza a parancssorból a **jegyzetfüzetek klónozása** elemet:
   
     > [!div class="mx-imgBorder"]
     >![Jegyzetfüzetek klónozása lehetőség](./media/notebooks/sentinel-azure-clone-notebooks.png)
@@ -115,17 +115,17 @@ Mindegyik jegyzetfüzet végigvezeti a vadászat vagy a vizsgálat elvégzésén
 
 3. Válasszon ki egy jegyzetfüzetet a megnyitásához.
     
-    Amikor először nyit meg egy jegyzetfüzetet, a rendszer kérni fogja, hogy válasszon ki egy kernel-verziót. Ha a rendszer nem kéri, válassza ki a kernel **verzióját** >  a kernel**változása**kernelből, majd válasszon egy legalább 3,6-es verziót. A kiválasztott kernel-verzió a jegyzetfüzet ablakának jobb felső sarkában jelenik meg:
+    Amikor először nyit meg egy jegyzetfüzetet, a rendszer kérni fogja, hogy válasszon ki egy kernel-verziót. Ha a rendszer nem kéri, válassza ki a kernel **verzióját a kernel**  >   **változása**kernelből, majd válasszon egy legalább 3,6-es verziót. A kiválasztott kernel-verzió a jegyzetfüzet ablakának jobb felső sarkában jelenik meg:
     
    ![Jegyzetfüzet kiválasztása](./media/notebooks/sentinel-select-kernel.png)
 
-4. Mielőtt bármilyen módosítást hajt végre a letöltött jegyzetfüzetben, érdemes lehet másolatot készíteni az eredeti jegyzetfüzetről, és dolgozni a másolaton. Ehhez válassza a **fájl** > **másolat készítése**lehetőséget. A másolatok használata lehetővé teszi, hogy biztonságosan frissítse a jegyzetfüzetek jövőbeli verzióit anélkül, hogy felülírja az összes adatát.
+4. Mielőtt bármilyen módosítást hajt végre a letöltött jegyzetfüzetben, érdemes lehet másolatot készíteni az eredeti jegyzetfüzetről, és dolgozni a másolaton. Ehhez válassza a **fájl**  >  **másolat készítése**lehetőséget. A másolatok használata lehetővé teszi, hogy biztonságosan frissítse a jegyzetfüzetek jövőbeli verzióit anélkül, hogy felülírja az összes adatát.
     
     Most már készen áll a kijelölt jegyzetfüzet futtatására vagy szerkesztésére.
 
 Javaslatok
 
-- Az Azure Sentinelben lévő adatlekérdezés gyors bevezetéséhez tekintse meg a [GetStarted](https://github.com/Azure/Azure-Sentinel/blob/master/Notebooks/Get%20Started.ipynb) notebookot a fő **jegyzetfüzetek** mappában. 
+- Az Azure Sentinelben lévő adatlekérdezés gyors bevezetéséhez tekintse meg a [GetStarted](https://github.com/Azure/Azure-Sentinel-Notebooks/blob/345cf9f7c8f6137f5af4593a3f9d7568acd6cbc2/DeprecatedNotebooks/Get%20Started.ipynb) notebookot a fő **jegyzetfüzetek** mappában. 
 
 - A **minta-jegyzetfüzetek** almappában további minta-jegyzetfüzeteket talál. Ezek a minta-jegyzetfüzetek adatokat mentettek, így könnyebben megtekinthető a kívánt kimenet. Javasoljuk, hogy tekintse meg ezeket a jegyzetfüzeteket a [nbviewer](https://nbviewer.jupyter.org/)-ben. 
 

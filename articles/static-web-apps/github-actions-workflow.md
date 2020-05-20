@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: c7180be2afa541f743d7bd81627b93f34d9bb4eb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597841"
+ms.locfileid: "83655201"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>GitHub-műveletek munkafolyamatok az Azure statikus Web Apps előzetes verziójában
 
@@ -102,7 +102,7 @@ Minden esemény-eseményindítóhoz szükség van egy eseménykezelőre. A [fela
 
 A statikus Web Apps munkafolyamat-fájlban két elérhető feladat van.
 
-| Name  | Leírás |
+| Name  | Description |
 |---------|---------|
 |`build_and_deploy_job` | Végrehajtja a leküldéses végrehajtást, vagy egy lekéréses kérelmet nyit meg a `on` tulajdonságban felsorolt ág alapján. |
 |`close_pull_request_job` | CSAK a lekéréses kérelem lezárásakor hajtható végre. |
@@ -134,7 +134,7 @@ with:
     ###### End of Repository/Build Configurations ######
 ```
 
-| Tulajdonság | Leírás | Kötelező |
+| Tulajdonság | Description | Kötelező |
 |---|---|---|
 | `app_location` | Az alkalmazás kódjának helye.<br><br>Adja meg például, `/` hogy az alkalmazás forráskódja a tárház gyökerében található-e, vagy `/app` Ha az alkalmazás kódja egy nevű könyvtárban található `app` . | Igen |
 | `api_location` | A Azure Functions kódjának helye.<br><br>Adja meg például a következőt:, `/api` Ha az alkalmazás kódja egy nevű mappában található `api` . Ha nem észleli Azure Functions alkalmazást a mappában, a Build nem sikerül, a munkafolyamat feltételezi, hogy nem szeretne API-t használni. | Nem |
@@ -148,16 +148,16 @@ A központi telepítés során futtatott parancsok részletes szabályozása is 
 
 Az üzembe helyezés mindig `npm install` minden egyéni parancs előtt meghívja a-t.
 
-| Parancs            | Leírás |
+| Parancs            | Description |
 |---------------------|-------------|
-| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Például egy szögletes alkalmazás üzemi buildének konfigurálásához adja meg a következőt: `ng build -prod` . Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:Azure` parancsokat.  |
+| `app_build_command` | A statikus tartalom alkalmazásának üzembe helyezése során futtatandó egyéni parancsot határozza meg.<br><br>Például egy szögletes alkalmazás üzemi buildének konfigurálásához adja meg a következőt: `ng build --prod` . Ha üresen hagyja, a munkafolyamat megpróbálja futtatni a `npm run build` vagy a `npm run build:Azure` parancsokat.  |
 | `api_build_command` | A Azure Functions API-alkalmazás üzembe helyezése során futtatandó egyéni parancsot határozza meg. |
 
 ## <a name="route-file-location"></a>Útvonal fájljának helye
 
 Testreszabhatja a munkafolyamatot, hogy megkeresse a [Routes. JSON](routes.md) fájlt a tárház bármely mappájából. A következő tulajdonság definiálható a feladatok `with` szakasza alatt.
 
-| Tulajdonság            | Leírás |
+| Tulajdonság            | Description |
 |---------------------|-------------|
 | `routes_location` | Meghatározza azt a könyvtárat, ahol a _Routes. JSON_ fájl található. Ez a hely a tárház gyökeréhez képest relatív. |
 

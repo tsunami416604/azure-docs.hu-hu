@@ -2,17 +2,20 @@
 title: Erőforrások üzembe helyezése az előfizetésben
 description: Leírja, hogyan lehet erőforráscsoportot létrehozni egy Azure Resource Manager sablonban. Azt is bemutatja, hogyan helyezhet üzembe erőforrásokat az Azure-előfizetési hatókörben.
 ms.topic: conceptual
-ms.date: 05/07/2020
-ms.openlocfilehash: a48bc2fd4efb383b42fd0889df079c9a6f700dda
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/18/2020
+ms.openlocfilehash: 4f8bcbfc6467969c9d8ca8b1511e6e8ffff94b14
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82929060"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653355"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erőforráscsoportok és erőforrások létrehozása az előfizetési szinten
 
-Az Azure-előfizetésében lévő erőforrások kezelésének egyszerűbbé tétele érdekében [szabályzatokat](../../governance/policy/overview.md) vagy [szerepköralapú hozzáférés-vezérlést](../../role-based-access-control/overview.md) adhat meg és rendelhet hozzá az előfizetéshez. Az előfizetési szintű sablonokkal a szabályzatok deklaratív alkalmazása és szerepkörök társítása az előfizetéshez. Erőforráscsoportokat is létrehozhat, és erőforrásokat telepíthet.
+Az erőforrások kezelésének egyszerűbbé tétele érdekében az Azure-előfizetése szintjén üzembe helyezhet erőforrásokat. Telepítheti például a [szabályzatokat](../../governance/policy/overview.md) és a [szerepköralapú hozzáférés-vezérlést](../../role-based-access-control/overview.md) az előfizetéshez, és ezek az erőforrások az előfizetésen belül lesznek alkalmazva. Erőforráscsoportokat is létrehozhat, és erőforrásokat telepíthet az adott erőforráscsoportok számára.
+
+> [!NOTE]
+> Az előfizetések szintjén üzembe helyezhetők 800 különböző erőforráscsoportok.
 
 A sablonok előfizetési szinten való üzembe helyezéséhez használja az Azure CLI-t, a PowerShellt vagy a REST API. A Azure Portal nem támogatja az előfizetés szintjén történő telepítést.
 
@@ -130,7 +133,7 @@ A következő sablon egy üres erőforráscsoportot hoz létre.
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "[parameters('rgName')]",
       "location": "[parameters('rgLocation')]",
       "properties": {}
@@ -161,7 +164,7 @@ Több erőforráscsoport létrehozásához használja a [Másolás elemet](copy-
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[concat(parameters('rgNamePrefix'), copyIndex())]",
       "copy": {
@@ -179,7 +182,7 @@ Az erőforrás-iterációval kapcsolatos további információkért lásd: az [e
 
 ## <a name="resource-group-and-resources"></a>Erőforráscsoport és erőforrások
 
-Az erőforráscsoport létrehozásához és az erőforrások üzembe helyezéséhez használjon egy beágyazott sablont. A beágyazott sablon meghatározza az erőforráscsoporthoz telepítendő erőforrásokat. Állítsa be a beágyazott sablont az erőforráscsoport függőként, hogy az erőforrás-csoport az erőforrások telepítése előtt is elérhető legyen.
+Az erőforráscsoport létrehozásához és az erőforrások üzembe helyezéséhez használjon egy beágyazott sablont. A beágyazott sablon meghatározza az erőforráscsoporthoz telepítendő erőforrásokat. Állítsa be a beágyazott sablont az erőforráscsoport függőként, hogy az erőforrás-csoport az erőforrások telepítése előtt is elérhető legyen. Akár 800 erőforráscsoporthoz is üzembe helyezhető.
 
 A következő példában létrehozunk egy erőforráscsoportot, és üzembe helyezünk egy Storage-fiókot az erőforráscsoporthoz.
 
@@ -205,14 +208,14 @@ A következő példában létrehozunk egy erőforráscsoportot, és üzembe hely
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "location": "[parameters('rgLocation')]",
       "name": "[parameters('rgName')]",
       "properties": {}
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2018-05-01",
+      "apiVersion": "2019-10-01",
       "name": "storageDeployment",
       "resourceGroup": "[parameters('rgName')]",
       "dependsOn": [
@@ -228,7 +231,7 @@ A következő példában létrehozunk egy erőforráscsoportot, és üzembe hely
           "resources": [
             {
               "type": "Microsoft.Storage/storageAccounts",
-              "apiVersion": "2017-10-01",
+              "apiVersion": "2019-06-01",
               "name": "[variables('storageName')]",
               "location": "[parameters('rgLocation')]",
               "sku": {

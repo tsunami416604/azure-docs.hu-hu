@@ -6,15 +6,15 @@ author: normesta
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: normesta
 ms.reviewer: prishet
-ms.openlocfilehash: 79a87f02c8730e0b2110e7475de721f11beda568
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbae67a4861d67526eb1cf4eb2bfb5d131f8e57b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120606"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649762"
 ---
 # <a name="use-azure-cli-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Könyvtárak, fájlok és ACL-ek kezelése az Azure CLI használatával Azure Data Lake Storage Gen2
 
@@ -27,18 +27,18 @@ Ez a cikk bemutatja, hogyan hozhat létre és kezelhet olyan könyvtárakat, fá
 > [!div class="checklist"]
 > * Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
 > * Olyan Storage-fiók, amelyen engedélyezve van a hierarchikus névtér (HNS). Az [alábbi](data-lake-storage-quickstart-create-account.md) útmutatást követve hozzon létre egyet.
-> * Az Azure CLI verziója `2.5.1` vagy újabb.
+> * Az Azure CLI verziója `2.6.0` vagy újabb.
 
 ## <a name="ensure-that-you-have-the-correct-version-of-azure-cli-installed"></a>Győződjön meg arról, hogy az Azure CLI megfelelő verziója van telepítve
 
 1. Nyissa meg a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest), vagy ha helyileg [telepítette](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) az Azure CLI-t, nyisson meg egy parancssori alkalmazást, például a Windows PowerShellt.
 
-2. A következő parancs használatával ellenőrizze, hogy a telepített Azure CLI `2.5.1` -verzió vagy magasabb-e.
+2. A következő parancs használatával ellenőrizze, hogy a telepített Azure CLI `2.6.0` -verzió vagy magasabb-e.
 
    ```azurecli
     az --version
    ```
-   Ha az Azure CLI verziója alacsonyabb, mint a `2.5.1` , telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+   Ha az Azure CLI verziója alacsonyabb, mint a `2.6.0` , telepítsen egy újabb verziót. Lásd: [Az Azure CLI telepítése](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="connect-to-the-account"></a>Kapcsolódás a fiókhoz
 

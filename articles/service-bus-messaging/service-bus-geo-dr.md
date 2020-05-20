@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 04/29/2020
 ms.author: aschhab
-ms.openlocfilehash: 49748006baf779e6aea4322068ca3bd07a03a0a3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: a5a1e7a7ef73825b4b13d2f36c1c8554fdc2a9b6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82209400"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647862"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-vész-helyreállítás
 
@@ -145,6 +145,43 @@ A Service Bus Premium SKU a [Availability Zonest](../availability-zones/az-overv
 A Availability Zones csak az új névtereken engedélyezheti, a Azure Portal használatával. A Service Bus nem támogatja a meglévő névterek áttelepítését. A zóna redundancia nem tiltható le, miután engedélyezte azt a névtérben.
 
 ![3][]
+
+## <a name="private-endpoints"></a>Privát végpontok
+Ez a szakasz további szempontokat tartalmaz, ha a Geo-vész-helyreállítást privát végpontokat használó névterekkel használja. Ha többet szeretne megtudni a Service Bustel rendelkező privát végpontok használatáról, tekintse meg a [Azure Service Bus integrálása az Azure privát kapcsolattal](private-link-service.md)című témakört.
+
+### <a name="new-pairings"></a>Új párosítások
+Ha egy privát végponttal rendelkező elsődleges névtér és egy privát végpont nélküli másodlagos névtér között próbál létrehozni egy párosítást, akkor a párosítás sikertelen lesz. A párosítás csak akkor lesz sikeres, ha az elsődleges és a másodlagos névterek magánhálózati végpontokkal is rendelkeznek. Azt javasoljuk, hogy ugyanazokat a konfigurációkat használja az elsődleges és másodlagos névtereken, valamint azokon a virtuális hálózatokon, amelyeken a magánhálózati végpontok létre lettek hozva. 
+
+> [!NOTE]
+> Ha az elsődleges névteret privát végponttal és a másodlagos névtérrel próbálja párosítani, az érvényesítési folyamat csak azt ellenőrzi, hogy létezik-e privát végpont a másodlagos névtérben. Nem vizsgálja, hogy a végpont működik-e, vagy a feladatátvétel után fog működni. Az Ön felelőssége annak biztosítása, hogy a titkos végponttal rendelkező másodlagos névtér a feladatátvételt követően is a várt módon működjön.
+>
+> Annak ellenőrzéséhez, hogy a magánhálózati végponti konfigurációk azonosak-e, küldjön egy [Get Queues](/rest/api/servicebus/queues/get) kérést a másodlagos névtérnek a virtuális hálózaton kívülről, és ellenőrizze, hogy hibaüzenetet kap-e a szolgáltatástól.
+
+### <a name="existing-pairings"></a>Meglévő párosítások
+Ha az elsődleges és a másodlagos névtér közötti párosítás már létezik, akkor az elsődleges névtéren a magánhálózati végpont létrehozása sikertelen lesz. A megoldáshoz először hozzon létre egy privát végpontot a másodlagos névtérben, majd hozzon létre egyet az elsődleges névtérhez.
+
+> [!NOTE]
+> Noha a másodlagos névtérhez csak olvasási hozzáférést engedélyezünk, a magánhálózati végpontok konfigurációjának frissítései engedélyezve vannak. 
+
+### <a name="recommended-configuration"></a>Ajánlott konfiguráció
+Az alkalmazás és a Service Bus vész-helyreállítási konfigurációjának létrehozásakor saját végpontokat kell létrehoznia az elsődleges és a másodlagos Service Bus névterekhez az alkalmazás elsődleges és másodlagos példányait üzemeltető virtuális hálózatokon.
+
+Tegyük fel, hogy két virtuális hálózattal rendelkezik: VNET-1, VNET-2 és ezek az elsődleges és második névterek: ServiceBus-Namespace1-Primary, ServiceBus-Namespace2-másodlagos. A következő lépéseket kell elvégeznie: 
+
+- A ServiceBus-Namespace1-Primary-ben hozzon létre két privát végpontot, amely a VNET-1 és a VNET-2 alhálózatokat használja.
+- ServiceBus – Namespace2 – másodlagos, hozzon létre két privát végpontot, amelyek ugyanazt az alhálózatot használják, mint a VNET-1 és a VNET-2 
+
+![Magánhálózati végpontok és virtuális hálózatok](./media/service-bus-geo-dr/private-endpoints-virtual-networks.png)
+
+
+Ennek a megközelítésnek az az előnye, hogy a feladatátvétel a Service Bus névtértől független alkalmazási rétegben történhet. Vegyük példaként a következő forgatókönyveket: 
+
+**Csak alkalmazáson belüli feladatátvétel:** Itt az alkalmazás nem létezik a VNET-1 helyen, de a VNET-2 értékre lép. Mivel a magánhálózati végpontok mind a VNET-1, mind a VNET-2 esetében mind az elsődleges, mind a másodlagos névtér esetében konfigurálva vannak, az alkalmazás csak működni fog. 
+
+**Service Bus csak névtér feladatátvétele**: itt újra, mivel mindkét magánhálózati végpont mind az elsődleges, mind a másodlagos névterek esetében mindkét virtuális hálózaton konfigurálva van, az alkalmazás csak működni fog. 
+
+> [!NOTE]
+> A virtuális hálózatok földrajzi katasztrófa utáni helyreállításával kapcsolatos útmutatásért lásd: [Virtual Network – üzletmenet folytonossága](../virtual-network/virtual-network-disaster-recovery-guidance.md).
 
 ## <a name="next-steps"></a>További lépések
 

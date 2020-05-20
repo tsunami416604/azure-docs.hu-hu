@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3a8839609856bda5304712405ec57accb4afb095
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c8b66e42c5719203eb0f195a5b61e81da8b187e7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201682"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658120"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Kapcsolódás a szinapszis SQLhoz a Visual Studióval és a SSDT
 > [!div class="op_single_selector"]
@@ -36,11 +36,11 @@ Az oktatóanyag használatához a következő összetevőket kell használnia:
 
 * Egy meglévő SQL-készlet. Ha még nem rendelkezik ilyennel, tekintse meg az [SQL-készlet létrehozása](../sql-data-warehouse/create-data-warehouse-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) az előfeltételek elvégzéséhez című témakört.
 * SSDT a Visual Studióhoz. Ha rendelkezik a Visual Studióval, valószínűleg már rendelkezik ezzel az összetevővel. A telepítés menetéről és a beállításokról [A Visual Studio és az SSDT telepítése](../sql-data-warehouse/sql-data-warehouse-install-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) című cikkben olvashat bővebben.
-* Az Azure SQL-kiszolgáló teljes neve. Ennek megkereséséhez lásd: [Kapcsolódás az SQL-készlethez](connect-overview.md).
+* Az Azure SQL-kiszolgáló teljes neve. A kiszolgálónév megkereséséhez lásd: [Kapcsolódás az SQL-készlethez](connect-overview.md).
 
 ## <a name="1-connect-to-sql-pool"></a>1. kapcsolódás az SQL-készlethez
 1. Nyissa meg a Visual Studio 2019 alkalmazást.
-2. Nyissa meg a SQL Server Object Explorer. Ehhez válassza a **View**  >  **SQL Server Object Explorer**megtekintése lehetőséget.
+2. Nyissa meg a SQL Server Object Explorer a **nézet**SQL Server Object Explorer lehetőség kiválasztásával  >  **SQL Server Object Explorer**.
    
     ![SQL Server Object Explorer](./media/get-started-visual-studio/open-ssdt.png)
 3. Kattintson az **Add SQL Server** (SQL Server hozzáadása) ikonra.
@@ -70,7 +70,7 @@ Most, hogy létrejött egy kapcsolódás az adatbázishoz, meg kell írnia egy l
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. Futtassa a lekérdezést. Ehhez kattintson a zöld nyílra, vagy használja a következő billentyűparancsot: `CTRL`+`SHIFT`+`E`.
+4. A lekérdezés futtatásához kattintson a zöld nyílra, vagy használja a következő billentyűparancsot: `CTRL` + `SHIFT` + `E` .
    
     ![A lekérdezés futtatása](./media/get-started-visual-studio/run-query.png)
 5. Tekintse meg a lekérdezés eredményeit. Ebben a példában a FactInternetSales táblának 60 398 sora van.

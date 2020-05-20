@@ -4,16 +4,16 @@ description: Megtudhatja, hogy mely operációs rendszerek futtathatják a Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/06/2020
+ms.date: 05/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 42c0a5d0c590f8c395c2afe366a00fcb9c83ce46
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec143fbca94c5423ca67e09fa2932e55c06f418e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536938"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652770"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
@@ -105,7 +105,7 @@ IoT Edge összetevőket külön lehet telepíteni vagy frissíteni, és visszame
 
 | Kiadás   | Biztonsági démon  | Peremhálózati hub<br>Edge-ügynök | Libiothsm | Moby  |
 | --------- | ---------------- | ---------------------- | --------- | ----- |
-| **1.0.9** | 1.0.9            | 1.0.9                  | 1.0.9     |       |
+| **1.0.9** | 1.0.9.1<br>1.0.9            | 1.0.9.1<br>1.0.9                  | 1.0.9.1<br>1.0.9     |       |
 | **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
 | **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
 | **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
@@ -119,7 +119,7 @@ IoT Edge a Microsoft. Azure. Device. Client SDK-t használja. További informác
 * **IoT Edge 1.0.6**: ügyféloldali SDK-1.17.1
 * **IoT Edge 1.0.5**: ügyféloldali SDK-1.17.1
 
-## <a name="virtual-machines"></a>Virtuális gépek
+## <a name="virtual-machines"></a>Virtual Machines
 
 A Azure IoT Edge virtuális gépeken is futtathatók. A virtuális gépek IoT Edge eszközként való használata gyakori, ha az ügyfelek a meglévő infrastruktúrát szeretnék kibővíteni a peremhálózati intelligenciával. A gazda VM operációs rendszer családjának meg kell egyeznie a modul tárolójában használt vendég operációs rendszer családjának. Ez a követelmény ugyanaz, mint amikor a Azure IoT Edge közvetlenül egy eszközön fut. Azure IoT Edge a mögöttes virtualizációs technológia, és olyan platformokon működik, mint például a Hyper-V és a vSphere.
 

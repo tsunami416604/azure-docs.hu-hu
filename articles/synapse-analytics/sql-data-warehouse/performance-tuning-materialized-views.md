@@ -10,18 +10,16 @@ ms.subservice: ''
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
-ms.openlocfilehash: 6a3235d5edc5249bbbdc2e79dac8575ad26fd5e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e5973ed505a43ca56a0f11e3603e05eeed0952fd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417026"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657752"
 ---
 # <a name="performance-tuning-with-materialized-views"></a>Teljesítmény-finomhangolás tényleges táblán alapuló nézetekkel
 
-A szinapszis SQL-készletben lévő jelentős nézetek alacsony karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, így a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
-
-Az SQL-készletben található anyagokból álló nézetek alacsony karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, így a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
+A szinapszis SQL-készletben található, jelentős nézetek egy kis karbantartási módszert biztosítanak a komplex analitikai lekérdezésekhez, amelyekkel a lekérdezés módosítása nélkül juthatnak hozzá a gyors teljesítményhez. Ebből a cikkből megtudhatja, hogyan használhatja az általános útmutatást a jelentős nézetek használatával kapcsolatban.
 
 ## <a name="materialized-views-vs-standard-views"></a>Az alapvető nézetek és a szabványos nézetek
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 08de07a52d1e43dea91e6684d33027d8bcad61fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41a6cc3a4fd604c4272783f528ed3d37372044fb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81641848"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647741"
 ---
 # <a name="tutorial-configure-juno-journey-for-automatic-user-provisioning"></a>Oktatóanyag: Juno-utazás konfigurálása automatikus felhasználó-kiépítési folyamathoz
 
@@ -40,7 +40,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 * [Azure AD-bérlő](https://docs.microsoft.com/azure/active-directory/develop/quickstart-create-new-tenant) 
 * Egy Azure AD-beli felhasználói fiók, amely [jogosult](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles) a kiépítés konfigurálására (például alkalmazás-rendszergazda, felhőalapú alkalmazás-rendszergazda, alkalmazás tulajdonosa vagy globális rendszergazda). 
-*  Egy [Juno-utazás bérlője](https://www.junojourney.com/getstartedwithjuno).
+*  Egy [Juno-utazás bérlője](https://www.junojourney.com/blank).
 *  Egy felhasználói fiók a Juno-úton, rendszergazdai jogosultságokkal.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>1. lépés A kiépítési üzembe helyezés megtervezése
@@ -50,7 +50,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 ## <a name="step-2-configure-juno-journey-to-support-provisioning-with-azure-ad"></a>2. lépés Az Azure AD-vel való kiépítés támogatásának Juno-utazásának konfigurálása
 
-1. A **titkos jogkivonat** és a **bérlői URL-cím** esetén forduljon support@the-juno.coma Juno Journey támogatási csapatához. Ez az érték a **titkos jogkivonat** és a **bérlői URL-cím** mezőkben lesz megadva a Juno Journey alkalmazás kiépítés lapján a Azure Portalban. 
+1. A **titkos jogkivonat** és a **bérlői URL-cím** esetén forduljon a Juno Journey támogatási csapatához support@the-juno.com . Ez az érték a **titkos jogkivonat** és a **bérlői URL-cím** mezőkben lesz megadva a Juno Journey alkalmazás kiépítés lapján a Azure Portalban. 
 
 ## <a name="step-3-add-juno-journey-from-the-azure-ad-application-gallery"></a>3. lépés Juno-utazás hozzáadása az Azure AD Application Galleryből
 
@@ -154,7 +154,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * Ellenőrizze a [folyamatjelző sáv](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) állapotát a kiépítési ciklus állapotának megtekintéséhez és a Befejezés befejezéséhez.
 * Ha úgy tűnik, hogy a kiépítési konfiguráció sérült állapotban van, az alkalmazás Karanténba kerül. További információ a karanténba [helyezett állapotokról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

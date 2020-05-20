@@ -1,7 +1,6 @@
 ---
-title: CLI-bővítmény
-titleSuffix: Azure Machine Learning
-description: Ismerje meg az Azure CLI Azure Machine Learning CLI-bővítményét. Az Azure CLI egy platformfüggetlen parancssori segédprogram, amely lehetővé teszi, hogy az Azure-felhőben lévő erőforrásokkal működjön. A Machine Learning-bővítmény lehetővé teszi, hogy együttműködjön a Azure Machine Learningokkal. A ML CLI olyan erőforrásokat hoz létre és felügyel, mint például a munkaterület, az adattárolók, az adatkészletek, a folyamatok, a modellek és a központi telepítések.
+title: Telepítés & Azure Machine Learning parancssori felület használata
+description: Ismerje meg, hogyan hozhatja létre és kezelheti a Azure Machine Learning CLI bővítményt olyan erőforrások létrehozásához és kezeléséhez, mint például a munkaterület, az adattárolók, az adatkészletek, a folyamatok, a modellek és a központi telepítések.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,14 +10,14 @@ ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 16f9080487af95e7de5c5f8c91fd5c8d356b7bde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d401522ffc45e2e7ea20de70a59ed967dd7623ab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81618069"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659792"
 ---
-# <a name="use-the-cli-extension-for-azure-machine-learning"></a>A CLI-bővítmény használata Azure Machine Learning
+# <a name="install--use-the-cli-extension-for-azure-machine-learning"></a>Telepítse & a CLI-bővítményt használja Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 A Azure Machine Learning CLI az Azure [CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)egy platformfüggetlen parancssori felülete az Azure platformhoz. Ez a bővítmény parancsokat biztosít a Azure Machine Learning használatához. Lehetővé teszi a gépi tanulási tevékenységek automatizálását. Az alábbi lista néhány példát ismertet a CLI bővítménnyel:
@@ -33,7 +32,7 @@ A CLI nem helyettesíti a Azure Machine Learning SDK-t. Ez egy kiegészítő esz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* A CLI használatához Azure-előfizetéssel kell rendelkeznie. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-re.
 
@@ -54,7 +53,7 @@ Az Azure-előfizetések több módon is hitelesíthetők a parancssori felületr
 az login
 ```
 
-Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások egy engedélyezési kód [https://aka.ms/devicelogin](https://aka.ms/devicelogin) böngészését és beírását foglalják magukban.
+Ha a CLI megnyithatja az alapértelmezett böngészőt, akkor megnyitja, és betölti a bejelentkezési oldalt. Ellenkező esetben meg kell nyitnia egy böngészőt, és követnie kell a parancssor utasításait. Az utasítások [https://aka.ms/devicelogin](https://aka.ms/devicelogin) egy engedélyezési kód böngészését és beírását foglalják magukban.
 
 [!INCLUDE [select-subscription](../../includes/machine-learning-cli-subscription.md)]
 
@@ -71,7 +70,7 @@ az extension add -n azure-cli-ml
 > [!TIP]
 > Az alábbi parancsokkal használható fájlok [itt](https://aka.ms/azml-deploy-cloud)találhatók.
 
-Ha a rendszer kéri `y` , válassza a bővítmény telepítéséhez.
+Ha a rendszer kéri, válassza `y` a bővítmény telepítéséhez.
 
 A bővítmény telepítésének ellenőrzéséhez használja a következő parancsot az ML-specifikus alparancsok listájának megjelenítéséhez:
 
@@ -123,7 +122,7 @@ A következő parancsok bemutatják, hogyan használható a CLI a Azure Machine 
     az ml folder attach -w myworkspace -g myresourcegroup
     ```
 
-    Ez a parancs létrehoz `.azureml` egy alkönyvtárat, amely tartalmazza például a runconfig és a Conda környezeti fájlokat. Emellett tartalmaz egy `config.json` fájlt is, amely a Azure Machine learning munkaterülettel folytatott kommunikációhoz használható.
+    Ez a parancs létrehoz egy `.azureml` alkönyvtárat, amely tartalmazza például a runconfig és a Conda környezeti fájlokat. Emellett tartalmaz egy fájlt is, `config.json` amely a Azure Machine learning munkaterülettel folytatott kommunikációhoz használható.
 
     További információ: [az ml mappa csatolása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
@@ -161,7 +160,7 @@ A következő parancsok bemutatják, hogyan használható a CLI a Azure Machine 
 
 ## <a name="run-experiments"></a><a id="experiments"></a>Kísérletek futtatása
 
-* Indítsa el a kísérlet futtatását. Ha ezt a parancsot használja, adja meg a runconfig-fájl nevét (a \*. runconfig karakterláncot, ha a fájlrendszert keresi) a-c paraméterrel.
+* Indítsa el a kísérlet futtatását. Ha ezt a parancsot használja, adja meg a runconfig-fájl nevét (a. runconfig karakterláncot, \* Ha a fájlrendszert keresi) a-c paraméterrel.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
@@ -172,7 +171,7 @@ A következő parancsok bemutatják, hogyan használható a CLI a Azure Machine 
     >
     > Ha olyan Python-szkripttel rendelkezik, amely programozott módon hozza létre a futtatási konfigurációs objektumot, a [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) paranccsal mentheti RunConfig-fájlként.
     >
-    > A teljes runconfig séma ebben a [JSON-fájlban](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)található. A séma az egyes objektumok `description` kulcsán keresztüli öndokumentálás. Emellett a lehetséges értékek enumerálásai is megtalálhatók, a végén pedig egy sablon-kódrészlet.
+    > A teljes runconfig séma ebben a [JSON-fájlban](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)található. A séma az `description` egyes objektumok kulcsán keresztüli öndokumentálás. Emellett a lehetséges értékek enumerálásai is megtalálhatók, a végén pedig egy sablon-kódrészlet.
 
     További információ: [az ml Run Submit-script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
@@ -194,7 +193,7 @@ A következő parancsok bemutatják, hogyan használhatók az adatkészletek a A
     az ml dataset register -f mydataset.json
     ```
 
-    Az adatkészlet definiálásához használt JSON-fájl formátumával kapcsolatos információkért használja `az ml dataset register --show-template`a következőt:.
+    Az adatkészlet definiálásához használt JSON-fájl formátumával kapcsolatos információkért használja a következőt: `az ml dataset register --show-template` .
 
     További információ: [az ml adatkészlet regisztrálása](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/dataset?view=azure-cli-latest#ext-azure-cli-ml-az-ml-dataset-archive).
 
@@ -284,7 +283,7 @@ A következő parancsok bemutatják, hogyan hozhat létre, regisztrálhat és li
 
 ### <a name="environment-configuration-schema"></a>Környezeti konfigurációs séma
 
-Ha a `az ml environment scaffold` parancsot használta, egy olyan sablonfájlt `azureml_environment.json` hoz létre, amely módosítható és használható egyéni környezeti KONFIGURÁCIÓK létrehozásához a CLI használatával. A legfelső szintű objektum lazán leképezi a [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) Python SDK osztályát. 
+Ha a parancsot használta `az ml environment scaffold` , egy olyan sablonfájlt hoz `azureml_environment.json` létre, amely módosítható és használható egyéni környezeti konfigurációk létrehozásához a CLI használatával. A legfelső szintű objektum lazán leképezi a [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) PYTHON SDK osztályát. 
 
 ```json
 {
@@ -328,9 +327,9 @@ Ha a `az ml environment scaffold` parancsot használta, egy olyan sablonfájlt `
 }
 ```
 
-A következő táblázat részletezi a JSON-fájl legfelső szintű mezőjét, típusát és leírását. Ha egy objektumtípus egy osztályhoz van társítva a Python SDK-val, az egyes JSON-mezők és a Python-osztály nyilvános változójának neve minden esetben meg1:1 lazult. Bizonyos esetekben előfordulhat, hogy a mező egy konstruktor argumentumhoz rendelhető, nem pedig egy osztály változó. Például a `environmentVariables` mező a `environment_variables` [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) osztályban lévő változóra mutat.
+A következő táblázat részletezi a JSON-fájl legfelső szintű mezőjét, típusát és leírását. Ha egy objektumtípus egy osztályhoz van társítva a Python SDK-val, az egyes JSON-mezők és a Python-osztály nyilvános változójának neve minden esetben meg1:1 lazult. Bizonyos esetekben előfordulhat, hogy a mező egy konstruktor argumentumhoz rendelhető, nem pedig egy osztály változó. Például a mező a `environmentVariables` `environment_variables` osztályban lévő változóra mutat [`Environment`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment(class)?view=azure-ml-py) .
 
-| JSON-mező | Típus | Leírás |
+| JSON-mező | Típus | Description |
 |---|---|---|
 | `name` | `string` | A környezet neve. A név nem kezdődhet a **Microsofttal** vagy a **AzureML**. |
 | `version` | `string` | A környezet verziója. |
@@ -339,7 +338,7 @@ A következő táblázat részletezi a JSON-fájl legfelső szintű mezőjét, t
 | `docker` | [`DockerSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.dockersection?view=azure-ml-py) | Meghatározza a környezet specifikációi alapján létrehozott Docker-rendszerkép testreszabásához szükséges beállításokat. |
 | `spark` | [`SparkSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.sparksection?view=azure-ml-py) | Ez a szakasz a Spark beállításait konfigurálja. A rendszer csak akkor használja, ha a keretrendszer PySpark értékre van állítva. |
 | `databricks` | [`DatabricksSection`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.databricks.databrickssection?view=azure-ml-py) | A Databricks-függvénytár függőségeinek konfigurálása. |
-| `inferencingStackVersion` | `string` | Megadja a rendszerképhez hozzáadott következtetési verem verzióját. Ha nem szeretne hozzáadni egy következtetést, hagyja üresen ezt `null`a mezőt. Érvényes érték: "Latest". |
+| `inferencingStackVersion` | `string` | Megadja a rendszerképhez hozzáadott következtetési verem verzióját. Ha nem szeretne hozzáadni egy következtetést, hagyja üresen ezt a mezőt `null` . Érvényes érték: "Latest". |
 
 ## <a name="ml-pipeline-management"></a>ML-folyamat kezelése
 

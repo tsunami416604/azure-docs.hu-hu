@@ -9,12 +9,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: bd64321a6a7afbac61a63365c77a75120f837e83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 99c21ece202f8d9867045d506574dd7718bd455e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372094"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653662"
 ---
 # <a name="qna-maker-encryption-of-data-at-rest"></a>QnA Maker inaktív adatok titkosítása
 
@@ -37,7 +37,7 @@ A QnA Maker szolgáltatás a CMK használja a Azure Search szolgáltatásból. A
 
    ![Titkosítási beállítások megtekintése](../media/cognitive-services-encryption/qna-encryption-1.png)
 
-2. QnA Maker-erőforrás létrehozásakor a rendszer automatikusan egy Azure Search-példánnyal társítja. Ez a CMK nem használható. A CMK használatához hozzá kell rendelnie Azure Search újonnan létrehozott példányát, amelyet az 1. lépésben hoztak létre. Pontosabban frissítenie kell a `AzureSearchAdminKey` és `AzureSearchName` a QnA Maker erőforrást.
+2. QnA Maker-erőforrás létrehozásakor a rendszer automatikusan egy Azure Search-példánnyal társítja. Ez a CMK nem használható. A CMK használatához hozzá kell rendelnie Azure Search újonnan létrehozott példányát, amelyet az 1. lépésben hoztak létre. Pontosabban frissítenie kell a és a `AzureSearchAdminKey` `AzureSearchName` QnA Maker erőforrást.
 
    ![Titkosítási beállítások megtekintése](../media/cognitive-services-encryption/qna-encryption-2.png)
 
@@ -52,6 +52,11 @@ A QnA Maker szolgáltatás a CMK használja a Azure Search szolgáltatásból. A
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
 Az ügyfél által felügyelt kulcsok minden Azure Search régióban elérhetők.
+
+## <a name="encryption-of-data-in-transit"></a>Az adatforgalom titkosítása
+
+QnA Maker portál a felhasználó böngészőjében fut. Minden művelet közvetlen hívást indít a megfelelő kognitív szolgáltatás API-hoz. Ezért a QnA Maker megfelel az átvitt adatforgalomnak.
+Mivel azonban a QnA Maker portál szolgáltatás az USA nyugati régiójában található, még mindig nem ideális a nem USA-beli ügyfelek számára. 
 
 ## <a name="next-steps"></a>További lépések
 

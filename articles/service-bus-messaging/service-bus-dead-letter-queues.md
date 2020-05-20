@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: aschhab
-ms.openlocfilehash: 9c1a0cb92fbaf98d25799ffb5a85e666e7c05f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6630d96c90a221a6b0374f2e4758748a77ad0610
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158901"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83647826"
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>A kézbesítetlen levelek várólistájának Service Bus áttekintése
 
@@ -40,34 +40,33 @@ A kézbesítetlen levelek várólistáján lévő üzenetek száma nem lehetség
 
 ![DLQ üzenetek száma](./media/service-bus-dead-letter-queues/dead-letter-queue-message-count.png)
 
-A DLQ-üzenetek számát az Azure CLI parancs használatával is lekérheti: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show). 
+A DLQ-üzenetek számát az Azure CLI parancs használatával is lekérheti: [`az servicebus topic subscription show`](/cli/azure/servicebus/topic/subscription?view=azure-cli-latest#az-servicebus-topic-subscription-show) . 
 
 ## <a name="moving-messages-to-the-dlq"></a>Üzenetek áthelyezése a DLQ
 
 Számos olyan tevékenység van Service Bus, amely az üzenetek DLQ való leküldését eredményezi az üzenetküldési motoron belül. Az alkalmazások explicit módon is helyezhetnek üzeneteket a DLQ. 
 
-Ahogy a közvetítő áthelyezi az üzenetet, két tulajdonságot adnak hozzá az üzenethez, mivel a közvetítő meghívja a [kézbesítetlen levelek](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) metódus belső verzióját az üzenetre `DeadLetterReason` : `DeadLetterErrorDescription`és.
+Ahogy a közvetítő áthelyezi az üzenetet, két tulajdonságot adnak hozzá az üzenethez, mivel a közvetítő meghívja a [kézbesítetlen levelek](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) metódus belső verzióját az üzenetre: `DeadLetterReason` és `DeadLetterErrorDescription` .
 
-Az alkalmazások meghatározhatják a `DeadLetterReason` tulajdonsághoz tartozó saját kódokat, de a rendszer a következő értékeket állítja be.
+Az alkalmazások meghatározhatják a tulajdonsághoz tartozó saját kódokat `DeadLetterReason` , de a rendszer a következő értékeket állítja be.
 
-| Állapot | DeadLetterReason | DeadLetterErrorDescription |
-| --- | --- | --- |
-| Mindig |HeaderSizeExceeded |A stream méretkvótája túl lett lépve. |
-| ! TopicDescription.<br />EnableFilteringMessagesBeforePublishing és SubscriptionDescription.<br />EnableDeadLetteringOnFilterEvaluationExceptions |kivétel. GetType (). név |kivétel. Üzenetet |
-| EnableDeadLetteringOnMessageExpiration |TTLExpiredException |Az üzenet lejárt, és a kézbesítetlenek üzenetek közé került. |
-| SubscriptionDescription.RequiresSession |A munkamenet-azonosító null értékű. |A munkamenet engedélyezett entitása nem engedélyezi az olyan üzeneteket, amelyek munkamenet-azonosítója null értékű. |
-| ! kézbesítetlen levelek várólistája | MaxTransferHopCountExceeded | A várólisták közötti továbbítás esetén engedélyezett ugrások maximális száma. Az érték értéke 4. |
-| Alkalmazás explicit kézbesítetlen betűjele |Alkalmazás által megadott |Alkalmazás által megadott |
+| DeadLetterReason | DeadLetterErrorDescription |
+| --- | --- |
+|HeaderSizeExceeded |A stream méretkvótája túl lett lépve. |
+|TTLExpiredException |Az üzenet lejárt, és a kézbesítetlenek üzenetek közé került. A részletekért tekintse meg a [TimeToLive meghaladó](#exceeding-timetolive) szakaszt. |
+|A munkamenet-azonosító null értékű. |A munkamenet engedélyezett entitása nem engedélyezi az olyan üzeneteket, amelyek munkamenet-azonosítója null értékű. |
+|MaxTransferHopCountExceeded | A várólisták közötti továbbítás esetén engedélyezett ugrások maximális száma. Az érték értéke 4. |
+| MaxDeliveryCountExceededExceptionMessage | Az üzenet nem használható fel a kézbesítési kísérletek maximális száma után. A részletekért tekintse meg a [MaxDeliveryCount meghaladó](#exceeding-maxdeliverycount) szakaszt. |
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount túllépése
 
-A várólisták és előfizetések mindegyike [QueueDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) és [SubscriptionDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) tulajdonsággal rendelkezik; az alapértelmezett érték 10. Ha a zárolás ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) alatt egy üzenet érkezik, de explicit módon elhagyták, vagy a zárolás lejárt, akkor a [BrokeredMessage. DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) üzenet növekszik. Ha a [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) túllépi a [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), az üzenet átkerül a DLQ, és `MaxDeliveryCountExceeded` megadja az okkódot.
+A várólisták és előfizetések mindegyike [QueueDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) és [SubscriptionDescription. MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) tulajdonsággal rendelkezik; az alapértelmezett érték 10. Ha a zárolás ([ReceiveMode. PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode)) alatt egy üzenet érkezik, de explicit módon elhagyták, vagy a zárolás lejárt, akkor a [BrokeredMessage. DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) üzenet növekszik. Ha a [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) túllépi a [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount), az üzenet átkerül a DLQ, és megadja az `MaxDeliveryCountExceeded` okkódot.
 
 Ez a viselkedés nem tiltható le, de a [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) nagy számra állítható.
 
 ## <a name="exceeding-timetolive"></a>TimeToLive túllépése
 
-Ha a [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy a [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság értéke **true** (az alapértelmezett érték a **false**), a rendszer az összes lejáró üzenetet áthelyezi a DLQ, `TTLExpiredException` és megadja az okkódot.
+Ha a [QueueDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription) vagy a [SubscriptionDescription. EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription) tulajdonság értéke **true** (az alapértelmezett érték a **false**), a rendszer az összes lejáró üzenetet áthelyezi a DLQ, és megadja az `TTLExpiredException` okkódot.
 
 A lejárt üzenetek csak akkor törlődnek, és átkerülnek a DLQ, ha van legalább egy aktív fogadó a fő sorból vagy előfizetésből. Ez a viselkedés a tervezés szerint történik.
 
@@ -91,7 +90,7 @@ A kézbesítetlen üzenetek lekéréséhez létrehozhat egy fogadót a [FormatTr
 
 ## <a name="example"></a>Példa
 
-A következő kódrészlet létrehoz egy üzenetet fogadót. A fő üzenetsor fogadási ciklusában a kód lekéri az üzenetet a [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)üzenettel, amely arra kéri a közvetítőt, hogy azonnal visszaadja az összes azonnal elérhető üzenetet, vagy ha eredmény nélkül szeretne visszatérni. Ha a kód üzenetet kap, azonnal elhagyja azt, ami növeli a `DeliveryCount`következőt:. Ha a rendszer áthelyezi az üzenetet a DLQ, a fő várólista üres, és a hurok kilép, mivel [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) a ReceiveAsync **Null**értéket ad vissza.
+A következő kódrészlet létrehoz egy üzenetet fogadót. A fő üzenetsor fogadási ciklusában a kód lekéri az üzenetet a [Receive (TimeSpan. Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver)üzenettel, amely arra kéri a közvetítőt, hogy azonnal visszaadja az összes azonnal elérhető üzenetet, vagy ha eredmény nélkül szeretne visszatérni. Ha a kód üzenetet kap, azonnal elhagyja azt, ami növeli a következőt: `DeliveryCount` . Ha a rendszer áthelyezi az üzenetet a DLQ, a fő várólista üres, és a hurok kilép, mivel [ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver) a ReceiveAsync **Null**értéket ad vissza.
 
 ```csharp
 var receiver = await receiverFactory.CreateMessageReceiverAsync(queueName, ReceiveMode.PeekLock);

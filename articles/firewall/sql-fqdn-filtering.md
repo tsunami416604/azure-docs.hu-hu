@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 05/11/2020
+ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: 28252b42264dc6c1be403e99689f845d7143b1f7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8b67574f435681d8071eda1ad954dcafb5124cbf
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200464"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83655104"
 ---
 # <a name="configure-azure-firewall-application-rules-with-sql-fqdns"></a>Azure Firewall alkalmazás-szabályok konfigurálása SQL FQDN-sel
 
@@ -26,8 +26,6 @@ Az SQL FQDN használatával szűrheti a forgalmat:
 
 Az SQL FQDN-szűrés csak [proxy módban](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture#connection-policy) támogatott (1433-es port). Ha az SQL-t az alapértelmezett átirányítási módban használja, a [hálózati szabályok](overview.md#network-traffic-filtering-rules)részeként szűrheti a hozzáférést az SQL-szolgáltatás címkével.
 Ha nem alapértelmezett portokat használ az SQL IaaS-forgalomhoz, ezeket a portokat a tűzfal alkalmazási szabályaiban állíthatja be.
-
-Az SQL FQDN-sel rendelkező alkalmazási szabályok jelenleg minden régióban elérhetők az Azure Portal, az Azure CLI, a REST és a sablonok használatával.
 
 ## <a name="configure-using-azure-cli"></a>Konfigurálás az Azure CLI használatával
 

@@ -3,12 +3,12 @@ title: Oktatóanyag – több tárolós csoport üzembe helyezése – YAML
 description: Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe egy Azure Container Instances több tárolót tartalmazó YAML-fájllal az Azure CLI használatával.
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: cce98ec56ee1d84c087150ba486b9482515b46f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c029a9c605548b828c96fa741e12a43930ec4b01
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74533589"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653507"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-a-yaml-file"></a>Oktatóanyag: több tárolós csoport üzembe helyezése YAML-fájl használatával
 
@@ -73,14 +73,14 @@ properties:
     type: Public
     ports:
     - protocol: tcp
-      port: '80'
+      port: 80
     - protocol: tcp
-      port: '8080'
+      port: 8080
 tags: null
 type: Microsoft.ContainerInstance/containerGroups
 ```
 
-Ha privát tároló rendszerkép-beállításjegyzéket szeretne használni, `imageRegistryCredentials` adja hozzá a (z) tulajdonságot a tároló csoporthoz a környezetének megfelelő értékekkel:
+Ha privát tároló rendszerkép-beállításjegyzéket szeretne használni, adja hozzá a `imageRegistryCredentials` (z) tulajdonságot a tároló csoporthoz a környezetének megfelelő értékekkel:
 
 ```YAML
   imageRegistryCredentials:
@@ -113,7 +113,7 @@ A központi telepítés állapotának megtekintéséhez használja a következő
 az container show --resource-group myResourceGroup --name myContainerGroup --output table
 ```
 
-Ha meg szeretné tekinteni a futó alkalmazást, navigáljon az IP-címére a böngészőben. Például az IP-cím `52.168.26.124` ebben a példában kimenet:
+Ha meg szeretné tekinteni a futó alkalmazást, navigáljon az IP-címére a böngészőben. Például az IP-cím ebben a `52.168.26.124` példában kimenet:
 
 ```bash
 Name              ResourceGroup    Status    Image                                                                                               IP:ports              Network    CPU/Memory       OsType    Location
@@ -164,7 +164,7 @@ Date: Thu, 21 Mar 2019 20:36:41 GMT
 Connection: keep-alive
 ```
 
-Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha nem a HTTP `200 OK`-válasz kódját kapta.
+Amint láthatja, az oldalkocsi rendszeres időközönként HTTP-kérést küld a fő webalkalmazásnak a csoport helyi hálózatán keresztül annak biztosítása érdekében, hogy az fut. Ez az oldalkocsis példa kiterjeszthető úgy, hogy riasztást indítson, ha nem a HTTP-válasz kódját kapta `200 OK` .
 
 ## <a name="next-steps"></a>További lépések
 

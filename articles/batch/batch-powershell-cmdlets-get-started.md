@@ -4,12 +4,12 @@ description: Gyors bevezetés a Batch-erőforrások kezeléséhez használható 
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: b768fac7fa6fe0f4821a4fbaf5fa11414b10f81d
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 8777edbc99550b2fb1f14df00936de57801b0aab
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995319"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657312"
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>Batch-erőforrások kezelése PowerShell-parancsmagokkal
 
@@ -247,9 +247,10 @@ $appPackageReference.ApplicationId = "MyBatchApplication"
 $appPackageReference.Version = "1.0"
 ```
 
-Ezután hozza létre a készletet, majd a csomag-referenciaobjektumot az `ApplicationPackageReferences` beállítás argumentumaként adja meg:
+Most hozza létre a konfigurációt és a készletet. Ez a példa a **CloudServiceConfiguration** paramétert használja a (z `PSCloudServiceConfiguration` ) rendszerben inicializált Type objektummal `$configuration` , amely a **OSFamily** a `6` "Windows Server 2019" értékre állítja be, és **OSVersion** a következőre: `*` . Határozza meg a csomag hivatkozási objektumát argumentumként a következő `ApplicationPackageReferences` beállításhoz:
 
 ```powershell
+$configuration = New-Object -TypeName "Microsoft.Azure.Commands.Batch.Models.PSCloudServiceConfiguration" -ArgumentList @(6,"*")  # 6 = OSFamily 'Windows Server 2019'
 New-AzBatchPool -Id "PoolWithAppPackage" -VirtualMachineSize "Small" -CloudServiceConfiguration $configuration -BatchContext $context -ApplicationPackageReferences $appPackageReference
 ```
 

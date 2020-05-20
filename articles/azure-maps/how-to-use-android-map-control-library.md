@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e0f0f311b7ec8adae6ddb25e01046141adadfa4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: accd0df2913abc4d82b6f14aaafd03f0f042ca91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548540"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648219"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
 
@@ -39,7 +39,7 @@ Először hozzon létre egy új projektet egy üres tevékenységgel. Android St
 1. **A projekt kiválasztása**területen válassza a **telefon és a tábla**lehetőséget. Az alkalmazás ezen az űrlapon fog futni.
 2. A **telefon és a tábla** lapon válassza az **üres tevékenység**elemet, majd kattintson a **tovább**gombra.
 3. A **projekt konfigurálása**területen válassza ki `API 21: Android 5.0.0 (Lollipop)` a minimális SDK-t. Ez a Azure Maps Android SDK által támogatott legkorábbi verzió.
-4. Fogadja el `Activity Name` az `Layout Name` alapértelmezett értéket, és válassza a **Befejezés**lehetőséget.
+4. Fogadja el az alapértelmezett értéket `Activity Name` , és `Layout Name` válassza a **Befejezés**lehetőséget.
 
 A Android Studio telepítésével és új projekt létrehozásával kapcsolatos további segítségért tekintse meg a [Android Studio dokumentációját](https://developer.android.com/studio/intro/) .
 
@@ -47,7 +47,7 @@ A Android Studio telepítésével és új projekt létrehozásával kapcsolatos 
 
 ## <a name="set-up-a-virtual-device"></a>Virtuális eszköz beállítása
 
-Android Studio lehetővé teszi egy virtuális Android-eszköz beállítását a számítógépen. Ez segít az alkalmazás tesztelésében a fejlesztés során. Virtuális eszköz beállításához válassza az Android virtuális eszköz (AVD) kezelője ikont a projekt képernyő jobb felső sarkában, majd válassza a **virtuális eszköz létrehozása**lehetőséget. A AVD-kezelőt az eszköztáron az **eszközök** > **Android** > **AVD Manager** lehetőség kiválasztásával is elérheti. A **telefonok** kategóriában válassza a **Nexus 5x**elemet, majd kattintson a **tovább**gombra.
+Android Studio lehetővé teszi egy virtuális Android-eszköz beállítását a számítógépen. Ez segít az alkalmazás tesztelésében a fejlesztés során. Virtuális eszköz beállításához válassza az Android virtuális eszköz (AVD) kezelője ikont a projekt képernyő jobb felső sarkában, majd válassza a **virtuális eszköz létrehozása**lehetőséget. A AVD-kezelőt **Tools**  >  az eszköztáron az eszközök**Android**  >  **AVD Manager** lehetőség kiválasztásával is elérheti. A **telefonok** kategóriában válassza a **Nexus 5x**elemet, majd kattintson a **tovább**gombra.
 
 A AVD beállításával kapcsolatos további információkért tekintse meg az [Android Studio dokumentációját](https://developer.android.com/studio/run/managing-avds).
 
@@ -80,11 +80,11 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
     3. Frissítse a függőségek blokkot, és adjon hozzá egy új implementációs függőségi sort a legújabb Azure Maps Android SDK-hoz:
 
         ```
-        implementation "com.microsoft.azure.maps:mapcontrol:0.2"
+        implementation "com.microsoft.azure.maps:mapcontrol:0.4"
         ```
     
     4. Nyissa meg a **fájlt** az eszköztáron, majd kattintson a **szinkronizálás projekt Gradle-fájlokkal**elemre.
-3. Térképi töredék hozzáadása a fő tevékenységhez (res \> \> elrendezési\_tevékenység Main. xml):
+3. Térképi töredék hozzáadása a fő tevékenységhez (res \> elrendezési \> tevékenység \_ Main. xml):
     
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -109,7 +109,7 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
     * a Azure Maps hitelesítési adatainak beállítása
     * a Térkép vezérlőelem példányának beolvasása a **onCreate** metódusban
 
-    Ha a (z) `AzureMaps` `setSubscriptionKey` és `setAadProperties` a (z) metódusok használatával globálisan szeretné beállítani a hitelesítési adatokat, akkor nem kell minden nézetben felvennie a hitelesítési adatokat. 
+    Ha a (z) és a (z) metódusok használatával globálisan szeretné beállítani a hitelesítési adatokat, akkor `AzureMaps` `setSubscriptionKey` `setAadProperties` nem kell minden nézetben felvennie a hitelesítési adatokat. 
 
     A Térkép vezérlőelem saját életciklus-metódusokat tartalmaz az Android OpenGL-életciklusának kezeléséhez. Ezeket az életciklus-metódusokat közvetlenül a tartalmazó tevékenységből kell meghívni. Ahhoz, hogy az alkalmazás helyesen hívja meg a Map Control életciklusának módszereit, felül kell bírálnia a következő életciklus-metódusokat a Térkép vezérlőelemet tartalmazó tevékenységben. És meg kell hívnia a megfelelő leképezés-vezérlési módszert. 
 
@@ -205,7 +205,7 @@ Az alkalmazás létrehozásának következő lépése a Azure Maps Android SDK t
 
 ## <a name="import-classes"></a>Osztályok importálása
 
-Az előző lépések elvégzése után valószínűleg figyelmeztetést kap a Android Studioról a kódok némelyikéről. A figyelmeztetések feloldásához importálja a alkalmazásban `MainActivity.java`hivatkozott osztályokat.
+Az előző lépések elvégzése után valószínűleg figyelmeztetést kap a Android Studioról a kódok némelyikéről. A figyelmeztetések feloldásához importálja a alkalmazásban hivatkozott osztályokat `MainActivity.java` .
 
 Ezeket az osztályokat automatikusan importálhatja az ALT + ENTER billentyűkombináció kiválasztásával (lehetőség + visszatérés Mac gépen).
 
@@ -223,7 +223,7 @@ Android Studio eltarthat néhány másodpercig az alkalmazás felépítéséhez.
 
 A Azure Maps Android SDK három különböző módszert biztosít a Térkép nyelvének és regionális nézetének beállításához. A következő kód bemutatja, hogyan állíthatja be a nyelvet francia ("fr-FR") és a regionális nézetbe az "Auto" értékre. 
 
-Az első lehetőség, hogy átadja a nyelvet, és megtekinti `AzureMaps` a regionális információkat az `setLanguage` osztályba a statikus és `setView` a metódusok globális használatával. Ezzel a beállítással megadhatja az alkalmazásban betöltött összes Azure Maps vezérlő alapértelmezett nyelvi és regionális nézetét.
+Az első lehetőség, hogy átadja a nyelvet, és megtekinti a regionális információkat az `AzureMaps` osztályba a statikus `setLanguage` és a `setView` metódusok globális használatával. Ezzel a beállítással megadhatja az alkalmazásban betöltött összes Azure Maps vezérlő alapértelmezett nyelvi és regionális nézetét.
 
 ```Java
 static {

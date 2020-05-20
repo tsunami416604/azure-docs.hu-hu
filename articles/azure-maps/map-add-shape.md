@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 91d6ed24c85d08c4b3358204980498d64e1b36ba
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ecbb5d636b6a6e2fa89d34380e87b6979110f6e3
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124040"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648524"
 ---
 # <a name="add-a-polygon-layer-to-the-map"></a>Sokszög réteg hozzáadása a térképhez
 
@@ -57,6 +57,8 @@ Alább látható a fenti kód teljes és működő mintája.
 ## <a name="use-a-polygon-and-line-layer-together"></a>Sokszög és vonal rétegek együttes használata
 
 A sokszögek körvonalának megjelenítéséhez egy vonal réteget kell használni. A következő mintakód az előző példához hasonló sokszöget jelenít meg, de most egy sor réteget is felvesz. Ez a vonal az adatforráshoz csatlakozó második réteg.  
+
+<br/>
 
 <iframe height='500' scrolling='no' title='Sokszög és vonal réteg a sokszög hozzáadásához' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Az CodePen-on Azure Maps () használatával <a href='https://codepen.io/azuremaps/pen/aRyEPy/'>vegye fel a sokszöget a toll és a vonal rétegben</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> . <a href='https://codepen.io'>CodePen</a>
 </iframe>

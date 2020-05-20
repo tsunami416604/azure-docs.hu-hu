@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 8b45840215092281c7fbc8d499e26b095b374dd6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b336451bde559ce773a9b611bc98b4de3f11871
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77191026"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83652746"
 ---
 # <a name="skillset-concepts-and-composition-in-azure-cognitive-search"></a>Készségkészlet-fogalmak és-összeállítás az Azure Cognitive Search
 
@@ -32,7 +32,7 @@ A készségkészlet három tulajdonsága van:
 
 
 
-A szakértelmével JSON-ban vannak létrehozva. A [kifejezés nyelve](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)segítségével összetett szakértelmével hozhat létre a hurok és az [elágazás](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) használatával. A kifejezés nyelve a [JSON-mutató](https://tools.ietf.org/html/rfc6901) elérési útjának jelölését használja, és néhány módosítással azonosítja a csomópontokat a dúsítási fában. A ```"/"``` egy szinttel lejjebb halad a fában, ```"*"``` és a-minden operátorként működik a környezetben. Ezeket a fogalmakat a legjobban egy példával ismertetjük. Az egyes fogalmak és képességek szemléltetésére a [Hotel Reviews minta](knowledge-store-connect-powerbi.md) készségkészlet mutatunk. Ha a készségkészlet az Adatimportálási munkafolyamat követése után szeretné megtekinteni, REST API-ügyfelet kell használnia [a készségkészlet lekéréséhez](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
+A szakértelmével JSON-ban vannak létrehozva. A [kifejezés nyelve](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional)segítségével összetett szakértelmével hozhat létre a hurok és az [elágazás](https://docs.microsoft.com/azure/search/cognitive-search-skill-conditional) használatával. A kifejezés nyelve a [JSON-mutató](https://tools.ietf.org/html/rfc6901) elérési útjának jelölését használja, és néhány módosítással azonosítja a csomópontokat a dúsítási fában. A egy ```"/"``` szinttel lejjebb halad a fában, és a ```"*"``` -minden operátorként működik a környezetben. Ezeket a fogalmakat a legjobban egy példával ismertetjük. Az egyes fogalmak és képességek szemléltetésére a [Hotel Reviews minta](knowledge-store-connect-powerbi.md) készségkészlet mutatunk. Ha a készségkészlet az Adatimportálási munkafolyamat követése után szeretné megtekinteni, REST API-ügyfelet kell használnia [a készségkészlet lekéréséhez](https://docs.microsoft.com/rest/api/searchservice/get-skillset).
 
 ### <a name="enrichment-tree"></a>Dúsítási fa
 
@@ -54,18 +54,18 @@ A dokumentum további részében feltételezzük, hogy a [Hotel Reviews példáv
 
 ### <a name="context"></a>Környezet
 Minden egyes szaktudáshoz környezet szükséges. A környezet meghatározza A következőket:
-+   A képzettség végrehajtásának száma a kiválasztott csomópontok alapján. A gyűjtemény típusú környezeti értékek esetében a végén a ```/*``` hozzáadás után a rendszer egyszer meghívja a képességet a gyűjtemény minden példánya számára. 
++   A képzettség végrehajtásának száma a kiválasztott csomópontok alapján. A gyűjtemény típusú környezeti értékek esetében a végén a Hozzáadás ```/*``` után a rendszer egyszer meghívja a képességet a gyűjtemény minden példánya számára. 
 +   Ahol a dúsítási fában a rendszer felveszi a képzettségi kimeneteket. A rendszer mindig hozzáadja a kimeneteket a fában a környezeti csomópont gyermekeiként. 
 +   A bemenetek alakja. Többszintű gyűjtemények esetén a szülő-gyűjtemény kontextusának beállítása hatással lesz a szakértelem bemenetének alakzatára. Ha például van egy alkoholtartalom-növelési fája az országok listájával, a rendszer minden olyan állapotot tartalmaz, amely tartalmazza a ZipCodes tartalmazó listát.
 
-|Környezet|Input (Bemenet)|Bemenet alakja|Szaktudás meghívása|
+|Környezet|Bevitel|Bemenet alakja|Szaktudás meghívása|
 |---|---|---|---|
 |```/document/countries/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az ország összes ZipCodes listája |Országonként egyszer |
 |```/document/countries/*/states/*``` |```/document/countries/*/states/*/zipcodes/*``` |Az állapotban lévő ZipCodes listája | Az ország és az állapot kombinációja után|
 
 ### <a name="sourcecontext"></a>SourceContext
 
-A `sourceContext` csak a szaktudás bemenetei és a [kivetítések](knowledge-store-projection-overview.md)esetében használatos. Többszintű, beágyazott objektumok létrehozásához használatos. Előfordulhat, hogy létre kell hoznia egy új objektumot, hogy beírja bemenetként egy képességbe vagy projektbe a Knowledge Store-ba. Mivel a dúsítási csomópontok nem lehetnek érvényes JSON-objektumok a dúsítási fában, és a fában lévő csomópontra hivatkoznak, csak a csomópont állapotát adja vissza a létrehozáskor, a dúsítások és a kivetítések létrehozásához pedig jól formázott JSON-objektumot kell létrehoznia. A `sourceContext` lehetővé teszi egy hierarchikus, névtelen típusú objektum létrehozását, amelyhez több ismeretre lenne szükség, ha csak a kontextust használta. A `sourceContext` használata a következő szakaszban látható. Tekintse meg a szakértelem kimenetét, amely a dúsítást generálta annak megállapításához, hogy az érvényes JSON-objektum-e, és nem egyszerű típus.
+A `sourceContext` csak a szaktudás bemenetei és a [kivetítések](knowledge-store-projection-overview.md)esetében használatos. Többszintű, beágyazott objektumok létrehozásához használatos. Előfordulhat, hogy létre kell hoznia egy új objektumot, hogy beírja bemenetként egy képességbe vagy projektbe a Knowledge Store-ba. Mivel a dúsítási csomópontok nem lehetnek érvényes JSON-objektumok a dúsítási fában, és a fában lévő csomópontra hivatkoznak, csak a csomópont állapotát adja vissza a létrehozáskor, a dúsítások és a kivetítések létrehozásához pedig jól formázott JSON-objektumot kell létrehoznia. A `sourceContext` lehetővé teszi egy hierarchikus, névtelen típusú objektum létrehozását, amelyhez több ismeretre lenne szükség, ha csak a kontextust használta. `sourceContext`A használata a következő szakaszban látható. Tekintse meg a szakértelem kimenetét, amely a dúsítást generálta annak megállapításához, hogy az érvényes JSON-objektum-e, és nem egyszerű típus.
 
 ### <a name="projections"></a>Leképezések
 
@@ -77,7 +77,7 @@ A fenti diagram azt a választót írja le, amely a dúsítási folyamaton alapu
 
 ## <a name="generate-enriched-data"></a>Dúsított adathalmazok előállítása 
 
-Most ugorjon át a Hotel Reviews készségkészlet, és kövesse az [oktatóanyagot](knowledge-store-connect-powerbi.md) a készségkészlet létrehozásához, vagy [tekintse](https://github.com/Azure-Samples/azure-search-postman-samples/blob/master/samples/skillset.json) meg a készségkészlet. A következőt fogjuk megtekinteni:
+Most ugorjon át a Hotel Reviews készségkészlet, és kövesse az [oktatóanyagot](knowledge-store-connect-powerbi.md) a készségkészlet létrehozásához, vagy [tekintse](https://github.com/Azure-Samples/azure-search-postman-samples/) meg a készségkészlet. A következőt fogjuk megtekinteni:
 
 * a dúsítási fa fejlődése az egyes képességek végrehajtásával 
 * a környezet és a bemenetek működése annak megállapítása érdekében, hogy a szaktudás hányszor fut 
@@ -89,12 +89,12 @@ Mivel a tagolt szöveges elemzési módot használjuk az indexelő számára, a 
 
 ![a dúsítás fája a dokumentum repedése után](media/cognitive-search-working-with-skillsets/enrichment-tree-doc-cracking.png "A dúsítási fa a dokumentum repedése és a szaktudás végrehajtása előtt")
 
-A gyakorlati környezetében ```"/document/reviews_text"```ez a képesség egyszer lesz végrehajtva `reviews_text`. A szakértelem kimenete egy lista, amelyben `reviews_text` a rendszer 5000 karakterből álló szegmensbe kerül. A felosztási képesség kimenete neve `pages` és hozzáadása a dúsítási fában történik. A `targetName` funkció lehetővé teszi a képzettségi kimenet átnevezését a dúsítási fában való felvétel előtt.
+A gyakorlati környezetében ```"/document/reviews_text"``` Ez a képesség egyszer lesz végrehajtva `reviews_text` . A szakértelem kimenete egy lista, amelyben a `reviews_text` rendszer 5000 karakterből álló szegmensbe kerül. A felosztási képesség kimenete neve `pages` és hozzáadása a dúsítási fában történik. A `targetName` funkció lehetővé teszi a képzettségi kimenet átnevezését a dúsítási fában való felvétel előtt.
 
 A dúsítási fában már van egy új csomópont, amely a szakértelem kontextusában van elhelyezve. Ez a csomópont bármilyen képzettségi, leképezési vagy kimeneti mezők leképezéséhez elérhető.
 
 
-Az összes dúsítás legfelső szintű csomópontja `"/document"`. A blob-indexelő használatakor `"/document"` a csomópont a `"/document/content"` és `"/document/normalized_images"`a alárendelt csomópontjaival fog rendelkezni. A CSV-adatkapcsolatok használatakor, ahogy ebben a példában vagyunk, az oszlopnevek az alatta `"/document"`lévő csomópontokra lesznek leképezve. A csomópont által egy adott képességhez hozzáadott alkoholtartalom-növeléshez a dúsítás teljes elérési útjára van szükség. Ha például a ```pages``` csomópont szövegét bemenetként kívánja használni egy másik képességhez, meg kell adnia a következőt: ```"/document/reviews_text/pages/*"```.
+Az összes dúsítás legfelső szintű csomópontja `"/document"` . A blob-indexelő használatakor a `"/document"` csomópont a és a alárendelt csomópontjaival fog rendelkezni `"/document/content"` `"/document/normalized_images"` . A CSV-adatkapcsolatok használatakor, ahogy ebben a példában vagyunk, az oszlopnevek az alatta lévő csomópontokra lesznek leképezve `"/document"` . A csomópont által egy adott képességhez hozzáadott alkoholtartalom-növeléshez a dúsítás teljes elérési útjára van szükség. Ha például a csomópont szövegét bemenetként kívánja használni ```pages``` egy másik képességhez, meg kell adnia a következőt: ```"/document/reviews_text/pages/*"``` .
  
  ![a bővítési fa a szaktudás után #1](media/cognitive-search-working-with-skillsets/enrichment-tree-skill1.png "A szaktudás #1 végrehajtása után a dúsítási fa")
 
@@ -104,7 +104,7 @@ Az összes dúsítás legfelső szintű csomópontja `"/document"`. A blob-index
  
  ### <a name="skill-3-key-phrases-skill"></a>Skill #3: a kulcsfontosságú kifejezések ismerete 
 
-A legfontosabb kifejezések ismeretének kontextusa ```/document/reviews_text/pages/*``` csak egyszer lesz meghívva a `pages` gyűjtemény minden elemére. A skill kimenete a társított oldal elem alatti csomópont lesz. 
+A ```/document/reviews_text/pages/*``` legfontosabb kifejezések ismeretének kontextusa csak egyszer lesz meghívva a gyűjtemény minden elemére `pages` . A skill kimenete a társított oldal elem alatti csomópont lesz. 
 
  Most már képesnek kell lennie arra, hogy megtekintse a készségkészlet képességeit, és láthatóvá tegye, hogy a dúsítások fája hogyan fog növekedni az egyes képességek végrehajtásával. Bizonyos készségek, például az egyesítési képesség és a formáló képesség, új csomópontokat is létrehozhatnak, de csak a meglévő csomópontok adatait használják, és nem hozhatók létre az új net-bővítések.
 
@@ -126,7 +126,7 @@ A kivetítést kétféleképpen lehet definiálni. Egy formázó képességgel l
 
 A formáló megközelítés részletesebb, mint a beágyazott alakítás, azonban biztosítja, hogy a dúsítási fa összes mutációja a szaktudásban legyen, és hogy a kimenet egy olyan objektum, amely újra felhasználható. A beágyazott kialakítás lehetővé teszi, hogy létrehozza a szükséges alakzatot, de egy névtelen objektum, és csak azokhoz a vetítésekhez érhető el, amelyekhez definiálva van. A módszerek együtt vagy külön is használhatók. A portál munkafolyamatban létrehozott készségkészlet is tartalmaz. A táblázatos kivetítésekhez egy formálói képességet használ, de a legfontosabb kifejezések táblázatának bevetítéséhez is a beágyazott alakítást használja.
 
-A példa kiterjesztéséhez dönthet úgy, hogy eltávolítja a beágyazott formázást, és egy formáló képességgel létrehoz egy új csomópontot a legfontosabb kifejezésekhez. A következő szakaszokban a két lehetőség közül választhat, hogy három `hotelReviewsDocument`táblázatba `hotelReviewsPages`( `hotelReviewsKeyPhrases`például,, és) álló alakzatot hozzon létre.
+A példa kiterjesztéséhez dönthet úgy, hogy eltávolítja a beágyazott formázást, és egy formáló képességgel létrehoz egy új csomópontot a legfontosabb kifejezésekhez. A `hotelReviewsDocument` `hotelReviewsPages` `hotelReviewsKeyPhrases` következő szakaszokban a két lehetőség közül választhat, hogy három táblázatba (például,, és) álló alakzatot hozzon létre.
 
 
 #### <a name="shaper-skill-and-projection"></a>Formáló képesség és kivetítés 
@@ -204,7 +204,7 @@ A példa kiterjesztéséhez dönthet úgy, hogy eltávolítja a beágyazott form
 }
 ```
 
-A fenti `tableprojection` `outputs` szakaszban meghatározott csomóponttal mostantól a szeletelési funkciót is használhatja a `tableprojection` csomópont különböző táblákba való kivetítéséhez:
+A `tableprojection` fenti szakaszban meghatározott csomóponttal `outputs` mostantól a szeletelési funkciót is használhatja a `tableprojection` csomópont különböző táblákba való kivetítéséhez:
 
 > [!Note]
 > Ez csak a Knowledge Store-konfigurációban található kivetítés részlete.
@@ -295,7 +295,7 @@ A beágyazott alakítási megközelítés nem igényel formálói képességet, 
 ]
 ```
   
-A megközelítések közül az egyik megfigyelés, hogy az `"Keyphrases"` értékek hogyan lesznek kiértékelve a `"sourceContext"`használatával. A `"Keyphrases"` karakterláncok gyűjteményét tartalmazó csomópont maga az oldal szövegének gyermeke. Mivel azonban a vetítésekhez JSON-objektumra van szükség, és az oldal egy primitív (karakterlánc) `"sourceContext"` , a a kulcs kifejezést egy nevesített tulajdonsággal rendelkező objektumba csomagolja. Ez a módszer lehetővé teszi, hogy a primitívek egymástól függetlenül legyenek kitervezve.
+A megközelítések közül az egyik megfigyelés, hogy az értékek hogyan lesznek kiértékelve `"Keyphrases"` a használatával `"sourceContext"` . A `"Keyphrases"` karakterláncok gyűjteményét tartalmazó csomópont maga az oldal szövegének gyermeke. Mivel azonban a vetítésekhez JSON-objektumra van szükség, és az oldal egy primitív (karakterlánc), a a `"sourceContext"` kulcs kifejezést egy nevesített tulajdonsággal rendelkező objektumba csomagolja. Ez a módszer lehetővé teszi, hogy a primitívek egymástól függetlenül legyenek kitervezve.
 
 ## <a name="next-steps"></a>További lépések
 

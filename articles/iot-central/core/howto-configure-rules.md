@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: f6e85ba5aafaad973d28f799a251b6f3aae548e3
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: c4d0639831d2f6f60a719637c5158fba5caf6f43
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871939"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659349"
 ---
 # <a name="configure-rules"></a>Szabályok konfigurálása
 
@@ -31,7 +31,7 @@ Az eszközök megcélzása szakaszban kiválaszthatja, hogy milyen típusú eszk
 
 A feltételek alapján a szabályok aktiválva lesznek. Jelenleg, ha több feltételt ad hozzá egy szabályhoz, akkor logikailag és együtt. Más szóval minden feltételnek teljesülnie kell ahhoz, hogy a szabály kiértékelése igaz legyen.  
 
-A következő képernyőképen a feltételek azt állapítják meg, hogy a hőmérséklet nagyobb&deg; -e, mint 70 F, a páratartalom pedig kevesebb, mint 10. Ha mindkét utasítás igaz, a szabály igaz értéket ad vissza, és elindítja a műveletet.
+A következő képernyőképen a feltételek azt állapítják meg, hogy a hőmérséklet nagyobb-e, mint 70 &deg; F, a páratartalom pedig kevesebb, mint 10. Ha mindkét utasítás igaz, a szabály igaz értéket ad vissza, és elindítja a műveletet.
 
 ![Feltételek](media/howto-configure-rules/conditions.png)
 
@@ -53,7 +53,4 @@ Korlátozás vonatkozik a IoT Edge modulokra alkalmazott szabályokra. A külön
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy megismerte, hogyan konfigurálhat egy szabályt az Azure IoT Central alkalmazásban, a következőket teheti:
-
-> [!div class="nextstepaction"]
-> [Az adatai menet közbeni elemzése](howto-create-analytics.md)
+Most, hogy megismerte, hogyan konfigurálhat egy szabályt az Azure IoT Central alkalmazásban, megtudhatja, hogyan [konfigurálhat speciális szabályokat](howto-configure-rules-advanced.md) a Power automatizálás vagy a Azure Logic Apps használatával.

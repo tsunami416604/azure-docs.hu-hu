@@ -5,14 +5,14 @@ author: anfeldma-ms
 ms.service: cosmos-db
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 9475fce054356606c09947721019a264143a716b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 998155c2505277170518a62af4ae2481e217a1df
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982513"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650113"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek Azure Cosmos DB Sync Java SDK v2-hez
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982513"
 > 
 
 > [!IMPORTANT]  
-> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Vegye fontolóra Azure Cosmos DB Java SDK v4 használatát a projekthez. A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató utasításait. 
+> Ez *nem* a legújabb Java SDK a Azure Cosmos db! Frissítse a projektet [Azure Cosmos db Java SDK v4](sql-api-sdk-java-v4.md) -re, majd olvassa el a Azure Cosmos db Java SDK v4 [Performance tippek útmutatót](performance-tips-java-sdk-v4-sql.md). A frissítéshez kövesse az [áttelepítés Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -útmutató és a [reaktor vs RxJava](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-rxjava-guide.md) útmutató című témakör utasításait. 
 > 
 > Ezek a teljesítménnyel kapcsolatos tippek csak Azure Cosmos DB Sync Java SDK v2-re vonatkoznak. További információkért tekintse meg a Azure Cosmos DB Sync Java SDK v2 [kibocsátási megjegyzéseit](sql-api-sdk-java.md) és a [Maven-tárházat](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) .
 >
@@ -89,11 +89,11 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     Azure Cosmos DB Sync Java SDK-verzió 1.9.0 és újabb verziói támogatják a párhuzamos lekérdezéseket, amelyek lehetővé teszik a particionált gyűjtemények párhuzamos lekérdezését. További információ: az SDK-k használatához kapcsolódó [kód-minták](https://github.com/Azure/azure-documentdb-java/tree/master/documentdb-examples/src/test/java/com/microsoft/azure/documentdb/examples) . A párhuzamos lekérdezések úgy vannak kialakítva, hogy a lekérdezési késést és az adatátvitelt a soros munkatársaik
 
-    (a) a ***setMaxDegreeOfParallelism\: párhuzamos lekérdezések finomhangolása*** több partíció párhuzamos lekérdezésével működik. Az egyedi particionált gyűjteményekből származó adatok azonban a lekérdezéssel kapcsolatos sorosan kerülnek beolvasásra. Ezért a [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) használatával állítsa be a legtöbb teljesítményű lekérdezés elérésének maximális esélyét biztosító partíciók számát, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, a setMaxDegreeOfParallelism használatával magas számot állíthat be, a rendszer pedig a minimális párhuzamosságot (a partíciók számát, a felhasználó által megadott bemenetet) adja meg. 
+    (a) a ***setMaxDegreeOfParallelism \: párhuzamos lekérdezések finomhangolása*** több partíció párhuzamos lekérdezésével működik. Az egyedi particionált gyűjteményekből származó adatok azonban a lekérdezéssel kapcsolatos sorosan kerülnek beolvasásra. Ezért a [setMaxDegreeOfParallelism](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxdegreeofparallelism) használatával állítsa be a legtöbb teljesítményű lekérdezés elérésének maximális esélyét biztosító partíciók számát, ha az összes többi rendszerfeltétel változatlan marad. Ha nem ismeri a partíciók számát, a setMaxDegreeOfParallelism használatával magas számot állíthat be, a rendszer pedig a minimális párhuzamosságot (a partíciók számát, a felhasználó által megadott bemenetet) adja meg. 
 
     Fontos megjegyezni, hogy a párhuzamos lekérdezések a legjobb előnyöket nyújtják, ha az adatforgalom egyenletesen oszlik el az összes partíció között a lekérdezés tekintetében. Ha a particionált gyűjtemény úgy van particionálva, hogy a lekérdezés által visszaadott összes adat többsége néhány partíción (egy partíció a legrosszabb esetben) van, akkor a lekérdezés teljesítményét a partíciók szűk keresztmetszete okozhatja.
 
-    (b) az ***setMaxBufferedItemCount\: párhuzamos lekérdezés finomhangolása*** az eredmények előzetes beolvasására szolgál, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. a setMaxBufferedItemCount korlátozza az előre beolvasott eredmények számát. Ha a [setMaxBufferedItemCount](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) értékre állítja a visszaadott eredmények várt számát (vagy egy magasabb számot), ez lehetővé teszi a lekérdezés számára, hogy a lehető legtöbbet fogadja az előzetes lekéréstől.
+    (b) az ***setMaxBufferedItemCount \: párhuzamos lekérdezés finomhangolása*** az eredmények előzetes beolvasására szolgál, miközben az ügyfél az aktuális eredményt dolgozza fel. Az előzetes beolvasás a lekérdezés teljes késésének javulását segíti elő. a setMaxBufferedItemCount korlátozza az előre beolvasott eredmények számát. Ha a [setMaxBufferedItemCount](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedoptions.setmaxbuffereditemcount) értékre állítja a visszaadott eredmények várt számát (vagy egy magasabb számot), ez lehetővé teszi a lekérdezés számára, hogy a lehető legtöbbet fogadja az előzetes lekéréstől.
 
     Az előzetes lekérés ugyanúgy működik, mint a Maxanalyticsunits, és egyetlen puffer van az összes partícióból származó adatokhoz.  
 
@@ -107,7 +107,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
 7. **Név alapú címzés használata**
 
-    Használjon név-alapú címzést, ahol a hivatkozások formátuma `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId`a SelfLinks helyett (\_saját), amelynek formátuma `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` a hivatkozás létrehozásához használt összes erőforrás ResourceId: beolvasásának elkerülése. Továbbá, mivel ezek az erőforrások újra létrejönnek (valószínűleg ugyanazzal a névvel), a gyorsítótárazás nem segít.
+    Használjon név-alapú címzést, ahol a hivatkozások formátuma a `dbs/MyDatabaseId/colls/MyCollectionId/docs/MyDocumentId` SelfLinks helyett ( \_ saját), amelynek formátuma a `dbs/<database_rid>/colls/<collection_rid>/docs/<document_rid>` hivatkozás létrehozásához használt összes erőforrás ResourceId: beolvasásának elkerülése. Továbbá, mivel ezek az erőforrások újra létrejönnek (valószínűleg ugyanazzal a névvel), a gyorsítótárazás nem segít.
 
    <a id="tune-page-size"></a>
 8. **A jobb teljesítmény érdekében a lekérdezések/olvasási hírcsatornák méretének finomhangolása**
@@ -150,7 +150,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
-    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a [ResourceResponse\<t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) vagy a [FeedResponse\<t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) RequestCharge tulajdonságot a műveletek által felhasznált kérelmek számának méréséhez.
+    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a [ResourceResponse \< t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.resourceresponse) vagy a [FeedResponse \< t>](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.feedresponse) RequestCharge tulajdonságot a műveletek által felhasznált kérelmek számának méréséhez.
 
 
     ### <a name="sync-java-sdk-v2-maven-commicrosoftazureazure-documentdb"></a><a id="syncjava2-requestcharge"></a>Sync Java SDK v2 (Maven com. microsoft. Azure:: Azure-documentdb)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/18/2020
 ms.author: akjosh
-ms.openlocfilehash: 9ddac229fc38a91a8b97b24dc2807080b2295758
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34dbde25106dbb82fb9548ad53f368230f2c728c
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250555"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654414"
 ---
 # <a name="log-analytics-virtual-machine-extension-for-linux"></a>Log Analytics virtuális gépi bővítmény Linuxhoz
 
@@ -43,6 +43,7 @@ Az alábbi táblázat a Log Analytics virtuálisgép-bővítmény és a Log Anal
 
 | Log Analytics linuxos virtuálisgép-bővítmény verziója | Log Analytics ügynök csomagjának verziója | 
 |--------------------------------|--------------------------|
+| 1.13.9 | 1.13.3 – 3 |
 | 1.12.25 | [1.12.15 – 0](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.12.15-0) |
 | 1.11.15 | [1.11.0 – 9](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.11.0-9) |
 | 1.10.0 | [1.10.0 – 1](https://github.com/microsoft/OMS-Agent-for-Linux/releases/tag/OMSAgent_v1.10.0-1) |
@@ -86,7 +87,7 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
   "properties": {
     "publisher": "Microsoft.EnterpriseCloud.Monitoring",
     "type": "OmsAgentForLinux",
-    "typeHandlerVersion": "1.7",
+    "typeHandlerVersion": "1.13",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "workspaceId": "myWorkspaceId"
@@ -99,15 +100,15 @@ A következő JSON a Log Analytics ügynök bővítmény sémáját jeleníti me
 ```
 
 >[!NOTE]
->A fenti séma feltételezi, hogy a sablon legfelső szintjén lesz elhelyezve. Ha a sablonban elhelyezi a virtuális gép erőforrásában, a és `type` `name` a tulajdonságokat módosítani kell, a [lejjebb](#template-deployment)leírtak szerint.
+>A fenti séma feltételezi, hogy a sablon legfelső szintjén lesz elhelyezve. Ha a sablonban elhelyezi a virtuális gép erőforrásában, a `type` és a `name` tulajdonságokat módosítani kell, a [lejjebb](#template-deployment)leírtak szerint.
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa |
+| Name | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2018-06-01 |
 | közzétevő | Microsoft. EnterpriseCloud. monitoring |
-| type | OmsAgentForLinux |
+| típus | OmsAgentForLinux |
 | typeHandlerVersion | 1.7 |
 | Munkaterület azonosítója (például) | 6f680a37-00c6-41c7-a93f-1437e3462574 |
 | workspaceKey (például) | z4bU3p1/GrnWpQkky4gdabWXAhbWSTz70hm4m2Xt92XI + rSRgE8qVvRhsGo9TXffbrTahyrwv35W0pOqQAU7uQ = = |
@@ -119,7 +120,7 @@ Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üz
 
 A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/templates/child-resource-name-type.md). 
 
-Az alábbi példa azt feltételezi, hogy a virtuálisgép-bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a virtuális gép `"resources": []` objektumára kerül.
+Az alábbi példa azt feltételezi, hogy a virtuálisgép-bővítmény a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a JSON a `"resources": []` virtuális gép objektumára kerül.
 
 ```json
 {

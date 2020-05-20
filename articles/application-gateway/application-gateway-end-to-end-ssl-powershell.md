@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: 481cbda1d35f7d630dabca00fd01677f542447c2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81312498"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648415"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Végpontok közötti TLS konfigurálása a Application Gateway és a PowerShell használatával
 
@@ -167,7 +167,9 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    > [!NOTE]
    > Az alapértelmezett mintavétel lekéri a nyilvános kulcsot a háttér IP-címéhez tartozó *alapértelmezett* TLS-kötésből, és összehasonlítja az itt megadott nyilvános kulcs értékét. 
    > 
-   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson https://127.0.0.1/ el a háttér-kiszolgálók elemre, és erősítse meg, hogy melyik tanúsítványt használja a rendszer az *alapértelmezett* TLS-kötéshez. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a háttér-kiszolgálókon futó kézi https://127.0.0.1/ böngészőtől, akkor a rájuk vonatkozó alapértelmezett TLS-kötést kell beállítania. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
+   > Ha a háttérben használ állomásfejléc-t és Kiszolgálónév jelzése (SNI), akkor előfordulhat, hogy a beolvasott nyilvános kulcs nem az a kívánt hely, ahová a forgalom áramlik. Ha kétségei vannak, látogasson el a https://127.0.0.1/ háttér-kiszolgálók elemre, és erősítse meg, hogy melyik tanúsítványt használja a rendszer az *alapértelmezett* TLS-kötéshez. Az adott kérelemből származó nyilvános kulcs használata ebben a szakaszban. Ha a gazdagép-fejléceket és a SNI HTTPS-kötéseken használja, és nem kap választ és tanúsítványt a https://127.0.0.1/ háttér-kiszolgálókon futó kézi böngészőtől, akkor a rájuk vonatkozó alapértelmezett TLS-kötést kell beállítania. Ha ezt nem teszi meg, a mintavétel meghiúsul, és a háttér nem rendelkezik engedélyezési listával.
+   
+   A Application Gateway SNI kapcsolatos további információkért lásd: a TLS-leállítás [és a teljes körű TLS](ssl-overview.md)-végpont áttekintése a Application Gateway használatával.
 
    ```powershell
    $authcert = New-AzApplicationGatewayAuthenticationCertificate -Name 'allowlistcert1' -CertificateFile C:\cert.cer
@@ -200,7 +202,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
    $rule = New-AzApplicationGatewayRequestRoutingRule -Name 'rule01' -RuleType basic -BackendHttpSettings $poolSetting -HttpListener $listener -BackendAddressPool $pool
    ```
 
-10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek **standard\_kisméretű**, standard szintű **\_közepes**és **standard\_méretűek**.  A kapacitáshoz az elérhető értékek **1** – **10**.
+10. Konfigurálja az Application Gateway példányméretét. A rendelkezésre álló méretek **standard \_ kisméretű**, standard szintű ** \_ közepes**és **standard \_ méretűek**.  A kapacitáshoz az elérhető értékek **1** – **10**.
 
     ```powershell
     $sku = New-AzApplicationGatewaySku -Name Standard_Small -Tier Standard -Capacity 2
@@ -217,7 +219,7 @@ Az Application Gateway létrehozása előtt minden konfigurációs elem be van �
     - **TLSV1_1**
     - **TLSV1_2**
     
-    A következő példa a protokoll minimális verzióját állítja be **TLSv1_2re** , és engedélyezi a **\_tls\_-\_ECDHE\_\_\_ECDSA\_AES 128 GCM SHA256**, **\_TLS\_ECDHE\_\_\_ECDSA\_és\_AES 256 GCM SHA384**, valamint **a\_\_TLS\_\_\_RSA\_és AES 128 GCM sha256** .
+    A következő példa a protokoll minimális verzióját állítja be **TLSv1_2re** , és engedélyezi a **TLS- \_ ECDHE \_ ECDSA \_ \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA és \_ \_ AES \_ 256 \_ GCM \_ SHA384**, valamint ** \_ a TLS RSA és \_ \_ AES \_ 128 \_ GCM \_ sha256** .
 
     ```powershell
     $SSLPolicy = New-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -PolicyType Custom
@@ -310,7 +312,7 @@ Az előző lépések végigvezetik a teljes körű TLS-alkalmazás létrehozás�
    $gw = Get-AzApplicationGateway -Name AdatumAppGateway -ResourceGroupName AdatumAppGatewayRG
    ```
 
-2. Adja meg a TLS-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **\_TLS\_ECDHE\_\_ECDSA\_\_AES\_128 GCM sha256**, **\_TLS\_ECDHE\_\_ECDSA\_és\_AES\_256 GCM SHA384**, valamint a **\_TLS\_RSA\_\_és\_az\_AES 128 GCM sha256** az egyetlen megengedett.
+2. Adja meg a TLS-házirendet. A következő példában a **TLS 1.0** és a **TLS 1.1** le van tiltva, és a titkosító csomagok **TLS \_ ECDHE \_ ECDSA \_ \_ AES \_ 128 \_ GCM \_ sha256**, **TLS \_ ECDHE \_ ECDSA és \_ \_ AES \_ 256 \_ GCM \_ SHA384**, valamint a **TLS RSA és \_ \_ az \_ AES \_ 128 \_ GCM \_ sha256** az egyetlen megengedett.
 
    ```powershell
    Set-AzApplicationGatewaySSLPolicy -MinProtocolVersion TLSv1_2 -PolicyType Custom -CipherSuite "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256", "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384", "TLS_RSA_WITH_AES_128_GCM_SHA256" -ApplicationGateway $gw

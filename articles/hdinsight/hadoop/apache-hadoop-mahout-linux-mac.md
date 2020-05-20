@@ -1,39 +1,35 @@
 ---
 title: Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
-description: Megtudhatja, hogyan hozhatja ki a HDInsight (Hadoop) a filmkészítési javaslatokat az Apache Mahout Machine learning-kódtár használatával.
+description: Ismerje meg, hogy az Apache Mahout Machine learning-kódtár segítségével hogyan hozhatja elő a filmkészítési javaslatokat a HDInsight.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
-ms.date: 01/03/2020
-ms.openlocfilehash: 33110e9f1d45fcd11e5f4cad1b589ab929a9472d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,seoapr2020
+ms.date: 05/14/2020
+ms.openlocfilehash: ab4c2984bbaef84684432c660baadc78f3ef8e16
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75767636"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83656330"
 ---
-# <a name="generate-movie-recommendations-using-apache-mahout-with-apache-hadoop-in-hdinsight-ssh"></a>Filmkészítési javaslatok előállítása az Apache Mahout és az Apache Hadoop HDInsight (SSH) használatával
-
-[!INCLUDE [mahout-selector](../../../includes/hdinsight-selector-mahout.md)]
+# <a name="generate-recommendations-using-apache-mahout-in-azure-hdinsight"></a>Javaslatok készítése az Apache Mahout használatával az Azure HDInsight
 
 Ismerje meg, hogyan hozhatja elő a filmkészítési javaslatokat az [Apache Mahout](https://mahout.apache.org) Machine learning-kódtár és az Azure HDInsight használatával.
 
 A Mahout egy [gépi tanulási](https://en.wikipedia.org/wiki/Machine_learning) könyvtár a Apache Hadoop számára. A Mahout az adatfeldolgozáshoz szükséges algoritmusokat, például a szűrést, a besorolást és a fürtözést is tartalmazza. Ebben a cikkben egy ajánlási motort használ, amely a barátok által készített filmek alapján készít javaslatokat.
 
+A HDInsight-ben található Mahout verziójával kapcsolatos további információkért lásd: [HDInsight-verziók és Apache Hadoop-összetevők](../hdinsight-component-versioning.md).
+
 ## <a name="prerequisites"></a>Előfeltételek
 
 Egy Apache Hadoop-fürt a HDInsight-on. Lásd: Ismerkedés [a HDInsight Linux rendszeren](./apache-hadoop-linux-tutorial-get-started.md).
 
-## <a name="apache-mahout-versioning"></a>Apache Mahout verziószámozás
-
-A HDInsight-ben található Mahout verziójával kapcsolatos további információkért lásd: [HDInsight-verziók és Apache Hadoop-összetevők](../hdinsight-component-versioning.md).
-
 ## <a name="understanding-recommendations"></a>A javaslatok ismertetése
 
-A Mahout által biztosított függvények egyike egy ajánlási motor. Ez a motor a `userID`, `itemId`a és `prefValue` a (az elemre vonatkozó beállítások) formátumban fogadja el az adatmennyiséget. A Mahout Ezután elvégezheti a közös előfordulási elemzést annak megállapításához, hogy az adott *elemhez előnyben részesített felhasználók is rendelkeznek-e ezekkel a többi elemmel*. A Mahout ezután meghatározza a hasonló elemekkel rendelkező felhasználókat, amelyekkel ajánlásokat lehet tenni.
+A Mahout által biztosított függvények egyike egy ajánlási motor. Ez a motor a, a és a `userID` `itemId` `prefValue` (az elemre vonatkozó beállítások) formátumban fogadja el az adatmennyiséget. A Mahout Ezután elvégezheti a közös előfordulási elemzést annak megállapításához, hogy az adott *elemhez előnyben részesített felhasználók is rendelkeznek-e ezekkel a többi elemmel*. A Mahout ezután meghatározza a hasonló elemekkel rendelkező felhasználókat, amelyekkel ajánlásokat lehet tenni.
 
 A következő munkafolyamat egy egyszerűsített példa, amely a Movie-adatbevitelt használja:
 
@@ -45,11 +41,11 @@ A következő munkafolyamat egy egyszerűsített példa, amely a Movie-adatbevit
 
 ### <a name="understanding-the-data"></a>Az adatgyűjtés ismertetése
 
-A [GroupLens Research](https://grouplens.org/datasets/movielens/) kényelmesen, a Mahout-mel kompatibilis formátumban biztosítja a filmek minősítési információit. Ezek az adatkészletek a fürt alapértelmezett tárolójában érhetők `/HdiSamples/HdiSamples/MahoutMovieData`el.
+A [GroupLens Research](https://grouplens.org/datasets/movielens/) kényelmesen, a Mahout-mel kompatibilis formátumban biztosítja a filmek minősítési információit. Ezek az adatkészletek a fürt alapértelmezett tárolójában érhetők el `/HdiSamples/HdiSamples/MahoutMovieData` .
 
-Két fájl `moviedb.txt` és `user-ratings.txt`. A `user-ratings.txt` fájl az elemzés során használatos. A `moviedb.txt` a használatával felhasználóbarát szöveges adatokat biztosít az eredmények megtekintésekor.
+Két fájl `moviedb.txt` és `user-ratings.txt` . A `user-ratings.txt` fájl az elemzés során használatos. A a `moviedb.txt` használatával felhasználóbarát szöveges adatokat biztosít az eredmények megtekintésekor.
 
-A `user-ratings.txt` ben található adat a,, és `userID`és `movieID` `timestamp`rendszer `userRating`struktúrája, amely azt jelzi, hogy az egyes felhasználók mennyire értékelték a filmet. Íme egy példa az adatmennyiségre:
+A ben található adat a,, `user-ratings.txt` és és rendszer struktúrája, `userID` `movieID` `userRating` `timestamp` amely azt jelzi, hogy az egyes felhasználók mennyire értékelték a filmet. Íme egy példa az adatmennyiségre:
 
     196    242    3    881250949
     186    302    3    891717742
@@ -91,7 +87,7 @@ A `user-ratings.txt` ben található adat a,, és `userID`és `movieID` `timesta
     4    [690:5.0,12:5.0,234:5.0,275:5.0,121:5.0,255:5.0,237:5.0,895:5.0,282:5.0,117:5.0]
     ```
 
-    Az első oszlop a `userID`. A (z) "[" és "]" fájlban `movieId`szereplő`recommendationScore`értékek a következők:.
+    Az első oszlop a `userID` . A (z) "[" és "]" fájlban szereplő értékek a következők `movieId` : `recommendationScore` .
 
 2. A MovieDB. txt fájllal együtt a kimenetet is használhatja, hogy további információkat szolgáltasson a javaslatokról. Először másolja a fájlokat helyileg a következő parancsok használatával:
 

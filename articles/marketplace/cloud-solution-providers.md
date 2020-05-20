@@ -1,24 +1,24 @@
 ---
-title: Felhőalapú megoldások szolgáltatói | Azure piactér
-description: A kiadók az ajánlatokat Microsoft Cloud megoldás-szolgáltató (CSP) partneri csatornán keresztül is eladhatják.
+title: Cloud Solution Provider – Microsoft kereskedelmi piactér
+description: Ismerje meg, hogyan értékesítheti ajánlatait a kereskedelmi piactéren a Microsoft Cloud Solution Provider (CSP) program partneri csatornáján keresztül.
 author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: dsindona
-ms.openlocfilehash: b962610c585df288a9cb3297ed8e09c8abc5ac0a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: d7f14728f5acbcb76d3109d76b6de3c691e35543
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82160647"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83658089"
 ---
-# <a name="cloud-solution-providers"></a>Felhőszolgáltatók
+# <a name="cloud-solution-provider-program"></a>Cloud Solution Provider program
 
-A szoftveres ajánlatok több millió minősített Microsoft-ügyfelet is elérhet a felhőalapú megoldás-szolgáltatói (CSP) programban, az ajánlatok nyilvános rendelkezésre állása mellett a [Microsoft Web kirakatokon](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)keresztül.
+Ez a cikk azt ismerteti, hogyan konfigurálható az ajánlat, hogy elérhető legyen a Cloud Solution Provider (CSP) program számára. Az ajánlatok [kereskedelmi piactéren keresztüli webes kirakatokon](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace)keresztüli közzétételén kívül a CSP program segítségével több millió minősített Microsoft-ügyfelet is elérhet, amelyeket a program kiszolgál.
 
-A kiadók a rendelkezésre állásra vonatkozó ajánlatokat a CSP programban, egy új ajánlathoz vagy egy meglévőhöz konfigurálják, amely lehetővé teszi, hogy a partnerek eladják termékeiket, és kötegelt megoldásokat hozzanak létre az ügyfeleknek.
+Az új vagy meglévő ajánlatokat a CSP programban is konfigurálhatja, amely lehetővé teszi, hogy a CSP-partnerek eladják termékeiket, és kötegelt megoldásokat hozzanak létre az ügyfeleknek.
 
 A kiadók feladata, hogy a végfelhasználók szüntesse meg a hibajavítást, és hogy a CSP-programban és/vagy az ügyfeleknél olyan mechanizmust biztosítson, amely segítséget nyújt a partnereknek. Az ajánlott eljárás az, hogy partnereket biztosítson a CSP programban a felhasználói dokumentációval, a képzéssel és a szolgáltatás állapotával/KIMARADÁSÁVAL kapcsolatos értesítésekkel (ha vannak ilyenek), hogy a CSP programban részt vevő partnerek az 1. szintű támogatási kérések kezelésére alkalmasak legyenek.  
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: e0aea7e55381e9571b156701699f5f45315bb384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4181491053dd1f8d66afcd5f1df7cb96313011da
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81399710"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650608"
 ---
 # <a name="what-is-speech-to-text"></a>Mi az a diktálás?
 
@@ -24,6 +24,8 @@ ms.locfileid: "81399710"
 A beszédfelismerési szolgáltatásból, más néven beszédfelismerésből származó beszéd – szöveg lehetővé teszi a hangadatfolyamok valós idejű átírását szöveggé. Alkalmazásai, eszközei vagy eszközei felhasználhatják, megjeleníthetik és megtehetik ezt a szöveget a parancs bemenetként. Ezt a szolgáltatást a Microsoft a Cortana és az Office-termékekhez használt felismerési technológiával látja el. Zökkenőmentesen együttműködik a <a href="./speech-translation.md" target="_blank">fordítási <span class="docon docon-navigate-external x-hidden-focus"></span> </a> és <a href="./text-to-speech.md" target="_blank">szöveg- <span class="docon docon-navigate-external x-hidden-focus"></span> beszéd</a> szolgáltatási ajánlatokkal. Az elérhető beszéd – szöveg nyelvek teljes listáját a [támogatott nyelvek](language-support.md#speech-to-text)című részben tekintheti meg.
 
 A beszédfelismerési szolgáltatás alapértelmezés szerint az univerzális nyelvi modellt használja. Ez a modell a Microsoft tulajdonában lévő adataival lett betanítva, és a felhőben van üzembe helyezve. Ez optimális a társalgási és a diktálási forgatókönyvek esetében. A beszédfelismerés és az átiratok egyedi környezetben való használatakor egyéni akusztikai, nyelvi és kiejtési modelleket hozhat létre és állíthat be. A Testreszabás hasznos lehet a környezeti zaj vagy az iparágra jellemző szókincs kezelése során.
+
+A szövegbeviteli és a beszéd-szöveges szolgáltatás további hivatkozásokkal is lehetővé teszi a [kiejtés értékelését](rest-speech-to-text.md#pronunciation-assessment-parameters) , hogy kiértékelje a beszéd kiejtését, és visszajelzéseket küldjön a beszélők pontosságáról és a beszélt hangról. A kiejtés értékelésével a nyelvi tanulók felhasználhatják az azonnali visszajelzéseket, és javíthatják a kiejtését, hogy biztosan beszéljenek és a helyükön legyenek. A pedagógusok képesek a több beszélő kiejtésének valós idejű kiértékelésére. A szolgáltatás jelenleg az amerikai angol nyelvet támogatja, és nagyszámú, szakértők által végzett beszédfelismerési felméréssel összefügg.
 
 > [!NOTE]
 > A Bing Speech 2019. október 15-én lett leszerelve. Ha alkalmazásai, eszközei vagy termékei a Bing Speech API-kat használják, a beszédfelismerési szolgáltatásba való Migrálás megkönnyítéséhez útmutatókat hoztunk létre.
@@ -39,6 +41,8 @@ A Speech-Text szolgáltatás a [SPEECH SDK](speech-sdk.md)-n keresztül érhető
 
 Ha inkább a beszéd-szöveg REST-szolgáltatást szeretné használni, lásd: [REST API](rest-speech-to-text.md)-k.
 
+ - [Rövid útmutató: a kiejtés értékelése a hivatkozás bemenetével](rest-speech-to-text.md#pronunciation-assessment-parameters)
+
 ## <a name="tutorials-and-sample-code"></a>Oktatóanyagok és mintakód
 
 A beszédfelismerési szolgáltatás használatának lehetősége után próbálja ki az oktatóanyagot, amely bemutatja, hogyan ismerheti fel a beszédfelismerési szándékokat a Speech SDK és a LUIS használatával.
@@ -49,6 +53,7 @@ A Speech SDK mintakód a GitHubon érhető el. Ezek a minták olyan gyakori forg
 
 - [Beszéd – szöveg minták (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 - [Batch-átírási minták (REST)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/batch)
+- [Kiejtés-értékelési minták (REST)](rest-speech-to-text.md#pronunciation-assessment-parameters)
 
 ## <a name="customization"></a>Testreszabás
 

@@ -1,6 +1,6 @@
 ---
-title: Hibaelhárítás
-description: Az Azure szinapszis Analytics hibaelhárítása.
+title: A szinapszis SQL hibaelhárítása
+description: A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben.
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 02/04/2019
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 973d2339db1e55f2cca45025f2d678e5126f4317
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 618ef7329d28dc8006a338d8326d790a6a9d3554
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80743671"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650462"
 ---
-# <a name="troubleshooting-sql-analytics-in-azure-synapse"></a>Az SQL Analytics hibaelhárítása Az Azure Szinapszisban
+# <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>A szinapszis SQL hibaelhárítása Az Azure szinapszis Analyticsben
 
-Ez a cikk a gyakori hibaelhárítási kérdéseit sorolja fel.
+Ez a cikk a szinapszis SQL általános hibaelhárítási problémáit sorolja fel.
 
 ## <a name="connecting"></a>Csatlakozás
 
@@ -81,5 +81,5 @@ Ha további segítségre van szüksége a probléma megoldásához, néhány tov
 * [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 * [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
 * [MSDN-fórum](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
-* [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Stack Overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
 * [Twitter](https://twitter.com/hashtag/SQLDW)

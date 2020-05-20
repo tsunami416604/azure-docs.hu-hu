@@ -5,12 +5,12 @@ author: alexkarcher-msft
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: ce1a214d39f958af36931192aad4561459ca0573
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a2c57ca6a1f7eb50c277543e9fbe27a13f839bac
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121345"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648820"
 ---
 # <a name="azure-functions-networking-options"></a>Az Azure Functions hálózatkezelési lehetőségei
 
@@ -30,11 +30,11 @@ A Function apps több módon is üzemeltethető:
 
 |                |[Felhasználási terv](functions-scale.md#consumption-plan)|[Prémium szintű csomag](functions-scale.md#premium-plan)|[App Service terv](functions-scale.md#app-service-plan)|[App Service-környezet](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
-|[Bejövő IP-korlátozások és privát webhely-hozzáférés](#inbound-ip-restrictions)|✅igen|✅igen|✅igen|✅igen|
-|[Virtuális hálózat integrációja](#virtual-network-integration)|❌Nem|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅igen|
-|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌Nem| ✅igen |✅igen|✅igen|
-|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌Nem|✅igen|✅igen|✅igen|
-|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌Nem| ✅igen|✅igen|✅igen|
+|[Bejövő IP-korlátozások és privát webhely-hozzáférés](#inbound-ip-restrictions)|✅Igen|✅Igen|✅Igen|✅Igen|
+|[Virtuális hálózat integrációja](#virtual-network-integration)|❌Nem|✅Igen (regionális)|✅Igen (regionális és átjáró)|✅Igen|
+|[Virtuális hálózati eseményindítók (nem HTTP)](#virtual-network-triggers-non-http)|❌Nem| ✅Igen |✅Igen|✅Igen|
+|[Hibrid kapcsolatok](#hybrid-connections) (csak Windows)|❌Nem|✅Igen|✅Igen|✅Igen|
+|[Kimenő IP-korlátozások](#outbound-ip-restrictions)|❌Nem| ✅Igen|✅Igen|✅Igen|
 
 ## <a name="inbound-ip-restrictions"></a>Bejövő IP-korlátozások
 
@@ -47,15 +47,7 @@ További információ: [Azure app Service statikus hozzáférési korlátozások
 
 ## <a name="private-site-access"></a>Hozzáférés személyes oldalakhoz
 
-A privát helyhez való hozzáférés arra utal, hogy az alkalmazás csak magánhálózat, például egy Azure virtuális hálózat számára legyen elérhető.
-
-* A privát helyhez való hozzáférés a szolgáltatási végpontok konfigurálásakor a [prémium](./functions-premium-plan.md), a [fogyasztási](functions-scale.md#consumption-plan)és a [app Servicei](functions-scale.md#app-service-plan) csomagban érhető el.
-    * A szolgáltatási végpontok a **platform szolgáltatásai**  >  **hálózatkezelés**  >  **konfigurálása hozzáférési korlátozások megadása**  >  **szabály hozzáadása**alkalmazás alapján konfigurálhatók. A virtuális hálózatok mostantól szabálytípusként is kiválaszthatók.
-    * További információ: [Virtual Network szolgáltatás-végpontok](../virtual-network/virtual-network-service-endpoints-overview.md).
-    * Ne feledje, hogy a szolgáltatási végpontok esetében a függvény továbbra is teljes kimenő hozzáférést biztosít az internethez, még a konfigurált Virtual Network Integration is.
-* A privát hely elérését egy belső terheléselosztó (ILB) használatára konfigurált App Service Environmenton belül is elérhető. További információ: [belső terheléselosztó létrehozása és használata app Service Environmentsal](../app-service/environment/create-ilb-ase.md).
-
-A privát helyek hozzáférésének beállításával kapcsolatos további információkért lásd: [Azure functions Private site Access létrehozása](functions-create-private-site-access.md).
+[!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
 
 ## <a name="virtual-network-integration"></a>Virtuális hálózat integrációja
 

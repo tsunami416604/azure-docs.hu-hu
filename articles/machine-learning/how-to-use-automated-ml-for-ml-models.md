@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 03/10/2020
-ms.openlocfilehash: 0d6fa02578814c4c5d034be05cbc63093d70603b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 841d518c02dbc76a172890f6019d78d048f4e8bb
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81257232"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653849"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Automatizált gépi tanulási modellek létrehozása, áttekintése és üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -29,13 +29,13 @@ Python-kód alapú felhasználói felület esetén [konfigurálja az automatizá
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
+* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree) még ma.
 
 * Egy **nagyvállalati kiadású**Azure Machine learning-munkaterület. Lásd: [Azure Machine learning munkaterület létrehozása](how-to-manage-workspace.md).  Ha egy meglévő munkaterületet nagyvállalati kiadásra szeretne frissíteni, tekintse meg [a frissítés az Enterprise Edition](how-to-manage-workspace.md#upgrade)rendszerre című
 
 ## <a name="get-started"></a>Bevezetés
 
-1. Jelentkezzen be Azure Machine Learning a https://ml.azure.comkövetkező címen:. 
+1. Jelentkezzen be Azure Machine Learning a következő címen: https://ml.azure.com . 
 
 1. Válassza ki az előfizetést és a munkaterületet. 
 
@@ -66,7 +66,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
     1. A pontosság érdekében tekintse át a **beállításokat és az előnézet** űrlapot. Az űrlap intelligensen van feltöltve a fájl típusa alapján. 
 
-        Mező| Leírás
+        Mező| Description
         ----|----
         Fájlformátum| Meghatározza a fájlban tárolt adatelrendezést és-típust.
         Elválasztó| Egy vagy több karakter, amely egy egyszerű szövegben vagy más adatfolyamban található különálló, egymástól független régiók között határozza meg a határt.
@@ -93,7 +93,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 1. Válassza az **új számítás létrehozása** lehetőséget a számítási környezet konfigurálásához a kísérlethez.
 
-    Mező|Leírás
+    Mező|Description
     ---|---
     Számítási név| Adjon meg egy egyedi nevet, amely azonosítja a számítási környezetet.
     Virtuális gép mérete| Válassza ki a virtuális gép méretét a számítási feladatokhoz.
@@ -117,7 +117,7 @@ Ellenkező esetben megjelenik a legújabb gépi tanulási kísérletek listája,
 
 1. Választható További konfigurációs beállítások megtekintése: további beállítások, amelyekkel hatékonyabban vezérelheti a betanítási feladatot. Ellenkező esetben a rendszer az alapértelmezett értékeket a kísérletezés és az adatértékek alapján alkalmazza. 
 
-    További konfigurációk|Leírás
+    További konfigurációk|Description
     ------|------
     Elsődleges metrika| A modell pontozásához használt fő metrika. [További információ a modell metrikáinak használatáról](how-to-configure-auto-train.md#explore-model-metrics).
     Automatikus featurization| Ezzel a beállítással engedélyezheti vagy letilthatja az automatikus gépi tanulás által végzett előfeldolgozást. Az előfeldolgozás magában foglalja az automatikus adattisztítást, előkészítést és átalakítást szintetikus funkciók létrehozásához. Az idősorozat-előrejelzés feladattípusa nem támogatott. [További információ az előfeldolgozásról](#featurization). 
@@ -138,9 +138,9 @@ Az adatkészletek széles skáláját veheti igénybe, így ellenőrizheti, hogy
 >[!NOTE]
 > A lényegtelen típusokkal rendelkező funkciók esetében üres bejegyzések jelennek meg.
 
-Statisztika|Leírás
+Statisztika|Description
 ------|------
-Szolgáltatás| Az összesíteni kívánt oszlop neve.
+Funkció| Az összesíteni kívánt oszlop neve.
 Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
 Típus eloszlása| Az oszlopokban lévő típusok soron belüli értékeinek száma. A nullák a saját típusúak, így ez a vizualizáció hasznos lehet a páratlan vagy hiányzó értékek észleléséhez.
 Típus|Az oszlop késleltetett típusa. A lehetséges értékek a következők: karakterláncok, logikai értékek, dátumok és tizedesjegyek.
@@ -159,14 +159,14 @@ Csúcsosságát| Azt méri, hogy az oszlop adatmennyisége milyen mértékben le
 
 ## <a name="advanced-featurization-options"></a>Speciális featurization beállítások
 
-Az automatizált gépi tanulás automatikusan biztosítja az előfeldolgozást és az guardrails, így könnyebben azonosíthatja és kezelheti az adataival kapcsolatos lehetséges problémákat. 
+Az automatizált gépi tanulás automatikusan biztosítja az előfeldolgozást és az guardrails, így könnyebben azonosíthatja és kezelheti az adataival kapcsolatos lehetséges problémákat, például a [túlzottan illeszkedő és a kiegyensúlyozatlan adatértékeket](concept-manage-ml-pitfalls.md#prevent-over-fitting). 
 
 ### <a name="preprocessing"></a>Előfeldolgozás
 
 > [!NOTE]
 > Ha úgy tervezi, hogy az automatikus ML által létrehozott modelleket egy [ONNX-modellbe](concept-onnx.md)exportálja, a ONNX formátuma csak a *-val jelzett featurization-beállításokat támogatja. További információ a [modellek ONNX való átalakításáról](concept-automated-ml.md#use-with-onnx). 
 
-|&nbsp;Lépések előfeldolgozása| Leírás |
+|Lépések előfeldolgozása &nbsp;| Description |
 | ------------- | ------------- |
 |Eldobás magas fokú vagy nem variancia funkciók * |Ezeket a betanítási és érvényesítési csoportokból is elhúzhatja, beleértve az összes hiányzó értékkel rendelkező szolgáltatásokat, az összes sorban lévő és a rendkívül magas fokú (például kivonatok, azonosítók vagy GUID azonosítók) értékeket.|
 |Hiányzó értékek – imputáltak * |Numerikus funkciók esetében az oszlopban szereplő értékek átlaga.<br/><br/>A kategorikus funkciók esetében a leggyakoribb értékkel kell beszámítani az imputált funkciókat.|
@@ -188,7 +188,7 @@ A felhasználók áttekinthetik az guardrails a Studióban az automatikus ML-Fut
 
 Az adatguardrails három állapot egyikét jeleníti meg: **átadott**, **elkészült**vagy **riasztásos**.
 
-Állapot| Leírás
+Állam| Leírás
 ----|----
 Telt| Nem észlelhető adatprobléma, és nincs szükség felhasználói beavatkozásra. 
 Kész| A módosítások érvénybe lépnek az adatain. Javasoljuk, hogy a felhasználók ellenőrizzék az automatikus ML-es javítási műveleteket, hogy a módosítások megfeleljenek a várt eredményeknek. 
@@ -199,7 +199,7 @@ Riasztást kap| A rendszer olyan adatproblémát észlelt, amely nem orvosolhat�
 
 A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint azokat a társított állapotokat, amelyeket a felhasználók a kísérlet elküldésekor megkaphatnak.
 
-Guardrail|status|&nbsp;Trigger&nbsp;feltétele
+Guardrail|Állapot|Trigger feltétele &nbsp; &nbsp;
 ---|---|---
 Hiányzó szolgáltatási értékek imputálási |**Telt** <br><br><br> **Kész**| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékek imputálási.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputált.
 Magas fokú szolgáltatások kezelését |**Telt** <br><br><br> **Kész**| A rendszer elemezte a bemeneteket, és nem észlelt magas fokú sarkalatos funkciót. További információ a [magas fokú kardinális funkciók észleléséről.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer a feladatokhoz tartozó magas minőségi funkciókat észlelte, és kezelte azokat.
@@ -243,7 +243,7 @@ Az automatikus ML a kód írása nélkül segíti a modell üzembe helyezését:
     Mező| Érték
     ----|----
     Name (Név)| Adja meg a központi telepítés egyedi nevét.
-    Leírás| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
+    Description| Adja meg a leírását, hogy jobban azonosítható legyen a központi telepítés.
     Számítási típus| Válassza ki a telepíteni kívánt végpont típusát: *Azure Kubernetes Service (ak)* vagy *Azure Container instance (ACI)*.
     Számítási név| *Csak ak-ra vonatkozik:* Válassza ki a telepíteni kívánt AK-fürt nevét.
     Hitelesítés engedélyezése | Ezzel a beállítással engedélyezheti a jogkivonat-alapú vagy a kulcs alapú hitelesítést.

@@ -3,12 +3,12 @@ title: Erőforrás-elnevezési korlátozások
 description: Az Azure-erőforrások elnevezési szabályait és korlátozásait mutatja be.
 ms.topic: conceptual
 ms.date: 04/22/2020
-ms.openlocfilehash: fab1ab2bb779b3826c852e49da7970030d34594d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7ab012c5363de643c4cb5de8777de56fad5a9711
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086385"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83653704"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Az Azure-erőforrásokra vonatkozó elnevezési szabályok és korlátozások
 
@@ -81,9 +81,9 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | zárak | hozzárendelés hatóköre | 1–90 | Alfanumerikus karakterek, időszakok, aláhúzások, kötőjelek és zárójelek.<br><br>Nem végződhet ponttal. |
-> | policyassignments | hozzárendelés hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem `%` tartalmazhat, és nem végződhet ponttal vagy szóközzel. |
-> | policydefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem `%` tartalmazhat, és nem végződhet ponttal vagy szóközzel. |
-> | policySetDefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem `%` tartalmazhat, és nem végződhet ponttal vagy szóközzel.  |
+> | policyassignments | hozzárendelés hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
+> | policydefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel. |
+> | policySetDefinitions | definíció hatóköre | 1-128 megjelenítendő név<br><br>1-260 erőforrás neve | A megjelenítendő név bármilyen karaktert tartalmazhat.<br><br>Az erőforrás neve nem tartalmazhat `%` , és nem végződhet ponttal vagy szóközzel.  |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
@@ -346,7 +346,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > [!div class="mx-tableFixed"]
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
-> | databaseAccounts | globális | 3-31 | Kisbetűk, számok és kötőjelek.<br><br>Kezdés kisbetűs betűvel vagy számmal. |
+> | databaseAccounts | globális | 3-44 | Kisbetűk, számok és kötőjelek.<br><br>Kezdés kisbetűs betűvel vagy számmal. |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
@@ -630,7 +630,7 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | --- | --- | --- | --- |
 > | managedInstances | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
 > | kiszolgálók | globális | 1–63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. |
-> | kiszolgálók/rendszergazdák | kiszolgáló |  | Kell lennie `ActiveDirectory`. |
+> | kiszolgálók/rendszergazdák | kiszolgáló |  | Kell lennie `ActiveDirectory` . |
 > | kiszolgálók/adatbázisok | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet ponttal vagy szóközzel. |
 > | kiszolgálók/adatbázisok/syncGroups | adatbázis | 1-150 | Alfanumerikus karakterek, kötőjelek és aláhúzások. |
 > | kiszolgálók/elasticPools | kiszolgáló | 1-128 | Nem használható:<br>`<>*%&:\/?`<br><br>Nem végződhet ponttal vagy szóközzel. |
@@ -643,11 +643,11 @@ Az alábbi táblázatokban az alfanumerikus kifejezés a következőre hivatkozi
 > | Entitás | Hatókör | Hossz | Érvényes karakterek |
 > | --- | --- | --- | --- |
 > | storageAccounts | globális | 3–24 | Kisbetűk és számok. |
-> | storageAccounts/blobServices | tárfiók |  | Kell lennie `default`. |
+> | storageAccounts/blobServices | tárfiók |  | Kell lennie `default` . |
 > | storageAccounts/blobServices/tárolók | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>Kezdés kisbetűs betűvel vagy számmal. Egymást követő kötőjelek nem használhatók. |
-> | storageAccounts/fileServices | tárfiók |  | Kell lennie `default`. |
+> | storageAccounts/fileServices | tárfiók |  | Kell lennie `default` . |
 > | storageAccounts/fileServices/megosztások | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. Egymást követő kötőjelek nem használhatók. |
-> | storageAccounts/managementPolicies | tárfiók |  | Kell lennie `default`. |
+> | storageAccounts/managementPolicies | tárfiók |  | Kell lennie `default` . |
 > | blob | tároló | 1–1024 | Bármely URL-karakter, kis-és nagybetűk megkülönböztetése |
 > | üzenetsor | tárfiók | 3-63 | Kisbetűk, számok és kötőjelek.<br><br>A kötőjel nem kezdődhet vagy végződhet. Egymást követő kötőjelek nem használhatók. |
 > | tábla | tárfiók | 3-63 | Alfanumerikus karaktereket.<br><br>Kezdje a betűvel. |

@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 70ad69c1a34f656347b0cf53b28a1c35ac6ad043
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a8699b3942fe3a4b23f1d72036b7364cdab36f8e
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598240"
+ms.locfileid: "83651983"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Felügyelt identitások használata Azure SQL Database Azure Stream Analytics feladatokból való eléréséhez (előzetes verzió)
 
@@ -56,13 +56,17 @@ A felügyelt identitás létrehozása után ki kell választania egy Active Dire
 
    ![Active Directory felügyeleti oldal](./media/sql-db-output-managed-identity/active-directory-admin-page.png)
  
-1. A Active Directory felügyeleti lapon keressen rá egy felhasználóra vagy csoportra, hogy a rendszergazda legyen a SQL Server, majd kattintson a **kiválasztás**gombra.  
+1. A Active Directory felügyeleti lapon keressen rá egy felhasználóra vagy csoportra, hogy a rendszergazda legyen a SQL Server, majd kattintson a **kiválasztás**gombra.
 
    ![Active Directory adminisztrátor hozzáadása](./media/sql-db-output-managed-identity/add-admin.png)
 
-1. A **Active Directory felügyeleti** lapon válassza a **Mentés** lehetőséget. A rendszergazda módosításának folyamata néhány percet vesz igénybe.  
+   A Active Directory felügyeleti oldal megjeleníti a Active Directory összes tagját és csoportját. A nem kiválasztható felhasználók vagy csoportok nem választhatók ki, mert nem támogatottak az Azure AD-rendszergazdák. Tekintse meg a támogatott rendszergazdák listáját az **Azure ad-szolgáltatások és-korlátozások**   című részében [Azure Active Directory hitelesítés használata SQL Database vagy az Azure szinapszis használatával történő hitelesítéshez](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations). A szerepköralapú hozzáférés-vezérlés (RBAC) csak a portálra vonatkozik, és nincs propagálva a SQL Server. Emellett a kiválasztott felhasználó vagy csoport az a felhasználó, aki a következő szakaszban létre tudja hozni a **tárolt adatbázis-felhasználót** .
 
-## <a name="create-a-database-user"></a>Adatbázis-felhasználó létrehozása
+1. A **Active Directory felügyeleti** lapon válassza a **Mentés** lehetőséget. A rendszergazda módosításának folyamata néhány percet vesz igénybe.
+
+   Az Azure AD-rendszergazda beállításakor az új rendszergazda neve (felhasználó vagy csoport) nem lehet jelen a virtuális főadatbázisban SQL Server hitelesítési felhasználóként. Ha van ilyen, az Azure AD-rendszergazda telepítése sikertelen lesz, és visszaállítja a létrehozását, ami azt jelzi, hogy a rendszergazda (név) már létezik. Mivel a SQL Server hitelesítési felhasználó nem része az Azure AD-nek, a kiszolgáló Azure AD-hitelesítéssel való csatlakozásának bármilyen lépése a felhasználó meghibásodása esetén. 
+
+## <a name="create-a-contained-database-user"></a>Tárolt adatbázis-felhasználó létrehozása
 
 Ezután létre kell hoznia egy tárolt adatbázis-felhasználót a SQL Database, amely a Azure Active Directory identitásra van leképezve. A tárolt adatbázis-felhasználó nem rendelkezik bejelentkezési azonosítóval a Master adatbázishoz, de az adatbázishoz társított címtárban található identitáshoz rendeli. A Azure Active Directory identitás lehet egyéni felhasználói fiók vagy csoport. Ebben az esetben létre kell hoznia egy tárolt adatbázis-felhasználót a Stream Analytics feladatokhoz. 
 
@@ -92,15 +96,27 @@ Ezután létre kell hoznia egy tárolt adatbázis-felhasználót a SQL Database,
    CREATE USER [ASA_JOB_NAME] FROM EXTERNAL PROVIDER; 
    ```
 
+1. Ahhoz, hogy a Microsoft Azure Active Directory ellenőrizze, hogy a Stream Analytics-feladatot elérheti-e a SQL Database, Azure Active Directory engedélyt kell adni az adatbázissal való kommunikációra. Ehhez nyissa meg ismét a "tűzfalak és virtuális hálózat" lapot az Azure Portalon, és engedélyezze az "Azure-szolgáltatások és-erőforrások elérésének engedélyezése ehhez a kiszolgálóhoz" című részt. 
+
+   ![Tűzfal és virtuális hálózat](./media/sql-db-output-managed-identity/allow-access.png)
+
 ## <a name="grant-stream-analytics-job-permissions"></a>Stream Analyticsi feladatok engedélyeinek megadása
 
-A Stream Analyticsi feladatokhoz a felügyelt identitás jogosult a SQL Database-erőforráshoz való **kapcsolódásra** . A legvalószínűbb, hogy a Stream Analytics-feladatok olyan parancsokat futtathatnak, mint például a **Select**. Ezeket az engedélyeket SQL Server Management Studio használatával adhatja meg a Stream Analytics feladatnak. További információért lásd a [Grant (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) referenciát.
+Miután létrehozott egy tárolt adatbázis-felhasználót, és hozzáférést kapott az Azure-szolgáltatásokhoz a portálon az előző szakaszban leírtak szerint, a Stream Analyticsi feladatnak rendelkeznie kell a felügyelt identitással való **kapcsolódáshoz** a SQL Database erőforráshoz a felügyelt identitáson keresztül. Javasoljuk, hogy adja meg a SELECT és INSERT engedélyeket a Stream Analytics-feladathoz, mivel a Stream Analytics munkafolyamatban később szükség lesz rájuk. A **Select** engedély lehetővé teszi a feladatoknak a SQL Database lévő táblához való kapcsolódásának tesztelését. Az **Insert** engedély lehetővé teszi a végpontok közötti stream Analytics lekérdezések tesztelését, miután konfigurálta a bemenetet és a SQL Database kimenetet. Ezeket az engedélyeket SQL Server Management Studio használatával adhatja meg a Stream Analytics feladatnak. További információért lásd a [Grant (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql?view=sql-server-ver15) referenciát.
+
+Ha csak egy adott táblához vagy objektumhoz kíván engedélyeket adni az adatbázisban, használja a következő T-SQL szintaxist, és futtassa a lekérdezést. 
+
+```sql
+GRANT SELECT, INSERT ON OBJECT::TABLE_NAME TO ASA_JOB_NAME; 
+```
 
 Azt is megteheti, hogy a jobb gombbal a SQL Server Management Studio található SQL-adatbázisra kattint, és kiválasztja a **tulajdonságok > engedélyeket**. Az engedélyek menüben megtekintheti a korábban hozzáadott Stream Analytics feladatot, és manuálisan is engedélyezheti vagy megtagadhatja az engedélyeket.
 
 ## <a name="create-an-azure-sql-database-output"></a>Azure SQL Database kimenet létrehozása
 
 Most, hogy beállította a felügyelt identitását, készen áll a Azure SQL Database kimenetként való hozzáadására a Stream Analytics feladatokhoz.
+
+Győződjön meg arról, hogy létrehozott egy táblát a SQL Database a megfelelő kimeneti sémával. A tábla neve azon szükséges tulajdonságok egyike, amelyeket ki kell tölteni, amikor hozzáadja a SQL Database kimenetet a Stream Analytics feladatokhoz. Továbbá győződjön meg arról, hogy a feladatokban **kiválasztott** és **beszúrt** engedélyeket a kapcsolódás teszteléséhez és stream Analytics lekérdezések futtatásához. Ha még nem tette meg, tekintse meg az [engedélyezési stream Analytics feladatok engedélyei](#grant-stream-analytics-job-permissions) szakaszt. 
 
 1. Lépjen vissza a Stream Analytics feladathoz, és navigáljon a **kimenetek** lapra a **feladatok topológiája**alatt. 
 

@@ -3,12 +3,12 @@ title: Tudásbázis fejlesztése – QnA Maker
 description: Az aktív tanulással javíthatja a Tudásbázis minőségét. Áttekintheti, elfogadhatja vagy elutasíthatja a meglévő kérdések eltávolítása vagy módosítása nélkül.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 7fafc23eaf21099ebb974da226d07c351fa19699
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2e074716e4342a8748de4fb4e217548f1cb731f6
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80756746"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650776"
 ---
 # <a name="accept-active-learning-suggested-questions-in-the-knowledge-base"></a>Az aktív tanulás javasolt kérdéseinek elfogadása a Tudásbázisban
 
@@ -31,7 +31,7 @@ A javasolt kérdések megjelenítéséhez [be kell kapcsolni a QnA Maker erőfor
 
     [![A szűrés javaslatok szerint váltógomb csak az aktív tanulás javasolt kérdéseit jeleníti meg.](../media/improve-knowledge-base/filter-by-suggestions.png)](../media/improve-knowledge-base/filter-by-suggestions.png#lightbox)
 
-1. Minden QnA pár az új kérdéses alternatívákat javasolja a pipa jelzéssel `✔` , a kérdés elfogadásához `x` vagy a javaslatok elutasításához. Jelölje be a jelölőnégyzetet a kérdés hozzáadásához.
+1. Minden QnA pár az új kérdéses alternatívákat javasolja a pipa jelzéssel, a `✔` kérdés elfogadásához vagy a `x` javaslatok elutasításához. Jelölje be a jelölőnégyzetet a kérdés hozzáadásához.
 
     [![Válassza ki vagy utasítsa el az aktív tanulás javasolt kérdésének alternatívákat a zöld pipa vagy a vörös törlés jelölésének kiválasztásával.](../media/improve-knowledge-base/accept-active-learning-suggestions-small.png)](../media/improve-knowledge-base/accept-active-learning-suggestions.png#lightbox)
 
@@ -50,7 +50,7 @@ A javasolt kérdések megjelenítéséhez [be kell kapcsolni a QnA Maker erőfor
 
 A bot vagy más ügyfélalkalmazás a következő építészeti folyamatot használja az aktív tanulás használatához:
 
-* A robot a GenerateAnswer API-val beolvassa [a Tudásbázisból](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) a választ `top` , és a tulajdonság használatával számos választ kaphat.
+* A robot a GenerateAnswer API-val beolvassa [a Tudásbázisból a választ](#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers) , és a `top` tulajdonság használatával számos választ kaphat.
 * A bot explicit visszajelzést határoz meg:
     * A saját [egyéni üzleti logikájának](#use-the-score-property-along-with-business-logic-to-get-list-of-answers-to-show-user)használatával kiszűrheti az alacsony pontszámot.
     * A bot vagy az ügyfél alkalmazásban a lehetséges válaszok megjelenítése a felhasználó számára, és a felhasználó kiválasztott válaszának beolvasása.
@@ -59,7 +59,7 @@ A bot vagy más ügyfélalkalmazás a következő építészeti folyamatot haszn
 
 ### <a name="use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers"></a>A GenerateAnswer kérelemben szereplő Top tulajdonsággal több egyező választ kaphat
 
-Ha egy kérdés beküldésekor QnA Maker választ, a `top` JSON-törzs tulajdonsága beállítja a visszaadott válaszok számát.
+Ha egy kérdés beküldésekor QnA Maker választ, a JSON- `top` törzs tulajdonsága beállítja a visszaadott válaszok számát.
 
 ```json
 {
@@ -127,10 +127,10 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP-kérelem tulajdonsága|Name (Név)|Típus|Cél|
+|HTTP-kérelem tulajdonsága|Name|Típus|Cél|
 |--|--|--|--|
 |URL-útvonal paraméter|Tudásbázis-azonosító|sztring|A Tudásbázis GUID azonosítója.|
-|Egyéni altartomány|QnAMaker-erőforrás neve|sztring|Az erőforrás neve a QnA Maker egyéni altartománya lesz. Ez a Tudásbázis közzététele után a beállítások lapon érhető el. A lista a `host`.|
+|Egyéni altartomány|QnAMaker-erőforrás neve|sztring|Az erőforrás neve a QnA Maker egyéni altartománya lesz. Ez a Tudásbázis közzététele után a beállítások lapon érhető el. A lista a `host` .|
 |Fejléc|Content-Type|sztring|Az API-nak eljuttatott törzs adathordozó-típusa. Az alapértelmezett érték:`application/json`|
 |Fejléc|Engedélyezés|sztring|A végpont kulcsa (EndpointKey XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX).|
 |Post törzs|JSON-objektum|JSON|A betanítási visszajelzés|
@@ -309,9 +309,9 @@ async callTrain(stepContext){
 
 ## <a name="active-learning-is-saved-in-the-exported-knowledge-base"></a>Az aktív tanulás az exportált Tudásbázisban lett mentve
 
-Ha az alkalmazás aktív tanulási lehetőséggel rendelkezik, és exportálja az alkalmazást, `SuggestedQuestions` a TSV-fájlban lévő oszlop megőrzi az aktív tanulási adatait.
+Ha az alkalmazás aktív tanulási lehetőséggel rendelkezik, és exportálja az alkalmazást, a `SuggestedQuestions` TSV-fájlban lévő oszlop megőrzi az aktív tanulási adatait.
 
-Az `SuggestedQuestions` oszlop az implicit, `autosuggested`a és a kifejezett `usersuggested` visszajelzések JSON-objektuma. Példa erre a JSON-objektumra egyetlen felhasználó által beküldött kérdés `help` esetén:
+Az `SuggestedQuestions` oszlop az implicit, a `autosuggested` és a kifejezett VISSZAJELZÉSek JSON-objektuma `usersuggested` . Példa erre a JSON-objektumra egyetlen felhasználó által beküldött kérdés esetén `help` :
 
 ```JSON
 [
@@ -329,11 +329,6 @@ Az `SuggestedQuestions` oszlop az implicit, `autosuggested`a és a kifejezett `u
     }
 ]
 ```
-
-Az Alters API letöltése lehetőséggel áttekintheti ezeket a módosításokat a REST vagy a Language-alapú SDK-k használatával:
-* [REST API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc)
-* [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.alterationsextensions.getasync?view=azure-dotnet)
-
 
 Ha újraimportálja az alkalmazást, az aktív tanulás továbbra is gyűjti az adatokat, és javaslatokat javasol a tudásbázishoz.
 

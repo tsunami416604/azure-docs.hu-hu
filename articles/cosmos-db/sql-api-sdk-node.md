@@ -1,19 +1,19 @@
 ---
 title: 'Azure Cosmos DB: SQL Node. js API, SDK &-erőforrások'
 description: Ismerkedjen meg az SQL Node. js API-val és az SDK-val, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat, valamint a Azure Cosmos DB Node. js SDK egyes verzióiban végrehajtott módosításokat.
-author: deborahc
+author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: nodejs
 ms.topic: reference
-ms.date: 09/24/2018
-ms.author: dech
-ms.openlocfilehash: 03f79535b3a62fbb4d0309ae86a142bd842cc308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/11/2020
+ms.author: anfeldma
+ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982888"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83650736"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK az SQL API-hoz: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -21,8 +21,9 @@ ms.locfileid: "80982888"
 > * [.NET-módosítási hírcsatorna](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Async Java](sql-api-sdk-async-java.md)
-> * [Java](sql-api-sdk-java.md)
+> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Async Java SDK v2](sql-api-sdk-async-java.md)
+> * [Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [REST erőforrás-szolgáltató](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
@@ -164,7 +165,7 @@ database.containers.create({ id: 'my-container', throughput: 10000 })
 ```
 
 ##### <a name="azurecosmos-sign"></a>@azure/cosmos-sign
-A fejléc- @azure/cosmos-signjogkivonat generációját egy új könyvtárba osztották fel. Bárki, aki a Cosmos-REST API hívja fel a jelet, használhatja a fejléceket ugyanazzal a kóddal @azure/cosmos.
+A fejléc-jogkivonat generációját egy új könyvtárba osztották fel @azure/cosmos-sign . Bárki, aki a Cosmos-REST API hívja fel a jelet, használhatja a fejléceket ugyanazzal a kóddal @azure/cosmos .
 
 ##### <a name="uuid-for-generated-ids"></a>A generált azonosítók UUID azonosítója
 a v2 egyéni kóddal rendelkezett az elemek azonosítóinak létrehozásához. A jól ismert és karbantartott közösségi könyvtár UUID-t váltottuk ki.
@@ -256,7 +257,7 @@ Nem mindig a leglátványosabb változások, de segítünk a csapatnak jobb kód
 * A 2.0.3-ben bevezetett hibajavítások definíciós problémája
 
 ### <a name=""></a><a name="2.0.3"/>2.0.3</a>
-* Függőség `big-integer` eltávolítása
+* `big-integer`Függőség eltávolítása
 * Váltson a AsyncIterable típusra vonatkozó hivatkozási irányelvekre. Az írógéppel a felhasználóknak már nem kell testreszabnia a "lib" beállítást.
 * Sajtóhiba-javítások
 

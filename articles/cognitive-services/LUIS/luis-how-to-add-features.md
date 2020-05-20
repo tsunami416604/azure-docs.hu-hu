@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: 12445ec5b14f4c274e471bf1b061a3b221664d20
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8b52102ec26ec94097e4b5b9aa1b1730787cfa4b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592304"
+ms.locfileid: "83654104"
 ---
 # <a name="use-features-to-boost-signal-of-word-list"></a>Szolgáltatások használata a szólisták jelzésének növeléséhez
 
@@ -49,8 +49,23 @@ Tekintse át a [fogalmakat](luis-concept-feature.md) , hogy megértse, mikor és
 <a name="delete-phrase-list"></a>
 <a name="deactivate-phrase-list"></a>
 
+
 > [!Note]
 > A kifejezések listáját törölheti vagy inaktiválhatja a **ml-szolgáltatások** oldal környezetfüggő eszköztárán.
+
+## <a name="global-phrase-list-applies-to-entire-app"></a>A globális kifejezések listája a teljes alkalmazásra vonatkozik
+
+A kifejezések listáját arra a szándékra vagy entitásra kell alkalmazni, amelyet segíteni kíván, de előfordulhat, hogy a kifejezéseket a teljes alkalmazásra **globális** szolgáltatásként kell alkalmazni.
+
+A ML-szolgáltatások lapon válassza ki a kifejezés listát, majd válassza a **globális** lehetőséget a felső kontextus eszköztáron.
+
+## <a name="model-as-a-feature"></a>Modell szolgáltatásként
+
+Az entitás lehet egy [szándék vagy entitás szolgáltatás](luis-concept-feature.md).
+
+Ha egy entitást szolgáltatásként szeretne hozzáadni egy szándékhoz, válassza ki a szándékot a szándékok lapról, majd válassza a **+ szolgáltatás hozzáadása** lehetőséget a környezetfüggő eszköztáron. A lista tartalmazza az összes olyan kifejezés-listát és entitást, amely szolgáltatásként alkalmazható.
+
+Ha egy entitást szolgáltatásként szeretne hozzáadni egy másik entitáshoz, hozzáadhatja a szolgáltatást a leképezés részletei lapon az [Entity paletta](label-entity-example-utterance.md#adding-entity-as-a-feature-from-the-entity-palette) használatával, vagy [hozzáadhatja a szolgáltatást](luis-how-to-add-entities.md#add-a-feature-to-a-machine-learned-entity) az entitás részletei lapon.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -3,17 +3,17 @@ title: Azure Cosmos DB Java SDK v4-es verziójának diagnosztizálása és megol
 description: A Java SDK v4-ben a Azure Cosmos DB problémák azonosításához, diagnosztizálásához és hibaelhárításához használhatók olyan funkciók, mint az ügyféloldali naplózás és más külső eszközök.
 author: anfeldma-ms
 ms.service: cosmos-db
-ms.date: 05/08/2020
+ms.date: 05/11/2020
 ms.author: anfeldma
 ms.devlang: java
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
-ms.openlocfilehash: bdec785ccec2c388eb737da3ec494b525941e2a6
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 2deec6f6753a03ab46260432c6faceab009e2911
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982598"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83651872"
 ---
 # <a name="troubleshoot-issues-when-you-use-azure-cosmos-db-java-sdk-v4-with-sql-api-accounts"></a>A Azure Cosmos DB Java SDK v4 SQL API-fiókokkal való használatakor felmerülő problémák elhárítása
 
@@ -24,7 +24,7 @@ ms.locfileid: "82982598"
 > 
 
 > [!IMPORTANT]
-> Ez a cikk csak Azure Cosmos DB Java SDK v4-re vonatkozó hibaelhárítást ismerteti. További információért tekintse meg a Azure Cosmos DB Java SDK v4 kibocsátási megjegyzéseit, a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos)és a [teljesítménnyel kapcsolatos tippeket](performance-tips-java-sdk-v4-sql.md) . Ha jelenleg a v4-nél régebbi verziót használ, tekintse meg a következőt: [migrálás Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -re – útmutató a v4-re való frissítéshez.
+> Ez a cikk csak Azure Cosmos DB Java SDK v4-re vonatkozó hibaelhárítást ismerteti. További információért tekintse meg a Azure Cosmos DB Java SDK v4 [kibocsátási megjegyzéseit](sql-api-sdk-java-v4.md), a [Maven-tárházat](https://mvnrepository.com/artifact/com.azure/azure-cosmos)és a [teljesítménnyel kapcsolatos tippeket](performance-tips-java-sdk-v4-sql.md) . Ha jelenleg a v4-nél régebbi verziót használ, tekintse meg a következőt: [migrálás Azure Cosmos db Java SDK v4](migrate-java-v4-sdk.md) -re – útmutató a v4-re való frissítéshez.
 >
 
 Ez a cikk általános problémákról, megkerülő megoldásokról, diagnosztikai lépésekről és eszközökről tartalmaz Azure Cosmos DB Java SDK v4 Azure Cosmos DB SQL API-fiókokkal való használatakor.
@@ -82,7 +82,7 @@ Kövesse a [gazdagépen a kapcsolatok korlátját](#connection-limit-on-host)is.
 
 #### <a name="http-proxy"></a>HTTP-proxy
 
-Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK `ConnectionPolicy`-ban konfigurált kapcsolatok számát.
+Ha HTTP-proxyt használ, győződjön meg arról, hogy az képes támogatni az SDK-ban konfigurált kapcsolatok számát `ConnectionPolicy` .
 Ellenkező esetben a csatlakoztatási problémákkal szembesül.
 
 #### <a name="invalid-coding-pattern-blocking-netty-io-thread"></a>Érvénytelen kódolási minta: a nettó i/o-szál blokkolása
@@ -135,7 +135,7 @@ A megkerülő megoldással módosíthatja a szálat, amelyen időt vesz igénybe
 ExecutorService ex  = Executors.newFixedThreadPool(30);
 Scheduler customScheduler = Schedulers.fromExecutor(ex);
 ```
-Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a `customScheduler` által az `.publishOn(customScheduler)` API-val megadott feldolgozónak állítsa be.
+Előfordulhat, hogy olyan munkát kell végeznie, amely időt vesz igénybe, például számítási feldolgozóként vagy az IO blokkolása. Ebben az esetben a szálat a által az API-val megadott feldolgozónak állítsa be `customScheduler` `.publishOn(customScheduler)` .
 
 ### <a name="java-sdk-v4-maven-comazureazure-cosmos-async-api"></a><a id="java4-apply-custom-scheduler"></a>Java SDK v4 (Maven com. Azure:: Azure-Cosmos) aszinkron API
 
@@ -146,7 +146,7 @@ container.createItem(family)
         // ...
     );
 ```
-A használatával `publishOn(customScheduler)`felszabadítja a nettó i/o-szálat, és átválthat az egyéni ütemező által biztosított saját egyéni szálra. Ez a módosítás megoldja a problémát. Többé nem jelenik meg `io.netty.handler.timeout.ReadTimeoutException` a hiba.
+A használatával `publishOn(customScheduler)` felszabadítja a nettó i/o-szálat, és átválthat az egyéni ütemező által biztosított saját egyéni szálra. Ez a módosítás megoldja a problémát. Többé nem jelenik meg a `io.netty.handler.timeout.ReadTimeoutException` hiba.
 
 ### <a name="request-rate-too-large"></a>Túl nagy a kérelmek aránya
 Ez a hiba kiszolgálóoldali hiba. Azt jelzi, hogy a kiosztott átviteli sebességet használták. Próbálkozzon újra később. Ha ez a hiba gyakran előfordul, vegye figyelembe a gyűjtemény átviteli sebességének növekedését.
@@ -230,7 +230,7 @@ log4j.appender.A1.layout.ConversionPattern=%d %5X{pid} [%t] %-5p %c - %m%n
 További információkért lásd a [sfl4j naplózási kézikönyvét](https://www.slf4j.org/manual.html).
 
 ## <a name="os-network-statistics"></a><a name="netstats"></a>Operációs rendszer hálózati statisztikája
-A netstat parancs futtatásával megtudhatja, hogy hány kapcsolat van olyan állapotban, mint `ESTABLISHED` a `CLOSE_WAIT`és a.
+A netstat parancs futtatásával megtudhatja, hogy hány kapcsolat van olyan állapotban, mint a `ESTABLISHED` és a `CLOSE_WAIT` .
 
 Linux rendszeren a következő parancsot futtathatja.
 ```bash

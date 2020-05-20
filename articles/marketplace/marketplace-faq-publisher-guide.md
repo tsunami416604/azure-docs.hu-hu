@@ -1,22 +1,22 @@
 ---
 title: Microsoft kereskedelmi Marketplace-közzétevő – GYIK
-description: Választ kaphat az Azure Marketplace-ről és a Microsoft AppSource-ról gyakran feltett kérdésekre.
+description: Választ kaphat az Azure Marketplace-re és a Microsoft AppSourcera vonatkozó gyakori kérdésekre.
 author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: be9a9d6b93068adc6d09db9b9ac23de9abd6a69f
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 7e4ec8a5772f0fbc1c0e67ba07a172daeac9b91b
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83005174"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657889"
 ---
-# <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
+# <a name="common-questions-about-microsoft-commercial-marketplace"></a>Gyakori kérdések a Microsoft kereskedelmi piactérről
 
-Ez a cikk a Microsoft kereskedelmi piactérről kapcsolatos gyakori kérdésekre ad választ.
+Ez a cikk a kereskedelmi piactérsel kapcsolatos gyakori kérdésekre ad választ.
 
 ## <a name="general"></a>Általános kérdések
 
@@ -308,7 +308,7 @@ A visszatérítések fogadásához az ügyfelek egy megadott időkereten belül 
 
 Íme néhány erőforrás a kezdéshez:
 
-- [A Microsoft kereskedelmi piactér bemutatása](https://docs.microsoft.com/learn/commercial-marketplace/intro-commercial-marketplace/intro-commercial-marketplace/)
+- [A Microsoft kereskedelmi piactér bemutatása](/azure/marketplace/marketplace-publishers-guide)
 - [Microsoft kereskedelmi piactér – partneri központ](https://partner.microsoft.com/asset/collection/commercial-marketplace#/)
 - [Üdvözöljük a kereskedelmi piactéren](https://docs.microsoft.com/azure/marketplace/)
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace SaaS-alkalmazások – közzétételi útmutató
-description: Részletes útmutató és közzétételi ellenőrzőlista az SaaS-alkalmazások Azure Marketplace-en való közzétételéhez
+title: SaaS-alkalmazások – közzétételi útmutató – Microsoft kereskedelmi piactér
+description: Az SaaS-alkalmazások Microsoft AppSource és az Azure Marketplace-en való közzétételéhez szükséges követelmények és erőforrások.
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security, SaaS
 author: dsindona
 ms.service: marketplace
@@ -8,16 +8,16 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: dsindona
-ms.openlocfilehash: 3a3cbe26b9fa82e236acbfd0c7e8ca3e81a7aa75
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4d1ee4fc0760e76af7475dd3b2dc83f306e7a7bd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82117233"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83657831"
 ---
-# <a name="saas-applications-offer-publishing-guide"></a>SaaS-alkalmazások ajánlat-közzétételi útmutató
+# <a name="saas-applications-offer-publishing-guide"></a>Az SaaS-alkalmazások ajánlat-közzétételi útmutatója
 
-Az SaaS-alkalmazások közzétehető a piactéren három különböző hívással: "Kapcsolatfelvétel", "kipróbálás" és "Letöltés most". Ez az útmutató a három lehetőséget ismerteti, beleértve az egyes követelmények követelményeit is. 
+Az SaaS-alkalmazásokat a kereskedelmi piactéren teheti közzé három különböző hívással: "Kapcsolatfelvétel", "kipróbálás most" és "Letöltés most". Ez a cikk ezt a három lehetőséget ismerteti, beleértve az egyes követelmények követelményeit is. 
 
 ## <a name="offer-overview"></a>Ajánlat áttekintése  
 
@@ -29,7 +29,7 @@ Az SaaS-alkalmazások Microsoft AppSource és az Azure Marketplace-en érhetők 
 | SaaS-alkalmazások ajánlata | Üzleti követelmények | Technikai követelmények |  
 | --- | --- | --- |  
 | **Kapcsolatfelvétel** | Igen | Nem |  
-| **PowerBI/Dynamics** | Igen | Igen (Azure AD-integráció) |  
+| **Power BI/Dynamics** | Igen | Igen (Azure AD-integráció) |  
 | **SaaS-alkalmazások**| Igen | Igen (Azure AD-integráció) |     
 
 ## <a name="saas-list"></a>SaaS-lista

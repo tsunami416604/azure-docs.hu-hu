@@ -11,12 +11,12 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: d89baa069543c0571d42807f8034e6008eaddbc8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 1bc5f5f5ffe44cbefe5a131aa041e5afc2e8257f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83197596"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659226"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statisztika a szinapszis SQL-ben
 
@@ -30,11 +30,13 @@ Minél több az SQL Pool-erőforrás ismeri az adatait, annál gyorsabban futtat
 
 Az SQL Pool lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani.
 
-Ha például az optimalizáló becslése szerint a lekérdezés szűrésének dátuma egy sort ad vissza, akkor egy csomagot fog kiválasztani. Ha úgy becsüli, hogy a kijelölt dátum 1 000 000 sort ad vissza, akkor egy másik csomagot ad vissza.
+Ha például az optimalizáló becslése szerint a lekérdezés szűrésének dátuma egy sort ad vissza, akkor az egy csomagot fog választani. Ha úgy becsüli, hogy a kijelölt dátum 1 000 000 sort ad vissza, akkor egy másik csomagot ad vissza.
 
 ### <a name="automatic-creation-of-statistics"></a>Statisztikák automatikus létrehozása
 
-Az SQL-készlet elemzi a hiányzó statisztikai adatok bejövő felhasználói lekérdezéseit, amikor az adatbázis AUTO_CREATE_STATISTICS beállítás értéke: `ON` .  Ha hiányoznak a statisztikák, a lekérdezés-optimalizáló a lekérdezési predikátumban vagy a csatlakozás feltételben lévő egyes oszlopokra vonatkozó statisztikát hoz létre. Ez a függvény a lekérdezési tervhez tartozó kardinális becslések javítására szolgál.
+Az SQL-készlet elemzi a hiányzó statisztikai adatok bejövő felhasználói lekérdezéseit, amikor az adatbázis AUTO_CREATE_STATISTICS beállítás értéke: `ON` .  Ha hiányoznak a statisztikák, a lekérdezés-optimalizáló a lekérdezési predikátumban vagy a csatlakozás feltételben lévő egyes oszlopokra vonatkozó statisztikát hoz létre. 
+
+Ez a függvény a lekérdezési tervhez tartozó kardinális becslések javítására szolgál.
 
 > [!IMPORTANT]
 > A statisztikák automatikus létrehozása jelenleg alapértelmezés szerint be van kapcsolva.
@@ -101,7 +103,9 @@ Az egyik első kérdés a lekérdezés hibaelhárításakor: **"a statisztikák 
 
 Ezt a kérdést nem lehet megválaszolni az adatkor alapján. Előfordulhat, hogy a naprakész statisztikai objektumok elavultak, ha a mögöttes adatok nem módosultak. Ha a sorok száma lényegesen módosult, vagy egy oszlop értékeinek eloszlása megváltozik, *akkor* itt az ideje, hogy frissítse a statisztikát.
 
-Nincs elérhető dinamikus felügyeleti nézet annak megállapításához, hogy a táblázaton belüli adatok módosultak-e a legutóbbi statisztika frissítése óta. A statisztikák korának ismerete a kép egy részének megadását is lehetővé teszi. A következő lekérdezéssel megállapíthatja, hogy az egyes táblákon mikor frissítették utoljára a statisztikát.
+Nincs elérhető dinamikus felügyeleti nézet annak megállapításához, hogy a táblázaton belüli adatok módosultak-e a legutóbbi statisztika frissítése óta. A statisztikák korának ismerete a kép egy részének megadását is lehetővé teszi. 
+
+A következő lekérdezéssel megállapíthatja, hogy az egyes táblákon mikor frissítették utoljára a statisztikát.
 
 > [!NOTE]
 > Ha egy oszlop értékeinek eloszlásában jelentős változások történnek, akkor frissítse a statisztikát, függetlenül attól, hogy mikor frissítették őket.
@@ -137,9 +141,11 @@ Az adatraktárban lévő **dátumok oszlopai** például általában gyakori sta
 
 Előfordulhat, hogy az ügyfél táblában nem kell frissíteni a nemek oszlopának statisztikáit. Feltételezve, hogy a terjesztés állandó az ügyfelek között, és új sorokat ad hozzá a táblázat variációhoz, nem fogja módosítani az adateloszlást.
 
-Ha azonban az adattárház csak egyetlen nemet tartalmaz, és egy új követelmény több nemet eredményez, akkor frissítenie kell a nemek oszlop statisztikáit. További információkért tekintse át a [statisztikai](/sql/relational-databases/statistics/statistics) adatokat ismertető cikket.
+Ha azonban az adattárház csak egyetlen nemet tartalmaz, és egy új követelmény több nemet eredményez, akkor frissítenie kell a nemek oszlop statisztikáit. 
 
-### <a name="implementing-statistics-management"></a>A statisztikák kezelésének megvalósítása
+További információkért tekintse át a [statisztikai](/sql/relational-databases/statistics/statistics) adatokat ismertető cikket.
+
+### <a name="implement-statistics-management"></a>A statisztikák kezelésének megvalósítása
 
 Gyakran érdemes kiterjeszteni az betöltési folyamatot annak érdekében, hogy a statisztikák a terhelés végén frissüljenek. Az adatok betöltése akkor történik meg, amikor a táblázatok leggyakrabban változnak a méretük, az értékek eloszlása vagy mindkettő. Így a betöltési folyamat olyan logikai hely, amely bizonyos felügyeleti folyamatokat implementál.
 
@@ -275,6 +281,7 @@ CREATE STATISTICS stats_col3 on dbo.table3 (col3);
 #### <a name="use-a-stored-procedure-to-create-statistics-on-all-columns-in-a-database"></a>Tárolt eljárás használata statisztikák létrehozásához az adatbázis összes oszlopán
 
 Az SQL-készlet nem rendelkezik olyan rendszerszintű tárolt eljárással, amely egyenértékű a SQL Server sp_create_statsával. Ez a tárolt eljárás egyetlen oszlopos statisztikai objektumot hoz létre az adatbázis minden olyan oszlopán, amely még nem rendelkezik statisztikával.
+
 Az alábbi példa segítséget nyújt az adatbázis kialakításának megkezdéséhez. Nyugodtan alkalmazkodhat az igényeihez:
 
 ```sql
@@ -418,7 +425,9 @@ Például:
 UPDATE STATISTICS dbo.table1;
 ```
 
-A frissítés STATISZTIKÁi utasítás egyszerűen használható. Ne feledje, hogy a táblázat *összes* statisztikáját frissíti, és a szükségesnél több munkát kér. Ha a teljesítmény nem jelent problémát, ez a módszer a legegyszerűbb és legteljesebb mód annak biztosítására, hogy a statisztikák naprakészek legyenek.
+A frissítés STATISZTIKÁi utasítás egyszerűen használható. Ne feledje, hogy a táblázat *összes* statisztikáját frissíti, és a szükségesnél több munkát kér. 
+
+Ha a teljesítmény nem jelent problémát, ez a módszer a legegyszerűbb és legteljesebb mód annak biztosítására, hogy a statisztikák naprakészek legyenek.
 
 > [!NOTE]
 > Egy tábla összes statisztikájának frissítésekor az SQL-készlet ellenőrzi, hogy az egyes statisztikai objektumok táblázatát kell-e felvenni. Ha a tábla nagyméretű, és sok oszlopot és számos statisztikát tartalmaz, akkor lehet, hogy hatékonyabban kell frissíteni az egyes statisztikákat igény szerint.
@@ -434,7 +443,7 @@ A statisztikával kapcsolatos információk megkereséséhez számos rendszerné
 
 Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmaznak:
 
-| Katalógus nézet | Leírás |
+| Katalógus nézet | Description |
 |:--- |:--- |
 | [sys. Columns](/sql/relational-databases/system-catalog-views/sys-columns-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Egy sor az egyes oszlopokhoz. |
 | [sys. Objects](/sql/relational-databases/system-catalog-views/sys-objects-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Egy sor az adatbázis minden objektumához. |
@@ -448,7 +457,7 @@ Ezek a rendszernézetek a statisztikával kapcsolatos információkat tartalmazn
 
 Ezek a rendszerfunkciók a statisztikákkal való munkavégzéshez hasznosak:
 
-| System függvény | Leírás |
+| System függvény | Description |
 |:--- |:--- |
 | [STATS_DATE](/sql/t-sql/functions/stats-date-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |A statisztikai objektum utolsó frissítésének dátuma. |
 | [DBCC SHOW_STATISTICS](/sql/t-sql/database-console-commands/dbcc-show-statistics-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) |Összegző szint és részletes információk az értékek eloszlásáról a statisztikai objektum által értelmezett módon. |
@@ -501,7 +510,9 @@ A DBCC SHOW_STATISTICS () megjeleníti a statisztikai objektumon belül tárolt 
 - Sűrűség vektor
 - Hisztogram
 
-A fejléc a statisztikával kapcsolatos metaadatokat tartalmaz. A hisztogram megjeleníti az értékek eloszlását a statisztikai objektum első kulcs oszlopában. A sűrűség vektor az oszlopok közötti korrelációt méri. Az SQL-készlet a statisztikai objektum bármely adatával kiszámítja a kardinális becsléseket.
+A fejléc a statisztikával kapcsolatos metaadatokat tartalmaz. A hisztogram megjeleníti az értékek eloszlását a statisztikai objektum első kulcs oszlopában. 
+
+A sűrűség vektor az oszlopok közötti korrelációt méri. Az SQL-készlet a statisztikai objektum bármely adatával kiszámítja a kardinális becsléseket.
 
 #### <a name="show-header-density-and-histogram"></a>Fejléc, sűrűség és hisztogram megjelenítése
 
@@ -555,7 +566,11 @@ Az adott adatkészlethez (tárolási útvonal) tartozó statisztikákat egy adot
 
 ### <a name="why-use-statistics"></a>Miért használja a statisztikát?
 
-Minél több SQL-igény (előzetes verzió) ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálásához is el lehet végezni. Az igény szerinti SQL-alapú lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani. Ha például az optimalizáló becslése szerint a lekérdezés szűrésének dátuma egy sort ad vissza, akkor egy csomagot fog kiválasztani. Ha úgy becsüli, hogy a kijelölt dátum 1 000 000 sort ad vissza, akkor egy másik csomagot ad vissza.
+Minél több SQL-igény (előzetes verzió) ismeri az adatait, annál gyorsabban végezhet lekérdezéseket. Az adatokra vonatkozó statisztikák gyűjtése az egyik legfontosabb dolog, amit a lekérdezések optimalizálásához is el lehet végezni. 
+
+Az igény szerinti SQL-alapú lekérdezés-optimalizáló egy költséghatékony optimalizáló. Összehasonlítja a különböző lekérdezési csomagok költségeit, majd kiválasztja a legalacsonyabb díjszabású csomagot. A legtöbb esetben azt a tervet választja, amely a leggyorsabb végrehajtást fogja végrehajtani. 
+
+Ha például az optimalizáló becslése szerint a lekérdezés szűrésének dátuma egy sort ad vissza, akkor egy csomagot fog kiválasztani. Ha úgy becsüli, hogy a kijelölt dátum 1 000 000 sort ad vissza, akkor egy másik csomagot ad vissza.
 
 ### <a name="automatic-creation-of-statistics"></a>Statisztikák automatikus létrehozása
 
@@ -570,9 +585,11 @@ A statisztikák automatikus létrehozása szinkron módon történik, így előf
 
 ### <a name="manual-creation-of-statistics"></a>Statisztikák manuális létrehozása
 
-Az SQL on-demand segítségével manuálisan hozhat létre statisztikai adatokat. CSV-fájlok esetén manuálisan kell létrehoznia a statisztikát, mivel a statisztikai adatok automatikus létrehozása nincs bekapcsolva a CSV-fájlokhoz. A statisztikák manuális létrehozásával kapcsolatos útmutatásért tekintse meg az alábbi példákat.
+Az SQL on-demand segítségével manuálisan hozhat létre statisztikai adatokat. CSV-fájlok esetén manuálisan kell létrehoznia a statisztikát, mivel a statisztikai adatok automatikus létrehozása nincs bekapcsolva a CSV-fájlokhoz. 
 
-### <a name="updating-statistics"></a>Statisztikák frissítése
+A statisztikák manuális létrehozásával kapcsolatos útmutatásért tekintse meg az alábbi példákat.
+
+### <a name="update-statistics"></a>Frissítési statisztika
 
 A fájlokban lévő adatok, a törlés és a fájlok hozzáadásával végzett módosítások adateloszlási változásokat eredményeznek, és elavult statisztikákat tesznek elérhetővé. Ebben az esetben frissíteni kell a statisztikát.
 
@@ -592,7 +609,7 @@ Ha a sorok száma jelentősen megváltozott, vagy jelentős változás van egy o
 > [!NOTE]
 > Ha egy oszlop értékeinek eloszlásában jelentős változások történnek, akkor frissítse a statisztikát, függetlenül attól, hogy mikor frissítették őket.
 
-### <a name="implementing-statistics-management"></a>A statisztikák kezelésének megvalósítása
+### <a name="implement-statistics-management"></a>A statisztikák kezelésének megvalósítása
 
 Érdemes lehet kiterjeszteni az adatfolyamatot annak biztosítására, hogy a statisztikák frissítve legyenek, ha az adatok a Hozzáadás, a törlés vagy a fájlok módosítása révén jelentősen változnak.
 

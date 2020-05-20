@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: diberry
-ms.openlocfilehash: 9beb6dbbba1c5855b8bfa97fc02f50aa59225d78
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8785484efec119f15ef53feefbd6e94181cd159a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80474851"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659561"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -64,7 +64,7 @@ A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívás
 A POST kérelem a következőket használja:
 
 * Szükséges [URI-paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
-* Szükséges fejléc-tulajdonság `Authorization`, biztonsági
+* Szükséges fejléc-tulajdonság, `Authorization` biztonsági
 * A [törzs szükséges tulajdonságai](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
 A GenerateAnswer URL-címének formátuma a következő:
@@ -73,7 +73,7 @@ A GenerateAnswer URL-címének formátuma a következő:
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
-Ne feledje, hogy állítsa be a HTTP `Authorization` -fejléc tulajdonságát a karakterlánc `EndpointKey` értékével egy záró szóközzel, a **Beállítások** lapon található Endpoint (végpont) kulccsal.
+Ne feledje, hogy állítsa be a HTTP-fejléc tulajdonságát `Authorization` a karakterlánc értékével egy `EndpointKey` záró szóközzel, a **Beállítások** lapon található Endpoint (végpont) kulccsal.
 
 A JSON-törzs például a következőképpen néz ki:
 
@@ -168,7 +168,7 @@ Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszoka
 
 ## <a name="use-metadata-to-filter-answers-by-custom-metadata-tags"></a>Metaadatok használata egyéni metaadat-címkék alapján történő szűréshez
 
-A metaadatok hozzáadása lehetővé teszi a válaszok szűrését a metaadatok címkéi alapján. Adja hozzá a metaadatok oszlopot a **nézet beállításai** menüből. A metaadatokat a metaadatok **+** ikonra kattintva adhat hozzá a tudásbázishoz. Ez a pár egy kulcsból és egy értékből áll.
+A metaadatok hozzáadása lehetővé teszi a válaszok szűrését a metaadatok címkéi alapján. Adja hozzá a metaadatok oszlopot a **nézet beállításai** menüből. A metaadatokat a metaadatok ikonra kattintva adhat hozzá a tudásbázishoz **+** . Ez a pár egy kulcsból és egy értékből áll.
 
 ![A metaadatok hozzáadásának képernyőképe](../media/qnamaker-how-to-metadata-usage/add-metadata.png)
 
@@ -226,9 +226,9 @@ A GenerateAnswer válasza tartalmazza az egyeztetett kérdés és a válaszfájl
 
 ## <a name="match-questions-only-by-text"></a>Csak kérdések egyeztetése szöveg szerint
 
-Alapértelmezés szerint a QnA Maker kérdésekkel és válaszokkal keres. Ha csak kérdésekkel szeretne keresni, válasz létrehozásához használja a `RankerType=QuestionOnly` GENERATEANSWER kérelem post törzsében.
+Alapértelmezés szerint a QnA Maker kérdésekkel és válaszokkal keres. Ha csak kérdésekkel szeretne keresni, válasz létrehozásához használja a `RankerType=QuestionOnly` GenerateAnswer kérelem post törzsében.
 
-A alkalmazásban a közzétett kb, `isTest=false`a vagy a teszt Tudásbázis használatával `isTest=true`kereshet.
+A alkalmazásban a közzétett kb, a `isTest=false` vagy a teszt Tudásbázis használatával kereshet `isTest=true` .
 
 ```json
 {
@@ -241,7 +241,7 @@ A alkalmazásban a közzétett kb, `isTest=false`a vagy a teszt Tudásbázis has
 
 ## <a name="common-http-errors"></a>Gyakori HTTP-hibák
 
-|Kód|Magyarázat|
+|Code|Magyarázat|
 |:--|--|
 |2xx|Sikeres|
 |400|A kérelem paraméterei helytelenek, mert a szükséges paraméterek hiányoznak, helytelenül formázottak vagy túl nagyok.|
@@ -256,4 +256,4 @@ A alkalmazásban a közzétett kb, `isTest=false`a vagy a teszt Tudásbázis has
 A **közzétételi** oldal olyan információkat is tartalmaz, amelyekkel a Poster vagy a curl segítségével [választ](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) kaphat.
 
 > [!div class="nextstepaction"]
-> [Tudásbázis-robot létrehozása](../tutorials/integrate-qnamaker-luis.md)
+> [Tudásbázis elemzésének lekérése](../how-to/get-analytics-knowledge-base.md)

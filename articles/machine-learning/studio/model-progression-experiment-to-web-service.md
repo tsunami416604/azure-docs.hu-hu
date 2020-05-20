@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 03/20/2017
-ms.openlocfilehash: e6a8fe7771776a92b3c28a188bc352e3bb105313
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1618e64eba32e857ccd0ba4b5a7a656f1d954bf8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79217924"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83659912"
 ---
 # <a name="how-a-machine-learning-studio-classic-model-progresses-from-an-experiment-to-a-web-service"></a>Hogyan halad egy Machine Learning Studio (klasszikus) modell egy kísérletből a webszolgáltatásba
 
@@ -34,7 +34,7 @@ Ha elégedett a kísérlettel, telepítheti ***klasszikus Azure Machine learning
 Ebben a cikkben áttekintjük, hogy a Machine Learning modell hogyan halad egy fejlesztési kísérletből egy működőképes webszolgáltatásra.
 
 > [!NOTE]
-> A gépi tanulási modellek fejlesztésére és üzembe helyezésére más módszerek is használhatók, de ez a cikk a Machine Learning Studio (klasszikus) használatának módjára koncentrál. Ha például azt szeretné megtudni, hogyan hozhat létre egy klasszikus prediktív webszolgáltatást az R-vel, tekintse meg a blogbejegyzés készítése [& az RStudio és a Azure Machine learning Studio használatával történő prediktív Web Apps üzembe helyezését](https://blogs.technet.com/b/machinelearning/archive/2015/09/25/build-and-deploy-a-predictive-web-app-using-rstudio-and-azure-ml.aspx)ismertető témakört.
+> A gépi tanulási modellek fejlesztésére és üzembe helyezésére más módszerek is használhatók, de ez a cikk a Machine Learning Studio (klasszikus) használatának módjára koncentrál. Ha például azt szeretné megtudni, hogyan hozhat létre egy klasszikus prediktív webszolgáltatást az R-vel, tekintse meg a blogbejegyzés készítése [& az RStudio és a Azure Machine learning Studio használatával történő prediktív Web Apps üzembe helyezését](https://docs.microsoft.com/archive/blogs/machinelearning/build-deploy-predictive-web-apps-using-rstudio-and-azure-ml)ismertető témakört.
 >
 >
 

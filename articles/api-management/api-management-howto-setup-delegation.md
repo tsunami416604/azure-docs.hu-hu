@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: c28872e6cffa973f01b3f5a87c423d9dd93a2aa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7dfb863da9f06cfc0c81944aa4037933cdd650ad
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81259102"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83649181"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>A felhasználói regisztráció és a termék-előfizetés delegálása
 
@@ -48,7 +48,7 @@ Most létre kell hoznia a **delegálási végpontot**. Számos műveletet kell v
 
 1. Kérelem fogadása a következő formában:
    
-   > *http:\//www.yourwebsite.com/apimdelegation?Operation=signin&returnUrl = {forrás lap URL-címe} &Salt = {string} &SIG = {string}*
+   > *http: \/ /www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl = {forrás lap URL-címe} &Salt = {string} &SIG = {string}*
    > 
    > 
    
@@ -74,7 +74,7 @@ Most létre kell hoznia a **delegálási végpontot**. Számos műveletet kell v
    * [egyszeri bejelentkezéses (SSO) token kérése] a API Management használatával REST API
    * fűzze hozzá a returnUrl lekérdezési paramétert a fenti API-hívásból kapott SSO URL-címhez:
      
-     > például:https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url 
+     > például:`https://customer.portal.azure-api.net/signin-sso?token&returnUrl=/return/url` 
      > 
      > 
    * a felhasználó átirányítása a fenti létrehozott URL-címre
@@ -105,7 +105,7 @@ Ezután győződjön meg arról, hogy a delegálási végpont a következő műv
 
 1. Kérelem fogadása a következő formában:
    
-   > *http:\//www.yourwebsite.com/apimdelegation? Operation = {operation} &Termékkód = {a termék előfizetése} &userId = {User Making Request} &Salt = {string} &SIG = {string}*
+   > *http: \/ /www.yourwebsite.com/apimdelegation? Operation = {Operation} &Termékkód = {a termék előfizetése} &userId = {User Making Request} &Salt = {string} &SIG = {string}*
    >
    
     Lekérdezési paraméterek a termék-előfizetési esethez:
