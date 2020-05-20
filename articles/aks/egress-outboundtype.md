@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan határozhat meg egyéni kimenő útvonalakat az
 services: container-service
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: e7dbde4095fb635180bb1ba663734f8dbfd602f7
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82733498"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677884"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal (előzetes verzió)
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan szabhatja testre a fürt kimenő útvonalát az egy�
 ## <a name="prerequisites"></a>Előfeltételek
 * Az Azure CLI verziója 2.0.81 vagy újabb
 * Azure CLI előzetes verziójú bővítmény 0.4.28 vagy újabb verziója
-* API `2020-01-01` -verziója vagy nagyobb
+* API-verziója `2020-01-01` vagy nagyobb
 
 ## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Az Azure CLI legújabb előzetes verziójának telepítése
 A fürt kimenő típusának megadásához az Azure CLI-bővítmény 0.4.18 vagy újabb verziójára van szükség. Telepítse az Azure CLI AK előzetes verzióját az az Extension Add paranccsal, majd a következő az Extension Update paranccsal keresse meg a rendelkezésre álló frissítéseket:
@@ -40,29 +40,29 @@ az extension update --name aks-preview
 ```
 
 ## <a name="limitations"></a>Korlátozások
-* Az előzetes verzióban csak a fürt létrehozásakor lehet definiálni, `outboundType` és később nem frissíthető.
-* Az előzetes verzióban az AK-fürtöknek az Azure CNI- `outboundType` t kell használniuk. A Kubenet konfigurálható, a használathoz az útválasztási táblázat manuális társítására van szükség az AK-alhálózathoz.
-* A `outboundType` beállításhoz a és a `vm-set-type` `VirtualMachineScaleSets` `Standard`rendszerhez `load-balancer-sku` tartozó AK-fürtök szükségesek.
+* Az előzetes verzióban `outboundType` csak a fürt létrehozásakor lehet definiálni, és később nem frissíthető.
+* Az előzetes verzióban az `outboundType` AK-fürtöknek az Azure CNI-t kell használniuk. A Kubenet konfigurálható, a használathoz az útválasztási táblázat manuális társítására van szükség az AK-alhálózathoz.
+* A beállításhoz a `outboundType` és a rendszerhez tartozó AK-fürtök szükségesek `vm-set-type` `VirtualMachineScaleSets` `load-balancer-sku` `Standard` .
 * A `outboundType` érték beállításához a `UDR` fürthöz érvényes kimenő kapcsolattal rendelkező felhasználó által megadott útvonal szükséges.
-* Az `outboundType` értékre való beállítás `UDR` azt jelenti, hogy a bemenő forrás IP-címe, amely a terheléselosztó felé van átirányítva, előfordulhat, hogy **nem felel** meg a fürt kimenő kilépési céljának.
+* Az `outboundType` értékre való beállítás azt jelenti, hogy a `UDR` bemenő forrás IP-címe, amely a terheléselosztó felé van átirányítva, előfordulhat, hogy **nem felel** meg a fürt kimenő kilépési céljának.
 
 ## <a name="overview-of-outbound-types-in-aks"></a>A kimenő típusok áttekintése az AK-ban
 
-Az AK-fürtök testreszabhatók egyedi `outboundType` típusú Load Balancer vagy felhasználó által definiált útválasztás használatával.
+Az AK-fürtök testreszabhatók egyedi típusú `outboundType` Load Balancer vagy felhasználó által definiált útválasztás használatával.
 
 > [!IMPORTANT]
 > A kimenő típus csak a fürt kimenő forgalmára van hatással. További információkért lásd: [beáramló vezérlők beállítása](ingress-basic.md) .
 
 ### <a name="outbound-type-of-loadbalancer"></a>A terheléselosztó kimenő típusa
 
-Ha `loadBalancer` be van állítva, az AK a következő telepítést automatikusan végrehajtja. A terheléselosztó egy AK-beli hozzárendelt nyilvános IP-címen keresztüli kimenő forgalomhoz használatos. Egy kimenő típus `loadBalancer` támogatja a típusú `loadBalancer`Kubernetes-szolgáltatásokat, ami várhatóan kilép az AK erőforrás-szolgáltató által létrehozott terheléselosztó alól.
+Ha `loadBalancer` be van állítva, az AK a következő telepítést automatikusan végrehajtja. A terheléselosztó egy AK-beli hozzárendelt nyilvános IP-címen keresztüli kimenő forgalomhoz használatos. Egy kimenő típus `loadBalancer` támogatja a típusú Kubernetes-szolgáltatásokat `loadBalancer` , ami várhatóan kilép az AK erőforrás-szolgáltató által létrehozott terheléselosztó alól.
 
 A következő telepítést az AK hajtja végre.
    * Nyilvános IP-cím van kiépítve a fürt kimenő forgalmához.
    * A rendszer a terheléselosztó erőforráshoz rendeli a nyilvános IP-címet.
    * A terheléselosztó backend-készletei a fürtben található ügynök-csomópontok számára lettek beállítva.
 
-Az alábbiakban egy olyan hálózati topológia található, amely alapértelmezésben egy AK-alapú fürtbe van telepítve, amely `outboundType` a `loadBalancer`-t használja.
+Az alábbiakban egy olyan hálózati topológia található, amely alapértelmezésben egy AK-alapú fürtbe van telepítve, amely a-t használja `outboundType` `loadBalancer` .
 
 ![outboundtype – LB](media/egress-outboundtype/outboundtype-lb.png)
 
@@ -119,9 +119,6 @@ DEVSUBNET_NAME="${PREFIX}dev"
 Ezután állítsa be az előfizetés-azonosítókat.
 
 ```azure-cli
-# Get ARM Access Token and Subscription ID - This will be used for AuthN later.
-
-ACCESS_TOKEN=$(az account get-access-token -o tsv --query 'accessToken')
 
 # NOTE: Update Subscription Name
 # Set Default Azure Subscription to be Used via Subscription ID
@@ -301,7 +298,7 @@ Az AK egy egyszerű szolgáltatásnevet használ a fürterőforrások létrehoz�
 az ad sp create-for-rbac -n "${PREFIX}sp" --skip-assignment
 ```
 
-Most cserélje le `APPID` az `PASSWORD` és az alábbit az egyszerű szolgáltatásnév AppID és a szolgáltatás egyszerű jelszavára, amelyet az előző parancs kimenete automatikusan generált. A VNET erőforrás-AZONOSÍTÓra hivatkozunk, hogy megadja az engedélyeket az egyszerű szolgáltatásnév számára, hogy az AK-ban üzembe helyezhet erőforrásokat.
+Most cserélje le az `APPID` és az `PASSWORD` alábbit az egyszerű szolgáltatásnév AppID és a szolgáltatás egyszerű jelszavára, amelyet az előző parancs kimenete automatikusan generált. A VNET erőforrás-AZONOSÍTÓra hivatkozunk, hogy megadja az engedélyeket az egyszerű szolgáltatásnév számára, hogy az AK-ban üzembe helyezhet erőforrásokat.
 
 ```azure-cli
 APPID="<SERVICE_PRINCIPAL_APPID_GOES_HERE>"
@@ -318,7 +315,7 @@ az role assignment list --assignee $APPID --all -o table
 
 ### <a name="deploy-aks"></a>AK üzembe helyezése
 
-Végezetül az AK-fürt üzembe helyezhető a fürthöz dedikált meglévő alhálózaton. A rendszerbe központilag telepítendő célként megadott alhálózat a környezeti változóval van `$SUBNETID`definiálva. Nem definiálta a `$SUBNETID` változót az előző lépésekben. Az alhálózati azonosító értékének megadásához a következő parancsot használhatja:
+Végezetül az AK-fürt üzembe helyezhető a fürthöz dedikált meglévő alhálózaton. A rendszerbe központilag telepítendő célként megadott alhálózat a környezeti változóval van definiálva `$SUBNETID` . Nem definiálta a `$SUBNETID` változót az előző lépésekben. Az alhálózati azonosító értékének megadásához a következő parancsot használhatja:
 
 ```azurecli
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
@@ -361,7 +358,7 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
 
 ```
 
- Az az [AK Get-hitelesítőadats][az-aks-get-credentials] paranccsal konfigurálhatja `kubectl` az újonnan létrehozott Kubernetes-fürthöz való kapcsolódást. 
+ Az az [AK Get-hitelesítőadats][az-aks-get-credentials] paranccsal konfigurálhatja az `kubectl` újonnan létrehozott Kubernetes-fürthöz való kapcsolódást. 
 
  ```azure-cli
  az aks get-credentials -g $RG -n $AKS_NAME
@@ -399,7 +396,7 @@ kubectl apply -f internal-lb.yaml
 
 Mivel a fürt kimenő típusa UDR értékre van beállítva, az ügynökök csomópontjainak társítása, mivel a terheléselosztó háttér-készlete nem fejeződött be automatikusan az AK által a fürt létrehozási idejénél. A háttérbeli készlet társítását azonban a Kubernetes Azure Cloud Provider kezeli a Kubernetes szolgáltatás telepítésekor.
 
-Telepítse az Azure szavazó app alkalmazást úgy, hogy az alábbi YAML másolja egy nevű `example.yaml`fájlba.
+Telepítse az Azure szavazó app alkalmazást úgy, hogy az alábbi YAML másolja egy nevű fájlba `example.yaml` .
 
 ```yaml
 apiVersion: apps/v1
@@ -520,7 +517,7 @@ kubernetes         ClusterIP      192.168.0.1      <none>        443/TCP        
 az network firewall nat-rule create --collection-name exampleset --destination-addresses $FWPUBLIC_IP --destination-ports 80 --firewall-name $FWNAME --name inboundrule --protocols Any --resource-group $RG --source-addresses '*' --translated-port 80 --action Dnat --priority 100 --translated-address <INSERT IP OF K8s SERVICE>
 ```
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 > [!NOTE]
 > Ha a Kubernetes belső szolgáltatását törli, ha a belső terheléselosztó már nem használja egyetlen szolgáltatás sem, az Azure Cloud Provider törli a belső Load balancert. A következő szolgáltatás központi telepítése esetén a terheléselosztó akkor lesz telepítve, ha nem található a kért konfigurációval.

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d02cd12552b3664dd7acaae0142fc939ee57f5f6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 40078d33d2b89c2fcf3b90cd8a19405b1a29c5d7
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591981"
+ms.locfileid: "83660079"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>A szinapszis munkaterület biztonságossá tétele (előzetes verzió)
 
@@ -36,7 +36,7 @@ A szinapszis-munkaterület (előzetes verzió) biztonságossá tételéhez köve
 
 Ez a dokumentum szabványos neveket használ az utasítások egyszerűsítéséhez. Cserélje le azokat bármely tetszőleges névvel.
 
-|Beállítás | Példaérték | Leírás |
+|Beállítás | Példaérték | Description |
 | :------ | :-------------- | :---------- |
 | **Szinapszis-munkaterület** | WS1 |  A szinapszis munkaterület neve. |
 | **ADLSGEN2-fiók** | STG1 | A munkaterülethez használni kívánt ADLS-fiók. |
@@ -115,7 +115,7 @@ Az egyes szerepkörökben lévő felhasználóknak a következő lépéseket kel
 |   | Lépés | Munkaterület-rendszergazdák | Spark-rendszergazdák | SQL-rendszergazdák |
 | --- | --- | --- | --- | --- |
 | 1 | Parquet-fájl feltöltése a CNT1-be | IGEN | IGEN | IGEN |
-| 2 | A Parquet-fájl olvasása igény szerint, SQL használatával | IGEN | NO | IGEN |
+| 2 | A Parquet-fájl beolvasása az SQL igény szerinti használatával | IGEN | NO | IGEN |
 | 3 | Spark-készlet létrehozása | IGEN [1] | IGEN [1] | NO  |
 | 4 | A Parquet-fájl beolvasása jegyzetfüzettel | IGEN | IGEN | NO |
 | 5 | Hozzon létre egy folyamatot a jegyzetfüzetből, és indítsa el a folyamatot most | IGEN | NO | NO |

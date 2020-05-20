@@ -6,12 +6,12 @@ author: zr-msft
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: zarhoads
-ms.openlocfilehash: 1d97ae5692a4cdc328833ce4c01a8114506a960a
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 9fd7d6c6d472400afea05ac0cd87321a46dddb37
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779067"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83677923"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a pod Security számára az Azure Kubernetes szolgáltatásban (ak)
 
@@ -30,7 +30,7 @@ Emellett elolvashatja a [fürt biztonságával][best-practices-cluster-security]
 
 **Ajánlott eljárási útmutató** – egy másik felhasználóként vagy csoportként való futtatásra, valamint a mögöttes csomópont-folyamatok és-szolgáltatások elérésének korlátozására, a pod biztonsági környezet beállításainak megadása. Rendelje hozzá a minimálisan szükséges jogosultságokat.
 
-Ahhoz, hogy az alkalmazások megfelelően fussanak, a hüvelyeket definiált felhasználóként vagy csoportként kell futtatni, és nem *root*-ként. A `securityContext` for a pod vagy a Container lehetővé teszi olyan beállítások megadását, mint például a *RunAsUser* vagy a *fsGroup* , hogy a megfelelő engedélyeket tegyük fel. Csak a szükséges felhasználói vagy csoportos engedélyeket rendelje hozzá, és ne használja a biztonsági környezetet a további engedélyek feltételezéséhez. A *runAsUser*, a jogosultság-eszkaláció és az egyéb linuxos képességek beállításai csak Linux-csomópontokon és hüvelyeken érhetők el.
+Ahhoz, hogy az alkalmazások megfelelően fussanak, a hüvelyeket definiált felhasználóként vagy csoportként kell futtatni, és nem *root*-ként. A `securityContext` for a pod vagy a Container lehetővé teszi olyan beállítások megadását, mint például a *runAsUser* vagy a *fsGroup* , hogy a megfelelő engedélyeket tegyük fel. Csak a szükséges felhasználói vagy csoportos engedélyeket rendelje hozzá, és ne használja a biztonsági környezetet a további engedélyek feltételezéséhez. A *runAsUser*, a jogosultság-eszkaláció és az egyéb linuxos képességek beállításai csak Linux-csomópontokon és hüvelyeken érhetők el.
 
 Ha nem legfelső szintű felhasználóként fut, a tárolók nem köthetők a 1024-es alatti privilegizált portokhoz. Ebben az esetben a Kubernetes Services segítségével elrejtheti azt a tényt, hogy egy alkalmazás egy adott porton fut.
 
@@ -71,14 +71,17 @@ Működjön együtt a fürt üzemeltetőjével, és határozza meg, hogy milyen 
 
 Ha korlátozni szeretné az alkalmazás kódjában elérhető hitelesítő adatok kockázatát, ne használja a rögzített vagy a megosztott hitelesítő adatokat. A hitelesítő adatok vagy kulcsok nem szerepelhetnek közvetlenül a kódban. Ha ezek a hitelesítő adatok elérhetők, az alkalmazást frissíteni és újra kell telepíteni. A jobb megoldás az, hogy a hüvelyek saját identitását és módszerét saját maguk hitelesítsék, vagy automatikusan beolvassák a hitelesítő adatokat egy digitális tárból.
 
-A következő [társított AK nyílt forráskódú projektek][aks-associated-projects] lehetővé teszik a hüvelyek automatikus hitelesítését, illetve a digitális tárolóban a hitelesítő adatok és kulcsok kérését:
+### <a name="use-azure-container-compute-upstream-projects"></a>Az Azure Container számítási feladatátviteli projektjeinek használata
 
-* Felügyelt identitások az Azure-erőforrásokhoz és
-* [Azure Key Vault-szolgáltató a Secrets Store CSI-illesztőprogramhoz](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+> [!IMPORTANT]
+> Az Azure technikai támogatási szolgálata nem támogatja a társított AK nyílt forráskódú projektjeit. A felhasználók saját maguk telepíthetnek fürtökbe, és visszajelzéseket gyűjthetnek a Közösségtől.
 
-Az Azure technikai támogatási szolgálata nem támogatja a társított AK nyílt forráskódú projektjeit. A felhasználók visszajelzéseket és hibákat biztosítanak a Közösségtől. Ezek a projektek éles használatra nem ajánlottak.
+A következő [társított AK nyílt forráskódú projektek][aks-associated-projects] lehetővé teszik a hüvelyek automatikus hitelesítését, illetve a digitális tárolóban lévő hitelesítő adatok és kulcsok kérését. Ezeket a projekteket az Azure Container számítási főcsapata tartja karban, és a [rendelkezésre álló projektek átfogóbb listájának](https://github.com/Azure/container-compute-upstream/blob/master/README.md#support)részét képezi.
 
-### <a name="use-pod-managed-identities"></a>A pod által felügyelt identitások használata
+ * [Azure Active Directory Pod-identitás][aad-pod-identity]
+ * [Azure Key Vault-szolgáltató a Secrets Store CSI-illesztőprogramhoz](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)
+
+#### <a name="use-pod-managed-identities"></a>A pod által felügyelt identitások használata
 
 Az Azure-erőforrások felügyelt identitása lehetővé teszi, hogy a pod hitelesítse magát az azt támogató Azure-szolgáltatásokkal, például a Storage vagy az SQL használatával. A pod olyan Azure-identitáshoz van rendelve, amely lehetővé teszi, hogy a hitelesítés Azure Active Directory és digitális jogkivonatot kapjon. Ez a digitális jogkivonat olyan egyéb Azure-szolgáltatásokhoz is bemutatható, amelyek azt ellenőrizzék, hogy a pod jogosult-e a szolgáltatás elérésére és a szükséges műveletek elvégzésére. Ez a módszer azt jelenti, hogy az adatbázis-kapcsolatok sztringek esetében nem szükségesek titkos kódok, például:. A pod felügyelt identitás egyszerűsített munkafolyamata az alábbi ábrán látható:
 
@@ -88,7 +91,7 @@ Felügyelt identitás esetén az alkalmazás kódjának nem kell tartalmaznia a 
 
 A pod-identitásokkal kapcsolatos további információkért lásd: [AK-fürtök beállítása a pod felügyelt identitások és az alkalmazásai használatára][aad-pod-identity]
 
-### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Azure Key Vault használata a Secrets Store CSI-illesztőprogrammal
+#### <a name="use-azure-key-vault-with-secrets-store-csi-driver"></a>Azure Key Vault használata a Secrets Store CSI-illesztőprogrammal
 
 A pod Identity projekt használata lehetővé teszi a hitelesítést az Azure-szolgáltatások támogatásával. Az Azure-erőforrásokhoz felügyelt identitás nélküli saját szolgáltatások vagy alkalmazások esetén a hitelesítő adatok vagy kulcsok használatával továbbra is hitelesíthető. A titkos tartalmak tárolására a digitális tároló használható.
 

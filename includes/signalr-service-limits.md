@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 05/11/2020
 ms.author: zhshang
-ms.openlocfilehash: 1d87439b7afeb946fd37c468a0853adcb674ee5a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67179520"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673543"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát | 
 | --- | --- | --- |
@@ -29,6 +29,9 @@ ms.locfileid: "67179520"
 | Kapcsolat/egység/nap az ingyenes szinten |20 |20 |
 | Kapcsolat/egység/nap a standard szinthez |1,000 |1,000|
 | Befoglalt üzenet/egység/nap ingyenes csomag esetén|20000 |20000 |
+| További üzenet/egység/nap az ingyenes szinten|0 |0 |
 | Befoglalt üzenetek/egység/nap a standard szinthez|1,000,000 |1,000,000 |
+| További üzenetek egységenkénti napi szinten a standard szinthez|Korlátlan |Korlátlan |
 
-Ha frissítést szeretne kérni az előfizetés alapértelmezett korlátaihoz, nyisson meg egy támogatási jegyet. 
+Ha frissítést szeretne kérni az előfizetés alapértelmezett korlátaihoz, nyisson meg egy támogatási jegyet.
+

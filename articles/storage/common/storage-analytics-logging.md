@@ -5,15 +5,16 @@ author: normesta
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 05/19/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.openlocfilehash: 1e41eb02f4b02078dbf4d42c46cab574cf8d0701
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: monitoring
+ms.openlocfilehash: b1134f5538663f5b04e77270fee1a715b32a4f3e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204066"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675927"
 ---
 # <a name="azure-storage-analytics-logging"></a>Azure Storage Analytics-naplózás
 
@@ -24,7 +25,7 @@ A Storage Analytics naplózza a tárolási szolgáltatásoknak elküldött siker
  A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás-végpontra irányuló kérések történnek. Ha például egy Storage-fiók egy tevékenységgel rendelkezik a blob-végponton, de nem a táblázat-vagy várólista-végpontokon, akkor csak a Blob servicehoz tartozó naplók lesznek létrehozva.
 
 > [!NOTE]
->  A Storage Analytics-naplózás jelenleg csak a Blob, a Queue és a Table szolgáltatás esetében érhető el. A prémium szintű tárfiókok azonban nem támogatottak.
+>  A Storage Analytics-naplózás jelenleg csak a Blob, a Queue és a Table szolgáltatás esetében érhető el. Storage Analytics naplózás a prémium szintű teljesítményű [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md) -fiókok esetében is elérhető. Azonban nem érhető el a prémium szintű teljesítményű általános célú v2-fiókok esetében.
 
 ## <a name="requests-logged-in-logging"></a>Naplózásban bejelentkezett kérelmek
 ### <a name="logging-authenticated-requests"></a>Hitelesített kérelmek naplózása
@@ -51,10 +52,10 @@ A Storage Analytics naplózza a tárolási szolgáltatásoknak elküldött siker
 
 ## <a name="how-logs-are-stored"></a>A naplók tárolása
 
-A rendszer az összes naplót blokkoló blobokban tárolja `$logs`egy nevű tárolóban, amely automatikusan létrejön, amikor a Storage Analytics engedélyezve van egy Storage-fiókhoz. A `$logs` tároló a Storage-fiók blob-névterében található, például: `http://<accountname>.blob.core.windows.net/$logs`. Ez a tároló nem törölhető, ha Storage Analytics engedélyezve lett, de a tartalma törölhető. Ha a Storage-Browsing eszköz használatával közvetlenül a tárolóra navigál, a naplózási adatait tartalmazó Blobok jelennek meg.
+A rendszer az összes naplót blokkoló blobokban tárolja egy nevű tárolóban `$logs` , amely automatikusan létrejön, amikor a Storage Analytics engedélyezve van egy Storage-fiókhoz. A `$logs` tároló a Storage-fiók blob-névterében található, például: `http://<accountname>.blob.core.windows.net/$logs` . Ez a tároló nem törölhető, ha Storage Analytics engedélyezve lett, de a tartalma törölhető. Ha a Storage-Browsing eszköz használatával közvetlenül a tárolóra navigál, a naplózási adatait tartalmazó Blobok jelennek meg.
 
 > [!NOTE]
->  A `$logs` tároló nem jelenik meg, ha egy tároló-listaelemet hajt végre, például a tárolók listázása műveletet. Közvetlenül elérhetőnek kell lennie. Használhatja például a Blobok listázása műveletet a `$logs` tárolóban lévő Blobok eléréséhez.
+>  A tároló `$logs` nem jelenik meg, ha egy tároló-listaelemet hajt végre, például a tárolók listázása műveletet. Közvetlenül elérhetőnek kell lennie. Használhatja például a Blobok listázása műveletet a tárolóban lévő Blobok eléréséhez `$logs` .
 
 Mivel a rendszer naplózza a kérelmeket, Storage Analytics a köztes eredményeket blokkként tölti fel. A Storage Analytics rendszeresen véglegesíti ezeket a blokkokat, és blobként elérhetővé teszi őket. Akár egy óráig is eltarthat, amíg a naplófájlok megjelennek a **$logs** tárolóban lévő blobokban, mert a tárolási szolgáltatás által használt gyakoriság a napló-írókat üríti. Ismétlődő rekordok létezhetnek ugyanabban az órában létrehozott naplókhoz. A **kérelemazonosító** és a **művelet** számának ellenőrzésével megállapíthatja, hogy egy rekord duplikált-e.
 
@@ -86,15 +87,15 @@ A Blobok programozott listázásával kapcsolatos információkért lásd: [blob
 
  A következő táblázat a napló neve egyes attribútumait ismerteti:
 
-|Attribútum|Leírás|
+|Attribútum|Description|
 |---------------|-----------------|
-|`<service-name>`|A tárolási szolgáltatás neve. Például: `blob`, `table`, vagy`queue`|
+|`<service-name>`|A tárolási szolgáltatás neve. Például: `blob` , `table` , vagy`queue`|
 |`YYYY`|A naplófájl négyjegyű éve. Például:`2011`|
 |`MM`|A napló két számjegyű hónapja. Például:`07`|
 |`DD`|A napló két számjegyből álló napja. Például:`31`|
 |`hh`|A két számjegyű óra, amely a naplók kezdő óráját jelzi 24 órás UTC formátumban. Például:`18`|
-|`mm`|A naplók kezdő percét jelző kétszámjegyű szám. **Megjegyzés:**  Ez az érték nem támogatott a Storage Analytics aktuális verziójában, és az értéke mindig lesz `00`.|
-|`<counter>`|Egy nulla-alapú számláló hat számjegytel, amely a tárolási szolgáltatáshoz egy órás időszakban generált naplók számát jelzi. Ez a számláló a `000000`következő időpontban indul:. Például:`000001`|
+|`mm`|A naplók kezdő percét jelző kétszámjegyű szám. **Megjegyzés:**  Ez az érték nem támogatott a Storage Analytics aktuális verziójában, és az értéke mindig lesz `00` .|
+|`<counter>`|Egy nulla-alapú számláló hat számjegytel, amely a tárolási szolgáltatáshoz egy órás időszakban generált naplók számát jelzi. Ez a számláló a következő időpontban indul: `000000` . Például:`000001`|
 
  A következő egy teljes minta-napló neve, amely a fenti példákat ötvözi:
 
@@ -110,11 +111,11 @@ A Blobok programozott listázásával kapcsolatos információkért lásd: [blob
 
  Minden naplózási blobot metaadatok tárolnak, amelyek segítségével azonosíthatók a blob által tartalmazott naplózási adatok. Az alábbi táblázat az egyes metaadatok attribútumait ismerteti:
 
-|Attribútum|Leírás|
+|Attribútum|Description|
 |---------------|-----------------|
 |`LogType`|Leírja, hogy a napló tartalmazza-e az olvasási, írási és törlési műveletekkel kapcsolatos információkat. Ez az érték egy típust vagy mindhárom kombinációt tartalmazhat, vesszővel elválasztva.<br /><br /> 1. példa:`write`<br /><br /> 2. példa:`read,write`<br /><br /> 3. példa:`read,write,delete`|
-|`StartTime`|A napló bejegyzéseinek legkorábbi időpontja a ( `YYYY-MM-DDThh:mm:ssZ`) formában. Például:`2011-07-31T18:21:46Z`|
-|`EndTime`|A naplóba való bejegyzés legkésőbbi időpontja `YYYY-MM-DDThh:mm:ssZ`. Például:`2011-07-31T18:22:09Z`|
+|`StartTime`|A napló bejegyzéseinek legkorábbi időpontja a ( `YYYY-MM-DDThh:mm:ssZ` ) formában. Például:`2011-07-31T18:21:46Z`|
+|`EndTime`|A naplóba való bejegyzés legkésőbbi időpontja `YYYY-MM-DDThh:mm:ssZ` . Például:`2011-07-31T18:22:09Z`|
 |`LogVersion`|A naplózási formátum verziója.|
 
  A következő lista a fenti példák alapján mutatja be a teljes minta metaadatokat:

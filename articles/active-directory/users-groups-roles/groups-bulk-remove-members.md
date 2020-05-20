@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b3c6e471a8e44236baf9bfc2c8eb6c9d5526d72
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 6d6f3a714174b2b808629e0cb41aba6f393d3410
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203452"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679200"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Csoporttagok tömeges eltávolítása Azure Active Directory
 
@@ -35,7 +35,7 @@ Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, hogy az Azu
 A letöltött CSV-sablon sorai a következők:
 
 - **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
-- **Oszlopfejlécek**: az oszlopfejlécek &lt; *Item name* &gt; formátuma a (z) [PropertyName] &lt;elemnév *kötelező vagy üres*&gt;. Például: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz. A csoporttagság változásaihoz a következőt kell használni: tag objektumazonosító vagy egyszerű felhasználónév.
+- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt; *Item name* &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz. A csoporttagság változásaihoz a következőt kell használni: tag objektumazonosító vagy egyszerű felhasználónév.
 - **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
 
 ### <a name="additional-guidance"></a>További útmutatás
@@ -48,7 +48,7 @@ A letöltött CSV-sablon sorai a következők:
 ## <a name="to-bulk-remove-group-members"></a>Csoporttagok tömeges eltávolítása
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjainak tömeges eltávolítására is jogosultak.
-1. Az Azure ad-ben válassza a **csoportok** > **minden csoport**elemet.
+1. Az Azure ad-ben válassza a **csoportok**  >  **minden csoport**elemet.
 1. Nyissa meg azt a csoportot, amelyből el kívánja távolítani a tagokat, majd válassza a **tagok**elemet.
 1. A **tagok** lapon válassza a **tagok eltávolítása**lehetőséget.
 1. A **csoporttagok eltávolítása** lapon válassza a **Letöltés** lehetőséget a CSV-sablonfájl a szükséges csoporttagok tulajdonságaival való beszerzéséhez.
@@ -57,7 +57,7 @@ A letöltött CSV-sablon sorai a következők:
 
 1. Nyissa meg a CSV-fájlt, és adjon hozzá egy sort minden olyan csoporttag számára, amelyet el szeretne távolítani a csoportból (a kötelező értékek a tag objektum azonosítója vagy egyszerű felhasználónév). Ezután mentse a fájlt.
 
-   ![A CSV-fájl az eltávolítandó tagok nevét és azonosítóit tartalmazza](./media/groups-bulk-remove-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="A CSV-fájl az eltávolítandó csoporttagok nevét és azonosítóit tartalmazza.":::
 
 1. A **csoporttagok eltávolítása** lapon a **CSV-fájl feltöltése**területen keresse meg a fájlt. A fájl kiválasztásakor elindul a CSV-fájl érvényesítése.
 1. A fájl tartalmának ellenőrzésekor a tömeges importálás lap megjeleníti a **fájl feltöltésének sikerességét**. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.

@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 05/05/2020
+ms.date: 05/15/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 11a9b8609218a6cf56a789b18094d048e26d4af8
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9bbf2288ac92c33c2b24af4e6a97882013a4ff1d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83343337"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673458"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
@@ -86,7 +86,8 @@ Ha rendelkezik az Ön számára szükséges engedélyekkel, ezt megteheti, haszn
 
 Az engedélyeket [itt](https://github.com/danielsollondon/azvmimagebuilder/blob/master/aibPermissions.md#azure-vm-image-builder-permissions-explained-and-requirements)részletesebben ismertetjük, a példák pedig azt mutatják be, hogy ez hogyan valósul meg.
 
-> [Megjegyzés!] A AIB korábban a AIB SPN-t használja, és megadja az SPN-engedélyeket a rendszerkép-erőforráscsoportok számára. A jövőbeli képességek lehetővé teszik a modellből való átlépést. Június 1-től 2020 a képszerkesztő nem fogad el olyan sablonokat, amelyek nem rendelkeznek felhasználó által hozzárendelt identitással, a meglévő sablonokat újra kell küldeni a szolgáltatásnak a [felhasználó identitásával](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). A példák már azt mutatják be, hogyan hozhat létre felhasználó által hozzárendelt identitást, és hogyan adhatja hozzá őket egy sablonhoz.
+> [!Note]
+> A AIB korábban a AIB SPN-t használja, és megadja az SPN-engedélyeket a rendszerkép-erőforráscsoportok számára. A jövőbeli képességek lehetővé teszik a modellből való átlépést. 2020. május 26-án a képszerkesztő nem fogad el olyan sablonokat, amelyek nem rendelkeznek felhasználó által hozzárendelt identitással, a meglévő sablonokat újra el kell küldeni a szolgáltatásnak [felhasználói identitással](https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-json?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json&bc=%2Fazure%2Fvirtual-machines%2Fwindows%2Fbreadcrumb%2Ftoc.json#identity). A példák már azt mutatják be, hogyan hozhat létre felhasználó által hozzárendelt identitást, és hogyan adhatja hozzá őket egy sablonhoz. További információkért tekintse át ezt a [dokumentációt](https://github.com/danielsollondon/azvmimagebuilder#service-updates-and-latest-release-information) a változásról és a kiadásokról.
 
 ## <a name="costs"></a>Költségek
 A lemezképek Azure Image Builder szolgáltatással való létrehozásakor, kiépítésekor és tárolásakor a számítási, hálózati és tárolási költségek is felmerülhetnek. Ezek a költségek hasonlóak az egyéni lemezképek manuális létrehozása során felmerülő költségekhez. Az erőforrásokra az Azure díjszabása alapján számítunk fel díjat. 

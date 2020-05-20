@@ -3,12 +3,12 @@ title: Gyakori kérdések – SAP HANA-adatbázisok biztonsági mentése Azure-b
 description: Ebből a cikkből megismerheti a SAP HANA adatbázisok a Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a46c4d6cccc00452a56567880400ef5779e6aed4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f9e0d96439a79c2c3d2cb2caa00ff09be3ff790d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80155392"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660120"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Gyakori kérdések – SAP HANA adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -60,6 +60,18 @@ Jelenleg nem áll rendelkezésre a megoldás beállítása a virtuális IP-címe
 ### <a name="i-have-a-sap-hana-system-replication-hsr-how-should-i-configure-backup-for-this-setup"></a>Van SAP HANA rendszer-replikáció (HSR), hogyan konfigurálható a biztonsági mentés ehhez a telepítőhöz?
 
 A HSR elsődleges és másodlagos csomópontjai két önálló, nem kapcsolódó virtuális gépre lesznek kezelve. Konfigurálnia kell a biztonsági mentést az elsődleges csomóponton, és a feladatátvétel megkezdése után konfigurálnia kell a biztonsági mentést a másodlagos csomóponton (amely most az elsődleges csomópont lesz). Nincs automatikus feladatátvétel a másik csomópontra történő biztonsági mentés során.
+
+### <a name="how-can-i-move-an-on-demand-backup-to-the-local-file-system-instead-of-the-azure-vault"></a>Hogyan helyezhetek át egy igény szerinti biztonsági mentést a helyi fájlrendszerbe az Azure-tároló helyett?
+
+1. Várja meg, amíg a jelenleg futó biztonsági mentés készen áll a kívánt adatbázisra (a studióból való bejelentkezés befejezéséhez)
+1. Tiltsa le a naplók biztonsági mentését, és állítsa be a katalógus biztonsági mentését a **fájlrendszerre** a kívánt adatbázisra a következő lépések segítségével:
+1. Kattintson duplán a **SYSTEMDB**  ->  **konfigurálása**  ->  **adatbázis**  ->  **-szűrő kiválasztása (napló)** elemre.
+    1. Enable_auto_log_backup beállítása **nem** értékre
+    1. Log_backup_using_backint beállítása **hamis** értékre
+1. Igény szerinti biztonsági mentést készíthet a kívánt adatbázisról, és megvárhatja, hogy a biztonsági mentés és a katalógus biztonsági mentése befejeződjön.
+1. Térjen vissza az előző beállításokra, hogy a biztonsági mentések az Azure-tárolóba haladjanak:
+    1. Enable_auto_log_backup beállítása **Igen** értékre
+    1. Log_backup_using_backint beállítása **true (igaz** ) értékre
 
 ## <a name="restore"></a>Visszaállítás
 

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 5db99a9d500b05fa6886dce2f29087920f8a1790
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 23c4e18ae3e4111c179c1b98320af8c5659fa10c
+ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80658405"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673101"
 ---
 Ha Univerzális Windows-platform (UWP) fejlesztéshez szeretne létrehozni Visual Studio-projektet, be kell állítania a Visual Studio fejlesztői beállításait, létre kell hoznia a projektet, ki kell választania a cél architektúrát, be kell állítania a hangrögzítést, és telepítenie kell a Speech SDK-t.
 
@@ -23,7 +23,7 @@ A kezdéshez győződjön meg arról, hogy helyesen van beállítva a Visual Stu
 
 1. Válassza a **Folytatás kód nélkül** lehetőséget a Visual Studio ide elemre.
 
-1. A Visual Studio menüsávjában válassza az **eszközök** > eszközök**és szolgáltatások beolvasása** lehetőséget a Visual Studio telepítőjének megnyitásához, és tekintse meg a **módosítás** párbeszédpanelt.
+1. A Visual Studio menüsávjában válassza az **eszközök**eszközök  >  **és szolgáltatások beolvasása** lehetőséget a Visual Studio telepítőjének megnyitásához, és tekintse meg a **módosítás** párbeszédpanelt.
 
    ![Munkaterhelések lap, módosítás párbeszédpanel, Visual Studio-telepítő](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-workload.png)
 
@@ -37,7 +37,7 @@ A kezdéshez győződjön meg arról, hogy helyesen van beállítva a Visual Stu
 
 Ezután hozza létre a projektet:
 
-1. A Visual Studio menüsávjában válassza a **fájl** > **új** > **projekt** lehetőséget az **új projekt létrehozása** ablak megjelenítéséhez.
+1. A Visual Studio menüsávjában válassza a **fájl**  >  **új**  >  **projekt** lehetőséget az **új projekt létrehozása** ablak megjelenítéséhez.
 
    ![Új projekt létrehozása – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-create-new-project.png)
 
@@ -47,7 +47,7 @@ Ezután hozza létre a projektet:
 
    ![Az új projekt konfigurálása – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-configure-your-new-project.png)
 
-1. A **Project Name (projekt neve**) mezőben adja meg a értéket `helloworld`.
+1. A **Project Name (projekt neve**) mezőben adja meg a értéket `helloworld` .
 
 1. A **hely**területen navigáljon, és válassza ki vagy hozza létre azt a mappát, amelybe menteni szeretné a projektet.
 
@@ -59,11 +59,11 @@ Ezután hozza létre a projektet:
 
 1. A **cél verziója** (az első legördülő lista) mezőben válasszon egy azonos vagy annál újabb értéket a **minimális verziónál**.
 
-1. Kattintson az **OK** gombra. A rendszer visszaadja a Visual Studio IDE-nek, és a **megoldáskezelő** ablaktáblán létrehozott és látható új projekttel rendelkezik.
+1. Válassza az **OK** lehetőséget. A rendszer visszaadja a Visual Studio IDE-nek, és a **megoldáskezelő** ablaktáblán létrehozott és látható új projekttel rendelkezik.
 
    ![HelloWorld projekt – Visual Studio](../articles/cognitive-services/Speech-Service/media/sdk/vs-enable-uwp-helloworld.png)
 
-Most válassza ki a cél platform architektúráját. A Visual Studio eszköztárán keresse meg a **megoldás platformok** legördülő listát. (Ha nem látja, válassza az**eszköztárak** > **standard** **megtekintése** > lehetőséget a **megoldási platformokat**tartalmazó eszköztár megjelenítéséhez.) Ha 64 bites Windows rendszert futtat, válassza a legördülő listából az **x64** lehetőséget. a 64 bites Windows rendszer 32 bites alkalmazásokat is futtathat, így ha szeretné, válassza az **x86** lehetőséget.
+Most válassza ki a cél platform architektúráját. A Visual Studio eszköztárán keresse meg a **megoldás platformok** legördülő listát. (Ha nem látja, válassza a **nézet**  >  lehetőséget. **Eszköztárak**  >  **Standard** a **megoldási platformokat**tartalmazó eszköztár megjelenítéséhez.) Ha 64 bites Windows rendszert futtat, válassza a legördülő listából az **x64** lehetőséget. a 64 bites Windows rendszer 32 bites alkalmazásokat is futtathat, így ha szeretné, válassza az **x86** lehetőséget.
 
 > [!NOTE]
 > A Speech SDK csak az Intel-kompatibilis processzorokat támogatja. Az ARM-processzorok jelenleg nem támogatottak.
@@ -80,7 +80,7 @@ Ezután engedélyezze a projektnek a hangbemenet rögzítését:
 
 1. Jelölje be a **mikrofon** képességhez tartozó jelölőnégyzetet.
 
-1. A menüsávban válassza a **fájl** > **Mentés csomag. appxmanifest** lehetőséget a módosítások mentéséhez.
+1. A menüsávban válassza a **fájl**  >  **Mentés csomag. appxmanifest** lehetőséget a módosítások mentéséhez.
 
 ### <a name="install-the-speech-sdk"></a>A Speech SDK telepítése
 
@@ -94,7 +94,7 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **csomag forrása**területen válassza a **nuget.org**lehetőséget.
 
-1. A **keresőmezőbe** írja be `Microsoft.CognitiveServices.Speech`a kifejezést, majd válassza ki a csomagot, miután az megjelenik a keresési eredmények között.
+1. A **keresőmezőbe** írja be a kifejezést `Microsoft.CognitiveServices.Speech` , majd válassza ki a csomagot, miután az megjelenik a keresési eredmények között.
 
    ![A megoldás csomagjainak kezelésére szolgáló párbeszédpanel képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-csharp-uwp-05-nuget-install-1.0.0.png)
 
@@ -104,4 +104,4 @@ Végül telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget),
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 
-1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik `Successfully installed 'Microsoft.CognitiveServices.Speech 1.11.0' to helloworld`meg:.
+1. A **licenc elfogadása** párbeszédpanelen tekintse meg a licencet, majd válassza az **Elfogadom**lehetőséget. A csomag telepítése megkezdődik, és amikor a telepítés befejeződött, a **kimenet** ablaktáblán a következő szöveghez hasonló üzenet jelenik meg: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld` .

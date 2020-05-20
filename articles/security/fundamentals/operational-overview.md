@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/31/2019
 ms.author: tomsh
-ms.openlocfilehash: bcaf45af4c02dad22e2cc611fa7ea5a32ad3a853
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 00a71fec9c0bfc1db45eee7129b7c2a8adaef0fa
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75443886"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674244"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – áttekintés
 
@@ -60,7 +60,7 @@ A [Azure site Recovery](https://azure.microsoft.com/documentation/services/site-
 
 -   Az identitás-és hozzáférés-kezelés (IAM) engedélyezése felhőalapú szolgáltatásként.
 -   Központi hozzáférés-kezelést, egyszeri bejelentkezést (SSO) és jelentéskészítést biztosít.
--   A támogatja az Azure piactéren [futó több ezer alkalmazás](https://azure.microsoft.com/marketplace/active-directory/) integrált hozzáférés-vezérlését, beleértve a Salesforce, a Google Apps, a Box és a egybeesik.
+-   A támogatja az Azure piactéren [futó több ezer alkalmazás](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActiveDirectory) integrált hozzáférés-vezérlését, beleértve a Salesforce, a Google Apps, a Box és a egybeesik.
 
 Az Azure AD az [Identitáskezelés teljes funkcionalitását](/azure/security/security-identity-management-overview#security-monitoring-alerts-and-machine-learning-based-reports)is tartalmazza, beleértve a következőket:
 

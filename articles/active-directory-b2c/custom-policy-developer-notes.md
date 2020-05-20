@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 05/19/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 471c2d45e28e634adde78c2d96d407ec219be68c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 90d9c6a2ebf445ba492f2e1634e57910cd235aed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229663"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679252"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Fejlesztői megjegyzések a Azure Active Directory B2C egyéni házirendjeihez
 
@@ -62,20 +62,20 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="protocols-and-authorization-flows"></a>Protokollok és engedélyezési folyamatok
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OAuth2-engedélyezési kód](authorization-code-flow.md) |  |  | X |  |
 | OAuth2 engedélyezési kód a PKCE |  |  | X | Csak mobil alkalmazások  |
 | [OAuth2 implicit folyamat](implicit-flow-single-page-application.md) |  |  | X |  |
 | [OAuth2 erőforrás-tulajdonos jelszavas hitelesítő adatai](ropc-custom.md) |  | X |  |  |
 | [OIDC-kapcsolat](openid-connect.md) |  |  | X |  |
-| [EGY SAML2](connect-with-saml-service-providers.md)  |  |X  |  | Kötések közzététele és átirányítása. |
+| [EGY SAML2](connect-with-saml-service-providers.md)  |  |  |X  | Kötések közzététele és átirányítása. |
 | OAuth1 |  |  |  | Nem támogatott. |
 | WSFED | X |  |  |  |
 
 ### <a name="identify-providers-federation"></a>Szolgáltatók összevonásának azonosítása 
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [OpenID Connect](openid-connect-technical-profile.md) |  |  | X | Például: Google +.  |
 | [OAuth2](oauth2-technical-profile.md) |  |  | X | Például: Facebook.  |
@@ -86,7 +86,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="rest-api-integration"></a>REST API integráció
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | [REST API egyszerű hitelesítéssel](secure-rest-api.md#http-basic-authentication) |  |  | X |  |
 | [REST API ügyféltanúsítvány-alapú hitelesítéssel](secure-rest-api.md#https-client-certificate-authentication) |  |  | X |  |
@@ -94,7 +94,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="component-support"></a>Összetevő-támogatás
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Telefonos faktoros hitelesítés](phone-factor-technical-profile.md) |  |  | X |  |
 | [Azure MFA-hitelesítés](multi-factor-auth-technical-profile.md) |  | X |  |  |
@@ -109,7 +109,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="page-layout-versions"></a>Oldalelrendezési verziók
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [2.0.0](page-layout.md#200) |  | X |  |  |
 | [1.2.0](page-layout.md#120) |  | X |  |  |
@@ -119,7 +119,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="app-ief-integration"></a>IEF-integráció
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Lekérdezési karakterlánc paraméter`domain_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
 | Lekérdezési karakterlánc paraméter`login_hint` |  |  | X | A jogcímként elérhető lehet a IDENTITÁSSZOLGÁLTATÓ. |
@@ -129,7 +129,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="session-management"></a>Munkamenet-kezelés
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | [Alapértelmezett egyszeri bejelentkezés munkamenet-szolgáltatója](custom-policy-reference-sso.md#defaultssosessionprovider) |  |  | X |  |
 | [Külső bejelentkezési munkamenet-szolgáltató](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
@@ -139,7 +139,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="security"></a>Biztonság
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 |-------- | :-----------: | :-------: | :--: | ----- |
 | Házirend-kulcsok – generál, manuális, feltöltés |  |  | X |  |
 | Szabályzat kulcsai – RSA/CERT, Secrets |  |  | X |  |
@@ -147,7 +147,7 @@ Az egyéni házirend-/identitás-keretrendszer képességei állandó és gyors 
 
 ### <a name="developer-interface"></a>Fejlesztői felület
 
-| Szolgáltatás | Fejlesztés | Előzetes verzió | FE | Megjegyzések |
+| Funkció | Fejlesztés | Előnézet | FE | Megjegyzések |
 | ------- | :-----------: | :-------: | :--: | ----- |
 | Azure Portal – IEF UX |  |  | X |  |
 | Szabályzat feltöltése |  |  | X |  |

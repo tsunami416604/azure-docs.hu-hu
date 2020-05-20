@@ -9,12 +9,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/16/2020
 ms.author: diberry
-ms.openlocfilehash: 02610e647e2138cbf52f86c22107feec2d61273b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 1c3631b4a2964c5e3a8d8267d1934a5822966342
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81604967"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83673441"
 ---
 Cognitive Services két természetes nyelvi feldolgozási szolgáltatást biztosít, [Language Understanding](../luis/what-is-luis.md) és [QnA Maker](../qnamaker/overview/overview.md), amelyek mindegyike más célra szolgál. Ismerje meg, hogy mikor kell használni az egyes szolgáltatásokat, és hogyan kell egymással kiegészíteni őket.
 
@@ -30,17 +30,20 @@ Language Understanding (LUIS) és QnA Maker különböző problémák megoldás�
 
 A megfelelő szolgáltatás kiválasztásához meg kell ismernie az ügyfélalkalmazástól érkező felhasználói szöveget, valamint azt, hogy milyen információkra van szükség az ügyfélalkalmazás számára a kognitív szolgáltatástól.
 
-Ha a csevegési robot megkapja a `How do I get to the Human Resources building on the Seattle North campus?`szöveget, az alábbi táblázat segítségével megismerheti, hogy az egyes szolgáltatások hogyan működnek a szöveggel.
+Ha a csevegési robot megkapja a szöveget `How do I get to the Human Resources building on the Seattle North campus?` , az alábbi táblázat segítségével megismerheti, hogy az egyes szolgáltatások hogyan működnek a szöveggel.
 
 |Szolgáltatás|Ügyfélalkalmazás határozza meg|
 |--|--|
-|LUIS|**Meghatározza a felhasználó szövegének szándékát** – a szolgáltatás nem adja vissza a kérdésre adott választ. Ez a szöveg például a `FindLocation` szándéknak megfelelőként van osztályozva.<br>|
-|QnA Maker|Egy egyéni Tudásbázisból származó **kérdésre adott válasz visszaadása** . Ez a szöveg például a statikus szöveges válaszával kapcsolatos kérdésként van meghatározva `Get on the #9 bus and get off at Franklin street`.|
+|LUIS|**Meghatározza a felhasználó szövegének szándékát** – a szolgáltatás nem adja vissza a kérdésre adott választ. Ez a szöveg például a szándéknak megfelelőként van osztályozva `FindLocation` .<br>|
+|QnA Maker|Egy egyéni Tudásbázisból származó **kérdésre adott válasz visszaadása** . Ez a szöveg például a statikus szöveges válaszával kapcsolatos kérdésként van meghatározva `Get on the #9 bus and get off at Franklin street` .|
 |||
+
+> [!div class="mx-imgBorder"]
+> ![Infographic – annak meghatározása, hogy mikor kell használni a LUIS-t és mikor kell használni a QnA Maker](./luis-qna-maker-together-decision.png)
 
 ## <a name="when-do-you-use-luis"></a>Mikor használja a LUIS-t?
 
-Akkor használja a LUIS-t, ha ismernie kell a Kimondás szándékát egy folyamat részeként a csevegési robotban. Ha továbbra is a példában `How do I get to the Human Resources building on the Seattle North campus?`szereplő szövegre kattint, a felhasználó szándéka, hogy megkeresse a helyet, megadhatja a teljes (entitásokkal kihúzott) részletek részleteit egy másik szolgáltatás, például egy szállítási kiszolgáló számára a válasz beszerzéséhez.
+Akkor használja a LUIS-t, ha ismernie kell a Kimondás szándékát egy folyamat részeként a csevegési robotban. Ha továbbra is a példában szereplő szövegre `How do I get to the Human Resources building on the Seattle North campus?` kattint, a felhasználó szándéka, hogy megkeresse a helyet, megadhatja a teljes (entitásokkal kihúzott) részletek részleteit egy másik szolgáltatás, például egy szállítási kiszolgáló számára a válasz beszerzéséhez.
 
 Nem kell összekapcsolnia a LUIS és a QnA Makert a szándék meghatározásához.
 
@@ -50,7 +53,7 @@ Nem kell összekapcsolnia a LUIS és a QnA Makert a szándék meghatározásáho
 
 A QnA Maker akkor használja, ha a válaszok statikus tudásbázisa van. Ez a Tudásbázis az Ön igényeinek megfelelően egyedi, amelyet dokumentumok, például PDF-EK és URL-címek használatával készített.
 
-Ha folytatja a példát, `How do I get to the Human Resources building on the Seattle North campus?`küldje el a szöveget lekérdezésként a közzétett QnA Maker szolgáltatásba, és fogadja el a legjobb választ.
+Ha folytatja a példát, `How do I get to the Human Resources building on the Seattle North campus?` küldje el a szöveget lekérdezésként a közzétett QnA Maker szolgáltatásba, és fogadja el a legjobb választ.
 
 Nincs szükség a LUIS és a QnA Maker összekapcsolására a kérdés megválaszolásának meghatározásához.
 
@@ -62,7 +65,7 @@ Ha felépíti a QnA Maker tudásbázist, de tudja, hogy a tárgy tartománya mó
 
 Az ügyfélalkalmazás a következő pontszámok esetében is figyelnie kell a LUIS és a QnA Maker válaszokat. Ha a QnA Maker pontszáma valamilyen tetszőleges küszöbérték alá esik, használja a LUIS által visszaadott szándékot és entitási adatokat, hogy átadja az adatokat egy külső szolgáltatásnak.
 
-A példában szereplő szöveg `How do I get to the Human Resources building on the Seattle North campus?`folytatásakor tegyük fel, hogy QnA Maker alacsony megbízhatósági pontszámot ad vissza. A LUIS `FindLocation` és a kinyert entitások, például a `Human Resources building` és `Seattle North campus`a által visszaadott szándék használatával küldhetik ezeket az információkat egy leképezési vagy keresési szolgáltatásba egy másik válaszra.
+A példában szereplő szöveg folytatásakor `How do I get to the Human Resources building on the Seattle North campus?` tegyük fel, hogy QnA Maker alacsony megbízhatósági pontszámot ad vissza. A LUIS `FindLocation` és a kinyert entitások, például a és a által visszaadott szándék használatával `Human Resources building` `Seattle North campus` küldhetik ezeket az információkat egy leképezési vagy keresési szolgáltatásba egy másik válaszra.
 
 Ezt a külső féltől származó választ is bemutathatja a felhasználónak az érvényesítéshez. A felhasználó jóváhagyása után visszatérhet a QnA Makerra, és hozzáadhatja az adatokat az ismeretek növeléséhez.
 
@@ -70,7 +73,7 @@ Ezt a külső féltől származó választ is bemutathatja a felhasználónak az
 
 Ha a csevegési robotnak több információra van szüksége, mint amennyit a szolgáltatás nyújt, a döntési fa folytatásához használja mindkét szolgáltatást, és dolgozza fel mindkét választ az ügyfélalkalmazás számára.
 
-A robot Framework **[elküldési parancssori](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** felületének használatával létrehozhat egy folyamatot, amely mindkét szolgáltatással használható. Ez az eszköz egy olyan legjobb LUIS-alkalmazást hoz létre, amely a LUIS és a QnA Maker között alárendelt alkalmazásként való kiszállításra szolgál.
+A robot Framework **[elküldési parancssori](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch)** felületének használatával létrehozhat egy folyamatot, amely mindkét szolgáltatással használható. Ez az eszköz egy olyan legjobb LUIS-alkalmazást hoz létre, amely a LUIS és a QnA Maker között alárendelt alkalmazásként való kiszállításra szolgál. [További](https://docs.microsoft.com/azure/bot-service/bot-builder-tutorial-dispatch?view=azure-bot-service-4.0&tabs=cs) információ a Luis, a QnA Maker és a bot keretrendszer integrálásáról.
 
 A bot Builder minta, az **NLP a küldéssel**, [C#](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/csharp_dotnetcore/14.nlp-with-dispatch) vagy [Node. js](https://github.com/microsoft/BotBuilder-Samples/tree/master/samples/javascript_nodejs/14.nlp-with-dispatch)használatával hajtsa végre ezt a típusú csevegési robotot.
 

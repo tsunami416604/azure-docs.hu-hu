@@ -17,12 +17,12 @@ ms.date: 04/07/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 56e44059268037cfd839fc7c877c5d6c972dead8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7f025a434c6db134237325a2f949b2a7c772672
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80886041"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679165"
 ---
 # <a name="how-to-manage-inactive-user-accounts-in-azure-ad"></a>Útmutató: inaktív felhasználói fiókok kezelése az Azure AD-ben
 
@@ -43,7 +43,7 @@ A legutóbbi sikeres bejelentkezés lehetővé teszi, hogy a felhasználók tov�
 
 Az inaktív fiókok észleléséhez ki kell értékelni a **Microsoft Graph** API **signInActivity** -erőforrástípus által megjelenített **lastSignInDateTime** tulajdonságot. Ennek a tulajdonságnak a használatával a következő helyzetekben hozhat létre megoldást:
 
-- **Felhasználók név szerint**: ebben az esetben név alapján keres egy adott felhasználót, amely lehetővé teszi a lastSignInDate kiértékelését:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
+- **Felhasználók név szerint**: ebben az esetben név alapján keres egy adott felhasználót, amely lehetővé teszi a lastSignInDateTime kiértékelését:`https://graph.microsoft.com/beta/users?$filter=startswith(displayName,'markvi')&$select=displayName,signInActivity`
 
 - **Felhasználók dátum szerint**: ebben a forgatókönyvben a megadott dátum előtt egy lastSignInDateTime rendelkező felhasználók listáját kéri le:`https://graph.microsoft.com/beta/users?filter=signInActivity/lastSignInDateTime le 2019-06-01T00:00:00Z`
 

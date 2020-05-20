@@ -13,14 +13,14 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8902c3147bbe142fc58d4e2c3fa83601c8ccbba3
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 5b83b0687db72c78a0c7788933acf07f5cb9e0ed
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203520"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83679346"
 ---
-# <a name="bulk-import-group-members-in-azure-active-directory"></a>Csoporttagok tömeges importálása Azure Active Directory
+# <a name="bulk-add-group-members-in-azure-active-directory"></a>Csoporttagok tömeges hozzáadása Azure Active Directory
 
 A Azure Active Directory (Azure AD) portál használatával nagyszámú tagot adhat hozzá egy csoporthoz egy vesszővel tagolt (CSV) fájl használatával a csoporttagok tömeges importálásához.
 
@@ -35,7 +35,7 @@ Töltse le és töltse ki a CSV-fájl tömeges feltöltése sablont, hogy az Azu
 A letöltött CSV-sablon sorai a következők:
 
 - **Verziószám**: a verziószámot tartalmazó első sornak szerepelnie kell a CSV-fájl feltöltésekor.
-- **Oszlopfejlécek**: az oszlopfejlécek &lt; *Item name* &gt; formátuma a (z) [PropertyName] &lt;elemnév *kötelező vagy üres*&gt;. Például: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz. A csoporttagság változásaihoz a következőt kell használni: tag objektumazonosító vagy egyszerű felhasználónév.
+- **Oszlopfejlécek**: az oszlopfejlécek formátuma a (z &lt; *Item name* &gt; ) [PropertyName] elemnév &lt; *kötelező vagy üres* &gt; . Például: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Előfordulhat, hogy a sablon néhány régebbi verziója némileg eltérő változatot tartalmaz. A csoporttagság változásaihoz a következőt kell használni: tag objektumazonosító vagy egyszerű felhasználónév.
 - **Példák sora**: a sablonban szerepel egy sor, amely tartalmazza az egyes oszlopok elfogadható értékeit. El kell távolítania a példákat tartalmazó sort, és le kell cserélnie a saját bejegyzéseire.
 
 ### <a name="additional-guidance"></a>További útmutatás
@@ -48,7 +48,7 @@ A letöltött CSV-sablon sorai a következők:
 ## <a name="to-bulk-import-group-members"></a>Csoporttagok tömeges importálása
 
 1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com) a szervezet felhasználói rendszergazdai fiókjával. A csoport tulajdonosai a saját csoportok tagjainak tömeges importálását is elvégezheti.
-1. Az Azure ad-ben válassza a **csoportok** > **minden csoport**elemet.
+1. Az Azure ad-ben válassza a **csoportok**  >  **minden csoport**elemet.
 1. Nyissa meg azt a csoportot, amelyhez tagokat vesz fel, majd válassza a **tagok**lehetőséget.
 1. A **tagok** lapon válassza a **tagok importálása**lehetőséget.
 1. A **csoportos importálás csoport tagjai** lapon válassza a **Letöltés** lehetőséget a CSV-sablonfájl a szükséges csoporttagok tulajdonságaival való beszerzéséhez.
@@ -57,7 +57,7 @@ A letöltött CSV-sablon sorai a következők:
 
 1. Nyissa meg a CSV-fájlt, és adjon hozzá egy sort minden olyan csoporttag számára, amelyet importálni szeretne a csoportba (a kötelező értékek vagy **tag-azonosítók** vagy **egyszerű felhasználónév**). Ezután mentse a fájlt.
 
-   ![A CSV-fájl az importálandó tagok nevét és azonosítóit tartalmazza.](./media/groups-bulk-import-members/csv-file.png)
+    :::image type="content" source="./media/groups-bulk-import-members/csv-file.png" alt-text="A CSV-fájl az importálandó tagok nevét és azonosítóit tartalmazza.":::
 
 1. A **csoportos importálás csoport tagjai** lapon, a **CSV-fájl feltöltése**területen keresse meg a fájlt. A fájl kiválasztásakor elindul a CSV-fájl érvényesítése.
 1. A fájl tartalmának ellenőrzésekor a tömeges importálás lap megjeleníti a **fájl feltöltésének sikerességét**. Ha hibák léptek fel, ezeket a feladatok elküldése előtt ki kell javítania.

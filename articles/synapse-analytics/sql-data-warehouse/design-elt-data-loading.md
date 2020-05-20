@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/19/2020
+ms.date: 05/13/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e99fd898956e11a4827d023691111a47e5a790c0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: faeab07ce7ec057981d23228461c2fa07600cdc1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80744960"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660024"
 ---
 # <a name="data-loading-strategies-for-synapse-sql-pool"></a>Az betöltési stratégiák a szinapszis SQL-készlethez
 
@@ -29,7 +29,7 @@ Míg az SQL-készlet számos betöltési módszert támogat, beleértve a népsz
 A Base és a COPY utasítás használatával az Azure Blob Storage-ban vagy Azure Data Lake Storeban tárolt külső adatokhoz a T-SQL nyelv használatával férhet hozzá. A betöltés legrugalmasabban a MÁSOLÁSi utasítás használata javasolt.
 
 > [!NOTE]  
-> A COPY utasítás jelenleg nyilvános előzetes verzióban érhető el. Ha visszajelzést szeretne küldeni, küldjön e-mailt a következő terjesztési sqldwcopypreview@service.microsoft.comlistára:.
+> A COPY utasítás jelenleg nyilvános előzetes verzióban érhető el. Ha visszajelzést szeretne küldeni, küldjön e-mailt a következő terjesztési listára: sqldwcopypreview@service.microsoft.com .
 
 > [!VIDEO https://www.youtube.com/embed/l9-wP7OdhDk]
 
@@ -68,7 +68,7 @@ Az Azure Storage-ba történő adatáthelyezéshez használható eszközök és 
 
 - Az [Azure ExpressRoute](../../expressroute/expressroute-introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) szolgáltatás javítja a hálózat teljesítményét, a teljesítményt és a kiszámíthatóságot. A ExpressRoute egy olyan szolgáltatás, amely az Azure-hoz való dedikált privát kapcsolatban továbbítja az adatait. A ExpressRoute-kapcsolatok nem a nyilvános interneten keresztül irányítják az adattovábbítást. A kapcsolatok nagyobb megbízhatóságot, gyorsabb sebességet, kisebb késést és nagyobb biztonságot biztosítanak, mint a szokásos kapcsolatok a nyilvános interneten.
 - A [AZCopy segédprogram](../../storage/common/storage-choose-data-transfer-solution.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) az Azure Storage-ba helyezi át az adatátvitelt a nyilvános interneten keresztül. Ez akkor működik, ha az adatméretek 10 TB-nál kisebbek. A AZCopy rendszeres betöltéséhez tesztelje a hálózati sebességet, és ellenőrizze, hogy elfogadható-e.
-- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. Ha az SQL Analytics szolgáltatással szeretne Data Factory használni, olvassa el az [SQL Analytics-beli adatbetöltése](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json)című témakört.
+- [Azure Data Factory (ADF)](../../data-factory/introduction.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) olyan átjáróval rendelkezik, amelyet telepíthet a helyi kiszolgálóra. Ezután létrehozhat egy folyamatot, amely a helyi kiszolgálóról az Azure Storage-ba helyezi át az adatok áthelyezését. A Data Factory SQL-készlettel való használatához lásd: az [SQL-készlethez tartozó információk betöltése](../../data-factory/load-azure-sql-data-warehouse.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 
 ## <a name="3-prepare-the-data-for-loading"></a>3. az adatgyűjtés előkészítése a betöltéshez
 
@@ -88,30 +88,43 @@ A külső táblák meghatározása magában foglalja az adatforrás megadását,
 
 A parketta betöltésekor az SQL adattípus-leképezés a következő:
 
-| **Parketta adattípusa** | **SQL-adattípus** |
-| :-------------------: | :---------------: |
-|        tinyint        |      tinyint      |
-|       smallint        |     smallint      |
-|          int          |        int        |
-|        bigint         |      bigint       |
-|        logikai        |        bit        |
-|        double         |       lebegőpontos       |
-|         lebegőpontos         |       valós szám        |
-|        double         |       pénzt       |
-|        double         |    túlcsordulási     |
-|        sztring         |       NCHAR       |
-|        sztring         |     nvarchar      |
-|        sztring         |       char        |
-|        sztring         |      varchar      |
-|        binary         |      binary       |
-|        binary         |     varbinary     |
-|       időbélyeg       |       dátum        |
-|       időbélyeg       |   idő adattípusúra   |
-|       időbélyeg       |     datetime2     |
-|       időbélyeg       |     dátum/idő      |
-|       időbélyeg       |       time        |
-|         dátum          |       dátum        |
-|        tizedes tört        |      tizedes tört      |
+|                         Parketta típusa                         |   Parketta logikai típusa (jegyzet)   |  SQL-adattípus   |
+| :----------------------------------------------------------: | :-----------------------------------: | :--------------: |
+|                           LOGIKAI                            |                                       |       bit        |
+|                     BINÁRIS/BYTE_ARRAY                      |                                       |    varbinary     |
+|                            DUPLÁN                            |                                       |      lebegőpontos       |
+|                            FLOAT                             |                                       |       valós szám       |
+|                            INT32                             |                                       |       int        |
+|                            INT64                             |                                       |      bigint      |
+|                            INT96                             |                                       |    datetime2     |
+|                     FIXED_LEN_BYTE_ARRAY                     |                                       |      binary      |
+|                            BINÁRIS                            |                 UTF8                  |     nvarchar     |
+|                            BINÁRIS                            |                KARAKTERLÁNC                 |     nvarchar     |
+|                            BINÁRIS                            |                 ENUM                  |     nvarchar     |
+|                            BINÁRIS                            |                 UUID                  | uniqueidentifier |
+|                            BINÁRIS                            |                DECIMÁLIS                |     tizedes tört      |
+|                            BINÁRIS                            |                 JSON                  |  nvarchar(MAX)   |
+|                            BINÁRIS                            |                 BSON                  |  varbinary (max.)  |
+|                     FIXED_LEN_BYTE_ARRAY                     |                DECIMÁLIS                |     tizedes tört      |
+|                          BYTE_ARRAY                          |               IDŐKÖZ                |  varchar (max),   |
+|                            INT32                             |             INT (8, igaz)              |     smallint     |
+|                            INT32                             |            INT (16, igaz)            |     smallint     |
+|                            INT32                             |             INT (32, true)             |       int        |
+|                            INT32                             |            INT (8, hamis)            |     tinyint      |
+|                            INT32                             |            INT (16, hamis)             |       int        |
+|                            INT32                             |           INT (32, hamis)            |      bigint      |
+|                            INT32                             |                 DATE                  |       dátum       |
+|                            INT32                             |                DECIMÁLIS                |     tizedes tört      |
+|                            INT32                             |            IDŐ (MILLIS)             |       time       |
+|                            INT64                             |            INT (64, true)            |      bigint      |
+|                            INT64                             |           INT (64, hamis)            |  decimális (20, 0)   |
+|                            INT64                             |                DECIMÁLIS                |     tizedes tört      |
+|                            INT64                             |         IDŐ (MICROS/NANOS)         |       time       |
+|                            INT64                             | IDŐBÉLYEG (MILLIS/MICROES/NANOS) |    datetime2     |
+| [Összetett típus](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23lists&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=6Luk047sK26ijTzfvKMYc%2FNu%2Fz0AlLCX8lKKTI%2F8B5o%3D&reserved=0) |                 LISTÁJÁT                  |   varchar(max)   |
+| [Összetett típus](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  Térkép                  |   varchar(max)   |
+
+
 
 A külső objektumok létrehozásának példáját a betöltési útmutató [külső táblák létrehozása](load-data-from-azure-blob-storage-using-polybase.md#create-external-tables-for-the-sample-data) lépésében tekintheti meg.
 

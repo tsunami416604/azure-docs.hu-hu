@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 976ff4d3be194bf33d2c01f06c66782caf8dad50
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608047"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83675933"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -70,7 +70,7 @@ Az [Azure Cosmos db Emulator](local-emulator.md) használatával az alkalmazást
 
 Ha technikai kérdést szeretne feltenni, tegye közzé a következő két kérdés-válasz fórum egyikét:
 
-* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
+* [MSDN-fórum](https://docs.microsoft.com/answers/topics/azure-cosmos-db.html)
 * [Stack overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb). A Stack Overflow a programozási kérdésekre legmegfelelőbb. Győződjön meg arról, hogy a kérdés [a témában](https://stackoverflow.com/help/on-topic) van, és a [lehető legtöbb részletet biztosít, így a kérdés egyértelmű és megválaszolható](https://stackoverflow.com/help/how-to-ask).
 
 Új szolgáltatások igényléséhez hozzon létre egy új kérelmet a [felhasználói hangon](https://feedback.azure.com/forums/263030-azure-cosmos-db).
@@ -173,7 +173,7 @@ Az SQL API-fiókok által támogatott SQL-lekérdezési nyelv a SQL Server álta
 
 ### <a name="does-the-sql-api-support-sql-aggregation-functions"></a>Támogatja az SQL API az SQL aggregációs funkciókat?
 
-Az SQL API `COUNT`a nagy késleltetésű összesítést az összesítő függvények, `MIN` `MAX` `AVG`a,, és `SUM` az SQL-nyelvtan használatával bármilyen méretben támogatja. További információ: [összesítő függvények](sql-query-aggregates.md).
+Az SQL API a nagy késleltetésű összesítést az összesítő függvények `COUNT` , a,, `MIN` `MAX` `AVG` és `SUM` az SQL-nyelvtan használatával bármilyen méretben támogatja. További információ: [összesítő függvények](sql-query-aggregates.md).
 
 ### <a name="how-does-the-sql-api-provide-concurrency"></a>Hogyan biztosítja az SQL API az egyidejűséget?
 

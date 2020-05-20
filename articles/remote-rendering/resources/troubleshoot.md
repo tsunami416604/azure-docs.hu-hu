@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: c1b807c6e4fa269ac2ab8d7eacd3ca1d4f81a1ca
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: b518b2b92ba6d2529ffdefce754a3b29b74fb21b
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82792615"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674290"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -50,7 +50,7 @@ A probléma oka a DLL-ek helytelen biztonsági beállítása. Ez a probléma nem
     Get-AppxPackage -Name Microsoft.HEVCVideoExtension
     ```
   
-    A parancsnak a `InstallLocation` következőhöz hasonló módon kell kiadnia a kodeket:
+    A parancsnak a következőhöz hasonló módon kell kiadnia a `InstallLocation` kodeket:
   
     ```cmd
     InstallLocation   : C:\Program Files\WindowsApps\Microsoft.HEVCVideoExtension_1.0.23254.0_x64__5wasdgertewe
@@ -106,7 +106,7 @@ Lásd a virtuálisgép- [méretek bizonyos korlátozásait](../reference/limits.
 
 Sok esetben a modell helyesen jelenik meg, de a kamera csonkakúpot kívül található. Ennek gyakori oka az, hogy a modellt egy távoli középpontú kimutatással exportálták, így azt a kamera távoli nyírási síkja vágja le. Segít lekérdezni a modell határoló mezőjét programozott módon, és megjelenítheti a négyzetet az egységgel, vagy kinyomtathatja az értékeket a hibakeresési naplóba.
 
-Továbbá a konverziós folyamat létrehoz egy [kimeneti JSON-fájlt](../how-tos/conversion/get-information.md) a konvertált modellel együtt. A modell pozicionálási problémáinak hibakereséséhez érdemes megtekinteni `boundingBox` a [outputStatistics szakaszban](../how-tos/conversion/get-information.md#the-outputstatistics-section)található bejegyzést:
+Továbbá a konverziós folyamat létrehoz egy [kimeneti JSON-fájlt](../how-tos/conversion/get-information.md) a konvertált modellel együtt. A modell pozicionálási problémáinak hibakereséséhez érdemes megtekinteni a `boundingBox` [outputStatistics szakaszban](../how-tos/conversion/get-information.md#the-outputstatistics-section)található bejegyzést:
 
 ```JSON
 {
@@ -129,15 +129,15 @@ Továbbá a konverziós folyamat létrehoz egy [kimeneti JSON-fájlt](../how-tos
 }
 ```
 
-A határolókeret a következőként van leírva `min` : `max` a és a pozíciója 3D térben, méterben. Így a 1000,0-es koordináta azt jelenti, hogy a forrás 1 kilométer távolságra van.
+A határolókeret a következőként van leírva: a `min` és a `max` pozíciója 3D térben, méterben. Így a 1000,0-es koordináta azt jelenti, hogy a forrás 1 kilométer távolságra van.
 
 Ennek a határolókeretnak két problémája lehet, amely láthatatlan geometriát eredményez:
-* **A mező távolról is elvégezhető**, így az objektum teljes kivágása a sík kivágása miatt történik. Ebben `boundingBox` az esetben a következőhöz hasonló értékek jelennek `min = [-2000, -5,-5], max = [-1990, 5,5]`meg: az x tengely nagy eltolásának használata példaként. Az ilyen típusú probléma megoldásához engedélyezze a `recenterToOrigin` [modell átalakítási konfigurációjában](../how-tos/conversion/configure-model-conversion.md)a beállítást.
-* **A Box lehet középre igazított, de a nagyságrenddel túl nagy**. Ez azt jelenti, hogy bár a kamera a modell közepén indul el, a geometriája minden irányban kikerül. Ebben `boundingBox` az esetben a tipikus értékek a következőképpen néznek ki `min = [-1000,-1000,-1000], max = [1000,1000,1000]`:. Az ilyen típusú probléma oka általában az egység méretezési eltérése. A kiegyenlítéshez az átalakítás során meg kell adnia egy [skálázási értéket](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) , vagy a megfelelő egységekkel kell megadnia a forrás modellt. A skálázás a legfelső szintű csomópontra is alkalmazható a modell futásidőben történő betöltésekor.
+* **A mező távolról is elvégezhető**, így az objektum teljes kivágása a sík kivágása miatt történik. Ebben az esetben a következőhöz `boundingBox` hasonló értékek jelennek meg: az `min = [-2000, -5,-5], max = [-1990, 5,5]` x tengely nagy eltolásának használata példaként. Az ilyen típusú probléma megoldásához engedélyezze a `recenterToOrigin` [modell átalakítási konfigurációjában](../how-tos/conversion/configure-model-conversion.md)a beállítást.
+* **A Box lehet középre igazított, de a nagyságrenddel túl nagy**. Ez azt jelenti, hogy bár a kamera a modell közepén indul el, a geometriája minden irányban kikerül. Ebben az esetben a tipikus `boundingBox` értékek a következőképpen néznek ki: `min = [-1000,-1000,-1000], max = [1000,1000,1000]` . Az ilyen típusú probléma oka általában az egység méretezési eltérése. A kiegyenlítéshez az átalakítás során meg kell adnia egy [skálázási értéket](../how-tos/conversion/configure-model-conversion.md#geometry-parameters) , vagy a megfelelő egységekkel kell megadnia a forrás modellt. A skálázás a legfelső szintű csomópontra is alkalmazható a modell futásidőben történő betöltésekor.
 
 **Az Unity Render folyamat nem tartalmazza a renderelési horgokat:**
 
-Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menü *ablakot > analysis > frame Debugger*. Engedélyezze, és győződjön meg arról, hogy a folyamat két `HolographicRemotingCallbackPass` bejegyzéssel rendelkezik:
+Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, hogy elvégezze a képkockák összeállítását a videóval, és hogy elvégezze az újravetítést. Ha szeretné ellenőrizni, hogy ezek a hookok léteznek-e, nyissa meg a menü *ablakot > analysis > frame Debugger*. Engedélyezze, és győződjön meg arról, hogy a folyamat két bejegyzéssel rendelkezik `HolographicRemotingCallbackPass` :
 
 ![Unity frame Debugger](./media/troubleshoot-unity-pipeline.png)
 
@@ -145,12 +145,12 @@ Az Azure Remote rendering összekapcsolja az egység renderelési folyamatát, h
 
 ### <a name="use-debug-when-compiling-for-unity-editor"></a>Az Unity Editor fordításakor használja a hibakeresést
 
-Állítsa át az Unity megoldás *Build típusát* a **hibakereséshez**. A Unity Editorban az ARR tesztelésekor a `UNITY_EDITOR` define parancs csak a "debug" buildek esetében érhető el. Vegye figyelembe, hogy ez nem kapcsolódik a [központilag telepített alkalmazásokhoz](../quickstarts/deploy-to-hololens.md)használt Build típushoz, ahol a "Release" buildeket érdemes előnyben részesíteni.
+Állítsa át az Unity megoldás *Build típusát* a **hibakereséshez**. A Unity Editorban az ARR tesztelésekor a define parancs `UNITY_EDITOR` csak a "debug" buildek esetében érhető el. Vegye figyelembe, hogy ez nem kapcsolódik a [központilag telepített alkalmazásokhoz](../quickstarts/deploy-to-hololens.md)használt Build típushoz, ahol a "Release" buildeket érdemes előnyben részesíteni.
 
 ### <a name="compile-failures-when-compiling-unity-samples-for-hololens-2"></a>Hibák fordítása a 2. HoloLens Unity-minták fordításakor
 
 Hamis hibák történtek, amikor az egységbeli mintákat (gyors üzembe helyezési útmutató, ShowCaseApp,..) próbálta lefordítani a 2. HoloLens. A Visual Studio arra panaszkodik, hogy nem tud fájlokat másolni, noha ott vannak. Ha a probléma a következő:
-* Távolítsa el az összes ideiglenes Unity-fájlt a projektből, és próbálkozzon újra.
+* Távolítsa el az összes ideiglenes Unity-fájlt a projektből, és próbálkozzon újra. Az egység bezárásához törölje az ideiglenes *könyvtárat* és az *obj* -mappákat a projekt könyvtárában, majd töltse be vagy hozza létre újra a projektet.
 * Győződjön meg arról, hogy a projektek a lemez egy olyan könyvtárában találhatók, amely ésszerűen rövid elérési úttal rendelkezik, mert a másolási lépés néha úgy tűnik, hogy hosszú fájlnevekkel problémákba ütköznek.
 * Ha ez nem segít, előfordulhat, hogy az MS Sense ütközik a másolási lépéssel. Kivétel beállításához futtassa ezt a beállításjegyzék-parancsot a parancssorból (rendszergazdai jogosultságok szükségesek):
     ```cmd
@@ -161,9 +161,9 @@ Hamis hibák történtek, amikor az egységbeli mintákat (gyors üzembe helyez�
 
 Ha úgy tűnik, hogy a megjelenített objektumok a fej mozgásával együtt mozognak, előfordulhat, hogy a *késői fázis-újravetítéssel* (LSR) kapcsolatos problémák merülhetnek fel. Az ilyen helyzetek megközelítésével kapcsolatos útmutatásért tekintse meg a [késői fázisok újravetítésének](../overview/features/late-stage-reprojection.md) szakaszát.
 
-Az instabil Hologramok (ingadozó, hajlítási, vibrálás vagy jumping Hologramok) egy másik oka lehet gyenge hálózati kapcsolat, különösen a nem megfelelő hálózati sávszélesség vagy túl nagy késés. A hálózati kapcsolatok minőségének jó mutatója a [teljesítmény statisztika](../overview/features/performance-queries.md) értéke `ARRServiceStats.VideoFramesReused`. Az újrafelhasznált keretek olyan helyzeteket jeleznek, amikor egy régi videó-keretet újra fel kell használni az ügyféloldali oldalon, mert nem volt elérhető új videó keret – például a csomagok elvesztése miatt vagy a hálózati késésben lévő változatok miatt. Ha `ARRServiceStats.VideoFramesReused` a értéke gyakran nagyobb nullánál, ez hálózati problémát jelez.
+Az instabil Hologramok (ingadozó, hajlítási, vibrálás vagy jumping Hologramok) egy másik oka lehet gyenge hálózati kapcsolat, különösen a nem megfelelő hálózati sávszélesség vagy túl nagy késés. A hálózati kapcsolatok minőségének jó mutatója a [teljesítmény statisztika](../overview/features/performance-queries.md) értéke `ARRServiceStats.VideoFramesReused` . Az újrafelhasznált keretek olyan helyzeteket jeleznek, amikor egy régi videó-keretet újra fel kell használni az ügyféloldali oldalon, mert nem volt elérhető új videó keret – például a csomagok elvesztése miatt vagy a hálózati késésben lévő változatok miatt. Ha a `ARRServiceStats.VideoFramesReused` értéke gyakran nagyobb nullánál, ez hálózati problémát jelez.
 
-Egy másik érték a következő: `ARRServiceStats.LatencyPoseToReceiveAvg`. Következetesen 100 MS alá kell esnie. Ha magasabb értékeket lát, ez azt jelzi, hogy egy túl távol lévő adatközponthoz csatlakozik.
+Egy másik érték a következő: `ARRServiceStats.LatencyPoseToReceiveAvg` . Következetesen 100 MS alá kell esnie. Ha magasabb értékeket lát, ez azt jelzi, hogy egy túl távol lévő adatközponthoz csatlakozik.
 
 A lehetséges enyhítések listáját a [hálózati kapcsolatra vonatkozó irányelvek](../reference/network-requirements.md#guidelines-for-network-connectivity)című részben tekintheti meg.
 

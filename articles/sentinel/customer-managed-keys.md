@@ -9,17 +9,17 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 05/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5eed208ed79aeab4e46ed90dd4d340a8b445be96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded28ef872bbc3147793ea3d68c94f8dde35f74e
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461633"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83674178"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Az Azure Sentinel ügyfél által felügyelt kulcsának beállítása
 
@@ -27,13 +27,15 @@ ms.locfileid: "81461633"
 Ez a cikk háttér-információkat és lépéseket tartalmaz az ügyfél által felügyelt kulcs (CMK) Azure Sentinelhez való konfigurálásához. A CMK lehetővé teszi, hogy az összes mentett vagy az Azure Sentinel számára továbbított adatokat titkosítsa az összes kapcsolódó tárolási erőforráson egy, az Ön által létrehozott vagy birtokolt Azure Key Vault kulccsal.
 
 > [!NOTE]
-> -   Az Azure Sentinel CMK funkció csak azokra az ügyfeleknek érhető el, akik **új** és ehhez a funkcióhoz férnek hozzá.Kapcsolatfelvételt kérhet azuresentinelCMK@microsoft.com, és a rendelkezésre álló kapacitás lehetőséggel a függőben lévő kérések jóváhagyása is megtörténik.
+> -   Az Azure Sentinel CMK funkció csak azokra az ügyfeleknek érhető el, akik **új** és ehhez a funkcióhoz férnek hozzá.Kapcsolatfelvételt kérhet azuresentinelCMK@microsoft.com , és a rendelkezésre álló kapacitás lehetőséggel a függőben lévő kérések jóváhagyása is megtörténik.
 > -   Az Azure Sentinel CMK funkció csak az USA keleti régiójában, az USA 2. nyugati régiójában és a dél-közép amerikai régióban érhető el.
-> -   A CMK képesség csak az 1 TB-ot vagy annál többet küldő ügyfelek számára érhető el. Ha az Azure-előfizetése CMK kiépítésére alkalmazza a Microsoftot, a további díjszabásról is tájékozódhat. További információ a [log Analytics](../azure-monitor/platform/customer-managed-keys.md#disclaimers) díjszabásáról.
+> -   A CMK képesség csak az 1 TB-ot vagy annál többet küldő ügyfelek számára érhető el. Ha az Azure-előfizetése CMK kiépítésére alkalmazza a Microsoftot, a további díjszabásról is tájékozódhat. További információ a [log Analytics díjszabásáról](../azure-monitor/platform/manage-cost-storage.md#log-analytics-dedicated-clusters).
 
 ## <a name="how-cmk-works"></a>A CMK működése 
 
-Az Azure Sentinel megoldás számos tárolási erőforrást használ a naplózási és a szolgáltatásokhoz, ezek közé tartoznak a Log Analytics és más tárolási erőforrások is. Az Azure Sentinel CMK konfigurációjának részeként konfigurálnia kell a CMK beállításait a kapcsolódó tárolási erőforrásokon is. A Log Analyticson kívüli tárolási erőforrásokban mentett adatfájlok is titkosítva lesznek.
+Az Azure Sentinel megoldás számos tárolási erőforrást használ a naplók gyűjtéséhez és szolgáltatásaihoz, beleértve a Log Analytics és másokat is. Az Azure Sentinel CMK konfigurációjának részeként konfigurálnia kell a CMK beállításait a kapcsolódó tárolási erőforrásokon is. A Log Analyticson kívüli tárolási erőforrásokban mentett adatfájlok is titkosítva lesznek.
+
+További információ a [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview).
 
 > [!NOTE]
 > Ha engedélyezi a CMK az Azure Sentinelben, a CMK nem támogató nyilvános előzetes funkciók nem lesznek engedélyezve.

@@ -7,30 +7,35 @@ ms.topic: how-to
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5a00fc44021278a8b910cf454b43b0bae2c3a1f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d217e6d49f33db099d54e6521073c56ec146c0b8
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81432189"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83660095"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Csatlakozás az Azure szinapszis-munkaterülethez privát hivatkozások használatával (előzetes verzió)
 
 Ez a cikk bemutatja, hogyan hozhat létre privát végpontot az Azure szinapszis-munkaterülethez. További információért tekintse meg a [privát hivatkozások és a privát végpontok](https://docs.microsoft.com/azure/private-link/) című témakört.
 
-## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>1. lépés: az Azure szinapszis-munkaterület megnyitása Azure Portal
+## <a name="step-1-register-network-resource-provider"></a>1. lépés: a hálózati erőforrás-szolgáltató regisztrálása
+
+Ha még nem tette meg, regisztrálja a hálózati erőforrás-szolgáltatót. Az erőforrás-szolgáltató regisztrálása konfigurálja az előfizetést az erőforrás-szolgáltatóval való együttműködésre. A [regisztráláskor](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types)válassza a *Microsoft. Network* elemet az erőforrás-szolgáltatók listájából. Ha a hálózati erőforrás-szolgáltató már regisztrálva van, folytassa a 2. lépéssel.
+
+
+## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>2. lépés: az Azure szinapszis-munkaterület megnyitása Azure Portal
 
 Válassza a **privát végponti kapcsolatok** lehetőséget a **Biztonság** területen, majd válassza a **+ privát végpont**lehetőséget.
 ![Az Azure szinapszis munkaterületének megnyitása Azure Portal](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1.png)
 
-## <a name="step-2-select-your-subscription-and-region-details"></a>2. lépés: válassza ki az előfizetését és a régió részleteit
+## <a name="step-3-select-your-subscription-and-region-details"></a>3. lépés: válassza ki az előfizetését és a régió részleteit
 
 A **privát végpont létrehozása** ablak **alapismeretek** lapján válassza ki az **előfizetést** és az **erőforráscsoportot**. Adjon **nevet** a létrehozni kívánt privát végpontnak. Válassza ki azt a **régiót** , ahol létre szeretné hozni a privát végpontot.
 
 A magánhálózati végpontok egy alhálózaton jönnek létre. A kiválasztott előfizetés, erőforráscsoport és régió szűri a magánhálózati végpontok alhálózatait. Válassza a **tovább lehetőséget: erőforrás->** , ha elkészült.
 ![Előfizetés és régió részleteinek kiválasztása](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-2.png)
 
-## <a name="step-3-select-your-azure-synapse-workspace-details"></a>3. lépés: az Azure szinapszis-munkaterület részleteinek kiválasztása
+## <a name="step-4-select-your-azure-synapse-workspace-details"></a>4. lépés: az Azure szinapszis-munkaterület részleteinek kiválasztása
 
 Válassza a **Kapcsolódás egy Azure-erőforráshoz a saját címtárban** az **erőforrás** lapon. Válassza ki azt az **előfizetést** , amely tartalmazza az Azure szinapszis-munkaterületét. A privát végpontok Azure-beli szinapszis-munkaterületre való létrehozására szolgáló **erőforrástípus** *Microsoft. szinapszis/munkaterület*.
 
