@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7600eae27daf11c4fd02718abc25cef9006179e1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 23e3ccff11dc33858249565d3ad8396b19dd87c6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683616"
+ms.locfileid: "83698892"
 ---
 # <a name="azure-synapse-analytics-business-intelligence-partners"></a>Azure szinapszis Analytics üzleti intelligencia-partnerek
 
@@ -27,7 +27,7 @@ A teljes adattárház-megoldás létrehozásához a szinapszis SQL-készlet hasz
 | ------- | ----------- | -------------------- |
 | ![Birst](./media/sql-data-warehouse-partner-business-intelligence/birst_logo.png) |**Birst**<br>A Birst a teljes szervezetet összekapcsolja egy közös, közös analitikai hálóra épülő, összeszőtt virtualizált BI-példányok hálózatán.|[Termék lap](https://www.birst.com/)<br> |
 | ![ClearStory-adathalmazok](./media/sql-data-warehouse-partner-business-intelligence/clearstory_data_logo.png) |**ClearStory-adatszolgáltatások (folyamatos üzleti elemzések)**<br>A ClearStory adatai lehetővé teszik a gyors ciklusú elemzést a szinapszis SQL-készletben tárolt különböző adategységek között. A ClearStory integrált Spark-alapú platform-és elemzési alkalmazási sebessége adatelérést és a különböző adathalmazok harmonizálását is tartalmazza. Ezek lehetővé teszik a gyors, együttműködésen alapuló feltárást, amely támogatja az üzleti felhasználók számára a gyors bepillantást. |[Termék lap](https://www.clearstorydata.com/product/continuous-insights/)<br> |
-| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>A Dundas adatvizualizáció az üzleti intelligencia és az adatvizualizációs szoftverek egyik vezető, globális szolgáltatója.  A Dundas-irányítópultok, a jelentéskészítés és a vizualizációs adatelemzések zökkenőmentes integrációt biztosítanak az üzleti alkalmazásokhoz, így jobb döntéseket hozhatnak és gyorsabb elemzéseket nyerhetnek.|[Termék lap](https://www.dundas.com/dundas-bi)<br>[Azure Piactér](https://azure.microsoft.com/marketplace/partners/dundas/dundas-bi/)<br> |
+| ![Dundas](./media/sql-data-warehouse-partner-business-intelligence/dundas_software_logo.png) |**Dundas BI**<br>A Dundas adatvizualizáció az üzleti intelligencia és az adatvizualizációs szoftverek egyik vezető, globális szolgáltatója.  A Dundas-irányítópultok, a jelentéskészítés és a vizualizációs adatelemzések zökkenőmentes integrációt biztosítanak az üzleti alkalmazásokhoz, így jobb döntéseket hozhatnak és gyorsabb elemzéseket nyerhetnek.|[Termék lap](https://www.dundas.com/dundas-bi)<br>[Azure Piactér](https://azuremarketplace.microsoft.com/marketplace/apps/dundas.dundas-bi)<br> |
 | ![IBM Cognos](./media/sql-data-warehouse-partner-business-intelligence/cognos_analytics_logo.png) |**IBM Cognos-elemzés**<br>A Cognos Analytics olyan intelligens önkiszolgáló képességeket tartalmaz, amelyek egyszerű, egyértelmű és könnyen használhatók legyenek, függetlenül attól, hogy Ön egy tapasztalt üzleti elemző, amely egy hatalmas ellátási láncban vagy egyetlen kampányt optimalizáló marketingszakértőn alapul. A Cognos Analytics mesterséges intelligenciával és más intelligens képességekkel teszi lehetővé az adatfeltárást, és megkönnyíti a felhasználók számára a szükséges válaszok megszerzését|[Termék lap](https://www.ibm.com/products/cognos-analytics)<br>|
 | ![Információs építők](./media/sql-data-warehouse-partner-business-intelligence/informationbuilders_logo.png) |**Információs építők (webfocus)**<br>A webfocus üzleti intelligencia segítségével a vállalatok a vállalaton belül és azon kívül is jobban használják az adatadatokat. Lehetővé teszi a felhasználók és a rendszergazdák számára, hogy gyorsan olyan irányítópultokat hozzanak létre, amelyek több adatforrásból és-formátumból származó tartalmat egyesítenek Emellett robusztus biztonsági és átfogó szabályozást is biztosít, amely zökkenőmentes és biztonságos megosztást tesz lehetővé bármely BI-és analitikai tartalom számára|[Termék lap](https://www.informationbuilders.com/products/bi-and-analytics-platform)<br> |
 ![Jinfonet](./media/sql-data-warehouse-partner-business-intelligence/jinfonet_logo.png) |**Jinfonet JReport**<br>A JReport egy beágyazható BI-megoldás a vállalat számára. A megoldás számos lehetőséget kínál, mint például a jelentések létrehozása, az irányítópultok és az adatelemzés a Felhőbeli, a big data és a tranzakciós adatforrásokon. Az adatmegjelenítéssel saját jelentéskészítési és adatfelderítési folyamatokat végezhet az agilis, menet közbeni döntéshozatalban. |[Termék lap](https://www.jinfonet.com/product/jreport-designer)<br> |

@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan adhat hozzá egy Automation-szolgáltatásnevet
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/30/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 925fbbb51ac240b96486a2c0aa09c850a8d164bc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc3e17ce5becf039703585167e1ef3aa825cf2ab
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80408648"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697531"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz 
 
@@ -30,7 +30,7 @@ A feladat elvégzése előtt rendelkeznie kell egy Azure Active Directoryban reg
 A kiszolgáló-rendszergazdákat SQL Server Management Studio (SSMS) használatával is konfigurálhatja. A feladat elvégzéséhez [kiszolgálói rendszergazdai](analysis-services-server-admins.md) engedélyekkel kell rendelkeznie az Azure-ban kiszolgálóként. 
 
 1. A SSMS-ben kapcsolódjon az Azure-hoz kiszolgálóként.
-2. A **kiszolgáló tulajdonságai** > **Biztonság**területen kattintson a **Hozzáadás**gombra.
+2. A **kiszolgáló tulajdonságai**  >  **Biztonság**területen kattintson a **Hozzáadás**gombra.
 3. A **felhasználó vagy csoport kiválasztása**területen keresse meg a regisztrált alkalmazást név szerint, válassza ki, majd kattintson a **Hozzáadás**gombra.
 
     ![Egyszerű szolgáltatásnév-fiók keresése](./media/analysis-services-addservprinc-admins/aas-add-sp-ssms-picker.png)
@@ -44,7 +44,7 @@ A kiszolgáló-rendszergazdákat SQL Server Management Studio (SSMS) használat�
 A kiszolgáló-rendszergazdákat úgy is konfigurálhatja, hogy Azure Resource Manager sablonnal telepíti a Analysis Services kiszolgálót. A központi telepítést futtató identitásnak az erőforrás **közreműködői** szerepköréhez kell tartoznia az [Azure szerepköralapú Access Controlban (RBAC)](../role-based-access-control/overview.md).
 
 > [!IMPORTANT]
-> Az egyszerű szolgáltatásnevet a formátum `app:{service-principal-client-id}@{azure-ad-tenant-id}`használatával kell hozzáadni.
+> Az egyszerű szolgáltatásnevet a formátum használatával kell hozzáadni `app:{service-principal-client-id}@{azure-ad-tenant-id}` .
 
 A következő Resource Manager-sablon központilag telepít egy Analysis Services kiszolgálót egy megadott egyszerű szolgáltatással a Analysis Services rendszergazdai szerepkörhöz:
 

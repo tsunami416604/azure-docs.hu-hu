@@ -28,6 +28,24 @@
       items:
         - name: Tesztkörnyezetek használata tanórák lebonyolításához
           href: classroom-labs-scenarios.md
+        - name: Osztályterem-tesztkörnyezetek – osztálytípusok
+          items:
+            - name: Osztálytípusok áttekintése
+              href: class-types.md
+            - name: Mélytanulás a természetes nyelvfeldolgozásban
+              href: class-type-deep-learning-natural-language-processing.md
+            - name: Héjszkriptek használata Linuxon
+              href: class-type-shell-scripting-linux.md
+            - name: Etikus hackertevékenység
+              href: class-type-ethical-hacking.md
+            - name: Adatbázis-kezelés
+              href: class-type-database-management.md
+            - name: Python- és Jupyter-notebook
+              href: class-type-jupyter-notebook.md
+            - name: Mobilalkalmazások fejlesztése az Android Studio használatával
+              href: class-type-mobile-dev-android-studio.md
+            - name: Big data elemzése
+              href: class-type-big-data-analytics.md
 - name: Útmutatók
   items:
     - name: Rendszergazdai útmutató
@@ -36,29 +54,13 @@
       href: account-setup-guide.md
     - name: Felgyorsított tesztkörnyezet beállításának útmutatója
       href: setup-guide.md
-    - name: Osztályterem-tesztkörnyezetek – osztálytípusok
-      items:
-        - name: Osztálytípusok áttekintése
-          href: class-types.md
-        - name: Mélytanulás a természetes nyelvfeldolgozásban
-          href: class-type-deep-learning-natural-language-processing.md
-        - name: Héjszkriptek használata Linuxon
-          href: class-type-shell-scripting-linux.md
-        - name: Etikus hackertevékenység
-          href: class-type-ethical-hacking.md
-        - name: Adatbázis-kezelés
-          href: class-type-database-management.md
-        - name: Python- és Jupyter-notebook
-          href: class-type-jupyter-notebook.md
-        - name: Mobilalkalmazások fejlesztése az Android Studio használatával
-          href: class-type-mobile-dev-android-studio.md
-        - name: Big data elemzése
-          href: class-type-big-data-analytics.md
     - name: Tesztkörnyezeti fiókok létrehozása és konfigurálása (tesztkörnyezeti fiók tulajdonosa)
       items:
         - name: Tesztkörnyezeti fiókok létrehozása és felügyelete
           href: how-to-manage-lab-accounts.md
-        - name: Tesztkörnyezeti fiókok konfigurálása
+        - name: Tesztkörnyezetek kezelése tesztkörnyezeti fiókban
+          href: manage-labs.md
+        - name: A virtuális gépek automatikus leállításának konfigurálása
           href: how-to-configure-lab-accounts.md
         - name: Tesztkörnyezet létrehozójának hozzáadása
           href: add-lab-creator.md

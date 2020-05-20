@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 31b8960f5617566a72545510cf03771f7a3bfcbd
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.date: 05/19/2020
+ms.openlocfilehash: 25b7a619f6d3e308de966ead5925133f6094d9c8
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82745007"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701075"
 ---
 # <a name="create-an-azure-virtual-machine-offer-in-the-azure-marketplace"></a>Azure-beli virtuális gépek ajánlatának létrehozása az Azure Marketplace-en
 
@@ -21,7 +21,7 @@ ms.locfileid: "82745007"
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé Azure-beli virtuális gépeket az [Azure Marketplace](https://azuremarketplace.microsoft.com/)-en. A Windows-és Linux-alapú virtuális gépekre is vonatkozik, amelyek operációs rendszert, virtuális merevlemezt (VHD) és legfeljebb 16 adatlemezt tartalmaznak. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 ### <a name="publishing-benefits"></a>Közzétételi előnyök
 
@@ -61,8 +61,8 @@ A mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat:
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat** > **Azure-beli virtuális gép**lehetőséget.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**Azure-beli  >  **virtuális gép**lehetőséget.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-azure-vm.png)
 
@@ -74,7 +74,7 @@ A mérnöki csapatnak ismernie kell a következő Microsoft-technológiákat:
 Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlat és a Azure PowerShell és az Azure CLI webcímen, ha van ilyen.
-- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -195,34 +195,13 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Adja meg az ajánlat további leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
-Adja meg az ajánlat részletes leírását, amely legfeljebb 3 000 karakter hosszú lehet. Ez jelenik meg az ügyfelek számára a kereskedelmi piactér-lista áttekintésében.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-A leírásban vegyen fel egyet vagy többet a következők közül:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Az ajánlat értékeit és főbb előnyeit
-- Kategória-vagy iparági társulások, vagy mindkettő
-- Alkalmazáson belüli vásárlási lehetőségek
-- Minden szükséges közzététel
-
-Íme néhány tipp a Leírás írásához:
-
-- A Leírás első néhány mondatában egyértelműen leírja az ajánlat értékének kiosztását. Adja meg a következő elemeket:
-  - Az ajánlat leírása.
-  - Az ajánlat előnyeit élvező felhasználó típusa.
-  - Az ügyfél által igényelt vagy az ajánlat által felmerülő problémák.
-- Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.
-- Az ajánlat értékesítéséhez Ne támaszkodjon funkciókra és funkciókra. Ehelyett az ajánlat által biztosított értékre kell összpontosítania.
-- Iparági vagy juttatáson alapuló szavak használata.
-
-Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, használja a Rich Text Editort a formázás alkalmazásához.
-
-![A Rich Text Editor használata](./media/rich-text-editor.png)
-
-| <center>Szöveg formátumának módosítása | <center>Felsorolásjelek vagy számozás hozzáadása | <center>Szöveg behúzásának hozzáadása vagy eltávolítása |
-| --- | --- | --- |
-| <center>![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png) |  <center>![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png) |  <center>![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Adatvédelmi szabályzat hivatkozása
 
@@ -263,7 +242,7 @@ Adja meg a Microsoft számára az ajánlattal kapcsolatos problémák esetén ha
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A homályos képek miatt a rendszer elutasítja a kérelmet.
 
 >[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi https://upload.xboxlive.com hálózat nem blokkolja a partner Center által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner Center által használt szolgáltatást.
 
 #### <a name="marketplace-logos"></a>Piactéri emblémák
 
@@ -288,7 +267,7 @@ További információforrások a piactéren: ajánlott [eljárások a Piactéri 
 
 A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 
-## <a name="preview"></a>Előzetes verzió
+## <a name="preview"></a>Előnézet
 
 Az Előnézet lapon válasszon egy korlátozott **előzetes** verziót az ajánlat érvényesítéséhez, mielőtt közzéteszi azt a piactéren elérhető szélesebb közönség számára.
 

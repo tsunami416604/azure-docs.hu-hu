@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 66b325eb1d268fdd5b1052a0da84c603186edf65
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bbe0a0b7f22df20c8ce3d734738132b5056a36e4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83589499"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697094"
 ---
 # <a name="set-up-a-lab-to-teach-shell-scripting-on-linux"></a>Tesztkörnyezet beállítása a rendszerhéj-parancsfájlok Linuxon való tanításához
 Ez a cikk bemutatja, hogyan állíthat be egy labort a rendszerhéj-parancsfájlok Linuxon való tanításához. A parancsfájlok hasznos részét képezik a rendszerfelügyeletnek, amely lehetővé teszi a rendszergazdák számára az ismétlődő feladatok elkerülését. Ebben a példában az osztály a hagyományos bash-parancsfájlokat és a továbbfejlesztett parancsfájlokat tartalmazza. A továbbfejlesztett parancsfájlok olyan parancsfájlok, amelyek a bash-parancsokat és a Ruby-t ötvözik. Ez a módszer lehetővé teszi a Ruby számára, hogy a Shell használatával kommunikáljon a környékre és bash-parancsokra. 
@@ -39,12 +39,11 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 | Tesztkörnyezet beállításai | Érték/utasítások | 
 | ------------ | ------------------ |
 | Virtuális gép (VM) mérete | Kicsi  |
-| VM-rendszerkép | Ubuntu Server 18,04 LTS |
-| Távoli asztali kapcsolat engedélyezése | Engedélyezése. <p>A beállítás engedélyezése lehetővé teszi a pedagógusok és a tanulók számára, hogy a távoli asztal (RDP) használatával csatlakozzanak a virtuális gépekhez. További információ: a [Távoli asztal engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Services tesztkörnyezetben](how-to-enable-remote-desktop-linux.md#connect-to-the-template-vm). </p>|
+| VM-rendszerkép | Ubuntu Server 18,04 LTS|
+| Távoli asztali kapcsolat engedélyezése | Engedélyezése. <p>A beállítás engedélyezése lehetővé teszi, hogy a tanárok és a diákok a távoli asztal (RDP) használatával csatlakozzanak a virtuális gépekhez. További információ: a [Távoli asztal engedélyezése a Linux rendszerű virtuális gépek számára a Azure Lab Services tesztkörnyezetben](how-to-enable-remote-desktop-linux.md). </p>|
 
-
-## <a name="install-desktop-and-xrdp"></a>Az asztali és a xrdp telepítése
-Az Ubuntu Server 18,04 LTS-rendszerkép alapértelmezés szerint nem települ a távoli asztali kiszolgálóval. Az [Azure-beli Linux rendszerű virtuális géphez való kapcsolódáshoz a telepítés és konfigurálás távoli asztal](../../virtual-machines/linux/use-remote-desktop.md) utasításait követve telepítse a sablonhoz szükséges csomagokat a távoli asztal protokollon keresztül történő kapcsolódáshoz.
+## <a name="install-desktop-and-rdp"></a>Az asztali és az RDP telepítése
+Az Ubuntu Server 18,04 LTS-rendszerkép alapértelmezés szerint nem telepíti az RDP távoli asztali kiszolgálót. Az Azure-beli Linux rendszerű virtuális gépekhez való [kapcsolódáshoz a telepítés és konfigurálás távoli asztal](../../virtual-machines/linux/use-remote-desktop.md) útmutatását követve telepítse a sablonhoz szükséges csomagokat a távoli asztal protokoll (RDP) használatával történő kapcsolódáshoz.
 
 ## <a name="install-ruby"></a>A Ruby telepítése
 A Ruby egy nyílt forráskódú dinamikus nyelv, amely bash-parancsfájlok használatával kombinálható. Ez a szakasz bemutatja, hogyan `apt-get` telepítheti a [Ruby](https://www.ruby-lang.org/)legújabb verzióját.

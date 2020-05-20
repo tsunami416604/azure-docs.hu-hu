@@ -3,12 +3,12 @@ title: Az adatbázisok biztonsági mentésével kapcsolatos hibák elhárítása
 description: Leírja, hogy miként lehet elhárítani a SAP HANA-adatbázisok biztonsági mentésekor Azure Backup használata során előforduló gyakori hibákat.
 ms.topic: troubleshooting
 ms.date: 11/7/2019
-ms.openlocfilehash: 01514847dcd38842d70c4caef2e38df9df3f620a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5c1ad55a86e80808b9055fd1b34a2d72209464a2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652077"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697065"
 ---
 # <a name="troubleshoot-backup-of-sap-hana-databases-on-azure"></a>SAP HANA-adatbázisok Azure-beli biztonsági mentésének hibáinak megoldása
 
@@ -62,19 +62,12 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 | **Lehetséges okok**    | Lehetséges, hogy a napló biztonsági mentésének célhelye a backint-ről a fájlrendszerre lett frissítve, vagy a backint végrehajtható fájl módosítva lett. |
 | **Javasolt művelet** | A probléma megoldásához indítson el egy teljes biztonsági mentést                   |
 
-### <a name="usererrorincomaptiblesrctargetsystsemsforrestore"></a>UserErrorIncomaptibleSrcTargetSystsemsForRestore
-
-| Hibaüzenet      | <span style="font-weight:normal">A visszaállításhoz használt forrás-és célhelyek nem kompatibilisek</span>    |
-| ------------------ | ------------------------------------------------------------ |
-| **Lehetséges okok**    | A visszaállításhoz használt cél rendszer nem kompatibilis a forrással |
-| **Javasolt művelet** | A ma támogatott visszaállítási típusok megismeréséhez tekintse meg az [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP-megjegyzést. |
-
 ### <a name="usererrorsdctomdcupgradedetected"></a>UserErrorSDCtoMDCUpgradeDetected
 
 | Hibaüzenet      | <span style="font-weight:normal">SDC a MDC frissítését észlelte</span>                                   |
 | ------------------ | ------------------------------------------------------------ |
 | **Lehetséges okok**    | A SAP HANA példány frissítve lett a SDC-ről a MDC-re. A frissítés után a biztonsági mentések sikertelenek lesznek. |
-| **Javasolt művelet** | A probléma megoldásához kövesse a [verziófrissítés SAP HANA 1,0 – 2,0 szakaszban](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#upgrading-from-sap-hana-10-to-20) felsorolt lépéseket |
+| **Javasolt művelet** | A probléma megoldásához kövesse a SDC-ben felsorolt lépéseket a [MDC frissítéséhez](https://docs.microsoft.com/azure/backup/backup-azure-sap-hana-database-troubleshoot#sdc-to-mdc-upgrade-with-a-change-in-sid) |
 
 ### <a name="usererrorinvalidbackintconfiguration"></a>UserErrorInvalidBackintConfiguration
 
@@ -88,7 +81,7 @@ A biztonsági mentések konfigurálása előtt tekintse át az [előfeltételeke
 |Hibaüzenet  |A visszaállításhoz használt forrás-és célhelyek nem kompatibilisek  |
 |---------|---------|
 |Lehetséges okok   | A visszaállításra kijelölt forrás-és célként használt rendszerek nem kompatibilisek        |
-|Javasolt művelet   |   Győződjön meg arról, hogy a visszaállítási forgatókönyv nem szerepel a lehetséges inkompatibilis visszatárolások következő listáján: <br><br>   **1. eset:** A SYSTEMDB nem nevezhető át a visszaállítás során.  <br><br> **2. eset:** Forrás-SDC és cél-MDC: a forrásadatbázis nem állítható vissza SYSTEMDB vagy bérlői adatbázisként a célhelyen. <br><br> **3. eset:** Forrás-MDC és cél-SDC: a forrásadatbázis (SYSTEMDB vagy bérlői adatbázis) nem állítható vissza a célhelyre. <br><br>  További információkért tekintse meg az [SAP support kezdőpanel](https://launchpad.support.sap.com)1642148-es megjegyzését. |
+|Javasolt művelet   |   Győződjön meg arról, hogy a visszaállítási forgatókönyv nem szerepel a lehetséges inkompatibilis visszatárolások következő listáján: <br><br>   **1. eset:** A SYSTEMDB nem nevezhető át a visszaállítás során.  <br><br> **2. eset:** Forrás-SDC és cél-MDC: a forrásadatbázis nem állítható vissza SYSTEMDB vagy bérlői adatbázisként a célhelyen. <br><br> **3. eset:** Forrás-MDC és cél-SDC: a forrásadatbázis (SYSTEMDB vagy bérlői adatbázis) nem állítható vissza a célhelyre. <br><br>  További információ: **1642148** -es Megjegyzés az [SAP support kezdőpanelban](https://launchpad.support.sap.com). |
 
 ## <a name="restore-checks"></a>Visszaállítási ellenőrzések
 
@@ -111,25 +104,83 @@ Vegye figyelembe a következő szempontokat:
 
 A HANA-hoz készült több Container Database-ben a standard konfiguráció SYSTEMDB + 1 vagy több bérlői adatbázis. A teljes SAP HANA példány visszaállítása a SYSTEMDB és a bérlői adatbázisok visszaállítását jelenti. Először az egyik visszaállítja a SYSTEMDB, majd a bérlői adatbázist folytatja. A rendszeradatbázis lényegében azt jelenti, hogy felülbírálja a kiválasztott cél rendszerinformációit. Ez a visszaállítás felülbírálja a BackInt kapcsolatos információkat is a cél példányban. Tehát miután a rendszeradatbázist visszaállította egy cél példányra, futtassa újra az előzetes regisztrációs parancsfájlt. A következő bérlői adatbázis-visszaállítások sikeresek lesznek.
 
-## <a name="upgrading-from-sap-hana-10-to-20"></a>Frissítés SAP HANA 1,0 – 2,0
+## <a name="back-up-a-replicated-vm"></a>Replikált virtuális gép biztonsági mentése
 
-Ha SAP HANA 1,0-es adatbázist véd, és a 2,0-re kíván frissíteni, hajtsa végre a következő lépéseket:
+### <a name="scenario-1"></a>1. példa
 
-- A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi SDC-adatbázis megőrzése érdekében.
-- Végezze el a frissítést. A befejezést követően a HANA már MDC a rendszer-ADATBÁZISsal és a bérlői ADATBÁZISokkal
-- Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) a (SID és MDC) helyes részleteivel.
-- A bővítmény újbóli regisztrálása ugyanarra a gépre Azure Portal (Backup-> nézet részletei – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja).
-- Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli felderítése elemre. Ez a művelet a 2. lépésben szereplő új adatbázisok helyes részleteit (SYSTEMDB és bérlői adatbázis, nem SDC) jeleníti meg.
-- Konfigurálja az új adatbázisok biztonsági mentését.
+Az eredeti virtuális gépet Azure Site Recovery vagy Azure-beli virtuális gép biztonsági másolatának használatával replikálták. Az új virtuális gép úgy lett felépítve, hogy szimulálja a régi virtuális gépet. Vagyis a beállítások pontosan ugyanazok. (Ennek az az oka, hogy az eredeti virtuális gép törölve lett, és a visszaállítás a virtuális gép biztonsági másolatából vagy Azure Site Recovery) történt.
 
-## <a name="upgrading-without-an-sid-change"></a>Frissítés SID-változás nélkül
+Ez a forgatókönyv két lehetséges esetet tartalmazhat. Ismerje meg, hogyan készíthet biztonsági mentést a replikált virtuális gépről mindkét esetben:
 
-A SID-módosítást nem okozó operációs rendszerre vagy SAP HANAra való frissítés az alábbi módon kezelhető:
+1. Az új létrehozott virtuális gép neve azonos, és ugyanabban az erőforráscsoportban és előfizetésben található, mint a törölt virtuális gép.
 
+    - A bővítmény már megtalálható a virtuális gépen, de a szolgáltatások egyike sem látható
+    - Az előzetes regisztrációs parancsfájl futtatása
+    - Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
+    - A már meglévő biztonsági másolati adatbázisok (a törölt virtuális gépről) sikeresen elindulnak a biztonsági mentés során
+
+2. Az új létrehozott virtuális gép a következők valamelyikével rendelkezik:
+
+    - egy másik név, mint a törölt virtuális gép
+    - ugyanaz a neve, mint a törölt virtuális gép, de egy másik erőforráscsoport vagy előfizetés (a törölt virtuális géphez képest)
+
+    Ebben az esetben hajtsa végre a következő lépéseket:
+
+    - A bővítmény már megtalálható a virtuális gépen, de a szolgáltatások egyike sem látható
+    - Az előzetes regisztrációs parancsfájl futtatása
+    - Ha felderíti és megóvja az új adatbázisokat, megtekintheti az ismétlődő aktív adatbázisokat a portálon. Ennek elkerüléséhez [állítsa le a védelmet](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi adatbázisok megőrzéséhez. Ezután folytassa a fennmaradó lépésekkel.
+    - A biztonsági mentést lehetővé tevő adatbázisok felderítése
+    - Biztonsági másolatok engedélyezése ezeken az adatbázisokon
+    - A már meglévő biztonsági másolati adatbázisok (a törölt virtuális gépről) továbbra is a tárolóban lesznek tárolva (a biztonsági mentések a szabályzatnak megfelelően megmaradnak)
+
+### <a name="scenario-2"></a>2. példa
+
+Az eredeti virtuális gépet Azure Site Recovery vagy Azure-beli virtuális gép biztonsági másolatának használatával replikálták. Az új virtuális gép a tartalomból lett kiépítve – sablonként való használatra. Ez egy új biztonsági azonosítóval rendelkező virtuális gép.
+
+Az alábbi lépéseket követve engedélyezheti a biztonsági mentéseket az új virtuális gépen:
+
+- A bővítmény már megtalálható a virtuális gépen, de nem látható a szolgáltatások egyikén sem
+- Futtassa az előzetes regisztrációs parancsfájlt. Az új virtuális gép SID-je alapján két forgatókönyv fordulhat elő:
+  - Az eredeti virtuális gép és az új virtuális gép ugyanazzal a SID-vel rendelkezik. Az előzetes regisztrációs parancsfájl futtatása sikeresen megtörténik.
+  - Az eredeti virtuális gép és az új virtuális gép eltérő biztonsági azonosítóval rendelkezik. Az előzetes regisztrációs parancsfájl sikertelen lesz. Ha segítséget szeretne kapni ebben a forgatókönyvben, forduljon az ügyfélszolgálathoz.
+- Fedezze fel azokat az adatbázisokat, amelyekről biztonsági másolatot szeretne készíteni
+- Biztonsági másolatok engedélyezése ezeken az adatbázisokon
+
+## <a name="sdc-version-upgrade-or-mdc-version-upgrade-on-the-same-vm"></a>A SDC verziófrissítése vagy a MDC verziófrissítése ugyanazon a virtuális gépen
+
+Az operációs rendszer, a SDC verziójának változása vagy a MDC változása nem okozhatja a SID-változások kezelését a következőképpen:
+
+- Győződjön meg arról, hogy az új operációsrendszer-verzió, a SDC vagy a MDC verziója jelenleg [támogatott a Azure Backup](sap-hana-backup-support-matrix.md#scenario-support)
 - A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) az adatbázis megőrzése érdekében
-- Végezze el a frissítést.
-- Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana). A frissítési folyamat általában a szükséges szerepköröket távolítja el. Az előzetes regisztrációs szkript futtatása segít ellenőrizni az összes szükséges szerepkört.
-- Az adatbázis [védelmének](sap-hana-db-manage.md#resume-protection-for-an-sap-hana-database) újbóli folytatása
+- A frissítés vagy a frissítés végrehajtása
+- Futtassa újra az előzetes regisztrációs parancsfájlt. A frissítési folyamat általában eltávolítja a szükséges szerepköröket. Az előzetes regisztrációs parancsfájl futtatása segít ellenőrizni az összes szükséges szerepkört.
+- Az adatbázis védelmének újbóli folytatása
+
+## <a name="sdc-to-mdc-upgrade-with-no-change-in-sid"></a>SDC a MDC frissítéséhez a SID módosítása nélkül
+
+A SDC-ről a MDC-re irányuló frissítések a következőképpen kezelhetők:
+
+- Győződjön meg arról, hogy az új MDC-verziót jelenleg a [Azure Backup támogatja](sap-hana-backup-support-matrix.md#scenario-support)
+- A [védelem leállítása](sap-hana-db-manage.md#stop-protection-for-an-sap-hana-database) a régi SDC-adatbázis megőrzése érdekében
+- Végezze el a frissítést. A befejezést követően a HANA rendszer most már MDC a System DB és a bérlői adatbázisok
+- Az [előzetes regisztrációs parancsfájl](https://aka.ms/scriptforpermsonhana) újrafuttatása
+- Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
+- Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli **felderítése** elemre. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
+- A régebbi SDC-adatbázis továbbra is a tárolóban marad, és a szabályzatnak megfelelően megőrzött a régi biztonsági másolati adat.
+- Az adatbázisok biztonsági mentésének konfigurálása
+
+## <a name="sdc-to-mdc-upgrade-with-a-change-in-sid"></a>SDC a MDC frissítéséhez a SID módosításával
+
+A SDC-ről a MDC-re történő frissítés a következő módon kezelhető:
+
+- Győződjön meg arról, hogy az új MDC-verziót jelenleg a [Azure Backup támogatja](sap-hana-backup-support-matrix.md#scenario-support)
+- A **védelem leállítása** a régi SDC-adatbázis megőrzése érdekében
+- Végezze el a frissítést. A befejezést követően a HANA rendszer most már MDC a System DB és a bérlői adatbázisok
+- Futtassa újra az [előzetes regisztrációs parancsfájlt](https://aka.ms/scriptforpermsonhana) a megfelelő részletekkel (új SID és MDC). A SID-változás miatt előfordulhat, hogy a parancsfájl sikeres futtatásával problémákba ütközik. Ha problémákba ütközik, lépjen kapcsolatba Azure Backup támogatási szolgálattal.
+- Regisztrálja újra a bővítményt ugyanarra a gépre vonatkozóan a Azure Portalban (**biztonsági mentési**  ->  **nézet részletei** – > válassza ki a megfelelő Azure-beli virtuális gépet – > újra regisztrálja)
+- Kattintson az azonos virtuális géphez tartozó adatbázisok újbóli **felderítése** elemre. Ez a művelet a 3. lépésben szereplő új adatbázisok megjelenítését mutatja be SYSTEMDB és bérlői ADATBÁZISként, nem SDC
+- A régebbi SDC-adatbázis továbbra is a tárolóban marad, és a szabályzatnak megfelelően megőrizte a régi biztonsági mentést.
+- Az adatbázisok biztonsági mentésének konfigurálása
 
 ## <a name="re-registration-failures"></a>Ismételt regisztrálási hibák
 

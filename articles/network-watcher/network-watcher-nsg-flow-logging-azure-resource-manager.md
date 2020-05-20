@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
-ms.openlocfilehash: 104311904b99cadbbc8c0267a98f2709443608ea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b7580843bc5ad90ebc394c41e81f4d16f51ccb1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80891458"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701763"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-adatforgalmi naplók konfigurálása Azure Resource Manager sablonból
 
@@ -110,7 +110,7 @@ Az alábbi két példa a teljes sablonokat mutatja be a NSG-naplók beállítás
 ```
 
 > [!NOTE]
-> * Az erőforrás neve "szülő erőforrás>/Child erőforrás" formátumú. Itt a szülő erőforrás a regionális Network Watcher-példány (Format: NetworkWatcher_<RegionName>. Példa: NetworkWatcher_centraluseuap)
+> * Az erőforrás neve "szülő Resource_Child erőforrás" formátumú. Itt a szülő erőforrás a regionális Network Watcher-példány (Format: NetworkWatcher_RegionName. Példa: NetworkWatcher_centraluseuap)
 > * a Targetresourceid azonosítója a cél NSG erőforrás-azonosítója.
 > * a tárolóazonosítót a cél Storage-fiók erőforrás-azonosítója.
 
@@ -156,13 +156,18 @@ Az alábbi két példa a teljes sablonokat mutatja be a NSG-naplók beállítás
 ## <a name="deploying-your-azure-resource-manager-template"></a>A Azure Resource Manager-sablon üzembe helyezése
 
 Ez az oktatóanyag feltételezi, hogy rendelkezik egy meglévő erőforráscsoporthoz és egy NSG, amelyen engedélyezheti a folyamat naplózását.
-A fenti példák bármelyikét helyileg is mentheti `azuredeploy.json`. Frissítse a tulajdonságértékek értékét úgy, hogy az előfizetése érvényes erőforrásokra mutasson.
+A fenti példák bármelyikét helyileg is mentheti `azuredeploy.json` . Frissítse a tulajdonságértékek értékét úgy, hogy az előfizetése érvényes erőforrásokra mutasson.
 
 A sablon üzembe helyezéséhez futtassa a következő parancsot a PowerShellben.
 ```azurepowershell
+$context = Get-AzSubscription -SubscriptionId 56acfbd6-vc72-43e9-831f-bcdb6f2c5505
+Set-AzContext $context
 New-AzResourceGroupDeployment -Name EnableFlowLog -ResourceGroupName NetworkWatcherRG `
     -TemplateFile "C:\MyTemplates\azuredeploy.json"
 ```
+
+> [!NOTE]
+> A fenti parancsok egy erőforrást helyeznek üzembe a NetworkWatcherRG erőforráscsoporthoz, és nem a NSG tartalmazó erőforráscsoportot.
 
 
 ## <a name="verifying-your-deployment"></a>Az üzemelő példány ellenőrzése

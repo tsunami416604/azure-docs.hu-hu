@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
-ms.openlocfilehash: 626dc5a7d1cd52182e68eb0d217b2ac4c653330e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 05/19/2020
+ms.openlocfilehash: bd9d643708515855e81ac6729843388a690b2c45
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994351"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700946"
 ---
 # <a name="create-a-consulting-service-offer"></a>Tanácsadási szolgáltatásajánlat létrehozása
 
@@ -32,8 +32,8 @@ A kereskedelmi piactéren való közzététel előnyei:
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat** > -**tanácsadási szolgáltatás**elemet.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**-  >  **tanácsadási szolgáltatás**elemet.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-consulting-service.png)
 
@@ -45,7 +45,7 @@ A kereskedelmi piactéren való közzététel előnyei:
 Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító a Piactéri ajánlathoz tartozó webcímek ügyfelei számára látható.
-- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -108,7 +108,7 @@ A folytatás előtt válassza a **Piszkozat mentése** lehetőséget.
 Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik az ajánlat neve, leírása, képei és így tovább. Ügyeljen arra, hogy az ajánlat konfigurálása során kövesse a [kereskedelmi Piactéri minősítési szabályzatok lapon](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services) részletezett szabályzatokat.
 
 > [!NOTE]
-> Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a kifejezéssel kezdődik, &quot;ez az alkalmazás csak [nem angol nyelven] érhető el. &quot; Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
+> Az ajánlat részletei nem szükségesek angolul, ha az ajánlat leírása a kifejezéssel kezdődik, &quot; Ez az alkalmazás csak [nem angol nyelven] érhető el. &quot; Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
 ### <a name="name"></a>Name
 
@@ -124,34 +124,13 @@ A név:
 
 Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
-Adja meg az ajánlat hosszabb leírását, amely legfeljebb 3 000 karakter hosszú lehet. Ez jelenik meg az ügyfelek számára a Piactéri listák áttekintésében.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-A leírásban vegyen fel egyet vagy többet a következők közül:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Az ajánlat által biztosított érték és kulcs előnye
-- Kategória-vagy iparági társulások, vagy mindkettő
-- Alkalmazáson belüli vásárlási lehetőségek
-- Minden szükséges közzététel
-
-Íme néhány tipp a Leírás írásához:
-
-- A Leírás első néhány mondatában egyértelműen ismertesse az ajánlat értékét. Adja meg a következő elemeket:
-  - Az ajánlat leírása.
-  - Az ajánlat által előnyben részesülő felhasználó típusa.
-  - Az ügyfélnek szüksége van vagy kiadja az ajánlat címét.
-- Ne feledje, hogy az első néhány mondat a keresési eredmények között jelenhet meg.
-- Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett az ajánlat által biztosított értékre kell összpontosítania.
-- Az iparágra jellemző szókincset vagy juttatáson alapuló szövegezést érdemes használni.
-
-Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, használja a Rich Text Editort a formázás alkalmazásához.
-
-![A Rich Text Editor használata](./media/rich-text-editor.png)
-
-| <center>Szöveg formátumának módosítása | <center>Felsorolásjelek vagy számozás hozzáadása | <center>Szöveg behúzásának hozzáadása vagy eltávolítása |
-| --- | --- | --- |
-| <center>![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png) |  <center>![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png) |  <center>![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="keywords"></a>Kulcsszavak
 
@@ -174,7 +153,7 @@ Akár három (de legalább egy) támogató PDF-dokumentumot is hozzáadhat az aj
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
 >[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 

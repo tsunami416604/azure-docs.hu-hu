@@ -9,11 +9,11 @@
     - name: Újdonságok
       href: whats-new.md
       displayName: 'release notes, service updates, videos'
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Az SDK használata
       href: sdk-learning-loop.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Az Azure Notebooks használata
       href: tutorial-use-azure-notebook-generate-loop-data.md
@@ -39,6 +39,8 @@
         - name: Tanulási szabályzat
           href: concept-active-learning.md
           displayName: 'active, inactive'
+        - name: Gyakornoki mód
+          href: concept-apprentice-mode.md
         - name: Aktív és inaktív események
           href: concept-active-inactive-events.md
         - name: Jutalmak
@@ -62,9 +64,11 @@
   items:
     - name: Personalizer-erőforrás létrehozása
       href: how-to-create-resource.md
-    - name: Tanulási hurok konfigurálása
+    - name: A Personalizer konfigurálása
       href: how-to-settings.md
       displayName: 'azure, portal, settings, evaluation, offline, policy, export, model, configure'
+    - name: Gyakornoki mód használata
+      href: how-to-learning-behavior.md
     - name: Modell- és tanulási beállítások kezelése
       href: how-to-manage-model.md
     - name: Elemzés offline értékeléssel
@@ -101,7 +105,7 @@
               href: 'https://pypi.org/project/azure-cognitiveservices-personalizer/'
 - name: További források
   items:
-    - name: Hibakeresés
+    - name: Hibaelhárítás
       href: troubleshooting.md
     - name: Régiónkénti rendelkezésre állás
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

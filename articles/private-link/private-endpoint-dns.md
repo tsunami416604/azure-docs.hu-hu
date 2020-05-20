@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: 14cb5a06e9f51269d05468d36ecb6cd2bf19e40c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: af7d47c98e4716df3a6cbd222c7d3c8def48e5fc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83643605"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701640"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Azure Private Endpoint DNS-konfiguráció
 
@@ -36,7 +36,7 @@ Az alkalmazásoknak nem kell módosítaniuk a kapcsolódási URL-címet. Ha nyil
 
 Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az alábbi táblázatban leírtak szerint:
 
-| Privát kapcsolat erőforrástípus/alerőforrása |saját DNS zóna neve | Nyilvános DNS-zóna neve |
+| Privát kapcsolat erőforrástípus/alerőforrása |saját DNS zóna neve | Nyilvános DNS-zónák továbbítói |
 |---|---|---|---|
 | SQL DB (Microsoft. SQL/Servers)/SQL Server | privatelink.database.windows.net | database.windows.net |
 | Azure szinapszis Analytics (Microsoft. SQL/Servers)/SQL Server  | privatelink.database.windows.net | database.windows.net |
@@ -54,7 +54,7 @@ Az Azure-szolgáltatások esetében használja az ajánlott zónák nevét az al
 | Azure Database for PostgreSQL – egyetlen kiszolgáló (Microsoft. DBforPostgreSQL/Servers)/postgresqlServer | privatelink.postgres.database.azure.com | postgres.database.azure.com |
 | Azure Database for MySQL (Microsoft. DBforMySQL/Servers)/portra beállított mysqlserver | privatelink.mysql.database.azure.com | mysql.database.azure.com |
 | Azure Database for MariaDB (Microsoft. DBforMariaDB/Servers)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
-| Azure Key Vault (Microsoft. kulcstartó/tárolók)/tároló | privatelink.vaultcore.azure.net | vault.azure.net |
+| Azure Key Vault (Microsoft. kulcstartó/tárolók)/tároló | privatelink.vaultcore.azure.net | vault.azure.net <br> vaultcore.azure.net |
 | Azure Kubernetes Service – Kubernetes API (Microsoft. Tárolószolgáltatás/managedClusters)/managedCluster | privatelink. {Region}. azmk8s. IO | {Region}. azmk8s. IO |
 | Azure Search (Microsoft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (Microsoft. ContainerRegistry/nyilvántartók)/beállításjegyzék | privatelink.azurecr.io | azurecr.io |
@@ -150,7 +150,7 @@ A megfelelő konfigurálásához a következő erőforrásokra lesz szüksége:
 A következő ábra a DNS-feloldási sorozatot mutatja be egy helyszíni hálózatról, amely feltételesen továbbítja a DNS-forgalmat az Azure-ba, ahol a megoldás egy [virtuális hálózathoz kapcsolódó](../dns/private-dns-virtual-network-links.md) magánhálózati DNS-zónából áll.
 
 > [!IMPORTANT]
-> A feltételes továbbítást a [nyilvános DNS-zónába](#azure-services-dns-zone-configuration)(   pl.:) kell tenni  `database.windows.net`   , a **privatelink**. database.Windows.net helyett.
+> A feltételes továbbítást az ajánlott [**nyilvános DNS-zónák továbbítása**](#azure-services-dns-zone-configuration)(   pl.:) alapján kell elvégezni a  `database.windows.net`    **privatelink**. database.Windows.net helyett.
 
 :::image type="content" source="media/private-endpoint-dns/on-premises-forwarding-to-azure.png" alt-text="Helyszíni továbbítás Azure DNS":::
 

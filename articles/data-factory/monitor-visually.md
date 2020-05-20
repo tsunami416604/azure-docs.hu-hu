@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/15/2020
-ms.openlocfilehash: 01a4cd172b699cef009197d1fce1d5bae62f2925
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9a81ab58335e968e5ce4816de85ed1b63bc93455
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680613"
+ms.locfileid: "83699610"
 ---
 # <a name="visually-monitor-azure-data-factory"></a>Vizuális monitorozás Azure Data Factory
 
@@ -142,7 +142,7 @@ Az ikonra kattintva megnyithatja az adott folyamat által használt erőforráso
 
 ![Használat figyelése](media/monitor-visually/monitor-consumption-2.png)
 
-Ezeket az értékeket az [Azure díjszabási calcula. hat folyamat futtatása során lehet csatlakoztatni. További információ a Azure Data Factory díjszabásáról: a [díjszabás ismertetése](pricing-concepts.md).
+Ezeket az értékeket az [Azure díjszabási számológép] modulban lehet csatlakoztatni. (a https://azure.microsoft.com/pricing/details/data-factory/) folyamat futtatási költsége megbecsülhető. További információ a Azure Data Factory díjszabásáról: a [díjszabás ismertetése](pricing-concepts.md).
 
 > [!NOTE]
 > A díjszabási számológép által visszaadott értékek becslést tartalmaznak. Nem tükrözi azt a pontos összeget, amelyet a Azure Data Factory számláz majd 

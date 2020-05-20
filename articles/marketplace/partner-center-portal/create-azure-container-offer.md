@@ -1,31 +1,28 @@
 ---
 title: Azure Container-ajánlat létrehozása – Azure Marketplace
-description: Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy tároló ajánlatot az Azure Marketplace-en.
+description: Ismerje meg, hogyan hozhat létre és tehet közzé tároló-ajánlatokat az Azure Marketplace-en.
 author: mingshen
 ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/07/2020
-ms.openlocfilehash: f2a3b6355fdaa8cd90525fac9d29324270dfad02
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 75baddbefc2babf73fee18cafe07177a3f0fb6f2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791935"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701028"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
-
-> [!IMPORTANT]
-> Az Azure-beli tárolók felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Az ajánlatok áttelepítését követően kövesse a [tárolók](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-containers-offer) Cloud Partner Portal az ajánlatok kezeléséhez című témakör utasításait.
 
 Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy tároló-ajánlatot az Azure Marketplace-en. A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , ha még nem tette meg. Győződjön meg róla, hogy a fiókja regisztrálva van a kereskedelmi piactér programban.
 
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat** > **Azure-tároló**elemet.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Azure-tároló**elemet.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-azure-container.png)
 
@@ -37,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy tároló-ajánla
 Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
-- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -68,12 +65,12 @@ Ha az ajánlatot a kereskedelmi piactéren a partner centerrel teszi közzé, ak
 
 1. **Válassza ki a kívánt érdeklődő célhelyet, ahová az ügyfél-érdeklődőket küldeni szeretné**. A partner Center a következő CRM-rendszereket támogatja:
 
-- [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
-- [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
-- [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
+   - [Dynamics 365](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics) ügyfél-engagement
+   - [Marketo](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-marketo)
+   - [Salesforce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce)
 
-> [!NOTE]
-> Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
+   > [!NOTE]
+   > Ha a CRM-rendszer nem szerepel a fentiekben, az [Azure Table](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table) vagy a [https-végpont](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-lead-management-instructions-https) használatával tárolhatja az ügyfelek vezető adatait, majd exportálhatja az adatait a CRM-rendszerbe.
 
 2. Az ajánlat összekötése a vezető célhoz a partner Centerben való közzététel során.
 3. Győződjön meg arról, hogy a vezető célhoz való kapcsolódás megfelelően van konfigurálva. Miután közzétette a partner Centerben, érvényesítjük a kapcsolatot, és elküldünk egy tesztelési érdeklődőt. Miközben az ajánlat előzetes verziójának megtekintése előtt megtekinti az ajánlatot, tesztelheti az érdeklődői kapcsolatokat is, ha az előnézeti környezetben próbálja megvásárolni az ajánlatot.
@@ -147,42 +144,13 @@ Az ajánlat rövid leírása. Ez akár 100 karakter hosszú lehet, és a piacté
 
 Az ajánlat részletesebb leírása. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
-Adja meg az ajánlat hosszabb leírását, amely legfeljebb 3 000 karakter hosszú lehet. Ez jelenik meg az ügyfelek számára a Piactéri listák áttekintésében.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-A leírásban vegyen fel egyet vagy többet a következők közül:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Az ajánlat által biztosított érték és kulcs előnye
-- Kategória-vagy iparági társulások, vagy mindkettő
-- Alkalmazáson belüli vásárlási lehetőségek
-- Minden szükséges közzététel
-
-Íme néhány tipp a Leírás írásához:
-
-- A Leírás első néhány mondatában egyértelműen ismertesse az ajánlat értékét. Adja meg a következő elemeket:
-  - Az ajánlat leírása.
-  - Az ajánlat előnyeit élvező felhasználó típusa
-  - Az ügyfélnek szüksége van vagy kiadja az ajánlat címét.
-- Ne feledje, hogy az első néhány mondat a keresési eredmények között jelenhet meg.
-- Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett az ajánlat által biztosított értékre kell összpontosítania.
-- Az iparágra jellemző szókincset vagy juttatáson alapuló szövegezést érdemes használni.
-
-Ha szeretné, hogy az ajánlat **leírása** jobban megtörténjen, a Rich Text Editor használatával formázhatja a leírást. a sorszámozás, a felsorolásjelek, a félkövér, a dőlt és a behúzások segítségével olvashatóbbá teheti a leírást.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Bemutatja a Rich Text Editort." border="false" :::
-
-- Ezzel a legördülő menüvel szövegre alkalmazhat egy bekezdésstílust.
-
-    :::image type="content" source="media/text-editor3.png" alt-text="A Rich Text szerkesztőben ábrázolja a szövegstílus vezérlőt." border="false":::
-
-- Ezekkel az ikonokkal oldalszámozást vagy felsorolásjelet alkalmazhat a szövegre.
-
-     :::image type="content" source="media/text-editor4.png" alt-text="A részletes szövegszerkesztőben ábrázolja a listajeles és a számok listáját." border="false":::
-
-- Ezekkel az ikonokkal behúzást adhat hozzá vagy távolíthat el szövegből.
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Bemutatja a behúzási vezérlőket a Rich Text Editorban." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-link"></a>Adatvédelmi szabályzat hivatkozása
 
@@ -216,7 +184,7 @@ Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókér
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
 >[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
@@ -257,7 +225,7 @@ Ez a Azure Portal keresési eredményeit jeleníti meg:
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-9-search-results-portal.png" alt-text="A keresési eredményeket mutatja Azure Portalban.":::
 
-## <a name="preview"></a>Előzetes verzió
+## <a name="preview"></a>Előnézet
 
 Az Előnézet lapon kiválaszthatja az ajánlat érvényességének ellenőrzéséhez szükséges korlátozott **előzetes** verziót, mielőtt közzéteszi a szolgáltatást.
 
@@ -390,11 +358,11 @@ Adja meg a következő információkat a **rendszerkép-tárház részletei** la
 
  :::image type="content" source="media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
 
-**A Azure Container Registry jelszava** – adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry** > **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kérheti le.
+**A Azure Container Registry jelszava** – adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show)kérheti le.
 
 :::image type="content" source="media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="A hozzáférési kulcs menüjét mutatja be.":::
 
-**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor a rendszerképet a beállításjegyzékbe küldi. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/) > **adattárak** lapon találja. További információ: [a Container Registry-Tárházak megtekintése Azure Portalban](https://docs.microsoft.com/azure/container-registry/container-registry-repositories).
+**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor a rendszerképet a beállításjegyzékbe küldi. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak** lapon találja. További információ: [a Container Registry-Tárházak megtekintése Azure Portalban](https://docs.microsoft.com/azure/container-registry/container-registry-repositories).
 
 > [!NOTE]
 > A név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.

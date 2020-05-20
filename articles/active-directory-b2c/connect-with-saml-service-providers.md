@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 543320adb490ff51b0394fb26137ebc977d2c04b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ff5d8ecaaeff67e1a97c4afd4ca8119f8ac7c1e1
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83679551"
+ms.locfileid: "83696942"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -369,7 +369,6 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 * Több kijelentkezési URL-cím vagy POST-kötés a kijelentkezési URL-címhez az Application/Service Principal objektumban.
 * Az alkalmazás/szolgáltatás egyszerű objektumában az RP-kérelmek ellenőrzéséhez írja be az aláíró kulcsot.
 * A jogkivonat-titkosítási kulcs megadásához az Application/Service Principal objektumban.
-* Az identitás-szolgáltató által kezdeményezett bejelentkezések jelenleg nem támogatottak az előzetes verzióban.
 
 ## <a name="next-steps"></a>További lépések
 

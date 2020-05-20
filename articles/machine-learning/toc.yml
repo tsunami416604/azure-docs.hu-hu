@@ -138,9 +138,6 @@
       href: concept-model-management-and-deployment.md
     - name: Modell hordozhatósága (ONNX)
       href: concept-onnx.md
-    - name: Modell értelmezhetősége
-      displayName: explainability
-      href: how-to-machine-learning-interpretability.md
     - name: Gépi tanulási folyamatok
       href: concept-ml-pipelines.md
     - name: Alkalmasság vállalati használatra és biztonság
@@ -172,6 +169,20 @@
           href: how-to-setup-authentication.md
         - name: Az Azure Machine Learning monitorozása
           href: monitor-azure-machine-learning.md
+    - name: Felelősségteljes ML
+      items:
+        - name: Felelősségteljes ML áttekintése
+          displayName: 'responsible,ml'
+          href: concept-responsible-ml.md
+        - name: Modell értelmezhetősége
+          displayName: explainability
+          href: how-to-machine-learning-interpretability.md
+        - name: Igazságosság a Machine Learningben
+          displayName: fairness
+          href: concept-fairness-ml.md
+        - name: Különbözeti adatvédelem
+          displayName: 'differential,privacy'
+          href: concept-differential-privacy.md
 - name: Útmutatók
   items:
     - name: Munkaterületek létrehozása és kezelése
@@ -273,6 +284,8 @@
           href: how-to-train-keras.md
         - name: PyTorch
           href: how-to-train-pytorch.md
+        - name: Megerősítő tanulás
+          href: how-to-use-reinforcement-learning.md
     - name: Modellek értelmezése és ismertetése
       displayName: interpretability
       items:

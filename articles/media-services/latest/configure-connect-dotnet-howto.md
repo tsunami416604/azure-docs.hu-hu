@@ -46,7 +46,7 @@ Az ebben a témakörben található minta alkalmazás a célokat célozza meg `n
 1. A Visual Studióban válassza az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-kezelő konzolt**.
 2. A **Package Manager Console (csomagkezelő konzol** ) ablakban a `Install-Package` következő NuGet-csomagok hozzáadásához használja a parancsot. Például: `Install-Package Microsoft.Azure.Management.Media`.
 
-|Csomag|Leírás|
+|Csomag|Description|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services csomagot használja, és ellenőrizze a [Microsoft. Azure. Management. Media eszközt](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-hitelesítési kódtár a NET-hez készült Azure SDK-hoz|
@@ -241,7 +241,7 @@ namespace ConsoleApp1
 - [Szűrők létrehozása Media Services-.NET-tel](filters-dynamic-manifest-dotnet-howto.md)
 - [Speciális video igény szerinti példák a Azure Functions v2-re Media Services v3](https://aka.ms/ams3functions)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [.NET-referencia](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)
 * További példákat a [.net SDK-minták](https://github.com/Azure-Samples/media-services-v3-dotnet) tárházában talál.

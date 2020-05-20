@@ -2,13 +2,13 @@
 title: Privát hivatkozás beállítása
 description: Privát végpont beállítása egy tároló-beállításjegyzékben, és hozzáférés engedélyezése privát hivatkozáson keresztül egy helyi virtuális hálózaton
 ms.topic: article
-ms.date: 05/07/2020
-ms.openlocfilehash: 46ec816d85a528fd3208026ef76dff8470154767
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/19/2020
+ms.openlocfilehash: 93cdbab8bcdaa9787373407fe8d6619dd5fd49c6
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982435"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701398"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Azure Private-hivatkozás konfigurálása Azure Container registryhez 
 
@@ -24,7 +24,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A cikkben szereplő Azure CLI-lépések használatához ajánlott az Azure CLI-es vagy újabb verziója. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli]. Vagy futtassa [Azure Cloud Shell](../cloud-shell/quickstart.md).
+* A cikkben szereplő Azure CLI-lépések használatához ajánlott az Azure CLI-es vagy újabb verziójának használata. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli]. Vagy futtassa [Azure Cloud Shell](../cloud-shell/quickstart.md).
 * Ha még nem rendelkezik tároló-beállításjegyzékkel, hozzon létre egyet (prémium szintű csomag szükséges), és [importáljon](container-registry-import-images.md) egy minta képet, például `hello-world` a Docker hub-ból. A beállításjegyzék létrehozásához például használja az [Azure Portal][quickstart-portal] vagy az [Azure CLI][quickstart-cli] -t.
 * Ha egy másik Azure-előfizetésben lévő privát hivatkozás használatával szeretné konfigurálni a beállításjegyzék-hozzáférést, regisztrálnia kell az erőforrás-szolgáltatót az előfizetésben lévő Azure Container Registryhoz. Például:
 
@@ -114,7 +114,7 @@ REGISTRY_ID=$(az acr show --name $REGISTRY_NAME \
 
 Futtassa az az [Network Private-Endpoint Create][az-network-private-endpoint-create] parancsot a beállításjegyzék privát végpontjának létrehozásához.
 
-A következő példa létrehozza a végpont *myPrivateEndpoint* és a szolgáltatáshoz kapcsolódó *myConnection*. A végponthoz tartozó tároló beállításjegyzék-erőforrásának megadásához adja `--group-ids registry`meg a következőt:
+A következő példa létrehozza a végpont *myPrivateEndpoint* és a szolgáltatáshoz kapcsolódó *myConnection*. A végponthoz tartozó tároló beállításjegyzék-erőforrásának megadásához adja meg a következőt `--group-ids registry` :
 
 ```azurecli
 az network private-endpoint create \
@@ -160,7 +160,7 @@ DATA_ENDPOINT_PRIVATE_IP=$(az resource show \
 
 ### <a name="create-dns-records-in-the-private-zone"></a>DNS-rekordok létrehozása a privát zónában
 
-A következő parancsok DNS-rekordokat hoznak létre a saját zónában a beállításjegyzék-végponthoz és az adatvégponthoz. Ha például egy *myregistry* nevű beállításjegyzék található a *westeurope* régióban, a végpontok nevei a következők `myregistry.azurecr.io` : és. `myregistry.westeurope.data.azurecr.io` 
+A következő parancsok DNS-rekordokat hoznak létre a saját zónában a beállításjegyzék-végponthoz és az adatvégponthoz. Ha például egy *myregistry* nevű beállításjegyzék található a *westeurope* régióban, a végpontok nevei a következők: `myregistry.azurecr.io` és `myregistry.westeurope.data.azurecr.io` . 
 
 > [!NOTE]
 > Ha a beállításjegyzék [földrajzilag replikálódik](container-registry-geo-replication.md), hozzon létre további DNS-rekordokat az egyes replikák adatvégponti IP-címéhez.
@@ -207,7 +207,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
 
 1. Amikor beállításjegyzéket hoz létre a portálon, az **alapok** lap **SKU**területén válassza a **prémium**lehetőséget.
 1. Válassza a **hálózatkezelés** lapot.
-1. A **hálózati kapcsolat**területen válassza a **privát végpont** > **+ Hozzáadás**lehetőséget.
+1. A **hálózati kapcsolat**területen válassza a **privát végpont**  >  **+ Hozzáadás**lehetőséget.
 1. Adja meg vagy válassza ki a következő adatokat:
 
     | Beállítás | Érték |
@@ -282,7 +282,21 @@ A magánhálózati kapcsolat konfigurálva van, és használatra kész.
 
 ## <a name="disable-public-access"></a>Nyilvános hozzáférés letiltása
 
-Számos esetben tiltsa le a beállításjegyzékhez való hozzáférést a nyilvános hálózatokból. Ez a konfiguráció megakadályozza, hogy a virtuális hálózaton kívüli ügyfelek elérjék a beállításjegyzékbeli végpontokat. A nyilvános hozzáférés letiltása a portál használatával:
+Számos esetben tiltsa le a beállításjegyzékhez való hozzáférést a nyilvános hálózatokból. Ez a konfiguráció megakadályozza, hogy a virtuális hálózaton kívüli ügyfelek elérjék a beállításjegyzékbeli végpontokat. 
+
+### <a name="disable-public-access---cli"></a>Nyilvános hozzáférés letiltása – parancssori felület
+
+Az Azure CLI használatával történő nyilvános hozzáférés letiltásához futtassa [az az ACR Update][az-acr-update] parancsot, és állítsa a következőre: `--public-network-enabled` `false` . 
+
+> [!NOTE]
+> Az `public-network-enabled` argumentumhoz az Azure CLI 2.6.0 vagy újabb verzió szükséges. 
+
+```azurecli
+az acr update --name $REGISTRY_NAME --public-network-enabled false
+```
+
+
+### <a name="disable-public-access---portal"></a>Nyilvános hozzáférés letiltása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
 1. A **nyilvános hozzáférés** lap nyilvános **hozzáférés engedélyezése**területén válassza a **Letiltva**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
@@ -308,7 +322,7 @@ Name:   myregistry.privatelink.azurecr.io
 Address: 10.0.0.6
 ```
 
-Hasonlítsa össze ezt az eredményt a `nslookup` kimenetben lévő nyilvános IP-címmel egy nyilvános végponton keresztül:
+Hasonlítsa össze ezt az eredményt a kimenetben lévő nyilvános IP-címmel `nslookup` egy nyilvános végponton keresztül:
 
 ```console
 [...]
@@ -319,13 +333,13 @@ Address: 40.78.103.41
 
 ### <a name="registry-operations-over-private-link"></a>Beállításjegyzékbeli műveletek privát kapcsolaton keresztül
 
-Győződjön meg arról is, hogy az alhálózaton található virtuális gépről beállításjegyzék-műveleteket is végrehajthat. Létesítsen SSH-kapcsolatokat a virtuális géppel, és futtassa az [ACR login][az-acr-login] parancsot a beállításjegyzékbe való bejelentkezéshez. A virtuális gép konfigurációjától függően előfordulhat, hogy a következő parancsokat kell előadnia a `sudo`alkalmazásban.
+Győződjön meg arról is, hogy az alhálózaton található virtuális gépről beállításjegyzék-műveleteket is végrehajthat. Létesítsen SSH-kapcsolatokat a virtuális géppel, és futtassa az [ACR login][az-acr-login] parancsot a beállításjegyzékbe való bejelentkezéshez. A virtuális gép konfigurációjától függően előfordulhat, hogy a következő parancsokat kell előadnia a alkalmazásban `sudo` .
 
 ```bash
 az acr login --name $REGISTRY_NAME
 ```
 
-Olyan beállításjegyzék-műveleteket `docker pull` hajthat végre, mint például egy minta rendszerkép lekérése a beállításjegyzékből. Cserélje `hello-world:v1` le a t a beállításjegyzék megfelelő képére és címkéjére, és írja be a beállításjegyzék bejelentkezési kiszolgálójának nevét (minden kisbetűs):
+Olyan beállításjegyzék-műveleteket hajthat végre, mint például `docker pull` egy minta rendszerkép lekérése a beállításjegyzékből. Cserélje le a `hello-world:v1` t a beállításjegyzék megfelelő képére és címkéjére, és írja be a beállításjegyzék bejelentkezési kiszolgálójának nevét (minden kisbetűs):
 
 ```bash
 docker pull myregistry.azurecr.io/hello-world:v1
@@ -348,11 +362,11 @@ Ha a jelen cikkben ismertetett lépésekkel állít be egy privát végponti kap
 
 ## <a name="add-zone-records-for-replicas"></a>Zónaadatok hozzáadása a replikák számára
 
-Ahogy az ebben a cikkben is látható, amikor egy magánhálózati végponti kapcsolattal bővíti a beállításjegyzéket, `privatelink.azurecr.io` a zónában lévő DNS-rekordok a beállításjegyzékben és annak adatvégpontjában jönnek létre azokban a régiókban, ahol a beállításjegyzék [replikálódik](container-registry-geo-replication.md). 
+Ahogy az ebben a cikkben is látható, amikor egy magánhálózati végponti kapcsolattal bővíti a beállításjegyzéket, a zónában lévő DNS-rekordok a beállításjegyzékben `privatelink.azurecr.io` és annak adatvégpontjában jönnek létre azokban a régiókban, ahol a beállításjegyzék [replikálódik](container-registry-geo-replication.md). 
 
-Ha később új replikát ad hozzá, manuálisan kell hozzáadnia egy új zónát az adott régióban lévő adatvégponthoz. Ha például létrehoz egy *myregistry* -replikát a *northeurope* helyen, vegyen fel egy zóna rekordot a következőhöz `myregistry.northeurope.data.azurecr.io`:. További lépések: [DNS-rekordok létrehozása a privát zónában](#create-dns-records-in-the-private-zone) ebben a cikkben.
+Ha később új replikát ad hozzá, manuálisan kell hozzáadnia egy új zónát az adott régióban lévő adatvégponthoz. Ha például létrehoz egy *myregistry* -replikát a *northeurope* helyen, vegyen fel egy zóna rekordot a következőhöz: `myregistry.northeurope.data.azurecr.io` . További lépések: [DNS-rekordok létrehozása a privát zónában](#create-dns-records-in-the-private-zone) ebben a cikkben.
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 Ha az összes Azure-erőforrást ugyanabban az erőforráscsoporthoz hozta létre, és már nincs rájuk szükség, akkor az erőforrásokat egyetlen [az Group delete](/cli/azure/group) paranccsal törölheti:
 

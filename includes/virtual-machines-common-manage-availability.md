@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: ba21dfc900145ceeacab6c363e5de84b830282b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f65912d0e2ab322d73315828a98cc48274850fc
+ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82109584"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83696527"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -33,8 +33,8 @@ Az ilyen események okozta állásidő hatásainak csökkentése érdekében jav
 * [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében]
 * [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]
 * [Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
-* [Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása]
-* [Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]
+* [Az egyes alkalmazások szintjeinek konfigurálása különálló rendelkezésre állási csoportokra]
+* [Load Balancer összevonása rendelkezésre állási csoportokkal]
 * [A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez]
 
 ## <a name="use-availability-zones-to-protect-from-datacenter-level-failures"></a>A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez
@@ -91,19 +91,12 @@ Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni
 
 1. **Tárolja az egyazon virtuális géppel társított összes lemezt (operációsrendszer- és adatlemezt) ugyanabban a tárfiókban.**
 2. **Tekintse át az Azure Storage-fiókban nem felügyelt lemezek számának [korlátozásait](../articles/storage/blobs/scalability-targets-premium-page-blobs.md) ** , mielőtt további virtuális merevlemezeket adna hozzá egy Storage-fiókhoz
-3. **Használjon külön Storage-fiókot a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. A különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható a tárolási fiókok megosztása, ha a ![fenti ajánlott eljárások követik a nem felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/umd-updated.png)
+3. **Használjon külön Storage-fiókot a rendelkezésre állási csoportba tartozó egyes virtuális gépekhez.** Ne tárolja az egyazon rendelkezésre állási csoportban lévő virtuális gépeket ugyanabban a Storage-fiókban. A különböző rendelkezésre állási csoportokban lévő virtuális gépek számára elfogadható a tárolási fiókok megosztása, ha a fenti ajánlott eljárások követik a nem ![ felügyelt lemezek tartalék](./media/virtual-machines-common-manage-availability/umd-updated.png)
 
 ## <a name="use-scheduled-events-to-proactively-respond-to-vm-impacting-events"></a>Ütemezett események használatával proaktív módon válaszolhat a virtuális gépeket érintő eseményekre
 
 Az [ütemezett eseményekre](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)való előfizetéskor a virtuális gép értesítést kap arról, hogy a közelgő karbantartási események milyen hatással lehetnek a virtuális gépre. Ha az ütemezett események engedélyezve vannak, a virtuális gép a karbantartási tevékenység végrehajtása előtt legalább annyi időt kap. Például a gazdagép operációs rendszerének azon frissítései, amelyek hatással lehetnek a virtuális gépre, olyan események, amelyek meghatározzák a hatást, valamint azt, hogy a karbantartás mikor történjen, ha nincs művelet. Az ütemezett események akkor is várólistára kerülnek, amikor az Azure olyan közvetlen hardverhiba-meghibásodást észlel, amely hatással lehet a virtuális gépre, ami lehetővé teszi, hogy eldöntse, mikor kell elvégezni a gyógyulást. A-ügyfelek az eseményt a karbantartás előtt is elvégezhetik, például az állapot mentése, a másodlagos feladatátvétel és így tovább. Miután elvégezte a logikát a karbantartási esemény zökkenőmentes kezeléséhez, jóváhagyhatja a függőben lévő ütemezett eseményt, hogy a platform folytassa a karbantartással.
 
-## <a name="configure-each-application-tier-into-separate-availability-zones-or-availability-sets"></a>Az egyes alkalmazások szintjeinek beállítása különálló rendelkezésre állási zónákra vagy rendelkezésre állási csoportokra
-Ha a virtuális gépek csaknem azonosak, és ugyanazt a célt szolgálják az alkalmazáshoz, javasoljuk, hogy az alkalmazás minden egyes szintjéhez konfiguráljon egy rendelkezésre állási zónát vagy rendelkezésre állási készletet.  Ha két különböző szintet helyez el ugyanabban a rendelkezésre állási zónában vagy készletben, akkor az azonos alkalmazási szinten lévő összes virtuális gép újraindítható egyszerre. Ha legalább két virtuális gépet konfigurál egy rendelkezésre állási zónában, vagy beállítja az egyes rétegeket, akkor garantálhatja, hogy az egyes szinteken legalább egy virtuális gép elérhető.
-
-Például az IIS, az Apache és az Nginx egyetlen rendelkezésre állási zónában vagy a set-ben való futtatásával az alkalmazás kezelőfelületének összes virtuális gépet üzembe helyezheti. Győződjön meg arról, hogy csak az előtér-virtuális gépek vannak elhelyezve ugyanahhoz a rendelkezésre állási zónához vagy a készlethez. Hasonlóképpen ügyeljen arra, hogy csak az adatrétegbeli virtuális gépek legyenek elhelyezve a saját rendelkezésre állási zónájában vagy készletében, például a replikált SQL Server virtuális gépekhez vagy a MySQL virtuális gépekhez.
-
-<!--Image reference-->
-   ![Alkalmazásrétegek](./media/virtual-machines-common-manage-availability/application-tiers.png)
 
 ## <a name="combine-a-load-balancer-with-availability-zones-or-sets"></a>Terheléselosztó kombinálása rendelkezésre állási zónákkal vagy készletekkel
 Egyesítse a [Azure Load Balancer](../articles/load-balancer/load-balancer-overview.md) egy rendelkezésre állási zónával, vagy állítsa be a legtöbb alkalmazás rugalmasságát. Az Azure Load Balancer több virtuális gép között osztja el a forgalmat. A Standard csomagban elérhető virtuális gépek esetében az Azure Load Balancer a csomag részét képezi. Nem mindegyik virtuális gép csomagja tartalmazza az Azure Load Balancert. A virtuális gépek terheléselosztásáról további információkért lásd a [virtuális gépek terheléselosztását](../articles/virtual-machines/virtual-machines-linux-load-balance.md) ismertető témakört.
@@ -115,8 +108,7 @@ A rendelkezésre állási zónák közötti terheléselosztással kapcsolatos ok
 
 <!-- Link references -->
 [Több virtuális gép rendelkezésre állási csoportba konfigurálása a redundancia biztosítása érdekében]: #configure-multiple-virtual-machines-in-an-availability-set-for-redundancy
-[Az egyes alkalmazásrétegek külön rendelkezésre állási csoportokba konfigurálása]: #configure-each-application-tier-into-separate-availability-zones-or-availability-sets
-[Terheléselosztók és rendelkezésre állási csoportok együttes alkalmazása]: #combine-a-load-balancer-with-availability-zones-or-sets
+[Load Balancer összevonása rendelkezésre állási csoportokkal]: #combine-a-load-balancer-with-availability-zones-or-sets
 [Avoid single instance virtual machines in availability sets]: #avoid-single-instance-virtual-machines-in-availability-sets
 [Felügyelt lemezek használata rendelkezésre állási csoporthoz tartozó virtuális gépekkel]: #use-managed-disks-for-vms-in-an-availability-set
 [A rendelkezésre állási zónák használata az adatközponti szintű hibák elleni védelemhez]: #use-availability-zones-to-protect-from-datacenter-level-failures

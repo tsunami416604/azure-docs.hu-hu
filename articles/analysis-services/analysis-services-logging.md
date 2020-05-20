@@ -4,15 +4,15 @@ description: Leírja, hogyan kell beállítani a naplózást a Azure Analysis Se
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/31/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 71a81c4a3a57c206540e20f7c7e58949c552e582
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82128926"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701492"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
 
@@ -90,7 +90,7 @@ A metrikák kategória ugyanazokat a [kiszolgálói metrikákat](analysis-servic
 
 3. Kattintson a **Save** (Mentés) gombra.
 
-    Ha olyan hibaüzenetet kap, amely szerint a \<"nem sikerült frissíteni a munkaterület nevét>. Az előfizetés \<-előfizetési azonosító> nincs regisztrálva a Microsoft. bepillantások használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
+    Ha olyan hibaüzenetet kap, amely szerint a "nem sikerült frissíteni a \< munkaterület nevét>. Az előfizetés \< -előfizetési azonosító> nincs regisztrálva a Microsoft. bepillantások használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
 
     Ha módosítani szeretné, hogy az erőforrás-naplók hogyan legyenek mentve a jövő bármely pontjára, térjen vissza erre a lapra a beállítások módosításához.
 
@@ -158,7 +158,7 @@ A diagnosztikai adatok megtekintéséhez Log Analytics munkaterületen nyissa me
 
 ![A Azure Portal keresési beállításainak naplózása](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-A lekérdezés-szerkesztőben bontsa ki a **LogManagement** > **AzureDiagnostics**elemet. A AzureDiagnostics motor-és szolgáltatási eseményeket tartalmaz. Figyelje meg, hogy a rendszer menet közben hozza létre a lekérdezést. A EventClass\_s mező xEvent neveket tartalmaz, amelyek ismerősek lehetnek, ha a helyszíni naplózáshoz xevent típusú eseményekhez használta. Kattintson **a\_EventClass s** vagy az egyik esemény nevére, és log Analytics munkaterület folytatja a lekérdezés összeállítását. A lekérdezéseket ajánlatos menteni későbbi használatra.
+A lekérdezés-szerkesztőben bontsa ki a **LogManagement**  >  **AzureDiagnostics**elemet. A AzureDiagnostics motor-és szolgáltatási eseményeket tartalmaz. Figyelje meg, hogy a rendszer menet közben hozza létre a lekérdezést. A EventClass \_ s mező xEvent neveket tartalmaz, amelyek ismerősek lehetnek, ha a helyszíni naplózáshoz xevent típusú eseményekhez használta. Kattintson a **EventClass \_ s** vagy az egyik esemény nevére, és log Analytics munkaterület folytatja a lekérdezés összeállítását. A lekérdezéseket ajánlatos menteni későbbi használatra.
 
 ### <a name="example-queries"></a>Példák lekérdezésekre
 
@@ -251,7 +251,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 A naplókhoz meglévő Storage-fiókot is használhat, feltéve, hogy az a kiszolgálóval megegyező előfizetésben található. Ebben az oktatóanyagban egy új Storage-fiókot hoz létre, amely Analysis Services naplókhoz van hozzárendelve. Az egyszerűvé tétel érdekében a Storage-fiók adatait egy **sa**nevű változóban tárolja.
 
-Ugyanezt az erőforráscsoportot is használja, mint amely a Analysis Services-kiszolgálót tartalmazza. A `awsales_resgroup`, `awsaleslogs`a és `West Central US` a értékének helyettesítő értékei a saját értékeivel:
+Ugyanezt az erőforráscsoportot is használja, mint amely a Analysis Services-kiszolgálót tartalmazza. A, a és a értékének helyettesítő értékei `awsales_resgroup` `awsaleslogs` `West Central US` a saját értékeivel:
 
 ```powershell
 $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `

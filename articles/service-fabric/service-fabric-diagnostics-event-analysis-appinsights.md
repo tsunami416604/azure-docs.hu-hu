@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 5c80dc9f350fec30469a9bce2ed836c276ef3a7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b7cb09d67080d49f53d9dd48b5ed0f8f3a54884
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75464755"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701895"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Események elemzése és vizualizáció Application Insights
 
@@ -42,7 +42,7 @@ A Application Insights-portál képességeinek megismeréséhez lépjen a [Appli
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Application Insights konfigurálása a EventFlow segítségével
 
-Ha EventFlow segítségével-t használ az események összesítéséhez, akkor ügyeljen arra, `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights`hogy importálja a NuGet-csomagot. A *eventFlowConfig. JSON* *kimenetek* szakaszában a következő kód szükséges:
+Ha EventFlow segítségével-t használ az események összesítéséhez, akkor ügyeljen arra, hogy importálja a `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` NuGet-csomagot. A *eventFlowConfig. JSON* *kimenetek* szakaszában a következő kód szükséges:
 
 ```json
 "outputs": [
@@ -73,5 +73,5 @@ Az **elemzés** gombra kattintva megtekintheti a Application Insights Analytics-
 
 ## <a name="next-steps"></a>További lépések
 
-* [Riasztások beállítása az AI-ben](../azure-monitor/app/alerts.md) a teljesítmény vagy a használat változásairól való értesítéshez
+* [Riasztások beállítása az AI-ben](/azure/azure-monitor/platform/alerts-log) a teljesítmény vagy a használat változásairól való értesítéshez
 * Az [intelligens észlelés a Application Insights](../azure-monitor/app/proactive-diagnostics.md) a Application Insights küldött telemetria proaktív elemzését hajtja végre, hogy figyelmeztesse Önt a lehetséges teljesítménnyel kapcsolatos problémákról

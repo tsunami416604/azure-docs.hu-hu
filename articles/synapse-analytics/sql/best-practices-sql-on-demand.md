@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 07ceb8eebed5657f87417dc24281008dd0863851
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0792dd98bb554b7b430676472c27274f3312d381
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650391"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701367"
 ---
 # <a name="best-practices-for-sql-on-demand-preview-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL igény szerinti használatára (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban
 
@@ -121,7 +121,7 @@ További információért olvassa el a [filename](develop-storage-files-overview
 > [!NOTE]
 > A partíció-eltávolításhoz, a filepath és a fileinfo használt függvények jelenleg nem támogatottak az Azure szinapszis Analytics szolgáltatásban Apache Spark által létrehozott táblákon kívüli, az egyes táblákhoz automatikusan létrehozott külső táblák esetében.
 
-Ha a tárolt adatok nincsenek particionálva, érdemes particionálni, hogy ezek a függvények a fájlokra irányuló lekérdezések optimalizálására legyenek optimalizálva. Ha a [particionált Spark-táblákat](develop-storage-files-spark-tables.md) SQL-igény alapján kérdezi le, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
+Ha a tárolt adatok nincsenek particionálva, érdemes particionálni, hogy ezek a függvények a fájlokra irányuló lekérdezések optimalizálására legyenek optimalizálva. Ha az [Azure szinapszis-táblák particionált Apache Spark lekérdezését](develop-storage-files-spark-tables.md) az SQL igény szerint, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 
 ## <a name="use-parser_version-20-for-querying-csv-files"></a>PARSER_VERSION 2,0 használata CSV-fájlok lekérdezéséhez
 

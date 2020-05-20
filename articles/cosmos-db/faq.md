@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 0a890139f9d7a955a5c96262d6e5b8f275e61d0d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a5dbdc4baea0973797427672c9171b4bf841086f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675933"
+ms.locfileid: "83701387"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -93,7 +93,7 @@ A Azure Cosmos DB-előfizetések kipróbálásához a következő feltételek é
 * A globális replikáció a következő Azure- [régiókban](https://azure.microsoft.com/regions/)érhető el: USA középső régiója, Észak-Európa és Délkelet-Ázsia
 * A maximális átviteli sebesség 5 K RU/s a tároló szintjén kiépítve.
 * Az adatbázis szintjén kiépített 20 K/s maximális átviteli sebesség.
-* Az előfizetések 30 nap elteltével lejárnak, és legfeljebb 31 napra bővíthetők.
+* Az előfizetések 30 nap elteltével lejárnak, és legfeljebb 31 napra bővíthetők. A lejárat után a rendszer törli a benne foglalt adatokat.
 * Nem hozhatók létre Azure-támogatási jegyek az Azure Cosmos DB-fiókok kipróbálásához; azonban támogatást biztosítanak a meglévő támogatási csomagokkal rendelkező előfizetőknek.
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB beállítása

@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépeken lévő SAP HANA adatbázisok biztonsági m
 description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az Azure-beli virtuális gépeken futó SAP HANA adatbázisok felügyeletére és figyelésére vonatkozó általános feladatokat.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c810a049fafcbce6d4c840557b101e5226343ab7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e3705750e32b8b34ed397b8f68f22b0728129266
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660147"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701123"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
 
@@ -208,13 +208,13 @@ SAP HANA-adatbázis védelmének folytatása:
 
 * A **biztonsági mentési házirend** menüben válasszon ki egy házirendet, majd kattintson a **Mentés**gombra.
 
-### <a name="upgrading-from-sap-hana-10-to-20"></a>Frissítés SAP HANA 1,0 – 2,0
+### <a name="upgrading-from-sdc-to-mdc"></a>Frissítés SDC-ről MDC-re
 
-Megtudhatja, hogyan folytathatja a biztonsági mentést egy SAP HANA adatbázisról a [1,0-2,0-es verzióra való SAP HANA frissítés után](backup-azure-sap-hana-database-troubleshoot.md#upgrading-from-sap-hana-10-to-20).
+Ismerje meg, hogyan folytathatja a biztonsági mentést egy SAP HANA adatbázisról a [SDC-ről a MDC-re való frissítés után](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-a-change-in-sid).
 
-### <a name="upgrading-without-a-sid-change"></a>Frissítés SID-változás nélkül
+### <a name="upgrading-from-sdc-to-mdc-without-a-sid-change"></a>Frissítés SDC-ről MDC-re SID-változás nélkül
 
-Megtudhatja, hogyan folytathatja a SAP HANA-adatbázis biztonsági mentését, amelynek SID-je [a frissítés után nem módosult](backup-azure-sap-hana-database-troubleshoot.md#upgrading-without-an-sid-change).
+Ismerje meg, hogy miként folytathatja a SAP HANA-adatbázis biztonsági mentését, amelynek SID-je a [SDC-ről a MDC-re való frissítés után nem változott](backup-azure-sap-hana-database-troubleshoot.md#sdc-to-mdc-upgrade-with-no-change-in-sid).
 
 ### <a name="unregister-an-sap-hana-instance"></a>SAP HANA példány regisztrációjának törlése
 

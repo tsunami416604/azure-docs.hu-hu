@@ -4,12 +4,12 @@ description: Application Insights az alkalmazás telemetria intelligens elemzés
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: 6c5b19c7e03993ef973cd708ed7a6fe89feb01a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81687696"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697174"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
 
@@ -34,7 +34,7 @@ Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van 
 
 ## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
 
-Az értesítések közé tartoznak a diagnosztikai információk. Például:
+Az értesítések közé tartoznak a diagnosztikai információk. Íme egy példa:
 
 
 ![Íme egy példa a kiszolgálói válaszidő-romlás észlelésére](media/proactive-performance-diagnostics/server_response_time_degradation.png)
@@ -70,12 +70,12 @@ Az intelligens Észlelésekkel kapcsolatos e-mailek száma Application Insights 
 * *Létrehozhatom a saját anomáliák észlelési szabályait, vagy testre is szabhatom a meglévő szabályokat?*
 
   * Még nem, de a következőket teheti:
-    * [Riasztásokat állíthat be](../../azure-monitor/app/alerts.md) , amelyek azt jelzik, ha egy metrika átlép egy küszöbértéket.
+    * [Riasztásokat állíthat be](/azure/azure-monitor/platform/alerts-log) , amelyek azt jelzik, ha egy metrika átlép egy küszöbértéket.
     * [Exportálja a telemetria](../../azure-monitor/app/export-telemetry.md) egy [adatbázisba](../../azure-monitor/app/code-sample-export-sql-stream-analytics.md) vagy [Power BIba](../../azure-monitor/app/export-power-bi.md ), ahol elemezheti saját maga is.
 * *Milyen gyakran történik az elemzés?*
 
   * Az elemzést naponta futtatjuk a telemetria az előző naptól számítva (az UTC időzónában teljes nap).
-* *Tehát ez a [metrikai riasztásokat](../../azure-monitor/app/alerts.md)váltja fel?*
+* *Tehát ez a [metrikai riasztásokat](/azure/azure-monitor/platform/alerts-log)váltja fel?*
   * Nem.  Nem vállalunk kötelezettséget arra, hogy észlelje az esetleges rendellenes viselkedést.
 
 
@@ -180,5 +180,5 @@ Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalma
 
 Az intelligens észlelések teljesen automatikusak. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikai riasztások](../../azure-monitor/app/alerts.md)
+* [Manuálisan konfigurált metrikai riasztások](/azure/azure-monitor/platform/alerts-log)
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md)

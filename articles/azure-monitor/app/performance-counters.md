@@ -3,12 +3,12 @@ title: Teljesítményszámlálók a Application Insightsban | Microsoft Docs
 description: A rendszer és az egyéni .NET-teljesítményszámlálók figyelése Application Insightsban.
 ms.topic: conceptual
 ms.date: 12/13/2018
-ms.openlocfilehash: 201338d3a904030ea961aede094b9877bfee3e36
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 274e02c484c091cbb13ac2cf69bf99672f579f33
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855109"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701478"
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Rendszerteljesítmény-számlálók a Application Insightsban
 
@@ -21,16 +21,16 @@ A metrikák ablaktáblán a teljesítményszámlálók alapértelmezett készlet
 ![Application Insightsben jelentett teljesítményszámlálók](./media/performance-counters/performance-counters.png)
 
 A ASP.NET/ASP.NET Core-webalkalmazások gyűjtésére konfigurált aktuális alapértelmezett számlálók a következők:
-- Feldolgozási\\idő%-ban a processzoron
-- A processzor\\processzoridő (%) normalizálása folyamatban van
-- Rendelkezésre\\álló memória bájtjai
+- Feldolgozási idő%-ban a \\ processzoron
+- A \\ processzor processzoridő (%) normalizálása folyamatban van
+- \\Rendelkezésre álló memória bájtjai
 - ASP.NET kérelmek/másodperc
 - .NET CLR-kivételek/mp
 - ASP.NET ApplicationsRequest végrehajtási ideje
-- Saját\\bájtok feldolgozása
-- Feldolgozási\\IO-adatmennyiség (bájt/s)
-- \\ASP.net-kérelmek az alkalmazás-várólistán
-- Processzor (_Total)\\processzoridő (%)
+- \\Saját bájtok feldolgozása
+- Feldolgozási \\ IO-adatmennyiség (bájt/s)
+- ASP.NET \\ -kérelmek az alkalmazás-várólistán
+- Processzor (_Total) \\ processzoridő (%)
 
 ## <a name="add-counters"></a>Számlálók hozzáadása
 
@@ -40,7 +40,7 @@ Ha a használni kívánt teljesítményszámláló nem szerepel a metrikák list
 
     `Get-Counter -ListSet *`
 
-    (Lásd [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx):.)
+    (Lásd: [`Get-Counter`](https://technet.microsoft.com/library/hh849685.aspx) .)
 2. Nyissa meg a ApplicationInsights. config fájlt.
 
    * Ha a fejlesztés során Application Insightst adott hozzá az alkalmazáshoz, szerkessze a ApplicationInsights. config fájlt a projektben, majd telepítse újra a kiszolgálókra.
@@ -57,13 +57,13 @@ Ha a használni kívánt teljesítményszámláló nem szerepel a metrikák list
     ```
 
 > [!NOTE]
-> ASP.NET Core alkalmazások nem rendelkeznek `ApplicationInsights.config`, ezért a fenti módszer nem érvényes ASP.net Core alkalmazásokhoz.
+> ASP.NET Core alkalmazások nem rendelkeznek `ApplicationInsights.config` , ezért a fenti módszer nem érvényes ASP.net Core alkalmazásokhoz.
 
 Rögzítheti a standard számlálókat és a saját maga által végrehajtott módosításokat is. `\Objects\Processes`egy példa egy szabványos számlálóra, amely minden Windows rendszeren elérhető. `\Sales(photo)\# Items Sold`egy olyan egyéni számlálóra mutat példát, amely egy webszolgáltatásban valósítható meg.
 
-A formátum `\Category(instance)\Counter"`, vagy olyan kategóriák esetében, amelyek nem rendelkeznek példányokkal `\Category\Counter`, csak.
+A formátum `\Category(instance)\Counter"` , vagy olyan kategóriák esetében, amelyek nem rendelkeznek példányokkal, csak `\Category\Counter` .
 
-`ReportAs`a nem egyező `[a-zA-Z()/-_ \.]+` számlálók neve esetén szükséges, azaz olyan karaktereket tartalmaznak, amelyek nem szerepelnek a következő készletekben: betűk, kerek zárójelek, perjel, kötőjel, aláhúzás, szóköz, pont.
+`ReportAs`a nem egyező számlálók neve esetén szükséges `[a-zA-Z()/-_ \.]+` , azaz olyan karaktereket tartalmaznak, amelyek nem szerepelnek a következő készletekben: betűk, kerek zárójelek, perjel, kötőjel, aláhúzás, szóköz, pont.
 
 Ha megad egy példányt, a rendszer a jelentett metrika "CounterInstanceName" dimenzióját fogja gyűjteni.
 
@@ -89,7 +89,7 @@ Vagy megteheti ugyanezt a létrehozott egyéni metrikákkal:
 
 ### <a name="collecting-performance-counters-in-code-for-aspnet-core-web-applications"></a>Teljesítményszámlálók gyűjtése a kódban ASP.NET Core webalkalmazásokhoz
 
-Módosítsa `ConfigureServices` a `Startup.cs` metódust az osztályban az alábbi módon.
+Módosítsa `ConfigureServices` a metódust az `Startup.cs` osztályban az alábbi módon.
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
@@ -111,7 +111,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector;
 ## <a name="performance-counters-in-analytics"></a>Teljesítményszámlálók az Analyticsben
 A teljesítményszámláló-jelentéseket az [elemzésekben](../../azure-monitor/app/analytics.md)keresheti meg és jelenítheti meg.
 
-A **performanceCounters** séma megjeleníti az `category`egyes teljesítményszámlálók `counter` nevét és `instance` nevét.  Az egyes alkalmazások telemetria csak az adott alkalmazás számlálói láthatók. Például a rendelkezésre álló számlálók megtekintéséhez: 
+A **performanceCounters** séma megjeleníti az `category` `counter` egyes teljesítményszámlálók nevét és nevét `instance` .  Az egyes alkalmazások telemetria csak az adott alkalmazás számlálói láthatók. Például a rendelkezésre álló számlálók megtekintéséhez: 
 
 ![Teljesítményszámlálók a Application Insights Analyticsben](./media/performance-counters/analytics-performance-counters.png)
 
@@ -121,7 +121,7 @@ A rendelkezésre álló memória diagramjának lekérése a legutóbbi időszakb
 
 ![Memória idődiagramját a Application Insights Analyticsben](./media/performance-counters/analytics-available-memory.png)
 
-A többi telemetria hasonlóan a **performanceCounters** is tartalmaz egy `cloud_RoleInstance` oszlopot, amely jelzi annak a gazdagép-példánynak az identitását, amelyen az alkalmazás fut. Ha például össze szeretné hasonlítani az alkalmazás teljesítményét a különböző gépeken: 
+A többi telemetria hasonlóan a **performanceCounters** is tartalmaz egy oszlopot, `cloud_RoleInstance` amely jelzi annak a gazdagép-példánynak az identitását, amelyen az alkalmazás fut. Ha például össze szeretné hasonlítani az alkalmazás teljesítményét a különböző gépeken: 
 
 ![A Application Insights Analytics szerepkör-példánya által szegmentált teljesítmény](./media/performance-counters/analytics-metrics-role-instance.png)
 
@@ -142,12 +142,12 @@ Az Azure Web Apps üzembe helyezett ASP.NET-és ASP.NET Core-alkalmazások egy s
 A teljesítményszámlálók támogatása ASP.NET Core korlátozott:
 
 * Az [SDK](https://nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore) 2.4.1-es és újabb verziói a teljesítményszámlálókat gyűjtik, ha az alkalmazás az Azure Web Apps (Windows) rendszeren fut.
-* A 2.7.1-es és újabb verziójú SDK-verziók akkor gyűjtik a teljesítményszámlálókat, ha `NETSTANDARD2.0` az alkalmazás Windows-és célhelyeken vagy később fut.
+* A 2.7.1-es és újabb verziójú SDK-verziók akkor gyűjtik a teljesítményszámlálókat, ha az alkalmazás Windows-és célhelyeken `NETSTANDARD2.0` vagy később fut.
 * A .NET-keretrendszert célzó alkalmazások esetében az SDK összes verziója támogatja a teljesítményszámlálókat.
 * A 2.8.0 és újabb verziójú SDK-verziók támogatják a CPU-/memória-számlálót a Linux rendszerben. A Linux nem támogatja a többi számlálót. A Linux-(és más nem Windows-környezetekben található) rendszerszámlálók használatának ajánlott módja a [EventCounters](eventcounters.md) használata.
 
 ## <a name="alerts"></a>Riasztások
-Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/app/alerts.md) , amely figyelmezteti, ha a teljesítményszámláló a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
+Más mérőszámokhoz hasonlóan [riasztást is beállíthat](../../azure-monitor/platform/alerts-log.md) , amely figyelmezteti, ha a teljesítményszámláló a megadott korláton kívül esik. Nyissa meg a riasztások ablaktáblát, és kattintson a riasztás hozzáadása lehetőségre.
 
 ## <a name="next-steps"></a><a name="next"></a>További lépések
 

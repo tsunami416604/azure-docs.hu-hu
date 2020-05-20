@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 5/19/2020
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 97599d8113d20511882ec38928b221706e7f37b9
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0b8110e70ab681c0d9a4ad720f76c3f5a295fff9
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682421"
+ms.locfileid: "83701201"
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent"></a>Az Azure File Sync ügynök kibocsátási megjegyzései
 Az Azure File Sync lehetővé teszi a vállalat Azure Files szolgáltatásban tárolt fájlmegosztásainak központosítását anélkül, hogy fel kellene adnia a helyi fájlkiszolgálók rugalmasságát, teljesítményét és kompatibilitását. A Windows Server-telepítéseket az Azure-fájlmegosztás gyors gyorsítótáraivá alakítja át. A Windows Serveren elérhető bármely protokollt használhatja a fájlok helyi eléréséhez (pl.: SMB, NFS vagy FTPS). Annyi gyorsítótára lehet világszerte, amennyire csak szüksége van.
@@ -47,6 +47,9 @@ A következő kibocsátási megjegyzések a Azure File Sync ügynök verzióján
 
 Ebben a kiadásban rögzített probléma:  
 - A Storage Sync Agent (FileSyncSvc) a Azure File Sync v10-ügynök telepítése után gyakran összeomlik.
+
+> [!Note]  
+>Ezt a kiadást nem olyan kiszolgálók indították, amelyek automatikusan frissülnek, amikor új verzió válik elérhetővé. A frissítés telepítéséhez használja Microsoft Update vagy Microsoft Update katalógust (lásd: [KB4522412](https://support.microsoft.com/help/4522412) for Installation instructions).
 
 ## <a name="agent-version-10000"></a>Ügynök verziója 10.0.0.0
 A következő kibocsátási megjegyzések az Azure File Sync-ügynök verziójának 10.0.0.0 vonatkoznak (2020. április 9.).

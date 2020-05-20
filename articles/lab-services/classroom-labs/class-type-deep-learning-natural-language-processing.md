@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 1167846c399430bd2db2eaa3114628ebb63ce639
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: f03d1cfeccf03614fe0a5828a05768a5ae3f56e2
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592321"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699646"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services
 Ebből a cikkből megtudhatja, hogyan állíthat be egy olyan labort, amely a természetes nyelvi feldolgozás (NLP) mély tanulására koncentrál a Azure Lab Services használatával. A természetes nyelvi feldolgozás (NLP) a mesterséges intelligencia (AI) formája, amely lehetővé teszi, hogy a számítógépek fordítással, beszédfelismeréssel és más nyelvi felismerési képességekkel rendelkeznek.  
@@ -40,7 +40,9 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 | ------------ | ------------------ |
 | Virtuális gép (VM) mérete | Kis GPU (számítás). Ez a méret a legjobb megoldás a nagy számítási igényű és a hálózati igényű alkalmazások, például a mesterséges intelligencia és a mély tanulás számára. |
 | VM-rendszerkép | [Linux (Ubuntu) Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Ez a rendszerkép mély tanulási keretrendszert és eszközöket biztosít a gépi tanuláshoz és az adatelemzéshez. A képen található telepített eszközök teljes listájának megtekintéséhez tekintse meg a következő cikket: [Mit tartalmaz a DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
-| Távoli asztali kapcsolat engedélyezése | <p>Ha engedélyezi ezt a beállítást, az oktatók és a tanulók Távoli asztal (RDP) használatával csatlakozhatnak a Virtual Machineshoz (VM).</p><p>**Fontos**: Ez a beállítás csak a Linux rendszerű gépeken lévő **RDP** -portot nyitja meg. Ha az RDP már telepítve van és konfigurálva van a virtuális gép rendszerképén, akkor a tanulók RDP-kapcsolaton keresztül csatlakozhatnak a virtuális gépekhez a további lépések követése nélkül. <p>Ha a virtuálisgép-rendszerképben nincs telepítve és konfigurálva az RDP, először az SSH-val kell csatlakoznia a Linux rendszerű géphez, és telepítenie kell az RDP-és GUI-csomagokat, hogy a tanulók később is csatlakozhassanak a Linux-számítógéphez. További információkért lásd: [Távoli asztal telepítése és konfigurálása egy linuxos virtuális géphez való kapcsolódáshoz az Azure-ban](../../virtual-machines/linux/use-remote-desktop.md). Ezt követően közzéteheti a képet, hogy a tanulók RDP-be tudják állítani a tanulói Linux virtuális gépeket.  |
+| Távoli asztali kapcsolat engedélyezése | <p>Az adatelemzési rendszerkép már úgy van konfigurálva, hogy a X2Go használja, hogy a tanárok és a tanulók a grafikus felhasználói felületen távoli asztal használatával csatlakozzanak.  A X2Go *nem* igényli, hogy a **Távoli asztali kapcsolat engedélyezése** beállítás engedélyezve legyen.  Erre a beállításra csak akkor van szükség, ha az RDP használatát választja.
+
+>**Fontos**: bár javasoljuk, hogy a X2Go-t az adatelemzési képpel együtt használja, ha inkább RDP-t használ, a Linux rendszerű virtuális géphez először az SSH-t kell használnia, és telepítenie kell az RDP-és GUI-csomagokat.  Ezután a tanulók a Linux rendszerű virtuális géphez később is csatlakozhatnak RDP használatával.  További információ: [a grafikus távoli asztal engedélyezése Linux rendszerű virtuális gépekhez](how-to-enable-remote-desktop-linux.md).
 
 A Linux-rendszerképekhez készült Data Science Virtual Machine az ilyen típusú osztályok számára szükséges mély tanulási keretrendszereket és eszközöket biztosít. Ennek eredményeképpen a sablon létrehozása után nem kell további testreszabást végeznie. A tanulók számára közzé lehet tenni. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.  
 

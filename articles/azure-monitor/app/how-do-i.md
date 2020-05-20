@@ -3,12 +3,12 @@ title: Hogyan... Az Azure Application Insightsban | Microsoft Docs
 description: Gyakori kérdések a Application Insights.
 ms.topic: conceptual
 ms.date: 04/04/2017
-ms.openlocfilehash: 8d4b1e79c48b14ed7dce756468e4c48d633c3f04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9ca5900bc9172b1f4ef9b1a7a660c6936ac38095
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536862"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701945"
 ---
 # <a name="how-do-i--in-application-insights"></a>Hogyan tegyem... az Application Insights szolgáltatásban?
 ## <a name="get-an-email-when-"></a>E-mail küldése, ha...
@@ -16,7 +16,7 @@ ms.locfileid: "81536862"
 Adja meg a [rendelkezésre állási webes tesztet](../../azure-monitor/app/monitor-web-app-availability.md).
 
 ### <a name="email-if-my-site-is-overloaded"></a>E-mail-cím, ha a webhely túl van terhelve
-[Riasztás](../../azure-monitor/app/alerts.md) beállítása a **kiszolgáló válaszideje**. Egy 1 és 2 másodperc közötti küszöbértéknek kell működnie.
+[Riasztás](../../azure-monitor/platform/alerts-log.md) beállítása a **kiszolgáló válaszideje**. Egy 1 és 2 másodperc közötti küszöbértéknek kell működnie.
 
 ![](./media/how-do-i/030-server.png)
 
@@ -26,10 +26,10 @@ Ha riasztást szeretne beállítani a **kiszolgálók kivételei**között, akko
 
 ### <a name="email-on-exceptions"></a>Kivételek e-mail-címe
 1. [Kivételek figyelésének beállítása](../../azure-monitor/app/asp-net-exceptions.md)
-2. [Riasztás beállítása](../../azure-monitor/app/alerts.md) a kivételek számának metrikája
+2. [Riasztás beállítása](../../azure-monitor/platform/alerts-log.md) a kivételek számának metrikája
 
 ### <a name="email-on-an-event-in-my-app"></a>E-mail küldése az alkalmazáson belüli eseményről
-Tegyük fel, hogy egy adott esemény bekövetkezésekor szeretne e-mailt kapni. Application Insights nem biztosítja ezt a létesítményt közvetlenül, de [riasztást küldhet, ha egy metrika átlép egy küszöbértéket](../../azure-monitor/app/alerts.md).
+Tegyük fel, hogy egy adott esemény bekövetkezésekor szeretne e-mailt kapni. Application Insights nem biztosítja ezt a létesítményt közvetlenül, de [riasztást küldhet, ha egy metrika átlép egy küszöbértéket](../../azure-monitor/platform/alerts-log.md).
 
 A riasztások [Egyéni metrikák](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)esetén is beállíthatók, de nem egyéni események. Írjon be egy kódot a metrika növeléséhez az esemény bekövetkezésekor:
 
@@ -65,11 +65,11 @@ Néhány megfontolandó szempont:
 * Mivel az e-maileket a "riasztás" és az "kifogástalan" is elküldi, érdemes lehet átgondolni az egyeseményes eseményt egy kétállapotú feltételnek. Például a "feladatok befejezve" esemény helyett a "feladatok folyamatban" állapotot kell megadni, amely a feladatok elején és végén kap e-maileket.
 
 ### <a name="set-up-alerts-automatically"></a>Riasztások automatikus beállítása
-[Új riasztások létrehozása a PowerShell használatával](../../azure-monitor/app/alerts.md#automation)
+[Új riasztások létrehozása a PowerShell használatával](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="use-powershell-to-manage-application-insights"></a>Application Insights kezelése a PowerShell használatával
 * [Új erőforrások létrehozása](https://docs.microsoft.com/azure/azure-monitor/app/create-new-resource#creating-a-resource-automatically)
-* [Új riasztások létrehozása](../../azure-monitor/app/alerts.md#automation)
+* [Új riasztások létrehozása](../../azure-monitor/platform/alerts-log.md)
 
 ## <a name="separate-telemetry-from-different-versions"></a>Különálló telemetria különböző verziókból
 
@@ -120,7 +120,7 @@ Ha olyan felhasználók listáját szeretné megtekinteni, amelyeknek az inform�
 ## <a name="reduce-traffic-from-my-app-to-application-insights"></a>Az alkalmazásból a Application Insightsre irányuló forgalom csökkentése
 * A [ApplicationInsights. config fájlban](../../azure-monitor/app/configuration-with-applicationinsights-config.md)tiltsa le a nem szükséges modulokat, például a teljesítményszámláló gyűjtőjét.
 * [Mintavétel és szűrés](../../azure-monitor/app/api-filtering-sampling.md) használata az SDK-ban.
-* A weblapokon korlátozza az összes oldal nézethez jelentett Ajax-hívások számát. A parancsfájl-kódrészletbe `instrumentationKey:...` szúrja be `,maxAjaxCallsPerView:3` a következőt: (vagy egy megfelelő szám).
+* A weblapokon korlátozza az összes oldal nézethez jelentett Ajax-hívások számát. A parancsfájl-kódrészletbe `instrumentationKey:...` szúrja be a `,maxAjaxCallsPerView:3` következőt: (vagy egy megfelelő szám).
 * Ha a [TrackMetric](../../azure-monitor/app/api-custom-events-metrics.md#trackmetric)-t használja, akkor az eredmény elküldése előtt számítsa ki a metrikai értékek kötegének összesítését. A TrackMetric () túlterhelést biztosít.
 
 További információ a [díjszabásról és a kvótáról](../../azure-monitor/app/pricing.md).
@@ -137,8 +137,8 @@ A telemetria a kiszolgálóról történő gyűjtésének és továbbításának
 ```
 
 ### <a name="other-applications"></a>Egyéb alkalmazások
-Az Egypéldányos konzolos `TelemetryConfiguration.Active` vagy ASP.net Core alkalmazások használata nem ajánlott.
-Ha saját maga `TelemetryConfiguration` hozta létre a példányt `DisableTelemetry` – `true`állítsa a következőre:.
+Az Egypéldányos `TelemetryConfiguration.Active` konzolos vagy ASP.net Core alkalmazások használata nem ajánlott.
+Ha `TelemetryConfiguration` saját maga hozta létre a példányt – állítsa a következőre: `DisableTelemetry` `true` .
 
 ASP.NET Core alkalmazásokhoz `TelemetryConfiguration` [ASP.net Core függőségi befecskendezés](/aspnet/core/fundamentals/dependency-injection/)használatával férhet hozzá a példányhoz. A [ASP.net Core-alkalmazások ApplicationInsights kapcsolatos](../../azure-monitor/app/asp-net-core.md) további részletekért tekintse meg a következő cikket:.
 
@@ -156,7 +156,7 @@ A mérőszámokban megjeleníthető mérőszámok közé tartoznak a rendszertel
 ### <a name="if-you-see-no-performance-counter-data"></a>Ha nem jelenik meg a teljesítményszámláló adatai
 * **IIS-kiszolgáló** a saját számítógépén vagy egy virtuális gépen. [Telepítse a Állapotmonitor](../../azure-monitor/app/monitor-performance-live-website-now.md).
 * **Azure-webhely** – a teljesítményszámlálók még nem támogatottak. Az Azure-webhely Vezérlőpultjának standard részeként több mérőszám is elérhető.
-* **UNIX-kiszolgáló** - [telepítésének összegyűjtése](../../azure-monitor/app/java-collectd.md)
+* **UNIX-kiszolgáló**  -  A [telepítés begyűjtve](../../azure-monitor/app/java-collectd.md)
 
 ### <a name="to-display-more-performance-counters"></a>További teljesítményszámlálók megjelenítése
 * Először [vegyen fel egy új diagramot](../../azure-monitor/platform/metrics-charts.md) , és ellenőrizze, hogy a számláló az általunk kínált alapszintű készletben van-e.

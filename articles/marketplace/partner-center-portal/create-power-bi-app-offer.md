@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/01/2020
-ms.openlocfilehash: 17a6b7e46341ee0231ac88b849495cfc7e46ad88
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.date: 05/19/2020
+ms.openlocfilehash: 9c31c6ca4ccb5ff328faa5db1803134aa6b0c873
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839147"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701130"
 ---
 # <a name="create-a-power-bi-app-for-microsoft-appsource"></a>Power BI-alkalmazás létrehozása Microsoft AppSourcehoz
 
@@ -23,8 +23,8 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat** > **Power bi Service app**elemet.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Power bi Service app**elemet.
 
    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-pbi-app.png)
 
@@ -39,7 +39,7 @@ A Kezdés előtt [hozzon létre egy kereskedelmi Piactéri fiókot a partner Cen
 Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
-- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -109,17 +109,17 @@ Igény szerint két iparágban és két vertikálisan is kiválaszthatja az egye
 | * Autóipar | * Autóipar |
 | Mezőgazdaság | * Egyéb – nem szegmentált |
 | Disztribúció | * Nagykereskedelmi<br>Csomagok és csomagok szállítása |
-| Education | *Felsőoktatás<br> * Elsődleges és másodlagos oktatás/K-12<br>* Könyvtárak és múzeumok |
-| Pénzügyi szolgáltatások | *Banki és tőkepiacok<br> * Biztosítási |
-| Government | *A védelem és az intelligencia (amelyet a nemzeti és a Közbiztonságnak neveztek)<br> * Közbiztonság és jogérvényesülés<br>* Polgári kormányzat |
-| Egészségügyi ellátás (ún. állapot) | *Állapot költségviselő<br> * Állapot szolgáltatója<br>* Gyógyszeripar |
-| Gyártási és erőforrás-használat (a gyártás meghívásához használt) | *Vegyi és Agrokémiai<br> * Diszkrét gyártás<br>* Energia |
-| Kiskereskedelmi és fogyasztási cikkek (kiskereskedelmi használatra) | *Fogyasztási<br> cikkek* Kiskereskedők |
-| * Média és kommunikáció (média és szórakozás néven használatos) | *Média és szórakoztatás<br> * Távközlési |
-| Professzionális szolgáltatások | *Jogi<br> * tudnivalók Partneri szakmai szolgáltatások |
+| Education | *Felsőoktatás <br> * Elsődleges és másodlagos oktatás/K-12<br>* Könyvtárak és múzeumok |
+| Pénzügyi szolgáltatások | *Banki és tőkepiacok <br> * Biztosítási |
+| Államigazgatás | *A védelem és az intelligencia (amelyet a nemzeti és a Közbiztonságnak neveztek) <br> * Közbiztonság és jogérvényesülés<br>* Polgári kormányzat |
+| Egészségügyi ellátás (ún. állapot) | *Állapot költségviselő <br> * Állapot szolgáltatója<br>* Gyógyszeripar |
+| Gyártási és erőforrás-használat (a gyártás meghívásához használt) | *Vegyi és Agrokémiai <br> * Diszkrét gyártás<br>* Energia |
+| Kiskereskedelmi és fogyasztási cikkek (kiskereskedelmi használatra) | *Fogyasztási <br> cikkek* Kiskereskedők |
+| * Média és kommunikáció (média és szórakozás néven használatos) | *Média és szórakoztatás <br> * Távközlési |
+| Professzionális szolgáltatások | *Jogi <br> * tudnivalók Partneri szakmai szolgáltatások |
 | * Architektúra és építőipar (architektúra-mérnöki felépítéshez használatos) | * Egyéb – nem szegmentált |
-| * Vendéglátás és utazás | *Hotelek és szabadidő<br> * Utazás és szállítás<br>* Éttermek és élelmiszeripari szolgáltatások |
-| * Egyéb állami szektorbeli iparágak | *Erdőgazdálkodás és halászat<br> * Nonprofit szervezeteknek |
+| * Vendéglátás és utazás | *Hotelek és szabadidő <br> * Utazás és szállítás<br>* Éttermek és élelmiszeripari szolgáltatások |
+| * Egyéb állami szektorbeli iparágak | *Erdőgazdálkodás és halászat <br> * Nonprofit szervezeteknek |
 | * Ingatlan | * Egyéb – nem szegmentált |
 
 ### <a name="legal"></a>Jogi tudnivalók
@@ -161,32 +161,11 @@ Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, é
 
 ### <a name="description"></a>Description
 
-Adja meg az ajánlat hosszabb leírását, amely legfeljebb 3 000 karakter hosszú lehet. Ez jelenik meg az ügyfelek számára a Piactéri listák áttekintésében.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-A leírásban vegyen fel egyet vagy többet a következők közül:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-- Az ajánlat által biztosított érték és kulcs előnye.
-- Kategória-vagy iparági társulások, vagy mindkettő.
-- Alkalmazáson belüli vásárlási lehetőségek.
-- A szükséges közzétételek.
-
-Íme néhány tipp a Leírás írásához:
-
-- A Leírás első néhány mondatában egyértelműen ismertesse az ajánlat értékét. Adja meg a következő elemeket:
-  - Az ajánlat leírása.
-  - Az ajánlat által előnyben részesülő felhasználó típusa.
-  - Az ügyfélnek szüksége van vagy kiadja az ajánlat címét.
-- Ne feledje, hogy az első néhány mondat a keresési eredmények között jelenhet meg.
-- Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett az ajánlat által biztosított értékre kell összpontosítania.
-- Az iparágra jellemző szókincset vagy juttatáson alapuló szövegezést érdemes használni.
-
-Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, használja a Rich Text Editort a formázás alkalmazásához.
-
-![A Rich Text Editor használata](./media/rich-text-editor.png)
-
-| <center>Szöveg formátumának módosítása | <center>Felsorolásjelek vagy számozás hozzáadása | <center>Szöveg behúzásának hozzáadása vagy eltávolítása |
-| --- | --- | --- |
-| <center>![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png) |  <center>![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png) |  <center>![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png) |
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 ### <a name="search-keywords"></a>Kulcsszavak keresése
 
@@ -223,7 +202,7 @@ Adjon meg legalább egy három kapcsolódó marketing dokumentumot PDF formátum
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
 >[!NOTE]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 

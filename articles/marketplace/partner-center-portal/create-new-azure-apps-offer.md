@@ -6,17 +6,17 @@ ms.author: dsindona
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/03/2020
-ms.openlocfilehash: 22d6c37b59488633394d7f3ed5ca5b0c78371e7d
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.date: 05/19/2020
+ms.openlocfilehash: 55d544ecf6c96335ca65255e1af695f7757b818c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790687"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699521"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
-Ez a cikk ismerteti a kereskedelmi piactéren új Azure-alkalmazási ajánlat létrehozásának lépéseit és szempontjait. Az Azure-alkalmazások új ajánlatának létrehozása előtt ismernie kell ezeket a fogalmakat. 
+Ez a cikk ismerteti a kereskedelmi piactéren új Azure-alkalmazási ajánlat létrehozásának lépéseit és szempontjait. Az Azure-alkalmazások új ajánlatának létrehozása előtt ismernie kell ezeket a fogalmakat.
 
 Mielőtt új Azure-alkalmazást szeretne közzétenni, [hozzon létre egy kereskedelmi Piactéri fiókot a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/create-account) , és ellenőrizze, hogy a fiókja regisztrálva van-e a kereskedelmi piactér programban.
 
@@ -90,7 +90,7 @@ Kétféle Azure-alkalmazási csomag létezik: megoldási sablonok és felügyelt
 
 ## <a name="technical-requirements"></a>Technikai követelmények
 
-Az összes Azure-alkalmazás legalább két fájlt tartalmaz az `.zip` Archívum gyökérkönyvtárában:
+Az összes Azure-alkalmazás legalább két fájlt tartalmaz az Archívum gyökérkönyvtárában `.zip` :
 
 * Egy [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl.  Ez a sablon határozza meg az ügyfél Azure-előfizetésében telepítendő erőforrásokat.  A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
 
@@ -107,16 +107,16 @@ Az egyes alkalmazáscsomag közzétételi követelményeinek megismeréséhez te
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
 
-1. A bal oldali menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
+1. A bal oldali menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
 
-1. Az Áttekintés lapon válassza az **+ új ajánlat** > **Azure-alkalmazás**lehetőséget.
+1. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **Azure-alkalmazás**lehetőséget.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-azure-app.png)
 
 1. Az **új ajánlat** lapon adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
      * Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
-     * Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+     * Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
      * Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 1. Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -174,26 +174,19 @@ Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista cím�
 
 #### <a name="search-results-summary"></a>Keresési eredmények összegzése
 
-Adja meg az ajánlat rövid leírását (legfeljebb 100 karakter), amely a keresési eredményekben is használható.
+Adja meg az ajánlat rövid leírását, amely legfeljebb 100 karakter hosszú lehet. Ez a leírás a keresési eredményekben is használható.
 
 #### <a name="long-summary"></a>Hosszú összefoglalás
 
-Adja meg az ajánlat hosszabb leírását (legfeljebb 256 karakter). Ez a leírás a keresési eredményekben is használható.
+Adja meg az ajánlat hosszabb leírását, amely legfeljebb 256 karakter hosszú lehet. Ez a leírás a keresési eredményekben is használható.
 
-#### <a name="description"></a>Leírás
+#### <a name="description"></a>Description
 
-Adja meg az ajánlat hosszabb leírását (legfeljebb 3 000 karakter). Ez a leírás az ügyfelek számára jelenik meg a lista áttekintésében. Adja meg az ajánlat értékeit, a főbb előnyöket, a kategóriát és/vagy az iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket és a szükséges közzétételeket.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-Néhány tipp a Leírás írásához:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-* A Leírás első néhány mondatában egyértelműen leírja az ajánlat értékének kiosztását. Adja meg a következő elemeket:
-  * Az ajánlat leírása.
-  * Az ajánlat előnyeit élvező felhasználó típusa.
-  * Az ügyfél által igényelt vagy az ajánlat által felmerülő problémák.
-* Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.
-* Az ajánlat értékesítéséhez Ne támaszkodjon funkciókra és funkciókra. Ehelyett az ajánlat által biztosított értékre kell összpontosítania.
-* Iparági vagy juttatáson alapuló szavak használata.
-* A leírást úgy is megteheti, hogy HTML-címkéket használ, hogy az jobban megtörténjen.
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="search-keywords"></a>Kulcsszavak keresése
 
@@ -216,7 +209,7 @@ Adja meg a **támogatási kapcsolattartó**, a **mérnöki kapcsolattartó**és 
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek PNG formátumúnak kell lennie. A homályos képek miatt a rendszer elutasítja a kérelmet.
 
 >[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi https://upload.xboxlive.com hálózat nem blokkolja a partner Center által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner Center által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
@@ -422,11 +415,11 @@ Ezen a lapon töltheti fel a központi telepítési csomagot, amely lehetővé t
 
 Ezen a lapon szerkesztheti a technikai konfiguráció vázlatos verzióját.
 
-**Verzió** – a technikai konfiguráció aktuális verziójának kiosztása.  Minden alkalommal növelje ezt a verziót, amikor módosításokat tesz közzé ezen az oldalon. A verziónak formátumúnak `{integer}.{integer}.{integer}`kell lennie.
+**Verzió** – a technikai konfiguráció aktuális verziójának kiosztása.  Minden alkalommal növelje ezt a verziót, amikor módosításokat tesz közzé ezen az oldalon. A verziónak formátumúnak kell lennie `{integer}.{integer}.{integer}` .
 
-**Csomagfájl** (. zip) – Ez a csomag tartalmazza az ehhez a csomaghoz szükséges összes sablonfájlt, valamint a további, `.zip` fájlként csomagolt erőforrásokat.
+**Csomagfájl** (. zip) – Ez a csomag tartalmazza az ehhez a csomaghoz szükséges összes sablonfájlt, valamint a további, fájlként csomagolt erőforrásokat `.zip` .
 
-Az összes Azure alkalmazáscsomag-csomagnak tartalmaznia kell ezt a két fájlt az `.zip` Archívum gyökérkönyvtárában:
+Az összes Azure alkalmazáscsomag-csomagnak tartalmaznia kell ezt a két fájlt az Archívum gyökérkönyvtárában `.zip` :
 
 * Egy [mainTemplate. JSON](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)nevű Resource Manager-sablonfájl. Ez a sablon automatizálja az erőforrások üzembe helyezését az ügyfeleknek az Azure-előfizetésben.  A Resource Manager-sablonokra vonatkozó példákért tekintse meg az [Azure gyorsindítási sablonok](https://azure.microsoft.com/documentation/templates/) katalógusát vagy a megfelelő [githubot: Azure Resource Manager Gyorsindítás sablonok](https://github.com/azure/azure-quickstart-templates) tárháza.
 * A [createUiDefinition. JSON](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview)nevű Azure-alkalmazás létrehozási élményének felhasználói felületi definíciója.
@@ -434,12 +427,12 @@ Az összes Azure alkalmazáscsomag-csomagnak tartalmaznia kell ezt a két fájlt
 A maximálisan támogatott fájlméretek a következők:
 
 * Legfeljebb 1 GB a tömörített `.zip` archiválási méret összesen
-* Legfeljebb 1 GB az `.zip` archívumban található összes egyes tömörítetlen fájlhoz  
+* Legfeljebb 1 GB az archívumban található összes egyes tömörítetlen fájlhoz `.zip`  
 
 Az Azure-alkalmazások minden új ajánlatának tartalmaznia kell egy [Azure-partner ügyfél-használati jóváírási](https://docs.microsoft.com/azure/marketplace/azure-partner-customer-usage-attribution) GUID azonosítót is.
 
 >[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 A felügyelt alkalmazások csomagjai további információkat igényelnek ezen a lapon.
 
@@ -458,7 +451,7 @@ Ezzel a beállítással engedélyezheti az igény szerinti (JIT) hozzáférést 
 
 Válassza ki, hogy a csomag telepítésekor a **teljes** vagy **növekményes telepítési módot** kívánja-e konfigurálni: 
 
-* **Teljes módban**az ügyfél által az alkalmazás újratelepítése a felügyelt erőforráscsoport erőforrásainak eltávolítását eredményezi, ha az erőforrások nincsenek meghatározva a alkalmazásban `mainTemplate.json`. 
+* **Teljes módban**az ügyfél által az alkalmazás újratelepítése a felügyelt erőforráscsoport erőforrásainak eltávolítását eredményezi, ha az erőforrások nincsenek meghatározva a alkalmazásban `mainTemplate.json` . 
 * A **növekményes módban**az alkalmazás újratelepítése változatlanul hagyja a meglévő erőforrásokat.
 
 További információ az üzembe helyezési módokról: [Azure Resource Manager telepítési módok](https://docs.microsoft.com/azure/azure-resource-manager/deployment-modes).
@@ -469,9 +462,9 @@ Adjon meg egy HTTPS-webhook-végpontot, hogy értesítést kapjon a csomag felü
 
 #### <a name="customize-allowed-customer-actions"></a>Engedélyezett felhasználói műveletek testreszabása
 
-Ezzel a beállítással adhatja meg, hogy az ügyfelek milyen műveleteket hajthatnak végre a felügyelt erőforrásokon`*/read`a "" alapértelmezés szerint elérhető műveletek mellett. 
+Ezzel a beállítással adhatja meg, hogy az ügyfelek milyen műveleteket hajthatnak végre a felügyelt erőforrásokon a " `*/read` " alapértelmezés szerint elérhető műveletek mellett. 
 
-Sorolja fel azokat a további műveleteket, amelyeknek lehetővé szeretné tenni az ügyfél számára, hogy itt hajtsa végre ezt a műveletet pontosvesszővel elválasztva.  További információ: [Az Azure-erőforrások megtagadási hozzárendeléseinek ismertetése](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását `Microsoft.Compute/virtualMachines/restart/action` , adja hozzá az engedélyezett műveleteket.
+Sorolja fel azokat a további műveleteket, amelyeknek lehetővé szeretné tenni az ügyfél számára, hogy itt hajtsa végre ezt a műveletet pontosvesszővel elválasztva.  További információ: [Az Azure-erőforrások megtagadási hozzárendeléseinek ismertetése](https://docs.microsoft.com/azure/role-based-access-control/deny-assignments).  Az elérhető műveletekért lásd: [Azure Resource Manager erőforrás-szolgáltatói műveletek](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations). Ha például engedélyezni szeretné a felhasználóknak a virtuális gépek újraindítását, adja hozzá `Microsoft.Compute/virtualMachines/restart/action` az engedélyezett műveleteket.
 
 #### <a name="global-azure--azure-government-cloud"></a>Globális Azure/Azure Government felhő
 
@@ -519,7 +512,7 @@ A tesztelési meghajtó engedélyezéséhez jelölje be a **Test Drive engedély
 Annak engedélyezéséhez, hogy a tesztvezetés az Ön nevében legyen üzembe helyezhető, hozzon létre és adjon meg egy különálló, egyedi Azure-előfizetést (Power BI tesztelési meghajtókhoz nem szükséges).
 
 * **Azure-előfizetés azonosítója** (Azure Resource Manager és Logic apps esetén szükséges) – adja meg az előfizetés azonosítóját, hogy hozzáférést biztosítson az Azure-fiók szolgáltatásaihoz az erőforrás-használat jelentéskészítéséhez és számlázásához. Javasoljuk, hogy [hozzon létre egy külön Azure-előfizetést](https://docs.microsoft.com/azure/billing/billing-create-subscription) , amelyet tesztelési meghajtókhoz kíván használni, ha még nem rendelkezik ilyennel. Az Azure-előfizetésének AZONOSÍTÓját a [Azure Portalba](https://portal.azure.com/) való bejelentkezéssel és a bal oldali menü **előfizetések** lapján érheti el. A lap kiválasztása esetén megjelenik az előfizetési azonosító (például: "a83645ac-1234-5ab6-6789-1h234g764ghty").
-* **Azure ad-bérlő azonosítója** (kötelező) – adja meg a Azure Active Directory (ad) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok**elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a [https://www.whatismytenantid.com](https://www.whatismytenantid.com)következő helyen:.
+* **Azure ad-bérlő azonosítója** (kötelező) – adja meg a Azure Active Directory (ad) [bérlői azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), válassza a Active Directory fület a bal oldali menüben, válassza a **Tulajdonságok**elemet, majd keresse **meg a listában** szereplő 50c464d3-4930-494c-963c-1e951d15360e (például:). A szervezet bérlői AZONOSÍTÓját a tartománynév URL-címével is megkeresheti a következő helyen: [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 * **Azure ad-bérlő neve** (dinamikus 365 esetén szükséges) – adja meg a Azure Active Directory (ad) nevét. A név megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), a jobb felső sarokban a bérlő neve a fiók neve alatt jelenik meg.
 * **Azure ad** -alkalmazás azonosítója (kötelező) – adja meg a Azure Active Directory (ad) [alkalmazás-azonosítóját](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in). Az azonosító megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/), majd a bal oldali navigációs menüben válassza a Active Directory fület, válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a listában szereplő **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 * **Azure Active Directory alkalmazás-ügyfél titka** (kötelező) – adja meg az Azure ad-alkalmazás [ügyfelének titkos kulcsát](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#certificates-and-secrets). Az érték megkereséséhez jelentkezzen be a [Azure Portalba](https://portal.azure.com/). Válassza ki a **Azure Active Directory** fület a bal oldali navigációs menüben, válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza ki a test Drive alkalmazást. Ezután válassza a **tanúsítványok és titkos kulcsok**lehetőséget, válassza az **új ügyfél titka**elemet, adja meg a leírást, válassza a **soha nem** **jár le**, majd a **Hozzáadás**lehetőséget. A lap elhagyása előtt készítsen másolatot az értékről.)

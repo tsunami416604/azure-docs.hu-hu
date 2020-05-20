@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 4d9dc0315a5c87ed67390e8edb23d44ee55f242b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 37569eba0d351fdedcd68042af2e33b0e3947faa
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82732767"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701499"
 ---
-# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az ügyfél irányítópultja a kereskedelmi piactér elemzésében
+# <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az Ügyfél irányítópult a kereskedelmi piactér-elemzésekben
 
 Ez a cikk a partner Center **ügyfél-irányítópultján** tartalmaz információkat. Ez az irányítópult az ügyfelekkel kapcsolatos információkat jeleníti meg, beleértve a növekedési trendeket, amelyek grafikus és letölthető formátumban jelennek meg.
 
@@ -97,7 +97,8 @@ A **Customer Details (ügyfél részletei** ) tábla a legnépszerűbb 1000-ügy
 - A rács minden oszlopa rendezhető.
 - Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a rekordok száma meghaladja a 1000-et, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
-- A táblára szűrőket is alkalmazhat, hogy csak az Ön által érintett információk jelenjenek meg. Az adatok szűrhetők a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett dátum, az elveszett dátum, az ügyfél e-mail-címe, az ügyfél országa/állam/város/irányítószám, valamint az ügyfél nyelve
+- A táblára szűrőket is alkalmazhat, hogy csak az Ön által érintett információk jelenjenek meg. Az adatok szűrhetők a vállalat neve, az ügyfél azonosítója, a piactér-előfizetés azonosítója, az Azure-licenc típusa, a beszerzett dátum, az elveszett dátum, az ügyfél e-mail-címe, az ügyfél országa/állam/város/zip, az ügyfél nyelve stb.
+- Ha egy védett ügyfél vásárolja meg az ajánlatot, a rendszer maszkba veszi az **ügyfelek részletes adatait** (* * * * * * * * * * * * *).
 
 ### <a name="customer-page-filters"></a>Ügyfél-oldal szűrők
 

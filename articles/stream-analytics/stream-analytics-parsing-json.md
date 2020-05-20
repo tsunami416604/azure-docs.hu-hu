@@ -6,12 +6,12 @@ author: mamccrea
 ms.author: mamccrea
 ms.topic: conceptual
 ms.date: 01/29/2020
-ms.openlocfilehash: 73905483850a47a9d036bef1b9e1ee60d3484555
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d68c36e7d6603cb8cdc906ad2a0280094e6e0e5
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484587"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698252"
 ---
 # <a name="parse-json-and-avro-data-in-azure-stream-analytics"></a>JSON-és Avro-adatelemzés Azure Stream Analytics
 
@@ -19,7 +19,8 @@ Azure Stream Analytics támogatja a CSV-, JSON-és Avro-adatformátumok feldolgo
 
 >[!NOTE]
 >Az Event hub Capture által létrehozott AVRO-fájlok egy adott formátumot használnak, amelyhez az *Egyéni deszerializáló* funkció használata szükséges. További információ: a [bevitel bármilyen formátumban való olvasása a .NET-alapú egyéni deszerializálók használatával](https://docs.microsoft.com/azure/stream-analytics/custom-deserializer-examples).
-
+>
+>Stream Analytics AVRO deszerializálása nem támogatja a leképezés típusát. Stream Analytics nem tudja beolvasni a EventHub-rögzítési blobokat, mert a EventHub rögzítés leképezést használ.
 
 
 ## <a name="record-data-types"></a>Adattípusok rögzítése
@@ -205,7 +206,7 @@ Ezután létrehozhat egy lépést a Stream Analytics lekérdezésben az alább l
 
 A tömb típusú adattípusok értékek rendezett gyűjteményei. A tömb értékeivel kapcsolatos néhány jellemző művelet alább látható. Ezek a példák a functions [GetArrayElement](https://docs.microsoft.com/stream-analytics-query/getarrayelement-azure-stream-analytics), a [GetArrayElements](https://docs.microsoft.com/stream-analytics-query/getarrayelements-azure-stream-analytics), a [GetArrayLength](https://docs.microsoft.com/stream-analytics-query/getarraylength-azure-stream-analytics)és az [Apply](https://docs.microsoft.com/stream-analytics-query/apply-azure-stream-analytics) operátort használják.
 
-Íme egy példa egyetlen eseményre. `SensorMetadata` Mindkettő `CustomSensor03` **tömb**típusú:
+Íme egy példa egyetlen eseményre. Mindkettő `CustomSensor03` `SensorMetadata` **tömb**típusú:
 
 ```json
 {

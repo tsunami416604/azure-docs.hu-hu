@@ -1,0 +1,55 @@
+### YamlMime:Landing
+title: Az Azure SQL Edge (előzetes verzió) dokumentációja
+summary: Az Azure SQL Edge egy IoT- és peremhálózati környezetekre optimalizált relációsadatbázis-motor.
+metadata:
+  title: Az Azure SQL Edge (előzetes verzió) dokumentációja
+  meta.description: Learn how to use Azure SQL Edge (Preview).
+  services: sql-database-edge
+  ms.service: sql-database-edge
+  ms.topic: landing-page
+  author: stevestein
+  ms.author: sstein
+  ms.date: 05/19/2020
+  ms.openlocfilehash: a2e26d4bfbec3a139987e2a7a0fe21c429c740a5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593137"
+landingContent:
+- title: SQL Edge
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az SQL Edge?
+      url: overview.md
+  - linkListType: deploy
+    links:
+    - text: Az SQL Edge üzembe helyezése
+      url: deploy-portal.md
+- title: Adatok szinkronizálása
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: SQL Edge-adatok szinkronizálása az Azure Data Factoryvel
+      url: tutorial-sync-data-factory.md
+    - text: SQL Edge-adatok szinkronizálása az SQL Database-szel
+      url: tutorial-sync-data-sync.md
+- title: Adatstreamelés
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Adatstreamelés
+      url: stream-data.md
+    - text: Katalógusnézetek streamelése
+      url: streaming-catalog-views.md
+- title: Gépi tanulás
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Gépi tanulás és mesterséges intelligencia
+      url: onnx-overview.md
+  - linkListType: quickstart
+    links:
+    - text: Az ONNX üzembe helyezése az SQL Edge-ben
+      url: deploy-onnx.md

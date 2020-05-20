@@ -7,17 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.openlocfilehash: b3c6f88df151cc497f0de670d5d78a05c7477459
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 87c915330fdc0d59d0d32c0747c7dc7647c342ba
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791884"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700979"
 ---
 # <a name="create-an-azure-container-offer"></a>Azure Container-ajánlat létrehozása
-
-> [!IMPORTANT]
-> Az Azure-beli tárolók felügyeletét az Cloud Partner Portalról a partneri központba helyezi át. Az ajánlatok migrálása előtt kövesse a [tároló technikai eszközeinek előkészítése](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/containers/cpp-create-technical-assets) a Cloud Partner Portal az ajánlatok kezeléséhez című témakör útmutatását.
 
 Ez a cikk az Azure Marketplace-en elérhető tárolók létrehozására szolgáló technikai forrásokat és javaslatokat tartalmaz.
 

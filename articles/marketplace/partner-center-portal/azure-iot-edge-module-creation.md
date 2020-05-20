@@ -6,13 +6,13 @@ ms.author: mingshen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.openlocfilehash: d69090eb07159c2c188c54499a167f127269df24
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/19/2020
+ms.openlocfilehash: 21fc51aef664b2ea9360c4d8ca8e722bb7bbb349
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857667"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701152"
 ---
 # <a name="create-configure-and-publish-an-iot-edge-module-offer-in-azure-marketplace"></a>IoT Edge modul ajánlatának létrehozása, konfigurálása és közzététele az Azure Marketplace-en
 
@@ -21,8 +21,8 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök inter
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat** > **IoT Edge modul**lehetőséget.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **IoT Edge modul**lehetőséget.
 
     ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-iot-edge.png)
 
@@ -34,7 +34,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és tehet közzé egy eszközök inter
 Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
-- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1**értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -91,7 +91,7 @@ Ezen a lapon megadhatja az ajánlatnak a piactéren való csoportosításához h
 
 #### <a name="category"></a>Kategória
 
-Válasszon legalább egyet, és legfeljebb öt kategóriát. Ezek a kategóriák arra szolgálnak, hogy az ajánlatot a megfelelő Piactéri keresési területeken helyezze el, és az ajánlat részletei oldalon jelennek meg. Az ajánlat leírásában ismertesse, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. A Tallózás lapokon az összes IoT Edge modul a **eszközök internetes hálózata > IoT Edge modul** kategóriában látható.
+Válasszon legalább egyet, és legfeljebb öt kategóriát. Ezek a kategóriák arra szolgálnak, hogy az ajánlatot a megfelelő Piactéri keresési területeken helyezze el, és az ajánlat részletei oldalon jelennek meg. Az ajánlat leírásában ismertesse, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. A Tallózás lapokon az összes IoT Edge modul a **eszközök internetes hálózata > IoT Edge modul**   kategóriában látható.
 
 #### <a name="legal"></a>Jogi tudnivalók
 
@@ -144,46 +144,17 @@ Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, é
 
 Adja meg az ajánlat részletesebb leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Leírás
+### <a name="description"></a>Description
 
-Adja meg az ajánlat hosszabb leírását, amely legfeljebb 3 000 karakter hosszú lehet. Ez jelenik meg az ügyfelek számára a Piactéri listák áttekintésében.
+[!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
-A leírásban vegyen fel egyet vagy többet a következők közül:
+IoT Edge modul ajánlatának tartalmaznia kell a minimális hardverkövetelmények bekezdést a Leírás alján, például:
 
-- Az ajánlat által biztosított érték és kulcs előnye
-- Kategória-vagy iparági társulások, vagy mindkettő
-- Alkalmazáson belüli vásárlási lehetőségek
-- Minden szükséges közzététel
+- Minimális hardverkövetelmények: Linux x64 és arm32 OS, 1 GB RAM, 500 MB tárterület
 
-IoT Edge modul ajánlatának tartalmaznia kell a minimális hardverkövetelmények bekezdést a Leírás alján. Például:
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-*Minimális hardverkövetelmények: Linux x64 és arm32 OS, 1 GB RAM, 500 MB tárterület*
-
-Íme néhány tipp a Leírás írásához:
-
-- A Leírás első néhány mondatában egyértelműen ismertesse az ajánlat értékét. Adja meg a következő elemeket:
-    - Az ajánlat leírása.
-    - Az ajánlat által előnyben részesülő felhasználó típusa.
-    - Az ügyfélnek szüksége van vagy kiadja az ajánlat címét.
-- Ne feledje, hogy az első néhány mondat a keresési eredmények között jelenhet meg.
-- Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett az ajánlat által biztosított értékre kell összpontosítania.
-- Az iparágra jellemző szókincset vagy juttatáson alapuló szövegezést érdemes használni.
-
-Ha szeretné, hogy az ajánlat **leírása** jobban megtörténjen, a Rich Text Editor használatával formázhatja a leírást. A Rich Text Editor lehetővé teszi számok, felsorolásjelek, félkövér, dőlt és behúzások hozzáadását, hogy a Leírás olvashatóbb legyen.
-
-:::image type="content" source="media/text-editor2.png" alt-text="Bemutatja a Rich Text Editort." border="false":::
-
-- A tartalom formátumának módosításához jelölje ki a formázni kívánt szöveget, és válasszon egy stílust a képernyőképen látható módon:
-
-     :::image type="content" source="media/text-editor3.png" alt-text="A Rich Text szerkesztőben ábrázolja a szövegstílus vezérlőt." border="false":::
-
-- Ha felsorolásjeles vagy számozott listát szeretne hozzáadni a szöveghez, használja a képernyőképen látható beállításokat:
-  
-    :::image type="content" source="media/text-editor4.png" alt-text="A részletes szövegszerkesztőben ábrázolja a listajeles és a számok listáját." border="false":::
-
-- A szöveg behúzásának hozzáadásához vagy eltávolításához használja a képernyőképen látható beállításokat:
-
-    :::image type="content" source="media/text-editor5.png" alt-text="Bemutatja a behúzási vezérlőket a Rich Text Editorban." border="false":::
+[!INCLUDE [Long description-3](./includes/long-description-3.md)]
 
 #### <a name="privacy-policy-url"></a>Adatvédelmi szabályzat URL-címe
 
@@ -219,7 +190,7 @@ Az ajánlatok listájának létrehozásával kapcsolatos további tudnivalókér
 Adja meg az ajánlathoz használni kívánt emblémákat és képeket. Minden képnek. png formátumúnak kell lennie. A rendszer elutasítja a homályos képeket.
 
 >[!Note]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="store-logos"></a>Emblémák tárolása
 
@@ -262,7 +233,7 @@ Ez a képernyőkép a Azure Portal keresési eredményeit jeleníti meg.
 
 A következő szakaszra való továbblépés előtt válassza a **Piszkozat mentése** lehetőséget, és tekintse meg az előnézetet.
 
-## <a name="preview"></a>Előzetes verzió
+## <a name="preview"></a>Előnézet
 
 Az **Előnézet lapon**kiválaszthatja, hogy az ajánlat érvényességét csak korlátozott **előzetes** verzióval kívánja-e közzétenni, mielőtt közzéteszi azt a piactéren elérhető szélesebb közönség számára.
 
@@ -397,11 +368,11 @@ Az **Azure Container Registry neve**: adja meg annak a [Azure Container Registry
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-admin-user.png" alt-text="A tároló-beállításjegyzék frissítése párbeszédpanelt mutatja be.":::
 
-**A Azure Container Registryhoz tartozó jelszó**: adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry** > **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kérheti le.
+**A Azure Container Registryhoz tartozó jelszó**: adja meg a Azure Container Registryhoz társított rendszergazdai Felhasználónév és a tároló képét. A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A jelszót a Azure Portal **Container Registry**  >  **hozzáférési kulcsok** vagy az Azure CLI használatával a [show paranccsal](https://docs.microsoft.com/cli/azure/acr/credential?view=azure-cli-latest#az-acr-credential-show) kérheti le.
 
 :::image type="content" source="media/iot-edge-module-creation/iot-edge-module-username-password.png" alt-text="A hozzáférési kulcs képernyőjét mutatja Azure Portalban.":::
 
-**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/) > **adattárak lapon**találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Vegye figyelembe, hogy a név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
+**A tárház neve a Azure Container Registryon belül**. Adja meg a rendszerképet tartalmazó Azure Container Registry adattár nevét. Adja meg az adattár nevét, amikor leküldi a rendszerképet a beállításjegyzékbe. A tárház nevét a [Container Registry](https://azure.microsoft.com/services/container-registry/)  >  **adattárak lapon**találja. További információ: [a Container Registry-Tárházak megtekintése a Azure Portalban](https://docs.microsoft.com/azure/container-registry/container-registry-repositories). Vegye figyelembe, hogy a név beállítása után nem módosítható. Egyedi nevet adjon a fiókjában található összes ajánlathoz.
 
 ### <a name="image-tags-for-new-versions-of-your-offer"></a>Képcímkék az ajánlat új verzióihoz
 

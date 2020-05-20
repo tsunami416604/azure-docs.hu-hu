@@ -36,6 +36,8 @@
           href: quickstart-load-studio-sql-pool.md
     - name: Az igény szerinti SQL használata
       href: quickstart-sql-on-demand.md
+    - name: Csatlakozás a Cosmos DB-hez készült Synapse Linkhez
+      href: quickstart-connect-synapse-link-cosmos-db.md
 - name: Oktatóanyagok
   items:
     - name: Apache Spark-alkalmazások futtatása Spark-készletekhez
@@ -324,6 +326,10 @@
               href: ./sql-data-warehouse/memory-concurrency-limits.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Erőforrásosztályok
               href: ./sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Synapse Link
+      items:
+        - name: A Synapse Link támogatott funkciói
+          href: ./synapse-link/concept-synapse-link-cosmos-db-support.md
     - name: 'Eszközök integrációja (AI, ETL, BI)'
       items:
         - name: Az Azure Synapse Analytics Studio hibaelhárítása
@@ -406,6 +412,12 @@
               href: data-integration/data-integration-data-lake.md
     - name: Az adatok átalakítása és elemzése
       items:
+        - name: Synapse Link
+          items:
+            - name: Csatlakozás a Cosmos DB-hez készült Azure Synapse Linkhez
+              href: ./synapse-link/how-to-connect-synapse-link-cosmos-db.md
+            - name: Azure Cosmos DB elemzési tár lekérdezése az Azure Synapse Analyticshez készült Apache Sparkkal
+              href: ./synapse-link/how-to-query-analytical-store-spark.md
         - name: Synapse SQL
           items:
             - name: Adatok lekérdezése a tárterületen
