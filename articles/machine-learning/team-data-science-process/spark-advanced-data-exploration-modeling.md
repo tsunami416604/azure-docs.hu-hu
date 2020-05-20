@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 15d9d186ef36ee9181a6ce0386aa9cc5de7838e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c166684484b839ec661ae2e68d5a5e5253d2528f
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76718651"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634509"
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Speciális adatáttekintés és modellezés a Spark segítségével
 
@@ -54,11 +54,11 @@ Ebben az útmutatóban a telepítési lépéseket és kódokat a HDInsight Spark
 
 ### <a name="spark-16-notebooks"></a>Spark 1,6 notebookok
 
-[pySpark-Machine-learning-adat-tudomány-Spark-Advanced-adat-feltárás-modellezés. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/pySpark-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): a notebook-#1 témaköröket tartalmaz, valamint a hiperparaméter finomhangolását és a több érvényesítést használó modellek fejlesztését.
+[pySpark-Machine-learning-adat-tudomány-Spark-Advanced-adat-feltárás-modellezés. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): a notebook-#1 témaköröket tartalmaz, valamint a hiperparaméter finomhangolását és a több érvényesítést használó modellek fejlesztését.
 
 ### <a name="spark-20-notebooks"></a>Spark 2,0 notebookok
 
-[Spark 2.0-pySpark3-Machine-learning-adat-tudomány-Spark-Advanced-adatok-Exploration-Modeling. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt arról, hogyan hajtható végre az adatok feltárása, modellezése és pontozása a Spark 2,0-fürtökben.
+[Spark 2.0-pySpark3-Machine-learning-adat-tudomány-Spark-Advanced-adatok-Exploration-Modeling. ipynb](https://github.com/Azure-Samples/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Ez a fájl információt nyújt arról, hogyan hajtható végre az adatok feltárása, modellezése és pontozása a Spark 2,0-fürtökben.
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -116,7 +116,7 @@ A Jupyter-jegyzetfüzetekhez biztosított PySpark-kernelek előre beállított k
 A PySpark kernel tartalmaz néhány előre definiált "varázslatot", amelyek a (z)%% használatával hívható speciális parancsok. A kód mintáinak két ilyen parancsa van használatban.
 
 * **%% helyi** Megadja, hogy a következő sorokban lévő kódot helyileg kell végrehajtani. A kódnak érvényes Python-kódnak kell lennie.
-* **%% SQL-o \<változó neve>** Struktúra-lekérdezést hajt végre a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák DataFrame.
+* **%% SQL-o \< változó neve>** végrehajt egy kaptár-lekérdezést a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák DataFrame.
 
 A Jupyter-jegyzetfüzetek és az azok által megadott "Magics" kernelekkel kapcsolatos további információkért tekintse meg a [Jupyter notebookok számára elérhető kerneleket HDInsight Spark Linux-fürtökkel a HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
@@ -197,8 +197,8 @@ Miután az adatgyűjtés bekerült a Sparkba, az adatelemzési folyamat követke
 ### <a name="plot-a-histogram-of-passenger-count-frequencies-in-the-sample-of-taxi-trips"></a>Az utasok számának gyakoriságát ábrázoló hisztogram kirajzolása a taxis kirándulások mintájában
 Ez a kód és az azt követő kódrészletek az SQL Magic használatával kérdezik le a mintát és a helyi mágiát az adatábrázoláshoz.
 
-* **SQL Magic (`%%sql`)** A HDInsight PySpark kernel egyszerűen beágyazott HiveQL-lekérdezéseket támogat a sqlContext. Az (-o VARIABLE_NAME) argumentum megőrzi az SQL-lekérdezés kimenetét a Jupyter-kiszolgálón található pandák DataFrame. Ez azt jelenti, hogy a helyi módban érhető el.
-* A ** `%%local` Magic** a kód helyi futtatására szolgál a Jupyter-kiszolgálón, amely a HDInsight-fürt átjárócsomóponthoz. A mágia általában a `%%local` `%%sql -o` Magic használatával futtatott lekérdezés futtatására szolgál. Az-o paraméter megőrzi az SQL-lekérdezés helyi kimenetét. Ezután a `%%local` Magic elindítja a kódrészletek következő készletét, hogy helyileg fusson a helyileg MEGőrzött SQL-lekérdezések kimenetén. A rendszer automatikusan megjeleníti a kimenetet a kód futtatása után.
+* **SQL Magic ( `%%sql` )** a HDInsight PySpark kernel egyszerűen beágyazott HiveQL-lekérdezéseket támogat a sqlContext. Az (-o VARIABLE_NAME) argumentum megőrzi az SQL-lekérdezés kimenetét a Jupyter-kiszolgálón található pandák DataFrame. Ez azt jelenti, hogy a helyi módban érhető el.
+* A ** `%%local` Magic** a kód helyi futtatására szolgál a Jupyter-kiszolgálón, amely a HDInsight-fürt átjárócsomóponthoz. `%%local`A mágia általában a Magic használatával `%%sql -o` futtatott lekérdezés futtatására szolgál. Az-o paraméter megőrzi az SQL-lekérdezés helyi kimenetét. Ezután a `%%local` Magic elindítja a kódrészletek következő készletét, hogy helyileg fusson a helyileg megőrzött SQL-lekérdezések kimenetén. A rendszer automatikusan megjeleníti a kimenetet a kód futtatása után.
 
 A lekérdezés az utasok száma alapján kérdezi le az utakat. 
 
@@ -209,7 +209,7 @@ A lekérdezés az utasok száma alapján kérdezi le az utakat.
     SELECT passenger_count, COUNT(*) as trip_counts FROM taxi_train WHERE passenger_count > 0 and passenger_count < 7 GROUP BY passenger_count
 
 
-Ez a kód létrehoz egy helyi adatkeretet a lekérdezés kimenetében, és kirajzolja az adatokat. A `%%local` Magic létrehoz egy helyi adatkeretet `sqlResults`, amely a matplotlib való ábrázoláshoz használható. 
+Ez a kód létrehoz egy helyi adatkeretet a lekérdezés kimenetében, és kirajzolja az adatokat. A `%%local` Magic létrehoz egy helyi adatkeretet, `sqlResults` amely a matplotlib való ábrázoláshoz használható. 
 
 <!-- -->
 
@@ -1397,7 +1397,7 @@ R-sqr = 0.740751197012
 A fenti cella végrehajtásához szükséges idő: 69,17 másodperc
 
 ### <a name="clean-up-objects-from-memory-and-print-model-locations"></a>Objektumok tisztítása a memóriából és a nyomtatási modell helyeiről
-A `unpersist()` használatával törölheti a memóriában gyorsítótárazott objektumokat.
+`unpersist()`A használatával törölheti a memóriában gyorsítótárazott objektumokat.
 
     # UNPERSIST OBJECTS CACHED IN MEMORY
 

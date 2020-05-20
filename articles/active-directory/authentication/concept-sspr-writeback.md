@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89431c2bf1838d3264b03c8a5f2ce62cd6df3631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42768c61cc46ba97e9bd16a06c85f20219672fdd
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127848"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639803"
 ---
 # <a name="how-does-self-service-password-reset-writeback-work-in-azure-active-directory"></a>Hogyan működik az önkiszolgáló jelszó-visszaállítási visszaírási az Azure Active Directory?
 
@@ -56,9 +56,9 @@ Ha egy összevont vagy jelszó-kivonat szinkronizálta a felhasználót a felhő
    * A felhasználói objektumnak léteznie kell a Active Directory-összekötő területén.
    * A felhasználói objektumot a megfelelő Metaverse (MV) objektumhoz kell kapcsolni.
    * A felhasználói objektumot össze kell kapcsolni a megfelelő Azure Active Directory összekötő objektummal.
-   * Az Active Directory Connector objektumból az MV-ra mutató hivatkozáshoz a hivatkozáson `Microsoft.InfromADUserAccountEnabled.xxx` a szinkronizálási szabálynak kell tartoznia.
+   * Az Active Directory Connector objektumból az MV-ra mutató hivatkozáshoz a hivatkozáson a szinkronizálási szabálynak kell tartoznia `Microsoft.InfromADUserAccountEnabled.xxx` .
 
-   Ha a hívás a felhőből érkezik, a Szinkronizáló motor a **cloudAnchor** attribútum használatával keresi meg az Azure Active Directory-összekötő terület objektumát. Ezután a hivatkozás visszakerül az MV objektumra, majd a hivatkozás visszakerül a Active Directory objektumra. Mivel több Active Directory objektum (több erdő) is lehet ugyanahhoz a felhasználóhoz, a szinkronizálási motor a `Microsoft.InfromADUserAccountEnabled.xxx` hivatkozáson alapul, hogy kiválassza a megfelelőt.
+   Ha a hívás a felhőből érkezik, a Szinkronizáló motor a **cloudAnchor** attribútum használatával keresi meg az Azure Active Directory-összekötő terület objektumát. Ezután a hivatkozás visszakerül az MV objektumra, majd a hivatkozás visszakerül a Active Directory objektumra. Mivel több Active Directory objektum (több erdő) is lehet ugyanahhoz a felhasználóhoz, a szinkronizálási motor a hivatkozáson alapul, `Microsoft.InfromADUserAccountEnabled.xxx` hogy kiválassza a megfelelőt.
 
 1. A felhasználói fiók megtalálása után a rendszer megkísérli a jelszó alaphelyzetbe állítását közvetlenül a megfelelő Active Directory erdőben.
 1. Ha a jelszó-megadási művelet sikeres, a felhasználó azt mondja, hogy a jelszava módosult.
@@ -141,6 +141,7 @@ A jelszavakat a következő helyzetekben nem írja vissza a rendszer:
 * **Nem támogatott rendszergazdai műveletek**
    * Bármely rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a PowerShell 1-es verziójáról, a 2-es verzióról vagy a Microsoft Graph API-ról (a [Microsoft Graph API Beta](https://docs.microsoft.com/graph/api/passwordauthenticationmethod-resetpassword?view=graph-rest-beta&tabs=http) támogatott).
    * A rendszergazda által kezdeményezett végfelhasználói jelszó alaphelyzetbe állítása a [Microsoft 365 felügyeleti központból](https://admin.microsoft.com).
+   * Bármely rendszergazda nem használhatja a jelszó-visszaállítási eszközt a jelszó-visszaírási vonatkozó saját jelszó visszaállításához.
 
 > [!WARNING]
 > A (z) "a következő bejelentkezéskor a felhasználónak meg kell változtatnia a jelszót" jelölőnégyzet használata a helyszíni AD DS felügyeleti eszközök, például a Active Directory felhasználók és számítógépek, vagy a Active Directory felügyeleti központ előzetes funkciójaként támogatott Azure AD Connect. További információ: jelszó- [kivonatolási szinkronizálás implementálása Azure ad Connect szinkronizálással](../hybrid/how-to-connect-password-hash-synchronization.md).

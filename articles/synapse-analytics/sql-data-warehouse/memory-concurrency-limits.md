@@ -11,12 +11,12 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 56ab49949b4ea2a92bc591042b2d43a7f7b2dc63
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd2511dcbf2e387a6f324742219b81c927b534af
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80632682"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636395"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-synapse-analytics"></a>Az Azure szinapszis Analytics memóriája és egyidejűségi korlátai
 
@@ -77,7 +77,7 @@ A [munkaterhelési csoportok](sql-data-warehouse-workload-isolation.md)bevezeté
 
 ## <a name="concurrency-maximums-for-resource-classes"></a>Erőforrás-osztályok egyidejűségi maximális száma
 
-Annak biztosítása érdekében, hogy minden lekérdezés elegendő erőforrással legyen végrehajtva, az SQL Analytics az Azure Szinapszisban nyomon követi az erőforrás-használatot, ha az egyes lekérdezésekhez egyidejűségi tárolóhelyeket rendel. A rendszer a lekérdezéseket a fontos és a párhuzamossági tárolóhelyek alapján a várólistára helyezi. A lekérdezések csak akkor várnak a várólistára, ha elegendő egyidejűségi tárolóhely áll rendelkezésre. A [fontosság](sql-data-warehouse-workload-importance.md) és a egyidejűségi tárolóhelyek a CPU rangsorolását határozzák meg. További információ: [a munkaterhelés elemzése](analyze-your-workload.md)
+Annak biztosítása érdekében, hogy az egyes lekérdezések hatékony végrehajtásához elegendő erőforrás legyen, a szinapszis SQL nyomon követi az erőforrás-használatot, ha egyidejűségi tárolóhelyeket rendel az egyes lekérdezésekhez. A rendszer a lekérdezéseket a fontos és a párhuzamossági tárolóhelyek alapján a várólistára helyezi. A lekérdezések csak akkor várnak a várólistára, ha elegendő egyidejűségi tárolóhely áll rendelkezésre. A [fontosság](sql-data-warehouse-workload-importance.md) és a egyidejűségi tárolóhelyek a CPU rangsorolását határozzák meg. További információ: [a munkaterhelés elemzése](analyze-your-workload.md)
 
 **Statikus erőforrás-osztályok**
 

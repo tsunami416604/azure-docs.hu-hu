@@ -9,12 +9,13 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 59199291589a81d0a0d96b7867078b8196be086f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: designer
+ms.openlocfilehash: af676f128796c762b330d986836ea825a36cb246
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77366194"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646293"
 ---
 # <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Billentyűzet használata Azure Machine Learning Designer (előzetes verzió) használatához
 
@@ -52,7 +53,7 @@ A modul tulajdonságainak módosítása:
 
 ## <a name="navigation-shortcuts"></a>Navigációs hivatkozások
 
-| Billentyűleütés | Leírás |
+| Billentyűleütés | Description |
 |-|-|
 | Ctrl + F6 | A vászon és a modul faszerkezete közötti fókusz váltása |
 | CTRL + F1   | Az információs kártya megnyitása a modul fáján lévő csomópontra fókuszálva |
@@ -62,11 +63,11 @@ A modul tulajdonságainak módosítása:
 
 ## <a name="action-shortcuts"></a>Művelet parancsikonjai
 
-Használja az alábbi parancsikonokat a hozzáférési kulccsal. A hozzáférési kulcsokkal kapcsolatos további információkért lásd https://en.wikipedia.org/wiki/Access_key:.
+Használja az alábbi parancsikonokat a hozzáférési kulccsal. A hozzáférési kulcsokkal kapcsolatos további információkért lásd: https://en.wikipedia.org/wiki/Access_key .
 
-| Billentyűleütés | Műveletek |
+| Billentyűleütés | Művelet |
 |-|-|
-| Elérési kulcs + R | Futtassa a következőt: |
+| Elérési kulcs + R | Futtatás |
 | Elérési kulcs + P | Közzététel |
 | Elérési kulcs + C | Klónozás |
 | Elérési kulcs + D | Üzembe helyezés |

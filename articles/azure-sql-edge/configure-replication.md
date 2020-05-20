@@ -87,7 +87,7 @@ Hozzon létre egy kiadványt és egy leküldéses előfizetést. További inform
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Hozzon létre egy leküldéses előfizetést](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) az Azure SQL Edge-kiszolgáló neve/IP-címe alapján előfizetőként (például **myEdgeinstance, 1433**) és egy adatbázisnevet az Azure SQL Edge-példányon célként megadott adatbázisként (például **AdventureWorks**).  
 
-## <a name="see-also"></a>További információ  
+## <a name="see-also"></a>Lásd még  
 
 - [Kiadvány létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
 - [Leküldéses előfizetés létrehozása](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)

@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/15/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: bbefa2a5d40d047d8885e4a0db8239d79a24feae
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5d6cbf873ac1b76c24f5907a47038157b22e5680
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120096"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83634118"
 ---
 # <a name="enable-and-manage-soft-delete-for-blobs"></a>A Blobok Soft delete engedélyezése és kezelése
 
@@ -105,7 +105,7 @@ A következő parancs használatával megkeresheti az aktuális helyreállíthat
    Get-AzStorageServiceProperty -ServiceType Blob -Context $account.Context
 ```
 
-# <a name="cli"></a>[parancssori felület](#tab/azure-CLI)
+# <a name="cli"></a>[CLI](#tab/azure-CLI)
 
 A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának tulajdonságait:
 
@@ -137,7 +137,21 @@ block_blob_service.set_blob_service_properties(
     delete_retention_policy=DeleteRetentionPolicy(enabled=True, days=7))
 ```
 
-# <a name="net"></a>[.NET](#tab/net)
+# <a name="net-v12-sdk"></a>[.NET V12 SDK](#tab/dotnet)
+
+A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának tulajdonságait:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_EnableSoftDelete":::
+
+A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy a **Törlés**visszahívása az aktív és a nem törölt Blobok esetében is megtörténik, és az összes társított helyreállított pillanatkép aktív állapotba kerül. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverDeletedBlobs":::
+
+Egy adott blob-verzióra történő helyreállításhoz először hívja meg a törlést egy blobon, majd másolja a kívánt pillanatképet a blobon. A következő példa egy blokk blobot állít be a legutóbb generált pillanatképre:
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/DataProtection.cs" id="Snippet_RecoverSpecificBlobVersion":::
+
+# <a name="net-v11-sdk"></a>[.NET v11 SDK](#tab/dotnet11)
 
 A Soft delete engedélyezéséhez frissítse a blob-ügyfél szolgáltatásának tulajdonságait:
 
@@ -153,7 +167,7 @@ serviceProperties.DeleteRetentionPolicy.RetentionDays = RetentionDays;
 blobClient.SetServiceProperties(serviceProperties);
 ```
 
-A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy az aktív és a nem törölt Blobok **törlésének**visszavonása művelettel az összes társított helyreállított pillanatkép aktív állapotú lesz. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
+A véletlenül törölt Blobok helyreállításához hívja meg a törlést a blobokon. Ne feledje, hogy a **Törlés**visszahívása az aktív és a nem törölt Blobok esetében is megtörténik, és az összes társított helyreállított pillanatkép aktív állapotba kerül. A következő példa meghívja a törlést a tároló összes lágy törölt és aktív blobján:
 
 ```csharp
 // Recover all blobs in a container
@@ -177,7 +191,7 @@ IEnumerable<IListBlobItem> allBlobVersions = container.ListBlobs(
 CloudBlockBlob copySource = allBlobVersions.First(version => ((CloudBlockBlob)version).IsSnapshot &&
     ((CloudBlockBlob)version).Name == blockBlob.Name) as CloudBlockBlob;
 blockBlob.StartCopy(copySource);
-```
+```  
 
 ---
 

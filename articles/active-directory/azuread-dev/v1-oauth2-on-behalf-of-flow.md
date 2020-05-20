@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
-ms.openlocfilehash: a301029f30a77f4e62ad3529aac488a81c12566e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 192c91f700dd82f453d52f6891f8aaaaeef8c7ef
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80154525"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642070"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Szolgáltatások közötti hívások, amelyek delegált felhasználói identitást használnak a következő folyamat során:
 
@@ -34,7 +34,7 @@ Az OAuth 2,0-alapú (OBO) folyamat lehetővé teszi egy olyan alkalmazás szám�
 
 Az OBO-folyamat akkor indul el, amikor a felhasználó hitelesítése megtörtént egy olyan alkalmazáson, amely a [OAuth 2,0 engedélyezési kódot](v1-protocols-oauth-code.md)használja. Ezen a ponton az alkalmazás egy hozzáférési jogkivonatot (a token A jogkivonatot) küld a felhasználói jogcímeket tartalmazó középső rétegbeli webes API-ra (a API-ra), amely az A API-hoz való hozzáférést tartalmazza. Ezt követően a API A hitelesített kérelmet küld az alárendelt webes API-nak (B API).
 
-Ezek a lépések a folyamaton kívüli folyamatot alkotják: ![a OAuth 2.0-t futtató folyamat lépéseit mutatja be](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
+Ezek a lépések a folyamaton kívüli folyamatot alkotják: a ![ OAuth 2.0-t futtató folyamat lépéseit mutatja be](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Az ügyfélalkalmazás egy kérelmet küld az a API-nak az a jogkivonattal.
 1. Az API A hitelesíti az Azure AD jogkivonat-kiállítási végpontot, és jogkivonatot kér a B API eléréséhez.
@@ -79,7 +79,7 @@ Regisztrálja a középső rétegbeli szolgáltatást és az ügyfélalkalmazás
 1. Válassza a **Regisztráció** elemet az alkalmazás létrehozásához.
 1. Konfigurálja az alkalmazás engedélyeit. Az **API-engedélyek**területen válassza az **engedély hozzáadása** , majd **az API**-k elemet.
 1. Írja be a középső rétegbeli szolgáltatás nevét a szövegmezőbe.
-1. Válassza az **engedélyek kiválasztása** , majd **a \<hozzáférési szolgáltatás neve>** elemet.
+1. Válassza az **engedélyek kiválasztása** , majd a **hozzáférési \< szolgáltatás neve>** elemet.
 
 ### <a name="configure-known-client-applications"></a>Ismert ügyfélalkalmazások konfigurálása
 
@@ -88,7 +88,7 @@ Ebben az esetben a középső rétegbeli szolgáltatásnak be kell szereznie a f
 Kövesse az alábbi lépéseket az ügyfélalkalmazás regisztrációjának explicit módon való kötéséhez az Azure AD-ben a középső rétegbeli szolgáltatás regisztrálásával. A művelet egyesíti az ügyfél és a középső réteg által megkövetelt beleegyezett egyetlen párbeszédablakba.
 
 1. Lépjen a középső rétegbeli szolgáltatás regisztrációja elemre, és válassza a **jegyzékfájl** elemet a jegyzékfájl-szerkesztő megnyitásához.
-1. Keresse meg `knownClientApplications` a Array tulajdonságot, és adja hozzá az ügyfélalkalmazás ügyfél-azonosítóját elemként.
+1. Keresse meg a `knownClientApplications` Array tulajdonságot, és adja hozzá az ügyfélalkalmazás ügyfél-azonosítóját elemként.
 1. Mentse a jegyzékfájlt a **Mentés gombra**kattintva.
 
 ## <a name="service-to-service-access-token-request"></a>Szolgáltatás-szolgáltatás hozzáférési jogkivonat kérése
@@ -105,7 +105,7 @@ Az ügyfélalkalmazás védelmét egy közös titok vagy egy tanúsítvány véd
 
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Leírás |
+| Paraméter |  | Description |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem egy JSON Web Token (JWT) használ, ezért az értéknek a következőnek kell lennie: **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke. |
@@ -117,7 +117,7 @@ Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáf
 
 #### <a name="example"></a>Példa
 
-A következő HTTP-bejegyzés egy hozzáférési jogkivonatot https://graph.microsoft.com kér a webes API-hoz. Az `client_id` azonosítja azt a szolgáltatást, amely a hozzáférési jogkivonatot kéri.
+A következő HTTP-bejegyzés egy hozzáférési jogkivonatot kér a https://graph.microsoft.com webes API-hoz. Az `client_id` azonosítja azt a szolgáltatást, amely a hozzáférési jogkivonatot kéri.
 
 ```
 // line breaks for legibility only
@@ -139,7 +139,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter |  | Leírás |
+| Paraméter |  | Description |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. Egy OBO-kérelem JWT-hozzáférési tokent használ, így az érték csak az **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**lehet. |
 | állítás |kötelező | A kérelemben használt jogkivonat értéke. |
@@ -150,7 +150,7 @@ Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogk
 | requested_token_use |kötelező | Megadja a kérelem feldolgozásának módját. A folyamatban lévő folyamat során az értéknek **on_behalf_ofnak**kell lennie. |
 | scope |kötelező | A jogkivonat-kérelem hatókörének szóközzel tagolt listája. Az OpenID Connect esetében meg kell adni az **OpenID** hatókört.|
 
-Ezek a paraméterek majdnem ugyanazok, mint a közös titok kérelme, kivéve, hogy `client_secret parameter` a két paraméterrel van lecserélve: `client_assertion_type` és. `client_assertion`
+Ezek a paraméterek majdnem ugyanazok, mint a közös titok kérelme, kivéve, hogy a `client_secret parameter` két paraméterrel van lecserélve: `client_assertion_type` és `client_assertion` .
 
 #### <a name="example"></a>Példa
 
@@ -177,7 +177,7 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 
 A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel:
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 | --- | --- |
 | token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért tekintse meg a [OAuth 2,0 engedélyezési keretrendszert: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |A jogkivonatban megadott hozzáférési hatókör. |
@@ -190,7 +190,7 @@ A sikeres válasz egy JSON-OAuth 2,0-válasz a következő paraméterekkel:
 
 ### <a name="success-response-example"></a>Sikeres válasz – példa
 
-Az alábbi példa egy, a https://graph.microsoft.com webes API hozzáférési jogkivonatára vonatkozó kérelemre adott sikeres választ mutat be.
+Az alábbi példa egy, a webes API hozzáférési jogkivonatára vonatkozó kérelemre adott sikeres választ mutat be https://graph.microsoft.com .
 
 ```json
 {
@@ -232,7 +232,7 @@ A középső rétegbeli szolgáltatás a beszerzett hozzáférési jogkivonattal
 ```
 GET /me?api-version=2013-11-08 HTTP/1.1
 Host: graph.microsoft.com
-Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCIsImtpZCI6InowMzl6ZHNGdWl6cEJmQlZLMVRuMjVRSFlPMCJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0IiwiaXNzIjoiaHR0cHM6Ly9zdHMud2luZG93cy5uZXQvMjYwMzljY2UtNDg5ZC00MDAyLTgyOTMtNWIwYzUxMzRlYWNiLyIsImlhdCI6MTQ5MzQyMzE2OCwibmJmIjoxNDkzNDIzMTY4LCJleHAiOjE0OTM0NjY5NTEsImFjciI6IjEiLCJhaW8iOiJBU1FBMi84REFBQUE1NnZGVmp0WlNjNWdBVWwrY1Z0VFpyM0VvV2NvZEoveWV1S2ZqcTZRdC9NPSIsImFtciI6WyJwd2QiXSwiYXBwaWQiOiI2MjUzOTFhZi1jNjc1LTQzZTUtOGU0NC1lZGQzZTMwY2ViMTUiLCJhcHBpZGFjciI6IjEiLCJlX2V4cCI6MzAyNjgzLCJmYW1pbHlfbmFtZSI6IlRlc3QiLCJnaXZlbl9uYW1lIjoiTmF2eWEiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTc3IiwibmFtZSI6Ik5hdnlhIFRlc3QiLCJvaWQiOiIxY2Q0YmNhYy1iODA4LTQyM2EtOWUyZi04MjdmYmIxYmI3MzkiLCJwbGF0ZiI6IjMiLCJwdWlkIjoiMTAwMzNGRkZBMTJFRDdGRSIsInNjcCI6IlVzZXIuUmVhZCIsInN1YiI6IjNKTUlaSWJlYTc1R2hfWHdDN2ZzX0JDc3kxa1l1ekZKLTUyVm1Zd0JuM3ciLCJ0aWQiOiIyNjAzOWNjZS00ODlkLTQwMDItODI5My01YjBjNTEzNGVhY2IiLCJ1bmlxdWVfbmFtZSI6Im5hdnlhQGRkb2JhbGlhbm91dGxvb2sub25taWNyb3NvZnQuY29tIiwidXBuIjoibmF2eWFAZGRvYmFsaWFub3V0bG9vay5vbm1pY3Jvc29mdC5jb20iLCJ1dGkiOiJ4Q3dmemhhLVAwV0pRT0x4Q0dnS0FBIiwidmVyIjoiMS4wIn0.cqmUVjfVbqWsxJLUI1Z4FRx1mNQAHP-L0F4EMN09r8FY9bIKeO-0q1eTdP11Nkj_k4BmtaZsTcK_mUygdMqEp9AfyVyA1HYvokcgGCW_Z6DMlVGqlIU4ssEkL9abgl1REHElPhpwBFFBBenOk9iHddD1GddTn6vJbKC3qAaNM5VarjSPu50bVvCrqKNvFixTb5bbdnSz-Qr6n6ACiEimiI1aNOPR2DeKUyWBPaQcU5EAK0ef5IsVJC1yaYDlAcUYIILMDLCD9ebjsy0t9pj_7lvjzUSrbMdSCCdzCqez_MSNxrk1Nu9AecugkBYp3UVUZOIyythVrj6-sVvLZKUutQ
+Authorization: Bearer eyJ0eXAiO ... 0X2tnSQLEANnSPHY0gKcgw
 ```
 
 ## <a name="saml-assertions-obtained-with-an-oauth20-obo-flow"></a>OAuth 2.0 OBO-flow-val kapott SAML-kijelentések
@@ -249,7 +249,7 @@ Néhány OAuth-alapú webszolgáltatásnak hozzá kell férnie más webszolgált
 
 Az SAML-állítások szolgáltatás-szolgáltatásra irányuló kérelme a következő paramétereket tartalmazza:
 
-| Paraméter |  | Leírás |
+| Paraméter |  | Description |
 | --- | --- | --- |
 | grant_type |kötelező | A jogkivonat-kérelem típusa. A JWT használó kérések esetében az értéknek **urn: IETF: params: OAuth: Grant-Type: JWT-tulajdonos**értékűnek kell lennie. |
 | állítás |kötelező | A kérelemben használt hozzáférési jogkivonat értéke.|
@@ -268,7 +268,7 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 
 ### <a name="response-with-saml-assertion"></a>SAML-kijelentéssel kapcsolatos válasz
 
-| Paraméter | Leírás |
+| Paraméter | Description |
 | --- | --- |
 | token_type |Megadja a jogkivonat típusának értékét. Az Azure AD által támogatott egyetlen típus a **tulajdonos**. A tulajdonosi jogkivonatokkal kapcsolatos további információkért lásd [: OAuth 2,0 engedélyezési keretrendszer: tulajdonosi jogkivonat használata (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
 | scope |A jogkivonatban megadott hozzáférési hatókör. |
@@ -283,13 +283,13 @@ A válasz az UTF8 és a Base64url kódolású SAML-tokent tartalmaz.
 - ext_expires_in: 0
 - expires_on: 1529627844
 - erőforrás`https://api.contoso.com`
-- access_token: \<SAML-kijelentés\>
+- access_token: \< SAML-kijelentés\>
 - issued_token_type: urn: IETF: params: OAuth: token-Type: egy saml2
-- refresh_token: \<token frissítése\>
+- refresh_token: \< token frissítése\>
 
 ## <a name="client-limitations"></a>Ügyfél korlátozásai
 
-A helyettesítő karakteres válasz URL-címekkel `id_token` rendelkező nyilvános ügyfelek nem HASZNÁLHATJÁK az OBO-folyamatokat. A bizalmas ügyfél azonban továbbra is beválthatja az implicit engedélyezési folyamat során beszerzett **hozzáférési** jogkivonatokat, még akkor is, ha a nyilvános ügyfélben van regisztrálva egy helyettesítő karakteres átirányítási URI.
+A helyettesítő karakteres válasz URL-címekkel rendelkező nyilvános ügyfelek nem használhatják az `id_token` OBO-folyamatokat. A bizalmas ügyfél azonban továbbra is beválthatja az implicit engedélyezési folyamat során beszerzett **hozzáférési** jogkivonatokat, még akkor is, ha a nyilvános ügyfélben van regisztrálva egy helyettesítő karakteres átirányítási URI.
 
 ## <a name="next-steps"></a>További lépések
 

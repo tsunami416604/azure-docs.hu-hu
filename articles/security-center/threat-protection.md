@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: b28901918f2606100d92f47800c6e0fb6778e3d0
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: bdd8104200bf21507e978abacf600c4780bb3808
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82606891"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636674"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Fenyegetésvédelem az Azure Security Centerben
 
@@ -29,7 +29,10 @@ Azure Security Center fenyegetés elleni védelme átfogó védelmet biztosít a
 
 * **Veszélyforrások elleni védelem az Azure-szolgáltatások rétegeiben**: Azure hálózati réteg, Azure felügyeleti réteg (Azure Resource Manager) (előzetes verzió) és Azure Key Vault (előzetes verzió)
 
-Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy másik biztonsági terméktől Security Center fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe (vagy egy harmadik féltől származó SIEM-be) vagy más külső eszközre szeretné exportálni, kövesse a [riasztások a Siem-be való exportálásának](continuous-export.md)utasításait. 
+Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy másik biztonsági terméktől Security Center fogadta-e, exportálhatja. Ha a riasztásokat az Azure Sentinelbe, a harmadik féltől származó SIEM-re vagy más külső eszközre szeretné exportálni, kövesse a [riasztások a Siem](continuous-export.md)-ben való exportálásának utasításait. 
+
+> [!NOTE]
+> A különböző forrásokból származó riasztások eltérő mennyiségű időt vehetnek igénybe. Előfordulhat például, hogy a hálózati forgalom elemzését igénylő riasztások hosszabb ideig tartanak, mint a virtuális gépeken futó gyanús folyamatokkal kapcsolatos riasztások.
 
 > [!TIP]
 > Security Center veszélyforrások elleni védelmi képességeinek engedélyezéséhez alkalmaznia kell a standard szintű díjszabást a megfelelő munkaterheléseket tartalmazó előfizetésre.
@@ -44,14 +47,14 @@ Azt határozza meg, hogy a riasztást a Security Center hozza-e létre, vagy egy
 
 A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-alapú gépek monitorozásához és védeleméhez. Security Center az összes szolgáltatás riasztásait és szervizelési javaslatait egyszerűen használható formátumban jeleníti meg.
 
-* A **Microsoft Defender ATP** <a name="windows-atp"></a> -Security Center a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) integrálásával kiterjeszti a felhőalapú munkaterhelés-védelmi platformokat. Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak.
+* **Microsoft Defender komplex veszélyforrások elleni védelem (ATP)** <a name="windows-atp"></a> A-Security Center a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) integrálásával kiterjeszti a felhőalapú munkaterhelés-védelmi platformokat. Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak.
 
     > [!IMPORTANT]
     > A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
 
     Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás a Security Center irányítópulton jelenik meg. Az irányítópulton megtekintheti a Microsoft Defender ATP-konzolt, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-* **Összeomlási memóriakép elemzése** <a name="windows-dump"></a> – a szoftverek összeomlásakor egy összeomlási memóriakép rögzíti a memória egy részét az összeomlás időpontjában.
+* **Összeomlási memóriakép elemzése** <a name="windows-dump"></a> -A szoftverek összeomlása esetén az összeomlási memóriakép az összeomlás időpontjában rögzíti a memória egy részét.
 
     Előfordulhat, hogy az összeomlást kártevő okozta, vagy kártevőt tartalmaz. A biztonsági termékek észlelésének elkerülése érdekében a kártevő szoftverek különböző formái egy fájl nélküli támadást használnak, amely elkerüli a lemezre írást, vagy titkosítja a lemezre írt összetevőket. Az ilyen típusú támadásokat nehéz felderíteni a hagyományos lemezes megközelítések használatával.
 
@@ -59,7 +62,7 @@ A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-
 
     Az összeomlási memóriakép elemzési riasztásával kapcsolatos részletekért tekintse meg a [riasztások hivatkozási táblázatát](alerts-reference.md#alerts-windows).
 
-* A **fájlok közötti támadás észlelése** <a name="windows-fileless"></a> – a végpontokat célzó, nem gyakori támadások. Az észlelés elkerülése érdekében a fájlokkal nem rendelkező támadások rosszindulatú hasznos adatokat szúrnak be a memóriába. A támadó adattartalmai a feltört folyamatok memóriáján belül maradnak, és számos kártékony tevékenységet hajtanak végre.
+* **Fájlok közötti támadás észlelése** <a name="windows-fileless"></a> – A végpontokat célzó, fájlokra kiterjedő támadások gyakoriak. Az észlelés elkerülése érdekében a fájlokkal nem rendelkező támadások rosszindulatú hasznos adatokat szúrnak be a memóriába. A támadó adattartalmai a feltört folyamatok memóriáján belül maradnak, és számos kártékony tevékenységet hajtanak végre.
 
     A fájlok közötti támadás észlelése, az automatizált memória kriminalisztikai módszerei azonosítják a fájlokra vonatkozó támadási segédanyagokat, technikákat és viselkedéseket. Ez a megoldás rendszeres időközönként ellenőrzi a gépet, és kinyeri az eredményeket közvetlenül a biztonsági szempontból kritikus folyamatok memóriájában.
 
@@ -79,9 +82,9 @@ A Azure Security Center együttműködik az Azure-szolgáltatásokkal a Windows-
 
 A Security Center a Linux rendszerű gépekről naplózza a naplózási rekordokat **, az**egyik leggyakrabban használt Linux-naplózási keretrendszerben. a naplózott élet a fővonali kernelben. 
 
-* **Linux auditált riasztások és log Analytics ügynök-integráció** <a name="linux-auditd"></a> – az auditált rendszer egy kernel szintű alrendszerből áll, amely a rendszerhívások figyelésének felelőse. Egy megadott szabálykészlet alapján szűri őket, és üzeneteket küld nekik egy szoftvercsatorna számára. A Security Center a Log Analytics-ügynökön belül az auditált csomag funkcióit integrálja. Ez az integráció lehetővé teszi az auditált események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.
+* **Linux auditált riasztások és log Analytics ügynök integrációja** <a name="linux-auditd"></a> – A naplózott rendszer egy kernel szintű alrendszerből áll, amely a rendszerhívások figyelésének felelőse. Egy megadott szabálykészlet alapján szűri őket, és üzeneteket küld nekik egy szoftvercsatorna számára. A Security Center a Log Analytics-ügynökön belül az auditált csomag funkcióit integrálja. Ez az integráció lehetővé teszi az auditált események gyűjtését az összes támogatott Linux-disztribúcióban, előfeltételek nélkül.
 
-    a naplózott rekordok gyűjtése, bővítése és összesítése az eseményekre a Linux-ügynök Log Analytics ügynökének használatával történik. Security Center folyamatosan bővíti a Linux-jeleket használó új elemzéseket a Felhőbeli és a helyszíni linuxos gépek kártékony viselkedésének észlelése érdekében. A Windows-funkciókhoz hasonlóan ezek az elemzések a gyanús folyamatokon, a kétes bejelentkezési kísérleteken, a kernel modul betöltésén és más tevékenységeken is kiterjedhetnek. Ezek a tevékenységek jelezhetik, hogy a gép támadás alatt áll, vagy megsértették.  
+    a naplózott rekordok gyűjtése, bővítése és összesítése az eseményekre a Linux-ügynök Log Analytics ügynökének használatával történik. Security Center folyamatosan bővíti a Linux-jeleket használó új elemzéseket a Felhőbeli és a helyszíni linuxos gépek kártékony viselkedésének észlelése érdekében. A Windows-képességekhez hasonlóan ezek az elemzések a gyanús folyamatokon, a kétes bejelentkezési kísérleteken, a kernel modul betöltésén és más tevékenységeken is kiterjedhetnek. Ezek a tevékenységek jelezhetik, hogy a gép támadás alatt áll, vagy megsértették.  
 
     A Linux-riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-linux)tartalmazza.
 
@@ -171,7 +174,7 @@ A Storage komplex veszélyforrások elleni védelme szokatlan és potenciálisan
 
 Az Azure Storage komplex veszélyforrások elleni védelme jelenleg csak [blob Storage](https://azure.microsoft.com/services/storage/blobs/)esetében érhető el. 
 
-Ez a szolgáltatás a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem rendelkezik más szuverén vagy Azure Government Felhőbeli régiókkal.
+Ez a szolgáltatás a nyilvános felhőkben és az USA kormányzati felhőkben is elérhető, de nem más szuverén vagy Azure Government Felhőbeli régió.
 
 A díjszabással kapcsolatos részletekért, beleértve az ingyenes 30 napos próbaverziót is, tekintse meg a [Azure Security Center díjszabási oldalát](https://azure.microsoft.com/pricing/details/security-center/).
 

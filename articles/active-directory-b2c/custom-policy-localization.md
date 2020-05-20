@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/11/2020
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: be12bce8fa29076621bec35228838a4ebdd97433
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 090fecea44c7881920fcd087304f33f935a5e907
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80545873"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83636263"
 ---
 # <a name="localize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Az alkalmazás felhasználói felületének honosítása egyéni házirend használatával Azure Active Directory B2C
 
@@ -27,10 +27,10 @@ Ebből a cikkből megtudhatja, hogyan támogathatja a házirendben szereplő tö
 
 ## <a name="set-up-the-list-of-supported-languages"></a>A támogatott nyelvek listájának beállítása
 
-Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `SocialAndLocalAccounts/` </em>:.
+Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 
 1. Keresse meg a [BuildingBlocks](buildingblocks.md) elemet. Ha az elem nem létezik, adja hozzá.
-1. Adja hozzá `Localization` a elemet a támogatott nyelvekhez: angol (alapértelmezett) és spanyol.  
+1. Adja hozzá a `Localization` elemet a támogatott nyelvekhez: angol (alapértelmezett) és spanyol.  
 
 
 ```XML
@@ -44,12 +44,12 @@ Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például <em> `
 
 ## <a name="provide-language-specific-labels"></a>Nyelvspecifikus címkék megadása
 
-Az [LocalizedResources](localization.md#localizedresources) `Localization` elem LocalizedResources a honosított karakterláncok listáját tartalmazza. A honosított erőforrások elem rendelkezik egy azonosítóval, amely a honosított erőforrások egyedi azonosítására szolgál. Ezt a termékazonosító később használják a [Content definition](contentdefinitions.md) elemben.
+Az elem [LocalizedResources](localization.md#localizedresources) `Localization` a honosított karakterláncok listáját tartalmazza. A honosított erőforrások elem rendelkezik egy azonosítóval, amely a honosított erőforrások egyedi azonosítására szolgál. Ezt a termékazonosító később használják a [Content definition](contentdefinitions.md) elemben.
 
-A honosított erőforrások elemeit a tartalom definíciójában és a támogatni kívánt nyelveken konfigurálhatja. Az angol és a spanyol nyelvű egyesített regisztrációs vagy bejelentkezési lapok testreszabásához az `LocalizedResources` `</SupportedLanguages>` elem lezárása után adja hozzá a következő elemeket.
+A honosított erőforrások elemeit a tartalom definíciójában és a támogatni kívánt nyelveken konfigurálhatja. Az angol és a spanyol nyelvű egyesített regisztrációs vagy bejelentkezési lapok testreszabásához az `LocalizedResources` elem lezárása után adja hozzá a következő elemeket `</SupportedLanguages>` .
 
 > [!NOTE]
-> Az alábbi példában az egyes sorok koldulása `#` során hozzáadott egy font szimbólumot, így easly megtalálhatja a képernyőn megjelenő honosított címkéket.
+> Az alábbi példában az `#` egyes sorok koldulása során hozzáadott egy font szimbólumot, így easly megtalálhatja a képernyőn megjelenő honosított címkéket.
 
 ```XML
 <!--Local account sign-up or sign-in page English-->
@@ -252,10 +252,10 @@ A következő példában az angol (en) és a spanyol (es) egyéni sztringek hozz
 1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most**lehetőséget.
 1. Látnia kell a honosított regisztrációs vagy bejelentkezési oldalt.
 1. Kattintson a regisztrációs hivatkozásra, és tekintse meg a honosított regisztrációs lapot.
-1. A böngésző alapértelmezett nyelvének átváltása spanyolra. A lekérdezési karakterlánc paramétert `ui_locales` is hozzáadhatja az engedélyezési kérelemhez. Például: 
+1. A böngésző alapértelmezett nyelvének átváltása spanyolra. A lekérdezési karakterlánc paramétert is hozzáadhatja `ui_locales` az engedélyezési kérelemhez. Például: 
 
 ```http
-https://yourtenant.b2clogin.com/yourtenant.onmicrosoft.com/oauth2/v2.0/authorize?p=B2C_1A_signup_signin&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
+https://<tenant-name>.b2clogin.com/<tenant-name>.onmicrosoft.com/B2C_1A_signup_signin/oauth2/v2.0/authorize&client_id=0239a9cc-309c-4d41-12f1-31299feb2e82&nonce=defaultNonce&redirect_uri=https%3A%2F%2Fjwt.ms&scope=openid&response_type=id_token&prompt=login&ui_locales=es
 ```
 
 ## <a name="next-steps"></a>További lépések

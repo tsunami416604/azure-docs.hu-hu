@@ -6,18 +6,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/14/2020
-ms.openlocfilehash: 6cb514312db525ffd2ccf9f7b70968daaa94f322
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5dcdfba6e8dd00c8ba09e5e98293a30d19e51c99
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77672378"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635954"
 ---
 # <a name="azure-diagnostics-extension-overview"></a>Azure Diagnostics bővítmény áttekintése
 A Azure Diagnostics Extension olyan [Azure monitor ügynöke](agents-overview.md) , amely az Azure számítási erőforrások, például a virtuális gépek vendég operációs rendszerének figyelési adatait gyűjti. Ez a cikk áttekintést nyújt Azure Diagnostics bővítményről, beleértve az általa támogatott speciális funkciókat, valamint a telepítés és a konfigurálás lehetőségeit. 
 
 > [!NOTE]
 > Azure Diagnostics bővítmény az egyik rendelkezésre álló ügynök, amely a számítási erőforrások vendég operációs rendszeréről gyűjti a figyelési adatokat. Lásd: [a Azure monitor ügynökök áttekintése](agents-overview.md) a különböző ügynökök leírására, valamint a megfelelő ügynökök kiválasztására vonatkozó útmutatást.
+
+## <a name="primary-scenarios"></a>Elsődleges forgatókönyvek
+A diagnosztikai bővítmény által megcélzott elsődleges forgatókönyvek a következők:
+
+- Vendég metrikák begyűjtése Azure Monitor mérőszámokra.
+- Vendég naplók és mérőszámok küldése az Azure Storage-ba archiválás céljából.
+- Vendég naplók és mérőszámok küldése az Azure Event hubokba az Azure-on kívüli küldéshez.
+
 
 ## <a name="comparison-to-log-analytics-agent"></a>Összehasonlítás Log Analytics ügynökkel
 A Azure Monitor Log Analytics ügynöke is használható a virtuális gépek vendég operációs rendszerének figyelési adatainak gyűjtésére. Dönthet úgy is, hogy a követelményektől függően vagy mindkettőt használja. A Azure Monitor-ügynökök részletes összehasonlítását lásd [a Azure monitor ügynökök áttekintésében](agents-overview.md) . 
@@ -36,7 +44,7 @@ Az alábbi táblázatok felsorolják azokat az adatokat, amelyeket a Windows és
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnosztikai bővítmény (WAD)
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | Windows-eseménynaplók   | Események a Windows-eseménynaplóból. |
 | Teljesítményszámlálók | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
@@ -51,7 +59,7 @@ Az alábbi táblázatok felsorolják azokat az adatokat, amelyeket a Windows és
 
 ### <a name="linux-diagnostics-extension-lad"></a>Linux diagnosztikai bővítmény (LAD)
 
-| Adatforrás | Leírás |
+| Adatforrás | Description |
 | --- | --- |
 | Rendszernapló | A Linux-eseménynaplózási rendszernek eljuttatott események.   |
 | Teljesítményszámlálók  | Az operációs rendszer és a számítási feladatok különböző szempontjainak teljesítményét mérő numerikus értékek. |
@@ -64,7 +72,7 @@ Konfiguráljon egy vagy több *adattárolót* az egyéb további célhelyekre va
 
 ### <a name="windows-diagnostics-extension-wad"></a>Windows diagnosztikai bővítmény (WAD)
 
-| Cél | Leírás |
+| Cél | Description |
 |:---|:---|
 | Azure Monitor metrikák | Teljesítményadatokat gyűjt Azure Monitor Mérőszámokhoz. Lásd: [vendég operációs rendszer metrikáinak küldése a Azure monitor metrikus adatbázisba](collect-custom-metrics-guestos-resource-manager-vm.md).  |
 | Event Hubs | Az Azure Event Hubs használatával küldhet az Azure-on kívüli adatküldést. Lásd: [Streaming Azure Diagnostics-adatátviteli Event Hubs](diagnostics-extension-stream-event-hubs.md) |
@@ -77,7 +85,7 @@ A tárolóban lévő WAD-adatokat egy Log Analytics munkaterületre is gyűjthet
 ### <a name="linux-diagnostics-extension-lad"></a>Linux diagnosztikai bővítmény (LAD)
 A LAD az Azure Storage tábláiba írja az adatot. A következő táblázatban található mosogatókat támogatja.
 
-| Cél | Leírás |
+| Cél | Description |
 |:---|:---|
 | Event Hubs | Az Azure Event Hubs használatával küldhet az Azure-on kívüli adatküldést. |
 | Azure Storage-Blobok | Adatok írása a Blobok számára az Azure Storage-ban a táblák mellett. |

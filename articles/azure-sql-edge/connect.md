@@ -114,7 +114,7 @@ Ha egy SQL Edge-példányhoz szeretne csatlakozni a Visual Studio Code használa
 
 Ha Windows, Mac vagy Linux rendszerű gépen lévő Azure Data Studio használatával szeretne csatlakozni az SQL Edge-példányhoz, tekintse meg a [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-server).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 [Kapcsolat és lekérdezés](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-docker#connect-and-query)
 

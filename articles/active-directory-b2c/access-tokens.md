@@ -7,15 +7,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8358d3378ea892ebeef653bcb51243c9f1aa0b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 36027583d64ac91432888d866440932c6e1bdd07
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259772"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83635448"
 ---
 # <a name="request-an-access-token-in-azure-active-directory-b2c"></a>Hozzáférési jogkivonat igénylése Azure Active Directory B2C
 
@@ -33,7 +33,7 @@ Ez a cikk bemutatja, hogyan kérhet hozzáférési jogkivonatot egy webalkalmaz�
 
 ## <a name="scopes"></a>Hatókörök
 
-A hatókörök lehetővé teszik a védett erőforrásokra vonatkozó engedélyek kezelését. Hozzáférési jogkivonat kérése esetén az ügyfélalkalmazás a kérelem **hatókör** -paraméterében meg kell adnia a kívánt engedélyeket. Ha például meg szeretné határozni **a hatókör értékét** azon `read` API `https://contoso.onmicrosoft.com/api`számára, amelynek az **alkalmazás-azonosító URI-ja** , a hatókör a következő lesz `https://contoso.onmicrosoft.com/api/read`:.
+A hatókörök lehetővé teszik a védett erőforrásokra vonatkozó engedélyek kezelését. Hozzáférési jogkivonat kérése esetén az ügyfélalkalmazás a kérelem **hatókör** -paraméterében meg kell adnia a kívánt engedélyeket. Ha például meg szeretné határozni a **hatókör értékét** azon `read` API számára, amelynek az **alkalmazás-azonosító URI-ja** `https://contoso.onmicrosoft.com/api` , a hatókör a következő lesz: `https://contoso.onmicrosoft.com/api/read` .
 
 A hatóköröket a webes API a hatóköralapú hozzáférés-vezérlés megvalósításához használja. A webes API-k bizonyos felhasználói például rendelkezhetnek olvasási és írási hozzáféréssel is, míg mások csak olvasási hozzáféréssel. Ha több engedélyt szeretne beszerezni ugyanabban a kérésben, több bejegyzést is hozzáadhat a kérelem egyetlen **hatókörű** paraméteréhez, szóközzel elválasztva.
 
@@ -54,11 +54,11 @@ Ha több hatókört kér az ügyfélalkalmazás számára, akkor a hívás siker
 - **OpenID** – azonosító tokent kér.
 - **offline_access** – frissítési tokent kér az [Auth kód folyamatainak](authorization-code-flow.md)használatával.
 
-Ha a **response_type** `/authorize` kérelemben szereplő response_type paraméter tartalmazza `token`, akkor **a hatókör** paraméternek tartalmaznia kell legalább egy olyan erőforrás- `openid` hatókört, amely nem a és `offline_access` a lesz megadva. Ellenkező esetben a `/authorize` kérés meghiúsul.
+Ha a kérelemben szereplő **response_type** paraméter `/authorize` tartalmazza `token` , akkor a **hatókör** paraméternek tartalmaznia kell legalább egy olyan erőforrás-hatókört, amely nem a `openid` és a `offline_access` lesz megadva. Ellenkező esetben a `/authorize` kérés meghiúsul.
 
 ## <a name="request-a-token"></a>Jogkivonat igénylése
 
-Hozzáférési jogkivonat igényléséhez egy engedélyezési kódnak kell lennie. Az alábbi példa a `/authorize` végpontra irányuló kérést mutatja be egy engedélyezési kódhoz. A hozzáférési jogkivonatokkal való használat nem támogatja az egyéni tartományokat. Használja a tenant-name.onmicrosoft.com tartományt a kérelem URL-címében.
+Hozzáférési jogkivonat igényléséhez egy engedélyezési kódnak kell lennie. Az alábbi példa a végpontra irányuló kérést mutatja be `/authorize` egy engedélyezési kódhoz. A hozzáférési jogkivonatokkal való használat nem támogatja az egyéni tartományokat. Használja a tenant-name.onmicrosoft.com tartományt a kérelem URL-címében.
 
 Az alábbi példában a következő értékeket kell lecserélnie:
 
@@ -85,7 +85,7 @@ https://jwt.ms/?code=eyJraWQiOiJjcGltY29yZV8wOTI1MjAxNSIsInZlciI6IjEuMC...
 Az engedélyezési kód sikeres kézhezvételét követően a segítségével hozzáférési tokent igényelhet:
 
 ```HTTP
-POST <tenant-name>.onmicrosoft.com/oauth2/v2.0/token?p=<policy-name> HTTP/1.1
+POST <tenant-name>.onmicrosoft.com/<policy-name>/oauth2/v2.0/token HTTP/1.1
 Host: <tenant-name>.b2clogin.com
 Content-Type: application/x-www-form-urlencoded
 
@@ -111,7 +111,7 @@ A következőhöz hasonló válasznak kell megjelennie:
 }
 ```
 
-Ha a https://jwt.ms használatával vizsgálja meg a visszaadott hozzáférési tokent, akkor az alábbi példához hasonlóan kell megjelennie:
+Ha https://jwt.ms a használatával vizsgálja meg a visszaadott hozzáférési tokent, akkor az alábbi példához hasonlóan kell megjelennie:
 
 ```JSON
 {

@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 03/12/2018
 ms.author: guybo
-ms.openlocfilehash: 5bf26fa096058f5a73d5527c0c6adb1649c9884f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: cf50ee847bd1542a3e024cb88cf7bbc8bc283f91
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857320"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83643428"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése az Azure-beli használatra
 
@@ -28,7 +28,7 @@ Ez a cikk azt feltételezi, hogy már telepített egy SUSE vagy openSUSE Linux o
 * Az Azure-ban az összes virtuális merevlemeznek 1 MB-ra igazított virtuális mérettel kell rendelkeznie. Nyers lemezről VHD-re való konvertáláskor gondoskodnia kell arról, hogy a nyers lemez mérete a konverzió előtt egy 1MB többszöröse legyen. További információért lásd a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) .
 
 ## <a name="use-suse-studio"></a>A SUSE Studio használata
-A [SUSE Studio](http://www.susestudio.com) egyszerűen létrehozhatja és kezelheti az Azure-hoz és a Hyper-V-hez készült SLES és openSUSE-lemezképeket. Ez az ajánlott módszer a saját SLES és az openSUSE-lemezképek testre szabására.
+A [SUSE Studio](https://studioexpress.opensuse.org/) egyszerűen létrehozhatja és kezelheti az Azure-hoz és a Hyper-V-hez készült SLES és openSUSE-lemezképeket. Ez az ajánlott módszer a saját SLES és az openSUSE-lemezképek testre szabására.
 
 A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BYOS (saját előfizetés) lemezképeket is közzéteszi a SLES címen a [vmdepottal](https://www.microsoft.com/en-us/research/wp-content/uploads/2016/04/using-and-contributing-vms-to-vm-depot.pdf)címen.
 
@@ -72,7 +72,7 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
     
         # sudo ln -s /dev/null /etc/udev/rules.d/75-persistent-net-generator.rules
         # sudo rm -f /etc/udev/rules.d/70-persistent-net.rules
-11. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa `DHCLIENT_SET_HOSTNAME` a paramétert a következőre:
+11. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
     
      DHCLIENT_SET_HOSTNAME = "nem"
 12. A "/etc/sudoers" elemnél írja ki vagy távolítsa el a következő sorokat, ha vannak ilyenek:
@@ -98,7 +98,7 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
 ## <a name="prepare-opensuse-131"></a>Az openSUSE 13.1 + előkészítése
 1. A Hyper-V kezelőjének középső ablaktábláján válassza ki a virtuális gépet.
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
-3. A rendszerhéjon futtassa a következő parancsot:`zypper lr`"". Ha a parancs a következőhöz hasonló kimenetet ad vissza, akkor a Tárházak a várt módon lesznek konfigurálva – nincs szükség módosításra (vegye figyelembe, hogy a verziószámok száma változhat):
+3. A rendszerhéjon futtassa a következő parancsot: " `zypper lr` ". Ha a parancs a következőhöz hasonló kimenetet ad vissza, akkor a Tárházak a várt módon lesznek konfigurálva – nincs szükség módosításra (vegye figyelembe, hogy a verziószámok száma változhat):
    
         # | Alias                 | Name                  | Enabled | Refresh
         --+-----------------------+-----------------------+---------+--------
@@ -112,7 +112,7 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
         # sudo zypper ar -f https://download.opensuse.org/distribution/13.1/repo/oss openSUSE_13.1_OSS
         # sudo zypper ar -f http://download.opensuse.org/update/13.1 openSUSE_13.1_Updates
    
-    Ezután a (`zypper lr`z) parancs futtatásával ellenőrizheti, hogy a Tárházak hozzá lettek-e adva. Ha az egyik releváns frissítési tárház nincs engedélyezve, engedélyezze a következő paranccsal:
+    Ezután a (z) parancs futtatásával ellenőrizheti, hogy a Tárházak hozzá lettek-e adva `zypper lr` . Ha az egyik releváns frissítési tárház nincs engedélyezve, engedélyezze a következő paranccsal:
    
         # sudo zypper mr -e [NUMBER OF REPOSITORY]
 4. A rendszermag frissítése a legújabb elérhető verzióra:
@@ -132,7 +132,7 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
    Ezzel biztosítható, hogy az összes konzol üzenetei az első soros porton legyenek elküldve, amely a hibakeresési problémákkal segíti az Azure-támogatást. Továbbá távolítsa el a következő paramétereket a kernel rendszerindítási sorából, ha vannak ilyenek:
    
      libata. atapi_enabled = 0 tartalék = 0x1f0, 0x8
-7. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa `DHCLIENT_SET_HOSTNAME` a paramétert a következőre:
+7. Javasoljuk, hogy szerkessze a "/etc/sysconfig/network/DHCP" fájlt, és módosítsa a `DHCLIENT_SET_HOSTNAME` paramétert a következőre:
    
      DHCLIENT_SET_HOSTNAME = "nem"
 8. **Fontos:** A "/etc/sudoers" elemnél írja ki vagy távolítsa el a következő sorokat, ha vannak ilyenek:

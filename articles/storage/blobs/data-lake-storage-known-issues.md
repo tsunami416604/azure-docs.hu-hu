@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/10/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: b02835ae3a1d7fed52f2cdb4ab25aa74ba66e8c3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4b6def2ce2b0c1ba6d3a45e64bb7f82b5948a524
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83119892"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83642193"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Ismert problémák a Azure Data Lake Storage Gen2
 
@@ -107,7 +107,7 @@ A REST API-kat használó harmadik féltől származó alkalmazások továbbra i
 
 Ha a tárolóhoz [Névtelen olvasási hozzáférés](storage-manage-access-to-resources.md) van megadva, akkor az ACL-ek nincsenek hatással a tárolóra vagy a tárolóban lévő fájlokra.
 
-## <a name="premium-performance-block-blob-storage-accounts"></a>Prémium szintű teljesítményű blokk blob Storage-fiókok
+## <a name="premium-performance-blockblobstorage-storage-accounts"></a>Prémium teljesítményű BlockBlobStorage Storage-fiókok
 
 ### <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
@@ -126,7 +126,7 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="lifecycle-management-policies"></a>Életciklus-kezelési szabályzatok
 
-- Az életciklus-kezelési házirendek még nem támogatottak a prémium szintű blokk blob Storage-fiókokban. 
+- Az életciklus-kezelési házirendek még nem támogatottak a Premium BlockBlobStorage Storage-fiókokban. 
 
 - Az adatok nem helyezhetők át a prémium szintről az alacsonyabb szintekre. 
 
@@ -134,11 +134,11 @@ Set-AzStorageServiceLoggingProperty -ServiceType Blob -LoggingOperations read,wr
 
 ### <a name="hdinsight-support"></a>HDInsight-támogatás
 
-N HDInsight-fürt létrehozásakor még nem választhat olyan blokk blob Storage-fiókot, amelyen engedélyezve van a hierarchikus névtér funkció. A fiókot azonban a létrehozása után is csatlakoztathatja a fürthöz.
+N HDInsight-fürt létrehozásakor még nem választhat olyan BlockBlobStorage-fiókot, amelyen engedélyezve van a hierarchikus névtér funkció. A fiókot azonban a létrehozása után is csatlakoztathatja a fürthöz.
 
 ### <a name="dremio-support"></a>Dremio-támogatás
 
-A Dremio még nem csatlakozik olyan blokk blob Storage-fiókhoz, amelyen engedélyezve van a hierarchikus névtér funkció. 
+A Dremio még nem csatlakozik olyan BlockBlobStorage-fiókhoz, amelyen engedélyezve van a hierarchikus névtér funkció. 
 
 ## <a name="windows-azure-storage-blob-wasb-driver-unsupported-with-data-lake-storage-gen2"></a>Windows Azure Storage Blob (WASB) illesztőprogram (nem támogatott a Data Lake Storage Gen2)
 

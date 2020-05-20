@@ -1,48 +1,32 @@
 ---
-title: Az Azure MFA hozzáférési és használati jelentései – Azure Active Directory
-description: Ez az Azure Multi-Factor Authentication funkció – jelentések használatát ismerteti.
+title: Bejelentkezési esemény részletei az Azure Multi-Factor Authentication-Azure Active Directory
+description: Megtudhatja, hogyan tekintheti meg az Azure-Multi-Factor Authentication események és állapotüzenetek bejelentkezési tevékenységeit.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 07/30/2018
+ms.date: 05/15/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2df562d65ad064efb1be337e0b68cb8638536981
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c9bf76729c3b5844918659283a65eeb347c4237d
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112762"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83639843"
 ---
-# <a name="reports-in-azure-multi-factor-authentication"></a>Jelentések az Azure Multi-Factor Authentication
+# <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure Multi-Factor Authentication eseményeinek áttekintéséhez
 
-Az Azure Multi-Factor Authentication számos jelentést biztosít, amelyeket Ön és a szervezete a Azure Portal keresztül is elérhet. A következő táblázat felsorolja a rendelkezésre álló jelentéseket:
+Az Azure Multi-Factor Authentication eseményeinek áttekintéséhez és megismeréséhez használhatja a Azure Active Directory (Azure AD) bejelentkezési jelentését. Ez a jelentés az események hitelesítésének részleteit jeleníti meg, amikor a rendszer megkéri a felhasználót a többtényezős hitelesítésre, és ha bármilyen feltételes hozzáférési szabályzat használatban van. A bejelentkezési jelentéssel kapcsolatos részletes információkért tekintse meg a [bejelentkezési tevékenységek jelentéseinek áttekintése az Azure ad-ben](../reports-monitoring/concept-sign-ins.md)című témakört.
 
-| Jelentés | Hely | Leírás |
-|:--- |:--- |:--- |
-| Letiltott felhasználói előzmények | Az Azure AD > biztonsági > MFA > a felhasználók blokkolására/feloldására | Megjeleníti a felhasználók blokkolására vagy feloldására irányuló kérelmek előzményeit. |
-| Használati és csalási riasztások | Azure AD > bejelentkezések | Információt nyújt a teljes használatról, a felhasználói összesítésekről és a felhasználói adatokról; valamint a megadott dátumtartomány szerint elküldött csalási riasztások előzményei. |
-| Helyszíni összetevők használata | Azure AD > Security > MFA > tevékenység jelentés | Információkat nyújt az MFA általános használatáról az NPS-bővítmény, az ADFS és az MFA-kiszolgáló használatával. |
-| Megkerülő felhasználói előzmények | Azure AD > Security > MFA > egyszeri Mellőzés | A egy felhasználó megkerülésére vonatkozó kérelmek előzményeit jeleníti meg Multi-Factor Authentication. |
-| Kiszolgáló állapota | Azure AD > Security > MFA > kiszolgáló állapota | A fiókjához társított Multi-Factor Authentication kiszolgálók állapotát jeleníti meg. |
+Ez a cikk bemutatja, hogyan tekintheti meg az Azure AD bejelentkezési jelentéseit a Azure Portalban, majd a MSOnline v1 PowerShell-modult.
 
-## <a name="view-mfa-reports"></a>MFA-jelentések megtekintése
+## <a name="view-the-azure-ad-sign-ins-report"></a>Az Azure AD bejelentkezési jelentésének megtekintése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. A bal oldalon válassza a **Azure Active Directory** > **biztonsági** > **MFA**elemet.
-3. Válassza ki a megtekinteni kívánt jelentést.
-
-   ![MFA-kiszolgáló kiszolgálójának állapota jelentés a Azure Portal](./media/howto-mfa-reporting/report.png)
-
-## <a name="azure-ad-sign-ins-report"></a>Azure AD-beli bejelentkezési jelentés
-
-A [Azure Portal](https://portal.azure.com)a **bejelentkezési tevékenységek jelentésével** megtekintheti a környezete működésének meghatározásához szükséges információkat.
-
-A bejelentkezések jelentés a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról nyújt információkat, beleértve a többtényezős hitelesítés (MFA) használatáról szóló információkat is. Az MFA-adatokból betekintést nyerhet, hogy a többtényezős hitelesítés hogyan működik a szervezetben. Ezáltal a következőkhöz hasonló kérdésekre kaphat választ:
+A bejelentkezések jelentés információt nyújt a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról, beleértve a többtényezős hitelesítés (MFA) használatáról szóló információkat. Az MFA-adatokból betekintést nyerhet, hogy a többtényezős hitelesítés hogyan működik a szervezetben. Lehetővé teszi a következőhöz hasonló kérdések megválaszolását:
 
 - Felmerült a bejelentkezés során MFA?
 - Hogyan végezte el a felhasználó az MFA-hitelesítést?
@@ -51,94 +35,76 @@ A bejelentkezések jelentés a felügyelt alkalmazások és a felhasználói bej
 - Hány felhasználó nem tudta elvégezni az MFA-hitelesítést?
 - Melyek a gyakori MFA-problémák, amelyekkel a végfelhasználók találkoznak?
 
-Ezek az adatszolgáltatások a [Azure Portal](https://portal.azure.com) és a [jelentéskészítő API](../reports-monitoring/concept-reporting-api.md)-n keresztül érhetők el.
+Ha meg szeretné tekinteni a bejelentkezési tevékenység jelentését a [Azure Portalban](https://portal.azure.com), hajtsa végre a következő lépéseket. A [jelentéskészítési API](../reports-monitoring/concept-reporting-api.md)használatával is lekérdezheti az adatlekérdezéseket.
 
-![Azure AD-beli bejelentkezési jelentés a Azure Portal](./media/howto-mfa-reporting/sign-in-report.png)
+1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) *globális rendszergazdai* jogosultságokkal rendelkező fiókkal.
+1. Keresse meg és válassza ki a **Azure Active Directory**, majd a bal oldali menüben válassza a **felhasználók** lehetőséget.
+1. A bal oldali menü *tevékenység* területén válassza a **bejelentkezések**lehetőséget.
+1. Megjelenik a bejelentkezési események listája, beleértve az állapotot is. Kiválaszthat egy eseményt a további részletek megtekintéséhez.
 
-### <a name="sign-ins-report-structure"></a>Bejelentkezések jelentési struktúrája
+    Az *események részletei* vagy *feltételes hozzáférés* lapján megjelenik az állapotkód, vagy az a házirend, amely az MFA-kérést aktiválta.
 
-Az MFA bejelentkezési tevékenységeinek jelentéseiben a következő adatokhoz fér hozzá:
+    [![](media/howto-mfa-reporting/sign-in-report-cropped.png "Screenshot of example Azure Active Directory sign-ins report in the Azure portal")](media/howto-mfa-reporting/sign-in-report.png#lightbox)
 
-**MFA szükséges:** Kötelező-e az MFA a bejelentkezéshez vagy sem. A többtényezős hitelesítés a felhasználónkénti MFA, a feltételes hozzáférés vagy más okok miatt lehet szükséges. A lehetséges értékek: **Igen** vagy **nem**.
+Ha elérhető, a hitelesítés látható, például szöveges üzenet, Microsoft Authenticator alkalmazás értesítése vagy telefonhívás.
 
-**MFA eredménye:** További részletek az MFA teljesítésével vagy megtagadásával kapcsolatban:
+A következő részleteket a *hitelesítő adatok* ablakban tekintheti meg, amelyből megtudhatja, hogy az MFA-kérés teljesült-e vagy meg lett tagadva:
 
-- Az MFA teljesítése esetén az oszlop a teljesítés módjával kapcsolatos további információkat tartalmaz.
-   - Azure Multi-Factor Authentication
-      - elvégezve a felhőben
-      - lejárt a bérlőn konfigurált szabályzatok miatt
-      - regisztráció felkínálva
-      - a tokenben lévő jogcím alapján teljesült
-      - külső szolgáltató által biztosított jogcím alapján teljesült
-      - erős hitelesítéssel teljesült
-      - kihagyva, mivel a végrehajtott folyamat a Windows-közvetítő bejelentkezési folyamata volt
-      - alkalmazásjelszó használata miatt kihagyva
-      - a hely miatt kihagyva
-      - regisztrált eszköz használata miatt kihagyva
-      - megjegyzett eszköz használata miatt kihagyva
-      - sikeresen teljesítve
-   - Átirányítva külső szolgáltatóhoz többtényezős hitelesítésre
+* Az MFA teljesítése esetén az oszlop a teljesítés módjával kapcsolatos további információkat tartalmaz.
+   * elvégezve a felhőben
+   * lejárt a bérlőn konfigurált szabályzatok miatt
+   * regisztráció felkínálva
+   * a tokenben lévő jogcím alapján teljesült
+   * külső szolgáltató által biztosított jogcím alapján teljesült
+   * erős hitelesítéssel teljesült
+   * kihagyva, mivel a végrehajtott folyamat a Windows-közvetítő bejelentkezési folyamata volt
+   * alkalmazásjelszó használata miatt kihagyva
+   * a hely miatt kihagyva
+   * regisztrált eszköz használata miatt kihagyva
+   * megjegyzett eszköz használata miatt kihagyva
+   * sikeresen teljesítve
 
-- Az MFA megtagadása esetén az oszlop a megtagadás okát tartalmazza.
-   - Azure Multi-Factor Authentication megtagadva;
-      - hitelesítés folyamatban
-      - duplikált hitelesítési kísérlet
-      - túl sokszor lett hibás kód megadva
-      - érvénytelen hitelesítés
-      - érvénytelen mobilalkalmazásbeli ellenőrző kód
-      - hibás konfiguráció
-      - a telefonhívás üzenetrögzítőre kapcsolt
-      - a telefonszám formátuma érvénytelen
-      - szolgáltatáshiba
-      - a felhasználó telefonszáma nem érhető el
-      - a mobilalkalmazás-értesítés nem küldhető el az eszközre
-      - a mobilalkalmazás-értesítés nem küldhető el
-      - a felhasználó visszautasította a hitelesítést
-      - a felhasználó nem reagált a mobilalkalmazás-értesítésre
-      - a felhasználónak nincsenek regisztrált ellenőrzési módszerei
-      - a felhasználó hibás kódot adott meg
-      - a felhasználó hibás PIN-kódot adott meg
-      - a felhasználó sikeres hitelesítés nélkül megszakította a telefonhívást
-      - a felhasználó blokkolva van
-      - a felhasználó soha nem adta még meg az ellenőrzőkódot
-      - a felhasználó nem található
-      - az ellenőrzőkód már volt használva
-
-**MFA hitelesítési módszer:** A módszer, amellyel a felhasználó végrehajtotta az MFA-hitelesítést. A lehetséges értékek a következők:
-
-- Szöveges üzenet
-- Mobilalkalmazás-értesítés
-- Telefonhívás (hitelesítési telefon)
-- Mobilalkalmazásbeli ellenőrző kód
-- Telefonhívás (irodai telefon)
-- Telefonhívás (alternatív hitelesítési telefon)
-
-**MFA-hitelesítés részletei:** A telefonszám kitakarva, például: +X XXXXXXXX64.
-
-**Feltételes hozzáférés** Információk a bejelentkezési kísérletet érintő feltételes hozzáférési szabályzatokról, beleértve a következőket:
-
-- Házirend neve
-- Vezérlők megadása
-- Munkamenet-vezérlőelemek
-- Eredmény
+* Az MFA megtagadása esetén az oszlop a megtagadás okát tartalmazza.
+   * hitelesítés folyamatban
+   * duplikált hitelesítési kísérlet
+   * túl sokszor lett hibás kód megadva
+   * érvénytelen hitelesítés
+   * érvénytelen mobilalkalmazásbeli ellenőrző kód
+   * hibás konfiguráció
+   * a telefonhívás üzenetrögzítőre kapcsolt
+   * a telefonszám formátuma érvénytelen
+   * szolgáltatáshiba
+   * a felhasználó telefonszáma nem érhető el
+   * a mobilalkalmazás-értesítés nem küldhető el az eszközre
+   * a mobilalkalmazás-értesítés nem küldhető el
+   * a felhasználó visszautasította a hitelesítést
+   * a felhasználó nem reagált a mobilalkalmazás-értesítésre
+   * a felhasználónak nincsenek regisztrált ellenőrzési módszerei
+   * a felhasználó hibás kódot adott meg
+   * a felhasználó hibás PIN-kódot adott meg
+   * a felhasználó sikeres hitelesítés nélkül megszakította a telefonhívást
+   * a felhasználó blokkolva van
+   * a felhasználó soha nem adta még meg az ellenőrzőkódot
+   * a felhasználó nem található
+   * az ellenőrzőkód már volt használva
 
 ## <a name="powershell-reporting-on-users-registered-for-mfa"></a>PowerShell-jelentéskészítés az MFA-hoz regisztrált felhasználókkal
 
 Először győződjön meg arról, hogy telepítve van a [MSOnline v1 PowerShell-modulja](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-1.0) .
 
-Azonosítsa az MFA-val regisztrált felhasználókat az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t.
+Azonosítsa az MFA-val regisztrált felhasználókat az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods -ne $null -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-Azonosítsa azokat a felhasználókat, akik nem regisztráltak az MFA használatára az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t.
+Azonosítsa azokat a felhasználókat, akik nem regisztráltak az MFA használatára az alábbi PowerShell-lel. Ezek a parancsok kizárják a letiltott felhasználókat, mivel ezek a fiókok nem tudják hitelesíteni az Azure AD-t:
 
 ```powershell
 Get-MsolUser -All | Where-Object {$_.StrongAuthenticationMethods.Count -eq 0 -and $_.BlockCredential -eq $False} | Select-Object -Property UserPrincipalName
 ```
 
-A regisztrált felhasználók és kimeneti metódusok azonosítása. 
+A regisztrált felhasználók és kimeneti metódusok azonosítása:
 
 ```powershell
 Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalName}},
@@ -148,11 +114,11 @@ Get-MsolUser -All | Select-Object @{N='UserPrincipalName';E={$_.UserPrincipalNam
 @{N='MFA Methods';E={$_.StrongAuthenticationMethods.methodtype}} | Export-Csv -Path c:\MFA_Report.csv -NoTypeInformation
 ```
 
-## <a name="possible-results-in-activity-reports"></a>A tevékenységgel kapcsolatos jelentések lehetséges eredményei
+## <a name="downloaded-activity-reports-result-codes"></a>Letöltött tevékenységekről készült jelentések eredményeinek kódjai
 
-Az alábbi táblázat a multi-Factor Authentication tevékenység jelentés letöltött verziójával végezhető el a többtényezős hitelesítés hibakereséséhez. Nem jelennek meg közvetlenül a Azure Portal.
+Az alábbi táblázat segítséget nyújt az események hibaelhárításához az előző portál lépéseiből vagy a PowerShell-parancsokból származó tevékenységi jelentés letöltött verziójának használatával. Ezek az eredmények nem jelennek meg közvetlenül a Azure Portal.
 
-| Hívás eredménye | Leírás | Széles Leírás |
+| Hívás eredménye | Description | Széles Leírás |
 | --- | --- | --- |
 | SUCCESS_WITH_PIN | PIN-kód megadva | A felhasználó PIN-kódot adott meg. Ha a hitelesítés sikeres volt, akkor a megfelelő PIN-kódot adtak meg. Ha a hitelesítés megtagadva, akkor helytelen PIN-kódot adtak meg, vagy a felhasználó normál módra van beállítva. |
 | SUCCESS_NO_PIN | Csak # megadott | Ha a felhasználó PIN módra van beállítva, és a hitelesítés megtagadva, ez azt jelenti, hogy a felhasználó nem adta meg a PIN-kódját, és csak a # értéket adta meg.  Ha a felhasználó szabványos módra van beállítva, és a hitelesítés sikeres, akkor a felhasználó csak a # paramétert adta meg, ami a helyes dolog a standard módban. |
@@ -200,8 +166,17 @@ Az alábbi táblázat a multi-Factor Authentication tevékenység jelentés let�
 | FAILED_AUTH_RESULT_TIMEOUT | Hitelesítés eredményének időtúllépése | A felhasználó túl sokáig tartott a Multi-Factor Authentication kísérlet befejezéséhez. |
 | FAILED_AUTHENTICATION_THROTTLED | Hitelesítés szabályozva | Az Multi-Factor Authentication kísérletet a szolgáltatás szabályozta. |
 
+## <a name="additional-mfa-reports"></a>További MFA-jelentések
+
+A következő további információk és jelentések érhetők el az MFA-eseményekhez, beleértve az MFA-kiszolgálókat:
+
+| Jelentés | Hely | Description |
+|:--- |:--- |:--- |
+| Letiltott felhasználói előzmények | Az Azure AD > biztonsági > MFA > a felhasználók blokkolására/feloldására | Megjeleníti a felhasználók blokkolására vagy feloldására irányuló kérelmek előzményeit. |
+| Helyszíni összetevők használata | Azure AD > Security > MFA > tevékenység jelentés | Információt nyújt az MFA-kiszolgáló általános használatáról az NPS-bővítmény, az ADFS és az MFA-kiszolgáló használatával. |
+| Megkerülő felhasználói előzmények | Azure AD > Security > MFA > egyszeri Mellőzés | Az MFA-kiszolgálói kérelmek előzményeit jeleníti meg a felhasználók számára az MFA megkerülése érdekében. |
+| Kiszolgáló állapota | Azure AD > Security > MFA > kiszolgáló állapota | Megjeleníti a fiókjához társított MFA-kiszolgálók állapotát. |
+
 ## <a name="next-steps"></a>További lépések
 
-* [SSPR és MFA-használati és-bejelentési jelentések](howto-authentication-methods-usage-insights.md)
-* [Felhasználók számára](../user-help/multi-factor-authentication-end-user.md)
-* [Az üzembe helyezés helye](concept-mfa-whichversion.md)
+Ez a cikk áttekintést nyújt a bejelentkezési tevékenységek jelentéséről. További információ arról, hogy a jelentés mit tartalmaz és hogyan értelmezi az adatokat, lásd: [bejelentkezési tevékenységek jelentései az Azure ad-ben](../reports-monitoring/concept-sign-ins.md).

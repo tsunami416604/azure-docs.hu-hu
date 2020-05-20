@@ -8,12 +8,12 @@ services: synapse-analytics
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 03/31/2020
-ms.openlocfilehash: be7ac79b9429d2fc72c3b6bc2b6d92666b089dfb
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 6a627dfed3886a99a458a67d793c3ebbbdd0fb19
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591964"
+ms.locfileid: "83644866"
 ---
 # <a name="automatically-scale-azure-synapse-analytics-apache-spark-pools"></a>Az Azure szinapszis Analytics Apache Spark-készletek automatikus méretezése
 
@@ -74,4 +74,4 @@ A futó feladatok továbbra is futnak és befejeződik. A függőben lévő fela
 
 ## <a name="next-steps"></a>További lépések
 
-Új Spark-készlet létrehozásának első lépései [Spark-készlet létrehozása](..\quickstart-create-apache-spark-pool.md)
+Új Spark-készlet létrehozásának első lépései [Spark-készlet létrehozása](../quickstart-create-apache-spark-pool-portal.md)

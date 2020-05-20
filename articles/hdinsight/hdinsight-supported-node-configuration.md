@@ -6,15 +6,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.openlocfilehash: e75146266568001d8fee7be26898ac8bdfffb7fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 05/14/2020
+ms.openlocfilehash: 0bf5559590b66400fc4fc4dc27ea88c3522effb1
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77484786"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83646617"
 ---
 # <a name="what-are-the-default-and-recommended-node-configurations-for-azure-hdinsight"></a>Mik az Azure HDInsight alapértelmezett és ajánlott csomópont-konfigurációi?
 
@@ -22,11 +22,11 @@ Ez a cikk az Azure HDInsight-fürtök alapértelmezett és ajánlott csomópont-
 
 ## <a name="default-and-minimum-recommended-node-configuration-and-virtual-machine-sizes-for-clusters"></a>Az alapértelmezett és a minimálisan ajánlott csomópont-konfiguráció és a virtuális gépek mérete a fürtökhöz
 
-A következő táblázatok a HDInsight-fürtök alapértelmezett és ajánlott virtuálisgép-méreteit sorolja fel.  Ezek az információk szükségesek ahhoz, hogy megértsék a virtuálisgép-méreteket, amelyeket a PowerShell vagy az Azure CLI-parancsfájlok létrehozásakor kell használni a HDInsight-fürtök telepítéséhez.
+A következő táblázatok a HDInsight-fürtök alapértelmezett és ajánlott virtuálisgép-méreteit sorolja fel.  Ezek az információk szükségesek ahhoz, hogy tisztában legyenek a virtuálisgép-méretekkel, amelyeket a PowerShell vagy Azure CLI-parancsfájlok létrehozásakor kell használni a HDInsight-fürtök telepítéséhez.
 
-Ha a fürtben több mint 32 feldolgozó csomópontra van szüksége, válasszon ki legalább 8 maggal és 14 GB RAM-mal rendelkező fő csomópont-méretet. 
+Ha a fürtben több mint 32 feldolgozó csomópontra van szüksége, válasszon ki legalább 8 maggal és 14 GB RAM-mal rendelkező fő csomópont-méretet.
 
-A csak az adatlemezeket tartalmazó fürtök a Kafka és a HBase fürtök, amelyeken engedélyezve van a gyorsított írási funkció. A HDInsight ezekben a forgatókönyvekben támogatja a P30 és a S30 lemez méretét.
+A csak az adatlemezeket tartalmazó fürtök a Kafka és a HBase fürtök, amelyeken engedélyezve van a gyorsított írási funkció. A HDInsight ezekben a forgatókönyvekben támogatja a P30 és a S30 lemez méretét. A HDInsight minden más típusú fürthöz biztosít felügyelt lemezterületet a fürttel. A 11/07/2019-es verziótól kezdődően az újonnan létrehozott fürt egyes csomópontjainak felügyelt lemez mérete 128 GB. Ez nem módosítható.
 
 A jelen dokumentumban használt minimálisan ajánlott virtuálisgép-típusok specifikációit a következő táblázat foglalja össze.
 
@@ -51,9 +51,9 @@ Az egyes virtuálisgép-típusok leírásával kapcsolatos további információ
 ### <a name="all-supported-regions-except-brazil-south-and-japan-west"></a>Minden támogatott régió, kivéve Dél-Brazília és Nyugat-Japán
 
 > [!Note]
-> Ahhoz, hogy az SKU-azonosító a PowerShellben és más parancsfájlokban `Standard_` is használható legyen, az alábbi táblázatokban adja hozzá az összes virtuális gép SKU elejéhez. Ilyen lehet például `D12_v2` a következő `Standard_D12_v2`:.
+> Ahhoz, hogy az SKU-azonosító a PowerShellben és más parancsfájlokban is használható legyen, az `Standard_` alábbi táblázatokban adja hozzá az összes virtuális gép SKU elejéhez. Ilyen lehet például a következő: `D12_v2` `Standard_D12_v2` .
 
-| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | ML Server | Kafka |
+| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Vihar | Spark | ML Server | Kafka |
 |---|---|---|---|---|---|---|---|
 | Fej: alapértelmezett VM-méret | D12_v2 | D12_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
 | Head: a minimálisan ajánlott virtuálisgép-méretek | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2, <br/>D13_v2 * | D12_v2 | D3_v2 |
@@ -68,7 +68,7 @@ Az egyes virtuálisgép-típusok leírásával kapcsolatos további információ
 
 ### <a name="brazil-south-and-japan-west-only"></a>Dél-Brazília és Nyugat-Japán
 
-| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Storm | Spark | ML-szolgáltatások |
+| Fürt típusa | Hadoop | HBase | Interaktív lekérdezés | Vihar | Spark | ML-szolgáltatások |
 |---|---|---|---|---|---|---|
 | Fej: alapértelmezett VM-méret | D12 | D12 | D13 | A4_v2 | D12 | D12 |
 | Head: a minimálisan ajánlott virtuálisgép-méretek | D5_v2 | D3_v2 | D13_v2 | A4_v2 | D12_v2 | D12_v2 |
