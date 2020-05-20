@@ -1,10 +1,10 @@
 ### YamlMime:Landing
-title: A Translator Text dokumentációja
-summary: A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a Microsoft Speech Services használatával fordíthat le szövegeket.
+title: A Translator dokumentációja
+summary: A Translator egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. A szolgáltatás modern neurális gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testreszabott fordítási rendszerrel a Translator vagy a Microsoft Speech Services használatával fordíthat le szövegeket.
 metadata:
-  title: A Translator Text dokumentációja – gyorsútmutatók, oktatóanyagok, API-referencia
+  title: A Translator dokumentációja – gyorsútmutatók, oktatóanyagok, API-referencia
   titleSuffix: Azure Cognitive Services
-  description: A Translator Text egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. Az API modern idegi gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator Text API bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testre szabott fordítási rendszerrel a Translator Text API vagy a Microsoft Speech Services használatával fordíthat le szövegeket.
+  description: A Translator egy felhőalapú gépi fordítási szolgáltatás, amellyel közel valós időben fordíthat le szövegeket egy egyszerű REST API-hívással. A szolgáltatás modern neurális gépi fordítási technológiát használ, és statisztikai gépi fordító technológiával is rendelkezik. A Custom Translator a Translator bővítménye, amellyel neurális fordítási rendszereket hozhat létre. A testreszabott fordítási rendszerrel a Translator vagy a Microsoft Speech Services használatával fordíthat le szövegeket.
   services: cognitive-services
   author: erhopf
   manager: nitinme
@@ -13,18 +13,18 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/14/2019
   ms.author: erhopf
-  ms.openlocfilehash: 47944b573cdc2a8121c525c7750aa868d4a4e696
-  ms.sourcegitcommit: 31ef5e4d21aa889756fa72b857ca173db727f2c3
+  ms.openlocfilehash: 26fc174ef0993339487a2edcc32cbb4fd864f96e
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81529797"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83592746"
 landingContent:
 - title: Fordító
   linkLists:
   - linkListType: overview
     links:
-    - text: Translator Text API
+    - text: Fordító
       url: translator-info-overview.md
     - text: Custom Translator
       url: translator-info-overview.md
@@ -36,7 +36,7 @@ landingContent:
       url: translator-text-how-to-signup.md
     - text: GYIK
       url: https://www.microsoft.com/translator/faq.aspx
-- title: Translator Text API
+- title: Bevezetés
   linkLists:
   - linkListType: quickstart
     links:
@@ -60,7 +60,7 @@ landingContent:
       url: tutorial-build-flask-app-translation-synthesis.md
   - linkListType: reference
     links:
-    - text: Translator Text API-referencia (v3)
+    - text: Translator-referencia (3-as verzió)
       url: reference/v3-0-reference.md
     - text: Kérelmekre vonatkozó korlátok
       url: request-limits.md

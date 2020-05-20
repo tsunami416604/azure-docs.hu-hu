@@ -3,18 +3,18 @@ title: Riasztások beállítása a Application Insightsban a PowerShell használ
 description: Application Insights konfigurációjának automatizálása a metrikák változásairól szóló e-mailek lekéréséhez.
 ms.topic: conceptual
 ms.date: 10/31/2016
-ms.openlocfilehash: c19cb43d08b44b55c786e750e64a83e6f0c67381
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f35658b08eff7574448e3c72b103178b66acbbe0
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669845"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701829"
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>A PowerShell használata riasztások beállításához az Application Insights szolgáltatásban
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-[Application Insightsban](../../azure-monitor/app/app-insights-overview.md)automatizálhatja a [riasztások](../../azure-monitor/app/alerts.md) konfigurációját.
+[Application Insightsban](../../azure-monitor/app/app-insights-overview.md)automatizálhatja a [riasztások](../../azure-monitor/platform/alerts-log.md) konfigurációját.
 
 Emellett beállíthatja, [hogy a webhookok a riasztásra adott válaszokat automatizálják](../../azure-monitor/platform/alerts-webhooks.md).
 
@@ -89,7 +89,7 @@ Olyan alkalmazással rendelkezem, amelyben a [TrackMetric ()](../../azure-monito
 Ugyanez a szabály használható egy másik nyomkövetési hívás (például TrackEvent vagy trackPageView) [mérési paramétere](../../azure-monitor/app/api-custom-events-metrics.md#properties) használatával jelentett metrika esetében.
 
 ## <a name="metric-names"></a>Metrikák nevei
-| Metrika neve | Képernyő neve | Leírás |
+| Metrika neve | Képernyő neve | Description |
 | --- | --- | --- |
 | `basicExceptionBrowser.count` |Böngészőkivételek |A böngészőben fellépő nem kezelt kivételek száma. |
 | `basicExceptionServer.count` |Kiszolgálói kivételek |Az alkalmazás által eldobott kezeletlen kivételek száma |

@@ -3,16 +3,16 @@ title: Azure Analysis Services kezelése a PowerShell használatával | Microsof
 description: Ismerteti Azure Analysis Services PowerShell-parancsmagokat a gyakori felügyeleti feladatokhoz, például a kiszolgálók létrehozásához, a műveletek felfüggesztéséhez vagy a szolgáltatási szint módosításához.
 author: minewiskan
 ms.service: azure-analysis-services
-ms.topic: reference
-ms.date: 10/28/2019
+ms.topic: conceptual
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 2c8f4c0541d97a189087af692658cfe794eaaf7e
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: dfa9de94665c0ee98d0252be6de807f18e39b087
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572695"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697978"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>Az Azure Analysis Services kezelése a PowerShell-lel
 
@@ -44,7 +44,7 @@ Dokumentáció – [SQLServer-hivatkozás](/powershell/module/sqlserver)
 
 ### <a name="supported-cmdlets"></a>Támogatott parancsmagok
 
-|Parancsmag|Leírás|
+|Parancsmag|Description|
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
 |[Backup – ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/backup-asdatabase)|Analysis Services adatbázis biztonsági mentése.|  

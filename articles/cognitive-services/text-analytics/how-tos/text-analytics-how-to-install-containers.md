@@ -11,17 +11,17 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: aahi
-ms.openlocfilehash: d22dcf221bef40edb8bb2bd346dd5964000a4a68
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: efe76323b4159af01f1eaf470d9c1833edd0a186
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588392"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702134"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>A Text Analytics-tárolók telepítése és futtatása
 
 > [!NOTE]
-> * A Hangulatelemzés v3 tárolója már általánosan elérhető. A kinyerési és nyelvfelismerés-tárolók kulcsfontosságú kifejezésként elérhető [nyilvános előzetes](../../cognitive-services-gating-process.md)verzióként érhetők el.
+> * A Hangulatelemzés v3 tárolója már általánosan elérhető. A kinyerési és nyelvfelismerés-tárolók kulcsfontosságú kifejezésként elérhető nyilvános előzetes verzióként érhetők el.
 > * Az entitások összekapcsolása és megtekintő szolgáltatás jelenleg nem érhető el tárolóként.
 
 A tárolók lehetővé teszik a szöveges elemzési API-k futtatását a saját környezetében, és kiválóan használhatók az adott biztonsági és adatirányítási követelményekhez. A Text Analytics tárolók fejlett természetes nyelvi feldolgozást biztosítanak a nyers szövegeken, és három fő funkciót tartalmaznak: a hangulat elemzését, a kulcsfontosságú kifejezés kinyerését és a nyelvfelismerés. 

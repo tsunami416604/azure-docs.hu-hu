@@ -1,0 +1,75 @@
+- name: Az SQL Edge dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: Mi az az SQL Edge?
+      href: overview.md
+    - name: Támogatott kiadások és funkciók
+      href: features.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Az SQL Edge üzembe helyezése
+      href: deploy-portal.md
+    - name: ONNX-modellek üzembe helyezése az SQL Edge-ben
+      href: deploy-onnx.md
+- name: Oktatóanyagok
+  items:
+    - name: Adatok szinkronizálása az Azure Data Factoryvel
+      href: tutorial-sync-data-factory.md
+    - name: Adatok szinkronizálása az SQL Data Synckel
+      href: tutorial-sync-data-sync.md
+    - name: Teljes körű IoT-megoldás kiépítése az SQL Edge használatával
+      items:
+        - name: Az Azure-erőforrások beállítása
+          href: tutorial-deploy-azure-resources.md
+        - name: IoT Edge-modulok beállítása
+          href: tutorial-set-up-iot-edge-modules.md
+        - name: Modell üzembe helyezése az SQL Edge-ben
+          href: tutorial-run-ml-model-on-sql-edge.md
+- name: Útmutató
+  items:
+    - name: DAC-csomagok és Stream Analytics-feladatok
+      href: stream-analytics.md
+    - name: Replikáció konfigurálása
+      href: configure-replication.md
+    - name: Adatváltozások követése
+      href: track-data-changes.md
+    - name: T-SQL-streamelési feladatok kezelése
+      href: create-stream-analytics-job.md
+    - name: Csatlakozás az SQL Edge-hez
+      href: connect.md
+    - name: Az SQL Edge konfigurálása
+      href: configure.md
+    - name: DAC-csomag üzembe helyezése
+      href: deploy-dacpac.md
+- name: Alapelvek
+  items:
+    - name: Gépi tanulás és mesterséges intelligencia az ONNX-szel
+      href: onnx-overview.md
+    - name: Biztonsági mentés és visszaállítás
+      href: backup-restore.md
+    - name: Adatstreamelés az SQL Edge-ben
+      items:
+        - name: Adatok streamelése
+          href: stream-data.md
+        - name: Külső stream létrehozása (Transact-SQL)
+          href: create-external-stream-transact-sql.md
+        - name: Külső stream módosítása (Transact-SQL)
+          href: alter-external-stream-transact-sql.md
+        - name: Külső stream elvetése (Transact-SQL)
+          href: drop-external-stream-transact-sql.md
+        - name: Streamelési nézetek és DMV-k
+          items:
+            - name: Streamelési nézetek és DMV-k
+              href: streaming-catalog-views.md
+            - name: sys.external_job_streams (Transact-SQL)
+              href: sys-external-job-streams.md
+            - name: sys.external-streaming_jobs (Transact-SQL)
+              href: sys-external-streaming-jobs.md
+            - name: sys.external_streams (Transact-SQL)
+              href: sys-external-streams.md
+    - name: Idősoradatok feldolgozása
+      items:
+        - name: Date_Bucket (Transact-SQL)
+          href: date-bucket-tsql.md

@@ -47,6 +47,8 @@
           items:
             - name: Azure-hálózati késés
               href: azure-network-latency.md
+            - name: Internetes útválasztási beállítás az Azure-ban
+              href: ../virtual-network/routing-preference-overview.md
         - name: Virtuális hálózatok
           href: ../virtual-network/virtual-networks-overview.md?toc=%2fazure%2fnetworking%2ftoc.json
         - name: Hálózati terheléselosztás

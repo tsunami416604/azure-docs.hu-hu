@@ -1,0 +1,61 @@
+- name: Az Azure Static Web Apps dokumentációja
+  href: index.yml
+- name: Áttekintés
+  items:
+    - name: A Static Web Apps bemutatása
+      href: overview.md
+- name: Rövid útmutatók
+  expanded: true
+  items:
+    - name: Az első Static Web Apps-alkalmazás létrehozása
+      href: getting-started.md
+- name: Alapelvek
+  items:
+    - name: API-támogatás az Azure Functions szolgáltatással
+      href: apis.md
+    - name: Útvonalak
+      href: routes.md
+    - name: Hitelesítés és engedélyezés
+      href: authentication-authorization.md
+    - name: Hozzáférés a felhasználói adatokhoz
+      href: user-information.md
+    - name: Lekéréses kérelmek áttekintése éles üzem előtti környezetekben
+      href: review-publish-pull-requests.md
+    - name: Egyéni tartomány
+      href: custom-domain.md
+    - name: Buildelés és munkafolyamat-konfiguráció
+      href: github-actions-workflow.md
+- name: Útmutatók
+  items:
+    - name: Helyi fejlesztés beállítása
+      href: local-development.md
+    - name: API hozzáadása
+      href: add-api.md
+    - name: Alkalmazásbeállítások konfigurálása
+      href: application-settings.md
+- name: Oktatóanyagok
+  items:
+    - name: Közzététel statikuswebhely-generátorból
+      items:
+        - name: Gatsby
+          href: publish-gatsby.md
+        - name: Hugo
+          href: publish-hugo.md
+        - name: VuePress
+          href: publish-vuepress.md
+    - name: Üzembe helyezés keretrendszerből
+      items:
+        - name: Next.js
+          href: deploy-nextjs.md
+        - name: Nuxt.js
+          href: deploy-nuxtjs.md
+- name: További források
+  items:
+    - name: Fejlessze a készségeit a Microsoft Learnnel
+      items:
+        - name: 'Angular, React, Svelte vagy Vue JavaScript-alkalmazás és API közzététele'
+          href: /learn/modules/publish-app-service-static-web-app-api
+        - name: Statikus webalkalmazás létrehozása és közzététele a Gatsbyvel
+          href: /learn/modules/create-deploy-static-webapp-gatsby-app-service
+    - name: Kvóták
+      href: quotas.md

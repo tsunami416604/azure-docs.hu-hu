@@ -1,28 +1,30 @@
 ### YamlMime:Landing
-title: Az Azure Active Directory B2B dokumentációja
-summary: Ismerje meg, hogyan használható az Azure AD vállalatok közötti (B2B) együttműködési megoldása a vállalati alkalmazások és szolgáltatások vendégfelhasználókkal és tetszőleges külső partnerekkel való megosztására, miközben megőrzi a vállalat adatai feletti irányítást is.
+title: Az External Identities dokumentációja
+summary: Az External Identities olyan képességek összessége, amelyek lehetővé teszik a szervezetek számára a külső felhasználók, például az ügyfelek és a partnerek védelmét és kezelését. A B2B-együttműködésre épülő External Identities további képességekkel bővíti a szervezeten kívüli felhasználók kezelését és a velük zajló kommunikációt.
 metadata:
-  title: Alkalmazáskezelési dokumentáció
-  description: Ismerje meg, hogyan használható az Azure AD vállalatok közötti (B2B) együttműködési megoldása a vállalati alkalmazások és szolgáltatások vendégfelhasználókkal és tetszőleges külső partnerekkel való megosztására, miközben megőrzi a vállalat adatai feletti irányítást is.
+  title: Az External Identities dokumentációja
+  description: Az External Identities olyan képességek összessége, amelyek lehetővé teszik a szervezetek számára a külső felhasználók, például az ügyfelek és a partnerek védelmét és kezelését. A B2B-együttműködésre épülő External Identities további képességekkel bővíti a szervezeten kívüli felhasználók kezelését és a velük zajló kommunikációt.
   ms.service: active-directory
   ms.subservice: B2B
   ms.workload: identity
   ms.topic: landing-page
-  ms.date: 08/27/2019
+  ms.date: 05/19/2020
   author: msmimart
   ms.author: mimart
   manager: celested
-  ms.openlocfilehash: 2c0f418249d470c1454474012fb25e6670630108
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 3a26561b7789446aff70c9fb9e08d523d05d8d64
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "74272699"
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83587476"
 landingContent:
-- title: A B2B-együttműködés ismertetése
+- title: Az External Identities ismertetése
   linkLists:
   - linkListType: overview
     links:
+    - text: External Identities-megoldások összehasonlítása
+      url: compare-with-b2c.md
     - text: Mi a B2B vendégfelhasználói hozzáférés?
       url: what-is-b2b.md
 - title: B2B-vendégfelhasználók meghívása

@@ -6,15 +6,15 @@ author: ruixinxu
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 04/15/2020
+ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 506339cefa90fb17bedfc946f70cb4d7d8047cf2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81430226"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702098"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Azure szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása
 
@@ -55,12 +55,12 @@ Több módon is hozzáadhat új cellákat a jegyzetfüzethez.
 
 ### <a name="set-a-primary-language"></a>Elsődleges nyelv beállítása
 
-Az Azure szinapszis Studio notebookok négy Spark-nyelvet támogatnak:
+Az Azure szinapszis Studio notebookok négy Apache Spark nyelvet támogatnak:
 
-* pyspark (Python)
+* pySpark (Python)
 * Spark (Scala)
-* sparkSQL
-* Spark.NET (C#)
+* SparkSQL
+* .NET Apache Sparkhoz (C#)
 
 Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördülő listájából állíthatja be.
 
@@ -70,20 +70,20 @@ Az új hozzáadott cellák elsődleges nyelvét a felső parancssáv legördül�
 
 Több nyelvet is használhat egy jegyzetfüzetben a cella elején található megfelelő nyelvi mágikus parancs megadásával. A következő táblázat a cella nyelveinek váltására szolgáló mágikus parancsokat sorolja fel.
 
-|Magic parancs |Nyelv | Leírás |  
+|Magic parancs |Nyelv | Description |  
 |---|------|-----|
 |%% pyspark| Python | **Python** -lekérdezés végrehajtása a Spark-környezettel.  |
 |%% Spark| Scala | **Scala** -lekérdezés végrehajtása a Spark-környezettel.  |  
 |%% SQL| SparkSQL | **SparkSQL** -lekérdezés végrehajtása a Spark-környezettel.  |
-|%% csharp | Spark.NET C # | **Spark.net C#** -lekérdezés végrehajtása a Spark-környezettel. |
+|%% csharp | .NET a Spark C-hez # | .Net- **keretrendszer** végrehajtása Spark C#-lekérdezéshez Spark-környezettel. |
 
-Az alábbi ábrán egy példa látható arra, hogyan írhat PySpark-lekérdezést a ( **z)%% PySpark** Magic paranccsal vagy egy SparkSQL-lekérdezéssel a (z)% **% SQL** Magic paranccsal a **Spark (Scala)** jegyzetfüzetben. Figyelje meg, hogy a jegyzetfüzet elsődleges nyelve a Scala értékre van állítva.
+Az alábbi ábrán egy példa látható arra, hogyan írhat PySpark-lekérdezést a ( **z)%% PySpark** Magic paranccsal vagy egy SparkSQL-lekérdezéssel a (z)% **% SQL** Magic paranccsal a **Spark (Scala)** jegyzetfüzetben. Figyelje meg, hogy a jegyzetfüzet elsődleges nyelve a pySpark értékre van állítva.
 
    ![szinapszis – Spark-Magics](./media/apache-spark-development-using-notebooks/synapse-spark-magics.png)
 
 ### <a name="use-temp-tables-to-reference-data-across-languages"></a>Az adatnyelvek közötti hivatkozáshoz használjon ideiglenes táblázatokat
 
-Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken a szinapszis Studio jegyzetfüzetben. A Sparkban egy ideiglenes tábla is szerepelhet a nyelvek között. Íme egy példa arra, hogyan lehet beolvasni `Scala` egy DataFrame `PySpark` a `SparkSQL` és a Spark Temp-tábla használatával megkerülő megoldásként.
+Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken a szinapszis Studio jegyzetfüzetben. A Sparkban egy ideiglenes tábla is szerepelhet a nyelvek között. Íme egy példa arra, hogyan lehet beolvasni egy `Scala` DataFrame a `PySpark` és a `SparkSQL` Spark Temp-tábla használatával megkerülő megoldásként.
 
 1. Az 1. cellában olvassa el a DataFrame az SQL Pool-összekötőről a Scala használatával, és hozzon létre egy ideiglenes táblát.
 
@@ -118,7 +118,7 @@ Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szi
 |PySpark (Python)|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Spark (Scala)|Igen|Igen|Igen|Igen|-|-|-|Igen|
 |SparkSQL|Igen|Igen|-|-|-|-|-|-|
-|Spark.NET (C#)|Igen|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Igen|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Szöveg cellájának formázása eszköztár gombjaival
 
@@ -267,7 +267,7 @@ Az elsődleges Storage-fiókban lévő adatelérést közvetlenül is elérheti.
 
 Táblázatos eredményeket tartalmazó nézetet biztosítunk a sávdiagram, a diagram, a tortadiagram, a pontdiagram és a diagramterület létrehozásához. Az adatait anélkül is megjelenítheti, hogy kódot kellene írnia. A diagramok testreszabhatók a **diagram beállításaiban**. 
 
-A **(z)%% SQL** Magic parancsok kimenete alapértelmezés szerint a megjelenített tábla nézetben jelenik meg. A megjelenített tábla nézet létrehozásához a Spark DataFrames vagy a rugalmasan elosztott adatkészletek (RDD) függvényben hívható meg a **Display (`<DataFrame name>`)** .
+A **(z)%% SQL** Magic parancsok kimenete alapértelmezés szerint a megjelenített tábla nézetben jelenik meg. A megjelenített tábla nézet létrehozásához a Spark DataFrames vagy a rugalmasan elosztott adatkészletek (RDD) függvényben hívható meg a **Display ( `<DataFrame name>` )** .
 
    ![beépített diagramok](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)
 
@@ -339,11 +339,11 @@ Elérhető cella-varázslatok: [%% idő](https://ipython.readthedocs.io/en/stabl
 
 A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok modális felhasználói felülettel rendelkeznek. A billentyűzet különböző műveleteket végez, attól függően, hogy a jegyzetfüzet-cella milyen módban van. A szinapszis Studio notebookok az alábbi két módot támogatják egy adott kódú cellához: parancs mód és szerkesztési mód.
 
-1. A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem lehet egyéni cellákba írni. A parancs mód megadásához nyomja `ESC` le vagy az egér használatával kattintson a cella szerkesztő területén kívülre.
+1. A cella parancs módban van, ha nincs beírni kívánt szöveg. Ha egy cella parancs módban van, a jegyzetfüzetet teljes egészében szerkesztheti, de nem lehet egyéni cellákba írni. A parancs mód megadásához nyomja le `ESC` vagy az egér használatával kattintson a cella szerkesztő területén kívülre.
 
    ![parancssori üzemmód](./media/apache-spark-development-using-notebooks/synapse-command-mode2.png)
 
-2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, nem kell beírnia a cellába. Adja meg a szerkesztési módot `Enter` úgy, hogy az egérrel kattint a cella szerkesztői területeire, vagy az egér használatával rákattint.
+2. A szerkesztési módot egy szöveges kurzor jelzi, amely arra kéri, hogy írja be a szerkesztőt. Ha egy cella szerkesztési módban van, nem kell beírnia a cellába. Adja meg a szerkesztési módot úgy, `Enter` hogy az egérrel kattint a cella szerkesztői területeire, vagy az egér használatával rákattint.
    
    ![edit-mode](./media/apache-spark-development-using-notebooks/synapse-edit-mode2.png)
 
@@ -351,7 +351,7 @@ A Jupyter-jegyzetfüzetekhez hasonlóan az Azure szinapszis Studio notebookok mo
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis jegyzetfüzetekben.
 
-| Műveletek |A szinapszis Studio notebook parancsikonjai  |
+| Művelet |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Futtassa az aktuális cellát, és válassza az alábbi lehetőséget. | SHIFT + ENTER |
 |Az aktuális cella futtatása és az alábbi beszúrása | ALT + ENTER |
@@ -370,7 +370,7 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat és futtathat kódot az Azure szinapszis-jegyzetfüzetekben szerkesztési módban.
 
-| Műveletek |A szinapszis Studio notebook parancsikonjai  |
+| Művelet |A szinapszis Studio notebook parancsikonjai  |
 |--|--|
 |Kurzor mozgatása felfelé | Fel |
 |Kurzor mozgatása lefelé|Le|
@@ -390,5 +390,8 @@ A következő billentyűleütés-billentyűparancsokkal könnyebben navigálhat 
 
 ## <a name="next-steps"></a>További lépések
 
+- [Rövid útmutató: Apache Spark készlet (előzetes verzió) létrehozása az Azure szinapszis Analytics szolgáltatásban webes eszközök használatával](../quickstart-apache-spark-notebook.md)
+- [Az Azure szinapszis Analytics Apache Spark](apache-spark-overview.md)
+- [A .NET használata Apache Sparkhoz az Azure szinapszis Analytics használatával](spark-dotnet.md)
 - [.NET Apache Spark dokumentációhoz](/dotnet/spark?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

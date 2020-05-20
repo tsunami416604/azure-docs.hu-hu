@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 3c09a95309e001def306698bbba4f6d0a1a2804d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ea7fb97b6c97a797ce99878762333833965549d
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255534"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698650"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>Az DistCp használata az Azure Storage-blobok és a Azure Data Lake Storage Gen2 közötti adatmásoláshoz
 
@@ -23,11 +23,11 @@ A DistCp számos parancssori paramétert biztosít, és nyomatékosan javasoljuk
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
-* **Egy meglévő Azure Storage-fiók, amelyhez nincs engedélyezve Data Lake Storage Gen2 képesség (hierarchikus névtér)**.
-* **Egy Data Lake Storage Gen2 funkciót engedélyező Azure Storage-fiók**. A létrehozásával kapcsolatos utasításokért lásd: [Azure Data Lake Storage Gen2 Storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
-* A Storage-fiókban a hierarchikus névtérrel létrehozott **fájlrendszer** .
-* **Azure HDInsight-fürt** hozzáférése Data Lake Storage Gen2 engedélyezve lévő Storage-fiókhoz. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
+* Azure-előfizetés. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/pricing/free-trial/).
+* Egy meglévő Azure Storage-fiók, amelyhez nincs engedélyezve Data Lake Storage Gen2 képesség (hierarchikus névtér).
+* Egy Azure Storage-fiók, amelyen engedélyezve van a Data Lake Storage Gen2 képességek (hierarchikus névtér). A létrehozásával kapcsolatos útmutatásért lásd: [Azure Storage-fiók létrehozása](../common/storage-account-create.md)
+* A Storage-fiókban a hierarchikus névtérrel létrehozott tároló.
+* Egy Azure HDInsight-fürt, amely hozzáféréssel rendelkezik egy olyan Storage-fiókhoz, amelyen engedélyezve van a hierarchikus névtér funkció. Lásd: [Azure Data Lake Storage Gen2 használata az Azure HDInsight-fürtökkel](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). Győződjön meg arról, hogy engedélyezi Távoli asztal a fürt számára.
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>DistCp használata egy HDInsight Linux-fürtből
 
@@ -37,25 +37,25 @@ An méretű HDInsight-fürthöz tartozik a DistCp segédprogram, amely az adatok
 
 2. Ellenőrizze, hogy el tudja-e érni meglévő általános célú v2-fiókját (a hierarchikus névtér engedélyezése nélkül).
 
-        hdfs dfs –ls wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/
+        hdfs dfs –ls wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/
 
-    A kimenetnek meg kell adnia a tároló tartalmának listáját.
+   A kimenetnek meg kell adnia a tároló tartalmának listáját.
 
 3. Hasonlóképpen ellenőrizze, hogy elérhető-e a Storage-fiók a fürtön engedélyezett hierarchikus névtérrel. Futtassa az alábbi parancsot:
 
-        hdfs dfs -ls abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/
+        hdfs dfs -ls abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/
 
-    A kimenetnek meg kell adnia a Data Lake Storage fiókban található fájlok/mappák listáját.
+    A kimenetnek meg kell adnia a fájlok/mappák listáját a Data Lake Storage-fiókban.
 
 4. A DistCp használatával másolhatja át a WASB adatait egy Data Lake Storage-fiókba.
 
-        hadoop distcp wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+        hadoop distcp wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
     A parancs átmásolja a **/example/Data/Gutenberg/** mappa tartalmát a blob Storage-ban a Data Lake Storage fiókban lévő **/MyFolder** .
 
 5. Hasonlóképpen, a DistCp használatával másolhatja át Data Lake Storage fiók adatait a Blob Storageba (WASB).
 
-        hadoop distcp abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg
+        hadoop distcp abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg
 
     A parancs átmásolja a **/MyFolder** tartalmát a Data Lake Store fiókban a WASB **/example/Data/Gutenberg/** mappájába.
 
@@ -63,9 +63,9 @@ An méretű HDInsight-fürthöz tartozik a DistCp segédprogram, amely az adatok
 
 Mivel a DistCp legalacsonyabb részletessége egyetlen fájl, az egyidejű másolatok maximális számának beállítása a legfontosabb paraméter a Data Lake Storage optimalizálásához. Az egyidejű másolatok száma egyenlő a parancssorban található mappers (**m**) paraméterek számával. Ez a paraméter határozza meg az adatmásoláshoz használt leképezések maximális számát. Az alapértelmezett érték 20.
 
-**Például**
+**Példa**
 
-    hadoop distcp -m 100 wasbs://<CONTAINER_NAME>@<STORAGE_ACCOUNT_NAME>.blob.core.windows.net/example/data/gutenberg abfss://<FILE_SYSTEM_NAME>@<STORAGE_ACCOUNT_NAME>.dfs.core.windows.net/myfolder
+    hadoop distcp -m 100 wasbs://<container-name>@<storage-account-name>.blob.core.windows.net/example/data/gutenberg abfss://<container-name>@<storage-account-name>.dfs.core.windows.net/myfolder
 
 ### <a name="how-do-i-determine-the-number-of-mappers-to-use"></a>Hogyan határozza meg a használni kívánt leképezések számát?
 
@@ -77,7 +77,7 @@ Az alábbiakban olvashat némi útmutatást ezzel kapcsolatban.
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
-**Például**
+**Példa**
 
 Tegyük fel, hogy egy 4x D14v2s-fürttel rendelkezik, és 10 TB-nyi adat átvitelét kísérli meg 10 különböző mappából. Az egyes mappák különböző mennyiségű adattal rendelkeznek, és az egyes mappákban lévő fájlméretek eltérőek.
 

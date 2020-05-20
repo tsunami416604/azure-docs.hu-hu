@@ -41,21 +41,9 @@
           href: tutorial-intents-only.md
         - name: 2. Felhasználói adatok kinyerése
           href: tutorial-machine-learned-entity.md
-          displayName: 'n-depth, constraint, descriptor, phrase list, entity'
+          displayName: 'n-depth, constraint, descriptor, phrase list, entity, feature'
         - name: 3. Hangulat lekérése a felhasználó által kimondott szövegekből
           href: tutorial-publish-settings.md
-    - name: Entitások létrehozása és használata
-      items:
-        - name: Reguláriskifejezés-entitások
-          href: tutorial-regex-entity.md
-        - name: Listaentitások
-          href: tutorial-list-entity.md
-        - name: Entitásszerepkörök
-          href: tutorial-entity-roles.md
-          displayName: 'roles, geographyV2, context'
-        - name: Kapcsolódó adatok csoportosítása és kinyerése összetett entitásokkal
-          href: luis-tutorial-composite-entity.md
-          displayName: roles
     - name: Az alkalmazás továbbfejlesztése
       items:
         - name: Bizonytalan előrejelzések javítása
@@ -79,17 +67,19 @@
     - name: Az alkalmazás megtervezése
       displayName: 'simple, composite, prebuilt, list, regex, regular expression'
       href: luis-how-plan-your-app.md
+    - name: Adatgyűjtés
+      href: data-collection.md
     - name: Alkalmazásmodellek
       items:
         - name: Típusok
           href: luis-concept-model.md
-        - name: Leképezések
+        - name: A szándékok beszédelemeket sorolnak be
           href: luis-concept-intent.md
-        - name: Beszédmódok
-          href: luis-concept-utterance.md
-        - name: Entitások
+        - name: Az entitások adatokat nyernek ki
           displayName: 'prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, machine-learn, exact, mixed, roles'
           href: luis-concept-entity-types.md
+        - name: Példák kimondott szövegekre
+          href: luis-concept-utterance.md
         - name: Előre összeállított modellek
           href: luis-concept-prebuilt-model.md
         - name: Minták
@@ -97,7 +87,7 @@
           displayName: roles
         - name: Szolgáltatások
           href: luis-concept-feature.md
-          displayName: 'descriptor, phrase list'
+          displayName: 'descriptor, phrase list, feature'
         - name: Alkalmazás kiterjesztése futásidőben
           href: schema-change-prediction-runtime.md
     - name: Előrejelzési pontszám
@@ -153,15 +143,13 @@
           href: howto-add-prebuilt-models.md
         - name: Entitás címkézése beszédelemben
           href: label-entity-example-utterance.md
-        - name: Leíró hozzáadása
-          displayName: 'synonym, interchange, phrase list, descriptor'
+        - name: Szolgáltatás hozzáadása
+          displayName: 'synonym, interchange, phrase list, descriptor, feature'
           href: luis-how-to-add-features.md
         - name: REST API-kkal
           items:
             - name: Alkalmazás létrehozása programozott módon a Node.js használatával
               href: luis-tutorial-node-import-utterances-csv.md
-            - name: Pontos szöveg egyeztetése listaentitással a Node.js használatával
-              href: luis-tutorial-list-entity.md
     - name: Integrálás
       items:
         - name: A Bing Spell Check 7-es verziójával
@@ -193,11 +181,25 @@
       href: luis-how-to-publish-app.md
     - name: Előrejelzési futtatókörnyezet lekérdezése
       href: luis-get-started-get-intent-from-browser.md
+    - name: Migrate (Áttelepítés)
+      items:
+        - name: Migrálás összetett entitásból
+          href: migrate-from-composite-entity.md
+        - name: Migrálás tartalomkészítési erőforrásra
+          items:
+            - name: Áttekintés
+              href: luis-migration-authoring.md
+            - name: Migrálási eljárás
+              href: luis-migration-authoring-steps.md
+        - name: Migrálás a V3 API-re
+          href: luis-migration-api-v3.md
     - name: Alkalmazás kezelése
       items:
         - name: Azure-erőforrások
           displayName: 'azure portal, resource, assign key, add key, out of quota, 403, 429, luis portal, key assignment, subscription, authoring, endpoint, prediction'
           href: luis-how-to-azure-subscription.md
+        - name: Alkalmazás- és verzióbeállítások
+          href: how-to-application-settings-portal.md
         - name: Migrálás tartalomkészítési erőforrásra
           items:
             - name: Áttekintés
@@ -216,6 +218,8 @@
       items:
         - name: Fejlesztőknek
           href: developer-reference-resource.md
+        - name: Alkalmazásséma
+          href: app-schema-definition.md
         - name: Migrálás V3 tartalomkészítési API-kra
           href: luis-migration-authoring-entities.md
         - name: Migrálás V3 előrejelzési API-kra
@@ -259,6 +263,8 @@
         - name: Áttekintés
           href: developer-reference-resource.md
           displayName: 'SDK, API, quickstart, REST, cli, powershell, azure, rm, resource manager, samples, package, module, tool, dispatch, bot'
+        - name: Alkalmazásséma
+          href: app-schema-definition.md
         - name: Azure CLI
           href: 'https://go.microsoft.com/fwlink/?linkid=2092156'
         - name: Azure RM PowerShell
@@ -329,7 +335,7 @@
       displayName: 'failover, fail-over, fail over, Europe, EU, Australia, business continuity, bcdr'
     - name: Korlátok
       href: luis-limits.md
-    - name: Alkalmazásbeállítások
+    - name: Alkalmazás- és verzióbeállítások
       href: luis-reference-application-settings.md
     - name: Előre összeállított entitáshivatkozás
       items:
@@ -387,7 +393,7 @@
           href: reference-entity-simple.md
     - name: Minta szintaxisa
       href: reference-pattern-syntax.md
-    - name: Hangulat
+    - name: Hangulatreferencia
       href: luis-reference-prebuilt-sentiment.md
 - name: További források
   items:

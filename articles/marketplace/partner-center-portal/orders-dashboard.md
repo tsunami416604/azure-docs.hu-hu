@@ -7,14 +7,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: 148b80a6843168b11e4feb3558f6bf08eaeb3ace
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c5bfb6632a22a890ac2387f06464c18be7dd714
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81261261"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699061"
 ---
-# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A megrendelések irányítópultja a kereskedelmi piactér elemzésében
+# <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>A Rendelések irányítópult a kereskedelmi piactér-elemzésekben
 
 Ez a cikk a partner Center **orders (megrendelések) irányítópultján** tartalmaz információkat. Ez az irányítópult grafikus és letölthető formátumban jeleníti meg a rendelésekkel kapcsolatos információkat.
 
@@ -104,6 +104,7 @@ Az Order Details (megrendelés részletei) tábla a 1000 Top orders (beszerzési
 - Az adatokat egy TSV-fájlba lehet kibontani, ha a rekordok száma kisebb, mint 1000.
 - Ha a 1000-es számú rekordok száma, az exportált adatok aszinkron módon lesznek elhelyezve a letöltési oldalon a következő 30 napban.
 - A szűrők az **Order Details (megrendelés részletei) táblára** alkalmazhatók, hogy csak az Önt érdeklő adatokat jelenítsék meg. Az adatszűrést ország, Azure-licenc típusa, piactér-licenc típusa, ajánlat típusa, megrendelés állapota, ingyenes nyomvonalak, piactér-előfizetés azonosítója, ügyfél-azonosító és cégnév alapján lehet szűrni.
+- Mivel az Azure Marketplace-en vagy AppSource-n keresztül vásárolt SaaS-ajánlatok nem igényelnek Azure-előfizetést, a piactér-előfizetés azonosítója 00000000-0000-0000-0000-000000000000-ként fog megjelenni a **részletes megrendelések** adatszakaszban.
 
 #### <a name="orders-page-filters"></a>Megrendelések oldal szűrőinek
 

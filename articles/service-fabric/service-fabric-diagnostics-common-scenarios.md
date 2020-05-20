@@ -3,12 +3,12 @@ title: Az Azure Service Fabric gyakori forgatókönyvek diagnosztizálására
 description: Ismerje meg az Azure Service Fabric-alkalmazásokon belüli általános figyelési és diagnosztikai forgatókönyvek hibaelhárítását.
 ms.topic: article
 ms.date: 02/25/2019
-ms.openlocfilehash: 3c7f027bad71d48db5fba002f778f23db8225fa5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bc17f00dc46c6e995d18621353c8f10cacf7759c
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76906948"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697684"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Gyakori forgatókönyvek diagnosztizálása Service Fabric
 
@@ -45,7 +45,7 @@ A cikkben szereplő megoldások a következő eszközöket fogják használni. J
 1. Ugyanebben a Application Insights erőforrásban a kivételek helyett a "kérések" lehetőségre szűrhet, és az összes kérelem megtekintése
 2. Ha a Service Fabric Application Insights SDK-t használja, láthatja a szolgáltatásainak vizuális megjelenítését egymáshoz, valamint a sikeres és sikertelen kérések számát. A bal oldalon kattintson az "alkalmazás-hozzárendelés" elemre.
 
-    ![AI app Map](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![panel AI-alkalmazás térképe](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
+    ![AI app Map panel ](media/service-fabric-diagnostics-common-scenarios/app-map-blade.png) ![ AI-alkalmazás térképe](media/service-fabric-diagnostics-common-scenarios/app-map-new.png)
 
     Az alkalmazás-hozzárendeléssel kapcsolatos további információkért tekintse meg az [alkalmazás-Térkép dokumentációját](../azure-monitor/app/app-map.md) .
 
@@ -133,7 +133,7 @@ A megbízható [szolgáltatásokkal](service-fabric-reliable-serviceremoting-dia
 ## <a name="next-steps"></a>További lépések
 
 * [Gyakori programkód-aktiválási hibák megkeresése](./service-fabric-diagnostics-code-package-errors.md)
-* [Riasztások beállítása az AI-ben](../azure-monitor/app/alerts.md) a teljesítmény vagy a használat változásairól való értesítéshez
+* [Riasztások beállítása az AI-ben](/azure/azure-monitor/platform/alerts-log) a teljesítmény vagy a használat változásairól való értesítéshez
 * Az [intelligens észlelés a Application Insights](../azure-monitor/app/proactive-diagnostics.md) az AI által küldött telemetria proaktív elemzését hajtja végre, hogy figyelmeztesse Önt a lehetséges teljesítménnyel kapcsolatos problémákra
 * További információ Azure Monitor naplók [riasztásáról](../log-analytics/log-analytics-alerts.md) az észlelés és a diagnosztika támogatásához.
 * Helyszíni fürtök esetén a Azure Monitor-naplók egy átjárót (HTTP-továbbítási proxyt) biztosítanak, amellyel az adatküldés Azure Monitor naplókba. További információ arról, hogy az [log Analytics átjáró használatával internet-hozzáférés nélküli számítógépek csatlakoztatása Azure monitor naplókhoz](../azure-monitor/platform/gateway.md)

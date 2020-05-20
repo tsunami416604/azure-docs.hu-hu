@@ -1,14 +1,14 @@
 ---
-title: A szolgáltatás tűzfalszabály-szabályainak konfigurálása
+title: Nyilvános beállításjegyzék-hozzáférés konfigurálása
 description: Konfigurálja az IP-szabályokat úgy, hogy engedélyezze az Azure Container Registry elérését a kiválasztott nyilvános IP-címekről vagy címtartományok közül.
 ms.topic: article
-ms.date: 05/04/2020
-ms.openlocfilehash: f6459061ca486b4bf229409e6ec1ed1bd808a474
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.date: 05/19/2020
+ms.openlocfilehash: dc0514fbe7d3e01914965cee5dc547172d4435a4
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984615"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83702081"
 ---
 # <a name="configure-public-ip-network-rules"></a>Nyilvános IP-hálózati szabályok konfigurálása
 
@@ -59,24 +59,46 @@ az acr network-rule add \
 
 ## <a name="disable-public-network-access"></a>Nyilvános hálózati hozzáférés letiltása
 
-Ha a virtuális hálózatokra vonatkozó forgalmat [privát kapcsolaton](container-registry-private-link.md)keresztül szeretné korlátozni, tiltsa le a nyilvános végpontot a beállításjegyzékben. A nyilvános végpont letiltása felülbírálja az összes tűzfal-konfigurációt.
+Szükség esetén tiltsa le a nyilvános végpontot a beállításjegyzékben. A nyilvános végpont letiltása felülbírálja az összes tűzfal-konfigurációt. Előfordulhat például, hogy le szeretné tiltani a nyilvános hozzáférést egy, a virtuális hálózaton keresztül védett beállításjegyzékhez a [privát hivatkozás](container-registry-private-link.md)használatával.
+
+### <a name="disable-public-access---cli"></a>Nyilvános hozzáférés letiltása – parancssori felület
+
+Az Azure CLI használatával történő nyilvános hozzáférés letiltásához futtassa [az az ACR Update][az-acr-update] parancsot, és állítsa a következőre: `--public-network-enabled` `false` . 
+
+> [!NOTE]
+> Az `public-network-enabled` argumentumhoz az Azure CLI 2.6.0 vagy újabb verzió szükséges. 
+
+```azurecli
+az acr update --name myContainerRegistry --public-network-enabled false
+```
 
 ### <a name="disable-public-access---portal"></a>Nyilvános hozzáférés letiltása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
-1. A **nyilvános hozzáférés** lap nyilvános **hozzáférés engedélyezése**területén válassza a **Letiltva**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **Letiltva**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
 
 ![Nyilvános hozzáférés letiltása][acr-access-disabled]
 
-## <a name="restore-default-registry-access"></a>Alapértelmezett beállításjegyzék-hozzáférés visszaállítása
 
-Ha úgy szeretné visszaállítani a beállításjegyzéket, hogy az alapértelmezés szerint engedélyezze a hozzáférést, frissítse az alapértelmezett műveletet. 
+## <a name="restore-public-network-access"></a>Nyilvános hálózati hozzáférés visszaállítása
 
-### <a name="restore-default-registry-access---portal"></a>Alapértelmezett beállításjegyzék-hozzáférés visszaállítása – portál
+A nyilvános végpont újbóli engedélyezéséhez frissítse a hálózati beállításokat a nyilvános hozzáférés engedélyezéséhez. A nyilvános végpont engedélyezése felülbírálja az összes tűzfal-konfigurációt. 
+
+### <a name="restore-public-access---cli"></a>Nyilvános hozzáférés visszaállítása – parancssori felület
+
+Futtassa [az ACR Update][az-acr-update] parancsot, és állítsa a következőre: `--public-network-enabled` `true` . 
+
+> [!NOTE]
+> Az `public-network-enabled` argumentumhoz az Azure CLI 2.6.0 vagy újabb verzió szükséges. 
+
+```azurecli
+az acr update --name myContainerRegistry --public-network-enabled true
+```
+
+### <a name="restore-public-access---portal"></a>Nyilvános hozzáférés visszaállítása – portál
 
 1. A portálon navigáljon a tároló beállításjegyzékéhez, és válassza a **beállítások > hálózatkezelés**lehetőséget.
-1. A **tűzfal**területen válassza ki az egyes címtartományt, majd kattintson a Törlés ikonra.
-1. A **nyilvános hozzáférés** lap nyilvános **hozzáférés engedélyezése**területén válassza a **minden hálózat**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
+1. A **nyilvános hozzáférés** lapon, a **nyilvános hálózati hozzáférés engedélyezése**területen válassza a **minden hálózat**lehetőséget. Ezután válassza a **Save** (Mentés) lehetőséget.
 
 ![Nyilvános hozzáférés az összes hálózatról][acr-access-all-networks]
 

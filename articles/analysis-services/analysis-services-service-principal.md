@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan hozhat létre egyszerű szolgáltatásnevet Azu
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: dc163de9a7fb46d62f4bc2983e040e68bbf9231c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1ea9b978cce22ae6d99cbce5b4b85558f2a47b59
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266142"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699073"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
 
@@ -50,7 +50,7 @@ A szolgáltatás egyszerű appID és jelszava vagy tanúsítványa ugyanúgy has
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Az az. AnalysisServices modul használata
 
-Ha az az [. AnalysisServices](/powershell/module/az.analysisservices) modullal erőforrás-kezelési műveletekhez egyszerű szolgáltatásnevet használ, használja `Connect-AzAccount` a parancsmagot. 
+Ha az az [. AnalysisServices](/powershell/module/az.analysisservices) modullal erőforrás-kezelési műveletekhez egyszerű szolgáltatásnevet használ, használja a `Connect-AzAccount` parancsmagot. 
 
 A következő példában a appID és a Password (jelszó) használatával vezérelheti a vezérlési sík műveleteit a csak olvasási replikák szinkronizálásához, és felskálázást végezhet:
 
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO és ADOMD 
 
-Az ügyfélalkalmazások és a webalkalmazások, az [amo és a ADOMD ügyfél-kódtárak](analysis-services-data-providers.md) verziójának 15.0.2 és magasabb telepíthető csomagjai a NuGet a következő szintaxissal használhatók a kapcsolati `app:AppID` sztringekben: `cert:thumbprint`és jelszó vagy. 
+Az ügyfélalkalmazások és a webalkalmazások, az [amo és a ADOMD ügyfél-kódtárak](analysis-services-data-providers.md) verziójának 15.0.2 és magasabb telepíthető csomagjai a NuGet a következő szintaxissal használhatók a kapcsolati sztringekben: `app:AppID` és jelszó vagy `cert:thumbprint` . 
 
-A következő példában `appID` és a `password` a modell adatbázis-frissítési műveletének végrehajtásához használható:
+A következő példában `appID` és a a `password` modell adatbázis-frissítési műveletének végrehajtásához használható:
 
 ```csharp
 string appId = "xxx";
@@ -110,4 +110,5 @@ db.Model.SaveChanges();
 
 ## <a name="next-steps"></a>További lépések
 [Bejelentkezés Azure PowerShell](https://docs.microsoft.com/powershell/azure/authenticate-azureps)   
-[Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)   
+[Egyszerű szolgáltatásnév hozzáadása a kiszolgáló-rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md)  
+[Power BI Premium munkaterület és adatkészlet-feladatok automatizálása egyszerű szolgáltatásokkal](https://docs.microsoft.com/power-bi/admin/service-premium-service-principal) 

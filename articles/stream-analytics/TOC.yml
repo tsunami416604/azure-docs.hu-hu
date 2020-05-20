@@ -58,6 +58,7 @@
       items:
         - name: Kimenetek áttekintése
           href: stream-analytics-define-outputs.md
+          displayName: 'adls, sql, blob, event hubs, power bi, table, service bus, cosmos, functions'
         - name: Kimenet a Cosmos DB-be
           href: stream-analytics-documentdb-output.md
         - name: Kimenet az Azure SQL DB-be
@@ -127,14 +128,22 @@
           href: copy-job.md
         - name: Feladatok párosítása a megbízhatóság érdekében
           href: stream-analytics-job-reliability.md
-        - name: Hitelesítés felügyelt identitással – 1. generációs ADLS-kimenet
-          href: stream-analytics-managed-identities-adls.md
         - name: SQL-referenciaadatok használata
           href: sql-reference-data.md
-        - name: Hitelesítés felügyelt identitással – Blobkimenet
-          href: blob-output-managed-identity.md
-        - name: Hitelesítés felügyelt identitással – Power BI
-          href: powerbi-output-managed-identity.md
+        - name: Hitelesítés felügyelt identitással
+          items:
+            - name: ADLS Gen 1
+              href: stream-analytics-managed-identities-adls.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Blob Storage
+              href: blob-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Power BI
+              href: powerbi-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
+            - name: Azure SQL DB
+              href: sql-database-output-managed-identity.md
+              displayName: 'managed identity, identities, authenticate'
         - name: Adatok titkosítása
           href: data-protection.md
     - name: Megoldások kiépítése
@@ -226,6 +235,18 @@
           href: stream-analytics-job-diagnostic-logs.md
         - name: Adathibák
           href: data-errors.md
+        - name: Hibakódok
+          items:
+            - name: Konfigurálási hibák
+              href: configuration-error-codes.md
+            - name: Adathibák
+              href: data-error-codes.md
+            - name: Külső rendelkezésreállási hibák
+              href: external-availability-error-codes.md
+            - name: Külső hibák
+              href: external-error-codes.md
+            - name: Belső hibák
+              href: internal-error-codes.md
     - name: Integráció a Machine Learninggel
       items:
         - name: Hangulatelemzés Machine Learning-modellekkel

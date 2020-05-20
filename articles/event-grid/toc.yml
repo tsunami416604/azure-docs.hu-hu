@@ -141,8 +141,21 @@
         - name: Felhő-eseményséma
           href: cloud-event-schema.md
     - name: Eseménykezelők
-      displayName: 'Azure Automation, Functions, Event Hubs, Hybrid Connections, Logic Apps, Service Bus, Queue Storage, Webhooks'
       href: event-handlers.md
+      items:
+        - name: Webhookok
+          displayName: 'Azure Automation, Webhooks, Logic Apps'
+          href: handler-webhooks.md
+        - name: Azure Functions
+          href: handler-functions.md
+        - name: Event Hubs
+          href: handler-event-hubs.md
+        - name: Service Bus
+          href: handler-service-bus.md
+        - name: Relay hibrid kapcsolatok
+          href: handler-relay-hybrid-connections.md
+        - name: Tárolási üzenetsorok
+          href: handler-storage-queues.md
     - name: Eseménykézbesítés
       items:
         - name: Eseményszűrés
@@ -227,6 +240,8 @@
       href: /python/api/overview/azure/event-grid
     - name: Node.js
       href: /javascript/api/overview/azure/eventgrid
+    - name: Kvóták és korlátok
+      href: quotas-limits.md
     - name: Előfizetési séma
       href: subscription-creation-schema.md
     - name: Sablonerőforrások

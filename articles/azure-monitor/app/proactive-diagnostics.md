@@ -3,12 +3,12 @@ title: Intelligens észlelés az Azure Application Insightsban | Microsoft Docs
 description: Application Insights végrehajtja az alkalmazás telemetria automatikus elemzését, és figyelmezteti a lehetséges problémákra.
 ms.topic: conceptual
 ms.date: 02/07/2019
-ms.openlocfilehash: ff9f88e1d2e643d04c4417283420217e7d496caf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b7fecf886515780858ecc503a29be3bd76b73c3f
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536794"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83700835"
 ---
 # <a name="smart-detection-in-application-insights"></a>Intelligens detektálás az Application Insightsban
  Az intelligens észlelés automatikusan figyelmezteti a webalkalmazás lehetséges teljesítménybeli problémáit és meghibásodási rendellenességeit. Az alkalmazás által a [Application Insightsnak](../../azure-monitor/app/app-insights-overview.md)küldött telemetria proaktív elemzését végzi. Ha hirtelen megnőtt a meghibásodások aránya, vagy az ügyfél vagy a kiszolgáló teljesítménye rendellenes, akkor riasztást kap. Ehhez a szolgáltatáshoz nincs szükség konfigurációra. Akkor működik, ha az alkalmazása elég telemetria küld.
@@ -59,6 +59,6 @@ Ezek a diagnosztikai eszközök segítenek megvizsgálni a telemetria az alkalma
 
 Az intelligens észlelés teljesen automatikus. De lehet, hogy néhány riasztást szeretne beállítani?
 
-* [Manuálisan konfigurált metrikai riasztások](../../azure-monitor/app/alerts.md)
+* [Manuálisan konfigurált metrikai riasztások](../../azure-monitor/platform/alerts-log.md)
 * [Rendelkezésre állási webes tesztek](../../azure-monitor/app/monitor-web-app-availability.md) 
 

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/17/2019
-ms.openlocfilehash: d54506b94f076f0a3d967f88bd4e2960a1ca6396
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef7824640dcd2b9dbae1d27f385e5334ba9875ff
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75530901"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83699226"
 ---
 # <a name="troubleshoot-data-loss-in-azure-cache-for-redis"></a>Az Azure Cache for Redis adatvesztéssel járó hibáinak elhárítása
 
@@ -27,7 +27,7 @@ A Redis készült Azure cache nem törli a kulcsokat, miután a memóriában tá
 
 Ha úgy találja, hogy a kulcsok eltűntek a gyorsítótárból, ellenőrizze az alábbi lehetséges okokat:
 
-| Ok | Leírás |
+| Ok | Description |
 |---|---|
 | [Kulcs lejárata](#key-expiration) | A kulcsok el lesznek távolítva a rájuk vonatkozó időtúllépés miatt. |
 | [Kulcs kizárása](#key-eviction) | A kulcsok el lesznek távolítva a memória nyomása alatt. |
@@ -36,7 +36,7 @@ Ha úgy találja, hogy a kulcsok eltűntek a gyorsítótárból, ellenőrizze az
 
 ### <a name="key-expiration"></a>Kulcs lejárata
 
-A Redis-hez készült Azure cache automatikusan eltávolítja a kulcsot, ha a kulcshoz időtúllépés van rendelve, és az adott időszak lejárt. További információ a Redis-kulcs lejáratáról: a [lejárati](https://redis.io/commands/expire) parancs dokumentációja. Az időtúllépési értékek a [set](https://redis.io/commands/set), a [SETEX](https://redis.io/commands/setex), a [GETSET](https://redis.io/commands/getset)és az Other ** \*Store** parancs használatával is megadhatók.
+A Redis-hez készült Azure cache automatikusan eltávolítja a kulcsot, ha a kulcshoz időtúllépés van rendelve, és az adott időszak lejárt. További információ a Redis-kulcs lejáratáról: a [lejárati](https://redis.io/commands/expire) parancs dokumentációja. Az időtúllépési értékek a [set](https://redis.io/commands/set), a [SETEX](https://redis.io/commands/setex), a [GETSET](https://redis.io/commands/getset)és az Other ** \* Store** parancs használatával is megadhatók.
 
 A kulcsok lejárati idejének lekéréséhez használja az [info](https://redis.io/commands/info) parancsot. A `Stats` szakasz a lejárt kulcsok teljes számát jeleníti meg. A `Keyspace` szakasz részletesen ismerteti az időtúllépéssel rendelkező kulcsok számát és az átlagos időtúllépési értéket.
 
@@ -68,7 +68,7 @@ A gyorsítótárhoz tartozó diagnosztikai metrikákat is megtekintheti, hogy me
 
 ### <a name="key-deletion"></a>Kulcs törlése
 
-A Redis-ügyfelek kiadhatják a [del](https://redis.io/commands/del) vagy a [HDEL](https://redis.io/commands/hdel) parancsot, hogy explicit módon eltávolítsanak kulcsokat az Azure cache-ből a Redis. A törlési műveletek számát az [info](https://redis.io/commands/info) parancs használatával követheti nyomon. Ha a **del** vagy a **HDEL** parancs meghívása megtörtént, a `Commandstats` szakasz a szakaszban látható.
+A Redis-ügyfelek kiadhatják a [del](https://redis.io/commands/del) vagy a [HDEL](https://redis.io/commands/hdel) parancsot, hogy explicit módon eltávolítsanak kulcsokat az Azure cache-ből a Redis. A törlési műveletek számát az [info](https://redis.io/commands/info) parancs használatával követheti nyomon. Ha a **del** vagy a **HDEL** parancs meghívása megtörtént, a szakasz a `Commandstats` szakaszban látható.
 
 ```
 # Commandstats
@@ -80,13 +80,13 @@ cmdstat_hdel:calls=1,usec=47,usec_per_call=47.00
 
 ### <a name="async-replication"></a>Aszinkron replikáció
 
-A standard vagy prémium szinten található Redis-példányok minden Azure cache-je fő csomóponttal és legalább egy replikával van konfigurálva. Az adatok a főkiszolgálóról a replikába való másolása aszinkron módon, háttérbeli folyamat használatával történik. A [Redis.IO](https://redis.io/topics/replication) webhely leírja, hogyan működik az Redis adatreplikációja. Azokban az esetekben, amikor az ügyfelek gyakran írnak Redis, a részleges adatvesztés miatt előfordulhat, hogy a replikáció azonnali. Ha például a főkiszolgáló leáll, *miután* egy ügyfél egy kulcsot ír, de *mielőtt* a háttérben elküldi a kulcsot a replikának, a kulcs elvész, amikor a replika átveszi az új főkiszolgálót.
+A standard vagy prémium szinten található Redis-példányok minden Azure cache-je fő csomóponttal és legalább egy replikával van konfigurálva. Az adatok a főkiszolgálóról a replikába való másolása aszinkron módon, háttérbeli folyamat használatával történik. A [Redis.IO](https://redis.io/topics/replication) webhely leírja, hogyan működik az Redis adatreplikációja. Azokban az esetekben, amikor az ügyfelek gyakran írnak Redis, a részleges adatvesztés miatt előfordulhat, hogy a replikáció nem garantált azonnali. Ha például a főkiszolgáló leáll, *miután* egy ügyfél egy kulcsot ír, de *mielőtt* a háttérben elküldi a kulcsot a replikának, a kulcs elvész, amikor a replika átveszi az új főkiszolgálót.
 
 ## <a name="major-or-complete-loss-of-keys"></a>Kulcsok jelentős vagy teljes elvesztése
 
 Ha a legtöbb vagy az összes kulcs eltűnt a gyorsítótárból, ellenőrizze az alábbi lehetséges okokat:
 
-| Ok | Leírás |
+| Ok | Description |
 |---|---|
 | [Kulcs kiürítése](#key-flushing) | A kulcsok törlése manuálisan megtörtént. |
 | [Helytelen adatbázis-kijelölés](#incorrect-database-selection) | A Redis-hez készült Azure cache nem alapértelmezett adatbázis használatára van beállítva. |

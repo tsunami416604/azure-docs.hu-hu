@@ -4,6 +4,14 @@
   items:
     - name: A Peering Service ismertetése
       href: about.md
+- name: Oktatóanyagok
+  items:
+    - name: Peering Service-kapcsolat regisztrálása
+      href: azure-portal.md
+    - name: Peering Service-kapcsolat létrehozása
+      href: create-connection.md
+    - name: A Peering Service kapcsolati telemetriájának mérése
+      href: measure-connection-telemetry.md
 - name: Alapelvek
   items:
     - name: Helyek és partnerek
@@ -18,14 +26,10 @@
   items:
     - name: A Peering Service regisztrálása
       items:
-        - name: Azure Portal
-          href: azure-portal.md
         - name: Azure PowerShell
           href: powershell.md
         - name: Azure CLI
           href: cli.md
-    - name: Kapcsolattelemetria mérése
-      href: measure-connection-telemetry.md
 - name: Referencia
   items:
     - name: Azure PowerShell

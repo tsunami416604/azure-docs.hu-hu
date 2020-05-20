@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/03/2020
-ms.openlocfilehash: 0e45e832def4073f22a160b95447afb1b10ef77a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7ef7a55c81441077d2217ccfc41a2a9c9578eefe
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657388"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697564"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Azure Cosmos DB szolgáltatási kvóták
 
@@ -188,7 +188,7 @@ A következő táblázat felsorolja az ingyenes próbaverzióra vonatkozó [kipr
 
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
-| A próbaverzió időtartama | 30 nap (tetszőleges számú alkalommal megújítható) |
+| A próbaverzió időtartama | 30 nap (a lejáratot követően új próbaverzió igényelhető) <br> A lejárat után a tárolt adatok törlődnek. |
 | Tárolók maximális száma/előfizetés (SQL, Gremlin, Table API) | 1 |
 | Tárolók maximális száma (MongoDB API) | 3 |
 | Maximális átviteli sebesség/tároló | 5000 |

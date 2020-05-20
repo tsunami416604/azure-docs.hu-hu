@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/17/2020
-ms.openlocfilehash: 388f43fec9242f6a4b448483d9486aa4413d2612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52f333a8e39dfd8f68666e6438a7d40414b6f958
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254468"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701418"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Adatok továbbítása bemenetként Stream Analytics
 
@@ -30,7 +30,7 @@ Stream Analytics támogatja a tömörítést az összes adatfolyam bemeneti forr
 
 ## <a name="create-edit-or-test-inputs"></a>Bemenetek létrehozása, szerkesztése vagy tesztelése
 
-A [Azure Portal](stream-analytics-quick-create-portal.md), a [Visual Studio](stream-analytics-quick-create-vs.md)és a [Visual Studio Code](quick-create-vs-code.md) használatával hozzáadhat és megtekintheti vagy szerkesztheti a meglévő bemeneteket a folyamatos átviteli feladatban. A Azure Portal, a [Visual Studio](stream-analytics-vs-tools-local-run.md)és a [Visual Studio Code](visual-studio-code-local-run.md)használatával is tesztelheti a bemeneti kapcsolatokat és tesztelheti a mintavételezési [lekérdezéseket](stream-analytics-manage-job.md#test-your-query) . A lekérdezés írásakor megjelenik a FROM záradékban szereplő bemenet. Az elérhető bemenetek listáját a portál **lekérdezés** lapján érheti el. Ha több bemenetet szeretne használni, több `JOIN` `SELECT` lekérdezést is írhat.
+A [Azure Portal](stream-analytics-quick-create-portal.md), a [Visual Studio](stream-analytics-quick-create-vs.md)és a [Visual Studio Code](quick-create-vs-code.md) használatával hozzáadhat és megtekintheti vagy szerkesztheti a meglévő bemeneteket a folyamatos átviteli feladatban. A Azure Portal, a [Visual Studio](stream-analytics-vs-tools-local-run.md)és a [Visual Studio Code](visual-studio-code-local-run.md)használatával is tesztelheti a bemeneti kapcsolatokat és tesztelheti a mintavételezési [lekérdezéseket](stream-analytics-manage-job.md#test-your-query) . A lekérdezés írásakor megjelenik a FROM záradékban szereplő bemenet. Az elérhető bemenetek listáját a portál **lekérdezés** lapján érheti el. Ha több bemenetet szeretne használni, `JOIN` több lekérdezést is írhat `SELECT` .
 
 
 ## <a name="stream-data-from-event-hubs"></a>Adatok streamelése az Event Hubsból
@@ -47,7 +47,7 @@ Az egyes Stream Analytics Event hub-bemeneteket úgy kell konfigurálni, hogy sa
 
 Az alábbi táblázat a Azure Portal **új bemeneti** lapján lévő összes tulajdonságot ismerteti egy Event hub adatbemenetének adatfolyamként történő továbbításához:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | **Bemeneti alias** |A feladathoz tartozó lekérdezésben használt rövid név, amely erre a bemenetre hivatkozik. |
 | **Előfizetés** | Válassza ki azt az előfizetést, amelyben az Event hub-erőforrás létezik. | 
@@ -62,7 +62,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** lapján lévő összes tul
 
 Ha az adatok egy Event hub stream-bemenetből származnak, akkor a Stream Analytics lekérdezésben a következő metaadat-mezőkhöz férhet hozzá:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | **EventProcessedUtcTime** |Az esemény Stream Analytics általi feldolgozásának dátuma és időpontja. |
 | **EventEnqueuedUtcTime** |Az esemény Event Hubs általi fogadásának dátuma és időpontja. |
@@ -86,7 +86,7 @@ FROM Input
 
 Az Azure IoT Hub egy nagymértékben méretezhető közzétételi és előfizetési esemény, amely IoT forgatókönyvekre optimalizált.
 
-A Stream Analytics IoT Hubból érkező események alapértelmezett időbélyege az az időbélyeg, amely az eseménynek a IoT Hub érkezett `EventEnqueuedUtcTime`. Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kell használnia.
+A Stream Analytics IoT Hubból érkező események alapértelmezett időbélyege az az időbélyeg, amely az eseménynek a IoT Hub érkezett `EventEnqueuedUtcTime` . Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) kell használnia.
 
 ### <a name="iot-hub-consumer-groups"></a>IOT hub fogyasztói csoportok
 
@@ -96,7 +96,7 @@ Az egyes Stream Analytics IoT Hub bemeneteket úgy kell konfigurálni, hogy saj�
 
 Az alábbi táblázat a Azure Portal **új bemeneti** oldalának minden tulajdonságát ismerteti, amikor adatfolyam-bemenetként konfigurálja a IoT hub.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | **Bemeneti alias** | A feladathoz tartozó lekérdezésben használt rövid név, amely erre a bemenetre hivatkozik.|
 | **Előfizetés** | Válassza ki azt az előfizetést, amelyben a IoT Hub erőforrás létezik. | 
@@ -113,7 +113,7 @@ Az alábbi táblázat a Azure Portal **új bemeneti** oldalának minden tulajdon
 
 Ha IoT Hub stream-adatokat használ, a Stream Analytics lekérdezésben a következő metaadat-mezőkhöz férhet hozzá:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | **EventProcessedUtcTime** | Az esemény feldolgozásának dátuma és időpontja. |
 | **EventEnqueuedUtcTime** | Az a dátum és időpont, amikor a IoT Hub megkapta az eseményt. |
@@ -130,11 +130,11 @@ Az Azure Blob Storage költséghatékony és méretezhető megoldást kínál ol
 
 A log Processing a blob Storage-bemenetek Stream Analytics használatával történő használatának leggyakrabban használt forgatókönyve. Ebben a forgatókönyvben a telemetria adatfájljait a rendszer rögzíti, és elemezni és feldolgozni kell az értelmes adatok kinyerése érdekében.
 
-Stream Analytics a blob Storage-események alapértelmezett időbélyegzője a blob utolsó módosításának időbélyegzője `BlobLastModifiedUtcTime`. Ha egy blobot a 13:00-as számú Storage-fiókba töltenek fel, és a Azure Stream Analytics-feladatot a 13:01 *-es* verzióval elindítják, akkor a blob nem lesz kiválasztva, mert a módosított idő a feladatok futtatási időszakán kívül esik.
+Stream Analytics a blob Storage-események alapértelmezett időbélyegzője a blob utolsó módosításának időbélyegzője `BlobLastModifiedUtcTime` . Ha egy blobot a 13:00-as számú Storage-fiókba töltenek fel, és a Azure Stream Analytics-feladatot a 13:01 *-es* verzióval elindítják, akkor a blob nem lesz kiválasztva, mert a módosított idő a feladatok futtatási időszakán kívül esik.
 
 Ha egy blobot a 13:00-es tárolóeszköz-tárolóba töltenek fel, és a Azure Stream Analytics-feladatot a 13:00-es vagy korábbi verzióban az *Egyéni idő* használatával indítja el, a rendszer a blobot fogja kiválasztani, mivel a módosítási idő a feladatok futási idején belül esik.
 
-Ha a Azure Stream Analytics-feladatot *most már* a 13:00-es időpontban indítja el, és a rendszer feltölt egy blobot a 13:01-es számú Storage-fiók tárolójába, Azure stream Analytics fogja felvenni a blobot.
+Ha a Azure Stream Analytics-feladatot *most már* a 13:00-es időpontban indítja el, és a rendszer feltölt egy blobot a 13:01-es számú Storage-fiók tárolójába, Azure stream Analytics fogja felvenni a blobot. Az egyes blobokhoz rendelt időbélyeg csak a rendszeren alapul `BlobLastModifiedTime` . Az a mappa, amelyben a blob található, nem kapcsolódik a hozzárendelt időbélyeghez. Ha például van egy blob *2019/10-01/00/B1. txt fájl* 2019-11-11-as `BlobLastModifiedTime` , akkor a blobhoz rendelt időbélyeg a 2019-11-11.
 
 Ha az adatokat adatfolyamként szeretné feldolgozni az esemény hasznos adatait tartalmazó időbélyeget használva, az [időbélyeget kulcsszó szerint](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference) kell használnia. Egy Stream Analytics feladat minden másodpercben lekéri az adatokat az Azure Blob Storage-ból, ha a blob-fájl elérhető. Ha a blob-fájl nem érhető el, a 90 másodperces maximális késleltetésű exponenciális leállítási van.
 
@@ -143,21 +143,21 @@ A CSV formátumú bemenetekhez szükség van egy fejlécre az adathalmaz mezőin
 > [!NOTE]
 > A Stream Analytics nem támogatja tartalom hozzáadását egy meglévő blob-fájlhoz. A Stream Analytics csak egyszer fogja megtekinteni az egyes fájlokat, és a fájlban a feladatok beolvasása után végrehajtott módosítások nem lesznek feldolgozva. Az ajánlott eljárás az, hogy egy blob-fájl összes fájlját egyszerre töltse fel, majd további újabb eseményeket adjon hozzá egy másik új blob-fájlhoz.
 
-Ha nagyon nagy számú blobot tölt fel egyszerre, előfordulhat, hogy az Stream Analytics ritka esetekben kihagy néhány blob olvasását. Azt javasoljuk, hogy a blob Storage-on kívül legalább két másodpercen belül töltsön fel blobokat. Ha ez a beállítás nem valósítható meg, akkor a Event Hubs használatával nagy mennyiségű eseményt továbbíthat. 
+Azokban az esetekben, amelyekben számos blobot folyamatosan felvesznek, és Stream Analytics a Blobok feldolgozását a hozzáadásuk során, előfordulhat, hogy egyes Blobok kihagyása ritka esetekben történik a részletessége miatt `BlobLastModifiedTime` . Ezt a Blobok legalább két másodpercen belül történő feltöltésével csökkentheti. Ha ez a beállítás nem valósítható meg, akkor a Event Hubs használatával nagy mennyiségű eseményt továbbíthat.
 
 ### <a name="configure-blob-storage-as-a-stream-input"></a>BLOB Storage beállítása stream-bemenetként 
 
 A következő táblázat a Azure Portal **új bemeneti** oldalának egyes tulajdonságait ismerteti, amikor a blob Storage-t adatfolyam-bevitelként konfigurálja.
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | **Bemeneti alias** | A feladathoz tartozó lekérdezésben használt rövid név, amely erre a bemenetre hivatkozik. |
 | **Előfizetés** | Válassza ki azt az előfizetést, amelyben a IoT Hub erőforrás létezik. | 
-| **Tárfiók** | Annak a Storage-fióknak a neve, ahol a blob-fájlok találhatók. |
+| **Storage-fiók** | Annak a Storage-fióknak a neve, ahol a blob-fájlok találhatók. |
 | **Storage-fiók kulcsa** | A Storage-fiókhoz társított titkos kulcs. Ezt a beállítást automatikusan kitölti a rendszer, hacsak nem kiválasztja a blob Storage-beállítások manuális megadásának lehetőségét. |
 | **Tároló** | A blob bemenetének tárolója. A tárolók logikai csoportosítást biztosítanak a Microsoft Azure Blob service tárolt blobokhoz. Amikor feltölt egy blobot az Azure Blob Storage szolgáltatásba, meg kell adnia egy tárolót a blobhoz. Kiválaszthatja a **meglévő tároló használata** lehetőséget, vagy létrehozhat újat, hogy új tárolót **hozzon** létre.|
-| **Elérésiút-minta** (nem kötelező) | A megadott tárolóban található Blobok megkereséséhez használt fájl elérési útja. Ha a tároló gyökeréből kívánja beolvasni a blobokat, ne állítson be elérésiút-mintát. Az elérési úton megadhatja a következő három változó egy vagy több példányát: `{date}`, `{time}`vagy`{partition}`<br/><br/>1. példa:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa:`cluster1/logs/{date}`<br/><br/>A `*` karakter nem engedélyezett érték az elérési út előtagja számára. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-karakterek</a> engedélyezettek. Ne foglalja bele a tároló nevét vagy fájlnevét. |
-| **Dátumformátum** (nem kötelező) | Ha az elérési úton a Date változót használja, akkor a fájlok rendszerezésének dátumformátum. Például: `YYYY/MM/DD` |
+| **Elérésiút-minta** (nem kötelező) | A megadott tárolóban található Blobok megkereséséhez használt fájl elérési útja. Ha a tároló gyökeréből kívánja beolvasni a blobokat, ne állítson be elérésiút-mintát. Az elérési úton megadhatja a következő három változó egy vagy több példányát: `{date}` , `{time}` vagy`{partition}`<br/><br/>1. példa:`cluster1/logs/{date}/{time}/{partition}`<br/><br/>2. példa:`cluster1/logs/{date}`<br/><br/>A `*` karakter nem engedélyezett érték az elérési út előtagja számára. Csak érvényes <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure Blob-karakterek</a> engedélyezettek. Ne foglalja bele a tároló nevét vagy fájlnevét. |
+| **Dátumformátum** (nem kötelező) | Ha az elérési úton a Date változót használja, akkor a fájlok rendszerezésének dátumformátum. Például: `YYYY/MM/DD` <br/><br/> Ha a blob bemenete `{date}` vagy annak `{time}` elérési útja, a mappák növekvő sorrendben lesznek megvizsgálva.|
 | **Idő formátuma** (nem kötelező) |  Ha az elérési úton a Time változót használja, akkor a fájlok rendszerezésének időformátuma. Jelenleg az egyetlen támogatott érték `HH` óra. |
 | **Partíciókulcs** | Ha a bemenetet egy tulajdonság particionálja, akkor a tulajdonság nevét is hozzáadhatja. A partíciós kulcsok nem kötelezőek, és a lekérdezés teljesítményének növelésére szolgálnak, ha ezen a tulajdonságon a partíció vagy a GROUP BY záradék szerepel. |
 | **Eseményszerializációs formátum** | A bejövő adatfolyam szerializálási formátuma (JSON, CSV, Avro vagy [other (protopuf, XML, tulajdonos...)](custom-deserializer.md)).  Győződjön meg arról, hogy a JSON formátum a specifikációhoz igazodik, és nem tartalmazza a kezdő 0 számjegyek számjegyeit. |
@@ -166,7 +166,7 @@ A következő táblázat a Azure Portal **új bemeneti** oldalának egyes tulajd
 
 Ha az adatok blob Storage-forrásból származnak, a Stream Analytics lekérdezésben a következő metaadatokat tartalmazó mezőkhöz férhet hozzá:
 
-| Tulajdonság | Leírás |
+| Tulajdonság | Description |
 | --- | --- |
 | **BlobName** |Annak a bemeneti blobnak a neve, amelyből az esemény származik. |
 | **EventProcessedUtcTime** |Az esemény Stream Analytics általi feldolgozásának dátuma és időpontja. |

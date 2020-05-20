@@ -48,6 +48,8 @@
       items:
         - name: Felhasználó által kezelt kulcsok az Azure Key Vaulttal
           href: ../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+    - name: Hálózati útválasztási beállítás konfigurálása
+      href: ../common/network-routing-preference.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Megfelelőségi ajánlatok
       href: ../common/storage-compliance-offerings.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: Fejlesztés

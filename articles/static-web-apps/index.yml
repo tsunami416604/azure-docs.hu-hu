@@ -1,0 +1,70 @@
+### YamlMime:Landing
+title: Az Azure Static Web Apps dokumentációja
+summary: Az Azure Static Web Appsszel olyan JavaScript-webalkalmazásokat hozhat létre, amelyek automatikusan közzé lesznek téve a GitHubon végrehajtott módosításokat követően.
+metadata:
+  title: Az Azure Static Web Apps dokumentációja
+  description: Az Azure Static Web Appsszel olyan JavaScript-webalkalmazásokat hozhat létre, amelyek automatikusan közzé lesznek téve a GitHubon végrehajtott módosításokat követően.
+  ms.topic: landing-page
+  ms.service: static-web-apps
+  author: craigshoemaker
+  ms.author: cshoe
+  ms.date: 04/09/2020
+  ms.openlocfilehash: 8dd4f7420c4b58d621312f361beede1e48bc17b5
+  ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 05/19/2020
+  ms.locfileid: "83593069"
+landingContent:
+- title: A Static Web Apps bemutatása
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi az az Azure Static Web Apps?
+      url: overview.md
+- title: Bevezetés
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Az első Angular-alkalmazás létrehozása
+      url: /azure/static-web-apps/getting-started?tabs=angular
+    - text: Az első React-alkalmazás létrehozása
+      url: /azure/static-web-apps/getting-started?tabs=react
+    - text: Az első Vue-alkalmazás létrehozása
+      url: /azure/static-web-apps/getting-started?tabs=vue
+    - text: Az első alkalmazás létrehozása (keretrendszer nélkül)
+      url: /azure/static-web-apps/getting-started?tabs=vanilla-javascript
+  - linkListType: learn
+    links:
+    - text: Angular, React, Svelte vagy Vue JavaScript-alkalmazás és API közzététele
+      url: /learn/modules/publish-app-service-static-web-app-api
+- title: Fő fogalmak
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Útvonalak
+      url: routes.md
+    - text: Nyilvános API-k
+      url: apis.md
+    - text: Előkészítés
+      url: review-publish-pull-requests.md
+    - text: Hozzáférés korlátozása
+      url: authentication-authorization.md
+- title: Forgatókönyvek közzététele
+  linkLists:
+  - linkListType: tutorial
+    links:
+    - text: Közzététel a Gatsbyből
+      url: publish-gatsby.md
+    - text: Közzététel a Hugóból
+      url: publish-hugo.md
+    - text: Közzététel a VuePressből
+      url: publish-vuepress.md
+    - text: Üzembe helyezés a Next.js-ből
+      url: deploy-nextjs.md
+    - text: Üzembe helyezés a Nuxt.js-ből
+      url: deploy-nuxtjs.md
+  - linkListType: learn
+    links:
+    - text: Statikus webalkalmazás közzététele a Gatsbyvel
+      url: /learn/modules/create-deploy-static-webapp-gatsby-app-service

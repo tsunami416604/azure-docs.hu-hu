@@ -119,8 +119,6 @@
           href: global-dist-under-the-hood.md
         - name: Régiónkénti jelenlét
           href: regional-presence.md
-        - name: Tranzakcióalapú és elemzésalapú tárolás
-          href: globally-distributed-transactional-analytical-storage.md
     - name: Particionálás
       items:
         - name: Particionálás áttekintése
@@ -494,14 +492,16 @@
           href: change-feed-functions.md
         - name: Változáscsatorna lekérési modellje
           href: change-feed-pull-model.md
-    - name: Globálisan elosztott elemzés és mesterséges intelligencia
+    - name: Elemzések a Synapse Linkkel
       items:
-        - name: Elemzési használati esetek
-          href: analytics-usecases.md
-        - name: Elemzések – megoldásarchitektúrák
-          href: analytics-solution-architectures.md
-        - name: Lambda architektúra
-          href: lambda-architecture.md
+        - name: Synapse Link az Azure Cosmos DB-hez
+          href: synapse-link.md
+        - name: Elemzési tár – áttekintés
+          href: analytical-store-introduction.md
+        - name: Synapse Link – GYIK
+          href: synapse-link-frequently-asked-questions.md
+        - name: A Synapse Link használati esetei
+          href: synapse-link-use-cases.md
     - name: Beépített Jupyter-notebookok
       items:
         - name: A Jupyter-notebookok áttekintése
@@ -1020,6 +1020,10 @@
           href: how-to-migrate-from-change-feed-library.md
         - name: Változáscsatorna – Async Java-példa
           href: create-sql-api-java-changefeed.md
+    - name: Elemzések a Synapse Linkkel
+      items:
+        - name: A Synapse Link konfigurálása
+          href: configure-synapse-link.md
     - name: Beépített elemzések az Apache Sparkkal
       items:
         - name: Azure Databricks Spark-összekötő

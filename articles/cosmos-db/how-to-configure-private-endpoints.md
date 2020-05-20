@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/14/2020
 ms.author: thweiss
-ms.openlocfilehash: 6ba85961ac4ec9b1b439de18a1d6da0cec4ead4f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652575"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697886"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Azure Private-hivatkozás konfigurálása Azure Cosmos-fiókhoz
 
@@ -646,11 +646,9 @@ Az alábbi korlátozások érvényesek, ha privát hivatkozást használ egy Azu
 
 * Ha olyan MongoDB-fiókhoz használ Azure Cosmos DB API-t, amely privát hivatkozást tartalmaz, előfordulhat, hogy egyes eszközök vagy tárak nem működnek, mivel automatikusan kiszűrik a `appName` paramétert a kapcsolati karakterláncból. Ez a paraméter szükséges a fiókhoz való kapcsolódáshoz egy privát végponton keresztül. Bizonyos eszközök, például a Visual Studio Code, nem távolítják el ezt a paramétert a kapcsolatok sztringből, ezért kompatibilisek.
 
-* Virtuális hálózat nem helyezhető át és nem törölhető, ha privát hivatkozást tartalmaz.
-
-* Nem hajtható végre feladatátvétel egy Azure Cosmos-fiókkal olyan régióban, amely nincs hozzárendelve a fiókhoz csatolt összes privát végponthoz.
-
 * A hálózati rendszergazdának legalább az engedélyt meg kell adni `Microsoft.DocumentDB/databaseAccounts/PrivateEndpointConnectionsApproval/action` Az Azure Cosmos-fiók hatókörében, hogy automatikusan jóváhagyott privát végpontokat hozzon létre.
+
+* A közvetlen üzemmód jelenleg nem támogatott Kínában működő Azure-régiókban.
 
 ### <a name="limitations-to-private-dns-zone-integration"></a>A magánhálózati DNS-zónák integrálására vonatkozó korlátozások
 

@@ -23,6 +23,8 @@
           href: tutorial-create-store-locator.md
     - name: REST API – oktatóanyagok
       items:
+        - name: Beltéri térképek létrehozása
+          href: tutorial-creator-indoor-maps.md
         - name: Geokerítés beállítása
           href: tutorial-geofence.md
         - name: Térelemzés
@@ -49,6 +51,12 @@
       href: azure-maps-event-grid-integration.md
     - name: A megfelelő tarifacsomag kiválasztása
       href: choose-pricing-tier.md
+    - name: Creator beltéri térképekhez
+      items:
+        - name: A beltéri térképekkel kapcsolatos alapfogalmak
+          href: creator-indoor-maps.md
+        - name: Rajz átalakítási hibái és figyelmeztetései
+          href: drawing-conversion-error-codes.md
     - name: Lefedettség
       items:
         - name: Geokódolás lefedettsége
@@ -83,6 +91,8 @@
           href: how-to-manage-authentication.md
         - name: Tarifacsomag kezelése
           href: how-to-manage-pricing-tier.md
+        - name: A Creator kezelése
+          href: how-to-manage-creator.md
         - name: Használati metrikák megtekintése
           href: how-to-view-api-usage.md
     - name: Térképadatok lekérése REST API-kból
@@ -201,12 +211,22 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Forgalomadatok megjelenítése
           href: how-to-show-traffic-android.md
+    - name: Fejlesztés a Creator beltéri térképeinek használatával
+      items:
+        - name: Beltéri térképek modul
+          href: how-to-use-indoor-module.md
+        - name: Dinamikus stílus beltéri térképekhez
+          href: indoor-map-dynamic-styling.md
+        - name: Rajzolásihiba-megjelenítő
+          href: drawing-error-visualizer.md
     - name: Adatokkal kapcsolatos visszajelzés küldése
       href: how-to-use-feedback-tool.md
 - name: Referencia
   items:
     - name: API- és paraméterbővítmények
       items:
+        - name: Rajzolási csomag követelményei
+          href: drawing-requirements.md
         - name: Járműhasználati modell
           href: consumption-model.md
         - name: GeoJSON formátum kiterjesztése
@@ -251,6 +271,8 @@
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-rest/'
         - name: Térbeli IO-modul
           href: 'https://docs.microsoft.com/javascript/api/azure-maps-spatial-io/'
+        - name: Beltéri modul
+          href: 'https://aka.ms/am-indoor-module-websdk/'
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.maps/accounts
 - name: További források

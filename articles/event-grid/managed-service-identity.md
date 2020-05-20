@@ -1,5 +1,5 @@
 ---
-title: Felügyelt szolgáltatás identitásának használata az események továbbításához Azure Event Grid előfizetések
+title: Esemény kézbesítése felügyelt szolgáltatás identitásával
 description: Ez a cikk azt ismerteti, hogyan engedélyezhető a felügyelt szolgáltatás identitása egy Azure Event Grid-témakörben. Használatával továbbíthatja az eseményeket a támogatott célhelyekre.
 services: event-grid
 author: spelluru
@@ -7,14 +7,14 @@ ms.service: event-grid
 ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 0e1f46c0bd7ce22cae77db1a524336445fd3f795
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 4d96f28b98cccada2ac5c77589acc6df1430bb02
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 05/20/2020
-ms.locfileid: "83691025"
+ms.locfileid: "83700655"
 ---
-# <a name="enable-and-use-managed-service-identity-for-an-event-grid-topic-or-domain"></a>Felügyelt szolgáltatás identitásának engedélyezése és használata egy Event Grid-témakörhöz vagy-tartományhoz 
+# <a name="event-delivery-with-managed-identity"></a>Esemény kézbesítése felügyelt identitással
 Ez a cikk azt ismerteti, hogyan engedélyezhető a [felügyelt szolgáltatás identitása](../active-directory/managed-identities-azure-resources/overview.md) egy Event Grid-témakörben vagy-tartományban. Használatával továbbíthatja az eseményeket olyan támogatott célhelyekre, mint a Service Bus várólisták és témakörök, az Event hubok és a Storage-fiókok.
 
 A cikk részletesen ismerteti a következő lépéseket:

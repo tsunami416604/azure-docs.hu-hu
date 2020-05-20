@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: b85846419ce5f6cd4093e198d83240817c95754a
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 81b36532d09985d1e50fb3d0394d054d9a5e8250
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983057"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701169"
 ---
 # <a name="create-a-new-saas-offer-in-the-commercial-marketplace"></a>Új SaaS-ajánlat létrehozása a kereskedelmi piactéren
 
@@ -21,8 +21,8 @@ Ha a kereskedelmi piactéren szeretné megkezdeni a szolgáltatott szoftver-(Saa
 ## <a name="create-a-new-offer"></a>Új ajánlat létrehozása
 
 1. Jelentkezzen be a [partner központba](https://partner.microsoft.com/dashboard/home).
-2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér** > **– Áttekintés**lehetőséget.
-3. Az Áttekintés lapon válassza az **+ új ajánlat** > **szoftver szolgáltatásként**lehetőséget.
+2. A bal oldali navigációs menüben válassza a **kereskedelmi piactér**  >  **– Áttekintés**lehetőséget.
+3. Az Áttekintés lapon válassza az **+ új ajánlat**  >  **szoftver szolgáltatásként**lehetőséget.
 
    ![A bal oldali navigációs menü ábrázolása.](./media/new-offer-saas.png)
 
@@ -34,7 +34,7 @@ Ha a kereskedelmi piactéren szeretné megkezdeni a szolgáltatott szoftver-(Saa
 Adja meg az **ajánlat azonosítóját**. Ez a fiókban található egyes ajánlatok egyedi azonosítója.
 
 - Ez az azonosító látható az ügyfelek számára a Piactéri ajánlathoz tartozó webcímek és Azure Resource Manager sablonok esetében, ha van ilyen.
-- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1`.
+- Csak kisbetűket és számokat használjon. Tartalmazhat kötőjeleket és aláhúzásokat, de nem tartalmazhat szóközt, és legfeljebb 50 karakter hosszú lehet. Ha például a **test-Offer-1** értéket adja meg, az ajánlat webes címe lesz `https://azuremarketplace.microsoft.com/marketplace/../test-offer-1` .
 - Az ajánlat azonosítója a **Létrehozás**gombra kattintva nem módosítható.
 
 Adjon meg egy **ajánlat-aliast**. Ez a partner Centerben az ajánlathoz használt név.
@@ -173,7 +173,7 @@ A Microsoft szabványos szerződéssablon-sablont biztosít.
 
 - **Szabványos szerződést használ a Microsoft kereskedelmi piactérről?**
 
-Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft szabványos szerződést biztosít a Microsoft kereskedelmi piactérről, amely megkönnyíti a tranzakciók megkönnyítése a piactéren. Az egyéni használati feltételek és kikötések elvégzése helyett a kereskedelmi piactér-közzétevők dönthetnek úgy, hogy a standard szintű szerződés keretében kínálják a szoftvereket, amelyeket csak egyszer kell bemutatni és elfogadni. A standard szintű szerződés a következő címen https://go.microsoft.com/fwlink/?linkid=2041178érhető el:.
+Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft szabványos szerződést biztosít a Microsoft kereskedelmi piactérről, amely megkönnyíti a tranzakciók megkönnyítése a piactéren. Az egyéni használati feltételek és kikötések elvégzése helyett a kereskedelmi piactér-közzétevők dönthetnek úgy, hogy a standard szintű szerződés keretében kínálják a szoftvereket, amelyeket csak egyszer kell bemutatni és elfogadni. A standard szintű szerződés a következő címen érhető el: https://go.microsoft.com/fwlink/?linkid=2041178 .
 
 A normál szerződést úgy is kiválaszthatja, hogy a saját használati feltételeinek megadása helyett a "szabványos szerződés használata a kereskedelmi piactérhez" jelölőnégyzetet válassza.
 
@@ -227,28 +227,13 @@ Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a ma
 - **Kulcsszavak keresése** – adjon meg legfeljebb három olyan keresési kulcsszót, amelyet az ügyfelek az ajánlat megtalálására használhatnak a piactéren.
 - **Első lépéseket ismertető utasítások** (kötelező) – magyarázza el, hogyan konfigurálhatja és indíthatja el az alkalmazás használatát a potenciális ügyfelek számára.  Ez a rövid útmutató a részletesebb online dokumentációra mutató hivatkozásokat is tartalmaz. Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni.
 
-#### <a name="description"></a>**Leírás**
+#### <a name="description"></a>Description
 
-Ez a mező kötelező. A **leírásban**szerepeltetni kívánt elemek:
+A mező kitöltése kötelező.
 
-* A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét.  
-* Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.  
-* Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania.  
-* A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.
+[!INCLUDE [Long description-2](./includes/long-description-2.md)]
 
-Az értékek kiosztásának alapvető összetevői a következők:
-
-* A termék leírása
-* A termékből származó előnyöket biztosító felhasználó típusa
-* Az ügyfélnek szüksége van a termék címére
-
-Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, használja a Rich Text Editort a formázás alkalmazásához.
-
-![A Rich Text Editor használata](./media/rich-text-editor.png)
-
-| <center>Szöveg formátumának módosítása | <center>Felsorolásjelek vagy számozás hozzáadása | <center>Szöveg behúzásának hozzáadása vagy eltávolítása |
-| --- | --- | --- |
-| <center>![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png) |  <center>![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png) |  <center>![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png) |
+[!INCLUDE [Rich text editor](./includes/rich-text-editor.md)]
 
 #### <a name="links"></a>Hivatkozások
 
@@ -279,7 +264,7 @@ Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, használja 
 - **Videók** (nem kötelező) – az ajánlatot bemutató videókra mutató hivatkozásokat adhat hozzá. A YouTube-és/vagy a Vimeo-videókra mutató hivatkozásokat is használhat, amelyek az Ön ajánlatával együtt jelennek meg az ügyfelek számára. Emellett meg kell adnia a videó miniatűr képét is, amely az 1280 x 720 képpont méretű, PNG formátumú. Ajánlat legfeljebb négy videót jeleníthet meg.
 
 >[!NOTE]
->Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat https://upload.xboxlive.com nem blokkolja a partner központ által használt szolgáltatást.
+>Ha probléma merül fel a fájlok feltöltésekor, győződjön meg arról, hogy a helyi hálózat nem blokkolja a https://upload.xboxlive.com partner központ által használt szolgáltatást.
 
 #### <a name="additional-marketplace-listing-resources"></a>További erőforrások listázása a piactéren
 
@@ -309,7 +294,7 @@ Ez az oldal az ajánlathoz való kapcsolódáshoz használt technikai részletek
 
 - Kezdőlap **URL-címe** (kötelező) – adja meg a webhely URL-címét, amelyet az ügyfelek az ajánlatnak a piactéren való beszerzése után fognak leszállni. Ez az URL-cím lesz a végpont, amely megkapja a jogkivonatot, amikor az ügyfél az oldalra irányítja. Ez a jogkivonat a teljesítési API-k feloldási funkciójával kicserélhető a kiépítési adatokra. Ezek az adatok és a gyűjtött egyéb információk a regisztráció befejezéséhez és a vásárlás aktiválásához használható, a felhasználó által interaktív weblap részeként.
 
-- **Kapcsolati webhook** (kötelező) – a Microsoft által az ügyfél nevében küldendő összes aszinkron eseményhez (például az SaaS-előfizetés érvénytelennek bizonyult) a kapcsolati webhookot kell megadnia. Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például https:\//Prod-1westus.Logic.Azure.com:443/Work). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
+- **Kapcsolati webhook** (kötelező) – a Microsoft által az ügyfél nevében küldendő összes aszinkron eseményhez (például az SaaS-előfizetés érvénytelennek bizonyult) a kapcsolati webhookot kell megadnia. Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például https: \/ /Prod-1westus.Logic.Azure.com:443/Work). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
 - **Azure ad-bérlői azonosító** (kötelező) – Azure Portalon belül létre kell [hoznia egy Azure Active Directory (ad) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 
@@ -402,7 +387,7 @@ Az ajánlat minden egyes csomagjának ingyenes próbaverzióját itt állíthatj
 >[!NOTE]
 >Ha a visszagörgethető ajánlat ingyenes próbaverzióval lett közzétéve, az adott csomag esetében nem tiltható le. Győződjön meg arról, hogy ez a beállítás megfelelő az első közzétételhez, hogy ne kelljen újból létrehoznia a csomagot.
 
-Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja `isFreeTrial`az új API-tulajdonságot, amely igaz vagy hamis értékként lesz megjelölve. További információ: [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
+Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot `isFreeTrial` , amely igaz vagy hamis értékként lesz megjelölve. További információ: [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
 
 >[!NOTE]
 >Az ingyenes próbaverziók nem támogatottak a piactér-mérési szolgáltatást használó csomagok esetében.
@@ -411,7 +396,7 @@ Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel ka
 
 Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vagy csak egy adott célközönségnek. Az Azure AD-bérlői azonosítók használatával a korlátozott célközönséghez is hozzárendelhet tagságot.
 
-##### <a name="privacy"></a>Személyes adatok védelme
+##### <a name="privacy"></a>Adatvédelem
 
 Válassza **ezt a csomagot** , hogy a terv magánjellegű legyen, és csak az Ön által választott korlátozott közönség számára legyen látható. Miután közzétette saját csomagként, frissítheti a célközönséget, vagy dönthet úgy, hogy a tervet mindenki számára elérhetővé teszi. Ha a csomagot mindenki számára láthatóvá teszi, mindenki számára láthatóvá kell tenni (nem konfigurálható újra privát csomagként).
 
@@ -419,7 +404,7 @@ Válassza **ezt a csomagot** , hogy a terv magánjellegű legyen, és csak az Ö
 
 Rendelje hozzá azt a célközönséget, amely hozzáfér ehhez a privát csomaghoz. A hozzáférés hozzá van rendelve a bérlői azonosítók használatával, hogy tartalmazza a hozzájuk rendelt összes bérlői azonosító leírását. . Csv számolótábla-fájl importálásakor legfeljebb 10 bérlői azonosító adható hozzá, vagy 20 000 ügyfél bérlői azonosítóját.
 
-A bérlő egy szervezet képviselete, amelynek azonosítója GUID (globálisan egyedi azonosító, az erőforrások azonosítására szolgáló 128 bites egész szám). Ez az Azure AD dedikált példánya, amelyet a szervezet vagy az alkalmazás fejlesztője akkor kap, ha a szervezet vagy az alkalmazás fejlesztője kapcsolatot létesít a Microsofttal, például az Azure-ra való regisztráláskor, Microsoft Intune vagy Microsoft 365. Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől. A bérlő ellenőrzéséhez jelentkezzen be az Azure Portalra az alkalmazás felügyeletéhez használni kívánt fiókkal. Ha rendelkezik bérlővel, automatikusan bejelentkezik, és közvetlenül a fióknév alatt láthatja a bérlő nevét. Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtár-/bérlőazonosítója (egy GUID), valamint a tartománya. Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik. A szervezet bérlői AZONOSÍTÓját a (z) [https://www.whatismytenantid.com](https://www.whatismytenantid.com)tartománynév URL-címének használatával is megkeresheti.
+A bérlő egy szervezet képviselete, amelynek azonosítója GUID (globálisan egyedi azonosító, az erőforrások azonosítására szolgáló 128 bites egész szám). Ez az Azure AD dedikált példánya, amelyet a szervezet vagy az alkalmazás fejlesztője akkor kap, ha a szervezet vagy az alkalmazás fejlesztője kapcsolatot létesít a Microsofttal, például az Azure-ra való regisztráláskor, Microsoft Intune vagy Microsoft 365. Mindegyik Azure AD-bérlő önálló, és elkülönül a többi Azure AD-bérlőtől. A bérlő ellenőrzéséhez jelentkezzen be az Azure Portalra az alkalmazás felügyeletéhez használni kívánt fiókkal. Ha rendelkezik bérlővel, automatikusan bejelentkezik, és közvetlenül a fióknév alatt láthatja a bérlő nevét. Ha a fiókja neve fölé helyezi a kurzort az Azure Portal jobb felső részén, megjelenik a neve, e-mail-címe, címtár-/bérlőazonosítója (egy GUID), valamint a tartománya. Ha a fiók több bérlővel van társítva, a fiók nevének kiválasztásával megnyithat egy menüt, ahol válthat a bérlők között. Minden bérlő saját bérlőazonosítóval rendelkezik. A szervezet bérlői AZONOSÍTÓját a (z) tartománynév URL-címének használatával is megkeresheti [https://www.whatismytenantid.com](https://www.whatismytenantid.com) .
 
 Míg a SaaS a bérlői azonosítókat használja a privát célközönség definiálásához, az egyéb ajánlati típusok az Azure-előfizetési azonosítókat (amelyek GUID-ként is jelölik) használhatják.
 

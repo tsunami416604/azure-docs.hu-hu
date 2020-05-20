@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 0e4f9da3aec42df42cc43f73fdeefa7087de6db5
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: bf30fc5e6ccfc0f59c1769245e58177428472156
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592185"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83701807"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)
 
@@ -22,7 +22,7 @@ ms.locfileid: "83592185"
 
 **K: mi érhető el?**
 
-**A:** Az Azure Cognitive Services tárolók lehetővé teszik a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . Egyes tárolók elérhető [előzetes](../cognitive-services-gating-process.md)verzióként érhetők el, amelyekhez szükség lehet az alkalmazás elérésére. Más tárolók nyilvánosan elérhetők az előzetes verzióként, vagy általánosan elérhetők. A tárolók teljes listáját és azok rendelkezésre állását az Azure-beli [tároló-támogatásban találja Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) cikkben. 
+**A:** Az Azure Cognitive Services tárolók lehetővé teszik a fejlesztők számára az Azure-ban elérhető intelligens API-k használatát, de a tárolókra bontás [előnyeit](../cognitive-services-container-support.md#features-and-benefits) . Egyes tárolók egy megtekinthető előzetes verzióként érhetők el, amelyekhez szükség lehet egy alkalmazás elérésére. Más tárolók nyilvánosan elérhetők az előzetes verzióként, vagy általánosan elérhetők. A tárolók teljes listáját és azok rendelkezésre állását az Azure-beli [tároló-támogatásban találja Cognitive Services](../cognitive-services-container-support.md#container-availability-in-azure-cognitive-services) cikkben. 
 
 **K: van különbség a Cognitive Services felhő és a tárolók között?**
 

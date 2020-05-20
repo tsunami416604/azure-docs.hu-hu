@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan konfigurálhat egy Azure Analysis Services kisz
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 384f4c2ee3021678c530aa5c98eaf4dbfd661e95
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 7622b6b5855850a0150f43863fa117828e23d4bd
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73572265"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83698865"
 ---
 # <a name="use-gateway-for-data-sources-on-an-azure-virtual-network-vnet"></a>Átjáró használata adatforrásokhoz Azure-Virtual Network (VNet)
 
@@ -29,7 +29,7 @@ Azure SQL Database felügyelt példány adatforrásai saját IP-címmel futnak a
 
 ## <a name="configure-alwaysusegateway-property"></a>AlwaysUseGateway tulajdonság konfigurálása
 
-1. A SSMS > Server > **Tulajdonságok** > **általános**beállításnál válassza a **speciális (mind) tulajdonságok megjelenítése**lehetőséget.
+1. A SSMS > Server > **Tulajdonságok**  >  **általános**beállításnál válassza a **speciális (mind) tulajdonságok megjelenítése**lehetőséget.
 2. A **ASPaaS\AlwaysUseGateway**válassza az **igaz**lehetőséget.
 
     ![Mindig az átjáró tulajdonság használata](media/analysis-services-vnet-gateway/aas-ssms-always-property.png)

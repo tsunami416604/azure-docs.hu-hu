@@ -5,14 +5,14 @@ author: timsander1
 ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/20/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 06e5a1a7b107f949dbb4945ef4d3116b9fa6d076
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d7408f3b3e955d397ba4a54d07323f80dd72c3d3
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83656600"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697349"
 ---
 # <a name="reading-azure-cosmos-db-change-feed"></a>Azure Cosmos DB-változáscsatorna olvasása
 
@@ -20,7 +20,7 @@ A Azure Cosmos DB változási csatornát leküldéses modell vagy lekéréses mo
 
 A lekéréses modell esetében a kiszolgáló a munkát kéri, és gyakran egy központi munkavárólistából kér rá. Az ügyfél ebben az esetben nem csupán az üzleti logikával rendelkezik a változások feldolgozásához, hanem az utolsó feldolgozott változás állapotának tárolásához is, több ügyfél terheléselosztását párhuzamosan dolgozza fel, és kezeli a hibákat.
 
-A Azure Cosmos DB változási csatornából való olvasáskor általában ajánlott leküldéses modellt használni, mert nem kell aggódnia:
+A Azure Cosmos DB változási hírcsatornából való olvasáskor általában ajánlott leküldéses modellt használni, mert nem kell aggódnia:
 
 - A módosítási hírcsatorna lekérdezése későbbi változásokhoz.
 - Az utolsó feldolgozott módosítás állapotának tárolása. A változási hírcsatornából való olvasáskor a rendszer automatikusan egy [bérlet tárolóban](change-feed-processor.md#components-of-the-change-feed-processor)tárolja.
@@ -41,7 +41,7 @@ Leküldéses modell használata a legegyszerűbb módszer a változási hírcsat
 
 A Azure Functions a legegyszerűbb lehetőség, ha csak most kezdi meg a változási hírcsatorna használatát. Az egyszerűsége miatt az ajánlott lehetőség a legtöbb módosítási hírcsatorna-használati esetre is. Ha Azure Cosmos DBhoz hoz létre Azure Functions-triggert, válassza ki a csatlakoztatni kívánt tárolót, és az Azure-függvény akkor aktiválódik, amikor változás van a tárolóban. Mivel Azure Functions a háttérben a változási csatornát használja, az automatikusan parallelizes a tároló [partícióinak](partition-data.md)feldolgozását.
 
-Az Azure Functions-val való fejlesztés egyszerű, és gyorsabb lehet, mint a módosítási hírcsatorna-feldolgozó üzembe helyezése. Az eseményindítók a Azure Functions portál használatával vagy programozott módon hozhatók létre az SDK-val. A Visual Studio és a VS Code támogatást nyújt a Azure Functions írásához, és az Azure Functions CLI-t is használhatja a platformok közötti fejlesztéshez. A kódot megírhatja és hibakeresést végezhet az asztalon, majd egyetlen kattintással telepítheti a függvényt. További információkért tekintse meg a [kiszolgáló nélküli adatbázis-számítási feladatokat a Azure functions használatával](serverless-computing-database.md) és a [változási hírcsatorna használata Azure functions](change-feed-functions.md) cikkekkel című témakört.
+Az Azure Functions-val való fejlesztés egyszerű, és gyorsabb lehet, mint a módosítási hírcsatorna-feldolgozó üzembe helyezése. Az eseményindítók a Azure Functions portál használatával vagy programozott módon hozhatók létre az SDK-k használatával. A Visual Studio és a VS Code támogatást nyújt a Azure Functions írásához, és az Azure Functions CLI-t is használhatja a platformok közötti fejlesztéshez. A kódot megírhatja és hibakeresést végezhet az asztalon, majd egyetlen kattintással telepítheti a függvényt. További információkért tekintse meg a [kiszolgáló nélküli adatbázis-számítási feladatokat a Azure functions használatával](serverless-computing-database.md) és a [változási hírcsatorna használata Azure functions](change-feed-functions.md) cikkekkel című témakört.
 
 ### <a name="change-feed-processor-library"></a>A hírcsatorna-feldolgozó függvénytárának módosítása
 

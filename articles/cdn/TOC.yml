@@ -67,6 +67,8 @@
           href: cdn-restrict-access-by-country.md
         - name: A teljesítmény javítása a fájlok tömörítésével
           href: cdn-improve-performance.md
+        - name: Végpont több forrással
+          href: endpoint-multiorigin.md
         - name: A gyorsítótárazási viselkedés vezérlése
           items:
             - name: A gyorsítótárazási viselkedés vezérlése gyorsítótár-szabályok használatával

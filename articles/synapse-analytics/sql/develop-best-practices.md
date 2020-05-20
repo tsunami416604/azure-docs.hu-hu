@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: ed2638cfe4ab7e849e428729ccd17ffdeb6314af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 858dfa8282a06feab877bcea65de47b8455133dc
+ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086351"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83697307"
 ---
 # <a name="development-best-practices-for-synapse-sql"></a>Fejlesztési ajánlott eljárások a szinapszis SQL-hez
 Ez a cikk útmutatást és ajánlott eljárásokat ismertet az adattárház-megoldás fejlesztése során. 
@@ -154,7 +154,7 @@ Az adathalmazok gyakran partíciókban vannak rendszerezve. Az SQL igény szerin
 
 Ha a tárolóban lévő adatok particionálása nem történik meg, érdemes particionálni, hogy ezeket a függvényeket a fájlokra irányuló lekérdezések optimalizálására is használhatja.
 
-Ha a [particionált Spark-táblákat](develop-storage-files-spark-tables.md) SQL-igény alapján kérdezi le, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
+Ha az [Azure szinapszis külső tábláihoz particionált Apache Sparkt kérdez](develop-storage-files-spark-tables.md) le az SQL igény szerint, a lekérdezés automatikusan csak a szükséges fájlokat fogja megcélozni.
 
 ### <a name="use-cetas-to-enhance-query-performance-and-joins"></a>A CETAS használata a lekérdezések teljesítményének és illesztésének növeléséhez
 
