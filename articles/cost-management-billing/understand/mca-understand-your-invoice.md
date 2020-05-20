@@ -23,7 +23,7 @@ A számla tartalmazza a díjak összesítését, valamint a fizetésre vonatkoz�
 
 ## <a name="billing-period"></a>Számlázási időszak
 
-A számlázás havi rendszerességgel történik. A számlázás napját megtalálhatja az *Azure Portalon* a számlázási profil tulajdonságai alatt, a [számla dátuma](https://portal.azure.com/) szakaszban. A számlázási időszak vége és a számla dátuma közötti időben felmerülő díjak a következő havi számlán szerepelnek, mivel azok a következő számlázási időszakra esnek. Az egyes számlák számlázási időszakának kezdési és záró dátumait a számlázási PDF-fájl tartalmazza az **Összesítő elszámolás** felett.
+A számlázás havi rendszerességgel történik. A számlázás napját megtalálhatja az [Azure Portalon](https://portal.azure.com/) a számlázási profil tulajdonságai alatt, a *számla dátuma* szakaszban. A számlázási időszak vége és a számla dátuma közötti időben felmerülő díjak a következő havi számlán szerepelnek, mivel azok a következő számlázási időszakra esnek. Az egyes számlák számlázási időszakának kezdési és záró dátumait a számlázási PDF-fájl tartalmazza az **Összesítő elszámolás** felett.
 
 ## <a name="invoice-terms-and-descriptions"></a>A számlában használatos kifejezések és leírásaik
 

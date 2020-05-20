@@ -22,5 +22,5 @@ Az alábbi eszközök vagy SDK-k egyikével használhatja a másolási tevékeny
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
 - [REST API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
-- [Azure Resource Manager sablon](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
+- [Azure Resource Manager-sablon](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
 
