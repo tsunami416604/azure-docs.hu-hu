@@ -1,15 +1,15 @@
 ---
 title: Azure Batch szolgáltatások hitelesítése Azure Active Directory
 description: A Batch támogatja az Azure AD-t a Batch szolgáltatásban történő hitelesítéshez. Megtudhatja, hogyan végezheti el a hitelesítést két módszer egyikével.
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
-ms.openlocfilehash: 3fa1aa2bb7389200fe5e5a80598686143344d636
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3ed3db184174d0a383c5c1fbd85e69d9fef0da44
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608472"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726910"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -39,7 +39,7 @@ Az Azure AD-vel való hitelesítéshez ezt a végpontot kell használni a bérl�
 > [!NOTE]
 > A bérlő-specifikus végpontra akkor van szükség, ha egy egyszerű szolgáltatásnév használatával végzi a hitelesítést.
 >
-> A bérlő-specifikus végpont nem kötelező, ha az integrált hitelesítés használatával végzi a hitelesítést, de ajánlott. Azonban használhatja az Azure AD Common Endpoint (általános) végpontját is. A Common Endpoint (általános hitelesítő adatok összegyűjtése) felületet biztosít, ha nincs megadva egy adott bérlő. Az általános végpont `https://login.microsoftonline.com/common`.
+> A bérlő-specifikus végpont nem kötelező, ha az integrált hitelesítés használatával végzi a hitelesítést, de ajánlott. Azonban használhatja az Azure AD Common Endpoint (általános) végpontját is. A Common Endpoint (általános hitelesítő adatok összegyűjtése) felületet biztosít, ha nincs megadva egy adott bérlő. Az általános végpont `https://login.microsoftonline.com/common` .
 >
 >
 
@@ -221,7 +221,7 @@ Az ebben a szakaszban szereplő példák azt mutatják be, hogyan lehet hiteles�
 
 A Batch .NET-ből származó integrált hitelesítéssel történő hitelesítéshez hivatkozzon a [Azure Batch .net](https://www.nuget.org/packages/Microsoft.Azure.Batch/) -csomagra és a [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -csomagra.
 
-Adja meg a `using` következő utasításokat a kódban:
+Adja meg a következő `using` utasításokat a kódban:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -294,7 +294,7 @@ public static async Task PerformBatchOperations()
 
 Ha egy egyszerű szolgáltatásnév használatával szeretne hitelesítést végezni a Batch .NET-ben, hivatkozzon a [Azure Batch .net](https://www.nuget.org/packages/Azure.Batch/) -csomagra és a [ADAL](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) -csomagra.
 
-Adja meg a `using` következő utasításokat a kódban:
+Adja meg a következő `using` utasításokat a kódban:
 
 ```csharp
 using Microsoft.Azure.Batch;
@@ -417,7 +417,7 @@ A **BatchServiceClient** objektum megnyitásához használja az egyszerű szolg�
 )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD-vel kapcsolatos további tudnivalókért tekintse meg a [Azure Active Directory dokumentációját](https://docs.microsoft.com/azure/active-directory/). A ADAL használatát bemutató részletes példák az [Azure Code Samples](https://azure.microsoft.com/resources/samples/?service=active-directory) Library-ben érhetők el.
 

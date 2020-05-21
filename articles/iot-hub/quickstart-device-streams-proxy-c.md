@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 91cf594e74d91b8b4df2108d23459016fa843700
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b8cba8f7a21b04dc722124eb2873c64f67fd6def
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80586604"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727131"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon C alkalmazásproxy-alkalmazással (előzetes verzió)
 
@@ -48,7 +48,7 @@ Az alábbi ábra azt szemlélteti, hogy az eszköz és a szolgáltatás helyi pr
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -126,7 +126,7 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) használatával regisztrálja a szimulált eszközt.
+Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozzá. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) használatával regisztrálja a szimulált eszközt.
 
 1. Az eszköz identitásának létrehozásához futtassa a következő parancsot Cloud Shellban:
 
@@ -157,7 +157,7 @@ Ebben a szakaszban egy végpontok közötti streamet hoz létre az SSH-forgalom 
 
 ### <a name="run-the-device-local-proxy-application"></a>Az eszköz helyi proxy alkalmazásának futtatása
 
-1. Szerkessze a (z **) iothub_client_c2d_streaming_proxy_sample. c** forrásfájlt `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample`a mappában, és adja meg az eszköz csatlakoztatási karakterláncát, a célként megadott eszköz IP-címét/állomásnevét, valamint a 22-es SSH-portot:
+1. Szerkessze a (z **) iothub_client_c2d_streaming_proxy_sample. c** forrásfájlt a mappában `iothub_client/samples/iothub_client_c2d_streaming_proxy_sample` , és adja meg az eszköz csatlakoztatási karakterláncát, a célként megadott eszköz IP-címét/állomásnevét, valamint a 22-es SSH-portot:
 
    ```C
    /* Paste in your device connection string  */
@@ -211,7 +211,7 @@ ssh {username}@localhost -p 2222
 
 Ezen a ponton az SSH bejelentkezési ablaka kéri a hitelesítő adatok megadását.
 
-Az alábbi képen látható a konzol kimenete az eszköz helyi proxyján, amely az SSH démonhoz csatlakozik a `IP_address:22`következő helyen:
+Az alábbi képen látható a konzol kimenete az eszköz helyi proxyján, amely az SSH démonhoz csatlakozik a következő helyen `IP_address:22` :
 
 ![Eszköz – helyi proxy kimenete](./media/quickstart-device-streams-proxy-c/device-console-output.png)
 
@@ -219,11 +219,11 @@ Az alábbi képen az SSH-ügyfélprogram konzoljának kimenete látható. Az SSH
 
 ![SSH-ügyfél kimenete](./media/quickstart-device-streams-proxy-csharp/ssh-console-output.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, egy eszköz-és egy szolgáltatás-helyi proxy program üzembe helyezésével hozhat létre adatfolyamot IoT Hubon keresztül, és a proxykat az SSH-forgalom bújtatásához használta.
 

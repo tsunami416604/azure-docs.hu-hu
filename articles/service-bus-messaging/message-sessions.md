@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2020
+ms.date: 05/20/2020
 ms.author: aschhab
-ms.openlocfilehash: a4bc2dcfd1826623516a40be0aff7688d0b6168c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cedf3678fc73b004c142380b4ba69c10ca72ebf
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82116689"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726995"
 ---
 # <a name="message-sessions"></a>Üzenet-munkamenetek
-Microsoft Azure Service Bus-munkamenetek lehetővé teszik a kapcsolódó üzenetek nem kötött sorrendjének együttes és rendezett kezelését. A munkamenetek a-ben, az elsőben (FIFO) és a kérés-válasz mintákban is használhatók. Ez a cikk bemutatja, hogyan használhatja a munkameneteket ezen minták megvalósításához Service Bus használatakor. 
-
-## <a name="first-in-first-out-fifo-pattern"></a>Első – első kimenő (FIFO) minta
-Ha Service Bus-ben a FIFO-garanciát szeretné megvalósítani, használja a munkameneteket. Service Bus nem rendelkezik az üzenetek közötti kapcsolat természetétől, és nem határoz meg egy adott modellt, amely meghatározza, hogy a rendszer hol induljon el vagy végződik.
+Microsoft Azure Service Bus-munkamenetek lehetővé teszik a kapcsolódó üzenetek nem kötött sorrendjének együttes és rendezett kezelését. A munkamenetek a-ben **, az elsőben (FIFO)** és a **kérés-válasz** mintákban is használhatók. Ez a cikk bemutatja, hogyan használhatja a munkameneteket ezen minták megvalósításához Service Bus használatakor. 
 
 > [!NOTE]
 > A Service Bus alapszintű csomagja nem támogatja a munkamenetek használatát. A standard és a prémium szintű csomag támogatja a munkameneteket. A szintek közötti különbségekért tekintse meg a [Service Bus díjszabását](https://azure.microsoft.com/pricing/details/service-bus/).
+
+## <a name="first-in-first-out-fifo-pattern"></a>Első – első kimenő (FIFO) minta
+Ha Service Bus-ben a FIFO-garanciát szeretné megvalósítani, használja a munkameneteket. Service Bus nem rendelkezik az üzenetek közötti kapcsolat természetétől, és nem határoz meg egy adott modellt, amely meghatározza, hogy a rendszer hol induljon el vagy végződik.
 
 Bármely feladó létrehozhat egy munkamenetet, amikor üzeneteket küld egy témakörbe vagy várólistába úgy, hogy [a munkamenet-tulajdonságot](/dotnet/api/microsoft.azure.servicebus.message.sessionid#Microsoft_Azure_ServiceBus_Message_SessionId) egy olyan alkalmazás által definiált azonosítóra állítja be, amely egyedi a munkamenetben. Az AMQP 1,0 protokoll szintjén ez az érték a *Group-ID* tulajdonságra van leképezve.
 
@@ -95,12 +95,12 @@ Az üzenetek kézbesítési számának a munkamenetek kontextusában való megha
 ## <a name="request-response-pattern"></a>Kérelem – válasz minta
 A [kérelem-válasz minta](https://www.enterpriseintegrationpatterns.com/patterns/messaging/RequestReply.html) egy jól bevált integrációs minta, amely lehetővé teszi, hogy a küldő alkalmazás küldjön egy kérést, és módot biztosít arra, hogy a fogadó helyesen küldjön vissza választ a küldő alkalmazásnak. Ez a minta általában egy rövid élettartamú várólistára vagy témakörre van szüksége ahhoz, hogy az alkalmazás válaszokat küldjön. Ebben az esetben a munkamenetek egy egyszerű alternatív megoldást biztosítanak, amely hasonló szemantikai megoldásokkal rendelkezik. 
 
-Több alkalmazás is elküldheti kérelmeit egyetlen kérelem-várólistába, egy adott fejléc-paraméterrel, amely egyedileg azonosítja a küldő alkalmazást. A fogadó alkalmazás feldolgozhatja a várólistára érkező kéréseket, és elküldheti a válaszokat egy munkamenetek számára engedélyezett várólistán, és beállíthatja a munkamenet-azonosítót arra a egyedi azonosítóra, amelyet a feladó küldött a kérelem üzenetében. A kérést elküldő alkalmazás egy adott munkamenet-AZONOSÍTÓban fogadhat üzeneteket, és helyesen dolgozza fel a válaszokat.
+Több alkalmazás is elküldheti kérelmeit egyetlen kérelem-várólistába, egy adott fejléc-paraméterrel, amely egyedileg azonosítja a küldő alkalmazást. A fogadó alkalmazás képes feldolgozni a várólistára érkező kéréseket, és elküldi a válaszokat a munkamenet-kompatibilis várólistán, a munkamenet-azonosítót pedig arra a egyedi azonosítóra állítja, amelyet a küldő a kérelem üzenetében küldött. A kérést elküldő alkalmazás az adott munkamenet-AZONOSÍTÓra vonatkozó üzeneteket fogadhat, és helyesen dolgozza fel a válaszokat.
 
 > [!NOTE]
-> A kezdeti kérelmeket küldő alkalmazásnak ismernie kell a munkamenet-azonosítót, `SessionClient.AcceptMessageSession(SessionID)` és a használatával zárolhatja azt a munkamenetet, amelyen a válasz várható. Érdemes olyan GUID-t használni, amely egyedileg azonosítja az alkalmazás példányát munkamenet-azonosítóként. Nem lehet munkamenet-kezelő vagy `AcceptMessageSession(timeout)` a várólistán annak biztosítása érdekében, hogy a válaszok az adott fogadók számára legyenek zárolva és feldolgozva.
+> A kezdeti kérelmeket küldő alkalmazásnak ismernie kell a munkamenet-azonosítót, és `SessionClient.AcceptMessageSession(SessionID)` a használatával zárolhatja azt a munkamenetet, amelyen a válasz várható. Érdemes olyan GUID-t használni, amely egyedileg azonosítja az alkalmazás példányát munkamenet-azonosítóként. Nem lehet munkamenet-kezelő vagy a `AcceptMessageSession(timeout)` várólistán annak biztosítása érdekében, hogy a válaszok az adott fogadók számára legyenek zárolva és feldolgozva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [Microsoft. Azure. ServiceBus Samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) vagy a [Microsoft. ServiceBus. Messaging példákat](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) egy olyan példához, amely a .NET-keretrendszer ügyfelet használja a munkamenet-kompatibilis üzenetek kezelésére. 
 

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: cynthn
-ms.openlocfilehash: b0c6689b66037067a4c5174738945b7c6fabd5b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a028d597c3eb2a1c66df0e40266c2822e5cd7aab
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086317"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726961"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
 
@@ -20,6 +20,7 @@ A Azure Portal vagy a PowerShell használatával több virtuális gépet (VM) is
 
 Új virtuális gép létrehozása előtt [létre kell hoznia egy felügyelt virtuálisgép-rendszerképet](capture-image-resource.md) , amelyet a forrás képként kíván használni, és olvasási hozzáférést kell adnia a rendszerképhez minden olyan felhasználónak, akinek hozzáféréssel kell rendelkeznie a képhez. 
 
+Egy felügyelt rendszerkép akár 20 egyidejű telepítést is támogat. Ha több mint 20 virtuális gépet kíván létrehozni párhuzamosan, ugyanabból a felügyelt rendszerképből, az egyes virtuális merevlemezek tárolási teljesítményének korlátai miatt kiépítési időtúllépéseket eredményezhet. Több mint 20 virtuális gép egyidejű létrehozásához használjon egy 1 replikával konfigurált [megosztott Képgyűjteményi](shared-image-galleries.md) képet minden 20 egyidejű virtuálisgép-telepítéshez.
 
 ## <a name="use-the-portal"></a>A portál használata
 
@@ -58,6 +59,6 @@ New-AzVm `
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Windows rendszerű virtuális gépek létrehozása és kezelése a Azure PowerShell modullal](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

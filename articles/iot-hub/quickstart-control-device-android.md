@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 ms.date: 06/21/2019
 ms.author: wesmc
-ms.openlocfilehash: 8c3a9c6c5e835104675239882d2a1929a3c07c82
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b9afd1c4ca5e4c652a03bc2ef652b8e43ea12787
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81771028"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727199"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>Gyors útmutató: IoT hub-hoz csatlakoztatott eszköz vezérlése (Android)
 
@@ -123,7 +123,7 @@ Az eszköz SDK-minta alkalmazás futtatható fizikai Android-eszközön vagy And
     DeviceConnectionString=HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidDevice;SharedAccessKey={YourSharedAccessKey}
     ```
 
-3. Android Studio kattintson a **file** > **Sync Project Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
+3. Android Studio kattintson a **file**  >  **Sync Project Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
 
    > [!NOTE]
    > Ha a projekt szinkronizálása sikertelen, a következő okok egyike lehet:
@@ -131,7 +131,7 @@ Az eszköz SDK-minta alkalmazás futtatható fizikai Android-eszközön vagy And
    > * A projektben hivatkozott Android Gradle beépülő modul és Gradle verziója elavult a Android Studio verziójára vonatkozóan. Kövesse [ezeket az utasításokat](https://developer.android.com/studio/releases/gradle-plugin) , és telepítse a beépülő modul és a Gradle megfelelő verzióit a telepítéshez.
    > * Az Android SDK licencszerződése nincs aláírva. A létrehozási kimenetben szereplő utasítások alapján írja alá a licencszerződést, és töltse le az SDK-t.
 
-4. A Build befejezése **után kattintson az** > **alkalmazás futtatása**elemre. Beállíthatja, hogy az alkalmazás fizikai Android-eszközön vagy Android-emulátoron fusson. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
+4. A Build befejezése **után kattintson az**  >  **alkalmazás futtatása**elemre. Beállíthatja, hogy az alkalmazás fizikai Android-eszközön vagy Android-emulátoron fusson. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
 
 5. Az alkalmazás betöltése után kattintson a **Start** gombra, hogy elindítsa a telemetria küldését a IoT hubba:
 
@@ -141,7 +141,7 @@ Ezt az alkalmazást fizikai eszközön vagy emulátoron kell futtatni, amikor a 
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
 
-Ebben a szakaszban a Azure Cloud Shellt a [IoT bővítménnyel](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) fogja használni az Android-eszköz által küldött üzenetek figyeléséhez.
+Ebben a szakaszban a Azure Cloud Shellt a [IoT bővítménnyel](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) fogja használni az Android-eszköz által küldött üzenetek figyeléséhez.
 
 1. Az Azure Cloud Shell használatával futtassa a következő parancsot az IoT Hubhoz történő csatlakozáshoz és az üzenetek olvasásához:
 
@@ -176,7 +176,7 @@ Egy IoT Hub háttérrendszer-alkalmazás általában a felhőben fut, így könn
     DeviceId=MyAndroidDevice
     ```
 
-3. Android Studio kattintson a **file** > **Sync Project Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
+3. Android Studio kattintson a **file**  >  **Sync Project Gradle-fájlokkal**elemre. Ellenőrizze, hogy befejeződött-e a létrehozás.
 
    > [!NOTE]
    > Ha a projekt szinkronizálása sikertelen, a következő okok egyike lehet:
@@ -184,7 +184,7 @@ Egy IoT Hub háttérrendszer-alkalmazás általában a felhőben fut, így könn
    > * A projektben hivatkozott Android Gradle beépülő modul és Gradle verziója elavult a Android Studio verziójára vonatkozóan. Kövesse [ezeket az utasításokat](https://developer.android.com/studio/releases/gradle-plugin) , és telepítse a beépülő modul és a Gradle megfelelő verzióit a telepítéshez.
    > * Az Android SDK licencszerződése nincs aláírva. A létrehozási kimenetben szereplő utasítások alapján írja alá a licencszerződést, és töltse le az SDK-t.
 
-4. A Build befejezése **után kattintson az** > **alkalmazás futtatása**elemre. Az alkalmazás konfigurálása külön fizikai Android-eszközön vagy Android-emulátoron való futtatáshoz. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
+4. A Build befejezése **után kattintson az**  >  **alkalmazás futtatása**elemre. Az alkalmazás konfigurálása külön fizikai Android-eszközön vagy Android-emulátoron való futtatáshoz. Az Android-alkalmazások fizikai eszközön vagy emulátoron való futtatásával kapcsolatos további információkért lásd [az alkalmazás futtatása](https://developer.android.com/training/basics/firstapp/running-app)című témakört.
 
 5. Az alkalmazás betöltése után frissítse az **üzenetküldési időköz** értékét a **1000** értékre, majd kattintson a **meghívás**gombra.
 
@@ -196,11 +196,11 @@ Egy IoT Hub háttérrendszer-alkalmazás általában a felhőben fut, így könn
 
     ![Közvetlen metódus-visszaigazolás](media/quickstart-control-device-android/direct-method-ack.png)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban közvetlen metódust hívott egy eszközön egy háttérbeli alkalmazásból, és a közvetlen metódus hívására válaszolt egy szimulált eszköz alkalmazásban.
 

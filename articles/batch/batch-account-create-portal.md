@@ -1,15 +1,15 @@
 ---
 title: Fiók létrehozása a Azure Portalban
 description: Megtudhatja, hogyan hozhat létre Azure Batch-fiókot az Azure Portalon nagyméretű párhuzamos számítási feladatok futtatásához a felhőben
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/26/2019
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9349ed74111565f68a088cda95c8defcd79f7e69
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e01c62270fc0195c430150a534df2a141808ffa6
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113221"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726927"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Batch-fiók létrehozása az Azure Portalon
 
@@ -23,7 +23,7 @@ További ismereteket a Batch-fiókokról és -forgatókönyvekről a [funkciók 
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
 
-1. Válassza **az erőforrás** > **létrehozása számítási** > **Batch szolgáltatás**elemet.
+1. Válassza **az erőforrás létrehozása**  >  **számítási**  >  **Batch szolgáltatás**elemet.
 
     ![Batch a Piactéren][marketplace_portal]
 
@@ -75,13 +75,13 @@ Amikor először hoz létre Batch-fiókot felhasználói előfizetés módban, r
 
 1. Jelentkezzen be az [Azure Portalra][azure_portal].
 
-1. Válassza a **minden szolgáltatás** > **előfizetések**lehetőséget, majd válassza ki a Batch-fiókhoz használni kívánt előfizetést.
+1. Válassza a **minden szolgáltatás**  >  **előfizetések**lehetőséget, majd válassza ki a Batch-fiókhoz használni kívánt előfizetést.
 
 1. Az **Előfizetés** lapon válassza az **Erőforrás-szolgáltatók** elemet, majd keressen rá a **Microsoft.Batch** kifejezésre. Ellenőrizze, hogy a **Microsoft.Batch** erőforrás-szolgáltató regisztrálva van-e az előfizetésben. Ha az előfizetés nincs regisztrálva, kattintson a **Regisztrálás** hivatkozásra.
 
     ![A Microsoft.Batch szolgáltató regisztrálása][register_provider]
 
-1. Az **előfizetés** lapon válassza a **hozzáférés-vezérlés (iam)** > **szerepkör-hozzárendelések** > **szerepkör-hozzárendelés hozzáadása**elemet.
+1. Az **előfizetés** lapon válassza a **hozzáférés-vezérlés (iam)**  >  **szerepkör-hozzárendelések**  >  **szerepkör-hozzárendelés hozzáadása**elemet.
 
     ![Az előfizetéshez való hozzáférés vezérlése][subscription_access]
 
@@ -112,7 +112,7 @@ Ha szeretné manuálisan megadni a kulcstartóhoz való hozzáférést, nyissa m
 > [!NOTE]
 > Győződjön meg arról, hogy az **Azure Virtual Machines a központi telepítéshez** és a **Azure Resource Manager a sablon központi telepítéséhez** jelölőnégyzetek a társított **Key Vault** erőforráshoz tartozó **hozzáférési szabályzatok** területen vannak kiválasztva.
 > 
-> ![Kötelező Key Vault hozzáférési szabályzat](./media/batch-account-create-portal/key-vault-access-policy.png) ez nem kötelező, ha batch-fiókot hoz létre a Azure Portalban. Alapértelmezés szerint a beállítás van kiválasztva.
+> ![Kötelező Key Vault hozzáférési szabályzat ](./media/batch-account-create-portal/key-vault-access-policy.png) Ez nem kötelező, ha batch-fiókot hoz létre a Azure Portalban. Alapértelmezés szerint a beállítás van kiválasztva.
 
 
 
@@ -134,7 +134,7 @@ Az Azure Portal használata mellett a többek között a következő eszközökk
 * [Azure CLI](batch-cli-get-started.md)
 * [Batch Management .NET](batch-management-dotnet.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk az elsődleges Batch-erőforrásokat tárgyalja, például a készleteket, a számítási csomópontokat, a feladatokat, a tevékenységeket, és áttekintést nyújt a szolgáltatás nagyméretű számítási feladatokkal kapcsolatos funkcióiról.
 * Megismerheti a Batch-kompatibilis alkalmazások [Batch .NET ügyfélkönyvtárral](quick-run-dotnet.md) vagy [Python](quick-run-python.md) segítségével való fejlesztésének alapjait. Ezek a rövid útmutatók végigvezetik egy mintaalkalmazáson, amely a Batch szolgáltatással futtat egy számítási feladatot több számítási csomóponton, és az Azure Storage szolgáltatást is használja a számítási feladatok fájljainak előkészítéséhez és lekéréséhez.

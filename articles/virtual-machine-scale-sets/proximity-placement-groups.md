@@ -1,20 +1,20 @@
 ---
 title: A közelségi csoportok előzetes verziója virtuálisgép-méretezési csoportokhoz
 description: További információ az Azure-beli Windows rendszerű virtuálisgép-méretezési csoportokhoz való közvetlen elhelyezési csoportok létrehozásáról és használatáról.
-author: ju-shim
-ms.author: jushiman
+author: cynthn
+ms.author: cynthn
 ms.topic: how-to
 ms.service: virtual-machine-scale-sets
 ms.subservice: availability
 ms.date: 07/01/2019
-ms.reviewer: mimckitt
+ms.reviewer: zivr
 ms.custom: mimckitt
-ms.openlocfilehash: 18cb1ae3e549995d7b4732025906329bc609f360
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8e455d4d016f97a466838c07fc7af2422f72cc00
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124346"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727097"
 ---
 # <a name="preview-creating-and-using-proximity-placement-groups-using-powershell"></a>Előzetes verzió: közelítő elhelyezési csoportok létrehozása és használata a PowerShell-lel
 
@@ -81,6 +81,6 @@ A példányt a [Get-AzProximityPlacementGroup](/powershell/module/az.compute/get
    -Property VirtualMachineScaleSets
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure CLI](../virtual-machines/linux/proximity-placement-groups.md) -vel közelségi elhelyezési csoportokat is létrehozhat.

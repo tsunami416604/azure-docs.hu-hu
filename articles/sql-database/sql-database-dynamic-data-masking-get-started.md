@@ -13,12 +13,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 02/06/2020
 tags: azure-synpase
-ms.openlocfilehash: 2759644c68d65e76de222a0ac74f1d4900caddc0
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 9ebbd773d56a54114f4bbb9b0db7ffddd2fbf893
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121252"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727029"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-azure-synapse-analytics"></a>Dinamikus adatmaszkolás a Azure SQL Database és az Azure szinapszis Analytics számára
 
@@ -74,7 +74,7 @@ A DDM-javaslatok motorja az adatbázis egyes mezőit potenciálisan bizalmas mez
 
 A REST API használatával programozott módon kezelheti az adatmaszkolási szabályzatot és a szabályokat. A közzétett REST API a következő műveleteket támogatja:
 
-### <a name="data-masking-policies"></a>Adatmaszkolási szabályzatok
+### <a name="data-masking-policy"></a>Adatmaszkolási szabályzat
 
 - [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/createorupdate): a megadott oszlop érzékenységi címkéjét hozza létre vagy frissíti.
 - Get: adatbázis-adatmaszkolási házirend [beolvasása](https://docs.microsoft.com/rest/api/sql/datamaskingpolicies/get). 

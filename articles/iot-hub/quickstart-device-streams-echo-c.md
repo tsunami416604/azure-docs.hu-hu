@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 08/20/2019
 ms.author: robinsh
-ms.openlocfilehash: 52f9e6529329c5bb1abb176082294dc26e64baa3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b5487233e2bd0e532efad4e108c41f188b51d91
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78675543"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727175"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: a C eszközön lévő alkalmazásokkal való kommunikáció IoT Hub eszköz streamen keresztül (előzetes verzió)
 
@@ -120,7 +120,7 @@ Ebben a rövid útmutatóban a [C Azure IoT Device SDK](iot-hub-device-sdk-c-int
 
 ## <a name="register-a-device"></a>Eszköz regisztrálása
 
-A csatlakoztatása előtt regisztrálnia kell egy eszközt az IoT hub használatával. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot?view=azure-cli-latest) használatával regisztrálja a szimulált eszközt.
+A csatlakoztatása előtt regisztrálnia kell egy eszközt az IoT hub használatával. Ebben a szakaszban a Azure Cloud Shell és a [IoT bővítmény](https://docs.microsoft.com/cli/azure/ext/azure-iot/iot?view=azure-cli-latest) használatával regisztrálja a szimulált eszközt.
 
 1. Az eszköz identitásának létrehozásához futtassa a következő parancsot Cloud Shellban:
 
@@ -153,7 +153,7 @@ Ebben a szakaszban az eszköz-és a kiszolgálóoldali alkalmazást is futtatja,
 
 Az eszköz oldali alkalmazás futtatásához kövesse az alábbi lépéseket:
 
-1. Adja meg az eszköz hitelesítő adatait a `iothub_client/samples/iothub_client_c2d_streaming_sample` mappában található **iothub_client_c2d_streaming_sample. c** forrásfájl szerkesztésével, és adja hozzá az eszköz-csatlakoztatási karakterláncot.
+1. Adja meg az eszköz hitelesítő adatait a mappában található **iothub_client_c2d_streaming_sample. c** forrásfájl szerkesztésével `iothub_client/samples/iothub_client_c2d_streaming_sample` , és adja hozzá az eszköz-csatlakoztatási karakterláncot.
 
    ```C
    /* Paste in your iothub connection string  */
@@ -196,11 +196,11 @@ Ahogy azt korábban említettük, a IoT Hub C SDK csak az eszközön található
 
 * [Kommunikáció a Node. js-ben lévő eszköz-alkalmazásokkal IoT Hub eszköz streamek használatával](./quickstart-device-streams-echo-nodejs.md)
 
-## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+## <a name="clean-up-resources"></a>Erőforrások felszabadítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources-device-streams](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy IoT hub, egy eszköz regisztrálása, az eszközön lévő C-alkalmazás és a szolgáltatás oldalán egy másik alkalmazás között létrehozott egy adatfolyamot, és a stream használatával visszaküldheti az adatátvitelt az alkalmazások között.
 

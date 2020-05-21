@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: aeadd7bc798f690c67eef38c6dc645204ff39115
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cba042efb08f121d4cd9fa5693edd69c827f1465
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273513"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83727012"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -91,7 +91,7 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
 
    ![Biztonsági mentés gomb](./media/backup-azure-arm-vms-prepare/backup-button.png)
 
-2. A **biztonsági mentés célja** > , hogy**hol fut a munkaterhelés?** válassza az **Azure**lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép** >  **OK**elemet. Ezzel regisztrálja a virtuálisgép-bővítményt a tárolóban.
+2. A **biztonsági mentés célja**, hogy  >  **hol fut a munkaterhelés?** válassza az **Azure**lehetőséget. A **Miről szeretne biztonsági másolatot készíteni?** válassza a **virtuális gép**  >   **OK**elemet. Ezzel regisztrálja a virtuálisgép-bővítményt a tárolóban.
 
    ![Biztonsági mentési és biztonsági mentési célok ablaktáblái](./media/backup-azure-arm-vms-prepare/select-backup-goal-1.png)
 
@@ -108,6 +108,9 @@ Módosítsa a tárolási replikálás típusát a következőképpen:
    * A virtuális gépek csak egyetlen tárolóban készíthetők biztonsági mentésre.
 
      !["Virtuális gépek kiválasztása" panel](./media/backup-azure-arm-vms-prepare/select-vms-to-backup.png)
+
+    >[!NOTE]
+    > A biztonsági mentés konfigurálásához csak ugyanabban a régióban és előfizetésben lévő virtuális gépek lesznek elérhetők.
 
 5. A **biztonsági mentés**területen kattintson a **biztonsági mentés engedélyezése**elemre. Ezzel telepíti a szabályzatot a tárolóba és a virtuális gépekre, és telepíti a biztonsági mentési bővítményt az Azure-beli virtuális gépen futó virtuálisgép-ügynökön.
 
@@ -149,7 +152,7 @@ A kezdeti biztonsági mentés az ütemterv szerint fog futni, de az alábbiak sz
 3. A **biztonsági mentési elemek** listában kattintson a három pontra (...).
 4. Kattintson a **biztonsági mentés**gombra.
 5. A **biztonsági mentés most**a Calendar (naptár) vezérlőelem használatával válassza ki azt az utolsó napot, ameddig a helyreállítási pontot meg kell őrizni. Ezt követően kattintson az **OK** gombra.
-6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok** > **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
+6. A portál értesítéseinek figyelése. A feladat előrehaladását a tároló irányítópultján követheti nyomon > **biztonsági mentési feladatok**  >  **folyamatban**vannak. A virtuális gép méretétől függően a kezdeti biztonsági mentés létrehozása hosszabb időt vehet igénybe.
 
 ## <a name="verify-backup-job-status"></a>Biztonsági mentési feladatok állapotának ellenőrzése
 
@@ -168,10 +171,10 @@ A feladatok állapota a következő esetektől függően változhat:
 
 **Pillanatkép** | **Adatok átvitele a tárba** | **Feladatok állapota**
 --- | --- | ---
-Befejezve | Folyamatban | Folyamatban
-Befejezve | Kimarad | Befejezve
-Befejezve | Befejezve | Befejezve
-Befejezve | Sikertelen | Figyelmeztetéssel fejeződött be
+Befejeződött | Folyamatban | Folyamatban
+Befejeződött | Kimarad | Befejeződött
+Befejeződött | Befejeződött | Befejeződött
+Befejeződött | Sikertelen | Figyelmeztetéssel fejeződött be
 Sikertelen | Sikertelen | Sikertelen
 
 Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így az olyan helyzetekben, amikor a következő napi biztonsági mentés sikertelen lesz, a biztonsági mentési feladat elkerülhető a leválasztási funkciókkal. A következő napi biztonsági másolatok rendelkezhetnek pillanatképtel **, miközben az adatok átvitele a tárba** kihagyva, ha egy korábbi nap biztonsági mentési feladata folyamatban van.
@@ -185,7 +188,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 
 **VM** | **Részletek**
 --- | ---
-**Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal a **WaAppAgent. exe** > **tulajdonságai**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
+**Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal a **WaAppAgent. exe**  >  **tulajdonságai**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
 
 >[!NOTE]
@@ -195,7 +198,7 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 >
 >**Az előzetes verzióra való feliratkozáshoz írjon nekünk a következőt:AskAzureBackupTeam@microsoft.com**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az [Azure VM-ügynökökkel](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md) vagy az [Azure-beli virtuális gépek biztonsági mentésével](backup-azure-vms-troubleshoot.md)kapcsolatos problémák elhárítása.
 * [Visszaállítás](backup-azure-arm-restore-vms.md) Azure-beli virtuális gépek.

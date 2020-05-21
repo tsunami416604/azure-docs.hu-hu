@@ -1,15 +1,15 @@
 ---
 title: Azure Active Directory használata a Batch-felügyeleti megoldások hitelesítéséhez
 description: Ismerkedjen meg a Azure Active Directory használatával a Batch Management .NET függvénytárat használó alkalmazásokból való hitelesítéshez.
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/27/2017
 ms.custom: has-adal-ref
-ms.openlocfilehash: 7ca32e5f9ff32d635d7f662c74dea5534e3dd072
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: ec9cf15f37c3ca7e4e477c628733d34cac21c141
+ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608455"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83726893"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch-felügyeleti megoldások hitelesítése Active Directory
 
@@ -25,7 +25,7 @@ Ha többet szeretne megtudni a Batch Management .NET-könyvtár és a AccountMan
 
 Az Azure [Active Directory-hitelesítési tár][aad_adal] (ADAL) egy programozott felületet biztosít az Azure ad számára az alkalmazásokon belüli használathoz. Az ADAL az alkalmazásból való meghívásához regisztrálnia kell az alkalmazást egy Azure AD-bérlőben. Az alkalmazás regisztrálásakor az Azure AD-t az alkalmazással kapcsolatos információkkal látja el, beleértve az Azure AD-bérlőn belüli nevet is. Az Azure AD ezt követően egy alkalmazás-azonosítót biztosít, amelyet az alkalmazás az Azure AD-vel való hozzárendeléséhez használ futásidőben. Az alkalmazás-AZONOSÍTÓval kapcsolatos további tudnivalókért tekintse meg az [alkalmazás-és szolgáltatásnév objektumait Azure Active Directoryban](../active-directory/develop/app-objects-and-service-principals.md).
 
-A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal][aad_integrate]című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az **átirányítási URI** -hoz `urn:ietf:wg:oauth:2.0:oob`. Megadhat azonban bármilyen érvényes URI-t `http://myaccountmanagementsample`(például) az **átirányítási URI**számára, mivel nem kell valódi végpontnak lennie:
+A AccountManagement-minta alkalmazás regisztrálásához kövesse az alkalmazások [hozzáadása](../active-directory/develop/quickstart-register-app.md) című szakasz lépéseit az [alkalmazások integrálása a Azure Active Directorysal][aad_integrate]című témakörben. **Natív ügyfélalkalmazás** megadása az alkalmazás típusához. Az iparági szabványnak megfelelő OAuth 2,0 URI az **átirányítási URI** -hoz `urn:ietf:wg:oauth:2.0:oob` . Megadhat azonban bármilyen érvényes URI-t (például `http://myaccountmanagementsample` ) az **átirányítási URI**számára, mivel nem kell valódi végpontnak lennie:
 
 ![](./media/batch-aad-auth-management/app-registration-management-plane.png)
 
@@ -112,7 +112,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 A hitelesítő adatok megadása után a minta alkalmazás folytathatja a hitelesített kérések kiküldését a Batch Management szolgáltatásba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [AccountManagement-minta alkalmazás][acct_mgmt_sample]futtatásával kapcsolatos további információkért lásd: [Batch-fiókok és kvóták kezelése a .net-hez készült batch Management ügyféloldali kódtár használatával](batch-management-dotnet.md).
 
